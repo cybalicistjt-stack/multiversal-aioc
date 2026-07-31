@@ -1,8 +1,9 @@
-const CACHE = 'multiversal-aioc-v2';
+const CACHE = 'multiversal-aioc-v3';
 const ASSETS = [
   './',
   './index.html',
   './styles.css',
+  './multiversal-seed.js',
   './app.js',
   './manifest.webmanifest',
   './icon-192.svg',
