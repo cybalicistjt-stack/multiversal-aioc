@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#05030a">
+<title>Multiversal AIOC v2</title>
+<link rel="stylesheet" href="./app.css">
+</head>
+<body>
+<div id="app">
+  <aside class="sidebar">
+    <div class="brand"><span>MULTIVERSAL</span><small>AIOC v2</small></div>
+    <nav id="nav"></nav>
+    <div class="sidebar-foot"><span id="build">Build 2.0.0-foundation</span></div>
+  </aside>
+  <main class="shell">
+    <header class="topbar">
+      <button id="menuBtn" class="icon-btn">☰</button>
+      <div><h1 id="pageTitle">Content Library</h1><p id="pageSubtitle">Canonical development workspace</p></div>
+      <div class="top-actions">
+        <button id="backupBtn">Export state</button>
+        <button id="diagnosticsBtn">Diagnostics</button>
+      </div>
+    </header>
+    <section id="view" class="view"></section>
+  </main>
+</div>
+<dialog id="objectDialog"><div id="objectDialogBody"></div></dialog>
+<script type="module" src="./app.js"></script>
+</body>
+</html>
