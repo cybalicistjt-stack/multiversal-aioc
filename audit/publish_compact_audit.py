@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish bounded forensic, factory, and recovery results to the static AIOC."""
+"""Publish bounded forensic, factory, recovery, and handoff results to the static AIOC."""
 from __future__ import annotations
 import argparse, json, shutil
 from datetime import datetime, timezone
@@ -33,7 +33,14 @@ def main():
  recovery=bounded_index(a.source/'recovery'/'recovery-index.json',a.destination/'recovery'/'recovery-index.json','publishedSample',250)
  if recovery:
   recovery['relationshipSample']=list(recovery.get('relationshipSample') or [])[:250]; write_json(a.destination/'recovery'/'recovery-index.json',recovery); published.append('recovery/recovery-index.json')
+ handoff=bounded_index(a.source/'handoffs'/'recovery-handoff-index.json',a.destination/'handoffs'/'recovery-handoff-index.json','publishedSample',200)
+ if handoff: published.append('handoffs/recovery-handoff-index.json')
+ for n in ('relationship-resolution-queue.json','source-completion-receipts.json'):
+  p=read_json(a.source/'handoffs'/n)
+  if p is not None:
+   if isinstance(p,list): p=p[:300]
+   write_json(a.destination/'handoffs'/n,p); published.append('handoffs/'+n)
  status=read_json(a.source/'corpus-status.json') or {}; refinement=read_json(a.source/'refined'/'refinement-summary.json') or {}
- manifest={'format':'multiversal-static-audit-publication','version':'1.4.0','publishedAt':datetime.now(timezone.utc).isoformat(),'sourceCommit':a.source_sha,'publishedFiles':published,'summary':{'archiveCount':status.get('archiveCount',0),'pdfCount':status.get('pdfCount',0),'totalPages':status.get('totalPages',0),'completedPages':status.get('completedPages',0),'reviewCandidateCount':refinement.get('reviewCandidateCount',0),'promotionCandidateCount':(promotion or {}).get('candidateCount',0),'factoryCandidateCount':(factory or {}).get('consolidatedCandidateCount',0),'recoveryCandidateCount':(recovery or {}).get('candidateCount',0),'readyForDesignerReview':(recovery or {}).get('readyForDesignerReview',0),'relationshipCandidateCount':(recovery or {}).get('relationshipCandidateCount',0),'recoveryBatchCount':(recovery or {}).get('batchCount',0),'machineScanComplete':bool(status.get('automaticAuditComplete') or status.get('machineScanComplete')),'humanReviewComplete':bool(status.get('humanReviewComplete')),'canonicalPromotionComplete':bool(status.get('canonicalPromotionComplete'))}}
+ manifest={'format':'multiversal-static-audit-publication','version':'1.5.0','publishedAt':datetime.now(timezone.utc).isoformat(),'sourceCommit':a.source_sha,'publishedFiles':published,'summary':{'archiveCount':status.get('archiveCount',0),'pdfCount':status.get('pdfCount',0),'totalPages':status.get('totalPages',0),'completedPages':status.get('completedPages',0),'reviewCandidateCount':refinement.get('reviewCandidateCount',0),'promotionCandidateCount':(promotion or {}).get('candidateCount',0),'factoryCandidateCount':(factory or {}).get('consolidatedCandidateCount',0),'recoveryCandidateCount':(recovery or {}).get('candidateCount',0),'readyForDesignerReview':(recovery or {}).get('readyForDesignerReview',0),'relationshipCandidateCount':(recovery or {}).get('relationshipCandidateCount',0),'handoffCandidateCount':(handoff or {}).get('candidateCount',0),'handoffReadyForReview':(handoff or {}).get('readyForReviewCount',0),'unresolvedRelationshipCount':(handoff or {}).get('unresolvedRelationshipCount',0),'sourceGroupCount':(handoff or {}).get('sourceGroupCount',0),'machineScanComplete':bool(status.get('automaticAuditComplete') or status.get('machineScanComplete')),'humanReviewComplete':bool(status.get('humanReviewComplete')),'canonicalPromotionComplete':bool(status.get('canonicalPromotionComplete'))}}
  write_json(a.destination/'publication-manifest.json',manifest); print(json.dumps(manifest,indent=2))
 if __name__=='__main__': main()
