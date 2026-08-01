@@ -29,6 +29,15 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Validate application scripts
+        run: |
+          node --check content-database.js
+          node --check content-catalog-v4.js
+          node --check content-library.js
+          node --check unified-desktop.js
+          test -f content-library.html
+          test -f content-library.css
+
       - name: Build Multiversal content database
         run: node scripts/build-content-database.mjs
 
@@ -42,7 +51,9 @@ jobs:
           if (!Array.isArray(index.records) || index.records.length < 1000) throw new Error('Database did not recover the Phase 1–7 inventory');
           if (index.recordCount !== index.records.length) throw new Error('Record count mismatch');
           if (manifest.recordCount !== index.recordCount) throw new Error('Manifest count mismatch');
-          console.log(`Validated ${index.recordCount} content records`);
+          const fullBodies = index.records.filter(r => r.gameObject || r.object || r.content || r.spec).length;
+          console.log(`Validated ${index.recordCount} content records, including ${fullBodies} full object bodies`);
+          if (!fs.existsSync('content-source')) console.warn('content-source directory is absent; inventory-only deployment will continue.');
           NODE
 
       - name: Configure Pages
