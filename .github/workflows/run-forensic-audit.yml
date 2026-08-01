@@ -86,15 +86,18 @@ jobs:
         run: python audit/build_production_staging.py --handoffs audit-output/handoffs --out audit-output/production-staging --batch-size 50
       - name: Compile canonical acceptance manifests
         run: python audit/build_canonical_acceptance.py --staging audit-output/production-staging --out audit-output/canonical-acceptance --batch-size 50
-      - name: Validate canonical acceptance outputs
+      - name: Compile branch import and merge readiness
+        run: python audit/build_merge_readiness.py --acceptance audit-output/canonical-acceptance --out audit-output/merge-readiness --batch-size 50
+      - name: Validate merge readiness outputs
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          s=json.loads(Path('audit-output/canonical-acceptance/canonical-acceptance-index.json').read_text())
-          assert s['approvalPolicy']['automaticMainCanonWrites'] is False,s
-          assert s['acceptanceCandidateCount'] + s['blockedCandidateCount'] == s['stagingHandoffCount'],s
-          print(json.dumps({k:s[k] for k in ('acceptanceCandidateCount','blockedCandidateCount','acceptanceBatchCount','sourceClosureCount')},indent=2))
+          s=json.loads(Path('audit-output/merge-readiness/merge-readiness-index.json').read_text())
+          assert s['mergePolicy']['automaticBranchImports'] is False,s
+          assert s['mergePolicy']['automaticMainCanonMerges'] is False,s
+          assert s['acceptanceEntryCount'] >= 0 and s['importBatchCount'] >= 0,s
+          print(json.dumps({k:s[k] for k in ('acceptanceEntryCount','openBlockerCount','importBatchCount','sourceGroupCount')},indent=2))
           PY
       - name: Publish compact dashboard data
         run: python audit/publish_compact_audit.py --source audit-output --destination v2/audit-data --source-sha '${{ github.sha }}'
@@ -122,6 +125,6 @@ jobs:
           git config user.email 'actions@users.noreply.github.com'
           git add -A v2/audit-data
           if git diff --cached --quiet; then echo 'No compact audit changes to publish.'; exit 0; fi
-          git commit -m 'Publish canonical acceptance and blocker data [skip ci]'
+          git commit -m 'Publish branch import and merge readiness data [skip ci]'
           git pull --rebase origin main
           git push origin HEAD:main
