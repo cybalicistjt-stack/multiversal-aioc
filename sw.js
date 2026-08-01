@@ -1,4 +1,4 @@
-const CACHE = 'multiversal-aioc-forge-v11';
+const CACHE = 'multiversal-aioc-forge-v12';
 const ASSETS = [
   './',
   './index.html',
@@ -7,12 +7,14 @@ const ASSETS = [
   './forge-interview-v6.css',
   './forge-starters-v7.css',
   './forge-creatures-v8.css',
+  './forge-ability-v9.css',
   './multiversal-seed.js',
   './app.js',
   './forge-v2.js',
   './forge-interview-v6.js',
   './forge-starters-v7.js',
   './forge-creatures-v8.js',
+  './forge-ability-v9.js',
   './manifest.webmanifest',
   './icon-192.svg',
   './icon-512.svg',
