@@ -1,0 +1,49 @@
+{
+  "format": "multiversal-aioc-release-manifest",
+  "release": "3.0.0-default-cutover",
+  "releasedAt": "2026-08-01T00:00:00Z",
+  "defaultEntry": "../index.html",
+  "applicationEntry": "./index.html",
+  "operationsEntry": "./operations.html",
+  "finalizationEntry": "./finalization.html",
+  "legacyEntry": "../legacy-index.html",
+  "deployment": {
+    "branch": "gh-pages",
+    "mode": "direct branch publication",
+    "requiresBuildWorkflow": false,
+    "rollback": "Move gh-pages to the previous release commit or open legacy-index.html"
+  },
+  "database": {
+    "authoritativeSource": "../content-source/phase-1-8-canonical-objects.json.gz.b64",
+    "verifiedFullObjectCount": 487,
+    "loader": "./data/source-loader.js",
+    "status": "operational-source-set",
+    "remainingWork": "Continue recovering and merging objects not present in the verified 487-object source set."
+  },
+  "systems": {
+    "developerDashboard": "operational",
+    "contentLibrary": "operational-foundation",
+    "objectWorkbench": "operational-foundation",
+    "knowledgeGraph": "operational-foundation",
+    "developmentIntelligence": "operational-foundation",
+    "assetManager": "operational-foundation",
+    "contentPipeline": "operational-foundation",
+    "authoringStudio": "operational-foundation",
+    "packManager": "operational-foundation",
+    "balanceLab": "operational-foundation",
+    "gameTesting": "operational-foundation",
+    "featureModules": "operational-foundation",
+    "developmentOS": "operational-foundation",
+    "releaseControl": "operational-foundation",
+    "aiWorkflows": "context-package-operational",
+    "recovery": "operational",
+    "legacyMigration": "operational",
+    "regressionCenter": "operational"
+  },
+  "maturity": "internal-alpha development headquarters",
+  "notClaims": [
+    "This release does not claim that every Multiversal content object has been recovered.",
+    "This release does not claim that every specialist authoring workflow has reached final production depth.",
+    "This release does not remove the legacy AIOC or its browser data."
+  ]
+}
