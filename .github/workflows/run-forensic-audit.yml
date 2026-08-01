@@ -24,10 +24,14 @@ on:
       - '.github/workflows/run-forensic-audit.yml'
 
 permissions:
-  contents: read
+  contents: write
 
 env:
   PYTHONUNBUFFERED: '1'
+
+concurrency:
+  group: multiversal-forensic-audit
+  cancel-in-progress: false
 
 jobs:
   audit:
@@ -36,15 +40,18 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           cache: pip
+          cache-dependency-path: audit/requirements.txt
 
       - name: Install audit dependencies
-        run: python -m pip install --upgrade pip pypdf
+        run: python -m pip install --upgrade pip -r audit/requirements.txt
 
       - name: Materialize canonical source when needed
         run: |
@@ -62,10 +69,16 @@ jobs:
       - name: Run complete forensic audit
         run: |
           RESET=''
-          if [ '${{ github.event_name }}' = 'push' ] || [ '${{ inputs.reset }}' = 'true' ]; then RESET='--reset'; fi
+          BATCH_SIZE='50'
+          if [ '${{ github.event_name }}' = 'workflow_dispatch' ]; then
+            BATCH_SIZE='${{ inputs.batch_size }}'
+            if [ '${{ inputs.reset }}' = 'true' ]; then RESET='--reset'; fi
+          else
+            RESET='--reset'
+          fi
           python audit/run_archive_audit.py \
             --repo-root . \
-            --batch-size '${{ inputs.batch_size || '50' }}' \
+            --batch-size "$BATCH_SIZE" \
             $RESET
 
       - name: Validate corpus status
@@ -83,9 +96,16 @@ jobs:
           print(json.dumps(s, indent=2))
           PY
 
+      - name: Publish compact dashboard data
+        run: |
+          python audit/publish_compact_audit.py \
+            --source audit-output \
+            --destination v2/audit-data \
+            --source-sha '${{ github.sha }}'
+
       - name: Package full audit outputs
         run: |
-          tar -czf multiversal-forensic-audit-output.tar.gz audit-output audit-work/documents || true
+          tar -czf multiversal-forensic-audit-output.tar.gz audit-output audit-work/documents
 
       - name: Upload full audit artifact
         uses: actions/upload-artifact@v4
@@ -102,10 +122,19 @@ jobs:
         with:
           name: multiversal-audit-status-${{ github.sha }}
           path: |
-            audit-output/corpus-status.json
-            audit-output/archive-inventory.json
-            audit-output/document-batch-schedule.json
-            audit-output/reconciliation-report.json
-            audit-output/csv-schema-registry.json
-          if-no-files-found: warn
+            v2/audit-data/
+          if-no-files-found: error
           retention-days: 90
+
+      - name: Commit compact audit results
+        run: |
+          if git diff --quiet -- v2/audit-data; then
+            echo 'No compact audit changes to publish.'
+            exit 0
+          fi
+          git config user.name 'multiversal-audit-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add v2/audit-data
+          git commit -m 'Publish forensic audit status [skip ci]'
+          git pull --rebase origin main
+          git push origin HEAD:main
