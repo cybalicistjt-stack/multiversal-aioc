@@ -4,56 +4,60 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#13151c" />
-  <meta name="description" content="Multiversal AI Operations Center, Design Studio, Balance Lab, and Feature Module Roadmap." />
-  <meta name="aioc-build" content="studio-11.4" />
-  <link rel="manifest" href="manifest.webmanifest?build=studio-11.4" />
+  <meta name="description" content="Multiversal AI Operations Center, Design Studio, Balance Lab, Feature Module Roadmap, and Game Testing Suite." />
+  <meta name="aioc-build" content="studio-11.5" />
+  <link rel="manifest" href="manifest.webmanifest?build=studio-11.5" />
   <link rel="icon" href="./icon-192.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css?build=studio-11.4" />
-  <link rel="stylesheet" href="forge-v2.css?build=studio-11.4" />
-  <link rel="stylesheet" href="forge-interview-v6.css?build=studio-11.4" />
-  <link rel="stylesheet" href="forge-starters-v7.css?build=studio-11.4" />
-  <link rel="stylesheet" href="forge-creatures-v8.css?build=studio-11.4" />
-  <link rel="stylesheet" href="forge-ability-v9.css?build=studio-11.4" />
-  <link rel="stylesheet" href="forge-expert-v10.css?build=studio-11.4" />
-  <link rel="stylesheet" href="design-studio-v11.css?build=studio-11.4" />
-  <title>Multiversal AIOC · Studio 11.4</title>
+  <link rel="stylesheet" href="styles.css?build=studio-11.5" />
+  <link rel="stylesheet" href="forge-v2.css?build=studio-11.5" />
+  <link rel="stylesheet" href="forge-interview-v6.css?build=studio-11.5" />
+  <link rel="stylesheet" href="forge-starters-v7.css?build=studio-11.5" />
+  <link rel="stylesheet" href="forge-creatures-v8.css?build=studio-11.5" />
+  <link rel="stylesheet" href="forge-ability-v9.css?build=studio-11.5" />
+  <link rel="stylesheet" href="forge-expert-v10.css?build=studio-11.5" />
+  <link rel="stylesheet" href="design-studio-v11.css?build=studio-11.5" />
+  <title>Multiversal AIOC · Studio 11.5</title>
   <style>
-    #studioPermanentLauncher,#balancePermanentLauncher,#modulesPermanentLauncher{position:fixed;right:14px;z-index:2147483646;border-radius:999px;padding:12px 16px;color:#fff;font:700 13px system-ui;box-shadow:0 8px 28px #0009;display:block!important;visibility:visible!important;opacity:1!important}
-    #studioPermanentLauncher{bottom:132px;background:#6f45aa;border:1px solid #c5a7ef}
+    #studioPermanentLauncher,#testingPermanentLauncher,#modulesPermanentLauncher,#balancePermanentLauncher{position:fixed;right:14px;z-index:2147483646;border-radius:999px;padding:12px 16px;color:#fff;font:700 13px system-ui;box-shadow:0 8px 28px #0009;display:block!important;visibility:visible!important;opacity:1!important}
+    #studioPermanentLauncher{bottom:188px;background:#6f45aa;border:1px solid #c5a7ef}
+    #testingPermanentLauncher{bottom:132px;background:#3f755f;border:1px solid #9de0c0}
     #modulesPermanentLauncher{bottom:76px;background:#75622b;border:1px solid #e8d48e}
     #balancePermanentLauncher{bottom:20px;background:#356f8d;border:1px solid #9bd4ef}
   </style>
 </head>
-<body data-aioc-build="studio-11.4">
+<body data-aioc-build="studio-11.5">
   <div id="app"></div>
   <button id="studioPermanentLauncher" type="button">Design Studio</button>
+  <button id="testingPermanentLauncher" type="button">Game Testing</button>
   <button id="modulesPermanentLauncher" type="button">Feature Modules</button>
   <button id="balancePermanentLauncher" type="button">Balance Lab</button>
   <script>
     (function(){
       const studio=document.getElementById('studioPermanentLauncher');
       studio.addEventListener('click',function(){try{if(window.DesignStudio11&&typeof window.DesignStudio11.home==='function')window.DesignStudio11.home();else location.href='./studio.html'}catch(error){console.error(error);location.href='./studio.html'}});
+      document.getElementById('testingPermanentLauncher').addEventListener('click',()=>location.href='./testing-suite.html');
       document.getElementById('modulesPermanentLauncher').addEventListener('click',()=>location.href='./feature-modules.html');
       document.getElementById('balancePermanentLauncher').addEventListener('click',()=>location.href='./balance.html');
       const params=new URLSearchParams(location.search);
       if(params.get('openStudio')==='1')window.addEventListener('load',()=>setTimeout(()=>studio.click(),400));
+      if(params.get('openTesting')==='1')location.href='./testing-suite.html';
       if(params.get('openModules')==='1')location.href='./feature-modules.html';
       if(params.get('openBalance')==='1')location.href='./balance.html';
     })();
   </script>
-  <script src="multiversal-seed.js?build=studio-11.4"></script>
-  <script src="app.js?build=studio-11.4" defer></script>
-  <script src="forge-v2.js?build=studio-11.4" defer></script>
-  <script src="forge-interview-v6.js?build=studio-11.4" defer></script>
-  <script src="forge-starters-v7.js?build=studio-11.4" defer></script>
-  <script src="forge-creatures-v8.js?build=studio-11.4" defer></script>
-  <script src="forge-ability-v9.js?build=studio-11.4" defer></script>
-  <script src="forge-ability-v9-fix.js?build=studio-11.4" defer></script>
-  <script src="forge-expert-v10.js?build=studio-11.4" defer></script>
-  <script src="design-studio-v11.1.js?build=studio-11.4" defer></script>
+  <script src="multiversal-seed.js?build=studio-11.5"></script>
+  <script src="app.js?build=studio-11.5" defer></script>
+  <script src="forge-v2.js?build=studio-11.5" defer></script>
+  <script src="forge-interview-v6.js?build=studio-11.5" defer></script>
+  <script src="forge-starters-v7.js?build=studio-11.5" defer></script>
+  <script src="forge-creatures-v8.js?build=studio-11.5" defer></script>
+  <script src="forge-ability-v9.js?build=studio-11.5" defer></script>
+  <script src="forge-ability-v9-fix.js?build=studio-11.5" defer></script>
+  <script src="forge-expert-v10.js?build=studio-11.5" defer></script>
+  <script src="design-studio-v11.1.js?build=studio-11.5" defer></script>
   <script>
-    window.AIOC_BUILD='studio-11.4';
-    if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?build=studio-11.4',{updateViaCache:'none'}).then(r=>r.update()).catch(console.error));
+    window.AIOC_BUILD='studio-11.5';
+    if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?build=studio-11.5',{updateViaCache:'none'}).then(r=>r.update()).catch(console.error));
   </script>
 </body>
 </html>
