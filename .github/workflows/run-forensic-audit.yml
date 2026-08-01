@@ -122,6 +122,29 @@ jobs:
           print(json.dumps(s, indent=2))
           PY
 
+      - name: Build governed promotion batches
+        run: |
+          python audit/build_promotion_batches.py \
+            --source audit-output/refined \
+            --out audit-output/promotion \
+            --batch-size 100 \
+            --publish-limit 500
+
+      - name: Validate promotion index
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('audit-output/promotion/promotion-index.json')
+          if not p.exists():
+              raise SystemExit('promotion-index.json was not produced')
+          s = json.loads(p.read_text())
+          assert s['candidateCount'] >= 0, s
+          assert s['batchCount'] >= 0, s
+          assert s['promotionPolicy']['automaticCanonicalWrites'] is False, s
+          print(json.dumps({k:s[k] for k in ('candidateCount','queueCounts','objectTypeCounts','batchCount')}, indent=2))
+          PY
+
       - name: Publish compact dashboard data
         run: |
           python audit/publish_compact_audit.py \
@@ -161,6 +184,6 @@ jobs:
             echo 'No compact audit changes to publish.'
             exit 0
           fi
-          git commit -m 'Publish refined forensic audit status [skip ci]'
+          git commit -m 'Publish forensic reconciliation and promotion data [skip ci]'
           git pull --rebase origin main
           git push origin HEAD:main
