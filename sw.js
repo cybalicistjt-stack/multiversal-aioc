@@ -1,6 +1,6 @@
-const CACHE = 'multiversal-aioc-testing-v20';
+const CACHE = 'multiversal-aioc-devos-v21';
 const ASSETS = [
-  './','./index.html','./studio.html','./balance.html','./feature-modules.html','./testing-suite.html','./styles.css','./forge-v2.css','./forge-interview-v6.css','./forge-starters-v7.css','./forge-creatures-v8.css','./forge-ability-v9.css','./forge-expert-v10.css','./design-studio-v11.css','./multiversal-seed.js','./app.js','./forge-v2.js','./forge-interview-v6.js','./forge-starters-v7.js','./forge-creatures-v8.js','./forge-ability-v9.js','./forge-ability-v9-fix.js','./forge-expert-v10.js','./design-studio-v11.1.js','./manifest.webmanifest','./icon-192.svg','./icon-512.svg','./refresh.html'
+  './','./index.html','./development-os.html','./studio.html','./balance.html','./feature-modules.html','./testing-suite.html','./styles.css','./forge-v2.css','./forge-interview-v6.css','./forge-starters-v7.css','./forge-creatures-v8.css','./forge-ability-v9.css','./forge-expert-v10.css','./design-studio-v11.css','./multiversal-seed.js','./app.js','./forge-v2.js','./forge-interview-v6.js','./forge-starters-v7.js','./forge-creatures-v8.js','./forge-ability-v9.js','./forge-ability-v9-fix.js','./forge-expert-v10.js','./design-studio-v11.1.js','./manifest.webmanifest','./icon-192.svg','./icon-512.svg','./refresh.html'
 ];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)));self.skipWaiting();});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('multiversal-aioc')&&key!==CACHE).map(key=>caches.delete(key)))));self.clients.claim();});
