@@ -1,0 +1,72 @@
+{
+  "format": "multiversal-forensic-audit-evidence-seeds",
+  "version": "1.0.0",
+  "authority": "candidate-evidence-only",
+  "seeds": [
+    {
+      "id": "seed-goblin-npc-table",
+      "source": "fullmv062926.pdf",
+      "locator": "page locator pending full runner",
+      "families": ["npc","species","item","ability","rule","table"],
+      "title": "Goblin NPC table",
+      "evidence": "CSV-style table headed NPC, HP, AC, Speed, Attack, Damage, Special Traits/Abilities, containing roles such as Goblin Trader, Engineer, Scout, Alchemist, Warden, Mechanic, Medic, Soldier, Spy, Scientist, Saboteur, Diplomat, Entrepreneur, Tactician, Miner, Outlaw, and Artificer.",
+      "auditNotes": [
+        "Each row is a likely NPC archetype object.",
+        "Attacks and special traits may reference separate item, action, ability, proficiency, and crafting objects.",
+        "The table is embedded after Goblin setting prose and must not be treated as isolated from that context."
+      ],
+      "state": "source-discovered"
+    },
+    {
+      "id": "seed-dagger-ability-tree",
+      "source": "fullmv062926.pdf",
+      "locator": "page locator pending full runner",
+      "families": ["ability-tree","ability","action","effect","prerequisite","progression","rule"],
+      "title": "Dagger Combat Ability Tree",
+      "evidence": "Tiered combat tree with unlock costs, tier prerequisites, passive/action/bonus-action/reaction nodes, saving throws, damage expressions, usage limits, and XP expansions.",
+      "auditNotes": [
+        "The tree must be decomposed into progression family, tiers, nodes, prerequisites, effects, actions, usage rules, and upgrade nodes.",
+        "Narrative core mechanics are also reusable rules evidence."
+      ],
+      "state": "source-discovered"
+    },
+    {
+      "id": "seed-underwater-adventure-hooks",
+      "source": "fullmv062926.pdf",
+      "locator": "page locator pending full runner",
+      "families": ["adventure","encounter","environment","creature","location","hazard","item","table"],
+      "title": "Underwater cave and ocean encounter tables",
+      "evidence": "Numbered hooks and encounters involving shipwrecks, merrow, magical trenches, sharks, sea serpents, currents, reefs, hidden treasure, enchanted coral, drowned cities, underwater temples, and monster islands.",
+      "auditNotes": [
+        "Rows can imply multiple objects and relationships, not merely one adventure-hook record.",
+        "Named creatures, hazards, locations, artifacts, and environmental rules must be cross-checked separately."
+      ],
+      "state": "source-discovered"
+    },
+    {
+      "id": "seed-cyberpunk-encounters",
+      "source": "fullmv062926.pdf",
+      "locator": "page locator pending full runner",
+      "families": ["encounter","npc","technology","condition","environment","faction","item"],
+      "title": "Cyberpunk random encounters",
+      "evidence": "Encounter rows reference drone patrols, fixers, cybernetics, corporate bounty hunters, acid rain, augmented performers, augmentation overload, hackers, gangs, and information brokers.",
+      "auditNotes": [
+        "Technology, conditions, factions, NPC roles, weather hazards, and items must be extracted independently from the encounter rows."
+      ],
+      "state": "source-discovered"
+    },
+    {
+      "id": "seed-marketplace-hooks",
+      "source": "fullmv062926.pdf",
+      "locator": "page locator pending full runner",
+      "families": ["adventure","encounter","business","npc","item","condition","faction"],
+      "title": "Marketplace hooks and event table",
+      "evidence": "Hooks include missing merchants, strange food buffs or curses, illegal magic-item vendors, hidden treasure knowledge, underground auctions, guards, theft accusations, pickpockets, and vendor fights.",
+      "auditNotes": [
+        "Food effects may be item/effect/condition objects.",
+        "Auction, guard, vendor, and pickpocket content may imply reusable NPC, business, faction, and encounter objects."
+      ],
+      "state": "source-discovered"
+    }
+  ]
+}
