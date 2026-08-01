@@ -4,67 +4,51 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#13151c" />
-  <meta name="description" content="Multiversal AI Operations Center and Design Studio." />
-  <meta name="aioc-build" content="studio-11.2" />
-  <link rel="manifest" href="manifest.webmanifest?build=studio-11.2" />
+  <meta name="description" content="Multiversal AI Operations Center, Design Studio, and Balance Lab." />
+  <meta name="aioc-build" content="studio-11.3" />
+  <link rel="manifest" href="manifest.webmanifest?build=studio-11.3" />
   <link rel="icon" href="./icon-192.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css?build=studio-11.2" />
-  <link rel="stylesheet" href="forge-v2.css?build=studio-11.2" />
-  <link rel="stylesheet" href="forge-interview-v6.css?build=studio-11.2" />
-  <link rel="stylesheet" href="forge-starters-v7.css?build=studio-11.2" />
-  <link rel="stylesheet" href="forge-creatures-v8.css?build=studio-11.2" />
-  <link rel="stylesheet" href="forge-ability-v9.css?build=studio-11.2" />
-  <link rel="stylesheet" href="forge-expert-v10.css?build=studio-11.2" />
-  <link rel="stylesheet" href="design-studio-v11.css?build=studio-11.2" />
-  <title>Multiversal AIOC · Design Studio 11.2</title>
+  <link rel="stylesheet" href="styles.css?build=studio-11.3" />
+  <link rel="stylesheet" href="forge-v2.css?build=studio-11.3" />
+  <link rel="stylesheet" href="forge-interview-v6.css?build=studio-11.3" />
+  <link rel="stylesheet" href="forge-starters-v7.css?build=studio-11.3" />
+  <link rel="stylesheet" href="forge-creatures-v8.css?build=studio-11.3" />
+  <link rel="stylesheet" href="forge-ability-v9.css?build=studio-11.3" />
+  <link rel="stylesheet" href="forge-expert-v10.css?build=studio-11.3" />
+  <link rel="stylesheet" href="design-studio-v11.css?build=studio-11.3" />
+  <title>Multiversal AIOC · Studio 11.3</title>
   <style>
-    #studioPermanentLauncher{position:fixed;right:14px;bottom:76px;z-index:2147483646;border:1px solid #c5a7ef;border-radius:999px;padding:13px 17px;background:#6f45aa;color:#fff;font:700 14px system-ui;box-shadow:0 8px 28px #0009;display:block!important;visibility:visible!important;opacity:1!important}
+    #studioPermanentLauncher,#balancePermanentLauncher{position:fixed;right:14px;z-index:2147483646;border:1px solid #c5a7ef;border-radius:999px;padding:13px 17px;color:#fff;font:700 14px system-ui;box-shadow:0 8px 28px #0009;display:block!important;visibility:visible!important;opacity:1!important}
+    #studioPermanentLauncher{bottom:76px;background:#6f45aa}#balancePermanentLauncher{bottom:20px;background:#356f8d;border-color:#9bd4ef}
   </style>
 </head>
-<body data-aioc-build="studio-11.2">
+<body data-aioc-build="studio-11.3">
   <div id="app"></div>
   <button id="studioPermanentLauncher" type="button">Design Studio</button>
+  <button id="balancePermanentLauncher" type="button">Balance Lab</button>
   <script>
     (function(){
-      const launcher=document.getElementById('studioPermanentLauncher');
-      launcher.addEventListener('click',function(){
-        try{
-          if(window.DesignStudio11&&typeof window.DesignStudio11.home==='function'){
-            window.DesignStudio11.home();
-          }else{
-            window.location.href='./studio.html';
-          }
-        }catch(error){
-          console.error('Design Studio launcher fallback:',error);
-          window.location.href='./studio.html';
-        }
-      });
+      const studio=document.getElementById('studioPermanentLauncher');
+      studio.addEventListener('click',function(){try{if(window.DesignStudio11&&typeof window.DesignStudio11.home==='function')window.DesignStudio11.home();else location.href='./studio.html'}catch(error){console.error(error);location.href='./studio.html'}});
+      document.getElementById('balancePermanentLauncher').addEventListener('click',()=>location.href='./balance.html');
       const params=new URLSearchParams(location.search);
-      if(params.get('openStudio')==='1'){
-        window.addEventListener('load',()=>setTimeout(()=>launcher.click(),400));
-      }
+      if(params.get('openStudio')==='1')window.addEventListener('load',()=>setTimeout(()=>studio.click(),400));
+      if(params.get('openBalance')==='1')location.href='./balance.html';
     })();
   </script>
-  <script src="multiversal-seed.js?build=studio-11.2"></script>
-  <script src="app.js?build=studio-11.2" defer></script>
-  <script src="forge-v2.js?build=studio-11.2" defer></script>
-  <script src="forge-interview-v6.js?build=studio-11.2" defer></script>
-  <script src="forge-starters-v7.js?build=studio-11.2" defer></script>
-  <script src="forge-creatures-v8.js?build=studio-11.2" defer></script>
-  <script src="forge-ability-v9.js?build=studio-11.2" defer></script>
-  <script src="forge-ability-v9-fix.js?build=studio-11.2" defer></script>
-  <script src="forge-expert-v10.js?build=studio-11.2" defer></script>
-  <script src="design-studio-v11.1.js?build=studio-11.2" defer></script>
+  <script src="multiversal-seed.js?build=studio-11.3"></script>
+  <script src="app.js?build=studio-11.3" defer></script>
+  <script src="forge-v2.js?build=studio-11.3" defer></script>
+  <script src="forge-interview-v6.js?build=studio-11.3" defer></script>
+  <script src="forge-starters-v7.js?build=studio-11.3" defer></script>
+  <script src="forge-creatures-v8.js?build=studio-11.3" defer></script>
+  <script src="forge-ability-v9.js?build=studio-11.3" defer></script>
+  <script src="forge-ability-v9-fix.js?build=studio-11.3" defer></script>
+  <script src="forge-expert-v10.js?build=studio-11.3" defer></script>
+  <script src="design-studio-v11.1.js?build=studio-11.3" defer></script>
   <script>
-    window.AIOC_BUILD = 'studio-11.2';
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker
-          .register('./sw.js?build=studio-11.2', { updateViaCache: 'none' })
-          .then(registration => registration.update())
-          .catch(error => console.error('Service worker registration failed:', error));
-      });
-    }
+    window.AIOC_BUILD='studio-11.3';
+    if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?build=studio-11.3',{updateViaCache:'none'}).then(r=>r.update()).catch(console.error));
   </script>
 </body>
 </html>
