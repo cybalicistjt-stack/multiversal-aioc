@@ -5,37 +5,62 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#13151c" />
   <meta name="description" content="Multiversal AI Operations Center and Design Studio." />
-  <meta name="aioc-build" content="studio-11.1" />
-  <link rel="manifest" href="manifest.webmanifest?build=studio-11.1" />
+  <meta name="aioc-build" content="studio-11.2" />
+  <link rel="manifest" href="manifest.webmanifest?build=studio-11.2" />
   <link rel="icon" href="./icon-192.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css?build=studio-11.1" />
-  <link rel="stylesheet" href="forge-v2.css?build=studio-11.1" />
-  <link rel="stylesheet" href="forge-interview-v6.css?build=studio-11.1" />
-  <link rel="stylesheet" href="forge-starters-v7.css?build=studio-11.1" />
-  <link rel="stylesheet" href="forge-creatures-v8.css?build=studio-11.1" />
-  <link rel="stylesheet" href="forge-ability-v9.css?build=studio-11.1" />
-  <link rel="stylesheet" href="forge-expert-v10.css?build=studio-11.1" />
-  <link rel="stylesheet" href="design-studio-v11.css?build=studio-11.1" />
-  <title>Multiversal AIOC · Design Studio 11.1</title>
+  <link rel="stylesheet" href="styles.css?build=studio-11.2" />
+  <link rel="stylesheet" href="forge-v2.css?build=studio-11.2" />
+  <link rel="stylesheet" href="forge-interview-v6.css?build=studio-11.2" />
+  <link rel="stylesheet" href="forge-starters-v7.css?build=studio-11.2" />
+  <link rel="stylesheet" href="forge-creatures-v8.css?build=studio-11.2" />
+  <link rel="stylesheet" href="forge-ability-v9.css?build=studio-11.2" />
+  <link rel="stylesheet" href="forge-expert-v10.css?build=studio-11.2" />
+  <link rel="stylesheet" href="design-studio-v11.css?build=studio-11.2" />
+  <title>Multiversal AIOC · Design Studio 11.2</title>
+  <style>
+    #studioPermanentLauncher{position:fixed;right:14px;bottom:76px;z-index:2147483646;border:1px solid #c5a7ef;border-radius:999px;padding:13px 17px;background:#6f45aa;color:#fff;font:700 14px system-ui;box-shadow:0 8px 28px #0009;display:block!important;visibility:visible!important;opacity:1!important}
+  </style>
 </head>
-<body data-aioc-build="studio-11.1">
+<body data-aioc-build="studio-11.2">
   <div id="app"></div>
-  <script src="multiversal-seed.js?build=studio-11.1"></script>
-  <script src="app.js?build=studio-11.1" defer></script>
-  <script src="forge-v2.js?build=studio-11.1" defer></script>
-  <script src="forge-interview-v6.js?build=studio-11.1" defer></script>
-  <script src="forge-starters-v7.js?build=studio-11.1" defer></script>
-  <script src="forge-creatures-v8.js?build=studio-11.1" defer></script>
-  <script src="forge-ability-v9.js?build=studio-11.1" defer></script>
-  <script src="forge-ability-v9-fix.js?build=studio-11.1" defer></script>
-  <script src="forge-expert-v10.js?build=studio-11.1" defer></script>
-  <script src="design-studio-v11.1.js?build=studio-11.1" defer></script>
+  <button id="studioPermanentLauncher" type="button">Design Studio</button>
   <script>
-    window.AIOC_BUILD = 'studio-11.1';
+    (function(){
+      const launcher=document.getElementById('studioPermanentLauncher');
+      launcher.addEventListener('click',function(){
+        try{
+          if(window.DesignStudio11&&typeof window.DesignStudio11.home==='function'){
+            window.DesignStudio11.home();
+          }else{
+            window.location.href='./studio.html';
+          }
+        }catch(error){
+          console.error('Design Studio launcher fallback:',error);
+          window.location.href='./studio.html';
+        }
+      });
+      const params=new URLSearchParams(location.search);
+      if(params.get('openStudio')==='1'){
+        window.addEventListener('load',()=>setTimeout(()=>launcher.click(),400));
+      }
+    })();
+  </script>
+  <script src="multiversal-seed.js?build=studio-11.2"></script>
+  <script src="app.js?build=studio-11.2" defer></script>
+  <script src="forge-v2.js?build=studio-11.2" defer></script>
+  <script src="forge-interview-v6.js?build=studio-11.2" defer></script>
+  <script src="forge-starters-v7.js?build=studio-11.2" defer></script>
+  <script src="forge-creatures-v8.js?build=studio-11.2" defer></script>
+  <script src="forge-ability-v9.js?build=studio-11.2" defer></script>
+  <script src="forge-ability-v9-fix.js?build=studio-11.2" defer></script>
+  <script src="forge-expert-v10.js?build=studio-11.2" defer></script>
+  <script src="design-studio-v11.1.js?build=studio-11.2" defer></script>
+  <script>
+    window.AIOC_BUILD = 'studio-11.2';
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker
-          .register('./sw.js?build=studio-11.1', { updateViaCache: 'none' })
+          .register('./sw.js?build=studio-11.2', { updateViaCache: 'none' })
           .then(registration => registration.update())
           .catch(error => console.error('Service worker registration failed:', error));
       });
