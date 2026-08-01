@@ -1,0 +1,41 @@
+name: Build Content Database
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-content-database
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Generate repository content database
+        run: node scripts/build-content-database.mjs
+      - name: Validate generated database
+        run: |
+          node -e "const fs=require('fs'); const x=JSON.parse(fs.readFileSync('content-db/index.json')); if(x.recordCount<1000||x.records.length!==x.recordCount) process.exit(1); console.log(x.recordCount+' records validated')"
+      - name: Commit generated database
+        run: |
+          if git diff --quiet -- content-db; then
+            echo 'Content database is already current.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add content-db
+          git commit -m 'Generate repository content database'
+          git push
