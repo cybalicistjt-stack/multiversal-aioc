@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#05030a">
+  <title>Multiversal AIOC v2 — Audit Corpus Status</title>
+  <link rel="stylesheet" href="./app.css?build=4.0.0">
+</head>
+<body data-build="4.0.0-four-archive-audit">
+<div id="app">
+  <aside class="sidebar">
+    <div class="brand"><span>MULTIVERSAL</span><small>Audit Corpus</small></div>
+    <nav>
+      <button class="active">Corpus Status</button>
+      <a class="button-label" href="./audit-batches.html">Batch Control</a>
+      <a class="button-label" href="./forensic-audit.html">Review Operations</a>
+      <a class="button-label" href="./canonical-audit.html">Canonical Audit</a>
+      <a class="button-label" href="./">Developer Dashboard</a>
+    </nav>
+  </aside>
+  <main class="shell">
+    <header class="topbar">
+      <button id="menuBtn" class="icon-btn">☰</button>
+      <div><h1>Forensic Corpus Status</h1><p>Four authoritative archives, extraction coverage, reconciliation, and review state</p></div>
+      <div class="top-actions">
+        <label class="button-label">Import audit outputs<input id="statusImport" type="file" accept="application/json" multiple hidden></label>
+        <button id="exportStatus">Export status bundle</button>
+      </div>
+    </header>
+    <section id="statusView" class="view"><section class="panel">Loading corpus definition…</section></section>
+  </main>
+</div>
+<script type="module" src="./audit-status.js?build=4.0.0"></script>
+</body>
+</html>
