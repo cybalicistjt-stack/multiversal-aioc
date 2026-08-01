@@ -1,0 +1,60 @@
+{
+  "format": "multiversal-forensic-audit-corpus-manifest",
+  "version": "1.0.0",
+  "authoritativeSources": [
+    {
+      "id": "fullmv062926",
+      "kind": "pdf",
+      "name": "fullmv062926.pdf",
+      "authority": "legacy-prose-canon",
+      "scanPolicy": "every-page-every-section",
+      "notes": [
+        "Rules and game objects may appear in prose, examples, sidebars, tables, adventures, lore, and unrelated sections.",
+        "Chapter headings must not be used as the sole basis for extraction.",
+        "Embedded CSV-like blocks must be extracted as both table evidence and surrounding prose evidence."
+      ]
+    }
+  ],
+  "supplementalSources": [
+    {
+      "id": "aaaa-csv",
+      "kind": "csv-tree",
+      "name": "aaaa source CSV tables",
+      "authority": "supplemental-structured-evidence",
+      "scanPolicy": "all-csv-files-all-rows",
+      "notes": [
+        "Rows may duplicate, extend, or conflict with PDF material.",
+        "CSV-only rows must remain visible as candidate content.",
+        "No CSV row is canonical merely because it is structured."
+      ]
+    }
+  ],
+  "contentFamilies": [
+    "rule","subsystem","procedure","formula","table","example-mechanic","ability","ability-tree","action","effect","condition","resource","spell","creature","npc","species","culture","profession","item","weapon","armor","technology","vehicle","ship","mecha","world","location","environment","hazard","trap","faction","organization","religion","language","currency","business","recipe","adventure","quest","encounter","clue","lore-reference"
+  ],
+  "evidenceStates": ["source-discovered","machine-extracted","canonical-match-suggested","human-reviewed","verified","rejected"],
+  "reviewOutcomes": ["existing-complete","existing-partial","new-object","duplicate","alias","conflict","reference-only","not-game-content","deferred"],
+  "initialVerifiedPatterns": [
+    {
+      "id": "pattern-goblin-npc-csv",
+      "source": "fullmv062926.pdf",
+      "family": "npc",
+      "pattern": "CSV header NPC,HP,AC,Speed,Attack,Damage,Special Traits/Abilities embedded after Goblin setting prose",
+      "risk": "table rows can be missed when scanning only headings"
+    },
+    {
+      "id": "pattern-ability-tree-prose",
+      "source": "fullmv062926.pdf",
+      "family": "ability-tree",
+      "pattern": "tiered ability trees with prerequisites, actions, reactions, passives, XP expansions, DCs, ranges, and usage limits",
+      "risk": "each tree contains multiple object layers"
+    },
+    {
+      "id": "pattern-adventure-hook-table",
+      "source": "fullmv062926.pdf",
+      "family": "adventure",
+      "pattern": "numbered random encounter and adventure-hook tables embedded in environment descriptions",
+      "risk": "rows may be reusable encounters, hooks, hazards, creatures, locations, and items simultaneously"
+    }
+  ]
+}
