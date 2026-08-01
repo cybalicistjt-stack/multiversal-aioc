@@ -22,6 +22,14 @@ COMPACT_FILES = (
     "candidate-matches.json",
     "audit-summary.json",
 )
+REFINED_FILES = (
+    "refinement-summary.json",
+    "likely-existing.json",
+    "possible-existing.json",
+    "likely-new.json",
+    "ambiguous.json",
+)
+MAX_QUEUE_ROWS = 250
 
 
 def read_json(path: Path):
@@ -29,6 +37,16 @@ def read_json(path: Path):
         return json.loads(path.read_text(encoding="utf-8"))
     except Exception:
         return None
+
+
+def write_bounded(src: Path, dst: Path) -> bool:
+    payload = read_json(src)
+    if payload is None:
+        return False
+    if isinstance(payload, list):
+        payload = payload[:MAX_QUEUE_ROWS]
+    dst.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return True
 
 
 def main() -> None:
@@ -46,12 +64,20 @@ def main() -> None:
             shutil.copy2(src, args.destination / name)
             published.append(name)
 
+    refined_source = args.source / "refined"
+    refined_destination = args.destination / "refined"
+    refined_destination.mkdir(parents=True, exist_ok=True)
+    for name in REFINED_FILES:
+        if write_bounded(refined_source / name, refined_destination / name):
+            published.append(f"refined/{name}")
+
     status = read_json(args.source / "corpus-status.json") or {}
     reconciliation = read_json(args.source / "reconciliation-report.json") or {}
     inventory = read_json(args.source / "archive-inventory.json") or {}
+    refinement = read_json(refined_source / "refinement-summary.json") or {}
     manifest = {
         "format": "multiversal-static-audit-publication",
-        "version": "1.0.0",
+        "version": "1.1.0",
         "publishedAt": datetime.now(timezone.utc).isoformat(),
         "sourceCommit": args.source_sha,
         "publishedFiles": published,
@@ -62,8 +88,11 @@ def main() -> None:
             "totalPages": status.get("totalPages", 0),
             "completedPages": status.get("completedPages", 0),
             "findingCount": status.get("findingCount", reconciliation.get("findingCount", 0)),
-            "unresolvedCount": status.get("unresolvedCount", reconciliation.get("unresolvedCount", 0)),
-            "machineScanComplete": bool(status.get("machineScanComplete")),
+            "rawFindingCount": refinement.get("rawFindingCount", 0),
+            "reviewCandidateCount": refinement.get("reviewCandidateCount", 0),
+            "suppressedCount": refinement.get("suppressedCount", 0),
+            "queueCounts": refinement.get("queueCounts", {}),
+            "machineScanComplete": bool(status.get("automaticAuditComplete") or status.get("machineScanComplete")),
             "humanReviewComplete": bool(status.get("humanReviewComplete")),
             "canonicalPromotionComplete": bool(status.get("canonicalPromotionComplete")),
         },
