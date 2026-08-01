@@ -1,18 +1,67 @@
 (()=>{'use strict';
-const DB_NAME='multiversal-content-db';const DB_VERSION=1;const STORE='records';const META='meta';const SOURCE_VERSION='phase1-7-8E008G-v2';
-const PARTS=[0,1,2,3,4].map(i=>`./catalog-seed-parts/phase1-7.${String(i).padStart(2,'0')}.txt`);
-const STAGE={CANONICAL_ID_PRESENT:'Schema review',ALIAS_RESOLVES:'Partial conversion',PLAYTEST_INVENTORY_ONLY:'Source identified'};
-function open(){return new Promise((resolve,reject)=>{const q=indexedDB.open(DB_NAME,DB_VERSION);q.onupgradeneeded=()=>{const db=q.result;if(!db.objectStoreNames.contains(STORE)){const s=db.createObjectStore(STORE,{keyPath:'catalogId'});s.createIndex('contentType','contentType');s.createIndex('stage','stage');s.createIndex('source','source')}if(!db.objectStoreNames.contains(META))db.createObjectStore(META,{keyPath:'key'})};q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error)})}
-function tx(db,store,mode='readonly'){return db.transaction(store,mode).objectStore(store)}
-function req(r){return new Promise((resolve,reject)=>{r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
-async function metaGet(db,key){return req(tx(db,META).get(key))}async function metaPut(db,value){return req(tx(db,META,'readwrite').put(value))}
-async function getAll(){const db=await open();return req(tx(db,STORE).getAll())}
-async function count(){const db=await open();return req(tx(db,STORE).count())}
-async function clear(){const db=await open();await req(tx(db,STORE,'readwrite').clear());await req(tx(db,META,'readwrite').clear())}
-function cleanBase64(s){let c=String(s||'').replace(/[^A-Za-z0-9+/=]/g,'').replace(/=+(?=.)/g,'');c=c.replace(/=+$/,'');return c+'='.repeat((4-c.length%4)%4)}
-async function decodeArchive(){const chunks=[];for(const url of PARTS){const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error(`Missing source archive part: ${url}`);chunks.push(await r.text())}const clean=cleanBase64(chunks.join(''));let binary;try{binary=atob(clean)}catch(e){throw new Error(`Phase 1–7 archive Base64 is invalid after cleanup (${clean.length} characters).`)}const bytes=Uint8Array.from(binary,c=>c.charCodeAt(0));if(!('DecompressionStream'in window))throw new Error('This Chrome version cannot decompress the inventory archive.');let text;try{text=await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text()}catch(e){throw new Error('The Phase 1–7 archive could not be decompressed.')}let payload;try{payload=JSON.parse(text)}catch(e){throw new Error('The decompressed Phase 1–7 inventory is not valid JSON.')}if(!Array.isArray(payload.records)||payload.records.length<1000)throw new Error(`Inventory validation failed: expected at least 1,000 records, received ${payload.records?.length||0}.`);return payload}
-function expand(x){return {catalogId:x.c,inventoryId:x.c,refId:x.r||'',name:x.n||x.r||'Unnamed inventory record',contentType:x.t||'Unclassified',stage:STAGE[x.v]||x.g||'Source identified',source:x.s||'Multiversal Phase 1–7 conversion inventory',sourceLocator:x.l||'',tags:['phase-1-7',String(x.v||'').toLowerCase(),String(x.p||'').toLowerCase()].filter(Boolean),notes:`Coverage: ${x.v||'unknown'}. Promotion: ${x.p||'unknown'}. Review: ${x.w||'unreviewed'}.`,coverageStatus:x.v||'',promotionDecision:x.p||'',reviewStatus:x.w||'',expectedOnly:false,databaseSource:'phase1-7',databaseVersion:SOURCE_VERSION}}
-async function install({force=false,onProgress}={}){const db=await open();const installed=await metaGet(db,'sourceVersion');const existing=await req(tx(db,STORE).count());if(!force&&installed?.value===SOURCE_VERSION&&existing>1000)return {count:existing,reused:true};onProgress?.('Downloading Phase 1–7 inventory…');const payload=await decodeArchive();onProgress?.(`Writing ${payload.records.length.toLocaleString()} records to the content database…`);await req(tx(db,STORE,'readwrite').clear());const transaction=db.transaction(STORE,'readwrite'),store=transaction.objectStore(STORE);payload.records.map(expand).forEach(r=>store.put(r));await new Promise((resolve,reject)=>{transaction.oncomplete=resolve;transaction.onerror=()=>reject(transaction.error);transaction.onabort=()=>reject(transaction.error)});await metaPut(db,{key:'sourceVersion',value:SOURCE_VERSION,installedAt:new Date().toISOString(),count:payload.records.length,summary:payload.summary||{}});return {count:payload.records.length,reused:false,summary:payload.summary}}
-async function status(){const db=await open();const m=await metaGet(db,'sourceVersion');return {installed:!!m,count:await req(tx(db,STORE).count()),meta:m||null}}
-window.MultiversalContentDB={open,getAll,count,clear,install,status,SOURCE_VERSION};
+const INDEX_URL='./content-db/index.json';
+const MANIFEST_URL='./content-db/manifest.json';
+const SOURCE_VERSION='repository-content-db-v1';
+let cache=null;
+
+async function fetchJson(url){
+  const response=await fetch(`${url}?v=${Date.now()}`,{cache:'no-store'});
+  if(!response.ok)throw new Error(`Repository content database is not available yet (${response.status} ${response.statusText}).`);
+  try{return await response.json()}catch{throw new Error(`Repository content database file is not valid JSON: ${url}`)}
+}
+
+function normalize(record,index){
+  return {
+    catalogId:record.databaseId||record.catalogId||`content-${index+1}`,
+    inventoryId:record.provenance?.inventoryId||record.inventoryId||record.databaseId||'',
+    refId:record.stableId||record.refId||'',
+    name:record.name||record.stableId||`Unnamed content record ${index+1}`,
+    contentType:record.objectType||record.contentType||'Unclassified',
+    stage:record.developmentStage||record.stage||'Source identified',
+    source:record.source||record.provenance?.authority||'Multiversal repository content database',
+    sourceLocator:record.sourceLocator||'',
+    tags:Array.isArray(record.tags)?record.tags:[],
+    notes:record.notes||'',
+    coverageStatus:record.coverageStatus||'',
+    promotionDecision:record.promotionDecision||'',
+    reviewStatus:record.reviewStatus||'',
+    expectedOnly:false,
+    databaseSource:'repository',
+    databaseVersion:SOURCE_VERSION,
+    packIds:Array.isArray(record.packIds)?record.packIds:[],
+    dependencies:Array.isArray(record.dependencies)?record.dependencies:[],
+    provenance:record.provenance||{}
+  };
+}
+
+async function load({force=false,onProgress}={}){
+  if(cache&&!force)return cache;
+  onProgress?.('Loading repository content database…');
+  const [manifest,index]=await Promise.all([fetchJson(MANIFEST_URL),fetchJson(INDEX_URL)]);
+  if(index.format!=='multiversal-content-database')throw new Error('The repository index has an unsupported format.');
+  if(!Array.isArray(index.records)||index.records.length<1000)throw new Error(`Repository database validation failed: ${index.records?.length||0} records found.`);
+  if(Number(index.recordCount)!==index.records.length)throw new Error('Repository database record count does not match its index.');
+  cache={
+    manifest,
+    index,
+    records:index.records.map(normalize),
+    count:index.records.length,
+    summary:index.summary||{},
+    databaseVersion:index.databaseVersion||manifest.databaseVersion||'unknown',
+    generatedAt:index.generatedAt||manifest.generatedAt||null
+  };
+  onProgress?.(`Loaded ${cache.count.toLocaleString()} repository records.`);
+  return cache;
+}
+
+async function getAll(options){return (await load(options)).records}
+async function count(){return (await load()).count}
+async function status(){
+  try{const db=await load();return{installed:true,count:db.count,meta:{databaseVersion:db.databaseVersion,generatedAt:db.generatedAt,summary:db.summary}}}
+  catch(error){return{installed:false,count:0,error:String(error.message||error),meta:null}}
+}
+function clear(){cache=null;return Promise.resolve()}
+async function exportDatabase(){return load()}
+
+window.MultiversalContentDB={load,getAll,count,status,clear,exportDatabase,SOURCE_VERSION,INDEX_URL,MANIFEST_URL};
 })();
