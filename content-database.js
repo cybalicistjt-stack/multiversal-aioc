@@ -1,28 +1,84 @@
 (()=>{'use strict';
 const INDEX_URL='./content-db/index.json';
 const MANIFEST_URL='./content-db/manifest.json';
-const PARTS=[0,1,2,3,4].map(i=>`./catalog-seed-parts/phase1-7.${String(i).padStart(2,'0')}.txt`);
-const SOURCE_VERSION='repository-content-db-v4';
-const LOAD_TIMEOUT_MS=15000;
-const STAGE={CANONICAL_ID_PRESENT:'Schema review',ALIAS_RESOLVES:'Partial conversion',PLAYTEST_INVENTORY_ONLY:'Source identified'};
+const SOURCE_REGISTRY_URL='./content-db/source-registry.json';
+const RECORD_SCHEMA_URL='./content-db/content-record.schema.json';
+const SOURCE_VERSION='canonical-content-db-v1';
+const LOAD_TIMEOUT_MS=20000;
 let cache=null;
 
-function timeoutPromise(ms,label){return new Promise((_,reject)=>setTimeout(()=>reject(new Error(`${label} timed out after ${Math.round(ms/1000)} seconds.`)),ms))}
-async function fetchText(url){const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),LOAD_TIMEOUT_MS);try{const response=await fetch(`${url}?v=${Date.now()}`,{cache:'no-store',signal:controller.signal});if(!response.ok)throw new Error(`${url} returned ${response.status}`);return await response.text()}catch(error){if(error?.name==='AbortError')throw new Error(`${url} did not respond within ${Math.round(LOAD_TIMEOUT_MS/1000)} seconds.`);throw error}finally{clearTimeout(timer)}}
-async function fetchJson(url){return JSON.parse(await fetchText(url))}
-function normalize(record,index){return{catalogId:record.databaseId||record.catalogId||`content-${index+1}`,inventoryId:record.provenance?.inventoryId||record.inventoryId||record.databaseId||'',refId:record.stableId||record.refId||'',name:record.name||record.stableId||`Unnamed content record ${index+1}`,contentType:record.objectType||record.contentType||'Unclassified',stage:record.developmentStage||record.stage||'Source identified',source:record.source||record.provenance?.authority||'Multiversal repository content database',sourceLocator:record.sourceLocator||'',tags:Array.isArray(record.tags)?record.tags:[],notes:record.notes||'',coverageStatus:record.coverageStatus||'',promotionDecision:record.promotionDecision||'',reviewStatus:record.reviewStatus||'',expectedOnly:false,databaseSource:record.databaseSource||'repository',databaseVersion:record.databaseVersion||SOURCE_VERSION,packIds:Array.isArray(record.packIds)?record.packIds:[],dependencies:Array.isArray(record.dependencies)?record.dependencies:[],provenance:record.provenance||{}}}
-function clean64(value){return String(value||'').replace(/[^A-Za-z0-9+/=]/g,'').replace(/=+$/,'')}
-function decode64(input){const alphabet='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';const clean=clean64(input);if(!clean)throw new Error('A source fragment was empty.');const out=[];let buffer=0,bits=0;for(const ch of clean){const value=alphabet.indexOf(ch);if(value<0)continue;buffer=(buffer<<6)|value;bits+=6;while(bits>=8){bits-=8;out.push((buffer>>bits)&255);buffer&=(1<<bits)-1}}return Uint8Array.from(out)}
-function isGzip(bytes){return bytes?.length>2&&bytes[0]===0x1f&&bytes[1]===0x8b}
-function base64Text(bytes){const text=new TextDecoder().decode(bytes).replace(/\s/g,'');return text.length>100&&/^[A-Za-z0-9+/=]+$/.test(text)?text:null}
-async function gunzip(bytes){if(!('DecompressionStream'in window))throw new Error('This Chrome version does not support gzip decompression.');const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));return await Promise.race([new Response(stream).text(),timeoutPromise(LOAD_TIMEOUT_MS,'Inventory decompression')])}
-function expand(x,index){const coverage=x.v||'';return normalize({databaseId:x.c||`phase17-${index+1}`,stableId:x.r||'',name:x.n||x.r||`Unnamed inventory record ${index+1}`,objectType:x.t||'Unclassified',developmentStage:STAGE[coverage]||x.g||'Source identified',source:x.s||'Multiversal 8E-008G Foundational Inventory Coverage',sourceLocator:x.l||'',coverageStatus:coverage,promotionDecision:x.p||'',reviewStatus:x.w||'',tags:['phase-1-7',coverage.toLowerCase(),String(x.p||'').toLowerCase()].filter(Boolean),databaseSource:'verified-source-fallback',provenance:{authority:'Multiversal 8E-008G Foundational Inventory Coverage',phaseRange:'1-7',inventoryId:x.c||''}},index)}
-async function loadFallback(onProgress){onProgress?.('Repository index is absent; reading five verified source fragments…');const encodedParts=[];for(let i=0;i<PARTS.length;i++){onProgress?.(`Reading source fragment ${i+1} of ${PARTS.length}…`);encodedParts.push(await fetchText(PARTS[i]))}
-onProgress?.('Decoding source fragments…');const innerText=encodedParts.map((part,i)=>{const bytes=decode64(part);const text=base64Text(bytes);if(!text)throw new Error(`Source fragment ${i+1} did not decode to Base64 text.`);return text}).join('');
-let bytes=decode64(innerText);for(let layer=0;layer<4&&!isGzip(bytes);layer++){const text=base64Text(bytes);if(!text)throw new Error(`Nested source layer ${layer+1} is invalid.`);bytes=decode64(text)}if(!isGzip(bytes))throw new Error('The verified inventory did not resolve to gzip data.');
-onProgress?.('Decompressing Phase 1–7 inventory…');const payload=JSON.parse(await gunzip(bytes));if(!Array.isArray(payload.records)||payload.records.length<1000)throw new Error(`Recovered inventory is invalid: ${payload.records?.length||0} records.`);const records=payload.records.map(expand);return{manifest:null,index:payload,records,count:records.length,summary:payload.summary||{},databaseVersion:'verified-source-fallback-1',generatedAt:null,fallback:true}}
-async function load({force=false,onProgress}={}){if(cache&&!force)return cache;try{onProgress?.('Loading generated repository content index…');const [manifest,index]=await Promise.race([Promise.all([fetchJson(MANIFEST_URL),fetchJson(INDEX_URL)]),timeoutPromise(LOAD_TIMEOUT_MS,'Repository database request')]);if(index.format!=='multiversal-content-database')throw new Error('Unsupported repository database format.');if(!Array.isArray(index.records)||index.records.length<1000)throw new Error(`Repository database validation failed: ${index.records?.length||0} records.`);const records=index.records.map(normalize);cache={manifest,index,records,count:records.length,summary:index.summary||{},databaseVersion:index.databaseVersion||manifest?.databaseVersion||'unknown',generatedAt:index.generatedAt||manifest?.generatedAt||null,fallback:false};}catch(repositoryError){onProgress?.(`Generated index unavailable (${repositoryError.message}). Using verified source fallback…`);cache=await Promise.race([loadFallback(onProgress),timeoutPromise(45000,'Verified inventory fallback')]);}
-onProgress?.(`Loaded ${cache.count.toLocaleString()} content records.`);return cache}
-async function getAll(options){return(await load(options)).records}async function count(){return(await load()).count}async function status(){try{const db=await load();return{installed:true,count:db.count,meta:{databaseVersion:db.databaseVersion,generatedAt:db.generatedAt,summary:db.summary,fallback:db.fallback}}}catch(error){return{installed:false,count:0,error:String(error.message||error),meta:null}}}function clear(){cache=null;return Promise.resolve()}async function exportDatabase(){return load()}
-window.MultiversalContentDB={load,getAll,count,status,clear,exportDatabase,SOURCE_VERSION,INDEX_URL,MANIFEST_URL,LOAD_TIMEOUT_MS};
+async function fetchJson(url){
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(),LOAD_TIMEOUT_MS);
+  try{
+    const response=await fetch(`${url}?v=${Date.now()}`,{cache:'no-store',signal:controller.signal});
+    if(!response.ok)throw new Error(`${url} returned ${response.status}`);
+    return await response.json();
+  }catch(error){
+    if(error?.name==='AbortError')throw new Error(`${url} did not respond within ${LOAD_TIMEOUT_MS/1000} seconds.`);
+    throw error;
+  }finally{clearTimeout(timer)}
+}
+
+function normalize(record,index){
+  return {
+    catalogId:record.databaseId||record.catalogId||`content-${index+1}`,
+    inventoryId:record.provenance?.inventoryId||record.inventoryId||record.databaseId||'',
+    refId:record.stableId||record.refId||'',
+    name:record.name||record.stableId||`Unnamed content record ${index+1}`,
+    contentType:record.objectType||record.contentType||'Unclassified',
+    stage:record.developmentStage||record.stage||'Source identified',
+    source:record.source||record.provenance?.authority||'Multiversal canonical content database',
+    sourceLocator:record.sourceLocator||'',
+    tags:Array.isArray(record.tags)?record.tags:[],
+    notes:record.notes||'',
+    coverageStatus:record.coverageStatus||'',
+    promotionDecision:record.promotionDecision||'',
+    reviewStatus:record.reviewStatus||'',
+    expectedOnly:false,
+    databaseSource:'repository',
+    databaseVersion:record.databaseVersion||SOURCE_VERSION,
+    packIds:Array.isArray(record.packIds)?record.packIds:[],
+    dependencies:Array.isArray(record.dependencies)?record.dependencies:[],
+    provenance:record.provenance||{},
+    manualEntry:record.manualEntry||null,
+    gameObject:record.gameObject||null,
+    validation:record.validation||null,
+    balance:record.balance||null,
+    testing:record.testing||null
+  };
+}
+
+async function load({force=false,onProgress}={}){
+  if(cache&&!force)return cache;
+  onProgress?.('Loading generated canonical content database…');
+  const [manifest,index,sourceRegistry,recordSchema]=await Promise.all([
+    fetchJson(MANIFEST_URL),
+    fetchJson(INDEX_URL),
+    fetchJson(SOURCE_REGISTRY_URL),
+    fetchJson(RECORD_SCHEMA_URL)
+  ]);
+  if(index.format!=='multiversal-content-database')throw new Error('Unsupported content database format.');
+  if(!Array.isArray(index.records))throw new Error('Content database records are missing.');
+  if(index.recordCount!==index.records.length)throw new Error('Content database record count does not match its manifest.');
+  if(index.records.length<1000)throw new Error(`Content database is incomplete: ${index.records.length} records found.`);
+  const records=index.records.map(normalize);
+  cache={
+    manifest,index,sourceRegistry,recordSchema,records,
+    count:records.length,
+    summary:index.summary||{},
+    databaseVersion:index.databaseVersion||manifest.databaseVersion||'unknown',
+    generatedAt:index.generatedAt||manifest.generatedAt||null,
+    fallback:false
+  };
+  onProgress?.(`Loaded ${cache.count.toLocaleString()} canonical content records.`);
+  return cache;
+}
+
+async function getAll(options){return(await load(options)).records}
+async function count(){return(await load()).count}
+async function status(){try{const db=await load();return{installed:true,count:db.count,meta:{databaseVersion:db.databaseVersion,generatedAt:db.generatedAt,summary:db.summary,fallback:false}}}catch(error){return{installed:false,count:0,error:String(error.message||error),meta:null}}}
+function clear(){cache=null;return Promise.resolve()}
+async function exportDatabase(){return load()}
+window.MultiversalContentDB={load,getAll,count,status,clear,exportDatabase,SOURCE_VERSION,INDEX_URL,MANIFEST_URL,SOURCE_REGISTRY_URL,RECORD_SCHEMA_URL,LOAD_TIMEOUT_MS};
 })();
