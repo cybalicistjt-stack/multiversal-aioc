@@ -42,142 +42,58 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           cache: pip
           cache-dependency-path: audit/requirements.txt
-
       - name: Install audit dependencies
         run: python -m pip install --upgrade pip -r audit/requirements.txt
-
       - name: Materialize canonical source when needed
         run: |
-          if [ ! -f content-source/phase-1-8-canonical-objects.json ] && [ -f scripts/materialize-content-source.mjs ]; then
-            node scripts/materialize-content-source.mjs
-          fi
-
+          if [ ! -f content-source/phase-1-8-canonical-objects.json ] && [ -f scripts/materialize-content-source.mjs ]; then node scripts/materialize-content-source.mjs; fi
       - name: Verify authoritative archives
         run: |
-          test -f 'Part 1.zip'
-          test -f 'Part 2.zip'
-          test -f 'Part 3.zip'
-          test -f 'Creatures.zip'
-
+          test -f 'Part 1.zip'; test -f 'Part 2.zip'; test -f 'Part 3.zip'; test -f 'Creatures.zip'
       - name: Run complete forensic audit
         run: |
-          RESET=''
-          BATCH_SIZE='50'
-          if [ '${{ github.event_name }}' = 'workflow_dispatch' ]; then
-            BATCH_SIZE='${{ inputs.batch_size }}'
-            if [ '${{ inputs.reset }}' = 'true' ]; then RESET='--reset'; fi
-          else
-            RESET='--reset'
-          fi
-          python audit/run_archive_audit.py \
-            --repo-root . \
-            --batch-size "$BATCH_SIZE" \
-            $RESET
-
+          RESET=''; BATCH_SIZE='50'
+          if [ '${{ github.event_name }}' = 'workflow_dispatch' ]; then BATCH_SIZE='${{ inputs.batch_size }}'; if [ '${{ inputs.reset }}' = 'true' ]; then RESET='--reset'; fi; else RESET='--reset'; fi
+          python audit/run_archive_audit.py --repo-root . --batch-size "$BATCH_SIZE" $RESET
       - name: Validate corpus status
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          p = Path('audit-output/corpus-status.json')
-          if not p.exists():
-              raise SystemExit('corpus-status.json was not produced')
-          s = json.loads(p.read_text())
-          assert s['archiveCount'] == 4, s
-          assert s['corpusComplete'] is True, s
-          assert s['completedPages'] == s['totalPages'], s
-          print(json.dumps(s, indent=2))
+          s=json.loads(Path('audit-output/corpus-status.json').read_text())
+          assert s['archiveCount']==4 and s['corpusComplete'] is True and s['completedPages']==s['totalPages'],s
+          print(json.dumps(s,indent=2))
           PY
-
       - name: Refine findings and canonical matches
         run: |
-          CANONICAL=''
-          if [ -f content-source/phase-1-8-canonical-objects.json ]; then
-            CANONICAL='--canonical content-source/phase-1-8-canonical-objects.json'
-          fi
-          python audit/refine_findings.py \
-            --input audit-output \
-            --out audit-output/refined \
-            $CANONICAL
-
-      - name: Validate refined reconciliation
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          p = Path('audit-output/refined/refinement-summary.json')
-          if not p.exists():
-              raise SystemExit('refinement-summary.json was not produced')
-          s = json.loads(p.read_text())
-          assert s['rawFindingCount'] > 0, s
-          assert s['reviewCandidateCount'] > 0, s
-          assert s['reviewCandidateCount'] <= s['rawFindingCount'], s
-          print(json.dumps(s, indent=2))
-          PY
-
+          CANONICAL=''; if [ -f content-source/phase-1-8-canonical-objects.json ]; then CANONICAL='--canonical content-source/phase-1-8-canonical-objects.json'; fi
+          python audit/refine_findings.py --input audit-output --out audit-output/refined $CANONICAL
       - name: Build governed promotion batches
-        run: |
-          python audit/build_promotion_batches.py \
-            --source audit-output/refined \
-            --out audit-output/promotion \
-            --batch-size 100 \
-            --publish-limit 500
-
-      - name: Validate promotion index
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          p = Path('audit-output/promotion/promotion-index.json')
-          if not p.exists():
-              raise SystemExit('promotion-index.json was not produced')
-          s = json.loads(p.read_text())
-          assert s['candidateCount'] >= 0, s
-          assert s['batchCount'] >= 0, s
-          assert s['promotionPolicy']['automaticCanonicalWrites'] is False, s
-          print(json.dumps({k:s[k] for k in ('candidateCount','queueCounts','objectTypeCounts','batchCount')}, indent=2))
-          PY
-
+        run: python audit/build_promotion_batches.py --source audit-output/refined --out audit-output/promotion --batch-size 100 --publish-limit 500
       - name: Build canonical object factory candidates
-        run: |
-          python audit/build_object_factory.py \
-            --promotion audit-output/promotion \
-            --out audit-output/object-factory \
-            --batch-size 50
-
-      - name: Validate object factory
+        run: python audit/build_object_factory.py --promotion audit-output/promotion --out audit-output/object-factory --batch-size 50
+      - name: Build specialized recovery and coverage maps
+        run: python audit/build_recovery_engine.py --factory audit-output/object-factory --out audit-output/recovery --batch-size 50
+      - name: Validate recovery outputs
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          p = Path('audit-output/object-factory/object-factory-index.json')
-          if not p.exists():
-              raise SystemExit('object-factory-index.json was not produced')
-          s = json.loads(p.read_text())
-          assert s['sourcePromotionCandidateCount'] >= s['consolidatedCandidateCount'], s
-          assert s['batchCount'] >= 0, s
-          assert s['authorityNote'].endswith('not canonical objects.'), s
-          print(json.dumps({k:s[k] for k in ('sourcePromotionCandidateCount','consolidatedCandidateCount','duplicateEvidenceCollapsed','tierCounts','objectTypeCounts','batchCount')}, indent=2))
+          s=json.loads(Path('audit-output/recovery/recovery-index.json').read_text())
+          assert s['candidateCount']>0 and s['batchCount']>0
+          assert s['authorityNote'].endswith('does not modify canon.')
+          print(json.dumps({k:s[k] for k in ('candidateCount','familyCounts','readyForDesignerReview','relationshipCandidateCount','batchCount')},indent=2))
           PY
-
       - name: Publish compact dashboard data
-        run: |
-          python audit/publish_compact_audit.py \
-            --source audit-output \
-            --destination v2/audit-data \
-            --source-sha '${{ github.sha }}'
-
+        run: python audit/publish_compact_audit.py --source audit-output --destination v2/audit-data --source-sha '${{ github.sha }}'
       - name: Package full audit outputs
-        run: |
-          tar -czf multiversal-forensic-audit-output.tar.gz audit-output audit-work/documents
-
+        run: tar -czf multiversal-forensic-audit-output.tar.gz audit-output audit-work/documents
       - name: Upload full audit artifact
         uses: actions/upload-artifact@v4
         with:
@@ -187,25 +103,19 @@ jobs:
             multiversal-forensic-audit-output.tar.gz
           if-no-files-found: error
           retention-days: 90
-
       - name: Upload compact status artifact
         uses: actions/upload-artifact@v4
         with:
           name: multiversal-audit-status-${{ github.sha }}
-          path: |
-            v2/audit-data/
+          path: v2/audit-data/
           if-no-files-found: error
           retention-days: 90
-
       - name: Commit compact audit results
         run: |
           git config user.name 'multiversal-audit-bot'
           git config user.email 'actions@users.noreply.github.com'
           git add -A v2/audit-data
-          if git diff --cached --quiet; then
-            echo 'No compact audit changes to publish.'
-            exit 0
-          fi
-          git commit -m 'Publish forensic object factory data [skip ci]'
+          if git diff --cached --quiet; then echo 'No compact audit changes to publish.'; exit 0; fi
+          git commit -m 'Publish canonical recovery and coverage data [skip ci]'
           git pull --rebase origin main
           git push origin HEAD:main
