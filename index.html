@@ -3,20 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#13151c" />
+  <meta name="theme-color" content="#03040a" />
   <meta name="description" content="Multiversal AI Operations Center, Development OS, Design Studio, Balance Lab, Feature Module Roadmap, and Game Testing Suite." />
-  <meta name="aioc-build" content="studio-12.0" />
-  <link rel="manifest" href="manifest.webmanifest?build=studio-12.0" />
+  <meta name="aioc-build" content="studio-12.1" />
+  <link rel="manifest" href="manifest.webmanifest?build=studio-12.1" />
   <link rel="icon" href="./icon-192.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css?build=studio-12.0" />
-  <link rel="stylesheet" href="forge-v2.css?build=studio-12.0" />
-  <link rel="stylesheet" href="forge-interview-v6.css?build=studio-12.0" />
-  <link rel="stylesheet" href="forge-starters-v7.css?build=studio-12.0" />
-  <link rel="stylesheet" href="forge-creatures-v8.css?build=studio-12.0" />
-  <link rel="stylesheet" href="forge-ability-v9.css?build=studio-12.0" />
-  <link rel="stylesheet" href="forge-expert-v10.css?build=studio-12.0" />
-  <link rel="stylesheet" href="design-studio-v11.css?build=studio-12.0" />
-  <title>Multiversal AIOC · Studio 12.0</title>
+  <link rel="stylesheet" href="styles.css?build=studio-12.1" />
+  <link rel="stylesheet" href="forge-v2.css?build=studio-12.1" />
+  <link rel="stylesheet" href="forge-interview-v6.css?build=studio-12.1" />
+  <link rel="stylesheet" href="forge-starters-v7.css?build=studio-12.1" />
+  <link rel="stylesheet" href="forge-creatures-v8.css?build=studio-12.1" />
+  <link rel="stylesheet" href="forge-ability-v9.css?build=studio-12.1" />
+  <link rel="stylesheet" href="forge-expert-v10.css?build=studio-12.1" />
+  <link rel="stylesheet" href="design-studio-v11.css?build=studio-12.1" />
+  <link rel="stylesheet" href="multiversal-ui-v12.css?build=studio-12.1" />
+  <title>Multiversal AIOC · Neon UI 12.1</title>
   <style>
     #devOSPermanentLauncher,#studioPermanentLauncher,#testingPermanentLauncher,#modulesPermanentLauncher,#balancePermanentLauncher{position:fixed;right:14px;z-index:2147483646;border-radius:999px;padding:11px 15px;color:#fff;font:700 12px system-ui;box-shadow:0 8px 28px #0009;display:block!important;visibility:visible!important;opacity:1!important}
     #devOSPermanentLauncher{bottom:244px;background:#7b3f62;border:1px solid #efafd3}
@@ -24,9 +25,11 @@
     #testingPermanentLauncher{bottom:132px;background:#3f755f;border:1px solid #9de0c0}
     #modulesPermanentLauncher{bottom:76px;background:#75622b;border:1px solid #e8d48e}
     #balancePermanentLauncher{bottom:20px;background:#356f8d;border:1px solid #9bd4ef}
+    #devOSPermanentLauncher{right:10px!important;bottom:auto!important;top:226px!important;width:118px;border-radius:4px!important;padding:9px 10px!important;font:700 10px/1.1 Inter,system-ui!important;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 0 12px rgba(155,61,255,.25)!important;background:#0a0812!important;border-color:#9b3dff!important;color:#c494ff!important}
+    @media(max-width:900px){#devOSPermanentLauncher{display:none!important}}
   </style>
 </head>
-<body data-aioc-build="studio-12.0">
+<body data-aioc-build="studio-12.1">
   <div id="app"></div>
   <button id="devOSPermanentLauncher" type="button">Development OS</button>
   <button id="studioPermanentLauncher" type="button">Design Studio</button>
@@ -49,19 +52,19 @@
       if(params.get('openBalance')==='1')location.href='./balance.html';
     })();
   </script>
-  <script src="multiversal-seed.js?build=studio-12.0"></script>
-  <script src="app.js?build=studio-12.0" defer></script>
-  <script src="forge-v2.js?build=studio-12.0" defer></script>
-  <script src="forge-interview-v6.js?build=studio-12.0" defer></script>
-  <script src="forge-starters-v7.js?build=studio-12.0" defer></script>
-  <script src="forge-creatures-v8.js?build=studio-12.0" defer></script>
-  <script src="forge-ability-v9.js?build=studio-12.0" defer></script>
-  <script src="forge-ability-v9-fix.js?build=studio-12.0" defer></script>
-  <script src="forge-expert-v10.js?build=studio-12.0" defer></script>
-  <script src="design-studio-v11.1.js?build=studio-12.0" defer></script>
+  <script src="multiversal-seed.js?build=studio-12.1"></script>
+  <script src="app.js?build=studio-12.1" defer></script>
+  <script src="forge-v2.js?build=studio-12.1" defer></script>
+  <script src="forge-interview-v6.js?build=studio-12.1" defer></script>
+  <script src="forge-starters-v7.js?build=studio-12.1" defer></script>
+  <script src="forge-creatures-v8.js?build=studio-12.1" defer></script>
+  <script src="forge-ability-v9.js?build=studio-12.1" defer></script>
+  <script src="forge-ability-v9-fix.js?build=studio-12.1" defer></script>
+  <script src="forge-expert-v10.js?build=studio-12.1" defer></script>
+  <script src="design-studio-v11.1.js?build=studio-12.1" defer></script>
   <script>
-    window.AIOC_BUILD='studio-12.0';
-    if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?build=studio-12.0',{updateViaCache:'none'}).then(r=>r.update()).catch(console.error));
+    window.AIOC_BUILD='studio-12.1';
+    if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?build=studio-12.1',{updateViaCache:'none'}).then(r=>r.update()).catch(console.error));
   </script>
 </body>
 </html>
