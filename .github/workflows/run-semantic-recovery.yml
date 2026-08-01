@@ -1,0 +1,90 @@
+name: Run Semantic Recovery
+
+on:
+  workflow_run:
+    workflows: ["Run Forensic Audit"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+concurrency:
+  group: multiversal-semantic-recovery
+  cancel-in-progress: true
+
+jobs:
+  semantic:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download latest successful forensic artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_RUN_ID: ${{ github.event.workflow_run.id }}
+        run: |
+          RUN_ID="$EVENT_RUN_ID"
+          if [ '${{ github.event_name }}' = 'workflow_dispatch' ]; then
+            RUN_ID=$(gh run list --workflow='Run Forensic Audit' --status=success --limit=1 --json databaseId --jq='.[0].databaseId')
+          fi
+          test -n "$RUN_ID"
+          gh run download "$RUN_ID" --name "multiversal-forensic-audit-*" --dir downloaded || gh run download "$RUN_ID" --dir downloaded
+          ARCHIVE=$(find downloaded -name 'multiversal-forensic-audit-output.tar.gz' -print -quit)
+          test -n "$ARCHIVE"
+          tar -xzf "$ARCHIVE"
+          test -f audit-output/findings.jsonl
+      - name: Build document structure
+        run: python audit/build_document_structure.py --input audit-output --out semantic-output/document-structure
+      - name: Parse object families
+        run: python audit/build_family_parsers.py --structure semantic-output/document-structure --out semantic-output/family-parsers
+      - name: Build canonical knowledge graph
+        run: |
+          CANONICAL=''
+          if [ -f content-source/phase-1-8-canonical-objects.json ]; then CANONICAL='--canonical content-source/phase-1-8-canonical-objects.json'; fi
+          python audit/build_canonical_knowledge_graph.py --parsed semantic-output/family-parsers --out semantic-output/knowledge-graph $CANONICAL
+      - name: Validate semantic outputs
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          structure=json.loads(Path('semantic-output/document-structure/document-structure-index.json').read_text())
+          parser=json.loads(Path('semantic-output/family-parsers/family-parser-index.json').read_text())
+          graph=json.loads(Path('semantic-output/knowledge-graph/knowledge-graph-index.json').read_text())
+          assert structure['blockCount'] > 0, structure
+          assert structure['provenanceCompleteCount'] > 0, structure
+          assert parser['candidateCount'] > 0, parser
+          assert len(parser['familyCounts']) >= 3, parser
+          assert graph['nodeCount'] >= parser['candidateCount'], graph
+          assert graph['evidenceEdgeCount'] >= parser['candidateCount'], graph
+          print(json.dumps({'structure':structure['blockCount'],'candidates':parser['candidateCount'],'families':parser['familyCounts'],'nodes':graph['nodeCount'],'edges':graph['edgeCount'],'unresolved':graph['unresolvedRelationshipCount']},indent=2))
+          PY
+      - name: Publish compact semantic data
+        run: |
+          mkdir -p v2/audit-data/semantic-recovery
+          cp semantic-output/document-structure/document-structure-index.json v2/audit-data/semantic-recovery/
+          cp semantic-output/family-parsers/family-parser-index.json v2/audit-data/semantic-recovery/
+          cp semantic-output/knowledge-graph/knowledge-graph-index.json v2/audit-data/semantic-recovery/
+      - name: Upload full semantic recovery artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: multiversal-semantic-recovery-${{ github.sha }}
+          path: semantic-output/
+          retention-days: 90
+      - name: Commit semantic recovery publication
+        run: |
+          git config user.name 'multiversal-audit-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add v2/audit-data/semantic-recovery
+          if git diff --cached --quiet; then echo 'No semantic data changes.'; exit 0; fi
+          git commit -m 'Publish semantic recovery structure parser and graph data [skip ci]'
+          git pull --rebase origin main
+          git push origin HEAD:main
