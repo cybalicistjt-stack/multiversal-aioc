@@ -145,6 +145,28 @@ jobs:
           print(json.dumps({k:s[k] for k in ('candidateCount','queueCounts','objectTypeCounts','batchCount')}, indent=2))
           PY
 
+      - name: Build canonical object factory candidates
+        run: |
+          python audit/build_object_factory.py \
+            --promotion audit-output/promotion \
+            --out audit-output/object-factory \
+            --batch-size 50
+
+      - name: Validate object factory
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('audit-output/object-factory/object-factory-index.json')
+          if not p.exists():
+              raise SystemExit('object-factory-index.json was not produced')
+          s = json.loads(p.read_text())
+          assert s['sourcePromotionCandidateCount'] >= s['consolidatedCandidateCount'], s
+          assert s['batchCount'] >= 0, s
+          assert s['authorityNote'].endswith('not canonical objects.'), s
+          print(json.dumps({k:s[k] for k in ('sourcePromotionCandidateCount','consolidatedCandidateCount','duplicateEvidenceCollapsed','tierCounts','objectTypeCounts','batchCount')}, indent=2))
+          PY
+
       - name: Publish compact dashboard data
         run: |
           python audit/publish_compact_audit.py \
@@ -184,6 +206,6 @@ jobs:
             echo 'No compact audit changes to publish.'
             exit 0
           fi
-          git commit -m 'Publish forensic reconciliation and promotion data [skip ci]'
+          git commit -m 'Publish forensic object factory data [skip ci]'
           git pull --rebase origin main
           git push origin HEAD:main
