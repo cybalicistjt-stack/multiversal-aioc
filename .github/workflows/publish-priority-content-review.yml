@@ -35,6 +35,18 @@ jobs:
           test -f audit-output/recovery/recovery-index.json
       - name: Build first substantive review queue
         run: python audit/build_priority_content_review.py --recovery audit-output/recovery --out audit-output/priority-content --limit 200 --batch-size 50
+      - name: Validate substantive review queue
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('audit-output/priority-content/priority-content-review-index.json')
+          s=json.loads(p.read_text())
+          assert s['candidateCount'] > 0, s
+          assert s['batchCount'] > 0, s
+          assert sum(s['objectTypeCounts'].values()) == s['candidateCount'], s
+          print(json.dumps({k:s[k] for k in ('candidateCount','batchCount','objectTypeCounts')},indent=2))
+          PY
       - name: Publish compact review data
         run: |
           mkdir -p v2/audit-data/priority-content
