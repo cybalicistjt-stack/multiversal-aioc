@@ -5,29 +5,31 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#13151c" />
   <meta name="description" content="Multiversal AI Operations Center — local-first project command center." />
-  <meta name="aioc-build" content="forge-4.0" />
-  <link rel="manifest" href="manifest.webmanifest?build=forge-4.0" />
+  <meta name="aioc-build" content="forge-5.0" />
+  <link rel="manifest" href="manifest.webmanifest?build=forge-5.0" />
   <link rel="icon" href="./icon-192.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css?build=forge-4.0" />
-  <link rel="stylesheet" href="forge-v2.css?build=forge-4.0" />
-  <link rel="stylesheet" href="forge-guidance-v3.css?build=forge-4.0" />
-  <link rel="stylesheet" href="forge-ai-v4.css?build=forge-4.0" />
-  <title>Multiversal AIOC · Forge 4.0</title>
+  <link rel="stylesheet" href="styles.css?build=forge-5.0" />
+  <link rel="stylesheet" href="forge-v2.css?build=forge-5.0" />
+  <link rel="stylesheet" href="forge-guidance-v3.css?build=forge-5.0" />
+  <link rel="stylesheet" href="forge-ai-v4.css?build=forge-5.0" />
+  <link rel="stylesheet" href="forge-ai-v5.css?build=forge-5.0" />
+  <title>Multiversal AIOC · Forge 5.0</title>
 </head>
-<body data-aioc-build="forge-4.0">
+<body data-aioc-build="forge-5.0">
   <div id="app"></div>
-  <script src="multiversal-seed.js?build=forge-4.0"></script>
-  <script src="app.js?build=forge-4.0" defer></script>
-  <script src="forge-v2.js?build=forge-4.0" defer></script>
-  <script src="forge-guidance-v3.js?build=forge-4.0" defer></script>
-  <script src="forge-ai-v4.js?build=forge-4.0" defer></script>
-  <script src="forge-ai-v4-fix.js?build=forge-4.0" defer></script>
+  <script src="multiversal-seed.js?build=forge-5.0"></script>
+  <script src="app.js?build=forge-5.0" defer></script>
+  <script src="forge-v2.js?build=forge-5.0" defer></script>
+  <script src="forge-guidance-v3.js?build=forge-5.0" defer></script>
+  <script src="forge-ai-v4.js?build=forge-5.0" defer></script>
+  <script src="forge-ai-v4-fix.js?build=forge-5.0" defer></script>
+  <script src="forge-ai-v5.js?build=forge-5.0" defer></script>
   <script>
-    window.AIOC_BUILD = 'forge-4.0';
+    window.AIOC_BUILD = 'forge-5.0';
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker
-          .register('./sw.js?build=forge-4.0', { updateViaCache: 'none' })
+          .register('./sw.js?build=forge-5.0', { updateViaCache: 'none' })
           .then(registration => registration.update())
           .catch(error => console.error('Service worker registration failed:', error));
       });
