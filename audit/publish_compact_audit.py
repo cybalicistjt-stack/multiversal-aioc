@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-"""Publish bounded forensic, factory, recovery, and handoff results to the static AIOC."""
+"""Publish bounded forensic, recovery, handoff, and staging results to the static AIOC."""
 from __future__ import annotations
 import argparse, json, shutil
 from datetime import datetime, timezone
 from pathlib import Path
 COMPACT_FILES=("corpus-status.json","archive-inventory.json","document-batch-schedule.json","reconciliation-report.json","csv-schema-registry.json","duplicate-groups.json","candidate-matches.json","audit-summary.json")
 REFINED_FILES=("refinement-summary.json","likely-existing.json","possible-existing.json","possibly-existing.json","likely-new.json","ambiguous.json")
-
 def read_json(path):
  try:return json.loads(path.read_text(encoding='utf-8'))
  except Exception:return None
@@ -15,7 +14,6 @@ def bounded_index(src,dst,sample_key,limit):
  p=read_json(src)
  if not isinstance(p,dict): return None
  p[sample_key]=list(p.get(sample_key) or [])[:limit]; write_json(dst,p); return p
-
 def main():
  ap=argparse.ArgumentParser(); ap.add_argument('--source',type=Path,default=Path('audit-output')); ap.add_argument('--destination',type=Path,default=Path('v2/audit-data')); ap.add_argument('--source-sha',default=''); a=ap.parse_args(); a.destination.mkdir(parents=True,exist_ok=True); published=[]
  for n in COMPACT_FILES:
@@ -40,7 +38,10 @@ def main():
   if p is not None:
    if isinstance(p,list): p=p[:300]
    write_json(a.destination/'handoffs'/n,p); published.append('handoffs/'+n)
+ staging=bounded_index(a.source/'production-staging'/'production-staging-index.json',a.destination/'production-staging'/'production-staging-index.json','publishedSample',150)
+ if staging:
+  staging['blockedSample']=list(staging.get('blockedSample') or [])[:150]; write_json(a.destination/'production-staging'/'production-staging-index.json',staging); published.append('production-staging/production-staging-index.json')
  status=read_json(a.source/'corpus-status.json') or {}; refinement=read_json(a.source/'refined'/'refinement-summary.json') or {}
- manifest={'format':'multiversal-static-audit-publication','version':'1.5.0','publishedAt':datetime.now(timezone.utc).isoformat(),'sourceCommit':a.source_sha,'publishedFiles':published,'summary':{'archiveCount':status.get('archiveCount',0),'pdfCount':status.get('pdfCount',0),'totalPages':status.get('totalPages',0),'completedPages':status.get('completedPages',0),'reviewCandidateCount':refinement.get('reviewCandidateCount',0),'promotionCandidateCount':(promotion or {}).get('candidateCount',0),'factoryCandidateCount':(factory or {}).get('consolidatedCandidateCount',0),'recoveryCandidateCount':(recovery or {}).get('candidateCount',0),'readyForDesignerReview':(recovery or {}).get('readyForDesignerReview',0),'relationshipCandidateCount':(recovery or {}).get('relationshipCandidateCount',0),'handoffCandidateCount':(handoff or {}).get('candidateCount',0),'handoffReadyForReview':(handoff or {}).get('readyForReviewCount',0),'unresolvedRelationshipCount':(handoff or {}).get('unresolvedRelationshipCount',0),'sourceGroupCount':(handoff or {}).get('sourceGroupCount',0),'machineScanComplete':bool(status.get('automaticAuditComplete') or status.get('machineScanComplete')),'humanReviewComplete':bool(status.get('humanReviewComplete')),'canonicalPromotionComplete':bool(status.get('canonicalPromotionComplete'))}}
+ manifest={'format':'multiversal-static-audit-publication','version':'1.6.0','publishedAt':datetime.now(timezone.utc).isoformat(),'sourceCommit':a.source_sha,'publishedFiles':published,'summary':{'archiveCount':status.get('archiveCount',0),'pdfCount':status.get('pdfCount',0),'totalPages':status.get('totalPages',0),'completedPages':status.get('completedPages',0),'reviewCandidateCount':refinement.get('reviewCandidateCount',0),'promotionCandidateCount':(promotion or {}).get('candidateCount',0),'factoryCandidateCount':(factory or {}).get('consolidatedCandidateCount',0),'recoveryCandidateCount':(recovery or {}).get('candidateCount',0),'readyForDesignerReview':(recovery or {}).get('readyForDesignerReview',0),'relationshipCandidateCount':(recovery or {}).get('relationshipCandidateCount',0),'handoffCandidateCount':(handoff or {}).get('candidateCount',0),'handoffReadyForReview':(handoff or {}).get('readyForReviewCount',0),'unresolvedRelationshipCount':(handoff or {}).get('unresolvedRelationshipCount',0),'sourceGroupCount':(handoff or {}).get('sourceGroupCount',0),'productionStagedCount':(staging or {}).get('stagedCount',0),'productionBlockedCount':(staging or {}).get('blockedCount',0),'productionBatchCount':(staging or {}).get('batchCount',0),'machineScanComplete':bool(status.get('automaticAuditComplete') or status.get('machineScanComplete')),'humanReviewComplete':bool(status.get('humanReviewComplete')),'canonicalPromotionComplete':bool(status.get('canonicalPromotionComplete'))}}
  write_json(a.destination/'publication-manifest.json',manifest); print(json.dumps(manifest,indent=2))
 if __name__=='__main__': main()
