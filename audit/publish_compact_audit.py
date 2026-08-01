@@ -1,138 +1,39 @@
 #!/usr/bin/env python3
-"""Publish compact forensic-audit results for the static AIOC dashboard.
-
-Copies bounded summaries from audit-output into v2/audit-data. Full findings,
-promotion batches, and object-factory batches stay in workflow artifacts so the
-repository does not grow without limit.
-"""
+"""Publish bounded forensic, factory, and recovery results to the static AIOC."""
 from __future__ import annotations
-
-import argparse
-import json
-import shutil
+import argparse, json, shutil
 from datetime import datetime, timezone
 from pathlib import Path
+COMPACT_FILES=("corpus-status.json","archive-inventory.json","document-batch-schedule.json","reconciliation-report.json","csv-schema-registry.json","duplicate-groups.json","candidate-matches.json","audit-summary.json")
+REFINED_FILES=("refinement-summary.json","likely-existing.json","possible-existing.json","possibly-existing.json","likely-new.json","ambiguous.json")
 
-COMPACT_FILES = (
-    "corpus-status.json",
-    "archive-inventory.json",
-    "document-batch-schedule.json",
-    "reconciliation-report.json",
-    "csv-schema-registry.json",
-    "duplicate-groups.json",
-    "candidate-matches.json",
-    "audit-summary.json",
-)
-REFINED_FILES = (
-    "refinement-summary.json",
-    "likely-existing.json",
-    "possible-existing.json",
-    "possibly-existing.json",
-    "likely-new.json",
-    "ambiguous.json",
-)
-MAX_QUEUE_ROWS = 250
-MAX_PROMOTION_SAMPLE = 250
-MAX_FACTORY_SAMPLE = 200
+def read_json(path):
+ try:return json.loads(path.read_text(encoding='utf-8'))
+ except Exception:return None
+def write_json(path,payload): path.parent.mkdir(parents=True,exist_ok=True); path.write_text(json.dumps(payload,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+def bounded_index(src,dst,sample_key,limit):
+ p=read_json(src)
+ if not isinstance(p,dict): return None
+ p[sample_key]=list(p.get(sample_key) or [])[:limit]; write_json(dst,p); return p
 
-
-def read_json(path: Path):
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except Exception:
-        return None
-
-
-def write_bounded(src: Path, dst: Path, max_rows: int = MAX_QUEUE_ROWS) -> bool:
-    payload = read_json(src)
-    if payload is None:
-        return False
-    if isinstance(payload, list):
-        payload = payload[:max_rows]
-    dst.parent.mkdir(parents=True, exist_ok=True)
-    dst.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    return True
-
-
-def main() -> None:
-    p = argparse.ArgumentParser()
-    p.add_argument("--source", type=Path, default=Path("audit-output"))
-    p.add_argument("--destination", type=Path, default=Path("v2/audit-data"))
-    p.add_argument("--source-sha", default="")
-    args = p.parse_args()
-
-    args.destination.mkdir(parents=True, exist_ok=True)
-    published = []
-    for name in COMPACT_FILES:
-        src = args.source / name
-        if src.exists():
-            shutil.copy2(src, args.destination / name)
-            published.append(name)
-
-    refined_source = args.source / "refined"
-    refined_destination = args.destination / "refined"
-    refined_destination.mkdir(parents=True, exist_ok=True)
-    for name in REFINED_FILES:
-        if write_bounded(refined_source / name, refined_destination / name):
-            published.append(f"refined/{name}")
-
-    promotion_source = args.source / "promotion" / "promotion-index.json"
-    promotion_payload = read_json(promotion_source)
-    if isinstance(promotion_payload, dict):
-        promotion_payload["publishedCandidateSample"] = list(promotion_payload.get("publishedCandidateSample") or [])[:MAX_PROMOTION_SAMPLE]
-        promotion_destination = args.destination / "promotion" / "promotion-index.json"
-        promotion_destination.parent.mkdir(parents=True, exist_ok=True)
-        promotion_destination.write_text(json.dumps(promotion_payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        published.append("promotion/promotion-index.json")
-
-    factory_source = args.source / "object-factory" / "object-factory-index.json"
-    factory_payload = read_json(factory_source)
-    if isinstance(factory_payload, dict):
-        factory_payload["publishedSample"] = list(factory_payload.get("publishedSample") or [])[:MAX_FACTORY_SAMPLE]
-        factory_destination = args.destination / "object-factory" / "object-factory-index.json"
-        factory_destination.parent.mkdir(parents=True, exist_ok=True)
-        factory_destination.write_text(json.dumps(factory_payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        published.append("object-factory/object-factory-index.json")
-
-    status = read_json(args.source / "corpus-status.json") or {}
-    reconciliation = read_json(args.source / "reconciliation-report.json") or {}
-    inventory = read_json(args.source / "archive-inventory.json") or {}
-    refinement = read_json(refined_source / "refinement-summary.json") or {}
-    promotion = promotion_payload or {}
-    factory = factory_payload or {}
-    manifest = {
-        "format": "multiversal-static-audit-publication",
-        "version": "1.3.0",
-        "publishedAt": datetime.now(timezone.utc).isoformat(),
-        "sourceCommit": args.source_sha,
-        "publishedFiles": published,
-        "summary": {
-            "archiveCount": status.get("archiveCount", inventory.get("archiveCount", 0)),
-            "pdfCount": status.get("pdfCount", inventory.get("pdfCount", 0)),
-            "csvCount": status.get("csvCount", inventory.get("csvCount", 0)),
-            "totalPages": status.get("totalPages", 0),
-            "completedPages": status.get("completedPages", 0),
-            "findingCount": status.get("findingCount", reconciliation.get("findingCount", 0)),
-            "rawFindingCount": refinement.get("rawFindingCount", 0),
-            "reviewCandidateCount": refinement.get("reviewCandidateCount", 0),
-            "suppressedCount": refinement.get("suppressedCount", 0),
-            "queueCounts": refinement.get("queueCounts", {}),
-            "promotionCandidateCount": promotion.get("candidateCount", 0),
-            "promotionBatchCount": promotion.get("batchCount", 0),
-            "factoryCandidateCount": factory.get("consolidatedCandidateCount", 0),
-            "factoryDuplicateEvidenceCollapsed": factory.get("duplicateEvidenceCollapsed", 0),
-            "factoryTierCounts": factory.get("tierCounts", {}),
-            "factoryBatchCount": factory.get("batchCount", 0),
-            "machineScanComplete": bool(status.get("automaticAuditComplete") or status.get("machineScanComplete")),
-            "humanReviewComplete": bool(status.get("humanReviewComplete")),
-            "canonicalPromotionComplete": bool(status.get("canonicalPromotionComplete")),
-        },
-    }
-    (args.destination / "publication-manifest.json").write_text(
-        json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
-    )
-    print(json.dumps(manifest, indent=2))
-
-
-if __name__ == "__main__":
-    main()
+def main():
+ ap=argparse.ArgumentParser(); ap.add_argument('--source',type=Path,default=Path('audit-output')); ap.add_argument('--destination',type=Path,default=Path('v2/audit-data')); ap.add_argument('--source-sha',default=''); a=ap.parse_args(); a.destination.mkdir(parents=True,exist_ok=True); published=[]
+ for n in COMPACT_FILES:
+  s=a.source/n
+  if s.exists(): shutil.copy2(s,a.destination/n); published.append(n)
+ for n in REFINED_FILES:
+  p=read_json(a.source/'refined'/n)
+  if p is not None:
+   if isinstance(p,list): p=p[:250]
+   write_json(a.destination/'refined'/n,p); published.append('refined/'+n)
+ promotion=bounded_index(a.source/'promotion'/'promotion-index.json',a.destination/'promotion'/'promotion-index.json','publishedCandidateSample',250)
+ if promotion: published.append('promotion/promotion-index.json')
+ factory=bounded_index(a.source/'object-factory'/'object-factory-index.json',a.destination/'object-factory'/'object-factory-index.json','publishedSample',200)
+ if factory: published.append('object-factory/object-factory-index.json')
+ recovery=bounded_index(a.source/'recovery'/'recovery-index.json',a.destination/'recovery'/'recovery-index.json','publishedSample',250)
+ if recovery:
+  recovery['relationshipSample']=list(recovery.get('relationshipSample') or [])[:250]; write_json(a.destination/'recovery'/'recovery-index.json',recovery); published.append('recovery/recovery-index.json')
+ status=read_json(a.source/'corpus-status.json') or {}; refinement=read_json(a.source/'refined'/'refinement-summary.json') or {}
+ manifest={'format':'multiversal-static-audit-publication','version':'1.4.0','publishedAt':datetime.now(timezone.utc).isoformat(),'sourceCommit':a.source_sha,'publishedFiles':published,'summary':{'archiveCount':status.get('archiveCount',0),'pdfCount':status.get('pdfCount',0),'totalPages':status.get('totalPages',0),'completedPages':status.get('completedPages',0),'reviewCandidateCount':refinement.get('reviewCandidateCount',0),'promotionCandidateCount':(promotion or {}).get('candidateCount',0),'factoryCandidateCount':(factory or {}).get('consolidatedCandidateCount',0),'recoveryCandidateCount':(recovery or {}).get('candidateCount',0),'readyForDesignerReview':(recovery or {}).get('readyForDesignerReview',0),'relationshipCandidateCount':(recovery or {}).get('relationshipCandidateCount',0),'recoveryBatchCount':(recovery or {}).get('batchCount',0),'machineScanComplete':bool(status.get('automaticAuditComplete') or status.get('machineScanComplete')),'humanReviewComplete':bool(status.get('humanReviewComplete')),'canonicalPromotionComplete':bool(status.get('canonicalPromotionComplete'))}}
+ write_json(a.destination/'publication-manifest.json',manifest); print(json.dumps(manifest,indent=2))
+if __name__=='__main__': main()
