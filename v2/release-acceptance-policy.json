@@ -1,0 +1,48 @@
+{
+  "format": "multiversal-aioc-v2-release-acceptance-policy",
+  "version": "1.0.0",
+  "build": "3.4.0-release-validation",
+  "mandatoryStaticResources": [
+    "v2/index.html",
+    "v2/app.js",
+    "v2/app.css",
+    "v2/project-control.html",
+    "v2/completion-sprint.html",
+    "v2/database-integrity.html",
+    "v2/canonical-certification.html",
+    "v2/pack-certification.html",
+    "v2/expert-evidence.html",
+    "v2/ai-workflows.html",
+    "v2/specialist-studio.html",
+    "v2/content-completion.html",
+    "v2/operations.html",
+    "v2/finalization.html",
+    "canonical-schema-registry.json"
+  ],
+  "verifiedSourceMinimum": 487,
+  "promotionRules": {
+    "blockedWhen": [
+      "a mandatory static resource is unavailable",
+      "canonical source loading fails",
+      "fewer than 487 verified source records load",
+      "workspace state cannot be serialized",
+      "unresolved blocking certification or critical testing evidence exists"
+    ],
+    "provisionalWhen": [
+      "optional workspace state has not been initialized",
+      "balance, testing, Pack, importer, or owner evidence is incomplete",
+      "non-blocking cross-workspace warnings remain"
+    ],
+    "passWhen": [
+      "all mandatory acceptance checks pass",
+      "no unresolved blocking evidence remains",
+      "required release evidence is complete"
+    ]
+  },
+  "authorityBoundaries": [
+    "Automated validation cannot grant owner approval.",
+    "Structural import simulation is not equivalent to testing the future Multiversal runtime importer.",
+    "A schema contract pass is not equivalent to balance or playtest approval.",
+    "Local browser state does not silently modify repository canonical content."
+  ]
+}
