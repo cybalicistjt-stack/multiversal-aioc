@@ -7,7 +7,7 @@ const PART_DIR = path.join(ROOT, 'catalog-seed-parts');
 const OUT_DIR = path.join(ROOT, 'content-db');
 const PARTS = [0,1,2,3,4].map(i => path.join(PART_DIR, `phase1-7.${String(i).padStart(2,'0')}.txt`));
 const SOURCE = 'Multiversal 8E-008G Foundational Inventory Coverage (Phase 1–7 baseline)';
-const DB_VERSION = '1.0.0';
+const DB_VERSION = '1.0.1';
 const STAGES = {
   CANONICAL_ID_PRESENT: 'Schema review',
   ALIAS_RESOLVES: 'Partial conversion',
@@ -18,18 +18,25 @@ function cleanBase64(text) {
   return String(text).replace(/[^A-Za-z0-9+/=]/g, '');
 }
 
-function decodeLayers(input) {
-  let value = cleanBase64(input);
-  for (let layer = 0; layer < 4; layer++) {
-    const bytes = Buffer.from(value, 'base64');
+function decodeBase64Strict(text, label) {
+  const clean = cleanBase64(text);
+  if (!clean) throw new Error(`${label} is empty.`);
+  const decoded = Buffer.from(clean, 'base64');
+  if (!decoded.length) throw new Error(`${label} could not be decoded.`);
+  return decoded;
+}
+
+function reachGzip(value) {
+  let bytes = Buffer.isBuffer(value) ? value : Buffer.from(value);
+  for (let layer = 0; layer < 5; layer++) {
     if (bytes.length >= 2 && bytes[0] === 0x1f && bytes[1] === 0x8b) return bytes;
-    const asText = bytes.toString('utf8').trim();
-    if (!/^[A-Za-z0-9+/=\s]+$/.test(asText)) {
+    const text = bytes.toString('utf8').replace(/\s/g, '');
+    if (!/^[A-Za-z0-9+/=]+$/.test(text)) {
       throw new Error(`Decoded layer ${layer + 1} is neither gzip nor Base64 text.`);
     }
-    value = cleanBase64(asText);
+    bytes = decodeBase64Strict(text, `Nested Base64 layer ${layer + 1}`);
   }
-  throw new Error('Could not reach gzip data after four Base64 layers.');
+  throw new Error('Could not reach gzip data after five decoding layers.');
 }
 
 function expand(x, index) {
@@ -60,7 +67,15 @@ function expand(x, index) {
 
 await fs.mkdir(OUT_DIR, { recursive: true });
 const texts = await Promise.all(PARTS.map(file => fs.readFile(file, 'utf8')));
-const gzipBytes = decodeLayers(texts.join(''));
+
+// Each fragment was Base64-wrapped independently. Decode each fragment first,
+// then concatenate the recovered inner Base64 text. Concatenating before this
+// step preserves padding in the middle and corrupts the stream.
+const innerBase64 = texts.map((text, index) =>
+  decodeBase64Strict(text, `Archive fragment ${index}`).toString('utf8')
+).join('').replace(/\s/g, '');
+
+const gzipBytes = reachGzip(Buffer.from(innerBase64, 'utf8'));
 const payload = JSON.parse(zlib.gunzipSync(gzipBytes).toString('utf8'));
 if (!Array.isArray(payload.records) || payload.records.length < 1000) {
   throw new Error(`Recovered inventory is invalid: ${payload.records?.length ?? 0} records.`);
