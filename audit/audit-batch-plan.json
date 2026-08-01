@@ -1,0 +1,48 @@
+{
+  "format": "multiversal-forensic-audit-batch-plan",
+  "version": "1.0.0",
+  "batchSizePages": 50,
+  "ordering": "ascending-page-order",
+  "checkpointEveryPages": 1,
+  "requiredPasses": [
+    "raw-text-and-table-capture",
+    "mechanics-and-object-detection",
+    "cross-reference-detection",
+    "canonical-comparison",
+    "duplicate-conflict-grouping",
+    "human-review"
+  ],
+  "pageBatchTemplate": {
+    "status": "queued",
+    "attempts": 0,
+    "findingCounts": {},
+    "tableCounts": {},
+    "reviewCounts": {},
+    "startedAt": null,
+    "completedAt": null
+  },
+  "csvPlan": {
+    "root": "aaaa",
+    "include": ["**/*.csv"],
+    "exclude": ["**/.*/**"],
+    "requiredOperations": [
+      "inventory-file",
+      "detect-delimiter-and-header",
+      "classify-schema",
+      "capture-every-row",
+      "preserve-original-cell-values",
+      "compare-row-to-pdf-evidence",
+      "compare-row-to-canonical-database",
+      "group-duplicates-and-conflicts"
+    ]
+  },
+  "classificationRules": {
+    "multiLabel": true,
+    "preserveContext": true,
+    "examplesMayBeRules": true,
+    "tableRowsMayCreateMultipleObjects": true,
+    "unnamedMechanicsMustBeCaptured": true,
+    "referencesWithoutDefinitionsMustBeCaptured": true
+  },
+  "promotionRule": "No extracted finding may be promoted to canonical content without source provenance and human review."
+}
