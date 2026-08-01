@@ -70,6 +70,27 @@ jobs:
           assert s['archiveCount']==4 and s['corpusComplete'] is True and s['completedPages']==s['totalPages'],s
           print(json.dumps(s,indent=2))
           PY
+      - name: Build document structure engine
+        run: python audit/build_document_structure.py --input audit-output --out audit-output/document-structure
+      - name: Run family-specific parsers
+        run: python audit/build_family_parsers.py --structure audit-output/document-structure --out audit-output/family-parsers
+      - name: Build canonical knowledge graph
+        run: |
+          CANONICAL=''; if [ -f content-source/phase-1-8-canonical-objects.json ]; then CANONICAL='--canonical content-source/phase-1-8-canonical-objects.json'; fi
+          python audit/build_canonical_knowledge_graph.py --parsed audit-output/family-parsers --out audit-output/knowledge-graph $CANONICAL
+      - name: Validate semantic recovery outputs
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('audit-output/document-structure/document-structure-index.json').read_text())
+          f=json.loads(Path('audit-output/family-parsers/family-parser-index.json').read_text())
+          g=json.loads(Path('audit-output/knowledge-graph/knowledge-graph-index.json').read_text())
+          assert d['blockCount']>0 and d['provenanceCompleteCount']>0,d
+          assert f['candidateCount']>0 and len(f['familyCounts'])>=3,f
+          assert g['nodeCount']>=f['candidateCount'] and g['evidenceEdgeCount']>0,g
+          print(json.dumps({'structureBlocks':d['blockCount'],'parsedCandidates':f['candidateCount'],'families':f['familyCounts'],'graphNodes':g['nodeCount'],'graphEdges':g['edgeCount'],'unresolvedEdges':g['unresolvedRelationshipCount']},indent=2))
+          PY
       - name: Refine findings and canonical matches
         run: |
           CANONICAL=''; if [ -f content-source/phase-1-8-canonical-objects.json ]; then CANONICAL='--canonical content-source/phase-1-8-canonical-objects.json'; fi
@@ -126,6 +147,6 @@ jobs:
           git config user.email 'actions@users.noreply.github.com'
           git add -A v2/audit-data
           if git diff --cached --quiet; then echo 'No compact audit changes to publish.'; exit 0; fi
-          git commit -m 'Publish owner review and source closure data [skip ci]'
+          git commit -m 'Publish document structure parsers and knowledge graph [skip ci]'
           git pull --rebase origin main
           git push origin HEAD:main
