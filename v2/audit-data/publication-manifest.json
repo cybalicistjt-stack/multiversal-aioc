@@ -1,8 +1,8 @@
 {
   "format": "multiversal-static-audit-publication",
-  "version": "1.0.0",
-  "publishedAt": "2026-08-01T21:09:52.449085+00:00",
-  "sourceCommit": "0682e73b27ff402c800745a17771fc62db449bb1",
+  "version": "1.2.0",
+  "publishedAt": "2026-08-01T21:25:26.869435+00:00",
+  "sourceCommit": "24b6447de55465f16ea25ce5de4fb609368bb7c0",
   "publishedFiles": [
     "corpus-status.json",
     "archive-inventory.json",
@@ -10,7 +10,13 @@
     "reconciliation-report.json",
     "csv-schema-registry.json",
     "duplicate-groups.json",
-    "candidate-matches.json"
+    "candidate-matches.json",
+    "refined/refinement-summary.json",
+    "refined/likely-existing.json",
+    "refined/possible-existing.json",
+    "refined/likely-new.json",
+    "refined/ambiguous.json",
+    "promotion/promotion-index.json"
   ],
   "summary": {
     "archiveCount": 4,
@@ -19,8 +25,18 @@
     "totalPages": 5051,
     "completedPages": 5051,
     "findingCount": 5006,
-    "unresolvedCount": 0,
-    "machineScanComplete": false,
+    "rawFindingCount": 5006,
+    "reviewCandidateCount": 4989,
+    "suppressedCount": 17,
+    "queueCounts": {
+      "likely-existing": 1162,
+      "possible-existing": 172,
+      "likely-new": 3655,
+      "ambiguous": 0
+    },
+    "promotionCandidateCount": 4817,
+    "promotionBatchCount": 49,
+    "machineScanComplete": true,
     "humanReviewComplete": false,
     "canonicalPromotionComplete": false
   }
