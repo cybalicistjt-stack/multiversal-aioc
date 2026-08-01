@@ -1,67 +1,19 @@
 (()=>{'use strict';
 const INDEX_URL='./content-db/index.json';
 const MANIFEST_URL='./content-db/manifest.json';
+const ARCHIVE_PARTS=[0,1,2,3,4].map(i=>`./catalog-seed-parts/phase1-7.${String(i).padStart(2,'0')}.txt`);
 const SOURCE_VERSION='repository-content-db-v1';
+const STAGE={CANONICAL_ID_PRESENT:'Schema review',ALIAS_RESOLVES:'Partial conversion',PLAYTEST_INVENTORY_ONLY:'Source identified'};
 let cache=null;
 
-async function fetchJson(url){
-  const response=await fetch(`${url}?v=${Date.now()}`,{cache:'no-store'});
-  if(!response.ok)throw new Error(`Repository content database is not available yet (${response.status} ${response.statusText}).`);
-  try{return await response.json()}catch{throw new Error(`Repository content database file is not valid JSON: ${url}`)}
-}
-
-function normalize(record,index){
-  return {
-    catalogId:record.databaseId||record.catalogId||`content-${index+1}`,
-    inventoryId:record.provenance?.inventoryId||record.inventoryId||record.databaseId||'',
-    refId:record.stableId||record.refId||'',
-    name:record.name||record.stableId||`Unnamed content record ${index+1}`,
-    contentType:record.objectType||record.contentType||'Unclassified',
-    stage:record.developmentStage||record.stage||'Source identified',
-    source:record.source||record.provenance?.authority||'Multiversal repository content database',
-    sourceLocator:record.sourceLocator||'',
-    tags:Array.isArray(record.tags)?record.tags:[],
-    notes:record.notes||'',
-    coverageStatus:record.coverageStatus||'',
-    promotionDecision:record.promotionDecision||'',
-    reviewStatus:record.reviewStatus||'',
-    expectedOnly:false,
-    databaseSource:'repository',
-    databaseVersion:SOURCE_VERSION,
-    packIds:Array.isArray(record.packIds)?record.packIds:[],
-    dependencies:Array.isArray(record.dependencies)?record.dependencies:[],
-    provenance:record.provenance||{}
-  };
-}
-
-async function load({force=false,onProgress}={}){
-  if(cache&&!force)return cache;
-  onProgress?.('Loading repository content database…');
-  const [manifest,index]=await Promise.all([fetchJson(MANIFEST_URL),fetchJson(INDEX_URL)]);
-  if(index.format!=='multiversal-content-database')throw new Error('The repository index has an unsupported format.');
-  if(!Array.isArray(index.records)||index.records.length<1000)throw new Error(`Repository database validation failed: ${index.records?.length||0} records found.`);
-  if(Number(index.recordCount)!==index.records.length)throw new Error('Repository database record count does not match its index.');
-  cache={
-    manifest,
-    index,
-    records:index.records.map(normalize),
-    count:index.records.length,
-    summary:index.summary||{},
-    databaseVersion:index.databaseVersion||manifest.databaseVersion||'unknown',
-    generatedAt:index.generatedAt||manifest.generatedAt||null
-  };
-  onProgress?.(`Loaded ${cache.count.toLocaleString()} repository records.`);
-  return cache;
-}
-
-async function getAll(options){return (await load(options)).records}
-async function count(){return (await load()).count}
-async function status(){
-  try{const db=await load();return{installed:true,count:db.count,meta:{databaseVersion:db.databaseVersion,generatedAt:db.generatedAt,summary:db.summary}}}
-  catch(error){return{installed:false,count:0,error:String(error.message||error),meta:null}}
-}
-function clear(){cache=null;return Promise.resolve()}
-async function exportDatabase(){return load()}
-
+async function fetchJson(url){const response=await fetch(`${url}?v=${Date.now()}`,{cache:'no-store'});if(!response.ok)throw new Error(`${response.status} ${response.statusText}`);return response.json()}
+function normalize(record,index){return{catalogId:record.databaseId||record.catalogId||`content-${index+1}`,inventoryId:record.provenance?.inventoryId||record.inventoryId||record.databaseId||'',refId:record.stableId||record.refId||'',name:record.name||record.stableId||`Unnamed content record ${index+1}`,contentType:record.objectType||record.contentType||'Unclassified',stage:record.developmentStage||record.stage||'Source identified',source:record.source||record.provenance?.authority||'Multiversal repository content database',sourceLocator:record.sourceLocator||'',tags:Array.isArray(record.tags)?record.tags:[],notes:record.notes||'',coverageStatus:record.coverageStatus||'',promotionDecision:record.promotionDecision||'',reviewStatus:record.reviewStatus||'',expectedOnly:false,databaseSource:'repository',databaseVersion:SOURCE_VERSION,packIds:Array.isArray(record.packIds)?record.packIds:[],dependencies:Array.isArray(record.dependencies)?record.dependencies:[],provenance:record.provenance||{}}}
+function expandLegacy(x,index){const coverage=x.v||'';return normalize({databaseId:x.c||`phase17-${index+1}`,stableId:x.r||'',name:x.n||x.r||`Unnamed inventory record ${index+1}`,objectType:x.t||'Unclassified',developmentStage:STAGE[coverage]||x.g||'Source identified',source:x.s||'Multiversal 8E-008G Foundational Inventory Coverage',sourceLocator:x.l||'',coverageStatus:coverage,promotionDecision:x.p||'',reviewStatus:x.w||'',tags:['phase-1-7',coverage.toLowerCase(),String(x.p||'').toLowerCase()].filter(Boolean),provenance:{authority:'Multiversal 8E-008G Foundational Inventory Coverage',phaseRange:'1-7',inventoryId:x.c||''}},index)}
+function cleanBase64(value){return String(value||'').replace(/[^A-Za-z0-9+/=]/g,'')}
+function looksBase64(value){return value.length>100&&/^[A-Za-z0-9+/=]+$/.test(value)}
+async function gunzip(bytes){if('DecompressionStream'in window){const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));return new Response(stream).text()}throw new Error('This browser does not support gzip decompression.')}
+async function decodeArchive(onProgress){onProgress?.('Repository index is still generating; loading the verified source inventory…');const texts=[];for(const url of ARCHIVE_PARTS){const response=await fetch(`${url}?v=${Date.now()}`,{cache:'no-store'});if(!response.ok)throw new Error(`Missing inventory fragment ${url}`);texts.push(await response.text())}let value=cleanBase64(texts.join(''));let gzipBytes=null;for(let layer=0;layer<4;layer++){let binary;try{binary=atob(value)}catch{throw new Error(`Inventory encoding failed at layer ${layer+1}.`)}const bytes=Uint8Array.from(binary,c=>c.charCodeAt(0));if(bytes[0]===0x1f&&bytes[1]===0x8b){gzipBytes=bytes;break}const text=new TextDecoder().decode(bytes).replace(/\s/g,'');if(!looksBase64(text))throw new Error(`Inventory layer ${layer+1} is not valid nested Base64.`);value=cleanBase64(text)}if(!gzipBytes)throw new Error('Could not locate gzip data in the inventory archive.');const payload=JSON.parse(await gunzip(gzipBytes));if(!Array.isArray(payload.records)||payload.records.length<1000)throw new Error(`Inventory validation failed: ${payload.records?.length||0} records.`);return{format:'multiversal-content-database',databaseVersion:'legacy-fallback-1',generatedAt:null,source:'Phase 1–7 verified inventory fallback',recordCount:payload.records.length,summary:payload.summary||{},records:payload.records.map(expandLegacy),fallback:true}}
+async function load({force=false,onProgress}={}){if(cache&&!force)return cache;let index,manifest=null;try{onProgress?.('Loading plain repository content index…');[manifest,index]=await Promise.all([fetchJson(MANIFEST_URL),fetchJson(INDEX_URL)])}catch{index=await decodeArchive(onProgress)}if(index.format!=='multiversal-content-database')throw new Error('The content database has an unsupported format.');if(!Array.isArray(index.records)||index.records.length<1000)throw new Error(`Content database validation failed: ${index.records?.length||0} records found.`);const normalized=index.fallback?index.records:index.records.map(normalize);cache={manifest,index,records:normalized,count:normalized.length,summary:index.summary||{},databaseVersion:index.databaseVersion||manifest?.databaseVersion||'unknown',generatedAt:index.generatedAt||manifest?.generatedAt||null,fallback:!!index.fallback};onProgress?.(`Loaded ${cache.count.toLocaleString()} content records.`);return cache}
+async function getAll(options){return(await load(options)).records}async function count(){return(await load()).count}async function status(){try{const db=await load();return{installed:true,count:db.count,meta:{databaseVersion:db.databaseVersion,generatedAt:db.generatedAt,summary:db.summary,fallback:db.fallback}}}catch(error){return{installed:false,count:0,error:String(error.message||error),meta:null}}}function clear(){cache=null;return Promise.resolve()}async function exportDatabase(){return load()}
 window.MultiversalContentDB={load,getAll,count,status,clear,exportDatabase,SOURCE_VERSION,INDEX_URL,MANIFEST_URL};
 })();
