@@ -1,0 +1,25 @@
+{
+  "format": "multiversal-forensic-archive-corpus",
+  "version": "1.0.0",
+  "authority": "legacy-source",
+  "archives": [
+    {"path": "Part 1.zip", "group": "part-1", "required": true, "status": "present"},
+    {"path": "Part 2.zip", "group": "part-2", "required": true, "status": "present"},
+    {"path": "Part 3.zip", "group": "part-3", "required": true, "status": "present"},
+    {"path": "Part 4.zip", "group": "part-4", "required": true, "status": "missing"},
+    {"path": "Creatures.zip", "group": "creatures", "required": true, "status": "present"}
+  ],
+  "acceptedMemberTypes": [".pdf", ".csv"],
+  "auditRules": [
+    "Process every PDF page in every archive member.",
+    "Process every CSV row independently.",
+    "Preserve archive path, member path, page or row locator, and content hash.",
+    "Do not assume content families are confined to headings or dedicated sections.",
+    "Treat examples, sidebars, prose, tables, and appendices as possible mechanical evidence.",
+    "Do not promote extracted findings to canon without review."
+  ],
+  "completionGate": {
+    "allRequiredArchivesPresent": false,
+    "reason": "Part 4.zip has not yet been detected in the repository."
+  }
+}
