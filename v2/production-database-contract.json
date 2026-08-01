@@ -1,0 +1,17 @@
+{
+  "format":"multiversal-production-database-contract",
+  "version":"1.0.0",
+  "objectLifecycle":["Draft","Needs Review","Approved","Published","Deprecated"],
+  "branchClasses":["Main Canon","Experimental","Playtest","Expansion"],
+  "versionRequirements":["stableId","branchId","versionNumber","author","updatedAt","status","record","changeSummary"],
+  "reviewRequirements":["objectId","branchId","reviewerOrAuthority","decision","notes","timestamp"],
+  "mergeRules":[
+    "Merges are non-destructive and preserve both source and target history.",
+    "Conflicting object bodies must be reported and cannot be silently overwritten.",
+    "Stable IDs remain unchanged across branches and versions.",
+    "Owner approval is required to merge into Main Canon when a conflict exists."
+  ],
+  "packRequirements":["packId","name","version","objectIds","dependencyClosure","validationReceipt"],
+  "releaseRequirements":["releaseId","version","packIds","changelog","receipts","ownerApproval"],
+  "authorityBoundaries":{"localWorkspace":"Working database and portable release preparation.","repository":"Authoritative persisted source after reviewed export and commit.","runtimeImporter":"Final install/uninstall verification when the Multiversal application exists."}
+}
