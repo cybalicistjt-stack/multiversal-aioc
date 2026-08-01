@@ -35,8 +35,13 @@ jobs:
           node --check content-catalog-v4.js
           node --check content-library.js
           node --check unified-desktop.js
+          node --check scripts/materialize-content-source.mjs
+          node --check scripts/build-content-database.mjs
           test -f content-library.html
           test -f content-library.css
+
+      - name: Materialize canonical content source
+        run: node scripts/materialize-content-source.mjs
 
       - name: Build Multiversal content database
         run: node scripts/build-content-database.mjs
@@ -45,16 +50,24 @@ jobs:
         run: |
           node - <<'NODE'
           const fs = require('fs');
+          const source = JSON.parse(fs.readFileSync('content-source/phase-1-8-canonical-objects.json', 'utf8'));
           const index = JSON.parse(fs.readFileSync('content-db/index.json', 'utf8'));
           const manifest = JSON.parse(fs.readFileSync('content-db/manifest.json', 'utf8'));
+          if (source.records.length !== 487) throw new Error(`Canonical source count mismatch: ${source.records.length}`);
           if (index.format !== 'multiversal-content-database') throw new Error('Unexpected database format');
           if (!Array.isArray(index.records) || index.records.length < 1000) throw new Error('Database did not recover the Phase 1–7 inventory');
           if (index.recordCount !== index.records.length) throw new Error('Record count mismatch');
           if (manifest.recordCount !== index.recordCount) throw new Error('Manifest count mismatch');
-          const fullBodies = index.records.filter(r => r.gameObject || r.object || r.content || r.spec).length;
-          console.log(`Validated ${index.recordCount} content records, including ${fullBodies} full object bodies`);
-          if (!fs.existsSync('content-source')) console.warn('content-source directory is absent; inventory-only deployment will continue.');
+          const fullBodies = index.records.filter(r => r.gameObject).length;
+          if (fullBodies < 487) throw new Error(`Expected at least 487 full object bodies; found ${fullBodies}`);
+          console.log(`Validated ${index.recordCount} content records, including ${fullBodies} full object bodies.`);
           NODE
+
+      - name: Write deployed build marker
+        run: |
+          cat > deployed-build.json <<EOF
+          {"build":"content-library-2.1","commit":"${GITHUB_SHA}","generatedAt":"$(date -u +%Y-%m-%dT%H:%M:%SZ)"}
+          EOF
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
