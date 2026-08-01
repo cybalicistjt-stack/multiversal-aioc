@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#03040a">
 <meta name="description" content="Multiversal AIOC Unified Desktop">
-<meta name="aioc-build" content="unified-desktop-2.0">
-<link rel="manifest" href="manifest.webmanifest?build=unified-desktop-2.0">
+<meta name="aioc-build" content="consolidation-3.0">
+<link rel="manifest" href="manifest.webmanifest?build=consolidation-3.0">
 <link rel="icon" href="./icon-192.svg" type="image/svg+xml">
-<link rel="stylesheet" href="unified-desktop.css?build=unified-desktop-2.0">
-<title>Multiversal AIOC · Unified Desktop 2.0</title>
+<link rel="stylesheet" href="unified-desktop.css?build=consolidation-3.0">
+<title>Multiversal AIOC · Consolidation 3.0</title>
 </head>
-<body data-build="Unified Desktop 2.0">
+<body data-build="Consolidation 3.0">
 <div class="mvdesk">
 <header class="mv-top">
 <button id="menuBtn" class="mv-iconbtn mv-mobile-menu" aria-label="Open navigation">☰</button>
@@ -28,10 +28,11 @@
 <div class="mv-pane mv-pane-secondary"><span id="secondaryLabel" class="mv-pane-label">Balance Lab</span><iframe id="secondaryFrame" title="Secondary Multiversal workspace"></iframe></div>
 </section>
 </main>
-<footer class="mv-status"><span class="ok">● Systems online</span><span id="statusObjects">0 objects</span><span id="statusPacks">0 packs</span><span>Current build <b id="statusBuild">2.0</b></span><span style="margin-left:auto">Local-first · shared project state</span></footer>
+<footer class="mv-status"><span class="ok">● Systems online</span><span id="statusObjects">0 objects</span><span id="statusPacks">0 packs</span><span id="statusAttention">0 attention</span><span>DB <b id="statusDb">0</b></span><span>Build <b id="statusBuild">3.0</b></span><span style="margin-left:auto">Local-first · versioned project state</span></footer>
 </div>
 <div id="commandPalette" class="mv-command"><section class="mv-command-box"><div style="display:flex;gap:8px;align-items:center"><input id="commandInput" placeholder="Open a workspace…"><button id="commandClose" class="mv-iconbtn">✕</button></div><div id="commandResults" class="mv-command-results"></div></section></div>
-<script src="unified-desktop.js?build=unified-desktop-2.0"></script>
-<script>if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?build=unified-desktop-2.0',{updateViaCache:'none'}).then(r=>r.update()).catch(console.error));</script>
+<script src="aioc-data.js?build=consolidation-3.0"></script>
+<script src="unified-desktop.js?build=consolidation-3.0"></script>
+<script>if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?build=consolidation-3.0',{updateViaCache:'none'}).then(r=>r.update()).catch(console.error));</script>
 </body>
 </html>
