@@ -1,0 +1,18 @@
+{
+  "format":"multiversal-canonical-audit-policy",
+  "version":"1.0.0",
+  "purpose":"Forensic recovery and verification of all legacy Multiversal source material.",
+  "requiredSourceFields":["name","version","totalPages","status"],
+  "sourceStatuses":["Queued","In audit","Review","Verified"],
+  "findingStatuses":["discovered","review","duplicate","conflict","verified"],
+  "requiredFindingEvidence":["sourceId","page","name","objectType","confidence","sourceExcerptOrParaphrase"],
+  "verificationRules":[
+    "A finding may not be marked verified without a registered source and page locator.",
+    "A canonical match must preserve the stable object ID.",
+    "Conflicts, duplicates, and aliases require an explicit review decision.",
+    "Automated matching is advisory and cannot grant canonical approval.",
+    "A source is complete only when every page is audited and all findings are resolved or explicitly deferred."
+  ],
+  "coverageDimensions":["source document","page","world","content family","rule section","object type"],
+  "authorityBoundaries":{"automation":"May detect, compare, and propose.","humanReview":"Required for verification, conflict resolution, and canon approval.","owner":"Final authority for canonical decisions."}
+}
