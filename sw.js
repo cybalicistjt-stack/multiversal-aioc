@@ -1,15 +1,16 @@
-const CACHE = 'multiversal-aioc-v4';
+const CACHE = 'multiversal-aioc-forge-v5';
 const ASSETS = [
   './',
   './index.html',
-  './styles.css?v=4',
-  './authoring.css?v=4',
-  './multiversal-seed.js?v=4',
-  './app.js?v=4',
-  './authoring.js?v=4',
-  './manifest.webmanifest?v=4',
+  './styles.css',
+  './authoring.css',
+  './multiversal-seed.js',
+  './app.js',
+  './authoring.js',
+  './manifest.webmanifest',
   './icon-192.svg',
-  './icon-512.svg'
+  './icon-512.svg',
+  './refresh.html'
 ];
 
 self.addEventListener('install', event => {
@@ -19,26 +20,42 @@ self.addEventListener('install', event => {
 
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key)))
-    )
+    caches.keys().then(keys => Promise.all(
+      keys.filter(key => key.startsWith('multiversal-aioc') && key !== CACHE)
+        .map(key => caches.delete(key))
+    ))
   );
   self.clients.claim();
 });
 
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
-  const url = new URL(event.request.url);
-  const isAppShell = url.origin === self.location.origin;
-  if (!isAppShell) return;
+
+  const request = event.request;
+  const isNavigation = request.mode === 'navigate';
+
+  if (isNavigation) {
+    event.respondWith(
+      fetch(request, { cache: 'no-store' })
+        .then(response => {
+          const copy = response.clone();
+          caches.open(CACHE).then(cache => cache.put('./index.html', copy));
+          return response;
+        })
+        .catch(() => caches.match('./index.html'))
+    );
+    return;
+  }
 
   event.respondWith(
-    fetch(event.request)
+    fetch(request)
       .then(response => {
-        const copy = response.clone();
-        caches.open(CACHE).then(cache => cache.put(event.request, copy));
+        if (response && response.ok) {
+          const copy = response.clone();
+          caches.open(CACHE).then(cache => cache.put(request, copy));
+        }
         return response;
       })
-      .catch(() => caches.match(event.request).then(cached => cached || caches.match('./index.html')))
+      .catch(() => caches.match(request))
   );
 });
