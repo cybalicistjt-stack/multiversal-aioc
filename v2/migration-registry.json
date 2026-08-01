@@ -1,29 +1,30 @@
 {
   "format": "multiversal-aioc-v2-migration-registry",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "steps": [
-    {"id":1,"name":"Stabilize v2 foundation","status":"active","deliverables":["direct branch deployment","visible build marker","rolling restore points","portable project state"]},
-    {"id":2,"name":"Complete canonical database","status":"active","deliverables":["487 source objects","inventory merge","stable IDs","source and relationship indexes"]},
-    {"id":3,"name":"Complete Content Library","status":"active","deliverables":["explorer","workbench","saved views","bulk stages","history and evidence links"]},
-    {"id":4,"name":"Relationships and intelligence","status":"active","deliverables":["dependency graph","transitive closure","impact analysis","deterministic consistency advisor"]},
-    {"id":5,"name":"Rebuild authoring tools","status":"active","deliverables":["object-type schema profiles","required-field validation","manual entries","structured exports"]},
-    {"id":6,"name":"Rebuild Pack management","status":"active","deliverables":["Pack Lists","transitive dependency closure","validation receipts","deterministic candidate export"]},
-    {"id":7,"name":"Migrate expert systems","status":"active","deliverables":["object-linked Balance Lab","evidence-linked Game Testing","readiness-gated Feature Modules","Development OS and Release Control"]},
-    {"id":8,"name":"Connect AI workflows","status":"active","deliverables":["database-aware review observations","guided drafting context","evidence recommendations","non-destructive suggestions"]},
-    {"id":9,"name":"Mobile accessibility reliability","status":"active","deliverables":["responsive workspaces","project export/import","rolling restore points","bounded local state"]},
-    {"id":10,"name":"Validate and retire legacy","status":"planned","deliverables":["end-to-end regression corpus","legacy state migration","v2 default route","legacy archive"]}
+    {"id":1,"name":"Stabilize v2 foundation","status":"active","deliverables":["direct branch deployment","visible build marker","local recovery","error handling"]},
+    {"id":2,"name":"Complete canonical database","status":"active","deliverables":["487 source objects","inventory merge","stable IDs","indexes"]},
+    {"id":3,"name":"Complete Content Library","status":"active","deliverables":["explorer","workbench","saved views","bulk stages","history"]},
+    {"id":4,"name":"Relationships and intelligence","status":"active","deliverables":["dependency graph","incoming references","impact analysis","consistency checks"]},
+    {"id":5,"name":"Rebuild authoring tools","status":"active","deliverables":["schema-aware Authoring Studio","manual and structured outputs","validation receipts","object exports"]},
+    {"id":6,"name":"Rebuild Pack management","status":"active","deliverables":["Pack Lists","transitive dependency closure","validation receipts","Pack candidate export"]},
+    {"id":7,"name":"Migrate expert systems","status":"active","deliverables":["Balance Lab","Game Testing","Feature Modules","Development OS","release control"]},
+    {"id":8,"name":"Connect AI workflows","status":"active","deliverables":["contextual prompt builder","database-aware review","evidence recommendations","non-destructive suggestions"]},
+    {"id":9,"name":"Mobile accessibility reliability","status":"active","deliverables":["responsive workspaces","project export/import","restore points","reduced motion"]},
+    {"id":10,"name":"Validate and retire legacy","status":"active","deliverables":["legacy browser-data migration","regression suite","cross-system integrity","promotion receipt","legacy preservation"]}
   ],
   "features": [
     {"id":"developer-dashboard","name":"Developer Dashboard","category":"Development","legacy":"AIOC Core / Development OS","destination":"v2 Developer Dashboard","status":"in-progress"},
     {"id":"content-library","name":"Content Library","category":"Content","legacy":"Content Catalog","destination":"v2 Content Library","status":"in-progress"},
-    {"id":"authoring","name":"Schema-aware Authoring Studio","category":"Authoring","legacy":"Forge tools / Design Studio","destination":"v2 Operations Suite","status":"in-progress"},
-    {"id":"packs","name":"Validated Pack Manager","category":"Publishing","legacy":"Pack Lists / Pack Workspace","destination":"v2 Operations Suite","status":"in-progress"},
-    {"id":"balance","name":"Object-linked Balance Lab","category":"Validation","legacy":"balance.html","destination":"v2 Operations Suite","status":"in-progress"},
-    {"id":"testing","name":"Evidence-linked Game Testing","category":"Validation","legacy":"testing-suite.html","destination":"v2 Operations Suite","status":"in-progress"},
-    {"id":"modules","name":"Readiness-gated Feature Modules","category":"Development","legacy":"feature-modules.html","destination":"v2 Operations Suite","status":"in-progress"},
-    {"id":"release","name":"Release Control","category":"Publishing","legacy":"Development OS release controls","destination":"v2 Operations Suite","status":"in-progress"},
-    {"id":"devos","name":"Development OS","category":"Development","legacy":"development-os.html","destination":"v2 Operations Suite","status":"in-progress"},
+    {"id":"authoring","name":"Authoring Studio","category":"Authoring","legacy":"Forge tools / Design Studio","destination":"v2 Operations Suite","status":"in-progress"},
+    {"id":"packs","name":"Pack Manager","category":"Publishing","legacy":"Pack Lists / Pack Workspace","destination":"v2 Operations Suite","status":"in-progress"},
+    {"id":"balance","name":"Balance Lab","category":"Validation","legacy":"balance.html","destination":"v2 Operations Suite","status":"in-progress"},
+    {"id":"testing","name":"Game Testing Suite","category":"Validation","legacy":"testing-suite.html","destination":"v2 Operations Suite","status":"in-progress"},
+    {"id":"modules","name":"Feature Module Tracker","category":"Development","legacy":"feature-modules.html","destination":"v2 Operations Suite","status":"in-progress"},
+    {"id":"devos","name":"Development OS and Release Control","category":"Development","legacy":"development-os.html","destination":"v2 Operations Suite","status":"in-progress"},
     {"id":"recovery","name":"Diagnostics and Recovery","category":"System","legacy":"diagnostics.html","destination":"v2 Recovery workspace","status":"in-progress"},
-    {"id":"ai","name":"Database-aware Design Advisor","category":"AI","legacy":"Forge assistants","destination":"v2 Operations Suite","status":"in-progress"}
+    {"id":"ai","name":"AI-assisted Workflows","category":"AI","legacy":"Forge assistants","destination":"v2 Finalization Center","status":"in-progress"},
+    {"id":"legacy-migration","name":"Legacy State Migration","category":"System","legacy":"aioc-state browser database","destination":"v2 Finalization Center","status":"in-progress"},
+    {"id":"regression","name":"Regression and Promotion Gate","category":"Release","legacy":"manual checks","destination":"v2 Finalization Center","status":"in-progress"}
   ]
 }
