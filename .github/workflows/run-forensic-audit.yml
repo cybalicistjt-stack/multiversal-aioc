@@ -96,6 +96,32 @@ jobs:
           print(json.dumps(s, indent=2))
           PY
 
+      - name: Refine findings and canonical matches
+        run: |
+          CANONICAL=''
+          if [ -f content-source/phase-1-8-canonical-objects.json ]; then
+            CANONICAL='--canonical content-source/phase-1-8-canonical-objects.json'
+          fi
+          python audit/refine_findings.py \
+            --input audit-output \
+            --out audit-output/refined \
+            $CANONICAL
+
+      - name: Validate refined reconciliation
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('audit-output/refined/refinement-summary.json')
+          if not p.exists():
+              raise SystemExit('refinement-summary.json was not produced')
+          s = json.loads(p.read_text())
+          assert s['rawFindingCount'] > 0, s
+          assert s['reviewCandidateCount'] > 0, s
+          assert s['reviewCandidateCount'] <= s['rawFindingCount'], s
+          print(json.dumps(s, indent=2))
+          PY
+
       - name: Publish compact dashboard data
         run: |
           python audit/publish_compact_audit.py \
@@ -135,6 +161,6 @@ jobs:
             echo 'No compact audit changes to publish.'
             exit 0
           fi
-          git commit -m 'Publish forensic audit status [skip ci]'
+          git commit -m 'Publish refined forensic audit status [skip ci]'
           git pull --rebase origin main
           git push origin HEAD:main
