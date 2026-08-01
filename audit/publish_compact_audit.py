@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Publish compact forensic-audit results for the static AIOC dashboard.
 
-Copies bounded summaries from audit-output into v2/audit-data. Full findings stay
-in workflow artifacts so the repository does not grow without limit.
+Copies bounded summaries from audit-output into v2/audit-data. Full findings and
+promotion batches stay in workflow artifacts so the repository does not grow
+without limit.
 """
 from __future__ import annotations
 
@@ -26,10 +27,12 @@ REFINED_FILES = (
     "refinement-summary.json",
     "likely-existing.json",
     "possible-existing.json",
+    "possibly-existing.json",
     "likely-new.json",
     "ambiguous.json",
 )
 MAX_QUEUE_ROWS = 250
+MAX_PROMOTION_SAMPLE = 250
 
 
 def read_json(path: Path):
@@ -39,12 +42,13 @@ def read_json(path: Path):
         return None
 
 
-def write_bounded(src: Path, dst: Path) -> bool:
+def write_bounded(src: Path, dst: Path, max_rows: int = MAX_QUEUE_ROWS) -> bool:
     payload = read_json(src)
     if payload is None:
         return False
     if isinstance(payload, list):
-        payload = payload[:MAX_QUEUE_ROWS]
+        payload = payload[:max_rows]
+    dst.parent.mkdir(parents=True, exist_ok=True)
     dst.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return True
 
@@ -71,13 +75,23 @@ def main() -> None:
         if write_bounded(refined_source / name, refined_destination / name):
             published.append(f"refined/{name}")
 
+    promotion_source = args.source / "promotion" / "promotion-index.json"
+    promotion_payload = read_json(promotion_source)
+    if isinstance(promotion_payload, dict):
+        promotion_payload["publishedCandidateSample"] = list(promotion_payload.get("publishedCandidateSample") or [])[:MAX_PROMOTION_SAMPLE]
+        promotion_destination = args.destination / "promotion" / "promotion-index.json"
+        promotion_destination.parent.mkdir(parents=True, exist_ok=True)
+        promotion_destination.write_text(json.dumps(promotion_payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        published.append("promotion/promotion-index.json")
+
     status = read_json(args.source / "corpus-status.json") or {}
     reconciliation = read_json(args.source / "reconciliation-report.json") or {}
     inventory = read_json(args.source / "archive-inventory.json") or {}
     refinement = read_json(refined_source / "refinement-summary.json") or {}
+    promotion = promotion_payload or {}
     manifest = {
         "format": "multiversal-static-audit-publication",
-        "version": "1.1.0",
+        "version": "1.2.0",
         "publishedAt": datetime.now(timezone.utc).isoformat(),
         "sourceCommit": args.source_sha,
         "publishedFiles": published,
@@ -92,6 +106,8 @@ def main() -> None:
             "reviewCandidateCount": refinement.get("reviewCandidateCount", 0),
             "suppressedCount": refinement.get("suppressedCount", 0),
             "queueCounts": refinement.get("queueCounts", {}),
+            "promotionCandidateCount": promotion.get("candidateCount", 0),
+            "promotionBatchCount": promotion.get("batchCount", 0),
             "machineScanComplete": bool(status.get("automaticAuditComplete") or status.get("machineScanComplete")),
             "humanReviewComplete": bool(status.get("humanReviewComplete")),
             "canonicalPromotionComplete": bool(status.get("canonicalPromotionComplete")),
