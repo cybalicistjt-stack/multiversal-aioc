@@ -1,0 +1,33 @@
+{
+  "format": "multiversal-forensic-audit-config",
+  "version": "1.0.0",
+  "primarySource": {
+    "file": "fullmv062926.pdf",
+    "authority": "sole authoritative legacy prose source",
+    "scanPolicy": "every page, every section, every table, every example"
+  },
+  "supplementalSources": {
+    "root": "aaaa",
+    "extensions": [".csv"],
+    "policy": "treat each row as independent structured evidence; do not assume duplication with PDF"
+  },
+  "canonicalComparison": "content-source/phase-1-8-canonical-objects.json",
+  "contentFamilies": [
+    "rules", "actions", "effects", "conditions", "resources", "abilities", "spells", "progressions",
+    "creatures", "npcs", "species", "cultures", "professions", "items", "weapons", "armor", "tools",
+    "vehicles", "ships", "mecha", "worlds", "locations", "environments", "factions", "organizations",
+    "religions", "languages", "currencies", "crafting", "businesses", "adventures", "quests", "encounters",
+    "clues", "hazards", "tables", "examples-with-mechanical-force"
+  ],
+  "reviewStates": ["unmatched", "exact-name", "ambiguous-name", "partial", "conflict", "duplicate", "verified"],
+  "requiredOutputs": [
+    "page-ledger.jsonl", "findings.jsonl", "csv-findings.jsonl", "audit-summary.json",
+    "unresolved-review-queue.json", "canonical-diff.json", "duplicate-groups.json", "source-manifest.json"
+  ],
+  "authorityBoundaries": {
+    "automaticExtraction": "candidate evidence only",
+    "automaticMatching": "suggestion only",
+    "canonicalPromotion": "requires reviewed approval",
+    "conflictResolution": "requires owner or delegated canonical authority"
+  }
+}
