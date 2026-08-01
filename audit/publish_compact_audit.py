@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish bounded forensic, recovery, staging, and acceptance results to the AIOC."""
+"""Publish bounded forensic, recovery, staging, acceptance, and merge-readiness results."""
 from __future__ import annotations
 import argparse, json, shutil
 from datetime import datetime, timezone
@@ -13,15 +13,13 @@ def read_json(path):
  except Exception:return None
 
 def write_json(path,payload):
- path.parent.mkdir(parents=True,exist_ok=True)
- path.write_text(json.dumps(payload,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+ path.parent.mkdir(parents=True,exist_ok=True);path.write_text(json.dumps(payload,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
 
 def bounded_index(src,dst,sample_keys):
  payload=read_json(src)
- if not isinstance(payload,dict): return None
- for key,limit in sample_keys.items(): payload[key]=list(payload.get(key) or [])[:limit]
- write_json(dst,payload)
- return payload
+ if not isinstance(payload,dict):return None
+ for key,limit in sample_keys.items():payload[key]=list(payload.get(key) or [])[:limit]
+ write_json(dst,payload);return payload
 
 def publish_list(src,dst,limit,published,label):
  payload=read_json(src)
@@ -43,25 +41,26 @@ def main():
  if recovery:published.append('recovery/recovery-index.json')
  handoff=bounded_index(a.source/'handoffs'/'recovery-handoff-index.json',a.destination/'handoffs'/'recovery-handoff-index.json',{'publishedSample':200})
  if handoff:published.append('handoffs/recovery-handoff-index.json')
- for name in ('relationship-resolution-queue.json','source-completion-receipts.json'):
-  publish_list(a.source/'handoffs'/name,a.destination/'handoffs'/name,300,published,'handoffs/'+name)
+ for name in ('relationship-resolution-queue.json','source-completion-receipts.json'):publish_list(a.source/'handoffs'/name,a.destination/'handoffs'/name,300,published,'handoffs/'+name)
  staging=bounded_index(a.source/'production-staging'/'production-staging-index.json',a.destination/'production-staging'/'production-staging-index.json',{'publishedSample':150,'blockedSample':150})
  if staging:published.append('production-staging/production-staging-index.json')
  acceptance=bounded_index(a.source/'canonical-acceptance'/'canonical-acceptance-index.json',a.destination/'canonical-acceptance'/'canonical-acceptance-index.json',{'publishedAcceptanceSample':150,'publishedResolutionSample':150})
  if acceptance:published.append('canonical-acceptance/canonical-acceptance-index.json')
- for name in ('blocker-resolution-queue.json','source-closure-receipts.json'):
-  publish_list(a.source/'canonical-acceptance'/name,a.destination/'canonical-acceptance'/name,300,published,'canonical-acceptance/'+name)
+ for name in ('blocker-resolution-queue.json','source-closure-receipts.json'):publish_list(a.source/'canonical-acceptance'/name,a.destination/'canonical-acceptance'/name,300,published,'canonical-acceptance/'+name)
+ merge=bounded_index(a.source/'merge-readiness'/'merge-readiness-index.json',a.destination/'merge-readiness'/'merge-readiness-index.json',{'publishedPlanSample':150,'publishedReadinessSample':150})
+ if merge:published.append('merge-readiness/merge-readiness-index.json')
+ for name in ('source-merge-readiness.json','post-import-validation-receipts.json'):publish_list(a.source/'merge-readiness'/name,a.destination/'merge-readiness'/name,300,published,'merge-readiness/'+name)
  status=read_json(a.source/'corpus-status.json') or {};refinement=read_json(a.source/'refined'/'refinement-summary.json') or {}
  summary={
   'archiveCount':status.get('archiveCount',0),'pdfCount':status.get('pdfCount',0),'totalPages':status.get('totalPages',0),'completedPages':status.get('completedPages',0),
   'reviewCandidateCount':refinement.get('reviewCandidateCount',0),'promotionCandidateCount':(promotion or {}).get('candidateCount',0),'factoryCandidateCount':(factory or {}).get('consolidatedCandidateCount',0),
   'recoveryCandidateCount':(recovery or {}).get('candidateCount',0),'readyForDesignerReview':(recovery or {}).get('readyForDesignerReview',0),'relationshipCandidateCount':(recovery or {}).get('relationshipCandidateCount',0),
-  'handoffCandidateCount':(handoff or {}).get('candidateCount',0),'handoffReadyForReview':(handoff or {}).get('readyForReviewCount',0),'unresolvedRelationshipCount':(handoff or {}).get('unresolvedRelationshipCount',0),'sourceGroupCount':(handoff or {}).get('sourceGroupCount',0),
-  'productionStagedCount':(staging or {}).get('stagedCount',0),'productionBlockedCount':(staging or {}).get('blockedCount',0),'productionBatchCount':(staging or {}).get('batchCount',0),
-  'acceptanceCandidateCount':(acceptance or {}).get('acceptanceCandidateCount',0),'acceptanceBlockedCount':(acceptance or {}).get('blockedCandidateCount',0),'acceptanceBatchCount':(acceptance or {}).get('acceptanceBatchCount',0),'sourceClosureCount':(acceptance or {}).get('sourceClosureCount',0),
+  'handoffCandidateCount':(handoff or {}).get('candidateCount',0),'productionStagedCount':(staging or {}).get('stagedCount',0),'productionBlockedCount':(staging or {}).get('blockedCount',0),
+  'acceptanceCandidateCount':(acceptance or {}).get('acceptanceCandidateCount',0),'acceptanceBlockedCount':(acceptance or {}).get('blockedCandidateCount',0),'acceptanceBatchCount':(acceptance or {}).get('acceptanceBatchCount',0),
+  'mergePlanCount':(merge or {}).get('acceptanceEntryCount',0),'mergeOpenBlockerCount':(merge or {}).get('openBlockerCount',0),'mergeImportBatchCount':(merge or {}).get('importBatchCount',0),'mergeSourceGroupCount':(merge or {}).get('sourceGroupCount',0),
   'machineScanComplete':bool(status.get('automaticAuditComplete') or status.get('machineScanComplete')),'humanReviewComplete':bool(status.get('humanReviewComplete')),'canonicalPromotionComplete':bool(status.get('canonicalPromotionComplete'))
  }
- manifest={'format':'multiversal-static-audit-publication','version':'1.7.0','publishedAt':datetime.now(timezone.utc).isoformat(),'sourceCommit':a.source_sha,'publishedFiles':published,'summary':summary}
+ manifest={'format':'multiversal-static-audit-publication','version':'1.8.0','publishedAt':datetime.now(timezone.utc).isoformat(),'sourceCommit':a.source_sha,'publishedFiles':published,'summary':summary}
  write_json(a.destination/'publication-manifest.json',manifest);print(json.dumps(manifest,indent=2))
 
 if __name__=='__main__':main()
