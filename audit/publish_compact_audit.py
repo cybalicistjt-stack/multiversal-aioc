@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Publish compact forensic-audit results for the static AIOC dashboard.
 
-Copies bounded summaries from audit-output into v2/audit-data. Full findings and
-promotion batches stay in workflow artifacts so the repository does not grow
-without limit.
+Copies bounded summaries from audit-output into v2/audit-data. Full findings,
+promotion batches, and object-factory batches stay in workflow artifacts so the
+repository does not grow without limit.
 """
 from __future__ import annotations
 
@@ -33,6 +33,7 @@ REFINED_FILES = (
 )
 MAX_QUEUE_ROWS = 250
 MAX_PROMOTION_SAMPLE = 250
+MAX_FACTORY_SAMPLE = 200
 
 
 def read_json(path: Path):
@@ -84,14 +85,24 @@ def main() -> None:
         promotion_destination.write_text(json.dumps(promotion_payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         published.append("promotion/promotion-index.json")
 
+    factory_source = args.source / "object-factory" / "object-factory-index.json"
+    factory_payload = read_json(factory_source)
+    if isinstance(factory_payload, dict):
+        factory_payload["publishedSample"] = list(factory_payload.get("publishedSample") or [])[:MAX_FACTORY_SAMPLE]
+        factory_destination = args.destination / "object-factory" / "object-factory-index.json"
+        factory_destination.parent.mkdir(parents=True, exist_ok=True)
+        factory_destination.write_text(json.dumps(factory_payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        published.append("object-factory/object-factory-index.json")
+
     status = read_json(args.source / "corpus-status.json") or {}
     reconciliation = read_json(args.source / "reconciliation-report.json") or {}
     inventory = read_json(args.source / "archive-inventory.json") or {}
     refinement = read_json(refined_source / "refinement-summary.json") or {}
     promotion = promotion_payload or {}
+    factory = factory_payload or {}
     manifest = {
         "format": "multiversal-static-audit-publication",
-        "version": "1.2.0",
+        "version": "1.3.0",
         "publishedAt": datetime.now(timezone.utc).isoformat(),
         "sourceCommit": args.source_sha,
         "publishedFiles": published,
@@ -108,6 +119,10 @@ def main() -> None:
             "queueCounts": refinement.get("queueCounts", {}),
             "promotionCandidateCount": promotion.get("candidateCount", 0),
             "promotionBatchCount": promotion.get("batchCount", 0),
+            "factoryCandidateCount": factory.get("consolidatedCandidateCount", 0),
+            "factoryDuplicateEvidenceCollapsed": factory.get("duplicateEvidenceCollapsed", 0),
+            "factoryTierCounts": factory.get("tierCounts", {}),
+            "factoryBatchCount": factory.get("batchCount", 0),
             "machineScanComplete": bool(status.get("automaticAuditComplete") or status.get("machineScanComplete")),
             "humanReviewComplete": bool(status.get("humanReviewComplete")),
             "canonicalPromotionComplete": bool(status.get("canonicalPromotionComplete")),
