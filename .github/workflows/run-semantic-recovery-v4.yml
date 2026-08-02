@@ -8,7 +8,9 @@ on:
       - 'audit/build_hierarchical_structure.py'
       - 'audit/reconstruct_tables_and_forms.py'
       - 'audit/build_object_assembly_v4.py'
+      - 'audit/filter_assembled_objects_v4.py'
       - 'audit/build_relationships_and_canonical_v4.py'
+      - 'audit/sanitize_canonical_relationships_v4.py'
       - 'audit/build_golden_corpus_packet_v4.py'
       - 'audit/evaluate_golden_corpus_v4.py'
       - 'audit/golden-corpus-v4.json'
@@ -46,7 +48,9 @@ jobs:
             audit/build_hierarchical_structure.py \
             audit/reconstruct_tables_and_forms.py \
             audit/build_object_assembly_v4.py \
+            audit/filter_assembled_objects_v4.py \
             audit/build_relationships_and_canonical_v4.py \
+            audit/sanitize_canonical_relationships_v4.py \
             audit/build_golden_corpus_packet_v4.py \
             audit/evaluate_golden_corpus_v4.py
       - name: Record preflight
@@ -88,20 +92,46 @@ jobs:
         if: always()
         run: printf '{"stage":"reconstruction","outcome":"%s"}\n' '${{ steps.reconstruction.outcome }}' > semantic-recovery-v4/status/receipts/reconstruction.json
 
-      - name: Assemble complete objects with document grammars
+      - name: Assemble and boundary-filter complete objects
         id: assembly
         continue-on-error: true
         if: steps.hierarchy.outcome == 'success'
-        run: python audit/build_object_assembly_v4.py --structure semantic-recovery-v4/hierarchy --out semantic-recovery-v4/assembly
+        run: |
+          python audit/build_object_assembly_v4.py --structure semantic-recovery-v4/hierarchy --out semantic-recovery-v4/assembly
+          python audit/filter_assembled_objects_v4.py --assembly semantic-recovery-v4/assembly
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('semantic-recovery-v4/assembly/object-assembly-v4-index.json')
+          d=json.loads(p.read_text())
+          assert d['assembledObjectCount'] > 0, d
+          assert len(d['familyCounts']) >= 3, d
+          bad=('Ac: 13','HP: 10','Campaign Use','Investigation Hooks')
+          names={x.get('name') for x in d.get('publishedSample',[])}
+          assert not any(x in names for x in bad), (bad,names)
+          PY
       - name: Record assembly
         if: always()
         run: printf '{"stage":"assembly","outcome":"%s"}\n' '${{ steps.assembly.outcome }}' > semantic-recovery-v4/status/receipts/assembly.json
 
-      - name: Build relationships and canonical envelopes
+      - name: Build and sanitize relationships and canonical envelopes
         id: canonical
         continue-on-error: true
         if: steps.assembly.outcome == 'success'
-        run: python audit/build_relationships_and_canonical_v4.py --assembly semantic-recovery-v4/assembly --out semantic-recovery-v4/canonical
+        run: |
+          python audit/build_relationships_and_canonical_v4.py --assembly semantic-recovery-v4/assembly --out semantic-recovery-v4/canonical
+          python audit/sanitize_canonical_relationships_v4.py --canonical semantic-recovery-v4/canonical
+          python - <<'PY'
+          import json,re
+          from pathlib import Path
+          p=Path('semantic-recovery-v4/canonical/canonical-candidate-v4-index.json')
+          d=json.loads(p.read_text())
+          assert d['candidateCount'] > 0, d
+          for row in d.get('publishedSample',[]):
+              assert row.get('name') != 'Ac: 13', row
+              for rel in row.get('relationships') or []:
+                  assert not re.fullmatch(r'[a-z],?', str(rel.get('targetName') or ''), re.I), rel
+          PY
       - name: Record canonical
         if: always()
         run: printf '{"stage":"canonical","outcome":"%s"}\n' '${{ steps.canonical.outcome }}' > semantic-recovery-v4/status/receipts/canonical.json
@@ -137,7 +167,7 @@ jobs:
               stages[row['stage']]=row['outcome']
           Path('semantic-recovery-v4/status/stage-status.json').write_text(json.dumps({
               'format':'multiversal-semantic-recovery-v4-stage-status',
-              'version':'4.1.0',
+              'version':'4.3.1',
               'stages':stages,
               'allEngineeringStagesSucceeded':all(v=='success' for v in stages.values())
           },indent=2)+'\n')
@@ -147,7 +177,7 @@ jobs:
           locked=bool(evaluation.get('engineeringConvergencePassed')) and manifest.get('ownerCertified') is True
           Path('semantic-recovery-v4/status/baseline-lock-status.json').write_text(json.dumps({
               'format':'multiversal-semantic-baseline-v4-lock-status',
-              'version':'4.1.0',
+              'version':'4.3.1',
               'engineeringConvergencePassed':bool(evaluation.get('engineeringConvergencePassed')),
               'ownerCertified':manifest.get('ownerCertified') is True,
               'baselineLocked':locked,
