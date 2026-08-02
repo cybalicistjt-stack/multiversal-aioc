@@ -12,15 +12,13 @@ permissions:
 jobs:
   preflight:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+        with: {python-version: '3.12'}
 
-      - name: Validate unattended scripts and workflow inventory
+      - name: Validate unattended scripts, schemas, and workflow inventory
         id: validate
         continue-on-error: true
         run: |
@@ -32,46 +30,46 @@ jobs:
             audit/build_gpt_review_packets_v4.py \
             audit/build_unattended_longform_reports.py \
             audit/build_regression_mining_v4.py \
-            audit/build_unattended_day_summary.py
+            audit/build_unattended_day_summary.py \
+            audit/build_semantic_foundry_foundations.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          json.loads(Path('schemas/semantic-foundry/recovery-candidate-envelope.schema.json').read_text())
+          assert Path('schemas/semantic-foundry/recovery-graph-shapes.ttl').stat().st_size > 100
+          PY
           for f in \
+            .github/workflows/day-00b-build-semantic-foundry-foundations.yml \
             .github/workflows/day-01-0700-refresh-semantic-v4.yml \
             .github/workflows/run-unattended-longform-2026-08-02.yml \
             .github/workflows/day-02-0900-build-gpt-review-packets.yml \
             .github/workflows/day-03-1100-run-longform-analysis.yml \
             .github/workflows/day-04-1400-mine-regressions.yml \
             .github/workflows/day-05-1700-consolidate-workday.yml \
-            .github/workflows/day-00-hourly-resilience-watchdog.yml; do
-              test -f "$f"
-          done
+            .github/workflows/day-00-hourly-resilience-watchdog.yml; do test -f "$f"; done
 
-      - name: Verify authoritative source artifacts and seed missing work
+      - name: Verify artifacts and seed missing work
         id: artifacts
         continue-on-error: true
-        env:
-          GH_TOKEN: ${{ github.token }}
+        env: {GH_TOKEN: '${{ github.token }}'}
         run: |
           set +e
           FORENSIC=$(gh run list --workflow='Run Forensic Audit' --status=success --limit=1 --json databaseId --jq='.[0].databaseId')
           SEMANTIC=$(gh run list --workflow='Run Semantic Recovery v4' --status=success --limit=1 --json databaseId --jq='.[0].databaseId')
+          FOUNDRY=$(gh run list --workflow='Day Work 00B - Build Semantic Foundry Foundations' --status=success --limit=1 --json databaseId --jq='.[0].databaseId')
           test -n "$FORENSIC" || exit 2
-          if [ -z "$SEMANTIC" ]; then
-            gh workflow run day-01-0700-refresh-semantic-v4.yml --ref main
-          fi
+          [ -n "$SEMANTIC" ] || gh workflow run day-01-0700-refresh-semantic-v4.yml --ref main
+          [ -n "$FOUNDRY" ] || gh workflow run day-00b-build-semantic-foundry-foundations.yml --ref main
           echo "forensic_run=$FORENSIC"
           echo "semantic_run=${SEMANTIC:-dispatched}"
+          echo "foundry_run=${FOUNDRY:-dispatched}"
 
-      - name: Write and upload preflight receipt
+      - name: Write preflight receipt
         if: always()
         run: |
           mkdir -p preflight-output
           cat > preflight-output/preflight-receipt.json <<JSON
-          {
-            "format": "multiversal-unattended-preflight-receipt",
-            "version": "1.0.0",
-            "validationOutcome": "${{ steps.validate.outcome }}",
-            "artifactOutcome": "${{ steps.artifacts.outcome }}",
-            "authorityNote": "Preflight only; no canonical content was changed."
-          }
+          {"format":"multiversal-unattended-preflight-receipt","version":"1.1.0","validationOutcome":"${{ steps.validate.outcome }}","artifactOutcome":"${{ steps.artifacts.outcome }}","faultPolicy":"Missing optional capabilities produce diagnostics; downstream work continues from latest usable artifact.","authorityNote":"Preflight only; no canonical content was changed."}
           JSON
       - if: always()
         uses: actions/upload-artifact@v4
