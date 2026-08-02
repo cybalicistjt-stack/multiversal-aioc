@@ -28,7 +28,7 @@ def family_scores(n):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--structure',type=Path,required=True);ap.add_argument('--tables',type=Path,required=True);ap.add_argument('--out',type=Path,required=True);a=ap.parse_args();a.out.mkdir(parents=True,exist_ok=True)
     nodes=rows(a.structure/'hierarchical-nodes.jsonl'); kv=rows(a.tables/'reconstructed-key-values.jsonl'); bynode={}
-    for x in kv:b ynode.setdefault(x['nodeId'],[]).append(x)
+    for x in kv: bynode.setdefault(x['nodeId'],[]).append(x)
     out=[]; rejected=Counter()
     for n in nodes:
         title=clean_title(n.get('title'))
