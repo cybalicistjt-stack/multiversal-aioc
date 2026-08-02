@@ -1,0 +1,96 @@
+name: Build Semantic Validation Tranche 05
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-semantic-validation-tranche-05.yml'
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Download latest survivor v4.2 artifact
+        env: {GH_TOKEN: '${{ github.token }}'}
+        run: |
+          RUN_ID=$(gh run list --workflow='Apply Survivor Review Decisions v4.2' --status=success --limit=1 --json databaseId --jq='.[0].databaseId')
+          test -n "$RUN_ID"
+          gh run download "$RUN_ID" --dir downloaded
+          C=$(find downloaded -name 'survivor-filtered-candidates-v4-2.jsonl' -print -quit)
+          test -n "$C"
+          mkdir -p input
+          cp "$C" input/candidates.jsonl
+      - name: Build validation packets
+        run: |
+          python - <<'PY'
+          import json, re
+          from collections import defaultdict
+          from pathlib import Path
+          rows=[json.loads(x) for x in Path('input/candidates.jsonl').read_text().splitlines() if x.strip()]
+          out=Path('validation-05'); out.mkdir()
+          by=defaultdict(list)
+          for r in rows: by[r.get('objectType') or r.get('type')].append(r)
+          def packet(name, family, records):
+              data={'format':'multiversal-semantic-validation-packet','version':'1.0.0','family':family,'recordCount':len(records),'records':[]}
+              for r in records:
+                  data['records'].append({
+                    'candidateId':r.get('id'),'proposedType':r.get('objectType') or r.get('type'),'proposedName':r.get('name'),
+                    'summary':(r.get('specification') or {}).get('summary'),'source':(r.get('provenance') or [{}])[0],
+                    'validation':{'disposition':'pending','correctType':None,'correctName':None,'parentCandidateId':None,'notes':''}
+                  })
+              (out/name).write_text(json.dumps(data,indent=2,ensure_ascii=False)+'\n')
+          # All remaining small families, plus all remaining worlds in bounded packets.
+          for fam in ['creature','npc','adventure','faction','item','vehicle','ability','species','environment']:
+              vals=by.get(fam,[])
+              for i in range(0,len(vals),30): packet(f'{fam}-validation-{i//30+1:02d}.json',fam,vals[i:i+30])
+          vals=by.get('world',[])
+          for i in range(0,len(vals),30): packet(f'world-validation-{i//30+1:02d}.json','world',vals[i:i+30])
+          # Rule cluster representatives: source + normalized title prefix.
+          clusters=defaultdict(list)
+          for r in by.get('rule',[]):
+              src=((r.get('provenance') or [{}])[0].get('sourcePath') or '')
+              name=re.sub(r'[^a-z0-9 ]+',' ',str(r.get('name') or '').lower())
+              prefix=' '.join(name.split()[:3])
+              clusters[(src,prefix)].append(r)
+          reps=[]
+          for (src,prefix), vals in sorted(clusters.items(), key=lambda kv:(-len(kv[1]),kv[0][0],kv[0][1])):
+              r=vals[0]
+              reps.append({'clusterSize':len(vals),'clusterSource':src,'clusterPrefix':prefix,
+                           'candidateId':r.get('id'),'proposedName':r.get('name'),
+                           'summary':(r.get('specification') or {}).get('summary'),
+                           'validation':{'disposition':'pending','clusterDecision':None,'notes':''}})
+          for i in range(0,len(reps),40):
+              (out/f'rule-cluster-validation-{i//40+1:02d}.json').write_text(json.dumps({'format':'multiversal-rule-cluster-validation','version':'1.0.0','recordCount':len(reps[i:i+40]),'records':reps[i:i+40]},indent=2,ensure_ascii=False)+'\n')
+          files=[]; total=0
+          for p in sorted(out.glob('*.json')):
+              d=json.loads(p.read_text()); files.append({'file':p.name,'count':d.get('recordCount',0)}); total+=d.get('recordCount',0)
+          (out/'semantic-validation-tranche-05-index.json').write_text(json.dumps({'format':'multiversal-semantic-validation-tranche-05','version':'1.0.0','packetCount':len(files),'reviewRecordCount':total,'files':files,'authority':'Validation evidence only; no canonical writes.'},indent=2)+'\n')
+          PY
+      - name: Upload validation tranche
+        uses: actions/upload-artifact@v4
+        with:
+          name: multiversal-semantic-validation-tranche-05-${{ github.run_id }}
+          path: validation-05/
+          retention-days: 90
+      - name: Publish validation tranche
+        run: |
+          DEST=v2/audit-data/semantic-recovery-v4/semantic-validation-tranche-05
+          rm -rf "$DEST" && mkdir -p "$DEST"
+          cp validation-05/*.json "$DEST"/
+          git config user.name 'multiversal-audit-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add "$DEST"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Publish semantic validation tranche 05 [skip ci]'
+          git pull --rebase origin main
+          git push origin HEAD:main
