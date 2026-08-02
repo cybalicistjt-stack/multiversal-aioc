@@ -18,7 +18,8 @@ STAT_FIELD = re.compile(
 )
 TABLE_HEADING = re.compile(
     r"\b(?:frequency|weighted|roll|result|table|chart|cost by|progression|limits by|"
-    r"activity effect|purpose\s*/\s*influence|unlock cost|effect notes?)\b",
+    r"activity effect|purpose\s*/\s*influence|unlock cost|effect notes?|"
+    r"name description|type cost|item cost|category effect)\b",
     re.I,
 )
 CONTEXTUAL = {
@@ -29,10 +30,13 @@ CONTEXTUAL = {
     "structuring a session for maximum engagement",
     "structuring a mystery without making it too obvious or confusing",
     "protocols for other warden factions", "dynamic clue cards",
+    "activation power source", "cultural traits", "additional psionic powers",
+    "psionic enhancements", "augmentations", "psionic augmentations",
 }
 FRAGMENT = re.compile(
     r"(?:[,;:]$|^(?:ac|hp|speed|str|dex|con|int|wis|cha)\s*:|"
-    r"\b(?:and|or|of|to|with|inside)$|^lbs?\.?\s*\d|^\d+\s*(?:gp|sp|cp|lb))",
+    r"\b(?:and|or|of|to|with|inside)$|^lbs?\.?\s*\d|^\d+\s*(?:gp|sp|cp|lb)|"
+    r"^(?:the players|characters|creatures|targets?)\s+(?:discover|may|can|must|gain|take)\b)",
     re.I,
 )
 CREATURE_CHILD_ACTION = re.compile(
@@ -43,8 +47,8 @@ CREATURE_CHILD_ACTION = re.compile(
 )
 CREATURE_SOURCE = re.compile(r"(?:^|/)(?:creatures?|npcs?)(?:/|$)", re.I)
 PROGRESSION_HEADING = re.compile(
-    r"\b(?:path abilities|branch\s*:|tier\s*\d|prestige path|stat guidelines|"
-    r"ability tree|skill tree|progression track)\b",
+    r"\b(?:path abilities|branch\s*\d*\s*:|tier\s*\d|prestige path|stat guidelines|"
+    r"ability tree|skill tree|progression track|additional powers?|enhancements?|augmentations?)\b",
     re.I,
 )
 TEMPLATE_HEADING = re.compile(
@@ -60,6 +64,27 @@ FACTION_NOUN = re.compile(
 INSTRUCTIONAL_ADVENTURE = re.compile(
     r"\b(?:structuring|how to|gm tip|guide|framework|reward exploration|introduce the hooks|"
     r"clue cards?|session engagement|mystery design)\b",
+    re.I,
+)
+ABILITY_CONTAINER = re.compile(
+    r"\b(?:path abilities|branch\s*\d*\s*:|additional .* powers?|enhancements?|augmentations?|"
+    r"activation\s*&?\s*power source|ability options?|power list|spell list)\b",
+    re.I,
+)
+ITEM_CONTAINER = re.compile(
+    r"^(?:ammunition|weapons?|armor|armour|equipment|consumables?|materials?|components?|"
+    r"tools?|accessories|modifications?|upgrades?|item categories|crafting materials)$",
+    re.I,
+)
+SPECIES_CONTAINER = re.compile(
+    r"\b(?:cultural traits|physical traits|society and culture|biology|appearance|"
+    r"names and language|relations with other species|species overview|adaptations?)\b",
+    re.I,
+)
+SETTING_CONTAINER = re.compile(
+    r"\b(?:overview|history|geography|climate|culture|society|economy|government|"
+    r"religion|technology|magic|major locations|notable locations|regions|zones|"
+    r"flora and fauna|adventure hooks|campaign hooks|encounters?|hazards?|weather)\b",
     re.I,
 )
 
@@ -99,14 +124,11 @@ def reason(row: dict) -> str | None:
     if PROGRESSION_HEADING.search(name) and re.search(r"\b(?:tier\s*\d|xp cost|unlock tier|\d+\.)\b", summary, re.I):
         return "progression-container-as-object"
 
-    # Named attacks/actions inside creature or NPC source documents are child mechanics,
-    # not standalone object roots. Preserve them as evidence for their owning object.
     if CREATURE_SOURCE.search(path) and CREATURE_CHILD_ACTION.search(combined):
         if family in {"rule", "creature", "npc"}:
             return "creature-child-action-as-object"
 
     if family == "adventure":
-        # Guidance, templates, props, and child sections of a module are not adventures.
         if INSTRUCTIONAL_ADVENTURE.search(name):
             return "adventure-guidance-as-object"
         signals = len(re.findall(r"\b(?:adventure|quest|objective|scene|encounter|module|scenario)\b", combined, re.I))
@@ -117,19 +139,42 @@ def reason(row: dict) -> str | None:
     if family == "creature":
         if re.search(r"\b(?:type|category|immunities|traits|statistics|stat guidelines|path abilities)\b", name, re.I):
             return "creature-container-as-object"
-        # A creature identity must not itself be a stat label or generic action.
         if re.fullmatch(r"(?:multiattack|actions?|traits?|reactions?|legendary actions?)", name, re.I):
             return "creature-child-section-as-object"
 
     if family == "faction":
-        # Branches, power trees, tabular headers, protocols, and gameplay guidance are not factions.
         if PROGRESSION_HEADING.search(name) or TABLE_HEADING.search(name):
             return "faction-progression-or-table-as-object"
         if key(name) in CONTEXTUAL:
             return "faction-contextual-heading"
-        # Require an organization-bearing signal in either the identity or evidence.
         if not FACTION_NOUN.search(combined):
             return "weak-faction-boundary"
+
+    if family == "ability":
+        if ABILITY_CONTAINER.search(name):
+            return "ability-collection-as-object"
+        # A single ability should describe one coherent effect, not enumerate a path/list.
+        numbered = len(re.findall(r"(?:^|\s)\d+[\.)]", summary))
+        if numbered >= 3 and re.search(r"\b(?:tier|cost|prerequisite|path|branch)\b", summary, re.I):
+            return "ability-list-as-object"
+
+    if family == "item":
+        if ITEM_CONTAINER.fullmatch(name.strip()):
+            return "item-category-as-object"
+        if re.search(r"\b(?:cost|weight|price|rarity|category)\s*[:=]", name, re.I):
+            return "item-field-as-object"
+
+    if family == "species":
+        if SPECIES_CONTAINER.search(name):
+            return "species-subsection-as-object"
+        if len(name.split()) <= 2 and re.fullmatch(r"(?:traits?|culture|biology|appearance|adaptations?)", name, re.I):
+            return "species-generic-section-as-object"
+
+    if family in {"world", "environment"}:
+        if SETTING_CONTAINER.search(name) and len(name.split()) <= 4:
+            return "setting-subsection-as-object"
+        if re.fullmatch(r"(?:zone|region|area|location|environment|biome)\s*\d+", name, re.I):
+            return "setting-placeholder-as-object"
 
     return None
 
@@ -158,7 +203,7 @@ def main() -> None:
     merged.update(rejected)
     families = Counter(row.get("objectType") for row in kept)
     index.update({
-        "version": "4.3.3",
+        "version": "4.3.4",
         "preBoundaryFilterCount": previous,
         "assembledObjectCount": len(kept),
         "familyCounts": dict(families),
