@@ -1,0 +1,22 @@
+name: Day Work 02 - Build GPT Review Packets
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 14 2 8 *'
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  dispatch:
+    if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 14 2 8 *'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start GPT review packet build
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run 'Build GPT Review Packets v4' --repo '${{ github.repository }}'
+      - name: Record dispatch
+        run: echo 'GPT review packet generation was dispatched for the latest successful v4 artifact.'
