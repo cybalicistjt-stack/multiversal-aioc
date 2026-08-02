@@ -9,7 +9,13 @@ import argparse, json, re
 from collections import Counter
 from pathlib import Path
 
-STAT_FIELD = re.compile(r"^(?:AC|HP|DR|EP|MP|SP|CR|DC|Speed|Initiative|Proficiency|STR|DEX|CON|INT|WIS|CHA|Armor Class|Hit Points)\s*[:=]?\s*[-+]?\d", re.I)
+STAT_FIELD = re.compile(
+    r"^(?:AC|HP|DR|EP|MP|SP|CR|DC|Speed|Initiative|Proficiency|"
+    r"STR|DEX|CON|INT|WIS|CHA|Armor Class|Hit Points|Saving Throws?|Skills?|"
+    r"Damage Resistances?|Damage Immunities?|Damage Vulnerabilities?|"
+    r"Condition Immunities?|Senses?|Languages?|Passive Perception|Challenge)\s*[:=]",
+    re.I,
+)
 TABLE_HEADING = re.compile(r"\b(?:frequency|weighted|roll|result|table|chart|cost by|progression|limits by)\b", re.I)
 CONTEXTUAL = {
     "campaign use", "investigation hooks", "philosophical arcs", "distorted dungeons",
@@ -17,6 +23,12 @@ CONTEXTUAL = {
     "using this material", "adventure use", "story use", "common uses",
 }
 FRAGMENT = re.compile(r"(?:[,;:]$|^(?:ac|hp|speed|str|dex|con|int|wis|cha)\s*:|\b(?:and|or|of|to|with|inside)$)", re.I)
+CREATURE_CHILD_ACTION = re.compile(
+    r"(?:\((?:\d+\s*/\s*)?round|\breaction\b|\brecharge\s*\d|\bbonus action\b|"
+    r"\blegendary action\b|\blair action\b|\bmelee weapon attack\b|\branged weapon attack\b)",
+    re.I,
+)
+CREATURE_SOURCE = re.compile(r"(?:^|/)(?:creatures?|npcs?)(?:/|$)", re.I)
 
 
 def load(path: Path) -> list[dict]:
@@ -27,10 +39,18 @@ def key(value: object) -> str:
     return re.sub(r"[^a-z0-9]+", " ", str(value or "").lower()).strip()
 
 
+def source_path(row: dict) -> str:
+    prov = row.get("provenance") or []
+    if prov and isinstance(prov[0], dict):
+        return str(prov[0].get("sourcePath") or "")
+    return str(row.get("sourcePath") or "")
+
+
 def reason(row: dict) -> str | None:
     name = str(row.get("name") or "").strip()
     summary = str((row.get("specification") or {}).get("summary") or "").strip()
     family = row.get("objectType")
+    path = source_path(row)
     if STAT_FIELD.search(name):
         return "stat-field-identity"
     if key(name) in CONTEXTUAL:
@@ -39,6 +59,10 @@ def reason(row: dict) -> str | None:
         return "fragment-identity"
     if TABLE_HEADING.search(name) and len((row.get("childNodeIds") or [])) == 0:
         return "unreconstructed-table-heading"
+    # Named attacks/actions inside creature or NPC source documents are child mechanics,
+    # not standalone rule roots. Preserve them as evidence for their owning object.
+    if family == "rule" and CREATURE_SOURCE.search(path) and CREATURE_CHILD_ACTION.search(f"{name} {summary}"):
+        return "creature-child-action-as-rule"
     # Adventures require multiple adventure-bearing signals, not one contextual word.
     if family == "adventure":
         signals = len(re.findall(r"\b(?:adventure|quest|hook|objective|scene|encounter|clue|reward|module)\b", f"{name} {summary}", re.I))
@@ -75,7 +99,7 @@ def main() -> None:
     merged.update(rejected)
     families = Counter(row.get("objectType") for row in kept)
     index.update({
-        "version": "4.3.1",
+        "version": "4.3.2",
         "preBoundaryFilterCount": previous,
         "assembledObjectCount": len(kept),
         "familyCounts": dict(families),
