@@ -1,0 +1,123 @@
+name: Day Accelerated Parallel Expansion
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/day-accelerated-parallel-expansion.yml'
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: multiversal-accelerated-parallel-expansion
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      artifact_name: ${{ steps.locate.outputs.artifact_name }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Locate latest successful Semantic Recovery v4 artifact
+        id: locate
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          RUN_ID=$(gh run list --workflow='Run Semantic Recovery v4' --status=success --limit=1 --json databaseId --jq='.[0].databaseId')
+          test -n "$RUN_ID"
+          echo "run_id=$RUN_ID" >> "$GITHUB_OUTPUT"
+          echo "artifact_name=semantic-v4-source-$RUN_ID" >> "$GITHUB_OUTPUT"
+          gh run download "$RUN_ID" --dir downloaded
+          CANDIDATES=$(find downloaded -name 'canonical-candidates-v4.jsonl' -print -quit)
+          test -n "$CANDIDATES"
+          mkdir -p source/canonical
+          cp "$CANDIDATES" source/canonical/canonical-candidates-v4.jsonl
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.locate.outputs.artifact_name }}
+          path: source/
+          retention-days: 2
+
+  parallel-analysis:
+    needs: prepare
+    strategy:
+      fail-fast: false
+      matrix:
+        task: [gpt-review, longform, regression]
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.prepare.outputs.artifact_name }}
+          path: source
+      - name: Syntax preflight
+        run: |
+          python -m py_compile \
+            audit/build_gpt_review_packets_v4.py \
+            audit/build_unattended_longform_reports.py \
+            audit/build_regression_mining_v4.py
+      - name: Run selected task
+        shell: bash
+        run: |
+          mkdir -p accelerated-output/${{ matrix.task }}
+          case '${{ matrix.task }}' in
+            gpt-review)
+              python audit/build_gpt_review_packets_v4.py --candidates source/canonical --out accelerated-output/gpt-review --diagnostic-limit 40
+              ;;
+            longform)
+              python audit/build_unattended_longform_reports.py --candidates source/canonical --out accelerated-output/longform --batch-size 40
+              ;;
+            regression)
+              python audit/build_regression_mining_v4.py --candidates source/canonical --out accelerated-output/regression --per-family 16
+              ;;
+          esac
+      - name: Write task receipt
+        if: always()
+        run: |
+          mkdir -p accelerated-output/${{ matrix.task }}
+          cat > accelerated-output/${{ matrix.task }}/task-receipt.json <<JSON
+          {
+            "task": "${{ matrix.task }}",
+            "runId": "${{ github.run_id }}",
+            "sourceArtifact": "${{ needs.prepare.outputs.artifact_name }}",
+            "authority": "Diagnostics only; no canonical writes."
+          }
+          JSON
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: multiversal-accelerated-${{ matrix.task }}-${{ github.run_id }}
+          path: accelerated-output/${{ matrix.task }}/
+          retention-days: 90
+
+  completion-receipt:
+    needs: [prepare, parallel-analysis]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create completion receipt
+        run: |
+          mkdir -p receipt
+          cat > receipt/accelerated-expansion-receipt.json <<JSON
+          {
+            "format": "multiversal-accelerated-parallel-expansion-receipt",
+            "runId": "${{ github.run_id }}",
+            "prepareResult": "${{ needs.prepare.result }}",
+            "parallelResult": "${{ needs.parallel-analysis.result }}",
+            "note": "Later scheduled workflows remain active as fresh-artifact second passes."
+          }
+          JSON
+      - uses: actions/upload-artifact@v4
+        with:
+          name: multiversal-accelerated-expansion-receipt-${{ github.run_id }}
+          path: receipt/
+          retention-days: 90
