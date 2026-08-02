@@ -1,0 +1,108 @@
+name: Run Semantic Architecture v3
+
+on:
+  workflow_run:
+    workflows: ["Run Forensic Audit"]
+    types: [completed]
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'audit/build_hierarchical_structure.py'
+      - 'audit/build_hybrid_retrieval_index.py'
+      - 'docs/SEMANTIC-RECOVERY-RETRIEVAL-ARCHITECTURE.md'
+      - '.github/workflows/run-semantic-architecture-v3.yml'
+
+permissions:
+  actions: read
+  contents: write
+
+concurrency:
+  group: multiversal-semantic-architecture-v3
+  cancel-in-progress: true
+
+jobs:
+  architecture:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Download authoritative forensic artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_RUN_ID: ${{ github.event.workflow_run.id }}
+        run: |
+          RUN_ID="$EVENT_RUN_ID"
+          if [ '${{ github.event_name }}' != 'workflow_run' ]; then
+            RUN_ID=$(gh run list --workflow='Run Forensic Audit' --status=success --limit=1 --json databaseId --jq='.[0].databaseId')
+          fi
+          test -n "$RUN_ID"
+          echo "Using forensic run $RUN_ID"
+          gh run download "$RUN_ID" --dir downloaded
+          ARCHIVE=$(find downloaded -name 'multiversal-forensic-audit-output.tar.gz' -print -quit)
+          test -n "$ARCHIVE"
+          tar -xzf "$ARCHIVE"
+          test -f audit-output/findings.jsonl
+
+      - name: Build hierarchical document structure and section-aware chunks
+        run: python audit/build_hierarchical_structure.py --input audit-output --out semantic-architecture-v3/hierarchy
+
+      - name: Build metadata-rich hybrid retrieval index
+        run: python audit/build_hybrid_retrieval_index.py --structure semantic-architecture-v3/hierarchy --out semantic-architecture-v3/retrieval
+
+      - name: Validate structural and retrieval contracts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          h=json.loads(Path('semantic-architecture-v3/hierarchy/hierarchical-document-index.json').read_text())
+          r=json.loads(Path('semantic-architecture-v3/retrieval/hybrid-retrieval-index.json').read_text())
+          assert h['sourceCount'] == 218, h
+          assert h['nodeCount'] > 0 and h['chunkCount'] == r['chunkCount'], (h,r)
+          assert h['provenanceCompleteCount'] == h['chunkCount'], h
+          assert h['identityEligibleChunkCount'] > 0, h
+          assert h['containerChunkCount'] > 0, h
+          assert r['identityEligibleCount'] == h['identityEligibleChunkCount'], (h,r)
+          assert r['embeddingContractReady'] is True, r
+          print(json.dumps({
+            'sources':h['sourceCount'],
+            'nodes':h['nodeCount'],
+            'chunks':h['chunkCount'],
+            'identityEligible':h['identityEligibleChunkCount'],
+            'containersAttached':h['containerChunkCount'],
+            'roles':h['sectionRoleCounts'],
+            'retrieval':r['hybridMethod'],
+            'reranking':r['rerankingMethod'],
+          },indent=2))
+          PY
+
+      - name: Publish compact architecture diagnostics
+        run: |
+          mkdir -p v2/audit-data/semantic-architecture-v3
+          cp semantic-architecture-v3/hierarchy/hierarchical-document-index.json v2/audit-data/semantic-architecture-v3/
+          cp semantic-architecture-v3/retrieval/hybrid-retrieval-index.json v2/audit-data/semantic-architecture-v3/
+
+      - name: Upload full architecture artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: multiversal-semantic-architecture-v3-${{ github.sha }}
+          path: semantic-architecture-v3/
+          retention-days: 90
+
+      - name: Commit architecture diagnostics
+        run: |
+          git config user.name 'multiversal-audit-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add v2/audit-data/semantic-architecture-v3
+          if git diff --cached --quiet; then echo 'No architecture diagnostic changes.'; exit 0; fi
+          git commit -m 'Publish hierarchical chunking and retrieval diagnostics [skip ci]'
+          git pull --rebase origin main
+          git push origin HEAD:main
