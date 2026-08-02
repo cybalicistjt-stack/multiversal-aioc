@@ -37,6 +37,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - name: Preflight extraction scripts
+        run: |
+          python -m py_compile \
+            audit/build_hierarchical_structure.py \
+            audit/build_hybrid_retrieval_index.py \
+            audit/reconstruct_tables_and_forms.py \
+            audit/build_schema_guided_candidates.py \
+            audit/verify_schema_guided_candidates.py
+
       - name: Download authoritative forensic artifact
         env:
           GH_TOKEN: ${{ github.token }}
@@ -53,21 +63,125 @@ jobs:
           test -n "$ARCHIVE"
           tar -xzf "$ARCHIVE"
           test -f audit-output/findings.jsonl
-      - name: Build hierarchical document structure and section-aware chunks
+
+      - name: Initialize stage diagnostics
+        run: |
+          mkdir -p semantic-architecture-v3
+          printf '{"format":"multiversal-semantic-architecture-v3-stage-status","version":"1.0.0","stages":{}}\n' > semantic-architecture-v3/stage-status.json
+
+      - name: Build hierarchical document structure
+        id: hierarchy
+        continue-on-error: true
         run: python audit/build_hierarchical_structure.py --input audit-output --out semantic-architecture-v3/hierarchy
+
+      - name: Record hierarchy status
+        if: always()
+        env:
+          OUTCOME: ${{ steps.hierarchy.outcome }}
+        run: python - <<'PY'
+          import json, os
+          from pathlib import Path
+          p=Path('semantic-architecture-v3/stage-status.json'); d=json.loads(p.read_text()); d['stages']['hierarchy']=os.environ['OUTCOME']; p.write_text(json.dumps(d,indent=2)+'\n')
+          PY
+
       - name: Reconstruct tables forms and key-value evidence
+        id: reconstruction
+        if: steps.hierarchy.outcome == 'success'
+        continue-on-error: true
         run: python audit/reconstruct_tables_and_forms.py --structure semantic-architecture-v3/hierarchy --out semantic-architecture-v3/reconstruction
+
+      - name: Record reconstruction status
+        if: always()
+        env:
+          OUTCOME: ${{ steps.reconstruction.outcome }}
+        run: python - <<'PY'
+          import json, os
+          from pathlib import Path
+          p=Path('semantic-architecture-v3/stage-status.json'); d=json.loads(p.read_text()); d['stages']['reconstruction']=os.environ.get('OUTCOME') or 'skipped'; p.write_text(json.dumps(d,indent=2)+'\n')
+          PY
+
       - name: Build metadata-rich hybrid retrieval index
+        id: retrieval
+        if: steps.hierarchy.outcome == 'success'
+        continue-on-error: true
         run: python audit/build_hybrid_retrieval_index.py --structure semantic-architecture-v3/hierarchy --out semantic-architecture-v3/retrieval
+
+      - name: Record retrieval status
+        if: always()
+        env:
+          OUTCOME: ${{ steps.retrieval.outcome }}
+        run: python - <<'PY'
+          import json, os
+          from pathlib import Path
+          p=Path('semantic-architecture-v3/stage-status.json'); d=json.loads(p.read_text()); d['stages']['retrieval']=os.environ.get('OUTCOME') or 'skipped'; p.write_text(json.dumps(d,indent=2)+'\n')
+          PY
+
       - name: Build deterministic schema-guided candidates
+        id: extraction
+        if: steps.hierarchy.outcome == 'success' && steps.reconstruction.outcome == 'success'
+        continue-on-error: true
         run: python audit/build_schema_guided_candidates.py --structure semantic-architecture-v3/hierarchy --tables semantic-architecture-v3/reconstruction --out semantic-architecture-v3/schema-extraction
+
+      - name: Record extraction status
+        if: always()
+        env:
+          OUTCOME: ${{ steps.extraction.outcome }}
+        run: python - <<'PY'
+          import json, os
+          from pathlib import Path
+          p=Path('semantic-architecture-v3/stage-status.json'); d=json.loads(p.read_text()); d['stages']['schemaExtraction']=os.environ.get('OUTCOME') or 'skipped'; p.write_text(json.dumps(d,indent=2)+'\n')
+          PY
+
       - name: Independently verify and route candidates
+        id: verification
+        if: steps.extraction.outcome == 'success'
+        continue-on-error: true
         run: python audit/verify_schema_guided_candidates.py --candidates semantic-architecture-v3/schema-extraction --out semantic-architecture-v3/verification
-      - name: Validate v3.1 contracts
+
+      - name: Record verification status
+        if: always()
+        env:
+          OUTCOME: ${{ steps.verification.outcome }}
+        run: python - <<'PY'
+          import json, os
+          from pathlib import Path
+          p=Path('semantic-architecture-v3/stage-status.json'); d=json.loads(p.read_text()); d['stages']['verification']=os.environ.get('OUTCOME') or 'skipped'; p.write_text(json.dumps(d,indent=2)+'\n')
+          PY
+
+      - name: Publish available architecture diagnostics
+        if: always()
+        run: |
+          mkdir -p v2/audit-data/semantic-architecture-v3
+          cp semantic-architecture-v3/stage-status.json v2/audit-data/semantic-architecture-v3/
+          find semantic-architecture-v3 -name '*-index.json' -type f -maxdepth 3 -exec cp {} v2/audit-data/semantic-architecture-v3/ \;
+
+      - name: Upload full architecture artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: multiversal-semantic-architecture-v3-${{ github.sha }}
+          path: semantic-architecture-v3/
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Commit architecture diagnostics
+        if: always()
+        run: |
+          git config user.name 'multiversal-audit-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add v2/audit-data/semantic-architecture-v3
+          if git diff --cached --quiet; then echo 'No architecture diagnostic changes.'; exit 0; fi
+          git commit -m 'Publish hybrid extraction stage diagnostics [skip ci]'
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Enforce v3.1 stage and quality contracts
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
+          status=json.loads(Path('semantic-architecture-v3/stage-status.json').read_text())
+          assert all(v=='success' for v in status['stages'].values()), status
           h=json.loads(Path('semantic-architecture-v3/hierarchy/hierarchical-document-index.json').read_text())
           r=json.loads(Path('semantic-architecture-v3/retrieval/hybrid-retrieval-index.json').read_text())
           t=json.loads(Path('semantic-architecture-v3/reconstruction/table-form-reconstruction-index.json').read_text())
@@ -80,28 +194,5 @@ jobs:
           assert v['candidateCount']==e['candidateCount'],(v,e)
           assert v['scalarRelationshipViolationCount']==0,v
           assert v['schemaValidCount']==v['candidateCount'],v
-          print(json.dumps({'sources':h['sourceCount'],'chunks':h['chunkCount'],'tables':t['tableCount'],'keyValues':t['keyValuePairCount'],'candidates':e['candidateCount'],'families':e['familyCounts'],'routes':v['routeCounts'],'reasons':v['reasonCounts']},indent=2))
+          print(json.dumps({'stages':status['stages'],'sources':h['sourceCount'],'chunks':h['chunkCount'],'tables':t['tableCount'],'keyValues':t['keyValuePairCount'],'candidates':e['candidateCount'],'families':e['familyCounts'],'routes':v['routeCounts'],'reasons':v['reasonCounts']},indent=2))
           PY
-      - name: Publish compact architecture diagnostics
-        run: |
-          mkdir -p v2/audit-data/semantic-architecture-v3
-          cp semantic-architecture-v3/hierarchy/hierarchical-document-index.json v2/audit-data/semantic-architecture-v3/
-          cp semantic-architecture-v3/retrieval/hybrid-retrieval-index.json v2/audit-data/semantic-architecture-v3/
-          cp semantic-architecture-v3/reconstruction/table-form-reconstruction-index.json v2/audit-data/semantic-architecture-v3/
-          cp semantic-architecture-v3/schema-extraction/schema-guided-candidate-index.json v2/audit-data/semantic-architecture-v3/
-          cp semantic-architecture-v3/verification/schema-guided-verification-index.json v2/audit-data/semantic-architecture-v3/
-      - name: Upload full architecture artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: multiversal-semantic-architecture-v3-${{ github.sha }}
-          path: semantic-architecture-v3/
-          retention-days: 90
-      - name: Commit architecture diagnostics
-        run: |
-          git config user.name 'multiversal-audit-bot'
-          git config user.email 'actions@users.noreply.github.com'
-          git add v2/audit-data/semantic-architecture-v3
-          if git diff --cached --quiet; then echo 'No architecture diagnostic changes.'; exit 0; fi
-          git commit -m 'Publish hybrid extraction and verification diagnostics [skip ci]'
-          git pull --rebase origin main
-          git push origin HEAD:main
