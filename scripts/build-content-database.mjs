@@ -17,22 +17,40 @@ const STAGES = {
 };
 
 function cleanBase64(text) { return String(text).replace(/[^A-Za-z0-9+/=]/g, ''); }
+function looksLikeJson(text) {
+  const trimmed = String(text).replace(/^\uFEFF/, '').trim();
+  return trimmed.startsWith('{') || trimmed.startsWith('[');
+}
 function decodeBase64Strict(text, label) {
   const clean = cleanBase64(text);
   if (!clean) throw new Error(`${label} is empty.`);
+  if (clean.length % 4 === 1) throw new Error(`${label} has an invalid Base64 length.`);
   const decoded = Buffer.from(clean, 'base64');
   if (!decoded.length) throw new Error(`${label} could not be decoded.`);
   return decoded;
 }
-function reachGzip(value) {
+function decodeArchivePayload(value) {
   let bytes = Buffer.isBuffer(value) ? value : Buffer.from(value);
-  for (let layer = 0; layer < 5; layer++) {
-    if (bytes.length >= 2 && bytes[0] === 0x1f && bytes[1] === 0x8b) return bytes;
-    const text = bytes.toString('utf8').replace(/\s/g, '');
-    if (!/^[A-Za-z0-9+/=]+$/.test(text)) throw new Error(`Decoded layer ${layer + 1} is neither gzip nor Base64 text.`);
-    bytes = decodeBase64Strict(text, `Nested Base64 layer ${layer + 1}`);
+  const trace = [];
+  for (let layer = 0; layer < 8; layer++) {
+    if (bytes.length >= 2 && bytes[0] === 0x1f && bytes[1] === 0x8b) {
+      trace.push(`layer ${layer}: gzip`);
+      return { text: zlib.gunzipSync(bytes).toString('utf8'), encoding: 'gzip', trace };
+    }
+    const text = bytes.toString('utf8').replace(/^\uFEFF/, '').trim();
+    if (looksLikeJson(text)) {
+      trace.push(`layer ${layer}: json`);
+      return { text, encoding: 'json', trace };
+    }
+    const compact = text.replace(/\s/g, '');
+    if (!compact || !/^[A-Za-z0-9+/=]+$/.test(compact)) {
+      const preview = text.slice(0, 80).replace(/\s+/g, ' ');
+      throw new Error(`Decoded layer ${layer + 1} is neither gzip, JSON, nor Base64 text. Preview: ${JSON.stringify(preview)}`);
+    }
+    trace.push(`layer ${layer}: base64(${compact.length})`);
+    bytes = decodeBase64Strict(compact, `Nested Base64 layer ${layer + 1}`);
   }
-  throw new Error('Could not reach gzip data after five decoding layers.');
+  throw new Error(`Could not reach gzip or JSON data after eight decoding layers. Trace: ${trace.join(' -> ')}`);
 }
 function digest(text) { return `sha256:${crypto.createHash('sha256').update(text).digest('hex')}`; }
 function slug(value) { return String(value || 'unclassified').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'unclassified'; }
@@ -130,10 +148,23 @@ function normalizeFullObject(raw, sourcePath, sourceDigest, index) {
 
 await fs.mkdir(OUT_DIR, { recursive: true });
 const texts = await Promise.all(PARTS.map(file => fs.readFile(file, 'utf8')));
-const innerBase64 = texts.map((text, index) => decodeBase64Strict(text, `Archive fragment ${index}`).toString('utf8')).join('').replace(/\s/g, '');
-const gzipBytes = reachGzip(Buffer.from(innerBase64, 'utf8'));
-const inventoryPayload = JSON.parse(zlib.gunzipSync(gzipBytes).toString('utf8'));
+const decodedFragments = texts.map((text, index) => {
+  try {
+    return decodeBase64Strict(text, `Archive fragment ${index}`).toString('utf8');
+  } catch (error) {
+    throw new Error(`Failed to decode ${path.relative(ROOT, PARTS[index])}: ${error.message}`);
+  }
+});
+const joinedPayload = decodedFragments.join('').replace(/^\uFEFF/, '').trim();
+const archive = decodeArchivePayload(Buffer.from(joinedPayload, 'utf8'));
+let inventoryPayload;
+try {
+  inventoryPayload = JSON.parse(archive.text);
+} catch (error) {
+  throw new Error(`Recovered ${archive.encoding} inventory payload is not valid JSON: ${error.message}. Trace: ${archive.trace.join(' -> ')}`);
+}
 if (!Array.isArray(inventoryPayload.records) || inventoryPayload.records.length < 1000) throw new Error(`Recovered inventory is invalid: ${inventoryPayload.records?.length ?? 0} records.`);
+console.log(`Recovered inventory through ${archive.encoding}; ${inventoryPayload.records.length} records. Trace: ${archive.trace.join(' -> ')}`);
 
 const inventoryRecords = inventoryPayload.records.map(expandInventory);
 const byKey = new Map();
