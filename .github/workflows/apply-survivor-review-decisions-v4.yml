@@ -1,0 +1,57 @@
+name: Apply Survivor Review Decisions v4
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'audit/apply_survivor_review_decisions_v4.py'
+      - '.github/workflows/apply-survivor-review-decisions-v4.yml'
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Syntax preflight
+        run: python -m py_compile audit/apply_survivor_review_decisions_v4.py
+      - name: Download latest successful v4 candidates
+        env: {GH_TOKEN: '${{ github.token }}'}
+        run: |
+          RUN_ID=$(gh run list --workflow='Run Semantic Recovery v4' --status=success --limit=1 --json databaseId --jq='.[0].databaseId')
+          test -n "$RUN_ID"
+          gh run download "$RUN_ID" --dir downloaded
+          C=$(find downloaded -path '*/canonical/canonical-candidates-v4.jsonl' -print -quit)
+          test -n "$C"
+          mkdir -p input
+          cp "$C" input/canonical-candidates-v4.jsonl
+      - name: Apply direct-review decisions
+        run: python audit/apply_survivor_review_decisions_v4.py --candidates input --out survivor-decisions-v4
+      - name: Upload review-decision artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: multiversal-survivor-review-decisions-v4-${{ github.run_id }}
+          path: survivor-decisions-v4/
+          retention-days: 90
+      - name: Publish compact diagnostics
+        run: |
+          DEST=v2/audit-data/semantic-recovery-v4/survivor-review-decisions-v4
+          rm -rf "$DEST"
+          mkdir -p "$DEST"
+          cp survivor-decisions-v4/survivor-review-decisions-v4-index.json "$DEST"/
+          cp survivor-decisions-v4/survivor-review-rejections-v4.json "$DEST"/
+          git config user.name 'multiversal-audit-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add "$DEST"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Publish survivor review decisions v4 [skip ci]'
+          git pull --rebase origin main
+          git push origin HEAD:main
