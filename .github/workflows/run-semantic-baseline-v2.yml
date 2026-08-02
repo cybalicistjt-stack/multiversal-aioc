@@ -1,0 +1,141 @@
+name: Run Semantic Baseline v2
+
+on:
+  workflow_run:
+    workflows: ["Run Semantic Recovery"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+concurrency:
+  group: multiversal-semantic-baseline-v2
+  cancel-in-progress: true
+
+jobs:
+  baseline:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Download latest successful semantic recovery artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_RUN_ID: ${{ github.event.workflow_run.id }}
+        run: |
+          RUN_ID="$EVENT_RUN_ID"
+          if [ '${{ github.event_name }}' = 'workflow_dispatch' ]; then
+            RUN_ID=$(gh run list --workflow='Run Semantic Recovery' --status=success --limit=1 --json databaseId --jq='.[0].databaseId')
+          fi
+          test -n "$RUN_ID"
+          gh run download "$RUN_ID" --name "multiversal-semantic-recovery-*" --dir downloaded || gh run download "$RUN_ID" --dir downloaded
+          PARSED=$(find downloaded -path '*/family-parsers/family-parser-candidates.jsonl' -print -quit)
+          GRAPH=$(find downloaded -path '*/knowledge-graph/canonical-knowledge-graph.json' -print -quit)
+          test -n "$PARSED"
+          test -n "$GRAPH"
+          mkdir -p baseline-input/family-parsers baseline-input/knowledge-graph
+          cp "$PARSED" baseline-input/family-parsers/family-parser-candidates.jsonl
+          cp "$GRAPH" baseline-input/knowledge-graph/canonical-knowledge-graph.json
+
+      - name: Run known-regression test suite
+        run: python -m unittest -v audit/test_semantic_baseline_v2.py
+
+      - name: Compile precision-first semantic baseline
+        run: |
+          python audit/build_semantic_baseline_v2.py \
+            --parsed baseline-input/family-parsers \
+            --graph baseline-input/knowledge-graph \
+            --out semantic-baseline-v2 \
+            --ready-limit 500
+
+      - name: Validate engineering baseline gates
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('semantic-baseline-v2/semantic-baseline-v2-index.json')
+          s=json.loads(p.read_text())
+          assert s['inputCandidateCount'] > 0, s
+          assert s['readyCount'] > 0, s
+          assert s['readyProvenanceComplete'] if 'readyProvenanceComplete' in s else True
+          assert all(s['gates'].values()), s
+          assert s['engineeringBaselinePassed'] is True, s
+          assert not s['knownBadReady'], s
+          assert len(s['readyFamilyCounts']) >= 5, s
+          assert sum(s['readyFamilyCounts'].values()) == s['readyCount'], s
+          print(json.dumps({
+            'ready': s['readyCount'],
+            'needsReview': s['needsReviewCount'],
+            'rejected': s['rejectedCount'],
+            'families': s['readyFamilyCounts'],
+            'connectedReady': s['connectedReadyCount'],
+            'duplicateRate': s['duplicateRate'],
+            'gates': s['gates'],
+          }, indent=2))
+          PY
+
+      - name: Build stratified owner acceptance packet
+        run: |
+          python - <<'PY'
+          import json
+          from collections import defaultdict
+          from pathlib import Path
+          rows=[json.loads(x) for x in Path('semantic-baseline-v2/semantic-baseline-v2-ready.jsonl').read_text().splitlines() if x.strip()]
+          by=defaultdict(list)
+          for row in rows: by[row['objectType']].append(row)
+          packet=[]
+          for family in sorted(by):
+            choices=by[family]
+            packet.extend(choices[:min(10,len(choices))])
+          payload={
+            'format':'multiversal-semantic-baseline-v2-owner-acceptance-packet',
+            'version':'2.0.0',
+            'candidateCount':len(packet),
+            'familyCounts':{k:min(10,len(v)) for k,v in sorted(by.items())},
+            'reviewInstructions':[
+              'Confirm this is a distinct game object or rule identity.',
+              'Confirm the proposed family is correct.',
+              'Confirm the source excerpt contains the complete relevant definition.',
+              'Mark false positives, merged objects, partial objects, and missing context.',
+              'Do not approve canonical import from this packet; it validates extraction quality only.'
+            ],
+            'candidates':packet,
+            'authorityNote':'Owner/expert acceptance sample; no canonical write is authorized.'
+          }
+          Path('semantic-baseline-v2/owner-acceptance-packet.json').write_text(json.dumps(payload,indent=2,ensure_ascii=False)+'\n')
+          PY
+
+      - name: Publish compact baseline data
+        run: |
+          mkdir -p v2/audit-data/semantic-baseline-v2
+          cp semantic-baseline-v2/semantic-baseline-v2-index.json v2/audit-data/semantic-baseline-v2/
+          cp semantic-baseline-v2/semantic-baseline-v2-error-report.json v2/audit-data/semantic-baseline-v2/
+          cp semantic-baseline-v2/owner-acceptance-packet.json v2/audit-data/semantic-baseline-v2/
+
+      - name: Upload full baseline artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: multiversal-semantic-baseline-v2-${{ github.sha }}
+          path: semantic-baseline-v2/
+          retention-days: 90
+
+      - name: Commit baseline publication
+        run: |
+          git config user.name 'multiversal-audit-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add v2/audit-data/semantic-baseline-v2
+          if git diff --cached --quiet; then echo 'No baseline changes to publish.'; exit 0; fi
+          git commit -m 'Publish measured Semantic Baseline v2 [skip ci]'
+          git pull --rebase origin main
+          git push origin HEAD:main
