@@ -1,0 +1,22 @@
+name: Day Work 03 - Run Long-Form Analysis
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 16 2 8 *'
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  dispatch:
+    if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 16 2 8 *'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start unattended long-form analysis
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run 'Run Unattended Long-Form Analysis' --repo '${{ github.repository }}'
+      - name: Record dispatch
+        run: echo 'The long-form candidate analysis was dispatched without requiring owner input.'
