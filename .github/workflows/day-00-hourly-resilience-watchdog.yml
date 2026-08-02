@@ -1,0 +1,103 @@
+name: Day Work 00 - Hourly Resilience Watchdog
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Hourly from 7:00 AM through 6:00 PM America/Chicago on 2026-08-02.
+    - cron: '0 12-23 2 8 *'
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: multiversal-unattended-watchdog-2026-08-02
+  cancel-in-progress: false
+
+jobs:
+  watchdog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify, dispatch, and retry due workflows
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          mkdir -p watchdog-output
+          python - <<'PY'
+          import json, os, subprocess
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          repo = os.environ['GITHUB_REPOSITORY']
+          now = datetime.now(timezone.utc)
+          target_date = '2026-08-02'
+          plan = [
+              ('12:00', 'day-01-0700-refresh-semantic-v4.yml', 'refresh-semantic-v4'),
+              ('13:00', 'run-unattended-longform-2026-08-02.yml', 'longform-early'),
+              ('14:00', 'day-02-0900-build-gpt-review-packets.yml', 'gpt-review-packets'),
+              ('16:00', 'day-03-1100-run-longform-analysis.yml', 'longform-latest'),
+              ('19:00', 'day-04-1400-mine-regressions.yml', 'regression-mining'),
+              ('22:00', 'day-05-1700-consolidate-workday.yml', 'day-consolidation'),
+          ]
+
+          def run(*args):
+              p = subprocess.run(args, text=True, capture_output=True)
+              return p.returncode, p.stdout.strip(), p.stderr.strip()
+
+          receipts=[]
+          for due, workflow, label in plan:
+              due_dt = datetime.fromisoformat(f'{target_date}T{due}:00+00:00')
+              row={'workflow':workflow,'label':label,'dueUtc':due_dt.isoformat(),'checkedAt':now.isoformat()}
+              if now < due_dt:
+                  row['action']='not-due'
+                  receipts.append(row)
+                  continue
+              code,out,err=run('gh','run','list','--repo',repo,'--workflow',workflow,'--limit','20','--json','databaseId,status,conclusion,createdAt')
+              if code != 0:
+                  row.update(action='list-failed',error=err)
+                  receipts.append(row)
+                  continue
+              runs=json.loads(out or '[]')
+              today=[r for r in runs if str(r.get('createdAt','')).startswith(target_date)]
+              latest=today[0] if today else None
+              if latest is None:
+                  c,o,e=run('gh','workflow','run',workflow,'--repo',repo,'--ref','main')
+                  row.update(action='dispatched-missing',dispatchSucceeded=(c==0),error=e or None)
+              elif latest.get('status') in ('queued','in_progress','waiting','requested','pending'):
+                  row.update(action='already-running',runId=latest.get('databaseId'))
+              elif latest.get('conclusion') == 'success':
+                  row.update(action='already-successful',runId=latest.get('databaseId'))
+              elif latest.get('conclusion') in ('failure','cancelled','timed_out','startup_failure','stale'):
+                  run_id=str(latest.get('databaseId'))
+                  c,o,e=run('gh','run','rerun',run_id,'--repo',repo,'--failed')
+                  if c != 0:
+                      c2,o2,e2=run('gh','workflow','run',workflow,'--repo',repo,'--ref','main')
+                      row.update(action='redispatched-after-failure',runId=run_id,dispatchSucceeded=(c2==0),error=e2 or e or None)
+                  else:
+                      row.update(action='reran-failed-jobs',runId=run_id)
+              else:
+                  row.update(action='observed',runId=latest.get('databaseId'),status=latest.get('status'),conclusion=latest.get('conclusion'))
+              receipts.append(row)
+
+          summary={
+              'format':'multiversal-unattended-watchdog-receipt',
+              'version':'1.0.0',
+              'checkedAt':now.isoformat(),
+              'targetDate':target_date,
+              'receipts':receipts,
+          }
+          Path('watchdog-output/watchdog-receipt.json').write_text(json.dumps(summary,indent=2)+'\n')
+          print(json.dumps(summary,indent=2))
+          PY
+
+      - name: Upload watchdog receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: multiversal-watchdog-receipt-${{ github.run_id }}
+          path: watchdog-output/
+          retention-days: 30
