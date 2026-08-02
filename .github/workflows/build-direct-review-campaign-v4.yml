@@ -41,14 +41,36 @@ jobs:
           name: multiversal-direct-review-campaign-v4-${{ github.run_id }}
           path: direct-review-v4/
           retention-days: 90
-      - name: Publish compact index
+      - name: Publish compact index and priority review tranche
         run: |
-          mkdir -p v2/audit-data/semantic-recovery-v4
+          DEST=v2/audit-data/semantic-recovery-v4/direct-review-priority
+          mkdir -p "$DEST"
           cp direct-review-v4/direct-review-campaign-index.json v2/audit-data/semantic-recovery-v4/
+          for f in \
+            creature-batch-01.json \
+            npc-batch-01.json \
+            adventure-batch-01.json \
+            faction-batch-01.json \
+            vehicle-batch-01.json; do
+            test -f "direct-review-v4/$f" && cp "direct-review-v4/$f" "$DEST/$f"
+          done
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=Path('v2/audit-data/semantic-recovery-v4/direct-review-priority')
+          files=[]
+          total=0
+          for p in sorted(d.glob('*.json')):
+              data=json.loads(p.read_text())
+              count=len(data.get('records', data.get('candidates', [])))
+              files.append({'file':p.name,'count':count})
+              total+=count
+          (d/'priority-review-index.json').write_text(json.dumps({'format':'multiversal-direct-review-priority-index','version':'1.0.0','files':files,'recordCount':total,'authority':'Review evidence only; no decision changes canon.'},indent=2)+'\n')
+          PY
           git config user.name 'multiversal-audit-bot'
           git config user.email 'actions@users.noreply.github.com'
-          git add v2/audit-data/semantic-recovery-v4/direct-review-campaign-index.json
+          git add v2/audit-data/semantic-recovery-v4/direct-review-campaign-index.json "$DEST"
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'Publish direct semantic review campaign index [skip ci]'
+          git commit -m 'Publish direct semantic review priority tranche [skip ci]'
           git pull --rebase origin main
           git push origin HEAD:main
