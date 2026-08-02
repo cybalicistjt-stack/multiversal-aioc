@@ -10,7 +10,11 @@ on:
     paths:
       - 'audit/build_hierarchical_structure.py'
       - 'audit/build_hybrid_retrieval_index.py'
+      - 'audit/reconstruct_tables_and_forms.py'
+      - 'audit/build_schema_guided_candidates.py'
+      - 'audit/verify_schema_guided_candidates.py'
       - 'docs/SEMANTIC-RECOVERY-RETRIEVAL-ARCHITECTURE.md'
+      - 'docs/HYBRID-EXTRACTION-PIPELINE-V3.1.md'
       - '.github/workflows/run-semantic-architecture-v3.yml'
 
 permissions:
@@ -30,11 +34,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
       - name: Download authoritative forensic artifact
         env:
           GH_TOKEN: ${{ github.token }}
@@ -51,58 +53,55 @@ jobs:
           test -n "$ARCHIVE"
           tar -xzf "$ARCHIVE"
           test -f audit-output/findings.jsonl
-
       - name: Build hierarchical document structure and section-aware chunks
         run: python audit/build_hierarchical_structure.py --input audit-output --out semantic-architecture-v3/hierarchy
-
+      - name: Reconstruct tables forms and key-value evidence
+        run: python audit/reconstruct_tables_and_forms.py --structure semantic-architecture-v3/hierarchy --out semantic-architecture-v3/reconstruction
       - name: Build metadata-rich hybrid retrieval index
         run: python audit/build_hybrid_retrieval_index.py --structure semantic-architecture-v3/hierarchy --out semantic-architecture-v3/retrieval
-
-      - name: Validate structural and retrieval contracts
+      - name: Build deterministic schema-guided candidates
+        run: python audit/build_schema_guided_candidates.py --structure semantic-architecture-v3/hierarchy --tables semantic-architecture-v3/reconstruction --out semantic-architecture-v3/schema-extraction
+      - name: Independently verify and route candidates
+        run: python audit/verify_schema_guided_candidates.py --candidates semantic-architecture-v3/schema-extraction --out semantic-architecture-v3/verification
+      - name: Validate v3.1 contracts
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           h=json.loads(Path('semantic-architecture-v3/hierarchy/hierarchical-document-index.json').read_text())
           r=json.loads(Path('semantic-architecture-v3/retrieval/hybrid-retrieval-index.json').read_text())
-          assert h['sourceCount'] == 218, h
-          assert h['nodeCount'] > 0 and h['chunkCount'] == r['chunkCount'], (h,r)
-          assert h['provenanceCompleteCount'] == h['chunkCount'], h
-          assert h['identityEligibleChunkCount'] > 0, h
-          assert h['containerChunkCount'] > 0, h
-          assert r['identityEligibleCount'] == h['identityEligibleChunkCount'], (h,r)
-          assert r['embeddingContractReady'] is True, r
-          print(json.dumps({
-            'sources':h['sourceCount'],
-            'nodes':h['nodeCount'],
-            'chunks':h['chunkCount'],
-            'identityEligible':h['identityEligibleChunkCount'],
-            'containersAttached':h['containerChunkCount'],
-            'roles':h['sectionRoleCounts'],
-            'retrieval':r['hybridMethod'],
-            'reranking':r['rerankingMethod'],
-          },indent=2))
+          t=json.loads(Path('semantic-architecture-v3/reconstruction/table-form-reconstruction-index.json').read_text())
+          e=json.loads(Path('semantic-architecture-v3/schema-extraction/schema-guided-candidate-index.json').read_text())
+          v=json.loads(Path('semantic-architecture-v3/verification/schema-guided-verification-index.json').read_text())
+          assert h['sourceCount']==218 and h['provenanceCompleteCount']==h['chunkCount'],h
+          assert h['chunkCount']==r['chunkCount'] and r['embeddingContractReady'] is True,(h,r)
+          assert t['tableCount']>0 and t['keyValuePairCount']>0,t
+          assert e['candidateCount']>0 and len(e['familyCounts'])>=3,e
+          assert v['candidateCount']==e['candidateCount'],(v,e)
+          assert v['scalarRelationshipViolationCount']==0,v
+          assert v['schemaValidCount']==v['candidateCount'],v
+          print(json.dumps({'sources':h['sourceCount'],'chunks':h['chunkCount'],'tables':t['tableCount'],'keyValues':t['keyValuePairCount'],'candidates':e['candidateCount'],'families':e['familyCounts'],'routes':v['routeCounts'],'reasons':v['reasonCounts']},indent=2))
           PY
-
       - name: Publish compact architecture diagnostics
         run: |
           mkdir -p v2/audit-data/semantic-architecture-v3
           cp semantic-architecture-v3/hierarchy/hierarchical-document-index.json v2/audit-data/semantic-architecture-v3/
           cp semantic-architecture-v3/retrieval/hybrid-retrieval-index.json v2/audit-data/semantic-architecture-v3/
-
+          cp semantic-architecture-v3/reconstruction/table-form-reconstruction-index.json v2/audit-data/semantic-architecture-v3/
+          cp semantic-architecture-v3/schema-extraction/schema-guided-candidate-index.json v2/audit-data/semantic-architecture-v3/
+          cp semantic-architecture-v3/verification/schema-guided-verification-index.json v2/audit-data/semantic-architecture-v3/
       - name: Upload full architecture artifact
         uses: actions/upload-artifact@v4
         with:
           name: multiversal-semantic-architecture-v3-${{ github.sha }}
           path: semantic-architecture-v3/
           retention-days: 90
-
       - name: Commit architecture diagnostics
         run: |
           git config user.name 'multiversal-audit-bot'
           git config user.email 'actions@users.noreply.github.com'
           git add v2/audit-data/semantic-architecture-v3
           if git diff --cached --quiet; then echo 'No architecture diagnostic changes.'; exit 0; fi
-          git commit -m 'Publish hierarchical chunking and retrieval diagnostics [skip ci]'
+          git commit -m 'Publish hybrid extraction and verification diagnostics [skip ci]'
           git pull --rebase origin main
           git push origin HEAD:main
