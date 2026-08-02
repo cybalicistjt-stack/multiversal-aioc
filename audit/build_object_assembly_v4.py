@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Assemble hierarchical evidence into object-centric recovery records.
 
-V4.2 separates true game-object identities from taxonomy pages, procedures,
+V4.2.1 separates true game-object identities from taxonomy pages, procedures,
 examples, generators, tables, and fragments before canonical candidate creation.
 Outputs are non-canonical evidence only.
 """
@@ -57,6 +57,14 @@ def load_jsonl(p:Path):
 def stable(*parts): return hashlib.sha256("\n".join(map(str,parts)).encode()).hexdigest()[:20]
 def norm(s): return re.sub(r"\s+"," ",str(s or "")).strip()
 def title_key(s): return re.sub(r"[^a-z0-9]+"," ",norm(s).lower()).strip()
+def node_identity_eligible(node):
+ """Honor an explicit flag when present; otherwise derive eligibility from node structure."""
+ if "identityEligible" in node:
+  return bool(node.get("identityEligible"))
+ role=node.get("sectionRole")
+ block=node.get("blockType")
+ title=norm(node.get("title")); text=norm(node.get("text"))
+ return bool(title and text and role not in ("container","table") and block!="table")
 def identity_reason(node):
  title=norm(node.get("title")); text=norm(node.get("text")); key=title_key(title)
  if not title or not text: return "empty-title-or-text"
@@ -90,13 +98,16 @@ def main():
  children=defaultdict(list)
  for n in nodes:
   if n.get("parentId"): children[n["parentId"]].append(n)
- roots=[]; rejected=Counter()
+ roots=[]; rejected=Counter(); eligibility=Counter()
  for n in nodes:
-  if not n.get("provenanceComplete") or not n.get("identityEligible") or n.get("parentObjectTitle"): continue
+  if not n.get("provenanceComplete"): eligibility["missing-provenance"]+=1; continue
+  if not node_identity_eligible(n): eligibility["not-identity-eligible"]+=1; continue
+  if n.get("parentObjectTitle"): eligibility["has-parent-object"]+=1; continue
   reason=identity_reason(n)
   if reason: rejected[reason]+=1; continue
   if n.get("sectionRole")=="object-section" or n.get("blockType") in ("stat-block","mechanic-block","prose"):
    roots.append(n)
+  else: eligibility["unsupported-root-structure"]+=1
  assembled=[]; seen_source_names=set()
  for root in roots:
   desc=[]; stack=list(children.get(root["nodeId"],[])); seen=set()
@@ -113,7 +124,7 @@ def main():
   if kind!="content-object": rejected[f"kind-{kind}"]+=1; continue
   sections=defaultdict(list); root_text=norm(root.get("text")); sections["description"].append(root_text)
   for c in desc:
-   ctext=norm(c.get("text"));
+   ctext=norm(c.get("text"))
    if not ctext: continue
    key=title_key(c.get("title")) or c.get("sectionRole") or "details"
    if key in CONTAINERS: key=key.replace(" ","_")
@@ -133,9 +144,10 @@ def main():
   missing=[f for f in grammar["required"]+grammar["expected"] if not present.get(f)]
   identity_conf=min(99,45+scores[family]*3+margin*3+(10 if root.get("sectionRole")=="object-section" else 0)+(8 if root.get("blockType")=="stat-block" else 0))
   assembled.append({"assemblyId":"assembly-"+stable(root["nodeId"],family),"objectType":family,"name":name,"candidateKind":kind,"documentGrammar":family,"rootNodeId":root["nodeId"],"childNodeIds":[x["nodeId"] for x in desc],"sectionMap":dict(sections),"specification":{"summary":root_text,"sections":dict(sections),"mechanicSignals":sum([(x.get("mechanicSignals") or []) for x in evidence],[])},"completenessScore":completeness,"identityConfidence":identity_conf,"presentFields":present,"missingFields":missing,"familyScores":scores,"familyMargin":margin,"provenance":provenance,"status":"assembled-noncanonical","authority":"Recovery evidence only; independent verification and owner approval required."})
- summary={"format":"multiversal-object-assembly-v4-index","version":"4.2.0","generatedAt":datetime.now(timezone.utc).isoformat(),"inputNodeCount":len(nodes),"rootCandidateCount":len(roots),"assembledObjectCount":len(assembled),"familyCounts":dict(Counter(x["objectType"] for x in assembled)),"averageCompleteness":round(sum(x["completenessScore"] for x in assembled)/max(1,len(assembled)),2),"averageIdentityConfidence":round(sum(x["identityConfidence"] for x in assembled)/max(1,len(assembled)),2),"rejectedCounts":dict(rejected),"publishedSample":assembled[:200]}
+ family_counts=dict(Counter(x["objectType"] for x in assembled))
+ summary={"format":"multiversal-object-assembly-v4-index","version":"4.2.1","generatedAt":datetime.now(timezone.utc).isoformat(),"inputNodeCount":len(nodes),"rootCandidateCount":len(roots),"assembledObjectCount":len(assembled),"familyCounts":family_counts,"averageCompleteness":round(sum(x["completenessScore"] for x in assembled)/max(1,len(assembled)),2),"averageIdentityConfidence":round(sum(x["identityConfidence"] for x in assembled)/max(1,len(assembled)),2),"eligibilityCounts":dict(eligibility),"rejectedCounts":dict(rejected),"survivalGates":{"rootsExist":len(roots)>0,"objectsExist":len(assembled)>0,"multipleFamilies":len(family_counts)>=3},"publishedSample":assembled[:200]}
  (a.out/"object-assembly-v4-index.json").write_text(json.dumps(summary,indent=2,ensure_ascii=False)+"\n")
  with (a.out/"assembled-objects.jsonl").open("w",encoding="utf-8") as f:
   for x in assembled:f.write(json.dumps(x,ensure_ascii=False)+"\n")
- print(json.dumps({k:summary[k] for k in ("assembledObjectCount","familyCounts","averageCompleteness","averageIdentityConfidence","rejectedCounts")},indent=2))
+ print(json.dumps({k:summary[k] for k in ("rootCandidateCount","assembledObjectCount","familyCounts","averageCompleteness","averageIdentityConfidence","eligibilityCounts","rejectedCounts","survivalGates")},indent=2))
 if __name__=="__main__":main()
