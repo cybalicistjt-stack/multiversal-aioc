@@ -1,0 +1,97 @@
+name: Build Survivor Review Tranche 04
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-survivor-review-tranche-04.yml'
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Syntax preflight
+        run: python -m py_compile audit/build_direct_review_campaign_v4.py
+      - name: Download latest survivor decisions artifact
+        env: {GH_TOKEN: '${{ github.token }}'}
+        run: |
+          RUN_ID=$(gh run list --workflow='Apply Survivor Review Decisions v4' --status=success --limit=1 --json databaseId --jq='.[0].databaseId')
+          test -n "$RUN_ID"
+          gh run download "$RUN_ID" --dir downloaded
+          C=$(find downloaded -name 'survivor-filtered-candidates-v4.jsonl' -print -quit)
+          test -n "$C"
+          mkdir -p input
+          cp "$C" input/canonical-candidates-v4.jsonl
+      - name: Build filtered review campaign
+        run: python audit/build_direct_review_campaign_v4.py --candidates input --out survivor-review-v4 --batch-size 30
+      - name: Assemble tranche 04
+        run: |
+          mkdir -p tranche-04
+          for f in \
+            creature-batch-01.json \
+            npc-batch-01.json \
+            adventure-batch-01.json \
+            faction-batch-01.json \
+            item-batch-01.json \
+            vehicle-batch-01.json \
+            ability-batch-01.json \
+            species-batch-01.json \
+            species-batch-02.json \
+            environment-batch-01.json \
+            environment-batch-02.json \
+            world-batch-01.json \
+            world-batch-02.json; do
+            test -f "survivor-review-v4/$f" && cp "survivor-review-v4/$f" tranche-04/
+          done
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=Path('tranche-04')
+          files=[]; total=0; families={}
+          for p in sorted(d.glob('*.json')):
+              data=json.loads(p.read_text())
+              count=len(data.get('records', []))
+              fam=data.get('family', p.name.split('-batch-')[0])
+              files.append({'file':p.name,'family':fam,'count':count})
+              total += count
+              families[fam]=families.get(fam,0)+count
+          index={
+              'format':'multiversal-survivor-review-tranche-04',
+              'version':'1.0.0',
+              'recordCount':total,
+              'familyCounts':families,
+              'files':files,
+              'input':'survivor-filtered-candidates-v4.jsonl',
+              'authority':'Review evidence only; no decision changes canon.'
+          }
+          (d/'survivor-review-tranche-04-index.json').write_text(json.dumps(index,indent=2)+'\n')
+          PY
+      - name: Upload complete survivor tranche
+        uses: actions/upload-artifact@v4
+        with:
+          name: multiversal-survivor-review-tranche-04-${{ github.run_id }}
+          path: tranche-04/
+          retention-days: 90
+      - name: Publish survivor tranche
+        run: |
+          DEST=v2/audit-data/semantic-recovery-v4/survivor-review-tranche-04
+          rm -rf "$DEST"
+          mkdir -p "$DEST"
+          cp tranche-04/*.json "$DEST"/
+          git config user.name 'multiversal-audit-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add "$DEST"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Publish survivor review tranche 04 [skip ci]'
+          git pull --rebase origin main
+          git push origin HEAD:main
