@@ -5,6 +5,14 @@ on:
     workflows: ["Run Forensic Audit"]
     types: [completed]
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'audit/build_document_structure.py'
+      - 'audit/build_family_parsers.py'
+      - 'audit/build_canonical_knowledge_graph.py'
+      - 'audit/build_semantic_review_batches.py'
+      - '.github/workflows/run-semantic-recovery.yml'
 
 permissions:
   actions: read
@@ -16,7 +24,7 @@ concurrency:
 
 jobs:
   semantic:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -27,16 +35,17 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Download latest successful forensic artifact
+      - name: Download authoritative forensic artifact
         env:
           GH_TOKEN: ${{ github.token }}
           EVENT_RUN_ID: ${{ github.event.workflow_run.id }}
         run: |
           RUN_ID="$EVENT_RUN_ID"
-          if [ '${{ github.event_name }}' = 'workflow_dispatch' ]; then
+          if [ '${{ github.event_name }}' != 'workflow_run' ]; then
             RUN_ID=$(gh run list --workflow='Run Forensic Audit' --status=success --limit=1 --json databaseId --jq='.[0].databaseId')
           fi
           test -n "$RUN_ID"
+          echo "Using forensic run $RUN_ID"
           gh run download "$RUN_ID" --name "multiversal-forensic-audit-*" --dir downloaded || gh run download "$RUN_ID" --dir downloaded
           ARCHIVE=$(find downloaded -name 'multiversal-forensic-audit-output.tar.gz' -print -quit)
           test -n "$ARCHIVE"
