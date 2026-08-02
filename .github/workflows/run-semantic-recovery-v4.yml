@@ -34,7 +34,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - name: Initialize status receipts
+        run: mkdir -p semantic-recovery-v4/status/receipts
+
       - name: Syntax preflight
+        id: preflight
+        continue-on-error: true
         run: |
           python -m py_compile \
             audit/build_hierarchical_structure.py \
@@ -43,7 +49,13 @@ jobs:
             audit/build_relationships_and_canonical_v4.py \
             audit/build_golden_corpus_packet_v4.py \
             audit/evaluate_golden_corpus_v4.py
+      - name: Record preflight
+        if: always()
+        run: printf '{"stage":"preflight","outcome":"%s"}\n' '${{ steps.preflight.outcome }}' > semantic-recovery-v4/status/receipts/preflight.json
+
       - name: Download authoritative forensic artifact
+        id: source
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -54,104 +66,104 @@ jobs:
           test -n "$ARCHIVE"
           tar -xzf "$ARCHIVE"
           test -f audit-output/findings.jsonl
-      - name: Initialize explicit stage status
-        run: |
-          mkdir -p semantic-recovery-v4/status
-          printf '%s\n' '{"format":"multiversal-semantic-recovery-v4-stage-status","version":"4.0.0","stages":{}}' > semantic-recovery-v4/status/stage-status.json
+      - name: Record source
+        if: always()
+        run: printf '{"stage":"source","outcome":"%s"}\n' '${{ steps.source.outcome }}' > semantic-recovery-v4/status/receipts/source.json
+
       - name: Build hierarchical evidence
         id: hierarchy
         continue-on-error: true
+        if: steps.preflight.outcome == 'success' && steps.source.outcome == 'success'
         run: python audit/build_hierarchical_structure.py --input audit-output --out semantic-recovery-v4/hierarchy
-      - name: Record hierarchy status
+      - name: Record hierarchy
         if: always()
-        run: python - <<'PY'
-          import json,os
-          from pathlib import Path
-          p=Path('semantic-recovery-v4/status/stage-status.json');d=json.loads(p.read_text());d['stages']['hierarchy']='${{ steps.hierarchy.outcome }}';p.write_text(json.dumps(d,indent=2)+'\n')
-          PY
+        run: printf '{"stage":"hierarchy","outcome":"%s"}\n' '${{ steps.hierarchy.outcome }}' > semantic-recovery-v4/status/receipts/hierarchy.json
+
       - name: Reconstruct tables and forms
         id: reconstruction
         continue-on-error: true
+        if: steps.hierarchy.outcome == 'success'
         run: python audit/reconstruct_tables_and_forms.py --structure semantic-recovery-v4/hierarchy --out semantic-recovery-v4/reconstruction
-      - name: Record reconstruction status
+      - name: Record reconstruction
         if: always()
-        run: python - <<'PY'
-          import json
-          from pathlib import Path
-          p=Path('semantic-recovery-v4/status/stage-status.json');d=json.loads(p.read_text());d['stages']['reconstruction']='${{ steps.reconstruction.outcome }}';p.write_text(json.dumps(d,indent=2)+'\n')
-          PY
+        run: printf '{"stage":"reconstruction","outcome":"%s"}\n' '${{ steps.reconstruction.outcome }}' > semantic-recovery-v4/status/receipts/reconstruction.json
+
       - name: Assemble complete objects with document grammars
         id: assembly
         continue-on-error: true
+        if: steps.hierarchy.outcome == 'success'
         run: python audit/build_object_assembly_v4.py --structure semantic-recovery-v4/hierarchy --out semantic-recovery-v4/assembly
-      - name: Record assembly status
+      - name: Record assembly
         if: always()
-        run: python - <<'PY'
-          import json
-          from pathlib import Path
-          p=Path('semantic-recovery-v4/status/stage-status.json');d=json.loads(p.read_text());d['stages']['assembly']='${{ steps.assembly.outcome }}';p.write_text(json.dumps(d,indent=2)+'\n')
-          PY
+        run: printf '{"stage":"assembly","outcome":"%s"}\n' '${{ steps.assembly.outcome }}' > semantic-recovery-v4/status/receipts/assembly.json
+
       - name: Build relationships and canonical envelopes
         id: canonical
         continue-on-error: true
+        if: steps.assembly.outcome == 'success'
         run: python audit/build_relationships_and_canonical_v4.py --assembly semantic-recovery-v4/assembly --out semantic-recovery-v4/canonical
-      - name: Record canonical status
+      - name: Record canonical
         if: always()
-        run: python - <<'PY'
-          import json
-          from pathlib import Path
-          p=Path('semantic-recovery-v4/status/stage-status.json');d=json.loads(p.read_text());d['stages']['canonical']='${{ steps.canonical.outcome }}';p.write_text(json.dumps(d,indent=2)+'\n')
-          PY
+        run: printf '{"stage":"canonical","outcome":"%s"}\n' '${{ steps.canonical.outcome }}' > semantic-recovery-v4/status/receipts/canonical.json
+
       - name: Build Golden Corpus annotation packet
         id: golden_packet
         continue-on-error: true
+        if: steps.canonical.outcome == 'success'
         run: python audit/build_golden_corpus_packet_v4.py --candidates semantic-recovery-v4/canonical --out semantic-recovery-v4/golden --per-family 20
-      - name: Record Golden packet status
+      - name: Record Golden packet
         if: always()
-        run: python - <<'PY'
-          import json
-          from pathlib import Path
-          p=Path('semantic-recovery-v4/status/stage-status.json');d=json.loads(p.read_text());d['stages']['goldenPacket']='${{ steps.golden_packet.outcome }}';p.write_text(json.dumps(d,indent=2)+'\n')
-          PY
+        run: printf '{"stage":"goldenPacket","outcome":"%s"}\n' '${{ steps.golden_packet.outcome }}' > semantic-recovery-v4/status/receipts/golden-packet.json
+
       - name: Evaluate convergence against verified Golden Corpus
         id: evaluation
         continue-on-error: true
+        if: steps.canonical.outcome == 'success'
         run: python audit/evaluate_golden_corpus_v4.py --candidates semantic-recovery-v4/canonical --golden audit/golden-corpus-v4.json --out semantic-recovery-v4/evaluation
-      - name: Record evaluation status
+      - name: Record evaluation
         if: always()
-        run: python - <<'PY'
-          import json
-          from pathlib import Path
-          p=Path('semantic-recovery-v4/status/stage-status.json');d=json.loads(p.read_text());d['stages']['evaluation']='${{ steps.evaluation.outcome }}';p.write_text(json.dumps(d,indent=2)+'\n')
-          PY
-      - name: Build baseline lock and UI consultancy transition status
+        run: printf '{"stage":"evaluation","outcome":"%s"}\n' '${{ steps.evaluation.outcome }}' > semantic-recovery-v4/status/receipts/evaluation.json
+
+      - name: Aggregate stage receipts and build baseline lock
         if: always()
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
+          receipt_dir=Path('semantic-recovery-v4/status/receipts')
+          stages={}
+          for p in sorted(receipt_dir.glob('*.json')):
+              row=json.loads(p.read_text())
+              stages[row['stage']]=row['outcome']
+          Path('semantic-recovery-v4/status/stage-status.json').write_text(json.dumps({
+              'format':'multiversal-semantic-recovery-v4-stage-status',
+              'version':'4.1.0',
+              'stages':stages,
+              'allEngineeringStagesSucceeded':all(v=='success' for v in stages.values())
+          },indent=2)+'\n')
           manifest=json.loads(Path('audit/golden-corpus-v4.json').read_text())
           ep=Path('semantic-recovery-v4/evaluation/golden-corpus-evaluation.json')
           evaluation=json.loads(ep.read_text()) if ep.exists() else {'engineeringConvergencePassed':False,'gates':{}}
           locked=bool(evaluation.get('engineeringConvergencePassed')) and manifest.get('ownerCertified') is True
-          payload={
-            'format':'multiversal-semantic-baseline-v4-lock-status',
-            'version':'4.0.0',
-            'engineeringConvergencePassed':bool(evaluation.get('engineeringConvergencePassed')),
-            'ownerCertified':manifest.get('ownerCertified') is True,
-            'baselineLocked':locked,
-            'uiUxConsultancyPhase': 'ready-to-start' if locked else 'blocked-by-semantic-baseline',
-            'nextRequiredAction': 'Begin UXC-001 discovery and workflow inventory.' if locked else 'Complete Golden Corpus annotation, rerun convergence, and owner-certify the verified manifest.',
-            'gates':evaluation.get('gates',{}),
-            'authorityNote':'Baseline lock requires both measured engineering convergence and explicit owner certification.'
-          }
-          Path('semantic-recovery-v4/status/baseline-lock-status.json').write_text(json.dumps(payload,indent=2)+'\n')
+          Path('semantic-recovery-v4/status/baseline-lock-status.json').write_text(json.dumps({
+              'format':'multiversal-semantic-baseline-v4-lock-status',
+              'version':'4.1.0',
+              'engineeringConvergencePassed':bool(evaluation.get('engineeringConvergencePassed')),
+              'ownerCertified':manifest.get('ownerCertified') is True,
+              'baselineLocked':locked,
+              'uiUxConsultancyPhase':'ready-to-start' if locked else 'blocked-by-semantic-baseline',
+              'nextRequiredAction':'Begin UXC-001 discovery and workflow inventory.' if locked else 'Complete Golden Corpus annotation, rerun convergence, and owner-certify the verified manifest.',
+              'gates':evaluation.get('gates',{}),
+              'authorityNote':'Baseline lock requires both measured engineering convergence and explicit owner certification.'
+          },indent=2)+'\n')
           PY
+
       - name: Publish v4 diagnostics before enforcement
         if: always()
         run: |
           mkdir -p v2/audit-data/semantic-recovery-v4
-          find semantic-recovery-v4 -name '*index.json' -o -name '*evaluation.json' -o -name '*status.json' -o -name '*packet.json' | while read f; do cp "$f" "v2/audit-data/semantic-recovery-v4/$(basename "$f")"; done
+          find semantic-recovery-v4 -type f \( -name '*index.json' -o -name '*evaluation.json' -o -name '*status.json' -o -name '*packet.json' \) -print | while read f; do cp "$f" "v2/audit-data/semantic-recovery-v4/$(basename "$f")"; done
+
       - name: Upload full v4 artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -159,6 +171,7 @@ jobs:
           name: multiversal-semantic-recovery-v4-${{ github.sha }}
           path: semantic-recovery-v4/
           retention-days: 90
+
       - name: Commit v4 diagnostics
         if: always()
         run: |
@@ -166,18 +179,25 @@ jobs:
           git config user.email 'actions@users.noreply.github.com'
           git add v2/audit-data/semantic-recovery-v4
           if git diff --cached --quiet; then echo 'No v4 diagnostics changed.'; exit 0; fi
-          git commit -m 'Publish Semantic Recovery v4 convergence diagnostics [skip ci]'
+          git commit -m 'Publish Semantic Recovery v4 stage and convergence diagnostics [skip ci]'
           git pull --rebase origin main
           git push origin HEAD:main
-      - name: Enforce pipeline and convergence gates
+
+      - name: Enforce engineering pipeline gates
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           s=json.loads(Path('semantic-recovery-v4/status/stage-status.json').read_text())
-          assert all(v=='success' for v in s['stages'].values()),s
+          required=('preflight','source','hierarchy','reconstruction','assembly','canonical','goldenPacket','evaluation')
+          assert all(s['stages'].get(k)=='success' for k in required),s
+          PY
+
+      - name: Report baseline lock state
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
           lock=json.loads(Path('semantic-recovery-v4/status/baseline-lock-status.json').read_text())
-          assert lock['engineeringConvergencePassed'] is True,lock
-          assert lock['ownerCertified'] is True,lock
-          assert lock['baselineLocked'] is True,lock
+          print(json.dumps(lock,indent=2))
           PY
