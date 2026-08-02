@@ -68,10 +68,12 @@ jobs:
           assert len(parser['familyCounts']) >= 3, parser
           assert graph['nodeCount'] >= parser['candidateCount'], graph
           assert graph['evidenceEdgeCount'] >= parser['candidateCount'], graph
+          assert graph['resolvedRelationshipCount'] > 0, graph
           assert review['candidateCount'] > 0, review
           assert len(review['familyCounts']) >= 3, review
           assert sum(review['familyCounts'].values()) == review['candidateCount'], review
-          print(json.dumps({'structure':structure['blockCount'],'parsed':parser['candidateCount'],'families':parser['familyCounts'],'nodes':graph['nodeCount'],'edges':graph['edgeCount'],'unresolved':graph['unresolvedRelationshipCount'],'reviewCandidates':review['candidateCount'],'reviewFamilies':review['familyCounts'],'quality':review['averageQualityScore']},indent=2))
+          assert review['connectedCandidateCount'] > 0, review
+          print(json.dumps({'structure':structure['blockCount'],'parsed':parser['candidateCount'],'families':parser['familyCounts'],'nodes':graph['nodeCount'],'edges':graph['edgeCount'],'resolvedRelationships':graph['resolvedRelationshipCount'],'unresolved':graph['unresolvedRelationshipCount'],'reviewCandidates':review['candidateCount'],'reviewFamilies':review['familyCounts'],'connectedReviewCandidates':review['connectedCandidateCount'],'quality':review['averageQualityScore']},indent=2))
           PY
       - name: Publish compact semantic data
         run: |
