@@ -47,7 +47,7 @@ jobs:
           fi
           test -n "$RUN_ID"
           echo "Using semantic recovery run $RUN_ID"
-          gh run download "$RUN_ID" --name "multiversal-semantic-recovery-*" --dir downloaded || gh run download "$RUN_ID" --dir downloaded
+          gh run download "$RUN_ID" --dir downloaded
           PARSED=$(find downloaded -path '*/family-parsers/family-parser-candidates.jsonl' -print -quit)
           GRAPH=$(find downloaded -path '*/knowledge-graph/canonical-knowledge-graph.json' -print -quit)
           test -n "$PARSED"
@@ -57,9 +57,30 @@ jobs:
           cp "$GRAPH" baseline-input/knowledge-graph/canonical-knowledge-graph.json
 
       - name: Run known-regression test suite
+        id: regression
+        continue-on-error: true
         run: python -m unittest -v audit/test_semantic_baseline_v2.py
 
+      - name: Record regression result
+        if: always()
+        run: |
+          mkdir -p semantic-baseline-v2
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          payload={
+            'format':'multiversal-semantic-baseline-v2-regression-status',
+            'version':'2.2.0',
+            'outcome':os.environ.get('REGRESSION_OUTCOME','unknown'),
+            'passed':os.environ.get('REGRESSION_OUTCOME')=='success'
+          }
+          Path('semantic-baseline-v2/regression-status.json').write_text(json.dumps(payload,indent=2)+'\n')
+          PY
+        env:
+          REGRESSION_OUTCOME: ${{ steps.regression.outcome }}
+
       - name: Compile precision-first semantic baseline
+        if: always()
         run: |
           python audit/build_semantic_baseline_v2.py \
             --parsed baseline-input/family-parsers \
@@ -68,6 +89,7 @@ jobs:
             --ready-limit 500
 
       - name: Build stratified owner acceptance packet
+        if: always()
         run: |
           python - <<'PY'
           import json
@@ -82,7 +104,7 @@ jobs:
             packet.extend(by[family][:min(10,len(by[family]))])
           payload={
             'format':'multiversal-semantic-baseline-v2-owner-acceptance-packet',
-            'version':'2.1.0',
+            'version':'2.2.0',
             'candidateCount':len(packet),
             'familyCounts':{k:min(10,len(v)) for k,v in sorted(by.items())},
             'reviewInstructions':[
@@ -99,20 +121,25 @@ jobs:
           PY
 
       - name: Publish compact baseline diagnostics
+        if: always()
         run: |
           mkdir -p v2/audit-data/semantic-baseline-v2
-          cp semantic-baseline-v2/semantic-baseline-v2-index.json v2/audit-data/semantic-baseline-v2/
-          cp semantic-baseline-v2/semantic-baseline-v2-error-report.json v2/audit-data/semantic-baseline-v2/
-          cp semantic-baseline-v2/owner-acceptance-packet.json v2/audit-data/semantic-baseline-v2/
+          for file in semantic-baseline-v2-index.json semantic-baseline-v2-error-report.json owner-acceptance-packet.json regression-status.json; do
+            test -f "semantic-baseline-v2/$file" && cp "semantic-baseline-v2/$file" v2/audit-data/semantic-baseline-v2/
+          done
+          test -f v2/audit-data/semantic-baseline-v2/semantic-baseline-v2-index.json
 
       - name: Upload full baseline artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: multiversal-semantic-baseline-v2-${{ github.sha }}
           path: semantic-baseline-v2/
+          if-no-files-found: error
           retention-days: 90
 
       - name: Commit baseline diagnostics
+        if: always()
         run: |
           git config user.name 'multiversal-audit-bot'
           git config user.email 'actions@users.noreply.github.com'
@@ -123,11 +150,15 @@ jobs:
           git push origin HEAD:main
 
       - name: Enforce engineering baseline gates
+        if: always()
+        env:
+          REGRESSION_OUTCOME: ${{ steps.regression.outcome }}
         run: |
           python - <<'PY'
-          import json
+          import json, os
           from pathlib import Path
           s=json.loads(Path('semantic-baseline-v2/semantic-baseline-v2-index.json').read_text())
+          assert os.environ.get('REGRESSION_OUTCOME') == 'success', {'regressionOutcome':os.environ.get('REGRESSION_OUTCOME')}
           assert s['inputCandidateCount'] > 0, s
           assert s['readyCount'] > 0, s
           assert all(s['gates'].values()), s
