@@ -1,11 +1,17 @@
 {
   "format": "multiversal-semantic-baseline-v4-lock-status",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "engineeringConvergencePassed": false,
   "ownerCertified": false,
   "baselineLocked": false,
   "uiUxConsultancyPhase": "blocked-by-semantic-baseline",
   "nextRequiredAction": "Complete Golden Corpus annotation, rerun convergence, and owner-certify the verified manifest.",
-  "gates": {},
+  "gates": {
+    "verifiedCorpusExists": false,
+    "familyCoverage": false,
+    "precisionAtLeast090": false,
+    "recallAtLeast080": false,
+    "f1AtLeast085": false
+  },
   "authorityNote": "Baseline lock requires both measured engineering convergence and explicit owner certification."
 }
