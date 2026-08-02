@@ -1,0 +1,26 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mv: <https://multiversal.invalid/ns/> .
+
+mv:RecoveryCandidateShape a sh:NodeShape ;
+  sh:targetClass mv:RecoveryCandidate ;
+  sh:property [ sh:path mv:name ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path mv:objectType ; sh:minCount 1 ; sh:maxCount 1 ] ;
+  sh:property [ sh:path mv:supportedBy ; sh:minCount 1 ; sh:class mv:SourceEvidence ] ;
+  sh:property [ sh:path mv:lifecycleStatus ; sh:hasValue "candidate" ] .
+
+mv:SourceEvidenceShape a sh:NodeShape ;
+  sh:targetClass mv:SourceEvidence ;
+  sh:property [ sh:path mv:sourcePath ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+  sh:property [ sh:path mv:locator ; sh:minCount 1 ] .
+
+mv:RelationshipShape a sh:NodeShape ;
+  sh:targetClass mv:RelationshipProposal ;
+  sh:property [ sh:path mv:relationshipType ; sh:minCount 1 ] ;
+  sh:property [ sh:path mv:source ; sh:minCount 1 ] ;
+  sh:property [ sh:path mv:target ; sh:minCount 1 ] .
+
+# Negative semantic constraints are enforced in the deterministic validation
+# stage before RDF projection: StatField and ScalarMechanic cannot be root
+# object identities or relationship targets.
