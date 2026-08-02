@@ -3,7 +3,7 @@ name: Run Unattended Long-Form Analysis
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 11 2 8 *'
+    - cron: '0 13 2 8 *'
 
 permissions:
   actions: read
@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   longform:
-    if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 11 2 8 *'
+    if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 13 2 8 *'
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
