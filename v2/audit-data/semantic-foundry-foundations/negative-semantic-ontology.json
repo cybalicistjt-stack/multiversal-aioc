@@ -1,0 +1,28 @@
+{
+  "types": [
+    "StatField",
+    "TableHeader",
+    "TableCell",
+    "ContainerHeading",
+    "ContextualHeading",
+    "ProcedureHeading",
+    "TaxonomyLabel",
+    "ExampleLabel",
+    "GeneratorInstruction",
+    "PageFurniture",
+    "SentenceFragment",
+    "ContinuationFragment",
+    "ScalarMechanic",
+    "DiceExpression",
+    "DurationValue",
+    "DistanceValue",
+    "DifficultyClass"
+  ],
+  "constraints": [
+    "StatField cannot be ObjectIdentity",
+    "ScalarMechanic cannot be RelationshipTarget",
+    "ContainerHeading cannot be RootObject without independent evidence",
+    "TableCell cannot be RootObject before reconstruction",
+    "PageFurniture cannot be CandidateEvidence"
+  ]
+}

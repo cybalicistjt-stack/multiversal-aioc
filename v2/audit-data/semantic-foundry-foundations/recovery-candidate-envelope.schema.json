@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.invalid/schema/recovery-candidate-envelope-v1.json",
+  "title": "Multiversal Recovery Candidate Envelope",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "type",
+    "name",
+    "lifecycleStatus",
+    "specification",
+    "provenance",
+    "validation",
+    "reviewRoute"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "type": {
+      "enum": [
+        "rule",
+        "ability",
+        "creature",
+        "item",
+        "species",
+        "npc",
+        "vehicle",
+        "environment",
+        "world",
+        "faction",
+        "adventure"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lifecycleStatus": {
+      "const": "candidate"
+    },
+    "provenance": {
+      "type": "array",
+      "minItems": 1
+    },
+    "reviewRoute": {
+      "enum": [
+        "expert-sample",
+        "human-review",
+        "evidence-only"
+      ]
+    }
+  }
+}
