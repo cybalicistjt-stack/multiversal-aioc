@@ -1,0 +1,22 @@
+name: Day Work 01 - Refresh Semantic v4
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 12 2 8 *'
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  dispatch:
+    if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 12 2 8 *'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start Semantic Recovery v4
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run 'Run Semantic Recovery v4' --repo '${{ github.repository }}'
+      - name: Record dispatch
+        run: echo 'Semantic Recovery v4 was dispatched at the start of the unattended workday.'
