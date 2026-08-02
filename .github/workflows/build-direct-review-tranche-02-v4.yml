@@ -1,0 +1,75 @@
+name: Build Direct Review Tranche 02 v4
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-direct-review-tranche-02-v4.yml'
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Download latest successful direct review campaign
+        env: {GH_TOKEN: '${{ github.token }}'}
+        run: |
+          RUN_ID=$(gh run list --workflow='Build Direct Review Campaign v4' --status=success --limit=1 --json databaseId --jq='.[0].databaseId')
+          test -n "$RUN_ID"
+          gh run download "$RUN_ID" --dir downloaded
+          SRC=$(find downloaded -type d -name 'multiversal-direct-review-campaign-v4-*' -print -quit)
+          if [ -z "$SRC" ]; then SRC=$(find downloaded -type f -name 'ability-batch-01.json' -printf '%h\n' | head -1); fi
+          test -n "$SRC"
+          mkdir -p tranche-02
+          for f in \
+            ability-batch-01.json ability-batch-02.json \
+            item-batch-01.json item-batch-02.json \
+            environment-batch-01.json environment-batch-02.json \
+            species-batch-01.json species-batch-02.json species-batch-03.json \
+            world-batch-01.json world-batch-02.json; do
+            P=$(find downloaded -name "$f" -print -quit)
+            test -n "$P" && cp "$P" tranche-02/
+          done
+      - name: Build tranche index
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=Path('tranche-02'); files=[]; total=0
+          for p in sorted(d.glob('*.json')):
+              data=json.loads(p.read_text())
+              count=len(data.get('records', []))
+              family=data.get('family')
+              files.append({'file':p.name,'family':family,'count':count})
+              total += count
+          out={'format':'multiversal-direct-review-tranche-02','version':'1.0.0','recordCount':total,'files':files,'authority':'Review evidence only; no canonical decisions.'}
+          (d/'tranche-02-index.json').write_text(json.dumps(out,indent=2)+'\n')
+          PY
+      - name: Upload complete tranche
+        uses: actions/upload-artifact@v4
+        with:
+          name: multiversal-direct-review-tranche-02-${{ github.run_id }}
+          path: tranche-02/
+          retention-days: 90
+      - name: Publish tranche for direct inspection
+        run: |
+          DEST=v2/audit-data/semantic-recovery-v4/direct-review-tranche-02
+          rm -rf "$DEST"
+          mkdir -p "$DEST"
+          cp tranche-02/*.json "$DEST"/
+          git config user.name 'multiversal-audit-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add "$DEST"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Publish direct semantic review tranche 02 [skip ci]'
+          git pull --rebase origin main
+          git push origin HEAD:main
