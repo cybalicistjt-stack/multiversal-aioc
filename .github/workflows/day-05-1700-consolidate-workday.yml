@@ -4,13 +4,19 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 22 2 8 *'
+    # Emergency second chance at 6:00 PM America/Chicago.
+    - cron: '0 23 2 8 *'
 
 permissions:
   contents: write
+  actions: read
+
+concurrency:
+  group: multiversal-workday-consolidation-2026-08-02
+  cancel-in-progress: false
 
 jobs:
   consolidate:
-    if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 22 2 8 *'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,17 +25,68 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
       - name: Syntax preflight
+        id: preflight
+        continue-on-error: true
         run: python -m py_compile audit/build_unattended_day_summary.py
+
       - name: Build consolidated readiness report
+        id: build
+        continue-on-error: true
         run: python audit/build_unattended_day_summary.py
+
+      - name: Create fallback report when consolidation is partial
+        if: always()
+        run: |
+          mkdir -p unattended-day-summary
+          python - <<'PY'
+          import json
+          from datetime import datetime, timezone
+          from pathlib import Path
+          out=Path('unattended-day-summary')
+          summary=out/'unattended-workday-summary.json'
+          readme=out/'README.md'
+          if not summary.exists():
+              available=[]
+              missing=[]
+              expected=[
+                  'v2/audit-data/semantic-recovery-v4/object-assembly-v4-index.json',
+                  'v2/audit-data/semantic-recovery-v4/canonical-candidate-v4-index.json',
+                  'v2/audit-data/semantic-recovery-v4/gpt-review-packets-v4-index.json',
+                  'v2/audit-data/unattended-longform/unattended-longform-index.json',
+                  'v2/audit-data/regression-mining-v4/regression-mining-v4-index.json',
+              ]
+              for p in expected:
+                  (available if Path(p).exists() else missing).append(p)
+              data={
+                  'format':'multiversal-unattended-workday-fallback-summary',
+                  'version':'1.0.0',
+                  'generatedAt':datetime.now(timezone.utc).isoformat(),
+                  'status':'partial',
+                  'preflightOutcome':'${{ steps.preflight.outcome }}',
+                  'buildOutcome':'${{ steps.build.outcome }}',
+                  'availableInputs':available,
+                  'missingInputs':missing,
+                  'authorityNote':'Diagnostic summary only; no canonical content was changed.',
+              }
+              summary.write_text(json.dumps(data,indent=2)+'\n')
+              readme.write_text('# Multiversal Unattended Workday\n\nThe primary consolidation was incomplete, so this bundle records all available and missing inputs. No canonical writes occurred.\n')
+          elif not readme.exists():
+              readme.write_text('# Multiversal Unattended Workday\n\nSee `unattended-workday-summary.json`.\n')
+          PY
+
       - name: Upload final workday bundle
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: multiversal-unattended-workday-summary-${{ github.run_id }}
           path: unattended-day-summary/
           retention-days: 90
+
       - name: Publish final summary
+        if: always()
+        continue-on-error: true
         run: |
           mkdir -p v2/audit-data/unattended-workday
           cp unattended-day-summary/unattended-workday-summary.json v2/audit-data/unattended-workday/
@@ -39,5 +96,12 @@ jobs:
           git add v2/audit-data/unattended-workday
           if git diff --cached --quiet; then exit 0; fi
           git commit -m 'Publish unattended workday consolidation [skip ci]'
-          git pull --rebase origin main
-          git push origin HEAD:main
+          git pull --rebase origin main || true
+          git push origin HEAD:main || true
+
+      - name: Report outcomes
+        if: always()
+        run: |
+          echo "preflight=${{ steps.preflight.outcome }}"
+          echo "build=${{ steps.build.outcome }}"
+          test -f unattended-day-summary/unattended-workday-summary.json
