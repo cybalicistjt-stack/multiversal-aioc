@@ -6,33 +6,72 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 SCALAR=re.compile(r"^(?:DC\s*\d+|\d+(?:\.\d+)?\s*(?:ft|feet|miles?|hours?|minutes?|rounds?|turns?|XP|MC)|\d+d\d+(?:\s*[+-]\s*\d+)?)$",re.I)
-PATTERNS=[("requires",re.compile(r"\b(?:requires?|prerequisite)\s*[:\-]?\s*([A-Z][A-Za-z0-9 '&’\-]{2,60})",re.I)),("locatedIn",re.compile(r"\b(?:located in|native to|found in)\s+([A-Z][A-Za-z0-9 '&’\-]{2,60})",re.I)),("belongsTo",re.compile(r"\b(?:belongs to|member of|part of)\s+([A-Z][A-Za-z0-9 '&’\-]{2,60})",re.I)),("usedBy",re.compile(r"\b(?:used by|available to)\s+([A-Z][A-Za-z0-9 '&’\-]{2,60})",re.I))]
+PATTERNS=[
+ ("requires",re.compile(r"\b(?:requires?|prerequisite(?:s)?)\s*[:\-]?\s*([^.;\n]{3,80})",re.I)),
+ ("locatedIn",re.compile(r"\b(?:located in|native to|found in|originates? from)\s+([^.;\n]{3,80})",re.I)),
+ ("belongsTo",re.compile(r"\b(?:belongs to|member of|part of|associated with)\s+([^.;\n]{3,80})",re.I)),
+ ("usedBy",re.compile(r"\b(?:used by|available to|exclusive to)\s+([^.;\n]{3,80})",re.I)),
+]
+STOP={"the","a","an","this","that","characters","creatures","players","target","user","caster"}
 def load(p): return [json.loads(x) for x in p.read_text(encoding='utf-8').splitlines() if x.strip()]
 def stable(*x): return hashlib.sha256('\n'.join(map(str,x)).encode()).hexdigest()[:20]
 def slug(s): return re.sub(r'[^a-z0-9]+','-',str(s).lower()).strip('-')[:72]
+def norm(s): return re.sub(r'[^a-z0-9]+',' ',str(s).lower()).strip()
+def aliases_for(name):
+ base=norm(name); out={base}
+ out.add(re.sub(r'\b(?:the|a|an)\b',' ',base).strip())
+ out.add(re.sub(r'\([^)]*\)',' ',base).strip())
+ if ':' in name: out.add(norm(name.split(':',1)[0])); out.add(norm(name.split(':',1)[1]))
+ return {re.sub(r'\s+',' ',x).strip() for x in out if len(x.strip())>=3}
+def token_similarity(a,b):
+ sa=set(norm(a).split()); sb=set(norm(b).split())
+ if not sa or not sb:return 0.0
+ return len(sa&sb)/len(sa|sb)
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--assembly',type=Path,required=True);ap.add_argument('--out',type=Path,required=True);a=ap.parse_args();a.out.mkdir(parents=True,exist_ok=True)
  rows=load(a.assembly/'assembled-objects.jsonl'); aliases=defaultdict(list)
- for x in rows: aliases[re.sub(r'\W+','',x['name'].lower())].append(x)
- out=[]; edge_count=0; unresolved=0
+ for x in rows:
+  for key in aliases_for(x['name']): aliases[key].append(x)
+ out=[]; edge_count=0; unresolved=0; scalar_blocked=0
  for x in rows:
   text=' '.join([x['name'],x['specification'].get('summary','')]+[v for vals in x.get('sectionMap',{}).values() for v in vals])
-  rel=[]
+  rel=[]; seen=set()
   for typ,pat in PATTERNS:
    for m in pat.finditer(text):
-    target=m.group(1).strip(' .,:;')
-    if SCALAR.match(target): continue
-    key=re.sub(r'\W+','',target.lower()); matches=aliases.get(key,[])
-    if len(matches)==1 and matches[0]['assemblyId']!=x['assemblyId']:
-     rel.append({'relationshipType':typ,'targetId':matches[0]['assemblyId'],'targetName':matches[0]['name'],'resolution':'exact-alias','confidence':92}) ; edge_count+=1
+    target=m.group(1).strip(' .,:;–—-')
+    target=re.split(r'\b(?:and must|and may|when|if|while|which|who|that)\b',target,1,flags=re.I)[0].strip()
+    if not target or SCALAR.match(target) or norm(target) in STOP:
+     scalar_blocked+=1; continue
+    key=norm(target); matches=[z for z in aliases.get(key,[]) if z['assemblyId']!=x['assemblyId']]
+    resolution='unresolved'; confidence=52; chosen=None
+    if len(matches)==1:
+     chosen=matches[0]; resolution='exact-alias'; confidence=94
+    elif not matches:
+     scored=[]
+     for ak,vals in aliases.items():
+      sim=token_similarity(key,ak)
+      if sim>=0.8:
+       for z in vals:
+        if z['assemblyId']!=x['assemblyId']: scored.append((sim,z))
+     scored.sort(key=lambda q:(-q[0],q[1]['name']))
+     if scored and (len(scored)==1 or scored[0][0]>scored[1][0]):
+      chosen=scored[0][1]; resolution='fuzzy-alias'; confidence=round(70+20*scored[0][0])
+    sig=(typ,chosen['assemblyId'] if chosen else None,key)
+    if sig in seen: continue
+    seen.add(sig)
+    if chosen:
+     rel.append({'relationshipType':typ,'targetId':chosen['assemblyId'],'targetName':chosen['name'],'resolution':resolution,'confidence':confidence});edge_count+=1
     else:
-     rel.append({'relationshipType':typ,'targetId':None,'targetName':target,'resolution':'unresolved','confidence':55}); unresolved+=1
+     rel.append({'relationshipType':typ,'targetId':None,'targetName':target,'resolution':'unresolved','confidence':52});unresolved+=1
   cid=f"mv.{x['objectType']}.{slug(x['name'])}.{stable(x['assemblyId'])[:8]}"
-  gates={'identityConfirmed':False,'sourceVerified':False,'duplicateResolved':False,'relationshipsReviewed':not any(r['targetId'] is None for r in rel),'schemaValidated':True,'designerApproved':False,'ownerApproved':False}
-  out.append({'id':cid,'type':x['objectType'],'name':x['name'],'lifecycleStatus':'candidate','authority':'Non-canonical v4 candidate; no automatic import or merge.','specification':x['specification'],'relationships':rel,'provenance':x['provenance'],'recovery':{'assemblyId':x['assemblyId'],'documentGrammar':x['documentGrammar'],'completenessScore':x['completenessScore'],'missingFields':x['missingFields'],'familyMargin':x['familyMargin']},'validation':{'schemaValid':True,'gates':gates},'reviewRoute':'expert-sample' if x['completenessScore']>=75 and x['familyMargin']>=3 else 'human-review'})
- summary={'format':'multiversal-canonical-candidate-v4-index','version':'4.0.0','generatedAt':datetime.now(timezone.utc).isoformat(),'candidateCount':len(out),'familyCounts':dict(Counter(x['type'] for x in out)),'resolvedRelationshipCount':edge_count,'unresolvedRelationshipCount':unresolved,'expertSampleCount':sum(x['reviewRoute']=='expert-sample' for x in out),'humanReviewCount':sum(x['reviewRoute']=='human-review' for x in out),'publishedSample':out[:200]}
+  unresolved_here=any(r['targetId'] is None for r in rel)
+  quality=(x.get('identityConfidence',0)>=82 and x['completenessScore']>=65 and x['familyMargin']>=4 and not unresolved_here)
+  route='expert-sample' if quality else ('human-review' if x.get('identityConfidence',0)>=65 else 'evidence-only')
+  gates={'identityConfirmed':False,'sourceVerified':False,'duplicateResolved':False,'relationshipsReviewed':not unresolved_here,'schemaValidated':True,'designerApproved':False,'ownerApproved':False}
+  out.append({'id':cid,'type':x['objectType'],'name':x['name'],'lifecycleStatus':'candidate','authority':'Non-canonical v4 candidate; no automatic import or merge.','specification':x['specification'],'relationships':rel,'provenance':x['provenance'],'recovery':{'assemblyId':x['assemblyId'],'candidateKind':x.get('candidateKind'),'documentGrammar':x['documentGrammar'],'completenessScore':x['completenessScore'],'identityConfidence':x.get('identityConfidence',0),'missingFields':x['missingFields'],'familyMargin':x['familyMargin']},'validation':{'schemaValid':True,'gates':gates},'reviewRoute':route})
+ summary={'format':'multiversal-canonical-candidate-v4-index','version':'4.2.0','generatedAt':datetime.now(timezone.utc).isoformat(),'candidateCount':len(out),'familyCounts':dict(Counter(x['type'] for x in out)),'resolvedRelationshipCount':edge_count,'unresolvedRelationshipCount':unresolved,'scalarRelationshipBlockedCount':scalar_blocked,'expertSampleCount':sum(x['reviewRoute']=='expert-sample' for x in out),'humanReviewCount':sum(x['reviewRoute']=='human-review' for x in out),'evidenceOnlyCount':sum(x['reviewRoute']=='evidence-only' for x in out),'publishedSample':out[:200]}
  (a.out/'canonical-candidate-v4-index.json').write_text(json.dumps(summary,indent=2,ensure_ascii=False)+'\n')
  with (a.out/'canonical-candidates-v4.jsonl').open('w',encoding='utf-8') as f:
   for x in out:f.write(json.dumps(x,ensure_ascii=False)+'\n')
- print(json.dumps({k:summary[k] for k in ('candidateCount','familyCounts','resolvedRelationshipCount','unresolvedRelationshipCount','expertSampleCount')},indent=2))
+ print(json.dumps({k:summary[k] for k in ('candidateCount','familyCounts','resolvedRelationshipCount','unresolvedRelationshipCount','expertSampleCount','humanReviewCount','evidenceOnlyCount')},indent=2))
 if __name__=='__main__':main()
