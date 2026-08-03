@@ -1,6 +1,6 @@
 # AIOC Session Handoff
 
-**Status:** READY TO RESUME  
+**Status:** READY FOR OWNER MILESTONE DECISION  
 **Owner:** John Brandon Turner  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Branch:** `main`  
@@ -8,62 +8,54 @@
 
 ## Active workstream
 
-Development Brain — Release C, Active Coordinator.
+Development Brain Releases A–C are complete. No subsequent Development Brain release is defined in the canonical roadmap.
 
 ## Last completed work
 
-### Step 8 — Verification and Governance Integration — COMPLETE
+### Step 9 — Browser, MCP, REST, and Codex Integration — COMPLETE
 
-Step 8 delivered:
+Step 9 delivered:
 
-1. Verification-governance schema and governed contract.
-2. Deterministic verification of recommendation evidence, prerequisites, lifecycle compatibility, authority constraints, task eligibility, readiness compatibility, and approval requirements.
-3. Stable verification IDs and deterministic ordering.
-4. Explicit statuses: verified-executable, requires-approval, blocked, and observation-only.
-5. Auditable checks, approval records, and source evidence.
-6. Safeguards preventing execution, assignment, scheduling, mutation, promotion, certification, approval granting, or substitution of owner decisions.
-7. Generated artifact, validator, CI workflow, and required artifact publication.
+1. Governed integration schema and contract.
+2. Deterministic integration manifest for all Development Brain artifact families.
+3. Browser read-only access boundaries.
+4. MCP, REST, and Codex proposal-only write boundaries.
+5. Provenance, repository-ref freshness, and stale-artifact rejection requirements.
+6. Audit-field, repository-review, CI, and approval safeguards.
+7. Alignment with the existing AIOC bridge and operational browser architecture.
+8. Generated artifact, validator, CI workflow, and required artifact publication.
 
 Validation evidence:
 
-- Verification Governance run `30830699103` — PASS
-- Recommendation Planner run `30830702500` — PASS
-- Priority and Impact run `30830698782` — PASS
-- Completion Readiness run `30830698918` — PASS
-- Structure Intelligence run `30830698642` — PASS
-- Dependency Graph run `30830700214` — PASS
-- Unified Inventory run `30830701033` — PASS
-- Operational AIOC Baseline run `30830698654` — PASS
-- AIOC Smoke Tests run `30830699301` — PASS
-- Artifact `aioc-verification-governance`, ID `8862776763`
-- Artifact digest `sha256:e3b21cfc995fe8856f4555eb767f27040dc91ee357ee8b702b75fa7a0f395890`
-- Merge commit `8d560bd44a71ffc816970b315b24999e93529506`
+- Development Brain Integration run `30831109121` — PASS
+- Verification Governance run `30831108920` — PASS
+- Recommendation Planner run `30831109104` — PASS
+- Priority and Impact run `30831108970` — PASS
+- Completion Readiness run `30831108668` — PASS
+- Structure Intelligence run `30831108950` — PASS
+- Dependency Graph run `30831108879` — PASS
+- Unified Inventory run `30831108892` — PASS
+- Operational AIOC Baseline run `30831108778` — PASS
+- AIOC Smoke Tests run `30831108462` — PASS
+- Artifact `aioc-development-brain-integration`, ID `8862938073`
+- Artifact digest `sha256:553b243e4670f5a28dd7f62905d314336bebd2dbd5111456bdfafea6874c0649`
+- Merge commit `71a7efd1b57b46fe3fa516b68d6be437dc9de76e`
 
 ## Exact next action
 
-Implement **Development Brain Release C, Step 9 — Browser, MCP, REST, and Codex Integration** as one bounded batch.
+Obtain and record an **owner milestone decision** before beginning further AIOC implementation.
 
-Required outputs:
-
-1. A governed integration contract covering browser, MCP, REST, and Codex surfaces.
-2. Read-only discovery and retrieval of Development Brain artifacts, summaries, recommendations, and verification records.
-3. Explicit write-action boundaries, approval requirements, and repository-review gates.
-4. Stable integration identifiers and source-evidence links.
-5. Deterministic regeneration and stale-artifact detection.
-6. Audit records for integration reads and any proposed writes.
-7. No silent execution, assignment, scheduling, mutation, promotion, certification, approval granting, or owner-decision substitution.
-8. Validators, CI coverage, and integration evidence.
-9. Updated Development Brain roadmap, current state, and session handoff.
+The canonical roadmap ends at Step 9. Do not invent Release D or another workstream. Once the owner selects the next milestone, update the Development Brain roadmap or create the appropriate governed roadmap, define bounded deliverables and authority constraints, and only then begin implementation.
 
 ## Operating boundaries
 
-- Read `governance/ci-failures/INDEX.md` from branch `ci/failure-records` before any work.
-- Integration surfaces must preserve canonical versus working authority boundaries.
-- Read access does not imply write authority.
-- Proposed writes must remain bounded, reviewable, auditable, and subject to normal repository approval and validation.
-- Owner decisions remain owner-controlled.
+- Read `governance/ci-failures/INDEX.md` from branch `ci/failure-records` before any governed operation.
+- Browser access remains read-only under the Step 9 integration contract.
+- MCP, REST, and Codex writes remain proposal-only and require repository review and CI.
+- Integration surfaces cannot execute recommendations, mutate canonical content, grant approval, or substitute owner decisions.
+- Browser-to-shared-state synchronization remains technical debt and must not be represented as complete.
 - `WP-011` remains a separate Mac-dependent Multiversal App work item.
 
 ## New-conversation behavior
 
-Read the canonical bootstrap and current-state files. When the owner says “Continue,” begin Step 9 immediately after verifying repository and failure state.
+Read the canonical bootstrap, current-state files, and Development Brain contracts through integration. When the owner says “Continue,” verify repository and failure state, then report that an owner milestone decision is required unless the owner has already selected a governed next workstream.
