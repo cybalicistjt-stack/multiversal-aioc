@@ -40,8 +40,8 @@ It does not replace owner authority, canonical content certification, or reposit
 
 ### Release F — Agent Ecosystem — ACTIVE
 
-16. Specialist Agent Contracts — next
-17. Governed Orchestration and Routing
+16. Specialist Agent Contracts — validated
+17. Governed Orchestration and Routing — next
 18. Multi-Agent Review and Synthesis
 
 ### Release G — Governed Autonomous Development — APPROVED
@@ -54,34 +54,26 @@ It does not replace owner authority, canonical content certification, or reposit
 
 On 2026-08-03, owner John Brandon Turner approved the Release D–G direction. Approval authorizes bounded implementation and validation work only; it does not authorize silent canonical mutation, certification, promotion, scheduling, assignment, or substitution of owner decisions.
 
-## Release E contracts
+## Release F contracts
 
-### Step 13 — Design Intent Memory
+### Step 16 — Specialist Agent Contracts
 
-Validated. Provides stable, evidence-backed intent records preserving explicit goals, outcomes, addressed problems, documented tradeoffs, alternatives, invariants, extension notes, authority, confidence, evidence, and unresolved intent.
+Validated. Defines eight governed specialist roles covering knowledge, rules, lore, packs, UX, verification, governance, and coordination. Contracts preserve stable identities, scope, responsibilities, required inputs, permitted outputs, evidence rules, escalation triggers, deterministic coordinator-mediated handoffs, prohibited actions, and authority modes. Diagnostics expose overlap, missing capabilities, circular handoffs, unsupported specialization, and authority conflicts.
 
-### Step 14 — Decision and Tradeoff History
+### Step 17 — Governed Orchestration and Routing
 
-Validated. Preserves governed decisions, chronology, status, rationale, documented alternatives, accepted tradeoffs, consequences, authority, confidence, evidence, supersession, and explicit diagnostics.
-
-### Step 15 — Constraint and Rationale Reasoning
-
-Validated. Produces deterministic, evidence-backed reasoning records with source constraints, supported rationale chains, derived conclusions, conflicts, unmet prerequisites, authority requirements, confidence, freshness, evidence, and unresolved gaps. Explicit source constraints outrank derived conclusions.
-
-## Release F Step 16 contract
-
-Step 16 must define stable specialist-agent contracts covering role identity, domain scope, responsibilities, required inputs, permitted outputs, evidence rules, escalation triggers, handoff requirements, and prohibited actions. It must diagnose role overlap, missing capability, circular handoffs, authority conflicts, and unsupported specialization without silently granting authority.
+Next. It must classify bounded tasks deterministically, select eligible specialists from validated Step 16 contracts, preserve provenance, confidence, freshness, authority, and unresolved questions, validate handoffs, route through the Development Coordinator, and surface ambiguity, stale inputs, unavailable capabilities, authority mismatches, and circular routes without silently executing work or expanding authority.
 
 ## Governance boundaries
 
 - Canonical content remains in the certified content pipeline.
 - Derived intelligence and specialist-agent outputs cannot promote or overwrite canonical content.
-- Unsupported meaning, causality, rationale, decisions, conclusions, or specialization must remain unresolved rather than guessed.
+- Unsupported meaning, causality, rationale, decisions, conclusions, specialization, or routing must remain unresolved rather than guessed.
 - Findings preserve uncertainty, source evidence, confidence, freshness, chronology, derivation method, and authority boundaries.
 - Browser access remains read-only; MCP, REST, Codex, and specialist-agent writes remain proposal-only unless explicitly governed otherwise.
-- No intelligence artifact or agent contract grants execution, mutation, promotion, certification, assignment, scheduling, or approval authority.
+- No intelligence artifact, agent contract, or routing decision grants execution, mutation, promotion, certification, assignment, scheduling, or approval authority.
 - All future autonomous behavior remains reviewable and subject to repository CI and owner/governance controls.
 
 ## Next executable step
 
-Implement and validate Step 16: Specialist Agent Contracts. Do not begin Step 17 until Step 16 generates a valid artifact and all required workflows pass.
+Implement and validate Step 17: Governed Orchestration and Routing. Do not begin Step 18 until Step 17 generates a valid artifact and all required workflows pass.
