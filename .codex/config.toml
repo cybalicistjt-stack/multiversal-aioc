@@ -1,0 +1,11 @@
+# Multiversal AIOC remote MCP bridge.
+# Read-only production connection. Repository writes remain disabled server-side.
+
+[mcp_servers.multiversal_aioc]
+url = "https://aioc-mcp-bridge-production.up.railway.app/mcp"
+
+[mcp_servers.multiversal_aioc.metadata]
+service = "Multiversal AIOC"
+mode = "read-only"
+health_url = "https://aioc-mcp-bridge-production.up.railway.app/health"
+verification_url = "https://aioc-mcp-bridge-production.up.railway.app/live-verification"
