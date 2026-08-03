@@ -7,6 +7,7 @@ const ROOT = process.cwd();
 const PART_DIR = path.join(ROOT, 'catalog-seed-parts');
 const SOURCE_DIR = path.join(ROOT, 'content-source');
 const DB_DIR = path.join(ROOT, 'content-db');
+const EVIDENCE_DIR = path.join(ROOT, 'evidence', 'content-pipeline');
 const PARTS = [0, 1, 2, 3, 4].map(i => path.join(PART_DIR, `phase1-7.${String(i).padStart(2, '0')}.txt`));
 
 const fail = message => { throw new Error(message); };
@@ -92,13 +93,13 @@ async function certifyGeneratedDatabase(seed, source) {
     }
   }
 
-  const normalized = index.records.map(record => ({
-    databaseId: record.databaseId,
-    stableId: record.stableId || '',
-    objectType: record.objectType || '',
-    name: record.name || '',
-    gameObject: record.gameObject || null
-  }));
+  const semantic = index.records.map(record => [
+    record.databaseId,
+    record.stableId || '',
+    record.objectType || '',
+    record.name || ''
+  ]);
+  const semanticFingerprint = `sha256:${sha256(JSON.stringify(semantic))}`;
 
   return {
     databaseVersion: index.databaseVersion,
@@ -106,25 +107,29 @@ async function certifyGeneratedDatabase(seed, source) {
     fullObjectBodies: index.summary?.fullObjectBodies ?? 0,
     uniqueDatabaseIds: databaseIds.size,
     uniqueStableIds: stableIds.size,
-    semanticSha256: sha256(JSON.stringify(normalized))
+    semanticFingerprint
   };
 }
 
 const seed = await certifySeedArchive();
-const source = await certifyCanonicalSource();
-const database = await certifyGeneratedDatabase(seed, source);
+const canonicalSource = await certifyCanonicalSource();
+const database = await certifyGeneratedDatabase(seed, canonicalSource);
 const certificate = {
   format: 'multiversal-content-pipeline-certificate',
-  version: '1.0.0',
+  version: '1.1.0',
   result: 'PASS',
+  certifiedAt: new Date().toISOString(),
+  recordCount: database.records,
+  fullObjectBodies: database.fullObjectBodies,
+  semanticFingerprint: database.semanticFingerprint,
   seed,
-  canonicalSource: source,
+  canonicalSource,
   database
 };
 
-await fs.mkdir(path.join(ROOT, 'evidence', 'content-pipeline'), { recursive: true });
-await fs.writeFile(
-  path.join(ROOT, 'evidence', 'content-pipeline', 'latest-certificate.json'),
-  JSON.stringify(certificate, null, 2) + '\n'
-);
-console.log(`Content pipeline certified PASS: ${database.records} records, ${database.fullObjectBodies} full object bodies.`);
+await fs.mkdir(EVIDENCE_DIR, { recursive: true });
+await fs.mkdir(DB_DIR, { recursive: true });
+const serialized = JSON.stringify(certificate, null, 2) + '\n';
+await fs.writeFile(path.join(EVIDENCE_DIR, 'latest-certificate.json'), serialized);
+await fs.writeFile(path.join(DB_DIR, 'certification.json'), serialized);
+console.log(`Content pipeline certified PASS: ${certificate.recordCount} records, ${certificate.fullObjectBodies} full object bodies, ${certificate.semanticFingerprint}.`);
