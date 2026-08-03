@@ -5,10 +5,8 @@ on:
     branches: [main]
     paths:
       - 'scripts/materialize-content-source.mjs'
-      - 'scripts/normalize-seed-fragments.mjs'
-      - 'scripts/build-content-database.mjs'
-      - 'scripts/certify-content-pipeline.mjs'
-      - 'catalog-seed-parts/**'
+      - 'scripts/build-canonical-content-database.mjs'
+      - 'scripts/certify-canonical-content-pipeline.mjs'
       - 'content-source/**'
       - '.github/workflows/build-content-database.yml'
       - '.github/workflows/promote-content-database.yml'
@@ -36,56 +34,20 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Check pipeline syntax
+      - name: Check canonical pipeline syntax
         run: |
           node --check scripts/materialize-content-source.mjs
-          node --check scripts/normalize-seed-fragments.mjs
-          node --check scripts/build-content-database.mjs
-          node --check scripts/certify-content-pipeline.mjs
+          node --check scripts/build-canonical-content-database.mjs
+          node --check scripts/certify-canonical-content-pipeline.mjs
 
       - name: Materialize canonical source bundle
         run: node scripts/materialize-content-source.mjs
 
-      - name: Normalize and validate seed fragment boundaries
-        run: node scripts/normalize-seed-fragments.mjs
+      - name: Build canonical database in isolated runner workspace
+        run: node scripts/build-canonical-content-database.mjs
 
-      - name: Record normalized seed layout
-        run: |
-          mkdir -p evidence/content-pipeline
-          node - <<'NODE' | tee evidence/content-pipeline/seed-layout.txt
-          const fs = require('fs');
-          const crypto = require('crypto');
-          const parts = [0,1,2,3,4].map(i => `catalog-seed-parts/phase1-7.${String(i).padStart(2,'0')}.txt`);
-          const clean = value => String(value).replace(/[^A-Za-z0-9+/=]/g, '');
-          const hash = value => crypto.createHash('sha256').update(value).digest('hex');
-          let joined = '';
-          for (const file of parts) {
-            const raw = fs.readFileSync(file, 'utf8');
-            const compact = clean(raw);
-            console.log(JSON.stringify({
-              file,
-              compactLength: compact.length,
-              modulo4: compact.length % 4,
-              prefix: compact.slice(0,16),
-              suffix: compact.slice(-16),
-              compactSha256: hash(compact)
-            }));
-            joined += compact;
-          }
-          console.log(JSON.stringify({
-            joinedLength: joined.length,
-            joinedModulo4: joined.length % 4,
-            joinedPrefix: joined.slice(0,16),
-            joinedSuffix: joined.slice(-16),
-            joinedSha256: hash(joined)
-          }));
-          NODE
-
-      - name: Build database in isolated runner workspace
-        run: node scripts/build-content-database.mjs
-
-      - name: Independently certify seed, source, and generated database
-        run: node scripts/certify-content-pipeline.mjs
+      - name: Independently certify canonical source and generated database
+        run: node scripts/certify-canonical-content-pipeline.mjs
 
       - name: Verify promotion artifact contract
         run: |
@@ -97,9 +59,11 @@ jobs:
           const index = JSON.parse(fs.readFileSync('content-db/index.json', 'utf8'));
           const certificate = JSON.parse(fs.readFileSync('content-db/certification.json', 'utf8'));
           if (certificate.result !== 'PASS') throw new Error('Certificate is not PASS');
+          if (certificate.pipelineMode !== 'CANONICAL_OBJECTS_ONLY') throw new Error('Unexpected pipeline mode');
+          if (certificate.recordCount !== 487 || index.recordCount !== 487) throw new Error('Canonical record count mismatch');
           if (certificate.recordCount !== index.recordCount) throw new Error('Certificate record count mismatch');
           if (!String(certificate.semanticFingerprint || '').startsWith('sha256:')) throw new Error('Semantic fingerprint is missing');
-          console.log(`Artifact contract PASS: ${certificate.recordCount} records; ${certificate.semanticFingerprint}`);
+          console.log(`Artifact contract PASS: ${certificate.recordCount} canonical objects; ${certificate.semanticFingerprint}`);
           NODE
 
       - name: Show certification result
@@ -112,7 +76,6 @@ jobs:
           path: |
             content-db
             evidence/content-pipeline/latest-certificate.json
-            evidence/content-pipeline/seed-normalization.json
           retention-days: 30
           if-no-files-found: error
 
@@ -127,8 +90,9 @@ jobs:
             echo "- Attempt: ${GITHUB_RUN_ATTEMPT}"
             echo "- Commit: ${GITHUB_SHA}"
             echo "- Branch: ${GITHUB_REF_NAME}"
+            echo "- Pipeline mode: CANONICAL_OBJECTS_ONLY"
+            echo "- Legacy inventory: QUARANTINED_CORRUPTED_SOURCE"
             echo "- Recorded: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            echo "- Seed normalization present: $([ -f evidence/content-pipeline/seed-normalization.json ] && echo yes || echo no)"
             echo "- Certificate present: $([ -f content-db/certification.json ] && echo yes || echo no)"
             echo "- Database index present: $([ -f content-db/index.json ] && echo yes || echo no)"
           } | tee evidence/content-pipeline/runner-summary.md >> "$GITHUB_STEP_SUMMARY"
