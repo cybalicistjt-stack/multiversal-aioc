@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/priority-impact.schema.json",
+  "title": "Multiversal AIOC Priority and Impact",
+  "type": "object",
+  "required": ["format", "version", "generatedAt", "policy", "summary", "priorities"],
+  "properties": {
+    "format": { "const": "multiversal-aioc-priority-impact" },
+    "version": { "const": "1.0.0" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "policy": { "type": "object" },
+    "summary": {
+      "type": "object",
+      "required": ["totalPriorities", "critical", "high", "medium", "low"],
+      "properties": {
+        "totalPriorities": { "type": "integer", "minimum": 0 },
+        "critical": { "type": "integer", "minimum": 0 },
+        "high": { "type": "integer", "minimum": 0 },
+        "medium": { "type": "integer", "minimum": 0 },
+        "low": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": true
+    },
+    "priorities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["priorityId", "stableId", "rank", "score", "tier", "components", "reasons", "evidence", "advisory"],
+        "properties": {
+          "priorityId": { "type": "string", "pattern": "^PRIORITY-" },
+          "stableId": { "type": "string", "minLength": 1 },
+          "rank": { "type": "integer", "minimum": 1 },
+          "score": { "type": "integer", "minimum": 0, "maximum": 100 },
+          "tier": { "enum": ["critical", "high", "medium", "low"] },
+          "components": { "type": "object" },
+          "reasons": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+          "evidence": { "type": "array", "items": { "type": "object" }, "minItems": 1 },
+          "advisory": { "const": true }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}
