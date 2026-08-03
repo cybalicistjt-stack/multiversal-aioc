@@ -1,0 +1,35 @@
+name: Validate Development Brain Design Intent
+
+on:
+  pull_request:
+    paths:
+      - 'governance/development-brain/design-intent/**'
+      - 'governance/development-brain/memory/**'
+      - 'governance/development-brain/inventory/**'
+      - 'scripts/development-brain/**'
+      - '.github/workflows/validate-development-brain-design-intent.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Generate Design Intent artifact
+        run: node scripts/development-brain/generate-design-intent.mjs governance/development-brain/memory/AIOC_PROJECT_MEMORY.json tmp/AIOC_UNIFIED_INVENTORY.json tmp/AIOC_DESIGN_INTENT.json
+      - name: Validate Design Intent artifact
+        run: node scripts/development-brain/validate-design-intent.mjs tmp/AIOC_DESIGN_INTENT.json
+      - name: Require Design Intent artifact
+        run: test -s tmp/AIOC_DESIGN_INTENT.json
+      - name: Publish Design Intent artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aioc-design-intent
+          path: tmp/AIOC_DESIGN_INTENT.json
+          if-no-files-found: error
