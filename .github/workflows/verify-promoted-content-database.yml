@@ -1,0 +1,70 @@
+name: Verify Promoted Content Database
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content-db/**'
+      - '.github/workflows/verify-promoted-content-database.yml'
+  pull_request:
+    paths:
+      - 'content-db/**'
+      - '.github/workflows/verify-promoted-content-database.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-promoted-content-database-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verify promoted database evidence
+        run: |
+          set -euo pipefail
+          test -f content-db/index.json
+          test -f content-db/manifest.json
+          test -f content-db/certification.json
+          test -f content-db/promotion.json
+          node - <<'NODE'
+          const fs = require('fs');
+          const crypto = require('crypto');
+          const index = JSON.parse(fs.readFileSync('content-db/index.json', 'utf8'));
+          const manifest = JSON.parse(fs.readFileSync('content-db/manifest.json', 'utf8'));
+          const certificate = JSON.parse(fs.readFileSync('content-db/certification.json', 'utf8'));
+          const promotion = JSON.parse(fs.readFileSync('content-db/promotion.json', 'utf8'));
+          const fail = message => { throw new Error(message); };
+          if (index.format !== 'multiversal-content-database') fail('Unexpected database format');
+          if (!Array.isArray(index.records) || index.records.length < 1000) fail('Database is incomplete');
+          if (index.recordCount !== index.records.length) fail('Index record count mismatch');
+          if (manifest.recordCount !== index.recordCount) fail('Manifest record count mismatch');
+          if (certificate.result !== 'PASS') fail('Certification result is not PASS');
+          if (certificate.recordCount !== index.recordCount) fail('Certificate record count mismatch');
+          if (!promotion.validationRunId || !promotion.validatedCommit || !promotion.promotedByRun) fail('Promotion receipt is incomplete');
+          const semantic = index.records.map(r => [r.databaseId, r.stableId, r.objectType, r.name]);
+          const fingerprint = `sha256:${crypto.createHash('sha256').update(JSON.stringify(semantic)).digest('hex')}`;
+          if (certificate.semanticFingerprint !== fingerprint) fail('Semantic fingerprint mismatch');
+          const databaseIds = new Set();
+          const stableIds = new Set();
+          for (const record of index.records) {
+            if (!record.databaseId) fail('Record missing databaseId');
+            if (databaseIds.has(record.databaseId)) fail(`Duplicate databaseId: ${record.databaseId}`);
+            databaseIds.add(record.databaseId);
+            if (record.stableId) {
+              if (stableIds.has(record.stableId)) fail(`Duplicate stableId: ${record.stableId}`);
+              stableIds.add(record.stableId);
+            }
+          }
+          console.log(`Promoted database PASS: ${index.recordCount} records; ${fingerprint}`);
+          console.log(`Validated by run ${promotion.validationRunId}; promoted by run ${promotion.promotedByRun}.`);
+          NODE
