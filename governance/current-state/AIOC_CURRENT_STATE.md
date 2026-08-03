@@ -17,63 +17,52 @@ AIOC-0-001 through AIOC-0-012 are complete.
 - **AIOC-I-003 — Executive Dashboard and Orchestration Implementation — PASS**
 - **AIOC-I-004 — Developer Workbench Implementation — PASS**
 - **AIOC-I-005 — Content Studio Implementation — PASS**
+- **AIOC-I-006 — Testing, Simulation, Balance, and Digital Twin Implementation — PASS**
+
+AIOC-I-006 final evidence:
+
+- `digital-twin-regression-certification` run 3 — PASS;
+- `simulation-balance-impact` run 6 — PASS;
+- `test-harness-projection` run 20 — PASS;
+- AIOC Smoke Tests run 527 — PASS;
+- all fifteen additional regression suites — PASS.
 
 ## Current milestone
 
-**AIOC-I-006 — Testing, Simulation, Balance, and Digital Twin Implementation**
-
-## Completed work
-
-### AIOC-I-006A — Test Harness, Scenario Execution, and Evidence Projection — PASS
-
-Validated by `test-harness-projection` run 4 and all required regression suites.
-
-### AIOC-I-006B — Simulation, Balance, and Change-Impact Analysis — PASS
-
-Evidence:
-
-- evidence-backed simulation baselines and deterministic seeds;
-- required combat, progression, economy, and content-impact coverage;
-- governed metric thresholds and cross-domain impact matrices;
-- runner, evidence-sink, approval, continuity, repository-health, and canonical-binding controls;
-- 20 executable acceptance tests;
-- `simulation-balance-impact` run 2 — PASS;
-- `test-harness-projection` run 12 — PASS;
-- all sixteen required content, workbench, orchestration, dashboard, continuity, repository, state, recovery, and smoke regressions — PASS.
+**AIOC-I-007 — Certification, Hardening, Deployment, and Recovery**
 
 ## Current work item
 
-**AIOC-I-006C — Digital Twin, Regression Mining, and Testing Certification**
+**AIOC-I-007A — Release Readiness, Security Hardening, and Deployment Projection**
 
-Purpose: certify the governed testing and simulation milestone only when the digital twin has an evidence-backed baseline and version, required combat, progression, economy, and content domains are modeled, regression findings are uniquely identified and evidence-backed, critical regressions are closed, passing tests cover every governed domain, runner capabilities are verified, and durable evidence is retained.
+Purpose: authorize deployment planning only when every implemented AIOC domain has a clean evidence-backed certification, continuity and repository health permit execution, security hardening checks pass, artifacts have integrity evidence, deployment stages are verified, rollback and restore are proven, and stable releases carry owner approval.
 
 **Execution state:** implementation committed; CI validation pending.
 
 Repository files:
 
-- `implementation/testing-simulation/digital-twin-regression-certification.mjs`
-- `implementation/testing-simulation/digital-twin-regression-certification.test.mjs`
-- `.github/workflows/digital-twin-regression-certification.yml`
+- `implementation/release-hardening/release-readiness-projection.mjs`
+- `implementation/release-hardening/release-readiness-projection.test.mjs`
+- `.github/workflows/release-readiness-projection.yml`
 
 Implemented:
 
-- deterministic certification fingerprints;
-- continuity, repository-health, and canonical work-binding gates;
-- digital-twin identity, model-version, baseline, evidence, and domain checks;
-- unique and evidence-backed regression mining;
-- critical-open-regression blocking and noncritical warnings;
-- unique test IDs, durable test evidence, required-failure blocking, and optional-failure warnings;
-- passing coverage requirements across combat, progression, economy, and content;
-- digital-twin and regression-mining runner-capability enforcement;
-- durable evidence-sink enforcement;
+- canonical repository, branch, and active-work-item binding;
+- clean PASS certification requirements across Operational Core, Continuity, Orchestration, Developer Workbench, Content Studio, and Testing/Simulation;
+- evidence-backed secret scanning, dependency audit, permission review, and artifact-integrity checks;
+- release identity, version, artifact, and checksum enforcement;
+- preflight, deployment, and verification gates;
+- rollback and restore evidence requirements;
+- stable-release owner approval enforcement;
+- deterministic release-readiness fingerprints;
 - PASS, PASS WITH WARNINGS, and FAIL outcomes;
-- execution and completion freeze unless certification is a clean PASS;
-- 20 executable acceptance tests;
-- dedicated `digital-twin-regression-certification` GitHub Actions workflow.
+- execution freeze unless readiness is a clean PASS;
+- 16 executable acceptance tests;
+- dedicated `release-readiness-projection` GitHub Actions workflow.
 
 ## Next executable action
 
-Inspect `digital-twin-regression-certification`, `simulation-balance-impact`, `test-harness-projection`, and all required regression suites for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-006 and advance to the next canonical implementation milestone.
+Inspect `release-readiness-projection` and all required regression suites for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-007A and activate AIOC-I-007B — Deployment Execution, Runtime Verification, and Recovery Certification.
 
 ## Continuity rule
 
