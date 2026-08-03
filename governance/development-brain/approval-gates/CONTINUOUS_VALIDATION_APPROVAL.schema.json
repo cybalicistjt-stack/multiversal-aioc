@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/CONTINUOUS_VALIDATION_APPROVAL.schema.json",
+  "title": "Multiversal AIOC Continuous Validation and Human Approval Gates",
+  "type": "object",
+  "required": ["format", "version", "generatedAt", "sourceFingerprint", "gates", "auditTrail", "diagnostics", "authority"],
+  "properties": {
+    "format": {"const": "multiversal-aioc-continuous-validation-approval"},
+    "version": {"type": "string"},
+    "generatedAt": {"type": "string"},
+    "sourceFingerprint": {"type": "string"},
+    "gates": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["gateId", "packageId", "status", "packageFingerprint", "requiredApprovals", "validationChecks", "decision", "executionEligibility", "invalidationReasons"]}},
+    "auditTrail": {"type": "array", "minItems": 1},
+    "diagnostics": {"type": "object"},
+    "authority": {"type": "object", "required": ["proposalOnly", "executionAllowed", "canonicalMutationAllowed", "approvalMayBeInferred", "mergeAllowed"]}
+  }
+}

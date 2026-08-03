@@ -1,0 +1,29 @@
+name: Validate Development Brain Continuous Approval Gates
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate-continuous-approvals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run populated Step 21 behavioral acceptance
+        run: node scripts/development-brain/test-continuous-validation-approvals.mjs
+      - name: Generate safe plans
+        run: node scripts/development-brain/generate-safe-plan-proposals.mjs governance/development-brain/acceptance/fixtures/step19-review-corpus.json /tmp/safe-plans.json
+      - name: Generate review packages
+        run: node scripts/development-brain/generate-automated-review-packages.mjs /tmp/safe-plans.json /tmp/review-packages.json
+      - name: Generate pending approval artifact
+        run: node scripts/development-brain/generate-continuous-validation-approvals.mjs /tmp/review-packages.json governance/development-brain/acceptance/fixtures/step21-no-decisions.json /tmp/approval-gates.json
+      - name: Validate pending approval artifact
+        run: node scripts/development-brain/validate-continuous-validation-approvals.mjs /tmp/approval-gates.json
+      - name: Upload approval gate artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aioc-continuous-validation-approvals
+          path: /tmp/approval-gates.json
