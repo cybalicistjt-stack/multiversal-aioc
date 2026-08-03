@@ -1,0 +1,130 @@
+name: Record GitHub Actions Failures
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+concurrency:
+  group: action-failure-recorder
+  cancel-in-progress: false
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Record unseen failed workflow runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          RECORD_BRANCH: ci/failure-records
+        run: |
+          set -euo pipefail
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          if git ls-remote --exit-code --heads origin "$RECORD_BRANCH" >/dev/null 2>&1; then
+            git fetch origin "$RECORD_BRANCH"
+            git checkout -B "$RECORD_BRANCH" "origin/$RECORD_BRANCH"
+          else
+            git checkout --orphan "$RECORD_BRANCH"
+            git rm -rf . >/dev/null 2>&1 || true
+          fi
+
+          mkdir -p governance/ci-failures/records
+          touch governance/ci-failures/.keep
+
+          tmp="$(mktemp -d)"
+          trap 'rm -rf "$tmp"' EXIT
+
+          gh api --paginate \
+            -H 'Accept: application/vnd.github+json' \
+            "/repos/$REPOSITORY/actions/runs?status=failure&per_page=100" \
+            --jq '.workflow_runs[] | [.id,.name,.head_sha,.head_branch,.event,.created_at,.updated_at,.html_url,.run_number,.run_attempt] | @tsv' \
+            > "$tmp/failed-runs.tsv"
+
+          new_count=0
+          while IFS=$'\t' read -r run_id workflow_name head_sha head_branch event created_at updated_at html_url run_number run_attempt; do
+            [ -n "${run_id:-}" ] || continue
+            record="governance/ci-failures/records/run-${run_id}.md"
+            [ ! -f "$record" ] || continue
+
+            safe_name="$(printf '%s' "$workflow_name" | tr '\n\r' '  ')"
+            jobs_json="$tmp/jobs-${run_id}.json"
+            gh api -H 'Accept: application/vnd.github+json' \
+              "/repos/$REPOSITORY/actions/runs/$run_id/jobs?filter=latest&per_page=100" > "$jobs_json"
+
+            logs_dir="$tmp/logs-${run_id}"
+            mkdir -p "$logs_dir"
+            if gh api -H 'Accept: application/vnd.github+json' \
+              "/repos/$REPOSITORY/actions/runs/$run_id/logs" > "$tmp/logs-${run_id}.zip" 2>/dev/null; then
+              unzip -qq "$tmp/logs-${run_id}.zip" -d "$logs_dir" 2>/dev/null || true
+            fi
+
+            failed_jobs="$(jq -r '.jobs[] | select(.conclusion != "success" and .conclusion != "skipped") | "- **" + .name + "** — " + (.conclusion // "unknown") + " (`" + (.id|tostring) + "`)"' "$jobs_json")"
+            [ -n "$failed_jobs" ] || failed_jobs='- No failed job metadata was returned.'
+
+            failing_steps="$(jq -r '.jobs[] | .name as $job | .steps[]? | select(.conclusion == "failure" or .conclusion == "cancelled" or .conclusion == "timed_out") | "- **" + $job + " / " + .name + "** — " + (.conclusion // "unknown")' "$jobs_json")"
+            [ -n "$failing_steps" ] || failing_steps='- No failing-step metadata was returned.'
+
+            log_excerpt="$tmp/excerpt-${run_id}.txt"
+            if find "$logs_dir" -type f -name '*.txt' -print -quit | grep -q .; then
+              {
+                for file in $(find "$logs_dir" -type f -name '*.txt' | sort); do
+                  printf '\n===== %s =====\n' "${file#$logs_dir/}"
+                  tail -n 120 "$file"
+                done
+              } | tail -n 500 > "$log_excerpt"
+            else
+              printf 'Logs were unavailable or could not be decoded by the recorder.\n' > "$log_excerpt"
+            fi
+
+            {
+              printf '# GitHub Actions Failure — Run %s\n\n' "$run_id"
+              printf '**Workflow:** %s  \n' "$safe_name"
+              printf '**Run:** %s (attempt %s)  \n' "$run_number" "$run_attempt"
+              printf '**Event:** %s  \n' "$event"
+              printf '**Branch:** `%s`  \n' "${head_branch:-unknown}"
+              printf '**Commit:** `%s`  \n' "$head_sha"
+              printf '**Created:** %s  \n' "$created_at"
+              printf '**Updated:** %s  \n' "$updated_at"
+              printf '**GitHub run:** %s\n\n' "$html_url"
+              printf '## Failed jobs\n\n%s\n\n' "$failed_jobs"
+              printf '## Failed steps\n\n%s\n\n' "$failing_steps"
+              printf '## Log excerpt\n\n```text\n'
+              cat "$log_excerpt"
+              printf '\n```\n'
+            } > "$record"
+            new_count=$((new_count + 1))
+          done < "$tmp/failed-runs.tsv"
+
+          {
+            printf '# GitHub Actions Failure Index\n\n'
+            printf 'This branch is maintained automatically. Read the newest record first.\n\n'
+            printf '**Last recorder run:** %s  \n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            printf '**Repository:** `%s`\n\n' "$REPOSITORY"
+            printf '## Recorded failures\n\n'
+            for record in $(find governance/ci-failures/records -type f -name 'run-*.md' -printf '%T@ %p\n' | sort -nr | cut -d' ' -f2-); do
+              title="$(sed -n '1s/^# //p' "$record")"
+              printf -- '- [%s](./records/%s)\n' "$title" "$(basename "$record")"
+            done
+          } > governance/ci-failures/INDEX.md
+
+          git add governance/ci-failures
+          if git diff --cached --quiet; then
+            echo 'No new failed workflow runs to record.'
+            exit 0
+          fi
+
+          git commit -m "Record ${new_count} GitHub Actions failure(s)"
+          git push origin "$RECORD_BRANCH"
