@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/development-brain-integration-manifest.schema.json",
+  "title": "Multiversal Development Brain Integration Manifest",
+  "type": "object",
+  "required": ["format", "version", "generatedAt", "policy", "artifacts", "surfaces", "summary"],
+  "properties": {
+    "format": { "const": "multiversal-aioc-development-brain-integration" },
+    "version": { "const": "1.0.0" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "policy": { "type": "object" },
+    "artifacts": { "type": "array", "minItems": 8 },
+    "surfaces": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["surfaceId", "kind", "mode", "capabilities", "authority", "staleDetection", "audit", "advisory"],
+        "properties": {
+          "surfaceId": { "type": "string", "pattern": "^SURFACE-" },
+          "kind": { "enum": ["browser", "mcp", "rest", "codex"] },
+          "mode": { "enum": ["read-only", "proposal-only"] },
+          "capabilities": { "type": "array", "minItems": 1 },
+          "authority": { "type": "object" },
+          "staleDetection": { "type": "object" },
+          "audit": { "type": "object" },
+          "advisory": { "const": true }
+        },
+        "additionalProperties": true
+      }
+    },
+    "summary": { "type": "object" }
+  },
+  "additionalProperties": true
+}
