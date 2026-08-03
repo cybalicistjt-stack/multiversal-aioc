@@ -1,6 +1,6 @@
 # AIOC Session Handoff
 
-**Status:** READY TO RESUME RELEASE D STEP 12  
+**Status:** READY TO RESUME RELEASE E STEP 13  
 **Owner:** John Brandon Turner  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Branch:** `main`  
@@ -8,67 +8,67 @@
 
 ## Active workstream
 
-Development Brain — Release D, Semantic Intelligence.
+Development Brain — Release E, Design Intelligence.
 
 ## Owner milestone decision
 
-John Brandon Turner approved the Semantic Intelligence, Design Intelligence, Agent Ecosystem, and Governed Autonomous Development direction on 2026-08-03.
+John Brandon Turner approved Releases D–G on 2026-08-03. Release D is now complete and validated.
 
 ## Last completed work
 
-### Step 11 — Causal and Impact Intelligence — COMPLETE
+### Step 12 — Semantic Retrieval and Reasoning Context — COMPLETE
 
-Step 11 delivered:
+Step 12 delivered:
 
-1. Causal-impact schema and governed contract.
-2. Deterministic generation from validated semantic assertions.
-3. Explicit distinction between direct causal evidence, dependency impact, structural impact, and unresolved causal hypotheses.
-4. Stable effect-chain and impact-path identities.
-5. Bounded propagation up to four hops.
-6. Affected-domain and blast-radius reporting.
-7. Source evidence, confidence, and derivation method for every result.
-8. Safeguards preventing dependency propagation from being presented as proof of causation.
-9. Generated artifact, validator, CI workflow, and required artifact publication.
+1. Retrieval-context schema and governed contract.
+2. Deterministic generation from inventory, project memory, semantic ontology, causal impact, readiness, priority, recommendations, and verification outputs.
+3. Stable context-package and context-item identities.
+4. Deterministic ranking, duplicate removal, provenance, confidence, authority, and freshness fingerprints.
+5. Explicit categories: source facts, derived findings, recommendations, constraints, and unresolved questions.
+6. Budgets of 24 items and 12,000 serialized characters per package.
+7. Read-only context suitable for browser, MCP, REST, and Codex without write or execution authority.
+8. Corrected upstream generator command contracts after CI exposed argument misrouting.
 
 Validation evidence:
 
-- Causal Impact run `30832240372` — PASS
-- Semantic Ontology run `30832238878` — PASS
-- Recommendation Planner run `30832238876` — PASS
-- Completion Readiness run `30832238766` — PASS
-- Verification Governance run `30832238955` — PASS
-- Unified Inventory run `30832239085` — PASS
-- Structure Intelligence run `30832239050` — PASS
-- Dependency Graph run `30832238857` — PASS
-- Priority and Impact run `30832238989` — PASS
-- Development Brain Integration run `30832239115` — PASS
-- Operational Baseline run `30832238752` — PASS
-- AIOC Smoke Tests run `30832239391` — PASS
-- Artifact `aioc-causal-impact`, ID `8863378358`
-- Artifact digest `sha256:87f5a3038b75ee15d8efa012e3f2a89b7e09f6046965f58ab27d7318a4cd3527`
-- Merge commit `3112ffbc4e7fcbe9466fafae0991251ea3ab77d5`
+- Semantic Retrieval run `30832959806` — PASS
+- Dependency Graph run `30832963031` — PASS
+- Completion Readiness run `30832961014` — PASS
+- Unified Inventory run `30832959953` — PASS
+- Recommendation Planner run `30832959977` — PASS
+- Causal Impact run `30832959839` — PASS
+- Development Brain Integration run `30832959925` — PASS
+- Structure Intelligence run `30832959931` — PASS
+- Semantic Ontology run `30832959784` — PASS
+- Priority and Impact run `30832960000` — PASS
+- Verification Governance run `30832960292` — PASS
+- Operational Baseline run `30832959833` — PASS
+- AIOC Smoke Tests run `30832959824` — PASS
+- Artifact `aioc-semantic-retrieval`, ID `8863661963`
+- Artifact digest `sha256:4cae7f9a22020970527db2373fedb01e8b85d1a6c0102f074ad3326e4e89a215`
+- Repair commit `af26ffbb41e07b9315b08da4dfca320762ec789a`
+- Merge commit `05b9c1b2505fcba85df56f803f2bac07717c7648`
 
 ## Exact next action
 
-Implement **Release D, Step 12 — Semantic Retrieval and Reasoning Context** as one bounded batch.
+Implement **Release E, Step 13 — Design Intent Memory** as one bounded batch.
 
 Required outputs:
 
-1. Retrieval-context schema and governed contract.
-2. Deterministic generator consuming inventory, project memory, semantic ontology, causal-impact, readiness, priority, recommendation, and verification outputs.
-3. Stable context-package and evidence-item identities.
-4. Deterministic relevance ranking and bounded token or item budgets.
-5. Explicit separation of source facts, derived findings, recommendations, constraints, unresolved questions, and authority requirements.
-6. Provenance, confidence, freshness, and source pointers for every included item.
-7. Stale-artifact detection and omission of unsupported or duplicate context.
-8. AI-facing context packages suitable for browser, MCP, REST, and Codex retrieval without granting write or execution authority.
-9. Generated artifact, summary metrics, validator, CI workflow, and canonical state updates.
+1. Design-intent schema and governed contract.
+2. Deterministic extraction from explicit project memory, source records, governance decisions, design documentation, and approved owner statements.
+3. Stable intent-record identities linked to governed subjects.
+4. Explicit fields for goals, intended outcomes, problems addressed, accepted tradeoffs, rejected alternatives when documented, invariants, extension notes, authority, confidence, and evidence.
+5. Clear separation between explicit intent, supported interpretation, and unresolved intent.
+6. No rationale invented from names, code shape, implementation details, or AI preference.
+7. Conflict and stale-intent detection without silent reconciliation.
+8. Generated artifact, summary metrics, validator, CI workflow, and canonical state updates.
 
 ## Operating boundaries
 
 - Read the governed CI failure index before every operation.
-- Retrieval and reasoning context is derived and advisory.
-- Context ranking must not silently change source authority or resolve uncertainty.
-- No context package grants execution, mutation, promotion, certification, assignment, scheduling, or approval authority.
-- Do not begin Release E until Step 12 validates.
+- Design intent remains evidence-backed and authority-aware.
+- AI interpretation cannot override owner intent or certified content.
+- Unknown or conflicting rationale remains unresolved.
+- Do not begin Step 14 until Step 13 validates.
 - `WP-011` remains a separate Mac-dependent Multiversal App work item.
