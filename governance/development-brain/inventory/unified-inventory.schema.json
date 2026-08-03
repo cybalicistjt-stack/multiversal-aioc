@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.dev/schemas/aioc-unified-inventory-1.0.0.json",
+  "title": "Multiversal AIOC Unified Object Inventory",
+  "type": "object",
+  "required": ["format", "version", "generatedAt", "sources", "summary", "objects"],
+  "properties": {
+    "format": { "const": "multiversal-aioc-unified-inventory" },
+    "version": { "const": "1.0.0" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "sources": {
+      "type": "object",
+      "required": ["canonicalContent", "sharedState", "projectMemory"],
+      "properties": {
+        "canonicalContent": { "$ref": "#/$defs/sourceDescriptor" },
+        "sharedState": { "$ref": "#/$defs/sourceDescriptor" },
+        "projectMemory": { "$ref": "#/$defs/sourceDescriptor" }
+      },
+      "additionalProperties": false
+    },
+    "summary": {
+      "type": "object",
+      "required": ["totalObjects", "canonicalObjects", "workingObjects", "structureDecisions", "reviewItems"],
+      "properties": {
+        "totalObjects": { "type": "integer", "minimum": 0 },
+        "canonicalObjects": { "type": "integer", "minimum": 0 },
+        "workingObjects": { "type": "integer", "minimum": 0 },
+        "structureDecisions": { "type": "integer", "minimum": 0 },
+        "reviewItems": { "type": "integer", "minimum": 0 },
+        "packReferences": { "type": "integer", "minimum": 0 },
+        "balanceEvidenceReferences": { "type": "integer", "minimum": 0 },
+        "testingEvidenceReferences": { "type": "integer", "minimum": 0 },
+        "memoryReferences": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "objects": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/inventoryObject" }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "sourceDescriptor": {
+      "type": "object",
+      "required": ["path", "version"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "version": { "type": ["string", "number", "null"] },
+        "revision": { "type": ["integer", "null"], "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "inventoryObject": {
+      "type": "object",
+      "required": ["inventoryId", "stableId", "name", "objectType", "authorityLayer", "lifecycle", "references"],
+      "properties": {
+        "inventoryId": { "type": "string", "pattern": "^INV-[A-Za-z0-9._:-]+$" },
+        "stableId": { "type": "string", "minLength": 1 },
+        "name": { "type": "string", "minLength": 1 },
+        "objectType": { "type": "string", "minLength": 1 },
+        "authorityLayer": { "enum": ["canonical", "working"] },
+        "lifecycle": { "enum": ["source-only", "draft", "development", "validation", "review", "game-ready", "canonical", "retired", "unknown"] },
+        "sourceRecord": { "type": ["string", "null"] },
+        "structure": {
+          "type": ["object", "null"],
+          "properties": {
+            "classification": { "enum": ["standalone", "reusable-generic", "parent-component", "granted-variant", "duplicate", "obsolete"] },
+            "targetId": { "type": ["string", "null"] },
+            "notes": { "type": "string" }
+          },
+          "additionalProperties": true
+        },
+        "references": {
+          "type": "object",
+          "required": ["packs", "balanceEvidence", "testingEvidence", "reviewItems", "memoryIds", "dependencies"],
+          "properties": {
+            "packs": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+            "balanceEvidence": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+            "testingEvidence": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+            "reviewItems": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+            "memoryIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+            "dependencies": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+          },
+          "additionalProperties": false
+        },
+        "provenance": { "type": ["object", "null"] },
+        "rawPointers": {
+          "type": "object",
+          "properties": {
+            "canonicalIndex": { "type": ["integer", "null"], "minimum": 0 },
+            "workingIndex": { "type": ["integer", "null"], "minimum": 0 }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}
