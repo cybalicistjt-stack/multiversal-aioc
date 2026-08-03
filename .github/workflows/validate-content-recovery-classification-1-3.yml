@@ -1,0 +1,25 @@
+name: Validate Content Recovery Classification 1.3
+
+on:
+  pull_request:
+    paths:
+      - 'governance/content-recovery/**'
+      - 'scripts/validate-content-recovery-classification-1-3.mjs'
+      - '.github/workflows/validate-content-recovery-classification-1-3.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'governance/content-recovery/**'
+      - 'scripts/validate-content-recovery-classification-1-3.mjs'
+      - '.github/workflows/validate-content-recovery-classification-1-3.yml'
+
+jobs:
+  validate-classification-1-3:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate deterministic rule expansion 1.3
+        run: node scripts/validate-content-recovery-classification-1-3.mjs
