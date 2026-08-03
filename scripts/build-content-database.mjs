@@ -150,13 +150,14 @@ await fs.mkdir(OUT_DIR, { recursive: true });
 const texts = await Promise.all(PARTS.map(file => fs.readFile(file, 'utf8')));
 const decodedFragments = texts.map((text, index) => {
   try {
-    return decodeBase64Strict(text, `Archive fragment ${index}`).toString('utf8');
+    return decodeBase64Strict(text, `Archive fragment ${index}`);
   } catch (error) {
     throw new Error(`Failed to decode ${path.relative(ROOT, PARTS[index])}: ${error.message}`);
   }
 });
-const joinedPayload = decodedFragments.join('').replace(/^\uFEFF/, '').trim();
-const archive = decodeArchivePayload(Buffer.from(joinedPayload, 'utf8'));
+const joinedPayload = Buffer.concat(decodedFragments);
+if (!joinedPayload.length) throw new Error('Recovered seed archive is empty.');
+const archive = decodeArchivePayload(joinedPayload);
 let inventoryPayload;
 try {
   inventoryPayload = JSON.parse(archive.text);
