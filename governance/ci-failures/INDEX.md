@@ -1,11 +1,16 @@
 # GitHub Actions Failure Index
 
-**Status:** initialized
-**Repository:** `cybalicistjt-stack/multiversal-aioc`
-**Evidence branch:** `ci/failure-records`
+**Status:** operational  
+**Repository:** `cybalicistjt-stack/multiversal-aioc`  
+**Evidence branch:** `ci/failure-records`  
+**Last content certification result:** failure  
+**Last content certification run:** 30810024351
 
-The automated recorder updates this index with failed workflow records. Before every governed operation, read this file first and inspect the newest unresolved failure record.
+Before every governed operation, read this file first and inspect the newest unresolved failure record.
+
+## Content pipeline
+
+- [Latest content pipeline result](./content-pipeline/LATEST.md)
 
 ## Recorded failures
 
-No failure records have been written yet.
