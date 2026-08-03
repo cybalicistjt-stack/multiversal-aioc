@@ -31,18 +31,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Enforce operational default and legacy quarantine
+      - name: Enforce operational public default
         run: |
           set -euo pipefail
           test -f index.html
           test -f operational/index.html
           grep -q './operational/' index.html
           if grep -Eq 'url=\.?/?v2/|location\.replace\(["'"']\.?/?v2/' index.html; then
-            echo 'Legacy COS /v2/ must never be the public root target.'
+            echo 'The obsolete migration shell must not be the public root target.'
             exit 1
           fi
           test -f governance/legacy/LEGACY_COS_QUARANTINE.md
-          grep -q 'QUARANTINED' governance/legacy/LEGACY_COS_QUARANTINE.md
+          grep -q 'NARROWLY QUARANTINED' governance/legacy/LEGACY_COS_QUARANTINE.md
+          grep -q 'all recent COS capability work' governance/legacy/LEGACY_COS_QUARANTINE.md
 
       - name: Validate operational frontend
         run: |
@@ -67,10 +68,10 @@ jobs:
           fi
           generated_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
           cat > _site/deployed-build.json <<EOF
-          {"build":"operational-aioc-1.2","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","defaultSurface":"operational","legacyCos":"quarantined"}
+          {"build":"operational-aioc-1.3","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","defaultSurface":"operational","obsoleteMigrationShell":"quarantined","recentCosWork":"preserved"}
           EOF
           cat > _site/operational/health.json <<EOF
-          {"status":"operational","application":"Multiversal AIOC","surface":"operational-command-center","build":"operational-aioc-1.2","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","legacyCos":"quarantined"}
+          {"status":"operational","application":"Multiversal AIOC","surface":"operational-command-center","build":"operational-aioc-1.3","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","obsoleteMigrationShell":"quarantined","recentCosWork":"preserved"}
           EOF
           touch _site/.nojekyll
 
@@ -79,8 +80,7 @@ jobs:
           test -s _site/index.html
           test -s _site/operational/index.html
           test -s _site/operational/health.json
-          test ! -e _site/v2/index.html
-          node -e "const fs=require('fs'); const h=JSON.parse(fs.readFileSync('_site/operational/health.json')); if(h.status!=='operational'||h.commit!==process.env.GITHUB_SHA||h.legacyCos!=='quarantined') process.exit(1); console.log(h)"
+          node -e "const fs=require('fs'); const h=JSON.parse(fs.readFileSync('_site/operational/health.json')); if(h.status!=='operational'||h.commit!==process.env.GITHUB_SHA||h.obsoleteMigrationShell!=='quarantined'||h.recentCosWork!=='preserved') process.exit(1); console.log(h)"
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -102,7 +102,7 @@ jobs:
           for attempt in 1 2 3 4 5 6; do
             echo "Checking ${health_url} (attempt ${attempt})"
             if payload="$(curl --fail --silent --show-error --location --max-time 20 "${health_url}?commit=${GITHUB_SHA}")"; then
-              HEALTH_PAYLOAD="$payload" node -e "const h=JSON.parse(process.env.HEALTH_PAYLOAD); if(h.status!=='operational'||h.commit!==process.env.GITHUB_SHA||h.legacyCos!=='quarantined') process.exit(1); console.log('Verified deployed health contract',h)"
+              HEALTH_PAYLOAD="$payload" node -e "const h=JSON.parse(process.env.HEALTH_PAYLOAD); if(h.status!=='operational'||h.commit!==process.env.GITHUB_SHA||h.obsoleteMigrationShell!=='quarantined'||h.recentCosWork!=='preserved') process.exit(1); console.log('Verified deployed health contract',h)"
               exit 0
             fi
             sleep 10
