@@ -1,0 +1,46 @@
+name: Validate Development Brain Inventory
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content-db/index.json'
+      - 'governance/shared-state/AIOC_SHARED_STATE.json'
+      - 'governance/development-brain/memory/**'
+      - 'governance/development-brain/inventory/**'
+      - 'scripts/development-brain/generate-unified-inventory.mjs'
+      - 'scripts/development-brain/validate-unified-inventory.mjs'
+      - '.github/workflows/validate-development-brain-inventory.yml'
+  pull_request:
+    paths:
+      - 'content-db/index.json'
+      - 'governance/shared-state/AIOC_SHARED_STATE.json'
+      - 'governance/development-brain/memory/**'
+      - 'governance/development-brain/inventory/**'
+      - 'scripts/development-brain/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate project memory
+        run: node scripts/development-brain/validate-project-memory.mjs
+      - name: Generate unified inventory
+        run: node scripts/development-brain/generate-unified-inventory.mjs /tmp/AIOC_UNIFIED_INVENTORY.json
+      - name: Validate unified inventory
+        run: node scripts/development-brain/validate-unified-inventory.mjs /tmp/AIOC_UNIFIED_INVENTORY.json
+      - name: Publish validation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aioc-unified-inventory
+          path: /tmp/AIOC_UNIFIED_INVENTORY.json
+          retention-days: 14
