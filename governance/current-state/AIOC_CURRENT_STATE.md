@@ -18,49 +18,71 @@ AIOC-0-001 through AIOC-0-012 are complete.
 - **AIOC-I-004 — Developer Workbench Implementation — PASS**
 - **AIOC-I-005 — Content Studio Implementation — PASS**
 
-AIOC-I-005 final evidence:
-
-- `content-release-certification` run 2 — PASS;
-- `content-pack-certification` run 6 — PASS;
-- `content-studio-authoring` run 10 — PASS;
-- all thirteen required workbench, orchestration, dashboard, continuity, repository, state, recovery, and smoke regressions — PASS.
-
 ## Current milestone
 
 **AIOC-I-006 — Testing, Simulation, Balance, and Digital Twin Implementation**
 
+## Latest completed work item
+
+### AIOC-I-006A — Test Harness, Scenario Execution, and Evidence Projection — PASS
+
+Evidence:
+
+- deterministic governed scenario normalization and execution planning;
+- canonical repository, branch, milestone, and work-item binding;
+- continuity, repository-health, scenario-kind, dependency, approval, runner-capability, and durable-evidence enforcement;
+- 17 executable acceptance tests;
+- `test-harness-projection` run 4 — PASS;
+- `continuity-certification` run 58 — PASS;
+- `workbench-execution-certification` run 18 — PASS;
+- `continuity-snapshot` run 49 — PASS;
+- `content-studio-authoring` run 14 — PASS;
+- `orchestration-service` run 37 — PASS;
+- `repository-sync` run 66 — PASS;
+- `orchestration-certification` run 31 — PASS;
+- `repository-intelligence` run 58 — PASS;
+- `recovery-services` run 61 — PASS;
+- AIOC Smoke Tests run 519 — PASS;
+- `executive-dashboard` run 43 — PASS;
+- `content-pack-certification` run 10 — PASS;
+- `developer-workbench` run 31 — PASS;
+- `project-state-engine` run 83 — PASS;
+- `change-certification` run 23 — PASS;
+- `content-release-certification` run 6 — PASS.
+
 ## Current work item
 
-**AIOC-I-006A — Test Harness, Scenario Execution, and Evidence Projection**
+**AIOC-I-006B — Simulation, Balance, and Change-Impact Analysis**
 
-Purpose: bind test execution to canonical repository state, continuity certification, repository health, runner capabilities, dependencies, approvals, scenario coverage, expected outcomes, and durable evidence sinks before producing a deterministic governed execution plan.
+Purpose: bind deterministic simulation and balance analysis to canonical project state; lock evidence-backed baselines and seeds; require combat, progression, economy, and content-impact coverage; enforce runner and evidence controls; compare governed metrics against thresholds; and project cross-domain impact for proposed changes.
 
 **Execution state:** implementation committed; CI validation pending.
 
 Repository files:
 
-- `implementation/testing-simulation/test-harness-projection.mjs`
-- `implementation/testing-simulation/test-harness-projection.test.mjs`
-- `.github/workflows/test-harness-projection.yml`
+- `implementation/testing-simulation/simulation-balance-impact-analysis.mjs`
+- `implementation/testing-simulation/simulation-balance-impact-analysis.test.mjs`
+- `.github/workflows/simulation-balance-impact.yml`
 
 Implemented:
 
-- deterministic scenario normalization and fingerprints;
-- canonical repository, branch, milestone, and work-item binding;
+- deterministic baseline, simulation, result, and change fingerprints;
+- canonical repository, branch, and active-work-item binding;
 - continuity and repository-health enforcement;
-- required scenario kinds and field validation;
-- duplicate scenario-ID protection;
-- dependency availability checks;
-- evidence-backed approval requirements for high-risk scenarios;
-- runner-capability and evidence-sink enforcement;
-- deterministic ordered execution plans;
-- execution freeze and recovery behavior for blocking findings;
-- 17 executable acceptance tests;
-- dedicated `test-harness-projection` GitHub Actions workflow.
+- required combat, progression, economy, and content-impact simulation coverage;
+- baseline, dependency, deterministic-seed, runner, evidence-sink, and result-evidence checks;
+- governed metric-threshold enforcement;
+- high-risk change approval requirements;
+- deterministic cross-domain impact matrices;
+- PASS, PASS WITH WARNINGS, and FAIL outcomes;
+- execution freeze on blocking findings;
+- five-stage governed simulation and evidence plan;
+- 20 executable acceptance tests;
+- dedicated `simulation-balance-impact` GitHub Actions workflow.
 
 ## Next executable action
 
-Inspect `test-harness-projection` and all required regression suites for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-006A and activate AIOC-I-006B — Simulation, Balance, and Change-Impact Analysis.
+Inspect `simulation-balance-impact`, `test-harness-projection`, and all required regression suites for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-006B and activate AIOC-I-006C — Digital Twin, Regression Mining, and Testing Certification.
 
 ## Continuity rule
 
