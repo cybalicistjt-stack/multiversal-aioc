@@ -27,33 +27,39 @@ AIOC-0-001 through AIOC-0-012 and implementation milestones AIOC-I-001 through A
 
 #### Step 4 — Structure Intelligence — COMPLETE
 
+Structure Intelligence deterministically derives hierarchy, containment, variants, packs, unresolved classifications, structural gaps, orphans, conflicting decisions, and high-impact dependencies while preserving evidence and authority boundaries.
+
+#### Step 5 — Completion and Readiness Engine — COMPLETE
+
 Primary files:
 
-- `governance/development-brain/structure-intelligence/structure-intelligence.schema.json`
-- `governance/development-brain/structure-intelligence/README.md`
-- `scripts/development-brain/generate-structure-intelligence.mjs`
-- `scripts/development-brain/validate-structure-intelligence.mjs`
-- `.github/workflows/validate-development-brain-structure-intelligence.yml`
+- `governance/development-brain/completion-readiness/completion-readiness.schema.json`
+- `governance/development-brain/completion-readiness/README.md`
+- `scripts/development-brain/generate-completion-readiness.mjs`
+- `scripts/development-brain/validate-completion-readiness.mjs`
+- `.github/workflows/validate-development-brain-completion-readiness.yml`
 
 Validated evidence:
 
-- Structure Intelligence workflow run `30828218836` — PASS
-- Unified Inventory workflow run `30828215295` — PASS
-- Dependency Graph workflow run `30828214960` — PASS
-- Operational baseline workflow run `30828220184` — PASS
-- AIOC Smoke Tests run `30828218717` — PASS
-- Published artifact `aioc-structure-intelligence`, artifact ID `8861767483`
-- Step 4 merge commit `5f0660bcd094b51e1d2cf84b7b48a41904a8cf6d`
+- Completion Readiness workflow run `30829031425` — PASS
+- Structure Intelligence workflow run `30829031596` — PASS
+- Dependency Graph workflow run `30829034013` — PASS
+- Unified Inventory workflow run `30829033107` — PASS
+- Operational baseline workflow run `30829033539` — PASS
+- AIOC Smoke Tests run `30829034869` — PASS
+- Published artifact `aioc-completion-readiness`, artifact ID `8862110712`
+- Artifact digest `sha256:9d55202f7dfbc276a7d5d348091e9314be3a1b9875f3d5aa62802e90fc79242c`
+- Step 5 merge commit `c6cc5693fa4755bf16b5d2e326a8e0cd7f99ad3b`
 
-Structure Intelligence deterministically derives hierarchy, containment, variants, packs, unresolved classifications, structural gaps, orphans, conflicting decisions, and high-impact dependencies while preserving evidence and authority boundaries.
+The engine deterministically assesses identity, content, provenance, evidence, structural, dependency, and governance readiness for every inventory object. Scores, blockers, reasons, evidence, and promotion-readiness signals are advisory and do not modify source content, lifecycle state, certification, or owner authority.
 
 ## Next executable action
 
-**Development Brain Release B, Step 5 — Completion and Readiness Engine.**
+**Development Brain Release B, Step 6 — Priority and Impact Engine.**
 
-Implement a deterministic readiness model over the unified inventory, dependency graph, and structure intelligence. It must assess object completeness, evidence sufficiency, validation/review readiness, blocking dependencies, structural blockers, and promotion readiness without silently repairing source content or overriding owner authority.
+Implement a deterministic prioritization model over the unified inventory, dependency graph, structure intelligence, and completion-readiness results. It must rank actionable work by readiness deficit, dependency centrality, blocker propagation, structural impact, evidence gaps, owner/governance priorities, and estimated unlock value. Every priority must be explainable, evidence-backed, authority-aware, and advisory.
 
-Do not begin Step 6 until Step 5 is generated and validated.
+Do not begin Release C until Step 6 is generated and validated.
 
 ## Separate external work item
 
@@ -65,6 +71,6 @@ Before every governed operation, read `governance/ci-failures/INDEX.md` on branc
 
 ## Mandatory continuity sequence
 
-New conversations must read the canonical bootstrap, this file, `SESSION_HANDOFF.md`, and the Development Brain memory, inventory, dependency-graph, and structure-intelligence contracts.
+New conversations must read the canonical bootstrap, this file, `SESSION_HANDOFF.md`, and the Development Brain memory, inventory, dependency-graph, structure-intelligence, and completion-readiness contracts.
 
-When the owner says “Continue,” begin Step 5 after verifying tools, repository state, and the failure index.
+When the owner says “Continue,” begin Step 6 after verifying tools, repository state, and the failure index.
