@@ -1,0 +1,25 @@
+name: Validate Content Recovery Items Domain
+
+on:
+  pull_request:
+    paths:
+      - 'governance/content-recovery/domain-reviews/ITEMS_DOMAIN_CLASSIFICATION_CONTRACT.json'
+      - 'governance/content-recovery/fixtures/ITEMS_DOMAIN_REVIEW_FIXTURE.json'
+      - 'governance/content-recovery/pilots/PHASE2_ITEMS_DOMAIN_REVIEW_COVERAGE.json'
+      - 'scripts/validate-content-recovery-items-domain.mjs'
+      - '.github/workflows/validate-content-recovery-items-domain.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-items-domain:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate item-domain recovery dispositions
+        run: node scripts/validate-content-recovery-items-domain.mjs
