@@ -19,50 +19,54 @@ AIOC-0-001 through AIOC-0-012 are complete.
 - **AIOC-I-005 — Content Studio Implementation — PASS**
 - **AIOC-I-006 — Testing, Simulation, Balance, and Digital Twin Implementation — PASS**
 
-AIOC-I-006 final evidence:
-
-- `digital-twin-regression-certification` run 3 — PASS;
-- `simulation-balance-impact` run 6 — PASS;
-- `test-harness-projection` run 20 — PASS;
-- AIOC Smoke Tests run 527 — PASS;
-- all fifteen additional regression suites — PASS.
-
 ## Current milestone
 
 **AIOC-I-007 — Certification, Hardening, Deployment, and Recovery**
 
+## Latest completed work item
+
+### AIOC-I-007A — Release Readiness, Security Hardening, and Deployment Projection — PASS
+
+Evidence:
+
+- release-readiness, security-hardening, artifact-integrity, deployment-stage, rollback, restore, and approval projection;
+- 16 executable acceptance tests;
+- `release-readiness-projection` run 2 — PASS;
+- AIOC Smoke Tests run 531 — PASS;
+- all eighteen additional implementation and regression suites — PASS.
+
 ## Current work item
 
-**AIOC-I-007A — Release Readiness, Security Hardening, and Deployment Projection**
+**AIOC-I-007B — Deployment Execution, Runtime Verification, and Recovery Certification**
 
-Purpose: authorize deployment planning only when every implemented AIOC domain has a clean evidence-backed certification, continuity and repository health permit execution, security hardening checks pass, artifacts have integrity evidence, deployment stages are verified, rollback and restore are proven, and stable releases carry owner approval.
+Purpose: certify an executed deployment only when release readiness is a clean PASS, canonical repository and work bindings match, the deployed artifact checksum is verified, execution succeeds, required runtime checks pass with durable evidence, rollback and recovery checks pass, and evidence-backed owner approval exists.
 
 **Execution state:** implementation committed; CI validation pending.
 
 Repository files:
 
-- `implementation/release-hardening/release-readiness-projection.mjs`
-- `implementation/release-hardening/release-readiness-projection.test.mjs`
-- `.github/workflows/release-readiness-projection.yml`
+- `implementation/release-hardening/deployment-runtime-recovery-certification.mjs`
+- `implementation/release-hardening/deployment-runtime-recovery-certification.test.mjs`
+- `.github/workflows/deployment-runtime-recovery-certification.yml`
 
 Implemented:
 
+- clean release-readiness prerequisite and fingerprint verification;
 - canonical repository, branch, and active-work-item binding;
-- clean PASS certification requirements across Operational Core, Continuity, Orchestration, Developer Workbench, Content Studio, and Testing/Simulation;
-- evidence-backed secret scanning, dependency audit, permission review, and artifact-integrity checks;
-- release identity, version, artifact, and checksum enforcement;
-- preflight, deployment, and verification gates;
-- rollback and restore evidence requirements;
-- stable-release owner approval enforcement;
-- deterministic release-readiness fingerprints;
+- deployment identity, environment, commit, timestamps, status, and checksum enforcement;
+- required startup, health, persistence, permissions, and continuity runtime checks;
+- required rollback, restore, data-integrity, and service-recovery checks;
+- durable evidence resolution for runtime, recovery, and approval records;
+- evidence-backed owner approval requirement;
+- deterministic certification fingerprints;
 - PASS, PASS WITH WARNINGS, and FAIL outcomes;
-- execution freeze unless readiness is a clean PASS;
-- 16 executable acceptance tests;
-- dedicated `release-readiness-projection` GitHub Actions workflow.
+- execution and completion freeze unless certification is a clean PASS;
+- 20 executable acceptance tests;
+- dedicated `deployment-runtime-recovery-certification` GitHub Actions workflow.
 
 ## Next executable action
 
-Inspect `release-readiness-projection` and all required regression suites for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-007A and activate AIOC-I-007B — Deployment Execution, Runtime Verification, and Recovery Certification.
+Inspect `deployment-runtime-recovery-certification`, `release-readiness-projection`, and all required regression suites for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-007B and activate the final AIOC operational certification tranche.
 
 ## Continuity rule
 
