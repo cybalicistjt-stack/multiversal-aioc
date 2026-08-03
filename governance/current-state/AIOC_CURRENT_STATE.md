@@ -1,6 +1,6 @@
 # AIOC Current State
 
-**Status:** Operational certification complete  
+**Status:** Operational certification complete; deployment baseline certified  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Default branch:** `main`  
 **Canonical working branch:** `governance/session-bootstrap-v1`  
@@ -36,13 +36,41 @@ The governed operational handoff is recorded at:
 
 `governance/current-state/AIOC_OPERATIONAL_HANDOFF.md`
 
+## Deployment and content baseline
+
+The seven-step repository and deployment cleanup is complete.
+
+- Public default: `/operational/`
+- Authoritative Pages workflow: `.github/workflows/deploy-pages.yml`
+- Certified content mode: `CANONICAL_OBJECTS_ONLY`
+- Certified content records: 487
+- Promoted database commit: `94ad7253167c661f79555b6b2de173cccfe43c23`
+- Recent COS capability work: preserved
+- Obsolete migration entry behavior: narrowly quarantined
+- Corrupted legacy seed execution path: quarantined pending intact authoritative import
+- Unified full-system validation workflow: `.github/workflows/full-system-validation.yml`
+
+The canonical deployment record is:
+
+`governance/current-state/AIOC_DEPLOYMENT_BASELINE.md`
+
 ## Current operational objective
 
-Use AIOC as the governed command-and-control system for Multiversal application delivery.
+Use AIOC as the governed command-and-control system for Multiversal application delivery, while integrating preserved COS capabilities into the operational command center in bounded, feature-complete batches.
 
 ## Next executable action
 
 Execute the active Multiversal application work item, WP-011 — Tauri iOS/iPadOS Spike, on a supported Mac and preserve all governed evidence before activating WP-012.
+
+While WP-011 awaits Mac access, continue AIOC capability integration rather than further infrastructure redesign.
+
+## Mandatory CI evidence rule
+
+Before every governed operation, read:
+
+`governance/ci-failures/INDEX.md` on branch `ci/failure-records`.
+
+Any recorded failure is repaired before new work begins.
 
 ## Continuity rule
 
@@ -51,4 +79,5 @@ New conversations must load:
 1. `governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md`
 2. this file;
 3. `governance/current-state/SESSION_HANDOFF.md`;
-4. `governance/current-state/AIOC_OPERATIONAL_HANDOFF.md`.
+4. `governance/current-state/AIOC_OPERATIONAL_HANDOFF.md`;
+5. `governance/current-state/AIOC_DEPLOYMENT_BASELINE.md`.
