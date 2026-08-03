@@ -28,6 +28,7 @@ jobs:
         run: |
           node -e "JSON.parse(require('fs').readFileSync('implementation/operational-core/project-state/project-state.schema.json','utf8'))"
           node -e "JSON.parse(require('fs').readFileSync('implementation/operational-core/project-state/canonical-project-state.seed.json','utf8'))"
+          node -e "JSON.parse(require('fs').readFileSync('implementation/operational-core/project-state/project-state-engine.fixture.json','utf8'))"
       - name: Check module syntax
         run: node --check implementation/operational-core/project-state/project-state-engine.mjs
       - name: Run project state acceptance tests
