@@ -14,11 +14,16 @@
     if (workbench && !workbench.disabled) workbench.click();
   }
 
+  function clearActiveCards() {
+    const activeCards = document.querySelectorAll?.('#objectList .object-card.active') || [];
+    activeCards.forEach(item => item.classList.remove('active'));
+  }
+
   function activateCard(card, invokeCoreClick) {
     if (!card || activating) return;
     activating = true;
     try {
-      document.querySelectorAll('#objectList .object-card.active').forEach(item => item.classList.remove('active'));
+      clearActiveCards();
       card.classList.add('active');
       if (invokeCoreClick) card.click();
       queueMicrotask(openWorkbench);
