@@ -73,4 +73,10 @@ Final validation evidence:
 
 ## Roadmap boundary
 
-The approved Development Brain roadmap ends at Step 21. Do not create deeper internal layers unless real application use demonstrates a specific missing capability. Future work should apply the completed Development Brain to Multiversal implementation tasks under owner and repository governance.
+The approved Development Brain roadmap ends at Step 21. Do not create deeper internal layers unless real application use demonstrates a specific missing capability.
+
+The active governed application of the completed Development Brain is now:
+
+- `governance/content-recovery/CONTENT_RECOVERY_ROADMAP.md`
+
+That workstream recovers the existing Multiversal content corpus losslessly and uses the COS as an organizing and normalization layer. It is not Release H and must not be converted into another nested intelligence architecture.

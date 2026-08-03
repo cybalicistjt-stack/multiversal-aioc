@@ -1,9 +1,10 @@
 # AIOC Current State
 
-**Status:** Operational AIOC certified; Development Brain Releases A–G complete and behaviorally validated  
+**Status:** Operational AIOC certified; Development Brain Releases A–G complete; Multiversal Content Recovery and Ingestion active  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Default branch:** `main`  
-**Owner:** John Brandon Turner
+**Owner and final authority:** John Brandon Turner  
+**Current governed workstream:** Multiversal Content Recovery and Ingestion
 
 ## Completed Development Brain releases
 
@@ -15,44 +16,90 @@
 - Release F — Agent Ecosystem — COMPLETE
 - Release G — Governed Autonomous Development — COMPLETE
 
-## Release G completion
+The Development Brain roadmap ends at Step 21. No additional internal release is authorized unless real use demonstrates a specific missing capability.
 
-### Step 19 — Safe Plan and Proposal Generation — COMPLETE
+## Current content-library limitation
 
-A populated five-scenario acceptance corpus proves meaningful plans for consensus, supported disagreement, unresolved conflict, blocked work, and owner decisions. Empty plans and unsafe authority claims fail validation.
+The deployed Content Library currently exposes 487 records from the `Multiversal Phase 1–8 canonical object bundle`. These are a partial extraction and must not be represented as the complete Multiversal corpus.
 
-- Hardened workflow run `30840013488` — PASS
-- Artifact `aioc-safe-plan-proposals`, ID `8866373580`
-- Digest `sha256:56bbeda3ff3969d212bc59b069afe2d777d543bbeff0506204893575c72f82b8`
-- Hardening merge commit `d310338b15bc083582f5811d9c31a7def1de8efb`
+The current 487-record database must remain intact and restorable while recovery proceeds.
 
-### Step 20 — Automated Review Packages and Regression Prediction — COMPLETE
+## Verified recovery evidence
 
-The same populated corpus produces five review packages preserving scope, evidence, dissent, uncertainty, validation checks, rollback review, approval gates, rejection conditions, freshness, and non-authoritative regression hypotheses.
+The approved source census found:
 
-- Workflow run `30840300962` — PASS
-- Artifact `aioc-automated-review-packages`, ID `8866486724`
-- Digest `sha256:ea9965d22b78bed13141add762ddfa7fea650ee579e359a9c9e9024d8ab19002`
-- Merge commit `703a4c3e2d2ce85217237ca89455c18a1d5bc8ae`
+- 47,849 structured-file occurrences;
+- 11,912 unique structured files after exact-file deduplication;
+- 5,123 unique files likely to contain game content;
+- 291,724 exact-file-deduplicated likely-content rows or JSON entries.
 
-### Step 21 — Continuous Validation with Human Approval Gates — COMPLETE
+The neutral recovery ledger extracted:
 
-The end-to-end behavioral acceptance test runs review corpus → plans → review packages → approval gates. It proves exact-fingerprint human-owner approval, rejection, stale-approval invalidation, pending decisions, blocking, audit coverage, forged AI-approval rejection, and authority denial.
+- 359,291 source records;
+- 294,571 unique exact payloads;
+- 64,720 exact duplicate payload rows;
+- 99,761 records with source-provided IDs;
+- 259,530 records with stable recovery identities;
+- 185,243 conservative identity groups;
+- 33,609 identities with multiple distinct payload variants.
 
-- Workflow run `30840622434` — PASS
-- Artifact `aioc-continuous-validation-approvals`, ID `8866607077`
-- Digest `sha256:27a33cd8b3950edab0e586f542913b25dfeb6b1fc2b2150588a510016526da71`
-- Merge commit `a0856b8ada6f84a83463d59e4e3f530b778476e2`
+These figures are recovery records, not a final unique-game-object count. They include primary assets, relationships, indexes, mappings, embedded mechanics, reports, and support records.
 
-All required upstream Development Brain workflows and AIOC smoke tests passed with Step 21.
+## Approved recovery doctrine
+
+> Recover the content first. Use the COS to organize it second.
+
+Mandatory boundaries:
+
+- preserve every original payload and source location;
+- use deterministic evidence before semantic inference;
+- never discard content because it does not fit the current COS schema;
+- preserve duplicates, variants, and conflicts with traceability;
+- permit `native-cos`, `cos-mapped`, `partially-mapped`, `structured-raw`, `unresolved`, and `support-record` states;
+- keep source and mapped views available;
+- use staging before production migration;
+- require representative sample review and owner approval before promotion;
+- do not build deeper semantic subsystems without a demonstrated failure.
+
+## Active roadmap
+
+Canonical roadmap:
+
+- `governance/content-recovery/CONTENT_RECOVERY_ROADMAP.md`
+
+Major phases:
+
+0. Preserve and freeze
+1. Deterministic Classification Contract
+2. Primary assets versus support records
+3. Identity, version, and variant groups
+4. Domain recovery passes
+5. Lossless library import format
+6. Staging Content Library integration
+7. Coverage and quality validation
+8. Production migration
+9. Gradual COS normalization
+
+Estimated work through production certification: 26–36 bounded batches.
+
+## Exact next executable work item
+
+**Phase 0 — Preserve and Freeze, followed immediately by Phase 1 — Deterministic Classification Contract.**
+
+The next bounded batch must:
+
+1. preserve and checksum the census and recovery-ledger evidence;
+2. snapshot the current 487-record database and deployment fingerprint;
+3. define the machine-readable classification vocabulary, evidence precedence, mapping states, and confidence levels;
+4. create a mixed-domain representative fixture with expected classifications;
+5. validate deterministic behavior before running classification over the full ledger;
+6. update current state and handoff with verified evidence.
+
+Do not classify the entire 359,291-row ledger until the mixed-domain fixture passes review.
 
 ## Authority boundary
 
-The Development Brain remains governed and non-executing. Its intelligence, plans, review packages, predictions, and approval records cannot execute work, mutate canonical content, merge changes, promote or certify content, assign work, or schedule actions. An approved gate grants validation readiness only and is valid solely for the exact approved package fingerprint.
-
-## Next boundary
-
-No additional Development Brain release is authorized. Further work requires an owner milestone decision and should focus on using the completed Development Brain in real Multiversal application work rather than extending its internal architecture without a demonstrated need.
+The Development Brain and content-recovery tools remain governed and non-authoritative. They cannot silently merge variants, discard source content, approve promotion, mutate canonical production content, or resolve owner decisions. John Brandon Turner retains final approval authority.
 
 ## Separate external work item
 
