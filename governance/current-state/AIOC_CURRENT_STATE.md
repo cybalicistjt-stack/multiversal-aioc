@@ -1,20 +1,18 @@
 # AIOC Current State
 
-**Status:** Operational AIOC certified; Development Brain Releases A–G complete; Multiversal Content Recovery and Ingestion active  
+**Status:** Operational AIOC certified; Development Brain Releases A–G complete; Multiversal Content Recovery and Ingestion active; Application Implementation roadmap approved and planned  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Default branch:** `main`  
 **Owner and final authority:** John Brandon Turner  
 **Current governed workstream:** Multiversal Content Recovery and Ingestion
 
-## Completed Development Brain releases
+## Verified completed foundations
 
-- Release A — Foundation — COMPLETE
-- Release B — Content Intelligence — COMPLETE
-- Release C — Active Coordinator — COMPLETE
-- Release D — Semantic Intelligence — COMPLETE
-- Release E — Design Intelligence — COMPLETE
-- Release F — Agent Ecosystem — COMPLETE
-- Release G — Governed Autonomous Development — COMPLETE
+- Operational AIOC certification — COMPLETE
+- Development Brain Releases A–G — COMPLETE AND BEHAVIORALLY VALIDATED
+- Source census — COMPLETE
+- Neutral recovery ledger — COMPLETE
+- Content Recovery and Ingestion roadmap — OWNER APPROVED
 
 The Development Brain roadmap ends at Step 21. No additional internal release is authorized unless real use demonstrates a specific missing capability.
 
@@ -26,24 +24,24 @@ The current 487-record database must remain intact and restorable while recovery
 
 ## Verified recovery evidence
 
-The approved source census found:
+Source census:
 
 - 47,849 structured-file occurrences;
-- 11,912 unique structured files after exact-file deduplication;
-- 5,123 unique files likely to contain game content;
+- 11,912 unique structured files;
+- 5,123 unique content-likely structured files;
 - 291,724 exact-file-deduplicated likely-content rows or JSON entries.
 
-The neutral recovery ledger extracted:
+Neutral recovery ledger:
 
 - 359,291 source records;
 - 294,571 unique exact payloads;
 - 64,720 exact duplicate payload rows;
-- 99,761 records with source-provided IDs;
-- 259,530 records with stable recovery identities;
+- 99,761 source-provided IDs;
+- 259,530 stable recovery identities;
 - 185,243 conservative identity groups;
 - 33,609 identities with multiple distinct payload variants.
 
-These figures are recovery records, not a final unique-game-object count. They include primary assets, relationships, indexes, mappings, embedded mechanics, reports, and support records.
+These figures are recovery records, not a final unique-game-object count.
 
 ## Approved recovery doctrine
 
@@ -51,60 +49,64 @@ These figures are recovery records, not a final unique-game-object count. They i
 
 Mandatory boundaries:
 
-- preserve every original payload and source location;
-- use deterministic evidence before semantic inference;
-- never discard content because it does not fit the current COS schema;
-- preserve duplicates, variants, and conflicts with traceability;
-- permit `native-cos`, `cos-mapped`, `partially-mapped`, `structured-raw`, `unresolved`, and `support-record` states;
-- keep source and mapped views available;
-- use staging before production migration;
-- require representative sample review and owner approval before promotion;
-- do not build deeper semantic subsystems without a demonstrated failure.
+- preserve original payloads and provenance;
+- deterministic evidence precedes semantic inference;
+- do not discard content that fails current COS mapping;
+- preserve duplicates, variants, revisions, and conflicts;
+- use staging and representative review before production promotion;
+- keep the 487-record database restorable;
+- do not build deeper semantic subsystems without a demonstrated need.
 
-## Active roadmap
-
-Canonical roadmap:
+Canonical recovery roadmap:
 
 - `governance/content-recovery/CONTENT_RECOVERY_ROADMAP.md`
 
-Major phases:
+## Approved subsequent application roadmap
 
-0. Preserve and freeze
-1. Deterministic Classification Contract
-2. Primary assets versus support records
-3. Identity, version, and variant groups
-4. Domain recovery passes
-5. Lossless library import format
-6. Staging Content Library integration
-7. Coverage and quality validation
-8. Production migration
-9. Gradual COS normalization
+The former single “Phase 10 — Begin application development” milestone is expanded into:
 
-Estimated work through production certification: 26–36 bounded batches.
+- **Phase 10 — Core Application Implementation**
+- **Phase 11 — GM and Player Experience**
+- **Phase 12 — AI Team and Automation**
+- **Phase 13 — Internal Alpha Completion**
 
-## Exact next executable work item
+Canonical planning documents:
 
-**Phase 0 — Preserve and Freeze, followed immediately by Phase 1 — Deterministic Classification Contract.**
+- `governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md`
+- `governance/application-planning/STAGE_A_UI_IMPLEMENTATION_PROGRAM.md`
 
-The next bounded batch must:
+These phases are approved plans, not verified completions. Repository evidence, tests, previews, and owner approval are required before any implementation phase or slice is marked complete.
 
-1. preserve and checksum the census and recovery-ledger evidence;
-2. snapshot the current 487-record database and deployment fingerprint;
-3. define the machine-readable classification vocabulary, evidence precedence, mapping states, and confidence levels;
-4. create a mixed-domain representative fixture with expected classifications;
-5. validate deterministic behavior before running classification over the full ledger;
-6. update current state and handoff with verified evidence.
+Stage A proceeds through vertical slices:
 
-Do not classify the entire 359,291-row ledger until the mixed-domain fixture passes review.
+1. repository/UI baseline audit;
+2. application shell and design system;
+3. universal object experience;
+4. identity, dashboard, workspaces, and permissions;
+5. character workspace;
+6. campaign and scene workspace;
+7. first playable action/GM-approval loop;
+8. full combat;
+9. inventory, crafting, and vehicles;
+10. investigation and social;
+11. world builder and content creation;
+12. contextual AI;
+13. internal-alpha hardening.
 
-## Authority boundary
-
-The Development Brain and content-recovery tools remain governed and non-authoritative. They cannot silently merge variants, discard source content, approve promotion, mutate canonical production content, or resolve owner decisions. John Brandon Turner retains final approval authority.
-
-## Separate external work item
+## Apple/Mac parallel track
 
 `WP-011 — Tauri iOS/iPadOS Spike` remains a separate Mac-dependent task in `cybalicistjt-stack/Multiversal-app`.
 
+Most UI, gameplay, multiplayer, AI, content, and testing work can proceed safely on web/Windows/Linux. The Mac is reserved primarily for Xcode, Apple signing and provisioning, simulator/device verification, packaging, and Apple-specific certification.
+
+## Operating rule for “Continue”
+
+“Continue” means perform the next verified unfinished operation. Do not substitute a plan, imagined PR, projected result, or explanation for actual repository work.
+
+## Authority boundary
+
+John Brandon Turner retains final approval over recovery policy, classification, conflict resolution, staging, canonical promotion, application scope, merges, and production deployment. AI and deterministic tooling may propose, implement, and validate but may not silently discard, merge, promote, certify, or publish owner-governed content.
+
 ## Mandatory failure evidence rule
 
-Before every governed operation, read `governance/ci-failures/INDEX.md` on branch `ci/failure-records` and repair any unresolved recorded failure before new work.
+Before every governed operation, read `governance/ci-failures/INDEX.md` on branch `ci/failure-records` and reconcile any relevant unresolved failure before new work.
