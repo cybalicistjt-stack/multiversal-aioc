@@ -14,66 +14,58 @@ AIOC-0-001 through AIOC-0-012 are complete. The implementation-readiness gate pa
 
 ### AIOC-I-001 — Operational Core Implementation — PASS
 
-- AIOC-I-001A — Project State Engine and Canonical Work Ledger;
-- AIOC-I-001B — Repository Adapter and Live State Synchronization;
-- AIOC-I-001C — Decision, Handoff, and Recovery Services.
+- Project State Engine and Canonical Work Ledger;
+- Repository Adapter and Live State Synchronization;
+- Decision, Handoff, and Recovery Services.
+
+### AIOC-I-002 — Repository Intelligence and Continuity Implementation — PASS
+
+Completed components:
+
+- AIOC-I-002A — Repository Intelligence Projection and Health Model;
+- AIOC-I-002B — Continuity Snapshot and Session Restore API;
+- AIOC-I-002C — Documentation Drift and Continuity Certification.
+
+Final evidence:
+
+- `continuity-certification` run 8 — PASS;
+- `continuity-snapshot` run 9 — PASS;
+- `repository-intelligence` run 18 — PASS;
+- `project-state-engine` run 43 — PASS;
+- `repository-sync` run 26 — PASS;
+- `recovery-services` run 21 — PASS;
+- AIOC Smoke Tests run 479 — PASS.
 
 ## Current milestone
 
-**AIOC-I-002 — Repository Intelligence and Continuity Implementation**
-
-## Completed work
-
-### AIOC-I-002A — Repository Intelligence Projection and Health Model — PASS
-
-Evidence includes `repository-intelligence` run 4 and all required regression suites.
-
-### AIOC-I-002B — Continuity Snapshot and Session Restore API — PASS
-
-Evidence:
-
-- versioned, fingerprinted continuity snapshots;
-- verified repository, branch, milestone, work-item, and next-action orientation;
-- expiration, tamper, canonical-drift, blocking-health, and recovery enforcement;
-- 11 executable acceptance tests;
-- `continuity-snapshot` run 3 — PASS;
-- `repository-intelligence` run 10 — PASS;
-- `project-state-engine` run 37 — PASS;
-- `repository-sync` run 20 — PASS;
-- `recovery-services` run 15 — PASS;
-- AIOC Smoke Tests run 473 — PASS.
-
-Repository path: `implementation/repository-intelligence/continuity/`
+**AIOC-I-003 — Executive Dashboard and Orchestration Implementation**
 
 ## Current work item
 
-**AIOC-I-002C — Documentation Drift and Continuity Certification**
+**AIOC-I-003A — Executive Dashboard Operational Projection**
 
-Purpose: compare mandatory status, handoff, roadmap, bootstrap, continuity-snapshot, and repository-health evidence against canonical state; block execution when continuity evidence is missing, stale, contradictory, or unverified; issue a CI-backed certification result for AIOC-I-002.
+Purpose: convert canonical project state, repository-health evidence, CI checks, continuity certification, blockers, decisions, milestones, dependencies, and the next governed action into one deterministic executive dashboard projection.
 
 **Execution state:** implementation committed; CI validation pending.
 
-Repository files:
-
-- `implementation/repository-intelligence/continuity-certification.mjs`
-- `implementation/repository-intelligence/continuity-certification.test.mjs`
-- `.github/workflows/continuity-certification.yml`
+Repository path: `implementation/executive-dashboard/`
 
 Implemented:
 
-- mandatory-document presence checks;
-- active milestone, work-item, and branch drift checks;
-- session-handoff drift checks;
-- roadmap traceability warnings;
-- continuity snapshot verification and drift checks;
-- repository-health certification rules;
-- PASS, PASS WITH WARNINGS, and FAIL results;
-- execution freeze after blocking certification failure;
-- 11 executable acceptance tests.
+- deterministic project health classification;
+- milestone and work-item progress projection;
+- repository health and CI-check cards;
+- blocker, warning, continuity, and work-item finding aggregation;
+- active milestone, work item, branch, repository, and next-action projection;
+- execution freeze when repository or continuity evidence is blocking;
+- open-decision and blocked-work counters;
+- deterministic executive summary generation;
+- 12 executable acceptance tests;
+- dedicated `executive-dashboard` GitHub Actions workflow.
 
 ## Next executable action
 
-Inspect `continuity-certification` and all regression suites for the latest branch commit. Fix any failure. On PASS, close AIOC-I-002 and activate AIOC-I-003 — Executive Dashboard and Orchestration Implementation.
+Inspect `executive-dashboard` and all required regression suites for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-003A and activate AIOC-I-003B — Governed Orchestration Queue and Dispatch Service.
 
 ## Continuity rule
 
