@@ -1,10 +1,12 @@
-name: Validate Content Database Pipeline
+name: Certify Content Database Pipeline
 
 on:
   push:
     branches: [main]
     paths:
+      - 'scripts/materialize-content-source.mjs'
       - 'scripts/build-content-database.mjs'
+      - 'scripts/certify-content-pipeline.mjs'
       - 'catalog-seed-parts/**'
       - 'content-source/**'
       - '.github/workflows/build-content-database.yml'
@@ -14,37 +16,45 @@ permissions:
   contents: read
 
 concurrency:
-  group: validate-content-database
+  group: certify-content-database
   cancel-in-progress: true
 
 jobs:
-  validate:
+  certify:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Check generator syntax
-        run: node --check scripts/build-content-database.mjs
-      - name: Generate content database in runner workspace
-        run: node scripts/build-content-database.mjs
-      - name: Validate generated database contracts
+
+      - name: Check pipeline syntax
         run: |
-          node - <<'NODE'
-          const fs = require('fs');
-          const index = JSON.parse(fs.readFileSync('content-db/index.json', 'utf8'));
-          const manifest = JSON.parse(fs.readFileSync('content-db/manifest.json', 'utf8'));
-          if (index.format !== 'multiversal-content-database') throw new Error('Unexpected database format');
-          if (!Array.isArray(index.records) || index.records.length < 1000) throw new Error(`Expected at least 1000 records; found ${index.records?.length ?? 0}`);
-          if (index.recordCount !== index.records.length) throw new Error('Index record count mismatch');
-          if (manifest.recordCount !== index.recordCount) throw new Error('Manifest record count mismatch');
-          if (!index.summary || index.summary.inventoryRecords < 1000) throw new Error('Recovered inventory summary is incomplete');
-          console.log(`Validated ${index.recordCount} records and ${index.summary.fullObjectBodies} full object bodies.`);
-          NODE
-      - name: Upload generated database evidence
+          node --check scripts/materialize-content-source.mjs
+          node --check scripts/build-content-database.mjs
+          node --check scripts/certify-content-pipeline.mjs
+
+      - name: Materialize canonical source bundle
+        run: node scripts/materialize-content-source.mjs
+
+      - name: Build database in isolated runner workspace
+        run: node scripts/build-content-database.mjs
+
+      - name: Independently certify seed, source, and generated database
+        run: node scripts/certify-content-pipeline.mjs
+
+      - name: Show certification result
+        run: cat evidence/content-pipeline/latest-certificate.json
+
+      - name: Upload certified database and evidence
         uses: actions/upload-artifact@v4
         with:
-          name: validated-content-database
-          path: content-db
-          retention-days: 14
+          name: certified-content-database-${{ github.sha }}
+          path: |
+            content-db
+            evidence/content-pipeline/latest-certificate.json
+          retention-days: 30
+          if-no-files-found: error
