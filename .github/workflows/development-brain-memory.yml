@@ -1,0 +1,29 @@
+name: Validate Development Brain Memory
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'governance/development-brain/memory/**'
+      - 'scripts/validate-development-brain-memory.mjs'
+      - '.github/workflows/development-brain-memory.yml'
+  pull_request:
+    paths:
+      - 'governance/development-brain/memory/**'
+      - 'scripts/validate-development-brain-memory.mjs'
+      - '.github/workflows/development-brain-memory.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-memory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate canonical project memory
+        run: node scripts/validate-development-brain-memory.mjs
