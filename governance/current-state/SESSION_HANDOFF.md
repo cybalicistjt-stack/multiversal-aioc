@@ -1,6 +1,6 @@
 # AIOC Session Handoff
 
-**Status:** READY TO RESUME RELEASE E STEP 13  
+**Status:** READY TO RESUME RELEASE E STEP 14  
 **Owner:** John Brandon Turner  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Branch:** `main`  
@@ -10,65 +10,60 @@
 
 Development Brain — Release E, Design Intelligence.
 
-## Owner milestone decision
-
-John Brandon Turner approved Releases D–G on 2026-08-03. Release D is now complete and validated.
-
 ## Last completed work
 
-### Step 12 — Semantic Retrieval and Reasoning Context — COMPLETE
+### Step 13 — Design Intent Memory — COMPLETE
 
-Step 12 delivered:
+Step 13 delivered:
 
-1. Retrieval-context schema and governed contract.
-2. Deterministic generation from inventory, project memory, semantic ontology, causal impact, readiness, priority, recommendations, and verification outputs.
-3. Stable context-package and context-item identities.
-4. Deterministic ranking, duplicate removal, provenance, confidence, authority, and freshness fingerprints.
-5. Explicit categories: source facts, derived findings, recommendations, constraints, and unresolved questions.
-6. Budgets of 24 items and 12,000 serialized characters per package.
-7. Read-only context suitable for browser, MCP, REST, and Codex without write or execution authority.
-8. Corrected upstream generator command contracts after CI exposed argument misrouting.
+1. Design-intent schema and governed contract.
+2. Deterministic extraction from active governed Project Memory and Unified Object Inventory.
+3. Stable intent-record identities linked to governed subjects.
+4. Explicit goals, intended outcomes, addressed problems, documented tradeoffs, rejected alternatives, invariants, extension notes, authority, confidence, and evidence.
+5. Explicit unresolved intent where rationale is absent or unsupported.
+6. Safeguards against inferring rationale from names, code structure, implementation details, lexical similarity, or AI preference.
+7. Generated artifact, validator, CI workflow, and required artifact publication.
 
 Validation evidence:
 
-- Semantic Retrieval run `30832959806` — PASS
-- Dependency Graph run `30832963031` — PASS
-- Completion Readiness run `30832961014` — PASS
-- Unified Inventory run `30832959953` — PASS
-- Recommendation Planner run `30832959977` — PASS
-- Causal Impact run `30832959839` — PASS
-- Development Brain Integration run `30832959925` — PASS
-- Structure Intelligence run `30832959931` — PASS
-- Semantic Ontology run `30832959784` — PASS
-- Priority and Impact run `30832960000` — PASS
-- Verification Governance run `30832960292` — PASS
-- Operational Baseline run `30832959833` — PASS
-- AIOC Smoke Tests run `30832959824` — PASS
-- Artifact `aioc-semantic-retrieval`, ID `8863661963`
-- Artifact digest `sha256:4cae7f9a22020970527db2373fedb01e8b85d1a6c0102f074ad3326e4e89a215`
-- Repair commit `af26ffbb41e07b9315b08da4dfca320762ec789a`
-- Merge commit `05b9c1b2505fcba85df56f803f2bac07717c7648`
+- Design Intent run `30833334767` — PASS
+- Semantic Retrieval run `30833335232` — PASS
+- Semantic Ontology run `30833335691` — PASS
+- Causal Impact run `30833334688` — PASS
+- Recommendation Planner run `30833335571` — PASS
+- Completion Readiness run `30833334777` — PASS
+- Verification Governance run `30833338103` — PASS
+- Unified Inventory run `30833337648` — PASS
+- Structure Intelligence run `30833335561` — PASS
+- Dependency Graph run `30833334726` — PASS
+- Priority and Impact run `30833334649` — PASS
+- Development Brain Integration run `30833335620` — PASS
+- Operational Baseline run `30833334680` — PASS
+- AIOC Smoke Tests run `30833334709` — PASS
+- Artifact `aioc-design-intent`, ID `8863806217`
+- Artifact digest `sha256:bf239ea8d523abc53fd0ebd22c263310875935fb891501c105f2e867cb9fdf8b`
+- Merge commit `875cb4347428127cd7bbcb5069f0c941c3ef91b7`
 
 ## Exact next action
 
-Implement **Release E, Step 13 — Design Intent Memory** as one bounded batch.
+Implement **Release E, Step 14 — Decision and Tradeoff History** as one bounded batch.
 
 Required outputs:
 
-1. Design-intent schema and governed contract.
-2. Deterministic extraction from explicit project memory, source records, governance decisions, design documentation, and approved owner statements.
-3. Stable intent-record identities linked to governed subjects.
-4. Explicit fields for goals, intended outcomes, problems addressed, accepted tradeoffs, rejected alternatives when documented, invariants, extension notes, authority, confidence, and evidence.
-5. Clear separation between explicit intent, supported interpretation, and unresolved intent.
-6. No rationale invented from names, code shape, implementation details, or AI preference.
-7. Conflict and stale-intent detection without silent reconciliation.
+1. Decision-history schema and governed contract.
+2. Deterministic extraction from governed Project Memory, Design Intent Memory, owner-approved records, and explicit source decisions.
+3. Stable decision and alternative identities with chronology.
+4. Explicit status values for active, superseded, rejected, deferred, and unresolved decisions.
+5. Decision rationale, alternatives, accepted tradeoffs, consequences, authority, confidence, evidence, and supersession links where documented.
+6. Conflict, duplicate, missing-rationale, and stale-decision diagnostics without silent reconciliation.
+7. No decision or rejected alternative invented from implementation shape, lexical similarity, or model preference.
 8. Generated artifact, summary metrics, validator, CI workflow, and canonical state updates.
 
 ## Operating boundaries
 
 - Read the governed CI failure index before every operation.
-- Design intent remains evidence-backed and authority-aware.
-- AI interpretation cannot override owner intent or certified content.
-- Unknown or conflicting rationale remains unresolved.
-- Do not begin Step 14 until Step 13 validates.
+- Decision history remains evidence-backed and authority-aware.
+- AI interpretation cannot override owner intent or silently resolve conflicting records.
+- Missing rationale, alternatives, or chronology remain unresolved.
+- Do not begin Step 15 until Step 14 validates.
 - `WP-011` remains a separate Mac-dependent Multiversal App work item.
