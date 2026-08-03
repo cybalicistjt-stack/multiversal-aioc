@@ -1,0 +1,49 @@
+name: Validate AIOC MCP Bridge
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'bridge/**'
+      - '.github/workflows/validate-aioc-bridge.yml'
+  pull_request:
+    paths:
+      - 'bridge/**'
+      - '.github/workflows/validate-aioc-bridge.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: bridge/mcp-server
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: bridge/mcp-server/package-lock.json
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Check server syntax
+        run: npm run check
+      - name: Smoke start and health
+        run: |
+          set -euo pipefail
+          npm start > /tmp/aioc-bridge.log 2>&1 &
+          pid=$!
+          trap 'kill "$pid" 2>/dev/null || true' EXIT
+          for attempt in {1..20}; do
+            if curl --fail --silent http://127.0.0.1:8787/health > /tmp/aioc-bridge-health.json; then
+              break
+            fi
+            sleep 1
+          done
+          cat /tmp/aioc-bridge-health.json
+          grep -q 'multiversal-aioc-mcp-bridge' /tmp/aioc-bridge-health.json
