@@ -1,6 +1,6 @@
 # AIOC Session Handoff
 
-**Status:** READY TO RESUME RELEASE F STEP 17  
+**Status:** READY TO RESUME RELEASE F STEP 18  
 **Owner:** John Brandon Turner  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Branch:** `main`  
@@ -12,60 +12,61 @@ Development Brain — Release F, Agent Ecosystem.
 
 ## Last completed work
 
-### Step 16 — Specialist Agent Contracts — COMPLETE
+### Step 17 — Governed Orchestration and Routing — COMPLETE
 
-Step 16 delivered:
+Step 17 delivered:
 
-1. Specialist-agent contract schema and governed contract documentation.
-2. Deterministic registry of eight specialist roles with stable role and contract identities.
-3. Explicit domain scope, responsibilities, required inputs, permitted outputs, evidence rules, escalation triggers, prohibited actions, and authority modes.
-4. Coordinator-mediated handoff payloads preserving findings, evidence, confidence, unresolved questions, and escalation state.
-5. Diagnostics for role overlap, missing capabilities, circular handoffs, unsupported specialization, and authority conflicts.
-6. Safeguards keeping every specialist read-only, advisory, or proposal-only.
-7. Generated artifact, validator, CI workflow, and required artifact publication.
+1. Orchestration-and-routing schema and governed contract.
+2. Deterministic task classification and specialist selection from validated Step 16 contracts.
+3. Stable route and audit identities.
+4. Development Coordinator mediation for all specialist routing.
+5. Required-input, freshness, provenance, confidence, authority, output, and escalation preservation.
+6. Diagnostics for ambiguous routing, missing inputs, unavailable capabilities, authority mismatches, invalid handoffs, and circular routing.
+7. Safeguards preventing runtime execution, canonical mutation, approval, promotion, certification, assignment, scheduling, or authority expansion.
+8. Generated artifact, validator, CI workflow, and required artifact publication.
 
 Validation evidence:
 
-- Specialist Agent Contracts run `30836256292` — PASS
-- Design Intent run `30836253097` — PASS
-- Completion Readiness run `30836252764` — PASS
-- Development Brain Integration run `30836252292` — PASS
-- AIOC Smoke Tests run `30836252201` — PASS
-- Priority and Impact run `30836252217` — PASS
-- Semantic Retrieval run `30836252172` — PASS
-- Causal Impact run `30836252232` — PASS
-- Recommendation Planner run `30836252110` — PASS
-- Operational Baseline run `30836252137` — PASS
-- Dependency Graph run `30836252101` — PASS
-- Semantic Ontology run `30836252155` — PASS
-- Constraint Rationale run `30836252225` — PASS
-- Unified Inventory run `30836252159` — PASS
-- Structure Intelligence run `30836252184` — PASS
-- Verification Governance run `30836252187` — PASS
-- Artifact `aioc-specialist-agent-contracts`, ID `8864945010`
-- Artifact digest `sha256:c67b11d121f693d3476e0876ec85180fb55a42160efda1d3815f37ad471b0725`
-- Merge commit `9d617673ff8af90f9286623f1cb6bc5f4c0e3411`
+- Orchestration Routing run `30836751046` — PASS
+- Specialist Agent Contracts run `30836750964` — PASS
+- Unified Inventory run `30836752503` — PASS
+- Dependency Graph run `30836751080` — PASS
+- Operational Baseline run `30836751052` — PASS
+- Priority and Impact run `30836751051` — PASS
+- Verification Governance run `30836750937` — PASS
+- Design Intent run `30836751012` — PASS
+- Development Brain Integration run `30836750867` — PASS
+- Causal Impact run `30836750801` — PASS
+- Structure Intelligence run `30836750870` — PASS
+- Constraint Rationale run `30836750804` — PASS
+- Completion Readiness run `30836750829` — PASS
+- AIOC Smoke Tests run `30836750851` — PASS
+- Recommendation Planner run `30836750859` — PASS
+- Semantic Retrieval run `30836751027` — PASS
+- Semantic Ontology run `30836750793` — PASS
+- Artifact `aioc-orchestration-routing`, ID `8865131247`
+- Artifact digest `sha256:4242029eb6b7710d8532d988a9406f3de6e05980638d771c6d5052fc613892b1`
+- Merge commit `8e4fe8b4ce5e514c93ecc9573aacefaab89f395c`
 
 ## Exact next action
 
-Implement **Release F, Step 17 — Governed Orchestration and Routing** as one bounded batch.
+Implement **Release F, Step 18 — Multi-Agent Review and Synthesis** as one bounded batch.
 
 Required outputs:
 
-1. Orchestration-and-routing schema and governed contract.
-2. Deterministic task classification and specialist-selection rules using Step 16 contracts.
-3. Stable route, handoff, escalation, and audit identities.
-4. Explicit required inputs, freshness checks, provenance, confidence, authority mode, and unresolved-question preservation on every route.
-5. Bounded routing through the Development Coordinator, with no uncontrolled recursive or circular agent chains.
-6. Diagnostics for ambiguous routing, unavailable specialists, stale or missing inputs, authority mismatch, circular routes, unsupported capabilities, and invalid handoffs.
-7. No runtime execution, canonical mutation, approval, promotion, certification, assignment, scheduling, or authority expansion.
+1. Multi-agent review and synthesis schema and governed contract.
+2. Deterministic review-panel construction from Step 17 routes and Step 16 specialist contracts.
+3. Stable review, contribution, disagreement, synthesis, and escalation identities.
+4. Explicit preservation of each specialist's evidence, confidence, authority, constraints, and unresolved questions.
+5. Classification of consensus, supported disagreement, unresolved conflict, minority finding, blocked review, and owner-decision-required outcomes.
+6. Diagnostics for missing reviewers, incompatible evidence, stale contributions, authority conflicts, fabricated consensus risk, circular review, and unsupported synthesis.
+7. No execution, mutation, approval, promotion, certification, assignment, scheduling, or silent conflict resolution.
 8. Generated artifact, summary metrics, validator, CI workflow, and canonical state updates.
 
 ## Operating boundaries
 
 - Read the governed CI failure index before every operation.
-- Orchestration remains deterministic, auditable, and proposal-only.
-- Routing cannot expand the authority granted by a specialist contract.
-- Evidence, provenance, uncertainty, freshness, and unresolved questions must survive every handoff.
-- Do not begin Step 18 until Step 17 validates.
+- Synthesis must preserve disagreement and minority evidence rather than collapse it into false consensus.
+- No specialist contribution may exceed its Step 16 authority or Step 17 routed scope.
+- Do not begin Release G until Step 18 validates.
 - `WP-011` remains a separate Mac-dependent Multiversal App work item.
