@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The Development Brain converts governed AIOC state into durable project memory, normalized inventory, dependency and semantic intelligence, readiness analysis, prioritization, recommendations, verification, and governed AI integration surfaces.
+The Development Brain converts governed AIOC state into durable project memory, normalized inventory, dependency and semantic intelligence, readiness analysis, prioritization, recommendations, verification, design intelligence, specialist-agent coordination, and governed AI integration surfaces.
 
 It does not replace owner authority, canonical content certification, or repository governance.
 
@@ -32,15 +32,15 @@ It does not replace owner authority, canonical content certification, or reposit
 11. Causal and Impact Intelligence — validated
 12. Semantic Retrieval and Reasoning Context — validated
 
-### Release E — Design Intelligence — ACTIVE
+### Release E — Design Intelligence — COMPLETE
 
 13. Design Intent Memory — validated
 14. Decision and Tradeoff History — validated
-15. Constraint and Rationale Reasoning — next
+15. Constraint and Rationale Reasoning — validated
 
-### Release F — Agent Ecosystem — APPROVED
+### Release F — Agent Ecosystem — ACTIVE
 
-16. Specialist Agent Contracts
+16. Specialist Agent Contracts — next
 17. Governed Orchestration and Routing
 18. Multi-Agent Review and Synthesis
 
@@ -58,26 +58,30 @@ On 2026-08-03, owner John Brandon Turner approved the Release D–G direction. A
 
 ### Step 13 — Design Intent Memory
 
-Validated. Provides stable, evidence-backed intent records derived from active governed Project Memory, preserving explicit goals, intended outcomes, addressed problems, documented tradeoffs, rejected alternatives, invariants, extension notes, authority, confidence, evidence, and unresolved intent.
+Validated. Provides stable, evidence-backed intent records preserving explicit goals, outcomes, addressed problems, documented tradeoffs, alternatives, invariants, extension notes, authority, confidence, evidence, and unresolved intent.
 
 ### Step 14 — Decision and Tradeoff History
 
-Validated. Preserves governed decisions, chronology, status, rationale, documented alternatives, accepted tradeoffs, consequences, authority, confidence, evidence, and supersession links. Conflicts, duplicates, stale records, missing rationale, and broken supersession remain explicit diagnostics.
+Validated. Preserves governed decisions, chronology, status, rationale, documented alternatives, accepted tradeoffs, consequences, authority, confidence, evidence, supersession, and explicit diagnostics.
 
 ### Step 15 — Constraint and Rationale Reasoning
 
-Next. It must assemble deterministic, evidence-backed rationale chains and applicable constraints from validated design intent, decision history, project memory, semantic context, causal impact, readiness, recommendations, and verification. It must distinguish explicit constraints from derived conclusions, retain confidence and authority, surface contradictions and unresolved gaps, and never substitute AI preference for owner intent.
+Validated. Produces deterministic, evidence-backed reasoning records with source constraints, supported rationale chains, derived conclusions, conflicts, unmet prerequisites, authority requirements, confidence, freshness, evidence, and unresolved gaps. Explicit source constraints outrank derived conclusions.
+
+## Release F Step 16 contract
+
+Step 16 must define stable specialist-agent contracts covering role identity, domain scope, responsibilities, required inputs, permitted outputs, evidence rules, escalation triggers, handoff requirements, and prohibited actions. It must diagnose role overlap, missing capability, circular handoffs, authority conflicts, and unsupported specialization without silently granting authority.
 
 ## Governance boundaries
 
 - Canonical content remains in the certified content pipeline.
-- Derived semantic, causal, retrieval, design-intent, decision-history, and reasoning records cannot promote or overwrite canonical content.
-- Unsupported meaning, causality, rationale, decisions, or conclusions must remain unresolved rather than guessed.
+- Derived intelligence and specialist-agent outputs cannot promote or overwrite canonical content.
+- Unsupported meaning, causality, rationale, decisions, conclusions, or specialization must remain unresolved rather than guessed.
 - Findings preserve uncertainty, source evidence, confidence, freshness, chronology, derivation method, and authority boundaries.
-- Browser access remains read-only; MCP, REST, and Codex writes remain proposal-only.
-- No intelligence artifact grants execution, mutation, promotion, certification, assignment, scheduling, or approval authority.
+- Browser access remains read-only; MCP, REST, Codex, and specialist-agent writes remain proposal-only unless explicitly governed otherwise.
+- No intelligence artifact or agent contract grants execution, mutation, promotion, certification, assignment, scheduling, or approval authority.
 - All future autonomous behavior remains reviewable and subject to repository CI and owner/governance controls.
 
 ## Next executable step
 
-Implement and validate Step 15: Constraint and Rationale Reasoning. Do not begin Release F until Step 15 generates a valid artifact and all required workflows pass.
+Implement and validate Step 16: Specialist Agent Contracts. Do not begin Step 17 until Step 16 generates a valid artifact and all required workflows pass.
