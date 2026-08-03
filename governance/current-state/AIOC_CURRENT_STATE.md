@@ -22,67 +22,58 @@ AIOC-0-001 through AIOC-0-012 are complete.
 
 **AIOC-I-006 — Testing, Simulation, Balance, and Digital Twin Implementation**
 
-## Latest completed work item
+## Completed work
 
 ### AIOC-I-006A — Test Harness, Scenario Execution, and Evidence Projection — PASS
 
+Validated by `test-harness-projection` run 4 and all required regression suites.
+
+### AIOC-I-006B — Simulation, Balance, and Change-Impact Analysis — PASS
+
 Evidence:
 
-- deterministic governed scenario normalization and execution planning;
-- canonical repository, branch, milestone, and work-item binding;
-- continuity, repository-health, scenario-kind, dependency, approval, runner-capability, and durable-evidence enforcement;
-- 17 executable acceptance tests;
-- `test-harness-projection` run 4 — PASS;
-- `continuity-certification` run 58 — PASS;
-- `workbench-execution-certification` run 18 — PASS;
-- `continuity-snapshot` run 49 — PASS;
-- `content-studio-authoring` run 14 — PASS;
-- `orchestration-service` run 37 — PASS;
-- `repository-sync` run 66 — PASS;
-- `orchestration-certification` run 31 — PASS;
-- `repository-intelligence` run 58 — PASS;
-- `recovery-services` run 61 — PASS;
-- AIOC Smoke Tests run 519 — PASS;
-- `executive-dashboard` run 43 — PASS;
-- `content-pack-certification` run 10 — PASS;
-- `developer-workbench` run 31 — PASS;
-- `project-state-engine` run 83 — PASS;
-- `change-certification` run 23 — PASS;
-- `content-release-certification` run 6 — PASS.
+- evidence-backed simulation baselines and deterministic seeds;
+- required combat, progression, economy, and content-impact coverage;
+- governed metric thresholds and cross-domain impact matrices;
+- runner, evidence-sink, approval, continuity, repository-health, and canonical-binding controls;
+- 20 executable acceptance tests;
+- `simulation-balance-impact` run 2 — PASS;
+- `test-harness-projection` run 12 — PASS;
+- all sixteen required content, workbench, orchestration, dashboard, continuity, repository, state, recovery, and smoke regressions — PASS.
 
 ## Current work item
 
-**AIOC-I-006B — Simulation, Balance, and Change-Impact Analysis**
+**AIOC-I-006C — Digital Twin, Regression Mining, and Testing Certification**
 
-Purpose: bind deterministic simulation and balance analysis to canonical project state; lock evidence-backed baselines and seeds; require combat, progression, economy, and content-impact coverage; enforce runner and evidence controls; compare governed metrics against thresholds; and project cross-domain impact for proposed changes.
+Purpose: certify the governed testing and simulation milestone only when the digital twin has an evidence-backed baseline and version, required combat, progression, economy, and content domains are modeled, regression findings are uniquely identified and evidence-backed, critical regressions are closed, passing tests cover every governed domain, runner capabilities are verified, and durable evidence is retained.
 
 **Execution state:** implementation committed; CI validation pending.
 
 Repository files:
 
-- `implementation/testing-simulation/simulation-balance-impact-analysis.mjs`
-- `implementation/testing-simulation/simulation-balance-impact-analysis.test.mjs`
-- `.github/workflows/simulation-balance-impact.yml`
+- `implementation/testing-simulation/digital-twin-regression-certification.mjs`
+- `implementation/testing-simulation/digital-twin-regression-certification.test.mjs`
+- `.github/workflows/digital-twin-regression-certification.yml`
 
 Implemented:
 
-- deterministic baseline, simulation, result, and change fingerprints;
-- canonical repository, branch, and active-work-item binding;
-- continuity and repository-health enforcement;
-- required combat, progression, economy, and content-impact simulation coverage;
-- baseline, dependency, deterministic-seed, runner, evidence-sink, and result-evidence checks;
-- governed metric-threshold enforcement;
-- high-risk change approval requirements;
-- deterministic cross-domain impact matrices;
+- deterministic certification fingerprints;
+- continuity, repository-health, and canonical work-binding gates;
+- digital-twin identity, model-version, baseline, evidence, and domain checks;
+- unique and evidence-backed regression mining;
+- critical-open-regression blocking and noncritical warnings;
+- unique test IDs, durable test evidence, required-failure blocking, and optional-failure warnings;
+- passing coverage requirements across combat, progression, economy, and content;
+- digital-twin and regression-mining runner-capability enforcement;
+- durable evidence-sink enforcement;
 - PASS, PASS WITH WARNINGS, and FAIL outcomes;
-- execution freeze on blocking findings;
-- five-stage governed simulation and evidence plan;
+- execution and completion freeze unless certification is a clean PASS;
 - 20 executable acceptance tests;
-- dedicated `simulation-balance-impact` GitHub Actions workflow.
+- dedicated `digital-twin-regression-certification` GitHub Actions workflow.
 
 ## Next executable action
 
-Inspect `simulation-balance-impact`, `test-harness-projection`, and all required regression suites for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-006B and activate AIOC-I-006C — Digital Twin, Regression Mining, and Testing Certification.
+Inspect `digital-twin-regression-certification`, `simulation-balance-impact`, `test-harness-projection`, and all required regression suites for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-006 and advance to the next canonical implementation milestone.
 
 ## Continuity rule
 
