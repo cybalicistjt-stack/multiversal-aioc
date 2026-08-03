@@ -1,0 +1,29 @@
+name: Validate Development Brain Specialist Agent Contracts
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Generate Specialist Agent Contracts artifact
+        run: node scripts/development-brain/generate-specialist-agent-contracts.mjs tmp/AIOC_SPECIALIST_AGENT_CONTRACTS.json
+      - name: Validate Specialist Agent Contracts artifact
+        run: node scripts/development-brain/validate-specialist-agent-contracts.mjs tmp/AIOC_SPECIALIST_AGENT_CONTRACTS.json
+      - name: Require Specialist Agent Contracts artifact
+        run: test -s tmp/AIOC_SPECIALIST_AGENT_CONTRACTS.json
+      - name: Publish Specialist Agent Contracts artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aioc-specialist-agent-contracts
+          path: tmp/AIOC_SPECIALIST_AGENT_CONTRACTS.json
+          if-no-files-found: error

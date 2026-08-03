@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/specialist-agent-contracts.schema.json",
+  "title": "Multiversal AIOC Specialist Agent Contracts",
+  "type": "object",
+  "required": ["format", "version", "generatedAt", "sourceFingerprint", "contracts", "handoffs", "diagnostics", "authority"],
+  "properties": {
+    "format": { "const": "multiversal-aioc-specialist-agent-contracts" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string" },
+    "sourceFingerprint": { "type": "string", "minLength": 16 },
+    "contracts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["contractId", "roleId", "name", "domainScope", "responsibilities", "requiredInputs", "permittedOutputs", "evidenceRequirements", "escalationTriggers", "handoffRequirements", "prohibitedActions", "authorityMode"],
+        "properties": {
+          "contractId": { "type": "string", "pattern": "^AGENT-CONTRACT-" },
+          "roleId": { "type": "string", "pattern": "^AGENT-ROLE-" },
+          "name": { "type": "string", "minLength": 3 },
+          "domainScope": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "responsibilities": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "requiredInputs": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "permittedOutputs": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "evidenceRequirements": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "escalationTriggers": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "handoffRequirements": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "prohibitedActions": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "authorityMode": { "enum": ["read-only", "advisory", "proposal-only"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "handoffs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["handoffId", "fromRoleId", "toRoleId", "trigger", "requiredPayload", "authorityPreserved"],
+        "properties": {
+          "handoffId": { "type": "string", "pattern": "^AGENT-HANDOFF-" },
+          "fromRoleId": { "type": "string" },
+          "toRoleId": { "type": "string" },
+          "trigger": { "type": "string" },
+          "requiredPayload": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "authorityPreserved": { "const": true }
+        },
+        "additionalProperties": false
+      }
+    },
+    "diagnostics": {
+      "type": "object",
+      "required": ["roleOverlaps", "missingCapabilities", "circularHandoffs", "unsupportedSpecializations", "authorityConflicts"],
+      "properties": {
+        "roleOverlaps": { "type": "array" },
+        "missingCapabilities": { "type": "array" },
+        "circularHandoffs": { "type": "array" },
+        "unsupportedSpecializations": { "type": "array" },
+        "authorityConflicts": { "type": "array" }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "required": ["advisoryOnly", "canonicalMutationAllowed", "approvalGranted", "certificationAllowed"],
+      "properties": {
+        "advisoryOnly": { "const": true },
+        "canonicalMutationAllowed": { "const": false },
+        "approvalGranted": { "const": false },
+        "certificationAllowed": { "const": false }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
