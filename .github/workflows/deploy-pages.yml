@@ -1,4 +1,4 @@
-name: Deploy Operational AIOC Pages
+name: Deploy Unified AIOC Pages
 
 on:
   push:
@@ -6,6 +6,8 @@ on:
     paths:
       - 'index.html'
       - 'operational/**'
+      - 'implementation/**'
+      - 'content-db/**'
       - 'governance/current-state/**'
       - 'governance/dispatches/**'
       - 'governance/legacy/**'
@@ -18,7 +20,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: operational-aioc-pages
+  group: unified-aioc-pages
   cancel-in-progress: true
 
 jobs:
@@ -27,39 +29,52 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Enforce operational public default
+      - name: Validate one public deployment contract
         run: |
           set -euo pipefail
           test -f index.html
           test -f operational/index.html
+          test -f operational/operational.css
+          test -f operational/operational.js
+          test -f content-db/index.json
+          test -f content-db/manifest.json
+          test -f content-db/certification.json
+          test -f content-db/promotion.json
+          test -f governance/current-state/AIOC_CURRENT_STATE.md
+          test -f governance/current-state/AIOC_OPERATIONAL_HANDOFF.md
+          test -f governance/legacy/LEGACY_COS_QUARANTINE.md
           grep -q './operational/' index.html
+          grep -q 'NARROWLY QUARANTINED' governance/legacy/LEGACY_COS_QUARANTINE.md
+          grep -q 'all recent COS capability work' governance/legacy/LEGACY_COS_QUARANTINE.md
           if grep -Eq 'url=\.?/?v2/|location\.replace\(["'"']\.?/?v2/' index.html; then
             echo 'The obsolete migration shell must not be the public root target.'
             exit 1
           fi
-          test -f governance/legacy/LEGACY_COS_QUARANTINE.md
-          grep -q 'NARROWLY QUARANTINED' governance/legacy/LEGACY_COS_QUARANTINE.md
-          grep -q 'all recent COS capability work' governance/legacy/LEGACY_COS_QUARANTINE.md
-
-      - name: Validate operational frontend
-        run: |
-          test -f operational/operational.css
-          test -f operational/operational.js
-          test -f governance/current-state/AIOC_CURRENT_STATE.md
-          test -f governance/current-state/AIOC_OPERATIONAL_HANDOFF.md
-          grep -q 'Multiversal Command Center' operational/index.html
           node --check operational/operational.js
+          node - <<'NODE'
+          const fs = require('fs');
+          const index = JSON.parse(fs.readFileSync('content-db/index.json', 'utf8'));
+          const cert = JSON.parse(fs.readFileSync('content-db/certification.json', 'utf8'));
+          const promotion = JSON.parse(fs.readFileSync('content-db/promotion.json', 'utf8'));
+          if (index.recordCount !== 487 || index.records?.length !== 487) throw new Error('Certified content database must contain 487 canonical records.');
+          if (cert.result !== 'PASS' || cert.pipelineMode !== 'CANONICAL_OBJECTS_ONLY') throw new Error('Content certificate is not an accepted PASS.');
+          if (promotion.pipelineMode !== 'CANONICAL_OBJECTS_ONLY') throw new Error('Content promotion receipt has the wrong mode.');
+          NODE
 
-      - name: Assemble static Pages artifact
+      - name: Assemble complete public artifact
         run: |
+          set -euo pipefail
           rm -rf _site
           mkdir -p _site/operational _site/governance/current-state _site/governance/dispatches _site/governance/legacy
           cp index.html _site/index.html
           cp operational/index.html operational/operational.css operational/operational.js _site/operational/
+          cp -R implementation _site/implementation
+          cp -R content-db _site/content-db
           cp governance/current-state/AIOC_CURRENT_STATE.md _site/governance/current-state/
           cp governance/current-state/AIOC_OPERATIONAL_HANDOFF.md _site/governance/current-state/
           cp governance/legacy/LEGACY_COS_QUARANTINE.md _site/governance/legacy/
@@ -67,25 +82,39 @@ jobs:
             cp governance/dispatches/AIOC-DISPATCH-MS02-WP011.md _site/governance/dispatches/
           fi
           generated_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          cat > _site/deployed-build.json <<EOF
-          {"build":"operational-aioc-1.3","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","defaultSurface":"operational","obsoleteMigrationShell":"quarantined","recentCosWork":"preserved"}
+          cat > _site/deployment-manifest.json <<EOF
+          {"format":"multiversal-aioc-pages-deployment","version":"1.0.0","build":"operational-aioc-1.4","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","defaultSurface":"operational","contentDatabase":"certified-canonical-487","obsoleteMigrationShell":"narrowly-quarantined","recentCosWork":"preserved","publicRoots":["/","/operational/","/implementation/","/content-db/"]}
           EOF
+          cp _site/deployment-manifest.json _site/deployed-build.json
           cat > _site/operational/health.json <<EOF
-          {"status":"operational","application":"Multiversal AIOC","surface":"operational-command-center","build":"operational-aioc-1.3","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","obsoleteMigrationShell":"quarantined","recentCosWork":"preserved"}
+          {"status":"operational","application":"Multiversal AIOC","surface":"operational-command-center","build":"operational-aioc-1.4","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","contentRecords":487,"obsoleteMigrationShell":"narrowly-quarantined","recentCosWork":"preserved"}
           EOF
           touch _site/.nojekyll
 
       - name: Validate assembled artifact
         run: |
+          set -euo pipefail
           test -s _site/index.html
           test -s _site/operational/index.html
           test -s _site/operational/health.json
-          node -e "const fs=require('fs'); const h=JSON.parse(fs.readFileSync('_site/operational/health.json')); if(h.status!=='operational'||h.commit!==process.env.GITHUB_SHA||h.obsoleteMigrationShell!=='quarantined'||h.recentCosWork!=='preserved') process.exit(1); console.log(h)"
+          test -s _site/deployment-manifest.json
+          test -s _site/content-db/index.json
+          test -d _site/implementation
+          node - <<'NODE'
+          const fs = require('fs');
+          const h = JSON.parse(fs.readFileSync('_site/operational/health.json'));
+          const m = JSON.parse(fs.readFileSync('_site/deployment-manifest.json'));
+          const db = JSON.parse(fs.readFileSync('_site/content-db/index.json'));
+          if (h.status !== 'operational' || h.commit !== process.env.GITHUB_SHA || h.contentRecords !== 487) process.exit(1);
+          if (m.commit !== process.env.GITHUB_SHA || m.defaultSurface !== 'operational' || m.recentCosWork !== 'preserved') process.exit(1);
+          if (db.recordCount !== 487) process.exit(1);
+          console.log({health:h, manifest:m, records:db.recordCount});
+          NODE
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload operational site
+      - name: Upload unified site
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site
@@ -94,18 +123,32 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      - name: Verify deployed operational health contract
+      - name: Verify live root, health, manifest, and content database
         env:
           PAGE_URL: ${{ steps.deployment.outputs.page_url }}
         run: |
-          health_url="${PAGE_URL%/}/operational/health.json"
+          set -euo pipefail
+          base="${PAGE_URL%/}"
           for attempt in 1 2 3 4 5 6; do
-            echo "Checking ${health_url} (attempt ${attempt})"
-            if payload="$(curl --fail --silent --show-error --location --max-time 20 "${health_url}?commit=${GITHUB_SHA}")"; then
-              HEALTH_PAYLOAD="$payload" node -e "const h=JSON.parse(process.env.HEALTH_PAYLOAD); if(h.status!=='operational'||h.commit!==process.env.GITHUB_SHA||h.obsoleteMigrationShell!=='quarantined'||h.recentCosWork!=='preserved') process.exit(1); console.log('Verified deployed health contract',h)"
+            echo "Live verification attempt ${attempt}"
+            root="$(curl --fail --silent --show-error --location --max-time 20 "${base}/?commit=${GITHUB_SHA}" || true)"
+            health="$(curl --fail --silent --show-error --location --max-time 20 "${base}/operational/health.json?commit=${GITHUB_SHA}" || true)"
+            manifest="$(curl --fail --silent --show-error --location --max-time 20 "${base}/deployment-manifest.json?commit=${GITHUB_SHA}" || true)"
+            database="$(curl --fail --silent --show-error --location --max-time 20 "${base}/content-db/index.json?commit=${GITHUB_SHA}" || true)"
+            if [ -n "$root" ] && [ -n "$health" ] && [ -n "$manifest" ] && [ -n "$database" ]; then
+              ROOT_PAYLOAD="$root" HEALTH_PAYLOAD="$health" MANIFEST_PAYLOAD="$manifest" DATABASE_PAYLOAD="$database" node - <<'NODE'
+              const h = JSON.parse(process.env.HEALTH_PAYLOAD);
+              const m = JSON.parse(process.env.MANIFEST_PAYLOAD);
+              const db = JSON.parse(process.env.DATABASE_PAYLOAD);
+              if (!process.env.ROOT_PAYLOAD.includes('operational')) process.exit(1);
+              if (h.status !== 'operational' || h.commit !== process.env.GITHUB_SHA || h.contentRecords !== 487) process.exit(1);
+              if (m.commit !== process.env.GITHUB_SHA || m.defaultSurface !== 'operational' || m.recentCosWork !== 'preserved') process.exit(1);
+              if (db.recordCount !== 487) process.exit(1);
+              console.log('Unified live deployment verified.');
+              NODE
               exit 0
             fi
             sleep 10
           done
-          echo "Deployment completed but the live health contract could not be verified."
+          echo 'Deployment completed but unified live verification failed.'
           exit 1
