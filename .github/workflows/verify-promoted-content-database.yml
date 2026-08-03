@@ -29,7 +29,7 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Verify promoted database evidence
+      - name: Verify promoted canonical database evidence
         run: |
           set -euo pipefail
           test -f content-db/index.json
@@ -44,27 +44,41 @@ jobs:
           const certificate = JSON.parse(fs.readFileSync('content-db/certification.json', 'utf8'));
           const promotion = JSON.parse(fs.readFileSync('content-db/promotion.json', 'utf8'));
           const fail = message => { throw new Error(message); };
+
           if (index.format !== 'multiversal-content-database') fail('Unexpected database format');
-          if (!Array.isArray(index.records) || index.records.length < 1000) fail('Database is incomplete');
+          if (index.databaseVersion !== '3.0.0') fail(`Unexpected database version: ${index.databaseVersion}`);
+          if (!Array.isArray(index.records) || index.records.length !== 487) fail('Canonical database must contain exactly 487 records');
           if (index.recordCount !== index.records.length) fail('Index record count mismatch');
           if (manifest.recordCount !== index.recordCount) fail('Manifest record count mismatch');
+          if (manifest.fullObjectBodies !== 487 || index.summary?.fullObjectBodies !== 487) fail('Full-object count mismatch');
+          if (index.summary?.legacyInventoryStatus !== 'QUARANTINED_CORRUPTED_SOURCE') fail('Index legacy inventory quarantine is missing');
+
           if (certificate.result !== 'PASS') fail('Certification result is not PASS');
+          if (certificate.pipelineMode !== 'CANONICAL_OBJECTS_ONLY') fail('Unexpected certificate pipeline mode');
           if (certificate.recordCount !== index.recordCount) fail('Certificate record count mismatch');
+          if (certificate.legacyInventory?.status !== 'QUARANTINED_CORRUPTED_SOURCE') fail('Certificate legacy inventory quarantine is missing');
+
+          if (promotion.pipelineMode !== 'CANONICAL_OBJECTS_ONLY') fail('Unexpected promotion pipeline mode');
+          if (promotion.legacyInventoryStatus !== 'QUARANTINED_CORRUPTED_SOURCE') fail('Promotion legacy inventory quarantine is missing');
           if (!promotion.validationRunId || !promotion.validatedCommit || !promotion.promotedByRun) fail('Promotion receipt is incomplete');
+
           const semantic = index.records.map(r => [r.databaseId, r.stableId, r.objectType, r.name]);
           const fingerprint = `sha256:${crypto.createHash('sha256').update(JSON.stringify(semantic)).digest('hex')}`;
-          if (certificate.semanticFingerprint !== fingerprint) fail('Semantic fingerprint mismatch');
+          if (certificate.semanticFingerprint !== fingerprint) fail('Certificate semantic fingerprint mismatch');
+          if (index.semanticFingerprint !== fingerprint || manifest.semanticFingerprint !== fingerprint) fail('Database semantic fingerprint mismatch');
+
           const databaseIds = new Set();
           const stableIds = new Set();
           for (const record of index.records) {
             if (!record.databaseId) fail('Record missing databaseId');
+            if (!record.stableId) fail('Record missing stableId');
+            if (!record.gameObject) fail(`Record ${record.stableId} missing full game object`);
             if (databaseIds.has(record.databaseId)) fail(`Duplicate databaseId: ${record.databaseId}`);
+            if (stableIds.has(record.stableId)) fail(`Duplicate stableId: ${record.stableId}`);
             databaseIds.add(record.databaseId);
-            if (record.stableId) {
-              if (stableIds.has(record.stableId)) fail(`Duplicate stableId: ${record.stableId}`);
-              stableIds.add(record.stableId);
-            }
+            stableIds.add(record.stableId);
           }
-          console.log(`Promoted database PASS: ${index.recordCount} records; ${fingerprint}`);
+
+          console.log(`Promoted canonical database PASS: ${index.recordCount} governed objects; ${fingerprint}`);
           console.log(`Validated by run ${promotion.validationRunId}; promoted by run ${promotion.promotedByRun}.`);
           NODE
