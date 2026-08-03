@@ -1,0 +1,16 @@
+name: release-readiness-projection
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check module syntax
+        run: node --check implementation/release-hardening/release-readiness-projection.mjs
+      - name: Run release readiness acceptance tests
+        run: node implementation/release-hardening/release-readiness-projection.test.mjs
