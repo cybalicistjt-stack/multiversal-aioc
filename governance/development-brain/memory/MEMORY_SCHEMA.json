@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "multiversal://development-brain/memory/v1",
+  "title": "Multiversal AIOC Canonical Project Memory",
+  "type": "object",
+  "required": ["format", "version", "revision", "updatedAt", "entries"],
+  "properties": {
+    "format": { "const": "multiversal-aioc-project-memory" },
+    "version": { "const": "1.0.0" },
+    "revision": { "type": "integer", "minimum": 0 },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "updatedBy": { "type": "string", "minLength": 1 },
+    "entries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/entry" }
+    }
+  },
+  "$defs": {
+    "entry": {
+      "type": "object",
+      "required": ["memoryId", "kind", "status", "title", "summary", "authority", "createdAt", "updatedAt"],
+      "properties": {
+        "memoryId": { "type": "string", "pattern": "^AIOC-MEM-[0-9]{4,}$" },
+        "kind": {
+          "enum": ["decision", "constraint", "priority", "technical-debt", "open-question", "investigation", "assumption", "lesson"]
+        },
+        "status": { "enum": ["active", "resolved", "superseded", "retired"] },
+        "title": { "type": "string", "minLength": 3, "maxLength": 180 },
+        "summary": { "type": "string", "minLength": 10, "maxLength": 6000 },
+        "rationale": { "type": "string", "maxLength": 12000 },
+        "authority": { "enum": ["owner-approved", "governance-record", "validated-inference", "working-hypothesis"] },
+        "scope": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "relatedIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "sourceRecords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["path"],
+            "properties": {
+              "path": { "type": "string", "minLength": 1 },
+              "commit": { "type": ["string", "null"] },
+              "note": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "owner": { "type": ["string", "null"] },
+        "dueOrReviewAt": { "type": ["string", "null"], "format": "date-time" },
+        "resolution": { "type": ["string", "null"] },
+        "supersedes": { "type": ["string", "null"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "updatedBy": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
