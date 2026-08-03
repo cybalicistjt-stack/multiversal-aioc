@@ -1,0 +1,29 @@
+name: Validate Development Brain Constraint Rationale
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Generate Constraint Rationale artifact
+        run: node scripts/development-brain/generate-constraint-rationale.mjs tmp/AIOC_PROJECT_MEMORY.json tmp/AIOC_DESIGN_INTENT.json tmp/AIOC_DECISION_HISTORY.json tmp/AIOC_CONSTRAINT_RATIONALE.json
+      - name: Validate Constraint Rationale artifact
+        run: node scripts/development-brain/validate-constraint-rationale.mjs tmp/AIOC_CONSTRAINT_RATIONALE.json
+      - name: Require Constraint Rationale artifact
+        run: test -s tmp/AIOC_CONSTRAINT_RATIONALE.json
+      - name: Publish Constraint Rationale artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aioc-constraint-rationale
+          path: tmp/AIOC_CONSTRAINT_RATIONALE.json
+          if-no-files-found: error
