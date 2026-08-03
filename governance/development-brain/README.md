@@ -8,15 +8,15 @@ It does not replace owner authority, canonical content certification, or reposit
 
 ## Release plan
 
-### Release A — Foundation
+### Release A — Foundation — COMPLETE
 
-1. Canonical Project Memory
-2. Unified Object Inventory
-3. Dependency Graph
+1. Canonical Project Memory — validated
+2. Unified Object Inventory — validated
+3. Dependency Graph — validated
 
-### Release B — Content Intelligence
+### Release B — Content Intelligence — ACTIVE
 
-4. Structure Intelligence
+4. Structure Intelligence — next
 5. Completion and Readiness Engine
 6. Priority and Impact Engine
 
@@ -26,38 +26,49 @@ It does not replace owner authority, canonical content certification, or reposit
 8. Verification and Governance Integration
 9. Browser, MCP, REST, and Codex Integration
 
-## Step 1 — Canonical Project Memory
+## Release A contracts
 
-Status: IMPLEMENTED; CI validation pending.
+### Project Memory
 
-Canonical files:
+Typed governed memory records decisions, constraints, priorities, technical debt, open questions, investigations, assumptions, and lessons while retaining source, authority, status, and history.
 
-- `memory/MEMORY_SCHEMA.json`
-- `memory/AIOC_PROJECT_MEMORY.json`
-- `../../scripts/validate-development-brain-memory.mjs`
-- `../../.github/workflows/development-brain-memory.yml`
+### Unified Object Inventory
 
-Supported memory kinds:
+A deterministic derived inventory normalizes canonical records, shared working objects, structure decisions, packs, evidence, review state, dependencies, and project-memory references without crossing authority boundaries.
 
-- decision
-- constraint
-- priority
-- technical debt
-- open question
-- investigation
-- assumption
-- lesson
+### Dependency Graph
 
-Every memory entry must include authority, source records, timestamps, status, and a stable memory ID. Working hypotheses and validated inferences are distinguishable from owner-approved and governance-recorded facts.
+A deterministic derived graph exposes evidence-backed relationships across inventory objects using:
+
+- `requires`
+- `grants`
+- `contains`
+- `parent-of`
+- `variant-of`
+- `validates`
+- `affects`
+- `supersedes`
+- `blocks`
+- `member-of-pack`
+
+It validates stable identities, evidence, confidence, dangling targets, duplicate edges, self-dependencies, prohibited cycles, and summary metrics.
+
+Validated Step 3 evidence:
+
+- Workflow `30827429169` — PASS
+- Artifact `aioc-dependency-graph`, ID `8861441449`
+- Merge commit `5aaa8f716f36307b5de1aec735dcc483a98ddbcc`
 
 ## Governance boundaries
 
 - Project memory records what the project knows and why.
 - Shared working state stores editable drafts and working decisions.
 - Canonical content remains in the certified content pipeline.
-- A memory entry cannot promote a game object or override owner approval.
-- Superseded and resolved memories remain retained for historical reasoning.
+- Derived inventory, graph, and intelligence artifacts cannot promote or overwrite canonical content.
+- Findings preserve uncertainty, source evidence, confidence, and authority boundaries.
 
 ## Next executable step
 
-Build Step 2: Unified Object Inventory. It will normalize canonical records, shared working objects, structure decisions, packs, evidence, review state, and memory references into a single queryable development model.
+Build Step 4: Structure Intelligence.
+
+The structure-intelligence layer must consume the unified inventory and dependency graph to derive hierarchy, containment, variants, packs, unresolved classifications, conflicts, structural gaps, orphans, and structurally central dependencies. It must remain deterministic, evidence-backed, reproducible, validated in CI, and separate from canonical promotion.
