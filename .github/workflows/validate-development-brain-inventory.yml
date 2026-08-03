@@ -8,6 +8,7 @@ on:
       - 'governance/shared-state/AIOC_SHARED_STATE.json'
       - 'governance/development-brain/memory/**'
       - 'governance/development-brain/inventory/**'
+      - 'scripts/validate-development-brain-memory.mjs'
       - 'scripts/development-brain/generate-unified-inventory.mjs'
       - 'scripts/development-brain/validate-unified-inventory.mjs'
       - '.github/workflows/validate-development-brain-inventory.yml'
@@ -17,7 +18,9 @@ on:
       - 'governance/shared-state/AIOC_SHARED_STATE.json'
       - 'governance/development-brain/memory/**'
       - 'governance/development-brain/inventory/**'
+      - 'scripts/validate-development-brain-memory.mjs'
       - 'scripts/development-brain/**'
+      - '.github/workflows/validate-development-brain-inventory.yml'
   workflow_dispatch:
 
 permissions:
@@ -33,14 +36,17 @@ jobs:
         with:
           node-version: 20
       - name: Validate project memory
-        run: node scripts/development-brain/validate-project-memory.mjs
+        run: node scripts/validate-development-brain-memory.mjs
       - name: Generate unified inventory
-        run: node scripts/development-brain/generate-unified-inventory.mjs /tmp/AIOC_UNIFIED_INVENTORY.json
+        run: node scripts/development-brain/generate-unified-inventory.mjs tmp/AIOC_UNIFIED_INVENTORY.json
       - name: Validate unified inventory
-        run: node scripts/development-brain/validate-unified-inventory.mjs /tmp/AIOC_UNIFIED_INVENTORY.json
+        run: node scripts/development-brain/validate-unified-inventory.mjs tmp/AIOC_UNIFIED_INVENTORY.json
+      - name: Require unified inventory artifact
+        run: test -s tmp/AIOC_UNIFIED_INVENTORY.json
       - name: Publish validation artifact
         uses: actions/upload-artifact@v4
         with:
           name: aioc-unified-inventory
-          path: /tmp/AIOC_UNIFIED_INVENTORY.json
+          path: tmp/AIOC_UNIFIED_INVENTORY.json
+          if-no-files-found: error
           retention-days: 14
