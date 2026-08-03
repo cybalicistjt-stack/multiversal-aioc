@@ -20,47 +20,53 @@ AIOC-0-001 through AIOC-0-012 are complete.
 
 **AIOC-I-004 — Developer Workbench Implementation**
 
-## Latest completed work item
+## Completed work
 
 ### AIOC-I-004A — Developer Workbench Change Planning and Evidence Projection — PASS
 
+Validated by `developer-workbench` and all required regression suites.
+
+### AIOC-I-004B — Change Review, Validation, and Patch Certification — PASS
+
 Evidence:
 
-- governed change planning and evidence projection;
-- canonical repository, branch, milestone, and work-item binding;
-- continuity, repository-health, dependency, risk, capability, file, and acceptance checks;
-- 12 executable acceptance tests;
-- `developer-workbench` run 3 — PASS;
-- all ten required orchestration, continuity, repository, state, recovery, dashboard, and smoke regressions — PASS.
+- planned-file review and validation coverage;
+- unresolved-finding and required-check enforcement;
+- high-risk approval, review, validation, and evidence controls;
+- PASS, PASS WITH WARNINGS, and FAIL outcomes;
+- 13 executable acceptance tests;
+- `change-certification` run 3 — PASS;
+- `developer-workbench` run 9 — PASS;
+- all ten required orchestration, dashboard, continuity, repository, state, recovery, and smoke regressions — PASS.
 
 ## Current work item
 
-**AIOC-I-004B — Change Review, Validation, and Patch Certification**
+**AIOC-I-004C — Developer Workbench Execution, Handoff, and Certification**
 
-Purpose: certify planned changes only when review coverage, validation coverage, continuity, repository health, approvals, evidence, and required checks are complete and internally consistent.
+Purpose: certify executed changes only when the certified plan, canonical repository and branch, active work item, commit, changed files, validations, required evidence, execution outcome, and governed handoff are complete and internally consistent.
 
 **Execution state:** implementation committed; CI validation pending.
 
 Repository files:
 
-- `implementation/developer-workbench/change-certification.mjs`
-- `implementation/developer-workbench/change-certification.test.mjs`
-- `.github/workflows/change-certification.yml`
+- `implementation/developer-workbench/workbench-execution-certification.mjs`
+- `implementation/developer-workbench/workbench-execution-certification.test.mjs`
+- `.github/workflows/workbench-execution-certification.yml`
 
 Implemented:
 
-- full planned-file review and validation coverage;
-- unresolved review finding classification;
-- required and optional validation-check handling;
-- high-risk approval enforcement;
-- review and validation evidence requirements;
+- continuity and change-certification prerequisites;
+- canonical repository, branch, and work-item binding;
+- commit, changed-file, validation, and required-evidence enforcement;
+- failed and partial execution handling;
+- governed handoff repository, branch, completion, next-action, and evidence checks;
 - PASS, PASS WITH WARNINGS, and FAIL outcomes;
-- execution freeze on failed certification;
-- 13 executable acceptance tests.
+- completion freeze on failed certification;
+- 14 executable acceptance tests.
 
 ## Next executable action
 
-Inspect `change-certification`, `developer-workbench`, and all required regression suites for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-004B and activate the next Developer Workbench tranche.
+Inspect `workbench-execution-certification`, `change-certification`, `developer-workbench`, and all required regression suites for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-004 and advance to AIOC-I-005 — Content Studio Implementation.
 
 ## Continuity rule
 
