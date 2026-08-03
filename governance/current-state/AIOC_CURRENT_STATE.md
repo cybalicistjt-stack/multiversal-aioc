@@ -21,22 +21,6 @@
 - AIOC-0-011 — Security, Permissions, Secrets, and Release Governance — validated PASS
 - AIOC-0-012 — Implementation Readiness Gate — PASS WITH CONTROLLED IMPLEMENTATION CONDITIONS
 
-## Latest completed package
-
-**AIOC-0-012 — Implementation Readiness Gate**
-
-Repository path: `architecture/aioc-0-012/`
-
-Gate evidence includes:
-
-- ten readiness dimensions;
-- eighteen readiness checklist gates;
-- forty implementation gate tests;
-- cross-package traceability for AIOC-0-001 through AIOC-0-011;
-- seven mandatory implementation controls;
-- zero unresolved architecture blockers;
-- outgoing AIOC-I-001A work order.
-
 ## Current milestone
 
 **AIOC-I-001 — Operational Core Implementation**
@@ -45,11 +29,32 @@ Gate evidence includes:
 
 **AIOC-I-001A — Project State Engine and Canonical Work Ledger**
 
-Purpose: implement versioned project-state, work-package, decision, blocker, evidence, handoff, audit, next-work resolution, backup, migration, and deterministic `Continue` behavior as native AIOC functionality.
+**Execution state:** Implementation committed; CI validation in progress.
+
+Repository path: `implementation/operational-core/project-state/`
+
+Implemented:
+
+- versioned canonical project-state JSON Schema;
+- governed seed state for the Multiversal App and AIOC repositories;
+- deterministic state validation;
+- governed work-item transitions and dependency enforcement;
+- evidence-required completion;
+- append-only mutation ledger with actor, reason, hashes, and evidence;
+- decision records;
+- session handoffs;
+- reconciliation with rollback on invalid state;
+- persistence adapter boundary;
+- thirteen executable acceptance tests;
+- dedicated GitHub Actions validation workflow.
+
+## Acceptance state
+
+AIOC-I-001A remains active until the `project-state-engine` GitHub Actions workflow passes. It must not advance based on documentation alone.
 
 ## Next executable action
 
-Implement and test AIOC-I-001A according to `architecture/aioc-0-012/WORK_ORDER_AIOC-I-001A.md`.
+Inspect the `project-state-engine` workflow triggered by commit `fcd0d31a12ea77da329f6106777dd9d4352b3792`. Fix any failure. On PASS, record evidence, mark AIOC-I-001A complete, and activate AIOC-I-001B — Repository Adapter and Live State Synchronization.
 
 ## Continuity rule
 
