@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The Development Brain converts governed AIOC state into durable project memory, normalized inventory, dependency intelligence, readiness analysis, prioritization, recommendations, verification, and governed integration surfaces.
+The Development Brain converts governed AIOC state into durable project memory, normalized inventory, dependency and semantic intelligence, readiness analysis, prioritization, recommendations, verification, and governed AI integration surfaces.
 
 It does not replace owner authority, canonical content certification, or repository governance.
 
@@ -26,38 +26,58 @@ It does not replace owner authority, canonical content certification, or reposit
 8. Verification and Governance Integration — validated
 9. Browser, MCP, REST, and Codex Integration — validated
 
-## Step 9 integration contract
+### Release D — Semantic Intelligence — ACTIVE
 
-The final Release C layer exposes the Development Brain through governed browser, MCP, REST, and Codex surfaces.
+10. Semantic Ontology and Knowledge Graph — active
+11. Causal and Impact Intelligence
+12. Semantic Retrieval and Reasoning Context
 
-- Browser access is read-only.
-- MCP, REST, and Codex writes are proposal-only.
-- Every artifact carries provenance and repository-ref freshness information.
-- Stale artifacts must be rejected.
-- Reads and proposed writes require auditable integration records.
-- Proposed writes remain subject to repository review, CI, and owner or governance approval.
-- No integration surface may execute recommendations, mutate canonical content, grant approval, or substitute owner decisions.
+### Release E — Design Intelligence — APPROVED
 
-Validated Step 9 evidence:
+13. Design Intent Memory
+14. Decision and Tradeoff History
+15. Constraint and Rationale Reasoning
 
-- Integration workflow `30831109121` — PASS
-- Artifact `aioc-development-brain-integration`, ID `8862938073`
-- Artifact digest `sha256:553b243e4670f5a28dd7f62905d314336bebd2dbd5111456bdfafea6874c0649`
-- Merge commit `71a7efd1b57b46fe3fa516b68d6be437dc9de76e`
+### Release F — Agent Ecosystem — APPROVED
+
+16. Specialist Agent Contracts
+17. Governed Orchestration and Routing
+18. Multi-Agent Review and Synthesis
+
+### Release G — Governed Autonomous Development — APPROVED
+
+19. Safe Plan and Proposal Generation
+20. Automated Review Packages and Regression Prediction
+21. Continuous Validation with Human Approval Gates
+
+## Owner authorization
+
+On 2026-08-03, owner John Brandon Turner approved the Release D–G direction and authorized implementation to continue with Release D, Step 10.
+
+Approval authorizes bounded implementation and validation work only. It does not authorize silent canonical mutation, certification, promotion, scheduling, assignment, or substitution of later owner decisions.
+
+## Release D Step 10 contract
+
+Step 10 creates a deterministic semantic ontology and evidence-backed knowledge graph over the existing Unified Object Inventory and Dependency Graph.
+
+It must:
+
+- provide stable semantic concept and assertion identities;
+- classify objects using explicit repository fields rather than unsupported inference;
+- expose object type, authority, lifecycle, pack, structural, and dependency semantics;
+- retain source pointers, confidence, and inference method;
+- mark unresolved or unsupported semantics explicitly;
+- remain derived, advisory, reproducible, and separate from canonical promotion.
 
 ## Governance boundaries
 
-- Project memory records what the project knows and why.
-- Shared working state stores editable drafts and working decisions.
 - Canonical content remains in the certified content pipeline.
-- Derived artifacts cannot promote or overwrite canonical content.
+- Derived semantic assertions cannot promote or overwrite canonical content.
+- Unsupported meaning must remain unknown rather than guessed.
 - Findings preserve uncertainty, source evidence, confidence, and authority boundaries.
-- Recommendations, tasks, and verification records are advisory until accepted through governed review.
-- Integration surfaces must not silently execute, assign, schedule, mutate, promote, certify, grant approval, or substitute owner decisions.
-- Browser-to-shared-state synchronization remains technical debt.
+- Browser access remains read-only; MCP, REST, and Codex writes remain proposal-only.
+- All future autonomous behavior remains reviewable and subject to repository CI and owner/governance controls.
 
-## Next governed boundary
+## Next executable step
 
-No further Development Brain release is defined.
-
-The owner must select and authorize the next milestone before more AIOC implementation begins. The selected milestone must be recorded with bounded deliverables, authority constraints, validation requirements, and a canonical handoff before execution.
+Implement and validate Step 10: Semantic Ontology and Knowledge Graph. Do not begin Step 11 until Step 10 generates a valid artifact and all required workflows pass.
