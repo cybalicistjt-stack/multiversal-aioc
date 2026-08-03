@@ -1,28 +1,28 @@
-# Legacy COS Quarantine
+# Obsolete COS Migration-Shell Quarantine
 
-**Status:** QUARANTINED  
-**System:** legacy COS migration-control shell  
-**Historical route:** `/v2/`  
-**Operational replacement:** `/operational/`  
-**Public default:** operational AIOC only
+**Status:** NARROWLY QUARANTINED  
+**Quarantined component:** obsolete COS migration-control entry shell and corrupted Phase 1–7 seed path  
+**Preserved component:** all recent COS capability work, engines, tools, tests, workflows, records, and reusable UI modules  
+**Public default:** `/operational/`
 
 ## Decision
 
-The legacy COS interface is retained solely as historical migration tooling. It is not the operational AIOC, is not an approved public default, and must not be included in the GitHub Pages deployment artifact.
+Only the obsolete migration-control entry shell is excluded from the public default and active content build. Recent COS work is active project work and must not be discarded, relabeled as obsolete, deleted, or excluded merely because it resides under a historical path.
 
 ## Enforced boundaries
 
-- The repository root must redirect to `./operational/`.
-- The Pages artifact must contain the operational command center.
-- The Pages artifact must not publish `v2/index.html`.
-- Deployment health evidence must report `legacyCos: quarantined`.
-- Any change that restores `/v2/` as the root target must fail CI.
-- Legacy COS scripts, migration assets, and content builders may not block operational AIOC deployment.
+- The repository root redirects to `./operational/`.
+- The operational command center is the public default.
+- Recent COS capabilities remain available for integration into the operational AIOC.
+- No rule may delete or broadly quarantine the `/v2/` tree or other COS work.
+- The obsolete migration entry screen must not become the public root without an explicit governed decision.
+- The corrupted Phase 1–7 Base64 seed fragments remain excluded from active generation.
+- COS engines, tools, tests, migration results, and reusable interface modules must remain preserved in repository history and source.
 
-## Legacy content database relationship
+## Content database relationship
 
-The corrupted Phase 1–7 Base64 seed fragments are also quarantined from execution. The active content database pipeline uses the 487 governed canonical objects. The approved 1,347-row 8E-008G foundational inventory may be restored only by importing the intact authoritative audit source and passing a new independent certification.
+The active database currently certifies the 487 governed canonical objects. This does not invalidate broader COS work or the approved 1,347-row 8E-008G inventory. The larger inventory may be restored when its intact authoritative audit source is imported and independently certified.
 
-## Recovery and future use
+## Integration rule
 
-Historical COS assets may be inspected for migration research, but any feature reused by the operational AIOC must be reimplemented under current governance, testing, evidence, and deployment contracts. The legacy shell itself must not be promoted, relabeled, or silently restored as the product frontend.
+The next frontend work must reconcile and integrate useful recent COS capabilities into the operational AIOC rather than rebuilding them from scratch. Only migration-shell-specific presentation and the damaged seed decoder are quarantined.
