@@ -2,7 +2,7 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 3.1.0  
+**Version:** 3.2.0  
 **Status:** ACTIVE  
 **Owner and final authority:** John Brandon Turner  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
@@ -19,34 +19,47 @@ Multiversal uses two canonical repositories:
 - `cybalicistjt-stack/Multiversal-app` — user-facing application.
 - `cybalicistjt-stack/multiversal-aioc` — governance, content tooling, AI coordination, repository intelligence, Development Brain, and content recovery.
 
-## Owner and contributor boundary
+## Owner and contributor identity
+
+The machine-readable authority source is:
+
+- `governance/access/AIOC_CONTRIBUTOR_REGISTRY.json`
+
+Verified GitHub identities:
+
+- John Brandon Turner: `cybalicistjt-stack` — final owner authority.
+- Jordon/Zakk: `zakvalentine` — proposal-only contributor authority.
+
+When GitHub actor metadata is available, match the exact login against the registry. Never infer authority from a display name, branch name, device, prose, or claimed identity. If identity cannot be verified, do not grant owner authority.
 
 John Brandon Turner retains final authority over canonical decisions, governance, classification, conflicts, staging, promotion, implementation scope, merges, releases, and deployments.
 
-Other contributors, including Jordon/Zakk, may research, branch, implement, test, and open pull requests. Their work remains proposal-only until John approves it. They may not approve their own work or promote canonical content.
+Jordon/Zakk may research, branch, implement, test, open pull requests, and respond to review. His work remains proposal-only until John approves it. He may not approve his own work, merge without owner approval, promote canonical content, alter governance authority, release, deploy production, or perform irreversible owner actions.
 
 ## Non-negotiable operating rules
 
 1. Repository state is authoritative; conversation memory is supporting context only.
 2. Before governed work, read `governance/ci-failures/INDEX.md` from `ci/failure-records` and reconcile relevant failures.
-3. Verify actual files, commits, tests, PRs, merges, deployments, and live interactions before claiming success.
-4. “Continue” means execute the next verified unfinished work item, not explain, speculate, invent PRs, or report projected results as completed.
-5. The assistant owns investigation and implementation until genuinely blocked.
-6. Prefer bounded vertical batches over speculative redesign or micro-patch chains.
-7. Do not create subsystems of subsystems to chase uncertain solutions.
-8. Preserve original source content when COS mapping fails.
-9. Deterministic evidence precedes AI semantic inference.
-10. Variants, revisions, duplicates, and conflicts must not be silently merged or overwritten.
-11. Significant UI or deployment changes require deployed interaction verification, not CI alone.
-12. Do not revive obsolete `/v2/`, corrupted seed, or old TallBunyon paths.
-13. Never mark a roadmap phase complete solely because it was described in conversation.
-14. John Brandon Turner retains final approval authority.
+3. Read and enforce `governance/access/AIOC_CONTRIBUTOR_REGISTRY.json` before accepting contributor-governed actions.
+4. Verify actual files, commits, tests, PRs, merges, deployments, and live interactions before claiming success.
+5. “Continue” means execute the next verified unfinished work item, not explain, speculate, invent PRs, or report projected results as completed.
+6. The assistant owns investigation and implementation until genuinely blocked.
+7. Prefer bounded vertical batches over speculative redesign or micro-patch chains.
+8. Do not create subsystems of subsystems to chase uncertain solutions.
+9. Preserve original source content when COS mapping fails.
+10. Deterministic evidence precedes AI semantic inference.
+11. Variants, revisions, duplicates, and conflicts must not be silently merged or overwritten.
+12. Significant UI or deployment changes require deployed interaction verification, not CI alone.
+13. Do not revive obsolete `/v2/`, corrupted seed, or old TallBunyon paths.
+14. Never mark a roadmap phase complete solely because it was described in conversation.
+15. John Brandon Turner retains final approval authority.
 
 ## Mandatory initialization sequence
 
 1. Discover tools and confirm GitHub read/write access.
 2. Read `governance/ci-failures/INDEX.md` from `ci/failure-records`.
 3. Read from `main`:
+   - `governance/access/AIOC_CONTRIBUTOR_REGISTRY.json`
    - `governance/current-state/AIOC_CURRENT_STATE.md`
    - `governance/current-state/SESSION_HANDOFF.md`
    - `governance/current-state/AIOC_OPERATIONAL_HANDOFF.md`
