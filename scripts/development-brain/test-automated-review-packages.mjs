@@ -1,0 +1,34 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { spawnSync } from 'node:child_process';
+
+const root = process.cwd();
+const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'aioc-step20-'));
+const plans = path.join(tempDir, 'plans.json');
+const packages = path.join(tempDir, 'packages.json');
+const run = (args, expected = 0) => {
+  const result = spawnSync(process.execPath, args, { cwd: root, encoding: 'utf8' });
+  assert.equal(result.status, expected, `node ${args.join(' ')}\n${result.stdout}\n${result.stderr}`);
+};
+run(['scripts/development-brain/generate-safe-plan-proposals.mjs', 'governance/development-brain/acceptance/fixtures/step19-review-corpus.json', plans]);
+run(['scripts/development-brain/validate-safe-plan-proposals.mjs', plans]);
+run(['scripts/development-brain/generate-automated-review-packages.mjs', plans, packages]);
+run(['scripts/development-brain/validate-automated-review-packages.mjs', packages]);
+const artifact = JSON.parse(fs.readFileSync(packages, 'utf8'));
+assert.equal(artifact.packages.length, 5);
+assert.ok(artifact.packages.every(item => item.regressionPredictions.length > 0));
+assert.ok(artifact.packages.every(item => item.regressionPredictions.every(risk => risk.confirmedDefect === false)));
+assert.ok(artifact.packages.some(item => item.minorityFindings.length > 0));
+assert.ok(artifact.packages.some(item => item.unresolvedQuestions.length > 0));
+assert.deepEqual(artifact.authority, { advisoryOnly: true, executionAllowed: false, approvalGranted: false, canonicalMutationAllowed: false, mergeAllowed: false });
+const empty = { ...artifact, packages: [] };
+const emptyPath = path.join(tempDir, 'empty.json');
+fs.writeFileSync(emptyPath, JSON.stringify(empty));
+run(['scripts/development-brain/validate-automated-review-packages.mjs', emptyPath], 1);
+const unsafe = { ...artifact, authority: { ...artifact.authority, approvalGranted: true } };
+const unsafePath = path.join(tempDir, 'unsafe.json');
+fs.writeFileSync(unsafePath, JSON.stringify(unsafe));
+run(['scripts/development-brain/validate-automated-review-packages.mjs', unsafePath], 1);
+console.log('Step 20 acceptance passed: populated packages, regression hypotheses, dissent, uncertainty, and authority rejection verified.');
