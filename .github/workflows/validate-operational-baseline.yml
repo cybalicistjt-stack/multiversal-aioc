@@ -1,0 +1,158 @@
+name: Validate Operational AIOC Baseline
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'operational/**'
+      - 'implementation/**'
+      - 'v2/**'
+      - 'scripts/**'
+      - 'audit/**'
+      - 'content-db/**'
+      - 'content-source/**'
+      - 'governance/**'
+      - '.github/workflows/validate-operational-baseline.yml'
+      - '.github/workflows/deploy-pages.yml'
+      - '.github/workflows/build-content-database.yml'
+      - '.github/workflows/promote-content-database.yml'
+      - '.github/workflows/verify-promoted-content-database.yml'
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'operational/**'
+      - 'implementation/**'
+      - 'v2/**'
+      - 'scripts/**'
+      - 'audit/**'
+      - 'content-db/**'
+      - 'content-source/**'
+      - 'governance/**'
+      - '.github/workflows/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-operational-aioc-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate public operational surface
+        run: |
+          set -euo pipefail
+          test -s index.html
+          test -s operational/index.html
+          test -s operational/operational.css
+          test -s operational/operational.js
+          grep -q './operational/' index.html
+          grep -q 'Multiversal Command Center' operational/index.html
+          if grep -Eq 'url=\.?/?v2/|location\.replace\(["'"']\.?/?v2/' index.html; then
+            echo 'The obsolete migration entry screen is configured as the public root.'
+            exit 1
+          fi
+          node --check operational/operational.js
+
+      - name: Run existing AIOC smoke suite
+        run: node scripts/smoke-test.mjs
+
+      - name: Run semantic regression suite
+        working-directory: audit
+        run: python -m unittest -v test_semantic_baseline_v2.py
+
+      - name: Verify certified promoted content database
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs = require('fs');
+          const crypto = require('crypto');
+          const read = file => JSON.parse(fs.readFileSync(file, 'utf8'));
+          const index = read('content-db/index.json');
+          const manifest = read('content-db/manifest.json');
+          const certificate = read('content-db/certification.json');
+          const promotion = read('content-db/promotion.json');
+          const fail = message => { throw new Error(message); };
+          if (index.format !== 'multiversal-content-database') fail('Unexpected content database format');
+          if (!Array.isArray(index.records) || index.records.length !== 487) fail(`Expected 487 certified records; found ${index.records?.length ?? 0}`);
+          if (index.recordCount !== 487 || manifest.recordCount !== 487) fail('Database or manifest record count mismatch');
+          if (certificate.result !== 'PASS') fail('Content certificate is not PASS');
+          if (certificate.pipelineMode !== 'CANONICAL_OBJECTS_ONLY') fail('Unexpected content pipeline mode');
+          if (certificate.recordCount !== 487) fail('Certificate record count mismatch');
+          if (promotion.pipelineMode !== 'CANONICAL_OBJECTS_ONLY') fail('Promotion mode mismatch');
+          if (!promotion.validationRunId || !promotion.validatedCommit || !promotion.promotedByRun) fail('Promotion receipt is incomplete');
+          const ids = new Set();
+          const stableIds = new Set();
+          for (const record of index.records) {
+            if (!record.databaseId || ids.has(record.databaseId)) fail(`Missing or duplicate databaseId: ${record.databaseId}`);
+            ids.add(record.databaseId);
+            if (record.stableId) {
+              if (stableIds.has(record.stableId)) fail(`Duplicate stableId: ${record.stableId}`);
+              stableIds.add(record.stableId);
+            }
+          }
+          const semantic = index.records.map(record => [record.databaseId, record.stableId || '', record.objectType || '', record.name || '']);
+          const fingerprint = `sha256:${crypto.createHash('sha256').update(JSON.stringify(semantic)).digest('hex')}`;
+          if (certificate.semanticFingerprint !== fingerprint) fail('Semantic fingerprint mismatch');
+          console.log(`Certified content PASS: ${index.recordCount} records; ${fingerprint}`);
+          NODE
+
+      - name: Verify recent COS work remains preserved
+        run: |
+          set -euo pipefail
+          test -d v2
+          test -s v2/release-validation.html
+          test -s development-os.html
+          test -s feature-modules.html
+          test -s scripts/smoke-test.mjs
+          test -s governance/legacy/LEGACY_COS_QUARANTINE.md
+          grep -q 'all recent COS capability work' governance/legacy/LEGACY_COS_QUARANTINE.md
+          grep -q 'NARROWLY QUARANTINED' governance/legacy/LEGACY_COS_QUARANTINE.md
+
+      - name: Verify operational module links resolve in repository
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+          const source = fs.readFileSync('operational/operational.js', 'utf8');
+          const matches = [...source.matchAll(/'\.\.\/([^']+)'/g)].map(match => match[1]);
+          const missing = [];
+          for (const relative of matches) {
+            const target = path.normalize(relative);
+            if (!fs.existsSync(target)) missing.push(target);
+          }
+          if (missing.length) throw new Error(`Operational links missing: ${missing.join(', ')}`);
+          console.log(`Operational repository links PASS: ${matches.length}`);
+          NODE
+
+      - name: Write validation summary
+        if: always()
+        run: |
+          {
+            echo '# Operational AIOC baseline validation'
+            echo
+            echo "- Commit: ${GITHUB_SHA}"
+            echo "- Ref: ${GITHUB_REF_NAME}"
+            echo "- Run: ${GITHUB_RUN_ID}"
+            echo "- Result: ${{ job.status }}"
+            echo "- Validated: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          } >> "$GITHUB_STEP_SUMMARY"
