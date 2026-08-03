@@ -18,36 +18,35 @@
 - AIOC-0-008 — Content Studio Architecture
 - AIOC-0-009 — Campaign and Runtime Operations Architecture — validated PASS
 - AIOC-0-010 — AI Assistant and GM Intelligence Architecture — validated PASS
+- AIOC-0-011 — Security, Permissions, Secrets, and Release Governance — validated PASS
 
 ## Latest completed package
 
-**AIOC-0-010 — AI Assistant and GM Intelligence Architecture**
+**AIOC-0-011 — Security, Permissions, Secrets, and Release Governance**
 
-Repository path: `architecture/aioc-0-010/`
+Repository path: `architecture/aioc-0-011/`
 
 Package contents include:
 
-- implementation-ready architecture specification;
-- 62-capability catalog;
-- 16 governed workflows;
-- 26 blocking validation rules;
-- assistant-request schema;
-- assistant-proposal schema;
-- intelligence-evidence schema;
-- 64-test acceptance and integration matrix;
+- implementation-ready security and release-governance architecture;
+- 70-capability catalog;
+- 18 governed workflows;
+- 30 blocking validation rules;
+- security-governance schema;
+- 70-test acceptance and integration matrix;
 - validation result;
 - manifest;
-- outgoing AIOC-0-011 work order.
+- outgoing AIOC-0-012 work order.
 
 ## Current milestone
 
-**AIOC-0-011 — Security, Permissions, Secrets, and Release Governance**
+**AIOC-0-012 — Implementation Readiness Gate**
 
-Purpose: define identities, roles, permissions, trust boundaries, secret handling, protected operations, approvals, audit records, release authority, emergency controls, revocation, and security incident response.
+Purpose: reconcile and validate the complete AIOC architecture baseline, resolve blocking contradictions, define implementation slices, and authorize Operational Core implementation.
 
 ## Next executable action
 
-Build and validate the complete AIOC-0-011 architecture package.
+Execute the complete AIOC-0-012 implementation-readiness assessment and produce a PASS or FAIL result with evidence.
 
 ## Continuity rule
 
