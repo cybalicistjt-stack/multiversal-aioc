@@ -1,0 +1,30 @@
+name: Validate Development Brain Semantic Retrieval
+
+on:
+  pull_request:
+    paths:
+      - 'governance/development-brain/**'
+      - 'scripts/development-brain/**'
+      - '.github/workflows/validate-development-brain-semantic-retrieval.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Generate Semantic Retrieval artifact
+        run: node scripts/development-brain/generate-semantic-retrieval.mjs tmp/AIOC_SEMANTIC_RETRIEVAL.json
+      - name: Validate Semantic Retrieval artifact
+        run: node scripts/development-brain/validate-semantic-retrieval.mjs tmp/AIOC_SEMANTIC_RETRIEVAL.json
+      - name: Require Semantic Retrieval artifact
+        run: test -s tmp/AIOC_SEMANTIC_RETRIEVAL.json
+      - name: Publish Semantic Retrieval artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aioc-semantic-retrieval
+          path: tmp/AIOC_SEMANTIC_RETRIEVAL.json
+          if-no-files-found: error
