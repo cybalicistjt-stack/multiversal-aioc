@@ -1,0 +1,30 @@
+name: content-release-certification
+
+on:
+  pull_request:
+    paths:
+      - 'implementation/content-studio/**'
+      - '.github/workflows/content-release-certification.yml'
+      - 'governance/current-state/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check module syntax
+        run: node --check implementation/content-studio/content-release-certification.mjs
+      - name: Run release certification tests
+        run: node implementation/content-studio/content-release-certification.test.mjs
+      - name: Verify governed state documents
+        run: |
+          test -s governance/current-state/AIOC_CURRENT_STATE.md
+          test -s governance/current-state/SESSION_HANDOFF.md
+          test -s governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md
