@@ -1,0 +1,6 @@
+(()=>{'use strict';
+const INDEPENDENT=new Set(['standalone','reusable-generic']);
+function readDecisions(){try{const s=window.AIOCData?AIOCData.load():JSON.parse(localStorage.getItem('aioc-state')||'{}');return s.contentStructure?.decisions||{}}catch{return{}}}
+function apply(){const decisions=readDecisions();let hidden=0;document.querySelectorAll('#queueList [data-id]').forEach(el=>{const d=decisions[el.dataset.id];const exclude=d&&!INDEPENDENT.has(d.kind);el.hidden=Boolean(exclude);if(exclude)hidden++});let note=document.querySelector('#structureFilterNote');if(!note){note=document.createElement('div');note.id='structureFilterNote';note.className='assistant-note';const list=document.querySelector('#queueList');list?.parentElement?.insertBefore(note,list)}if(note)note.innerHTML=`<b>Structure decisions active</b><p>${hidden} records classified as components, variants, duplicates, or obsolete are hidden from this completion queue. Review them in <a href="./content-structure.html">Content Structure</a>.</p>`}
+new MutationObserver(apply).observe(document.documentElement,{childList:true,subtree:true});window.addEventListener('storage',apply);setTimeout(apply,0);
+})();
