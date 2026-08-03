@@ -4,7 +4,7 @@
     "id": "multiversal",
     "name": "Multiversal",
     "owner": "John Brandon Turner",
-    "updatedAt": "2026-08-03T03:05:00.000Z"
+    "updatedAt": "2026-08-03T03:20:00.000Z"
   },
   "repositories": [
     {
@@ -33,8 +33,20 @@
     {
       "id": "AIOC-I-001",
       "title": "Operational Core Implementation",
-      "status": "active",
+      "status": "complete",
       "sequence": 1,
+      "evidence": [
+        "github-actions://project-state-engine/run-27",
+        "github-actions://repository-sync/run-11",
+        "github-actions://recovery-services/run-5",
+        "github-actions://smoke/run-464"
+      ]
+    },
+    {
+      "id": "AIOC-I-002",
+      "title": "Repository Intelligence and Continuity Implementation",
+      "status": "active",
+      "sequence": 2,
       "evidence": []
     }
   ],
@@ -86,13 +98,63 @@
       "id": "AIOC-I-001C",
       "milestoneId": "AIOC-I-001",
       "title": "Decision, Handoff, and Recovery Services",
-      "status": "active",
+      "status": "complete",
       "sequence": 120,
       "dependsOn": ["AIOC-I-001A"],
       "acceptanceCriteria": [
         "New sessions restore from canonical state",
         "Recovery detects contradictions and false completion claims",
         "Handoffs identify the next executable operation"
+      ],
+      "evidence": [
+        "implementation/operational-core/recovery/recovery-services.mjs",
+        "implementation/operational-core/recovery/recovery-services.test.mjs",
+        "github-actions://recovery-services/run-5",
+        "github-actions://smoke/run-464"
+      ],
+      "blocker": null
+    },
+    {
+      "id": "AIOC-I-002A",
+      "milestoneId": "AIOC-I-002",
+      "title": "Repository Intelligence Projection and Health Model",
+      "status": "active",
+      "sequence": 200,
+      "dependsOn": ["AIOC-I-001C"],
+      "acceptanceCriteria": [
+        "Repository observations produce deterministic health projections",
+        "CI, capability, pull-request, staleness, and drift conditions are classified",
+        "Missing observations and stale documentation are surfaced as governed findings"
+      ],
+      "evidence": [],
+      "blocker": null
+    },
+    {
+      "id": "AIOC-I-002B",
+      "milestoneId": "AIOC-I-002",
+      "title": "Continuity Snapshot and Session Restore API",
+      "status": "planned",
+      "sequence": 210,
+      "dependsOn": ["AIOC-I-002A"],
+      "acceptanceCriteria": [
+        "A new session receives a compact verified orientation snapshot",
+        "Capability, repository, milestone, and next-work evidence are linked",
+        "Stale or conflicting snapshots trigger recovery rather than execution"
+      ],
+      "evidence": [],
+      "blocker": null
+    },
+    {
+      "id": "AIOC-I-002C",
+      "milestoneId": "AIOC-I-002",
+      "title": "Documentation Drift and Continuity Certification",
+      "status": "planned",
+      "sequence": 220,
+      "dependsOn": ["AIOC-I-002A", "AIOC-I-002B"],
+      "acceptanceCriteria": [
+        "Canonical status and handoff documents are checked against live state",
+        "Continuity failures are blocking and evidence-backed",
+        "Repository Intelligence and Continuity milestone receives a CI-backed result"
       ],
       "evidence": [],
       "blocker": null
@@ -150,12 +212,29 @@
         "github-actions://repository-sync/run-6",
         "github-actions://smoke/run-459"
       ]
+    },
+    {
+      "id": "ledger-aioc-i-001c-complete",
+      "at": "2026-08-03T03:20:00.000Z",
+      "actor": "system",
+      "operation": "complete-and-advance",
+      "entityType": "workItem",
+      "entityId": "AIOC-I-001C",
+      "beforeHash": "ci-validated-pre-completion",
+      "afterHash": "seed-pending-runtime-hash",
+      "reason": "Recovery services passed all required CI suites and Operational Core completed",
+      "evidence": [
+        "github-actions://project-state-engine/run-27",
+        "github-actions://repository-sync/run-11",
+        "github-actions://recovery-services/run-5",
+        "github-actions://smoke/run-464"
+      ]
     }
   ],
   "active": {
     "repositoryId": "multiversal-aioc",
-    "milestoneId": "AIOC-I-001",
-    "workItemId": "AIOC-I-001C",
+    "milestoneId": "AIOC-I-002",
+    "workItemId": "AIOC-I-002A",
     "branch": "governance/session-bootstrap-v1"
   }
 }
