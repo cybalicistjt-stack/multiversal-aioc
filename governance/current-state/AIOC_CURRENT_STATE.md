@@ -19,41 +19,46 @@
 
 ### Step 16 — Specialist Agent Contracts — COMPLETE
 
-Step 16 defines eight deterministic governed specialist roles covering knowledge, rules, lore, packs, UX, verification, governance, and coordination. Each contract preserves stable identities, scope, responsibilities, required inputs, permitted outputs, evidence rules, escalation triggers, handoff payloads, prohibited actions, and authority mode. Role overlap, missing capabilities, circular handoffs, unsupported specialization, and authority conflicts remain explicit diagnostics.
+Defines eight governed specialist roles with stable scopes, evidence rules, handoffs, escalation triggers, prohibited actions, and bounded authority.
 
-Validated Step 16 evidence:
+### Step 17 — Governed Orchestration and Routing — COMPLETE
 
-- Specialist Agent Contracts workflow run `30836256292` — PASS
-- Design Intent workflow run `30836253097` — PASS
-- Completion Readiness workflow run `30836252764` — PASS
-- Development Brain Integration workflow run `30836252292` — PASS
-- AIOC Smoke Tests run `30836252201` — PASS
-- Priority and Impact workflow run `30836252217` — PASS
-- Semantic Retrieval workflow run `30836252172` — PASS
-- Causal Impact workflow run `30836252232` — PASS
-- Recommendation Planner workflow run `30836252110` — PASS
-- Operational Baseline workflow run `30836252137` — PASS
-- Dependency Graph workflow run `30836252101` — PASS
-- Semantic Ontology workflow run `30836252155` — PASS
-- Constraint Rationale workflow run `30836252225` — PASS
-- Unified Inventory workflow run `30836252159` — PASS
-- Structure Intelligence workflow run `30836252184` — PASS
-- Verification Governance workflow run `30836252187` — PASS
-- Published artifact `aioc-specialist-agent-contracts`, artifact ID `8864945010`
-- Artifact digest `sha256:c67b11d121f693d3476e0876ec85180fb55a42160efda1d3815f37ad471b0725`
-- Step 16 merge commit `9d617673ff8af90f9286623f1cb6bc5f4c0e3411`
+Step 17 provides deterministic task classification, specialist eligibility, narrowest-supported specialist selection, Development Coordinator mediation, handoff validation, escalation handling, freshness and provenance checks, authority enforcement, and auditable route records. Ambiguous routes, missing inputs, unavailable capabilities, authority mismatches, invalid handoffs, and circular routing remain explicit diagnostics.
+
+Validated Step 17 evidence:
+
+- Orchestration Routing workflow run `30836751046` — PASS
+- Specialist Agent Contracts workflow run `30836750964` — PASS
+- Unified Inventory workflow run `30836752503` — PASS
+- Dependency Graph workflow run `30836751080` — PASS
+- Operational Baseline workflow run `30836751052` — PASS
+- Priority and Impact workflow run `30836751051` — PASS
+- Verification Governance workflow run `30836750937` — PASS
+- Design Intent workflow run `30836751012` — PASS
+- Development Brain Integration workflow run `30836750867` — PASS
+- Causal Impact workflow run `30836750801` — PASS
+- Structure Intelligence workflow run `30836750870` — PASS
+- Constraint Rationale workflow run `30836750804` — PASS
+- Completion Readiness workflow run `30836750829` — PASS
+- AIOC Smoke Tests run `30836750851` — PASS
+- Recommendation Planner workflow run `30836750859` — PASS
+- Semantic Retrieval workflow run `30836751027` — PASS
+- Semantic Ontology workflow run `30836750793` — PASS
+- Published artifact `aioc-orchestration-routing`, artifact ID `8865131247`
+- Artifact digest `sha256:4242029eb6b7710d8532d988a9406f3de6e05980638d771c6d5052fc613892b1`
+- Step 17 merge commit `8e4fe8b4ce5e514c93ecc9573aacefaab89f395c`
 
 ## Authority boundary
 
-Specialist agents remain read-only, advisory, or proposal-only. They cannot execute work, mutate canonical content, grant approval, promote or certify content, assign work, schedule actions, or replace owner and repository governance.
+Routing remains deterministic, advisory, and proposal-only. It cannot execute work, mutate canonical content, expand specialist authority, grant approval, promote or certify content, assign work, schedule actions, or replace owner and repository governance.
 
 ## Next executable action
 
-**Release F, Step 17 — Governed Orchestration and Routing.**
+**Release F, Step 18 — Multi-Agent Review and Synthesis.**
 
-Implement deterministic task classification, specialist selection, bounded routing, handoff validation, escalation, authority checks, provenance preservation, stale-input detection, and auditable routing decisions. The orchestrator must not silently execute recommendations or expand a specialist's authority.
+Implement deterministic review panels over routed specialist outputs, preserving each specialist's evidence, confidence, disagreements, authority, and unresolved questions. Synthesis must distinguish consensus, supported disagreement, unresolved conflict, minority findings, blocked review, and owner-decision requirements without fabricating consensus or merging incompatible claims.
 
-Do not begin Step 18 until Step 17 is generated and validated.
+Do not begin Release G until Step 18 is generated and validated.
 
 ## Separate external work item
 
