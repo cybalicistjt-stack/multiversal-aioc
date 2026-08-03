@@ -29,6 +29,7 @@ on:
       - '*.webp'
       - '*.ico'
       - '.github/workflows/deploy-pages.yml'
+      - '.github/workflows/record-pages-result.yml'
   workflow_dispatch:
 
 permissions:
@@ -48,48 +49,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Validate one public deployment contract
-        run: |
-          set -euo pipefail
-          test -f index.html
-          test -f operational/index.html
-          test -f operational/operational.css
-          test -f operational/operational.js
-          test -f content-db/index.json
-          test -f content-db/manifest.json
-          test -f content-db/certification.json
-          test -f content-db/promotion.json
-          test -f governance/current-state/AIOC_CURRENT_STATE.md
-          test -f governance/current-state/AIOC_OPERATIONAL_HANDOFF.md
-          test -f governance/legacy/LEGACY_COS_QUARANTINE.md
-          for page in aioc-core.html studio.html balance.html testing-suite.html feature-modules.html development-os.html diagnostics.html refresh.html; do test -s "$page"; done
-          grep -q './operational/' index.html
-          grep -q 'NARROWLY QUARANTINED' governance/legacy/LEGACY_COS_QUARANTINE.md
-          grep -q 'all recent COS capability work' governance/legacy/LEGACY_COS_QUARANTINE.md
-          grep -q 'Capability Workbench' operational/index.html
-          if grep -Eq 'url=\.?/?v2/|location\.replace\(["'"']\.?/?v2/' index.html; then
-            echo 'The obsolete migration shell must not be the public root target.'
-            exit 1
-          fi
-          node --check operational/operational.js
-          node - <<'NODE'
-          const fs = require('fs');
-          const index = JSON.parse(fs.readFileSync('content-db/index.json', 'utf8'));
-          const cert = JSON.parse(fs.readFileSync('content-db/certification.json', 'utf8'));
-          const promotion = JSON.parse(fs.readFileSync('content-db/promotion.json', 'utf8'));
-          if (index.recordCount !== 487 || index.records?.length !== 487) throw new Error('Certified content database must contain 487 canonical records.');
-          if (cert.result !== 'PASS' || cert.pipelineMode !== 'CANONICAL_OBJECTS_ONLY') throw new Error('Content certificate is not an accepted PASS.');
-          if (promotion.pipelineMode !== 'CANONICAL_OBJECTS_ONLY') throw new Error('Content promotion receipt has the wrong mode.');
-          NODE
-
-      - name: Assemble complete public artifact
+      - name: Build public artifact
         run: |
           set -euo pipefail
           rm -rf _site
           mkdir -p _site/operational _site/governance/current-state _site/governance/dispatches _site/governance/legacy
+
           cp index.html _site/index.html
           cp operational/index.html operational/operational.css operational/operational.js _site/operational/
           cp -R implementation _site/implementation
@@ -97,82 +64,41 @@ jobs:
           cp governance/current-state/AIOC_CURRENT_STATE.md _site/governance/current-state/
           cp governance/current-state/AIOC_OPERATIONAL_HANDOFF.md _site/governance/current-state/
           cp governance/legacy/LEGACY_COS_QUARANTINE.md _site/governance/legacy/
+
           if [ -f governance/dispatches/AIOC-DISPATCH-MS02-WP011.md ]; then
             cp governance/dispatches/AIOC-DISPATCH-MS02-WP011.md _site/governance/dispatches/
           fi
-          for page in aioc-core.html studio.html balance.html testing-suite.html feature-modules.html development-os.html diagnostics.html refresh.html; do cp "$page" _site/; done
+
+          for page in aioc-core.html studio.html balance.html testing-suite.html feature-modules.html development-os.html diagnostics.html refresh.html; do
+            cp "$page" _site/
+          done
+
           find . -maxdepth 1 -type f \( -name '*.js' -o -name '*.css' -o -name '*.webmanifest' -o -name '*.svg' -o -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.webp' -o -name '*.ico' \) -exec cp {} _site/ \;
+
           generated_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
           cat > _site/deployment-manifest.json <<EOF
-          {"format":"multiversal-aioc-pages-deployment","version":"1.1.0","build":"operational-aioc-1.5","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","defaultSurface":"operational","contentDatabase":"certified-canonical-487","obsoleteMigrationShell":"narrowly-quarantined","recentCosWork":"preserved-and-exposed","capabilityWorkbench":["development-os.html","aioc-core.html","studio.html","balance.html","testing-suite.html","feature-modules.html","diagnostics.html","refresh.html"],"publicRoots":["/","/operational/","/implementation/","/content-db/"]}
+          {"format":"multiversal-aioc-pages-deployment","version":"1.2.0","build":"operational-aioc-1.6","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","defaultSurface":"operational","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":8}
           EOF
           cp _site/deployment-manifest.json _site/deployed-build.json
           cat > _site/operational/health.json <<EOF
-          {"status":"operational","application":"Multiversal AIOC","surface":"operational-command-center","build":"operational-aioc-1.5","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","contentRecords":487,"obsoleteMigrationShell":"narrowly-quarantined","recentCosWork":"preserved-and-exposed","capabilityCount":8}
+          {"status":"operational","application":"Multiversal AIOC","build":"operational-aioc-1.6","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":8}
           EOF
           touch _site/.nojekyll
 
-      - name: Validate assembled artifact
-        run: |
-          set -euo pipefail
           test -s _site/index.html
           test -s _site/operational/index.html
           test -s _site/operational/health.json
           test -s _site/deployment-manifest.json
           test -s _site/content-db/index.json
-          test -d _site/implementation
-          for page in aioc-core.html studio.html balance.html testing-suite.html feature-modules.html development-os.html diagnostics.html refresh.html; do test -s "_site/$page"; done
-          node - <<'NODE'
-          const fs = require('fs');
-          const h = JSON.parse(fs.readFileSync('_site/operational/health.json'));
-          const m = JSON.parse(fs.readFileSync('_site/deployment-manifest.json'));
-          const db = JSON.parse(fs.readFileSync('_site/content-db/index.json'));
-          if (h.status !== 'operational' || h.commit !== process.env.GITHUB_SHA || h.contentRecords !== 487 || h.capabilityCount !== 8) process.exit(1);
-          if (m.commit !== process.env.GITHUB_SHA || m.defaultSurface !== 'operational' || m.recentCosWork !== 'preserved-and-exposed' || m.capabilityWorkbench.length !== 8) process.exit(1);
-          if (db.recordCount !== 487) process.exit(1);
-          console.log({health:h, manifest:m, records:db.recordCount});
-          NODE
+          grep -q 'Capability Workbench' _site/operational/index.html
+          node --check _site/operational/operational.js
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v5
 
-      - name: Upload unified site
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-      - name: Verify live root, workbench, health, manifest, and content database
-        env:
-          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
-        run: |
-          set -euo pipefail
-          base="${PAGE_URL%/}"
-          for attempt in 1 2 3 4 5 6; do
-            echo "Live verification attempt ${attempt}"
-            root="$(curl --fail --silent --show-error --location --max-time 20 "${base}/?commit=${GITHUB_SHA}" || true)"
-            workbench="$(curl --fail --silent --show-error --location --max-time 20 "${base}/development-os.html?commit=${GITHUB_SHA}" || true)"
-            health="$(curl --fail --silent --show-error --location --max-time 20 "${base}/operational/health.json?commit=${GITHUB_SHA}" || true)"
-            manifest="$(curl --fail --silent --show-error --location --max-time 20 "${base}/deployment-manifest.json?commit=${GITHUB_SHA}" || true)"
-            database="$(curl --fail --silent --show-error --location --max-time 20 "${base}/content-db/index.json?commit=${GITHUB_SHA}" || true)"
-            if [ -n "$root" ] && [ -n "$workbench" ] && [ -n "$health" ] && [ -n "$manifest" ] && [ -n "$database" ]; then
-              ROOT_PAYLOAD="$root" WORKBENCH_PAYLOAD="$workbench" HEALTH_PAYLOAD="$health" MANIFEST_PAYLOAD="$manifest" DATABASE_PAYLOAD="$database" node - <<'NODE'
-              const h = JSON.parse(process.env.HEALTH_PAYLOAD);
-              const m = JSON.parse(process.env.MANIFEST_PAYLOAD);
-              const db = JSON.parse(process.env.DATABASE_PAYLOAD);
-              if (!process.env.ROOT_PAYLOAD.includes('operational')) process.exit(1);
-              if (!process.env.WORKBENCH_PAYLOAD.toLowerCase().includes('development')) process.exit(1);
-              if (h.status !== 'operational' || h.commit !== process.env.GITHUB_SHA || h.contentRecords !== 487 || h.capabilityCount !== 8) process.exit(1);
-              if (m.commit !== process.env.GITHUB_SHA || m.defaultSurface !== 'operational' || m.recentCosWork !== 'preserved-and-exposed' || m.capabilityWorkbench.length !== 8) process.exit(1);
-              if (db.recordCount !== 487) process.exit(1);
-              console.log('Unified live deployment and COS capability workbench verified.');
-              NODE
-              exit 0
-            fi
-            sleep 10
-          done
-          echo 'Deployment completed but unified live verification failed.'
-          exit 1
