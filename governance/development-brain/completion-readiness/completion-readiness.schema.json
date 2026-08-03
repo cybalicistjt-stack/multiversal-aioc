@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.example/governance/development-brain/completion-readiness.schema.json",
+  "title": "Multiversal AIOC Completion and Readiness",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "version", "generatedAt", "sources", "policy", "summary", "objects"],
+  "properties": {
+    "format": { "const": "multiversal-aioc-completion-readiness" },
+    "version": { "const": "1.0.0" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "sources": { "type": "object" },
+    "policy": { "type": "object", "required": ["scoreRange", "promotionRule", "authorityRule"] },
+    "summary": {
+      "type": "object",
+      "required": ["totalObjects", "ready", "reviewReady", "blocked", "incomplete", "averageScore"],
+      "properties": {
+        "totalObjects": { "type": "integer", "minimum": 0 },
+        "ready": { "type": "integer", "minimum": 0 },
+        "reviewReady": { "type": "integer", "minimum": 0 },
+        "blocked": { "type": "integer", "minimum": 0 },
+        "incomplete": { "type": "integer", "minimum": 0 },
+        "averageScore": { "type": "number", "minimum": 0, "maximum": 100 }
+      }
+    },
+    "objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["readinessId", "stableId", "inventoryId", "name", "objectType", "authorityLayer", "lifecycle", "scores", "score", "status", "promotionReady", "blockers", "reasons", "evidence"],
+        "properties": {
+          "readinessId": { "type": "string", "pattern": "^READY-" },
+          "stableId": { "type": "string" },
+          "inventoryId": { "type": "string" },
+          "name": { "type": "string" },
+          "objectType": { "type": "string" },
+          "authorityLayer": { "enum": ["canonical", "working"] },
+          "lifecycle": { "type": "string" },
+          "scores": {
+            "type": "object",
+            "required": ["identity", "content", "evidence", "structure", "dependencies", "governance"],
+            "additionalProperties": { "type": "number", "minimum": 0, "maximum": 100 }
+          },
+          "score": { "type": "number", "minimum": 0, "maximum": 100 },
+          "status": { "enum": ["ready", "review-ready", "blocked", "incomplete"] },
+          "promotionReady": { "type": "boolean" },
+          "blockers": { "type": "array", "items": { "type": "object", "required": ["code", "severity", "message", "source"] } },
+          "reasons": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "evidence": { "type": "array", "minItems": 1, "items": { "type": "object", "required": ["sourcePath", "pointer", "claim"] } }
+        }
+      }
+    }
+  }
+}
