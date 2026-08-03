@@ -1,0 +1,22 @@
+name: simulation-balance-impact
+
+on:
+  pull_request:
+    paths:
+      - 'implementation/testing-simulation/**'
+      - '.github/workflows/simulation-balance-impact.yml'
+      - 'governance/current-state/**'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check module syntax
+        run: node --check implementation/testing-simulation/simulation-balance-impact-analysis.mjs
+      - name: Run simulation balance and impact acceptance tests
+        run: node implementation/testing-simulation/simulation-balance-impact-analysis.test.mjs
