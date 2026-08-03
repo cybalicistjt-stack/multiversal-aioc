@@ -8,6 +8,8 @@ const resolvePath = value => path.isAbsolute(value) ? value : path.join(root, va
 const outputPath = process.argv[2] || 'governance/development-brain/semantic-retrieval/AIOC_SEMANTIC_RETRIEVAL.generated.json';
 const paths = {
   inventory: 'tmp/AIOC_UNIFIED_INVENTORY.json',
+  graph: 'tmp/AIOC_DEPENDENCY_GRAPH.json',
+  structure: 'tmp/AIOC_STRUCTURE_INTELLIGENCE.json',
   semantic: 'tmp/AIOC_SEMANTIC_ONTOLOGY.json',
   causal: 'tmp/AIOC_CAUSAL_IMPACT.json',
   memory: 'governance/development-brain/memory/AIOC_PROJECT_MEMORY.json',
@@ -20,12 +22,14 @@ function ensure(file, script, args = []) {
   if (!fs.existsSync(resolvePath(file))) execFileSync(process.execPath, [script, ...args], { cwd: root, stdio: 'inherit' });
 }
 ensure(paths.inventory, 'scripts/development-brain/generate-unified-inventory.mjs', [paths.inventory]);
-ensure(paths.semantic, 'scripts/development-brain/generate-semantic-ontology.mjs', [paths.inventory, 'tmp/AIOC_DEPENDENCY_GRAPH.json', paths.semantic]);
+ensure(paths.graph, 'scripts/development-brain/generate-dependency-graph.mjs', [paths.inventory, paths.graph]);
+ensure(paths.structure, 'scripts/development-brain/generate-structure-intelligence.mjs', [paths.inventory, paths.graph, paths.structure]);
+ensure(paths.semantic, 'scripts/development-brain/generate-semantic-ontology.mjs', [paths.inventory, paths.graph, paths.semantic]);
 ensure(paths.causal, 'scripts/development-brain/generate-causal-impact.mjs', [paths.semantic, paths.causal]);
-ensure(paths.readiness, 'scripts/development-brain/generate-completion-readiness.mjs', [paths.readiness]);
-ensure(paths.priority, 'scripts/development-brain/generate-priority-impact.mjs', [paths.priority]);
-ensure(paths.recommendations, 'scripts/development-brain/generate-recommendation-planner.mjs', [paths.recommendations]);
-ensure(paths.verification, 'scripts/development-brain/generate-verification-governance.mjs', [paths.verification]);
+ensure(paths.readiness, 'scripts/development-brain/generate-completion-readiness.mjs', [paths.inventory, paths.graph, paths.structure, paths.readiness]);
+ensure(paths.priority, 'scripts/development-brain/generate-priority-impact.mjs', [paths.inventory, paths.graph, paths.structure, paths.readiness, paths.priority]);
+ensure(paths.recommendations, 'scripts/development-brain/generate-recommendation-planner.mjs', [paths.inventory, paths.graph, paths.structure, paths.readiness, paths.priority, paths.recommendations]);
+ensure(paths.verification, 'scripts/development-brain/generate-verification-governance.mjs', [paths.inventory, paths.readiness, paths.recommendations, paths.verification]);
 
 const read = file => JSON.parse(fs.readFileSync(resolvePath(file), 'utf8'));
 const inventory = read(paths.inventory);
