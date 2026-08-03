@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/design-intent.schema.json",
+  "title": "Multiversal AIOC Design Intent Memory",
+  "type": "object",
+  "required": ["format", "version", "generatedAt", "policy", "summary", "intents", "unresolved"],
+  "properties": {
+    "format": { "const": "multiversal-aioc-design-intent" },
+    "version": { "const": "1.0.0" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "policy": { "type": "object" },
+    "summary": { "type": "object" },
+    "intents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["intentId", "subjectIds", "title", "goal", "intendedOutcome", "problemAddressed", "tradeoffs", "rejectedAlternatives", "invariants", "extensionNotes", "authority", "confidence", "evidence", "advisory"],
+        "properties": {
+          "intentId": { "type": "string", "pattern": "^INTENT-" },
+          "subjectIds": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "title": { "type": "string", "minLength": 1 },
+          "goal": { "type": "string", "minLength": 1 },
+          "intendedOutcome": { "type": "string", "minLength": 1 },
+          "problemAddressed": { "type": "string", "minLength": 1 },
+          "tradeoffs": { "type": "array" },
+          "rejectedAlternatives": { "type": "array" },
+          "invariants": { "type": "array" },
+          "extensionNotes": { "type": "array" },
+          "authority": { "type": "string", "minLength": 1 },
+          "confidence": { "enum": ["explicit", "high", "medium", "low"] },
+          "evidence": { "type": "array", "minItems": 1 },
+          "advisory": { "const": true }
+        },
+        "additionalProperties": true
+      }
+    },
+    "unresolved": { "type": "array" }
+  },
+  "additionalProperties": true
+}
