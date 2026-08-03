@@ -1,0 +1,87 @@
+name: Record Content Pipeline Result
+
+on:
+  workflow_run:
+    workflows: ['Certify Content Database Pipeline']
+    types: [completed]
+
+permissions:
+  actions: read
+  contents: write
+
+concurrency:
+  group: record-content-pipeline-result
+  cancel-in-progress: false
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out CI evidence branch
+        uses: actions/checkout@v4
+        with:
+          ref: ci/failure-records
+          fetch-depth: 0
+
+      - name: Capture certification result
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          RUN_NUMBER: ${{ github.event.workflow_run.run_number }}
+          CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          RUN_URL: ${{ github.event.workflow_run.html_url }}
+          CREATED_AT: ${{ github.event.workflow_run.created_at }}
+          UPDATED_AT: ${{ github.event.workflow_run.updated_at }}
+        run: |
+          set -euo pipefail
+          mkdir -p governance/ci-failures/content-pipeline
+          jobs_json="$(mktemp)"
+          gh api -H 'Accept: application/vnd.github+json' \
+            "/repos/$REPOSITORY/actions/runs/$RUN_ID/jobs?filter=latest&per_page=100" > "$jobs_json"
+
+          failed_steps="$(jq -r '.jobs[] | .name as $job | .steps[]? | select(.conclusion == "failure" or .conclusion == "cancelled" or .conclusion == "timed_out") | "- **" + $job + " / " + .name + "** — " + (.conclusion // "unknown")' "$jobs_json")"
+          [ -n "$failed_steps" ] || failed_steps='- None.'
+
+          jobs_summary="$(jq -r '.jobs[] | "- **" + .name + "** — " + (.conclusion // .status // "unknown") + " (`" + (.id|tostring) + "`)"' "$jobs_json")"
+          [ -n "$jobs_summary" ] || jobs_summary='- No job metadata returned.'
+
+          record="governance/ci-failures/content-pipeline/run-${RUN_ID}.md"
+          {
+            printf '# Content Pipeline Certification — Run %s\n\n' "$RUN_ID"
+            printf '**Result:** %s  \n' "$CONCLUSION"
+            printf '**Run number:** %s  \n' "$RUN_NUMBER"
+            printf '**Branch:** `%s`  \n' "$HEAD_BRANCH"
+            printf '**Commit:** `%s`  \n' "$HEAD_SHA"
+            printf '**Created:** %s  \n' "$CREATED_AT"
+            printf '**Updated:** %s  \n' "$UPDATED_AT"
+            printf '**GitHub run:** %s\n\n' "$RUN_URL"
+            printf '## Jobs\n\n%s\n\n' "$jobs_summary"
+            printf '## Failed steps\n\n%s\n' "$failed_steps"
+          } > "$record"
+
+          cp "$record" governance/ci-failures/content-pipeline/LATEST.md
+          {
+            printf '# GitHub Actions Failure Index\n\n'
+            printf '**Status:** operational  \n'
+            printf '**Repository:** `%s`  \n' "$REPOSITORY"
+            printf '**Evidence branch:** `ci/failure-records`  \n'
+            printf '**Last content certification result:** %s  \n' "$CONCLUSION"
+            printf '**Last content certification run:** %s\n\n' "$RUN_ID"
+            printf 'Before every governed operation, read this file first and inspect the newest unresolved failure record.\n\n'
+            printf '## Content pipeline\n\n'
+            printf -- '- [Latest content pipeline result](./content-pipeline/LATEST.md)\n\n'
+            printf '## Recorded failures\n\n'
+            find governance/ci-failures/records -type f -name 'run-*.md' 2>/dev/null | sort -r | while read -r file; do
+              title="$(sed -n '1s/^# //p' "$file")"
+              printf -- '- [%s](./records/%s)\n' "$title" "$(basename "$file")"
+            done
+          } > governance/ci-failures/INDEX.md
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add governance/ci-failures
+          git commit -m "Record content certification run $RUN_ID ($CONCLUSION)"
+          git push origin HEAD:ci/failure-records
