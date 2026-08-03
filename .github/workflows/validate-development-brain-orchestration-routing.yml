@@ -1,0 +1,31 @@
+name: Validate Development Brain Orchestration Routing
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Generate Specialist Agent Contracts
+        run: node scripts/development-brain/generate-specialist-agent-contracts.mjs tmp/AIOC_SPECIALIST_AGENT_CONTRACTS.json
+      - name: Generate Orchestration Routing artifact
+        run: node scripts/development-brain/generate-orchestration-routing.mjs tmp/AIOC_SPECIALIST_AGENT_CONTRACTS.json tmp/AIOC_ORCHESTRATION_ROUTING.json
+      - name: Validate Orchestration Routing artifact
+        run: node scripts/development-brain/validate-orchestration-routing.mjs tmp/AIOC_ORCHESTRATION_ROUTING.json
+      - name: Require Orchestration Routing artifact
+        run: test -s tmp/AIOC_ORCHESTRATION_ROUTING.json
+      - name: Publish Orchestration Routing artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aioc-orchestration-routing
+          path: tmp/AIOC_ORCHESTRATION_ROUTING.json
+          if-no-files-found: error
