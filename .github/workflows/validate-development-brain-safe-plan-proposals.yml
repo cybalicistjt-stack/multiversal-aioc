@@ -1,0 +1,28 @@
+name: Validate Development Brain Safe Plan Proposals
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate-safe-plan-proposals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Generate multi-agent review input
+        run: |
+          node scripts/development-brain/generate-specialist-agent-contracts.mjs /tmp/specialists.json
+          node scripts/development-brain/generate-orchestration-routing.mjs /tmp/specialists.json /tmp/routing.json
+          node scripts/development-brain/generate-multi-agent-review.mjs /tmp/specialists.json /tmp/routing.json /tmp/review.json
+      - name: Generate safe plan proposals
+        run: node scripts/development-brain/generate-safe-plan-proposals.mjs /tmp/review.json /tmp/safe-plans.json
+      - name: Validate safe plan proposals
+        run: node scripts/development-brain/validate-safe-plan-proposals.mjs /tmp/safe-plans.json
+      - name: Upload safe plan artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aioc-safe-plan-proposals
+          path: /tmp/safe-plans.json
