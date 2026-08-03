@@ -1,6 +1,9 @@
 name: Promote Certified Content Database
 
 on:
+  workflow_run:
+    workflows: ['Validate Content Database Pipeline']
+    types: [completed]
   workflow_dispatch:
     inputs:
       validation_run_id:
@@ -18,7 +21,13 @@ concurrency:
 
 jobs:
   promote:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
+    env:
+      VALIDATION_RUN_ID: ${{ github.event_name == 'workflow_dispatch' && inputs.validation_run_id || github.event.workflow_run.id }}
     steps:
       - name: Check out main
         uses: actions/checkout@v4
@@ -30,9 +39,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           REPOSITORY: ${{ github.repository }}
-          RUN_ID: ${{ inputs.validation_run_id }}
         run: |
           set -euo pipefail
+          RUN_ID="$VALIDATION_RUN_ID"
           run_json="$(gh api -H 'Accept: application/vnd.github+json' "/repos/$REPOSITORY/actions/runs/$RUN_ID")"
           workflow_name="$(jq -r '.name' <<<"$run_json")"
           conclusion="$(jq -r '.conclusion' <<<"$run_json")"
@@ -49,9 +58,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           REPOSITORY: ${{ github.repository }}
-          RUN_ID: ${{ inputs.validation_run_id }}
         run: |
           set -euo pipefail
+          RUN_ID="$VALIDATION_RUN_ID"
           rm -rf /tmp/certified-content
           mkdir -p /tmp/certified-content
           gh run download "$RUN_ID" --repo "$REPOSITORY" --name certified-content-database --dir /tmp/certified-content
@@ -60,8 +69,6 @@ jobs:
           test -f /tmp/certified-content/content-db/certification.json
 
       - name: Revalidate promotion contract
-        env:
-          RUN_ID: ${{ inputs.validation_run_id }}
         run: |
           set -euo pipefail
           node - <<'NODE'
@@ -84,31 +91,28 @@ jobs:
           NODE
 
       - name: Promote generated database
-        env:
-          RUN_ID: ${{ inputs.validation_run_id }}
         run: |
           set -euo pipefail
+          RUN_ID="$VALIDATION_RUN_ID"
           rm -rf content-db
           cp -R /tmp/certified-content/content-db content-db
           validated_sha="$(cat /tmp/validated-head-sha)"
-          node - <<NODE
+          RUN_ID="$RUN_ID" VALIDATED_SHA="$validated_sha" PROMOTION_RUN_ID="${{ github.run_id }}" node - <<'NODE'
           const fs = require('fs');
-          const path = 'content-db/promotion.json';
           const value = {
             format: 'multiversal-content-database-promotion',
             promotedAt: new Date().toISOString(),
             validationRunId: String(process.env.RUN_ID),
-            validatedCommit: '${validated_sha}',
-            promotedByRun: '${{ github.run_id }}'
+            validatedCommit: process.env.VALIDATED_SHA,
+            promotedByRun: String(process.env.PROMOTION_RUN_ID)
           };
-          fs.writeFileSync(path, JSON.stringify(value, null, 2) + '\n');
+          fs.writeFileSync('content-db/promotion.json', JSON.stringify(value, null, 2) + '\n');
           NODE
 
       - name: Commit promoted database
-        env:
-          RUN_ID: ${{ inputs.validation_run_id }}
         run: |
           set -euo pipefail
+          RUN_ID="$VALIDATION_RUN_ID"
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add content-db
