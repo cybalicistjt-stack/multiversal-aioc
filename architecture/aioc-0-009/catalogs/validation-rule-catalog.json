@@ -1,0 +1,31 @@
+{
+  "format": "aioc-validation-rule-catalog",
+  "version": "1.0.0",
+  "package": "AIOC-0-009",
+  "rules": [
+    {"id":"VAL-OPS-001","severity":"blocking","rule":"Infrastructure role cannot grant campaign owner or GM authority."},
+    {"id":"VAL-OPS-002","severity":"blocking","rule":"AIOC cannot directly mutate authoritative gameplay state."},
+    {"id":"VAL-OPS-003","severity":"blocking","rule":"Every operational command requires identity, permission, idempotency key, and audit receipt."},
+    {"id":"VAL-OPS-004","severity":"blocking","rule":"Production deployment requires verified artifact hashes and rollback readiness."},
+    {"id":"VAL-OPS-005","severity":"blocking","rule":"High-impact or destructive operations require explicit approval."},
+    {"id":"VAL-OPS-006","severity":"blocking","rule":"Hidden campaign information must be filtered from operational surfaces."},
+    {"id":"VAL-OPS-007","severity":"blocking","rule":"Observability data excludes credentials, private messages, and full event payloads by default."},
+    {"id":"VAL-OPS-008","severity":"blocking","rule":"Incident records require last known good state and evidence references."},
+    {"id":"VAL-OPS-009","severity":"blocking","rule":"Recovery cannot fabricate, reorder, or silently rewrite authoritative events."},
+    {"id":"VAL-OPS-010","severity":"blocking","rule":"Backup restoration requires integrity verification and environment isolation."},
+    {"id":"VAL-OPS-011","severity":"blocking","rule":"Deployment promotion requires successful health gates."},
+    {"id":"VAL-OPS-012","severity":"blocking","rule":"Failed health gates require pause, rollback, or explicit owner-authorized waiver."},
+    {"id":"VAL-OPS-013","severity":"blocking","rule":"AI cannot approve production, security, destructive, or critical incident actions."},
+    {"id":"VAL-OPS-014","severity":"blocking","rule":"AI cannot close a critical incident without authorized human approval."},
+    {"id":"VAL-OPS-015","severity":"blocking","rule":"Operational actions must remain traceable to repository, build, schema, pack, campaign, and environment."},
+    {"id":"VAL-OPS-016","severity":"blocking","rule":"Queued degraded-mode records cannot be treated as executed until reconciled."},
+    {"id":"VAL-OPS-017","severity":"blocking","rule":"Duplicate operational commands must be safely idempotent."},
+    {"id":"VAL-OPS-018","severity":"blocking","rule":"Secrets must be redacted from logs, alerts, diagnostics, and support bundles."},
+    {"id":"VAL-OPS-019","severity":"blocking","rule":"Production operations require least-privilege environment-scoped credentials."},
+    {"id":"VAL-OPS-020","severity":"blocking","rule":"Emergency containment must preserve audit evidence."},
+    {"id":"VAL-OPS-021","severity":"blocking","rule":"Session pause and recovery must preserve authoritative sequence and checkpoint references."},
+    {"id":"VAL-OPS-022","severity":"blocking","rule":"Diagnostic export requires user review and approval."},
+    {"id":"VAL-OPS-023","severity":"blocking","rule":"Operational UI must meet required accessibility profile."},
+    {"id":"VAL-OPS-024","severity":"blocking","rule":"Archived operational records must remain immutable and searchable."}
+  ]
+}
