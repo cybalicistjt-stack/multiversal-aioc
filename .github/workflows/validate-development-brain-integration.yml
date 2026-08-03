@@ -1,0 +1,47 @@
+name: Validate Development Brain Integration
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'governance/development-brain/**'
+      - 'scripts/development-brain/**'
+      - 'bridge/**'
+      - 'operational/**'
+      - '.github/workflows/validate-development-brain-integration.yml'
+  pull_request:
+    paths:
+      - 'governance/development-brain/**'
+      - 'scripts/development-brain/**'
+      - 'bridge/**'
+      - 'operational/**'
+      - '.github/workflows/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Generate integration manifest
+        run: |
+          mkdir -p tmp
+          node scripts/development-brain/generate-integration-manifest.mjs tmp/AIOC_INTEGRATION_MANIFEST.json
+      - name: Validate integration manifest
+        run: |
+          test -s tmp/AIOC_INTEGRATION_MANIFEST.json
+          node scripts/development-brain/validate-integration-manifest.mjs tmp/AIOC_INTEGRATION_MANIFEST.json
+      - name: Publish integration manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: aioc-development-brain-integration
+          path: tmp/AIOC_INTEGRATION_MANIFEST.json
+          if-no-files-found: error
+          retention-days: 14
