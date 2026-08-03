@@ -16,62 +16,51 @@ AIOC-0-001 through AIOC-0-012 are complete.
 - **AIOC-I-002 — Repository Intelligence and Continuity Implementation — PASS**
 - **AIOC-I-003 — Executive Dashboard and Orchestration Implementation — PASS**
 - **AIOC-I-004 — Developer Workbench Implementation — PASS**
+- **AIOC-I-005 — Content Studio Implementation — PASS**
+
+AIOC-I-005 final evidence:
+
+- `content-release-certification` run 2 — PASS;
+- `content-pack-certification` run 6 — PASS;
+- `content-studio-authoring` run 10 — PASS;
+- all thirteen required workbench, orchestration, dashboard, continuity, repository, state, recovery, and smoke regressions — PASS.
 
 ## Current milestone
 
-**AIOC-I-005 — Content Studio Implementation**
-
-## Completed work
-
-### AIOC-I-005A — Content Studio Authoring, Validation, and Provenance Projection — PASS
-
-Validated by `content-studio-authoring` and all required regression suites.
-
-### AIOC-I-005B — Content Conversion, Pack Assembly, and Dependency Certification — PASS
-
-Evidence:
-
-- governed conversion contracts and canonical bindings;
-- `.pack` identity, manifest, stable-ID, dependency, provenance, installation, and uninstallation enforcement;
-- deterministic assembly and certification fingerprints;
-- 16 executable acceptance tests;
-- `content-pack-certification` run 2 — PASS;
-- `content-studio-authoring` run 6 — PASS;
-- all thirteen required workbench, orchestration, dashboard, continuity, repository, state, recovery, and smoke regressions — PASS.
+**AIOC-I-006 — Testing, Simulation, Balance, and Digital Twin Implementation**
 
 ## Current work item
 
-**AIOC-I-005C — Content Studio Release, Installation, and Certification**
+**AIOC-I-006A — Test Harness, Scenario Execution, and Evidence Projection**
 
-Purpose: certify a governed content release only when the source pack is certified, canonical repository and work bindings are intact, release metadata and provenance are complete, clean installation and upgrade paths pass, dependencies resolve, rollback and uninstallation preserve data integrity, required approvals exist, and deterministic release evidence can be verified.
+Purpose: bind test execution to canonical repository state, continuity certification, repository health, runner capabilities, dependencies, approvals, scenario coverage, expected outcomes, and durable evidence sinks before producing a deterministic governed execution plan.
 
 **Execution state:** implementation committed; CI validation pending.
 
 Repository files:
 
-- `implementation/content-studio/content-release-certification.mjs`
-- `implementation/content-studio/content-release-certification.test.mjs`
-- `.github/workflows/content-release-certification.yml`
+- `implementation/testing-simulation/test-harness-projection.mjs`
+- `implementation/testing-simulation/test-harness-projection.test.mjs`
+- `.github/workflows/test-harness-projection.yml`
 
 Implemented:
 
-- continuity and repository-health prerequisites;
-- canonical repository, branch, and active-work-item binding;
-- certified-pack prerequisite;
-- governed release identity, channel, artifact, checksum, and provenance checks;
-- clean-environment installation stages;
-- upgrade-path and runtime-dependency validation;
-- uninstall, restoration, and rollback-data-integrity certification;
-- owner and stable-release approval enforcement;
-- PASS, PASS WITH WARNINGS, and FAIL outcomes;
-- release-completion freeze after failed or warning-bearing certification;
-- deterministic release-certification fingerprints;
-- 20 executable acceptance tests;
-- dedicated `content-release-certification` GitHub Actions workflow.
+- deterministic scenario normalization and fingerprints;
+- canonical repository, branch, milestone, and work-item binding;
+- continuity and repository-health enforcement;
+- required scenario kinds and field validation;
+- duplicate scenario-ID protection;
+- dependency availability checks;
+- evidence-backed approval requirements for high-risk scenarios;
+- runner-capability and evidence-sink enforcement;
+- deterministic ordered execution plans;
+- execution freeze and recovery behavior for blocking findings;
+- 17 executable acceptance tests;
+- dedicated `test-harness-projection` GitHub Actions workflow.
 
 ## Next executable action
 
-Inspect `content-release-certification`, `content-pack-certification`, `content-studio-authoring`, and all required regression suites for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-005 and advance to the next canonical implementation milestone.
+Inspect `test-harness-projection` and all required regression suites for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-006A and activate AIOC-I-006B — Simulation, Balance, and Change-Impact Analysis.
 
 ## Continuity rule
 
