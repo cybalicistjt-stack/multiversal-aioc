@@ -63,7 +63,7 @@ await Promise.resolve();
 assert.equal(workbenchClicks, 1, 'clicking an object outside Object Explorer must preserve the active mode');
 
 const html = fs.readFileSync('content-library.html', 'utf8');
-assert.match(html, /content-library-selection\.js\?build=content-library-2\.4/, 'deployed page must load the selection controller');
-assert.ok(html.indexOf('content-library.js?build=content-library-2.4') < html.indexOf('content-library-selection.js?build=content-library-2.4'), 'selection controller must load after the core library script');
+assert.match(html, /content-library-selection\.js\?build=content-library-2\.5/, 'deployed page must load the selection controller');
+assert.ok(html.indexOf('content-library.js?build=content-library-2.5') < html.indexOf('content-library-selection.js?build=content-library-2.5'), 'selection controller must load after the core library script');
 
 console.log('Content Library selection regression passed.');
