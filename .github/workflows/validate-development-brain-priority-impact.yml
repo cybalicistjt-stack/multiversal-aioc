@@ -1,0 +1,45 @@
+name: Validate Development Brain Priority and Impact
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'governance/development-brain/**'
+      - 'scripts/development-brain/**'
+      - '.github/workflows/validate-development-brain-priority-impact.yml'
+      - 'content-db/index.json'
+      - 'governance/shared-state/AIOC_SHARED_STATE.json'
+  pull_request:
+    paths:
+      - 'governance/development-brain/**'
+      - 'scripts/development-brain/**'
+      - '.github/workflows/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Generate Priority and Impact artifact
+        run: |
+          mkdir -p tmp
+          node scripts/development-brain/generate-priority-impact.mjs tmp/AIOC_UNIFIED_INVENTORY.json tmp/AIOC_DEPENDENCY_GRAPH.json tmp/AIOC_STRUCTURE_INTELLIGENCE.json tmp/AIOC_COMPLETION_READINESS.json tmp/AIOC_PRIORITY_IMPACT.json
+      - name: Validate Priority and Impact artifact
+        run: |
+          test -s tmp/AIOC_PRIORITY_IMPACT.json
+          node scripts/development-brain/validate-priority-impact.mjs tmp/AIOC_PRIORITY_IMPACT.json
+      - name: Publish Priority and Impact artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aioc-priority-impact
+          path: tmp/AIOC_PRIORITY_IMPACT.json
+          if-no-files-found: error
+          retention-days: 14
