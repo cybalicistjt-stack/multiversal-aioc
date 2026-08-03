@@ -1,0 +1,20 @@
+name: digital-twin-regression-certification
+
+on:
+  pull_request:
+  push:
+    branches:
+      - governance/session-bootstrap-v1
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check module syntax
+        run: node --check implementation/testing-simulation/digital-twin-regression-certification.mjs
+      - name: Run digital twin and regression certification tests
+        run: node implementation/testing-simulation/digital-twin-regression-certification.test.mjs
