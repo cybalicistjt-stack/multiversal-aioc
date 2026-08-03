@@ -36,6 +36,8 @@ jobs:
           test -f operational/index.html
           test -f operational/operational.css
           test -f operational/operational.js
+          test -f governance/current-state/AIOC_CURRENT_STATE.md
+          test -f governance/current-state/AIOC_OPERATIONAL_HANDOFF.md
           grep -q './operational/' index.html
           grep -q 'Multiversal Command Center' operational/index.html
           node --check operational/operational.js
@@ -51,10 +53,21 @@ jobs:
           if [ -f governance/dispatches/AIOC-DISPATCH-MS02-WP011.md ]; then
             cp governance/dispatches/AIOC-DISPATCH-MS02-WP011.md _site/governance/dispatches/
           fi
+          generated_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
           cat > _site/deployed-build.json <<EOF
-          {"build":"operational-aioc-1.0","commit":"${GITHUB_SHA}","generatedAt":"$(date -u +%Y-%m-%dT%H:%M:%SZ)"}
+          {"build":"operational-aioc-1.1","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}"}
+          EOF
+          cat > _site/operational/health.json <<EOF
+          {"status":"operational","application":"Multiversal AIOC","surface":"operational-command-center","build":"operational-aioc-1.1","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}"}
           EOF
           touch _site/.nojekyll
+
+      - name: Validate assembled artifact
+        run: |
+          test -s _site/index.html
+          test -s _site/operational/index.html
+          test -s _site/operational/health.json
+          node -e "const fs=require('fs'); const h=JSON.parse(fs.readFileSync('_site/operational/health.json')); if(h.status!=='operational'||h.commit!==process.env.GITHUB_SHA) process.exit(1); console.log(h)"
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -67,3 +80,19 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Verify deployed operational health contract
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          health_url="${PAGE_URL%/}/operational/health.json"
+          for attempt in 1 2 3 4 5 6; do
+            echo "Checking ${health_url} (attempt ${attempt})"
+            if payload="$(curl --fail --silent --show-error --location --max-time 20 "${health_url}?commit=${GITHUB_SHA}")"; then
+              HEALTH_PAYLOAD="$payload" node -e "const h=JSON.parse(process.env.HEALTH_PAYLOAD); if(h.status!=='operational'||h.commit!==process.env.GITHUB_SHA) process.exit(1); console.log('Verified deployed health contract',h)"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "Deployment completed but the live health contract could not be verified."
+          exit 1
