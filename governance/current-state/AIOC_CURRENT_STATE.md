@@ -8,73 +8,59 @@
 
 ## Completed architecture baseline
 
-AIOC-0-001 through AIOC-0-012 are complete. The implementation-readiness gate passed with controlled implementation conditions.
+AIOC-0-001 through AIOC-0-012 are complete.
 
 ## Completed implementation milestones
 
-### AIOC-I-001 — Operational Core Implementation — PASS
-
-- Project State Engine and Canonical Work Ledger;
-- Repository Adapter and Live State Synchronization;
-- Decision, Handoff, and Recovery Services.
-
-### AIOC-I-002 — Repository Intelligence and Continuity Implementation — PASS
-
-- Repository Intelligence Projection and Health Model;
-- Continuity Snapshot and Session Restore API;
-- Documentation Drift and Continuity Certification.
-
-### AIOC-I-003 — Executive Dashboard and Orchestration Implementation — PASS
-
-Completed components:
-
-- AIOC-I-003A — Executive Dashboard Operational Projection;
-- AIOC-I-003B — Governed Orchestration Queue and Dispatch Service;
-- AIOC-I-003C — Approval, Intervention, and Orchestration Certification.
-
-Final validation evidence:
-
-- `orchestration-certification` run 3 — PASS;
-- `orchestration-service` run 9 — PASS;
-- `executive-dashboard` run 15 — PASS;
-- `continuity-certification` run 23 — PASS;
-- `continuity-snapshot` run 21 — PASS;
-- `repository-intelligence` run 30 — PASS;
-- `project-state-engine` run 55 — PASS;
-- `repository-sync` run 38 — PASS;
-- `recovery-services` run 33 — PASS;
-- AIOC Smoke Tests run 491 — PASS.
+- **AIOC-I-001 — Operational Core Implementation — PASS**
+- **AIOC-I-002 — Repository Intelligence and Continuity Implementation — PASS**
+- **AIOC-I-003 — Executive Dashboard and Orchestration Implementation — PASS**
 
 ## Current milestone
 
 **AIOC-I-004 — Developer Workbench Implementation**
 
+## Latest completed work item
+
+### AIOC-I-004A — Developer Workbench Change Planning and Evidence Projection — PASS
+
+Evidence:
+
+- governed change planning and evidence projection;
+- canonical repository, branch, milestone, and work-item binding;
+- continuity, repository-health, dependency, risk, capability, file, and acceptance checks;
+- 12 executable acceptance tests;
+- `developer-workbench` run 3 — PASS;
+- all ten required orchestration, continuity, repository, state, recovery, dashboard, and smoke regressions — PASS.
+
 ## Current work item
 
-**AIOC-I-004A — Developer Workbench Change Planning and Evidence Projection**
+**AIOC-I-004B — Change Review, Validation, and Patch Certification**
 
-Purpose: bind proposed development changes to the canonical repository, branch, milestone, and active work item; verify continuity, repository health, dependencies, risk evidence, capabilities, files, and acceptance criteria before producing a governed change plan.
+Purpose: certify planned changes only when review coverage, validation coverage, continuity, repository health, approvals, evidence, and required checks are complete and internally consistent.
 
 **Execution state:** implementation committed; CI validation pending.
 
-Repository path: `implementation/developer-workbench/`
+Repository files:
+
+- `implementation/developer-workbench/change-certification.mjs`
+- `implementation/developer-workbench/change-certification.test.mjs`
+- `.github/workflows/change-certification.yml`
 
 Implemented:
 
-- deterministic change normalization;
-- canonical repository, branch, milestone, and work-item binding;
-- continuity and repository-health enforcement;
-- dependency-completion checks;
-- high-risk evidence requirements;
-- capability and acceptance-criteria warnings;
-- recovery mode when blocking evidence exists;
-- governed change plans with ordered steps and acceptance evidence;
-- 12 executable acceptance tests;
-- dedicated `developer-workbench` GitHub Actions workflow.
+- full planned-file review and validation coverage;
+- unresolved review finding classification;
+- required and optional validation-check handling;
+- high-risk approval enforcement;
+- review and validation evidence requirements;
+- PASS, PASS WITH WARNINGS, and FAIL outcomes;
+- execution freeze on failed certification;
+- 13 executable acceptance tests.
 
 ## Next executable action
 
-Inspect `developer-workbench` and all required regression suites for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-004A and activate the next Developer Workbench implementation tranche.
+Inspect `change-certification`, `developer-workbench`, and all required regression suites for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-004B and activate the next Developer Workbench tranche.
 
 ## Continuity rule
 
