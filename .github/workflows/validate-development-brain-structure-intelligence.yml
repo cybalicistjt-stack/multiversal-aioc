@@ -1,0 +1,55 @@
+name: Validate Development Brain Structure Intelligence
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content-db/index.json'
+      - 'governance/shared-state/AIOC_SHARED_STATE.json'
+      - 'governance/development-brain/inventory/**'
+      - 'governance/development-brain/dependency-graph/**'
+      - 'governance/development-brain/structure-intelligence/**'
+      - 'scripts/development-brain/**'
+      - '.github/workflows/validate-development-brain-structure-intelligence.yml'
+  pull_request:
+    paths:
+      - 'content-db/index.json'
+      - 'governance/shared-state/AIOC_SHARED_STATE.json'
+      - 'governance/development-brain/**'
+      - 'scripts/development-brain/**'
+      - '.github/workflows/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Generate unified inventory
+        run: node scripts/development-brain/generate-unified-inventory.mjs tmp/AIOC_UNIFIED_INVENTORY.json
+      - name: Validate unified inventory
+        run: node scripts/development-brain/validate-unified-inventory.mjs tmp/AIOC_UNIFIED_INVENTORY.json
+      - name: Generate dependency graph
+        run: node scripts/development-brain/generate-dependency-graph.mjs tmp/AIOC_UNIFIED_INVENTORY.json tmp/AIOC_DEPENDENCY_GRAPH.json
+      - name: Validate dependency graph
+        run: node scripts/development-brain/validate-dependency-graph.mjs tmp/AIOC_DEPENDENCY_GRAPH.json
+      - name: Generate structure intelligence
+        run: node scripts/development-brain/generate-structure-intelligence.mjs tmp/AIOC_UNIFIED_INVENTORY.json tmp/AIOC_DEPENDENCY_GRAPH.json tmp/AIOC_STRUCTURE_INTELLIGENCE.json
+      - name: Validate structure intelligence
+        run: node scripts/development-brain/validate-structure-intelligence.mjs tmp/AIOC_STRUCTURE_INTELLIGENCE.json
+      - name: Require generated artifact
+        run: test -s tmp/AIOC_STRUCTURE_INTELLIGENCE.json
+      - name: Publish structure intelligence artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aioc-structure-intelligence
+          path: tmp/AIOC_STRUCTURE_INTELLIGENCE.json
+          if-no-files-found: error
+          retention-days: 14
