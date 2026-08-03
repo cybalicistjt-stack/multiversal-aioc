@@ -25,6 +25,7 @@ concurrency:
 jobs:
   certify:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -76,3 +77,28 @@ jobs:
             evidence/content-pipeline/latest-certificate.json
           retention-days: 30
           if-no-files-found: error
+
+      - name: Write bounded runner summary
+        if: always()
+        run: |
+          mkdir -p evidence/content-pipeline
+          {
+            echo '# Content certification runner summary'
+            echo
+            echo "- Run: ${GITHUB_RUN_ID}"
+            echo "- Attempt: ${GITHUB_RUN_ATTEMPT}"
+            echo "- Commit: ${GITHUB_SHA}"
+            echo "- Branch: ${GITHUB_REF_NAME}"
+            echo "- Recorded: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "- Certificate present: $([ -f content-db/certification.json ] && echo yes || echo no)"
+            echo "- Database index present: $([ -f content-db/index.json ] && echo yes || echo no)"
+          } | tee evidence/content-pipeline/runner-summary.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload runner diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: content-certification-runner-diagnostics
+          path: evidence/content-pipeline
+          retention-days: 14
+          if-no-files-found: warn
