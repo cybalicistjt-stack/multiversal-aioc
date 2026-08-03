@@ -17,35 +17,37 @@
 - AIOC-0-007 — Developer Workbench Architecture
 - AIOC-0-008 — Content Studio Architecture
 - AIOC-0-009 — Campaign and Runtime Operations Architecture — validated PASS
+- AIOC-0-010 — AI Assistant and GM Intelligence Architecture — validated PASS
 
 ## Latest completed package
 
-**AIOC-0-009 — Campaign and Runtime Operations Architecture**
+**AIOC-0-010 — AI Assistant and GM Intelligence Architecture**
 
-Repository path: `architecture/aioc-0-009/`
+Repository path: `architecture/aioc-0-010/`
 
 Package contents include:
 
 - implementation-ready architecture specification;
-- 58-capability catalog;
+- 62-capability catalog;
 - 16 governed workflows;
-- 24 blocking validation rules;
-- runtime-operation schema;
-- runtime-incident schema;
-- 60-test acceptance and integration matrix;
+- 26 blocking validation rules;
+- assistant-request schema;
+- assistant-proposal schema;
+- intelligence-evidence schema;
+- 64-test acceptance and integration matrix;
 - validation result;
 - manifest;
-- outgoing AIOC-0-010 work order.
+- outgoing AIOC-0-011 work order.
 
 ## Current milestone
 
-**AIOC-0-010 — AI Assistant and GM Intelligence Architecture**
+**AIOC-0-011 — Security, Permissions, Secrets, and Release Governance**
 
-Purpose: define conversational project command, GM intelligence, bounded recommendations, evidence-backed answers, action proposals, context assembly, permissions, memory, explainability, uncertainty, escalation, and cross-repository execution.
+Purpose: define identities, roles, permissions, trust boundaries, secret handling, protected operations, approvals, audit records, release authority, emergency controls, revocation, and security incident response.
 
 ## Next executable action
 
-Build and validate the complete AIOC-0-010 architecture package.
+Build and validate the complete AIOC-0-011 architecture package.
 
 ## Continuity rule
 
