@@ -34,16 +34,17 @@ jobs:
         with:
           node-version: 20
       - name: Generate unified inventory
-        run: node scripts/development-brain/generate-unified-inventory.mjs /tmp/AIOC_UNIFIED_INVENTORY.json
+        run: node scripts/development-brain/generate-unified-inventory.mjs tmp/AIOC_UNIFIED_INVENTORY.json
       - name: Validate unified inventory
-        run: node scripts/development-brain/validate-unified-inventory.mjs /tmp/AIOC_UNIFIED_INVENTORY.json
+        run: node scripts/development-brain/validate-unified-inventory.mjs tmp/AIOC_UNIFIED_INVENTORY.json
       - name: Generate dependency graph
-        run: node scripts/development-brain/generate-dependency-graph.mjs /tmp/AIOC_UNIFIED_INVENTORY.json /tmp/AIOC_DEPENDENCY_GRAPH.json
+        run: node scripts/development-brain/generate-dependency-graph.mjs tmp/AIOC_UNIFIED_INVENTORY.json tmp/AIOC_DEPENDENCY_GRAPH.json
       - name: Validate dependency graph
-        run: node scripts/development-brain/validate-dependency-graph.mjs /tmp/AIOC_DEPENDENCY_GRAPH.json
+        run: node scripts/development-brain/validate-dependency-graph.mjs tmp/AIOC_DEPENDENCY_GRAPH.json
       - name: Publish dependency graph artifact
         uses: actions/upload-artifact@v4
         with:
           name: aioc-dependency-graph
-          path: /tmp/AIOC_DEPENDENCY_GRAPH.json
+          path: tmp/AIOC_DEPENDENCY_GRAPH.json
+          if-no-files-found: error
           retention-days: 14
