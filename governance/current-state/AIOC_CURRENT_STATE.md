@@ -1,83 +1,137 @@
 # AIOC Current State
 
-**Status:** Operational certification complete; deployment baseline certified  
+**Status:** Operational AIOC certified; Development Brain Release A active  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Default branch:** `main`  
-**Canonical working branch:** `governance/session-bootstrap-v1`  
 **Owner:** John Brandon Turner
 
-## Architecture baseline
+## Operational baseline
 
-AIOC-0-001 through AIOC-0-012 are complete.
+AIOC-0-001 through AIOC-0-012 and implementation milestones AIOC-I-001 through AIOC-I-007 are complete.
 
-## Completed implementation milestones
-
-- **AIOC-I-001 — Operational Core Implementation — PASS**
-- **AIOC-I-002 — Repository Intelligence and Continuity Implementation — PASS**
-- **AIOC-I-003 — Executive Dashboard and Orchestration Implementation — PASS**
-- **AIOC-I-004 — Developer Workbench Implementation — PASS**
-- **AIOC-I-005 — Content Studio Implementation — PASS**
-- **AIOC-I-006 — Testing, Simulation, Balance, and Digital Twin Implementation — PASS**
-- **AIOC-I-007 — Certification, Hardening, Deployment, and Recovery — PASS**
-
-## Final operational certification
-
-### AIOC-I-007C — Final AIOC Operational Certification and Handoff — PASS
-
-Final evidence for commit `c9345cbc7b6e866a725aa1c5668418b8c46af93d`:
-
-- `final-operational-certification` run 2 — PASS;
-- `deployment-runtime-recovery-certification` run 6 — PASS;
-- `release-readiness-projection` run 10 — PASS;
-- AIOC Smoke Tests run 539 — PASS;
-- all eighteen additional required implementation and regression workflows — PASS.
-
-The governed operational handoff is recorded at:
-
-`governance/current-state/AIOC_OPERATIONAL_HANDOFF.md`
-
-## Deployment and content baseline
-
-The seven-step repository and deployment cleanup is complete.
+The seven-step repository and deployment cleanup is complete:
 
 - Public default: `/operational/`
 - Authoritative Pages workflow: `.github/workflows/deploy-pages.yml`
 - Certified content mode: `CANONICAL_OBJECTS_ONLY`
 - Certified content records: 487
-- Promoted database commit: `94ad7253167c661f79555b6b2de173cccfe43c23`
 - Recent COS capability work: preserved
 - Obsolete migration entry behavior: narrowly quarantined
-- Corrupted legacy seed execution path: quarantined pending intact authoritative import
-- Unified full-system validation workflow: `.github/workflows/full-system-validation.yml`
+- Corrupted legacy seed execution path: quarantined
+- Unified validation workflow: `.github/workflows/full-system-validation.yml`
 
-The canonical deployment record is:
+Canonical deployment records:
 
-`governance/current-state/AIOC_DEPLOYMENT_BASELINE.md`
+- `governance/current-state/AIOC_OPERATIONAL_HANDOFF.md`
+- `governance/current-state/AIOC_DEPLOYMENT_BASELINE.md`
 
-## Current operational objective
+## Operational capability workflow
 
-Use AIOC as the governed command-and-control system for Multiversal application delivery, while integrating preserved COS capabilities into the operational command center in bounded, feature-complete batches.
+The operational command center exposes preserved COS capabilities, including:
+
+- Content Library
+- Content Structure Pipeline
+- Content Completion Assistant
+- Design Studio
+- Balance Lab
+- Testing Suite
+- Feature Modules
+- Diagnostics
+- Development OS
+- Refresh and Recovery
+
+The intended content lifecycle is:
+
+`canonical source → structure decision → working object → completion → validation/review package → governed promotion → certified content`
+
+Browser durability supports rolling snapshots and export/import. Browser-to-shared-state synchronization remains recorded technical debt.
+
+## Hosted AIOC bridge
+
+Railway hosts the read-only AIOC MCP bridge:
+
+- MCP: `https://aioc-mcp-bridge-production.up.railway.app/mcp`
+- Health: `https://aioc-mcp-bridge-production.up.railway.app/health`
+- Verification: `https://aioc-mcp-bridge-production.up.railway.app/live-verification`
+
+Repository integration:
+
+- Codex MCP configuration: `.codex/config.toml`
+- Agent operating contract: `AGENTS.md`
+- Shared AIOC skill: `bridge/skills/multiversal-aioc/SKILL.md`
+
+Hosted writes remain disabled until explicitly authorized and credentialed.
+
+## Active milestone
+
+**Development Brain — Release A: Foundation**
+
+### Step 1 — Canonical Project Memory — IMPLEMENTED
+
+Primary files:
+
+- `governance/project-memory/PROJECT_MEMORY.schema.json`
+- `governance/project-memory/PROJECT_MEMORY.json`
+- `scripts/validate-project-memory.mjs`
+- `.github/workflows/validate-project-memory.yml`
+- `governance/development-brain/DEVELOPMENT_BRAIN_ROADMAP.md`
+
+### Step 2 — Unified Object Inventory — IMPLEMENTED
+
+Primary files:
+
+- `governance/development-brain/UNIFIED_INVENTORY.schema.json`
+- `scripts/generate-unified-inventory.mjs`
+- `scripts/validate-unified-inventory.mjs`
+- `.github/workflows/validate-unified-inventory.yml`
+- `governance/development-brain/UNIFIED_INVENTORY_CONTRACT.md`
+
+The inventory is derived rather than hand-maintained and preserves canonical-versus-working authority boundaries.
 
 ## Next executable action
 
-Execute the active Multiversal application work item, WP-011 — Tauri iOS/iPadOS Spike, on a supported Mac and preserve all governed evidence before activating WP-012.
+**Development Brain Release A, Step 3 — Dependency Graph.**
 
-While WP-011 awaits Mac access, continue AIOC capability integration rather than further infrastructure redesign.
+Implement one deterministic derived graph covering explicit and evidence-backed relationships across the unified inventory. Required relationship vocabulary includes:
 
-## Mandatory CI evidence rule
+- `requires`
+- `grants`
+- `contains`
+- `parent-of`
+- `variant-of`
+- `validates`
+- `affects`
+- `supersedes`
+- `blocks`
+- `member-of-pack`
+
+Required controls include stable node IDs, source evidence, confidence, dangling-target detection, duplicate-edge detection, forbidden self-edge detection, cycle validation, generated summary metrics, and CI validation.
+
+Do not begin Development Brain Release B until Step 3 is generated and validated.
+
+## Separate external work item
+
+`WP-011 — Tauri iOS/iPadOS Spike` remains the next Mac-dependent task in `cybalicistjt-stack/Multiversal-app`. It is separate from the active AIOC Development Brain workstream.
+
+## Mandatory failure evidence rule
 
 Before every governed operation, read:
 
 `governance/ci-failures/INDEX.md` on branch `ci/failure-records`.
 
-Any recorded failure is repaired before new work begins.
+Any unresolved recorded failure is repaired before new work begins.
 
-## Continuity rule
+## Mandatory continuity sequence
 
-New conversations must load:
+New conversations must read:
 
 1. `governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md`
-2. this file;
-3. `governance/current-state/SESSION_HANDOFF.md`;
-4. `governance/current-state/AIOC_OPERATIONAL_HANDOFF.md`;
-5. `governance/current-state/AIOC_DEPLOYMENT_BASELINE.md`.
+2. this file
+3. `governance/current-state/SESSION_HANDOFF.md`
+4. `governance/current-state/AIOC_OPERATIONAL_HANDOFF.md`
+5. `governance/current-state/AIOC_DEPLOYMENT_BASELINE.md`
+6. `governance/development-brain/DEVELOPMENT_BRAIN_ROADMAP.md`
+7. `governance/development-brain/UNIFIED_INVENTORY_CONTRACT.md`
+8. `governance/project-memory/PROJECT_MEMORY.json`
+
+When the owner says “Continue,” resume Step 3 immediately after verifying tools, repository state, and the failure index.
