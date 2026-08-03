@@ -34,7 +34,8 @@ test('valid completion appends ledger evidence', async () => {
 
 test('dependencies prevent premature activation', async () => {
   const engine = new ProjectStateEngine({ initialState: seed });
-  await assert.rejects(() => engine.transitionWorkItem('AIOC-I-001B', 'ready', { reason: 'queue' }), error => error.code === 'workItem.transition');
+  await engine.transitionWorkItem('AIOC-I-001B', 'ready', { reason: 'queue' });
+  await assert.rejects(() => engine.transitionWorkItem('AIOC-I-001B', 'active', { reason: 'start' }), error => error.code === 'workItem.dependencies');
 });
 
 test('next executable work item respects dependency completion', async () => {
