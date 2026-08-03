@@ -8,7 +8,7 @@ const STATUS_TRANSITIONS = Object.freeze({
   cancelled: new Set([])
 });
 
-const clone = value => structuredClone ? structuredClone(value) : JSON.parse(JSON.stringify(value));
+const clone = value => globalThis.structuredClone ? globalThis.structuredClone(value) : JSON.parse(JSON.stringify(value));
 const now = () => new Date().toISOString();
 
 async function sha256(value) {
@@ -47,6 +47,14 @@ function uniqueById(items, label) {
     ids.add(item.id);
   }
   return ids;
+}
+
+function nextExecutableFrom(state) {
+  const complete = new Set(state.workItems.filter(item => item.status === 'complete').map(item => item.id));
+  return [...state.workItems]
+    .filter(item => ['planned', 'ready'].includes(item.status))
+    .filter(item => (item.dependsOn || []).every(id => complete.has(id)))
+    .sort((a, b) => a.sequence - b.sequence)[0] || null;
 }
 
 export function validateProjectState(state) {
@@ -115,13 +123,7 @@ export class ProjectStateEngine {
 
   getWorkItem(id) { return this.state.workItems.find(item => item.id === id) || null; }
   getMilestone(id) { return this.state.milestones.find(item => item.id === id) || null; }
-  getNextExecutableWorkItem() {
-    const complete = new Set(this.state.workItems.filter(item => item.status === 'complete').map(item => item.id));
-    return [...this.state.workItems]
-      .filter(item => ['planned', 'ready'].includes(item.status))
-      .filter(item => (item.dependsOn || []).every(id => complete.has(id)))
-      .sort((a, b) => a.sequence - b.sequence)[0] || null;
-  }
+  getNextExecutableWorkItem() { return nextExecutableFrom(this.state); }
 
   async mutate({ operation, entityType, entityId, reason, evidence = [], apply }) {
     const before = this.snapshot();
@@ -176,6 +178,14 @@ export class ProjectStateEngine {
         target.status = nextStatus;
         target.blocker = nextStatus === 'blocked' ? blocker || 'Unspecified blocker' : null;
         if (evidence.length) target.evidence = [...new Set([...(target.evidence || []), ...evidence])];
+        if (nextStatus === 'complete') {
+          const next = nextExecutableFrom(draft);
+          assert(next, 'Completing this item would leave no active work item. Add or activate the next governed work item first.', 'workItem.no-successor');
+          next.status = 'active';
+          next.blocker = null;
+          draft.active.workItemId = next.id;
+          draft.active.milestoneId = next.milestoneId;
+        }
         return target;
       }
     });
