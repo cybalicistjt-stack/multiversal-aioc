@@ -6,7 +6,6 @@ on:
     paths:
       - 'index.html'
       - 'operational/**'
-      - 'implementation/**'
       - 'content-db/**'
       - 'governance/current-state/**'
       - 'governance/dispatches/**'
@@ -59,12 +58,14 @@ jobs:
 
           cp index.html _site/index.html
           cp operational/index.html operational/operational.css operational/operational.js _site/operational/
-          cp -R implementation _site/implementation
           cp -R content-db _site/content-db
           cp governance/current-state/AIOC_CURRENT_STATE.md _site/governance/current-state/
           cp governance/current-state/AIOC_OPERATIONAL_HANDOFF.md _site/governance/current-state/
           cp governance/legacy/LEGACY_COS_QUARANTINE.md _site/governance/legacy/
 
+          if [ -d implementation ]; then
+            cp -R implementation _site/implementation
+          fi
           if [ -f governance/dispatches/AIOC-DISPATCH-MS02-WP011.md ]; then
             cp governance/dispatches/AIOC-DISPATCH-MS02-WP011.md _site/governance/dispatches/
           fi
@@ -77,11 +78,11 @@ jobs:
 
           generated_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
           cat > _site/deployment-manifest.json <<EOF
-          {"format":"multiversal-aioc-pages-deployment","version":"1.2.0","build":"operational-aioc-1.6","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","defaultSurface":"operational","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":8}
+          {"format":"multiversal-aioc-pages-deployment","version":"1.2.1","build":"operational-aioc-1.6.1","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","defaultSurface":"operational","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":8}
           EOF
           cp _site/deployment-manifest.json _site/deployed-build.json
           cat > _site/operational/health.json <<EOF
-          {"status":"operational","application":"Multiversal AIOC","build":"operational-aioc-1.6","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":8}
+          {"status":"operational","application":"Multiversal AIOC","build":"operational-aioc-1.6.1","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":8}
           EOF
           touch _site/.nojekyll
 
