@@ -44,6 +44,47 @@ jobs:
       - name: Materialize canonical source bundle
         run: node scripts/materialize-content-source.mjs
 
+      - name: Diagnose seed archive boundaries
+        run: |
+          mkdir -p evidence/content-pipeline
+          node - <<'NODE' | tee evidence/content-pipeline/seed-layout.txt
+          const fs = require('fs');
+          const crypto = require('crypto');
+          const parts = [0,1,2,3,4].map(i => `catalog-seed-parts/phase1-7.${String(i).padStart(2,'0')}.txt`);
+          const clean = value => String(value).replace(/[^A-Za-z0-9+/=]/g, '');
+          const hash = value => crypto.createHash('sha256').update(value).digest('hex');
+          let joined = '';
+          for (const file of parts) {
+            const raw = fs.readFileSync(file, 'utf8');
+            const compact = clean(raw);
+            const padding = [...compact].map((c,i) => c === '=' ? i : -1).filter(i => i >= 0);
+            console.log(JSON.stringify({
+              file,
+              rawBytes: Buffer.byteLength(raw),
+              compactLength: compact.length,
+              modulo4: compact.length % 4,
+              prefix: compact.slice(0,16),
+              suffix: compact.slice(-16),
+              paddingCount: padding.length,
+              firstPadding: padding.length ? padding[0] : null,
+              lastPadding: padding.length ? padding.at(-1) : null,
+              compactSha256: hash(compact)
+            }));
+            joined += compact;
+          }
+          const internalPadding = [...joined].map((c,i) => c === '=' && i < joined.length - 2 ? i : -1).filter(i => i >= 0);
+          console.log(JSON.stringify({
+            joinedLength: joined.length,
+            joinedModulo4: joined.length % 4,
+            joinedPrefix: joined.slice(0,16),
+            joinedSuffix: joined.slice(-16),
+            totalPadding: [...joined].filter(c => c === '=').length,
+            internalPaddingCount: internalPadding.length,
+            firstInternalPadding: internalPadding.length ? internalPadding[0] : null,
+            joinedSha256: hash(joined)
+          }));
+          NODE
+
       - name: Build database in isolated runner workspace
         run: node scripts/build-content-database.mjs
 
