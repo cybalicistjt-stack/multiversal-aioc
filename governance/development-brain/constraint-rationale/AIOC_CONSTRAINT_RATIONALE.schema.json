@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.invalid/schemas/aioc-constraint-rationale.schema.json",
+  "title": "AIOC Constraint and Rationale Reasoning",
+  "type": "object",
+  "required": ["format", "version", "generatedAt", "summary", "records", "diagnostics", "authority"],
+  "properties": {
+    "format": {"const": "multiversal-aioc-constraint-rationale"},
+    "version": {"const": "1.0.0"},
+    "generatedAt": {"type": "string"},
+    "summary": {"type": "object"},
+    "records": {"type": "array", "items": {"type": "object", "required": ["reasoningId", "subject", "constraints", "rationaleChain", "conclusions", "authority", "confidence", "evidence", "advisory"]}},
+    "diagnostics": {"type": "object"},
+    "authority": {"const": "advisory-derived"}
+  }
+}
