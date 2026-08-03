@@ -2,7 +2,7 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 3.0.0  
+**Version:** 3.1.0  
 **Status:** ACTIVE  
 **Owner and final authority:** John Brandon Turner  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
@@ -10,89 +10,73 @@
 
 ## How to use
 
-Provide this file as the first project instruction in a new ChatGPT or Codex conversation. The assistant must execute this recovery protocol before project work. Do not restart, redesign, or reconstruct the project from memory.
+Provide this file as the first project instruction in a new ChatGPT or Codex conversation. Execute the protocol before project work. Do not restart, redesign, or reconstruct the project from conversation memory.
 
 ## Project identity
 
-Multiversal uses two distinct canonical repositories:
+Multiversal uses two canonical repositories:
 
-- `cybalicistjt-stack/Multiversal-app` — the user-facing Multiversal application.
-- `cybalicistjt-stack/multiversal-aioc` — governance, content tooling, AI coordination, repository intelligence, operational surfaces, Development Brain, and the active content-recovery workstream.
+- `cybalicistjt-stack/Multiversal-app` — user-facing application.
+- `cybalicistjt-stack/multiversal-aioc` — governance, content tooling, AI coordination, repository intelligence, Development Brain, and content recovery.
 
-The active work described here belongs to `cybalicistjt-stack/multiversal-aioc`.
+## Owner and contributor boundary
 
-## Owner authority and contributor boundary
+John Brandon Turner retains final authority over canonical decisions, governance, classification, conflicts, staging, promotion, implementation scope, merges, releases, and deployments.
 
-John Brandon Turner retains full and final authority over:
-
-- canonical decisions;
-- repository governance;
-- classification policy;
-- conflict and variant resolution;
-- staging acceptance;
-- promotion and production migration;
-- merges and releases.
-
-Other contributors, including Jordon/Zakk, may research, branch, implement, test, and open pull requests, but their work remains proposal-only until John approves it. They may not approve their own work, alter governance authority, or treat AI output as an owner decision.
+Other contributors, including Jordon/Zakk, may research, branch, implement, test, and open pull requests. Their work remains proposal-only until John approves it. They may not approve their own work or promote canonical content.
 
 ## Non-negotiable operating rules
 
 1. Repository state is authoritative; conversation memory is supporting context only.
-2. Before every governed operation, read `governance/ci-failures/INDEX.md` from branch `ci/failure-records` and repair any unresolved failure first.
-3. Verify actual tool, test, artifact, merge, deployment, and live-site results before claiming success.
-4. “Continue” means execute the next verified unfinished work item, not explain what someone else should do.
-5. The assistant owns investigation and implementation until genuinely blocked by missing access or evidence.
-6. Prefer bounded, coherent vertical batches over repeated micro-patches or speculative redesign.
+2. Before governed work, read `governance/ci-failures/INDEX.md` from `ci/failure-records` and reconcile relevant failures.
+3. Verify actual files, commits, tests, PRs, merges, deployments, and live interactions before claiming success.
+4. “Continue” means execute the next verified unfinished work item, not explain, speculate, invent PRs, or report projected results as completed.
+5. The assistant owns investigation and implementation until genuinely blocked.
+6. Prefer bounded vertical batches over speculative redesign or micro-patch chains.
 7. Do not create subsystems of subsystems to chase uncertain solutions.
-8. Never mix canonical content, recovered source payloads, shared drafts, proposals, staging imports, and promoted production records.
-9. Significant UI or deployment changes must be verified against the deployed build, not CI alone.
-10. Do not revive the obsolete `/v2/` migration shell, corrupted seed path, or old TallBunyon repository.
-11. Preserve original source content even when current COS mapping fails.
-12. Deterministic evidence must precede AI semantic inference.
-13. Variants and conflicts must not be silently merged or overwritten.
+8. Preserve original source content when COS mapping fails.
+9. Deterministic evidence precedes AI semantic inference.
+10. Variants, revisions, duplicates, and conflicts must not be silently merged or overwritten.
+11. Significant UI or deployment changes require deployed interaction verification, not CI alone.
+12. Do not revive obsolete `/v2/`, corrupted seed, or old TallBunyon paths.
+13. Never mark a roadmap phase complete solely because it was described in conversation.
 14. John Brandon Turner retains final approval authority.
 
 ## Mandatory initialization sequence
 
-Execute these steps in order:
-
-1. Discover available tools and confirm GitHub read/write access.
+1. Discover tools and confirm GitHub read/write access.
 2. Read `governance/ci-failures/INDEX.md` from `ci/failure-records`.
-3. Read these files from `main`:
+3. Read from `main`:
    - `governance/current-state/AIOC_CURRENT_STATE.md`
    - `governance/current-state/SESSION_HANDOFF.md`
    - `governance/current-state/AIOC_OPERATIONAL_HANDOFF.md`
    - `governance/current-state/AIOC_DEPLOYMENT_BASELINE.md`
    - `governance/development-brain/README.md`
    - `governance/content-recovery/CONTENT_RECOVERY_ROADMAP.md`
+   - `governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md`
+   - `governance/application-planning/STAGE_A_UI_IMPLEMENTATION_PROGRAM.md`
    - `governance/development-brain/UNIFIED_INVENTORY_CONTRACT.md`
    - `governance/project-memory/PROJECT_MEMORY.json`
-4. Inspect recent commits and open pull requests affecting the active workstream.
-5. Confirm the active repository and branch.
-6. Resume from the exact next action in `SESSION_HANDOFF.md` unless the owner explicitly changes direction.
-7. If a live UI issue is involved, verify the deployed build identifier and reproduce the actual interaction path before declaring it repaired.
+4. Inspect recent commits and open PRs affecting the active workstream.
+5. Confirm repository and branch.
+6. Resume from the exact next action in `SESSION_HANDOFF.md` unless the owner changes direction.
+7. For live UI work, verify the deployed build identifier and reproduce the actual interaction path before declaring repair.
 
 ## Current verified state
 
 ### Operational AIOC
 
-- Operational AIOC is certified.
-- The public operational surface is `/operational/`.
-- The Content Library, Content Structure Pipeline, Content Completion Assistant, and Design Studio are connected.
-- Browser-local durability exists through backup and export/import mechanisms.
-- The live Content Library currently exposes 487 records from the Phase 1–8 canonical bundle.
-- Those 487 records are a partial extraction and must not be represented as the complete Multiversal content corpus.
-- Content Library mobile selection has dedicated click and pointer/touch regression coverage.
+- Certified.
+- Public operational surface: `/operational/`.
+- Content Library, Content Structure Pipeline, Content Completion Assistant, and Design Studio are connected.
+- The live Content Library exposes 487 records from the Phase 1–8 canonical bundle.
+- Those 487 records are a partial extraction, not the complete corpus.
 
 ### Development Brain
 
-Releases A–G, Steps 1–21, are complete and behaviorally validated.
+Releases A–G, Steps 1–21, are complete and behaviorally validated. The roadmap ends at Step 21. Do not add deeper internal releases without a demonstrated real-world failure.
 
-The Development Brain roadmap ends at Step 21. Do not add deeper internal releases unless a specific real-world failure demonstrates a missing capability.
-
-The Development Brain remains advisory and non-executing. It cannot grant owner approval, merge changes, silently mutate canonical content, promote records, or resolve content conflicts.
-
-### Active governed workstream
+### Active workstream
 
 **Multiversal Content Recovery and Ingestion**
 
@@ -100,13 +84,11 @@ Mission:
 
 > Recover the content first. Use the COS to organize it second.
 
-The owner does not authorize manually recreating years of existing game content.
-
 Verified source census:
 
 - 47,849 structured-file occurrences;
 - 11,912 unique structured files;
-- 5,123 unique content-likely structured files;
+- 5,123 content-likely structured files;
 - 291,724 exact-file-deduplicated likely-content rows or JSON entries.
 
 Verified neutral recovery ledger:
@@ -117,70 +99,53 @@ Verified neutral recovery ledger:
 - 99,761 source-provided IDs;
 - 259,530 stable recovery identities;
 - 185,243 conservative identity groups;
-- 33,609 identities with multiple distinct payloads.
+- 33,609 multi-payload identity groups.
 
-These figures are not a final count of unique game objects. They include primary assets, relationship rows, indexes, mappings, embedded mechanics, reports, and support records.
+These are recovery records, not a final unique-game-object count.
 
-## Recovery doctrine
-
-The recovery workstream must:
-
-- preserve complete original payloads and provenance;
-- use explicit IDs, types, pack metadata, source files, workbook sheets, field names, directories, and cross-references before semantic inference;
-- separate primary assets from relationships, support records, indexes, reports, governance, and technical artifacts;
-- preserve exact duplicates with occurrence traceability;
-- preserve revisions, variants, alternate forms, and conflicts;
-- allow records to exist as `native-cos`, `cos-mapped`, `partially-mapped`, `structured-raw`, `unresolved`, or `support-record`;
-- use staging before production migration;
-- retain the existing 487-record database as a restorable named collection;
-- require representative sample review before domain promotion;
-- measure success against reconciled source coverage, not the current live count.
-
-## Active roadmap
-
-Canonical roadmap:
+Canonical recovery roadmap:
 
 - `governance/content-recovery/CONTENT_RECOVERY_ROADMAP.md`
 
-Phases:
+## Approved subsequent application roadmap
 
-0. Preserve and freeze
-1. Deterministic Classification Contract
-2. Primary assets versus support records
-3. Identity, version, and variant groups
-4. Domain recovery passes
-5. Lossless library import format
-6. Staging Content Library integration
-7. Coverage and quality validation
-8. Production migration
-9. Gradual COS normalization
+Canonical planning:
 
-Estimated work through production certification: 26–36 bounded batches.
+- `governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md`
+- `governance/application-planning/STAGE_A_UI_IMPLEMENTATION_PROGRAM.md`
 
-## Exact next executable work item
+Approved phases:
 
-**Phase 0 — Preserve and Freeze, followed immediately by Phase 1 — Deterministic Classification Contract.**
+10. Core Application Implementation
+11. GM and Player Experience
+12. AI Team and Automation
+13. Internal Alpha Completion
 
-Execute one bounded foundation batch:
+These are planned subsequent phases and are not complete until repository evidence, tests, previews, and owner approval exist.
 
-1. Preserve and checksum the source-census and neutral-recovery-ledger evidence.
-2. Snapshot the current 487-record database and deployed Content Library fingerprint.
-3. Define a machine-readable classification contract with:
-   - record classes;
-   - evidence precedence;
-   - mapping states;
-   - confidence levels;
-   - conflict and fallback behavior.
-4. Build a mixed-domain representative fixture containing examples from abilities, species, items, creatures, NPCs, vehicles, environments, settings/adventures, rules, relationships, reports, and technical artifacts.
-5. Record expected outcomes from objective source evidence.
-6. Run deterministic validation and report observed failures honestly.
-7. Update current state and handoff only after the fixture passes review.
+### Stage A order
 
-**Hard gate:** Do not classify the entire 359,291-row ledger until the representative fixture passes review.
+1. A0 repository/UI baseline audit
+2. A1 application shell and design system
+3. A2 universal object experience
+4. A3 identity/dashboard/workspaces/permissions
+5. A4 character workspace
+6. A5 campaign and scene workspace
+7. A6 first playable action proposal and GM approval loop
+8. A7 full combat
+9. A8 inventory/crafting/vehicles
+10. A9 investigation/social
+11. A10 world builder/content creation
+12. A11 contextual AI
+13. A12 internal-alpha hardening
 
-## Separate external work item
+Every UI slice must include real data, permissions, persistence, desktop/mobile behavior, loading/error states, automated tests, reproducible preview, and owner review.
 
-`WP-011 — Tauri iOS/iPadOS Spike` remains the separate Mac-dependent Multiversal App task. It must not displace the active recovery workstream unless the owner explicitly switches priorities.
+## Mac-dependent parallel track
+
+`WP-011 — Tauri iOS/iPadOS Spike` remains separate in `cybalicistjt-stack/Multiversal-app`.
+
+Safe work continues on web/Windows/Linux while waiting. Reserve macOS for Xcode, signing/provisioning, simulator/device validation, packaging, and Apple-specific certification. Do not make general application implementation depend on continuous Mac access.
 
 ## Required first response in a new conversation
 
@@ -191,17 +156,17 @@ Multiversal session restored.
 
 GitHub read: PASS/FAIL
 GitHub write: PASS/FAIL
-Active repository: cybalicistjt-stack/multiversal-aioc
-Branch: main
+Active repository: <verified repository>
+Branch: <verified branch>
 Development Brain: Releases A–G complete
-Current workstream: Multiversal Content Recovery and Ingestion
-Last verified completion: Source census and neutral recovery ledger
-Next executable work item: Phase 0/1 recovery foundation and deterministic classification fixture
+Current workstream: <from governed handoff>
+Last verified completion: <repository-backed completion>
+Next executable work item: <exact repository-backed action>
 Blocking issues: <none or exact blocker>
 ```
 
-If the opening message says “Continue,” begin the exact next executable work item in the same response after the readiness report.
+When the opening message says “Continue,” begin the exact next executable work item in the same response after the readiness report.
 
 ## Honesty and recovery
 
-If a named file, source artifact, commit, test, or deployment cannot be found, stop and reconcile repository state. Do not fabricate continuity. If repository state is newer than this bootstrap, follow the newer governed handoff and update this bootstrap after the work is validated.
+If a named file, commit, test, PR, source artifact, or deployment cannot be found, stop and reconcile repository state. Do not fabricate continuity. If repository state is newer than this bootstrap, follow the newer governed handoff and update this bootstrap after validated work.
