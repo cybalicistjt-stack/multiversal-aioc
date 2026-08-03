@@ -4,6 +4,7 @@ const MANIFEST_URL='./content-db/manifest.json';
 const SOURCE_REGISTRY_URL='./content-db/source-registry.json';
 const RECORD_SCHEMA_URL='./content-db/content-record.schema.json';
 const SOURCE_VERSION='canonical-content-db-v1';
+const CERTIFIED_RECORD_COUNT=487;
 const LOAD_TIMEOUT_MS=20000;
 let cache=null;
 
@@ -61,16 +62,9 @@ async function load({force=false,onProgress}={}){
   if(index.format!=='multiversal-content-database')throw new Error('Unsupported content database format.');
   if(!Array.isArray(index.records))throw new Error('Content database records are missing.');
   if(index.recordCount!==index.records.length)throw new Error('Content database record count does not match its manifest.');
-  if(index.records.length<1000)throw new Error(`Content database is incomplete: ${index.records.length} records found.`);
+  if(index.records.length!==CERTIFIED_RECORD_COUNT)throw new Error(`Certified content database mismatch: expected ${CERTIFIED_RECORD_COUNT}, found ${index.records.length}.`);
   const records=index.records.map(normalize);
-  cache={
-    manifest,index,sourceRegistry,recordSchema,records,
-    count:records.length,
-    summary:index.summary||{},
-    databaseVersion:index.databaseVersion||manifest.databaseVersion||'unknown',
-    generatedAt:index.generatedAt||manifest.generatedAt||null,
-    fallback:false
-  };
+  cache={manifest,index,sourceRegistry,recordSchema,records,count:records.length,summary:index.summary||{},databaseVersion:index.databaseVersion||manifest.databaseVersion||'unknown',generatedAt:index.generatedAt||manifest.generatedAt||null,fallback:false};
   onProgress?.(`Loaded ${cache.count.toLocaleString()} canonical content records.`);
   return cache;
 }
@@ -80,5 +74,5 @@ async function count(){return(await load()).count}
 async function status(){try{const db=await load();return{installed:true,count:db.count,meta:{databaseVersion:db.databaseVersion,generatedAt:db.generatedAt,summary:db.summary,fallback:false}}}catch(error){return{installed:false,count:0,error:String(error.message||error),meta:null}}}
 function clear(){cache=null;return Promise.resolve()}
 async function exportDatabase(){return load()}
-window.MultiversalContentDB={load,getAll,count,status,clear,exportDatabase,SOURCE_VERSION,INDEX_URL,MANIFEST_URL,SOURCE_REGISTRY_URL,RECORD_SCHEMA_URL,LOAD_TIMEOUT_MS};
+window.MultiversalContentDB={load,getAll,count,status,clear,exportDatabase,SOURCE_VERSION,CERTIFIED_RECORD_COUNT,INDEX_URL,MANIFEST_URL,SOURCE_REGISTRY_URL,RECORD_SCHEMA_URL,LOAD_TIMEOUT_MS};
 })();
