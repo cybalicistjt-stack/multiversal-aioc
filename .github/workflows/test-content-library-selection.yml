@@ -7,6 +7,7 @@ on:
       - 'content-library.js'
       - 'content-library-selection.js'
       - 'scripts/test-content-library-selection.mjs'
+      - 'scripts/test-content-library-selection-mobile.mjs'
       - '.github/workflows/test-content-library-selection.yml'
   workflow_dispatch:
 
@@ -18,5 +19,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Run selection regression
+      - name: Run click selection regression
         run: node scripts/test-content-library-selection.mjs
+      - name: Run mobile pointer selection regression
+        run: node scripts/test-content-library-selection-mobile.mjs
+      - name: Verify deployed build wiring
+        run: |
+          grep -q 'CONTENT LIBRARY 2.5' content-library.html
+          grep -q 'content-library-selection.js?build=content-library-2.5' content-library.html
+          node --check content-library-selection.js
