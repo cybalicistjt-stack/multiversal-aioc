@@ -1,0 +1,21 @@
+name: deployment-runtime-recovery-certification
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  certify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check module syntax
+        run: node --check implementation/release-hardening/deployment-runtime-recovery-certification.mjs
+      - name: Run deployment runtime recovery acceptance tests
+        run: node implementation/release-hardening/deployment-runtime-recovery-certification.test.mjs
