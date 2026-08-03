@@ -28,9 +28,9 @@ It does not replace owner authority, canonical content certification, or reposit
 
 ### Release D — Semantic Intelligence — ACTIVE
 
-10. Semantic Ontology and Knowledge Graph — active
-11. Causal and Impact Intelligence
-12. Semantic Retrieval and Reasoning Context
+10. Semantic Ontology and Knowledge Graph — validated
+11. Causal and Impact Intelligence — validated
+12. Semantic Retrieval and Reasoning Context — next
 
 ### Release E — Design Intelligence — APPROVED
 
@@ -52,32 +52,34 @@ It does not replace owner authority, canonical content certification, or reposit
 
 ## Owner authorization
 
-On 2026-08-03, owner John Brandon Turner approved the Release D–G direction and authorized implementation to continue with Release D, Step 10.
+On 2026-08-03, owner John Brandon Turner approved the Release D–G direction and authorized implementation to continue with Release D.
 
 Approval authorizes bounded implementation and validation work only. It does not authorize silent canonical mutation, certification, promotion, scheduling, assignment, or substitution of later owner decisions.
 
-## Release D Step 10 contract
+## Release D contracts
 
-Step 10 creates a deterministic semantic ontology and evidence-backed knowledge graph over the existing Unified Object Inventory and Dependency Graph.
+### Step 10 — Semantic Ontology and Knowledge Graph
 
-It must:
+Validated. It provides stable concepts, entities, evidence-backed semantic assertions, confidence, inference methods, and explicit unresolved meaning. Assertions are limited to explicit field mappings and validated graph projections.
 
-- provide stable semantic concept and assertion identities;
-- classify objects using explicit repository fields rather than unsupported inference;
-- expose object type, authority, lifecycle, pack, structural, and dependency semantics;
-- retain source pointers, confidence, and inference method;
-- mark unresolved or unsupported semantics explicitly;
-- remain derived, advisory, reproducible, and separate from canonical promotion.
+### Step 11 — Causal and Impact Intelligence
+
+Validated. It distinguishes direct causal evidence from dependency and structural impact propagation, bounds paths to four hops, reports affected domains and reachable-entity blast radius, retains evidence and confidence, and never treats propagation as proof of causation.
+
+### Step 12 — Semantic Retrieval and Reasoning Context
+
+Next. It must assemble deterministic, bounded, source-backed AI context packages from validated Development Brain artifacts. Context must preserve authority, uncertainty, provenance, confidence, freshness, and explicit distinctions among facts, derived findings, recommendations, constraints, and unresolved questions.
 
 ## Governance boundaries
 
 - Canonical content remains in the certified content pipeline.
-- Derived semantic assertions cannot promote or overwrite canonical content.
-- Unsupported meaning must remain unknown rather than guessed.
+- Derived semantic and causal assertions cannot promote or overwrite canonical content.
+- Unsupported meaning and causality must remain unresolved rather than guessed.
 - Findings preserve uncertainty, source evidence, confidence, and authority boundaries.
 - Browser access remains read-only; MCP, REST, and Codex writes remain proposal-only.
+- Retrieval context cannot grant execution, mutation, promotion, certification, assignment, scheduling, or approval authority.
 - All future autonomous behavior remains reviewable and subject to repository CI and owner/governance controls.
 
 ## Next executable step
 
-Implement and validate Step 10: Semantic Ontology and Knowledge Graph. Do not begin Step 11 until Step 10 generates a valid artifact and all required workflows pass.
+Implement and validate Step 12: Semantic Retrieval and Reasoning Context. Do not begin Release E until Step 12 generates a valid artifact and all required workflows pass.
