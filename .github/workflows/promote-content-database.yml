@@ -2,12 +2,12 @@ name: Promote Certified Content Database
 
 on:
   workflow_run:
-    workflows: ['Validate Content Database Pipeline']
+    workflows: ['Certify Content Database Pipeline']
     types: [completed]
   workflow_dispatch:
     inputs:
       validation_run_id:
-        description: Successful Validate Content Database Pipeline run ID
+        description: Successful Certify Content Database Pipeline run ID
         required: true
         type: string
 
@@ -35,7 +35,7 @@ jobs:
           ref: main
           fetch-depth: 0
 
-      - name: Verify source validation run
+      - name: Verify source certification run
         env:
           GH_TOKEN: ${{ github.token }}
           REPOSITORY: ${{ github.repository }}
@@ -48,11 +48,11 @@ jobs:
           event="$(jq -r '.event' <<<"$run_json")"
           head_branch="$(jq -r '.head_branch' <<<"$run_json")"
           head_sha="$(jq -r '.head_sha' <<<"$run_json")"
-          [ "$workflow_name" = 'Validate Content Database Pipeline' ] || { echo "Unexpected workflow: $workflow_name"; exit 1; }
-          [ "$conclusion" = 'success' ] || { echo "Validation run is not successful: $conclusion"; exit 1; }
-          [ "$head_branch" = 'main' ] || { echo "Validation run did not certify main: $head_branch"; exit 1; }
+          [ "$workflow_name" = 'Certify Content Database Pipeline' ] || { echo "Unexpected workflow: $workflow_name"; exit 1; }
+          [ "$conclusion" = 'success' ] || { echo "Certification run is not successful: $conclusion"; exit 1; }
+          [ "$head_branch" = 'main' ] || { echo "Certification run did not certify main: $head_branch"; exit 1; }
           printf '%s\n' "$head_sha" > /tmp/validated-head-sha
-          printf 'Validated source run %s (%s, event %s).\n' "$RUN_ID" "$head_sha" "$event"
+          printf 'Certified source run %s (%s, event %s).\n' "$RUN_ID" "$head_sha" "$event"
 
       - name: Download certified artifact
         env:
