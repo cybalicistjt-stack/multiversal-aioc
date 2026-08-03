@@ -1,0 +1,20 @@
+name: Validate Content Recovery NPC Social Domain
+
+on:
+  pull_request:
+    paths:
+      - 'governance/content-recovery/domain-reviews/NPC_SOCIAL_DOMAIN_CLASSIFICATION_CONTRACT.json'
+      - 'governance/content-recovery/fixtures/NPC_SOCIAL_DOMAIN_REVIEW_FIXTURE.json'
+      - 'governance/content-recovery/pilots/PHASE2_NPC_SOCIAL_DOMAIN_REVIEW_COVERAGE.json'
+      - 'scripts/validate-content-recovery-npc-social-domain.mjs'
+      - '.github/workflows/validate-content-recovery-npc-social-domain.yml'
+
+jobs:
+  validate-npc-social-domain:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/validate-content-recovery-npc-social-domain.mjs
