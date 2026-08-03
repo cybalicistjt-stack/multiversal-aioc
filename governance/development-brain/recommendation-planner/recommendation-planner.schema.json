@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/recommendation-planner.schema.json",
+  "title": "Multiversal AIOC Recommendation and Task Planner",
+  "type": "object",
+  "required": ["format", "version", "generatedAt", "policy", "summary", "recommendations"],
+  "properties": {
+    "format": { "const": "multiversal-aioc-recommendation-planner" },
+    "version": { "const": "1.0.0" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "policy": { "type": "object" },
+    "summary": {
+      "type": "object",
+      "required": ["totalRecommendations", "executable", "ownerDecision", "blocked", "observationOnly"],
+      "properties": {
+        "totalRecommendations": { "type": "integer", "minimum": 0 },
+        "executable": { "type": "integer", "minimum": 0 },
+        "ownerDecision": { "type": "integer", "minimum": 0 },
+        "blocked": { "type": "integer", "minimum": 0 },
+        "observationOnly": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["recommendationId", "stableId", "rank", "classification", "title", "rationale", "prerequisites", "tasks", "evidence", "advisory"],
+        "properties": {
+          "recommendationId": { "type": "string", "pattern": "^REC-" },
+          "stableId": { "type": "string", "minLength": 1 },
+          "rank": { "type": "integer", "minimum": 1 },
+          "classification": { "enum": ["executable", "owner-decision", "blocked", "observation-only"] },
+          "title": { "type": "string", "minLength": 3 },
+          "rationale": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+          "prerequisites": { "type": "array" },
+          "tasks": { "type": "array" },
+          "evidence": { "type": "array", "minItems": 1 },
+          "advisory": { "const": true }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

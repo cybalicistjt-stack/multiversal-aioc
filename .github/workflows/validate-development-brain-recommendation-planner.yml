@@ -1,0 +1,45 @@
+name: Validate Development Brain Recommendation Planner
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'governance/development-brain/**'
+      - 'scripts/development-brain/**'
+      - '.github/workflows/validate-development-brain-recommendation-planner.yml'
+      - 'content-db/index.json'
+      - 'governance/shared-state/AIOC_SHARED_STATE.json'
+  pull_request:
+    paths:
+      - 'governance/development-brain/**'
+      - 'scripts/development-brain/**'
+      - '.github/workflows/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Generate Recommendation Planner artifact
+        run: |
+          mkdir -p tmp
+          node scripts/development-brain/generate-recommendation-planner.mjs tmp/AIOC_UNIFIED_INVENTORY.json tmp/AIOC_DEPENDENCY_GRAPH.json tmp/AIOC_STRUCTURE_INTELLIGENCE.json tmp/AIOC_COMPLETION_READINESS.json tmp/AIOC_PRIORITY_IMPACT.json tmp/AIOC_RECOMMENDATION_PLANNER.json
+      - name: Validate Recommendation Planner artifact
+        run: |
+          test -s tmp/AIOC_RECOMMENDATION_PLANNER.json
+          node scripts/development-brain/validate-recommendation-planner.mjs tmp/AIOC_RECOMMENDATION_PLANNER.json
+      - name: Publish Recommendation Planner artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aioc-recommendation-planner
+          path: tmp/AIOC_RECOMMENDATION_PLANNER.json
+          if-no-files-found: error
+          retention-days: 14
