@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/causal-impact.schema.json",
+  "title": "Multiversal AIOC Causal and Impact Intelligence",
+  "type": "object",
+  "required": ["format", "version", "generatedAt", "policy", "summary", "impactPaths", "unresolvedHypotheses"],
+  "properties": {
+    "format": { "const": "multiversal-aioc-causal-impact" },
+    "version": { "const": "1.0.0" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "policy": { "type": "object" },
+    "summary": { "type": "object" },
+    "impactPaths": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["impactPathId", "sourceEntity", "targetEntity", "classification", "relationshipChain", "hopCount", "confidence", "derivationMethod", "blastRadius", "affectedDomains", "evidence", "advisory"],
+        "properties": {
+          "impactPathId": { "type": "string", "pattern": "^IMPACT-" },
+          "sourceEntity": { "type": "string", "pattern": "^ENTITY-" },
+          "targetEntity": { "type": "string", "pattern": "^ENTITY-" },
+          "classification": { "enum": ["direct-causal-evidence", "dependency-impact", "structural-impact"] },
+          "relationshipChain": { "type": "array", "minItems": 1 },
+          "hopCount": { "type": "integer", "minimum": 1 },
+          "confidence": { "enum": ["explicit", "high", "medium", "low"] },
+          "derivationMethod": { "enum": ["direct-semantic-assertion", "bounded-graph-propagation"] },
+          "blastRadius": { "type": "object", "required": ["reachableEntities", "maxDepth", "rating"] },
+          "affectedDomains": { "type": "array" },
+          "evidence": { "type": "array", "minItems": 1 },
+          "advisory": { "const": true }
+        },
+        "additionalProperties": true
+      }
+    },
+    "unresolvedHypotheses": { "type": "array" }
+  },
+  "additionalProperties": true
+}

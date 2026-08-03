@@ -1,0 +1,45 @@
+name: Validate Development Brain Causal Impact
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'governance/development-brain/**'
+      - 'scripts/development-brain/**'
+      - '.github/workflows/validate-development-brain-causal-impact.yml'
+      - 'content-db/index.json'
+      - 'governance/shared-state/AIOC_SHARED_STATE.json'
+  pull_request:
+    paths:
+      - 'governance/development-brain/**'
+      - 'scripts/development-brain/**'
+      - '.github/workflows/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Generate causal impact artifact
+        run: |
+          mkdir -p tmp
+          node scripts/development-brain/generate-causal-impact.mjs tmp/AIOC_SEMANTIC_ONTOLOGY.json tmp/AIOC_CAUSAL_IMPACT.json
+      - name: Validate causal impact artifact
+        run: |
+          test -s tmp/AIOC_CAUSAL_IMPACT.json
+          node scripts/development-brain/validate-causal-impact.mjs tmp/AIOC_CAUSAL_IMPACT.json
+      - name: Publish causal impact artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aioc-causal-impact
+          path: tmp/AIOC_CAUSAL_IMPACT.json
+          if-no-files-found: error
+          retention-days: 14
