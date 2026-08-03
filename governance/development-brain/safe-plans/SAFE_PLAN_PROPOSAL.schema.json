@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/SAFE_PLAN_PROPOSAL.schema.json",
+  "title": "Multiversal AIOC Safe Plan and Proposal",
+  "type": "object",
+  "required": ["format", "version", "generatedAt", "sourceFingerprint", "plans", "diagnostics", "authority"],
+  "properties": {
+    "format": {"const": "multiversal-aioc-safe-plan-proposal"},
+    "version": {"type": "string"},
+    "generatedAt": {"type": "string"},
+    "sourceFingerprint": {"type": "string"},
+    "plans": {"type": "array", "items": {"type": "object", "required": ["planId", "sourceReviewId", "status", "scope", "sequence", "prerequisites", "risks", "unresolvedQuestions", "evidence", "confidence", "authorityRequirements", "approvalRequirements", "rejectionPath", "rollbackGuidance", "minorityFindings"]}},
+    "diagnostics": {"type": "object"},
+    "authority": {"type": "object", "required": ["proposalOnly", "canonicalMutationAllowed", "approvalGranted", "executionAllowed"]}
+  }
+}
