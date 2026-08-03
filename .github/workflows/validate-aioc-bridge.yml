@@ -5,10 +5,12 @@ on:
     branches: [main]
     paths:
       - 'bridge/**'
+      - 'governance/shared-state/**'
       - '.github/workflows/validate-aioc-bridge.yml'
   pull_request:
     paths:
       - 'bridge/**'
+      - 'governance/shared-state/**'
       - '.github/workflows/validate-aioc-bridge.yml'
   workflow_dispatch:
 
@@ -27,8 +29,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-          cache-dependency-path: bridge/mcp-server/package-lock.json
       - name: Install dependencies
         run: npm install --no-audit --no-fund
       - name: Check server syntax
@@ -45,5 +45,8 @@ jobs:
             fi
             sleep 1
           done
+          test -s /tmp/aioc-bridge-health.json || { cat /tmp/aioc-bridge.log; exit 1; }
           cat /tmp/aioc-bridge-health.json
           grep -q 'multiversal-aioc-mcp-bridge' /tmp/aioc-bridge-health.json
+          grep -q '"version":"0.2.0"' /tmp/aioc-bridge-health.json
+          grep -q '"sharedStateRevision":0' /tmp/aioc-bridge-health.json
