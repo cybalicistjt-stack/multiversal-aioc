@@ -1,0 +1,33 @@
+name: Validate Development Brain Decision History
+
+on:
+  pull_request:
+    paths:
+      - 'governance/development-brain/decision-history/**'
+      - 'governance/development-brain/design-intent/**'
+      - 'governance/development-brain/memory/**'
+      - 'scripts/development-brain/generate-decision-history.mjs'
+      - 'scripts/development-brain/validate-decision-history.mjs'
+      - '.github/workflows/validate-development-brain-decision-history.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Generate Decision History artifact
+        run: node scripts/development-brain/generate-decision-history.mjs governance/development-brain/memory/AIOC_PROJECT_MEMORY.json governance/development-brain/design-intent/AIOC_DESIGN_INTENT.generated.json tmp/AIOC_DECISION_HISTORY.json
+      - name: Validate Decision History artifact
+        run: node scripts/development-brain/validate-decision-history.mjs tmp/AIOC_DECISION_HISTORY.json
+      - name: Require Decision History artifact
+        run: test -f tmp/AIOC_DECISION_HISTORY.json
+      - name: Publish Decision History artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aioc-decision-history
+          path: tmp/AIOC_DECISION_HISTORY.json
+          if-no-files-found: error

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/decision-history.schema.json",
+  "title": "Multiversal AIOC Decision and Tradeoff History",
+  "type": "object",
+  "required": ["format", "version", "generatedAt", "policy", "summary", "decisions", "diagnostics"],
+  "properties": {
+    "format": { "const": "multiversal-aioc-decision-history" },
+    "version": { "const": "1.0.0" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "policy": { "type": "object" },
+    "summary": { "type": "object" },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["decisionId", "sourceMemoryId", "title", "status", "chronology", "decision", "rationale", "alternatives", "tradeoffs", "consequences", "authority", "confidence", "evidence", "advisory"],
+        "properties": {
+          "decisionId": { "type": "string", "pattern": "^DECISION-" },
+          "sourceMemoryId": { "type": "string", "minLength": 1 },
+          "title": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["active", "superseded", "rejected", "deferred", "unresolved"] },
+          "chronology": { "type": "object" },
+          "decision": { "type": "string", "minLength": 1 },
+          "rationale": { "type": "string" },
+          "alternatives": { "type": "array" },
+          "tradeoffs": { "type": "array" },
+          "consequences": { "type": "array" },
+          "supersedes": { "type": ["string", "null"] },
+          "authority": { "type": "string", "minLength": 1 },
+          "confidence": { "enum": ["explicit", "high", "medium", "low", "unknown"] },
+          "evidence": { "type": "array", "minItems": 1 },
+          "advisory": { "const": true }
+        },
+        "additionalProperties": true
+      }
+    },
+    "diagnostics": { "type": "object" }
+  },
+  "additionalProperties": true
+}
