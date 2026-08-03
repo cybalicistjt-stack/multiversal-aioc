@@ -1,20 +1,17 @@
-name: Build Content Database
+name: Build Legacy Content Database (Manual Maintenance)
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: build-content-database
+  group: legacy-content-database-maintenance
   cancel-in-progress: true
 
 jobs:
   build:
-    if: github.actor != 'github-actions[bot]' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
