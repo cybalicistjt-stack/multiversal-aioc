@@ -148,15 +148,9 @@ function normalizeFullObject(raw, sourcePath, sourceDigest, index) {
 
 await fs.mkdir(OUT_DIR, { recursive: true });
 const texts = await Promise.all(PARTS.map(file => fs.readFile(file, 'utf8')));
-const decodedFragments = texts.map((text, index) => {
-  try {
-    return decodeBase64Strict(text, `Archive fragment ${index}`);
-  } catch (error) {
-    throw new Error(`Failed to decode ${path.relative(ROOT, PARTS[index])}: ${error.message}`);
-  }
-});
-const joinedPayload = Buffer.concat(decodedFragments);
-if (!joinedPayload.length) throw new Error('Recovered seed archive is empty.');
+const joinedBase64 = texts.map(cleanBase64).join('');
+if (!joinedBase64) throw new Error('Recovered seed archive Base64 stream is empty.');
+const joinedPayload = decodeBase64Strict(joinedBase64, 'Joined seed archive');
 const archive = decodeArchivePayload(joinedPayload);
 let inventoryPayload;
 try {
