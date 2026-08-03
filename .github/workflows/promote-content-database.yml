@@ -68,7 +68,7 @@ jobs:
           test -f /tmp/certified-content/content-db/manifest.json
           test -f /tmp/certified-content/content-db/certification.json
 
-      - name: Revalidate promotion contract
+      - name: Revalidate canonical promotion contract
         run: |
           set -euo pipefail
           node - <<'NODE'
@@ -79,15 +79,19 @@ jobs:
           const manifest = JSON.parse(fs.readFileSync(`${root}/manifest.json`, 'utf8'));
           const certificate = JSON.parse(fs.readFileSync(`${root}/certification.json`, 'utf8'));
           if (certificate.result !== 'PASS') throw new Error(`Certificate is not PASS: ${certificate.result}`);
+          if (certificate.pipelineMode !== 'CANONICAL_OBJECTS_ONLY') throw new Error('Unexpected pipeline mode');
           if (index.format !== 'multiversal-content-database') throw new Error('Unexpected database format');
-          if (!Array.isArray(index.records) || index.records.length < 1000) throw new Error('Certified database is incomplete');
+          if (index.databaseVersion !== '3.0.0') throw new Error(`Unexpected database version: ${index.databaseVersion}`);
+          if (!Array.isArray(index.records) || index.records.length !== 487) throw new Error('Canonical database must contain exactly 487 records');
           if (index.recordCount !== index.records.length) throw new Error('Index record count mismatch');
           if (manifest.recordCount !== index.recordCount) throw new Error('Manifest record count mismatch');
           if (certificate.recordCount !== index.recordCount) throw new Error('Certificate record count mismatch');
+          if (certificate.legacyInventory?.status !== 'QUARANTINED_CORRUPTED_SOURCE') throw new Error('Legacy inventory quarantine is missing');
           const semantic = index.records.map(r => [r.databaseId, r.stableId, r.objectType, r.name]);
           const fingerprint = `sha256:${crypto.createHash('sha256').update(JSON.stringify(semantic)).digest('hex')}`;
           if (certificate.semanticFingerprint !== fingerprint) throw new Error('Certificate fingerprint mismatch');
-          console.log(`Promotion contract PASS: ${index.recordCount} records, ${fingerprint}`);
+          if (index.semanticFingerprint !== fingerprint || manifest.semanticFingerprint !== fingerprint) throw new Error('Database fingerprint mismatch');
+          console.log(`Canonical promotion contract PASS: ${index.recordCount} records, ${fingerprint}`);
           NODE
 
       - name: Promote generated database
@@ -101,10 +105,13 @@ jobs:
           const fs = require('fs');
           const value = {
             format: 'multiversal-content-database-promotion',
+            version: '2.0.0',
+            pipelineMode: 'CANONICAL_OBJECTS_ONLY',
             promotedAt: new Date().toISOString(),
             validationRunId: String(process.env.RUN_ID),
             validatedCommit: process.env.VALIDATED_SHA,
-            promotedByRun: String(process.env.PROMOTION_RUN_ID)
+            promotedByRun: String(process.env.PROMOTION_RUN_ID),
+            legacyInventoryStatus: 'QUARANTINED_CORRUPTED_SOURCE'
           };
           fs.writeFileSync('content-db/promotion.json', JSON.stringify(value, null, 2) + '\n');
           NODE
@@ -120,5 +127,5 @@ jobs:
             echo 'Certified database already matches the repository.'
             exit 0
           fi
-          git commit -m "Promote certified content database from run $RUN_ID"
+          git commit -m "Promote canonical content database from run $RUN_ID"
           git push origin HEAD:main
