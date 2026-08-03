@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/aioc-project-state-v1.json",
+  "title": "AIOC Canonical Project State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "project", "repositories", "milestones", "workItems", "decisions", "handoffs", "ledger", "active"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "owner", "updatedAt"],
+      "properties": {
+        "id": {"const": "multiversal"},
+        "name": {"const": "Multiversal"},
+        "owner": {"type": "string", "minLength": 1},
+        "updatedAt": {"type": "string", "format": "date-time"}
+      }
+    },
+    "repositories": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/repository"},
+      "minItems": 2
+    },
+    "milestones": {"type": "array", "items": {"$ref": "#/$defs/milestone"}},
+    "workItems": {"type": "array", "items": {"$ref": "#/$defs/workItem"}},
+    "decisions": {"type": "array", "items": {"$ref": "#/$defs/decision"}},
+    "handoffs": {"type": "array", "items": {"$ref": "#/$defs/handoff"}},
+    "ledger": {"type": "array", "items": {"$ref": "#/$defs/ledgerEntry"}},
+    "active": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repositoryId", "milestoneId", "workItemId"],
+      "properties": {
+        "repositoryId": {"type": "string"},
+        "milestoneId": {"type": "string"},
+        "workItemId": {"type": "string"},
+        "branch": {"type": "string"}
+      }
+    }
+  },
+  "$defs": {
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "fullName", "purpose", "defaultBranch"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "fullName": {"type": "string", "pattern": "^[^/]+/[^/]+$"},
+        "purpose": {"type": "string", "minLength": 1},
+        "defaultBranch": {"type": "string", "minLength": 1},
+        "canonical": {"type": "boolean", "default": true}
+      }
+    },
+    "milestone": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "status", "sequence"],
+      "properties": {
+        "id": {"type": "string"},
+        "title": {"type": "string"},
+        "status": {"enum": ["planned", "active", "blocked", "complete", "cancelled"]},
+        "sequence": {"type": "integer", "minimum": 0},
+        "evidence": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "workItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "milestoneId", "title", "status", "sequence", "acceptanceCriteria"],
+      "properties": {
+        "id": {"type": "string"},
+        "milestoneId": {"type": "string"},
+        "title": {"type": "string"},
+        "status": {"enum": ["planned", "ready", "active", "blocked", "review", "complete", "cancelled"]},
+        "sequence": {"type": "integer", "minimum": 0},
+        "dependsOn": {"type": "array", "items": {"type": "string"}},
+        "acceptanceCriteria": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "evidence": {"type": "array", "items": {"type": "string"}},
+        "blocker": {"type": ["string", "null"]}
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "status", "createdAt"],
+      "properties": {
+        "id": {"type": "string"},
+        "title": {"type": "string"},
+        "status": {"enum": ["open", "approved", "rejected", "superseded"]},
+        "createdAt": {"type": "string", "format": "date-time"},
+        "resolvedAt": {"type": ["string", "null"], "format": "date-time"},
+        "rationale": {"type": "string"},
+        "evidence": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "createdAt", "workItemId", "summary", "nextAction"],
+      "properties": {
+        "id": {"type": "string"},
+        "createdAt": {"type": "string", "format": "date-time"},
+        "workItemId": {"type": "string"},
+        "summary": {"type": "string"},
+        "nextAction": {"type": "string"},
+        "evidence": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "ledgerEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "at", "actor", "operation", "entityType", "entityId", "beforeHash", "afterHash"],
+      "properties": {
+        "id": {"type": "string"},
+        "at": {"type": "string", "format": "date-time"},
+        "actor": {"type": "string"},
+        "operation": {"enum": ["create", "update", "transition", "reconcile", "import", "repair"]},
+        "entityType": {"enum": ["project", "repository", "milestone", "workItem", "decision", "handoff", "state"]},
+        "entityId": {"type": "string"},
+        "beforeHash": {"type": ["string", "null"]},
+        "afterHash": {"type": "string"},
+        "reason": {"type": "string"},
+        "evidence": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}
