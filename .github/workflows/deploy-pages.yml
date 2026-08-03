@@ -11,6 +11,10 @@ on:
       - 'governance/dispatches/**'
       - 'governance/legacy/**'
       - 'aioc-core.html'
+      - 'content-library.html'
+      - 'content-library.js'
+      - 'content-library.css'
+      - 'content-database.js'
       - 'studio.html'
       - 'balance.html'
       - 'testing-suite.html'
@@ -70,7 +74,7 @@ jobs:
             cp governance/dispatches/AIOC-DISPATCH-MS02-WP011.md _site/governance/dispatches/
           fi
 
-          for page in aioc-core.html studio.html balance.html testing-suite.html feature-modules.html development-os.html diagnostics.html refresh.html; do
+          for page in aioc-core.html content-library.html studio.html balance.html testing-suite.html feature-modules.html development-os.html diagnostics.html refresh.html; do
             cp "$page" _site/
           done
 
@@ -78,21 +82,25 @@ jobs:
 
           generated_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
           cat > _site/deployment-manifest.json <<EOF
-          {"format":"multiversal-aioc-pages-deployment","version":"1.2.1","build":"operational-aioc-1.6.1","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","defaultSurface":"operational","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":8}
+          {"format":"multiversal-aioc-pages-deployment","version":"1.3.0","build":"operational-aioc-1.7","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","defaultSurface":"operational","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":9,"contentLibrary":"integrated"}
           EOF
           cp _site/deployment-manifest.json _site/deployed-build.json
           cat > _site/operational/health.json <<EOF
-          {"status":"operational","application":"Multiversal AIOC","build":"operational-aioc-1.6.1","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":8}
+          {"status":"operational","application":"Multiversal AIOC","build":"operational-aioc-1.7","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":9,"contentLibrary":"integrated"}
           EOF
           touch _site/.nojekyll
 
           test -s _site/index.html
           test -s _site/operational/index.html
+          test -s _site/content-library.html
           test -s _site/operational/health.json
           test -s _site/deployment-manifest.json
           test -s _site/content-db/index.json
           grep -q 'Capability Workbench' _site/operational/index.html
+          grep -q 'Operational AIOC' _site/content-library.html
           node --check _site/operational/operational.js
+          node --check _site/content-library.js
+          node --check _site/content-database.js
 
       - uses: actions/configure-pages@v5
 
