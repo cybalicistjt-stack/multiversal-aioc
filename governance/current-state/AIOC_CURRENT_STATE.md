@@ -1,6 +1,6 @@
 # AIOC Current State
 
-**Status:** Operational AIOC certified; Development Brain Release F active  
+**Status:** Operational AIOC certified; Development Brain Release G active  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Default branch:** `main`  
 **Owner:** John Brandon Turner
@@ -12,10 +12,9 @@
 - Release C — Active Coordinator — COMPLETE
 - Release D — Semantic Intelligence — COMPLETE
 - Release E — Design Intelligence — COMPLETE
+- Release F — Agent Ecosystem — COMPLETE
 
-## Active milestone
-
-### Release F — Agent Ecosystem — ACTIVE
+## Release F completion
 
 ### Step 16 — Specialist Agent Contracts — COMPLETE
 
@@ -23,42 +22,51 @@ Defines eight governed specialist roles with stable scopes, evidence rules, hand
 
 ### Step 17 — Governed Orchestration and Routing — COMPLETE
 
-Step 17 provides deterministic task classification, specialist eligibility, narrowest-supported specialist selection, Development Coordinator mediation, handoff validation, escalation handling, freshness and provenance checks, authority enforcement, and auditable route records. Ambiguous routes, missing inputs, unavailable capabilities, authority mismatches, invalid handoffs, and circular routing remain explicit diagnostics.
+Provides deterministic task classification, specialist eligibility, coordinator-mediated routing, handoff validation, provenance, freshness, escalation, and authority enforcement.
 
-Validated Step 17 evidence:
+### Step 18 — Multi-Agent Review and Synthesis — COMPLETE
 
-- Orchestration Routing workflow run `30836751046` — PASS
-- Specialist Agent Contracts workflow run `30836750964` — PASS
-- Unified Inventory workflow run `30836752503` — PASS
-- Dependency Graph workflow run `30836751080` — PASS
-- Operational Baseline workflow run `30836751052` — PASS
-- Priority and Impact workflow run `30836751051` — PASS
-- Verification Governance workflow run `30836750937` — PASS
-- Design Intent workflow run `30836751012` — PASS
-- Development Brain Integration workflow run `30836750867` — PASS
-- Causal Impact workflow run `30836750801` — PASS
-- Structure Intelligence workflow run `30836750870` — PASS
-- Constraint Rationale workflow run `30836750804` — PASS
-- Completion Readiness workflow run `30836750829` — PASS
-- AIOC Smoke Tests run `30836750851` — PASS
-- Recommendation Planner workflow run `30836750859` — PASS
-- Semantic Retrieval workflow run `30836751027` — PASS
-- Semantic Ontology workflow run `30836750793` — PASS
-- Published artifact `aioc-orchestration-routing`, artifact ID `8865131247`
-- Artifact digest `sha256:4242029eb6b7710d8532d988a9406f3de6e05980638d771c6d5052fc613892b1`
-- Step 17 merge commit `8e4fe8b4ce5e514c93ecc9573aacefaab89f395c`
+Provides deterministic review panels and synthesis records that preserve specialist evidence, confidence, routed scope, authority, constraints, unresolved questions, dissent, minority findings, and owner-decision requirements. Consensus, supported disagreement, unresolved conflict, minority findings, blocked review, and owner-decision-required outcomes remain explicitly distinguished.
+
+Validated Step 18 evidence:
+
+- Multi-Agent Review workflow run `30837371039` — PASS
+- Operational Baseline workflow run `30837372390` — PASS
+- Priority and Impact workflow run `30837370692` — PASS
+- Design Intent workflow run `30837368926` — PASS
+- Semantic Retrieval workflow run `30837368800` — PASS
+- Completion Readiness workflow run `30837368031` — PASS
+- Dependency Graph workflow run `30837368155` — PASS
+- Orchestration Routing workflow run `30837368074` — PASS
+- Structure Intelligence workflow run `30837368242` — PASS
+- Development Brain Integration workflow run `30837368335` — PASS
+- Unified Inventory workflow run `30837367992` — PASS
+- Semantic Ontology workflow run `30837368107` — PASS
+- AIOC Smoke Tests run `30837367990` — PASS
+- Recommendation Planner workflow run `30837368036` — PASS
+- Specialist Agent Contracts workflow run `30837368377` — PASS
+- Causal Impact workflow run `30837368403` — PASS
+- Constraint Rationale workflow run `30837368225` — PASS
+- Verification Governance workflow run `30837368171` — PASS
+- Published artifact `aioc-multi-agent-review`, artifact ID `8865374163`
+- Artifact digest `sha256:aa07e1e148d8c930c08dbd403b6641ee36cddf0800c7af10b79eb6131b3e1e24`
+- Step 18 merge commit `1fa2194e1ebbd5c5b413415090881934a11e7f8a`
 
 ## Authority boundary
 
-Routing remains deterministic, advisory, and proposal-only. It cannot execute work, mutate canonical content, expand specialist authority, grant approval, promote or certify content, assign work, schedule actions, or replace owner and repository governance.
+Review and synthesis remain advisory or proposal-only. They cannot fabricate consensus, silently resolve incompatible claims, execute work, mutate canonical content, grant approval, promote or certify content, assign work, schedule actions, or replace owner and repository governance.
+
+## Active milestone
+
+### Release G — Governed Autonomous Development — ACTIVE
 
 ## Next executable action
 
-**Release F, Step 18 — Multi-Agent Review and Synthesis.**
+**Release G, Step 19 — Safe Plan and Proposal Generation.**
 
-Implement deterministic review panels over routed specialist outputs, preserving each specialist's evidence, confidence, disagreements, authority, and unresolved questions. Synthesis must distinguish consensus, supported disagreement, unresolved conflict, minority findings, blocked review, and owner-decision requirements without fabricating consensus or merging incompatible claims.
+Implement deterministic plan and proposal generation from validated priorities, recommendations, verification, semantic context, design intelligence, routing, and multi-agent synthesis. Every output must preserve evidence, authority, approval requirements, prerequisites, risks, unresolved questions, and rollback or rejection paths. Plans and proposals remain non-executing until later governed controls explicitly authorize action.
 
-Do not begin Release G until Step 18 is generated and validated.
+Do not begin Step 20 until Step 19 is generated and validated.
 
 ## Separate external work item
 
