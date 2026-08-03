@@ -35,8 +35,8 @@ It does not replace owner authority, canonical content certification, or reposit
 ### Release E — Design Intelligence — ACTIVE
 
 13. Design Intent Memory — validated
-14. Decision and Tradeoff History — next
-15. Constraint and Rationale Reasoning
+14. Decision and Tradeoff History — validated
+15. Constraint and Rationale Reasoning — next
 
 ### Release F — Agent Ecosystem — APPROVED
 
@@ -58,22 +58,26 @@ On 2026-08-03, owner John Brandon Turner approved the Release D–G direction. A
 
 ### Step 13 — Design Intent Memory
 
-Validated. Provides stable, evidence-backed intent records derived from active governed Project Memory, preserving explicit goals, intended outcomes, addressed problems, documented tradeoffs, rejected alternatives, invariants, extension notes, authority, confidence, evidence, and unresolved intent. It does not infer rationale from names, code structure, implementation details, lexical similarity, or AI preference.
+Validated. Provides stable, evidence-backed intent records derived from active governed Project Memory, preserving explicit goals, intended outcomes, addressed problems, documented tradeoffs, rejected alternatives, invariants, extension notes, authority, confidence, evidence, and unresolved intent.
 
 ### Step 14 — Decision and Tradeoff History
 
-Next. It must preserve explicit governed decisions and their chronology, status, alternatives, tradeoffs, consequences, authority, evidence, and supersession relationships. Conflicting, duplicate, stale, incomplete, or unresolved decision records must remain visible rather than silently reconciled.
+Validated. Preserves governed decisions, chronology, status, rationale, documented alternatives, accepted tradeoffs, consequences, authority, confidence, evidence, and supersession links. Conflicts, duplicates, stale records, missing rationale, and broken supersession remain explicit diagnostics.
+
+### Step 15 — Constraint and Rationale Reasoning
+
+Next. It must assemble deterministic, evidence-backed rationale chains and applicable constraints from validated design intent, decision history, project memory, semantic context, causal impact, readiness, recommendations, and verification. It must distinguish explicit constraints from derived conclusions, retain confidence and authority, surface contradictions and unresolved gaps, and never substitute AI preference for owner intent.
 
 ## Governance boundaries
 
 - Canonical content remains in the certified content pipeline.
-- Derived semantic, causal, retrieval, design-intent, and decision-history records cannot promote or overwrite canonical content.
-- Unsupported meaning, causality, rationale, or decision history must remain unresolved rather than guessed.
-- Findings preserve uncertainty, source evidence, confidence, freshness, chronology, and authority boundaries.
+- Derived semantic, causal, retrieval, design-intent, decision-history, and reasoning records cannot promote or overwrite canonical content.
+- Unsupported meaning, causality, rationale, decisions, or conclusions must remain unresolved rather than guessed.
+- Findings preserve uncertainty, source evidence, confidence, freshness, chronology, derivation method, and authority boundaries.
 - Browser access remains read-only; MCP, REST, and Codex writes remain proposal-only.
 - No intelligence artifact grants execution, mutation, promotion, certification, assignment, scheduling, or approval authority.
 - All future autonomous behavior remains reviewable and subject to repository CI and owner/governance controls.
 
 ## Next executable step
 
-Implement and validate Step 14: Decision and Tradeoff History. Do not begin Step 15 until Step 14 generates a valid artifact and all required workflows pass.
+Implement and validate Step 15: Constraint and Rationale Reasoning. Do not begin Release F until Step 15 generates a valid artifact and all required workflows pass.
