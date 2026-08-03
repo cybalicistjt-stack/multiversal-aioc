@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/materialize-content-source.mjs'
+      - 'scripts/normalize-seed-fragments.mjs'
       - 'scripts/build-content-database.mjs'
       - 'scripts/certify-content-pipeline.mjs'
       - 'catalog-seed-parts/**'
@@ -38,13 +39,17 @@ jobs:
       - name: Check pipeline syntax
         run: |
           node --check scripts/materialize-content-source.mjs
+          node --check scripts/normalize-seed-fragments.mjs
           node --check scripts/build-content-database.mjs
           node --check scripts/certify-content-pipeline.mjs
 
       - name: Materialize canonical source bundle
         run: node scripts/materialize-content-source.mjs
 
-      - name: Diagnose seed archive boundaries
+      - name: Normalize and validate seed fragment boundaries
+        run: node scripts/normalize-seed-fragments.mjs
+
+      - name: Record normalized seed layout
         run: |
           mkdir -p evidence/content-pipeline
           node - <<'NODE' | tee evidence/content-pipeline/seed-layout.txt
@@ -57,30 +62,21 @@ jobs:
           for (const file of parts) {
             const raw = fs.readFileSync(file, 'utf8');
             const compact = clean(raw);
-            const padding = [...compact].map((c,i) => c === '=' ? i : -1).filter(i => i >= 0);
             console.log(JSON.stringify({
               file,
-              rawBytes: Buffer.byteLength(raw),
               compactLength: compact.length,
               modulo4: compact.length % 4,
               prefix: compact.slice(0,16),
               suffix: compact.slice(-16),
-              paddingCount: padding.length,
-              firstPadding: padding.length ? padding[0] : null,
-              lastPadding: padding.length ? padding.at(-1) : null,
               compactSha256: hash(compact)
             }));
             joined += compact;
           }
-          const internalPadding = [...joined].map((c,i) => c === '=' && i < joined.length - 2 ? i : -1).filter(i => i >= 0);
           console.log(JSON.stringify({
             joinedLength: joined.length,
             joinedModulo4: joined.length % 4,
             joinedPrefix: joined.slice(0,16),
             joinedSuffix: joined.slice(-16),
-            totalPadding: [...joined].filter(c => c === '=').length,
-            internalPaddingCount: internalPadding.length,
-            firstInternalPadding: internalPadding.length ? internalPadding[0] : null,
             joinedSha256: hash(joined)
           }));
           NODE
@@ -116,6 +112,7 @@ jobs:
           path: |
             content-db
             evidence/content-pipeline/latest-certificate.json
+            evidence/content-pipeline/seed-normalization.json
           retention-days: 30
           if-no-files-found: error
 
@@ -131,6 +128,7 @@ jobs:
             echo "- Commit: ${GITHUB_SHA}"
             echo "- Branch: ${GITHUB_REF_NAME}"
             echo "- Recorded: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "- Seed normalization present: $([ -f evidence/content-pipeline/seed-normalization.json ] && echo yes || echo no)"
             echo "- Certificate present: $([ -f content-db/certification.json ] && echo yes || echo no)"
             echo "- Database index present: $([ -f content-db/index.json ] && echo yes || echo no)"
           } | tee evidence/content-pipeline/runner-summary.md >> "$GITHUB_STEP_SUMMARY"
