@@ -1,0 +1,26 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://multiversal.example/schemas/aioc/runtime-incident.schema.json",
+  "title":"AIOC Runtime Incident",
+  "type":"object",
+  "required":["incidentId","campaignId","environmentId","severity","state","detectedAt","lastKnownGoodState","evidenceReferences"],
+  "properties":{
+    "incidentId":{"type":"string","pattern":"^INC-[A-Z0-9-]+$"},
+    "campaignId":{"type":"string"},
+    "environmentId":{"type":"string"},
+    "sessionId":{"type":["string","null"]},
+    "severity":{"enum":["info","advisory","warning","major","critical"]},
+    "state":{"enum":["detected","triaged","contained","recovering","monitoring","resolved","unrecoverable","archived"]},
+    "detectedAt":{"type":"string","format":"date-time"},
+    "lastKnownGoodState":{"type":"object"},
+    "affectedParticipants":{"type":"array","items":{"type":"string"}},
+    "evidenceReferences":{"type":"array","minItems":1,"items":{"type":"object"}},
+    "containmentActions":{"type":"array","items":{"type":"object"}},
+    "recoveryPlan":{"type":["object","null"]},
+    "rootCause":{"type":["object","null"]},
+    "correctiveActions":{"type":"array","items":{"type":"object"}},
+    "closureAuthority":{"type":["object","null"]},
+    "resolvedAt":{"type":["string","null"],"format":"date-time"}
+  },
+  "additionalProperties":false
+}
