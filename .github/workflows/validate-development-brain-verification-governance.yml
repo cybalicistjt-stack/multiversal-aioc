@@ -1,0 +1,45 @@
+name: Validate Development Brain Verification Governance
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'governance/development-brain/**'
+      - 'scripts/development-brain/**'
+      - '.github/workflows/validate-development-brain-verification-governance.yml'
+      - 'content-db/index.json'
+      - 'governance/shared-state/AIOC_SHARED_STATE.json'
+  pull_request:
+    paths:
+      - 'governance/development-brain/**'
+      - 'scripts/development-brain/**'
+      - '.github/workflows/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Generate verification governance artifact
+        run: |
+          mkdir -p tmp
+          node scripts/development-brain/generate-verification-governance.mjs tmp/AIOC_UNIFIED_INVENTORY.json tmp/AIOC_COMPLETION_READINESS.json tmp/AIOC_RECOMMENDATION_PLANNER.json tmp/AIOC_VERIFICATION_GOVERNANCE.json
+      - name: Validate verification governance artifact
+        run: |
+          test -s tmp/AIOC_VERIFICATION_GOVERNANCE.json
+          node scripts/development-brain/validate-verification-governance.mjs tmp/AIOC_VERIFICATION_GOVERNANCE.json
+      - name: Publish verification governance artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aioc-verification-governance
+          path: tmp/AIOC_VERIFICATION_GOVERNANCE.json
+          if-no-files-found: error
+          retention-days: 14
