@@ -2,9 +2,9 @@
 
 ## Purpose
 
-The Development Brain converts governed AIOC state into durable project memory, normalized inventory, dependency and semantic intelligence, readiness analysis, prioritization, recommendations, verification, design intelligence, specialist-agent coordination, multi-agent synthesis, safe planning, and governed AI integration surfaces.
+The Development Brain converts governed AIOC state into durable project memory, normalized inventory, dependency and semantic intelligence, readiness analysis, prioritization, recommendations, verification, design intelligence, specialist-agent coordination, multi-agent synthesis, safe planning, review packages, regression hypotheses, and exact-fingerprint human approval gates.
 
-It does not replace owner authority, canonical content certification, or repository governance.
+It does not replace owner authority, canonical content certification, repository governance, or implementation review.
 
 ## Release plan
 
@@ -44,36 +44,33 @@ It does not replace owner authority, canonical content certification, or reposit
 17. Governed Orchestration and Routing — validated
 18. Multi-Agent Review and Synthesis — validated
 
-### Release G — Governed Autonomous Development — ACTIVE
+### Release G — Governed Autonomous Development — COMPLETE
 
-19. Safe Plan and Proposal Generation — validated
-20. Automated Review Packages and Regression Prediction — next
-21. Continuous Validation with Human Approval Gates
+19. Safe Plan and Proposal Generation — behaviorally validated
+20. Automated Review Packages and Regression Prediction — behaviorally validated
+21. Continuous Validation with Human Approval Gates — behaviorally validated
 
-## Owner authorization
+## Final Release G proof
 
-On 2026-08-03, owner John Brandon Turner approved the Release D–G direction. Approval authorizes bounded implementation and validation work only; it does not authorize silent canonical mutation, certification, promotion, scheduling, assignment, or substitution of owner decisions.
+A populated five-scenario acceptance corpus proves the complete chain from review input through planning, review packaging, and approval gating. Empty-output false positives are prohibited. Dissent, unresolved questions, risks, rollback guidance, validation requirements, and owner decisions remain visible. Approval is valid only when explicitly issued by the human owner for the exact current package fingerprint.
 
-## Release G contracts
+Final validation evidence:
 
-### Step 19 — Safe Plan and Proposal Generation
-
-Validated. Generates deterministic, evidence-backed plans and proposals preserving bounded scope, sequencing, prerequisites, risks, unresolved questions, evidence, confidence, authority and approval requirements, rejection paths, rollback guidance, and minority findings. Outcomes distinguish proposal-only, owner-decision-required, blocked, observation-only, and later-executable-after-approval states. No outcome grants execution authority.
-
-### Step 20 — Automated Review Packages and Regression Prediction
-
-Next. It must assemble deterministic review packages over validated plans and generate bounded, evidence-backed regression predictions. Each prediction must preserve affected objects and domains, impact paths, assumptions, uncertainty, confidence, freshness, authority, required validations, mitigation options, and approval requirements. Predictions remain hypotheses and may not be treated as established failures without validation.
+- Step 19 hardened run `30840013488` — PASS
+- Step 20 run `30840300962` — PASS
+- Step 21 end-to-end run `30840622434` — PASS
+- All required upstream workflows and smoke tests — PASS
 
 ## Governance boundaries
 
 - Canonical content remains in the certified content pipeline.
-- Derived intelligence, plans, proposals, reviews, and predictions cannot promote or overwrite canonical content.
-- Unsupported meaning, causality, rationale, decisions, conclusions, specialization, routing, synthesis, planning, proposal scope, or predicted regression must remain unresolved rather than guessed.
-- Findings preserve uncertainty, source evidence, confidence, freshness, chronology, derivation method, authority boundaries, minority positions, risks, prerequisites, assumptions, mitigations, and approval requirements.
-- Browser access remains read-only; MCP, REST, Codex, specialist-agent, plan, proposal, review-package, and prediction writes remain proposal-only unless explicitly governed otherwise.
-- No intelligence artifact, agent contract, route, review, synthesis, plan, proposal, package, or prediction grants execution, mutation, promotion, certification, assignment, scheduling, or approval authority.
-- All future autonomous behavior remains reviewable and subject to repository CI and owner/governance controls.
+- Unsupported meaning, causality, rationale, decisions, conclusions, specialization, routing, synthesis, planning, or predicted regression remains unresolved rather than guessed.
+- Regression predictions remain hypotheses until independently validated.
+- Missing human decisions remain pending; silence, consensus, CI success, and AI recommendations cannot imply approval.
+- Approval becomes stale when its package fingerprint no longer matches current inputs.
+- An approved gate grants validation readiness only.
+- No Development Brain artifact grants execution, canonical mutation, merge, promotion, certification, assignment, scheduling, or autonomous approval authority.
 
-## Next executable step
+## Roadmap boundary
 
-Implement and validate Step 20: Automated Review Packages and Regression Prediction. Do not begin Step 21 until Step 20 generates a valid artifact and all required workflows pass.
+The approved Development Brain roadmap ends at Step 21. Do not create deeper internal layers unless real application use demonstrates a specific missing capability. Future work should apply the completed Development Brain to Multiversal implementation tasks under owner and repository governance.
