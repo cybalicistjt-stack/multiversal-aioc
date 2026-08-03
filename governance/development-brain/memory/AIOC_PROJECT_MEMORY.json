@@ -1,0 +1,158 @@
+{
+  "format": "multiversal-aioc-project-memory",
+  "version": "1.0.0",
+  "revision": 1,
+  "updatedAt": "2026-08-03T15:00:00.000Z",
+  "updatedBy": "ChatGPT",
+  "entries": [
+    {
+      "memoryId": "AIOC-MEM-0001",
+      "kind": "decision",
+      "status": "active",
+      "title": "AIOC is the central governed development operating system",
+      "summary": "AIOC is the authoritative coordination layer for Multiversal development. Browser UI, Codex, ChatGPT-compatible clients, and future agents should operate against the same governed state rather than maintain isolated project memories.",
+      "rationale": "A shared operating system prevents fragmented context, duplicate work, unverifiable updates, and browser-only state loss.",
+      "authority": "owner-approved",
+      "scope": ["architecture", "ai-integration", "governance"],
+      "relatedIds": ["AIOC", "Multiversal"],
+      "sourceRecords": [
+        { "path": "governance/current-state/AIOC_CURRENT_STATE.md", "commit": null, "note": "Canonical operating state" },
+        { "path": "bridge/README.md", "commit": null, "note": "Bridge architecture" }
+      ],
+      "owner": "John Brandon Turner",
+      "dueOrReviewAt": null,
+      "resolution": null,
+      "supersedes": null,
+      "createdAt": "2026-08-03T15:00:00.000Z",
+      "updatedAt": "2026-08-03T15:00:00.000Z",
+      "updatedBy": "ChatGPT"
+    },
+    {
+      "memoryId": "AIOC-MEM-0002",
+      "kind": "constraint",
+      "status": "active",
+      "title": "Canonical content promotion remains governed",
+      "summary": "Shared drafts, local readiness, review packages, and AI-generated proposals are not canonical game-ready content until owner approval, repository validation, certification, and promotion complete.",
+      "rationale": "This boundary protects provenance, stable IDs, release integrity, and owner authority.",
+      "authority": "governance-record",
+      "scope": ["content", "promotion", "governance"],
+      "relatedIds": ["content-db", "shared-state"],
+      "sourceRecords": [
+        { "path": "bridge/skills/multiversal-aioc/SKILL.md", "commit": null, "note": "Operating boundary" }
+      ],
+      "owner": "John Brandon Turner",
+      "dueOrReviewAt": null,
+      "resolution": null,
+      "supersedes": null,
+      "createdAt": "2026-08-03T15:00:00.000Z",
+      "updatedAt": "2026-08-03T15:00:00.000Z",
+      "updatedBy": "ChatGPT"
+    },
+    {
+      "memoryId": "AIOC-MEM-0003",
+      "kind": "priority",
+      "status": "active",
+      "title": "Build Development Brain Release A before expanding browser features",
+      "summary": "Current priority is to complete canonical project memory, unified inventory, and dependency graph so later content-completion work can be prioritized by impact and structural correctness.",
+      "rationale": "The foundation prevents extensive development of duplicate, component, or parent-granted records as independent game objects.",
+      "authority": "owner-approved",
+      "scope": ["development-brain", "roadmap", "content-intelligence"],
+      "relatedIds": ["DBRAIN-A", "content-structure"],
+      "sourceRecords": [
+        { "path": "governance/current-state/AIOC_CURRENT_STATE.md", "commit": null, "note": "Existing capability-integration objective" }
+      ],
+      "owner": "John Brandon Turner",
+      "dueOrReviewAt": null,
+      "resolution": null,
+      "supersedes": null,
+      "createdAt": "2026-08-03T15:00:00.000Z",
+      "updatedAt": "2026-08-03T15:00:00.000Z",
+      "updatedBy": "ChatGPT"
+    },
+    {
+      "memoryId": "AIOC-MEM-0004",
+      "kind": "technical-debt",
+      "status": "active",
+      "title": "Browser working state is not yet fully synchronized with shared state",
+      "summary": "Some AIOC working objects, structure decisions, and evidence may still exist only in browser localStorage until browser synchronization with the hosted shared-state service is implemented and verified.",
+      "rationale": "Repository-backed shared state and MCP tools exist, but the browser migration path is not yet the sole source of working-state truth.",
+      "authority": "governance-record",
+      "scope": ["browser", "shared-state", "durability"],
+      "relatedIds": ["aioc-state", "AIOC_SHARED_STATE"],
+      "sourceRecords": [
+        { "path": "governance/shared-state/AIOC_SHARED_STATE.json", "commit": null, "note": "Shared-state ledger" }
+      ],
+      "owner": null,
+      "dueOrReviewAt": null,
+      "resolution": null,
+      "supersedes": null,
+      "createdAt": "2026-08-03T15:00:00.000Z",
+      "updatedAt": "2026-08-03T15:00:00.000Z",
+      "updatedBy": "ChatGPT"
+    },
+    {
+      "memoryId": "AIOC-MEM-0005",
+      "kind": "constraint",
+      "status": "active",
+      "title": "Live verification is required after deployment changes",
+      "summary": "CI success alone is insufficient. Deployment work must compare repository and deployed commits and verify required live routes, assets, behavior, and certified content count before success is claimed.",
+      "rationale": "Earlier successful workflow runs still left stale or incomplete browser behavior visible on the public site.",
+      "authority": "governance-record",
+      "scope": ["deployment", "verification", "quality"],
+      "relatedIds": ["verify_live_aioc", "Pages"],
+      "sourceRecords": [
+        { "path": "AGENTS.md", "commit": null, "note": "Repository agent contract" },
+        { "path": "bridge/skills/multiversal-aioc/SKILL.md", "commit": null, "note": "AI operating rules" }
+      ],
+      "owner": null,
+      "dueOrReviewAt": null,
+      "resolution": null,
+      "supersedes": null,
+      "createdAt": "2026-08-03T15:00:00.000Z",
+      "updatedAt": "2026-08-03T15:00:00.000Z",
+      "updatedBy": "ChatGPT"
+    },
+    {
+      "memoryId": "AIOC-MEM-0006",
+      "kind": "open-question",
+      "status": "active",
+      "title": "Which records should be consolidated before completion work?",
+      "summary": "The certified source set contains over-fragmented labels such as item-specific attack actions. The structure pipeline must classify records as standalone, reusable generic, parent component, granted variant, duplicate, or obsolete before full development.",
+      "rationale": "Incorrect granularity would multiply authoring, balance, validation, and maintenance costs.",
+      "authority": "owner-approved",
+      "scope": ["content-structure", "objects", "consolidation"],
+      "relatedIds": ["Attack with Rapier", "content-structure"],
+      "sourceRecords": [
+        { "path": "content-structure.html", "commit": null, "note": "Structure pipeline UI" }
+      ],
+      "owner": null,
+      "dueOrReviewAt": null,
+      "resolution": null,
+      "supersedes": null,
+      "createdAt": "2026-08-03T15:00:00.000Z",
+      "updatedAt": "2026-08-03T15:00:00.000Z",
+      "updatedBy": "ChatGPT"
+    },
+    {
+      "memoryId": "AIOC-MEM-0007",
+      "kind": "priority",
+      "status": "active",
+      "title": "WP-011 remains the external Mac-dependent application task",
+      "summary": "The Tauri iOS/iPadOS spike remains blocked on one-time access to a suitable Mac. AIOC Development Brain work may continue without redefining or displacing WP-011.",
+      "rationale": "The AIOC and Multiversal application workstreams are related but distinct; infrastructure work must not erase the governed application roadmap.",
+      "authority": "governance-record",
+      "scope": ["roadmap", "wp-011", "application"],
+      "relatedIds": ["WP-011"],
+      "sourceRecords": [
+        { "path": "governance/current-state/AIOC_CURRENT_STATE.md", "commit": null, "note": "Next external executable action" }
+      ],
+      "owner": "John Brandon Turner",
+      "dueOrReviewAt": null,
+      "resolution": null,
+      "supersedes": null,
+      "createdAt": "2026-08-03T15:00:00.000Z",
+      "updatedAt": "2026-08-03T15:00:00.000Z",
+      "updatedBy": "ChatGPT"
+    }
+  ]
+}
