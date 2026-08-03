@@ -16,7 +16,7 @@
 
   function clearActiveCards() {
     const activeCards = document.querySelectorAll?.('#objectList .object-card.active') || [];
-    activeCards.forEach(item => item.classList.remove('active'));
+    activeCards.forEach(item => item.classList?.remove?.('active'));
   }
 
   function activateCard(card, invokeCoreClick) {
@@ -24,8 +24,8 @@
     activating = true;
     try {
       clearActiveCards();
-      card.classList.add('active');
-      if (invokeCoreClick) card.click();
+      card.classList?.add?.('active');
+      if (invokeCoreClick) card.click?.();
       queueMicrotask(openWorkbench);
     } finally {
       queueMicrotask(() => { activating = false; });
