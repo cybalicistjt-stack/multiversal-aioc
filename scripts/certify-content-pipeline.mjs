@@ -13,9 +13,10 @@ const PARTS = [0, 1, 2, 3, 4].map(i => path.join(PART_DIR, `phase1-7.${String(i)
 const fail = message => { throw new Error(message); };
 const sha256 = value => crypto.createHash('sha256').update(value).digest('hex');
 const readJson = async file => JSON.parse(await fs.readFile(file, 'utf8'));
+const cleanBase64 = text => String(text).replace(/[^A-Za-z0-9+/=]/g, '');
 
 function decodeBase64Strict(text, label) {
-  const compact = String(text).replace(/\s/g, '');
+  const compact = cleanBase64(text);
   if (!compact) fail(`${label} is empty.`);
   if (!/^[A-Za-z0-9+/=]+$/.test(compact)) fail(`${label} contains non-Base64 characters.`);
   if (compact.length % 4 === 1) fail(`${label} has an invalid Base64 length.`);
@@ -25,21 +26,23 @@ function decodeBase64Strict(text, label) {
 }
 
 async function certifySeedArchive() {
-  const fragments = [];
+  const encodedFragments = [];
   const fragmentEvidence = [];
   for (const [index, file] of PARTS.entries()) {
     const encoded = await fs.readFile(file, 'utf8');
-    const bytes = decodeBase64Strict(encoded, `Seed fragment ${index}`);
-    fragments.push(bytes);
+    const compact = cleanBase64(encoded);
+    if (!compact) fail(`Seed fragment ${index} is empty.`);
+    encodedFragments.push(compact);
     fragmentEvidence.push({
       path: path.relative(ROOT, file).replaceAll(path.sep, '/'),
       encodedBytes: Buffer.byteLength(encoded),
-      decodedBytes: bytes.length,
-      sha256: sha256(bytes)
+      compactCharacters: compact.length,
+      encodedSha256: sha256(compact)
     });
   }
 
-  const archive = Buffer.concat(fragments);
+  const joinedBase64 = encodedFragments.join('');
+  const archive = decodeBase64Strict(joinedBase64, 'Joined Phase 1–7 seed archive');
   if (archive[0] !== 0x1f || archive[1] !== 0x8b) fail('Recovered Phase 1–7 archive does not have a gzip header.');
 
   let payload;
@@ -54,6 +57,8 @@ async function certifySeedArchive() {
 
   return {
     fragmentEvidence,
+    joinedBase64Characters: joinedBase64.length,
+    joinedBase64Sha256: sha256(joinedBase64),
     archiveBytes: archive.length,
     archiveSha256: sha256(archive),
     inventoryRecords: payload.records.length,
@@ -116,7 +121,7 @@ const canonicalSource = await certifyCanonicalSource();
 const database = await certifyGeneratedDatabase(seed, canonicalSource);
 const certificate = {
   format: 'multiversal-content-pipeline-certificate',
-  version: '1.1.0',
+  version: '1.2.0',
   result: 'PASS',
   certifiedAt: new Date().toISOString(),
   recordCount: database.records,
