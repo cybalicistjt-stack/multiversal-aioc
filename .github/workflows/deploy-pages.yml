@@ -1,8 +1,14 @@
-name: Deploy GitHub Pages
+name: Deploy Operational AIOC Pages
 
 on:
   push:
     branches: [main]
+    paths:
+      - 'index.html'
+      - 'operational/**'
+      - 'governance/current-state/**'
+      - 'governance/dispatches/**'
+      - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
 
 permissions:
@@ -11,7 +17,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: operational-aioc-pages
   cancel-in-progress: true
 
 jobs:
@@ -24,58 +30,39 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Validate application scripts
+      - name: Validate operational frontend
         run: |
-          node --check content-database.js
-          node --check content-catalog-v4.js
-          node --check content-library.js
-          node --check unified-desktop.js
-          node --check scripts/materialize-content-source.mjs
-          node --check scripts/build-content-database.mjs
-          test -f content-library.html
-          test -f content-library.css
+          test -f index.html
+          test -f operational/index.html
+          test -f operational/operational.css
+          test -f operational/operational.js
+          grep -q './operational/' index.html
+          grep -q 'Multiversal Command Center' operational/index.html
+          node --check operational/operational.js
 
-      - name: Materialize canonical content source
-        run: node scripts/materialize-content-source.mjs
-
-      - name: Build Multiversal content database
-        run: node scripts/build-content-database.mjs
-
-      - name: Validate generated content database
+      - name: Assemble static Pages artifact
         run: |
-          node - <<'NODE'
-          const fs = require('fs');
-          const source = JSON.parse(fs.readFileSync('content-source/phase-1-8-canonical-objects.json', 'utf8'));
-          const index = JSON.parse(fs.readFileSync('content-db/index.json', 'utf8'));
-          const manifest = JSON.parse(fs.readFileSync('content-db/manifest.json', 'utf8'));
-          if (source.records.length !== 487) throw new Error(`Canonical source count mismatch: ${source.records.length}`);
-          if (index.format !== 'multiversal-content-database') throw new Error('Unexpected database format');
-          if (!Array.isArray(index.records) || index.records.length < 1000) throw new Error('Database did not recover the Phase 1–7 inventory');
-          if (index.recordCount !== index.records.length) throw new Error('Record count mismatch');
-          if (manifest.recordCount !== index.recordCount) throw new Error('Manifest count mismatch');
-          const fullBodies = index.records.filter(r => r.gameObject).length;
-          if (fullBodies < 487) throw new Error(`Expected at least 487 full object bodies; found ${fullBodies}`);
-          console.log(`Validated ${index.recordCount} content records, including ${fullBodies} full object bodies.`);
-          NODE
-
-      - name: Write deployed build marker
-        run: |
-          cat > deployed-build.json <<EOF
-          {"build":"content-library-2.1","commit":"${GITHUB_SHA}","generatedAt":"$(date -u +%Y-%m-%dT%H:%M:%SZ)"}
+          rm -rf _site
+          mkdir -p _site/operational _site/governance/current-state _site/governance/dispatches
+          cp index.html _site/index.html
+          cp operational/index.html operational/operational.css operational/operational.js _site/operational/
+          cp governance/current-state/AIOC_CURRENT_STATE.md _site/governance/current-state/
+          cp governance/current-state/AIOC_OPERATIONAL_HANDOFF.md _site/governance/current-state/
+          if [ -f governance/dispatches/AIOC-DISPATCH-MS02-WP011.md ]; then
+            cp governance/dispatches/AIOC-DISPATCH-MS02-WP011.md _site/governance/dispatches/
+          fi
+          cat > _site/deployed-build.json <<EOF
+          {"build":"operational-aioc-1.0","commit":"${GITHUB_SHA}","generatedAt":"$(date -u +%Y-%m-%dT%H:%M:%SZ)"}
           EOF
+          touch _site/.nojekyll
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload static site with generated database
+      - name: Upload operational site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment
