@@ -1,38 +1,50 @@
-name: Build Legacy Content Database (Manual Maintenance)
+name: Validate Content Database Pipeline
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build-content-database.mjs'
+      - 'catalog-seed-parts/**'
+      - 'content-source/**'
+      - '.github/workflows/build-content-database.yml'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: legacy-content-database-maintenance
+  group: validate-content-database
   cancel-in-progress: true
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Generate repository content database
+      - name: Check generator syntax
+        run: node --check scripts/build-content-database.mjs
+      - name: Generate content database in runner workspace
         run: node scripts/build-content-database.mjs
-      - name: Validate generated database
+      - name: Validate generated database contracts
         run: |
-          node -e "const fs=require('fs'); const x=JSON.parse(fs.readFileSync('content-db/index.json')); if(x.recordCount<1000||x.records.length!==x.recordCount) process.exit(1); console.log(x.recordCount+' records validated')"
-      - name: Commit generated database
-        run: |
-          if git diff --quiet -- content-db; then
-            echo 'Content database is already current.'
-            exit 0
-          fi
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add content-db
-          git commit -m 'Generate repository content database'
-          git push
+          node - <<'NODE'
+          const fs = require('fs');
+          const index = JSON.parse(fs.readFileSync('content-db/index.json', 'utf8'));
+          const manifest = JSON.parse(fs.readFileSync('content-db/manifest.json', 'utf8'));
+          if (index.format !== 'multiversal-content-database') throw new Error('Unexpected database format');
+          if (!Array.isArray(index.records) || index.records.length < 1000) throw new Error(`Expected at least 1000 records; found ${index.records?.length ?? 0}`);
+          if (index.recordCount !== index.records.length) throw new Error('Index record count mismatch');
+          if (manifest.recordCount !== index.recordCount) throw new Error('Manifest record count mismatch');
+          if (!index.summary || index.summary.inventoryRecords < 1000) throw new Error('Recovered inventory summary is incomplete');
+          console.log(`Validated ${index.recordCount} records and ${index.summary.fullObjectBodies} full object bodies.`);
+          NODE
+      - name: Upload generated database evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: validated-content-database
+          path: content-db
+          retention-days: 14
