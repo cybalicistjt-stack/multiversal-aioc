@@ -23,50 +23,58 @@ AIOC-0-001 through AIOC-0-012 are complete.
 
 **AIOC-I-007 — Certification, Hardening, Deployment, and Recovery**
 
-## Latest completed work item
+## Completed work
 
 ### AIOC-I-007A — Release Readiness, Security Hardening, and Deployment Projection — PASS
 
+Validated by `release-readiness-projection` and all required regression suites.
+
+### AIOC-I-007B — Deployment Execution, Runtime Verification, and Recovery Certification — PASS
+
 Evidence:
 
-- release-readiness, security-hardening, artifact-integrity, deployment-stage, rollback, restore, and approval projection;
-- 16 executable acceptance tests;
-- `release-readiness-projection` run 2 — PASS;
-- AIOC Smoke Tests run 531 — PASS;
+- clean release-readiness prerequisite;
+- canonical repository, branch, and active-work-item binding;
+- deployment identity, environment, commit, timestamp, status, artifact-checksum, runtime, recovery, durable-evidence, and owner-approval controls;
+- 20 executable acceptance tests;
+- `deployment-runtime-recovery-certification` run 2 — PASS;
+- `release-readiness-projection` run 6 — PASS;
+- AIOC Smoke Tests run 535 — PASS;
 - all eighteen additional implementation and regression suites — PASS.
 
 ## Current work item
 
-**AIOC-I-007B — Deployment Execution, Runtime Verification, and Recovery Certification**
+**AIOC-I-007C — Final AIOC Operational Certification and Handoff**
 
-Purpose: certify an executed deployment only when release readiness is a clean PASS, canonical repository and work bindings match, the deployed artifact checksum is verified, execution succeeds, required runtime checks pass with durable evidence, rollback and recovery checks pass, and evidence-backed owner approval exists.
+Purpose: issue the final AIOC operational certificate only when all seven implementation milestones and every required operating capability are evidence-backed and passing, continuity and repository health permit execution, the deployed runtime and recovery certificate is valid, owner approval is durable, no blocking risk remains open, and the governed operational handoff defines support, recovery, and the next executable action.
 
 **Execution state:** implementation committed; CI validation pending.
 
 Repository files:
 
-- `implementation/release-hardening/deployment-runtime-recovery-certification.mjs`
-- `implementation/release-hardening/deployment-runtime-recovery-certification.test.mjs`
-- `.github/workflows/deployment-runtime-recovery-certification.yml`
+- `implementation/release-hardening/final-operational-certification.mjs`
+- `implementation/release-hardening/final-operational-certification.test.mjs`
+- `.github/workflows/final-operational-certification.yml`
 
 Implemented:
 
-- clean release-readiness prerequisite and fingerprint verification;
-- canonical repository, branch, and active-work-item binding;
-- deployment identity, environment, commit, timestamps, status, and checksum enforcement;
-- required startup, health, persistence, permissions, and continuity runtime checks;
-- required rollback, restore, data-integrity, and service-recovery checks;
-- durable evidence resolution for runtime, recovery, and approval records;
-- evidence-backed owner approval requirement;
-- deterministic certification fingerprints;
+- clean continuity and repository-health requirements;
+- canonical repository, branch, and work-item binding;
+- evidence-backed PASS enforcement for AIOC-I-001 through AIOC-I-007;
+- availability and durable-evidence checks for all required AIOC operating capabilities;
+- deployment certification fingerprint and evidence verification;
+- evidence-backed owner approval;
+- governed operational handoff requirements;
+- blocking and nonblocking risk classification;
+- deterministic final-certificate fingerprints;
 - PASS, PASS WITH WARNINGS, and FAIL outcomes;
-- execution and completion freeze unless certification is a clean PASS;
-- 20 executable acceptance tests;
-- dedicated `deployment-runtime-recovery-certification` GitHub Actions workflow.
+- completion freeze unless final certification is a clean PASS;
+- 18 executable acceptance tests;
+- dedicated `final-operational-certification` GitHub Actions workflow.
 
 ## Next executable action
 
-Inspect `deployment-runtime-recovery-certification`, `release-readiness-projection`, and all required regression suites for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-007B and activate the final AIOC operational certification tranche.
+Inspect `final-operational-certification`, `deployment-runtime-recovery-certification`, `release-readiness-projection`, and all required regression suites for the latest branch commit. Fix any failure. On clean PASS, close AIOC-I-007 and certify the AIOC operational implementation complete. Then update the governed handoff to begin operational use of AIOC for Multiversal application delivery.
 
 ## Continuity rule
 
