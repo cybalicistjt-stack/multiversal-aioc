@@ -4,7 +4,6 @@
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Default branch:** `main`  
 **Canonical working branch:** `governance/session-bootstrap-v1`  
-**Last verified base commit:** `a39d248d9c23b75d042bd6e26ff025dec3db2dcd`  
 **Owner:** John Brandon Turner
 
 ## Verified completed architecture packages
@@ -17,38 +16,36 @@
 - AIOC-0-006 — Agent Orchestration and Credit Optimization Architecture
 - AIOC-0-007 — Developer Workbench Architecture
 - AIOC-0-008 — Content Studio Architecture
+- AIOC-0-009 — Campaign and Runtime Operations Architecture — validated PASS
 
-AIOC-0-008 is verified as `PASS` and its outgoing work order identifies AIOC-0-009 as the next package.
-
-## Current milestone
+## Latest completed package
 
 **AIOC-0-009 — Campaign and Runtime Operations Architecture**
 
-Purpose: define governed campaign, session, scene, encounter, player/GM runtime, synchronization, approval, evidence, replay, offline, and recovery architecture for Multiversal.
+Repository path: `architecture/aioc-0-009/`
 
-## Required outputs for AIOC-0-009
+Package contents include:
 
-- runtime workspace architecture;
-- campaign and world binding;
-- session and scene state model;
-- GM/player action and approval loop;
-- encounter, social, and investigation modes;
-- offline and synchronization policy;
-- runtime evidence and replay;
-- implementation slices;
-- test matrix.
+- implementation-ready architecture specification;
+- 58-capability catalog;
+- 16 governed workflows;
+- 24 blocking validation rules;
+- runtime-operation schema;
+- runtime-incident schema;
+- 60-test acceptance and integration matrix;
+- validation result;
+- manifest;
+- outgoing AIOC-0-010 work order.
 
-## Acceptance criteria
+## Current milestone
 
-- Canonical content remains immutable at runtime unless an authorized mutation workflow is used.
-- GM and player permissions are explicit.
-- Action approval and alteration are evidence-bearing.
-- Offline recovery does not silently lose session state.
-- Runtime views remain projections over governed records.
+**AIOC-0-010 — AI Assistant and GM Intelligence Architecture**
+
+Purpose: define conversational project command, GM intelligence, bounded recommendations, evidence-backed answers, action proposals, context assembly, permissions, memory, explainability, uncertainty, escalation, and cross-repository execution.
 
 ## Next executable action
 
-Build and validate the complete AIOC-0-009 architecture package, then commit it to a dedicated implementation branch and open a draft pull request.
+Build and validate the complete AIOC-0-010 architecture package.
 
 ## Continuity rule
 
