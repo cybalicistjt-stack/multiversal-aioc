@@ -10,11 +10,9 @@
 
 AIOC-0-001 through AIOC-0-012 are complete. The implementation-readiness gate passed with controlled implementation conditions.
 
-## Completed implementation milestone
+## Completed implementation milestones
 
-**AIOC-I-001 — Operational Core Implementation — PASS**
-
-Completed components:
+### AIOC-I-001 — Operational Core Implementation — PASS
 
 - AIOC-I-001A — Project State Engine and Canonical Work Ledger;
 - AIOC-I-001B — Repository Adapter and Live State Synchronization;
@@ -24,52 +22,59 @@ Completed components:
 
 **AIOC-I-002 — Repository Intelligence and Continuity Implementation**
 
-## Latest completed work item
+## Completed work
 
-**AIOC-I-002A — Repository Intelligence Projection and Health Model — PASS**
+### AIOC-I-002A — Repository Intelligence Projection and Health Model — PASS
+
+Evidence includes `repository-intelligence` run 4 and all required regression suites.
+
+### AIOC-I-002B — Continuity Snapshot and Session Restore API — PASS
 
 Evidence:
 
-- deterministic repository and project health projections;
-- healthy, degraded, blocked, and unknown classifications;
-- CI, capability, staleness, drift, pull-request, and documentation findings;
-- 12 executable acceptance tests;
-- `repository-intelligence` run 4 — PASS;
-- `project-state-engine` run 33 — PASS;
-- `repository-sync` run 16 — PASS;
-- `recovery-services` run 11 — PASS;
-- AIOC Smoke Tests run 469 — PASS.
-
-Repository path: `implementation/repository-intelligence/`
-
-## Current work item
-
-**AIOC-I-002B — Continuity Snapshot and Session Restore API**
-
-Purpose: issue a compact, fingerprinted, evidence-linked orientation snapshot that restores a new AI session to the verified repository, branch, milestone, work item, and next action; stale, altered, conflicting, or blocked snapshots must enter recovery rather than execution.
-
-**Execution state:** implementation committed; CI validation pending.
+- versioned, fingerprinted continuity snapshots;
+- verified repository, branch, milestone, work-item, and next-action orientation;
+- expiration, tamper, canonical-drift, blocking-health, and recovery enforcement;
+- 11 executable acceptance tests;
+- `continuity-snapshot` run 3 — PASS;
+- `repository-intelligence` run 10 — PASS;
+- `project-state-engine` run 37 — PASS;
+- `repository-sync` run 20 — PASS;
+- `recovery-services` run 15 — PASS;
+- AIOC Smoke Tests run 473 — PASS.
 
 Repository path: `implementation/repository-intelligence/continuity/`
 
+## Current work item
+
+**AIOC-I-002C — Documentation Drift and Continuity Certification**
+
+Purpose: compare mandatory status, handoff, roadmap, bootstrap, continuity-snapshot, and repository-health evidence against canonical state; block execution when continuity evidence is missing, stale, contradictory, or unverified; issue a CI-backed certification result for AIOC-I-002.
+
+**Execution state:** implementation committed; CI validation pending.
+
+Repository files:
+
+- `implementation/repository-intelligence/continuity-certification.mjs`
+- `implementation/repository-intelligence/continuity-certification.test.mjs`
+- `.github/workflows/continuity-certification.yml`
+
 Implemented:
 
-- versioned continuity snapshots;
-- deterministic snapshot fingerprints;
-- active repository, branch, milestone, work-item, and next-action orientation;
-- capability, repository, milestone, work-item, and handoff evidence linkage;
-- expiration and stale-snapshot enforcement;
-- fingerprint-tamper detection;
-- canonical repository, branch, and work-item drift detection;
-- blocking health and recovery finding propagation;
-- recovery-only restore responses that freeze execution;
-- 11 executable acceptance tests;
-- dedicated `continuity-snapshot` GitHub Actions workflow.
+- mandatory-document presence checks;
+- active milestone, work-item, and branch drift checks;
+- session-handoff drift checks;
+- roadmap traceability warnings;
+- continuity snapshot verification and drift checks;
+- repository-health certification rules;
+- PASS, PASS WITH WARNINGS, and FAIL results;
+- execution freeze after blocking certification failure;
+- 11 executable acceptance tests.
 
 ## Next executable action
 
-Inspect `continuity-snapshot`, `repository-intelligence`, `project-state-engine`, `repository-sync`, `recovery-services`, and AIOC Smoke Tests for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-002B and activate AIOC-I-002C — Documentation Drift and Continuity Certification.
+Inspect `continuity-certification` and all regression suites for the latest branch commit. Fix any failure. On PASS, close AIOC-I-002 and activate AIOC-I-003 — Executive Dashboard and Orchestration Implementation.
 
 ## Continuity rule
 
-New conversations must load `governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md` and this file before continuing work.
+New conversations must load `governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md`, this file, and `governance/current-state/SESSION_HANDOFF.md` before continuing work.
