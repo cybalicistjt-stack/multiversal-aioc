@@ -17,48 +17,55 @@ AIOC-0-001 through AIOC-0-012 are complete.
 - **AIOC-I-003 — Executive Dashboard and Orchestration Implementation — PASS**
 - **AIOC-I-004 — Developer Workbench Implementation — PASS**
 
-AIOC-I-004 final evidence:
-
-- `workbench-execution-certification` run 2 — PASS;
-- `change-certification` run 7 — PASS;
-- `developer-workbench` run 15 — PASS;
-- all ten required orchestration, dashboard, continuity, repository, state, recovery, and smoke regressions — PASS.
-
 ## Current milestone
 
 **AIOC-I-005 — Content Studio Implementation**
 
+## Latest completed work item
+
+### AIOC-I-005A — Content Studio Authoring, Validation, and Provenance Projection — PASS
+
+Evidence:
+
+- deterministic content-entity normalization and fingerprints;
+- stable ID, schema, dependency, provenance, continuity, and repository-health enforcement;
+- governed authoring and recovery projections;
+- 12 executable acceptance tests;
+- `content-studio-authoring` run 2 — PASS;
+- all thirteen required workbench, orchestration, dashboard, continuity, repository, state, recovery, and smoke regressions — PASS.
+
 ## Current work item
 
-**AIOC-I-005A — Content Studio Authoring, Validation, and Provenance Projection**
+**AIOC-I-005B — Content Conversion, Pack Assembly, and Dependency Certification**
 
-Purpose: bind authored game content to the canonical repository, branch, milestone, and active work item; normalize governed entities; enforce stable identifiers, schemas, dependencies, provenance, continuity, and repository health; and produce a deterministic authoring plan or recovery result.
+Purpose: certify converted Multiversal content only when canonical bindings, conversion contracts, stable IDs, manifests, dependencies, provenance, installation, and uninstallation evidence are complete and internally consistent.
 
 **Execution state:** implementation committed; CI validation pending.
 
 Repository files:
 
-- `implementation/content-studio/content-authoring-projection.mjs`
-- `implementation/content-studio/content-authoring-projection.test.mjs`
-- `.github/workflows/content-studio-authoring.yml`
+- `implementation/content-studio/content-pack-certification.mjs`
+- `implementation/content-studio/content-pack-certification.test.mjs`
+- `.github/workflows/content-pack-certification.yml`
 
 Implemented:
 
-- deterministic entity normalization and fingerprints;
-- stable ID, type, name, and schema-version requirements;
-- canonical repository, branch, and active-work-item binding;
-- continuity and repository-health enforcement;
-- required source provenance and evidence projection;
-- dependency-resolution and duplicate-ID checks;
-- schema and governed validation finding ingestion;
-- PASS, PASS WITH WARNINGS, and FAIL outcomes;
-- execution freeze and recovery mode on blocking findings;
-- five-stage governed authoring plan;
-- 12 executable acceptance tests.
+- source/target conversion-contract enforcement;
+- canonical repository, branch, milestone, and work-item binding;
+- governed `.pack` identity and version checks;
+- stable and unique entity-ID enforcement;
+- manifest completeness and orphan detection;
+- dependency availability certification;
+- pack-level provenance requirements;
+- installation and uninstallation test enforcement;
+- deterministic assembly and certification fingerprints;
+- PASS, PASS WITH WARNINGS, and FAIL results;
+- completion freeze after failed certification;
+- 16 executable acceptance tests.
 
 ## Next executable action
 
-Inspect `content-studio-authoring` and all required regression suites for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-005A and activate AIOC-I-005B — Content Conversion, Pack Assembly, and Dependency Certification.
+Inspect `content-pack-certification`, `content-studio-authoring`, and all required regression suites for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-005B and activate AIOC-I-005C — Content Studio Release, Installation, and Certification.
 
 ## Continuity rule
 
