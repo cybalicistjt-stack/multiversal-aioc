@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.example/schemas/assistant-request.schema.json",
+  "title": "AIOC Assistant Request",
+  "type": "object",
+  "required": ["requestId", "actor", "workspace", "intent", "message", "createdAt"],
+  "properties": {
+    "requestId": {"type": "string", "pattern": "^AIREQ-[A-Z0-9-]+$"},
+    "actor": {"type": "object", "required": ["actorId", "role"], "properties": {"actorId": {"type": "string"}, "role": {"type": "string"}}, "additionalProperties": true},
+    "workspace": {"type": "object", "required": ["kind", "id"], "properties": {"kind": {"enum": ["project", "repository", "campaign", "session", "content"]}, "id": {"type": "string"}, "repository": {"type": ["string", "null"]}, "branch": {"type": ["string", "null"]}}, "additionalProperties": false},
+    "intent": {"enum": ["question", "search", "draft", "analysis", "simulation", "recommendation", "action-proposal", "monitoring", "recovery"]},
+    "message": {"type": "string", "minLength": 1},
+    "contextHints": {"type": "array", "items": {"type": "string"}},
+    "visibility": {"type": "array", "items": {"type": "string"}},
+    "createdAt": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}
