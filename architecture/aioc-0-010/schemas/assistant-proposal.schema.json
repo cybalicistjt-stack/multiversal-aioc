@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.example/schemas/assistant-proposal.schema.json",
+  "title": "AIOC Assistant Action Proposal",
+  "type": "object",
+  "required": ["proposalId", "requestId", "actionType", "target", "parameters", "riskClass", "reversibility", "requiredApprovals", "expectedEffects", "status"],
+  "properties": {
+    "proposalId": {"type": "string", "pattern": "^AIPROP-[A-Z0-9-]+$"},
+    "requestId": {"type": "string"},
+    "actionType": {"type": "string"},
+    "target": {"type": "object", "required": ["kind", "id"], "properties": {"kind": {"type": "string"}, "id": {"type": "string"}, "repository": {"type": ["string", "null"]}, "branch": {"type": ["string", "null"]}}, "additionalProperties": false},
+    "parameters": {"type": "object"},
+    "riskClass": {"enum": ["read-only", "low", "moderate", "high", "critical"]},
+    "reversibility": {"enum": ["fully-reversible", "partially-reversible", "irreversible", "unknown"]},
+    "requiredApprovals": {"type": "array", "items": {"type": "string"}},
+    "expectedEffects": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "rollbackPlan": {"type": ["string", "null"]},
+    "evidenceIds": {"type": "array", "items": {"type": "string"}},
+    "status": {"enum": ["draft", "awaiting-approval", "approved", "rejected", "executing", "succeeded", "failed", "cancelled"]}
+  },
+  "additionalProperties": false
+}
