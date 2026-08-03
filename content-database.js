@@ -21,6 +21,13 @@ async function fetchJson(url){
   }finally{clearTimeout(timer)}
 }
 
+async function fetchOptionalJson(url,fallback){
+  try{return await fetchJson(url)}catch(error){
+    console.warn(`Optional content metadata unavailable: ${error.message||error}`);
+    return fallback;
+  }
+}
+
 function normalize(record,index){
   return {
     catalogId:record.databaseId||record.catalogId||`content-${index+1}`,
@@ -52,16 +59,16 @@ function normalize(record,index){
 
 async function load({force=false,onProgress}={}){
   if(cache&&!force)return cache;
-  onProgress?.('Loading generated canonical content database…');
-  const [manifest,index,sourceRegistry,recordSchema]=await Promise.all([
-    fetchJson(MANIFEST_URL),
+  onProgress?.('Loading certified canonical content database…');
+  const [index,manifest,sourceRegistry,recordSchema]=await Promise.all([
     fetchJson(INDEX_URL),
-    fetchJson(SOURCE_REGISTRY_URL),
-    fetchJson(RECORD_SCHEMA_URL)
+    fetchOptionalJson(MANIFEST_URL,{}),
+    fetchOptionalJson(SOURCE_REGISTRY_URL,{sources:[],optional:true}),
+    fetchOptionalJson(RECORD_SCHEMA_URL,{optional:true})
   ]);
   if(index.format!=='multiversal-content-database')throw new Error('Unsupported content database format.');
   if(!Array.isArray(index.records))throw new Error('Content database records are missing.');
-  if(index.recordCount!==index.records.length)throw new Error('Content database record count does not match its manifest.');
+  if(index.recordCount!==index.records.length)throw new Error('Content database record count does not match its index.');
   if(index.records.length!==CERTIFIED_RECORD_COUNT)throw new Error(`Certified content database mismatch: expected ${CERTIFIED_RECORD_COUNT}, found ${index.records.length}.`);
   const records=index.records.map(normalize);
   cache={manifest,index,sourceRegistry,recordSchema,records,count:records.length,summary:index.summary||{},databaseVersion:index.databaseVersion||manifest.databaseVersion||'unknown',generatedAt:index.generatedAt||manifest.generatedAt||null,fallback:false};
