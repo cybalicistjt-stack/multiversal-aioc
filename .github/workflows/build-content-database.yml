@@ -10,6 +10,8 @@ on:
       - 'catalog-seed-parts/**'
       - 'content-source/**'
       - '.github/workflows/build-content-database.yml'
+      - '.github/workflows/promote-content-database.yml'
+      - '.github/workflows/verify-promoted-content-database.yml'
   workflow_dispatch:
 
 permissions:
@@ -46,13 +48,28 @@ jobs:
       - name: Independently certify seed, source, and generated database
         run: node scripts/certify-content-pipeline.mjs
 
+      - name: Verify promotion artifact contract
+        run: |
+          test -f content-db/index.json
+          test -f content-db/manifest.json
+          test -f content-db/certification.json
+          node - <<'NODE'
+          const fs = require('fs');
+          const index = JSON.parse(fs.readFileSync('content-db/index.json', 'utf8'));
+          const certificate = JSON.parse(fs.readFileSync('content-db/certification.json', 'utf8'));
+          if (certificate.result !== 'PASS') throw new Error('Certificate is not PASS');
+          if (certificate.recordCount !== index.recordCount) throw new Error('Certificate record count mismatch');
+          if (!String(certificate.semanticFingerprint || '').startsWith('sha256:')) throw new Error('Semantic fingerprint is missing');
+          console.log(`Artifact contract PASS: ${certificate.recordCount} records; ${certificate.semanticFingerprint}`);
+          NODE
+
       - name: Show certification result
         run: cat evidence/content-pipeline/latest-certificate.json
 
       - name: Upload certified database and evidence
         uses: actions/upload-artifact@v4
         with:
-          name: certified-content-database-${{ github.sha }}
+          name: certified-content-database
           path: |
             content-db
             evidence/content-pipeline/latest-certificate.json
