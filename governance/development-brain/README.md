@@ -20,11 +20,30 @@ It does not replace owner authority, canonical content certification, or reposit
 5. Completion and Readiness Engine — validated
 6. Priority and Impact Engine — validated
 
-### Release C — Active Coordinator — ACTIVE
+### Release C — Active Coordinator — COMPLETE
 
 7. Recommendation and Task Planner — validated
 8. Verification and Governance Integration — validated
-9. Browser, MCP, REST, and Codex Integration — next
+9. Browser, MCP, REST, and Codex Integration — validated
+
+## Step 9 integration contract
+
+The final Release C layer exposes the Development Brain through governed browser, MCP, REST, and Codex surfaces.
+
+- Browser access is read-only.
+- MCP, REST, and Codex writes are proposal-only.
+- Every artifact carries provenance and repository-ref freshness information.
+- Stale artifacts must be rejected.
+- Reads and proposed writes require auditable integration records.
+- Proposed writes remain subject to repository review, CI, and owner or governance approval.
+- No integration surface may execute recommendations, mutate canonical content, grant approval, or substitute owner decisions.
+
+Validated Step 9 evidence:
+
+- Integration workflow `30831109121` — PASS
+- Artifact `aioc-development-brain-integration`, ID `8862938073`
+- Artifact digest `sha256:553b243e4670f5a28dd7f62905d314336bebd2dbd5111456bdfafea6874c0649`
+- Merge commit `71a7efd1b57b46fe3fa516b68d6be437dc9de76e`
 
 ## Governance boundaries
 
@@ -35,9 +54,10 @@ It does not replace owner authority, canonical content certification, or reposit
 - Findings preserve uncertainty, source evidence, confidence, and authority boundaries.
 - Recommendations, tasks, and verification records are advisory until accepted through governed review.
 - Integration surfaces must not silently execute, assign, schedule, mutate, promote, certify, grant approval, or substitute owner decisions.
+- Browser-to-shared-state synchronization remains technical debt.
 
-## Next executable step
+## Next governed boundary
 
-Build Step 9: Browser, MCP, REST, and Codex Integration.
+No further Development Brain release is defined.
 
-The integration layer must expose validated Development Brain artifacts through governed, auditable interfaces; preserve source evidence and authority boundaries; detect stale generated artifacts; distinguish read access from write authority; and route every proposed write through bounded repository review, approval, and validation.
+The owner must select and authorize the next milestone before more AIOC implementation begins. The selected milestone must be recorded with bounded deliverables, authority constraints, validation requirements, and a canonical handoff before execution.
