@@ -34,8 +34,8 @@ It does not replace owner authority, canonical content certification, or reposit
 
 ### Release E — Design Intelligence — ACTIVE
 
-13. Design Intent Memory — next
-14. Decision and Tradeoff History
+13. Design Intent Memory — validated
+14. Decision and Tradeoff History — next
 15. Constraint and Rationale Reasoning
 
 ### Release F — Agent Ecosystem — APPROVED
@@ -54,44 +54,26 @@ It does not replace owner authority, canonical content certification, or reposit
 
 On 2026-08-03, owner John Brandon Turner approved the Release D–G direction. Approval authorizes bounded implementation and validation work only; it does not authorize silent canonical mutation, certification, promotion, scheduling, assignment, or substitution of owner decisions.
 
-## Release D contracts
+## Release E contracts
 
-### Step 10 — Semantic Ontology and Knowledge Graph
+### Step 13 — Design Intent Memory
 
-Validated. Provides stable concepts, entities, evidence-backed assertions, confidence, inference methods, and unresolved meaning.
+Validated. Provides stable, evidence-backed intent records derived from active governed Project Memory, preserving explicit goals, intended outcomes, addressed problems, documented tradeoffs, rejected alternatives, invariants, extension notes, authority, confidence, evidence, and unresolved intent. It does not infer rationale from names, code structure, implementation details, lexical similarity, or AI preference.
 
-### Step 11 — Causal and Impact Intelligence
+### Step 14 — Decision and Tradeoff History
 
-Validated. Distinguishes direct causal evidence from dependency and structural propagation, bounds paths to four hops, and never treats propagation as proof of causation.
-
-### Step 12 — Semantic Retrieval and Reasoning Context
-
-Validated. Provides deterministic, bounded, source-backed context packages with category separation, duplicate removal, provenance, confidence, freshness fingerprints, and read-only authority for browser, MCP, REST, and Codex retrieval.
-
-## Release E Step 13 contract
-
-Step 13 creates a governed memory layer for explicit and supported design intent.
-
-It must:
-
-- link stable intent records to governed subjects;
-- preserve goals, intended outcomes, addressed problems, tradeoffs, documented rejected alternatives, invariants, and extension notes;
-- record authority, confidence, evidence, and freshness;
-- distinguish explicit intent, supported interpretation, and unresolved intent;
-- detect conflicting or stale intent without silently reconciling it;
-- never infer rationale solely from names, code shape, implementation details, or AI preference;
-- remain derived or recorded, advisory, reproducible, and separate from canonical promotion.
+Next. It must preserve explicit governed decisions and their chronology, status, alternatives, tradeoffs, consequences, authority, evidence, and supersession relationships. Conflicting, duplicate, stale, incomplete, or unresolved decision records must remain visible rather than silently reconciled.
 
 ## Governance boundaries
 
 - Canonical content remains in the certified content pipeline.
-- Derived semantic, causal, retrieval, and design-intent records cannot promote or overwrite canonical content.
-- Unsupported meaning, causality, or rationale must remain unresolved rather than guessed.
-- Findings preserve uncertainty, source evidence, confidence, freshness, and authority boundaries.
+- Derived semantic, causal, retrieval, design-intent, and decision-history records cannot promote or overwrite canonical content.
+- Unsupported meaning, causality, rationale, or decision history must remain unresolved rather than guessed.
+- Findings preserve uncertainty, source evidence, confidence, freshness, chronology, and authority boundaries.
 - Browser access remains read-only; MCP, REST, and Codex writes remain proposal-only.
 - No intelligence artifact grants execution, mutation, promotion, certification, assignment, scheduling, or approval authority.
 - All future autonomous behavior remains reviewable and subject to repository CI and owner/governance controls.
 
 ## Next executable step
 
-Implement and validate Step 13: Design Intent Memory. Do not begin Step 14 until Step 13 generates a valid artifact and all required workflows pass.
+Implement and validate Step 14: Decision and Tradeoff History. Do not begin Step 15 until Step 14 generates a valid artifact and all required workflows pass.
