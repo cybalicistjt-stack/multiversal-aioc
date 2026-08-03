@@ -5,12 +5,14 @@ on:
     paths:
       - 'governance/content-recovery/**'
       - 'scripts/validate-content-recovery-classification.mjs'
+      - 'scripts/validate-content-recovery-phase2-pilot.mjs'
       - '.github/workflows/validate-content-recovery-classification.yml'
   push:
     branches: [main]
     paths:
       - 'governance/content-recovery/**'
       - 'scripts/validate-content-recovery-classification.mjs'
+      - 'scripts/validate-content-recovery-phase2-pilot.mjs'
       - '.github/workflows/validate-content-recovery-classification.yml'
 
 jobs:
@@ -23,3 +25,5 @@ jobs:
           node-version: 20
       - name: Validate mixed-domain deterministic fixture
         run: node scripts/validate-content-recovery-classification.mjs
+      - name: Validate Phase 2 controlled pilot and dry-run evidence
+        run: node scripts/validate-content-recovery-phase2-pilot.mjs
