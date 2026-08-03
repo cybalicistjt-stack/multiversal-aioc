@@ -20,52 +20,63 @@ AIOC-0-001 through AIOC-0-012 are complete. The implementation-readiness gate pa
 
 ### AIOC-I-002 — Repository Intelligence and Continuity Implementation — PASS
 
-Completed components:
-
-- AIOC-I-002A — Repository Intelligence Projection and Health Model;
-- AIOC-I-002B — Continuity Snapshot and Session Restore API;
-- AIOC-I-002C — Documentation Drift and Continuity Certification.
-
-Final evidence:
-
-- `continuity-certification` run 8 — PASS;
-- `continuity-snapshot` run 9 — PASS;
-- `repository-intelligence` run 18 — PASS;
-- `project-state-engine` run 43 — PASS;
-- `repository-sync` run 26 — PASS;
-- `recovery-services` run 21 — PASS;
-- AIOC Smoke Tests run 479 — PASS.
+- Repository Intelligence Projection and Health Model;
+- Continuity Snapshot and Session Restore API;
+- Documentation Drift and Continuity Certification.
 
 ## Current milestone
 
 **AIOC-I-003 — Executive Dashboard and Orchestration Implementation**
 
-## Current work item
+## Latest completed work item
 
-**AIOC-I-003A — Executive Dashboard Operational Projection**
+### AIOC-I-003A — Executive Dashboard Operational Projection — PASS
 
-Purpose: convert canonical project state, repository-health evidence, CI checks, continuity certification, blockers, decisions, milestones, dependencies, and the next governed action into one deterministic executive dashboard projection.
+Evidence:
 
-**Execution state:** implementation committed; CI validation pending.
+- deterministic executive dashboard projection;
+- project, repository, CI, milestone, work-item, blocker, decision, dependency, and next-action cards;
+- governed execution freeze on blocking evidence;
+- 12 executable acceptance tests;
+- `executive-dashboard` run 3 — PASS;
+- `continuity-certification` run 13 — PASS;
+- `continuity-snapshot` run 13 — PASS;
+- `repository-intelligence` run 22 — PASS;
+- `project-state-engine` run 47 — PASS;
+- `repository-sync` run 30 — PASS;
+- `recovery-services` run 25 — PASS;
+- AIOC Smoke Tests run 483 — PASS.
 
 Repository path: `implementation/executive-dashboard/`
 
+## Current work item
+
+**AIOC-I-003B — Governed Orchestration Queue and Dispatch Service**
+
+Purpose: translate the active canonical work item into a deterministic, capability-verified work queue; dispatch only when continuity certification permits execution; bind jobs to leases, workers, evidence, and append-only dispatch outcomes; safely reclaim expired work and roll back failed persistence.
+
+**Execution state:** implementation committed; CI validation pending.
+
+Repository path: `implementation/executive-dashboard/orchestration/`
+
 Implemented:
 
-- deterministic project health classification;
-- milestone and work-item progress projection;
-- repository health and CI-check cards;
-- blocker, warning, continuity, and work-item finding aggregation;
-- active milestone, work item, branch, repository, and next-action projection;
-- execution freeze when repository or continuity evidence is blocking;
-- open-decision and blocked-work counters;
-- deterministic executive summary generation;
+- certification-gated enqueue and dispatch;
+- active-work-item enforcement;
+- capability-evidence requirements;
+- deterministic priority, sequence, and identifier ordering;
+- duplicate prevention;
+- worker leases and ownership checks;
+- evidence-required successful acknowledgement;
+- append-only dispatch and acknowledgement events;
+- expired-lease reclamation;
+- persistence-failure rollback;
 - 12 executable acceptance tests;
-- dedicated `executive-dashboard` GitHub Actions workflow.
+- dedicated `orchestration-service` GitHub Actions workflow.
 
 ## Next executable action
 
-Inspect `executive-dashboard` and all required regression suites for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-003A and activate AIOC-I-003B — Governed Orchestration Queue and Dispatch Service.
+Inspect `orchestration-service`, `executive-dashboard`, and all required regression suites for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-003B and activate AIOC-I-003C — Approval, Intervention, and Orchestration Certification.
 
 ## Continuity rule
 
