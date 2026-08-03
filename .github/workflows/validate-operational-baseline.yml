@@ -66,10 +66,13 @@ jobs:
           test -s operational/operational.js
           grep -q './operational/' index.html
           grep -q 'Multiversal Command Center' operational/index.html
-          if grep -Eq 'url=\.?/?v2/|location\.replace\(["'"']\.?/?v2/' index.html; then
-            echo 'The obsolete migration entry screen is configured as the public root.'
-            exit 1
-          fi
+          node - <<'NODE'
+          const fs = require('fs');
+          const source = fs.readFileSync('index.html', 'utf8');
+          if (/url=\.?\/?v2\/|location\.replace\(["']\.?\/?v2\//.test(source)) {
+            throw new Error('The obsolete migration entry screen is configured as the public root.');
+          }
+          NODE
           node --check operational/operational.js
 
       - name: Run existing AIOC smoke suite
