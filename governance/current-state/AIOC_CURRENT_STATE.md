@@ -19,34 +19,37 @@
 - AIOC-0-009 — Campaign and Runtime Operations Architecture — validated PASS
 - AIOC-0-010 — AI Assistant and GM Intelligence Architecture — validated PASS
 - AIOC-0-011 — Security, Permissions, Secrets, and Release Governance — validated PASS
+- AIOC-0-012 — Implementation Readiness Gate — PASS WITH CONTROLLED IMPLEMENTATION CONDITIONS
 
 ## Latest completed package
 
-**AIOC-0-011 — Security, Permissions, Secrets, and Release Governance**
+**AIOC-0-012 — Implementation Readiness Gate**
 
-Repository path: `architecture/aioc-0-011/`
+Repository path: `architecture/aioc-0-012/`
 
-Package contents include:
+Gate evidence includes:
 
-- implementation-ready security and release-governance architecture;
-- 70-capability catalog;
-- 18 governed workflows;
-- 30 blocking validation rules;
-- security-governance schema;
-- 70-test acceptance and integration matrix;
-- validation result;
-- manifest;
-- outgoing AIOC-0-012 work order.
+- ten readiness dimensions;
+- eighteen readiness checklist gates;
+- forty implementation gate tests;
+- cross-package traceability for AIOC-0-001 through AIOC-0-011;
+- seven mandatory implementation controls;
+- zero unresolved architecture blockers;
+- outgoing AIOC-I-001A work order.
 
 ## Current milestone
 
-**AIOC-0-012 — Implementation Readiness Gate**
+**AIOC-I-001 — Operational Core Implementation**
 
-Purpose: reconcile and validate the complete AIOC architecture baseline, resolve blocking contradictions, define implementation slices, and authorize Operational Core implementation.
+## Current work item
+
+**AIOC-I-001A — Project State Engine and Canonical Work Ledger**
+
+Purpose: implement versioned project-state, work-package, decision, blocker, evidence, handoff, audit, next-work resolution, backup, migration, and deterministic `Continue` behavior as native AIOC functionality.
 
 ## Next executable action
 
-Execute the complete AIOC-0-012 implementation-readiness assessment and produce a PASS or FAIL result with evidence.
+Implement and test AIOC-I-001A according to `architecture/aioc-0-012/WORK_ORDER_AIOC-I-001A.md`.
 
 ## Continuity rule
 
