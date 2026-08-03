@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/orchestration-routing.schema.json",
+  "title": "Multiversal Governed Orchestration and Routing",
+  "type": "object",
+  "required": ["format", "version", "generatedAt", "sourceFingerprint", "routes", "diagnostics", "authority"],
+  "properties": {
+    "format": { "const": "multiversal-aioc-orchestration-routing" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "sourceFingerprint": { "type": "string", "minLength": 64, "maxLength": 64 },
+    "routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["routeId", "taskClass", "coordinatorRoleId", "eligibleRoleIds", "selectedRoleId", "requiredInputs", "permittedOutputs", "handoff", "status", "reasons", "evidence", "freshness", "authorityMode"],
+        "properties": {
+          "routeId": { "type": "string" },
+          "taskClass": { "type": "string" },
+          "coordinatorRoleId": { "type": "string" },
+          "eligibleRoleIds": { "type": "array", "items": { "type": "string" } },
+          "selectedRoleId": { "type": ["string", "null"] },
+          "requiredInputs": { "type": "array", "items": { "type": "string" } },
+          "permittedOutputs": { "type": "array", "items": { "type": "string" } },
+          "handoff": {
+            "type": "object",
+            "required": ["fromRoleId", "toRoleId", "requiredPayload", "authorityPreserved"],
+            "properties": {
+              "fromRoleId": { "type": "string" },
+              "toRoleId": { "type": ["string", "null"] },
+              "requiredPayload": { "type": "array", "items": { "type": "string" } },
+              "authorityPreserved": { "const": true }
+            }
+          },
+          "status": { "enum": ["routable", "ambiguous", "blocked", "escalation-required"] },
+          "reasons": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+          "evidence": { "type": "array", "items": { "type": "object", "required": ["sourcePath", "pointer", "claim"] } },
+          "freshness": { "type": "object", "required": ["sourceFingerprint", "stale"] },
+          "authorityMode": { "enum": ["read-only", "advisory", "proposal-only"] }
+        }
+      }
+    },
+    "diagnostics": {
+      "type": "object",
+      "required": ["ambiguousRoutes", "missingInputs", "unavailableCapabilities", "authorityMismatches", "invalidHandoffs", "circularRouting" ]
+    },
+    "authority": {
+      "type": "object",
+      "required": ["advisoryOnly", "executionAllowed", "canonicalMutationAllowed", "approvalGranted", "assignmentAllowed", "schedulingAllowed"],
+      "properties": {
+        "advisoryOnly": { "const": true },
+        "executionAllowed": { "const": false },
+        "canonicalMutationAllowed": { "const": false },
+        "approvalGranted": { "const": false },
+        "assignmentAllowed": { "const": false },
+        "schedulingAllowed": { "const": false }
+      }
+    }
+  }
+}
