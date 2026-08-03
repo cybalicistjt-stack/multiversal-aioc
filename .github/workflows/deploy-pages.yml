@@ -8,6 +8,7 @@ on:
       - 'operational/**'
       - 'governance/current-state/**'
       - 'governance/dispatches/**'
+      - 'governance/legacy/**'
       - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
 
@@ -30,35 +31,46 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Validate operational frontend
+      - name: Enforce operational default and legacy quarantine
         run: |
+          set -euo pipefail
           test -f index.html
           test -f operational/index.html
+          grep -q './operational/' index.html
+          if grep -Eq 'url=\.?/?v2/|location\.replace\(["'"']\.?/?v2/' index.html; then
+            echo 'Legacy COS /v2/ must never be the public root target.'
+            exit 1
+          fi
+          test -f governance/legacy/LEGACY_COS_QUARANTINE.md
+          grep -q 'QUARANTINED' governance/legacy/LEGACY_COS_QUARANTINE.md
+
+      - name: Validate operational frontend
+        run: |
           test -f operational/operational.css
           test -f operational/operational.js
           test -f governance/current-state/AIOC_CURRENT_STATE.md
           test -f governance/current-state/AIOC_OPERATIONAL_HANDOFF.md
-          grep -q './operational/' index.html
           grep -q 'Multiversal Command Center' operational/index.html
           node --check operational/operational.js
 
       - name: Assemble static Pages artifact
         run: |
           rm -rf _site
-          mkdir -p _site/operational _site/governance/current-state _site/governance/dispatches
+          mkdir -p _site/operational _site/governance/current-state _site/governance/dispatches _site/governance/legacy
           cp index.html _site/index.html
           cp operational/index.html operational/operational.css operational/operational.js _site/operational/
           cp governance/current-state/AIOC_CURRENT_STATE.md _site/governance/current-state/
           cp governance/current-state/AIOC_OPERATIONAL_HANDOFF.md _site/governance/current-state/
+          cp governance/legacy/LEGACY_COS_QUARANTINE.md _site/governance/legacy/
           if [ -f governance/dispatches/AIOC-DISPATCH-MS02-WP011.md ]; then
             cp governance/dispatches/AIOC-DISPATCH-MS02-WP011.md _site/governance/dispatches/
           fi
           generated_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
           cat > _site/deployed-build.json <<EOF
-          {"build":"operational-aioc-1.1","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}"}
+          {"build":"operational-aioc-1.2","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","defaultSurface":"operational","legacyCos":"quarantined"}
           EOF
           cat > _site/operational/health.json <<EOF
-          {"status":"operational","application":"Multiversal AIOC","surface":"operational-command-center","build":"operational-aioc-1.1","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}"}
+          {"status":"operational","application":"Multiversal AIOC","surface":"operational-command-center","build":"operational-aioc-1.2","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","legacyCos":"quarantined"}
           EOF
           touch _site/.nojekyll
 
@@ -67,7 +79,8 @@ jobs:
           test -s _site/index.html
           test -s _site/operational/index.html
           test -s _site/operational/health.json
-          node -e "const fs=require('fs'); const h=JSON.parse(fs.readFileSync('_site/operational/health.json')); if(h.status!=='operational'||h.commit!==process.env.GITHUB_SHA) process.exit(1); console.log(h)"
+          test ! -e _site/v2/index.html
+          node -e "const fs=require('fs'); const h=JSON.parse(fs.readFileSync('_site/operational/health.json')); if(h.status!=='operational'||h.commit!==process.env.GITHUB_SHA||h.legacyCos!=='quarantined') process.exit(1); console.log(h)"
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -89,7 +102,7 @@ jobs:
           for attempt in 1 2 3 4 5 6; do
             echo "Checking ${health_url} (attempt ${attempt})"
             if payload="$(curl --fail --silent --show-error --location --max-time 20 "${health_url}?commit=${GITHUB_SHA}")"; then
-              HEALTH_PAYLOAD="$payload" node -e "const h=JSON.parse(process.env.HEALTH_PAYLOAD); if(h.status!=='operational'||h.commit!==process.env.GITHUB_SHA) process.exit(1); console.log('Verified deployed health contract',h)"
+              HEALTH_PAYLOAD="$payload" node -e "const h=JSON.parse(process.env.HEALTH_PAYLOAD); if(h.status!=='operational'||h.commit!==process.env.GITHUB_SHA||h.legacyCos!=='quarantined') process.exit(1); console.log('Verified deployed health contract',h)"
               exit 0
             fi
             sleep 10
