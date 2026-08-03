@@ -1,6 +1,6 @@
 # AIOC Session Handoff
 
-**Status:** READY TO RESUME RELEASE D STEP 11  
+**Status:** READY TO RESUME RELEASE D STEP 12  
 **Owner:** John Brandon Turner  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Branch:** `main`  
@@ -16,56 +16,59 @@ John Brandon Turner approved the Semantic Intelligence, Design Intelligence, Age
 
 ## Last completed work
 
-### Step 10 — Semantic Ontology and Knowledge Graph — COMPLETE
+### Step 11 — Causal and Impact Intelligence — COMPLETE
 
-Step 10 delivered:
+Step 11 delivered:
 
-1. Semantic ontology and knowledge-graph schema and governed contract.
-2. Deterministic generation from Unified Object Inventory and Dependency Graph.
-3. Stable concepts for object types, authority layers, lifecycle states, packs, and relationship semantics.
-4. Stable evidence-backed assertions connecting objects to concepts and validated object relationships.
-5. Confidence, inference method, source pointers, and explicit unresolved-semantic findings.
-6. Safeguards prohibiting unsupported lexical or model-inferred semantic claims.
-7. Generated artifact, validator, CI workflow, and required artifact publication.
+1. Causal-impact schema and governed contract.
+2. Deterministic generation from validated semantic assertions.
+3. Explicit distinction between direct causal evidence, dependency impact, structural impact, and unresolved causal hypotheses.
+4. Stable effect-chain and impact-path identities.
+5. Bounded propagation up to four hops.
+6. Affected-domain and blast-radius reporting.
+7. Source evidence, confidence, and derivation method for every result.
+8. Safeguards preventing dependency propagation from being presented as proof of causation.
+9. Generated artifact, validator, CI workflow, and required artifact publication.
 
 Validation evidence:
 
-- Semantic Ontology run `30831835297` — PASS
-- Recommendation Planner run `30831835066` — PASS
-- Completion Readiness run `30831835310` — PASS
-- Verification Governance run `30831835365` — PASS
-- Unified Inventory run `30831836003` — PASS
-- Structure Intelligence run `30831835843` — PASS
-- Dependency Graph run `30831835852` — PASS
-- Operational Baseline run `30831835058` — PASS
-- Development Brain Integration run `30831835623` — PASS
-- AIOC Smoke Tests run `30831834660` — PASS
-- Priority and Impact run `30831834731` — PASS
-- Artifact `aioc-semantic-ontology`, ID `8863219175`
-- Artifact digest `sha256:9fa57d221986362fb1b5ee50d5796fc499fe3d9ad80a54fa52701774fc536af3`
-- Merge commit `4c9c80d122cd5cdc372f157659d88bde0241c80b`
+- Causal Impact run `30832240372` — PASS
+- Semantic Ontology run `30832238878` — PASS
+- Recommendation Planner run `30832238876` — PASS
+- Completion Readiness run `30832238766` — PASS
+- Verification Governance run `30832238955` — PASS
+- Unified Inventory run `30832239085` — PASS
+- Structure Intelligence run `30832239050` — PASS
+- Dependency Graph run `30832238857` — PASS
+- Priority and Impact run `30832238989` — PASS
+- Development Brain Integration run `30832239115` — PASS
+- Operational Baseline run `30832238752` — PASS
+- AIOC Smoke Tests run `30832239391` — PASS
+- Artifact `aioc-causal-impact`, ID `8863378358`
+- Artifact digest `sha256:87f5a3038b75ee15d8efa012e3f2a89b7e09f6046965f58ab27d7318a4cd3527`
+- Merge commit `3112ffbc4e7fcbe9466fafae0991251ea3ab77d5`
 
 ## Exact next action
 
-Implement **Release D, Step 11 — Causal and Impact Intelligence** as one bounded batch.
+Implement **Release D, Step 12 — Semantic Retrieval and Reasoning Context** as one bounded batch.
 
 Required outputs:
 
-1. Causal-impact schema and governed contract.
-2. Deterministic generator consuming semantic ontology, dependency graph, structure intelligence, completion readiness, and priority-impact outputs.
-3. Explicit distinction between direct causal evidence, dependency-based propagation, and unresolved causal hypotheses.
-4. Stable effect-chain identities, impact paths, affected domains, blast-radius estimates, and confidence levels.
-5. Source evidence and derivation method for every causal or impact assertion.
-6. Detection of unsupported causal claims, cycles, duplicate paths, and stale upstream artifacts.
-7. No mutation, promotion, certification, assignment, scheduling, or presentation of inferred causality as established fact.
-8. Generated artifact, summary metrics, validator, and CI workflow.
-9. Updated current state and session handoff after validation.
+1. Retrieval-context schema and governed contract.
+2. Deterministic generator consuming inventory, project memory, semantic ontology, causal-impact, readiness, priority, recommendation, and verification outputs.
+3. Stable context-package and evidence-item identities.
+4. Deterministic relevance ranking and bounded token or item budgets.
+5. Explicit separation of source facts, derived findings, recommendations, constraints, unresolved questions, and authority requirements.
+6. Provenance, confidence, freshness, and source pointers for every included item.
+7. Stale-artifact detection and omission of unsupported or duplicate context.
+8. AI-facing context packages suitable for browser, MCP, REST, and Codex retrieval without granting write or execution authority.
+9. Generated artifact, summary metrics, validator, CI workflow, and canonical state updates.
 
 ## Operating boundaries
 
 - Read the governed CI failure index before every operation.
-- Causal intelligence is derived and advisory.
-- Dependency propagation is not proof of real-world causation.
-- Unknown causality remains unresolved.
-- Do not begin Step 12 until Step 11 validates.
+- Retrieval and reasoning context is derived and advisory.
+- Context ranking must not silently change source authority or resolve uncertainty.
+- No context package grants execution, mutation, promotion, certification, assignment, scheduling, or approval authority.
+- Do not begin Release E until Step 12 validates.
 - `WP-011` remains a separate Mac-dependent Multiversal App work item.
