@@ -1,0 +1,22 @@
+name: Test Content Library Object Selection
+
+on:
+  pull_request:
+    paths:
+      - 'content-library.html'
+      - 'content-library.js'
+      - 'content-library-selection.js'
+      - 'scripts/test-content-library-selection.mjs'
+      - '.github/workflows/test-content-library-selection.yml'
+  workflow_dispatch:
+
+jobs:
+  test-selection:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run selection regression
+        run: node scripts/test-content-library-selection.mjs
