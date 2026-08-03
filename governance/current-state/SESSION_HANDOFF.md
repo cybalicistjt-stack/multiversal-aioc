@@ -1,12 +1,12 @@
 # AIOC Session Handoff
 
-**Status:** CONTENT RECOVERY AND INGESTION ACTIVE — PHASE 0/1 NEXT  
+**Status:** CONTENT RECOVERY AND INGESTION ACTIVE; APPLICATION IMPLEMENTATION ROADMAP APPROVED  
 **Owner and final authority:** John Brandon Turner  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Branch:** `main` after governance PR merge  
 **Handoff date:** 2026-08-03
 
-## Completed workstreams
+## Verified completed workstreams
 
 - Operational AIOC certification — COMPLETE
 - Development Brain Releases A–G — COMPLETE AND BEHAVIORALLY VALIDATED
@@ -15,97 +15,82 @@
 - Neutral recovery ledger — COMPLETE
 - Content Recovery and Ingestion roadmap — OWNER APPROVED
 
+Do not claim later recovery, promotion, balance, runtime, application, or UI phases complete unless the repository contains corresponding merged evidence and passing validations.
+
 ## Current problem statement
 
 The live Content Library exposes 487 records from the Phase 1–8 canonical bundle. Those records are a partial extraction and do not represent the years of existing Multiversal content.
 
-The owner does not authorize recreating that content manually. The active objective is to recover and use the existing content corpus losslessly, whether records map directly into COS or must first enter as partially mapped or structured-raw assets.
-
-## Verified evidence
-
-Source census:
-
-- 47,849 structured-file occurrences;
-- 11,912 unique structured files;
-- 5,123 unique content-likely structured files;
-- 291,724 exact-file-deduplicated likely-content rows or JSON entries.
-
-Neutral recovery ledger:
-
-- 359,291 source records;
-- 294,571 unique exact payloads;
-- 64,720 exact duplicate payload rows;
-- 99,761 source-provided IDs;
-- 259,530 stable recovery identities;
-- 185,243 conservative identity groups;
-- 33,609 multi-payload identity groups.
-
-These are recovery records, not a final unique game-object count.
+The owner does not authorize recreating that content manually. The active objective remains lossless recovery and usable ingestion of the existing corpus.
 
 ## Governing doctrine
 
 > Recover the content first. Use the COS to organize it second.
 
-Do not:
+Preserve complete original payloads, provenance, duplicates, variants, revisions, conflicts, partial mappings, structured-raw records, and support records. Deterministic evidence precedes AI semantic inference. Use staging before production promotion.
 
-- begin with broad AI semantic classification;
-- discard records that fail COS mapping;
-- silently merge or overwrite variants;
-- treat indexes, mappings, reports, or relationship rows as primary game objects;
-- classify the entire ledger before representative deterministic rules pass;
-- create subsystems of subsystems to chase uncertain semantics.
-
-Do:
-
-- preserve complete original payloads and provenance;
-- classify from stable IDs, explicit types, pack metadata, source files, sheets, fields, directories, and cross-references before semantic review;
-- preserve partial, raw, unresolved, duplicate, variant, and support-record states;
-- use staging and representative review before production promotion;
-- keep the current 487-record database restorable.
-
-## Canonical roadmap
-
-Read:
+Canonical recovery roadmap:
 
 - `governance/content-recovery/CONTENT_RECOVERY_ROADMAP.md`
 
-Roadmap phases:
+## Approved future application roadmap
 
-0. Preserve and freeze
-1. Deterministic Classification Contract
-2. Primary assets versus support records
-3. Identity, version, and variant groups
-4. Domain recovery passes
-5. Lossless library import format
-6. Staging Content Library integration
-7. Coverage and quality validation
-8. Production migration
-9. Gradual COS normalization
+Read:
 
-## Exact next executable work item
+- `governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md`
+- `governance/application-planning/STAGE_A_UI_IMPLEMENTATION_PROGRAM.md`
 
-Execute one bounded Phase 0/1 foundation batch:
+Approved major phases:
 
-1. Preserve the source-census and neutral-ledger evidence with checksums and provenance.
-2. Snapshot the current 487-record Content Library database and deployed build fingerprint.
-3. Define a machine-readable deterministic classification contract containing:
-   - primary record classes;
-   - mapping states;
-   - confidence levels;
-   - evidence precedence;
-   - conflict and fallback behavior.
-4. Build a mixed-domain representative fixture from abilities, species, items, creatures, NPCs, vehicles, environments, worlds/adventures, rules, relationship rows, reports, and technical artifacts.
-5. Record expected classifications from objective source evidence.
-6. Run and validate the fixture.
-7. Report observed errors without widening scope.
-8. Update the governed handoff only after validation.
+10. Core Application Implementation
+11. GM and Player Experience
+12. AI Team and Automation
+13. Internal Alpha Completion
 
-**Hard gate:** Do not run full-ledger classification over 359,291 records until the representative fixture passes review.
+These are planned subsequent phases. They are not complete merely because designs or conversation summaries exist.
 
-## Authority boundary
+## Stage A approved order
 
-John Brandon Turner retains final approval over classification policy, conflict resolution, domain promotion, staging acceptance, and production migration. AI and deterministic tooling may propose and validate but may not silently discard, merge, promote, or certify recovered content.
+1. Repository and UI baseline audit
+2. Application shell and design system
+3. Universal object browser, inspector, picker, relationships, variants, and provenance
+4. Identity, dashboard, workspace selection, and permissions
+5. Character workspace
+6. Campaign and scene workspace
+7. First playable action proposal and GM approval loop
+8. Full combat interface
+9. Inventory, equipment, crafting, and vehicles
+10. Investigation and social workspaces
+11. World builder and content creation tools
+12. Contextual AI interfaces
+13. Internal-alpha hardening
 
-## Separate workstream
+Each slice must use real data and include permissions, persistence, desktop/mobile interaction, loading/error states, automated tests, reproducible preview, and owner review.
 
-`WP-011 — Tauri iOS/iPadOS Spike` remains a separate Mac-dependent Multiversal App task and does not replace the content-recovery workstream unless the owner explicitly switches priorities.
+## First Stage A executable operation
+
+When the active handoff explicitly switches from content recovery to application implementation, begin with **A0 — Repository and UI Baseline Audit** in `cybalicistjt-stack/Multiversal-app`.
+
+Do not skip directly to building screens. Establish the actual framework, routes, components, services, APIs, mock data, permissions, Content Library integration, test/build/deployment paths, and current mobile/desktop behavior.
+
+Required A0 outputs:
+
+- UI implementation inventory;
+- screen status matrix;
+- reusable-component inventory;
+- technical blocker list;
+- ordered implementation backlog.
+
+## Mac-dependent parallel work
+
+`WP-011 — Tauri iOS/iPadOS Spike` remains separate. Continue safe web/Windows/Linux work while waiting for Mac access. Reserve macOS for Xcode, signing/provisioning, simulator/device checks, packaging, and Apple-specific certification.
+
+## Contributor and approval boundary
+
+Jordon/Zakk may research, implement, test, branch, and open pull requests. His work remains proposal-only until John Brandon Turner approves it. He may not approve his own work or promote canonical content.
+
+## Mandatory operating rule
+
+“Continue” means execute the next verified unfinished work item. Do not respond with a hypothetical PR sequence, projected test result, or description of work that was not performed.
+
+Before governed work, read `governance/ci-failures/INDEX.md` from `ci/failure-records`, inspect relevant open PRs and recent commits, and reconcile repository state before making claims.
