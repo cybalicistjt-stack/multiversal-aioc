@@ -48,11 +48,14 @@
     activateCard(card, true);
   }
 
+  const openSelectedObject = handleClick;
+
   document.addEventListener('click', handleClick);
   document.addEventListener('pointerup', handlePointerUp, { passive: false });
   document.addEventListener('touchend', handleTouchEnd, { passive: false });
 
   window.ContentLibrarySelectionController = Object.freeze({
+    openSelectedObject,
     activateCard,
     handleClick,
     handlePointerUp,
