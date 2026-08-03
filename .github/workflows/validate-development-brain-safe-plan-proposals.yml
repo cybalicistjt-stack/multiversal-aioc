@@ -12,14 +12,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Generate multi-agent review input
-        run: |
-          node scripts/development-brain/generate-specialist-agent-contracts.mjs /tmp/specialists.json
-          node scripts/development-brain/generate-orchestration-routing.mjs /tmp/specialists.json /tmp/routing.json
-          node scripts/development-brain/generate-multi-agent-review.mjs /tmp/specialists.json /tmp/routing.json /tmp/review.json
-      - name: Generate safe plan proposals
-        run: node scripts/development-brain/generate-safe-plan-proposals.mjs /tmp/review.json /tmp/safe-plans.json
-      - name: Validate safe plan proposals
+      - name: Run populated behavioral acceptance corpus
+        run: node scripts/development-brain/test-safe-plan-acceptance.mjs
+      - name: Generate published safe plan artifact from acceptance corpus
+        run: node scripts/development-brain/generate-safe-plan-proposals.mjs governance/development-brain/acceptance/fixtures/step19-review-corpus.json /tmp/safe-plans.json
+      - name: Validate published safe plan artifact
         run: node scripts/development-brain/validate-safe-plan-proposals.mjs /tmp/safe-plans.json
       - name: Upload safe plan artifact
         uses: actions/upload-artifact@v4
