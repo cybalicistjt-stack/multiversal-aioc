@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/AUTOMATED_REVIEW_PACKAGE.schema.json",
+  "title": "Multiversal AIOC Automated Review Package",
+  "type": "object",
+  "required": ["format", "version", "generatedAt", "sourceFingerprint", "packages", "diagnostics", "authority"],
+  "properties": {
+    "format": {"const": "multiversal-aioc-automated-review-package"},
+    "version": {"type": "string"},
+    "generatedAt": {"type": "string"},
+    "sourceFingerprint": {"type": "string"},
+    "packages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["packageId", "sourcePlanId", "summary", "scope", "evidence", "affectedDomains", "regressionPredictions", "assumptions", "unresolvedQuestions", "minorityFindings", "validationChecks", "rollbackReview", "approvalGates", "rejectionConditions", "confidence", "freshness"]
+      }
+    },
+    "diagnostics": {"type": "object"},
+    "authority": {"type": "object", "required": ["advisoryOnly", "executionAllowed", "approvalGranted", "canonicalMutationAllowed", "mergeAllowed"]}
+  }
+}
