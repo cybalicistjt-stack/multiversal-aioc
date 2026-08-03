@@ -10,7 +10,7 @@
 
 AIOC-0-001 through AIOC-0-012 are complete. The implementation-readiness gate passed with controlled implementation conditions.
 
-## Latest completed milestone
+## Completed implementation milestone
 
 **AIOC-I-001 — Operational Core Implementation — PASS**
 
@@ -20,46 +20,55 @@ Completed components:
 - AIOC-I-001B — Repository Adapter and Live State Synchronization;
 - AIOC-I-001C — Decision, Handoff, and Recovery Services.
 
-Final validation evidence:
-
-- `project-state-engine` run 27 — PASS;
-- `repository-sync` run 11 — PASS;
-- `recovery-services` run 5 — PASS;
-- AIOC Smoke Tests run 464 — PASS.
-
-Operational Core now provides canonical state, deterministic `Continue` behavior, governed transitions, evidence ledgering, repository observations, session restoration, handoffs, contradiction detection, and recovery planning.
-
 ## Current milestone
 
 **AIOC-I-002 — Repository Intelligence and Continuity Implementation**
 
-## Current work item
+## Latest completed work item
 
-**AIOC-I-002A — Repository Intelligence Projection and Health Model**
+**AIOC-I-002A — Repository Intelligence Projection and Health Model — PASS**
 
-Purpose: convert live repository observations into deterministic, evidence-backed operational health projections for the Multiversal App and AIOC repositories.
+Evidence:
 
-**Execution state:** implementation committed; CI validation pending.
+- deterministic repository and project health projections;
+- healthy, degraded, blocked, and unknown classifications;
+- CI, capability, staleness, drift, pull-request, and documentation findings;
+- 12 executable acceptance tests;
+- `repository-intelligence` run 4 — PASS;
+- `project-state-engine` run 33 — PASS;
+- `repository-sync` run 16 — PASS;
+- `recovery-services` run 11 — PASS;
+- AIOC Smoke Tests run 469 — PASS.
 
 Repository path: `implementation/repository-intelligence/`
 
+## Current work item
+
+**AIOC-I-002B — Continuity Snapshot and Session Restore API**
+
+Purpose: issue a compact, fingerprinted, evidence-linked orientation snapshot that restores a new AI session to the verified repository, branch, milestone, work item, and next action; stale, altered, conflicting, or blocked snapshots must enter recovery rather than execution.
+
+**Execution state:** implementation committed; CI validation pending.
+
+Repository path: `implementation/repository-intelligence/continuity/`
+
 Implemented:
 
-- normalized CI-check classification;
-- healthy, degraded, blocked, and unknown repository states;
-- read/write capability assessment;
-- stale-observation detection;
-- blocking drift classification;
-- pull-request mergeability warnings;
-- project-wide repository health projection;
-- missing-observation handling;
-- canonical current-state and session-handoff drift detection;
-- 12 executable acceptance tests;
-- dedicated `repository-intelligence` GitHub Actions workflow.
+- versioned continuity snapshots;
+- deterministic snapshot fingerprints;
+- active repository, branch, milestone, work-item, and next-action orientation;
+- capability, repository, milestone, work-item, and handoff evidence linkage;
+- expiration and stale-snapshot enforcement;
+- fingerprint-tamper detection;
+- canonical repository, branch, and work-item drift detection;
+- blocking health and recovery finding propagation;
+- recovery-only restore responses that freeze execution;
+- 11 executable acceptance tests;
+- dedicated `continuity-snapshot` GitHub Actions workflow.
 
 ## Next executable action
 
-Inspect `repository-intelligence`, `project-state-engine`, `repository-sync`, `recovery-services`, and AIOC Smoke Tests for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-002A and activate AIOC-I-002B — Continuity Snapshot and Session Restore API.
+Inspect `continuity-snapshot`, `repository-intelligence`, `project-state-engine`, `repository-sync`, `recovery-services`, and AIOC Smoke Tests for the latest branch commit. Fix any failure. On PASS, complete AIOC-I-002B and activate AIOC-I-002C — Documentation Drift and Continuity Certification.
 
 ## Continuity rule
 
