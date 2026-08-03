@@ -1,12 +1,13 @@
 {
   "name": "@multiversal/aioc-mcp-bridge",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
-  "description": "Remote MCP bridge exposing governed Multiversal AIOC data and proposal actions to ChatGPT and Codex.",
+  "description": "Remote MCP bridge exposing governed Multiversal AIOC state, content, proposals, and live deployment verification to ChatGPT and Codex.",
   "scripts": {
-    "start": "node src/server.mjs",
-    "check": "node --check src/server.mjs"
+    "start": "node src/server-v3.mjs",
+    "check": "node --check src/server-v3.mjs",
+    "check:legacy": "node --check src/server.mjs"
   },
   "engines": {
     "node": ">=20"
