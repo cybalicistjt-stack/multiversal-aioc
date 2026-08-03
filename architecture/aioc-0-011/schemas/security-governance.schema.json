@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/security-governance.schema.json",
+  "title": "AIOC Security Governance Record",
+  "type": "object",
+  "required": ["id", "recordType", "actor", "target", "decision", "createdAt"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "recordType": {"enum": ["authorization-decision", "privileged-action", "secret-reference", "release-gate", "security-incident", "break-glass-session", "audit-event"]},
+    "actor": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id": {"type": "string"},
+        "type": {"enum": ["owner", "human", "ai-agent", "service-account", "runtime-user", "external-system"]},
+        "sessionId": {"type": "string"},
+        "assuranceLevel": {"type": "integer", "minimum": 0, "maximum": 4}
+      },
+      "additionalProperties": false
+    },
+    "target": {
+      "type": "object",
+      "required": ["resourceType", "resourceId"],
+      "properties": {
+        "resourceType": {"type": "string"},
+        "resourceId": {"type": "string"},
+        "repository": {"type": "string"},
+        "branch": {"type": "string"},
+        "path": {"type": "string"},
+        "sha": {"type": "string"},
+        "environment": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "decision": {"enum": ["allow", "deny", "pending", "expired", "revoked", "contained", "verified"]},
+    "sensitivity": {"enum": ["ordinary", "elevated", "privileged", "critical", "emergency"]},
+    "policyIds": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "approvalIds": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "secretReference": {"type": "string", "pattern": "^(?!.*(?:sk-|ghp_|github_pat_|AKIA)).*$"},
+    "expiresAt": {"type": "string", "format": "date-time"},
+    "evidenceRefs": {"type": "array", "items": {"type": "string"}},
+    "createdAt": {"type": "string", "format": "date-time"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"recordType": {"const": "break-glass-session"}}},
+      "then": {"required": ["expiresAt", "evidenceRefs"]}
+    },
+    {
+      "if": {"properties": {"recordType": {"const": "privileged-action"}}},
+      "then": {"required": ["sensitivity", "policyIds", "approvalIds"]}
+    }
+  ],
+  "additionalProperties": false
+}

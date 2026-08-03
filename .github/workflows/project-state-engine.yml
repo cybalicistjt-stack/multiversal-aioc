@@ -1,0 +1,35 @@
+name: project-state-engine
+
+on:
+  push:
+    branches:
+      - governance/session-bootstrap-v1
+    paths:
+      - 'implementation/operational-core/project-state/**'
+      - '.github/workflows/project-state-engine.yml'
+  pull_request:
+    paths:
+      - 'implementation/operational-core/project-state/**'
+      - '.github/workflows/project-state-engine.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate JSON files
+        run: |
+          node -e "JSON.parse(require('fs').readFileSync('implementation/operational-core/project-state/project-state.schema.json','utf8'))"
+          node -e "JSON.parse(require('fs').readFileSync('implementation/operational-core/project-state/canonical-project-state.seed.json','utf8'))"
+          node -e "JSON.parse(require('fs').readFileSync('implementation/operational-core/project-state/project-state-engine.fixture.json','utf8'))"
+      - name: Check module syntax
+        run: node --check implementation/operational-core/project-state/project-state-engine.mjs
+      - name: Run project state acceptance tests
+        run: node implementation/operational-core/project-state/project-state-engine.test.mjs

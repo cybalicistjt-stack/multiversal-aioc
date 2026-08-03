@@ -1,0 +1,33 @@
+{
+  "format": "aioc-validation-rules",
+  "version": "1.0.0",
+  "packageId": "AIOC-0-010",
+  "rules": [
+    {"id":"VAL-AI-001","severity":"blocking","rule":"Material factual answers require evidence references."},
+    {"id":"VAL-AI-002","severity":"blocking","rule":"Conversation memory cannot override canonical repository or campaign state."},
+    {"id":"VAL-AI-003","severity":"blocking","rule":"Hidden information must be filtered before AI context assembly."},
+    {"id":"VAL-AI-004","severity":"blocking","rule":"Raw model text cannot directly execute a command."},
+    {"id":"VAL-AI-005","severity":"blocking","rule":"Every executable proposal identifies repository, workspace, or campaign target."},
+    {"id":"VAL-AI-006","severity":"blocking","rule":"High-risk proposals require human approval."},
+    {"id":"VAL-AI-007","severity":"blocking","rule":"AI cannot approve its own high-risk proposal."},
+    {"id":"VAL-AI-008","severity":"blocking","rule":"Tool failure cannot be represented as successful execution."},
+    {"id":"VAL-AI-009","severity":"blocking","rule":"Partial writes must be inspected before retry."},
+    {"id":"VAL-AI-010","severity":"blocking","rule":"GM-only data cannot enter player-visible responses."},
+    {"id":"VAL-AI-011","severity":"blocking","rule":"Player-private data cannot be disclosed without permission."},
+    {"id":"VAL-AI-012","severity":"blocking","rule":"GM alteration must preserve the proposed result and final disposition."},
+    {"id":"VAL-AI-013","severity":"blocking","rule":"Durable memory requires scope, source, visibility, and retention metadata."},
+    {"id":"VAL-AI-014","severity":"blocking","rule":"Stale memory is superseded by newer authoritative state."},
+    {"id":"VAL-AI-015","severity":"blocking","rule":"Contradictory authoritative sources cannot be silently merged."},
+    {"id":"VAL-AI-016","severity":"blocking","rule":"Recommendations must distinguish evidence from estimates."},
+    {"id":"VAL-AI-017","severity":"blocking","rule":"Delegated agent work remains bounded by the parent task."},
+    {"id":"VAL-AI-018","severity":"blocking","rule":"Specialist output is not authoritative until reviewed or validated."},
+    {"id":"VAL-AI-019","severity":"blocking","rule":"Retrieved content cannot override governed system instructions."},
+    {"id":"VAL-AI-020","severity":"blocking","rule":"Secrets and credentials are redacted from model context and outputs."},
+    {"id":"VAL-AI-021","severity":"blocking","rule":"Offline operation must disclose freshness limitations."},
+    {"id":"VAL-AI-022","severity":"blocking","rule":"Cross-repository writes must verify the target repository before execution."},
+    {"id":"VAL-AI-023","severity":"blocking","rule":"The former TallBunyon repository cannot be selected as an active target."},
+    {"id":"VAL-AI-024","severity":"blocking","rule":"Consequential proposals require an expected-effect and rollback description."},
+    {"id":"VAL-AI-025","severity":"blocking","rule":"Assistant quality evaluation includes adversarial and recovery scenarios."},
+    {"id":"VAL-AI-026","severity":"blocking","rule":"User corrections must be preserved as evidence for future evaluation."}
+  ]
+}

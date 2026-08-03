@@ -1,0 +1,23 @@
+{
+  "format": "aioc-workflow-catalog",
+  "version": "1.0.0",
+  "package": "AIOC-0-009",
+  "workflows": [
+    {"id":"WF-OPS-001","name":"Register campaign operations","steps":["verify campaign identity","verify authority","bind environment","record policy","activate"]},
+    {"id":"WF-OPS-002","name":"Create runtime environment","steps":["select profile","bind build and schemas","configure health","configure backup","approve"]},
+    {"id":"WF-OPS-003","name":"Schedule and start session","steps":["schedule","verify readiness","check participants","create checkpoint","start"]},
+    {"id":"WF-OPS-004","name":"Pause and resume session","steps":["request","authorize","checkpoint","pause or resume","receipt"]},
+    {"id":"WF-OPS-005","name":"Route operational approval","steps":["classify impact","resolve approvers","present evidence","approve or reject","record"]},
+    {"id":"WF-OPS-006","name":"Create and deduplicate alert","steps":["detect","classify","deduplicate","route","acknowledge"]},
+    {"id":"WF-OPS-007","name":"Manage runtime incident","steps":["create","triage","contain","recover","monitor","close"]},
+    {"id":"WF-OPS-008","name":"Schedule maintenance","steps":["define scope","assess impact","notify","checkpoint","execute","verify"]},
+    {"id":"WF-OPS-009","name":"Deploy runtime build","steps":["verify artifact","dry run","approve","deploy","health gate","promote"]},
+    {"id":"WF-OPS-010","name":"Roll back deployment","steps":["trigger","authorize","isolate","restore","verify","record"]},
+    {"id":"WF-OPS-011","name":"Register and verify backup","steps":["create","hash","encrypt","store","restore test","retain"]},
+    {"id":"WF-OPS-012","name":"Restore runtime environment","steps":["isolate","authorize","restore","replay gaps","rebuild projections","monitor"]},
+    {"id":"WF-OPS-013","name":"Generate diagnostic bundle","steps":["select scope","collect","redact","review","approve","export"]},
+    {"id":"WF-OPS-014","name":"Reconcile degraded operations","steps":["load queued records","verify identities","compare state","resolve conflicts","commit receipts"]},
+    {"id":"WF-OPS-015","name":"AI-assisted incident review","steps":["collect bounded evidence","summarize","recommend","human decide","record"]},
+    {"id":"WF-OPS-016","name":"Archive operational history","steps":["verify retention","seal receipts","index provenance","archive","confirm"]}
+  ]
+}

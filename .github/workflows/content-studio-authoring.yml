@@ -1,0 +1,21 @@
+name: content-studio-authoring
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check module syntax
+        run: node --check implementation/content-studio/content-authoring-projection.mjs
+      - name: Run Content Studio acceptance tests
+        run: node implementation/content-studio/content-authoring-projection.test.mjs

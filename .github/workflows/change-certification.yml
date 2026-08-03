@@ -1,0 +1,32 @@
+name: change-certification
+
+on:
+  push:
+    branches:
+      - governance/session-bootstrap-v1
+    paths:
+      - 'implementation/developer-workbench/change-certification.mjs'
+      - 'implementation/developer-workbench/change-certification.test.mjs'
+      - '.github/workflows/change-certification.yml'
+  pull_request:
+    paths:
+      - 'implementation/developer-workbench/change-certification.mjs'
+      - 'implementation/developer-workbench/change-certification.test.mjs'
+      - '.github/workflows/change-certification.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check module syntax
+        run: node --check implementation/developer-workbench/change-certification.mjs
+      - name: Run change certification tests
+        run: node implementation/developer-workbench/change-certification.test.mjs

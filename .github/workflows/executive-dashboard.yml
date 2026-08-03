@@ -1,0 +1,30 @@
+name: executive-dashboard
+
+on:
+  push:
+    branches:
+      - governance/session-bootstrap-v1
+    paths:
+      - 'implementation/executive-dashboard/**'
+      - '.github/workflows/executive-dashboard.yml'
+  pull_request:
+    paths:
+      - 'implementation/executive-dashboard/**'
+      - '.github/workflows/executive-dashboard.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check module syntax
+        run: node --check implementation/executive-dashboard/dashboard-projection.mjs
+      - name: Run dashboard projection acceptance tests
+        run: node implementation/executive-dashboard/dashboard-projection.test.mjs

@@ -1,0 +1,42 @@
+name: continuity-certification
+
+on:
+  push:
+    branches:
+      - governance/session-bootstrap-v1
+    paths:
+      - 'implementation/repository-intelligence/continuity-certification.*'
+      - 'governance/current-state/**'
+      - 'governance/roadmaps/**'
+      - 'governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md'
+      - '.github/workflows/continuity-certification.yml'
+  pull_request:
+    paths:
+      - 'implementation/repository-intelligence/continuity-certification.*'
+      - 'governance/current-state/**'
+      - 'governance/roadmaps/**'
+      - 'governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md'
+      - '.github/workflows/continuity-certification.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check module syntax
+        run: node --check implementation/repository-intelligence/continuity-certification.mjs
+      - name: Run continuity certification tests
+        run: node implementation/repository-intelligence/continuity-certification.test.mjs
+      - name: Verify mandatory continuity documents
+        run: |
+          test -s governance/current-state/AIOC_CURRENT_STATE.md
+          test -s governance/current-state/SESSION_HANDOFF.md
+          test -s governance/roadmaps/AIOC_CANONICAL_ROADMAP.md
+          test -s governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md

@@ -1,0 +1,25 @@
+name: repository-sync
+
+on:
+  pull_request:
+    paths:
+      - 'implementation/operational-core/repository-sync/**'
+      - 'implementation/operational-core/project-state/**'
+      - '.github/workflows/repository-sync.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check module syntax
+        run: node --check implementation/operational-core/repository-sync/repository-adapter.mjs
+      - name: Run repository synchronization acceptance tests
+        run: node implementation/operational-core/repository-sync/repository-adapter.test.mjs

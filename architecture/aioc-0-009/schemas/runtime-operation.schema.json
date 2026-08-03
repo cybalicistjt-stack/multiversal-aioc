@@ -1,0 +1,25 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://multiversal.example/schemas/aioc/runtime-operation.schema.json",
+  "title":"AIOC Runtime Operation",
+  "type":"object",
+  "required":["operationId","campaignId","environmentId","operationType","requestedBy","idempotencyKey","impactClass","status","createdAt"],
+  "properties":{
+    "operationId":{"type":"string","pattern":"^OPS-[A-Z0-9-]+$"},
+    "campaignId":{"type":"string"},
+    "environmentId":{"type":"string"},
+    "sessionId":{"type":["string","null"]},
+    "operationType":{"type":"string"},
+    "requestedBy":{"type":"object","required":["identityId","role"],"properties":{"identityId":{"type":"string"},"role":{"type":"string"}},"additionalProperties":false},
+    "idempotencyKey":{"type":"string","minLength":8},
+    "impactClass":{"enum":["informational","routine","elevated","high","critical"]},
+    "approvalClass":{"enum":["none","operator","gm","owner","repository-maintainer","security","emergency-dual"]},
+    "evidenceReferences":{"type":"array","items":{"type":"object"}},
+    "rollbackPlan":{"type":["object","null"]},
+    "status":{"enum":["requested","awaiting-approval","approved","rejected","executing","succeeded","failed","rolled-back","cancelled"]},
+    "createdAt":{"type":"string","format":"date-time"},
+    "completedAt":{"type":["string","null"],"format":"date-time"},
+    "receiptId":{"type":["string","null"]}
+  },
+  "additionalProperties":false
+}

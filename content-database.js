@@ -1,8 +1,9 @@
 (()=>{'use strict';
-const INDEX_URL='./content-db/index.json';
-const MANIFEST_URL='./content-db/manifest.json';
-const SOURCE_REGISTRY_URL='./content-db/source-registry.json';
-const RECORD_SCHEMA_URL='./content-db/content-record.schema.json';
+const SCRIPT_BASE=new URL('.',document.currentScript?.src||window.location.href);
+const INDEX_URL=new URL('content-db/index.json',SCRIPT_BASE).href;
+const MANIFEST_URL=new URL('content-db/manifest.json',SCRIPT_BASE).href;
+const SOURCE_REGISTRY_URL=new URL('content-db/source-registry.json',SCRIPT_BASE).href;
+const RECORD_SCHEMA_URL=new URL('content-db/content-record.schema.json',SCRIPT_BASE).href;
 const SOURCE_VERSION='canonical-content-db-v1';
 const LOAD_TIMEOUT_MS=20000;
 let cache=null;
@@ -11,8 +12,10 @@ async function fetchJson(url){
   const controller=new AbortController();
   const timer=setTimeout(()=>controller.abort(),LOAD_TIMEOUT_MS);
   try{
-    const response=await fetch(`${url}?v=${Date.now()}`,{cache:'no-store',signal:controller.signal});
-    if(!response.ok)throw new Error(`${url} returned ${response.status}`);
+    const requestUrl=new URL(url);
+    requestUrl.searchParams.set('v',Date.now());
+    const response=await fetch(requestUrl.href,{cache:'no-store',signal:controller.signal});
+    if(!response.ok)throw new Error(`${requestUrl.pathname} returned ${response.status}`);
     return await response.json();
   }catch(error){
     if(error?.name==='AbortError')throw new Error(`${url} did not respond within ${LOAD_TIMEOUT_MS/1000} seconds.`);

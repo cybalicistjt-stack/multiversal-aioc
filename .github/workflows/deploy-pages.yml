@@ -2,7 +2,9 @@ name: Deploy GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - governance/session-bootstrap-v1
   workflow_dispatch:
 
 permissions:
@@ -37,6 +39,8 @@ jobs:
           node --check unified-desktop.js
           node --check scripts/materialize-content-source.mjs
           node --check scripts/build-content-database.mjs
+          test -f index.html
+          test -f v2/index.html
           test -f content-library.html
           test -f content-library.css
 
@@ -66,13 +70,13 @@ jobs:
       - name: Write deployed build marker
         run: |
           cat > deployed-build.json <<EOF
-          {"build":"content-library-2.1","commit":"${GITHUB_SHA}","generatedAt":"$(date -u +%Y-%m-%dT%H:%M:%SZ)"}
+          {"build":"certified-aioc-operational","commit":"${GITHUB_SHA}","branch":"${GITHUB_REF_NAME}","generatedAt":"$(date -u +%Y-%m-%dT%H:%M:%SZ)"}
           EOF
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload static site with generated database
+      - name: Upload certified AIOC site
         uses: actions/upload-pages-artifact@v3
         with:
           path: .

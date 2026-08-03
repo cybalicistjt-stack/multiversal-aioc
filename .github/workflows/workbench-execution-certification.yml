@@ -1,0 +1,21 @@
+name: workbench-execution-certification
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check module syntax
+        run: node --check implementation/developer-workbench/workbench-execution-certification.mjs
+      - name: Run execution certification tests
+        run: node implementation/developer-workbench/workbench-execution-certification.test.mjs

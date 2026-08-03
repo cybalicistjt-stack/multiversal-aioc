@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {certifyOrchestration,assertOrchestrationCertified} from './orchestration-certification.mjs';
+const ok={certification:{executionAllowed:true},queue:[{id:'J1',workItemId:'W1',status:'queued'}],approvals:[],interventions:[],dispatchEvents:[{id:'E1'}]};
+const tests=[];const test=(n,f)=>tests.push([n,f]);
+test('aligned orchestration passes',()=>assert.equal(certifyOrchestration(ok).result,'PASS'));
+test('blocked continuity fails',()=>assert.equal(certifyOrchestration({...ok,certification:{executionAllowed:false}}).result,'FAIL'));
+test('approval is required',()=>assert.equal(certifyOrchestration({...ok,queue:[{id:'J1',workItemId:'W1',status:'awaiting-approval',requiresApproval:true}]}).executionAllowed,false));
+test('evidenced approval passes',()=>assert.equal(certifyOrchestration({...ok,queue:[{id:'J1',workItemId:'W1',status:'awaiting-approval',requiresApproval:true}],approvals:[{jobId:'J1',status:'approved',actor:'owner',at:'2026-08-03T00:00:00Z',evidence:['test://approval']}]}).executionAllowed,true));
+test('leased job requires owner',()=>assert.equal(certifyOrchestration({...ok,queue:[{id:'J1',workItemId:'W1',status:'leased',lease:{}}]}).executionAllowed,false));
+test('audited intervention passes',()=>assert.equal(certifyOrchestration({...ok,interventions:[{actor:'owner',reason:'correct invalid output',action:'pause'}]}).executionAllowed,true));
+test('altered result requires evidence',()=>assert.equal(certifyOrchestration({...ok,interventions:[{actor:'owner',reason:'correction',action:'alter-result'}]}).executionAllowed,false));
+test('duplicate events fail',()=>assert.equal(certifyOrchestration({...ok,dispatchEvents:[{id:'E1'},{id:'E1'}]}).executionAllowed,false));
+test('missing job identity fails',()=>assert.equal(certifyOrchestration({...ok,queue:[{status:'queued'}]}).executionAllowed,false));
+test('assertion accepts pass',()=>assert.equal(assertOrchestrationCertified(ok).result,'PASS'));
+test('assertion freezes failure',()=>assert.throws(()=>assertOrchestrationCertified({...ok,certification:{executionAllowed:false}}),e=>e.code==='orchestration.certification'));
+let failures=0;for(const [n,f] of tests){try{await f();console.log(`PASS ${n}`)}catch(e){failures++;console.error(`FAIL ${n}`);console.error(e)}}console.log(`RESULT ${tests.length-failures}/${tests.length} passed`);if(failures)process.exit(1);

@@ -1,0 +1,23 @@
+name: test-harness-projection
+
+on:
+  pull_request:
+  push:
+    branches:
+      - governance/session-bootstrap-v1
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check module syntax
+        run: node --check implementation/testing-simulation/test-harness-projection.mjs
+      - name: Run test harness acceptance tests
+        run: node implementation/testing-simulation/test-harness-projection.test.mjs

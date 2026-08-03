@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.example/schemas/intelligence-evidence.schema.json",
+  "title": "AIOC Intelligence Evidence",
+  "type": "object",
+  "required": ["evidenceId", "authorityClass", "sourceType", "sourceLocator", "retrievedAt", "visibility", "claim", "freshness"],
+  "properties": {
+    "evidenceId": {"type": "string", "pattern": "^AIEVID-[A-Z0-9-]+$"},
+    "authorityClass": {"enum": ["owner-decision", "canonical-repository", "campaign-record", "test-result", "tool-result", "approved-source", "conversation-only"]},
+    "sourceType": {"type": "string"},
+    "sourceLocator": {"type": "string"},
+    "version": {"type": ["string", "null"]},
+    "commitSha": {"type": ["string", "null"]},
+    "retrievedAt": {"type": "string", "format": "date-time"},
+    "visibility": {"type": "array", "items": {"type": "string"}},
+    "claim": {"type": "string"},
+    "freshness": {"enum": ["current", "possibly-stale", "stale", "unknown"]},
+    "confidenceReason": {"type": ["string", "null"]},
+    "supersedes": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

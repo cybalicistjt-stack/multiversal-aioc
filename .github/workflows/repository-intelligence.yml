@@ -1,0 +1,30 @@
+name: repository-intelligence
+
+on:
+  push:
+    branches:
+      - governance/session-bootstrap-v1
+    paths:
+      - 'implementation/repository-intelligence/**'
+      - '.github/workflows/repository-intelligence.yml'
+  pull_request:
+    paths:
+      - 'implementation/repository-intelligence/**'
+      - '.github/workflows/repository-intelligence.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check module syntax
+        run: node --check implementation/repository-intelligence/repository-intelligence.mjs
+      - name: Run repository intelligence acceptance tests
+        run: node implementation/repository-intelligence/repository-intelligence.test.mjs
