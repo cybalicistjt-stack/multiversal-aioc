@@ -1,6 +1,6 @@
 # AIOC Session Handoff
 
-**Status:** READY TO RESUME RELEASE E STEP 14  
+**Status:** READY TO RESUME RELEASE E STEP 15  
 **Owner:** John Brandon Turner  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Branch:** `main`  
@@ -12,58 +12,59 @@ Development Brain — Release E, Design Intelligence.
 
 ## Last completed work
 
-### Step 13 — Design Intent Memory — COMPLETE
+### Step 14 — Decision and Tradeoff History — COMPLETE
 
-Step 13 delivered:
+Step 14 delivered:
 
-1. Design-intent schema and governed contract.
-2. Deterministic extraction from active governed Project Memory and Unified Object Inventory.
-3. Stable intent-record identities linked to governed subjects.
-4. Explicit goals, intended outcomes, addressed problems, documented tradeoffs, rejected alternatives, invariants, extension notes, authority, confidence, and evidence.
-5. Explicit unresolved intent where rationale is absent or unsupported.
-6. Safeguards against inferring rationale from names, code structure, implementation details, lexical similarity, or AI preference.
+1. Decision-history schema and governed contract.
+2. Deterministic extraction from governed Project Memory and validated Design Intent Memory.
+3. Stable decision identities, source links, chronology, statuses, and supersession relationships.
+4. Explicit rationale, documented alternatives, accepted tradeoffs, consequences, authority, confidence, and evidence.
+5. Diagnostics for conflicts, duplicates, stale records, missing rationale, and broken supersession.
+6. Safeguards preventing invention of decisions, alternatives, or tradeoffs from names, code structure, implementation details, lexical similarity, or AI preference.
 7. Generated artifact, validator, CI workflow, and required artifact publication.
 
 Validation evidence:
 
-- Design Intent run `30833334767` — PASS
-- Semantic Retrieval run `30833335232` — PASS
-- Semantic Ontology run `30833335691` — PASS
-- Causal Impact run `30833334688` — PASS
-- Recommendation Planner run `30833335571` — PASS
-- Completion Readiness run `30833334777` — PASS
-- Verification Governance run `30833338103` — PASS
-- Unified Inventory run `30833337648` — PASS
-- Structure Intelligence run `30833335561` — PASS
-- Dependency Graph run `30833334726` — PASS
-- Priority and Impact run `30833334649` — PASS
-- Development Brain Integration run `30833335620` — PASS
-- Operational Baseline run `30833334680` — PASS
-- AIOC Smoke Tests run `30833334709` — PASS
-- Artifact `aioc-design-intent`, ID `8863806217`
-- Artifact digest `sha256:bf239ea8d523abc53fd0ebd22c263310875935fb891501c105f2e867cb9fdf8b`
-- Merge commit `875cb4347428127cd7bbcb5069f0c941c3ef91b7`
+- Decision History run `30835318089` — PASS
+- Design Intent run `30835317879` — PASS
+- Semantic Retrieval run `30835317872` — PASS
+- Semantic Ontology run `30835318423` — PASS
+- Causal Impact run `30835318208` — PASS
+- Recommendation Planner run `30835318129` — PASS
+- Completion Readiness run `30835318844` — PASS
+- Verification Governance run `30835317927` — PASS
+- Unified Inventory run `30835317863` — PASS
+- Structure Intelligence run `30835318449` — PASS
+- Dependency Graph run `30835318550` — PASS
+- Priority and Impact run `30835318621` — PASS
+- Development Brain Integration run `30835318110` — PASS
+- Operational Baseline run `30835318051` — PASS
+- AIOC Smoke Tests run `30835318532` — PASS
+- Artifact `aioc-decision-history`, ID `8864570211`
+- Artifact digest `sha256:f6a45162cdf63b2e40b3cbb07975d2d6c6de55cb248e2272b9199532bfa5f018`
+- Merge commit `555b080f9e4863e727078609c8137a6a0b4fe8c6`
 
 ## Exact next action
 
-Implement **Release E, Step 14 — Decision and Tradeoff History** as one bounded batch.
+Implement **Release E, Step 15 — Constraint and Rationale Reasoning** as one bounded batch.
 
 Required outputs:
 
-1. Decision-history schema and governed contract.
-2. Deterministic extraction from governed Project Memory, Design Intent Memory, owner-approved records, and explicit source decisions.
-3. Stable decision and alternative identities with chronology.
-4. Explicit status values for active, superseded, rejected, deferred, and unresolved decisions.
-5. Decision rationale, alternatives, accepted tradeoffs, consequences, authority, confidence, evidence, and supersession links where documented.
-6. Conflict, duplicate, missing-rationale, and stale-decision diagnostics without silent reconciliation.
-7. No decision or rejected alternative invented from implementation shape, lexical similarity, or model preference.
+1. Constraint-and-rationale reasoning schema and governed contract.
+2. Deterministic generation from Design Intent Memory, Decision History, Project Memory, semantic retrieval, causal impact, readiness, recommendations, and verification outputs.
+3. Stable reasoning-record and rationale-chain identities.
+4. Explicit separation of source constraints, supported rationale, derived conclusions, conflicts, unmet prerequisites, authority requirements, and unresolved reasoning gaps.
+5. Evidence, confidence, derivation method, freshness, and authority for every reasoning result.
+6. Detection of contradictory constraints, unsupported rationale chains, stale sources, circular reasoning, and missing evidence without silent reconciliation.
+7. No mutation, decision creation, approval, promotion, certification, assignment, scheduling, or substitution of AI preference for owner intent.
 8. Generated artifact, summary metrics, validator, CI workflow, and canonical state updates.
 
 ## Operating boundaries
 
 - Read the governed CI failure index before every operation.
-- Decision history remains evidence-backed and authority-aware.
-- AI interpretation cannot override owner intent or silently resolve conflicting records.
-- Missing rationale, alternatives, or chronology remain unresolved.
-- Do not begin Step 15 until Step 14 validates.
+- Reasoning remains evidence-backed, derived, and advisory.
+- Explicit source constraints outrank derived conclusions.
+- Unknown or conflicting rationale remains unresolved.
+- Do not begin Release F until Step 15 validates.
 - `WP-011` remains a separate Mac-dependent Multiversal App work item.
