@@ -1,0 +1,33 @@
+name: Validate Development Brain Multi-Agent Review
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Generate specialist contracts
+        run: node scripts/development-brain/generate-specialist-agent-contracts.mjs tmp/AIOC_SPECIALIST_AGENT_CONTRACTS.json
+      - name: Generate orchestration routing
+        run: node scripts/development-brain/generate-orchestration-routing.mjs tmp/AIOC_SPECIALIST_AGENT_CONTRACTS.json tmp/AIOC_ORCHESTRATION_ROUTING.json
+      - name: Generate multi-agent review artifact
+        run: node scripts/development-brain/generate-multi-agent-review.mjs tmp/AIOC_SPECIALIST_AGENT_CONTRACTS.json tmp/AIOC_ORCHESTRATION_ROUTING.json tmp/AIOC_MULTI_AGENT_REVIEW.json
+      - name: Validate multi-agent review artifact
+        run: node scripts/development-brain/validate-multi-agent-review.mjs tmp/AIOC_MULTI_AGENT_REVIEW.json
+      - name: Require multi-agent review artifact
+        run: test -s tmp/AIOC_MULTI_AGENT_REVIEW.json
+      - name: Publish multi-agent review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aioc-multi-agent-review
+          path: tmp/AIOC_MULTI_AGENT_REVIEW.json
+          if-no-files-found: error
