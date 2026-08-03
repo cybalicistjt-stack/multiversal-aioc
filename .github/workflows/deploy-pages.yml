@@ -14,6 +14,7 @@ on:
       - 'content-assistant.html'
       - 'content-assistant.js'
       - 'content-assistant.css'
+      - 'content-durability.js'
       - 'content-library.html'
       - 'content-library.js'
       - 'content-library.css'
@@ -80,11 +81,11 @@ jobs:
 
           generated_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
           cat > _site/deployment-manifest.json <<EOF
-          {"format":"multiversal-aioc-pages-deployment","version":"1.5.0","build":"operational-aioc-1.9","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","defaultSurface":"operational","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":10,"contentLibrary":"design-studio-connected","contentAssistant":"guided-completion-active"}
+          {"format":"multiversal-aioc-pages-deployment","version":"1.6.0","build":"operational-aioc-2.0","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","defaultSurface":"operational","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":10,"contentLibrary":"design-studio-connected","contentAssistant":"guided-completion-active","contentDurability":"backup-export-import-review-package"}
           EOF
           cp _site/deployment-manifest.json _site/deployed-build.json
           cat > _site/operational/health.json <<EOF
-          {"status":"operational","application":"Multiversal AIOC","build":"operational-aioc-1.9","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":10,"contentLibrary":"design-studio-connected","contentAssistant":"guided-completion-active"}
+          {"status":"operational","application":"Multiversal AIOC","build":"operational-aioc-2.0","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":10,"contentLibrary":"design-studio-connected","contentAssistant":"guided-completion-active","contentDurability":"backup-export-import-review-package"}
           EOF
           touch _site/.nojekyll
 
@@ -93,17 +94,20 @@ jobs:
           test -s _site/content-assistant.html
           test -s _site/content-assistant.js
           test -s _site/content-assistant.css
+          test -s _site/content-durability.js
           test -s _site/content-library.html
           test -s _site/studio.html
           test -s _site/content-library-studio-bridge.js
           test -s _site/design-studio-handoff.js
           test -s _site/content-db/index.json
           grep -q 'Content Completion Assistant' _site/content-assistant.html
+          grep -q 'Export review package' _site/content-durability.js
           grep -q 'Recommended next action' _site/content-assistant.js
           grep -q 'Continue selected in Design Studio' _site/content-library-studio-bridge.js
           grep -q 'CONTENT LIBRARY WORKING COPY' _site/design-studio-handoff.js
           node --check _site/operational/operational.js
           node --check _site/content-assistant.js
+          node --check _site/content-durability.js
           node --check _site/content-library.js
           node --check _site/content-database.js
           node --check _site/content-library-studio-bridge.js
