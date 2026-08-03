@@ -12,58 +12,58 @@ Development Brain — Release C, Active Coordinator.
 
 ## Last completed work
 
-### Step 7 — Recommendation and Task Planner — COMPLETE
+### Step 8 — Verification and Governance Integration — COMPLETE
 
-Step 7 delivered:
+Step 8 delivered:
 
-1. Recommendation-planner schema and governed contract.
-2. Deterministic generation from inventory, dependency, structure, readiness, priority, and governed-memory results.
-3. Explicit classification of executable, owner-decision, blocked, and observation-only recommendations.
-4. Stable recommendation and task IDs with deterministic ordering.
-5. Bounded task proposals with prerequisites, expected outputs, rationale, evidence, and completion criteria.
-6. Authority and approval safeguards preventing silent assignment, scheduling, mutation, promotion, or certification.
+1. Verification-governance schema and governed contract.
+2. Deterministic verification of recommendation evidence, prerequisites, lifecycle compatibility, authority constraints, task eligibility, readiness compatibility, and approval requirements.
+3. Stable verification IDs and deterministic ordering.
+4. Explicit statuses: verified-executable, requires-approval, blocked, and observation-only.
+5. Auditable checks, approval records, and source evidence.
+6. Safeguards preventing execution, assignment, scheduling, mutation, promotion, certification, approval granting, or substitution of owner decisions.
 7. Generated artifact, validator, CI workflow, and required artifact publication.
 
 Validation evidence:
 
-- Recommendation Planner run `30830268026` — PASS
-- Priority and Impact run `30830267913` — PASS
-- Completion Readiness run `30830267403` — PASS
-- Structure Intelligence run `30830268081` — PASS
-- Dependency Graph run `30830270779` — PASS
-- Unified Inventory run `30830270796` — PASS
-- Operational AIOC Baseline run `30830267963` — PASS
-- AIOC Smoke Tests run `30830267402` — PASS
-- Artifact `aioc-recommendation-planner`, ID `8862609829`
-- Artifact digest `sha256:e7a2b69242d29cc7a8b3958bc275c590ed50b0671624064a5ce1088c58f58576`
-- Merge commit `2736ab9a0ab68aeda2f23ebf85da22886a2a2f80`
+- Verification Governance run `30830699103` — PASS
+- Recommendation Planner run `30830702500` — PASS
+- Priority and Impact run `30830698782` — PASS
+- Completion Readiness run `30830698918` — PASS
+- Structure Intelligence run `30830698642` — PASS
+- Dependency Graph run `30830700214` — PASS
+- Unified Inventory run `30830701033` — PASS
+- Operational AIOC Baseline run `30830698654` — PASS
+- AIOC Smoke Tests run `30830699301` — PASS
+- Artifact `aioc-verification-governance`, ID `8862776763`
+- Artifact digest `sha256:e3b21cfc995fe8856f4555eb767f27040dc91ee357ee8b702b75fa7a0f395890`
+- Merge commit `8d560bd44a71ffc816970b315b24999e93529506`
 
 ## Exact next action
 
-Implement **Development Brain Release C, Step 8 — Verification and Governance Integration** as one bounded batch.
+Implement **Development Brain Release C, Step 9 — Browser, MCP, REST, and Codex Integration** as one bounded batch.
 
 Required outputs:
 
-1. Verification-and-governance schema and governed contract.
-2. Deterministic verifier consuming recommendation plans and upstream intelligence outputs.
-3. Per-recommendation checks for evidence sufficiency, prerequisite satisfaction, lifecycle compatibility, authority constraints, and approval requirements.
-4. Explicit executable-eligibility outcomes and reasons.
-5. Auditable verification records with stable IDs, source evidence, confidence, and policy references.
-6. Detection of invalid executable tasks derived from owner-decision, blocked, or observation-only recommendations.
-7. No execution, assignment, scheduling, mutation, promotion, or certification of source content.
-8. Generated artifact, summary metrics, validator, and CI workflow.
+1. A governed integration contract covering browser, MCP, REST, and Codex surfaces.
+2. Read-only discovery and retrieval of Development Brain artifacts, summaries, recommendations, and verification records.
+3. Explicit write-action boundaries, approval requirements, and repository-review gates.
+4. Stable integration identifiers and source-evidence links.
+5. Deterministic regeneration and stale-artifact detection.
+6. Audit records for integration reads and any proposed writes.
+7. No silent execution, assignment, scheduling, mutation, promotion, certification, approval granting, or owner-decision substitution.
+8. Validators, CI coverage, and integration evidence.
 9. Updated Development Brain roadmap, current state, and session handoff.
 
 ## Operating boundaries
 
 - Read `governance/ci-failures/INDEX.md` from branch `ci/failure-records` before any work.
-- Verification records are advisory evidence and do not grant approval.
+- Integration surfaces must preserve canonical versus working authority boundaries.
+- Read access does not imply write authority.
+- Proposed writes must remain bounded, reviewable, auditable, and subject to normal repository approval and validation.
 - Owner decisions remain owner-controlled.
-- Do not silently repair, promote, recertify, assign, schedule, execute, or mutate source content.
-- Preserve canonical versus working authority boundaries and all source evidence.
-- Do not begin Step 9 until Step 8 validates.
 - `WP-011` remains a separate Mac-dependent Multiversal App work item.
 
 ## New-conversation behavior
 
-Read the canonical bootstrap and current-state files. When the owner says “Continue,” begin Step 8 immediately after verifying repository and failure state.
+Read the canonical bootstrap and current-state files. When the owner says “Continue,” begin Step 9 immediately after verifying repository and failure state.
