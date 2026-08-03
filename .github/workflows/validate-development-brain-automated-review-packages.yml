@@ -1,0 +1,27 @@
+name: Validate Development Brain Automated Review Packages
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate-automated-review-packages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run populated Step 20 behavioral acceptance
+        run: node scripts/development-brain/test-automated-review-packages.mjs
+      - name: Generate published safe-plan input
+        run: node scripts/development-brain/generate-safe-plan-proposals.mjs governance/development-brain/acceptance/fixtures/step19-review-corpus.json /tmp/safe-plans.json
+      - name: Generate published review-package artifact
+        run: node scripts/development-brain/generate-automated-review-packages.mjs /tmp/safe-plans.json /tmp/review-packages.json
+      - name: Validate published review-package artifact
+        run: node scripts/development-brain/validate-automated-review-packages.mjs /tmp/review-packages.json
+      - name: Upload review-package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aioc-automated-review-packages
+          path: /tmp/review-packages.json
