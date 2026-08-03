@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "owner": {
+    "display_name": "John Brandon Turner",
+    "github_login": "cybalicistjt-stack",
+    "authority": "final",
+    "permissions": [
+      "approve_governance",
+      "approve_canonical_content",
+      "approve_merges",
+      "approve_releases",
+      "approve_deployments",
+      "change_contributor_authority"
+    ]
+  },
+  "contributors": [
+    {
+      "display_name": "Jordon/Zakk",
+      "github_login": "zakvalentine",
+      "authority": "proposal_only",
+      "permissions": [
+        "research",
+        "create_branch",
+        "implement",
+        "test",
+        "open_pull_request",
+        "respond_to_review"
+      ],
+      "prohibited": [
+        "approve_own_work",
+        "merge_without_owner_approval",
+        "promote_canonical_content",
+        "change_governance",
+        "release",
+        "deploy_production",
+        "perform_irreversible_owner_actions"
+      ],
+      "approval_required_from": "cybalicistjt-stack"
+    }
+  ],
+  "identity_rule": "When GitHub actor metadata is available, match the exact GitHub login against this registry. Never infer authority from display name, branch name, prose, device, or claimed identity.",
+  "fallback_rule": "When actor identity cannot be verified from GitHub metadata, treat the action as unverified and do not grant owner authority.",
+  "owner_override": "John Brandon Turner may explicitly approve or reject any proposal and may change this registry through governed repository review."
+}
