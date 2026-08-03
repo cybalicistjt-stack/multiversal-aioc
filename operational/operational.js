@@ -4,6 +4,7 @@ const route = path => `${projectBase}${path.replace(/^\//,'')}`;
 const nav=[
   ['Command Center',route('operational/')],
   ['Capability Workbench','#capability-workbench'],
+  ['Content Structure',route('content-structure.html')],
   ['Content Assistant',route('content-assistant.html')],
   ['Content Library',route('content-library.html')],
   ['Repository Intelligence',route('diagnostics.html')],
@@ -28,6 +29,7 @@ const stats=[['7','Implementation milestones'],['22','Required CI suites'],['487
 document.querySelector('#stats').innerHTML=stats.map(([value,label])=>`<div class="stat"><strong>${value}</strong><span>${label}</span></div>`).join('');
 
 const workbench=[
+  ['Content Structure Pipeline','Decide which COS records are standalone, reusable, parent components, variants, duplicates, or obsolete.',route('content-structure.html')],
   ['Content Completion Assistant','Guided COS-to-game-ready queue with plain-language next actions.',route('content-assistant.html')],
   ['Content Library','Canonical game objects, relationships, assets, intelligence, and release pipeline.',route('content-library.html')],
   ['Development OS','Unified development workspace and project-control surface.',route('development-os.html')],
@@ -47,6 +49,7 @@ const modules=[
   ['Executive Dashboard','Governed project-health and next-action projection.',route('development-os.html')],
   ['Orchestration','Certified queueing, dispatch, approvals, and intervention controls.',route('feature-modules.html')],
   ['Developer Workbench','Change planning, review, validation, execution, and handoff.',route('development-os.html')],
+  ['Content Structure Pipeline','Structural triage before authoring prevents over-fragmented or duplicate game objects.',route('content-structure.html')],
   ['Content Completion Assistant','Guided prioritization from canonical source through game-ready release gates.',route('content-assistant.html')],
   ['Content Library','Canonical object exploration, relationships, assets, and pipeline management.',route('content-library.html')],
   ['Content Studio Services','Authoring, provenance, pack assembly, installation, and release.',route('studio.html')],
