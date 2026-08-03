@@ -14,50 +14,66 @@ AIOC-0-001 through AIOC-0-012 are complete. The implementation-readiness gate pa
 
 **AIOC-I-001 — Operational Core Implementation**
 
-## Latest completed work item
+## Completed implementation work
 
-**AIOC-I-001A — Project State Engine and Canonical Work Ledger — PASS**
+### AIOC-I-001A — Project State Engine and Canonical Work Ledger — PASS
 
 Evidence:
 
 - transactional project-state engine;
-- versioned canonical-state schema and seed;
+- versioned canonical-state schema and immutable test fixture;
 - atomic completion and successor activation;
 - evidence-required completion;
 - append-only mutation ledger;
 - rollback on validation or persistence failure;
 - 18 executable acceptance tests;
-- AIOC Smoke Tests run 451 — PASS;
-- `project-state-engine` run 9 — PASS.
+- `project-state-engine` run 21 — PASS;
+- AIOC Smoke Tests run 459 — PASS.
 
 Repository path: `implementation/operational-core/project-state/`
 
-## Current work item
+### AIOC-I-001B — Repository Adapter and Live State Synchronization — PASS
 
-**AIOC-I-001B — Repository Adapter and Live State Synchronization**
+Evidence:
 
-Purpose: ingest repository identity, permissions, branch, head commit, pull-request, and connector-capability observations into canonical state; detect drift and stale observations without destructive writes.
-
-**Execution state:** implementation committed; CI validation pending.
+- normalized repository snapshots and deterministic fingerprints;
+- repository identity, branch, head, pull-request, and permission observations;
+- capability-evidence capture;
+- non-destructive drift detection;
+- provider and persistence failure isolation;
+- nine executable acceptance tests;
+- `repository-sync` run 6 — PASS;
+- `project-state-engine` run 21 — PASS;
+- AIOC Smoke Tests run 459 — PASS.
 
 Repository path: `implementation/operational-core/repository-sync/`
 
+## Current work item
+
+**AIOC-I-001C — Decision, Handoff, and Recovery Services**
+
+Purpose: restore new sessions from canonical project state, create governed decision and handoff records, detect contradictions and false completion or repository-write claims, and produce deterministic recovery plans before work resumes.
+
+**Execution state:** implementation committed; CI validation pending.
+
+Repository path: `implementation/operational-core/recovery/`
+
 Implemented:
 
-- normalized repository snapshots;
-- deterministic observation fingerprints;
-- repository identity, default-branch, read, and push drift detection;
-- capability-evidence capture;
-- non-destructive observation mode;
-- all-repository synchronization;
-- stale/change detection against prior observations;
-- persistence boundary that prevents partial writes after provider failure;
-- nine executable acceptance tests;
-- dedicated `repository-sync` GitHub Actions workflow.
+- canonical session-orientation builder;
+- latest-handoff next-action restoration;
+- false-completion and missing-evidence detection;
+- repository-write capability verification;
+- commit-drift warnings;
+- recovery plans that freeze writes, restore valid state, reopen unverified work, or verify connectors;
+- governed decision records with authority, rationale, and evidence;
+- governed session handoffs bound to the active work item;
+- 13 executable acceptance tests;
+- dedicated `recovery-services` GitHub Actions workflow.
 
 ## Next executable action
 
-Inspect the `repository-sync` workflow for the latest branch commit. Fix any failures. On PASS, record evidence, complete AIOC-I-001B, and activate AIOC-I-001C — Decision, Handoff, and Recovery Services.
+Inspect the `recovery-services`, `project-state-engine`, `repository-sync`, and AIOC Smoke Tests workflows for the latest branch commit. Fix any failures. On PASS, complete AIOC-I-001C and close or advance the AIOC-I-001 Operational Core milestone according to the canonical roadmap.
 
 ## Continuity rule
 
