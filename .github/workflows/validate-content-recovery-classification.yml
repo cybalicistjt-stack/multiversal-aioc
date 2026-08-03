@@ -1,0 +1,25 @@
+name: Validate Content Recovery Classification
+
+on:
+  pull_request:
+    paths:
+      - 'governance/content-recovery/**'
+      - 'scripts/validate-content-recovery-classification.mjs'
+      - '.github/workflows/validate-content-recovery-classification.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'governance/content-recovery/**'
+      - 'scripts/validate-content-recovery-classification.mjs'
+      - '.github/workflows/validate-content-recovery-classification.yml'
+
+jobs:
+  validate-classification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate mixed-domain deterministic fixture
+        run: node scripts/validate-content-recovery-classification.mjs
