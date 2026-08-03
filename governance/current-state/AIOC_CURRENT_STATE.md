@@ -1,12 +1,12 @@
 # AIOC Current State
 
-**Status:** Active  
+**Status:** Operational certification complete  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Default branch:** `main`  
 **Canonical working branch:** `governance/session-bootstrap-v1`  
 **Owner:** John Brandon Turner
 
-## Completed architecture baseline
+## Architecture baseline
 
 AIOC-0-001 through AIOC-0-012 are complete.
 
@@ -18,64 +18,37 @@ AIOC-0-001 through AIOC-0-012 are complete.
 - **AIOC-I-004 — Developer Workbench Implementation — PASS**
 - **AIOC-I-005 — Content Studio Implementation — PASS**
 - **AIOC-I-006 — Testing, Simulation, Balance, and Digital Twin Implementation — PASS**
+- **AIOC-I-007 — Certification, Hardening, Deployment, and Recovery — PASS**
 
-## Current milestone
+## Final operational certification
 
-**AIOC-I-007 — Certification, Hardening, Deployment, and Recovery**
+### AIOC-I-007C — Final AIOC Operational Certification and Handoff — PASS
 
-## Completed work
+Final evidence for commit `c9345cbc7b6e866a725aa1c5668418b8c46af93d`:
 
-### AIOC-I-007A — Release Readiness, Security Hardening, and Deployment Projection — PASS
+- `final-operational-certification` run 2 — PASS;
+- `deployment-runtime-recovery-certification` run 6 — PASS;
+- `release-readiness-projection` run 10 — PASS;
+- AIOC Smoke Tests run 539 — PASS;
+- all eighteen additional required implementation and regression workflows — PASS.
 
-Validated by `release-readiness-projection` and all required regression suites.
+The governed operational handoff is recorded at:
 
-### AIOC-I-007B — Deployment Execution, Runtime Verification, and Recovery Certification — PASS
+`governance/current-state/AIOC_OPERATIONAL_HANDOFF.md`
 
-Evidence:
+## Current operational objective
 
-- clean release-readiness prerequisite;
-- canonical repository, branch, and active-work-item binding;
-- deployment identity, environment, commit, timestamp, status, artifact-checksum, runtime, recovery, durable-evidence, and owner-approval controls;
-- 20 executable acceptance tests;
-- `deployment-runtime-recovery-certification` run 2 — PASS;
-- `release-readiness-projection` run 6 — PASS;
-- AIOC Smoke Tests run 535 — PASS;
-- all eighteen additional implementation and regression suites — PASS.
-
-## Current work item
-
-**AIOC-I-007C — Final AIOC Operational Certification and Handoff**
-
-Purpose: issue the final AIOC operational certificate only when all seven implementation milestones and every required operating capability are evidence-backed and passing, continuity and repository health permit execution, the deployed runtime and recovery certificate is valid, owner approval is durable, no blocking risk remains open, and the governed operational handoff defines support, recovery, and the next executable action.
-
-**Execution state:** implementation committed; CI validation pending.
-
-Repository files:
-
-- `implementation/release-hardening/final-operational-certification.mjs`
-- `implementation/release-hardening/final-operational-certification.test.mjs`
-- `.github/workflows/final-operational-certification.yml`
-
-Implemented:
-
-- clean continuity and repository-health requirements;
-- canonical repository, branch, and work-item binding;
-- evidence-backed PASS enforcement for AIOC-I-001 through AIOC-I-007;
-- availability and durable-evidence checks for all required AIOC operating capabilities;
-- deployment certification fingerprint and evidence verification;
-- evidence-backed owner approval;
-- governed operational handoff requirements;
-- blocking and nonblocking risk classification;
-- deterministic final-certificate fingerprints;
-- PASS, PASS WITH WARNINGS, and FAIL outcomes;
-- completion freeze unless final certification is a clean PASS;
-- 18 executable acceptance tests;
-- dedicated `final-operational-certification` GitHub Actions workflow.
+Use AIOC as the governed command-and-control system for Multiversal application delivery.
 
 ## Next executable action
 
-Inspect `final-operational-certification`, `deployment-runtime-recovery-certification`, `release-readiness-projection`, and all required regression suites for the latest branch commit. Fix any failure. On clean PASS, close AIOC-I-007 and certify the AIOC operational implementation complete. Then update the governed handoff to begin operational use of AIOC for Multiversal application delivery.
+Reconcile the Multiversal application repository against the approved Development Bible and canonical roadmaps, establish the first active application implementation work item, and dispatch it through the AIOC planning, certification, execution, and evidence pipeline.
 
 ## Continuity rule
 
-New conversations must load `governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md`, this file, and `governance/current-state/SESSION_HANDOFF.md` before continuing work.
+New conversations must load:
+
+1. `governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md`
+2. this file;
+3. `governance/current-state/SESSION_HANDOFF.md`;
+4. `governance/current-state/AIOC_OPERATIONAL_HANDOFF.md`.
