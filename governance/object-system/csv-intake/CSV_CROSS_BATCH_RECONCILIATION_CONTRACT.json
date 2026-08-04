@@ -1,0 +1,28 @@
+{
+  "format": "multiversal-csv-cross-batch-reconciliation-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L25",
+  "status": "authorized-staging-reconciliation",
+  "expectedDatasets": 20,
+  "expectedRows": 19199,
+  "domainBatches": [
+    {"name":"legacy-mapped","datasets":7,"rows":4821},
+    {"name":"items","datasets":2,"rows":568},
+    {"name":"mixed-hazards","datasets":2,"rows":2981},
+    {"name":"vehicles","datasets":3,"rows":5628},
+    {"name":"spells","datasets":1,"rows":385},
+    {"name":"abilities","datasets":5,"rows":4816}
+  ],
+  "requiredAssertions": {
+    "completeCoverage": true,
+    "uniqueStagingIds": true,
+    "rawSourcePreserved": true,
+    "unresolvedManifestPresent": true,
+    "crossDomainAutoMergeForbidden": true,
+    "relationshipReconciliationQueued": true,
+    "canonicalIdsAssigned": 0,
+    "promotionReadyRows": 0
+  },
+  "relationshipFamilies": ["vehicle-component-parent", "ability-tree-parent", "mixed-domain-routing", "cross-file-identity"],
+  "promotionBoundary": "Reconciliation validates complete noncanonical staging coverage and queues identity/relationship work. It does not resolve source ambiguity, assign canonical IDs, or authorize promotion."
+}
