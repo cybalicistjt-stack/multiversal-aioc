@@ -1,0 +1,28 @@
+name: Reconcile CSV Vehicle Parent Links
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/CSV_VEHICLE_PARENT_RECONCILIATION_CONTRACT.json'
+      - 'scripts/reconcile-csv-vehicle-parent-links.py'
+      - 'scripts/validate-csv-vehicle-parent-reconciliation.py'
+      - '.github/workflows/reconcile-csv-vehicle-parent-links.yml'
+  workflow_dispatch:
+
+jobs:
+  reconcile-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconcile vehicle parent links
+        run: python scripts/reconcile-csv-vehicle-parent-links.py
+      - name: Validate reconciliation
+        run: python scripts/validate-csv-vehicle-parent-reconciliation.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-vehicle-parent-reconciliation-l26
+          path: build/csv-vehicle-parent-reconciliation-l26/
+          retention-days: 30
