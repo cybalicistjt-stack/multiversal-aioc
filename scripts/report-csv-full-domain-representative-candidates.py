@@ -18,15 +18,20 @@ configs = {
   'prestige_environment_and_special_ability_trees_catalog.csv': ['Record_ID','Record_Type','Ability_Name','Tree_ID','Ability_Tree','Tree_Category','Tier','Ability_XP_Cost','Ability_Type','Effect','Mechanics','Source_PDF'],
   'species_elementalist_and_innate_abilities_catalog.csv': ['Record_ID','Record_Type','Ability_Name','Tree_ID','Ability_Tree','Tree_Category','Tier','Ability_XP_Cost','Ability_Type','Effect','Mechanics','Source_PDF'],
 }
+
+def abstract_penalty(row):
+    record_type = ((row.get('Record_Type') or row.get('Record Type') or '') + ' ' + (row.get('Tier') or '')).casefold()
+    return 1 if any(token in record_type for token in ('framework','tree-level','collection')) else 0
+
 output = {}
 with zipfile.ZipFile(archive) as bundle:
     entries = {Path(i.filename).name: i for i in bundle.infolist() if i.filename.lower().endswith('.csv')}
     for filename, fields in configs.items():
         text = bundle.read(entries[filename]).decode('utf-8-sig')
         rows = list(csv.DictReader(io.StringIO(text)))
-        ranked = sorted(enumerate(rows, start=2), key=lambda pair: (-sum(bool((pair[1].get(f) or '').strip()) for f in fields), pair[0]))
+        ranked = sorted(enumerate(rows, start=2), key=lambda pair: (abstract_penalty(pair[1]), -sum(bool((pair[1].get(f) or '').strip()) for f in fields), pair[0]))
         candidates = []
         for row_number, row in ranked[:3]:
-            candidates.append({'rowNumber': row_number, 'filled': sum(bool((row.get(f) or '').strip()) for f in fields), 'values': {f: row.get(f,'') for f in fields}})
+            candidates.append({'rowNumber': row_number, 'filled': sum(bool((row.get(f) or '').strip()) for f in fields), 'abstractPenalty': abstract_penalty(row), 'values': {f: row.get(f,'') for f in fields}})
         output[filename] = candidates
 print('CSV_FULL_DOMAIN_REPRESENTATIVE_CANDIDATES=' + json.dumps(output, ensure_ascii=False, separators=(',',':')))
