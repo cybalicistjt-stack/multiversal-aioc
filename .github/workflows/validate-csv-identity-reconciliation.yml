@@ -1,0 +1,23 @@
+name: Validate CSV Identity Reconciliation
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/CSV_IDENTITY_RECONCILIATION_REGISTRY.json'
+      - 'scripts/validate-csv-identity-reconciliation.py'
+      - '.github/workflows/validate-csv-identity-reconciliation.yml'
+  push:
+    paths:
+      - 'governance/object-system/csv-intake/CSV_IDENTITY_RECONCILIATION_REGISTRY.json'
+      - 'scripts/validate-csv-identity-reconciliation.py'
+      - '.github/workflows/validate-csv-identity-reconciliation.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-csv-identity-reconciliation.py
