@@ -1,0 +1,20 @@
+name: Validate Item Design Studio and Examples
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/item-design-studio/**'
+      - 'governance/object-system/item-examples/**'
+      - 'governance/object-system/item-templates/**'
+      - 'scripts/validate-item-design-studio-examples.mjs'
+      - '.github/workflows/validate-item-design-studio-examples.yml'
+
+jobs:
+  validate-item-design-studio-examples:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/validate-item-design-studio-examples.mjs
