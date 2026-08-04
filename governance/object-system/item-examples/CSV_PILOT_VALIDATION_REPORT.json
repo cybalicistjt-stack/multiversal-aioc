@@ -1,0 +1,51 @@
+{
+  "format": "multiversal-csv-pilot-validation-report",
+  "version": "0.1.0",
+  "workstream": "8E-009L9",
+  "status": "validated-staging-only",
+  "pilotObjects": "governance/object-system/item-examples/CSV_PILOT_CONVERSION_OBJECTS.json",
+  "validationScope": [
+    "selection-to-object alignment",
+    "template routing existence",
+    "staging identity uniqueness",
+    "canonical ID absence",
+    "source provenance presence",
+    "unresolved-field preservation",
+    "inference quarantine",
+    "promotion-boundary enforcement"
+  ],
+  "summary": {
+    "objectCount": 7,
+    "structuralPass": 7,
+    "identityPass": 7,
+    "provenancePresent": 7,
+    "canonicalIdsAssigned": 0,
+    "objectsWithUnresolvedFields": 7,
+    "inferenceQuarantined": 3,
+    "facetedObjects": 1,
+    "promotionReady": 0
+  },
+  "results": [
+    {"stagingId":"mvstg:expanded-melee-weapons-all-genres:2","templateId":"item.weapon.melee","structural":"pass","identity":"pass","provenance":"partial","templateValidation":"blocked-unresolved","promotion":"blocked","blockers":["sourceDocument","sourcePage","properties","proficiency","currency context"]},
+    {"stagingId":"mvstg:expanded-ranged-weapons-catalog:2","templateId":"item.weapon.ranged","structural":"pass","identity":"pass","provenance":"partial","templateValidation":"blocked-unresolved","promotion":"blocked","blockers":["sourceDocument","sourcePage","ammunitionCompatibility","reloadAction"]},
+    {"stagingId":"mvstg:expanded-items-all-genres:2","templateId":"item.storage.typed-container","structural":"pass","identity":"pass","provenance":"inference-warning","templateValidation":"quarantined","promotion":"blocked","blockers":["bestJudgmentClaims","sourceDocument","sourcePage","emptyWeight","acquisition"]},
+    {"stagingId":"mvstg:expanded-eva-suits-and-modules-all-genres:2","templateId":"item.modification.module","structural":"pass","identity":"pass","provenance":"inference-warning","templateValidation":"quarantined","promotion":"blocked","blockers":["sourcePage","slotCost","powerRequirement","installationRules","weight","cost"]},
+    {"stagingId":"mvstg:expanded-computers-all-genres:CMP-0001","templateId":"item.modification.module","structural":"pass","identity":"pass","provenance":"section-level","templateValidation":"blocked-unresolved","promotion":"blocked","blockers":["componentVsCompleteComputerRouting","hostCompatibility","slotRequirement","powerRequirement"]},
+    {"stagingId":"mvstg:expanded-living-spellbooks-and-magic-charge-holders-all-genres:LS-S-001","templateId":"item.living.sentient-companion","structural":"pass","identity":"pass","provenance":"section-level","templateValidation":"blocked-facet-resolution","promotion":"blocked","blockers":["facetBoundaries","independentActionAuthority","levelSpecificFieldProvenance"]},
+    {"stagingId":"mvstg:expanded-symbiotes-and-cybernetics-all-genres:2","templateId":"item.living.symbiote","structural":"pass","identity":"pass","provenance":"inference-warning","templateValidation":"quarantined","promotion":"blocked","blockers":["bestJudgmentClaims","sourcePage","hostRequirementProvenance","activation","conflictRules","cost","mass","marketDetails"]}
+  ],
+  "batchReadiness": {
+    "mappingEngineReadyForBoundedExpansion": true,
+    "canonicalPromotionReady": false,
+    "requiredBeforeBatchConversion": [
+      "retain staging-only output",
+      "generate per-row unresolved-field manifests",
+      "run identity reconciliation before merge decisions",
+      "quarantine rows containing best-judgment or inferred source claims",
+      "require PDF verification for promotion candidates",
+      "keep owner approval as final promotion gate"
+    ]
+  },
+  "conclusion": "The pilot conversion mechanism is structurally valid for bounded staging conversion. None of the seven pilot objects is canonically complete or promotion-ready.",
+  "promotionBoundary": "Validation authorizes only controlled staging expansion. It does not authorize canonical IDs, silent conflict resolution, source inference certification, or promotion without owner approval."
+}
