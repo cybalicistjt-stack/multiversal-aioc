@@ -1,0 +1,17 @@
+name: Report CSV Representative Candidates
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/report-csv-representative-candidates.py'
+      - '.github/workflows/report-csv-representative-candidates.yml'
+
+jobs:
+  report:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/report-csv-representative-candidates.py
