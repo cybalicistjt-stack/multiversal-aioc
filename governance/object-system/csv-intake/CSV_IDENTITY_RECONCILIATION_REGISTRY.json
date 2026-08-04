@@ -1,0 +1,142 @@
+{
+  "format": "multiversal-csv-identity-reconciliation-registry",
+  "version": "0.1.0",
+  "workstream": "8E-009L6",
+  "status": "governed-draft",
+  "scope": "Cross-file identity, overlap, variant, and conflict handling for CSV-staged item records.",
+  "normalization": {
+    "displayName": ["unicode-nfkc", "trim", "collapse-whitespace", "casefold-for-comparison-only"],
+    "sourceName": ["unicode-nfkc", "trim", "collapse-whitespace", "casefold-for-comparison-only"],
+    "punctuation": "Preserve source punctuation; comparison keys may normalize punctuation only as a secondary signal.",
+    "articles": "Do not remove leading articles from canonical display names; optional comparison aliases may remove them.",
+    "identifiers": "Source-provided IDs remain immutable evidence and never become universal IDs without a governed namespace."
+  },
+  "evidenceClasses": [
+    "exact-source-id",
+    "exact-source-and-name",
+    "normalized-name-and-compatible-family",
+    "mechanical-signature",
+    "provenance-link",
+    "manual-owner-decision"
+  ],
+  "decisions": [
+    {
+      "decision": "same-record",
+      "minimumEvidence": ["exact-source-id"],
+      "effect": "Represent as one staged identity with multiple provenance assertions.",
+      "automatic": true
+    },
+    {
+      "decision": "probable-same-record",
+      "minimumEvidence": ["exact-source-and-name", "compatible-template-routing", "no-material-conflict"],
+      "effect": "Link in a review cluster; do not merge or promote automatically.",
+      "automatic": false
+    },
+    {
+      "decision": "variant",
+      "minimumEvidence": ["shared-name-or-provenance", "material-mechanical-difference"],
+      "effect": "Preserve separate staged records under a variant group.",
+      "automatic": false
+    },
+    {
+      "decision": "homonym",
+      "minimumEvidence": ["same-normalized-name", "incompatible-template-or-origin"],
+      "effect": "Preserve separate identities and record a disambiguation label.",
+      "automatic": true
+    },
+    {
+      "decision": "conflict",
+      "minimumEvidence": ["same-identity-evidence", "contradictory-material-field"],
+      "effect": "Preserve all claims, mark disputed fields, require source verification before promotion.",
+      "automatic": true
+    },
+    {
+      "decision": "unresolved",
+      "minimumEvidence": [],
+      "effect": "Retain separate staged identities pending additional evidence.",
+      "automatic": true
+    }
+  ],
+  "materialConflictFields": [
+    "templateRouting",
+    "sourceDocument",
+    "sourceSection",
+    "damageProfile",
+    "range",
+    "capacity",
+    "resourceType",
+    "activation",
+    "duration",
+    "hostCompatibility",
+    "bodyLocation",
+    "installation",
+    "failureBehavior",
+    "sentience",
+    "independentAction",
+    "cost",
+    "weight"
+  ],
+  "overlapGroups": [
+    {
+      "groupId": "weapons-ranged-ammunition",
+      "datasets": ["expanded_ranged_weapons_catalog.csv", "weapons_and_ammo.csv", "expanded_magitech_items_all_genres.csv"],
+      "identityColumns": ["Weapon", "Item", "Source Name", "Origin"],
+      "routingConstraint": "Resolve firearm, ordinary ranged weapon, energy weapon, ammunition, power cell, and magitech overlay before comparing identity.",
+      "defaultDisposition": "review-cluster"
+    },
+    {
+      "groupId": "general-items-and-magitech",
+      "datasets": ["expanded_items_all_genres.csv", "expanded_magitech_items_all_genres.csv"],
+      "identityColumns": ["Item", "Source Name", "Category", "Subcategory", "Origin"],
+      "routingConstraint": "Physical template identity remains primary; magitech discipline is an overlay unless the source defines a distinct object.",
+      "defaultDisposition": "review-cluster"
+    },
+    {
+      "groupId": "eva-hosts-and-modules",
+      "datasets": ["expanded_eva_suits_and_modules_all_genres.csv"],
+      "identityColumns": ["Item", "Source Name", "Item Type", "Module Family", "Mount or Slot", "Origin"],
+      "routingConstraint": "Host suits and installable modules are never merged into one identity.",
+      "defaultDisposition": "separate-by-routing"
+    },
+    {
+      "groupId": "living-implements-and-storage",
+      "datasets": ["expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv"],
+      "identityColumns": ["Catalog_ID", "Item_Name", "Record_Type", "Item_Family", "Source_PDF", "Source_Section"],
+      "routingConstraint": "Living companion, magic implement, and typed charge holder projections may coexist only as linked facets when the source clearly describes one physical entity.",
+      "defaultDisposition": "facet-review"
+    },
+    {
+      "groupId": "symbiotes-implants-modules",
+      "datasets": ["expanded_symbiotes_and_cybernetics_all_genres.csv"],
+      "identityColumns": ["Item", "Source Name", "Upgrade Class", "Family", "Body Location or Bond Site", "Origin"],
+      "routingConstraint": "Symbiotes, cybernetic implants, and installable modules are distinct primary identities unless source evidence explicitly establishes a single entity with multiple projections.",
+      "defaultDisposition": "separate-by-routing"
+    }
+  ],
+  "stableIdentityKey": {
+    "format": "mvstg:<dataset-key>:<source-row-key>",
+    "purpose": "Staging identity only.",
+    "rules": [
+      "The key must be deterministic within the immutable archive.",
+      "It must not depend solely on display name.",
+      "It must include a dataset namespace and a stable source row key or source ID.",
+      "It must survive repeated conversion runs against the same archive hash.",
+      "It is not a canonical object ID and does not authorize promotion."
+    ]
+  },
+  "reviewCluster": {
+    "requiredFields": ["clusterId", "members", "signals", "conflicts", "recommendedDisposition", "verificationNeeded", "status"],
+    "allowedStatus": ["open", "verified-same", "verified-variant", "verified-homonym", "verified-conflict", "owner-decision-required"],
+    "prohibitedActions": ["silent-merge", "silent-field-precedence", "discard-conflicting-claim", "canonical-promotion"]
+  },
+  "fieldPrecedence": {
+    "rule": "No dataset has universal precedence.",
+    "allowedResolution": [
+      "exact source quotation or page verification",
+      "more specific source section over an aggregate catalog when provenance is explicit",
+      "owner-approved adjudication",
+      "preserve unresolved competing claims"
+    ]
+  },
+  "promotionBoundary": "Identity reconciliation creates staging links and review decisions only. It does not certify source fidelity, choose disputed mechanics without evidence, merge variants automatically, assign canonical IDs, or authorize canonical promotion or batch conversion."
+}
