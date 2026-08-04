@@ -1,0 +1,29 @@
+{
+  "format": "multiversal-csv-full-batch-staging-execution",
+  "version": "0.1.0",
+  "workstream": "8E-009L18",
+  "status": "authorized-for-ci-execution",
+  "authorization": "governance/object-system/csv-intake/CSV_FULL_DOMAIN_PILOT_VALIDATION_REPORT.json",
+  "archive": "Csv.zip",
+  "scope": {
+    "datasets": 20,
+    "rows": 19199
+  },
+  "execution": {
+    "converter": "scripts/convert-csv-batch-to-staging.py",
+    "validator": "scripts/validate-csv-batch-staging.py",
+    "outputDirectory": "artifacts/csv-staging-batch",
+    "artifactName": "csv-full-batch-staging-19199"
+  },
+  "requiredAssertions": {
+    "allRowsPreserved": true,
+    "allDatasetsRepresented": true,
+    "stagingIdsUnique": true,
+    "rawSourcePreserved": true,
+    "unresolvedManifestPresent": true,
+    "inferenceQuarantinePreserved": true,
+    "canonicalIdsAssigned": 0,
+    "promotionReadyRows": 0
+  },
+  "promotionBoundary": "This execution produces noncanonical staging artifacts only. Source verification, domain validation, identity reconciliation, conflict resolution, and owner approval remain mandatory before promotion."
+}
