@@ -1,0 +1,58 @@
+{
+  "format": "multiversal-item-validator-registry",
+  "version": "0.1.0",
+  "workstream": "8E-009J",
+  "status": "governed-draft",
+  "templateRegistry": "governance/object-system/item-templates/ITEM_TEMPLATE_REGISTRY.json",
+  "validationOutcomeOrder": ["invalid","stub","partial","source-complete","runtime-ready","promotion-ready"],
+  "globalRules": {
+    "requiredEnvelope": ["identity","templateId","lifecycleStage","description","tags","provenance","governanceState","version"],
+    "fieldProvenanceRequiredFor": ["required fields","source-supported conditional fields","rules-bearing values","inferred mappings"],
+    "prohibitedCompletionShortcuts": ["identity-only wrapper","type-only wrapper","empty module body","unresolved required field silently omitted","unsupported default invented","ambiguity treated as resolved"],
+    "sourceEvidenceStates": ["explicit","deterministic-mapped","owner-resolved","unresolved"],
+    "severityLevels": ["error","warning","information"]
+  },
+  "completionScoring": {
+    "requiredFieldCoverageWeight": 45,
+    "applicableConditionalCoverageWeight": 25,
+    "fieldProvenanceWeight": 15,
+    "relationshipAndCompatibilityWeight": 5,
+    "runtimeBehaviorCoverageWeight": 5,
+    "ambiguityResolutionWeight": 5,
+    "caps": {
+      "missingRequiredField": 49,
+      "missingRequiredProvenance": 69,
+      "unresolvedBlockingAmbiguity": 79,
+      "missingRuntimeBehavior": 89
+    },
+    "thresholds": {
+      "stubMaximum": 24,
+      "partialMaximum": 69,
+      "sourceCompleteMinimum": 70,
+      "runtimeReadyMinimum": 90,
+      "promotionReadyMinimum": 100
+    }
+  },
+  "validators": [
+    {"templateId":"item.weapon.melee","requiredChecks":["damage profile present","damage dice parseable","damage type linked","properties have definitions","thrown requires range","versatile requires alternate damage","powered requires power behavior"],"runtimeChecks":["attack action","damage resolution","range rule when applicable","resource cost when applicable"],"blockingAmbiguities":["unsupported powered or magitech behavior"]},
+    {"templateId":"item.weapon.firearm","requiredChecks":["ammunition type present","capacity typed","reload behavior present","damage profile present","every fire mode defined","burst count present when applicable","area geometry present when applicable"],"runtimeChecks":["ammunition consumption","reload action","fire-mode resolution","malfunction behavior when supported"],"blockingAmbiguities":["unresolved ownership of ammunition-specific effects"]},
+    {"templateId":"item.protection.armor","requiredChecks":["armor category present","AC formula executable","Dexterity contribution bounded","requirements explicit","don and doff rules present","protection pools define depletion and recovery"],"runtimeChecks":["defense calculation","damage reduction and resistance resolution","equipment-state handling"],"blockingAmbiguities":["unresolved exoskeleton or energy-shield projection"]},
+    {"templateId":"item.protection.eva-suit","requiredChecks":["sealing defined","life support duration typed","environment protections typed","power capacity and consumption reconcile","hardpoints and modules compatible","emergency and decompression behavior present"],"runtimeChecks":["life-support depletion","hazard mitigation","zero-gravity movement when supported","module activation"],"blockingAmbiguities":["unresolved ship or mecha integration"]},
+    {"templateId":"item.storage.typed-container","requiredChecks":["stored resource type present","capacity value and unit present","access and retrieval defined","restrictions explicit","resource-specific failure behavior present"],"runtimeChecks":["store","retrieve","capacity enforcement","overcapacity failure"],"blockingAmbiguities":["mixed or undefined capacity semantics"]},
+    {"templateId":"item.consumable.effect-delivery","requiredChecks":["activation or application present","target present","effect linked","duration or instantaneous state present","dose count reconciles","consumption result present","save or check defined when supported"],"runtimeChecks":["apply effect","consume dose","area resolution when applicable","misuse behavior when supported"],"blockingAmbiguities":["unresolved persistent versus consumed state"]},
+    {"templateId":"item.device.computer","requiredChecks":["processing power present","memory capacity present","security level present","power behavior present","compatibility defined","installed programs fit requirements","expansion usage fits slots"],"runtimeChecks":["task execution","program installation and removal","power consumption","security checks","AI permission boundary when applicable"],"blockingAmbiguities":["unresolved software or AI identity projection"]},
+    {"templateId":"item.magic.implement","requiredChecks":["implement subtype present","spell references valid","activation present","charge or consumption model present","recharge or terminal behavior present","attunement and casting gate explicit"],"runtimeChecks":["spell activation","charge spending","recharge","burnout or consumption","failure behavior"],"blockingAmbiguities":["unresolved scroll or spell-orb persistence"]},
+    {"templateId":"item.living.sentient-companion","requiredChecks":["item identity present","companion body statistics present","personality and communication present","bonding present","autonomy boundaries present","progression present","repair and destruction behavior present"],"runtimeChecks":["independent actions","relationship state","progression unlocks","death or destruction handling"],"blockingAmbiguities":["unresolved item versus creature projection"]},
+    {"templateId":"item.living.symbiote","requiredChecks":["host compatibility present","attachment and detachment present","needs present","benefits and drawbacks present","conflict rules present","relationship state present","progression and parasitic state present"],"runtimeChecks":["bonding","needs depletion","conflict roll","evolution","host transformation","detachment"],"blockingAmbiguities":["canonical identity projection unresolved"]},
+    {"templateId":"item.material.crafting-resource","requiredChecks":["material category present","raw or refined state present","physical properties present","crafting difficulty or role present","finished-item modifiers typed","repair and tool requirements present when supported"],"runtimeChecks":["crafting consumption","finished-item modification","repair use","fuel or catalyst depletion when applicable"],"blockingAmbiguities":["living or autonomous material status unresolved"]}
+  ],
+  "promotionGates": [
+    "score equals 100",
+    "no validation errors",
+    "no unresolved blocking ambiguities",
+    "representative object validates against exact registry version",
+    "staging behavior passes",
+    "owner approval recorded for exact fingerprint"
+  ],
+  "boundary": "This registry defines validation and completion measurement only. It does not promote content, authorize bulk conversion, or replace owner approval."
+}
