@@ -29,7 +29,10 @@ actual = []
 exact_duplicates = 0
 uncompressed_bytes = 0
 with zipfile.ZipFile(ARCHIVE) as bundle:
-    csv_entries = sorted(i for i in bundle.infolist() if i.filename.lower().endswith('.csv'))
+    csv_entries = sorted(
+        (entry for entry in bundle.infolist() if entry.filename.lower().endswith('.csv')),
+        key=lambda entry: entry.filename,
+    )
     for entry in csv_entries:
         raw = bundle.read(entry.filename)
         uncompressed_bytes += len(raw)
