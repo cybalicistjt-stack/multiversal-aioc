@@ -1,0 +1,28 @@
+name: Extract P0 Row Specific Locators
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/P0_ROW_SPECIFIC_LOCATOR_CONTRACT.json'
+      - 'scripts/extract-p0-row-specific-locators.py'
+      - 'scripts/validate-p0-row-specific-locators.py'
+      - '.github/workflows/extract-p0-row-specific-locators.yml'
+  workflow_dispatch:
+
+jobs:
+  extract-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Extract row-specific locators
+        run: python scripts/extract-p0-row-specific-locators.py
+      - name: Validate row-specific locators
+        run: python scripts/validate-p0-row-specific-locators.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-p0-row-specific-locators-107
+          path: build/csv-p0-row-specific-locators-l37/
+          retention-days: 30
