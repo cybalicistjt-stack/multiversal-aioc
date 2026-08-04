@@ -1,0 +1,30 @@
+name: Execute CSV Spell Domain Batch
+
+on:
+  pull_request:
+    paths:
+      - 'Csv.zip'
+      - 'governance/object-system/csv-intake/CSV_SPELL_DOMAIN_BATCH_CONTRACT.json'
+      - 'scripts/convert-csv-spell-domain-batch.py'
+      - 'scripts/validate-csv-spell-domain-batch.py'
+      - '.github/workflows/execute-csv-spell-domain-batch.yml'
+  workflow_dispatch:
+
+jobs:
+  execute-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Convert spell domain batch
+        run: python scripts/convert-csv-spell-domain-batch.py
+      - name: Validate spell domain batch
+        run: python scripts/validate-csv-spell-domain-batch.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-spell-domain-batch-385
+          path: build/csv-domain-batch-spells-l23/
+          if-no-files-found: error
+          retention-days: 31
