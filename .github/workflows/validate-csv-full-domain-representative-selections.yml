@@ -1,0 +1,19 @@
+name: Validate CSV Full-Domain Representative Selections
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/CSV_FULL_DOMAIN_REPRESENTATIVE_SELECTIONS.json'
+      - 'scripts/validate-csv-full-domain-representative-selections.py'
+      - '.github/workflows/validate-csv-full-domain-representative-selections.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-csv-full-domain-representative-selections.py
