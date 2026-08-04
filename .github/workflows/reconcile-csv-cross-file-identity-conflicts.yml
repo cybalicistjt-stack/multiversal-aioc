@@ -1,0 +1,28 @@
+name: Reconcile CSV Cross-File Identity Conflicts
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/CSV_CROSS_FILE_IDENTITY_CONFLICT_RECONCILIATION_CONTRACT.json'
+      - 'scripts/reconcile-csv-cross-file-identity-conflicts.py'
+      - 'scripts/validate-csv-cross-file-identity-conflicts.py'
+      - '.github/workflows/reconcile-csv-cross-file-identity-conflicts.yml'
+  workflow_dispatch:
+
+jobs:
+  reconcile-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconcile cross-file identity conflicts
+        run: python scripts/reconcile-csv-cross-file-identity-conflicts.py
+      - name: Validate reconciliation
+        run: python scripts/validate-csv-cross-file-identity-conflicts.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-cross-file-identity-conflicts-19199
+          path: build/csv-cross-file-identity-conflicts-l29/
+          retention-days: 30
