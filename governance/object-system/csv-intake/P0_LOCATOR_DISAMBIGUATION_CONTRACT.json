@@ -1,0 +1,18 @@
+{
+  "format": "multiversal-p0-locator-disambiguation-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L39",
+  "inputEvidence": "governance/object-system/csv-intake/P0_LOCATOR_PAGE_MATCH_EVIDENCE.json",
+  "outputEvidence": "governance/object-system/csv-intake/P0_LOCATOR_DISAMBIGUATION_QUEUE.json",
+  "expectedRows": 53,
+  "expectedAmbiguousRows": 14,
+  "expectedUnmatchedRows": 39,
+  "rules": {
+    "secondaryCsvFieldsRequiredForAmbiguousResolution": true,
+    "aliasOrHeadingEvidenceRequiredForUnmatchedResolution": true,
+    "visualInspectionRequiredWhenExtractedTextInsufficient": true,
+    "pageCitationForbiddenWithoutUniqueSupport": true,
+    "canonicalIdsForbidden": true,
+    "promotionForbidden": true
+  }
+}
