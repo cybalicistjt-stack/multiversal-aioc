@@ -1,0 +1,28 @@
+{
+  "format": "multiversal-csv-vehicle-parent-reconciliation-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L26",
+  "status": "authorized-audit",
+  "archive": "Csv.zip",
+  "datasets": [
+    "expanded_mecha_and_components_all_genres.csv",
+    "expanded_spacecraft_and_components_all_genres.csv"
+  ],
+  "rules": {
+    "explicitParentReferenceRequiredForDeterministicLink": true,
+    "nameSimilarityCannotCreateParentLink": true,
+    "sourceDocumentGroupingIsCandidateEvidenceOnly": true,
+    "crossDatasetParentLinksForbiddenWithoutSourceEvidence": true,
+    "canonicalIdsForbidden": true,
+    "promotionForbidden": true
+  },
+  "requiredOutputs": {
+    "headerAudit": true,
+    "vehicleAndComponentCounts": true,
+    "deterministicLinkCount": true,
+    "unresolvedQueue": true,
+    "sourceVerificationRequirements": true
+  },
+  "output": "build/csv-vehicle-parent-reconciliation-l26/REPORT.json",
+  "promotionBoundary": "This step may resolve only explicit CSV parent references. Ambiguous or absent parent relationships remain queued for source-document verification and owner-governed promotion."
+}
