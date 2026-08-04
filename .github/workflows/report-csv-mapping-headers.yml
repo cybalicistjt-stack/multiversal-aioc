@@ -1,0 +1,17 @@
+name: Report CSV Mapping Headers
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/report-csv-mapping-headers.py'
+      - '.github/workflows/report-csv-mapping-headers.yml'
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/report-csv-mapping-headers.py
