@@ -1,0 +1,24 @@
+{
+  "format": "multiversal-csv-domain-batch-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L22",
+  "status": "authorized-staging-conversion",
+  "sourceRegistry": "governance/object-system/csv-intake/CSV_REMAINING_MAPPING_CONTRACT_REGISTRY.json",
+  "datasets": [
+    {"file":"expanded_land_sea_air_vehicles_all_genres.csv","rows":1200,"domain":"vehicles","identityColumn":"Vehicle_ID","nameColumn":"Item_Name"},
+    {"file":"expanded_mecha_and_components_all_genres.csv","rows":2117,"domain":"vehicles","identityColumn":"Catalog_ID","nameColumn":"Item_Name"},
+    {"file":"expanded_spacecraft_and_components_all_genres.csv","rows":2311,"domain":"vehicles","identityColumn":"Catalog_ID","nameColumn":"Item_Name"}
+  ],
+  "expectedRows": 5628,
+  "rules": {
+    "preserveRawSource": true,
+    "preserveUnmappedColumns": true,
+    "classificationEvidence": "inferred-classification",
+    "crossDomainCoercionForbidden": true,
+    "noSilentDefaults": true,
+    "canonicalIdsForbidden": true,
+    "promotionForbidden": true
+  },
+  "outputDirectory": "build/csv-domain-batch-vehicles-l22",
+  "nextBoundary": "Outputs remain noncanonical until source verification, component-parent reconciliation, identity reconciliation, vehicle-domain validation, and owner approval."
+}
