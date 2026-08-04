@@ -1,0 +1,26 @@
+{
+  "format": "multiversal-csv-ability-relationship-reconciliation-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L27",
+  "status": "authorized-reconciliation",
+  "sourceContract": "governance/object-system/csv-intake/CSV_ABILITY_DOMAIN_BATCH_CONTRACT.json",
+  "datasets": [
+    "ability_trees_and_abilities_catalog.csv",
+    "magic_arcane_and_faction_ability_trees_catalog.csv",
+    "profession_and_crafting_ability_trees_catalog.csv",
+    "prestige_environment_and_special_ability_trees_catalog.csv",
+    "species_elementalist_and_innate_abilities_catalog.csv"
+  ],
+  "expectedRows": 4816,
+  "rules": {
+    "exactSourceIdentityOnly": true,
+    "crossFileTreeResolutionAllowed": true,
+    "ambiguousMatchesRemainUnresolved": true,
+    "missingMatchesRemainUnresolved": true,
+    "nameSimilarityForbidden": true,
+    "canonicalIdsForbidden": true,
+    "promotionForbidden": true
+  },
+  "outputDirectory": "build/csv-ability-relationship-reconciliation-l27",
+  "nextBoundary": "Source-document verification remains mandatory for unresolved or ambiguous tree and parent relationships."
+}
