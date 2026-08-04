@@ -1,0 +1,18 @@
+name: Report Remaining CSV Headers
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/report-remaining-csv-headers.py'
+      - '.github/workflows/report-remaining-csv-headers.yml'
+  workflow_dispatch:
+
+jobs:
+  report:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/report-remaining-csv-headers.py
