@@ -1,0 +1,28 @@
+name: Validate P0 Narrative Source Sets
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/P0_NARRATIVE_SOURCE_SET_CONTRACT.json'
+      - 'governance/object-system/csv-intake/P0_NARRATIVE_SOURCE_SET_REGISTRY.json'
+      - 'scripts/validate-p0-narrative-source-sets.py'
+      - '.github/workflows/validate-p0-narrative-source-sets.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate governed narrative source sets
+        run: python scripts/validate-p0-narrative-source-sets.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: p0-narrative-source-sets-1602
+          path: |
+            governance/object-system/csv-intake/P0_NARRATIVE_SOURCE_SET_CONTRACT.json
+            governance/object-system/csv-intake/P0_NARRATIVE_SOURCE_SET_REGISTRY.json
+          retention-days: 30
