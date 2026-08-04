@@ -1,0 +1,27 @@
+name: Validate CSV Batch Staging
+
+on:
+  pull_request:
+    paths:
+      - 'Csv.zip'
+      - 'governance/object-system/csv-intake/CSV_BATCH_STAGING_CONTRACT.json'
+      - 'scripts/convert-csv-batch-to-staging.py'
+      - 'scripts/validate-csv-batch-staging.py'
+      - '.github/workflows/validate-csv-batch-staging.yml'
+
+jobs:
+  convert-and-validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/convert-csv-batch-to-staging.py
+      - run: python scripts/validate-csv-batch-staging.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-staging-batch
+          path: artifacts/csv-staging-batch
+          if-no-files-found: error
+          retention-days: 14
