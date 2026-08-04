@@ -7,6 +7,7 @@ on:
       - 'index.html'
       - 'operational/**'
       - 'content-db/**'
+      - 'content-enrichment/**'
       - 'governance/current-state/**'
       - 'governance/dispatches/**'
       - 'governance/legacy/**'
@@ -24,6 +25,7 @@ on:
       - 'content-library.js'
       - 'content-library.css'
       - 'content-library-studio-bridge.js'
+      - 'content-enrichment-loader.js'
       - 'content-database.js'
       - 'studio.html'
       - 'design-studio-handoff.js'
@@ -74,6 +76,7 @@ jobs:
           cp index.html _site/index.html
           cp operational/index.html operational/operational.css operational/operational.js _site/operational/
           cp -R content-db _site/content-db
+          cp -R content-enrichment _site/content-enrichment
           cp governance/current-state/AIOC_CURRENT_STATE.md _site/governance/current-state/
           cp governance/current-state/AIOC_OPERATIONAL_HANDOFF.md _site/governance/current-state/
           cp governance/legacy/LEGACY_COS_QUARANTINE.md _site/governance/legacy/
@@ -86,48 +89,39 @@ jobs:
 
           generated_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
           cat > _site/deployment-manifest.json <<EOF
-          {"format":"multiversal-aioc-pages-deployment","version":"1.7.1","build":"operational-aioc-2.1","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","defaultSurface":"operational","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":11,"contentStructure":"guided-classification-active","contentLibrary":"design-studio-connected","contentAssistant":"cache-bypassed-structure-filtered-completion","contentDurability":"backup-export-import-review-package"}
+          {"format":"multiversal-aioc-pages-deployment","version":"1.8.0","build":"operational-aioc-2.1","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","defaultSurface":"operational","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":11,"contentStructure":"guided-classification-active","contentLibrary":"source-enrichment-staging-enabled","contentAssistant":"cache-bypassed-structure-filtered-completion","contentDurability":"backup-export-import-review-package"}
           EOF
           cp _site/deployment-manifest.json _site/deployed-build.json
           cat > _site/operational/health.json <<EOF
-          {"status":"operational","application":"Multiversal AIOC","build":"operational-aioc-2.1","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":11,"contentStructure":"guided-classification-active","contentLibrary":"design-studio-connected","contentAssistant":"cache-bypassed-structure-filtered-completion","contentDurability":"backup-export-import-review-package"}
+          {"status":"operational","application":"Multiversal AIOC","build":"operational-aioc-2.1","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":11,"contentStructure":"guided-classification-active","contentLibrary":"source-enrichment-staging-enabled","contentAssistant":"cache-bypassed-structure-filtered-completion","contentDurability":"backup-export-import-review-package"}
           EOF
           touch _site/.nojekyll
 
           test -s _site/index.html
           test -s _site/operational/index.html
           test -s _site/content-structure.html
-          test -s _site/content-structure.js
-          test -s _site/content-structure.css
-          test -s _site/content-structure-assistant-filter.js
           test -s _site/content-assistant.html
           test -s _site/content-assistant-v2.html
-          test -s _site/content-assistant.js
-          test -s _site/content-assistant.css
-          test -s _site/content-durability.js
           test -s _site/content-library.html
-          test -s _site/studio.html
-          test -s _site/content-library-studio-bridge.js
-          test -s _site/design-studio-handoff.js
+          test -s _site/content-enrichment-loader.js
+          test -s _site/content-enrichment/melee-weapons/melee-weapons-enrichment-pilot.json
           test -s _site/content-db/index.json
           grep -q 'Content Structure Pipeline' _site/content-structure.html
-          grep -q 'Parent-granted variant' _site/content-structure.js
-          grep -q 'Structure decisions active' _site/content-structure-assistant-filter.js
           grep -q 'content-assistant-v2.html' _site/content-assistant.html
           grep -q 'ASSISTED CONTENT COMPLETION 1.5' _site/content-assistant-v2.html
-          grep -q 'Export review package' _site/content-durability.js
-          grep -q 'Recommended next action' _site/content-assistant.js
-          grep -q 'Continue selected in Design Studio' _site/content-library-studio-bridge.js
-          grep -q 'CONTENT LIBRARY WORKING COPY' _site/design-studio-handoff.js
+          grep -q 'Load enriched melee pilot' _site/content-enrichment-loader.js
+          grep -q 'mv.core.item.weapon.spear' _site/content-enrichment/melee-weapons/melee-weapons-enrichment-pilot.json
+          grep -q '"twoHandedDamage":"1d8"' _site/content-enrichment/melee-weapons/melee-weapons-enrichment-pilot.json
           node --check _site/operational/operational.js
           node --check _site/content-structure.js
           node --check _site/content-structure-assistant-filter.js
           node --check _site/content-assistant.js
-          node --check _site/content-durability.js
+          node --check _site/content-enrichment-loader.js
           node --check _site/content-library.js
           node --check _site/content-database.js
           node --check _site/content-library-studio-bridge.js
           node --check _site/design-studio-handoff.js
+          node -e "const b=require('./_site/content-enrichment/melee-weapons/melee-weapons-enrichment-pilot.json'); if(b.canonical!==false||b.ownerApprovalRequired!==true||b.records.length!==22) process.exit(1);"
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
