@@ -56,6 +56,13 @@ expected = sorted(snapshot['files'], key=lambda item: item['name'])
 actual = sorted(actual, key=lambda item: item['name'])
 if actual != expected:
     failures.append('CSV file structure differs from governed snapshot')
+    expected_by_name = {item['name']: item for item in expected}
+    actual_by_name = {item['name']: item for item in actual}
+    for name in sorted(set(expected_by_name) | set(actual_by_name)):
+        if expected_by_name.get(name) != actual_by_name.get(name):
+            failures.append(
+                f"{name}: expected={expected_by_name.get(name)!r} actual={actual_by_name.get(name)!r}"
+            )
 if len(actual) != snapshot['totals']['csvFiles']:
     failures.append('CSV file total mismatch')
 if sum(item['rows'] for item in actual) != snapshot['totals']['rows']:
