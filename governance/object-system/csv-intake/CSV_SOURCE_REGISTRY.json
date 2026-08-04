@@ -1,0 +1,27 @@
+{
+  "format":"multiversal-csv-source-registry","version":"0.1.0","workstream":"8E-009L2","status":"governed-draft","archive":"Csv.zip","datasetCount":20,
+  "routingRules":{"structuredRowsAreNotCanonical":true,"pdfVerificationRequiredForPromotion":true,"crossFileIdentityResolutionRequired":true,"raggedRowsRequireRecoveryContract":true},
+  "datasets":[
+    {"file":"expanded_melee_weapons_all_genres.csv","rows":327,"domain":"items","primaryTargets":["item.weapon.melee"],"readiness":"mapping-ready"},
+    {"file":"expanded_ranged_weapons_catalog.csv","rows":230,"domain":"items","primaryTargets":["item.weapon.firearm","gap:item.weapon.ranged","gap:item.weapon.energy"],"readiness":"classification-required"},
+    {"file":"weapons_and_ammo.csv","rows":36,"domain":"items","primaryTargets":["item.weapon.firearm","gap:item.ammunition"],"readiness":"overlap-reconciliation-required"},
+    {"file":"expanded_items_all_genres.csv","rows":761,"domain":"items","primaryTargets":["item.storage.typed-container","item.consumable.effect-delivery","gap:item.tool","gap:item.device.general"],"readiness":"family-classification-required"},
+    {"file":"expanded_magitech_items_all_genres.csv","rows":532,"domain":"items","primaryTargets":["item.magic.implement","item.weapon.firearm","item.device.computer","capability:magitech-discipline"],"readiness":"physical-template-plus-discipline-routing"},
+    {"file":"expanded_eva_suits_and_modules_all_genres.csv","rows":430,"domain":"items","primaryTargets":["item.protection.eva-suit","gap:item.modification.module"],"readiness":"host-module-split-required"},
+    {"file":"expanded_computers_all_genres.csv","rows":1000,"domain":"items","primaryTargets":["item.device.computer","gap:item.software"],"readiness":"mapping-ready"},
+    {"file":"expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv","rows":1501,"domain":"items","primaryTargets":["item.magic.implement","item.living.sentient-companion","item.storage.typed-container"],"readiness":"subfamily-classification-required"},
+    {"file":"expanded_symbiotes_and_cybernetics_all_genres.csv","rows":572,"domain":"items","primaryTargets":["item.living.symbiote","gap:item.implant","gap:item.modification.cybernetic"],"readiness":"symbiote-cybernetic-split-required"},
+    {"file":"expanded_bases_facilities_materials_and_homesteads_all_genres.csv","rows":1080,"domain":"mixed","primaryTargets":["item.material.crafting-resource","future:facility","future:base","future:homestead"],"readiness":"object-boundary-routing-required"},
+    {"file":"expanded_hazards_and_traps_all_genres.csv","rows":1901,"domain":"hazards","primaryTargets":["future:hazard","gap:item.trap","gap:item.deployable"],"readiness":"ragged-row-recovery-required"},
+    {"file":"expanded_land_sea_air_vehicles_all_genres.csv","rows":1200,"domain":"vehicles","primaryTargets":["future:vehicle"],"readiness":"vehicle-registry-prerequisite"},
+    {"file":"expanded_mecha_and_components_all_genres.csv","rows":2117,"domain":"vehicles","primaryTargets":["future:mecha","future:vehicle-component"],"readiness":"ragged-row-recovery-required"},
+    {"file":"expanded_spacecraft_and_components_all_genres.csv","rows":2311,"domain":"vehicles","primaryTargets":["future:spacecraft","future:vehicle-component"],"readiness":"vehicle-registry-prerequisite"},
+    {"file":"completed_magic_spells_catalog.csv","rows":385,"domain":"spells","primaryTargets":["existing:spell-system"],"readiness":"spell-reconciliation-only"},
+    {"file":"ability_trees_and_abilities_catalog.csv","rows":1256,"domain":"abilities","primaryTargets":["existing:ability-system"],"readiness":"ragged-row-recovery-required"},
+    {"file":"magic_arcane_and_faction_ability_trees_catalog.csv","rows":118,"domain":"abilities","primaryTargets":["existing:ability-system"],"readiness":"ragged-row-recovery-required"},
+    {"file":"profession_and_crafting_ability_trees_catalog.csv","rows":221,"domain":"abilities","primaryTargets":["existing:ability-system"],"readiness":"ability-reconciliation-only"},
+    {"file":"prestige_environment_and_special_ability_trees_catalog.csv","rows":1018,"domain":"abilities","primaryTargets":["existing:ability-system"],"readiness":"ragged-row-recovery-required"},
+    {"file":"species_elementalist_and_innate_abilities_catalog.csv","rows":2203,"domain":"abilities","primaryTargets":["existing:ability-system"],"readiness":"ability-reconciliation-only"}
+  ],
+  "promotionBoundary":"Routing identifies intended governed destinations only. It does not certify rows, create canonical objects, resolve duplicates, or authorize promotion."
+}
