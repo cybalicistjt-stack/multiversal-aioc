@@ -1,0 +1,18 @@
+name: Validate Item Family Discovery
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/item-discovery/**'
+      - 'scripts/validate-item-family-discovery.mjs'
+      - '.github/workflows/validate-item-family-discovery.yml'
+
+jobs:
+  validate-item-family-discovery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/validate-item-family-discovery.mjs
