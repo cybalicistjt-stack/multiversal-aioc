@@ -1,0 +1,23 @@
+name: Validate P0 Locator Disambiguation Queue
+on:
+  pull_request:
+    paths:
+      - governance/object-system/csv-intake/P0_LOCATOR_DISAMBIGUATION_*.json
+      - scripts/validate-p0-locator-disambiguation-queue.py
+      - .github/workflows/validate-p0-locator-disambiguation-queue.yml
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate disambiguation queue
+        run: python scripts/validate-p0-locator-disambiguation-queue.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-p0-locator-disambiguation-queue-53
+          path: |
+            governance/object-system/csv-intake/P0_LOCATOR_DISAMBIGUATION_CONTRACT.json
+            governance/object-system/csv-intake/P0_LOCATOR_DISAMBIGUATION_QUEUE.json
