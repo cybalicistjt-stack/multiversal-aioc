@@ -2,7 +2,7 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 3.2.0  
+**Version:** 3.3.0  
 **Status:** ACTIVE  
 **Owner and final authority:** John Brandon Turner  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
@@ -17,11 +17,11 @@ Provide this file as the first project instruction in a new ChatGPT or Codex con
 Multiversal uses two canonical repositories:
 
 - `cybalicistjt-stack/Multiversal-app` — user-facing application.
-- `cybalicistjt-stack/multiversal-aioc` — governance, content tooling, AI coordination, repository intelligence, Development Brain, and content recovery.
+- `cybalicistjt-stack/multiversal-aioc` — governance, content tooling, AI coordination, repository intelligence, Development Brain, content recovery, enrichment, and canonical object templates.
 
 ## Owner and contributor identity
 
-The machine-readable authority source is:
+Read and enforce:
 
 - `governance/access/AIOC_CONTRIBUTOR_REGISTRY.json`
 
@@ -30,29 +30,53 @@ Verified GitHub identities:
 - John Brandon Turner: `cybalicistjt-stack` — final owner authority.
 - Jordon/Zakk: `zakvalentine` — proposal-only contributor authority.
 
-When GitHub actor metadata is available, match the exact login against the registry. Never infer authority from a display name, branch name, device, prose, or claimed identity. If identity cannot be verified, do not grant owner authority.
+Never infer owner authority from a display name, branch, device, prose, or claimed identity. Jordon/Zakk may research, branch, implement, test, and open pull requests. He may not approve his own work, merge without owner approval, promote canonical content, alter governance, release, deploy production, or perform irreversible owner actions.
 
-John Brandon Turner retains final authority over canonical decisions, governance, classification, conflicts, staging, promotion, implementation scope, merges, releases, and deployments.
+## Primary operating objective
 
-Jordon/Zakk may research, branch, implement, test, open pull requests, and respond to review. His work remains proposal-only until John approves it. He may not approve his own work, merge without owner approval, promote canonical content, alter governance authority, release, deploy production, or perform irreversible owner actions.
+Produce verified project artifacts and repository progress. Do not substitute tutorials, essays, repeated summaries, speculative PR sequences, or descriptions of intended work for execution.
+
+## Execution-first response policy
+
+Unless John explicitly requests explanation:
+
+1. Perform the next approved repository operation immediately.
+2. Keep user-facing explanation to the minimum required for correctness.
+3. Do not begin with agreement, reassurance, a plan recap, or a description of what will be done.
+4. Do not restate approved architecture or roadmap decisions.
+5. Do not explain common engineering concepts.
+6. Do not ask for confirmation when the next action is already approved.
+7. After execution, report only concise evidence:
+   - artifacts changed;
+   - tests or validation actually run;
+   - PR and merge state;
+   - exact next executable action.
+8. Never claim a file, commit, PR, merge, test, deployment, or live repair exists until verified through the relevant tool.
+9. If execution is blocked, state the exact blocker and the smallest needed owner action.
+10. Optimize every response for maximum verified development progress per token.
+
+“Continue” always means execute the exact next verified unfinished operation. It never means explain the next operation.
 
 ## Non-negotiable operating rules
 
 1. Repository state is authoritative; conversation memory is supporting context only.
 2. Before governed work, read `governance/ci-failures/INDEX.md` from `ci/failure-records` and reconcile relevant failures.
-3. Read and enforce `governance/access/AIOC_CONTRIBUTOR_REGISTRY.json` before accepting contributor-governed actions.
+3. Read and enforce `governance/access/AIOC_CONTRIBUTOR_REGISTRY.json`.
 4. Verify actual files, commits, tests, PRs, merges, deployments, and live interactions before claiming success.
-5. “Continue” means execute the next verified unfinished work item, not explain, speculate, invent PRs, or report projected results as completed.
-6. The assistant owns investigation and implementation until genuinely blocked.
-7. Prefer bounded vertical batches over speculative redesign or micro-patch chains.
-8. Do not create subsystems of subsystems to chase uncertain solutions.
-9. Preserve original source content when COS mapping fails.
-10. Deterministic evidence precedes AI semantic inference.
-11. Variants, revisions, duplicates, and conflicts must not be silently merged or overwritten.
-12. Significant UI or deployment changes require deployed interaction verification, not CI alone.
-13. Do not revive obsolete `/v2/`, corrupted seed, or old TallBunyon paths.
-14. Never mark a roadmap phase complete solely because it was described in conversation.
-15. John Brandon Turner retains final approval authority.
+5. The assistant owns investigation and implementation until genuinely blocked.
+6. Prefer bounded vertical batches over speculative redesign or micro-patch chains.
+7. Do not create subsystems of subsystems to chase uncertain solutions.
+8. Preserve original source content and provenance when mapping fails.
+9. Deterministic evidence precedes AI semantic inference.
+10. Variants, revisions, duplicates, and conflicts must not be silently merged or overwritten.
+11. Significant UI or deployment changes require deployed interaction verification, not CI alone.
+12. Never mark a roadmap phase complete solely because it was described in conversation.
+13. Never treat an identity/type/provenance wrapper as a complete game object.
+14. Never begin large-scale extraction or conversion until the canonical template and validator for that object family exist.
+15. Build reusable capability modules before final templates.
+16. Build templates and validators before schema-driven Design Studio forms.
+17. Build Design Studio forms and representative examples before mass canonical promotion.
+18. John Brandon Turner retains final approval authority.
 
 ## Mandatory initialization sequence
 
@@ -64,16 +88,16 @@ Jordon/Zakk may research, branch, implement, test, open pull requests, and respo
    - `governance/current-state/SESSION_HANDOFF.md`
    - `governance/current-state/AIOC_OPERATIONAL_HANDOFF.md`
    - `governance/current-state/AIOC_DEPLOYMENT_BASELINE.md`
+   - `governance/object-system/CANONICAL_OBJECT_TEMPLATE_PROGRAM.md`
    - `governance/development-brain/README.md`
    - `governance/content-recovery/CONTENT_RECOVERY_ROADMAP.md`
    - `governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md`
    - `governance/application-planning/STAGE_A_UI_IMPLEMENTATION_PROGRAM.md`
-   - `governance/development-brain/UNIFIED_INVENTORY_CONTRACT.md`
    - `governance/project-memory/PROJECT_MEMORY.json`
 4. Inspect recent commits and open PRs affecting the active workstream.
 5. Confirm repository and branch.
-6. Resume from the exact next action in `SESSION_HANDOFF.md` unless the owner changes direction.
-7. For live UI work, verify the deployed build identifier and reproduce the actual interaction path before declaring repair.
+6. Resume the exact next executable action in `SESSION_HANDOFF.md` unless John changes direction.
+7. For live UI work, verify the deployed build identity and actual interaction path before declaring repair.
 
 ## Current verified state
 
@@ -82,27 +106,15 @@ Jordon/Zakk may research, branch, implement, test, open pull requests, and respo
 - Certified.
 - Public operational surface: `/operational/`.
 - Content Library, Content Structure Pipeline, Content Completion Assistant, and Design Studio are connected.
-- The live Content Library exposes 487 records from the Phase 1–8 canonical bundle.
-- Those 487 records are a partial extraction, not the complete corpus.
+- The certified collection contains 487 partial Phase 1–8 records.
+- Many certified records are stubs or thin wrappers rather than complete playable objects.
+- Recovery-ledger and enrichment collections remain staging until owner-approved promotion.
 
 ### Development Brain
 
 Releases A–G, Steps 1–21, are complete and behaviorally validated. The roadmap ends at Step 21. Do not add deeper internal releases without a demonstrated real-world failure.
 
-### Active workstream
-
-**Multiversal Content Recovery and Ingestion**
-
-Mission:
-
-> Recover the content first. Use the COS to organize it second.
-
-Verified source census:
-
-- 47,849 structured-file occurrences;
-- 11,912 unique structured files;
-- 5,123 content-likely structured files;
-- 291,724 exact-file-deduplicated likely-content rows or JSON entries.
+### Recovery evidence
 
 Verified neutral recovery ledger:
 
@@ -114,51 +126,59 @@ Verified neutral recovery ledger:
 - 185,243 conservative identity groups;
 - 33,609 multi-payload identity groups.
 
-These are recovery records, not a final unique-game-object count.
+These are source recovery records, not complete canonical game objects.
 
-Canonical recovery roadmap:
+## Active workstream
 
-- `governance/content-recovery/CONTENT_RECOVERY_ROADMAP.md`
+**8E-009 — Canonical Object Template Library**
 
-## Approved subsequent application roadmap
+Read:
 
-Canonical planning:
+- `governance/object-system/CANONICAL_OBJECT_TEMPLATE_PROGRAM.md`
 
-- `governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md`
-- `governance/application-planning/STAGE_A_UI_IMPLEMENTATION_PROGRAM.md`
+Purpose:
 
-Approved phases:
+Create the canonical object-family hierarchy, full source-supported parameter sets, reusable capability modules, templates, validators, schema-driven Design Studio forms, field-level provenance requirements, and gold-standard examples required before bulk conversion resumes.
 
-10. Core Application Implementation
-11. GM and Player Experience
-12. AI Team and Automation
-13. Internal Alpha Completion
+Sub-phases:
 
-These are planned subsequent phases and are not complete until repository evidence, tests, previews, and owner approval exist.
+- 8E-009A — Object Family Discovery
+- 8E-009B — Canonical Type Hierarchy
+- 8E-009C — Shared Capability Modules
+- 8E-009D — Item Template Registry
+- 8E-009E — Creature Template Registry
+- 8E-009F — NPC Template Registry
+- 8E-009G — Vehicle Template Registry
+- 8E-009H — World and Setting Template Registry
+- 8E-009I — Design Studio Dynamic Form Registry
+- 8E-009J — Canonical Validators
+- 8E-009K — Gold-Standard Example Objects
+- 8E-009L — Bulk Conversion Framework
 
-### Stage A order
+## Current next executable action
 
-1. A0 repository/UI baseline audit
-2. A1 application shell and design system
-3. A2 universal object experience
-4. A3 identity/dashboard/workspaces/permissions
-5. A4 character workspace
-6. A5 campaign and scene workspace
-7. A6 first playable action proposal and GM approval loop
-8. A7 full combat
-9. A8 inventory/crafting/vehicles
-10. A9 investigation/social
-11. A10 world builder/content creation
-12. A11 contextual AI
-13. A12 internal-alpha hardening
+Complete **8E-009A — Item Family Discovery** using all available item-related sources.
 
-Every UI slice must include real data, permissions, persistence, desktop/mobile behavior, loading/error states, automated tests, reproducible preview, and owner review.
+Required deliverables:
+
+- item-source inventory;
+- canonical item-family hierarchy;
+- full parameter matrix by family;
+- shared-versus-family-specific parameter analysis;
+- object/non-object boundary decisions;
+- capability-module candidate registry;
+- ambiguity queue;
+- source coverage report.
+
+Do not resume bulk item conversion until the Item Template Registry, validators, dynamic forms, representative examples, staging validation, and owner approval exist.
+
+## Approved application roadmap
+
+Phases 10–13 and Stage A remain approved. Stage A1 has repository-backed implementation in `cybalicistjt-stack/Multiversal-app`; later slices remain future work. The current object-template program is a prerequisite for useful Content Library, Design Studio, and runtime content integration.
 
 ## Mac-dependent parallel track
 
-`WP-011 — Tauri iOS/iPadOS Spike` remains separate in `cybalicistjt-stack/Multiversal-app`.
-
-Safe work continues on web/Windows/Linux while waiting. Reserve macOS for Xcode, signing/provisioning, simulator/device validation, packaging, and Apple-specific certification. Do not make general application implementation depend on continuous Mac access.
+`WP-011 — Tauri iOS/iPadOS Spike` remains separate in `cybalicistjt-stack/Multiversal-app`. Reserve Codex and borrowed-Mac time for high-leverage Apple/Xcode execution. Use Chat, GitHub, CI, deterministic tools, and prepared work orders for work that does not require local Apple tooling.
 
 ## Required first response in a new conversation
 
@@ -166,20 +186,18 @@ After initialization, respond compactly:
 
 ```text
 Multiversal session restored.
-
 GitHub read: PASS/FAIL
 GitHub write: PASS/FAIL
 Active repository: <verified repository>
 Branch: <verified branch>
-Development Brain: Releases A–G complete
 Current workstream: <from governed handoff>
 Last verified completion: <repository-backed completion>
 Next executable work item: <exact repository-backed action>
 Blocking issues: <none or exact blocker>
 ```
 
-When the opening message says “Continue,” begin the exact next executable work item in the same response after the readiness report.
+When the opening message says “Continue,” begin the next executable work item in the same response. Do not stop after the readiness report.
 
 ## Honesty and recovery
 
-If a named file, commit, test, PR, source artifact, or deployment cannot be found, stop and reconcile repository state. Do not fabricate continuity. If repository state is newer than this bootstrap, follow the newer governed handoff and update this bootstrap after validated work.
+If a named file, commit, test, PR, source artifact, or deployment cannot be found, stop and reconcile repository state. State plainly that the prior claim was unsupported. Do not fabricate continuity. If repository state is newer than this bootstrap, follow the newer governed handoff and update this bootstrap after validated work.

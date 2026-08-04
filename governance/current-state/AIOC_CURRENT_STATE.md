@@ -1,10 +1,10 @@
 # AIOC Current State
 
-**Status:** Operational AIOC certified; Development Brain Releases A–G complete; Multiversal Content Recovery and Ingestion active; Application Implementation roadmap approved and planned  
+**Status:** Operational AIOC certified; Development Brain Releases A–G complete; content recovery evidence preserved; Canonical Object Template Program active  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Default branch:** `main`  
 **Owner and final authority:** John Brandon Turner  
-**Current governed workstream:** Multiversal Content Recovery and Ingestion
+**Current governed workstream:** 8E-009 — Canonical Object Template Library
 
 ## Verified completed foundations
 
@@ -13,14 +13,15 @@
 - Source census — COMPLETE
 - Neutral recovery ledger — COMPLETE
 - Content Recovery and Ingestion roadmap — OWNER APPROVED
+- Melee Weapons source-enrichment pilot — MERGED AS STAGING PILOT
 
-The Development Brain roadmap ends at Step 21. No additional internal release is authorized unless real use demonstrates a specific missing capability.
+Do not claim later recovery, canonical promotion, balance, runtime, application, or UI phases complete without repository evidence and passing validation.
 
-## Current content-library limitation
+## Corrected content-library state
 
-The deployed Content Library currently exposes 487 records from the `Multiversal Phase 1–8 canonical object bundle`. These are a partial extraction and must not be represented as the complete Multiversal corpus.
+The certified collection contains 487 partial Phase 1–8 records. Many are identity wrappers or stubs rather than playable objects. The recovered corpus remains staging evidence and has not been canonically enriched at scale.
 
-The current 487-record database must remain intact and restorable while recovery proceeds.
+The 487-record collection must remain intact and restorable while enrichment and template work proceeds.
 
 ## Verified recovery evidence
 
@@ -41,71 +42,78 @@ Neutral recovery ledger:
 - 185,243 conservative identity groups;
 - 33,609 identities with multiple distinct payload variants.
 
-These figures are recovery records, not a final unique-game-object count.
+These figures are recovery records, not final unique or complete game-object counts.
 
-## Approved recovery doctrine
+## Active milestone: 8E-009
 
-> Recover the content first. Use the COS to organize it second.
+Canonical program:
 
-Mandatory boundaries:
+- `governance/object-system/CANONICAL_OBJECT_TEMPLATE_PROGRAM.md`
 
-- preserve original payloads and provenance;
-- deterministic evidence precedes semantic inference;
-- do not discard content that fails current COS mapping;
-- preserve duplicates, variants, revisions, and conflicts;
-- use staging and representative review before production promotion;
-- keep the 487-record database restorable;
-- do not build deeper semantic subsystems without a demonstrated need.
+Purpose:
 
-Canonical recovery roadmap:
+Build the object-family hierarchy, full source-supported parameter sets, reusable capability modules, templates, validators, schema-driven Design Studio forms, and representative complete objects before bulk conversion resumes.
 
-- `governance/content-recovery/CONTENT_RECOVERY_ROADMAP.md`
+Sub-phases:
+
+- 8E-009A — Object Family Discovery
+- 8E-009B — Canonical Type Hierarchy
+- 8E-009C — Shared Capability Modules
+- 8E-009D — Item Template Registry
+- 8E-009E — Creature Template Registry
+- 8E-009F — NPC Template Registry
+- 8E-009G — Vehicle Template Registry
+- 8E-009H — World and Setting Template Registry
+- 8E-009I — Design Studio Dynamic Form Registry
+- 8E-009J — Canonical Validators
+- 8E-009K — Gold-Standard Example Objects
+- 8E-009L — Bulk Conversion Framework
+
+## Mandatory sequencing
+
+Never begin large-scale extraction or conversion until the canonical template for that object family exists.
+
+Required sequence:
+
+1. discover object families;
+2. extract source-supported parameters;
+3. normalize shared capability modules;
+4. assemble canonical templates;
+5. build validators;
+6. build Design Studio forms;
+7. create representative complete objects;
+8. run staging pilots;
+9. obtain owner approval;
+10. resume bulk conversion.
+
+## Immediate next action
+
+Complete **8E-009A — Item Family Discovery** across all supplied item-related PDFs and prior item sources, producing:
+
+- governed item-family hierarchy;
+- source-to-family inventory;
+- full parameter matrix by family;
+- object/non-object boundary decisions;
+- ambiguity queue;
+- recommended capability-module candidates.
 
 ## Approved subsequent application roadmap
 
-The former single “Phase 10 — Begin application development” milestone is expanded into:
-
-- **Phase 10 — Core Application Implementation**
-- **Phase 11 — GM and Player Experience**
-- **Phase 12 — AI Team and Automation**
-- **Phase 13 — Internal Alpha Completion**
-
-Canonical planning documents:
-
-- `governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md`
-- `governance/application-planning/STAGE_A_UI_IMPLEMENTATION_PROGRAM.md`
-
-These phases are approved plans, not verified completions. Repository evidence, tests, previews, and owner approval are required before any implementation phase or slice is marked complete.
-
-Stage A proceeds through vertical slices:
-
-1. repository/UI baseline audit;
-2. application shell and design system;
-3. universal object experience;
-4. identity, dashboard, workspaces, and permissions;
-5. character workspace;
-6. campaign and scene workspace;
-7. first playable action/GM-approval loop;
-8. full combat;
-9. inventory, crafting, and vehicles;
-10. investigation and social;
-11. world builder and content creation;
-12. contextual AI;
-13. internal-alpha hardening.
+Phases 10–13 and Stage A remain approved future application work. Stage A1 has repository-backed implementation in `cybalicistjt-stack/Multiversal-app`; later Stage A slices remain future work. Content-object templates and enrichment are the current prerequisite because empty object wrappers cannot support useful Design Studio or runtime workflows.
 
 ## Apple/Mac parallel track
 
-`WP-011 — Tauri iOS/iPadOS Spike` remains a separate Mac-dependent task in `cybalicistjt-stack/Multiversal-app`.
+`WP-011 — Tauri iOS/iPadOS Spike` remains a separate Mac-dependent task in `cybalicistjt-stack/Multiversal-app`. Reserve Codex and borrowed-Mac time for high-leverage Apple-specific execution.
 
-Most UI, gameplay, multiplayer, AI, content, and testing work can proceed safely on web/Windows/Linux. The Mac is reserved primarily for Xcode, Apple signing and provisioning, simulator/device verification, packaging, and Apple-specific certification.
+## Execution policy
 
-## Operating rule for “Continue”
+“Continue” means perform the next verified operation. Default output is repository work, artifacts, validation, and concise completion evidence.
 
-“Continue” means perform the next verified unfinished operation. Do not substitute a plan, imagined PR, projected result, or explanation for actual repository work.
+Do not spend responses restating approved plans. Do not present proposed files, PRs, commits, tests, or merges as completed. Explanations are limited to what is necessary to identify a blocker, risk, decision, or result.
 
 ## Authority boundary
 
-John Brandon Turner retains final approval over recovery policy, classification, conflict resolution, staging, canonical promotion, application scope, merges, and production deployment. AI and deterministic tooling may propose, implement, and validate but may not silently discard, merge, promote, certify, or publish owner-governed content.
+John Brandon Turner retains final approval over classification, schemas, templates, conflict resolution, staging, canonical promotion, application scope, merges, and deployment. Jordon/Zakk (`zakvalentine`) remains proposal-only.
 
 ## Mandatory failure evidence rule
 
