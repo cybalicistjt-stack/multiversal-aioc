@@ -1,0 +1,21 @@
+name: Validate CSV Pilot Validation Report
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/item-examples/CSV_PILOT_VALIDATION_REPORT.json'
+      - 'governance/object-system/item-examples/CSV_PILOT_CONVERSION_OBJECTS.json'
+      - 'governance/object-system/item-templates/ITEM_TEMPLATE_REGISTRY.json'
+      - 'governance/object-system/item-templates/ITEM_TEMPLATE_EXTENSION_REGISTRY.json'
+      - 'scripts/validate-csv-pilot-validation.py'
+      - '.github/workflows/validate-csv-pilot-validation-report.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-csv-pilot-validation.py
