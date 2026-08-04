@@ -1,0 +1,28 @@
+name: Execute P0 Row Page Match Batch 1
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/P0_ROW_PAGE_MATCH_BATCH_1_CONTRACT.json'
+      - 'scripts/execute-p0-row-page-match-batch-1.py'
+      - 'scripts/validate-p0-row-page-match-batch-1.py'
+      - '.github/workflows/execute-p0-row-page-match-batch-1.yml'
+  workflow_dispatch:
+
+jobs:
+  execute-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Execute bounded row-to-page match
+        run: python scripts/execute-p0-row-page-match-batch-1.py
+      - name: Validate bounded row-to-page match
+        run: python scripts/validate-p0-row-page-match-batch-1.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-p0-row-page-match-batch-1-107
+          path: build/csv-p0-row-page-match-batch-1-l36/
+          retention-days: 30
