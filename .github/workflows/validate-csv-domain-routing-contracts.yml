@@ -1,0 +1,19 @@
+name: Validate CSV Domain Routing Contracts
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/CSV_DOMAIN_ROUTING_CONTRACT_REGISTRY.json'
+      - 'governance/object-system/csv-intake/CSV_SOURCE_REGISTRY.json'
+      - 'scripts/validate-csv-domain-routing-contracts.py'
+      - '.github/workflows/validate-csv-domain-routing-contracts.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-csv-domain-routing-contracts.py

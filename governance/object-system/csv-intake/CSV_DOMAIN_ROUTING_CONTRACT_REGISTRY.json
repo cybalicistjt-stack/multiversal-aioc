@@ -1,0 +1,46 @@
+{
+  "format": "multiversal-csv-domain-routing-contract-registry",
+  "version": "0.1.0",
+  "workstream": "8E-009L11",
+  "status": "routing-contracts-defined",
+  "sourceRegistry": "governance/object-system/csv-intake/CSV_SOURCE_REGISTRY.json",
+  "scope": {
+    "datasetCount": 13,
+    "rowCount": 14378,
+    "rule": "These contracts route staged rows to governed domain reconciliation queues. They do not assert canonical field mappings where a domain registry or exact header mapping contract is not yet complete."
+  },
+  "contracts": [
+    {"dataset":"weapons_and_ammo.csv","rows":36,"domain":"items","queue":"item-overlap-and-ammunition-reconciliation","requiredRegistries":["item.weapon.firearm","item.ammunition"],"nextAction":"exact-header mapping plus overlap classification"},
+    {"dataset":"expanded_magitech_items_all_genres.csv","rows":532,"domain":"items","queue":"magitech-physical-template-and-discipline-routing","requiredRegistries":["item.magic.implement","item.weapon.firearm","item.device.computer","capability:magitech-discipline"],"nextAction":"exact-header mapping plus discipline facet separation"},
+    {"dataset":"expanded_bases_facilities_materials_and_homesteads_all_genres.csv","rows":1080,"domain":"mixed","queue":"base-facility-material-object-boundary-reconciliation","requiredRegistries":["item.material.crafting-resource","future:facility","future:base","future:homestead"],"nextAction":"record-type classification before field mapping"},
+    {"dataset":"expanded_hazards_and_traps_all_genres.csv","rows":1901,"domain":"hazards","queue":"hazard-trap-deployable-reconciliation","requiredRegistries":["future:hazard","item.trap","future:deployable"],"nextAction":"hazard registry prerequisite plus trap classification"},
+    {"dataset":"expanded_land_sea_air_vehicles_all_genres.csv","rows":1200,"domain":"vehicles","queue":"vehicle-domain-reconciliation","requiredRegistries":["future:vehicle"],"nextAction":"vehicle registry prerequisite"},
+    {"dataset":"expanded_mecha_and_components_all_genres.csv","rows":2117,"domain":"vehicles","queue":"mecha-and-component-reconciliation","requiredRegistries":["future:mecha","future:vehicle-component"],"nextAction":"mecha and vehicle-component registries prerequisite"},
+    {"dataset":"expanded_spacecraft_and_components_all_genres.csv","rows":2311,"domain":"vehicles","queue":"spacecraft-and-component-reconciliation","requiredRegistries":["future:spacecraft","future:vehicle-component"],"nextAction":"spacecraft and vehicle-component registries prerequisite"},
+    {"dataset":"completed_magic_spells_catalog.csv","rows":385,"domain":"spells","queue":"spell-system-reconciliation","requiredRegistries":["existing:spell-system"],"nextAction":"exact-header mapping and duplicate/version reconciliation"},
+    {"dataset":"ability_trees_and_abilities_catalog.csv","rows":1256,"domain":"abilities","queue":"ability-system-general-reconciliation","requiredRegistries":["existing:ability-system"],"nextAction":"tree-node classification and exact-header mapping"},
+    {"dataset":"magic_arcane_and_faction_ability_trees_catalog.csv","rows":118,"domain":"abilities","queue":"ability-system-magic-faction-reconciliation","requiredRegistries":["existing:ability-system"],"nextAction":"tree-node classification and cross-file identity reconciliation"},
+    {"dataset":"profession_and_crafting_ability_trees_catalog.csv","rows":221,"domain":"abilities","queue":"ability-system-profession-crafting-reconciliation","requiredRegistries":["existing:ability-system"],"nextAction":"tree-node classification and cross-file identity reconciliation"},
+    {"dataset":"prestige_environment_and_special_ability_trees_catalog.csv","rows":1018,"domain":"abilities","queue":"ability-system-prestige-environment-reconciliation","requiredRegistries":["existing:ability-system"],"nextAction":"tree-node classification including environment adaptations"},
+    {"dataset":"species_elementalist_and_innate_abilities_catalog.csv","rows":2203,"domain":"abilities","queue":"ability-system-species-innate-reconciliation","requiredRegistries":["existing:ability-system"],"nextAction":"species/innate ownership classification and cross-file identity reconciliation"}
+  ],
+  "rules": {
+    "preserveRawRows": true,
+    "noCrossDomainCoercion": true,
+    "noCanonicalIds": true,
+    "noSilentDefaults": true,
+    "exactHeaderMappingRequiredBeforeConversion": true,
+    "domainRegistryRequiredBeforePromotion": true,
+    "crossFileIdentityReconciliationRequired": true,
+    "pdfVerificationRequiredForAmbiguityAndMissingFields": true
+  },
+  "executionOrder": [
+    "item-domain remainder",
+    "spell-domain reconciliation",
+    "ability-domain reconciliation",
+    "hazard-domain registry and mapping",
+    "vehicle/mecha/spacecraft registries and mapping",
+    "mixed base/facility/material boundary classification"
+  ],
+  "promotionBoundary": "Routing contracts authorize queue placement and subsequent mapping work only. They do not authorize canonical conversion, identity merges, source certification, or promotion."
+}
