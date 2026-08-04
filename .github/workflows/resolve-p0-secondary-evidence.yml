@@ -5,6 +5,7 @@ on:
     paths:
       - 'governance/object-system/csv-intake/P0_SECONDARY_EVIDENCE_RESOLUTION_CONTRACT.json'
       - 'governance/object-system/csv-intake/P0_LOCATOR_DISAMBIGUATION_QUEUE.json'
+      - 'scripts/extract-p0-secondary-source-rows.py'
       - 'scripts/resolve-p0-secondary-evidence.py'
       - 'scripts/validate-p0-secondary-evidence-resolution.py'
       - 'Csv.zip'
@@ -12,33 +13,20 @@ on:
   workflow_dispatch:
 
 permissions:
-  actions: read
   contents: read
 
 jobs:
-  resolve-and-validate:
+  extract-source-rows:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Restore governed page text index
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          mkdir -p /tmp/p0-index governance/object-system/csv-intake
-          gh api repos/${{ github.repository }}/actions/artifacts/8911898877/zip > /tmp/p0-index.zip
-          unzip -q /tmp/p0-index.zip -d /tmp/p0-index
-          INDEX_PATH=$(find /tmp/p0-index -name 'P0_MECHA_PAGE_TEXT_INDEX.json' -print -quit)
-          test -n "$INDEX_PATH"
-          cp "$INDEX_PATH" governance/object-system/csv-intake/P0_MECHA_PAGE_TEXT_INDEX.json
-      - name: Resolve secondary evidence
-        run: python scripts/resolve-p0-secondary-evidence.py
-      - name: Validate secondary evidence resolution
-        run: python scripts/validate-p0-secondary-evidence-resolution.py
+      - name: Extract governed unresolved source rows
+        run: python scripts/extract-p0-secondary-source-rows.py
       - uses: actions/upload-artifact@v4
         with:
-          name: csv-p0-secondary-evidence-resolution-53
-          path: build/csv-p0-secondary-evidence-resolution-l40/
+          name: csv-p0-secondary-source-rows-53
+          path: build/csv-p0-secondary-evidence-resolution-l40/P0_SECONDARY_SOURCE_ROWS.json
           if-no-files-found: error
