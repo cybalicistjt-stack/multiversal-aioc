@@ -1,0 +1,38 @@
+{
+  "format": "multiversal-item-type-hierarchy",
+  "version": "0.1.0",
+  "workstreams": ["8E-009B"],
+  "status": "governed-draft",
+  "sourceBasis": "governance/object-system/item-discovery/ITEM_FAMILY_DISCOVERY.md",
+  "rootType": "item",
+  "classificationAxes": {
+    "primaryType": "The physical or digital object family that determines its base template.",
+    "capabilities": "Composable behaviors such as storage, protection, charges, sentience, modularity, bonding, and progression.",
+    "discipline": "Orthogonal technology or magitech discipline; never replaces physical type.",
+    "projection": "Optional runtime projection such as companion, hazard, scene object, or digital asset."
+  },
+  "families": [
+    {"id":"item.equipment","children":["item.weapon","item.protective-equipment","item.wearable","item.implant"]},
+    {"id":"item.weapon","children":["item.weapon.melee","item.weapon.ranged","item.weapon.firearm","item.weapon.energy","item.ammunition"]},
+    {"id":"item.protective-equipment","children":["item.armor","item.shield","item.powered-armor","item.eva-suit","item.energy-shield"]},
+    {"id":"item.wearable","children":["item.clothing","item.accessory","item.ring","item.charm","item.talisman"]},
+    {"id":"item.implant","children":["item.implant.cybernetic","item.implant.biological","item.prosthetic","item.neural-interface"]},
+    {"id":"item.storage","children":["item.container","item.fluid-container","item.ammunition-container","item.charge-holder","item.spell-storage","item.extradimensional-storage","item.data-storage","item.energy-reservoir","item.soul-reservoir"]},
+    {"id":"item.consumable","children":["item.potion","item.poison","item.drug-serum","item.food-ration","item.alchemical-flask","item.oil-coating","item.dust-powder","item.scroll","item.spell-orb","item.grenade","item.medical-consumable","item.crafting-consumable"]},
+    {"id":"item.tool-device","children":["item.tool","item.scanner-sensor","item.communication-device","item.navigation-device","item.medical-device","item.crafting-device","item.security-device","item.trap","item.deployable-device","item.environmental-control","item.transport-device","item.drone-controller","item.autonomous-device"]},
+    {"id":"item.computer-system","children":["item.computer","item.computer-component","item.software","item.computer-expansion","item.ai-system"]},
+    {"id":"item.magic-implement","children":["item.wand","item.staff","item.rod","item.scroll","item.spell-orb","item.tome","item.spellbook","item.living-spellbook","item.relic","item.magical-focus"]},
+    {"id":"item.module-upgrade","children":["item.eva-module","item.computer-module","item.weapon-modification","item.armor-modification","item.magitech-module","item.vehicle-module","item.material-upgrade","item.rune-script-package","item.integrated-component"]},
+    {"id":"item.living-bonded","children":["item.sentient","item.living","item.symbiote","item.familiar-like","item.autonomous-construct","item.bonded-relic","item.evolving","item.parasitic","item.sentient-companion"]},
+    {"id":"item.material-resource","children":["item.raw-material","item.refined-material","item.component","item.magical-catalyst","item.biological-material","item.synthetic-material","item.fuel","item.ammunition-component"]}
+  ],
+  "orthogonalDisciplines": ["arcanotech","ethertech","runetech","psitech","necrotech","biomagitech","elementech","chronotech","chaosynth","divinetech"],
+  "boundaryRules": [
+    "Clones and inactive clone bodies are artificial beings, not items.",
+    "Services, facilities, actions, effects, conditions, checks, and failure tables are not item types.",
+    "A modification is an item only when independently acquired, installed, removed, transferred, or tracked.",
+    "Inventory-tracked materials are items; crafting procedures and material-effect rules are supporting rules.",
+    "Software is a digital item-like asset when it has acquisition, storage, compatibility, installation, and executable behavior.",
+    "Living Spellbooks and symbiotes may require multiple projections but retain one governed identity."
+  ]
+}

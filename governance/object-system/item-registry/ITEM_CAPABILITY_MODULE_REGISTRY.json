@@ -1,0 +1,46 @@
+{
+  "format": "multiversal-item-capability-module-registry",
+  "version": "0.1.0",
+  "workstreams": ["8E-009C"],
+  "status": "governed-draft",
+  "rules": [
+    "Modules compose templates without replacing domain-specific item meaning.",
+    "Fields that look similar but use different units, restrictions, failure states, or runtime semantics remain distinct.",
+    "Every populated field requires source provenance or an explicit unresolved state.",
+    "Capability modules do not create a complete object without a primary item template."
+  ],
+  "modules": [
+    {"id":"cap.identity-governance","fields":["stableId","displayName","type","subtype","lifecycleStage","description","tags","sourceProvenance","fieldProvenance","relationships","governanceState","ownerReviewState","ambiguities","version","migrationMetadata"]},
+    {"id":"cap.physical-properties","fields":["size","weight","dimensions","materialComposition","portability","handedness","bodyLocation"]},
+    {"id":"cap.durability-maintenance","fields":["durability","hitPoints","armorClass","condition","damageThreshold","maintenance","repair","destructionBehavior"]},
+    {"id":"cap.economy-acquisition","fields":["cost","currency","rarity","availability","legality","acquisitionMethod","identification"]},
+    {"id":"cap.activation-targeting","fields":["activationMethod","activationCost","actionEconomy","target","range","areaGeometry","duration","cooldown","saveOrCheck","misuseConsequences"]},
+    {"id":"cap.weapon-profile","fields":["weaponCategory","proficiency","damageDice","damageType","criticalRule","properties","reach","normalRange","longRange","versatileDamage","grantedActions","grantedEffects"]},
+    {"id":"cap.firearm-operation","fields":["ammunitionType","capacity","reloadMethod","reloadTime","fireModes","burstCount","rapidFireArea","scatterPattern","precisionAim","longReloadBehavior","explosiveRoundSupport","malfunctionBehavior"]},
+    {"id":"cap.protection","fields":["armorCategory","acFormula","baseAc","dexterityContribution","maximumDexterityContribution","strengthRequirement","stealthEffect","proficiencyRequirement","donTime","doffTime","damageReduction","resistances","immunities","protectionPools","shieldHandRequirement","cover"]},
+    {"id":"cap.typed-storage","fields":["storedResourceType","capacityValue","capacityUnit","accessMethod","retrievalMethod","restrictions","overcapacityBehavior","resourceSpecificFailure"]},
+    {"id":"cap.consumable-delivery","fields":["applicationMethod","deliveryRoute","doseCount","stackingBehavior","consumptionResult","expiration","storageRequirements"]},
+    {"id":"cap.charges","fields":["chargeCapacity","currentCharges","chargeUnit","spendingRules","rechargeMethod","rechargeRate","zeroChargeBehavior","burnout","overcharge"]},
+    {"id":"cap.power-energy","fields":["powerSource","powerCapacity","energyConsumption","poweredState","powerFailureBehavior","emergencyPowerBehavior"]},
+    {"id":"cap.modular-host","fields":["slotTypes","slotCounts","hardpoints","installedModules","hostCompatibility","expansionRules"]},
+    {"id":"cap.installable-modification","fields":["compatibleHosts","slotType","slotCost","hostRestrictions","prerequisites","installationMethod","removalMethod","grantedCapabilities","statModifications","powerUse","failureBehavior"]},
+    {"id":"cap.environmental-protection","fields":["lifeSupportDuration","oxygenReserve","atmosphereSealing","temperatureRegulation","pressureProtection","radiationProtection","toxinProtection","aquaticOperation","gravityAdaptation","zeroGravityMovement","decompressionBehavior","emergencyBeacon"]},
+    {"id":"cap.computer-core","fields":["processingPower","memoryCapacity","securityLevel","energyConsumption","compatibility","upgradeability","cpu","ram","storage","firewall","encryption","ports","expansionSlots","taskSupport"]},
+    {"id":"cap.network-program-ai","fields":["programs","networkFunctions","permissions","automationControl","surveillance","combatSupport","aiFunctions","installationRequirements","memoryFootprint"]},
+    {"id":"cap.spell-implement","fields":["spellReferences","castingGate","attunement","studyTime","captureMethod","releaseMethod","automaticTriggers","spellFailureBehavior"]},
+    {"id":"cap.sentience-autonomy","fields":["personality","emotionalState","goals","awareness","communication","independentActions","independentReactions","rejectionBehavior"]},
+    {"id":"cap.companion-body","fields":["hitPoints","armorClass","movement","savingThrows","resistances","immunities","deathBehavior","repairOrHealing"]},
+    {"id":"cap.bonding-host","fields":["hostCompatibility","bondingEnvironment","attachmentMethod","attachmentTime","detachmentMethod","detachmentDamage","detachmentSave","needs","conflictRoll","influenceEffects","relationshipState"]},
+    {"id":"cap.progression-evolution","fields":["level","experience","milestones","unlockTable","synergyPoints","evolutionPaths","parasiticState","hostTransformation","fusion","replacementBehavior"]},
+    {"id":"cap.material-properties","fields":["materialCategory","rawRefinedState","hardness","durability","weightClass","flexibility","magicalConduction","resistances","finishedItemModifiers"]},
+    {"id":"cap.crafting-recipe","fields":["recipe","ingredients","componentRoles","tools","difficulty","time","specialEnvironment","failureResults","repairRequirements"]},
+    {"id":"cap.magitech-discipline","fields":["discipline","requiredKnowledge","powerSource","activationRules","limitations","environmentalDependencies","failureStates","maintenanceRules","craftingRules","specialStateTracks"]}
+  ],
+  "knownNonInterchangeableConcepts": [
+    ["weightCapacity","volumeCapacity","spellCapacity","chargeCapacity","memoryCapacity","soulCapacity"],
+    ["armorClass","damageReduction","resistance","immunity","protectionPool","cover"],
+    ["itemDurability","companionHitPoints","chargeReserve","powerCapacity","lifeSupportDuration"],
+    ["attachment","installation","attunement","bonding","wearing","equipping"],
+    ["physicalType","magitechDiscipline","powerSource","runtimeProjection"]
+  ]
+}

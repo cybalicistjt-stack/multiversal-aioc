@@ -1,0 +1,18 @@
+name: Validate Item Hierarchy and Modules
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/item-registry/**'
+      - 'scripts/validate-item-hierarchy-modules.mjs'
+      - '.github/workflows/validate-item-hierarchy-modules.yml'
+
+jobs:
+  validate-item-hierarchy-modules:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/validate-item-hierarchy-modules.mjs
