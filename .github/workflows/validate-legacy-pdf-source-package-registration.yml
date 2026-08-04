@@ -1,0 +1,21 @@
+name: Validate Legacy PDF Source Package Registration
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/LEGACY_PDF_SOURCE_PACKAGE_CONTRACT.json'
+      - 'governance/object-system/csv-intake/LEGACY_PDF_SOURCE_PACKAGE_MANIFEST.json'
+      - 'governance/object-system/csv-intake/P0_SOURCE_CLAIM_ALIAS_REGISTRY.json'
+      - 'scripts/validate-legacy-pdf-source-package-registration.py'
+      - '.github/workflows/validate-legacy-pdf-source-package-registration.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-legacy-pdf-source-package-registration.py
