@@ -1,0 +1,25 @@
+name: Reconcile CSV Domain Batches
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/CSV_CROSS_BATCH_RECONCILIATION_CONTRACT.json'
+      - 'scripts/reconcile-csv-domain-batches.py'
+      - '.github/workflows/reconcile-csv-domain-batches.yml'
+  workflow_dispatch:
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconcile all CSV domain batches
+        run: python scripts/reconcile-csv-domain-batches.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-cross-batch-reconciliation-19199
+          path: build/csv-cross-batch-reconciliation-l25/
+          retention-days: 30
