@@ -1,0 +1,28 @@
+name: Build CSV P0 Source Package Requirements
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/CSV_P0_SOURCE_PACKAGE_REQUIREMENTS_CONTRACT.json'
+      - 'scripts/build-csv-p0-source-package-requirements.py'
+      - 'scripts/validate-csv-p0-source-package-requirements.py'
+      - '.github/workflows/build-csv-p0-source-package-requirements.yml'
+  workflow_dispatch:
+
+jobs:
+  build-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build exact source package requirements
+        run: python scripts/build-csv-p0-source-package-requirements.py
+      - name: Validate source package requirements
+        run: python scripts/validate-csv-p0-source-package-requirements.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-p0-source-package-requirements-5508
+          path: build/csv-p0-source-package-requirements-l32/
+          retention-days: 30
