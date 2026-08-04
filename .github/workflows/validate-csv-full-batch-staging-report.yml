@@ -1,0 +1,19 @@
+name: Validate CSV Full Batch Staging Report
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/CSV_FULL_BATCH_STAGING_VALIDATION_REPORT.json'
+      - 'scripts/validate-csv-full-batch-staging-report.py'
+      - '.github/workflows/validate-csv-full-batch-staging-report.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-csv-full-batch-staging-report.py
