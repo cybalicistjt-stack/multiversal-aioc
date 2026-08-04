@@ -1,0 +1,30 @@
+name: Execute CSV Vehicle Domain Batch
+
+on:
+  pull_request:
+    paths:
+      - 'Csv.zip'
+      - 'governance/object-system/csv-intake/CSV_VEHICLE_DOMAIN_BATCH_CONTRACT.json'
+      - 'scripts/convert-csv-vehicle-domain-batch.py'
+      - 'scripts/validate-csv-vehicle-domain-batch.py'
+      - '.github/workflows/execute-csv-vehicle-domain-batch.yml'
+  workflow_dispatch:
+
+jobs:
+  execute-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Convert vehicle domain batch
+        run: python scripts/convert-csv-vehicle-domain-batch.py
+      - name: Validate vehicle domain batch
+        run: python scripts/validate-csv-vehicle-domain-batch.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-vehicle-domain-batch-5628
+          path: build/csv-domain-batch-vehicles-l22/
+          if-no-files-found: error
+          retention-days: 31
