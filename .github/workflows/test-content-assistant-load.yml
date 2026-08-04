@@ -1,0 +1,25 @@
+name: Test Content Completion Assistant Load
+
+on:
+  pull_request:
+    paths:
+      - 'content-assistant.html'
+      - 'content-assistant.js'
+      - 'content-structure-assistant-filter.js'
+      - 'scripts/test-content-assistant-load.mjs'
+      - '.github/workflows/test-content-assistant-load.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate JavaScript syntax
+        run: |
+          node --check content-assistant.js
+          node --check content-structure-assistant-filter.js
+      - name: Run load regression
+        run: node scripts/test-content-assistant-load.mjs
