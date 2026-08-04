@@ -1,14 +1,33 @@
 {
-  "format":"multiversal-csv-batch-staging-contract","version":"0.1.0","workstream":"8E-009L10","status":"authorized-staging-only","archive":"Csv.zip","expectedTotalRows":4821,
+  "format":"multiversal-csv-batch-staging-contract",
+  "version":"0.2.0",
+  "workstream":"8E-009L10-correction",
+  "status":"authorized-full-source-staging-only",
+  "archive":"Csv.zip",
+  "expectedTotalRows":19199,
   "datasets":[
-    {"file":"expanded_melee_weapons_all_genres.csv","rows":327,"identityColumn":"Weapon","target":"item.weapon.melee"},
-    {"file":"expanded_ranged_weapons_catalog.csv","rows":230,"identityColumn":"Weapon","target":"classification-gated:ranged/firearm/energy"},
-    {"file":"expanded_items_all_genres.csv","rows":761,"identityColumn":"Item","target":"classification-gated:general-item"},
-    {"file":"expanded_eva_suits_and_modules_all_genres.csv","rows":430,"identityColumn":"Item","target":"classification-gated:eva-suit/module"},
-    {"file":"expanded_computers_all_genres.csv","rows":1000,"identityColumn":"Item_ID","target":"classification-gated:computer/software/module"},
-    {"file":"expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv","rows":1501,"identityColumn":"Catalog_ID","target":"classification-gated:living-spellbook/implement/storage"},
-    {"file":"expanded_symbiotes_and_cybernetics_all_genres.csv","rows":572,"identityColumn":"Item","target":"classification-gated:symbiote/implant/module"}
+    {"file":"expanded_melee_weapons_all_genres.csv","rows":327,"identityColumn":"Weapon","target":"item.weapon.melee","mappingState":"mapped"},
+    {"file":"expanded_ranged_weapons_catalog.csv","rows":230,"identityColumn":"Weapon","target":"classification-gated:ranged/firearm/energy","mappingState":"mapped"},
+    {"file":"weapons_and_ammo.csv","rows":36,"target":"item-reconciliation:weapon/ammunition","mappingState":"mapping-required"},
+    {"file":"expanded_items_all_genres.csv","rows":761,"identityColumn":"Item","target":"classification-gated:general-item","mappingState":"mapped"},
+    {"file":"expanded_magitech_items_all_genres.csv","rows":532,"target":"item-reconciliation:magitech-physical-plus-discipline","mappingState":"mapping-required"},
+    {"file":"expanded_eva_suits_and_modules_all_genres.csv","rows":430,"identityColumn":"Item","target":"classification-gated:eva-suit/module","mappingState":"mapped"},
+    {"file":"expanded_computers_all_genres.csv","rows":1000,"identityColumn":"Item_ID","target":"classification-gated:computer/software/module","mappingState":"mapped"},
+    {"file":"expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv","rows":1501,"identityColumn":"Catalog_ID","target":"classification-gated:living-spellbook/implement/storage","mappingState":"mapped"},
+    {"file":"expanded_symbiotes_and_cybernetics_all_genres.csv","rows":572,"identityColumn":"Item","target":"classification-gated:symbiote/implant/module","mappingState":"mapped"},
+    {"file":"expanded_bases_facilities_materials_and_homesteads_all_genres.csv","rows":1080,"target":"mixed-boundary-review:material/facility/base/homestead","mappingState":"domain-registry-required"},
+    {"file":"expanded_hazards_and_traps_all_genres.csv","rows":1901,"target":"hazard-routing:hazard/trap/deployable","mappingState":"domain-mapping-required"},
+    {"file":"expanded_land_sea_air_vehicles_all_genres.csv","rows":1200,"target":"vehicle-routing:land/sea/air","mappingState":"domain-registry-required"},
+    {"file":"expanded_mecha_and_components_all_genres.csv","rows":2117,"target":"vehicle-routing:mecha/component","mappingState":"domain-registry-required"},
+    {"file":"expanded_spacecraft_and_components_all_genres.csv","rows":2311,"target":"vehicle-routing:spacecraft/component","mappingState":"domain-registry-required"},
+    {"file":"completed_magic_spells_catalog.csv","rows":385,"target":"spell-reconciliation:existing-spell-system","mappingState":"reconciliation-required"},
+    {"file":"ability_trees_and_abilities_catalog.csv","rows":1256,"target":"ability-reconciliation:general","mappingState":"reconciliation-required"},
+    {"file":"magic_arcane_and_faction_ability_trees_catalog.csv","rows":118,"target":"ability-reconciliation:magic/arcane/faction","mappingState":"reconciliation-required"},
+    {"file":"profession_and_crafting_ability_trees_catalog.csv","rows":221,"target":"ability-reconciliation:profession/crafting","mappingState":"reconciliation-required"},
+    {"file":"prestige_environment_and_special_ability_trees_catalog.csv","rows":1018,"target":"ability-reconciliation:prestige/environment/special","mappingState":"reconciliation-required"},
+    {"file":"species_elementalist_and_innate_abilities_catalog.csv","rows":2203,"target":"ability-reconciliation:species/elementalist/innate","mappingState":"reconciliation-required"}
   ],
-  "outputRules":{"format":"jsonl","preserveRawRow":true,"assignCanonicalIds":false,"retainUnresolvedManifest":true,"quarantineInferenceSignals":true,"identityReconciliationRequiredBeforeMerge":true,"pdfVerificationRequiredBeforePromotion":true},
-  "promotionBoundary":"Batch output is noncanonical staging data only. It does not authorize source-claim certification, identity merging, canonical IDs, or promotion without owner approval."
+  "identityRules":{"configuredColumnPreferred":true,"fallbackToFirstSourceColumn":true,"rowNumberAlwaysIncludedInStagingId":true},
+  "outputRules":{"format":"jsonl","preserveRawRow":true,"assignCanonicalIds":false,"retainUnresolvedManifest":true,"quarantineInferenceSignals":true,"identityReconciliationRequiredBeforeMerge":true,"pdfVerificationRequiredBeforePromotion":true,"preserveDomainRoutingBoundary":true},
+  "promotionBoundary":"Batch output is noncanonical staging data only. It does not authorize source-claim certification, cross-domain coercion, identity merging, canonical IDs, or promotion without governed validation and owner approval."
 }
