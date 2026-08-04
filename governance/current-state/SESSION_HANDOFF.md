@@ -4,24 +4,30 @@
 **Owner and final authority:** John Brandon Turner  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Branch after merge:** `main`  
-**Handoff date:** 2026-08-03
+**Handoff date:** 2026-08-04
 
 ## Verified state
 
 - Operational AIOC certification — COMPLETE
 - Development Brain Releases A–G — COMPLETE AND BEHAVIORALLY VALIDATED
-- Source census — COMPLETE
-- Neutral recovery ledger — COMPLETE
-- Certified Content Library collection — 487 partial records, preserved and restorable
-- Recovery-ledger staging import — IMPLEMENTED
-- Melee Weapons enrichment pilot — IMPLEMENTED AS STAGING PILOT
+- Source census and neutral recovery ledger — COMPLETE
 - Canonical Item Type and Template approach — OWNER APPROVED
+- Item PDF source inventory and family discovery — MERGED
+- Item type hierarchy and shared capability modules — MERGED
+- Initial 11-template Item Template Registry — MERGED
+- Item validators and completion scoring — MERGED
+- Schema-driven Item Design Studio form registry — MERGED
+- Representative-object planning and source selection — MERGED
+- Rendered-page firearm verification — ACTIVE IN PR #48
+- Structured owner-supplied CSV bundle — RECEIVED; GOVERNED INTAKE NOT YET COMMITTED OR AUDITED
 
-Do not claim mass enrichment, canonical promotion, or later application phases complete without merged repository evidence.
+Do not claim CSV fidelity, mass conversion, canonical promotion, or later application phases complete without merged repository evidence.
 
-## Current problem
+## Material change in execution strategy
 
-Most certified objects are names or thin wrappers without the source-supported mechanics needed by the Design Studio, Content Completion Assistant, or game runtime. The recovery ledger preserves source evidence but does not itself create complete playable objects.
+The owner supplied a structured CSV bundle covering multiple major content domains. This moves the project from primarily PDF-by-PDF extraction to a **CSV-first, PDF-verified intake model**.
+
+Use CSV rows as the initial structured source layer. Use the PDFs to verify values, recover missing data, inspect images/tables, resolve ambiguous mechanics, and provide field-level provenance. The CSVs do not replace canonical templates, validators, provenance, deduplication, runtime testing, staging, or owner approval.
 
 ## Active program
 
@@ -35,73 +41,75 @@ Active milestone:
 
 Current sub-phase:
 
-- **8E-009A — Item Family Discovery**
+- **8E-009L1 — Governed CSV Intake and Data-Quality Audit**
 
-## Mandatory sequencing
+## Revised mandatory sequence
 
-Never perform bulk conversion before the relevant canonical template and validator exist.
-
-Required order:
-
-1. inventory source documents;
-2. identify object families and boundaries;
-3. collect every source-supported parameter by family;
-4. normalize reusable capability modules;
-5. build canonical templates;
-6. build completion validators;
-7. build schema-driven Design Studio forms;
-8. create representative complete objects;
-9. validate in staging;
-10. obtain owner approval;
-11. resume bulk conversion.
+1. preserve the original CSV bundle unchanged;
+2. generate file hashes and an immutable manifest;
+3. inventory files, headers, encodings, delimiters, row counts, and column counts;
+4. audit data quality and source fidelity;
+5. register each CSV against its canonical domain;
+6. measure template, field, validator, and capability-module coverage;
+7. reconcile genuine hierarchy or template gaps;
+8. create deterministic CSV-to-canonical mapping contracts;
+9. create a cross-file identity, overlap, variant, and deduplication index;
+10. reconstruct representative objects from CSV plus PDF evidence;
+11. run a bounded 50–100 record pilot in staging;
+12. correct systemic failures and freeze versioned mapping contracts;
+13. convert by bounded domain batches;
+14. obtain owner approval before canonical promotion.
 
 ## Next executable operation
 
-Review all available item-related PDFs and prior item sources and produce the governed 8E-009A deliverables:
+Complete **8E-009L1 — Governed CSV Intake and Data-Quality Audit** using the owner-supplied `Csv.zip` bundle.
 
-- item-source inventory;
-- canonical item-family hierarchy;
-- parameter matrix for every identified family;
-- shared and family-specific parameter distinctions;
-- object/non-object boundary decisions;
-- capability-module candidate registry;
-- unresolved ambiguity queue;
-- source coverage report.
+Required deliverables:
 
-Sources include, but are not limited to:
+- immutable source-package manifest;
+- CSV file inventory;
+- header and datatype inventory;
+- row and column counts;
+- populated-field and missing-field rates;
+- duplicate-ID and duplicate-name report;
+- malformed dice, range, cost, unit, and source-reference report;
+- category and subtype consistency report;
+- mixed-domain and out-of-domain routing report;
+- cross-file overlap and likely-duplicate report;
+- dataset readiness classification;
+- CSV Source Registry;
+- Item Template Coverage Matrix;
+- ambiguity queue;
+- exact recommended next mapping batch.
 
-- melee weapons;
-- guns/firearms;
-- armor and shields;
-- EVA suits;
-- computers;
-- living spellbooks;
-- magic charge holders;
-- magitech rules;
-- materials;
-- symbiotes;
-- miscellaneous items;
-- previously supplied item and equipment PDFs.
+Dataset readiness classifications must be:
 
-Clones are not item objects. Model clone identities/bodies as artificial beings and model cloning devices, facilities, services, and modifications separately.
+- usable as-is;
+- usable after deterministic normalization;
+- source verification required;
+- unsuitable for bulk import.
 
-## Completion standard
+## Mapping and evidence rules
 
-A JSON wrapper is not a complete object. Completion must be measured against required and source-supported fields with field-level provenance. Identity-only records remain stubs.
+Every future CSV mapping must distinguish direct source values, deterministic normalization, inferred classification, owner-resolved values, unresolved values, and unsupported fields. No silent defaults, inferred approval, or automatic merging of variants or conflicts.
+
+The PDFs remain authoritative verification sources when CSV values are incomplete, ambiguous, image-derived, contradictory, or mechanically unclear.
+
+## Pilot and promotion boundary
+
+Do not begin mass conversion after the audit alone. First create mapping contracts, representative examples, deduplication rules, and a bounded 50–100 record pilot spanning simple, complex, magical, technological, modular, living, storage, consumable, material, and overlapping objects.
+
+A CSV row is not a canonical object. Promotion still requires stable identity, field-level provenance, required-field coverage, resolved duplicate/variant state, no blocking ambiguity, canonical and runtime validation, staging PASS, exact fingerprints, and owner approval.
+
+## Existing item-domain boundaries
+
+Clones are not items. Artificial beings, creatures, facilities, services, rules, effects, materials, modifications, software, vehicles, mecha, spacecraft, spells, and abilities must be routed to their appropriate canonical systems rather than forced into the ordinary item converter.
 
 ## Execution rule
 
-Do the work first. Keep user-facing explanation to the minimum required for correctness.
+“Continue” means execute the exact next verified unfinished operation and complete as much as possible before reporting. Do not substitute a summary or plan for repository work.
 
-Do not:
-
-- repeat approved plans;
-- provide an introduction before executing “Continue”;
-- report projected PRs, commits, tests, merges, deployments, or files as completed;
-- substitute a roadmap description for repository work;
-- ask for confirmation when the next action is already approved.
-
-After work, report only concise evidence: changed artifacts, validation result, PR/merge state, and exact next action.
+After work, report only changed artifacts, actual validation results, PR/merge state, and the exact next executable action.
 
 ## Contributor boundary
 
@@ -113,7 +121,7 @@ Before governed work:
 
 1. read `governance/ci-failures/INDEX.md` from `ci/failure-records`;
 2. read the contributor registry;
-3. read this handoff, current state, bootstrap, and object-template program;
+3. read this handoff, current state, bootstrap, object-template program, and project memory;
 4. inspect recent commits and open PRs;
 5. verify repository and branch;
-6. execute the exact next action above.
+6. execute the exact next action above unless the owner changes direction.
