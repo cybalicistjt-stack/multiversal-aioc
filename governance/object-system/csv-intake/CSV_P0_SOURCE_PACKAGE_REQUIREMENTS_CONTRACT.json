@@ -1,0 +1,25 @@
+{
+  "format": "multiversal-csv-p0-source-package-requirements-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L32",
+  "status": "authorized-requirements-generation",
+  "sourceBatchContract": "governance/object-system/csv-intake/CSV_P0_SOURCE_VERIFICATION_BATCH_1_CONTRACT.json",
+  "expectedRows": 5508,
+  "rules": {
+    "exactClaimedFilenamesPreserved": true,
+    "compoundClaimsSplitOnlyOnSemicolons": true,
+    "narrativeClaimsRemainAliases": true,
+    "repositoryPresenceMustBeVerified": true,
+    "sourceDocumentsMustNotBeFabricated": true,
+    "pageLevelVerificationBlockedUntilPresent": true,
+    "canonicalIdsForbidden": true,
+    "promotionForbidden": true
+  },
+  "acceptedSourceRoots": [
+    "sources/canonical/",
+    "sources/verification/",
+    "source-packages/"
+  ],
+  "outputDirectory": "build/csv-p0-source-package-requirements-l32",
+  "nextBoundary": "Import the exact missing source documents or a governed archive containing them, validate checksums, then resume page-level P0 verification."
+}
