@@ -1,0 +1,19 @@
+name: Validate Item Example Selections
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/item-examples/**'
+      - 'governance/object-system/item-templates/**'
+      - 'scripts/validate-item-example-selections.mjs'
+      - '.github/workflows/validate-item-example-selections.yml'
+
+jobs:
+  validate-item-example-selections:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/validate-item-example-selections.mjs
