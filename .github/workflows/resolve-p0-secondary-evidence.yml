@@ -1,0 +1,29 @@
+name: Resolve P0 Secondary Evidence
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/P0_SECONDARY_EVIDENCE_RESOLUTION_CONTRACT.json'
+      - 'governance/object-system/csv-intake/P0_SECONDARY_EVIDENCE_RESOLUTION.json'
+      - 'scripts/validate-p0-secondary-evidence-resolution.py'
+      - '.github/workflows/resolve-p0-secondary-evidence.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate retained secondary evidence
+        run: python scripts/validate-p0-secondary-evidence-resolution.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-p0-secondary-evidence-resolution-53
+          path: governance/object-system/csv-intake/P0_SECONDARY_EVIDENCE_RESOLUTION.json
+          if-no-files-found: error
