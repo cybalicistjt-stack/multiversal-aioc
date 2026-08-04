@@ -1,29 +1,40 @@
 {
-  "format":"multiversal-csv-template-coverage-matrix","version":"0.1.0","workstream":"8E-009L2","status":"governed-draft",
+  "format":"multiversal-csv-template-coverage-matrix","version":"0.2.0","workstream":"8E-009L4","status":"template-gaps-defined",
+  "registries":[
+    "governance/object-system/item-templates/ITEM_TEMPLATE_REGISTRY.json",
+    "governance/object-system/item-templates/ITEM_TEMPLATE_EXTENSION_REGISTRY.json"
+  ],
   "currentTemplateCoverage":[
     {"templateId":"item.weapon.melee","datasets":["expanded_melee_weapons_all_genres.csv"],"coverage":"strong","notableMissing":["field-level PDF provenance","durability/materials in most rows"]},
-    {"templateId":"item.weapon.firearm","datasets":["expanded_ranged_weapons_catalog.csv","weapons_and_ammo.csv","expanded_magitech_items_all_genres.csv"],"coverage":"strong-but-overlapping","notableMissing":["firearm versus non-firearm classification","cross-file identity resolution"]},
+    {"templateId":"item.weapon.firearm","datasets":["expanded_ranged_weapons_catalog.csv","weapons_and_ammo.csv","expanded_magitech_items_all_genres.csv"],"coverage":"strong-but-overlapping","notableMissing":["firearm classification","cross-file identity resolution"]},
+    {"templateId":"item.weapon.ranged","datasets":["expanded_ranged_weapons_catalog.csv"],"coverage":"contract-defined","notableMissing":["representative example","classification fixture"]},
+    {"templateId":"item.weapon.energy","datasets":["expanded_ranged_weapons_catalog.csv","expanded_magitech_items_all_genres.csv"],"coverage":"contract-defined","notableMissing":["charge/heat parser fixtures","representative example"]},
+    {"templateId":"item.ammunition","datasets":["weapons_and_ammo.csv","expanded_ranged_weapons_catalog.csv"],"coverage":"contract-defined-overlapping","notableMissing":["weapon/ammunition split","compatibility identity index"]},
     {"templateId":"item.protection.armor","datasets":[],"coverage":"not-covered-by-dedicated-csv","notableMissing":["armor catalog"]},
     {"templateId":"item.protection.eva-suit","datasets":["expanded_eva_suits_and_modules_all_genres.csv"],"coverage":"partial","notableMissing":["suit framework versus module separation","full life-support and emergency fields"]},
+    {"templateId":"item.modification.module","datasets":["expanded_eva_suits_and_modules_all_genres.csv","expanded_magitech_items_all_genres.csv"],"coverage":"contract-defined","notableMissing":["host/module classifier","slot normalization"]},
     {"templateId":"item.storage.typed-container","datasets":["expanded_items_all_genres.csv","expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv"],"coverage":"partial","notableMissing":["typed capacity normalization","failure behavior"]},
     {"templateId":"item.consumable.effect-delivery","datasets":["expanded_items_all_genres.csv"],"coverage":"partial","notableMissing":["delivery route","save/check","stacking","misuse consequences"]},
+    {"templateId":"item.tool","datasets":["expanded_items_all_genres.csv"],"coverage":"contract-defined","notableMissing":["tool/device classifier","representative example"]},
+    {"templateId":"item.device.general","datasets":["expanded_items_all_genres.csv","expanded_magitech_items_all_genres.csv"],"coverage":"contract-defined","notableMissing":["tool/computer/device classifier","effect references"]},
     {"templateId":"item.device.computer","datasets":["expanded_computers_all_genres.csv"],"coverage":"very-strong","notableMissing":["program records versus hardware records","field-level PDF provenance"]},
+    {"templateId":"item.software","datasets":["expanded_computers_all_genres.csv"],"coverage":"contract-defined","notableMissing":["hardware/software split","resource requirement parser"]},
     {"templateId":"item.magic.implement","datasets":["expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv","expanded_magitech_items_all_genres.csv"],"coverage":"strong","notableMissing":["implement subtype routing","physical template separation"]},
     {"templateId":"item.living.sentient-companion","datasets":["expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv"],"coverage":"strong","notableMissing":["independent action authority boundary","progression normalization"]},
     {"templateId":"item.living.symbiote","datasets":["expanded_symbiotes_and_cybernetics_all_genres.csv"],"coverage":"strong-but-mixed","notableMissing":["symbiote versus cybernetic split"]},
+    {"templateId":"item.implant","datasets":["expanded_symbiotes_and_cybernetics_all_genres.csv"],"coverage":"contract-defined","notableMissing":["body slot vocabulary","installation/removal parser"]},
+    {"templateId":"item.trap","datasets":["expanded_hazards_and_traps_all_genres.csv"],"coverage":"contract-defined-mixed","notableMissing":["deployable versus persistent hazard classifier","representative example"]},
     {"templateId":"item.material.crafting-resource","datasets":["expanded_bases_facilities_materials_and_homesteads_all_genres.csv"],"coverage":"partial-and-mixed","notableMissing":["material rows separated from facilities/bases/homesteads"]}
   ],
-  "requiredTemplateGaps":[
-    {"candidateId":"item.weapon.ranged","reason":"Ranged catalog includes bows/crossbows and other non-firearms."},
-    {"candidateId":"item.weapon.energy","reason":"Energy weapons have charge/power and failure behavior distinct from firearms."},
-    {"candidateId":"item.ammunition","reason":"Ammunition and power cells are first-class records and compatibility resources."},
-    {"candidateId":"item.implant","reason":"Cybernetics require body location, slot cost, installation, removal, and malfunction fields."},
-    {"candidateId":"item.modification.module","reason":"EVA, weapon, armor, computer, vehicle, and magitech modules need host compatibility and slot contracts."},
-    {"candidateId":"item.tool","reason":"General item catalog contains mundane and skill-enhancing tools not covered by current templates."},
-    {"candidateId":"item.device.general","reason":"Scanners, communication, navigation, medical, security, and autonomous devices require a general device family."},
-    {"candidateId":"item.trap","reason":"Some trap records are deployable items while environmental hazards are not items."},
-    {"candidateId":"item.software","reason":"Programs are installable logical objects, not computer hardware fields alone."}
+  "resolvedTemplateGaps":[
+    "item.weapon.ranged","item.weapon.energy","item.ammunition","item.implant",
+    "item.modification.module","item.tool","item.device.general","item.trap","item.software"
   ],
   "futureRegistryDependencies":["facility","base/homestead","hazard","vehicle","mecha","spacecraft","vehicle-component"],
-  "conclusion":"The 11-template registry supports major representative families but is insufficient for corpus-wide item conversion. Nine additional item templates or explicit subtype contracts require definition before broad mapping."
+  "nextRequiredWork":[
+    "complete deterministic mapping contracts for general items, EVA suits/modules, living spellbooks/charge holders, and symbiotes/cybernetics",
+    "build cross-file identity and variant reconciliation index",
+    "create representative examples and bounded pilot fixtures"
+  ],
+  "conclusion":"All nine CSV-discovered item template gaps now have governed contracts. Dataset mappings, representative examples, identity reconciliation, validators, staging pilots, and owner approval remain required before conversion or promotion."
 }
