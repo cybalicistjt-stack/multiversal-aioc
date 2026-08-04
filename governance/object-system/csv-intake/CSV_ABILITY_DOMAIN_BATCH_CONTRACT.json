@@ -1,0 +1,26 @@
+{
+  "format": "multiversal-csv-domain-batch-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L24",
+  "status": "authorized-staging-conversion",
+  "sourceRegistry": "governance/object-system/csv-intake/CSV_REMAINING_MAPPING_CONTRACT_REGISTRY.json",
+  "datasets": [
+    {"file":"ability_trees_and_abilities_catalog.csv","rows":1256,"identityColumn":"Record_ID"},
+    {"file":"magic_arcane_and_faction_ability_trees_catalog.csv","rows":118,"identityColumn":"Record_ID"},
+    {"file":"profession_and_crafting_ability_trees_catalog.csv","rows":221,"identityColumn":"Record_ID"},
+    {"file":"prestige_environment_and_special_ability_trees_catalog.csv","rows":1018,"identityColumn":"Record_ID"},
+    {"file":"species_elementalist_and_innate_abilities_catalog.csv","rows":2203,"identityColumn":"Record_ID"}
+  ],
+  "expectedRows": 4816,
+  "rules": {
+    "preserveRawSource": true,
+    "preserveUnmappedColumns": true,
+    "recordRoutingEvidence": "inferred-classification",
+    "treeRelationshipReconciliationRequired": true,
+    "noSilentDefaults": true,
+    "canonicalIdsForbidden": true,
+    "promotionForbidden": true
+  },
+  "outputDirectory": "build/csv-domain-batch-abilities-l24",
+  "nextBoundary": "Outputs remain noncanonical until tree and parent relationships, source verification, domain validation, identity reconciliation, and owner approval are complete."
+}

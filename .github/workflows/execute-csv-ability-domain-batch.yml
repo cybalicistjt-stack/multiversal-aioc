@@ -1,0 +1,28 @@
+name: Execute CSV Ability Domain Batch
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/CSV_ABILITY_DOMAIN_BATCH_CONTRACT.json'
+      - 'scripts/convert-csv-ability-domain-batch.py'
+      - 'scripts/validate-csv-ability-domain-batch.py'
+      - '.github/workflows/execute-csv-ability-domain-batch.yml'
+  workflow_dispatch:
+
+jobs:
+  execute-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Convert ability domain batch
+        run: python scripts/convert-csv-ability-domain-batch.py
+      - name: Validate ability domain batch
+        run: python scripts/validate-csv-ability-domain-batch.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-ability-domain-batch-4816
+          path: build/csv-domain-batch-abilities-l24/
+          retention-days: 30
