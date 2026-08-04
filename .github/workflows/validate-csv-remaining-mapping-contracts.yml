@@ -1,0 +1,19 @@
+name: Validate Remaining CSV Mapping Contracts
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/CSV_REMAINING_MAPPING_CONTRACT_REGISTRY.json'
+      - 'scripts/validate-csv-remaining-mapping-contracts.py'
+      - '.github/workflows/validate-csv-remaining-mapping-contracts.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-csv-remaining-mapping-contracts.py
