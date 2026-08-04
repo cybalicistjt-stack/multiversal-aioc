@@ -1,0 +1,21 @@
+{
+  "format": "multiversal-csv-cross-file-identity-conflict-reconciliation-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L29",
+  "status": "authorized-reconciliation",
+  "sourceRegistry": "governance/object-system/csv-intake/CSV_FULL_DOMAIN_IDENTITY_RECONCILIATION.json",
+  "expectedDatasets": 20,
+  "expectedRows": 19199,
+  "rules": {
+    "sourceIdsRemainNamespaced": true,
+    "normalizedNamesAreComparisonSignalsOnly": true,
+    "crossDomainMergesProhibited": true,
+    "variantsRemainSeparate": true,
+    "conflictingClaimsPreserved": true,
+    "automaticMergesForbidden": true,
+    "canonicalIdsForbidden": true,
+    "promotionForbidden": true
+  },
+  "outputDirectory": "build/csv-cross-file-identity-conflicts-l29",
+  "nextBoundary": "Review clusters require source-document verification before any identity disposition or promotion."
+}
