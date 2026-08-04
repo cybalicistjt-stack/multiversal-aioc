@@ -1,0 +1,29 @@
+{
+  "format":"multiversal-csv-template-coverage-matrix","version":"0.1.0","workstream":"8E-009L2","status":"governed-draft",
+  "currentTemplateCoverage":[
+    {"templateId":"item.weapon.melee","datasets":["expanded_melee_weapons_all_genres.csv"],"coverage":"strong","notableMissing":["field-level PDF provenance","durability/materials in most rows"]},
+    {"templateId":"item.weapon.firearm","datasets":["expanded_ranged_weapons_catalog.csv","weapons_and_ammo.csv","expanded_magitech_items_all_genres.csv"],"coverage":"strong-but-overlapping","notableMissing":["firearm versus non-firearm classification","cross-file identity resolution"]},
+    {"templateId":"item.protection.armor","datasets":[],"coverage":"not-covered-by-dedicated-csv","notableMissing":["armor catalog"]},
+    {"templateId":"item.protection.eva-suit","datasets":["expanded_eva_suits_and_modules_all_genres.csv"],"coverage":"partial","notableMissing":["suit framework versus module separation","full life-support and emergency fields"]},
+    {"templateId":"item.storage.typed-container","datasets":["expanded_items_all_genres.csv","expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv"],"coverage":"partial","notableMissing":["typed capacity normalization","failure behavior"]},
+    {"templateId":"item.consumable.effect-delivery","datasets":["expanded_items_all_genres.csv"],"coverage":"partial","notableMissing":["delivery route","save/check","stacking","misuse consequences"]},
+    {"templateId":"item.device.computer","datasets":["expanded_computers_all_genres.csv"],"coverage":"very-strong","notableMissing":["program records versus hardware records","field-level PDF provenance"]},
+    {"templateId":"item.magic.implement","datasets":["expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv","expanded_magitech_items_all_genres.csv"],"coverage":"strong","notableMissing":["implement subtype routing","physical template separation"]},
+    {"templateId":"item.living.sentient-companion","datasets":["expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv"],"coverage":"strong","notableMissing":["independent action authority boundary","progression normalization"]},
+    {"templateId":"item.living.symbiote","datasets":["expanded_symbiotes_and_cybernetics_all_genres.csv"],"coverage":"strong-but-mixed","notableMissing":["symbiote versus cybernetic split"]},
+    {"templateId":"item.material.crafting-resource","datasets":["expanded_bases_facilities_materials_and_homesteads_all_genres.csv"],"coverage":"partial-and-mixed","notableMissing":["material rows separated from facilities/bases/homesteads"]}
+  ],
+  "requiredTemplateGaps":[
+    {"candidateId":"item.weapon.ranged","reason":"Ranged catalog includes bows/crossbows and other non-firearms."},
+    {"candidateId":"item.weapon.energy","reason":"Energy weapons have charge/power and failure behavior distinct from firearms."},
+    {"candidateId":"item.ammunition","reason":"Ammunition and power cells are first-class records and compatibility resources."},
+    {"candidateId":"item.implant","reason":"Cybernetics require body location, slot cost, installation, removal, and malfunction fields."},
+    {"candidateId":"item.modification.module","reason":"EVA, weapon, armor, computer, vehicle, and magitech modules need host compatibility and slot contracts."},
+    {"candidateId":"item.tool","reason":"General item catalog contains mundane and skill-enhancing tools not covered by current templates."},
+    {"candidateId":"item.device.general","reason":"Scanners, communication, navigation, medical, security, and autonomous devices require a general device family."},
+    {"candidateId":"item.trap","reason":"Some trap records are deployable items while environmental hazards are not items."},
+    {"candidateId":"item.software","reason":"Programs are installable logical objects, not computer hardware fields alone."}
+  ],
+  "futureRegistryDependencies":["facility","base/homestead","hazard","vehicle","mecha","spacecraft","vehicle-component"],
+  "conclusion":"The 11-template registry supports major representative families but is insufficient for corpus-wide item conversion. Nine additional item templates or explicit subtype contracts require definition before broad mapping."
+}
