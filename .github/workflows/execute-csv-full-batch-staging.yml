@@ -29,7 +29,8 @@ jobs:
           import json
           from pathlib import Path
           execution = json.loads(Path('governance/object-system/csv-intake/CSV_FULL_BATCH_STAGING_EXECUTION.json').read_text())
-          summary = json.loads(Path('build/csv-batch-staging/SUMMARY.json').read_text())
+          summary_path = Path(execution['execution']['outputDirectory']) / 'SUMMARY.json'
+          summary = json.loads(summary_path.read_text())
           assert summary['totalRows'] == execution['scope']['rows'] == 19199
           assert len(summary['datasets']) == execution['scope']['datasets'] == 20
           assert summary['canonicalIdsAssigned'] == 0
@@ -39,6 +40,6 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: csv-full-batch-staging-19199
-          path: build/csv-batch-staging/
+          path: artifacts/csv-staging-batch/
           if-no-files-found: error
           retention-days: 31
