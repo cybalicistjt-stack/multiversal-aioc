@@ -10,7 +10,7 @@
 - 19,199 data rows
 - 50,376,355 uncompressed bytes
 - zero exact duplicate full rows
-- five datasets contain ragged row widths and require explicit recovery rules before mapping
+- all CSV data rows match their declared header width
 
 ## Completed follow-on work
 
@@ -41,7 +41,7 @@
 - bases/facilities/materials/homesteads must be routed into separate object families;
 - hazards must be separated from deployable trap items;
 - mecha and spacecraft components require vehicle-family registries;
-- ragged ability, hazard, and mecha rows require deterministic recovery contracts.
+- structurally consistent rows may still contain semantic, identity, category, source-reference, or mixed-domain conflicts requiring governed mapping and verification.
 
 ## Promotion boundary
 
