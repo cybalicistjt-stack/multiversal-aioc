@@ -16,6 +16,7 @@ on:
       - 'content-structure.css'
       - 'content-structure-assistant-filter.js'
       - 'content-assistant.html'
+      - 'content-assistant-v2.html'
       - 'content-assistant.js'
       - 'content-assistant.css'
       - 'content-durability.js'
@@ -80,16 +81,16 @@ jobs:
           if [ -d implementation ]; then cp -R implementation _site/implementation; fi
           if [ -f governance/dispatches/AIOC-DISPATCH-MS02-WP011.md ]; then cp governance/dispatches/AIOC-DISPATCH-MS02-WP011.md _site/governance/dispatches/; fi
 
-          for page in aioc-core.html content-structure.html content-assistant.html content-library.html studio.html balance.html testing-suite.html feature-modules.html development-os.html diagnostics.html refresh.html; do cp "$page" _site/; done
+          for page in aioc-core.html content-structure.html content-assistant.html content-assistant-v2.html content-library.html studio.html balance.html testing-suite.html feature-modules.html development-os.html diagnostics.html refresh.html; do cp "$page" _site/; done
           find . -maxdepth 1 -type f \( -name '*.js' -o -name '*.css' -o -name '*.webmanifest' -o -name '*.svg' -o -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.webp' -o -name '*.ico' \) -exec cp {} _site/ \;
 
           generated_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
           cat > _site/deployment-manifest.json <<EOF
-          {"format":"multiversal-aioc-pages-deployment","version":"1.7.0","build":"operational-aioc-2.1","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","defaultSurface":"operational","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":11,"contentStructure":"guided-classification-active","contentLibrary":"design-studio-connected","contentAssistant":"structure-filtered-completion","contentDurability":"backup-export-import-review-package"}
+          {"format":"multiversal-aioc-pages-deployment","version":"1.7.1","build":"operational-aioc-2.1","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","defaultSurface":"operational","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":11,"contentStructure":"guided-classification-active","contentLibrary":"design-studio-connected","contentAssistant":"cache-bypassed-structure-filtered-completion","contentDurability":"backup-export-import-review-package"}
           EOF
           cp _site/deployment-manifest.json _site/deployed-build.json
           cat > _site/operational/health.json <<EOF
-          {"status":"operational","application":"Multiversal AIOC","build":"operational-aioc-2.1","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":11,"contentStructure":"guided-classification-active","contentLibrary":"design-studio-connected","contentAssistant":"structure-filtered-completion","contentDurability":"backup-export-import-review-package"}
+          {"status":"operational","application":"Multiversal AIOC","build":"operational-aioc-2.1","commit":"${GITHUB_SHA}","generatedAt":"${generated_at}","contentRecords":487,"recentCosWork":"preserved-and-exposed","capabilityCount":11,"contentStructure":"guided-classification-active","contentLibrary":"design-studio-connected","contentAssistant":"cache-bypassed-structure-filtered-completion","contentDurability":"backup-export-import-review-package"}
           EOF
           touch _site/.nojekyll
 
@@ -100,6 +101,7 @@ jobs:
           test -s _site/content-structure.css
           test -s _site/content-structure-assistant-filter.js
           test -s _site/content-assistant.html
+          test -s _site/content-assistant-v2.html
           test -s _site/content-assistant.js
           test -s _site/content-assistant.css
           test -s _site/content-durability.js
@@ -111,7 +113,8 @@ jobs:
           grep -q 'Content Structure Pipeline' _site/content-structure.html
           grep -q 'Parent-granted variant' _site/content-structure.js
           grep -q 'Structure decisions active' _site/content-structure-assistant-filter.js
-          grep -q 'Content Completion Assistant' _site/content-assistant.html
+          grep -q 'content-assistant-v2.html' _site/content-assistant.html
+          grep -q 'ASSISTED CONTENT COMPLETION 1.5' _site/content-assistant-v2.html
           grep -q 'Export review package' _site/content-durability.js
           grep -q 'Recommended next action' _site/content-assistant.js
           grep -q 'Continue selected in Design Studio' _site/content-library-studio-bridge.js
