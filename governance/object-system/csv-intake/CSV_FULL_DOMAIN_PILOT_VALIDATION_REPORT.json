@@ -1,0 +1,37 @@
+{
+  "format": "multiversal-csv-full-domain-pilot-validation-report",
+  "version": "0.1.0",
+  "workstream": "8E-009L17",
+  "status": "validated-staging-only",
+  "inputs": [
+    "governance/object-system/item-examples/CSV_PILOT_CONVERSION_OBJECTS.json",
+    "governance/object-system/csv-intake/CSV_FULL_DOMAIN_PILOT_OBJECTS.json"
+  ],
+  "scope": {"datasets": 20, "pilotObjects": 20, "archiveRowsRepresented": 19199},
+  "validationScope": ["dataset coverage", "staging identity uniqueness", "domain and template routing presence", "source provenance presence", "canonical ID absence", "unresolved-field preservation", "inference quarantine", "promotion-boundary enforcement"],
+  "summary": {
+    "structuralPass": 20,
+    "identityPass": 20,
+    "provenancePresent": 20,
+    "canonicalIdsAssigned": 0,
+    "objectsWithUnresolvedFields": 20,
+    "inferenceQuarantined": 6,
+    "facetedObjects": 1,
+    "promotionReady": 0
+  },
+  "domainCoverage": {
+    "items": {"datasets": 9, "objects": 9, "status": "pass-staging-only"},
+    "mixed": {"datasets": 1, "objects": 1, "status": "pass-staging-only"},
+    "hazards": {"datasets": 1, "objects": 1, "status": "pass-staging-only"},
+    "vehicles": {"datasets": 3, "objects": 3, "status": "pass-staging-only"},
+    "spells": {"datasets": 1, "objects": 1, "status": "pass-staging-only"},
+    "abilities": {"datasets": 5, "objects": 5, "status": "pass-staging-only"}
+  },
+  "batchReadiness": {
+    "fullArchiveStagingConversionAuthorized": true,
+    "canonicalPromotionAuthorized": false,
+    "requiredControls": ["preserve every raw row and unmapped column", "emit collision-safe dataset-scoped staging IDs", "retain per-row unresolved manifests", "quarantine inferred and best-judgment claims", "run cross-file identity reconciliation before merge decisions", "assign no canonical IDs", "promote no records without source verification and owner approval"]
+  },
+  "conclusion": "The representative pilot is structurally valid across all 20 CSV datasets and authorizes staging-only batch conversion of all 19,199 rows. No pilot object is promotion-ready.",
+  "promotionBoundary": "This report does not certify source fidelity, resolve conflicting claims, authorize canonical identifiers, or permit canonical promotion."
+}
