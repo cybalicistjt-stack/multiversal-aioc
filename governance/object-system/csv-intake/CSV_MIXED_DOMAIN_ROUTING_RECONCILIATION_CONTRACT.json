@@ -1,0 +1,22 @@
+{
+  "format": "multiversal-csv-mixed-domain-routing-reconciliation-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L28",
+  "status": "authorized-reconciliation",
+  "sourceContract": "governance/object-system/csv-intake/CSV_MIXED_HAZARD_DOMAIN_BATCH_CONTRACT.json",
+  "dataset": "expanded_bases_facilities_materials_and_homesteads_all_genres.csv",
+  "expectedRows": 1080,
+  "routingColumn": "Record Type",
+  "rules": {
+    "exactNormalizedSourceValueOnly": true,
+    "allowedRoutes": ["base", "facility", "homestead", "item.material.crafting-resource"],
+    "unknownValuesRemainUnresolved": true,
+    "blankValuesRemainUnresolved": true,
+    "keywordFallbackForbidden": true,
+    "crossDomainCoercionForbidden": true,
+    "canonicalIdsForbidden": true,
+    "promotionForbidden": true
+  },
+  "outputDirectory": "build/csv-mixed-domain-routing-reconciliation-l28",
+  "nextBoundary": "Unknown or unsupported record types require source-document verification or an approved controlled-value mapping before canonical routing."
+}

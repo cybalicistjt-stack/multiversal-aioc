@@ -1,0 +1,28 @@
+name: Reconcile CSV Mixed Domain Routing
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/CSV_MIXED_DOMAIN_ROUTING_RECONCILIATION_CONTRACT.json'
+      - 'scripts/reconcile-csv-mixed-domain-routing.py'
+      - 'scripts/validate-csv-mixed-domain-routing.py'
+      - '.github/workflows/reconcile-csv-mixed-domain-routing.yml'
+  workflow_dispatch:
+
+jobs:
+  reconcile-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconcile mixed-domain routing
+        run: python scripts/reconcile-csv-mixed-domain-routing.py
+      - name: Validate routing reconciliation
+        run: python scripts/validate-csv-mixed-domain-routing.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-mixed-domain-routing-reconciliation-1080
+          path: build/csv-mixed-domain-routing-reconciliation-l28/
+          retention-days: 30
