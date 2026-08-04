@@ -1,0 +1,26 @@
+name: Validate CSV Full-Domain Pilot Validation
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/CSV_FULL_DOMAIN_PILOT_VALIDATION_REPORT.json'
+      - 'governance/object-system/csv-intake/CSV_FULL_DOMAIN_PILOT_OBJECTS.json'
+      - 'governance/object-system/item-examples/CSV_PILOT_CONVERSION_OBJECTS.json'
+      - 'scripts/validate-csv-full-domain-pilot-validation.py'
+      - '.github/workflows/validate-csv-full-domain-pilot-validation.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'governance/object-system/csv-intake/CSV_FULL_DOMAIN_PILOT_VALIDATION_REPORT.json'
+      - 'governance/object-system/csv-intake/CSV_FULL_DOMAIN_PILOT_OBJECTS.json'
+      - 'governance/object-system/item-examples/CSV_PILOT_CONVERSION_OBJECTS.json'
+      - 'scripts/validate-csv-full-domain-pilot-validation.py'
+      - '.github/workflows/validate-csv-full-domain-pilot-validation.yml'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-csv-full-domain-pilot-validation.py
