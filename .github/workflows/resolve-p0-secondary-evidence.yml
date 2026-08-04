@@ -1,0 +1,31 @@
+name: Resolve P0 Secondary Evidence
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/P0_SECONDARY_EVIDENCE_RESOLUTION_CONTRACT.json'
+      - 'governance/object-system/csv-intake/P0_LOCATOR_DISAMBIGUATION_QUEUE.json'
+      - 'governance/object-system/csv-intake/P0_MECHA_PAGE_TEXT_INDEX.json'
+      - 'scripts/resolve-p0-secondary-evidence.py'
+      - 'scripts/validate-p0-secondary-evidence-resolution.py'
+      - 'Csv.zip'
+      - '.github/workflows/resolve-p0-secondary-evidence.yml'
+  workflow_dispatch:
+
+jobs:
+  resolve-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Resolve secondary evidence
+        run: python scripts/resolve-p0-secondary-evidence.py
+      - name: Validate secondary evidence resolution
+        run: python scripts/validate-p0-secondary-evidence-resolution.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-p0-secondary-evidence-resolution-53
+          path: build/csv-p0-secondary-evidence-resolution-l40/
+          if-no-files-found: error
