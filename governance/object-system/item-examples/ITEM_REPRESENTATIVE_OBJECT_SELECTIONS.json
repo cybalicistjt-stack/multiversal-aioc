@@ -1,0 +1,28 @@
+{
+  "format": "multiversal-item-representative-object-selections",
+  "version": "0.1.0",
+  "workstream": "8E-009L",
+  "status": "source-selected-not-certified",
+  "sourceBundle": "Item pdfs.zip",
+  "selectionRule": "Each target is a named source object or, where the source defines a singular object class rather than named specimens, an explicitly identified source example. No missing values are invented.",
+  "selections": [
+    {"templateId":"item.weapon.melee","sourceDocument":"Melee Weapons.PDF","sourcePage":3,"sourceObjectName":"Spear","selectionState":"selected-for-extraction","reason":"Named weapon with damage, damage type, weight, cost, thrown range, and versatile damage."},
+    {"templateId":"item.weapon.firearm","sourceDocument":"Magitech Items.PDF","sourcePage":1,"sourceObjectName":"Spellcoil Rifle","selectionState":"selected-for-extraction","reason":"Named rifle with a physical firearm projection and magitech capability overlay; avoids treating the image-only gun list as machine-extracted evidence."},
+    {"templateId":"item.protection.armor","sourceDocument":"Armor & Shields.PDF","sourcePage":3,"sourceObjectName":"Powered Armor","selectionState":"selected-for-extraction","reason":"Named armor with AC, weight, cost, powered exoskeleton behavior, Strength replacement, and resistance."},
+    {"templateId":"item.protection.eva-suit","sourceDocument":"EVA Suits.PDF","sourcePage":3,"sourceObjectName":"EVA Suit with Oxygen Recycling module","selectionState":"selected-for-extraction","reason":"The source defines the EVA suit framework and a named life-support module; the representative object must preserve framework fields and module provenance separately."},
+    {"templateId":"item.storage.typed-container","sourceDocument":"Items 1.PDF","sourcePage":2,"sourceObjectName":"Bag of Holding","selectionState":"selected-for-extraction","reason":"Named extra-dimensional storage object with typed capacity and failure/restriction implications."},
+    {"templateId":"item.consumable.effect-delivery","sourceDocument":"Items 1.PDF","sourcePage":5,"sourceObjectName":"Potion of Healing","selectionState":"selected-for-extraction","reason":"Named potion suitable for activation, target, healing effect, dose consumption, and economy extraction."},
+    {"templateId":"item.device.computer","sourceDocument":"Computers 2-7-25.PDF","sourcePage":13,"sourceObjectName":"Explorer’s Data Analysis Computer (SR 2)","selectionState":"selected-for-extraction","reason":"Named computer with explicit system rating and task-focused behavior."},
+    {"templateId":"item.magic.implement","sourceDocument":"Magic charge holders.PDF","sourcePage":1,"sourceObjectName":"Wand of Firebolts","selectionState":"selected-for-extraction","reason":"Named charged wand with explicit attack effect and charge behavior context."},
+    {"templateId":"item.living.sentient-companion","sourceDocument":"Living Spellbooks.PDF","sourcePage":1,"sourceObjectName":"Living Spellbook representative","selectionState":"selected-class-example","reason":"The source defines Living Spellbooks as a singular complete companion-item class rather than providing separately named specimens; extraction must retain that limitation."},
+    {"templateId":"item.living.symbiote","sourceDocument":"Symbiotes 11-9-24.PDF","sourcePage":8,"sourceObjectName":"Regenera (Healing Symbiote)","selectionState":"selected-for-extraction","reason":"Named symbiote with needs, base ability, evolution paths, synergy abilities, and conflict mechanics."},
+    {"templateId":"item.material.crafting-resource","sourceDocument":"Materials.PDF","sourcePage":8,"sourceObjectName":"Mithril","selectionState":"selected-for-extraction","reason":"Named material with hardness, durability, weight, crafting difficulty, magical conduction, and a source example in the Mithril Longsword."}
+  ],
+  "knownLimitations": [
+    "The Guns 11-8-24.PDF named-weapon list is image-only in the available text extraction; no firearm values are claimed from that list without page-image review.",
+    "The Living Spellbooks source supplies a detailed class framework but no separately named specimen in the extracted text.",
+    "An EVA Suit representative requires composition of the source framework and explicitly identified modules; module-derived fields must not be represented as universal suit defaults.",
+    "Selection does not mean complete, runtime-ready, promotion-ready, or owner-approved."
+  ],
+  "nextAction": "Extract exact field values and field-level provenance for each selected object, preserving unresolved values and source terminology."
+}
