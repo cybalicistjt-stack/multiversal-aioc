@@ -1,0 +1,18 @@
+name: Validate CSV Pilot Conversion
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/item-examples/CSV_PILOT_CONVERSION_OBJECTS.json'
+      - 'scripts/validate-csv-pilot-conversion.py'
+      - '.github/workflows/validate-csv-pilot-conversion.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-csv-pilot-conversion.py

@@ -1,0 +1,88 @@
+{
+  "format": "multiversal-csv-pilot-conversion-objects",
+  "version": "0.1.0",
+  "workstream": "8E-009L8",
+  "status": "staged-pilot",
+  "sourceSelections": "governance/object-system/item-examples/CSV_REPRESENTATIVE_OBJECT_SELECTIONS.json",
+  "rules": {
+    "preserveSourceClaims": true,
+    "noSilentDefaults": true,
+    "noCanonicalIds": true,
+    "unverifiedInferencesRemainUnresolved": true,
+    "promotionRequiresOwnerApproval": true
+  },
+  "objects": [
+    {
+      "stagingId": "mvstg:expanded-melee-weapons-all-genres:2",
+      "templateId": "item.weapon.melee",
+      "identity": {"displayName": "Longsword", "sourceName": "Longsword", "canonicalId": null},
+      "physicalProperties": {"weight": {"value": 3, "unit": "lb", "evidence": "deterministic-normalization"}},
+      "economy": {"cost": {"value": 150, "currency": "credits", "evidence": "deterministic-normalization", "verification": "currency-context-required"}},
+      "weaponProfile": {"category": "Sword", "damage": {"dice": "1d8", "type": "Slashing"}, "reachOrRange": "Melee"},
+      "provenance": {"dataset": "expanded_melee_weapons_all_genres.csv", "rowNumber": 2, "originClaim": "PDF item 1"},
+      "unresolvedFields": ["sourceDocument", "sourcePage", "properties", "proficiency"],
+      "validationState": "staged-with-unresolved-fields"
+    },
+    {
+      "stagingId": "mvstg:expanded-ranged-weapons-catalog:2",
+      "templateId": "item.weapon.ranged",
+      "identity": {"displayName": "Shortbow", "sourceName": "Shortbow", "canonicalId": null},
+      "weaponProfile": {"category": "Bow", "damage": {"dice": "1d6", "type": "Piercing"}, "range": {"normal": 80, "long": 320, "unit": "ft"}},
+      "resource": {"capacity": {"value": 1, "unit": "arrow"}, "resourceType": "Arrow"},
+      "provenance": {"dataset": "expanded_ranged_weapons_catalog.csv", "rowNumber": 2},
+      "unresolvedFields": ["sourceDocument", "sourcePage", "ammunitionCompatibility", "reloadAction"],
+      "validationState": "staged-with-unresolved-fields"
+    },
+    {
+      "stagingId": "mvstg:expanded-items-all-genres:2",
+      "templateId": "item.storage.typed-container",
+      "identity": {"displayName": "Backpack", "sourceName": "Backpack", "canonicalId": null},
+      "typedStorage": {"storedResourceType": "weight", "capacityValue": 30, "capacityUnit": "lb", "accessMethod": "ordinary-container"},
+      "activationTargeting": {"activation": "Passive"},
+      "provenance": {"dataset": "expanded_items_all_genres.csv", "rowNumber": 2, "originClaim": "PDF — Basic Supplies; incomplete fields completed by best judgment", "inferenceWarning": true},
+      "unresolvedFields": ["sourceDocument", "sourcePage", "emptyWeight", "acquisition", "bestJudgmentClaims"],
+      "validationState": "staged-inference-quarantine"
+    },
+    {
+      "stagingId": "mvstg:expanded-eva-suits-and-modules-all-genres:2",
+      "templateId": "item.modification.module",
+      "identity": {"displayName": "Basic Insulation Layer", "sourceName": "Basic Insulation Layer", "canonicalId": null},
+      "moduleProfile": {"moduleFamily": "EVA Module", "subtype": "Thermal Regulation module", "primaryEffect": "Grants resistance to cold damage (+2 to Fortitude saves vs. cold-based environmental hazards).", "compatibilityClaim": "Any modular EVA suit with a matching hardpoint and power bus", "intendedEnvironment": "Extreme heat, extreme cold, and vacuum thermal cycling"},
+      "provenance": {"dataset": "expanded_eva_suits_and_modules_all_genres.csv", "rowNumber": 2, "originClaim": "Extracted from EVA Suits(2).PDF - Thermal Regulation Modules; weight, value, slot use, power, and installation rules inferred", "inferenceWarning": true},
+      "unresolvedFields": ["sourcePage", "slotCost", "powerRequirement", "installationRules", "weight", "cost"],
+      "validationState": "staged-inference-quarantine"
+    },
+    {
+      "stagingId": "mvstg:expanded-computers-all-genres:CMP-0001",
+      "templateId": "item.modification.module",
+      "identity": {"displayName": "Basic CPU", "sourceName": "Basic CPU", "sourceStableId": "CMP-0001", "canonicalId": null},
+      "moduleProfile": {"moduleFamily": "Computer Component", "subtype": "CPU", "processingPower": 2, "memoryRating": 1, "securityRating": 1},
+      "provenance": {"dataset": "expanded_computers_all_genres.csv", "rowNumber": 2, "sourceDocument": "Computers 2-7-25(3).PDF", "sourceSection": "9.1 Core Computer Components - Processing"},
+      "unresolvedFields": ["componentVsCompleteComputerRouting", "hostCompatibility", "slotRequirement", "powerRequirement"],
+      "validationState": "staged-with-unresolved-fields"
+    },
+    {
+      "stagingId": "mvstg:expanded-living-spellbooks-and-magic-charge-holders-all-genres:LS-S-001",
+      "templateId": "item.living.sentient-companion",
+      "linkedTemplates": ["item.magic.implement", "item.storage.typed-container"],
+      "identity": {"displayName": "Living Spellbook (Base Chassis)", "sourceName": "Living Spellbook (Base Chassis)", "sourceStableId": "LS-S-001", "canonicalId": null},
+      "sentience": {"summary": "Emergent personality at level 1; full telepathy at level 18; independent agency at level 20"},
+      "spellImplement": {"primaryEffect": "Stores spells and casts a stored spell when instructed by the bonded caster"},
+      "resource": {"usageClaim": "Uses the caster's spell slots unless a feature says otherwise; Emergency Shield once per long rest"},
+      "provenance": {"dataset": "expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv", "rowNumber": 2, "sourceDocument": "Living Spellbooks(2).PDF", "sourceSection": "Basic Mechanics; Bonding; Spell Storage; Leveling; Combat; Damage and Repair"},
+      "unresolvedFields": ["facetBoundaries", "independentActionAuthority", "levelSpecificFieldProvenance"],
+      "validationState": "staged-faceted-object"
+    },
+    {
+      "stagingId": "mvstg:expanded-symbiotes-and-cybernetics-all-genres:2",
+      "templateId": "item.living.symbiote",
+      "identity": {"displayName": "Regenera", "sourceName": "Regenera", "canonicalId": null},
+      "symbioteProfile": {"family": "Healing and Regeneration", "subtype": "Healing Symbiote", "primaryEffect": "Regenerates 1d4 HP per turn at all times.", "hostRequirementClaim": "Willing living host with a functioning metabolism; Constitution 12+ recommended"},
+      "provenance": {"dataset": "expanded_symbiotes_and_cybernetics_all_genres.csv", "rowNumber": 2, "sourceDocument": "Symbiotes 11-9-24(3).PDF", "originClaim": "Extracted from Symbiotes 11-9-24(3).PDF; missing cost, mass, activation, and market details completed by best judgment", "inferenceWarning": true},
+      "unresolvedFields": ["sourcePage", "hostRequirementProvenance", "activation", "conflictRules", "cost", "mass", "marketDetails", "bestJudgmentClaims"],
+      "validationState": "staged-inference-quarantine"
+    }
+  ],
+  "pilotConclusion": "Seven selected rows were converted into governed staging objects. No canonical IDs were assigned, no inferred claim was certified, and no object is promotion-ready.",
+  "promotionBoundary": "Pilot objects remain noncanonical until PDF verification, field-level provenance closure, applicable template validation, identity reconciliation, and owner approval are complete."
+}
