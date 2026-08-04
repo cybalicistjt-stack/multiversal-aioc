@@ -1,0 +1,28 @@
+{
+  "format": "multiversal-csv-source-document-verification-plan-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L30",
+  "status": "authorized-planning",
+  "sourceRegistry": "governance/object-system/csv-intake/CSV_FULL_DOMAIN_IDENTITY_RECONCILIATION.json",
+  "expectedDatasets": 20,
+  "expectedRows": 19199,
+  "rules": {
+    "csvRemainsPrimaryStructuredSource": true,
+    "pdfUsedForVerificationAmbiguityImagesAndMissingFields": true,
+    "sourceDocumentClaimsPreserved": true,
+    "blankSourceClaimsRemainUnresolved": true,
+    "relationshipBlockedRowsPrioritized": true,
+    "routingBlockedRowsPrioritized": true,
+    "identityConflictClustersPrioritized": true,
+    "canonicalIdsForbidden": true,
+    "promotionForbidden": true
+  },
+  "priorityOrder": [
+    "P0-relationship-or-routing-blocker",
+    "P1-identity-conflict-or-missing-source",
+    "P2-field-provenance-and-domain-validation",
+    "P3-nonblocking-fidelity-review"
+  ],
+  "outputDirectory": "build/csv-source-document-verification-plan-l30",
+  "nextBoundary": "Execute bounded source-document verification batches in priority order; no record may be promoted solely from this plan."
+}
