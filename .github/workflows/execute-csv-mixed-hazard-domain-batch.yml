@@ -1,0 +1,30 @@
+name: Execute CSV Mixed Hazard Domain Batch
+
+on:
+  pull_request:
+    paths:
+      - 'Csv.zip'
+      - 'governance/object-system/csv-intake/CSV_MIXED_HAZARD_DOMAIN_BATCH_CONTRACT.json'
+      - 'scripts/convert-csv-mixed-hazard-domain-batch.py'
+      - 'scripts/validate-csv-mixed-hazard-domain-batch.py'
+      - '.github/workflows/execute-csv-mixed-hazard-domain-batch.yml'
+  workflow_dispatch:
+
+jobs:
+  execute-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Convert mixed and hazard batch
+        run: python scripts/convert-csv-mixed-hazard-domain-batch.py
+      - name: Validate mixed and hazard batch
+        run: python scripts/validate-csv-mixed-hazard-domain-batch.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-mixed-hazard-domain-batch-2981
+          path: build/csv-domain-batch-mixed-hazard-l21/
+          if-no-files-found: error
+          retention-days: 30

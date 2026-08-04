@@ -1,0 +1,15 @@
+{
+  "format": "multiversal-csv-domain-batch-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L21",
+  "status": "authorized-staging-conversion",
+  "sourceRegistry": "governance/object-system/csv-intake/CSV_REMAINING_MAPPING_CONTRACT_REGISTRY.json",
+  "datasets": [
+    {"file":"expanded_bases_facilities_materials_and_homesteads_all_genres.csv","rows":1080,"domain":"mixed","identityColumn":"Item"},
+    {"file":"expanded_hazards_and_traps_all_genres.csv","rows":1901,"domain":"hazards","identityColumn":"Catalog_ID"}
+  ],
+  "expectedRows": 2981,
+  "rules": {"preserveRawSource":true,"preserveUnmappedColumns":true,"classificationEvidence":"inferred-classification","crossDomainCoercionForbidden":true,"noSilentDefaults":true,"canonicalIdsForbidden":true,"promotionForbidden":true},
+  "outputDirectory": "build/csv-domain-batch-mixed-hazard-l21",
+  "nextBoundary": "Outputs remain noncanonical until source verification, identity reconciliation, domain validation, and owner approval."
+}
