@@ -1,0 +1,29 @@
+name: Validate Content Library Staging Import
+
+on:
+  pull_request:
+    paths:
+      - 'content-library.html'
+      - 'content-library-collections.js'
+      - 'content-library-collections.css'
+      - 'recovery-import-worker.js'
+      - 'tests/validate-content-library-staging.mjs'
+      - '.github/workflows/test-content-library-staging.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.18.0'
+      - name: Validate JavaScript syntax
+        run: |
+          node --check content-library-collections.js
+          node --check recovery-import-worker.js
+      - name: Validate staging collection contract
+        run: node tests/validate-content-library-staging.mjs
