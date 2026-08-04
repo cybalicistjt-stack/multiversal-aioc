@@ -1,0 +1,25 @@
+{
+  "format": "multiversal-item-representative-object-plan",
+  "version": "0.1.0",
+  "workstream": "8E-009L",
+  "status": "source-selection-required",
+  "templateRegistry": "governance/object-system/item-templates/ITEM_TEMPLATE_REGISTRY.json",
+  "validatorRegistry": "governance/object-system/item-validators/ITEM_VALIDATOR_REGISTRY.json",
+  "rule": "A representative object must be reconstructed from named source evidence. Missing source values remain unresolved; they are not invented to make an object appear complete.",
+  "requiredEvidencePerObject": ["templateId","sourceDocument","sourcePageOrSection","sourceObjectName","fieldProvenanceMap","unresolvedFieldList","validatorResult","registryFingerprint"],
+  "selectionCriteria": ["named object rather than category-only prose","broad parameter coverage","clear source location","minimal unresolved contradictions","representative runtime behavior","no silent normalization of units or terminology"],
+  "plannedExamples": [
+    {"templateId":"item.weapon.melee","preferredSource":"Melee Weapons.PDF","selectionState":"pending-exact-source-extraction"},
+    {"templateId":"item.weapon.firearm","preferredSource":"Guns 11-8-24.PDF","selectionState":"pending-exact-source-extraction"},
+    {"templateId":"item.protection.armor","preferredSource":"Armor & Shields.PDF","selectionState":"pending-exact-source-extraction"},
+    {"templateId":"item.protection.eva-suit","preferredSource":"EVA Suits.PDF","selectionState":"pending-exact-source-extraction"},
+    {"templateId":"item.storage.typed-container","preferredSource":"Items 1.PDF or Magic charge holders.PDF","selectionState":"pending-exact-source-extraction"},
+    {"templateId":"item.consumable.effect-delivery","preferredSource":"Items 1.PDF","selectionState":"pending-exact-source-extraction"},
+    {"templateId":"item.device.computer","preferredSource":"Computers 2-7-25.PDF","selectionState":"pending-exact-source-extraction"},
+    {"templateId":"item.magic.implement","preferredSource":"Magic charge holders.PDF","selectionState":"pending-exact-source-extraction"},
+    {"templateId":"item.living.sentient-companion","preferredSource":"Living Spellbooks.PDF","selectionState":"pending-exact-source-extraction"},
+    {"templateId":"item.living.symbiote","preferredSource":"Symbiotes 11-9-24.PDF","selectionState":"pending-exact-source-extraction"},
+    {"templateId":"item.material.crafting-resource","preferredSource":"Materials.PDF","selectionState":"pending-exact-source-extraction"}
+  ],
+  "promotionBoundary": "No planned example is certified, complete, runtime-ready, or promotion-ready until exact source extraction, field-level provenance, deterministic validation, staging behavior, and owner approval are recorded."
+}

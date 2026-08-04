@@ -1,0 +1,39 @@
+{
+  "format": "multiversal-item-design-studio-form-registry",
+  "version": "0.1.0",
+  "workstream": "8E-009K",
+  "status": "governed-draft",
+  "templateRegistry": "governance/object-system/item-templates/ITEM_TEMPLATE_REGISTRY.json",
+  "validatorRegistry": "governance/object-system/item-validators/ITEM_VALIDATOR_REGISTRY.json",
+  "globalBehavior": {
+    "sourceFirst": true,
+    "fieldProvenanceVisible": true,
+    "unsupportedFieldsHiddenByDefault": true,
+    "unresolvedValuesNeverDefaulted": true,
+    "conditionalSectionsDrivenByModules": true,
+    "completionScoreVisible": true,
+    "blockingAmbiguitiesVisible": true,
+    "ownerApprovalCannotBeImplied": true
+  },
+  "sharedSections": [
+    {"id":"identity","label":"Identity","fields":["stableId","displayName","templateId","subtypes","description","tags","lifecycleStage"]},
+    {"id":"physical","label":"Physical Form","fields":["form","dimensions","weight","materials","durability","condition"]},
+    {"id":"economy","label":"Economy and Acquisition","fields":["cost","currency","rarity","availability","legality","acquisition"]},
+    {"id":"provenance","label":"Sources and Provenance","fields":["sourceDocuments","sourceLocations","fieldProvenance","mappingEvidence","unresolvedAmbiguities"]},
+    {"id":"governance","label":"Validation and Governance","fields":["completionScore","validationResults","blockingAmbiguities","ownerReviewState","registryFingerprint"]}
+  ],
+  "forms": [
+    {"templateId":"item.weapon.melee","sections":["identity","physical","Combat Profile","Properties and Actions","Power and Activation","Materials and Modifications","economy","provenance","governance"],"conditionalTriggers":{"thrown":["normalRange","longRange"],"versatile":["versatileDamage"],"powered":["powerEnergy"],"magitech":["magitechDiscipline"]}},
+    {"templateId":"item.weapon.firearm","sections":["identity","physical","Ballistics","Ammunition and Capacity","Fire Modes","Reload and Failure","Modifications","economy","provenance","governance"],"conditionalTriggers":{"burst-fire":["burstCount"],"rapid-fire":["areaPattern"],"scatter-shot":["areaPattern"],"explosive-support":["explosiveAmmunitionCompatibility"]}},
+    {"templateId":"item.protection.armor","sections":["identity","physical","Armor Formula","Requirements and Proficiency","Protection","Don and Doff","Power and Modules","Materials and Maintenance","economy","provenance","governance"],"conditionalTriggers":{"dexterity-contribution":["maximumDexterityContribution"],"powered":["powerEnergy"],"protection-pool":["depletionRule","recoveryRule"]}},
+    {"templateId":"item.protection.eva-suit","sections":["identity","physical","Armor and Mobility","Life Support","Environmental Protection","HUD and Sensors","Power","Hardpoints and Modules","Emergency Behavior","economy","provenance","governance"],"conditionalTriggers":{"thrusters":["powerConsumption","zeroGravityMovement"],"sealed":["decompressionBehavior"],"modules":["hardpoints","compatibility"]}},
+    {"templateId":"item.storage.typed-container","sections":["identity","physical","Stored Resource","Capacity","Access and Restrictions","Failure Behavior","Power or Magic","economy","provenance","governance"],"conditionalTriggers":{"storedResourceType":["capacityUnit","resourceSpecificFailureBehavior"]}},
+    {"templateId":"item.consumable.effect-delivery","sections":["identity","physical","Delivery","Target and Area","Effect and Duration","Checks and Stacking","Doses and Consumption","Crafting","Misuse","economy","provenance","governance"],"conditionalTriggers":{"deliveryRoute":["applicationMethod"],"area-effect":["areaGeometry"],"multiple-doses":["doseCount","doseConsumptionRule"]}},
+    {"templateId":"item.device.computer","sections":["identity","physical","Hardware","Processing and Memory","Security","Power","Ports and Expansion","Programs","Networking","Automation and AI","economy","provenance","governance"],"conditionalTriggers":{"programs":["memoryFootprint","requirements","permissions"],"ai-functions":["autonomyBoundary","permissionBoundary"],"expansion":["slotType","slotCost"]}},
+    {"templateId":"item.magic.implement","sections":["identity","physical","Implement Type","Spells","Activation","Charges or Consumption","Recharge and Failure","Attunement and Gates","economy","provenance","governance"],"conditionalTriggers":{"charged":["chargeCapacity","spendingRule","rechargeRule","zeroChargeBehavior"],"consumed":["consumptionResult"],"spell-storage":["spellCapacity","captureMethod","releaseMethod"]}},
+    {"templateId":"item.living.sentient-companion","sections":["identity","physical","Companion Statistics","Personality and Goals","Communication","Bonding and Relationship","Autonomy and Actions","Stored Spells or Capabilities","Progression","Repair and Destruction","provenance","governance"],"conditionalTriggers":{"independent-actions":["actionList","authorityBoundary"],"progression":["levels","milestones","unlocks"]}},
+    {"templateId":"item.living.symbiote","sections":["identity","physical","Origin and Host Compatibility","Attachment and Detachment","Needs","Benefits and Drawbacks","Conflict and Influence","Relationship","Synergy and Evolution","Parasitic State and Transformation","provenance","governance"],"conditionalTriggers":{"parasitic":["parasiticState","hostTransformation"],"fusion":["fusionRequirements","fusionOutcome"],"evolution":["milestones","evolutionPaths"]}},
+    {"templateId":"item.material.crafting-resource","sections":["identity","physical","Material Classification","Crafting Properties","Magical Conduction","Tools and Difficulty","Finished-Item Modifiers","Repair and Consumption","economy","provenance","governance"],"conditionalTriggers":{"fuel":["energyYield","depletionRule"],"catalyst":["supportedProcesses","consumptionRule"],"finished-item-modifier":["modifierTarget","modifierValue"]}}
+  ],
+  "boundary": "This registry describes generated forms only. It does not publish UI, fill unsupported values, validate source completeness by itself, or authorize conversion or promotion."
+}
