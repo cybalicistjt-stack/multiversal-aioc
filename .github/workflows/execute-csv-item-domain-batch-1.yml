@@ -1,0 +1,30 @@
+name: Execute CSV Item Domain Batch 1
+
+on:
+  pull_request:
+    paths:
+      - 'Csv.zip'
+      - 'governance/object-system/csv-intake/CSV_ITEM_DOMAIN_BATCH_1_CONTRACT.json'
+      - 'scripts/convert-csv-item-domain-batch-1.py'
+      - 'scripts/validate-csv-item-domain-batch-1.py'
+      - '.github/workflows/execute-csv-item-domain-batch-1.yml'
+  workflow_dispatch:
+
+jobs:
+  execute-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Convert bounded item-domain batch
+        run: python scripts/convert-csv-item-domain-batch-1.py
+      - name: Validate bounded item-domain batch
+        run: python scripts/validate-csv-item-domain-batch-1.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-item-domain-batch-1-568
+          path: build/csv-domain-batch-items-l20/
+          if-no-files-found: error
+          retention-days: 31
