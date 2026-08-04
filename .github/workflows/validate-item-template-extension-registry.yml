@@ -1,0 +1,24 @@
+name: Validate Item Template Extension Registry
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/item-templates/ITEM_TEMPLATE_EXTENSION_REGISTRY.json'
+      - 'scripts/validate-item-template-extension-registry.mjs'
+      - '.github/workflows/validate-item-template-extension-registry.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'governance/object-system/item-templates/ITEM_TEMPLATE_EXTENSION_REGISTRY.json'
+      - 'scripts/validate-item-template-extension-registry.mjs'
+      - '.github/workflows/validate-item-template-extension-registry.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/validate-item-template-extension-registry.mjs
