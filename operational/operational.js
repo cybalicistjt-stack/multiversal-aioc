@@ -5,7 +5,7 @@ const nav=[
   ['Command Center',route('operational/')],
   ['Capability Workbench','#capability-workbench'],
   ['Content Structure',route('content-structure.html')],
-  ['Content Assistant',route('content-assistant.html')],
+  ['Content Assistant',route('content-assistant-v2.html')],
   ['Content Library',route('content-library.html')],
   ['Repository Intelligence',route('diagnostics.html')],
   ['Orchestration',route('feature-modules.html')],
@@ -30,7 +30,7 @@ document.querySelector('#stats').innerHTML=stats.map(([value,label])=>`<div clas
 
 const workbench=[
   ['Content Structure Pipeline','Decide which COS records are standalone, reusable, parent components, variants, duplicates, or obsolete.',route('content-structure.html')],
-  ['Content Completion Assistant','Guided COS-to-game-ready queue with plain-language next actions.',route('content-assistant.html')],
+  ['Content Completion Assistant','Guided COS-to-game-ready queue with plain-language next actions.',route('content-assistant-v2.html')],
   ['Content Library','Canonical game objects, relationships, assets, intelligence, and release pipeline.',route('content-library.html')],
   ['Development OS','Unified development workspace and project-control surface.',route('development-os.html')],
   ['AIOC Core','Core operating and data-management surface.',route('aioc-core.html')],
@@ -50,7 +50,7 @@ const modules=[
   ['Orchestration','Certified queueing, dispatch, approvals, and intervention controls.',route('feature-modules.html')],
   ['Developer Workbench','Change planning, review, validation, execution, and handoff.',route('development-os.html')],
   ['Content Structure Pipeline','Structural triage before authoring prevents over-fragmented or duplicate game objects.',route('content-structure.html')],
-  ['Content Completion Assistant','Guided prioritization from canonical source through game-ready release gates.',route('content-assistant.html')],
+  ['Content Completion Assistant','Guided prioritization from canonical source through game-ready release gates.',route('content-assistant-v2.html')],
   ['Content Library','Canonical object exploration, relationships, assets, and pipeline management.',route('content-library.html')],
   ['Content Studio Services','Authoring, provenance, pack assembly, installation, and release.',route('studio.html')],
   ['Testing & Simulation','Scenario harnesses, balance analysis, digital twin, and regression mining.',route('testing-suite.html')],
