@@ -1,0 +1,21 @@
+{
+  "format": "multiversal-p0-secondary-evidence-resolution-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L40",
+  "dataset": "expanded_mecha_and_components_all_genres.csv",
+  "sourcePath": "Legacy pdfs/Vehicles/Mecha 11-7-24.PDF",
+  "inputQueue": "governance/object-system/csv-intake/P0_LOCATOR_DISAMBIGUATION_QUEUE.json",
+  "pageTextIndex": "governance/object-system/csv-intake/P0_MECHA_PAGE_TEXT_INDEX.json",
+  "expectedRows": 53,
+  "outputDirectory": "build/csv-p0-secondary-evidence-resolution-l40",
+  "rules": {
+    "secondaryEvidenceMustComeFromSourceRow": true,
+    "uniqueBestPageRequired": true,
+    "minimumIndependentExactSupports": 2,
+    "rulesFrameworkSuffixMayBeUsedAsGovernedAlias": true,
+    "unresolvedRowsRemainQuarantined": true,
+    "pageCitationMustReferenceGovernedSourcePath": true,
+    "canonicalIdsForbidden": true,
+    "promotionForbidden": true
+  }
+}
