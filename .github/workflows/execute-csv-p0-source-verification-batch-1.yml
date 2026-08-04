@@ -1,0 +1,28 @@
+name: Execute CSV P0 Source Verification Batch 1
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/CSV_P0_SOURCE_VERIFICATION_BATCH_1_CONTRACT.json'
+      - 'scripts/execute-csv-p0-source-verification-batch-1.py'
+      - 'scripts/validate-csv-p0-source-verification-batch-1.py'
+      - '.github/workflows/execute-csv-p0-source-verification-batch-1.yml'
+  workflow_dispatch:
+
+jobs:
+  execute-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Execute bounded P0 source verification
+        run: python scripts/execute-csv-p0-source-verification-batch-1.py
+      - name: Validate bounded P0 source verification
+        run: python scripts/validate-csv-p0-source-verification-batch-1.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-p0-source-verification-batch-1-5508
+          path: build/csv-p0-source-verification-batch-1-l31/
+          retention-days: 30
