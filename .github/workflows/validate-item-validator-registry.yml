@@ -1,0 +1,19 @@
+name: Validate Item Validator Registry
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/item-validators/**'
+      - 'governance/object-system/item-templates/**'
+      - 'scripts/validate-item-validator-registry.mjs'
+      - '.github/workflows/validate-item-validator-registry.yml'
+
+jobs:
+  validate-item-validator-registry:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/validate-item-validator-registry.mjs
