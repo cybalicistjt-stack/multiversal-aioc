@@ -1,0 +1,28 @@
+{
+  "format": "multiversal-csv-full-domain-identity-reconciliation",
+  "version": "0.1.0",
+  "workstream": "8E-009L14",
+  "status": "governed-draft",
+  "scope": {"datasetCount": 20, "rowCount": 19199, "domains": ["items", "mixed", "hazards", "vehicles", "spells", "abilities"]},
+  "rules": {
+    "sourceIdsRemainNamespaced": true,
+    "normalizedNamesAreComparisonSignalsOnly": true,
+    "crossDomainMergesProhibited": true,
+    "variantsRemainSeparate": true,
+    "conflictingClaimsArePreserved": true,
+    "canonicalIdsAssigned": false,
+    "ownerApprovalRequiredForPromotion": true
+  },
+  "identityGroups": [
+    {"groupId":"item-weapons-ammunition-magitech","datasets":["expanded_melee_weapons_all_genres.csv","expanded_ranged_weapons_catalog.csv","weapons_and_ammo.csv","expanded_magitech_items_all_genres.csv"],"identitySignals":["source-id","normalized-name","source-document","origin","record-type","mechanical-signature"],"requiredRouting":"weapon/ammunition/magitech-overlay"},
+    {"groupId":"item-general-computers-eva-living-implants","datasets":["expanded_items_all_genres.csv","expanded_eva_suits_and_modules_all_genres.csv","expanded_computers_all_genres.csv","expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv","expanded_symbiotes_and_cybernetics_all_genres.csv"],"identitySignals":["source-id","normalized-name","source-document","family","record-type","host-or-body-location"],"requiredRouting":"physical-template-before-facet-or-overlay"},
+    {"groupId":"bases-facilities-materials","datasets":["expanded_bases_facilities_materials_and_homesteads_all_genres.csv"],"identitySignals":["normalized-name","source-document","record-type","category","scale-or-form"],"requiredRouting":"material/facility/base/homestead"},
+    {"groupId":"hazards-traps","datasets":["expanded_hazards_and_traps_all_genres.csv"],"identitySignals":["Catalog_ID","Item_Name","Source_PDF","Record_Type","Hazard_or_Trap","mechanical-signature"],"requiredRouting":"hazard/trap/deployable"},
+    {"groupId":"vehicles-mecha-spacecraft-components","datasets":["expanded_land_sea_air_vehicles_all_genres.csv","expanded_mecha_and_components_all_genres.csv","expanded_spacecraft_and_components_all_genres.csv"],"identitySignals":["source-id","normalized-name","source-document","record-type","class","compatible-frame-or-scale"],"requiredRouting":"vehicle/frame/component"},
+    {"groupId":"spells","datasets":["completed_magic_spells_catalog.csv"],"identitySignals":["Spell_ID","Spell_Name","Source_PDF","Source_Subsection","Source_List_Number"],"requiredRouting":"spell-system-reconciliation"},
+    {"groupId":"abilities","datasets":["ability_trees_and_abilities_catalog.csv","magic_arcane_and_faction_ability_trees_catalog.csv","profession_and_crafting_ability_trees_catalog.csv","prestige_environment_and_special_ability_trees_catalog.csv","species_elementalist_and_innate_abilities_catalog.csv"],"identitySignals":["Record_ID","Ability_Name","Tree_ID","Ability_Tree","Source_PDF","Source_Global_Number"],"requiredRouting":"tree/ability/upgrade-record"}
+  ],
+  "decisionStates": ["exact-source-id","probable-same-record","variant","homonym","conflict","unresolved"],
+  "reviewClusterRequiredFields": ["clusterId","domain","members","signals","conflicts","recommendedDisposition","verificationNeeded","status"],
+  "promotionBoundary": "This registry governs identity comparison and review clustering only. It does not merge records, resolve disputed source claims, assign canonical IDs, or authorize promotion."
+}
