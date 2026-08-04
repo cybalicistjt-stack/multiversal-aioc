@@ -1,0 +1,25 @@
+name: Validate P0 Locator Page Match Evidence
+on:
+  pull_request:
+    paths:
+      - "governance/object-system/csv-intake/P0_LOCATOR_PAGE_MATCHING_CONTRACT.json"
+      - "governance/object-system/csv-intake/P0_LOCATOR_PAGE_MATCH_EVIDENCE.json"
+      - "scripts/validate-p0-locator-page-match-evidence.py"
+      - ".github/workflows/validate-p0-locator-page-match-evidence.yml"
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate locator-to-page evidence
+        run: python scripts/validate-p0-locator-page-match-evidence.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-p0-locator-page-match-evidence-107
+          path: |
+            governance/object-system/csv-intake/P0_LOCATOR_PAGE_MATCHING_CONTRACT.json
+            governance/object-system/csv-intake/P0_LOCATOR_PAGE_MATCH_EVIDENCE.json
+          retention-days: 30
