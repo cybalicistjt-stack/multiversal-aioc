@@ -1,0 +1,14 @@
+{
+  "format":"multiversal-csv-batch-staging-contract","version":"0.1.0","workstream":"8E-009L10","status":"authorized-staging-only","archive":"Csv.zip","expectedTotalRows":4821,
+  "datasets":[
+    {"file":"expanded_melee_weapons_all_genres.csv","rows":327,"identityColumn":"Weapon","target":"item.weapon.melee"},
+    {"file":"expanded_ranged_weapons_catalog.csv","rows":230,"identityColumn":"Weapon","target":"classification-gated:ranged/firearm/energy"},
+    {"file":"expanded_items_all_genres.csv","rows":761,"identityColumn":"Item","target":"classification-gated:general-item"},
+    {"file":"expanded_eva_suits_and_modules_all_genres.csv","rows":430,"identityColumn":"Item","target":"classification-gated:eva-suit/module"},
+    {"file":"expanded_computers_all_genres.csv","rows":1000,"identityColumn":"Item_ID","target":"classification-gated:computer/software/module"},
+    {"file":"expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv","rows":1501,"identityColumn":"Catalog_ID","target":"classification-gated:living-spellbook/implement/storage"},
+    {"file":"expanded_symbiotes_and_cybernetics_all_genres.csv","rows":572,"identityColumn":"Item","target":"classification-gated:symbiote/implant/module"}
+  ],
+  "outputRules":{"format":"jsonl","preserveRawRow":true,"assignCanonicalIds":false,"retainUnresolvedManifest":true,"quarantineInferenceSignals":true,"identityReconciliationRequiredBeforeMerge":true,"pdfVerificationRequiredBeforePromotion":true},
+  "promotionBoundary":"Batch output is noncanonical staging data only. It does not authorize source-claim certification, identity merging, canonical IDs, or promotion without owner approval."
+}
