@@ -1,0 +1,19 @@
+name: Validate CSV Intake Audit
+
+on:
+  pull_request:
+    paths:
+      - 'Csv.zip'
+      - 'governance/object-system/csv-intake/**'
+      - 'scripts/validate-csv-intake-audit.py'
+      - '.github/workflows/validate-csv-intake-audit.yml'
+
+jobs:
+  validate-csv-intake-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-csv-intake-audit.py
