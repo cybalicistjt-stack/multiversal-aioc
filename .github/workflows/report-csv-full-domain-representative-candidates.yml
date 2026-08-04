@@ -1,0 +1,18 @@
+name: Report CSV Full-Domain Representative Candidates
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/report-csv-full-domain-representative-candidates.py'
+      - '.github/workflows/report-csv-full-domain-representative-candidates.yml'
+  workflow_dispatch:
+
+jobs:
+  report:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/report-csv-full-domain-representative-candidates.py

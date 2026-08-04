@@ -1,0 +1,33 @@
+{
+  "format": "multiversal-csv-full-domain-representative-selections",
+  "version": "0.1.0",
+  "workstream": "8E-009L15",
+  "status": "selected-for-staging-pilot",
+  "scope": {"datasets": 13, "rowsRepresented": 14378},
+  "selectionMethod": "Highest mapped-field completeness, earliest archive row as tie-breaker, with abstract framework/tree/collection records excluded when concrete records exist.",
+  "selections": [
+    {"dataset":"weapons_and_ammo.csv","rowNumber":17,"sourceIdentity":"Rocket Launcher","domain":"items","reason":"Complete concrete weapon and ammunition-resource example."},
+    {"dataset":"expanded_magitech_items_all_genres.csv","rowNumber":2,"sourceIdentity":"Runeblade","domain":"items","reason":"Complete magitech weapon with physical template and discipline overlay."},
+    {"dataset":"expanded_bases_facilities_materials_and_homesteads_all_genres.csv","rowNumber":2,"sourceIdentity":"Iron","domain":"mixed","reason":"Concrete material record suitable for mixed-file boundary routing."},
+    {"dataset":"expanded_hazards_and_traps_all_genres.csv","rowNumber":18,"sourceIdentity":"HTR-0017","displayName":"Hazard - Quicksand","domain":"hazards","reason":"Concrete source hazard rather than rules framework."},
+    {"dataset":"expanded_land_sea_air_vehicles_all_genres.csv","rowNumber":2,"sourceIdentity":"VEH-0001","displayName":"Civilian Car","domain":"vehicles","reason":"Complete concrete land vehicle."},
+    {"dataset":"expanded_mecha_and_components_all_genres.csv","rowNumber":22,"sourceIdentity":"MCH-0021","displayName":"WarDogs M-88 \"Brutal Warden\"","domain":"vehicles","reason":"Concrete named mecha rather than rules framework."},
+    {"dataset":"expanded_spacecraft_and_components_all_genres.csv","rowNumber":15,"sourceIdentity":"SCF-0014","displayName":"Verta Mk-I Shuttle","domain":"vehicles","reason":"Concrete named spacecraft rather than class framework."},
+    {"dataset":"completed_magic_spells_catalog.csv","rowNumber":2,"sourceIdentity":"SPL-0001","displayName":"Summon Construct","domain":"spells","reason":"Complete spell record with explicit completion provenance."},
+    {"dataset":"ability_trees_and_abilities_catalog.csv","rowNumber":3,"sourceIdentity":"ABLREC-00002","displayName":"Blade Precision","domain":"abilities","reason":"Concrete martial ability rather than tree-level record."},
+    {"dataset":"magic_arcane_and_faction_ability_trees_catalog.csv","rowNumber":3,"sourceIdentity":"ABL5-00002","displayName":"Efficient Crafting","domain":"abilities","reason":"Concrete arcane ability rather than tree-level record."},
+    {"dataset":"profession_and_crafting_ability_trees_catalog.csv","rowNumber":3,"sourceIdentity":"ABL4-00002","displayName":"Basic Ingredient Identification","domain":"abilities","reason":"Concrete profession ability rather than tree-level record."},
+    {"dataset":"prestige_environment_and_special_ability_trees_catalog.csv","rowNumber":3,"sourceIdentity":"ABL3-00002","displayName":"Alchemical Adaptation","domain":"abilities","reason":"Concrete prestige ability rather than tree-level record."},
+    {"dataset":"species_elementalist_and_innate_abilities_catalog.csv","rowNumber":3,"sourceIdentity":"ABLREC-00002","displayName":"Adaptive Mind","domain":"abilities","reason":"Concrete species perk rather than collection record; dataset namespace prevents source-ID collision."}
+  ],
+  "rules": {
+    "stagingOnly": true,
+    "canonicalIdsAllowed": false,
+    "promotionAllowed": false,
+    "rawRowRequired": true,
+    "mappingContractRequired": true,
+    "identityReconciliationRequired": true,
+    "sourceVerificationRequiredBeforePromotion": true
+  },
+  "nextWork": "Generate one governed staging object per selection, validate mapping and provenance, then execute the expanded pilot conversion."
+}
