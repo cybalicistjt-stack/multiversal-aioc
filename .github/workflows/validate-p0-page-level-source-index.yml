@@ -1,0 +1,28 @@
+name: Validate P0 Page-Level Source Index
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/P0_PAGE_LEVEL_SOURCE_INDEX_CONTRACT.json'
+      - 'governance/object-system/csv-intake/P0_PAGE_LEVEL_SOURCE_INDEX.json'
+      - 'scripts/validate-p0-page-level-source-index.py'
+      - '.github/workflows/validate-p0-page-level-source-index.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate page-level source index
+        run: python scripts/validate-p0-page-level-source-index.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: p0-page-level-source-index-5508
+          path: |
+            governance/object-system/csv-intake/P0_PAGE_LEVEL_SOURCE_INDEX_CONTRACT.json
+            governance/object-system/csv-intake/P0_PAGE_LEVEL_SOURCE_INDEX.json
+          retention-days: 30
