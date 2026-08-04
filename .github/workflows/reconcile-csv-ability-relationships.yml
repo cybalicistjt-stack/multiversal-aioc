@@ -1,0 +1,28 @@
+name: Reconcile CSV Ability Relationships
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/CSV_ABILITY_RELATIONSHIP_RECONCILIATION_CONTRACT.json'
+      - 'scripts/reconcile-csv-ability-relationships.py'
+      - 'scripts/validate-csv-ability-relationships.py'
+      - '.github/workflows/reconcile-csv-ability-relationships.yml'
+  workflow_dispatch:
+
+jobs:
+  reconcile-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconcile ability relationships
+        run: python scripts/reconcile-csv-ability-relationships.py
+      - name: Validate reconciliation
+        run: python scripts/validate-csv-ability-relationships.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-ability-relationship-reconciliation-4816
+          path: build/csv-ability-relationship-reconciliation-l27/
+          retention-days: 30
