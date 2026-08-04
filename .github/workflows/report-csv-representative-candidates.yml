@@ -1,0 +1,25 @@
+name: Validate CSV Representative Selections
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/report-csv-representative-candidates.py'
+      - 'scripts/validate-csv-representative-selections.py'
+      - 'governance/object-system/item-examples/CSV_REPRESENTATIVE_OBJECT_SELECTIONS.json'
+      - '.github/workflows/report-csv-representative-candidates.yml'
+  push:
+    paths:
+      - 'scripts/validate-csv-representative-selections.py'
+      - 'governance/object-system/item-examples/CSV_REPRESENTATIVE_OBJECT_SELECTIONS.json'
+      - '.github/workflows/report-csv-representative-candidates.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/report-csv-representative-candidates.py
+      - run: python scripts/validate-csv-representative-selections.py
