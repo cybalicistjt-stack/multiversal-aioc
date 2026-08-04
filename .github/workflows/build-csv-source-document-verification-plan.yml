@@ -1,0 +1,28 @@
+name: Build CSV Source Document Verification Plan
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/CSV_SOURCE_DOCUMENT_VERIFICATION_PLAN_CONTRACT.json'
+      - 'scripts/build-csv-source-document-verification-plan.py'
+      - 'scripts/validate-csv-source-document-verification-plan.py'
+      - '.github/workflows/build-csv-source-document-verification-plan.yml'
+  workflow_dispatch:
+
+jobs:
+  build-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build verification plan
+        run: python scripts/build-csv-source-document-verification-plan.py
+      - name: Validate verification plan
+        run: python scripts/validate-csv-source-document-verification-plan.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-source-document-verification-plan-19199
+          path: build/csv-source-document-verification-plan-l30/
+          retention-days: 30
