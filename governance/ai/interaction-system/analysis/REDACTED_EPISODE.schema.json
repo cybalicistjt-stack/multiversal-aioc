@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/redacted-interaction-episode-1.0.0.schema.json",
+  "title": "Redacted Interaction Episode",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["episode_id", "source_package_sha256", "conversation_id", "message_range", "domain", "trigger_summary", "assistant_behavior_summary", "outcome", "pattern_ids", "severity", "owner_intervention_required", "verbatim_content_included"],
+  "properties": {
+    "episode_id": {"type": "string", "pattern": "^MV-EP-[0-9]{3}$"},
+    "source_package_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "conversation_id": {"type": "string", "pattern": "^conv-[0-9]{3}$"},
+    "message_range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "end"],
+      "properties": {
+        "start": {"type": "integer", "minimum": 1},
+        "end": {"type": "integer", "minimum": 1}
+      }
+    },
+    "domain": {"type": "string", "minLength": 1},
+    "trigger_summary": {"type": "string", "minLength": 1, "maxLength": 500},
+    "assistant_behavior_summary": {"type": "string", "minLength": 1, "maxLength": 500},
+    "outcome": {"type": "string", "minLength": 1},
+    "pattern_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^MV-(FRIC|SUCC)-[A-Z]+-[0-9]{3}$"}
+    },
+    "severity": {"enum": ["low", "medium", "high", "critical"]},
+    "owner_intervention_required": {"type": "boolean"},
+    "verbatim_content_included": {"const": false}
+  }
+}

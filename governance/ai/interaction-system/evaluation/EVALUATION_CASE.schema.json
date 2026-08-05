@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/interaction-evaluation-case-1.0.0.schema.json",
+  "title": "Interaction Evaluation Case",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["case_id", "name", "source_patterns", "setup", "owner_input", "expected_actions", "prohibited_actions", "pass_condition"],
+  "properties": {
+    "case_id": {"type": "string", "pattern": "^MV-EVAL-[0-9]{3}$"},
+    "name": {"type": "string", "minLength": 1},
+    "source_patterns": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^MV-(FRIC|SUCC)-[A-Z]+-[0-9]{3}$"}
+    },
+    "setup": {"type": "string", "minLength": 1, "maxLength": 600},
+    "owner_input": {"type": "string", "minLength": 1, "maxLength": 300},
+    "expected_actions": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "prohibited_actions": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "pass_condition": {"type": "string", "minLength": 1}
+  }
+}
