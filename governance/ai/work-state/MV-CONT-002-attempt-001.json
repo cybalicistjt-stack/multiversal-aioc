@@ -1,22 +1,22 @@
 {
   "schema_version": "1.0.0",
-  "revision": 3,
+  "revision": 4,
   "work_item_id": "MV-CONT-002",
   "attempt_id": "MV-CONT-002-attempt-001",
   "track": "owner-ai-continuity",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "agent/mv-continuity-analysis-taxonomy",
-  "status": "ready_for_review",
+  "status": "completed_verified",
   "started_at": "2026-08-05T22:35:00+00:00",
-  "updated_at": "2026-08-05T22:50:45+00:00",
-  "completed_at": null,
+  "updated_at": "2026-08-05T22:53:40+00:00",
+  "completed_at": "2026-08-05T22:53:40+00:00",
   "base_commit": "8595a3a2796c9eb092ea2c8c9566456d8db616ae",
-  "latest_pushed_commit": "16d23371dec9016f16e0da24c40f3e88c9564854",
-  "expected_remote_head": "16d23371dec9016f16e0da24c40f3e88c9564854",
+  "latest_pushed_commit": "d4dd7522aa24eb056814d9b180ad8cd4ddacaf20",
+  "expected_remote_head": "d4dd7522aa24eb056814d9b180ad8cd4ddacaf20",
   "pull_request": 140,
   "objective": "Create a privacy-reviewed redacted interaction episode timeline, failure/friction taxonomy, successful-pattern catalog, and machine-readable evaluation corpus from the owner-held conversation archive without publishing raw private conversation text.",
-  "last_verified_action": "Hosted CI passed on exact MV-CONT-002 head 16d23371dec9016f16e0da24c40f3e88c9564854, including interaction-audit run 31054220582, continuity run 31054220335, AIOC smoke run 31054223657, P9-06 run 31054220336, and all triggered Development Brain checks.",
-  "active_substep": "Run the final checkpoint-consistency checks, verify PR #140 mergeability, and merge.",
+  "last_verified_action": "MV-CONT-002 PR #140 merged after every triggered hosted check passed on exact head 813cc3dc3031f343bc0d2b2978bf95e309eb5ecf.",
+  "active_substep": null,
   "completed_substeps": [
     "Completed and merged MV-CONT-001 continuity enforcement foundation",
     "Created the dedicated MV-CONT-002 branch",
@@ -29,9 +29,10 @@
     "Added the interaction-audit validator, five regression tests, and dedicated CI",
     "Passed local validation and regression tests",
     "Made continuity regression tests primary-attempt-aware",
-    "Verified all hosted checks on exact PR head 16d23371dec9016f16e0da24c40f3e88c9564854"
+    "Verified all hosted checks on exact PR head 813cc3dc3031f343bc0d2b2978bf95e309eb5ecf",
+    "Merged PR #140 as squash commit d4dd7522aa24eb056814d9b180ad8cd4ddacaf20"
   ],
-  "next_action": "Verify the final hosted consistency run and merge PR #140, then record completed_verified with the actual squash commit and CI evidence in a bounded follow-up change.",
+  "next_action": "Begin MV-CONT-003: map every interaction pattern and evaluation case to the Project Bible, bootstrap, contributor authority, current validators, and remaining enforcement gaps; produce a prioritized control-coverage matrix and implement the highest-value missing controls.",
   "changed_paths": [
     "governance/ai/interaction-system/analysis/",
     "governance/ai/interaction-system/evaluation/",
@@ -50,23 +51,19 @@
     {
       "command": "python tools/interaction_audit.py validate",
       "status": "passed",
-      "evidence": "MV-CONT-002 hosted Validate Interaction Audit run 31054220582 PASS on exact PR head; regression tests 5/5 PASS."
+      "evidence": "MV-CONT-002 final hosted Validate Interaction Audit run 31054316886 PASS on exact PR head; regression tests 5/5 PASS."
     }
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
     {
-      "kind": "merge",
-      "value": "MV-CONT-001 completion record PR #139 squash commit 8595a3a2796c9eb092ea2c8c9566456d8db616ae established the dependency boundary for MV-CONT-002."
-    },
-    {
       "kind": "file",
       "value": "MV-CONT-002 source package reference: Multiversal_Conversation_Continuity_Foundation_v0.1.0.zip sha256:eba9af96055c7a2d7f1bda3823440bc2a7c623ea34a77a6bc5b536d7e3d996a6"
     },
     {
       "kind": "commit",
-      "value": "MV-CONT-002 exact reviewed implementation head 16d23371dec9016f16e0da24c40f3e88c9564854"
+      "value": "MV-CONT-002 exact reviewed implementation head 813cc3dc3031f343bc0d2b2978bf95e309eb5ecf"
     },
     {
       "kind": "pull_request",
@@ -74,12 +71,15 @@
     },
     {
       "kind": "ci_run",
-      "value": "MV-CONT-002 Validate Interaction Audit run 31054220582 PASS; all other triggered checks also passed"
+      "value": "MV-CONT-002 final Validate Interaction Audit run 31054316886 PASS; final continuity run 31054316924 PASS; all other triggered checks passed"
+    },
+    {
+      "kind": "merge",
+      "value": "MV-CONT-002 PR #140 squash commit d4dd7522aa24eb056814d9b180ad8cd4ddacaf20"
     }
   ],
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "notes": [
-    "This checkpoint remains non-complete until PR #140 is merged and its actual squash commit is recorded.",
     "Raw conversation text remains outside the public repository.",
     "Published records are paraphrased, minimized, and stripped of unnecessary personal or sensitive content.",
     "Work and Codex conversations were outside the supplied archive and are not represented.",
