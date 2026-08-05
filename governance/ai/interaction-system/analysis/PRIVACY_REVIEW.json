@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "reviewed_at": "2026-08-05T22:45:00Z",
+  "source_package_sha256": "eba9af96055c7a2d7f1bda3823440bc2a7c623ea34a77a6bc5b536d7e3d996a6",
+  "private_source_counts": {"conversations": 9, "messages": 114},
+  "public_artifact_counts": {"episodes": 27, "taxonomy_patterns": 12, "success_patterns": 10, "evaluation_cases": 15},
+  "checks": {
+    "raw_message_fields_present": false,
+    "source_filenames_present": false,
+    "conversation_titles_present": false,
+    "exact_contiguous_token_overlap": {
+      "minimum_sequence_length_reviewed": 8,
+      "matches_found": 0,
+      "method": "Normalized lowercase alphanumeric token n-gram comparison between every public narrative field and every private source message."
+    }
+  },
+  "review_result": "pass",
+  "limitations": [
+    "An n-gram comparison cannot prove semantic anonymity.",
+    "Conversation IDs and message-index ranges remain for provenance.",
+    "Human review is still required before broader public distribution or model training."
+  ]
+}
