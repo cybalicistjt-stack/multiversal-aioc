@@ -1,0 +1,30 @@
+name: Validate P0 Mecha Field Claims
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/P0_MECHA_FIELD_VALIDATION_CONTRACT.json'
+      - 'governance/object-system/csv-intake/P0_MECHA_VERIFICATION_CONSOLIDATION.json'
+      - 'scripts/validate-p0-mecha-fields.py'
+      - 'scripts/validate-p0-mecha-field-validation-output.py'
+      - 'Csv.zip'
+      - '.github/workflows/validate-p0-mecha-field-validation.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Execute field-level validation
+        run: python scripts/validate-p0-mecha-fields.py
+      - name: Validate retained field evidence
+        run: python scripts/validate-p0-mecha-field-validation-output.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-p0-mecha-field-validation-107
+          path: build/csv-p0-mecha-field-validation-l43/
+          if-no-files-found: error
