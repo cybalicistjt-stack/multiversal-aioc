@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 2,
+  "revision": 3,
   "work_item_id": "MV-CONT-002",
   "attempt_id": "MV-CONT-002-attempt-001",
   "track": "owner-ai-continuity",
@@ -8,15 +8,15 @@
   "branch": "agent/mv-continuity-analysis-taxonomy",
   "status": "ready_for_review",
   "started_at": "2026-08-05T22:35:00+00:00",
-  "updated_at": "2026-08-05T22:47:56+00:00",
+  "updated_at": "2026-08-05T22:50:45+00:00",
   "completed_at": null,
   "base_commit": "8595a3a2796c9eb092ea2c8c9566456d8db616ae",
-  "latest_pushed_commit": "4c98df85ac3bbafb7eeba8e2062a7a308bc0e681",
-  "expected_remote_head": "4c98df85ac3bbafb7eeba8e2062a7a308bc0e681",
-  "pull_request": null,
+  "latest_pushed_commit": "16d23371dec9016f16e0da24c40f3e88c9564854",
+  "expected_remote_head": "16d23371dec9016f16e0da24c40f3e88c9564854",
+  "pull_request": 140,
   "objective": "Create a privacy-reviewed redacted interaction episode timeline, failure/friction taxonomy, successful-pattern catalog, and machine-readable evaluation corpus from the owner-held conversation archive without publishing raw private conversation text.",
-  "last_verified_action": "The complete MV-CONT-002 public artifact tree passed the local audit validator and five negative regression tests; the branch is 16 commits ahead of verified base with no divergence.",
-  "active_substep": "Open the pull request, run hosted privacy and interaction-audit validation, repair any failure, and merge.",
+  "last_verified_action": "Hosted CI passed on exact MV-CONT-002 head 16d23371dec9016f16e0da24c40f3e88c9564854, including interaction-audit run 31054220582, continuity run 31054220335, AIOC smoke run 31054223657, P9-06 run 31054220336, and all triggered Development Brain checks.",
+  "active_substep": "Run the final checkpoint-consistency checks, verify PR #140 mergeability, and merge.",
   "completed_substeps": [
     "Completed and merged MV-CONT-001 continuity enforcement foundation",
     "Created the dedicated MV-CONT-002 branch",
@@ -27,15 +27,18 @@
     "Created 15 machine-readable evaluation cases covering every pattern",
     "Ran an eight-token exact-overlap privacy scan with zero matches",
     "Added the interaction-audit validator, five regression tests, and dedicated CI",
-    "Passed local validation and regression tests"
+    "Passed local validation and regression tests",
+    "Made continuity regression tests primary-attempt-aware",
+    "Verified all hosted checks on exact PR head 16d23371dec9016f16e0da24c40f3e88c9564854"
   ],
-  "next_action": "Open the governed pull request, verify dedicated interaction-audit CI and all repository checks, repair any failure, then merge and record completed_verified in a bounded follow-up change.",
+  "next_action": "Verify the final hosted consistency run and merge PR #140, then record completed_verified with the actual squash commit and CI evidence in a bounded follow-up change.",
   "changed_paths": [
     "governance/ai/interaction-system/analysis/",
     "governance/ai/interaction-system/evaluation/",
     "governance/ai/work-state/MV-CONT-002-attempt-001.json",
     "tools/interaction_audit.py",
     "tests/interaction_audit/",
+    "tests/continuity/test_continuity_state.py",
     ".github/workflows/validate-interaction-audit.yml"
   ],
   "completion_gate": {
@@ -47,7 +50,7 @@
     {
       "command": "python tools/interaction_audit.py validate",
       "status": "passed",
-      "evidence": "Local complete-tree validation PASS; interaction-audit regression tests 5/5 PASS."
+      "evidence": "MV-CONT-002 hosted Validate Interaction Audit run 31054220582 PASS on exact PR head; regression tests 5/5 PASS."
     }
   ],
   "unresolved_failures": [],
@@ -63,11 +66,20 @@
     },
     {
       "kind": "commit",
-      "value": "MV-CONT-002 public audit implementation head 4c98df85ac3bbafb7eeba8e2062a7a308bc0e681"
+      "value": "MV-CONT-002 exact reviewed implementation head 16d23371dec9016f16e0da24c40f3e88c9564854"
+    },
+    {
+      "kind": "pull_request",
+      "value": "MV-CONT-002 PR #140 — Add redacted Multiversal interaction audit and evaluation corpus"
+    },
+    {
+      "kind": "ci_run",
+      "value": "MV-CONT-002 Validate Interaction Audit run 31054220582 PASS; all other triggered checks also passed"
     }
   ],
   "roadmap_projection_pending": true,
   "notes": [
+    "This checkpoint remains non-complete until PR #140 is merged and its actual squash commit is recorded.",
     "Raw conversation text remains outside the public repository.",
     "Published records are paraphrased, minimized, and stripped of unnecessary personal or sensitive content.",
     "Work and Codex conversations were outside the supplied archive and are not represented.",
