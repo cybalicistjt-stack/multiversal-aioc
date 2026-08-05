@@ -1,0 +1,360 @@
+{
+  "schemaVersion": "1.0.0",
+  "programId": "MV-IA-001",
+  "featureId": "MV-IA-F020",
+  "featureVersion": "0.1.0",
+  "status": "implementation-ready-design",
+  "owner": "John Brandon Turner",
+  "defaultDecision": "deny",
+  "visibilityClasses": [
+    {
+      "id": "public-canonical",
+      "description": "Approved public project content, still subject to entitlement and lifecycle rules."
+    },
+    {
+      "id": "campaign-shared",
+      "description": "Content visible to active permitted Campaign participants."
+    },
+    {
+      "id": "participant-restricted",
+      "description": "Content visible only to named participants or roles."
+    },
+    {
+      "id": "character-controller",
+      "description": "Content visible to the current authorized controller set and GM when policy permits."
+    },
+    {
+      "id": "player-private",
+      "description": "Content visible only to the owning Player unless explicitly shared by an approved workflow."
+    },
+    {
+      "id": "gm-only",
+      "description": "Content visible only to active GMs and explicitly delegated Assistant GMs."
+    },
+    {
+      "id": "creator-draft",
+      "description": "Content visible to the author, assigned reviewers, and owner authority."
+    },
+    {
+      "id": "operational-metadata",
+      "description": "Operational evidence available to authorized administrators without protected play content."
+    },
+    {
+      "id": "security-sensitive",
+      "description": "Security and incident data available only to narrowly authorized roles."
+    },
+    {
+      "id": "secret-material",
+      "description": "Credentials, tokens, keys, and equivalent data never sent to ordinary clients or AI."
+    }
+  ],
+  "decisionInputs": [
+    "subjectId",
+    "actorType",
+    "identityAssurance",
+    "serviceActorId",
+    "capabilityId",
+    "resourceType",
+    "resourceId",
+    "scopeType",
+    "scopeId",
+    "campaignMembership",
+    "roleAssignments",
+    "delegations",
+    "characterControl",
+    "ownership",
+    "custody",
+    "fieldClassification",
+    "relationshipClassification",
+    "entitlementDecision",
+    "packInstallationState",
+    "objectLifecycleState",
+    "expectedVersion",
+    "policyVersion",
+    "correlationId",
+    "evaluatedAt"
+  ],
+  "internalReasonCodes": [
+    "ALLOW_POLICY_MATCH",
+    "DENY_DEFAULT",
+    "DENY_UNKNOWN_SUBJECT",
+    "DENY_SESSION_INVALID",
+    "DENY_SCOPE_MISMATCH",
+    "DENY_CAMPAIGN_MEMBERSHIP",
+    "DENY_ROLE_MISSING",
+    "DENY_CAPABILITY_MISSING",
+    "DENY_DELEGATION_EXPIRED",
+    "DENY_CONTROL_MISMATCH",
+    "DENY_OWNERSHIP_MISMATCH",
+    "DENY_FIELD_CLASSIFICATION",
+    "DENY_RELATIONSHIP_CLASSIFICATION",
+    "DENY_ENTITLEMENT",
+    "DENY_PACK_UNAVAILABLE",
+    "DENY_OBJECT_LIFECYCLE",
+    "DENY_STALE_VERSION",
+    "DENY_POLICY_STALE",
+    "DENY_REVOCATION",
+    "DENY_SERVICE_SCOPE",
+    "DENY_SUPPORT_ACCESS",
+    "DENY_EXPORT_SCOPE",
+    "DENY_AI_SCOPE",
+    "DENY_POLICY_UNAVAILABLE",
+    "DENY_INVALID_CURSOR",
+    "DENY_STORAGE_SCOPE"
+  ],
+  "userSafeReasonCodes": [
+    "UNAVAILABLE",
+    "ACCESS_REQUIRED",
+    "CAMPAIGN_ACCESS_ENDED",
+    "ROLE_REQUIRED",
+    "CONTENT_RESTRICTED",
+    "REFRESH_REQUIRED",
+    "REAUTHENTICATION_REQUIRED",
+    "REQUEST_EXPIRED",
+    "OPERATION_NOT_PERMITTED",
+    "SERVICE_TEMPORARILY_UNAVAILABLE"
+  ],
+  "surfaces": [
+    {
+      "surfaceId": "PHI-S001",
+      "name": "Navigation and workspace availability",
+      "capabilities": ["workspace.list", "workspace.open"],
+      "inferenceRisks": ["hidden Campaign existence", "hidden role existence", "unread-count leakage"],
+      "requiredBehavior": "Generate navigation and counts from the authorized set; never rely only on hidden client controls."
+    },
+    {
+      "surfaceId": "PHI-S002",
+      "name": "Universal Object result list",
+      "capabilities": ["object.search", "object.list"],
+      "inferenceRisks": ["object existence", "restricted pack contents", "hidden Campaign objects"],
+      "requiredBehavior": "Filter before ranking, pagination, grouping, and serialization."
+    },
+    {
+      "surfaceId": "PHI-S003",
+      "name": "Search counts and facets",
+      "capabilities": ["object.search", "object.count"],
+      "inferenceRisks": ["hidden type counts", "hidden tag values", "hidden Campaign activity"],
+      "requiredBehavior": "Compute counts and facet values only from the authorized result set."
+    },
+    {
+      "surfaceId": "PHI-S004",
+      "name": "Autocomplete, aliases, and recent searches",
+      "capabilities": ["object.search"],
+      "inferenceRisks": ["hidden names", "legacy aliases", "another user's search history"],
+      "requiredBehavior": "Subject-scope suggestions and aliases; return no protected label for unauthorized candidates."
+    },
+    {
+      "surfaceId": "PHI-S005",
+      "name": "Exact stable-ID and direct URL lookup",
+      "capabilities": ["object.read"],
+      "inferenceRisks": ["object existence", "object type", "lifecycle state"],
+      "requiredBehavior": "Use not-found-or-unavailable response when precise denial would reveal protected existence."
+    },
+    {
+      "surfaceId": "PHI-S006",
+      "name": "Object summary and inspector fields",
+      "capabilities": ["object.read", "object.field.read"],
+      "inferenceRisks": ["GM-only extension", "private field", "restricted mechanic"],
+      "requiredBehavior": "Build server-side field-safe projection; hidden fields never reach client state."
+    },
+    {
+      "surfaceId": "PHI-S007",
+      "name": "Provenance and original-source view",
+      "capabilities": ["object.provenance.read", "source.read"],
+      "inferenceRisks": ["restricted source text", "hidden source coordinate", "unreleased draft"],
+      "requiredBehavior": "Authorize source and provenance separately from object summary access."
+    },
+    {
+      "surfaceId": "PHI-S008",
+      "name": "Relationships and dependency traversal",
+      "capabilities": ["relationship.read", "object.read"],
+      "inferenceRisks": ["hidden endpoint", "hidden edge type", "unrevealed dependency"],
+      "requiredBehavior": "Return an edge only when its classification and required endpoint projections are permitted."
+    },
+    {
+      "surfaceId": "PHI-S009",
+      "name": "Version, variant, conflict, and supersession comparison",
+      "capabilities": ["object.compare"],
+      "inferenceRisks": ["hidden version", "unreleased variant", "private conflict record"],
+      "requiredBehavior": "Authorize each comparison candidate and every displayed field."
+    },
+    {
+      "surfaceId": "PHI-S010",
+      "name": "Object picker and selection receipt",
+      "capabilities": ["object.select", "caller.attach"],
+      "inferenceRisks": ["selection of unauthorized object", "caller-scope mismatch"],
+      "requiredBehavior": "Reauthorize object, caller, field, entitlement, pack state, and current version at selection time."
+    },
+    {
+      "surfaceId": "PHI-S011",
+      "name": "Character sheet and controller data",
+      "capabilities": ["character.read", "character.edit", "character.control"],
+      "inferenceRisks": ["another Player's private data", "unassigned Character", "hidden Condition"],
+      "requiredBehavior": "Separate Campaign membership, Character control, GM authority, and Player-private fields."
+    },
+    {
+      "surfaceId": "PHI-S012",
+      "name": "Player-private notes",
+      "capabilities": ["note.private.read", "note.private.write"],
+      "inferenceRisks": ["private text", "note existence", "author identity"],
+      "requiredBehavior": "Owner-only by default; exclude from GM, Owner/Admin, Campaign export, diagnostics, and AI absent explicit approved policy."
+    },
+    {
+      "surfaceId": "PHI-S013",
+      "name": "GM Scene truth and reveal state",
+      "capabilities": ["scene.gm.read", "visibility.reveal"],
+      "inferenceRisks": ["hidden objective", "trap", "NPC motive", "unrevealed route"],
+      "requiredBehavior": "GM projection and Player projection are separately generated; reveal is an attributable authoritative event."
+    },
+    {
+      "surfaceId": "PHI-S014",
+      "name": "GM preview as Player",
+      "capabilities": ["projection.preview"],
+      "inferenceRisks": ["client-only concealment", "wrong Player context"],
+      "requiredBehavior": "Generate preview through the same server projection contract used for the selected Player."
+    },
+    {
+      "surfaceId": "PHI-S015",
+      "name": "Clues, evidence, hypotheses, and GM truth",
+      "capabilities": ["investigation.read", "investigation.reveal"],
+      "inferenceRisks": ["unrevealed clue", "false lead status", "hypothesis promoted as fact", "GM truth"],
+      "requiredBehavior": "Classify facts, hypotheses, reveals, and GM truth independently and preserve reveal history."
+    },
+    {
+      "surfaceId": "PHI-S016",
+      "name": "Relationship history and hidden motives",
+      "capabilities": ["relationship.state.read", "relationship.history.read"],
+      "inferenceRisks": ["hidden direction", "hidden threshold", "secret motive"],
+      "requiredBehavior": "Filter edge, fields, thresholds, and history events independently."
+    },
+    {
+      "surfaceId": "PHI-S017",
+      "name": "Action proposal and GM approval",
+      "capabilities": ["session.proposal.submit", "session.proposal.review"],
+      "inferenceRisks": ["hidden modifier", "secret target state", "another Player's private context"],
+      "requiredBehavior": "Provide distinct Player and GM proposal projections while retaining one authoritative result."
+    },
+    {
+      "surfaceId": "PHI-S018",
+      "name": "Realtime subscriptions and publication",
+      "capabilities": ["realtime.connect", "realtime.subscribe"],
+      "inferenceRisks": ["topic existence", "presence", "participant list", "hidden event"],
+      "requiredBehavior": "Authorize each subscription and produce recipient-specific server projections."
+    },
+    {
+      "surfaceId": "PHI-S019",
+      "name": "Notifications and queue counts",
+      "capabilities": ["notification.read", "queue.read"],
+      "inferenceRisks": ["hidden sender", "hidden Campaign", "approval existence"],
+      "requiredBehavior": "Filter existence, count, preview, sender, action, and deep link."
+    },
+    {
+      "surfaceId": "PHI-S020",
+      "name": "Activity history and timeline",
+      "capabilities": ["history.read"],
+      "inferenceRisks": ["hidden event", "private actor", "unrevealed result"],
+      "requiredBehavior": "Generate role-safe event projection; do not expose raw append-only events directly."
+    },
+    {
+      "surfaceId": "PHI-S021",
+      "name": "Campaign and user exports",
+      "capabilities": ["export.create", "export.download"],
+      "inferenceRisks": ["private notes", "hidden GM state", "other Campaigns", "restricted content"],
+      "requiredBehavior": "Export from authorized projections; bind artifact to subject, scope, policy version, expiry, and checksum."
+    },
+    {
+      "surfaceId": "PHI-S022",
+      "name": "Backups, restore, and provider exit",
+      "capabilities": ["backup.create", "restore.execute", "provider_exit.export"],
+      "inferenceRisks": ["raw multi-user data", "identity map", "security records"],
+      "requiredBehavior": "Operationally restricted, encrypted, audited, and never exposed through ordinary user-export permissions."
+    },
+    {
+      "surfaceId": "PHI-S023",
+      "name": "Object-storage media and artifact access",
+      "capabilities": ["object_storage.read"],
+      "inferenceRisks": ["unguessable URL reused outside scope", "hidden map", "private attachment"],
+      "requiredBehavior": "Issue scoped, expiring access after authorization; never treat possession of URL as authority."
+    },
+    {
+      "surfaceId": "PHI-S024",
+      "name": "Diagnostics and issue reports",
+      "capabilities": ["diagnostic.read", "issue_report.create"],
+      "inferenceRisks": ["hidden payload in logs", "token exposure", "private text attachment"],
+      "requiredBehavior": "Use privacy-safe identifiers and reason codes; protected content is opt-in and separately governed."
+    },
+    {
+      "surfaceId": "PHI-S025",
+      "name": "AI retrieval and response",
+      "capabilities": ["ai.retrieve", "ai.explain"],
+      "inferenceRisks": ["prompt bypass", "hidden-source citation", "cross-Campaign context"],
+      "requiredBehavior": "Use initiating subject projection plus narrower AI policy; recheck tool actions and output links."
+    },
+    {
+      "surfaceId": "PHI-S026",
+      "name": "Caches and bounded offline snapshots",
+      "capabilities": ["cache.read", "offline_snapshot.read"],
+      "inferenceRisks": ["stale access after revocation", "snapshot copied to another subject", "policy downgrade"],
+      "requiredBehavior": "Bind subject, scope, policy version, entitlement state, issue time, expiry, and digest; no offline authoritative mutation."
+    },
+    {
+      "surfaceId": "PHI-S027",
+      "name": "Role, delegation, control, and ownership mutations",
+      "capabilities": ["role.assign", "delegation.manage", "character.control.transfer", "asset.transfer"],
+      "inferenceRisks": ["self-elevation", "overbroad delegation", "unauthorized transfer"],
+      "requiredBehavior": "Reauthorize at execution, use expected version and idempotency, append event, and invalidate projections."
+    },
+    {
+      "surfaceId": "PHI-S028",
+      "name": "Owner support access",
+      "capabilities": ["support_access.request", "support_access.approve", "support_access.read"],
+      "inferenceRisks": ["blanket administrator access", "purpose drift", "nonexpiring access"],
+      "requiredBehavior": "Require explicit purpose, Campaign, fields, subject, duration, owner approval, attribution, and automatic expiry."
+    }
+  ],
+  "requiredDeniedCases": [
+    "wrong Campaign",
+    "revoked participant",
+    "expired delegation",
+    "Player exact-ID lookup of unrevealed clue",
+    "Player alias lookup of hidden NPC",
+    "Player facet count inference",
+    "Player relationship traversal to hidden endpoint",
+    "Player comparison against hidden version",
+    "Content Creator access to unrelated Campaign",
+    "Assistant GM access outside delegation",
+    "Owner/Admin without Campaign or support-access role",
+    "service actor using another service capability",
+    "AI query requesting hidden motive",
+    "export containing another Player private note",
+    "stale open screen after revocation",
+    "pagination token replayed by another subject",
+    "cached result after policy-version change",
+    "unauthorized realtime subscription",
+    "object-storage URL reused outside scope",
+    "mutation submitted after control transfer"
+  ],
+  "acceptanceCriteria": [
+    "PHI-AC-001",
+    "PHI-AC-002",
+    "PHI-AC-003",
+    "PHI-AC-004",
+    "PHI-AC-005",
+    "PHI-AC-006",
+    "PHI-AC-007",
+    "PHI-AC-008",
+    "PHI-AC-009",
+    "PHI-AC-010",
+    "PHI-AC-011",
+    "PHI-AC-012",
+    "PHI-AC-013",
+    "PHI-AC-014",
+    "PHI-AC-015",
+    "PHI-AC-016",
+    "PHI-AC-017",
+    "PHI-AC-018",
+    "PHI-AC-019",
+    "PHI-AC-020"
+  ],
+  "implementationBoundary": "Design complete. Implementation remains dependency-gated by the active P9-06 sequence and requires provider-neutral identity, persistence, database isolation, backup, restore, provider-exit, realtime, export, AI, and caller integration."
+}

@@ -1,7 +1,7 @@
 # MV-IA-001 — Internal Alpha Feature Design Program
 
 **Document ID:** MV-IA-001  
-**Version:** 0.2.0  
+**Version:** 0.3.0  
 **Status:** ACTIVE — DESIGN PROGRAM  
 **Owner and final authority:** John Brandon Turner  
 **Established:** 2026-08-05
@@ -93,6 +93,24 @@ Complete at design level:
 
 The packet is implementation-ready as a design artifact. Application implementation remains dependency-gated.
 
+### IA-D02-002 — Permissions and Hidden Information
+
+Complete at design level:
+
+- deny-by-default server authorization and field-safe projection contract;
+- Player, GM, Assistant GM, creator, observer, Owner/Admin, service, and AI authority boundaries;
+- ten visibility classes and stable internal/user-safe decision reason codes;
+- safe object results, counts, facets, aliases, exact IDs, provenance, relationships, comparison, selection, realtime, notification, history, export, object-storage, diagnostics, cache, offline, and AI surfaces;
+- explicit Player-private note and Owner/Admin support-access boundaries;
+- service/database agreement, mutation reauthorization, server-generated Player preview, fail-closed behavior, revocation, and cache invalidation;
+- twenty-eight protected-surface records and twenty required denied cases in a machine-readable companion matrix;
+- twenty blocking acceptance criteria;
+- zero-AI and zero-paid-service core authorization requirement;
+- provider-neutral implementation decomposition and dependency holds;
+- expanded CI validation for packets and companion files.
+
+The packet is implementation-ready as a design artifact. Application implementation remains dependency-gated.
+
 ## File map
 
 - `INTERNAL_ALPHA_SCOPE.md` — release boundary and success definition
@@ -107,9 +125,11 @@ The packet is implementation-ready as a design artifact. Application implementat
 - `INTERNAL_ALPHA_DESIGN_BACKLOG.md` — dependency-ordered packet backlog
 - `feature-packets/README.md` — packet index and maturity status
 - `feature-packets/FEATURE_PACKET_TEMPLATE.md` — required design packet format
-- `feature-packets/MV-IA-F002_UNIVERSAL_OBJECT_EXPERIENCE.md` — completed Universal Object Experience design packet
+- `feature-packets/MV-IA-F002_UNIVERSAL_OBJECT_EXPERIENCE.md` — Universal Object Experience design packet
+- `feature-packets/MV-IA-F020_PERMISSIONS_AND_HIDDEN_INFORMATION.md` — Permissions and Hidden Information design packet
+- `feature-packets/MV-IA-F020_PERMISSION_SURFACE_MATRIX.json` — protected surfaces, classifications, reason codes, and denied cases
 - `validate_internal_alpha_design.py` — program and registry validator
-- `validate_feature_packets.py` — implementation-ready packet validator
+- `validate_feature_packets.py` — implementation-ready packet and companion-file validator
 - `.github/workflows/internal-alpha-design-validation.yml` — automated validation
 
 ## Execution boundary
@@ -128,6 +148,6 @@ No document in this directory authorizes:
 
 ## Current next design action
 
-**IA-D02-002 — Design MV-IA-F020, Permissions and Hidden Information.**
+**IA-D02-003 — Design MV-IA-F003, Identity, Dashboard, and Workspace Selection.**
 
-This packet is next because the Universal Object Experience identifies the full retrieval and inference surface that permissions must protect: object existence, fields, search results, aliases, facets, counts, exact IDs, provenance, source views, relationships, comparison candidates, cached state, selection receipts, exports, realtime updates, and AI retrieval.
+This packet is next because the object and permission contracts now define what the entry experience must resolve and present: stable subject identity, invitations, Campaign memberships, scoped roles, active Character context, recent work, drafts, approvals, notifications, support states, and only the workspaces and actions the current subject may use.
