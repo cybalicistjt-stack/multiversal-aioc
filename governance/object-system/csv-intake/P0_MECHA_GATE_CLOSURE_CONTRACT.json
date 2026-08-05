@@ -1,0 +1,30 @@
+{
+  "format": "multiversal-p0-mecha-gate-closure-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L50",
+  "dataset": "expanded_mecha_and_components_all_genres.csv",
+  "sourceRows": [[2,21],[52,138]],
+  "ownerDelegation": "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json",
+  "templateRegistry": "governance/object-system/vehicle-templates/MECHA_TEMPLATE_REGISTRY.json",
+  "pageEvidence": "governance/object-system/csv-intake/P0_MECHA_VERIFICATION_CONSOLIDATION.json",
+  "outputDirectory": "build/csv-p0-mecha-gate-closure-l50",
+  "decisions": {
+    "csvIsPrimaryStructuredSource": true,
+    "pdfEvidenceIsVerificationAndAmbiguitySupport": true,
+    "nonblankCsvClaimsMayBeAcceptedWhenPageProvenanceExistsAndNoContradictionIsRecorded": true,
+    "componentsMayPromoteAsStandaloneCatalogObjectsWithoutAnInstalledHost": true,
+    "unspecifiedCompatibilityIsValidatedAtInstallTimeRatherThanInvented": true,
+    "canonicalIdsAreDeterministicSourceDerivedIdentifiers": true,
+    "ownerApprovedRecommendationsApplyWithoutCaseByCaseReview": true
+  },
+  "requiredChecks": [
+    "field-specific-source-verification",
+    "mechanical-value-verification",
+    "runtime-validation",
+    "canonical-identity",
+    "host-relationship-resolution",
+    "compatibility-resolution",
+    "install-uninstall-validation",
+    "promotion-readiness"
+  ]
+}
