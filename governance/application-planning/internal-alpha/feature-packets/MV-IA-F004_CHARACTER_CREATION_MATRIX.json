@@ -1,0 +1,452 @@
+{
+  "schemaVersion": "1.0.0",
+  "programId": "MV-IA-001",
+  "featureId": "MV-IA-F004",
+  "featureVersion": "0.1.0",
+  "status": "implementation-ready-design",
+  "owner": "John Brandon Turner",
+  "defaultCharacterDecision": "deny",
+  "authoritativePrinciple": "Local drafts, client calculations, caches, realtime messages, and offline snapshots are nonauthoritative. Accepted durable Character Events and current server projections control.",
+  "canonicalRoles": [
+    "player",
+    "game-master",
+    "assistant-gm",
+    "owner-admin",
+    "service-actor"
+  ],
+  "nonUserActors": [
+    {
+      "actorId": "ai",
+      "classification": "optional-assistive-service-actor",
+      "authorityRule": "AI has no independent Character control, membership, ownership, entitlement, approval, or mutation authority."
+    }
+  ],
+  "lifecycleStates": [
+    "draft-local-only",
+    "draft-authoritative",
+    "submitted",
+    "returned-for-revision",
+    "pending-approval",
+    "active",
+    "migration-required",
+    "restricted-historical-use",
+    "retired",
+    "archived",
+    "recovery-required",
+    "blocked"
+  ],
+  "fieldClasses": [
+    {
+      "id": "campaign-shared-identity",
+      "defaultReaders": [
+        "authorized-campaign-participants"
+      ],
+      "rule": "Safe display identity and status only."
+    },
+    {
+      "id": "controller-mechanics",
+      "defaultReaders": [
+        "authorized-controller",
+        "authorized-gm"
+      ],
+      "rule": "Build and current mechanical state, subject to field-specific policy."
+    },
+    {
+      "id": "player-private",
+      "defaultReaders": [
+        "owning-player"
+      ],
+      "rule": "No implicit GM, owner-admin, diagnostic, export, or AI access."
+    },
+    {
+      "id": "gm-only",
+      "defaultReaders": [
+        "authorized-gm",
+        "delegated-assistant-gm"
+      ],
+      "rule": "Never delivered in Player projections."
+    },
+    {
+      "id": "operational-metadata",
+      "defaultReaders": [
+        "authorized-owner-admin",
+        "service-actor"
+      ],
+      "rule": "No protected Character body unless separately authorized."
+    },
+    {
+      "id": "security-sensitive",
+      "defaultReaders": [
+        "narrow-security-role"
+      ],
+      "rule": "Purpose-bound and audited."
+    },
+    {
+      "id": "secret-material",
+      "defaultReaders": [],
+      "rule": "Never returned to ordinary clients, exports, diagnostics, or AI."
+    }
+  ],
+  "stableIdentityObjects": [
+    "characterId",
+    "characterDraftId",
+    "characterControlGrantId",
+    "characterSubmissionId",
+    "activationDecisionId",
+    "advancementAwardId",
+    "advancementProposalId",
+    "advancementDecisionId",
+    "advancementReceiptId",
+    "correctionProposalId",
+    "correctionReceiptId",
+    "eventId",
+    "snapshotId",
+    "migrationPlanId",
+    "migrationReceiptId",
+    "exportManifestId",
+    "operationId",
+    "correlationId"
+  ],
+  "requiredPolicyBindings": [
+    "campaignId",
+    "rulesProfileId",
+    "rulesProfileVersion",
+    "creationPolicyId",
+    "creationPolicyVersion",
+    "advancementPolicyId",
+    "advancementPolicyVersion",
+    "packLockDigest",
+    "permissionVersion",
+    "entitlementVersion"
+  ],
+  "selectionCategories": [
+    "species-or-form",
+    "background-or-origin",
+    "attributes",
+    "skills",
+    "proficiencies",
+    "abilities",
+    "actions",
+    "effects",
+    "conditions",
+    "resources",
+    "initial-equipment"
+  ],
+  "validationClasses": [
+    "required-field",
+    "stable-id",
+    "object-lifecycle",
+    "pack-availability",
+    "rules-profile-compatibility",
+    "prerequisite",
+    "exclusivity",
+    "budget",
+    "tier-or-rank",
+    "grant-resolution",
+    "resource-definition",
+    "derived-value",
+    "entitlement",
+    "permission",
+    "character-control",
+    "expected-version",
+    "migration-required",
+    "history-integrity"
+  ],
+  "operationTypes": [
+    {
+      "id": "character-draft-create",
+      "authoritative": true,
+      "idempotencyKey": "operationId",
+      "approval": "policy-dependent"
+    },
+    {
+      "id": "character-draft-local-autosave",
+      "authoritative": false,
+      "idempotencyKey": "draftId+localRevision",
+      "approval": "none"
+    },
+    {
+      "id": "character-draft-save",
+      "authoritative": true,
+      "idempotencyKey": "operationId",
+      "approval": "none"
+    },
+    {
+      "id": "character-submit",
+      "authoritative": true,
+      "idempotencyKey": "operationId",
+      "approval": "none"
+    },
+    {
+      "id": "character-activate",
+      "authoritative": true,
+      "idempotencyKey": "operationId",
+      "approval": "campaign-policy"
+    },
+    {
+      "id": "character-control-grant",
+      "authoritative": true,
+      "idempotencyKey": "operationId",
+      "approval": "authorized-grantor"
+    },
+    {
+      "id": "character-control-revoke",
+      "authoritative": true,
+      "idempotencyKey": "operationId",
+      "approval": "authorized-grantor"
+    },
+    {
+      "id": "advancement-award",
+      "authoritative": true,
+      "idempotencyKey": "operationId",
+      "approval": "authorized-awarder"
+    },
+    {
+      "id": "advancement-propose",
+      "authoritative": true,
+      "idempotencyKey": "operationId",
+      "approval": "none"
+    },
+    {
+      "id": "advancement-commit",
+      "authoritative": true,
+      "idempotencyKey": "operationId",
+      "approval": "campaign-policy"
+    },
+    {
+      "id": "correction-or-respec-commit",
+      "authoritative": true,
+      "idempotencyKey": "operationId",
+      "approval": "campaign-policy"
+    },
+    {
+      "id": "character-migrate",
+      "authoritative": true,
+      "idempotencyKey": "operationId",
+      "approval": "migration-policy"
+    },
+    {
+      "id": "character-retire",
+      "authoritative": true,
+      "idempotencyKey": "operationId",
+      "approval": "campaign-policy"
+    },
+    {
+      "id": "character-archive",
+      "authoritative": true,
+      "idempotencyKey": "operationId",
+      "approval": "authorized-actor"
+    },
+    {
+      "id": "character-export",
+      "authoritative": false,
+      "idempotencyKey": "operationId",
+      "approval": "export-policy"
+    },
+    {
+      "id": "operation-status-lookup",
+      "authoritative": false,
+      "idempotencyKey": "lookupOperationId",
+      "approval": "none"
+    }
+  ],
+  "requiredContractFields": {
+    "CharacterDraftCreateRequest": [
+      "operationId",
+      "subjectSession",
+      "selectedContextReceiptId",
+      "campaignId",
+      "rulesProfileId",
+      "creationPolicyId",
+      "advancementPolicyId",
+      "packLockDigest",
+      "permissionVersion",
+      "entitlementVersion",
+      "correlationId"
+    ],
+    "CharacterSaveRequest": [
+      "operationId",
+      "characterDraftIdOrCharacterId",
+      "expectedVersion",
+      "policyBindings",
+      "identityProfileDelta",
+      "selectionDelta",
+      "localValidationDigest",
+      "correlationId"
+    ],
+    "CharacterCalculationResult": [
+      "calculationId",
+      "characterIdOrDraftId",
+      "inputDigest",
+      "rulesProfileVersion",
+      "packLockDigest",
+      "orderedTrace",
+      "derivedValues",
+      "grants",
+      "costs",
+      "warnings",
+      "resultDigest"
+    ],
+    "AdvancementProposal": [
+      "advancementProposalId",
+      "characterId",
+      "expectedVersion",
+      "awardReferences",
+      "requestedSelections",
+      "costLedger",
+      "calculationTraceId",
+      "validationFindingIds",
+      "submittedBy",
+      "submittedAt"
+    ],
+    "AdvancementReceipt": [
+      "advancementReceiptId",
+      "characterId",
+      "operationId",
+      "beforeVersion",
+      "afterVersion",
+      "consumedAwards",
+      "acceptedSelections",
+      "grantedEffects",
+      "eventIds",
+      "ledgerDigest",
+      "committedAt"
+    ],
+    "CharacterMigrationReceipt": [
+      "migrationReceiptId",
+      "characterId",
+      "fromSchemaVersion",
+      "toSchemaVersion",
+      "fromPackLockDigest",
+      "toPackLockDigest",
+      "planDigest",
+      "beforeSnapshotId",
+      "afterSnapshotId",
+      "eventIds",
+      "verifiedAt"
+    ]
+  },
+  "requiredEventTypes": [
+    "CharacterDraftCreated",
+    "CharacterDraftSaved",
+    "CharacterSubmitted",
+    "CharacterReturnedForRevision",
+    "CharacterActivated",
+    "CharacterControlGranted",
+    "CharacterControlRevoked",
+    "AdvancementAwarded",
+    "AdvancementProposed",
+    "AdvancementApproved",
+    "AdvancementDenied",
+    "AdvancementCommitted",
+    "CharacterCorrectionProposed",
+    "CharacterCorrectionCommitted",
+    "CharacterMigrated",
+    "CharacterRetired",
+    "CharacterArchived",
+    "CharacterRestoredFromCheckpoint"
+  ],
+  "requiredDeniedCases": [
+    "wrong-campaign-character-lookup",
+    "noncontroller-player-protected-character-read",
+    "revoked-controller-stale-workspace-reuse",
+    "assistant-gm-exceeds-delegation",
+    "owner-admin-player-private-note-read-without-governed-access",
+    "exact-id-hidden-character-enumeration",
+    "hidden-character-count-inference",
+    "player-receives-gm-only-character-field",
+    "export-includes-another-subject-private-field",
+    "diagnostic-auto-captures-character-prose",
+    "ai-retrieves-hidden-character-content",
+    "advancement-after-control-revocation",
+    "self-awarded-progression",
+    "client-calculation-overrides-authoritative-result",
+    "clone-copies-private-notes-control-or-history",
+    "guessed-attachment-id-access",
+    "offline-character-activation",
+    "offline-advancement-commit",
+    "silent-last-write-wins",
+    "duplicate-character-activation",
+    "duplicate-advancement-effect",
+    "destructive-history-rewrite",
+    "restricted-option-count-or-alias-leakage",
+    "migration-silent-substitution",
+    "expired-entitlement-new-restricted-selection",
+    "support-report-implies-support-access"
+  ],
+  "offlineCapabilities": {
+    "allowed": [
+      "read-manifest-listed-character-projection",
+      "inspect-manifest-listed-source-safe-fields",
+      "edit-approved-local-character-draft-fields",
+      "prepare-nonauthoritative-advancement-proposal",
+      "view-local-draft-history"
+    ],
+    "prohibited": [
+      "authoritative-character-create",
+      "authoritative-save",
+      "character-activation",
+      "character-control-transfer",
+      "advancement-award",
+      "advancement-commit",
+      "correction-or-respec-commit",
+      "migration-commit",
+      "retire-or-archive-commit",
+      "claim-local-state-is-authoritative"
+    ]
+  },
+  "fixtureRequirements": [
+    "valid-free-or-campaign-granted-character",
+    "valid-higher-tier-character",
+    "invalid-missing-prerequisite-character",
+    "active-conditions-and-depleted-resources-character",
+    "personal-and-shared-asset-reference-character",
+    "relationship-history-character",
+    "retired-or-archived-character",
+    "migration-history-character",
+    "two-device-conflicting-draft",
+    "pending-approval-character",
+    "advancement-ready-character"
+  ],
+  "acceptanceCriteria": [
+    "CCA-AC-001",
+    "CCA-AC-002",
+    "CCA-AC-003",
+    "CCA-AC-004",
+    "CCA-AC-005",
+    "CCA-AC-006",
+    "CCA-AC-007",
+    "CCA-AC-008",
+    "CCA-AC-009",
+    "CCA-AC-010",
+    "CCA-AC-011",
+    "CCA-AC-012",
+    "CCA-AC-013",
+    "CCA-AC-014",
+    "CCA-AC-015",
+    "CCA-AC-016",
+    "CCA-AC-017",
+    "CCA-AC-018",
+    "CCA-AC-019",
+    "CCA-AC-020"
+  ],
+  "zeroServiceRequirements": [
+    "zero AI",
+    "zero paid identity provider",
+    "zero paid search service",
+    "zero paid analytics service",
+    "zero paid ticketing service",
+    "deterministic local calculation adapter",
+    "deterministic local persistence adapter for CI"
+  ],
+  "implementationBoundary": "Design complete; application implementation remains dependency-gated by the active P9-06 sequence, IA-D02-006 conformance, and concrete Character, entitlement, pack, persistence, migration, backup, restore, provider-exit, and caller-workflow foundations.",
+  "authorizations": {
+    "implementationAuthorized": false,
+    "realUserDataCollectionAuthorized": false,
+    "paidServicesAuthorized": false,
+    "productionCredentialsAuthorized": false,
+    "internalAlphaReleaseAuthorized": false,
+    "productionAuthorized": false,
+    "publicReleaseAuthorized": false
+  }
+}
