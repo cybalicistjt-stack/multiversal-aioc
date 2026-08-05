@@ -1,0 +1,25 @@
+name: Validate P1 Symbiotes Cybernetics Consolidated Tranche
+
+on:
+  pull_request:
+    paths:
+      - "governance/object-system/csv-intake/P1_SYMBIOTES_CYBERNETICS_CONSOLIDATED_TRANCHE_CONTRACT.json"
+      - "scripts/run-p1-symbiotes-cybernetics-consolidated-tranche.py"
+      - ".github/workflows/validate-p1-symbiotes-cybernetics-consolidated-tranche.yml"
+      - "Csv.zip"
+      - "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run consolidated symbiotes and cybernetics tranche
+        run: python scripts/run-p1-symbiotes-cybernetics-consolidated-tranche.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-p1-symbiotes-cybernetics-consolidated-tranche-572
+          path: build/csv-p1-symbiotes-cybernetics-consolidated-tranche-l55/

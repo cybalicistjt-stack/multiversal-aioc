@@ -1,0 +1,32 @@
+{
+  "format": "multiversal-p1-symbiotes-cybernetics-consolidated-tranche-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L55",
+  "dataset": "expanded_symbiotes_and_cybernetics_all_genres.csv",
+  "expectedRows": 572,
+  "ownerDelegation": "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json",
+  "outputDirectory": "build/csv-p1-symbiotes-cybernetics-consolidated-tranche-l55",
+  "domains": ["symbiote", "cybernetic", "implant", "prosthetic", "augmentation", "interface"],
+  "decisions": {
+    "csvIsPrimaryStructuredSource": true,
+    "preserveRawCsv": true,
+    "routeUsingExplicitFieldsThenGovernedRecommendation": true,
+    "doNotAutoMergeDuplicateNames": true,
+    "standaloneCatalogRecordsDoNotRequireInstalledHost": true,
+    "unspecifiedCompatibilityValidatedAtUseTime": true,
+    "assignDeterministicCanonicalIds": true,
+    "promoteAfterAllTrancheChecksPass": true
+  },
+  "validation": [
+    "domain-and-subtype-routing",
+    "duplicate-identity-review",
+    "field-specific-source-verification",
+    "mechanical-value-verification",
+    "host-and-compatibility-handling",
+    "runtime-contract-validation",
+    "canonical-identity-uniqueness",
+    "conversion",
+    "installation",
+    "uninstallation-zero-residue"
+  ]
+}
