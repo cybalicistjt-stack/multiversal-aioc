@@ -1,0 +1,24 @@
+{
+  "documentId": "MV-8D-008-ROUTING-HANDOFF-001",
+  "version": "0.1.0",
+  "routingMatrix": [
+    {"workType":"governance-or-sequencing","lead":"orchestrator","requiredReview":["verification-agent","release-handoff-agent"]},
+    {"workType":"code-or-automation","lead":"implementation-agent","requiredReview":["verification-agent","ci-incident-agent"]},
+    {"workType":"structured-source-conversion","lead":"data-provenance-agent","requiredReview":["implementation-agent","verification-agent"]},
+    {"workType":"ci-failure","lead":"ci-incident-agent","requiredReview":["verification-agent"]},
+    {"workType":"merge-and-transition","lead":"release-handoff-agent","requiredReview":["orchestrator","verification-agent"]}
+  ],
+  "handoffRequiredFields": [
+    "handoffId","fromRole","toRole","workItemId","objective","repository","baseSha","branch","scopePaths","requirements","evidence","openRisks","approvalGate","nextAction"
+  ],
+  "handoffRules": [
+    "Every handoff is repository-addressable and SHA-anchored.",
+    "Evidence must distinguish executed, observed, inferred, and pending states.",
+    "No role may mark its own work independently verified.",
+    "Unresolved risks remain explicit and cannot be converted to success by recommendation.",
+    "Owner-delegated recommendations may resolve non-scope-changing ambiguity but may not alter source truth or protected decisions."
+  ],
+  "reviewPackageRequiredFields": [
+    "workItemId","requirementCoverage","changedFiles","commits","validationCommands","workflowRuns","artifacts","riskAssessment","independentReview","mergeRecommendation"
+  ]
+}
