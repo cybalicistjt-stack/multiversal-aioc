@@ -1,0 +1,23 @@
+{
+  "format": "multiversal-full-csv-registry-reconciliation-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L63",
+  "sourceArchive": "Csv.zip",
+  "expectedCsvFiles": 20,
+  "expectedRows": 19199,
+  "remainingDataset": "expanded_mecha_and_components_all_genres.csv",
+  "remainingRows": 2010,
+  "previouslyPromotedMechaRows": 107,
+  "ownerDelegation": "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json",
+  "outputDirectory": "build/csv-full-registry-reconciliation-l63",
+  "decisions": {
+    "csvIsPrimaryStructuredSource": true,
+    "preserveRawCsv": true,
+    "excludePreviouslyPromotedMechaRows": true,
+    "doNotAutoMergeDuplicateNames": true,
+    "deferUnspecifiedCompatibilityToUseTime": true,
+    "assignDeterministicCanonicalIds": true,
+    "promoteAfterAllChecksPass": true
+  },
+  "validation": ["twenty-dataset-registry-coverage", "nineteen-thousand-one-hundred-ninety-nine-row-coverage", "remaining-mecha-row-conversion", "cross-dataset-source-coordinate-uniqueness", "cross-dataset-canonical-identity-uniqueness", "provenance-preservation", "runtime-contract-validation", "installation", "uninstallation-zero-residue"]
+}
