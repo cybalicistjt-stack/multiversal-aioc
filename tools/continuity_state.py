@@ -47,12 +47,14 @@ def validate_checkpoint(cp,label):
         need(cp.get("completed_at"),f"{label}: completed_at required")
         need(cp.get("active_substep") is None,f"{label}: active_substep must be null")
         need(not cp["unresolved_failures"] and not cp["owner_decision_required"],f"{label}: unresolved completion state")
-        kinds={x["kind"] for x in cp["evidence"]}; missing=set(gate["required_evidence_kinds"])-kinds
+        work_tokens=(cp["work_item_id"],cp["attempt_id"])
+        scoped_kinds={x["kind"] for x in cp["evidence"] if any(token in x["value"] for token in work_tokens)}
+        missing=set(gate["required_evidence_kinds"])-scoped_kinds
         need(not missing,f"{label}: completion evidence missing {sorted(missing)}")
         validations={x["command"]:x["status"] for x in cp["validation"]}
         pending=[x for x in gate["required_validation_commands"] if validations.get(x)!="passed"]
         need(not pending,f"{label}: completion validations not passed {pending}")
-        if gate["owner_approval_required"]: need("owner_decision" in kinds,f"{label}: owner approval missing")
+        if gate["owner_approval_required"]: need("owner_decision" in scoped_kinds,f"{label}: owner approval missing")
     else:
         need(cp.get("completed_at") in (None,""),f"{label}: non-complete item has completed_at")
         need(cp.get("active_substep") not in (None,""),f"{label}: unfinished item lacks active_substep")
