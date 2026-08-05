@@ -1,0 +1,40 @@
+name: Run 8D-007 Bounded Balance Analysis
+
+on:
+  pull_request:
+    paths:
+      - 'governance/balance/**'
+      - 'scripts/run-8d-007-bounded-balance-analysis.py'
+      - '.github/workflows/run-8d-007-bounded-balance-analysis.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run bounded peer and target analysis
+        run: python scripts/run-8d-007-bounded-balance-analysis.py
+      - name: Verify governed thresholds
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open('out/8d-007-bounded-balance-analysis/BOUNDED_BALANCE_ANALYSIS.json'))
+          assert p['domainCount']==18
+          assert p['fixtureCount']==36
+          assert p['sourceTruthChanged'] is False
+          assert p['observationCounts']['blocking']==0
+          assert p['observationCounts']['material']/p['fixtureCount'] <= p['regressionThresholds']['materialObservationRateMaximum']
+          assert all(o['reversible'] is True for o in p['observations'])
+          print(p['analysisSha256'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 8d-007-bounded-balance-analysis
+          path: out/8d-007-bounded-balance-analysis/BOUNDED_BALANCE_ANALYSIS.json
