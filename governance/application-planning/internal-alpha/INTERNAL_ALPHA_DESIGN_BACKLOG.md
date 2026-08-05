@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.1.0  
+**Version:** 0.2.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -11,23 +11,27 @@ This backlog governs feature **design packets**, not application implementation.
 
 Design work should maximize reuse: shared systems and high-fan-out features are specified before downstream domain features.
 
-## Tranche IA-D01 — Program foundation — COMPLETE IN THIS PACKAGE
+## Tranche IA-D01 — Program foundation — COMPLETE
 
-1. IA-D01-001 — Establish program and terminology correction.
-2. IA-D01-002 — Define internal-alpha scope.
-3. IA-D01-003 — Create feature registry and classifications.
-4. IA-D01-004 — Create dependency map.
-5. IA-D01-005 — Define core Player and GM user journeys.
-6. IA-D01-006 — Inventory shared systems.
-7. IA-D01-007 — Define acceptance matrix.
-8. IA-D01-008 — Reconcile historically deferred modules.
-9. IA-D01-009 — Create standard feature-packet template.
-10. IA-D01-010 — Add machine validation and CI.
+1. IA-D01-001 — Establish program and terminology correction — complete.
+2. IA-D01-002 — Define internal-alpha scope — complete.
+3. IA-D01-003 — Create feature registry and classifications — complete.
+4. IA-D01-004 — Create dependency map — complete.
+5. IA-D01-005 — Define core Player and GM user journeys — complete.
+6. IA-D01-006 — Inventory shared systems — complete.
+7. IA-D01-007 — Define acceptance matrix — complete.
+8. IA-D01-008 — Reconcile historically deferred modules — complete.
+9. IA-D01-009 — Create standard feature-packet template — complete.
+10. IA-D01-010 — Add machine validation and CI — complete.
 
 ## Tranche IA-D02 — Shared foundations
 
-1. **IA-D02-001 — MV-IA-F002 Universal Object Experience packet**
-2. IA-D02-002 — MV-IA-F020 Permissions and Hidden Information packet
+1. **IA-D02-001 — MV-IA-F002 Universal Object Experience packet — complete**
+   - packet: `feature-packets/MV-IA-F002_UNIVERSAL_OBJECT_EXPERIENCE.md`
+   - registry status: implementation-ready
+   - implementation status: not started; dependency-gated
+   - validation: dedicated feature-packet validation added
+2. **IA-D02-002 — MV-IA-F020 Permissions and Hidden Information packet — next**
 3. IA-D02-003 — MV-IA-F003 Identity, Dashboard, and Workspace Selection packet
 4. IA-D02-004 — MV-IA-F021 Autosave, Reconnect, Recovery, and Bounded Offline Use packet
 5. IA-D02-005 — MV-IA-F025 Onboarding, Help, Diagnostics, and Issue Reporting packet
@@ -112,8 +116,22 @@ Each backlog item uses one state:
 
 A design item is complete only when its artifact exists, passes validation, records limitations, and identifies the next executable item.
 
+## IA-D02-001 completion record
+
+MV-IA-F002 now defines:
+
+- browse, search, filtering, exact stable-ID lookup, inspection, provenance, relationships, comparison, conflicts, and constrained selection;
+- Definition, placement, instance, projection, event, index, stable-ID, and source boundaries;
+- Player, GM, Owner/Admin, creator, Assistant GM, service, and optional AI permissions;
+- entitlement, pack, version, migration, persistence, interruption, reconnect, and recovery behavior;
+- desktop, tablet, mobile, keyboard, touch, screen-reader, high-zoom, reduced-motion, and graph-alternative requirements;
+- fifteen blocking acceptance criteria;
+- deterministic fixtures, denied cases, performance checks, zero-service operation, implementation decomposition, and dependency hold points.
+
+The packet is implementation-ready as a design artifact. It does not authorize application implementation around unfinished P9-06 dependencies.
+
 ## Current next design item
 
-**IA-D02-001 — Design MV-IA-F002, Universal Object Experience.**
+**IA-D02-002 — Design MV-IA-F020, Permissions and Hidden Information.**
 
-This feature is first because its browser, inspector, picker, provenance, relationship, conflict, and selection patterns support Character creation, Scene building, inventory, encounters, investigation, relationships, World Builder, and AI retrieval.
+This packet is next because the Universal Object Experience establishes every retrieval and inference surface that the permission model must govern: results, counts, facets, aliases, direct IDs, fields, source views, relationships, comparison candidates, cached state, exports, realtime updates, and AI retrieval.
