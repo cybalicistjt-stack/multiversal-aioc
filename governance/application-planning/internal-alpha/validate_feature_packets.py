@@ -15,6 +15,29 @@ def fail(messages: list[str]) -> None:
     raise SystemExit("MV-IA FEATURE PACKET VALIDATION: FAIL\n" + "\n".join(f"- {m}" for m in messages))
 
 
+def validate_companion_files(feature: dict, errors: list[str]) -> None:
+    feature_id = feature.get("featureId", "<missing>")
+    for companion_path in feature.get("companionFiles", []):
+        path = ROOT / companion_path
+        if not path.is_file():
+            errors.append(f"{feature_id}: companion file does not exist at {companion_path}.")
+            continue
+        if path.suffix == ".json":
+            try:
+                payload = json.loads(path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as exc:
+                errors.append(f"{feature_id}: invalid companion JSON {companion_path}: {exc}.")
+                continue
+            if payload.get("featureId") != feature_id:
+                errors.append(
+                    f"{feature_id}: companion {companion_path} has featureId {payload.get('featureId')!r}."
+                )
+            if payload.get("owner") != "John Brandon Turner":
+                errors.append(f"{feature_id}: companion {companion_path} has incorrect owner.")
+            if "prophecy" in path.read_text(encoding="utf-8").lower():
+                errors.append(f"{feature_id}: corrected autocorrect term appears in {companion_path}.")
+
+
 def main() -> int:
     payload = json.loads(REGISTRY.read_text(encoding="utf-8"))
     errors: list[str] = []
@@ -88,6 +111,8 @@ def main() -> int:
             if phrase not in text:
                 errors.append(f"{feature_id}: missing required packet content: {phrase!r}.")
 
+        validate_companion_files(feature, errors)
+
         if feature_id == "MV-IA-F002":
             for number in range(1, 16):
                 criterion = f"UOX-AC-{number:03d}"
@@ -106,6 +131,40 @@ def main() -> int:
             ]:
                 if phrase.lower() not in lower:
                     errors.append(f"{feature_id}: missing Universal Object requirement {phrase!r}.")
+
+        if feature_id == "MV-IA-F020":
+            for number in range(1, 21):
+                criterion = f"PHI-AC-{number:03d}"
+                if criterion not in text:
+                    errors.append(f"{feature_id}: missing acceptance criterion {criterion}.")
+            for phrase in [
+                "deny-by-default",
+                "not-found-or-unavailable",
+                "Player-private notes",
+                "server-generated",
+                "database isolation",
+                "revocation",
+                "exact stable-ID",
+                "Owner/Admin",
+                "zero AI",
+                "fail closed",
+            ]:
+                if phrase.lower() not in lower:
+                    errors.append(f"{feature_id}: missing Permissions requirement {phrase!r}.")
+
+            matrix_path = ROOT / "feature-packets/MV-IA-F020_PERMISSION_SURFACE_MATRIX.json"
+            if matrix_path.is_file():
+                matrix = json.loads(matrix_path.read_text(encoding="utf-8"))
+                if matrix.get("defaultDecision") != "deny":
+                    errors.append(f"{feature_id}: permission matrix defaultDecision must be 'deny'.")
+                if len(matrix.get("visibilityClasses", [])) < 10:
+                    errors.append(f"{feature_id}: permission matrix must define at least ten visibility classes.")
+                if len(matrix.get("surfaces", [])) < 25:
+                    errors.append(f"{feature_id}: permission matrix must define at least twenty-five protected surfaces.")
+                if len(matrix.get("requiredDeniedCases", [])) < 20:
+                    errors.append(f"{feature_id}: permission matrix must define at least twenty denied cases.")
+                if matrix.get("acceptanceCriteria") != [f"PHI-AC-{number:03d}" for number in range(1, 21)]:
+                    errors.append(f"{feature_id}: permission matrix acceptance criteria are incomplete or out of order.")
 
     if checked == 0:
         errors.append("No implementation-ready or later feature packet was checked.")
