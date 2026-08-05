@@ -1,0 +1,45 @@
+{
+  "format": "multiversal-p0-mecha-representative-fixtures",
+  "version": "0.1.0",
+  "workstream": "8E-009L46",
+  "dataset": "expanded_mecha_and_components_all_genres.csv",
+  "selectionRule": "Use bounded source-covered rows to exercise the frame and component templates without assigning canonical identity or inventing parent relationships.",
+  "fixtures": [
+    {
+      "fixtureId": "staging:mecha:rules-framework",
+      "sourceRows": [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],
+      "templateId": "vehicle.mecha.frame",
+      "purpose": "exercise shared frame rules and multi-page provenance",
+      "identityState": "staging-only",
+      "relationshipState": "not-applicable-shared-rules",
+      "valuePolicy": "owner-delegated provisional recommendations",
+      "canonicalId": null,
+      "promotionReady": false
+    },
+    {
+      "fixtureId": "staging:mecha:power-and-mobility-components",
+      "sourceRows": [52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71],
+      "templateId": "vehicle.mecha.component",
+      "purpose": "exercise power, capacitor, and mobility component subtypes",
+      "identityState": "staging-only",
+      "relationshipState": "host-unresolved-unless-explicit",
+      "valuePolicy": "owner-delegated provisional recommendations",
+      "canonicalId": null,
+      "promotionReady": false
+    },
+    {
+      "fixtureId": "staging:mecha:combat-support-components",
+      "sourceRows": [72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138],
+      "templateId": "vehicle.mecha.component",
+      "purpose": "exercise weapons, armor, resistance, sensors, repair, utility, communication, safety, and resource-gathering subtypes",
+      "identityState": "staging-only",
+      "relationshipState": "host-unresolved-unless-explicit",
+      "valuePolicy": "owner-delegated provisional recommendations",
+      "canonicalId": null,
+      "promotionReady": false
+    }
+  ],
+  "coveredRows": 107,
+  "canonicalIdsAssigned": 0,
+  "promotionReadyRows": 0
+}
