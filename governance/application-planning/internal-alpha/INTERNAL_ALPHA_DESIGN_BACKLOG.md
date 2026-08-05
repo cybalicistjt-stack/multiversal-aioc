@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.4.0  
+**Version:** 0.5.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -43,8 +43,13 @@ Design work should maximize reuse: shared systems and high-fan-out features are 
    - registry status: implementation-ready
    - implementation status: not started; dependency-gated
    - validation: twenty acceptance criteria, identity/session/invitation/workspace contracts, twenty discovery surfaces, and twenty denied cases
-4. **IA-D02-004 — MV-IA-F021 Autosave, Reconnect, Recovery, and Bounded Offline Use packet — next**
-5. IA-D02-005 — MV-IA-F025 Onboarding, Help, Diagnostics, and Issue Reporting packet
+4. **IA-D02-004 — MV-IA-F021 Autosave, Reconnect, Recovery, and Bounded Offline Use packet — complete**
+   - packet: `feature-packets/MV-IA-F021_AUTOSAVE_RECONNECT_RECOVERY_AND_BOUNDED_OFFLINE_USE.md`
+   - matrix: `feature-packets/MV-IA-F021_RECOVERY_AND_OFFLINE_MATRIX.json`
+   - registry status: implementation-ready
+   - implementation status: not started; dependency-gated
+   - validation: twenty acceptance criteria, sixteen state values, fifteen interruption points, twenty-four denied cases, and bounded-offline validation
+5. **IA-D02-005 — MV-IA-F025 Onboarding, Help, Diagnostics, and Issue Reporting packet — next**
 6. IA-D02-006 — shared-foundations integration review
 
 Rationale: these features establish the object, authority, recovery, and support patterns consumed by most later work.
@@ -131,7 +136,7 @@ A design item is complete only when its artifact exists, passes validation, reco
 MV-IA-F002 defines:
 
 - browse, search, filtering, exact stable-ID lookup, inspection, provenance, relationships, comparison, conflicts, and constrained selection;
-- Definition, placement, instance, projection, event, index, stable-ID, and source boundaries;
+- Definition, placement, instance, projection, Event, index, stable-ID, and source boundaries;
 - Player, GM, Owner/Admin, creator, Assistant GM, service, and optional AI permissions;
 - entitlement, pack, version, migration, persistence, interruption, reconnect, and recovery behavior;
 - desktop, tablet, mobile, keyboard, touch, screen-reader, high-zoom, reduced-motion, and graph-alternative requirements;
@@ -172,8 +177,26 @@ MV-IA-F003 defines:
 
 The packet is implementation-ready as a design artifact. Implementation remains dependency-gated by the active P9-06 sequence and does not authorize production identity services, public registration, production credentials, internal-alpha release, or public release.
 
+## IA-D02-004 completion record
+
+MV-IA-F021 defines:
+
+- exact separation of local draft, authoritative save, submitted command, accepted Event, and displayed projection;
+- stable draft, operation, command, Event, cursor, checkpoint, conflict, recovery, and offline-snapshot identities;
+- local autosave receipts, authoritative save receipts, expected versions, idempotency, and status lookup after ambiguous failure;
+- Event-gap recovery, duplicate suppression, pending-GM continuity, selected-context revalidation, and service-restart recovery;
+- permission, entitlement, pack, schema, object-lifecycle, Character-control, and delegation checks on reconnect;
+- conflicts that preserve local and authoritative state instead of silent last-write-wins;
+- verified checkpoint requirements and history-preserving restore;
+- bounded read-only offline snapshots and local drafts with explicit authoritative-mutation prohibition;
+- accessible save, submit, connection, stale, conflict, revocation, and recovery states;
+- privacy-safe telemetry, zero-AI and zero-paid-service core operation, provider-neutral contracts, and provider-exit compatibility;
+- twenty blocking acceptance criteria and a machine-readable recovery/offline matrix.
+
+The packet is implementation-ready as a design artifact. Implementation remains dependency-gated by the active P9-06 sequence, especially persistence, authoritative Session, checkpoint, backup, restore, migration, and provider-exit foundations. Broad offline authoritative mutation remains deferred.
+
 ## Current next design item
 
-**IA-D02-004 — Design MV-IA-F021, Autosave, Reconnect, Recovery, and Bounded Offline Use.**
+**IA-D02-005 — Design MV-IA-F025, Onboarding, Help, Diagnostics, and Issue Reporting.**
 
-This packet is next because F002, F020, and F003 now define the governed object, authorization, identity, invitation, workspace, recent-work, selected-context, and revocation inputs that recovery must preserve without restoring stale or unauthorized state.
+This packet is next because the entry-critical object, authorization, identity, workspace, autosave, reconnect, conflict, and recovery contracts now define the supported internal-alpha journey and the safe evidence needed to guide testers and collect reproducible issues.
