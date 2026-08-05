@@ -1,7 +1,7 @@
 # MV-IA-001 — Internal Alpha Feature Design Program
 
 **Document ID:** MV-IA-001  
-**Version:** 0.8.0  
+**Version:** 0.9.0  
 **Status:** ACTIVE — DESIGN PROGRAM  
 **Owner and final authority:** John Brandon Turner  
 **Established:** 2026-08-05
@@ -93,6 +93,22 @@ Complete at design level with:
 
 Application implementation remains dependency-gated.
 
+## IA-D03-002 — Campaign, Scene, and Session Builder
+
+Complete at design level with:
+
+- Campaign rules-profile, schema, entitlement-policy, and pack-lock binding;
+- explicit invitations, membership, role, Character-control, observer, and Assistant-GM delegation;
+- Scene drafts, stable-ID object placement, Campaign-local overrides, role-scoped notes, and accessible map alternatives;
+- server-generated Player and observer previews with hidden-information and inference protection;
+- authoritative dependency, entitlement, permission, Character-eligibility, and launch-readiness validation;
+- immutable launch snapshots and separate live Session state;
+- launch, entry, pause, resume, close, Event recovery, conflict, revocation, export, and diagnostics contracts;
+- realtime-advisory, server-authoritative, provider-neutral, zero-paid-service, and bounded-offline boundaries;
+- twenty blocking acceptance criteria and a machine-readable Campaign/Scene/Session matrix.
+
+Application implementation remains dependency-gated.
+
 ## File map
 
 Program baselines:
@@ -112,7 +128,7 @@ Packet and integration artifacts:
 
 - `feature-packets/README.md`
 - `feature-packets/FEATURE_PACKET_TEMPLATE.md`
-- implementation-ready F002, F020, F003, F021, F025, and F004 packets and companion artifacts
+- implementation-ready F002, F020, F003, F021, F025, F004, and F005 packets and companion artifacts
 - `feature-packets/IA-D02-006_SHARED_FOUNDATIONS_INTEGRATION_REVIEW.md`
 - `feature-packets/IA-D02-006_SHARED_FOUNDATIONS_CONTRACT_MATRIX.json`
 - `feature-packets/IA-D02-006_REVIEW_RECEIPT.md`
@@ -123,7 +139,10 @@ Validation:
 - `validate_internal_alpha_design.py`
 - `validate_feature_packets.py`
 - `validate_shared_foundations_integration.py`
+- `validate_character_creation_design.py`
+- `validate_campaign_scene_session_design.py`
 - `.github/workflows/internal-alpha-design-validation.yml`
+- `.github/workflows/campaign-scene-session-design-validation.yml`
 
 ## Execution boundary
 
@@ -135,6 +154,6 @@ Silence is not approval.
 
 ## Current next design action
 
-**IA-D03-002 — Design MV-IA-F005, Campaign, Scene, and Session Builder.**
+**IA-D03-003 — Design MV-IA-F012, Encounter Builder and Balance Lab.**
 
-F005 must consume IA-D02-006 and MV-IA-F004 rather than redefining identity, Character control, stable-ID selection, authorization, persistence, recovery, diagnostics, accessibility, or provider boundaries.
+F012 must consume IA-D02-006, MV-IA-F004, and MV-IA-F005 rather than redefining identity, Character control, stable-ID selection, Campaign policy, Scene placements, launch snapshots, authorization, persistence, recovery, diagnostics, accessibility, or provider boundaries.

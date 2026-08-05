@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.8.0  
+**Version:** 0.9.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -63,8 +63,14 @@ Rationale: F002, F020, F003, F021, and F025 establish the object, authority, ide
    - completion: `feature-packets/MV-IA-F004_COMPLETION_RECORD.json`
    - status: implementation-ready design; implementation not started and dependency-gated
    - validation: twenty blocking acceptance criteria, twelve lifecycle states, eighteen validation classes, sixteen operation types, twenty-six denied cases, and zero blocking findings
-2. **IA-D03-002 — MV-IA-F005 Campaign, Scene, and Session Builder packet — next**
-3. IA-D03-003 — MV-IA-F012 Encounter Builder and Balance Lab packet
+2. **IA-D03-002 — MV-IA-F005 Campaign, Scene, and Session Builder packet — complete**
+   - packet: `feature-packets/MV-IA-F005_CAMPAIGN_SCENE_AND_SESSION_BUILDER.md`
+   - matrix: `feature-packets/MV-IA-F005_CAMPAIGN_SCENE_SESSION_MATRIX.json`
+   - traceability: `feature-packets/MV-IA-F005_IMPLEMENTATION_TRACEABILITY.json`
+   - completion: `feature-packets/MV-IA-F005_COMPLETION_RECORD.json`
+   - status: implementation-ready design; implementation not started and dependency-gated
+   - validation: twenty blocking acceptance criteria, twenty-four shared contracts, at least twenty-four validation classes, thirty-one operation types, thirty-one Event types, forty-two denied cases, and zero blocking findings
+3. **IA-D03-003 — MV-IA-F012 Encounter Builder and Balance Lab packet — next**
 4. IA-D03-004 — alpha content and fixture specification
 5. IA-D03-005 — Character/Campaign integration review
 
@@ -176,8 +182,25 @@ MV-IA-F004 now defines:
 
 The packet is implementation-ready as a design artifact. Application implementation remains dependency-gated by the active P9-06 sequence and does not authorize paid services, production credentials, real-user data collection, internal-alpha release, production, or public release.
 
+## IA-D03-002 completion record
+
+MV-IA-F005 now defines:
+
+- Campaign identity, rules-profile binding, schema identity, entitlement policy, and immutable pack-lock state;
+- invitation, membership, active-role, Character-control, observer, and Assistant-GM delegation boundaries;
+- Scene drafts, Campaign-local placements, explicit field visibility, accessible map alternatives, and server-generated Player previews;
+- authoritative validation of stable-ID references, permissions, entitlements, dependencies, Character eligibility, and launch readiness;
+- immutable launch snapshots that separate mutable preparation from active Session state;
+- Session launch, entry, pause, resume, close, Event history, current projection, and reconnect behavior;
+- idempotency, expected versions, ambiguous-failure lookup, conflict preservation, revocation, and no offline authoritative mutation;
+- realtime as advisory and durable ordered Events plus server projections as authoritative;
+- role-safe export, diagnostics, optional AI proposals, accessibility, responsive behavior, and zero-paid-service operation;
+- twenty blocking acceptance criteria and deterministic Campaign, Scene, invitation, launch, visibility, and recovery fixtures.
+
+The packet is implementation-ready as a design artifact. Application implementation remains dependency-gated by the active P9-06 sequence and does not authorize paid services, production credentials, real-user data collection, internal-alpha release, production, or public release.
+
 ## Current next design item
 
-**IA-D03-002 — Design MV-IA-F005, Campaign, Scene, and Session Builder.**
+**IA-D03-003 — Design MV-IA-F012, Encounter Builder and Balance Lab.**
 
-F005 is next because it consumes the completed Character and shared-foundation contracts to define GM preparation, Campaign policy, Scene composition, hidden information, participant invitations, and Session launch.
+F012 is next because it consumes the completed Campaign, Scene, Session, Character, object, permission, recovery, and pack contracts to define bounded encounter composition, dependency validation, pressure estimates, uncertainty, and source-grounded warnings without guaranteed-balance claims.

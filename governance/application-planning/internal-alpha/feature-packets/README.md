@@ -25,6 +25,7 @@ Implementation-ready and in-progress feature design packets, companion matrices,
 | MV-IA-F021 | Autosave, Reconnect, Recovery, and Bounded Offline Use | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F021_AUTOSAVE_RECONNECT_RECOVERY_AND_BOUNDED_OFFLINE_USE.md` | `MV-IA-F021_RECOVERY_AND_OFFLINE_MATRIX.json` |
 | MV-IA-F025 | Onboarding, Help, Diagnostics, and Issue Reporting | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F025_ONBOARDING_HELP_DIAGNOSTICS_AND_ISSUE_REPORTING.md` | `MV-IA-F025_ONBOARDING_SUPPORT_MATRIX.json` |
 | MV-IA-F004 | Character Creation and Advancement | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F004_CHARACTER_CREATION_AND_ADVANCEMENT.md` | `MV-IA-F004_CHARACTER_CREATION_MATRIX.json` |
+| MV-IA-F005 | Campaign, Scene, and Session Builder | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F005_CAMPAIGN_SCENE_AND_SESSION_BUILDER.md` | `MV-IA-F005_CAMPAIGN_SCENE_SESSION_MATRIX.json`; `MV-IA-F005_IMPLEMENTATION_TRACEABILITY.json`; `MV-IA-F005_REVIEW_RECEIPT.md`; `MV-IA-F005_READINESS_RECORD.md`; `MV-IA-F005_COMPLETION_RECORD.json` |
 
 ## Integration review index
 
@@ -98,6 +99,19 @@ MV-IA-F004 establishes:
 - accessible and responsive Character creation and advancement;
 - twenty acceptance criteria and deterministic fixtures.
 
+## Completed Campaign preparation result
+
+MV-IA-F005 establishes:
+
+- Campaign rules, packs, policy, membership, invitation, role, and Character-control boundaries;
+- Scene drafts, stable-ID placements, local overrides, notes, maps, visibility, objectives, and launch configuration;
+- server-generated Player and observer previews without protected existence or count leakage;
+- immutable launch snapshots and separate authoritative Session state;
+- idempotent saves and commands, conflict preservation, Event-gap recovery, revocation, and bounded offline behavior;
+- realtime as advisory and durable Events plus current server projections as authority;
+- role-safe exports and diagnostics, accessible and responsive preparation, and zero-paid-service operation;
+- twenty acceptance criteria and deterministic fixtures.
+
 ## Next item
 
-`MV-IA-F005_CAMPAIGN_SCENE_AND_SESSION_BUILDER.md` under IA-D03-002.
+`MV-IA-F012_ENCOUNTER_BUILDER_AND_BALANCE_LAB.md` under IA-D03-003.

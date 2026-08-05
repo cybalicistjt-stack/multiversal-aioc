@@ -1,0 +1,163 @@
+{
+  "schemaVersion": "1.0.0",
+  "programId": "MV-IA-001",
+  "featureId": "MV-IA-F005",
+  "version": "0.1.0",
+  "status": "implementation-ready-design",
+  "owner": "John Brandon Turner",
+  "classification": "entry-critical",
+  "stageAMapping": "A5",
+  "implementationBoundary": "Design complete; application implementation remains dependency-gated by the active P9-06 sequence, IA-D02-006 conformance, MV-IA-F004 Character contracts, concrete entitlement and pack services, persistence, migrations, backup, restore, provider-exit, and owner release gates.",
+  "requiredSharedContracts": [
+    "SFI-C001", "SFI-C002", "SFI-C003", "SFI-C004", "SFI-C005", "SFI-C006",
+    "SFI-C007", "SFI-C008", "SFI-C009", "SFI-C010", "SFI-C011", "SFI-C012",
+    "SFI-C013", "SFI-C014", "SFI-C015", "SFI-C016", "SFI-C017", "SFI-C018",
+    "SFI-C019", "SFI-C020", "SFI-C021", "SFI-C022", "SFI-C023", "SFI-C024"
+  ],
+  "featureDependencies": [
+    "MV-IA-F002", "MV-IA-F003", "MV-IA-F004", "MV-IA-F019",
+    "MV-IA-F020", "MV-IA-F021", "MV-IA-F024", "MV-IA-F025"
+  ],
+  "aggregateTypes": [
+    "campaign", "scene", "invitation", "membership-grant", "role-grant",
+    "character-control-grant", "launch-snapshot", "game-session", "checkpoint"
+  ],
+  "lifecycleStates": {
+    "campaign": ["draft", "active", "migration-required", "archived", "restoring"],
+    "scene": ["draft", "validating", "ready", "launch-snapshotted", "retired", "archived"],
+    "invitation": ["issued", "accepted", "declined", "expired", "revoked"],
+    "session": ["launching", "active", "paused", "closing", "closed", "recovery-required"]
+  },
+  "fieldClasses": [
+    {"fieldClass":"public-campaign-safe","example":"authorized Campaign title or summary","projectionRule":"only when Campaign discovery is authorized"},
+    {"fieldClass":"participant-safe","example":"visible Scene description and objectives","projectionRule":"current membership and permission required"},
+    {"fieldClass":"player-private","example":"private Player note or preference","projectionRule":"controlling subject and explicitly authorized service only"},
+    {"fieldClass":"gm-only","example":"GM note, secret objective, hidden placement","projectionRule":"authorized game-master projection only"},
+    {"fieldClass":"assistant-gm-scoped","example":"delegated preparation note","projectionRule":"explicit scope and expiry required"},
+    {"fieldClass":"observer-safe","example":"observer Session summary","projectionRule":"explicit observer grant required"},
+    {"fieldClass":"owner-operations","example":"migration and recovery administration","projectionRule":"purpose-bound owner-admin operation"},
+    {"fieldClass":"support-safe","example":"allowlisted diagnostic state","projectionRule":"issue assignment alone never grants Campaign access"},
+    {"fieldClass":"service-internal","example":"operation identity and projection cursor","projectionRule":"minimum scoped service fields only"},
+    {"fieldClass":"secret-or-credential","example":"token, key, storage credential","projectionRule":"never included in ordinary projections, exports, diagnostics, or AI"}
+  ],
+  "placementModel": {
+    "sourceIdentityFields": ["definitionId", "definitionVersion", "packId", "packVersion"],
+    "placementIdentityFields": ["placementId", "campaignId", "sceneId", "placementVersion"],
+    "localFields": ["labelOverride", "initialState", "quantity", "visibilityClass", "positionOrZoneReference", "gmNotes"],
+    "rule": "A placement references but never mutates its reusable source Definition."
+  },
+  "launchSnapshotModel": {
+    "requiredFields": [
+      "snapshotId", "campaignId", "campaignVersion", "sceneId", "sceneVersion",
+      "rulesProfileId", "rulesProfileVersion", "packLockDigest", "schemaVersions",
+      "participantBindings", "characterBindings", "placementVersions", "visibilityPolicyVersion",
+      "validationReceiptId", "contentDigest", "createdBy", "createdAt"
+    ],
+    "authorityRule": "A Session launches only from an immutable validated launch snapshot.",
+    "postLaunchEditRule": "Later Scene edits do not mutate an active Session and require a new snapshot or governed amendment."
+  },
+  "validationClasses": [
+    "required-field", "stable-id-reference", "source-version", "campaign-isolation",
+    "permission", "entitlement", "pack-present", "pack-version", "pack-dependency",
+    "rules-profile", "schema-compatibility", "visibility-safety", "note-classification",
+    "character-control", "character-lifecycle", "participant-membership", "role-scope",
+    "assistant-gm-delegation", "observer-grant", "map-alternative", "media-reference",
+    "objective-entry-condition", "duplicate-placement-policy", "launch-readiness"
+  ],
+  "operationTypes": [
+    "create-campaign", "update-campaign", "archive-campaign", "restore-campaign",
+    "issue-invitation", "accept-invitation", "decline-invitation", "revoke-invitation",
+    "change-membership", "change-role-grant", "change-character-control",
+    "create-scene", "update-scene", "duplicate-scene", "reorder-scene", "archive-scene", "restore-scene",
+    "add-placement", "update-placement", "remove-placement", "change-note-visibility",
+    "validate-scene", "preview-as-subject", "create-launch-snapshot", "launch-session",
+    "pause-session", "resume-session", "close-session", "migrate", "recover", "export"
+  ],
+  "eventTypes": [
+    "CampaignCreated", "CampaignUpdated", "CampaignPolicyChanged", "PackLockChanged",
+    "InvitationIssued", "InvitationAccepted", "InvitationDeclined", "InvitationExpired", "InvitationRevoked",
+    "MembershipChanged", "RoleGrantChanged", "CharacterControlChanged",
+    "SceneCreated", "SceneUpdated", "SceneDuplicated", "SceneReordered", "SceneArchived", "SceneRestored",
+    "PlacementAdded", "PlacementUpdated", "PlacementRemoved", "NoteVisibilityChanged",
+    "SceneValidated", "LaunchSnapshotCreated", "SessionLaunched", "SessionPaused",
+    "SessionResumed", "SessionClosed", "MigrationApplied", "RecoveryCompleted", "ExportCreated"
+  ],
+  "recoveryStates": [
+    "local-unsaved", "submitted-unknown", "save-accepted-display-missed", "stale-version",
+    "conflict-preserved", "invitation-status-unknown", "snapshot-status-unknown",
+    "launch-status-unknown", "event-gap", "revoked", "migration-required",
+    "checkpoint-available", "export-only-fallback"
+  ],
+  "offlineRules": {
+    "allowed": [
+      "read manifest-bound authorized Campaign projections",
+      "read manifest-bound authorized Scene projections",
+      "edit approved local draft fields and notes",
+      "prepare object-selection intentions without authoritative placement",
+      "prepare an issue-report draft"
+    ],
+    "prohibited": [
+      "authoritative Campaign or Scene save",
+      "invitation issue acceptance decline or revocation",
+      "membership role delegation observer or Character-control mutation",
+      "pack-lock or entitlement mutation",
+      "launch-snapshot creation",
+      "Session launch pause resume close or amendment",
+      "migration restore or export finalization"
+    ]
+  },
+  "deniedCases": [
+    "unauthenticated subject", "wrong Campaign subject", "wrong Scene subject", "wrong Session subject",
+    "unaccepted invitation", "expired invitation", "revoked invitation", "revoked membership",
+    "wrong active role", "expired assistant-gm delegation", "observer attempting mutation",
+    "content creator without Campaign role", "service actor outside scoped operation", "AI attempting mutation",
+    "uncontrolled Character selection", "inactive Character", "archived Character", "incompatible Character pack lock",
+    "hidden placement exact lookup", "hidden count query", "hidden note retrieval", "private Player note retrieval",
+    "unauthorized map or media retrieval", "storage URL enumeration", "cross-Campaign search result",
+    "stale permissionVersion", "stale entitlementVersion", "stale packLockDigest", "stale expectedVersion",
+    "client-forged role", "client-forged preview", "client-forged placement compatibility",
+    "client-forged launch snapshot", "archived Scene launch", "invalid Scene launch",
+    "duplicate launch with new operation identity", "offline launch", "offline membership mutation",
+    "support actor without separate support access", "issue reporter attempting Campaign access",
+    "diagnostic bundle containing Campaign prose or hidden IDs", "AI context requesting hidden Campaign state"
+  ],
+  "fixtures": [
+    "IA-CAMPAIGN-01", "IA-CAMPAIGN-02", "IA-SCENE-SOCIAL-01", "IA-SCENE-INVESTIGATION-01",
+    "IA-SCENE-COMBAT-PREP-01", "IA-SCENE-TRAVEL-01", "IA-SCENE-RECOVERY-01",
+    "IA-INVITATION-VALID-01", "IA-INVITATION-EXPIRED-01", "IA-SNAPSHOT-VALID-01",
+    "IA-LAUNCH-AMBIGUOUS-01", "IA-EVENT-GAP-01", "IA-MIGRATION-REQUIRED-01"
+  ],
+  "acceptanceCriteria": [
+    {"criterionId":"CSS-AC-001","blocking":true,"topic":"Campaign authority"},
+    {"criterionId":"CSS-AC-002","blocking":true,"topic":"Policy binding"},
+    {"criterionId":"CSS-AC-003","blocking":true,"topic":"Role separation"},
+    {"criterionId":"CSS-AC-004","blocking":true,"topic":"Invitation lifecycle"},
+    {"criterionId":"CSS-AC-005","blocking":true,"topic":"Stable selection"},
+    {"criterionId":"CSS-AC-006","blocking":true,"topic":"Source separation"},
+    {"criterionId":"CSS-AC-007","blocking":true,"topic":"Hidden information"},
+    {"criterionId":"CSS-AC-008","blocking":true,"topic":"Player preview"},
+    {"criterionId":"CSS-AC-009","blocking":true,"topic":"Scene validation"},
+    {"criterionId":"CSS-AC-010","blocking":true,"topic":"Snapshot immutability"},
+    {"criterionId":"CSS-AC-011","blocking":true,"topic":"Exactly-once launch"},
+    {"criterionId":"CSS-AC-012","blocking":true,"topic":"Session entry"},
+    {"criterionId":"CSS-AC-013","blocking":true,"topic":"Event authority"},
+    {"criterionId":"CSS-AC-014","blocking":true,"topic":"Concurrency"},
+    {"criterionId":"CSS-AC-015","blocking":true,"topic":"Revocation"},
+    {"criterionId":"CSS-AC-016","blocking":true,"topic":"Bounded offline"},
+    {"criterionId":"CSS-AC-017","blocking":true,"topic":"History and migration"},
+    {"criterionId":"CSS-AC-018","blocking":true,"topic":"Accessibility and responsive parity"},
+    {"criterionId":"CSS-AC-019","blocking":true,"topic":"Diagnostics and support"},
+    {"criterionId":"CSS-AC-020","blocking":true,"topic":"Provider and cost boundary"}
+  ],
+  "zeroServiceRequirements": [
+    "no paid identity provider required for deterministic tests",
+    "no paid search service required",
+    "no paid realtime service required",
+    "no paid map or media service required",
+    "no paid notification service required",
+    "no paid analytics crash-reporting or ticketing service required",
+    "no AI required"
+  ],
+  "blockingFindings": [],
+  "nextDesignAction": "IA-D03-003 — Design MV-IA-F012, Encounter Builder and Balance Lab."
+}
