@@ -19,10 +19,11 @@ assert report["states"]["governed-multi-page-source-range"] == 2
 assert report["fieldLevelValidationEligibleRows"] == 107
 assert report["canonicalIdsAssigned"] == 0
 assert report["promotionReadyRows"] == 0
-assert page_match["pageCitationsAssigned"] == 54
+initial_unique = sum(1 for record in page_match["records"] if record["state"] == "unique-page-match")
+assert initial_unique == 54
 assert secondary["pageCitationsAssigned"] == 20
 assert visual["pageCitationsAssigned"] == 31
-assert 54 + 20 + 31 == report["singlePageCitations"]
+assert initial_unique + secondary["pageCitationsAssigned"] + visual["pageCitationsAssigned"] == report["singlePageCitations"]
 assert len(report["compositeRanges"]) == 2
 assert {entry["row"] for entry in report["compositeRanges"]} == {7, 11}
 for entry in report["compositeRanges"]:
