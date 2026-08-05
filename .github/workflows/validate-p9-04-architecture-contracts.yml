@@ -1,0 +1,27 @@
+name: Validate P9-04 Architecture Contracts
+
+on:
+  pull_request:
+    paths:
+      - 'governance/phase9/P9-04_*'
+      - 'scripts/validate-p9-04-architecture-contracts.py'
+      - '.github/workflows/validate-p9-04-architecture-contracts.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'governance/phase9/P9-04_*'
+      - 'scripts/validate-p9-04-architecture-contracts.py'
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-p9-04-architecture-contracts.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: p9-04-architecture-contract-validation
+          path: out/p9-04-architecture-contracts/P9-04_ARCHITECTURE_CONTRACT_VALIDATION.json
