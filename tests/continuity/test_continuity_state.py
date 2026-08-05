@@ -61,9 +61,10 @@ class ContinuityStateTests(unittest.TestCase):
     def test_false_completion_is_rejected_without_mutation(self) -> None:
         checkpoint = self.root / "governance/ai/work-state/MV-CONT-001-attempt-001.json"
         before = checkpoint.read_bytes()
+        revision = str(json.loads(checkpoint.read_text())["revision"])
         result = self.run_tool(
             "update", "--attempt-id", "MV-CONT-001-attempt-001",
-            "--expected-revision", "1", "--status", "completed_verified",
+            "--expected-revision", revision, "--status", "completed_verified",
             "--active-substep", "-", "--completed-at", "2026-08-05T22:10:00Z",
             expect=1,
         )
@@ -71,9 +72,11 @@ class ContinuityStateTests(unittest.TestCase):
         self.assertEqual(before, checkpoint.read_bytes())
 
     def test_checkpoint_update_refreshes_pointer_and_status(self) -> None:
+        checkpoint = self.root / "governance/ai/work-state/MV-CONT-001-attempt-001.json"
+        revision = str(json.loads(checkpoint.read_text())["revision"])
         self.run_tool(
             "update", "--attempt-id", "MV-CONT-001-attempt-001",
-            "--expected-revision", "1", "--status", "in_progress",
+            "--expected-revision", revision, "--status", "in_progress",
             "--active-substep", "Test atomic continuation.",
             "--next-action", "Resume the exact test substep.",
         )
