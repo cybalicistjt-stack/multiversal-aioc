@@ -1,0 +1,35 @@
+{
+  "documentId": "MV-8D-007-SCENARIOS-001",
+  "version": "0.1.0",
+  "scenarios": [
+    {"id":"install-uninstall","seed":7001,"steps":["snapshot-empty","install","assert-present","uninstall","assert-zero-residue"]},
+    {"id":"activate-or-use","seed":7002,"steps":["instantiate","activate","capture-output","deactivate","assert-source-unchanged"]},
+    {"id":"equip","seed":7003,"steps":["instantiate-actor","equip","assert-slot-state","unequip","assert-restored"]},
+    {"id":"resolve-output","seed":7004,"steps":["instantiate-source-target","resolve-once","capture-deterministic-result","repeat","assert-equal"]},
+    {"id":"load","seed":7005,"steps":["instantiate-host-ammo","load","assert-capacity-change"]},
+    {"id":"consume","seed":7006,"steps":["record-count","consume-one","assert-decrement","assert-no-negative"]},
+    {"id":"execute","seed":7007,"steps":["install-program","execute-fixed-input","capture-output","assert-repeatable"]},
+    {"id":"attach-detach","seed":7008,"steps":["instantiate-host","attach","assert-relationship","detach","assert-clean"]},
+    {"id":"activate","seed":7009,"steps":["activate-fixed-state","capture-effects","deactivate","assert-reversible"]},
+    {"id":"life-support-cycle","seed":7010,"steps":["initialize-resources","advance-fixed-duration","assert-consumption","assert-threshold-behavior"]},
+    {"id":"attune-or-install","seed":7011,"steps":["bind-host","assert-compatibility","unbind","assert-clean"]},
+    {"id":"movement-cycle","seed":7012,"steps":["initialize-position","apply-fixed-command","assert-position","reset","assert-repeatable"]},
+    {"id":"power-and-action-cycle","seed":7013,"steps":["initialize-power","allocate","activate-component","assert-budget","reset"]},
+    {"id":"power-and-movement-cycle","seed":7014,"steps":["initialize-power-position","allocate","move","assert-budget-and-position","reset"]},
+    {"id":"service-cycle","seed":7015,"steps":["initialize-facility","request-service","assert-output","reset"]},
+    {"id":"acquire-consume","seed":7016,"steps":["acquire-fixed-quantity","consume-fixed-quantity","assert-ledger"]},
+    {"id":"production-cycle","seed":7017,"steps":["initialize-inputs","advance-fixed-cycle","assert-output-and-waste"]},
+    {"id":"grant-revoke","seed":7018,"steps":["grant","assert-available","revoke","assert-unavailable"]},
+    {"id":"resolve-effect","seed":7019,"steps":["initialize-fixed-context","resolve","capture-effects","repeat","assert-equal"]},
+    {"id":"prepare-cast","seed":7020,"steps":["prepare","assert-resource-reservation","cast","assert-resource-change"]},
+    {"id":"bind-unbind","seed":7021,"steps":["bind","assert-owner-link","unbind","assert-clean"]},
+    {"id":"store-release","seed":7022,"steps":["store-charge-or-spell","assert-capacity","release","assert-decrement"]},
+    {"id":"place-remove","seed":7023,"steps":["place","assert-location","remove","assert-clean"]},
+    {"id":"trigger-resolve","seed":7024,"steps":["arm","trigger-fixed-context","resolve","assert-final-state"]}
+  ],
+  "migrationOutcome": {
+    "sameVersion": "identity-and-fingerprint-stable",
+    "compatibleVersion": "migration-explicit-and-reversible",
+    "incompatibleVersion": "blocked-with-diagnostic"
+  }
+}
