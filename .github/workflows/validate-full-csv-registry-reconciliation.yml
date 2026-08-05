@@ -1,0 +1,24 @@
+name: Validate Full CSV Registry Reconciliation
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/FULL_REGISTRY_RECONCILIATION_CONTRACT.json'
+      - 'scripts/run-full-csv-registry-reconciliation.py'
+      - '.github/workflows/validate-full-csv-registry-reconciliation.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run full CSV registry reconciliation
+        run: python scripts/run-full-csv-registry-reconciliation.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-full-registry-reconciliation-19199
+          path: build/csv-full-registry-reconciliation-l63/
