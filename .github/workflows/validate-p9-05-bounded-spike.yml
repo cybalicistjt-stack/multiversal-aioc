@@ -1,0 +1,26 @@
+name: Validate P9-05 Bounded Spike
+
+on:
+  pull_request:
+    paths:
+      - 'governance/phase9/P9-05_*'
+      - 'scripts/validate-p9-05-bounded-spike.py'
+      - '.github/workflows/validate-p9-05-bounded-spike.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-p9-05-bounded-spike.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: p9-05-bounded-spike-validation
+          path: out/p9-05/P9-05_VALIDATION.json

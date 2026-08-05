@@ -1,0 +1,78 @@
+{
+  "documentId": "MV-P9-05-BOUNDED-SPIKE-COST-001",
+  "version": "0.1.0",
+  "status": "complete-validated-no-live-service",
+  "owner": "John Brandon Turner",
+  "source": "P9-04 Postgres-centered architecture contracts",
+  "scope": {
+    "localAndEphemeralOnly": true,
+    "paidServicesAllowed": false,
+    "productionInfrastructureAllowed": false,
+    "vendorCredentialsAllowed": false,
+    "applicationImplementationAllowed": false
+  },
+  "spike": {
+    "model": "provider-neutral local simulation of a Postgres-centered managed backend",
+    "devices": 2,
+    "actors": ["gm", "player"],
+    "scenarios": [
+      "identity-to-profile resolution",
+      "campaign membership and row isolation",
+      "subscription and sponsored-month entitlement evaluation",
+      "authoritative command acceptance and rejection",
+      "ordered realtime event delivery",
+      "disconnect, checkpoint, reconnect and deterministic restoration",
+      "hidden-information filtering",
+      "migration forward and rollback rehearsal",
+      "backup, restore and provider-exit export"
+    ],
+    "deterministicRuns": 36,
+    "expectedFailuresInjected": 8,
+    "expectedFailuresDetected": 8,
+    "unexpectedFailures": 0,
+    "sourceTruthChanged": false,
+    "residue": 0
+  },
+  "capacityEnvelope": {
+    "internalAlpha": {
+      "concurrentSessions": 10,
+      "concurrentUsers": 50,
+      "monthlyActiveUsers": 200,
+      "commandsPerSessionHour": 1200,
+      "realtimeEventsPerSessionHour": 3600,
+      "checkpointIntervalSeconds": 30,
+      "checkpointRetentionDays": 14,
+      "databaseStorageGiB": 5,
+      "objectStorageGiB": 10,
+      "monthlyEgressGiB": 25
+    },
+    "guardrails": [
+      "hard usage alerts at 50, 75 and 90 percent",
+      "session command and event rate limits",
+      "bounded checkpoint retention",
+      "no unbounded debug payloads",
+      "no production-grade availability promise during internal alpha"
+    ]
+  },
+  "costEnvelopeUsdPerMonth": {
+    "floor": 0,
+    "targetMaximum": 25,
+    "hardOwnerReviewThreshold": 35,
+    "includedCategories": ["database", "identity", "realtime", "server functions", "storage", "egress", "logs and backups"],
+    "excludedWithoutSeparateApproval": ["paid observability suite", "edge session coordinator", "premium support", "custom domains", "production redundancy"]
+  },
+  "exitEvidence": {
+    "logicalSchemaExport": "required",
+    "dataExport": "required",
+    "eventJournalExport": "required",
+    "checkpointExport": "required",
+    "identityMappingExport": "required",
+    "restoreToCleanLocalPostgres": "pass"
+  },
+  "result": {
+    "architectureFeasibleForBoundedAlpha": true,
+    "recommendedNextStep": "P9-06 implementation backlog and acceptance-gate package",
+    "liveVendorSelectionRequiredNow": false,
+    "spendingRequiredNow": false
+  }
+}
