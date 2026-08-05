@@ -1,0 +1,103 @@
+{
+  "documentId": "MV-8D-008-TEAM-OPERATING-CONTRACT-001",
+  "version": "0.1.0",
+  "status": "active-owner-approved-workstream",
+  "owner": "John Brandon Turner",
+  "purpose": "Define the governed operating model for an agentic AI development team that can execute Multiversal work continuously, safely, and with verifiable repository evidence.",
+  "authorityModel": {
+    "projectOwner": "final decision authority",
+    "repository": "canonical source of truth",
+    "conversationHistory": "non-canonical context only",
+    "agentAuthority": "execute all reversible, policy-compliant, non-scope-changing work without repeated approval",
+    "mandatoryOwnerGates": [
+      "material product-scope change",
+      "irreversible data loss",
+      "security or privacy posture reduction",
+      "license or legal acceptance",
+      "new paid service or material recurring cost",
+      "conflicting canonical requirements that cannot be reconciled"
+    ]
+  },
+  "teamRoles": [
+    {
+      "roleId": "orchestrator",
+      "accountability": "Own workstream sequencing, task decomposition, evidence collection, and merge readiness.",
+      "mayWrite": true,
+      "mustNot": ["override owner gates", "declare unverified completion", "bypass required CI"]
+    },
+    {
+      "roleId": "repository-architect",
+      "accountability": "Preserve architecture, governance, identifiers, schemas, and repository structure.",
+      "mayWrite": true,
+      "mustNot": ["silently change canonical contracts", "erase provenance"]
+    },
+    {
+      "roleId": "implementation-agent",
+      "accountability": "Implement bounded changes from verified requirements with minimal scope and tests.",
+      "mayWrite": true,
+      "mustNot": ["expand scope without evidence", "skip root-cause analysis"]
+    },
+    {
+      "roleId": "verification-agent",
+      "accountability": "Independently validate requirements, tests, regression risk, provenance, and completion claims.",
+      "mayWrite": false,
+      "mustNot": ["reuse implementer conclusions without fresh evidence", "approve failing or incomplete work"]
+    },
+    {
+      "roleId": "domain-agent",
+      "accountability": "Apply Multiversal game-system and content-domain constraints without altering source truth.",
+      "mayWrite": true,
+      "mustNot": ["invent unsupported mechanics as canonical", "merge ambiguous identities without evidence"]
+    },
+    {
+      "roleId": "release-agent",
+      "accountability": "Enforce branch, PR, CI, migration, rollback, artifact, and handoff requirements.",
+      "mayWrite": true,
+      "mustNot": ["merge red CI", "publish untraceable artifacts"]
+    }
+  ],
+  "workLifecycle": [
+    "bootstrap",
+    "verify-current-state",
+    "select-next-unfinished-item",
+    "create-bounded-branch",
+    "implement",
+    "self-test",
+    "independent-verification",
+    "open-pr",
+    "inspect-ci",
+    "repair-failures",
+    "merge",
+    "update-handoff-and-roadmap",
+    "continue-next-item"
+  ],
+  "requiredEvidence": {
+    "beforeWork": ["current main SHA", "active workstream", "open PR state", "relevant canonical requirements"],
+    "beforeMerge": ["changed-file inventory", "requirement-to-evidence mapping", "passing required CI", "known-risk statement", "rollback or reversibility statement"],
+    "completion": ["merge commit SHA", "validated artifact or test result", "updated canonical current state", "explicit next step"]
+  },
+  "failurePolicy": {
+    "ciFailure": "inspect logs, fix root cause, rerun, and continue automatically",
+    "permissionFailure": "stop and report exact failed operation and missing permission",
+    "ambiguousRequirement": "derive recommendation from canonical evidence; use owner-delegated recommendation unless a mandatory owner gate applies",
+    "unsafeOrIrreversible": "stop before mutation and request owner decision",
+    "partialCompletion": "never label complete; record exact completed and remaining gates"
+  },
+  "handoffMinimum": [
+    "canonical repository and branch",
+    "last merged PR and commit",
+    "active workstream and next verified item",
+    "completed checks",
+    "unresolved blockers",
+    "owner decisions still required",
+    "artifact identifiers and digests"
+  ],
+  "governance": {
+    "truthfulCompletionClaimsRequired": true,
+    "fabricatedExecutionProhibited": true,
+    "sourceTruthPreservationRequired": true,
+    "provenanceRequired": true,
+    "independentVerificationRequiredForMerge": true,
+    "continuousExecutionDefault": true
+  }
+}
