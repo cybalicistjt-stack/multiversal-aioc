@@ -1,0 +1,24 @@
+name: Validate P1 Abilities Magic Hazards Consolidated Tranche
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/P1_ABILITIES_MAGIC_HAZARDS_CONSOLIDATED_TRANCHE_CONTRACT.json'
+      - 'scripts/run-p1-abilities-magic-hazards-consolidated-tranche.py'
+      - '.github/workflows/validate-p1-abilities-magic-hazards-consolidated-tranche.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run consolidated abilities magic hazards tranche
+        run: python scripts/run-p1-abilities-magic-hazards-consolidated-tranche.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-p1-abilities-magic-hazards-consolidated-tranche-8603
+          path: build/csv-p1-abilities-magic-hazards-consolidated-tranche-l62/
