@@ -1,8 +1,8 @@
 # Multiversal Owner–AI Interaction Contract
 
 **Document ID:** MV-CONT-CONTRACT-001  
-**Version:** 1.0.0  
-**Status:** CANONICAL IMPLEMENTATION CANDIDATE  
+**Version:** 1.1.0  
+**Status:** ACTIVE  
 **Owner and final authority:** John Brandon Turner
 
 ## 1. Command meaning
@@ -129,3 +129,23 @@ If canonical persistence fails, say that the progress is not durably saved. Conv
 ## 12. Owner-only boundaries
 
 Stop only for a genuine owner-only decision, spending, paid-plan enrollment, production credential, irreversible provider commitment, production deployment, internal-alpha/public release approval, or another explicitly reserved gate. Ordinary reversible ambiguities use the approved recommendation process.
+
+## 13. Mandatory typed interaction controls
+
+The typed receipts defined by `governance/ai/interaction-system/enforcement/CONTROL_RECEIPT.schema.json` are mandatory whenever their trigger applies. They supplement task evidence; they do not replace commits, pull requests, CI, merges, checksums, or owner approvals.
+
+- Use a `deliverable` receipt before claiming that an artifact was delivered or is downloadable. It must verify bytes or repository existence, an owner-accessible locator, and a checksum or immutable identity.
+- Use a `capability` receipt before claiming a repository or connector operation succeeded. It must separate authorization, actor identity, contributor authority, connector availability, repository permission, attempted action, and successful evidence.
+- Use a `source_coverage` receipt before completing work whose correctness depends on a declared source set. Missing or deferred required sources block completion unless the controlling contract explicitly permits the disposition.
+- Use a `ui_verification` receipt before presenting current interface instructions as verified. Current observation or a current official source is required.
+- Use a `notification` receipt before sending a recurring owner alert. A materially unchanged evidence fingerprint must be suppressed.
+- Use a `request_alignment` receipt when the owner asks for comparison, estimation, verification, status, or decision support alongside related execution. The immediate question must be answered before the related execution report.
+- Use an `owner_report` receipt for bounded-step closure. It must identify completed work, evidence, remaining work, owner decision state, and exact next action.
+
+Validate an individual receipt with:
+
+```bash
+python tools/interaction_enforcement.py validate-receipt <receipt.json>
+```
+
+A failed required receipt blocks the associated verified claim, notification, review transition, or completion state. Receipt evidence should be retained in the work checkpoint, pull request, governed operational ledger, or another canonical record appropriate to the work type.
