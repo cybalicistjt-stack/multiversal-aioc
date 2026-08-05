@@ -34,6 +34,34 @@ class ContinuityStateTests(unittest.TestCase):
         self.assertEqual(expect, result.returncode, result.stdout + result.stderr)
         return result
 
+    def make_primary_unfinished(self, *, strip_completion_evidence: bool = False) -> tuple[Path, int]:
+        checkpoint_path = self.root / "governance/ai/work-state/MV-CONT-001-attempt-001.json"
+        checkpoint = json.loads(checkpoint_path.read_text())
+        checkpoint["status"] = "in_progress"
+        checkpoint["completed_at"] = None
+        checkpoint["active_substep"] = "Synthetic unfinished regression fixture."
+        checkpoint["next_action"] = "Exercise the requested checkpoint transition."
+        checkpoint["updated_at"] = "2026-08-05T22:40:00+00:00"
+        checkpoint["roadmap_projection_pending"] = True
+        if strip_completion_evidence:
+            tokens = (checkpoint["work_item_id"], checkpoint["attempt_id"])
+            checkpoint["evidence"] = [
+                item for item in checkpoint["evidence"]
+                if not any(token in item["value"] for token in tokens)
+            ]
+        checkpoint_path.write_text(json.dumps(checkpoint, indent=2) + "\n")
+
+        pointer_path = self.root / "governance/ai/runtime/CURRENT_WORK_POINTER.json"
+        pointer = json.loads(pointer_path.read_text())
+        pointer["updated_at"] = checkpoint["updated_at"]
+        entry = next(item for item in pointer["active_attempts"] if item["attempt_id"] == checkpoint["attempt_id"])
+        entry["status"] = checkpoint["status"]
+        entry["updated_at"] = checkpoint["updated_at"]
+        entry["roadmap_projection_pending"] = True
+        pointer_path.write_text(json.dumps(pointer, indent=2) + "\n")
+        self.run_tool("refresh-status")
+        return checkpoint_path, checkpoint["revision"]
+
     def test_repository_baseline_validates(self) -> None:
         result = self.run_tool("validate")
         self.assertIn("PASS", result.stdout)
@@ -59,24 +87,22 @@ class ContinuityStateTests(unittest.TestCase):
         self.assertIn("attempt already exists", result.stderr)
 
     def test_false_completion_is_rejected_without_mutation(self) -> None:
-        checkpoint = self.root / "governance/ai/work-state/MV-CONT-001-attempt-001.json"
+        checkpoint, revision = self.make_primary_unfinished(strip_completion_evidence=True)
         before = checkpoint.read_bytes()
-        revision = str(json.loads(checkpoint.read_text())["revision"])
         result = self.run_tool(
             "update", "--attempt-id", "MV-CONT-001-attempt-001",
-            "--expected-revision", revision, "--status", "completed_verified",
-            "--active-substep", "-", "--completed-at", "2026-08-05T22:10:00Z",
+            "--expected-revision", str(revision), "--status", "completed_verified",
+            "--active-substep", "-", "--completed-at", "2026-08-05T22:41:00Z",
             expect=1,
         )
         self.assertIn("completion evidence missing", result.stderr)
         self.assertEqual(before, checkpoint.read_bytes())
 
     def test_checkpoint_update_refreshes_pointer_and_status(self) -> None:
-        checkpoint = self.root / "governance/ai/work-state/MV-CONT-001-attempt-001.json"
-        revision = str(json.loads(checkpoint.read_text())["revision"])
+        _, revision = self.make_primary_unfinished()
         self.run_tool(
             "update", "--attempt-id", "MV-CONT-001-attempt-001",
-            "--expected-revision", revision, "--status", "in_progress",
+            "--expected-revision", str(revision), "--status", "in_progress",
             "--active-substep", "Test atomic continuation.",
             "--next-action", "Resume the exact test substep.",
         )
