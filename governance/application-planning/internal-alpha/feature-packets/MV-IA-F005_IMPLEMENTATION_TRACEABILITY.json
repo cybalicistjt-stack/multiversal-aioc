@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "1.0.0",
+  "programId": "MV-IA-001",
+  "featureId": "MV-IA-F005",
+  "featureVersion": "0.1.0",
+  "status": "implementation-ready-design-traceability",
+  "owner": "John Brandon Turner",
+  "targetRepository": "cybalicistjt-stack/Multiversal-app",
+  "implementationStatus": "not-started-dependency-gated",
+  "workOrderTitle": "Implement MV-IA-F005 Campaign, Scene, and Session Builder vertical slice",
+  "requiredPredecessors": [
+    "active P9-06 implementation dependencies",
+    "IA-D02-006 shared-foundation conformance",
+    "MV-IA-F004 Character Creation and Advancement contracts",
+    "provider-neutral persistence, migration, backup, restore, and provider-exit ports"
+  ],
+  "implementationSlices": [
+    {"sliceId":"CSS-IMP-01","name":"Campaign aggregate and policy binding","criteria":["CSS-AC-001","CSS-AC-002","CSS-AC-003","CSS-AC-014","CSS-AC-017"]},
+    {"sliceId":"CSS-IMP-02","name":"Invitation membership role and Character-control lifecycle","criteria":["CSS-AC-003","CSS-AC-004","CSS-AC-012","CSS-AC-015"]},
+    {"sliceId":"CSS-IMP-03","name":"Scene aggregate placements notes and governed selection","criteria":["CSS-AC-005","CSS-AC-006","CSS-AC-007","CSS-AC-009","CSS-AC-014"]},
+    {"sliceId":"CSS-IMP-04","name":"Role-safe projections and preview as Player","criteria":["CSS-AC-007","CSS-AC-008","CSS-AC-015","CSS-AC-018"]},
+    {"sliceId":"CSS-IMP-05","name":"Launch readiness immutable snapshot and exactly-once launch","criteria":["CSS-AC-009","CSS-AC-010","CSS-AC-011","CSS-AC-012"]},
+    {"sliceId":"CSS-IMP-06","name":"Session shell Event recovery and lifecycle","criteria":["CSS-AC-011","CSS-AC-012","CSS-AC-013","CSS-AC-015","CSS-AC-016"]},
+    {"sliceId":"CSS-IMP-07","name":"Recovery migration export and diagnostics","criteria":["CSS-AC-014","CSS-AC-016","CSS-AC-017","CSS-AC-019","CSS-AC-020"]},
+    {"sliceId":"CSS-IMP-08","name":"Responsive and accessible GM and Player journeys","criteria":["CSS-AC-018"]}
+  ],
+  "requiredPorts": [
+    "CampaignRepositoryPort", "SceneRepositoryPort", "SessionRepositoryPort",
+    "MembershipAndInvitationPort", "CharacterControlPort", "AuthorizationAndProjectionPort",
+    "EntitlementEvaluationPort", "PackRegistryAndLockPort", "ObjectQueryAndSelectionPort",
+    "ValidationAndCompatibilityPort", "RealtimeAdvisoryPort", "EventStoreAndProjectionPort",
+    "NotificationPort", "MediaReferencePort", "BackupRestoreExportPort", "ClockPort", "IdGeneratorPort"
+  ],
+  "requiredEvidence": [
+    "domain and contract test report",
+    "permission and hidden-information matrix result",
+    "cross-Campaign isolation result",
+    "invitation idempotency result",
+    "Scene validation and Player-preview result",
+    "launch-snapshot immutability result",
+    "duplicate and ambiguous launch result",
+    "Session entry and Character-control result",
+    "Event-gap and reconnect recovery result",
+    "migration backup restore and export result",
+    "accessibility and responsive parity result",
+    "performance budget result",
+    "zero-service deterministic adapter result"
+  ],
+  "acceptanceTraceability": [
+    {"criterionId":"CSS-AC-001","packetSection":"19","matrixArea":"operationTypes","primaryEvidence":"Campaign command contract and integration test"},
+    {"criterionId":"CSS-AC-002","packetSection":"5","matrixArea":"launchSnapshotModel","primaryEvidence":"policy and pack-lock persistence test"},
+    {"criterionId":"CSS-AC-003","packetSection":"3","matrixArea":"deniedCases","primaryEvidence":"role and grant separation tests"},
+    {"criterionId":"CSS-AC-004","packetSection":"6","matrixArea":"lifecycleStates.invitation","primaryEvidence":"invitation lifecycle and duplicate-command tests"},
+    {"criterionId":"CSS-AC-005","packetSection":"5","matrixArea":"placementModel","primaryEvidence":"authorized stable-ID selection tests"},
+    {"criterionId":"CSS-AC-006","packetSection":"5","matrixArea":"placementModel","primaryEvidence":"source Definition immutability tests"},
+    {"criterionId":"CSS-AC-007","packetSection":"9","matrixArea":"fieldClasses","primaryEvidence":"projection and inference-leak tests"},
+    {"criterionId":"CSS-AC-008","packetSection":"7","matrixArea":"fieldClasses","primaryEvidence":"server-generated preview equivalence tests"},
+    {"criterionId":"CSS-AC-009","packetSection":"6","matrixArea":"validationClasses","primaryEvidence":"launch-readiness validation corpus"},
+    {"criterionId":"CSS-AC-010","packetSection":"5","matrixArea":"launchSnapshotModel","primaryEvidence":"snapshot immutability and post-launch-edit tests"},
+    {"criterionId":"CSS-AC-011","packetSection":"12","matrixArea":"recoveryStates","primaryEvidence":"duplicate and ambiguous launch tests"},
+    {"criterionId":"CSS-AC-012","packetSection":"6","matrixArea":"deniedCases","primaryEvidence":"Session entry authorization and Character-control tests"},
+    {"criterionId":"CSS-AC-013","packetSection":"12","matrixArea":"eventTypes","primaryEvidence":"Event replay and realtime-loss tests"},
+    {"criterionId":"CSS-AC-014","packetSection":"8","matrixArea":"recoveryStates","primaryEvidence":"expected-version and conflict-preservation tests"},
+    {"criterionId":"CSS-AC-015","packetSection":"9","matrixArea":"deniedCases","primaryEvidence":"mid-workflow revocation tests"},
+    {"criterionId":"CSS-AC-016","packetSection":"12","matrixArea":"offlineRules","primaryEvidence":"offline denied-operation tests"},
+    {"criterionId":"CSS-AC-017","packetSection":"11","matrixArea":"eventTypes","primaryEvidence":"migration backup restore export round trip"},
+    {"criterionId":"CSS-AC-018","packetSection":"14","matrixArea":"requiredSharedContracts","primaryEvidence":"accessibility and responsive journey tests"},
+    {"criterionId":"CSS-AC-019","packetSection":"17","matrixArea":"fieldClasses","primaryEvidence":"diagnostic redaction and support-access tests"},
+    {"criterionId":"CSS-AC-020","packetSection":"21","matrixArea":"zeroServiceRequirements","primaryEvidence":"local deterministic adapter test suite"}
+  ],
+  "ownerGates": [
+    "production provider selection",
+    "spending or paid service activation",
+    "production credentials",
+    "real tester-data collection and retention",
+    "canonical promotion of Campaign-local content",
+    "internal-alpha release",
+    "production deployment",
+    "public release"
+  ],
+  "rollbackAndRecovery": [
+    "expected-version conflict preservation",
+    "immutable launch snapshots",
+    "durable Event replay",
+    "verified checkpoint restore",
+    "pre-migration backup reference",
+    "rollback or forward-recovery plan",
+    "provider-neutral export"
+  ],
+  "nextDesignAction": "IA-D03-003 — Design MV-IA-F012, Encounter Builder and Balance Lab."
+}
