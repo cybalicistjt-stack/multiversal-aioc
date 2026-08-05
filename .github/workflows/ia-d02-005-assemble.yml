@@ -1,0 +1,27 @@
+name: Assemble IA-D02-005
+
+on:
+  push:
+    branches:
+      - governance/mv-ia-d02-005-onboarding-help-diagnostics
+    paths:
+      - governance/application-planning/internal-alpha/.assembly/**
+      - .github/workflows/ia-d02-005-assemble.yml
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: governance/mv-ia-d02-005-onboarding-help-diagnostics
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Assemble and validate IA-D02-005
+        run: python governance/application-planning/internal-alpha/.assembly/assemble_ia_d02_005.py
