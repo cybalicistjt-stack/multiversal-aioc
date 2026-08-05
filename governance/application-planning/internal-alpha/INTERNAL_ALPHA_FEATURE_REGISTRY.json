@@ -1,11 +1,24 @@
 {
   "schemaVersion": "1.0.0",
   "programId": "MV-IA-001",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "status": "active-design",
   "owner": "John Brandon Turner",
-  "classificationValues": ["entry-critical", "alpha-required", "experimental", "deferred"],
-  "designStatusValues": ["registered", "packet-in-progress", "implementation-ready", "implemented", "validated", "alpha-ready", "deferred"],
+  "classificationValues": [
+    "entry-critical",
+    "alpha-required",
+    "experimental",
+    "deferred"
+  ],
+  "designStatusValues": [
+    "registered",
+    "packet-in-progress",
+    "implementation-ready",
+    "implemented",
+    "validated",
+    "alpha-ready",
+    "deferred"
+  ],
   "features": [
     {
       "featureId": "MV-IA-F001",
@@ -29,7 +42,10 @@
       "area": "Platform",
       "historicalModule": "Pack Import, Validation & Registry",
       "summary": "Browse, search, filter, inspect, compare, trace provenance, traverse relationships, and select governed objects.",
-      "dependencies": ["MV-IA-F001", "MV-IA-F024"],
+      "dependencies": [
+        "MV-IA-F001",
+        "MV-IA-F024"
+      ],
       "alphaSlice": "Real approved object can be found, inspected, and selected into Character and Scene workflows.",
       "fullScopeDeferred": false,
       "designOrder": 2,
@@ -46,14 +62,20 @@
       "area": "Platform",
       "historicalModule": "Content Library & Entitlements",
       "summary": "Identity entry, role-aware dashboards, invitations, recent work, notifications, and permission-safe workspaces.",
-      "dependencies": ["MV-IA-F001", "MV-IA-F019", "MV-IA-F020"],
+      "dependencies": [
+        "MV-IA-F001",
+        "MV-IA-F019",
+        "MV-IA-F020"
+      ],
       "alphaSlice": "Distinct Player and GM identities enter only authorized Campaign and Session workspaces.",
       "fullScopeDeferred": false,
       "designOrder": 3,
       "designStatus": "implementation-ready",
       "packetPath": "feature-packets/MV-IA-F003_IDENTITY_DASHBOARD_AND_WORKSPACE_SELECTION.md",
       "packetVersion": "0.1.0",
-      "companionFiles": ["feature-packets/MV-IA-F003_IDENTITY_WORKSPACE_MATRIX.json"],
+      "companionFiles": [
+        "feature-packets/MV-IA-F003_IDENTITY_WORKSPACE_MATRIX.json"
+      ],
       "implementationBoundary": "Design complete; application implementation remains dependency-gated by the active P9-06 sequence and concrete identity, permission, entitlement, persistence, backup, restore, provider-exit, and caller-workflow foundations."
     },
     {
@@ -64,7 +86,12 @@
       "area": "Player Tools",
       "historicalModule": "Character Creation & Advancement",
       "summary": "Create, validate, save, reopen, advance, and use a Character with governed species, Abilities, Resources, inventory, and history.",
-      "dependencies": ["MV-IA-F002", "MV-IA-F003", "MV-IA-F019", "MV-IA-F024"],
+      "dependencies": [
+        "MV-IA-F002",
+        "MV-IA-F003",
+        "MV-IA-F019",
+        "MV-IA-F024"
+      ],
       "alphaSlice": "Bounded Character creation and advancement for the approved alpha Campaign and rules profile.",
       "fullScopeDeferred": false,
       "designOrder": 4,
@@ -78,7 +105,12 @@
       "area": "GM Tools",
       "historicalModule": "Campaign, Scene & Session Builder",
       "summary": "Create Campaigns, invite participants, bind packs, build Scenes, configure hidden information, and launch Sessions.",
-      "dependencies": ["MV-IA-F002", "MV-IA-F003", "MV-IA-F004", "MV-IA-F024"],
+      "dependencies": [
+        "MV-IA-F002",
+        "MV-IA-F003",
+        "MV-IA-F004",
+        "MV-IA-F024"
+      ],
       "alphaSlice": "GM creates a Campaign and Scene with real objects, saves it, previews Player visibility, and launches play.",
       "fullScopeDeferred": false,
       "designOrder": 5,
@@ -92,7 +124,13 @@
       "area": "Core Play",
       "historicalModule": "Combat & Action Resolution",
       "summary": "Player Action proposal, authoritative validation, GM inspection, approve/deny/modify decision, persistent result, and synchronized projections.",
-      "dependencies": ["MV-IA-F003", "MV-IA-F004", "MV-IA-F005", "MV-IA-F020", "MV-IA-F021"],
+      "dependencies": [
+        "MV-IA-F003",
+        "MV-IA-F004",
+        "MV-IA-F005",
+        "MV-IA-F020",
+        "MV-IA-F021"
+      ],
       "alphaSlice": "Complete Campaign to Character to Scene to Action to GM decision to persistent result journey.",
       "fullScopeDeferred": false,
       "designOrder": 6,
@@ -106,7 +144,11 @@
       "area": "Core Play",
       "historicalModule": "Combat & Action Resolution",
       "summary": "Encounter order, participants, movement, targeting, Resources, Conditions, NPC Actions, GM controls, and encounter completion.",
-      "dependencies": ["MV-IA-F006", "MV-IA-F012", "MV-IA-F013"],
+      "dependencies": [
+        "MV-IA-F006",
+        "MV-IA-F012",
+        "MV-IA-F013"
+      ],
       "alphaSlice": "One complete bounded encounter without development-only tools.",
       "fullScopeDeferred": false,
       "designOrder": 13,
@@ -120,7 +162,12 @@
       "area": "Player Tools",
       "historicalModule": "Inventory, Ownership & Shared Assets",
       "summary": "Personal, shared, container, party, Scene, shop, and vehicle Assets with ownership, custody, permissions, equipment, transfer, repair, crafting, and salvage.",
-      "dependencies": ["MV-IA-F002", "MV-IA-F004", "MV-IA-F005", "MV-IA-F020"],
+      "dependencies": [
+        "MV-IA-F002",
+        "MV-IA-F004",
+        "MV-IA-F005",
+        "MV-IA-F020"
+      ],
       "alphaSlice": "Acquire, equip, transfer, share, save, and reload Assets without duplication or loss.",
       "fullScopeDeferred": false,
       "designOrder": 14,
@@ -134,7 +181,11 @@
       "area": "Social Play",
       "historicalModule": "Relationship Tracker",
       "summary": "Directional relationships, history, thresholds, visibility, obligations, promises, debts, attitudes, and mechanical consequences.",
-      "dependencies": ["MV-IA-F002", "MV-IA-F005", "MV-IA-F020"],
+      "dependencies": [
+        "MV-IA-F002",
+        "MV-IA-F005",
+        "MV-IA-F020"
+      ],
       "alphaSlice": "Track Character-to-NPC and faction relationships through at least one persistent change and reveal boundary.",
       "fullScopeDeferred": false,
       "designOrder": 8,
@@ -148,7 +199,11 @@
       "area": "Social Play",
       "historicalModule": "Social Interaction Mode",
       "summary": "Structured conversations, influence, negotiation, reputation, promises, debts, social Conditions, and GM-only information.",
-      "dependencies": ["MV-IA-F006", "MV-IA-F009", "MV-IA-F016"],
+      "dependencies": [
+        "MV-IA-F006",
+        "MV-IA-F009",
+        "MV-IA-F016"
+      ],
       "alphaSlice": "One social Scene produces a persistent relationship, reputation, promise, debt, or Condition change.",
       "fullScopeDeferred": false,
       "designOrder": 16,
@@ -162,7 +217,12 @@
       "area": "Exploration",
       "historicalModule": "Investigation & Clue Board",
       "summary": "Clues, evidence, witnesses, discoveries, hypotheses, false leads, permissions, relationships, and nonlinear progress.",
-      "dependencies": ["MV-IA-F002", "MV-IA-F005", "MV-IA-F020", "MV-IA-F009"],
+      "dependencies": [
+        "MV-IA-F002",
+        "MV-IA-F005",
+        "MV-IA-F020",
+        "MV-IA-F009"
+      ],
       "alphaSlice": "Discover, link, and review clues without exposing GM truth; preserve unresolved hypotheses separately from facts.",
       "fullScopeDeferred": false,
       "designOrder": 17,
@@ -176,7 +236,11 @@
       "area": "GM Tools",
       "historicalModule": "Encounter Builder & Balance Lab",
       "summary": "Compose encounters, validate dependencies, estimate pressure, run bounded simulations, and preserve uncertainty.",
-      "dependencies": ["MV-IA-F002", "MV-IA-F005", "MV-IA-F024"],
+      "dependencies": [
+        "MV-IA-F002",
+        "MV-IA-F005",
+        "MV-IA-F024"
+      ],
       "alphaSlice": "GM assembles one encounter and receives source-grounded warnings without guaranteed-balance claims.",
       "fullScopeDeferred": false,
       "designOrder": 11,
@@ -190,7 +254,11 @@
       "area": "Core Play",
       "historicalModule": "Maps, Zones & Tactical Positioning",
       "summary": "Maps or visuals, zones, movement, range, visibility, hazards, tokens, and accessible alternatives.",
-      "dependencies": ["MV-IA-F005", "MV-IA-F007", "MV-IA-F020"],
+      "dependencies": [
+        "MV-IA-F005",
+        "MV-IA-F007",
+        "MV-IA-F020"
+      ],
       "alphaSlice": "Upload a map or use a bounded zone model; advanced map creation remains optional.",
       "fullScopeDeferred": true,
       "designOrder": 18,
@@ -204,7 +272,11 @@
       "area": "Core Play",
       "historicalModule": "Vehicle, Mecha & Starship Operations",
       "summary": "Crew roles, stations, systems, movement, damage, Resources, modules, cargo, and encounters across scales.",
-      "dependencies": ["MV-IA-F007", "MV-IA-F008", "MV-IA-F013"],
+      "dependencies": [
+        "MV-IA-F007",
+        "MV-IA-F008",
+        "MV-IA-F013"
+      ],
       "alphaSlice": "Basic shared vehicle ownership, access, equipment, and Scene participation.",
       "fullScopeDeferred": true,
       "designOrder": 20,
@@ -218,7 +290,11 @@
       "area": "GM Tools",
       "historicalModule": "World & Setting Builder",
       "summary": "Create, relate, validate, preview, and package Worlds, Regions, Locations, factions, cultures, environments, history, and timelines.",
-      "dependencies": ["MV-IA-F002", "MV-IA-F005", "MV-IA-F024"],
+      "dependencies": [
+        "MV-IA-F002",
+        "MV-IA-F005",
+        "MV-IA-F024"
+      ],
       "alphaSlice": "Create or clone a bounded Location or faction Definition, validate it, and use it in a Campaign without canonical promotion.",
       "fullScopeDeferred": false,
       "designOrder": 19,
@@ -232,7 +308,11 @@
       "area": "Social Play",
       "historicalModule": "Factions, Reputation & Organizations",
       "summary": "Faction Definitions, membership, standing, influence, Assets, agendas, conflicts, and Campaign-local state.",
-      "dependencies": ["MV-IA-F009", "MV-IA-F015", "MV-IA-F020"],
+      "dependencies": [
+        "MV-IA-F009",
+        "MV-IA-F015",
+        "MV-IA-F020"
+      ],
       "alphaSlice": "One faction relationship and reputation path changes through play and remains permission-safe.",
       "fullScopeDeferred": false,
       "designOrder": 15,
@@ -246,7 +326,11 @@
       "area": "GM Tools",
       "historicalModule": "Adventure & Story Flow Runtime",
       "summary": "Objectives, Scenes, routes, branches, clocks, flags, consequences, endings, and persistent adventure state.",
-      "dependencies": ["MV-IA-F005", "MV-IA-F010", "MV-IA-F011"],
+      "dependencies": [
+        "MV-IA-F005",
+        "MV-IA-F010",
+        "MV-IA-F011"
+      ],
       "alphaSlice": "Run one bounded adventure path with at least one meaningful branch and persistent consequence.",
       "fullScopeDeferred": false,
       "designOrder": 21,
@@ -260,7 +344,11 @@
       "area": "Player Tools",
       "historicalModule": "Downtime, Crafting & Projects",
       "summary": "Long-term projects, crafting, research, recovery, training, time, Resources, and economic activity.",
-      "dependencies": ["MV-IA-F004", "MV-IA-F008", "MV-IA-F017"],
+      "dependencies": [
+        "MV-IA-F004",
+        "MV-IA-F008",
+        "MV-IA-F017"
+      ],
       "alphaSlice": "One bounded crafting, recovery, research, or training Project persists through completion.",
       "fullScopeDeferred": true,
       "designOrder": 22,
@@ -274,7 +362,9 @@
       "area": "Platform",
       "historicalModule": "Content Library & Entitlements",
       "summary": "Browse approved content, evaluate free and granted access, enforce restrictions, and preserve access reasons.",
-      "dependencies": ["MV-IA-F024"],
+      "dependencies": [
+        "MV-IA-F024"
+      ],
       "alphaSlice": "Approved alpha users can access only permitted content, including free tiers and Campaign grants.",
       "fullScopeDeferred": false,
       "designOrder": 2,
@@ -288,14 +378,23 @@
       "area": "Platform",
       "historicalModule": null,
       "summary": "Default-deny role, Campaign, object, field, query, search, realtime, export, and AI visibility controls.",
-      "dependencies": ["MV-IA-F001", "MV-IA-F002", "MV-IA-F003", "MV-IA-F019", "MV-IA-F021", "MV-IA-F024"],
+      "dependencies": [
+        "MV-IA-F001",
+        "MV-IA-F002",
+        "MV-IA-F003",
+        "MV-IA-F019",
+        "MV-IA-F021",
+        "MV-IA-F024"
+      ],
       "alphaSlice": "Player and GM receive distinct authorized projections across the complete primary journey.",
       "fullScopeDeferred": false,
       "designOrder": 4,
       "designStatus": "implementation-ready",
       "packetPath": "feature-packets/MV-IA-F020_PERMISSIONS_AND_HIDDEN_INFORMATION.md",
       "packetVersion": "0.1.0",
-      "companionFiles": ["feature-packets/MV-IA-F020_PERMISSION_SURFACE_MATRIX.json"],
+      "companionFiles": [
+        "feature-packets/MV-IA-F020_PERMISSION_SURFACE_MATRIX.json"
+      ],
       "implementationBoundary": "Design complete; application implementation remains dependency-gated by the active P9-06 sequence, concrete identity and persistence foundations, database isolation, backup/restore/provider-exit readiness, and coordinated caller integration."
     },
     {
@@ -306,11 +405,20 @@
       "area": "Platform",
       "historicalModule": "Offline Play & Synchronization",
       "summary": "Draft autosave, save/load, stale-state handling, disconnect/reconnect, missed-event recovery, checkpoints, and bounded offline behavior.",
-      "dependencies": ["MV-IA-F003", "MV-IA-F020"],
+      "dependencies": [
+        "MV-IA-F003",
+        "MV-IA-F020"
+      ],
       "alphaSlice": "Primary journey survives reload, interruption, disconnect, and reconnect without duplicate accepted effects.",
       "fullScopeDeferred": true,
       "designOrder": 7,
-      "designStatus": "registered"
+      "designStatus": "implementation-ready",
+      "packetPath": "feature-packets/MV-IA-F021_AUTOSAVE_RECONNECT_RECOVERY_AND_BOUNDED_OFFLINE_USE.md",
+      "packetVersion": "0.1.0",
+      "companionFiles": [
+        "feature-packets/MV-IA-F021_RECOVERY_AND_OFFLINE_MATRIX.json"
+      ],
+      "implementationBoundary": "Design complete; application implementation remains dependency-gated by the active P9-06 sequence, especially persistence, authoritative sessions, checkpoint, backup, restore, provider-exit, migration, permission, entitlement, and caller-workflow foundations. Broad offline authoritative mutation remains deferred and unauthorized."
     },
     {
       "featureId": "MV-IA-F022",
@@ -320,7 +428,9 @@
       "area": "Platform",
       "historicalModule": "Accessibility & Adaptive Interface",
       "summary": "Keyboard, screen reader, touch, text scaling, contrast, reduced motion, noncolor status, and accessible alternatives.",
-      "dependencies": ["MV-IA-F001"],
+      "dependencies": [
+        "MV-IA-F001"
+      ],
       "alphaSlice": "Primary Player and GM journeys work through keyboard, touch, responsive layouts, and a screen-reader review path.",
       "fullScopeDeferred": false,
       "designOrder": 1,
@@ -334,7 +444,11 @@
       "area": "Platform",
       "historicalModule": "Governed AI Assistance",
       "summary": "Source-linked explanations, search, recommendations, summaries, validation, and drafting within permissions and approval gates.",
-      "dependencies": ["MV-IA-F002", "MV-IA-F019", "MV-IA-F020"],
+      "dependencies": [
+        "MV-IA-F002",
+        "MV-IA-F019",
+        "MV-IA-F020"
+      ],
       "alphaSlice": "At least one optional source-cited read-only assistant action; core play remains usable without AI.",
       "fullScopeDeferred": true,
       "designOrder": 24,
@@ -362,7 +476,10 @@
       "area": "Platform",
       "historicalModule": null,
       "summary": "Tester onboarding, contextual help, known limitations, diagnostics, structured issue intake, and release identity.",
-      "dependencies": ["MV-IA-F001", "MV-IA-F003"],
+      "dependencies": [
+        "MV-IA-F001",
+        "MV-IA-F003"
+      ],
       "alphaSlice": "An approved tester can enter the product, understand the supported path, report a reproducible problem, and identify the active version.",
       "fullScopeDeferred": false,
       "designOrder": 10,

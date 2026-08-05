@@ -202,6 +202,59 @@ def main() -> int:
                 if matrix.get("acceptanceCriteria") != [f"PHI-AC-{number:03d}" for number in range(1, 21)]:
                     errors.append(f"{feature_id}: permission matrix acceptance criteria are incomplete or out of order.")
 
+        if feature_id == "MV-IA-F021":
+            for number in range(1, 21):
+                criterion = f"REC-AC-{number:03d}"
+                if criterion not in text:
+                    errors.append(f"{feature_id}: missing acceptance criterion {criterion}.")
+            for phrase in [
+                "LocalDraftEnvelope",
+                "status unknown",
+                "same command ID",
+                "last acknowledged sequence",
+                "pending-GM",
+                "selected-context revalidation",
+                "history-preserving restore",
+                "bounded read-only offline",
+                "no offline authoritative mutation",
+                "zero paid service",
+                "provider-neutral",
+                "duplicate accepted effects",
+            ]:
+                if phrase.lower() not in lower:
+                    errors.append(f"{feature_id}: missing Recovery requirement {phrase!r}.")
+
+            matrix_path = ROOT / "feature-packets/MV-IA-F021_RECOVERY_AND_OFFLINE_MATRIX.json"
+            if matrix_path.is_file():
+                matrix = json.loads(matrix_path.read_text(encoding="utf-8"))
+                if "nonauthoritative" not in matrix.get("authoritativePrinciple", "").lower():
+                    errors.append(f"{feature_id}: matrix must state the nonauthoritative client-state principle.")
+                if len(matrix.get("stateVocabulary", [])) < 16:
+                    errors.append(f"{feature_id}: recovery matrix must define at least sixteen state values.")
+                if len(matrix.get("operationTypes", [])) < 10:
+                    errors.append(f"{feature_id}: recovery matrix must define at least ten operation types.")
+                if len(matrix.get("interruptionPoints", [])) < 15:
+                    errors.append(f"{feature_id}: recovery matrix must define at least fifteen interruption points.")
+                if len(matrix.get("protectedRecoverySurfaces", [])) < 15:
+                    errors.append(f"{feature_id}: recovery matrix must define at least fifteen protected surfaces.")
+                if len(matrix.get("requiredDeniedCases", [])) < 24:
+                    errors.append(f"{feature_id}: recovery matrix must define at least twenty-four denied cases.")
+                if matrix.get("acceptanceCriteria") != [f"REC-AC-{number:03d}" for number in range(1, 21)]:
+                    errors.append(f"{feature_id}: recovery matrix acceptance criteria are incomplete or out of order.")
+
+                offline = matrix.get("offlineCapabilities", {})
+                if len(offline.get("allowed", [])) < 6:
+                    errors.append(f"{feature_id}: recovery matrix must define at least six allowed offline capabilities.")
+                if len(offline.get("prohibited", [])) < 10:
+                    errors.append(f"{feature_id}: recovery matrix must define at least ten prohibited offline capabilities.")
+                if "claim-that-local-state-is-authoritative" not in offline.get("prohibited", []):
+                    errors.append(f"{feature_id}: recovery matrix must prohibit claiming local state is authoritative.")
+                if len(matrix.get("requiredReceipts", [])) < 10:
+                    errors.append(f"{feature_id}: recovery matrix must define at least ten required receipt families.")
+                reconnect_fields = matrix.get("requiredContractFields", {}).get("ReconnectRequest", [])
+                if len(reconnect_fields) < 15:
+                    errors.append(f"{feature_id}: ReconnectRequest field list is incomplete.")
+
     if checked == 0:
         errors.append("No implementation-ready or later feature packet was checked.")
 

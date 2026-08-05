@@ -22,6 +22,7 @@ Implementation-ready and in-progress feature design packets are stored in this d
 | MV-IA-F002 | Universal Object Experience | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F002_UNIVERSAL_OBJECT_EXPERIENCE.md` | none |
 | MV-IA-F020 | Permissions and Hidden Information | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F020_PERMISSIONS_AND_HIDDEN_INFORMATION.md` | `MV-IA-F020_PERMISSION_SURFACE_MATRIX.json` |
 | MV-IA-F003 | Identity, Dashboard, and Workspace Selection | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F003_IDENTITY_DASHBOARD_AND_WORKSPACE_SELECTION.md` | `MV-IA-F003_IDENTITY_WORKSPACE_MATRIX.json` |
+| MV-IA-F021 | Autosave, Reconnect, Recovery, and Bounded Offline Use | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F021_AUTOSAVE_RECONNECT_RECOVERY_AND_BOUNDED_OFFLINE_USE.md` | `MV-IA-F021_RECOVERY_AND_OFFLINE_MATRIX.json` |
 
 ## Packet rule
 
@@ -57,6 +58,14 @@ Establishes stable provider-neutral subject identity, identity mappings, authent
 
 The companion matrix records eight role contexts, nine workspace types, six primary entry flows, twenty protected discovery surfaces, twenty denied cases, selected-context receipt fields, zero-service requirements, and twenty blocking acceptance criteria.
 
+### MV-IA-F021
+
+Establishes exact local-versus-authoritative state vocabulary, local autosave receipts, stable operation and command IDs, idempotent retry, expected-version conflicts, ambiguous command-status lookup, Event-gap recovery, duplicate suppression, pending-GM continuity, selected-context revalidation, service-restart and checkpoint recovery, history-preserving restore, and privacy-safe diagnostics.
+
+The bounded offline slice permits only manifest-listed read-only projections and approved local drafts. It explicitly prohibits offline authoritative mutation, silent last-write-wins, client-generated Events, unverified checkpoint restore, and indefinite offline entitlement.
+
+The companion matrix records sixteen state values, ten operation types, fifteen interruption points, fifteen protected recovery surfaces, twenty-four denied cases, required reconnect and conflict fields, offline capability boundaries, ten required receipt families, and twenty blocking acceptance criteria.
+
 ## Next packet
 
-`MV-IA-F021_AUTOSAVE_RECONNECT_RECOVERY_AND_BOUNDED_OFFLINE_USE.md`
+`MV-IA-F025_ONBOARDING_HELP_DIAGNOSTICS_AND_ISSUE_REPORTING.md`
