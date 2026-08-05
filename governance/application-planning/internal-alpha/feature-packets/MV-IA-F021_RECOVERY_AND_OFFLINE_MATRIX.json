@@ -1,0 +1,348 @@
+{
+  "schemaVersion": "1.0.0",
+  "programId": "MV-IA-001",
+  "featureId": "MV-IA-F021",
+  "featureVersion": "0.1.0",
+  "status": "implementation-ready-design",
+  "owner": "John Brandon Turner",
+  "authoritativePrinciple": "Local drafts, caches, realtime messages, and offline snapshots are nonauthoritative. Accepted durable Events and current server projections control.",
+  "stateVocabulary": [
+    {
+      "id": "local-only",
+      "authoritative": false,
+      "description": "User work exists only in memory or a local draft store."
+    },
+    {
+      "id": "saved-locally",
+      "authoritative": false,
+      "description": "A local draft revision has a verified autosave receipt."
+    },
+    {
+      "id": "queued-for-submit",
+      "authoritative": false,
+      "description": "The client intends to submit when connectivity and authorization permit."
+    },
+    {
+      "id": "submitted",
+      "authoritative": false,
+      "description": "A command left the client; acceptance is not yet known."
+    },
+    {
+      "id": "status-unknown",
+      "authoritative": false,
+      "description": "The client cannot determine whether the service received or accepted the command."
+    },
+    {
+      "id": "received",
+      "authoritative": false,
+      "description": "The authoritative service recorded receipt and is processing."
+    },
+    {
+      "id": "pending-gm",
+      "authoritative": false,
+      "description": "A durable proposal awaits an authorized GM decision."
+    },
+    {
+      "id": "accepted",
+      "authoritative": true,
+      "description": "The service committed the approved result and Event history."
+    },
+    {
+      "id": "modified-and-accepted",
+      "authoritative": true,
+      "description": "The GM-authorized modified result committed with original calculation retained."
+    },
+    {
+      "id": "rejected",
+      "authoritative": true,
+      "description": "The service or GM recorded a rejection without the proposed business effect."
+    },
+    {
+      "id": "stale",
+      "authoritative": false,
+      "description": "The expected version no longer matches current authoritative state."
+    },
+    {
+      "id": "conflict",
+      "authoritative": false,
+      "description": "Local and authoritative states require a governed disposition."
+    },
+    {
+      "id": "forbidden",
+      "authoritative": false,
+      "description": "Current authorization does not permit the requested recovery or action."
+    },
+    {
+      "id": "entitlement-restricted",
+      "authoritative": false,
+      "description": "Current content access does not permit the requested use."
+    },
+    {
+      "id": "offline-read-only",
+      "authoritative": false,
+      "description": "An unexpired manifest permits bounded cached reading and local draft creation."
+    },
+    {
+      "id": "recovery-required",
+      "authoritative": false,
+      "description": "The client must complete a guided recovery operation before continuing."
+    }
+  ],
+  "operationTypes": [
+    {
+      "id": "draft-autosave",
+      "idempotencyKey": "draftId+localRevision",
+      "requiresOnline": false,
+      "mayMutateAuthoritativeState": false
+    },
+    {
+      "id": "authoritative-save",
+      "idempotencyKey": "clientOperationId",
+      "requiresOnline": true,
+      "mayMutateAuthoritativeState": true
+    },
+    {
+      "id": "session-command",
+      "idempotencyKey": "commandId",
+      "requiresOnline": true,
+      "mayMutateAuthoritativeState": true
+    },
+    {
+      "id": "command-status-lookup",
+      "idempotencyKey": "lookupOperationId",
+      "requiresOnline": true,
+      "mayMutateAuthoritativeState": false
+    },
+    {
+      "id": "event-gap-recovery",
+      "idempotencyKey": "sessionId+lastAcknowledgedSequence",
+      "requiresOnline": true,
+      "mayMutateAuthoritativeState": false
+    },
+    {
+      "id": "selected-context-revalidation",
+      "idempotencyKey": "contextReceiptId+permissionVersion",
+      "requiresOnline": true,
+      "mayMutateAuthoritativeState": false
+    },
+    {
+      "id": "draft-reconciliation",
+      "idempotencyKey": "draftId+baseVersion+currentVersion",
+      "requiresOnline": true,
+      "mayMutateAuthoritativeState": false
+    },
+    {
+      "id": "checkpoint-recovery",
+      "idempotencyKey": "recoveryOperationId",
+      "requiresOnline": true,
+      "mayMutateAuthoritativeState": true
+    },
+    {
+      "id": "offline-snapshot-issue",
+      "idempotencyKey": "snapshotOperationId",
+      "requiresOnline": true,
+      "mayMutateAuthoritativeState": false
+    },
+    {
+      "id": "offline-snapshot-purge",
+      "idempotencyKey": "snapshotId+purgeVersion",
+      "requiresOnline": false,
+      "mayMutateAuthoritativeState": false
+    }
+  ],
+  "interruptionPoints": [
+    "before-local-autosave",
+    "after-local-autosave-before-submit",
+    "during-authoritative-save",
+    "after-command-send-before-response",
+    "after-receipt-before-acceptance",
+    "while-pending-gm",
+    "after-event-commit-before-display",
+    "during-event-gap-delivery",
+    "during-selected-context-switch",
+    "after-permission-or-entitlement-change",
+    "during-service-restart",
+    "during-checkpoint-verification",
+    "while-using-offline-snapshot",
+    "during-offline-draft-reconciliation",
+    "during-second-device-conflict"
+  ],
+  "offlineCapabilities": {
+    "allowed": [
+      "read-manifest-listed-authorized-projections",
+      "search-within-manifest-listed-local-index",
+      "inspect-cached-source-safe-fields",
+      "create-approved-local-draft-types",
+      "edit-approved-local-draft-types",
+      "view-local-draft-history",
+      "prepare-nonauthoritative-action-proposal"
+    ],
+    "prohibited": [
+      "authoritative-save",
+      "accepted-session-command",
+      "gm-approval-as-committed",
+      "ownership-transfer",
+      "entitlement-change",
+      "role-or-permission-change",
+      "pack-install-update-or-removal",
+      "canonical-promotion",
+      "checkpoint-or-restore-operation",
+      "provider-exit-export",
+      "claim-that-local-state-is-authoritative"
+    ],
+    "requiredManifestFields": [
+      "snapshotId",
+      "subjectId",
+      "selectedContextId",
+      "includedStableIds",
+      "visibilityClasses",
+      "permissionVersion",
+      "entitlementVersion",
+      "packLockDigest",
+      "schemaVersions",
+      "createdAt",
+      "expiresAt",
+      "allowedReadCapabilities",
+      "allowedDraftTypes",
+      "prohibitedOperations",
+      "contentDigest",
+      "manifestDigest",
+      "encryptionStatus"
+    ]
+  },
+  "protectedRecoverySurfaces": [
+    "local-draft-body",
+    "draft-status-and-timestamps",
+    "recent-work",
+    "selected-context",
+    "command-status",
+    "pending-approval-queue",
+    "event-gap-payload",
+    "checkpoint-and-backup-metadata",
+    "offline-snapshot-content",
+    "cached-object-labels-and-media",
+    "conflict-comparison",
+    "recovery-notifications",
+    "diagnostics-and-issue-reports",
+    "ai-recovery-context",
+    "second-device-presence"
+  ],
+  "requiredDeniedCases": [
+    "cross-campaign-session-reconnect",
+    "former-gm-after-role-revocation",
+    "assistant-gm-outside-delegation",
+    "observer-local-mutation-recovery",
+    "player-gm-only-event-gap",
+    "owner-admin-player-private-notes-without-support-access",
+    "expired-invitation-deep-link-restore",
+    "expired-entitlement-offline-reconnect",
+    "character-control-transfer-while-offline",
+    "pack-version-change-before-reconciliation",
+    "offline-snapshot-wrong-subject",
+    "offline-snapshot-wrong-device-binding",
+    "unauthorized-command-status-lookup",
+    "hidden-workspace-recent-work-enumeration",
+    "realtime-subscription-before-authorization",
+    "ai-hidden-diagnostics-request",
+    "issue-report-protected-draft-attachment",
+    "revoked-selected-context-reuse",
+    "local-clock-offline-expiry-extension",
+    "corrupt-manifest-capability-escalation",
+    "second-device-silent-last-write-wins",
+    "offline-gm-approval-as-accepted",
+    "checkpoint-with-invalid-digest",
+    "restore-that-erases-event-history"
+  ],
+  "requiredReceipts": [
+    "DraftAutosaveReceipt",
+    "AuthoritativeSaveReceipt",
+    "CommandStatusReceipt",
+    "ReconnectReceipt",
+    "EventGapRecoveryReceipt",
+    "SelectedContextRevalidationReceipt",
+    "ConflictRecord",
+    "OfflineSnapshotManifest",
+    "CheckpointVerificationReceipt",
+    "RecoveryReceipt"
+  ],
+  "requiredContractFields": {
+    "ReconnectRequest": [
+      "subjectSession",
+      "selectedContextReceiptId",
+      "campaignId",
+      "roleId",
+      "characterId",
+      "sceneId",
+      "sessionId",
+      "lastAcknowledgedSequence",
+      "lastProjectionVersion",
+      "outstandingCommandIds",
+      "localDraftSummaries",
+      "permissionVersionHint",
+      "entitlementVersionHint",
+      "schemaVersions",
+      "packLockDigest",
+      "clientVersion",
+      "protocolVersion",
+      "correlationId"
+    ],
+    "ReconnectReceipt": [
+      "recoveryId",
+      "resolvedSubjectId",
+      "resolvedContext",
+      "authorizationDecision",
+      "permissionVersion",
+      "entitlementVersion",
+      "schemaVersions",
+      "packLockDigest",
+      "commandStatuses",
+      "eventGapPlan",
+      "draftReconciliationPlan",
+      "cacheInvalidationDirectives",
+      "offlineSnapshotState",
+      "userSafeMessages",
+      "currentProjectionVersion",
+      "currentEventSequence"
+    ],
+    "ConflictRecord": [
+      "conflictId",
+      "subjectId",
+      "workspaceId",
+      "draftId",
+      "baseAuthoritativeVersion",
+      "currentAuthoritativeVersion",
+      "changedFields",
+      "permissionStatus",
+      "entitlementStatus",
+      "safeComparisonProjection",
+      "allowedResolutions",
+      "decisionAuthority",
+      "createdAt",
+      "resolvedAt",
+      "resolutionReceiptId"
+    ]
+  },
+  "acceptanceCriteria": [
+    "REC-AC-001",
+    "REC-AC-002",
+    "REC-AC-003",
+    "REC-AC-004",
+    "REC-AC-005",
+    "REC-AC-006",
+    "REC-AC-007",
+    "REC-AC-008",
+    "REC-AC-009",
+    "REC-AC-010",
+    "REC-AC-011",
+    "REC-AC-012",
+    "REC-AC-013",
+    "REC-AC-014",
+    "REC-AC-015",
+    "REC-AC-016",
+    "REC-AC-017",
+    "REC-AC-018",
+    "REC-AC-019",
+    "REC-AC-020"
+  ],
+  "implementationBoundary": "Design complete; application implementation remains dependency-gated by the active P9-06 sequence, especially persistence, authoritative sessions, checkpoint, backup, restore, provider-exit, migration, permission, and entitlement foundations. No paid service, production credential, production deployment, internal-alpha release, public release, or broad offline authoritative mutation is authorized."
+}
