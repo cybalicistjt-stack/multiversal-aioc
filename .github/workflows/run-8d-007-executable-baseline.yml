@@ -1,0 +1,39 @@
+name: Run 8D-007 Executable Baseline
+
+on:
+  pull_request:
+    paths:
+      - 'governance/balance/**'
+      - 'scripts/run-8d-007-executable-baseline.py'
+      - '.github/workflows/run-8d-007-executable-baseline.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Execute all governed fixtures and scenarios
+        run: python scripts/run-8d-007-executable-baseline.py
+      - name: Verify baseline invariants
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open('out/8d-007-executable-baseline/EXECUTABLE_REGRESSION_BASELINE.json'))
+          assert p['fixtureCount']==36
+          assert p['scenarioExecutionCount']==72
+          assert p['allPassed'] is True
+          assert p['sourceTruthChanged'] is False
+          assert all(r['outcome']['residueCount']==0 for r in p['results'])
+          print(p['baselineSha256'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 8d-007-executable-regression-baseline
+          path: out/8d-007-executable-baseline/EXECUTABLE_REGRESSION_BASELINE.json
