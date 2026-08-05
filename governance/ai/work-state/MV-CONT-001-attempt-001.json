@@ -1,30 +1,31 @@
 {
   "schema_version": "1.0.0",
-  "revision": 1,
+  "revision": 2,
   "work_item_id": "MV-CONT-001",
   "attempt_id": "MV-CONT-001-attempt-001",
   "track": "owner-ai-continuity",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "agent/mv-continuity-system-integration",
-  "status": "started",
+  "status": "ready_for_review",
   "started_at": "2026-08-05T17:02:20-05:00",
-  "updated_at": "2026-08-05T17:02:20-05:00",
+  "updated_at": "2026-08-05T22:19:31+00:00",
   "completed_at": null,
   "base_commit": "ed3de01ea16c40f681269583a5911c87dc0cb2d2",
-  "latest_pushed_commit": null,
-  "expected_remote_head": "ed3de01ea16c40f681269583a5911c87dc0cb2d2",
+  "latest_pushed_commit": "20928650fbcbb6e1baa8e6b69155ee081f3c4103",
+  "expected_remote_head": "20928650fbcbb6e1baa8e6b69155ee081f3c4103",
   "pull_request": null,
   "objective": "Integrate the owner-approved conversation-continuity foundation into the canonical governance repository with a permanent restart prompt, active-work pointer, evidence-gated checkpoints, compact status projection, roadmap index, validator, CI, and bootstrap recovery rules.",
-  "last_verified_action": "Created the governed integration branch from verified main commit ed3de01ea16c40f681269583a5911c87dc0cb2d2.",
-  "active_substep": "Install canonical continuity contracts, runtime records, validator, CI, and bootstrap integration.",
+  "last_verified_action": "Local continuity validation and five regression tests passed against the complete integration tree.",
+  "active_substep": "Open the pull request, verify dedicated CI, repair any failure, and merge.",
   "completed_substeps": [
     "Recovered canonical repository state",
     "Read mandatory bootstrap and governing files",
     "Inspected recent commits, pull requests, branches, and CI evidence in both repositories",
     "Repaired and merged failure-recorder bug as PR #137",
-    "Created integration branch"
+    "Created integration branch",
+    "Installed continuity contracts, runtime records, foundation references, state manager, regression tests, CI, and bootstrap v5"
   ],
-  "next_action": "Commit the initial STARTED checkpoint and runtime pointer, add continuity contracts and automation, run dedicated validation, then open and complete the governed pull request.",
+  "next_action": "Open the governed pull request, verify dedicated continuity CI and repository checks, repair any failure, then merge and record completed_verified in a follow-up checkpoint.",
   "changed_paths": [
     "governance/ai/interaction-system/",
     "governance/ai/runtime/",
@@ -42,8 +43,8 @@
   "validation": [
     {
       "command": "python tools/continuity_state.py validate",
-      "status": "not_run",
-      "evidence": null
+      "status": "passed",
+      "evidence": "Local complete-tree validation PASS; continuity unit tests 5/5 PASS."
     }
   ],
   "unresolved_failures": [],
@@ -56,6 +57,10 @@
     {
       "kind": "merge",
       "value": "PR #137 squash commit ed3de01ea16c40f681269583a5911c87dc0cb2d2 repaired the active failure recorder before new work."
+    },
+    {
+      "kind": "commit",
+      "value": "Integration branch head 20928650fbcbb6e1baa8e6b69155ee081f3c4103"
     }
   ],
   "roadmap_projection_pending": true,
