@@ -1,0 +1,28 @@
+{
+  "format": "multiversal-p1-abilities-magic-hazards-consolidated-tranche-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L62",
+  "datasets": {
+    "magic_arcane_and_faction_ability_trees_catalog.csv": 118,
+    "profession_and_crafting_ability_trees_catalog.csv": 221,
+    "prestige_environment_and_special_ability_trees_catalog.csv": 1018,
+    "species_elementalist_and_innate_abilities_catalog.csv": 2203,
+    "ability_trees_and_abilities_catalog.csv": 1256,
+    "expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv": 1501,
+    "completed_magic_spells_catalog.csv": 385,
+    "expanded_hazards_and_traps_all_genres.csv": 1901
+  },
+  "expectedRows": 8603,
+  "ownerDelegation": "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json",
+  "outputDirectory": "build/csv-p1-abilities-magic-hazards-consolidated-tranche-l62",
+  "decisions": {
+    "csvIsPrimaryStructuredSource": true,
+    "preserveRawCsv": true,
+    "routeUsingDatasetAndExplicitFieldsThenGovernedRecommendation": true,
+    "doNotAutoMergeDuplicateNames": true,
+    "unresolvedLinksRemainDeferred": true,
+    "assignDeterministicCanonicalIds": true,
+    "promoteAfterAllTrancheChecksPass": true
+  },
+  "validation": ["dataset-row-counts", "domain-and-subtype-routing", "duplicate-identity-review", "field-specific-source-verification", "mechanical-value-verification", "relationship-and-compatibility-handling", "runtime-contract-validation", "canonical-identity-uniqueness", "conversion", "installation", "uninstallation-zero-residue"]
+}
