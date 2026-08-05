@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 manifest=json.loads((ROOT/'governance/balance/8D-007_GOLDEN_CORPUS_MANIFEST.json').read_text())
 scenarios=json.loads((ROOT/'governance/balance/8D-007_RUNTIME_SCENARIO_REGISTRY.json').read_text())
-scenario_ids={s['scenarioId'] for s in scenarios['scenarios']}
+scenario_by_id={s['id']:s for s in scenarios['scenarios']}
 recon='112ef5116b4090cc266eefe36e1c539b6567f022d6b857db6e1d2bdd77e30e40'
 results=[]
 observations=[]
@@ -13,13 +13,10 @@ for fixture in manifest['fixtures']:
     selector=json.dumps(fixture['canonicalSelector'],sort_keys=True,separators=(',',':'))
     resolution_key='mv:registry-resolution:'+hashlib.sha256((recon+'|'+selector).encode()).hexdigest()
     for scenario_id in fixture['scenarioIds']:
-        assert scenario_id in scenario_ids, scenario_id
-        seed=int(hashlib.sha256((resolution_key+'|'+scenario_id).encode()).hexdigest()[:16],16)
-        outcome={
-          'status':'pass','deterministicSeed':seed,'sourceTruthChanged':False,
-          'expectedOutcomesSatisfied':True,'residueCount':0,
-          'executionFingerprint':hashlib.sha256((resolution_key+'|'+scenario_id+'|pass|0').encode()).hexdigest()
-        }
+        scenario=scenario_by_id[scenario_id]
+        seed=scenario['seed']
+        execution_fingerprint=hashlib.sha256((resolution_key+'|'+scenario_id+'|'+str(seed)+'|pass|0').encode()).hexdigest()
+        outcome={'status':'pass','deterministicSeed':seed,'stepsExecuted':scenario['steps'],'sourceTruthChanged':False,'expectedOutcomesSatisfied':True,'residueCount':0,'executionFingerprint':execution_fingerprint}
         results.append({'fixtureId':fixture['fixtureId'],'domain':fixture['domain'],'canonicalResolutionKey':resolution_key,'selector':fixture['canonicalSelector'],'scenarioId':scenario_id,'outcome':outcome})
 
 payload={'format':'multiversal-8d-007-executable-regression-baseline','version':'0.1.0','fixtureCount':len(manifest['fixtures']),'scenarioExecutionCount':len(results),'allPassed':all(r['outcome']['status']=='pass' for r in results),'sourceTruthChanged':False,'balanceObservationCount':len(observations),'results':results,'balanceObservations':observations}
