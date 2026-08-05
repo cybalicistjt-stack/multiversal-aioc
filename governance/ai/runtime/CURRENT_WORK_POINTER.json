@@ -1,33 +1,39 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-05T22:31:00+00:00",
+  "updated_at": "2026-08-05T22:35:00+00:00",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "static_restart_prompt": "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
-  "primary_attempt_id": "MV-CONT-001-attempt-001",
-  "selection_reason": "MV-CONT-001 is completed_verified. Its checkpoint identifies MV-CONT-002 as the exact next owner-approved continuity-program operation; no later attempt is marked active until its real branch and STARTED checkpoint exist.",
+  "primary_attempt_id": "MV-CONT-002-attempt-001",
+  "selection_reason": "MV-CONT-001 completed_verified and its exact next action was MV-CONT-002. A real MV-CONT-002 branch and STARTED checkpoint now exist, so it is the primary owner-selected attempt.",
   "active_attempts": [
     {
       "work_item_id": "MV-CONT-001",
       "attempt_id": "MV-CONT-001-attempt-001",
       "track": "owner-ai-continuity",
-      "priority": 1,
-      "owner_selected": true,
+      "priority": 2,
+      "owner_selected": false,
       "repository": "cybalicistjt-stack/multiversal-aioc",
       "branch": "agent/mv-continuity-system-integration",
       "checkpoint_path": "governance/ai/work-state/MV-CONT-001-attempt-001.json",
       "status": "completed_verified",
       "updated_at": "2026-08-05T22:31:00+00:00",
       "roadmap_projection_pending": false
+    },
+    {
+      "work_item_id": "MV-CONT-002",
+      "attempt_id": "MV-CONT-002-attempt-001",
+      "track": "owner-ai-continuity",
+      "priority": 1,
+      "owner_selected": true,
+      "repository": "cybalicistjt-stack/multiversal-aioc",
+      "branch": "agent/mv-continuity-analysis-taxonomy",
+      "checkpoint_path": "governance/ai/work-state/MV-CONT-002-attempt-001.json",
+      "status": "started",
+      "updated_at": "2026-08-05T22:35:00+00:00",
+      "roadmap_projection_pending": true
     }
   ],
   "deferred_tracks": [
-    {
-      "track": "owner-ai-continuity",
-      "next_work_item_id": "MV-CONT-002",
-      "state": "planned",
-      "reason": "MV-CONT-001 completed the enforcement foundation; the approved next operation is the redacted episode timeline, failure/friction taxonomy, successful-pattern catalog, and evaluation corpus.",
-      "evidence": "MV-CONT-001-attempt-001 next_action and owner approval of the twelve-step interaction-system program."
-    },
     {
       "track": "application-implementation",
       "next_work_item_id": "P9-06-008",
