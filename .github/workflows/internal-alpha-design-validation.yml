@@ -43,6 +43,11 @@ jobs:
           python
           governance/application-planning/internal-alpha/validate_shared_foundations_integration.py
 
+      - name: Validate Character creation and advancement design
+        run: >-
+          python
+          governance/application-planning/internal-alpha/validate_character_creation_design.py
+
       - name: Verify registry JSON
         run: >-
           python -m json.tool
@@ -59,4 +64,22 @@ jobs:
         run: >-
           python -m json.tool
           governance/application-planning/internal-alpha/feature-packets/IA-D02-006_COMPLETION_RECORD.json
+          > /dev/null
+
+      - name: Verify MV-IA-F004 matrix JSON
+        run: >-
+          python -m json.tool
+          governance/application-planning/internal-alpha/feature-packets/MV-IA-F004_CHARACTER_CREATION_MATRIX.json
+          > /dev/null
+
+      - name: Verify MV-IA-F004 traceability JSON
+        run: >-
+          python -m json.tool
+          governance/application-planning/internal-alpha/feature-packets/MV-IA-F004_IMPLEMENTATION_TRACEABILITY.json
+          > /dev/null
+
+      - name: Verify MV-IA-F004 completion JSON
+        run: >-
+          python -m json.tool
+          governance/application-planning/internal-alpha/feature-packets/MV-IA-F004_COMPLETION_RECORD.json
           > /dev/null
