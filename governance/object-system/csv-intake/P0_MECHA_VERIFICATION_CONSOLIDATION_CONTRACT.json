@@ -1,0 +1,22 @@
+{
+  "format": "multiversal-p0-mecha-verification-consolidation-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L42",
+  "expectedRows": 107,
+  "expectedSinglePageCitations": 105,
+  "expectedMultiPageRanges": 2,
+  "sourcePath": "Legacy pdfs/Vehicles/Mecha 11-7-24.PDF",
+  "inputs": [
+    "governance/object-system/csv-intake/P0_LOCATOR_PAGE_MATCH_EVIDENCE.json",
+    "governance/object-system/csv-intake/P0_SECONDARY_EVIDENCE_RESOLUTION.json",
+    "governance/object-system/csv-intake/P0_VISUAL_PAGE_VERIFICATION.json"
+  ],
+  "output": "governance/object-system/csv-intake/P0_MECHA_VERIFICATION_CONSOLIDATION.json",
+  "rules": {
+    "singlePageCitationRequiredWhenOnePageUniquelySupportsRow": true,
+    "multiPageRangeAllowedOnlyForCompositeSourceLocator": true,
+    "fieldLevelValidationEligibleWhenGovernedLocatorExists": true,
+    "canonicalIdsForbidden": true,
+    "promotionForbidden": true
+  }
+}

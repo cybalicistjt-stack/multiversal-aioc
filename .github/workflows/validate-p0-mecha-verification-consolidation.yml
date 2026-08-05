@@ -1,0 +1,29 @@
+name: Validate P0 Mecha Verification Consolidation
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/P0_MECHA_VERIFICATION_CONSOLIDATION_CONTRACT.json'
+      - 'governance/object-system/csv-intake/P0_MECHA_VERIFICATION_CONSOLIDATION.json'
+      - 'governance/object-system/csv-intake/P0_LOCATOR_PAGE_MATCH_EVIDENCE.json'
+      - 'governance/object-system/csv-intake/P0_SECONDARY_EVIDENCE_RESOLUTION.json'
+      - 'governance/object-system/csv-intake/P0_VISUAL_PAGE_VERIFICATION.json'
+      - 'scripts/validate-p0-mecha-verification-consolidation.py'
+      - '.github/workflows/validate-p0-mecha-verification-consolidation.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate consolidated mecha verification evidence
+        run: python scripts/validate-p0-mecha-verification-consolidation.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-p0-mecha-verification-consolidation-107
+          path: build/csv-p0-mecha-verification-consolidation-l42/
+          if-no-files-found: error
