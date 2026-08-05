@@ -1,22 +1,22 @@
 {
   "schema_version": "1.0.0",
-  "revision": 3,
+  "revision": 4,
   "work_item_id": "MV-CONT-001",
   "attempt_id": "MV-CONT-001-attempt-001",
   "track": "owner-ai-continuity",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "agent/mv-continuity-system-integration",
-  "status": "ready_for_review",
+  "status": "completed_verified",
   "started_at": "2026-08-05T17:02:20-05:00",
-  "updated_at": "2026-08-05T22:25:00+00:00",
-  "completed_at": null,
+  "updated_at": "2026-08-05T22:31:00+00:00",
+  "completed_at": "2026-08-05T22:31:00+00:00",
   "base_commit": "ed3de01ea16c40f681269583a5911c87dc0cb2d2",
-  "latest_pushed_commit": "4168941579fab44362ba62150a04ff432964c3c6",
-  "expected_remote_head": "4168941579fab44362ba62150a04ff432964c3c6",
+  "latest_pushed_commit": "88e62c901af08defb032b80779e165a742c18d66",
+  "expected_remote_head": "88e62c901af08defb032b80779e165a742c18d66",
   "pull_request": 138,
   "objective": "Integrate the owner-approved conversation-continuity foundation into the canonical governance repository with a permanent restart prompt, active-work pointer, evidence-gated checkpoints, compact status projection, roadmap index, validator, CI, and bootstrap recovery rules.",
-  "last_verified_action": "Hosted CI passed on integration head 4168941579fab44362ba62150a04ff432964c3c6, including continuity run 31052569470, 8E-009 governance run 31052569552, AIOC smoke run 31052569487, P9-06 backlog run 31052569514, and all triggered Development Brain checks.",
-  "active_substep": "Run the final checkpoint-consistency CI, verify pull-request mergeability, and merge PR #138.",
+  "last_verified_action": "MV-CONT-001 PR #138 merged after every triggered hosted check passed on exact head 3b18c5f3f1f6351b0bc468c196347c259e2296d7.",
+  "active_substep": null,
   "completed_substeps": [
     "Recovered canonical repository state",
     "Read mandatory bootstrap and governing files",
@@ -25,9 +25,11 @@
     "Created integration branch",
     "Installed continuity contracts, runtime records, foundation references, state manager, regression tests, CI, and bootstrap v5",
     "Repaired revision-dependent tests and the stale 8E-009 bootstrap validator",
-    "Verified all hosted checks on integration head 4168941579fab44362ba62150a04ff432964c3c6"
+    "Scoped completion evidence to the active work item or attempt",
+    "Verified all hosted checks on exact PR head 3b18c5f3f1f6351b0bc468c196347c259e2296d7",
+    "Merged PR #138 as squash commit 88e62c901af08defb032b80779e165a742c18d66"
   ],
-  "next_action": "Verify the final hosted consistency run and merge PR #138, then record completed_verified with the actual squash commit and CI evidence in a bounded follow-up change.",
+  "next_action": "Begin MV-CONT-002: create the redacted interaction episode timeline, failure/friction taxonomy, successful-pattern catalog, and evaluation corpus without publishing raw private conversations.",
   "changed_paths": [
     "governance/ai/interaction-system/",
     "governance/ai/runtime/",
@@ -48,7 +50,7 @@
     {
       "command": "python tools/continuity_state.py validate",
       "status": "passed",
-      "evidence": "Hosted Validate Conversation Continuity run 31052569470 PASS; regression tests 5/5 PASS."
+      "evidence": "MV-CONT-001 hosted Validate Conversation Continuity run 31052913250 PASS on exact PR head; regression tests 5/5 PASS."
     }
   ],
   "unresolved_failures": [],
@@ -59,25 +61,25 @@
       "value": "Multiversal_Conversation_Continuity_Foundation_v0.1.0.zip sha256:eba9af96055c7a2d7f1bda3823440bc2a7c623ea34a77a6bc5b536d7e3d996a6"
     },
     {
-      "kind": "merge",
-      "value": "PR #137 squash commit ed3de01ea16c40f681269583a5911c87dc0cb2d2 repaired the active failure recorder before new work."
-    },
-    {
       "kind": "commit",
-      "value": "Integration branch head 4168941579fab44362ba62150a04ff432964c3c6"
+      "value": "MV-CONT-001 exact reviewed implementation head 3b18c5f3f1f6351b0bc468c196347c259e2296d7"
     },
     {
       "kind": "pull_request",
-      "value": "PR #138 — Install Multiversal conversation continuity controls"
+      "value": "MV-CONT-001 PR #138 — Install Multiversal conversation continuity controls"
     },
     {
       "kind": "ci_run",
-      "value": "Validate Conversation Continuity run 31052569470 PASS on head 4168941579fab44362ba62150a04ff432964c3c6"
+      "value": "MV-CONT-001 Validate Conversation Continuity run 31052913250 PASS; all other triggered checks also passed"
+    },
+    {
+      "kind": "merge",
+      "value": "MV-CONT-001 PR #138 squash commit 88e62c901af08defb032b80779e165a742c18d66"
     }
   ],
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "notes": [
-    "This checkpoint remains non-complete until PR #138 is merged and its actual squash commit is recorded.",
-    "P9-06-008 and IA-D03-003 remain separate deferred tracks and are not overwritten by this owner-selected side mission."
+    "P9-06-008 and IA-D03-003 remain separate deferred tracks and were not overwritten by this owner-selected side mission.",
+    "The raw conversation corpus remains private in the owner-held immutable foundation package; only hashes, counts, and redacted future derivatives may be published."
   ]
 }
