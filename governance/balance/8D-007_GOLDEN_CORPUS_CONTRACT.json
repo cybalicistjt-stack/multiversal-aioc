@@ -1,0 +1,60 @@
+{
+  "documentId": "MV-8D-007-CONTRACT-001",
+  "version": "0.1.0",
+  "status": "active-owner-approved-workstream",
+  "owner": "John Brandon Turner",
+  "purpose": "Define deterministic representative selection, regression fingerprints, and separation of balance observations from source truth.",
+  "sourceCorpus": {
+    "datasets": 20,
+    "promotedRecords": 19199,
+    "reconciliationArtifactSha256": "112ef5116b4090cc266eefe36e1c539b6567f022d6b857db6e1d2bdd77e30e40"
+  },
+  "eligibilityRules": {
+    "required": [
+      "canonical identity",
+      "source coordinate",
+      "raw source claims preserved",
+      "promotion-ready state",
+      "runtime contract present",
+      "install and uninstall outcome defined"
+    ],
+    "excluded": [
+      "unresolved identity conflict",
+      "missing source coordinate",
+      "non-deterministic fixture input",
+      "balance-modified source mechanics"
+    ]
+  },
+  "coverageMatrix": [
+    {"domain":"general-items","minimumFixtures":2,"requiredScenarios":["install-uninstall","activate-or-use"]},
+    {"domain":"melee-weapons","minimumFixtures":2,"requiredScenarios":["equip","resolve-output"]},
+    {"domain":"ranged-weapons","minimumFixtures":2,"requiredScenarios":["equip","resolve-output"]},
+    {"domain":"ammunition","minimumFixtures":2,"requiredScenarios":["load","consume"]},
+    {"domain":"computers-software","minimumFixtures":2,"requiredScenarios":["install-uninstall","execute"]},
+    {"domain":"cybernetics-symbiotes","minimumFixtures":2,"requiredScenarios":["attach-detach","activate"]},
+    {"domain":"eva-suits-modules","minimumFixtures":2,"requiredScenarios":["install-uninstall","life-support-cycle"]},
+    {"domain":"magitech","minimumFixtures":2,"requiredScenarios":["attune-or-install","activate"]},
+    {"domain":"vehicles","minimumFixtures":2,"requiredScenarios":["install-uninstall","movement-cycle"]},
+    {"domain":"mecha","minimumFixtures":2,"requiredScenarios":["install-uninstall","power-and-action-cycle"]},
+    {"domain":"spacecraft","minimumFixtures":2,"requiredScenarios":["install-uninstall","power-and-movement-cycle"]},
+    {"domain":"bases-facilities","minimumFixtures":2,"requiredScenarios":["install-uninstall","service-cycle"]},
+    {"domain":"materials-agriculture-homesteading","minimumFixtures":2,"requiredScenarios":["acquire-consume","production-cycle"]},
+    {"domain":"abilities","minimumFixtures":2,"requiredScenarios":["grant-revoke","resolve-effect"]},
+    {"domain":"spells","minimumFixtures":2,"requiredScenarios":["prepare-cast","resolve-effect"]},
+    {"domain":"spellbooks-charge-holders","minimumFixtures":2,"requiredScenarios":["bind-unbind","store-release"]},
+    {"domain":"hazards","minimumFixtures":2,"requiredScenarios":["place-remove","trigger-resolve"]},
+    {"domain":"traps","minimumFixtures":2,"requiredScenarios":["place-remove","trigger-resolve"]}
+  ],
+  "fingerprintRules": {
+    "algorithm": "sha256",
+    "canonicalSerialization": "UTF-8 JSON, sorted keys, compact separators",
+    "included": ["fixtureId","canonicalSelector","sourceCoordinate","scenarioIds","expectedOutcomes"],
+    "excluded": ["balanceObservations","humanNotes","executionTimestamp"]
+  },
+  "governance": {
+    "sourceTruthImmutable": true,
+    "balanceObservationsSeparate": true,
+    "automaticSourceRewriteProhibited": true,
+    "ownerRecommendationDelegationAppliesToNon-scope-changingAmbiguities": true
+  }
+}
