@@ -1,0 +1,35 @@
+{
+  "documentId": "MV-8D-007-BALANCE-BANDS-001",
+  "version": "0.1.0",
+  "status": "active",
+  "sourceTruthImmutable": true,
+  "comparisonMethod": "Within-domain normalized deterministic observations from governed fixture/scenario fingerprints; recommendations are non-destructive and reversible.",
+  "domains": [
+    "general-items", "melee-weapons", "ranged-weapons", "ammunition",
+    "computers-software", "cybernetics-symbiotes", "eva-suits-modules", "magitech",
+    "vehicles", "mecha", "spacecraft", "bases-facilities",
+    "materials-agriculture-homesteading", "abilities", "spells",
+    "spellbooks-charge-holders", "hazards", "traps"
+  ],
+  "targetBand": {
+    "normalizedCenter": 0.5,
+    "watchDeviation": 0.20,
+    "materialDeviation": 0.35,
+    "blockingDeviation": 0.50
+  },
+  "regressionThresholds": {
+    "fixtureFingerprintChanges": 0,
+    "scenarioExecutionFailures": 0,
+    "sourceTruthChanges": 0,
+    "residueCount": 0,
+    "blockingObservations": 0,
+    "materialObservationRateMaximum": 0.10,
+    "domainCoverageMinimum": 18
+  },
+  "recommendationPolicy": {
+    "automaticSourceRewrite": false,
+    "recommendationsSeparateFromCanonicalRecords": true,
+    "ownerDelegatedNonScopeChangingRecommendations": true,
+    "requiredFields": ["domain", "comparisonBasis", "severity", "recommendation", "confidence", "reversible"]
+  }
+}
