@@ -1,22 +1,22 @@
 {
   "schema_version": "1.0.0",
-  "revision": 3,
+  "revision": 4,
   "work_item_id": "MV-CONT-004",
   "attempt_id": "MV-CONT-004-attempt-001",
   "track": "owner-ai-continuity",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "agent/mv-correction-regression-intake",
-  "status": "ready_for_review",
+  "status": "completed_verified",
   "started_at": "2026-08-05T23:22:00+00:00",
-  "updated_at": "2026-08-05T23:41:00+00:00",
-  "completed_at": null,
+  "updated_at": "2026-08-05T23:42:00+00:00",
+  "completed_at": "2026-08-05T23:42:00+00:00",
   "base_commit": "cc44f83e67951430b8a9d74dafc4335e08254c22",
-  "latest_pushed_commit": "a186534d5f45d8e39d09ed7c0abafbfd29103685",
-  "expected_remote_head": "a186534d5f45d8e39d09ed7c0abafbfd29103685",
+  "latest_pushed_commit": "2570773032e271d363d73299d2b4ed1a0c2b60d7",
+  "expected_remote_head": "2570773032e271d363d73299d2b4ed1a0c2b60d7",
   "pull_request": 144,
   "objective": "Implement governed automatic correction-to-regression intake so material owner corrections become durable minimized incidents, deterministic proposed regression cases, reviewable promotions, and validated coverage instead of remaining only in conversation history.",
-  "last_verified_action": "Hosted validation passed on exact PR #144 head a186534d5f45d8e39d09ed7c0abafbfd29103685: correction-to-regression run 31056999199, continuity run 31056999100, interaction audit and enforcement, AIOC smoke, P9-06, and all triggered Development Brain checks succeeded.",
-  "active_substep": "Run the final checkpoint-consistency checks, verify PR #144 mergeability, and merge.",
+  "last_verified_action": "MV-CONT-004 PR #144 merged as squash commit 2570773032e271d363d73299d2b4ed1a0c2b60d7 after correction-to-regression run 31057117102 and every other triggered hosted check passed on exact head 9602a7f001883513d0e535ac4f0656def439fb7e.",
+  "active_substep": null,
   "completed_substeps": [
     "Completed and merged MV-CONT-001 continuity runtime",
     "Completed and merged MV-CONT-002 redacted interaction audit and evaluation corpus",
@@ -29,9 +29,10 @@
     "Added seven negative and lifecycle regression tests",
     "Added dedicated correction-to-regression CI",
     "Passed local validation and all seven regression tests",
-    "Verified correction-to-regression and all repository checks on exact PR head a186534d5f45d8e39d09ed7c0abafbfd29103685"
+    "Verified correction-to-regression and all repository checks on exact PR head",
+    "Merged PR #144 as squash commit 2570773032e271d363d73299d2b4ed1a0c2b60d7"
   ],
-  "next_action": "Verify the final hosted consistency run and merge PR #144, then record completed_verified with the actual squash commit in a bounded follow-up change.",
+  "next_action": "Begin MV-CONT-005: pilot the installed interaction controls against representative recovery, correction, deliverable, capability, source-coverage, and interruption scenarios; measure intervention and false-completion outcomes; integrate the resulting operational scorecard and final amendments into AIOC, bootstrap, and the Project Bible.",
   "changed_paths": [
     "governance/ai/interaction-system/corrections/",
     "governance/ai/interaction-system/evaluation/PROMOTED_EVALUATION_CASES.json",
@@ -52,19 +53,15 @@
     {
       "command": "python tools/correction_regression.py validate",
       "status": "passed",
-      "evidence": "Hosted Validate Correction to Regression run 31056999199 PASS on exact PR head; seven regression tests PASS."
+      "evidence": "Final hosted Validate Correction to Regression run 31057117102 PASS on exact PR head; seven regression tests PASS."
     }
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
     {
-      "kind": "merge",
-      "value": "MV-CONT-003 completion record PR #143 squash commit cc44f83e67951430b8a9d74dafc4335e08254c22 established the dependency boundary for MV-CONT-004."
-    },
-    {
       "kind": "commit",
-      "value": "MV-CONT-004 exact reviewed implementation head a186534d5f45d8e39d09ed7c0abafbfd29103685"
+      "value": "MV-CONT-004 exact reviewed implementation head 9602a7f001883513d0e535ac4f0656def439fb7e"
     },
     {
       "kind": "pull_request",
@@ -72,15 +69,19 @@
     },
     {
       "kind": "ci_run",
-      "value": "MV-CONT-004 Validate Correction to Regression run 31056999199 PASS; all other triggered checks passed"
+      "value": "MV-CONT-004 final Validate Correction to Regression run 31057117102 PASS; all other triggered checks passed"
+    },
+    {
+      "kind": "merge",
+      "value": "MV-CONT-004 PR #144 squash commit 2570773032e271d363d73299d2b4ed1a0c2b60d7"
     }
   ],
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "notes": [
-    "This checkpoint remains non-complete until PR #144 is merged and its actual squash commit is recorded.",
-    "Raw correction messages are prohibited; intake records are minimized paraphrases with opaque evidence references.",
-    "Capture automatically creates proposed candidates, while canonical evaluation promotion remains owner-reviewed and evidence-gated.",
-    "Historical MV-CONT-002 and MV-CONT-003 artifacts remain immutable snapshots; MV-CONT-004 uses additive extensions.",
+    "The correction-to-regression lifecycle is installed and the final previously deferred enforcement gap is closed.",
+    "Raw correction messages remain prohibited; intake records are minimized paraphrases with opaque evidence references.",
+    "Canonical evaluation promotion remains owner-reviewed and evidence-gated.",
+    "MV-CONT-005 is the approved program's final pilot, measurement, integration, and governing-document update step.",
     "P9-06-008 and IA-D03-003 remain explicit parallel tracks."
   ]
 }
