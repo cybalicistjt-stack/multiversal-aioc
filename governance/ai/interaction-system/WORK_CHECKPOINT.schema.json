@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/work-checkpoint-1.0.0.schema.json",
+  "title": "Multiversal Work Checkpoint",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "revision",
+    "work_item_id",
+    "attempt_id",
+    "track",
+    "repository",
+    "branch",
+    "status",
+    "started_at",
+    "updated_at",
+    "objective",
+    "last_verified_action",
+    "active_substep",
+    "next_action",
+    "expected_remote_head",
+    "completion_gate",
+    "validation",
+    "unresolved_failures",
+    "owner_decision_required",
+    "evidence",
+    "roadmap_projection_pending"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "revision": {"type": "integer", "minimum": 1},
+    "work_item_id": {"type": "string", "minLength": 1},
+    "attempt_id": {"type": "string", "minLength": 1},
+    "track": {"type": "string", "minLength": 1},
+    "repository": {"type": "string", "pattern": "^[^/]+/[^/]+$"},
+    "branch": {"type": "string", "minLength": 1},
+    "status": {
+      "enum": [
+        "started",
+        "in_progress",
+        "validation_failed",
+        "blocked_non_owner",
+        "blocked_owner",
+        "ready_for_review",
+        "completed_verified",
+        "superseded"
+      ]
+    },
+    "started_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"},
+    "completed_at": {"type": ["string", "null"], "format": "date-time"},
+    "base_commit": {"type": ["string", "null"]},
+    "latest_pushed_commit": {"type": ["string", "null"]},
+    "expected_remote_head": {"type": ["string", "null"]},
+    "pull_request": {"type": ["integer", "null"], "minimum": 1},
+    "objective": {"type": "string", "minLength": 1},
+    "last_verified_action": {"type": "string"},
+    "active_substep": {"type": ["string", "null"]},
+    "completed_substeps": {"type": "array", "items": {"type": "string"}},
+    "next_action": {"type": "string", "minLength": 1},
+    "changed_paths": {"type": "array", "items": {"type": "string"}},
+    "completion_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required_evidence_kinds", "required_validation_commands", "owner_approval_required"],
+      "properties": {
+        "required_evidence_kinds": {
+          "type": "array",
+          "items": {
+            "enum": ["commit", "pull_request", "review", "ci_run", "merge", "artifact", "checksum", "file", "issue_comment", "owner_decision"]
+          }
+        },
+        "required_validation_commands": {"type": "array", "items": {"type": "string"}},
+        "owner_approval_required": {"type": "boolean"}
+      }
+    },
+    "validation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["command", "status", "evidence"],
+        "properties": {
+          "command": {"type": "string", "minLength": 1},
+          "status": {"enum": ["not_run", "passed", "failed"]},
+          "evidence": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "unresolved_failures": {"type": "array", "items": {"type": "string"}},
+    "owner_decision_required": {"type": "boolean"},
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "value"],
+        "properties": {
+          "kind": {
+            "enum": ["commit", "pull_request", "review", "ci_run", "merge", "artifact", "checksum", "file", "issue_comment", "owner_decision"]
+          },
+          "value": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "roadmap_projection_pending": {"type": "boolean"},
+    "notes": {"type": "array", "items": {"type": "string"}}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "completed_verified"}}},
+      "then": {
+        "required": ["completed_at"],
+        "properties": {
+          "active_substep": {"const": null},
+          "completed_at": {"type": "string"},
+          "evidence": {"minItems": 1},
+          "unresolved_failures": {"maxItems": 0},
+          "owner_decision_required": {"const": false}
+        }
+      }
+    }
+  ]
+}
