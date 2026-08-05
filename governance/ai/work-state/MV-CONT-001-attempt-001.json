@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 3,
+  "work_item_id": "MV-CONT-001",
+  "attempt_id": "MV-CONT-001-attempt-001",
+  "track": "owner-ai-continuity",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "branch": "agent/mv-continuity-system-integration",
+  "status": "ready_for_review",
+  "started_at": "2026-08-05T17:02:20-05:00",
+  "updated_at": "2026-08-05T22:25:00+00:00",
+  "completed_at": null,
+  "base_commit": "ed3de01ea16c40f681269583a5911c87dc0cb2d2",
+  "latest_pushed_commit": "4168941579fab44362ba62150a04ff432964c3c6",
+  "expected_remote_head": "4168941579fab44362ba62150a04ff432964c3c6",
+  "pull_request": 138,
+  "objective": "Integrate the owner-approved conversation-continuity foundation into the canonical governance repository with a permanent restart prompt, active-work pointer, evidence-gated checkpoints, compact status projection, roadmap index, validator, CI, and bootstrap recovery rules.",
+  "last_verified_action": "Hosted CI passed on integration head 4168941579fab44362ba62150a04ff432964c3c6, including continuity run 31052569470, 8E-009 governance run 31052569552, AIOC smoke run 31052569487, P9-06 backlog run 31052569514, and all triggered Development Brain checks.",
+  "active_substep": "Run the final checkpoint-consistency CI, verify pull-request mergeability, and merge PR #138.",
+  "completed_substeps": [
+    "Recovered canonical repository state",
+    "Read mandatory bootstrap and governing files",
+    "Inspected recent commits, pull requests, branches, and CI evidence in both repositories",
+    "Repaired and merged failure-recorder bug as PR #137",
+    "Created integration branch",
+    "Installed continuity contracts, runtime records, foundation references, state manager, regression tests, CI, and bootstrap v5",
+    "Repaired revision-dependent tests and the stale 8E-009 bootstrap validator",
+    "Verified all hosted checks on integration head 4168941579fab44362ba62150a04ff432964c3c6"
+  ],
+  "next_action": "Verify the final hosted consistency run and merge PR #138, then record completed_verified with the actual squash commit and CI evidence in a bounded follow-up change.",
+  "changed_paths": [
+    "governance/ai/interaction-system/",
+    "governance/ai/runtime/",
+    "governance/ai/work-state/MV-CONT-001-attempt-001.json",
+    "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
+    "tools/continuity_state.py",
+    "tests/continuity/test_continuity_state.py",
+    "scripts/validate-8e009-completion-governance.py",
+    ".github/workflows/validate-conversation-continuity.yml",
+    "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md"
+  ],
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
+    "required_validation_commands": ["python tools/continuity_state.py validate"],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {
+      "command": "python tools/continuity_state.py validate",
+      "status": "passed",
+      "evidence": "Hosted Validate Conversation Continuity run 31052569470 PASS; regression tests 5/5 PASS."
+    }
+  ],
+  "unresolved_failures": [],
+  "owner_decision_required": false,
+  "evidence": [
+    {
+      "kind": "file",
+      "value": "Multiversal_Conversation_Continuity_Foundation_v0.1.0.zip sha256:eba9af96055c7a2d7f1bda3823440bc2a7c623ea34a77a6bc5b536d7e3d996a6"
+    },
+    {
+      "kind": "merge",
+      "value": "PR #137 squash commit ed3de01ea16c40f681269583a5911c87dc0cb2d2 repaired the active failure recorder before new work."
+    },
+    {
+      "kind": "commit",
+      "value": "Integration branch head 4168941579fab44362ba62150a04ff432964c3c6"
+    },
+    {
+      "kind": "pull_request",
+      "value": "PR #138 — Install Multiversal conversation continuity controls"
+    },
+    {
+      "kind": "ci_run",
+      "value": "Validate Conversation Continuity run 31052569470 PASS on head 4168941579fab44362ba62150a04ff432964c3c6"
+    }
+  ],
+  "roadmap_projection_pending": true,
+  "notes": [
+    "This checkpoint remains non-complete until PR #138 is merged and its actual squash commit is recorded.",
+    "P9-06-008 and IA-D03-003 remain separate deferred tracks and are not overwritten by this owner-selected side mission."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-08-05T22:25:00+00:00",
+  "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
+  "static_restart_prompt": "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
+  "primary_attempt_id": "MV-CONT-001-attempt-001",
+  "selection_reason": "John Brandon Turner explicitly approved the conversation-continuity program and then issued Continue in the same conversation, making canonical integration the current primary attempt.",
+  "active_attempts": [
+    {
+      "work_item_id": "MV-CONT-001",
+      "attempt_id": "MV-CONT-001-attempt-001",
+      "track": "owner-ai-continuity",
+      "priority": 1,
+      "owner_selected": true,
+      "repository": "cybalicistjt-stack/multiversal-aioc",
+      "branch": "agent/mv-continuity-system-integration",
+      "checkpoint_path": "governance/ai/work-state/MV-CONT-001-attempt-001.json",
+      "status": "ready_for_review",
+      "updated_at": "2026-08-05T22:25:00+00:00",
+      "roadmap_projection_pending": true
+    }
+  ],
+  "deferred_tracks": [
+    {
+      "track": "application-implementation",
+      "next_work_item_id": "P9-06-008",
+      "state": "paused",
+      "reason": "Owner-selected continuity side mission is primary; application implementation has not been marked complete or superseded.",
+      "evidence": "APPLICATION_IMPLEMENTATION_ROADMAP.md and bootstrap v4.0.0 identify P9-06-008 as the next application item."
+    },
+    {
+      "track": "internal-alpha-feature-design",
+      "next_work_item_id": "IA-D03-003",
+      "state": "planned",
+      "reason": "Latest merged governance evidence completed IA-D03-002 and advanced that design track to IA-D03-003.",
+      "evidence": "Main commit cd9f543970d9f7c8c82bc095d1c2c4be03b3b360 and PR #136."
+    }
+  ]
+}

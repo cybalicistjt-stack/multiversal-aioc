@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/ai-work-checkpoint-v0.1.0.schema.json",
+  "title": "Multiversal AI Work Checkpoint",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "work_item_id",
+    "attempt_id",
+    "repository",
+    "branch",
+    "status",
+    "updated_at",
+    "last_verified_action",
+    "active_substep",
+    "next_action",
+    "evidence"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "work_item_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "attempt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository": {
+      "type": "string",
+      "minLength": 1
+    },
+    "branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "started",
+        "in_progress",
+        "validation_failed",
+        "blocked_non_owner",
+        "blocked_owner",
+        "ready_for_review",
+        "completed_verified",
+        "superseded"
+      ]
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "base_commit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "latest_pushed_commit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pull_request": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "last_verified_action": {
+      "type": "string"
+    },
+    "active_substep": {
+      "type": "string"
+    },
+    "completed_substeps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "changed_paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "validation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "command",
+          "status"
+        ],
+        "properties": {
+          "command": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "not_run",
+              "passed",
+              "failed"
+            ]
+          },
+          "evidence": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "unresolved_failures": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "owner_decision_required": {
+      "type": "boolean",
+      "default": false
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "value"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "commit",
+              "pull_request",
+              "ci_run",
+              "artifact",
+              "checksum",
+              "file",
+              "issue_comment",
+              "owner_decision"
+            ]
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "roadmap_projection_pending": {
+      "type": "boolean",
+      "default": false
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "completed_verified"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "evidence": {
+            "minItems": 1
+          },
+          "active_substep": {
+            "const": "none"
+          }
+        }
+      }
+    }
+  ]
+}
