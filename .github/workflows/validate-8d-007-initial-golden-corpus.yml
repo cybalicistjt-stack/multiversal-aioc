@@ -1,0 +1,27 @@
+name: Validate 8D-007 Initial Golden Corpus
+
+on:
+  pull_request:
+    paths:
+      - 'governance/balance/**'
+      - 'scripts/validate-8d-007-initial-golden-corpus.py'
+      - '.github/workflows/validate-8d-007-initial-golden-corpus.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate governed corpus and fingerprints
+        run: python scripts/validate-8d-007-initial-golden-corpus.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 8d-007-initial-golden-corpus-validation
+          path: out/8d-007-initial-golden-corpus/validation-report.json
