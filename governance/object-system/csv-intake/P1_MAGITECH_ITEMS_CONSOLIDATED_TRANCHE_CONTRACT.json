@@ -1,0 +1,32 @@
+{
+  "format": "multiversal-p1-magitech-items-consolidated-tranche-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L57",
+  "dataset": "expanded_magitech_items_all_genres.csv",
+  "expectedRows": 532,
+  "ownerDelegation": "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json",
+  "outputDirectory": "build/csv-p1-magitech-items-consolidated-tranche-l57",
+  "domains": ["magitech-item", "magitech-weapon", "magitech-armor", "magitech-tool", "magitech-device", "magitech-consumable", "magitech-component"],
+  "decisions": {
+    "csvIsPrimaryStructuredSource": true,
+    "preserveRawCsv": true,
+    "routeUsingExplicitFieldsThenGovernedRecommendation": true,
+    "doNotAutoMergeDuplicateNames": true,
+    "standaloneCatalogItemsDoNotRequireInstalledHost": true,
+    "unspecifiedCompatibilityValidatedAtUseTime": true,
+    "assignDeterministicCanonicalIds": true,
+    "promoteAfterAllTrancheChecksPass": true
+  },
+  "validation": [
+    "domain-and-subtype-routing",
+    "duplicate-identity-review",
+    "field-specific-source-verification",
+    "mechanical-value-verification",
+    "host-and-compatibility-handling",
+    "runtime-contract-validation",
+    "canonical-identity-uniqueness",
+    "conversion",
+    "installation",
+    "uninstallation-zero-residue"
+  ]
+}
