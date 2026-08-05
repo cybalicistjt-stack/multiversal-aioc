@@ -80,10 +80,10 @@ jobs:
             log_excerpt="$tmp/excerpt-${run_id}.txt"
             if find "$logs_dir" -type f -name '*.txt' -print -quit | grep -q .; then
               {
-                for file in $(find "$logs_dir" -type f -name '*.txt' | sort); do
+                while IFS= read -r -d '' file; do
                   printf '\n===== %s =====\n' "${file#$logs_dir/}"
-                  tail -n 120 "$file"
-                done
+                  tail -n 120 -- "$file"
+                done < <(find "$logs_dir" -type f -name '*.txt' -print0 | sort -z)
               } | tail -n 500 > "$log_excerpt"
             else
               printf 'Logs were unavailable or could not be decoded by the recorder.\n' > "$log_excerpt"
@@ -114,10 +114,10 @@ jobs:
             printf '**Last recorder run:** %s  \n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
             printf '**Repository:** `%s`\n\n' "$REPOSITORY"
             printf '## Recorded failures\n\n'
-            for record in $(find governance/ci-failures/records -type f -name 'run-*.md' -printf '%T@ %p\n' | sort -nr | cut -d' ' -f2-); do
+            while IFS= read -r -d '' record; do
               title="$(sed -n '1s/^# //p' "$record")"
               printf -- '- [%s](./records/%s)\n' "$title" "$(basename "$record")"
-            done
+            done < <(find governance/ci-failures/records -type f -name 'run-*.md' -print0 | sort -z)
           } > governance/ci-failures/INDEX.md
 
           git add governance/ci-failures
