@@ -1,0 +1,23 @@
+name: Validate Owner Recommendation Delegation
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json'
+      - 'scripts/validate-owner-recommendation-delegation.py'
+      - '.github/workflows/validate-owner-recommendation-delegation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate standing owner delegation
+        run: python scripts/validate-owner-recommendation-delegation.py
