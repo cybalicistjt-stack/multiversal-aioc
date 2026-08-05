@@ -1,0 +1,24 @@
+{
+  "format": "multiversal-p0-mecha-recommendation-adoption-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L45",
+  "dataset": "expanded_mecha_and_components_all_genres.csv",
+  "ownerDelegation": "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json",
+  "inputCoverage": "governance/object-system/csv-intake/P0_MECHA_VERIFICATION_CONSOLIDATION.json",
+  "expectedRows": 107,
+  "expectedSemanticClaims": 6542,
+  "rowRanges": [[2,21],[52,138]],
+  "directEvidenceFields": ["Item_Name","Source_PDF","Source_Page_or_Block"],
+  "structuralDefaultValues": ["", "0", "N/A", "N/A - rules framework", "N/A - rules reference"],
+  "outputDirectory": "build/csv-p0-mecha-recommendation-adoption-l45",
+  "rules": {
+    "everySemanticClaimRequiresRecommendation": true,
+    "recommendationsAreAutomaticallyAdoptedUnderOwnerDelegation": true,
+    "rawCsvValuesMustBePreserved": true,
+    "recommendationsMustRecordRationaleAlternativesConfidenceAndReversibility": true,
+    "adoptionIsProvisionalUntilFieldSpecificSourceTextVerification": true,
+    "unsupportedFactsMustNotBeInvented": true,
+    "canonicalIdsForbidden": true,
+    "promotionForbidden": true
+  }
+}
