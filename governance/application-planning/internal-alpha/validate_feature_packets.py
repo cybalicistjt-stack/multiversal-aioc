@@ -132,6 +132,42 @@ def main() -> int:
                 if phrase.lower() not in lower:
                     errors.append(f"{feature_id}: missing Universal Object requirement {phrase!r}.")
 
+        if feature_id == "MV-IA-F003":
+            for number in range(1, 21):
+                criterion = f"IDW-AC-{number:03d}"
+                if criterion not in text:
+                    errors.append(f"{feature_id}: missing acceptance criterion {criterion}.")
+            for phrase in [
+                "stable internal subject",
+                "selected-context receipt",
+                "invitation",
+                "no enumeration",
+                "Player and GM",
+                "role switch",
+                "deep link",
+                "recent-work",
+                "provider-neutral",
+                "zero paid identity provider",
+            ]:
+                if phrase.lower() not in lower:
+                    errors.append(f"{feature_id}: missing Identity/Workspace requirement {phrase!r}.")
+
+            matrix_path = ROOT / "feature-packets/MV-IA-F003_IDENTITY_WORKSPACE_MATRIX.json"
+            if matrix_path.is_file():
+                matrix = json.loads(matrix_path.read_text(encoding="utf-8"))
+                if matrix.get("defaultWorkspaceDecision") != "deny":
+                    errors.append(f"{feature_id}: identity matrix defaultWorkspaceDecision must be 'deny'.")
+                if len(matrix.get("roles", [])) < 8:
+                    errors.append(f"{feature_id}: identity matrix must define at least eight role contexts.")
+                if len(matrix.get("protectedDiscoverySurfaces", [])) < 20:
+                    errors.append(f"{feature_id}: identity matrix must define at least twenty discovery surfaces.")
+                if len(matrix.get("requiredDeniedCases", [])) < 20:
+                    errors.append(f"{feature_id}: identity matrix must define at least twenty denied cases.")
+                if matrix.get("acceptanceCriteria") != [f"IDW-AC-{number:03d}" for number in range(1, 21)]:
+                    errors.append(f"{feature_id}: identity matrix acceptance criteria are incomplete or out of order.")
+                if len(matrix.get("contextReceiptRequiredFields", [])) < 15:
+                    errors.append(f"{feature_id}: selected-context receipt field list is incomplete.")
+
         if feature_id == "MV-IA-F020":
             for number in range(1, 21):
                 criterion = f"PHI-AC-{number:03d}"
