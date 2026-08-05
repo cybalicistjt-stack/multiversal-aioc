@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0.0",
+  "receipts": [
+    {
+      "schema_version": "1.0.0",
+      "receipt_id": "MV-ICR-001",
+      "control_type": "deliverable",
+      "work_item_id": "MV-CONT-003",
+      "created_at": "2026-08-05T23:02:00Z",
+      "status": "pass",
+      "details": {
+        "artifact_id": "mv-cont-003-example",
+        "locator": "governance/ai/interaction-system/enforcement/CONTROL_RECEIPT.examples.json",
+        "locator_kind": "repository_path",
+        "exists_verified": true,
+        "user_accessible_verified": true,
+        "immutable_identity": "git:example",
+        "checksum": "sha256:example",
+        "bytes_verified": true
+      },
+      "evidence": ["Repository path and immutable identity verified."]
+    },
+    {
+      "schema_version": "1.0.0",
+      "receipt_id": "MV-ICR-002",
+      "control_type": "capability",
+      "work_item_id": "MV-CONT-003",
+      "created_at": "2026-08-05T23:02:00Z",
+      "status": "pass",
+      "details": {
+        "owner_authorized": true,
+        "actor_identity_verified": true,
+        "contributor_authority": "owner",
+        "connector_available": true,
+        "repository_permission_verified": true,
+        "operation_attempted": true,
+        "operation_succeeded": true
+      },
+      "evidence": ["Verified repository read/write operation."]
+    },
+    {
+      "schema_version": "1.0.0",
+      "receipt_id": "MV-ICR-003",
+      "control_type": "source_coverage",
+      "work_item_id": "MV-CONT-003",
+      "created_at": "2026-08-05T23:02:00Z",
+      "status": "pass",
+      "details": {
+        "required_sources": ["project_bible", "bootstrap", "interaction_contract", "taxonomy", "evaluation_cases"],
+        "evaluated_sources": ["project_bible", "bootstrap", "interaction_contract", "taxonomy", "evaluation_cases"],
+        "missing_sources": [],
+        "deferred_sources": [],
+        "completion_allowed": true
+      },
+      "evidence": ["All declared required source classes were evaluated."]
+    },
+    {
+      "schema_version": "1.0.0",
+      "receipt_id": "MV-ICR-004",
+      "control_type": "ui_verification",
+      "work_item_id": "MV-CONT-003",
+      "created_at": "2026-08-05T23:02:00Z",
+      "status": "pass",
+      "details": {
+        "guidance_subject": "example current interface path",
+        "verification_method": "official_current_source",
+        "observed_current_ui": false,
+        "official_source_current": true,
+        "verified_label_allowed": true
+      },
+      "evidence": ["Current official source checked."]
+    },
+    {
+      "schema_version": "1.0.0",
+      "receipt_id": "MV-ICR-005",
+      "control_type": "notification",
+      "work_item_id": "MV-CONT-003",
+      "created_at": "2026-08-05T23:02:00Z",
+      "status": "suppress",
+      "details": {
+        "dedupe_key": "owner-action:example",
+        "evidence_fingerprint": "sha256:same",
+        "previous_evidence_fingerprint": "sha256:same",
+        "material_change": false,
+        "decision": "suppress"
+      },
+      "evidence": ["Evidence fingerprint and material state are unchanged."]
+    },
+    {
+      "schema_version": "1.0.0",
+      "receipt_id": "MV-ICR-006",
+      "control_type": "request_alignment",
+      "work_item_id": "MV-CONT-003",
+      "created_at": "2026-08-05T23:02:00Z",
+      "status": "pass",
+      "details": {
+        "primary_request_mode": "decision_support",
+        "secondary_request_modes": ["execute"],
+        "immediate_question": "Compare the two plans and estimate saved work.",
+        "direct_answer_status": "provided",
+        "related_execution_status": "allowed_after_answer"
+      },
+      "evidence": ["Immediate decision-support answer precedes related execution."]
+    },
+    {
+      "schema_version": "1.0.0",
+      "receipt_id": "MV-ICR-007",
+      "control_type": "owner_report",
+      "work_item_id": "MV-CONT-003",
+      "created_at": "2026-08-05T23:02:00Z",
+      "status": "pass",
+      "details": {
+        "completed": "Bounded control batch completed.",
+        "evidence_summary": "Commit and validation evidence recorded.",
+        "remaining": "Hosted CI and merge remain.",
+        "owner_decision": "none",
+        "next_action": "Open the pull request and verify checks."
+      },
+      "evidence": ["All five owner-report fields are present."]
+    }
+  ]
+}
