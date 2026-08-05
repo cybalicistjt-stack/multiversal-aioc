@@ -1,0 +1,52 @@
+{
+  "documentId": "MV-PHASE9-SOURCE-REGISTRY-001",
+  "version": "0.1.0",
+  "status": "active",
+  "owner": "John Brandon Turner",
+  "sourcePackage": {
+    "archiveName": "Phase9.zip",
+    "archiveSha256": "5535acb24c804161b7484b77682dc3cb14231236f912e10931f6ba0dab870d37",
+    "structuredPackageName": "Multiversal_P9_Entitlement_and_Session_Amendment_Package_v0.1.0.pack",
+    "structuredPackageSha256": "6554b8f524e4b295e52c835058a66256fa9dbd0319d138719e2146faacc9af88",
+    "structuredPackageFileCount": 135,
+    "sourceRole": "canonical-product-architecture-source",
+    "binaryArchiveLocationPolicy": "external-owner-source-retained; registry and extracted requirements governed in repository"
+  },
+  "components": [
+    {
+      "id": "P9-01",
+      "name": "Freemium and Entitlement Amendment",
+      "version": "0.3.0",
+      "status": "complete-validated"
+    },
+    {
+      "id": "P9-01-SPONSORED-MONTH",
+      "name": "Sponsored Month Entitlement Amendment",
+      "version": "0.4.0",
+      "status": "complete-validated-not-implementation-authorized",
+      "pairedTests": 80,
+      "acceptanceChecks": 143,
+      "failures": 0
+    },
+    {
+      "id": "P9-02",
+      "name": "Local-Capable Session Architecture Correction",
+      "version": "0.2.0",
+      "status": "complete-validated"
+    }
+  ],
+  "handoff": {
+    "handoffId": "mv.handoff.phase9.p9-02-v0.2-to-p9-03.0.2.0",
+    "state": "READY_FOR_P9-03_TECHNOLOGY_AND_SERVICE_DECISION_PACKAGE",
+    "architectureSelectionAllowed": false,
+    "vendorCommitmentAllowed": false,
+    "spendingAllowed": false,
+    "implementationAllowed": false,
+    "technologyComparisonAllowed": true
+  },
+  "nonDuplication": {
+    "recreateP901": false,
+    "recreateP902": false,
+    "roadmapAlias": "Phase 9R — Agentic Development Roadmap and Implementation Readiness"
+  }
+}

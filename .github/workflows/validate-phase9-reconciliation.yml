@@ -1,0 +1,27 @@
+name: Validate Phase 9 Reconciliation
+
+on:
+  pull_request:
+    paths:
+      - 'governance/phase9/**'
+      - 'scripts/validate-phase9-reconciliation.py'
+      - '.github/workflows/validate-phase9-reconciliation.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'governance/phase9/**'
+      - 'scripts/validate-phase9-reconciliation.py'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-phase9-reconciliation.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: phase9-reconciliation-validation
+          path: out/phase9-reconciliation/PHASE_9_RECONCILIATION_VALIDATION.json
