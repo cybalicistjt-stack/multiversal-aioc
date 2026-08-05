@@ -1,7 +1,7 @@
 # MV-IA-001 — Internal Alpha Feature Design Program
 
 **Document ID:** MV-IA-001  
-**Version:** 0.4.0  
+**Version:** 0.5.0  
 **Status:** ACTIVE — DESIGN PROGRAM  
 **Owner and final authority:** John Brandon Turner  
 **Established:** 2026-08-05
@@ -129,6 +129,30 @@ Complete at design level:
 
 The packet is implementation-ready as a design artifact. Application implementation remains dependency-gated.
 
+### IA-D02-004 — Autosave, Reconnect, Recovery, and Bounded Offline Use
+
+Complete at design level:
+
+- exact separation of local draft, local autosave, authoritative save, submitted command, pending GM decision, accepted Event, and displayed projection;
+- stable draft, operation, command, Event, cursor, checkpoint, conflict, recovery, selected-context, and offline-snapshot identities;
+- idempotent authoritative save and command retry behavior;
+- expected-version checks and governed conflicts instead of silent last-write-wins;
+- command-status lookup after ambiguous network failure;
+- Event-gap recovery from the last acknowledged sequence with duplicate suppression;
+- durable pending-GM proposal continuity across disconnect and restart;
+- selected-context, identity, role, Character-control, permission, entitlement, pack, schema, and lifecycle revalidation;
+- role-safe cache invalidation and revocation behavior;
+- verified checkpoints and history-preserving restore;
+- bounded read-only offline snapshots and approved local drafts;
+- explicit prohibition on offline authoritative mutation;
+- accessible save, submit, connection, stale, conflict, revocation, and recovery states;
+- privacy-safe diagnostics and issue evidence;
+- zero-AI and zero-paid-service core operation;
+- provider-neutral persistence, realtime, checkpoint, backup, restore, migration, and provider-exit boundaries;
+- twenty blocking acceptance criteria and a machine-readable recovery/offline matrix.
+
+The packet is implementation-ready as a design artifact. Application implementation remains dependency-gated, especially by persistence, authoritative Session, checkpoint, backup, restore, migration, and provider-exit foundations. Broad offline authoritative mutation remains deferred and unauthorized.
+
 ## File map
 
 - `INTERNAL_ALPHA_SCOPE.md` — release boundary and success definition
@@ -148,6 +172,12 @@ The packet is implementation-ready as a design artifact. Application implementat
 - `feature-packets/MV-IA-F020_PERMISSION_SURFACE_MATRIX.json` — protected surfaces, classifications, reason codes, and denied cases
 - `feature-packets/MV-IA-F003_IDENTITY_DASHBOARD_AND_WORKSPACE_SELECTION.md` — Identity, Dashboard, and Workspace Selection design packet
 - `feature-packets/MV-IA-F003_IDENTITY_WORKSPACE_MATRIX.json` — identity, invitation, role, workspace, discovery, denied-case, and acceptance matrix
+- `feature-packets/MV-IA-F003_IMPLEMENTATION_TRACEABILITY.json` — implementation dependencies, downstream callers, and authority boundary
+- `feature-packets/MV-IA-F003_REVIEW_RECEIPT.md` — repository review scope and disposition
+- `feature-packets/MV-IA-F021_AUTOSAVE_RECONNECT_RECOVERY_AND_BOUNDED_OFFLINE_USE.md` — autosave, reconnect, recovery, and offline-boundary design packet
+- `feature-packets/MV-IA-F021_RECOVERY_AND_OFFLINE_MATRIX.json` — recovery states, interruption points, denied cases, contracts, offline capabilities, and acceptance matrix
+- `feature-packets/MV-IA-F021_IMPLEMENTATION_TRACEABILITY.json` — implementation dependencies, downstream callers, and authority boundary
+- `feature-packets/MV-IA-F021_REVIEW_RECEIPT.md` — repository review scope and disposition
 - `validate_internal_alpha_design.py` — program and registry validator
 - `validate_feature_packets.py` — implementation-ready packet and companion-file validator
 - `.github/workflows/internal-alpha-design-validation.yml` — automated validation
@@ -161,6 +191,7 @@ No document in this directory authorizes:
 - paid service enrollment;
 - production credentials;
 - production deployment;
+- broad offline authoritative mutation;
 - internal-alpha release;
 - public release;
 - irreversible provider coupling;
@@ -168,6 +199,6 @@ No document in this directory authorizes:
 
 ## Current next design action
 
-**IA-D02-004 — Design MV-IA-F021, Autosave, Reconnect, Recovery, and Bounded Offline Use.**
+**IA-D02-005 — Design MV-IA-F025, Onboarding, Help, Diagnostics, and Issue Reporting.**
 
-This packet is next because the object, permission, identity, invitation, workspace, recent-work, selected-context, and revocation contracts now define the authoritative boundaries that autosave and recovery must preserve without duplicating accepted effects or restoring unauthorized state.
+This packet is next because the object, permission, identity, workspace, autosave, reconnect, conflict, and recovery contracts now define the supported internal-alpha journey and the safe evidence required to guide testers and collect reproducible issues.
