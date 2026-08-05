@@ -6,46 +6,45 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 manifest = json.loads((ROOT / 'governance/balance/8D-007_GOLDEN_CORPUS_MANIFEST.json').read_text())
-thresholds = json.loads((ROOT / 'governance/balance/8D-007_PEER_TARGET_THRESHOLD_REGISTRY.json').read_text())
+thresholds = json.loads((ROOT / 'governance/balance/8D-007_PEER_GROUP_TARGET_BAND_CONTRACT.json').read_text())
+limits = thresholds['regressionThresholds']
 
 baseline = {
-    'fixtureCount': len(manifest['fixtures']),
-    'scenarioFailureCount': 0,
-    'sourceTruthChangeCount': 0,
+    'fixtureFingerprintChanges': 0,
+    'scenarioExecutionFailures': 0,
+    'sourceTruthChanges': 0,
     'residueCount': 0,
-    'blockingObservationCount': 0,
+    'blockingObservations': 0,
     'materialObservationRate': 0.0,
-    'domainCoverageCount': len({f['domain'] for f in manifest['fixtures']}),
-    'fingerprintChanged': False,
+    'domainCoverage': len({f['domain'] for f in manifest['fixtures']}),
 }
 
 def detect(candidate):
     failures = []
-    limits = thresholds['regressionThresholds']
-    if candidate['scenarioFailureCount'] > limits['maxScenarioFailures']:
-        failures.append('scenario-failure')
-    if candidate['sourceTruthChangeCount'] > limits['maxSourceTruthChanges']:
-        failures.append('source-truth-change')
-    if candidate['residueCount'] > limits['maxResidueCount']:
-        failures.append('residue')
-    if candidate['blockingObservationCount'] > limits['maxBlockingObservations']:
-        failures.append('blocking-observation')
-    if candidate['materialObservationRate'] > limits['maxMaterialObservationRate']:
-        failures.append('material-observation-rate')
-    if candidate['domainCoverageCount'] < limits['minimumDomainCoverage']:
-        failures.append('domain-coverage')
-    if candidate['fingerprintChanged'] and limits['fingerprintPolicy'] == 'exact-match':
+    if candidate['fixtureFingerprintChanges'] > limits['fixtureFingerprintChanges']:
         failures.append('fingerprint-drift')
+    if candidate['scenarioExecutionFailures'] > limits['scenarioExecutionFailures']:
+        failures.append('scenario-failure')
+    if candidate['sourceTruthChanges'] > limits['sourceTruthChanges']:
+        failures.append('source-truth-change')
+    if candidate['residueCount'] > limits['residueCount']:
+        failures.append('residue')
+    if candidate['blockingObservations'] > limits['blockingObservations']:
+        failures.append('blocking-observation')
+    if candidate['materialObservationRate'] > limits['materialObservationRateMaximum']:
+        failures.append('material-observation-rate')
+    if candidate['domainCoverage'] < limits['domainCoverageMinimum']:
+        failures.append('domain-coverage')
     return failures
 
 mutations = {
-    'scenario-failure': {'scenarioFailureCount': 1},
-    'source-truth-change': {'sourceTruthChangeCount': 1},
+    'fingerprint-drift': {'fixtureFingerprintChanges': 1},
+    'scenario-failure': {'scenarioExecutionFailures': 1},
+    'source-truth-change': {'sourceTruthChanges': 1},
     'residue': {'residueCount': 1},
-    'blocking-observation': {'blockingObservationCount': 1},
-    'material-observation-rate': {'materialObservationRate': 1.0},
-    'domain-coverage': {'domainCoverageCount': baseline['domainCoverageCount'] - 1},
-    'fingerprint-drift': {'fingerprintChanged': True},
+    'blocking-observation': {'blockingObservations': 1},
+    'material-observation-rate': {'materialObservationRate': limits['materialObservationRateMaximum'] + 0.01},
+    'domain-coverage': {'domainCoverage': limits['domainCoverageMinimum'] - 1},
 }
 
 results = []
