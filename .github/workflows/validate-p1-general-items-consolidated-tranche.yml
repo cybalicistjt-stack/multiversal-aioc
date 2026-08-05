@@ -1,0 +1,24 @@
+name: Validate P1 General Items Consolidated Tranche
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/csv-intake/P1_GENERAL_ITEMS_CONSOLIDATED_TRANCHE_CONTRACT.json'
+      - 'scripts/run-p1-general-items-consolidated-tranche.py'
+      - '.github/workflows/validate-p1-general-items-consolidated-tranche.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run consolidated general items tranche
+        run: python scripts/run-p1-general-items-consolidated-tranche.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-p1-general-items-consolidated-tranche-761
+          path: build/csv-p1-general-items-consolidated-tranche-l58/
