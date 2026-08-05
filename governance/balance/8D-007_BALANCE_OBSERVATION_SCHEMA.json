@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/8d-007-balance-observation-v0.1.0.json",
+  "title": "Multiversal Balance Observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["observationId","fixtureId","scenarioId","metric","observedValue","comparisonBasis","severity","sourceTruthChanged","recommendation","evidence"],
+  "properties": {
+    "observationId": {"type":"string","pattern":"^mv:balance-observation:[a-z0-9-]+$"},
+    "fixtureId": {"type":"string","pattern":"^mv:golden-fixture:[a-z0-9-]+$"},
+    "scenarioId": {"type":"string","minLength":1},
+    "metric": {"type":"string","enum":["output","cost","resource-efficiency","survivability","action-economy","range","duration","reliability","compatibility","complexity","other"]},
+    "observedValue": {},
+    "comparisonBasis": {"type":"object","required":["kind","reference"],"properties":{"kind":{"enum":["peer-group","target-band","prior-version","invariant"]},"reference":{"type":"string"}},"additionalProperties":false},
+    "severity": {"enum":["informational","watch","material","blocking"]},
+    "sourceTruthChanged": {"const":false},
+    "recommendation": {"type":"string","minLength":1},
+    "confidence": {"type":"number","minimum":0,"maximum":1},
+    "reversible": {"type":"boolean"},
+    "evidence": {"type":"array","minItems":1,"items":{"type":"object","required":["type","reference"],"properties":{"type":{"enum":["scenario-run","source-field","peer-record","statistical-summary"]},"reference":{"type":"string"}},"additionalProperties":false}},
+    "notes": {"type":"string"}
+  }
+}
