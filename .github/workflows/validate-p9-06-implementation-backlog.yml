@@ -1,0 +1,20 @@
+name: Validate P9-06 Implementation Backlog
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-p9-06-implementation-backlog.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: p9-06-validation
+          path: out/p9-06/P9-06_VALIDATION.json
