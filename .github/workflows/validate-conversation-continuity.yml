@@ -1,0 +1,49 @@
+name: Validate Conversation Continuity
+
+on:
+  pull_request:
+    paths:
+      - 'governance/ai/**'
+      - 'tools/continuity_state.py'
+      - '.github/workflows/validate-conversation-continuity.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'governance/ai/**'
+      - 'tools/continuity_state.py'
+      - '.github/workflows/validate-conversation-continuity.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Use Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate continuity state
+        run: python tools/continuity_state.py validate
+      - name: Run continuity state regression tests
+        run: python -m unittest discover -s tests/continuity -v
+      - name: Verify status projection is deterministic
+        run: |
+          cp governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json "$RUNNER_TEMP/status-before.json"
+          python tools/continuity_state.py refresh-status
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          before = json.loads(Path(os.environ['RUNNER_TEMP'], 'status-before.json').read_text())
+          after = json.loads(Path('governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json').read_text())
+          before.pop('generated_at', None)
+          after.pop('generated_at', None)
+          if before != after:
+              raise SystemExit('status projection changed beyond generated_at')
+          PY
