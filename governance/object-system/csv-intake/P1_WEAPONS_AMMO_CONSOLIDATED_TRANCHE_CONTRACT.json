@@ -1,0 +1,20 @@
+{
+  "format": "multiversal-p1-weapons-ammo-consolidated-tranche-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L61",
+  "dataset": "weapons_and_ammo.csv",
+  "expectedRows": 36,
+  "ownerDelegation": "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json",
+  "outputDirectory": "build/csv-p1-weapons-ammo-consolidated-tranche-l61",
+  "decisions": {
+    "csvIsPrimaryStructuredSource": true,
+    "preserveRawCsv": true,
+    "routeUsingExplicitFieldsThenGovernedRecommendation": true,
+    "doNotAutoMergeDuplicateNames": true,
+    "standaloneCatalogWeaponsAndAmmoDoNotRequireInstalledHost": true,
+    "unspecifiedCompatibilityValidatedAtUseTime": true,
+    "assignDeterministicCanonicalIds": true,
+    "promoteAfterAllTrancheChecksPass": true
+  },
+  "validation": ["domain-and-subtype-routing", "duplicate-identity-review", "field-specific-source-verification", "mechanical-value-verification", "weapon-ammunition-compatibility-handling", "runtime-contract-validation", "canonical-identity-uniqueness", "conversion", "installation", "uninstallation-zero-residue"]
+}
