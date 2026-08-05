@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.7.0  
+**Version:** 0.8.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -56,8 +56,14 @@ Rationale: F002, F020, F003, F021, and F025 establish the object, authority, ide
 
 ## Tranche IA-D03 — Character and Campaign preparation
 
-1. **IA-D03-001 — MV-IA-F004 Character Creation and Advancement packet — next**
-2. IA-D03-002 — MV-IA-F005 Campaign, Scene, and Session Builder packet
+1. **IA-D03-001 — MV-IA-F004 Character Creation and Advancement packet — complete**
+   - packet: `feature-packets/MV-IA-F004_CHARACTER_CREATION_AND_ADVANCEMENT.md`
+   - matrix: `feature-packets/MV-IA-F004_CHARACTER_CREATION_MATRIX.json`
+   - traceability: `feature-packets/MV-IA-F004_IMPLEMENTATION_TRACEABILITY.json`
+   - completion: `feature-packets/MV-IA-F004_COMPLETION_RECORD.json`
+   - status: implementation-ready design; implementation not started and dependency-gated
+   - validation: twenty blocking acceptance criteria, twelve lifecycle states, eighteen validation classes, sixteen operation types, twenty-six denied cases, and zero blocking findings
+2. **IA-D03-002 — MV-IA-F005 Campaign, Scene, and Session Builder packet — next**
 3. IA-D03-003 — MV-IA-F012 Encounter Builder and Balance Lab packet
 4. IA-D03-004 — alpha content and fixture specification
 5. IA-D03-005 — Character/Campaign integration review
@@ -152,8 +158,26 @@ The shared-foundation baseline now requires:
 
 All IA-D02 application implementation remains dependency-gated by the active P9-06 sequence.
 
+## IA-D03-001 completion record
+
+MV-IA-F004 now defines:
+
+- Campaign-, rules-profile-, creation-policy-, advancement-policy-, and pack-lock-bound Character drafts;
+- stable-ID species, form, origin, attribute, skill, proficiency, Ability, Action, Effect, Condition, Resource, and initial-equipment selections;
+- authoritative prerequisite, exclusivity, budget, grant, entitlement, pack, lifecycle, and compatibility validation;
+- source-linked deterministic calculation traces;
+- explicit Character-control grants separate from identity, membership, role, ownership, and entitlement;
+- role-safe Character, history, export, diagnostic, and AI projections;
+- local draft, authoritative save, submission, activation, award, advancement, correction, migration, retirement, archival, and recovery states;
+- idempotency, expected versions, status lookup, conflict preservation, Event-gap recovery, and no offline authoritative mutation;
+- history-preserving advancement, correction, migration, and historical entitlement behavior;
+- responsive and accessible creation and advancement flows;
+- twenty blocking acceptance criteria and deterministic fixture requirements.
+
+The packet is implementation-ready as a design artifact. Application implementation remains dependency-gated by the active P9-06 sequence and does not authorize paid services, production credentials, real-user data collection, internal-alpha release, production, or public release.
+
 ## Current next design item
 
-**IA-D03-001 — Design MV-IA-F004, Character Creation and Advancement.**
+**IA-D03-002 — Design MV-IA-F005, Campaign, Scene, and Session Builder.**
 
-F004 is next because Character creation is the first major domain packet that consumes the complete shared-foundation contract baseline.
+F005 is next because it consumes the completed Character and shared-foundation contracts to define GM preparation, Campaign policy, Scene composition, hidden information, participant invitations, and Session launch.

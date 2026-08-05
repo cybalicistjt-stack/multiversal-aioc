@@ -24,6 +24,7 @@ Implementation-ready and in-progress feature design packets, companion matrices,
 | MV-IA-F003 | Identity, Dashboard, and Workspace Selection | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F003_IDENTITY_DASHBOARD_AND_WORKSPACE_SELECTION.md` | `MV-IA-F003_IDENTITY_WORKSPACE_MATRIX.json` |
 | MV-IA-F021 | Autosave, Reconnect, Recovery, and Bounded Offline Use | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F021_AUTOSAVE_RECONNECT_RECOVERY_AND_BOUNDED_OFFLINE_USE.md` | `MV-IA-F021_RECOVERY_AND_OFFLINE_MATRIX.json` |
 | MV-IA-F025 | Onboarding, Help, Diagnostics, and Issue Reporting | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F025_ONBOARDING_HELP_DIAGNOSTICS_AND_ISSUE_REPORTING.md` | `MV-IA-F025_ONBOARDING_SUPPORT_MATRIX.json` |
+| MV-IA-F004 | Character Creation and Advancement | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F004_CHARACTER_CREATION_AND_ADVANCEMENT.md` | `MV-IA-F004_CHARACTER_CREATION_MATRIX.json` |
 
 ## Integration review index
 
@@ -84,6 +85,19 @@ The IA-D02 packets and integration review establish:
 - desktop, tablet, mobile, keyboard, touch, screen-reader, zoom, reduced-motion, and noncolor equivalence;
 - provider-neutral and zero-paid-service, zero-AI core operation.
 
+## Completed Character preparation result
+
+MV-IA-F004 establishes:
+
+- Campaign- and rules-profile-bound Character identity and build state;
+- stable-ID governed selection and source-linked calculation;
+- explicit controller authority and role-safe projections;
+- validation, activation, advancement, correction, migration, retirement, archival, and export contracts;
+- idempotency, conflict preservation, reconnect, and bounded offline behavior;
+- historical entitlement and append-only history requirements;
+- accessible and responsive Character creation and advancement;
+- twenty acceptance criteria and deterministic fixtures.
+
 ## Next item
 
-`MV-IA-F004_CHARACTER_CREATION_AND_ADVANCEMENT.md` under IA-D03-001.
+`MV-IA-F005_CAMPAIGN_SCENE_AND_SESSION_BUILDER.md` under IA-D03-002.

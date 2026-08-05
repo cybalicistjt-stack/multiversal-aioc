@@ -1,7 +1,7 @@
 # MV-IA-001 — Internal Alpha Feature Design Program
 
 **Document ID:** MV-IA-001  
-**Version:** 0.7.0  
+**Version:** 0.8.0  
 **Status:** ACTIVE — DESIGN PROGRAM  
 **Owner and final authority:** John Brandon Turner  
 **Established:** 2026-08-05
@@ -78,6 +78,21 @@ The integration review establishes one downstream baseline for:
 - responsive and accessible state equivalence;
 - provider-neutral adapters and zero-paid-service, zero-AI core operation.
 
+## IA-D03-001 — Character Creation and Advancement
+
+Complete at design level with:
+
+- Campaign-, rules-profile-, policy-, and pack-lock-bound Character drafts;
+- stable-ID governed selections and source-linked option inspection;
+- authoritative validation and deterministic calculation traces;
+- separate Character-control grants;
+- role-safe Character, history, export, diagnostic, and optional AI projections;
+- local draft, authoritative save, activation, advancement, correction, migration, retirement, archival, reconnect, and recovery contracts;
+- history-preserving entitlement, correction, and migration behavior;
+- twenty blocking acceptance criteria and a machine-readable Character matrix.
+
+Application implementation remains dependency-gated.
+
 ## File map
 
 Program baselines:
@@ -97,7 +112,7 @@ Packet and integration artifacts:
 
 - `feature-packets/README.md`
 - `feature-packets/FEATURE_PACKET_TEMPLATE.md`
-- implementation-ready F002, F020, F003, F021, and F025 packets and companion artifacts
+- implementation-ready F002, F020, F003, F021, F025, and F004 packets and companion artifacts
 - `feature-packets/IA-D02-006_SHARED_FOUNDATIONS_INTEGRATION_REVIEW.md`
 - `feature-packets/IA-D02-006_SHARED_FOUNDATIONS_CONTRACT_MATRIX.json`
 - `feature-packets/IA-D02-006_REVIEW_RECEIPT.md`
@@ -120,6 +135,6 @@ Silence is not approval.
 
 ## Current next design action
 
-**IA-D03-001 — Design MV-IA-F004, Character Creation and Advancement.**
+**IA-D03-002 — Design MV-IA-F005, Campaign, Scene, and Session Builder.**
 
-The Character packet must consume the IA-D02-006 shared-foundation contract matrix rather than creating private identity, permission, picker, save, recovery, diagnostic, or support behavior.
+F005 must consume IA-D02-006 and MV-IA-F004 rather than redefining identity, Character control, stable-ID selection, authorization, persistence, recovery, diagnostics, accessibility, or provider boundaries.
