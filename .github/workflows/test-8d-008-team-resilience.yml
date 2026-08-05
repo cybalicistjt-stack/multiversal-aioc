@@ -1,0 +1,41 @@
+name: Test 8D-008 Team Resilience
+
+on:
+  pull_request:
+    paths:
+      - 'governance/ai/8D-008_**'
+      - 'scripts/test-8d-008-team-resilience.py'
+      - '.github/workflows/test-8d-008-team-resilience.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  resilience:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run failure, approval, and conflict drills
+        run: python scripts/test-8d-008-team-resilience.py
+      - name: Verify completion invariants
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open('out/8d-008-team-resilience/TEAM_RESILIENCE_REPORT.json'))
+          assert p['drillCount'] == 6
+          assert p['recoveredDrillCount'] == 6
+          assert p['allDrillsRecovered'] is True
+          assert p['approvalGateSimulated'] is True
+          assert p['concurrentConflictResolved'] is True
+          assert p['sourceTruthChanged'] is False
+          assert p['unsupportedCompletionClaims'] == 0
+          print(p['artifactSha256'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 8d-008-team-resilience
+          path: out/8d-008-team-resilience/TEAM_RESILIENCE_REPORT.json
