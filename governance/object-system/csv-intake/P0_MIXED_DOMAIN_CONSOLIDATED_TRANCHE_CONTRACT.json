@@ -1,0 +1,32 @@
+{
+  "format": "multiversal-p0-mixed-domain-consolidated-tranche-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L52",
+  "dataset": "expanded_bases_facilities_materials_and_homesteads_all_genres.csv",
+  "expectedRows": 1080,
+  "ownerDelegation": "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json",
+  "outputDirectory": "build/csv-p0-mixed-domain-consolidated-tranche-l52",
+  "domains": ["base", "facility", "material", "agriculture", "homestead"],
+  "decisions": {
+    "csvIsPrimaryStructuredSource": true,
+    "preserveRawCsv": true,
+    "routeUsingExplicitFieldsThenGovernedRecommendation": true,
+    "doNotAutoMergeDuplicateNames": true,
+    "standaloneCatalogRecordsDoNotRequireInstalledParent": true,
+    "unspecifiedCompatibilityValidatedAtUseTime": true,
+    "assignDeterministicCanonicalIds": true,
+    "promoteAfterAllTrancheChecksPass": true
+  },
+  "validation": [
+    "domain-routing",
+    "duplicate-identity-review",
+    "field-specific-source-verification",
+    "mechanical-value-verification",
+    "relationship-and-compatibility-handling",
+    "runtime-contract-validation",
+    "canonical-identity-uniqueness",
+    "conversion",
+    "installation",
+    "uninstallation-zero-residue"
+  ]
+}
