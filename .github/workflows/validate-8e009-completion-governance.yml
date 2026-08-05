@@ -1,0 +1,23 @@
+name: Validate 8E-009 Completion Governance
+
+on:
+  pull_request:
+    paths:
+      - 'governance/current-state/AIOC_CURRENT_STATE.md'
+      - 'governance/current-state/SESSION_HANDOFF.md'
+      - 'governance/object-system/CANONICAL_OBJECT_TEMPLATE_PROGRAM.md'
+      - 'governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md'
+      - 'scripts/validate-8e009-completion-governance.py'
+      - '.github/workflows/validate-8e009-completion-governance.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate completion governance
+        run: python scripts/validate-8e009-completion-governance.py
