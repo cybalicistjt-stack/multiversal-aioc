@@ -1,0 +1,28 @@
+name: Validate P9-03A Owner Selection
+
+on:
+  pull_request:
+    paths:
+      - 'governance/phase9/P9-03A_OWNER_TECHNOLOGY_SELECTION_RECORD.md'
+      - 'scripts/validate-p9-03a-owner-selection.py'
+      - '.github/workflows/validate-p9-03a-owner-selection.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'governance/phase9/P9-03A_OWNER_TECHNOLOGY_SELECTION_RECORD.md'
+      - 'scripts/validate-p9-03a-owner-selection.py'
+      - '.github/workflows/validate-p9-03a-owner-selection.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-p9-03a-owner-selection.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: p9-03a-owner-selection
+          path: out/p9-03a-owner-selection/P9-03A_OWNER_SELECTION_VALIDATION.json
