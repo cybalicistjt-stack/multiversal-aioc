@@ -1,16 +1,80 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 1.0.0  
-**Status:** OWNER APPROVED — PLANNED  
+**Version:** 2.0.0  
+**Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED  
 **Owner and final authority:** John Brandon Turner  
-**Approved:** 2026-08-03
+**Originally approved:** 2026-08-03  
+**Last updated:** 2026-08-05
 
 ## Purpose
 
-This roadmap governs the work after the repository, content, and application foundations are sufficiently verified. It expands the former single “Phase 10 — Begin application development” milestone into four major implementation phases.
+This roadmap governs the transition from completed source recovery, canonicalization, architecture, and AI-team preparation into verified application construction.
 
-Nothing in this roadmap is considered complete merely because it was described in conversation. Completion requires repository evidence, tests, previews, and owner approval.
+Repository evidence is mandatory. Nothing is complete merely because it was discussed, planned, drafted, or claimed. Completion requires actual files, commits, pull requests, CI results, and merges where applicable.
+
+## Project phase history
+
+- **Phase 0 — Legacy source creation:** John Brandon Turner and his brother created the legacy PDF game content.
+- **Phase 0.5 — Definition document:** established Multiversal as a broad, system-flexible tabletop RPG platform.
+- **Phases 1–7:** product conception, functional design, data and pack architecture, mechanics architecture, content-domain architecture, interface/workflow design, and governed repository preparation.
+- **Phase 8:** standards, normalization, canonical domain architecture, source conversion, final validation, golden regression corpus, balance harness, and AI Development Team Operating Package.
+- **Phase 9:** canonical product architecture and bounded implementation readiness.
+
+## Completed Phase 8 milestones
+
+- **8D-007 — Golden Test Corpus and Balance Harness:** COMPLETE.
+- **8D-008 — AI Development Team Operating Package:** COMPLETE.
+- **8E-009 — Canonical Object Template and CSV-First Program:** COMPLETE.
+- 20 governed datasets, 19,199 source rows, 19,199 promoted records, zero unprocessed rows, and passing provenance/runtime/install/uninstall validation.
+
+## Phase 9 — Product Architecture and Implementation Readiness
+
+The uploaded Phase 9 package remains canonical. The generic AI roadmap was renamed **Phase 9R** to prevent duplication.
+
+Completed first-level packages:
+
+1. **P9-01 — Entitlements and freemium architecture:** subscriptions, sponsored months, campaign grants, restrictions, cancellation, and portability.
+2. **P9-02 — Authoritative session architecture:** two-device multiplayer, reconnect, checkpoints, hidden information, and transport abstraction.
+3. **P9-03 — Technology and service decision package:** selected a Postgres-centered managed-backend architecture class while preserving provider neutrality.
+4. **P9-04 — Postgres-centered architecture contract:** database, identity, authorization, entitlements, sessions, realtime, security, migration, backup, observability, and provider-exit contracts.
+5. **P9-05 — Bounded technical spike and cost envelope:** deterministic two-device validation and a target operating envelope of $0–$25/month, with owner review above $35/month.
+6. **P9-06 — Implementation backlog and acceptance gates:** 7 workstreams, 24 ordered backlog items, and 8 acceptance gates.
+
+## Owner authorization
+
+John Brandon Turner authorized bounded implementation of **P9-06-001 through P9-06-023**.
+
+This authorization permits repository implementation, tests, CI, and local/provider-neutral adapters. It does **not** authorize:
+
+- paid services or paid-plan enrollment;
+- production deployment;
+- public release;
+- irreversible vendor coupling;
+- credentials or production secrets;
+- spending beyond a separately approved owner gate.
+
+## P9-06 implementation progress
+
+Completed and merged in `cybalicistjt-stack/Multiversal-app`:
+
+1. **P9-06-001 — Implementation authorization and repository baseline** — COMPLETE, PR #71.
+2. **P9-06-002 — Local-only development environment contract** — COMPLETE, PR #72.
+3. **P9-06-003 — Secrets and environment isolation policy** — COMPLETE, PR #73. **Acceptance Gate AG-01 complete.**
+4. **P9-06-004 — Provider-neutral identity service port** — COMPLETE, PR #74.
+5. **P9-06-005 — Provider-neutral entitlement service port** — COMPLETE, PR #75.
+6. **P9-06-006 — Provider-neutral persistence and migration ports** — COMPLETE, PR #76.
+7. **P9-06-007 — Realtime and authoritative-session service ports** — COMPLETE, PR #77, squash commit `149b866f530f3a8896170bfe3ba6af0c01fb2f72`.
+
+### Current next executable action
+
+**P9-06-008 — Implement backup, restore, and provider-exit export ports.**
+
+The work must remain provider-neutral and include deterministic contracts, fixtures, validation, CI, recovery integrity, export completeness, and no hosted-service or credential commitment.
+
+### Remaining authorized backlog
+
+After P9-06-008, continue dependency order through **P9-06-023**, automatically resolving ordinary implementation and CI failures. Stop only at a genuine owner-only decision, spending gate, deployment gate, production credential requirement, or public/internal-alpha release gate.
 
 ## Phase 10 — Core Application Implementation
 
@@ -36,97 +100,42 @@ Implementation method:
 - build vertical slices, not disconnected mock screens;
 - each slice includes navigation, real data, actions, permissions, save/load, loading/error states, desktop/mobile behavior, tests, and owner review;
 - reuse universal object and relationship components rather than creating domain-specific duplicates;
-- significant UI changes require deployed interaction verification.
+- significant UI changes require deployed or reproducible interaction verification.
 
 ## Phase 11 — GM and Player Experience
 
-Complete the day-to-day product experience.
-
-GM workspace:
-
-- campaign, session, timeline, and participant management;
-- scene, encounter, investigation, relationship, social, and world-building tools;
-- maps, environments, creatures, NPCs, hazards, clues, objectives, triggers, rewards, hidden information, and notes;
-- approvals, modifications, permissions, and live-session control.
-
-Player workspace:
-
-- character progression;
-- abilities and resources;
-- inventory, equipment, crafting, vehicles, companions, journals, quests, relationships, party assets, and customization;
-- clear live-session views with secondary access to logs and proposals.
-
-Exit condition:
-
-A GM and players can create a campaign, create characters, build scenes, run combat and non-combat sessions, persist state, and resume safely.
+Complete the day-to-day product experience for campaign creation, character creation, scene building, combat and non-combat play, persistence, disconnect/reconnect, and safe resumption.
 
 ## Phase 12 — AI Team and Automation
 
-Integrate specialized AI assistants into real workflows instead of a single generic chat box.
-
-Planned assistants:
-
-- GM Assistant;
-- Rules Assistant;
-- Narrative Assistant;
-- World Assistant;
-- Character Assistant;
-- Encounter Assistant;
-- Developer and Content Assistant.
-
-Requirements:
-
-- contextual canonical-object retrieval;
-- provenance-aware answers;
-- permission awareness;
-- visible proposals;
-- reversible actions;
-- owner/GM approval gates;
-- no silent canonical publication;
-- regression tests for context, tool use, and approval behavior.
+Integrate specialized GM, Rules, Narrative, World, Character, Encounter, and Developer/Content assistants with canonical retrieval, provenance, permissions, visible proposals, reversible actions, and approval gates.
 
 ## Phase 13 — Internal Alpha Completion
 
-Bring the product to feature-complete internal use.
+Complete major workflows, real-service integration, approved content population, gameplay testing, multiplayer/recovery, accessibility, performance, pack lifecycle, onboarding, telemetry, and internal tester documentation.
 
-Work includes:
+## Public-live path after Phase 13
 
-- complete planned workflows;
-- connect every major screen to real services;
-- populate the application with approved recovered content;
-- test combat, social, investigation, exploration, crafting, vehicles, campaigns, and world building;
-- multiplayer, reconnect, offline recovery, conflict resolution, and permissions testing;
-- accessibility, responsive layout, touch targets, performance, autosave, rollback, onboarding, help, telemetry, and error reporting;
-- stable pack creation, validation, installation, upgrade, rollback, and removal workflows;
-- internal tester and contributor documentation.
+A formal release program must govern:
+
+1. closed alpha;
+2. beta stabilization and load testing;
+3. commercial, legal, privacy, moderation, backup, and support readiness;
+4. staged production deployment and platform certification;
+5. public launch with monitoring and rollback.
 
 ## Parallel Apple track
 
-`WP-011 — Tauri iOS/iPadOS Spike` remains a bounded Mac-dependent track.
+`WP-011 — Tauri iOS/iPadOS Spike` remains a bounded Mac-dependent track. The borrowed Mac is for one-time Apple-only build, signing, simulator/device, provisioning, packaging, and certification work. Most development must proceed without waiting for it, and project material must be removable afterward.
 
-Mac-only work should be limited to:
+## Mandatory execution behavior
 
-- Xcode and Apple tooling setup;
-- iOS/iPadOS build generation;
-- signing and provisioning;
-- simulator/device validation;
-- App Store-compatible packaging and Apple-specific checks.
-
-Most application implementation proceeds safely on web/Windows/Linux while waiting. The Mac should function primarily as an Apple build and certification environment rather than the main development machine.
-
-Estimated focused Mac requirement after repository preparation: approximately one working day in the uncomplicated case, with a two-to-three-day contingency for account, certificate, provisioning, or Apple tooling problems.
-
-## Governance and delivery
-
-Every batch must be bounded and include:
-
-- exact scope and acceptance criteria;
-- real application data;
-- permissions and authority behavior;
-- save/load and recovery behavior where relevant;
-- desktop and mobile interaction;
-- automated tests;
-- deployable preview or reproducible local demonstration;
-- owner review before merge or production promotion.
-
-The active workstream remains Content Recovery and Ingestion until its governed handoff authorizes implementation work. This roadmap defines the approved destination and sequencing; it does not falsely mark unverified application work complete.
+- “Continue” means perform the next verified unfinished repository operation.
+- Do not substitute explanations or plans for work.
+- Use John’s approved recommendation process to resolve ambiguity unless a decision truly requires him personally.
+- Group compatible validation, conversion, and repair work into efficient tranches.
+- Inspect CI failures, repair them, rerun, and continue automatically.
+- Never claim completion, files, commits, PRs, merges, tests, artifacts, or deployments without tool verification.
+- Report the next step after every completed step.
+- Preserve source truth, provenance, variants, conflicts, and reversibility.
+- John Brandon Turner retains final authority.
