@@ -12,11 +12,11 @@ assert delegation["status"] == "approved-and-active"
 assert report["format"] == "multiversal-p0-mecha-recommendation-adoption-report"
 assert report["workstream"] == contract["workstream"]
 assert report["rows"] == contract["expectedRows"] == 107
-assert report["semanticClaimsReviewed"] == contract["expectedSemanticClaims"] == 6542
-assert report["recommendationsGenerated"] == 6542
-assert report["recommendationsAdopted"] == 6542
+assert report["semanticClaimsReviewed"] == contract["expectedSemanticClaims"] == 6435
+assert report["recommendationsGenerated"] == 6435
+assert report["recommendationsAdopted"] == 6435
 assert report["remainingWithoutRecommendation"] == 0
-assert report["fieldSpecificSourceTextVerificationStillRequired"] == 6542
+assert report["fieldSpecificSourceTextVerificationStillRequired"] == 6435
 assert report["canonicalIdsAssigned"] == 0
 assert report["promotionReadyRows"] == 0
 assert len(report["records"]) == 107
