@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/correction-intake-1.0.0.schema.json",
+  "title": "Multiversal Owner Correction Intake",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "source_ref",
+    "captured_at",
+    "correction_summary",
+    "failure_summary",
+    "severity",
+    "recurrence_material",
+    "pattern_ids",
+    "control_ids",
+    "authority",
+    "immediate_correction",
+    "proposed_case",
+    "privacy"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "source_ref": {"type": "string", "pattern": "^opaque:[A-Za-z0-9._:-]{8,160}$"},
+    "captured_at": {"type": "string", "format": "date-time"},
+    "correction_summary": {"type": "string", "minLength": 1, "maxLength": 400},
+    "failure_summary": {"type": "string", "minLength": 1, "maxLength": 400},
+    "severity": {"enum": ["P0", "P1", "P2", "P3"]},
+    "recurrence_material": {"const": true},
+    "pattern_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^MV-(FRIC|SUCC)-[A-Z]+-[0-9]{3}$"}},
+    "control_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^C-[A-Z0-9-]+$"}},
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actor_id", "explicit_correction", "evidence"],
+      "properties": {
+        "actor_id": {"const": "john-brandon-turner"},
+        "explicit_correction": {"const": true},
+        "evidence": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1, "maxLength": 300}}
+      }
+    },
+    "immediate_correction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "evidence"],
+      "properties": {
+        "status": {"enum": ["applied", "blocked"]},
+        "evidence": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1, "maxLength": 300}}
+      }
+    },
+    "proposed_case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "setup", "owner_input", "expected_actions", "prohibited_actions", "pass_condition"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1, "maxLength": 160},
+        "setup": {"type": "string", "minLength": 1, "maxLength": 600},
+        "owner_input": {"type": "string", "minLength": 1, "maxLength": 300},
+        "expected_actions": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 300}},
+        "prohibited_actions": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 300}},
+        "pass_condition": {"type": "string", "minLength": 1, "maxLength": 600}
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["raw_transcript_included", "minimized", "sensitive_attachment_included"],
+      "properties": {
+        "raw_transcript_included": {"const": false},
+        "minimized": {"const": true},
+        "sensitive_attachment_included": {"const": false}
+      }
+    }
+  }
+}
