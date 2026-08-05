@@ -43,7 +43,7 @@ with zipfile.ZipFile(ROOT / "Csv.zip") as archive:
                 "row": row_number,
                 "catalogId": row.get("Catalog_ID"),
                 "locator": row.get("Item_Name"),
-                "sourceFile": row.get("Source_File"),
+                "sourcePdf": row.get("Source_PDF"),
                 "sourcePageOrBlock": row.get("Source_Page_or_Block"),
                 "directEvidenceComplete": not direct_missing,
                 "missingDirectEvidenceFields": direct_missing,
