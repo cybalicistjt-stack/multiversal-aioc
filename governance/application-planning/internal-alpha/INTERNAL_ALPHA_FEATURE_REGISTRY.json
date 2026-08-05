@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "programId": "MV-IA-001",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "status": "active-design",
   "owner": "John Brandon Turner",
   "classificationValues": [
@@ -120,7 +120,14 @@
       "alphaSlice": "GM creates a Campaign and Scene with real objects, saves it, previews Player visibility, and launches play.",
       "fullScopeDeferred": false,
       "designOrder": 5,
-      "designStatus": "registered"
+      "designStatus": "implementation-ready",
+      "packetPath": "feature-packets/MV-IA-F005_CAMPAIGN_SCENE_AND_SESSION_BUILDER.md",
+      "packetVersion": "0.1.0",
+      "companionFiles": [
+        "feature-packets/MV-IA-F005_CAMPAIGN_SCENE_SESSION_MATRIX.json",
+        "feature-packets/MV-IA-F005_IMPLEMENTATION_TRACEABILITY.json"
+      ],
+      "implementationBoundary": "Design complete; application implementation remains dependency-gated by the active P9-06 sequence, IA-D02-006 conformance, MV-IA-F004 Character contracts, and concrete Campaign, Scene, Session, entitlement, pack, persistence, migration, backup, restore, provider-exit, realtime, and downstream action-resolution foundations."
     },
     {
       "featureId": "MV-IA-F006",
