@@ -1,0 +1,30 @@
+{
+  "format": "multiversal-p0-mecha-pilot-tranche-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L48",
+  "dataset": "expanded_mecha_and_components_all_genres.csv",
+  "sourceRowRanges": [[2,21],[52,138]],
+  "expectedRows": 107,
+  "ownerDelegation": "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json",
+  "templateRegistry": "governance/object-system/vehicle-templates/MECHA_TEMPLATE_REGISTRY.json",
+  "outputDirectory": "build/csv-p0-mecha-pilot-tranche-l48",
+  "execution": [
+    "generate all concrete staging records",
+    "route frame and component subtypes",
+    "audit normalized-name duplicate clusters",
+    "assess compatibility, relationships, completeness, power and runtime behavior",
+    "apply owner-delegated recommendations to resolvable failures",
+    "build bounded pilot package",
+    "test install, validate installed state, uninstall and residue absence"
+  ],
+  "rules": {
+    "preserveEveryRawCsvField": true,
+    "recommendAndAdoptWithoutOwnerInterruption": true,
+    "unsupportedRelationshipsRemainUnresolved": true,
+    "ambiguousDuplicatesRemainSeparate": true,
+    "noUnsupportedPowerArithmetic": true,
+    "installationMustBeReversible": true,
+    "canonicalIdsForbidden": true,
+    "promotionForbidden": true
+  }
+}
