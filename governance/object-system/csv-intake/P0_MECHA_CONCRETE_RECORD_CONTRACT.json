@@ -1,0 +1,27 @@
+{
+  "format": "multiversal-p0-mecha-concrete-record-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L47",
+  "dataset": "expanded_mecha_and_components_all_genres.csv",
+  "sourceRows": [2, 52, 72],
+  "templates": {
+    "2": "vehicle.mecha.frame",
+    "52": "vehicle.mecha.component",
+    "72": "vehicle.mecha.component"
+  },
+  "ownerDelegation": "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json",
+  "templateRegistry": "governance/object-system/vehicle-templates/MECHA_TEMPLATE_REGISTRY.json",
+  "outputDirectory": "build/csv-p0-mecha-concrete-records-l47",
+  "rules": {
+    "preserveEveryRawCsvField": true,
+    "useOwnerDelegatedRecommendationsAsProvisionalValues": true,
+    "requireTemplateCompletenessAssessment": true,
+    "requireCompatibilityAssessment": true,
+    "requirePowerBudgetAssessment": true,
+    "requireRelationshipAssessment": true,
+    "requireRuntimeBehaviorAssessment": true,
+    "unsupportedRelationshipsRemainUnresolved": true,
+    "canonicalIdsForbidden": true,
+    "promotionForbidden": true
+  }
+}
