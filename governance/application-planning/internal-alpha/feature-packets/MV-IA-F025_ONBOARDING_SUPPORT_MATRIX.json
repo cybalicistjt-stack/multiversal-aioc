@@ -1,0 +1,367 @@
+{
+  "schemaVersion": "1.0.0",
+  "programId": "MV-IA-001",
+  "featureId": "MV-IA-F025",
+  "featureVersion": "0.1.0",
+  "status": "implementation-ready-design",
+  "owner": "John Brandon Turner",
+  "defaultHelpDecision": "deny-unless-topic-is-public-or-context-authorized",
+  "defaultDiagnosticDecision": "exclude",
+  "defaultIssueDecision": "deny",
+  "roles": [
+    {
+      "role": "invited-tester",
+      "scope": "assigned alpha release and permitted workspaces"
+    },
+    {
+      "role": "player",
+      "scope": "Player-safe active context and own reports"
+    },
+    {
+      "role": "game-master",
+      "scope": "GM-authorized active Campaign and own or assigned reports"
+    },
+    {
+      "role": "assistant-gm",
+      "scope": "delegated Campaign and report scope"
+    },
+    {
+      "role": "content-creator",
+      "scope": "creator workspace and own reports"
+    },
+    {
+      "role": "observer",
+      "scope": "observer-safe workspace and own reports"
+    },
+    {
+      "role": "owner-admin",
+      "scope": "approved administration and separately authorized support scope"
+    },
+    {
+      "role": "service-actor",
+      "scope": "narrow manifest, storage, intake, notification, and export operations"
+    },
+    {
+      "role": "ai",
+      "scope": "optional redacted read-only proposed assistance"
+    }
+  ],
+  "onboardingStages": [
+    "release-identification",
+    "invitation-and-role-confirmation",
+    "alpha-boundary-acknowledgement",
+    "workspace-entry",
+    "supported-journey-introduction",
+    "first-success-task",
+    "help-discovery",
+    "known-limitations-review",
+    "issue-report-introduction",
+    "completion-and-resume"
+  ],
+  "helpContexts": [
+    "global-shell",
+    "identity-entry",
+    "dashboard",
+    "workspace-selection",
+    "universal-object",
+    "character",
+    "campaign-builder",
+    "scene-builder",
+    "live-session",
+    "combat",
+    "inventory",
+    "social",
+    "investigation",
+    "world-builder",
+    "offline",
+    "stale",
+    "conflict",
+    "forbidden",
+    "entitlement-restricted",
+    "recovery"
+  ],
+  "issueCategories": [
+    "access-or-invitation",
+    "permission-or-hidden-information",
+    "entitlement",
+    "content-or-pack",
+    "save-or-persistence",
+    "realtime-or-reconnect",
+    "recovery-or-restore",
+    "ui-or-responsive",
+    "accessibility",
+    "performance",
+    "rules-or-resolution",
+    "data-or-migration",
+    "diagnostics-or-reporting",
+    "documentation-or-help",
+    "security-or-privacy",
+    "other"
+  ],
+  "severityValues": [
+    {
+      "id": "informational",
+      "meaning": "question, suggestion, or minor wording issue"
+    },
+    {
+      "id": "minor",
+      "meaning": "workaround exists and primary path continues"
+    },
+    {
+      "id": "major",
+      "meaning": "important workflow degraded or data at risk"
+    },
+    {
+      "id": "blocking",
+      "meaning": "approved alpha journey cannot continue"
+    },
+    {
+      "id": "security-privacy",
+      "meaning": "possible unauthorized access, secret, or privacy exposure; routes to protected handling"
+    }
+  ],
+  "releaseIdentityRequiredFields": [
+    "releaseId",
+    "applicationVersion",
+    "buildId",
+    "commitId",
+    "environmentClass",
+    "schemaVersion",
+    "migrationVersion",
+    "packSetDigest",
+    "releasedAt",
+    "supportPolicyId"
+  ],
+  "issueReportRequiredFields": [
+    "issueReportId",
+    "reporterSubjectId",
+    "releaseId",
+    "roleContext",
+    "selectedContextType",
+    "categoryId",
+    "severityId",
+    "reproducibility",
+    "blocksApprovedJourney",
+    "title",
+    "expectedResult",
+    "actualResult",
+    "reproductionSteps",
+    "submissionOperationId",
+    "createdAt"
+  ],
+  "diagnosticManifestRequiredFields": [
+    "diagnosticBundleId",
+    "issueDraftId",
+    "releaseId",
+    "generatedAt",
+    "generatorVersion",
+    "fieldDefinitions",
+    "includedFields",
+    "excludedFieldCountByClass",
+    "redactionCountByClass",
+    "attachmentIds",
+    "consentId",
+    "manifestSha256"
+  ],
+  "issueReceiptRequiredFields": [
+    "issueReceiptId",
+    "issueReportId",
+    "submissionOperationId",
+    "releaseId",
+    "submittedAt",
+    "safeSummary",
+    "status",
+    "statusVersion",
+    "receiptSha256"
+  ],
+  "protectedDiagnosticSurfaces": [
+    {
+      "surface": "identity-session",
+      "default": "exclude raw provider values and tokens"
+    },
+    {
+      "surface": "selected-context",
+      "default": "include safe IDs only after authorization"
+    },
+    {
+      "surface": "campaign",
+      "default": "exclude unrelated Campaigns"
+    },
+    {
+      "surface": "character",
+      "default": "exclude uncontrolled and hidden Characters"
+    },
+    {
+      "surface": "scene",
+      "default": "exclude GM truth from Player reports"
+    },
+    {
+      "surface": "session",
+      "default": "include safe sequence and state only"
+    },
+    {
+      "surface": "operations",
+      "default": "include stable IDs and safe result codes"
+    },
+    {
+      "surface": "commands",
+      "default": "include ID and status, not unauthorized payload"
+    },
+    {
+      "surface": "events",
+      "default": "include sequence and safe type, not hidden payload"
+    },
+    {
+      "surface": "checkpoints",
+      "default": "include ID and verification status"
+    },
+    {
+      "surface": "logs",
+      "default": "allowlisted excerpts after redaction and preview"
+    },
+    {
+      "surface": "screenshots",
+      "default": "explicit user selection only"
+    },
+    {
+      "surface": "attachments",
+      "default": "quarantine until validated and report-bound"
+    },
+    {
+      "surface": "network",
+      "default": "exclude headers, cookies, tokens, and full bodies"
+    },
+    {
+      "surface": "storage",
+      "default": "exclude raw database and filesystem dumps"
+    },
+    {
+      "surface": "permissions",
+      "default": "include user-safe reason codes, not policy internals"
+    },
+    {
+      "surface": "entitlements",
+      "default": "include safe decision reason, not protected catalog"
+    },
+    {
+      "surface": "performance",
+      "default": "include bounded timings and sizes"
+    },
+    {
+      "surface": "accessibility",
+      "default": "include user-selected preferences without sensitive health inference"
+    },
+    {
+      "surface": "device",
+      "default": "include coarse platform and version only"
+    },
+    {
+      "surface": "location",
+      "default": "exclude unless separately approved"
+    },
+    {
+      "surface": "ai",
+      "default": "exclude prompts and retrieved hidden content"
+    },
+    {
+      "surface": "support-access",
+      "default": "include request and approval IDs, not content"
+    },
+    {
+      "surface": "issue-index",
+      "default": "no protected counts or duplicate enumeration"
+    }
+  ],
+  "requiredDeniedCases": [
+    "player-diagnostics-exclude-gm-truth",
+    "gm-diagnostics-exclude-unrelated-campaign",
+    "reporter-cannot-attach-other-subject-private-notes",
+    "observer-cannot-enumerate-hidden-participants",
+    "creator-cannot-view-campaign-reports-without-authority",
+    "support-cannot-open-unassigned-report",
+    "owner-admin-has-no-blanket-content-access",
+    "revoked-subject-cannot-retrieve-attachment",
+    "deep-link-to-other-report-is-safe-unavailable",
+    "help-search-does-not-reveal-hidden-feature",
+    "manifest-excludes-secrets-and-tokens",
+    "logs-redacted-before-preview",
+    "screenshot-requires-explicit-selection",
+    "automatic-screen-capture-prohibited",
+    "export-excludes-unauthorized-cache",
+    "offline-draft-purges-protected-data-after-revocation",
+    "follow-up-cannot-request-credentials",
+    "ai-cannot-retrieve-hidden-issue-body",
+    "counts-do-not-enumerate-protected-issues",
+    "service-actor-cannot-bypass-campaign-scope",
+    "attachment-storage-denies-guessed-id",
+    "status-notification-excludes-issue-content",
+    "release-identity-excludes-secret-deployment-metadata",
+    "rejected-submission-leaves-no-accessible-orphan",
+    "expired-support-access-denies-retrieval",
+    "issue-report-does-not-bypass-entitlement"
+  ],
+  "attachmentRules": {
+    "automaticCapture": false,
+    "previewRequired": true,
+    "explicitSelectionRequired": true,
+    "removalBeforeSubmissionRequired": true,
+    "quarantineRequired": true,
+    "checksumRequired": true,
+    "classificationRequired": true,
+    "maxCountAndSize": "owner-approved alpha policy"
+  },
+  "alwaysExcludedDiagnosticClasses": [
+    "password",
+    "access-token",
+    "refresh-token",
+    "cookie",
+    "credential",
+    "private-key",
+    "raw-authorization-header",
+    "payment-data",
+    "unrelated-campaign-data",
+    "unselected-private-note",
+    "unselected-gm-truth",
+    "raw-database-dump",
+    "full-filesystem-inventory"
+  ],
+  "zeroServiceRequirements": [
+    "local onboarding definitions",
+    "local contextual help",
+    "local known limitations",
+    "local issue draft autosave",
+    "repository or local issue intake adapter",
+    "portable issue export",
+    "local notification projection",
+    "zero AI",
+    "zero paid ticketing",
+    "zero paid analytics",
+    "zero paid crash reporting"
+  ],
+  "acceptanceCriteria": [
+    "OHD-AC-001",
+    "OHD-AC-002",
+    "OHD-AC-003",
+    "OHD-AC-004",
+    "OHD-AC-005",
+    "OHD-AC-006",
+    "OHD-AC-007",
+    "OHD-AC-008",
+    "OHD-AC-009",
+    "OHD-AC-010",
+    "OHD-AC-011",
+    "OHD-AC-012",
+    "OHD-AC-013",
+    "OHD-AC-014",
+    "OHD-AC-015",
+    "OHD-AC-016",
+    "OHD-AC-017",
+    "OHD-AC-018",
+    "OHD-AC-019",
+    "OHD-AC-020"
+  ],
+  "implementationAuthorized": false,
+  "internalAlphaReleaseAuthorized": false,
+  "productionAuthorized": false,
+  "publicReleaseAuthorized": false
+}

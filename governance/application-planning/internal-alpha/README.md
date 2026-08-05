@@ -1,7 +1,7 @@
 # MV-IA-001 — Internal Alpha Feature Design Program
 
 **Document ID:** MV-IA-001  
-**Version:** 0.5.0  
+**Version:** 0.6.0  
 **Status:** ACTIVE — DESIGN PROGRAM  
 **Owner and final authority:** John Brandon Turner  
 **Established:** 2026-08-05
@@ -20,26 +20,7 @@ There is **no prophecy content or prophecy feature domain** in this program. A p
 
 Define exactly what internal alpha contains, why each feature is present, how features depend on shared systems, how Player and GM journeys connect, and what evidence will make each feature implementation-ready and alpha-ready.
 
-The program must prevent two opposite failures:
-
-1. treating internal alpha as the entire final application;
-2. reducing internal alpha to disconnected mock screens or a narrow technical demo.
-
-## Governing sources
-
-1. `MULTIVERSAL_PROJECT_BIBLE_v2.0.md`
-2. `governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md`
-3. `governance/application-planning/STAGE_A_UI_IMPLEMENTATION_PROGRAM.md`
-4. Phase 9 architecture and P9-06 acceptance-gate records
-5. `feature-modules.html` as historical feature-planning evidence
-6. current verified repository evidence
-7. direct owner decisions
-
-When sources conflict, direct owner decisions and newer verified repository evidence control.
-
 ## Feature classes
-
-Every feature is assigned one internal-alpha class:
 
 - **entry-critical** — required before internal alpha may begin;
 - **alpha-required** — must be completed and tested during internal alpha before it may close;
@@ -49,8 +30,6 @@ Every feature is assigned one internal-alpha class:
 A feature may contain a narrow alpha slice while its full long-term form remains deferred.
 
 ## Design method
-
-Features are designed as vertical slices:
 
 > navigation → real governed data → actions → permissions → persistence → recovery → responsive behavior → accessibility → tests
 
@@ -77,128 +56,67 @@ Complete:
 
 ### IA-D02-001 — Universal Object Experience
 
-Complete at design level:
-
-- object browser and result contract;
-- search, filter, exact stable-ID lookup, and safe count behavior;
-- object inspector and original-source view;
-- provenance and source-coverage presentation;
-- bounded relationship traversal with accessible list alternative;
-- version, variant, supersession, conflict, and incomplete-data comparison;
-- constrained object picker and stable selection receipt;
-- Character and Scene caller requirements;
-- role, permission, entitlement, pack, persistence, recovery, responsive, accessibility, telemetry, test, fixture, and implementation-handoff requirements;
-- fifteen blocking acceptance criteria;
-- dedicated implementation-ready packet validation.
-
-The packet is implementation-ready as a design artifact. Application implementation remains dependency-gated.
+Complete at design level with object browse, search, exact stable-ID lookup, inspection, source and provenance, relationships, comparison, constrained picker, role safety, recovery, accessibility, fixtures, implementation handoff, and fifteen blocking acceptance criteria.
 
 ### IA-D02-002 — Permissions and Hidden Information
 
-Complete at design level:
-
-- deny-by-default server authorization and field-safe projection contract;
-- Player, GM, Assistant GM, creator, observer, Owner/Admin, service, and AI authority boundaries;
-- ten visibility classes and stable internal/user-safe decision reason codes;
-- safe object results, counts, facets, aliases, exact IDs, provenance, relationships, comparison, selection, realtime, notification, history, export, object-storage, diagnostics, cache, offline, and AI surfaces;
-- explicit Player-private note and Owner/Admin support-access boundaries;
-- service/database agreement, mutation reauthorization, server-generated Player preview, fail-closed behavior, revocation, and cache invalidation;
-- twenty-eight protected-surface records and twenty required denied cases in a machine-readable companion matrix;
-- twenty blocking acceptance criteria;
-- zero-AI and zero-paid-service core authorization requirement;
-- provider-neutral implementation decomposition and dependency holds;
-- expanded CI validation for packets and companion files.
-
-The packet is implementation-ready as a design artifact. Application implementation remains dependency-gated.
+Complete at design level with deny-by-default authorization, field-safe projections, ten visibility classes, protected product surfaces, denied cases, support-access boundaries, revocation, zero-AI authorization, provider-neutral decomposition, and twenty blocking acceptance criteria.
 
 ### IA-D02-003 — Identity, Dashboard, and Workspace Selection
 
-Complete at design level:
-
-- stable internal subject identity independent of provider identity, email, display name, device, and current role;
-- provider-neutral identity mappings and session establishment, resume, expiry, revocation, and sign-out;
-- invitation preview, acceptance, decline, expiry, revocation, mismatch, idempotency, and safe failure behavior;
-- role-aware Player, GM, Assistant GM, creator, observer, Owner/Admin, and invited-tester dashboard projections;
-- permission-safe Campaign, Character, Scene, Session, draft, observer, recent-work, notification, and operational workspace references;
-- selected-context receipts with explicit role, stable workspace IDs, permission version, entitlement version, expiry, and correlation;
-- no-enumeration rules for cards, counts, pagination, deep links, autocomplete, media, recent work, notifications, and diagnostics;
-- role and Campaign switching with cache, draft, subscription, notification, and AI-context isolation;
-- two-subject Player/GM entry, revocation, interruption, reconnect, accessibility, responsive, privacy, telemetry, zero-service, and provider-exit requirements;
-- twenty blocking acceptance criteria and a machine-readable identity/workspace matrix;
-- expanded CI validation for F003 packet and companion requirements.
-
-The packet is implementation-ready as a design artifact. Application implementation remains dependency-gated.
+Complete at design level with provider-neutral identity, invitation lifecycle, role-aware dashboards, safe workspace discovery, selected-context receipts, switching, revocation, recovery, accessibility, and twenty blocking acceptance criteria.
 
 ### IA-D02-004 — Autosave, Reconnect, Recovery, and Bounded Offline Use
 
-Complete at design level:
+Complete at design level with local versus authoritative state, idempotency, command-status lookup, Event-gap recovery, pending-GM continuity, conflict preservation, checkpoints, history-preserving restore, bounded offline reading and drafts, accessibility, and twenty blocking acceptance criteria.
 
-- exact separation of local draft, local autosave, authoritative save, submitted command, pending GM decision, accepted Event, and displayed projection;
-- stable draft, operation, command, Event, cursor, checkpoint, conflict, recovery, selected-context, and offline-snapshot identities;
-- idempotent authoritative save and command retry behavior;
-- expected-version checks and governed conflicts instead of silent last-write-wins;
-- command-status lookup after ambiguous network failure;
-- Event-gap recovery from the last acknowledged sequence with duplicate suppression;
-- durable pending-GM proposal continuity across disconnect and restart;
-- selected-context, identity, role, Character-control, permission, entitlement, pack, schema, and lifecycle revalidation;
-- role-safe cache invalidation and revocation behavior;
-- verified checkpoints and history-preserving restore;
-- bounded read-only offline snapshots and approved local drafts;
-- explicit prohibition on offline authoritative mutation;
-- accessible save, submit, connection, stale, conflict, revocation, and recovery states;
-- privacy-safe diagnostics and issue evidence;
-- zero-AI and zero-paid-service core operation;
-- provider-neutral persistence, realtime, checkpoint, backup, restore, migration, and provider-exit boundaries;
-- twenty blocking acceptance criteria and a machine-readable recovery/offline matrix.
+### IA-D02-005 — Onboarding, Help, Diagnostics, and Issue Reporting
 
-The packet is implementation-ready as a design artifact. Application implementation remains dependency-gated, especially by persistence, authoritative Session, checkpoint, backup, restore, migration, and provider-exit foundations. Broad offline authoritative mutation remains deferred and unauthorized.
+Complete at design level with:
+
+- role-specific tester onboarding;
+- exact release, build, environment, schema, and pack-set identity;
+- supported-journey checklists;
+- contextual help and glossary;
+- known limitations and experimental labels;
+- structured issue drafts and reports;
+- permission-safe diagnostic manifests;
+- explicit attachment selection, preview, removal, quarantine, consent, and checksums;
+- idempotent submission and ambiguous-failure lookup;
+- export-only operation with zero paid services;
+- receipts, status, follow-up, revocation, and provider-exit behavior;
+- keyboard, touch, screen-reader, responsive, offline-draft, reconnect, and recovery requirements;
+- twenty blocking acceptance criteria and a machine-readable support matrix.
+
+The packet does not grant support access to underlying Campaign content.
 
 ## File map
 
-- `INTERNAL_ALPHA_SCOPE.md` — release boundary and success definition
-- `INTERNAL_ALPHA_FEATURE_REGISTRY.json` — machine-readable feature inventory and design status
-- `INTERNAL_ALPHA_DEPENDENCY_MAP.md` — dependency order and shared foundations
-- `INTERNAL_ALPHA_USER_JOURNEYS.md` — end-to-end Player and GM journeys
-- `INTERNAL_ALPHA_SHARED_SYSTEMS.md` — systems reused by multiple features
-- `INTERNAL_ALPHA_ACCEPTANCE_MATRIX.md` — feature and release evidence
-- `INTERNAL_ALPHA_DEFERRED_FEATURES.md` — historical list and current scope decisions
-- `INTERNAL_ALPHA_CONTENT_AND_FIXTURES.md` — bounded test corpus and fixture requirements
-- `INTERNAL_ALPHA_OWNER_DECISIONS.md` — owner-only decisions and future gates
-- `INTERNAL_ALPHA_DESIGN_BACKLOG.md` — dependency-ordered packet backlog
-- `feature-packets/README.md` — packet index and maturity status
-- `feature-packets/FEATURE_PACKET_TEMPLATE.md` — required design packet format
-- `feature-packets/MV-IA-F002_UNIVERSAL_OBJECT_EXPERIENCE.md` — Universal Object Experience design packet
-- `feature-packets/MV-IA-F020_PERMISSIONS_AND_HIDDEN_INFORMATION.md` — Permissions and Hidden Information design packet
-- `feature-packets/MV-IA-F020_PERMISSION_SURFACE_MATRIX.json` — protected surfaces, classifications, reason codes, and denied cases
-- `feature-packets/MV-IA-F003_IDENTITY_DASHBOARD_AND_WORKSPACE_SELECTION.md` — Identity, Dashboard, and Workspace Selection design packet
-- `feature-packets/MV-IA-F003_IDENTITY_WORKSPACE_MATRIX.json` — identity, invitation, role, workspace, discovery, denied-case, and acceptance matrix
-- `feature-packets/MV-IA-F003_IMPLEMENTATION_TRACEABILITY.json` — implementation dependencies, downstream callers, and authority boundary
-- `feature-packets/MV-IA-F003_REVIEW_RECEIPT.md` — repository review scope and disposition
-- `feature-packets/MV-IA-F021_AUTOSAVE_RECONNECT_RECOVERY_AND_BOUNDED_OFFLINE_USE.md` — autosave, reconnect, recovery, and offline-boundary design packet
-- `feature-packets/MV-IA-F021_RECOVERY_AND_OFFLINE_MATRIX.json` — recovery states, interruption points, denied cases, contracts, offline capabilities, and acceptance matrix
-- `feature-packets/MV-IA-F021_IMPLEMENTATION_TRACEABILITY.json` — implementation dependencies, downstream callers, and authority boundary
-- `feature-packets/MV-IA-F021_REVIEW_RECEIPT.md` — repository review scope and disposition
-- `validate_internal_alpha_design.py` — program and registry validator
-- `validate_feature_packets.py` — implementation-ready packet and companion-file validator
-- `.github/workflows/internal-alpha-design-validation.yml` — automated validation
+- `INTERNAL_ALPHA_SCOPE.md`
+- `INTERNAL_ALPHA_FEATURE_REGISTRY.json`
+- `INTERNAL_ALPHA_DEPENDENCY_MAP.md`
+- `INTERNAL_ALPHA_USER_JOURNEYS.md`
+- `INTERNAL_ALPHA_SHARED_SYSTEMS.md`
+- `INTERNAL_ALPHA_ACCEPTANCE_MATRIX.md`
+- `INTERNAL_ALPHA_DEFERRED_FEATURES.md`
+- `INTERNAL_ALPHA_CONTENT_AND_FIXTURES.md`
+- `INTERNAL_ALPHA_OWNER_DECISIONS.md`
+- `INTERNAL_ALPHA_DESIGN_BACKLOG.md`
+- `feature-packets/README.md`
+- `feature-packets/FEATURE_PACKET_TEMPLATE.md`
+- implementation-ready F002, F020, F003, F021, and F025 packets and companion artifacts
+- `validate_internal_alpha_design.py`
+- `validate_feature_packets.py`
+- `.github/workflows/internal-alpha-design-validation.yml`
 
 ## Execution boundary
 
-MV-IA-001 may produce approved design packets while P9-06-008 is paused. Implementation work orders are created only when their service dependencies and repository gates are ready.
+MV-IA-001 may produce approved design packets while P9-06-008 is paused. Implementation work orders are created only when service dependencies and repository gates are ready.
 
-No document in this directory authorizes:
-
-- paid service enrollment;
-- production credentials;
-- production deployment;
-- broad offline authoritative mutation;
-- internal-alpha release;
-- public release;
-- irreversible provider coupling;
-- canonical promotion of AI or contributor proposals.
+No document in this directory authorizes paid service enrollment, production credentials, production deployment, collection of real tester diagnostics, internal-alpha release, public release, irreversible provider coupling, or canonical promotion of AI or contributor proposals.
 
 ## Current next design action
 
-**IA-D02-005 — Design MV-IA-F025, Onboarding, Help, Diagnostics, and Issue Reporting.**
+**IA-D02-006 — Complete the shared-foundations integration review.**
 
-This packet is next because the object, permission, identity, workspace, autosave, reconnect, conflict, and recovery contracts now define the supported internal-alpha journey and the safe evidence required to guide testers and collect reproducible issues.
+The review must prove that the object, permission, identity, selected-context, recovery, onboarding, help, diagnostics, and issue-reporting contracts agree and can be consumed without contradictory authority, persistence, visibility, accessibility, or evidence behavior.
