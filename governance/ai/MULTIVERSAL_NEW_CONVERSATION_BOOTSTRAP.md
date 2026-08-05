@@ -2,7 +2,7 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 5.0.0  
+**Version:** 5.1.0  
 **Status:** ACTIVE  
 **Owner and final authority:** John Brandon Turner  
 **Governance repository:** `cybalicistjt-stack/multiversal-aioc`  
@@ -115,6 +115,26 @@ For ordinary reversible ambiguity, use the best evidence-backed recommendation a
 
 Inspect failed jobs and logs, repair root causes, and rerun or trigger validation. Merge only when declared required checks pass and the pull request is mergeable. Use the repository-permitted merge method; `Multiversal-app` is squash-only.
 
+## Mandatory interaction control receipts
+
+When one of these situations applies, create and validate the matching receipt from `governance/ai/interaction-system/enforcement/CONTROL_RECEIPT.schema.json`:
+
+- `deliverable` — before claiming an artifact is delivered or downloadable;
+- `capability` — before claiming a connector or repository operation succeeded;
+- `source_coverage` — before completing source-dependent work;
+- `ui_verification` — before labeling current interface guidance verified;
+- `notification` — before sending a recurring owner alert;
+- `request_alignment` — when decision support, comparison, estimation, verification, or status is requested alongside related execution;
+- `owner_report` — before the bounded-step closure report.
+
+Validate each applicable receipt with:
+
+```bash
+python tools/interaction_enforcement.py validate-receipt <receipt.json>
+```
+
+A failed required receipt blocks the associated verified claim, alert, review transition, or completion. Store receipt evidence in the checkpoint, pull request, governed ledger, or another canonical record appropriate to the work type. Receipts supplement task evidence; they never replace commits, pull requests, CI, merges, checksums, or owner approval.
+
 ## Reporting after a bounded step
 
 Report only verified facts needed by the owner:
@@ -125,6 +145,8 @@ Report only verified facts needed by the owner:
 - validation or CI result;
 - restrictions preserved;
 - exact next action.
+
+The report must also satisfy the `owner_report` receipt: completed work, evidence summary, remaining work, owner decision state, and exact next action.
 
 ## Recovery fallback
 
