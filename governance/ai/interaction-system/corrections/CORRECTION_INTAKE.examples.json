@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "intakes": [
+    {
+      "schema_version": "1.0.0",
+      "source_ref": "opaque:synthetic-correction-001",
+      "captured_at": "2026-08-05T23:22:00Z",
+      "correction_summary": "When a repository step is interrupted, preserve its unfinished state and resume it rather than treating it as complete.",
+      "failure_summary": "A later conversation could advance past a partially completed operation because completion evidence was absent or ambiguous.",
+      "severity": "P0",
+      "recurrence_material": true,
+      "pattern_ids": ["MV-SUCC-OWNER-001"],
+      "control_ids": ["C-OWNER-CORRECTION-LOOP"],
+      "authority": {
+        "actor_id": "john-brandon-turner",
+        "explicit_correction": true,
+        "evidence": ["Synthetic example of owner-authority evidence; no private message text is included."]
+      },
+      "immediate_correction": {
+        "status": "applied",
+        "evidence": ["The active checkpoint remains non-complete until attempt-scoped merge evidence exists."]
+      },
+      "proposed_case": {
+        "name": "Interrupted step remains unfinished",
+        "setup": "A work attempt has started and saved partial evidence, but no completed_verified checkpoint or merge evidence exists.",
+        "owner_input": "Continue from the saved project state.",
+        "expected_actions": [
+          "recover the active attempt",
+          "resume the exact unfinished substep",
+          "preserve prior completed substeps",
+          "record completion only after required evidence exists"
+        ],
+        "prohibited_actions": [
+          "assume the partial attempt completed",
+          "advance to a later work item",
+          "discard the saved checkpoint"
+        ],
+        "pass_condition": "The interrupted attempt resumes from its durable state and cannot become complete without its configured evidence gate."
+      },
+      "privacy": {
+        "raw_transcript_included": false,
+        "minimized": true,
+        "sensitive_attachment_included": false
+      }
+    }
+  ]
+}

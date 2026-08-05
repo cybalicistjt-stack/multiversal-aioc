@@ -1,0 +1,33 @@
+name: Validate Correction to Regression
+
+on:
+  pull_request:
+    paths:
+      - 'governance/ai/interaction-system/corrections/**'
+      - 'governance/ai/interaction-system/evaluation/PROMOTED_EVALUATION_CASES.json'
+      - 'governance/ai/work-state/MV-CONT-004-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'tools/correction_regression.py'
+      - 'tools/correction_regression_lib/**'
+      - 'tests/correction_regression/**'
+      - '.github/workflows/validate-correction-regression.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Use Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate correction-to-regression state
+        run: python tools/correction_regression.py validate
+      - name: Run correction-to-regression regression tests
+        run: python -m unittest discover -s tests/correction_regression -v

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/regression-candidate-1.0.0.schema.json",
+  "title": "Multiversal Regression Candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["candidate_id", "correction_id", "fingerprint", "created_at", "status", "source_patterns", "proposed_case", "review", "promotion"],
+  "properties": {
+    "candidate_id": {"type": "string", "pattern": "^MV-REG-[0-9A-F]{12}$"},
+    "correction_id": {"type": "string", "pattern": "^MV-CORR-[0-9A-F]{12}$"},
+    "fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "status": {"enum": ["proposed", "approved", "rejected", "promoted"]},
+    "source_patterns": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^MV-(FRIC|SUCC)-[A-Z]+-[0-9]{3}$"}},
+    "proposed_case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "setup", "owner_input", "expected_actions", "prohibited_actions", "pass_condition"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1, "maxLength": 160},
+        "setup": {"type": "string", "minLength": 1, "maxLength": 600},
+        "owner_input": {"type": "string", "minLength": 1, "maxLength": 300},
+        "expected_actions": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 300}},
+        "prohibited_actions": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 300}},
+        "pass_condition": {"type": "string", "minLength": 1, "maxLength": 600}
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision", "decided_at", "reviewer", "evidence"],
+      "properties": {
+        "decision": {"enum": ["pending", "approved", "rejected"]},
+        "decided_at": {"type": ["string", "null"], "format": "date-time"},
+        "reviewer": {"type": ["string", "null"]},
+        "evidence": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "promotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["case_id", "promoted_at", "evidence"],
+      "properties": {
+        "case_id": {"type": ["string", "null"], "pattern": "^MV-EVAL-[0-9]{3}$"},
+        "promoted_at": {"type": ["string", "null"], "format": "date-time"},
+        "evidence": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}
