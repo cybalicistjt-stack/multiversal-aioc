@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.2.0  
+**Version:** 0.3.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -31,8 +31,13 @@ Design work should maximize reuse: shared systems and high-fan-out features are 
    - registry status: implementation-ready
    - implementation status: not started; dependency-gated
    - validation: dedicated feature-packet validation added
-2. **IA-D02-002 — MV-IA-F020 Permissions and Hidden Information packet — next**
-3. IA-D02-003 — MV-IA-F003 Identity, Dashboard, and Workspace Selection packet
+2. **IA-D02-002 — MV-IA-F020 Permissions and Hidden Information packet — complete**
+   - packet: `feature-packets/MV-IA-F020_PERMISSIONS_AND_HIDDEN_INFORMATION.md`
+   - matrix: `feature-packets/MV-IA-F020_PERMISSION_SURFACE_MATRIX.json`
+   - registry status: implementation-ready
+   - implementation status: not started; dependency-gated
+   - validation: twenty acceptance criteria, twenty-eight protected surfaces, ten visibility classes, and denied-case validation
+3. **IA-D02-003 — MV-IA-F003 Identity, Dashboard, and Workspace Selection packet — next**
 4. IA-D02-004 — MV-IA-F021 Autosave, Reconnect, Recovery, and Bounded Offline Use packet
 5. IA-D02-005 — MV-IA-F025 Onboarding, Help, Diagnostics, and Issue Reporting packet
 6. IA-D02-006 — shared-foundations integration review
@@ -118,7 +123,7 @@ A design item is complete only when its artifact exists, passes validation, reco
 
 ## IA-D02-001 completion record
 
-MV-IA-F002 now defines:
+MV-IA-F002 defines:
 
 - browse, search, filtering, exact stable-ID lookup, inspection, provenance, relationships, comparison, conflicts, and constrained selection;
 - Definition, placement, instance, projection, event, index, stable-ID, and source boundaries;
@@ -130,8 +135,23 @@ MV-IA-F002 now defines:
 
 The packet is implementation-ready as a design artifact. It does not authorize application implementation around unfinished P9-06 dependencies.
 
+## IA-D02-002 completion record
+
+MV-IA-F020 defines:
+
+- deny-by-default server authorization for reads, writes, searches, counts, relationships, subscriptions, exports, object storage, diagnostics, and AI retrieval;
+- ten semantic visibility classes covering public, Campaign, participant, Character-controller, Player-private, GM-only, creator, operational, security, and secret material;
+- stable authorization request, decision, reason-code, projection, delegation, support-access, audit, and permission-snapshot contracts;
+- twenty-eight protected product surfaces, including Universal Object results, facets, aliases, exact IDs, source views, relationships, comparison, private notes, GM truth, realtime, notifications, exports, backups, diagnostics, AI, caches, and role mutations;
+- explicit boundaries for Players, GMs, Assistant GMs, creators, observers, Owner/Admin, service actors, and AI;
+- service/database agreement, pre-pagination filtering, safe counts, field-safe serialization, server-generated Player preview, mutation reauthorization, revocation, and fail-closed behavior;
+- twenty blocking acceptance criteria and a deterministic denied-case suite;
+- privacy-safe audit, accessible permission and recovery states, zero-AI core policy evaluation, and provider-neutral implementation decomposition.
+
+The packet is implementation-ready as a design artifact. Implementation remains dependency-gated by the active P9-06 sequence and does not authorize production, spending, provider commitment, internal-alpha release, or public release.
+
 ## Current next design item
 
-**IA-D02-002 — Design MV-IA-F020, Permissions and Hidden Information.**
+**IA-D02-003 — Design MV-IA-F003, Identity, Dashboard, and Workspace Selection.**
 
-This packet is next because the Universal Object Experience establishes every retrieval and inference surface that the permission model must govern: results, counts, facets, aliases, direct IDs, fields, source views, relationships, comparison candidates, cached state, exports, realtime updates, and AI retrieval.
+This packet is next because the object and permission contracts now define what the entry experience must resolve and present: stable subject identity, invitations, Campaign memberships, scoped roles, active Character context, recent work, drafts, approvals, notifications, support states, and only the workspaces and actions the current subject may use.
