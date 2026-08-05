@@ -1,0 +1,25 @@
+{
+  "format": "multiversal-p0-spacecraft-consolidated-tranche-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L51",
+  "dataset": "expanded_spacecraft_and_components_all_genres.csv",
+  "expectedRows": 2311,
+  "ownerDelegation": "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json",
+  "outputDirectory": "build/csv-p0-spacecraft-consolidated-tranche-l51",
+  "rules": {
+    "csvIsPrimaryStructuredSource": true,
+    "preserveEveryRawCsvField": true,
+    "useOwnerDelegatedRecommendations": true,
+    "assignDeterministicSourceDerivedCanonicalIds": true,
+    "retainAmbiguousIdentityAsSeparateSourceRows": true,
+    "doNotInventInstalledHostRelationships": true,
+    "validateSubtypeRouting": true,
+    "validateDuplicates": true,
+    "validateFieldClaims": true,
+    "validateMechanicalValues": true,
+    "validateCompatibilityAndRelationships": true,
+    "validateRuntimeContracts": true,
+    "validateConversionInstallAndUninstall": true,
+    "promoteWhenAllGovernedChecksPass": true
+  }
+}
