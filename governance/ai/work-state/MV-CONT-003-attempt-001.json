@@ -1,22 +1,22 @@
 {
   "schema_version": "1.0.0",
-  "revision": 3,
+  "revision": 4,
   "work_item_id": "MV-CONT-003",
   "attempt_id": "MV-CONT-003-attempt-001",
   "track": "owner-ai-continuity",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "agent/mv-continuity-enforcement-coverage",
-  "status": "ready_for_review",
+  "status": "completed_verified",
   "started_at": "2026-08-05T22:57:00+00:00",
-  "updated_at": "2026-08-05T23:15:00+00:00",
-  "completed_at": null,
+  "updated_at": "2026-08-05T23:20:00+00:00",
+  "completed_at": "2026-08-05T23:20:00+00:00",
   "base_commit": "f420cdf2ba26ca7bd745dda7b6d6bc316d07ef5a",
-  "latest_pushed_commit": "e71fdc4d36cc72d6d76495c6558a96094ef853f6",
-  "expected_remote_head": "e71fdc4d36cc72d6d76495c6558a96094ef853f6",
+  "latest_pushed_commit": "4946d9b4747c50c1b177b0bc2f058b2a43d444f6",
+  "expected_remote_head": "4946d9b4747c50c1b177b0bc2f058b2a43d444f6",
   "pull_request": 142,
   "objective": "Map every redacted interaction pattern and evaluation case to the Project Bible, bootstrap, contributor authority, current validators, and remaining enforcement gaps; produce a prioritized control-coverage matrix and implement the highest-value missing controls.",
-  "last_verified_action": "Hosted validation passed on exact MV-CONT-003 head e71fdc4d36cc72d6d76495c6558a96094ef853f6: interaction-enforcement run 31055455478, continuity run 31055455461, AIOC smoke run 31055455530, P9-06 run 31055455453, and all triggered Development Brain checks succeeded.",
-  "active_substep": "Run final checkpoint-consistency CI, verify PR #142 mergeability, and merge.",
+  "last_verified_action": "MV-CONT-003 PR #142 merged as squash commit 4946d9b4747c50c1b177b0bc2f058b2a43d444f6 after every triggered hosted check passed on exact head 7d06e9a62eb41257a364e4bbc63e2d6bbeda2526.",
+  "active_substep": null,
   "completed_substeps": [
     "Completed and merged MV-CONT-001 continuity runtime",
     "Completed and merged MV-CONT-002 redacted interaction audit and evaluation corpus",
@@ -27,9 +27,10 @@
     "Implemented typed receipts for seven high-value missing controls",
     "Added the enforcement validator, seven regression tests, and dedicated CI",
     "Passed hosted interaction-enforcement validation and all seven negative regression tests",
-    "Verified every other triggered repository check on the exact PR head"
+    "Verified every other triggered repository check on the exact PR head",
+    "Merged PR #142 as squash commit 4946d9b4747c50c1b177b0bc2f058b2a43d444f6"
   ],
-  "next_action": "Verify the final hosted consistency run and merge PR #142, then record completed_verified with the actual squash commit in a bounded follow-up change.",
+  "next_action": "Begin MV-CONT-004: implement governed automatic correction-to-regression intake so owner corrections become durable incidents, candidate regression cases, reviewable promotions, and validated test coverage instead of remaining only in conversation history.",
   "changed_paths": [
     "governance/ai/interaction-system/enforcement/",
     "governance/ai/work-state/MV-CONT-003-attempt-001.json",
@@ -46,19 +47,15 @@
     {
       "command": "python tools/interaction_enforcement.py validate",
       "status": "passed",
-      "evidence": "MV-CONT-003 hosted Validate Interaction Enforcement run 31055455478 PASS; regression tests 7/7 PASS."
+      "evidence": "MV-CONT-003 final Validate Interaction Enforcement run 31055550717 PASS on exact PR head; continuity, smoke, P9-06, and all Development Brain checks also passed."
     }
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
     {
-      "kind": "merge",
-      "value": "MV-CONT-002 completion record PR #141 squash commit f420cdf2ba26ca7bd745dda7b6d6bc316d07ef5a established the dependency boundary for MV-CONT-003."
-    },
-    {
       "kind": "commit",
-      "value": "MV-CONT-003 exact reviewed implementation head e71fdc4d36cc72d6d76495c6558a96094ef853f6"
+      "value": "MV-CONT-003 exact reviewed implementation head 7d06e9a62eb41257a364e4bbc63e2d6bbeda2526"
     },
     {
       "kind": "pull_request",
@@ -66,13 +63,16 @@
     },
     {
       "kind": "ci_run",
-      "value": "MV-CONT-003 Validate Interaction Enforcement run 31055455478 PASS; all other triggered checks passed"
+      "value": "MV-CONT-003 Validate Interaction Enforcement run 31055550717 PASS; all other triggered checks passed"
+    },
+    {
+      "kind": "merge",
+      "value": "MV-CONT-003 PR #142 squash commit 4946d9b4747c50c1b177b0bc2f058b2a43d444f6"
     }
   ],
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "notes": [
-    "This checkpoint remains non-complete until PR #142 is merged and its actual squash commit is recorded.",
-    "Automatic correction-to-regression intake remains a documented lower-priority residual gap.",
+    "Automatic correction-to-regression intake is the exact next continuity item.",
     "P9-06-008 and IA-D03-003 remain explicit parallel tracks.",
     "The private raw conversation archive remains outside the public repository."
   ]
