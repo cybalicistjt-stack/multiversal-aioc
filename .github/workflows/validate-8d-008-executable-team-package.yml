@@ -1,0 +1,41 @@
+name: Validate 8D-008 Executable Team Package
+
+on:
+  pull_request:
+    paths:
+      - 'governance/ai/8D-008_*'
+      - 'scripts/simulate-8d-008-multi-agent-workstream.py'
+      - '.github/workflows/validate-8d-008-executable-team-package.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Execute governed multi-agent simulation
+        run: python scripts/simulate-8d-008-multi-agent-workstream.py
+      - name: Verify operating invariants
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open('out/8d-008-team-simulation/MULTI_AGENT_WORKSTREAM_REPORT.json'))
+          assert p['roleCount']==6
+          assert p['handoffCount']==5
+          assert p['independentVerificationPresent'] is True
+          assert p['allRequiredHandoffFieldsPresent'] is True
+          assert p['unsupportedCompletionClaims']==0
+          assert p['sourceTruthChanged'] is False
+          assert p['workstreamCompleted'] is True
+          print(p['artifactSha256'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 8d-008-multi-agent-workstream
+          path: out/8d-008-team-simulation/MULTI_AGENT_WORKSTREAM_REPORT.json
