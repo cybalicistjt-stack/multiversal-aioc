@@ -1,0 +1,57 @@
+name: Project Bible Validation
+
+on:
+  pull_request:
+    paths:
+      - "MULTIVERSAL_PROJECT_BIBLE_v2.0.md"
+      - "MULTIVERSAL_PROJECT_BIBLE_v2.0_*.md"
+      - "MULTIVERSAL_PROJECT_BIBLE_v2.0_RELEASE_MANIFEST.json"
+      - "MULTIVERSAL_PROJECT_BIBLE_v2.0.sha256"
+      - "validate_multiversal_project_bible.py"
+      - "governance/development-bible/**"
+      - ".github/workflows/project-bible-validation.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "MULTIVERSAL_PROJECT_BIBLE_v2.0.md"
+      - "MULTIVERSAL_PROJECT_BIBLE_v2.0_*.md"
+      - "MULTIVERSAL_PROJECT_BIBLE_v2.0_RELEASE_MANIFEST.json"
+      - "MULTIVERSAL_PROJECT_BIBLE_v2.0.sha256"
+      - "validate_multiversal_project_bible.py"
+      - "governance/development-bible/**"
+      - ".github/workflows/project-bible-validation.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate Project Bible structure
+        run: python validate_multiversal_project_bible.py MULTIVERSAL_PROJECT_BIBLE_v2.0.md
+
+      - name: Verify Project Bible checksum
+        run: sha256sum --check MULTIVERSAL_PROJECT_BIBLE_v2.0.sha256
+
+      - name: Verify release manifest
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          manifest = json.loads(Path("MULTIVERSAL_PROJECT_BIBLE_v2.0_RELEASE_MANIFEST.json").read_text(encoding="utf-8"))
+          bible = Path(manifest["canonicalPath"])
+          actual = hashlib.sha256(bible.read_bytes()).hexdigest()
+          expected = manifest["document"]["sha256"]
+          assert actual == expected, (actual, expected)
+          assert manifest["status"] == "canonical-governance-release"
+          assert manifest["document"]["chapterCount"] == 80
+          assert manifest["document"]["appendixCount"] == 10
+          print("Project Bible release manifest: PASS")
+          PY
