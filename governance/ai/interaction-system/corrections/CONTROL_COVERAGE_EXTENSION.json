@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "MV-CONT-004",
+  "generated_at": "2026-08-05T23:22:00Z",
+  "control_catalog": {
+    "C-CORRECTION-REGRESSION-INTAKE": {
+      "status": "implemented_in_mv_cont_004",
+      "artifacts": [
+        "governance/ai/interaction-system/corrections/CORRECTION_REGRESSION_LEDGER.json",
+        "governance/ai/interaction-system/corrections/CORRECTION_INTAKE.schema.json",
+        "governance/ai/interaction-system/corrections/REGRESSION_CANDIDATE.schema.json",
+        "governance/ai/interaction-system/corrections/README.md",
+        "governance/ai/interaction-system/corrections/PROMOTION_POLICY.md",
+        "governance/ai/interaction-system/evaluation/PROMOTED_EVALUATION_CASES.json",
+        "governance/ai/interaction-system/corrections/CONTROL_COVERAGE_EXTENSION.json",
+        "governance/ai/interaction-system/corrections/EVALUATION_CONTROL_EXTENSION.json",
+        "tools/correction_regression.py",
+        ".github/workflows/validate-correction-regression.yml"
+      ]
+    }
+  },
+  "pattern_coverage": [
+    {
+      "pattern_id": "MV-SUCC-OWNER-001",
+      "prior_coverage_status": "partial",
+      "coverage_status": "enforced",
+      "added_control_ids": ["C-CORRECTION-REGRESSION-INTAKE"],
+      "evidence": [
+        "governance/ai/interaction-system/corrections/CORRECTION_REGRESSION_LEDGER.json",
+        "tools/correction_regression.py",
+        ".github/workflows/validate-correction-regression.yml"
+      ]
+    }
+  ],
+  "gap_closures": [
+    {
+      "gap_id": "MV-GAP-008",
+      "status": "closed",
+      "control_id": "C-CORRECTION-REGRESSION-INTAKE",
+      "closed_by_work_item": "MV-CONT-004",
+      "residual_risk": "Structured capture still depends on the active agent recognizing that a correction is explicit and materially reusable.",
+      "next_hardening": "Integrate capture hooks into supported conversation runtimes and surface uncaptured corrections in periodic audits."
+    }
+  ]
+}
