@@ -1,0 +1,44 @@
+name: Validate Interaction Enforcement
+
+on:
+  pull_request:
+    paths:
+      - 'governance/ai/interaction-system/enforcement/**'
+      - 'governance/ai/interaction-system/analysis/**'
+      - 'governance/ai/interaction-system/evaluation/**'
+      - 'governance/ai/work-state/MV-CONT-003-attempt-001.json'
+      - 'governance/ai/runtime/**'
+      - 'tools/interaction_enforcement.py'
+      - 'tests/interaction_enforcement/**'
+      - '.github/workflows/validate-interaction-enforcement.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'governance/ai/interaction-system/enforcement/**'
+      - 'governance/ai/interaction-system/analysis/**'
+      - 'governance/ai/interaction-system/evaluation/**'
+      - 'governance/ai/work-state/MV-CONT-003-attempt-001.json'
+      - 'governance/ai/runtime/**'
+      - 'tools/interaction_enforcement.py'
+      - 'tests/interaction_enforcement/**'
+      - '.github/workflows/validate-interaction-enforcement.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Use Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate interaction enforcement coverage
+        run: python tools/interaction_enforcement.py validate
+      - name: Run interaction-enforcement regression tests
+        run: python -m unittest discover -s tests/interaction_enforcement -v

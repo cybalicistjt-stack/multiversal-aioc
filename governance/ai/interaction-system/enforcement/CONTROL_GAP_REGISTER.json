@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "MV-CONT-003",
+  "generated_at": "2026-08-05T23:02:00Z",
+  "gaps": [
+    {
+      "gap_id": "MV-GAP-001",
+      "name": "Deliverable handoff proof",
+      "pattern_ids": ["MV-FRIC-DELIV-001"],
+      "priority": "P0",
+      "pre_mv_cont_003_state": "uncovered",
+      "implemented_control_id": "C-DELIVERABLE-RECEIPT",
+      "residual_risk": "A receipt still depends on the executor actually invoking it for promised artifacts.",
+      "next_hardening": "Integrate receipt creation into artifact-producing workflows."
+    },
+    {
+      "gap_id": "MV-GAP-002",
+      "name": "Interaction-level source coverage proof",
+      "pattern_ids": ["MV-FRIC-SOURCE-001", "MV-SUCC-PROV-001"],
+      "priority": "P0",
+      "pre_mv_cont_003_state": "partial",
+      "implemented_control_id": "C-SOURCE-COVERAGE-RECEIPT",
+      "residual_risk": "Domain-specific source registries still control exact required-source membership.",
+      "next_hardening": "Bind work-type templates to canonical source groups."
+    },
+    {
+      "gap_id": "MV-GAP-003",
+      "name": "Capability-state truthfulness",
+      "pattern_ids": ["MV-FRIC-CAP-001"],
+      "priority": "P0",
+      "pre_mv_cont_003_state": "partial",
+      "implemented_control_id": "C-CAPABILITY-RECEIPT",
+      "residual_risk": "Connector availability can change after receipt creation.",
+      "next_hardening": "Refresh immediately before each material write."
+    },
+    {
+      "gap_id": "MV-GAP-004",
+      "name": "Current UI verification",
+      "pattern_ids": ["MV-FRIC-UI-001"],
+      "priority": "P1",
+      "pre_mv_cont_003_state": "uncovered",
+      "implemented_control_id": "C-UI-VERIFICATION-RECEIPT",
+      "residual_risk": "Some interfaces remain unobservable from the active environment.",
+      "next_hardening": "Use current official documentation or explicitly mark unverified."
+    },
+    {
+      "gap_id": "MV-GAP-005",
+      "name": "Notification freshness and deduplication",
+      "pattern_ids": ["MV-FRIC-ALERT-001"],
+      "priority": "P1",
+      "pre_mv_cont_003_state": "uncovered",
+      "implemented_control_id": "C-NOTIFICATION-DEDUPE",
+      "residual_risk": "A changed fingerprint can still represent a semantically duplicate notice.",
+      "next_hardening": "Add semantic topic keys and minimum material-change rules."
+    },
+    {
+      "gap_id": "MV-GAP-006",
+      "name": "Immediate request alignment",
+      "pattern_ids": ["MV-FRIC-ALIGN-001"],
+      "priority": "P1",
+      "pre_mv_cont_003_state": "uncovered",
+      "implemented_control_id": "C-REQUEST-ALIGNMENT",
+      "residual_risk": "Automated classification can mislabel mixed requests.",
+      "next_hardening": "Permit multiple request modes with one explicitly primary mode."
+    },
+    {
+      "gap_id": "MV-GAP-007",
+      "name": "Concise owner-facing closure report",
+      "pattern_ids": ["MV-FRIC-RESP-001", "MV-SUCC-MILE-001"],
+      "priority": "P2",
+      "pre_mv_cont_003_state": "partial",
+      "implemented_control_id": "C-OWNER-REPORT",
+      "residual_risk": "Length appropriateness remains contextual.",
+      "next_hardening": "Add audience-specific response budgets and exception reasons."
+    },
+    {
+      "gap_id": "MV-GAP-008",
+      "name": "Automatic correction-to-regression intake",
+      "pattern_ids": ["MV-SUCC-OWNER-001"],
+      "priority": "P2",
+      "pre_mv_cont_003_state": "partial",
+      "implemented_control_id": null,
+      "residual_risk": "A correction may remain only in conversation unless manually converted.",
+      "next_hardening": "Create a governed incident/correction intake command in a later work item."
+    }
+  ],
+  "summary": {
+    "gap_count": 8,
+    "implemented_in_mv_cont_003": 7,
+    "deferred": 1
+  }
+}
