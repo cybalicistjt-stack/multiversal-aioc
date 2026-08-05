@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "programId": "MV-IA-001",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "status": "active-design",
   "owner": "John Brandon Turner",
   "classificationValues": [
@@ -418,7 +418,7 @@
       "companionFiles": [
         "feature-packets/MV-IA-F021_RECOVERY_AND_OFFLINE_MATRIX.json"
       ],
-      "implementationBoundary": "Design complete; application implementation remains dependency-gated by the active P9-06 sequence, especially persistence, authoritative sessions, checkpoint, backup, restore, provider-exit, migration, permission, entitlement, and caller-workflow foundations. Broad offline authoritative mutation remains deferred and unauthorized."
+      "implementationBoundary": "Design complete; application implementation remains dependency-gated by the active P9-06 sequence and concrete persistence, authoritative Session, checkpoint, backup, restore, migration, provider-exit, identity, permission, entitlement, and caller-workflow foundations. Broad offline authoritative mutation remains deferred."
     },
     {
       "featureId": "MV-IA-F022",
@@ -478,12 +478,20 @@
       "summary": "Tester onboarding, contextual help, known limitations, diagnostics, structured issue intake, and release identity.",
       "dependencies": [
         "MV-IA-F001",
-        "MV-IA-F003"
+        "MV-IA-F003",
+        "MV-IA-F020",
+        "MV-IA-F021"
       ],
       "alphaSlice": "An approved tester can enter the product, understand the supported path, report a reproducible problem, and identify the active version.",
       "fullScopeDeferred": false,
       "designOrder": 10,
-      "designStatus": "registered"
+      "designStatus": "implementation-ready",
+      "packetPath": "feature-packets/MV-IA-F025_ONBOARDING_HELP_DIAGNOSTICS_AND_ISSUE_REPORTING.md",
+      "packetVersion": "0.1.0",
+      "companionFiles": [
+        "feature-packets/MV-IA-F025_ONBOARDING_SUPPORT_MATRIX.json"
+      ],
+      "implementationBoundary": "Design complete; application implementation remains dependency-gated by the active P9-06 sequence and concrete identity, permission, persistence, recovery, diagnostics, storage, notification, export, and internal-alpha administration foundations. No paid support, crash analytics, or ticketing provider is authorized."
     }
   ]
 }

@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.5.0  
+**Version:** 0.6.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -30,27 +30,25 @@ Design work should maximize reuse: shared systems and high-fan-out features are 
    - packet: `feature-packets/MV-IA-F002_UNIVERSAL_OBJECT_EXPERIENCE.md`
    - registry status: implementation-ready
    - implementation status: not started; dependency-gated
-   - validation: dedicated feature-packet validation added
 2. **IA-D02-002 — MV-IA-F020 Permissions and Hidden Information packet — complete**
    - packet: `feature-packets/MV-IA-F020_PERMISSIONS_AND_HIDDEN_INFORMATION.md`
    - matrix: `feature-packets/MV-IA-F020_PERMISSION_SURFACE_MATRIX.json`
-   - registry status: implementation-ready
-   - implementation status: not started; dependency-gated
-   - validation: twenty acceptance criteria, twenty-eight protected surfaces, ten visibility classes, and denied-case validation
+   - validation: twenty acceptance criteria, protected surfaces, visibility classes, and denied cases
 3. **IA-D02-003 — MV-IA-F003 Identity, Dashboard, and Workspace Selection packet — complete**
    - packet: `feature-packets/MV-IA-F003_IDENTITY_DASHBOARD_AND_WORKSPACE_SELECTION.md`
    - matrix: `feature-packets/MV-IA-F003_IDENTITY_WORKSPACE_MATRIX.json`
-   - registry status: implementation-ready
-   - implementation status: not started; dependency-gated
-   - validation: twenty acceptance criteria, identity/session/invitation/workspace contracts, twenty discovery surfaces, and twenty denied cases
+   - validation: twenty acceptance criteria, identity/session/invitation/workspace contracts, discovery surfaces, and denied cases
 4. **IA-D02-004 — MV-IA-F021 Autosave, Reconnect, Recovery, and Bounded Offline Use packet — complete**
    - packet: `feature-packets/MV-IA-F021_AUTOSAVE_RECONNECT_RECOVERY_AND_BOUNDED_OFFLINE_USE.md`
    - matrix: `feature-packets/MV-IA-F021_RECOVERY_AND_OFFLINE_MATRIX.json`
+   - validation: twenty acceptance criteria, state values, interruption points, denied cases, and bounded-offline validation
+5. **IA-D02-005 — MV-IA-F025 Onboarding, Help, Diagnostics, and Issue Reporting packet — complete**
+   - packet: `feature-packets/MV-IA-F025_ONBOARDING_HELP_DIAGNOSTICS_AND_ISSUE_REPORTING.md`
+   - matrix: `feature-packets/MV-IA-F025_ONBOARDING_SUPPORT_MATRIX.json`
    - registry status: implementation-ready
    - implementation status: not started; dependency-gated
-   - validation: twenty acceptance criteria, sixteen state values, fifteen interruption points, twenty-four denied cases, and bounded-offline validation
-5. **IA-D02-005 — MV-IA-F025 Onboarding, Help, Diagnostics, and Issue Reporting packet — next**
-6. IA-D02-006 — shared-foundations integration review
+   - validation: twenty acceptance criteria, role-specific onboarding, release identity, twenty-four diagnostic surfaces, twenty-six denied cases, attachment consent, export-only, and zero-service operation
+6. **IA-D02-006 — shared-foundations integration review — next**
 
 Rationale: these features establish the object, authority, recovery, and support patterns consumed by most later work.
 
@@ -131,72 +129,32 @@ Each backlog item uses one state:
 
 A design item is complete only when its artifact exists, passes validation, records limitations, and identifies the next executable item.
 
-## IA-D02-001 completion record
+## IA-D02 completion records
 
-MV-IA-F002 defines:
+### IA-D02-001 — MV-IA-F002
 
-- browse, search, filtering, exact stable-ID lookup, inspection, provenance, relationships, comparison, conflicts, and constrained selection;
-- Definition, placement, instance, projection, Event, index, stable-ID, and source boundaries;
-- Player, GM, Owner/Admin, creator, Assistant GM, service, and optional AI permissions;
-- entitlement, pack, version, migration, persistence, interruption, reconnect, and recovery behavior;
-- desktop, tablet, mobile, keyboard, touch, screen-reader, high-zoom, reduced-motion, and graph-alternative requirements;
-- fifteen blocking acceptance criteria;
-- deterministic fixtures, denied cases, performance checks, zero-service operation, implementation decomposition, and dependency hold points.
+Defines governed object browse, search, inspection, provenance, relationships, comparison, and constrained selection. It is implementation-ready at design level and dependency-gated.
 
-The packet is implementation-ready as a design artifact. It does not authorize application implementation around unfinished P9-06 dependencies.
+### IA-D02-002 — MV-IA-F020
 
-## IA-D02-002 completion record
+Defines deny-by-default authorization, field-safe projection, safe query and inference behavior, revocation, support-access boundaries, realtime and export controls, and twenty blocking acceptance criteria. It is implementation-ready at design level and dependency-gated.
 
-MV-IA-F020 defines:
+### IA-D02-003 — MV-IA-F003
 
-- deny-by-default server authorization for reads, writes, searches, counts, relationships, subscriptions, exports, object storage, diagnostics, and AI retrieval;
-- ten semantic visibility classes covering public, Campaign, participant, Character-controller, Player-private, GM-only, creator, operational, security, and secret material;
-- stable authorization request, decision, reason-code, projection, delegation, support-access, audit, and permission-snapshot contracts;
-- twenty-eight protected product surfaces, including Universal Object results, facets, aliases, exact IDs, source views, relationships, comparison, private notes, GM truth, realtime, notifications, exports, backups, diagnostics, AI, caches, and role mutations;
-- explicit boundaries for Players, GMs, Assistant GMs, creators, observers, Owner/Admin, service actors, and AI;
-- service/database agreement, pre-pagination filtering, safe counts, field-safe serialization, server-generated Player preview, mutation reauthorization, revocation, and fail-closed behavior;
-- twenty blocking acceptance criteria and a deterministic denied-case suite;
-- privacy-safe audit, accessible permission and recovery states, zero-AI core policy evaluation, and provider-neutral implementation decomposition.
+Defines stable provider-neutral subject identity, invitation lifecycle, role-aware dashboards, selected-context receipts, safe discovery, switching, revocation, recovery, accessibility, and twenty blocking acceptance criteria. It is implementation-ready at design level and dependency-gated.
 
-The packet is implementation-ready as a design artifact. Implementation remains dependency-gated by the active P9-06 sequence and does not authorize production, spending, provider commitment, internal-alpha release, or public release.
+### IA-D02-004 — MV-IA-F021
 
-## IA-D02-003 completion record
+Defines local versus authoritative state, idempotent saves and commands, Event-gap recovery, pending-GM continuity, conflict preservation, checkpoint restore, bounded offline snapshots and drafts, accessibility, and twenty blocking acceptance criteria. Broad offline authoritative mutation remains deferred.
 
-MV-IA-F003 defines:
+### IA-D02-005 — MV-IA-F025
 
-- stable internal subject identity independent of provider ID, email, display name, device, and current role;
-- provider-neutral identity mapping and session establishment, resume, expiry, revocation, and sign-out;
-- valid, expired, revoked, accepted, declined, mismatched, invalid, archived, duplicate, and entitlement-limited invitation behavior;
-- role-aware Player, GM, Assistant GM, creator, observer, Owner/Admin, and invited-tester dashboards;
-- permission-safe Campaign, Character, Scene, Session, draft, observer, and operational workspace references;
-- recent-work and notification projections that cannot enumerate hidden workspaces;
-- explicit selected-context receipts with permission and entitlement versions;
-- deep-link authorization, Campaign and role switching, cache partitioning, revocation, interruption, and reconnect behavior;
-- Player/GM two-device entry proof, accessibility, responsive behavior, privacy-safe telemetry, zero-service operation, and provider-exit requirements;
-- twenty blocking acceptance criteria and a machine-readable identity/workspace matrix.
+Defines role-specific tester onboarding, exact release identity, contextual help, known limitations, structured issue reports, permission-safe diagnostic manifests, explicit attachment preview and consent, idempotent submission, export-only operation, receipts, follow-up, revocation, accessibility, provider-exit compatibility, and twenty blocking acceptance criteria.
 
-The packet is implementation-ready as a design artifact. Implementation remains dependency-gated by the active P9-06 sequence and does not authorize production identity services, public registration, production credentials, internal-alpha release, or public release.
-
-## IA-D02-004 completion record
-
-MV-IA-F021 defines:
-
-- exact separation of local draft, authoritative save, submitted command, accepted Event, and displayed projection;
-- stable draft, operation, command, Event, cursor, checkpoint, conflict, recovery, and offline-snapshot identities;
-- local autosave receipts, authoritative save receipts, expected versions, idempotency, and status lookup after ambiguous failure;
-- Event-gap recovery, duplicate suppression, pending-GM continuity, selected-context revalidation, and service-restart recovery;
-- permission, entitlement, pack, schema, object-lifecycle, Character-control, and delegation checks on reconnect;
-- conflicts that preserve local and authoritative state instead of silent last-write-wins;
-- verified checkpoint requirements and history-preserving restore;
-- bounded read-only offline snapshots and local drafts with explicit authoritative-mutation prohibition;
-- accessible save, submit, connection, stale, conflict, revocation, and recovery states;
-- privacy-safe telemetry, zero-AI and zero-paid-service core operation, provider-neutral contracts, and provider-exit compatibility;
-- twenty blocking acceptance criteria and a machine-readable recovery/offline matrix.
-
-The packet is implementation-ready as a design artifact. Implementation remains dependency-gated by the active P9-06 sequence, especially persistence, authoritative Session, checkpoint, backup, restore, migration, and provider-exit foundations. Broad offline authoritative mutation remains deferred.
+The packet requires zero AI and zero paid support, analytics, crash-reporting, or ticketing services for the core alpha path. It does not grant support access to Campaign content.
 
 ## Current next design item
 
-**IA-D02-005 — Design MV-IA-F025, Onboarding, Help, Diagnostics, and Issue Reporting.**
+**IA-D02-006 — Complete the shared-foundations integration review.**
 
-This packet is next because the entry-critical object, authorization, identity, workspace, autosave, reconnect, conflict, and recovery contracts now define the supported internal-alpha journey and the safe evidence needed to guide testers and collect reproducible issues.
+This review is next because F002, F020, F003, F021, and F025 now define the reusable object, authority, identity, recovery, onboarding, help, diagnostics, and issue-evidence contracts that downstream Character, Campaign, Session, social, combat, Asset, world-building, and AI packets must consume consistently.

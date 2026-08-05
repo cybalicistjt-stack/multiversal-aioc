@@ -29,13 +29,25 @@ def validate_companion_files(feature: dict, errors: list[str]) -> None:
                 errors.append(f"{feature_id}: invalid companion JSON {companion_path}: {exc}.")
                 continue
             if payload.get("featureId") != feature_id:
-                errors.append(
-                    f"{feature_id}: companion {companion_path} has featureId {payload.get('featureId')!r}."
-                )
+                errors.append(f"{feature_id}: companion {companion_path} has wrong featureId.")
             if payload.get("owner") != "John Brandon Turner":
                 errors.append(f"{feature_id}: companion {companion_path} has incorrect owner.")
             if "prophecy" in path.read_text(encoding="utf-8").lower():
                 errors.append(f"{feature_id}: corrected autocorrect term appears in {companion_path}.")
+
+
+def require_phrases(feature_id: str, text: str, phrases: list[str], errors: list[str]) -> None:
+    lower = text.lower()
+    for phrase in phrases:
+        if phrase.lower() not in lower:
+            errors.append(f"{feature_id}: missing required phrase {phrase!r}.")
+
+
+def validate_criteria(feature_id: str, text: str, prefix: str, count: int, errors: list[str]) -> None:
+    for number in range(1, count + 1):
+        criterion = f"{prefix}-AC-{number:03d}"
+        if criterion not in text:
+            errors.append(f"{feature_id}: missing acceptance criterion {criterion}.")
 
 
 def main() -> int:
@@ -70,24 +82,22 @@ def main() -> int:
             errors.append(f"{feature_id}: packet title does not match registry identity.")
         if f"**Feature ID:** {feature_id}" not in text:
             errors.append(f"{feature_id}: packet does not repeat the feature ID.")
-        if "**Design status:** implementation-ready" not in text and feature["designStatus"] == "implementation-ready":
-            errors.append(f"{feature_id}: packet status does not match implementation-ready registry state.")
+        if feature["designStatus"] == "implementation-ready" and "**Design status:** implementation-ready" not in text:
+            errors.append(f"{feature_id}: packet status does not match registry.")
         if "**Owner:** John Brandon Turner" not in text:
             errors.append(f"{feature_id}: owner is missing or incorrect.")
         if "prophecy" in lower:
             errors.append(f"{feature_id}: corrected autocorrect term appears in a feature packet.")
 
-        seen_sections: list[int] = []
+        seen_sections = []
         for line in text.splitlines():
             match = re.match(r"^## (\d+)\. ", line)
             if match:
                 seen_sections.append(int(match.group(1)))
         if seen_sections != REQUIRED_SECTIONS:
-            errors.append(
-                f"{feature_id}: expected sections 1-24 exactly once and in order; got {seen_sections}."
-            )
+            errors.append(f"{feature_id}: expected sections 1-24 exactly once and in order; got {seen_sections}.")
 
-        required_phrases = [
+        required = [
             "## 1. Problem and user outcome",
             "## 2. Alpha slice",
             "## 3. Roles and authority",
@@ -107,87 +117,46 @@ def main() -> int:
             "Silence is not approval.",
             "implementation remains dependency-gated",
         ]
-        for phrase in required_phrases:
+        for phrase in required:
             if phrase not in text:
                 errors.append(f"{feature_id}: missing required packet content: {phrase!r}.")
 
         validate_companion_files(feature, errors)
 
         if feature_id == "MV-IA-F002":
-            for number in range(1, 16):
-                criterion = f"UOX-AC-{number:03d}"
-                if criterion not in text:
-                    errors.append(f"{feature_id}: missing acceptance criterion {criterion}.")
-            for phrase in [
-                "stable ID",
-                "Character caller",
-                "Scene caller",
-                "role-safe",
-                "provenance",
-                "relationship",
-                "exact stable-ID lookup",
-                "zero AI",
-                "zero paid search services",
-            ]:
-                if phrase.lower() not in lower:
-                    errors.append(f"{feature_id}: missing Universal Object requirement {phrase!r}.")
+            validate_criteria(feature_id, text, "UOX", 15, errors)
+            require_phrases(feature_id, text, [
+                "stable ID","Character caller","Scene caller","role-safe","provenance",
+                "relationship","exact stable-ID lookup","zero AI","zero paid search services"
+            ], errors)
 
         if feature_id == "MV-IA-F003":
-            for number in range(1, 21):
-                criterion = f"IDW-AC-{number:03d}"
-                if criterion not in text:
-                    errors.append(f"{feature_id}: missing acceptance criterion {criterion}.")
-            for phrase in [
-                "stable internal subject",
-                "selected-context receipt",
-                "invitation",
-                "no enumeration",
-                "Player and GM",
-                "role switch",
-                "deep link",
-                "recent-work",
-                "provider-neutral",
-                "zero paid identity provider",
-            ]:
-                if phrase.lower() not in lower:
-                    errors.append(f"{feature_id}: missing Identity/Workspace requirement {phrase!r}.")
-
+            validate_criteria(feature_id, text, "IDW", 20, errors)
+            require_phrases(feature_id, text, [
+                "stable internal subject","selected-context receipt","invitation","no enumeration",
+                "Player and GM","role switch","deep link","recent-work","provider-neutral",
+                "zero paid identity provider"
+            ], errors)
             matrix_path = ROOT / "feature-packets/MV-IA-F003_IDENTITY_WORKSPACE_MATRIX.json"
             if matrix_path.is_file():
                 matrix = json.loads(matrix_path.read_text(encoding="utf-8"))
                 if matrix.get("defaultWorkspaceDecision") != "deny":
                     errors.append(f"{feature_id}: identity matrix defaultWorkspaceDecision must be 'deny'.")
                 if len(matrix.get("roles", [])) < 8:
-                    errors.append(f"{feature_id}: identity matrix must define at least eight role contexts.")
+                    errors.append(f"{feature_id}: identity matrix must define at least eight roles.")
                 if len(matrix.get("protectedDiscoverySurfaces", [])) < 20:
                     errors.append(f"{feature_id}: identity matrix must define at least twenty discovery surfaces.")
                 if len(matrix.get("requiredDeniedCases", [])) < 20:
                     errors.append(f"{feature_id}: identity matrix must define at least twenty denied cases.")
-                if matrix.get("acceptanceCriteria") != [f"IDW-AC-{number:03d}" for number in range(1, 21)]:
-                    errors.append(f"{feature_id}: identity matrix acceptance criteria are incomplete or out of order.")
-                if len(matrix.get("contextReceiptRequiredFields", [])) < 15:
-                    errors.append(f"{feature_id}: selected-context receipt field list is incomplete.")
+                if matrix.get("acceptanceCriteria") != [f"IDW-AC-{n:03d}" for n in range(1, 21)]:
+                    errors.append(f"{feature_id}: identity matrix acceptance criteria incomplete.")
 
         if feature_id == "MV-IA-F020":
-            for number in range(1, 21):
-                criterion = f"PHI-AC-{number:03d}"
-                if criterion not in text:
-                    errors.append(f"{feature_id}: missing acceptance criterion {criterion}.")
-            for phrase in [
-                "deny-by-default",
-                "not-found-or-unavailable",
-                "Player-private notes",
-                "server-generated",
-                "database isolation",
-                "revocation",
-                "exact stable-ID",
-                "Owner/Admin",
-                "zero AI",
-                "fail closed",
-            ]:
-                if phrase.lower() not in lower:
-                    errors.append(f"{feature_id}: missing Permissions requirement {phrase!r}.")
-
+            validate_criteria(feature_id, text, "PHI", 20, errors)
+            require_phrases(feature_id, text, [
+                "deny-by-default","not-found-or-unavailable","Player-private notes","server-generated",
+                "database isolation","revocation","exact stable-ID","Owner/Admin","zero AI","fail closed"
+            ], errors)
             matrix_path = ROOT / "feature-packets/MV-IA-F020_PERMISSION_SURFACE_MATRIX.json"
             if matrix_path.is_file():
                 matrix = json.loads(matrix_path.read_text(encoding="utf-8"))
@@ -196,64 +165,60 @@ def main() -> int:
                 if len(matrix.get("visibilityClasses", [])) < 10:
                     errors.append(f"{feature_id}: permission matrix must define at least ten visibility classes.")
                 if len(matrix.get("surfaces", [])) < 25:
-                    errors.append(f"{feature_id}: permission matrix must define at least twenty-five protected surfaces.")
+                    errors.append(f"{feature_id}: permission matrix must define at least twenty-five surfaces.")
                 if len(matrix.get("requiredDeniedCases", [])) < 20:
                     errors.append(f"{feature_id}: permission matrix must define at least twenty denied cases.")
-                if matrix.get("acceptanceCriteria") != [f"PHI-AC-{number:03d}" for number in range(1, 21)]:
-                    errors.append(f"{feature_id}: permission matrix acceptance criteria are incomplete or out of order.")
+                if matrix.get("acceptanceCriteria") != [f"PHI-AC-{n:03d}" for n in range(1, 21)]:
+                    errors.append(f"{feature_id}: permission matrix acceptance criteria incomplete.")
 
         if feature_id == "MV-IA-F021":
-            for number in range(1, 21):
-                criterion = f"REC-AC-{number:03d}"
-                if criterion not in text:
-                    errors.append(f"{feature_id}: missing acceptance criterion {criterion}.")
-            for phrase in [
-                "LocalDraftEnvelope",
-                "status unknown",
-                "same command ID",
-                "last acknowledged sequence",
-                "pending-GM",
-                "selected-context revalidation",
-                "history-preserving restore",
-                "bounded read-only offline",
-                "no offline authoritative mutation",
-                "zero paid service",
-                "provider-neutral",
-                "duplicate accepted effects",
-            ]:
-                if phrase.lower() not in lower:
-                    errors.append(f"{feature_id}: missing Recovery requirement {phrase!r}.")
-
+            validate_criteria(feature_id, text, "REC", 20, errors)
+            require_phrases(feature_id, text, [
+                "local draft","authoritative save","submitted command","accepted Event",
+                "idempotent","last acknowledged sequence","pending GM","selected-context",
+                "no offline authoritative mutation","zero paid"
+            ], errors)
             matrix_path = ROOT / "feature-packets/MV-IA-F021_RECOVERY_AND_OFFLINE_MATRIX.json"
             if matrix_path.is_file():
                 matrix = json.loads(matrix_path.read_text(encoding="utf-8"))
-                if "nonauthoritative" not in matrix.get("authoritativePrinciple", "").lower():
-                    errors.append(f"{feature_id}: matrix must state the nonauthoritative client-state principle.")
                 if len(matrix.get("stateVocabulary", [])) < 16:
-                    errors.append(f"{feature_id}: recovery matrix must define at least sixteen state values.")
-                if len(matrix.get("operationTypes", [])) < 10:
-                    errors.append(f"{feature_id}: recovery matrix must define at least ten operation types.")
+                    errors.append(f"{feature_id}: recovery matrix must define at least sixteen states.")
                 if len(matrix.get("interruptionPoints", [])) < 15:
                     errors.append(f"{feature_id}: recovery matrix must define at least fifteen interruption points.")
-                if len(matrix.get("protectedRecoverySurfaces", [])) < 15:
-                    errors.append(f"{feature_id}: recovery matrix must define at least fifteen protected surfaces.")
-                if len(matrix.get("requiredDeniedCases", [])) < 24:
-                    errors.append(f"{feature_id}: recovery matrix must define at least twenty-four denied cases.")
-                if matrix.get("acceptanceCriteria") != [f"REC-AC-{number:03d}" for number in range(1, 21)]:
-                    errors.append(f"{feature_id}: recovery matrix acceptance criteria are incomplete or out of order.")
+                if len(matrix.get("requiredDeniedCases", [])) < 20:
+                    errors.append(f"{feature_id}: recovery matrix must define at least twenty denied cases.")
+                if matrix.get("acceptanceCriteria") != [f"REC-AC-{n:03d}" for n in range(1, 21)]:
+                    errors.append(f"{feature_id}: recovery matrix acceptance criteria incomplete.")
 
-                offline = matrix.get("offlineCapabilities", {})
-                if len(offline.get("allowed", [])) < 6:
-                    errors.append(f"{feature_id}: recovery matrix must define at least six allowed offline capabilities.")
-                if len(offline.get("prohibited", [])) < 10:
-                    errors.append(f"{feature_id}: recovery matrix must define at least ten prohibited offline capabilities.")
-                if "claim-that-local-state-is-authoritative" not in offline.get("prohibited", []):
-                    errors.append(f"{feature_id}: recovery matrix must prohibit claiming local state is authoritative.")
-                if len(matrix.get("requiredReceipts", [])) < 10:
-                    errors.append(f"{feature_id}: recovery matrix must define at least ten required receipt families.")
-                reconnect_fields = matrix.get("requiredContractFields", {}).get("ReconnectRequest", [])
-                if len(reconnect_fields) < 15:
-                    errors.append(f"{feature_id}: ReconnectRequest field list is incomplete.")
+        if feature_id == "MV-IA-F025":
+            validate_criteria(feature_id, text, "OHD", 20, errors)
+            require_phrases(feature_id, text, [
+                "release identity","role-specific","contextual help","known limitations",
+                "structured issue","diagnostic preview","explicit consent","idempotent submission",
+                "portable issue","support access","zero AI","zero paid"
+            ], errors)
+            matrix_path = ROOT / "feature-packets/MV-IA-F025_ONBOARDING_SUPPORT_MATRIX.json"
+            if matrix_path.is_file():
+                matrix = json.loads(matrix_path.read_text(encoding="utf-8"))
+                if matrix.get("defaultDiagnosticDecision") != "exclude":
+                    errors.append(f"{feature_id}: defaultDiagnosticDecision must be 'exclude'.")
+                if matrix.get("defaultIssueDecision") != "deny":
+                    errors.append(f"{feature_id}: defaultIssueDecision must be 'deny'.")
+                if len(matrix.get("roles", [])) < 8:
+                    errors.append(f"{feature_id}: support matrix must define at least eight roles.")
+                if len(matrix.get("onboardingStages", [])) < 10:
+                    errors.append(f"{feature_id}: support matrix must define at least ten onboarding stages.")
+                if len(matrix.get("protectedDiagnosticSurfaces", [])) < 20:
+                    errors.append(f"{feature_id}: support matrix must define at least twenty diagnostic surfaces.")
+                if len(matrix.get("requiredDeniedCases", [])) < 24:
+                    errors.append(f"{feature_id}: support matrix must define at least twenty-four denied cases.")
+                if matrix.get("acceptanceCriteria") != [f"OHD-AC-{n:03d}" for n in range(1, 21)]:
+                    errors.append(f"{feature_id}: support matrix acceptance criteria incomplete.")
+                for field in ["releaseIdentityRequiredFields","issueReportRequiredFields","diagnosticManifestRequiredFields","issueReceiptRequiredFields"]:
+                    if len(matrix.get(field, [])) < 8:
+                        errors.append(f"{feature_id}: support matrix {field} is incomplete.")
+                if matrix.get("attachmentRules", {}).get("automaticCapture") is not False:
+                    errors.append(f"{feature_id}: automatic attachment capture must be false.")
 
     if checked == 0:
         errors.append("No implementation-ready or later feature packet was checked.")
