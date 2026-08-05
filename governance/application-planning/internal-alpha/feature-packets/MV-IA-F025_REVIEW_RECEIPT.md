@@ -4,7 +4,7 @@
 **Feature:** MV-IA-F025 — Onboarding, Help, Diagnostics, and Issue Reporting  
 **Packet version:** 0.1.0  
 **Owner:** John Brandon Turner  
-**Status:** ready for repository validation and independent review  
+**Status:** repository validation requested; independent review ready  
 **Date:** 2026-08-05
 
 ## Review scope
@@ -29,5 +29,7 @@ The review must verify:
 ## Current disposition
 
 The design artifacts are complete enough for CI and pull-request review. Application implementation remains dependency-gated by the active P9-06 sequence.
+
+Repository validation was requested after the generated artifacts, validation updates, and temporary assembly files were reconciled into the bounded pull-request change set.
 
 This receipt is not owner approval for implementation, collection of real tester data, retention policy, paid services, production credentials, internal-alpha release, or public release.
