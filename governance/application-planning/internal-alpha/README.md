@@ -67,8 +67,11 @@ The first tranche establishes:
 - shared-system inventory;
 - acceptance matrix;
 - historical deferred-feature reconciliation;
+- bounded content and fixture baseline;
+- owner-decision register;
 - standard feature-packet template;
-- ordered feature-design backlog.
+- ordered feature-design backlog;
+- machine validation and CI.
 
 ## File map
 
@@ -79,8 +82,12 @@ The first tranche establishes:
 - `INTERNAL_ALPHA_SHARED_SYSTEMS.md` — systems reused by multiple features
 - `INTERNAL_ALPHA_ACCEPTANCE_MATRIX.md` — feature and release evidence
 - `INTERNAL_ALPHA_DEFERRED_FEATURES.md` — historical list and current scope decisions
+- `INTERNAL_ALPHA_CONTENT_AND_FIXTURES.md` — bounded test corpus and fixture requirements
+- `INTERNAL_ALPHA_OWNER_DECISIONS.md` — owner-only decisions and future gates
+- `INTERNAL_ALPHA_DESIGN_BACKLOG.md` — dependency-ordered packet backlog
 - `feature-packets/FEATURE_PACKET_TEMPLATE.md` — required design packet format
 - `validate_internal_alpha_design.py` — structural registry validator
+- `.github/workflows/internal-alpha-design-validation.yml` — automated validation
 
 ## Execution boundary
 
@@ -98,4 +105,6 @@ No document in this directory authorizes:
 
 ## Current next design action
 
-Design the shared foundations and entry-critical feature packets in dependency order, beginning with the Universal Object Experience and the identity/workspace boundary.
+**IA-D02-001 — Design MV-IA-F002, Universal Object Experience.**
+
+This packet comes first because its browser, inspector, picker, provenance, relationship, conflict, and selection patterns support Character creation, Scene building, inventory, encounter preparation, investigation, relationships, World Builder, and AI retrieval.
