@@ -38,7 +38,7 @@
       "name":"Postgres-centered managed backend",
       "referenceImplementations":["Supabase-class managed Postgres"],
       "scores":{"authority":5,"realtime":4,"identity-entitlements":5,"portability":5,"operations":4,"cost-control":4,"offline-local-path":4,"observability":4},
-      "weightedScore":455,
+      "weightedScore":450,
       "advantages":["relational source of truth","row-level authorization model","portable SQL data","single backend for identity, entitlements, persistence and realtime"],
       "risks":["realtime game loop requires disciplined server functions","managed-service features can create soft coupling"],
       "mitigations":["service boundary adapters","authoritative command handlers","database migrations and export drills"]
@@ -68,7 +68,7 @@
       "name":"Edge state and durable-session platform",
       "referenceImplementations":["Cloudflare Durable Objects-class architecture"],
       "scores":{"authority":5,"realtime":5,"identity-entitlements":3,"portability":3,"operations":4,"cost-control":4,"offline-local-path":2,"observability":4},
-      "weightedScore":390,
+      "weightedScore":385,
       "advantages":["strong per-session authoritative state","low-latency websocket coordination","natural room isolation"],
       "risks":["identity and entitlement persistence needs another service","platform-specific state model","weaker local-host symmetry"],
       "mitigations":["use only behind transport/session adapter","external canonical persistence","event journal and checkpoint export"]
