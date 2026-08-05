@@ -1,0 +1,30 @@
+{
+  "format": "multiversal-p0-mecha-promotion-readiness-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L49",
+  "dataset": "expanded_mecha_and_components_all_genres.csv",
+  "sourceRows": [[2,21],[52,138]],
+  "ownerDelegation": "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json",
+  "templateRegistry": "governance/object-system/vehicle-templates/MECHA_TEMPLATE_REGISTRY.json",
+  "outputDirectory": "build/csv-p0-mecha-promotion-readiness-l49",
+  "promotionGates": [
+    "governed-template-assigned",
+    "page-or-page-range-provenance-resolved",
+    "field-specific-source-verification-complete",
+    "subtype-routing-resolved",
+    "identity-conflict-reviewed",
+    "required-relationships-resolved-or-not-applicable",
+    "compatibility-verified-or-not-applicable",
+    "mechanical-values-verified",
+    "runtime-validation-complete",
+    "install-uninstall-validation-complete",
+    "canonical-id-approved"
+  ],
+  "rules": {
+    "recordExactBlockingGatesPerRow": true,
+    "useOwnerDelegatedRecommendationsForReversibleInterpretations": true,
+    "recommendationsCannotWaiveEvidenceOrIdentityGates": true,
+    "canonicalIdsForbiddenUntilAllGatesPass": true,
+    "promotionForbiddenUntilAllGatesPass": true
+  }
+}
