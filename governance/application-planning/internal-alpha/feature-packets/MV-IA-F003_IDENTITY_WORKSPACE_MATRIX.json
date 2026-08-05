@@ -1,0 +1,280 @@
+{
+  "schemaVersion": "1.0.0",
+  "programId": "MV-IA-001",
+  "featureId": "MV-IA-F003",
+  "featureVersion": "0.1.0",
+  "status": "implementation-ready-design",
+  "owner": "John Brandon Turner",
+  "defaultWorkspaceDecision": "deny",
+  "identityPrinciples": [
+    "Stable Multiversal subject identity is independent of provider identity, email, display name, device, and current role.",
+    "Workspace discovery and entry are separate authorization decisions.",
+    "Membership, role, Character control, ownership, and entitlement are separate decisions.",
+    "A selected-context receipt assists navigation but never replaces server authorization.",
+    "Provider-specific SDKs and identifiers remain inside adapters and mapping records.",
+    "Protected workspace existence is not disclosed to unauthorized subjects."
+  ],
+  "roles": [
+    {
+      "id": "invited-tester",
+      "dashboardScope": "safe invitation and onboarding only",
+      "entryScope": "none until valid acceptance and authorization"
+    },
+    {
+      "id": "player",
+      "dashboardScope": "authorized Campaigns, controlled Characters, permitted Sessions, own notifications and recent work",
+      "entryScope": "Player-safe Campaign and Session projections"
+    },
+    {
+      "id": "game-master",
+      "dashboardScope": "Campaigns with active GM role, GM preparation, and permitted live Sessions",
+      "entryScope": "GM-authorized Campaign and Session projections"
+    },
+    {
+      "id": "assistant-gm",
+      "dashboardScope": "explicitly delegated Campaigns and feature areas",
+      "entryScope": "delegation-limited GM projection"
+    },
+    {
+      "id": "content-creator",
+      "dashboardScope": "own or assigned drafts and permitted canonical library views",
+      "entryScope": "creator draft or review workspace"
+    },
+    {
+      "id": "observer",
+      "dashboardScope": "explicitly granted read-only Campaign or Session references",
+      "entryScope": "observer-safe projection"
+    },
+    {
+      "id": "owner-admin",
+      "dashboardScope": "program operations, alpha administration, and operational metadata",
+      "entryScope": "operational workspaces; protected play content only through governed Campaign role or support-access record"
+    },
+    {
+      "id": "service-actor",
+      "dashboardScope": "none",
+      "entryScope": "operation-specific service scope only"
+    }
+  ],
+  "identityObjects": [
+    "stable-subject",
+    "external-identity-mapping",
+    "authentication-session",
+    "invitation",
+    "campaign-membership",
+    "role-assignment",
+    "character-control-grant",
+    "workspace-reference",
+    "recent-work-reference",
+    "selected-context-receipt",
+    "dashboard-projection",
+    "audit-event",
+    "security-event"
+  ],
+  "workspaceTypes": [
+    "player-dashboard",
+    "gm-dashboard",
+    "campaign",
+    "character",
+    "scene",
+    "game-session",
+    "creator-draft",
+    "observer-session",
+    "owner-admin-operations"
+  ],
+  "entryFlows": [
+    {
+      "id": "first-approved-alpha-entry",
+      "reauthorizationPoints": [
+        "subject-resolution",
+        "session-establishment",
+        "dashboard-load",
+        "workspace-selection"
+      ]
+    },
+    {
+      "id": "accept-invitation",
+      "reauthorizationPoints": [
+        "safe-preview",
+        "recipient-binding",
+        "acceptance",
+        "membership-and-role-creation",
+        "dashboard-refresh"
+      ]
+    },
+    {
+      "id": "return-to-recent-work",
+      "reauthorizationPoints": [
+        "recent-work-list",
+        "recent-work-open",
+        "context-receipt-issue"
+      ]
+    },
+    {
+      "id": "switch-campaign-or-role",
+      "reauthorizationPoints": [
+        "alternative-list",
+        "target-selection",
+        "new-context-entry"
+      ]
+    },
+    {
+      "id": "deep-link-entry",
+      "reauthorizationPoints": [
+        "target-resolution",
+        "route-authorization",
+        "initial-projection"
+      ]
+    },
+    {
+      "id": "sign-out-or-revocation",
+      "reauthorizationPoints": [
+        "session-end",
+        "subscription-end",
+        "protected-cache-clear"
+      ]
+    }
+  ],
+  "protectedDiscoverySurfaces": [
+    "campaign-card",
+    "character-card",
+    "scene-card",
+    "session-card",
+    "role-label",
+    "workspace-name",
+    "invitation-preview",
+    "recent-work-entry",
+    "unread-count",
+    "pending-approval-count",
+    "notification-preview",
+    "activity-timestamp",
+    "avatar-or-media",
+    "deep-link-resolution",
+    "workspace-suggestion",
+    "autocomplete",
+    "cross-device-session-list",
+    "diagnostics",
+    "export",
+    "ai-dashboard-summary"
+  ],
+  "invitationStates": [
+    "valid",
+    "expired",
+    "revoked",
+    "accepted",
+    "declined",
+    "recipient-mismatch",
+    "invalid-token",
+    "campaign-archived",
+    "duplicate-acceptance",
+    "missing-entitlement"
+  ],
+  "requiredUserStates": [
+    "initial-loading",
+    "authentication-required",
+    "authentication-in-progress",
+    "authentication-failed",
+    "session-expired",
+    "session-revoked",
+    "identity-provider-unavailable",
+    "invitation-loading",
+    "invitation-unavailable",
+    "invitation-expired",
+    "invitation-pending-acceptance",
+    "invitation-accepted",
+    "invitation-declined",
+    "dashboard-loading",
+    "no-authorized-workspaces",
+    "no-recent-work",
+    "workspace-forbidden",
+    "workspace-revoked",
+    "workspace-archived",
+    "entitlement-changed",
+    "stale-context-receipt",
+    "offline-read-only-boundary",
+    "reconnect-and-revalidation",
+    "service-unavailable",
+    "recoverable-account-conflict",
+    "identity-conflict-requiring-support"
+  ],
+  "requiredDeniedCases": [
+    "player-a-cannot-discover-campaign-beta",
+    "player-a-cannot-open-player-b-character",
+    "gm-a-cannot-discover-unrelated-campaign",
+    "assistant-gm-cannot-exceed-delegation",
+    "observer-cannot-control-character",
+    "creator-cannot-infer-campaign-membership",
+    "owner-admin-cannot-read-private-play-content-without-governed-access",
+    "revoked-subject-cannot-resume-session",
+    "expired-role-cannot-enter-workspace",
+    "removed-character-controller-cannot-open-character",
+    "invalid-invitation-cannot-reveal-campaign",
+    "recipient-mismatch-cannot-reveal-intended-recipient",
+    "deep-link-cannot-reveal-hidden-target",
+    "recent-work-cannot-restore-revoked-workspace",
+    "notification-cannot-reveal-hidden-workspace",
+    "count-cannot-reveal-hidden-workspace",
+    "autocomplete-cannot-reveal-hidden-workspace",
+    "cached-card-cannot-survive-revocation",
+    "offline-client-cannot-accept-invitation",
+    "offline-client-cannot-change-role-or-membership"
+  ],
+  "contextReceiptRequiredFields": [
+    "receiptId",
+    "subjectId",
+    "authenticationSessionId",
+    "workspaceType",
+    "workspaceId",
+    "activeRole",
+    "campaignIdWhenApplicable",
+    "characterIdWhenApplicable",
+    "permissionDecisionReference",
+    "entitlementDecisionReference",
+    "permissionsVersion",
+    "entitlementRulesetVersion",
+    "issuedAt",
+    "expiresAt",
+    "correlationId"
+  ],
+  "acceptanceCriteria": [
+    "IDW-AC-001",
+    "IDW-AC-002",
+    "IDW-AC-003",
+    "IDW-AC-004",
+    "IDW-AC-005",
+    "IDW-AC-006",
+    "IDW-AC-007",
+    "IDW-AC-008",
+    "IDW-AC-009",
+    "IDW-AC-010",
+    "IDW-AC-011",
+    "IDW-AC-012",
+    "IDW-AC-013",
+    "IDW-AC-014",
+    "IDW-AC-015",
+    "IDW-AC-016",
+    "IDW-AC-017",
+    "IDW-AC-018",
+    "IDW-AC-019",
+    "IDW-AC-020"
+  ],
+  "zeroServiceRequirements": [
+    "zero paid identity provider",
+    "zero billing provider",
+    "zero paid notification provider",
+    "zero paid search service",
+    "zero paid analytics service",
+    "zero production credentials"
+  ],
+  "implementationBoundary": "Implementation remains dependency-gated by the active P9-06 sequence and the concrete availability of identity, permission, entitlement, persistence, backup, restore, provider-exit, and caller-workflow foundations.",
+  "authorizations": {
+    "paidServices": false,
+    "productionCredentials": false,
+    "publicRegistration": false,
+    "productionDeployment": false,
+    "internalAlphaRelease": false,
+    "publicRelease": false,
+    "blanketSupportAccess": false,
+    "irreversibleProviderCoupling": false
+  }
+}
