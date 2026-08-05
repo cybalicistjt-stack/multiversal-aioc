@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-05T23:44:00+00:00",
+  "generated_at": "2026-08-06T00:00:00+00:00",
   "source_pointer": "governance/ai/runtime/CURRENT_WORK_POINTER.json",
   "primary": {
     "work_item_id": "MV-CONT-005",
@@ -8,13 +8,15 @@
     "track": "owner-ai-continuity",
     "repository": "cybalicistjt-stack/multiversal-aioc",
     "branch": "agent/mv-interaction-pilot-integration",
-    "status": "started",
-    "active_substep": "Define executable pilot scenarios and metrics, run them against the installed controls, produce a source-backed scorecard, and identify bounded AIOC, bootstrap, and Project Bible amendments.",
-    "next_action": "Create the operational pilot manifest and scorecard schema, implement an executable pilot harness with positive and negative scenarios, generate measured results, integrate the results into AIOC status and governing documents, add tests and CI, then open a governed pull request.",
-    "latest_pushed_commit": null,
-    "pull_request": null,
+    "status": "validation_failed",
+    "active_substep": "Replace byte-level scorecard comparison with semantic JSON equality, rerun hosted validation, and verify every triggered check on the corrected exact head.",
+    "next_action": "Patch the determinism workflow to compare parsed JSON objects, trigger a corrected hosted run, and keep MV-CONT-005 unfinished until all checks pass.",
+    "latest_pushed_commit": "73793c59d76a4d7aa1bb1643656b1291441fa8fc",
+    "pull_request": 146,
     "owner_decision_required": false,
-    "unresolved_failures": [],
+    "unresolved_failures": [
+      "Run 31058116575 compared equivalent JSON files byte-for-byte; compact committed formatting differed from generated expanded formatting at scorecard byte 260."
+    ],
     "roadmap_projection_pending": true
   },
   "active_attempt_count": 1,
