@@ -1,37 +1,46 @@
 {
   "schema_version": "1.0.0",
-  "revision": 1,
+  "revision": 2,
   "work_item_id": "MV-CONT-005",
   "attempt_id": "MV-CONT-005-attempt-001",
   "track": "owner-ai-continuity",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "agent/mv-interaction-pilot-integration",
-  "status": "started",
+  "status": "validation_failed",
   "started_at": "2026-08-05T23:44:00+00:00",
-  "updated_at": "2026-08-05T23:44:00+00:00",
+  "updated_at": "2026-08-06T00:00:00+00:00",
   "completed_at": null,
   "base_commit": "301d477b5c5955dc32cc3c7e3bddb1508fb35692",
-  "latest_pushed_commit": null,
-  "expected_remote_head": "301d477b5c5955dc32cc3c7e3bddb1508fb35692",
-  "pull_request": null,
+  "latest_pushed_commit": "73793c59d76a4d7aa1bb1643656b1291441fa8fc",
+  "expected_remote_head": "73793c59d76a4d7aa1bb1643656b1291441fa8fc",
+  "pull_request": 146,
   "objective": "Pilot the installed owner-AI interaction controls against representative recovery, interruption, correction, deliverable, capability, source-coverage, UI-verification, notification, request-alignment, and reporting scenarios; measure prevention and intervention outcomes; integrate the scorecard and final operating amendments into AIOC, bootstrap, and the Project Bible.",
-  "last_verified_action": "Created the dedicated MV-CONT-005 branch from verified MV-CONT-004 completion-record commit 301d477b5c5955dc32cc3c7e3bddb1508fb35692.",
-  "active_substep": "Define executable pilot scenarios and metrics, run them against the installed controls, produce a source-backed scorecard, and identify bounded AIOC, bootstrap, and Project Bible amendments.",
+  "last_verified_action": "Hosted pilot validation and all four interaction-pilot regression tests passed on PR #146 head 73793c59d76a4d7aa1bb1643656b1291441fa8fc, but workflow run 31058116575 failed because the final determinism step compared JSON byte formatting rather than semantic content.",
+  "active_substep": "Replace byte-level scorecard comparison with semantic JSON equality, rerun hosted validation, and verify every triggered check on the corrected exact head.",
   "completed_substeps": [
     "Completed and merged MV-CONT-001 continuity runtime",
     "Completed and merged MV-CONT-002 redacted interaction audit and evaluation corpus",
     "Completed and merged MV-CONT-003 enforcement coverage and receipts",
     "Completed and merged MV-CONT-004 correction-to-regression intake",
-    "Created the dedicated MV-CONT-005 branch"
+    "Created the dedicated MV-CONT-005 branch",
+    "Added 17 operational pilot scenarios, scorecard schema, method, report, and AIOC integration",
+    "Added the compact runtime scorecard and bootstrap fast-path integration",
+    "Added and indexed the normative Project Bible operating amendment",
+    "Implemented the executable pilot harness, four regression tests, and dedicated CI",
+    "Opened PR #146",
+    "Passed hosted executable pilot validation and four regression tests on the initial exact head"
   ],
-  "next_action": "Create the operational pilot manifest and scorecard schema, implement an executable pilot harness with positive and negative scenarios, generate measured results, integrate the results into AIOC status and governing documents, add tests and CI, then open a governed pull request.",
+  "next_action": "Patch the determinism workflow to compare parsed JSON objects, trigger a corrected hosted run, and keep MV-CONT-005 unfinished until all checks pass.",
   "changed_paths": [
     "governance/ai/interaction-system/pilot/",
     "governance/ai/work-state/MV-CONT-005-attempt-001.json",
     "governance/ai/runtime/CURRENT_WORK_POINTER.json",
     "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
+    "governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json",
     "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
-    "MULTIVERSAL_PROJECT_BIBLE_v2.0_CANONICAL_RELEASE.md",
+    "governance/ai/interaction-system/README.md",
+    "governance/development-bible/README.md",
+    "governance/development-bible/amendments/MV-CONT-005_OWNER_AI_INTERACTION_OPERATING_AMENDMENT.md",
     "tools/interaction_pilot.py",
     "tests/interaction_pilot/",
     ".github/workflows/validate-interaction-pilot.yml"
@@ -44,22 +53,36 @@
   "validation": [
     {
       "command": "python tools/interaction_pilot.py validate",
-      "status": "not_run",
-      "evidence": null
+      "status": "failed",
+      "evidence": "Run 31058116575: executable validation PASS; 4/4 regression tests PASS; final byte-level formatting comparison FAIL."
     }
   ],
-  "unresolved_failures": [],
+  "unresolved_failures": [
+    "Run 31058116575 compared equivalent JSON files byte-for-byte; compact committed formatting differed from generated expanded formatting at scorecard byte 260."
+  ],
   "owner_decision_required": false,
   "evidence": [
     {
       "kind": "merge",
       "value": "MV-CONT-004 completion record PR #145 squash commit 301d477b5c5955dc32cc3c7e3bddb1508fb35692 established the dependency boundary for MV-CONT-005."
+    },
+    {
+      "kind": "commit",
+      "value": "MV-CONT-005 initial PR head 73793c59d76a4d7aa1bb1643656b1291441fa8fc"
+    },
+    {
+      "kind": "pull_request",
+      "value": "MV-CONT-005 PR #146 — Pilot and integrate Multiversal interaction controls"
+    },
+    {
+      "kind": "ci_run",
+      "value": "Run 31058116575: pilot validation and tests passed; formatting-only determinism check failed"
     }
   ],
   "roadmap_projection_pending": true,
   "notes": [
-    "Pilot results must distinguish executable control validation from future live longitudinal measurements.",
-    "No raw private conversations may enter the pilot artifacts.",
+    "Pilot results distinguish executable control validation from future live longitudinal measurements.",
+    "No raw private conversations enter the pilot artifacts.",
     "The full roadmap remains outside the high-frequency save path.",
     "P9-06-008 and IA-D03-003 remain explicit parallel tracks."
   ]
