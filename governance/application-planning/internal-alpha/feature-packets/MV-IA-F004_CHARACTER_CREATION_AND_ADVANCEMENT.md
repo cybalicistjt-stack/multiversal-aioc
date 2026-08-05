@@ -856,3 +856,5 @@ Silence is not approval.
 **Reviewer:** repository validation and pull-request review required  
 **Date:** 2026-08-05  
 **Packet digest:** calculated by repository tooling when implemented
+
+**Next design item:** IA-D03-002 — Design MV-IA-F005, Campaign, Scene, and Session Builder.
