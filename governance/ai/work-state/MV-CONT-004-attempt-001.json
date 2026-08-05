@@ -1,35 +1,44 @@
 {
   "schema_version": "1.0.0",
-  "revision": 1,
+  "revision": 2,
   "work_item_id": "MV-CONT-004",
   "attempt_id": "MV-CONT-004-attempt-001",
   "track": "owner-ai-continuity",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "agent/mv-correction-regression-intake",
-  "status": "started",
+  "status": "in_progress",
   "started_at": "2026-08-05T23:22:00+00:00",
-  "updated_at": "2026-08-05T23:22:00+00:00",
+  "updated_at": "2026-08-05T23:35:47+00:00",
   "completed_at": null,
   "base_commit": "cc44f83e67951430b8a9d74dafc4335e08254c22",
-  "latest_pushed_commit": null,
-  "expected_remote_head": "cc44f83e67951430b8a9d74dafc4335e08254c22",
+  "latest_pushed_commit": "f19a41f82cfd36ce2c6490d2974fcc957bd4f16a",
+  "expected_remote_head": "f19a41f82cfd36ce2c6490d2974fcc957bd4f16a",
   "pull_request": null,
   "objective": "Implement governed automatic correction-to-regression intake so material owner corrections become durable minimized incidents, deterministic proposed regression cases, reviewable promotions, and validated coverage instead of remaining only in conversation history.",
-  "last_verified_action": "Created the dedicated MV-CONT-004 branch from completion-record commit cc44f83e67951430b8a9d74dafc4335e08254c22.",
-  "active_substep": "Define minimized correction and regression-candidate contracts, implement deterministic capture and governed promotion, and add validation, negative tests, and CI.",
+  "last_verified_action": "The complete MV-CONT-004 implementation passed local repository validation and all seven correction-to-regression regression tests in the isolated complete-tree prototype.",
+  "active_substep": "Open the governed pull request and use hosted CI to validate the exact published branch head, repairing any discrepancy before review or merge.",
   "completed_substeps": [
     "Completed and merged MV-CONT-001 continuity runtime",
     "Completed and merged MV-CONT-002 redacted interaction audit and evaluation corpus",
     "Completed and merged MV-CONT-003 enforcement coverage and receipts",
-    "Created the dedicated MV-CONT-004 branch"
+    "Created the dedicated MV-CONT-004 branch",
+    "Defined minimized correction-intake and regression-candidate schemas",
+    "Added immutable ledger, synthetic intake example, promotion policy, and additive evaluation and control extensions",
+    "Implemented deterministic capture, duplicate suppression, owner review, promotion, rollback, and validation commands",
+    "Split the implementation into a small CLI and focused library modules",
+    "Added seven negative and lifecycle regression tests",
+    "Added dedicated correction-to-regression CI",
+    "Passed local validation and all seven regression tests"
   ],
-  "next_action": "Create correction intake and regression-candidate schemas, registry and synthetic examples, implement dependency-free capture/promote/validate commands, add negative tests and CI, then open a governed pull request.",
+  "next_action": "Open the MV-CONT-004 pull request, inspect exact-head hosted validation, repair any failure, then advance to ready_for_review only when correction, continuity, smoke, and repository checks pass.",
   "changed_paths": [
     "governance/ai/interaction-system/corrections/",
-    "governance/ai/interaction-system/evaluation/EVALUATION_CASES.json",
-    "governance/ai/interaction-system/enforcement/CONTROL_GAP_REGISTER.json",
+    "governance/ai/interaction-system/evaluation/PROMOTED_EVALUATION_CASES.json",
     "governance/ai/work-state/MV-CONT-004-attempt-001.json",
+    "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+    "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
     "tools/correction_regression.py",
+    "tools/correction_regression_lib/",
     "tests/correction_regression/",
     ".github/workflows/validate-correction-regression.yml"
   ],
@@ -41,8 +50,8 @@
   "validation": [
     {
       "command": "python tools/correction_regression.py validate",
-      "status": "not_run",
-      "evidence": null
+      "status": "passed",
+      "evidence": "Local complete-tree validation PASS; python -m unittest discover -s tests/correction_regression -v: 7/7 PASS."
     }
   ],
   "unresolved_failures": [],
@@ -51,12 +60,17 @@
     {
       "kind": "merge",
       "value": "MV-CONT-003 completion record PR #143 squash commit cc44f83e67951430b8a9d74dafc4335e08254c22 established the dependency boundary for MV-CONT-004."
+    },
+    {
+      "kind": "commit",
+      "value": "MV-CONT-004 published implementation head f19a41f82cfd36ce2c6490d2974fcc957bd4f16a"
     }
   ],
   "roadmap_projection_pending": true,
   "notes": [
-    "Raw correction messages must not be published; intake records are minimized paraphrases with opaque evidence references.",
-    "Capture may create proposed candidates automatically, but canonical evaluation promotion remains evidence-gated.",
+    "Raw correction messages are prohibited; intake records are minimized paraphrases with opaque evidence references.",
+    "Capture automatically creates proposed candidates, while canonical evaluation promotion remains owner-reviewed and evidence-gated.",
+    "Historical MV-CONT-002 and MV-CONT-003 artifacts remain immutable snapshots; MV-CONT-004 uses additive extensions.",
     "P9-06-008 and IA-D03-003 remain explicit parallel tracks."
   ]
 }
