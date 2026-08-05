@@ -16,6 +16,8 @@ REQUIRED_FILES = [
     "INTERNAL_ALPHA_SHARED_SYSTEMS.md",
     "INTERNAL_ALPHA_ACCEPTANCE_MATRIX.md",
     "INTERNAL_ALPHA_DEFERRED_FEATURES.md",
+    "INTERNAL_ALPHA_CONTENT_AND_FIXTURES.md",
+    "INTERNAL_ALPHA_OWNER_DECISIONS.md",
     "INTERNAL_ALPHA_DESIGN_BACKLOG.md",
     "feature-packets/FEATURE_PACKET_TEMPLATE.md",
 ]
@@ -131,10 +133,11 @@ def main() -> int:
         if relative.endswith((".md", ".json"))
     ).lower()
 
-    # The mistaken word is allowed only in the explicit correction records.
+    # The mistaken word is allowed only in explicit correction records.
     correction_files = {
         "README.md",
         "INTERNAL_ALPHA_DEFERRED_FEATURES.md",
+        "INTERNAL_ALPHA_OWNER_DECISIONS.md",
     }
     for relative in REQUIRED_FILES:
         if not relative.endswith((".md", ".json")) or relative in correction_files:
