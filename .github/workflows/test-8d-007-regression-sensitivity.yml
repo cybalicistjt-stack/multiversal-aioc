@@ -1,0 +1,39 @@
+name: Test 8D-007 Regression Sensitivity
+
+on:
+  pull_request:
+    paths:
+      - 'governance/balance/**'
+      - 'scripts/test-8d-007-regression-sensitivity.py'
+      - '.github/workflows/test-8d-007-regression-sensitivity.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify intentional regressions are detected
+        run: python scripts/test-8d-007-regression-sensitivity.py
+      - name: Verify mutation coverage
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open('out/8d-007-regression-sensitivity/REGRESSION_SENSITIVITY_REPORT.json'))
+          assert p['baselinePasses'] is True
+          assert p['mutationCount']==7
+          assert p['detectedMutationCount']==7
+          assert p['allIntentionalFailuresDetected'] is True
+          assert p['sourceTruthChanged'] is False
+          print(p['artifactSha256'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 8d-007-regression-sensitivity
+          path: out/8d-007-regression-sensitivity/REGRESSION_SENSITIVITY_REPORT.json
