@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.3.0  
+**Version:** 0.4.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -37,8 +37,13 @@ Design work should maximize reuse: shared systems and high-fan-out features are 
    - registry status: implementation-ready
    - implementation status: not started; dependency-gated
    - validation: twenty acceptance criteria, twenty-eight protected surfaces, ten visibility classes, and denied-case validation
-3. **IA-D02-003 — MV-IA-F003 Identity, Dashboard, and Workspace Selection packet — next**
-4. IA-D02-004 — MV-IA-F021 Autosave, Reconnect, Recovery, and Bounded Offline Use packet
+3. **IA-D02-003 — MV-IA-F003 Identity, Dashboard, and Workspace Selection packet — complete**
+   - packet: `feature-packets/MV-IA-F003_IDENTITY_DASHBOARD_AND_WORKSPACE_SELECTION.md`
+   - matrix: `feature-packets/MV-IA-F003_IDENTITY_WORKSPACE_MATRIX.json`
+   - registry status: implementation-ready
+   - implementation status: not started; dependency-gated
+   - validation: twenty acceptance criteria, identity/session/invitation/workspace contracts, twenty discovery surfaces, and twenty denied cases
+4. **IA-D02-004 — MV-IA-F021 Autosave, Reconnect, Recovery, and Bounded Offline Use packet — next**
 5. IA-D02-005 — MV-IA-F025 Onboarding, Help, Diagnostics, and Issue Reporting packet
 6. IA-D02-006 — shared-foundations integration review
 
@@ -150,8 +155,25 @@ MV-IA-F020 defines:
 
 The packet is implementation-ready as a design artifact. Implementation remains dependency-gated by the active P9-06 sequence and does not authorize production, spending, provider commitment, internal-alpha release, or public release.
 
+## IA-D02-003 completion record
+
+MV-IA-F003 defines:
+
+- stable internal subject identity independent of provider ID, email, display name, device, and current role;
+- provider-neutral identity mapping and session establishment, resume, expiry, revocation, and sign-out;
+- valid, expired, revoked, accepted, declined, mismatched, invalid, archived, duplicate, and entitlement-limited invitation behavior;
+- role-aware Player, GM, Assistant GM, creator, observer, Owner/Admin, and invited-tester dashboards;
+- permission-safe Campaign, Character, Scene, Session, draft, observer, and operational workspace references;
+- recent-work and notification projections that cannot enumerate hidden workspaces;
+- explicit selected-context receipts with permission and entitlement versions;
+- deep-link authorization, Campaign and role switching, cache partitioning, revocation, interruption, and reconnect behavior;
+- Player/GM two-device entry proof, accessibility, responsive behavior, privacy-safe telemetry, zero-service operation, and provider-exit requirements;
+- twenty blocking acceptance criteria and a machine-readable identity/workspace matrix.
+
+The packet is implementation-ready as a design artifact. Implementation remains dependency-gated by the active P9-06 sequence and does not authorize production identity services, public registration, production credentials, internal-alpha release, or public release.
+
 ## Current next design item
 
-**IA-D02-003 — Design MV-IA-F003, Identity, Dashboard, and Workspace Selection.**
+**IA-D02-004 — Design MV-IA-F021, Autosave, Reconnect, Recovery, and Bounded Offline Use.**
 
-This packet is next because the object and permission contracts now define what the entry experience must resolve and present: stable subject identity, invitations, Campaign memberships, scoped roles, active Character context, recent work, drafts, approvals, notifications, support states, and only the workspaces and actions the current subject may use.
+This packet is next because F002, F020, and F003 now define the governed object, authorization, identity, invitation, workspace, recent-work, selected-context, and revocation inputs that recovery must preserve without restoring stale or unauthorized state.
