@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/schemas/interaction-operational-pilot-scorecard-1.0.0.schema.json",
+  "title": "Multiversal Interaction Operational Pilot Scorecard",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version","work_item_id","generated_at","measurement_scope","longitudinal_measurement_status","results","metrics","conclusion","limitations"],
+  "properties": {
+    "schema_version": {"const":"1.0.0"},
+    "work_item_id": {"const":"MV-CONT-005"},
+    "generated_at": {"type":"string","format":"date-time"},
+    "measurement_scope": {"const":"deterministic repository-backed operational pilot"},
+    "longitudinal_measurement_status": {"enum":["not_yet_measured","measuring","measured"]},
+    "results": {
+      "type":"array","minItems":17,"maxItems":17,
+      "items": {
+        "type":"object","additionalProperties":false,
+        "required":["scenario_id","category","expected_outcome","status","evidence_summary","error"],
+        "properties": {
+          "scenario_id":{"type":"string","pattern":"^MV-PILOT-[0-9]{3}$"},
+          "category":{"type":"string","minLength":1},
+          "expected_outcome":{"type":"string","minLength":1},
+          "status":{"enum":["pass","fail"]},
+          "evidence_summary":{"type":"string","minLength":1},
+          "error":{"type":["string","null"]}
+        }
+      }
+    },
+    "metrics":{"type":"object","minProperties":20},
+    "conclusion":{"enum":["pass","fail"]},
+    "limitations":{"type":"array","minItems":3,"items":{"type":"string","minLength":1}}
+  }
+}
