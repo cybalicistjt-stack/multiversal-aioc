@@ -1,0 +1,42 @@
+name: Validate Interaction Operational Pilot
+
+on:
+  pull_request:
+    paths:
+      - 'governance/ai/interaction-system/pilot/**'
+      - 'governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'governance/ai/work-state/MV-CONT-005-attempt-001.json'
+      - 'governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md'
+      - 'governance/development-bible/**'
+      - 'governance/ai/interaction-system/README.md'
+      - 'tools/interaction_pilot.py'
+      - 'tests/interaction_pilot/**'
+      - '.github/workflows/validate-interaction-pilot.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Use Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate interaction operational pilot
+        run: python tools/interaction_pilot.py validate
+      - name: Run interaction pilot regression tests
+        run: python -m unittest discover -s tests/interaction_pilot -v
+      - name: Verify generated scorecard is deterministic
+        run: |
+          cp governance/ai/interaction-system/pilot/OPERATIONAL_PILOT_SCORECARD.json "$RUNNER_TEMP/scorecard.json"
+          cp governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json "$RUNNER_TEMP/runtime-scorecard.json"
+          python tools/interaction_pilot.py run --generated-at 2026-08-05T23:50:00Z
+          cmp "$RUNNER_TEMP/scorecard.json" governance/ai/interaction-system/pilot/OPERATIONAL_PILOT_SCORECARD.json
+          cmp "$RUNNER_TEMP/runtime-scorecard.json" governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json
