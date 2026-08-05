@@ -1,7 +1,7 @@
 # MV-IA-001 — Internal Alpha Feature Design Program
 
 **Document ID:** MV-IA-001  
-**Version:** 0.3.0  
+**Version:** 0.4.0  
 **Status:** ACTIVE — DESIGN PROGRAM  
 **Owner and final authority:** John Brandon Turner  
 **Established:** 2026-08-05
@@ -111,6 +111,24 @@ Complete at design level:
 
 The packet is implementation-ready as a design artifact. Application implementation remains dependency-gated.
 
+### IA-D02-003 — Identity, Dashboard, and Workspace Selection
+
+Complete at design level:
+
+- stable internal subject identity independent of provider identity, email, display name, device, and current role;
+- provider-neutral identity mappings and session establishment, resume, expiry, revocation, and sign-out;
+- invitation preview, acceptance, decline, expiry, revocation, mismatch, idempotency, and safe failure behavior;
+- role-aware Player, GM, Assistant GM, creator, observer, Owner/Admin, and invited-tester dashboard projections;
+- permission-safe Campaign, Character, Scene, Session, draft, observer, recent-work, notification, and operational workspace references;
+- selected-context receipts with explicit role, stable workspace IDs, permission version, entitlement version, expiry, and correlation;
+- no-enumeration rules for cards, counts, pagination, deep links, autocomplete, media, recent work, notifications, and diagnostics;
+- role and Campaign switching with cache, draft, subscription, notification, and AI-context isolation;
+- two-subject Player/GM entry, revocation, interruption, reconnect, accessibility, responsive, privacy, telemetry, zero-service, and provider-exit requirements;
+- twenty blocking acceptance criteria and a machine-readable identity/workspace matrix;
+- expanded CI validation for F003 packet and companion requirements.
+
+The packet is implementation-ready as a design artifact. Application implementation remains dependency-gated.
+
 ## File map
 
 - `INTERNAL_ALPHA_SCOPE.md` — release boundary and success definition
@@ -128,6 +146,8 @@ The packet is implementation-ready as a design artifact. Application implementat
 - `feature-packets/MV-IA-F002_UNIVERSAL_OBJECT_EXPERIENCE.md` — Universal Object Experience design packet
 - `feature-packets/MV-IA-F020_PERMISSIONS_AND_HIDDEN_INFORMATION.md` — Permissions and Hidden Information design packet
 - `feature-packets/MV-IA-F020_PERMISSION_SURFACE_MATRIX.json` — protected surfaces, classifications, reason codes, and denied cases
+- `feature-packets/MV-IA-F003_IDENTITY_DASHBOARD_AND_WORKSPACE_SELECTION.md` — Identity, Dashboard, and Workspace Selection design packet
+- `feature-packets/MV-IA-F003_IDENTITY_WORKSPACE_MATRIX.json` — identity, invitation, role, workspace, discovery, denied-case, and acceptance matrix
 - `validate_internal_alpha_design.py` — program and registry validator
 - `validate_feature_packets.py` — implementation-ready packet and companion-file validator
 - `.github/workflows/internal-alpha-design-validation.yml` — automated validation
@@ -148,6 +168,6 @@ No document in this directory authorizes:
 
 ## Current next design action
 
-**IA-D02-003 — Design MV-IA-F003, Identity, Dashboard, and Workspace Selection.**
+**IA-D02-004 — Design MV-IA-F021, Autosave, Reconnect, Recovery, and Bounded Offline Use.**
 
-This packet is next because the object and permission contracts now define what the entry experience must resolve and present: stable subject identity, invitations, Campaign memberships, scoped roles, active Character context, recent work, drafts, approvals, notifications, support states, and only the workspaces and actions the current subject may use.
+This packet is next because the object, permission, identity, invitation, workspace, recent-work, selected-context, and revocation contracts now define the authoritative boundaries that autosave and recovery must preserve without duplicating accepted effects or restoring unauthorized state.

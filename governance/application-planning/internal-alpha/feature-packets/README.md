@@ -21,6 +21,7 @@ Implementation-ready and in-progress feature design packets are stored in this d
 |---|---|---|---|---|---|---|
 | MV-IA-F002 | Universal Object Experience | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F002_UNIVERSAL_OBJECT_EXPERIENCE.md` | none |
 | MV-IA-F020 | Permissions and Hidden Information | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F020_PERMISSIONS_AND_HIDDEN_INFORMATION.md` | `MV-IA-F020_PERMISSION_SURFACE_MATRIX.json` |
+| MV-IA-F003 | Identity, Dashboard, and Workspace Selection | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F003_IDENTITY_DASHBOARD_AND_WORKSPACE_SELECTION.md` | `MV-IA-F003_IDENTITY_WORKSPACE_MATRIX.json` |
 
 ## Packet rule
 
@@ -50,6 +51,12 @@ Establishes deny-by-default authorization, field-safe projection, safe query and
 
 The companion matrix records ten visibility classes, twenty-eight protected surfaces, internal and user-safe reason codes, twenty denied cases, and twenty blocking acceptance criteria.
 
+### MV-IA-F003
+
+Establishes stable provider-neutral subject identity, identity mappings, authentication-session lifecycle, invitation lifecycle, role-aware dashboards, recent-work and notification safety, explicit selected-context receipts, deep-link authorization, role and Campaign switching, revocation, account recovery, responsive behavior, and accessible entry flows.
+
+The companion matrix records eight role contexts, nine workspace types, six primary entry flows, twenty protected discovery surfaces, twenty denied cases, selected-context receipt fields, zero-service requirements, and twenty blocking acceptance criteria.
+
 ## Next packet
 
-`MV-IA-F003_IDENTITY_DASHBOARD_AND_WORKSPACE_SELECTION.md`
+`MV-IA-F021_AUTOSAVE_RECONNECT_RECOVERY_AND_BOUNDED_OFFLINE_USE.md`
