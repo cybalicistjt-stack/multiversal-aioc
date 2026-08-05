@@ -1,0 +1,20 @@
+{
+  "format": "multiversal-p1-ranged-weapons-consolidated-tranche-contract",
+  "version": "0.1.0",
+  "workstream": "8E-009L60",
+  "dataset": "expanded_ranged_weapons_catalog.csv",
+  "expectedRows": 230,
+  "ownerDelegation": "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json",
+  "outputDirectory": "build/csv-p1-ranged-weapons-consolidated-tranche-l60",
+  "decisions": {
+    "csvIsPrimaryStructuredSource": true,
+    "preserveRawCsv": true,
+    "routeUsingExplicitFieldsThenGovernedRecommendation": true,
+    "doNotAutoMergeDuplicateNames": true,
+    "standaloneCatalogWeaponsDoNotRequireInstalledHost": true,
+    "unspecifiedCompatibilityValidatedAtUseTime": true,
+    "assignDeterministicCanonicalIds": true,
+    "promoteAfterAllTrancheChecksPass": true
+  },
+  "validation": ["domain-and-subtype-routing", "duplicate-identity-review", "field-specific-source-verification", "mechanical-value-verification", "ammo-and-compatibility-handling", "runtime-contract-validation", "canonical-identity-uniqueness", "conversion", "installation", "uninstallation-zero-residue"]
+}
