@@ -1,0 +1,24 @@
+name: Validate P0 Mecha Templates and Representatives
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/vehicle-templates/MECHA_TEMPLATE_REGISTRY.json'
+      - 'governance/object-system/csv-intake/P0_MECHA_REPRESENTATIVE_FIXTURES.json'
+      - 'scripts/validate-p0-mecha-template-and-representatives.py'
+      - '.github/workflows/validate-p0-mecha-template-and-representatives.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate mecha templates and representative fixtures
+        run: python scripts/validate-p0-mecha-template-and-representatives.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-p0-mecha-template-representatives-107
+          path: build/csv-p0-mecha-template-representatives-l46/

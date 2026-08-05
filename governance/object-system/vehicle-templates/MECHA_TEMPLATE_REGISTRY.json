@@ -1,0 +1,43 @@
+{
+  "format": "multiversal-mecha-template-registry",
+  "version": "0.1.0",
+  "workstream": "8E-009L46",
+  "status": "governed-draft",
+  "sourceBasis": [
+    "governance/object-system/csv-intake/P0_MECHA_VERIFICATION_CONSOLIDATION.json",
+    "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json",
+    "governance/object-system/csv-intake/CSV_TEMPLATE_COVERAGE_MATRIX.json"
+  ],
+  "templates": [
+    {
+      "templateId": "vehicle.mecha.frame",
+      "displayName": "Mecha Frame",
+      "requiredFields": ["identity","classification","frameProfile","mobility","integrity","power","hardpoints","provenance"],
+      "optionalFields": ["armor","weapons","sensors","communications","environmentalProtection","repair","pilotInterface","specialRules"],
+      "allowedComponentFamilies": ["power-source","capacitor","mobility","weapon","armor","resistance","sensor","targeting","repair","utility","communication","safety","resource-gathering"],
+      "runtimeBehaviors": ["mount-component","power-allocation","movement-resolution","damage-resolution","heat-and-capacitor-resolution","repair-and-failure"],
+      "validationRules": [
+        "all installed components require governed compatibility evidence",
+        "power draw may not exceed available governed capacity without an explicit overload rule",
+        "mobility mode requires a source-supported movement implementation",
+        "identity remains staging-only until promotion gates pass"
+      ]
+    },
+    {
+      "templateId": "vehicle.mecha.component",
+      "displayName": "Mecha Component",
+      "requiredFields": ["identity","classification","componentProfile","compatibility","provenance"],
+      "optionalFields": ["power","activation","mechanicalOutput","resourceUse","failureBehavior","maintenance","mounting","specialRules"],
+      "allowedSubtypes": ["power-source","capacitor","mobility","weapon","armor","resistance","sensor","targeting","repair","utility","communication","safety","resource-gathering"],
+      "runtimeBehaviors": ["install","uninstall","activate","consume-resource","apply-output","degrade-or-fail"],
+      "validationRules": [
+        "component subtype must be explicit or recommendation-backed",
+        "host compatibility must remain unresolved when source evidence is insufficient",
+        "mechanical values remain provisional until field-specific verification",
+        "identity remains staging-only until promotion gates pass"
+      ]
+    }
+  ],
+  "canonicalIdsAssigned": 0,
+  "promotionReadyRows": 0
+}
