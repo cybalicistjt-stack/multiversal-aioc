@@ -1,7 +1,7 @@
 # MV-IA-001 — Internal Alpha Feature Design Program
 
 **Document ID:** MV-IA-001  
-**Version:** 0.1.0  
+**Version:** 0.2.0  
 **Status:** ACTIVE — DESIGN PROGRAM  
 **Owner and final authority:** John Brandon Turner  
 **Established:** 2026-08-05
@@ -56,9 +56,11 @@ Features are designed as vertical slices:
 
 A screen description alone is not a completed feature design.
 
-## First design tranche
+## Completed design work
 
-The first tranche establishes:
+### Tranche IA-D01 — Program foundation
+
+Complete:
 
 - internal-alpha scope and success definition;
 - complete feature registry;
@@ -73,10 +75,28 @@ The first tranche establishes:
 - ordered feature-design backlog;
 - machine validation and CI.
 
+### IA-D02-001 — Universal Object Experience
+
+Complete at design level:
+
+- object browser and result contract;
+- search, filter, exact stable-ID lookup, and safe count behavior;
+- object inspector and original-source view;
+- provenance and source-coverage presentation;
+- bounded relationship traversal with accessible list alternative;
+- version, variant, supersession, conflict, and incomplete-data comparison;
+- constrained object picker and stable selection receipt;
+- Character and Scene caller requirements;
+- role, permission, entitlement, pack, persistence, recovery, responsive, accessibility, telemetry, test, fixture, and implementation-handoff requirements;
+- fifteen blocking acceptance criteria;
+- dedicated implementation-ready packet validation.
+
+The packet is implementation-ready as a design artifact. Application implementation remains dependency-gated.
+
 ## File map
 
 - `INTERNAL_ALPHA_SCOPE.md` — release boundary and success definition
-- `INTERNAL_ALPHA_FEATURE_REGISTRY.json` — machine-readable feature inventory
+- `INTERNAL_ALPHA_FEATURE_REGISTRY.json` — machine-readable feature inventory and design status
 - `INTERNAL_ALPHA_DEPENDENCY_MAP.md` — dependency order and shared foundations
 - `INTERNAL_ALPHA_USER_JOURNEYS.md` — end-to-end Player and GM journeys
 - `INTERNAL_ALPHA_SHARED_SYSTEMS.md` — systems reused by multiple features
@@ -85,8 +105,11 @@ The first tranche establishes:
 - `INTERNAL_ALPHA_CONTENT_AND_FIXTURES.md` — bounded test corpus and fixture requirements
 - `INTERNAL_ALPHA_OWNER_DECISIONS.md` — owner-only decisions and future gates
 - `INTERNAL_ALPHA_DESIGN_BACKLOG.md` — dependency-ordered packet backlog
+- `feature-packets/README.md` — packet index and maturity status
 - `feature-packets/FEATURE_PACKET_TEMPLATE.md` — required design packet format
-- `validate_internal_alpha_design.py` — structural registry validator
+- `feature-packets/MV-IA-F002_UNIVERSAL_OBJECT_EXPERIENCE.md` — completed Universal Object Experience design packet
+- `validate_internal_alpha_design.py` — program and registry validator
+- `validate_feature_packets.py` — implementation-ready packet validator
 - `.github/workflows/internal-alpha-design-validation.yml` — automated validation
 
 ## Execution boundary
@@ -105,6 +128,6 @@ No document in this directory authorizes:
 
 ## Current next design action
 
-**IA-D02-001 — Design MV-IA-F002, Universal Object Experience.**
+**IA-D02-002 — Design MV-IA-F020, Permissions and Hidden Information.**
 
-This packet comes first because its browser, inspector, picker, provenance, relationship, conflict, and selection patterns support Character creation, Scene building, inventory, encounter preparation, investigation, relationships, World Builder, and AI retrieval.
+This packet is next because the Universal Object Experience identifies the full retrieval and inference surface that permissions must protect: object existence, fields, search results, aliases, facets, counts, exact IDs, provenance, source views, relationships, comparison candidates, cached state, selection receipts, exports, realtime updates, and AI retrieval.

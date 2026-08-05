@@ -33,6 +33,11 @@ jobs:
           python
           governance/application-planning/internal-alpha/validate_internal_alpha_design.py
 
+      - name: Validate implementation-ready feature packets
+        run: >-
+          python
+          governance/application-planning/internal-alpha/validate_feature_packets.py
+
       - name: Verify registry JSON
         run: >-
           python -m json.tool
