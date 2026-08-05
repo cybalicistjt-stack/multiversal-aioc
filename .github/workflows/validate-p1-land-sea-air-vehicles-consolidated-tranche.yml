@@ -1,0 +1,25 @@
+name: Validate P1 Land Sea Air Vehicles Consolidated Tranche
+
+on:
+  pull_request:
+    paths:
+      - 'Csv.zip'
+      - 'governance/object-system/csv-intake/P1_LAND_SEA_AIR_VEHICLES_CONSOLIDATED_TRANCHE_CONTRACT.json'
+      - 'governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json'
+      - 'scripts/run-p1-land-sea-air-vehicles-consolidated-tranche.py'
+      - '.github/workflows/validate-p1-land-sea-air-vehicles-consolidated-tranche.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run consolidated land sea air vehicle tranche
+        run: python scripts/run-p1-land-sea-air-vehicles-consolidated-tranche.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: csv-p1-land-sea-air-vehicles-consolidated-tranche-1200
+          path: build/csv-p1-land-sea-air-vehicles-consolidated-tranche-l53/
