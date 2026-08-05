@@ -1,0 +1,333 @@
+{
+  "schemaVersion": "1.0.0",
+  "programId": "MV-IA-001",
+  "reviewId": "IA-D02-006",
+  "version": "0.1.0",
+  "status": "complete-design-integration-review",
+  "owner": "John Brandon Turner",
+  "reviewedFeatures": [
+    "MV-IA-F002",
+    "MV-IA-F020",
+    "MV-IA-F003",
+    "MV-IA-F021",
+    "MV-IA-F025"
+  ],
+  "governingPrecedence": [
+    "owner decisions and active Phase 9 architecture",
+    "MV-IA-F020 authorization and hidden-information decisions",
+    "MV-IA-F003 identity, role, workspace, and selected-context decisions",
+    "MV-IA-F021 persistence, idempotency, reconnect, recovery, and offline decisions",
+    "MV-IA-F002 object browse, inspection, comparison, and selection decisions",
+    "MV-IA-F025 onboarding, help, diagnostics, issue, and support-evidence decisions"
+  ],
+  "canonicalRoles": [
+    "invited-tester",
+    "player",
+    "game-master",
+    "assistant-gm",
+    "content-creator",
+    "observer",
+    "owner-admin",
+    "service-actor"
+  ],
+  "nonUserActors": [
+    {
+      "actorId": "ai",
+      "classification": "optional-assistive-service-actor",
+      "authorityRule": "AI has no independent user role, membership, ownership, entitlement, or visibility authority and receives only a narrower projection derived from the initiating subject."
+    }
+  ],
+  "canonicalWorkspaceTypes": [
+    "player-dashboard",
+    "gm-dashboard",
+    "campaign",
+    "character",
+    "scene",
+    "game-session",
+    "creator-draft",
+    "observer-session",
+    "owner-admin-operations"
+  ],
+  "canonicalContractFields": [
+    "subjectId",
+    "authenticationSessionId",
+    "activeRole",
+    "workspaceType",
+    "workspaceId",
+    "campaignId",
+    "characterId",
+    "sceneId",
+    "sessionId",
+    "selectedContextReceiptId",
+    "permissionDecisionReference",
+    "entitlementDecisionReference",
+    "permissionVersion",
+    "entitlementVersion",
+    "packLockDigest",
+    "schemaVersions",
+    "clientVersion",
+    "protocolVersion",
+    "operationId",
+    "idempotencyKey",
+    "expectedVersion",
+    "correlationId",
+    "projectionVersion",
+    "eventSequence",
+    "lastAcknowledgedSequence",
+    "issuedAt",
+    "expiresAt",
+    "contentDigest",
+    "receiptId",
+    "status",
+    "userSafeReasonCode"
+  ],
+  "compatibilityAliases": {
+    "permissionsVersion": "permissionVersion",
+    "entitlementRulesetVersion": "entitlementVersion",
+    "gameSessionId": "sessionId",
+    "gm": "game-master",
+    "game-master-display-label": "Game Master",
+    "session-display-label": "Session"
+  },
+  "contractOwnership": [
+    {
+      "contractId": "SFI-C001",
+      "name": "Stable subject identity",
+      "controller": "MV-IA-F003",
+      "consumers": ["all protected features"],
+      "rule": "Provider identities, email, display names, devices, and current roles never replace subjectId."
+    },
+    {
+      "contractId": "SFI-C002",
+      "name": "Authentication session",
+      "controller": "MV-IA-F003",
+      "consumers": ["MV-IA-F020", "MV-IA-F021", "MV-IA-F025"],
+      "rule": "Authentication proves a session subject but does not itself grant Campaign, role, object, or support access."
+    },
+    {
+      "contractId": "SFI-C003",
+      "name": "Role and membership separation",
+      "controller": "MV-IA-F003",
+      "consumers": ["all Campaign features"],
+      "rule": "Membership, role, Character control, ownership, custody, entitlement, and delegation are separate versioned decisions."
+    },
+    {
+      "contractId": "SFI-C004",
+      "name": "Selected-context receipt",
+      "controller": "MV-IA-F003",
+      "consumers": ["MV-IA-F002", "MV-IA-F021", "MV-IA-F025"],
+      "rule": "The receipt preserves navigation and recovery context but is nonauthoritative and must be revalidated on entry and mutation."
+    },
+    {
+      "contractId": "SFI-C005",
+      "name": "Default authorization decision",
+      "controller": "MV-IA-F020",
+      "consumers": ["all protected features"],
+      "rule": "Unknown, incomplete, stale, or unavailable policy inputs fail closed."
+    },
+    {
+      "contractId": "SFI-C006",
+      "name": "Field-safe projection",
+      "controller": "MV-IA-F020",
+      "consumers": ["MV-IA-F002", "MV-IA-F003", "MV-IA-F021", "MV-IA-F025"],
+      "rule": "Unauthorized fields, relationships, counts, labels, and payloads never reach ordinary client state."
+    },
+    {
+      "contractId": "SFI-C007",
+      "name": "Safe non-disclosure response",
+      "controller": "MV-IA-F020",
+      "consumers": ["deep links", "exact stable-ID lookup", "issue lookup", "workspace discovery"],
+      "rule": "Use not-found-or-unavailable behavior where a precise denial would reveal protected existence."
+    },
+    {
+      "contractId": "SFI-C008",
+      "name": "Object query and ranking",
+      "controller": "MV-IA-F002",
+      "consumers": ["Character", "Campaign", "Scene", "inventory", "encounter", "investigation", "world", "AI"],
+      "rule": "Authorization and entitlement filtering occurs before ranking, pagination, facets, counts, suggestions, comparison, and serialization."
+    },
+    {
+      "contractId": "SFI-C009",
+      "name": "Object selection receipt",
+      "controller": "MV-IA-F002",
+      "consumers": ["all object picker callers"],
+      "rule": "Selection returns stable identity and compatibility evidence; the caller performs domain validation before authoritative mutation."
+    },
+    {
+      "contractId": "SFI-C010",
+      "name": "Local draft",
+      "controller": "MV-IA-F021",
+      "consumers": ["all editable features", "MV-IA-F025"],
+      "rule": "A local draft and autosave receipt are nonauthoritative convenience state."
+    },
+    {
+      "contractId": "SFI-C011",
+      "name": "Authoritative save and command",
+      "controller": "MV-IA-F021",
+      "consumers": ["all mutable features"],
+      "rule": "Authoritative mutation requires online service validation, expected version, idempotency, current authorization, and durable receipt or Event."
+    },
+    {
+      "contractId": "SFI-C012",
+      "name": "Ambiguous failure lookup",
+      "controller": "MV-IA-F021",
+      "consumers": ["saves", "session commands", "issue submission"],
+      "rule": "After a lost response, query status by stable operation or command ID before retrying with a new identity."
+    },
+    {
+      "contractId": "SFI-C013",
+      "name": "Realtime and event recovery",
+      "controller": "MV-IA-F021",
+      "consumers": ["live Sessions", "notifications", "approvals", "issue follow-up"],
+      "rule": "Realtime is advisory; ordered durable Events and current server projections control recovery."
+    },
+    {
+      "contractId": "SFI-C014",
+      "name": "Revocation invalidation",
+      "controller": "MV-IA-F020",
+      "consumers": ["MV-IA-F003", "MV-IA-F021", "MV-IA-F025"],
+      "rule": "Revocation ends subscriptions, invalidates context receipts, removes protected cards and counts, and clears or partitions protected caches."
+    },
+    {
+      "contractId": "SFI-C015",
+      "name": "Bounded offline use",
+      "controller": "MV-IA-F021",
+      "consumers": ["MV-IA-F002", "MV-IA-F003", "MV-IA-F025"],
+      "rule": "Offline supports manifest-bound authorized reading and approved local drafts only; no offline authoritative mutation is permitted."
+    },
+    {
+      "contractId": "SFI-C016",
+      "name": "Release identity",
+      "controller": "MV-IA-F025",
+      "consumers": ["onboarding", "help", "diagnostics", "issues", "test evidence"],
+      "rule": "Every issue and diagnostic bundle binds to exact release, build, commit, environment, schema, migration, pack-set, and support-policy identity."
+    },
+    {
+      "contractId": "SFI-C017",
+      "name": "Diagnostic manifest",
+      "controller": "MV-IA-F025",
+      "consumers": ["support", "QA", "security"],
+      "rule": "Diagnostics default to exclude, use allowlisted safe fields, redact before preview, and require explicit consent before attachment."
+    },
+    {
+      "contractId": "SFI-C018",
+      "name": "Issue submission",
+      "controller": "MV-IA-F025",
+      "consumers": ["testers", "support"],
+      "rule": "Issue drafts are local until submitted; submission is idempotent and returns a stable receipt or portable export."
+    },
+    {
+      "contractId": "SFI-C019",
+      "name": "Support access",
+      "controller": "MV-IA-F020",
+      "consumers": ["MV-IA-F003", "MV-IA-F025"],
+      "rule": "An issue report never grants content access; protected support access requires separate purpose, scope, approval, attribution, and expiry."
+    },
+    {
+      "contractId": "SFI-C020",
+      "name": "Protected attachments",
+      "controller": "MV-IA-F025",
+      "consumers": ["issue intake", "object storage"],
+      "rule": "Attachments require explicit selection, preview, removal, classification, quarantine, checksum, scoped retrieval, and revocation handling."
+    },
+    {
+      "contractId": "SFI-C021",
+      "name": "Accessibility state equivalence",
+      "controller": "MV-IA-001 shared systems",
+      "consumers": ["all features"],
+      "rule": "Loading, empty, forbidden, stale, conflict, offline, reconnect, recovery, and success states are exposed through semantic, keyboard, screen-reader, touch, zoom, reduced-motion, and noncolor behavior."
+    },
+    {
+      "contractId": "SFI-C022",
+      "name": "Responsive context preservation",
+      "controller": "MV-IA-001 shared systems",
+      "consumers": ["all interfaces"],
+      "rule": "Desktop, tablet, and mobile may change layout but not authority, available evidence, recovery semantics, or required actions."
+    },
+    {
+      "contractId": "SFI-C023",
+      "name": "Provider-neutral ports",
+      "controller": "active Phase 9 architecture",
+      "consumers": ["all implemented packets"],
+      "rule": "Provider SDKs and identifiers remain inside adapters; core contracts remain portable and testable with local deterministic adapters."
+    },
+    {
+      "contractId": "SFI-C024",
+      "name": "Zero-service core path",
+      "controller": "MV-IA-001 owner boundary",
+      "consumers": ["F002", "F003", "F020", "F021", "F025"],
+      "rule": "Core internal-alpha design must operate without paid search, identity, analytics, crash reporting, ticketing, notification, or AI services."
+    }
+  ],
+  "integrationJourneys": [
+    {
+      "journeyId": "SFI-J001",
+      "name": "Authorized workspace to object selection and save",
+      "steps": ["resolve subject", "discover authorized workspace", "issue selected-context receipt", "query authorized object projections", "inspect and select stable object ID", "caller validates", "submit idempotent authoritative save", "return receipt and projection"],
+      "requiredContracts": ["SFI-C001", "SFI-C004", "SFI-C005", "SFI-C006", "SFI-C008", "SFI-C009", "SFI-C011"]
+    },
+    {
+      "journeyId": "SFI-J002",
+      "name": "Revocation during an open workflow",
+      "steps": ["receive or detect revocation", "end affected subscription", "invalidate context receipt", "remove protected projections and counts", "preserve only permitted local draft metadata", "show safe revoked state", "require new authorization"],
+      "requiredContracts": ["SFI-C014", "SFI-C006", "SFI-C007", "SFI-C010"]
+    },
+    {
+      "journeyId": "SFI-J003",
+      "name": "Offline draft and reconnect",
+      "steps": ["enter manifest-bound offline state", "read permitted cached projections", "edit approved local draft", "reconnect", "resolve subject and context", "revalidate permission entitlement pack schema and versions", "query ambiguous operations", "reconcile or preserve conflict", "resume from current projection"],
+      "requiredContracts": ["SFI-C015", "SFI-C010", "SFI-C012", "SFI-C013", "SFI-C014"]
+    },
+    {
+      "journeyId": "SFI-J004",
+      "name": "Permission-safe issue report",
+      "steps": ["identify exact release", "create local issue draft", "choose category severity and reproduction", "generate allowlisted diagnostic manifest", "redact and preview", "explicitly select attachments", "submit once or export", "receive receipt", "view safe status"],
+      "requiredContracts": ["SFI-C016", "SFI-C017", "SFI-C018", "SFI-C020"]
+    },
+    {
+      "journeyId": "SFI-J005",
+      "name": "Support follow-up without implicit access",
+      "steps": ["authorized support actor opens assigned report projection", "review safe receipt and diagnostics", "request additional evidence without credentials", "obtain separate support-access approval when protected content is necessary", "access expires automatically", "retain audit evidence"],
+      "requiredContracts": ["SFI-C019", "SFI-C017", "SFI-C020"]
+    }
+  ],
+  "resolvedFindings": [
+    {"findingId":"SFI-F001","severity":"compatibility","topic":"role identifiers","resolution":"Canonical persisted role IDs use lowercase hyphenated values; display labels remain localized presentation."},
+    {"findingId":"SFI-F002","severity":"compatibility","topic":"AI classification","resolution":"AI is an optional assistive service actor, not a user role and not an independent source of authority."},
+    {"findingId":"SFI-F003","severity":"compatibility","topic":"permission version field","resolution":"permissionVersion is canonical; permissionsVersion is a documented input alias requiring normalization at the boundary."},
+    {"findingId":"SFI-F004","severity":"compatibility","topic":"entitlement version field","resolution":"entitlementVersion is canonical; entitlementRulesetVersion is a documented input alias requiring normalization at the boundary."},
+    {"findingId":"SFI-F005","severity":"compatibility","topic":"Session naming","resolution":"game-session is the canonical workspace type, sessionId is the canonical identifier, and Session remains a display label."},
+    {"findingId":"SFI-F006","severity":"safety","topic":"support authority","resolution":"Issue ownership or assignment never grants Campaign, Character, Scene, Session, private-note, or GM-truth access."},
+    {"findingId":"SFI-F007","severity":"safety","topic":"state authority","resolution":"Client caches, local drafts, realtime messages, selected-context receipts, and offline snapshots remain nonauthoritative."},
+    {"findingId":"SFI-F008","severity":"scope","topic":"service dependencies","resolution":"All reviewed shared foundations retain a zero-paid-service and zero-AI core path."}
+  ],
+  "blockingFindings": [],
+  "downstreamRequiredClauses": [
+    "declare consumed shared-foundation contract IDs",
+    "use canonical role IDs and contract fields",
+    "treat selected-context receipts as nonauthoritative",
+    "authorize before counts facets suggestions and serialization",
+    "use stable IDs rather than display names or provider IDs",
+    "separate local draft authoritative save submitted command accepted Event and projection",
+    "define expectedVersion and idempotency behavior",
+    "define ambiguous-failure status lookup",
+    "define revocation cache and subscription invalidation",
+    "define bounded offline behavior with no authoritative mutation",
+    "define role-safe diagnostics and issue evidence",
+    "define support-access separation",
+    "define desktop tablet mobile keyboard touch screen-reader zoom reduced-motion and noncolor behavior",
+    "define zero-service fallback and provider-neutral adapters",
+    "record implementation dependency gates and owner review points"
+  ],
+  "acceptanceCriteria": [
+    "SFI-AC-001", "SFI-AC-002", "SFI-AC-003", "SFI-AC-004", "SFI-AC-005",
+    "SFI-AC-006", "SFI-AC-007", "SFI-AC-008", "SFI-AC-009", "SFI-AC-010",
+    "SFI-AC-011", "SFI-AC-012", "SFI-AC-013", "SFI-AC-014", "SFI-AC-015",
+    "SFI-AC-016", "SFI-AC-017", "SFI-AC-018", "SFI-AC-019", "SFI-AC-020"
+  ],
+  "implementationAuthorized": false,
+  "internalAlphaReleaseAuthorized": false,
+  "productionAuthorized": false,
+  "publicReleaseAuthorized": false,
+  "nextDesignItem": "IA-D03-001 — MV-IA-F004 Character Creation and Advancement packet"
+}
