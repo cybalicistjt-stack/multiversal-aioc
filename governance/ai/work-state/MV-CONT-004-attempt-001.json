@@ -1,22 +1,22 @@
 {
   "schema_version": "1.0.0",
-  "revision": 2,
+  "revision": 3,
   "work_item_id": "MV-CONT-004",
   "attempt_id": "MV-CONT-004-attempt-001",
   "track": "owner-ai-continuity",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "agent/mv-correction-regression-intake",
-  "status": "in_progress",
+  "status": "ready_for_review",
   "started_at": "2026-08-05T23:22:00+00:00",
-  "updated_at": "2026-08-05T23:35:47+00:00",
+  "updated_at": "2026-08-05T23:41:00+00:00",
   "completed_at": null,
   "base_commit": "cc44f83e67951430b8a9d74dafc4335e08254c22",
-  "latest_pushed_commit": "f19a41f82cfd36ce2c6490d2974fcc957bd4f16a",
-  "expected_remote_head": "f19a41f82cfd36ce2c6490d2974fcc957bd4f16a",
-  "pull_request": null,
+  "latest_pushed_commit": "a186534d5f45d8e39d09ed7c0abafbfd29103685",
+  "expected_remote_head": "a186534d5f45d8e39d09ed7c0abafbfd29103685",
+  "pull_request": 144,
   "objective": "Implement governed automatic correction-to-regression intake so material owner corrections become durable minimized incidents, deterministic proposed regression cases, reviewable promotions, and validated coverage instead of remaining only in conversation history.",
-  "last_verified_action": "The complete MV-CONT-004 implementation passed local repository validation and all seven correction-to-regression regression tests in the isolated complete-tree prototype.",
-  "active_substep": "Open the governed pull request and use hosted CI to validate the exact published branch head, repairing any discrepancy before review or merge.",
+  "last_verified_action": "Hosted validation passed on exact PR #144 head a186534d5f45d8e39d09ed7c0abafbfd29103685: correction-to-regression run 31056999199, continuity run 31056999100, interaction audit and enforcement, AIOC smoke, P9-06, and all triggered Development Brain checks succeeded.",
+  "active_substep": "Run the final checkpoint-consistency checks, verify PR #144 mergeability, and merge.",
   "completed_substeps": [
     "Completed and merged MV-CONT-001 continuity runtime",
     "Completed and merged MV-CONT-002 redacted interaction audit and evaluation corpus",
@@ -28,9 +28,10 @@
     "Split the implementation into a small CLI and focused library modules",
     "Added seven negative and lifecycle regression tests",
     "Added dedicated correction-to-regression CI",
-    "Passed local validation and all seven regression tests"
+    "Passed local validation and all seven regression tests",
+    "Verified correction-to-regression and all repository checks on exact PR head a186534d5f45d8e39d09ed7c0abafbfd29103685"
   ],
-  "next_action": "Open the MV-CONT-004 pull request, inspect exact-head hosted validation, repair any failure, then advance to ready_for_review only when correction, continuity, smoke, and repository checks pass.",
+  "next_action": "Verify the final hosted consistency run and merge PR #144, then record completed_verified with the actual squash commit in a bounded follow-up change.",
   "changed_paths": [
     "governance/ai/interaction-system/corrections/",
     "governance/ai/interaction-system/evaluation/PROMOTED_EVALUATION_CASES.json",
@@ -51,7 +52,7 @@
     {
       "command": "python tools/correction_regression.py validate",
       "status": "passed",
-      "evidence": "Local complete-tree validation PASS; python -m unittest discover -s tests/correction_regression -v: 7/7 PASS."
+      "evidence": "Hosted Validate Correction to Regression run 31056999199 PASS on exact PR head; seven regression tests PASS."
     }
   ],
   "unresolved_failures": [],
@@ -63,11 +64,20 @@
     },
     {
       "kind": "commit",
-      "value": "MV-CONT-004 published implementation head f19a41f82cfd36ce2c6490d2974fcc957bd4f16a"
+      "value": "MV-CONT-004 exact reviewed implementation head a186534d5f45d8e39d09ed7c0abafbfd29103685"
+    },
+    {
+      "kind": "pull_request",
+      "value": "MV-CONT-004 PR #144 — Add governed correction-to-regression intake"
+    },
+    {
+      "kind": "ci_run",
+      "value": "MV-CONT-004 Validate Correction to Regression run 31056999199 PASS; all other triggered checks passed"
     }
   ],
   "roadmap_projection_pending": true,
   "notes": [
+    "This checkpoint remains non-complete until PR #144 is merged and its actual squash commit is recorded.",
     "Raw correction messages are prohibited; intake records are minimized paraphrases with opaque evidence references.",
     "Capture automatically creates proposed candidates, while canonical evaluation promotion remains owner-reviewed and evidence-gated.",
     "Historical MV-CONT-002 and MV-CONT-003 artifacts remain immutable snapshots; MV-CONT-004 uses additive extensions.",
