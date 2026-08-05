@@ -1,10 +1,10 @@
 # Internal Alpha Feature Packets
 
 **Program:** MV-IA-001  
-**Status:** ACTIVE PACKET INDEX  
+**Status:** ACTIVE PACKET AND INTEGRATION INDEX  
 **Owner:** John Brandon Turner
 
-Implementation-ready and in-progress feature design packets are stored in this directory.
+Implementation-ready and in-progress feature design packets, companion matrices, review receipts, and integration records are stored in this directory.
 
 ## Status values
 
@@ -15,7 +15,7 @@ Implementation-ready and in-progress feature design packets are stored in this d
 - `alpha-ready`
 - `deferred`
 
-## Packet index
+## Feature packet index
 
 | Feature ID | Feature | Classification | Packet status | Implementation status | Packet | Companion artifacts |
 |---|---|---|---|---|---|---|
@@ -24,6 +24,12 @@ Implementation-ready and in-progress feature design packets are stored in this d
 | MV-IA-F003 | Identity, Dashboard, and Workspace Selection | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F003_IDENTITY_DASHBOARD_AND_WORKSPACE_SELECTION.md` | `MV-IA-F003_IDENTITY_WORKSPACE_MATRIX.json` |
 | MV-IA-F021 | Autosave, Reconnect, Recovery, and Bounded Offline Use | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F021_AUTOSAVE_RECONNECT_RECOVERY_AND_BOUNDED_OFFLINE_USE.md` | `MV-IA-F021_RECOVERY_AND_OFFLINE_MATRIX.json` |
 | MV-IA-F025 | Onboarding, Help, Diagnostics, and Issue Reporting | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F025_ONBOARDING_HELP_DIAGNOSTICS_AND_ISSUE_REPORTING.md` | `MV-IA-F025_ONBOARDING_SUPPORT_MATRIX.json` |
+
+## Integration review index
+
+| Review ID | Scope | Status | Review | Contract matrix | Receipt | Completion record |
+|---|---|---|---|---|---|---|
+| IA-D02-006 | F002, F020, F003, F021, and F025 shared foundations | complete | `IA-D02-006_SHARED_FOUNDATIONS_INTEGRATION_REVIEW.md` | `IA-D02-006_SHARED_FOUNDATIONS_CONTRACT_MATRIX.json` | `IA-D02-006_REVIEW_RECEIPT.md` | `IA-D02-006_COMPLETION_RECORD.json` |
 
 ## Packet rule
 
@@ -41,28 +47,43 @@ Every implementation-ready packet must:
 
 An implementation-ready design packet does not authorize code, provider activation, spending, real tester data collection, production, alpha release, or public release.
 
-## Completed shared-foundation packets
+## Shared-foundation integration rule
 
-### MV-IA-F002
+All packets beginning with IA-D03 must consume `IA-D02-006_SHARED_FOUNDATIONS_CONTRACT_MATRIX.json`.
 
-Reusable browser, inspector, source, provenance, relationship, comparison, and picker experience.
+They must:
 
-### MV-IA-F020
+- declare consumed `SFI-C###` contract IDs;
+- use canonical role IDs and contract fields;
+- treat selected-context receipts as nonauthoritative;
+- authorize before counts, facets, suggestions, relationships, and serialization;
+- use stable IDs rather than display names or provider IDs;
+- distinguish local draft, authoritative save, submitted command, accepted Event, and current projection;
+- define idempotency and ambiguous-failure status lookup;
+- define revocation, reconnect, conflict, and bounded offline behavior;
+- define role-safe diagnostics and separate support access;
+- define equivalent responsive and accessible behavior;
+- preserve provider-neutral adapters and zero-service fallback;
+- record implementation dependencies and owner gates.
 
-Deny-by-default authorization, field-safe projection, safe query and inference, role and delegation boundaries, private and GM-only handling, realtime and export controls, revocation, support access, diagnostics, AI restrictions, and permission recovery states.
+A later packet may extend a shared contract only with recorded consumer impact, compatibility impact, migration impact, retest list, fallback, and documentation update.
 
-### MV-IA-F003
+## Completed shared-foundation result
 
-Stable provider-neutral identity, invitations, role-aware dashboards, recent-work and notification safety, selected-context receipts, deep-link authorization, switching, revocation, recovery, responsive behavior, and accessible entry.
+The IA-D02 packets and integration review establish:
 
-### MV-IA-F021
-
-Local and authoritative state boundaries, autosave, idempotency, status lookup, Event-gap recovery, pending-GM continuity, conflict preservation, checkpoint restore, bounded offline use, revocation, and provider-exit compatibility.
-
-### MV-IA-F025
-
-Role-specific onboarding, release identity, contextual help, known limitations, structured issue reporting, diagnostic allowlisting and redaction, attachment preview and consent, receipts, follow-up, export-only operation, accessibility, recovery, zero-service operation, and support-access separation.
+- stable provider-neutral subject identity;
+- deny-by-default authorization and field-safe projection;
+- permission-safe workspace discovery and selected context;
+- stable-ID object browse, inspection, comparison, and selection;
+- explicit authority states and durable receipts;
+- idempotency, reconnect, Event-gap recovery, conflict preservation, and revocation;
+- bounded offline reading and local drafts with no offline authoritative mutation;
+- exact release identity, contextual help, diagnostic exclusion, redaction, consent, quarantine, and issue receipts;
+- issue-reporting and support-access separation;
+- desktop, tablet, mobile, keyboard, touch, screen-reader, zoom, reduced-motion, and noncolor equivalence;
+- provider-neutral and zero-paid-service, zero-AI core operation.
 
 ## Next item
 
-`IA-D02-006_SHARED_FOUNDATIONS_INTEGRATION_REVIEW.md`
+`MV-IA-F004_CHARACTER_CREATION_AND_ADVANCEMENT.md` under IA-D03-001.

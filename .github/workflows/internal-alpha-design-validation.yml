@@ -38,8 +38,25 @@ jobs:
           python
           governance/application-planning/internal-alpha/validate_feature_packets.py
 
+      - name: Validate shared-foundations integration
+        run: >-
+          python
+          governance/application-planning/internal-alpha/validate_shared_foundations_integration.py
+
       - name: Verify registry JSON
         run: >-
           python -m json.tool
           governance/application-planning/internal-alpha/INTERNAL_ALPHA_FEATURE_REGISTRY.json
+          > /dev/null
+
+      - name: Verify IA-D02-006 matrix JSON
+        run: >-
+          python -m json.tool
+          governance/application-planning/internal-alpha/feature-packets/IA-D02-006_SHARED_FOUNDATIONS_CONTRACT_MATRIX.json
+          > /dev/null
+
+      - name: Verify IA-D02-006 completion JSON
+        run: >-
+          python -m json.tool
+          governance/application-planning/internal-alpha/feature-packets/IA-D02-006_COMPLETION_RECORD.json
           > /dev/null
