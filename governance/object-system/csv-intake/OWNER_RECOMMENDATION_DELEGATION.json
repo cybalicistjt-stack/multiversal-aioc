@@ -1,0 +1,43 @@
+{
+  "format": "multiversal-owner-recommendation-delegation",
+  "version": "0.1.0",
+  "workstream": "8E-009L44",
+  "authority": {
+    "owner": "John Brandon Turner",
+    "role": "project owner and final decision authority",
+    "approvalType": "standing prospective approval",
+    "approvedAtLocal": "2026-08-04T19:29:00-05:00"
+  },
+  "scope": {
+    "appliesTo": [
+      "CSV-first object pipeline ambiguity resolution",
+      "field-level source interpretation",
+      "object versus rule versus effect classification",
+      "variant and compatibility interpretation",
+      "source-backed default selection",
+      "bounded balancing recommendations where source values are incomplete"
+    ],
+    "process": "For every unresolved item, generate the best evidence-based recommendation, record its rationale and provenance, and adopt that recommendation without requesting case-by-case owner confirmation.",
+    "ownerReviewNotRequired": true
+  },
+  "decisionRules": [
+    "Prefer explicit source text over inference.",
+    "Prefer repository governance and canonical templates over ad hoc interpretation.",
+    "Use neighboring entries and cross-source consistency only when direct evidence is incomplete.",
+    "Choose the least destructive and most reversible interpretation when multiple options remain plausible.",
+    "Preserve raw source values and the rejected alternatives in audit evidence.",
+    "Never fabricate citations, source facts, identifiers, or relationships.",
+    "Do not assign canonical identity or promotion readiness until required validation gates pass.",
+    "Escalate only when the decision changes product scope, contradicts an existing owner decision, creates legal or safety risk, or cannot be made without inventing unsupported facts."
+  ],
+  "requiredRecord": {
+    "recommendation": true,
+    "evidence": true,
+    "rationale": true,
+    "alternativesConsidered": true,
+    "confidence": true,
+    "reversibility": true,
+    "ownerApprovalBasis": "standing delegation in this document"
+  },
+  "status": "approved-and-active"
+}
