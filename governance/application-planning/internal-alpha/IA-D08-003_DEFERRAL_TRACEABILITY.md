@@ -1,0 +1,3 @@
+# IA-D08-003 Traceability
+
+Twenty-eight blocking criteria map across deferred-capability enumeration, retained internal-alpha contracts, explicit compatibility reporting, opaque extension retention, safe degradation, processor refusal, user-visible labeling, export preservation, capability negotiation, migration receipts, provenance, hidden-information filtering, accessibility, and historical interpretation. Twenty-four fixtures cover every criterion. Seven findings were resolved and zero blocking findings remain.

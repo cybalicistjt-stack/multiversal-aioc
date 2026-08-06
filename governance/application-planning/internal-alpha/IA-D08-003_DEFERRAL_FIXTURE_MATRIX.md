@@ -1,0 +1,5 @@
+# IA-D08-003 Fixture Matrix
+
+Twenty-four deterministic fixtures cover 3D map import, dynamic-lighting metadata, fog painting, massive-map pathfinding, vector-edit payload, animated token metadata, orbital mechanics, power-grid routing, structural damage, fleet command, autonomous drone metadata, custom processor rejection, retained semantic zone use, retained station authority, unsupported-field report, opaque extension retention, safe degradation, export preservation, schema negotiation, later migration receipt, hidden extension filtering, screen-reader compatibility report, missing processor tombstone, and historical interpretation after upgrade.
+
+Each fixture declares capability flags, source versions, retained data, authoritative effect, compatibility result, projection, provenance, and migration path.
