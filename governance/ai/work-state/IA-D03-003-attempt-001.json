@@ -1,22 +1,22 @@
 {
   "schema_version": "1.0.0",
-  "revision": 2,
+  "revision": 3,
   "work_item_id": "IA-D03-003",
   "attempt_id": "IA-D03-003-attempt-001",
   "track": "internal-alpha-feature-design",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "governance/mv-ia-d03-003-encounter-builder-balance-lab",
-  "status": "in_progress",
+  "status": "validation_failed",
   "started_at": "2026-08-06T01:20:00+00:00",
-  "updated_at": "2026-08-06T01:34:00+00:00",
+  "updated_at": "2026-08-06T01:51:00+00:00",
   "completed_at": null,
   "base_commit": "f251c016267ce0db05f328ea059cbfdccaec95c6",
-  "latest_pushed_commit": "2434e6110ecac195a49a9b80d9aed5295c8b8e73",
-  "expected_remote_head": "2434e6110ecac195a49a9b80d9aed5295c8b8e73",
-  "pull_request": null,
+  "latest_pushed_commit": "1645d3f8f51983667830393a2f0101a8f72060a8",
+  "expected_remote_head": "1645d3f8f51983667830393a2f0101a8f72060a8",
+  "pull_request": 150,
   "objective": "Produce the implementation-ready MV-IA-F012 Encounter Builder and Balance Lab design packet, companion matrix, implementation traceability, review/readiness/completion records, deterministic validation, and dedicated CI while preserving uncertainty and prohibiting guaranteed-balance claims.",
-  "last_verified_action": "Published the complete IA-D03-003 design package through exact implementation head 2434e6110ecac195a49a9b80d9aed5295c8b8e73 and reran the package validator successfully: 20 acceptance criteria, 24 shared contracts, 12 pressure dimensions, 8 uncertainty classes, 32 validation classes, 33 operation types, 32 Event types, 48 denied cases, 10 fixtures, and zero blocking findings.",
-  "active_substep": "Open the governed IA-D03-003 pull request, obtain hosted validation on the exact published package and continuity projections, repair any failures, and advance to ready_for_review only after all declared checks pass.",
+  "last_verified_action": "PR #150 opened and the dedicated F012 validator passed on exact initial head 31b0a093f8752138bfa9ee7c92028f3ad0d5e69a. Generic feature-packet validation then identified canonical-template heading and traceability-owner defects, and the operational pilot identified missing deferred parallel-route projections. All identified defects were repaired through head 1645d3f8f51983667830393a2f0101a8f72060a8; hosted reruns are pending.",
+  "active_substep": "Rerun hosted validation after conforming F012 to the canonical 24-section packet template, adding the required traceability owner, and explicitly preserving both the paused P9 route and planned IA-D03-004 route.",
   "completed_substeps": [
     "Verified the canonical bootstrap and owner authority",
     "Read the exact IA-D03-003 backlog entry and MV-IA-F012 registry definition",
@@ -29,9 +29,13 @@
     "Created review, readiness, and design-completion records",
     "Added the deterministic design validator and dedicated CI workflow",
     "Integrated F012 into the feature registry, backlog, program index, and packet index",
-    "Passed local deterministic validation on the complete package"
+    "Passed local deterministic validation on the complete package",
+    "Opened PR #150 on exact head 31b0a093f8752138bfa9ee7c92028f3ad0d5e69a",
+    "Passed the dedicated F012 hosted validator on run 31063577997",
+    "Conformed the packet to the canonical feature-packet template and added traceability owner identity",
+    "Recorded the paused P9 attempt and planned IA-D03-004 route as explicit deferred-track projections"
   ],
-  "next_action": "Open the IA-D03-003 pull request from governance/mv-ia-d03-003-encounter-builder-balance-lab to main; inspect all hosted checks on its exact head; repair ordinary failures automatically; then record ready_for_review and merge evidence before starting IA-D03-004.",
+  "next_action": "Inspect the new exact-head PR #150 workflow results; repair any remaining ordinary validation failures; then advance IA-D03-003 to ready_for_review only when all required checks pass.",
   "changed_paths": [
     "governance/application-planning/internal-alpha/feature-packets/MV-IA-F012_ENCOUNTER_BUILDER_AND_BALANCE_LAB.md",
     "governance/application-planning/internal-alpha/feature-packets/MV-IA-F012_ENCOUNTER_BALANCE_MATRIX.json",
@@ -50,44 +54,44 @@
     "governance/ai/work-state/IA-D03-003-attempt-001.json"
   ],
   "completion_gate": {
-    "required_evidence_kinds": [
-      "commit",
-      "pull_request",
-      "ci_run",
-      "merge"
-    ],
-    "required_validation_commands": [
-      "python governance/application-planning/internal-alpha/validate_encounter_builder_balance_lab_design.py"
-    ],
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
+    "required_validation_commands": ["python governance/application-planning/internal-alpha/validate_encounter_builder_balance_lab_design.py"],
     "owner_approval_required": false
   },
   "validation": [
     {
       "command": "python governance/application-planning/internal-alpha/validate_encounter_builder_balance_lab_design.py",
       "status": "passed",
-      "evidence": "Local complete-package validation PASS against the published artifact set: 20 criteria, 24 shared contracts, 12 pressure dimensions, 8 uncertainty classes, 32 validation classes, 33 operation types, 32 Event types, 48 denied cases, 10 fixtures, and zero blocking findings. Hosted exact-head validation remains required."
+      "evidence": "Local complete-package validation PASS and hosted run 31063577997 PASS on initial PR head 31b0a093f8752138bfa9ee7c92028f3ad0d5e69a. Exact repaired-head rerun remains required."
     }
   ],
-  "unresolved_failures": [],
+  "unresolved_failures": [
+    {
+      "failure_id": "IA-D03-003-CI-001",
+      "run_id": 31063577947,
+      "classification": "template_conformance",
+      "summary": "Generic ready-packet validation required exact canonical section headings and owner identity in every companion JSON.",
+      "repair": "Reformatted F012 to the canonical 24-section template and added owner to traceability."
+    },
+    {
+      "failure_id": "IA-D03-003-CI-002",
+      "run_id": 31063577967,
+      "classification": "parallel_track_projection",
+      "summary": "Operational pilot required both application and internal-alpha routes to remain explicit through active or deferred projections.",
+      "repair": "Added the paused P9-06-008 route and planned IA-D03-004 route to deferred_tracks without changing attempt completion."
+    }
+  ],
   "owner_decision_required": false,
   "evidence": [
-    {
-      "kind": "merge",
-      "value": "P9-06-008 governance correction PR #149 squash commit f251c016267ce0db05f328ea059cbfdccaec95c6"
-    },
-    {
-      "kind": "commit",
-      "value": "IA-D03-003 complete published implementation package through head 2434e6110ecac195a49a9b80d9aed5295c8b8e73"
-    },
-    {
-      "kind": "file",
-      "value": "MV-IA-F012 packet, matrix, traceability, review, readiness, completion, validator, workflow, registry, backlog, and indexes published on the dedicated branch"
-    }
+    {"kind":"merge","value":"P9-06-008 governance correction PR #149 squash commit f251c016267ce0db05f328ea059cbfdccaec95c6"},
+    {"kind":"commit","value":"IA-D03-003 initial complete package head 31b0a093f8752138bfa9ee7c92028f3ad0d5e69a and repair head 1645d3f8f51983667830393a2f0101a8f72060a8"},
+    {"kind":"pull_request","value":"IA-D03-003 PR #150 — Complete IA-D03-003 Encounter Builder and Balance Lab design"},
+    {"kind":"ci_run","value":"Dedicated F012 run 31063577997 PASS on initial exact PR head; repaired-head full suite pending"}
   ],
   "roadmap_projection_pending": true,
   "notes": [
     "P9-06-008-attempt-002 remains unfinished parallel application work and is not superseded, completed, or abandoned by selecting this design track.",
-    "IA-D03-003 is design-only; it does not authorize application implementation, guaranteed-balance claims, paid simulation services, production credentials, real-user data collection, internal-alpha release, production deployment, or public release.",
-    "Balance outputs must expose assumptions, evidence quality, uncertainty, and warnings; they may not certify fairness or predict actual play outcomes."
+    "IA-D03-004 is the planned next design item but is not started until IA-D03-003 receives merge evidence.",
+    "IA-D03-003 is design-only; it does not authorize application implementation, guaranteed-balance claims, paid simulation services, production credentials, real-user data collection, internal-alpha release, production deployment, or public release."
   ]
 }
