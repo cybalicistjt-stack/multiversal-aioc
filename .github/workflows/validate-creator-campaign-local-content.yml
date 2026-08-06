@@ -1,0 +1,15 @@
+name: Validate Creator and Campaign-local Content Design
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/internal-alpha/IA-D07-003_*'
+      - 'governance/application-planning/internal-alpha/validate_creator_campaign_local_content.py'
+      - '.github/workflows/validate-creator-campaign-local-content.yml'
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python governance/application-planning/internal-alpha/validate_creator_campaign_local_content.py
