@@ -28,6 +28,7 @@ Historical F005 handoff: **IA-D03-003 — MV-IA-F012 Encounter Builder and Balan
 |---|---|---|---|---|---|---|
 | IA-D04-002 | Proposal and Approval Shared Component | implementation-ready; dependency-gated | `IA-D04-002_PROPOSAL_APPROVAL_SHARED_COMPONENT_CONTRACT.md` | `IA-D04-002_PROPOSAL_APPROVAL_COMPONENT_MATRIX.json` | `IA-D04-002_IMPLEMENTATION_TRACEABILITY.json` | `IA-D04-002_REVIEW_RECEIPT.md`; `IA-D04-002_READINESS_RECORD.md`; `IA-D04-002_COMPLETION_RECORD.json` |
 | IA-D04-003 | Two-Device Interruption and Reconnect | implementation-ready; dependency-gated | `IA-D04-003_TWO_DEVICE_INTERRUPTION_AND_RECONNECT_MATRIX.md` | `IA-D04-003_TWO_DEVICE_RECONNECT_MATRIX.json` | `IA-D04-003_IMPLEMENTATION_TRACEABILITY.json` | `IA-D04-003_REVIEW_RECEIPT.md`; `IA-D04-003_READINESS_RECORD.md`; `IA-D04-003_COMPLETION_RECORD.json` |
+| IA-D04-004 | Authoritative Result and History Presentation | implementation-ready; dependency-gated | `IA-D04-004_AUTHORITATIVE_RESULT_AND_HISTORY_PRESENTATION.md` | `IA-D04-004_AUTHORITATIVE_RESULT_HISTORY_MATRIX.json` | `IA-D04-004_IMPLEMENTATION_TRACEABILITY.json` | `IA-D04-004_REVIEW_RECEIPT.md`; `IA-D04-004_READINESS_RECORD.md`; `IA-D04-004_COMPLETION_RECORD.json` |
 
 ## Integration review index
 
@@ -42,14 +43,16 @@ All packets beginning with IA-D03 consume `IA-D02-006_SHARED_FOUNDATIONS_CONTRAC
 
 ## First playable loop result
 
-MV-IA-F006 defines the complete Campaign-to-Character-to-Scene-to-Action-to-GM-decision-to-persistent-result vertical slice. IA-D04-002 extracts its reusable decision component. IA-D04-003 fixes deterministic two-device interruption and convergence behavior without peer-to-peer authority or silent last-write-wins.
+MV-IA-F006 defines the complete Campaign-to-Character-to-Scene-to-Action-to-GM-decision-to-persistent-result vertical slice. IA-D04-002 extracts its reusable decision component. IA-D04-003 fixes deterministic two-device interruption and convergence behavior without peer-to-peer authority or silent last-write-wins. IA-D04-004 defines authoritative role-safe result and history presentation.
 
 ## Next item
 
-**IA-D04-004 — Authoritative Result and History Presentation.**
+**IA-D04-005 — First-Playable-Loop Implementation Handoff.**
 
 Historical IA-D03-005 next item: **IA-D04-001**.
 
 Historical IA-D04-001 next item: **IA-D04-002**.
 
 Historical IA-D04-002 next item: **IA-D04-003**.
+
+Historical IA-D04-003 next item: **IA-D04-004**.
