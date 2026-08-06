@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.32.0  
+**Version:** 0.33.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -21,8 +21,8 @@ This backlog governs design packets, fixture specifications, and integration rev
 
 1. **IA-D08-001 — MV-IA-F023 Optional AI Assistant boundaries and interaction contract — complete.**
 2. **IA-D08-002 — AI permission, provenance, cost, and fallback matrix — complete.**
-3. **IA-D08-003 — advanced map and vehicle deferral package — next.**
-4. **IA-D08-004 — broad offline deferral package — planned.**
+3. **IA-D08-003 — advanced map and vehicle deferral package — complete.**
+4. **IA-D08-004 — broad offline deferral package — next.**
 5. **IA-D08-005 — optional and experimental isolation review — planned.**
 
 ## IA-D09 — Internal-alpha release-design package
@@ -41,8 +41,12 @@ The Optional AI Assistant is opt-in, advisory-only, permission-filtered, provena
 
 ### IA-D08-002
 
-The AI governance matrix separates enablement, context, retrieval, tools, paid execution, provider routing, retention, export, and diagnostics; requires complete provenance, visible hard budgets, privacy-safe retention, deterministic fallback, accessibility, and duplicate-charge prevention. It includes twenty-four deterministic fixtures, eight implementation slices, twenty-eight blocking criteria, seven resolved findings, and zero blocking findings.
+The AI governance matrix defines distinct permissions, provenance, hard budgets, provider routing, privacy, retention, deterministic fallback, accessibility, and duplicate-charge prevention.
+
+### IA-D08-003
+
+The advanced map and vehicle deferral package enumerates deferred and retained capabilities, prevents silent approximation, preserves unsupported data as opaque versioned extensions, produces compatibility reports, defines upgrade seams and migration receipts, and preserves provenance, accessibility, hidden-information filtering, and historical interpretation. It includes twenty-four fixtures, eight implementation slices, twenty-eight blocking criteria, seven resolved findings, and zero blocking findings.
 
 ## Current next design item
 
-**IA-D08-003 — advanced map and vehicle deferral package — next.**
+**IA-D08-004 — broad offline deferral package — next.**
