@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.17.0  
+**Version:** 0.18.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -48,8 +48,8 @@ Scope, registry, dependency map, journeys, shared systems, acceptance matrix, de
 2. **IA-D05-002 — MV-IA-F016 Factions, Reputation, and Organizations — complete.**
 3. **IA-D05-003 — MV-IA-F010 Social Interaction Mode — complete.**
 4. **IA-D05-004 — MV-IA-F011 Investigation and Clue Board — complete.**
-5. **IA-D05-005 — graph/list accessibility matrix — next.**
-6. **IA-D05-006 — noncombat integration review — planned.**
+5. **IA-D05-005 — graph/list accessibility matrix — complete.**
+6. **IA-D05-006 — noncombat integration review — next.**
 
 ## IA-D06 — Combat and Assets
 
@@ -111,9 +111,13 @@ The Relationship Tracker, Factions/Reputation/Organizations, and Social Interact
 
 The Investigation and Clue Board defines ten core record types, fifteen typed connection forms, server-authoritative discovery and reveal, strict separation of truth, claims, hypotheses, and conclusions, accessible graph/list parity, twenty-four deterministic fixtures, eight implementation slices, twenty-eight blocking criteria, seven resolved findings, and zero blocking findings. `P9-06-008-attempt-002` remains unfinished and unmodified.
 
+## IA-D05-005 completion record
+
+The Graph/List Accessibility Matrix defines one semantic node/edge projection and six equivalent views for Relationship, Faction, Social, and Investigation surfaces. It requires complete keyboard, screen-reader, touch, text-scaling, high-contrast, reduced-motion, responsive, virtualization, hidden-topology, reconnect, export, diagnostic, and optional-AI parity through twenty-four deterministic fixtures, eight implementation slices, twenty-eight blocking criteria, seven resolved findings, and zero blocking findings. `P9-06-008-attempt-002` remains unfinished and unmodified.
+
 ## Current next design item
 
-**IA-D05-005 — graph/list accessibility matrix — next.**
+**IA-D05-006 — noncombat integration review — next.**
 
 ## Historical validation anchors
 
