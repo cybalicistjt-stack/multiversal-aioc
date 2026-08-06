@@ -5,8 +5,8 @@
 **Classification:** alpha-required  
 **Design status:** implementation-ready  
 **Owner:** John Brandon Turner  
-**Primary roles:** Game Master, Assistant GM, Player preview, observer preview, Owner/Admin, service actor  
-**Stage A mapping:** A5/A7 — Campaign preparation and full combat preparation  
+**Primary roles:** Game Master, delegated Assistant GM, Player preview, observer preview, Owner/Admin, service actor  
+**Stage A mapping:** A5/A7  
 **Historical module mapping:** Encounter Builder & Balance Lab  
 **Prepared by:** Lead Documentation Architect / Encounter and Balance Systems Steward  
 **Date:** 2026-08-05
@@ -15,371 +15,450 @@
 
 ### Problem
 
-Encounter preparation combines game-system content, Character capability, Scene conditions, hidden information, objectives, hazards, timing, and GM intent. A simple numerical “difficulty” value cannot safely represent that combination. Multiversal also supports many rules profiles, source variants, incomplete legacy data, Campaign-local overrides, unusual objectives, and mixed scales. A design that pretends to guarantee balance would mislead the GM and erase the uncertainty that actually matters.
-
-Without one governed Encounter Builder and Balance Lab contract, later combat, action-resolution, map, vehicle, social-conflict, and adventure systems could each invent incompatible participant, pressure, simulation, and warning models. Common failures include:
-
-- treating source Definitions as mutable encounter instances;
-- counting enemies while ignoring action economy, control, terrain, objectives, reinforcements, or escape routes;
-- silently filling missing source fields with invented values;
-- comparing Characters or creatures across incompatible rules profiles, scales, or pack versions;
-- leaking hidden participants, counts, tactics, or secret objectives through summaries or warnings;
-- labeling an encounter “balanced,” “fair,” “safe,” or “winnable” without evidence;
-- running opaque simulations that cannot be reproduced;
-- mutating a Scene or live Session from an advisory analysis;
-- losing GM edits or duplicating accepted operations after reconnect;
-- requiring paid analytics, hosted simulation, AI, or production services for core preparation.
+Encounter preparation combines Characters, creatures, NPCs, hazards, environments, objectives, hidden information, timing, Resources, source variants, Campaign-local overrides, and GM intent. A single difficulty number cannot safely represent that combination. Missing or contradictory legacy data, incompatible rules profiles, mixed scales, and unusual objectives make guaranteed-balance claims especially misleading.
 
 ### Required outcome
 
-An authorized GM can assemble a bounded Encounter draft from governed Characters, creatures, NPCs, hazards, environments, objectives, reinforcements, rewards, and Scene conditions. The system validates dependencies and compatibility, calculates transparent pressure dimensions, records assumptions and evidence quality, produces source-grounded warnings, compares explicit alternatives, and optionally runs deterministic bounded simulations.
-
-Every result remains advisory. The tool must preserve uncertainty, show omitted or low-confidence inputs, avoid guaranteed-balance claims, protect hidden information, and attach only an explicitly approved immutable Encounter snapshot to a future Scene launch draft.
+An authorized GM can assemble a bounded Encounter draft from governed stable-ID content, validate dependencies and compatibility, inspect source-grounded warnings, compare explicit alternatives, and optionally run deterministic bounded simulation. Every result exposes assumptions, evidence quality, uncertainty, omitted variables, and versions. The tool never certifies that an encounter is balanced, fair, safe, winnable, optimal, or guaranteed.
 
 ### Why this belongs in internal alpha
 
-F012 is alpha-required because a GM needs a reliable way to compose and inspect an encounter before the full combat interface exists. It consumes the completed object, Character, Campaign, Scene, Session, permission, recovery, accessibility, and pack contracts and provides the preparation handoff for MV-IA-F006 and MV-IA-F007.
+F012 is alpha-required because the GM needs a reliable preparation and analysis handoff before MV-IA-F006 and MV-IA-F007 can provide the first playable action loop and full combat interface. It consumes IA-D02-006, MV-IA-F004, and MV-IA-F005 rather than redefining their authority, Character, Campaign, Scene, Session, recovery, or accessibility contracts.
 
 ## 2. Alpha slice
 
 ### Included
 
-- Create, save, reopen, duplicate, archive, and restore one Encounter draft within an authorized Campaign and Scene.
-- Bind the draft to exact Campaign, Scene, rules-profile, schema, pack-lock, Character-roster, and analysis-policy versions.
-- Select governed participants, hazards, environments, objectives, reinforcements, rewards, and support elements by stable ID.
-- Create Encounter-local placements, quantities, starting-state assumptions, roles, waves, and analysis-only overrides without mutating source records.
-- Validate references, pack and schema compatibility, scale, dependencies, exclusivity, required Actions, Effects, Conditions, Resources, and Character eligibility.
-- Calculate transparent advisory pressure dimensions and confidence.
-- Produce blocking errors, caution warnings, informational observations, and unresolved-data notices with source links.
-- Compare explicit scenarios and preserve immutable analysis snapshots.
-- Run bounded deterministic simulations against synthetic or approved fixture inputs.
-- Preview GM, Assistant-GM, Player-safe, and observer-safe projections.
+- Create, save, reopen, duplicate, archive, restore, validate, analyze, compare, approve, and attach one Encounter draft.
+- Bind it to exact Campaign, Scene, rules-profile, schema, pack-lock, Character-roster, and analysis-policy versions.
+- Select participants, hazards, environments, objectives, reinforcements, rewards, and support elements by stable ID.
+- Preserve source Definitions separately from Encounter-local placements and overrides.
+- Report twelve independent pressure dimensions, evidence quality, uncertainty, warnings, and omitted variables.
+- Run deterministic scripted, bounded seeded, sensitivity, and regression-replay simulations.
+- Generate GM, Assistant-GM, Player-safe, and observer-safe projections.
 - Attach one approved immutable Encounter snapshot to a mutable Scene launch draft.
-- Preserve drafts, commands, Events, receipts, analyses, and Scene attachment as separate states.
-- Support desktop, tablet, mobile, keyboard, touch, screen reader, high zoom, reduced motion, and noncolor status.
-- Provide deterministic fixtures, denied cases, and twenty blocking acceptance criteria.
+- Support persistence, reconnect, revocation, bounded offline use, export, migration, diagnostics, accessibility, and zero-service operation.
 
 ### Explicitly excluded
 
-- Guaranteed difficulty, fairness, safety, victory, survival, resource expenditure, or session-duration claims.
-- Automatic encounter creation, optimization, or mutation by AI.
-- Full combat execution, initiative, targeting, movement, damage, Conditions, or GM approvals.
-- Full tactical map authoring, line-of-sight, dynamic lighting, or pathfinding.
-- General-purpose Monte Carlo infrastructure, remote compute farms, or paid simulation services.
-- Automatic canonical corrections to incomplete or contradictory source content.
-- Live Session mutation or retroactive replacement of an immutable Scene launch snapshot.
-- Public encounter publishing, marketplace features, ratings, or competitive ranking.
-- Offline authoritative save, approval, analysis, or attachment.
-- Production providers, credentials, real-user data collection, internal-alpha release, production deployment, or public release.
+- Guaranteed difficulty, fairness, safety, victory, survival, resource expenditure, duration, or optimality claims.
+- Automatic AI mutation, approval, optimization, or Scene attachment.
+- Full combat execution, initiative, targeting, movement, damage, Conditions, or Action approval.
+- Full tactical map authoring, line-of-sight, dynamic lighting, pathfinding, or vehicle-scale analysis.
+- Paid simulation services, remote compute farms, production credentials, real-user data collection, internal-alpha release, production deployment, or public release.
+- Offline authoritative save, validation, analysis, approval, or attachment.
+- Canonical correction of incomplete or contradictory source content.
 
-### Long-term scope deferred
+### Full long-term scope deferred
 
-Later work may add richer tactical geometry, vehicle-scale models, social or investigation pressure models, campaign attrition forecasting, encounter templates, batch comparison, community calibration, and optional governed AI proposals. These additions must retain transparent inputs, reproducibility, uncertainty, source provenance, permission-safe projection, and human approval.
+Richer tactical geometry, campaign attrition, social or investigation pressure, vehicle-scale models, templates, batch comparison, and optional governed AI proposals remain later work. They must retain source provenance, permission-safe projection, reproducibility, uncertainty, and human approval.
 
 ## 3. Roles and authority
 
-| Role | Allowed actions | Protected boundaries |
-|---|---|---|
-| Game Master | Create and edit Encounter drafts, run validation and bounded analysis, compare scenarios, approve snapshots, attach to Scene drafts | Cannot bypass pack, entitlement, schema, Character-control, owner, production, or canonical-promotion gates |
-| Assistant GM | Perform explicitly delegated composition and analysis within scope and expiry | Cannot infer full GM authority, reveal excluded GM-private fields, approve outside delegation, or change delegation |
-| Player | View a Player-safe preview only when the Campaign permits it | Cannot learn hidden participants, counts, waves, tactics, secret objectives, GM notes, or internal warnings |
-| Observer | View an observer-safe projection when explicitly granted | No hidden or Player-private state and no analysis authority |
-| Owner/Admin | Perform governed policy, recovery, and owner-reserved decisions | Administration is not automatic content access; purpose and scope remain required |
-| Service actor | Validate, persist, project, compare, simulate fixtures, export, and recover within a scoped contract | No independent role, intent, approval, or content authority |
-| AI assistive actor | Optional read-only explanation or proposal based on the initiating subject’s narrower projection | No mutation, approval, hidden-data expansion, guaranteed-balance claim, or autonomous simulation authority |
+| Role | Allowed actions | Hidden information | Approval required |
+|---|---|---|---|
+| Game Master | Compose, validate, analyze, compare, approve, attach, archive, restore, and export | May see authorized GM-private content | Human approval required for snapshot approval and Scene attachment |
+| Assistant GM | Delegated composition and analysis within scope and expiry | Only delegation-authorized GM fields | Cannot approve beyond delegation or alter delegation |
+| Player | View an explicitly permitted Player-safe preview | Hidden participants, counts, waves, tactics, secret objectives, notes, and internal warnings excluded | No preparation authority |
+| Observer | View an explicitly granted observer projection | Player-private and GM-private state excluded | No preparation authority |
+| Owner/Admin | Govern policy, recovery, and owner-reserved decisions | Administration is not automatic content access | Owner gates remain explicit |
+| Service actor or AI | Service actor validates and projects; optional AI explains or proposes from the narrower authorized projection | No independent authority or broader retrieval | AI cannot mutate, approve, attach, or guarantee outcomes |
 
-The server reauthorizes every authoritative save, analysis request, approval, and Scene attachment. Selected context, cached roles, client-side estimates, and prior previews are never authority.
+The server reauthorizes every authoritative command. Selected context, cached roles, client estimates, and prior projections are never authority.
 
 ## 4. Dependencies
 
 ### Feature dependencies
 
 - IA-D02-006 shared-foundation contracts SFI-C001 through SFI-C024.
-- MV-IA-F002 Universal Object Experience.
-- MV-IA-F003 Identity, Dashboard, and Workspace Selection.
-- MV-IA-F004 Character Creation and Advancement.
-- MV-IA-F005 Campaign, Scene, and Session Builder.
-- MV-IA-F019 Content Library and Entitlements.
-- MV-IA-F020 Permissions and Hidden Information.
-- MV-IA-F021 Autosave, Reconnect, Recovery, and Bounded Offline Use.
-- MV-IA-F024 Pack Lifecycle and Canonical Content Registry.
-- MV-IA-F025 Onboarding, Help, Diagnostics, and Issue Reporting.
+- MV-IA-F002, F003, F004, F005, F019, F020, F021, F024, and F025.
 
-### Provider-neutral ports
+### Shared systems
 
-EncounterRepositoryPort, EncounterAnalysisPort, DeterministicSimulationPort, CampaignRepositoryPort, SceneRepositoryPort, CharacterProjectionPort, ObjectQueryAndSelectionPort, AuthorizationAndProjectionPort, EntitlementEvaluationPort, PackRegistryAndLockPort, ValidationAndCompatibilityPort, EventStoreAndProjectionPort, BackupRestoreExportPort, ClockPort, and IdGeneratorPort.
+Stable identity, authorization, field-safe projections, governed object selection, Character control, Campaign policy, Scene placements, launch snapshots, Events, recovery, diagnostics, accessibility, and provider-neutral operation.
 
-### Implementation gates
+### Service ports and adapters
 
-Application implementation remains blocked by the active P9-06 persistence, migration, deterministic seed/reset, compatibility, backup, restore, export, identity, entitlement, authorization, event, and observability sequence. Design completion does not authorize code or service activation.
+EncounterRepositoryPort, EncounterAnalysisPort, DeterministicSimulationPort, CharacterProjectionPort, CampaignRepositoryPort, SceneRepositoryPort, ObjectSelectionPort, AuthorizationAndProjectionPort, EntitlementEvaluationPort, PackRegistryAndLockPort, ValidationAndCompatibilityPort, EventStoreAndProjectionPort, BackupRestoreExportPort, ClockPort, and IdGeneratorPort.
 
-## 5. Encounter object and state model
+### Canonical objects and packs
 
-An Encounter Definition is not a source creature, Scene, or live combat. It is a Campaign-local preparation aggregate with:
+Characters, creatures, NPCs, Actions, Abilities, Effects, Conditions, Resources, hazards, environments, objectives, items, vehicles, rules profiles, source variants, and pack manifests remain immutable governed Definitions or authoritative projections.
 
-- encounterId, campaignId, sceneId, version, lifecycle state, and optional template source;
-- rulesProfileId and version, schema identities, packLockDigest, and exact pack versions;
-- analysisPolicyId and version;
-- intended party or Character snapshot references;
-- participant, hazard, environment, objective, reinforcement, reward, and support placements;
-- starting-state assumptions, quantities, roles, waves, arrival triggers, visibility, and local overrides;
-- GM intent, target experience, acceptable failure paths, rest assumptions, and analysis notes;
-- validation state, current analysis snapshot, approval state, and Scene attachment reference.
+### Schemas and migrations
 
-Separate immutable records are required for selection receipts, validation receipts, analysis snapshots, simulation receipts, comparison receipts, approval receipts, and Scene-attachment receipts. A live Session may later instantiate encounter content through the Scene launch snapshot, but F012 never mutates that Session.
+Encounter, placement, validation, analysis, simulation, comparison, approval, attachment, Event, projection, export, and migration schemas must be versioned and checksum-bound.
 
-## 6. Source definitions, placements, and provenance
+### Decisions and gates
 
-Source creatures, NPCs, Characters, Actions, Abilities, Effects, Conditions, Resources, hazards, environments, objectives, items, vehicles, and rules remain immutable versioned Definitions or authoritative Character projections.
+Application implementation remains dependency-gated by the active P9-06 persistence, migration, deterministic seed/reset, compatibility, backup, restore, export, authorization, Event, and observability work. Design completion does not authorize code or service activation.
 
-Each Encounter placement records:
+## 5. Object and state model
 
-- placementId distinct from sourceId;
-- source stable ID, source version, source pack, and pack version;
-- selection receipt and actor;
-- quantity, role, wave, initial-state assumption, visibility, and optional local override;
-- exact fields used in analysis;
-- fields unavailable, contradictory, variant, or excluded;
-- provenance for every derived normalized value.
+### Reusable Definitions
 
-Analysis-only normalization never changes the source. A local override must be visible, attributable, reversible, and excluded from any claim about the source Definition.
+Source content remains immutable and versioned. Analysis cannot rewrite missing fields, reconcile variants, or promote Encounter-local normalization into canon.
 
-## 7. Primary GM flow
+### Campaign placements or bindings
 
-1. Enter an authorized Campaign and select a mutable Scene draft.
-2. Create an Encounter draft bound to current Campaign, Scene, rules, schema, pack, and analysis-policy versions.
-3. Select the intended Character roster or an approved synthetic roster snapshot.
-4. Add opposition, hazards, environments, objectives, reinforcements, rewards, and escape or failure paths.
-5. Inspect source rules and provenance before accepting each selection.
-6. Save with expectedVersion and idempotencyKey.
-7. Request validation; resolve blocking reference, permission, entitlement, dependency, scale, and compatibility findings.
-8. Request advisory analysis.
-9. Review pressure dimensions, evidence quality, assumptions, omitted variables, uncertainty, and warnings.
-10. Create explicit alternatives by changing recorded variables.
-11. Optionally run bounded deterministic fixture simulations.
-12. Preview authorized projections.
-13. Approve an immutable Encounter snapshot.
-14. Attach the approved snapshot to the mutable Scene launch draft.
-15. Revalidate during future Scene launch; do not silently update the approved snapshot.
+Each EncounterPlacement has its own placementId, source stable ID and version, source pack and version, role, quantity, wave, visibility, starting-state assumptions, optional local override, selection receipt, and field-level analysis provenance.
 
-## 8. Encounter composition model
+### Live instances and state
 
-Composition supports:
+EncounterDraft is a Campaign-local preparation aggregate. It is distinct from a Scene launch snapshot and any live Session or combat instance.
 
-- friendly, hostile, neutral, environmental, summoned, allied, and conditional participants;
-- single participants, groups, quantities, formations, and reinforcement waves;
-- direct defeat, survival, escape, protection, delay, capture, retrieval, negotiation, investigation, and mixed objectives;
-- environmental hazards, restricted movement, visibility, cover assumptions, resource drains, time pressure, and information asymmetry;
-- alternative success, partial success, surrender, retreat, rescue, or failure paths;
-- rewards and post-encounter recovery assumptions.
+### Events and history
 
-The model must not reduce every encounter to opposing hit points or damage. Objective structure and exit options are first-class inputs.
+Accepted Events include EncounterCreated, PlacementAdded, PlacementUpdated, EncounterValidated, AnalysisRequested, AnalysisCompleted, ScenarioCompared, EncounterApproved, SceneAttachmentCreated, EncounterArchived, MigrationApplied, and RecoveryCompleted.
 
-## 9. Validation model
+### Projections and indexes
 
-Blocking validation covers stable IDs, versions, authorization, entitlements, pack locks, schema compatibility, missing dependencies, unsupported scale, invalid Character lifecycle, absent required Actions or Resources, illegal quantities, mutually exclusive properties, duplicate-exclusive roles, broken wave triggers, impossible objective references, and corrupted receipts.
+GM, delegated Assistant-GM, Player, observer, export, diagnostic, Scene-attachment, and optional-AI projections are generated server-side and permission-filtered before counts, facets, relationships, warnings, or serialization.
 
-Warnings cover incomplete data, low-confidence normalization, unusual action economy, extreme control or mobility differences, absent recovery paths, hidden information assumptions, high burst potential, unresolved immunities, unknown environmental interactions, excessive encounter duration assumptions, and fragile single-point objectives.
+### Stable IDs
 
-Validation is deterministic for an exact input digest and policy version.
+Encounter, placement, source, Character snapshot, analysis snapshot, simulation receipt, comparison, approval, attachment, operation, Event, schema, rules, pack, and policy identities are stable and independent of display names or provider IDs.
 
-## 10. Pressure-estimation model
+### Provenance
 
-The Balance Lab reports independent pressure dimensions rather than one authoritative difficulty score:
+Every normalized input and pressure result records the exact source fields, source versions, local overrides, unavailable fields, variants, contradictions, assumptions, analysis policy, and checksum used.
 
-1. durability and recovery pressure;
-2. sustained output pressure;
-3. burst and spike pressure;
-4. action-economy pressure;
-5. control and denial pressure;
-6. mobility and positional pressure;
-7. environment and hazard pressure;
-8. objective and time pressure;
-9. information and surprise pressure;
-10. attrition and resource pressure;
-11. reinforcement and escalation pressure;
-12. retreat, surrender, rescue, and failure-path availability.
+## 6. Primary user flow
 
-Each dimension includes raw inputs, normalization method, source links, confidence, range, warnings, and omitted variables. An optional composite view may summarize relative pressure only when its weighting policy is shown and individually adjustable; it may not be presented as truth.
+1. Enter an authorized Campaign and mutable Scene draft.
+2. Create an Encounter draft bound to current rules, schemas, packs, roster, and analysis policy.
+3. Add governed participants, hazards, environment, objectives, reinforcements, rewards, and failure paths.
+4. Inspect source rules and provenance before accepting each selection.
+5. Save with expectedVersion and idempotencyKey.
+6. Resolve blocking dependency, permission, entitlement, pack, scale, compatibility, and integrity findings.
+7. Request advisory analysis.
+8. Review twelve pressure dimensions, evidence quality, assumptions, omitted variables, uncertainty, and source-grounded warnings.
+9. Compare explicit alternatives and optionally run deterministic bounded simulation.
+10. Preview authorized projections.
+11. Approve an immutable Encounter snapshot through a human GM action.
+12. Attach the approved snapshot to the Scene launch draft.
+13. Revalidate dependencies at launch without silently changing the approved snapshot.
 
-## 11. Uncertainty and evidence quality
+## 7. Alternate and secondary flows
 
-Every analysis snapshot classifies evidence as complete-source, source-with-variants, partial-source, Campaign-override, synthetic-fixture, inferred-normalization, contradictory, or unavailable.
+### Objective-first composition
 
-Confidence is reduced by:
+The GM may begin with survival, escape, protection, delay, capture, retrieval, negotiation, investigation, or a mixed objective before selecting opposition. Exit and partial-success paths remain first-class inputs.
 
-- missing Actions, Effects, Conditions, Resources, defenses, or costs;
-- incomplete Character loadouts or temporary state;
-- unmodeled player tactics or GM choices;
-- unusual objectives or terrain;
-- cross-scale interactions;
-- unverified source variants;
-- unsupported local overrides;
-- data that the current rules profile cannot interpret.
+### Reinforcement and wave composition
 
-Unknown values remain unknown. The tool may show bounded sensitivity ranges, but it must label assumptions and may not silently choose a favorable midpoint.
+Participants may arrive in recorded waves with explicit triggers, visibility, assumptions, and provenance. Broken triggers block approval; hidden triggers never appear in Player-safe projections.
 
-## 12. Bounded deterministic simulation
+### Scenario comparison
 
-The alpha simulation mode is a reproducible scenario exerciser, not a prediction engine.
+Two or more immutable analysis snapshots may be compared only through an explicit delta set, such as roster, quantity, environment, objective, rest assumption, wave timing, or local override. Incompatible rules, schemas, packs, scales, or analysis policies are blocked or clearly separated.
 
-A simulation receipt records inputDigest, analysisPolicyVersion, fixtureVersion, randomSeed, iterationLimit, stopConditions, abstract decision policy, omitted mechanics, outputs, and checksum. The same inputs produce the same outputs.
+### Incomplete-source analysis
 
-Allowed modes are deterministic scripted sequence, bounded seeded sampling, sensitivity sweep, and regression replay. Simulations use synthetic or approved fixture projections, never credentials or live private state. They do not call remote compute, mutate Campaign data, approve an Encounter, or claim actual player behavior.
+Incomplete or contradictory content may remain in a draft, but confidence is reduced, unknowns remain unknown, and blocking dependencies still prevent approval or attachment.
 
-## 13. Scenario comparison and versioning
+## 8. Failure, empty, and recovery states
 
-A comparison requires two or more immutable analysis snapshots and an explicit delta set, such as participant quantity, roster, environment, objective, rest assumption, wave timing, or local override.
+| State | User sees | Allowed action | Preserved data | Evidence |
+|---|---|---|---|---|
+| Loading | Current operation and nonauthoritative progress | Cancel safely or continue waiting | Draft and last authoritative projection | operation and correlation IDs |
+| Empty | No composition and no pressure claim | Add governed content | Campaign, Scene, rules, schema, and pack binding | draft receipt |
+| Validation error | Affected stable IDs, source links, and blocking reason | Inspect, replace, remove, or revise | All draft inputs and receipts | validation receipt |
+| Forbidden | Safe unavailable response without existence or count leakage | Return to authorized workspace | Local nonprotected edits | denial receipt |
+| Restricted entitlement | Safe missing-access reason | Remove selection or use separately approved access | Permitted draft reference | entitlement receipt |
+| Offline | Manifest-bound snapshot and local-draft state | Read or edit local unsubmitted draft | Permitted snapshot, local draft, prior analyses | offline manifest |
+| Stale | Attempted and current versions | Refresh or reconcile explicitly | Both local and authoritative versions | conflict receipt |
+| Failed save | Retry and command-status lookup | Query before retry | Local draft and idempotency key | command receipt |
+| Recovery required | Last acknowledged Event and recovery phase | Resume, inspect, or export diagnostics | Accepted Events and snapshots | recovery receipt |
+| Analysis unavailable | Exact missing or incompatible inputs | Repair inputs or retain draft | Composition and validation state | refusal receipt |
+| Corrupted receipt | Integrity error and blocked approval | Restore verified history or rerun | Prior immutable receipts and Events | checksum evidence |
 
-The comparison shows which pressure dimensions and warnings changed, which inputs did not change, whether confidence changed, and whether the snapshots remain compatible. Comparing incompatible rules, schema, pack, or analysis-policy versions is blocked or clearly separated through a migration-aware review.
+Unknown values are never silently replaced. Reconnect, conflict, revocation, and restore must not duplicate accepted placements, analyses, approvals, or attachments.
 
-## 14. Approval and Scene attachment
+## 9. Permissions and hidden information
 
-Encounter approval is a human GM action after current authorization and validation. Approval freezes an Encounter snapshot and its evidence digest; it does not certify balance.
+Authorization is deny-by-default for reads, writes, search, counts, facets, relationships, comparisons, analysis, simulation, approval, attachment, export, diagnostics, notifications, and AI retrieval.
 
-Scene attachment:
+GM projections may include hidden participants, waves, tactics, objectives, assumptions, and warnings only when authorized. Assistant-GM views are delegation-scoped. Player and observer projections cannot reveal hidden existence, counts, wave timing, trigger details, secret objectives, GM notes, exact internal pressure shapes that disclose hidden content, or ungranted source details.
 
-- references the approved snapshot by stable ID and checksum;
-- records the Scene draft version, actor, and receipt;
-- does not mutate an earlier launch snapshot or live Session;
-- becomes invalid when required Campaign, pack, schema, Character, or source dependencies change;
-- must be revalidated during Scene launch.
+Required denied-case tests cover unauthenticated access, nonmember enumeration, Player and observer leakage, expired delegation, stale context, unentitled selection, pack mismatch, hidden warning leakage, unauthorized export, diagnostic leakage, revoked subscriptions, offline authority, AI mutation, and corrupted receipts.
 
-A later edit creates a new Encounter draft version and analysis snapshot.
+## 10. Entitlements
 
-## 15. Permissions and hidden information
+- **Access sources:** free content, owned or subscribed content, sponsored access, Campaign grants, and explicitly approved alpha fixtures.
+- **Free-tier behavior:** only permitted content may be discovered, selected, analyzed, previewed, or exported.
+- **Campaign grants:** evaluated at each authoritative save, analysis, approval, attachment, and launch revalidation; they do not transfer ownership.
+- **Sponsored access:** versioned, attributable, revocable, and not permanent ownership.
+- **Expiry behavior:** blocks new protected reads and operations while preserving authorized historical receipts.
+- **Historical-state behavior:** expiry never rewrites accepted Events or approved historical snapshots.
+- **Search and preview restrictions:** counts, facets, suggestions, IDs, relationships, warnings, and source detail are filtered before serialization.
+- **Offline snapshot behavior:** manifests contain only previously authorized fields and must revalidate after expiry or reconnect.
 
-GM preparation projections may include hidden participants, tactics, waves, objectives, warnings, and source details only when authorized. Assistant-GM projections are delegation-scoped.
+Entitlement failure never substitutes a different object, variant, or synthetic value.
 
-Player-safe and observer-safe views are generated server-side. They cannot reveal:
+## 11. Persistence and history
 
-- hidden participant existence or counts;
-- reinforcement timing or trigger details;
-- secret objectives or failure conditions;
-- GM notes, tactics, or private assumptions;
-- exact internal pressure values when their shape would disclose hidden content;
-- ungranted source content or provenance.
+- Drafts use expectedVersion and idempotencyKey.
+- Submitted commands support status lookup after ambiguous failure.
+- Accepted Events are append-only and ordered.
+- Analysis, simulation, comparison, approval, and attachment receipts are immutable and checksum-bound.
+- Concurrent edits preserve local and authoritative versions for explicit resolution; there is no silent last-write-wins.
+- Approval freezes an Encounter snapshot but does not certify balance.
+- Scene attachment references the approved snapshot ID and checksum without mutating earlier launch snapshots or live Sessions.
+- Backup and restore preserve snapshots, Events, receipts, provenance, visibility, uncertainty, and warning history.
+- Migration preserves stable IDs and historical readability, re-evaluates compatibility, and never silently calls a migrated analysis equivalent.
+- Authorized export preserves composition, source versions, assumptions, warnings, uncertainty, analyses, simulations, comparisons, approvals, attachments, schemas, rules, and pack locks.
 
-Counts, facets, autocomplete, comparisons, exports, notifications, diagnostics, and AI projections follow the same non-disclosure rules.
+## 12. Realtime, interruption, and reconnect
 
-## 16. Persistence, concurrency, and recovery
+Realtime delivery is advisory. Ordered accepted Events and the current server projection remain authority.
 
-Encounter drafts use expectedVersion and idempotencyKey. Commands have status lookup for ambiguous failure. Concurrent edits preserve both local and authoritative versions and require explicit resolution.
+- Before submission, local edits remain an unsubmitted draft.
+- After submission but before acceptance, query command status before retrying.
+- After acceptance but before display, reconnect resumes from the last acknowledged Event and suppresses duplicates.
+- During analysis, one idempotency key resolves to one accepted receipt or an explicit failed/unknown status.
+- During approval or attachment, ambiguous results require status lookup; the client never assumes success.
+- Missed Events are fetched in order before the current projection.
+- A stale client preserves both versions.
+- A second device reauthorizes role, delegation, and draft access.
+- Service restart restores from durable Events and snapshots.
+- Revocation immediately invalidates protected projections and blocks further authoritative commands.
 
-Accepted Events are append-only and include EncounterCreated, PlacementAdded, PlacementUpdated, EncounterValidated, AnalysisRequested, AnalysisCompleted, WarningAcknowledged, ScenarioCompared, EncounterApproved, SceneAttachmentCreated, EncounterArchived, EncounterRestored, MigrationApplied, and RecoveryCompleted.
+## 13. Interface and information hierarchy
 
-Reconnect resumes from the last acknowledged Event sequence and current projection. Revocation immediately removes protected projections and blocks further saves or analysis. Recovery never duplicates accepted operations.
+### Desktop
 
-## 17. Offline boundary
+Composition, Encounter outline, source inspector, validation findings, pressure dimensions, uncertainty, warnings, and comparison may appear side by side. Save, validate, analyze, approve, and attach remain distinct explicit actions.
 
-Offline capability is limited to:
+### Tablet
 
-- viewing a manifest-bound permitted Encounter snapshot;
-- viewing previously generated analysis and comparison snapshots;
-- editing a local unsubmitted draft;
-- preparing local notes that exclude ungranted source payloads.
+The same surfaces use ordered split or tabbed layouts with persistent Encounter identity, save state, validation severity, analysis version, and selected placement.
 
-Authoritative save, validation, analysis, simulation receipt creation, approval, Scene attachment, entitlement checks, and export require reconnection and reauthorization. There is no offline authoritative merge or last-write-wins.
+### Mobile
 
-## 18. Responsive and accessible interaction
+A single-focus sequence uses accessible lists, drawers, or sheets. Mobile retains the same evidence and authority; it is not a shortcut around review.
 
-Desktop may use side-by-side composition, evidence, pressure, warning, and comparison panes. Tablet and mobile use a persistent ordered workflow with preserved selection, filters, warnings, and draft state.
+### Player hierarchy
 
-Requirements include:
+Only revealed objectives and Scene information are foregrounded. Hidden content is absent from the client projection rather than visually concealed.
 
-- complete keyboard operation and visible focus;
-- semantic headings, lists, tables, dialogs, and status regions;
-- screen-reader names for placements, dimensions, warnings, confidence, and deltas;
-- text alternatives for charts and any tactical visual;
-- no color-only severity or confidence encoding;
-- high-zoom reflow without hidden actions;
-- touch targets and non-drag alternatives;
-- reduced-motion support;
-- equivalent authority and evidence on every form factor.
+### GM hierarchy
 
-Charts are optional views of underlying accessible tables, never the only representation.
+Composition state, blocking validation, assumptions, evidence quality, pressure dimensions, uncertainty, warnings, snapshot identity, and attachment status are visible at decision time.
 
-## 19. Diagnostics, privacy, security, and telemetry
+## 14. Accessibility
 
-Diagnostics use exact release, schema, pack, rules, analysis-policy, and fixture identities. Hidden participants, tactics, notes, private Character details, and raw source payloads are excluded by default.
+- Semantic headings, lists, tables, dialogs, and status regions.
+- Complete keyboard flow and visible focus.
+- Screen-reader names for placements, dimensions, warning severity, confidence, deltas, and save state.
+- Live announcements for validation, analysis completion, conflicts, and revocation without hidden leakage.
+- High-zoom reflow and text scaling without lost actions.
+- No color-only severity, confidence, or comparison encoding.
+- Reduced-motion behavior.
+- Touch targets and nondrag alternatives.
+- Text alternatives for charts, tactical visuals, or graphs.
+- Accessible error identification, source links, and recovery actions.
 
-Any diagnostic bundle is allowlisted, redacted, previewed, consented, checksummed, and separately attached. Issue reporting does not grant support access.
+Charts are optional views of accessible underlying tables and are never the only representation.
 
-Security requires deny-by-default authorization, server-side projection, integrity-checked receipts, bounded input sizes, deterministic simulation limits, no arbitrary code or rule execution, no external endpoints in the zero-service path, and no model access to credentials.
+## 15. Notifications and queues
 
-## 20. Export, backup, restore, and migration
+| Trigger | Recipient | Message content | Action | Resolution state |
+|---|---|---|---|---|
+| Blocking validation | Requesting GM or delegated Assistant GM | Encounter, safe finding, affected placement, and version | Open finding | unresolved, acknowledged, resolved |
+| Analysis completed | Authorized requester | Snapshot ID, confidence class, warning counts, advisory label | Review analysis | reviewed or superseded |
+| Approval invalidated | Authorized GM team | Snapshot ID and changed dependency category | Revalidate | repaired, replaced, archived |
+| Scene attachment changed | Authorized Scene editors | Encounter and Scene versions | Review attachment | current or stale |
+| Delegation revoked | Affected subject | Safe revocation and local-draft guidance | Return to authorized workspace | acknowledged |
 
-Encounter export includes authorized Encounter drafts and snapshots, placements, source/version references, assumptions, validation results, pressure dimensions, warnings, uncertainty, analysis and simulation receipts, comparison deltas, approval and Scene-attachment receipts, schema versions, and pack locks.
+Queues deduplicate by material fingerprint and never reveal hidden participants or counts through badges or message text.
 
-Backup and restore preserve immutable snapshots and Event order. Migration preserves stable IDs, source provenance, visibility, uncertainty, warnings, and historical readability. A migrated analysis is not silently treated as equivalent; compatibility is re-evaluated and recorded.
+## 16. AI involvement
 
-## 21. Cost, provider, and AI boundaries
+**AI mode:** optional read-only explanation or proposed change; core operation uses zero AI.
 
-Core composition, validation, analysis, comparison, deterministic simulation, export, and recovery must operate locally or through provider-neutral first-party services with no paid third-party requirement.
+- Allowed actions: explain source-linked warnings or propose explicit draft changes for human review.
+- Allowed sources: only the initiating subject’s authorized projection and governed source records.
+- Permission and entitlement checks: before retrieval and before display or save.
+- Provenance: cite inputs, rules, versions, uncertainty, and omitted variables.
+- Uncertainty: AI cannot increase evidence confidence or replace unknown source data.
+- Cost boundary: no paid model is required.
+- Non-AI fallback: every operation has a deterministic first-party path.
+- Prohibited behavior: autonomous mutation, approval, attachment, hidden-data expansion, credentials, unbounded simulation, or guaranteed-balance claims.
 
-No hosted simulation vendor, analytics service, production database, credential, or paid AI is authorized. Optional AI may explain source-linked warnings or propose explicit changes, but it cannot access broader hidden information, run unbounded simulation, approve, attach, or guarantee balance. The same workflow remains usable with AI disabled.
+## 17. Telemetry and diagnostics
 
-## 22. Deterministic fixtures and test strategy
+Diagnostics include exact release, schema, pack, rules, analysis-policy, fixture, operation, correlation, Encounter, snapshot, and receipt identities. They record performance, validation failures, authorization denials, reconnects, conflicts, simulation bounds, and checksum failures.
 
-Required fixtures include:
+Hidden participants, tactics, notes, private Character fields, and raw source payloads are excluded by default. Any diagnostic bundle is allowlisted, redacted, previewed, consented, checksummed, and separately attached. Issue reporting does not grant support access. Telemetry is optional and provider-neutral; core operation does not require external analytics.
 
-- a valid mixed encounter with complete governed data;
-- an invalid dependency and pack-lock case;
-- an incomplete-source high-uncertainty case;
-- a hidden reinforcement and Player-preview case;
-- an extreme action-economy and control-warning case;
-- a stale-version and concurrent-edit case;
-- a reconnect and ambiguous-command case;
-- a corrupted analysis-receipt case;
-- a deterministic simulation replay case;
-- a Scene attachment invalidated by a dependency change.
+## 18. Test scenarios
 
-Tests cover authorization, stable-ID selection, provenance, validation, pressure dimensions, uncertainty, no-guarantee language, deterministic checksums, hidden-information non-disclosure, recovery, offline boundaries, accessibility, exports, provider neutrality, and zero-service operation.
+### Unit
 
-## 23. Blocking acceptance criteria
+Pressure dimensions preserve independent inputs, normalization, confidence, and omissions. Unknowns stay unknown. Forbidden guarantee language is rejected.
 
-- **EBL-AC-001 — Blocking:** An authorized GM can create an Encounter draft bound to one Campaign, Scene, rules profile, schema set, pack lock, and exact analysis-policy version.
-- **EBL-AC-002 — Blocking:** The builder selects Characters, creatures, NPCs, hazards, environments, objectives, reinforcements, and rewards only by stable governed IDs with source and version receipts.
-- **EBL-AC-003 — Blocking:** Encounter-local placements and analysis overrides never mutate source Definitions, Character records, Scene drafts, or active Session state.
-- **EBL-AC-004 — Blocking:** Every save and analysis command reauthorizes the actor, Campaign role, Assistant-GM delegation, object visibility, entitlements, pack compatibility, and current versions.
-- **EBL-AC-005 — Blocking:** The system validates required dependencies, unresolved references, incompatible scales, duplicate-exclusive traits, missing actions/resources, and illegal placement combinations before launch attachment.
-- **EBL-AC-006 — Blocking:** Pressure estimates expose their dimensions, normalized inputs, assumptions, evidence sources, uncertainty, omitted variables, and analysis-policy version.
-- **EBL-AC-007 — Blocking:** No output is labeled balanced, fair, safe, winnable, optimal, or guaranteed; the user receives source-grounded warnings and uncertainty-aware ranges instead.
-- **EBL-AC-008 — Blocking:** The analysis distinguishes party capacity, opposition pressure, environment pressure, objective pressure, attrition, action economy, control, mobility, information, and escape or failure-path pressure.
-- **EBL-AC-009 — Blocking:** Unknown, incomplete, variant, contradictory, or low-confidence object data lowers confidence and creates explicit warnings rather than being silently imputed as fact.
-- **EBL-AC-010 — Blocking:** Bounded simulations are deterministic for an exact fixture, seed, policy, and input digest, remain advisory, and never execute live game authority or mutate Campaign state.
-- **EBL-AC-011 — Blocking:** Scenario comparison changes one or more explicit variables, records the delta, and preserves separate immutable analysis snapshots and receipts.
-- **EBL-AC-012 — Blocking:** Player and observer projections reveal no hidden participants, counts, reinforcements, tactics, secret objectives, GM notes, or warning details beyond their authorized projection.
-- **EBL-AC-013 — Blocking:** The GM can attach an approved Encounter snapshot to a Scene launch draft without altering an existing launch snapshot or active Session.
-- **EBL-AC-014 — Blocking:** Concurrent edits, stale expected versions, ambiguous failures, reconnects, and revocations preserve local drafts and authoritative state without silent overwrite or duplicate accepted effects.
-- **EBL-AC-015 — Blocking:** Offline use is limited to manifest-bound reading, local draft edits, and previously generated analysis snapshots; authoritative save, analysis, approval, and attachment require reconnection.
-- **EBL-AC-016 — Blocking:** Every warning and estimate is keyboard reachable, screen-reader understandable, noncolor encoded, high-zoom usable, and available in compact mobile and full desktop presentations with equivalent authority.
-- **EBL-AC-017 — Blocking:** Diagnostics exclude hidden encounter content and raw private notes by default, use allowlists and redaction, and require separate governed support access.
-- **EBL-AC-018 — Blocking:** Exports preserve encounter identity, source versions, assumptions, warnings, uncertainty, analysis snapshots, receipts, and pack/schema identities without exposing unauthorized content.
-- **EBL-AC-019 — Blocking:** The core builder, validation, comparison, and deterministic bounded simulation path works without AI, paid services, hosted simulation vendors, production credentials, or external telemetry.
-- **EBL-AC-020 — Blocking:** Deterministic fixtures cover valid, invalid, high-uncertainty, hidden-information, reconnect, stale-version, and corrupted-analysis cases, and all blocking tests pass before implementation handoff.
+### Contract
 
-## 24. Implementation handoff, boundaries, and next action
+Encounter, validation, analysis, simulation, comparison, approval, attachment, Event, export, and migration receipts validate and checksum correctly.
 
-### Implementation decomposition
+### Integration
+
+Object selection, Character projections, Campaign and Scene binding, pack locks, entitlements, authorization, and persistence agree across ports.
+
+### End-to-end
+
+A GM creates, validates, analyzes, compares, approves, and attaches one bounded Encounter. Reconnect after ambiguous analysis completion yields one accepted receipt.
+
+### Permission and hidden information
+
+Player and observer projections reveal no hidden participants, counts, waves, tactics, objectives, warnings, facets, or diagnostic fields. Delegated Assistant-GM access stops at scope and expiry.
+
+### Entitlement
+
+Free, expired, Campaign-granted, sponsored, and historical access paths preserve correct discovery and history behavior.
+
+### Persistence and migration
+
+Expected-version conflicts preserve both drafts. Migration retains IDs, provenance, uncertainty, warnings, Events, and snapshots without asserting equivalence.
+
+### Reconnect and recovery
+
+Missed Events, service restart, revocation, corrupted receipt, restore, and second-device cases recover without duplicate accepted effects.
+
+### Accessibility
+
+Keyboard, touch, screen reader, zoom, noncolor status, reduced motion, and text alternatives cover every warning and pressure result.
+
+### Performance
+
+Input, placement, scenario, and iteration bounds fail safely and explain the limit.
+
+### Golden or deterministic regression
+
+8D-007J applies to validation, pressure normalization, simulation replay, comparison deltas, hidden-information projection, and warning regressions.
+
+## 19. Acceptance criteria
+
+- **EBL-AC-001 — Blocking:** An authorized GM can create an Encounter draft bound to one Campaign, Scene, rules profile, schema set, pack lock, roster, and analysis-policy version.
+- **EBL-AC-002 — Blocking:** Every Character, creature, NPC, hazard, environment, objective, reinforcement, and reward uses governed stable IDs and source/version receipts.
+- **EBL-AC-003 — Blocking:** Placements and local overrides never mutate source Definitions, Character records, Scene drafts, launch snapshots, or live Session state.
+- **EBL-AC-004 — Blocking:** Every save, validation, analysis, approval, and attachment reauthorizes role, delegation, visibility, entitlement, pack, and versions.
+- **EBL-AC-005 — Blocking:** Dependencies, scale, exclusivity, required Actions and Resources, objective references, and integrity validate before attachment.
+- **EBL-AC-006 — Blocking:** Pressure estimates expose dimensions, normalized inputs, assumptions, evidence sources, uncertainty, omitted variables, and analysis-policy version.
+- **EBL-AC-007 — Blocking:** No output is labeled balanced, fair, safe, winnable, optimal, or guaranteed; only source-grounded warnings and uncertainty-aware ranges are allowed.
+- **EBL-AC-008 — Blocking:** Analysis independently represents durability, sustained output, burst, action economy, control, mobility, environment, objectives, information, attrition, reinforcements, and failure paths.
+- **EBL-AC-009 — Blocking:** Unknown, incomplete, variant, contradictory, or low-confidence data lowers confidence and warns rather than being silently imputed.
+- **EBL-AC-010 — Blocking:** Bounded simulations are deterministic for an exact fixture, seed, policy, and digest, remain advisory, and never mutate authoritative state.
+- **EBL-AC-011 — Blocking:** Scenario comparison records explicit deltas and preserves separate immutable snapshots and receipts.
+- **EBL-AC-012 — Blocking:** Player and observer projections reveal no hidden participants, counts, waves, tactics, secret objectives, GM notes, or internal warning details.
+- **EBL-AC-013 — Blocking:** An approved Encounter snapshot attaches to a Scene draft without altering an existing launch snapshot or active Session.
+- **EBL-AC-014 — Blocking:** Concurrency, stale versions, ambiguous failures, reconnects, and revocations preserve local and authoritative state without duplicate accepted effects.
+- **EBL-AC-015 — Blocking:** Offline use is limited to manifest-bound reading, local draft edits, and previous analysis snapshots; authoritative operations require reconnection.
+- **EBL-AC-016 — Blocking:** Every warning and estimate is keyboard reachable, screen-reader understandable, noncolor encoded, zoom-safe, and equivalent on desktop, tablet, and mobile.
+- **EBL-AC-017 — Blocking:** Diagnostics exclude hidden Encounter content and private notes by default and require allowlists, redaction, consent, and separate support access.
+- **EBL-AC-018 — Blocking:** Authorized exports preserve identity, source versions, assumptions, warnings, uncertainty, snapshots, receipts, schemas, rules, and pack locks without unauthorized content.
+- **EBL-AC-019 — Blocking:** Core composition, validation, comparison, and deterministic bounded simulation work without AI, paid services, production credentials, or external telemetry.
+- **EBL-AC-020 — Blocking:** Deterministic fixtures cover valid, invalid, uncertain, hidden-information, reconnect, stale-version, corruption, simulation-replay, and attachment-invalidation cases.
+
+## 20. Fixtures and approved alpha content
+
+Required fixtures:
+
+- EBL-FIX-VALID-MIXED — complete governed mixed encounter.
+- EBL-FIX-PACK-INVALID — dependency and pack-lock failure.
+- EBL-FIX-UNCERTAIN — partial-source high-uncertainty analysis.
+- EBL-FIX-HIDDEN-WAVE — hidden reinforcement and Player preview.
+- EBL-FIX-ACTION-ECONOMY — extreme action-economy and control warning.
+- EBL-FIX-STALE — stale version and concurrent edits.
+- EBL-FIX-RECONNECT — ambiguous failure and reconnect.
+- EBL-FIX-CORRUPT — corrupted analysis receipt.
+- EBL-FIX-SIM-REPLAY — deterministic simulation replay.
+- EBL-FIX-ATTACHMENT-INVALIDATED — Scene attachment invalidated by dependency change.
+
+Each fixture records exact identities, rules, schemas, packs, Characters, source versions, Events, receipts, checksums, expected warnings, and denied projections. Synthetic fixtures are labeled synthetic and never represented as complete game canon.
+
+## 21. Security, privacy, cost, and risk
+
+### Security
+
+Deny-by-default authorization, server projections, integrity-checked receipts, bounded input sizes and simulations, no arbitrary code execution, and fail-closed provider boundaries are mandatory.
+
+### Privacy
+
+Hidden Encounter content, private Character fields, notes, raw sources, diagnostics, exports, notifications, and AI projections are minimized and filtered before serialization.
+
+### Cost
+
+Core composition, validation, analysis, comparison, simulation, export, and recovery require no paid third-party service. No hosted simulator, analytics provider, production database, credential, or paid AI is authorized.
+
+### Material risks
+
+- A single score can create false confidence.
+- Incomplete legacy data can distort analysis.
+- Counts or warning shapes can leak hidden information.
+- Simulation can be mistaken for prediction.
+- Cross-profile or cross-scale comparison can be invalid.
+
+### Stop conditions
+
+Stop approval or attachment for authorization failure, missing dependency, incompatible rules/schema/pack/scale, corrupted receipt, stale version, unbounded simulation, hidden-information leakage, unavailable zero-service path, or any claim that certifies actual play outcomes.
+
+## 22. Owner review points
+
+- Design approval required for material scope changes.
+- Broader tactical, vehicle, social, investigation, attrition, community, or public-sharing scope requires a later governed decision.
+- Encounter-local overrides, synthetic fixtures, normalization, and analysis never promote canon.
+- Paid providers, credentials, spending, and production services require explicit owner approval.
+- Internal-alpha release remains owner-only.
+- Advisory estimates cannot be converted into guaranteed fairness, safety, victory, survival, or optimality without a separately governed evidence standard.
+
+Silence is not approval.
+
+## 23. Implementation handoff
+
+**Target repository:** `cybalicistjt-stack/Multiversal-app` after dependency gates  
+**Registered work type:** governed application implementation  
+**Decision level:** reversible implementation; owner-only for providers, spending, release, and scope expansion  
+**Risk class:** high  
+**Suggested work-order title:** Implement MV-IA-F012 Encounter Builder and Balance Lab alpha slice  
+**Expected branches or files:** Encounter contracts, schemas, repositories, analysis engine, fixtures, projections, UI, tests, CI, receipts, and documentation  
+**Required reviewers:** product, game-system, architecture, canon, security/privacy, accessibility, recovery, QA, and documentation  
+**Required gates:** P9-06 dependencies, exact-head tests, permission review, deterministic replay, accessibility verification, and owner release gate  
+**Rollback or recovery:** revert implementation PR, restore prior schema/checkpoint, retain immutable history, and disable the feature without data loss  
+**Evidence outputs:** commits, PR, CI, fixture checksums, permission denials, recovery results, accessibility evidence, and merge evidence
+
+Implementation slices:
 
 1. Encounter aggregate and repository.
 2. Stable-ID composition and placement receipts.
-3. Validation and compatibility engine.
-4. Pressure-dimension and uncertainty engine.
-5. Warning and evidence projection.
-6. Deterministic bounded simulation adapter.
-7. Scenario comparison and snapshot store.
-8. Approval and Scene-attachment command path.
-9. Permission-safe projections.
-10. Recovery, export, diagnostics, responsive, and accessibility integration.
+3. Authorization and projection safety.
+4. Validation and compatibility.
+5. Pressure and uncertainty analysis.
+6. Warnings and evidence UI.
+7. Deterministic bounded simulation.
+8. Scenario comparison and snapshots.
+9. Human approval and Scene attachment.
+10. Recovery, export, diagnostics, accessibility, and CI.
 
-### Completion boundary
+## 24. Readiness decision
 
-This packet is an implementation-ready design artifact only. It does not implement the application, run live balance studies, authorize production data, certify encounter fairness, or permit internal-alpha release.
+- [x] All required sections complete.
+- [x] Dependencies identified.
+- [x] Shared-system impacts identified.
+- [x] Permissions complete.
+- [x] Persistence and recovery complete.
+- [x] Accessibility complete.
+- [x] Tests and acceptance criteria measurable.
+- [x] Explicit exclusions complete.
+- [x] Owner decisions identified.
+- [x] Implementation handoff complete.
 
-### Exact next design action
+**Final design status:** implementation-ready  
+**Reviewer:** governed multi-role design review; owner remains final authority  
+**Date:** 2026-08-05  
+**Packet digest:** generated and verified through repository CI
 
-**IA-D03-004 — Define the internal-alpha content and deterministic fixture specification.**
+Application implementation remains dependency-gated by the active P9-06 sequence. This packet is design-only and does not authorize balance certification, paid simulation, production credentials, real-user data, internal-alpha release, production deployment, or public release.
 
-That item must select and version the bounded Character, creature, NPC, Action, Ability, Effect, Condition, Resource, item, environment, hazard, objective, Scene, Encounter, and recovery fixtures needed by the first playable loop without pretending the selected corpus is the full game.
+**Exact next design action:** IA-D03-004 — Define the internal-alpha content and deterministic fixture specification.
