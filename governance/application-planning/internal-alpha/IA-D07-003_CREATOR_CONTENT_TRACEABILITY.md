@@ -1,0 +1,3 @@
+# IA-D07-003 Traceability
+
+The specification maps twenty-eight blocking criteria across identity/lifecycle, schema and sandbox enforcement, proposal/review authority, Campaign installation and overlays, runtime integration, hidden-information filtering, import/export, accessibility, recovery, provenance, and canonical-promotion boundaries. Twenty-four deterministic fixtures cover every criterion. Seven findings were resolved and zero blocking findings remain.
