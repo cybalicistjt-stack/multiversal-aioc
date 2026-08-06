@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Validate the MV-IA-F012 Encounter Builder and Balance Lab design package."""
+"""Validate the completed MV-IA-F012 design without freezing later milestones."""
 
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -34,127 +35,105 @@ def require(condition: bool, message: str, errors: list[str]) -> None:
         errors.append(message)
 
 
+def version_tuple(value: str) -> tuple[int, ...]:
+    try:
+        return tuple(int(part) for part in value.split("."))
+    except (AttributeError, ValueError):
+        return ()
+
+
+def document_version(text: str) -> tuple[int, ...]:
+    match = re.search(r"\*\*Version:\*\* ([0-9]+(?:\.[0-9]+)+)", text)
+    return version_tuple(match.group(1)) if match else ()
+
+
 def main() -> int:
     errors: list[str] = []
     required = [PACKET, MATRIX, TRACE, REVIEW, READINESS, COMPLETION, REGISTRY, BACKLOG, PROGRAM, PACKET_INDEX]
     for path in required:
         require(path.exists(), f"Missing required file: {path.relative_to(ROOT)}", errors)
-
     if errors:
-        for error in errors:
-            print(f"- {error}")
+        print("\n".join(f"- {e}" for e in errors))
         return 1
 
-    packet_text = PACKET.read_text(encoding="utf-8")
-    review_text = REVIEW.read_text(encoding="utf-8")
-    readiness_text = READINESS.read_text(encoding="utf-8")
-    backlog_text = BACKLOG.read_text(encoding="utf-8")
-    program_text = PROGRAM.read_text(encoding="utf-8")
-    packet_index_text = PACKET_INDEX.read_text(encoding="utf-8")
-
+    packet = PACKET.read_text(encoding="utf-8")
+    review = REVIEW.read_text(encoding="utf-8")
+    readiness = READINESS.read_text(encoding="utf-8")
+    backlog = BACKLOG.read_text(encoding="utf-8")
+    program = PROGRAM.read_text(encoding="utf-8")
+    packet_index = PACKET_INDEX.read_text(encoding="utf-8")
     matrix = load_json(MATRIX, errors)
     trace = load_json(TRACE, errors)
     completion = load_json(COMPLETION, errors)
     registry = load_json(REGISTRY, errors)
 
-    require(packet_text.startswith("# MV-IA-F012 — Encounter Builder and Balance Lab"), "Packet title mismatch", errors)
-    require("**Design status:** implementation-ready" in packet_text, "Packet is not implementation-ready", errors)
-    require("IA-D02-006" in packet_text and "MV-IA-F004" in packet_text and "MV-IA-F005" in packet_text,
-            "Packet does not consume shared-foundation, Character, and Campaign/Scene contracts", errors)
-    require("guaranteed-balance" in packet_text.lower(), "Packet lacks explicit guaranteed-balance prohibition", errors)
-    require("source-grounded warnings" in packet_text.lower(), "Packet lacks source-grounded warning contract", errors)
-    require("uncertainty" in packet_text.lower(), "Packet lacks uncertainty contract", errors)
-    require("deterministic bounded simulation" in packet_text.lower(), "Packet lacks deterministic bounded simulation contract", errors)
-    require("IA-D03-004" in packet_text, "Packet does not identify IA-D03-004 next action", errors)
-
+    require(packet.startswith("# MV-IA-F012 — Encounter Builder and Balance Lab"), "Packet title mismatch", errors)
+    require("**Design status:** implementation-ready" in packet, "Packet is not implementation-ready", errors)
+    for phrase in ["IA-D02-006", "MV-IA-F004", "MV-IA-F005", "guaranteed-balance", "source-grounded warnings", "uncertainty", "deterministic bounded simulation", "IA-D03-004"]:
+        require(phrase.lower() in packet.lower(), f"Packet missing required contract or handoff: {phrase}", errors)
     for section in range(1, 25):
-        require(f"## {section}." in packet_text, f"Packet missing section {section}", errors)
+        require(f"## {section}." in packet, f"Packet missing section {section}", errors)
 
-    criterion_ids = [f"EBL-AC-{index:03d}" for index in range(1, 21)]
-    for criterion_id in criterion_ids:
-        require(criterion_id in packet_text, f"Packet missing {criterion_id}", errors)
+    criteria = [f"EBL-AC-{i:03d}" for i in range(1, 21)]
+    for criterion in criteria:
+        require(criterion in packet, f"Packet missing {criterion}", errors)
 
     require(matrix.get("featureId") == "MV-IA-F012", "Matrix featureId mismatch", errors)
     require(matrix.get("workItemId") == "IA-D03-003", "Matrix workItemId mismatch", errors)
     require(matrix.get("status") == "implementation-ready-design", "Matrix status mismatch", errors)
-    require(len(matrix.get("requiredSharedContracts", [])) == 24, "Matrix must consume 24 shared contracts", errors)
-    require(len(matrix.get("aggregateTypes", [])) >= 12, "Matrix aggregate coverage is incomplete", errors)
-    require(len(matrix.get("fieldClasses", [])) >= 14, "Matrix field-class coverage is incomplete", errors)
-    require(len(matrix.get("pressureDimensions", [])) >= 12, "Matrix pressure-dimension coverage is incomplete", errors)
-    require(len(matrix.get("uncertaintyClasses", [])) >= 8, "Matrix uncertainty coverage is incomplete", errors)
-    require(len(matrix.get("warningClasses", [])) >= 20, "Matrix warning coverage is incomplete", errors)
-    require(len(matrix.get("validationClasses", [])) >= 32, "Matrix validation coverage is incomplete", errors)
-    require(len(matrix.get("operationTypes", [])) >= 33, "Matrix operation coverage is incomplete", errors)
-    require(len(matrix.get("eventTypes", [])) >= 32, "Matrix Event coverage is incomplete", errors)
-    require(len(matrix.get("deniedCases", [])) >= 48, "Matrix denied-case coverage is incomplete", errors)
-    require(len(matrix.get("fixtures", [])) >= 10, "Matrix fixture coverage is incomplete", errors)
+    requirements = {
+        "requiredSharedContracts": 24, "aggregateTypes": 12, "fieldClasses": 14,
+        "pressureDimensions": 12, "uncertaintyClasses": 8, "warningClasses": 20,
+        "validationClasses": 32, "operationTypes": 33, "eventTypes": 32,
+        "deniedCases": 48, "fixtures": 10,
+    }
+    for key, minimum in requirements.items():
+        require(len(matrix.get(key, [])) >= minimum, f"Matrix {key} coverage is incomplete", errors)
     require(len(matrix.get("acceptanceCriteria", [])) == 20, "Matrix must contain 20 acceptance criteria", errors)
-    require(all(item.get("blocking") is True for item in matrix.get("acceptanceCriteria", [])),
-            "All acceptance criteria must be blocking", errors)
+    require(all(item.get("blocking") is True for item in matrix.get("acceptanceCriteria", [])), "All acceptance criteria must be blocking", errors)
+    require({item.get("criterionId") for item in matrix.get("acceptanceCriteria", [])} == set(criteria), "Matrix criterion IDs mismatch", errors)
     require(matrix.get("blockingFindings") == [], "Matrix contains blocking findings", errors)
 
-    matrix_criteria = {item.get("criterionId") for item in matrix.get("acceptanceCriteria", [])}
-    require(matrix_criteria == set(criterion_ids), "Matrix acceptance-criterion IDs are incomplete", errors)
-
-    forbidden_claim_fragments = [
-        '"balanced": true', '"fair": true', '"safe": true', '"winnable": true',
-        "certifies balance", "guarantees victory", "guarantees survival"
-    ]
-    lower_packet = packet_text.lower()
-    serialized_matrix = json.dumps(matrix).lower()
-    for fragment in forbidden_claim_fragments:
-        require(fragment not in lower_packet and fragment not in serialized_matrix,
-                f"Forbidden guarantee claim found: {fragment}", errors)
+    serialized = json.dumps(matrix).lower()
+    for fragment in ['"balanced": true', '"fair": true', '"safe": true', '"winnable": true', "certifies balance", "guarantees victory", "guarantees survival"]:
+        require(fragment not in packet.lower() and fragment not in serialized, f"Forbidden guarantee claim found: {fragment}", errors)
 
     require(trace.get("featureId") == "MV-IA-F012", "Traceability featureId mismatch", errors)
-    traced = {item.get("criterionId") for item in trace.get("acceptanceTraceability", [])}
-    require(traced == set(criterion_ids), "Traceability does not cover all acceptance criteria", errors)
-    require(len(trace.get("implementationSlices", [])) >= 10, "Implementation decomposition is incomplete", errors)
+    require(trace.get("owner") == "John Brandon Turner", "Traceability owner mismatch", errors)
+    require({item.get("criterionId") for item in trace.get("acceptanceTraceability", [])} == set(criteria), "Traceability criterion coverage mismatch", errors)
+    require(len(trace.get("implementationSlices", [])) >= 10, "Implementation decomposition incomplete", errors)
 
     require(completion.get("workItemId") == "IA-D03-003", "Completion work item mismatch", errors)
     require(completion.get("featureId") == "MV-IA-F012", "Completion featureId mismatch", errors)
     require(completion.get("status") == "complete-design-implementation-ready", "Completion status mismatch", errors)
     metrics = completion.get("metrics", {})
-    require(metrics.get("acceptanceCriteria") == 20, "Completion acceptance metric mismatch", errors)
-    require(metrics.get("pressureDimensions", 0) >= 12, "Completion pressure metric mismatch", errors)
-    require(metrics.get("blockingFindings") == 0, "Completion reports blocking findings", errors)
+    require(metrics.get("acceptanceCriteria") == 20 and metrics.get("pressureDimensions", 0) >= 12 and metrics.get("blockingFindings") == 0, "Completion metrics mismatch", errors)
 
     features = {item.get("featureId"): item for item in registry.get("features", [])}
     f012 = features.get("MV-IA-F012", {})
-    require(registry.get("version") == "0.10.0", "Registry version must be 0.10.0", errors)
+    require(version_tuple(registry.get("version", "")) >= (0, 10, 0), "Registry version must be at least 0.10.0", errors)
     require(f012.get("designStatus") == "implementation-ready", "Registry does not mark F012 implementation-ready", errors)
-    require(f012.get("packetPath") == "feature-packets/MV-IA-F012_ENCOUNTER_BUILDER_AND_BALANCE_LAB.md",
-            "Registry packet path mismatch", errors)
+    require(f012.get("packetPath") == "feature-packets/MV-IA-F012_ENCOUNTER_BUILDER_AND_BALANCE_LAB.md", "Registry packet path mismatch", errors)
     companions = set(f012.get("companionFiles", []))
-    require("feature-packets/MV-IA-F012_ENCOUNTER_BALANCE_MATRIX.json" in companions,
-            "Registry missing F012 matrix companion", errors)
-    require("feature-packets/MV-IA-F012_IMPLEMENTATION_TRACEABILITY.json" in companions,
-            "Registry missing F012 traceability companion", errors)
+    require("feature-packets/MV-IA-F012_ENCOUNTER_BALANCE_MATRIX.json" in companions, "Registry missing F012 matrix", errors)
+    require("feature-packets/MV-IA-F012_IMPLEMENTATION_TRACEABILITY.json" in companions, "Registry missing F012 traceability", errors)
 
-    for text_name, text in [("review", review_text), ("readiness", readiness_text)]:
-        require("implementation-ready" in text.lower(), f"{text_name} record lacks readiness decision", errors)
-        require("IA-D03-004" in text, f"{text_name} record lacks next action", errors)
-        require("guaranteed" in text.lower(), f"{text_name} record lacks guarantee boundary", errors)
+    for name, text in [("review", review), ("readiness", readiness)]:
+        require("implementation-ready" in text.lower(), f"{name} lacks readiness decision", errors)
+        require("IA-D03-004" in text, f"{name} lacks original IA-D03-004 handoff", errors)
+        require("guaranteed" in text.lower(), f"{name} lacks guarantee boundary", errors)
 
-    require("IA-D03-003 — MV-IA-F012 Encounter Builder and Balance Lab packet — complete" in backlog_text,
-            "Backlog does not mark IA-D03-003 complete", errors)
-    require("IA-D03-004 — alpha content and fixture specification — next" in backlog_text,
-            "Backlog does not advance to IA-D03-004", errors)
-    require("**IA-D03-004 — Define the internal-alpha content and deterministic fixture specification.**" in backlog_text,
-            "Backlog current-next statement mismatch", errors)
-    require("**Version:** 0.10.0" in backlog_text, "Backlog version must be 0.10.0", errors)
+    require("IA-D03-003 — MV-IA-F012 Encounter Builder and Balance Lab — complete" in backlog or "IA-D03-003 — MV-IA-F012 Encounter Builder and Balance Lab packet — complete" in backlog, "Backlog does not preserve IA-D03-003 completion", errors)
+    require("IA-D03-004" in backlog and "fixture" in backlog.lower(), "Backlog does not preserve IA-D03-004 handoff or result", errors)
+    require(document_version(backlog) >= (0, 10, 0), "Backlog version must be at least 0.10.0", errors)
 
-    require("## IA-D03-003 — Encounter Builder and Balance Lab" in program_text,
-            "Program README lacks IA-D03-003 result", errors)
-    require("**IA-D03-004 — Define the internal-alpha content and deterministic fixture specification.**" in program_text,
-            "Program README next action mismatch", errors)
-    require("**Version:** 0.10.0" in program_text, "Program README version must be 0.10.0", errors)
+    require("## IA-D03-003 — Encounter Builder and Balance Lab" in program, "Program README lacks IA-D03-003 result", errors)
+    require("IA-D03-004" in program and "fixture" in program.lower(), "Program README does not preserve IA-D03-004 handoff or result", errors)
+    require(document_version(program) >= (0, 10, 0), "Program README version must be at least 0.10.0", errors)
 
-    require("| MV-IA-F012 | Encounter Builder and Balance Lab |" in packet_index_text,
-            "Packet index lacks F012", errors)
-    require("`MV-IA-F012_ENCOUNTER_BALANCE_MATRIX.json`" in packet_index_text,
-            "Packet index lacks F012 matrix", errors)
-    require("IA-D03-004" in packet_index_text, "Packet index does not advance next item", errors)
+    require("| MV-IA-F012 | Encounter Builder and Balance Lab |" in packet_index, "Packet index lacks F012", errors)
+    require("`MV-IA-F012_ENCOUNTER_BALANCE_MATRIX.json`" in packet_index, "Packet index lacks F012 matrix", errors)
+    require("IA-D03-004" in packet_index, "Packet index does not preserve the F012-to-IA-D03-004 handoff", errors)
 
     if errors:
         print("MV-IA-F012 ENCOUNTER BUILDER/BALANCE LAB DESIGN VALIDATION: FAIL")
@@ -163,7 +142,7 @@ def main() -> int:
         return 1
 
     print("MV-IA-F012 ENCOUNTER BUILDER/BALANCE LAB DESIGN VALIDATION: PASS")
-    print(f"Acceptance criteria: {len(criterion_ids)}")
+    print("Acceptance criteria: 20")
     print(f"Shared contracts: {len(matrix['requiredSharedContracts'])}")
     print(f"Pressure dimensions: {len(matrix['pressureDimensions'])}")
     print(f"Uncertainty classes: {len(matrix['uncertaintyClasses'])}")
