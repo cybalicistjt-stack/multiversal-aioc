@@ -2,12 +2,12 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 5.1.0  
+**Version:** 5.2.0  
 **Status:** ACTIVE  
 **Owner and final authority:** John Brandon Turner  
 **Governance repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Application repository:** `cybalicistjt-stack/Multiversal-app`  
-**Last updated:** 2026-08-05
+**Last updated:** 2026-08-06
 
 ## Permanent owner entry point
 
@@ -16,6 +16,14 @@ The owner may start any new conversation with the unchanged one-line prompt stor
 `governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt`
 
 The prompt contains no branch, work-item, date, or status information. All changing state must be recovered from repository evidence.
+
+## Mandatory operating policy
+
+Read and follow:
+
+`governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md`
+
+That owner-approved policy controls checkpoint cadence, validation cadence, workflow isolation, and owner-facing reporting wherever it conflicts with older per-batch checkpoint language. Checkpoints are recovery boundaries, not activity logs.
 
 ## Access and permissions
 
@@ -29,7 +37,7 @@ Perform this sequence before explaining, planning, or claiming work:
 
 1. Verify connected read/write access and the authenticated GitHub identity against `governance/access/AIOC_CONTRIBUTOR_REGISTRY.json`.
 2. Read this bootstrap from `main`.
-3. Read `governance/ai/runtime/CURRENT_WORK_POINTER.json`.
+3. Read `governance/ai/runtime/CURRENT_WORK_POINTER.json` and its `mandatory_operating_policy` when present.
 4. Read the checkpoint named by `primary_attempt_id` and its exact branch or pull-request evidence.
 5. Read `governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json`. Treat it as the compact control-health projection; follow its source scorecard only when a pilot result, limitation, or regression needs inspection.
 6. Inspect the latest commits, pull requests, reviews, and CI relevant to the checkpoint in both repositories.
@@ -57,22 +65,25 @@ The following states are unfinished and must resume from `active_substep` and `n
 
 Never infer completion from a previous conversation ending, a long response, a generated file, a branch, a commit, a pull request, a green partial check, or silence. Completion requires every evidence kind and validation command declared in the checkpoint's `completion_gate`.
 
-## Automatic checkpoint protocol
+## Milestone-only checkpoint protocol
 
 The owner must not manually copy, promote, or summarize progress between conversations.
 
 For every governed operation:
 
-1. Create or update a `started` checkpoint before substantive mutation.
-2. Keep no more than one atomic mutation batch uncommitted.
-3. After each atomic batch, run the smallest relevant checks, update the checkpoint with optimistic `revision` matching, commit, and push.
-4. Record failures as `validation_failed` or a typed blocked state with exact evidence and next action.
-5. Record `ready_for_review` only after implementation and declared local validation are complete.
-6. Record `completed_verified` only after required commit, pull request, review, CI, merge, artifact, checksum, file, or owner-decision evidence is present as declared.
-7. Regenerate `governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json` with `python tools/continuity_state.py refresh-status` after checkpoint or pointer changes.
-8. Never rewrite or delete a failed or interrupted attempt to make it appear complete. Create a new attempt ID for a genuinely new attempt.
+1. Create a `started` checkpoint once before substantive mutation.
+2. Keep branch commits bounded and meaningful, but do not rewrite the checkpoint after ordinary uninterrupted substeps.
+3. During work, run the smallest relevant local or deterministic checks and batch related repairs.
+4. Update the checkpoint only for a material handoff, a real blocker or changed recovery path, `ready_for_review`, or `completed_verified`.
+5. Record failures as `validation_failed` or a typed blocked state only when the failure changes the recovery path or work must stop.
+6. Record `ready_for_review` once after the complete package and declared local validation are finished.
+7. Run the full declared hosted validation suite at the final package gate, not after every small mutation.
+8. Record `completed_verified` only after required commit, pull request, review, CI, merge, artifact, checksum, file, or owner-decision evidence is present as declared.
+9. A post-merge completion projection may be bundled with the next work item's start checkpoint; do not create a standalone completion-only pull request unless work is stopping or repository state would otherwise be contradictory.
+10. Regenerate `governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json` only when the checkpoint or pointer changes at one of these milestone boundaries.
+11. Never rewrite or delete a failed or interrupted attempt to make it appear complete. Create a new attempt ID for a genuinely new attempt.
 
-If a conversation becomes unable to accept more messages, the latest pushed checkpoint and branch are the handoff. The next conversation must resume that exact recorded state even when no final chat response exists.
+If a conversation becomes unable to accept more messages, the latest pushed start or handoff checkpoint, substantive branch commits, and pull request are the handoff. The next conversation must resume that exact recorded state even when no final chat response exists.
 
 ## Material owner-correction protocol
 
@@ -90,7 +101,9 @@ Correction capture is part of the work, not a separate reminder the owner must i
 
 `governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json` is the compact AIOC view of the latest deterministic pilot. A passing scorecard means the installed repository controls passed their declared simulated scenarios. It does not prove long-term behavior in every interface. A null longitudinal intervention metric remains unmeasured and must not be described as improved without later evidence.
 
-If the scorecard is missing, stale, failing, or contradicts its source scorecard, treat interaction control health as a blocking governance defect and repair it before relying on the affected control.
+A historical passing scorecard is evidence of its recorded pilot run; it is not a live mirror of every later work-pointer selection. Routine pointer or status changes must not require pilot-scorecard regeneration. Re-run the pilot when its scenarios, controls, tool, scorecards, bootstrap integration, or operating amendment materially change.
+
+If the scorecard is missing, failing, or contradicts its source scorecard for the recorded run, treat interaction control health as a blocking governance defect and repair it before relying on the affected control.
 
 ## Parallel-track safety
 
@@ -102,13 +115,7 @@ Starting a side mission must not mark another track complete, superseded, or aba
 
 The full roadmap is a milestone and dependency authority, not an autosave file.
 
-Routine progress writes go only to:
-
-- the active checkpoint;
-- the current-work pointer when selection changes;
-- the compact generated status record;
-- the interaction operational scorecard when its validated pilot changes;
-- the work branch and pull request.
+Routine substantive progress belongs in the work branch and pull request. Runtime state writes occur only at the milestone boundaries defined above.
 
 Patch the full roadmap only when a work item becomes `completed_verified`, a milestone or dependency changes, scope changes, an owner decision changes the plan, or a material risk or release gate changes. Prefer a small affected-section patch or generated status block.
 
@@ -133,16 +140,18 @@ For ordinary reversible ambiguity, use the best evidence-backed recommendation a
 
 ### CI and verification
 
-Inspect failed jobs and logs, repair root causes, and rerun or trigger validation. Merge only when declared required checks pass and the pull request is mergeable. Use the repository-permitted merge method; `Multiversal-app` is squash-only.
+Use targeted checks during construction. Inspect failed final-gate jobs and logs, batch related repairs, and rerun the smallest applicable hosted set. Merge only when declared required checks pass and the pull request is mergeable. Use the repository-permitted merge method; `Multiversal-app` is squash-only.
 
 ## Reporting after a bounded step
 
-Report only verified facts needed by the owner:
+Do not narrate every repository operation or validation poll. Report only verified facts needed by the owner when there is a material finding, genuine blocker, completed bounded package, final CI/merge result, or concise end-of-run status.
+
+Include as applicable:
 
 - work item;
-- pull request and merge commit when applicable;
+- pull request and merge commit;
 - actual changes;
-- validation or CI result;
+- validation result;
 - restrictions preserved;
 - exact next action.
 
