@@ -1,17 +1,19 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 2.0.0  
+**Version:** 2.0.1  
 **Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED  
 **Owner and final authority:** John Brandon Turner  
 **Originally approved:** 2026-08-03  
-**Last updated:** 2026-08-05
+**Last updated:** 2026-08-06
 
 ## Purpose
 
 This roadmap governs the transition from completed source recovery, canonicalization, architecture, and AI-team preparation into verified application construction.
 
 Repository evidence is mandatory. Nothing is complete merely because it was discussed, planned, drafted, or claimed. Completion requires actual files, commits, pull requests, CI results, and merges where applicable.
+
+The authoritative ordered Phase 9 backlog is `governance/phase9/P9-06_IMPLEMENTATION_BACKLOG_AND_ACCEPTANCE_GATES.json`. If a derived roadmap description conflicts with that backlog, the canonical backlog controls and the roadmap must be corrected before implementation.
 
 ## Project phase history
 
@@ -66,15 +68,25 @@ Completed and merged in `cybalicistjt-stack/Multiversal-app`:
 6. **P9-06-006 — Provider-neutral persistence and migration ports** — COMPLETE, PR #76.
 7. **P9-06-007 — Realtime and authoritative-session service ports** — COMPLETE, PR #77, squash commit `149b866f530f3a8896170bfe3ba6af0c01fb2f72`.
 
+### Corrected preparatory work
+
+Application PR #78 created a valid provider-neutral backup, restore, and provider-exit contract package after an older derived roadmap description mislabeled that scope as P9-06-008. The authoritative backlog defines P9-06-008 differently.
+
+Application PR #79 reclassified the package as **P9-06-011A — Recovery Contract Foundation**. It is preparatory groundwork only and does not complete P9-06-008, P9-06-009, P9-06-010, or P9-06-011.
+
 ### Current next executable action
 
-**P9-06-008 — Implement backup, restore, and provider-exit export ports.**
+**P9-06-008 — Create initial 17-table logical schema migration.**
 
-The work must remain provider-neutral and include deterministic contracts, fixtures, validation, CI, recovery integrity, export completeness, and no hosted-service or credential commitment.
+The exact required tables are governed by `governance/phase9/P9-04_IMPLEMENTATION_READINESS_REGISTRY.json`:
+
+`subjects`, `identities`, `subscriptions`, `entitlement_grants`, `sponsored_months`, `campaigns`, `campaign_members`, `content_packs`, `canonical_objects`, `game_sessions`, `session_commands`, `session_events`, `session_projections`, `checkpoints`, `audit_events`, `outbox_events`, and `schema_migrations`.
+
+The migration must remain provider-neutral, represent all 17 logical tables, define reversible up/down operations, preserve explicit constraints and indexes, include deterministic validation and dedicated CI, and must not apply a live schema or create a hosted-provider commitment.
 
 ### Remaining authorized backlog
 
-After P9-06-008, continue dependency order through **P9-06-023**, automatically resolving ordinary implementation and CI failures. Stop only at a genuine owner-only decision, spending gate, deployment gate, production credential requirement, or public/internal-alpha release gate.
+After P9-06-008 is `completed_verified`, continue in authoritative dependency order through **P9-06-023**, automatically resolving ordinary implementation and CI failures. P9-06-009 remains the next dependent item. Stop only at a genuine owner-only decision, spending gate, deployment gate, production credential requirement, or public/internal-alpha release gate.
 
 ## Phase 10 — Core Application Implementation
 
@@ -135,6 +147,7 @@ A formal release program must govern:
 - Use John’s approved recommendation process to resolve ambiguity unless a decision truly requires him personally.
 - Group compatible validation, conversion, and repair work into efficient tranches.
 - Inspect CI failures, repair them, rerun, and continue automatically.
+- Read the authoritative P9-06 backlog item before starting each implementation item; derived roadmap prose cannot override it.
 - Never claim completion, files, commits, PRs, merges, tests, artifacts, or deployments without tool verification.
 - Report the next step after every completed step.
 - Preserve source truth, provenance, variants, conflicts, and reversibility.
