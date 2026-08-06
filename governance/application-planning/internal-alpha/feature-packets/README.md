@@ -19,6 +19,8 @@ Implementation-ready and in-progress feature design packets, companion matrices,
 | MV-IA-F005 | Campaign, Scene, and Session Builder | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F005_CAMPAIGN_SCENE_AND_SESSION_BUILDER.md` | `MV-IA-F005_CAMPAIGN_SCENE_SESSION_MATRIX.json`; traceability; receipt; readiness; completion |
 | MV-IA-F012 | Encounter Builder and Balance Lab | alpha-required | implementation-ready | not started; dependency-gated | `MV-IA-F012_ENCOUNTER_BUILDER_AND_BALANCE_LAB.md` | `MV-IA-F012_ENCOUNTER_BALANCE_MATRIX.json`; traceability; receipt; readiness; completion |
 
+Historical F005 handoff: **IA-D03-003 — MV-IA-F012 Encounter Builder and Balance Lab**.
+
 ## Integration review index
 
 | Review ID | Scope | Status | Review | Contract matrix | Findings | Receipt | Completion record |
