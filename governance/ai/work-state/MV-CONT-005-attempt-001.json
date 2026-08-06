@@ -1,22 +1,22 @@
 {
   "schema_version": "1.0.0",
-  "revision": 3,
+  "revision": 4,
   "work_item_id": "MV-CONT-005",
   "attempt_id": "MV-CONT-005-attempt-001",
   "track": "owner-ai-continuity",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "agent/mv-interaction-pilot-integration",
-  "status": "ready_for_review",
+  "status": "completed_verified",
   "started_at": "2026-08-05T23:44:00+00:00",
-  "updated_at": "2026-08-06T00:04:00+00:00",
-  "completed_at": null,
+  "updated_at": "2026-08-06T00:10:00+00:00",
+  "completed_at": "2026-08-06T00:10:00+00:00",
   "base_commit": "301d477b5c5955dc32cc3c7e3bddb1508fb35692",
-  "latest_pushed_commit": "6565f9afef16eee66071234acbf85f8cc75e9834",
-  "expected_remote_head": "6565f9afef16eee66071234acbf85f8cc75e9834",
+  "latest_pushed_commit": "86425c41e35ba8ed78f6d61e50cb3adea32ba678",
+  "expected_remote_head": "86425c41e35ba8ed78f6d61e50cb3adea32ba678",
   "pull_request": 146,
   "objective": "Pilot the installed owner-AI interaction controls against representative recovery, interruption, correction, deliverable, capability, source-coverage, UI-verification, notification, request-alignment, and reporting scenarios; measure prevention and intervention outcomes; integrate the scorecard and final operating amendments into AIOC, bootstrap, and the Project Bible.",
-  "last_verified_action": "All hosted checks passed on exact PR #146 head 6565f9afef16eee66071234acbf85f8cc75e9834, including interaction pilot run 31058326330, continuity run 31058326731, Project Bible validation run 31058326327, AIOC smoke run 31058326363, P9-06 validation run 31058326301, and every triggered interaction and Development Brain check.",
-  "active_substep": "Run the final checkpoint-consistency checks, verify PR #146 mergeability, and merge.",
+  "last_verified_action": "MV-CONT-005 PR #146 merged as squash commit 86425c41e35ba8ed78f6d61e50cb3adea32ba678 after all 24 triggered hosted workflows passed on exact head b872aa5904ae814d333839657c881c2e58235360.",
+  "active_substep": null,
   "completed_substeps": [
     "Completed and merged MV-CONT-001 continuity runtime",
     "Completed and merged MV-CONT-002 redacted interaction audit and evaluation corpus",
@@ -28,12 +28,13 @@
     "Added and indexed the normative Project Bible operating amendment",
     "Implemented the executable pilot harness, four regression tests, and dedicated CI",
     "Opened PR #146",
-    "Passed hosted executable pilot validation and four regression tests on the initial exact head",
+    "Passed hosted executable pilot validation and four regression tests",
     "Replaced byte-level scorecard comparison with semantic JSON equality",
     "Isolated the continuity false-completion regression fixture from live unresolved failures",
-    "Verified every hosted repository check on exact head 6565f9afef16eee66071234acbf85f8cc75e9834"
+    "Verified every hosted repository check on exact final PR head b872aa5904ae814d333839657c881c2e58235360",
+    "Merged PR #146 as squash commit 86425c41e35ba8ed78f6d61e50cb3adea32ba678"
   ],
-  "next_action": "Verify the final hosted consistency run and merge PR #146, then record completed_verified and return the primary execution route to P9-06-008 in a bounded follow-up change.",
+  "next_action": "Begin P9-06-008 in cybalicistjt-stack/Multiversal-app: verify the current application repository state, create a real implementation branch and STARTED checkpoint, and implement provider-neutral backup, restore, and provider-exit export ports while preserving IA-D03-003 as a planned parallel track.",
   "changed_paths": [
     "governance/ai/interaction-system/pilot/",
     "governance/ai/work-state/MV-CONT-005-attempt-001.json",
@@ -58,19 +59,15 @@
     {
       "command": "python tools/interaction_pilot.py validate",
       "status": "passed",
-      "evidence": "Hosted Validate Interaction Operational Pilot run 31058326330 PASS on exact head; 17/17 scenarios, 4/4 regression tests, and semantic deterministic regeneration PASS."
+      "evidence": "MV-CONT-005 final interaction pilot run 31058439820 PASS on exact head b872aa5904ae814d333839657c881c2e58235360; 17/17 scenarios, 4/4 regression tests, semantic deterministic regeneration, continuity, Project Bible, smoke, P9-06, interaction, and all Development Brain checks PASS."
     }
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
     {
-      "kind": "merge",
-      "value": "MV-CONT-004 completion record PR #145 squash commit 301d477b5c5955dc32cc3c7e3bddb1508fb35692 established the dependency boundary for MV-CONT-005."
-    },
-    {
       "kind": "commit",
-      "value": "MV-CONT-005 exact reviewed implementation head 6565f9afef16eee66071234acbf85f8cc75e9834"
+      "value": "MV-CONT-005 exact final implementation head b872aa5904ae814d333839657c881c2e58235360"
     },
     {
       "kind": "pull_request",
@@ -78,15 +75,19 @@
     },
     {
       "kind": "ci_run",
-      "value": "Interaction pilot run 31058326330 PASS; continuity 31058326731 PASS; Project Bible 31058326327 PASS; all other triggered checks PASS"
+      "value": "MV-CONT-005 final pilot run 31058439820 PASS; continuity run 31058439832 PASS; Project Bible run 31058439871 PASS; all 24 triggered workflows PASS"
+    },
+    {
+      "kind": "merge",
+      "value": "MV-CONT-005 PR #146 squash commit 86425c41e35ba8ed78f6d61e50cb3adea32ba678"
     }
   ],
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "notes": [
-    "This checkpoint remains non-complete until PR #146 is merged and its actual squash commit is recorded.",
-    "Pilot results distinguish executable control validation from future live longitudinal measurements.",
-    "No raw private conversations enter the pilot artifacts.",
+    "The owner-AI interaction side mission is complete through its approved pilot and integration step.",
+    "Live longitudinal owner-intervention reduction remains explicitly unmeasured until later real-session evidence exists.",
+    "No raw private conversations entered the public repository.",
     "The full roadmap remains outside the high-frequency save path.",
-    "P9-06-008 and IA-D03-003 remain explicit parallel tracks."
+    "P9-06-008 is the next application operation; IA-D03-003 remains a planned parallel track."
   ]
 }
