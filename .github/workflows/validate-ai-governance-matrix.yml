@@ -1,0 +1,15 @@
+name: Validate AI Governance Matrix
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/internal-alpha/IA-D08-002_*'
+      - 'governance/application-planning/internal-alpha/validate_ai_governance_matrix.py'
+      - '.github/workflows/validate-ai-governance-matrix.yml'
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python governance/application-planning/internal-alpha/validate_ai_governance_matrix.py
