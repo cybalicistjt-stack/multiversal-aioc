@@ -24,9 +24,9 @@ Scope, registry, dependency map, journeys, shared systems, acceptance matrix, de
 
 ## IA-D03 — Character and Campaign preparation
 
-1. **IA-D03-001 — MV-IA-F004 Character Creation and Advancement — complete.**
-2. **IA-D03-002 — MV-IA-F005 Campaign, Scene, and Session Builder — complete.**
-3. **IA-D03-003 — MV-IA-F012 Encounter Builder and Balance Lab — complete.**
+1. **IA-D03-001 — MV-IA-F004 Character Creation and Advancement packet — complete.**
+2. **IA-D03-002 — MV-IA-F005 Campaign, Scene, and Session Builder packet — complete.**
+3. **IA-D03-003 — MV-IA-F012 Encounter Builder and Balance Lab packet — complete.**
 4. **IA-D03-004 — alpha content and fixture specification — complete.**
    - specification: `IA-D03-004_INTERNAL_ALPHA_CONTENT_AND_FIXTURE_SPEC.md`
    - catalog: `INTERNAL_ALPHA_FIXTURE_CATALOG.json`
