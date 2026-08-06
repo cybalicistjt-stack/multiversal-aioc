@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.31.0  
+**Version:** 0.32.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -20,8 +20,8 @@ This backlog governs design packets, fixture specifications, and integration rev
 ## IA-D08 — Optional AI and experimental systems
 
 1. **IA-D08-001 — MV-IA-F023 Optional AI Assistant boundaries and interaction contract — complete.**
-2. **IA-D08-002 — AI permission, provenance, cost, and fallback matrix — next.**
-3. **IA-D08-003 — advanced map and vehicle deferral package — planned.**
+2. **IA-D08-002 — AI permission, provenance, cost, and fallback matrix — complete.**
+3. **IA-D08-003 — advanced map and vehicle deferral package — next.**
 4. **IA-D08-004 — broad offline deferral package — planned.**
 5. **IA-D08-005 — optional and experimental isolation review — planned.**
 
@@ -37,8 +37,12 @@ World, adventure, creator, Campaign-local content, authority, and authoring inte
 
 ### IA-D08-001
 
-The Optional AI Assistant is opt-in, advisory-only, permission-filtered, provenance- and cost-visible, provider-abstracted, accessible, recoverable, and unable to block core non-AI workflows or cross owner gates. It includes twenty-four deterministic fixtures, eight implementation slices, twenty-eight blocking criteria, seven resolved findings, and zero blocking findings.
+The Optional AI Assistant is opt-in, advisory-only, permission-filtered, provenance- and cost-visible, provider-abstracted, accessible, recoverable, and unable to block core non-AI workflows or cross owner gates.
+
+### IA-D08-002
+
+The AI governance matrix separates enablement, context, retrieval, tools, paid execution, provider routing, retention, export, and diagnostics; requires complete provenance, visible hard budgets, privacy-safe retention, deterministic fallback, accessibility, and duplicate-charge prevention. It includes twenty-four deterministic fixtures, eight implementation slices, twenty-eight blocking criteria, seven resolved findings, and zero blocking findings.
 
 ## Current next design item
 
-**IA-D08-002 — AI permission, provenance, cost, and fallback matrix — next.**
+**IA-D08-003 — advanced map and vehicle deferral package — next.**
