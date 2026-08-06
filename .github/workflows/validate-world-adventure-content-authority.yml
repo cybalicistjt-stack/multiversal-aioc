@@ -1,0 +1,15 @@
+name: Validate World Adventure Content Authority Matrix
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/internal-alpha/IA-D07-004_*'
+      - 'governance/application-planning/internal-alpha/validate_world_adventure_content_authority.py'
+      - '.github/workflows/validate-world-adventure-content-authority.yml'
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python governance/application-planning/internal-alpha/validate_world_adventure_content_authority.py
