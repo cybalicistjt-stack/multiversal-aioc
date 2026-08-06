@@ -1,0 +1,21 @@
+name: Validate Workflow Scope
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/*validation.yml'
+      - 'governance/application-planning/internal-alpha/validate_workflow_scope.py'
+  workflow_dispatch:
+concurrency:
+  group: workflow-scope-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python governance/application-planning/internal-alpha/validate_workflow_scope.py
