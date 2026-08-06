@@ -21,6 +21,10 @@ IA-D01 and IA-D02 are complete. Shared contracts cover governed objects, identit
 - IA-D03-004 — Internal Alpha Content and Deterministic Fixtures.
 - IA-D03-005 — Character/Campaign Integration Review.
 
+## IA-D03-002 — Campaign, Scene, and Session Builder
+
+Completed at design level with Campaign rules and packs, invitation and membership lifecycles, role, delegation, observer and Character-control separation, Scene drafts and stable-ID placements, safe previews, validation, immutable launch snapshots, exactly-once Session launch, Event recovery, exports, accessibility, and twenty blocking acceptance criteria.
+
 ## IA-D03-003 — Encounter Builder and Balance Lab
 
 Completed at design level with governed Encounter composition, stable-ID provenance, dependency and compatibility validation, twelve independent pressure dimensions, explicit uncertainty and omitted-variable tracking, source-grounded warnings, deterministic bounded simulation, scenario comparison, permission-safe projections, Scene attachment, recovery, accessibility, and twenty blocking acceptance criteria. The design prohibits guaranteed-balance, fairness, safety, victory, survival, optimality, and actual-play prediction claims.
