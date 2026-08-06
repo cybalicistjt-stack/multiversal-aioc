@@ -25,7 +25,7 @@ def main():
     need(co.get('metrics',{}).get('fixtures')==20 and co.get('metrics',{}).get('blockingFindings')==0,'completion metrics',e)
     b=F['backlog'].read_text();pr=F['program'].read_text();idx=F['index'].read_text()
     need('IA-D04-004 — authoritative result and history presentation — complete' in b,'backlog result',e)
-    need('IA-D04-005 — first-playable-loop implementation handoff — next' in b,'backlog next',e)
+    need(('IA-D04-005 — first-playable-loop implementation handoff — next' in b) or ('IA-D04-005 — first-playable-loop implementation handoff — complete' in b),'backlog handoff',e)
     need('IA-D04-004 — Authoritative Result and History Presentation' in pr,'program result',e)
     need('IA-D04-005 — First-Playable-Loop Implementation Handoff' in pr,'program next',e)
     need('IA-D04-004' in idx,'index result',e)
