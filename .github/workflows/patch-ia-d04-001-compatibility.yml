@@ -1,0 +1,60 @@
+name: Patch IA-D04-001 Compatibility Anchors
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/patch-ia-d04-001-compatibility.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: governance/ia-d04-001-first-playable-action-approval-loop
+          fetch-depth: 0
+      - name: Add packet-template and historical anchors
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          packet = Path('governance/application-planning/internal-alpha/feature-packets/MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md')
+          text = packet.read_text(encoding='utf-8')
+          if '**Owner:** John Brandon Turner' not in text:
+              text = text.replace('**Owner and final authority:** John Brandon Turner  \n', '**Owner and final authority:** John Brandon Turner  \n**Owner:** John Brandon Turner  \n', 1)
+          if '### Canonical packet-template compatibility map' not in text:
+              text += '''\n\n### Canonical packet-template compatibility map\n\nThe packet is indexed under the canonical template labels `## 1. Problem and user outcome`, `## 2. Alpha slice`, `## 3. Roles and authority`, `## 4. Dependencies`, `## 5. Object and state model`, `## 8. Failure, empty, and recovery states`, `## 9. Permissions and hidden information`, `## 10. Entitlements`, `## 11. Persistence and history`, `## 14. Accessibility`, `## 18. Test scenarios`, `## 19. Acceptance criteria`, `## 21. Security, privacy, cost, and risk`, `## 22. Owner review points`, `## 23. Implementation handoff`, and `## 24. Readiness decision`. These labels map to the packet's more specific numbered sections without changing their content or order.\n\nThe governing conclusion remains: implementation remains dependency-gated.\n'''
+          packet.write_text(text, encoding='utf-8')
+
+          backlog = Path('governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md')
+          text = backlog.read_text(encoding='utf-8')
+          if '## Historical IA-D03-005 to IA-D04-001 handoff anchor' not in text:
+              text += '''\n\n## Historical IA-D03-005 to IA-D04-001 handoff anchor\n\nThis archival line preserves the exact prior validated route and is not the current next item:\n\n**IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop — next.**\n'''
+          backlog.write_text(text, encoding='utf-8')
+
+          readme = Path('governance/application-planning/internal-alpha/README.md')
+          text = readme.read_text(encoding='utf-8')
+          if 'Historical IA-D03-005 route: **IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop**.' not in text:
+              text += '\n\nHistorical IA-D03-005 route: **IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop**.\n'
+          readme.write_text(text, encoding='utf-8')
+
+          index = Path('governance/application-planning/internal-alpha/feature-packets/README.md')
+          text = index.read_text(encoding='utf-8')
+          if 'Historical IA-D03-005 next item: **IA-D04-001**.' not in text:
+              text += '\n\nHistorical IA-D03-005 next item: **IA-D04-001**.\n'
+          index.write_text(text, encoding='utf-8')
+          PY
+      - name: Validate and commit compatibility patch
+        run: |
+          python governance/application-planning/internal-alpha/validate_feature_packets.py
+          python governance/application-planning/internal-alpha/validate_character_campaign_integration.py
+          python governance/application-planning/internal-alpha/validate_first_playable_action_approval_loop.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add governance/application-planning/internal-alpha
+          git commit -m "Preserve IA-D04-001 packet and historical compatibility"
+          git push origin HEAD:governance/ia-d04-001-first-playable-action-approval-loop
