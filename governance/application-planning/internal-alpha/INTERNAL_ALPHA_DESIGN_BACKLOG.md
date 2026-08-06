@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.25.0  
+**Version:** 0.26.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -58,8 +58,8 @@ Scope, registry, dependency map, journeys, shared systems, acceptance matrix, de
 
 ## IA-D07 — World, adventure, and Project depth
 
-1. **IA-D07-001 — MV-IA-F015 World and Setting Management — next.**
-2. **IA-D07-002 — MV-IA-F017 Adventure and Module Authoring — planned.**
+1. **IA-D07-001 — MV-IA-F015 World and Setting Management — complete.**
+2. **IA-D07-002 — MV-IA-F017 Adventure and Module Management — next.**
 3. **IA-D07-003 — bounded MV-IA-F018 Creator and Campaign-local Content — planned.**
 4. **IA-D07-004 — world/adventure content authority matrix — planned.**
 5. **IA-D07-005 — authoring integration review — planned.**
@@ -90,9 +90,13 @@ The Relationship Tracker, Factions/Reputation/Organizations, Social Interaction 
 
 The completed Combat and Assets phase integrates Full Combat Interface, Inventory/Ownership/Shared Assets, bounded Maps/Zones/Tactical Positioning, Vehicle/Mecha/Starship Operations, and the Combat/Asset Integrity Matrix into one authoritative runtime. It preserves distinct authority dimensions, atomic result groups, reservation and quantity integrity, semantic movement, Vehicle systems and stations, hidden-information filtering, accessibility parity, reconnect, Event-gap repair, compensating undo, pack lifecycle, and provenance. The final integration review records eight integrated journeys, eleven domain adapters, twenty-four deterministic fixtures, eight implementation slices, twenty-eight blocking acceptance criteria, seven resolved findings, and zero blocking findings. `P9-06-008-attempt-002` remains unfinished and unmodified.
 
+### IA-D07-001
+
+World and Setting Management defines stable World and SettingEntry identities, governed lifecycle states, immutable published versions, typed hierarchy and relations, semantic geography, permission-safe projections, Campaign-local overlays, reviewed source migrations, governed import/export, pack lifecycle, tombstones, provenance, recovery, optional-AI boundaries, and accessible nonvisual parity. It includes twenty-four deterministic fixtures, eight implementation slices, twenty-eight blocking acceptance criteria, seven resolved findings, and zero blocking findings. `P9-06-008-attempt-002` remains unfinished and unmodified.
+
 ## Current next design item
 
-**IA-D07-001 — MV-IA-F015 World and Setting Management — next.**
+**IA-D07-002 — MV-IA-F017 Adventure and Module Management — next.**
 
 ## Historical validation anchors
 
@@ -132,3 +136,5 @@ These archival statements preserve earlier validated routes and are not the curr
 **IA-D06-005 — combat/Asset integrity matrix — next.**
 
 **IA-D06-006 — combat and Assets integration review — next.**
+
+**IA-D07-001 — MV-IA-F015 World and Setting Management — next.**

@@ -1,0 +1,21 @@
+name: Validate World and Setting Management Design
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/internal-alpha/**'
+      - '.github/workflows/validate-ia-d07-001-world-setting-management.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run IA-D07-001 validator
+        run: python governance/application-planning/internal-alpha/validate_world_setting_management.py
