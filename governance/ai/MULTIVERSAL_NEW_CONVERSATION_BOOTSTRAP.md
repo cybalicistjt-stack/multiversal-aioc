@@ -2,7 +2,7 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 5.0.0  
+**Version:** 5.1.0  
 **Status:** ACTIVE  
 **Owner and final authority:** John Brandon Turner  
 **Governance repository:** `cybalicistjt-stack/multiversal-aioc`  
@@ -31,11 +31,12 @@ Perform this sequence before explaining, planning, or claiming work:
 2. Read this bootstrap from `main`.
 3. Read `governance/ai/runtime/CURRENT_WORK_POINTER.json`.
 4. Read the checkpoint named by `primary_attempt_id` and its exact branch or pull-request evidence.
-5. Inspect the latest commits, pull requests, reviews, and CI relevant to that checkpoint in both repositories.
-6. Read `governance/ci-failures/INDEX.md` from branch `ci/failure-records`; repair any current blocking failure before unrelated work.
-7. Read `governance/ai/runtime/ROADMAP_INDEX.json` and only the governing roadmap section for the primary work item.
-8. Load additional canonical documents only when required by the active operation. Do not read or rewrite the full roadmap merely to save routine progress.
-9. Run `python tools/continuity_state.py validate` when a usable checkout is available. When only connector access is available, verify the same pointer/checkpoint/evidence invariants directly.
+5. Read `governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json`. Treat it as the compact control-health projection; follow its source scorecard only when a pilot result, limitation, or regression needs inspection.
+6. Inspect the latest commits, pull requests, reviews, and CI relevant to the checkpoint in both repositories.
+7. Read `governance/ci-failures/INDEX.md` from branch `ci/failure-records`; repair any current blocking failure before unrelated work.
+8. Read `governance/ai/runtime/ROADMAP_INDEX.json` and only the governing roadmap section for the primary work item.
+9. Load additional canonical documents only when required by the active operation. Do not read or rewrite the full roadmap merely to save routine progress.
+10. Run `python tools/continuity_state.py validate` when a usable checkout is available. When only connector access is available, verify the same pointer/checkpoint/evidence invariants directly.
 
 Repository evidence is authoritative over stale prose. A newer verified commit, pull request, CI run, or checkpoint controls; stale governance must be corrected through a bounded verified change.
 
@@ -73,6 +74,24 @@ For every governed operation:
 
 If a conversation becomes unable to accept more messages, the latest pushed checkpoint and branch are the handoff. The next conversation must resume that exact recorded state even when no final chat response exists.
 
+## Material owner-correction protocol
+
+When John explicitly corrects a behavior, claim, omission, or operating assumption:
+
+1. repair or explicitly block the immediate work;
+2. determine whether recurrence risk is material;
+3. when material, capture a minimized correction record and proposed regression candidate through `tools/correction_regression.py`;
+4. never publish raw message text, conversation titles, or attachment content;
+5. never promote a candidate into the canonical evaluation extension without recorded owner approval and promotion evidence.
+
+Correction capture is part of the work, not a separate reminder the owner must issue.
+
+## Interaction-control health
+
+`governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json` is the compact AIOC view of the latest deterministic pilot. A passing scorecard means the installed repository controls passed their declared simulated scenarios. It does not prove long-term behavior in every interface. A null longitudinal intervention metric remains unmeasured and must not be described as improved without later evidence.
+
+If the scorecard is missing, stale, failing, or contradicts its source scorecard, treat interaction control health as a blocking governance defect and repair it before relying on the affected control.
+
 ## Parallel-track safety
 
 `CURRENT_WORK_POINTER.json` may record multiple attempts and deferred tracks, but it names exactly one primary attempt for conversational execution.
@@ -88,6 +107,7 @@ Routine progress writes go only to:
 - the active checkpoint;
 - the current-work pointer when selection changes;
 - the compact generated status record;
+- the interaction operational scorecard when its validated pilot changes;
 - the work branch and pull request.
 
 Patch the full roadmap only when a work item becomes `completed_verified`, a milestone or dependency changes, scope changes, an owner decision changes the plan, or a material risk or release gate changes. Prefer a small affected-section patch or generated status block.

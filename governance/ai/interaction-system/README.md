@@ -1,49 +1,50 @@
-# Multiversal Owner–AI Continuity System
+# Multiversal Owner–AI Interaction System
 
-**Document ID:** MV-CONT-001  
-**Version:** 1.0.0  
-**Status:** CANONICAL IMPLEMENTATION CANDIDATE  
+**Program:** MV-CONT-001 through MV-CONT-005  
+**Version:** 1.1.0  
+**Status:** CANONICAL IMPLEMENTATION PENDING MV-CONT-005 MERGE  
 **Owner and final authority:** John Brandon Turner
 
 ## Purpose
 
-This directory converts conversation continuity into repository-enforced state. It provides the static restart command, active-work pointer, work checkpoints, generated implementation status, roadmap indexing, validation, and acceptance tests required to prevent interrupted or partially completed work from being mistaken for finished work.
+This directory converts conversation continuity and recurring interaction failures into repository-enforced state, privacy-reviewed evaluation material, typed evidence controls, governed correction intake, and a repeatable operational pilot.
 
 ## Canonical runtime files
 
 - `../MULTIVERSAL_STATIC_RESTART_PROMPT.txt` — permanent owner-facing restart command.
-- `../runtime/CURRENT_WORK_POINTER.json` — small primary/parallel active-attempt index.
-- `../runtime/CURRENT_IMPLEMENTATION_STATUS.json` — generated status projection.
-- `../runtime/ROADMAP_INDEX.json` — bounded lookup from work items to roadmap or governing records.
-- `../work-state/<attempt-id>.json` — exact checkpoint for an active or retained attempt.
+- `../runtime/CURRENT_WORK_POINTER.json` — small primary/parallel attempt index.
+- `../runtime/CURRENT_IMPLEMENTATION_STATUS.json` — generated current-work projection.
+- `../runtime/INTERACTION_OPERATIONAL_SCORECARD.json` — compact control-health projection.
+- `../runtime/ROADMAP_INDEX.json` — bounded work-item-to-governance lookup.
+- `../work-state/<attempt-id>.json` — exact durable attempt checkpoint.
 
-## Contracts
+## Program layers
 
-- `OWNER_AI_INTERACTION_CONTRACT.md`
-- `WORK_CHECKPOINT.schema.json`
-- `CURRENT_WORK_POINTER.schema.json`
-- `CONTINUITY_ACCEPTANCE_TESTS.md`
+- `foundation/` — owner-approved continuity design, manifest, schemas, examples, and checksums.
+- `analysis/` — minimized episode timeline, friction taxonomy, and success-pattern catalog.
+- `evaluation/` — privacy-reviewed evaluation corpus and governed promoted-case extension.
+- `enforcement/` — authority mapping, control coverage, gap register, typed receipts, validation, and regression tests.
+- `corrections/` — minimized material-correction intake, deterministic deduplication, owner review, and evidence-gated promotion.
+- `pilot/` — executable operational scenarios, scorecard, method, report, and AIOC integration.
 
 ## Automation
 
-`tools/continuity_state.py` provides dependency-free commands to:
+- `tools/continuity_state.py` — checkpoint, pointer, completion-evidence, and compact-status control.
+- `tools/interaction_audit.py` — audit/evaluation validation and privacy checks.
+- `tools/interaction_enforcement.py` — control coverage and typed receipt validation.
+- `tools/correction_regression.py` — correction capture, deduplication, review, promotion, rollback, and validation.
+- `tools/interaction_pilot.py` — repeatable operational pilot and scorecard projection.
 
-- validate all continuity records;
-- start a new attempt without overwriting an existing active attempt;
-- update an attempt using expected-revision protection;
-- select a primary attempt;
-- regenerate the compact implementation-status projection.
-
-The tool changes local repository files. The active executor must commit and push each bounded atomic batch. A successful local write without a pushed commit is not durable project progress.
+A successful local write without a pushed commit is not durable project progress. Only `completed_verified` with its declared evidence gate is complete.
 
 ## Roadmap performance rule
 
-The full roadmap is not the autosave surface. Routine progress updates touch only the checkpoint, pointer, and generated status. The roadmap changes only at a verified completion boundary, dependency or scope change, owner decision, milestone transition, material risk, or release gate.
-
-## Foundation preservation
-
-The owner-approved v0.1.0 package documentation, manifest, schemas, examples, and checksums are preserved under `foundation/v0.1.0/`. The raw normalized corpus remains only in the owner-held immutable package identified by `FOUNDATION_PACKAGE_REFERENCE.json`.
+The full roadmap is not the autosave surface. Routine progress updates touch only the checkpoint, pointer, compact status, operational scorecard when its pilot changes, branch, and pull request. The roadmap changes only at a verified milestone, dependency or scope change, owner decision, material risk, or release gate.
 
 ## Privacy boundary
 
-The raw normalized conversation corpus is retained in the owner-held immutable foundation package and is intentionally not published to this public repository. `FOUNDATION_PACKAGE_REFERENCE.json` preserves its exact hash, byte count, and source counts. Any future training or evaluation publication must be minimized and redacted first.
+The raw normalized conversation corpus remains only in the owner-held immutable foundation package identified by `FOUNDATION_PACKAGE_REFERENCE.json`. Public analysis, evaluation, correction, and pilot records are minimized, paraphrased, and validated. Raw message text, titles, and attachment content are prohibited.
+
+## Measurement boundary
+
+The deterministic pilot measures installed repository controls against simulated positive and negative scenarios. It does not silently convert that result into a claim about long-term model behavior. Live longitudinal owner-intervention reduction remains explicitly unmeasured until later evidence exists.
