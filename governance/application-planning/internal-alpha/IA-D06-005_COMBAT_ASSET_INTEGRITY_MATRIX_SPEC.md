@@ -11,7 +11,7 @@ Prove that Full Combat Interface, Inventory/Ownership/Shared Assets, bounded Map
 
 ## 2. Governing invariants
 
-1. Every accepted combat operation produces one atomic authoritative result group.
+1. Every accepted combat operation produces a single atomic authoritative result group.
 2. Asset identity, quantity, lineage, ownership, custody, control, equipment, location, durability, and reservation are never conflated.
 3. Proposal approval does not itself mutate Assets; only committed authoritative results do.
 4. Denied, expired, cancelled, stale, superseded, or duplicated proposals consume nothing.
