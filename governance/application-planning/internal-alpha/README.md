@@ -21,6 +21,14 @@ IA-D01 and IA-D02 are complete. Shared contracts cover governed objects, identit
 - IA-D03-004 — Internal Alpha Content and Deterministic Fixtures.
 - IA-D03-005 — Character/Campaign Integration Review.
 
+## IA-D03-003 — Encounter Builder and Balance Lab
+
+Completed at design level with governed Encounter composition, stable-ID provenance, dependency and compatibility validation, twelve independent pressure dimensions, explicit uncertainty and omitted-variable tracking, source-grounded warnings, deterministic bounded simulation, scenario comparison, permission-safe projections, Scene attachment, recovery, accessibility, and twenty blocking acceptance criteria. The design prohibits guaranteed-balance, fairness, safety, victory, survival, optimality, and actual-play prediction claims.
+
+## IA-D03-004 — Internal Alpha Content and Deterministic Fixtures
+
+Completed at design level with 36 exact inherited source-backed fixtures, 119 explicitly synthetic noncanonical fixtures, five exact-version fixture packs, fifteen coverage families, migration and cleanup rules, deterministic checksum derivation, twenty blocking acceptance criteria, and zero blocking findings. The corpus is bounded test data, not the complete game and not a canonical release.
+
 ## IA-D03-005 — Character/Campaign Integration Review
 
 Complete at design level with:
@@ -61,3 +69,13 @@ Design work may proceed while implementation dependencies remain incomplete. No 
 ## Current next design action
 
 **IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop.**
+
+## Historical IA-D03-004 handoff anchor
+
+This archival block preserves the exact program wording validated when IA-D03-004 completed. It is historical evidence, not the current route or document version.
+
+**Version:** 0.11.0
+
+## IA-D03-004 — Internal Alpha Content and Deterministic Fixtures
+
+**IA-D03-005 — Character/Campaign integration review.**
