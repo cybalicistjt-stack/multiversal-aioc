@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.23.0  
+**Version:** 0.24.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -53,8 +53,8 @@ Scope, registry, dependency map, journeys, shared systems, acceptance matrix, de
 2. **IA-D06-002 — MV-IA-F008 Inventory, Ownership, and Shared Assets — complete.**
 3. **IA-D06-003 — bounded MV-IA-F013 Maps, Zones, and Tactical Positioning — complete.**
 4. **IA-D06-004 — basic MV-IA-F014 Vehicle, Mecha, and Starship Operations — complete.**
-5. **IA-D06-005 — combat/Asset integrity matrix — next.**
-6. **IA-D06-006 — combat and Assets integration review — planned.**
+5. **IA-D06-005 — combat/Asset integrity matrix — complete.**
+6. **IA-D06-006 — combat and Assets integration review — next.**
 
 ## IA-D07 — World, adventure, and Project depth
 
@@ -96,11 +96,15 @@ Bounded Maps, Zones, and Tactical Positioning defines four map modes, semantic z
 
 ### IA-D06-004
 
-Vehicle, Mecha, and Starship Operations defines ten operational classes, twelve stations, thirteen operational states, explicit command authority, semantic movement, systems and Resource models, atomic combat outcomes, damage/failure, boarding/docking, hidden-information protection, recovery, pack lifecycle, provenance, and accessible nonvisual operation. It includes twenty-four deterministic fixtures, eight implementation slices, twenty-eight blocking acceptance criteria, seven resolved findings, and zero blocking findings. `P9-06-008-attempt-002` remains unfinished and unmodified.
+Vehicle, Mecha, and Starship Operations defines ten operational classes, twelve stations, thirteen operational states, explicit command authority, semantic movement, systems and Resource models, atomic combat outcomes, damage/failure, boarding/docking, hidden-information protection, recovery, pack lifecycle, provenance, and accessible nonvisual operation.
+
+### IA-D06-005
+
+The Combat/Asset Integrity Matrix proves atomic integration across combat, Assets, tactical positioning, and Vehicle operations. It defines reservation and contention behavior, proposal-versus-commit cost timing, exact quantity and lineage handling, authority separation, hidden-information filtering, nested-Asset semantics, idempotency, version conflicts, status lookup, Event-gap recovery, compensating undo, pack lifecycle, provenance, and accessible parity. It includes twenty-four deterministic fixtures, eight implementation slices, twenty-eight blocking acceptance criteria, seven resolved findings, and zero blocking findings. `P9-06-008-attempt-002` remains unfinished and unmodified.
 
 ## Current next design item
 
-**IA-D06-005 — combat/Asset integrity matrix — next.**
+**IA-D06-006 — combat and Assets integration review — next.**
 
 ## Historical validation anchors
 
@@ -136,3 +140,5 @@ These archival statements preserve earlier validated routes and are not the curr
 **IA-D06-003 — bounded MV-IA-F013 Maps, Zones, and Tactical Positioning — next.**
 
 **IA-D06-004 — basic MV-IA-F014 Vehicle, Mecha, and Starship Operations — next.**
+
+**IA-D06-005 — combat/Asset integrity matrix — next.**

@@ -1,0 +1,19 @@
+{
+  "workItemId":"IA-D06-005",
+  "owner":"John Brandon Turner",
+  "sources":["IA-D06-001","IA-D06-002","IA-D06-003","IA-D06-004"],
+  "implementationSlices":[
+    {"sliceId":"CAI-S01","covers":["aggregate versions","idempotency","status lookup"]},
+    {"sliceId":"CAI-S02","covers":["reservations","contention","expiry"]},
+    {"sliceId":"CAI-S03","covers":["atomic costs","effects","result groups"]},
+    {"sliceId":"CAI-S04","covers":["equipment","quantities","durability","lineage"]},
+    {"sliceId":"CAI-S05","covers":["maps","vehicles","stations","nested assets"]},
+    {"sliceId":"CAI-S06","covers":["permissions","hidden information","accessibility"]},
+    {"sliceId":"CAI-S07","covers":["reconnect","event gaps","compensating undo"]},
+    {"sliceId":"CAI-S08","covers":["fixtures","observability","handoff"]}
+  ],
+  "acceptanceCriteriaCount":28,
+  "fixtureCount":24,
+  "blockingFindings":0,
+  "nextWorkItemId":"IA-D06-006"
+}
