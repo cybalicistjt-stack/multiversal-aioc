@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.15.0  
+**Version:** 0.16.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -37,8 +37,10 @@ Scope, registry, dependency map, journeys, shared systems, acceptance matrix, de
 3. **IA-D04-003 — two-device interruption and reconnect matrix — complete.**
    - result: six device roles, fifteen interruption boundaries, twenty recovery states, twenty-four deterministic fixtures, eight implementation slices, twenty blocking criteria, zero blocking findings
    - boundary: device-local state, review claims, notifications, caches, and realtime delivery remain advisory; durable Events and current server projections control
-4. **IA-D04-004 — authoritative result and history presentation — next.**
-5. IA-D04-005 — first-playable-loop implementation handoff.
+4. **IA-D04-004 — authoritative result and history presentation — complete.**
+   - result: eight presentation surfaces, eighteen result states, twenty-eight history fields, twenty deterministic fixtures, eight implementation slices, twenty blocking criteria, zero blocking findings
+   - boundary: only durable decisions, consumer commits, ordered Events, and current server projections may be presented as authoritative
+5. **IA-D04-005 — first-playable-loop implementation handoff — next.**
 
 ## IA-D05 — Relationship, social, and investigation systems
 
@@ -88,9 +90,13 @@ The Two-Device Interruption and Reconnect Matrix provides:
 
 Implementation remains dependency-gated by P9-06. Silent last-write-wins is prohibited.
 
+## IA-D04-004 completion record
+
+The Authoritative Result and History Presentation provides role-safe Player, GM, Assistant-GM, and observer outcomes; immutable original and final modification evidence; denial without accepted effects; committed cost, Effect, Condition, Resource, and target summaries; exact source versions; ordered duplicate-safe history; Event-gap recovery; revocation; exports; accessibility; twenty deterministic fixtures; twenty blocking criteria; and zero blocking findings.
+
 ## Current next design item
 
-**IA-D04-004 — Authoritative Result and History Presentation — next.**
+**IA-D04-005 — First-Playable-Loop Implementation Handoff — next.**
 
 ## Historical validation anchors
 
@@ -108,3 +114,5 @@ These archival lines preserve prior validated routes and are not the current nex
 **IA-D04-002 — proposal and approval shared-component contract — next.**
 
 **IA-D04-003 — two-device interruption and reconnect matrix — next.**
+
+**IA-D04-004 — authoritative result and history presentation — next.**
