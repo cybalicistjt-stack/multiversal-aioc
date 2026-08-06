@@ -1,0 +1,49 @@
+name: Validate Internal Alpha Content and Fixtures
+
+on:
+  pull_request:
+    paths:
+      - "governance/application-planning/internal-alpha/**"
+      - "governance/balance/8D-007_GOLDEN_CORPUS_MANIFEST.json"
+      - "governance/ai/runtime/**"
+      - "governance/ai/work-state/IA-D03-004-attempt-001.json"
+      - ".github/workflows/internal-alpha-content-fixtures-validation.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "governance/application-planning/internal-alpha/**"
+      - "governance/balance/8D-007_GOLDEN_CORPUS_MANIFEST.json"
+      - ".github/workflows/internal-alpha-content-fixtures-validation.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate IA-D03-004 package
+        run: python governance/application-planning/internal-alpha/validate_internal_alpha_content_fixtures.py
+      - name: Parse IA-D03-004 JSON artifacts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("governance/application-planning/internal-alpha")
+          names = [
+              "INTERNAL_ALPHA_FIXTURE_CATALOG.json",
+              "INTERNAL_ALPHA_FIXTURE_COVERAGE_MATRIX.json",
+              "IA-D03-004_IMPLEMENTATION_TRACEABILITY.json",
+              "IA-D03-004_COMPLETION_RECORD.json",
+          ]
+          for name in names:
+              path = root / name
+              json.loads(path.read_text(encoding="utf-8"))
+              print(path)
+          PY

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-06T01:59:00+00:00",
+  "updated_at": "2026-08-06T02:29:00+00:00",
   "entries": [
     {
       "work_item_id": "MV-CONT-001",
@@ -73,6 +73,15 @@
       "roadmap_section": "IA-D03-004 — alpha content and fixture specification",
       "dependencies": ["IA-D03-003"],
       "completion_gate": "A bounded, versioned, checksum-backed internal-alpha content and deterministic fixture specification covering the required Character, creature, NPC, Action, Ability, Effect, Condition, Resource, item, environment, hazard, objective, Scene, Encounter, and recovery cases, with explicit coverage limits, validation, CI, and merge evidence; the bounded corpus must not be represented as the complete game."
+    },
+    {
+      "work_item_id": "IA-D03-005",
+      "track": "internal-alpha-feature-design",
+      "governing_document": "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md",
+      "roadmap_document": "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md",
+      "roadmap_section": "IA-D03-005 — Character/Campaign integration review",
+      "dependencies": ["IA-D03-001", "IA-D03-002", "IA-D03-003", "IA-D03-004"],
+      "completion_gate": "A validated integration review proving that Character creation/advancement, Campaign/Scene/Session preparation, Encounter composition/analysis, and the bounded deterministic fixture corpus form one coherent permission-safe, versioned, recoverable preparation path, with traceability, zero blocking findings, CI, and merge evidence."
     }
   ]
 }

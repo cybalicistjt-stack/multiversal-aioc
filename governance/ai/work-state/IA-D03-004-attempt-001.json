@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 4,
+  "work_item_id": "IA-D03-004",
+  "attempt_id": "IA-D03-004-attempt-001",
+  "track": "internal-alpha-feature-design",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "branch": "governance/ia-d03-004-alpha-content-fixtures",
+  "status": "ready_for_review",
+  "started_at": "2026-08-06T02:11:00+00:00",
+  "updated_at": "2026-08-06T02:56:00+00:00",
+  "completed_at": null,
+  "base_commit": "fc26feaff67c347dc9d2c1abf4b876820b24349a",
+  "latest_pushed_commit": "1992bbd7c2fa0e233e9149b3c10b449973016240",
+  "expected_remote_head": "1992bbd7c2fa0e233e9149b3c10b449973016240",
+  "pull_request": 152,
+  "objective": "Define the bounded, versioned, checksum-backed internal-alpha content and deterministic fixture specification needed by the completed Character, Campaign, Scene, Session, Encounter, permission, recovery, pack, and accessibility contracts without representing the selected fixture corpus as the complete Multiversal game.",
+  "last_verified_action": "All 26 triggered PR #152 workflows passed on exact implementation head 1992bbd7c2fa0e233e9149b3c10b449973016240, including the normalized IA-D03-004 catalog and coverage checksum validator, internal-alpha validation, milestone-safe F005 and F012 validators, continuity and deterministic status regeneration, operational pilot, P9 backlog, smoke/baseline, correction regression, interaction enforcement, and all Development Brain checks.",
+  "active_substep": "Run the final consistency suite on the ready_for_review checkpoint projection; merge PR #152 only if every declared workflow remains green on that exact final state head and the pull request remains mergeable.",
+  "completed_substeps": [
+    "Completed and verified IA-D03-003",
+    "Created the real IA-D03-004 governance branch from canonical main",
+    "Resolved all 36 governed 8D-007 source-backed fixture identities",
+    "Defined 119 explicitly synthetic noncanonical fixture identities",
+    "Defined five exact-version fixture packs and dependency order",
+    "Created the 24-section content and fixture specification",
+    "Created checksum-bound fixture catalog and coverage matrix",
+    "Created complete acceptance traceability and ten implementation slices",
+    "Created review, readiness, and design-completion records",
+    "Added deterministic validator and dedicated CI",
+    "Updated the fixture baseline, design backlog, program index, and roadmap index",
+    "Passed local complete-package validation",
+    "Opened PR #152",
+    "Made the F005 and F012 validators milestone-aware and restored their historical completion anchors",
+    "Normalized catalog and coverage checksums from exact GitHub bytes through a self-removing one-shot workflow",
+    "Passed all 26 workflows on exact implementation head 1992bbd7c2fa0e233e9149b3c10b449973016240"
+  ],
+  "next_action": "Inspect every workflow on the final ready_for_review PR #152 head; if all declared checks pass and the PR is mergeable, squash-merge PR #152, then create a bounded completion record with the actual merge evidence before starting IA-D03-005.",
+  "changed_paths": [
+    "governance/application-planning/internal-alpha/IA-D03-004_INTERNAL_ALPHA_CONTENT_AND_FIXTURE_SPEC.md",
+    "governance/application-planning/internal-alpha/INTERNAL_ALPHA_CONTENT_AND_FIXTURES.md",
+    "governance/application-planning/internal-alpha/INTERNAL_ALPHA_FIXTURE_CATALOG.json",
+    "governance/application-planning/internal-alpha/INTERNAL_ALPHA_FIXTURE_COVERAGE_MATRIX.json",
+    "governance/application-planning/internal-alpha/IA-D03-004_IMPLEMENTATION_TRACEABILITY.json",
+    "governance/application-planning/internal-alpha/IA-D03-004_REVIEW_RECEIPT.md",
+    "governance/application-planning/internal-alpha/IA-D03-004_READINESS_RECORD.md",
+    "governance/application-planning/internal-alpha/IA-D03-004_COMPLETION_RECORD.json",
+    "governance/application-planning/internal-alpha/validate_internal_alpha_content_fixtures.py",
+    "governance/application-planning/internal-alpha/validate_encounter_builder_balance_lab_design.py",
+    "governance/application-planning/internal-alpha/validate_campaign_scene_session_design.py",
+    ".github/workflows/internal-alpha-content-fixtures-validation.yml",
+    "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md",
+    "governance/application-planning/internal-alpha/README.md",
+    "governance/ai/runtime/ROADMAP_INDEX.json",
+    "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+    "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
+    "governance/ai/work-state/IA-D03-004-attempt-001.json"
+  ],
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
+    "required_validation_commands": ["python governance/application-planning/internal-alpha/validate_internal_alpha_content_fixtures.py"],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {
+      "command": "python governance/application-planning/internal-alpha/validate_internal_alpha_content_fixtures.py",
+      "status": "passed",
+      "evidence": "Local complete-package PASS and final implementation-head hosted run 31067023216 PASS on 1992bbd7c2fa0e233e9149b3c10b449973016240. Exact ready_for_review-head rerun remains required before merge."
+    }
+  ],
+  "unresolved_failures": [],
+  "owner_decision_required": false,
+  "evidence": [
+    {"kind":"merge","value":"IA-D03-004 dependency IA-D03-003 completion record PR #151 squash merge fc26feaff67c347dc9d2c1abf4b876820b24349a"},
+    {"kind":"commit","value":"IA-D03-004 exact green implementation head 1992bbd7c2fa0e233e9149b3c10b449973016240"},
+    {"kind":"pull_request","value":"IA-D03-004 PR #152 — Complete IA-D03-004 internal-alpha content and fixture specification"},
+    {"kind":"ci_run","value":"IA-D03-004 exact-head suite: all 26 workflows PASS on 1992bbd7c2fa0e233e9149b3c10b449973016240, including fixture run 31067023216 and continuity run 31067023224"}
+  ],
+  "roadmap_projection_pending": true,
+  "notes": [
+    "The bounded alpha corpus is a deterministic test and design corpus, not the complete game, not a canonical content release, and not permission to discard unselected source material.",
+    "Synthetic fixtures are explicitly noncanonical; source-backed fixtures inherit immutable 8D-007 selectors and source truth.",
+    "P9-06-008-attempt-002 remains unfinished parallel application work.",
+    "No paid service, production credential, real-user data collection, internal-alpha release, production deployment, or public release is authorized."
+  ]
+}
