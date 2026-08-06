@@ -2,11 +2,20 @@ name: Validate Development Brain Safe Plan Proposals
 
 on:
   pull_request:
+    paths:
+      - 'governance/development-brain/**'
+      - 'scripts/development-brain/**'
+      - '.github/workflows/validate-development-brain-safe-plan-proposals.yml'
   workflow_dispatch:
+
+concurrency:
+  group: development-brain-safe-plan-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validate-safe-plan-proposals:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

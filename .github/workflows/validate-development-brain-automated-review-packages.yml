@@ -2,11 +2,20 @@ name: Validate Development Brain Automated Review Packages
 
 on:
   pull_request:
+    paths:
+      - 'governance/development-brain/**'
+      - 'scripts/development-brain/**'
+      - '.github/workflows/validate-development-brain-automated-review-packages.yml'
   workflow_dispatch:
+
+concurrency:
+  group: development-brain-automated-review-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validate-automated-review-packages:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

@@ -2,7 +2,15 @@ name: Validate Development Brain Orchestration Routing
 
 on:
   pull_request:
+    paths:
+      - 'governance/development-brain/**'
+      - 'scripts/development-brain/**'
+      - '.github/workflows/validate-development-brain-orchestration-routing.yml'
   workflow_dispatch:
+
+concurrency:
+  group: development-brain-orchestration-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -10,6 +18,7 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
