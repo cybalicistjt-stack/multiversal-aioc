@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.13.0  
+**Version:** 0.14.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -31,18 +31,15 @@ Scope, registry, dependency map, journeys, shared systems, acceptance matrix, de
    - result: 36 source-backed fixtures, 119 synthetic fixtures, 155 total identities, five packs, fifteen coverage families, twenty blocking criteria, zero blocking findings
    - boundary: bounded test corpus, not complete game, not canonical release
 5. **IA-D03-005 — Character/Campaign integration review — complete.**
-   - review: `feature-packets/IA-D03-005_CHARACTER_CAMPAIGN_INTEGRATION_REVIEW.md`
-   - contract matrix: `feature-packets/IA-D03-005_CHARACTER_CAMPAIGN_CONTRACT_MATRIX.json`
-   - findings: `feature-packets/IA-D03-005_INTEGRATION_FINDINGS_REGISTER.json`
-   - traceability: `feature-packets/IA-D03-005_IMPLEMENTATION_TRACEABILITY.json`
    - result: 28 normalized contracts, eight journeys, twelve resolved findings, ten implementation slices, twenty-four blocking criteria, zero blocking findings
-   - boundary: design integration only; implementation and release remain dependency-gated
 
 ## IA-D04 — First playable loop
 
 1. **IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop — complete.**
-2. **IA-D04-002 — proposal and approval shared-component contract — next.**
-3. IA-D04-003 — two-device interruption and reconnect matrix.
+2. **IA-D04-002 — proposal and approval shared-component contract — complete.**
+   - result: seven consumer profiles, twelve component surfaces, fifteen states, sixteen deterministic fixtures, eight implementation slices, twenty blocking criteria, zero blocking findings
+   - boundary: the component coordinates evidence and decisions but does not replace consumer-specific authority, validation, or atomic commit rules
+3. **IA-D04-003 — two-device interruption and reconnect matrix — next.**
 4. IA-D04-004 — authoritative result and history presentation.
 5. IA-D04-005 — first-playable-loop implementation handoff.
 
@@ -68,45 +65,36 @@ Traceability, fixture catalog, permission matrix, accessibility matrix, recovery
 
 ## IA-D03-005 completion record
 
-The completed Character/Campaign preparation integration provides:
-
-- one explicit precedence order across F004, F005, F012, IA-D03-004, and the IA-D02-006 shared foundations;
-- Campaign authority for policy, membership, roles, delegation, Character control, Scene validation, launch snapshots, and Session launch;
-- Character lifecycle and advancement under exact Campaign policy and version bindings;
-- source Definition, placement, instance, analysis snapshot, launch snapshot, Event, and projection separation;
-- permission-safe roster binding, preview, warnings, exports, diagnostics, and optional-AI projections;
-- advisory Encounter analysis with no guaranteed-balance, fairness, safety, victory, survival, or optimality claim;
-- conflict-safe commands, Events, reconnect, revocation, recovery, migration, and export;
-- 155 provenance-labeled deterministic fixture identities without canonical promotion or complete-game claims;
-- ten dependency-ordered implementation slices and an exact IA-D04-001 handoff;
-- zero blocking integration findings.
-
-Implementation remains dependency-gated by P9-06.
+The completed Character/Campaign preparation integration defines one coherent permission-safe, versioned, recoverable preparation path, preserves 155 provenance-labeled fixture identities, and advances to the first playable loop with zero blocking findings.
 
 ## IA-D04-001 completion record
 
-The implementation-ready First Playable Action and GM Approval Loop provides:
+The implementation-ready First Playable Action and GM Approval Loop defines Player and GM Action proposals, approve/deny/modify decisions, NPC/enemy parity, atomic `ActionResultCommitted` authority, role-filtered projections, idempotency, reconnect recovery, fourteen fixtures, ten slices, twenty blocking criteria, and zero blocking findings.
 
-- Player Action draft, quick rule inspection, target selection, costs, requirements, roll/seed, modifiers, computed result, proposed Effects, warnings, confirmation, submit, pending state, and result;
-- GM notification and inspection with Player/controller, actor, Action, source-linked rules, targets, costs, roll, modifiers, computed result, proposed Effects, and warnings;
-- approve, deny, and explicit field-addressed modify-and-approve decisions with attributable receipts;
-- the same governed review, decision, atomic commit, and history model for GM-controlled NPC and enemy Actions;
-- one durable authoritative outcome through accepted decisions and atomic `ActionResultCommitted` Events;
-- role-filtered synchronized projections with logs and My Proposals secondary in the Player view;
-- duplicate-submit suppression, stale-version conflict preservation, status lookup after ambiguous failure, reconnect, missed-event recovery, and revocation handling;
-- bounded offline drafts with no offline authoritative submit, decision, or commit;
-- fourteen deterministic fixtures, ten implementation slices, twenty blocking acceptance criteria, and zero blocking findings;
-- zero-AI and zero-paid-service core operation.
+## IA-D04-002 completion record
 
-Implementation remains dependency-gated by P9-06.
+The reusable Proposal and Approval Shared-Component Contract provides:
+
+- versioned consumer profiles for live Actions, GM NPC/enemy Actions, social outcomes, content submissions, optional AI suggestions, destructive changes, and canonical-promotion requests;
+- immutable original proposals and standard evidence slots;
+- permission-safe queues, notifications, and advisory review claims;
+- approve, deny, and field-addressed modify-and-approve decisions;
+- semantic modification diffs, final confirmation, and attributable durable receipts;
+- consumer-specific validators and atomic Event-backed commit adapters;
+- server-side proposer, decision-maker, observer, history, export, diagnostic, and AI projections;
+- idempotency, status lookup, reconnect, Event-gap recovery, and revocation;
+- responsive accessible parity, sixteen deterministic fixtures, eight implementation slices, twenty blocking acceptance criteria, and zero blocking findings;
+- zero paid-service and zero-AI core operation.
+
+Implementation remains dependency-gated by P9-06. Silence is not approval. Canonical promotion remains owner-gated.
 
 ## Current next design item
 
-**IA-D04-002 — Proposal and Approval Shared-Component Contract — next.**
+**IA-D04-003 — Two-Device Interruption and Reconnect Matrix — next.**
 
-## Historical IA-D03-004 validation anchor
+## Historical validation anchors
 
-This archival block preserves the exact handoff language validated when IA-D03-004 completed. It is historical evidence, not the current route or document version.
+These archival lines preserve prior validated routes and are not the current next item:
 
 **Version:** 0.11.0
 
@@ -115,9 +103,6 @@ This archival block preserves the exact handoff language validated when IA-D03-0
 
 **IA-D03-005 — Character/Campaign integration review.**
 
-
-## Historical IA-D03-005 to IA-D04-001 handoff anchor
-
-This archival line preserves the exact prior validated route and is not the current next item:
-
 **IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop — next.**
+
+**IA-D04-002 — proposal and approval shared-component contract — next.**
