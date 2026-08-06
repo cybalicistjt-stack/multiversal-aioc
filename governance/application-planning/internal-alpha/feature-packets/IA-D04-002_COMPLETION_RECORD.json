@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1.0.0",
+  "programId": "MV-IA-001",
+  "workItemId": "IA-D04-002",
+  "contractId": "MV-IA-SS06-PROPOSAL-APPROVAL",
+  "version": "0.1.0",
+  "status": "complete-design-implementation-ready",
+  "owner": "John Brandon Turner",
+  "completedAt": "2026-08-06T10:20:00Z",
+  "metrics": {
+    "packetSections": 24,
+    "consumerProfiles": 7,
+    "componentSurfaces": 12,
+    "stateVocabulary": 15,
+    "proposalRequiredFields": 24,
+    "decisionReceiptFields": 20,
+    "validationClasses": 24,
+    "operationTypes": 22,
+    "eventTypes": 22,
+    "deniedCases": 32,
+    "fixtures": 16,
+    "implementationSlices": 8,
+    "acceptanceCriteria": 20,
+    "blockingFindings": 0
+  },
+  "decisions": [
+    "consumer profiles are versioned and may narrow but never widen authority",
+    "original proposals are immutable",
+    "review claims are advisory",
+    "final decisions are approve, deny, or modify-and-approve",
+    "silence is not approval",
+    "modifications are field-addressed and attributable",
+    "domain commits are atomic and Event-backed",
+    "server-side projection precedes serialization",
+    "AI has no decision, commit, or canonical-promotion authority"
+  ],
+  "authorizations": {
+    "implementationAuthorized": false,
+    "paidServicesAuthorized": false,
+    "productionCredentialsAuthorized": false,
+    "realUserDataCollectionAuthorized": false,
+    "internalAlphaReleaseAuthorized": false,
+    "productionAuthorized": false,
+    "publicReleaseAuthorized": false,
+    "canonicalPromotionAuthorized": false
+  },
+  "nextDesignAction": {
+    "workItemId": "IA-D04-003",
+    "title": "Two-Device Interruption and Reconnect Matrix"
+  }
+}
