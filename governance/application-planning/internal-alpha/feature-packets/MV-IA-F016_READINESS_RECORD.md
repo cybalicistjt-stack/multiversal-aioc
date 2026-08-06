@@ -1,0 +1,22 @@
+# MV-IA-F016 Factions, Reputation, and Organizations — Readiness Record
+
+- **Design status:** implementation-ready; dependency-gated
+- **Contract families:** 16
+- **Membership statuses:** 9
+- **Visibility layers:** 9
+- **Owned domain commands:** 14
+- **Owned domain Events:** 14
+- **Source faction profiles:** 7
+- **Source canonical progression records:** 956
+- **Faction-register rows reviewed:** 153
+- **Stable faction references in register:** 0
+- **Deterministic fixtures:** 24
+- **Implementation slices:** 8
+- **Blocking acceptance criteria:** 28
+- **Resolved findings:** 6
+- **Unresolved findings:** 0
+- **Blocking findings:** 0
+- **Next design item:** IA-D05-003 — MV-IA-F010 Social Interaction Mode
+- **Owner decision required now:** no
+- **Implementation authorized:** no
+- **Release authorized:** no

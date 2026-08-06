@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0.0",
+  "workItemId": "IA-D05-002",
+  "featureId": "MV-IA-F016",
+  "owner": "John Brandon Turner",
+  "sources": [
+    {"sourceId":"social-gameplay-agent-instructions","pathInSourceBundle":"Current.zip/Aaaa/App instructions/Multiversal_Social_Gameplay_and_NPC_Interaction_Mode_Agentic_Team_Instructions.md","sha256":"77309d7696378b0037fd2d3b148f9fa7604aa41b7d2d90fded267db7812d96f4","lines":3454,"use":"primary faction, standing, influence, reaction, scope, and outcome requirements"},
+    {"sourceId":"game-framework-social-play","pathInSourceBundle":"Multiversal_DB-004_Game_Framework_v0.1.0.zip/DevelopmentBible/02-game-framework/social-play.md","sha256":"340cdeceb328b8458d79c63bb1cac1580e81d4dff451720c492817b33f2f2ff5","lines":48,"use":"relationship-versus-faction-standing and attributable Event boundaries"},
+    {"sourceId":"faction-register","pathInSourceBundle":"Aaab.zip/Multiversal_8E-004D_Faction_Register.csv","sha256":"d8415c40c0c51d37409df6fe4145ddcdb1b3f85e7962c54b2707ac34af96c047","rows":153,"notProvided":152,"roleImpliedNoStableFactionId":1,"stableFactionReferences":0,"use":"NPC faction provenance and explicit no-synthesis policy"},
+    {"sourceId":"faction-definition-schema","pathInSourceBundle":"8D-003/faction-definition.schema.json","sha256":"533f15a18e36c666a76bc57fced5a4f3ea6b3b9069d50ed134c38fcd2faa0840","use":"existing reusable definition shell"},
+    {"sourceId":"faction-live-schema","pathInSourceBundle":"8D-003/faction.schema.json","sha256":"6a164023f792e3b819aba0a984c0131762a6103e90a55205f524fd49e17f9089","use":"existing specialized Campaign faction contract and compatibility migration"},
+    {"sourceId":"reputation-record-schema","pathInSourceBundle":"8D-003/reputation-record.schema.json","sha256":"083c23e12abf302233fede3d06e89aa62a03dad98833d00b055b58091c13032d","use":"existing standing live-record shell"},
+    {"sourceId":"reputation-scale-schema","pathInSourceBundle":"8D-003/reputation-scale-definition.schema.json","sha256":"0fa07ce40dbe36aca433333a88a5a1f5e0fff06a2f227358712705bc2306bdb1","use":"profile-defined scale, labels, thresholds, decay, and consequences"},
+    {"sourceId":"faction-prestige-conversion-report","pathInSourceBundle":"8B-002F Faction and Prestige Progression Conversion Report","sha256":"0aec553f85984326f7a8c4ee7321ecf947fde74c599ff79ed3fd051959dfdf54","lines":58,"use":"seven converted organizations, corpus metrics, progression/authority/Project boundaries"}
+  ],
+  "factionRegisterPolicy": "Do not create faction IDs from occupations, titles, species, or implied organizations.",
+  "convertedOrganizations": [{"name":"Warden Faction","nodes":58},{"name":"McBride Agency","nodes":15},{"name":"Blackburn & Briar","nodes":50},{"name":"Katica Graduate","nodes":45},{"name":"Karma Ceutrica","nodes":15},{"name":"Sacred Order","nodes":45},{"name":"WarDogs","nodes":70}],
+  "progressionCorpus": {"factionProfiles":7,"tracks":30,"tiers":105,"capabilityNodes":298,"actions":154,"effects":298,"projects":48,"ruleDefinitions":15,"canonicalRecords":956,"balanceDecisions":27,"highImpactReviewed":176,"validationChecksPassed":16,"validationChecksTotal":16},
+  "canonicalContractEvidence": [
+    {"contract":"mv.object.faction-definition","status":"existing-catalog-shell","disposition":"refine detailed definition fields without changing stable identity or layers"},
+    {"contract":"mv.object.faction","status":"existing-specialized-strict","disposition":"preserve and extend through explicit record references; legacy memberNpcIds becomes compatibility index"},
+    {"contract":"mv.object.reputation-record","status":"existing-catalog-shell","disposition":"define scoped standing fields and keep player/faction/area/audience scope explicit"},
+    {"contract":"mv.object.reputation-scale-definition","status":"existing-catalog-shell","disposition":"define multiple profile kinds; no universal scale"}
+  ],
+  "unsupportedClaimsProhibited": ["153 source-backed faction memberships", "faction ID inferred from occupation or title", "universal standing scale", "progression grants membership rank office ownership equipment or permission", "complete faction simulation", "automatic canonical faction creation"],
+  "blockingFindings": []
+}

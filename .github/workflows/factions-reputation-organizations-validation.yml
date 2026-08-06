@@ -1,0 +1,22 @@
+name: Validate Factions Reputation and Organizations Design
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F016_*'
+      - 'governance/application-planning/internal-alpha/validate_factions_reputation_organizations.py'
+      - '.github/workflows/factions-reputation-organizations-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python governance/application-planning/internal-alpha/validate_factions_reputation_organizations.py
