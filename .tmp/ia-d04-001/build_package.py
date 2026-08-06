@@ -2,6 +2,12 @@ import base64,io,tarfile,json,subprocess
 from pathlib import Path
 ARCHIVE=''.join(Path(f'.tmp/ia-d04-001/chunk{i:02d}.txt').read_text() for i in range(1,6))
 with tarfile.open(fileobj=io.BytesIO(base64.b64decode(ARCHIVE)),mode='r:gz') as tf: tf.extractall('.')
+packet_path=Path('governance/application-planning/internal-alpha/feature-packets/MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md')
+packet=packet_path.read_text()
+compatibility='''\n### Explicit compatibility anchors\n\nMV-IA-F003, MV-IA-F004, and MV-IA-F005 are explicit controlling dependencies for identity/workspace, Character, and Campaign/Scene/Session authority.\n\nAction history and My Proposals remain secondary. Offline authoritative mutation is prohibited. Realtime messages are advisory.\n'''
+if '### Explicit compatibility anchors' not in packet:
+    packet=packet.replace('\n## 4. ',compatibility+'\n## 4. ',1)
+packet_path.write_text(packet)
 reg_path=Path('governance/application-planning/internal-alpha/INTERNAL_ALPHA_FEATURE_REGISTRY.json')
 reg=json.loads(reg_path.read_text())
 reg['version']='0.11.0'
