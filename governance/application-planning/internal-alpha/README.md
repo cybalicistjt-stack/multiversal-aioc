@@ -19,6 +19,10 @@ IA-D01 and IA-D02 are complete. Shared contracts cover governed objects, identit
 - IA-D03-002 — Campaign, Scene, and Session Builder.
 - IA-D03-003 — Encounter Builder and Balance Lab.
 
+## IA-D03-003 — Encounter Builder and Balance Lab
+
+Complete at design level with governed Encounter composition, stable-ID provenance, dependency and compatibility validation, twelve independent pressure dimensions, explicit uncertainty and omitted-variable tracking, source-grounded warnings, deterministic bounded simulation, scenario comparison, permission-safe projections, Scene attachment, recovery, accessibility, and twenty blocking acceptance criteria. The design prohibits guaranteed-balance, fairness, safety, victory, survival, optimality, and actual-play prediction claims.
+
 ## IA-D03-004 — Internal Alpha Content and Deterministic Fixtures
 
 Complete at design level with:
