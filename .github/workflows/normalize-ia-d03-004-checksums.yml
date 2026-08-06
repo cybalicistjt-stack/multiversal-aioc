@@ -1,0 +1,67 @@
+name: Normalize IA-D03-004 Checksums
+
+on:
+  push:
+    branches:
+      - governance/ia-d03-004-alpha-content-fixtures
+    paths:
+      - ".github/workflows/normalize-ia-d03-004-checksums.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: governance/ia-d03-004-alpha-content-fixtures
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Recompute exact canonical checksums
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          root = Path("governance/application-planning/internal-alpha")
+
+          def digest(value):
+              return hashlib.sha256(
+                  json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+              ).hexdigest()
+
+          catalog_path = root / "INTERNAL_ALPHA_FIXTURE_CATALOG.json"
+          catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+          catalog_core = dict(catalog)
+          catalog_core.pop("catalogChecksum", None)
+          catalog["catalogChecksum"] = digest(catalog_core)
+          catalog_path.write_text(json.dumps(catalog, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n", encoding="utf-8")
+
+          matrix_path = root / "INTERNAL_ALPHA_FIXTURE_COVERAGE_MATRIX.json"
+          matrix = json.loads(matrix_path.read_text(encoding="utf-8"))
+          matrix_core = dict(matrix)
+          matrix_core.pop("matrixChecksum", None)
+          matrix["matrixChecksum"] = digest(matrix_core)
+          matrix_path.write_text(json.dumps(matrix, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n", encoding="utf-8")
+
+          print("catalog", catalog["catalogChecksum"])
+          print("matrix", matrix["matrixChecksum"])
+          PY
+      - name: Remove one-shot workflow and commit deterministic normalization
+        run: |
+          git rm .github/workflows/normalize-ia-d03-004-checksums.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add governance/application-planning/internal-alpha/INTERNAL_ALPHA_FIXTURE_CATALOG.json
+          git add governance/application-planning/internal-alpha/INTERNAL_ALPHA_FIXTURE_COVERAGE_MATRIX.json
+          if git diff --cached --quiet; then
+            echo "No checksum correction required"
+          else
+            git commit -m "Normalize IA-D03-004 checksums"
+            git push origin HEAD:governance/ia-d03-004-alpha-content-fixtures
+          fi
