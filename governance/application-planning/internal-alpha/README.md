@@ -1,7 +1,7 @@
 # MV-IA-001 — Internal Alpha Feature Design Program
 
 **Document ID:** MV-IA-001  
-**Version:** 0.9.0  
+**Version:** 0.10.0  
 **Status:** ACTIVE — DESIGN PROGRAM  
 **Owner and final authority:** John Brandon Turner  
 **Established:** 2026-08-05
@@ -39,75 +39,51 @@ A screen description alone is not a completed feature design.
 
 ### Tranche IA-D01 — Program foundation
 
-Complete:
-
-- internal-alpha scope and success definition;
-- feature registry and classification;
-- dependency map;
-- Player and GM user journeys;
-- shared-system inventory;
-- acceptance matrix;
-- deferred-feature reconciliation;
-- bounded content and fixture baseline;
-- owner-decision register;
-- standard packet template;
-- ordered backlog;
-- machine validation and CI.
+Complete: scope, registry, dependency map, journeys, shared-system inventory, acceptance matrix, deferred-feature reconciliation, content and fixture baseline, owner-decision register, packet template, ordered backlog, validation, and CI.
 
 ### Tranche IA-D02 — Shared foundations
 
 Complete at design level:
 
-- **MV-IA-F002 — Universal Object Experience:** permission-safe browse, search, exact stable-ID lookup, inspection, provenance, relationships, comparison, and constrained selection;
-- **MV-IA-F020 — Permissions and Hidden Information:** deny-by-default authorization, field-safe projection, inference safety, revocation, exports, AI limits, diagnostics, and support-access boundaries;
-- **MV-IA-F003 — Identity, Dashboard, and Workspace Selection:** stable provider-neutral subjects, invitations, role-aware dashboards, safe workspace discovery, selected-context receipts, switching, revocation, and recovery;
-- **MV-IA-F021 — Autosave, Reconnect, Recovery, and Bounded Offline Use:** local versus authoritative state, idempotency, status lookup, Event-gap recovery, conflicts, checkpoints, offline manifests, and restore boundaries;
-- **MV-IA-F025 — Onboarding, Help, Diagnostics, and Issue Reporting:** role-specific onboarding, exact release identity, contextual help, known limitations, structured issues, diagnostic allowlisting, consent, attachments, receipts, follow-up, and export-only operation;
-- **IA-D02-006 — Shared-Foundations Integration Review:** twenty-four controlling contracts, five integrated journeys, eight resolved compatibility or safety findings, zero blocking findings, and twenty integrated acceptance criteria.
+- MV-IA-F002 Universal Object Experience;
+- MV-IA-F020 Permissions and Hidden Information;
+- MV-IA-F003 Identity, Dashboard, and Workspace Selection;
+- MV-IA-F021 Autosave, Reconnect, Recovery, and Bounded Offline Use;
+- MV-IA-F025 Onboarding, Help, Diagnostics, and Issue Reporting;
+- IA-D02-006 Shared-Foundations Integration Review.
 
-The integration review establishes one downstream baseline for:
-
-- canonical role IDs and workspace types;
-- stable identity and selected context;
-- authorization and projection precedence;
-- object selection and caller validation;
-- local drafts, authoritative saves, commands, Events, and projections;
-- idempotency and ambiguous-failure lookup;
-- reconnect, revocation, conflict, and bounded offline behavior;
-- release identity, diagnostics, issues, attachments, and separate support access;
-- responsive and accessible state equivalence;
-- provider-neutral adapters and zero-paid-service, zero-AI core operation.
+The integration review establishes the downstream baseline for canonical roles and workspaces, stable identity, authorization, field-safe projection, object selection, local versus authoritative state, idempotency, Event recovery, revocation, bounded offline use, diagnostics, issue reporting, support access, accessibility, provider-neutral adapters, and zero-service operation.
 
 ## IA-D03-001 — Character Creation and Advancement
 
-Complete at design level with:
-
-- Campaign-, rules-profile-, policy-, and pack-lock-bound Character drafts;
-- stable-ID governed selections and source-linked option inspection;
-- authoritative validation and deterministic calculation traces;
-- separate Character-control grants;
-- role-safe Character, history, export, diagnostic, and optional AI projections;
-- local draft, authoritative save, activation, advancement, correction, migration, retirement, archival, reconnect, and recovery contracts;
-- history-preserving entitlement, correction, and migration behavior;
-- twenty blocking acceptance criteria and a machine-readable Character matrix.
+Complete at design level with governed Character drafts, stable-ID selections, authoritative validation, deterministic calculations, Character control, role-safe projections, lifecycle history, persistence, reconnect, recovery, accessibility, twenty blocking acceptance criteria, and deterministic fixtures.
 
 Application implementation remains dependency-gated.
 
 ## IA-D03-002 — Campaign, Scene, and Session Builder
 
-Complete at design level with:
-
-- Campaign rules-profile, schema, entitlement-policy, and pack-lock binding;
-- explicit invitations, membership, role, Character-control, observer, and Assistant-GM delegation;
-- Scene drafts, stable-ID object placement, Campaign-local overrides, role-scoped notes, and accessible map alternatives;
-- server-generated Player and observer previews with hidden-information and inference protection;
-- authoritative dependency, entitlement, permission, Character-eligibility, and launch-readiness validation;
-- immutable launch snapshots and separate live Session state;
-- launch, entry, pause, resume, close, Event recovery, conflict, revocation, export, and diagnostics contracts;
-- realtime-advisory, server-authoritative, provider-neutral, zero-paid-service, and bounded-offline boundaries;
-- twenty blocking acceptance criteria and a machine-readable Campaign/Scene/Session matrix.
+Complete at design level with Campaign policy and pack binding, invitations, membership, roles, Character control, Scene drafts, stable-ID placements, local overrides, notes, accessible maps, safe previews, launch validation, immutable launch snapshots, Session lifecycle, Event recovery, exports, diagnostics, accessibility, twenty blocking criteria, and deterministic fixtures.
 
 Application implementation remains dependency-gated.
+
+## IA-D03-003 — Encounter Builder and Balance Lab
+
+Complete at design level with:
+
+- governed Encounter drafts bound to Campaign, Scene, Character roster, rules, schemas, packs, and analysis policy;
+- stable-ID composition and source-versus-placement provenance;
+- dependency, scale, compatibility, permission, entitlement, version, and integrity validation;
+- twelve transparent pressure dimensions;
+- evidence quality, uncertainty classes, omitted-variable disclosure, and sensitivity;
+- source-grounded warnings without guaranteed-balance claims;
+- deterministic bounded simulation and regression replay;
+- scenario comparisons and immutable analysis receipts;
+- permission-safe GM, Assistant-GM, Player, observer, export, diagnostic, and optional-AI projections;
+- Scene attachment without mutation of launch snapshots or live Sessions;
+- persistence, idempotency, concurrency, reconnect, revocation, bounded offline, export, migration, backup, restore, accessibility, and zero-service contracts;
+- twenty blocking acceptance criteria, forty-eight denied cases, and ten deterministic fixtures.
+
+Application implementation remains dependency-gated. No balance certification, paid simulation, production credential, real-user data collection, internal-alpha release, production deployment, or public release is authorized.
 
 ## File map
 
@@ -128,7 +104,7 @@ Packet and integration artifacts:
 
 - `feature-packets/README.md`
 - `feature-packets/FEATURE_PACKET_TEMPLATE.md`
-- implementation-ready F002, F020, F003, F021, F025, F004, and F005 packets and companion artifacts
+- implementation-ready F002, F020, F003, F021, F025, F004, F005, and F012 packets and companion artifacts
 - `feature-packets/IA-D02-006_SHARED_FOUNDATIONS_INTEGRATION_REVIEW.md`
 - `feature-packets/IA-D02-006_SHARED_FOUNDATIONS_CONTRACT_MATRIX.json`
 - `feature-packets/IA-D02-006_REVIEW_RECEIPT.md`
@@ -141,19 +117,21 @@ Validation:
 - `validate_shared_foundations_integration.py`
 - `validate_character_creation_design.py`
 - `validate_campaign_scene_session_design.py`
+- `validate_encounter_builder_balance_lab_design.py`
 - `.github/workflows/internal-alpha-design-validation.yml`
 - `.github/workflows/campaign-scene-session-design-validation.yml`
+- `.github/workflows/encounter-builder-balance-lab-design-validation.yml`
 
 ## Execution boundary
 
 MV-IA-001 may produce approved design packets while implementation dependencies remain incomplete. Implementation work orders are created only when service dependencies and repository gates are ready.
 
-No document in this directory authorizes paid service enrollment, production credentials, production deployment, collection of real tester diagnostics, internal-alpha release, public release, irreversible provider coupling, or canonical promotion of AI or contributor proposals.
+No document in this directory authorizes paid service enrollment, production credentials, production deployment, collection of real tester diagnostics, internal-alpha release, public release, irreversible provider coupling, guaranteed-balance claims, or canonical promotion of AI or contributor proposals.
 
 Silence is not approval.
 
 ## Current next design action
 
-**IA-D03-003 — Design MV-IA-F012, Encounter Builder and Balance Lab.**
+**IA-D03-004 — Define the internal-alpha content and deterministic fixture specification.**
 
-F012 must consume IA-D02-006, MV-IA-F004, and MV-IA-F005 rather than redefining identity, Character control, stable-ID selection, Campaign policy, Scene placements, launch snapshots, authorization, persistence, recovery, diagnostics, accessibility, or provider boundaries.
+This specification must consume the completed Character, Campaign, Scene, Session, Encounter, object, permission, recovery, pack, and accessibility contracts and provide a bounded reproducible corpus for the first playable loop.
