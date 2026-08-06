@@ -107,6 +107,8 @@ These archival statements preserve earlier validated routes and are not the curr
 - IA-D03-004 — alpha content and fixture specification — complete.
 - IA-D03-005 — Character/Campaign integration review — next.
 
+**IA-D03-005 — Character/Campaign integration review.**
+
 **IA-D03-005 — Character/Campaign integration review — next.**
 
 **IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop — next.**
