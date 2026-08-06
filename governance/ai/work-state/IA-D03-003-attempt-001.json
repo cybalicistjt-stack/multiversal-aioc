@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 3,
+  "revision": 4,
   "work_item_id": "IA-D03-003",
   "attempt_id": "IA-D03-003-attempt-001",
   "track": "internal-alpha-feature-design",
@@ -8,34 +8,37 @@
   "branch": "governance/mv-ia-d03-003-encounter-builder-balance-lab",
   "status": "validation_failed",
   "started_at": "2026-08-06T01:20:00+00:00",
-  "updated_at": "2026-08-06T01:51:00+00:00",
+  "updated_at": "2026-08-06T02:01:00+00:00",
   "completed_at": null,
   "base_commit": "f251c016267ce0db05f328ea059cbfdccaec95c6",
-  "latest_pushed_commit": "1645d3f8f51983667830393a2f0101a8f72060a8",
-  "expected_remote_head": "1645d3f8f51983667830393a2f0101a8f72060a8",
+  "latest_pushed_commit": "007e8bf22cf78e78befe42336edd1f2570f64315",
+  "expected_remote_head": "007e8bf22cf78e78befe42336edd1f2570f64315",
   "pull_request": 150,
   "objective": "Produce the implementation-ready MV-IA-F012 Encounter Builder and Balance Lab design packet, companion matrix, implementation traceability, review/readiness/completion records, deterministic validation, and dedicated CI while preserving uncertainty and prohibiting guaranteed-balance claims.",
-  "last_verified_action": "PR #150 opened and the dedicated F012 validator passed on exact initial head 31b0a093f8752138bfa9ee7c92028f3ad0d5e69a. Generic feature-packet validation then identified canonical-template heading and traceability-owner defects, and the operational pilot identified missing deferred parallel-route projections. All identified defects were repaired through head 1645d3f8f51983667830393a2f0101a8f72060a8; hosted reruns are pending.",
-  "active_substep": "Rerun hosted validation after conforming F012 to the canonical 24-section packet template, adding the required traceability owner, and explicitly preserving both the paused P9 route and planned IA-D03-004 route.",
+  "last_verified_action": "On exact PR #150 head 6320109c368e7cb49296a2b6550b57032a7df080, the dedicated F012 validator, generic internal-alpha validator, milestone-aware F005 validator, and operational interaction pilot all passed. Continuity then identified the missing IA-D03-004 roadmap-index entry and a stale compact projection. IA-D03-004 was indexed, the P9-06-008 index entry was aligned to its authoritative 17-table migration scope, and checkpoint/pointer/status synchronization is being repaired through the current atomic state batch.",
+  "active_substep": "Obtain a fully green exact-head PR #150 run after synchronizing the checkpoint, current-work pointer, compact status, and lightweight roadmap index; then advance to ready_for_review only after every required workflow passes.",
   "completed_substeps": [
     "Verified the canonical bootstrap and owner authority",
     "Read the exact IA-D03-003 backlog entry and MV-IA-F012 registry definition",
     "Verified IA-D03-001 and IA-D03-002 are complete dependencies",
     "Merged the P9-06-008 authoritative-backlog correction without changing the P9 implementation status",
     "Created the dedicated IA-D03-003 governance branch",
-    "Created the 24-section MV-IA-F012 feature packet with twenty blocking acceptance criteria",
+    "Created the canonical 24-section MV-IA-F012 feature packet with twenty blocking acceptance criteria",
     "Created the encounter-balance matrix with twelve pressure dimensions, eight uncertainty classes, forty-eight denied cases, and ten deterministic fixtures",
     "Created complete acceptance traceability and ten implementation slices",
     "Created review, readiness, and design-completion records",
     "Added the deterministic design validator and dedicated CI workflow",
     "Integrated F012 into the feature registry, backlog, program index, and packet index",
     "Passed local deterministic validation on the complete package",
-    "Opened PR #150 on exact head 31b0a093f8752138bfa9ee7c92028f3ad0d5e69a",
-    "Passed the dedicated F012 hosted validator on run 31063577997",
-    "Conformed the packet to the canonical feature-packet template and added traceability owner identity",
-    "Recorded the paused P9 attempt and planned IA-D03-004 route as explicit deferred-track projections"
+    "Opened PR #150",
+    "Passed the dedicated F012 hosted validator",
+    "Conformed F012 to the canonical packet template and added companion owner identity",
+    "Made the F005 validator milestone-aware and preserved the historical F005-to-F012 handoff",
+    "Preserved the paused P9 attempt and planned IA-D03-004 route as explicit parallel projections",
+    "Passed the operational pilot, generic internal-alpha, dedicated F012, and predecessor F005 validators on the repaired PR head",
+    "Added IA-D03-004 to the lightweight roadmap index and aligned the P9-06-008 index entry to authoritative scope"
   ],
-  "next_action": "Inspect the new exact-head PR #150 workflow results; repair any remaining ordinary validation failures; then advance IA-D03-003 to ready_for_review only when all required checks pass.",
+  "next_action": "Inspect all workflows on the synchronized exact PR #150 head; repair any remaining ordinary failure; when all declared checks pass, clear failures and advance the checkpoint, pointer, and compact status to ready_for_review before the final consistency run and merge.",
   "changed_paths": [
     "governance/application-planning/internal-alpha/feature-packets/MV-IA-F012_ENCOUNTER_BUILDER_AND_BALANCE_LAB.md",
     "governance/application-planning/internal-alpha/feature-packets/MV-IA-F012_ENCOUNTER_BALANCE_MATRIX.json",
@@ -44,11 +47,13 @@
     "governance/application-planning/internal-alpha/feature-packets/MV-IA-F012_READINESS_RECORD.md",
     "governance/application-planning/internal-alpha/feature-packets/MV-IA-F012_COMPLETION_RECORD.json",
     "governance/application-planning/internal-alpha/validate_encounter_builder_balance_lab_design.py",
+    "governance/application-planning/internal-alpha/validate_campaign_scene_session_design.py",
     ".github/workflows/encounter-builder-balance-lab-design-validation.yml",
     "governance/application-planning/internal-alpha/INTERNAL_ALPHA_FEATURE_REGISTRY.json",
     "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md",
     "governance/application-planning/internal-alpha/README.md",
     "governance/application-planning/internal-alpha/feature-packets/README.md",
+    "governance/ai/runtime/ROADMAP_INDEX.json",
     "governance/ai/runtime/CURRENT_WORK_POINTER.json",
     "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
     "governance/ai/work-state/IA-D03-003-attempt-001.json"
@@ -62,7 +67,7 @@
     {
       "command": "python governance/application-planning/internal-alpha/validate_encounter_builder_balance_lab_design.py",
       "status": "passed",
-      "evidence": "Local complete-package validation PASS and hosted run 31063577997 PASS on initial PR head 31b0a093f8752138bfa9ee7c92028f3ad0d5e69a. Exact repaired-head rerun remains required."
+      "evidence": "Local complete-package PASS; hosted dedicated runs 31063577997 and 31064202024 PASS. A final exact synchronized-head run remains required before ready_for_review."
     }
   ],
   "unresolved_failures": [
@@ -71,22 +76,29 @@
       "run_id": 31063577947,
       "classification": "template_conformance",
       "summary": "Generic ready-packet validation required exact canonical section headings and owner identity in every companion JSON.",
-      "repair": "Reformatted F012 to the canonical 24-section template and added owner to traceability."
+      "repair": "Reformatted F012 to the canonical 24-section template and added owner to traceability; subsequent generic feature-packet validation passed."
     },
     {
       "failure_id": "IA-D03-003-CI-002",
       "run_id": 31063577967,
       "classification": "parallel_track_projection",
       "summary": "Operational pilot required both application and internal-alpha routes to remain explicit through active or deferred projections.",
-      "repair": "Added the paused P9-06-008 route and planned IA-D03-004 route to deferred_tracks without changing attempt completion."
+      "repair": "Added the paused P9-06-008 route and planned IA-D03-004 route to deferred_tracks without changing attempt completion; subsequent operational pilot passed."
+    },
+    {
+      "failure_id": "IA-D03-003-CI-003",
+      "run_id": 31064202038,
+      "classification": "continuity_projection",
+      "summary": "Continuity required IA-D03-004 in ROADMAP_INDEX and an exact compact-status projection of the current checkpoint.",
+      "repair": "Added IA-D03-004 to ROADMAP_INDEX, aligned the stale P9-06-008 index entry, and synchronized checkpoint, pointer, and compact status in one atomic state batch."
     }
   ],
   "owner_decision_required": false,
   "evidence": [
     {"kind":"merge","value":"P9-06-008 governance correction PR #149 squash commit f251c016267ce0db05f328ea059cbfdccaec95c6"},
-    {"kind":"commit","value":"IA-D03-003 initial complete package head 31b0a093f8752138bfa9ee7c92028f3ad0d5e69a and repair head 1645d3f8f51983667830393a2f0101a8f72060a8"},
+    {"kind":"commit","value":"IA-D03-003 PR #150 implementation and repair sequence through state baseline 007e8bf22cf78e78befe42336edd1f2570f64315"},
     {"kind":"pull_request","value":"IA-D03-003 PR #150 — Complete IA-D03-003 Encounter Builder and Balance Lab design"},
-    {"kind":"ci_run","value":"Dedicated F012 run 31063577997 PASS on initial exact PR head; repaired-head full suite pending"}
+    {"kind":"ci_run","value":"F012 runs 31063577997 and 31064202024 PASS; internal-alpha run 31064202016 PASS; F005 run 31064201987 PASS; operational-pilot run 31064201971 PASS"}
   ],
   "roadmap_projection_pending": true,
   "notes": [
