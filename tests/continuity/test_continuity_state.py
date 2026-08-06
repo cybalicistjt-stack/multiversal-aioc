@@ -39,7 +39,6 @@ class ContinuityStateTests(unittest.TestCase):
         pointer = json.loads(pointer_path.read_text())
         attempt_id = pointer["primary_attempt_id"]
         entry = next(item for item in pointer["active_attempts"] if item["attempt_id"] == attempt_id)
-        checkpoint_path = self.root / entry["checkpoint_path"]
         return pointer_path, pointer, entry
 
     def make_primary_unfinished(self, *, strip_completion_evidence: bool = False) -> tuple[Path, int, str]:
@@ -52,6 +51,8 @@ class ContinuityStateTests(unittest.TestCase):
         checkpoint["next_action"] = "Exercise the requested checkpoint transition."
         checkpoint["updated_at"] = "2026-08-05T22:40:00+00:00"
         checkpoint["roadmap_projection_pending"] = True
+        checkpoint["unresolved_failures"] = []
+        checkpoint["owner_decision_required"] = False
         if strip_completion_evidence:
             tokens = (checkpoint["work_item_id"], checkpoint["attempt_id"])
             checkpoint["evidence"] = [
