@@ -1,7 +1,7 @@
 # MV-IA-001 — Internal Alpha Feature Design Program
 
 **Document ID:** MV-IA-001  
-**Version:** 0.13.0  
+**Version:** 0.14.0  
 **Status:** ACTIVE — DESIGN PROGRAM  
 **Owner and final authority:** John Brandon Turner
 
@@ -15,59 +15,13 @@ IA-D01 and IA-D02 are complete. Shared contracts cover governed objects, identit
 
 ## Completed Character and Campaign preparation
 
-- IA-D03-001 — Character Creation and Advancement.
-- IA-D03-002 — Campaign, Scene, and Session Builder.
-- IA-D03-003 — Encounter Builder and Balance Lab.
-- IA-D03-004 — Internal Alpha Content and Deterministic Fixtures.
-- IA-D03-005 — Character/Campaign Integration Review.
-
-## IA-D03-002 — Campaign, Scene, and Session Builder
-
-Completed at design level with Campaign rules and packs, invitation and membership lifecycles, role, delegation, observer and Character-control separation, Scene drafts and stable-ID placements, safe previews, validation, immutable launch snapshots, exactly-once Session launch, Event recovery, exports, accessibility, and twenty blocking acceptance criteria.
-
-## IA-D03-003 — Encounter Builder and Balance Lab
-
-Completed at design level with governed Encounter composition, stable-ID provenance, dependency and compatibility validation, twelve independent pressure dimensions, explicit uncertainty and omitted-variable tracking, source-grounded warnings, deterministic bounded simulation, scenario comparison, permission-safe projections, Scene attachment, recovery, accessibility, and twenty blocking acceptance criteria. The design prohibits guaranteed-balance, fairness, safety, victory, survival, optimality, and actual-play prediction claims.
-
-## IA-D03-004 — Internal Alpha Content and Deterministic Fixtures
-
-Completed at design level with 36 exact inherited source-backed fixtures, 119 explicitly synthetic noncanonical fixtures, five exact-version fixture packs, fifteen coverage families, migration and cleanup rules, deterministic checksum derivation, twenty blocking acceptance criteria, and zero blocking findings. The corpus is bounded test data, not the complete game and not a canonical release.
-
-## IA-D03-005 — Character/Campaign Integration Review
-
-Complete at design level with:
-
-- four reviewed preparation sources plus IA-D02-006 shared-foundation precedence;
-- 28 normalized integration contracts;
-- eight end-to-end preparation journeys;
-- twelve resolved integration findings and zero blocking findings;
-- ten dependency-ordered implementation slices;
-- twenty-four blocking acceptance criteria;
-- Campaign-scoped Character control and exact policy/version binding;
-- source Definition, placement, instance, analysis snapshot, launch snapshot, Event, and projection separation;
-- permission-safe roster, preview, warning, export, diagnostic, and optional-AI projections;
-- advisory Encounter analysis without guaranteed-balance claims;
-- immutable launch snapshots and an exact first-playable-loop handoff;
-- conflict-safe idempotency, reconnect, revocation, recovery, migration, and export;
-- 36 source-backed and 119 explicitly synthetic noncanonical fixture identities preserved.
-
-## Primary IA-D03-005 artifacts
-
-- `feature-packets/IA-D03-005_CHARACTER_CAMPAIGN_INTEGRATION_REVIEW.md`
-- `feature-packets/IA-D03-005_CHARACTER_CAMPAIGN_CONTRACT_MATRIX.json`
-- `feature-packets/IA-D03-005_INTEGRATION_FINDINGS_REGISTER.json`
-- `feature-packets/IA-D03-005_IMPLEMENTATION_TRACEABILITY.json`
-- `feature-packets/IA-D03-005_REVIEW_RECEIPT.md`
-- `feature-packets/IA-D03-005_READINESS_RECORD.md`
-- `feature-packets/IA-D03-005_COMPLETION_RECORD.json`
-- `validate_character_campaign_integration.py`
+IA-D03-001 through IA-D03-005 are complete, including Character, Campaign/Scene/Session, Encounter preparation, bounded deterministic fixtures, and the Character/Campaign integration review.
 
 ## IA-D04-001 — First Playable Action and GM Approval Loop
 
 Completed at design level with:
 
 - 24 numbered sections and twenty blocking acceptance criteria;
-- 24 shared-foundation and 28 Character/Campaign preparation contracts;
 - explicit Player proposal, GM review, approve/deny/modify, atomic result, projection, history, and recovery contracts;
 - GM-controlled NPC and enemy Action parity;
 - 18 states, 28 proposal fields, 20 decision-receipt fields, 28 validation classes, 28 operations, 28 Events, and 40 denied cases;
@@ -85,6 +39,37 @@ Primary artifacts:
 - `feature-packets/MV-IA-F006_COMPLETION_RECORD.json`
 - `validate_first_playable_action_approval_loop.py`
 
+## IA-D04-002 — Proposal and Approval Shared-Component Contract
+
+Completed at design level with:
+
+- seven versioned consumer profiles;
+- twelve reusable component surfaces;
+- fifteen canonical states;
+- twenty-four proposal fields and twenty decision-receipt fields;
+- twenty-four validation classes, twenty-two operations, twenty-two Events, and thirty-two denied cases;
+- immutable original proposals and standard evidence slots;
+- permission-safe queues, notifications, and advisory review claims;
+- approve, deny, and field-addressed modify-and-approve controls;
+- semantic modification diffs, final confirmation, and attributable durable receipts;
+- consumer-specific validation and atomic Event-backed commit adapters;
+- server-side projections, history, exports, diagnostics, optional-AI boundaries, idempotency, reconnect, recovery, and revocation;
+- sixteen deterministic fixtures, eight implementation slices, twenty blocking acceptance criteria, and zero blocking findings.
+
+Primary artifacts:
+
+- `feature-packets/IA-D04-002_PROPOSAL_APPROVAL_SHARED_COMPONENT_CONTRACT.md`
+- `feature-packets/IA-D04-002_PROPOSAL_APPROVAL_COMPONENT_MATRIX.json`
+- `feature-packets/IA-D04-002_IMPLEMENTATION_TRACEABILITY.json`
+- `feature-packets/IA-D04-002_REVIEW_RECEIPT.md`
+- `feature-packets/IA-D04-002_READINESS_RECORD.md`
+- `feature-packets/IA-D04-002_COMPLETION_RECORD.json`
+- `validate_proposal_approval_shared_component.py`
+
+## Governing decisions
+
+Silence is not approval. Review claims are advisory. Original proposals remain immutable. Modifications are explicit and attributable. Consumer profiles may narrow but cannot widen authority. AI has no decision, commit, or canonical-promotion authority.
+
 ## Preparation boundary
 
 The fixture corpus is bounded test data, not the complete game and not a canonical content release. Synthetic fixtures remain noncanonical. Encounter analysis remains advisory and cannot guarantee balance, fairness, safety, victory, survival, or optimality.
@@ -95,11 +80,11 @@ Design work may proceed while implementation dependencies remain incomplete. No 
 
 ## Current next design action
 
-**IA-D04-002 — Proposal and Approval Shared-Component Contract.**
+**IA-D04-003 — Two-Device Interruption and Reconnect Matrix.**
 
-## Historical IA-D03-004 handoff anchor
+## Historical validation anchors
 
-This archival block preserves the exact program wording validated when IA-D03-004 completed. It is historical evidence, not the current route or document version.
+The following lines preserve prior validated routes and are not the current route:
 
 **Version:** 0.11.0
 
@@ -107,5 +92,6 @@ This archival block preserves the exact program wording validated when IA-D03-00
 
 **IA-D03-005 — Character/Campaign integration review.**
 
-
 Historical IA-D03-005 route: **IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop**.
+
+Historical IA-D04-001 route: **IA-D04-002 — Proposal and Approval Shared-Component Contract**.
