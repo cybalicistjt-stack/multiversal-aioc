@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.19.0  
+**Version:** 0.20.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -49,8 +49,8 @@ Scope, registry, dependency map, journeys, shared systems, acceptance matrix, de
 
 ## IA-D06 — Combat and Assets
 
-1. **IA-D06-001 — MV-IA-F007 Full Combat Interface — next.**
-2. **IA-D06-002 — MV-IA-F008 Inventory, Ownership, and Shared Assets — planned.**
+1. **IA-D06-001 — MV-IA-F007 Full Combat Interface — complete.**
+2. **IA-D06-002 — MV-IA-F008 Inventory, Ownership, and Shared Assets — next.**
 3. **IA-D06-003 — bounded MV-IA-F013 Maps, Zones, and Tactical Positioning — planned.**
 4. **IA-D06-004 — basic MV-IA-F014 Vehicle, Mecha, and Starship Operations — planned.**
 5. **IA-D06-005 — combat/Asset integrity matrix — planned.**
@@ -78,25 +78,17 @@ The completed Character/Campaign preparation integration defines one coherent pe
 
 The first playable loop defines Player and GM Action proposals, approve/deny/modify decisions, NPC/enemy parity, atomic authoritative results, role-filtered projections, reconnect recovery, reusable proposal/approval, two-device interruption handling, authoritative history presentation, and a twelve-package implementation handoff. `P9-06-008-attempt-002` remains unfinished parallel work.
 
-### IA-D05-001 through IA-D05-003
+### IA-D05
 
-The Relationship Tracker, Factions/Reputation/Organizations, and Social Interaction Mode establish directional relationship history, faction membership/standing/influence separation, and roleplay-first social resolution with permission-safe persistent consequences.
+The Relationship Tracker, Factions/Reputation/Organizations, Social Interaction Mode, Investigation and Clue Board, Graph/List Accessibility Matrix, and Noncombat Integration Review establish one permission-safe noncombat runtime with distinct authority, hidden-information protection, atomic cross-domain outcomes, recovery, provenance, and accessible semantic parity.
 
-### IA-D05-004
+### IA-D06-001
 
-The Investigation and Clue Board defines ten core record types, fifteen typed connection forms, server-authoritative discovery and reveal, strict separation of truth, claims, hypotheses, and conclusions, accessible graph/list parity, twenty-four deterministic fixtures, eight implementation slices, twenty-eight blocking criteria, seven resolved findings, and zero blocking findings.
-
-### IA-D05-005
-
-The Graph/List Accessibility Matrix defines one semantic node/edge projection and six equivalent views for Relationship, Faction, Social, and Investigation surfaces, including keyboard, screen-reader, touch, responsive, virtualization, hidden-topology, reconnect, export, diagnostic, and optional-AI parity.
-
-### IA-D05-006
-
-The Noncombat Integration Review proves that Relationship, Faction, Social, Investigation, and accessible graph/list contracts form one coherent runtime while preserving distinct domain authority, truth/belief/hypothesis separation, atomic cross-domain outcomes, role-safe projections, recovery, provenance, and optional-AI boundaries. It includes eight integrated journeys, eleven domain adapters, twenty-four deterministic fixtures, eight implementation slices, twenty-eight blocking acceptance criteria, seven resolved findings, and zero blocking findings. `P9-06-008-attempt-002` remains unfinished and unmodified.
+The Full Combat Interface defines ten encounter states, eight participant types, nine timing types, thirteen Effect processors, semantic movement/positioning, targeting, Resources, Conditions, reactions, hazards, defeat/withdrawal, explicit completion, role-safe Player and GM presentation, recovery, and optional-AI boundaries. It includes twenty-four deterministic fixtures, eight implementation slices, twenty-eight blocking acceptance criteria, seven resolved findings, and zero blocking findings. `P9-06-008-attempt-002` remains unfinished and unmodified.
 
 ## Current next design item
 
-**IA-D06-001 — MV-IA-F007 Full Combat Interface — next.**
+**IA-D06-002 — MV-IA-F008 Inventory, Ownership, and Shared Assets — next.**
 
 ## Historical validation anchors
 
