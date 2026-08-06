@@ -1,62 +1,80 @@
 {
   "schema_version": "1.0.0",
-  "revision": 2,
+  "revision": 3,
   "work_item_id": "IA-D04-002",
   "attempt_id": "IA-D04-002-attempt-001",
   "track": "internal-alpha-feature-design",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "governance/ia-d04-002-proposal-approval-component-contract",
-  "status": "ready_for_review",
+  "status": "completed_verified",
   "started_at": "2026-08-06T10:13:00+00:00",
-  "updated_at": "2026-08-06T10:20:00+00:00",
-  "completed_at": null,
+  "updated_at": "2026-08-06T10:29:00+00:00",
+  "completed_at": "2026-08-06T10:28:25+00:00",
   "base_commit": "311ec83f6042d08cc78e1d9548457bab95386383",
-  "latest_pushed_commit": "a055d008939142e91cc37dc8a4ee67fc222bd4be",
-  "expected_remote_head": "a055d008939142e91cc37dc8a4ee67fc222bd4be",
-  "pull_request": null,
+  "latest_pushed_commit": "b9fbe19cca0043a341c4f677d90972fe6cceb7eb",
+  "expected_remote_head": "b9fbe19cca0043a341c4f677d90972fe6cceb7eb",
+  "pull_request": 157,
   "objective": "Extract the proposal, evidence, queue, review, approve/deny/modify, receipt, projection, history, and recovery model proven by MV-IA-F006 into one reusable shared component without widening authority or replacing consumer-specific validation and atomic commit rules.",
-  "last_verified_action": "Constructed the complete IA-D04-002 package, deterministic fixtures, traceability, validation workflow, and exact IA-D04-003 handoff in one milestone batch.",
-  "active_substep": "Open the single final pull request and inspect only failed hosted checks.",
+  "last_verified_action": "IA-D04-002 PR #157 passed all 28 exact-final-head workflows on b9fbe19cca0043a341c4f677d90972fe6cceb7eb and squash-merged as 0e8a713cc9f022cb3e9df1306da2a827f3822492.",
+  "active_substep": null,
   "completed_substeps": [
     "Reviewed IA-D02-006, IA-D03-005, SS-06, MV-IA-F006, and the F006 action/approval matrix.",
-    "Defined seven consumer profiles and twelve component surfaces.",
+    "Defined seven consumer profiles and twelve reusable component surfaces.",
     "Defined immutable proposal, evidence, queue, notification, review claim, approve/deny/modify, receipt, domain adapter, projection, history, recovery, accessibility, and AI boundaries.",
     "Created sixteen deterministic fixtures, eight implementation slices, twenty blocking acceptance criteria, and zero blocking findings.",
-    "Advanced the exact design route to IA-D04-003."
+    "Passed targeted validation and all 28 exact-final-head hosted workflows.",
+    "Squash-merged PR #157 and advanced the route to IA-D04-003."
   ],
-  "next_action": "Open one PR, use the combined hosted gate, inspect only failed checks, and squash-merge when green.",
+  "next_action": "Continue IA-D04-003 — Two-Device Interruption and Reconnect Matrix.",
   "changed_paths": [
     ".github/workflows/proposal-approval-shared-component-validation.yml",
-    "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
-    "governance/ai/runtime/CURRENT_WORK_POINTER.json",
-    "governance/ai/runtime/ROADMAP_INDEX.json",
-    "governance/ai/work-state/IA-D04-001-attempt-001.json",
-    "governance/ai/work-state/IA-D04-002-attempt-001.json",
-    "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md",
-    "governance/application-planning/internal-alpha/README.md",
     "governance/application-planning/internal-alpha/feature-packets/IA-D04-002_PROPOSAL_APPROVAL_SHARED_COMPONENT_CONTRACT.md",
     "governance/application-planning/internal-alpha/feature-packets/IA-D04-002_PROPOSAL_APPROVAL_COMPONENT_MATRIX.json",
     "governance/application-planning/internal-alpha/feature-packets/IA-D04-002_IMPLEMENTATION_TRACEABILITY.json",
-    "governance/application-planning/internal-alpha/feature-packets/IA-D04-002_REVIEW_RECEIPT.md",
-    "governance/application-planning/internal-alpha/feature-packets/IA-D04-002_READINESS_RECORD.md",
-    "governance/application-planning/internal-alpha/feature-packets/IA-D04-002_COMPLETION_RECORD.json",
-    "governance/application-planning/internal-alpha/feature-packets/README.md",
     "governance/application-planning/internal-alpha/validate_proposal_approval_shared_component.py"
   ],
   "completion_gate": {
-    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
-    "required_validation_commands": ["python governance/application-planning/internal-alpha/validate_proposal_approval_shared_component.py"],
+    "required_evidence_kinds": [
+      "commit",
+      "pull_request",
+      "ci_run",
+      "merge"
+    ],
+    "required_validation_commands": [
+      "python governance/application-planning/internal-alpha/validate_proposal_approval_shared_component.py"
+    ],
     "owner_approval_required": false
   },
-  "validation": [],
+  "validation": [
+    {
+      "command": "python governance/application-planning/internal-alpha/validate_proposal_approval_shared_component.py",
+      "status": "passed",
+      "evidence": "IA-D04-002 exact-final-head hosted validation: 28 of 28 workflows passed."
+    }
+  ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
-    {"kind": "commit", "value": "IA-D04-002 package branch through a055d008939142e91cc37dc8a4ee67fc222bd4be"}
+    {
+      "kind": "commit",
+      "value": "IA-D04-002 exact final head b9fbe19cca0043a341c4f677d90972fe6cceb7eb"
+    },
+    {
+      "kind": "pull_request",
+      "value": "IA-D04-002 PR #157"
+    },
+    {
+      "kind": "ci_run",
+      "value": "IA-D04-002 exact-final-head hosted validation: 28 of 28 workflows passed"
+    },
+    {
+      "kind": "merge",
+      "value": "IA-D04-002 squash merge 0e8a713cc9f022cb3e9df1306da2a827f3822492"
+    }
   ],
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "notes": [
-    "MV-AI-EFFICIENCY-001 applied: one construction batch and one final hosted gate.",
+    "MV-AI-EFFICIENCY-001 applied.",
     "P9-06-008-attempt-002 remains unfinished parallel application work.",
     "No implementation, paid service, credential, real-user data, release, deployment, public release, AI authority, or canonical promotion is authorized."
   ]
