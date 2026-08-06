@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "work_item_id": "IA-D04-001",
+  "attempt_id": "IA-D04-001-attempt-001",
+  "track": "internal-alpha-feature-design",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "branch": "governance/ia-d04-001-first-playable-action-approval-loop",
+  "status": "started",
+  "started_at": "2026-08-06T09:27:00+00:00",
+  "updated_at": "2026-08-06T09:27:00+00:00",
+  "completed_at": null,
+  "base_commit": "2a5da3c85628dc53f4787358d605a3ae1ee05d29",
+  "latest_pushed_commit": null,
+  "expected_remote_head": "2a5da3c85628dc53f4787358d605a3ae1ee05d29",
+  "pull_request": null,
+  "objective": "Design MV-IA-F006 First Playable Action and GM Approval Loop as an implementation-ready, permission-safe, interruption-tolerant contract for Player, GM, Assistant-GM, NPC, and enemy Actions, including intent, target, ability/rules context, deterministic resolution evidence, GM approve/deny/modify authority, authoritative Events, result history, and recovery.",
+  "last_verified_action": "IA-D03-005 completed_verified after PR #154 passed all 26 workflows and merged; IA-D04-001 branch created from merge 2a5da3c85628dc53f4787358d605a3ae1ee05d29.",
+  "active_substep": "Construct the complete MV-IA-F006 packet and companion validation package from canonical feature requirements, shared foundations, and IA-D03 preparation contracts without routine checkpoint rewrites.",
+  "completed_substeps": [],
+  "next_action": "Review canonical F006 requirements and predecessor contracts; create the packet, machine matrix, traceability, review/readiness/completion records, deterministic fixtures, validator, CI, and bounded backlog/index updates; then record one ready_for_review checkpoint.",
+  "changed_paths": [
+    "governance/application-planning/internal-alpha/feature-packets/MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+    "governance/application-planning/internal-alpha/feature-packets/MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+    "governance/application-planning/internal-alpha/feature-packets/MV-IA-F006_IMPLEMENTATION_TRACEABILITY.json",
+    "governance/application-planning/internal-alpha/feature-packets/MV-IA-F006_REVIEW_RECEIPT.md",
+    "governance/application-planning/internal-alpha/feature-packets/MV-IA-F006_READINESS_RECORD.md",
+    "governance/application-planning/internal-alpha/feature-packets/MV-IA-F006_COMPLETION_RECORD.json",
+    "governance/application-planning/internal-alpha/validate_first_playable_action_approval_loop.py",
+    ".github/workflows/first-playable-action-approval-validation.yml"
+  ],
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
+    "required_validation_commands": ["python governance/application-planning/internal-alpha/validate_first_playable_action_approval_loop.py"],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {
+      "command": "python governance/application-planning/internal-alpha/validate_first_playable_action_approval_loop.py",
+      "status": "not_run",
+      "evidence": null
+    }
+  ],
+  "unresolved_failures": [],
+  "owner_decision_required": false,
+  "evidence": [],
+  "roadmap_projection_pending": true,
+  "notes": [
+    "MV-AI-EFFICIENCY-001 applies: no routine substep checkpoint or pointer rewrites.",
+    "P9-06-008-attempt-002 remains unfinished parallel application work.",
+    "No implementation activation, paid service, credential, real-user data collection, internal-alpha release, production deployment, or public release is authorized."
+  ]
+}
