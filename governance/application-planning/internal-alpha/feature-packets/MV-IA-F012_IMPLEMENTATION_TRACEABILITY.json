@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.0.0",
+  "workItemId": "IA-D03-003",
+  "featureId": "MV-IA-F012",
+  "packet": "MV-IA-F012_ENCOUNTER_BUILDER_AND_BALANCE_LAB.md",
+  "matrix": "MV-IA-F012_ENCOUNTER_BALANCE_MATRIX.json",
+  "acceptanceTraceability": [
+    {"criterionId":"EBL-AC-001","packetSections":[5],"matrixSurfaces":["acceptanceCriteria","deniedCases","fixtures"],"implementationSlices":["aggregate"],"testIntent":"Authorized GM creates a version-bound Encounter draft."},
+    {"criterionId":"EBL-AC-002","packetSections":[6],"matrixSurfaces":["acceptanceCriteria","deniedCases","fixtures"],"implementationSlices":["selection-provenance"],"testIntent":"All selections use stable governed IDs and source receipts."},
+    {"criterionId":"EBL-AC-003","packetSections":[6],"matrixSurfaces":["acceptanceCriteria","deniedCases"],"implementationSlices":["placement-boundary"],"testIntent":"Encounter-local data never mutates source or live state."},
+    {"criterionId":"EBL-AC-004","packetSections":[3,15],"matrixSurfaces":["validationClasses","deniedCases"],"implementationSlices":["authorization"],"testIntent":"Every authoritative command reauthorizes current scope."},
+    {"criterionId":"EBL-AC-005","packetSections":[9],"matrixSurfaces":["validationClasses","warningClasses"],"implementationSlices":["validation"],"testIntent":"Dependencies, scale, compatibility, and integrity block invalid attachment."},
+    {"criterionId":"EBL-AC-006","packetSections":[10],"matrixSurfaces":["pressureDimensions","uncertaintyClasses"],"implementationSlices":["analysis"],"testIntent":"Pressure estimates disclose inputs, assumptions, evidence, uncertainty, and omissions."},
+    {"criterionId":"EBL-AC-007","packetSections":[10,11],"matrixSurfaces":["deniedCases","acceptanceCriteria"],"implementationSlices":["warning-language"],"testIntent":"No guaranteed-balance, fairness, safety, victory, or optimality claim is emitted."},
+    {"criterionId":"EBL-AC-008","packetSections":[10],"matrixSurfaces":["pressureDimensions"],"implementationSlices":["pressure-engine"],"testIntent":"Independent pressure dimensions remain visible and testable."},
+    {"criterionId":"EBL-AC-009","packetSections":[11],"matrixSurfaces":["uncertaintyClasses","warningClasses"],"implementationSlices":["uncertainty"],"testIntent":"Unknown and contradictory inputs lower confidence and warn."},
+    {"criterionId":"EBL-AC-010","packetSections":[12],"matrixSurfaces":["simulationModes","fixtures"],"implementationSlices":["simulation"],"testIntent":"Exact fixtures, seeds, policies, and digests reproduce advisory results."},
+    {"criterionId":"EBL-AC-011","packetSections":[13],"matrixSurfaces":["operationTypes","eventTypes"],"implementationSlices":["comparison"],"testIntent":"Comparisons preserve explicit deltas and immutable snapshots."},
+    {"criterionId":"EBL-AC-012","packetSections":[15],"matrixSurfaces":["projectionTypes","deniedCases"],"implementationSlices":["projection"],"testIntent":"Player and observer projections do not leak hidden information."},
+    {"criterionId":"EBL-AC-013","packetSections":[14],"matrixSurfaces":["operationTypes","eventTypes"],"implementationSlices":["scene-attachment"],"testIntent":"Approved snapshots attach without mutating launch snapshots or live Sessions."},
+    {"criterionId":"EBL-AC-014","packetSections":[16],"matrixSurfaces":["validationClasses","eventTypes","fixtures"],"implementationSlices":["recovery"],"testIntent":"Concurrency, ambiguous failure, reconnect, and revocation preserve state."},
+    {"criterionId":"EBL-AC-015","packetSections":[17],"matrixSurfaces":["deniedCases"],"implementationSlices":["offline"],"testIntent":"Offline capability remains manifest-bound reading and local drafts."},
+    {"criterionId":"EBL-AC-016","packetSections":[18],"matrixSurfaces":["projectionTypes"],"implementationSlices":["accessibility"],"testIntent":"Warnings and estimates have equivalent accessible presentations."},
+    {"criterionId":"EBL-AC-017","packetSections":[19],"matrixSurfaces":["fieldClasses","deniedCases"],"implementationSlices":["diagnostics"],"testIntent":"Diagnostics exclude hidden and private content by default."},
+    {"criterionId":"EBL-AC-018","packetSections":[20],"matrixSurfaces":["validationClasses","operationTypes"],"implementationSlices":["export-migration"],"testIntent":"Authorized exports preserve evidence, warnings, uncertainty, and receipts."},
+    {"criterionId":"EBL-AC-019","packetSections":[21],"matrixSurfaces":["simulationModes","deniedCases"],"implementationSlices":["provider-boundary"],"testIntent":"Core operation requires no AI, paid service, credential, or external telemetry."},
+    {"criterionId":"EBL-AC-020","packetSections":[22],"matrixSurfaces":["fixtures","deniedCases"],"implementationSlices":["fixtures-ci"],"testIntent":"Deterministic fixtures cover valid, invalid, uncertain, hidden, stale, reconnect, corruption, and attachment paths."}
+  ],
+  "implementationSlices": [
+    {"sliceId":"EBL-S01","name":"Encounter aggregate and persistence","dependsOn":["P9-06 persistence","MV-IA-F005"]},
+    {"sliceId":"EBL-S02","name":"Stable-ID composition and provenance","dependsOn":["MV-IA-F002","MV-IA-F024"]},
+    {"sliceId":"EBL-S03","name":"Authorization and projections","dependsOn":["MV-IA-F020","IA-D02-006"]},
+    {"sliceId":"EBL-S04","name":"Validation and compatibility","dependsOn":["rules profile","pack lock","schema registry"]},
+    {"sliceId":"EBL-S05","name":"Pressure and uncertainty analysis","dependsOn":["validated normalized inputs"]},
+    {"sliceId":"EBL-S06","name":"Warnings and evidence UI","dependsOn":["EBL-S05","accessibility"]},
+    {"sliceId":"EBL-S07","name":"Deterministic bounded simulation","dependsOn":["fixtures","seed/reset foundations"]},
+    {"sliceId":"EBL-S08","name":"Scenario comparison and snapshots","dependsOn":["EBL-S05","snapshot store"]},
+    {"sliceId":"EBL-S09","name":"Approval and Scene attachment","dependsOn":["MV-IA-F005","authorization"]},
+    {"sliceId":"EBL-S10","name":"Recovery, export, diagnostics, and CI","dependsOn":["MV-IA-F021","MV-IA-F025","backup/export ports"]}
+  ],
+  "retestRequirements": [
+    "SFI-C001 through SFI-C024",
+    "MV-IA-F004 Character projections",
+    "MV-IA-F005 Scene launch snapshots",
+    "hidden-information denied cases",
+    "deterministic fixture checksums",
+    "responsive and accessible state equivalence"
+  ],
+  "implementationBoundary": "Design complete; implementation remains dependency-gated by the active P9-06 sequence and does not authorize guaranteed-balance claims, paid simulation, production credentials, real-user data collection, internal-alpha release, production deployment, or public release."
+}
