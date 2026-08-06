@@ -1,0 +1,15 @@
+name: Validate Authoring Integration Review
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/internal-alpha/IA-D07-005_*'
+      - 'governance/application-planning/internal-alpha/validate_authoring_integration_review.py'
+      - '.github/workflows/validate-authoring-integration-review.yml'
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python governance/application-planning/internal-alpha/validate_authoring_integration_review.py
