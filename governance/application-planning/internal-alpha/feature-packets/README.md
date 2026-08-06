@@ -4,7 +4,7 @@
 **Status:** ACTIVE PACKET AND INTEGRATION INDEX  
 **Owner:** John Brandon Turner
 
-Implementation-ready and in-progress feature design packets, companion matrices, review receipts, and integration records are stored in this directory.
+Implementation-ready and in-progress feature design packets, companion matrices, review receipts, shared-component contracts, and integration records are stored in this directory.
 
 ## Feature packet index
 
@@ -22,6 +22,14 @@ Implementation-ready and in-progress feature design packets, companion matrices,
 
 Historical F005 handoff: **IA-D03-003 — MV-IA-F012 Encounter Builder and Balance Lab**.
 
+## Shared-component contract index
+
+| Work item | Shared system | Status | Contract | Matrix | Consumer mapping | Receipt | Completion |
+|---|---|---|---|---|---|---|---|
+| IA-D04-002 | SS-06 Proposal and approval framework | complete | `IA-D04-002_PROPOSAL_APPROVAL_SHARED_COMPONENT_CONTRACT.md` | `IA-D04-002_PROPOSAL_APPROVAL_COMPONENT_MATRIX.json` | `IA-D04-002_CONSUMER_MAPPING.json` | `IA-D04-002_REVIEW_RECEIPT.md` | `IA-D04-002_COMPLETION_RECORD.json` |
+
+The Proposal and Approval Shared-Component Contract normalizes proposal envelopes, lifecycle, permission-safe queues and inspection, approve/deny/modify-and-approve decisions, immutable receipts, idempotency, reconnect, history, accessibility, and diagnostics for eight consumer types. Consumer domains retain authority, validation, calculation, modifiable fields, commit adapters, domain Events, visibility, retention, and owner gates.
+
 ## Integration review index
 
 | Review ID | Scope | Status | Review | Contract matrix | Findings | Receipt | Completion record |
@@ -37,17 +45,14 @@ All packets beginning with IA-D03 consume `IA-D02-006_SHARED_FOUNDATIONS_CONTRAC
 
 IA-D03-005 proves that Character creation and advancement, Campaign/Scene/Session preparation, Encounter composition and advisory analysis, and the bounded deterministic fixture corpus form one coherent permission-safe, versioned, recoverable preparation path.
 
-The integration defines 28 controlling contracts, eight journeys, twelve resolved findings, ten implementation slices, twenty-four blocking acceptance criteria, and zero blocking findings. It preserves 36 source-backed and 119 synthetic noncanonical fixture identities.
-
-No integration artifact authorizes application implementation, canonical promotion, paid services, production credentials, real-user data collection, internal-alpha release, production deployment, or public release.
-
 ## First playable loop result
 
 MV-IA-F006 defines the complete Campaign-to-Character-to-Scene-to-Action-to-GM-decision-to-persistent-result vertical slice. It preserves attributable approve, deny, and modify-and-approve decisions, atomic accepted results, role-safe projections, NPC/enemy parity, idempotency, reconnect recovery, accessibility, and zero-service operation.
 
 ## Next item
 
-**IA-D04-002 — Proposal and Approval Shared-Component Contract.**
-
+**IA-D04-003 — Two-Device Interruption and Reconnect Matrix.**
 
 Historical IA-D03-005 next item: **IA-D04-001**.
+
+Historical IA-D04-001 next item: **IA-D04-002 — Proposal and Approval Shared-Component Contract**.
