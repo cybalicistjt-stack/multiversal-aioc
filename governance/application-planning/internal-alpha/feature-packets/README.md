@@ -52,6 +52,8 @@ MV-IA-F004 establishes governed Character identity, selection, calculation, cont
 
 MV-IA-F005 establishes Campaign rules and packs, membership, Scene drafts and placements, safe previews, launch snapshots, Session state, recovery, exports, accessibility, twenty acceptance criteria, and deterministic fixtures.
 
+The historical F005 handoff to **IA-D03-003 — MV-IA-F012 Encounter Builder and Balance Lab** is preserved here even after IA-D03-003 advances the current design route.
+
 ## Completed Encounter preparation result
 
 MV-IA-F012 establishes governed Encounter composition, stable-ID provenance, dependency and compatibility validation, twelve pressure dimensions, uncertainty and source-grounded warnings, deterministic bounded simulation, comparisons, permission-safe projections, Scene attachment, recovery, exports, accessibility, zero-service operation, twenty blocking acceptance criteria, forty-eight denied cases, and ten deterministic fixtures. It prohibits guaranteed-balance, fairness, safety, victory, survival, optimality, and actual-play prediction claims.
