@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "work_item_id": "IA-D03-003",
+  "attempt_id": "IA-D03-003-attempt-001",
+  "track": "internal-alpha-feature-design",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "branch": "governance/mv-ia-d03-003-encounter-builder-balance-lab",
+  "status": "started",
+  "started_at": "2026-08-06T01:20:00+00:00",
+  "updated_at": "2026-08-06T01:20:00+00:00",
+  "completed_at": null,
+  "base_commit": "f251c016267ce0db05f328ea059cbfdccaec95c6",
+  "latest_pushed_commit": null,
+  "expected_remote_head": "f251c016267ce0db05f328ea059cbfdccaec95c6",
+  "pull_request": null,
+  "objective": "Produce the implementation-ready MV-IA-F012 Encounter Builder and Balance Lab design packet, companion matrix, implementation traceability, review/readiness/completion records, deterministic validation, and dedicated CI while preserving uncertainty and prohibiting guaranteed-balance claims.",
+  "last_verified_action": "Merged the authoritative P9-06-008 governance correction as f251c016267ce0db05f328ea059cbfdccaec95c6, verified IA-D03-003 is the exact next internal-alpha design item, and created governance/mv-ia-d03-003-encounter-builder-balance-lab from that corrected main baseline.",
+  "active_substep": "Define the bounded encounter-composition, validation, pressure-estimation, uncertainty, simulation, warning, permission, provenance, recovery, accessibility, and zero-service contracts by extending the completed shared-foundation, Character, Campaign, Scene, and Session packets.",
+  "completed_substeps": [
+    "Verified the canonical bootstrap and owner authority",
+    "Read the exact IA-D03-003 backlog entry and MV-IA-F012 registry definition",
+    "Verified IA-D03-001 and IA-D03-002 are complete dependencies",
+    "Merged the P9-06-008 authoritative-backlog correction without changing the P9 implementation status",
+    "Created the dedicated IA-D03-003 governance branch"
+  ],
+  "next_action": "Create the MV-IA-F012 packet and matrix with twenty blocking acceptance criteria, source-grounded pressure and uncertainty contracts, deterministic scenario fixtures, denied cases, implementation traceability, review/readiness/completion records, validator, and dedicated CI; then update the registry, backlog, indexes, and checkpoint only after validation.",
+  "changed_paths": [
+    "governance/application-planning/internal-alpha/feature-packets/MV-IA-F012_ENCOUNTER_BUILDER_AND_BALANCE_LAB.md",
+    "governance/application-planning/internal-alpha/feature-packets/MV-IA-F012_ENCOUNTER_BALANCE_MATRIX.json",
+    "governance/application-planning/internal-alpha/feature-packets/MV-IA-F012_IMPLEMENTATION_TRACEABILITY.json",
+    "governance/application-planning/internal-alpha/feature-packets/MV-IA-F012_REVIEW_RECEIPT.md",
+    "governance/application-planning/internal-alpha/feature-packets/MV-IA-F012_READINESS_RECORD.md",
+    "governance/application-planning/internal-alpha/feature-packets/MV-IA-F012_COMPLETION_RECORD.json",
+    "governance/application-planning/internal-alpha/validate_encounter_builder_balance_lab_design.py",
+    ".github/workflows/encounter-builder-balance-lab-design-validation.yml",
+    "governance/application-planning/internal-alpha/INTERNAL_ALPHA_FEATURE_REGISTRY.json",
+    "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md",
+    "governance/application-planning/internal-alpha/README.md",
+    "governance/application-planning/internal-alpha/feature-packets/README.md",
+    "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+    "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
+    "governance/ai/work-state/IA-D03-003-attempt-001.json"
+  ],
+  "completion_gate": {
+    "required_evidence_kinds": [
+      "commit",
+      "pull_request",
+      "ci_run",
+      "merge"
+    ],
+    "required_validation_commands": [
+      "python governance/application-planning/internal-alpha/validate_encounter_builder_balance_lab_design.py"
+    ],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {
+      "command": "python governance/application-planning/internal-alpha/validate_encounter_builder_balance_lab_design.py",
+      "status": "not_run",
+      "evidence": null
+    }
+  ],
+  "unresolved_failures": [],
+  "owner_decision_required": false,
+  "evidence": [
+    {
+      "kind": "merge",
+      "value": "P9-06-008 governance correction PR #149 squash commit f251c016267ce0db05f328ea059cbfdccaec95c6"
+    },
+    {
+      "kind": "file",
+      "value": "IA-D03-003 exact backlog entry in governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md"
+    },
+    {
+      "kind": "file",
+      "value": "MV-IA-F012 registry entry in governance/application-planning/internal-alpha/INTERNAL_ALPHA_FEATURE_REGISTRY.json"
+    },
+    {
+      "kind": "file",
+      "value": "IA-D03-003 branch governance/mv-ia-d03-003-encounter-builder-balance-lab created from corrected main"
+    }
+  ],
+  "roadmap_projection_pending": true,
+  "notes": [
+    "P9-06-008-attempt-002 remains unfinished parallel application work and is not superseded, completed, or abandoned by selecting this design track.",
+    "IA-D03-003 is design-only; it does not authorize application implementation, guaranteed-balance claims, paid simulation services, production credentials, real-user data collection, internal-alpha release, production deployment, or public release.",
+    "Balance outputs must expose assumptions, evidence quality, uncertainty, and warnings; they may not certify fairness or predict actual play outcomes."
+  ]
+}
