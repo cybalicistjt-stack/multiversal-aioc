@@ -1,29 +1,13 @@
-name: Generate IA-D03-004 Completion Scorecards
+name: Normalize IA-D03-004 Completion Scorecard
 
 on:
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  generate:
-    runs-on: ubuntu-24.04
+  retired:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Generate and validate deterministic operational scorecards
-        run: |
-          python tools/interaction_pilot.py run --generated-at 2026-08-06T08:34:00+00:00
-          python tools/interaction_pilot.py validate
-      - uses: actions/upload-artifact@v4
-        with:
-          name: ia-d03-004-completion-scorecards
-          path: |
-            governance/ai/interaction-system/pilot/OPERATIONAL_PILOT_SCORECARD.json
-            governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json
-          if-no-files-found: error
+      - run: echo "Retired: governance checkpoint changes must not regenerate the interaction pilot scorecard."
