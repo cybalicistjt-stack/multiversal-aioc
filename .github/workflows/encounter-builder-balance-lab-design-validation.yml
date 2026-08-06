@@ -1,0 +1,40 @@
+name: Validate Encounter Builder and Balance Lab Design
+
+on:
+  pull_request:
+    paths:
+      - "governance/application-planning/internal-alpha/**"
+      - "governance/ai/runtime/**"
+      - "governance/ai/work-state/IA-D03-003-attempt-001.json"
+      - ".github/workflows/encounter-builder-balance-lab-design-validation.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "governance/application-planning/internal-alpha/**"
+      - ".github/workflows/encounter-builder-balance-lab-design-validation.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate MV-IA-F012 design package
+        run: python governance/application-planning/internal-alpha/validate_encounter_builder_balance_lab_design.py
+      - name: Parse companion JSON
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          base = Path("governance/application-planning/internal-alpha/feature-packets")
+          for path in sorted(base.glob("MV-IA-F012*.json")):
+              json.loads(path.read_text(encoding="utf-8"))
+              print(path)
+          PY
