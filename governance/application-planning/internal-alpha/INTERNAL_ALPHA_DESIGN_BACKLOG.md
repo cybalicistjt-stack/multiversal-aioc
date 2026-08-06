@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.14.0  
+**Version:** 0.15.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -28,19 +28,16 @@ Scope, registry, dependency map, journeys, shared systems, acceptance matrix, de
 2. **IA-D03-002 — MV-IA-F005 Campaign, Scene, and Session Builder packet — complete.**
 3. **IA-D03-003 — MV-IA-F012 Encounter Builder and Balance Lab packet — complete.**
 4. **IA-D03-004 — alpha content and fixture specification — complete.**
-   - result: 36 source-backed fixtures, 119 synthetic fixtures, 155 total identities, five packs, fifteen coverage families, twenty blocking criteria, zero blocking findings
-   - boundary: bounded test corpus, not complete game, not canonical release
 5. **IA-D03-005 — Character/Campaign integration review — complete.**
-   - result: 28 normalized contracts, eight journeys, twelve resolved findings, ten implementation slices, twenty-four blocking criteria, zero blocking findings
 
 ## IA-D04 — First playable loop
 
 1. **IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop — complete.**
 2. **IA-D04-002 — proposal and approval shared-component contract — complete.**
-   - result: seven consumer profiles, twelve component surfaces, fifteen states, sixteen deterministic fixtures, eight implementation slices, twenty blocking criteria, zero blocking findings
-   - boundary: the component coordinates evidence and decisions but does not replace consumer-specific authority, validation, or atomic commit rules
-3. **IA-D04-003 — two-device interruption and reconnect matrix — next.**
-4. IA-D04-004 — authoritative result and history presentation.
+3. **IA-D04-003 — two-device interruption and reconnect matrix — complete.**
+   - result: six device roles, fifteen interruption boundaries, twenty recovery states, twenty-four deterministic fixtures, eight implementation slices, twenty blocking criteria, zero blocking findings
+   - boundary: device-local state, review claims, notifications, caches, and realtime delivery remain advisory; durable Events and current server projections control
+4. **IA-D04-004 — authoritative result and history presentation — next.**
 5. IA-D04-005 — first-playable-loop implementation handoff.
 
 ## IA-D05 — Relationship, social, and investigation systems
@@ -73,24 +70,27 @@ The implementation-ready First Playable Action and GM Approval Loop defines Play
 
 ## IA-D04-002 completion record
 
-The reusable Proposal and Approval Shared-Component Contract provides:
+The reusable Proposal and Approval Shared-Component Contract defines versioned consumer profiles, immutable original proposals, permission-safe queues, advisory review claims, attributable approve/deny/modify decisions, atomic consumer adapters, role-safe projections, sixteen deterministic fixtures, eight slices, twenty blocking criteria, and zero blocking findings.
 
-- versioned consumer profiles for live Actions, GM NPC/enemy Actions, social outcomes, content submissions, optional AI suggestions, destructive changes, and canonical-promotion requests;
-- immutable original proposals and standard evidence slots;
-- permission-safe queues, notifications, and advisory review claims;
-- approve, deny, and field-addressed modify-and-approve decisions;
-- semantic modification diffs, final confirmation, and attributable durable receipts;
-- consumer-specific validators and atomic Event-backed commit adapters;
-- server-side proposer, decision-maker, observer, history, export, diagnostic, and AI projections;
-- idempotency, status lookup, reconnect, Event-gap recovery, and revocation;
-- responsive accessible parity, sixteen deterministic fixtures, eight implementation slices, twenty blocking acceptance criteria, and zero blocking findings;
-- zero paid-service and zero-AI core operation.
+## IA-D04-003 completion record
 
-Implementation remains dependency-gated by P9-06. Silence is not approval. Canonical promotion remains owner-gated.
+The Two-Device Interruption and Reconnect Matrix provides:
+
+- deterministic Player, GM, Assistant-GM, and observer device behavior;
+- status lookup before retry for ambiguous submit, decision, and consumer-commit outcomes;
+- advisory review claims with safe expiry and revocation;
+- exactly one final decision and at most one consumer commit;
+- ordered Event-gap recovery and current role-safe projection convergence;
+- explicit stale-version, permission, entitlement, and offline-draft conflicts;
+- cross-device protected-cache invalidation after revocation;
+- responsive and assistive recovery parity;
+- twenty-four deterministic fixtures, eight implementation slices, twenty blocking acceptance criteria, and zero blocking findings.
+
+Implementation remains dependency-gated by P9-06. Silent last-write-wins is prohibited.
 
 ## Current next design item
 
-**IA-D04-003 — Two-Device Interruption and Reconnect Matrix — next.**
+**IA-D04-004 — Authoritative Result and History Presentation — next.**
 
 ## Historical validation anchors
 
@@ -106,3 +106,5 @@ These archival lines preserve prior validated routes and are not the current nex
 **IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop — next.**
 
 **IA-D04-002 — proposal and approval shared-component contract — next.**
+
+**IA-D04-003 — two-device interruption and reconnect matrix — next.**
