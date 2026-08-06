@@ -1,0 +1,15 @@
+name: Validate Optional AI Assistant Design
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/internal-alpha/IA-D08-001_*'
+      - 'governance/application-planning/internal-alpha/validate_optional_ai_assistant.py'
+      - '.github/workflows/validate-optional-ai-assistant.yml'
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python governance/application-planning/internal-alpha/validate_optional_ai_assistant.py
