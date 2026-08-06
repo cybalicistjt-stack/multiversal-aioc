@@ -1,7 +1,7 @@
 # MV-IA-001 — Internal Alpha Feature Design Program
 
 **Document ID:** MV-IA-001  
-**Version:** 0.15.0  
+**Version:** 0.16.0  
 **Status:** ACTIVE — DESIGN PROGRAM  
 **Owner and final authority:** John Brandon Turner
 
@@ -52,6 +52,33 @@ Primary artifacts:
 - `feature-packets/IA-D04-003_COMPLETION_RECORD.json`
 - `validate_two_device_interruption_reconnect.py`
 
+## IA-D04-004 — Authoritative Result and History Presentation
+
+Completed at design level with:
+
+- eight result and history surfaces;
+- eighteen explicit result states;
+- twenty-eight history entry fields;
+- role-safe Player, GM, Assistant-GM, and observer projections;
+- immutable original and final values for modifications;
+- durable denial without accepted costs or Effects;
+- committed cost, Effect, Condition, Resource, and target summaries;
+- exact historical source versions;
+- ordered duplicate-safe Event history and Event-gap recovery;
+- cached-nonauthoritative, stale, revoked, forbidden, and recovery-required presentation;
+- role-safe exports, diagnostics, responsive layouts, and screen-reader semantic order;
+- twenty deterministic fixtures, eight implementation slices, twenty blocking criteria, and zero blocking findings.
+
+Primary artifacts:
+
+- `feature-packets/IA-D04-004_AUTHORITATIVE_RESULT_AND_HISTORY_PRESENTATION.md`
+- `feature-packets/IA-D04-004_AUTHORITATIVE_RESULT_HISTORY_MATRIX.json`
+- `feature-packets/IA-D04-004_IMPLEMENTATION_TRACEABILITY.json`
+- `feature-packets/IA-D04-004_REVIEW_RECEIPT.md`
+- `feature-packets/IA-D04-004_READINESS_RECORD.md`
+- `feature-packets/IA-D04-004_COMPLETION_RECORD.json`
+- `validate_authoritative_result_history.py`
+
 ## Governing decisions
 
 Silence is not approval. Review claims, local drafts, caches, notifications, and realtime messages are advisory. Stable operation identities and status lookup control retries. Silent last-write-wins is prohibited. AI has no decision or commit authority.
@@ -66,7 +93,7 @@ Design work may proceed while implementation dependencies remain incomplete. No 
 
 ## Current next design action
 
-**IA-D04-004 — Authoritative Result and History Presentation.**
+**IA-D04-005 — First-Playable-Loop Implementation Handoff.**
 
 ## Historical validation anchors
 
@@ -97,3 +124,5 @@ Historical IA-D03-005 route: **IA-D04-001 — MV-IA-F006 First Playable Action a
 Historical IA-D04-001 route: **IA-D04-002 — Proposal and Approval Shared-Component Contract**.
 
 Historical IA-D04-002 route: **IA-D04-003 — Two-Device Interruption and Reconnect Matrix**.
+
+Historical IA-D04-003 route: **IA-D04-004 — Authoritative Result and History Presentation**.
