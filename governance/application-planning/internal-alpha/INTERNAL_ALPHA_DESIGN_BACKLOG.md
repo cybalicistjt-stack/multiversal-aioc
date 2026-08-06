@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.11.0  
+**Version:** 0.12.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -22,23 +22,25 @@ Scope, registry, dependency map, journeys, shared systems, acceptance matrix, de
 - IA-D02-005 — MV-IA-F025 Onboarding, Help, Diagnostics, and Issue Reporting — complete.
 - IA-D02-006 — Shared-foundations integration review — complete.
 
-## IA-D03 — Character and Campaign preparation
+## IA-D03 — Character and Campaign preparation — COMPLETE
 
 1. **IA-D03-001 — MV-IA-F004 Character Creation and Advancement packet — complete.**
 2. **IA-D03-002 — MV-IA-F005 Campaign, Scene, and Session Builder packet — complete.**
 3. **IA-D03-003 — MV-IA-F012 Encounter Builder and Balance Lab packet — complete.**
 4. **IA-D03-004 — alpha content and fixture specification — complete.**
-   - specification: `IA-D03-004_INTERNAL_ALPHA_CONTENT_AND_FIXTURE_SPEC.md`
-   - catalog: `INTERNAL_ALPHA_FIXTURE_CATALOG.json`
-   - coverage: `INTERNAL_ALPHA_FIXTURE_COVERAGE_MATRIX.json`
-   - traceability: `IA-D03-004_IMPLEMENTATION_TRACEABILITY.json`
    - result: 36 source-backed fixtures, 119 synthetic fixtures, 155 total identities, five packs, fifteen coverage families, twenty blocking criteria, zero blocking findings
    - boundary: bounded test corpus, not complete game, not canonical release
-5. **IA-D03-005 — Character/Campaign integration review — next.**
+5. **IA-D03-005 — Character/Campaign integration review — complete.**
+   - review: `feature-packets/IA-D03-005_CHARACTER_CAMPAIGN_INTEGRATION_REVIEW.md`
+   - contract matrix: `feature-packets/IA-D03-005_CHARACTER_CAMPAIGN_CONTRACT_MATRIX.json`
+   - findings: `feature-packets/IA-D03-005_INTEGRATION_FINDINGS_REGISTER.json`
+   - traceability: `feature-packets/IA-D03-005_IMPLEMENTATION_TRACEABILITY.json`
+   - result: 28 normalized contracts, eight journeys, twelve resolved findings, ten implementation slices, twenty-four blocking criteria, zero blocking findings
+   - boundary: design integration only; implementation and release remain dependency-gated
 
 ## IA-D04 — First playable loop
 
-1. IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop.
+1. **IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop — next.**
 2. IA-D04-002 — proposal and approval shared-component contract.
 3. IA-D04-003 — two-device interruption and reconnect matrix.
 4. IA-D04-004 — authoritative result and history presentation.
@@ -64,24 +66,23 @@ F023, AI permission/provenance/cost/fallback, advanced map and vehicle deferrals
 
 Traceability, fixture catalog, permission matrix, accessibility matrix, recovery matrix, budgets, onboarding, implementation queue, owner decisions, and completion review.
 
-## IA-D03-004 completion record
+## IA-D03-005 completion record
 
-The bounded fixture design now provides:
+The completed Character/Campaign preparation integration provides:
 
-- exact source authority and immutable digests;
-- all 36 governed 8D-007 fixture identities;
-- 119 explicitly synthetic noncanonical fixtures;
-- identity, Campaign, Character, Scene, Action, permission, Asset, relationship, investigation, Encounter, failure, pack-lifecycle, and accessibility coverage;
-- exact pack versions and dependency order;
-- expected group contracts, migration, cleanup, and deterministic checksum derivation;
-- transparent source-coverage limits;
-- no complete-game, canonical-release, source-discard, or implicit-promotion claim;
-- deterministic validation and CI.
+- one explicit precedence order across F004, F005, F012, IA-D03-004, and the IA-D02-006 shared foundations;
+- Campaign authority for policy, membership, roles, delegation, Character control, Scene validation, launch snapshots, and Session launch;
+- Character lifecycle and advancement under exact Campaign policy and version bindings;
+- source Definition, placement, instance, analysis snapshot, launch snapshot, Event, and projection separation;
+- permission-safe roster binding, preview, warnings, exports, diagnostics, and optional-AI projections;
+- advisory Encounter analysis with no guaranteed-balance, fairness, safety, victory, survival, or optimality claim;
+- conflict-safe commands, Events, reconnect, revocation, recovery, migration, and export;
+- 155 provenance-labeled deterministic fixture identities without canonical promotion or complete-game claims;
+- ten dependency-ordered implementation slices and an exact IA-D04-001 handoff;
+- zero blocking integration findings.
 
 Implementation remains dependency-gated by P9-06.
 
 ## Current next design item
 
-**IA-D03-005 — Character/Campaign integration review.**
-
-The review must verify F004, F005, F012, and IA-D03-004 as one coherent preparation path before the first-playable-loop tranche begins.
+**IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop — next.**
