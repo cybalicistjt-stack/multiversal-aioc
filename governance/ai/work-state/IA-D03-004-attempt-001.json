@@ -1,41 +1,33 @@
 {
   "schema_version": "1.0.0",
-  "revision": 4,
+  "revision": 5,
   "work_item_id": "IA-D03-004",
   "attempt_id": "IA-D03-004-attempt-001",
   "track": "internal-alpha-feature-design",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "governance/ia-d03-004-alpha-content-fixtures",
-  "status": "ready_for_review",
+  "status": "completed_verified",
   "started_at": "2026-08-06T02:11:00+00:00",
-  "updated_at": "2026-08-06T02:56:00+00:00",
-  "completed_at": null,
+  "updated_at": "2026-08-06T08:25:00+00:00",
+  "completed_at": "2026-08-06T08:25:00+00:00",
   "base_commit": "fc26feaff67c347dc9d2c1abf4b876820b24349a",
-  "latest_pushed_commit": "1992bbd7c2fa0e233e9149b3c10b449973016240",
-  "expected_remote_head": "1992bbd7c2fa0e233e9149b3c10b449973016240",
+  "latest_pushed_commit": "8fd0eaf93e9a286ce6586d9dafa4c54491ba144f",
+  "expected_remote_head": "8fd0eaf93e9a286ce6586d9dafa4c54491ba144f",
   "pull_request": 152,
   "objective": "Define the bounded, versioned, checksum-backed internal-alpha content and deterministic fixture specification needed by the completed Character, Campaign, Scene, Session, Encounter, permission, recovery, pack, and accessibility contracts without representing the selected fixture corpus as the complete Multiversal game.",
-  "last_verified_action": "All 26 triggered PR #152 workflows passed on exact implementation head 1992bbd7c2fa0e233e9149b3c10b449973016240, including the normalized IA-D03-004 catalog and coverage checksum validator, internal-alpha validation, milestone-safe F005 and F012 validators, continuity and deterministic status regeneration, operational pilot, P9 backlog, smoke/baseline, correction regression, interaction enforcement, and all Development Brain checks.",
-  "active_substep": "Run the final consistency suite on the ready_for_review checkpoint projection; merge PR #152 only if every declared workflow remains green on that exact final state head and the pull request remains mergeable.",
+  "last_verified_action": "PR #152 passed all 26 final-state workflows on exact head 8fd0eaf93e9a286ce6586d9dafa4c54491ba144f and squash-merged as 36e925ec62a6774598d10098e2f35b0940cf217b.",
+  "active_substep": "Completion verified and recorded.",
   "completed_substeps": [
-    "Completed and verified IA-D03-003",
-    "Created the real IA-D03-004 governance branch from canonical main",
     "Resolved all 36 governed 8D-007 source-backed fixture identities",
     "Defined 119 explicitly synthetic noncanonical fixture identities",
     "Defined five exact-version fixture packs and dependency order",
-    "Created the 24-section content and fixture specification",
-    "Created checksum-bound fixture catalog and coverage matrix",
-    "Created complete acceptance traceability and ten implementation slices",
-    "Created review, readiness, and design-completion records",
-    "Added deterministic validator and dedicated CI",
-    "Updated the fixture baseline, design backlog, program index, and roadmap index",
-    "Passed local complete-package validation",
-    "Opened PR #152",
-    "Made the F005 and F012 validators milestone-aware and restored their historical completion anchors",
-    "Normalized catalog and coverage checksums from exact GitHub bytes through a self-removing one-shot workflow",
-    "Passed all 26 workflows on exact implementation head 1992bbd7c2fa0e233e9149b3c10b449973016240"
+    "Created the 24-section specification, checksum-bound catalog, coverage matrix, traceability, review, readiness, and completion records",
+    "Added deterministic validation and dedicated CI",
+    "Made predecessor validators milestone-aware without weakening completed contracts",
+    "Passed all 26 workflows on exact final head 8fd0eaf93e9a286ce6586d9dafa4c54491ba144f",
+    "Merged PR #152 as 36e925ec62a6774598d10098e2f35b0940cf217b"
   ],
-  "next_action": "Inspect every workflow on the final ready_for_review PR #152 head; if all declared checks pass and the PR is mergeable, squash-merge PR #152, then create a bounded completion record with the actual merge evidence before starting IA-D03-005.",
+  "next_action": "Start IA-D03-005 — Character/Campaign integration review on a dedicated governed branch and preserve P9-06-008-attempt-002 as unfinished parallel application work.",
   "changed_paths": [
     "governance/application-planning/internal-alpha/IA-D03-004_INTERNAL_ALPHA_CONTENT_AND_FIXTURE_SPEC.md",
     "governance/application-planning/internal-alpha/INTERNAL_ALPHA_CONTENT_AND_FIXTURES.md",
@@ -46,15 +38,7 @@
     "governance/application-planning/internal-alpha/IA-D03-004_READINESS_RECORD.md",
     "governance/application-planning/internal-alpha/IA-D03-004_COMPLETION_RECORD.json",
     "governance/application-planning/internal-alpha/validate_internal_alpha_content_fixtures.py",
-    "governance/application-planning/internal-alpha/validate_encounter_builder_balance_lab_design.py",
-    "governance/application-planning/internal-alpha/validate_campaign_scene_session_design.py",
-    ".github/workflows/internal-alpha-content-fixtures-validation.yml",
-    "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md",
-    "governance/application-planning/internal-alpha/README.md",
-    "governance/ai/runtime/ROADMAP_INDEX.json",
-    "governance/ai/runtime/CURRENT_WORK_POINTER.json",
-    "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
-    "governance/ai/work-state/IA-D03-004-attempt-001.json"
+    ".github/workflows/internal-alpha-content-fixtures-validation.yml"
   ],
   "completion_gate": {
     "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
@@ -65,21 +49,21 @@
     {
       "command": "python governance/application-planning/internal-alpha/validate_internal_alpha_content_fixtures.py",
       "status": "passed",
-      "evidence": "Local complete-package PASS and final implementation-head hosted run 31067023216 PASS on 1992bbd7c2fa0e233e9149b3c10b449973016240. Exact ready_for_review-head rerun remains required before merge."
+      "evidence": "Final exact-head workflow run 31067181293 passed on 8fd0eaf93e9a286ce6586d9dafa4c54491ba144f; all 26 triggered workflows passed."
     }
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
-    {"kind":"merge","value":"IA-D03-004 dependency IA-D03-003 completion record PR #151 squash merge fc26feaff67c347dc9d2c1abf4b876820b24349a"},
-    {"kind":"commit","value":"IA-D03-004 exact green implementation head 1992bbd7c2fa0e233e9149b3c10b449973016240"},
-    {"kind":"pull_request","value":"IA-D03-004 PR #152 — Complete IA-D03-004 internal-alpha content and fixture specification"},
-    {"kind":"ci_run","value":"IA-D03-004 exact-head suite: all 26 workflows PASS on 1992bbd7c2fa0e233e9149b3c10b449973016240, including fixture run 31067023216 and continuity run 31067023224"}
+    {"kind": "commit", "value": "8fd0eaf93e9a286ce6586d9dafa4c54491ba144f"},
+    {"kind": "pull_request", "value": "PR #152"},
+    {"kind": "ci_run", "value": "26 of 26 final-head workflows passed, including fixture run 31067181293 and continuity run 31067181271"},
+    {"kind": "merge", "value": "36e925ec62a6774598d10098e2f35b0940cf217b"}
   ],
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "notes": [
-    "The bounded alpha corpus is a deterministic test and design corpus, not the complete game, not a canonical content release, and not permission to discard unselected source material.",
-    "Synthetic fixtures are explicitly noncanonical; source-backed fixtures inherit immutable 8D-007 selectors and source truth.",
+    "The fixture corpus is bounded test data, not the complete game and not a canonical content release.",
+    "Synthetic fixtures remain noncanonical and unselected source material remains preserved.",
     "P9-06-008-attempt-002 remains unfinished parallel application work.",
     "No paid service, production credential, real-user data collection, internal-alpha release, production deployment, or public release is authorized."
   ]
