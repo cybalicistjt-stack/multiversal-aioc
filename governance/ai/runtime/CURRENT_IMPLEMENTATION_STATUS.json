@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-06T02:30:00+00:00",
+  "generated_at": "2026-08-06T02:48:00+00:00",
   "source_pointer": "governance/ai/runtime/CURRENT_WORK_POINTER.json",
   "primary": {
     "work_item_id": "IA-D03-004",
@@ -8,13 +8,28 @@
     "track": "internal-alpha-feature-design",
     "repository": "cybalicistjt-stack/multiversal-aioc",
     "branch": "governance/ia-d03-004-alpha-content-fixtures",
-    "status": "in_progress",
-    "active_substep": "Open the governed IA-D03-004 pull request, obtain hosted validation on the exact published package and continuity projections, repair any ordinary failures, and advance to ready_for_review only after all declared checks pass.",
-    "next_action": "Open the IA-D03-004 pull request from governance/ia-d03-004-alpha-content-fixtures to main; inspect all hosted checks on its exact head; repair ordinary failures automatically; then record ready_for_review and merge evidence before starting IA-D03-005.",
-    "latest_pushed_commit": "2300783f170b27fd6ee180147c480e0d88b74030",
-    "pull_request": null,
+    "status": "validation_failed",
+    "active_substep": "Run hosted validation on an owner-authored head containing the normalized checksums and milestone-aware F012 validator; repair any remaining ordinary failures and advance to ready_for_review only after every required workflow passes.",
+    "next_action": "Inspect all workflows on the new owner-authored PR #152 head; repair any remaining ordinary failure; when every declared check passes, clear failures and advance checkpoint, pointer, and compact status to ready_for_review before the final consistency run and merge.",
+    "latest_pushed_commit": "fa2900e7d55a8150f4a2545744a3024bf32aa321",
+    "pull_request": 152,
     "owner_decision_required": false,
-    "unresolved_failures": [],
+    "unresolved_failures": [
+      {
+        "failure_id": "IA-D03-004-CI-001",
+        "run_id": 31066330764,
+        "classification": "checksum_normalization",
+        "summary": "Published coverage matrix checksum did not match the canonical JSON digest computed in hosted CI.",
+        "repair": "A self-removing exact-GitHub-byte normalizer rewrote catalog and matrix hashes and produced head fa2900e7d55a8150f4a2545744a3024bf32aa321."
+      },
+      {
+        "failure_id": "IA-D03-004-CI-002",
+        "run_id": 31066330729,
+        "classification": "stale_predecessor_validator",
+        "summary": "The completed F012 validator still required IA-D03-004 to remain the current next item and program version 0.10.0.",
+        "repair": "The F012 validator now preserves its original handoff while accepting later milestone versions and IA-D03-004 completion."
+      }
+    ],
     "roadmap_projection_pending": true
   },
   "active_attempt_count": 2,
