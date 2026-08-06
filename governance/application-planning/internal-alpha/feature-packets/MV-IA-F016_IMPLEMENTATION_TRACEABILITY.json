@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0.0",
+  "workItemId": "IA-D05-002",
+  "featureId": "MV-IA-F016",
+  "owner": "John Brandon Turner",
+  "sourceAuthorities": ["INTERNAL_ALPHA_FEATURE_REGISTRY.json F016", "INTERNAL_ALPHA_DEPENDENCY_MAP.md relationship-and-graph cluster", "social gameplay and NPC interaction instructions", "game framework social-play", "8D-003 faction/reputation schemas", "8B-002F faction and prestige report", "8E-004D faction register", "MV-IA-F009", "MV-IA-F020"],
+  "requirementsToSlices": {
+    "definition-live-membership-office-separation": ["FRO-S01", "FRO-S02"],
+    "standing-influence-profile-events": ["FRO-S03"],
+    "cross-domain-references": ["FRO-S04"],
+    "agendas-operations-alert-services-progression": ["FRO-S05"],
+    "hidden-information-graph-list-history": ["FRO-S06"],
+    "recovery-pack-lifecycle-diagnostics": ["FRO-S07"],
+    "accessibility-deterministic-acceptance": ["FRO-S08"]
+  },
+  "downstreamConsumers": ["MV-IA-F010", "MV-IA-F011", "MV-IA-F015", "MV-IA-F017", "MV-IA-F023"],
+  "resolvedFindings": [
+    {"id":"FRO-FND-001","finding":"Faction register contains role-implied labels but no stable faction references.","resolution":"Prohibit ID synthesis from occupations, titles, species, role tags, or implied organizations."},
+    {"id":"FRO-FND-002","finding":"Existing faction schema stores member NPC IDs directly.","resolution":"Introduce explicit membership records and treat arrays as compatibility indexes until verified migration."},
+    {"id":"FRO-FND-003","finding":"Draft source reaction and standing profiles could be mistaken for global constants.","resolution":"Require bindable profile definitions and preserve them only as examples/defaults."},
+    {"id":"FRO-FND-004","finding":"Faction standing, personal relationship, and influence overlap linguistically.","resolution":"Lock separate aggregates and delegated F009 relationships."},
+    {"id":"FRO-FND-005","finding":"Faction progression could be misread as membership, rank, office, ownership, equipment, or permission.","resolution":"Make all such grants explicit separate records and authorization decisions."},
+    {"id":"FRO-FND-006","finding":"Permanent organization or world changes could bypass Projects.","resolution":"Require Project authority for permanent political, economic, territorial, environmental, divine, or market effects."}
+  ],
+  "unresolvedFindings": [],
+  "blockingFindings": []
+}
