@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.12.0  
+**Version:** 0.13.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -40,8 +40,8 @@ Scope, registry, dependency map, journeys, shared systems, acceptance matrix, de
 
 ## IA-D04 — First playable loop
 
-1. **IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop — next.**
-2. IA-D04-002 — proposal and approval shared-component contract.
+1. **IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop — complete.**
+2. **IA-D04-002 — proposal and approval shared-component contract — next.**
 3. IA-D04-003 — two-device interruption and reconnect matrix.
 4. IA-D04-004 — authoritative result and history presentation.
 5. IA-D04-005 — first-playable-loop implementation handoff.
@@ -83,9 +83,26 @@ The completed Character/Campaign preparation integration provides:
 
 Implementation remains dependency-gated by P9-06.
 
+## IA-D04-001 completion record
+
+The implementation-ready First Playable Action and GM Approval Loop provides:
+
+- Player Action draft, quick rule inspection, target selection, costs, requirements, roll/seed, modifiers, computed result, proposed Effects, warnings, confirmation, submit, pending state, and result;
+- GM notification and inspection with Player/controller, actor, Action, source-linked rules, targets, costs, roll, modifiers, computed result, proposed Effects, and warnings;
+- approve, deny, and explicit field-addressed modify-and-approve decisions with attributable receipts;
+- the same governed review, decision, atomic commit, and history model for GM-controlled NPC and enemy Actions;
+- one durable authoritative outcome through accepted decisions and atomic `ActionResultCommitted` Events;
+- role-filtered synchronized projections with logs and My Proposals secondary in the Player view;
+- duplicate-submit suppression, stale-version conflict preservation, status lookup after ambiguous failure, reconnect, missed-event recovery, and revocation handling;
+- bounded offline drafts with no offline authoritative submit, decision, or commit;
+- fourteen deterministic fixtures, ten implementation slices, twenty blocking acceptance criteria, and zero blocking findings;
+- zero-AI and zero-paid-service core operation.
+
+Implementation remains dependency-gated by P9-06.
+
 ## Current next design item
 
-**IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop — next.**
+**IA-D04-002 — Proposal and Approval Shared-Component Contract — next.**
 
 ## Historical IA-D03-004 validation anchor
 
@@ -97,3 +114,10 @@ This archival block preserves the exact handoff language validated when IA-D03-0
 - IA-D03-005 — Character/Campaign integration review — next.
 
 **IA-D03-005 — Character/Campaign integration review.**
+
+
+## Historical IA-D03-005 to IA-D04-001 handoff anchor
+
+This archival line preserves the exact prior validated route and is not the current next item:
+
+**IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop — next.**

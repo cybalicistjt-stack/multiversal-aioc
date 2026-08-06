@@ -17,6 +17,7 @@ Implementation-ready and in-progress feature design packets, companion matrices,
 | MV-IA-F025 | Onboarding, Help, Diagnostics, and Issue Reporting | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F025_ONBOARDING_HELP_DIAGNOSTICS_AND_ISSUE_REPORTING.md` | `MV-IA-F025_ONBOARDING_SUPPORT_MATRIX.json` |
 | MV-IA-F004 | Character Creation and Advancement | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F004_CHARACTER_CREATION_AND_ADVANCEMENT.md` | `MV-IA-F004_CHARACTER_CREATION_MATRIX.json` |
 | MV-IA-F005 | Campaign, Scene, and Session Builder | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F005_CAMPAIGN_SCENE_AND_SESSION_BUILDER.md` | `MV-IA-F005_CAMPAIGN_SCENE_SESSION_MATRIX.json`; traceability; receipt; readiness; completion |
+| MV-IA-F006 | First Playable Action and GM Approval Loop | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md` | `MV-IA-F006_ACTION_APPROVAL_MATRIX.json`; traceability; receipt; readiness; completion |
 | MV-IA-F012 | Encounter Builder and Balance Lab | alpha-required | implementation-ready | not started; dependency-gated | `MV-IA-F012_ENCOUNTER_BUILDER_AND_BALANCE_LAB.md` | `MV-IA-F012_ENCOUNTER_BALANCE_MATRIX.json`; traceability; receipt; readiness; completion |
 
 Historical F005 handoff: **IA-D03-003 — MV-IA-F012 Encounter Builder and Balance Lab**.
@@ -40,6 +41,13 @@ The integration defines 28 controlling contracts, eight journeys, twelve resolve
 
 No integration artifact authorizes application implementation, canonical promotion, paid services, production credentials, real-user data collection, internal-alpha release, production deployment, or public release.
 
+## First playable loop result
+
+MV-IA-F006 defines the complete Campaign-to-Character-to-Scene-to-Action-to-GM-decision-to-persistent-result vertical slice. It preserves attributable approve, deny, and modify-and-approve decisions, atomic accepted results, role-safe projections, NPC/enemy parity, idempotency, reconnect recovery, accessibility, and zero-service operation.
+
 ## Next item
 
-**IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop.**
+**IA-D04-002 — Proposal and Approval Shared-Component Contract.**
+
+
+Historical IA-D03-005 next item: **IA-D04-001**.
