@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0.0",
+  "workItemId": "IA-D05-003",
+  "featureId": "MV-IA-F010",
+  "owner": "John Brandon Turner",
+  "sourceAuthorities": ["INTERNAL_ALPHA_FEATURE_REGISTRY.json F010", "social gameplay and NPC interaction instructions", "game framework social-play", "8E-004D social role/mechanic/visibility registers", "MV-IA-F006", "IA-D04-002", "IA-D04-003", "IA-D04-004", "MV-IA-F009", "MV-IA-F016", "MV-IA-F020", "MV-IA-F021"],
+  "requirementsToSlices": {
+    "registry-actions-and-profiles": ["SOC-S01"],
+    "interaction-context-npc-state-projections": ["SOC-S02"],
+    "proposal-review-and-gm-authority": ["SOC-S03"],
+    "resolution-methods-degrees-hidden-results-challenge": ["SOC-S04"],
+    "atomic-domain-outcomes": ["SOC-S05"],
+    "player-gm-ui-reveals-results-history": ["SOC-S06"],
+    "recovery-undo-transition-pack-lifecycle": ["SOC-S07"],
+    "accessibility-deterministic-acceptance": ["SOC-S08"]
+  },
+  "downstreamConsumers": ["MV-IA-F011", "MV-IA-F017", "MV-IA-F018", "MV-IA-F023"],
+  "resolvedFindings": [
+    {"id":"SOC-FND-001","finding":"Social source contains forty-nine detailed Action forms but alpha scope needs a bounded runtime.","resolution":"Require seven minimum alpha Actions while preserving all forms as registry-ready source coverage."},
+    {"id":"SOC-FND-002","finding":"Source DC examples could be mistaken for global constants.","resolution":"Bind them only through versioned resolution profiles."},
+    {"id":"SOC-FND-003","finding":"Thirty-eight source commands and thirty-one Events cross several domain authorities.","resolution":"Separate Social lifecycle ownership, shared proposal operations, and delegated domain Event adapters."},
+    {"id":"SOC-FND-004","finding":"Social outcome groups require undo but history must remain durable.","resolution":"Use atomic Event groups and compensating undo Events; never delete history."},
+    {"id":"SOC-FND-005","finding":"NPC truth, belief, Player belief, lies, rumors, motives, mood, intent, and stance overlap linguistically.","resolution":"Lock distinct records/fields and role-safe projections."},
+    {"id":"SOC-FND-006","finding":"Social UI could bypass inventory, clue, access, relationship, standing, or combat authority.","resolution":"Require owning-domain validation/adapters within one atomic coordinator."},
+    {"id":"SOC-FND-007","finding":"AI drafting could become irreversible NPC control.","resolution":"Keep AI optional, role-filtered, draft-only, and GM-mediated with no final authority."}
+  ],
+  "unresolvedFindings": [],
+  "blockingFindings": []
+}
