@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0.0",
+  "workItemId": "IA-D05-005",
+  "owner": "John Brandon Turner",
+  "sourceAuthorities": [
+    "MV-IA-F009 Relationship Tracker",
+    "MV-IA-F016 Factions Reputation and Organizations",
+    "MV-IA-F010 Social Interaction Mode",
+    "MV-IA-F011 Investigation and Clue Board",
+    "MV-IA-F020 Permissions and Hidden Information",
+    "MV-IA-F021 Autosave Reconnect Recovery and Bounded Offline Use",
+    "MV-IA-F022 Accessibility and Adaptive Interface",
+    "IA-D04-002 through IA-D04-004 shared approval recovery and result contracts"
+  ],
+  "requirementsToSlices": {
+    "semantic-projection": ["GLA-S01"],
+    "equivalent-view-adapters": ["GLA-S02"],
+    "keyboard-focus-nonvisual-navigation": ["GLA-S03"],
+    "operation-parity": ["GLA-S04"],
+    "status-responsive-adaptation": ["GLA-S05"],
+    "hidden-topology-and-derivative-safety": ["GLA-S06"],
+    "virtualization-performance-recovery": ["GLA-S07"],
+    "fixtures-and-review-handoff": ["GLA-S08"]
+  },
+  "resolvedFindings": [
+    {"id":"GLA-FND-001","finding":"Graph geometry can become the only meaning carrier.","resolution":"Require textual node/edge semantics and six equivalent views."},
+    {"id":"GLA-FND-002","finding":"Drag-first editing excludes keyboard, screen-reader, and precision-limited users.","resolution":"Require command and form alternatives for every operation."},
+    {"id":"GLA-FND-003","finding":"Hidden topology can leak through counts, gaps, coordinates, or routing.","resolution":"Filter before topology and layout generation; suppress by default."},
+    {"id":"GLA-FND-004","finding":"Canvas focus order can become unstable and meaningless.","resolution":"Use deterministic semantic navigation independent of coordinates."},
+    {"id":"GLA-FND-005","finding":"Responsive collapse can remove feature completeness.","resolution":"Default mobile to list/outline while preserving every operation."},
+    {"id":"GLA-FND-006","finding":"Virtualization and reconnect can lose context.","resolution":"Preserve semantic position and restore focus against fresh authorized projections."},
+    {"id":"GLA-FND-007","finding":"Automated checks alone can overstate accessibility readiness.","resolution":"Require both deterministic automation and a recorded manual-review gate before release."}
+  ],
+  "unresolvedFindings": [],
+  "blockingFindings": [],
+  "downstreamConsumers": ["IA-D05-006", "MV-IA-F015", "MV-IA-F017", "MV-IA-F018", "MV-IA-F023"]
+}
