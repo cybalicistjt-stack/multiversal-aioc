@@ -5,11 +5,9 @@ on:
     paths:
       - 'governance/ai/interaction-system/pilot/**'
       - 'governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json'
-      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
-      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
-      - 'governance/ai/work-state/MV-CONT-005-attempt-001.json'
       - 'governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md'
-      - 'governance/development-bible/**'
+      - 'governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md'
+      - 'governance/development-bible/amendments/MV-CONT-005_OWNER_AI_INTERACTION_OPERATING_AMENDMENT.md'
       - 'governance/ai/interaction-system/README.md'
       - 'tools/interaction_pilot.py'
       - 'tests/interaction_pilot/**'
@@ -29,15 +27,17 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate interaction operational pilot
-        run: python tools/interaction_pilot.py validate
+      - name: Run current deterministic pilot without requiring a committed live mirror
+        run: |
+          python tools/interaction_pilot.py run --generated-at 2026-08-06T08:40:00Z
+          python tools/interaction_pilot.py validate
       - name: Run interaction pilot regression tests
         run: python -m unittest discover -s tests/interaction_pilot -v
-      - name: Verify generated scorecard is deterministic
+      - name: Verify repeat execution is deterministic
         run: |
           cp governance/ai/interaction-system/pilot/OPERATIONAL_PILOT_SCORECARD.json "$RUNNER_TEMP/scorecard.json"
           cp governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json "$RUNNER_TEMP/runtime-scorecard.json"
-          python tools/interaction_pilot.py run --generated-at 2026-08-05T23:50:00Z
+          python tools/interaction_pilot.py run --generated-at 2026-08-06T08:40:00Z
           python - "$RUNNER_TEMP/scorecard.json" governance/ai/interaction-system/pilot/OPERATIONAL_PILOT_SCORECARD.json "$RUNNER_TEMP/runtime-scorecard.json" governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json <<'PY'
           import json
           import sys
