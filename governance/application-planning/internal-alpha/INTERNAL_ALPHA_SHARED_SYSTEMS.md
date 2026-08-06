@@ -1,7 +1,7 @@
 # Internal Alpha Shared Systems
 
 **Program:** MV-IA-001  
-**Version:** 0.1.0  
+**Version:** 0.2.0  
 **Status:** DESIGN BASELINE
 
 ## 1. Purpose
@@ -112,6 +112,23 @@ Responsibilities:
 - notification.
 
 Primary consumers: live Actions, GM NPC Actions, social play, content submission, AI proposals, destructive changes.
+
+Canonical contract: `feature-packets/IA-D04-002_PROPOSAL_APPROVAL_SHARED_COMPONENT_CONTRACT.md` version 0.1.0.
+
+Companion artifacts:
+
+- `feature-packets/IA-D04-002_PROPOSAL_APPROVAL_COMPONENT_MATRIX.json`;
+- `feature-packets/IA-D04-002_CONSUMER_MAPPING.json`;
+- `feature-packets/IA-D04-002_IMPLEMENTATION_TRACEABILITY.json`;
+- `feature-packets/IA-D04-002_REVIEW_RECEIPT.md`;
+- `feature-packets/IA-D04-002_READINESS_RECORD.md`;
+- `feature-packets/IA-D04-002_COMPLETION_RECORD.json`.
+
+The contract maps eight consumer types: live Player Actions, GM NPC/enemy Actions, social-play proposals, content submission, optional-AI proposals, destructive changes, canonical promotion, and Asset-transfer acceptance.
+
+SS-06 owns common proposal envelopes, lifecycle, queue and notification projections, reviewer inspection, approve/deny/modify-and-approve decisions, immutable receipts, history, idempotency, reconnect, accessibility, and diagnostics. Each consumer retains proposer eligibility, reviewer authority, domain validation, calculation, modifiable-field policy, commit adapter, domain Events, visibility, retention, and owner gates.
+
+The exact next design item is **IA-D04-003 — Two-Device Interruption and Reconnect Matrix**.
 
 ## 8. Shared system SS-07 — Persistence, drafts, and state versions
 
