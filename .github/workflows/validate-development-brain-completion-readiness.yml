@@ -15,15 +15,19 @@ on:
       - 'governance/shared-state/AIOC_SHARED_STATE.json'
       - 'governance/development-brain/**'
       - 'scripts/development-brain/**'
-      - '.github/workflows/**'
+      - '.github/workflows/validate-development-brain-completion-readiness.yml'
   workflow_dispatch:
+
+concurrency:
+  group: development-brain-completion-readiness-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
