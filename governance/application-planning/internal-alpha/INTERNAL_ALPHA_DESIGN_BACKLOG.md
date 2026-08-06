@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.33.0  
+**Version:** 0.33.1  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -50,3 +50,67 @@ The advanced map and vehicle deferral package enumerates deferred and retained c
 ## Current next design item
 
 **IA-D08-004 — broad offline deferral package — next.**
+
+## Historical validation anchors
+
+These archival statements preserve earlier validated routes and versions. They are not the current next item.
+
+**Version:** 0.11.0
+**Version:** 0.24.0
+**Version:** 0.25.0
+
+IA-D03-004 — alpha content and fixture specification — complete.
+IA-D03-005 — Character/Campaign integration review — next.
+**IA-D03-005 — Character/Campaign integration review — next.**
+
+IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop — complete.
+IA-D04-002 — proposal and approval shared-component contract — complete.
+IA-D04-003 — two-device interruption and reconnect matrix — complete.
+IA-D04-004 — authoritative result and history presentation — complete.
+IA-D04-005 — first-playable-loop implementation handoff — complete.
+**IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop — next.**
+**IA-D04-002 — proposal and approval shared-component contract — next.**
+**IA-D04-003 — two-device interruption and reconnect matrix — next.**
+**IA-D04-004 — authoritative result and history presentation — next.**
+**IA-D04-005 — first-playable-loop implementation handoff — next.**
+
+IA-D05-001 — MV-IA-F009 Relationship Tracker — complete.
+IA-D05-002 — MV-IA-F016 Factions, Reputation, and Organizations — complete.
+IA-D05-003 — MV-IA-F010 Social Interaction Mode — complete.
+IA-D05-004 — MV-IA-F011 Investigation and Clue Board — complete.
+IA-D05-005 — graph/list accessibility matrix — complete.
+IA-D05-006 — noncombat integration review — complete.
+**IA-D05-002 — MV-IA-F016 Factions, Reputation, and Organizations — next.**
+**IA-D05-003 — MV-IA-F010 Social Interaction Mode — next.**
+**IA-D05-004 — MV-IA-F011 Investigation and Clue Board — next.**
+**IA-D05-005 — graph/list accessibility matrix — next.**
+**IA-D05-006 — noncombat integration review — next.**
+
+IA-D06-001 — MV-IA-F007 Full Combat Interface — complete.
+IA-D06-002 — MV-IA-F008 Inventory, Ownership, and Shared Assets — complete.
+IA-D06-003 — bounded MV-IA-F013 Maps, Zones, and Tactical Positioning — complete.
+IA-D06-004 — basic MV-IA-F014 Vehicle, Mecha, and Starship Operations — complete.
+IA-D06-005 — combat/Asset integrity matrix — complete.
+IA-D06-006 — combat and Assets integration review — complete.
+**IA-D06-002 — MV-IA-F008 Inventory, Ownership, and Shared Assets — next.**
+**IA-D06-003 — bounded MV-IA-F013 Maps, Zones, and Tactical Positioning — next.**
+**IA-D06-004 — basic MV-IA-F014 Vehicle, Mecha, and Starship Operations — next.**
+**IA-D06-005 — combat/Asset integrity matrix — next.**
+**IA-D06-006 — combat and Assets integration review — next.**
+**IA-D07-001 — MV-IA-F015 World and Setting Management — next.**
+
+IA-D07-001 — MV-IA-F015 World and Setting Management — complete.
+IA-D07-002 — MV-IA-F017 Adventure and Module Management — complete.
+IA-D07-003 — bounded MV-IA-F018 Creator and Campaign-local Content — complete.
+IA-D07-004 — world/adventure content authority matrix — complete.
+IA-D07-005 — authoring integration review — complete.
+**IA-D07-002 — MV-IA-F017 Adventure and Module Management — next.**
+**IA-D07-003 — bounded MV-IA-F018 Creator and Campaign-local Content — next.**
+**IA-D07-004 — world/adventure content authority matrix — next.**
+**IA-D07-005 — authoring integration review — next.**
+
+IA-D08-001 — MV-IA-F023 Optional AI Assistant boundaries and interaction contract — complete.
+IA-D08-002 — AI permission, provenance, cost, and fallback matrix — complete.
+IA-D08-003 — advanced map and vehicle deferral package — complete.
+**IA-D08-002 — AI permission, provenance, cost, and fallback matrix — next.**
+**IA-D08-003 — advanced map and vehicle deferral package — next.**
