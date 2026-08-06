@@ -100,4 +100,25 @@ The Noncombat Integration Review proves that Relationship, Faction, Social, Inve
 
 ## Historical validation anchors
 
-Historical route statements remain archival only and do not override the current next item recorded above.
+These archival statements preserve earlier validated routes and are not the current next item.
+
+**Version:** 0.11.0
+
+- IA-D03-004 — alpha content and fixture specification — complete.
+- IA-D03-005 — Character/Campaign integration review — next.
+
+**IA-D03-005 — Character/Campaign integration review — next.**
+
+**IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop — next.**
+
+**IA-D04-002 — proposal and approval shared-component contract — next.**
+
+**IA-D04-003 — two-device interruption and reconnect matrix — next.**
+
+**IA-D04-004 — authoritative result and history presentation — next.**
+
+**IA-D04-005 — first-playable-loop implementation handoff — next.**
+
+**IA-D05-005 — graph/list accessibility matrix — next.**
+
+**IA-D05-006 — noncombat integration review — next.**
