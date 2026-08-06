@@ -23,11 +23,12 @@ jobs:
           python-version: '3.12'
       - name: Construct and validate package
         run: python .tmp/ia-d04-001/build_package.py
-      - name: Remove construction files and commit
+      - name: Commit validated non-workflow artifacts
         run: |
-          rm -rf .tmp/ia-d04-001 .github/workflows/build-ia-d04-001-package.yml
+          rm -rf .tmp/ia-d04-001 governance/application-planning/internal-alpha/__pycache__
+          rm -f .github/workflows/first-playable-action-approval-validation.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add governance/application-planning/internal-alpha .github/workflows/first-playable-action-approval-validation.yml governance/ai/runtime/ROADMAP_INDEX.json .tmp/ia-d04-001 .github/workflows/build-ia-d04-001-package.yml
+          git add governance/application-planning/internal-alpha governance/ai/runtime/ROADMAP_INDEX.json .tmp/ia-d04-001
           git commit -m "Complete IA-D04-001 design package construction"
           git push origin HEAD:governance/ia-d04-001-first-playable-action-approval-loop
