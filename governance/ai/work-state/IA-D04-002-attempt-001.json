@@ -1,25 +1,43 @@
 {
   "schema_version": "1.0.0",
-  "revision": 1,
+  "revision": 2,
   "work_item_id": "IA-D04-002",
   "attempt_id": "IA-D04-002-attempt-001",
   "track": "internal-alpha-feature-design",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "governance/ia-d04-002-proposal-approval-shared-contract",
-  "status": "started",
+  "status": "ready_for_review",
   "started_at": "2026-08-06T10:04:00+00:00",
-  "updated_at": "2026-08-06T10:04:00+00:00",
+  "updated_at": "2026-08-06T10:22:00+00:00",
   "completed_at": null,
   "base_commit": "311ec83f6042d08cc78e1d9548457bab95386383",
-  "latest_pushed_commit": null,
-  "expected_remote_head": "311ec83f6042d08cc78e1d9548457bab95386383",
+  "latest_pushed_commit": "8bd17f2ca917844dedf8bc4f938640491bc00310",
+  "expected_remote_head": "8bd17f2ca917844dedf8bc4f938640491bc00310",
   "pull_request": null,
   "objective": "Normalize the reusable proposal-and-approval component contract demonstrated by MV-IA-F006 so later Action, social, content, AI-assist, destructive, canonical-promotion, and other governed request surfaces share one authority, projection, decision-receipt, history, recovery, accessibility, and diagnostics model without erasing domain-specific rules.",
-  "last_verified_action": "IA-D04-001 completed_verified after PR #155 passed all 27 workflows and merged; IA-D04-002 branch created from merge 311ec83f6042d08cc78e1d9548457bab95386383.",
-  "active_substep": "Construct the complete reusable proposal-and-approval shared-component contract and targeted validation package without routine checkpoint rewrites.",
-  "completed_substeps": [],
-  "next_action": "Review SS-06, F006, shared foundations, preparation contracts, and future proposal consumers; create the contract, machine matrix, consumer mapping, traceability, receipts, readiness/completion records, deterministic fixtures, validator, CI, and bounded backlog/index updates; then record one ready_for_review checkpoint.",
+  "last_verified_action": "Completed a connector-side structural preflight of the full IA-D04-002 package: all required artifacts, exact metrics, IDs, consumer mappings, source baselines, authorization boundaries, historical compatibility anchors, and the IA-D04-003 route are present. Executable validation remains explicitly pending the single hosted PR gate.",
+  "active_substep": "Open the final IA-D04-002 pull request and verify the dedicated validator and every other triggered workflow on the exact review head.",
+  "completed_substeps": [
+    "Reviewed SS-06, F006, IA-D02-006, IA-D03-005, and future social, content, AI, destructive, promotion, and transfer consumers.",
+    "Created the twenty-four-section Proposal and Approval Shared-Component Contract.",
+    "Defined twenty states, thirty proposal fields, twenty-four decision fields, four approval policies, twenty-four validation classes, twenty-four operations, twenty-four Events, and thirty-six denied cases.",
+    "Mapped eight consumers with domain authority, reviewer authority, evidence, modification, commit, Event, visibility, owner-gate, offline, fallback, and retest obligations.",
+    "Created sixteen deterministic fixtures, ten implementation slices, twenty blocking acceptance criteria, traceability, review, readiness, and completion records.",
+    "Bound SS-06 to the canonical contract and advanced backlog, program, packet, and roadmap indexes to IA-D04-003.",
+    "Preserved historical IA-D04-001 to IA-D04-002 route anchors for predecessor validator compatibility.",
+    "Completed connector-side structural preflight; executable validation is reserved for the single hosted PR gate."
+  ],
+  "next_action": "Open the final PR, inspect the dedicated IA-D04-002 validator and all triggered workflows on its exact head, repair only genuine package or compatibility defects, and squash-merge when the gate is green.",
   "changed_paths": [
+    ".github/workflows/proposal-approval-shared-component-validation.yml",
+    "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
+    "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+    "governance/ai/runtime/ROADMAP_INDEX.json",
+    "governance/ai/work-state/IA-D04-001-attempt-001.json",
+    "governance/ai/work-state/IA-D04-002-attempt-001.json",
+    "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md",
+    "governance/application-planning/internal-alpha/INTERNAL_ALPHA_SHARED_SYSTEMS.md",
+    "governance/application-planning/internal-alpha/README.md",
     "governance/application-planning/internal-alpha/feature-packets/IA-D04-002_PROPOSAL_APPROVAL_SHARED_COMPONENT_CONTRACT.md",
     "governance/application-planning/internal-alpha/feature-packets/IA-D04-002_PROPOSAL_APPROVAL_COMPONENT_MATRIX.json",
     "governance/application-planning/internal-alpha/feature-packets/IA-D04-002_CONSUMER_MAPPING.json",
@@ -27,8 +45,8 @@
     "governance/application-planning/internal-alpha/feature-packets/IA-D04-002_REVIEW_RECEIPT.md",
     "governance/application-planning/internal-alpha/feature-packets/IA-D04-002_READINESS_RECORD.md",
     "governance/application-planning/internal-alpha/feature-packets/IA-D04-002_COMPLETION_RECORD.json",
-    "governance/application-planning/internal-alpha/validate_proposal_approval_shared_component.py",
-    ".github/workflows/proposal-approval-shared-component-validation.yml"
+    "governance/application-planning/internal-alpha/feature-packets/README.md",
+    "governance/application-planning/internal-alpha/validate_proposal_approval_shared_component.py"
   ],
   "completion_gate": {
     "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
@@ -39,15 +57,17 @@
     {
       "command": "python governance/application-planning/internal-alpha/validate_proposal_approval_shared_component.py",
       "status": "not_run",
-      "evidence": null
+      "evidence": "Executable validation intentionally reserved for the single hosted PR gate under MV-AI-EFFICIENCY-001; connector-side structural preflight completed."
     }
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
-  "evidence": [],
+  "evidence": [
+    {"kind": "commit", "value": "IA-D04-002 assembled package head 8bd17f2ca917844dedf8bc4f938640491bc00310"}
+  ],
   "roadmap_projection_pending": true,
   "notes": [
-    "MV-AI-EFFICIENCY-001 applies: no routine substep checkpoint or pointer rewrites.",
+    "MV-AI-EFFICIENCY-001 applied: one start checkpoint and one ready-for-review update during construction.",
     "The shared component normalizes common mechanics but does not grant one domain authority over another or erase domain-specific validation.",
     "P9-06-008-attempt-002 remains unfinished parallel application work.",
     "No implementation activation, paid service, credential, real-user data collection, internal-alpha release, production deployment, or public release is authorized."
