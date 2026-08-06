@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.24.0  
+**Version:** 0.25.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -47,18 +47,22 @@ Scope, registry, dependency map, journeys, shared systems, acceptance matrix, de
 5. **IA-D05-005 — graph/list accessibility matrix — complete.**
 6. **IA-D05-006 — noncombat integration review — complete.**
 
-## IA-D06 — Combat and Assets
+## IA-D06 — Combat and Assets — COMPLETE
 
 1. **IA-D06-001 — MV-IA-F007 Full Combat Interface — complete.**
 2. **IA-D06-002 — MV-IA-F008 Inventory, Ownership, and Shared Assets — complete.**
 3. **IA-D06-003 — bounded MV-IA-F013 Maps, Zones, and Tactical Positioning — complete.**
 4. **IA-D06-004 — basic MV-IA-F014 Vehicle, Mecha, and Starship Operations — complete.**
 5. **IA-D06-005 — combat/Asset integrity matrix — complete.**
-6. **IA-D06-006 — combat and Assets integration review — next.**
+6. **IA-D06-006 — combat and Assets integration review — complete.**
 
 ## IA-D07 — World, adventure, and Project depth
 
-F015, F017, bounded F018, creator proposal/Campaign-local content, and authoring integration review.
+1. **IA-D07-001 — MV-IA-F015 World and Setting Management — next.**
+2. **IA-D07-002 — MV-IA-F017 Adventure and Module Authoring — planned.**
+3. **IA-D07-003 — bounded MV-IA-F018 Creator and Campaign-local Content — planned.**
+4. **IA-D07-004 — world/adventure content authority matrix — planned.**
+5. **IA-D07-005 — authoring integration review — planned.**
 
 ## IA-D08 — Optional AI and experimental systems
 
@@ -82,29 +86,13 @@ The first playable loop defines Player and GM Action proposals, approve/deny/mod
 
 The Relationship Tracker, Factions/Reputation/Organizations, Social Interaction Mode, Investigation and Clue Board, Graph/List Accessibility Matrix, and Noncombat Integration Review establish one permission-safe noncombat runtime with distinct authority, hidden-information protection, atomic cross-domain outcomes, recovery, provenance, and accessible semantic parity.
 
-### IA-D06-001
+### IA-D06
 
-The Full Combat Interface defines authoritative encounter lifecycle, participants, timing, Actions, targets, semantic movement, Resources, Conditions, reactions, hazards, defeat/withdrawal, completion, accessibility, and recovery.
-
-### IA-D06-002
-
-Inventory, Ownership, and Shared Assets defines stable Asset identity and lineage; distinct ownership, custody, possession, control, access, usage, equipment, and location; containers, stacks, transfers, reservations, combat usage, repair, crafting/salvage boundaries, hidden-Asset protection, accessible parity, and recovery.
-
-### IA-D06-003
-
-Bounded Maps, Zones, and Tactical Positioning defines four map modes, semantic zones/anchors, typed adjacency, distance, elevation, cover, movement, range, visibility, deterministic area snapshots, hazards, annotations, Asset/vehicle adapters, accessible nonvisual parity, bounded large-map behavior, recovery, and explicit advanced-map deferrals.
-
-### IA-D06-004
-
-Vehicle, Mecha, and Starship Operations defines ten operational classes, twelve stations, thirteen operational states, explicit command authority, semantic movement, systems and Resource models, atomic combat outcomes, damage/failure, boarding/docking, hidden-information protection, recovery, pack lifecycle, provenance, and accessible nonvisual operation.
-
-### IA-D06-005
-
-The Combat/Asset Integrity Matrix proves atomic integration across combat, Assets, tactical positioning, and Vehicle operations. It defines reservation and contention behavior, proposal-versus-commit cost timing, exact quantity and lineage handling, authority separation, hidden-information filtering, nested-Asset semantics, idempotency, version conflicts, status lookup, Event-gap recovery, compensating undo, pack lifecycle, provenance, and accessible parity. It includes twenty-four deterministic fixtures, eight implementation slices, twenty-eight blocking acceptance criteria, seven resolved findings, and zero blocking findings. `P9-06-008-attempt-002` remains unfinished and unmodified.
+The completed Combat and Assets phase integrates Full Combat Interface, Inventory/Ownership/Shared Assets, bounded Maps/Zones/Tactical Positioning, Vehicle/Mecha/Starship Operations, and the Combat/Asset Integrity Matrix into one authoritative runtime. It preserves distinct authority dimensions, atomic result groups, reservation and quantity integrity, semantic movement, Vehicle systems and stations, hidden-information filtering, accessibility parity, reconnect, Event-gap repair, compensating undo, pack lifecycle, and provenance. The final integration review records eight integrated journeys, eleven domain adapters, twenty-four deterministic fixtures, eight implementation slices, twenty-eight blocking acceptance criteria, seven resolved findings, and zero blocking findings. `P9-06-008-attempt-002` remains unfinished and unmodified.
 
 ## Current next design item
 
-**IA-D06-006 — combat and Assets integration review — next.**
+**IA-D07-001 — MV-IA-F015 World and Setting Management — next.**
 
 ## Historical validation anchors
 
@@ -142,3 +130,5 @@ These archival statements preserve earlier validated routes and are not the curr
 **IA-D06-004 — basic MV-IA-F014 Vehicle, Mecha, and Starship Operations — next.**
 
 **IA-D06-005 — combat/Asset integrity matrix — next.**
+
+**IA-D06-006 — combat and Assets integration review — next.**

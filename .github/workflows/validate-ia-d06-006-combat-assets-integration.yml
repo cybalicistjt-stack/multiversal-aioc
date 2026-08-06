@@ -1,0 +1,21 @@
+name: Validate Combat and Assets Integration Review
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/internal-alpha/**'
+      - '.github/workflows/validate-ia-d06-006-combat-assets-integration.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run IA-D06-006 validator
+        run: python governance/application-planning/internal-alpha/validate_combat_assets_integration_review.py
