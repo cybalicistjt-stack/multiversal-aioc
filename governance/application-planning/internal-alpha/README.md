@@ -1,7 +1,7 @@
 # MV-IA-001 — Internal Alpha Feature Design Program
 
 **Document ID:** MV-IA-001  
-**Version:** 0.11.0  
+**Version:** 0.12.0  
 **Status:** ACTIVE — DESIGN PROGRAM  
 **Owner and final authority:** John Brandon Turner
 
@@ -13,51 +13,73 @@ MV-IA-001 converts the approved Project Bible, Stage A program, Phase 9 architec
 
 IA-D01 and IA-D02 are complete. Shared contracts cover governed objects, identity, authority, projections, persistence, recovery, diagnostics, accessibility, provider neutrality, and zero-service operation.
 
-## Completed preparation packets
+## Completed Character and Campaign preparation
 
 - IA-D03-001 — Character Creation and Advancement.
 - IA-D03-002 — Campaign, Scene, and Session Builder.
 - IA-D03-003 — Encounter Builder and Balance Lab.
+- IA-D03-004 — Internal Alpha Content and Deterministic Fixtures.
+- IA-D03-005 — Character/Campaign Integration Review.
 
 ## IA-D03-002 — Campaign, Scene, and Session Builder
 
-Complete at design level with Campaign rules and packs, invitations and membership, roles and Character control, Scene drafts and stable-ID placements, Campaign-local overrides, notes, accessible map alternatives, Player-safe previews, launch validation, immutable launch snapshots, Session lifecycle, Event recovery, exports, diagnostics, accessibility, and twenty blocking acceptance criteria.
+Completed at design level with Campaign rules and packs, invitation and membership lifecycles, role, delegation, observer and Character-control separation, Scene drafts and stable-ID placements, safe previews, validation, immutable launch snapshots, exactly-once Session launch, Event recovery, exports, accessibility, and twenty blocking acceptance criteria.
 
 ## IA-D03-003 — Encounter Builder and Balance Lab
 
-Complete at design level with governed Encounter composition, stable-ID provenance, dependency and compatibility validation, twelve independent pressure dimensions, explicit uncertainty and omitted-variable tracking, source-grounded warnings, deterministic bounded simulation, scenario comparison, permission-safe projections, Scene attachment, recovery, accessibility, and twenty blocking acceptance criteria. The design prohibits guaranteed-balance, fairness, safety, victory, survival, optimality, and actual-play prediction claims.
+Completed at design level with governed Encounter composition, stable-ID provenance, dependency and compatibility validation, twelve independent pressure dimensions, explicit uncertainty and omitted-variable tracking, source-grounded warnings, deterministic bounded simulation, scenario comparison, permission-safe projections, Scene attachment, recovery, accessibility, and twenty blocking acceptance criteria. The design prohibits guaranteed-balance, fairness, safety, victory, survival, optimality, and actual-play prediction claims.
 
 ## IA-D03-004 — Internal Alpha Content and Deterministic Fixtures
 
+Completed at design level with 36 exact inherited source-backed fixtures, 119 explicitly synthetic noncanonical fixtures, five exact-version fixture packs, fifteen coverage families, migration and cleanup rules, deterministic checksum derivation, twenty blocking acceptance criteria, and zero blocking findings. The corpus is bounded test data, not the complete game and not a canonical release.
+
+## IA-D03-005 — Character/Campaign Integration Review
+
 Complete at design level with:
 
-- 36 exact inherited source-backed golden fixtures;
-- 119 explicitly synthetic noncanonical fixtures;
-- five exact-version fixture packs;
-- identity, Campaign, Character, content, Scene, Action, permission, Asset, relationship, investigation, Encounter, failure, pack lifecycle, and accessibility coverage;
-- stable IDs, versions, grouped expected contracts, migration, cleanup, and checksum derivation;
-- twenty blocking acceptance criteria and zero blocking findings;
-- explicit source-selection and complete-game coverage limits;
-- deterministic validation and dedicated CI.
+- four reviewed preparation sources plus IA-D02-006 shared-foundation precedence;
+- 28 normalized integration contracts;
+- eight end-to-end preparation journeys;
+- twelve resolved integration findings and zero blocking findings;
+- ten dependency-ordered implementation slices;
+- twenty-four blocking acceptance criteria;
+- Campaign-scoped Character control and exact policy/version binding;
+- source Definition, placement, instance, analysis snapshot, launch snapshot, Event, and projection separation;
+- permission-safe roster, preview, warning, export, diagnostic, and optional-AI projections;
+- advisory Encounter analysis without guaranteed-balance claims;
+- immutable launch snapshots and an exact first-playable-loop handoff;
+- conflict-safe idempotency, reconnect, revocation, recovery, migration, and export;
+- 36 source-backed and 119 explicitly synthetic noncanonical fixture identities preserved.
 
-The corpus is bounded test data, not the complete game and not a canonical content release. Unselected source material is preserved.
+## Primary IA-D03-005 artifacts
 
-## Primary artifacts
+- `feature-packets/IA-D03-005_CHARACTER_CAMPAIGN_INTEGRATION_REVIEW.md`
+- `feature-packets/IA-D03-005_CHARACTER_CAMPAIGN_CONTRACT_MATRIX.json`
+- `feature-packets/IA-D03-005_INTEGRATION_FINDINGS_REGISTER.json`
+- `feature-packets/IA-D03-005_IMPLEMENTATION_TRACEABILITY.json`
+- `feature-packets/IA-D03-005_REVIEW_RECEIPT.md`
+- `feature-packets/IA-D03-005_READINESS_RECORD.md`
+- `feature-packets/IA-D03-005_COMPLETION_RECORD.json`
+- `validate_character_campaign_integration.py`
 
-- `INTERNAL_ALPHA_CONTENT_AND_FIXTURES.md`
-- `IA-D03-004_INTERNAL_ALPHA_CONTENT_AND_FIXTURE_SPEC.md`
-- `INTERNAL_ALPHA_FIXTURE_CATALOG.json`
-- `INTERNAL_ALPHA_FIXTURE_COVERAGE_MATRIX.json`
-- `IA-D03-004_IMPLEMENTATION_TRACEABILITY.json`
-- `IA-D03-004_REVIEW_RECEIPT.md`
-- `IA-D03-004_READINESS_RECORD.md`
-- `IA-D03-004_COMPLETION_RECORD.json`
-- `validate_internal_alpha_content_fixtures.py`
+## Preparation boundary
+
+The fixture corpus is bounded test data, not the complete game and not a canonical content release. Synthetic fixtures remain noncanonical. Encounter analysis remains advisory and cannot guarantee balance, fairness, safety, victory, survival, or optimality.
 
 ## Execution boundary
 
 Design work may proceed while implementation dependencies remain incomplete. No document here authorizes canonical promotion, paid services, production credentials, real-user data, internal-alpha release, production deployment, or public release.
 
 ## Current next design action
+
+**IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop.**
+
+## Historical IA-D03-004 handoff anchor
+
+This archival block preserves the exact program wording validated when IA-D03-004 completed. It is historical evidence, not the current route or document version.
+
+**Version:** 0.11.0
+
+## IA-D03-004 — Internal Alpha Content and Deterministic Fixtures
 
 **IA-D03-005 — Character/Campaign integration review.**

@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 2,
+  "work_item_id": "IA-D03-005",
+  "attempt_id": "IA-D03-005-attempt-001",
+  "track": "internal-alpha-feature-design",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "branch": "governance/ia-d03-005-character-campaign-integration-review",
+  "status": "ready_for_review",
+  "started_at": "2026-08-06T08:55:00+00:00",
+  "updated_at": "2026-08-06T09:25:00+00:00",
+  "completed_at": null,
+  "base_commit": "c805413edb606732a71a992ba8ea2c12f526ea1b",
+  "latest_pushed_commit": "badcc8324fc2ccb53b3bc6f26b9c388806362a63",
+  "expected_remote_head": "badcc8324fc2ccb53b3bc6f26b9c388806362a63",
+  "pull_request": null,
+  "objective": "Review MV-IA-F004, MV-IA-F005, MV-IA-F012, and IA-D03-004 as one coherent Character-to-Campaign preparation path; normalize overlapping contracts, record resolved findings and implementation ordering, and produce an implementation-ready integration package without expanding authority or source claims.",
+  "last_verified_action": "Completed the full IA-D03-005 package and passed the targeted deterministic validator against the verified predecessor identities and exact tranche-exit wording.",
+  "active_substep": "Open the final IA-D03-005 pull request and verify every triggered workflow on the exact ready-for-review head.",
+  "completed_substeps": [
+    "Reviewed F004, F005, F012, IA-D03-004, IA-D02-006, and the canonical backlog handoff.",
+    "Created the twenty-section Character/Campaign integration review.",
+    "Normalized twenty-eight integration contracts and eight end-to-end journeys.",
+    "Resolved twelve integration findings with zero blocking findings.",
+    "Defined ten dependency-ordered implementation slices and twenty-four blocking acceptance criteria.",
+    "Created findings, traceability, receipt, readiness, completion, validator, and dedicated CI artifacts.",
+    "Advanced the backlog, program index, packet index, and roadmap index to IA-D04-001.",
+    "Passed targeted deterministic package validation."
+  ],
+  "next_action": "Open the final PR, inspect all triggered workflows on its exact head, repair only genuine package defects, and squash-merge when all required checks pass.",
+  "changed_paths": [
+    ".github/workflows/character-campaign-integration-validation.yml",
+    "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
+    "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+    "governance/ai/runtime/ROADMAP_INDEX.json",
+    "governance/ai/work-state/IA-D03-005-attempt-001.json",
+    "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md",
+    "governance/application-planning/internal-alpha/README.md",
+    "governance/application-planning/internal-alpha/feature-packets/IA-D03-005_CHARACTER_CAMPAIGN_INTEGRATION_REVIEW.md",
+    "governance/application-planning/internal-alpha/feature-packets/IA-D03-005_CHARACTER_CAMPAIGN_CONTRACT_MATRIX.json",
+    "governance/application-planning/internal-alpha/feature-packets/IA-D03-005_INTEGRATION_FINDINGS_REGISTER.json",
+    "governance/application-planning/internal-alpha/feature-packets/IA-D03-005_IMPLEMENTATION_TRACEABILITY.json",
+    "governance/application-planning/internal-alpha/feature-packets/IA-D03-005_REVIEW_RECEIPT.md",
+    "governance/application-planning/internal-alpha/feature-packets/IA-D03-005_READINESS_RECORD.md",
+    "governance/application-planning/internal-alpha/feature-packets/IA-D03-005_COMPLETION_RECORD.json",
+    "governance/application-planning/internal-alpha/feature-packets/README.md",
+    "governance/application-planning/internal-alpha/validate_character_campaign_integration.py"
+  ],
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
+    "required_validation_commands": ["python governance/application-planning/internal-alpha/validate_character_campaign_integration.py"],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {
+      "command": "python governance/application-planning/internal-alpha/validate_character_campaign_integration.py",
+      "status": "passed",
+      "evidence": "Targeted deterministic validation passed: 4 sources, 28 contracts, 8 journeys, 12 resolved findings, 0 blocking findings, 10 slices, 24 criteria, and 155 fixture identities."
+    }
+  ],
+  "unresolved_failures": [],
+  "owner_decision_required": false,
+  "evidence": [
+    {"kind": "commit", "value": "IA-D03-005 package head badcc8324fc2ccb53b3bc6f26b9c388806362a63"}
+  ],
+  "roadmap_projection_pending": true,
+  "notes": [
+    "Milestone-only checkpointing applied: start and ready-for-review updates only during package construction.",
+    "P9-06-008-attempt-002 remains unfinished parallel application work and is not altered by this design review.",
+    "No implementation, paid service, credential, real-user data collection, internal-alpha release, production deployment, or public release authority is granted."
+  ]
+}

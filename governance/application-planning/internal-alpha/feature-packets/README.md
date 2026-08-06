@@ -6,15 +6,6 @@
 
 Implementation-ready and in-progress feature design packets, companion matrices, review receipts, and integration records are stored in this directory.
 
-## Status values
-
-- `packet-in-progress`
-- `implementation-ready`
-- `implemented`
-- `validated`
-- `alpha-ready`
-- `deferred`
-
 ## Feature packet index
 
 | Feature ID | Feature | Classification | Packet status | Implementation status | Packet | Companion artifacts |
@@ -25,39 +16,30 @@ Implementation-ready and in-progress feature design packets, companion matrices,
 | MV-IA-F021 | Autosave, Reconnect, Recovery, and Bounded Offline Use | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F021_AUTOSAVE_RECONNECT_RECOVERY_AND_BOUNDED_OFFLINE_USE.md` | `MV-IA-F021_RECOVERY_AND_OFFLINE_MATRIX.json` |
 | MV-IA-F025 | Onboarding, Help, Diagnostics, and Issue Reporting | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F025_ONBOARDING_HELP_DIAGNOSTICS_AND_ISSUE_REPORTING.md` | `MV-IA-F025_ONBOARDING_SUPPORT_MATRIX.json` |
 | MV-IA-F004 | Character Creation and Advancement | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F004_CHARACTER_CREATION_AND_ADVANCEMENT.md` | `MV-IA-F004_CHARACTER_CREATION_MATRIX.json` |
-| MV-IA-F005 | Campaign, Scene, and Session Builder | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F005_CAMPAIGN_SCENE_AND_SESSION_BUILDER.md` | `MV-IA-F005_CAMPAIGN_SCENE_SESSION_MATRIX.json`; `MV-IA-F005_IMPLEMENTATION_TRACEABILITY.json`; `MV-IA-F005_REVIEW_RECEIPT.md`; `MV-IA-F005_READINESS_RECORD.md`; `MV-IA-F005_COMPLETION_RECORD.json` |
-| MV-IA-F012 | Encounter Builder and Balance Lab | alpha-required | implementation-ready | not started; dependency-gated | `MV-IA-F012_ENCOUNTER_BUILDER_AND_BALANCE_LAB.md` | `MV-IA-F012_ENCOUNTER_BALANCE_MATRIX.json`; `MV-IA-F012_IMPLEMENTATION_TRACEABILITY.json`; `MV-IA-F012_REVIEW_RECEIPT.md`; `MV-IA-F012_READINESS_RECORD.md`; `MV-IA-F012_COMPLETION_RECORD.json` |
+| MV-IA-F005 | Campaign, Scene, and Session Builder | entry-critical | implementation-ready | not started; dependency-gated | `MV-IA-F005_CAMPAIGN_SCENE_AND_SESSION_BUILDER.md` | `MV-IA-F005_CAMPAIGN_SCENE_SESSION_MATRIX.json`; traceability; receipt; readiness; completion |
+| MV-IA-F012 | Encounter Builder and Balance Lab | alpha-required | implementation-ready | not started; dependency-gated | `MV-IA-F012_ENCOUNTER_BUILDER_AND_BALANCE_LAB.md` | `MV-IA-F012_ENCOUNTER_BALANCE_MATRIX.json`; traceability; receipt; readiness; completion |
+
+Historical F005 handoff: **IA-D03-003 — MV-IA-F012 Encounter Builder and Balance Lab**.
 
 ## Integration review index
 
-| Review ID | Scope | Status | Review | Contract matrix | Receipt | Completion record |
-|---|---|---|---|---|---|---|
-| IA-D02-006 | F002, F020, F003, F021, and F025 shared foundations | complete | `IA-D02-006_SHARED_FOUNDATIONS_INTEGRATION_REVIEW.md` | `IA-D02-006_SHARED_FOUNDATIONS_CONTRACT_MATRIX.json` | `IA-D02-006_REVIEW_RECEIPT.md` | `IA-D02-006_COMPLETION_RECORD.json` |
-
-## Packet rule
-
-Every implementation-ready packet must use the standard 24-section template, match registry identity and status, define a bounded alpha slice and explicit exclusions, cover permissions, persistence, recovery, responsive and accessible behavior, telemetry, security, cost, tests, exact blocking acceptance criteria, owner gates, dependency holds, companion artifacts, and machine validation.
-
-An implementation-ready packet does not authorize code, provider activation, spending, real tester data collection, production, alpha release, or public release.
+| Review ID | Scope | Status | Review | Contract matrix | Findings | Receipt | Completion record |
+|---|---|---|---|---|---|---|---|
+| IA-D02-006 | F002, F020, F003, F021, and F025 shared foundations | complete | `IA-D02-006_SHARED_FOUNDATIONS_INTEGRATION_REVIEW.md` | `IA-D02-006_SHARED_FOUNDATIONS_CONTRACT_MATRIX.json` | resolved in review | `IA-D02-006_REVIEW_RECEIPT.md` | `IA-D02-006_COMPLETION_RECORD.json` |
+| IA-D03-005 | Character/Campaign preparation: F004, F005, F012, and IA-D03-004 | complete | `IA-D03-005_CHARACTER_CAMPAIGN_INTEGRATION_REVIEW.md` | `IA-D03-005_CHARACTER_CAMPAIGN_CONTRACT_MATRIX.json` | `IA-D03-005_INTEGRATION_FINDINGS_REGISTER.json` | `IA-D03-005_REVIEW_RECEIPT.md` | `IA-D03-005_COMPLETION_RECORD.json` |
 
 ## Shared-foundation integration rule
 
-All packets beginning with IA-D03 consume `IA-D02-006_SHARED_FOUNDATIONS_CONTRACT_MATRIX.json`, declare SFI-C001 through SFI-C024 as applicable, preserve stable IDs, authorization, projection safety, local/authoritative/Event/projection separation, idempotency, ambiguous-failure lookup, recovery, revocation, diagnostics, accessibility, provider neutrality, and zero-service fallback.
+All packets beginning with IA-D03 consume `IA-D02-006_SHARED_FOUNDATIONS_CONTRACT_MATRIX.json`, preserve stable IDs, authorization, projection safety, local/authoritative/Event/projection separation, idempotency, ambiguous-failure lookup, recovery, revocation, diagnostics, accessibility, provider neutrality, and zero-service fallback.
 
-## Completed Character preparation result
+## Character/Campaign preparation result
 
-MV-IA-F004 establishes governed Character identity, selection, calculation, control, lifecycle, history, recovery, accessibility, twenty acceptance criteria, and deterministic fixtures.
+IA-D03-005 proves that Character creation and advancement, Campaign/Scene/Session preparation, Encounter composition and advisory analysis, and the bounded deterministic fixture corpus form one coherent permission-safe, versioned, recoverable preparation path.
 
-## Completed Campaign preparation result
+The integration defines 28 controlling contracts, eight journeys, twelve resolved findings, ten implementation slices, twenty-four blocking acceptance criteria, and zero blocking findings. It preserves 36 source-backed and 119 synthetic noncanonical fixture identities.
 
-MV-IA-F005 establishes Campaign rules and packs, membership, Scene drafts and placements, safe previews, launch snapshots, Session state, recovery, exports, accessibility, twenty acceptance criteria, and deterministic fixtures.
-
-The historical F005 handoff to **IA-D03-003 — MV-IA-F012 Encounter Builder and Balance Lab** is preserved here even after IA-D03-003 advances the current design route.
-
-## Completed Encounter preparation result
-
-MV-IA-F012 establishes governed Encounter composition, stable-ID provenance, dependency and compatibility validation, twelve pressure dimensions, uncertainty and source-grounded warnings, deterministic bounded simulation, comparisons, permission-safe projections, Scene attachment, recovery, exports, accessibility, zero-service operation, twenty blocking acceptance criteria, forty-eight denied cases, and ten deterministic fixtures. It prohibits guaranteed-balance, fairness, safety, victory, survival, optimality, and actual-play prediction claims.
+No integration artifact authorizes application implementation, canonical promotion, paid services, production credentials, real-user data collection, internal-alpha release, production deployment, or public release.
 
 ## Next item
 
-IA-D03-004 — internal-alpha content and deterministic fixture specification.
+**IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop.**
