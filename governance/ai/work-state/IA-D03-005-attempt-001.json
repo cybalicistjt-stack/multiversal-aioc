@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "work_item_id": "IA-D03-005",
+  "attempt_id": "IA-D03-005-attempt-001",
+  "track": "internal-alpha-feature-design",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "branch": "governance/ia-d03-005-character-campaign-integration-review",
+  "status": "started",
+  "started_at": "2026-08-06T08:55:00+00:00",
+  "updated_at": "2026-08-06T08:55:00+00:00",
+  "completed_at": null,
+  "base_commit": "c805413edb606732a71a992ba8ea2c12f526ea1b",
+  "latest_pushed_commit": null,
+  "expected_remote_head": "c805413edb606732a71a992ba8ea2c12f526ea1b",
+  "pull_request": null,
+  "objective": "Review MV-IA-F004, MV-IA-F005, MV-IA-F012, and IA-D03-004 as one coherent Character-to-Campaign preparation path; normalize overlapping contracts, record resolved findings and implementation ordering, and produce an implementation-ready integration package without expanding authority or source claims.",
+  "last_verified_action": "Created the governed IA-D03-005 branch from verified main merge c805413edb606732a71a992ba8ea2c12f526ea1b under MV-AI-EFFICIENCY-001.",
+  "active_substep": "Construct the complete Character/Campaign integration review package and run targeted predecessor and package validation without routine checkpoint rewrites.",
+  "completed_substeps": [],
+  "next_action": "Create the integration review, machine-readable contract matrix, findings register, implementation traceability, review/readiness/completion records, validator, CI workflow, and bounded roadmap/backlog/index updates; then move directly to one ready_for_review checkpoint.",
+  "changed_paths": [
+    "governance/application-planning/internal-alpha/feature-packets/IA-D03-005_CHARACTER_CAMPAIGN_INTEGRATION_REVIEW.md",
+    "governance/application-planning/internal-alpha/feature-packets/IA-D03-005_CHARACTER_CAMPAIGN_CONTRACT_MATRIX.json",
+    "governance/application-planning/internal-alpha/feature-packets/IA-D03-005_INTEGRATION_FINDINGS_REGISTER.json",
+    "governance/application-planning/internal-alpha/feature-packets/IA-D03-005_IMPLEMENTATION_TRACEABILITY.json",
+    "governance/application-planning/internal-alpha/feature-packets/IA-D03-005_REVIEW_RECEIPT.md",
+    "governance/application-planning/internal-alpha/feature-packets/IA-D03-005_READINESS_RECORD.md",
+    "governance/application-planning/internal-alpha/feature-packets/IA-D03-005_COMPLETION_RECORD.json",
+    "governance/application-planning/internal-alpha/validate_character_campaign_integration.py",
+    ".github/workflows/character-campaign-integration-validation.yml"
+  ],
+  "completion_gate": {
+    "required_evidence_kinds": [
+      "commit",
+      "pull_request",
+      "ci_run",
+      "merge"
+    ],
+    "required_validation_commands": [
+      "python governance/application-planning/internal-alpha/validate_character_campaign_integration.py"
+    ],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {
+      "command": "python governance/application-planning/internal-alpha/validate_character_campaign_integration.py",
+      "status": "not_run",
+      "evidence": null
+    }
+  ],
+  "unresolved_failures": [],
+  "owner_decision_required": false,
+  "evidence": [],
+  "roadmap_projection_pending": true,
+  "notes": [
+    "Milestone-only checkpointing applies. Routine construction substeps do not rewrite this checkpoint or runtime projections.",
+    "P9-06-008-attempt-002 remains unfinished parallel application work and is not altered by this design review.",
+    "No implementation, paid service, credential, real-user data collection, internal-alpha release, production deployment, or public release authority is granted."
+  ]
+}
