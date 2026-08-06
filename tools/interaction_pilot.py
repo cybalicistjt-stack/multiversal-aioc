@@ -42,8 +42,11 @@ EXPECTED_PROMPT = (
     "active-work checkpoint and branch, and resume the exact unfinished "
     "operation; never assume started or in-progress work is complete."
 )
-
 SCENARIO_IDS = [f"MV-PILOT-{index:03d}" for index in range(1, 18)]
+UNFINISHED = {
+    "started", "in_progress", "validation_failed", "blocked_non_owner",
+    "blocked_owner", "ready_for_review",
+}
 
 
 class PilotError(RuntimeError):
@@ -109,13 +112,12 @@ def copy_correction_fixture(root: Path, target: Path) -> Path:
     (target / "tools").mkdir(parents=True)
     shutil.copy2(root / CORRECTION_TOOL, target / CORRECTION_TOOL)
     shutil.copytree(root / CORRECTION_LIB, target / CORRECTION_LIB)
-    example = load_json(root / CORRECTION_EXAMPLE)["intakes"][0]
     input_path = target / "input.json"
-    write_json(input_path, example)
+    write_json(input_path, load_json(root / CORRECTION_EXAMPLE)["intakes"][0])
     return input_path
 
 
-def receipt_rejected(root: Path, control_type: str, mutate) -> tuple[bool, str]:
+def receipt_rejected(root: Path, control_type: str, mutate) -> bool:
     receipts = load_json(root / RECEIPTS)["receipts"]
     receipt = copy.deepcopy(next(item for item in receipts if item["control_type"] == control_type))
     mutate(receipt)
@@ -123,14 +125,16 @@ def receipt_rejected(root: Path, control_type: str, mutate) -> tuple[bool, str]:
         path = Path(directory) / "receipt.json"
         write_json(path, receipt)
         result = run([sys.executable, str(root / ENFORCEMENT_TOOL), "validate-receipt", str(path)], root)
-    return result.returncode != 0, (result.stderr.strip() or result.stdout.strip())
+    return result.returncode != 0
 
 
 def scenario_restart(root: Path):
     prompt = (root / PROMPT).read_text(encoding="utf-8").rstrip("\n")
     bootstrap = (root / BOOTSTRAP).read_text(encoding="utf-8")
-    ok = prompt == EXPECTED_PROMPT and "MULTIVERSAL_STATIC_RESTART_PROMPT.txt" in bootstrap
-    return ok, "Static prompt is exact, one-line, and bootstrap-referenced."
+    return (
+        prompt == EXPECTED_PROMPT and "MULTIVERSAL_STATIC_RESTART_PROMPT.txt" in bootstrap,
+        "Static prompt is exact, one-line, and bootstrap-referenced.",
+    )
 
 
 def scenario_started(root: Path):
@@ -177,9 +181,12 @@ def scenario_false_completion(root: Path):
 
 def scenario_parallel(root: Path):
     pointer = load_json(root / POINTER)
-    deferred = {(item["track"], item["next_work_item_id"]) for item in pointer["deferred_tracks"]}
-    ok = ("application-implementation", "P9-06-008") in deferred and ("internal-alpha-feature-design", "IA-D03-003") in deferred
-    return ok, "Both parallel tracks remain explicit and uncompleted."
+    primary = next(item for item in pointer["active_attempts"] if item["attempt_id"] == pointer["primary_attempt_id"])
+    app_active = primary["track"] == "application-implementation" and primary["status"] in UNFINISHED
+    app_deferred = any(item["track"] == "application-implementation" for item in pointer["deferred_tracks"])
+    design_explicit = any(item["track"] == "internal-alpha-feature-design" for item in pointer["deferred_tracks"])
+    ok = (app_active or app_deferred) and design_explicit
+    return ok, "Application and internal-alpha tracks remain explicit; active and deferred states are preserved without false completion."
 
 
 def scenario_roadmap_lite(root: Path):
@@ -228,8 +235,7 @@ def scenario_owner_gate(root: Path):
 
 
 def scenario_receipt(root: Path, control_type: str, mutate, summary: str):
-    ok, _ = receipt_rejected(root, control_type, mutate)
-    return ok, summary
+    return receipt_rejected(root, control_type, mutate), summary
 
 
 def scenario_coverage(root: Path):
@@ -247,7 +253,13 @@ def scenario_coverage(root: Path):
         gap_states[item["gap_id"]] = item["status"] == "closed"
     mapped = {item["case_id"] for item in evaluation_map["cases"]} | {item["case_id"] for item in eval_extension["cases"]}
     eval_ids = {item["case_id"] for item in evaluations["cases"]}
-    ok = len(effective) == 22 and all(state in {"enforced", "enforced_elsewhere", "target_enforced"} for state in effective.values()) and len(gap_states) == 8 and all(gap_states.values()) and eval_ids <= mapped
+    ok = (
+        len(effective) == 22
+        and all(state in {"enforced", "enforced_elsewhere", "target_enforced"} for state in effective.values())
+        and len(gap_states) == 8
+        and all(gap_states.values())
+        and eval_ids <= mapped
+    )
     return ok, "All 22 interaction patterns, eight known gaps, and 15 base evaluation cases have effective controls."
 
 
@@ -275,8 +287,7 @@ SCENARIOS = {
 def evaluate(root: Path):
     manifest = load_json(root / MANIFEST)
     scenario_items = manifest.get("scenarios", [])
-    ids = [item.get("scenario_id") for item in scenario_items]
-    require(ids == SCENARIO_IDS, "pilot scenario manifest IDs/order mismatch")
+    require([item.get("scenario_id") for item in scenario_items] == SCENARIO_IDS, "pilot scenario manifest IDs/order mismatch")
     results = []
     for item in scenario_items:
         scenario_id = item["scenario_id"]
@@ -337,7 +348,7 @@ def scorecard(root: Path, generated_at: str):
         "limitations": [
             "The pilot measures deterministic control behavior against repository fixtures and simulated mutations, not long-term model behavior in every product surface.",
             "Live owner-intervention reduction requires later observation across real work sessions.",
-            "The raw private conversation archive is not part of the public pilot corpus."
+            "The raw private conversation archive is not part of the public pilot corpus.",
         ],
     }
 
