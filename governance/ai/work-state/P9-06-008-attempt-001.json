@@ -1,68 +1,65 @@
 {
   "schema_version": "1.0.0",
-  "revision": 1,
+  "revision": 2,
   "work_item_id": "P9-06-008",
   "attempt_id": "P9-06-008-attempt-001",
   "track": "application-implementation",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "branch": "impl/p9-06-008-backup-restore-export",
-  "status": "started",
+  "status": "superseded",
   "started_at": "2026-08-06T00:12:00+00:00",
-  "updated_at": "2026-08-06T00:12:00+00:00",
+  "updated_at": "2026-08-06T00:32:00+00:00",
   "completed_at": null,
   "base_commit": "ea83b54c11d99bc69e92f955a1857f862a934e76",
-  "latest_pushed_commit": null,
-  "expected_remote_head": "ea83b54c11d99bc69e92f955a1857f862a934e76",
-  "pull_request": null,
-  "objective": "Implement provider-neutral backup, restore, and provider-exit export ports with deterministic manifests, integrity checksums, restore planning and receipts, complete governed export coverage, schemas, fixtures, validation, and dedicated CI.",
-  "last_verified_action": "Verified Multiversal-app main at ea83b54c11d99bc69e92f955a1857f862a934e76, confirmed PR #77/P9-06-007 remains the latest implemented P9 item, found no P9-06-008 branch or pull request, and created impl/p9-06-008-backup-restore-export from main.",
-  "active_substep": "Inspect existing contract conventions and implement the P9-06-008 TypeScript port contract, JSON schema, deterministic fixture, validator, and dedicated CI on the real application branch.",
+  "latest_pushed_commit": "efaf8513355825042a17c2075630531ba31b0fa9",
+  "expected_remote_head": "efaf8513355825042a17c2075630531ba31b0fa9",
+  "pull_request": 78,
+  "objective": "Superseded misclassified attempt. The implemented recovery contracts were based on stale derived roadmap prose and do not satisfy the authoritative P9-06-008 initial 17-table logical schema migration.",
+  "last_verified_action": "Application PR #79 merged as d1b62462a57f2c2ff88a0b3dfee16cd0d849feb3, reclassifying PR #78 as P9-06-011A preparatory recovery-contract groundwork and explicitly leaving P9-06-008 incomplete.",
+  "active_substep": "Disposition complete: preserve the useful merged package as P9-06-011A and continue through replacement attempt P9-06-008-attempt-002.",
   "completed_substeps": [
-    "Completed and verified the owner-AI interaction side mission through MV-CONT-005",
-    "Verified the current Multiversal-app main branch and open pull requests",
-    "Confirmed P9-06-008 has not already started or completed",
-    "Created the dedicated P9-06-008 implementation branch"
+    "Verified the application baseline",
+    "Created the original implementation branch",
+    "Implemented and validated provider-neutral recovery contracts",
+    "Merged application PR #78",
+    "Detected conflict between stale roadmap prose and the authoritative Phase 9 backlog",
+    "Recorded the governance incident",
+    "Reclassified the merged package as P9-06-011A through application PR #79"
   ],
-  "next_action": "Read the P9-06-006 and P9-06-007 contract, schema, fixture, validator, and workflow patterns; implement the complete P9-06-008 package; run or obtain dedicated validation; open and merge the governed pull request only after all checks pass.",
+  "next_action": "Continue P9-06-008-attempt-002 on impl/p9-06-008-logical-schema-migration using the exact 17 required tables from P9-04_IMPLEMENTATION_READINESS_REGISTRY.json.",
   "changed_paths": [
     "packages/contracts/src/backup-restore-export.ts",
     "schemas/contracts/backup-restore-export-port.schema.json",
     "fixtures/contracts/backup-restore-export-port.json",
-    "tools/verify_p9_06_008.py",
-    ".github/workflows/validate-p9-06-008.yml"
+    "tools/verify_p9_06_011a.py",
+    ".github/workflows/validate-p9-06-011a.yml",
+    "docs/architecture/P9-06-011A_RECOVERY_CONTRACT_FOUNDATION.md"
   ],
   "completion_gate": {
     "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
-    "required_validation_commands": ["python tools/verify_p9_06_008.py"],
+    "required_validation_commands": ["authoritative backlog alignment"],
     "owner_approval_required": false
   },
   "validation": [
     {
-      "command": "python tools/verify_p9_06_008.py",
-      "status": "not_run",
-      "evidence": null
+      "command": "authoritative backlog alignment",
+      "status": "failed",
+      "evidence": "The canonical backlog defines P9-06-008 as the initial 17-table logical schema migration; PR #78 implemented recovery contracts instead."
     }
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
-    {
-      "kind": "commit",
-      "value": "P9-06-008 verified application baseline ea83b54c11d99bc69e92f955a1857f862a934e76"
-    },
-    {
-      "kind": "file",
-      "value": "P9-06-008 implementation branch impl/p9-06-008-backup-restore-export created from verified main"
-    },
-    {
-      "kind": "merge",
-      "value": "MV-CONT-005 completion record PR #147 squash commit 4ca7dec3c25bd5995d20030fb8a1e18a77a08568 closed the side mission before application work resumed"
-    }
+    {"kind":"pull_request","value":"Misclassified implementation PR #78"},
+    {"kind":"ci_run","value":"Original recovery-contract run 31059446585 PASS; technically valid but backlog-misaligned"},
+    {"kind":"merge","value":"PR #78 squash commit efaf8513355825042a17c2075630531ba31b0fa9"},
+    {"kind":"merge","value":"Classification-correction PR #79 squash commit d1b62462a57f2c2ff88a0b3dfee16cd0d849feb3"},
+    {"kind":"file","value":"governance/ai/interaction-system/incidents/MV-INC-P9-06-008-STALE-ROADMAP-MISCLASSIFICATION.md"}
   ],
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "notes": [
-    "No hosted backup provider, database vendor, credentials, paid service, production data, deployment, or irreversible provider commitment is authorized.",
-    "The main-branch Bible copy remains noncanonical and is outside this work item.",
-    "IA-D03-003 remains a planned parallel design track."
+    "Superseded is not completion.",
+    "This attempt must never be used as evidence that P9-06-008 or P9-06-011 completed.",
+    "Replacement attempt P9-06-008-attempt-002 carries the authoritative migration scope."
   ]
 }
