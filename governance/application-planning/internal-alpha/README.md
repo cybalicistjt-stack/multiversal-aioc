@@ -84,11 +84,25 @@ Design work may proceed while implementation dependencies remain incomplete. No 
 
 ## Historical validation anchors
 
-The following lines preserve prior validated routes and are not the current route:
+The following sections preserve exact prior result and handoff labels. They are historical evidence, not the current route.
 
 **Version:** 0.11.0
 
+## IA-D03-002 — Campaign, Scene, and Session Builder
+
+Completed at design level; original handoff preserved to IA-D03-003 Encounter Builder and Balance Lab.
+
+## IA-D03-003 — Encounter Builder and Balance Lab
+
+Completed at design level; original handoff preserved to IA-D03-004 internal-alpha content and fixtures.
+
 ## IA-D03-004 — Internal Alpha Content and Deterministic Fixtures
+
+Completed at design level; original handoff preserved to IA-D03-005 Character/Campaign integration review.
+
+## IA-D03-005 — Character/Campaign Integration Review
+
+Completed at design level; original handoff preserved to IA-D04-001 First Playable Action and GM Approval Loop.
 
 **IA-D03-005 — Character/Campaign integration review.**
 
