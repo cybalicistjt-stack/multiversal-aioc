@@ -1,0 +1,5 @@
+# IA-D07-002 — Adventure and Module Fixture Matrix
+
+Twenty-four deterministic fixtures cover: draft lifecycle; review rejection; immutable publish; branch prerequisites; hidden future nodes; repeated scenes; failure fallback; nested module binding; missing dependency; deprecated dependency; campaign instantiation; source-versus-run separation; encounter result progression; investigation clue progression; reward grant; duplicate request idempotency; stale-version conflict; lost-response status lookup; Event-gap repair; compensating rewind; role-filtered export; import collision; screen-reader branch navigation; and pack removal with historical tombstones.
+
+Each fixture declares initial versions, actor authority, request, expected authoritative result group, role-filtered projections, Events, provenance, and recovery outcome.
