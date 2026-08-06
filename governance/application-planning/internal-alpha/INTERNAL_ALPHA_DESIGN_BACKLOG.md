@@ -116,3 +116,5 @@ These archival statements preserve earlier validated routes and are not the curr
 **IA-D05-005 — graph/list accessibility matrix — next.**
 
 **IA-D05-006 — noncombat integration review — next.**
+
+**IA-D06-001 — MV-IA-F007 Full Combat Interface — next.**
