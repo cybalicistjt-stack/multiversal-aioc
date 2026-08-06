@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -32,6 +33,18 @@ def load_json(path: Path, errors: list[str]) -> dict:
 def require(condition: bool, message: str, errors: list[str]) -> None:
     if not condition:
         errors.append(message)
+
+
+def version_tuple(value: str) -> tuple[int, ...]:
+    try:
+        return tuple(int(part) for part in value.split("."))
+    except (AttributeError, ValueError):
+        return ()
+
+
+def document_version(text: str) -> tuple[int, ...]:
+    match = re.search(r"\*\*Version:\*\* ([0-9]+(?:\.[0-9]+)+)", text)
+    return version_tuple(match.group(1)) if match else ()
 
 
 def main() -> int:
@@ -63,7 +76,7 @@ def main() -> int:
     require("immutable launch snapshot" in packet_text.lower(), "Packet lacks immutable launch-snapshot rule", errors)
     require("realtime" in packet_text.lower() and "advisory" in packet_text.lower(), "Packet lacks realtime advisory rule", errors)
     require("no offline authoritative" in packet_text.lower() or "offline authoritative" in packet_text.lower(), "Packet lacks offline authority boundary", errors)
-    require("IA-D03-003" in packet_text, "Packet does not identify IA-D03-003 next action", errors)
+    require("IA-D03-003" in packet_text, "Packet does not identify its original IA-D03-003 handoff", errors)
 
     for section in range(1, 25):
         require(f"## {section}." in packet_text, f"Packet missing section {section}", errors)
@@ -101,7 +114,7 @@ def main() -> int:
 
     features = {item.get("featureId"): item for item in registry.get("features", [])}
     f005 = features.get("MV-IA-F005", {})
-    require(registry.get("version") == "0.9.0", "Registry version must be 0.9.0", errors)
+    require(version_tuple(registry.get("version", "")) >= (0, 9, 0), "Registry version must be at least 0.9.0", errors)
     require(f005.get("designStatus") == "implementation-ready", "Registry does not mark F005 implementation-ready", errors)
     require(f005.get("packetPath") == "feature-packets/MV-IA-F005_CAMPAIGN_SCENE_AND_SESSION_BUILDER.md", "Registry packet path mismatch", errors)
     companions = set(f005.get("companionFiles", []))
@@ -110,20 +123,19 @@ def main() -> int:
 
     for text_name, text in [("review", review_text), ("readiness", readiness_text)]:
         require("implementation-ready" in text.lower(), f"{text_name} record lacks readiness decision", errors)
-        require("IA-D03-003" in text, f"{text_name} record lacks next action", errors)
+        require("IA-D03-003" in text, f"{text_name} record lacks original next action", errors)
 
     require("IA-D03-002 — MV-IA-F005 Campaign, Scene, and Session Builder packet — complete" in backlog_text, "Backlog does not mark IA-D03-002 complete", errors)
-    require("IA-D03-003 — MV-IA-F012 Encounter Builder and Balance Lab packet — next" in backlog_text, "Backlog does not advance to IA-D03-003", errors)
-    require("**IA-D03-003 — Design MV-IA-F012, Encounter Builder and Balance Lab.**" in backlog_text, "Backlog current-next statement mismatch", errors)
-    require("**Version:** 0.9.0" in backlog_text, "Backlog version must be 0.9.0", errors)
+    require("IA-D03-003" in backlog_text and "MV-IA-F012 Encounter Builder and Balance Lab" in backlog_text, "Backlog does not preserve the IA-D03-003 handoff", errors)
+    require(document_version(backlog_text) >= (0, 9, 0), "Backlog version must be at least 0.9.0", errors)
 
     require("## IA-D03-002 — Campaign, Scene, and Session Builder" in program_text, "Program README lacks IA-D03-002 result", errors)
-    require("**IA-D03-003 — Design MV-IA-F012, Encounter Builder and Balance Lab.**" in program_text, "Program README next action mismatch", errors)
-    require("**Version:** 0.9.0" in program_text, "Program README version must be 0.9.0", errors)
+    require("IA-D03-003" in program_text and "Encounter Builder and Balance Lab" in program_text, "Program README does not preserve the IA-D03-003 result or handoff", errors)
+    require(document_version(program_text) >= (0, 9, 0), "Program README version must be at least 0.9.0", errors)
 
     require("| MV-IA-F005 | Campaign, Scene, and Session Builder |" in packet_index_text, "Packet index lacks F005", errors)
     require("`MV-IA-F005_CAMPAIGN_SCENE_SESSION_MATRIX.json`" in packet_index_text, "Packet index lacks F005 matrix", errors)
-    require("IA-D03-003" in packet_index_text, "Packet index does not advance next item", errors)
+    require("IA-D03-003" in packet_index_text, "Packet index does not preserve the F005-to-F012 handoff", errors)
 
     forbidden_terms = ["prophecy content", "prophecy feature"]
     for term in forbidden_terms:

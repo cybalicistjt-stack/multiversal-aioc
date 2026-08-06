@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.9.0  
+**Version:** 0.10.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -32,25 +32,20 @@ Design work maximizes reuse: shared systems and high-fan-out features are specif
 2. **IA-D02-002 — MV-IA-F020 Permissions and Hidden Information — complete**
    - packet: `feature-packets/MV-IA-F020_PERMISSIONS_AND_HIDDEN_INFORMATION.md`
    - matrix: `feature-packets/MV-IA-F020_PERMISSION_SURFACE_MATRIX.json`
-   - validation: twenty acceptance criteria, protected surfaces, visibility classes, and denied cases
 3. **IA-D02-003 — MV-IA-F003 Identity, Dashboard, and Workspace Selection — complete**
    - packet: `feature-packets/MV-IA-F003_IDENTITY_DASHBOARD_AND_WORKSPACE_SELECTION.md`
    - matrix: `feature-packets/MV-IA-F003_IDENTITY_WORKSPACE_MATRIX.json`
-   - validation: twenty acceptance criteria, identity, invitation, role, workspace, discovery, and denied-case contracts
 4. **IA-D02-004 — MV-IA-F021 Autosave, Reconnect, Recovery, and Bounded Offline Use — complete**
    - packet: `feature-packets/MV-IA-F021_AUTOSAVE_RECONNECT_RECOVERY_AND_BOUNDED_OFFLINE_USE.md`
    - matrix: `feature-packets/MV-IA-F021_RECOVERY_AND_OFFLINE_MATRIX.json`
-   - validation: twenty acceptance criteria, state vocabulary, interruption points, denied cases, and bounded-offline rules
 5. **IA-D02-005 — MV-IA-F025 Onboarding, Help, Diagnostics, and Issue Reporting — complete**
    - packet: `feature-packets/MV-IA-F025_ONBOARDING_HELP_DIAGNOSTICS_AND_ISSUE_REPORTING.md`
    - matrix: `feature-packets/MV-IA-F025_ONBOARDING_SUPPORT_MATRIX.json`
-   - validation: twenty acceptance criteria, role-specific onboarding, exact release identity, diagnostic allowlisting, attachment consent, export-only operation, and zero-service operation
 6. **IA-D02-006 — Shared-foundations integration review — complete**
    - review: `feature-packets/IA-D02-006_SHARED_FOUNDATIONS_INTEGRATION_REVIEW.md`
    - matrix: `feature-packets/IA-D02-006_SHARED_FOUNDATIONS_CONTRACT_MATRIX.json`
    - receipt: `feature-packets/IA-D02-006_REVIEW_RECEIPT.md`
    - completion: `feature-packets/IA-D02-006_COMPLETION_RECORD.json`
-   - validation: twenty-four shared contracts, five integrated journeys, eight resolved findings, zero blocking findings, and twenty acceptance criteria
 
 Rationale: F002, F020, F003, F021, and F025 establish the object, authority, identity, recovery, onboarding, help, diagnostics, and issue-evidence patterns consumed by later work. IA-D02-006 normalizes their roles, fields, workspace types, authority, persistence, recovery, support, accessibility, provider, and cost boundaries.
 
@@ -62,16 +57,20 @@ Rationale: F002, F020, F003, F021, and F025 establish the object, authority, ide
    - traceability: `feature-packets/MV-IA-F004_IMPLEMENTATION_TRACEABILITY.json`
    - completion: `feature-packets/MV-IA-F004_COMPLETION_RECORD.json`
    - status: implementation-ready design; implementation not started and dependency-gated
-   - validation: twenty blocking acceptance criteria, twelve lifecycle states, eighteen validation classes, sixteen operation types, twenty-six denied cases, and zero blocking findings
 2. **IA-D03-002 — MV-IA-F005 Campaign, Scene, and Session Builder packet — complete**
    - packet: `feature-packets/MV-IA-F005_CAMPAIGN_SCENE_AND_SESSION_BUILDER.md`
    - matrix: `feature-packets/MV-IA-F005_CAMPAIGN_SCENE_SESSION_MATRIX.json`
    - traceability: `feature-packets/MV-IA-F005_IMPLEMENTATION_TRACEABILITY.json`
    - completion: `feature-packets/MV-IA-F005_COMPLETION_RECORD.json`
    - status: implementation-ready design; implementation not started and dependency-gated
-   - validation: twenty blocking acceptance criteria, twenty-four shared contracts, at least twenty-four validation classes, thirty-one operation types, thirty-one Event types, forty-two denied cases, and zero blocking findings
-3. **IA-D03-003 — MV-IA-F012 Encounter Builder and Balance Lab packet — next**
-4. IA-D03-004 — alpha content and fixture specification
+3. **IA-D03-003 — MV-IA-F012 Encounter Builder and Balance Lab packet — complete**
+   - packet: `feature-packets/MV-IA-F012_ENCOUNTER_BUILDER_AND_BALANCE_LAB.md`
+   - matrix: `feature-packets/MV-IA-F012_ENCOUNTER_BALANCE_MATRIX.json`
+   - traceability: `feature-packets/MV-IA-F012_IMPLEMENTATION_TRACEABILITY.json`
+   - completion: `feature-packets/MV-IA-F012_COMPLETION_RECORD.json`
+   - status: implementation-ready design; implementation not started and dependency-gated
+   - validation: twenty blocking acceptance criteria, twelve pressure dimensions, eight uncertainty classes, at least thirty-two validation classes, at least thirty-three operation types, at least thirty-two Event types, forty-eight denied cases, ten deterministic fixtures, and zero blocking findings
+4. **IA-D03-004 — alpha content and fixture specification — next**
 5. IA-D03-005 — Character/Campaign integration review
 
 ## Tranche IA-D04 — First playable loop
@@ -145,62 +144,41 @@ A design item is complete only when its artifact exists, passes validation, reco
 
 ## IA-D02 completion result
 
-Tranche IA-D02 is complete at design level.
-
-The shared-foundation baseline now requires:
-
-- stable provider-neutral subject identity;
-- deny-by-default authorization and field-safe projection;
-- nonauthoritative selected-context receipts;
-- stable-ID object selection with caller validation;
-- explicit separation of local draft, submitted operation, accepted Event, and current projection;
-- idempotency and status lookup after ambiguous failure;
-- revocation-aware cache, subscription, workspace, and issue behavior;
-- manifest-bound offline reading and local drafts with no offline authoritative mutation;
-- diagnostic exclusion by default, redaction, preview, consent, quarantine, and checksums;
-- separate governed support access;
-- equivalent desktop, tablet, mobile, keyboard, touch, screen-reader, high-zoom, reduced-motion, and noncolor behavior;
-- provider-neutral adapters and a zero-paid-service, zero-AI core path.
+Tranche IA-D02 is complete at design level. Its shared-foundation baseline requires stable provider-neutral identity, deny-by-default authorization, field-safe projection, selected-context receipts, stable-ID object selection, explicit local/authoritative/Event/projection separation, idempotency and ambiguous-failure lookup, revocation-aware recovery, bounded offline use, safe diagnostics, separate support access, accessible responsive equivalence, provider-neutral adapters, and a zero-paid-service, zero-AI core path.
 
 All IA-D02 application implementation remains dependency-gated by the active P9-06 sequence.
 
 ## IA-D03-001 completion record
 
-MV-IA-F004 now defines:
-
-- Campaign-, rules-profile-, creation-policy-, advancement-policy-, and pack-lock-bound Character drafts;
-- stable-ID species, form, origin, attribute, skill, proficiency, Ability, Action, Effect, Condition, Resource, and initial-equipment selections;
-- authoritative prerequisite, exclusivity, budget, grant, entitlement, pack, lifecycle, and compatibility validation;
-- source-linked deterministic calculation traces;
-- explicit Character-control grants separate from identity, membership, role, ownership, and entitlement;
-- role-safe Character, history, export, diagnostic, and AI projections;
-- local draft, authoritative save, submission, activation, award, advancement, correction, migration, retirement, archival, and recovery states;
-- idempotency, expected versions, status lookup, conflict preservation, Event-gap recovery, and no offline authoritative mutation;
-- history-preserving advancement, correction, migration, and historical entitlement behavior;
-- responsive and accessible creation and advancement flows;
-- twenty blocking acceptance criteria and deterministic fixture requirements.
-
-The packet is implementation-ready as a design artifact. Application implementation remains dependency-gated by the active P9-06 sequence and does not authorize paid services, production credentials, real-user data collection, internal-alpha release, production, or public release.
+MV-IA-F004 defines Campaign- and rules-bound Character drafts, stable-ID selections, authoritative validation, deterministic calculations, Character-control grants, role-safe projections, history-preserving lifecycle changes, reconnect and recovery, accessible creation and advancement, twenty blocking criteria, and deterministic fixtures.
 
 ## IA-D03-002 completion record
 
-MV-IA-F005 now defines:
+MV-IA-F005 defines Campaign rules, packs, membership, invitations, roles, Character control, Scene drafts, stable-ID placements, local overrides, notes, maps, Player previews, launch validation, immutable launch snapshots, Session lifecycle, Event recovery, role-safe exports, accessibility, twenty blocking criteria, and deterministic fixtures.
 
-- Campaign identity, rules-profile binding, schema identity, entitlement policy, and immutable pack-lock state;
-- invitation, membership, active-role, Character-control, observer, and Assistant-GM delegation boundaries;
-- Scene drafts, Campaign-local placements, explicit field visibility, accessible map alternatives, and server-generated Player previews;
-- authoritative validation of stable-ID references, permissions, entitlements, dependencies, Character eligibility, and launch readiness;
-- immutable launch snapshots that separate mutable preparation from active Session state;
-- Session launch, entry, pause, resume, close, Event history, current projection, and reconnect behavior;
-- idempotency, expected versions, ambiguous-failure lookup, conflict preservation, revocation, and no offline authoritative mutation;
-- realtime as advisory and durable ordered Events plus server projections as authoritative;
-- role-safe export, diagnostics, optional AI proposals, accessibility, responsive behavior, and zero-paid-service operation;
-- twenty blocking acceptance criteria and deterministic Campaign, Scene, invitation, launch, visibility, and recovery fixtures.
+## IA-D03-003 completion record
 
-The packet is implementation-ready as a design artifact. Application implementation remains dependency-gated by the active P9-06 sequence and does not authorize paid services, production credentials, real-user data collection, internal-alpha release, production, or public release.
+MV-IA-F012 now defines:
+
+- Campaign-, Scene-, rules-profile-, schema-, pack-lock-, Character-roster-, and analysis-policy-bound Encounter drafts;
+- stable-ID participant, hazard, environment, objective, reinforcement, reward, and support placements;
+- source-versus-placement separation and field-level analysis provenance;
+- authoritative dependency, permission, entitlement, scale, compatibility, version, and integrity validation;
+- twelve independent pressure dimensions rather than one authoritative difficulty score;
+- evidence quality, omitted-variable tracking, sensitivity ranges, and eight uncertainty classes;
+- source-grounded blocking errors, warnings, observations, and unresolved-data notices;
+- deterministic scripted, seeded, sensitivity, and regression-replay simulation modes;
+- immutable analysis, comparison, approval, and Scene-attachment receipts;
+- Player and observer non-disclosure for hidden participants, counts, waves, tactics, objectives, and internal warnings;
+- idempotency, expected versions, ambiguous-failure lookup, conflict preservation, revocation, reconnect, and bounded offline use;
+- role-safe diagnostics, export, migration, backup, restore, accessible and responsive behavior, and zero-paid-service operation;
+- explicit prohibition on guaranteed balance, fairness, safety, victory, survival, optimality, or actual-play prediction claims;
+- twenty blocking acceptance criteria and deterministic valid, invalid, uncertain, hidden, stale, reconnect, corruption, simulation, and attachment fixtures.
+
+The packet is implementation-ready as a design artifact. Application implementation remains dependency-gated by the active P9-06 sequence and does not authorize paid services, production credentials, real-user data collection, internal-alpha release, production deployment, or public release.
 
 ## Current next design item
 
-**IA-D03-003 — Design MV-IA-F012, Encounter Builder and Balance Lab.**
+**IA-D03-004 — Define the internal-alpha content and deterministic fixture specification.**
 
-F012 is next because it consumes the completed Campaign, Scene, Session, Character, object, permission, recovery, and pack contracts to define bounded encounter composition, dependency validation, pressure estimates, uncertainty, and source-grounded warnings without guaranteed-balance claims.
+This item must select and version the bounded Character, creature, NPC, Action, Ability, Effect, Condition, Resource, item, environment, hazard, objective, Scene, Encounter, and recovery fixtures required by the first playable loop without representing that bounded corpus as the complete game.

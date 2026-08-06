@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-05T23:42:00+00:00",
+  "updated_at": "2026-08-06T01:59:00+00:00",
   "entries": [
     {
       "work_item_id": "MV-CONT-001",
@@ -50,20 +50,29 @@
     {
       "work_item_id": "P9-06-008",
       "track": "application-implementation",
-      "governing_document": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
+      "governing_document": "governance/phase9/P9-06_IMPLEMENTATION_BACKLOG_AND_ACCEPTANCE_GATES.json",
       "roadmap_document": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
-      "roadmap_section": "P9-06 implementation progress / Current next executable action",
+      "roadmap_section": "P9-06-008 — Create initial 17-table logical schema migration",
       "dependencies": ["P9-06-007"],
-      "completion_gate": "Provider-neutral backup, restore, and provider-exit export ports with schemas, fixtures, validation, CI, and merge evidence."
+      "completion_gate": "Provider-neutral initial logical schema migration for the exact 17 canonical tables, with explicit keys, relationships, constraints, indexes, reversible operations, integrity checksum, deterministic fixture, validation, CI, and merge evidence."
     },
     {
       "work_item_id": "IA-D03-003",
       "track": "internal-alpha-feature-design",
-      "governing_document": "governance/internal-alpha-design/README.md",
-      "roadmap_document": "governance/internal-alpha-design/INTERNAL_ALPHA_DESIGN_BACKLOG.json",
-      "roadmap_section": "IA-D03-003",
+      "governing_document": "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md",
+      "roadmap_document": "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md",
+      "roadmap_section": "IA-D03-003 — MV-IA-F012 Encounter Builder and Balance Lab packet",
       "dependencies": ["IA-D03-002"],
-      "completion_gate": "Implementation-ready MV-IA-F012 Encounter Builder and Balance Lab design packet, traceability, validation, and merge evidence."
+      "completion_gate": "Implementation-ready MV-IA-F012 Encounter Builder and Balance Lab packet, multidimensional pressure and uncertainty contracts, deterministic fixtures, complete traceability, validation, CI, and merge evidence without guaranteed-balance claims."
+    },
+    {
+      "work_item_id": "IA-D03-004",
+      "track": "internal-alpha-feature-design",
+      "governing_document": "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md",
+      "roadmap_document": "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md",
+      "roadmap_section": "IA-D03-004 — alpha content and fixture specification",
+      "dependencies": ["IA-D03-003"],
+      "completion_gate": "A bounded, versioned, checksum-backed internal-alpha content and deterministic fixture specification covering the required Character, creature, NPC, Action, Ability, Effect, Condition, Resource, item, environment, hazard, objective, Scene, Encounter, and recovery cases, with explicit coverage limits, validation, CI, and merge evidence; the bounded corpus must not be represented as the complete game."
     }
   ]
 }

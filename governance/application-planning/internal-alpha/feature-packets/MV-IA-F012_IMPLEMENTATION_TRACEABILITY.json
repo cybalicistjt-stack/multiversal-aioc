@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1.0.0",
+  "workItemId": "IA-D03-003",
+  "featureId": "MV-IA-F012",
+  "owner": "John Brandon Turner",
+  "packet": "MV-IA-F012_ENCOUNTER_BUILDER_AND_BALANCE_LAB.md",
+  "matrix": "MV-IA-F012_ENCOUNTER_BALANCE_MATRIX.json",
+  "acceptanceTraceability": [
+    {"criterionId":"EBL-AC-001","packetSections":[5,6],"implementationSlices":["EBL-S01"],"testIntent":"Create one authorized version-bound Encounter draft."},
+    {"criterionId":"EBL-AC-002","packetSections":[5,6],"implementationSlices":["EBL-S02"],"testIntent":"Use stable governed IDs and source receipts."},
+    {"criterionId":"EBL-AC-003","packetSections":[5,11],"implementationSlices":["EBL-S01","EBL-S02"],"testIntent":"Prevent source, Scene, launch, and Session mutation."},
+    {"criterionId":"EBL-AC-004","packetSections":[3,9,10],"implementationSlices":["EBL-S03"],"testIntent":"Reauthorize every authoritative operation."},
+    {"criterionId":"EBL-AC-005","packetSections":[8,18],"implementationSlices":["EBL-S04"],"testIntent":"Block invalid dependencies, scale, combinations, and receipts."},
+    {"criterionId":"EBL-AC-006","packetSections":[1,13,19],"implementationSlices":["EBL-S05","EBL-S06"],"testIntent":"Expose inputs, assumptions, evidence, uncertainty, omissions, and policy."},
+    {"criterionId":"EBL-AC-007","packetSections":[1,19,21],"implementationSlices":["EBL-S05","EBL-S06"],"testIntent":"Reject guaranteed-balance and outcome-certification language."},
+    {"criterionId":"EBL-AC-008","packetSections":[13,19],"implementationSlices":["EBL-S05"],"testIntent":"Preserve twelve independent pressure dimensions."},
+    {"criterionId":"EBL-AC-009","packetSections":[7,8,19],"implementationSlices":["EBL-S05","EBL-S06"],"testIntent":"Keep unknowns unknown and lower confidence."},
+    {"criterionId":"EBL-AC-010","packetSections":[7,18,19],"implementationSlices":["EBL-S07"],"testIntent":"Reproduce bounded advisory simulations without mutation."},
+    {"criterionId":"EBL-AC-011","packetSections":[7,11,19],"implementationSlices":["EBL-S08"],"testIntent":"Record explicit comparison deltas and immutable snapshots."},
+    {"criterionId":"EBL-AC-012","packetSections":[9,13,18,19],"implementationSlices":["EBL-S03","EBL-S06"],"testIntent":"Prevent hidden-information leakage."},
+    {"criterionId":"EBL-AC-013","packetSections":[6,11,19],"implementationSlices":["EBL-S09"],"testIntent":"Attach approved snapshots without mutating launch or live state."},
+    {"criterionId":"EBL-AC-014","packetSections":[8,11,12,19],"implementationSlices":["EBL-S01","EBL-S10"],"testIntent":"Preserve state through concurrency, ambiguity, reconnect, and revocation."},
+    {"criterionId":"EBL-AC-015","packetSections":[8,10,12,19],"implementationSlices":["EBL-S10"],"testIntent":"Limit offline use to permitted reading and local drafts."},
+    {"criterionId":"EBL-AC-016","packetSections":[13,14,18,19],"implementationSlices":["EBL-S06","EBL-S10"],"testIntent":"Provide equivalent accessible warnings and estimates."},
+    {"criterionId":"EBL-AC-017","packetSections":[9,17,19,21],"implementationSlices":["EBL-S03","EBL-S10"],"testIntent":"Exclude hidden and private content from diagnostics."},
+    {"criterionId":"EBL-AC-018","packetSections":[11,19,20],"implementationSlices":["EBL-S10"],"testIntent":"Export authorized evidence, uncertainty, and history."},
+    {"criterionId":"EBL-AC-019","packetSections":[16,19,21],"implementationSlices":["EBL-S07","EBL-S10"],"testIntent":"Operate without AI, paid services, credentials, or external telemetry."},
+    {"criterionId":"EBL-AC-020","packetSections":[18,20],"implementationSlices":["EBL-S10"],"testIntent":"Exercise deterministic valid, invalid, uncertainty, hidden, recovery, corruption, and attachment fixtures."}
+  ],
+  "implementationSlices": [
+    {"sliceId":"EBL-S01","name":"Encounter aggregate and persistence","dependsOn":["P9-06 persistence","MV-IA-F005"]},
+    {"sliceId":"EBL-S02","name":"Stable-ID composition and provenance","dependsOn":["MV-IA-F002","MV-IA-F024"]},
+    {"sliceId":"EBL-S03","name":"Authorization and projections","dependsOn":["MV-IA-F020","IA-D02-006"]},
+    {"sliceId":"EBL-S04","name":"Validation and compatibility","dependsOn":["rules profile","pack lock","schema registry"]},
+    {"sliceId":"EBL-S05","name":"Pressure and uncertainty analysis","dependsOn":["validated normalized inputs"]},
+    {"sliceId":"EBL-S06","name":"Warnings and evidence interface","dependsOn":["EBL-S05","accessibility"]},
+    {"sliceId":"EBL-S07","name":"Deterministic bounded simulation","dependsOn":["fixtures","seed/reset foundations"]},
+    {"sliceId":"EBL-S08","name":"Scenario comparison and snapshots","dependsOn":["EBL-S05","snapshot store"]},
+    {"sliceId":"EBL-S09","name":"Approval and Scene attachment","dependsOn":["MV-IA-F005","authorization"]},
+    {"sliceId":"EBL-S10","name":"Recovery, export, diagnostics, accessibility, and CI","dependsOn":["MV-IA-F021","MV-IA-F025","backup/export ports"]}
+  ],
+  "retestRequirements": [
+    "SFI-C001 through SFI-C024",
+    "MV-IA-F004 Character projections",
+    "MV-IA-F005 Scene launch snapshots",
+    "hidden-information denied cases",
+    "deterministic fixture checksums",
+    "responsive and accessible state equivalence"
+  ],
+  "implementationBoundary": "Design complete; implementation remains dependency-gated by the active P9-06 sequence and does not authorize guaranteed-balance claims, paid simulation, production credentials, real-user data collection, internal-alpha release, production deployment, or public release."
+}

@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "1.0.0",
+  "workItemId": "IA-D03-003",
+  "featureId": "MV-IA-F012",
+  "name": "Encounter Builder and Balance Lab",
+  "status": "implementation-ready-design",
+  "owner": "John Brandon Turner",
+  "packetVersion": "0.1.0",
+  "requiredSharedContracts": [
+    "SFI-C001", "SFI-C002", "SFI-C003", "SFI-C004", "SFI-C005", "SFI-C006",
+    "SFI-C007", "SFI-C008", "SFI-C009", "SFI-C010", "SFI-C011", "SFI-C012",
+    "SFI-C013", "SFI-C014", "SFI-C015", "SFI-C016", "SFI-C017", "SFI-C018",
+    "SFI-C019", "SFI-C020", "SFI-C021", "SFI-C022", "SFI-C023", "SFI-C024"
+  ],
+  "consumedFeatureContracts": [
+    "MV-IA-F002", "MV-IA-F003", "MV-IA-F004", "MV-IA-F005", "MV-IA-F019",
+    "MV-IA-F020", "MV-IA-F021", "MV-IA-F024", "MV-IA-F025"
+  ],
+  "aggregateTypes": [
+    "EncounterDraft", "EncounterPlacement", "RosterSnapshot", "ValidationReceipt",
+    "AnalysisSnapshot", "PressureDimension", "WarningRecord", "SimulationReceipt",
+    "ComparisonReceipt", "EncounterApproval", "SceneAttachmentReceipt", "EncounterProjection"
+  ],
+  "fieldClasses": [
+    "identity", "version", "authority", "source-provenance", "composition", "objective",
+    "visibility", "analysis-input", "pressure-output", "uncertainty", "warning", "receipt",
+    "migration", "diagnostic"
+  ],
+  "pressureDimensions": [
+    "durability-recovery", "sustained-output", "burst-spike", "action-economy",
+    "control-denial", "mobility-position", "environment-hazard", "objective-time",
+    "information-surprise", "attrition-resource", "reinforcement-escalation", "failure-path"
+  ],
+  "uncertaintyClasses": [
+    "complete-source", "source-with-variants", "partial-source", "campaign-override",
+    "synthetic-fixture", "inferred-normalization", "contradictory", "unavailable"
+  ],
+  "warningClasses": [
+    "missing-dependency", "pack-mismatch", "schema-mismatch", "rules-profile-mismatch",
+    "scale-mismatch", "missing-actions", "missing-resources", "exclusive-conflict",
+    "action-economy-extreme", "control-extreme", "burst-extreme", "mobility-extreme",
+    "hazard-interaction-unknown", "objective-fragility", "no-failure-path",
+    "hidden-information-risk", "high-uncertainty", "cross-version-comparison",
+    "simulation-limitation", "stale-attachment"
+  ],
+  "validationClasses": [
+    "subject-authority", "campaign-membership", "active-role", "assistant-gm-delegation",
+    "scene-mutability", "character-control", "entitlement", "pack-lock", "schema-version",
+    "rules-profile", "analysis-policy", "stable-id", "source-version", "dependency",
+    "compatibility", "scale", "quantity", "exclusive-trait", "required-action",
+    "required-resource", "placement-role", "wave-trigger", "objective-reference",
+    "visibility", "override-provenance", "input-completeness", "receipt-integrity",
+    "expected-version", "idempotency", "attachment-readiness", "migration-compatibility",
+    "export-authorization"
+  ],
+  "operationTypes": [
+    "create-encounter", "save-draft", "reopen-draft", "duplicate-draft", "archive-draft",
+    "restore-draft", "add-placement", "update-placement", "remove-placement",
+    "reorder-placement", "add-wave", "update-wave", "bind-roster", "set-objective",
+    "set-environment", "set-assumption", "add-local-override", "validate-encounter",
+    "request-analysis", "acknowledge-warning", "create-snapshot", "compare-scenarios",
+    "run-scripted-simulation", "run-seeded-simulation", "run-sensitivity-sweep",
+    "replay-regression", "approve-encounter", "revoke-approval", "attach-to-scene",
+    "detach-from-scene", "export-encounter", "recover-encounter", "migrate-encounter"
+  ],
+  "eventTypes": [
+    "EncounterCreated", "EncounterSaved", "EncounterDuplicated", "EncounterArchived",
+    "EncounterRestored", "PlacementAdded", "PlacementUpdated", "PlacementRemoved",
+    "PlacementReordered", "WaveConfigured", "RosterBound", "ObjectiveConfigured",
+    "EnvironmentConfigured", "AssumptionChanged", "LocalOverrideAdded", "EncounterValidated",
+    "AnalysisRequested", "AnalysisCompleted", "WarningAcknowledged", "AnalysisSnapshotCreated",
+    "ScenarioCompared", "SimulationRequested", "SimulationCompleted", "EncounterApproved",
+    "EncounterApprovalRevoked", "SceneAttachmentCreated", "SceneAttachmentRemoved",
+    "EncounterExported", "EncounterMigrationApplied", "EncounterRecoveryStarted",
+    "EncounterRecoveryCompleted", "EncounterRevoked"
+  ],
+  "simulationModes": [
+    "deterministic-script", "bounded-seeded-sampling", "sensitivity-sweep", "regression-replay"
+  ],
+  "projectionTypes": [
+    "gm-preparation", "assistant-gm-delegated", "player-preview", "observer-preview",
+    "scene-attachment", "export", "diagnostic", "optional-ai"
+  ],
+  "deniedCases": [
+    "EBL-DENY-001 unauthenticated subject opens encounter",
+    "EBL-DENY-002 nonmember discovers encounter count",
+    "EBL-DENY-003 player reads hidden placement",
+    "EBL-DENY-004 observer reads secret objective",
+    "EBL-DENY-005 assistant GM exceeds delegation",
+    "EBL-DENY-006 client selected context treated as authority",
+    "EBL-DENY-007 display name used instead of stable ID",
+    "EBL-DENY-008 source Definition mutated by local override",
+    "EBL-DENY-009 active Session mutated by analysis",
+    "EBL-DENY-010 immutable launch snapshot replaced",
+    "EBL-DENY-011 unentitled source selected",
+    "EBL-DENY-012 pack-lock mismatch ignored",
+    "EBL-DENY-013 schema mismatch ignored",
+    "EBL-DENY-014 rules-profile mismatch compared as equivalent",
+    "EBL-DENY-015 missing dependency silently accepted",
+    "EBL-DENY-016 cross-scale composition treated as compatible",
+    "EBL-DENY-017 missing action data silently invented",
+    "EBL-DENY-018 missing resource data silently invented",
+    "EBL-DENY-019 contradictory variants collapsed without warning",
+    "EBL-DENY-020 unknown value replaced with midpoint",
+    "EBL-DENY-021 composite pressure labeled difficulty truth",
+    "EBL-DENY-022 output labeled balanced",
+    "EBL-DENY-023 output labeled fair",
+    "EBL-DENY-024 output labeled safe",
+    "EBL-DENY-025 output labeled winnable",
+    "EBL-DENY-026 output labeled optimal",
+    "EBL-DENY-027 simulation described as actual player prediction",
+    "EBL-DENY-028 unbounded simulation requested",
+    "EBL-DENY-029 remote paid simulator required",
+    "EBL-DENY-030 AI automatically approves encounter",
+    "EBL-DENY-031 AI attaches encounter to Scene",
+    "EBL-DENY-032 hidden count leaks through facet",
+    "EBL-DENY-033 hidden participant leaks through warning",
+    "EBL-DENY-034 GM-private note enters diagnostic bundle",
+    "EBL-DENY-035 support access inferred from issue report",
+    "EBL-DENY-036 offline authoritative save accepted",
+    "EBL-DENY-037 offline approval accepted",
+    "EBL-DENY-038 offline attachment accepted",
+    "EBL-DENY-039 stale expected version overwrites current",
+    "EBL-DENY-040 ambiguous retry duplicates analysis",
+    "EBL-DENY-041 revoked actor continues receiving projection",
+    "EBL-DENY-042 corrupted analysis checksum accepted",
+    "EBL-DENY-043 comparison hides changed policy version",
+    "EBL-DENY-044 migration marks incompatible snapshot equivalent",
+    "EBL-DENY-045 export includes unauthorized source content",
+    "EBL-DENY-046 archive deletes historical receipt",
+    "EBL-DENY-047 Scene attachment survives invalidated dependency without warning",
+    "EBL-DENY-048 production credential required for core path"
+  ],
+  "fixtures": [
+    {"fixtureId": "EBL-FIX-VALID-MIXED", "purpose": "complete valid composition"},
+    {"fixtureId": "EBL-FIX-PACK-INVALID", "purpose": "dependency and pack-lock failure"},
+    {"fixtureId": "EBL-FIX-UNCERTAIN", "purpose": "partial-source uncertainty"},
+    {"fixtureId": "EBL-FIX-HIDDEN-WAVE", "purpose": "hidden-information projection"},
+    {"fixtureId": "EBL-FIX-ACTION-ECONOMY", "purpose": "extreme action-economy warning"},
+    {"fixtureId": "EBL-FIX-STALE", "purpose": "stale-version and concurrency"},
+    {"fixtureId": "EBL-FIX-RECONNECT", "purpose": "ambiguous failure and reconnect"},
+    {"fixtureId": "EBL-FIX-CORRUPT", "purpose": "receipt integrity failure"},
+    {"fixtureId": "EBL-FIX-SIM-REPLAY", "purpose": "deterministic simulation replay"},
+    {"fixtureId": "EBL-FIX-ATTACHMENT-INVALIDATED", "purpose": "dependency invalidates Scene attachment"}
+  ],
+  "acceptanceCriteria": [
+    {"criterionId": "EBL-AC-001", "blocking": true, "summary": "Authorized GM creates a fully version-bound Encounter draft."},
+    {"criterionId": "EBL-AC-002", "blocking": true, "summary": "All selections use governed stable IDs and receipts."},
+    {"criterionId": "EBL-AC-003", "blocking": true, "summary": "Placements and overrides never mutate source or live state."},
+    {"criterionId": "EBL-AC-004", "blocking": true, "summary": "Every command reauthorizes role, scope, visibility, entitlement, pack, and versions."},
+    {"criterionId": "EBL-AC-005", "blocking": true, "summary": "Dependencies, scale, exclusivity, actions, resources, and combinations validate before attachment."},
+    {"criterionId": "EBL-AC-006", "blocking": true, "summary": "Pressure outputs expose inputs, assumptions, evidence, uncertainty, omissions, and policy version."},
+    {"criterionId": "EBL-AC-007", "blocking": true, "summary": "No balanced, fair, safe, winnable, optimal, or guaranteed label is permitted."},
+    {"criterionId": "EBL-AC-008", "blocking": true, "summary": "Analysis preserves independent pressure dimensions."},
+    {"criterionId": "EBL-AC-009", "blocking": true, "summary": "Incomplete and contradictory data lowers confidence and warns."},
+    {"criterionId": "EBL-AC-010", "blocking": true, "summary": "Bounded simulations are deterministic, advisory, and nonmutating."},
+    {"criterionId": "EBL-AC-011", "blocking": true, "summary": "Scenario comparison records explicit deltas and immutable snapshots."},
+    {"criterionId": "EBL-AC-012", "blocking": true, "summary": "Player and observer projections do not leak hidden encounter information."},
+    {"criterionId": "EBL-AC-013", "blocking": true, "summary": "Approved snapshots attach without mutating launch snapshots or Sessions."},
+    {"criterionId": "EBL-AC-014", "blocking": true, "summary": "Concurrency, ambiguity, reconnect, and revocation preserve state without duplication."},
+    {"criterionId": "EBL-AC-015", "blocking": true, "summary": "Offline use remains read/local-draft only."},
+    {"criterionId": "EBL-AC-016", "blocking": true, "summary": "Warnings and estimates are accessibly equivalent across form factors."},
+    {"criterionId": "EBL-AC-017", "blocking": true, "summary": "Diagnostics exclude hidden and private content by default."},
+    {"criterionId": "EBL-AC-018", "blocking": true, "summary": "Authorized exports preserve identity, evidence, warnings, uncertainty, and receipts."},
+    {"criterionId": "EBL-AC-019", "blocking": true, "summary": "Core operation requires no AI, paid service, production credentials, or external telemetry."},
+    {"criterionId": "EBL-AC-020", "blocking": true, "summary": "Deterministic fixtures and blocking tests cover valid and failure paths."}
+  ],
+  "blockingFindings": [],
+  "implementationBoundary": "Design complete; implementation remains dependency-gated by the active P9-06 sequence and does not authorize guaranteed-balance claims, paid simulation, production credentials, real-user data collection, internal-alpha release, production deployment, or public release."
+}
