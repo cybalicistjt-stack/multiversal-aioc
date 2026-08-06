@@ -1,22 +1,22 @@
 {
   "schema_version": "1.0.0",
-  "revision": 2,
+  "revision": 3,
   "work_item_id": "IA-D03-004",
   "attempt_id": "IA-D03-004-attempt-001",
   "track": "internal-alpha-feature-design",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "governance/ia-d03-004-alpha-content-fixtures",
-  "status": "in_progress",
+  "status": "validation_failed",
   "started_at": "2026-08-06T02:11:00+00:00",
-  "updated_at": "2026-08-06T02:30:00+00:00",
+  "updated_at": "2026-08-06T02:48:00+00:00",
   "completed_at": null,
   "base_commit": "fc26feaff67c347dc9d2c1abf4b876820b24349a",
-  "latest_pushed_commit": "2300783f170b27fd6ee180147c480e0d88b74030",
-  "expected_remote_head": "2300783f170b27fd6ee180147c480e0d88b74030",
-  "pull_request": null,
+  "latest_pushed_commit": "fa2900e7d55a8150f4a2545744a3024bf32aa321",
+  "expected_remote_head": "fa2900e7d55a8150f4a2545744a3024bf32aa321",
+  "pull_request": 152,
   "objective": "Define the bounded, versioned, checksum-backed internal-alpha content and deterministic fixture specification needed by the completed Character, Campaign, Scene, Session, Encounter, permission, recovery, pack, and accessibility contracts without representing the selected fixture corpus as the complete Multiversal game.",
-  "last_verified_action": "Published the complete IA-D03-004 design package through exact branch head 2300783f170b27fd6ee180147c480e0d88b74030. Local complete-package validation passed with 36 source-backed fixtures, 119 synthetic fixtures, 155 total identities, five fixture packs, fifteen coverage families, twenty blocking criteria, nine pack-lifecycle scenarios, eleven accessibility stressors, and zero blocking findings.",
-  "active_substep": "Open the governed IA-D03-004 pull request, obtain hosted validation on the exact published package and continuity projections, repair any ordinary failures, and advance to ready_for_review only after all declared checks pass.",
+  "last_verified_action": "PR #152 opened. Initial dedicated run 31066330764 identified a published coverage-matrix checksum mismatch, and the predecessor F012 workflow identified a stale current-next invariant. The F012 validator was made milestone-aware. A one-shot self-removing workflow recomputed the catalog and coverage checksums from exact GitHub bytes, removed itself, and produced normalized head fa2900e7d55a8150f4a2545744a3024bf32aa321 with coverage checksum 29a7b29ef50f4dd0489f524b0b5d3e2aac37aab398dee57144423c9d65e28126. GitHub marked the bot-authored follow-up runs action_required without creating jobs, so this owner-authored checkpoint batch is triggering normal exact-head validation.",
+  "active_substep": "Run hosted validation on an owner-authored head containing the normalized checksums and milestone-aware F012 validator; repair any remaining ordinary failures and advance to ready_for_review only after every required workflow passes.",
   "completed_substeps": [
     "Completed and verified IA-D03-003",
     "Created the real IA-D03-004 governance branch from canonical main",
@@ -29,9 +29,12 @@
     "Created review, readiness, and design-completion records",
     "Added deterministic validator and dedicated CI",
     "Updated the fixture baseline, design backlog, program index, and roadmap index",
-    "Passed local complete-package validation"
+    "Passed local complete-package validation",
+    "Opened PR #152",
+    "Made the F012 validator milestone-aware",
+    "Normalized the catalog and coverage checksums from exact GitHub bytes through a self-removing one-shot workflow"
   ],
-  "next_action": "Open the IA-D03-004 pull request from governance/ia-d03-004-alpha-content-fixtures to main; inspect all hosted checks on its exact head; repair ordinary failures automatically; then record ready_for_review and merge evidence before starting IA-D03-005.",
+  "next_action": "Inspect all workflows on the new owner-authored PR #152 head; repair any remaining ordinary failure; when every declared check passes, clear failures and advance checkpoint, pointer, and compact status to ready_for_review before the final consistency run and merge.",
   "changed_paths": [
     "governance/application-planning/internal-alpha/IA-D03-004_INTERNAL_ALPHA_CONTENT_AND_FIXTURE_SPEC.md",
     "governance/application-planning/internal-alpha/INTERNAL_ALPHA_CONTENT_AND_FIXTURES.md",
@@ -42,6 +45,7 @@
     "governance/application-planning/internal-alpha/IA-D03-004_READINESS_RECORD.md",
     "governance/application-planning/internal-alpha/IA-D03-004_COMPLETION_RECORD.json",
     "governance/application-planning/internal-alpha/validate_internal_alpha_content_fixtures.py",
+    "governance/application-planning/internal-alpha/validate_encounter_builder_balance_lab_design.py",
     ".github/workflows/internal-alpha-content-fixtures-validation.yml",
     "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md",
     "governance/application-planning/internal-alpha/README.md",
@@ -58,16 +62,32 @@
   "validation": [
     {
       "command": "python governance/application-planning/internal-alpha/validate_internal_alpha_content_fixtures.py",
-      "status": "passed",
-      "evidence": "Local complete-package validation PASS: 36 source-backed, 119 synthetic, 155 total, five packs, fifteen coverage families, twenty criteria, nine lifecycle cases, eleven accessibility stressors, zero blocking findings. Hosted exact-head validation remains required."
+      "status": "validation_failed",
+      "evidence": "Local complete-package validation passed before publication. Initial hosted run 31066330764 failed on published coverage checksum drift. Exact GitHub normalization corrected the stored checksum; owner-authored exact-head rerun is now required."
     }
   ],
-  "unresolved_failures": [],
+  "unresolved_failures": [
+    {
+      "failure_id": "IA-D03-004-CI-001",
+      "run_id": 31066330764,
+      "classification": "checksum_normalization",
+      "summary": "Published coverage matrix checksum did not match the canonical JSON digest computed in hosted CI.",
+      "repair": "A self-removing exact-GitHub-byte normalizer rewrote catalog and matrix hashes and produced head fa2900e7d55a8150f4a2545744a3024bf32aa321."
+    },
+    {
+      "failure_id": "IA-D03-004-CI-002",
+      "run_id": 31066330729,
+      "classification": "stale_predecessor_validator",
+      "summary": "The completed F012 validator still required IA-D03-004 to remain the current next item and program version 0.10.0.",
+      "repair": "The F012 validator now preserves its original handoff while accepting later milestone versions and IA-D03-004 completion."
+    }
+  ],
   "owner_decision_required": false,
   "evidence": [
     {"kind":"merge","value":"IA-D03-004 dependency IA-D03-003 completion record PR #151 squash merge fc26feaff67c347dc9d2c1abf4b876820b24349a"},
-    {"kind":"commit","value":"IA-D03-004 complete published design package through head 2300783f170b27fd6ee180147c480e0d88b74030"},
-    {"kind":"file","value":"IA-D03-004 specification, catalog, coverage, traceability, review, readiness, completion, validator, workflow, backlog, program, and roadmap artifacts published on the dedicated branch"}
+    {"kind":"commit","value":"IA-D03-004 normalized exact-content head fa2900e7d55a8150f4a2545744a3024bf32aa321"},
+    {"kind":"pull_request","value":"IA-D03-004 PR #152 — Complete IA-D03-004 internal-alpha content and fixture specification"},
+    {"kind":"file","value":"One-shot checksum workflow removed itself after normalizing catalog and coverage checksums"}
   ],
   "roadmap_projection_pending": true,
   "notes": [
