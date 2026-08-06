@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "work_item_id": "IA-D03-004",
+  "attempt_id": "IA-D03-004-attempt-001",
+  "track": "internal-alpha-feature-design",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "branch": "governance/ia-d03-004-alpha-content-fixtures",
+  "status": "started",
+  "started_at": "2026-08-06T02:11:00+00:00",
+  "updated_at": "2026-08-06T02:11:00+00:00",
+  "completed_at": null,
+  "base_commit": "fc26feaff67c347dc9d2c1abf4b876820b24349a",
+  "latest_pushed_commit": null,
+  "expected_remote_head": "fc26feaff67c347dc9d2c1abf4b876820b24349a",
+  "pull_request": null,
+  "objective": "Define the bounded, versioned, checksum-backed internal-alpha content and deterministic fixture specification needed by the completed Character, Campaign, Scene, Session, Encounter, permission, recovery, pack, and accessibility contracts without representing the selected fixture corpus as the complete Multiversal game.",
+  "last_verified_action": "Merged the IA-D03-003 completion record as fc26feaff67c347dc9d2c1abf4b876820b24349a, verified IA-D03-004 is the exact next indexed design item, created governance/ia-d03-004-alpha-content-fixtures from canonical main, and read the existing Internal Alpha Content and Fixture Baseline.",
+  "active_substep": "Resolve the governed source identities and fixture requirements, then create the bounded content manifest, deterministic fixture catalog, coverage and traceability matrices, integrity schema, validation, CI, and design handoff while preserving source/synthetic distinctions and explicit coverage limits.",
+  "completed_substeps": [
+    "Completed and verified IA-D03-003",
+    "Created the real IA-D03-004 governance branch from canonical main",
+    "Read the existing Internal Alpha Content and Fixture Baseline",
+    "Confirmed the specification must cover identity, Campaign, Character, content families, Scenes, Actions, permissions, Assets, relationships, investigation, failures, pack lifecycle, and accessibility"
+  ],
+  "next_action": "Inspect the canonical promoted-content and golden-fixture records to resolve reusable source-linked fixture identities; define the fixture schema and bounded catalog with deterministic checksums and expected results; add coverage, traceability, validation, CI, and program/backlog updates; then obtain hosted validation and merge evidence.",
+  "changed_paths": [
+    "governance/application-planning/internal-alpha/INTERNAL_ALPHA_CONTENT_AND_FIXTURES.md",
+    "governance/application-planning/internal-alpha/INTERNAL_ALPHA_FIXTURE_CATALOG.json",
+    "governance/application-planning/internal-alpha/INTERNAL_ALPHA_FIXTURE_COVERAGE_MATRIX.json",
+    "governance/application-planning/internal-alpha/IA-D03-004_IMPLEMENTATION_TRACEABILITY.json",
+    "governance/application-planning/internal-alpha/IA-D03-004_REVIEW_RECEIPT.md",
+    "governance/application-planning/internal-alpha/IA-D03-004_READINESS_RECORD.md",
+    "governance/application-planning/internal-alpha/IA-D03-004_COMPLETION_RECORD.json",
+    "governance/application-planning/internal-alpha/validate_internal_alpha_content_fixtures.py",
+    ".github/workflows/internal-alpha-content-fixtures-validation.yml",
+    "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md",
+    "governance/application-planning/internal-alpha/README.md",
+    "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+    "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
+    "governance/ai/work-state/IA-D03-004-attempt-001.json"
+  ],
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
+    "required_validation_commands": ["python governance/application-planning/internal-alpha/validate_internal_alpha_content_fixtures.py"],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {
+      "command": "python governance/application-planning/internal-alpha/validate_internal_alpha_content_fixtures.py",
+      "status": "not_run",
+      "evidence": null
+    }
+  ],
+  "unresolved_failures": [],
+  "owner_decision_required": false,
+  "evidence": [
+    {"kind":"merge","value":"IA-D03-004 dependency IA-D03-003 completion record PR #151 squash merge fc26feaff67c347dc9d2c1abf4b876820b24349a"},
+    {"kind":"file","value":"IA-D03-004 governing backlog and ROADMAP_INDEX entries"},
+    {"kind":"file","value":"IA-D03-004 branch governance/ia-d03-004-alpha-content-fixtures created from canonical main"}
+  ],
+  "roadmap_projection_pending": true,
+  "notes": [
+    "The bounded alpha corpus is a deterministic test and design corpus, not the complete game, not a canonical content release, and not permission to discard unselected source material.",
+    "Source-backed fixtures must preserve stable IDs, versions, provenance, pack identity, permissions, expected outcomes, migration paths, and cleanup behavior; synthetic fixtures must be labeled synthetic.",
+    "P9-06-008-attempt-002 remains unfinished parallel application work.",
+    "No paid service, production credential, real-user data collection, internal-alpha release, production deployment, or public release is authorized."
+  ]
+}
