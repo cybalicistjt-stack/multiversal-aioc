@@ -1,7 +1,7 @@
 # MV-IA-001 — Internal Alpha Feature Design Program
 
 **Document ID:** MV-IA-001  
-**Version:** 0.12.0  
+**Version:** 0.13.0  
 **Status:** ACTIVE — DESIGN PROGRAM  
 **Owner and final authority:** John Brandon Turner
 
@@ -62,6 +62,29 @@ Complete at design level with:
 - `feature-packets/IA-D03-005_COMPLETION_RECORD.json`
 - `validate_character_campaign_integration.py`
 
+## IA-D04-001 — First Playable Action and GM Approval Loop
+
+Completed at design level with:
+
+- 24 numbered sections and twenty blocking acceptance criteria;
+- 24 shared-foundation and 28 Character/Campaign preparation contracts;
+- explicit Player proposal, GM review, approve/deny/modify, atomic result, projection, history, and recovery contracts;
+- GM-controlled NPC and enemy Action parity;
+- 18 states, 28 proposal fields, 20 decision-receipt fields, 28 validation classes, 28 operations, 28 Events, and 40 denied cases;
+- fourteen deterministic fixtures, ten dependency-ordered implementation slices, and zero blocking findings;
+- secondary Player logs and proposals;
+- bounded offline drafts, accessible responsive parity, privacy-safe diagnostics, and zero-AI/zero-service core operation.
+
+Primary artifacts:
+
+- `feature-packets/MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md`
+- `feature-packets/MV-IA-F006_ACTION_APPROVAL_MATRIX.json`
+- `feature-packets/MV-IA-F006_IMPLEMENTATION_TRACEABILITY.json`
+- `feature-packets/MV-IA-F006_REVIEW_RECEIPT.md`
+- `feature-packets/MV-IA-F006_READINESS_RECORD.md`
+- `feature-packets/MV-IA-F006_COMPLETION_RECORD.json`
+- `validate_first_playable_action_approval_loop.py`
+
 ## Preparation boundary
 
 The fixture corpus is bounded test data, not the complete game and not a canonical content release. Synthetic fixtures remain noncanonical. Encounter analysis remains advisory and cannot guarantee balance, fairness, safety, victory, survival, or optimality.
@@ -72,7 +95,7 @@ Design work may proceed while implementation dependencies remain incomplete. No 
 
 ## Current next design action
 
-**IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop.**
+**IA-D04-002 — Proposal and Approval Shared-Component Contract.**
 
 ## Historical IA-D03-004 handoff anchor
 

@@ -1,0 +1,623 @@
+{
+  "schemaVersion": "1.0.0",
+  "programId": "MV-IA-001",
+  "workItemId": "IA-D04-001",
+  "featureId": "MV-IA-F006",
+  "owner": "John Brandon Turner",
+  "status": "complete",
+  "sourceArtifacts": [
+    "STAGE_A_UI_IMPLEMENTATION_PROGRAM.md:A6",
+    "INTERNAL_ALPHA_FEATURE_REGISTRY.json:MV-IA-F006",
+    "INTERNAL_ALPHA_USER_JOURNEYS.md:IA-J03",
+    "INTERNAL_ALPHA_SHARED_SYSTEMS.md:SS-06,SS-07,SS-08,SS-11,SS-12,SS-13,SS-14,SS-15,SS-16,SS-18,SS-19",
+    "IA-D02-006_SHARED_FOUNDATIONS_CONTRACT_MATRIX.json",
+    "IA-D03-005_CHARACTER_CAMPAIGN_CONTRACT_MATRIX.json",
+    "feature-packets/IA-D02-006_SHARED_FOUNDATIONS_CONTRACT_MATRIX.json",
+    "feature-packets/IA-D03-005_CHARACTER_CAMPAIGN_CONTRACT_MATRIX.json",
+    "INTERNAL_ALPHA_FIXTURE_CATALOG.json"
+  ],
+  "acceptanceTraceability": [
+    {
+      "criterionId": "FPA-AC-001",
+      "summary": "",
+      "controllingContracts": [
+        "SFI-C001",
+        "SFI-C002"
+      ],
+      "artifacts": [
+        "MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+        "MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+        "validate_first_playable_action_approval_loop.py"
+      ],
+      "testClasses": [
+        "contract",
+        "permission",
+        "idempotency",
+        "recovery"
+      ],
+      "blocking": true
+    },
+    {
+      "criterionId": "FPA-AC-002",
+      "summary": "",
+      "controllingContracts": [
+        "SFI-C003",
+        "SFI-C004"
+      ],
+      "artifacts": [
+        "MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+        "MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+        "validate_first_playable_action_approval_loop.py"
+      ],
+      "testClasses": [
+        "contract",
+        "permission",
+        "idempotency",
+        "recovery"
+      ],
+      "blocking": true
+    },
+    {
+      "criterionId": "FPA-AC-003",
+      "summary": "",
+      "controllingContracts": [
+        "SFI-C005",
+        "SFI-C006"
+      ],
+      "artifacts": [
+        "MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+        "MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+        "validate_first_playable_action_approval_loop.py"
+      ],
+      "testClasses": [
+        "contract",
+        "permission",
+        "idempotency",
+        "recovery"
+      ],
+      "blocking": true
+    },
+    {
+      "criterionId": "FPA-AC-004",
+      "summary": "",
+      "controllingContracts": [
+        "SFI-C007",
+        "SFI-C008"
+      ],
+      "artifacts": [
+        "MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+        "MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+        "validate_first_playable_action_approval_loop.py"
+      ],
+      "testClasses": [
+        "contract",
+        "permission",
+        "idempotency",
+        "recovery"
+      ],
+      "blocking": true
+    },
+    {
+      "criterionId": "FPA-AC-005",
+      "summary": "",
+      "controllingContracts": [
+        "SFI-C009",
+        "SFI-C010"
+      ],
+      "artifacts": [
+        "MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+        "MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+        "validate_first_playable_action_approval_loop.py"
+      ],
+      "testClasses": [
+        "contract",
+        "permission",
+        "idempotency",
+        "recovery"
+      ],
+      "blocking": true
+    },
+    {
+      "criterionId": "FPA-AC-006",
+      "summary": "",
+      "controllingContracts": [
+        "SFI-C011",
+        "SFI-C012"
+      ],
+      "artifacts": [
+        "MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+        "MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+        "validate_first_playable_action_approval_loop.py"
+      ],
+      "testClasses": [
+        "contract",
+        "permission",
+        "idempotency",
+        "recovery"
+      ],
+      "blocking": true
+    },
+    {
+      "criterionId": "FPA-AC-007",
+      "summary": "",
+      "controllingContracts": [
+        "SFI-C013",
+        "SFI-C014"
+      ],
+      "artifacts": [
+        "MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+        "MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+        "validate_first_playable_action_approval_loop.py"
+      ],
+      "testClasses": [
+        "contract",
+        "permission",
+        "idempotency",
+        "recovery"
+      ],
+      "blocking": true
+    },
+    {
+      "criterionId": "FPA-AC-008",
+      "summary": "",
+      "controllingContracts": [
+        "SFI-C015",
+        "SFI-C016"
+      ],
+      "artifacts": [
+        "MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+        "MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+        "validate_first_playable_action_approval_loop.py"
+      ],
+      "testClasses": [
+        "contract",
+        "permission",
+        "idempotency",
+        "recovery"
+      ],
+      "blocking": true
+    },
+    {
+      "criterionId": "FPA-AC-009",
+      "summary": "",
+      "controllingContracts": [
+        "SFI-C017",
+        "SFI-C018"
+      ],
+      "artifacts": [
+        "MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+        "MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+        "validate_first_playable_action_approval_loop.py"
+      ],
+      "testClasses": [
+        "contract",
+        "permission",
+        "idempotency",
+        "recovery"
+      ],
+      "blocking": true
+    },
+    {
+      "criterionId": "FPA-AC-010",
+      "summary": "",
+      "controllingContracts": [
+        "SFI-C019",
+        "SFI-C020"
+      ],
+      "artifacts": [
+        "MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+        "MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+        "validate_first_playable_action_approval_loop.py"
+      ],
+      "testClasses": [
+        "contract",
+        "permission",
+        "idempotency",
+        "recovery"
+      ],
+      "blocking": true
+    },
+    {
+      "criterionId": "FPA-AC-011",
+      "summary": "",
+      "controllingContracts": [
+        "SFI-C021",
+        "SFI-C022"
+      ],
+      "artifacts": [
+        "MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+        "MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+        "validate_first_playable_action_approval_loop.py"
+      ],
+      "testClasses": [
+        "projection",
+        "accessibility",
+        "diagnostics",
+        "boundary"
+      ],
+      "blocking": true
+    },
+    {
+      "criterionId": "FPA-AC-012",
+      "summary": "",
+      "controllingContracts": [
+        "SFI-C023",
+        "SFI-C024"
+      ],
+      "artifacts": [
+        "MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+        "MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+        "validate_first_playable_action_approval_loop.py"
+      ],
+      "testClasses": [
+        "projection",
+        "accessibility",
+        "diagnostics",
+        "boundary"
+      ],
+      "blocking": true
+    },
+    {
+      "criterionId": "FPA-AC-013",
+      "summary": "",
+      "controllingContracts": [
+        "CCI-C001",
+        "CCI-C002"
+      ],
+      "artifacts": [
+        "MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+        "MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+        "validate_first_playable_action_approval_loop.py"
+      ],
+      "testClasses": [
+        "projection",
+        "accessibility",
+        "diagnostics",
+        "boundary"
+      ],
+      "blocking": true
+    },
+    {
+      "criterionId": "FPA-AC-014",
+      "summary": "",
+      "controllingContracts": [
+        "CCI-C003",
+        "CCI-C004"
+      ],
+      "artifacts": [
+        "MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+        "MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+        "validate_first_playable_action_approval_loop.py"
+      ],
+      "testClasses": [
+        "projection",
+        "accessibility",
+        "diagnostics",
+        "boundary"
+      ],
+      "blocking": true
+    },
+    {
+      "criterionId": "FPA-AC-015",
+      "summary": "",
+      "controllingContracts": [
+        "CCI-C005",
+        "CCI-C006"
+      ],
+      "artifacts": [
+        "MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+        "MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+        "validate_first_playable_action_approval_loop.py"
+      ],
+      "testClasses": [
+        "projection",
+        "accessibility",
+        "diagnostics",
+        "boundary"
+      ],
+      "blocking": true
+    },
+    {
+      "criterionId": "FPA-AC-016",
+      "summary": "",
+      "controllingContracts": [
+        "CCI-C007",
+        "CCI-C008"
+      ],
+      "artifacts": [
+        "MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+        "MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+        "validate_first_playable_action_approval_loop.py"
+      ],
+      "testClasses": [
+        "projection",
+        "accessibility",
+        "diagnostics",
+        "boundary"
+      ],
+      "blocking": true
+    },
+    {
+      "criterionId": "FPA-AC-017",
+      "summary": "",
+      "controllingContracts": [
+        "CCI-C009",
+        "CCI-C010"
+      ],
+      "artifacts": [
+        "MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+        "MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+        "validate_first_playable_action_approval_loop.py"
+      ],
+      "testClasses": [
+        "projection",
+        "accessibility",
+        "diagnostics",
+        "boundary"
+      ],
+      "blocking": true
+    },
+    {
+      "criterionId": "FPA-AC-018",
+      "summary": "",
+      "controllingContracts": [
+        "CCI-C011",
+        "CCI-C012"
+      ],
+      "artifacts": [
+        "MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+        "MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+        "validate_first_playable_action_approval_loop.py"
+      ],
+      "testClasses": [
+        "projection",
+        "accessibility",
+        "diagnostics",
+        "boundary"
+      ],
+      "blocking": true
+    },
+    {
+      "criterionId": "FPA-AC-019",
+      "summary": "",
+      "controllingContracts": [
+        "CCI-C013",
+        "CCI-C014"
+      ],
+      "artifacts": [
+        "MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+        "MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+        "validate_first_playable_action_approval_loop.py"
+      ],
+      "testClasses": [
+        "projection",
+        "accessibility",
+        "diagnostics",
+        "boundary"
+      ],
+      "blocking": true
+    },
+    {
+      "criterionId": "FPA-AC-020",
+      "summary": "",
+      "controllingContracts": [
+        "CCI-C015",
+        "CCI-C016"
+      ],
+      "artifacts": [
+        "MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+        "MV-IA-F006_ACTION_APPROVAL_MATRIX.json",
+        "validate_first_playable_action_approval_loop.py"
+      ],
+      "testClasses": [
+        "projection",
+        "accessibility",
+        "diagnostics",
+        "boundary"
+      ],
+      "blocking": true
+    }
+  ],
+  "fixtureTraceability": [
+    {
+      "fixtureId": "F006-FX-001",
+      "scenario": "player-happy-path",
+      "expectedOutcome": "one-approved-durable-result",
+      "covers": [],
+      "sourceStatus": "synthetic-contract-fixture",
+      "canonicalContent": false
+    },
+    {
+      "fixtureId": "F006-FX-002",
+      "scenario": "gm-modify-and-approve",
+      "expectedOutcome": "attributable-modification-and-one-result",
+      "covers": [],
+      "sourceStatus": "synthetic-contract-fixture",
+      "canonicalContent": false
+    },
+    {
+      "fixtureId": "F006-FX-003",
+      "scenario": "gm-deny",
+      "expectedOutcome": "durable-denial-no-effects",
+      "covers": [],
+      "sourceStatus": "synthetic-contract-fixture",
+      "canonicalContent": false
+    },
+    {
+      "fixtureId": "F006-FX-004",
+      "scenario": "duplicate-player-submit",
+      "expectedOutcome": "same-operation-prior-status-no-duplicate-effects",
+      "covers": [],
+      "sourceStatus": "synthetic-contract-fixture",
+      "canonicalContent": false
+    },
+    {
+      "fixtureId": "F006-FX-005",
+      "scenario": "stale-session-version",
+      "expectedOutcome": "conflict-preserved-no-commit",
+      "covers": [],
+      "sourceStatus": "synthetic-contract-fixture",
+      "canonicalContent": false
+    },
+    {
+      "fixtureId": "F006-FX-006",
+      "scenario": "player-disconnect-before-submit",
+      "expectedOutcome": "local-draft-recoverable-no-authoritative-proposal",
+      "covers": [],
+      "sourceStatus": "synthetic-contract-fixture",
+      "canonicalContent": false
+    },
+    {
+      "fixtureId": "F006-FX-007",
+      "scenario": "player-disconnect-after-submit",
+      "expectedOutcome": "pending-proposal-recovered-by-status",
+      "covers": [],
+      "sourceStatus": "synthetic-contract-fixture",
+      "canonicalContent": false
+    },
+    {
+      "fixtureId": "F006-FX-008",
+      "scenario": "gm-disconnect-during-review",
+      "expectedOutcome": "proposal-remains-pending-or-review-lease-expires-safely",
+      "covers": [],
+      "sourceStatus": "synthetic-contract-fixture",
+      "canonicalContent": false
+    },
+    {
+      "fixtureId": "F006-FX-009",
+      "scenario": "commit-response-lost",
+      "expectedOutcome": "status-lookup-recovers-single-committed-result",
+      "covers": [],
+      "sourceStatus": "synthetic-contract-fixture",
+      "canonicalContent": false
+    },
+    {
+      "fixtureId": "F006-FX-010",
+      "scenario": "missed-realtime-event",
+      "expectedOutcome": "event-gap-recovery-restores-current-projection",
+      "covers": [],
+      "sourceStatus": "synthetic-contract-fixture",
+      "canonicalContent": false
+    },
+    {
+      "fixtureId": "F006-FX-011",
+      "scenario": "gm-npc-enemy-self-review",
+      "expectedOutcome": "same-inspection-fields-and-attributable-confirmation",
+      "covers": [],
+      "sourceStatus": "synthetic-contract-fixture",
+      "canonicalContent": false
+    },
+    {
+      "fixtureId": "F006-FX-012",
+      "scenario": "assistant-gm-out-of-scope",
+      "expectedOutcome": "deny-without-hidden-existence-disclosure",
+      "covers": [],
+      "sourceStatus": "synthetic-contract-fixture",
+      "canonicalContent": false
+    },
+    {
+      "fixtureId": "F006-FX-013",
+      "scenario": "observer-projection",
+      "expectedOutcome": "no-proposal-or-gm-only-decision-data",
+      "covers": [],
+      "sourceStatus": "synthetic-contract-fixture",
+      "canonicalContent": false
+    },
+    {
+      "fixtureId": "F006-FX-014",
+      "scenario": "revocation-before-decision",
+      "expectedOutcome": "proposal-revoked-and-protected-projections-cleared",
+      "covers": [],
+      "sourceStatus": "synthetic-contract-fixture",
+      "canonicalContent": false
+    }
+  ],
+  "implementationSlices": [
+    {
+      "sliceId": "F006-S01",
+      "name": "IDs, envelopes, states, and ports",
+      "dependsOn": []
+    },
+    {
+      "sliceId": "F006-S02",
+      "name": "Player draft, rule inspection, target, cost, and calculation",
+      "dependsOn": [
+        "F006-S01"
+      ]
+    },
+    {
+      "sliceId": "F006-S03",
+      "name": "Authoritative validation and submit/status",
+      "dependsOn": [
+        "F006-S01",
+        "F006-S02"
+      ]
+    },
+    {
+      "sliceId": "F006-S04",
+      "name": "GM notification, queue, review, and decision controls",
+      "dependsOn": [
+        "F006-S01",
+        "F006-S03"
+      ]
+    },
+    {
+      "sliceId": "F006-S05",
+      "name": "Atomic result commit and role-filtered projections",
+      "dependsOn": [
+        "F006-S03",
+        "F006-S04"
+      ]
+    },
+    {
+      "sliceId": "F006-S06",
+      "name": "GM NPC/enemy self-review path",
+      "dependsOn": [
+        "F006-S04",
+        "F006-S05"
+      ]
+    },
+    {
+      "sliceId": "F006-S07",
+      "name": "Idempotency, reconnect, event-gap, and revocation recovery",
+      "dependsOn": [
+        "F006-S03",
+        "F006-S05"
+      ]
+    },
+    {
+      "sliceId": "F006-S08",
+      "name": "History, replay evidence, export, and diagnostics",
+      "dependsOn": [
+        "F006-S05",
+        "F006-S07"
+      ]
+    },
+    {
+      "sliceId": "F006-S09",
+      "name": "Responsive and accessible parity",
+      "dependsOn": [
+        "F006-S02",
+        "F006-S04",
+        "F006-S05"
+      ]
+    },
+    {
+      "sliceId": "F006-S10",
+      "name": "Deterministic fixtures and zero-service adapters",
+      "dependsOn": [
+        "F006-S01",
+        "F006-S02",
+        "F006-S03",
+        "F006-S04",
+        "F006-S05",
+        "F006-S06",
+        "F006-S07",
+        "F006-S08",
+        "F006-S09"
+      ]
+    }
+  ],
+  "untracedAcceptanceCriteria": [],
+  "blockingFindings": []
+}
