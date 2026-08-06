@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-06T00:00:00+00:00",
+  "generated_at": "2026-08-06T00:04:00+00:00",
   "source_pointer": "governance/ai/runtime/CURRENT_WORK_POINTER.json",
   "primary": {
     "work_item_id": "MV-CONT-005",
@@ -8,15 +8,13 @@
     "track": "owner-ai-continuity",
     "repository": "cybalicistjt-stack/multiversal-aioc",
     "branch": "agent/mv-interaction-pilot-integration",
-    "status": "validation_failed",
-    "active_substep": "Replace byte-level scorecard comparison with semantic JSON equality, rerun hosted validation, and verify every triggered check on the corrected exact head.",
-    "next_action": "Patch the determinism workflow to compare parsed JSON objects, trigger a corrected hosted run, and keep MV-CONT-005 unfinished until all checks pass.",
-    "latest_pushed_commit": "73793c59d76a4d7aa1bb1643656b1291441fa8fc",
+    "status": "ready_for_review",
+    "active_substep": "Run the final checkpoint-consistency checks, verify PR #146 mergeability, and merge.",
+    "next_action": "Verify the final hosted consistency run and merge PR #146, then record completed_verified and return the primary execution route to P9-06-008 in a bounded follow-up change.",
+    "latest_pushed_commit": "6565f9afef16eee66071234acbf85f8cc75e9834",
     "pull_request": 146,
     "owner_decision_required": false,
-    "unresolved_failures": [
-      "Run 31058116575 compared equivalent JSON files byte-for-byte; compact committed formatting differed from generated expanded formatting at scorecard byte 260."
-    ],
+    "unresolved_failures": [],
     "roadmap_projection_pending": true
   },
   "active_attempt_count": 1,
