@@ -1,19 +1,31 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-06T00:04:00+00:00",
+  "updated_at": "2026-08-06T00:10:00+00:00",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "static_restart_prompt": "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
   "primary_attempt_id": "MV-CONT-005-attempt-001",
-  "selection_reason": "MV-CONT-005 has passed all hosted validation on its exact reviewed implementation head and remains primary until PR #146 merges and completion evidence is recorded.",
+  "selection_reason": "MV-CONT-005 and the approved owner-AI interaction side mission are completed_verified. No P9-06-008 attempt becomes primary until its real application branch and STARTED checkpoint exist; P9-06-008 is the exact next execution route.",
   "active_attempts": [
     {"work_item_id":"MV-CONT-001","attempt_id":"MV-CONT-001-attempt-001","track":"owner-ai-continuity","priority":5,"owner_selected":false,"repository":"cybalicistjt-stack/multiversal-aioc","branch":"agent/mv-continuity-system-integration","checkpoint_path":"governance/ai/work-state/MV-CONT-001-attempt-001.json","status":"completed_verified","updated_at":"2026-08-05T22:31:00+00:00","roadmap_projection_pending":false},
     {"work_item_id":"MV-CONT-002","attempt_id":"MV-CONT-002-attempt-001","track":"owner-ai-continuity","priority":4,"owner_selected":false,"repository":"cybalicistjt-stack/multiversal-aioc","branch":"agent/mv-continuity-analysis-taxonomy","checkpoint_path":"governance/ai/work-state/MV-CONT-002-attempt-001.json","status":"completed_verified","updated_at":"2026-08-05T22:53:40+00:00","roadmap_projection_pending":false},
     {"work_item_id":"MV-CONT-003","attempt_id":"MV-CONT-003-attempt-001","track":"owner-ai-continuity","priority":3,"owner_selected":false,"repository":"cybalicistjt-stack/multiversal-aioc","branch":"agent/mv-continuity-enforcement-coverage","checkpoint_path":"governance/ai/work-state/MV-CONT-003-attempt-001.json","status":"completed_verified","updated_at":"2026-08-05T23:20:00+00:00","roadmap_projection_pending":false},
     {"work_item_id":"MV-CONT-004","attempt_id":"MV-CONT-004-attempt-001","track":"owner-ai-continuity","priority":2,"owner_selected":false,"repository":"cybalicistjt-stack/multiversal-aioc","branch":"agent/mv-correction-regression-intake","checkpoint_path":"governance/ai/work-state/MV-CONT-004-attempt-001.json","status":"completed_verified","updated_at":"2026-08-05T23:42:00+00:00","roadmap_projection_pending":false},
-    {"work_item_id":"MV-CONT-005","attempt_id":"MV-CONT-005-attempt-001","track":"owner-ai-continuity","priority":1,"owner_selected":true,"repository":"cybalicistjt-stack/multiversal-aioc","branch":"agent/mv-interaction-pilot-integration","checkpoint_path":"governance/ai/work-state/MV-CONT-005-attempt-001.json","status":"ready_for_review","updated_at":"2026-08-06T00:04:00+00:00","roadmap_projection_pending":true}
+    {"work_item_id":"MV-CONT-005","attempt_id":"MV-CONT-005-attempt-001","track":"owner-ai-continuity","priority":1,"owner_selected":true,"repository":"cybalicistjt-stack/multiversal-aioc","branch":"agent/mv-interaction-pilot-integration","checkpoint_path":"governance/ai/work-state/MV-CONT-005-attempt-001.json","status":"completed_verified","updated_at":"2026-08-06T00:10:00+00:00","roadmap_projection_pending":false}
   ],
   "deferred_tracks": [
-    {"track":"application-implementation","next_work_item_id":"P9-06-008","state":"paused","reason":"Owner-selected continuity side mission remains the current program; application implementation has not been marked complete or superseded.","evidence":"APPLICATION_IMPLEMENTATION_ROADMAP.md identifies P9-06-008 as the next application item."},
-    {"track":"internal-alpha-feature-design","next_work_item_id":"IA-D03-003","state":"planned","reason":"Latest merged governance evidence completed IA-D03-002 and advanced that design track to IA-D03-003.","evidence":"Main commit cd9f543970d9f7c8c82bc095d1c2c4be03b3b360 and PR #136."}
+    {
+      "track": "application-implementation",
+      "next_work_item_id": "P9-06-008",
+      "state": "next",
+      "reason": "The owner-AI interaction side mission is completed_verified; the preserved application implementation track is now the exact next route.",
+      "evidence": "MV-CONT-005 completion checkpoint and APPLICATION_IMPLEMENTATION_ROADMAP.md identify P9-06-008 as the next application item."
+    },
+    {
+      "track": "internal-alpha-feature-design",
+      "next_work_item_id": "IA-D03-003",
+      "state": "planned",
+      "reason": "Latest merged governance evidence completed IA-D03-002 and advanced that design track to IA-D03-003.",
+      "evidence": "Main commit cd9f543970d9f7c8c82bc095d1c2c4be03b3b360 and PR #136."
+    }
   ]
 }
