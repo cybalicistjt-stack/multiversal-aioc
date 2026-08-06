@@ -1,22 +1,22 @@
 {
   "schema_version": "1.0.0",
-  "revision": 2,
+  "revision": 3,
   "work_item_id": "MV-CONT-005",
   "attempt_id": "MV-CONT-005-attempt-001",
   "track": "owner-ai-continuity",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "agent/mv-interaction-pilot-integration",
-  "status": "validation_failed",
+  "status": "ready_for_review",
   "started_at": "2026-08-05T23:44:00+00:00",
-  "updated_at": "2026-08-06T00:00:00+00:00",
+  "updated_at": "2026-08-06T00:04:00+00:00",
   "completed_at": null,
   "base_commit": "301d477b5c5955dc32cc3c7e3bddb1508fb35692",
-  "latest_pushed_commit": "73793c59d76a4d7aa1bb1643656b1291441fa8fc",
-  "expected_remote_head": "73793c59d76a4d7aa1bb1643656b1291441fa8fc",
+  "latest_pushed_commit": "6565f9afef16eee66071234acbf85f8cc75e9834",
+  "expected_remote_head": "6565f9afef16eee66071234acbf85f8cc75e9834",
   "pull_request": 146,
   "objective": "Pilot the installed owner-AI interaction controls against representative recovery, interruption, correction, deliverable, capability, source-coverage, UI-verification, notification, request-alignment, and reporting scenarios; measure prevention and intervention outcomes; integrate the scorecard and final operating amendments into AIOC, bootstrap, and the Project Bible.",
-  "last_verified_action": "Hosted pilot validation and all four interaction-pilot regression tests passed on PR #146 head 73793c59d76a4d7aa1bb1643656b1291441fa8fc, but workflow run 31058116575 failed because the final determinism step compared JSON byte formatting rather than semantic content.",
-  "active_substep": "Replace byte-level scorecard comparison with semantic JSON equality, rerun hosted validation, and verify every triggered check on the corrected exact head.",
+  "last_verified_action": "All hosted checks passed on exact PR #146 head 6565f9afef16eee66071234acbf85f8cc75e9834, including interaction pilot run 31058326330, continuity run 31058326731, Project Bible validation run 31058326327, AIOC smoke run 31058326363, P9-06 validation run 31058326301, and every triggered interaction and Development Brain check.",
+  "active_substep": "Run the final checkpoint-consistency checks, verify PR #146 mergeability, and merge.",
   "completed_substeps": [
     "Completed and merged MV-CONT-001 continuity runtime",
     "Completed and merged MV-CONT-002 redacted interaction audit and evaluation corpus",
@@ -28,9 +28,12 @@
     "Added and indexed the normative Project Bible operating amendment",
     "Implemented the executable pilot harness, four regression tests, and dedicated CI",
     "Opened PR #146",
-    "Passed hosted executable pilot validation and four regression tests on the initial exact head"
+    "Passed hosted executable pilot validation and four regression tests on the initial exact head",
+    "Replaced byte-level scorecard comparison with semantic JSON equality",
+    "Isolated the continuity false-completion regression fixture from live unresolved failures",
+    "Verified every hosted repository check on exact head 6565f9afef16eee66071234acbf85f8cc75e9834"
   ],
-  "next_action": "Patch the determinism workflow to compare parsed JSON objects, trigger a corrected hosted run, and keep MV-CONT-005 unfinished until all checks pass.",
+  "next_action": "Verify the final hosted consistency run and merge PR #146, then record completed_verified and return the primary execution route to P9-06-008 in a bounded follow-up change.",
   "changed_paths": [
     "governance/ai/interaction-system/pilot/",
     "governance/ai/work-state/MV-CONT-005-attempt-001.json",
@@ -43,6 +46,7 @@
     "governance/development-bible/amendments/MV-CONT-005_OWNER_AI_INTERACTION_OPERATING_AMENDMENT.md",
     "tools/interaction_pilot.py",
     "tests/interaction_pilot/",
+    "tests/continuity/test_continuity_state.py",
     ".github/workflows/validate-interaction-pilot.yml"
   ],
   "completion_gate": {
@@ -53,13 +57,11 @@
   "validation": [
     {
       "command": "python tools/interaction_pilot.py validate",
-      "status": "failed",
-      "evidence": "Run 31058116575: executable validation PASS; 4/4 regression tests PASS; final byte-level formatting comparison FAIL."
+      "status": "passed",
+      "evidence": "Hosted Validate Interaction Operational Pilot run 31058326330 PASS on exact head; 17/17 scenarios, 4/4 regression tests, and semantic deterministic regeneration PASS."
     }
   ],
-  "unresolved_failures": [
-    "Run 31058116575 compared equivalent JSON files byte-for-byte; compact committed formatting differed from generated expanded formatting at scorecard byte 260."
-  ],
+  "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
     {
@@ -68,7 +70,7 @@
     },
     {
       "kind": "commit",
-      "value": "MV-CONT-005 initial PR head 73793c59d76a4d7aa1bb1643656b1291441fa8fc"
+      "value": "MV-CONT-005 exact reviewed implementation head 6565f9afef16eee66071234acbf85f8cc75e9834"
     },
     {
       "kind": "pull_request",
@@ -76,11 +78,12 @@
     },
     {
       "kind": "ci_run",
-      "value": "Run 31058116575: pilot validation and tests passed; formatting-only determinism check failed"
+      "value": "Interaction pilot run 31058326330 PASS; continuity 31058326731 PASS; Project Bible 31058326327 PASS; all other triggered checks PASS"
     }
   ],
   "roadmap_projection_pending": true,
   "notes": [
+    "This checkpoint remains non-complete until PR #146 is merged and its actual squash commit is recorded.",
     "Pilot results distinguish executable control validation from future live longitudinal measurements.",
     "No raw private conversations enter the pilot artifacts.",
     "The full roadmap remains outside the high-frequency save path.",
