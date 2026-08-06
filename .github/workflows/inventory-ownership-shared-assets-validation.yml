@@ -1,23 +1,22 @@
 name: Validate Inventory Ownership and Shared Assets Design
-
 on:
   pull_request:
     paths:
       - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F008_*'
       - 'governance/application-planning/internal-alpha/validate_inventory_ownership_shared_assets.py'
-      - 'governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md'
       - '.github/workflows/inventory-ownership-shared-assets-validation.yml'
   workflow_dispatch:
-
+concurrency:
+  group: inventory-assets-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
-
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+        with: {python-version: '3.12'}
       - run: python governance/application-planning/internal-alpha/validate_inventory_ownership_shared_assets.py
