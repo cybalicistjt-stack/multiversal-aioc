@@ -1,13 +1,13 @@
 # MV-IA-001 — Internal Alpha Feature Design Program
 
 **Document ID:** MV-IA-001  
-**Version:** 0.16.0  
+**Version:** 0.18.0  
 **Status:** ACTIVE — DESIGN PROGRAM  
 **Owner and final authority:** John Brandon Turner
 
 ## Purpose
 
-MV-IA-001 converts the approved Project Bible, Stage A program, Phase 9 architecture, and historical feature roadmap into implementation-ready internal-alpha design contracts. It does not bypass P9-06 or authorize release.
+MV-IA-001 converts the approved Project Bible, Stage A program, Phase 9 architecture, source game framework, and historical feature roadmap into implementation-ready internal-alpha design contracts. It does not bypass P9-06 or authorize release.
 
 ## Completed foundations
 
@@ -17,112 +17,53 @@ IA-D01 and IA-D02 are complete. Shared contracts cover governed objects, identit
 
 IA-D03-001 through IA-D03-005 are complete, including Character, Campaign/Scene/Session, Encounter preparation, bounded deterministic fixtures, and the Character/Campaign integration review.
 
-## IA-D04-001 — First Playable Action and GM Approval Loop
+## Completed first playable loop
 
-Complete at design level with Player proposal, GM approve/deny/modify, NPC/enemy parity, atomic durable result, role-safe projections, recovery, fourteen fixtures, twenty blocking criteria, and zero blocking findings.
+IA-D04-001 through IA-D04-005 are complete. The tranche defines Player and GM Action proposals, approve/deny/modify adjudication, atomic durable results, NPC/enemy parity, shared proposal/approval components, two-device recovery, authoritative role-safe result/history presentation, and a twelve-package implementation handoff.
 
-## IA-D04-002 — Proposal and Approval Shared-Component Contract
-
-Complete at design level with seven consumer profiles, twelve surfaces, immutable proposals, advisory review claims, attributable decisions, atomic adapters, role-safe projections, sixteen fixtures, twenty blocking criteria, and zero blocking findings.
-
-## IA-D04-003 — Two-Device Interruption and Reconnect Matrix
+## IA-D05-001 — Relationship Tracker
 
 Completed at design level with:
 
-- six device-role projections;
-- fifteen interruption boundaries;
-- twenty recovery states and twenty state-vector fields;
-- twelve recovery actions and twenty-four denied cases;
-- stable status lookup before retry;
-- advisory review-claim expiry and revocation;
-- exactly one final decision and at most one consumer commit;
-- ordered durable Event-gap recovery;
-- current role-safe projection convergence;
-- explicit stale-version and offline-draft conflicts;
-- protected-cache invalidation across devices;
-- twenty-four deterministic fixtures, eight implementation slices, twenty blocking criteria, and zero blocking findings.
+- first-class directional relationship edges and explicit mutual pairing;
+- fourteen registry-capable relationship dimensions;
+- profile-defined scales, bands, and thresholds instead of a universal attitude score;
+- append-only Event-backed history and exact source/version provenance;
+- seven independently authorized reveal layers;
+- server-filtered GM and Player graph/list projections;
+- required mobile list/tree and accessible nonvisual parity;
+- separate relationship, reputation/standing, public status, mood, intent, and stance aggregates;
+- social Bonds with profile thresholds and human agreement gates;
+- structured leverage, favors, promises, debts, oaths, and obligations;
+- twenty-four deterministic fixtures, eight implementation slices, twenty-eight blocking criteria, five resolved findings, and zero blocking findings.
 
 Primary artifacts:
 
-- `feature-packets/IA-D04-003_TWO_DEVICE_INTERRUPTION_AND_RECONNECT_MATRIX.md`
-- `feature-packets/IA-D04-003_TWO_DEVICE_RECONNECT_MATRIX.json`
-- `feature-packets/IA-D04-003_IMPLEMENTATION_TRACEABILITY.json`
-- `feature-packets/IA-D04-003_REVIEW_RECEIPT.md`
-- `feature-packets/IA-D04-003_READINESS_RECORD.md`
-- `feature-packets/IA-D04-003_COMPLETION_RECORD.json`
-- `validate_two_device_interruption_reconnect.py`
-
-## IA-D04-004 — Authoritative Result and History Presentation
-
-Completed at design level with:
-
-- eight result and history surfaces;
-- eighteen explicit result states;
-- twenty-eight history entry fields;
-- role-safe Player, GM, Assistant-GM, and observer projections;
-- immutable original and final values for modifications;
-- durable denial without accepted costs or Effects;
-- committed cost, Effect, Condition, Resource, and target summaries;
-- exact historical source versions;
-- ordered duplicate-safe Event history and Event-gap recovery;
-- cached-nonauthoritative, stale, revoked, forbidden, and recovery-required presentation;
-- role-safe exports, diagnostics, responsive layouts, and screen-reader semantic order;
-- twenty deterministic fixtures, eight implementation slices, twenty blocking criteria, and zero blocking findings.
-
-Primary artifacts:
-
-- `feature-packets/IA-D04-004_AUTHORITATIVE_RESULT_AND_HISTORY_PRESENTATION.md`
-- `feature-packets/IA-D04-004_AUTHORITATIVE_RESULT_HISTORY_MATRIX.json`
-- `feature-packets/IA-D04-004_IMPLEMENTATION_TRACEABILITY.json`
-- `feature-packets/IA-D04-004_REVIEW_RECEIPT.md`
-- `feature-packets/IA-D04-004_READINESS_RECORD.md`
-- `feature-packets/IA-D04-004_COMPLETION_RECORD.json`
-- `validate_authoritative_result_history.py`
+- `feature-packets/MV-IA-F009_RELATIONSHIP_TRACKER.md`
+- `feature-packets/MV-IA-F009_RELATIONSHIP_TRACKER_MATRIX.json`
+- `feature-packets/MV-IA-F009_SOURCE_COVERAGE_AND_PROVENANCE.json`
+- `feature-packets/MV-IA-F009_IMPLEMENTATION_TRACEABILITY.json`
+- `feature-packets/MV-IA-F009_REVIEW_RECEIPT.md`
+- `feature-packets/MV-IA-F009_READINESS_RECORD.md`
+- `feature-packets/MV-IA-F009_COMPLETION_RECORD.json`
+- `validate_relationship_tracker.py`
 
 ## Governing decisions
 
-Silence is not approval. Review claims, local drafts, caches, notifications, and realtime messages are advisory. Stable operation identities and status lookup control retries. Silent last-write-wins is prohibited. AI has no decision or commit authority.
-
-## Preparation boundary
-
-The fixture corpus is bounded test data, not the complete game and not a canonical content release. Synthetic fixtures remain noncanonical. Encounter analysis remains advisory and cannot guarantee balance, fairness, safety, victory, survival, or optimality.
+Relationships are directional unless explicitly paired. There is no universal attitude score. Missing source relationship data remains missing. Graph/list/cache/notification/realtime/AI views are nonauthoritative and role-filtered. Romantic, intimate, or emotionally controlling Bonds cannot be created automatically by a roll. Silence is not approval.
 
 ## Execution boundary
 
-Design work may proceed while implementation dependencies remain incomplete. No document here authorizes canonical promotion, paid services, production credentials, real-user data, internal-alpha release, production deployment, or public release.
+Design work may proceed while implementation dependencies remain incomplete. `P9-06-008-attempt-002` remains unfinished parallel application work. No document here authorizes canonical promotion, paid services, production credentials, real-user data, internal-alpha release, production deployment, or public release.
+
+## Efficiency boundary
+
+MV-AI-EFFICIENCY-002 governs: no intra-step validation, marker files, checkpoint maintenance, status projection, or administrative commits. Build the whole bounded step, then validate and update once at its boundary.
 
 ## Current next design action
 
-**IA-D04-005 — First-Playable-Loop Implementation Handoff.**
+**IA-D05-002 — MV-IA-F016 Factions, Reputation, and Organizations.**
 
-## Historical validation anchors
+## Historical route anchors
 
-The following sections preserve exact prior result and handoff labels. They are historical evidence, not the current route.
-
-**Version:** 0.11.0
-
-## IA-D03-002 — Campaign, Scene, and Session Builder
-
-Completed at design level; original handoff preserved to IA-D03-003 Encounter Builder and Balance Lab.
-
-## IA-D03-003 — Encounter Builder and Balance Lab
-
-Completed at design level; original handoff preserved to IA-D03-004 internal-alpha content and fixtures.
-
-## IA-D03-004 — Internal Alpha Content and Deterministic Fixtures
-
-Completed at design level; original handoff preserved to IA-D03-005 Character/Campaign integration review.
-
-## IA-D03-005 — Character/Campaign Integration Review
-
-Completed at design level; original handoff preserved to IA-D04-001 First Playable Action and GM Approval Loop.
-
-**IA-D03-005 — Character/Campaign integration review.**
-
-Historical IA-D03-005 route: **IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop**.
-
-Historical IA-D04-001 route: **IA-D04-002 — Proposal and Approval Shared-Component Contract**.
-
-Historical IA-D04-002 route: **IA-D04-003 — Two-Device Interruption and Reconnect Matrix**.
-
-Historical IA-D04-003 route: **IA-D04-004 — Authoritative Result and History Presentation**.
+IA-D03 completed Character/Campaign preparation. IA-D04 completed the first playable loop. IA-D05 begins the relationship, faction, social-interaction, and investigation tranche.

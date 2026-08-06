@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1.0.0",
+  "workItemId": "IA-D05-001",
+  "featureId": "MV-IA-F009",
+  "owner": "John Brandon Turner",
+  "sourceAuthorities": ["INTERNAL_ALPHA_DEPENDENCY_MAP.md relationship-and-graph cluster", "social gameplay and NPC interaction instructions", "game framework social-play", "8D-003 relationship-edge and leverage contracts", "8D-005 workflow/screen/acceptance catalogs", "8E-004D relationship, visibility, and mechanic registers", "MV-IA-F002", "MV-IA-F005", "MV-IA-F020", "MV-IA-F021", "MV-IA-F025"],
+  "requirementsToSlices": {
+    "directional-multidimensional-edge": ["REL-S01", "REL-S02"],
+    "history-and-provenance": ["REL-S02", "REL-S07"],
+    "layered-reveal-and-hidden-information": ["REL-S03", "REL-S04"],
+    "graph-list-mobile-accessibility": ["REL-S04", "REL-S08"],
+    "social-bonds-and-consent": ["REL-S05"],
+    "leverage-and-obligations": ["REL-S06"],
+    "reconnect-revocation-pack-lifecycle": ["REL-S07"],
+    "deterministic-acceptance": ["REL-S08"]
+  },
+  "downstreamConsumers": ["MV-IA-F016", "MV-IA-F010", "MV-IA-F011", "MV-IA-F015", "MV-IA-F017", "MV-IA-F023"],
+  "resolvedFindings": [
+    {"id":"REL-FND-001","finding":"Existing relationship-edge schema exposes one strength number while the later source requires multiple profile-scaled dimensions.","resolution":"Treat strength as legacy/optional summary and require a compatible dimension-state extension with no guessed migration."},
+    {"id":"REL-FND-002","finding":"Social Bonds could be confused with powers/magic bond definitions.","resolution":"Keep social Bonds relationship-owned unless explicit cross-domain compatibility is declared."},
+    {"id":"REL-FND-003","finding":"Source register has 154 rows but only four explicit relationship facts.","resolution":"Preserve absence and prohibit synthetic relationship claims."},
+    {"id":"REL-FND-004","finding":"Graph visualization can leak hidden counterpart identities through topology or API payloads.","resolution":"Filter server-side before serialization and require list/graph projection parity."},
+    {"id":"REL-FND-005","finding":"Relationship, reputation, status, mood, intent, and stance overlap linguistically.","resolution":"Lock separate aggregates and ownership boundaries; F016 and F010 consume rather than merge F009 state."}
+  ],
+  "unresolvedFindings": [],
+  "blockingFindings": []
+}
