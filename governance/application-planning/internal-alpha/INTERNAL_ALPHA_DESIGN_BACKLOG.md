@@ -114,3 +114,10 @@ This archival block preserves the exact handoff language validated when IA-D03-0
 - IA-D03-005 — Character/Campaign integration review — next.
 
 **IA-D03-005 — Character/Campaign integration review.**
+
+
+## Historical IA-D03-005 to IA-D04-001 handoff anchor
+
+This archival line preserves the exact prior validated route and is not the current next item:
+
+**IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop — next.**

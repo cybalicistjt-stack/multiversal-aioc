@@ -48,3 +48,6 @@ MV-IA-F006 defines the complete Campaign-to-Character-to-Scene-to-Action-to-GM-d
 ## Next item
 
 **IA-D04-002 — Proposal and Approval Shared-Component Contract.**
+
+
+Historical IA-D03-005 next item: **IA-D04-001**.

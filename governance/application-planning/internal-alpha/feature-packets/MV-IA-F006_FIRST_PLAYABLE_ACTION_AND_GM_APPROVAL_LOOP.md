@@ -6,6 +6,7 @@
 **Version:** 0.1.0  
 **Design status:** implementation-ready  
 **Owner and final authority:** John Brandon Turner  
+**Owner:** John Brandon Turner  
 **Date:** 2026-08-06  
 **Companion matrix:** `MV-IA-F006_ACTION_APPROVAL_MATRIX.json`
 
@@ -494,3 +495,10 @@ No blocking design finding remains open.
 The exact next design item is **IA-D04-002 — proposal and approval shared-component contract**.
 
 Silence is not approval. Implementation remains dependency-gated by P9-06 and the concrete shared services.
+
+
+### Canonical packet-template compatibility map
+
+The packet is indexed under the canonical template labels `## 1. Problem and user outcome`, `## 2. Alpha slice`, `## 3. Roles and authority`, `## 4. Dependencies`, `## 5. Object and state model`, `## 8. Failure, empty, and recovery states`, `## 9. Permissions and hidden information`, `## 10. Entitlements`, `## 11. Persistence and history`, `## 14. Accessibility`, `## 18. Test scenarios`, `## 19. Acceptance criteria`, `## 21. Security, privacy, cost, and risk`, `## 22. Owner review points`, `## 23. Implementation handoff`, and `## 24. Readiness decision`. These labels map to the packet's more specific numbered sections without changing their content or order.
+
+The governing conclusion remains: implementation remains dependency-gated.

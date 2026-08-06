@@ -106,3 +106,6 @@ This archival block preserves the exact program wording validated when IA-D03-00
 ## IA-D03-004 — Internal Alpha Content and Deterministic Fixtures
 
 **IA-D03-005 — Character/Campaign integration review.**
+
+
+Historical IA-D03-005 route: **IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop**.
