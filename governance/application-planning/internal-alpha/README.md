@@ -1,7 +1,7 @@
 # MV-IA-001 — Internal Alpha Feature Design Program
 
 **Document ID:** MV-IA-001  
-**Version:** 0.14.0  
+**Version:** 0.15.0  
 **Status:** ACTIVE — DESIGN PROGRAM  
 **Owner and final authority:** John Brandon Turner
 
@@ -19,56 +19,42 @@ IA-D03-001 through IA-D03-005 are complete, including Character, Campaign/Scene/
 
 ## IA-D04-001 — First Playable Action and GM Approval Loop
 
-Completed at design level with:
-
-- 24 numbered sections and twenty blocking acceptance criteria;
-- explicit Player proposal, GM review, approve/deny/modify, atomic result, projection, history, and recovery contracts;
-- GM-controlled NPC and enemy Action parity;
-- 18 states, 28 proposal fields, 20 decision-receipt fields, 28 validation classes, 28 operations, 28 Events, and 40 denied cases;
-- fourteen deterministic fixtures, ten dependency-ordered implementation slices, and zero blocking findings;
-- secondary Player logs and proposals;
-- bounded offline drafts, accessible responsive parity, privacy-safe diagnostics, and zero-AI/zero-service core operation.
-
-Primary artifacts:
-
-- `feature-packets/MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md`
-- `feature-packets/MV-IA-F006_ACTION_APPROVAL_MATRIX.json`
-- `feature-packets/MV-IA-F006_IMPLEMENTATION_TRACEABILITY.json`
-- `feature-packets/MV-IA-F006_REVIEW_RECEIPT.md`
-- `feature-packets/MV-IA-F006_READINESS_RECORD.md`
-- `feature-packets/MV-IA-F006_COMPLETION_RECORD.json`
-- `validate_first_playable_action_approval_loop.py`
+Complete at design level with Player proposal, GM approve/deny/modify, NPC/enemy parity, atomic durable result, role-safe projections, recovery, fourteen fixtures, twenty blocking criteria, and zero blocking findings.
 
 ## IA-D04-002 — Proposal and Approval Shared-Component Contract
 
+Complete at design level with seven consumer profiles, twelve surfaces, immutable proposals, advisory review claims, attributable decisions, atomic adapters, role-safe projections, sixteen fixtures, twenty blocking criteria, and zero blocking findings.
+
+## IA-D04-003 — Two-Device Interruption and Reconnect Matrix
+
 Completed at design level with:
 
-- seven versioned consumer profiles;
-- twelve reusable component surfaces;
-- fifteen canonical states;
-- twenty-four proposal fields and twenty decision-receipt fields;
-- twenty-four validation classes, twenty-two operations, twenty-two Events, and thirty-two denied cases;
-- immutable original proposals and standard evidence slots;
-- permission-safe queues, notifications, and advisory review claims;
-- approve, deny, and field-addressed modify-and-approve controls;
-- semantic modification diffs, final confirmation, and attributable durable receipts;
-- consumer-specific validation and atomic Event-backed commit adapters;
-- server-side projections, history, exports, diagnostics, optional-AI boundaries, idempotency, reconnect, recovery, and revocation;
-- sixteen deterministic fixtures, eight implementation slices, twenty blocking acceptance criteria, and zero blocking findings.
+- six device-role projections;
+- fifteen interruption boundaries;
+- twenty recovery states and twenty state-vector fields;
+- twelve recovery actions and twenty-four denied cases;
+- stable status lookup before retry;
+- advisory review-claim expiry and revocation;
+- exactly one final decision and at most one consumer commit;
+- ordered durable Event-gap recovery;
+- current role-safe projection convergence;
+- explicit stale-version and offline-draft conflicts;
+- protected-cache invalidation across devices;
+- twenty-four deterministic fixtures, eight implementation slices, twenty blocking criteria, and zero blocking findings.
 
 Primary artifacts:
 
-- `feature-packets/IA-D04-002_PROPOSAL_APPROVAL_SHARED_COMPONENT_CONTRACT.md`
-- `feature-packets/IA-D04-002_PROPOSAL_APPROVAL_COMPONENT_MATRIX.json`
-- `feature-packets/IA-D04-002_IMPLEMENTATION_TRACEABILITY.json`
-- `feature-packets/IA-D04-002_REVIEW_RECEIPT.md`
-- `feature-packets/IA-D04-002_READINESS_RECORD.md`
-- `feature-packets/IA-D04-002_COMPLETION_RECORD.json`
-- `validate_proposal_approval_shared_component.py`
+- `feature-packets/IA-D04-003_TWO_DEVICE_INTERRUPTION_AND_RECONNECT_MATRIX.md`
+- `feature-packets/IA-D04-003_TWO_DEVICE_RECONNECT_MATRIX.json`
+- `feature-packets/IA-D04-003_IMPLEMENTATION_TRACEABILITY.json`
+- `feature-packets/IA-D04-003_REVIEW_RECEIPT.md`
+- `feature-packets/IA-D04-003_READINESS_RECORD.md`
+- `feature-packets/IA-D04-003_COMPLETION_RECORD.json`
+- `validate_two_device_interruption_reconnect.py`
 
 ## Governing decisions
 
-Silence is not approval. Review claims are advisory. Original proposals remain immutable. Modifications are explicit and attributable. Consumer profiles may narrow but cannot widen authority. AI has no decision, commit, or canonical-promotion authority.
+Silence is not approval. Review claims, local drafts, caches, notifications, and realtime messages are advisory. Stable operation identities and status lookup control retries. Silent last-write-wins is prohibited. AI has no decision or commit authority.
 
 ## Preparation boundary
 
@@ -80,7 +66,7 @@ Design work may proceed while implementation dependencies remain incomplete. No 
 
 ## Current next design action
 
-**IA-D04-003 — Two-Device Interruption and Reconnect Matrix.**
+**IA-D04-004 — Authoritative Result and History Presentation.**
 
 ## Historical validation anchors
 
@@ -109,3 +95,5 @@ Completed at design level; original handoff preserved to IA-D04-001 First Playab
 Historical IA-D03-005 route: **IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop**.
 
 Historical IA-D04-001 route: **IA-D04-002 — Proposal and Approval Shared-Component Contract**.
+
+Historical IA-D04-002 route: **IA-D04-003 — Two-Device Interruption and Reconnect Matrix**.

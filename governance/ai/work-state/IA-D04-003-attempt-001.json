@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "work_item_id": "IA-D04-003",
+  "attempt_id": "IA-D04-003-attempt-001",
+  "track": "internal-alpha-feature-design",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "branch": "governance/ia-d04-003-two-device-reconnect-matrix",
+  "status": "started",
+  "started_at": "2026-08-06T10:29:00+00:00",
+  "updated_at": "2026-08-06T10:29:00+00:00",
+  "completed_at": null,
+  "base_commit": "0e8a713cc9f022cb3e9df1306da2a827f3822492",
+  "latest_pushed_commit": null,
+  "expected_remote_head": "0e8a713cc9f022cb3e9df1306da2a827f3822492",
+  "pull_request": null,
+  "objective": "Define a deterministic two-device interruption and reconnect matrix for Player and GM proposal/approval flows, covering every material disconnect boundary, ambiguous command status, stale state, review-claim expiry, revocation, Event-gap recovery, and role-safe projection without allowing silent last-write-wins.",
+  "last_verified_action": "Created the governed IA-D04-003 attempt from verified IA-D04-002 merge 0e8a713cc9f022cb3e9df1306da2a827f3822492.",
+  "active_substep": "Construct the complete deterministic two-device interruption and reconnect package from F021, F006, and IA-D04-002 authority contracts.",
+  "completed_substeps": [],
+  "next_action": "Build the full matrix, traceability, fixtures, validator, and exact IA-D04-004 handoff; then open one final PR and inspect only failed checks.",
+  "changed_paths": [],
+  "completion_gate": {
+    "required_evidence_kinds": [
+      "commit",
+      "pull_request",
+      "ci_run",
+      "merge"
+    ],
+    "required_validation_commands": [
+      "python governance/application-planning/internal-alpha/validate_two_device_interruption_reconnect.py"
+    ],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {
+      "command": "python governance/application-planning/internal-alpha/validate_two_device_interruption_reconnect.py",
+      "status": "not_run",
+      "evidence": null
+    }
+  ],
+  "unresolved_failures": [],
+  "owner_decision_required": false,
+  "evidence": [],
+  "roadmap_projection_pending": true,
+  "notes": [
+    "MV-AI-EFFICIENCY-001 applies: one start checkpoint, one ready-for-review update, and one hosted gate.",
+    "P9-06-008-attempt-002 remains unfinished parallel application work.",
+    "No implementation, paid service, credential, real-user data, release, deployment, public release, AI authority, or canonical promotion is authorized."
+  ]
+}
