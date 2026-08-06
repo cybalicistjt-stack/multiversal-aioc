@@ -1,9 +1,10 @@
 name: Build IA-D04-001 Package
 
 on:
-  push:
-    branches:
-      - governance/ia-d04-001-first-playable-action-approval-loop
+  pull_request:
+    paths:
+      - '.github/workflows/build-ia-d04-001-package.yml'
+      - '.tmp/ia-d04-001/**'
 
 permissions:
   contents: write
@@ -30,5 +31,3 @@ jobs:
           git add governance/application-planning/internal-alpha .github/workflows/first-playable-action-approval-validation.yml governance/ai/runtime/ROADMAP_INDEX.json .tmp/ia-d04-001 .github/workflows/build-ia-d04-001-package.yml
           git commit -m "Complete IA-D04-001 design package construction"
           git push origin HEAD:governance/ia-d04-001-first-playable-action-approval-loop
-
-# Existing workflow revision triggers the one-shot constructor.
