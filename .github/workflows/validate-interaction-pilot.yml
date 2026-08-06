@@ -38,5 +38,12 @@ jobs:
           cp governance/ai/interaction-system/pilot/OPERATIONAL_PILOT_SCORECARD.json "$RUNNER_TEMP/scorecard.json"
           cp governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json "$RUNNER_TEMP/runtime-scorecard.json"
           python tools/interaction_pilot.py run --generated-at 2026-08-05T23:50:00Z
-          cmp "$RUNNER_TEMP/scorecard.json" governance/ai/interaction-system/pilot/OPERATIONAL_PILOT_SCORECARD.json
-          cmp "$RUNNER_TEMP/runtime-scorecard.json" governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json
+          python - "$RUNNER_TEMP/scorecard.json" governance/ai/interaction-system/pilot/OPERATIONAL_PILOT_SCORECARD.json "$RUNNER_TEMP/runtime-scorecard.json" governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json <<'PY'
+          import json
+          import sys
+
+          for before_path, after_path in ((sys.argv[1], sys.argv[2]), (sys.argv[3], sys.argv[4])):
+              with open(before_path, encoding='utf-8') as before, open(after_path, encoding='utf-8') as after:
+                  if json.load(before) != json.load(after):
+                      raise SystemExit(f'semantic JSON mismatch: {before_path} != {after_path}')
+          PY
