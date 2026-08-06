@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0.0",
+  "workItemId": "IA-D05-004",
+  "featureId": "MV-IA-F011",
+  "coverageMode": "bounded canonical design synthesis",
+  "authoritativeInputs": [
+    {"source":"INTERNAL_ALPHA_FEATURE_REGISTRY.json","scope":"F011 identity, summary, dependencies, alpha slice"},
+    {"source":"MV-IA-F002","scope":"governed object browse, search, provenance, relationship traversal"},
+    {"source":"MV-IA-F005","scope":"Campaign, Scene, Session authority and hidden-information setup"},
+    {"source":"MV-IA-F009","scope":"directional relationships, obligations, visibility, history"},
+    {"source":"MV-IA-F010","scope":"social clue reveal, claims, rumors, hidden NPC information"},
+    {"source":"MV-IA-F020","scope":"default-deny field, query, search, export, realtime, AI visibility"},
+    {"source":"MV-IA-F021","scope":"idempotency, interruption, reconnect, bounded offline rules"},
+    {"source":"IA-D04-002 through IA-D04-004","scope":"proposal decisions, recovery, authoritative results and history"}
+  ],
+  "coverageClaims": {
+    "registryRequirementCovered": true,
+    "discoverLinkReviewJourneyCovered": true,
+    "gmTruthProtectionCovered": true,
+    "hypothesisFactSeparationCovered": true,
+    "graphListAccessibilityCoveredAtFeatureLevel": true,
+    "deterministicFixtures": 24,
+    "blockingAcceptanceCriteria": 28
+  },
+  "limitations": [
+    "This package does not claim exhaustive extraction of every historical investigation rule or adventure-specific clue.",
+    "No source absence is converted into invented canonical game content.",
+    "Exact adventure clue data remains pack-owned and versioned.",
+    "The later IA-D05 graph/list accessibility matrix remains a separate cross-feature item."
+  ],
+  "provenancePrinciple": "Every live clue and conclusion preserves source, version, discovery, reveal, and Event evidence; Player-created hypotheses are explicitly noncanonical unless promoted by an authorized GM conclusion."
+}
