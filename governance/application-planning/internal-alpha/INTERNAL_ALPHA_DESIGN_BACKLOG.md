@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.21.0  
+**Version:** 0.22.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -51,8 +51,8 @@ Scope, registry, dependency map, journeys, shared systems, acceptance matrix, de
 
 1. **IA-D06-001 — MV-IA-F007 Full Combat Interface — complete.**
 2. **IA-D06-002 — MV-IA-F008 Inventory, Ownership, and Shared Assets — complete.**
-3. **IA-D06-003 — bounded MV-IA-F013 Maps, Zones, and Tactical Positioning — next.**
-4. **IA-D06-004 — basic MV-IA-F014 Vehicle, Mecha, and Starship Operations — planned.**
+3. **IA-D06-003 — bounded MV-IA-F013 Maps, Zones, and Tactical Positioning — complete.**
+4. **IA-D06-004 — basic MV-IA-F014 Vehicle, Mecha, and Starship Operations — next.**
 5. **IA-D06-005 — combat/Asset integrity matrix — planned.**
 6. **IA-D06-006 — combat and Assets integration review — planned.**
 
@@ -84,15 +84,19 @@ The Relationship Tracker, Factions/Reputation/Organizations, Social Interaction 
 
 ### IA-D06-001
 
-The Full Combat Interface defines ten encounter states, eight participant types, nine timing types, thirteen Effect processors, semantic movement/positioning, targeting, Resources, Conditions, reactions, hazards, defeat/withdrawal, explicit completion, role-safe Player and GM presentation, recovery, and optional-AI boundaries.
+The Full Combat Interface defines authoritative encounter lifecycle, participants, timing, Actions, targets, semantic movement, Resources, Conditions, reactions, hazards, defeat/withdrawal, completion, accessibility, and recovery.
 
 ### IA-D06-002
 
-Inventory, Ownership, and Shared Assets defines stable Asset instances and lineage; distinct ownership, custody, possession, control, access, usage, equipment, and location; acyclic containers; compatible quantity stacks; atomic transfer, reservation, combat consumption, repair, crafting/salvage, and shop boundaries; hidden-Asset protection; accessible operation parity; and recovery. It includes twenty-four deterministic fixtures, eight implementation slices, twenty-eight blocking acceptance criteria, seven resolved findings, and zero blocking findings. `P9-06-008-attempt-002` remains unfinished and unmodified.
+Inventory, Ownership, and Shared Assets defines stable Asset identity and lineage; distinct ownership, custody, possession, control, access, usage, equipment, and location; containers, stacks, transfers, reservations, combat usage, repair, crafting/salvage boundaries, hidden-Asset protection, accessible parity, and recovery.
+
+### IA-D06-003
+
+Bounded Maps, Zones, and Tactical Positioning defines four map modes, semantic zones/anchors, typed adjacency, distance, elevation, cover, movement, range, visibility, deterministic area snapshots, hazards, annotations, Asset/vehicle adapters, accessible nonvisual parity, bounded large-map behavior, recovery, and explicit advanced-map deferrals. It includes twenty-four deterministic fixtures, eight implementation slices, twenty-eight blocking acceptance criteria, seven resolved findings, and zero blocking findings. `P9-06-008-attempt-002` remains unfinished and unmodified.
 
 ## Current next design item
 
-**IA-D06-003 — bounded MV-IA-F013 Maps, Zones, and Tactical Positioning — next.**
+**IA-D06-004 — basic MV-IA-F014 Vehicle, Mecha, and Starship Operations — next.**
 
 ## Historical validation anchors
 
@@ -124,3 +128,5 @@ These archival statements preserve earlier validated routes and are not the curr
 **IA-D06-001 — MV-IA-F007 Full Combat Interface — next.**
 
 **IA-D06-002 — MV-IA-F008 Inventory, Ownership, and Shared Assets — next.**
+
+**IA-D06-003 — bounded MV-IA-F013 Maps, Zones, and Tactical Positioning — next.**
