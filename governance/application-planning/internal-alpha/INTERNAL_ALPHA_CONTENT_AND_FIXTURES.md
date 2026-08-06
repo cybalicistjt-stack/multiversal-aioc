@@ -1,247 +1,104 @@
 # Internal Alpha Content and Fixture Baseline
 
 **Program:** MV-IA-001  
-**Version:** 0.1.0  
-**Status:** DESIGN BASELINE
+**Version:** 0.2.0  
+**Status:** IMPLEMENTATION-READY DESIGN  
+**Owner:** John Brandon Turner
 
 ## 1. Purpose
 
-Define the bounded content and deterministic fixtures required to design and later validate internal-alpha features without attempting to expose the entire Multiversal corpus in the first release.
+Define the bounded, deterministic content and fixture corpus required to implement and validate internal-alpha workflows without exposing or claiming to represent the complete Multiversal game.
 
-## 2. Fixture principles
+The detailed IA-D03-004 package is:
 
-Internal-alpha fixtures must be:
+- `IA-D03-004_INTERNAL_ALPHA_CONTENT_AND_FIXTURE_SPEC.md`;
+- `INTERNAL_ALPHA_FIXTURE_CATALOG.json`;
+- `INTERNAL_ALPHA_FIXTURE_COVERAGE_MATRIX.json`;
+- `IA-D03-004_IMPLEMENTATION_TRACEABILITY.json`;
+- `IA-D03-004_REVIEW_RECEIPT.md`;
+- `IA-D03-004_READINESS_RECORD.md`;
+- `IA-D03-004_COMPLETION_RECORD.json`.
 
-- deterministic;
-- version-pinned;
-- source-linked;
-- permission-aware;
-- small enough to understand;
-- rich enough to exercise realistic workflows;
-- separate from production data;
-- reusable across services, UI, migration, recovery, and E2E tests.
+## 2. Current bounded corpus
 
-## 3. Required identity fixtures
+The catalog contains:
 
-- Owner/Admin identity.
-- Primary GM identity.
-- Assistant GM identity.
-- Primary Player identity.
-- Second Player identity.
-- Content Creator identity.
-- Revoked former participant.
-- Service actor.
-- AI service actor with no mutation authority.
+- **36 source-backed** fixtures inherited exactly from the governed 8D-007 golden corpus;
+- **119 synthetic** contract and workflow fixtures;
+- **155 total** fixture identities;
+- five exact-version fixture packs;
+- fifteen requirement-family coverage rows;
+- twenty blocking acceptance criteria;
+- nine pack-lifecycle scenarios;
+- eleven accessibility stressors.
 
-## 4. Required Campaign fixtures
+## 3. Source-backed boundary
 
-### IA-CAMPAIGN-01 — Core internal-alpha Campaign
+The source-backed fixtures cover 18 golden domains across the 20-dataset, 19,199-promoted-record CSV registry. Source truth, source coordinates, selectors, expected outcomes, and executable-baseline evidence remain controlled by 8D-007.
 
-Must contain:
+The alpha package does not copy, rewrite, rebalance, or promote those sources.
 
-- one GM;
-- two Players;
-- approved rules profile;
-- installed alpha content packs;
-- at least two Characters;
-- one prepared Session;
-- multiple Scenes;
-- Player-safe and GM-only content;
-- one relationship and faction path;
-- one investigation path;
-- one combat encounter;
-- one shared Asset or vehicle;
-- one adventure branch;
-- retained history.
+## 4. Synthetic boundary
 
-### IA-CAMPAIGN-02 — Isolation Campaign
+Synthetic fixtures cover identity, Campaign, Character, content Definitions not selected by 8D-007, Scenes, Actions, permissions, Assets, relationships, investigation, Encounters, failures, recovery, and accessibility.
 
-Used to prove:
+Every synthetic record is labeled `synthetic-contract-fixture`. Synthetic data is not canonical content and is not evidence that the corresponding complete game domain has been sourced, balanced, or finalized.
 
-- cross-Campaign access denial;
-- search and count isolation;
-- notification isolation;
-- export isolation;
-- AI context isolation.
+## 5. Determinism and ownership
 
-## 5. Required Character fixtures
+Every synthetic fixture group identifies:
 
-- valid Player Character using only free or Campaign-granted content;
-- valid higher-tier Character with approved access;
-- invalid Character with missing prerequisite;
-- Character with active Conditions and depleted Resources;
-- Character with personal and shared Assets;
-- Character with relationship history;
-- retired or archived Character;
-- Character with migration history.
+- exact stable fixture IDs;
+- a category-specific expected contract;
+- exact pack and schema version;
+- source/synthetic and canonical-content boundaries;
+- migration and cleanup behavior;
+- deterministic per-fixture checksum derivation;
+- a group SHA-256.
 
-## 6. Required content families
+Every fixture therefore has a reproducible derived checksum. Every pack, the full catalog, and the coverage matrix are independently checksum-bound.
 
-The bounded corpus must include representative records for:
+## 6. Required fixture families
 
-- species and forms;
-- attributes and derived values;
-- skills and proficiencies;
-- Abilities across at least two tiers;
-- Actions;
-- Effects;
-- Conditions;
-- Resources;
-- items and equipment;
-- containers;
-- creatures and NPCs;
-- environments;
-- hazards;
-- vehicles or operational Assets;
-- factions;
-- relationships;
-- Locations;
-- Scenes;
-- clues and evidence;
-- objectives and rewards;
-- adventure routes and branch state;
-- source and provenance records.
+The bounded corpus covers:
 
-## 7. Required Scene fixtures
+- Owner, GM, Assistant GM, Player, creator, revoked, service, and AI identities;
+- core and isolation Campaigns;
+- valid, invalid, conditioned, Asset-bearing, historical, retired, and migrated Characters;
+- source-backed items, weapons, ammunition, software, cybernetics, EVA, magitech, vehicles, mecha, spacecraft, facilities, materials, Abilities, spells, spellbooks, hazards, and traps;
+- synthetic species, attributes, skills, Actions, Effects, Conditions, Resources, creatures, NPCs, environments and adaptations, factions, relationships, Locations, clues, objectives, and adventure routes;
+- social, investigation, combat, travel/vehicle, and recovery Scenes;
+- Action, permission, Asset, relationship, investigation, Encounter, failure, pack-lifecycle, and accessibility scenarios.
 
-1. **Social Scene** — NPC motive and relationship state partly hidden.
-2. **Investigation Scene** — clues, false lead, hypothesis, and unrevealed GM truth.
-3. **Combat Scene** — environment, objectives, creatures, Actions, Resources, Conditions, and encounter end.
-4. **Travel or vehicle Scene** — shared Asset, access roles, cargo or occupants.
-5. **Recovery Scene** — prebuilt event history and checkpoint for reconnect tests.
+## 7. Global invariants
 
-## 8. Required Action fixtures
+- stable IDs and source truth remain immutable;
+- permissions are evaluated before projection;
+- synthetic records are never promoted implicitly;
+- expected versions and idempotency are enforced;
+- Events are append-only;
+- reconnect and retry do not duplicate accepted effects;
+- migration, backup, restore, export, and import verify checksums;
+- install/uninstall leaves zero unintended residue;
+- the core fixture path requires no paid service and no AI.
 
-- valid no-roll Action;
-- valid rolled Action;
-- Action with target choice;
-- Action with multiple targets;
-- Action with Resource cost;
-- Action with prerequisite failure;
-- Action producing a Condition;
-- Action producing relationship or reputation change;
-- Action requiring GM modification;
-- duplicate command fixture;
-- stale expected-version fixture.
+## 8. Coverage limits
 
-## 9. Required permission fixtures
+The corpus is intentionally small. Species, creatures, NPCs, environments, relationships, investigation, and adventure flow currently use synthetic contract fixtures unless and until a separately governed source-backed selection is approved.
 
-- Player-safe object with GM-only extension fields;
-- unrevealed clue;
-- private Player note;
-- GM note;
-- hidden NPC motive;
-- restricted content object;
-- Campaign-granted content object;
-- revoked participant;
-- wrong-Campaign subject;
-- AI query attempting to retrieve hidden content.
+Unselected source material remains part of the broader Multiversal program and is not discarded or deprioritized by this baseline.
 
-## 10. Required Asset fixtures
+## 9. Implementation and release boundary
 
-- personal item;
-- equipped item;
-- stackable Resource;
-- shared party container;
-- borrowed item;
-- damaged and repairable item;
-- consumable;
-- crafting components and result;
-- shared vehicle;
-- blocked transfer;
-- split and merge history;
-- anti-duplication test state.
+This baseline authorizes design and later governed fixture implementation only. It does not authorize:
 
-## 11. Required relationship fixtures
+- canonical content promotion;
+- production credentials or services;
+- real-user data;
+- internal-alpha release;
+- production deployment;
+- public release.
 
-- Character to NPC relationship with asymmetric views;
-- Character to faction standing;
-- promise;
-- debt;
-- trust threshold;
-- fear or hostility threshold;
-- hidden motive;
-- revealed relationship event;
-- conflicting Player hypothesis about a relationship;
-- relationship history spanning multiple Scenes.
+## 10. Next design action
 
-## 12. Required investigation fixtures
-
-- clue known to all Players;
-- clue known to one Player;
-- unrevealed clue;
-- evidence document;
-- witness record;
-- false lead;
-- unresolved question;
-- Player hypothesis;
-- contradicted hypothesis;
-- GM truth;
-- reveal event.
-
-## 13. Required failure fixtures
-
-- unavailable pack dependency;
-- invalid stable ID reference;
-- stale object version;
-- failed save;
-- reconnect gap;
-- corrupted local draft;
-- corrupted snapshot;
-- missing media derivative;
-- invalid entitlement snapshot;
-- revoked permission during an open screen;
-- duplicate Action command;
-- migration interruption;
-- backup checksum mismatch;
-- provider-exit import mismatch.
-
-## 14. Pack lifecycle fixture set
-
-The alpha corpus must support:
-
-1. clean install;
-2. repeated install;
-3. update with migration;
-4. dependency conflict;
-5. blocked removal because Campaign state depends on the pack;
-6. safe removal of an unused pack;
-7. reinstall;
-8. export and import;
-9. zero unintended residue.
-
-## 15. Accessibility fixtures
-
-Include data that stresses:
-
-- long names;
-- long descriptions;
-- many Conditions;
-- dense relationship graphs;
-- large inventory;
-- nested objects;
-- localized or unusual characters;
-- high zoom;
-- narrow mobile width;
-- map alternative text;
-- validation errors across multiple fields.
-
-## 16. Fixture ownership
-
-Every fixture must identify:
-
-- fixture ID;
-- purpose;
-- source or synthetic status;
-- schema version;
-- pack versions;
-- expected permissions;
-- expected results;
-- migration path;
-- cleanup behavior.
-
-Fixtures are not canonical content unless separately released as canonical records.
-
-## 17. Next fixture-design work
-
-The detailed fixture IDs, object selections, expected Events, and exact pack versions should be completed during Tranche IA-D03 after the Universal Object, permissions, identity, Character, and Campaign feature packets define their final data needs.
+**IA-D03-005 — Character/Campaign integration review.**
