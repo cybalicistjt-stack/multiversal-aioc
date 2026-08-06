@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.30.0  
+**Version:** 0.31.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -17,16 +17,10 @@ This backlog governs design packets, fixture specifications, and integration rev
 ## IA-D06 — Combat and Assets — COMPLETE
 ## IA-D07 — World, adventure, and Project depth — COMPLETE
 
-1. **IA-D07-001 — MV-IA-F015 World and Setting Management — complete.**
-2. **IA-D07-002 — MV-IA-F017 Adventure and Module Management — complete.**
-3. **IA-D07-003 — bounded MV-IA-F018 Creator and Campaign-local Content — complete.**
-4. **IA-D07-004 — world/adventure content authority matrix — complete.**
-5. **IA-D07-005 — authoring integration review — complete.**
-
 ## IA-D08 — Optional AI and experimental systems
 
-1. **IA-D08-001 — MV-IA-F023 Optional AI Assistant boundaries and interaction contract — next.**
-2. **IA-D08-002 — AI permission, provenance, cost, and fallback matrix — planned.**
+1. **IA-D08-001 — MV-IA-F023 Optional AI Assistant boundaries and interaction contract — complete.**
+2. **IA-D08-002 — AI permission, provenance, cost, and fallback matrix — next.**
 3. **IA-D08-003 — advanced map and vehicle deferral package — planned.**
 4. **IA-D08-004 — broad offline deferral package — planned.**
 5. **IA-D08-005 — optional and experimental isolation review — planned.**
@@ -39,10 +33,12 @@ Traceability, fixture catalog, permission matrix, accessibility matrix, recovery
 
 ### IA-D07
 
-World and Setting Management, Adventure and Module Management, bounded Creator/Campaign-local Content, the World/Adventure Content Authority Matrix, and the Authoring Integration Review form one coherent permission-safe authoring and runtime model. Canonical source, creator releases, Campaign-local objects, overlays, published adventures, Campaign runs, and tombstones retain stable identity, immutable published versions, exact provenance, explicit authority, atomic result groups, hidden-information protection, accessibility parity, migration and lifecycle controls, and recovery.
+World, adventure, creator, Campaign-local content, authority, and authoring integration design are complete. `P9-06-008-attempt-002` remains unfinished and unmodified.
 
-The final integration review records eight integrated journeys, eleven domain adapters, twenty-four deterministic fixtures, eight implementation slices, twenty-eight blocking acceptance criteria, seven resolved findings, and zero blocking findings. `P9-06-008-attempt-002` remains unfinished and unmodified.
+### IA-D08-001
+
+The Optional AI Assistant is opt-in, advisory-only, permission-filtered, provenance- and cost-visible, provider-abstracted, accessible, recoverable, and unable to block core non-AI workflows or cross owner gates. It includes twenty-four deterministic fixtures, eight implementation slices, twenty-eight blocking criteria, seven resolved findings, and zero blocking findings.
 
 ## Current next design item
 
-**IA-D08-001 — MV-IA-F023 Optional AI Assistant boundaries and interaction contract — next.**
+**IA-D08-002 — AI permission, provenance, cost, and fallback matrix — next.**
