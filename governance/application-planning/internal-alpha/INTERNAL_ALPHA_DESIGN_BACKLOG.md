@@ -86,3 +86,14 @@ Implementation remains dependency-gated by P9-06.
 ## Current next design item
 
 **IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop — next.**
+
+## Historical IA-D03-004 validation anchor
+
+This archival block preserves the exact handoff language validated when IA-D03-004 completed. It is historical evidence, not the current route or document version.
+
+**Version:** 0.11.0
+
+- IA-D03-004 — alpha content and fixture specification — complete.
+- IA-D03-005 — Character/Campaign integration review — next.
+
+**IA-D03-005 — Character/Campaign integration review.**
