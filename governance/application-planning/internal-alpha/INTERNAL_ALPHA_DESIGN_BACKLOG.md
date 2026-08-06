@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.16.0  
+**Version:** 0.17.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -30,7 +30,7 @@ Scope, registry, dependency map, journeys, shared systems, acceptance matrix, de
 4. **IA-D03-004 — alpha content and fixture specification — complete.**
 5. **IA-D03-005 — Character/Campaign integration review — complete.**
 
-## IA-D04 — First playable loop
+## IA-D04 — First playable loop — COMPLETE
 
 1. **IA-D04-001 — MV-IA-F006 First Playable Action and GM Approval Loop — complete.**
 2. **IA-D04-002 — proposal and approval shared-component contract — complete.**
@@ -40,11 +40,16 @@ Scope, registry, dependency map, journeys, shared systems, acceptance matrix, de
 4. **IA-D04-004 — authoritative result and history presentation — complete.**
    - result: eight presentation surfaces, eighteen result states, twenty-eight history fields, twenty deterministic fixtures, eight implementation slices, twenty blocking criteria, zero blocking findings
    - boundary: only durable decisions, consumer commits, ordered Events, and current server projections may be presented as authoritative
-5. **IA-D04-005 — first-playable-loop implementation handoff — next.**
+5. **IA-D04-005 — first-playable-loop implementation handoff — complete.**
 
 ## IA-D05 — Relationship, social, and investigation systems
 
-F009, F016, F010, F011, graph/list accessibility, and noncombat integration review.
+1. **IA-D05-001 — MV-IA-F009 Relationship Tracker — complete.**
+2. **IA-D05-002 — MV-IA-F016 Factions, Reputation, and Organizations — complete.**
+3. **IA-D05-003 — MV-IA-F010 Social Interaction Mode — complete.**
+4. **IA-D05-004 — MV-IA-F011 Investigation and Clue Board — complete.**
+5. **IA-D05-005 — graph/list accessibility matrix — next.**
+6. **IA-D05-006 — noncombat integration review — planned.**
 
 ## IA-D06 — Combat and Assets
 
@@ -94,9 +99,21 @@ Implementation remains dependency-gated by P9-06. Silent last-write-wins is proh
 
 The Authoritative Result and History Presentation provides role-safe Player, GM, Assistant-GM, and observer outcomes; immutable original and final modification evidence; denial without accepted effects; committed cost, Effect, Condition, Resource, and target summaries; exact source versions; ordered duplicate-safe history; Event-gap recovery; revocation; exports; accessibility; twenty deterministic fixtures; twenty blocking criteria; and zero blocking findings.
 
+## IA-D04-005 completion record
+
+The First-Playable-Loop Implementation Handoff consolidates IA-D04-001 through IA-D04-004 into twelve dependency-ordered implementation packages and twenty-four normalized acceptance scenarios while preserving unfinished parallel work `P9-06-008-attempt-002`.
+
+## IA-D05-001 through IA-D05-003 completion record
+
+The Relationship Tracker, Factions/Reputation/Organizations, and Social Interaction Mode establish directional relationship history, faction membership/standing/influence separation, and roleplay-first social resolution with permission-safe persistent consequences.
+
+## IA-D05-004 completion record
+
+The Investigation and Clue Board defines ten core record types, fifteen typed connection forms, server-authoritative discovery and reveal, strict separation of truth, claims, hypotheses, and conclusions, accessible graph/list parity, twenty-four deterministic fixtures, eight implementation slices, twenty-eight blocking criteria, seven resolved findings, and zero blocking findings. `P9-06-008-attempt-002` remains unfinished and unmodified.
+
 ## Current next design item
 
-**IA-D04-005 — First-Playable-Loop Implementation Handoff — next.**
+**IA-D05-005 — graph/list accessibility matrix — next.**
 
 ## Historical validation anchors
 
