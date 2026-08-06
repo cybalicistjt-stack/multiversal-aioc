@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-06T01:51:00+00:00",
+  "generated_at": "2026-08-06T02:01:00+00:00",
   "source_pointer": "governance/ai/runtime/CURRENT_WORK_POINTER.json",
   "primary": {
     "work_item_id": "IA-D03-003",
@@ -9,14 +9,33 @@
     "repository": "cybalicistjt-stack/multiversal-aioc",
     "branch": "governance/mv-ia-d03-003-encounter-builder-balance-lab",
     "status": "validation_failed",
-    "active_substep": "Rerun hosted validation after conforming F012 to the canonical 24-section packet template, adding the required traceability owner, and explicitly preserving both the paused P9 route and planned IA-D03-004 route.",
-    "next_action": "Inspect the new exact-head PR #150 workflow results; repair any remaining ordinary validation failures; then advance IA-D03-003 to ready_for_review only when all required checks pass.",
-    "latest_pushed_commit": "9ed2a05fe00e8d577c9b11c24974801c4e44ec6b",
+    "active_substep": "Obtain a fully green exact-head PR #150 run after synchronizing the checkpoint, current-work pointer, compact status, and lightweight roadmap index; then advance to ready_for_review only after every required workflow passes.",
+    "next_action": "Inspect all workflows on the synchronized exact PR #150 head; repair any remaining ordinary failure; when all declared checks pass, clear failures and advance the checkpoint, pointer, and compact status to ready_for_review before the final consistency run and merge.",
+    "latest_pushed_commit": "007e8bf22cf78e78befe42336edd1f2570f64315",
     "pull_request": 150,
     "owner_decision_required": false,
     "unresolved_failures": [
-      "PR #150 initial run 31063577947 failed generic feature-packet template validation; packet headings and companion owner identity were corrected.",
-      "PR #150 initial run 31063577967 failed because the pointer did not encode deferred parallel-track projections; the P9 pause and IA-D03-004 planned route were added without changing attempt completion state."
+      {
+        "failure_id": "IA-D03-003-CI-001",
+        "run_id": 31063577947,
+        "classification": "template_conformance",
+        "summary": "Generic ready-packet validation required exact canonical section headings and owner identity in every companion JSON.",
+        "repair": "Reformatted F012 to the canonical 24-section template and added owner to traceability; subsequent generic feature-packet validation passed."
+      },
+      {
+        "failure_id": "IA-D03-003-CI-002",
+        "run_id": 31063577967,
+        "classification": "parallel_track_projection",
+        "summary": "Operational pilot required both application and internal-alpha routes to remain explicit through active or deferred projections.",
+        "repair": "Added the paused P9-06-008 route and planned IA-D03-004 route to deferred_tracks without changing attempt completion; subsequent operational pilot passed."
+      },
+      {
+        "failure_id": "IA-D03-003-CI-003",
+        "run_id": 31064202038,
+        "classification": "continuity_projection",
+        "summary": "Continuity required IA-D03-004 in ROADMAP_INDEX and an exact compact-status projection of the current checkpoint.",
+        "repair": "Added IA-D03-004 to ROADMAP_INDEX, aligned the stale P9-06-008 index entry, and synchronized checkpoint, pointer, and compact status in one atomic state batch."
+      }
     ],
     "roadmap_projection_pending": true
   },
