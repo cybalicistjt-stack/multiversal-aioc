@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0.0",
+  "workItemId": "IA-D05-004",
+  "featureId": "MV-IA-F011",
+  "owner": "John Brandon Turner",
+  "sourceAuthorities": [
+    "INTERNAL_ALPHA_FEATURE_REGISTRY.json F011",
+    "MV-IA-F002 Universal Object Experience",
+    "MV-IA-F005 Campaign Scene and Session Builder",
+    "MV-IA-F009 Relationship Tracker",
+    "MV-IA-F010 Social Interaction Mode",
+    "MV-IA-F020 Permissions and Hidden Information",
+    "MV-IA-F021 Autosave Reconnect Recovery and Bounded Offline Use",
+    "IA-D04-002 Proposal and Approval Shared-Component Contract",
+    "IA-D04-003 Two-Device Interruption and Reconnect Matrix",
+    "IA-D04-004 Authoritative Result and History Presentation"
+  ],
+  "requirementsToSlices": {
+    "registries-schemas-source-bindings": ["INV-S01"],
+    "investigation-and-node-stores": ["INV-S02"],
+    "discovery-reveal-and-sharing-authority": ["INV-S03"],
+    "hypotheses-and-connections": ["INV-S04"],
+    "role-safe-projections-and-derivatives": ["INV-S05"],
+    "accessible-presentations": ["INV-S06"],
+    "events-recovery-revocation-pack-lifecycle": ["INV-S07"],
+    "fixtures-observability-acceptance": ["INV-S08"]
+  },
+  "downstreamConsumers": ["MV-IA-F017", "MV-IA-F018", "MV-IA-F023"],
+  "resolvedFindings": [
+    {"id":"INV-FND-001","finding":"Spatial boards can make layout the only meaning carrier.","resolution":"Require typed textual edges and list, outline, table, and nonvisual parity."},
+    {"id":"INV-FND-002","finding":"Clues can be mistaken for objective facts.","resolution":"Separate clues, observations, claims, hypotheses, conclusions, and truth."},
+    {"id":"INV-FND-003","finding":"Shared boards can leak private discoveries.","resolution":"Use explicit per-record audiences and identical authorization filters for every derivative."},
+    {"id":"INV-FND-004","finding":"Evidence can duplicate Asset, Character, Location, or Event authority.","resolution":"Reference owning-domain records and use atomic adapters."},
+    {"id":"INV-FND-005","finding":"Correction or undo can erase mystery history.","resolution":"Use superseding, revocation, and compensating Events without deletion."},
+    {"id":"INV-FND-006","finding":"Search, export, diagnostics, notifications, or AI can bypass visibility.","resolution":"Apply one server-side projection contract to all surfaces."},
+    {"id":"INV-FND-007","finding":"Pack update/removal can rewrite live investigation state.","resolution":"Retain exact source snapshots and tombstones under entitlement policy."}
+  ],
+  "unresolvedFindings": [],
+  "blockingFindings": []
+}
