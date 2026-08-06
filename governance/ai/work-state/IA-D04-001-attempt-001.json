@@ -1,22 +1,22 @@
 {
   "schema_version": "1.0.0",
-  "revision": 2,
+  "revision": 3,
   "work_item_id": "IA-D04-001",
   "attempt_id": "IA-D04-001-attempt-001",
   "track": "internal-alpha-feature-design",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "governance/ia-d04-001-first-playable-action-approval-loop",
-  "status": "ready_for_review",
+  "status": "completed_verified",
   "started_at": "2026-08-06T09:27:00+00:00",
-  "updated_at": "2026-08-06T09:57:00+00:00",
-  "completed_at": null,
+  "updated_at": "2026-08-06T10:04:00+00:00",
+  "completed_at": "2026-08-06T10:03:23+00:00",
   "base_commit": "2a5da3c85628dc53f4787358d605a3ae1ee05d29",
-  "latest_pushed_commit": "7650fb741e5467449db6d0113ac3ff30ee477563",
-  "expected_remote_head": "7650fb741e5467449db6d0113ac3ff30ee477563",
+  "latest_pushed_commit": "321ee98e139d08c2820794d778a1243fc9cd1bb8",
+  "expected_remote_head": "321ee98e139d08c2820794d778a1243fc9cd1bb8",
   "pull_request": 155,
   "objective": "Design MV-IA-F006 First Playable Action and GM Approval Loop as an implementation-ready, permission-safe, interruption-tolerant contract for Player, GM, Assistant-GM, NPC, and enemy Actions, including intent, target, ability/rules context, deterministic resolution evidence, GM approve/deny/modify authority, authoritative Events, result history, and recovery.",
-  "last_verified_action": "The complete F006 package was atomically constructed, the targeted deterministic validator passed, temporary construction files were removed, and the permanent validation workflow was installed on PR #155.",
-  "active_substep": "Verify every workflow triggered on the exact ready-for-review PR head and squash-merge only when the complete required gate is green.",
+  "last_verified_action": "PR #155 passed all 27 exact-final-head workflows on 321ee98e139d08c2820794d778a1243fc9cd1bb8 and squash-merged as 311ec83f6042d08cc78e1d9548457bab95386383.",
+  "active_substep": null,
   "completed_substeps": [
     "Reviewed the canonical F006 registry entry, A6 journey, dependency map, shared-system contracts, Stage A vertical slice, IA-D02-006 shared foundations, and IA-D03-005 preparation integration.",
     "Created the twenty-four-section implementation-ready F006 packet.",
@@ -25,9 +25,9 @@
     "Created fourteen deterministic fixtures, ten implementation slices, twenty blocking acceptance criteria, traceability, review, readiness, and completion records.",
     "Updated the feature registry and advanced the design route to IA-D04-002.",
     "Passed targeted deterministic F006 validation.",
-    "Removed all temporary construction files and installed the permanent hosted validator workflow."
+    "Passed all 27 exact-final-head hosted workflows and merged PR #155."
   ],
-  "next_action": "Inspect all workflows on the exact final PR #155 head; repair only genuine package or compatibility defects, then squash-merge when every required check passes.",
+  "next_action": "Continue IA-D04-002 — Proposal and Approval Shared-Component Contract from its governed start checkpoint.",
   "changed_paths": [
     ".github/workflows/first-playable-action-approval-validation.yml",
     "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
@@ -55,18 +55,20 @@
     {
       "command": "python governance/application-planning/internal-alpha/validate_first_playable_action_approval_loop.py",
       "status": "passed",
-      "evidence": "Targeted deterministic validation passed: 24 sections, 20 acceptance criteria, 24 shared contracts, 28 preparation contracts, 18 states, 28 proposal fields, 20 decision fields, 28 validation classes, 28 operations, 28 Events, 40 denied cases, 14 fixtures, 10 slices, and zero blocking findings."
+      "evidence": "Targeted deterministic validation and hosted F006 validation passed; all 27 exact-final-head workflows succeeded."
     }
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
-    {"kind": "commit", "value": "IA-D04-001 validated package and permanent workflow head 7650fb741e5467449db6d0113ac3ff30ee477563"},
-    {"kind": "pull_request", "value": "IA-D04-001 PR #155"}
+    {"kind": "commit", "value": "IA-D04-001 exact final head 321ee98e139d08c2820794d778a1243fc9cd1bb8"},
+    {"kind": "pull_request", "value": "IA-D04-001 PR #155"},
+    {"kind": "ci_run", "value": "IA-D04-001 exact-final-head hosted validation: 27 of 27 workflows passed"},
+    {"kind": "merge", "value": "IA-D04-001 squash merge 311ec83f6042d08cc78e1d9548457bab95386383"}
   ],
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "notes": [
-    "MV-AI-EFFICIENCY-001 applied: one start checkpoint and one ready-for-review update during construction.",
+    "MV-AI-EFFICIENCY-001 applied: start, ready-for-review, and completed-verified updates only.",
     "P9-06-008-attempt-002 remains unfinished parallel application work.",
     "No implementation activation, paid service, credential, real-user data collection, internal-alpha release, production deployment, or public release is authorized."
   ]
