@@ -1,0 +1,34 @@
+name: Normalize IA-D03-004 Completion Scorecard
+
+on:
+  push:
+    branches:
+      - state/ia-d03-004-completion
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: state/ia-d03-004-completion
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Regenerate deterministic operational scorecards
+        run: |
+          python tools/interaction_pilot.py run --generated-at 2026-08-06T08:33:00+00:00
+          python tools/interaction_pilot.py validate
+      - name: Remove one-shot workflow and commit normalized projections
+        run: |
+          rm .github/workflows/normalize-ia-d03-004-completion-scorecard.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add governance/ai/interaction-system/pilot/OPERATIONAL_PILOT_SCORECARD.json governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json .github/workflows/normalize-ia-d03-004-completion-scorecard.yml
+          git commit -m "Normalize IA-D03-004 completion pilot projection"
+          git push origin HEAD:state/ia-d03-004-completion
