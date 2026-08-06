@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.28.0  
+**Version:** 0.29.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -21,8 +21,8 @@ This backlog governs design packets, fixture specifications, and integration rev
 1. **IA-D07-001 — MV-IA-F015 World and Setting Management — complete.**
 2. **IA-D07-002 — MV-IA-F017 Adventure and Module Management — complete.**
 3. **IA-D07-003 — bounded MV-IA-F018 Creator and Campaign-local Content — complete.**
-4. **IA-D07-004 — world/adventure content authority matrix — next.**
-5. **IA-D07-005 — authoring integration review — planned.**
+4. **IA-D07-004 — world/adventure content authority matrix — complete.**
+5. **IA-D07-005 — authoring integration review — next.**
 
 ## IA-D08 — Optional AI and experimental systems
 
@@ -41,8 +41,11 @@ World and Setting Management is implementation-ready.
 Adventure and Module Management is implementation-ready.
 
 ### IA-D07-003
-Creator and Campaign-local Content defines safe bounded schemas, processor allowlists, proposal/review workflow, private releases, Campaign installation and overlays, canonical/local separation, runtime authority parity, hidden-information protection, import/export, provenance, accessibility, and recovery. It includes twenty-four fixtures, eight implementation slices, twenty-eight blocking criteria, seven resolved findings, and zero blocking findings. `P9-06-008-attempt-002` remains unfinished and unmodified.
+Creator and Campaign-local Content is implementation-ready.
+
+### IA-D07-004
+The World/Adventure Content Authority Matrix separates ownership, authorship, edit, review, publish, install, enable, reveal, runtime advance, export, import, deprecate, delete, and canonical-promotion authority across canonical sources, creator releases, Campaign-local objects, overlays, published adventures, and runtime state. It preserves immutable source versions, pinned Campaign bindings, atomic result groups, hidden-information filtering, reviewed migration, provenance, accessibility, and recovery. Twenty-four fixtures, twenty-eight blocking criteria, seven resolved findings, and zero blocking findings are recorded. `P9-06-008-attempt-002` remains unfinished and unmodified.
 
 ## Current next design item
 
-**IA-D07-004 — world/adventure content authority matrix — next.**
+**IA-D07-005 — authoring integration review — next.**
