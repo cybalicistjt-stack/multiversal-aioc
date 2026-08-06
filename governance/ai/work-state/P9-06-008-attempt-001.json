@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "work_item_id": "P9-06-008",
+  "attempt_id": "P9-06-008-attempt-001",
+  "track": "application-implementation",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "branch": "impl/p9-06-008-backup-restore-export",
+  "status": "started",
+  "started_at": "2026-08-06T00:12:00+00:00",
+  "updated_at": "2026-08-06T00:12:00+00:00",
+  "completed_at": null,
+  "base_commit": "ea83b54c11d99bc69e92f955a1857f862a934e76",
+  "latest_pushed_commit": null,
+  "expected_remote_head": "ea83b54c11d99bc69e92f955a1857f862a934e76",
+  "pull_request": null,
+  "objective": "Implement provider-neutral backup, restore, and provider-exit export ports with deterministic manifests, integrity checksums, restore planning and receipts, complete governed export coverage, schemas, fixtures, validation, and dedicated CI.",
+  "last_verified_action": "Verified Multiversal-app main at ea83b54c11d99bc69e92f955a1857f862a934e76, confirmed PR #77/P9-06-007 remains the latest implemented P9 item, found no P9-06-008 branch or pull request, and created impl/p9-06-008-backup-restore-export from main.",
+  "active_substep": "Inspect existing contract conventions and implement the P9-06-008 TypeScript port contract, JSON schema, deterministic fixture, validator, and dedicated CI on the real application branch.",
+  "completed_substeps": [
+    "Completed and verified the owner-AI interaction side mission through MV-CONT-005",
+    "Verified the current Multiversal-app main branch and open pull requests",
+    "Confirmed P9-06-008 has not already started or completed",
+    "Created the dedicated P9-06-008 implementation branch"
+  ],
+  "next_action": "Read the P9-06-006 and P9-06-007 contract, schema, fixture, validator, and workflow patterns; implement the complete P9-06-008 package; run or obtain dedicated validation; open and merge the governed pull request only after all checks pass.",
+  "changed_paths": [
+    "packages/contracts/src/backup-restore-export.ts",
+    "schemas/contracts/backup-restore-export-port.schema.json",
+    "fixtures/contracts/backup-restore-export-port.json",
+    "tools/verify_p9_06_008.py",
+    ".github/workflows/validate-p9-06-008.yml"
+  ],
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
+    "required_validation_commands": ["python tools/verify_p9_06_008.py"],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {
+      "command": "python tools/verify_p9_06_008.py",
+      "status": "not_run",
+      "evidence": null
+    }
+  ],
+  "unresolved_failures": [],
+  "owner_decision_required": false,
+  "evidence": [
+    {
+      "kind": "commit",
+      "value": "P9-06-008 verified application baseline ea83b54c11d99bc69e92f955a1857f862a934e76"
+    },
+    {
+      "kind": "file",
+      "value": "P9-06-008 implementation branch impl/p9-06-008-backup-restore-export created from verified main"
+    },
+    {
+      "kind": "merge",
+      "value": "MV-CONT-005 completion record PR #147 squash commit 4ca7dec3c25bd5995d20030fb8a1e18a77a08568 closed the side mission before application work resumed"
+    }
+  ],
+  "roadmap_projection_pending": true,
+  "notes": [
+    "No hosted backup provider, database vendor, credentials, paid service, production data, deployment, or irreversible provider commitment is authorized.",
+    "The main-branch Bible copy remains noncanonical and is outside this work item.",
+    "IA-D03-003 remains a planned parallel design track."
+  ]
+}
