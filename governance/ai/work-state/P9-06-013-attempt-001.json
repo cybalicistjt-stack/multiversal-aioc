@@ -1,27 +1,30 @@
 {
   "schema_version": "1.0.0",
-  "revision": 1,
+  "revision": 3,
   "work_item_id": "P9-06-013",
   "attempt_id": "P9-06-013-attempt-001",
   "track": "application-implementation",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "branch": "impl/p9-06-013-row-campaign-authorization-policies",
-  "status": "started",
+  "status": "completed_verified",
   "started_at": "2026-08-07T14:17:00+00:00",
-  "updated_at": "2026-08-07T14:17:00+00:00",
-  "completed_at": null,
+  "updated_at": "2026-08-07T14:34:00+00:00",
+  "completed_at": "2026-08-07T14:30:00+00:00",
   "base_commit": "bc7d106ca5fc9b1d470764cd26761d22d65fe9a6",
-  "latest_pushed_commit": null,
-  "expected_remote_head": "bc7d106ca5fc9b1d470764cd26761d22d65fe9a6",
-  "pull_request": null,
+  "latest_pushed_commit": "5f9b186714111c366410e04a1441b61b8eac149a",
+  "expected_remote_head": "5f9b186714111c366410e04a1441b61b8eac149a",
+  "pull_request": 85,
   "objective": "Implement deterministic row and campaign authorization policies on top of provider-independent canonical identity mapping, preserving campaign isolation and explicit role-bound access decisions.",
-  "last_verified_action": "Created impl/p9-06-013-row-campaign-authorization-policies from application main after P9-06-012 merge.",
-  "active_substep": "Inspect existing authorization/service contracts and campaign membership schema, then implement role and campaign isolation policy contracts, fixtures, validation, and narrowly scoped CI.",
+  "last_verified_action": "Targeted P9-06-013 CI run 31187819988 passed on the exact PR head and PR #85 squash-merged as 9d8252d89685a46e2cc5dc5a91e2512402c2fb7c.",
+  "active_substep": null,
   "completed_substeps": [
     "Verified P9-06-012 completed and merged.",
-    "Created the governed P9-06-013 application branch from merged P9-06-012 main."
+    "Implemented provider-neutral owner, GM, player, and observer authorization policy boundaries.",
+    "Added deterministic allow/deny, cross-campaign isolation, forged-membership, and GM-private visibility fixtures.",
+    "Passed Validate P9-06-013 Row Campaign Authorization Policies run 31187819988 on exact head 5f9b186714111c366410e04a1441b61b8eac149a.",
+    "Merged application PR #85 as 9d8252d89685a46e2cc5dc5a91e2512402c2fb7c."
   ],
-  "next_action": "Implement row and campaign authorization policies with deterministic allow/deny fixtures and focused validation; merge only after exact-head targeted CI passes.",
+  "next_action": "None. P9-06-013 is completed_verified; P9-06-014 is next.",
   "changed_paths": [
     "packages/contracts/src/authorization/campaign-authorization-policy.ts",
     "fixtures/authorization/p9-06-013-campaign-authorization.json",
@@ -34,16 +37,19 @@
     "owner_approval_required": false
   },
   "validation": [
-    {"command":"python tools/verify_p9_06_013.py","status":"not_run","evidence":null}
+    {"command":"python tools/verify_p9_06_013.py","status":"passed","evidence":"P9-06-013 exact-head GitHub Actions run 31187819988 passed"}
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
-    {"kind":"merge","value":"P9-06-012 PR #84 merge bc7d106ca5fc9b1d470764cd26761d22d65fe9a6"},
-    {"kind":"file","value":"Application branch impl/p9-06-013-row-campaign-authorization-policies created from merged P9-06-012 main"}
+    {"kind":"commit","value":"P9-06-013 exact head 5f9b186714111c366410e04a1441b61b8eac149a"},
+    {"kind":"pull_request","value":"P9-06-013 PR #85"},
+    {"kind":"ci_run","value":"P9-06-013 targeted run 31187819988 passed"},
+    {"kind":"merge","value":"P9-06-013 squash merge 9d8252d89685a46e2cc5dc5a91e2512402c2fb7c"}
   ],
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "notes": [
-    "No live provider policy engine, real-user authorization data, credentials, deployment, or release is authorized."
+    "Authorization remains provider-neutral and canonical-subject based.",
+    "No live provider policy engine, real-user authorization data, credentials, deployment, or release was used or authorized."
   ]
 }
