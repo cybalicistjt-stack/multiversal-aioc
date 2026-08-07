@@ -1,25 +1,52 @@
 {
   "schema_version": "1.0.0",
-  "revision": 1,
+  "revision": 2,
   "work_item_id": "IA-D09",
   "attempt_id": "IA-D09-attempt-001",
   "track": "internal-alpha-feature-design",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "governance/ia-d09-release-design-package",
-  "status": "started",
+  "status": "ready_for_review",
   "started_at": "2026-08-07T12:44:00+00:00",
-  "updated_at": "2026-08-07T12:44:00+00:00",
+  "updated_at": "2026-08-07T13:27:00+00:00",
   "completed_at": null,
   "base_commit": "2d8eed23ac15a56e4274ebda11fac30741334599",
-  "latest_pushed_commit": null,
-  "expected_remote_head": "2d8eed23ac15a56e4274ebda11fac30741334599",
+  "latest_pushed_commit": "b82ff896d55243f94aa0741422519d27f14e9ef9",
+  "expected_remote_head": "b82ff896d55243f94aa0741422519d27f14e9ef9",
   "pull_request": null,
   "objective": "Consolidate the completed Internal Alpha design program into the release-design package: bidirectional traceability, bounded fixture catalog, permission/accessibility/recovery matrices, explicit budgets, onboarding and tester-entry contract, dependency-ordered implementation queue, owner-decision register, release boundaries, and final design completion review without authorizing application release or deployment.",
-  "last_verified_action": "IA-D08-005 PR #186 passed all final-head relevant checks and squash-merged as 2d8eed23ac15a56e4274ebda11fac30741334599; IA-D09 branch created from merged main.",
-  "active_substep": "Construct the complete IA-D09 release-design package and final Internal Alpha design traceability from verified IA-D01 through IA-D08 evidence.",
-  "completed_substeps": [],
-  "next_action": "Build the IA-D09 release-design artifacts, targeted validator, exact implementation handoff and owner-gate boundaries; run one targeted validation gate and open one final PR.",
-  "changed_paths": [],
+  "last_verified_action": "Completed the substantive IA-D09 release-design package on the existing governed branch and aligned backlog, pointer, and compact status projections for final targeted review.",
+  "active_substep": "Final targeted validation and merge gate for IA-D09.",
+  "completed_substeps": [
+    "Recovered the partially initialized IA-D09 branch created from IA-D08-005 merge 2d8eed23ac15a56e4274ebda11fac30741334599 without restarting it.",
+    "Created the consolidated Internal Alpha release-design boundary and state model.",
+    "Created IA-D01 through IA-D08 release traceability and reverse-traceability requirements.",
+    "Created twenty-four bounded deterministic release fixtures.",
+    "Created permission, accessibility, and recovery blocking matrices.",
+    "Created explicit runtime, cost/provider, test-data, tester-entry, and onboarding budgets/contracts.",
+    "Created a twelve-slice dependency-ordered implementation queue with optional capability isolation.",
+    "Created an owner-decision register separating release/tester/data/credential/spend gates from ordinary engineering work.",
+    "Created the final Internal Alpha design completion review, targeted validator, and narrow validation workflow.",
+    "Updated the Internal Alpha backlog and runtime continuity projections for final review."
+  ],
+  "next_action": "Open one governed IA-D09 PR, verify the targeted Validate Internal Alpha Release Design workflow on the exact final head, merge when green, then record completed_verified and hand off to the next canonical unfinished track without inventing IA-D10.",
+  "changed_paths": [
+    "governance/application-planning/internal-alpha/IA-D09_INTERNAL_ALPHA_RELEASE_DESIGN_PACKAGE.md",
+    "governance/application-planning/internal-alpha/IA-D09_RELEASE_TRACEABILITY.json",
+    "governance/application-planning/internal-alpha/IA-D09_FIXTURE_CATALOG.json",
+    "governance/application-planning/internal-alpha/IA-D09_PERMISSION_ACCESSIBILITY_RECOVERY_MATRIX.md",
+    "governance/application-planning/internal-alpha/IA-D09_BUDGETS_AND_TESTER_ENTRY.md",
+    "governance/application-planning/internal-alpha/IA-D09_IMPLEMENTATION_QUEUE.json",
+    "governance/application-planning/internal-alpha/IA-D09_OWNER_DECISION_REGISTER.md",
+    "governance/application-planning/internal-alpha/IA-D09_DESIGN_COMPLETION_REVIEW.md",
+    "governance/application-planning/internal-alpha/validate_internal_alpha_release_design.py",
+    ".github/workflows/validate-internal-alpha-release-design.yml",
+    "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md",
+    "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+    "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
+    "governance/ai/work-state/IA-D08-005-attempt-001.json",
+    "governance/ai/work-state/IA-D09-attempt-001.json"
+  ],
   "completion_gate": {
     "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
     "required_validation_commands": ["python governance/application-planning/internal-alpha/validate_internal_alpha_release_design.py"],
@@ -28,13 +55,15 @@
   "validation": [
     {
       "command": "python governance/application-planning/internal-alpha/validate_internal_alpha_release_design.py",
-      "status": "not_run",
-      "evidence": null
+      "status": "pending_hosted_gate",
+      "evidence": "Connector-only session verified required files and static content invariants directly; exact final-head hosted execution remains required before merge."
     }
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
-  "evidence": [],
+  "evidence": [
+    {"kind":"commit","value":"IA-D09 substantive branch commits through b82ff896d55243f94aa0741422519d27f14e9ef9 before this checkpoint commit"}
+  ],
   "roadmap_projection_pending": true,
   "notes": [
     "MV-AI-EFFICIENCY-001 applies.",
