@@ -5,7 +5,7 @@
 
 ## Purpose
 
-Trace the broad-offline deferral boundary to existing Multiversal authority, reconnect, proposal/approval, shared draft, permission, history, and future-extension contracts.
+Trace the broad-offline deferral boundary to existing Multiversal authority, authorization, reconnect, proposal/approval, shared draft, permission, history, and future-extension contracts.
 
 ## Upstream authority
 
