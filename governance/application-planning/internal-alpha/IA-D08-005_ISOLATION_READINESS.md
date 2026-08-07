@@ -12,6 +12,8 @@
 - blocking findings: 0
 - resolved design findings: 7
 
+The review records **zero blocking findings**.
+
 ## Resolved design findings
 
 1. Optional capabilities could become hidden core dependencies → prohibited through I4 coupling rule and removal test.
