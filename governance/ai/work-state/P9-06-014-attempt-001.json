@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "work_item_id": "P9-06-014",
+  "attempt_id": "P9-06-014-attempt-001",
+  "track": "application-implementation",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "branch": "impl/p9-06-014-entitlement-evaluator",
+  "status": "started",
+  "started_at": "2026-08-07T14:30:00+00:00",
+  "updated_at": "2026-08-07T14:30:00+00:00",
+  "completed_at": null,
+  "base_commit": "9d8252d89685a46e2cc5dc5a91e2512402c2fb7c",
+  "latest_pushed_commit": null,
+  "expected_remote_head": "9d8252d89685a46e2cc5dc5a91e2512402c2fb7c",
+  "pull_request": null,
+  "objective": "Implement a provider-neutral subscription and sponsored-month entitlement evaluator over canonical subject identity, entitlement grants, subscription state, and campaign-sponsored month records.",
+  "last_verified_action": "Created impl/p9-06-014-entitlement-evaluator from application main after P9-06-013 merge.",
+  "active_substep": "Inspect the existing entitlement service port, subscription/grant/sponsored-month logical schema, and P9-01 entitlement semantics; then implement deterministic evaluation contracts, fixtures, validation, and narrowly scoped CI.",
+  "completed_substeps": [
+    "Verified P9-06-005 and P9-06-012 dependencies are complete.",
+    "Completed P9-06-013 campaign authorization policies.",
+    "Created the governed P9-06-014 application branch from merged P9-06-013 main."
+  ],
+  "next_action": "Implement subscription and sponsored-month entitlement evaluation with deterministic active, expired, cancelled, sponsored, and precedence fixtures; merge only after exact-head targeted CI passes.",
+  "changed_paths": [
+    "packages/contracts/src/identity-device/entitlement-evaluator.ts",
+    "fixtures/entitlements/p9-06-014-entitlement-evaluator.json",
+    "tools/verify_p9_06_014.py",
+    ".github/workflows/validate-p9-06-014.yml"
+  ],
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
+    "required_validation_commands": ["python tools/verify_p9_06_014.py"],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {"command":"python tools/verify_p9_06_014.py","status":"not_run","evidence":null}
+  ],
+  "unresolved_failures": [],
+  "owner_decision_required": false,
+  "evidence": [
+    {"kind":"merge","value":"P9-06-013 PR #85 merge 9d8252d89685a46e2cc5dc5a91e2512402c2fb7c"},
+    {"kind":"file","value":"Application branch impl/p9-06-014-entitlement-evaluator created from merged P9-06-013 main"}
+  ],
+  "roadmap_projection_pending": true,
+  "notes": [
+    "No provider billing account, production subscription data, credentials, paid service, deployment, or release is authorized."
+  ]
+}
