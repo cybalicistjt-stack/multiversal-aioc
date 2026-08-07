@@ -53,7 +53,7 @@ IA-D09 may only establish the first two states. It cannot set `release_approved`
 
 ## 5. Core release boundary
 
-The Internal Alpha candidate must preserve all of the following when optional systems are disabled or unavailable:
+The Internal Alpha candidate must preserve **all-optionals-off** core operation. When optional systems are disabled or unavailable, it must still provide:
 
 - character and campaign preparation;
 - session and encounter preparation;
