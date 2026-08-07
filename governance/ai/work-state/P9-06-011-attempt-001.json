@@ -1,28 +1,31 @@
 {
   "schema_version": "1.0.0",
-  "revision": 1,
+  "revision": 2,
   "work_item_id": "P9-06-011",
   "attempt_id": "P9-06-011-attempt-001",
   "track": "application-implementation",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "branch": "impl/p9-06-011-backup-restore-export-rehearsals",
-  "status": "started",
+  "status": "completed_verified",
   "started_at": "2026-08-07T14:05:00+00:00",
-  "updated_at": "2026-08-07T14:05:00+00:00",
-  "completed_at": null,
+  "updated_at": "2026-08-07T14:13:00+00:00",
+  "completed_at": "2026-08-07T14:12:00+00:00",
   "base_commit": "cbdd9d433d07bf56d9d0808b144887fb519ff786",
-  "latest_pushed_commit": null,
-  "expected_remote_head": "cbdd9d433d07bf56d9d0808b144887fb519ff786",
-  "pull_request": null,
+  "latest_pushed_commit": "6c6548ff4e6758da3818c5096dfb5433f5a30348",
+  "expected_remote_head": "6c6548ff4e6758da3818c5096dfb5433f5a30348",
+  "pull_request": 83,
   "objective": "Add deterministic backup, restore, and export rehearsal scripts that exercise the provider-neutral recovery-contract foundation from P9-06-011A and the seeded logical data foundation without live provider coupling.",
-  "last_verified_action": "Recovered P9-06-011A preparatory groundwork from merged PR #79 and created impl/p9-06-011-backup-restore-export-rehearsals from application main after P9-06-010 merge.",
-  "active_substep": "Inspect the existing P9-06-011A backup/restore/export port contract and implement deterministic rehearsal scripts, manifests, receipts, corruption/failure cases, and focused CI without using a live provider.",
+  "last_verified_action": "P9-06-011 exact-head targeted run 31186203052 passed on 6c6548ff4e6758da3818c5096dfb5433f5a30348 and PR #83 squash-merged as d37d0539ecfd2b4c5d107ab07465b026cbf5d851.",
+  "active_substep": null,
   "completed_substeps": [
     "Verified P9-06-009 and P9-06-010 completion prerequisites.",
     "Recovered P9-06-011A preparatory groundwork instead of replacing it.",
-    "Created the governed P9-06-011 application branch from merged P9-06-010 main."
+    "Created twelve deterministic backup/restore/export/reset/reseed rehearsal cases.",
+    "Added a fixed rehearsal receipt and provider-neutral verifier.",
+    "Passed exact-head Validate P9-06-011 Backup Restore Export Rehearsals run 31186203052.",
+    "Merged application PR #83 as d37d0539ecfd2b4c5d107ab07465b026cbf5d851."
   ],
-  "next_action": "Implement backup, restore, and export rehearsal scripts and deterministic fixtures/receipts using the existing P9-06-011A provider-neutral contracts; validate complete rehearsal coverage before merge.",
+  "next_action": "None. P9-06-011 is completed_verified; P9-06-012 is the next dependency-ordered backlog item.",
   "changed_paths": [
     "tools/rehearse_p9_06_011.py",
     "fixtures/rehearsals/p9-06-011-rehearsal-cases.json",
@@ -35,18 +38,19 @@
     "owner_approval_required": false
   },
   "validation": [
-    {"command":"python tools/rehearse_p9_06_011.py --verify","status":"not_run","evidence":null}
+    {"command":"python tools/rehearse_p9_06_011.py --verify","status":"passed","evidence":"P9-06-011 exact-head GitHub Actions run 31186203052 passed"}
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
-    {"kind":"pull_request","value":"P9-06-011A groundwork PR #79"},
-    {"kind":"merge","value":"P9-06-010 merge cbdd9d433d07bf56d9d0808b144887fb519ff786"},
-    {"kind":"file","value":"Application branch impl/p9-06-011-backup-restore-export-rehearsals created from merged P9-06-010 main"}
+    {"kind":"commit","value":"P9-06-011-attempt-001 exact head 6c6548ff4e6758da3818c5096dfb5433f5a30348"},
+    {"kind":"pull_request","value":"P9-06-011 PR #83"},
+    {"kind":"ci_run","value":"P9-06-011 targeted run 31186203052 passed"},
+    {"kind":"merge","value":"P9-06-011 squash merge d37d0539ecfd2b4c5d107ab07465b026cbf5d851"}
   ],
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "notes": [
-    "P9-06-011A is groundwork only; P9-06-011 is not complete until actual deterministic rehearsals and receipts are validated and merged.",
-    "No live database, provider credentials, production data, paid service, deployment, or release is authorized."
+    "P9-06-011A remains preserved groundwork.",
+    "No live database, provider credentials, production data, paid service, deployment, or release was used or authorized."
   ]
 }
