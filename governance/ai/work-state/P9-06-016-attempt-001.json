@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "work_item_id": "P9-06-016",
+  "attempt_id": "P9-06-016-attempt-001",
+  "track": "application-implementation",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "branch": "impl/p9-06-016-authoritative-session-command-handler",
+  "status": "started",
+  "started_at": "2026-08-07T14:46:00+00:00",
+  "updated_at": "2026-08-07T14:46:00+00:00",
+  "completed_at": null,
+  "base_commit": "b99f67021839e8a1711b109f4c91cbdc12aa10a6",
+  "latest_pushed_commit": null,
+  "expected_remote_head": "b99f67021839e8a1711b109f4c91cbdc12aa10a6",
+  "pull_request": null,
+  "objective": "Implement the provider-neutral authoritative session command handler enforcing canonical subject authorization, idempotency, ordered command acceptance, revision checks, and deterministic server-authoritative outcomes.",
+  "last_verified_action": "Created impl/p9-06-016-authoritative-session-command-handler from application main after P9-06-015 merge.",
+  "active_substep": "Inspect realtime/session ports, P9-06-013 authorization policies, command/event schema, and P9-02 authoritative-session requirements; then implement the handler contract, deterministic fixtures, validation, and narrowly scoped CI.",
+  "completed_substeps": [
+    "Verified P9-06-007 and P9-06-013 dependencies are complete.",
+    "Completed P9-06-015 entitlement transition and cancellation tests.",
+    "Created the governed P9-06-016 application branch from merged P9-06-015 main."
+  ],
+  "next_action": "Implement the authoritative session command handler with deterministic authorization, idempotency, sequence, stale-revision, and accepted/rejected command fixtures; merge only after exact-head targeted CI passes.",
+  "changed_paths": [
+    "packages/contracts/src/session/authoritative-session-command-handler.ts",
+    "fixtures/session/p9-06-016-authoritative-command-handler.json",
+    "tools/verify_p9_06_016.py",
+    ".github/workflows/validate-p9-06-016.yml"
+  ],
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
+    "required_validation_commands": ["python tools/verify_p9_06_016.py"],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {"command":"python tools/verify_p9_06_016.py","status":"not_run","evidence":null}
+  ],
+  "unresolved_failures": [],
+  "owner_decision_required": false,
+  "evidence": [
+    {"kind":"merge","value":"P9-06-015 PR #87 merge b99f67021839e8a1711b109f4c91cbdc12aa10a6"},
+    {"kind":"file","value":"Application branch impl/p9-06-016-authoritative-session-command-handler created from merged P9-06-015 main"}
+  ],
+  "roadmap_projection_pending": true,
+  "notes": [
+    "No live provider realtime service, production session data, credentials, deployment, or release is authorized."
+  ]
+}
