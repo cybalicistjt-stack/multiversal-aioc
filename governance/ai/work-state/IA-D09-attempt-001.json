@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 2,
+  "revision": 3,
   "work_item_id": "IA-D09",
   "attempt_id": "IA-D09-attempt-001",
   "track": "internal-alpha-feature-design",
@@ -11,12 +11,12 @@
   "updated_at": "2026-08-07T13:27:00+00:00",
   "completed_at": null,
   "base_commit": "2d8eed23ac15a56e4274ebda11fac30741334599",
-  "latest_pushed_commit": "b82ff896d55243f94aa0741422519d27f14e9ef9",
-  "expected_remote_head": "b82ff896d55243f94aa0741422519d27f14e9ef9",
-  "pull_request": null,
+  "latest_pushed_commit": "c80b222b2b2234dcac7f32eed3a7e9667b72dde4",
+  "expected_remote_head": "c80b222b2b2234dcac7f32eed3a7e9667b72dde4",
+  "pull_request": 187,
   "objective": "Consolidate the completed Internal Alpha design program into the release-design package: bidirectional traceability, bounded fixture catalog, permission/accessibility/recovery matrices, explicit budgets, onboarding and tester-entry contract, dependency-ordered implementation queue, owner-decision register, release boundaries, and final design completion review without authorizing application release or deployment.",
-  "last_verified_action": "Completed the substantive IA-D09 release-design package on the existing governed branch and aligned backlog, pointer, and compact status projections for final targeted review.",
-  "active_substep": "Final targeted validation and merge gate for IA-D09.",
+  "last_verified_action": "Opened PR #187, inspected the first targeted run, repaired the validator-required all-optionals-off wording, corrected the continuity timestamp mismatch, and narrowed two proven legacy fan-out workflows (P9-06 backlog and authoritative result/history) for future changes.",
+  "active_substep": "Exact-final-head targeted validation and merge gate for IA-D09.",
   "completed_substeps": [
     "Recovered the partially initialized IA-D09 branch created from IA-D08-005 merge 2d8eed23ac15a56e4274ebda11fac30741334599 without restarting it.",
     "Created the consolidated Internal Alpha release-design boundary and state model.",
@@ -27,9 +27,12 @@
     "Created a twelve-slice dependency-ordered implementation queue with optional capability isolation.",
     "Created an owner-decision register separating release/tester/data/credential/spend gates from ordinary engineering work.",
     "Created the final Internal Alpha design completion review, targeted validator, and narrow validation workflow.",
-    "Updated the Internal Alpha backlog and runtime continuity projections for final review."
+    "Updated the Internal Alpha backlog and runtime continuity projections for final review.",
+    "Opened governed PR #187.",
+    "Inspected first hosted failures and repaired the exact IA-D09 wording failure plus continuity timestamp mismatch.",
+    "Tightened two confirmed unrelated workflow path filters to reduce future validation fan-out."
   ],
-  "next_action": "Open one governed IA-D09 PR, verify the targeted Validate Internal Alpha Release Design workflow on the exact final head, merge when green, then record completed_verified and hand off to the next canonical unfinished track without inventing IA-D10.",
+  "next_action": "Verify the rerun of Validate Internal Alpha Release Design and Conversation Continuity on the exact final PR #187 head; merge when required gates are green; then record completed_verified and hand off to the next canonical unfinished track without inventing IA-D10.",
   "changed_paths": [
     "governance/application-planning/internal-alpha/IA-D09_INTERNAL_ALPHA_RELEASE_DESIGN_PACKAGE.md",
     "governance/application-planning/internal-alpha/IA-D09_RELEASE_TRACEABILITY.json",
@@ -41,6 +44,8 @@
     "governance/application-planning/internal-alpha/IA-D09_DESIGN_COMPLETION_REVIEW.md",
     "governance/application-planning/internal-alpha/validate_internal_alpha_release_design.py",
     ".github/workflows/validate-internal-alpha-release-design.yml",
+    ".github/workflows/authoritative-result-history-validation.yml",
+    ".github/workflows/validate-p9-06-implementation-backlog.yml",
     "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md",
     "governance/ai/runtime/CURRENT_WORK_POINTER.json",
     "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
@@ -55,14 +60,15 @@
   "validation": [
     {
       "command": "python governance/application-planning/internal-alpha/validate_internal_alpha_release_design.py",
-      "status": "pending_hosted_gate",
-      "evidence": "Connector-only session verified required files and static content invariants directly; exact final-head hosted execution remains required before merge."
+      "status": "rerun_pending_after_repair",
+      "evidence": "Initial run 31181797452 failed only because the package used equivalent wording instead of the literal validator phrase all-optionals-off; wording was repaired and requires exact-final-head rerun."
     }
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
-    {"kind":"commit","value":"IA-D09 substantive branch commits through b82ff896d55243f94aa0741422519d27f14e9ef9 before this checkpoint commit"}
+    {"kind":"commit","value":"IA-D09 substantive branch commits through c80b222b2b2234dcac7f32eed3a7e9667b72dde4 before this checkpoint commit"},
+    {"kind":"pull_request","value":"IA-D09 PR #187"}
   ],
   "roadmap_projection_pending": true,
   "notes": [
