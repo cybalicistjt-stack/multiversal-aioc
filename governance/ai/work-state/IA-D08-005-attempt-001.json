@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "work_item_id": "IA-D08-005",
+  "attempt_id": "IA-D08-005-attempt-001",
+  "track": "internal-alpha-feature-design",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "branch": "governance/ia-d08-005-optional-experimental-isolation",
+  "status": "started",
+  "started_at": "2026-08-07T12:31:00+00:00",
+  "updated_at": "2026-08-07T12:31:00+00:00",
+  "completed_at": null,
+  "base_commit": "e5654e5cc471c68c6cca1040fbca98c38b9c3fc1",
+  "latest_pushed_commit": null,
+  "expected_remote_head": "e5654e5cc471c68c6cca1040fbca98c38b9c3fc1",
+  "pull_request": null,
+  "objective": "Review all optional, experimental, deferred, provider-dependent, advanced-map/vehicle, offline, and AI-assisted capabilities as one isolation boundary so internal-alpha core workflows remain complete, deterministic, permission-safe, recoverable, and testable when every optional capability is disabled, unavailable, unsupported, or removed.",
+  "last_verified_action": "IA-D08-004 merged as PR #184; workflow fan-out cleanup merged as PR #185; IA-D08-005 branch created from main.",
+  "active_substep": "Construct the optional and experimental isolation review, deterministic fixture matrix, traceability, readiness, validator, and exact IA-D09 handoff.",
+  "completed_substeps": [],
+  "next_action": "Build the complete isolation package using IA-D08-001 through IA-D08-004 boundaries, run only the targeted validator, then open one final PR and inspect only relevant failed checks.",
+  "changed_paths": [],
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
+    "required_validation_commands": ["python governance/application-planning/internal-alpha/validate_optional_experimental_isolation.py"],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {
+      "command": "python governance/application-planning/internal-alpha/validate_optional_experimental_isolation.py",
+      "status": "not_run",
+      "evidence": null
+    }
+  ],
+  "unresolved_failures": [],
+  "owner_decision_required": false,
+  "evidence": [],
+  "roadmap_projection_pending": true,
+  "notes": [
+    "MV-AI-EFFICIENCY-001 applies.",
+    "P9-06-008-attempt-002 remains unfinished and paused.",
+    "The Design Standards Completion subproject remains paused/resumable and noncanonical until governed repository ingestion.",
+    "No implementation, paid service, production credential, real-user data collection, internal-alpha release, deployment, public release, autonomous AI authority, or canonical promotion is authorized."
+  ]
+}
