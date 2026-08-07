@@ -1,0 +1,32 @@
+name: Validate Completion Claim Integrity
+
+on:
+  pull_request:
+    paths:
+      - 'governance/ai/MULTIVERSAL_COMPLETION_CLAIM_INTEGRITY_POLICY.md'
+      - 'governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md'
+      - 'governance/development-bible/amendments/MV-CONT-005_OWNER_AI_INTERACTION_OPERATING_AMENDMENT.md'
+      - 'tools/validate_completion_claim_integrity.py'
+      - '.github/workflows/validate-completion-claim-integrity.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'governance/ai/MULTIVERSAL_COMPLETION_CLAIM_INTEGRITY_POLICY.md'
+      - 'governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md'
+      - 'governance/development-bible/amendments/MV-CONT-005_OWNER_AI_INTERACTION_OPERATING_AMENDMENT.md'
+      - 'tools/validate_completion_claim_integrity.py'
+      - '.github/workflows/validate-completion-claim-integrity.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate completion-claim integrity controls
+        run: python tools/validate_completion_claim_integrity.py
+      - name: Validate existing interaction pilot remains internally consistent
+        run: python tools/interaction_pilot.py validate

@@ -2,12 +2,12 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 5.2.0  
+**Version:** 5.3.0  
 **Status:** ACTIVE  
 **Owner and final authority:** John Brandon Turner  
 **Governance repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Application repository:** `cybalicistjt-stack/Multiversal-app`  
-**Last updated:** 2026-08-06
+**Last updated:** 2026-08-07
 
 ## Permanent owner entry point
 
@@ -23,7 +23,13 @@ Read and follow:
 
 `governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md`
 
-That owner-approved policy controls checkpoint cadence, validation cadence, workflow isolation, and owner-facing reporting wherever it conflicts with older per-batch checkpoint language. Checkpoints are recovery boundaries, not activity logs.
+and:
+
+`governance/ai/MULTIVERSAL_COMPLETION_CLAIM_INTEGRITY_POLICY.md`
+
+The checkpoint/validation policy controls checkpoint cadence, validation cadence, workflow isolation, and owner-facing reporting wherever it conflicts with older per-batch checkpoint language. Checkpoints are recovery boundaries, not activity logs.
+
+The completion-claim integrity policy controls execution/completion reporting. Evidence must exist and be inspected before any material success claim. Artifact existence is not artifact completion. A failed required validation leaves the operation unfinished. When the owner says `Continue`, execute first; do not substitute an acknowledgement, plan, promise, or explanation.
 
 ## Access and permissions
 
@@ -37,14 +43,15 @@ Perform this sequence before explaining, planning, or claiming work:
 
 1. Verify connected read/write access and the authenticated GitHub identity against `governance/access/AIOC_CONTRIBUTOR_REGISTRY.json`.
 2. Read this bootstrap from `main`.
-3. Read `governance/ai/runtime/CURRENT_WORK_POINTER.json` and its `mandatory_operating_policy` when present.
-4. Read the checkpoint named by `primary_attempt_id` and its exact branch or pull-request evidence.
-5. Read `governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json`. Treat it as the compact control-health projection; follow its source scorecard only when a pilot result, limitation, or regression needs inspection.
-6. Inspect the latest commits, pull requests, reviews, and CI relevant to the checkpoint in both repositories.
-7. Read `governance/ci-failures/INDEX.md` from branch `ci/failure-records`; repair any current blocking failure before unrelated work.
-8. Read `governance/ai/runtime/ROADMAP_INDEX.json` and only the governing roadmap section for the primary work item.
-9. Load additional canonical documents only when required by the active operation. Do not read or rewrite the full roadmap merely to save routine progress.
-10. Run `python tools/continuity_state.py validate` when a usable checkout is available. When only connector access is available, verify the same pointer/checkpoint/evidence invariants directly.
+3. Read both mandatory operating policies named above.
+4. Read `governance/ai/runtime/CURRENT_WORK_POINTER.json` and its `mandatory_operating_policy` when present.
+5. Read the checkpoint named by `primary_attempt_id` and its exact branch or pull-request evidence.
+6. Read `governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json`. Treat it as the compact control-health projection; follow its source scorecard only when a pilot result, limitation, or regression needs inspection.
+7. Inspect the latest commits, pull requests, reviews, and CI relevant to the checkpoint in both repositories.
+8. Read `governance/ci-failures/INDEX.md` from branch `ci/failure-records`; repair any current blocking failure before unrelated work.
+9. Read `governance/ai/runtime/ROADMAP_INDEX.json` and only the governing roadmap section for the primary work item.
+10. Load additional canonical documents only when required by the active operation. Do not read or rewrite the full roadmap merely to save routine progress.
+11. Run `python tools/continuity_state.py validate` when a usable checkout is available. When only connector access is available, verify the same pointer/checkpoint/evidence invariants directly.
 
 Repository evidence is authoritative over stale prose. A newer verified commit, pull request, CI run, or checkpoint controls; stale governance must be corrected through a bounded verified change.
 
@@ -95,6 +102,8 @@ When John explicitly corrects a behavior, claim, omission, or operating assumpti
 4. never publish raw message text, conversation titles, or attachment content;
 5. never promote a candidate into the canonical evaluation extension without recorded owner approval and promotion evidence.
 
+False or premature execution/completion claims are always material recurrence risks and must enter this lifecycle.
+
 Correction capture is part of the work, not a separate reminder the owner must issue.
 
 ## Interaction-control health
@@ -124,13 +133,23 @@ Patch the full roadmap only when a work item becomes `completed_verified`, a mil
 ### Execution first
 
 - “Continue” means execute the exact next verified unfinished operation.
-- Do not answer “Continue” with only a plan, summary, or restatement.
+- Do not answer “Continue” with only an acknowledgement, plan, summary, restatement, promise, or explanation.
 - Perform work in the current response; do not promise background work.
 - Do not ask for confirmation where John has already authorized reversible work.
+- Respond after an actual bounded result exists, or when a genuine blocker prevents further safe execution.
+
+### Completion-claim integrity
+
+- Evidence must exist and be inspected before a material success claim is made.
+- Artifact existence is not artifact completion; inspect substantive contents against the promised scope.
+- A failed required validator, assertion, tool action, integrity check, or CI gate leaves the operation unfinished.
+- Never conceal an unresolved failure behind a later successful packaging or file-creation step.
+- Previous assistant language is not completion evidence. Repository/tool evidence controls continuity.
+- A truthful partial result is preferable to a polished unsupported completion claim.
 
 ### Truthfulness
 
-- Never claim a file, commit, branch, pull request, review, merge, test, CI result, artifact, deployment, or completion without tool verification.
+- Never claim a file, commit, branch, pull request, review, merge, test, CI result, artifact, deployment, extraction, index, audit, validation, or completion without matching tool verification.
 - Distinguish authority, permission, connector availability, attempted action, and successful evidence.
 - If a tool action fails, record the failure, repair it when possible, and continue.
 
@@ -154,6 +173,8 @@ Include as applicable:
 - validation result;
 - restrictions preserved;
 - exact next action.
+
+Every material status claim must have matching current execution or canonical-repository evidence behind it, even when that evidence is not dumped into the chat.
 
 ## Recovery fallback
 
