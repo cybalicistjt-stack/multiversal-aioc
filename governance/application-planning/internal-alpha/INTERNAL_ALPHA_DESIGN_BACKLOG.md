@@ -1,7 +1,7 @@
 # Internal Alpha Feature Design Backlog
 
 **Program:** MV-IA-001  
-**Version:** 0.34.0  
+**Version:** 0.35.0  
 **Status:** ACTIVE DESIGN BACKLOG  
 **Owner:** John Brandon Turner
 
@@ -22,12 +22,14 @@ This backlog governs design packets, fixture specifications, and integration rev
 1. **IA-D08-001 — MV-IA-F023 Optional AI Assistant boundaries and interaction contract — complete.**
 2. **IA-D08-002 — AI permission, provenance, cost, and fallback matrix — complete.**
 3. **IA-D08-003 — advanced map and vehicle deferral package — complete.**
-4. **IA-D08-004 — broad offline deferral package — package complete; merge verification pending.**
-5. **IA-D08-005 — optional and experimental isolation review — next after IA-D08-004 merge.**
+4. **IA-D08-004 — broad offline deferral package — complete.**
+5. **IA-D08-005 — optional and experimental isolation review — package complete; merge verification pending.**
 
 ## IA-D09 — Internal-alpha release-design package
 
 Traceability, fixture catalog, permission matrix, accessibility matrix, recovery matrix, budgets, onboarding, implementation queue, owner decisions, and completion review.
+
+**IA-D09 — Internal-alpha release-design package — next after IA-D08-005 merge verification.**
 
 ## Completion records
 
@@ -49,11 +51,15 @@ The advanced map and vehicle deferral package enumerates deferred and retained c
 
 ### IA-D08-004
 
-The broad offline deferral package preserves authorized cache, recoverable drafts, bounded replay-safe intent, authoritative status lookup, Event-gap recovery, reconnect reauthorization, permission-safe cache invalidation, opaque future-extension preservation, accessibility, and provenance while explicitly deferring broad offline campaign authority, peer authority transfer, unrestricted offline mutation, CRDT/OT canonical collaboration, offline publication/ownership/entitlement changes, and silent automatic merge. It prohibits local fabrication of canonical Events and silent last-write-wins, defines O0 through O4 offline command classes, includes twenty-four deterministic fixtures and eight implementation slices, and advances to IA-D08-005 after merge verification.
+The broad offline deferral package preserves authorized cache, recoverable drafts, bounded replay-safe intent, authoritative status lookup, Event-gap recovery, reconnect reauthorization, permission-safe cache invalidation, opaque future-extension preservation, accessibility, and provenance while explicitly deferring broad offline campaign authority, peer authority transfer, unrestricted offline mutation, CRDT/OT canonical collaboration, offline publication/ownership/entitlement changes, and silent automatic merge. It prohibits local fabrication of canonical Events and silent last-write-wins, defines O0 through O4 offline command classes, includes twenty-four deterministic fixtures and eight implementation slices, and merged through PR #184.
+
+### IA-D08-005
+
+The optional and experimental isolation review defines I0 through I4 isolation classes, requires all-optionals-off core operation, complete manual and semantic fallbacks, provider-neutral canonical identity, feature-gate safety, failure containment, opaque unsupported-extension preservation, identical permission filtering, accessibility independence, typed diagnostics, and fresh owning-domain validation before optional output can affect a governed proposal. It includes twenty-four deterministic fixtures, eight implementation slices, twenty blocking acceptance criteria, seven resolved design findings, and zero blocking findings. Merge verification is pending.
 
 ## Current next design item
 
-**IA-D08-005 — optional and experimental isolation review — next after IA-D08-004 merge verification.**
+**IA-D09 — Internal-alpha release-design package — next after IA-D08-005 merge verification.**
 
 ## Parallel paused tracks
 
@@ -99,4 +105,5 @@ IA-D07-005 — authoring integration review — complete.
 IA-D08-001 — MV-IA-F023 Optional AI Assistant boundaries and interaction contract — complete.
 IA-D08-002 — AI permission, provenance, cost, and fallback matrix — complete.
 IA-D08-003 — advanced map and vehicle deferral package — complete.
-IA-D08-004 — broad offline deferral package — package complete; merge verification pending.
+IA-D08-004 — broad offline deferral package — complete.
+IA-D08-005 — optional and experimental isolation review — package complete; merge verification pending.
