@@ -3,8 +3,28 @@ name: Validate World and Setting Management Design
 on:
   pull_request:
     paths:
-      - 'governance/application-planning/internal-alpha/**'
+      - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F015_WORLD_SETTING_MANAGEMENT.md'
+      - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F015_WORLD_SETTING_MATRIX.json'
+      - 'governance/application-planning/internal-alpha/IA-D07-001_WORLD_SETTING_COMPLETION.md'
+      - 'governance/application-planning/internal-alpha/IA-D07-001_WORLD_SETTING_READINESS.md'
+      - 'governance/application-planning/internal-alpha/IA-D07-001_WORLD_SETTING_TRACEABILITY.md'
+      - 'governance/application-planning/internal-alpha/validate_world_setting_management.py'
       - '.github/workflows/validate-ia-d07-001-world-setting-management.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F015_WORLD_SETTING_MANAGEMENT.md'
+      - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F015_WORLD_SETTING_MATRIX.json'
+      - 'governance/application-planning/internal-alpha/IA-D07-001_WORLD_SETTING_COMPLETION.md'
+      - 'governance/application-planning/internal-alpha/IA-D07-001_WORLD_SETTING_READINESS.md'
+      - 'governance/application-planning/internal-alpha/IA-D07-001_WORLD_SETTING_TRACEABILITY.md'
+      - 'governance/application-planning/internal-alpha/validate_world_setting_management.py'
+      - '.github/workflows/validate-ia-d07-001-world-setting-management.yml'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -12,6 +32,7 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
