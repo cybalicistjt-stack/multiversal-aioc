@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "work_item_id": "P9-06-010",
+  "attempt_id": "P9-06-010-attempt-001",
+  "track": "application-implementation",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "branch": "impl/p9-06-010-expand-migrate-contract-checks",
+  "status": "started",
+  "started_at": "2026-08-07T13:57:00+00:00",
+  "updated_at": "2026-08-07T13:57:00+00:00",
+  "completed_at": null,
+  "base_commit": "b68dfd37b05fff7c37448388f7bd06076289351c",
+  "latest_pushed_commit": null,
+  "expected_remote_head": "b68dfd37b05fff7c37448388f7bd06076289351c",
+  "pull_request": null,
+  "objective": "Add provider-neutral expand-migrate-contract checks for the logical migration foundation, proving staged compatibility, reversible contract boundaries, deterministic fixtures, and zero live-database/provider coupling.",
+  "last_verified_action": "Created impl/p9-06-010-expand-migrate-contract-checks from application main after merged P9-06-009 PR #81.",
+  "active_substep": "Define deterministic expand, migrate, and contract compatibility checks against the logical schema and seed/reset fixtures without executing a live database migration.",
+  "completed_substeps": [
+    "Verified P9-06-009 completed and merged as dependency.",
+    "Created the governed P9-06-010 application branch from merged P9-06-009 main."
+  ],
+  "next_action": "Implement expand-migrate-contract fixtures and focused validation/CI, then merge only after exact-head validation passes.",
+  "changed_paths": [
+    "fixtures/database/p9-06-010-expand-migrate-contract.json",
+    "tools/verify_p9_06_010.py",
+    ".github/workflows/validate-p9-06-010.yml"
+  ],
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
+    "required_validation_commands": ["python tools/verify_p9_06_010.py"],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {"command":"python tools/verify_p9_06_010.py","status":"not_run","evidence":null}
+  ],
+  "unresolved_failures": [],
+  "owner_decision_required": false,
+  "evidence": [
+    {"kind":"merge","value":"P9-06-009 PR #81 merge b68dfd37b05fff7c37448388f7bd06076289351c"},
+    {"kind":"file","value":"Application branch impl/p9-06-010-expand-migrate-contract-checks created from merged P9-06-009 main"}
+  ],
+  "roadmap_projection_pending": true,
+  "notes": [
+    "No live database connection, provider binding, production credentials, or paid service is authorized.",
+    "P9-06-011 and later backlog items remain separate dependent work."
+  ]
+}
