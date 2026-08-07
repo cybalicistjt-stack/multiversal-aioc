@@ -1,6 +1,6 @@
 {
   "schema_version":"1.0.0",
-  "generated_at":"2026-08-07T15:41:00+00:00",
+  "generated_at":"2026-08-07T15:55:00+00:00",
   "source_pointer":"governance/ai/runtime/CURRENT_WORK_POINTER.json",
   "primary":{
     "work_item_id":"P9-06-023",
@@ -8,13 +8,13 @@
     "track":"application-implementation",
     "repository":"cybalicistjt-stack/Multiversal-app",
     "branch":"impl/p9-06-023-two-device-online-internal-alpha-acceptance",
-    "status":"started",
-    "active_substep":"Recover the P9-02 scenario matrix and existing entitlement, hidden-information, reconnect, and provider-exit fixtures; then implement deterministic two-device acceptance orchestration, focused validation, and narrowly scoped CI.",
-    "next_action":"Implement deterministic two-device online internal-alpha acceptance coverage for all required P9-02 scenarios and record any physical-device evidence requirement explicitly rather than fabricating it.",
-    "latest_pushed_commit":null,
-    "pull_request":null,
+    "status":"blocked_non_owner",
+    "active_substep":"Obtain and record actual two-distinct-physical-device connection evidence for AG-07; deterministic simulated coverage is merged and passing, but physical-device evidence must not be fabricated.",
+    "next_action":"Run the merged acceptance harness with two distinct physical devices connected through the intended online alpha path and record device/session evidence. Only then may P9-06-023 be marked completed_verified and P9-06-024 begin.",
+    "latest_pushed_commit":"900d21100a46566ef87c6246db82eeebca85480f",
+    "pull_request":95,
     "owner_decision_required":false,
-    "unresolved_failures":[],
+    "unresolved_failures":["AG-07 physical-device criterion is not yet evidenced: repository/CI execution proves two simulated peer identities, not two distinct physical devices connected."],
     "roadmap_projection_pending":true
   },
   "active_attempt_count":1,
