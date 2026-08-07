@@ -1,28 +1,30 @@
 {
   "schema_version": "1.0.0",
-  "revision": 1,
+  "revision": 2,
   "work_item_id": "P9-06-014",
   "attempt_id": "P9-06-014-attempt-001",
   "track": "application-implementation",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "branch": "impl/p9-06-014-entitlement-evaluator",
-  "status": "started",
+  "status": "completed_verified",
   "started_at": "2026-08-07T14:30:00+00:00",
-  "updated_at": "2026-08-07T14:30:00+00:00",
-  "completed_at": null,
+  "updated_at": "2026-08-07T14:38:00+00:00",
+  "completed_at": "2026-08-07T14:38:00+00:00",
   "base_commit": "9d8252d89685a46e2cc5dc5a91e2512402c2fb7c",
-  "latest_pushed_commit": null,
-  "expected_remote_head": "9d8252d89685a46e2cc5dc5a91e2512402c2fb7c",
-  "pull_request": null,
+  "latest_pushed_commit": "409412dae0e28edda2444ffe6e06ca241dde21f4",
+  "expected_remote_head": "409412dae0e28edda2444ffe6e06ca241dde21f4",
+  "pull_request": 86,
   "objective": "Implement a provider-neutral subscription and sponsored-month entitlement evaluator over canonical subject identity, entitlement grants, subscription state, and campaign-sponsored month records.",
-  "last_verified_action": "Created impl/p9-06-014-entitlement-evaluator from application main after P9-06-013 merge.",
-  "active_substep": "Inspect the existing entitlement service port, subscription/grant/sponsored-month logical schema, and P9-01 entitlement semantics; then implement deterministic evaluation contracts, fixtures, validation, and narrowly scoped CI.",
+  "last_verified_action": "Targeted P9-06-014 CI run 31188539326 passed on exact head 409412dae0e28edda2444ffe6e06ca241dde21f4 and PR #86 squash-merged as 15c9278750c16649c6897f1b7518e98935a060f6.",
+  "active_substep": null,
   "completed_substeps": [
     "Verified P9-06-005 and P9-06-012 dependencies are complete.",
-    "Completed P9-06-013 campaign authorization policies.",
-    "Created the governed P9-06-014 application branch from merged P9-06-013 main."
+    "Implemented provider-neutral subscription, sponsored-month, and campaign premium grant evaluation.",
+    "Added deterministic free, active, expired, cancelled, sponsored, cross-campaign, revoked, and precedence fixtures.",
+    "Passed Validate P9-06-014 Entitlement Evaluator run 31188539326 on exact head 409412dae0e28edda2444ffe6e06ca241dde21f4.",
+    "Merged application PR #86 as 15c9278750c16649c6897f1b7518e98935a060f6."
   ],
-  "next_action": "Implement subscription and sponsored-month entitlement evaluation with deterministic active, expired, cancelled, sponsored, and precedence fixtures; merge only after exact-head targeted CI passes.",
+  "next_action": "None. P9-06-014 is completed_verified; P9-06-015 is next.",
   "changed_paths": [
     "packages/contracts/src/identity-device/entitlement-evaluator.ts",
     "fixtures/entitlements/p9-06-014-entitlement-evaluator.json",
@@ -35,16 +37,19 @@
     "owner_approval_required": false
   },
   "validation": [
-    {"command":"python tools/verify_p9_06_014.py","status":"not_run","evidence":null}
+    {"command":"python tools/verify_p9_06_014.py","status":"passed","evidence":"GitHub Actions run 31188539326"}
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
-    {"kind":"merge","value":"P9-06-013 PR #85 merge 9d8252d89685a46e2cc5dc5a91e2512402c2fb7c"},
-    {"kind":"file","value":"Application branch impl/p9-06-014-entitlement-evaluator created from merged P9-06-013 main"}
+    {"kind":"commit","value":"P9-06-014 exact head 409412dae0e28edda2444ffe6e06ca241dde21f4"},
+    {"kind":"pull_request","value":"P9-06-014 PR #86"},
+    {"kind":"ci_run","value":"P9-06-014 targeted run 31188539326 passed"},
+    {"kind":"merge","value":"P9-06-014 squash merge 15c9278750c16649c6897f1b7518e98935a060f6"}
   ],
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "notes": [
-    "No provider billing account, production subscription data, credentials, paid service, deployment, or release is authorized."
+    "Entitlement evaluation remains provider-neutral.",
+    "No provider billing account, production subscription data, credentials, paid service, deployment, or release was used or authorized."
   ]
 }
