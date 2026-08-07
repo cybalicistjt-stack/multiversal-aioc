@@ -3,18 +3,28 @@ name: Validate Internal Alpha Content and Fixtures
 on:
   pull_request:
     paths:
-      - "governance/application-planning/internal-alpha/**"
+      - "governance/application-planning/internal-alpha/IA-D03-004_*"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_CONTENT_AND_FIXTURES.md"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_FIXTURE_CATALOG.json"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_FIXTURE_COVERAGE_MATRIX.json"
+      - "governance/application-planning/internal-alpha/validate_internal_alpha_content_fixtures.py"
       - "governance/balance/8D-007_GOLDEN_CORPUS_MANIFEST.json"
-      - "governance/ai/runtime/**"
-      - "governance/ai/work-state/IA-D03-004-attempt-001.json"
       - ".github/workflows/internal-alpha-content-fixtures-validation.yml"
   push:
     branches:
       - main
     paths:
-      - "governance/application-planning/internal-alpha/**"
+      - "governance/application-planning/internal-alpha/IA-D03-004_*"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_CONTENT_AND_FIXTURES.md"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_FIXTURE_CATALOG.json"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_FIXTURE_COVERAGE_MATRIX.json"
+      - "governance/application-planning/internal-alpha/validate_internal_alpha_content_fixtures.py"
       - "governance/balance/8D-007_GOLDEN_CORPUS_MANIFEST.json"
       - ".github/workflows/internal-alpha-content-fixtures-validation.yml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read

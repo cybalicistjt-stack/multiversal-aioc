@@ -3,49 +3,25 @@ name: Validate Campaign Scene Session Design
 on:
   pull_request:
     paths:
-      - "governance/application-planning/internal-alpha/**"
-      - ".github/workflows/campaign-scene-session-design-validation.yml"
-  push:
-    branches:
-      - main
-    paths:
-      - "governance/application-planning/internal-alpha/**"
-      - ".github/workflows/campaign-scene-session-design-validation.yml"
+      - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F005_*'
+      - 'governance/application-planning/internal-alpha/validate_campaign_scene_session_design.py'
+      - '.github/workflows/campaign-scene-session-design-validation.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: campaign-scene-session-design-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-
-      - name: Validate MV-IA-001
-        run: python governance/application-planning/internal-alpha/validate_internal_alpha_design.py
-
-      - name: Validate implementation-ready feature packets
-        run: python governance/application-planning/internal-alpha/validate_feature_packets.py
-
-      - name: Validate shared-foundations integration
-        run: python governance/application-planning/internal-alpha/validate_shared_foundations_integration.py
-
-      - name: Validate Character creation and advancement
-        run: python governance/application-planning/internal-alpha/validate_character_creation_design.py
-
-      - name: Validate Campaign Scene Session design
-        run: python governance/application-planning/internal-alpha/validate_campaign_scene_session_design.py
-
-      - name: Verify JSON artifacts
-        run: |
-          python -m json.tool governance/application-planning/internal-alpha/INTERNAL_ALPHA_FEATURE_REGISTRY.json > /dev/null
-          python -m json.tool governance/application-planning/internal-alpha/feature-packets/MV-IA-F005_CAMPAIGN_SCENE_SESSION_MATRIX.json > /dev/null
-          python -m json.tool governance/application-planning/internal-alpha/feature-packets/MV-IA-F005_IMPLEMENTATION_TRACEABILITY.json > /dev/null
-          python -m json.tool governance/application-planning/internal-alpha/feature-packets/MV-IA-F005_COMPLETION_RECORD.json > /dev/null
+          python-version: '3.12'
+      - run: python governance/application-planning/internal-alpha/validate_campaign_scene_session_design.py

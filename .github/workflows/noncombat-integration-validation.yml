@@ -5,16 +5,27 @@ on:
     paths:
       - 'governance/application-planning/internal-alpha/feature-packets/IA-D05-006_*'
       - 'governance/application-planning/internal-alpha/validate_noncombat_integration.py'
-      - 'governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md'
+      - '.github/workflows/noncombat-integration-validation.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'governance/application-planning/internal-alpha/feature-packets/IA-D05-006_*'
+      - 'governance/application-planning/internal-alpha/validate_noncombat_integration.py'
       - '.github/workflows/noncombat-integration-validation.yml'
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

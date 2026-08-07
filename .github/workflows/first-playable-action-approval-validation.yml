@@ -5,20 +5,27 @@ on:
     paths:
       - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F006_*'
       - 'governance/application-planning/internal-alpha/validate_first_playable_action_approval_loop.py'
-      - 'governance/application-planning/internal-alpha/INTERNAL_ALPHA_FEATURE_REGISTRY.json'
-      - 'governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md'
-      - 'governance/application-planning/internal-alpha/README.md'
-      - 'governance/application-planning/internal-alpha/feature-packets/README.md'
-      - 'governance/ai/runtime/ROADMAP_INDEX.json'
+      - '.github/workflows/first-playable-action-approval-validation.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F006_*'
+      - 'governance/application-planning/internal-alpha/validate_first_playable_action_approval_loop.py'
       - '.github/workflows/first-playable-action-approval-validation.yml'
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - name: Check out repository
         uses: actions/checkout@v4

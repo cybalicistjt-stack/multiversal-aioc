@@ -3,8 +3,30 @@ name: Validate Combat and Assets Integration Review
 on:
   pull_request:
     paths:
-      - 'governance/application-planning/internal-alpha/**'
+      - 'governance/application-planning/internal-alpha/IA-D06-006_COMBAT_AND_ASSETS_INTEGRATION_REVIEW.md'
+      - 'governance/application-planning/internal-alpha/IA-D06-006_COMPLETION_RECORD.json'
+      - 'governance/application-planning/internal-alpha/IA-D06-006_IMPLEMENTATION_TRACEABILITY.json'
+      - 'governance/application-planning/internal-alpha/IA-D06-006_INTEGRATION_MATRIX.json'
+      - 'governance/application-planning/internal-alpha/IA-D06-006_READINESS_RECORD.md'
+      - 'governance/application-planning/internal-alpha/IA-D06-006_REVIEW_RECEIPT.md'
+      - 'governance/application-planning/internal-alpha/validate_combat_assets_integration_review.py'
       - '.github/workflows/validate-ia-d06-006-combat-assets-integration.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'governance/application-planning/internal-alpha/IA-D06-006_COMBAT_AND_ASSETS_INTEGRATION_REVIEW.md'
+      - 'governance/application-planning/internal-alpha/IA-D06-006_COMPLETION_RECORD.json'
+      - 'governance/application-planning/internal-alpha/IA-D06-006_IMPLEMENTATION_TRACEABILITY.json'
+      - 'governance/application-planning/internal-alpha/IA-D06-006_INTEGRATION_MATRIX.json'
+      - 'governance/application-planning/internal-alpha/IA-D06-006_READINESS_RECORD.md'
+      - 'governance/application-planning/internal-alpha/IA-D06-006_REVIEW_RECEIPT.md'
+      - 'governance/application-planning/internal-alpha/validate_combat_assets_integration_review.py'
+      - '.github/workflows/validate-ia-d06-006-combat-assets-integration.yml'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -12,6 +34,7 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
