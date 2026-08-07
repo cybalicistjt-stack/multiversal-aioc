@@ -1,28 +1,32 @@
 {
   "schema_version": "1.0.0",
-  "revision": 1,
+  "revision": 2,
   "work_item_id": "P9-06-016",
   "attempt_id": "P9-06-016-attempt-001",
   "track": "application-implementation",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "branch": "impl/p9-06-016-authoritative-session-command-handler",
-  "status": "started",
+  "status": "completed_verified",
   "started_at": "2026-08-07T14:46:00+00:00",
-  "updated_at": "2026-08-07T14:46:00+00:00",
-  "completed_at": null,
+  "updated_at": "2026-08-07T14:53:00+00:00",
+  "completed_at": "2026-08-07T14:53:00+00:00",
   "base_commit": "b99f67021839e8a1711b109f4c91cbdc12aa10a6",
-  "latest_pushed_commit": null,
-  "expected_remote_head": "b99f67021839e8a1711b109f4c91cbdc12aa10a6",
-  "pull_request": null,
+  "latest_pushed_commit": "393ed454535ebe5cea773b78ca62ab547eeaa501",
+  "expected_remote_head": "393ed454535ebe5cea773b78ca62ab547eeaa501",
+  "pull_request": 88,
   "objective": "Implement the provider-neutral authoritative session command handler enforcing canonical subject authorization, idempotency, ordered command acceptance, revision checks, and deterministic server-authoritative outcomes.",
-  "last_verified_action": "Created impl/p9-06-016-authoritative-session-command-handler from application main after P9-06-015 merge.",
-  "active_substep": "Inspect realtime/session ports, P9-06-013 authorization policies, command/event schema, and P9-02 authoritative-session requirements; then implement the handler contract, deterministic fixtures, validation, and narrowly scoped CI.",
+  "last_verified_action": "Targeted P9-06-016 CI run 31189726256 passed on exact head 393ed454535ebe5cea773b78ca62ab547eeaa501 and PR #88 squash-merged as 47e3bface6132a43078c04795fa7c4eb8bd86c49.",
+  "active_substep": null,
   "completed_substeps": [
     "Verified P9-06-007 and P9-06-013 dependencies are complete.",
     "Completed P9-06-015 entitlement transition and cancellation tests.",
-    "Created the governed P9-06-016 application branch from merged P9-06-015 main."
+    "Created the governed P9-06-016 application branch from merged P9-06-015 main.",
+    "Implemented authoritative campaign authorization, exact-session targeting, idempotent replay, stale-revision rejection, and ordered server event sequencing.",
+    "Added deterministic acceptance and rejection fixtures with focused validation and dedicated CI.",
+    "Passed exact-head targeted CI run 31189726256.",
+    "Merged application PR #88 as 47e3bface6132a43078c04795fa7c4eb8bd86c49."
   ],
-  "next_action": "Implement the authoritative session command handler with deterministic authorization, idempotency, sequence, stale-revision, and accepted/rejected command fixtures; merge only after exact-head targeted CI passes.",
+  "next_action": "None. P9-06-016 is completed_verified; P9-06-017 is next.",
   "changed_paths": [
     "packages/contracts/src/session/authoritative-session-command-handler.ts",
     "fixtures/session/p9-06-016-authoritative-command-handler.json",
@@ -35,16 +39,18 @@
     "owner_approval_required": false
   },
   "validation": [
-    {"command":"python tools/verify_p9_06_016.py","status":"not_run","evidence":null}
+    {"command":"python tools/verify_p9_06_016.py","status":"passed","evidence":"GitHub Actions run 31189726256"}
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
-    {"kind":"merge","value":"P9-06-015 PR #87 merge b99f67021839e8a1711b109f4c91cbdc12aa10a6"},
-    {"kind":"file","value":"Application branch impl/p9-06-016-authoritative-session-command-handler created from merged P9-06-015 main"}
+    {"kind":"commit","value":"P9-06-016 exact final head 393ed454535ebe5cea773b78ca62ab547eeaa501"},
+    {"kind":"pull_request","value":"P9-06-016 PR #88"},
+    {"kind":"ci_run","value":"P9-06-016 run 31189726256 passed"},
+    {"kind":"merge","value":"P9-06-016 merge 47e3bface6132a43078c04795fa7c4eb8bd86c49"}
   ],
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "notes": [
-    "No live provider realtime service, production session data, credentials, deployment, or release is authorized."
+    "No live provider realtime service, production session data, credentials, deployment, or release was used or authorized."
   ]
 }
