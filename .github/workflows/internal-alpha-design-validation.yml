@@ -3,21 +3,53 @@ name: Validate Internal Alpha Feature Design
 on:
   pull_request:
     paths:
-      - "governance/application-planning/internal-alpha/**"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_SCOPE.md"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_FEATURE_REGISTRY.json"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DEPENDENCY_MAP.md"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_ACCEPTANCE_MATRIX.md"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_CONTENT_AND_FIXTURES.md"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DEFERRED_FEATURES.md"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_OWNER_DECISIONS.md"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_SHARED_SYSTEMS.md"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_USER_JOURNEYS.md"
+      - "governance/application-planning/internal-alpha/README.md"
+      - "governance/application-planning/internal-alpha/feature-packets/FEATURE_PACKET_TEMPLATE.md"
+      - "governance/application-planning/internal-alpha/validate_internal_alpha_design.py"
+      - "governance/application-planning/internal-alpha/validate_feature_packets.py"
+      - "governance/application-planning/internal-alpha/validate_shared_foundations_integration.py"
+      - "governance/application-planning/internal-alpha/validate_character_creation_design.py"
       - ".github/workflows/internal-alpha-design-validation.yml"
   push:
     branches:
       - main
     paths:
-      - "governance/application-planning/internal-alpha/**"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_SCOPE.md"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_FEATURE_REGISTRY.json"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DEPENDENCY_MAP.md"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_ACCEPTANCE_MATRIX.md"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_CONTENT_AND_FIXTURES.md"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DEFERRED_FEATURES.md"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_OWNER_DECISIONS.md"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_SHARED_SYSTEMS.md"
+      - "governance/application-planning/internal-alpha/INTERNAL_ALPHA_USER_JOURNEYS.md"
+      - "governance/application-planning/internal-alpha/README.md"
+      - "governance/application-planning/internal-alpha/feature-packets/FEATURE_PACKET_TEMPLATE.md"
+      - "governance/application-planning/internal-alpha/validate_internal_alpha_design.py"
+      - "governance/application-planning/internal-alpha/validate_feature_packets.py"
+      - "governance/application-planning/internal-alpha/validate_shared_foundations_integration.py"
+      - "governance/application-planning/internal-alpha/validate_character_creation_design.py"
       - ".github/workflows/internal-alpha-design-validation.yml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
       - name: Check out repository
