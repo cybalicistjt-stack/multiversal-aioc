@@ -1,31 +1,33 @@
 {
   "schema_version": "1.0.0",
-  "revision": 2,
+  "revision": 3,
   "work_item_id": "IA-D08-005",
   "attempt_id": "IA-D08-005-attempt-001",
   "track": "internal-alpha-feature-design",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "governance/ia-d08-005-optional-experimental-isolation",
-  "status": "ready_for_review",
+  "status": "completed_verified",
   "started_at": "2026-08-07T12:31:00+00:00",
-  "updated_at": "2026-08-07T12:40:00+00:00",
-  "completed_at": null,
+  "updated_at": "2026-08-07T12:44:00+00:00",
+  "completed_at": "2026-08-07T12:43:00+00:00",
   "base_commit": "e5654e5cc471c68c6cca1040fbca98c38b9c3fc1",
-  "latest_pushed_commit": "d663e5badf1f4ddfa4df4604f3bd50adcd93de73",
-  "expected_remote_head": "d663e5badf1f4ddfa4df4604f3bd50adcd93de73",
+  "latest_pushed_commit": "d243fb6630a993adb507a1ce50d53cddcbc2d0fa",
+  "expected_remote_head": "d243fb6630a993adb507a1ce50d53cddcbc2d0fa",
   "pull_request": 186,
   "objective": "Review all optional, experimental, deferred, provider-dependent, advanced-map/vehicle, offline, and AI-assisted capabilities as one isolation boundary so internal-alpha core workflows remain complete, deterministic, permission-safe, recoverable, and testable when every optional capability is disabled, unavailable, unsupported, or removed.",
-  "last_verified_action": "Completed the IA-D08-005 package; targeted Validate Optional and Experimental Isolation run 31179082522 passed on PR #186 head d663e5badf1f4ddfa4df4604f3bd50adcd93de73, and continuity plus relevant repository controls passed on the same head.",
-  "active_substep": "Final review and merge gate for IA-D08-005.",
+  "last_verified_action": "IA-D08-005 PR #186 passed all final-head relevant workflows on d243fb6630a993adb507a1ce50d53cddcbc2d0fa and squash-merged as 2d8eed23ac15a56e4274ebda11fac30741334599.",
+  "active_substep": null,
   "completed_substeps": [
     "Recorded IA-D08-004 completed_verified evidence and advanced the governed pointer to IA-D08-005.",
     "Defined I0-I4 optional/experimental isolation classes and all-optionals-off core requirement.",
     "Defined manual, semantic, provider-neutral, permission, accessibility, failure-containment, and extension-preservation boundaries.",
     "Created twenty-four deterministic isolation fixtures.",
     "Created traceability, readiness, completion, targeted validator, and narrowly scoped workflow artifacts.",
-    "Passed targeted Validate Optional and Experimental Isolation on PR #186."
+    "Passed targeted Validate Optional and Experimental Isolation on exact final PR head.",
+    "Passed continuity, Internal Alpha feature design, AIOC baseline, P9 backlog, interaction enforcement, correction regression, and authoritative result/history checks on exact final head.",
+    "Squash-merged PR #186 and advanced to IA-D09."
   ],
-  "next_action": "Merge PR #186 after the final relevant gate remains green, then bundle IA-D08-005 completed_verified projection with the IA-D09 start checkpoint.",
+  "next_action": "Continue IA-D09 — Internal-alpha release-design package.",
   "changed_paths": [
     "governance/application-planning/internal-alpha/IA-D08-005_OPTIONAL_EXPERIMENTAL_ISOLATION_REVIEW.md",
     "governance/application-planning/internal-alpha/IA-D08-005_ISOLATION_FIXTURE_MATRIX.md",
@@ -50,19 +52,20 @@
     {
       "command": "python governance/application-planning/internal-alpha/validate_optional_experimental_isolation.py",
       "status": "passed",
-      "evidence": "Validate Optional and Experimental Isolation run 31179082522 passed on PR #186."
+      "evidence": "IA-D08-005 Validate Optional and Experimental Isolation run 31179219952 passed on exact final PR head d243fb6630a993adb507a1ce50d53cddcbc2d0fa."
     }
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
-    {"kind":"commit","value":"IA-D08-005 PR head d663e5badf1f4ddfa4df4604f3bd50adcd93de73"},
+    {"kind":"commit","value":"IA-D08-005 exact final PR head d243fb6630a993adb507a1ce50d53cddcbc2d0fa"},
     {"kind":"pull_request","value":"IA-D08-005 PR #186"},
-    {"kind":"ci_run","value":"IA-D08-005 Validate Optional and Experimental Isolation run 31179082522 passed"}
+    {"kind":"ci_run","value":"IA-D08-005 exact-final-head targeted run 31179219952 passed"},
+    {"kind":"merge","value":"IA-D08-005 squash merge 2d8eed23ac15a56e4274ebda11fac30741334599"}
   ],
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "notes": [
-    "MV-AI-EFFICIENCY-001 applies.",
+    "MV-AI-EFFICIENCY-001 applied.",
     "P9-06-008-attempt-002 remains unfinished and paused.",
     "The Design Standards Completion subproject remains paused/resumable and noncanonical until governed repository ingestion.",
     "No implementation, paid service, production credential, real-user data collection, internal-alpha release, deployment, public release, autonomous AI authority, or canonical promotion is authorized."
