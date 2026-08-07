@@ -1,6 +1,6 @@
 {
   "schema_version":"1.0.0",
-  "revision":2,
+  "revision":3,
   "work_item_id":"P9-06-018",
   "attempt_id":"P9-06-018-attempt-001",
   "track":"application-implementation",
@@ -8,7 +8,7 @@
   "branch":"impl/p9-06-018-hidden-information-response-filtering",
   "status":"completed_verified",
   "started_at":"2026-08-07T14:59:00+00:00",
-  "updated_at":"2026-08-07T15:08:00+00:00",
+  "updated_at":"2026-08-07T15:14:00+00:00",
   "completed_at":"2026-08-07T15:08:00+00:00",
   "base_commit":"f1578660d4308470ae7eac601c38ab7c8eab4bdd",
   "latest_pushed_commit":"64220c72f290978f3bcf10d5bf63d8a494dcbad8",
@@ -21,10 +21,10 @@
   "next_action":"Advance to P9-06-019 checkpoint reconnect and deterministic restoration.",
   "changed_paths":["packages/contracts/src/session/hidden-information-response-filter.ts","fixtures/session/p9-06-018-hidden-information-response-filter.json","fixtures/verification/p9-06-018-verification-receipt.json","tools/verify_p9_06_018.py",".github/workflows/validate-p9-06-018.yml"],
   "completion_gate":{"required_evidence_kinds":["commit","pull_request","ci_run","merge"],"required_validation_commands":["python tools/verify_p9_06_018.py"],"owner_approval_required":false},
-  "validation":[{"command":"python tools/verify_p9_06_018.py","status":"passed","evidence":"GitHub Actions run 31191062486 on exact head 64220c72f290978f3bcf10d5bf63d8a494dcbad8"}],
+  "validation":[{"command":"python tools/verify_p9_06_018.py","status":"passed","evidence":"P9-06-018 GitHub Actions run 31191062486 on exact head 64220c72f290978f3bcf10d5bf63d8a494dcbad8"}],
   "unresolved_failures":[],
   "owner_decision_required":false,
-  "evidence":[{"kind":"pull_request","value":"Multiversal-app PR #90"},{"kind":"ci_run","value":"31191062486 success"},{"kind":"commit","value":"64220c72f290978f3bcf10d5bf63d8a494dcbad8"},{"kind":"merge","value":"383ad6e090dfb0b869f70516123c3e7a4e969519"}],
+  "evidence":[{"kind":"pull_request","value":"P9-06-018 Multiversal-app PR #90"},{"kind":"ci_run","value":"P9-06-018 CI run 31191062486 success"},{"kind":"commit","value":"P9-06-018 exact head 64220c72f290978f3bcf10d5bf63d8a494dcbad8"},{"kind":"merge","value":"P9-06-018 merge 383ad6e090dfb0b869f70516123c3e7a4e969519"}],
   "roadmap_projection_pending":false,
   "notes":["No live provider realtime service, production session data, credentials, deployment, or release was introduced."]
 }
