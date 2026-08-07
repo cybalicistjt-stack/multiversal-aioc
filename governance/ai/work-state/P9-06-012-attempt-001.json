@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "work_item_id": "P9-06-012",
+  "attempt_id": "P9-06-012-attempt-001",
+  "track": "application-implementation",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "branch": "impl/p9-06-012-provider-independent-identity-mapping",
+  "status": "started",
+  "started_at": "2026-08-07T14:13:00+00:00",
+  "updated_at": "2026-08-07T14:13:00+00:00",
+  "completed_at": null,
+  "base_commit": "d37d0539ecfd2b4c5d107ab07465b026cbf5d851",
+  "latest_pushed_commit": null,
+  "expected_remote_head": "d37d0539ecfd2b4c5d107ab07465b026cbf5d851",
+  "pull_request": null,
+  "objective": "Implement provider-independent user identity mapping on top of the existing identity service port and logical schema, preserving stable subject identity without binding canonical identity to any hosted provider.",
+  "last_verified_action": "Created impl/p9-06-012-provider-independent-identity-mapping from application main after P9-06-011 merge.",
+  "active_substep": "Inspect the existing identity port and logical identity tables, then implement deterministic provider-independent identity mapping contracts, fixtures, validation, and narrowly scoped CI.",
+  "completed_substeps": [
+    "Verified P9-06-004 and P9-06-008 dependencies are complete.",
+    "Completed the WS-03 data-foundation sequence through P9-06-011.",
+    "Created the governed P9-06-012 application branch from merged P9-06-011 main."
+  ],
+  "next_action": "Implement provider-independent identity mapping with deterministic fixtures and focused validation; merge only after exact-head targeted CI passes.",
+  "changed_paths": [
+    "lib/identity/provider_independent_identity_mapping.dart",
+    "fixtures/identity/p9-06-012-provider-independent-identity.json",
+    "tools/verify_p9_06_012.py",
+    ".github/workflows/validate-p9-06-012.yml"
+  ],
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
+    "required_validation_commands": ["python tools/verify_p9_06_012.py"],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {"command":"python tools/verify_p9_06_012.py","status":"not_run","evidence":null}
+  ],
+  "unresolved_failures": [],
+  "owner_decision_required": false,
+  "evidence": [
+    {"kind":"merge","value":"P9-06-011 merge d37d0539ecfd2b4c5d107ab07465b026cbf5d851"},
+    {"kind":"file","value":"Application branch impl/p9-06-012-provider-independent-identity-mapping created from merged P9-06-011 main"}
+  ],
+  "roadmap_projection_pending": true,
+  "notes": [
+    "No provider account, production credential, real-user identity data, paid service, deployment, or release is authorized.",
+    "Canonical subject identity must remain stable across provider mappings and provider replacement."
+  ]
+}
