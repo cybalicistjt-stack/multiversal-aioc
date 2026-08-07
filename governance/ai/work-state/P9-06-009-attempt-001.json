@@ -1,27 +1,32 @@
 {
   "schema_version": "1.0.0",
-  "revision": 1,
+  "revision": 2,
   "work_item_id": "P9-06-009",
   "attempt_id": "P9-06-009-attempt-001",
   "track": "application-implementation",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "branch": "impl/p9-06-009-seed-reset-fixtures",
-  "status": "started",
+  "status": "completed_verified",
   "started_at": "2026-08-07T13:46:00+00:00",
-  "updated_at": "2026-08-07T13:46:00+00:00",
-  "completed_at": null,
+  "updated_at": "2026-08-07T13:57:00+00:00",
+  "completed_at": "2026-08-07T13:56:00+00:00",
   "base_commit": "5cec7f99933bd0c29285ba43424164c9df6ed1bd",
-  "latest_pushed_commit": null,
-  "expected_remote_head": "5cec7f99933bd0c29285ba43424164c9df6ed1bd",
-  "pull_request": null,
+  "latest_pushed_commit": "58dc0158c8a7760f685674726b07c9ac9dcd57f1",
+  "expected_remote_head": "58dc0158c8a7760f685674726b07c9ac9dcd57f1",
+  "pull_request": 81,
   "objective": "Add deterministic seed and zero-residue reset fixtures for the provider-neutral 17-table logical schema established by P9-06-008.",
-  "last_verified_action": "Created impl/p9-06-009-seed-reset-fixtures from application main after merged P9-06-008 PR #80.",
-  "active_substep": "Define deterministic seed identities, relationships, ordered session data, and reset expectations across all 17 logical tables without connecting to a live database.",
+  "last_verified_action": "P9-06-009 exact-head validator run 31184909847 passed and PR #81 squash-merged as b68dfd37b05fff7c37448388f7bd06076289351c.",
+  "active_substep": null,
   "completed_substeps": [
     "Verified P9-06-008 completed and merged as dependency.",
-    "Created the governed P9-06-009 application branch from merged P9-06-008 main."
+    "Created the governed P9-06-009 application branch from merged P9-06-008 main.",
+    "Added deterministic seed coverage for all 17 logical tables with fixed identifiers, timestamps, ordering, valid relationships, and ordered session data.",
+    "Added zero-residue reset expectations and dependency-safe reset order.",
+    "Added focused validator and narrow dedicated CI.",
+    "Passed Validate P9-06-009 Seed Reset Fixtures on exact PR head.",
+    "Merged application PR #81."
   ],
-  "next_action": "Implement deterministic seed and reset fixtures, a focused validator, and dedicated narrowly scoped CI; prove repeatable reset to zero residue and stable reseeding before merge.",
+  "next_action": "None. P9-06-009 is completed_verified; P9-06-010 is the exact next dependency-ordered backlog item.",
   "changed_paths": [
     "fixtures/database/p9-06-009-seed.json",
     "fixtures/database/p9-06-009-reset-expectations.json",
@@ -34,17 +39,19 @@
     "owner_approval_required": false
   },
   "validation": [
-    {"command":"python tools/verify_p9_06_009.py","status":"not_run","evidence":null}
+    {"command":"python tools/verify_p9_06_009.py","status":"passed","evidence":"P9-06-009 exact-head GitHub Actions run 31184909847 passed."}
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
-    {"kind":"merge","value":"P9-06-008 PR #80 merge 5cec7f99933bd0c29285ba43424164c9df6ed1bd"},
-    {"kind":"file","value":"Application branch impl/p9-06-009-seed-reset-fixtures created from merged P9-06-008 main"}
+    {"kind":"commit","value":"P9-06-009 exact PR head 58dc0158c8a7760f685674726b07c9ac9dcd57f1"},
+    {"kind":"pull_request","value":"P9-06-009 PR #81"},
+    {"kind":"ci_run","value":"P9-06-009 run 31184909847 passed"},
+    {"kind":"merge","value":"P9-06-009 squash merge b68dfd37b05fff7c37448388f7bd06076289351c"}
   ],
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "notes": [
-    "No live database connection, provider binding, production data, credentials, or paid service is authorized.",
+    "No live database connection, provider binding, production data, credentials, or paid service was introduced.",
     "P9-06-010 and later backlog items remain separate dependent work."
   ]
 }
