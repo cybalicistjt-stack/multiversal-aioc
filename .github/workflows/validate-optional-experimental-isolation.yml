@@ -1,0 +1,34 @@
+name: Validate Optional and Experimental Isolation
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/internal-alpha/IA-D08-005_*'
+      - 'governance/application-planning/internal-alpha/validate_optional_experimental_isolation.py'
+      - '.github/workflows/validate-optional-experimental-isolation.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'governance/application-planning/internal-alpha/IA-D08-005_*'
+      - 'governance/application-planning/internal-alpha/validate_optional_experimental_isolation.py'
+      - '.github/workflows/validate-optional-experimental-isolation.yml'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate IA-D08-005 isolation review
+        run: python governance/application-planning/internal-alpha/validate_optional_experimental_isolation.py
