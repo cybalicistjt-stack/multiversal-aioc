@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "IA-D09",
+  "queue_rule": "dependency ordered; optional capability slices may not block core slices",
+  "slices": [
+    {"id":"IA09-IMPL-001","name":"foundation authority provenance and stable identity","depends_on":[],"required_for_candidate":true},
+    {"id":"IA09-IMPL-002","name":"shared shell components permissions accessibility and recovery primitives","depends_on":["IA09-IMPL-001"],"required_for_candidate":true},
+    {"id":"IA09-IMPL-003","name":"character campaign session and encounter preparation","depends_on":["IA09-IMPL-002"],"required_for_candidate":true},
+    {"id":"IA09-IMPL-004","name":"first playable action approval authoritative result and history","depends_on":["IA09-IMPL-003"],"required_for_candidate":true},
+    {"id":"IA09-IMPL-005","name":"two-device interruption reconnect and event-gap recovery","depends_on":["IA09-IMPL-004"],"required_for_candidate":true},
+    {"id":"IA09-IMPL-006","name":"relationship reputation social and investigation core","depends_on":["IA09-IMPL-002","IA09-IMPL-004"],"required_for_candidate":true},
+    {"id":"IA09-IMPL-007","name":"combat inventory shared assets bounded maps and basic vehicles","depends_on":["IA09-IMPL-002","IA09-IMPL-004"],"required_for_candidate":true},
+    {"id":"IA09-IMPL-008","name":"world adventure creator and Campaign-local content authority","depends_on":["IA09-IMPL-003","IA09-IMPL-006","IA09-IMPL-007"],"required_for_candidate":true},
+    {"id":"IA09-IMPL-009","name":"cross-domain integration bounded fixture runner and release diagnostics","depends_on":["IA09-IMPL-005","IA09-IMPL-006","IA09-IMPL-007","IA09-IMPL-008"],"required_for_candidate":true},
+    {"id":"IA09-IMPL-010","name":"optional AI provider adapters and experimental seams","depends_on":["IA09-IMPL-002","IA09-IMPL-009"],"required_for_candidate":false},
+    {"id":"IA09-IMPL-011","name":"advanced map vehicle and deferred offline extension seams","depends_on":["IA09-IMPL-007","IA09-IMPL-009"],"required_for_candidate":false},
+    {"id":"IA09-IMPL-012","name":"candidate validation packaging and owner release-decision evidence bundle","depends_on":["IA09-IMPL-009"],"required_for_candidate":true,"owner_gate":"Package evidence only; owner decides any actual Internal Alpha release or tester access."}
+  ],
+  "parallelization": {
+    "allowed_examples":["IA09-IMPL-006 and IA09-IMPL-007 after their shared dependencies pass"],
+    "forbidden_examples":["optional AI becoming a dependency of IA09-IMPL-003 through IA09-IMPL-009","bypassing owning-domain event/permission contracts to accelerate integration"]
+  },
+  "implementation_boundary": "This queue is a design handoff. It does not mark P9-06-008 complete, modify the paused application attempt, deploy software, create production credentials, or approve a release."
+}
