@@ -1,17 +1,17 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 2.0.1  
+**Version:** 2.1.0  
 **Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED  
 **Owner and final authority:** John Brandon Turner  
 **Originally approved:** 2026-08-03  
-**Last updated:** 2026-08-06
+**Last updated:** 2026-08-07
 
 ## Purpose
 
 This roadmap governs the transition from completed source recovery, canonicalization, architecture, and AI-team preparation into verified application construction.
 
-Repository evidence is mandatory. Nothing is complete merely because it was discussed, planned, drafted, or claimed. Completion requires actual files, commits, pull requests, CI results, and merges where applicable.
+Repository evidence is mandatory. Nothing is complete merely because it was discussed, planned, drafted, generated outside the repository, or claimed. Completion requires the evidence declared by the governing work item.
 
 The authoritative ordered Phase 9 backlog is `governance/phase9/P9-06_IMPLEMENTATION_BACKLOG_AND_ACCEPTANCE_GATES.json`. If a derived roadmap description conflicts with that backlog, the canonical backlog controls and the roadmap must be corrected before implementation.
 
@@ -47,14 +47,7 @@ Completed first-level packages:
 
 John Brandon Turner authorized bounded implementation of **P9-06-001 through P9-06-023**.
 
-This authorization permits repository implementation, tests, CI, and local/provider-neutral adapters. It does **not** authorize:
-
-- paid services or paid-plan enrollment;
-- production deployment;
-- public release;
-- irreversible vendor coupling;
-- credentials or production secrets;
-- spending beyond a separately approved owner gate.
+This authorization permits repository implementation, tests, CI, and local/provider-neutral adapters. It does **not** authorize paid services or paid-plan enrollment, production deployment, public release, irreversible vendor coupling, credentials or production secrets, or spending beyond a separately approved owner gate.
 
 ## P9-06 implementation progress
 
@@ -74,23 +67,89 @@ Application PR #78 created a valid provider-neutral backup, restore, and provide
 
 Application PR #79 reclassified the package as **P9-06-011A — Recovery Contract Foundation**. It is preparatory groundwork only and does not complete P9-06-008, P9-06-009, P9-06-010, or P9-06-011.
 
-### Current next executable action
+### Current application-implementation state
 
-**P9-06-008 — Create initial 17-table logical schema migration.**
+**P9-06-008 — Create initial 17-table logical schema migration** remains unfinished in `P9-06-008-attempt-002` and is a paused parallel track while the owner-selected Internal Alpha design track continues. It must resume from its recorded checksum-validation failure rather than being inferred complete or restarted from scratch.
 
-The exact required tables are governed by `governance/phase9/P9-04_IMPLEMENTATION_READINESS_REGISTRY.json`:
+The exact required tables remain governed by `governance/phase9/P9-04_IMPLEMENTATION_READINESS_REGISTRY.json`: `subjects`, `identities`, `subscriptions`, `entitlement_grants`, `sponsored_months`, `campaigns`, `campaign_members`, `content_packs`, `canonical_objects`, `game_sessions`, `session_commands`, `session_events`, `session_projections`, `checkpoints`, `audit_events`, `outbox_events`, and `schema_migrations`.
 
-`subjects`, `identities`, `subscriptions`, `entitlement_grants`, `sponsored_months`, `campaigns`, `campaign_members`, `content_packs`, `canonical_objects`, `game_sessions`, `session_commands`, `session_events`, `session_projections`, `checkpoints`, `audit_events`, `outbox_events`, and `schema_migrations`.
+After P9-06-008 is `completed_verified`, continue in authoritative dependency order through **P9-06-023**. P9-06-009 remains the next dependent item.
 
-The migration must remain provider-neutral, represent all 17 logical tables, define reversible up/down operations, preserve explicit constraints and indexes, include deterministic validation and dedicated CI, and must not apply a live schema or create a hosted-provider commitment.
+## Internal Alpha feature-design track — owner-selected active design program
 
-### Remaining authorized backlog
+The canonical backlog is `governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md`.
 
-After P9-06-008 is `completed_verified`, continue in authoritative dependency order through **P9-06-023**, automatically resolving ordinary implementation and CI failures. P9-06-009 remains the next dependent item. Stop only at a genuine owner-only decision, spending gate, deployment gate, production credential requirement, or public/internal-alpha release gate.
+Repository evidence through merged PR #180 establishes the true current state:
+
+- **IA-D01 — Program foundation:** COMPLETE.
+- **IA-D02 — Shared foundations:** COMPLETE.
+- **IA-D03 — Character and Campaign preparation:** COMPLETE.
+- **IA-D04 — First playable loop:** COMPLETE.
+- **IA-D05 — Relationship, social, and investigation systems:** COMPLETE.
+- **IA-D06 — Combat and Assets:** COMPLETE.
+- **IA-D07 — World, adventure, and Project depth:** COMPLETE.
+- **IA-D08-001 — Optional AI Assistant boundaries and interaction contract:** COMPLETE.
+- **IA-D08-002 — AI permission, provenance, cost, and fallback matrix:** COMPLETE.
+- **IA-D08-003 — Advanced map and vehicle deferral package:** COMPLETE, merged PR #180.
+- **IA-D08-004 — Broad offline deferral package:** NEXT.
+- **IA-D08-005 — Optional and experimental isolation review:** planned after IA-D08-004.
+- **IA-D09 — Internal-alpha release-design package:** planned after IA-D08; includes traceability, fixture catalog, permission matrix, accessibility matrix, recovery matrix, budgets, onboarding, implementation queue, owner decisions, and completion review.
+
+The older runtime work pointer that still names IA-D04-003 is stale and must be corrected from repository evidence before new IA mutation. IA-D04-003, IA-D04-004, IA-D04-005, IA-D05, IA-D06, IA-D07, and IA-D08-001 through IA-D08-003 must not be redone merely because that pointer lagged the merged repository state.
+
+## Design Standards Completion subproject — paused and resumable
+
+This is a **parallel documentation/design-system subproject**, not the currently selected IA execution track. It exists to finish the engineering-facing design standards before or alongside Phase 10 UI implementation, and it may be paused and resumed without changing the status of IA or P9 work.
+
+### Current evidence status
+
+During the owner/assistant design-standard session, a rebuilt **DS-006 Pattern Library** and a **DS-007 Responsive Standards** series were generated as downloadable working packages. These chat-generated files are useful source artifacts but are **not yet canonical repository deliverables** because they have not been ingested, audited, committed, validated, reviewed, and merged into `multiversal-aioc`.
+
+Therefore:
+
+- do not mark the design-standard subproject `completed_verified` from chat generation alone;
+- preserve the generated packages for later governed ingestion;
+- when this subproject resumes, begin with an inventory/audit that distinguishes valid final packages from invalid abbreviated predecessors;
+- do not recreate already-good packages unless the audit finds a defect;
+- resolve any numbering/name collision with existing canonical design-system documents before promotion.
+
+### Intended design-standard path
+
+1. **DS-006 — Pattern Library:** generated/rebuilt working set; later repository ingestion and canonical audit required.
+2. **DS-007 — Responsive Standards:** working series generated through DS-007J (Responsive QA & Acceptance); later repository ingestion and canonical audit required.
+3. **DS-008 — Accessibility Standards:** keyboard, mouse, controller, touch, voice, screen reader, reduced motion, color blindness, large fonts, contrast, and equivalent operation.
+4. **DS-009 — Token Standards:** colors, spacing, elevation, typography, radius, icons, motion, opacity, and token governance.
+5. **DS-010 — Flutter Implementation Standards:** architecture, widgets, composition, state, Riverpod, rendering, performance, testing integration, and AI coding rules.
+6. **DS-011 — Testing Standards:** acceptance, golden tests, accessibility, performance, interaction, responsive behavior, and AI regression.
+7. **DS-012 — Visual Language Standards:** narrative-first interface philosophy, hierarchy, density/whitespace, glass/translucency/layering, lighting/glow, color usage, iconography, artwork integration, typography personality, motion personality, gameplay-mode emotional tone, and explicit anti-drift / “never do” rules.
+8. **Design-standard integration audit:** reconcile the DS working series with existing canonical design documents and Phase 10 implementation requirements; resolve duplicate identifiers before canonical promotion.
+9. **Repository ingestion and validation:** commit the accepted design-standard packages in bounded governed changes, with the smallest relevant validation and one final hosted gate per bounded package or tranche.
+10. **Phase 10 handoff:** expose the final canonical standards to the application implementation queue and AI/Codex coding guidance.
+
+### Resume rule
+
+When the owner says to return to this subproject, recover from this roadmap section and the then-current design-standard inventory. Treat the last accepted generated package as the working boundary, but repository evidence remains the authority for what is canonical.
+
+## Validation and CI efficiency rule
+
+`governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md` is controlling policy.
+
+The repository has already begun correcting excessive GitHub Actions fan-out: governance PR #181 reduced Internal Alpha workflow fan-out and PR #182 continued Development Brain workflow scoping. Those changes are infrastructure optimization, not IA feature completion.
+
+Going forward:
+
+- use the single deterministic validator declared by the active IA work item during construction;
+- do not run every historical IA validator after every new packet;
+- do not regenerate historical scorecards because a work pointer changed;
+- use one final relevant hosted validation gate on the completed bounded package;
+- inspect and repair only checks that are actually relevant or genuinely blocking;
+- keep workflow path filters scoped so an IA packet does not trigger unrelated historical feature or Development Brain suites;
+- batch related validator/workflow fixes instead of creating a full CI cycle per assertion;
+- treat any recurring unrelated fan-out as an infrastructure defect and repair the workflow scope rather than normalizing dozens of irrelevant checks.
 
 ## Phase 10 — Core Application Implementation
 
-Connect verified engines, registries, services, and permissions to production user interfaces.
+Connect verified engines, registries, services, permissions, and canonical design standards to production user interfaces.
 
 Primary programs:
 
@@ -110,9 +169,10 @@ Primary programs:
 Implementation method:
 
 - build vertical slices, not disconnected mock screens;
-- each slice includes navigation, real data, actions, permissions, save/load, loading/error states, desktop/mobile behavior, tests, and owner review;
+- each slice includes navigation, real data, actions, permissions, save/load, loading/error states, responsive behavior, tests, and owner review;
 - reuse universal object and relationship components rather than creating domain-specific duplicates;
-- significant UI changes require deployed or reproducible interaction verification.
+- significant UI changes require deployed or reproducible interaction verification;
+- use the canonical design-standard subproject outputs after governed ingestion rather than relying on stale or conflicting chat artifacts.
 
 ## Phase 11 — GM and Player Experience
 
@@ -128,13 +188,7 @@ Complete major workflows, real-service integration, approved content population,
 
 ## Public-live path after Phase 13
 
-A formal release program must govern:
-
-1. closed alpha;
-2. beta stabilization and load testing;
-3. commercial, legal, privacy, moderation, backup, and support readiness;
-4. staged production deployment and platform certification;
-5. public launch with monitoring and rollback.
+A formal release program must govern closed alpha, beta stabilization and load testing, commercial/legal/privacy/moderation/backup/support readiness, staged production deployment and platform certification, and public launch with monitoring and rollback.
 
 ## Parallel Apple track
 
@@ -144,11 +198,11 @@ A formal release program must govern:
 
 - “Continue” means perform the next verified unfinished repository operation.
 - Do not substitute explanations or plans for work.
-- Use John’s approved recommendation process to resolve ambiguity unless a decision truly requires him personally.
+- Use the owner-approved recommendation process to resolve reversible ambiguity unless a decision truly requires the owner personally.
 - Group compatible validation, conversion, and repair work into efficient tranches.
-- Inspect CI failures, repair them, rerun, and continue automatically.
-- Read the authoritative P9-06 backlog item before starting each implementation item; derived roadmap prose cannot override it.
+- Inspect CI failures, repair relevant failures, rerun the smallest applicable set, and continue automatically.
+- Read the authoritative backlog item before starting each implementation or IA design item; derived roadmap prose cannot override it.
 - Never claim completion, files, commits, PRs, merges, tests, artifacts, or deployments without tool verification.
-- Report the next step after every completed step.
+- Report the next step after every completed bounded step.
 - Preserve source truth, provenance, variants, conflicts, and reversibility.
 - John Brandon Turner retains final authority.
