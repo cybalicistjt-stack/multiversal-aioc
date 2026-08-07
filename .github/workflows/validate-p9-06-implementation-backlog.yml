@@ -2,8 +2,16 @@ name: Validate P9-06 Implementation Backlog
 
 on:
   pull_request:
+    paths:
+      - 'governance/phase9/P9-06_IMPLEMENTATION_BACKLOG_AND_ACCEPTANCE_GATES.json'
+      - 'scripts/validate-p9-06-implementation-backlog.py'
+      - '.github/workflows/validate-p9-06-implementation-backlog.yml'
   push:
     branches: [main]
+    paths:
+      - 'governance/phase9/P9-06_IMPLEMENTATION_BACKLOG_AND_ACCEPTANCE_GATES.json'
+      - 'scripts/validate-p9-06-implementation-backlog.py'
+      - '.github/workflows/validate-p9-06-implementation-backlog.yml'
 
 jobs:
   validate:
