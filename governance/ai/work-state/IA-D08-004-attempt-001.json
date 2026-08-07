@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "work_item_id": "IA-D08-004",
+  "attempt_id": "IA-D08-004-attempt-001",
+  "track": "internal-alpha-feature-design",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "branch": "governance/ia-d08-004-broad-offline-deferral",
+  "status": "started",
+  "started_at": "2026-08-07T11:58:00+00:00",
+  "updated_at": "2026-08-07T11:58:00+00:00",
+  "completed_at": null,
+  "base_commit": "d7be22fa06919529c0882f624cee00aaed6999e5",
+  "latest_pushed_commit": null,
+  "expected_remote_head": "d7be22fa06919529c0882f624cee00aaed6999e5",
+  "pull_request": null,
+  "objective": "Define the bounded internal-alpha broad-offline deferral package: enumerate offline capabilities deliberately deferred beyond internal alpha, preserve the limited offline-safe behaviors already required by canonical IA contracts, prohibit silent local authority or last-write-wins, define opaque preservation and later migration seams for unsupported offline state, and provide deterministic recovery, accessibility, permission, provenance, and compatibility fixtures.",
+  "last_verified_action": "Recovered repository truth through merged IA-D08-003 PR #180, corrected the application roadmap in merged PR #183, and created this new attempt from the verified current main state.",
+  "active_substep": "Construct the complete IA-D08-004 broad-offline deferral package from the canonical IA backlog and existing reconnect, authoritative-session, shared-draft, recovery, and deferral contracts.",
+  "completed_substeps": [],
+  "next_action": "Build the package, deferral/retained-capability matrix, deterministic fixtures, traceability, readiness/completion records, targeted validator, and exact IA-D08-005 handoff; then open one final PR and inspect only relevant failed checks.",
+  "changed_paths": [],
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
+    "required_validation_commands": ["python governance/application-planning/internal-alpha/validate_broad_offline_deferral.py"],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {
+      "command": "python governance/application-planning/internal-alpha/validate_broad_offline_deferral.py",
+      "status": "not_run",
+      "evidence": null
+    }
+  ],
+  "unresolved_failures": [],
+  "owner_decision_required": false,
+  "evidence": [
+    "IA-D08-003 complete in merged governance PR #180.",
+    "APPLICATION_IMPLEMENTATION_ROADMAP.md v2.1.0 records IA-D08-004 as the exact next design item and preserves the paused design-standards subproject and P9-06-008-attempt-002."
+  ],
+  "roadmap_projection_pending": true,
+  "notes": [
+    "MV-AI-EFFICIENCY-001 applies: one start checkpoint, targeted deterministic validation during construction, one ready-for-review update, and one final relevant hosted gate.",
+    "PRs #181 and #182 reduced unrelated GitHub Actions fan-out; recurring irrelevant workflows are an infrastructure defect, not a reason to run dozens of historical validators per IA item.",
+    "P9-06-008-attempt-002 remains unfinished and paused; it is not superseded or completed.",
+    "The Design Standards Completion subproject is paused and resumable; DS-006/DS-007 chat-generated packages are working artifacts, not repository-canonical until later governed ingestion.",
+    "No implementation, paid service, production credential, real-user data collection, internal-alpha release, deployment, public release, autonomous AI authority, or canonical promotion is authorized."
+  ]
+}
