@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "IA-D09",
+  "bounded": true,
+  "complete_game_corpus": false,
+  "purpose": "Minimum deterministic release-design fixture families for implementation and integration proof; not a claim of complete game coverage.",
+  "fixtures": [
+    {"id":"IA09-FX-001","domain":"preparation","case":"create character, attach campaign, prepare session, reopen without data loss","expected":"stable IDs and recoverable draft state"},
+    {"id":"IA09-FX-002","domain":"first_playable_loop","case":"player action approved unchanged","expected":"single authoritative result and append-only history entry"},
+    {"id":"IA09-FX-003","domain":"first_playable_loop","case":"GM modifies proposed result","expected":"modification attribution, final authoritative result, source calculation retained"},
+    {"id":"IA09-FX-004","domain":"recovery","case":"player disconnect before decision then reconnect","expected":"no duplicate action; authoritative status recovered"},
+    {"id":"IA09-FX-005","domain":"recovery","case":"GM disconnect after decision before client receipt","expected":"decision recovered from authoritative event sequence"},
+    {"id":"IA09-FX-006","domain":"permissions","case":"player attempts GM-only read","expected":"hidden content absent, not redacted client-side after delivery"},
+    {"id":"IA09-FX-007","domain":"social","case":"relationship change through governed event","expected":"traceable delta and permission-safe projection"},
+    {"id":"IA09-FX-008","domain":"investigation","case":"hidden clue unrevealed","expected":"player projection contains no hidden clue or inferable hidden connection"},
+    {"id":"IA09-FX-009","domain":"investigation","case":"clue revealed and linked","expected":"provenance-preserving reveal and accessible semantic relationship"},
+    {"id":"IA09-FX-010","domain":"combat","case":"targeted action with condition/effect","expected":"deterministic resolution request and synchronized authoritative result"},
+    {"id":"IA09-FX-011","domain":"assets","case":"shared item transfer conflict","expected":"ownership checked; conflict resolved without duplication"},
+    {"id":"IA09-FX-012","domain":"maps","case":"bounded tactical position update","expected":"authorized map state changes only; unsupported advanced data preserved opaquely"},
+    {"id":"IA09-FX-013","domain":"vehicles","case":"basic vehicle operation","expected":"crew/permission/resource requirements explicit and authoritative"},
+    {"id":"IA09-FX-014","domain":"authoring","case":"Campaign-local content edit","expected":"local scope preserved and no silent global promotion"},
+    {"id":"IA09-FX-015","domain":"authoring","case":"unsupported extension round trip","expected":"opaque extension survives unchanged unless governed migration occurs"},
+    {"id":"IA09-FX-016","domain":"optional_ai","case":"AI disabled","expected":"all core workflows retain complete manual path"},
+    {"id":"IA09-FX-017","domain":"optional_ai","case":"AI proposal references unauthorized source","expected":"proposal blocked before disclosure or canonical effect"},
+    {"id":"IA09-FX-018","domain":"optional_ai","case":"provider unavailable after request","expected":"typed failure, no duplicate charge claim, core workflow continues"},
+    {"id":"IA09-FX-019","domain":"offline","case":"offline canonical mutation attempted","expected":"blocked or stored only as explicitly replay-safe intent; no fabricated canonical Event"},
+    {"id":"IA09-FX-020","domain":"offline","case":"stale permission on reconnect","expected":"reauthorization before replay or canonical mutation"},
+    {"id":"IA09-FX-021","domain":"accessibility","case":"keyboard-only first playable loop","expected":"all required controls operable with visible focus"},
+    {"id":"IA09-FX-022","domain":"accessibility","case":"screen-reader clue graph equivalent","expected":"semantic relationship summary exposes same permitted meaning without spatial-only dependency"},
+    {"id":"IA09-FX-023","domain":"accessibility","case":"200 percent text scale compact layout","expected":"primary tasks and approval context remain available without clipped critical content"},
+    {"id":"IA09-FX-024","domain":"release_boundary","case":"design package merged with no implementation candidate","expected":"state remains design_complete/implementation_ready; release_approved remains false"}
+  ]
+}
