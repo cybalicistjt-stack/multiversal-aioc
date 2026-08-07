@@ -1,22 +1,22 @@
 {
   "schema_version": "1.0.0",
-  "revision": 3,
+  "revision": 4,
   "work_item_id": "IA-D08-004",
   "attempt_id": "IA-D08-004-attempt-001",
   "track": "internal-alpha-feature-design",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "governance/ia-d08-004-broad-offline-deferral",
-  "status": "ready_for_review",
+  "status": "completed_verified",
   "started_at": "2026-08-07T11:58:00+00:00",
-  "updated_at": "2026-08-07T12:07:00+00:00",
-  "completed_at": null,
+  "updated_at": "2026-08-07T12:31:00+00:00",
+  "completed_at": "2026-08-07T12:12:38+00:00",
   "base_commit": "d7be22fa06919529c0882f624cee00aaed6999e5",
-  "latest_pushed_commit": "b0bf5e4355ac4cb347fc705dbb2c199a1dadacd7",
-  "expected_remote_head": "b0bf5e4355ac4cb347fc705dbb2c199a1dadacd7",
+  "latest_pushed_commit": "58c6b2133473230cae8fd07ca953f1e584e81bbf",
+  "expected_remote_head": "58c6b2133473230cae8fd07ca953f1e584e81bbf",
   "pull_request": 184,
   "objective": "Define the bounded internal-alpha broad-offline deferral package: enumerate offline capabilities deliberately deferred beyond internal alpha, preserve the limited offline-safe behaviors already required by canonical IA contracts, prohibit silent local authority or last-write-wins, define opaque preservation and later migration seams for unsupported offline state, and provide deterministic recovery, accessibility, permission, provenance, and compatibility fixtures.",
-  "last_verified_action": "Completed the IA-D08-004 design package and repaired the targeted validator; Validate Broad Offline Deferral passed on PR #184. The checkpoint evidence schema was aligned with the canonical continuity contract.",
-  "active_substep": "Final review and merge gate for the completed IA-D08-004 package.",
+  "last_verified_action": "IA-D08-004 PR #184 merged after targeted Broad Offline Deferral validation and continuity repair; squash merge evidence is 57b12cb6a75657a0f5c01b8b0e7bca61a9701566.",
+  "active_substep": null,
   "completed_substeps": [
     "Recovered true IA state through merged IA-D08-003 PR #180 and roadmap PR #183.",
     "Created O0-O4 broad offline authority and deferral contract.",
@@ -24,9 +24,10 @@
     "Created traceability and readiness records.",
     "Created targeted validator and narrowly scoped workflow.",
     "Advanced backlog handoff to IA-D08-005 pending merge.",
-    "Targeted Validate Broad Offline Deferral workflow passed."
+    "Targeted Validate Broad Offline Deferral workflow passed.",
+    "Merged PR #184 and preserved unrelated historical workflow failures as workflow-scope defects."
   ],
-  "next_action": "Verify continuity plus the relevant final gate, merge PR #184, then bundle IA-D08-004 completed_verified projection with the IA-D08-005 start checkpoint. Unrelated historical IA workflow failures are workflow-scope defects and must not be treated as IA-D08-004 failures.",
+  "next_action": "Continue IA-D08-005 — optional and experimental isolation review.",
   "changed_paths": [
     "governance/application-planning/internal-alpha/IA-D08-004_BROAD_OFFLINE_DEFERRAL_PACKAGE.md",
     "governance/application-planning/internal-alpha/IA-D08-004_OFFLINE_DEFERRAL_FIXTURE_MATRIX.md",
@@ -35,9 +36,7 @@
     "governance/application-planning/internal-alpha/IA-D08-004_COMPLETION_RECORD.md",
     "governance/application-planning/internal-alpha/validate_broad_offline_deferral.py",
     ".github/workflows/validate-broad-offline-deferral.yml",
-    "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md",
-    "governance/ai/runtime/CURRENT_WORK_POINTER.json",
-    "governance/ai/work-state/IA-D08-004-attempt-001.json"
+    "governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md"
   ],
   "completion_gate": {
     "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
@@ -48,29 +47,20 @@
     {
       "command": "python governance/application-planning/internal-alpha/validate_broad_offline_deferral.py",
       "status": "passed",
-      "evidence": "Validate Broad Offline Deferral GitHub Actions run 31176673117 passed on PR #184."
+      "evidence": "IA-D08-004 Validate Broad Offline Deferral runs passed on final PR #184 heads, including run 31177198213."
     }
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
-    {
-      "kind": "commit",
-      "value": "IA-D08-004 ready-for-review branch head b0bf5e4355ac4cb347fc705dbb2c199a1dadacd7"
-    },
-    {
-      "kind": "pull_request",
-      "value": "IA-D08-004 PR #184"
-    },
-    {
-      "kind": "ci_run",
-      "value": "Validate Broad Offline Deferral run 31176673117 passed"
-    }
+    {"kind":"commit","value":"IA-D08-004 final PR head 58c6b2133473230cae8fd07ca953f1e584e81bbf"},
+    {"kind":"pull_request","value":"IA-D08-004 PR #184"},
+    {"kind":"ci_run","value":"IA-D08-004 Validate Broad Offline Deferral run 31177198213 passed"},
+    {"kind":"merge","value":"IA-D08-004 squash merge 57b12cb6a75657a0f5c01b8b0e7bca61a9701566"}
   ],
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "notes": [
-    "MV-AI-EFFICIENCY-001 applies: checkpoint updated only at material recovery/ready-for-review boundaries.",
-    "PRs #181 and #182 reduced unrelated Actions fan-out, but PR #184 proves additional historical IA workflows are still triggered by shared backlog/runtime paths and require further scope cleanup.",
+    "MV-AI-EFFICIENCY-001 applied.",
     "P9-06-008-attempt-002 remains unfinished and paused.",
     "The Design Standards Completion subproject remains paused/resumable and noncanonical until governed repository ingestion.",
     "No implementation, paid service, production credential, real-user data collection, internal-alpha release, deployment, public release, autonomous AI authority, or canonical promotion is authorized."
