@@ -1,29 +1,33 @@
 {
   "schema_version": "1.0.0",
-  "revision": 1,
+  "revision": 2,
   "work_item_id": "P9-06-015",
   "attempt_id": "P9-06-015-attempt-001",
   "track": "application-implementation",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "branch": "impl/p9-06-015-entitlement-transition-cancellation-tests",
-  "status": "started",
+  "status": "completed_verified",
   "started_at": "2026-08-07T14:38:00+00:00",
-  "updated_at": "2026-08-07T14:38:00+00:00",
-  "completed_at": null,
+  "updated_at": "2026-08-07T14:46:00+00:00",
+  "completed_at": "2026-08-07T14:46:00+00:00",
   "base_commit": "15c9278750c16649c6897f1b7518e98935a060f6",
-  "latest_pushed_commit": null,
-  "expected_remote_head": "15c9278750c16649c6897f1b7518e98935a060f6",
-  "pull_request": null,
+  "latest_pushed_commit": "9c2c958e1b737be377858cc4b9f40a6a458ade00",
+  "expected_remote_head": "9c2c958e1b737be377858cc4b9f40a6a458ade00",
+  "pull_request": 87,
   "objective": "Add deterministic entitlement transition and cancellation tests over the provider-neutral P9-06-014 evaluator, preserving expiry, cancellation, sponsored-month, campaign isolation, and downgrade semantics.",
-  "last_verified_action": "Created impl/p9-06-015-entitlement-transition-cancellation-tests from application main after P9-06-014 merge.",
-  "active_substep": "Inspect P9-06-014 evaluator semantics and implement deterministic transition/cancellation fixtures, focused validation, and narrowly scoped CI.",
+  "last_verified_action": "Targeted P9-06-015 CI run 31189190443 passed on exact head 9c2c958e1b737be377858cc4b9f40a6a458ade00 and PR #87 squash-merged as b99f67021839e8a1711b109f4c91cbdc12aa10a6.",
+  "active_substep": null,
   "completed_substeps": [
     "Verified P9-06-014 completed and merged.",
-    "Created the governed P9-06-015 application branch from merged P9-06-014 main."
+    "Created the governed P9-06-015 application branch from merged P9-06-014 main.",
+    "Added deterministic free, active, cancelled, expired, sponsored-month, campaign-isolation, and campaign-grant transition fixtures.",
+    "Passed Validate P9-06-015 Entitlement Transition Cancellation Tests run 31189190443 on exact head 9c2c958e1b737be377858cc4b9f40a6a458ade00.",
+    "Merged application PR #87 as b99f67021839e8a1711b109f4c91cbdc12aa10a6."
   ],
-  "next_action": "Implement entitlement transition and cancellation tests; merge only after exact-head targeted CI passes.",
+  "next_action": "None. P9-06-015 is completed_verified; P9-06-016 is next.",
   "changed_paths": [
     "fixtures/entitlements/p9-06-015-transition-cancellation.json",
+    "fixtures/entitlements/p9-06-015-transition-cancellation-receipt.json",
     "tools/verify_p9_06_015.py",
     ".github/workflows/validate-p9-06-015.yml"
   ],
@@ -33,16 +37,18 @@
     "owner_approval_required": false
   },
   "validation": [
-    {"command":"python tools/verify_p9_06_015.py","status":"not_run","evidence":null}
+    {"command":"python tools/verify_p9_06_015.py","status":"passed","evidence":"GitHub Actions run 31189190443"}
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
-    {"kind":"merge","value":"P9-06-014 PR #86 merge 15c9278750c16649c6897f1b7518e98935a060f6"},
-    {"kind":"file","value":"Application branch impl/p9-06-015-entitlement-transition-cancellation-tests created from merged P9-06-014 main"}
+    {"kind":"commit","value":"P9-06-015 exact head 9c2c958e1b737be377858cc4b9f40a6a458ade00"},
+    {"kind":"pull_request","value":"P9-06-015 PR #87"},
+    {"kind":"ci_run","value":"P9-06-015 run 31189190443 passed"},
+    {"kind":"merge","value":"P9-06-015 merge b99f67021839e8a1711b109f4c91cbdc12aa10a6"}
   ],
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "notes": [
-    "No provider billing account, production subscription data, credentials, paid service, deployment, or release is authorized."
+    "No provider billing account, production subscription data, credentials, paid service, deployment, or release was used or authorized."
   ]
 }
