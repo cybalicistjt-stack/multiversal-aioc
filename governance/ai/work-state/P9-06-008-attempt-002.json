@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 2,
+  "revision": 3,
   "work_item_id": "P9-06-008",
   "attempt_id": "P9-06-008-attempt-002",
   "track": "application-implementation",
@@ -8,53 +8,28 @@
   "branch": "impl/p9-06-008-logical-schema-migration",
   "status": "completed_verified",
   "started_at": "2026-08-06T00:33:00+00:00",
-  "updated_at": "2026-08-07T13:46:00+00:00",
+  "updated_at": "2026-08-07T13:49:00+00:00",
   "completed_at": "2026-08-07T13:37:00+00:00",
   "base_commit": "d1b62462a57f2c2ff88a0b3dfee16cd0d849feb3",
   "latest_pushed_commit": "4a0757d3d2072ff9f72e86046cacb623926b6175",
   "expected_remote_head": "4a0757d3d2072ff9f72e86046cacb623926b6175",
   "pull_request": 80,
   "objective": "Create the authoritative initial 17-table provider-neutral logical schema migration with reversible up/down definitions, explicit constraints and indexes, canonical table registry alignment, deterministic validation, and dedicated CI.",
-  "last_verified_action": "Corrected the canonical migration checksum and matching fixture, reran the exact targeted validator successfully, and merged PR #80.",
+  "last_verified_action": "P9-06-008 exact-head validation passed and PR #80 merged.",
   "active_substep": null,
-  "completed_substeps": [
-    "Recovered attempt-002 instead of restarting it.",
-    "Created the provider-neutral 17-table logical migration manifest, schema, fixture, validator, and dedicated CI.",
-    "Diagnosed the failed checksum gate and corrected the migration checksum plus fixture expectation.",
-    "Passed exact-head Validate P9-06-008 Logical Schema Migration run 31182741643.",
-    "Merged PR #80 as 5cec7f99933bd0c29285ba43424164c9df6ed1bd."
-  ],
-  "next_action": "None. P9-06-008 is completed_verified; P9-06-009 is the next dependency-ordered backlog item.",
-  "changed_paths": [
-    "database/migrations/0001_initial_logical_schema.json",
-    "schemas/database/logical-schema-migration.schema.json",
-    "fixtures/database/initial-logical-schema.json",
-    "tools/verify_p9_06_008.py",
-    ".github/workflows/validate-p9-06-008.yml"
-  ],
-  "completion_gate": {
-    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
-    "required_validation_commands": ["python tools/verify_p9_06_008.py"],
-    "owner_approval_required": false
-  },
-  "validation": [
-    {
-      "command": "python tools/verify_p9_06_008.py",
-      "status": "passed_hosted",
-      "evidence": "GitHub Actions run 31182741643"
-    }
-  ],
+  "completed_substeps": ["Recovered attempt-002 instead of restarting it.","Created the provider-neutral 17-table logical migration manifest, schema, fixture, validator, and dedicated CI.","Corrected the checksum mismatch.","Passed exact-head validation run 31182741643.","Merged PR #80."],
+  "next_action": "None. P9-06-009 is next.",
+  "changed_paths": ["database/migrations/0001_initial_logical_schema.json","schemas/database/logical-schema-migration.schema.json","fixtures/database/initial-logical-schema.json","tools/verify_p9_06_008.py",".github/workflows/validate-p9-06-008.yml"],
+  "completion_gate": {"required_evidence_kinds":["commit","pull_request","ci_run","merge"],"required_validation_commands":["python tools/verify_p9_06_008.py"],"owner_approval_required":false},
+  "validation": [{"command":"python tools/verify_p9_06_008.py","status":"passed","evidence":"P9-06-008 exact-head GitHub Actions run 31182741643 passed."}],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
-    {"kind":"commit","value":"4a0757d3d2072ff9f72e86046cacb623926b6175"},
-    {"kind":"pull_request","value":"80"},
-    {"kind":"ci_run","value":"31182741643"},
-    {"kind":"merge","value":"5cec7f99933bd0c29285ba43424164c9df6ed1bd"}
+    {"kind":"commit","value":"P9-06-008 exact final head 4a0757d3d2072ff9f72e86046cacb623926b6175"},
+    {"kind":"pull_request","value":"P9-06-008 PR #80"},
+    {"kind":"ci_run","value":"P9-06-008 run 31182741643 passed"},
+    {"kind":"merge","value":"P9-06-008 merge 5cec7f99933bd0c29285ba43424164c9df6ed1bd"}
   ],
   "roadmap_projection_pending": false,
-  "notes": [
-    "The migration remains a provider-neutral logical contract and does not bind the project to a hosted database provider or apply a live schema.",
-    "P9-06-009 seed/reset fixtures, P9-06-010 migration checks, and P9-06-011 rehearsal scripts remain separate dependent items."
-  ]
+  "notes": ["Provider-neutral logical contract only; no live database or provider commitment."]
 }
