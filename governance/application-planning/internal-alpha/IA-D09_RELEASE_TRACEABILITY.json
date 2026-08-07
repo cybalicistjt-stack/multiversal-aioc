@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "IA-D09",
+  "program": "MV-IA-001",
+  "coverage": [
+    {"series":"IA-D01","domain":"program foundation","release_role":"baseline","implementation_evidence":["stable identifiers","authority boundaries","program-level acceptance evidence"]},
+    {"series":"IA-D02","domain":"shared foundations","release_role":"baseline","implementation_evidence":["shared contracts","permissions","provenance","responsive/accessibility foundations"]},
+    {"series":"IA-D03","domain":"character and campaign preparation","release_role":"core","implementation_evidence":["character preparation","campaign/session preparation","encounter preparation","bounded fixture execution"]},
+    {"series":"IA-D04","domain":"first playable loop","release_role":"core","implementation_evidence":["action intent","GM approval decision","authoritative result","Event/history presentation","two-device recovery"]},
+    {"series":"IA-D05","domain":"relationship social investigation","release_role":"core","implementation_evidence":["relationship/reputation","social interaction","investigation/clue board","graph/list accessibility","noncombat integration"]},
+    {"series":"IA-D06","domain":"combat and assets","release_role":"core","implementation_evidence":["combat interface","inventory/ownership","bounded tactical positioning","basic vehicle operations","combat/asset integrity"]},
+    {"series":"IA-D07","domain":"world adventure creator content","release_role":"core","implementation_evidence":["world management","adventure/module management","bounded creator","Campaign-local content authority","authoring integration"]},
+    {"series":"IA-D08","domain":"optional AI deferred advanced offline experimental","release_role":"optional_boundary","implementation_evidence":["all-optionals-off operation","manual/semantic fallback","provider-neutral identity","offline authority isolation","opaque extension preservation"]}
+  ],
+  "reverse_traceability_rule": "Every release-blocking implementation test must identify the IA series or release-design requirement it proves; every core IA series must have at least one implementation evidence family before a future candidate can be described as validated.",
+  "release_blocking_cross_cutting_requirements": [
+    "permission_isolation",
+    "hidden_information_isolation",
+    "provenance_visibility",
+    "canonical_authority_integrity",
+    "reconnect_recovery",
+    "accessibility_baseline",
+    "optional_capability_isolation",
+    "known_limitations_visibility"
+  ],
+  "non_authorization": "This traceability record does not approve implementation release, deployment, public access, paid services, production credentials, or real-user data collection."
+}
