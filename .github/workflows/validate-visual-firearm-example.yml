@@ -1,0 +1,18 @@
+name: Validate Visual Firearm Example
+
+on:
+  pull_request:
+    paths:
+      - 'governance/object-system/item-examples/**'
+      - 'scripts/validate-visual-firearm-example.mjs'
+      - '.github/workflows/validate-visual-firearm-example.yml'
+
+jobs:
+  validate-visual-firearm-example:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/validate-visual-firearm-example.mjs

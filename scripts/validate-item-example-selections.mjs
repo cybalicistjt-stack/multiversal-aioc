@@ -14,9 +14,11 @@ for (const entry of selections.selections) {
   if (!templateIds.has(entry.templateId)) failures.push(`unknown template ${entry.templateId}`);
   if (!entry.sourceDocument || !Number.isInteger(entry.sourcePage) || entry.sourcePage < 1) failures.push(`${entry.templateId}: invalid source location`);
   if (!entry.sourceObjectName || !entry.reason) failures.push(`${entry.templateId}: incomplete selection evidence`);
-  if (!['selected-for-extraction','selected-class-example'].includes(entry.selectionState)) failures.push(`${entry.templateId}: unsupported selection state`);
+  if (!['selected-for-extraction','selected-class-example','visually-verified-partial-extraction'].includes(entry.selectionState)) failures.push(`${entry.templateId}: unsupported selection state`);
 }
-if (!selections.knownLimitations?.some(value => value.includes('image-only'))) failures.push('image-only firearm limitation missing');
+const firearm = selections.selections.find(entry => entry.templateId === 'item.weapon.firearm');
+if (!firearm || firearm.sourceDocument !== 'Guns 11-8-24.PDF' || firearm.selectionState !== 'visually-verified-partial-extraction') failures.push('visually verified firearm selection missing');
+if (!selections.knownLimitations?.some(value => value.includes('visual') || value.includes('rendered'))) failures.push('visual firearm review limitation missing');
 if (!selections.knownLimitations?.some(value => value.includes('does not mean complete'))) failures.push('completion boundary missing');
 if (!selections.nextAction?.includes('field-level provenance')) failures.push('next action must require field-level provenance');
 

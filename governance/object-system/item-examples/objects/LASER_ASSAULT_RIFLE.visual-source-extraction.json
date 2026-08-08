@@ -1,0 +1,75 @@
+{
+  "format": "multiversal-item-representative-object-extraction",
+  "version": "0.1.0",
+  "workstream": "8E-009L",
+  "certificationState": "source-extracted-not-certified",
+  "identity": {
+    "stableId": "example.item.weapon.firearm.laser-assault-rifle",
+    "displayName": "Laser Assault Rifle",
+    "templateId": "item.weapon.firearm",
+    "sourceTerminologyPreserved": true
+  },
+  "physicalProperties": {
+    "weight": {"value": 8, "unit": "lbs."}
+  },
+  "economy": {
+    "cost": {"value": 1200, "currency": "credits"}
+  },
+  "weaponProfile": {
+    "damageDice": "1d10",
+    "damageType": "Radiant",
+    "normalRange": {"value": 80, "unit": "ft"},
+    "longRange": {"value": 320, "unit": "ft"}
+  },
+  "firearmOperation": {
+    "ammunitionType": "charges",
+    "capacity": {
+      "standard": 40,
+      "extendedClip": 60,
+      "highCapacityMagazine": 80,
+      "unit": "charges"
+    },
+    "fireModes": [
+      {
+        "name": "Burst Fire",
+        "sourceRule": "Three attack rolls against one or multiple targets within a 10-foot radius; consumes additional ammunition and may impose a slight accuracy penalty depending on the firearm.",
+        "unresolved": ["exact additional ammunition consumed", "exact accuracy penalty for this firearm"]
+      }
+    ],
+    "specialRules": [
+      {
+        "name": "Rapid Reload",
+        "state": "named-in-table-definition-not-located",
+        "unresolved": ["activation economy", "reload amount", "mechanical effect"]
+      }
+    ]
+  },
+  "provenance": {
+    "sourceDocument": "Guns 11-8-24.PDF",
+    "inspectionMethod": "rendered-page visual review",
+    "fieldProvenance": {
+      "identity.displayName": {"page": 6, "region": "weapon statistics table"},
+      "physicalProperties.weight": {"page": 6, "region": "weapon statistics table"},
+      "economy.cost": {"page": 6, "region": "weapon statistics table"},
+      "weaponProfile": {"page": 6, "region": "weapon statistics table"},
+      "firearmOperation.capacity": {"pages": [4,5], "region": "Weapon Ammo Capacity table; continuation row on page 5"},
+      "firearmOperation.fireModes[0]": {"page": 2, "region": "Burst Fire rule"},
+      "firearmOperation.specialRules[0].name": {"page": 6, "region": "Special Rules column"}
+    }
+  },
+  "unresolvedFields": [
+    "reload method and action economy",
+    "Rapid Reload rule definition",
+    "Burst Fire exact ammunition cost",
+    "Burst Fire exact accuracy penalty",
+    "critical multiplier",
+    "durability and malfunction behavior",
+    "proficiency requirement"
+  ],
+  "validationState": {
+    "outcome": "partial",
+    "promotionReady": false,
+    "ownerApproved": false,
+    "reason": "Source-backed table values are extracted, but required firearm behavior and several rules-bearing fields remain unresolved."
+  }
+}
