@@ -1,0 +1,20 @@
+name: Validate Content Recovery Weapons Domain
+
+on:
+  pull_request:
+    paths:
+      - 'governance/content-recovery/domain-reviews/WEAPONS_DOMAIN_CLASSIFICATION_CONTRACT.json'
+      - 'governance/content-recovery/fixtures/WEAPONS_DOMAIN_REVIEW_FIXTURE.json'
+      - 'governance/content-recovery/pilots/PHASE2_WEAPONS_DOMAIN_REVIEW_COVERAGE.json'
+      - 'scripts/validate-content-recovery-weapons-domain.mjs'
+      - '.github/workflows/validate-content-recovery-weapons-domain.yml'
+
+jobs:
+  validate-weapons-domain:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/validate-content-recovery-weapons-domain.mjs
