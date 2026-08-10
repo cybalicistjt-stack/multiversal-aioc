@@ -1,0 +1,25 @@
+name: Validate Content v2 Batch 8E Promotion
+
+on:
+  pull_request:
+    paths:
+      - 'governance/content-recovery/releases/content-v2-batch8e-v1.6.0/**'
+      - 'governance/ai/work-state/CONTENT-V2-BATCH8E-PROMOTION-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'tools/validate_content_v2_batch8e_promotion.py'
+      - '.github/workflows/validate-content-v2-batch8e-promotion.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate governed Batch 8E repository promotion
+        run: python tools/validate_content_v2_batch8e_promotion.py
