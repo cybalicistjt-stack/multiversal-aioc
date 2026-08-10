@@ -1,17 +1,43 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-10T09:36:00+00:00",
+  "updated_at": "2026-08-10T15:02:55+00:00",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "static_restart_prompt": "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
   "mandatory_operating_policy": "governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md",
-  "primary_attempt_id": "DS-008-working-series-attempt-002",
-  "selection_reason": "The owner-selected Design Standards audit/recovery tranche is completed and merged. The exact next Design Standards operation is byte-exact repository ingestion of validated DS-008 through DS-012 publications. A prepared exact-byte ingestion package exists, but the current ChatGPT GitHub connector cannot consume mounted local files as repository file parameters without reconstructing large text, so attempt-002 is explicitly blocked on a repository-capable execution surface rather than falsely marked complete.",
+  "primary_attempt_id": "CONTENT-V2-BATCH8E-PROMOTION-attempt-001",
+  "selection_reason": "The owner explicitly selected governed ingestion/promotion of the completed and validated Content v2 Batch 8E release candidate. The governed promotion branch and durable evidence are committed. Exact repository byte ingestion of the prepared promotion collection is blocked only because the current ChatGPT GitHub connector cannot consume mounted local files as repository file parameters; this must continue on Codex or another repository-capable checkout rather than being falsely marked complete.",
   "active_attempts": [
+    {
+      "work_item_id": "CONTENT-V2-BATCH8E-PROMOTION",
+      "attempt_id": "CONTENT-V2-BATCH8E-PROMOTION-attempt-001",
+      "track": "content-recovery-promotion",
+      "priority": 1,
+      "owner_selected": true,
+      "repository": "cybalicistjt-stack/multiversal-aioc",
+      "branch": "content-recovery/batch8e-governed-promotion",
+      "checkpoint_path": "governance/ai/work-state/CONTENT-V2-BATCH8E-PROMOTION-attempt-001.json",
+      "status": "blocked_non_owner",
+      "updated_at": "2026-08-10T15:02:55+00:00",
+      "roadmap_projection_pending": true
+    },
+    {
+      "work_item_id": "DS-008-working-series",
+      "attempt_id": "DS-008-working-series-attempt-002",
+      "track": "design-standards-completion",
+      "priority": 2,
+      "owner_selected": false,
+      "repository": "cybalicistjt-stack/multiversal-aioc",
+      "branch": "governance/design-standards-publication-ingestion",
+      "checkpoint_path": "governance/ai/work-state/DS-008-working-series-attempt-002.json",
+      "status": "blocked_non_owner",
+      "updated_at": "2026-08-10T09:36:00+00:00",
+      "roadmap_projection_pending": true
+    },
     {
       "work_item_id": "DS-008-working-series",
       "attempt_id": "DS-008-working-series-attempt-001",
       "track": "design-standards-completion",
-      "priority": 2,
+      "priority": 3,
       "owner_selected": false,
       "repository": "cybalicistjt-stack/multiversal-aioc",
       "branch": "governance/design-standards-canonical-ingestion",
@@ -19,34 +45,28 @@
       "status": "completed_verified",
       "updated_at": "2026-08-10T09:26:00+00:00",
       "roadmap_projection_pending": true
-    },
-    {
-      "work_item_id": "DS-008-working-series",
-      "attempt_id": "DS-008-working-series-attempt-002",
-      "track": "design-standards-completion",
-      "priority": 1,
-      "owner_selected": true,
-      "repository": "cybalicistjt-stack/multiversal-aioc",
-      "branch": "governance/design-standards-publication-ingestion",
-      "checkpoint_path": "governance/ai/work-state/DS-008-working-series-attempt-002.json",
-      "status": "blocked_non_owner",
-      "updated_at": "2026-08-10T09:36:00+00:00",
-      "roadmap_projection_pending": true
     }
   ],
   "deferred_tracks": [
     {
       "track": "application-implementation",
       "next_work_item_id": "STAGE-A-A2",
-      "state": "authorized_current_application_item_paused_for_owner_selected_design_standards_resume",
-      "reason": "Multiversal-app PR #103 records STAGE-A-A2 — Universal Object Experience as AUTHORIZED CURRENT NEXT. The Design Standards side mission does not supersede or complete A2.",
+      "state": "authorized_current_application_item_paused_for_owner_selected_content_promotion",
+      "reason": "Multiversal-app PR #103 records STAGE-A-A2 — Universal Object Experience as AUTHORIZED CURRENT NEXT. The owner-selected Batch 8E content promotion does not supersede or complete A2.",
       "evidence": "Multiversal-app PR #103; .ai/current-work-order.md on app main"
+    },
+    {
+      "track": "design-standards-completion",
+      "next_work_item_id": "DS-008-working-series-attempt-002",
+      "state": "blocked_parallel_track_paused_for_owner_selected_content_promotion",
+      "reason": "Exact DS-008–DS-012 publication ingestion remains blocked on a repository-capable execution surface and is preserved unchanged while the owner-selected content promotion is primary.",
+      "evidence": "governance/ai/work-state/DS-008-working-series-attempt-002.json"
     },
     {
       "track": "internal-alpha-feature-design",
       "next_work_item_id": "IA-D09",
       "state": "completed_anchor",
-      "reason": "IA-D09 remains the completed release-design anchor; the Design Standards side mission does not rewrite that track.",
+      "reason": "IA-D09 remains the completed release-design anchor; the content promotion does not rewrite that track.",
       "evidence": "AIOC PR #187"
     }
   ]
