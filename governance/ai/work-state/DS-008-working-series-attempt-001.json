@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 3,
+  "revision": 4,
   "work_item_id": "DS-008-working-series",
   "attempt_id": "DS-008-working-series-attempt-001",
   "track": "design-standards-completion",
@@ -8,15 +8,15 @@
   "branch": "governance/design-standards-canonical-ingestion",
   "status": "ready_for_review",
   "started_at": "2026-08-10T08:42:00+00:00",
-  "updated_at": "2026-08-10T09:12:00+00:00",
+  "updated_at": "2026-08-10T09:14:00+00:00",
   "completed_at": null,
   "base_commit": "cbe326d9f70f23a57573bb029b52afb49d181807",
   "latest_pushed_commit": "0b1b3c7a1107e62c32f893e2fb286b6759d5f238",
   "expected_remote_head": "0b1b3c7a1107e62c32f893e2fb286b6759d5f238",
-  "pull_request": null,
+  "pull_request": 207,
   "objective": "Resume the paused Design Standards Completion subproject from the owner-supplied DS Series archive and complete the governed inventory/integration-audit tranche: distinguish final validated publications from drafts and legacy numbering, freeze selected DS-006/DS-007 candidates, reconcile retained bibles and Stage-A-A2 UX against DS-012, and establish deterministic repository ingestion rules without falsely claiming that the large publication bodies are already canonical.",
-  "last_verified_action": "The canonicalization audit, candidate manifest, legacy/duplicate disposition register, governed Design Standards README, focused validator, and path-scoped workflow are committed on the branch. The targeted local validator passed after correcting a DS-010 hash transcription error that the validator caught. Hosted Design Standards CI run 31372668383 passed on PR #207; the general continuity workflow then correctly exposed an invalid checkpoint evidence-kind schema, which this revision repairs before merge.",
-  "active_substep": "Rerun/inspect the hosted pull-request validation gates after repairing continuity checkpoint evidence kinds, then merge only if the exact-head required checks pass.",
+  "last_verified_action": "AIOC PR #207 is open. The targeted Design Standards workflow passed on the initial PR head. The general continuity workflow exposed unsupported custom evidence kinds; the checkpoint evidence schema and pointer projection were repaired, and the PR binding is now recorded for the rerun gate.",
+  "active_substep": "Inspect the rerun hosted validation gates on PR #207 after the continuity repair; merge only if the exact-head Design Standards and continuity gates pass.",
   "completed_substeps": [
     "Recovered the owner-supplied DS Series archive and enumerated all contained standards, final packages, drafts, recovery packages, and legacy numbering artifacts.",
     "Verified DS-008, DS-009, DS-010, DS-011, and DS-012 exact final publication hashes against their included validation reports.",
@@ -26,9 +26,9 @@
     "Added a focused deterministic canonicalization validator and path-scoped CI workflow.",
     "Ran the validator locally; its first run failed on an incorrectly transcribed DS-010 expected hash, the repository audit/manifest and validator were corrected to the actual source/validation-report SHA-256, and the rerun passed.",
     "Opened AIOC PR #207; targeted Design Standards canonicalization CI run 31372668383 passed on the initial PR head.",
-    "Inspected failed continuity run 31372668327 and identified the exact cause as unsupported checkpoint evidence kinds, not a Design Standards content failure."
+    "Inspected failed continuity run 31372668327 and repaired the unsupported checkpoint evidence-kind schema rather than ignoring the failed required check."
   ],
-  "next_action": "Inspect the rerun CI on the repaired PR head and merge the canonicalization-audit tranche only if continuity and Design Standards validation pass. After merge, exact publication ingestion of validated DS-008 through DS-012 is the next bounded Design Standards tranche.",
+  "next_action": "Inspect the exact-head rerun CI on PR #207 and merge the canonicalization-audit tranche only when required validation passes. After merge, exact publication ingestion of validated DS-008 through DS-012 is the next bounded Design Standards tranche.",
   "changed_paths": [
     "governance/design-standards/README.md",
     "governance/design-standards/canonicalization/DS_CANONICALIZATION_AUDIT_v1.0.0.md",
