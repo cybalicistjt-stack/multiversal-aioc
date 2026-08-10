@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "work_item_id": "CONTENT-V2-BATCH8E-PROMOTION",
+  "attempt_id": "CONTENT-V2-BATCH8E-PROMOTION-attempt-001",
+  "track": "content-recovery-promotion",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "branch": "content-recovery/batch8e-governed-promotion",
+  "status": "blocked_non_owner",
+  "started_at": "2026-08-10T15:02:55+00:00",
+  "updated_at": "2026-08-10T15:02:55+00:00",
+  "completed_at": null,
+  "base_commit": "708e0ea72a6dce6f5d46ddacd042c1ddb80eee0a",
+  "latest_pushed_commit": "eb623a579c9c6356b23e83e806a881c1ba2ee60e",
+  "expected_remote_head": "eb623a579c9c6356b23e83e806a881c1ba2ee60e",
+  "pull_request": null,
+  "objective": "Promote the validated Content v2 Batch 8E portable release candidate into the governed repository as a separate recovered-content release while preserving the existing 487-record certified collection, stable IDs, exact provenance, explicit unresolved/deferred states, and the separation between repository promotion and production deployment.",
+  "last_verified_action": "Created the governed promotion branch and committed the promotion handoff, exact input manifest, Batch 8E closure metrics, all 22 PASS validation gates, explicit unresolved/deferred queue evidence, and the Batch 8E closure report. The full source release SHA-256 and compact exact-copy repository promotion collection SHA-256 are durably recorded.",
+  "active_substep": "Transfer CONTENT_V2_BATCH8E_GOVERNED_PROMOTION_COLLECTION_v1.0.0.zip byte-for-byte into governance/content-recovery/releases/content-v2-batch8e-v1.6.0 and verify SHA-256 660a2a7b2ca8301e64d992bcf759b8ca29e7b4a52f09c681ed5ae2c58a1733c0 on the exact PR head.",
+  "completed_substeps": [
+    "Completed and validated the full Batch 8E portable release candidate with 22 of 22 blocking gates PASS.",
+    "Recorded owner authorization for governed ingestion/promotion of the Batch 8E release candidate.",
+    "Created branch content-recovery/batch8e-governed-promotion from main 708e0ea72a6dce6f5d46ddacd042c1ddb80eee0a.",
+    "Recorded full release MULTIVERSAL_CONTENT_V2_CROSS_DOMAIN_CLOSURE_PORTABLE_RELEASE_BATCH8E_PACKAGE_v1.6.0.zip SHA-256 f9d0d04334ae0c4ef75bbe8ceb466a468a77a88aed54849db697965bec331d3e.",
+    "Prepared compact exact-copy repository promotion collection CONTENT_V2_BATCH8E_GOVERNED_PROMOTION_COLLECTION_v1.0.0.zip SHA-256 660a2a7b2ca8301e64d992bcf759b8ca29e7b4a52f09c681ed5ae2c58a1733c0.",
+    "Committed durable promotion handoff, metrics, validation, unresolved/deferred queue, and closure-report evidence without falsely claiming binary ingestion.",
+    "Preserved the 1,671 R1 candidates as an open owner-decision queue and preserved production deployment as a separate gate."
+  ],
+  "next_action": "Use Codex or another real repository checkout with access to the prepared promotion collection, copy the ZIP without transformation to the governed target directory, verify SHA-256 660a2a7b2ca8301e64d992bcf759b8ca29e7b4a52f09c681ed5ae2c58a1733c0, run targeted promotion validation/CI, open or update the PR, validate the exact PR head, and merge only after all completion evidence passes.",
+  "changed_paths": [
+    "governance/content-recovery/releases/content-v2-batch8e-v1.6.0/BATCH8E_GOVERNED_REPOSITORY_PROMOTION_HANDOFF.md",
+    "governance/content-recovery/releases/content-v2-batch8e-v1.6.0/BATCH8E_PROMOTION_INPUT_MANIFEST.json",
+    "governance/content-recovery/releases/content-v2-batch8e-v1.6.0/BATCH8E_CROSS_DOMAIN_METRICS_v1.0.0.json",
+    "governance/content-recovery/releases/content-v2-batch8e-v1.6.0/BATCH8E_CROSS_DOMAIN_VALIDATION_v1.0.0.csv",
+    "governance/content-recovery/releases/content-v2-batch8e-v1.6.0/UNRESOLVED_DEFERRED_QUEUE_SUMMARY_v1.0.0.csv",
+    "governance/content-recovery/releases/content-v2-batch8e-v1.6.0/BATCH8E_CROSS_DOMAIN_CONTENT_CLOSURE_REPORT_v1.6.0.md",
+    "governance/ai/work-state/CONTENT-V2-BATCH8E-PROMOTION-attempt-001.json",
+    "governance/ai/runtime/CURRENT_WORK_POINTER.json"
+  ],
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge", "checksum"],
+    "required_validation_commands": ["python tools/validate_content_v2_batch8e_promotion.py"],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {
+      "command": "Batch 8E portable validator",
+      "status": "pass",
+      "evidence": "22 of 22 blocking Batch 8E portable release gates PASS."
+    },
+    {
+      "command": "python tools/validate_content_v2_batch8e_promotion.py",
+      "status": "not_run",
+      "evidence": "Repository promotion validator will remain blocking until the exact promotion ZIP exists at the governed target path."
+    }
+  ],
+  "unresolved_failures": [
+    "The current ChatGPT GitHub connector cannot consume the mounted local promotion ZIP as a repository file parameter. Re-encoding through connector-visible text is not accepted as an exact-byte transfer because large outputs are truncated/ellipsized. Exact repository byte ingestion therefore requires Codex or another repository-capable checkout."
+  ],
+  "owner_decision_required": false,
+  "evidence": [
+    {"kind": "artifact", "value": "Full Batch 8E portable release SHA-256 f9d0d04334ae0c4ef75bbe8ceb466a468a77a88aed54849db697965bec331d3e"},
+    {"kind": "artifact", "value": "Compact governed repository promotion collection SHA-256 660a2a7b2ca8301e64d992bcf759b8ca29e7b4a52f09c681ed5ae2c58a1733c0"},
+    {"kind": "validation", "value": "22/22 Batch 8E blocking portable-release gates PASS"},
+    {"kind": "commit", "value": "Governed promotion branch evidence committed through eb623a579c9c6356b23e83e806a881c1ba2ee60e before this checkpoint"}
+  ],
+  "roadmap_projection_pending": true,
+  "notes": [
+    "This is an execution-surface blocker, not an owner-decision gate; the owner already authorized governed promotion.",
+    "Do not overwrite or relabel the existing 487-record certified canonical collection.",
+    "Do not claim Public Canon 1.0 completeness; the 1,671 R1 candidates remain owner-deferred.",
+    "Do not infer production/public deployment authority from repository promotion.",
+    "DS-008-working-series-attempt-002 remains preserved as a paused blocked parallel track.",
+    "STAGE-A-A2 remains the authorized application work item and is paused as a parallel track."
+  ]
+}
