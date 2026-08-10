@@ -1,0 +1,23 @@
+Gate_ID,Gate,Result,Severity,Evidence
+8E-G01,"Frozen master source has exactly 20 catalogs and 19,199 rows",PASS,BLOCKING,20 catalogs / 19199 rows
+8E-G02,Core active-primary identity is closed,PASS,BLOCKING,3908 unique canonical core Definitions
+8E-G03,Ability/Spell definition identity is stable,PASS,BLOCKING,5142 definition-bearing rows / 5137 unique Definitions
+8E-G04,World/Setting source accountability covers all 931 physical pages exactly once,PASS,BLOCKING,931 unique page closure rows
+8E-G05,World/Setting Definition IDs are unique,PASS,BLOCKING,57 unique Setting IDs
+8E-G06,Environment Definition IDs are unique and all 40 profiles are promoted,PASS,BLOCKING,40 unique Environment IDs
+8E-G07,Branch profiles preserve governed Branch identities,PASS,BLOCKING,14 governed Branch identities / 13 source profiles / 13 unique Rules Profile IDs
+8E-G08,Empire candidates are fully dispositioned,PASS,BLOCKING,23/23 faction/organization Definitions represented
+8E-G09,Environment→Ability relationship endpoints resolve,PASS,BLOCKING,68/68 endpoint pairs validated
+8E-G10,Branch→Setting relationship endpoints resolve,PASS,BLOCKING,14/14 endpoint pairs validated
+8E-G11,Branch rule sections reference existing portable profiles,PASS,BLOCKING,70/70 rule sections validated
+8E-G12,Empire world governance relationships resolve to release Settings and governed faction identity,PASS,BLOCKING,9/9 governance relationship endpoints validated
+8E-G13,Empire direct world-organization relationships resolve,PASS,BLOCKING,5/5 direct relationship endpoints validated
+8E-G14,Empire entity relationship endpoints resolve against portable/recovered identity surface,PASS,BLOCKING,24/24 entity relationship endpoint pairs validated
+8E-G15,"All 1,284 resolved cross-package relationship sources exist in supporting Species/NPC snapshot",PASS,BLOCKING,1284 relationship source endpoints validated
+8E-G16,"All 1,284 resolved cross-package relationship targets resolve using governed identity/catalog semantics",PASS,BLOCKING,1284/1284 target endpoints validated; bad=0
+8E-G17,Known unresolved relationship queue remains explicit rather than coerced,PASS,BLOCKING,86 unresolved relationships retained
+8E-G18,Completeness state has no unexplained active gameplay blank cells,PASS,BLOCKING,0 blank-unclassified gameplay cells
+8E-G19,Normalization raw-value review queue is explicitly retained,PASS,BLOCKING,"4,502 unique review patterns retained"
+8E-G20,Canonical R1 deferred decision remains explicit,PASS,BLOCKING,"1,671 formally deferred / owner decision OPEN"
+8E-G21,Unified release identity registry has no conflicting duplicate-ID/name assignments,PASS,BLOCKING,11861 unique IDs / 0 conflicting duplicates
+8E-G22,Portable release import-readiness validation,PASS,BLOCKING,"All blocking structural, identity, provenance, relationship, source-accountability gates pass; governed deferred/unresolved queues preserved"
