@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 1,
+  "revision": 2,
   "work_item_id": "CONTENT-V2-BATCH8E-PROMOTION",
   "attempt_id": "CONTENT-V2-BATCH8E-PROMOTION-attempt-001",
   "track": "content-recovery-promotion",
@@ -8,14 +8,14 @@
   "branch": "content-recovery/batch8e-governed-promotion",
   "status": "blocked_non_owner",
   "started_at": "2026-08-10T15:02:55+00:00",
-  "updated_at": "2026-08-10T15:02:55+00:00",
+  "updated_at": "2026-08-10T15:08:51+00:00",
   "completed_at": null,
   "base_commit": "708e0ea72a6dce6f5d46ddacd042c1ddb80eee0a",
-  "latest_pushed_commit": "eb623a579c9c6356b23e83e806a881c1ba2ee60e",
-  "expected_remote_head": "eb623a579c9c6356b23e83e806a881c1ba2ee60e",
+  "latest_pushed_commit": "e30d91590df5c423d74221def4585cdaadf85897",
+  "expected_remote_head": "e30d91590df5c423d74221def4585cdaadf85897",
   "pull_request": null,
   "objective": "Promote the validated Content v2 Batch 8E portable release candidate into the governed repository as a separate recovered-content release while preserving the existing 487-record certified collection, stable IDs, exact provenance, explicit unresolved/deferred states, and the separation between repository promotion and production deployment.",
-  "last_verified_action": "Created the governed promotion branch and committed the promotion handoff, exact input manifest, Batch 8E closure metrics, all 22 PASS validation gates, explicit unresolved/deferred queue evidence, and the Batch 8E closure report. The full source release SHA-256 and compact exact-copy repository promotion collection SHA-256 are durably recorded.",
+  "last_verified_action": "Committed the governed promotion handoff/evidence, selected this attempt as CURRENT_WORK_POINTER primary, and installed a targeted repository validator plus CI workflow that deliberately fails until the exact promotion ZIP exists at the governed path and matches the audited SHA-256.",
   "active_substep": "Transfer CONTENT_V2_BATCH8E_GOVERNED_PROMOTION_COLLECTION_v1.0.0.zip byte-for-byte into governance/content-recovery/releases/content-v2-batch8e-v1.6.0 and verify SHA-256 660a2a7b2ca8301e64d992bcf759b8ca29e7b4a52f09c681ed5ae2c58a1733c0 on the exact PR head.",
   "completed_substeps": [
     "Completed and validated the full Batch 8E portable release candidate with 22 of 22 blocking gates PASS.",
@@ -24,9 +24,12 @@
     "Recorded full release MULTIVERSAL_CONTENT_V2_CROSS_DOMAIN_CLOSURE_PORTABLE_RELEASE_BATCH8E_PACKAGE_v1.6.0.zip SHA-256 f9d0d04334ae0c4ef75bbe8ceb466a468a77a88aed54849db697965bec331d3e.",
     "Prepared compact exact-copy repository promotion collection CONTENT_V2_BATCH8E_GOVERNED_PROMOTION_COLLECTION_v1.0.0.zip SHA-256 660a2a7b2ca8301e64d992bcf759b8ca29e7b4a52f09c681ed5ae2c58a1733c0.",
     "Committed durable promotion handoff, metrics, validation, unresolved/deferred queue, and closure-report evidence without falsely claiming binary ingestion.",
-    "Preserved the 1,671 R1 candidates as an open owner-decision queue and preserved production deployment as a separate gate."
+    "Preserved the 1,671 R1 candidates as an open owner-decision queue and preserved production deployment as a separate gate.",
+    "Projected CONTENT-V2-BATCH8E-PROMOTION-attempt-001 as the owner-selected primary work item while preserving DS-008 attempt-002 and STAGE-A-A2 as parallel tracks.",
+    "Added tools/validate_content_v2_batch8e_promotion.py; it blocks completion unless the exact ZIP is present and hash-valid.",
+    "Added .github/workflows/validate-content-v2-batch8e-promotion.yml for targeted exact-head promotion validation."
   ],
-  "next_action": "Use Codex or another real repository checkout with access to the prepared promotion collection, copy the ZIP without transformation to the governed target directory, verify SHA-256 660a2a7b2ca8301e64d992bcf759b8ca29e7b4a52f09c681ed5ae2c58a1733c0, run targeted promotion validation/CI, open or update the PR, validate the exact PR head, and merge only after all completion evidence passes.",
+  "next_action": "Use Codex or another real repository checkout with access to the prepared promotion collection, copy the ZIP without transformation to the governed target directory, verify SHA-256 660a2a7b2ca8301e64d992bcf759b8ca29e7b4a52f09c681ed5ae2c58a1733c0, run python tools/validate_content_v2_batch8e_promotion.py and applicable continuity validators, open the PR, validate the exact PR head, merge only after checks pass, then create the minimal post-merge completed_verified projection.",
   "changed_paths": [
     "governance/content-recovery/releases/content-v2-batch8e-v1.6.0/BATCH8E_GOVERNED_REPOSITORY_PROMOTION_HANDOFF.md",
     "governance/content-recovery/releases/content-v2-batch8e-v1.6.0/BATCH8E_PROMOTION_INPUT_MANIFEST.json",
@@ -35,7 +38,9 @@
     "governance/content-recovery/releases/content-v2-batch8e-v1.6.0/UNRESOLVED_DEFERRED_QUEUE_SUMMARY_v1.0.0.csv",
     "governance/content-recovery/releases/content-v2-batch8e-v1.6.0/BATCH8E_CROSS_DOMAIN_CONTENT_CLOSURE_REPORT_v1.6.0.md",
     "governance/ai/work-state/CONTENT-V2-BATCH8E-PROMOTION-attempt-001.json",
-    "governance/ai/runtime/CURRENT_WORK_POINTER.json"
+    "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+    "tools/validate_content_v2_batch8e_promotion.py",
+    ".github/workflows/validate-content-v2-batch8e-promotion.yml"
   ],
   "completion_gate": {
     "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge", "checksum"],
@@ -50,8 +55,8 @@
     },
     {
       "command": "python tools/validate_content_v2_batch8e_promotion.py",
-      "status": "not_run",
-      "evidence": "Repository promotion validator will remain blocking until the exact promotion ZIP exists at the governed target path."
+      "status": "blocked_expected",
+      "evidence": "Targeted validator is committed and intentionally blocks until the exact promotion ZIP is present at the governed target path."
     }
   ],
   "unresolved_failures": [
@@ -62,7 +67,9 @@
     {"kind": "artifact", "value": "Full Batch 8E portable release SHA-256 f9d0d04334ae0c4ef75bbe8ceb466a468a77a88aed54849db697965bec331d3e"},
     {"kind": "artifact", "value": "Compact governed repository promotion collection SHA-256 660a2a7b2ca8301e64d992bcf759b8ca29e7b4a52f09c681ed5ae2c58a1733c0"},
     {"kind": "validation", "value": "22/22 Batch 8E blocking portable-release gates PASS"},
-    {"kind": "commit", "value": "Governed promotion branch evidence committed through eb623a579c9c6356b23e83e806a881c1ba2ee60e before this checkpoint"}
+    {"kind": "commit", "value": "Current-work pointer selected this attempt at 50d1a5c452a153c810fb6ef126b74877bc88c69a"},
+    {"kind": "commit", "value": "Targeted promotion validator committed at 579a619ef4d613038eccda565e53ebfb7bd539c6"},
+    {"kind": "commit", "value": "Targeted promotion CI committed at e30d91590df5c423d74221def4585cdaadf85897"}
   ],
   "roadmap_projection_pending": true,
   "notes": [
