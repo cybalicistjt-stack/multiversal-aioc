@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 2,
+  "revision": 3,
   "work_item_id": "DS-008-working-series",
   "attempt_id": "DS-008-working-series-attempt-001",
   "track": "design-standards-completion",
@@ -8,15 +8,15 @@
   "branch": "governance/design-standards-canonical-ingestion",
   "status": "ready_for_review",
   "started_at": "2026-08-10T08:42:00+00:00",
-  "updated_at": "2026-08-10T09:07:00+00:00",
+  "updated_at": "2026-08-10T09:12:00+00:00",
   "completed_at": null,
   "base_commit": "cbe326d9f70f23a57573bb029b52afb49d181807",
   "latest_pushed_commit": "0b1b3c7a1107e62c32f893e2fb286b6759d5f238",
   "expected_remote_head": "0b1b3c7a1107e62c32f893e2fb286b6759d5f238",
   "pull_request": null,
   "objective": "Resume the paused Design Standards Completion subproject from the owner-supplied DS Series archive and complete the governed inventory/integration-audit tranche: distinguish final validated publications from drafts and legacy numbering, freeze selected DS-006/DS-007 candidates, reconcile retained bibles and Stage-A-A2 UX against DS-012, and establish deterministic repository ingestion rules without falsely claiming that the large publication bodies are already canonical.",
-  "last_verified_action": "The canonicalization audit, candidate manifest, legacy/duplicate disposition register, governed Design Standards README, focused validator, and path-scoped workflow are committed on the branch. The targeted local validator passed after correcting a DS-010 hash transcription error that the validator caught.",
-  "active_substep": "Run the hosted pull-request validation gate for the canonicalization audit tranche and merge only if the exact-head validator passes.",
+  "last_verified_action": "The canonicalization audit, candidate manifest, legacy/duplicate disposition register, governed Design Standards README, focused validator, and path-scoped workflow are committed on the branch. The targeted local validator passed after correcting a DS-010 hash transcription error that the validator caught. Hosted Design Standards CI run 31372668383 passed on PR #207; the general continuity workflow then correctly exposed an invalid checkpoint evidence-kind schema, which this revision repairs before merge.",
+  "active_substep": "Rerun/inspect the hosted pull-request validation gates after repairing continuity checkpoint evidence kinds, then merge only if the exact-head required checks pass.",
   "completed_substeps": [
     "Recovered the owner-supplied DS Series archive and enumerated all contained standards, final packages, drafts, recovery packages, and legacy numbering artifacts.",
     "Verified DS-008, DS-009, DS-010, DS-011, and DS-012 exact final publication hashes against their included validation reports.",
@@ -24,9 +24,11 @@
     "Reconciled the high-impact Stage-A-A2 Library/Search/Inspector decisions against DS-012 and found no direct conflict in the checked list/table, responsive inspector, filter, permission, state, deep-object, and World/Content Library decisions.",
     "Published a governed canonicalization audit and machine-readable selected-candidate and legacy/duplicate disposition registers.",
     "Added a focused deterministic canonicalization validator and path-scoped CI workflow.",
-    "Ran the validator locally; its first run failed on an incorrectly transcribed DS-010 expected hash, the repository audit/manifest and validator were corrected to the actual source/validation-report SHA-256, and the rerun passed."
+    "Ran the validator locally; its first run failed on an incorrectly transcribed DS-010 expected hash, the repository audit/manifest and validator were corrected to the actual source/validation-report SHA-256, and the rerun passed.",
+    "Opened AIOC PR #207; targeted Design Standards canonicalization CI run 31372668383 passed on the initial PR head.",
+    "Inspected failed continuity run 31372668327 and identified the exact cause as unsupported checkpoint evidence kinds, not a Design Standards content failure."
   ],
-  "next_action": "Open the pull request, run/inspect the exact-head hosted validation, and merge the canonicalization-audit tranche if it passes. After merge, the next bounded Design Standards work is exact publication ingestion of validated DS-008 through DS-012, followed by selected DS-006/DS-007 ingestion; these large publication bodies are not claimed canonical by this tranche.",
+  "next_action": "Inspect the rerun CI on the repaired PR head and merge the canonicalization-audit tranche only if continuity and Design Standards validation pass. After merge, exact publication ingestion of validated DS-008 through DS-012 is the next bounded Design Standards tranche.",
   "changed_paths": [
     "governance/design-standards/README.md",
     "governance/design-standards/canonicalization/DS_CANONICALIZATION_AUDIT_v1.0.0.md",
@@ -46,22 +48,24 @@
   "validation": [
     {
       "command": "python tools/validate_design_standards_canonicalization.py",
-      "status": "failed_then_repaired",
+      "status": "failed",
       "evidence": "Initial local-equivalent run rejected a transcribed DS-010 SHA mismatch before review; actual DS-010 file and included validation report both prove SHA 1225fcde9305834a06644d74178804ed31d3d3d2c2d4e4530d0efc74bc6ddf97. Audit/manifest/validator were corrected."
     },
     {
       "command": "python tools/validate_design_standards_canonicalization.py",
       "status": "passed",
-      "evidence": "Targeted local-equivalent rerun passed final DS-008–DS-012 hashes/dispositions, DS-006 selection, DS-007 current-version selection, legacy/duplicate exclusion, and the canonical-ingestion boundary."
+      "evidence": "Targeted local-equivalent rerun passed final DS-008–DS-012 hashes/dispositions, DS-006 selection, DS-007 current-version selection, legacy/duplicate exclusion, and the canonical-ingestion boundary. Hosted run 31372668383 also passed on PR #207 initial head."
     }
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
-    {"kind": "application_merge", "value": "P9-06-023 physical acceptance PR #102 merged at fb22295948745347913bcbfebf56ecca26bf39fb"},
-    {"kind": "application_merge", "value": "P9-06-024 transition PR #103 merged at 8b7f53da1f72c280226f64be67c9aa1c280fefdf and names STAGE-A-A2 as the authorized current application item"},
-    {"kind": "owner_selection", "value": "Owner explicitly resumed the Design Standards subproject in the current conversation by supplying DS Series.zip and instructing Continue"},
-    {"kind": "branch_commit", "value": "Design Standards canonicalization package exact pre-review head 0b1b3c7a1107e62c32f893e2fb286b6759d5f238"}
+    {"kind": "merge", "value": "Application P9-06-023 physical acceptance PR #102 merged at fb22295948745347913bcbfebf56ecca26bf39fb"},
+    {"kind": "merge", "value": "Application P9-06-024 transition PR #103 merged at 8b7f53da1f72c280226f64be67c9aa1c280fefdf and names STAGE-A-A2 as authorized current application item"},
+    {"kind": "owner_decision", "value": "Owner selected resumption of Design Standards in the current operation by supplying DS Series.zip and instructing Continue"},
+    {"kind": "commit", "value": "DS-008-working-series canonicalization substantive pre-review commit 0b1b3c7a1107e62c32f893e2fb286b6759d5f238"},
+    {"kind": "pull_request", "value": "DS-008-working-series AIOC PR #207"},
+    {"kind": "ci_run", "value": "DS-008-working-series targeted canonicalization CI run 31372668383 success on initial PR head"}
   ],
   "roadmap_projection_pending": true,
   "notes": [
