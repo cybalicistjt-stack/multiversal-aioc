@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "work_item_id": "DS-008-working-series",
+  "attempt_id": "DS-008-working-series-attempt-002",
+  "track": "design-standards-completion",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "branch": "governance/design-standards-publication-ingestion",
+  "status": "blocked_non_owner",
+  "started_at": "2026-08-10T09:36:00+00:00",
+  "updated_at": "2026-08-10T09:36:00+00:00",
+  "completed_at": null,
+  "base_commit": "0cfd8128786e4cdd055e3e3be26bdd1854efdfa7",
+  "latest_pushed_commit": "01ce33c110633647853a075fffcea22a5965ad08",
+  "expected_remote_head": "01ce33c110633647853a075fffcea22a5965ad08",
+  "pull_request": null,
+  "objective": "Commit and validate the exact final DS-008 through DS-012 publication bodies and matching source traces/validation reports under governed Design Standards repository paths, preserving the exact audited SHA-256 values and never substituting older drafts or regenerated text.",
+  "last_verified_action": "Prepared and hash-verified the owner-visible exact-byte ingestion package MULTIVERSAL_DS_008_012_PUBLICATION_INGESTION_PACKAGE_v1.0.0.zip (SHA-256 d2cbf908af4102b58f4b0a68108813df310465bea803bc3b1dc22ca7733f9b7b) and committed the repository ingestion-handoff boundary at 01ce33c110633647853a075fffcea22a5965ad08.",
+  "active_substep": "Transfer the prepared publication/evidence files byte-for-byte into governance/design-standards/publications and governance/design-standards/evidence using a repository-capable execution surface, then install/run the exact publication validator.",
+  "completed_substeps": [
+    "Created an ingestion package containing the five exact validated publication bodies under canonical filenames, all five source traces, all five validation reports, a deterministic publication validator, a manifest, hash receipt, and Codex instructions.",
+    "Verified all five publication SHA-256 values in the package exactly match the owner archive validation evidence.",
+    "Verified the ingestion ZIP CRC and recorded package SHA-256 d2cbf908af4102b58f4b0a68108813df310465bea803bc3b1dc22ca7733f9b7b.",
+    "Committed a durable repository handoff that preserves the exact target paths, hashes, completion gate, and execution-surface blocker without claiming publication ingestion."
+  ],
+  "next_action": "Run this attempt in Codex or another repository checkout that can access the prepared package as real files, copy the publication/evidence bytes without transformation, run python tools/validate_design_standards_publications.py, add targeted CI, and merge only after exact-head hash validation passes.",
+  "changed_paths": [
+    "governance/design-standards/canonicalization/DS_008_012_PUBLICATION_INGESTION_HANDOFF.md",
+    "governance/ai/work-state/DS-008-working-series-attempt-002.json",
+    "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+    "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json"
+  ],
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge", "checksum"],
+    "required_validation_commands": ["python tools/validate_design_standards_publications.py"],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {
+      "command": "python tools/validate_design_standards_publications.py",
+      "status": "not_run",
+      "evidence": "Validator is packaged for the repository-capable ingestion run; publication files are not yet present at repository target paths."
+    }
+  ],
+  "unresolved_failures": [
+    "Current ChatGPT GitHub connector does not accept the mounted owner file/path as a repository file parameter. Supplying the complete >1.5 MB publication text through truncated tool output would break the exact-byte/hash guarantee, so repository publication ingestion cannot be safely completed on this execution surface."
+  ],
+  "owner_decision_required": false,
+  "evidence": [
+    {"kind": "merge", "value": "DS-008-working-series-attempt-001 canonicalization audit PR #207 merged at bd3071f6f855b66b740ba4bf1f1ba0208636548c; completion receipt PR #208 merged at 0cfd8128786e4cdd055e3e3be26bdd1854efdfa7"},
+    {"kind": "artifact", "value": "DS-008-working-series-attempt-002 exact publication ingestion package MULTIVERSAL_DS_008_012_PUBLICATION_INGESTION_PACKAGE_v1.0.0.zip SHA-256 d2cbf908af4102b58f4b0a68108813df310465bea803bc3b1dc22ca7733f9b7b"},
+    {"kind": "commit", "value": "DS-008-working-series-attempt-002 repository ingestion handoff commit 01ce33c110633647853a075fffcea22a5965ad08"}
+  ],
+  "roadmap_projection_pending": true,
+  "notes": [
+    "This is an execution-surface blocker, not an owner-decision gate.",
+    "Do not mark DS-008–DS-012 publications canonical until exact bytes are committed, hash-validated on the exact PR head, and merged.",
+    "Selected DS-006/DS-007 ingestion follows this tranche.",
+    "STAGE-A-A2 remains the authorized application work item and is paused as a parallel track; no release authority changes."
+  ]
+}
