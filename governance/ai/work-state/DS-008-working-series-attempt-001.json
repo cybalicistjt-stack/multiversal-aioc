@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 5,
+  "revision": 6,
   "work_item_id": "DS-008-working-series",
   "attempt_id": "DS-008-working-series-attempt-001",
   "track": "design-standards-completion",
@@ -8,14 +8,14 @@
   "branch": "governance/design-standards-canonical-ingestion",
   "status": "completed_verified",
   "started_at": "2026-08-10T08:42:00+00:00",
-  "updated_at": "2026-08-10T09:22:00+00:00",
+  "updated_at": "2026-08-10T09:26:00+00:00",
   "completed_at": "2026-08-10T09:22:00+00:00",
   "base_commit": "cbe326d9f70f23a57573bb029b52afb49d181807",
   "latest_pushed_commit": "383e283f841646094872025bdf3b23622aae6ce4",
   "expected_remote_head": "383e283f841646094872025bdf3b23622aae6ce4",
   "pull_request": 207,
   "objective": "Resume the paused Design Standards Completion subproject from the owner-supplied DS Series archive and complete the governed inventory/integration-audit tranche: distinguish final validated publications from drafts and legacy numbering, freeze selected DS-006/DS-007 candidates, reconcile retained bibles and Stage-A-A2 UX against DS-012, and establish deterministic repository ingestion rules without falsely claiming that the large publication bodies are already canonical.",
-  "last_verified_action": "AIOC PR #207 passed the exact-head Design Standards validator (run 31373108997), conversation continuity (run 31373108948), operational baseline (run 31373108958), interaction enforcement (run 31373109063), and correction-to-regression (run 31373108962), then merged at bd3071f6f855b66b740ba4bf1f1ba0208636548c.",
+  "last_verified_action": "AIOC PR #207 passed the exact-head Design Standards validator (run 31373108997), conversation continuity (run 31373108948), operational baseline (run 31373108958), interaction enforcement (run 31373109063), and correction-to-regression (run 31373108962), then merged at bd3071f6f855b66b740ba4bf1f1ba0208636548c. This attempt is complete as the audit/recovery tranche; the broader Design Standards roadmap projection remains pending until exact publication ingestion proceeds.",
   "active_substep": null,
   "completed_substeps": [
     "Recovered the owner-supplied DS Series archive and enumerated all contained standards, final packages, drafts, recovery packages, and legacy numbering artifacts.",
@@ -69,10 +69,11 @@
     {"kind": "merge", "value": "DS-008-working-series AIOC PR #207 merged at bd3071f6f855b66b740ba4bf1f1ba0208636548c"},
     {"kind": "owner_decision", "value": "Owner selected resumption of Design Standards in the current operation by supplying DS Series.zip and instructing Continue"}
   ],
-  "roadmap_projection_pending": false,
+  "roadmap_projection_pending": true,
   "notes": [
     "STAGE-A-A2 remains the authorized current application work item and is paused as a parallel track while the owner-selected Design Standards operation continues.",
     "This completed attempt is the canonicalization audit/recovery tranche only. It does not claim the large DS-008–DS-012 publication bodies or DS-006/DS-007 package bodies are already committed canonically.",
+    "The broader Design Standards roadmap item remains incomplete and roadmap_projection_pending remains true until publication/package ingestion advances the repository-canonical standard set.",
     "No release, tester-access, deployment, paid-service, credential, or public-release authority is created by this documentation/governance operation."
   ]
 }
