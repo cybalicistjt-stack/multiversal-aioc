@@ -1,22 +1,22 @@
 {
-  "schema_version":"1.0.0",
-  "generated_at":"2026-08-07T16:03:00+00:00",
-  "source_pointer":"governance/ai/runtime/CURRENT_WORK_POINTER.json",
-  "primary":{
-    "work_item_id":"P9-06-023",
-    "attempt_id":"P9-06-023-attempt-001",
-    "track":"application-implementation",
-    "repository":"cybalicistjt-stack/Multiversal-app",
-    "branch":"impl/p9-06-023-two-device-online-internal-alpha-acceptance",
-    "status":"blocked_non_owner",
-    "active_substep":"Populate and validate the merged AG-07 evidence template from an actual two-distinct-physical-device online run; repository/CI tooling cannot create that physical evidence.",
-    "next_action":"On two actual devices, copy fixtures/acceptance/p9-06-023-physical-device-evidence-template.json to a run-specific evidence file, populate only observed values/artifact references, then run python tools/verify_p9_06_023_physical_evidence.py <evidence-file>. Only a passing real evidence file can clear AG-07 and allow P9-06-024 to begin.",
-    "latest_pushed_commit":"ad051350d479312a256bc2808613ae0d3c7a9127",
-    "pull_request":96,
-    "owner_decision_required":false,
-    "unresolved_failures":["AG-07 physical-device criterion is not yet evidenced: repository/CI execution proves simulated peers and validates the evidence-capture schema, but not two distinct physical devices connected."],
-    "roadmap_projection_pending":true
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-10T08:44:00+00:00",
+  "source_pointer": "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+  "primary": {
+    "work_item_id": "DS-008-working-series",
+    "attempt_id": "DS-008-working-series-attempt-001",
+    "track": "design-standards-completion",
+    "repository": "cybalicistjt-stack/multiversal-aioc",
+    "branch": "governance/design-standards-canonical-ingestion",
+    "status": "started",
+    "active_substep": "Publish the canonicalization audit and validated DS-008 through DS-012 tranche into governed repository paths, then validate exact hashes and duplicate dispositions.",
+    "next_action": "Ingest the audit plus validated DS-008 through DS-012 under governance/design-standards, add focused validation/CI, and advance only on passing evidence.",
+    "latest_pushed_commit": "dcf57e661455a9167876c4233b03c7e04bc2a1a5",
+    "pull_request": null,
+    "owner_decision_required": false,
+    "unresolved_failures": [],
+    "roadmap_projection_pending": true
   },
-  "active_attempt_count":1,
-  "deferred_track_count":2
+  "active_attempt_count": 1,
+  "deferred_track_count": 2
 }
