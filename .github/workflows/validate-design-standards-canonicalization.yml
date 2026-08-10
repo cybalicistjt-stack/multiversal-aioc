@@ -1,0 +1,29 @@
+name: Validate Design Standards Canonicalization
+
+on:
+  pull_request:
+    paths:
+      - 'governance/design-standards/**'
+      - 'governance/ai/work-state/DS-008-working-series-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'tools/validate_design_standards_canonicalization.py'
+      - '.github/workflows/validate-design-standards-canonicalization.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'governance/design-standards/**'
+      - 'tools/validate_design_standards_canonicalization.py'
+      - '.github/workflows/validate-design-standards-canonicalization.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate Design Standards canonicalization audit
+        run: python tools/validate_design_standards_canonicalization.py
