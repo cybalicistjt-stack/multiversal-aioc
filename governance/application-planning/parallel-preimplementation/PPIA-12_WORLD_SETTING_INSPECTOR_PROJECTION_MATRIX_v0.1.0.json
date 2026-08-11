@@ -1,0 +1,660 @@
+{
+  "format": "multiversal-ppia12-world-setting-inspector-projection-matrix",
+  "version": "0.1.0",
+  "work_item": "PPIA-12",
+  "status": "implementation_ready_design_contract",
+  "inherits": "PPIA-12_WORLD_SETTING_TAXONOMY_v0.1.0.json",
+  "authority": [
+    "PPIA-12_SOURCE_AND_DESIGN_INVENTORY.md",
+    "PPIA-12_SETTING_EXTENSION_ROUTING_v0.1.0.json",
+    "PPIA-08 Campaign & Scene Authoring",
+    "PPIA-02 Creature & NPC Experience",
+    "PPIA-03 Item & Inventory Experience",
+    "PPIA-04 Vehicle, Mecha & Starship Experience",
+    "PPIA-05 Species, Forms & Character Biology",
+    "PPIA-11 Encounter Builder & Balance",
+    "MV-IA-F002 Universal Object Experience",
+    "MV-IA-F020/F021 permissions, hidden information and recovery",
+    "MV-IA-F022 Accessibility and Adaptive Interface"
+  ],
+  "principles": [
+    "Authorize and filter before hidden settings, locations, routes, factions, history, secrets, counts, map labels, summaries, exports, diagnostics, notifications, pathfinding or AI context are serialized or aggregated.",
+    "Reusable World/Setting Definitions remain separate from Campaign/Scene instantiation and current setting state.",
+    "Typed hierarchy supports worlds, realms, branches, planes, planets, cities, stations, generation ships, routes, zones, districts and other source-supported setting entities without planet-only assumptions.",
+    "Hierarchy, membership, route, chronology and compatibility require explicit source evidence or governed authoring provenance; same document, name similarity, proximity, theme and co-occurrence are insufficient.",
+    "Environment templates are reusable evidence and do not instantiate named-setting facts until explicitly attached.",
+    "World-local content and mechanics remain scoped; PPIA-12 does not replace owning Creature, Item, Vehicle, Species, Ability or rules definitions and does not universalize local rules.",
+    "Random tables, templates, AI assistance and inferred cross-references create proposals only until explicit governed acceptance.",
+    "Unknown and conflicted source states remain explicit; revision-heavy material is never silently reconciled.",
+    "Every hierarchy, route, environment and reveal workflow has keyboard, touch and nonvisual textual alternatives; maps are supplemental rather than authoritative."
+  ],
+  "visibility_classes": {
+    "definition_public": "Published setting-definition fields permitted to the viewer.",
+    "campaign_revealed": "Campaign facts, locations, routes, factions and history explicitly revealed to the viewer.",
+    "campaign_gm_private": "GM-only hidden locations, routes, secrets, unrevealed history and current state.",
+    "author_private": "Draft authoring proposals and unpublished setting changes visible only to authorized authors.",
+    "source_diagnostic": "Source/conflict/revision/provenance diagnostics limited by provenance permission.",
+    "service_minimum": "Operation-specific minimum projection for services/AI; never independent setting authority."
+  },
+  "field_groups": [
+    {
+      "id": "identity_definition",
+      "label": "World / Setting Identity & Definition",
+      "layers": [
+        "world-setting-definition"
+      ],
+      "fields": [
+        "setting_definition_id",
+        "entity_type",
+        "canonical_name",
+        "aliases",
+        "premise_descriptors",
+        "source_version",
+        "source_provenance"
+      ],
+      "actions": [
+        "inspect_compare",
+        "author_setting_definition"
+      ],
+      "projection_rule": "Inspecting a reusable Setting Definition does not create a Campaign instance or current Scene state."
+    },
+    {
+      "id": "cosmology_placement",
+      "label": "Cosmology, Branch, Reality & Plane Placement",
+      "layers": [
+        "cosmology-branch-reality-placement"
+      ],
+      "fields": [
+        "placement_relation_id",
+        "container_ref",
+        "contained_ref",
+        "relation_type",
+        "era_or_layer",
+        "evidence_coordinate",
+        "confidence_state"
+      ],
+      "actions": [
+        "inspect_compare",
+        "author_hierarchy_relation",
+        "source_conflict_resolution_candidate"
+      ],
+      "evidence_rule": "Placement requires explicit source or governed authoring evidence; thematic similarity or co-occurrence is insufficient."
+    },
+    {
+      "id": "hierarchy_location",
+      "label": "Region, Location & Site Hierarchy",
+      "layers": [
+        "region-location-site-hierarchy"
+      ],
+      "fields": [
+        "location_ref",
+        "location_type",
+        "parent_ref",
+        "child_refs",
+        "containment_relation",
+        "coordinates_or_semantic_position",
+        "source_provenance"
+      ],
+      "actions": [
+        "inspect_compare",
+        "author_hierarchy_relation"
+      ],
+      "evidence_rule": "Parent/child and membership relations require typed explicit evidence; nonplanetary types remain first-class."
+    },
+    {
+      "id": "environment_profile",
+      "label": "Environment, Biome & Hazard Profile",
+      "layers": [
+        "environment-biome-hazard-profile"
+      ],
+      "fields": [
+        "environment_refs",
+        "biome_tags",
+        "hazards",
+        "resources",
+        "traversal_context",
+        "template_vs_instantiated_state",
+        "provenance"
+      ],
+      "actions": [
+        "inspect_compare",
+        "attach_environment_profile"
+      ],
+      "classification_rule": "Reusable environment templates remain templates until explicitly attached to a setting scope."
+    },
+    {
+      "id": "infrastructure_landmark",
+      "label": "Settlements, Infrastructure & Landmarks",
+      "layers": [
+        "settlement-infrastructure-landmark"
+      ],
+      "fields": [
+        "site_ref",
+        "site_type",
+        "infrastructure_relations",
+        "landmark_refs",
+        "portal_or_hub_role",
+        "ownership_scope_ref",
+        "provenance"
+      ],
+      "actions": [
+        "inspect_compare",
+        "author_infrastructure_landmark"
+      ]
+    },
+    {
+      "id": "faction_governance",
+      "label": "Factions, Institutions & Governance",
+      "layers": [
+        "faction-institution-governance"
+      ],
+      "fields": [
+        "faction_or_institution_ref",
+        "jurisdiction",
+        "authority_relation",
+        "governance_scope",
+        "known_presence",
+        "source_provenance"
+      ],
+      "actions": [
+        "inspect_compare",
+        "author_faction_governance"
+      ]
+    },
+    {
+      "id": "culture_society_economy",
+      "label": "Culture, Society & Economy",
+      "layers": [
+        "culture-society-economy"
+      ],
+      "fields": [
+        "culture_ref",
+        "society_ref",
+        "religion_language_calendar_refs",
+        "customs",
+        "economy_refs",
+        "social_structure",
+        "source_provenance"
+      ],
+      "actions": [
+        "inspect_compare",
+        "author_culture_society_economy"
+      ]
+    },
+    {
+      "id": "history_timeline",
+      "label": "History, Eras & Timeline",
+      "layers": [
+        "history-era-event-timeline"
+      ],
+      "fields": [
+        "event_or_era_ref",
+        "chronology_relation",
+        "date_or_order_state",
+        "causal_relation",
+        "conflict_state",
+        "source_provenance"
+      ],
+      "actions": [
+        "inspect_compare",
+        "author_history_timeline",
+        "source_conflict_resolution_candidate"
+      ]
+    },
+    {
+      "id": "content_extension",
+      "label": "World-local Content Extensions",
+      "layers": [
+        "world-local-content-extension"
+      ],
+      "fields": [
+        "owning_object_ref",
+        "owning_domain",
+        "setting_scope",
+        "availability_membership",
+        "variant_or_extension_metadata",
+        "world_local_override_state",
+        "source_provenance"
+      ],
+      "actions": [
+        "inspect_compare",
+        "scope_content_extension"
+      ],
+      "handoff_rule": "Core object Definitions remain owned by PPIA-02/03/04/05 or the relevant Ability/rules domain."
+    },
+    {
+      "id": "local_rule_extension",
+      "label": "World-local Rules & Mechanics",
+      "layers": [
+        "world-local-rule-mechanic-extension"
+      ],
+      "fields": [
+        "rule_ref",
+        "setting_scope",
+        "activation_context",
+        "local_physics_or_mechanics",
+        "conflict_with_core_state",
+        "promotion_state",
+        "source_provenance"
+      ],
+      "actions": [
+        "inspect_compare",
+        "scope_local_rule_extension"
+      ],
+      "scope_rule": "Setting-local mechanics remain local until separately authorized for broader scope."
+    },
+    {
+      "id": "transit_connectivity",
+      "label": "Transit, Portals, Routes & Connectivity",
+      "layers": [
+        "transit-portal-route-connectivity"
+      ],
+      "fields": [
+        "route_ref",
+        "endpoint_refs",
+        "route_type",
+        "access_requirements",
+        "directionality",
+        "discovery_state",
+        "source_provenance"
+      ],
+      "actions": [
+        "inspect_compare",
+        "author_route_connectivity"
+      ]
+    },
+    {
+      "id": "campaign_instance",
+      "label": "Campaign Instance & Current Setting State",
+      "layers": [
+        "campaign-instantiation-current-setting-state"
+      ],
+      "fields": [
+        "campaign_setting_instance_id",
+        "definition_ref",
+        "current_control",
+        "changed_destroyed_occupied_state",
+        "current_timeline_state",
+        "scene_refs",
+        "expected_version"
+      ],
+      "actions": [
+        "inspect_compare",
+        "campaign_scene_handoff"
+      ],
+      "mutation_rule": "Campaign/Scene state is owned by PPIA-08 and references reusable PPIA-12 Definitions without rewriting them."
+    },
+    {
+      "id": "knowledge_visibility",
+      "label": "Knowledge, Discovery, Secrets & Reveal",
+      "layers": [
+        "knowledge-visibility-secret-state"
+      ],
+      "fields": [
+        "viewer_scope",
+        "revealed_locations",
+        "revealed_routes",
+        "known_factions_history",
+        "gm_only_facts",
+        "rumor_state",
+        "projection_provenance"
+      ],
+      "actions": [
+        "inspect_compare",
+        "reveal_hide_setting_fact"
+      ],
+      "privacy_rule": "Filter before search, counts, maps, summaries, pathfinding, errors, exports, notifications and AI context."
+    },
+    {
+      "id": "provenance_recovery",
+      "label": "Provenance, Conflict, Authoring History & Recovery",
+      "layers": [
+        "provenance-conflict-recovery"
+      ],
+      "fields": [
+        "source_coordinates",
+        "assertion_kind",
+        "conflict_revision_state",
+        "authoring_proposals",
+        "accepted_decisions",
+        "operation_ids",
+        "expected_versions",
+        "recovery_receipts"
+      ],
+      "actions": [
+        "inspect_compare",
+        "generate_authoring_proposal",
+        "source_conflict_resolution_candidate",
+        "history_export_recovery"
+      ],
+      "recovery_rule": "Ambiguous writes require operation-status lookup before retry; conflicts/revisions remain explicit and raw source is immutable."
+    }
+  ],
+  "context_overlays": {
+    "library_reference": [
+      "identity_definition",
+      "cosmology_placement",
+      "hierarchy_location",
+      "environment_profile",
+      "infrastructure_landmark",
+      "faction_governance",
+      "culture_society_economy",
+      "history_timeline",
+      "content_extension",
+      "local_rule_extension",
+      "transit_connectivity",
+      "provenance_recovery"
+    ],
+    "world_setting_inspector": [
+      "identity_definition",
+      "cosmology_placement",
+      "hierarchy_location",
+      "environment_profile",
+      "infrastructure_landmark",
+      "faction_governance",
+      "culture_society_economy",
+      "history_timeline",
+      "content_extension",
+      "local_rule_extension",
+      "transit_connectivity",
+      "knowledge_visibility",
+      "provenance_recovery"
+    ],
+    "hierarchy_browser": [
+      "identity_definition",
+      "cosmology_placement",
+      "hierarchy_location",
+      "transit_connectivity",
+      "knowledge_visibility",
+      "provenance_recovery"
+    ],
+    "gm_world_builder": [
+      "identity_definition",
+      "cosmology_placement",
+      "hierarchy_location",
+      "environment_profile",
+      "infrastructure_landmark",
+      "faction_governance",
+      "culture_society_economy",
+      "history_timeline",
+      "content_extension",
+      "local_rule_extension",
+      "transit_connectivity",
+      "knowledge_visibility",
+      "provenance_recovery"
+    ],
+    "campaign_instance": [
+      "identity_definition",
+      "environment_profile",
+      "faction_governance",
+      "history_timeline",
+      "campaign_instance",
+      "knowledge_visibility",
+      "provenance_recovery"
+    ],
+    "source_conflict_provenance": [
+      "identity_definition",
+      "cosmology_placement",
+      "hierarchy_location",
+      "history_timeline",
+      "content_extension",
+      "local_rule_extension",
+      "transit_connectivity",
+      "provenance_recovery"
+    ]
+  },
+  "role_projection": {
+    "player": "May see published source facts and Campaign-revealed setting facts only; hidden locations, routes, secrets, unrevealed factions/history and GM-only current state are absent before aggregates and pathfinding.",
+    "gm": "Campaign-scoped authority may expose hidden/revealed Campaign setting truth where policy permits, but source governance and unrelated Campaign/private authoring remain separate.",
+    "assistant_gm": "Receives minimum delegated projection and cannot independently author hierarchy, reveal secrets, resolve conflicts, promote local mechanics or commit Campaign state.",
+    "creator_owner_admin": "May author/govern within explicit scope, but retained source facts, reusable Definitions, Campaign instances, reveal state and promotion decisions remain separate write paths.",
+    "service_ai": "Receives minimum role-safe fields with hidden facts removed and has no independent canonical-authoring, universalization, conflict-resolution or reveal authority."
+  },
+  "action_contracts": [
+    {
+      "id": "inspect_compare",
+      "mutates": false,
+      "owner": "PPIA-12 / MV-IA-F002",
+      "requires": [
+        "read authorization"
+      ],
+      "rules": [
+        "compare equivalent semantic layers where possible",
+        "filter before counts/search/diff/map labels/AI context",
+        "surface unknown/conflict/source scope explicitly"
+      ]
+    },
+    {
+      "id": "author_setting_definition",
+      "mutates": true,
+      "owner": "PPIA-12",
+      "requires": [
+        "setting-author authority",
+        "source or explicit authoring provenance",
+        "expected version",
+        "idempotency key"
+      ],
+      "rules": [
+        "reusable Definition remains separate from Campaign state",
+        "new authoring is attributed and does not rewrite retained source"
+      ]
+    },
+    {
+      "id": "author_hierarchy_relation",
+      "mutates": true,
+      "owner": "PPIA-12",
+      "requires": [
+        "setting-author authority",
+        "typed endpoints",
+        "explicit source or governed authoring evidence",
+        "expected version"
+      ],
+      "rules": [
+        "no relation from co-occurrence/name/theme/proximity",
+        "nonplanetary entity types remain valid"
+      ]
+    },
+    {
+      "id": "attach_environment_profile",
+      "mutates": true,
+      "owner": "PPIA-12 → PPIA-08 when Campaign-instantiated",
+      "requires": [
+        "setting-author authority",
+        "environment/template reference",
+        "attachment scope",
+        "expected version"
+      ],
+      "rules": [
+        "template remains reusable",
+        "attachment does not invent unsourced world facts",
+        "Campaign-local environment state remains PPIA-08-owned"
+      ]
+    },
+    {
+      "id": "author_infrastructure_landmark",
+      "mutates": true,
+      "owner": "PPIA-12",
+      "requires": [
+        "setting-author authority",
+        "typed site identity",
+        "source or authoring provenance",
+        "expected version"
+      ],
+      "rules": [
+        "setting infrastructure is not silently converted to generic Item/Vehicle ownership",
+        "relations remain typed and attributable"
+      ]
+    },
+    {
+      "id": "author_faction_governance",
+      "mutates": true,
+      "owner": "PPIA-12",
+      "requires": [
+        "setting-author authority",
+        "faction/institution identity",
+        "scope/jurisdiction evidence",
+        "expected version"
+      ],
+      "rules": [
+        "current Campaign faction metrics remain separate",
+        "mixed governance source facets are not flattened into a single World record"
+      ]
+    },
+    {
+      "id": "author_culture_society_economy",
+      "mutates": true,
+      "owner": "PPIA-12",
+      "requires": [
+        "setting-author authority",
+        "source or authoring provenance",
+        "scope",
+        "expected version"
+      ],
+      "rules": [
+        "culture does not become Species biology",
+        "unknown societal/economic facts remain unknown"
+      ]
+    },
+    {
+      "id": "author_history_timeline",
+      "mutates": true,
+      "owner": "PPIA-12",
+      "requires": [
+        "setting-author authority",
+        "event/era identity",
+        "chronology evidence or explicit authoring decision",
+        "expected version"
+      ],
+      "rules": [
+        "no chronology from document order or co-occurrence",
+        "conflicting revisions remain separately attributed until resolution"
+      ]
+    },
+    {
+      "id": "scope_content_extension",
+      "mutates": true,
+      "owner": "PPIA-12 with owning-domain handoff",
+      "requires": [
+        "setting-author authority",
+        "stable owning-object ID",
+        "owning-domain validation",
+        "setting scope",
+        "expected version"
+      ],
+      "rules": [
+        "PPIA-02/03/04/05 and Ability/rules domains retain core definitions",
+        "setting availability or variant metadata never forks source mechanics silently"
+      ]
+    },
+    {
+      "id": "scope_local_rule_extension",
+      "mutates": true,
+      "owner": "PPIA-12 + owning rules domain",
+      "requires": [
+        "setting-author authority",
+        "explicit local scope",
+        "rule/mechanic evidence",
+        "expected version"
+      ],
+      "rules": [
+        "local rule does not become universal/core automatically",
+        "promotion requires separate authority and provenance"
+      ]
+    },
+    {
+      "id": "author_route_connectivity",
+      "mutates": true,
+      "owner": "PPIA-12",
+      "requires": [
+        "setting-author authority",
+        "typed endpoints",
+        "explicit source or authoring route evidence",
+        "access semantics",
+        "expected version"
+      ],
+      "rules": [
+        "shared multiversal context does not imply connectivity",
+        "hidden routes are filtered before pathfinding/search/counts"
+      ]
+    },
+    {
+      "id": "campaign_scene_handoff",
+      "mutates": true,
+      "owner": "PPIA-08",
+      "requires": [
+        "authorized Campaign/Scene edit",
+        "stable setting Definition references",
+        "Campaign expected version",
+        "idempotency key"
+      ],
+      "rules": [
+        "instantiation references reusable Definitions",
+        "destroyed/occupied/discovered state never rewrites source Definition"
+      ]
+    },
+    {
+      "id": "reveal_hide_setting_fact",
+      "mutates": true,
+      "owner": "MV-IA-F020 / Campaign authority",
+      "requires": [
+        "Campaign reveal authority",
+        "viewer scope",
+        "stable fact/relation ID",
+        "expected version"
+      ],
+      "rules": [
+        "filter before aggregation/search/map/pathfinding/AI context",
+        "failure messages do not reveal hidden existence"
+      ]
+    },
+    {
+      "id": "generate_authoring_proposal",
+      "mutates": false,
+      "owner": "PPIA-12 authoring assistant",
+      "requires": [
+        "authoring context",
+        "proposal provenance"
+      ],
+      "rules": [
+        "Worldbuilding guidance/random tables/AI suggestions remain proposals",
+        "proposal never changes canonical Definition until explicit governed acceptance"
+      ]
+    },
+    {
+      "id": "source_conflict_resolution_candidate",
+      "mutates": false,
+      "owner": "governance review",
+      "requires": [
+        "authorized provenance view",
+        "conflicting source coordinates"
+      ],
+      "rules": [
+        "candidate resolution is reversible and attributed",
+        "no silent reconciliation or raw-source mutation"
+      ]
+    },
+    {
+      "id": "history_export_recovery",
+      "mutates": false,
+      "owner": "MV-IA-F021 + PPIA-12",
+      "requires": [
+        "authorized history/provenance scope"
+      ],
+      "rules": [
+        "ambiguous mutation outcome uses operation-status lookup before retry",
+        "exports are role-filtered",
+        "retry reuses idempotency identity and does not duplicate writes"
+      ]
+    }
+  ],
+  "responsive_accessibility": {
+    "large": "Expanded inspector may show textual hierarchy, optional map, facets, provenance and compare panes.",
+    "medium": "Inspector prioritizes semantic hierarchy and selected-context details; optional map remains secondary.",
+    "compact": "Single-column text-first hierarchy/route/environment flow with progressive disclosure.",
+    "keyboard": "All authoring, inspection, expansion, route review and reveal controls are operable without pointer-only interaction.",
+    "screen_reader": "Hierarchy levels, relation types, routes, reveal state, source/conflict status and validation results use labeled semantic text.",
+    "high_zoom_reflow": "No required workflow depends on fixed canvas geometry or two-dimensional map position.",
+    "reduced_motion": "Animation is decorative only and never conveys authoritative travel, hierarchy, reveal or state transitions.",
+    "nonvisual_navigation": "Every map/hierarchy/route fact has a textual relation list and navigable semantic outline."
+  }
+}
