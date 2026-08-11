@@ -19,6 +19,7 @@ EXPECTED_ORDER = [
     "PPIA-07", "PPIA-08", "PPIA-09", "PPIA-10", "PPIA-11", "PPIA-06",
     "PPIA-13", "PPIA-14", "PPIA-15", "PPIA-16",
 ]
+ACTIVE_STATUSES = {"started", "in_progress"}
 
 
 def load_json(path: Path) -> dict:
@@ -41,7 +42,8 @@ def main() -> int:
     tranche_ids = [item["work_item_id"] for item in backlog["tranches"]]
     assert tranche_ids == EXPECTED_IDS
     assert len(set(tranche_ids)) == 16
-    assert backlog["tranches"][0]["status"] == "started"
+    current_tranche = backlog["tranches"][0]
+    assert current_tranche["status"] in ACTIVE_STATUSES
     assert all(item["status"] == "planned" for item in backlog["tranches"][1:])
 
     boundaries = backlog["boundaries"]
@@ -70,11 +72,15 @@ def main() -> int:
     assert "checkout_runner_blocked" in app_tracks[0]["state"]
 
     assert status["primary"]["work_item_id"] == "PPIA-01"
-    assert status["primary"]["status"] == "started"
     assert checkpoint["work_item_id"] == "PPIA-01"
     assert checkpoint["attempt_id"] == "PPIA-01-attempt-001"
-    assert checkpoint["status"] == "started"
     assert checkpoint["owner_decision_required"] is False
+    assert checkpoint["status"] in ACTIVE_STATUSES
+    assert status["primary"]["status"] == checkpoint["status"] == selected[0]["status"] == current_tranche["status"]
+    assert status["primary"]["active_substep"] == checkpoint["active_substep"]
+    assert status["primary"]["next_action"] == checkpoint["next_action"]
+    assert status["primary"]["pull_request"] == checkpoint["pull_request"]
+    assert status["primary"]["latest_pushed_commit"] == checkpoint["latest_pushed_commit"]
 
     assert "**Program ID:** PPIA" in program
     for work_item_id in EXPECTED_IDS:
@@ -88,6 +94,7 @@ def main() -> int:
     print("PPIA program validation: PASS")
     print("tranches: 16")
     print("current: PPIA-01")
+    print(f"current_status: {current_tranche['status']}")
     print("a2_activation_authorized: false")
     return 0
 

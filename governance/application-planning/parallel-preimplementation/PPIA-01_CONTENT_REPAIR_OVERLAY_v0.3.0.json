@@ -1,0 +1,170 @@
+{
+  "format": "multiversal-ppia01-content-repair-overlay",
+  "version": "0.3.0",
+  "work_item": "PPIA-01",
+  "status": "governed_recommendation_overlay_not_source_rewrite",
+  "authority": "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json",
+  "policy": {
+    "preserve_raw_source": true,
+    "recommendations_are_source_facts": false,
+    "automatic_identity_merge": false,
+    "reversible": true,
+    "later_balance_review": "PPIA-11"
+  },
+  "batches": [
+    {
+      "batch_id": "PPIA-01-R03-shapeshifter-utility-transformations",
+      "dataset": "species_elementalist_and_innate_abilities_catalog.csv",
+      "source_pdf": "Innate Trees(3).PDF",
+      "branch": "Utility Transformations",
+      "source_page": "22",
+      "reason": "The source pricing list publishes 18 Utility Transformations names, tiers, and XP prices but provides no effect text for those listing rows. These recommendations make the records usable without claiming the proposed mechanics appeared in the source.",
+      "repairs": [
+        {
+          "target": {"source_row": 1979, "record_id": "ABLREC-01978", "name": "Shadow Prowler", "tier": "1", "xp_cost": "750 XP"},
+          "recommendation": {"Effect": "While transformed in dim light or darkness, you have advantage on Stealth checks made while moving no more than half your speed and gain darkvision out to 60 feet.", "Mechanics": "Bright light suppresses the Stealth benefit but not the darkvision."},
+          "evidence": ["Source listing supplies the name Shadow Prowler, Tier 1 placement, and 750 XP price.", "Published Utility Transformations Tier 1 examples (Enhanced Olfactory Sense, Chameleon Skin, Flexible Body, Elongated Limbs) establish the branch's Tier 1 mechanical scale; they are review anchors, not identity matches."],
+          "rationale": "Creates a mobile shadow-stealth option distinct from the published Chameleon Skin's stationary camouflage.",
+          "alternatives_considered": ["Become invisible in darkness; rejected as too strong for Tier 1.", "Grant only darkvision; rejected as too small for the 750 XP price."],
+          "confidence": "medium", "reversible": true
+        },
+        {
+          "target": {"source_row": 1980, "record_id": "ABLREC-01979", "name": "Gliding Membranes", "tier": "1", "xp_cost": "500 XP"},
+          "recommendation": {"Effect": "While transformed and falling, you may glide 10 feet horizontally for every 5 feet you descend and reduce falling damage by 1d6 per 10 feet glided, to a minimum of 0.", "Mechanics": "You cannot gain altitude, hover, or glide while carrying more than your normal carrying capacity."},
+          "evidence": ["Source listing supplies the name Gliding Membranes, Tier 1 placement, and 500 XP price.", "Published Utility Transformations Tier 1 examples (Enhanced Olfactory Sense, Chameleon Skin, Flexible Body, Elongated Limbs) establish the branch's Tier 1 mechanical scale; they are review anchors, not identity matches."],
+          "rationale": "Provides controlled low-tier aerial mobility without becoming true flight and stays distinct from later Hollow Bones.",
+          "alternatives_considered": ["Reduce all falling damage by half; rejected to avoid duplicating the later Hollow Bones benchmark.", "Grant a flying speed; rejected as too strong for Tier 1."],
+          "confidence": "medium", "reversible": true
+        },
+        {
+          "target": {"source_row": 1981, "record_id": "ABLREC-01980", "name": "Amphibious Shift", "tier": "1", "xp_cost": "750 XP"},
+          "recommendation": {"Effect": "While transformed, breathe air and water, gain a swim speed equal to half your walking speed, and ignore disadvantage on routine object manipulation caused only by being underwater.", "Mechanics": "This Utility Transformations record remains a distinct identity from the same-named Environmental Adaptations record and is not automatically merged with it."},
+          "evidence": ["Source listing supplies the name Amphibious Shift, Tier 1 placement, and 750 XP price.", "Published Utility Transformations Tier 1 examples (Enhanced Olfactory Sense, Chameleon Skin, Flexible Body, Elongated Limbs) establish the branch's Tier 1 mechanical scale; they are review anchors, not identity matches."],
+          "rationale": "Preserves the utility-branch identity by emphasizing underwater operation and manipulation while keeping its movement below stronger aquatic forms.",
+          "alternatives_considered": ["Merge it with the Environmental Adaptations Amphibious Shift; rejected because exact identity evidence is absent.", "Copy the other branch's full swim-speed package verbatim; rejected to avoid treating cross-branch name equality as authority."],
+          "confidence": "medium", "reversible": true
+        },
+        {
+          "target": {"source_row": 1982, "record_id": "ABLREC-01981", "name": "Burrower's Form", "tier": "2", "xp_cost": "1,500 XP"},
+          "recommendation": {"Effect": "While transformed, gain a burrow speed equal to half your walking speed through loose earth or sand and can leave a crawl-sized passage behind when the material can support it.", "Mechanics": "The form cannot tunnel through stone, metal, or reinforced structures and grants no tremorsense by itself."},
+          "evidence": ["Source listing supplies the name Burrower's Form, Tier 2 placement, and 1,500 XP price.", "Published Utility Transformations Tier 2 examples (Shadow Meld, Gaseous Escape, Retractable Claws, Suction Grip) establish the branch's Tier 2 mechanical scale; they are review anchors, not identity matches."],
+          "rationale": "Focuses the Tier 2 utility version on traversal and passage-making rather than the sensing emphasis of environmental burrowing abilities.",
+          "alternatives_considered": ["Add tremorsense; rejected to keep this distinct from Environmental Adaptations burrowing.", "Allow burrowing through worked stone; rejected as too close to phasing."],
+          "confidence": "medium", "reversible": true
+        },
+        {
+          "target": {"source_row": 1983, "record_id": "ABLREC-01982", "name": "Silent Stalker", "tier": "2", "xp_cost": "2,000 XP"},
+          "recommendation": {"Effect": "While transformed, your footsteps, breathing, and ordinary movement make almost no sound. You have advantage on Stealth checks where sound is a material factor and may move at normal speed while sneaking without a movement-based penalty.", "Mechanics": "This does not silence speech, attacks, broken objects, alarms, or other external sounds you create."},
+          "evidence": ["Source listing supplies the name Silent Stalker, Tier 2 placement, and 2,000 XP price.", "Published Utility Transformations Tier 2 examples (Shadow Meld, Gaseous Escape, Retractable Claws, Suction Grip) establish the branch's Tier 2 mechanical scale; they are review anchors, not identity matches."],
+          "rationale": "Creates a Tier 2 mobility-stealth utility without becoming magical silence or invisibility.",
+          "alternatives_considered": ["Create a silence aura; rejected as broader than a biological transformation.", "Grant advantage on every Stealth check; rejected because visual detection should still matter."],
+          "confidence": "medium", "reversible": true
+        },
+        {
+          "target": {"source_row": 1984, "record_id": "ABLREC-01983", "name": "Mimic's Gift", "tier": "2", "xp_cost": "2,500 XP"},
+          "recommendation": {"Effect": "After observing a creature for 1 minute, you can reproduce its voice, common gestures, and one conspicuous superficial feature such as eye color, hair, skin tone, or a facial mark until you transform again.", "Mechanics": "This does not change body size, species-defining anatomy, scent, memories, or credentials; observers may still detect the disguise normally."},
+          "evidence": ["Source listing supplies the name Mimic's Gift, Tier 2 placement, and 2,500 XP price.", "Published Utility Transformations Tier 2 examples (Shadow Meld, Gaseous Escape, Retractable Claws, Suction Grip) establish the branch's Tier 2 mechanical scale; they are review anchors, not identity matches."],
+          "rationale": "Provides a Tier 2 precursor to the published Tier 3 Mimicry Shift without granting a full-body duplicate.",
+          "alternatives_considered": ["Allow full appearance duplication; rejected because that is established at Tier 3.", "Limit the ability to voice only; rejected as too narrow for the highest Tier 2 price."],
+          "confidence": "medium", "reversible": true
+        },
+        {
+          "target": {"source_row": 1985, "record_id": "ABLREC-01984", "name": "Spectral Dissolution", "tier": "3", "xp_cost": "3,500 XP"},
+          "recommendation": {"Effect": "As a bonus action while transformed, become mistlike for up to 1 minute once per short rest. During this state you can move through openings at least 1 inch wide, ignore nonmagical difficult terrain, and have resistance to nonmagical bludgeoning, piercing, and slashing damage.", "Mechanics": "You cannot attack, manipulate solid objects, or pass through intact solid walls while dissolved."},
+          "evidence": ["Source listing supplies the name Spectral Dissolution, Tier 3 placement, and 3,500 XP price.", "Published Utility Transformations Tier 3 examples (Aquatic Adaptation, Prehensile Tail, Hollow Bones, Mimicry Shift) establish the branch's Tier 3 mechanical scale; they are review anchors, not identity matches."],
+          "rationale": "Advances the branch's gaseous utility at Tier 3 by extending duration and mobility while preserving major action limitations.",
+          "alternatives_considered": ["Allow movement through solid walls; rejected because that belongs to later molecular/ethereal effects.", "Permit normal attacks while dissolved; rejected as too strong with physical resistance."],
+          "confidence": "medium", "reversible": true
+        },
+        {
+          "target": {"source_row": 1986, "record_id": "ABLREC-01985", "name": "Slippery Escape", "tier": "3", "xp_cost": "4,000 XP"},
+          "recommendation": {"Effect": "While transformed, you have advantage on checks and saves to escape grapples, restraints, nets, bindings, and similar physical confinement. Once per round after you escape one, you may move 10 feet without provoking opportunity attacks.", "Mechanics": "The free movement does not trigger if the confinement ends because the restraining creature or effect was destroyed by someone else."},
+          "evidence": ["Source listing supplies the name Slippery Escape, Tier 3 placement, and 4,000 XP price.", "Published Utility Transformations Tier 3 examples (Aquatic Adaptation, Prehensile Tail, Hollow Bones, Mimicry Shift) establish the branch's Tier 3 mechanical scale; they are review anchors, not identity matches."],
+          "rationale": "Creates a strong Tier 3 escape-specialist form without granting blanket immunity to restraint.",
+          "alternatives_considered": ["Become immune to grappled and restrained; rejected as too broad.", "Gain only advantage to escape; rejected as too small for the Tier 3 price."],
+          "confidence": "medium", "reversible": true
+        },
+        {
+          "target": {"source_row": 1987, "record_id": "ABLREC-01986", "name": "Adaptive Anatomy", "tier": "3", "xp_cost": "3,500 XP"},
+          "recommendation": {"Effect": "When you transform, choose two utility adaptations: 5-foot extended reach for object interaction, a prehensile tail that can hold a light object, gills for water breathing, gripping pads for half-speed climbing, or flexible joints that grant advantage to escape grapples.", "Mechanics": "The chosen adaptations do not grant extra attacks, extra actions, or the full mechanics of separately named Shapeshifter abilities."},
+          "evidence": ["Source listing supplies the name Adaptive Anatomy, Tier 3 placement, and 3,500 XP price.", "Published Utility Transformations Tier 3 examples (Aquatic Adaptation, Prehensile Tail, Hollow Bones, Mimicry Shift) establish the branch's Tier 3 mechanical scale; they are review anchors, not identity matches."],
+          "rationale": "Provides Tier 3 configurable anatomy while explicitly preventing action-economy abuse or wholesale copying of the tree.",
+          "alternatives_considered": ["Choose any two Shapeshifter abilities; rejected as far too broad.", "Choose only one minor adaptation; rejected as too weak for Tier 3."],
+          "confidence": "medium", "reversible": true
+        },
+        {
+          "target": {"source_row": 1988, "record_id": "ABLREC-01987", "name": "Tunneling Predator", "tier": "3", "xp_cost": "4,500 XP"},
+          "recommendation": {"Effect": "While transformed, gain a burrow speed equal to half your walking speed through loose earth and tremorsense out to 30 feet. Once per turn when you emerge from underground adjacent to an unaware creature, gain advantage on your first melee attack against it that turn.", "Mechanics": "You cannot end your turn inside solid material, and the ambush benefit does not apply against a creature that can perceive you underground."},
+          "evidence": ["Source listing supplies the name Tunneling Predator, Tier 3 placement, and 4,500 XP price.", "Published Utility Transformations Tier 3 examples (Aquatic Adaptation, Prehensile Tail, Hollow Bones, Mimicry Shift) establish the branch's Tier 3 mechanical scale; they are review anchors, not identity matches."],
+          "rationale": "Combines Tier 3 traversal and predatory positioning while keeping the combat rider conditional and once per turn.",
+          "alternatives_considered": ["Grant automatic surprise on emergence; rejected because awareness must remain meaningful.", "Grant full-speed burrowing plus extra damage every hit; rejected as too strong."],
+          "confidence": "medium", "reversible": true
+        },
+        {
+          "target": {"source_row": 1989, "record_id": "ABLREC-01988", "name": "Multi-Limbed Morph", "tier": "4", "xp_cost": "6,500 XP"},
+          "recommendation": {"Effect": "While transformed, grow two additional functional limbs. You can hold and manipulate additional objects, gain advantage on Athletics checks to grapple or resist disarm attempts, and may take one additional simple object interaction on your turn.", "Mechanics": "The extra limbs do not grant additional attacks, bonus actions, reactions, spellcasting actions, or extra equipped-item benefits beyond normal limits."},
+          "evidence": ["Source listing supplies the name Multi-Limbed Morph, Tier 4 placement, and 6,500 XP price.", "Published Utility Transformations Tier 4 examples (Multiple Eyes, Elastic Body, Echoed Doppelgänger, Molecular Shift) establish the branch's Tier 4 mechanical scale; they are review anchors, not identity matches."],
+          "rationale": "At Tier 4 the form materially expands manipulation and grappling while protecting the action economy.",
+          "alternatives_considered": ["Grant one extra attack each turn; rejected because limb count must not create an unbounded action-economy advantage.", "Allow four additional arms; rejected as unnecessary for the intended utility gain."],
+          "confidence": "medium", "reversible": true
+        },
+        {
+          "target": {"source_row": 1990, "record_id": "ABLREC-01989", "name": "Ethereal Drift", "tier": "4", "xp_cost": "7,000 XP"},
+          "recommendation": {"Effect": "Once per short rest while transformed, become partially ethereal for up to 1 minute. You may move through nonmagical solid material, but each foot inside solid material costs 2 feet of movement.", "Mechanics": "You cannot end your turn inside an object; if forced to do so, you are moved to the nearest open space and take 2d6 force damage. Magical barriers remain solid to you."},
+          "evidence": ["Source listing supplies the name Ethereal Drift, Tier 4 placement, and 7,000 XP price.", "Published Utility Transformations Tier 4 examples (Multiple Eyes, Elastic Body, Echoed Doppelgänger, Molecular Shift) establish the branch's Tier 4 mechanical scale; they are review anchors, not identity matches."],
+          "rationale": "Provides sustained Tier 4 phasing mobility with clear movement and ending-position constraints.",
+          "alternatives_considered": ["Allow unrestricted full-speed phasing; rejected as too strong.", "Limit passage to one foot once per rest; rejected because the published Molecular Shift already occupies that narrower niche."],
+          "confidence": "medium", "reversible": true
+        },
+        {
+          "target": {"source_row": 1991, "record_id": "ABLREC-01990", "name": "Perfect Mimicry", "tier": "4", "xp_cost": "8,000 XP"},
+          "recommendation": {"Effect": "After observing a creature of roughly your size for 10 minutes, you can reproduce its visible appearance, voice, scent, and ordinary mannerisms while transformed. You have advantage on checks to pass as that creature to observers who lack contradictory evidence.", "Mechanics": "You do not gain the target's memories, passwords, abilities, equipment, supernatural signatures, or access permissions, and your size category does not change."},
+          "evidence": ["Source listing supplies the name Perfect Mimicry, Tier 4 placement, and 8,000 XP price.", "Published Utility Transformations Tier 4 examples (Multiple Eyes, Elastic Body, Echoed Doppelgänger, Molecular Shift) establish the branch's Tier 4 mechanical scale; they are review anchors, not identity matches."],
+          "rationale": "Tier 4 expands mimicry into a high-quality impersonation while preserving information, authority, and capability boundaries.",
+          "alternatives_considered": ["Gain the target's memories; rejected as unsupported and harmful to information boundaries.", "Automatically fool all observers; rejected because investigation and contradictory evidence must remain meaningful."],
+          "confidence": "medium", "reversible": true
+        },
+        {
+          "target": {"source_row": 1992, "record_id": "ABLREC-01991", "name": "Void Adaptation", "tier": "4", "xp_cost": "7,500 XP"},
+          "recommendation": {"Effect": "While transformed, you orient normally in zero gravity, may push off surfaces without losing control, and can hold your breath for 30 minutes. You also ignore ordinary discomfort from vacuum exposure for up to 1 minute.", "Mechanics": "This is a movement-and-operation utility, not full void survival: after the stated breath/vacuum limits, normal suffocation and environmental damage apply."},
+          "evidence": ["Source listing supplies the name Void Adaptation, Tier 4 placement, and 7,500 XP price.", "Published Utility Transformations Tier 4 examples (Multiple Eyes, Elastic Body, Echoed Doppelgänger, Molecular Shift) establish the branch's Tier 4 mechanical scale; they are review anchors, not identity matches."],
+          "rationale": "Keeps the Utility Transformations version focused on zero-gravity operation and brief exposure rather than duplicating Environmental Adaptations' dedicated survival progression.",
+          "alternatives_considered": ["Grant indefinite vacuum survival; rejected because that belongs to the environmental branch's apex progression.", "Grant a flying speed in zero gravity; rejected because propulsion still requires a physical means."],
+          "confidence": "medium", "reversible": true
+        },
+        {
+          "target": {"source_row": 1993, "record_id": "ABLREC-01992", "name": "Unbound Form", "tier": "5", "xp_cost": "12,000 XP"},
+          "recommendation": {"Effect": "While transformed, your anatomy is no longer fixed: you may squeeze through openings as small as 1 inch, automatically escape nonmagical bindings that rely only on body shape, and as a bonus action become one size category smaller or larger until you change again.", "Mechanics": "Changing size alters occupied space and ordinary carrying limits but does not independently change reach, damage dice, hit points, or attributes."},
+          "evidence": ["Source listing supplies the name Unbound Form, Tier 5 placement, and 12,000 XP price.", "Published Utility Transformations Tier 5 examples (Shifting Form, Echoed Clone, Void Phase, Perfect Camouflage) establish the branch's Tier 5 mechanical scale; they are review anchors, not identity matches."],
+          "rationale": "Creates a Tier 5 freedom-of-form package while preventing size change from silently rewriting combat statistics.",
+          "alternatives_considered": ["Become immune to all grappled and restrained conditions; rejected because magical and specialized restraints should still function.", "Change to any size from Tiny through Huge; rejected as too broad."],
+          "confidence": "medium", "reversible": true
+        },
+        {
+          "target": {"source_row": 1994, "record_id": "ABLREC-01993", "name": "Master of Shapes", "tier": "5", "xp_cost": "11,000 XP"},
+          "recommendation": {"Effect": "When you transform, choose any three minor utility adaptations you already know from Tier 3 or lower Utility Transformations and keep all three active. As a bonus action, replace one chosen adaptation with another known eligible adaptation.", "Mechanics": "This ability combines only purchased/known lower-tier utility adaptations; it does not copy unowned abilities or Tier 4–5 effects."},
+          "evidence": ["Source listing supplies the name Master of Shapes, Tier 5 placement, and 11,000 XP price.", "Published Utility Transformations Tier 5 examples (Shifting Form, Echoed Clone, Void Phase, Perfect Camouflage) establish the branch's Tier 5 mechanical scale; they are review anchors, not identity matches."],
+          "rationale": "Rewards breadth at Tier 5 while preserving progression ownership and keeping the combination bounded.",
+          "alternatives_considered": ["Choose three abilities from any Shapeshifter branch; rejected because it would collapse branch identity.", "Gain every lower-tier Utility Transformation simultaneously; rejected as excessive."],
+          "confidence": "medium", "reversible": true
+        },
+        {
+          "target": {"source_row": 1995, "record_id": "ABLREC-01994", "name": "Reality Shifter", "tier": "5", "xp_cost": "12,500 XP"},
+          "recommendation": {"Effect": "Once per long rest while transformed, for 1 minute you may move through nonmagical solid matter and teleport up to 20 feet as a bonus action to an unoccupied space you can see or can directly sense through a barrier.", "Mechanics": "You cannot teleport into an unknown sealed space, cross magical barriers, or end movement inside solid matter."},
+          "evidence": ["Source listing supplies the name Reality Shifter, Tier 5 placement, and 12,500 XP price.", "Published Utility Transformations Tier 5 examples (Shifting Form, Echoed Clone, Void Phase, Perfect Camouflage) establish the branch's Tier 5 mechanical scale; they are review anchors, not identity matches."],
+          "rationale": "Provides a Tier 5 spatial-mobility capstone that goes beyond ordinary anatomy without becoming unrestricted planar travel.",
+          "alternatives_considered": ["Permit unlimited teleportation with no duration; rejected as too strong.", "Allow travel to any known location; rejected because the Shapeshifter tree does not establish long-range teleportation."],
+          "confidence": "medium", "reversible": true
+        },
+        {
+          "target": {"source_row": 1996, "record_id": "ABLREC-01995", "name": "Supreme Transformation", "tier": "5", "xp_cost": "15,000 XP"},
+          "recommendation": {"Effect": "While transformed, maintain up to three Utility Transformation modes at once, chosen from forms or adaptations you have purchased. Once per turn you may replace one active mode without ending the transformation, and your transformation can remain active until you dismiss it or become incapacitated.", "Mechanics": "Combining modes never grants extra actions or duplicates mutually exclusive body states unless the GM determines the anatomy can coexist. Source facts and permissions of other objects are not copied."},
+          "evidence": ["Source listing supplies the name Supreme Transformation, Tier 5 placement, and 15,000 XP price.", "Published Utility Transformations Tier 5 examples (Shifting Form, Echoed Clone, Void Phase, Perfect Camouflage) establish the branch's Tier 5 mechanical scale; they are review anchors, not identity matches."],
+          "rationale": "The highest-cost Tier 5 ability provides maximum flexibility by combining owned transformations rather than inventing unlimited new powers.",
+          "alternatives_considered": ["Gain every Shapeshifter ability at once; rejected because it invalidates progression.", "Copy any creature form encountered; rejected because that would bypass purchased abilities and source identity."],
+          "confidence": "medium", "reversible": true
+        }
+      ]
+    }
+  ]
+}

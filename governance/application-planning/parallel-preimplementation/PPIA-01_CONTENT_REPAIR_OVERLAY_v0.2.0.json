@@ -1,0 +1,482 @@
+{
+  "format": "multiversal-ppia01-content-repair-overlay",
+  "version": "0.2.0",
+  "work_item": "PPIA-01",
+  "status": "governed_recommendation_overlay_not_source_rewrite",
+  "authority": "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json",
+  "policy": {
+    "preserve_raw_source": true,
+    "recommendations_are_source_facts": false,
+    "automatic_identity_merge": false,
+    "reversible": true,
+    "later_balance_review": "PPIA-11"
+  },
+  "batches": [
+    {
+      "batch_id": "PPIA-01-R02-shapeshifter-environmental-adaptations",
+      "dataset": "species_elementalist_and_innate_abilities_catalog.csv",
+      "source_pdf": "Innate Trees(3).PDF",
+      "branch": "Environmental Adaptations",
+      "source_page": "19",
+      "reason": "The source pricing list publishes 19 Environmental Adaptations names, tiers, and XP prices but provides no effect text for those listing rows. These recommendations make the records usable without claiming the proposed mechanics appeared in the source.",
+      "repairs": [
+        {
+          "target": {
+            "source_row": 1939,
+            "record_id": "ABLREC-01938",
+            "name": "Cold Resistance Fur",
+            "tier": "1",
+            "xp_cost": "500 XP"
+          },
+          "recommendation": {
+            "Effect": "While transformed, dense insulating fur reduces cold damage you take by 2 and gives advantage on saves or checks against nonmagical cold exposure.",
+            "Mechanics": "This does not grant cold resistance and does not remove penalties from magical cold effects."
+          },
+          "evidence": [
+            "Source listing supplies the name Cold Resistance Fur, Tier 1 placement, and 500 XP price.",
+            "Published Environmental Adaptations Tier 1 examples (Burrower's Resilience, Climber's Grace, Amphibious Shift, Night Hunter) establish the branch's Tier 1 mechanical scale; they are review anchors, not identity matches."
+          ],
+          "rationale": "A low-cost Tier 1 precursor to the published Tier 2 Cold Resistance ability, giving environmental protection without full resistance.",
+          "alternatives_considered": [
+            "Grant full cold resistance; rejected because that is already established at Tier 2.",
+            "Only ignore ordinary cold weather with no damage reduction; rejected as too narrow for a purchased transformation."
+          ],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {
+            "source_row": 1940,
+            "record_id": "ABLREC-01939",
+            "name": "Heat-Resistant Scales",
+            "tier": "1",
+            "xp_cost": "750 XP"
+          },
+          "recommendation": {
+            "Effect": "While transformed, reflective scales reduce fire damage you take by 2 and give advantage on saves or checks against nonmagical heat exposure.",
+            "Mechanics": "This does not grant fire resistance and does not protect carried objects that are separately exposed."
+          },
+          "evidence": [
+            "Source listing supplies the name Heat-Resistant Scales, Tier 1 placement, and 750 XP price.",
+            "Published Environmental Adaptations Tier 1 examples (Burrower's Resilience, Climber's Grace, Amphibious Shift, Night Hunter) establish the branch's Tier 1 mechanical scale; they are review anchors, not identity matches."
+          ],
+          "rationale": "Uses the higher Tier 1 price for both bounded damage reduction and environmental heat protection while remaining below Tier 2 Heat Resistance.",
+          "alternatives_considered": [
+            "Grant fire resistance; rejected because the published Tier 2 ability already occupies that power level.",
+            "Grant +1 AC instead; rejected because the ability is explicitly heat-focused rather than general armor."
+          ],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {
+            "source_row": 1941,
+            "record_id": "ABLREC-01940",
+            "name": "Aquatic Lungs",
+            "tier": "1",
+            "xp_cost": "500 XP"
+          },
+          "recommendation": {
+            "Effect": "While transformed, grow functional gills and can breathe underwater indefinitely.",
+            "Mechanics": "This ability changes respiration only; it does not grant a swim speed, underwater blindsight, or pressure protection."
+          },
+          "evidence": [
+            "Source listing supplies the name Aquatic Lungs, Tier 1 placement, and 500 XP price.",
+            "Published Environmental Adaptations Tier 1 examples (Burrower's Resilience, Climber's Grace, Amphibious Shift, Night Hunter) establish the branch's Tier 1 mechanical scale; they are review anchors, not identity matches."
+          ],
+          "rationale": "Creates a narrow Tier 1 aquatic survival option below the published Amphibious Shift and later Aquatic Predator packages.",
+          "alternatives_considered": [
+            "Also grant a swim speed equal to movement; rejected to keep the 500 XP option narrower than published amphibious packages.",
+            "Allow only 10 minutes of underwater breathing; rejected because a dedicated biological lung adaptation should remain useful without bookkeeping."
+          ],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {
+            "source_row": 1942,
+            "record_id": "ABLREC-01941",
+            "name": "Climbing Adaptation",
+            "tier": "1",
+            "xp_cost": "750 XP"
+          },
+          "recommendation": {
+            "Effect": "While transformed, grow gripping pads, hooked digits, or equivalent anatomy and gain a climb speed equal to half your walking speed. You have advantage on checks made to keep your grip.",
+            "Mechanics": "The climb speed does not allow movement across ceilings unless the surface offers usable holds."
+          },
+          "evidence": [
+            "Source listing supplies the name Climbing Adaptation, Tier 1 placement, and 750 XP price.",
+            "Published Environmental Adaptations Tier 1 examples (Burrower's Resilience, Climber's Grace, Amphibious Shift, Night Hunter) establish the branch's Tier 1 mechanical scale; they are review anchors, not identity matches."
+          ],
+          "rationale": "Provides a useful Tier 1 climbing form while remaining below the published Climber's Grace, which grants full movement-speed climbing and broader Athletics advantage.",
+          "alternatives_considered": [
+            "Grant climb speed equal to walking speed; rejected because that matches the stronger published Tier 1 reference too closely.",
+            "Grant only advantage on climbing checks; rejected as too small for a permanent purchased adaptation."
+          ],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {
+            "source_row": 1943,
+            "record_id": "ABLREC-01942",
+            "name": "Tundra Survivor",
+            "tier": "2",
+            "xp_cost": "1,500 XP"
+          },
+          "recommendation": {
+            "Effect": "While transformed, gain resistance to cold damage and ignore movement penalties caused by ordinary snow or ice.",
+            "Mechanics": "Magical difficult terrain and supernatural cold still apply unless another ability says otherwise."
+          },
+          "evidence": [
+            "Source listing supplies the name Tundra Survivor, Tier 2 placement, and 1,500 XP price.",
+            "Published Environmental Adaptations Tier 2 examples (Aquatic Predator, Echo Tracker, Cold Resistance, Heat Resistance) establish the branch's Tier 2 mechanical scale; they are review anchors, not identity matches."
+          ],
+          "rationale": "Combines the branch's established Tier 2 cold-resistance scale with a terrain-specific tundra benefit without reaching Tier 3 cold immunity.",
+          "alternatives_considered": [
+            "Grant cold immunity; rejected because published Tier 3 Arctic Endurance establishes immunity later.",
+            "Add advantage on all Survival checks; rejected as broader than the tundra theme."
+          ],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {
+            "source_row": 1944,
+            "record_id": "ABLREC-01943",
+            "name": "Gilled Form",
+            "tier": "2",
+            "xp_cost": "1,500 XP"
+          },
+          "recommendation": {
+            "Effect": "While transformed, breathe air and water and gain a swim speed equal to half your walking speed.",
+            "Mechanics": "The form does not grant underwater blindsight, pressure immunity, or increased swimming speed beyond this value."
+          },
+          "evidence": [
+            "Source listing supplies the name Gilled Form, Tier 2 placement, and 1,500 XP price.",
+            "Published Environmental Adaptations Tier 2 examples (Aquatic Predator, Echo Tracker, Cold Resistance, Heat Resistance) establish the branch's Tier 2 mechanical scale; they are review anchors, not identity matches."
+          ],
+          "rationale": "Creates a Tier 2 general aquatic form that is stronger than respiration alone but remains below the published Aquatic Predator package.",
+          "alternatives_considered": [
+            "Grant swim speed equal to walking speed plus blindsight; rejected because that approaches the stronger published aquatic progression.",
+            "Make the form water-only and unable to breathe air; rejected because the Shapeshifter purchase should remain usable during transitions."
+          ],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {
+            "source_row": 1945,
+            "record_id": "ABLREC-01944",
+            "name": "Toxic Resistance",
+            "tier": "2",
+            "xp_cost": "2,500 XP"
+          },
+          "recommendation": {
+            "Effect": "While transformed, gain resistance to poison damage and advantage on saving throws against poison and disease.",
+            "Mechanics": "This does not grant poison immunity and does not make your body toxic to attackers."
+          },
+          "evidence": [
+            "Source listing supplies the name Toxic Resistance, Tier 2 placement, and 2,500 XP price.",
+            "Published Environmental Adaptations Tier 2 examples (Aquatic Predator, Echo Tracker, Cold Resistance, Heat Resistance) establish the branch's Tier 2 mechanical scale; they are review anchors, not identity matches."
+          ],
+          "rationale": "Uses the high Tier 2 price for broad toxin resilience while remaining below the published Tier 3 Toxic Flesh retaliation effect.",
+          "alternatives_considered": [
+            "Grant poison immunity; rejected as too strong for Tier 2.",
+            "Add retaliation poison damage; rejected because that is already represented by the later Toxic Flesh concept."
+          ],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {
+            "source_row": 1946,
+            "record_id": "ABLREC-01945",
+            "name": "Hurricane Stamina",
+            "tier": "3",
+            "xp_cost": "3,500 XP"
+          },
+          "recommendation": {
+            "Effect": "While transformed, you have advantage on checks and saves against strong wind, forced movement, and being knocked prone by weather. Natural wind does not reduce your movement speed.",
+            "Mechanics": "This protection applies to wind and storm force, not to arbitrary telekinesis or creature abilities that do not use wind."
+          },
+          "evidence": [
+            "Source listing supplies the name Hurricane Stamina, Tier 3 placement, and 3,500 XP price.",
+            "Published Environmental Adaptations Tier 3 examples (Arctic Endurance, Toxic Flesh, Glider Wings, Desert Survivor) establish the branch's Tier 3 mechanical scale; they are review anchors, not identity matches."
+          ],
+          "rationale": "Creates a Tier 3 storm-survival specialization focused on endurance and movement rather than elemental damage resistance.",
+          "alternatives_considered": [
+            "Grant lightning resistance; rejected because the name and branch support storm endurance but not necessarily electrical immunity.",
+            "Make the character immune to all forced movement; rejected as too broad."
+          ],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {
+            "source_row": 1947,
+            "record_id": "ABLREC-01946",
+            "name": "Deep-Sea Morph",
+            "tier": "3",
+            "xp_cost": "4,000 XP"
+          },
+          "recommendation": {
+            "Effect": "While transformed, breathe underwater, gain a swim speed equal to your walking speed, darkvision out to 60 feet underwater, and suffer no harm from ordinary deep-water pressure.",
+            "Mechanics": "This does not grant underwater blindsight or immunity to supernatural pressure or crushing effects."
+          },
+          "evidence": [
+            "Source listing supplies the name Deep-Sea Morph, Tier 3 placement, and 4,000 XP price.",
+            "Published Environmental Adaptations Tier 3 examples (Arctic Endurance, Toxic Flesh, Glider Wings, Desert Survivor) establish the branch's Tier 3 mechanical scale; they are review anchors, not identity matches."
+          ],
+          "rationale": "At Tier 3, combines several aquatic survival functions while staying distinct from the published Aquatic Predator's blindsight-focused hunting package.",
+          "alternatives_considered": [
+            "Add 30-foot blindsight underwater; rejected to avoid duplicating Aquatic Predator.",
+            "Grant cold resistance automatically; rejected because deep-sea pressure and vision are the primary identity of this form."
+          ],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {
+            "source_row": 1948,
+            "record_id": "ABLREC-01947",
+            "name": "Camouflaged Survivalist",
+            "tier": "3",
+            "xp_cost": "3,500 XP"
+          },
+          "recommendation": {
+            "Effect": "While transformed and in natural terrain, you have advantage on Stealth checks. If you remain motionless until the start of your next turn, creatures relying on sight have disadvantage on checks to notice you until you move or act.",
+            "Mechanics": "The effect is camouflage, not invisibility, and provides no benefit in terrain your coloration cannot plausibly match."
+          },
+          "evidence": [
+            "Source listing supplies the name Camouflaged Survivalist, Tier 3 placement, and 3,500 XP price.",
+            "Published Environmental Adaptations Tier 3 examples (Arctic Endurance, Toxic Flesh, Glider Wings, Desert Survivor) establish the branch's Tier 3 mechanical scale; they are review anchors, not identity matches."
+          ],
+          "rationale": "Extends the branch's environmental adaptation theme into survival camouflage without reaching Tier 5 invisibility-like utility.",
+          "alternatives_considered": [
+            "Grant invisibility while motionless; rejected as too close to the published Tier 5 Perfect Camouflage concept in another branch.",
+            "Grant advantage on all Stealth checks regardless of terrain; rejected as insufficiently environmental."
+          ],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {
+            "source_row": 1949,
+            "record_id": "ABLREC-01948",
+            "name": "Burrowing Expert",
+            "tier": "3",
+            "xp_cost": "4,500 XP"
+          },
+          "recommendation": {
+            "Effect": "While transformed, gain a burrow speed equal to half your walking speed through loose earth, sand, snow, or similarly yielding material and tremorsense out to 20 feet while touching the ground.",
+            "Mechanics": "You cannot burrow through worked stone, metal, or reinforced structures, and tunnels collapse unless the material can naturally support them."
+          },
+          "evidence": [
+            "Source listing supplies the name Burrowing Expert, Tier 3 placement, and 4,500 XP price.",
+            "Published Environmental Adaptations Tier 3 examples (Arctic Endurance, Toxic Flesh, Glider Wings, Desert Survivor) establish the branch's Tier 3 mechanical scale; they are review anchors, not identity matches."
+          ],
+          "rationale": "Upgrades the branch's early burrowing concept at Tier 3 through greater sensory range and broader yielding terrain without unrestricted earth phasing.",
+          "alternatives_considered": [
+            "Grant full walking-speed burrowing through stone; rejected as too strong and too close to phasing.",
+            "Only grant tremorsense; rejected because the ability is explicitly an expert burrowing form."
+          ],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {
+            "source_row": 1950,
+            "record_id": "ABLREC-01949",
+            "name": "Extreme Cold Immunity",
+            "tier": "4",
+            "xp_cost": "6,500 XP"
+          },
+          "recommendation": {
+            "Effect": "While transformed, you are immune to cold damage and to exhaustion or penalties caused solely by natural extreme cold.",
+            "Mechanics": "This does not negate non-cold effects of blizzards, ice hazards, lack of visibility, or magical terrain."
+          },
+          "evidence": [
+            "Source listing supplies the name Extreme Cold Immunity, Tier 4 placement, and 6,500 XP price.",
+            "Published Environmental Adaptations Tier 4 examples (Elemental Breath, Magnetized Senses, Volcanic Form, Fungal Symbiosis) establish the branch's Tier 4 mechanical scale; they are review anchors, not identity matches."
+          ],
+          "rationale": "A Tier 4 dedicated immunity improves on the published Tier 3 cold-immunity benchmark by adding natural-exposure protection without broad environmental immunity.",
+          "alternatives_considered": [
+            "Add immunity to all ice-based control effects; rejected because cold immunity does not imply freedom from restraint or terrain.",
+            "Grant only cold resistance; rejected as below the intended Tier 4 scale."
+          ],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {
+            "source_row": 1951,
+            "record_id": "ABLREC-01950",
+            "name": "Extreme Heat Immunity",
+            "tier": "4",
+            "xp_cost": "7,000 XP"
+          },
+          "recommendation": {
+            "Effect": "While transformed, you are immune to fire damage and to exhaustion or penalties caused solely by natural extreme heat.",
+            "Mechanics": "This does not permit breathing smoke, surviving without oxygen, or ignoring non-fire hazards such as molten-rock entrapment."
+          },
+          "evidence": [
+            "Source listing supplies the name Extreme Heat Immunity, Tier 4 placement, and 7,000 XP price.",
+            "Published Environmental Adaptations Tier 4 examples (Elemental Breath, Magnetized Senses, Volcanic Form, Fungal Symbiosis) establish the branch's Tier 4 mechanical scale; they are review anchors, not identity matches."
+          ],
+          "rationale": "Mirrors the branch's progression from resistance to advanced environmental immunity at Tier 4 while keeping other hazards distinct.",
+          "alternatives_considered": [
+            "Include immunity to smoke and suffocation; rejected because those are separate survival problems.",
+            "Grant fire resistance plus bonus movement; rejected as too weak for the explicit immunity name and Tier 4 price."
+          ],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {
+            "source_row": 1952,
+            "record_id": "ABLREC-01951",
+            "name": "Void Survival",
+            "tier": "4",
+            "xp_cost": "8,000 XP"
+          },
+          "recommendation": {
+            "Effect": "While transformed, you can survive without breathing for up to 1 hour, take half damage from radiation effects, and suffer no injury from ordinary vacuum or rapid decompression during that time.",
+            "Mechanics": "After 1 hour without breathable atmosphere you begin suffocating normally. This does not provide propulsion or zero-gravity movement."
+          },
+          "evidence": [
+            "Source listing supplies the name Void Survival, Tier 4 placement, and 8,000 XP price.",
+            "Published Environmental Adaptations Tier 4 examples (Elemental Breath, Magnetized Senses, Volcanic Form, Fungal Symbiosis) establish the branch's Tier 4 mechanical scale; they are review anchors, not identity matches."
+          ],
+          "rationale": "Creates a powerful Tier 4 space-survival precursor that remains clearly below published Tier 5 Voidborn Endurance, which permits indefinite vacuum survival.",
+          "alternatives_considered": [
+            "Allow indefinite vacuum survival; rejected because that is explicitly established at Tier 5.",
+            "Grant complete radiation immunity; rejected as stronger than the published later benchmark."
+          ],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {
+            "source_row": 1953,
+            "record_id": "ABLREC-01952",
+            "name": "Adaptive Cellular Structure",
+            "tier": "4",
+            "xp_cost": "7,500 XP"
+          },
+          "recommendation": {
+            "Effect": "When you transform, choose acid, cold, fire, lightning, or poison. Gain resistance to the chosen damage type until the transformation ends. You may choose a different type the next time you transform.",
+            "Mechanics": "Only one resistance from this ability can be active at a time, and the choice does not grant immunity to related conditions."
+          },
+          "evidence": [
+            "Source listing supplies the name Adaptive Cellular Structure, Tier 4 placement, and 7,500 XP price.",
+            "Published Environmental Adaptations Tier 4 examples (Elemental Breath, Magnetized Senses, Volcanic Form, Fungal Symbiosis) establish the branch's Tier 4 mechanical scale; they are review anchors, not identity matches."
+          ],
+          "rationale": "Provides a flexible Tier 4 cellular defense without granting multiple simultaneous resistances or the rapid switching expected at Tier 5.",
+          "alternatives_considered": [
+            "Choose two simultaneous resistances; rejected to preserve room for Tier 5 mastery.",
+            "Allow changing the resistance every round; rejected as too flexible for Tier 4."
+          ],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {
+            "source_row": 1954,
+            "record_id": "ABLREC-01953",
+            "name": "Perfect Adaptation",
+            "tier": "5",
+            "xp_cost": "12,000 XP"
+          },
+          "recommendation": {
+            "Effect": "After spending 1 minute in a hostile natural environment while transformed, choose one dominant environmental hazard there. You become immune to that natural hazard and gain resistance to one directly associated damage type until you leave the environment or transform again.",
+            "Mechanics": "The adaptation does not copy creature abilities, negate deliberate attacks, or create immunity to supernatural hazards unless the GM identifies them as the same environmental condition."
+          },
+          "evidence": [
+            "Source listing supplies the name Perfect Adaptation, Tier 5 placement, and 12,000 XP price.",
+            "Published Environmental Adaptations Tier 5 examples (Adaptation Mastery, Apex Evolution, Hybrid Biome Shift, Voidborn Endurance) establish the branch's Tier 5 mechanical scale; they are review anchors, not identity matches."
+          ],
+          "rationale": "Makes the Tier 5 form responsive to actual surroundings while requiring exposure and limiting the adaptation to one dominant hazard.",
+          "alternatives_considered": [
+            "Automatically become immune to every hazard present; rejected as too broad.",
+            "Select a fixed resistance when purchased; rejected because the ability's identity is perfect situational adaptation."
+          ],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {
+            "source_row": 1955,
+            "record_id": "ABLREC-01954",
+            "name": "Unyielding Survivalist",
+            "tier": "5",
+            "xp_cost": "11,000 XP"
+          },
+          "recommendation": {
+            "Effect": "While transformed, you are immune to exhaustion caused by natural environmental exposure, can function for seven days without food and three days without water before normal deprivation rules begin, and have advantage on saves against disease.",
+            "Mechanics": "This does not remove exhaustion from combat, magic, sleep deprivation, or other non-environmental causes."
+          },
+          "evidence": [
+            "Source listing supplies the name Unyielding Survivalist, Tier 5 placement, and 11,000 XP price.",
+            "Published Environmental Adaptations Tier 5 examples (Adaptation Mastery, Apex Evolution, Hybrid Biome Shift, Voidborn Endurance) establish the branch's Tier 5 mechanical scale; they are review anchors, not identity matches."
+          ],
+          "rationale": "Uses Tier 5 for extreme endurance across several survival pressures without granting damage immunities.",
+          "alternatives_considered": [
+            "Grant immunity to all exhaustion; rejected because that would negate unrelated combat and magical effects.",
+            "Eliminate all need for food and water permanently; rejected as broader than a survivalist transformation."
+          ],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {
+            "source_row": 1956,
+            "record_id": "ABLREC-01955",
+            "name": "Elemental Resistance Mastery",
+            "tier": "5",
+            "xp_cost": "12,500 XP"
+          },
+          "recommendation": {
+            "Effect": "When you transform, choose two from acid, cold, fire, lightning, or poison; gain resistance to both. Once per long rest, when you take damage of one chosen type, you may become immune to that type until the start of your next turn.",
+            "Mechanics": "Changing the two selected resistances requires a new transformation."
+          },
+          "evidence": [
+            "Source listing supplies the name Elemental Resistance Mastery, Tier 5 placement, and 12,500 XP price.",
+            "Published Environmental Adaptations Tier 5 examples (Adaptation Mastery, Apex Evolution, Hybrid Biome Shift, Voidborn Endurance) establish the branch's Tier 5 mechanical scale; they are review anchors, not identity matches."
+          ],
+          "rationale": "Provides advanced multi-element defense at Tier 5 while making immunity brief and reactive rather than permanent.",
+          "alternatives_considered": [
+            "Grant permanent immunity to two elements; rejected as too strong.",
+            "Grant resistance to all five listed elements; rejected because that would crowd out other environmental specialization."
+          ],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {
+            "source_row": 1957,
+            "record_id": "ABLREC-01956",
+            "name": "Ultimate Environmental Shifter",
+            "tier": "5",
+            "xp_cost": "15,000 XP"
+          },
+          "recommendation": {
+            "Effect": "While transformed, maintain up to three environmental adaptation modes at once, each chosen from aquatic, arctic, desert/heat, subterranean, toxic, storm, or void survival. As a bonus action, replace one active mode with another. You are also immune to ordinary natural hazards represented by your active modes.",
+            "Mechanics": "Each mode grants only the survival and movement functions needed for that environment; it does not duplicate named combat abilities, creature powers, or unlimited damage immunities unless another purchased ability supplies them."
+          },
+          "evidence": [
+            "Source listing supplies the name Ultimate Environmental Shifter, Tier 5 placement, and 15,000 XP price.",
+            "Published Environmental Adaptations Tier 5 examples (Adaptation Mastery, Apex Evolution, Hybrid Biome Shift, Voidborn Endurance) establish the branch's Tier 5 mechanical scale; they are review anchors, not identity matches."
+          ],
+          "rationale": "The highest-cost Tier 5 option provides rapid multi-biome flexibility while preserving the identities of separately purchased resistance and combat abilities.",
+          "alternatives_considered": [
+            "Grant every Environmental Adaptation ability simultaneously; rejected as invalidating the progression tree.",
+            "Allow unlimited copying of encountered creatures' adaptations; rejected as unsupported and too open-ended."
+          ],
+          "confidence": "medium",
+          "reversible": true
+        }
+      ]
+    }
+  ]
+}

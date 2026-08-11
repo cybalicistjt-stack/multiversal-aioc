@@ -1,0 +1,29 @@
+name: Validate PPIA-01 Repair Routing
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-01_REPAIR_AND_ROUTING_BACKLOG.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-01_UNRESOLVED_SOURCE_REGISTER.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-01_P1_CORE_MECHANICAL_SOURCE_REVIEW_v0.1.0.json'
+      - 'scripts/validate-ppia01-repair-routing-backlog.py'
+      - '.github/workflows/validate-ppia-01-routing.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PPIA-01 repair and routing backlog
+        run: python scripts/validate-ppia01-repair-routing-backlog.py
+      - name: Verify tracked checkout was not mutated
+        run: git diff --exit-code

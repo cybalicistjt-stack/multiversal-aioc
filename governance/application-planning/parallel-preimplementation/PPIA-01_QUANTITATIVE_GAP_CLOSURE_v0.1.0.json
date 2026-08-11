@@ -1,0 +1,180 @@
+{
+  "format": "multiversal-ppia01-quantitative-gap-closure",
+  "version": "0.1.0",
+  "work_item": "PPIA-01",
+  "status": "governed_overlay_not_source_rewrite",
+  "authority": "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json",
+  "policy": {
+    "preserve_raw_csv": true,
+    "source_grounded_values_are_not_recommendations": true,
+    "owner_recommendations_are_source_facts": false,
+    "automatic_identity_merge": false,
+    "reversible": true,
+    "later_balance_review": "PPIA-11"
+  },
+  "summary": {
+    "amount_not_specified_rows": 12,
+    "source_grounded_quantitative_corrections": 2,
+    "owner_delegated_quantitative_recommendations": 10,
+    "raw_source_rows_modified": 0
+  },
+  "entries": [
+    {
+      "target": {"dataset": "expanded_symbiotes_and_cybernetics_all_genres.csv", "source_row": 55, "record_id": "", "name": "Nanobot Repair System", "source_pdf": "Cybernetics(2).PDF", "source_page": "", "source_section": ""},
+      "resolution_kind": "owner_delegated_quantitative_recommendation",
+      "recommendation": {
+        "Damage_or_Healing": "Regain 1d6 HP after each uninterrupted hour while the implant is powered, provided the host has at least 1 HP; no more than once per hour.",
+        "Mechanical_Completion": "Retain the source's +2 Constitution benefit for healing/recovery checks. The passive repair is intended for minor recovery, not emergency revival or in-combat regeneration."
+      },
+      "source_support": [
+        "Cybernetics, Defense Enhancements, rendered page 8: Nanobot Repair System auto-repairs minor damage and grants +2 Constitution for healing; no HP quantity is published.",
+        "The governed corpus contains bioadaptive repair systems using 1d6 repair per hour, providing a bounded cross-source scale without treating those records as the same identity."
+      ],
+      "source_evidence": {"project_source_member": "MV_Master_01_Core/02_PDF_Sources/Part 1/Items/Item pdfs/Cybernetics.PDF", "sha256": "52ebe4c4d74f0a036fdaf9b9c670be173ba015dc002a6532eec7afdc5b386c5e", "rendered_page": 8},
+      "rationale": "An hourly 1d6 repair preserves the source's 'minor auto-repair' language and continuous powered operation without creating combat-speed regeneration. The source-declared +2 Constitution remains the primary healing bonus.",
+      "alternatives_considered": ["Restore 1d6 HP every round; rejected as incompatible with 'minor' repair and too strong for a general cybernetic implant.", "Do not assign any HP recovery and use only +2 Constitution; rejected because the source explicitly says the system auto-repairs damage and the runtime record needs a bounded repair quantity."],
+      "confidence": "medium", "reversible": true
+    },
+    {
+      "target": {"dataset": "expanded_symbiotes_and_cybernetics_all_genres.csv", "source_row": 57, "record_id": "", "name": "Energy Absorber", "source_pdf": "Cybernetics(2).PDF", "source_page": "", "source_section": ""},
+      "resolution_kind": "owner_delegated_quantitative_recommendation",
+      "recommendation": {
+        "Damage_or_Healing": "As a reaction to incoming energy damage, reduce that damage by 5 and store 1 charge; maximum 3 stored charges.",
+        "Mechanical_Completion": "A stored charge may power one normal activation of an installed cybernetic system that draws from the host's rechargeable internal cell. Unspent charges discharge at the end of a long rest or during maintenance. Retain the source's +2 Constitution benefit for energy absorption checks."
+      },
+      "source_support": [
+        "Cybernetics, Defense Enhancements, rendered page 8: Energy Absorber converts damage into stored power and grants +2 Constitution for energy absorption; no conversion amount is published.",
+        "Later governed Flux Weaver records establish the compatible pattern 'reaction reduces energy damage and stores one charge', with advanced variants reducing 10; this recommendation deliberately uses 5 for the more general Advanced Cybernetics record."
+      ],
+      "source_evidence": {"project_source_member": "MV_Master_01_Core/02_PDF_Sources/Part 1/Items/Item pdfs/Cybernetics.PDF", "sha256": "52ebe4c4d74f0a036fdaf9b9c670be173ba015dc002a6532eec7afdc5b386c5e", "rendered_page": 8},
+      "rationale": "The later registry provides a direct governed absorption/charge pattern. Halving the advanced variant's 10-point reduction keeps the generic 2,300-credit implant bounded while making 'converts damage into stored power' mechanically usable.",
+      "alternatives_considered": ["Use the later Flux Weaver value of 10 damage; rejected because those are materially more advanced/high-cost records.", "Convert 25% of arbitrary damage into an undefined power unit; rejected because a discrete three-charge model is already present in the governed corpus and is easier to implement deterministically."],
+      "confidence": "medium", "reversible": true
+    },
+    {
+      "target": {"dataset": "magic_arcane_and_faction_ability_trees_catalog.csv", "source_row": 99, "record_id": "ABL5-00098", "name": "Necrotic Awakening", "source_pdf": "Shamanism and Voodoo v2(1).PDF", "source_page": "29", "source_section": "Voodoo Ability Tree — Tier 3"},
+      "resolution_kind": "owner_delegated_quantitative_recommendation",
+      "recommendation": {
+        "Resource_Cost": "Extending an undead servant beyond its first hour costs 25 XP per creature per additional hour. Maintaining each controlled undead beyond the first across days costs 25 XP per creature per day.",
+        "Mechanical_Completion": "The normal Tier 3 purchase remains 5,000 XP. The caster may never exceed the source-declared control limit of undead equal to their Wisdom modifier."
+      },
+      "source_support": [
+        "Shamanism and Voodoo, rendered page 29: Necrotic Awakening raises one skeleton or zombie for one hour (or longer with XP), permits controlled undead up to the Wisdom modifier, and says additional undead increase daily XP cost without publishing the amount.",
+        "The same source's Tier 3 Spirit Binding uses 25-50 XP/day maintenance; rendered page 30's Tier 5 Army of the Dead prices each additional hour at 25 XP per creature."
+      ],
+      "source_evidence": {"project_source_member": "MV_Master_01_Core/02_PDF_Sources/P2/To go/Magic/Shamanism and Voodoo v2.PDF", "sha256": "cea7faf5ac7df3b543d1e3112dca356e92822d6d7624427ac11d0bd3a4ee5b94", "rendered_pages": [29, 30]},
+      "rationale": "Using the source's own 25-XP lower bound for spirit maintenance and its explicit 25-XP-per-creature hourly undead extension produces a conservative, internally consistent cost without inventing a new currency scale.",
+      "alternatives_considered": ["Charge 50 XP per additional undead per day; rejected in favor of the lower published Spirit Binding maintenance bound for this Tier 3 ability.", "Make additional undead free once the ability is purchased; rejected because the source explicitly states that they increase daily XP cost."],
+      "confidence": "high", "reversible": true
+    },
+    {
+      "target": {"dataset": "species_elementalist_and_innate_abilities_catalog.csv", "source_row": 33, "record_id": "ABLREC-00032", "name": "Bone Crusher", "source_pdf": "Species Perks(1)(2).PDF", "source_page": "8", "source_section": "Species Perks > Orcs"},
+      "resolution_kind": "source_grounded_quantitative_correction",
+      "quantitative_resolution": "On a melee-weapon critical hit, roll two additional weapon damage dice instead of one.",
+      "source_support": ["Species Perks, rendered page 8, Bone Crusher: the critical-hit effect explicitly instructs the player to roll two additional damage dice instead of one."],
+      "source_evidence": {"project_source_member": "MV_Master_01_Core/02_PDF_Sources/Part 1/Creation/Species Perks(1).PDF", "sha256": "a4b0fe726c5fa20be9c8ff78466efcbc0134cba136aa2346e193b268b15dab99", "rendered_page": 8},
+      "rationale": "The high-priority flag was a field-normalization error: the source supplies a relative dice quantity even though it does not name a fixed die size, because the die size is inherited from the triggering weapon.",
+      "confidence": "high", "reversible": true
+    },
+    {
+      "target": {"dataset": "species_elementalist_and_innate_abilities_catalog.csv", "source_row": 336, "record_id": "ABLREC-00335", "name": "Lingering Flames", "source_pdf": "Elementalist Trees(3).PDF", "source_page": "7", "source_section": "Elementalist Trees > Fire > Infernal Manipulation > Tier 2"},
+      "resolution_kind": "owner_delegated_quantitative_recommendation",
+      "recommendation": {
+        "Damage": "1d4 fire damage at the end of the target's next turn.",
+        "Mechanical_Completion": "A target can have only one Lingering Flames instance from the same user at a time; a new application refreshes the delayed damage instead of stacking it."
+      },
+      "source_support": ["Elementalist Trees, rendered page 7: Tier 2 Lingering Flames makes flames from attacks persist for a short duration and deal additional damage, but publishes no amount.", "The 1d4 delayed rider is deliberately at the low end of the governed low-tier damage scale and leaves stronger burn/zone abilities room to progress."],
+      "source_evidence": {"project_source_member": "MV_Master_01_Core/02_PDF_Sources/Part 1/Creation/Elementalist Trees.PDF", "sha256": "6304a8846309854c699572c7925a87ee8f83c087f444d99f8f48c7b5a0aea090", "rendered_page": 7},
+      "rationale": "A single 1d4 delayed tick makes 'lingering' mechanically visible without turning every attack into a stacking damage-over-time engine.",
+      "alternatives_considered": ["Deal 1d4 for multiple rounds; rejected because repeated stacking would escalate quickly across multiple attacks.", "Deal 1d8 once; rejected as high for a Tier 2 rider whose main identity is persistence rather than burst."],
+      "confidence": "medium", "reversible": true
+    },
+    {
+      "target": {"dataset": "species_elementalist_and_innate_abilities_catalog.csv", "source_row": 534, "record_id": "ABLREC-00533", "name": "Energized Assault", "source_pdf": "Elementalist Trees(3).PDF", "source_page": "20", "source_section": "Elementalist Trees > Electricity > Energy Conduction > Tier 4"},
+      "resolution_kind": "owner_delegated_quantitative_recommendation",
+      "recommendation": {
+        "Damage": "The ally's next successful attack deals an additional 2d8 lightning damage.",
+        "Mechanical_Completion": "The charge is consumed on the next successful attack and expires if unused by the end of the ally's next turn. Multiple Energized Assault charges do not stack."
+      },
+      "source_support": ["Elementalist Trees, rendered page 20: Tier 4 Energized Assault supercharges an ally's next strike to deal 'massive additional damage' but publishes no amount.", "A one-hit 2d8 rider is a bounded Tier 4 burst and is intentionally below effects that repeat damage every action or affect multiple targets."],
+      "source_evidence": {"project_source_member": "MV_Master_01_Core/02_PDF_Sources/Part 1/Creation/Elementalist Trees.PDF", "sha256": "6304a8846309854c699572c7925a87ee8f83c087f444d99f8f48c7b5a0aea090", "rendered_page": 20},
+      "rationale": "The source explicitly distinguishes this as a one-strike 'massive' Tier 4 buff. 2d8 makes the adjective meaningful while keeping the effect single-use and nonstacking pending PPIA-11 balance review.",
+      "alternatives_considered": ["Use +1d8; rejected as too close to low/mid-tier riders for the source's 'massive' wording.", "Use +4d6 or double the entire attack; rejected as too volatile before the dedicated balance tranche."],
+      "confidence": "medium", "reversible": true
+    },
+    {
+      "target": {"dataset": "species_elementalist_and_innate_abilities_catalog.csv", "source_row": 953, "record_id": "ABLREC-00952", "name": "Echoing Strike", "source_pdf": "Elementalist Trees(3).PDF", "source_page": "44", "source_section": "Elementalist Trees > Air > Sound and Vibration Manipulation > Tier 2"},
+      "resolution_kind": "owner_delegated_quantitative_recommendation",
+      "recommendation": {
+        "Damage": "The triggering attack deals an additional 1d6 sonic damage.",
+        "Mechanical_Completion": "The additional damage occurs once on the enhanced attack; it does not recursively echo or trigger itself."
+      },
+      "source_support": ["Elementalist Trees, rendered page 44: Tier 2 Echoing Strike enhances an attack with sound so it reverberates for additional damage, but publishes no amount.", "A one-time 1d6 rider sits within the governed low-tier dice scale and remains below Tier 3 Harmonic Weapon's sustained infusion recommendation."],
+      "source_evidence": {"project_source_member": "MV_Master_01_Core/02_PDF_Sources/Part 1/Creation/Elementalist Trees.PDF", "sha256": "6304a8846309854c699572c7925a87ee8f83c087f444d99f8f48c7b5a0aea090", "rendered_page": 44},
+      "rationale": "A single 1d6 sonic rider makes the source's additional-damage instruction executable while preserving a clear progression into sustained Tier 3 weapon infusion.",
+      "alternatives_considered": ["Deal a second full copy of the triggering attack; rejected as too strong and identity-blurring.", "Use 1d4; rejected because Echoing Strike is Tier 2 and a single-use attack enhancement, allowing a modest step above the delayed 1d4 Lingering Flames rider."],
+      "confidence": "medium", "reversible": true
+    },
+    {
+      "target": {"dataset": "species_elementalist_and_innate_abilities_catalog.csv", "source_row": 958, "record_id": "ABLREC-00957", "name": "Harmonic Weapon", "source_pdf": "Elementalist Trees(3).PDF", "source_page": "45", "source_section": "Elementalist Trees > Air > Sound and Vibration Manipulation > Tier 3"},
+      "resolution_kind": "owner_delegated_quantitative_recommendation",
+      "recommendation": {
+        "Damage": "The infused weapon deals an additional 1d6 sonic damage once per turn when it hits.",
+        "Mechanical_Completion": "The infusion lasts up to 1 minute, affects one weapon at a time, and ends early if the user dismisses it or becomes incapacitated."
+      },
+      "source_support": ["Elementalist Trees, rendered page 45: Tier 3 Harmonic Weapon infuses a weapon with sound energy so it vibrates and deals additional damage, but publishes no amount or duration.", "Limiting a 1d6 rider to once per turn distinguishes a sustained Tier 3 infusion from Tier 2 Echoing Strike without multiplying damage across every multiattack."],
+      "source_evidence": {"project_source_member": "MV_Master_01_Core/02_PDF_Sources/Part 1/Creation/Elementalist Trees.PDF", "sha256": "6304a8846309854c699572c7925a87ee8f83c087f444d99f8f48c7b5a0aea090", "rendered_page": 45},
+      "rationale": "The recommendation turns a persistent weapon infusion into a bounded once-per-turn rider; the duration is long enough to function as an infusion but deliberately capped pending balance review.",
+      "alternatives_considered": ["Add 1d6 to every hit; rejected because multiattack scaling would make the value highly character-dependent.", "Use a one-hit 1d8 rider; rejected because that would overlap Echoing Strike rather than create a sustained Tier 3 identity."],
+      "confidence": "medium", "reversible": true
+    },
+    {
+      "target": {"dataset": "species_elementalist_and_innate_abilities_catalog.csv", "source_row": 1040, "record_id": "ABLREC-01039", "name": "Dissolving Strike", "source_pdf": "Elementalist Trees(3).PDF", "source_page": "50", "source_section": "Elementalist Trees > Acid > Corrosion Mastery > Tier 1"},
+      "resolution_kind": "owner_delegated_quantitative_recommendation",
+      "recommendation": {
+        "Damage": "The triggering weapon hit deals an additional 1d4 acid damage.",
+        "Mechanical_Completion": "If the target is using armor or a physical shield, reduce its AC by 1 until the start of your next turn. The AC reduction does not stack with itself."
+      },
+      "source_support": ["Elementalist Trees, rendered page 50: Tier 1 Dissolving Strike infuses a weapon with acid to deal additional damage and weaken armor, but publishes no quantities.", "A +1d4 damage rider and temporary -1 AC use minimal numeric steps appropriate to a Tier 1 armor-corrosion effect."],
+      "source_evidence": {"project_source_member": "MV_Master_01_Core/02_PDF_Sources/Part 1/Creation/Elementalist Trees.PDF", "sha256": "6304a8846309854c699572c7925a87ee8f83c087f444d99f8f48c7b5a0aea090", "rendered_page": 50},
+      "rationale": "Both the damage and armor weakening need bounded quantities to make the source text executable. The smallest common die and a one-point temporary AC reduction preserve Tier 1 scale.",
+      "alternatives_considered": ["Use +1d8 and -2 AC; rejected as too strong for Tier 1.", "Add damage only and leave armor weakening qualitative; rejected because armor weakening is an explicit half of the source effect and would remain unusable."],
+      "confidence": "medium", "reversible": true
+    },
+    {
+      "target": {"dataset": "species_elementalist_and_innate_abilities_catalog.csv", "source_row": 1131, "record_id": "ABLREC-01130", "name": "Corrosive Bite", "source_pdf": "Elementalist Trees(3).PDF", "source_page": "55", "source_section": "Elementalist Trees > Acid > Biological Decay > Tier 1"},
+      "resolution_kind": "owner_delegated_quantitative_recommendation",
+      "recommendation": {
+        "Damage": "The coated bite or melee-weapon hit deals an additional 1d4 acid damage.",
+        "Mechanical_Completion": "A living target hit by the coated attack suffers -1 AC until the start of your next turn. The penalty does not stack with itself."
+      },
+      "source_support": ["Elementalist Trees, rendered page 55: Tier 1 Corrosive Bite coats teeth or a melee weapon in acid, dealing additional damage and weakening the target's defenses, but publishes no quantities.", "The Biological Decay branch targets living organisms; a temporary one-point defense penalty is a bounded interpretation of 'weakening the target's defenses'."],
+      "source_evidence": {"project_source_member": "MV_Master_01_Core/02_PDF_Sources/Part 1/Creation/Elementalist Trees.PDF", "sha256": "6304a8846309854c699572c7925a87ee8f83c087f444d99f8f48c7b5a0aea090", "rendered_page": 55},
+      "rationale": "The same minimal Tier 1 damage die used for Dissolving Strike is appropriate, while the living-target restriction keeps this branch-specific version narrower.",
+      "alternatives_considered": ["Apply an ongoing 1d4 acid bleed; rejected because ongoing decay is separately represented by Decomposing Strike.", "Reduce all saving throws; rejected because 'defenses' is too vague to justify a broad penalty."],
+      "confidence": "medium", "reversible": true
+    },
+    {
+      "target": {"dataset": "species_elementalist_and_innate_abilities_catalog.csv", "source_row": 1387, "record_id": "ABLREC-01386", "name": "Armor Augmentation", "source_pdf": "Elementalist Trees(3).PDF", "source_page": "71", "source_section": "Elementalist Trees > Metal > Metallic Defense > Tier 2"},
+      "resolution_kind": "owner_delegated_quantitative_recommendation",
+      "recommendation": {
+        "Damage_Resistance": "For 1 minute, the augmented ally reduces incoming bludgeoning, piercing, and slashing damage by 2.",
+        "Mechanical_Completion": "Only one Armor Augmentation may affect the same armor at a time; a new application refreshes the duration instead of stacking the reduction."
+      },
+      "source_support": ["Elementalist Trees, rendered page 71: Tier 2 Armor Augmentation enhances an ally's armor with metal and grants additional damage resistance, but publishes no amount.", "The governed corpus repeatedly uses flat damage reduction 2 for bounded armor/thermal protection, including thermal mantles and Titan Fiber variants."],
+      "source_evidence": {"project_source_member": "MV_Master_01_Core/02_PDF_Sources/Part 1/Creation/Elementalist Trees.PDF", "sha256": "6304a8846309854c699572c7925a87ee8f83c087f444d99f8f48c7b5a0aea090", "rendered_page": 71},
+      "rationale": "Flat reduction 2 already exists as a governed defensive quantity and avoids the much stronger semantics of full damage resistance/halving. A one-minute cap makes the ally buff operational without permanent armor inflation.",
+      "alternatives_considered": ["Grant resistance that halves physical damage; rejected as too strong for Tier 2 and ambiguous in the source.", "Grant +2 AC instead; rejected because the source specifically says damage resistance rather than avoidance."],
+      "confidence": "medium", "reversible": true
+    },
+    {
+      "target": {"dataset": "species_elementalist_and_innate_abilities_catalog.csv", "source_row": 2183, "record_id": "ABLREC-02182", "name": "Starfire Charge", "source_pdf": "Innate Trees(3).PDF", "source_page": "32", "source_section": "Innate Trees > Star Child > Star Child Ability Tree > Tier 2"},
+      "resolution_kind": "source_grounded_quantitative_correction",
+      "quantitative_resolution": "Once per long rest, the first energy-based weapon attack from your ship deals 50% additional damage.",
+      "source_support": ["Innate Trees, rendered page 33 continuation of Starfire Charge: the mechanics explicitly set the first energy-based ship weapon attack to 50% additional damage once per long rest."],
+      "source_evidence": {"project_source_member": "MV_Master_01_Core/02_PDF_Sources/Part 1/Creation/Innate Trees.PDF", "sha256": "ae0852c06a58e281db01ffd28a5827cddec383d04f58824cbc94a34a8bce92a5", "rendered_pages": [32, 33]},
+      "rationale": "The high-priority flag was a field-normalization error: the exact percentage appears in the source mechanics on the following rendered page.",
+      "confidence": "high", "reversible": true
+    }
+  ]
+}
