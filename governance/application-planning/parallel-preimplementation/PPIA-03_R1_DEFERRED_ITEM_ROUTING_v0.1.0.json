@@ -1,0 +1,124 @@
+{
+  "format": "multiversal-ppia03-r1-deferred-item-routing",
+  "version": "0.1.0",
+  "work_item": "PPIA-03",
+  "status": "foundation-routing",
+  "source_reference": "PPIA-03_R1_DEFERRED_ITEM_CANDIDATES.csv",
+  "source_candidate_count": 53,
+  "boundary": "Recovered R1 candidates are source-accountability candidates, not canonical item definitions. This routing classifies structural headings only and never synthesizes missing item mechanics.",
+  "groups": [
+    {
+      "classification": "ppia03_supporting_rule_or_catalog_heading",
+      "count": 23,
+      "disposition": "supporting_context_not_definition",
+      "primary_route": "PPIA-03",
+      "canonical_item_definition": false,
+      "reason": "Heading identifies item rules, catalogs, repair/economy/material sections, or collection headings; inspect/bind as supporting context before any object conversion.",
+      "candidate_ids": [
+        "candidate.8860a82fb0b2aab822",
+        "candidate.2d8a97b339cff376d3",
+        "candidate.b724f575f1c4f899bf",
+        "candidate.5d74cac231907dda95",
+        "candidate.d4dfac4010bc65c8bb",
+        "candidate.6251285ca8b8765d8b",
+        "candidate.49c6edff9bde8987af",
+        "candidate.f524435928245a68f8",
+        "candidate.da2587a6cc48487729",
+        "candidate.118f3ddeb2fb5af881",
+        "candidate.eb0de2de1136ac4675",
+        "candidate.34af1684b8793d6cc6",
+        "candidate.7b2ed18822a57d6e1b",
+        "candidate.1d142cdebf0dc80bc4",
+        "candidate.9324e8b99684a6c560",
+        "candidate.09397249317cb974e1",
+        "candidate.00439a39e91fc80cf4",
+        "candidate.90e7f431ddbc7e6572",
+        "candidate.1e211bcc6c31090ccb",
+        "candidate.fd2901e5f750388ec8",
+        "candidate.af700741e7b6003f11",
+        "candidate.4252eb27d80d99ab10",
+        "candidate.b0a6f9b3d418853491"
+      ]
+    },
+    {
+      "classification": "ppia03_specific_item_or_loot_candidate",
+      "count": 4,
+      "disposition": "source_review_candidate",
+      "primary_route": "PPIA-03",
+      "canonical_item_definition": false,
+      "reason": "Heading names or directly describes an item/loot/tool surface, but the R1 structural heading alone is insufficient for canonical Definition creation.",
+      "candidate_ids": [
+        "candidate.f31ecaa127f1850f0c",
+        "candidate.b44288dcedb7e9ccba",
+        "candidate.2524ad867f6d84c49e",
+        "candidate.f722d738b66cc2cde3"
+      ]
+    },
+    {
+      "classification": "ppia04_vehicle_system_context",
+      "count": 10,
+      "disposition": "route_cross_domain",
+      "primary_route": "PPIA-04",
+      "canonical_item_definition": false,
+      "reason": "Heading is explicitly vehicle/transport weapon, armor, or system context; preserve as PPIA-04 vehicle/component evidence rather than flattening into personal inventory.",
+      "candidate_ids": [
+        "candidate.363525e94eefe50df0",
+        "candidate.e51dd6be8baabc287d",
+        "candidate.ce4b563bcf26992d11",
+        "candidate.f19b03f3f8e609e0ef",
+        "candidate.3133e74bff03a04b27",
+        "candidate.2f455ec25027f0e0ef",
+        "candidate.857b2cc1c36d94fc9d",
+        "candidate.2341ee0494a94574ec",
+        "candidate.aae686ddc1d54cf455",
+        "candidate.0cfc8920611ec372eb"
+      ]
+    },
+    {
+      "classification": "creature_or_body_action_context",
+      "count": 6,
+      "disposition": "route_cross_domain",
+      "primary_route": "PPIA-02/PPIA-05",
+      "canonical_item_definition": false,
+      "reason": "Heading is a creature/body attack or biological ability context, not evidence of an independently ownable Item Definition.",
+      "candidate_ids": [
+        "candidate.b7c94338ad8d107f8d",
+        "candidate.171c3726572a9bd58e",
+        "candidate.3212c4185f81160c16",
+        "candidate.76daaeb7a74daedb65",
+        "candidate.d23026778b063842ac",
+        "candidate.98a3fe4cea61f1ca30"
+      ]
+    },
+    {
+      "classification": "context_required_before_domain_assignment",
+      "count": 6,
+      "disposition": "unresolved_context_required",
+      "primary_route": "PPIA-03 triage",
+      "canonical_item_definition": false,
+      "reason": "Heading is too generic to decide whether the referenced weapon/tool belongs to personal inventory, a creature/NPC loadout, a vehicle, or GM authoring; source context is required.",
+      "candidate_ids": [
+        "candidate.825877c72271d4bc8b",
+        "candidate.43138278b50a0e5866",
+        "candidate.1e92eb383a38890a13",
+        "candidate.de9938dbb6211734b4",
+        "candidate.fb97b23fb4a69ec47f",
+        "candidate.6f46ef4a8658ee23d0"
+      ]
+    },
+    {
+      "classification": "non_item_world_or_gm_context",
+      "count": 4,
+      "disposition": "route_cross_domain",
+      "primary_route": "PPIA-08/PPIA-10/PPIA-12",
+      "canonical_item_definition": false,
+      "reason": "Heading is GM, faction, or setting context and is not sufficient evidence of an Item Definition.",
+      "candidate_ids": [
+        "candidate.7b55d81b204fbdb894",
+        "candidate.be0b4c351e04ab1900",
+        "candidate.4647aece2f035bb773",
+        "candidate.1f20179321db392ae1"
+      ]
+    }
+  ]
+}
