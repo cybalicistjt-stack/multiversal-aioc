@@ -1,0 +1,189 @@
+{
+  "format": "multiversal-ppia02-creature-npc-inspector-projection-matrix",
+  "version": "0.1.0",
+  "work_item": "PPIA-02",
+  "status": "implementation_ready_design_contract",
+  "inherits": "PPIA-02_EXPERIENCE_TAXONOMY_v0.1.0.json",
+  "principles": [
+    "Authorization and field filtering happen before serialization and before counts, facets, relationships, provenance, or comparison are computed.",
+    "A presentation profile changes emphasis/order only; it never creates a new canonical identity or grants authority.",
+    "Definition, Campaign placement, live instance, playable conversion, and source provenance remain distinguishable layers.",
+    "Missing source data stays missing or explicitly recommended; UI completeness is never evidence of source completeness.",
+    "Linked abilities, effects, conditions, items, relationships, variants, and provenance open through their owning governed objects instead of being flattened into copied text where stable references exist."
+  ],
+  "visibility_classes": [
+    {"id": "source_public", "meaning": "Source/governed definition data that the current role is authorized to read."},
+    {"id": "campaign_revealed", "meaning": "Campaign-local data explicitly revealed to the current role."},
+    {"id": "campaign_gm_private", "meaning": "Campaign-local hidden preparation data; never serialized to Player/Observer projections before reveal."},
+    {"id": "runtime_shared", "meaning": "Live-instance state intentionally shared with the current role."},
+    {"id": "runtime_gm_private", "meaning": "Live hidden runtime state such as unrevealed participants, reserves, secret resources, tactics, or objectives."},
+    {"id": "source_diagnostic", "meaning": "Source coordinates, transformation/recommendation status, conflicts, coverage warnings, or validation evidence shown only where role/source policy permits."},
+    {"id": "user_private", "meaning": "User-private notes or data governed by separate ownership; GM/Admin status alone does not automatically grant access."}
+  ],
+  "field_groups": [
+    {
+      "id": "identity",
+      "section": "identity_status",
+      "fields": ["display_name", "aliases", "stable_id", "object_family", "presentation_profile", "category_type_tags", "size", "version", "pack", "status"],
+      "default_visibility": "source_public",
+      "always_label_source_state": true
+    },
+    {
+      "id": "encounter_core",
+      "section": "encounter_summary",
+      "fields": ["encounter_role", "threat_or_cr", "armor_or_defense", "max_hp_or_vitality", "initiative_basis", "movement_modes", "senses", "languages_if_mechanically_relevant"],
+      "default_visibility": "source_public",
+      "player_projection_rule": "Only fields the Player is authorized to know; unrevealed threat ratings, defenses, senses, weaknesses, or exact hidden statistics remain absent."
+    },
+    {
+      "id": "attributes_skills",
+      "section": "attributes_skills",
+      "fields": ["attributes", "saves", "skills", "proficiencies"],
+      "default_visibility": "source_public",
+      "player_projection_rule": "May be fully, partially, or not revealed according to Campaign/rules policy; absence must not be represented as zero."
+    },
+    {
+      "id": "traits_actions",
+      "section": "traits_actions",
+      "fields": ["traits", "actions", "abilities", "reactions", "passives", "attack_or_effect_refs", "resource_costs", "uses_cooldowns", "targeting_refs"],
+      "default_visibility": "source_public",
+      "linked_object_rule": "Prefer stable references to owning Ability/Effect/Condition/Action objects and expose a quick Rule Inspector instead of duplicating canonical mechanics."
+    },
+    {
+      "id": "defenses_conditions",
+      "section": "defenses_conditions",
+      "fields": ["resistances", "vulnerabilities", "immunities", "condition_immunities", "active_conditions", "active_effects"],
+      "default_visibility": "source_public",
+      "player_projection_rule": "Unrevealed weaknesses/immunities are omitted rather than obscured in delivered data."
+    },
+    {
+      "id": "ecology_behavior",
+      "section": "ecology_behavior",
+      "fields": ["habitat", "biome", "environment_adaptation", "diet", "activity_pattern", "behavior", "social_structure", "territory", "life_cycle", "encounter_habits"],
+      "default_visibility": "source_public",
+      "player_projection_rule": "May be knowledge/discovery gated; authorized known lore can differ from GM source truth without rewriting the source definition."
+    },
+    {
+      "id": "persona_social",
+      "section": "persona_social",
+      "fields": ["identity_persona", "communication", "motives", "goals", "attitudes", "relationships", "reputation", "organizations_factions", "statements", "contradictions", "reliability", "timeline_participation"],
+      "default_visibility": "campaign_revealed",
+      "gm_private_fields": ["secret_motives", "hidden_relationships", "unrevealed_faction_ties", "gm_reliability_assessment", "hidden_statements"],
+      "player_projection_rule": "Player projection shows only revealed statements/relationships/reputation and may represent uncertainty without exposing GM truth."
+    },
+    {
+      "id": "assets_loot",
+      "section": "assets_loot",
+      "fields": ["equipment_refs", "carried_item_refs", "inventory_refs", "loot_reward_refs", "currency_refs", "ownership", "container_refs"],
+      "default_visibility": "campaign_gm_private",
+      "player_projection_rule": "Visible/equipped items may be revealed independently; unrevealed inventory, loot tables, reward bundles, currency, or hidden equipment remain absent."
+    },
+    {
+      "id": "variants_forms",
+      "section": "variants_forms",
+      "fields": ["variant_refs", "template_refs", "type_modifier_refs", "age_power_stage_refs", "form_refs", "transformation_refs", "evolution_refs", "difference_summary"],
+      "default_visibility": "source_public",
+      "player_projection_rule": "Only authorized/known variants are traversable; hidden alternate forms or future stages do not contribute labels/counts."
+    },
+    {
+      "id": "summon_control",
+      "section": "summon_control",
+      "fields": ["summoner_master_ref", "controller_ref", "spawn_ref", "control_rules", "lifecycle", "duration", "resource_cost_limit", "ownership_permissions"],
+      "default_visibility": "source_public",
+      "gm_private_fields": ["hidden_spawn_conditions", "unrevealed_master_ref", "reserve_count", "secret_control_break_condition"]
+    },
+    {
+      "id": "placement",
+      "section": "campaign_context",
+      "fields": ["placement_id", "source_stable_id", "local_label", "quantity", "visibility", "scene_ref", "encounter_role", "wave", "starting_state", "local_override_summary", "local_override_provenance"],
+      "default_visibility": "campaign_gm_private",
+      "identity_rule": "placement_id must never equal or replace source stable ID"
+    },
+    {
+      "id": "runtime",
+      "section": "runtime_state",
+      "fields": ["instance_id", "placement_id", "current_hp", "current_resources", "conditions", "effects", "initiative", "location", "control_state", "action_availability"],
+      "default_visibility": "runtime_shared",
+      "gm_private_fields": ["hidden_current_resources", "secret_conditions", "unrevealed_instance_existence", "hidden_location", "secret_action_availability"],
+      "identity_rule": "instance_id must never replace placement or definition identity"
+    },
+    {
+      "id": "source_provenance",
+      "section": "source_provenance",
+      "fields": ["source_id", "source_title", "source_coordinate", "source_excerpt_or_summary", "transformation_summary", "recommendation_status", "confidence", "conflict_state", "coverage_state", "validation_evidence", "version_history"],
+      "default_visibility": "source_diagnostic",
+      "source_truth_rule": "Recommendation/inference and source text are visually and semantically distinct; Owner Corrected or equivalent authority is never fabricated."
+    }
+  ],
+  "profile_section_order": {
+    "creature_standard": ["identity_status", "encounter_summary", "attributes_skills", "traits_actions", "defenses_conditions", "ecology_behavior", "variants_forms", "summon_control", "assets_loot", "source_provenance"],
+    "npc_persona": ["identity_status", "persona_social", "encounter_summary", "traits_actions", "attributes_skills", "assets_loot", "ecology_behavior", "variants_forms", "source_provenance"],
+    "sentient_hybrid": ["identity_status", "encounter_summary", "persona_social", "traits_actions", "defenses_conditions", "ecology_behavior", "assets_loot", "variants_forms", "source_provenance"],
+    "swarm_group": ["identity_status", "encounter_summary", "traits_actions", "defenses_conditions", "ecology_behavior", "summon_control", "assets_loot", "source_provenance"],
+    "summon_minion_spawn": ["identity_status", "summon_control", "encounter_summary", "traits_actions", "defenses_conditions", "ecology_behavior", "source_provenance"],
+    "stage_variant": ["identity_status", "variants_forms", "encounter_summary", "traits_actions", "defenses_conditions", "ecology_behavior", "source_provenance"],
+    "type_modifier": ["identity_status", "variants_forms", "defenses_conditions", "ecology_behavior", "traits_actions", "source_provenance"],
+    "playable_conversion": ["identity_status", "variants_forms", "attributes_skills", "traits_actions", "defenses_conditions", "ecology_behavior", "source_provenance"]
+  },
+  "context_overlays": {
+    "library_reference": {"append_sections": [], "hide_sections": ["campaign_context", "runtime_state"], "default_density": "comfortable"},
+    "gm_authoring": {"append_sections": ["campaign_context"], "hide_sections": ["runtime_state"], "default_density": "compact"},
+    "scene_placement": {"append_sections": ["campaign_context"], "hide_sections": ["runtime_state"], "default_density": "compact"},
+    "encounter_preparation": {"append_sections": ["campaign_context"], "hide_sections": ["runtime_state"], "default_density": "compact"},
+    "live_runtime": {"append_sections": ["campaign_context", "runtime_state"], "hide_sections": [], "default_density": "touch_or_compact"},
+    "investigation_social": {"prepend_sections": ["persona_social"], "append_sections": ["campaign_context"], "hide_sections": [], "default_density": "comfortable"},
+    "exploration_bestiary": {"prepend_sections": ["ecology_behavior"], "append_sections": [], "hide_sections": ["runtime_state"], "default_density": "comfortable"},
+    "comparison_variant": {"prepend_sections": ["variants_forms"], "append_sections": [], "hide_sections": ["campaign_context", "runtime_state"], "default_density": "comfortable"},
+    "summon_minion_spawn": {"prepend_sections": ["summon_control"], "append_sections": ["campaign_context", "runtime_state"], "hide_sections": [], "default_density": "compact"},
+    "playable_conversion": {"prepend_sections": ["variants_forms"], "append_sections": [], "hide_sections": ["campaign_context", "runtime_state"], "default_density": "comfortable"}
+  },
+  "role_projection": {
+    "player": {
+      "default_classes": ["source_public", "campaign_revealed", "runtime_shared"],
+      "never_receive_without_explicit_separate_authority": ["campaign_gm_private", "runtime_gm_private", "user_private"],
+      "diagnostic_policy": "source_diagnostic only when authorized and safe; hidden object existence/cardinality must not be inferred from missing/redacted diagnostics"
+    },
+    "gm": {
+      "default_classes": ["source_public", "campaign_revealed", "campaign_gm_private", "runtime_shared", "runtime_gm_private", "source_diagnostic"],
+      "never_implicit": ["user_private", "other_campaign_private"]
+    },
+    "assistant_gm": {
+      "default_classes": [],
+      "rule": "classes and fields are computed from explicit delegation scope, campaign scope, and expiry; deny by default outside delegation"
+    },
+    "creator_owner_admin": {
+      "default_classes": ["source_public", "source_diagnostic"],
+      "rule": "Campaign/runtime/private classes require separate campaign/user authority despite administrative role"
+    },
+    "service_ai": {
+      "default_classes": [],
+      "rule": "operation-specific minimum projection after authorization; no canonical mutation; no hidden state reconstruction; no unknown-source completion as fact"
+    }
+  },
+  "interaction_contracts": [
+    {"id": "quick_rule_lookup", "rule": "Any visible trait/action/ability/effect/condition reference can open a bounded Rule Inspector without losing current Creature/NPC context."},
+    {"id": "compare", "rule": "Comparison is read-only, field-labeled, version-aware, authorization-filtered before diffing, and never silently selects a winner."},
+    {"id": "quick_add", "rule": "Quick-add from Library/Inspector creates a provisional or Campaign-local placement through the owning Picker/Scene workflow; source Definition remains immutable."},
+    {"id": "relationship_navigation", "rule": "Variant, summon, faction, relationship, asset, and playable-conversion navigation reauthorizes each target before traversal."},
+    {"id": "source_warning", "rule": "Incomplete, inferred, recommended, source-only, conflicted, or superseded states remain visible to authorized GM/Creator diagnostics and never masquerade as fully sourced data."},
+    {"id": "runtime_mutation", "rule": "HP/resource/condition/initiative changes are runtime actions/events only; editing the Inspector is not an alternate mutation path."}
+  ],
+  "responsive_accessibility_matrix": {
+    "expanded_large": ["persistent section navigation", "optional side-by-side source/variant compare", "compact GM density", "pinned Rule Inspector"],
+    "medium": ["single primary Inspector with secondary drawer", "section jump control", "comparison switches between columns and stacked groups"],
+    "compact": ["one semantic column", "sticky primary status/action region", "full-height Rule/Provenance sheets", "no hover dependency"],
+    "keyboard": ["logical section order", "jump-to-section", "all linked refs reachable", "quick-add has non-drag path", "focus restoration after sheets/dialogs"],
+    "screen_reader": ["heading hierarchy", "summary before detail", "relationship and variant counts only from authorized projection", "field-difference announcements", "state and permission text not color-only"],
+    "high_zoom_reflow": ["200% text minimum without lost action/status", "tables convert to labeled records", "no horizontal requirement for core inspection"],
+    "reduced_motion": ["no animated dependency for reveal/variant/section transitions", "state change retained through text/static indicator"]
+  },
+  "acceptance_invariants": [
+    "Hidden creature/NPC existence never appears in search suggestions, counts, facets, relationship counts, variant counts, compare targets, provenance labels, or quick-add options for unauthorized roles.",
+    "A Player-safe Inspector cannot reveal a weakness, secret motive, hidden loot, reserve count, unrevealed form, secret relationship, GM tactic, or source diagnostic merely because the GM projection contains it.",
+    "Source Definition identity, placement identity, and live instance identity remain distinguishable in every context that shows more than one layer.",
+    "Changing presentation profile or responsive layout does not change authority or underlying governed values.",
+    "Every inferred/recommended value that is shown as such remains distinguishable from source facts in provenance-capable views.",
+    "A source-backed variant chain can be traversed without merging siblings or treating display-name similarity as identity.",
+    "An Inspector can render a usable partial object when optional sections are absent without fabricating replacement content."
+  ]
+}

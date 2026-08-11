@@ -1,0 +1,266 @@
+{
+  "format": "multiversal-ppia02-creature-npc-experience-taxonomy",
+  "version": "0.1.0",
+  "work_item": "PPIA-02",
+  "status": "foundation_taxonomy",
+  "authority": {
+    "repository_contracts": [
+      "MV-IA-F002",
+      "MV-IA-F005",
+      "MV-IA-F012"
+    ],
+    "source_inventory": "governance/application-planning/parallel-preimplementation/PPIA-02_SOURCE_AND_DESIGN_INVENTORY.md",
+    "p1_boundary": "PPIA-01 source/provenance/inference distinctions remain controlling",
+    "legacy_semantic_database_is_content_authority": false
+  },
+  "boundaries": {
+    "presentation_profile_creates_new_canonical_object_type": false,
+    "definition_mutation_from_inspector": false,
+    "campaign_placement_mutates_definition": false,
+    "live_instance_mutates_definition": false,
+    "automatic_variant_merge": false,
+    "hidden_fields_delivered_then_visually_hidden": false,
+    "unknown_source_fields_may_be_invented_as_source_fact": false,
+    "a2_activation_authorized": false,
+    "application_runtime_mutation_authorized": false,
+    "release_authorized": false
+  },
+  "object_layers": [
+    {
+      "id": "definition",
+      "label": "Reusable Definition",
+      "purpose": "Versioned governed creature/NPC source object or role-safe projection.",
+      "identity_rule": "Stable definition identity is independent of display name, placement, or runtime instance.",
+      "mutable_from_ppia02": false
+    },
+    {
+      "id": "presentation_profile",
+      "label": "Presentation Profile",
+      "purpose": "Selects an information hierarchy appropriate to the authorized object's characteristics/context without redefining canonical identity.",
+      "identity_rule": "Profile ID is presentation metadata only.",
+      "mutable_from_ppia02": false
+    },
+    {
+      "id": "variant_modifier_relationship",
+      "label": "Variant / Template / Type-Modifier Relationship",
+      "purpose": "Relates source-backed siblings, stages, forms, templates, or modifier layers without flattening them into one identity.",
+      "identity_rule": "Every governed sibling or modifier retains its own source/version identity or explicit relationship receipt.",
+      "mutable_from_ppia02": false
+    },
+    {
+      "id": "campaign_placement",
+      "label": "Campaign / Scene Placement",
+      "purpose": "Campaign-local binding for quantity, label, visibility, notes, encounter role, starting assumptions, and permitted local overrides.",
+      "identity_rule": "placementId is distinct from source stable ID.",
+      "mutable_from_ppia02": false
+    },
+    {
+      "id": "live_instance",
+      "label": "Live Instance",
+      "purpose": "Runtime HP/resources/conditions/location/initiative/control state derived from an authorized launch/session context.",
+      "identity_rule": "Live instance ID is distinct from source definition and placement IDs.",
+      "mutable_from_ppia02": false
+    },
+    {
+      "id": "playable_conversion",
+      "label": "Playable Conversion / Reference",
+      "purpose": "Governed relationship from a creature source to playable-species/Character rules where supported.",
+      "identity_rule": "Conversion never means the playable Character/species is identical to the source creature instance.",
+      "mutable_from_ppia02": false
+    },
+    {
+      "id": "source_provenance",
+      "label": "Source & Provenance",
+      "purpose": "Original source evidence, coordinates, transformations, source/recommendation distinction, conflicts, and validation history.",
+      "identity_rule": "Source evidence remains read-only and attributable.",
+      "mutable_from_ppia02": false
+    }
+  ],
+  "presentation_profiles": [
+    {
+      "id": "creature_standard",
+      "label": "Creature",
+      "selection_basis": "Combat/ecology-focused governed object with no requirement for NPC-persona foregrounding.",
+      "foreground": ["encounter_summary", "traits_actions", "defenses_resources", "movement_senses", "ecology_behavior"],
+      "secondary": ["relationships", "assets_loot", "variants_forms", "provenance"]
+    },
+    {
+      "id": "npc_persona",
+      "label": "NPC",
+      "selection_basis": "Governed entity whose social identity, motives, relationships, faction/reputation, statements, or roleplay state materially matter.",
+      "foreground": ["identity_persona", "relationships_social", "motives_goals", "known_statements", "encounter_summary"],
+      "secondary": ["traits_actions", "assets_equipment", "ecology_background", "provenance"]
+    },
+    {
+      "id": "sentient_hybrid",
+      "label": "Sentient Creature / NPC Hybrid",
+      "selection_basis": "Creature mechanics and NPC-persona information are both materially relevant.",
+      "foreground": ["identity_persona", "encounter_summary", "traits_actions", "relationships_social", "ecology_behavior"],
+      "secondary": ["assets_equipment", "variants_forms", "provenance"]
+    },
+    {
+      "id": "swarm_group",
+      "label": "Swarm / Group",
+      "selection_basis": "Source or governed relationship treats multiple members as a group-level encounter entity.",
+      "foreground": ["group_identity", "quantity_scale", "group_traits_actions", "movement_senses", "behavior"],
+      "secondary": ["member_relationships", "loot_assets", "provenance"]
+    },
+    {
+      "id": "summon_minion_spawn",
+      "label": "Summon / Minion / Spawn",
+      "selection_basis": "Entity is materially governed by a summoner/master/spawn/controller relationship or bounded lifecycle.",
+      "foreground": ["master_controller", "lifecycle_control", "encounter_summary", "traits_actions", "resource_cost_or_limit"],
+      "secondary": ["ownership_permissions", "variants", "provenance"]
+    },
+    {
+      "id": "stage_variant",
+      "label": "Stage / Variant / Form",
+      "selection_basis": "Object participates in a source-backed age, power, form, evolution, template, or sibling variant relationship.",
+      "foreground": ["variant_identity", "difference_summary", "stage_requirements", "encounter_summary", "changed_traits_actions"],
+      "secondary": ["ecology_behavior", "relationships", "provenance"]
+    },
+    {
+      "id": "type_modifier",
+      "label": "Type / Affinity Modifier",
+      "selection_basis": "Source-backed modifier layer adjusts resistances, vulnerabilities, abilities, environment adaptation, appearance, or related fields without necessarily creating a new base identity.",
+      "foreground": ["modifier_identity", "applies_to", "field_effects", "environment_adaptation", "source_evidence"],
+      "secondary": ["compatible_variants", "conflicts", "provenance"]
+    },
+    {
+      "id": "playable_conversion",
+      "label": "Playable Conversion",
+      "selection_basis": "Source/governed rule explicitly maps a creature toward playable-species/Character construction.",
+      "foreground": ["source_creature", "base_version", "retained_physical_traits", "unlockable_abilities", "normalization_rules", "xp_or_progression"],
+      "secondary": ["excluded_monster_state", "source_evidence", "provenance"]
+    }
+  ],
+  "experience_contexts": [
+    {
+      "id": "library_reference",
+      "label": "Library / Reference",
+      "primary_surfaces": ["MV-IA-F002", "SD-1007", "SD-1107"],
+      "actions": ["search", "filter", "inspect", "compare", "traverse_relationships", "view_provenance"],
+      "authoritative_mutation": false
+    },
+    {
+      "id": "gm_authoring",
+      "label": "GM Authoring",
+      "primary_surfaces": ["NPC & Creature Manager", "SD-1003", "SD-1007"],
+      "actions": ["create_campaign_local_draft", "reference_definition", "assign_relationships", "prepare_assets", "validate"],
+      "authoritative_mutation": "only through the owning Campaign/content workflow, never the reference Inspector"
+    },
+    {
+      "id": "scene_placement",
+      "label": "Scene Placement",
+      "primary_surfaces": ["MV-IA-F005", "SD-1003"],
+      "actions": ["quick_add", "set_quantity", "set_visibility", "set_starting_state", "set_local_label", "set_encounter_role"],
+      "authoritative_mutation": "creates/updates Campaign-local placement only"
+    },
+    {
+      "id": "encounter_preparation",
+      "label": "Encounter Preparation",
+      "primary_surfaces": ["MV-IA-F012", "SD-1004"],
+      "actions": ["select_participant", "assign_wave", "assign_role", "inspect_assumptions", "validate_compatibility", "analyze_advisory_pressure"],
+      "authoritative_mutation": "Encounter draft/snapshot only; source definition immutable"
+    },
+    {
+      "id": "live_runtime",
+      "label": "Live Runtime",
+      "primary_surfaces": ["SD-301", "SD-303", "SD-304", "SD-307", "SD-308"],
+      "actions": ["inspect_instance", "take_or_propose_action", "target", "inspect_conditions", "inspect_resources", "open_source_rule"],
+      "authoritative_mutation": "through governed runtime action/event contracts only"
+    },
+    {
+      "id": "investigation_social",
+      "label": "Investigation / Social",
+      "primary_surfaces": ["SD-405", "SD-503", "SD-506"],
+      "actions": ["inspect_persona", "view_permitted_statements", "compare_testimony", "view_relationships", "view_reputation", "view_faction_context"],
+      "authoritative_mutation": "through owning investigation/social workflows only"
+    },
+    {
+      "id": "exploration_bestiary",
+      "label": "Exploration / Bestiary",
+      "primary_surfaces": ["SD-605", "SD-606", "SD-607"],
+      "actions": ["inspect_known_ecology", "inspect_habitat", "inspect_discovery", "track_encountered_creature", "view_environment_interactions"],
+      "authoritative_mutation": "discovery/reveal history only through owning workflow"
+    },
+    {
+      "id": "comparison_variant",
+      "label": "Comparison / Variant",
+      "primary_surfaces": ["MV-IA-F002"],
+      "actions": ["compare_variant", "compare_stage", "inspect_modifier", "inspect_conflict", "inspect_source_delta"],
+      "authoritative_mutation": false
+    },
+    {
+      "id": "summon_minion_spawn",
+      "label": "Summon / Minion / Spawn",
+      "primary_surfaces": ["MV-IA-F005", "MV-IA-F012", "SD-301"],
+      "actions": ["inspect_master_relationship", "inspect_control", "inspect_lifecycle", "place_or_spawn_through_owner_workflow"],
+      "authoritative_mutation": "through the owning ability/scene/runtime workflow"
+    },
+    {
+      "id": "playable_conversion",
+      "label": "Playable Conversion",
+      "primary_surfaces": ["MV-IA-F002", "character creation/progression"],
+      "actions": ["inspect_conversion_rule", "compare_base_version", "inspect_retained_traits", "inspect_unlocks", "hand_off_to_character_workflow"],
+      "authoritative_mutation": "Character/species draft only through owning character workflow"
+    }
+  ],
+  "inspector_sections": [
+    {"id": "identity_status", "required_when_available": true, "contains": ["display_name", "stable_id", "object_family", "presentation_profile", "version", "pack", "lifecycle_status", "validation_state", "source_coverage_state"]},
+    {"id": "encounter_summary", "required_when_available": true, "contains": ["encounter_role", "threat_or_cr", "size", "defenses", "hp_or_vitality", "resources", "movement", "senses"]},
+    {"id": "attributes_skills", "required_when_available": false, "contains": ["attributes", "saves", "skills", "proficiencies"]},
+    {"id": "traits_actions", "required_when_available": true, "contains": ["traits", "actions", "abilities", "reactions", "passives", "linked_rules"]},
+    {"id": "defenses_conditions", "required_when_available": false, "contains": ["resistances", "vulnerabilities", "immunities", "active_or_applicable_conditions", "effects"]},
+    {"id": "ecology_behavior", "required_when_available": false, "contains": ["habitat", "environment_adaptation", "behavior", "diet", "activity_pattern", "social_structure"]},
+    {"id": "persona_social", "required_when_available": false, "contains": ["languages", "communication", "motives", "goals", "attitudes", "relationships", "reputation", "factions", "statements", "reliability"]},
+    {"id": "assets_loot", "required_when_available": false, "contains": ["equipment", "carried_items", "inventory", "loot_or_reward_refs", "ownership"]},
+    {"id": "variants_forms", "required_when_available": false, "contains": ["variants", "templates", "type_modifiers", "age_or_power_stages", "forms", "transformations", "evolutions"]},
+    {"id": "summon_control", "required_when_available": false, "contains": ["summoner_or_master", "controller", "spawn_relationship", "control_limits", "lifecycle", "resource_cost_or_limit"]},
+    {"id": "campaign_context", "required_when_available": false, "contains": ["placement_id", "local_label", "visibility", "quantity", "encounter_role", "starting_state", "local_override_provenance"]},
+    {"id": "runtime_state", "required_when_available": false, "contains": ["instance_id", "current_hp", "current_resources", "conditions", "initiative", "location", "control_state"]},
+    {"id": "source_provenance", "required_when_available": true, "contains": ["source_id", "source_title", "source_coordinate", "source_vs_recommendation", "transformation_summary", "conflicts", "validation_evidence", "history"]}
+  ],
+  "role_projection_rules": {
+    "player": {
+      "allow": ["revealed_identity", "authorized_mechanics", "known_ecology", "permitted_relationships", "permitted_source_detail"],
+      "deny_before_serialization": ["hidden_existence", "hidden_exact_counts", "unrevealed_weaknesses", "secret_motives", "gm_tactics", "unrevealed_loot", "reinforcement_timing", "private_notes"]
+    },
+    "gm": {
+      "allow": ["authorized_full_preparation_data", "hidden_placement_data", "source_warnings", "tactics_behavior_notes", "private_relationships", "loot_rewards", "override_provenance"],
+      "deny_before_serialization": ["other_campaign_private_data", "player_private_data_without_separate_authority"]
+    },
+    "assistant_gm": {
+      "rule": "projection is explicit delegation scope plus expiry; never unrestricted GM alias"
+    },
+    "creator_owner_admin": {
+      "rule": "governance inspection follows separate authority; administrative capability is not automatic Campaign-private entitlement"
+    },
+    "service_ai": {
+      "rule": "narrowest authorized projection only; AI read-only/proposal-only; unknown source facts remain unknown"
+    }
+  },
+  "accessibility_contract": [
+    "semantic linear reading order equivalent to dense multi-column stat blocks",
+    "keyboard access to every action/ability/relationship/source affordance",
+    "screen-reader labels and announcements for state, variant, conflict, permission, and validation status",
+    "noncolor encoding for resistances, vulnerabilities, conditions, severity, and availability",
+    "high-zoom reflow without loss of primary action or status",
+    "touch alternatives for drag/reorder/quick-add",
+    "nonvisual variant and relationship traversal",
+    "textual field-difference representation for comparison",
+    "compact GM density without reducing focus visibility or touch target requirements"
+  ],
+  "reference_case_requirements": [
+    "ordinary bestiary creature with combat plus behavior",
+    "named NPC with social/investigation data",
+    "sentient creature that needs both stat and persona foregrounding",
+    "swarm/group creature",
+    "summon/minion/spawn relationship",
+    "source-backed type/affinity modifier",
+    "age/power-stage variant chain",
+    "playable creature conversion",
+    "hidden GM-only creature placement",
+    "source-conflicted or incomplete creature/NPC record"
+  ]
+}

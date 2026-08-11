@@ -1,0 +1,38 @@
+name: Validate PPIA-02 Completion Contract
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-02_*'
+      - 'governance/ai/work-state/PPIA-02-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia02-foundation.py'
+      - 'scripts/validate-ppia02-experience-contracts.py'
+      - 'scripts/validate-ppia02-completion-contracts.py'
+      - '.github/workflows/validate-ppia-02-completion.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate source and taxonomy foundation
+        run: python scripts/validate-ppia02-foundation.py
+      - name: Validate Inspector and reference contracts
+        run: python scripts/validate-ppia02-experience-contracts.py
+      - name: Validate workflow, integrated specification, and acceptance traceability
+        run: python scripts/validate-ppia02-completion-contracts.py
+      - name: Validate PPIA program continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
+      - name: Verify tracked checkout was not mutated
+        run: git diff --exit-code
