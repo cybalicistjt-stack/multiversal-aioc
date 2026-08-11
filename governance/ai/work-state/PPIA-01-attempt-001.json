@@ -1,44 +1,72 @@
 {
   "schema_version": "1.0.0",
-  "revision": 2,
+  "revision": 3,
   "work_item_id": "PPIA-01",
   "attempt_id": "PPIA-01-attempt-001",
   "track": "parallel-preimplementation-advancement",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "governance/ppia-01-content-quality-closure",
-  "status": "started",
+  "status": "in_progress",
   "started_at": "2026-08-11T11:58:00+00:00",
-  "updated_at": "2026-08-11T12:12:00+00:00",
+  "updated_at": "2026-08-11T12:38:00+00:00",
   "completed_at": null,
   "base_commit": "390fc55b76f62f2c40009c613f6871f145150b7a",
-  "latest_pushed_commit": "390fc55b76f62f2c40009c613f6871f145150b7a",
-  "expected_remote_head": "390fc55b76f62f2c40009c613f6871f145150b7a",
-  "pull_request": null,
+  "latest_pushed_commit": "0700055c7a80580278830adaa5c6bff7f95d07a5",
+  "expected_remote_head": "0700055c7a80580278830adaa5c6bff7f95d07a5",
+  "pull_request": 212,
   "objective": "Audit canonical game content across domains for incomplete, thin, inconsistent, unresolved, orphaned, duplicated, ambiguously named, or presentation-deficient records; separate source-backed repairable gaps from genuine source absence and authored proposals; complete only evidence-supported repairs and produce a prioritized traceable content-quality backlog.",
-  "last_verified_action": "PPIA program bootstrap merged in AIOC PR #211 as 390fc55b76f62f2c40009c613f6871f145150b7a, and the governed PPIA-01 branch was created from that exact merge.",
-  "active_substep": "Establish the PPIA-01 content-quality audit frame and authoritative source inventory before modifying content.",
+  "last_verified_action": "PPIA-01 was corrected to the later 8E-009 CSV-first authority. Exact GitHub Actions run 31492093477 on head 0700055c7a80580278830adaa5c6bff7f95d07a5 reproduced the 19,199-row final registry, generated the 84-row explicit source-gap baseline, and validated the 57-row Shapeshifter pricing reconciliation with zero automatic merges.",
+  "active_substep": "Reconcile the 84 high-priority explicit source-gap rows, beginning with the 57 Shapeshifter pricing-only listings, against exact retained source evidence without auto-merging same-tier or similar-name records.",
   "completed_substeps": [
     "Owner approved the 16-tranche parallel pre-implementation advancement program.",
     "PPIA-01 selected as the first tranche.",
-    "PPIA program bootstrap merged and governed PPIA-01 branch created from the exact canonical merge."
+    "PPIA program bootstrap merged and governed PPIA-01 branch created from the exact canonical merge.",
+    "Owner corrected PPIA-01 content authority away from the obsolete 487-object semantic-parse database to the later 8E-009 CSV-first registry.",
+    "Deterministic CSV-first audit baseline verified 20 datasets and 19,199 governed rows and identified 84 high-priority explicit source-gap rows.",
+    "Shapeshifter pricing reconciliation verified 60 detailed rows versus 57 pricing-only rows, zero same-branch exact-name candidates, one cross-branch exact-name candidate, and zero automatic merges."
   ],
-  "next_action": "Inventory canonical content domains and source/provenance surfaces, define the gap taxonomy and audit matrix, then begin the domain-by-domain quality scan without inventing missing source facts.",
-  "changed_paths": [],
+  "next_action": "Resolve the 84-row source-gap queue by exact-source evidence: classify the 57 Shapeshifter pricing-only entries using the validated candidate matrix first, then the 15 missing-definition and 12 quantitative-omission records; preserve genuinely unanswered source gaps instead of inventing content.",
+  "changed_paths": [
+    ".github/workflows/validate-ppia-01-content-quality.yml",
+    "scripts/audit-ppia01-csv-content-quality.py",
+    "scripts/analyze-ppia01-shapeshifter-pricing.py",
+    "governance/application-planning/parallel-preimplementation/PPIA-01_CSV_CONTENT_QUALITY_AUDIT_FRAME.md",
+    "governance/application-planning/parallel-preimplementation/PPIA-01_CSV_CONTENT_QUALITY_BASELINE.md",
+    "governance/application-planning/parallel-preimplementation/PPIA-01_HIGH_PRIORITY_SOURCE_GAPS.csv",
+    "governance/application-planning/parallel-preimplementation/PPIA-01_SEMANTIC_PARSE_RETIREMENT_ASSESSMENT.md",
+    "governance/application-planning/parallel-preimplementation/PPIA-01_RETIREMENT_DEPENDENCY_SUMMARY.json",
+    "governance/application-planning/parallel-preimplementation/PPIA-01_CSV_SOURCE_NAME_MAP.json",
+    "governance/application-planning/parallel-preimplementation/PPIA-01_BASELINE_STATUS.md",
+    "governance/application-planning/parallel-preimplementation/PPIA-01_WORKING_NOTES.md"
+  ],
   "completion_gate": {
     "required_evidence_kinds": ["commit", "pull_request", "merge"],
     "required_validation_commands": [],
     "owner_approval_required": false
   },
-  "validation": [],
+  "validation": [
+    {
+      "command": "GitHub Actions Validate PPIA-01 Content Quality run 31492093477",
+      "status": "passed",
+      "evidence": "head 0700055c7a80580278830adaa5c6bff7f95d07a5; artifact sha256:28fd1b7524de002b32c06f9ccd59b5209261fe0edbac2e5d6bbee48bffde6261"
+    }
+  ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
     {"kind": "owner_decision", "value": "PPIA-01 owner decision 2026-08-11: approve the 16-tranche PPIA program and parallel work-track addition."},
-    {"kind": "merge", "value": "PPIA-01 bootstrap PR #211 squash merge 390fc55b76f62f2c40009c613f6871f145150b7a"}
+    {"kind": "merge", "value": "PPIA-01 bootstrap PR #211 squash merge 390fc55b76f62f2c40009c613f6871f145150b7a"},
+    {"kind": "owner_decision", "value": "PPIA-01 owner correction 2026-08-11: use the later CSV-first content program rather than the earlier unsuccessful semantic-parse database; assess the old database for retirement."},
+    {"kind": "pull_request", "value": "PPIA-01 draft PR #212"},
+    {"kind": "commit", "value": "PPIA-01 validated audit head 0700055c7a80580278830adaa5c6bff7f95d07a5"},
+    {"kind": "ci_run", "value": "PPIA-01 Validate Content Quality run 31492093477 PASS; artifact sha256:28fd1b7524de002b32c06f9ccd59b5209261fe0edbac2e5d6bbee48bffde6261"}
   ],
   "roadmap_projection_pending": false,
   "notes": [
     "PPIA is parallel work and does not replace or activate STAGE-A-A2.",
+    "PPIA-01 content counts exclude the obsolete 487-object semantic-parse database; current authority is the later 8E-009 CSV-first 19,199-row registry.",
+    "The 487-object content-db path is a retirement candidate, but current browser, MCP, operational and development-brain consumers must be migrated before deletion.",
+    "The 142,173 explicit source-unspecified cells and 10,594 rows containing governed estimate/inference language are not automatically defects; field applicability and active owner-delegation rules control review.",
     "STAGE-A-A2 exact source packages and A2_CHANGED_PATH_SCOPE_v1.0.0.csv are recovered and verified, but mandatory v2.6 runner initialization still requires a repository-capable private checkout.",
     "DT-001 through DT-010 Developer Toolbelt is complete in Multiversal-app through merge 354e24007d2c453d090a2a6cdb31d3e3333c84c1.",
     "DS-008-working-series-attempt-002 remains unfinished and blocked on repository-capable exact-byte transfer/validation.",
