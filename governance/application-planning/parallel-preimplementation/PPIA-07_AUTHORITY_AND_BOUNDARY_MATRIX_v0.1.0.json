@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "PPIA-07",
+  "title": "Rune Construction authority and boundary matrix",
+  "status": "foundation_candidate",
+  "authority_levels": [
+    {"id":"source_explicit","meaning":"Direct retained-source statement or structured source record."},
+    {"id":"governed_owner_intent","meaning":"Owner-approved design objective recorded in current governance; not automatically a detailed mechanic."},
+    {"id":"derived_taxonomy","meaning":"Implementation/planning organization derived from source and owner intent; not canonical game content by itself."},
+    {"id":"future_proposal","meaning":"Mechanic requiring later governed design, validation and acceptance."}
+  ],
+  "owned_by_ppia07": [
+    "Rune atom model and rune-system composition semantics",
+    "Connection/topology model once explicitly designed",
+    "Shaping/modifier model once explicitly designed",
+    "Rune construction validation and explainability",
+    "Rune-specific progression/crafting integration contracts",
+    "Rune construction reference cases and acceptance/balance material"
+  ],
+  "consumes_without_redefining": [
+    {"domain":"Core spellcasting, mana, resistance, counterspell, fatigue, Overreach","authority":"Magic rules.PDF / Mana.PDF","rule":"Use as context and explicit integration points; do not silently copy every value into the rune system."},
+    {"domain":"Scriptcraft/Sigilcrafting/Macros","authority":"Scripts and Macros.PDF","rule":"Use as direct precedent for modular modification, glyph/logic structures, sequencing, triggers and resonance; do not equate these objects with runes without governed design."},
+    {"domain":"Enchanting and rune engraving","authority":"Crafting, repair, enchanting v2.PDF + Profession_Crafting_Abilities.csv","rule":"Preserve explicit rune-carving and enchanting mechanics where applicable; do not infer missing atom or connection semantics."},
+    {"domain":"Spell/effect vocabulary","authority":"Magic Schools and Spells.PDF + Magic_Spells.csv","rule":"May supply effect-domain references; spells are not automatically rune atoms."},
+    {"domain":"Charge holders and magical item containers","authority":"Magic charge holders.PDF","rule":"May host/link rune constructions; item Definition/instance ownership remains PPIA-03."}
+  ],
+  "cross_domain_routes": [
+    {"owner":"PPIA-03","responsibility":"Item/equipment/inventory Definition and instance semantics; PPIA-07 owns only rune/enchantment extension data attached to those objects."},
+    {"owner":"PPIA-08","responsibility":"Campaign/Scene runtime instantiation and current state for placed rune objects/effects."},
+    {"owner":"PPIA-11","responsibility":"Encounter/balance calibration methodology; PPIA-07 supplies rune benchmarks but must not claim guaranteed balance."},
+    {"owner":"PPIA-12","responsibility":"World/setting-local rule scope; rune rules do not universalize setting-local magic without explicit authority."},
+    {"owner":"MV-IA-F020","responsibility":"Permission/reveal filtering before hidden rune facts enter search, summaries, exports, diagnostics or AI context."},
+    {"owner":"MV-IA-F021","responsibility":"Recovery/idempotency patterns for authoritative rune-authoring mutations."},
+    {"owner":"MV-IA-F002","responsibility":"Generic browse/inspect/provenance UI patterns."},
+    {"owner":"Screen Design V08 Crafting","responsibility":"Crafting Hub/Workbench/Enchanting & Enhancement interface conventions including rune/ingredient selection, compatibility, predicted effects, risks, stability, provenance, autosave and accessibility."}
+  ],
+  "guardrails": [
+    "Unknown source mechanics stay unknown; foundation gaps become explicit future design work.",
+    "Do not auto-generate a rune atom catalog from spell names, magic schools, item names, symbols, glyph names or thematic similarity.",
+    "Do not treat co-occurrence of runes, sigils, scripts, glyphs and macros as identity equivalence.",
+    "Do not silently resolve the Scripts & Macros progression conflict.",
+    "No broad offline authoritative rune mutation is permitted.",
+    "AI suggestions and random/generated constructions remain proposals until explicitly accepted and provenance-recorded.",
+    "Every visual topology/shape operation requires an equivalent ordered textual/nonvisual representation.",
+    "Authoritative mutations require expected-version and operation-id/idempotent recovery behavior."
+  ],
+  "next_design_questions": [
+    "What is the minimal reusable rune atom vocabulary?",
+    "Which connection types exist and what does each mean?",
+    "Which shaping modifiers are distinct from target/range/area modifiers?",
+    "What grammar makes valid/invalid constructions deterministic?",
+    "Which costs are structural, which are payload-derived, and which are execution-context dependent?",
+    "How do resonance/risk and counterplay scale with composition complexity?"
+  ]
+}
