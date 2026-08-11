@@ -1,0 +1,44 @@
+name: Validate PPIA-05 to PPIA-12 Transition
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_COMPLETION_REPORT.md'
+      - 'governance/ai/work-state/PPIA-05-attempt-001.json'
+      - 'governance/ai/work-state/PPIA-12-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'governance/application-planning/parallel-preimplementation/validate_ppia_program.py'
+      - 'scripts/validate-ppia04-to-ppia05-transition.py'
+      - 'scripts/validate-ppia05-to-ppia12-transition.py'
+      - '.github/workflows/validate-ppia-05-to-12-transition.yml'
+  push:
+    branches:
+      - governance/ppia-05-to-ppia-12-transition
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_COMPLETION_REPORT.md'
+      - 'governance/ai/work-state/PPIA-05-attempt-001.json'
+      - 'governance/ai/work-state/PPIA-12-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'governance/application-planning/parallel-preimplementation/validate_ppia_program.py'
+      - 'scripts/validate-ppia04-to-ppia05-transition.py'
+      - 'scripts/validate-ppia05-to-ppia12-transition.py'
+      - '.github/workflows/validate-ppia-05-to-12-transition.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-transition:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate PPIA-05 completion and PPIA-12 transition
+        run: python scripts/validate-ppia05-to-ppia12-transition.py
+      - name: Validate preserved PPIA-04 to PPIA-05 transition
+        run: python scripts/validate-ppia04-to-ppia05-transition.py
+      - name: Validate generalized PPIA program continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
