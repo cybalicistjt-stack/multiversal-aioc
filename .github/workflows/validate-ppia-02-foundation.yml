@@ -8,6 +8,7 @@ on:
       - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
       - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
       - 'scripts/validate-ppia02-foundation.py'
+      - 'scripts/validate-ppia02-experience-contracts.py'
       - '.github/workflows/validate-ppia-02-foundation.yml'
   workflow_dispatch:
 
@@ -26,6 +27,8 @@ jobs:
           python-version: '3.12'
       - name: Validate PPIA-02 source/design foundation
         run: python scripts/validate-ppia02-foundation.py
+      - name: Validate PPIA-02 Inspector and reference contracts
+        run: python scripts/validate-ppia02-experience-contracts.py
       - name: Validate PPIA program continuity
         run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
       - name: Verify tracked checkout was not mutated
