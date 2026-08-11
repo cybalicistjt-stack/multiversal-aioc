@@ -21,7 +21,7 @@ EXPECTED_ORDER = [
     "PPIA-13", "PPIA-14", "PPIA-15", "PPIA-16",
 ]
 ACTIVE_STATUSES = {"started", "in_progress"}
-COMPLETE_STATUSES = {"complete", "completed"}
+COMPLETE_STATUSES = {"complete", "completed", "completed_verified"}
 
 
 def load_json(path: Path) -> dict:
