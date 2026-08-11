@@ -56,6 +56,8 @@ This final package adds:
 - explicit trace coverage for 14 projection groups, 14 action contracts, 15 workflows, 10 handoffs and all 20 reference cases;
 - deterministic completion validation and CI.
 
+The candidate branch continuity projection is aligned to the same active PPIA-04 completion action before exact-head validation; no completion state is projected early.
+
 ## Completion coverage
 
 The candidate packet covers:
