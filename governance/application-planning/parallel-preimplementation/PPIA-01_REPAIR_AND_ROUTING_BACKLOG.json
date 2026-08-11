@@ -5,30 +5,171 @@
   "status": "complete_routed",
   "authority": "8E-009 CSV-first governed registry / Csv.zip",
   "completed_in_ppia01": [
-    {"id":"PPIA-01-BL-001","title":"Explicit high-priority source gaps","count":84,"status":"governed_closure_complete","evidence":["PPIA-01_CONTENT_REPAIR_OVERLAY_v0.1.0.json","PPIA-01_CONTENT_REPAIR_OVERLAY_v0.2.0.json","PPIA-01_CONTENT_REPAIR_OVERLAY_v0.3.0.json","PPIA-01_MISSING_DEFINITION_CLOSURE_v0.1.0.json","PPIA-01_QUANTITATIVE_GAP_CLOSURE_v0.1.0.json"]},
-    {"id":"PPIA-01-BL-002","title":"P1 high-core mechanical source review","count":36,"status":"source_review_complete","evidence":["PPIA-01_P1_CORE_MECHANICAL_SOURCE_REVIEW_v0.1.0.json"]},
-    {"id":"PPIA-01-BL-003","title":"Inference and estimate triage","count":10594,"status":"deterministically_classified_and_routed","evidence":["scripts/analyze-ppia01-inference-thin-content.py","PPIA-01_INFERENCE_THIN_CONTENT_REVIEW_REGISTER.md"]},
-    {"id":"PPIA-01-BL-004","title":"Structural blank applicability","count":33,"status":"classified","evidence":["PPIA-01_INFERENCE_THIN_CONTENT_REVIEW_REGISTER.md","PPIA-01_UNRESOLVED_SOURCE_REGISTER.json"]}
+    {
+      "id": "PPIA-01-BL-001",
+      "title": "Explicit high-priority source gaps",
+      "count": 84,
+      "status": "governed_closure_complete",
+      "evidence": [
+        "PPIA-01_CONTENT_REPAIR_OVERLAY_v0.1.0.json",
+        "PPIA-01_CONTENT_REPAIR_OVERLAY_v0.2.0.json",
+        "PPIA-01_CONTENT_REPAIR_OVERLAY_v0.3.0.json",
+        "PPIA-01_MISSING_DEFINITION_CLOSURE_v0.1.0.json",
+        "PPIA-01_QUANTITATIVE_GAP_CLOSURE_v0.1.0.json"
+      ]
+    },
+    {
+      "id": "PPIA-01-BL-002",
+      "title": "P1 high-core mechanical source review",
+      "count": 36,
+      "status": "source_review_complete",
+      "evidence": ["PPIA-01_P1_CORE_MECHANICAL_SOURCE_REVIEW_v0.1.0.json"]
+    },
+    {
+      "id": "PPIA-01-BL-003",
+      "title": "Inference and estimate triage",
+      "count": 10594,
+      "status": "deterministically_classified_and_routed",
+      "evidence": ["scripts/analyze-ppia01-inference-thin-content.py", "PPIA-01_INFERENCE_THIN_CONTENT_REVIEW_REGISTER.md"]
+    },
+    {
+      "id": "PPIA-01-BL-004",
+      "title": "Structural blank applicability",
+      "count": 33,
+      "status": "classified",
+      "evidence": ["PPIA-01_INFERENCE_THIN_CONTENT_REVIEW_REGISTER.md", "PPIA-01_UNRESOLVED_SOURCE_REGISTER.json"]
+    }
   ],
   "routed_followup": [
-    {"id":"PPIA-01-RTE-001","title":"Taser published-source variant conflict","priority":"P1","count":1,"destination":["PPIA-03","PPIA-11"],"status":"recommendation_ready","required_behavior":"Preserve the Weapons & Combat Equipment and Police Equipment Tasers as distinct source variants or a governed variant relationship. Do not import the Police Equipment one-round stun as source text for the 1d4 Lightning / 50 gp Taser and do not auto-merge identities."},
-    {"id":"PPIA-01-RTE-002","title":"Quantum Weaver owner-approved authored completion","priority":"resolved_owner_decision","count":1,"destination":["PPIA-03","PPIA-05","PPIA-11"],"status":"owner_approved_authored_completion","required_behavior":"Preserve only energy-field feeding/power-source dependence as recovered source fact. The existing governed mechanics are owner-approved authored Multiversal completion and are no longer a missing-information issue; later PPIA-03/PPIA-05/PPIA-11 work may refine integration or balance without reopening source completeness absent contradictory evidence."},
-    {"id":"PPIA-01-RTE-003","title":"P2 substantive-core inferred mechanics","priority":"P2","count":73,"destination":["PPIA-03","PPIA-04","PPIA-05","PPIA-11"],"status":"routed_to_consuming_tranches","required_behavior":"Retain source/inference distinction; revisit only when consuming feature semantics or balance require it."},
-    {"id":"PPIA-01-RTE-004","title":"P3 bounded-core inferred mechanics","priority":"P3","count":183,"destination":["PPIA-03","PPIA-04","PPIA-05","PPIA-11"],"status":"routed_to_consuming_tranches","required_behavior":"Keep as explicit recommendations and review in feature/balance context, not as current source failures."},
-    {"id":"PPIA-01-RTE-005","title":"P4 lifecycle/metadata-only interpretations","priority":"P4","count":239,"destination":["PPIA-03","PPIA-05","PPIA-11"],"status":"deferred_low_risk","required_behavior":"Do not spend standalone repair effort unless downstream implementation exposes a contradiction."},
-    {"id":"PPIA-01-RTE-006","title":"Systematic Magic completion","priority":"systematic","count":385,"destination":["PPIA-11"],"status":"system_level_review_routed","required_behavior":"Review normalization/balance as a system rather than 385 isolated source failures."},
-    {"id":"PPIA-01-RTE-007","title":"Systematic base-engineering completion","priority":"systematic","count":350,"destination":["PPIA-08","PPIA-11","PPIA-12"],"status":"system_level_review_routed","required_behavior":"Review construction/hardness/crafting normalization as a system in authoring/world/balance work."},
-    {"id":"PPIA-01-RTE-008","title":"Delegated balance estimates","priority":"balance","count":8554,"destination":["PPIA-11"],"status":"accepted_under_standing_delegation_pending_balance_context","required_behavior":"Do not reopen as source defects solely because values are estimated."},
-    {"id":"PPIA-01-RTE-009","title":"Delegated missing-field completions","priority":"low","count":370,"destination":["PPIA-03","PPIA-04","PPIA-11"],"status":"accepted_under_standing_delegation","required_behavior":"Retain explicit inferred/estimated labeling and reopen only on contradictory source evidence."},
-    {"id":"PPIA-01-RTE-010","title":"Delegated metadata inference","priority":"low","count":403,"destination":["PPIA-03","PPIA-11"],"status":"accepted_under_standing_delegation","required_behavior":"Retain unless downstream implementation exposes conflict."},
-    {"id":"PPIA-01-RTE-011","title":"Source-unspecified energy-weapon capacities","priority":"P2","count":7,"destination":["PPIA-03","PPIA-11"],"status":"source_limitation_preserved","required_behavior":"Do not invent magazine capacities solely to remove blanks."},
-    {"id":"PPIA-01-RTE-012","title":"Ammo-reference-only weapon names","priority":"P3","count":3,"destination":["PPIA-03"],"status":"source_reference_only_preserved","required_behavior":"Do not fabricate full weapon stats or auto-merge with similarly named weapons."},
-    {"id":"PPIA-01-RTE-013","title":"Historical 8E-008G-R1 exact-byte recovery","priority":"governance_followup","count":1,"destination":["PPIA-01","SD-1107"],"status":"historical_nonblocking_exact_bytes_unavailable","required_behavior":"The owner-resupplied `8E008G_Source_Audit.zip` is an exact match to the original blocked 8E-008G audit and contains the R1 plan, not R1 closure results. Do not ask for that same audit again. If `Aaac (1).zip` or the exact R1 package is recovered, inspect its final validation result. Do not count the historical 2,766 candidates as current missing mechanics."}
+    {
+      "id": "PPIA-01-RTE-001",
+      "title": "Taser published-source variant conflict",
+      "priority": "P1",
+      "count": 1,
+      "destination": ["PPIA-03", "PPIA-11"],
+      "status": "recommendation_ready",
+      "required_behavior": "Preserve the Weapons & Combat Equipment and Police Equipment Tasers as distinct source variants or a governed variant relationship. Do not import the Police Equipment one-round stun as source text for the 1d4 Lightning / 50 gp Taser and do not auto-merge identities."
+    },
+    {
+      "id": "PPIA-01-RTE-002",
+      "title": "Quantum Weaver owner-approved authored completion",
+      "priority": "resolved_owner_decision",
+      "count": 1,
+      "destination": ["PPIA-03", "PPIA-05", "PPIA-11"],
+      "status": "owner_approved_authored_completion",
+      "required_behavior": "Preserve only energy-field feeding/power-source dependence as recovered source fact. The existing governed mechanics are owner-approved authored Multiversal completion and are no longer a missing-information issue; later PPIA-03/PPIA-05/PPIA-11 work may refine integration or balance without reopening source completeness absent contradictory evidence."
+    },
+    {
+      "id": "PPIA-01-RTE-003",
+      "title": "P2 substantive-core inferred mechanics",
+      "priority": "P2",
+      "count": 73,
+      "destination": ["PPIA-03", "PPIA-04", "PPIA-05", "PPIA-11"],
+      "status": "routed_to_consuming_tranches",
+      "required_behavior": "Retain source/inference distinction; revisit only when consuming feature semantics or balance require it."
+    },
+    {
+      "id": "PPIA-01-RTE-004",
+      "title": "P3 bounded-core inferred mechanics",
+      "priority": "P3",
+      "count": 183,
+      "destination": ["PPIA-03", "PPIA-04", "PPIA-05", "PPIA-11"],
+      "status": "routed_to_consuming_tranches",
+      "required_behavior": "Keep as explicit recommendations and review in feature/balance context, not as current source failures."
+    },
+    {
+      "id": "PPIA-01-RTE-005",
+      "title": "P4 lifecycle/metadata-only interpretations",
+      "priority": "P4",
+      "count": 239,
+      "destination": ["PPIA-03", "PPIA-05", "PPIA-11"],
+      "status": "deferred_low_risk",
+      "required_behavior": "Do not spend standalone repair effort unless downstream implementation exposes a contradiction."
+    },
+    {
+      "id": "PPIA-01-RTE-006",
+      "title": "Systematic Magic completion",
+      "priority": "systematic",
+      "count": 385,
+      "destination": ["PPIA-11"],
+      "status": "system_level_review_routed",
+      "required_behavior": "Review normalization/balance as a system rather than 385 isolated source failures."
+    },
+    {
+      "id": "PPIA-01-RTE-007",
+      "title": "Systematic base-engineering completion",
+      "priority": "systematic",
+      "count": 350,
+      "destination": ["PPIA-08", "PPIA-11", "PPIA-12"],
+      "status": "system_level_review_routed",
+      "required_behavior": "Review construction/hardness/crafting normalization as a system in authoring/world/balance work."
+    },
+    {
+      "id": "PPIA-01-RTE-008",
+      "title": "Delegated balance estimates",
+      "priority": "balance",
+      "count": 8554,
+      "destination": ["PPIA-11"],
+      "status": "accepted_under_standing_delegation_pending_balance_context",
+      "required_behavior": "Do not reopen as source defects solely because values are estimated."
+    },
+    {
+      "id": "PPIA-01-RTE-009",
+      "title": "Delegated missing-field completions",
+      "priority": "low",
+      "count": 370,
+      "destination": ["PPIA-03", "PPIA-04", "PPIA-11"],
+      "status": "accepted_under_standing_delegation",
+      "required_behavior": "Retain explicit inferred/estimated labeling and reopen only on contradictory source evidence."
+    },
+    {
+      "id": "PPIA-01-RTE-010",
+      "title": "Delegated metadata inference",
+      "priority": "low",
+      "count": 403,
+      "destination": ["PPIA-03", "PPIA-11"],
+      "status": "accepted_under_standing_delegation",
+      "required_behavior": "Retain unless downstream implementation exposes conflict."
+    },
+    {
+      "id": "PPIA-01-RTE-011",
+      "title": "Source-unspecified energy-weapon capacities",
+      "priority": "P2",
+      "count": 7,
+      "destination": ["PPIA-03", "PPIA-11"],
+      "status": "source_limitation_preserved",
+      "required_behavior": "Do not invent magazine capacities solely to remove blanks."
+    },
+    {
+      "id": "PPIA-01-RTE-012",
+      "title": "Ammo-reference-only weapon names",
+      "priority": "P3",
+      "count": 3,
+      "destination": ["PPIA-03"],
+      "status": "source_reference_only_preserved",
+      "required_behavior": "Do not fabricate full weapon stats or auto-merge with similarly named weapons."
+    },
+    {
+      "id": "PPIA-01-RTE-013",
+      "title": "Historical 8E-008G-R1 exact-byte recovery",
+      "priority": "governance_followup",
+      "count": 1,
+      "destination": ["PPIA-01", "SD-1107"],
+      "status": "historical_nonblocking_exact_bytes_unavailable",
+      "required_behavior": "The owner-resupplied `8E008G_Source_Audit.zip` is an exact match to the original blocked 8E-008G audit and contains the R1 plan, not R1 closure results. Do not ask for that same audit again. If `Aaac (1).zip` or the exact R1 package is recovered, inspect its final validation result. Do not count the historical 2,766 candidates as current missing mechanics."
+    }
   ],
   "feature_surface_traceability": {
     "STAGE-A-A2": "Current Universal Object Experience must preserve source/provenance/inference distinctions in browse/inspect/provenance presentation.",
     "SD-1007": "Content Library consumes object-quality classifications, variant distinctions, and incomplete/source-only states.",
     "SD-1107": "Audit & Provenance Explorer consumes source lineage, recommendation status, historical audit questions, and variant/source-conflict evidence."
   },
-  "boundaries": {"raw_csv_modified":false,"application_runtime_mutation_authorized":false,"automatic_identity_merge_authorized":false,"a2_activation_authorized":false,"canonical_promotion_authorized":false,"release_authorized":false}
+  "boundaries": {
+    "raw_csv_modified": false,
+    "application_runtime_mutation_authorized": false,
+    "automatic_identity_merge_authorized": false,
+    "a2_activation_authorized": false,
+    "canonical_promotion_authorized": false,
+    "release_authorized": false
+  }
 }
