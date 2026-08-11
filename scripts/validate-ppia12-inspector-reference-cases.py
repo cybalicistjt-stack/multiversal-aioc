@@ -97,7 +97,7 @@ def main() -> None:
     for fragment in ("ppia-08", "ppia-02", "ppia-03", "ppia-04", "ppia-05", "ppia-11"):
         require(fragment in routing_text, f"setting-extension routing lost {fragment}")
 
-    case_text = json.dumps(cases)
+    case_text = json.dumps(cases, ensure_ascii=False)
     for value in (
         "Havalaea → Vertigon", "spaceborne city-station", "semi-transdimensional generation-ship",
         "pathways connecting realities", "certain musical realities", "branch-specific gameplay mechanics",
