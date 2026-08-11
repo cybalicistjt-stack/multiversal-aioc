@@ -1,0 +1,26 @@
+name: Validate PPIA-03 Workflow Contracts
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-03_WORKFLOW_AUTHORING_CONTRACT_MATRIX_v0.1.0.json'
+      - 'scripts/validate-ppia03-workflow-contracts.py'
+      - '.github/workflows/validate-ppia-03-workflow-contracts.yml'
+  push:
+    branches:
+      - governance/ppia-03-items-equipment-inventory
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-03_WORKFLOW_AUTHORING_CONTRACT_MATRIX_v0.1.0.json'
+      - 'scripts/validate-ppia03-workflow-contracts.py'
+      - '.github/workflows/validate-ppia-03-workflow-contracts.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia03-workflow-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate PPIA-03 integrated workflow and authoring contracts
+        run: python scripts/validate-ppia03-workflow-contracts.py
