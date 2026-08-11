@@ -1,0 +1,57 @@
+name: Validate PPIA-07 Completion Contract
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_RUNE_CONSTRUCTION_EXPERIENCE_SPEC_v1.0.0.md'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_BLIND_RUNE_PLAY_CONSUMER_PROFILE_v1.0.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_BLIND_RUNE_PLAY_REFERENCE_CASES_v1.0.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_ACCEPTANCE_TRACEABILITY_MATRIX_v1.0.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_COMPLETION_CANDIDATE.md'
+      - 'governance/ai/work-state/PPIA-07-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia07-completion-contracts.py'
+      - '.github/workflows/validate-ppia-07-completion-contracts.yml'
+  push:
+    branches:
+      - governance/ppia-07-rune-construction-rpg-system
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_RUNE_CONSTRUCTION_EXPERIENCE_SPEC_v1.0.0.md'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_BLIND_RUNE_PLAY_CONSUMER_PROFILE_v1.0.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_BLIND_RUNE_PLAY_REFERENCE_CASES_v1.0.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_ACCEPTANCE_TRACEABILITY_MATRIX_v1.0.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_COMPLETION_CANDIDATE.md'
+      - 'governance/ai/work-state/PPIA-07-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia07-completion-contracts.py'
+      - '.github/workflows/validate-ppia-07-completion-contracts.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia07-completion:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PPIA-07 final completion contract
+        run: python scripts/validate-ppia07-completion-contracts.py
+      - name: Validate expanded Rune magic-system regression
+        run: python scripts/validate-ppia07-expanded-rune-magic-system.py
+      - name: Validate integrated Rune Builder workflows regression
+        run: python scripts/validate-ppia07-rune-builder-workflows.py
+      - name: Validate cost stability progression regression
+        run: python scripts/validate-ppia07-cost-stability-progression.py
+      - name: Validate grammar and reference regression
+        run: python scripts/validate-ppia07-grammar-reference.py
+      - name: Validate PPIA-07 foundation regression
+        run: python scripts/validate-ppia07-foundation.py
+      - name: Validate PPIA-12 to PPIA-07 transition regression
+        run: python scripts/validate-ppia12-to-ppia07-transition.py
+      - name: Validate generalized PPIA program continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
