@@ -15,6 +15,9 @@ STATUS = ROOT / "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json"
 ROADMAP = ROOT / "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md"
 PROGRAM = BASE / "PPIA_PARALLEL_PREIMPLEMENTATION_ADVANCEMENT_PROGRAM.md"
 
+P3_COMPLETION_MERGE = "ea08234b9d6bcd4cb942c2de964639b330d9511e"
+P3_TO_P4_TRANSITION_MERGE = "aee4b5d99f3163454da931a939b142048cea11c5"
+
 
 def fail(message: str) -> None:
     raise SystemExit(f"PPIA-03→PPIA-04 TRANSITION: FAIL — {message}")
@@ -43,24 +46,25 @@ def main() -> None:
     tranches = {item["work_item_id"]: item for item in backlog["tranches"]}
     require(backlog["current_work_item_id"] == "PPIA-04", "backlog current item must be PPIA-04")
     require(tranches["PPIA-03"]["status"] == "completed_verified", "PPIA-03 backlog state must be completed_verified")
-    require(tranches["PPIA-04"]["status"] == "started", "PPIA-04 backlog state must be started")
+    require(tranches["PPIA-04"]["status"] in {"started", "in_progress"}, "PPIA-04 backlog state must remain active")
 
     require(p3["status"] == "completed_verified", "PPIA-03 checkpoint must be completed_verified")
     require(p3["completed_at"] == "2026-08-11T17:38:18+00:00", "PPIA-03 completion time mismatch")
     require(p3["active_substep"] is None, "completed PPIA-03 cannot have active substep")
     require(p3["latest_pushed_commit"] == "c1e00ebf67fe4c78af2ce6e1dd483bb699706047", "PPIA-03 exact final validated head mismatch")
     require(p3["pull_request"] == 224, "PPIA-03 final PR must be #224")
-    require(p3["merge_commit"] == "ea08234b9d6bcd4cb942c2de964639b330d9511e", "PPIA-03 final merge mismatch")
+    require(p3["merge_commit"] == P3_COMPLETION_MERGE, "PPIA-03 final merge mismatch")
     require(p3["roadmap_projection_pending"] is True, "PPIA-03 roadmap projection should be batched/pending")
     require(not p3["unresolved_failures"] and p3["owner_decision_required"] is False, "PPIA-03 completion has unresolved state")
     for run_id in ("31518534709", "31518534704", "31518534758", "31518534698"):
         require(any(run_id in item.get("command", "") and item.get("status") == "passed" for item in p3["validation"]), f"PPIA-03 missing passed run {run_id}")
 
-    require(p4["status"] == "started", "PPIA-04 checkpoint must be started")
+    require(p4["status"] in {"started", "in_progress"}, "PPIA-04 checkpoint must remain active")
     require(p4["work_item_id"] == "PPIA-04" and p4["attempt_id"] == "PPIA-04-attempt-001", "PPIA-04 checkpoint identity mismatch")
     require(p4["branch"] == "governance/ppia-04-vehicle-mecha-starship", "PPIA-04 branch mismatch")
-    require(p4["base_commit"] == "ea08234b9d6bcd4cb942c2de964639b330d9511e", "PPIA-04 must start from PPIA-03 completion merge")
-    require(p4["expected_remote_head"] == "ea08234b9d6bcd4cb942c2de964639b330d9511e", "PPIA-04 provisional expected head mismatch")
+    require(p4["base_commit"] == P3_TO_P4_TRANSITION_MERGE, "PPIA-04 governed branch must start from the validated PPIA-03→PPIA-04 transition merge")
+    require(any(P3_COMPLETION_MERGE in item.get("value", "") for item in p4.get("evidence", [])), "PPIA-04 must preserve PPIA-03 completion merge as dependency evidence")
+    require(any(P3_TO_P4_TRANSITION_MERGE in item.get("value", "") for item in p4.get("evidence", [])), "PPIA-04 must preserve the transition merge as branch-start evidence")
     require(p4["active_substep"], "PPIA-04 needs active substep")
     require(p4["roadmap_projection_pending"] is True, "PPIA-04 roadmap projection must be pending until batched projection")
 
@@ -84,7 +88,7 @@ def main() -> None:
         "b00aeab9f3ad4cb66869968c3584e969e132a700",
         "c2cb92857e1beb79208790b13f92d46bad769df3",
         "c1e00ebf67fe4c78af2ce6e1dd483bb699706047",
-        "ea08234b9d6bcd4cb942c2de964639b330d9511e",
+        P3_COMPLETION_MERGE,
         "31518534709",
         "40 acceptance requirements across 15 categories",
         "PPIA-04 — Vehicle, Mecha & Starship Experience",
@@ -100,8 +104,9 @@ def main() -> None:
     print("PPIA-03→PPIA-04 TRANSITION: PASS")
     print("ppia03_status=completed_verified")
     print("ppia03_final_pr=224")
-    print("ppia03_final_merge=ea08234b9d6bcd4cb942c2de964639b330d9511e")
-    print("ppia04_status=started")
+    print(f"ppia03_final_merge={P3_COMPLETION_MERGE}")
+    print(f"ppia04_branch_base={P3_TO_P4_TRANSITION_MERGE}")
+    print(f"ppia04_status={p4['status']}")
     print("ppia04_branch=governance/ppia-04-vehicle-mecha-starship")
     print("roadmap_projection_pending=true")
 
