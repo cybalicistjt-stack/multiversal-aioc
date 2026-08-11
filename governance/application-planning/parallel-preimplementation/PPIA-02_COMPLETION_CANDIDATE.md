@@ -61,7 +61,7 @@ A formally deferred creature candidate may be inspected as authorized source-rec
 - cannot be auto-bound to a similarly named existing Creature/NPC;
 - remains a later convert/bind/exclude/supersede/waive decision with provenance.
 
-The historical R1 recovery request is resolved; no further `Aaac (1).zip` upload is required for PPIA-02.
+**This historical recovery request is now resolved.** No further `Aaac (1).zip` upload is required for PPIA-02.
 
 ## Experience architecture
 
