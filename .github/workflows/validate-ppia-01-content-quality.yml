@@ -16,6 +16,7 @@ on:
       - 'scripts/audit-ppia01-csv-content-quality.py'
       - 'scripts/analyze-ppia01-shapeshifter-pricing.py'
       - 'scripts/analyze-ppia01-gap-name-candidates.py'
+      - 'scripts/analyze-ppia01-inference-thin-content.py'
       - 'scripts/validate-ppia01-repair-overlay.py'
       - 'scripts/validate-ppia01-missing-definitions.py'
       - 'scripts/validate-ppia01-quantitative-closure.py'
@@ -129,6 +130,26 @@ jobs:
       - name: Validate quantitative-gap closure against raw source
         run: python scripts/validate-ppia01-quantitative-closure.py | tee build/ppia01-content-quality/quantitative-gap-validation.json
 
+      - name: Prioritize inference and thin-content review
+        run: |
+          python scripts/analyze-ppia01-inference-thin-content.py \
+            --output build/ppia01-content-quality/inference-thin-content.json \
+            --csv-output build/ppia01-content-quality/inference-thin-content.csv \
+            | tee build/ppia01-content-quality/inference-thin-summary.json
+          python scripts/analyze-ppia01-inference-thin-content.py \
+            --output build/ppia01-content-quality/inference-thin-content-second.json \
+            --csv-output build/ppia01-content-quality/inference-thin-content-second.csv \
+            > build/ppia01-content-quality/inference-thin-summary-second.json
+          cmp build/ppia01-content-quality/inference-thin-content.json build/ppia01-content-quality/inference-thin-content-second.json
+          cmp build/ppia01-content-quality/inference-thin-content.csv build/ppia01-content-quality/inference-thin-content-second.csv
+          python - <<'PY'
+          import json
+          report=json.load(open('build/ppia01-content-quality/inference-thin-content.json',encoding='utf-8'))
+          assert report['summary']['inferenceEstimateRows']==10594
+          assert report['summary']['structuralBlankCells']==76
+          print(json.dumps(report['summary'],sort_keys=True))
+          PY
+
       - name: Verify tracked checkout was not mutated
         run: git diff --exit-code
 
@@ -147,4 +168,7 @@ jobs:
             build/ppia01-content-quality/repair-overlay-validation.json
             build/ppia01-content-quality/missing-definition-validation.json
             build/ppia01-content-quality/quantitative-gap-validation.json
+            build/ppia01-content-quality/inference-thin-content.json
+            build/ppia01-content-quality/inference-thin-content.csv
+            build/ppia01-content-quality/inference-thin-summary.json
           retention-days: 30
