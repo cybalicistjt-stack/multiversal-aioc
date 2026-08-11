@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 2,
+  "revision": 3,
   "work_item_id": "PPIA-04",
   "attempt_id": "PPIA-04-attempt-001",
   "track": "parallel-preimplementation-advancement",
@@ -8,41 +8,65 @@
   "branch": "governance/ppia-04-vehicle-mecha-starship",
   "status": "started",
   "started_at": "2026-08-11T17:40:00+00:00",
-  "updated_at": "2026-08-11T17:46:11+00:00",
+  "updated_at": "2026-08-11T17:57:00+00:00",
   "completed_at": null,
   "base_commit": "aee4b5d99f3163454da931a939b142048cea11c5",
-  "latest_pushed_commit": "aee4b5d99f3163454da931a939b142048cea11c5",
-  "expected_remote_head": "aee4b5d99f3163454da931a939b142048cea11c5",
-  "pull_request": null,
+  "latest_pushed_commit": "8afc51555dbb46d68536fb95adcb6b2cc0a9c4e8",
+  "expected_remote_head": "8afc51555dbb46d68536fb95adcb6b2cc0a9c4e8",
+  "pull_request": 226,
   "objective": "Produce an implementation-ready Vehicle, Mecha & Starship experience packet covering reusable Definition versus owned/deployed/live instance semantics; crew, pilots, passengers, stations and permissions; nested cargo/inventory; components/modules/weapons/armor; damage and condition; fuel, energy, power and resource routing; movement and environment interaction; ownership/custody/control; upgrades and loadouts; docking, boarding and deployment; encounter/runtime presentation; provenance; recovery; responsive/mobile/accessibility behavior; and source-grounded reference cases.",
-  "last_verified_action": "PPIA-03→PPIA-04 transition PR #225 passed all ten applicable exact-head gates on e61f35e661bf47fc6aa393b182cdb0ad248323e7, merged as aee4b5d99f3163454da931a939b142048cea11c5, and the governed PPIA-04 working branch was created from that exact canonical merge.",
-  "active_substep": "Inventory authoritative Vehicle/Mecha/Spacecraft source PDFs and governed CSV datasets, recovered R1 vehicle/system deferrals, existing vehicle/mecha/starship object/runtime/UI contracts, PPIA-03 component/cargo/Asset handoffs, and cross-domain boundaries before defining the PPIA-04 experience taxonomy.",
+  "last_verified_action": "PPIA-04 foundation exact head 076d5abef0db0e3698fe55089fd82b3f69e810d7 passed all ten applicable repository gates, including Validate PPIA-04 Foundation run 31520172864, Validate PPIA Program run 31520172722, Validate PPIA-03 to PPIA-04 Transition run 31520172643, Validate Conversation Continuity run 31520172689, and Validate Operational AIOC Baseline run 31520172827. PR #226 then squash-merged as 8afc51555dbb46d68536fb95adcb6b2cc0a9c4e8 and the governed branch was reset to that exact canonical merge.",
+  "active_substep": "Define the PPIA-04 Vehicle/Mecha/Starship Inspector projection matrix and source-grounded reference cases across owned vehicles, configurations, crew/stations, components, cargo, deployment, movement, combat systems, Resources, damage, docking/boarding, permissions, provenance and recovery.",
   "completed_substeps": [
     "PPIA-01 completed_verified.",
     "PPIA-02 completed_verified.",
     "PPIA-03 Items, Equipment & Inventory Experience completed_verified through PR #224 / merge ea08234b9d6bcd4cb942c2de964639b330d9511e.",
     "PPIA-03→PPIA-04 transition exact head e61f35e661bf47fc6aa393b182cdb0ad248323e7 passed ten applicable repository gates and merged through PR #225 as aee4b5d99f3163454da931a939b142048cea11c5.",
-    "Governed branch governance/ppia-04-vehicle-mecha-starship created from exact transition merge aee4b5d99f3163454da931a939b142048cea11c5."
+    "Governed branch governance/ppia-04-vehicle-mecha-starship created from exact transition merge aee4b5d99f3163454da931a939b142048cea11c5.",
+    "Inventoried 24 retained Vehicle/Mecha/Spacecraft/Operations PDFs / 608 pages with exact SHA-256 evidence.",
+    "Inventoried the three governed Vehicle-domain CSV datasets / 5,628 rows: 1,200 Vehicles, 2,117 Mecha, and 2,311 Spacecraft.",
+    "Preserved the explicit 8E-009 parent/component identity rule that name similarity cannot create mecha/spacecraft parent links.",
+    "Preserved all 10 recovered R1 vehicle/system structural candidates as source-review-only evidence with zero automatic Definition promotion.",
+    "Defined the 14-layer PPIA-04 Vehicle/Mecha/Starship experience taxonomy spanning Definitions, variants, component Definitions, owned vehicle Assets, installed configurations, Scene placement, live operational state, authority relations, crew/stations, cargo/carried craft, damage/failure, Resources, movement/environment, and provenance/history/recovery.",
+    "Recorded retained Internal Alpha capabilities and explicit IA-D08-003 advanced-feature deferrals without making deferred simulation features operational.",
+    "PPIA-04 foundation exact head 076d5abef0db0e3698fe55089fd82b3f69e810d7 passed all ten applicable exact-head gates and merged through PR #226 as 8afc51555dbb46d68536fb95adcb6b2cc0a9c4e8."
   ],
-  "next_action": "Build the PPIA-04 source/design inventory and initial Vehicle/Mecha/Starship identity-state taxonomy. Separate vehicle Definition, configuration/variant, owned Asset/vehicle instance, deployment/placement, live runtime instance, crew/station assignments, component/cargo containment, damage/resource state, and permission/provenance layers without treating personal Items as vehicle semantics or inventing missing source facts.",
-  "changed_paths": [],
+  "next_action": "Create and validate a role/field/action projection matrix plus Vehicle/Mecha/Starship reference cases covering Definition-versus-instance, crew/station authority, component installation and compatibility, cargo/carried craft, semantic movement, operational Actions, power/fuel/ammunition/heat, damage/failure/repair, docking/boarding/launch, hidden occupants/systems/cargo, ambiguous-network recovery, and accessible nonvisual operation.",
+  "changed_paths": [
+    ".github/workflows/validate-ppia-04-foundation.yml",
+    "scripts/validate-ppia04-foundation.py",
+    "scripts/validate-ppia03-to-ppia04-transition.py",
+    "governance/application-planning/parallel-preimplementation/PPIA-04_SOURCE_AND_DESIGN_INVENTORY.md",
+    "governance/application-planning/parallel-preimplementation/PPIA-04_VEHICLE_EXPERIENCE_TAXONOMY_v0.1.0.json",
+    "governance/application-planning/parallel-preimplementation/PPIA-04_R1_DEFERRED_VEHICLE_SYSTEM_CANDIDATES.csv"
+  ],
   "completion_gate": {
     "required_evidence_kinds": ["commit", "pull_request", "merge"],
     "required_validation_commands": [],
     "owner_approval_required": false
   },
-  "validation": [],
+  "validation": [
+    {"command":"Validate PPIA-04 Foundation run 31520172864","status":"passed","evidence":"exact PR head 076d5abef0db0e3698fe55089fd82b3f69e810d7"},
+    {"command":"Validate PPIA Program run 31520172722","status":"passed","evidence":"exact PR head 076d5abef0db0e3698fe55089fd82b3f69e810d7"},
+    {"command":"Validate PPIA-03 to PPIA-04 Transition run 31520172643","status":"passed","evidence":"exact PR head 076d5abef0db0e3698fe55089fd82b3f69e810d7"},
+    {"command":"Validate Conversation Continuity run 31520172689","status":"passed","evidence":"exact PR head 076d5abef0db0e3698fe55089fd82b3f69e810d7"},
+    {"command":"Validate Operational AIOC Baseline run 31520172827","status":"passed","evidence":"exact PR head 076d5abef0db0e3698fe55089fd82b3f69e810d7"}
+  ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
     {"kind":"merge","value":"PPIA-03 dependency completion merge ea08234b9d6bcd4cb942c2de964639b330d9511e"},
-    {"kind":"pull_request","value":"PPIA-03→PPIA-04 transition PR #225"},
-    {"kind":"merge","value":"PPIA-03→PPIA-04 transition merge aee4b5d99f3163454da931a939b142048cea11c5"}
+    {"kind":"merge","value":"PPIA-03→PPIA-04 transition merge aee4b5d99f3163454da931a939b142048cea11c5"},
+    {"kind":"commit","value":"PPIA-04 foundation validated exact head 076d5abef0db0e3698fe55089fd82b3f69e810d7"},
+    {"kind":"pull_request","value":"PPIA-04 foundation PR #226"},
+    {"kind":"merge","value":"PPIA-04 foundation squash merge 8afc51555dbb46d68536fb95adcb6b2cc0a9c4e8"},
+    {"kind":"file","value":"PPIA-04 source/design inventory, 14-layer experience taxonomy, recovered R1 vehicle-system reference set, and deterministic foundation validator"}
   ],
   "roadmap_projection_pending": true,
   "notes": [
     "The top-level roadmap prose is intentionally not rewritten for every PPIA substep; backlog/checkpoint/pointer authority advances PPIA-04 with roadmap_projection_pending=true until the next batched roadmap projection.",
     "PPIA-03 personal Item/Asset contracts are reusable inputs for cargo/components/equipment but do not define vehicle crew, movement, damage-zone, power, docking, boarding, or deployment semantics.",
+    "The obsolete 487-object semantic database is not PPIA-04 content authority.",
     "PPIA-04 does not activate STAGE-A-A2 or mutate application runtime.",
     "No release, deployment, tester access, paid service, production credential, unsupported canonical promotion, or cross-domain invention is authorized."
   ]
