@@ -1,26 +1,39 @@
 # PPIA-02 Completion Candidate
 
 **Work item:** PPIA-02 — Creature & NPC Experience  
-**State:** PR #217 MERGED — REQUIRED R1 RECOVERY AMENDMENT PENDING EXACT-HEAD VALIDATION/MERGE  
-**Original completion PR:** #217  
-**Original completion merge:** `f6568e77de2790e9012a95942435c8d88b2e1dd5`  
-**Amendment branch:** `governance/ppia-02-r1-completion-amendment`
+**State:** **COMPLETED_VERIFIED**  
+**Original design PR:** #217  
+**Original design merge:** `f6568e77de2790e9012a95942435c8d88b2e1dd5`  
+**Required completion amendment PR:** #219  
+**Validated amendment head:** `1909a607bbb3ff57a959ae8cc47058ad2882a4e3`  
+**Verified completion merge:** `f768345a44a662a5a1981f4cb35d218c926a5cb6`
 
-## Completion-gate requirement
+## Completion-gate result
 
-PPIA-02 delivers an implementation-ready Creature/NPC experience packet with permission-safe presentation, authoring, encounter, variant, relationship, asset, transformation, accessibility, and source-grounded reference contracts.
+PPIA-02 now has the implementation-ready Creature/NPC experience packet required by its completion gate: permission-safe presentation, authoring, encounter, variant, relationship, asset, transformation, accessibility, provenance, and source-grounded/synthetic acceptance contracts.
 
-PR #217 merged the full Creature/NPC design packet. Immediately before/around that closure, owner-supplied R1 evidence became available and materially improved the provenance boundary. This amendment is therefore required before the PPIA-02 continuity checkpoint advances to the next tranche.
+The completion boundary is intentionally **two-part**. PR #217 merged the integrated design packet, but its final completion validator subsequently exposed that the merged reference set contained only 12 of the intended 13 cases. PPIA-02 therefore was not treated as complete from PR #217 alone. PR #219 restored the missing `PPIA02-RC-013` runtime transformation/privacy/reconnect case, integrated the recovered R1 provenance material, and passed the complete exact-head gate.
+
+## Exact-head validation
+
+Required amendment head `1909a607bbb3ff57a959ae8cc47058ad2882a4e3` passed all four applicable gates:
+
+- Validate PPIA-02 Completion Contract — PASS, run `31506614994`;
+- Validate PPIA-02 Foundation — PASS, run `31506614982`;
+- Validate PPIA Program — PASS, run `31506614892`;
+- Validate Operational AIOC Baseline — PASS, run `31506614861`.
+
+PR #219 then squash-merged as `f768345a44a662a5a1981f4cb35d218c926a5cb6`.
 
 ## Source and authority package
 
-The merged PPIA-02 packet includes:
+The verified packet includes:
 
 - `PPIA-02_SOURCE_AND_DESIGN_INVENTORY.md`;
-- 23 dedicated Creature PDFs + `Player Creatures.PDF` inventoried with SHA-256 provenance;
+- 23 dedicated Creature PDFs plus `Player Creatures.PDF` inventoried with SHA-256 provenance;
 - representative source review for Creature Types, Havalaea Creatures, Dragons, and Player Creatures;
 - explicit exclusion of the unsuccessful 487-object semantic-parse database from Creature/NPC content authority;
-- respect for the later 8E-009 CSV-first registry without falsely treating it as a dedicated Creature catalog.
+- source/provenance/inference boundaries inherited from PPIA-01.
 
 ## Recovered 8E-008G-R1 source accountability
 
@@ -42,22 +55,22 @@ The recovered R1 register contains **93 formally deferred creature candidates**.
 A formally deferred creature candidate may be inspected as authorized source-recovery/provenance evidence but:
 
 - is not a canonical Creature/NPC Definition;
-- is excluded from ordinary canonical Library results unless a source-recovery/deferred filter is explicitly requested and authorized;
+- is excluded from ordinary canonical Library results unless an authorized source-recovery/deferred view is explicitly selected;
 - cannot be quick-added or launched as a Scene/Encounter participant without a governed usable Definition or Campaign-local authored object;
 - cannot receive an invented stat block, CR, ecology, relationships, or mechanics merely to make it usable;
 - cannot be auto-bound to a similarly named existing Creature/NPC;
 - remains a later convert/bind/exclude/supersede/waive decision with provenance.
 
-**This historical recovery request is now resolved.** No further upload of `Aaac (1).zip` or the historically named R1 wrapper is required to complete PPIA-02.
+**This historical recovery request is now resolved.** No further `Aaac (1).zip` upload is required for PPIA-02.
 
 ## Experience architecture
 
-The merged packet retains:
+The completed packet includes:
 
 - 7 object/experience layers;
 - 8 presentation profiles;
 - 10 experience contexts;
-- 13 Inspector section families;
+- 13 Inspector section/field groups;
 - permission-before-serialization projections;
 - explicit no-A2/no-runtime-mutation boundaries.
 
@@ -76,37 +89,27 @@ The merged packet retains:
 9. Summon / minion / spawn
 10. Playable creature conversion
 
-The R1 addendum does not create an eleventh mutation workflow. Source-recovery inspection remains non-authoritative; any later conversion/binding action must use a separate governed owning workflow and preserve provenance.
-
-## Integrated specification
-
-`PPIA-02_CREATURE_NPC_EXPERIENCE_SPEC_v1.0.0.md` remains the primary integrated specification. The R1 addendum supplements its source, Inspector, provenance, and completion sections with the explicit `formally_deferred_source_candidate` state and no-silent-promotion rule.
+The R1 addendum does not create an eleventh mutation workflow. Source-recovery inspection remains non-authoritative; any later conversion/binding action must use a separately governed owning workflow and preserve provenance.
 
 ## Reference cases
 
-The merged packet retains 13 governed reference cases:
+The verified packet contains **13 governed reference cases**:
 
 - 7 source-grounded cases;
 - 6 explicitly noncanonical synthetic QA cases.
 
-The 93 recovered R1 creature candidates are **not** converted into reference-case lore, synthetic creatures, or canonical Definitions. They remain a provenance/source-recovery dataset.
+`PPIA02-RC-013` specifically covers live alternate-form transformation, hidden-form privacy, authoritative runtime state, and reconnect/stale-cache recovery.
+
+The 93 recovered R1 creature candidates are not converted into reference-case lore, synthetic creatures, or canonical Definitions. They remain provenance/source-recovery evidence.
 
 ## Acceptance and traceability
 
-The existing 36 requirements in 16 categories remain unchanged. The R1 addendum maps formal-deferral behavior to existing requirements:
+The packet contains **36 requirements across 16 categories**. The R1 addendum maps formal-deferral behavior to existing requirements:
 
 - `PPIA02-REQ-003` — name similarity cannot create identity/merge;
 - `PPIA02-REQ-007` — privacy filtering occurs before serialization and derived counts;
 - `PPIA02-REQ-034` — authorized provenance views distinguish source/content states;
 - `PPIA02-REQ-035` — incomplete/deferred evidence remains inspectable without invented replacement fields.
-
-The completion validator additionally verifies:
-
-- canonical R1 merge/hash and PASS result;
-- the 93-candidate subset's SHA-256, row count, unique IDs, and source distribution;
-- no-silent-promotion behavior;
-- source-recovery privacy/authoring/Scene/Encounter boundaries;
-- the fact that the earlier optional owner upload request has been resolved.
 
 ## Key non-negotiable outcomes
 
@@ -124,6 +127,6 @@ The completion validator additionally verifies:
 - Formally deferred R1 creature candidates remain source-recovery/provenance evidence until a separate governed disposition creates/binds/excludes/supersedes/waives them.
 - PPIA-02 does not activate A2, implement runtime behavior, release, deploy, or promote unsupported source content.
 
-## Closure condition
+## Next governed work
 
-PR #217 is already merged. PPIA-02 continuity may advance to PPIA-03 only after this R1 amendment passes all applicable exact-head gates and is merged canonically, followed by a completion checkpoint/readback that cites both the original PPIA-02 merge and the R1 amendment merge.
+PPIA-02 is completed_verified. The dependency-optimized sequence advances to **PPIA-03 — Items, Equipment & Inventory Experience** after the continuity/roadmap projection merges canonically.

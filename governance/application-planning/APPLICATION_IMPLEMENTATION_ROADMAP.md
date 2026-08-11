@@ -1,7 +1,7 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 2.4.0  
+**Version:** 2.5.0  
 **Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED + PARALLEL PRE-IMPLEMENTATION WORK ACTIVE  
 **Owner and final authority:** John Brandon Turner  
 **Originally approved:** 2026-08-03  
@@ -28,8 +28,10 @@ Repository and source evidence establishes the following boundary:
 - **Internal Alpha feature design is complete through IA-D09.** IA-D09 remains the completed release-design anchor. Prepared tester/reference, tester-package, demo-campaign, future-workspace-verification, and pack-lifecycle assets do not activate tester access or release.
 - **Design Standards preparation is complete; exact-byte ingestion is still unfinished.** `DS-008-working-series-attempt-002` remains blocked on a repository-capable exact-byte transfer/validation surface and is not completed by preparation artifacts alone.
 - **The owner-approved PPIA parallel work track is active.** PPIA contains sixteen non-Codex tranches designed to advance content quality, UX/content authoring, gameplay systems, acceptance material, onboarding, and developer-control design while A2/Design Standards wait for their required execution surfaces. PPIA does not replace or activate A2.
-- **PPIA-01 — Content Quality & Missing-Information Closure is complete.** AIOC PR #212 merged as `f9e2b1fb7c340d27813b09c180b60d34d5fb6f92` after all eight applicable exact-head gates passed on `cb29b217a48b58df03114f4345a71d8c4c2a898a`. The tranche used the 8E-009 CSV-first 20-dataset / 19,199-row authority, closed all 84 explicit high-priority source gaps through governed source/recommendation boundaries, triaged all 10,594 inference/estimate-bearing rows, source-reviewed the 36 P1 high-core records, preserved unresolved/source-limited cases explicitly, and froze a repair/routing backlog without modifying raw `Csv.zip`.
-- **PPIA-02 — Creature & NPC Experience is now the current PPIA work item.** Branch `governance/ppia-02-creature-npc-experience` was created from the exact PPIA-01 canonical merge. PPIA-02 is preparatory design/content work only; it does not activate A2 or authorize runtime mutation.
+- **PPIA-01 — Content Quality & Missing-Information Closure is complete.** AIOC PR #212 merged as `f9e2b1fb7c340d27813b09c180b60d34d5fb6f92` after all eight applicable exact-head gates passed on `cb29b217a48b58df03114f4345a71d8c4c2a898a`. The tranche used the 8E-009 CSV-first 20-dataset / 19,199-row authority, closed all 84 explicit high-priority source gaps through governed source/recommendation boundaries, triaged all 10,594 inference/estimate-bearing rows, source-reviewed the 36 P1 high-core records, and froze a repair/routing backlog without modifying raw `Csv.zip`. Quantum Weaver was later resolved as owner-approved authored Multiversal completion while preserving its source boundary.
+- **Historical 8E-008G-R1 source-accountability closure is recovered and PASS.** Owner-supplied `This.zip`, SHA-256 `daa8d2eed1d23400812c8a003fbee5c6680041227d42dc90555ebc2031715a18`, recovered the substantive R1 closure outputs. PR #218 / merge `d271d1e7ec453cd153a7bf5768b3df837ba677a9` records 101/101 acceptance checks PASS, 7,144/7,144 structural candidates accounted, 2,766 formerly unbound candidates closed, 0 unbound source sections, and 1,671 formal deferrals preserved. R1 proves source accountability; formal deferral is neither automatic Public Canon promotion nor exclusion.
+- **PPIA-02 — Creature & NPC Experience is completed_verified.** Original PR #217 / merge `f6568e77de2790e9012a95942435c8d88b2e1dd5` produced the integrated Creature/NPC design packet, but its final completion contract later exposed that only 12 of the intended 13 reference cases had been merged. Required amendment PR #219 restored `PPIA02-RC-013`, integrated the recovered R1 provenance model and 93 deferred creature candidates, and passed all four applicable exact-head gates on `1909a607bbb3ff57a959ae8cc47058ad2882a4e3`. Amendment merge `f768345a44a662a5a1981f4cb35d218c926a5cb6` is therefore part of the verified PPIA-02 completion boundary; PR #217 alone is not.
+- **PPIA-03 — Items, Equipment & Inventory Experience is now the current PPIA work item.** Branch `governance/ppia-03-items-equipment-inventory` was created from verified PPIA-02 completion merge `f768345a44a662a5a1981f4cb35d218c926a5cb6`. Initial work is source/design inventory plus state, ownership, container, equipment, identification, permission, and provenance taxonomy. PPIA-03 is preparatory design/content work only and does not activate A2 or authorize runtime mutation.
 
 This section is a recovery summary, not an autosave ledger. More recent verified repository evidence controls if the project advances beyond it.
 
@@ -153,32 +155,39 @@ Dependency-optimized execution order:
 **PPIA-01 — Content Quality & Missing-Information Closure: COMPLETE.**
 
 Canonical evidence:
-- PR #212;
-- validated head `cb29b217a48b58df03114f4345a71d8c4c2a898a`;
-- squash merge `f9e2b1fb7c340d27813b09c180b60d34d5fb6f92`;
+- PR #212 / merge `f9e2b1fb7c340d27813b09c180b60d34d5fb6f92`;
 - all 84 explicit source gaps governed/closed;
 - all 10,594 inference/estimate-bearing rows classified and routed;
 - all 36 P1 high-core rows source-reviewed;
-- unresolved/source-limited cases and Taser source-variant conflict preserved without fabrication or automatic identity merge.
+- Quantum Weaver later owner-resolved as authored completion without rewriting recovered source facts;
+- historical R1 source-accountability result later recovered PASS in PR #218 / merge `d271d1e7ec453cd153a7bf5768b3df837ba677a9`.
+
+**PPIA-02 — Creature & NPC Experience: COMPLETED_VERIFIED.**
+
+Verified completion evidence:
+- original integrated design PR #217 / merge `f6568e77de2790e9012a95942435c8d88b2e1dd5`;
+- final completion contract subsequently exposed a missing 13th reference case, so PR #217 alone is not the verified completion boundary;
+- amendment PR #219 restored `PPIA02-RC-013`, integrated the recovered 93-row R1 deferred-creature provenance set, and passed PPIA-02 Completion Contract run `31506614994`, PPIA-02 Foundation run `31506614982`, PPIA Program run `31506614892`, and Operational AIOC Baseline run `31506614861` on exact head `1909a607bbb3ff57a959ae8cc47058ad2882a4e3`;
+- amendment squash merge `f768345a44a662a5a1981f4cb35d218c926a5cb6` closes the verified PPIA-02 boundary;
+- final packet includes 7 object layers, 8 profiles, 10 contexts, 13 Inspector groups, 10 workflows, 13 reference cases, 36 requirements across 16 categories, and explicit formal-deferral/no-silent-promotion behavior.
 
 ### Current PPIA work item
 
-**PPIA-02 — Creature & NPC Experience** is the owner-selected current conversational work item.
+**PPIA-03 — Items, Equipment & Inventory Experience** is the owner-selected current conversational work item.
 
-PPIA-02 must produce an implementation-ready Creature/NPC experience packet covering:
-- definitive Creature/NPC object presentation hierarchy;
-- summary statistics versus full Inspector information;
-- encounter-use and GM runtime presentation;
-- permission-safe GM-only/hidden information;
-- generic creatures, named NPCs, variants, templates, and instance/definition distinctions;
-- abilities, innate traits, conditions, resources, ecology, habitat, behavior, and encounter roles;
-- loot, carried assets, equipment, ownership, relationships, factions, and provenance;
-- transformations, evolution/forms, summons, minions, and linked entities;
-- comparison, search, filtering, quick-add, and authoring workflows;
-- accessible alternatives for dense stat blocks, including keyboard/screen-reader/mobile behavior;
-- source-grounded reference cases and acceptance/traceability material.
+PPIA-03 must produce an implementation-ready asset/inventory packet covering:
+- weapons, armor, consumables, tools, ammunition, currency, containers, and special items;
+- Definition versus owned/carried/equipped/stored/placed/live-use state;
+- stacks, quantities, charges, durability, magazines/capacity, attachments, and modifications;
+- ownership, possession, custody, party/shared assets, transfer, trade, drop, pickup, and loot;
+- identification, appraisal, hidden properties, reveal state, GM-only information, and permission-safe projections;
+- nested containers and inventory relationships without identity collapse;
+- provenance/history, source variants/conflicts, authored recommendations, and formally deferred source candidates;
+- Character, Creature/NPC, Scene, Encounter, crafting, vehicle, and world-authoring integration boundaries;
+- accessible, responsive, keyboard/screen-reader/mobile alternatives for dense inventory/equipment interfaces;
+- source-grounded and explicitly synthetic acceptance/reference cases.
 
-PPIA-02 must preserve the source/provenance/inference distinctions established by PPIA-01 and must not silently promote source-only, inferred, or recommended content into source fact or authoritative runtime state.
+PPIA-03 must consume the PPIA-01 routed Taser source-variant conflict, seven source-unspecified energy-weapon capacities, three ammo-reference-only names, relevant inferred mechanics, and any recovered R1 item deferrals without fabricating source facts or auto-merging identities.
 
 ## Design Standards Completion subproject — unfinished parallel track
 
