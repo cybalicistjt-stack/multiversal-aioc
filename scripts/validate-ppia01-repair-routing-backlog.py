@@ -10,12 +10,14 @@ PROGRAM = ROOT / "governance/application-planning/parallel-preimplementation"
 BACKLOG = PROGRAM / "PPIA-01_REPAIR_AND_ROUTING_BACKLOG.json"
 UNRESOLVED = PROGRAM / "PPIA-01_UNRESOLVED_SOURCE_REGISTER.json"
 P1_REVIEW = PROGRAM / "PPIA-01_P1_CORE_MECHANICAL_SOURCE_REVIEW_v0.1.0.json"
+QUANTUM = PROGRAM / "PPIA-01_OWNER_EYE_QUANTUM_WEAVER.md"
 
 
 def main() -> int:
     backlog = json.loads(BACKLOG.read_text(encoding="utf-8"))
     unresolved = json.loads(UNRESOLVED.read_text(encoding="utf-8"))
     p1_review = json.loads(P1_REVIEW.read_text(encoding="utf-8"))
+    quantum = QUANTUM.read_text(encoding="utf-8")
 
     if backlog.get("format") != "multiversal-ppia01-repair-and-routing-backlog":
         raise SystemExit("unexpected repair/routing backlog format")
@@ -65,17 +67,24 @@ def main() -> int:
         if not route.get("destination") or not route.get("status") or not route.get("required_behavior"):
             raise SystemExit(f"route {route_id} lacks required routing fields")
 
+    if routes["PPIA-01-RTE-002"].get("status") != "owner_approved_authored_completion":
+        raise SystemExit("Quantum Weaver owner resolution is not frozen")
+    if "OWNER-APPROVED AUTHORED COMPLETION" not in quantum:
+        raise SystemExit("Quantum Weaver owner-resolution document is not resolved")
+    if "does **not** retroactively turn them into source-derived facts" not in quantum:
+        raise SystemExit("Quantum Weaver source/authored boundary is missing")
+
     # The P2/P3/P4 + systematic/delegated inference categories must account for
-    # all inference-bearing rows except the single Quantum Weaver source-recovery row.
+    # all inference-bearing rows except Quantum Weaver, which remains one accounted
+    # authored-completion row after owner resolution.
     routed_inference_count = sum(routes[item_id]["count"] for item_id in (
         "PPIA-01-RTE-003", "PPIA-01-RTE-004", "PPIA-01-RTE-005",
         "PPIA-01-RTE-006", "PPIA-01-RTE-007", "PPIA-01-RTE-008",
         "PPIA-01-RTE-009", "PPIA-01-RTE-010",
     ))
-    # 36 P1 rows were source-reviewed in PPIA-01 itself; Quantum Weaver is the one P0 record.
     if routed_inference_count + 36 + 1 != 10594:
         raise SystemExit(
-            f"inference routing coverage mismatch: routed={routed_inference_count}, P1=36, P0=1"
+            f"inference routing coverage mismatch: routed={routed_inference_count}, P1=36, owner-resolved=1"
         )
 
     if p1_review.get("summary", {}).get("p1_high_core_rows_reviewed") != 36:
@@ -97,14 +106,29 @@ def main() -> int:
     unresolved_summary = unresolved.get("summary") or {}
     if unresolved_summary.get("current_registry_explicit_high_priority_gaps_without_closure") != 0:
         raise SystemExit("explicit high-priority current-registry gaps remain unresolved")
-    if unresolved_summary.get("current_registry_owner_eye_records") != 1:
-        raise SystemExit("owner-eye register count changed")
+    if unresolved_summary.get("current_registry_owner_eye_records") != 0:
+        raise SystemExit("Quantum Weaver should no longer be an owner-eye record")
+    if unresolved_summary.get("owner_resolved_authored_completion_records") != 1:
+        raise SystemExit("owner-resolved authored completion count changed")
     if unresolved_summary.get("current_registry_source_unspecified_capacity_records") != 7:
         raise SystemExit("source-unspecified capacity count changed")
     if unresolved_summary.get("current_registry_source_reference_only_records") != 3:
         raise SystemExit("source-reference-only record count changed")
     if unresolved_summary.get("historical_provenance_audit_questions") != 1:
         raise SystemExit("historical provenance-question count changed")
+
+    resolutions = unresolved.get("owner_resolutions") or []
+    if len(resolutions) != 1 or resolutions[0].get("name") != "Quantum Weaver":
+        raise SystemExit("Quantum Weaver owner resolution is missing from unresolved-register history")
+
+    historical = next((item for item in unresolved.get("records") or [] if item.get("id") == "PPIA-01-USR-004"), None)
+    if not historical:
+        raise SystemExit("historical 8E-008G question missing")
+    evidence = historical.get("historical_package_evidence") or {}
+    if evidence.get("owner_resupplied_audit_sha256") != "4a98058b03d3ced252f01dac3026997de2dfd0b064be6a691debb93a0c485fff":
+        raise SystemExit("owner-resupplied 8E-008G audit hash changed")
+    if "not the later R1 closure package/results" not in evidence.get("owner_resupplied_audit_finding", ""):
+        raise SystemExit("8E-008G audit versus R1 closure distinction is missing")
 
     trace = backlog.get("feature_surface_traceability") or {}
     if set(trace) != {"STAGE-A-A2", "SD-1007", "SD-1107"}:
@@ -128,6 +152,9 @@ def main() -> int:
         "routedFollowups": len(routes),
         "inferenceRowsAccounted": 10594,
         "explicitHighPriorityGapsWithoutClosure": 0,
+        "ownerEyeRecords": 0,
+        "ownerResolvedAuthoredCompletions": 1,
+        "historicalProvenanceQuestions": 1,
         "p1SourceReviewed": 36,
         "sourceConflictsPreserved": 1,
         "result": "PASS",
