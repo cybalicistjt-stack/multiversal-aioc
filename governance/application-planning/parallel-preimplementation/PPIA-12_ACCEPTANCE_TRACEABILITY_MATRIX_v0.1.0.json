@@ -1,0 +1,104 @@
+{
+  "format": "multiversal-ppia12-world-setting-authoring-acceptance-traceability-matrix",
+  "version": "0.1.0",
+  "work_item": "PPIA-12",
+  "status": "completion_contract_candidate",
+  "requirements": [
+    {"requirement_id":"PPIA12-AC-001","category":"identity_source","requirement":"Reusable Setting Definition, Campaign instance, reveal state and provenance remain distinct semantic layers.","traces":["identity_definition","campaign_instance","knowledge_visibility","provenance_recovery","WS-WF-001","WS-WF-012"],"reference_cases":["PPIA12-RC-001"]},
+    {"requirement_id":"PPIA12-AC-002","category":"identity_source","requirement":"Source fact, source-unspecified, conflict/revision, proposal, accepted authored fact and Campaign-local state remain distinguishable.","traces":["provenance_recovery","source_conflict_resolution_candidate","generate_authoring_proposal","WS-WF-015"],"reference_cases":["PPIA12-RC-001","PPIA12-RC-015"]},
+    {"requirement_id":"PPIA12-AC-003","category":"identity_source","requirement":"Unknown geography, parentage, chronology, connectivity, compatibility and mechanics remain unknown rather than receiving defaults.","traces":["identity_definition","provenance_recovery","WS-WF-001"],"reference_cases":["PPIA12-RC-003","PPIA12-RC-004","PPIA12-RC-005"]},
+
+    {"requirement_id":"PPIA12-AC-004","category":"hierarchy_cosmology","requirement":"Typed hierarchy supports worlds, realms, branches, planes, layers, cities, stations, ships, routes, zones, districts and other source-supported setting entities without planet-only assumptions.","traces":["cosmology_placement","hierarchy_location","author_hierarchy_relation","WS-WF-003"],"reference_cases":["PPIA12-RC-004","PPIA12-RC-005","PPIA12-RC-007"]},
+    {"requirement_id":"PPIA12-AC-005","category":"hierarchy_cosmology","requirement":"Hierarchy, membership and cosmology placement require explicit source evidence or governed authoring provenance; co-occurrence/name/theme/proximity cannot create relations.","traces":["cosmology_placement","hierarchy_location","author_hierarchy_relation","WS-WF-003"],"reference_cases":["PPIA12-RC-002","PPIA12-RC-003"]},
+    {"requirement_id":"PPIA12-AC-006","category":"hierarchy_cosmology","requirement":"The Havalaea → Vertigon relation is attributable to explicit reciprocal source evidence and cannot be generalized into unsupported neighboring hierarchy.","traces":["hierarchy_location","inspect_compare","WS-WF-001","WS-WF-003"],"reference_cases":["PPIA12-RC-002"]},
+
+    {"requirement_id":"PPIA12-AC-007","category":"environments","requirement":"Reusable environment templates remain distinct from setting-attached environment profiles and never instantiate named settings automatically.","traces":["environment_profile","attach_environment_profile","WS-WF-004"],"reference_cases":["PPIA12-RC-011"]},
+    {"requirement_id":"PPIA12-AC-008","category":"environments","requirement":"Environment attachment preserves template provenance and explicit setting scope and does not rewrite the reusable template.","traces":["environment_profile","attach_environment_profile","history_export_recovery","WS-WF-004"],"reference_cases":["PPIA12-RC-010","PPIA12-RC-011"]},
+    {"requirement_id":"PPIA12-AC-009","category":"environments","requirement":"Campaign-local environment mutation remains PPIA-08-owned and cannot rewrite PPIA-12 reusable Setting Definitions or templates.","traces":["environment_profile","campaign_scene_handoff","WS-WF-004","WS-HO-002"],"reference_cases":["PPIA12-RC-001","PPIA12-RC-017"]},
+
+    {"requirement_id":"PPIA12-AC-010","category":"infrastructure","requirement":"Settlements, infrastructure and landmarks remain typed setting structures with explicit placement provenance.","traces":["infrastructure_landmark","author_infrastructure_landmark","WS-WF-005"],"reference_cases":["PPIA12-RC-014"]},
+    {"requirement_id":"PPIA12-AC-011","category":"infrastructure","requirement":"Generic Items or Vehicles do not become setting infrastructure or ownership relations solely from document proximity or mention.","traces":["infrastructure_landmark","WS-WF-005","WS-HO-004","WS-HO-005"],"reference_cases":["PPIA12-RC-014","PPIA12-RC-016"]},
+    {"requirement_id":"PPIA12-AC-012","category":"infrastructure","requirement":"Hidden landmarks, portals and hubs are filtered before maps, counts, pathfinding, summaries and AI context.","traces":["infrastructure_landmark","knowledge_visibility","WS-WF-005","WS-HO-009"],"reference_cases":["PPIA12-RC-018"]},
+
+    {"requirement_id":"PPIA12-AC-013","category":"factions_governance","requirement":"Faction, institution and governance facts remain distinct from location identity and use explicit jurisdiction/presence relations.","traces":["faction_governance","author_faction_governance","WS-WF-006"],"reference_cases":["PPIA12-RC-013","PPIA12-RC-014"]},
+    {"requirement_id":"PPIA12-AC-014","category":"factions_governance","requirement":"Faction co-occurrence does not create location parentage, ownership or jurisdiction without explicit evidence.","traces":["faction_governance","hierarchy_location","WS-WF-006"],"reference_cases":["PPIA12-RC-014"]},
+    {"requirement_id":"PPIA12-AC-015","category":"factions_governance","requirement":"Current Campaign faction metrics/control remain Campaign-local and do not rewrite reusable governance facts.","traces":["faction_governance","campaign_instance","campaign_scene_handoff","WS-WF-006","WS-WF-012"],"reference_cases":["PPIA12-RC-017"]},
+
+    {"requirement_id":"PPIA12-AC-016","category":"culture_economy","requirement":"Culture, society, religion, language, calendar, customs and economy remain typed setting-scoped facets.","traces":["culture_society_economy","author_culture_society_economy","WS-WF-007"],"reference_cases":["PPIA12-RC-013"]},
+    {"requirement_id":"PPIA12-AC-017","category":"culture_economy","requirement":"Setting culture and society do not become Species biology or immutable Character traits through co-occurrence.","traces":["culture_society_economy","WS-WF-007","WS-HO-006"],"reference_cases":["PPIA12-RC-013","PPIA12-RC-016"]},
+    {"requirement_id":"PPIA12-AC-018","category":"culture_economy","requirement":"Mixed source facets such as The Empire remain separately typed rather than flattened into one World identity record.","traces":["culture_society_economy","faction_governance","WS-WF-006","WS-WF-007"],"reference_cases":["PPIA12-RC-013"]},
+
+    {"requirement_id":"PPIA12-AC-019","category":"history","requirement":"Historical events, eras, chronology and causal relations require source evidence or explicit governed authoring decisions.","traces":["history_timeline","author_history_timeline","WS-WF-008"],"reference_cases":["PPIA12-RC-015"]},
+    {"requirement_id":"PPIA12-AC-020","category":"history","requirement":"Document order, paragraph order, file naming and co-occurrence do not create chronology.","traces":["history_timeline","WS-WF-008"],"reference_cases":["PPIA12-RC-003","PPIA12-RC-015"]},
+    {"requirement_id":"PPIA12-AC-021","category":"history","requirement":"Stratebrait-style older/current/new conflicts remain separately attributable until governed resolution and never silently rewrite raw source.","traces":["history_timeline","provenance_recovery","source_conflict_resolution_candidate","WS-WF-015"],"reference_cases":["PPIA12-RC-015"]},
+
+    {"requirement_id":"PPIA12-AC-022","category":"content_extensions","requirement":"World-local availability, membership and variant/extension metadata preserve stable owning-object references and setting scope.","traces":["content_extension","scope_content_extension","WS-WF-009"],"reference_cases":["PPIA12-RC-016"]},
+    {"requirement_id":"PPIA12-AC-023","category":"content_extensions","requirement":"PPIA-02/03/04/05 and Ability/rules owners retain core Definitions; PPIA-12 does not silently fork or overwrite mechanics.","traces":["content_extension","WS-WF-009","WS-HO-003","WS-HO-004","WS-HO-005","WS-HO-006","WS-HO-007"],"reference_cases":["PPIA12-RC-016"]},
+    {"requirement_id":"PPIA12-AC-024","category":"content_extensions","requirement":"Setting-source co-occurrence with an object does not automatically prove membership, availability, ownership, variant identity or compatibility.","traces":["content_extension","inspect_compare","WS-WF-009"],"reference_cases":["PPIA12-RC-003","PPIA12-RC-016"]},
+
+    {"requirement_id":"PPIA12-AC-025","category":"local_rules","requirement":"World-local and branch-local mechanics retain explicit setting scope and provenance.","traces":["local_rule_extension","scope_local_rule_extension","WS-WF-010"],"reference_cases":["PPIA12-RC-008","PPIA12-RC-009","PPIA12-RC-010"]},
+    {"requirement_id":"PPIA12-AC-026","category":"local_rules","requirement":"Musical Reality, branch-specific and unusual-local-physics mechanics are not automatically promoted to universal/core rules.","traces":["local_rule_extension","scope_local_rule_extension","WS-WF-010","WS-HO-007"],"reference_cases":["PPIA12-RC-008","PPIA12-RC-009","PPIA12-RC-010"]},
+    {"requirement_id":"PPIA12-AC-027","category":"local_rules","requirement":"Broader rule promotion requires separate owning-domain authority, provenance and validation outside PPIA-12 setting-scope authoring.","traces":["local_rule_extension","WS-WF-010","WS-HO-007"],"reference_cases":["PPIA12-RC-008","PPIA12-RC-009"]},
+
+    {"requirement_id":"PPIA12-AC-028","category":"routes_connectivity","requirement":"Routes, portals and connectivity remain distinct from containment hierarchy and require typed endpoints and explicit evidence.","traces":["transit_connectivity","author_route_connectivity","WS-WF-011"],"reference_cases":["PPIA12-RC-006"]},
+    {"requirement_id":"PPIA12-AC-029","category":"routes_connectivity","requirement":"Shared multiversal context, organizations, theme or proximity do not imply route connectivity.","traces":["transit_connectivity","author_route_connectivity","WS-WF-011"],"reference_cases":["PPIA12-RC-003","PPIA12-RC-006"]},
+    {"requirement_id":"PPIA12-AC-030","category":"routes_connectivity","requirement":"Route access, discovery and pathfinding are permission-filtered before traversal results and have semantic non-map equivalents.","traces":["transit_connectivity","knowledge_visibility","WS-WF-011","WS-HO-009","WS-HO-010"],"reference_cases":["PPIA12-RC-018","PPIA12-RC-020"]},
+
+    {"requirement_id":"PPIA12-AC-031","category":"campaign_state","requirement":"PPIA-08 Campaign/Scene instantiation stores stable reusable Setting Definition references rather than copying or mutating source Definitions.","traces":["campaign_instance","campaign_scene_handoff","WS-WF-012","WS-HO-002"],"reference_cases":["PPIA12-RC-001","PPIA12-RC-017"]},
+    {"requirement_id":"PPIA12-AC-032","category":"campaign_state","requirement":"Campaign destruction, occupation, renaming, discovery, current control and timeline state mutate only the Campaign instance.","traces":["campaign_instance","campaign_scene_handoff","WS-WF-012"],"reference_cases":["PPIA12-RC-017"]},
+    {"requirement_id":"PPIA12-AC-033","category":"campaign_state","requirement":"Campaign-local mutations use expected-version and idempotency/recovery controls and do not affect other Campaigns.","traces":["campaign_instance","history_export_recovery","WS-WF-012","WS-WF-016","WS-HO-002","WS-HO-009"],"reference_cases":["PPIA12-RC-017","PPIA12-RC-019"]},
+
+    {"requirement_id":"PPIA12-AC-034","category":"privacy_visibility","requirement":"Authorization/filtering precede hidden settings, locations, routes, factions, history, secrets, counts, maps, summaries, exports, diagnostics, notifications, pathfinding and AI context.","traces":["knowledge_visibility","reveal_hide_setting_fact","WS-WF-013","WS-HO-009"],"reference_cases":["PPIA12-RC-018"]},
+    {"requirement_id":"PPIA12-AC-035","category":"privacy_visibility","requirement":"Unauthorized errors, route validation and aggregate differences cannot disclose hidden fact existence.","traces":["knowledge_visibility","transit_connectivity","WS-WF-013","WS-WF-011"],"reference_cases":["PPIA12-RC-018"]},
+    {"requirement_id":"PPIA12-AC-036","category":"privacy_visibility","requirement":"Assistant GM and service/AI roles receive minimum delegated projections and cannot independently author, reveal, resolve source conflicts or promote local mechanics.","traces":["knowledge_visibility","WS-HO-009","WS-HO-010"],"reference_cases":["PPIA12-RC-018","PPIA12-RC-020"]},
+
+    {"requirement_id":"PPIA12-AC-037","category":"authoring_proposals","requirement":"Worldbuilding guidance, random tables, templates and AI assistance produce attributed proposals rather than automatic canonical facts.","traces":["provenance_recovery","generate_authoring_proposal","WS-WF-014"],"reference_cases":["PPIA12-RC-012"]},
+    {"requirement_id":"PPIA12-AC-038","category":"authoring_proposals","requirement":"Proposal acceptance routes through the specific owning authoring workflow and does not inherit acceptance authority from generation.","traces":["generate_authoring_proposal","author_setting_definition","WS-WF-014","WS-WF-002"],"reference_cases":["PPIA12-RC-012"]},
+    {"requirement_id":"PPIA12-AC-039","category":"authoring_proposals","requirement":"Rejected, abandoned or unresolved proposals leave existing reusable Definitions and raw source unchanged.","traces":["generate_authoring_proposal","source_conflict_resolution_candidate","WS-WF-014","WS-WF-015"],"reference_cases":["PPIA12-RC-012","PPIA12-RC-015"]},
+
+    {"requirement_id":"PPIA12-AC-040","category":"recovery_concurrency","requirement":"Every authoritative PPIA-12 mutation is expected-version checked and idempotent or governed by an equivalent concurrency contract.","traces":["provenance_recovery","history_export_recovery","WS-WF-016","WS-HO-009"],"reference_cases":["PPIA12-RC-019"]},
+    {"requirement_id":"PPIA12-AC-041","category":"recovery_concurrency","requirement":"Ambiguous network outcomes query operation status with the original operation ID before retry and reuse the same idempotency identity.","traces":["history_export_recovery","WS-WF-016","WS-HO-009"],"reference_cases":["PPIA12-RC-019"]},
+    {"requirement_id":"PPIA12-AC-042","category":"recovery_concurrency","requirement":"Reconnect reauthorizes role, Campaign/authoring scope, visible secrets and versions; broad offline authoritative World/Setting mutation is forbidden.","traces":["provenance_recovery","WS-WF-016","WS-HO-009"],"reference_cases":["PPIA12-RC-019","PPIA12-RC-018"]},
+
+    {"requirement_id":"PPIA12-AC-043","category":"accessibility_responsive","requirement":"All required World/Setting workflows support keyboard, touch, screen-reader and high-zoom/reflow operation.","traces":["WS-WF-001","WS-WF-003","WS-WF-011","WS-WF-016","WS-HO-010"],"reference_cases":["PPIA12-RC-020"]},
+    {"requirement_id":"PPIA12-AC-044","category":"accessibility_responsive","requirement":"Hierarchy, routes, environments, reveal state, local-rule scope and source/conflict state have semantic textual/nonvisual equivalents.","traces":["hierarchy_location","environment_profile","transit_connectivity","knowledge_visibility","provenance_recovery","WS-HO-010"],"reference_cases":["PPIA12-RC-020"]},
+    {"requirement_id":"PPIA12-AC-045","category":"accessibility_responsive","requirement":"No required workflow depends solely on map geometry, color, drag, hover, animation or visual node placement; maps remain supplemental.","traces":["transit_connectivity","hierarchy_location","WS-WF-011","WS-HO-010"],"reference_cases":["PPIA12-RC-020"]},
+
+    {"requirement_id":"PPIA12-AC-046","category":"provenance_governance_downstream","requirement":"Source coordinates, conflict/revision assertions, authored decisions, operation history and recovery receipts remain attributable and exportable within permission scope.","traces":["provenance_recovery","source_conflict_resolution_candidate","history_export_recovery","WS-WF-015","WS-WF-016"],"reference_cases":["PPIA12-RC-015","PPIA12-RC-019"]},
+    {"requirement_id":"PPIA12-AC-047","category":"provenance_governance_downstream","requirement":"PPIA-12 routes rather than absorbs PPIA-08 Campaign/Scene state, PPIA-02/03/04/05 object Definitions, Ability/rules promotion, PPIA-11 balance, F020/F021 recovery/privacy and F022 accessibility.","traces":["WS-HO-002","WS-HO-003","WS-HO-004","WS-HO-005","WS-HO-006","WS-HO-007","WS-HO-008","WS-HO-009","WS-HO-010"],"reference_cases":["PPIA12-RC-016","PPIA12-RC-017","PPIA12-RC-020"]},
+    {"requirement_id":"PPIA12-AC-048","category":"provenance_governance_downstream","requirement":"Completion does not activate STAGE-A-A2, mutate application runtime, universalize setting-local content/rules, or authorize release/deployment/tester/paid/credential operations.","traces":["PPIA-12_WORLD_SETTING_AUTHORING_EXPERIENCE_SPEC_v1.0.0.md","PPIA-12_COMPLETION_CANDIDATE.md"],"reference_cases":["PPIA12-RC-008","PPIA12-RC-016"]}
+  ],
+  "coverage": {
+    "projection_groups": ["identity_definition","cosmology_placement","hierarchy_location","environment_profile","infrastructure_landmark","faction_governance","culture_society_economy","history_timeline","content_extension","local_rule_extension","transit_connectivity","campaign_instance","knowledge_visibility","provenance_recovery"],
+    "action_contracts": ["inspect_compare","author_setting_definition","author_hierarchy_relation","attach_environment_profile","author_infrastructure_landmark","author_faction_governance","author_culture_society_economy","author_history_timeline","scope_content_extension","scope_local_rule_extension","author_route_connectivity","campaign_scene_handoff","reveal_hide_setting_fact","generate_authoring_proposal","source_conflict_resolution_candidate","history_export_recovery"],
+    "workflows": ["WS-WF-001","WS-WF-002","WS-WF-003","WS-WF-004","WS-WF-005","WS-WF-006","WS-WF-007","WS-WF-008","WS-WF-009","WS-WF-010","WS-WF-011","WS-WF-012","WS-WF-013","WS-WF-014","WS-WF-015","WS-WF-016"],
+    "handoffs": ["WS-HO-001","WS-HO-002","WS-HO-003","WS-HO-004","WS-HO-005","WS-HO-006","WS-HO-007","WS-HO-008","WS-HO-009","WS-HO-010"],
+    "reference_cases": ["PPIA12-RC-001","PPIA12-RC-002","PPIA12-RC-003","PPIA12-RC-004","PPIA12-RC-005","PPIA12-RC-006","PPIA12-RC-007","PPIA12-RC-008","PPIA12-RC-009","PPIA12-RC-010","PPIA12-RC-011","PPIA12-RC-012","PPIA12-RC-013","PPIA12-RC-014","PPIA12-RC-015","PPIA12-RC-016","PPIA12-RC-017","PPIA12-RC-018","PPIA12-RC-019","PPIA12-RC-020"]
+  },
+  "summary": {
+    "requirements": 48,
+    "categories": 16,
+    "identity_state_layers_traced": 14,
+    "projection_groups_traced": 14,
+    "action_contracts_traced": 16,
+    "workflows_traced": 16,
+    "authoritative_mutation_workflows_traced": 12,
+    "handoffs_traced": 10,
+    "reference_cases_available": 20,
+    "reference_cases_covered": 20,
+    "primary_pdfs_accounted": 22,
+    "primary_pdf_pages_accounted": 693,
+    "environment_template_pdfs_accounted": 8,
+    "environment_template_pages_accounted": 238,
+    "authoring_guidance_pdfs_accounted": 2,
+    "authoring_guidance_pages_accounted": 30,
+    "total_pdfs_accounted": 32,
+    "total_pdf_pages_accounted": 961,
+    "dedicated_world_setting_csv_catalog_present": false,
+    "a2_activation_authorized": false,
+    "application_runtime_mutation_authorized": false,
+    "release_authorized": false,
+    "deployment_authorized": false,
+    "unsupported_canonical_promotion_authorized": false
+  }
+}
