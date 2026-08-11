@@ -1,0 +1,148 @@
+{
+  "format": "multiversal-ppia01-p1-core-mechanical-source-review",
+  "version": "0.1.0",
+  "work_item": "PPIA-01",
+  "status": "source_review_complete_recommendations_non_source_where_needed",
+  "policy": {
+    "preserve_raw_csv": true,
+    "automatic_identity_merge": false,
+    "source_facts_distinct_from_recommendations": true,
+    "owner_review_required": false,
+    "later_balance_review": "PPIA-11"
+  },
+  "source_evidence": [
+    {
+      "source_pdf": "Magic charge holders(3).PDF",
+      "retained_member": "MV_Master_01_Core/02_PDF_Sources/Part 1/Items/Item pdfs/Magic charge holders.PDF",
+      "sha256": "7db1b047a24037ebfd783c6a25d210546584e90f272f85031bba1f9eb22b745d"
+    },
+    {
+      "source_pdf": "Symbiotes 11-9-24(3).PDF",
+      "retained_member": "MV_Master_01_Core/02_PDF_Sources/Part 1/Items/Item pdfs/Symbiotes 11-9-24.PDF",
+      "sha256": "4ab91b8c57cd4b3da22589628291f1f9698e23a86c0c3add12c81487c5f54651"
+    },
+    {
+      "source_pdf": "Cybernetics(2).PDF",
+      "retained_member": "MV_Master_01_Core/02_PDF_Sources/Part 1/Items/Item pdfs/Cybernetics.PDF",
+      "sha256": "52ebe4c4d74f0a036fdaf9b9c670be173ba015dc002a6532eec7afdc5b386c5e"
+    },
+    {
+      "source_pdf": "Items 1.PDF",
+      "retained_member": "MV_Master_01_Core/02_PDF_Sources/Part 1/Items/Item pdfs/Items 1.PDF",
+      "sha256": "728bed92e50577085490fc9a111c92aff142b837d4fa122fa1e9d0b0866718b3"
+    }
+  ],
+  "groups": [
+    {
+      "group_id": "PPIA-01-P1-MAGIC-EXPLICIT",
+      "source_support_class": "explicit_source_effect_plus_inferred_operational_details",
+      "dataset": "expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv",
+      "count": 11,
+      "records": [
+        "Wand of Firebolts",
+        "Wand of Illumination",
+        "Wand of Frost Darts",
+        "Wand of Disruption",
+        "Staff of Earthshaping",
+        "Rod of Control",
+        "Orb of Echo Pulse",
+        "Talisman of Feather Fall",
+        "Amulet of Fireguard",
+        "Ring of Temporal Delay",
+        "Ring of Counterfire"
+      ],
+      "source_support": "The PDF explicitly defines each named item's core effect. Class-level sections also define bounded implement behavior such as wand charges/recharge/activation, staff charges/recharge, rod charge/control conventions, scroll single-use behavior, orb activation, charm/talisman triggers, and ring spell-storage/reactive behavior. Item-specific inferred range/uses/capacity/durability details that are not stated remain recommendations, not source facts.",
+      "disposition": "Retain explicit source effect; keep non-stated operational numbers visibly inferred and route numerical balance to PPIA-11.",
+      "traceability": ["PPIA-03", "PPIA-11", "STAGE-A-A2", "SD-1007"]
+    },
+    {
+      "group_id": "PPIA-01-P1-MAGIC-NARRATIVE-SEED",
+      "source_support_class": "narrative_name_or_use_seed_only",
+      "dataset": "expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv",
+      "count": 7,
+      "records": [
+        "Tome of Void Secrets",
+        "Talisman of Arcane Surge",
+        "Charm of Illumination",
+        "Scroll of Counterspell",
+        "Staff of Bonebark",
+        "Rod of Aether Sight",
+        "Wand of Stars"
+      ],
+      "source_support": "The PDF names these objects only in GM combination/examples or narrative prompts. It supplies a broad intended use for some names but does not publish complete item mechanics.",
+      "disposition": "Treat detailed CSV mechanics as owner-delegated authored completion, never recovered source fact. Preserve reversibility and route item mechanics/balance to PPIA-03/PPIA-11.",
+      "traceability": ["PPIA-03", "PPIA-11", "STAGE-A-A2", "SD-1007", "SD-1107"]
+    },
+    {
+      "group_id": "PPIA-01-P1-SYMBIOTE-FUSIONS",
+      "source_support_class": "explicit_source_identity_and_core_fusion_ability_with_inferred_numbers",
+      "dataset": "expanded_symbiotes_and_cybernetics_all_genres.csv",
+      "count": 3,
+      "records": ["Pyrostorm", "Mind Healer", "Abysswalker"],
+      "source_support": "The PDF explicitly defines the parent fusion, base ability theme, and named Hybrid Synergy Ability for all three. Pyrostorm explicitly gives a 10-foot Storm Burst radius. Exact damage/healing, uses, cooldowns/recovery, activation, and weight are otherwise not published.",
+      "disposition": "Preserve source fusion identities and narrative effects; keep non-stated quantities/uses/recovery as reversible recommendations routed to PPIA-05/PPIA-11.",
+      "traceability": ["PPIA-05", "PPIA-11", "STAGE-A-A2", "SD-1007"]
+    },
+    {
+      "group_id": "PPIA-01-P1-CYBERNETICS",
+      "source_support_class": "explicit_source_core_effect_with_inferred_operational_fill",
+      "dataset": "expanded_symbiotes_and_cybernetics_all_genres.csv",
+      "count": 12,
+      "records": [
+        "Stealth Generator",
+        "Charm Implant",
+        "Hypnotic Gaze",
+        "Mind Reader",
+        "Persuasion Implant",
+        "Energy Shield [Defense Enhancement]",
+        "Force Field Generator",
+        "Energy Absorber",
+        "Electrostatic Discharge",
+        "Plasma Blaster",
+        "Thermal Ray",
+        "Light Refractor"
+      ],
+      "source_support": "Cybernetics.PDF explicitly supplies a core effect or numerical bonus for every listed record, including Stealth Generator +2 Stealth/+2 Disguise; social implants +2 Charisma contexts; defensive AC/absorption effects; Plasma Blaster 1d8 energy/+2 hit; Thermal Ray 1d6 fire/+2 hit; and Light Refractor +2 Charisma for deception. The current inferred duration/uses/range where absent, recovery, removal/detachment, and weight are not source facts.",
+      "disposition": "Retain published core effect values; keep operational fill explicitly inferred and route balance/implant lifecycle decisions to PPIA-03/PPIA-05/PPIA-11.",
+      "traceability": ["PPIA-03", "PPIA-05", "PPIA-11", "STAGE-A-A2", "SD-1007"]
+    },
+    {
+      "group_id": "PPIA-01-P1-ADVANCED-COMBAT-ITEMS",
+      "source_support_class": "source_table_effect_with_one_source_conflict_and_inferred_operational_fill",
+      "dataset": "expanded_items_all_genres.csv",
+      "count": 3,
+      "records": ["Taser", "Stun Gun", "Tranquilizer Gun"],
+      "source_support": "Items 1.PDF page 30 publishes Taser as 1d4 Lightning damage, 1 lb., 50 gp; Stun Gun as electric damage with range dependent on model, 2 lbs., 500 gp; and Tranquilizer Gun as knocking out biological targets, 3 lbs., 500 gp. Page 39 separately publishes a Police Equipment Taser as 1d6 non-lethal damage, stun for 1 round, 1 lb., 300 credits.",
+      "record_dispositions": [
+        {
+          "name": "Taser",
+          "finding": "source_conflict_two_published_variants",
+          "current_csv_issue": "The CSV uses the page-30 1d4 Lightning / 50 gp identity while its inferred 1-round stun matches the separate page-39 Police Equipment Taser. This conflates two source contexts.",
+          "recommendation": "Do not auto-merge. Preserve two source variants or a governed variant relationship distinguished by source context/currency/effect. Do not treat the page-39 stun as source text for the page-30 Taser."
+        },
+        {
+          "name": "Stun Gun",
+          "finding": "source_effect_partial_operational_details_missing",
+          "recommendation": "Preserve source effect/weight/cost and source statement that range is model-dependent. Keep 10-shot battery, 1-round stun, and fixed 30-ft range as non-source recommendations unless a controlling source is recovered."
+        },
+        {
+          "name": "Tranquilizer Gun",
+          "finding": "source_effect_partial_operational_details_missing",
+          "recommendation": "Preserve knockout effect/weight/cost. Keep six darts, one-hour unconsciousness, and 30/90-ft range as non-source recommendations unless a controlling source is recovered."
+        }
+      ],
+      "disposition": "Resolve the Taser source conflation as a variant/identity issue; preserve the other two as source-backed item identities with explicitly inferred operational details. Route final combat/balance values to PPIA-03/PPIA-11.",
+      "traceability": ["PPIA-03", "PPIA-11", "STAGE-A-A2", "SD-1007", "SD-1107"]
+    }
+  ],
+  "summary": {
+    "p1_high_core_rows_reviewed": 36,
+    "explicit_core_source_support_rows": 26,
+    "narrative_seed_only_rows": 7,
+    "source_fusion_core_support_rows": 3,
+    "source_conflicts_found": 1,
+    "automatic_identity_merges": 0,
+    "raw_csv_rows_modified": 0,
+    "owner_blockers": 0
+  }
+}
