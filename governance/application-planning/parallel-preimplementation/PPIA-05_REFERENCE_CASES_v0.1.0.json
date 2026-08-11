@@ -1,0 +1,229 @@
+{
+  "format": "multiversal-ppia05-species-form-reference-cases",
+  "version": "0.1.0",
+  "work_item": "PPIA-05",
+  "status": "design_acceptance_reference_set",
+  "inherits": "PPIA-05_SPECIES_FORMS_BIOLOGY_TAXONOMY_v0.1.0.json",
+  "policy": {
+    "source_facts_are_distinct_from_character_runtime_state": true,
+    "culture_is_automatic_biology": false,
+    "species_eligibility_proves_physiology": false,
+    "dataset_membership_proves_biology_ownership": false,
+    "automatic_identity_or_lineage_merge": false,
+    "shapeshifter_automatic_merge": false,
+    "unknown_source_value_uses_human_default": false,
+    "absence_of_incompatibility_means_universal_compatibility": false,
+    "synthetic_qa_records_are_canonical": false
+  },
+  "cases": [
+    {
+      "case_id": "PPIA05-RC-001",
+      "title": "Species Definition versus Character Species selection",
+      "kind": "contract_grounded",
+      "source_coordinate": "MV-IA-F004 + PPIA-05 taxonomy / species-definition and character-biological-selection",
+      "contexts": ["library_reference", "species_form_inspector", "character_creation_selection"],
+      "governed_facts": ["Reusable Species Definition remains source/version identity.", "Character selection stores stable references, accepted grants, rules-profile and pack-lock evidence without editing the Definition."],
+      "acceptance": ["Opening a Species Definition never fabricates a current Character body or Campaign state.", "Changing an authorized Character draft selection never rewrites source Species content."]
+    },
+    {
+      "case_id": "PPIA05-RC-002",
+      "title": "Culture and biology remain separate in ordinary Species sources",
+      "kind": "contract_grounded",
+      "source_coordinate": "Humans vAlpha.PDF; Dwarves vAlpha.PDF; Elves vAlpha.PDF; PPIA-05 source inventory section 7",
+      "contexts": ["species_form_inspector", "source_conflict_provenance"],
+      "governed_facts": ["Species documents can contain physical/biological facts beside culture, philosophy, belief, adventuring and NPC material."],
+      "acceptance": ["Inspector labels/source-routes biological and non-biological facets separately.", "Culture, philosophy, belief, profession or learned behavior never becomes immutable physiology solely because it is Species-local prose."]
+    },
+    {
+      "case_id": "PPIA05-RC-003",
+      "title": "Oaran mixed physiology, reproduction, habitat and culture are not flattened",
+      "kind": "contract_grounded",
+      "source_coordinate": "Oaran Species.PDF; PPIA-05 source inventory section 7",
+      "contexts": ["species_form_inspector", "morphology_body_plan", "source_conflict_provenance"],
+      "governed_facts": ["Oaran source mixes physiological facts, reproductive/sex traits, habitat affinity, appearance and social/cultural material in one prose document."],
+      "acceptance": ["Projection preserves each facet's source context instead of converting the whole document into biology.", "Unknown mechanical meaning is not invented from descriptive prose."]
+    },
+    {
+      "case_id": "PPIA05-RC-004",
+      "title": "Species Perk eligibility does not automatically prove physiology",
+      "kind": "guardrail",
+      "source_coordinate": "Species Perks.PDF; Species Perks(1).PDF; PPIA-05 taxonomy biological-trait-ability-definition",
+      "contexts": ["species_form_inspector", "character_creation_selection"],
+      "governed_facts": ["Species Perks include strongly biological and clearly learned/social/generalized perks.", "Species eligibility is ownership/selection context, not automatic physiology classification."],
+      "acceptance": ["Perk projection carries biology-ownership classification separately from Species eligibility.", "A Species-gated language, tradition, social, tactical or technology-linked grant is not shown as anatomy without explicit evidence."]
+    },
+    {
+      "case_id": "PPIA05-RC-005",
+      "title": "Mixed Species Elementalist Innate dataset does not auto-promote biology",
+      "kind": "guardrail",
+      "source_coordinate": "species_elementalist_and_innate_abilities_catalog.csv; PPIA-05_ABILITY_BIOLOGY_ROUTING_v0.1.0.json",
+      "contexts": ["species_form_inspector", "source_conflict_provenance"],
+      "governed_facts": ["The governed 2,203-row dataset contains 260 Species Perks, 539 Innate Abilities and 1,404 Elementalist rows."],
+      "acceptance": ["Dataset membership and adjacency create zero automatic Species/Form/biology ownership.", "Elementalist rows remain Ability-domain content unless explicit source evidence establishes a biological relationship."]
+    },
+    {
+      "case_id": "PPIA05-RC-006",
+      "title": "Lineage or subspecies relationship requires explicit source evidence",
+      "kind": "synthetic_qa",
+      "source_coordinate": "PPIA-05 taxonomy / lineage-subspecies-variant",
+      "contexts": ["species_form_inspector", "character_creation_selection", "source_conflict_provenance"],
+      "fixture_requirements": ["two Species/variant candidates share a name fragment, visual trait or source document but have no explicit governed relationship evidence"],
+      "acceptance": ["Relationship remains unresolved rather than auto-linked.", "Selection/compare cannot imply parent, descendant, sibling or compatibility solely from similarity."]
+    },
+    {
+      "case_id": "PPIA05-RC-007",
+      "title": "Mythragara Form Definition remains distinct from current active form",
+      "kind": "contract_grounded",
+      "source_coordinate": "Mythragara vAlpha2.PDF; PPIA-05 source inventory section 7; current-body-form-state",
+      "contexts": ["species_form_inspector", "shapeshifter", "character_current_body"],
+      "governed_facts": ["Mythragara source contains explicit shapeshifting mechanics, form availability, mental/sensory shifts, limitations and Form traits.", "Reusable Form identity is separate from a Character currently using a form."],
+      "acceptance": ["Inspecting an available Form does not activate it.", "Runtime form change records current state/history without altering reusable Form or Species identity."]
+    },
+    {
+      "case_id": "PPIA05-RC-008",
+      "title": "Shapeshifter pricing rows preserve zero automatic merges",
+      "kind": "guardrail",
+      "source_coordinate": "Innate Trees(3).PDF; scripts/analyze-ppia01-shapeshifter-pricing.py; PPIA-05 source inventory section 6",
+      "contexts": ["shapeshifter", "source_conflict_provenance"],
+      "governed_facts": ["There are 60 detailed Shapeshifter Ability rows and 57 pricing-only rows: Combat Forms 20/20, Environmental Adaptations 20/19, Utility Transformations 20/18.", "Name similarity and tier are review hints only."],
+      "acceptance": ["Pricing-only and detailed records remain separately attributable unless exact source evidence or governed recommendation resolves a pairing.", "No name, tier, order or similarity auto-merge is performed."]
+    },
+    {
+      "case_id": "PPIA05-RC-009",
+      "title": "Suula Adaptation acquisition, swapping and incompatibility remain governed state",
+      "kind": "contract_grounded",
+      "source_coordinate": "Suula.PDF; PPIA-05 source inventory section 7; transformation-adaptation-state",
+      "contexts": ["environmental_adaptation", "character_current_body"],
+      "governed_facts": ["Suula source contains active Adaptations, XP-purchased Adaptations, swapping, learning, incompatibilities, extremophile biology and visible markings."],
+      "acceptance": ["Known/acquired Adaptations remain distinct from currently active slots/state.", "Swap/acquisition validates sourced limits/costs/incompatibilities and appends history instead of rewriting Species source truth."]
+    },
+    {
+      "case_id": "PPIA05-RC-010",
+      "title": "Environment-based learned ability is not automatically a biological Adaptation",
+      "kind": "contract_grounded",
+      "source_coordinate": "Environment-Based Abilities.PDF; prestige_environment_and_special_ability_trees_catalog.csv; PPIA-05 source inventory sections 3 and 5",
+      "contexts": ["environmental_adaptation", "source_conflict_provenance"],
+      "governed_facts": ["The supporting 1,018-row environment/special dataset contains 296 Environment-Based Ability Collection rows spanning social, trade, technical, exploration and learned context as well as environment-specific capability language."],
+      "acceptance": ["Environment linkage alone never assigns biology ownership.", "Biological Adaptation requires explicit Species/Form/innate/body evidence or an owning transformation contract."]
+    },
+    {
+      "case_id": "PPIA05-RC-011",
+      "title": "Kola-Ha bioengineering Form is biological modification, not generic equipment",
+      "kind": "contract_grounded",
+      "source_coordinate": "Kola-Ha Bioengineering.PDF; Kola-Ha vAlpha2.PDF; PPIA-05 source inventory section 7",
+      "contexts": ["bioengineering", "species_form_inspector"],
+      "governed_facts": ["Kola-Ha Bioengineering defines Forms as biological systems that can be physical, sensory, psychic or environmental and may range from temporary Adaptations to permanent symbiotic evolution."],
+      "acceptance": ["Inspector routes Forms through biological-modification semantics.", "PPIA-03 Asset/cybernetic behavior is used only where source/rules explicitly model an Asset or installed object."]
+    },
+    {
+      "case_id": "PPIA05-RC-012",
+      "title": "Transformation Action commits form state and governed cost atomically",
+      "kind": "synthetic_qa",
+      "source_coordinate": "MV-IA-F006/F007 Action pipeline + PPIA-05 transformation mutation invariants",
+      "contexts": ["character_current_body", "shapeshifter"],
+      "fixture_requirements": ["authorized transformation Ability/Action", "eligible source Form", "governed Resource/cost when present", "current expected version"],
+      "acceptance": ["Transformation result and governed cost either both commit or neither commits.", "Failed unauthorized action does not reveal hidden forms/capabilities.", "Reusable Species/Form Definition remains unchanged."]
+    },
+    {
+      "case_id": "PPIA05-RC-013",
+      "title": "Source-unspecified anatomy does not become a human default",
+      "kind": "contract_grounded",
+      "source_coordinate": "PPIA-05 morphology-body-plan-anatomy and source guardrails",
+      "contexts": ["species_form_inspector", "morphology_body_plan"],
+      "governed_facts": ["Source absence is distinct from a sourced biological fact."],
+      "acceptance": ["Unknown limbs, organs, lifespan, metabolism, breathing or reproduction remain unknown/source-unspecified when not sourced.", "UI and validator do not silently synthesize normal-human anatomy."]
+    },
+    {
+      "case_id": "PPIA05-RC-014",
+      "title": "No stated incompatibility does not mean universal biological compatibility",
+      "kind": "contract_grounded",
+      "source_coordinate": "PPIA-05 biology-compatibility-limits",
+      "contexts": ["character_creation_selection", "bioengineering", "environmental_adaptation"],
+      "governed_facts": ["Compatibility requires explicit source/rule evidence.", "Absence of an incompatibility rule is not proof that every Form, host, modification or Adaptation is valid."],
+      "acceptance": ["Unknown compatibility remains unknown and routes to the owning validation policy.", "System never labels an unsupported combination compatible merely to enable a selection."]
+    },
+    {
+      "case_id": "PPIA05-RC-015",
+      "title": "Hidden forms and vulnerabilities do not leak through aggregates",
+      "kind": "synthetic_qa",
+      "source_coordinate": "MV-IA-F020/F021 + PPIA-05 knowledge-visibility-projection",
+      "contexts": ["species_form_inspector", "character_current_body"],
+      "fixture_requirements": ["viewer may see the Character/Species but not one hidden Form, weakness or transformation trigger"],
+      "acceptance": ["Counts, compare targets, facets, warnings, action menus, exports, diagnostics, notifications and AI context are computed after filtering.", "Failed operations do not reveal the hidden fact's existence."]
+    },
+    {
+      "case_id": "PPIA05-RC-016",
+      "title": "Playable creature conversion hands into Character construction without relabeling the creature",
+      "kind": "contract_grounded",
+      "source_coordinate": "PPIA-02 Playable Conversion + MV-IA-F004 + PPIA-05 character-biological-selection",
+      "contexts": ["playable_creature_conversion", "character_creation_selection"],
+      "governed_facts": ["Source creature, playable species/form draft and Character instance remain separate identities.", "Conversion preserves retained, normalized, excluded and unlocked provenance."],
+      "acceptance": ["Conversion creates/updates a governed Character/species draft rather than mutating the original creature Definition.", "Linked Abilities remain references instead of copied/forked rule text."]
+    },
+    {
+      "case_id": "PPIA05-RC-017",
+      "title": "Temporary Effects Conditions equipment and environment do not rewrite source biology",
+      "kind": "contract_grounded",
+      "source_coordinate": "PPIA-05 culture_biology_separation + mutation_invariants; PPIA-03 cross-domain handoff",
+      "contexts": ["character_current_body", "species_form_inspector"],
+      "governed_facts": ["Temporary Effects, temporary Conditions, equipment and Campaign environment are non-biology facets unless a separate source-backed transformation/modification contract says otherwise."],
+      "acceptance": ["Current capability may change while source Species/Form facts remain stable.", "Removing a temporary Effect/equipment/environmental constraint does not require source-definition repair."]
+    },
+    {
+      "case_id": "PPIA05-RC-018",
+      "title": "Ambiguous network transformation resolves by operation-status lookup",
+      "kind": "synthetic_qa",
+      "source_coordinate": "MV-IA-F021 recovery + PPIA-05 provenance-history-recovery",
+      "contexts": ["character_current_body", "environmental_adaptation", "bioengineering"],
+      "fixture_requirements": ["client loses response after submitting idempotent transformation, Adaptation swap or bioengineering mutation", "server may already have committed"],
+      "acceptance": ["Client queries operation ID/status before retry.", "Retry reuses idempotency identity and cannot duplicate form changes, costs, Adaptation swaps, modification state or history entries."]
+    },
+    {
+      "case_id": "PPIA05-RC-019",
+      "title": "Accessible nonvisual Species Form selection comparison and transformation",
+      "kind": "synthetic_qa",
+      "source_coordinate": "MV-IA-F022 + PPIA-05 accessibility invariants",
+      "contexts": ["species_form_inspector", "character_creation_selection", "character_current_body", "environmental_adaptation"],
+      "fixture_requirements": ["keyboard-only and screen-reader user compares Species/Forms, reads morphology, selects an eligible Form, validates an Adaptation and completes a transformation/recovery flow"],
+      "acceptance": ["No required step depends on color, drag, hover, animation, silhouette recognition or body-diagram pointing.", "Morphology, prerequisites, active-form state, compatibility, validation and authoritative result are available as labeled text/semantics."]
+    },
+    {
+      "case_id": "PPIA05-RC-020",
+      "title": "Source conflict and recommendation remain visible without automatic canonical resolution",
+      "kind": "contract_grounded",
+      "source_coordinate": "PPIA-01 source-fact/inference/recommendation boundary + PPIA-05 provenance-history-recovery",
+      "contexts": ["source_conflict_provenance", "species_form_inspector"],
+      "governed_facts": ["Source fact, source absence, inference/recommendation and conflict remain distinguishable.", "Same-name/tier/similarity evidence may aid review but does not create canonical identity or mechanics."],
+      "acceptance": ["Inspector exposes authorized source coordinates and conflict/recommendation status without silently choosing a winner.", "Governance proposal remains reversible/attributable and does not mutate raw PDF/CSV source."]
+    }
+  ],
+  "summary": {
+    "cases": 20,
+    "contract_grounded_cases": 12,
+    "synthetic_qa_cases": 5,
+    "guardrail_cases": 3,
+    "canonical_synthetic_records": 0,
+    "required_coverage": [
+      "definition_character_selection",
+      "culture_biology_separation",
+      "mixed_source_facet_separation",
+      "species_perk_ownership_classification",
+      "mixed_ability_dataset_boundary",
+      "lineage_evidence",
+      "form_definition_current_state",
+      "shapeshifter_zero_auto_merge",
+      "adaptation_acquisition_swap",
+      "environment_ability_boundary",
+      "bioengineering_symbiosis",
+      "transformation_atomicity",
+      "unknown_anatomy",
+      "compatibility_unknown",
+      "hidden_biology_aggregates",
+      "playable_conversion_handoff",
+      "temporary_state_source_boundary",
+      "network_recovery",
+      "accessibility",
+      "source_conflict_provenance"
+    ]
+  }
+}
