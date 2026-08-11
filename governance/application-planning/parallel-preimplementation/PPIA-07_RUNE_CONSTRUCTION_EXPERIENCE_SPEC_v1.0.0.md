@@ -257,7 +257,7 @@ The player must **not** receive predecision:
 - hidden setting-local magic rules;
 - AI-generated effect decoding or GM-approval prediction.
 
-Blindness is enforced server-side through projection, not by sending effect data to the client and visually hiding it.
+Blindness is enforced through server-side role projection, not by sending effect data to the client and visually hiding it.
 
 ### 11.2 Blind submission states
 
