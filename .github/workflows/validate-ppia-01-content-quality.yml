@@ -1,0 +1,68 @@
+name: Validate PPIA-01 Content Quality
+
+on:
+  pull_request:
+    paths:
+      - 'Csv.zip'
+      - 'governance/object-system/csv-intake/**'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-01_CSV_CONTENT_QUALITY_AUDIT_FRAME.md'
+      - 'scripts/audit-ppia01-csv-content-quality.py'
+      - 'scripts/run-full-csv-registry-reconciliation.py'
+      - '.github/workflows/validate-ppia-01-content-quality.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Reproduce final 19,199-row registry reconciliation
+        run: python scripts/run-full-csv-registry-reconciliation.py
+
+      - name: Generate PPIA-01 CSV quality baseline
+        run: |
+          rm -rf build/ppia01-content-quality
+          mkdir -p build/ppia01-content-quality
+          python scripts/audit-ppia01-csv-content-quality.py \
+            --output build/ppia01-content-quality/baseline.json \
+            | tee build/ppia01-content-quality/summary.json
+
+      - name: Verify deterministic audit output
+        run: |
+          python scripts/audit-ppia01-csv-content-quality.py \
+            --output build/ppia01-content-quality/baseline-second.json \
+            > build/ppia01-content-quality/summary-second.json
+          cmp build/ppia01-content-quality/baseline.json build/ppia01-content-quality/baseline-second.json
+          python - <<'PY'
+          import json
+          report=json.load(open('build/ppia01-content-quality/baseline.json',encoding='utf-8'))
+          assert report['format']=='multiversal-ppia01-csv-content-quality-baseline'
+          assert report['summary']['datasets']==20
+          assert report['summary']['rows']==19199
+          assert report['sourceAuthority']['finalRegistryWorkstream']=='8E-009L63'
+          assert report['sourceAuthority']['ownerDelegationStatus']=='approved-and-active'
+          assert len(report['highPrioritySourceGapRows'])==report['summary']['highPrioritySourceGapRows']
+          print(json.dumps(report['summary'],sort_keys=True))
+          PY
+
+      - name: Verify tracked checkout was not mutated
+        run: git diff --exit-code
+
+      - name: Upload exact audit evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: ppia-01-csv-content-quality-baseline
+          path: |
+            build/ppia01-content-quality/baseline.json
+            build/ppia01-content-quality/summary.json
+          retention-days: 30
