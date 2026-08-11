@@ -1,0 +1,125 @@
+{
+  "format": "multiversal-ppia01-unresolved-source-register",
+  "version": "0.1.0",
+  "work_item": "PPIA-01",
+  "status": "active_bounded_unresolved_register",
+  "authority": {
+    "current_content_authority": "8E-009 CSV-first governed registry",
+    "source_archive": "Csv.zip",
+    "source_archive_sha256": "2f621e71cbcf614317189c38ffe7d670ce13dd9e7ed20bdf35438377f4af061b",
+    "datasets": 20,
+    "rows": 19199,
+    "standing_owner_delegation": "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json"
+  },
+  "summary": {
+    "current_registry_owner_eye_records": 1,
+    "current_registry_source_unspecified_capacity_records": 7,
+    "current_registry_source_reference_only_records": 3,
+    "historical_provenance_audit_questions": 1,
+    "current_registry_explicit_high_priority_gaps_without_closure": 0
+  },
+  "records": [
+    {
+      "id": "PPIA-01-USR-001",
+      "kind": "authored_completion_source_too_thin",
+      "priority": "P0-owner-eye-useful",
+      "blocking": false,
+      "dataset": "expanded_symbiotes_and_cybernetics_all_genres.csv",
+      "source_row": 9,
+      "name": "Quantum Weaver",
+      "source_pdf": "Symbiotes 11-9-24(3).PDF",
+      "source_support": "The retained source supports only that Quantum Weaver feeds on energy fields and needs exposure to power sources.",
+      "unsupported_as_source_fact": [
+        "60-ft energy sensing",
+        "3 stored energy charges",
+        "1d6 energy discharge per charge",
+        "30-ft discharge range",
+        "action activation",
+        "Conduit Path / Probability Path progression",
+        "5/10/15 SP unlocks",
+        "uncontrolled drain/random discharge drawback",
+        "1.5 lb integrated mass"
+      ],
+      "disposition": "Retain existing completion only as explicitly non-source-authored and reversible under standing owner delegation; route mechanics to PPIA-11, PPIA-05, and PPIA-03.",
+      "owner_action": "Optional. If another controlling Quantum Weaver source exists, identify or supply it; otherwise no owner action is required.",
+      "traceability": ["PPIA-03", "PPIA-05", "PPIA-11", "STAGE-A-A2", "SD-1007", "SD-1107"]
+    },
+    {
+      "id": "PPIA-01-USR-002",
+      "kind": "source_unspecified_capacity_group",
+      "priority": "P2-normal",
+      "blocking": false,
+      "dataset": "weapons_and_ammo.csv",
+      "records": [
+        "Laser Sniper Rifle",
+        "Plasma Rifle",
+        "Plasma Shotgun",
+        "Ion Blaster",
+        "Handheld Laser",
+        "Plasma Pistol",
+        "Sonic Rifle"
+      ],
+      "unresolved_fields": ["Standard Capacity", "Extended Clip", "High-Capacity Mag"],
+      "disposition": "Preserve as source-unspecified rather than invent magazine values solely to eliminate blanks; resolve in PPIA-03/PPIA-11 only if implementation requires explicit capacity rules.",
+      "owner_action": "None unless the owner has another source giving capacities.",
+      "traceability": ["PPIA-03", "PPIA-11", "STAGE-A-A2", "SD-1007"]
+    },
+    {
+      "id": "PPIA-01-USR-003",
+      "kind": "source_reference_only_group",
+      "priority": "P3-source-limited",
+      "blocking": false,
+      "dataset": "weapons_and_ammo.csv",
+      "records": [
+        {
+          "name": "Energy Sniper Rifle",
+          "source_note": "Ammo-only name shown in source; may correspond to Laser Sniper Rifle."
+        },
+        {
+          "name": "Plasma Carbine",
+          "source_note": "Ammo-only weapon name shown in source."
+        },
+        {
+          "name": "Cryo Blaster",
+          "source_note": "Ammo-only weapon name shown in source."
+        }
+      ],
+      "unresolved_fields": ["Damage", "Range", "Weight", "Cost", "Special Rules"],
+      "disposition": "Keep as source/reference-only names. Do not promote into invented full weapon definitions and do not auto-merge identities.",
+      "owner_action": "None unless another controlling weapon-stat source exists.",
+      "traceability": ["PPIA-03", "STAGE-A-A2", "SD-1007", "SD-1107"]
+    },
+    {
+      "id": "PPIA-01-USR-004",
+      "kind": "historical_provenance_audit_closure_status",
+      "priority": "P1-governance-followup",
+      "blocking": false,
+      "current_registry_gap_count": 0,
+      "evidence_package": "Multiversal_8E-008G_Source_Coverage_and_Provenance_Audit_v0.1.0.zip",
+      "evidence_package_sha256": "4a98058b03d3ced252f01dac3026997de2dfd0b064be6a691debb93a0c485fff",
+      "historical_baseline": "mv.freeze.8e008a.0.1.3",
+      "historical_result": {
+        "status": "BLOCKED",
+        "authoritative_records_provenance_accounted": 158189,
+        "foundational_inventory_records_accounted": 1347,
+        "source_identifier_dialects_classified": 168,
+        "page_primary_structural_candidates": 7144,
+        "candidates_without_formal_disposition": 2766,
+        "unclassified_candidates": 2039,
+        "domain_classified_candidates": 727,
+        "required_next_at_that_time": "8E-008G-R1 - Source Boundary and Provenance Closure"
+      },
+      "later_authority": "The current roadmap declares 8E-009 Canonical Object Template and CSV-First Program complete with 20 datasets / 19,199 promoted rows / zero unprocessed rows. The current full-registry contract declares Csv.zip the primary structured source and validates all 19,199 CSV rows.",
+      "disposition": "Do not reinterpret the historical 2,766 candidates as 2,766 current missing mechanics. No repository evidence located so far proves the named 8E-008G-R1 rerun reached zero UNBOUND_SOURCE_SECTION candidates. Preserve this as a historical provenance-closure question separate from the current CSV content-quality gap count.",
+      "owner_action": "None presently. If an 8E-008G-R1 completion package or later explicit supersession record exists outside the repository, supplying it would close this historical provenance question.",
+      "traceability": ["PPIA-01", "STAGE-A-A2", "SD-1107"]
+    }
+  ],
+  "boundaries": {
+    "raw_csv_modified": false,
+    "automatic_identity_merge_authorized": false,
+    "source_absence_may_be_filled_as_source_fact": false,
+    "historical_2766_candidates_are_current_missing_mechanics": false,
+    "canonical_promotion_authorized_by_this_register": false
+  }
+}
