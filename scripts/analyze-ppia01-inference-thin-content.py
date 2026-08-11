@@ -37,6 +37,38 @@ METADATA_INFERENCE_FIELDS = {
     "GM_Notes",
 }
 
+# These fields materially change runtime behavior. Repeated lifecycle, crafting,
+# origin, weight, and annotation inference should not outrank actual mechanics.
+CORE_MECHANICAL_FIELDS = {
+    "Mechanical Benefit",
+    "Damage or Healing",
+    "Range or Area",
+    "Activation",
+    "Uses or Capacity",
+    "Progression or Upgrade Path",
+    "Milestone or Unlock",
+    "Failure or Drawback",
+    "Duration",
+    "Save or Check",
+    "Recovery or Adaptation",
+    "Recharge or Refill",
+    "Damage_or_Healing",
+    "Save_or_Check",
+    "Range_or_Area",
+    "Uses_or_Charges",
+    "Maximum_Charge_Capacity",
+    "Recharge_or_Refill",
+    "Defense_and_Durability",
+    "Damage",
+    "Range",
+    "Uses",
+    "Capacity",
+    "Special Rules",
+    "Mechanical_Effect",
+    "Effect",
+    "Mechanics",
+}
+
 NAME_COLUMNS = {
     "magic_arcane_and_faction_ability_trees_catalog.csv": "Ability_Name",
     "profession_and_crafting_ability_trees_catalog.csv": "Ability_Name",
@@ -135,11 +167,21 @@ def classify_inference(dataset: str, matches: list[dict[str, str]]) -> str:
     return "delegated_inference_other"
 
 
-def mechanical_priority(category: str, matches: list[dict[str, str]]) -> str:
+def core_mechanical_fields(matches: list[dict[str, str]]) -> list[str]:
+    return [item["field"] for item in matches if item["field"] in CORE_MECHANICAL_FIELDS]
+
+
+def mechanical_priority(category: str, core_count: int) -> str:
     if category == "source_recovery_review":
         return "P0-owner-eye-useful"
     if category == "mechanical_interpretation_review":
-        return "P1-high" if len(matches) >= 3 else "P2-normal"
+        if core_count >= 3:
+            return "P1-high-core"
+        if core_count == 2:
+            return "P2-substantive-core"
+        if core_count == 1:
+            return "P3-bounded-core"
+        return "P4-lifecycle-metadata-only"
     if category in {"systematic_magic_completion", "systematic_base_engineering_completion"}:
         return "P3-systematic"
     if category in {"delegated_balance_estimate", "delegated_missing_field_completion", "delegated_metadata_inference"}:
@@ -212,7 +254,8 @@ def main() -> int:
 
                 if matches:
                     category = classify_inference(dataset, matches)
-                    priority = mechanical_priority(category, matches)
+                    core_fields = core_mechanical_fields(matches)
+                    priority = mechanical_priority(category, len(core_fields))
                     category_counts[category] += 1
                     dataset_counts[dataset] += 1
                     priority_counts[priority] += 1
@@ -227,6 +270,8 @@ def main() -> int:
                         "sourcePage": values.get("Source_Page", values.get("Source_Page_or_Block", "")),
                         "category": category,
                         "priority": priority,
+                        "coreMechanicalFieldCount": len(core_fields),
+                        "coreMechanicalFields": core_fields,
                         "matchingFields": [item["field"] for item in matches],
                         "matchingText": [item["value"] for item in matches],
                         "affectedTranches": AFFECTED_TRANCHES[dataset],
@@ -253,8 +298,10 @@ def main() -> int:
     blank_cells = sum(len(row["blankFields"]) for row in structural_blanks)
     source_recovery = [row for row in rows_out if row["category"] == "source_recovery_review"]
     mechanical = [row for row in rows_out if row["category"] == "mechanical_interpretation_review"]
-    high_mechanical = [row for row in mechanical if row["priority"] == "P1-high"]
-    normal_mechanical = [row for row in mechanical if row["priority"] == "P2-normal"]
+    p1 = [row for row in mechanical if row["priority"] == "P1-high-core"]
+    p2 = [row for row in mechanical if row["priority"] == "P2-substantive-core"]
+    p3 = [row for row in mechanical if row["priority"] == "P3-bounded-core"]
+    p4 = [row for row in mechanical if row["priority"] == "P4-lifecycle-metadata-only"]
 
     expected_categories = {
         "delegated_balance_estimate": 8554,
@@ -269,8 +316,11 @@ def main() -> int:
         raise SystemExit(f"unexpected inference category counts: {dict(category_counts)}")
     if len(rows_out) != 10594:
         raise SystemExit(f"expected 10,594 inference/estimate rows; found {len(rows_out)}")
-    if len(high_mechanical) != 111 or len(normal_mechanical) != 420:
-        raise SystemExit(f"mechanical-priority split changed: high={len(high_mechanical)} normal={len(normal_mechanical)}")
+    if (len(p1), len(p2), len(p3), len(p4)) != (36, 73, 183, 239):
+        raise SystemExit(
+            "mechanical core-impact split changed: "
+            f"P1={len(p1)} P2={len(p2)} P3={len(p3)} P4={len(p4)}"
+        )
     if len(source_recovery) != 1 or source_recovery[0]["name"] != "Quantum Weaver":
         raise SystemExit(f"source-recovery queue is no longer the single Quantum Weaver record: {source_recovery}")
     if len(structural_blanks) != 33 or blank_cells != 76:
@@ -285,7 +335,7 @@ def main() -> int:
 
     report = {
         "format": "multiversal-ppia01-inference-thin-content-triage",
-        "version": "0.2.0",
+        "version": "0.3.0",
         "source": {
             "archive": "Csv.zip",
             "archiveSha256": snapshot["archiveSha256"],
@@ -305,8 +355,10 @@ def main() -> int:
             "systematicMagicCompletionRows": category_counts["systematic_magic_completion"],
             "systematicBaseEngineeringCompletionRows": category_counts["systematic_base_engineering_completion"],
             "mechanicalInterpretationReviewRows": len(mechanical),
-            "highPriorityMechanicalReviewRows": len(high_mechanical),
-            "normalPriorityMechanicalReviewRows": len(normal_mechanical),
+            "p1HighCoreMechanicalRows": len(p1),
+            "p2SubstantiveCoreMechanicalRows": len(p2),
+            "p3BoundedCoreMechanicalRows": len(p3),
+            "p4LifecycleMetadataOnlyRows": len(p4),
             "sourceRecoveryReviewRows": len(source_recovery),
             "structuralBlankRows": len(structural_blanks),
             "structuralBlankCells": blank_cells,
@@ -317,8 +369,10 @@ def main() -> int:
         "matchingFieldCounts": dict(field_counts.most_common()),
         "affectedTrancheCounts": dict(sorted(tranche_counts.items())),
         "ownerAttentionCandidates": source_recovery,
-        "highPriorityMechanicalReview": high_mechanical,
-        "normalPriorityMechanicalReview": normal_mechanical,
+        "p1HighCoreMechanicalReview": p1,
+        "p2SubstantiveCoreMechanicalReview": p2,
+        "p3BoundedCoreMechanicalReview": p3,
+        "p4LifecycleMetadataOnlyReview": p4,
         "structuralBlankRows": structural_blanks,
         "policy": {
             "delegated_balance_estimate": "Already within standing owner delegation; retain and route numerical balance review to PPIA-11 unless another defect signal exists.",
@@ -326,7 +380,10 @@ def main() -> int:
             "delegated_metadata_inference": "Low-impact metadata/attunement/weight inference; retain unless downstream implementation exposes a contradiction.",
             "systematic_magic_completion": "Bulk spell normalization based on source effect scale plus governed Magic rules; review as a system, not 385 isolated source failures.",
             "systematic_base_engineering_completion": "Bulk construction/hardness/crafting completion; route balance values to PPIA-11 and authoring semantics to PPIA-12/PPIA-08.",
-            "mechanical_interpretation_review": "Material gameplay behavior was inferred; prioritize rows with three or more inferred fields before normal two-or-fewer-field rows.",
+            "P1-high-core": "Three or more inferred runtime-mechanical fields; bounded source review belongs in PPIA-01 before closure.",
+            "P2-substantive-core": "Two inferred runtime-mechanical fields; preserve and route to the consuming feature tranche unless another source-risk signal exists.",
+            "P3-bounded-core": "One inferred runtime-mechanical field; preserve as an explicit recommendation and review during consuming feature/balance work.",
+            "P4-lifecycle-metadata-only": "Inference is confined to lifecycle/recovery/removal/weight/crafting/annotation context rather than core runtime effect; defer unless implementation exposes a conflict.",
             "source_recovery_review": "Exact source is too thin to support the inferred mechanics; keep recommendations explicitly non-source and surface for owner eye when useful.",
             "structural_blanks": "Blank applicability is classified before repair. Ammo-only reference rows remain intentionally thin and are not promoted into invented full weapon records.",
         },
@@ -341,12 +398,14 @@ def main() -> int:
     with csv_output.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.writer(handle)
         writer.writerow([
-            "priority", "category", "dataset", "source_row", "record_id", "name", "source_pdf", "source_page",
+            "priority", "category", "core_mechanical_field_count", "core_mechanical_fields",
+            "dataset", "source_row", "record_id", "name", "source_pdf", "source_page",
             "matching_fields", "matching_text", "affected_tranches", "affected_surfaces",
         ])
         for row in rows_out:
             writer.writerow([
-                row["priority"], row["category"], row["dataset"], row["sourceRow"], row["recordId"], row["name"],
+                row["priority"], row["category"], row["coreMechanicalFieldCount"],
+                " | ".join(row["coreMechanicalFields"]), row["dataset"], row["sourceRow"], row["recordId"], row["name"],
                 row["sourcePdf"], row["sourcePage"], " | ".join(row["matchingFields"]), " | ".join(row["matchingText"]),
                 " | ".join(row["affectedTranches"]), " | ".join(row["affectedSurfaces"]),
             ])
