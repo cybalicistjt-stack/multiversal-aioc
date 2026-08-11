@@ -1,0 +1,26 @@
+name: Validate PPIA-04 Foundation
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-04_*'
+      - 'scripts/validate-ppia04-foundation.py'
+      - '.github/workflows/validate-ppia-04-foundation.yml'
+  push:
+    branches:
+      - governance/ppia-04-vehicle-mecha-starship
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-04_*'
+      - 'scripts/validate-ppia04-foundation.py'
+      - '.github/workflows/validate-ppia-04-foundation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia04-foundation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate PPIA-04 source inventory, taxonomy, and R1 routing
+        run: python scripts/validate-ppia04-foundation.py
