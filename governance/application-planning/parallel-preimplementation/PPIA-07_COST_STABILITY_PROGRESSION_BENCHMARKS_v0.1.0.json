@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "PPIA-07",
+  "title": "Rune Construction cost/stability/progression deterministic benchmarks",
+  "status": "design_acceptance_candidate",
+  "contract": "PPIA-07_COST_COMPLEXITY_STABILITY_PROGRESSION_CONTRACT_v0.1.0.json",
+  "authority_note": "Expected SCI/CSL/progression values are proposal-stage deterministic QA expectations for the candidate contract. They are not source-derived power, mana, XP, failure-probability or balance values.",
+  "cases": [
+    {"case_id":"PPIA07-CSP-001","title":"Single atom literacy","expression":"SOURCE[payload=light]","execution_context":"cast","expected":{"SCI":1,"SCI_band":"simple","CSL":0,"CSL_band":"baseline","recommended_band":0},"acceptance":"A single payload source stays easy to explain and does not acquire a resource or failure number from syntax alone."},
+    {"case_id":"PPIA07-CSP-002","title":"Directed sequential construction","expression":"SOURCE[payload=force]>MOVE[direction=away]","execution_context":"cast","expected":{"SCI":4,"SCI_band":"standard","CSL":0,"CSL_band":"baseline","recommended_band":1},"acceptance":"Optional directional detail increases explainability load without implying more power or instability."},
+    {"case_id":"PPIA07-CSP-003","title":"Simple shaped payload","expression":"SOURCE[payload=fire]>SHAPE[geometry=cone]","execution_context":"cast","expected":{"SCI":3,"SCI_band":"simple","CSL":0,"CSL_band":"baseline","recommended_band":0},"acceptance":"Source-plus-shape remains a small reusable construction; its actual fire power/cost comes from owning references."},
+    {"case_id":"PPIA07-CSP-004","title":"Triggered ward","expression":"SENSE[payload=intrusion]@WARD[payload=force]","execution_context":"inscribed","expected":{"SCI":4,"SCI_band":"standard","CSL":2,"CSL_band":"watch","recommended_band":2},"acceptance":"WHEN raises progression/stability attention while actual inscription materials/DC remain external adapters."},
+    {"case_id":"PPIA07-CSP-005","title":"Conditional grouped push","expression":"SENSE[payload=hostility]?(SOURCE[payload=force]>MOVE[direction=away])","execution_context":"cast","expected":{"SCI":7,"SCI_band":"advanced","CSL":2,"CSL_band":"watch","recommended_band":2},"acceptance":"Conditional logic and optional direction produce an advanced explainability score but no automatic failure chance."},
+    {"case_id":"PPIA07-CSP-006","title":"Parallel mixed-payload composite","expression":"(SOURCE[payload=light]>SHAPE[geometry=sphere])&WARD[payload=heat]","execution_context":"cast","expected":{"SCI":6,"SCI_band":"standard","CSL":2,"CSL_band":"watch","recommended_band":1},"acceptance":"WITH and a second payload add composition-stability load; final resource and balance values remain owning-rule inputs."},
+    {"case_id":"PPIA07-CSP-007","title":"Synchronized prepared macro","expression":"SOURCE[payload=signal]>LINK[channel=party]>LINK[target=ally]","execution_context":"prepared-macro","expected":{"SCI":6,"SCI_band":"standard","CSL":2,"CSL_band":"watch","recommended_band":3},"acceptance":"Two LINK atoms plus prepared-macro context require the highest proposal progression band even though SCI remains standard."},
+    {"case_id":"PPIA07-CSP-008","title":"Item-bound inscription","expression":"WARD[payload=heat]>BIND[anchor=item-surface]","execution_context":"item-bound","expected":{"SCI":4,"SCI_band":"standard","CSL":0,"CSL_band":"baseline","recommended_band":1},"acceptance":"Rune extension metrics do not transfer Item ownership; capacity/charge/material/DC values remain PPIA-03/crafting adapters."},
+    {"case_id":"PPIA07-CSP-009","title":"Expert nested reactive macro","expression":"((SOURCE[payload=fire]>SHAPE[geometry=cone])&WARD[payload=heat])@(SENSE[payload=intrusion]?LINK[target=ally])","execution_context":"prepared-macro","expected":{"SCI":15,"SCI_band":"expert","CSL":6,"CSL_band":"high-attention","recommended_band":3},"acceptance":"The builder shows decomposition and stability-review warnings; the contract still does not invent a failure percentage or damage result."},
+    {"case_id":"PPIA07-CSP-010","title":"Unresolved applicable resource adapter","expression":"SOURCE[payload=force]","execution_context":"cast","adapter_scenario":{"owning_rule_marks_required":["mana_ref"],"mana_ref":"unresolved"},"expected_behavior":"authoritative_execution_blocked_without_default","acceptance":"No universal mana default is substituted; draft inspection remains possible and the unresolved input is shown."},
+    {"case_id":"PPIA07-CSP-011","title":"Source-scoped adapter value retained","expression":"SOURCE[payload=force]","execution_context":"cast","adapter_scenario":{"mana_ref":"resolved:owning-rule-value"},"expected_behavior":"preserve_external_value_without_repricing","acceptance":"A resolved source/owning-rule mana value is displayed and consumed as scoped input, not converted through a rune-wide formula."},
+    {"case_id":"PPIA07-CSP-012","title":"Counterplay remains external","expression":"SOURCE[payload=force]>MOVE[direction=away]","execution_context":"cast","expected_behavior":"valid_construction_exports_resist_and_counter_hooks","acceptance":"Grammar/SCI/CSL validity does not bypass resistance, counterspell or disruption rules."},
+    {"case_id":"PPIA07-CSP-013","title":"Progression-price conflict retained","expression":"SENSE[payload=intrusion]@WARD[payload=force]","execution_context":"prepared-macro","expected_behavior":"recommended_band_without_silent_XP_price_selection","acceptance":"The Scripts & Macros progression conflict remains provenance-visible; the candidate band does not silently choose one source XP price."},
+    {"case_id":"PPIA07-CSP-014","title":"Permission-filtered hidden resource/reference","expression":"LINK[target=hidden-ward-node]","execution_context":"cast","expected_behavior":"filter_before_metrics_labels_resource_preview_or_AI_context","acceptance":"Structural syntax may be scored without revealing hidden target/resource facts; labels, existence and external values remain filtered."},
+    {"case_id":"PPIA07-CSP-015","title":"Idempotent inscription recovery","expression":"WARD[payload=force]>BIND[anchor=item-surface]","execution_context":"item-bound","expected_behavior":"operation_status_and_version_checked_before_same_operation_id_retry","acceptance":"Ambiguous writes do not duplicate resource consumption or the inscription."},
+    {"case_id":"PPIA07-CSP-016","title":"Invalid grammar receives no authoritative metrics","expression":"SOURCE[payload=force]>MOVE[direction=away]&WARD[payload=force]","execution_context":"cast","expected_behavior":"invalid_grammar_no_authoritative_SCI_CSL_cost_or_progression_decision","acceptance":"The parser requires explicit grouping before any authoritative cost/stability/progression decision is made."}
+  ],
+  "coverage": {
+    "deterministic_metric_cases": 9,
+    "adapter_and_guardrail_cases": 7,
+    "SCI_bands": ["simple","standard","advanced","expert"],
+    "CSL_bands": ["baseline","watch","high-attention"],
+    "progression_bands_exercised": [0,1,2,3],
+    "required_boundaries": ["no-universal-cost", "no-failure-probability", "PPIA-03-item-ownership", "PPIA-11-final-balance", "F020-permission", "F021-recovery", "source-progression-conflict"]
+  },
+  "policy": {
+    "SCI_is_power": false,
+    "CSL_is_failure_probability": false,
+    "unresolved_required_adapter_gets_default": false,
+    "source_specific_value_is_repriced_automatically": false,
+    "valid_construction_bypasses_counterplay": false,
+    "recommended_band_selects_source_XP_price": false,
+    "hidden_values_may_leak_in_preview": false,
+    "retry_may_duplicate_resource_consumption": false,
+    "invalid_grammar_gets_authoritative_cost": false
+  }
+}
