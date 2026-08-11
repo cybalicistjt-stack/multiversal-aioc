@@ -88,7 +88,7 @@ def main() -> None:
         require(primary[field] == p8[field], f"compact status/PPIA-08 checkpoint mismatch: {field}")
     require(primary["latest_pushed_commit"] == p8["latest_pushed_commit"] and primary["pull_request"] == p8["pull_request"], "compact PPIA-08 commit/PR mismatch")
 
-    for value in ("34 core runes", "16 blind rune-play cases", "48 blocking acceptance requirements", P7_FINAL_HEAD, P7_COMPLETION_MERGE, "PPIA-08"):
+    for value in ("34 core runes", "16 blind rune-play reference cases", "48 blocking final acceptance requirements", P7_FINAL_HEAD, P7_COMPLETION_MERGE, "PPIA-08"):
         require(value.lower() in report.lower(), f"PPIA-07 completion report missing {value!r}")
     require("roadmap" in pointer["selection_reason"].lower() and "pending" in pointer["selection_reason"].lower(), "pointer must explain batched roadmap projection")
     require("grid" in pointer["selection_reason"].lower() and "dungeon" in pointer["selection_reason"].lower(), "pointer must preserve owner map addition")
