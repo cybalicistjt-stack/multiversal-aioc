@@ -1,0 +1,26 @@
+name: Validate PPIA-03 Foundation
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-03_*'
+      - 'scripts/validate-ppia03-foundation.py'
+      - '.github/workflows/validate-ppia-03-foundation.yml'
+  push:
+    branches:
+      - governance/ppia-03-items-equipment-inventory
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-03_*'
+      - 'scripts/validate-ppia03-foundation.py'
+      - '.github/workflows/validate-ppia-03-foundation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia03-foundation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate PPIA-03 source inventory, taxonomy, and R1 routing
+        run: python scripts/validate-ppia03-foundation.py
