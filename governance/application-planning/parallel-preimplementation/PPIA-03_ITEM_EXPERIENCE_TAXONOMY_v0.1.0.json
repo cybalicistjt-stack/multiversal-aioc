@@ -1,0 +1,154 @@
+{
+  "format": "multiversal-ppia03-item-experience-taxonomy",
+  "version": "0.1.0",
+  "work_item": "PPIA-03",
+  "status": "foundation-taxonomy",
+  "authority": {
+    "runtime_baseline": "MV-IA-F008 Inventory, Ownership, and Shared Assets",
+    "universal_object_baseline": "MV-IA-F002 Universal Object Experience",
+    "structured_content_authority": "8E-009 CSV-first registry, 20 datasets / 19,199 rows",
+    "direct_item_csv_datasets": 9,
+    "direct_item_csv_rows": 5389,
+    "retained_item_pdfs": 13,
+    "retained_item_pdf_pages": 218,
+    "obsolete_semantic_database_is_content_authority": false,
+    "r1_structural_candidates_are_canonical_items": false
+  },
+  "identity_layers": [
+    {
+      "id": "definition",
+      "name": "Reusable Item Definition",
+      "owns": ["stable source identity", "version", "intrinsic mechanics", "source provenance", "allowed capabilities"],
+      "must_not_own": ["Campaign ownership", "current charges", "current durability", "current container", "equipped state"]
+    },
+    {
+      "id": "definition-variant",
+      "name": "Definition Variant / Configuration",
+      "owns": ["source-backed variant relationship", "version alternative", "compatible modification profile", "visible conflict alternative"],
+      "must_not_own": ["live possession", "automatic identity merge"]
+    },
+    {
+      "id": "asset-instance",
+      "name": "Asset Instance",
+      "owns": ["Campaign-scoped instance identity", "definition/version snapshot", "lineage anchor"],
+      "must_not_own": ["source Definition edits"]
+    },
+    {
+      "id": "authority-relations",
+      "name": "Ownership / Custody / Possession / Control / Access",
+      "owns": ["ownership interests", "custody assignment", "physical possession", "control grant", "usage/access grant"],
+      "rules": ["ownership does not imply custody", "custody does not imply ownership", "equipment does not imply ownership"]
+    },
+    {
+      "id": "location-containment",
+      "name": "Location and Containment",
+      "owns": ["location reference", "container membership", "nesting", "capacity/compatibility constraints"],
+      "rules": ["containment graph is acyclic", "hidden contents are filtered before aggregates"]
+    },
+    {
+      "id": "equipment-assignment",
+      "name": "Equipment Assignment",
+      "owns": ["slot", "handedness", "layer", "readiness", "quick access", "station", "attunement/bond assignment"],
+      "rules": ["assignment references an Asset Instance", "assignment does not transfer ownership"]
+    },
+    {
+      "id": "quantity-representation",
+      "name": "Quantity Lot / Stack / Ledger",
+      "owns": ["quantity", "unit", "lot lineage", "stack compatibility", "split/merge provenance"],
+      "rules": ["stacking is conditional, not universal fungibility", "currency model is profile-bound"]
+    },
+    {
+      "id": "runtime-state",
+      "name": "Mutable Runtime Item State",
+      "owns": ["current ammunition", "current charges", "durability", "condition", "damage", "reservation", "consumption state", "maintenance state"],
+      "rules": ["unknown is not zero", "source-unspecified capacity is not invented", "failed-before-commit actions do not consume"]
+    },
+    {
+      "id": "knowledge-state",
+      "name": "Identification / Reveal / Knowledge",
+      "owns": ["known identity", "known properties", "known value", "known drawback/curse", "known contents", "known provenance"],
+      "rules": ["authorization precedes projection", "unidentified does not erase true authoritative state"]
+    },
+    {
+      "id": "transaction-history",
+      "name": "Transaction, Lineage, and Provenance History",
+      "owns": ["acquisition", "transfer", "lending", "trade", "split", "merge", "consume", "equip", "repair", "craft", "salvage", "destruction", "source/history evidence"],
+      "rules": ["accepted durable commands/events change authoritative state", "history survives transformations according to lineage policy"]
+    }
+  ],
+  "presentation_profiles": [
+    "weapon",
+    "armor-protective-equipment",
+    "consumable",
+    "tool-general-device",
+    "ammunition-resource",
+    "container-storage",
+    "magic-special-item",
+    "computer-software",
+    "eva-frame-module",
+    "material-crafting-resource",
+    "living-sentient-item",
+    "symbiote-cybernetic-implant",
+    "modification-attachment",
+    "currency-treasury",
+    "loot-bundle-shop-offer"
+  ],
+  "context_views": [
+    "library-reference",
+    "item-inspector",
+    "character-inventory",
+    "container-tree",
+    "equipment-loadout",
+    "party-shared-assets",
+    "scene-loot-assets",
+    "shop-trade-transfer",
+    "combat-reload-consume",
+    "condition-durability-repair",
+    "crafting-salvage",
+    "gm-identification-reveal",
+    "provenance-history-conflict",
+    "accessible-nonvisual-equivalent"
+  ],
+  "source_guardrails": {
+    "taser": {
+      "state": "published-context-conflict",
+      "rule": "Do not auto-merge the two published Taser contexts. Present alternatives/variant provenance until governed resolution."
+    },
+    "source_unspecified_energy_capacity": {
+      "record_count": 7,
+      "rule": "Represent capacity as source-unspecified; do not coerce to zero, unlimited, or a fabricated magazine/charge count."
+    },
+    "ammo_reference_only_names": {
+      "record_count": 3,
+      "names": ["Energy Sniper Rifle", "Plasma Carbine", "Cryo Blaster"],
+      "rule": "Reference-only names do not create full weapon Definitions."
+    },
+    "recommendations": {
+      "rule": "Owner-delegated recommendations remain distinguishable from source-backed facts in Inspector, authoring, compare, export, and provenance."
+    }
+  },
+  "cross_domain_routes": {
+    "vehicle_mecha_spacecraft_components": "PPIA-04",
+    "host_biology_and_body_form_consequences": "PPIA-05",
+    "rune_item_construction_and_enchantment": "PPIA-07",
+    "campaign_scene_authoring_depth": "PPIA-08",
+    "faction_relationship_consequences": "PPIA-10",
+    "numerical_balance": "PPIA-11",
+    "world_specific_item_extensions": "PPIA-12"
+  },
+  "permission_invariants": [
+    "authorize before existence, search, counts, facets, aggregates, totals, container previews, history, provenance, or diagnostics",
+    "hidden container contents cannot leak through weight/value/count/capacity/empty-state side channels",
+    "GM authority does not imply unrelated Campaign-private or user-private access",
+    "AI/service projections are minimum necessary and proposal/read-only unless a separately authorized durable command is accepted"
+  ],
+  "mutation_invariants": [
+    "Definition inspection never mutates source content",
+    "equip/unequip never silently transfers ownership",
+    "transfer/lending/sharing explicitly states which authority relations change",
+    "split/merge/consume/repair/craft/salvage preserve lineage",
+    "mutations use idempotency and expected versions",
+    "offline authoritative inventory mutation is prohibited"
+  ],
+  "boundary": "This taxonomy is an implementation-ready design foundation. It does not create or promote canonical Item Definitions, mutate raw CSVs, implement application runtime, activate A2, or authorize release/deployment."
+}
