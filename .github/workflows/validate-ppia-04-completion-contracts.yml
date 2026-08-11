@@ -1,0 +1,30 @@
+name: Validate PPIA-04 Completion Contract
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-04_VEHICLE_MECHA_STARSHIP_EXPERIENCE_SPEC_v1.0.0.md'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-04_ACCEPTANCE_TRACEABILITY_MATRIX_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-04_COMPLETION_CANDIDATE.md'
+      - 'scripts/validate-ppia04-completion-contracts.py'
+      - '.github/workflows/validate-ppia-04-completion-contracts.yml'
+  push:
+    branches:
+      - governance/ppia-04-vehicle-mecha-starship
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-04_VEHICLE_MECHA_STARSHIP_EXPERIENCE_SPEC_v1.0.0.md'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-04_ACCEPTANCE_TRACEABILITY_MATRIX_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-04_COMPLETION_CANDIDATE.md'
+      - 'scripts/validate-ppia04-completion-contracts.py'
+      - '.github/workflows/validate-ppia-04-completion-contracts.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia04-completion-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate PPIA-04 completion candidate contracts
+        run: python scripts/validate-ppia04-completion-contracts.py
