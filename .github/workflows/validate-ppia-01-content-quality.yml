@@ -12,11 +12,13 @@ on:
       - 'governance/application-planning/parallel-preimplementation/PPIA-01_CONTENT_REPAIR_OVERLAY_v0.2.0.json'
       - 'governance/application-planning/parallel-preimplementation/PPIA-01_CONTENT_REPAIR_OVERLAY_v0.3.0.json'
       - 'governance/application-planning/parallel-preimplementation/PPIA-01_MISSING_DEFINITION_CLOSURE_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-01_QUANTITATIVE_GAP_CLOSURE_v0.1.0.json'
       - 'scripts/audit-ppia01-csv-content-quality.py'
       - 'scripts/analyze-ppia01-shapeshifter-pricing.py'
       - 'scripts/analyze-ppia01-gap-name-candidates.py'
       - 'scripts/validate-ppia01-repair-overlay.py'
       - 'scripts/validate-ppia01-missing-definitions.py'
+      - 'scripts/validate-ppia01-quantitative-closure.py'
       - 'scripts/run-full-csv-registry-reconciliation.py'
       - '.github/workflows/validate-ppia-01-content-quality.yml'
   workflow_dispatch:
@@ -124,6 +126,9 @@ jobs:
       - name: Validate missing-definition closure against raw source
         run: python scripts/validate-ppia01-missing-definitions.py | tee build/ppia01-content-quality/missing-definition-validation.json
 
+      - name: Validate quantitative-gap closure against raw source
+        run: python scripts/validate-ppia01-quantitative-closure.py | tee build/ppia01-content-quality/quantitative-gap-validation.json
+
       - name: Verify tracked checkout was not mutated
         run: git diff --exit-code
 
@@ -141,4 +146,5 @@ jobs:
             build/ppia01-content-quality/shapeshifter-summary.json
             build/ppia01-content-quality/repair-overlay-validation.json
             build/ppia01-content-quality/missing-definition-validation.json
+            build/ppia01-content-quality/quantitative-gap-validation.json
           retention-days: 30
