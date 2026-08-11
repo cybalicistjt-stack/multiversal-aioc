@@ -13,6 +13,7 @@ on:
       - 'scripts/validate-ppia01-repair-overlay.py'
       - 'scripts/validate-ppia01-missing-definitions.py'
       - 'scripts/validate-ppia01-quantitative-closure.py'
+      - 'scripts/validate-ppia01-review-registers.py'
       - 'scripts/run-full-csv-registry-reconciliation.py'
       - '.github/workflows/validate-ppia-01-content-quality.yml'
   workflow_dispatch:
@@ -125,6 +126,7 @@ jobs:
           import json
           report=json.load(open('build/ppia01-content-quality/inference-thin-content.json',encoding='utf-8'))
           s=report['summary']
+          assert report['version']=='0.3.0'
           assert s['inferenceEstimateRows']==10594
           assert s['delegatedBalanceEstimateRows']==8554
           assert s['delegatedMissingFieldCompletionRows']==370
@@ -132,8 +134,10 @@ jobs:
           assert s['systematicMagicCompletionRows']==385
           assert s['systematicBaseEngineeringCompletionRows']==350
           assert s['mechanicalInterpretationReviewRows']==531
-          assert s['highPriorityMechanicalReviewRows']==111
-          assert s['normalPriorityMechanicalReviewRows']==420
+          assert s['p1HighCoreMechanicalRows']==36
+          assert s['p2SubstantiveCoreMechanicalRows']==73
+          assert s['p3BoundedCoreMechanicalRows']==183
+          assert s['p4LifecycleMetadataOnlyRows']==239
           assert s['sourceRecoveryReviewRows']==1
           assert s['structuralBlankRows']==33
           assert s['structuralBlankCells']==76
@@ -141,6 +145,13 @@ jobs:
           assert report['ownerAttentionCandidates'][0]['name']=='Quantum Weaver'
           print(json.dumps(s,sort_keys=True))
           PY
+
+      - name: Validate durable PPIA-01 review registers
+        run: |
+          python scripts/validate-ppia01-review-registers.py \
+            --triage build/ppia01-content-quality/inference-thin-content.json \
+            > build/ppia01-content-quality/review-register-validation.json
+          cat build/ppia01-content-quality/review-register-validation.json
 
       - name: Verify tracked checkout was not mutated
         run: git diff --exit-code
@@ -163,4 +174,5 @@ jobs:
             build/ppia01-content-quality/inference-thin-content.json
             build/ppia01-content-quality/inference-thin-content.csv
             build/ppia01-content-quality/inference-thin-summary.json
+            build/ppia01-content-quality/review-register-validation.json
           retention-days: 30
