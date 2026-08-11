@@ -1,0 +1,208 @@
+{
+  "format": "multiversal-ppia05-species-form-inspector-projection-matrix",
+  "version": "0.1.0",
+  "work_item": "PPIA-05",
+  "status": "implementation_ready_design_contract",
+  "inherits": "PPIA-05_SPECIES_FORMS_BIOLOGY_TAXONOMY_v0.1.0.json",
+  "authority": [
+    "MV-IA-F004 Character Creation and Advancement",
+    "MV-IA-F002 Universal Object Experience",
+    "PPIA-02 Creature & NPC Experience",
+    "MV-IA-F006/F007 authoritative Action and combat resolution",
+    "MV-IA-F020/F021 permissions, hidden information and recovery",
+    "MV-IA-F022 Accessibility and Adaptive Interface",
+    "PPIA-05_SOURCE_AND_DESIGN_INVENTORY.md",
+    "PPIA-05_ABILITY_BIOLOGY_ROUTING_v0.1.0.json"
+  ],
+  "principles": [
+    "Authorize and filter before Species/Form existence, body details, variants, hidden forms, vulnerabilities, compare targets, counts, provenance, exports, diagnostics, notifications or AI context are serialized or aggregated.",
+    "Reusable Species Definition, lineage/variant, Form Definition, biological trait/Ability Definition, morphology/body-plan facts, Character selection, current body/form state, transformation/Adaptation state, physiology, compatibility, bioengineering, visibility and provenance remain distinguishable layers.",
+    "Culture, society, belief, profession, learned behavior, equipment, temporary Effects/Conditions and Campaign environment never become immutable biology merely because they appear beside Species content.",
+    "Species eligibility, dataset membership, tree adjacency, same-name records, source-document grouping and visual similarity are insufficient to establish biology ownership, lineage, Form identity, compatibility or exact mechanics.",
+    "Unknown or source-unspecified anatomy, physiology, movement, lifespan, compatibility, limitation or Adaptation state is never replaced with a human default, universal compatibility, absence, zero or fabricated value.",
+    "A Form Definition is distinct from a Character currently using that form; accepted transformations change server-authoritative current state and append history without rewriting source Definitions.",
+    "The governed 2,203-row Species/Elementalist/Innate Ability surface remains mixed Ability-domain source; no row becomes biological merely because it is Species-gated or stored in that dataset.",
+    "The 60 detailed and 57 pricing-only Shapeshifter rows remain separate review surfaces with zero automatic merges by name, tier, position or similarity.",
+    "Every selection, comparison, transformation and Adaptation operation has keyboard, touch and nonvisual alternatives; color, silhouette, body diagrams, drag, hover and animation are never the sole carrier of meaning."
+  ],
+  "visibility_classes": {
+    "definition_public": "Published Species/Form/trait fields permitted to the viewer.",
+    "character_visible": "Character biological selections and current state authorized to the viewer.",
+    "character_private": "Private Character biology or appearance-linked fields scoped to the subject and explicit policy.",
+    "campaign_revealed": "Campaign facts about forms, weaknesses or transformations revealed to the viewer.",
+    "campaign_gm_private": "Campaign-GM-only biological truth, hidden forms, weaknesses, transformation triggers or diagnostics.",
+    "source_diagnostic": "Source/conflict/inference/provenance diagnostics limited by provenance permission.",
+    "transaction_private": "Bioengineering, respec/correction or governed modification details limited to authorized participants.",
+    "service_minimum": "Operation-specific minimum projection for services/AI; never independent biology authority."
+  },
+  "field_groups": [
+    {
+      "id": "identity_species_definition",
+      "label": "Species Identity & Definition",
+      "layers": ["species-definition"],
+      "fields": ["species_definition_id", "name", "version", "source_backed_biological_facts", "eligibility_grants", "source_provenance"],
+      "projection_rule": "Definition inspection never implies Character selection, current body state, culture-as-biology, or Campaign-local temporary state.",
+      "actions": ["inspect_compare", "select_species_form"]
+    },
+    {
+      "id": "lineage_variant",
+      "label": "Lineage, Subspecies & Species Variant",
+      "layers": ["lineage-subspecies-variant"],
+      "fields": ["variant_id", "relationship_type", "parent_or_sibling_evidence", "variant_biological_differences", "variant_grants", "provenance"],
+      "projection_rule": "Lineage/variant relationships require explicit source-backed evidence; same name, shared document or visual similarity never creates the relation.",
+      "actions": ["inspect_compare", "choose_lineage_variant", "source_conflict_resolution_candidate"]
+    },
+    {
+      "id": "form_definition",
+      "label": "Form / Alternate-Form Definition",
+      "layers": ["form-definition"],
+      "fields": ["form_definition_id", "eligibility", "form_mechanics", "form_morphology", "form_senses_movement", "limitations", "provenance"],
+      "projection_rule": "A reusable Form Definition is not a Character current-form state and does not become active merely because the viewer can inspect it.",
+      "actions": ["inspect_compare", "activate_end_form", "invoke_transformation"]
+    },
+    {
+      "id": "biological_trait_ability",
+      "label": "Biological Trait, Species Perk & Innate Ability",
+      "layers": ["biological-trait-ability-definition"],
+      "fields": ["ability_or_trait_id", "prerequisites", "source_effect", "cost_limits", "species_form_eligibility", "biology_ownership_classification", "provenance"],
+      "classification_rule": "Species eligibility and mixed-dataset membership never prove physiology; learned, cultural, mystical, technological and mixed grants remain distinguishable.",
+      "actions": ["inspect_compare", "use_innate_ability", "source_conflict_resolution_candidate"]
+    },
+    {
+      "id": "morphology_body_plan",
+      "label": "Morphology, Body Plan & Anatomy",
+      "layers": ["morphology-body-plan-anatomy"],
+      "fields": ["size_body_plan", "limbs_organs", "natural_weapons", "covering_exoskeleton_skin", "reproductive_sex_biology", "visible_biological_markers"],
+      "unknown_rule": "Source absence remains unknown/source-unspecified; no normal-human anatomy is synthesized as a default.",
+      "accessibility_rule": "Every diagrammatic or appearance-linked fact has a textual equivalent and semantic label.",
+      "actions": ["inspect_compare"]
+    },
+    {
+      "id": "character_selection",
+      "label": "Character Species / Form Selection & Grants",
+      "layers": ["character-biological-selection"],
+      "fields": ["character_id", "species_ref", "form_ref", "lineage_ref", "accepted_grants", "rules_profile", "pack_lock", "validation_state"],
+      "mutation_rule": "Selection stores stable references and accepted grants through MV-IA-F004; it never edits the reusable Definition.",
+      "actions": ["select_species_form", "choose_lineage_variant", "playable_conversion_handoff", "correction_respec_proposal"]
+    },
+    {
+      "id": "current_body_form",
+      "label": "Current Body / Form State",
+      "layers": ["current-body-form-state"],
+      "fields": ["current_form_ref", "current_body_configuration", "current_form_capabilities", "current_biological_presentation", "expected_version"],
+      "mutation_rule": "Current form is server-authoritative Character/runtime state; reconnect restores it and transformations do not rewrite Species/Form Definitions.",
+      "actions": ["activate_end_form", "invoke_transformation", "history_export_recovery"]
+    },
+    {
+      "id": "transformation_adaptation",
+      "label": "Transformation & Adaptation State",
+      "layers": ["transformation-adaptation-state"],
+      "fields": ["active_transformation", "known_adaptations", "active_adaptation_slots", "swap_cooldown_duration", "transformation_provenance"],
+      "classification_rule": "Environment-based or Species-gated learned abilities do not automatically become biological Adaptations.",
+      "mutation_rule": "Accepted transformation/Adaptation changes are expected-version checked, idempotent and owned by the governing Ability/Action or Character workflow.",
+      "actions": ["invoke_transformation", "acquire_swap_adaptation", "use_innate_ability"]
+    },
+    {
+      "id": "senses_movement_physiology",
+      "label": "Senses, Movement & Physiology",
+      "layers": ["senses-movement-physiology"],
+      "fields": ["sense_modes", "breathing", "movement_modes", "movement_constraints", "environment_tolerances", "metabolism_lifespan"],
+      "projection_rule": "Current environment may constrain or suppress capability without rewriting source physiology.",
+      "unknown_rule": "Unknown/source-unspecified physiology is not converted to a human baseline.",
+      "actions": ["inspect_compare", "validate_biology_compatibility"]
+    },
+    {
+      "id": "compatibility_limits",
+      "label": "Compatibility, Limits & Vulnerabilities",
+      "layers": ["biology-compatibility-limits"],
+      "fields": ["incompatibilities", "resistances_vulnerabilities", "form_exclusions", "host_compatibility", "strain_rejection_limits", "body_plan_requirements"],
+      "projection_rule": "Compatibility requires explicit source/rule evidence; absence of an incompatibility rule is not universal compatibility.",
+      "privacy_rule": "Hidden weaknesses and incompatibilities are filtered before comparisons, warnings, failures, counts and AI context.",
+      "actions": ["validate_biology_compatibility", "apply_bioengineering_modification", "reveal_hide_biology"]
+    },
+    {
+      "id": "bioengineering_symbiosis",
+      "label": "Bioengineering, Symbiosis & Biological Modification",
+      "layers": ["bioengineering-symbiosis-modification"],
+      "fields": ["modification_relation", "form_growth_tuning_state", "host_relation", "temporary_permanent_status", "strain_maintenance", "modification_history"],
+      "handoff": "Kola-Ha Forms remain biological modification semantics; PPIA-03 Asset/cybernetic rules apply only where the source actually models an Asset or installed object.",
+      "mutation_rule": "Modification requires explicit authorization, compatibility evidence, expected version and append-only history.",
+      "actions": ["apply_bioengineering_modification", "validate_biology_compatibility", "history_export_recovery"]
+    },
+    {
+      "id": "knowledge_visibility",
+      "label": "Knowledge, Reveal & Visibility",
+      "layers": ["knowledge-visibility-projection"],
+      "fields": ["player_known_biology", "gm_source_truth_visibility", "revealed_forms", "known_vulnerabilities", "private_character_biology", "projection_provenance"],
+      "privacy_rule": "Authorization occurs before search, counts, variant lists, compare targets, warnings, exports, diagnostics, notifications and AI context.",
+      "actions": ["reveal_hide_biology", "inspect_compare"]
+    },
+    {
+      "id": "provenance_recovery",
+      "label": "Source, Provenance, History & Recovery",
+      "layers": ["provenance-history-recovery"],
+      "fields": ["source_coordinates", "source_inference_recommendation_conflict", "selection_history", "transformation_adaptation_history", "bioengineering_history", "operation_ids", "expected_versions", "recovery_receipts"],
+      "privacy_rule": "History and provenance are role-filtered before aggregation/export.",
+      "recovery_rule": "Ambiguous mutation outcomes require operation-ID/status lookup before retry; successful retry reuses idempotency identity and never duplicates selection, transformation, Adaptation, bioengineering or respec effects.",
+      "actions": ["inspect_compare", "source_conflict_resolution_candidate", "history_export_recovery"]
+    }
+  ],
+  "context_overlays": {
+    "library_reference": ["identity_species_definition", "lineage_variant", "form_definition", "biological_trait_ability", "morphology_body_plan", "senses_movement_physiology", "provenance_recovery"],
+    "species_form_inspector": ["identity_species_definition", "lineage_variant", "form_definition", "biological_trait_ability", "morphology_body_plan", "senses_movement_physiology", "compatibility_limits", "knowledge_visibility", "provenance_recovery"],
+    "character_creation_selection": ["identity_species_definition", "lineage_variant", "form_definition", "biological_trait_ability", "character_selection", "compatibility_limits", "provenance_recovery"],
+    "character_current_body": ["character_selection", "current_body_form", "transformation_adaptation", "senses_movement_physiology", "compatibility_limits", "knowledge_visibility", "provenance_recovery"],
+    "shapeshifter": ["form_definition", "biological_trait_ability", "current_body_form", "transformation_adaptation", "compatibility_limits", "provenance_recovery"],
+    "environmental_adaptation": ["biological_trait_ability", "transformation_adaptation", "senses_movement_physiology", "compatibility_limits", "provenance_recovery"],
+    "bioengineering": ["form_definition", "morphology_body_plan", "compatibility_limits", "bioengineering_symbiosis", "current_body_form", "provenance_recovery"],
+    "playable_creature_conversion": ["identity_species_definition", "form_definition", "biological_trait_ability", "morphology_body_plan", "character_selection", "provenance_recovery"],
+    "source_conflict_provenance": ["identity_species_definition", "lineage_variant", "form_definition", "biological_trait_ability", "provenance_recovery"]
+  },
+  "role_projection": {
+    "player": "May see authorized source/revealed Species/Form facts plus own permitted Character selections/current state; hidden forms, weaknesses and GM/source truth remain absent rather than redacted aggregates.",
+    "gm": "Campaign-scoped authority may expose governed Campaign biological truth and hidden forms/weaknesses where policy permits; it does not grant unrelated user-private or other-Campaign Character biology.",
+    "assistant_gm": "Receives the minimum delegated projection and cannot independently choose Species/Form, transform, reveal, respec, bioengineer or promote content.",
+    "creator_owner_admin": "May author/govern within explicit scope but source facts, Character selection, live form state and Campaign reveal state remain separate write paths.",
+    "service_ai": "Receives minimum necessary role-safe fields with hidden forms/weaknesses removed and no independent mutation, classification or canonical-promotion authority."
+  },
+  "action_contracts": [
+    {"id":"inspect_compare","mutates":false,"requires":["read authorization"],"rules":["compare equivalent semantic layers where possible","filter before diff/count/facet generation","surface source/conflict/unknown state without inventing values"]},
+    {"id":"select_species_form","mutates":true,"owner":"MV-IA-F004","requires":["Character edit authority","stable Species/Form IDs","rules-profile and pack-lock validation","expected version","idempotency key"],"rules":["selection never edits reusable Definition","accepted grants retain source/version provenance"]},
+    {"id":"choose_lineage_variant","mutates":true,"owner":"MV-IA-F004","requires":["Character edit authority","explicit source-backed variant relationship","eligibility validation","expected version"],"rules":["same-name/shared-document similarity cannot create relationship","choice preserves selected relationship provenance"]},
+    {"id":"playable_conversion_handoff","mutates":true,"owner":"PPIA-02 → MV-IA-F004","requires":["authorized source creature/version","conversion policy","Character-draft authority"],"rules":["source creature and playable Character/species remain separate identities","retained/normalized/excluded facts are attributable"]},
+    {"id":"activate_end_form","mutates":true,"owner":"owning Form/Character workflow","requires":["form eligibility","Character/control authority","current state","expected version","idempotency key"],"rules":["current-form state changes without rewriting Form Definition","end/revert follows source/rules lifecycle rather than UI assumption"]},
+    {"id":"invoke_transformation","mutates":true,"owner":"MV-IA-F006/F007 or owning Ability workflow","requires":["authorized Ability/Action","eligibility and compatibility","Resource/cost validation when governed","expected version","idempotency key"],"rules":["outcome and governed costs commit atomically","hidden forms or capabilities never leak through unauthorized failures"]},
+    {"id":"acquire_swap_adaptation","mutates":true,"owner":"MV-IA-F004 or owning Adaptation workflow","requires":["explicit Adaptation rule","acquisition/swap authority","compatibility","cost/slot/cooldown validation where sourced","expected version"],"rules":["environment-linked learned abilities are not silently converted to biological Adaptations","history records acquisition/swap source"]},
+    {"id":"use_innate_ability","mutates":true,"owner":"MV-IA-F006/F007 or owning Ability workflow","requires":["authorized Ability identity","current eligibility","target/context authorization","Resource validation when governed","expected version","idempotency key"],"rules":["Ability execution never reclassifies the Ability as physiological","result and costs commit atomically"]},
+    {"id":"validate_biology_compatibility","mutates":false,"requires":["authorized subject and candidate","explicit source/rule evidence"],"rules":["absence of incompatibility is not universal compatibility","unknown remains unknown and blocks or warns according to owning workflow"]},
+    {"id":"apply_bioengineering_modification","mutates":true,"owner":"governed biological-modification workflow","requires":["modification authority","host compatibility evidence","temporary/permanent rule","expected version","idempotency key"],"rules":["Kola-Ha biological Forms are not generic equipment","PPIA-03 Asset rules apply only to actual Asset/installed-object relations","history is append-only"]},
+    {"id":"correction_respec_proposal","mutates":true,"owner":"MV-IA-F004","requires":["Character authority","governed correction/respec policy","expected version","idempotency key"],"rules":["correction adds attributable history and never erases prior accepted state","Definition/source records remain unchanged"]},
+    {"id":"reveal_hide_biology","mutates":true,"owner":"Campaign permission/reveal workflow","requires":["Campaign reveal/hide authority","audience scope","expected version"],"rules":["authorization is recomputed before aggregates","revealed state is audience-scoped and does not alter source truth"]},
+    {"id":"source_conflict_resolution_candidate","mutates":false,"owner":"governance/source-review workflow","requires":["provenance permission"],"rules":["same-name/tier/position/similarity are review hints only","Shapeshifter pricing rows retain zero automatic merges","proposal/recommendation is not source fact or automatic canonical promotion"]},
+    {"id":"history_export_recovery","mutates":false,"requires":["history/provenance authorization"],"rules":["filter before export","ambiguous mutation status lookup before retry","never expose hidden biological operation payloads to unauthorized viewers"]}
+  ],
+  "responsive_accessibility_matrix": {
+    "expanded_large": "May use multi-column identity, morphology, traits, forms, compatibility and history regions while preserving semantic labels and source state.",
+    "medium": "Prioritize identity, source status, current Character/form state and primary selection/action; secondary regions collapse without losing validation meaning.",
+    "compact": "Single-column cards/sheets preserve Species/Form identity, current form, prerequisites, validation and primary action without hover or wide-table dependency.",
+    "keyboard": "All browse, compare, selection, lineage, Form, Adaptation, bioengineering, reveal and recovery actions are reachable with predictable focus order and no drag requirement.",
+    "screen_reader": "Announce semantic layer, source/conflict state, Species/Form identity, prerequisites, current form, Adaptation status, compatibility, hidden/revealed state, validation errors and resulting operation status.",
+    "high_zoom_reflow": "No horizontal dependency for selection or transformation completion; tables become labelled rows/cards while preserving relationships.",
+    "reduced_motion": "Transformation and form changes use state/text updates; animation is never the sole carrier of before/after state.",
+    "nonvisual_morphology": "Morphology, anatomy and appearance-linked biological facts have textual equivalents; body-diagram location is never required to understand rules."
+  },
+  "acceptance_invariants": [
+    "Species/Form Definition inspection cannot mutate Character selection or current body state.",
+    "Culture, learned behavior, equipment, temporary Effects/Conditions and Campaign environment cannot silently become immutable biology.",
+    "Species eligibility and mixed Ability-dataset membership cannot establish biology ownership by themselves.",
+    "Same-name, shared-document, visual similarity, tree adjacency or tier cannot create lineage, Form, compatibility or Shapeshifter merge authority.",
+    "Unknown/source-unspecified anatomy, physiology or compatibility remains unknown rather than human-default or universally compatible.",
+    "Hidden forms, weaknesses, transformations and private Character biology are filtered before counts, facets, compare results, warnings, exports, diagnostics, notifications and AI context.",
+    "Character Species/Form selection stores stable references and grants without rewriting reusable Definitions.",
+    "Transformations/Adaptations are server-authoritative and expected-version/idempotency controlled; governed costs and outcomes commit atomically.",
+    "Ambiguous network outcomes use operation ID/status lookup before retry and cannot duplicate transformations, Adaptation swaps, bioengineering changes or respec effects.",
+    "The 60 detailed and 57 pricing-only Shapeshifter rows preserve zero automatic merges.",
+    "Kola-Ha biological Forms remain distinct from generic equipment unless source/rules explicitly model an Asset relation.",
+    "Every required flow remains usable without color, drag, hover, animation, body-diagram pointing or visual silhouette recognition."
+  ]
+}
