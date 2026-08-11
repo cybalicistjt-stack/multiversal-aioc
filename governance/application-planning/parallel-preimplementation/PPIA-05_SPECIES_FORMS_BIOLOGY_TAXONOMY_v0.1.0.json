@@ -1,0 +1,173 @@
+{
+  "format": "multiversal-ppia05-species-forms-character-biology-experience-taxonomy",
+  "version": "0.1.0",
+  "work_item": "PPIA-05",
+  "status": "foundation-taxonomy",
+  "authority": {
+    "character_baseline": "MV-IA-F004 Character Creation and Advancement",
+    "object_baseline": "MV-IA-F002 Universal Object Experience",
+    "creature_form_baseline": "PPIA-02 Creature & NPC Experience",
+    "action_baseline": "MV-IA-F006/F007 authoritative Action and combat resolution",
+    "permission_recovery_baseline": "MV-IA-F020/F021",
+    "accessibility_baseline": "MV-IA-F022",
+    "structured_content_authority": "8E-009 CSV-first 20-dataset / 19,199-row reconciliation",
+    "species_innate_dataset_rows": 2203,
+    "species_perk_rows": 260,
+    "innate_ability_rows": 539,
+    "elementalist_rows_in_mixed_dataset": 1404,
+    "supporting_environment_dataset_rows": 1018,
+    "environment_based_collection_rows": 296,
+    "retained_direct_pdfs": 29,
+    "retained_direct_pdf_pages": 654,
+    "retained_supporting_environment_pdfs": 6,
+    "retained_supporting_environment_pdf_pages": 233,
+    "shapeshifter_detailed_ability_rows": 60,
+    "shapeshifter_pricing_only_rows": 57,
+    "shapeshifter_automatic_merges_authorized": 0,
+    "obsolete_semantic_database_is_content_authority": false,
+    "dataset_membership_implies_biology_ownership": false
+  },
+  "identity_state_layers": [
+    {
+      "id": "species-definition",
+      "name": "Reusable Species Definition",
+      "owns": ["stable source identity", "version", "source-backed biological facts", "source-backed eligibility/grants", "source provenance"],
+      "must_not_own": ["individual Character identity", "current body state", "Campaign-local temporary Effects", "culture as immutable biology"]
+    },
+    {
+      "id": "lineage-subspecies-variant",
+      "name": "Lineage / Subspecies / Species Variant",
+      "owns": ["source-backed relationship identity", "variant-specific biological differences", "variant grants", "source provenance"],
+      "rules": ["same name, shared source document, or visual similarity cannot create a lineage relationship", "variant relationships remain explicit and source-backed"]
+    },
+    {
+      "id": "form-definition",
+      "name": "Reusable Form / Alternate-Form Definition",
+      "owns": ["form identity", "eligibility", "source-backed mechanics", "form-specific morphology", "form-specific senses/movement", "limitations", "provenance"],
+      "rules": ["a Form Definition is not the same as a Character currently being in that form", "temporary and permanent Forms remain distinguishable where source rules distinguish them"]
+    },
+    {
+      "id": "biological-trait-ability-definition",
+      "name": "Biological Trait / Species Perk / Innate Ability Definition",
+      "owns": ["stable Ability/trait identity", "prerequisites", "source-defined effect", "cost/limits where sourced", "Species/Form eligibility", "provenance"],
+      "rules": ["species eligibility does not prove a perk is physiological", "mixed species/innate dataset membership does not prove biology ownership"]
+    },
+    {
+      "id": "morphology-body-plan-anatomy",
+      "name": "Morphology / Body Plan / Anatomy",
+      "owns": ["size and body-plan facts where sourced", "limbs/organs", "natural weapons", "covering/exoskeleton/skin", "reproductive/sex biology where sourced", "visible biological markers"],
+      "rules": ["appearance prose and biological mechanics remain distinguishable", "source absence is not filled with human-default anatomy"]
+    },
+    {
+      "id": "character-biological-selection",
+      "name": "Character Species / Form Selection and Grants",
+      "owns": ["Character-scoped stable references", "accepted Species/Form selection", "granted biological/eligibility options", "rules-profile and pack-lock evidence", "validation state"],
+      "rules": ["selection never edits the reusable Definition", "Character-authored identity remains separate from governed mechanical selection"]
+    },
+    {
+      "id": "current-body-form-state",
+      "name": "Current Character Body / Form State",
+      "owns": ["current active form", "current body configuration", "current form-specific capabilities", "current biological presentation", "expected version"],
+      "rules": ["current form is runtime/Character state, not source Definition truth", "reconnect restores authoritative current form"]
+    },
+    {
+      "id": "transformation-adaptation-state",
+      "name": "Transformation / Adaptation State",
+      "owns": ["active transformation", "known/acquired Adaptations", "active Adaptation slots where sourced", "swap/cooldown/duration state where sourced", "transformation provenance"],
+      "rules": ["learned environment perks do not automatically become biological Adaptations", "runtime transformation is executed by the owning Ability/Action workflow"]
+    },
+    {
+      "id": "senses-movement-physiology",
+      "name": "Senses / Movement / Physiology",
+      "owns": ["vision/sense modes", "breathing", "movement modes", "speed or movement constraints where sourced", "environment tolerances", "metabolism/lifespan where sourced"],
+      "rules": ["unknown/source-unspecified is not normal-human default", "current environment may constrain physiology without rewriting Species source facts"]
+    },
+    {
+      "id": "biology-compatibility-limits",
+      "name": "Biological Compatibility / Limits / Vulnerabilities",
+      "owns": ["source-defined incompatibilities", "resistances/vulnerabilities", "form exclusions", "host compatibility", "strain/rejection limits where sourced", "body-plan requirements"],
+      "rules": ["compatibility requires explicit source/rule evidence", "absence of an incompatibility rule is not universal compatibility"]
+    },
+    {
+      "id": "bioengineering-symbiosis-modification",
+      "name": "Bioengineering / Symbiosis / Biological Modification",
+      "owns": ["explicit source-backed biological modification relation", "Form/growth/tuning state", "host relationship", "temporary/permanent status", "strain or maintenance where sourced", "modification history"],
+      "rules": ["Kola-Ha Forms are not generic equipment", "Asset/cybernetic semantics are inherited from PPIA-03 only when the source/rules actually model an Asset or installed object"]
+    },
+    {
+      "id": "knowledge-visibility-projection",
+      "name": "Knowledge / Reveal / Visibility Projection",
+      "owns": ["Player-known biological facts", "GM/source truth visibility", "revealed forms", "known vulnerabilities", "private Character biological fields", "projection provenance"],
+      "rules": ["authorization filters before search, counts, compare targets, warnings, exports, diagnostics, or AI context", "unknown-to-Player is not false-in-source"]
+    },
+    {
+      "id": "provenance-history-recovery",
+      "name": "Source / Provenance / History / Recovery",
+      "owns": ["source coordinates", "source/inference/recommendation/conflict state", "Species/Form selection history", "transformation/adaptation history", "bioengineering history", "operation IDs", "expected versions", "recovery receipts"],
+      "rules": ["history is append-only and role-filtered", "ambiguous network outcomes use operation-status lookup before retry"]
+    }
+  ],
+  "presentation_profiles": [
+    "species-reference",
+    "playable-species",
+    "lineage-or-subspecies",
+    "form-or-alternate-form",
+    "morphology-body-plan",
+    "species-perk-or-innate-ability",
+    "shapeshifter",
+    "environmental-adaptation",
+    "bioengineered-or-symbiotic-form",
+    "character-current-body-state",
+    "playable-creature-conversion",
+    "source-conflict-provenance"
+  ],
+  "source_guardrails": [
+    "Raw PDF/CSV source provenance remains preserved; PPIA-05 does not rewrite source to make biology cleaner or more complete.",
+    "Culture, society, belief, philosophy, profession, history and learned behavior are not immutable biology unless the source explicitly states a biological mechanism.",
+    "A Species perk can be biological, learned, cultural, mystical, technological or mixed; species eligibility alone is insufficient to classify physiology.",
+    "Environment-based perks and abilities are not biological Adaptations without explicit Species/Form/innate/body evidence.",
+    "The 2,203-row species/elementalist/innate dataset contains 260 Species Perks, 539 Innate Abilities and 1,404 Elementalist rows; dataset membership is insufficient to establish biology ownership.",
+    "The 57 Shapeshifter pricing-only rows cannot be automatically merged with the 60 detailed Ability rows by name, tier, position or similarity.",
+    "Same-name, shared-document, appearance, species label or narrative similarity is insufficient to create lineage, Form, compatibility or identity relationships.",
+    "Source fact, source absence, inference/recommendation, Character selection, runtime form state, temporary Effect/Condition state and Campaign environment remain distinguishable."
+  ],
+  "culture_biology_separation": {
+    "biology": ["body plan", "anatomy", "physiology", "senses", "movement modes", "lifespan", "reproductive/sex biology where sourced", "innate resistance/vulnerability", "explicit biological capability"],
+    "species_eligibility_not_necessarily_biology": ["Species Perks", "Species-gated Abilities", "language grants", "learned traditions", "social or tactical perks", "technology/culture-linked grants"],
+    "non_biology_facets": ["culture", "society", "belief", "philosophy", "profession", "world history", "faction role", "equipment", "ordinary learned skills", "temporary Effects", "temporary Conditions", "Campaign environment"]
+  },
+  "permission_invariants": [
+    "authorize before Species/Form existence, search, variant lists, body details, hidden forms, vulnerabilities, biological history, compare targets, provenance, exports, diagnostics, notifications or AI context",
+    "hidden or unrevealed forms, weaknesses, transformations and private Character biology contribute nothing to unauthorized counts, facets, compare results, failure text or AI context",
+    "GM authority is Campaign-scoped and does not imply unrelated user-private or other-Campaign Character biology access",
+    "AI/service projections are minimum necessary and cannot independently choose Species/Form, transform, reveal, mutate biology, approve bioengineering, or promote content"
+  ],
+  "mutation_invariants": [
+    "Species/Form Definition inspection never mutates source content",
+    "Character Species/Form selection stores stable references and grants but never rewrites the reusable Definition",
+    "runtime transformation or Adaptation changes current authorized state and history but never rewrites source Species/Form identity",
+    "temporary Effects, Conditions, equipment or Campaign environment never silently become permanent source biology",
+    "learned Species-gated perks never silently become anatomy or innate physiology",
+    "accepted transformation/Adaptation mutations are server-authoritative, expected-version checked and idempotent",
+    "offline authoritative Species/Form selection, transformation, Adaptation or bioengineering mutation is prohibited"
+  ],
+  "accessibility_invariants": [
+    "Species/Form selection and comparison are fully keyboard and touch operable",
+    "screen readers receive semantic layer labels, source/conflict state, prerequisites, active-form state and Adaptation compatibility",
+    "morphology, anatomy and appearance facts have textual equivalents and are never image-only",
+    "color, animation, silhouette, body diagram location or drag gestures are never the sole carrier of biological or transformation state",
+    "high zoom/reflow and reduced motion preserve selection, validation, transformation and recovery meaning"
+  ],
+  "cross_domain_routes": {
+    "character_creation_advancement_selection_grants_calculation": "MV-IA-F004",
+    "object_browse_inspect_compare_source_selection": "MV-IA-F002",
+    "creature_forms_stages_ecology_playable_conversion": "PPIA-02",
+    "equipment_symbiotes_cybernetics_generic_assets": "PPIA-03",
+    "runtime_action_resolution_and_combat_consequences": "MV-IA-F006/F007",
+    "campaign_scene_environment_authoring": "PPIA-08",
+    "encounter_and_balance_calibration": "PPIA-11",
+    "world_specific_culture_history_environment_extensions": "PPIA-12",
+    "full_visual_character_appearance_creator": "PPIA-06"
+  },
+  "boundary": "This taxonomy is an implementation-ready PPIA-05 foundation. It does not promote mixed ability rows, auto-pair Shapeshifter pricing records, convert culture into biology, invent source facts, implement application runtime, activate STAGE-A-A2, or authorize release/deployment/tester/paid/credential operations."
+}
