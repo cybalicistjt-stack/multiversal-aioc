@@ -1,0 +1,98 @@
+{
+  "format": "multiversal-ppia03-item-inspector-projection-matrix",
+  "version": "0.1.0",
+  "work_item": "PPIA-03",
+  "status": "implementation_ready_design_contract",
+  "inherits": "PPIA-03_ITEM_EXPERIENCE_TAXONOMY_v0.1.0.json",
+  "principles": [
+    "Authorization and field filtering occur before serialization and before search results, counts, totals, container aggregates, history, provenance, comparison, suggestions, or AI context are computed.",
+    "Reusable Item Definition, Definition variant/configuration, Asset Instance, authority relations, containment, equipment assignment, mutable runtime state, knowledge state, and transaction history remain distinguishable.",
+    "Unknown, source-unspecified, not-applicable, zero, empty, depleted, destroyed, and hidden are different states and must never be collapsed.",
+    "Ownership, custody, possession, control, access, and equipment are independent relationships; no one relationship silently grants another.",
+    "Source facts, source-limited fields, owner-delegated recommendations, conflicts, and reference-only names remain visibly and semantically distinct.",
+    "Every spatial or drag-oriented inventory operation has an equivalent keyboard, touch, screen-reader, and nonvisual command path."
+  ],
+  "visibility_classes": [
+    {"id":"definition_public","meaning":"Definition fields the subject may inspect through current content/pack/entitlement/permission policy."},
+    {"id":"instance_visible","meaning":"Asset Instance existence and current state the subject is authorized to know."},
+    {"id":"controller_private","meaning":"Character/controller-private loadout planning or owned state not automatically visible to unrelated roles."},
+    {"id":"campaign_revealed","meaning":"Campaign-local Asset information explicitly revealed to the subject."},
+    {"id":"campaign_gm_private","meaning":"Hidden loot, unidentified truth, secret contents, reserve Assets, private prices/rewards, or GM preparation state."},
+    {"id":"transaction_private","meaning":"Private trade/offer/reservation/history details visible only to authorized parties and governing GM/admin roles."},
+    {"id":"source_diagnostic","meaning":"Source coordinates, inferred/recommended status, conflict state, validation, coverage, and provenance when separately authorized."},
+    {"id":"user_private","meaning":"User-private notes or drafts that are not granted by GM/Admin status alone."}
+  ],
+  "field_groups": [
+    {"id":"identity_definition","section":"identity_definition","fields":["display_name","aliases","stable_id","object_family","presentation_profile","category","subcategory","version","owner_pack","lifecycle_status","rarity","legality","source_coverage_state","validation_state"],"default_visibility":"definition_public","identity_rule":"Display name, filename, source name, and reference-only name never replace stable Definition identity."},
+    {"id":"intrinsic_mechanics","section":"intrinsic_mechanics","fields":["description","primary_effect","damage_or_healing","damage_type","range_or_area","activation","duration","special_rules","requirements","proficiency","hands","properties","compatibility","failure_or_drawback"],"default_visibility":"definition_public","source_rule":"Fields preserve source/recommendation/conflict status individually."},
+    {"id":"instance_authority","section":"ownership_and_authority","fields":["asset_instance_id","owner_interests","custodian","possessor","controller","access_grants","usage_permission","controller_character_ref"],"default_visibility":"instance_visible","relationship_rule":"Ownership, custody, possession, control, access, and usage permission are independent."},
+    {"id":"location_containment","section":"location_and_containment","fields":["location_ref","container_ref","contained_assets","capacity_limit","current_capacity_usage","weight_limit","current_weight","slot_limit","locks","seals","concealment","nesting_path"],"default_visibility":"instance_visible","privacy_rule":"Hidden contents are filtered before child counts, totals, weight/value aggregates, capacity summaries, previews, search, exports, or AI context."},
+    {"id":"quantity_stack","section":"quantity_and_stacks","fields":["quantity","unit","lot_id","stack_compatibility","quality","provenance_lot","split_merge_history","currency_model"],"default_visibility":"instance_visible","lineage_rule":"Split and merge preserve lot lineage; visually identical items are not automatically stack-compatible."},
+    {"id":"equipment_readiness","section":"equipment_and_readiness","fields":["equipped_to_ref","slot","handedness","layer","readiness","quick_access","attunement_or_bond","station","installed_on_ref","installation_state"],"default_visibility":"instance_visible","authority_rule":"Equip/install/attune never silently changes ownership or custody."},
+    {"id":"charges_ammunition","section":"charges_ammunition_and_uses","fields":["resource_type","current_amount","maximum_capacity","capacity_source_state","standard_capacity","extended_capacity","high_capacity","reload_or_recharge_method","reload_or_recharge_time","consumption_per_use","zero_state_behavior"],"default_visibility":"instance_visible","unknown_rule":"Source-unspecified maximum capacity is represented as unknown/source-unspecified, never zero, unlimited, or inferred merely for UI completeness."},
+    {"id":"condition_durability","section":"condition_durability_and_maintenance","fields":["condition","damage_state","current_durability","maximum_durability","disabled_state","broken_state","repairability","maintenance_due","repair_requirements","repair_cost","destruction_state"],"default_visibility":"instance_visible","lifecycle_rule":"Zero durability does not universally delete an Asset; repair/destruction preserve attributable history."},
+    {"id":"identification_knowledge","section":"identification_and_knowledge","fields":["display_identity_known","properties_known","charges_known","value_known","rarity_known","legality_known","drawback_or_curse_known","contents_known","source_known","provenance_known","reveal_state"],"default_visibility":"campaign_revealed","truth_rule":"Knowledge projection never overwrites authoritative truth; hidden truth is omitted before serialization."},
+    {"id":"economy_transfer","section":"economy_trade_and_transfer","fields":["displayed_price","price_basis","currency","offer","consideration","transfer_policy","lending_policy","recipient_ref","ownership_change","custody_change","control_change","access_change","transaction_status"],"default_visibility":"transaction_private","transaction_rule":"Displayed price or offer is not an accepted transfer; each authority relation change is explicit."},
+    {"id":"crafting_salvage","section":"crafting_repair_and_salvage","fields":["recipe_or_project_ref","reserved_input_refs","reserved_quantities","work_order_ref","output_refs","byproduct_refs","consumption_commit","salvage_result","transformation_lineage"],"default_visibility":"instance_visible","atomicity_rule":"Inputs are not consumed and outputs are not created until the owning work order commits atomically."},
+    {"id":"modifications_relationships","section":"variants_modifications_and_relationships","fields":["variant_refs","attachment_refs","module_refs","compatible_host_refs","installed_component_refs","ammo_refs","software_refs","linked_ability_refs","linked_effect_refs","replacement_or_supersession_refs","conflict_refs"],"default_visibility":"definition_public","navigation_rule":"Every target is reauthorized before traversal; same-name similarity never authorizes identity merge."},
+    {"id":"source_provenance","section":"source_provenance_and_conflict","fields":["source_id","source_title","source_coordinate","source_value","recommendation_value","recommendation_authority","confidence","conflict_state","coverage_state","reference_only_state","validation_evidence","version_history"],"default_visibility":"source_diagnostic","source_truth_rule":"Source fact, recommendation, source-unspecified field, conflict, and reference-only record must remain distinguishable."},
+    {"id":"history_recovery","section":"history_and_recovery","fields":["created_by_event","acquisition_history","ownership_history","custody_history","equipment_history","transfer_receipts","usage_consumption_history","repair_history","split_merge_history","client_operation_id","expected_version","command_status","recovery_receipt"],"default_visibility":"transaction_private","recovery_rule":"Ambiguous network outcomes use status lookup with the same operation ID before retry; reconnect restores current authorized state rather than replaying client assumptions."}
+  ],
+  "context_overlays": {
+    "library_reference":{"include_layers":["definition"],"hide_sections":["ownership_and_authority","location_and_containment","quantity_and_stacks","equipment_and_readiness","condition_durability_and_maintenance","history_and_recovery"],"density":"comfortable"},
+    "item_inspector":{"include_layers":["definition","authorized_instance_optional"],"density":"comfortable"},
+    "character_inventory":{"prepend_sections":["ownership_and_authority","location_and_containment","quantity_and_stacks"],"density":"touch_or_compact"},
+    "container_tree":{"prepend_sections":["location_and_containment","quantity_and_stacks"],"density":"compact"},
+    "equipment_loadout":{"prepend_sections":["equipment_and_readiness","charges_ammunition_and_uses","condition_durability_and_maintenance"],"density":"touch_or_compact"},
+    "party_shared_assets":{"prepend_sections":["ownership_and_authority","economy_trade_and_transfer","location_and_containment"],"density":"compact"},
+    "scene_loot_assets":{"prepend_sections":["identification_and_knowledge","ownership_and_authority","location_and_containment"],"density":"compact"},
+    "shop_trade_transfer":{"prepend_sections":["economy_trade_and_transfer","ownership_and_authority"],"density":"comfortable"},
+    "combat_reload_consume":{"prepend_sections":["equipment_and_readiness","charges_ammunition_and_uses","condition_durability_and_maintenance"],"density":"touch_or_compact"},
+    "condition_durability_repair":{"prepend_sections":["condition_durability_and_maintenance","history_and_recovery"],"density":"comfortable"},
+    "crafting_salvage":{"prepend_sections":["crafting_repair_and_salvage","quantity_and_stacks","history_and_recovery"],"density":"comfortable"},
+    "gm_identification_reveal":{"prepend_sections":["identification_and_knowledge","source_provenance_and_conflict"],"density":"compact"},
+    "provenance_history_conflict":{"prepend_sections":["source_provenance_and_conflict","history_and_recovery","variants_modifications_and_relationships"],"density":"comfortable"}
+  },
+  "role_projection": {
+    "player":{"may_receive":["definition_public","instance_visible","campaign_revealed","controller_private_when_owner_or_controller","transaction_private_when_party"],"never_receive_without_separate_authority":["campaign_gm_private","other_user_private","other_campaign_private"],"rule":"Container existence, child counts, value/weight totals, unidentified truth, hidden loot, secret prices, and provenance diagnostics are omitted when unauthorized rather than redacted after delivery."},
+    "gm":{"may_receive":["definition_public","instance_visible","campaign_revealed","campaign_gm_private","transaction_private","source_diagnostic"],"never_implicit":["user_private","other_campaign_private"],"rule":"GM can manage authorized Campaign Asset truth but does not gain unrelated Player-private notes or other-Campaign data."},
+    "assistant_gm":{"may_receive":[],"rule":"Projection is computed from explicit delegation scope, Campaign scope, field/action scope, and expiry; deny by default outside the delegation."},
+    "creator_owner_admin":{"may_receive":["definition_public","source_diagnostic"],"rule":"Campaign instance, transaction, or user-private fields require separate Campaign/user authority despite administrative role."},
+    "service_ai":{"may_receive":[],"rule":"Minimum operation-specific projection after authorization; AI may summarize or draft a proposal only and may not infer hidden inventory, transfer/consume/create/destroy Assets, or promote source recommendations."}
+  },
+  "action_contracts": [
+    {"id":"inspect_definition_or_instance","preconditions":["authorize exact target and requested layer","resolve version/pack/entitlement","project fields before serialization"],"result":"read-only role-safe projection","must_not":["mutate Definition","reveal hidden existence through errors/counts"]},
+    {"id":"create_or_acquire_instance","preconditions":["authorized creation reason","exact Definition/version snapshot","idempotency key"],"result":"new Asset Instance plus provenance-bearing event","must_not":["duplicate on retry","create from reference-only name"]},
+    {"id":"move_store_contain","preconditions":["authority to move Asset","authority to target location/container","capacity/compatibility check","expected versions"],"result":"updated possession/location/containment edge","must_not":["create cycles","leak hidden children through aggregate changes"]},
+    {"id":"split_merge_stack","preconditions":["compatible Definition/version/state/quality/provenance/ownership/restrictions/lot policy","expected versions"],"result":"new lot quantities with lineage","must_not":["erase lot provenance","merge incompatible or hidden ownership states"]},
+    {"id":"equip_install_attune","preconditions":["authorized Asset Instance","slot/hand/layer/host/station compatibility","requirements/proficiency/attunement policy","expected versions"],"result":"equipment/installation assignment","must_not":["transfer ownership implicitly","copy Definition mechanics into Character source record"]},
+    {"id":"use_consume_reload_recharge","preconditions":["authorized controller","exact instance","readiness/equipment state where required","known authoritative current resource state","reservation/version check"],"result":"atomic accepted usage and cost/consumption event","must_not":["consume on denied/failed-before-commit action","invent source-unspecified maximum capacity"]},
+    {"id":"transfer_lend_share_trade","preconditions":["sender authority","recipient eligibility","explicit Asset/lot/quantity","explicit relations that change","consideration/conditions if any","idempotency/expected versions"],"result":"accepted transfer receipt and updated authority relations","must_not":["assume custody=ownership","repeat transfer after ambiguous response without status lookup"]},
+    {"id":"identify_reveal","preconditions":["GM/rules authority","exact Asset/field reveal scope","Campaign context"],"result":"future projections include newly authorized knowledge","must_not":["rewrite underlying Definition/instance truth","deliver unrevealed fields before commit"]},
+    {"id":"damage_repair_maintain","preconditions":["authorized owning workflow","exact instance","profile-defined durability/condition semantics","expected version"],"result":"condition/durability/maintenance event and lineage-preserving history","must_not":["delete universally at zero durability","erase prior damage/repair history"]},
+    {"id":"reserve_craft_salvage","preconditions":["authorized work order","exact input instances/lots/quantities","reservation success","expected versions"],"result":"atomic input transformation/output lineage when work order commits","must_not":["consume inputs before commit","create outputs on failed/cancelled work order"]},
+    {"id":"compare_variant_conflict","preconditions":["authorize each candidate before diffing","preserve exact source/version identity"],"result":"read-only field-labeled comparison with provenance","must_not":["silently choose winner","auto-merge Taser or same-name records"]},
+    {"id":"history_export_recovery","preconditions":["authorize history/export scope","filter before aggregation","revalidate current role on reconnect"],"result":"role-safe history/export/recovery receipt","must_not":["restore revoked fields from cache","expose hidden contents via totals or diagnostics"]}
+  ],
+  "responsive_accessibility_matrix": {
+    "expanded_large":["optional two-pane inventory + Inspector","container tree with synchronized nonvisual list","comparison tables with labeled differences","persistent equipment summary"],
+    "medium":["single primary list with detail drawer/sheet","grouped inventory filters","stacked comparison on narrow panes"],
+    "compact":["one semantic column","large touch targets","bottom/full-height Inspector sheets","no hover dependency","quick actions expose text labels"],
+    "keyboard":["all drag/drop operations have move-to/equip/store commands","logical focus order","focus restoration after dialogs","batch selection exposes count and scope text"],
+    "screen_reader":["container hierarchy uses semantic tree/list alternative","quantity/unit/ownership/equipped/condition read as labeled fields","hidden counts never announced","price/value not encoded by color"],
+    "high_zoom_reflow":["tables become labeled records","core action/status remains available at 200%+ text","no horizontal scroll required for essential state"],
+    "reduced_motion":["no animation required to understand transfer/equip/consume/reveal results","state changes persist as text/status"]
+  },
+  "acceptance_invariants": [
+    "Unauthorized roles cannot infer hidden Asset existence, child counts, stack quantities, total weight/value, container occupancy, loot, reservations, or history through any projection or aggregate.",
+    "Definition identity and Asset Instance identity remain visible as distinct concepts whenever both are shown.",
+    "Ownership, custody, possession, control, access, location, containment, and equipment assignment are never collapsed into one field.",
+    "Unknown/source-unspecified capacity is never rendered or persisted as zero, unlimited, empty, or fabricated capacity.",
+    "Reference-only Energy Sniper Rifle, Plasma Carbine, and Cryo Blaster entries cannot be selected as complete weapon Definitions unless a governed Definition is later created.",
+    "The two published Taser contexts remain independently inspectable and comparable with provenance; same-name auto-merge is forbidden.",
+    "A failed-before-commit use/reload/consume/transfer/craft operation changes no authoritative inventory state.",
+    "Retry after ambiguous network failure uses the same operation ID and command-status lookup so accepted effects cannot occur twice.",
+    "Split, merge, transfer, repair, craft, salvage, and destruction preserve attributable lineage/history.",
+    "Every item action usable by drag-and-drop also has an equivalent keyboard/touch/nonvisual command path."
+  ]
+}
