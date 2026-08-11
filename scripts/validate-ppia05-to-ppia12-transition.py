@@ -17,6 +17,7 @@ PROGRAM = BASE / "PPIA_PARALLEL_PREIMPLEMENTATION_ADVANCEMENT_PROGRAM.md"
 
 P5_FINAL_HEAD = "e6e2bcfd0f22f537a73721dfd8069531bd1af24c"
 P5_COMPLETION_MERGE = "0ffaa34ef15f9a7e4b77776688c6be3fc3047446"
+P5_TO_P12_TRANSITION_MERGE = "17dc6be36960b65bbcef5c4382b67de75c05218c"
 P12_BRANCH = "governance/ppia-12-world-setting-authoring"
 
 
@@ -60,8 +61,9 @@ def main() -> None:
     require(p12["work_item_id"] == "PPIA-12" and p12["attempt_id"] == "PPIA-12-attempt-001", "PPIA-12 checkpoint identity mismatch")
     require(p12["branch"] == P12_BRANCH, "PPIA-12 governed branch mismatch")
     require(p12["status"] in {"started", "in_progress"}, "PPIA-12 checkpoint must be active")
-    require(p12["base_commit"] == P5_COMPLETION_MERGE, "PPIA-12 initial checkpoint must anchor to exact PPIA-05 completion merge")
+    require(p12["base_commit"] == P5_TO_P12_TRANSITION_MERGE, "PPIA-12 governed branch must anchor to the canonical PPIA-05→PPIA-12 transition merge")
     require(any(P5_COMPLETION_MERGE in item.get("value", "") for item in p12.get("evidence", [])), "PPIA-12 must preserve PPIA-05 completion merge evidence")
+    require(any(P5_TO_P12_TRANSITION_MERGE in item.get("value", "") for item in p12.get("evidence", [])), "PPIA-12 must preserve transition merge evidence")
     require(p12["active_substep"] and p12["roadmap_projection_pending"] is True, "PPIA-12 must have active source/design substep and pending roadmap projection")
 
     selected = [item for item in pointer["active_attempts"] if item.get("owner_selected")]
@@ -88,7 +90,7 @@ def main() -> None:
     print(f"ppia05_final_head={P5_FINAL_HEAD}")
     print(f"ppia05_final_merge={P5_COMPLETION_MERGE}")
     print("ppia12_status=started")
-    print(f"ppia12_initial_base={P5_COMPLETION_MERGE}")
+    print(f"ppia12_transition_merge={P5_TO_P12_TRANSITION_MERGE}")
     print(f"ppia12_branch={P12_BRANCH}")
     print("roadmap_projection_pending=true")
 
