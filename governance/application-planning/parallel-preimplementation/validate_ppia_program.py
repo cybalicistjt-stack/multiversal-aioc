@@ -97,7 +97,9 @@ def main() -> int:
     for work_item_id in EXPECTED_IDS:
         assert work_item_id in program
         assert work_item_id in roadmap
-    assert "**Version:** 2.3.0" in roadmap
+    assert "**Version:** 2.4.0" in roadmap
+    assert "PPIA-01 — Content Quality & Missing-Information Closure is complete" in roadmap
+    assert "PPIA-02 — Creature & NPC Experience is now the current PPIA work item" in roadmap
     assert "DT-001 through DT-010 Developer Toolbelt is complete" in roadmap
     assert "A2_CHANGED_PATH_SCOPE_v1.0.0.csv" in roadmap
     assert "A2 is not activated" in roadmap
