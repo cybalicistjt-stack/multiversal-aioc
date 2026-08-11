@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 2,
+  "revision": 3,
   "work_item_id": "PPIA-07",
   "attempt_id": "PPIA-07-attempt-001",
   "track": "parallel-preimplementation-advancement",
@@ -8,39 +8,45 @@
   "branch": "governance/ppia-07-rune-construction-rpg-system",
   "status": "started",
   "started_at": "2026-08-11T21:22:00+00:00",
-  "updated_at": "2026-08-11T21:30:00+00:00",
+  "updated_at": "2026-08-11T22:00:00+00:00",
   "completed_at": null,
   "base_commit": "a7803f8438a837b741f78c875d7ec2e915d37a19",
-  "latest_pushed_commit": "a7803f8438a837b741f78c875d7ec2e915d37a19",
-  "expected_remote_head": "a7803f8438a837b741f78c875d7ec2e915d37a19",
+  "latest_pushed_commit": "2424a9506c212c965ff09ca361cf1dfb6fab4ad4",
+  "expected_remote_head": "2424a9506c212c965ff09ca361cf1dfb6fab4ad4",
   "pull_request": null,
   "merge_commit": null,
   "objective": "Produce a playable, data-ready compositional Rune Construction RPG System with source-grounded rune vocabulary, deterministic construction grammar, connection and shaping semantics, costs, limits, counters, progression, crafting, worked examples, balance/acceptance material, permission-safe presentation, recovery and accessible operation.",
-  "last_verified_action": "The governed PPIA-12→PPIA-07 transition exact head c9d548dad82742afe704b84581c0b972b4673f99 passed all sixteen applicable repository gates. PR #240 squash-merged into canonical main as a7803f8438a837b741f78c875d7ec2e915d37a19, and the governed PPIA-07 branch was created directly from that exact transition merge.",
-  "active_substep": "Inventory retained Rune-related source material, existing rune/magic/crafting/rules structures and earlier governed design decisions; then define the PPIA-07 source/design inventory and compositional identity-state taxonomy before committing grammar or balance assumptions.",
+  "last_verified_action": "PPIA-07 source/design foundation was assembled through substantive head 2424a9506c212c965ff09ca361cf1dfb6fab4ad4 after reviewing 9 retained PDFs / 170 pages and 4 structured CSVs / 2,225 rows. The candidate records 3 explicit rune-crafting records, 16 structured Scripts & Macros records, 15 identity/state layers, 12 presentation profiles, source gaps/conflicts and cross-domain ownership. This is a foundation candidate only until exact-head validation and merge.",
+  "active_substep": "Validate and merge the PPIA-07 Rune Construction source/design foundation: source inventory, source manifest, 15-layer compositional taxonomy, authority/boundary matrix, foundation candidate, deterministic validator and CI gate.",
   "completed_substeps": [
     "PPIA-01 dependency is complete.",
     "PPIA-12 is completed_verified through PR #239 / merge 0ed9f9a0c53b2a132d8f38c0d3cae22cc7ae14a0.",
     "PPIA-12→PPIA-07 transition exact head c9d548dad82742afe704b84581c0b972b4673f99 passed all sixteen applicable repository gates and PR #240 squash-merged as a7803f8438a837b741f78c875d7ec2e915d37a19.",
-    "Governed PPIA-07 branch governance/ppia-07-rune-construction-rpg-system was created directly from canonical transition merge a7803f8438a837b741f78c875d7ec2e915d37a19.",
-    "PPIA-07 transition initialization preserves no-runtime-activation and no-unsupported-canonical-promotion boundaries."
+    "Reviewed and visually accounted for 9 retained Rune-relevant PDFs / 170 pages: 3 direct composition/enchanting PDFs / 77 pages, 4 core-magic context PDFs / 66 pages, and 2 risk/object-context PDFs / 27 pages.",
+    "Reviewed 4 structured CSVs / 2,225 rows, including 3 explicit rune-crafting records and 16 structured Scripts & Macros records; Magic_Spells.csv has zero explicit rune records.",
+    "Established that retained sources explicitly support rune engraving, Scriptcraft/Sigilcrafting, symbols/glyphs/logic structures, macro sequencing/triggers/timing and Resonance, but do not publish a canonical rune atom catalog, connection grammar, shaping syntax or arbitrary-construction cost formula.",
+    "Assembled a 15-layer Rune Construction identity/state taxonomy and 12 presentation profiles without projecting deterministic grammar or equivalence among runes, sigils, scripts, glyphs, spells or macros.",
+    "Assembled authority/boundary routing preserving PPIA-03 Item ownership, PPIA-08 Campaign/Scene state, PPIA-11 balance calibration, PPIA-12 setting-local scope, F020 permission filtering, F021 recovery/idempotency and V08 Crafting/SD-707 UI precedent.",
+    "Added deterministic PPIA-07 foundation validator and CI workflow."
   ],
-  "next_action": "Create and validate the PPIA-07 Rune Construction source and design inventory. Enumerate retained rune, symbol, magic-construction, crafting, cost/resource, progression and counterplay evidence; distinguish source facts from prior design proposals; identify basic rune atoms, connection types, shaping/modifier semantics, composite constructions, execution context, costs/limits, counters/failure states, progression/unlocks, crafting/inscription, provenance/recovery and accessibility. Do not invent deterministic grammar or universal mechanics until source and governed design authority are mapped.",
-  "changed_paths": [],
+  "next_action": "Open the PPIA-07 foundation pull request from governance/ppia-07-rune-construction-rpg-system to main, validate the exact PR head with Validate PPIA-07 Foundation plus every applicable repository regression gate, merge only if all exact-head gates pass, reset the governed branch to the canonical merge, and record the foundation milestone as verified. Then define the deterministic Rune Construction grammar candidate and bounded reference corpus: small atom vocabulary, explicit connection types, shaping/modifier slots, validity rules, parse/evaluation order and linearly explainable worked constructions, with every new mechanic marked source-derived, owner-directed or proposal.",
+  "changed_paths": [
+    "governance/application-planning/parallel-preimplementation/PPIA-07_SOURCE_AND_DESIGN_INVENTORY.md",
+    "governance/application-planning/parallel-preimplementation/PPIA-07_SOURCE_MANIFEST_v0.1.0.json",
+    "governance/application-planning/parallel-preimplementation/PPIA-07_RUNE_COMPOSITION_TAXONOMY_v0.1.0.json",
+    "governance/application-planning/parallel-preimplementation/PPIA-07_AUTHORITY_AND_BOUNDARY_MATRIX_v0.1.0.json",
+    "governance/application-planning/parallel-preimplementation/PPIA-07_FOUNDATION_CANDIDATE.md",
+    "scripts/validate-ppia07-foundation.py",
+    ".github/workflows/validate-ppia-07-foundation.yml"
+  ],
   "completion_gate": {"required_evidence_kinds":["commit","pull_request","merge"],"required_validation_commands":[],"owner_approval_required":false},
   "validation": [
     {"command":"Validate PPIA-12 to PPIA-07 Transition run 31538104035","status":"passed","evidence":"exact transition head c9d548dad82742afe704b84581c0b972b4673f99"},
     {"command":"Validate PPIA Program run 31538104077","status":"passed","evidence":"exact transition head c9d548dad82742afe704b84581c0b972b4673f99"},
     {"command":"Validate PPIA-12 Completion Contract run 31538103985","status":"passed","evidence":"exact transition head c9d548dad82742afe704b84581c0b972b4673f99"},
-    {"command":"Validate PPIA-12 Workflow Contracts run 31538104061","status":"passed","evidence":"exact transition head c9d548dad82742afe704b84581c0b972b4673f99"},
-    {"command":"Validate PPIA-12 Inspector and Reference Cases run 31538104093","status":"passed","evidence":"exact transition head c9d548dad82742afe704b84581c0b972b4673f99"},
-    {"command":"Validate PPIA-12 Foundation run 31538104084","status":"passed","evidence":"exact transition head c9d548dad82742afe704b84581c0b972b4673f99"},
-    {"command":"Validate PPIA-05 to PPIA-12 Transition run 31538104040","status":"passed","evidence":"exact transition head c9d548dad82742afe704b84581c0b972b4673f99"},
     {"command":"Validate Conversation Continuity run 31538104085","status":"passed","evidence":"exact transition head c9d548dad82742afe704b84581c0b972b4673f99"},
-    {"command":"Validate Interaction Enforcement run 31538103997","status":"passed","evidence":"exact transition head c9d548dad82742afe704b84581c0b972b4673f99"},
     {"command":"Validate Operational AIOC Baseline run 31538104049","status":"passed","evidence":"exact transition head c9d548dad82742afe704b84581c0b972b4673f99"},
-    {"command":"Validate Correction to Regression run 31538103993","status":"passed","evidence":"exact transition head c9d548dad82742afe704b84581c0b972b4673f99"},
-    {"command":"Validate Design Standards Canonicalization run 31538104003","status":"passed","evidence":"exact transition head c9d548dad82742afe704b84581c0b972b4673f99"}
+    {"command":"Validate PPIA-07 Foundation","status":"not_run","evidence":null}
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
@@ -49,12 +55,14 @@
     {"kind":"commit","value":"PPIA-12→PPIA-07 validated exact transition head c9d548dad82742afe704b84581c0b972b4673f99"},
     {"kind":"pull_request","value":"PPIA-12→PPIA-07 transition PR #240"},
     {"kind":"merge","value":"PPIA-12→PPIA-07 transition squash merge a7803f8438a837b741f78c875d7ec2e915d37a19"},
-    {"kind":"file","value":"PPIA-01 dependency complete per PPIA_PROGRAM_BACKLOG.json"}
+    {"kind":"commit","value":"PPIA-07 foundation substantive candidate head 2424a9506c212c965ff09ca361cf1dfb6fab4ad4"},
+    {"kind":"file","value":"PPIA-07 source/design inventory, source manifest, taxonomy, authority matrix, foundation candidate, validator and CI gate"}
   ],
   "roadmap_projection_pending": true,
   "notes": [
     "Top-level roadmap prose remains intentionally batched; checkpoint/pointer authority controls current PPIA state.",
-    "PPIA-07 must distinguish retained source evidence, governed owner-approved design, inference and new proposals.",
+    "PPIA-07 foundation distinguishes retained source evidence, governed owner intent, derived taxonomy and future proposals.",
+    "Basic reusable runes, connection types, shaping, combinatorial reuse and low cognitive burden are governed design goals; source-unstated mechanics remain future governed design.",
     "No application runtime activation, STAGE-A-A2 activation, release, deployment, tester access, paid service, production credential or unsupported canonical promotion is authorized."
   ]
 }
