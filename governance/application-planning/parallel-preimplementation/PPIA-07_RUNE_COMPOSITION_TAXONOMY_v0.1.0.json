@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "PPIA-07",
+  "title": "Rune Construction compositional identity/state taxonomy",
+  "status": "foundation_candidate",
+  "authority_note": "This taxonomy organizes source-grounded and owner-directed design responsibilities. It is not yet a deterministic grammar and does not invent a canonical rune vocabulary.",
+  "identity_state_layers": [
+    {"id":"rune-atom-definition","purpose":"Identity, label, semantic intent, source/proposal status, aliases, version and provenance of the smallest reusable rune unit."},
+    {"id":"effect-domain-and-payload","purpose":"What an atom/construction means or affects, routed to existing spell/effect vocabulary without converting every spell into a rune."},
+    {"id":"connection-topology","purpose":"Owner-directed connection type and adjacency/flow responsibilities; concrete connection grammar remains future governed design."},
+    {"id":"shaping-and-geometry-modifier","purpose":"Shape/radius/direction/placement modifiers, informed by Scriptcraft shape/radius modification but not assumed to use source-unstated syntax."},
+    {"id":"target-range-area-and-scope","purpose":"Targeting, range, area, scope and specificity inputs; inherit only explicitly adopted core-magic constraints."},
+    {"id":"trigger-condition-and-timing","purpose":"Activation conditions, delays, timing and conditional logic, grounded by Scripts/Macros."},
+    {"id":"sequence-branch-and-composition","purpose":"Ordered/chained composition, conditional branches and multi-part construction, grounded by macro sequencing concepts."},
+    {"id":"execution-and-casting-context","purpose":"Invocation channel, caster/focus/item/ritual context and links to core casting rules."},
+    {"id":"resource-cost-capacity-and-budget","purpose":"Mana/material/charge/slot/time/XP budgets as typed inputs; no automatic formula is adopted at foundation."},
+    {"id":"stability-resonance-risk-and-failure","purpose":"Resonance, instability, crafting failure, misfire, backlash and recoverable failure state."},
+    {"id":"counterplay-resistance-and-disruption","purpose":"Recognition, resistance, counterspell/disruption, dispelling, removal and defensive interaction."},
+    {"id":"progression-knowledge-and-unlock","purpose":"Knowledge tiers, XP/perk access, training/research and unlock boundaries; source-specific prices remain source-specific."},
+    {"id":"crafting-inscription-container-and-item-link","purpose":"Engraving, sigil surfaces, materials, tools, item/focus/body inscription, enchantment and charge-holder linkage while PPIA-03 keeps item ownership."},
+    {"id":"visibility-permission-and-accessibility","purpose":"Role-safe visibility plus keyboard, screen-reader, non-color and linear/nonvisual construction representation."},
+    {"id":"provenance-conflict-version-and-recovery","purpose":"Source/proposal distinction, conflict retention, expected-version/idempotent mutation and interrupted-operation recovery."}
+  ],
+  "presentation_profiles": [
+    "rune-library",
+    "rune-atom-inspector",
+    "construction-builder",
+    "connection-topology-editor",
+    "shaping-modifier-editor",
+    "effect-and-target-preview",
+    "cost-and-capacity-preview",
+    "stability-and-counterplay-preview",
+    "trigger-sequence-debugger",
+    "inscription-enchanting-workbench",
+    "progression-and-unlocks",
+    "provenance-conflict-linear-accessible-view"
+  ],
+  "owner_design_intent": {
+    "basic_reusable_runes": true,
+    "connection_types": true,
+    "shaping": true,
+    "reuse_small_vocabulary_many_ways": true,
+    "fun_and_not_too_hard": true,
+    "authority": "governed owner intent carried in the PPIA-07 checkpoint; mechanics still require explicit design acceptance"
+  },
+  "foundation_non_assumptions": {
+    "deterministic_grammar_defined": false,
+    "canonical_rune_atom_vocabulary_defined": false,
+    "universal_mana_formula_inherited": false,
+    "script_equals_rune": false,
+    "sigil_equals_rune": false,
+    "spell_equals_rune": false,
+    "macro_equals_rune_construction": false,
+    "all_existing_spells_auto_convert_to_runes": false,
+    "source_specific_xp_prices_become_rune_prices": false,
+    "setting_local_magic_becomes_universal": false
+  }
+}
