@@ -31,6 +31,6 @@ jobs:
       - name: Validate PPIA-12 workflow contracts
         run: python scripts/validate-ppia12-workflow-contracts.py
       - name: Validate generalized PPIA program continuity
-        run: python scripts/validate-ppia-program.py
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
       - name: Validate PPIA-05 to PPIA-12 transition regression
         run: python scripts/validate-ppia05-to-ppia12-transition.py
