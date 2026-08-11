@@ -88,7 +88,7 @@ def main() -> None:
 
     principles = " ".join(matrix["principles"]).lower()
     for fragment in (
-        "permission", "campaign/scene", "typed hierarchy", "co-occurrence", "environment templates",
+        "authorize", "campaign/scene", "typed hierarchy", "co-occurrence", "environment templates",
         "world-local", "proposals", "unknown", "conflicted", "nonvisual"
     ):
         require(fragment in principles, f"Inspector principles missing {fragment!r}")
