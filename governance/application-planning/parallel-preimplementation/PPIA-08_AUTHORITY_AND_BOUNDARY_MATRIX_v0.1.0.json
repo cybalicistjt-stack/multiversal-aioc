@@ -1,0 +1,44 @@
+{
+  "schema_version":"0.1.0",
+  "work_item_id":"PPIA-08",
+  "status":"foundation_candidate",
+  "authority_levels":[
+    {"id":"source_explicit","meaning":"behavior directly established by canonical repository source or retained design source"},
+    {"id":"owner_directed","meaning":"behavior explicitly directed by the owner, including map grid and dungeon authoring expansion"},
+    {"id":"derived_foundation","meaning":"data/UX structure derived to make explicit or owner-directed requirements implementable without inventing unrelated game mechanics"},
+    {"id":"future_proposal","meaning":"not fixed at foundation and requires later governed design/acceptance"}
+  ],
+  "domain_handoffs":[
+    {"id":"P8-HO-001","owner":"MV-IA-F005 Campaign/Scene/Session Builder","ppia08_use":"Deepens authoring while preserving aggregate identity, launch snapshot and Campaign-local state semantics."},
+    {"id":"P8-HO-002","owner":"PPIA-12 World/Setting Authoring","ppia08_use":"References reusable Setting/environment Definitions; Campaign placement/current state never rewrites them."},
+    {"id":"P8-HO-003","owner":"PPIA-02 Creature/NPC Experience","ppia08_use":"Places stable Creature/NPC references into Scenes/cells/areas/zones; does not fork definitions."},
+    {"id":"P8-HO-004","owner":"PPIA-03 Items/Inventory Experience","ppia08_use":"Places stable Item/instance references and local Scene state; inventory/ownership remain PPIA-03."},
+    {"id":"P8-HO-005","owner":"PPIA-04 Vehicle Experience","ppia08_use":"Places Vehicle references including multi-cell areas; vehicle state semantics remain PPIA-04."},
+    {"id":"P8-HO-006","owner":"PPIA-05 Species/Forms Biology","ppia08_use":"References biology/form state where relevant; no Species definition mutation."},
+    {"id":"P8-HO-007","owner":"MV-IA-F012 / PPIA-11 Encounter & Balance","ppia08_use":"Places Encounter refs/spawn zones/objectives/hazards; does not own encounter balance or simulation."},
+    {"id":"P8-HO-008","owner":"MV-IA-F020 Permissions","ppia08_use":"Filters hidden map layers, cells, placements, notes, triggers and counts before serialization/aggregation."},
+    {"id":"P8-HO-009","owner":"MV-IA-F021 Recovery","ppia08_use":"Applies expected-version, operation-ID, status lookup, reconnect and bounded offline rules to authoring mutations."},
+    {"id":"P8-HO-010","owner":"Battle Map / Scene Builder design standards","ppia08_use":"Uses map, grid/gridless, layers, hazards, triggers, inspector and accessible authoring conventions without absorbing tactical resolution."}
+  ],
+  "map_authoring_authority":{
+    "uploaded_image_asset":"asset/media owner; PPIA-08 stores authorized stable reference and Scene association",
+    "grid_calibration":"PPIA-08 Campaign/Scene authoring metadata",
+    "cell_area_zone_addresses":"PPIA-08 location/placement semantics",
+    "content_definitions":"owning object domains",
+    "placement_records":"PPIA-08 Campaign-local authoring",
+    "dungeon_geometry":"PPIA-08 Scene-owned authoring geometry",
+    "combat_movement_los_cover":"owning tactical/action rules, not inferred by PPIA-08 foundation"
+  },
+  "blocking_guardrails":[
+    "Uploaded map pixels are never destructively changed merely to align a grid.",
+    "Grid translation for calibration is not confused with viewport/camera pan.",
+    "A placement never becomes ownership of the referenced source Definition.",
+    "Hidden placement existence never leaks through counts, labels, search, errors, exports, diagnostics, notifications or AI context.",
+    "Launch snapshots pin map/calibration/placement versions; later edits do not silently rewrite active Session meaning.",
+    "Dungeon geometry does not invent collision, cover, LOS, damage, movement or balance rules.",
+    "Gridless Scenes remain supported.",
+    "Every required map workflow has a semantic nonvisual equivalent.",
+    "AI suggestions remain proposals until governed acceptance.",
+    "No foundation work activates application runtime, STAGE-A-A2, release, deployment, testers, paid services or production credentials."
+  ]
+}
