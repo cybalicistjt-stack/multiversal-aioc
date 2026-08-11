@@ -1,0 +1,47 @@
+name: Validate PPIA-07 Grammar and Reference Corpus
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_DETERMINISTIC_GRAMMAR_CANDIDATE_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_RUNE_REFERENCE_CORPUS_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_GRAMMAR_AND_REFERENCE_CANDIDATE.md'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_SOURCE_AND_DESIGN_INVENTORY.md'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_RUNE_COMPOSITION_TAXONOMY_v0.1.0.json'
+      - 'governance/ai/work-state/PPIA-07-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia07-grammar-reference.py'
+      - '.github/workflows/validate-ppia-07-grammar-reference.yml'
+  push:
+    branches:
+      - governance/ppia-07-rune-construction-rpg-system
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_DETERMINISTIC_GRAMMAR_CANDIDATE_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_RUNE_REFERENCE_CORPUS_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_GRAMMAR_AND_REFERENCE_CANDIDATE.md'
+      - 'governance/ai/work-state/PPIA-07-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia07-grammar-reference.py'
+      - '.github/workflows/validate-ppia-07-grammar-reference.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-grammar-reference:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PPIA-07 grammar and reference corpus
+        run: python scripts/validate-ppia07-grammar-reference.py
+      - name: Validate PPIA-07 foundation regression
+        run: python scripts/validate-ppia07-foundation.py
+      - name: Validate PPIA-12 to PPIA-07 transition regression
+        run: python scripts/validate-ppia12-to-ppia07-transition.py
+      - name: Validate generalized PPIA program continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
