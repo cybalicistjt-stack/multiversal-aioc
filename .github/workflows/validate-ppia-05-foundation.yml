@@ -1,0 +1,38 @@
+name: Validate PPIA-05 Foundation
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_SOURCE_AND_DESIGN_INVENTORY.md'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_SPECIES_FORMS_BIOLOGY_TAXONOMY_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_ABILITY_BIOLOGY_ROUTING_v0.1.0.json'
+      - 'scripts/validate-ppia05-foundation.py'
+      - 'scripts/analyze-ppia01-shapeshifter-pricing.py'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-01_CSV_SOURCE_NAME_MAP.json'
+      - 'governance/object-system/csv-intake/CSV_SOURCE_REGISTRY.json'
+      - 'governance/object-system/csv-intake/CSV_DOMAIN_ROUTING_CONTRACT_REGISTRY.json'
+      - '.github/workflows/validate-ppia-05-foundation.yml'
+  push:
+    branches:
+      - governance/ppia-05-species-forms-biology
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_SOURCE_AND_DESIGN_INVENTORY.md'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_SPECIES_FORMS_BIOLOGY_TAXONOMY_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_ABILITY_BIOLOGY_ROUTING_v0.1.0.json'
+      - 'scripts/validate-ppia05-foundation.py'
+      - 'scripts/analyze-ppia01-shapeshifter-pricing.py'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-01_CSV_SOURCE_NAME_MAP.json'
+      - 'governance/object-system/csv-intake/CSV_SOURCE_REGISTRY.json'
+      - 'governance/object-system/csv-intake/CSV_DOMAIN_ROUTING_CONTRACT_REGISTRY.json'
+      - '.github/workflows/validate-ppia-05-foundation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia05-foundation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate PPIA-05 source/design foundation
+        run: python scripts/validate-ppia05-foundation.py

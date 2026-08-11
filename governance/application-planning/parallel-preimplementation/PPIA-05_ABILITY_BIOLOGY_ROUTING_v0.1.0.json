@@ -1,0 +1,66 @@
+{
+  "format": "multiversal-ppia05-ability-biology-routing",
+  "version": "0.1.0",
+  "work_item": "PPIA-05",
+  "status": "foundation-routing-contract",
+  "purpose": "Prevent mixed Species/Innate/Elementalist and environment Ability datasets from being treated as automatic biology ownership while preserving source-backed Species/Form/Adaptation capability routes.",
+  "sources": [
+    {
+      "retained_file": "Species_Innate_Abilities.csv",
+      "governed_dataset": "species_elementalist_and_innate_abilities_catalog.csv",
+      "rows": 2203,
+      "sha256": "3fec45fbb10d6adb6527078dc5abcf3726816ea2fbcc983b5c07f96a13951552",
+      "governed_domain": "abilities",
+      "governed_next_action": "species/innate ownership classification and cross-file identity reconciliation",
+      "categories": [
+        {"name": "Species Perks", "rows": 260, "ppia05_route": "species-eligibility-and-trait-review", "automatic_biology_ownership": false},
+        {"name": "Innate Abilities", "rows": 539, "ppia05_route": "innate-form-and-host-biology-classification", "automatic_biology_ownership": false},
+        {"name": "Elementalist Abilities", "rows": 1404, "ppia05_route": "general-ability-domain-unless-explicit-biological-binding", "automatic_biology_ownership": false}
+      ]
+    },
+    {
+      "retained_file": "Prestige_Env_Abilities.csv",
+      "governed_dataset": "prestige_environment_and_special_ability_trees_catalog.csv",
+      "rows": 1018,
+      "sha256": "052897f355daa1719d7e44ad04642f3cdb5ccff208b2302f24c81711f8a205d4",
+      "governed_domain": "abilities",
+      "environment_based_collection_rows": 296,
+      "ppia05_route": "environment-adaptation-cross-check-only",
+      "automatic_biology_ownership": false
+    }
+  ],
+  "shapeshifter_reconciliation": {
+    "source_pdf": "Innate Trees(3).PDF",
+    "parent_tree": "Shapeshifter Archetype",
+    "detailed_ability_rows": 60,
+    "pricing_only_rows": 57,
+    "branches": [
+      {"branch": "Combat Forms", "detailed": 20, "pricing_only": 20},
+      {"branch": "Environmental Adaptations", "detailed": 20, "pricing_only": 19},
+      {"branch": "Utility Transformations", "detailed": 20, "pricing_only": 18}
+    ],
+    "automatic_merges_authorized": 0,
+    "pairing_rule": "Name similarity, tier, position and shared branch are review hints only. Pairing requires exact source evidence or an explicitly governed owner-delegated recommendation with rationale, alternatives, confidence and reversibility.",
+    "existing_analyzer": "scripts/analyze-ppia01-shapeshifter-pricing.py"
+  },
+  "classification_rules": [
+    "A Species prerequisite or Species Perk label establishes eligibility/source ownership, not necessarily anatomy or physiology.",
+    "Innate in a tree name is not sufficient to decide whether a capability is biological, psychic, magical, technological, archetypal or mixed.",
+    "Elementalist rows remain Ability-domain content unless an explicit Species/Form/body rule binds them biologically.",
+    "Environment-Based Ability Collection rows are contextual/learned by default for routing purposes; biological Adaptation requires explicit body/Species/Form evidence.",
+    "A biological-looking Ability name does not establish exact mechanics, compatibility, permanence, anatomy or identity.",
+    "Source absence stays explicit; no inferred organ, limb, sense, speed, resistance, vulnerability, lifespan or environmental tolerance is promoted as source fact.",
+    "Runtime transformation or Adaptation state is not the reusable Ability/Species/Form Definition."
+  ],
+  "routing_outputs": {
+    "source_backed_species_or_form_definition_fact": "PPIA-05 Species/Form taxonomy",
+    "source_backed_species_gated_ability": "Ability system plus PPIA-05 eligibility relation",
+    "learned_or_contextual_environment_ability": "Ability system; environment authoring routes to PPIA-08/PPIA-12",
+    "creature_form_or_playable_conversion": "PPIA-02 handoff",
+    "equipment_symbiote_or_cybernetic_asset": "PPIA-03 handoff",
+    "runtime_transform_action": "MV-IA-F006/F007 handoff",
+    "balance_or_pricing_interpretation": "PPIA-11 unless already explicit source fact",
+    "world_specific_culture_or_environment_fact": "PPIA-12 handoff"
+  },
+  "promotion_boundary": "This routing contract classifies evidence and owning surfaces only. It does not create canonical Species/Form Definitions, merge Shapeshifter pricing rows, invent biology, mutate source CSVs/PDFs, or authorize application runtime/release operations."
+}
