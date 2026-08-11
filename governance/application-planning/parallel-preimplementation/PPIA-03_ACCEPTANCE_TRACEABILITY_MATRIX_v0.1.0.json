@@ -1,0 +1,74 @@
+{
+  "format": "multiversal-ppia03-item-inventory-acceptance-traceability-matrix",
+  "version": "0.1.0",
+  "work_item": "PPIA-03",
+  "status": "completion_contract_candidate",
+  "requirements": [
+    {"requirement_id":"PPIA03-AC-001","category":"identity_layering","requirement":"Reusable Item Definition and Asset Instance identities remain distinct wherever both are shown.","traces":["PPIA-03_ITEM_EXPERIENCE_TAXONOMY_v0.1.0.json","MV-IA-F008","MV-IA-F002"],"reference_cases":["PPIA03-RC-001","PPIA03-RC-002"]},
+    {"requirement_id":"PPIA03-AC-002","category":"identity_layering","requirement":"Definition variant/configuration, live Asset Instance, mutable state, and knowledge state never silently replace source identity.","traces":["PPIA-03_ITEMS_EQUIPMENT_INVENTORY_EXPERIENCE_SPEC_v1.0.0.md","PPIA-03_ITEM_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json"],"reference_cases":["PPIA03-RC-003","PPIA03-RC-014"]},
+    {"requirement_id":"PPIA03-AC-003","category":"identity_layering","requirement":"Display-name equality never authorizes identity merge or source resolution.","traces":["PPIA-01_INFERENCE_THIN_CONTENT_REVIEW_REGISTER.md","PPIA-03_ITEM_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json"],"reference_cases":["PPIA03-RC-003","PPIA03-RC-005"]},
+
+    {"requirement_id":"PPIA03-AC-004","category":"source_provenance","requirement":"Source facts, source-unspecified values, reference-only records, conflicts, inference, and owner-delegated recommendations remain distinguishable.","traces":["PPIA-03_SOURCE_AND_DESIGN_INVENTORY.md","PPIA-03_ITEMS_EQUIPMENT_INVENTORY_EXPERIENCE_SPEC_v1.0.0.md"],"reference_cases":["PPIA03-RC-003","PPIA03-RC-004","PPIA03-RC-005"]},
+    {"requirement_id":"PPIA03-AC-005","category":"source_provenance","requirement":"All 53 recovered R1 Item-classified candidates remain accounted for without automatic canonical promotion.","traces":["PPIA-03_R1_DEFERRED_ITEM_CANDIDATES.csv","PPIA-03_R1_DEFERRED_ITEM_ROUTING_v0.1.0.json"],"reference_cases":[]},
+    {"requirement_id":"PPIA03-AC-006","category":"source_provenance","requirement":"The obsolete 487-object semantic-parse database is not used as Item-content completeness authority.","traces":["PPIA-03_SOURCE_AND_DESIGN_INVENTORY.md","PPIA-01_SEMANTIC_PARSE_RETIREMENT_ASSESSMENT.md"],"reference_cases":[]},
+
+    {"requirement_id":"PPIA03-AC-007","category":"authority_relations","requirement":"Ownership, custody, possession, control, access, and usage authority remain independent relations.","traces":["MV-IA-F008","PPIA-03_ITEM_EXPERIENCE_TAXONOMY_v0.1.0.json"],"reference_cases":["PPIA03-RC-012","PPIA03-RC-013"]},
+    {"requirement_id":"PPIA03-AC-008","category":"authority_relations","requirement":"Equipment, installation, attunement, or bond assignment never silently transfers ownership.","traces":["PPIA-03_ITEM_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json","PPIA-03_WORKFLOW_AUTHORING_CONTRACT_MATRIX_v0.1.0.json"],"reference_cases":["PPIA03-RC-001","PPIA03-RC-009","PPIA03-RC-010","PPIA03-RC-013"]},
+    {"requirement_id":"PPIA03-AC-009","category":"authority_relations","requirement":"Lending/transfer dialogs state exactly which authority relations change before commit.","traces":["PPIA-03_WORKFLOW_AUTHORING_CONTRACT_MATRIX_v0.1.0.json"],"reference_cases":["PPIA03-RC-012","PPIA03-RC-016"]},
+
+    {"requirement_id":"PPIA03-AC-010","category":"containment_privacy","requirement":"Containment is acyclic and moves validate destination capacity/compatibility before commit.","traces":["PPIA-03_ITEM_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json","IT-WF-002"],"reference_cases":["PPIA03-RC-006"]},
+    {"requirement_id":"PPIA03-AC-011","category":"containment_privacy","requirement":"Unauthorized hidden contents are filtered before child counts, total weight/value, occupancy, capacity summaries, search, export, diagnostics, or AI context.","traces":["MV-IA-F020","PPIA-03_ITEM_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json"],"reference_cases":["PPIA03-RC-006","PPIA03-RC-014"]},
+    {"requirement_id":"PPIA03-AC-012","category":"containment_privacy","requirement":"Container movement has a non-drag keyboard/touch/nonvisual command path.","traces":["PPIA-03_WORKFLOW_AUTHORING_CONTRACT_MATRIX_v0.1.0.json"],"reference_cases":["PPIA03-RC-006"]},
+
+    {"requirement_id":"PPIA03-AC-013","category":"quantity_stack","requirement":"Stack merge requires governed compatibility across identity/version/state/quality/provenance/ownership/restrictions as applicable.","traces":["IT-WF-004","PPIA-03_ITEM_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json"],"reference_cases":["PPIA03-RC-011"]},
+    {"requirement_id":"PPIA03-AC-014","category":"quantity_stack","requirement":"Split/merge preserves attributable lot lineage and cannot erase ownership or source provenance.","traces":["MV-IA-F008","IT-WF-004"],"reference_cases":["PPIA03-RC-011"]},
+
+    {"requirement_id":"PPIA03-AC-015","category":"equipment","requirement":"Equipment/loadout validates slot/hand/layer/host/station/attunement compatibility and applicable requirements.","traces":["IT-WF-003","PPIA-03_ITEM_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json"],"reference_cases":["PPIA03-RC-001","PPIA03-RC-010","PPIA03-RC-013"]},
+    {"requirement_id":"PPIA03-AC-016","category":"equipment","requirement":"Equipping an Asset never rewrites Character or Item source Definition mechanics.","traces":["MV-IA-F004","MV-IA-F008","IT-WF-003"],"reference_cases":["PPIA03-RC-013"]},
+
+    {"requirement_id":"PPIA03-AC-017","category":"resource_use","requirement":"Current ammunition/charges/doses are separate from governed maximum capacity/configuration.","traces":["PPIA-03_ITEM_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json"],"reference_cases":["PPIA03-RC-002","PPIA03-RC-007"]},
+    {"requirement_id":"PPIA03-AC-018","category":"resource_use","requirement":"Seven source-unspecified energy-weapon capacity records remain unknown/source-unspecified rather than zero, unlimited, or fabricated.","traces":["PPIA-01_INFERENCE_THIN_CONTENT_REVIEW_REGISTER.md","PPIA-03_ITEMS_EQUIPMENT_INVENTORY_EXPERIENCE_SPEC_v1.0.0.md"],"reference_cases":["PPIA03-RC-004"]},
+    {"requirement_id":"PPIA03-AC-019","category":"resource_use","requirement":"Energy Sniper Rifle, Plasma Carbine, and Cryo Blaster reference-only names cannot be selected as complete weapon Definitions until governed Definitions exist.","traces":["PPIA-03_ITEM_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json"],"reference_cases":["PPIA03-RC-005"]},
+    {"requirement_id":"PPIA03-AC-020","category":"resource_use","requirement":"Denied or failed-before-commit use/reload/recharge/consume operations spend no authoritative inventory resource.","traces":["MV-IA-F007","MV-IA-F008","IT-WF-008"],"reference_cases":["PPIA03-RC-002","PPIA03-RC-007"]},
+
+    {"requirement_id":"PPIA03-AC-021","category":"identification_reveal","requirement":"Hidden/unrevealed loot contributes no existence, count, value, weight, source, relationship, or diagnostic clue to unauthorized roles.","traces":["MV-IA-F020","IT-WF-006"],"reference_cases":["PPIA03-RC-014"]},
+    {"requirement_id":"PPIA03-AC-022","category":"identification_reveal","requirement":"Discovery/identification changes future knowledge projection without rewriting underlying true Definition/Asset state.","traces":["PPIA-03_ITEM_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json","IT-WF-006"],"reference_cases":["PPIA03-RC-014"]},
+
+    {"requirement_id":"PPIA03-AC-023","category":"economy_transfer","requirement":"Shop/cart/trade proposal state is non-authoritative until an explicit transaction commits.","traces":["IT-WF-007","MV-IA-F008"],"reference_cases":["PPIA03-RC-016"]},
+    {"requirement_id":"PPIA03-AC-024","category":"economy_transfer","requirement":"Accepted transaction updates exact Assets/lots/authority relations and consideration atomically according to the governing profile.","traces":["IT-WF-005","IT-WF-007"],"reference_cases":["PPIA03-RC-012","PPIA03-RC-016"]},
+    {"requirement_id":"PPIA03-AC-025","category":"economy_transfer","requirement":"Private offers, hidden stock, and unrelated holdings are excluded before counts, suggestions, or transaction projections.","traces":["MV-IA-F020","IT-WF-007"],"reference_cases":["PPIA03-RC-014"]},
+
+    {"requirement_id":"PPIA03-AC-026","category":"condition_repair","requirement":"Durability/condition semantics are profile-driven; zero durability does not universally delete an Asset.","traces":["IT-WF-009","PPIA-03_ITEMS_EQUIPMENT_INVENTORY_EXPERIENCE_SPEC_v1.0.0.md"],"reference_cases":["PPIA03-RC-015"]},
+    {"requirement_id":"PPIA03-AC-027","category":"condition_repair","requirement":"Repair/maintenance changes current state while preserving prior damage, repair, and provenance history.","traces":["IT-WF-009"],"reference_cases":["PPIA03-RC-015"]},
+
+    {"requirement_id":"PPIA03-AC-028","category":"crafting_salvage","requirement":"Crafting/salvage reserves exact inputs/quantities and prevents competing accepted double-spend.","traces":["IT-WF-010","MV-IA-F008"],"reference_cases":["PPIA03-RC-017"]},
+    {"requirement_id":"PPIA03-AC-029","category":"crafting_salvage","requirement":"Cancelled/failed work orders consume no inputs and create no authoritative outputs.","traces":["IT-WF-010"],"reference_cases":["PPIA03-RC-017"]},
+    {"requirement_id":"PPIA03-AC-030","category":"crafting_salvage","requirement":"Successful transformation preserves lineage from exact inputs/work order to outputs/byproducts.","traces":["IT-WF-010"],"reference_cases":["PPIA03-RC-017"]},
+
+    {"requirement_id":"PPIA03-AC-031","category":"special_assets","requirement":"Living/sentient items preserve Asset identity while autonomy, bond, progression, and capability relationships remain explicit.","traces":["IT-WF-011","PPIA-03_ITEMS_EQUIPMENT_INVENTORY_EXPERIENCE_SPEC_v1.0.0.md"],"reference_cases":["PPIA03-RC-008"]},
+    {"requirement_id":"PPIA03-AC-032","category":"special_assets","requirement":"Symbiote/cybernetic Asset behavior remains distinct from host biology/form consequences routed to PPIA-05.","traces":["IT-WF-011"],"reference_cases":["PPIA03-RC-009"]},
+    {"requirement_id":"PPIA03-AC-033","category":"special_assets","requirement":"EVA chassis, loose module, installed module, wearer, interface, and consumable identities/relations remain distinguishable.","traces":["IT-WF-003","IT-WF-011"],"reference_cases":["PPIA03-RC-010"]},
+    {"requirement_id":"PPIA03-AC-034","category":"special_assets","requirement":"Software-like Assets are not forced into physical carried-weight/container semantics when their profile is non-physical.","traces":["IT-WF-011"],"reference_cases":["PPIA03-RC-018"]},
+
+    {"requirement_id":"PPIA03-AC-035","category":"permissions_privacy","requirement":"Authorization precedes search, counts, aggregates, relationships, provenance, history, exports, diagnostics, and AI/service retrieval.","traces":["MV-IA-F020","PPIA-03_ITEM_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json"],"reference_cases":["PPIA03-RC-006","PPIA03-RC-014"]},
+    {"requirement_id":"PPIA03-AC-036","category":"permissions_privacy","requirement":"GM, Assistant GM, Owner/Admin, Player, Creator, and service/AI projections preserve their scoped authority without implicit elevation.","traces":["MV-IA-F020","PPIA-03_ITEM_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json"],"reference_cases":["PPIA03-RC-012","PPIA03-RC-014"]},
+
+    {"requirement_id":"PPIA03-AC-037","category":"recovery_idempotency","requirement":"Every authoritative Item/Asset mutation is idempotent and expected-version checked or governed by an equivalent concurrency contract.","traces":["MV-IA-F021","PPIA-03_WORKFLOW_AUTHORING_CONTRACT_MATRIX_v0.1.0.json"],"reference_cases":["PPIA03-RC-016","PPIA03-RC-017"]},
+    {"requirement_id":"PPIA03-AC-038","category":"recovery_idempotency","requirement":"Ambiguous network outcomes query command/operation status using the same operation ID before any retry.","traces":["MV-IA-F021","IT-WF-012"],"reference_cases":["PPIA03-RC-016"]},
+    {"requirement_id":"PPIA03-AC-039","category":"recovery_idempotency","requirement":"Reconnect revalidates current identity, Campaign, role, permissions, entitlements, pack/version, and lifecycle; cached hidden/revoked fields cannot restore authority.","traces":["MV-IA-F021","MV-IA-F020","IT-WF-012"],"reference_cases":["PPIA03-RC-016"]},
+
+    {"requirement_id":"PPIA03-AC-040","category":"accessibility_responsive","requirement":"Every core Item/Inventory operation works through keyboard/touch/screen-reader-equivalent controls and preserves essential status at compact/mobile and high-zoom layouts without relying on color or motion.","traces":["PPIA-03_ITEM_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json","PPIA-03_WORKFLOW_AUTHORING_CONTRACT_MATRIX_v0.1.0.json","MV-IA-F022"],"reference_cases":["PPIA03-RC-006","PPIA03-RC-011","PPIA03-RC-012","PPIA03-RC-014"]}
+  ],
+  "summary": {
+    "requirements": 40,
+    "categories": 15,
+    "reference_cases_available": 18,
+    "source_or_upstream_traceability_required": true,
+    "reference_case_traceability_required_where_applicable": true,
+    "synthetic_cases_are_canonical_content": false,
+    "a2_activation_authorized": false,
+    "application_runtime_mutation_authorized": false,
+    "release_authorized": false,
+    "deployment_authorized": false
+  }
+}
