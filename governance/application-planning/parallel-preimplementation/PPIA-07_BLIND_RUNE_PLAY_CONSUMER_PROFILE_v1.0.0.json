@@ -1,0 +1,168 @@
+{
+  "format": "multiversal-ppia07-blind-rune-play-consumer-profile",
+  "version": "1.0.0",
+  "work_item": "PPIA-07",
+  "status": "completion_contract_candidate",
+  "consumer_profile": {
+    "consumerProfileId": "PPIA07-BLIND-RUNE-PLAY",
+    "consumerVersion": "1.0.0",
+    "consumerType": "live-rune-construction-action",
+    "proposalType": "blind-rune-construction",
+    "shared_component": "IA-D04-002 Proposal and Approval Shared Component",
+    "action_loop": "MV-IA-F006 First Playable Action and GM Approval Loop",
+    "authoritative_resolution_owner": "MV-IA-F006/F007 plus owning Action/Ability/magic rules",
+    "rune_semantics_owner": "PPIA-07",
+    "campaign_scene_session_owner": "PPIA-08",
+    "permission_owner": "MV-IA-F020",
+    "recovery_owner": "MV-IA-F021",
+    "final_balance_owner": "PPIA-11"
+  },
+  "policy_switch": {
+    "field": "rune_resolution_visibility_mode",
+    "blind_value": "blind-gm-adjudicated",
+    "default_value": "standard-preview",
+    "scope": ["campaign", "session"],
+    "session_may_narrow_campaign_policy": true,
+    "player_may_widen_policy": false,
+    "silence_is_approval": false
+  },
+  "blind_mode_definition": "A player constructs and submits a syntactically valid Rune Construction without receiving the interpreted/resolved magical effect before GM adjudication. The server resolves the construction through the same deterministic grammar and owning-rule adapters used by standard play, projects the resolved effect only to authorized GM/Assistant-GM decision-makers, and commits nothing unless an authorized final decision succeeds.",
+  "player_predecision_projection": {
+    "visible": [
+      "player-selected rune glyphs and any rune names the player is already permitted to know",
+      "canonical linear serialization of the submitted construction",
+      "connection topology and declared modifiers that originated from the player",
+      "player-declared targets that are visible and selectable to that player",
+      "syntax validity and non-semantic parser errors",
+      "structural edit warnings that do not decode the effect",
+      "the player's own known resource commitments when owning rules permit them to know those values",
+      "submission status and proposal identity"
+    ],
+    "hidden_until_policy_allows": [
+      "interpreted effect summary",
+      "resolved effect family or spell-like outcome",
+      "predicted damage, healing, condition, movement, summon, banishment, control, drain, dispel or other final mutation",
+      "GM-only compatibility findings",
+      "hidden target state",
+      "secret modifiers or difficulties",
+      "counterplay or resistance outcome",
+      "GM-only source notes",
+      "hidden setting-local rules",
+      "final approval likelihood or AI prediction of GM decision"
+    ],
+    "no_effect_preview": true,
+    "no_hidden_effect_in_tooltips_counts_errors_exports_diagnostics_notifications_or_ai": true
+  },
+  "gm_decision_projection": {
+    "required_evidence_slots": [
+      "proposer and controlled actor",
+      "campaign scene session and snapshot identities",
+      "original visual construction and canonical linear serialization",
+      "decoded operation and essence sequence",
+      "interpreted effect summary",
+      "declared and resolved targets",
+      "range area duration timing trigger condition and shape",
+      "resolved owning-rule resource adapters and costs",
+      "SCI value band and factors",
+      "CSL value band and factors",
+      "resistance counterspell disruption and other counterplay hooks",
+      "crafting inscription or item-binding fields when applicable",
+      "validation warnings ambiguity findings and unresolved required adapters",
+      "source provenance rule references and setting-local scope",
+      "predicted authoritative Effects Resources Conditions movement target-state and other mutations",
+      "proposal actor target session permission entitlement pack schema and rule versions",
+      "stale conflict revocation and compatibility findings"
+    ],
+    "effect_resolution_visible_to_authorized_decider": true,
+    "permission_filter_before_resolution_and_serialization": true,
+    "opening_review_mutates_state": false
+  },
+  "decision_contract": {
+    "final_decision_types": ["approve", "deny", "modify-and-approve"],
+    "approve": "Revalidate current authority, versions, resources, targets, counterplay and effect schema; if valid, atomically commit the reviewed resolved effect.",
+    "deny": "Record attributable denial and user-safe reason; commit no rune costs or Effects unless an owning rule explicitly defines a separate attempt cost that was already authorized and represented before submission.",
+    "modify-and-approve": "Preserve the immutable player construction and original resolved proposal, record exact changed fields/original/final values/reasons, revalidate the modified result, require explicit final confirmation, then atomically commit the modified approved result.",
+    "allowed_modification_classes": [
+      "resolved magnitude or extent",
+      "resolved duration",
+      "resolved target set within authorized candidate targets",
+      "resolved Effect/Condition details",
+      "resource or cost result where owning rules permit GM adjudication",
+      "narrative manifestation or side effect",
+      "counterplay or resistance adjudication",
+      "setting-local legality or scope ruling"
+    ],
+    "rune_expression_rewrite_rule": "A GM may not silently replace the player's submitted rune expression. If the expression itself is changed, the decision must record the original expression, final GM-adjusted expression and reason as a semantic modification; history must never attribute the changed expression to the player.",
+    "silence_is_approval": false,
+    "one_final_decision_may_win": true
+  },
+  "atomic_commit_contract": {
+    "required_event": "BlindRuneActionResultCommitted",
+    "writes_atomically": [
+      "decision receipt",
+      "accepted rune result",
+      "accepted costs and resource changes",
+      "Effects and Conditions",
+      "target-state changes",
+      "movement or placement changes",
+      "summon/bind/banish state when applicable",
+      "session sequence and version",
+      "role-safe history",
+      "required notifications"
+    ],
+    "partial_success_exposed_as_complete": false,
+    "operation_id_required": true,
+    "expected_version_required": true
+  },
+  "postdecision_player_projection": {
+    "approval_status_visible": true,
+    "denial_status_visible": true,
+    "modified_status_visible": true,
+    "outcome_visibility_policy_values": ["outcome-only", "observed-details", "full-after-resolution"],
+    "default_blind_outcome_visibility": "observed-details",
+    "rule": "The player receives only the post-resolution information permitted by Campaign/Session reveal policy and current perception/knowledge permissions. Blind mode does not force full mechanical decoding after resolution.",
+    "gm_only_evidence_never_copied_to_player_history": true
+  },
+  "knowledge_and_discovery": {
+    "blind_play_can_support_experimentation": true,
+    "successful_use_auto_teaches_full_rune_meaning": false,
+    "discovery_or_identification_rules_must_be_explicit": true,
+    "known_rune_labels_are_permission_scoped": true,
+    "unknown_runes_may_use_stable_nonrevealing_glyph_ids": true,
+    "history_may_record_observed_outcome_without_hidden_decoding": true
+  },
+  "ai_boundary": {
+    "player_ai_may_help_with_syntax_and_accessibility": true,
+    "player_ai_may_decode_or_predict_hidden_effect": false,
+    "player_ai_may_predict_gm_approval": false,
+    "gm_ai_may_receive_authorized_decision_projection": true,
+    "gm_ai_role": "advisory-only",
+    "ai_may_approve_deny_modify_or_commit": false
+  },
+  "offline_and_recovery": {
+    "offline_draft_allowed": true,
+    "offline_effect_resolution_for_player_allowed": false,
+    "offline_submission_allowed": false,
+    "offline_gm_decision_allowed": false,
+    "ambiguous_submit_or_decision": "Query current status with the original operationId/decisionId before retrying.",
+    "duplicate_commit_allowed": false,
+    "reconnect_reauthorizes_and_reprojects": true
+  },
+  "accessibility": {
+    "visual_rune_graph_has_linear_equivalent": true,
+    "blindness_of_gameplay_never_means_visual_only_ui": true,
+    "screen_reader_can_construct_without_receiving_hidden_effect": true,
+    "keyboard_touch_high_zoom_reflow_supported": true,
+    "noncolor_status_and_warnings": true,
+    "gm_effect_card_has_semantic_ordered_text_equivalent": true
+  },
+  "non_assumptions": {
+    "blind_mode_changes_rune_grammar": false,
+    "blind_mode_creates_separate_balance_rules": false,
+    "blind_mode_allows_auto_approval": false,
+    "blind_mode_allows_player_effect_prediction_from_hidden_data": false,
+    "blind_mode_allows_gm_to_erase_original_proposal": false,
+    "blind_mode_bypasses_resistance_counterspell_or_setting_rules": false,
+    "blind_mode_authorizes_runtime_activation_or_release": false
+  }
+}
