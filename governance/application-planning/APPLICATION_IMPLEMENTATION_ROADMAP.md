@@ -1,7 +1,7 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 2.3.0  
+**Version:** 2.4.0  
 **Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED + PARALLEL PRE-IMPLEMENTATION WORK ACTIVE  
 **Owner and final authority:** John Brandon Turner  
 **Originally approved:** 2026-08-03  
@@ -27,7 +27,9 @@ Repository and source evidence establishes the following boundary:
 - **The governed A2 branch now exists but A2 is not activated.** `stage-a/a2-universal-object-experience` was created from application `main` `354e24007d2c453d090a2a6cdb31d3e3333c84c1`. No A2 implementation commit has been made. The mandatory v2.6 evidence/checkpoint/recovery runner still requires a repository-capable private checkout before activation, preflight/task-capsule `READY`, and A2-01 work.
 - **Internal Alpha feature design is complete through IA-D09.** IA-D09 remains the completed release-design anchor. Prepared tester/reference, tester-package, demo-campaign, future-workspace-verification, and pack-lifecycle assets do not activate tester access or release.
 - **Design Standards preparation is complete; exact-byte ingestion is still unfinished.** `DS-008-working-series-attempt-002` remains blocked on a repository-capable exact-byte transfer/validation surface and is not completed by preparation artifacts alone.
-- **A new owner-approved parallel work track is active:** **PPIA — Parallel Pre-Implementation Advancement Program**. It contains sixteen non-Codex tranches designed to advance content quality, UX/content authoring, gameplay systems, acceptance material, onboarding, and developer-control design while A2/Design Standards wait for their required execution surfaces. PPIA does not replace or activate A2.
+- **The owner-approved PPIA parallel work track is active.** PPIA contains sixteen non-Codex tranches designed to advance content quality, UX/content authoring, gameplay systems, acceptance material, onboarding, and developer-control design while A2/Design Standards wait for their required execution surfaces. PPIA does not replace or activate A2.
+- **PPIA-01 — Content Quality & Missing-Information Closure is complete.** AIOC PR #212 merged as `f9e2b1fb7c340d27813b09c180b60d34d5fb6f92` after all eight applicable exact-head gates passed on `cb29b217a48b58df03114f4345a71d8c4c2a898a`. The tranche used the 8E-009 CSV-first 20-dataset / 19,199-row authority, closed all 84 explicit high-priority source gaps through governed source/recommendation boundaries, triaged all 10,594 inference/estimate-bearing rows, source-reviewed the 36 P1 high-core records, preserved unresolved/source-limited cases explicitly, and froze a repair/routing backlog without modifying raw `Csv.zip`.
+- **PPIA-02 — Creature & NPC Experience is now the current PPIA work item.** Branch `governance/ppia-02-creature-npc-experience` was created from the exact PPIA-01 canonical merge. PPIA-02 is preparatory design/content work only; it does not activate A2 or authorize runtime mutation.
 
 This section is a recovery summary, not an autosave ledger. More recent verified repository evidence controls if the project advances beyond it.
 
@@ -146,20 +148,37 @@ PPIA is additive. It does not supersede or complete:
 Dependency-optimized execution order:
 `PPIA-01 → 02 → 03 → 04 → 05 → 12 → 07 → 08 → 09 → 10 → 11 → 06 → 13 → 14 → 15 → 16`.
 
+### PPIA completion and current state
+
+**PPIA-01 — Content Quality & Missing-Information Closure: COMPLETE.**
+
+Canonical evidence:
+- PR #212;
+- validated head `cb29b217a48b58df03114f4345a71d8c4c2a898a`;
+- squash merge `f9e2b1fb7c340d27813b09c180b60d34d5fb6f92`;
+- all 84 explicit source gaps governed/closed;
+- all 10,594 inference/estimate-bearing rows classified and routed;
+- all 36 P1 high-core rows source-reviewed;
+- unresolved/source-limited cases and Taser source-variant conflict preserved without fabrication or automatic identity merge.
+
 ### Current PPIA work item
 
-**PPIA-01 — Content Quality & Missing-Information Closure** is the owner-selected current conversational work item.
+**PPIA-02 — Creature & NPC Experience** is the owner-selected current conversational work item.
 
-PPIA-01 must:
-- inventory canonical content domains and source/provenance surfaces;
-- classify incomplete/thin/inconsistent/orphaned/duplicated/ambiguous/presentation-deficient records;
-- distinguish recoverable source-backed omissions from genuine source absence and authored proposals;
-- create a prioritized repair backlog;
-- perform only source-supported repairs;
-- preserve unresolved source gaps explicitly;
-- trace repairs/gaps to affected future feature surfaces.
+PPIA-02 must produce an implementation-ready Creature/NPC experience packet covering:
+- definitive Creature/NPC object presentation hierarchy;
+- summary statistics versus full Inspector information;
+- encounter-use and GM runtime presentation;
+- permission-safe GM-only/hidden information;
+- generic creatures, named NPCs, variants, templates, and instance/definition distinctions;
+- abilities, innate traits, conditions, resources, ecology, habitat, behavior, and encounter roles;
+- loot, carried assets, equipment, ownership, relationships, factions, and provenance;
+- transformations, evolution/forms, summons, minions, and linked entities;
+- comparison, search, filtering, quick-add, and authoring workflows;
+- accessible alternatives for dense stat blocks, including keyboard/screen-reader/mobile behavior;
+- source-grounded reference cases and acceptance/traceability material.
 
-No canonical fact may be invented merely to achieve completeness.
+PPIA-02 must preserve the source/provenance/inference distinctions established by PPIA-01 and must not silently promote source-only, inferred, or recommended content into source fact or authoritative runtime state.
 
 ## Design Standards Completion subproject — unfinished parallel track
 
