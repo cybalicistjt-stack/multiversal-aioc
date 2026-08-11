@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 3,
+  "revision": 4,
   "work_item_id": "PPIA-04",
   "attempt_id": "PPIA-04-attempt-001",
   "track": "parallel-preimplementation-advancement",
@@ -8,15 +8,15 @@
   "branch": "governance/ppia-04-vehicle-mecha-starship",
   "status": "started",
   "started_at": "2026-08-11T17:40:00+00:00",
-  "updated_at": "2026-08-11T17:57:00+00:00",
+  "updated_at": "2026-08-11T18:20:20+00:00",
   "completed_at": null,
   "base_commit": "aee4b5d99f3163454da931a939b142048cea11c5",
-  "latest_pushed_commit": "8afc51555dbb46d68536fb95adcb6b2cc0a9c4e8",
-  "expected_remote_head": "8afc51555dbb46d68536fb95adcb6b2cc0a9c4e8",
-  "pull_request": 226,
+  "latest_pushed_commit": "67017018b8a50694dd041230bc1b6f66395903d8",
+  "expected_remote_head": "67017018b8a50694dd041230bc1b6f66395903d8",
+  "pull_request": 227,
   "objective": "Produce an implementation-ready Vehicle, Mecha & Starship experience packet covering reusable Definition versus owned/deployed/live instance semantics; crew, pilots, passengers, stations and permissions; nested cargo/inventory; components/modules/weapons/armor; damage and condition; fuel, energy, power and resource routing; movement and environment interaction; ownership/custody/control; upgrades and loadouts; docking, boarding and deployment; encounter/runtime presentation; provenance; recovery; responsive/mobile/accessibility behavior; and source-grounded reference cases.",
-  "last_verified_action": "PPIA-04 foundation exact head 076d5abef0db0e3698fe55089fd82b3f69e810d7 passed all ten applicable repository gates, including Validate PPIA-04 Foundation run 31520172864, Validate PPIA Program run 31520172722, Validate PPIA-03 to PPIA-04 Transition run 31520172643, Validate Conversation Continuity run 31520172689, and Validate Operational AIOC Baseline run 31520172827. PR #226 then squash-merged as 8afc51555dbb46d68536fb95adcb6b2cc0a9c4e8 and the governed branch was reset to that exact canonical merge.",
-  "active_substep": "Define the PPIA-04 Vehicle/Mecha/Starship Inspector projection matrix and source-grounded reference cases across owned vehicles, configurations, crew/stations, components, cargo, deployment, movement, combat systems, Resources, damage, docking/boarding, permissions, provenance and recovery.",
+  "last_verified_action": "PPIA-04 Inspector/Reference exact head 54e65762261ea3990f577e4c2f53e7d7eb6825e4 passed all eleven applicable exact-head repository gates, including Validate PPIA-04 Inspector and Reference Cases run 31522131420, Validate PPIA Program run 31522131428, Validate PPIA-04 Foundation run 31522131467, Validate PPIA-03 to PPIA-04 Transition run 31522131494, Validate Conversation Continuity run 31522131372, Validate Interaction Enforcement run 31522131487, and Validate Operational AIOC Baseline run 31522131486. PR #227 then squash-merged as 67017018b8a50694dd041230bc1b6f66395903d8 and the governed branch was reset to that exact canonical merge.",
+  "active_substep": "Define integrated PPIA-04 Vehicle/Mecha/Starship operational workflows and authoring/mutation handoff contracts across Library/Inspector, garage/hangar/fleet, configuration/loadout, crew/stations, cargo/passengers/carried craft, Scene deployment, Player and GM operation, semantic movement, combat systems, Resources, damage/repair, docking/boarding/launch, capture/salvage, provenance and recovery.",
   "completed_substeps": [
     "PPIA-01 completed_verified.",
     "PPIA-02 completed_verified.",
@@ -29,16 +29,23 @@
     "Preserved all 10 recovered R1 vehicle/system structural candidates as source-review-only evidence with zero automatic Definition promotion.",
     "Defined the 14-layer PPIA-04 Vehicle/Mecha/Starship experience taxonomy spanning Definitions, variants, component Definitions, owned vehicle Assets, installed configurations, Scene placement, live operational state, authority relations, crew/stations, cargo/carried craft, damage/failure, Resources, movement/environment, and provenance/history/recovery.",
     "Recorded retained Internal Alpha capabilities and explicit IA-D08-003 advanced-feature deferrals without making deferred simulation features operational.",
-    "PPIA-04 foundation exact head 076d5abef0db0e3698fe55089fd82b3f69e810d7 passed all ten applicable exact-head gates and merged through PR #226 as 8afc51555dbb46d68536fb95adcb6b2cc0a9c4e8."
+    "PPIA-04 foundation exact head 076d5abef0db0e3698fe55089fd82b3f69e810d7 passed all ten applicable exact-head gates and merged through PR #226 as 8afc51555dbb46d68536fb95adcb6b2cc0a9c4e8.",
+    "Defined a 14-group role/field/action Vehicle Inspector projection matrix with 14 governed action contracts and explicit privacy, authority, atomic-mutation, source-unknown, semantic-positioning, recovery and nonvisual-accessibility invariants.",
+    "Defined 20 PPIA-04 reference cases: 9 contract-grounded, 8 synthetic QA, and 3 guardrail cases with zero canonical synthetic records, covering Definition/instance, component relationships, crew/stations, hidden aggregates, carried craft, semantic movement, Actions/Resources, damage/repair, docking/boarding/launch, capture/salvage, recovery, revocation, accessibility and deferred-feature isolation.",
+    "PPIA-04 Inspector/Reference exact head 54e65762261ea3990f577e4c2f53e7d7eb6825e4 passed all eleven applicable exact-head gates and merged through PR #227 as 67017018b8a50694dd041230bc1b6f66395903d8."
   ],
-  "next_action": "Create and validate a role/field/action projection matrix plus Vehicle/Mecha/Starship reference cases covering Definition-versus-instance, crew/station authority, component installation and compatibility, cargo/carried craft, semantic movement, operational Actions, power/fuel/ammunition/heat, damage/failure/repair, docking/boarding/launch, hidden occupants/systems/cargo, ambiguous-network recovery, and accessible nonvisual operation.",
+  "next_action": "Create and validate the PPIA-04 workflow/authoring contract matrix. Map the 14 projection groups, 14 action contracts, and 20 reference cases into end-to-end Vehicle/Mecha/Starship workflows with explicit personas, entry points, preconditions, steps, outputs, mutation owners, forbidden mutations, revalidation points, idempotency/recovery, privacy filtering, responsive/accessibility requirements, and PPIA-03/F013/F014/F007/F020/F021 cross-domain handoffs without activating deferred simulation or inventing source facts.",
   "changed_paths": [
     ".github/workflows/validate-ppia-04-foundation.yml",
+    ".github/workflows/validate-ppia-04-inspector-reference-cases.yml",
     "scripts/validate-ppia04-foundation.py",
+    "scripts/validate-ppia04-inspector-reference-cases.py",
     "scripts/validate-ppia03-to-ppia04-transition.py",
     "governance/application-planning/parallel-preimplementation/PPIA-04_SOURCE_AND_DESIGN_INVENTORY.md",
     "governance/application-planning/parallel-preimplementation/PPIA-04_VEHICLE_EXPERIENCE_TAXONOMY_v0.1.0.json",
-    "governance/application-planning/parallel-preimplementation/PPIA-04_R1_DEFERRED_VEHICLE_SYSTEM_CANDIDATES.csv"
+    "governance/application-planning/parallel-preimplementation/PPIA-04_R1_DEFERRED_VEHICLE_SYSTEM_CANDIDATES.csv",
+    "governance/application-planning/parallel-preimplementation/PPIA-04_VEHICLE_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json",
+    "governance/application-planning/parallel-preimplementation/PPIA-04_REFERENCE_CASES_v0.1.0.json"
   ],
   "completion_gate": {
     "required_evidence_kinds": ["commit", "pull_request", "merge"],
@@ -46,11 +53,13 @@
     "owner_approval_required": false
   },
   "validation": [
-    {"command":"Validate PPIA-04 Foundation run 31520172864","status":"passed","evidence":"exact PR head 076d5abef0db0e3698fe55089fd82b3f69e810d7"},
-    {"command":"Validate PPIA Program run 31520172722","status":"passed","evidence":"exact PR head 076d5abef0db0e3698fe55089fd82b3f69e810d7"},
-    {"command":"Validate PPIA-03 to PPIA-04 Transition run 31520172643","status":"passed","evidence":"exact PR head 076d5abef0db0e3698fe55089fd82b3f69e810d7"},
-    {"command":"Validate Conversation Continuity run 31520172689","status":"passed","evidence":"exact PR head 076d5abef0db0e3698fe55089fd82b3f69e810d7"},
-    {"command":"Validate Operational AIOC Baseline run 31520172827","status":"passed","evidence":"exact PR head 076d5abef0db0e3698fe55089fd82b3f69e810d7"}
+    {"command":"Validate PPIA-04 Inspector and Reference Cases run 31522131420","status":"passed","evidence":"exact PR head 54e65762261ea3990f577e4c2f53e7d7eb6825e4"},
+    {"command":"Validate PPIA Program run 31522131428","status":"passed","evidence":"exact PR head 54e65762261ea3990f577e4c2f53e7d7eb6825e4"},
+    {"command":"Validate PPIA-04 Foundation run 31522131467","status":"passed","evidence":"exact PR head 54e65762261ea3990f577e4c2f53e7d7eb6825e4"},
+    {"command":"Validate PPIA-03 to PPIA-04 Transition run 31522131494","status":"passed","evidence":"exact PR head 54e65762261ea3990f577e4c2f53e7d7eb6825e4"},
+    {"command":"Validate Conversation Continuity run 31522131372","status":"passed","evidence":"exact PR head 54e65762261ea3990f577e4c2f53e7d7eb6825e4"},
+    {"command":"Validate Interaction Enforcement run 31522131487","status":"passed","evidence":"exact PR head 54e65762261ea3990f577e4c2f53e7d7eb6825e4"},
+    {"command":"Validate Operational AIOC Baseline run 31522131486","status":"passed","evidence":"exact PR head 54e65762261ea3990f577e4c2f53e7d7eb6825e4"}
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
@@ -60,13 +69,17 @@
     {"kind":"commit","value":"PPIA-04 foundation validated exact head 076d5abef0db0e3698fe55089fd82b3f69e810d7"},
     {"kind":"pull_request","value":"PPIA-04 foundation PR #226"},
     {"kind":"merge","value":"PPIA-04 foundation squash merge 8afc51555dbb46d68536fb95adcb6b2cc0a9c4e8"},
-    {"kind":"file","value":"PPIA-04 source/design inventory, 14-layer experience taxonomy, recovered R1 vehicle-system reference set, and deterministic foundation validator"}
+    {"kind":"commit","value":"PPIA-04 Inspector/Reference validated exact head 54e65762261ea3990f577e4c2f53e7d7eb6825e4"},
+    {"kind":"pull_request","value":"PPIA-04 Inspector/Reference PR #227"},
+    {"kind":"merge","value":"PPIA-04 Inspector/Reference squash merge 67017018b8a50694dd041230bc1b6f66395903d8"},
+    {"kind":"file","value":"PPIA-04 14-group Vehicle Inspector projection matrix, 20-case reference set, deterministic validator and CI workflow"}
   ],
   "roadmap_projection_pending": true,
   "notes": [
     "The top-level roadmap prose is intentionally not rewritten for every PPIA substep; backlog/checkpoint/pointer authority advances PPIA-04 with roadmap_projection_pending=true until the next batched roadmap projection.",
     "PPIA-03 personal Item/Asset contracts are reusable inputs for cargo/components/equipment but do not define vehicle crew, movement, damage-zone, power, docking, boarding, or deployment semantics.",
     "The obsolete 487-object semantic database is not PPIA-04 content authority.",
+    "Synthetic QA reference cases are acceptance fixtures only and do not create canonical content.",
     "PPIA-04 does not activate STAGE-A-A2 or mutate application runtime.",
     "No release, deployment, tester access, paid service, production credential, unsupported canonical promotion, or cross-domain invention is authorized."
   ]
