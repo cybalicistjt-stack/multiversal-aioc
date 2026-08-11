@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 5,
+  "revision": 6,
   "work_item_id": "PPIA-07",
   "attempt_id": "PPIA-07-attempt-001",
   "track": "parallel-preimplementation-advancement",
@@ -8,16 +8,16 @@
   "branch": "governance/ppia-07-rune-construction-rpg-system",
   "status": "started",
   "started_at": "2026-08-11T21:22:00+00:00",
-  "updated_at": "2026-08-11T22:16:00+00:00",
+  "updated_at": "2026-08-11T22:23:00+00:00",
   "completed_at": null,
   "base_commit": "a7803f8438a837b741f78c875d7ec2e915d37a19",
-  "latest_pushed_commit": "6fd863892cd28ba1de3f8fcf327860607f558234",
-  "expected_remote_head": "6fd863892cd28ba1de3f8fcf327860607f558234",
-  "pull_request": null,
+  "latest_pushed_commit": "09d9fbcf5e8cc81d30645b66689c08e06a60e79d",
+  "expected_remote_head": "09d9fbcf5e8cc81d30645b66689c08e06a60e79d",
+  "pull_request": 242,
   "merge_commit": "183d199d69f5cce121d4b971f33fe6c0145a6c45",
   "objective": "Produce a playable, data-ready compositional Rune Construction RPG System with source-grounded rune vocabulary, deterministic construction grammar, connection and shaping semantics, costs, limits, counters, progression, crafting, worked examples, balance/acceptance material, permission-safe presentation, recovery and accessible operation.",
-  "last_verified_action": "The PPIA-07 source/design foundation remains verified through exact head 73cc1d783ab3dae7f1daaa0608924de14788cf60 / PR #241 / canonical merge 183d199d69f5cce121d4b971f33fe6c0145a6c45. A deterministic grammar/reference candidate is assembled through substantive head 6fd863892cd28ba1de3f8fcf327860607f558234: eight functional atoms, four explicit connection types, twelve validity rules, canonical linear serialization, a deterministic parser/validator, and twenty bounded reference cases. It remains a candidate until exact-head validation and merge.",
-  "active_substep": "Validate and merge the PPIA-07 deterministic Rune Construction grammar and bounded reference corpus candidate. The candidate uses eight reusable functional atoms, four explicit connectors, no implicit connector precedence, typed shaping/modifier slots, canonical linear serialization and twenty reference cases; cost/balance equations remain explicitly outside this milestone.",
+  "last_verified_action": "PR #242 initial exact head 2eb18b651db39ce4991d2f0e50c8d9453cfa2f5d exposed two deterministic preparation defects only: the new validator expected a literal inventory phrase not present in the verified foundation text, and the compressed PPIA-07 checkpoint omitted the earlier PPIA-12 completion merge required by the historical transition validator. The inventory assertion was corrected at 09d9fbcf5e8cc81d30645b66689c08e06a60e79d and the PPIA-12 completion merge evidence is restored here; no grammar mechanic or boundary was weakened.",
+  "active_substep": "Revalidate and merge the PPIA-07 deterministic Rune Construction grammar and bounded reference corpus candidate on PR #242 after deterministic validator/continuity repairs. The candidate still uses eight reusable functional atoms, four explicit connectors, no implicit connector precedence, typed shaping/modifier slots, canonical linear serialization and twenty reference cases; cost/balance equations remain explicitly outside this milestone.",
   "completed_substeps": [
     "PPIA-01 dependency is complete.",
     "PPIA-12 is completed_verified through PR #239 / merge 0ed9f9a0c53b2a132d8f38c0d3cae22cc7ae14a0.",
@@ -30,9 +30,10 @@
     "Assembled four explicit connection types: THEN (>), WITH (&), WHEN (@) and IF (?) with no implicit precedence among mixed connectors.",
     "Assembled twelve validity rules, canonical linear serialization and parse/serialize/parse equivalence requirements while keeping cost/balance outside syntax.",
     "Assembled twenty bounded reference cases covering simple, shaped, triggered, conditional, chained, parallel, inscribed, invalid, ambiguous, permission-filtered, countered and idempotent-recovery scenarios.",
-    "Added a deterministic grammar/reference validator and CI gate that also runs PPIA-07 foundation, PPIA-12→PPIA-07 transition and generalized PPIA regressions."
+    "Added a deterministic grammar/reference validator and CI gate that also runs PPIA-07 foundation, PPIA-12→PPIA-07 transition and generalized PPIA regressions.",
+    "Initial PR #242 exact head 2eb18b651db39ce4991d2f0e50c8d9453cfa2f5d found only a literal foundation-inventory phrase mismatch and missing preserved PPIA-12 completion-merge evidence; both were repaired without changing the grammar contract."
   ],
-  "next_action": "Open the PPIA-07 grammar/reference pull request from governance/ppia-07-rune-construction-rpg-system to main, validate exact head 6fd863892cd28ba1de3f8fcf327860607f558234 with Validate PPIA-07 Grammar and Reference Corpus plus every applicable repository regression gate, repair only deterministic contract/continuity failures without weakening the design boundaries, merge only if all exact-head gates pass, reset the governed branch to the canonical merge, and record the verified milestone. Then define the PPIA-07 cost/complexity/stability and progression contract against this grammar and reference corpus, keeping final balance calibration provisional for PPIA-11.",
+  "next_action": "Validate the new exact PR #242 head after continuity projection with Validate PPIA-07 Grammar and Reference Corpus plus every applicable repository regression gate. Merge only if all exact-head gates pass, reset the governed branch to the canonical merge, and record the verified grammar/reference milestone. Then define the PPIA-07 cost/complexity/stability and progression contract against the verified grammar and reference corpus, keeping final balance calibration provisional for PPIA-11.",
   "changed_paths": [
     "governance/application-planning/parallel-preimplementation/PPIA-07_DETERMINISTIC_GRAMMAR_CANDIDATE_v0.1.0.json",
     "governance/application-planning/parallel-preimplementation/PPIA-07_RUNE_REFERENCE_CORPUS_v0.1.0.json",
@@ -48,16 +49,19 @@
     {"command":"Validate PPIA-12 Completion Contract run 31541233921","status":"passed","evidence":"exact foundation head 73cc1d783ab3dae7f1daaa0608924de14788cf60"},
     {"command":"Validate Conversation Continuity run 31541233876","status":"passed","evidence":"exact foundation head 73cc1d783ab3dae7f1daaa0608924de14788cf60"},
     {"command":"Validate Operational AIOC Baseline run 31541233878","status":"passed","evidence":"exact foundation head 73cc1d783ab3dae7f1daaa0608924de14788cf60"},
-    {"command":"Validate PPIA-07 Grammar and Reference Corpus","status":"not_run","evidence":null}
+    {"command":"Validate PPIA-07 Grammar and Reference Corpus run 31542052646","status":"failed","evidence":"initial PR #242 head 2eb18b651db39ce4991d2f0e50c8d9453cfa2f5d; literal inventory phrase assertion"},
+    {"command":"Validate PPIA-12 to PPIA-07 Transition run 31542052665","status":"failed","evidence":"initial PR #242 head 2eb18b651db39ce4991d2f0e50c8d9453cfa2f5d; compressed checkpoint omitted preserved PPIA-12 completion merge evidence"}
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
+    {"kind":"merge","value":"PPIA-12 final completion squash merge 0ed9f9a0c53b2a132d8f38c0d3cae22cc7ae14a0"},
     {"kind":"merge","value":"PPIA-12→PPIA-07 transition squash merge a7803f8438a837b741f78c875d7ec2e915d37a19"},
     {"kind":"commit","value":"PPIA-07 foundation validated exact head 73cc1d783ab3dae7f1daaa0608924de14788cf60"},
     {"kind":"pull_request","value":"PPIA-07 foundation PR #241"},
     {"kind":"merge","value":"PPIA-07 foundation squash merge 183d199d69f5cce121d4b971f33fe6c0145a6c45"},
-    {"kind":"commit","value":"PPIA-07 grammar/reference substantive candidate head 6fd863892cd28ba1de3f8fcf327860607f558234"},
+    {"kind":"commit","value":"PPIA-07 grammar/reference repair substantive head 09d9fbcf5e8cc81d30645b66689c08e06a60e79d"},
+    {"kind":"pull_request","value":"PPIA-07 grammar/reference PR #242"},
     {"kind":"file","value":"PPIA-07 grammar candidate, twenty-case bounded reference corpus, design note, deterministic validator and CI gate"}
   ],
   "roadmap_projection_pending": true,
