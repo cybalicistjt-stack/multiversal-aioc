@@ -47,13 +47,15 @@ def main() -> int:
     if s != expected:
         raise SystemExit(f"triage summary changed: {s}")
 
+    # The deterministic triage still records the original candidate classification.
+    # Owner resolution changes its current disposition, not the historical scan result.
     if len(triage.get("ownerAttentionCandidates") or []) != 1:
-        raise SystemExit("expected exactly one owner-eye candidate")
+        raise SystemExit("expected exactly one historical owner-eye candidate")
     quantum = triage["ownerAttentionCandidates"][0]
     if quantum.get("name") != "Quantum Weaver" or quantum.get("sourceRow") != 9:
         raise SystemExit("Quantum Weaver owner-eye identity changed")
     if quantum.get("priority") != "P0-owner-eye-useful":
-        raise SystemExit("Quantum Weaver priority changed")
+        raise SystemExit("Quantum Weaver original triage priority changed")
 
     p1_rows = triage.get("p1HighCoreMechanicalReview") or []
     if len(p1_rows) != 36:
@@ -65,11 +67,12 @@ def main() -> int:
     if len(triage.get("p4LifecycleMetadataOnlyReview") or []) != 239:
         raise SystemExit("P4 lifecycle/metadata queue count changed")
 
-    if unresolved.get("format") != "multiversal-ppia01-unresolved-source-register" or unresolved.get("version") != "0.1.1":
+    if unresolved.get("format") != "multiversal-ppia01-unresolved-source-register" or unresolved.get("version") != "0.1.2":
         raise SystemExit("unexpected unresolved-source register identity/version")
     summary = unresolved.get("summary") or {}
     if summary != {
-        "current_registry_owner_eye_records": 1,
+        "current_registry_owner_eye_records": 0,
+        "owner_resolved_authored_completion_records": 1,
         "current_registry_source_unspecified_capacity_records": 7,
         "current_registry_source_reference_only_records": 3,
         "historical_provenance_audit_questions": 1,
@@ -77,11 +80,15 @@ def main() -> int:
     }:
         raise SystemExit(f"unresolved-source summary changed: {summary}")
 
+    resolutions = unresolved.get("owner_resolutions") or []
+    if len(resolutions) != 1 or resolutions[0].get("id") != "PPIA-01-USR-001" or resolutions[0].get("name") != "Quantum Weaver":
+        raise SystemExit("Quantum Weaver owner resolution missing")
+    if resolutions[0].get("resolved_at") != "2026-08-11":
+        raise SystemExit("Quantum Weaver owner resolution date changed")
+
     records = {item["id"]: item for item in unresolved.get("records") or []}
-    if set(records) != {"PPIA-01-USR-001", "PPIA-01-USR-002", "PPIA-01-USR-003", "PPIA-01-USR-004"}:
+    if set(records) != {"PPIA-01-USR-002", "PPIA-01-USR-003", "PPIA-01-USR-004"}:
         raise SystemExit("unresolved-source record set changed")
-    if records["PPIA-01-USR-001"].get("name") != "Quantum Weaver":
-        raise SystemExit("unresolved register lost Quantum Weaver")
     if records["PPIA-01-USR-002"].get("records") != [
         "Laser Sniper Rifle",
         "Plasma Rifle",
@@ -102,35 +109,30 @@ def main() -> int:
         raise SystemExit("historical R1 package identity changed")
     if package.get("historical_container_name") != "Aaac (1).zip":
         raise SystemExit("historical R1 container identity changed")
+    if package.get("owner_resupplied_audit_sha256") != "4a98058b03d3ced252f01dac3026997de2dfd0b064be6a691debb93a0c485fff":
+        raise SystemExit("owner-resupplied audit hash changed")
+    if "not the later R1 closure package/results" not in package.get("owner_resupplied_audit_finding", ""):
+        raise SystemExit("audit package was incorrectly treated as R1 closure")
     if historical.get("historical_result", {}).get("candidates_without_formal_disposition") != 2766:
         raise SystemExit("historical 8E-008G blocker count changed")
     if historical.get("blocking") is not False or historical.get("current_registry_gap_count") != 0:
         raise SystemExit("historical provenance question was incorrectly promoted into a current CSV blocker")
 
     required_review_phrases = [
-        "10,594",
-        "P1 high-core",
-        "36",
-        "P2 substantive-core",
-        "73",
-        "P3 bounded-core",
-        "183",
-        "P4 lifecycle/metadata-only",
-        "239",
-        "Quantum Weaver",
-        "Aaac (1).zip",
-        "STAGE-A-A2",
-        "SD-1007",
-        "SD-1107",
+        "10,594", "P1 high-core", "36", "P2 substantive-core", "73",
+        "P3 bounded-core", "183", "P4 lifecycle/metadata-only", "239",
+        "Quantum Weaver", "Aaac (1).zip", "STAGE-A-A2", "SD-1007", "SD-1107",
     ]
     for phrase in required_review_phrases:
         if phrase not in review:
             raise SystemExit(f"review register missing required phrase {phrase!r}")
 
     if "feeds on energy fields and needs exposure to power sources" not in owner:
-        raise SystemExit("Quantum Weaver owner-eye note lost exact source-supported core fact")
-    if "OPTIONAL OWNER REVIEW — NOT A BLOCKER" not in owner:
-        raise SystemExit("Quantum Weaver owner-eye note incorrectly changed its blocking status")
+        raise SystemExit("Quantum Weaver note lost exact source-supported core fact")
+    if "RESOLVED — OWNER-APPROVED AUTHORED COMPLETION" not in owner:
+        raise SystemExit("Quantum Weaver owner resolution is not recorded")
+    if "does **not** retroactively turn them into source-derived facts" not in owner:
+        raise SystemExit("Quantum Weaver source/authored distinction is missing")
 
     if p1_review.get("format") != "multiversal-ppia01-p1-core-mechanical-source-review" or p1_review.get("version") != "0.1.0":
         raise SystemExit("unexpected P1 source-review identity/version")
@@ -155,9 +157,7 @@ def main() -> int:
                 raise SystemExit(f"duplicate P1 source-review identity {key}")
             reviewed_p1.add(key)
     if reviewed_p1 != triage_p1:
-        raise SystemExit(
-            f"P1 source-review coverage mismatch missing={sorted(triage_p1-reviewed_p1)} extra={sorted(reviewed_p1-triage_p1)}"
-        )
+        raise SystemExit(f"P1 source-review coverage mismatch missing={sorted(triage_p1-reviewed_p1)} extra={sorted(reviewed_p1-triage_p1)}")
 
     p1_summary = p1_review.get("summary") or {}
     if p1_summary != {
@@ -194,6 +194,7 @@ def main() -> int:
         "p1SourceReviewedRows": p1_summary["p1_high_core_rows_reviewed"],
         "sourceConflictsFound": p1_summary["source_conflicts_found"],
         "ownerEyeRecords": summary["current_registry_owner_eye_records"],
+        "ownerResolvedAuthoredCompletions": summary["owner_resolved_authored_completion_records"],
         "historicalProvenanceQuestions": summary["historical_provenance_audit_questions"],
         "result": "PASS",
     }, sort_keys=True))
