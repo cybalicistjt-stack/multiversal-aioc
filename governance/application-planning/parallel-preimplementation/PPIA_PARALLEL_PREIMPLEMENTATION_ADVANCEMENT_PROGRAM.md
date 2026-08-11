@@ -125,9 +125,13 @@ Design the developer-facing cockpit over DT-001 through DT-010: current work/sli
 
 ## Current tranche
 
-**PPIA-02 — Creature & NPC Experience** is the current owner-approved tranche in the dependency-optimized sequence. PPIA-01 completed and merged in PR #212 at canonical squash `f9e2b1fb7c340d27813b09c180b60d34d5fb6f92`.
+**PPIA-03 — Items, Equipment & Inventory Experience** is the current owner-approved tranche in the dependency-optimized sequence.
 
-The initial bounded action is to inventory current Creature/NPC source, object, feature, screen, encounter, relationship, asset, transformation, permission, provenance, and accessibility surfaces; then establish the implementation-ready experience taxonomy before writing new specifications.
+Verified preceding completions:
+- PPIA-01 completed_verified through PR #212 / canonical squash `f9e2b1fb7c340d27813b09c180b60d34d5fb6f92`, with later Quantum Weaver and R1 provenance clarifications merged without reopening the tranche.
+- PPIA-02 completed_verified through original design merge `f6568e77de2790e9012a95942435c8d88b2e1dd5` plus required exact-head validated amendment merge `f768345a44a662a5a1981f4cb35d218c926a5cb6`. The amendment restored the missing 13th reference case and integrated recovered R1 Creature deferrals; original PR #217 alone is not the verified completion boundary.
+
+The initial PPIA-03 bounded action is to inventory Item/Equipment/Inventory source PDFs, governed CSV datasets, object/data/UI/Character/Scene/Encounter surfaces, PPIA-01 routed source conflicts/limitations, recovered R1 item deferrals, and PPIA-02 carried-asset/loot boundaries; then establish the implementation-ready state/ownership/container/equipment/identification/provenance taxonomy before writing integrated workflows.
 
 ## Completion boundary
 
