@@ -1,0 +1,37 @@
+name: Validate PPIA-08 Foundation
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-08_SOURCE_AND_DESIGN_INVENTORY.md'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-08_SOURCE_MANIFEST_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-08_CAMPAIGN_SCENE_SESSION_TAXONOMY_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-08_MAP_GRID_DUNGEON_AUTHORING_CONTRACT_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-08_AUTHORITY_AND_BOUNDARY_MATRIX_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-08_FOUNDATION_CANDIDATE.md'
+      - 'governance/ai/work-state/PPIA-08-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia08-foundation.py'
+      - '.github/workflows/validate-ppia-08-foundation.yml'
+  push:
+    branches:
+      - governance/ppia-08-campaign-scene-session-authoring
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia08-foundation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PPIA-08 source/design foundation
+        run: python scripts/validate-ppia08-foundation.py
+      - name: Validate PPIA-07 to PPIA-08 transition regression
+        run: python scripts/validate-ppia07-to-ppia08-transition.py
+      - name: Validate generalized PPIA continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
