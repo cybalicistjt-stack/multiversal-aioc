@@ -6,25 +6,8 @@
   "owner": "John Brandon Turner",
   "approved_at": "2026-08-11T11:58:00+00:00",
   "governing_document": "governance/application-planning/parallel-preimplementation/PPIA_PARALLEL_PREIMPLEMENTATION_ADVANCEMENT_PROGRAM.md",
-  "current_work_item_id": "PPIA-04",
-  "execution_order": [
-    "PPIA-01",
-    "PPIA-02",
-    "PPIA-03",
-    "PPIA-04",
-    "PPIA-05",
-    "PPIA-12",
-    "PPIA-07",
-    "PPIA-08",
-    "PPIA-09",
-    "PPIA-10",
-    "PPIA-11",
-    "PPIA-06",
-    "PPIA-13",
-    "PPIA-14",
-    "PPIA-15",
-    "PPIA-16"
-  ],
+  "current_work_item_id": "PPIA-05",
+  "execution_order": ["PPIA-01","PPIA-02","PPIA-03","PPIA-04","PPIA-05","PPIA-12","PPIA-07","PPIA-08","PPIA-09","PPIA-10","PPIA-11","PPIA-06","PPIA-13","PPIA-14","PPIA-15","PPIA-16"],
   "boundaries": {
     "requires_codex": false,
     "application_runtime_mutation_authorized": false,
@@ -35,117 +18,21 @@
     "canonical_promotion_without_source_evidence_authorized": false
   },
   "tranches": [
-    {
-      "work_item_id": "PPIA-01",
-      "title": "Content Quality & Missing-Information Closure",
-      "status": "complete",
-      "dependencies": [],
-      "completion_gate": "Source-grounded cross-domain gap register, prioritized repair backlog, completed source-backed repairs where evidence is sufficient, unresolved-source register, and traceability to affected feature surfaces."
-    },
-    {
-      "work_item_id": "PPIA-02",
-      "title": "Creature & NPC Experience",
-      "status": "completed_verified",
-      "dependencies": ["PPIA-01"],
-      "completion_gate": "Implementation-ready Creature/NPC experience packet with permission-safe presentation, authoring, encounter, variant, relationship, asset, transformation, and accessibility contracts plus reference cases."
-    },
-    {
-      "work_item_id": "PPIA-03",
-      "title": "Items, Equipment & Inventory Experience",
-      "status": "completed_verified",
-      "dependencies": ["PPIA-01"],
-      "completion_gate": "Implementation-ready asset/inventory packet covering state, ownership, equipment, stacks, identification, transfer, shared assets, provenance, and reference cases."
-    },
-    {
-      "work_item_id": "PPIA-04",
-      "title": "Vehicle, Mecha & Starship Experience",
-      "status": "started",
-      "dependencies": ["PPIA-01"],
-      "completion_gate": "Implementation-ready vehicle/mecha/starship packet covering instance semantics, crew/cargo/components/damage/power/movement/upgrades/boarding/inventory and accessible encounter/reference cases."
-    },
-    {
-      "work_item_id": "PPIA-05",
-      "title": "Species, Forms & Character Biology",
-      "status": "planned",
-      "dependencies": ["PPIA-01"],
-      "completion_gate": "Implementation-ready species/forms/biology packet covering innate traits, morphology, Adaptations, transformations, body plans, senses/movement, culture separation, visibility and reference cases."
-    },
-    {
-      "work_item_id": "PPIA-06",
-      "title": "Character Appearance Creator",
-      "status": "planned",
-      "dependencies": ["PPIA-05"],
-      "completion_gate": "Implementation-ready appearance-studio specification with species-aware controls, randomization/presets, nonhumanoid/mobile/accessibility behavior, portrait handoff, and scope boundary."
-    },
-    {
-      "work_item_id": "PPIA-07",
-      "title": "Rune Construction RPG System",
-      "status": "planned",
-      "dependencies": ["PPIA-01"],
-      "completion_gate": "Playable data-ready compositional rune-system specification with deterministic grammar, costs/limits/counters/progression/crafting/examples and balance/acceptance material."
-    },
-    {
-      "work_item_id": "PPIA-08",
-      "title": "Campaign / Scene / Session Authoring Depth",
-      "status": "planned",
-      "dependencies": ["PPIA-02", "PPIA-03", "PPIA-04", "PPIA-05"],
-      "completion_gate": "Implementation-ready campaign/scene/session authoring packet with hierarchy, templates, content placement, hidden state, branching, preparation/live/post-session workflows and reference campaign material."
-    },
-    {
-      "work_item_id": "PPIA-09",
-      "title": "Investigation & Mystery Authoring Kit",
-      "status": "planned",
-      "dependencies": ["PPIA-08"],
-      "completion_gate": "Investigation authoring standard with clue/evidence/theory/timeline/knowledge/reveal/uncertainty/provenance contracts and multiple reference mysteries."
-    },
-    {
-      "work_item_id": "PPIA-10",
-      "title": "Relationship, Social & Faction Content Framework",
-      "status": "planned",
-      "dependencies": ["PPIA-08"],
-      "completion_gate": "Relationship/social/faction authoring standard with directional metrics, secrets, reputation, faction structures, consequences, visibility rules and reference fixtures."
-    },
-    {
-      "work_item_id": "PPIA-11",
-      "title": "Encounter & Balance Design Laboratory",
-      "status": "planned",
-      "dependencies": ["PPIA-02", "PPIA-03", "PPIA-04", "PPIA-05"],
-      "completion_gate": "Encounter design handbook and benchmark corpus with threat/capability/environment/resource/action-economy methodology, uncertainty bands, calibration workflow and no guaranteed-balance overclaim."
-    },
-    {
-      "work_item_id": "PPIA-12",
-      "title": "World & Setting Authoring System",
-      "status": "planned",
-      "dependencies": ["PPIA-01", "PPIA-02", "PPIA-03", "PPIA-04", "PPIA-05"],
-      "completion_gate": "World/Setting authoring standard and source-grounded reference mappings across available worlds, preserving provenance and world-specific extension boundaries."
-    },
-    {
-      "work_item_id": "PPIA-13",
-      "title": "Onboarding, Help & In-App Teaching Content",
-      "status": "planned",
-      "dependencies": ["PPIA-08"],
-      "completion_gate": "Complete role-aware onboarding/help/teaching content library covering first use through troubleshooting and tutorial-Campaign flow."
-    },
-    {
-      "work_item_id": "PPIA-14",
-      "title": "Error, Recovery & Permission Microcopy",
-      "status": "planned",
-      "dependencies": ["PPIA-08", "PPIA-13"],
-      "completion_gate": "Complete permission-safe error/recovery microcopy library with hidden-information leak rules and state-by-state wording/behavior guidance."
-    },
-    {
-      "work_item_id": "PPIA-15",
-      "title": "Internal Alpha Test Content Expansion",
-      "status": "planned",
-      "dependencies": ["PPIA-09", "PPIA-10", "PPIA-11", "PPIA-14"],
-      "completion_gate": "Expanded nonduplicative Internal Alpha regression scenario set covering awkward permission, conflict, recovery, scale, accessibility, mobile and object-edge cases."
-    },
-    {
-      "work_item_id": "PPIA-16",
-      "title": "Developer Console / AI-Team Control Surface",
-      "status": "planned",
-      "dependencies": [],
-      "completion_gate": "Implementation-ready Development Console information architecture and screen/workflow package over DT-001 through DT-010, preserving non-authoritative tooling boundaries."
-    }
+    {"work_item_id":"PPIA-01","title":"Content Quality & Missing-Information Closure","status":"complete","dependencies":[],"completion_gate":"Source-grounded cross-domain gap register, prioritized repair backlog, completed source-backed repairs where evidence is sufficient, unresolved-source register, and traceability to affected feature surfaces."},
+    {"work_item_id":"PPIA-02","title":"Creature & NPC Experience","status":"completed_verified","dependencies":["PPIA-01"],"completion_gate":"Implementation-ready Creature/NPC experience packet with permission-safe presentation, authoring, encounter, variant, relationship, asset, transformation, and accessibility contracts plus reference cases."},
+    {"work_item_id":"PPIA-03","title":"Items, Equipment & Inventory Experience","status":"completed_verified","dependencies":["PPIA-01"],"completion_gate":"Implementation-ready asset/inventory packet covering state, ownership, equipment, stacks, identification, transfer, shared assets, provenance, and reference cases."},
+    {"work_item_id":"PPIA-04","title":"Vehicle, Mecha & Starship Experience","status":"completed_verified","dependencies":["PPIA-01"],"completion_gate":"Implementation-ready vehicle/mecha/starship packet covering instance semantics, crew/cargo/components/damage/power/movement/upgrades/boarding/inventory and accessible encounter/reference cases."},
+    {"work_item_id":"PPIA-05","title":"Species, Forms & Character Biology","status":"started","dependencies":["PPIA-01"],"completion_gate":"Implementation-ready species/forms/biology packet covering innate traits, morphology, Adaptations, transformations, body plans, senses/movement, culture separation, visibility and reference cases."},
+    {"work_item_id":"PPIA-06","title":"Character Appearance Creator","status":"planned","dependencies":["PPIA-05"],"completion_gate":"Implementation-ready appearance-studio specification with species-aware controls, randomization/presets, nonhumanoid/mobile/accessibility behavior, portrait handoff, and scope boundary."},
+    {"work_item_id":"PPIA-07","title":"Rune Construction RPG System","status":"planned","dependencies":["PPIA-01"],"completion_gate":"Playable data-ready compositional rune-system specification with deterministic grammar, costs/limits/counters/progression/crafting/examples and balance/acceptance material."},
+    {"work_item_id":"PPIA-08","title":"Campaign / Scene / Session Authoring Depth","status":"planned","dependencies":["PPIA-02","PPIA-03","PPIA-04","PPIA-05"],"completion_gate":"Implementation-ready campaign/scene/session authoring packet with hierarchy, templates, content placement, hidden state, branching, preparation/live/post-session workflows and reference campaign material."},
+    {"work_item_id":"PPIA-09","title":"Investigation & Mystery Authoring Kit","status":"planned","dependencies":["PPIA-08"],"completion_gate":"Investigation authoring standard with clue/evidence/theory/timeline/knowledge/reveal/uncertainty/provenance contracts and multiple reference mysteries."},
+    {"work_item_id":"PPIA-10","title":"Relationship, Social & Faction Content Framework","status":"planned","dependencies":["PPIA-08"],"completion_gate":"Relationship/social/faction authoring standard with directional metrics, secrets, reputation, faction structures, consequences, visibility rules and reference fixtures."},
+    {"work_item_id":"PPIA-11","title":"Encounter & Balance Design Laboratory","status":"planned","dependencies":["PPIA-02","PPIA-03","PPIA-04","PPIA-05"],"completion_gate":"Encounter design handbook and benchmark corpus with threat/capability/environment/resource/action-economy methodology, uncertainty bands, calibration workflow and no guaranteed-balance overclaim."},
+    {"work_item_id":"PPIA-12","title":"World & Setting Authoring System","status":"planned","dependencies":["PPIA-01","PPIA-02","PPIA-03","PPIA-04","PPIA-05"],"completion_gate":"World/Setting authoring standard and source-grounded reference mappings across available worlds, preserving provenance and world-specific extension boundaries."},
+    {"work_item_id":"PPIA-13","title":"Onboarding, Help & In-App Teaching Content","status":"planned","dependencies":["PPIA-08"],"completion_gate":"Complete role-aware onboarding/help/teaching content library covering first use through troubleshooting and tutorial-Campaign flow."},
+    {"work_item_id":"PPIA-14","title":"Error, Recovery & Permission Microcopy","status":"planned","dependencies":["PPIA-08","PPIA-13"],"completion_gate":"Complete permission-safe error/recovery microcopy library with hidden-information leak rules and state-by-state wording/behavior guidance."},
+    {"work_item_id":"PPIA-15","title":"Internal Alpha Test Content Expansion","status":"planned","dependencies":["PPIA-09","PPIA-10","PPIA-11","PPIA-14"],"completion_gate":"Expanded nonduplicative Internal Alpha regression scenario set covering awkward permission, conflict, recovery, scale, accessibility, mobile and object-edge cases."},
+    {"work_item_id":"PPIA-16","title":"Developer Console / AI-Team Control Surface","status":"planned","dependencies":[],"completion_gate":"Implementation-ready Development Console information architecture and screen/workflow package over DT-001 through DT-010, preserving non-authoritative tooling boundaries."}
   ]
 }
