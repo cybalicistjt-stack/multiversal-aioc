@@ -32,6 +32,7 @@ def historical_completion_checks() -> None:
     p2 = load_json(WORK_STATE_DIR / "PPIA-02-attempt-001.json")
     p3 = load_json(WORK_STATE_DIR / "PPIA-03-attempt-001.json")
     p4 = load_json(WORK_STATE_DIR / "PPIA-04-attempt-001.json")
+    p5 = load_json(WORK_STATE_DIR / "PPIA-05-attempt-001.json")
 
     assert p1["status"] in COMPLETE_STATUSES and p1.get("merge_commit") == "f9e2b1fb7c340d27813b09c180b60d34d5fb6f92"
     assert p2["status"] == "completed_verified" and p2.get("merge_commit") == "f768345a44a662a5a1981f4cb35d218c926a5cb6"
@@ -40,9 +41,11 @@ def historical_completion_checks() -> None:
     assert p3["latest_pushed_commit"] == "c1e00ebf67fe4c78af2ce6e1dd483bb699706047" and p3["pull_request"] == 224
     assert p4["status"] == "completed_verified" and p4.get("merge_commit") == "e8ec662534820e53fcb8a7d958c0946f494faefd"
     assert p4["latest_pushed_commit"] == "a821f53794d675e73ae71d6c02d577141981ba22" and p4["pull_request"] == 229
-    assert p4["active_substep"] is None and not p4["unresolved_failures"] and p4["owner_decision_required"] is False
-    assert any("31524517244" in item.get("command", "") and item.get("status") == "passed" for item in p4["validation"])
-    assert any("e8ec662534820e53fcb8a7d958c0946f494faefd" in item.get("value", "") for item in p4["evidence"])
+    assert p5["status"] == "completed_verified" and p5.get("merge_commit") == "0ffaa34ef15f9a7e4b77776688c6be3fc3047446"
+    assert p5["latest_pushed_commit"] == "e6e2bcfd0f22f537a73721dfd8069531bd1af24c" and p5["pull_request"] == 234
+    assert p5["active_substep"] is None and not p5["unresolved_failures"] and p5["owner_decision_required"] is False
+    assert any("31529821441" in item.get("command", "") and item.get("status") == "passed" for item in p5["validation"])
+    assert any("0ffaa34ef15f9a7e4b77776688c6be3fc3047446" in item.get("value", "") for item in p5["evidence"])
 
 
 def main() -> int:
@@ -108,7 +111,7 @@ def main() -> int:
     print("PPIA program validation: PASS")
     print(f"current: {current_id}")
     print(f"completed_before_current: {current_index}")
-    print("p4_verified_completion_merge: e8ec662534820e53fcb8a7d958c0946f494faefd")
+    print("p5_verified_completion_merge: 0ffaa34ef15f9a7e4b77776688c6be3fc3047446")
     print("a2_activation_authorized: false")
     return 0
 
