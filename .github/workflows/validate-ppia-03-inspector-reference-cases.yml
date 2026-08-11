@@ -1,0 +1,28 @@
+name: Validate PPIA-03 Inspector and Reference Cases
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-03_ITEM_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-03_REFERENCE_CASES_v0.1.0.json'
+      - 'scripts/validate-ppia03-inspector-reference-cases.py'
+      - '.github/workflows/validate-ppia-03-inspector-reference-cases.yml'
+  push:
+    branches:
+      - governance/ppia-03-items-equipment-inventory
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-03_ITEM_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-03_REFERENCE_CASES_v0.1.0.json'
+      - 'scripts/validate-ppia03-inspector-reference-cases.py'
+      - '.github/workflows/validate-ppia-03-inspector-reference-cases.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia03-inspector-reference-cases:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate PPIA-03 projection matrix and reference cases
+        run: python scripts/validate-ppia03-inspector-reference-cases.py

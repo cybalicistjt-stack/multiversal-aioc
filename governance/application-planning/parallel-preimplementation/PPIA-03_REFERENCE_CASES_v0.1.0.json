@@ -1,0 +1,124 @@
+{
+  "format": "multiversal-ppia03-item-inventory-reference-cases",
+  "version": "0.1.0",
+  "work_item": "PPIA-03",
+  "status": "design_acceptance_reference_set",
+  "policy": {
+    "source_and_registry_facts_preserve_provenance": true,
+    "owner_delegated_recommendations_are_source_facts": false,
+    "synthetic_cases_are_canonical_content": false,
+    "synthetic_cases_may_test_permissions_and_ui": true,
+    "obsolete_semantic_database_required": false,
+    "automatic_identity_merge": false,
+    "reference_only_name_creates_definition": false
+  },
+  "source_evidence": [
+    {"id":"CSV-MELEE","title":"Melee Weapons governed CSV","member":"MV_Master_01_Core/03_CSV_Sources/Melee_Weapons.csv"},
+    {"id":"CSV-RANGED","title":"Ranged Weapons governed CSV","member":"MV_Master_01_Core/03_CSV_Sources/Ranged_Weapons.csv"},
+    {"id":"CSV-WEAPONS-AMMO","title":"Weapons & Ammo governed CSV","member":"MV_Master_01_Core/03_CSV_Sources/Weapons_Ammo.csv"},
+    {"id":"CSV-ITEMS","title":"Items governed CSV","member":"MV_Master_01_Core/03_CSV_Sources/Items.csv"},
+    {"id":"CSV-LIVING","title":"Living Spellbooks & Charge Holders governed CSV","member":"MV_Master_01_Core/03_CSV_Sources/Living_Spellbooks.csv"},
+    {"id":"CSV-SYMBIOTE","title":"Symbiotes & Cybernetics governed CSV","member":"MV_Master_01_Core/03_CSV_Sources/Symbiotes_Cybernetics.csv"},
+    {"id":"CSV-EVA","title":"EVA Suits governed CSV","member":"MV_Master_01_Core/03_CSV_Sources/EVA_Suits.csv"}
+  ],
+  "cases": [
+    {
+      "case_id":"PPIA03-RC-001","title":"Source-backed simple melee weapon inspection and equip","kind":"registry_grounded","source_id":"CSV-MELEE","source_coordinate":"source row 6","subject":"Spear","contexts":["library_reference","item_inspector","equipment_loadout"],
+      "governed_facts":["1d6 Piercing","Melee; thrown 20/60 ft","3 lbs.","100 credits","Thrown; Versatile (1d8 two-handed)","Simple proficiency","Versatile hands","Origin: PDF item 5"],
+      "acceptance":["Definition mechanics inspect without creating an Asset Instance.","Equipping an owned Spear creates or changes an equipment assignment only; ownership changes only through a separate accepted transfer.","One-handed versus two-handed versatile use is an action/readiness choice, not a Definition rewrite."]
+    },
+    {
+      "case_id":"PPIA03-RC-002","title":"Laser Assault Rifle with explicit charge capacities","kind":"registry_grounded","source_id":"CSV-RANGED","source_coordinate":"source row 26","subject":"Laser Assault Rifle","contexts":["item_inspector","equipment_loadout","combat_reload_consume"],
+      "governed_facts":["1d10 Radiant","80/320 ft","8 lbs.","1200 credits","Burst Fire; Rapid Reload","40 standard charges","60 extended charges","80 high-capacity charges","High-output laser cell","Bonus-action reload","Two-handed"],
+      "acceptance":["Maximum capacity can be shown because this record has explicit governed capacity values.","Current instance charge count is separate from Definition capacity.","Reload or shot consumption commits atomically with the owning action and cannot duplicate on retry."]
+    },
+    {
+      "case_id":"PPIA03-RC-003","title":"Taser same-name source-context conflict","kind":"registry_grounded_conflict","source_id":"CSV-ITEMS","source_coordinate":"source rows 307 and 376 plus CSV-MELEE source row 55","subject":"Taser","contexts":["library_reference","item_inspector","provenance_history_conflict"],
+      "governed_facts":["Science Fiction weapons context: 1d4 lightning, 50 gp, with several fields explicitly inferred","Modern Crime police-equipment context: 1d6 nonlethal, stuns one round, 300 credits, with several fields explicitly inferred","Melee weapon catalog carries a 1d4 Lightning electroshock weapon entry and marks tether range and uses inferred"],
+      "acceptance":["All contexts retain exact provenance and can be compared without automatic identity merge.","Source-backed fields and inferred or recommended fields are labeled separately.","A caller requiring one Definition must select an exact governed identity/version or stop for resolution; display-name equality is insufficient."]
+    },
+    {
+      "case_id":"PPIA03-RC-004","title":"Seven source-unspecified energy weapon capacities","kind":"registry_grounded_source_gap","source_id":"CSV-WEAPONS-AMMO","source_coordinate":"source rows 27-32 and 34","subject":"Laser Sniper Rifle, Plasma Rifle, Plasma Shotgun, Ion Blaster, Handheld Laser, Plasma Pistol, Sonic Rifle","contexts":["item_inspector","equipment_loadout","combat_reload_consume"],
+      "governed_facts":["All seven records have blank Standard Capacity, Extended Clip, and High-Capacity Mag fields in the governed source table."],
+      "acceptance":["UI represents maximum capacity as source-unspecified or unknown rather than 0, unlimited, or fabricated.","Instance current amount may be tracked only when a governing runtime rule establishes it; current=0 does not imply maximum=0.","Reload controls that require a maximum capacity block or request a governed rule instead of inventing one."]
+    },
+    {
+      "case_id":"PPIA03-RC-005","title":"Ammo-reference-only weapon names","kind":"registry_grounded_reference_only","source_id":"CSV-WEAPONS-AMMO","source_coordinate":"source rows 35-37","subject":"Energy Sniper Rifle; Plasma Carbine; Cryo Blaster","contexts":["library_reference","item_inspector","provenance_history_conflict"],
+      "governed_facts":["Energy Sniper Rifle is an ammo-only name with 5/8 charge references and a note that it may correspond to Laser Sniper Rifle.","Plasma Carbine is an ammo-only name with 25/35/50 charge references.","Cryo Blaster is an ammo-only name with 10/15/20 charge references.","Damage, range, weight, cost, and special rules are blank for all three."],
+      "acceptance":["Each record is visibly reference-only and cannot become a selectable full weapon Definition merely because capacity data exists.","Energy Sniper Rifle is not silently merged into Laser Sniper Rifle.","Missing weapon mechanics remain absent until a governed Definition or source resolution exists."]
+    },
+    {
+      "case_id":"PPIA03-RC-006","title":"Container with capacity and hidden nested contents","kind":"hybrid_registry_and_synthetic_qa","source_id":"CSV-ITEMS","source_coordinate":"source row 2","subject":"Backpack","contexts":["item_inspector","character_inventory","container_tree"],
+      "governed_facts":["Backpack","30-lb. capacity","5 lbs.","10 credits","Origin preserves that incomplete fields were completed by best judgment"],
+      "fixture_requirements":["authorized Backpack Asset Instance","visible top-level item","one visible child","one GM-hidden child","nested concealed container"],
+      "acceptance":["Player-safe projection cannot infer hidden child existence from child count, total value, total weight, occupancy, capacity summary, search, export, or AI context.","GM can inspect full authorized tree while source fact versus recommendation status remains available in diagnostics.","Move-to-container has a non-drag keyboard/touch path and prevents containment cycles."]
+    },
+    {
+      "case_id":"PPIA03-RC-007","title":"Single-dose consumable with atomic consumption","kind":"registry_grounded","source_id":"CSV-ITEMS","source_coordinate":"source row 52","subject":"Potion of Healing","contexts":["item_inspector","character_inventory","combat_reload_consume"],
+      "governed_facts":["Restores 2d4+2 HP","1 dose","Instantaneous","Self","1 action","Origin states incomplete fields were completed by best judgment"],
+      "acceptance":["One accepted use consumes one authoritative dose or instance according to the owning action workflow.","Denied or failed-before-commit use leaves inventory unchanged.","Source and recommendation provenance remains available; UI does not imply every completed field was published verbatim."]
+    },
+    {
+      "case_id":"PPIA03-RC-008","title":"Sentient living item remains an Asset with autonomy boundaries","kind":"registry_grounded","source_id":"CSV-LIVING","source_coordinate":"Source Base Chassis LS-S-001","subject":"Living Spellbook (Base Chassis)","contexts":["item_inspector","character_inventory","equipment_loadout","provenance_history_conflict"],
+      "governed_facts":["sentient mobile spell repository","bonds to one caster","stores and casts stored spells","has personality and rejection behavior","levels through play","has durability, repair, and progression data"],
+      "acceptance":["Ownership, bond, control, and autonomy are separate relationships rather than one owner flag.","Stored spells and progression are linked or stateful capabilities without turning the book into a Character identity.","Destruction, repair, and progression preserve Asset lineage and source or recommendation provenance."]
+    },
+    {
+      "case_id":"PPIA03-RC-009","title":"Symbiote equip/bond versus host biology","kind":"registry_grounded","source_id":"CSV-SYMBIOTE","source_coordinate":"Regenera record","subject":"Regenera","contexts":["item_inspector","equipment_loadout","condition_durability_repair"],
+      "governed_facts":["Healing Symbiote","regenerates 1d4 HP per turn while cooperative","requires increased food intake","bond, removal, conflict, and progression data exist","some operational fields are completed or inferred"],
+      "acceptance":["PPIA-03 shows Asset, bond, ownership, and provenance state while host-body or form consequences can route to PPIA-05.","Bonding does not imply ownership and removal is not represented as simple unequip when source rules impose consequences.","Inferred operational mechanics remain labeled as recommendations rather than source text."]
+    },
+    {
+      "case_id":"PPIA03-RC-010","title":"Modular EVA suit inventory and installation graph","kind":"registry_grounded","source_id":"CSV-EVA","source_coordinate":"Vacuum-Forge Orbital Service Suit plus module records","subject":"EVA chassis and modules","contexts":["item_inspector","character_inventory","equipment_loadout","condition_durability_repair"],
+      "governed_facts":["EVA chassis provides module and interface hardpoints","modules have slot or hardpoint costs and compatibility","installation time/check and intended environment are explicit in governed CSV","expanded chassis statistics are identified as inferred from the source framework"],
+      "acceptance":["Loose module, installed module, suit chassis, and wearer remain separate identities and relations.","Installing a module changes installation or containment state without silently transferring ownership.","Hardpoint counts and compatibility derive only from authorized visible state; hidden installed modules cannot leak through Player-facing counts."]
+    },
+    {
+      "case_id":"PPIA03-RC-011","title":"Stack split/merge with provenance and mixed ownership","kind":"synthetic_qa","canonical_content":false,"contexts":["character_inventory","party_shared_assets","shop_trade_transfer"],
+      "fixture_requirements":["two compatible 20-round ammunition lots with same Definition/version/state but different ownership/provenance","one incompatible damaged lot","split request","merge request"],
+      "acceptance":["Split creates attributable child lots and preserves source and ownership lineage.","Different ownership or provenance does not auto-merge merely because display name and ammunition type match.","Incompatible or damaged lot remains separate and merge failure is explicit."]
+    },
+    {
+      "case_id":"PPIA03-RC-012","title":"Shared party Asset lending without ownership transfer","kind":"synthetic_qa","canonical_content":false,"contexts":["party_shared_assets","equipment_loadout","shop_trade_transfer"],
+      "fixture_requirements":["jointly owned party Asset","Player borrower","custody grant","usage permission","equipment slot assignment","later return"],
+      "acceptance":["Loan changes only explicitly granted custody, access, control, and equipment relations; ownership remains joint.","Borrower can use only within granted scope and expiry.","Return clears custody or equipment as specified without erasing ownership or history."]
+    },
+    {
+      "case_id":"PPIA03-RC-013","title":"Equipment assignment does not transfer ownership","kind":"synthetic_qa","canonical_content":false,"contexts":["character_inventory","equipment_loadout"],
+      "fixture_requirements":["GM-owned loaner weapon","Player Character custody/access","valid equipment slot","proficiency warning"],
+      "acceptance":["Equip succeeds or warns or blocks according to proficiency policy while ownership remains unchanged.","Unequip changes assignment or readiness only.","Character source Definition is not mutated by equipping the Asset Instance."]
+    },
+    {
+      "case_id":"PPIA03-RC-014","title":"GM hidden unidentified loot and reveal","kind":"synthetic_qa","canonical_content":false,"contexts":["scene_loot_assets","gm_identification_reveal","item_inspector"],
+      "fixture_requirements":["hidden loot existence","generic visible appearance after discovery","secret true identity","secret drawback","secret value","later identification event"],
+      "acceptance":["Before discovery Player receives no existence, count, value, weight, or provenance clue.","After discovery but before identification Player receives only authorized appearance and known state, not true identity, drawback, or value.","Identification changes future knowledge projection through an authoritative reveal event; truth is not rewritten."]
+    },
+    {
+      "case_id":"PPIA03-RC-015","title":"Durability damage, repair, and history","kind":"synthetic_qa","canonical_content":false,"contexts":["condition_durability_repair","item_inspector","history_export_recovery"],
+      "fixture_requirements":["Asset Instance with durability profile","damage event","disabled-at-zero policy without deletion","repair work order","repair receipt"],
+      "acceptance":["Zero durability follows the bound profile and does not universally delete the Asset.","Repair changes current condition or durability but preserves prior damage and repair history.","Export and history are role-safe and source-linked."]
+    },
+    {
+      "case_id":"PPIA03-RC-016","title":"Ambiguous network result during transfer","kind":"synthetic_qa","canonical_content":false,"contexts":["shop_trade_transfer","history_export_recovery"],
+      "fixture_requirements":["authorized transfer","client operation ID","expected versions","server commits transfer","response lost","client reconnects"],
+      "acceptance":["Client queries command or operation status before resubmitting.","Same operation ID cannot transfer the Asset twice.","Reconnect revalidates permissions and shows current authoritative owner or custody state plus receipt."]
+    },
+    {
+      "case_id":"PPIA03-RC-017","title":"Crafting reservation and cancellation","kind":"synthetic_qa","canonical_content":false,"contexts":["crafting_salvage","character_inventory","party_shared_assets"],
+      "fixture_requirements":["material lots","crafting work order","reserved quantities","competing spend","cancelled work order","successful retry with new valid work order"],
+      "acceptance":["Reserved quantities cannot be double-spent by competing accepted operations.","Cancellation releases reservation and consumes no authoritative input or output.","Successful commit consumes exact inputs and creates outputs or byproducts with lineage."]
+    },
+    {
+      "case_id":"PPIA03-RC-018","title":"Software-like Asset installed on a computer","kind":"synthetic_qa","canonical_content":false,"contexts":["item_inspector","character_inventory","equipment_loadout"],
+      "fixture_requirements":["software Definition","licensed or access-controlled software Asset or entitlement representation","computer Asset Instance","compatibility requirement","installation relation"],
+      "acceptance":["Software is not forced into a physical carried-weight or container model when its profile says otherwise.","Installation, control, and access are explicit and do not imply ownership transfer.","Removing access or entitlement revalidates future use without erasing attributable historical installation or use events."]
+    }
+  ],
+  "summary": {
+    "cases":18,
+    "registry_grounded_or_hybrid_cases":10,
+    "synthetic_qa_cases":8,
+    "canonical_synthetic_records":0,
+    "required_guardrail_cases":["Taser conflict","seven source-unspecified capacities","three reference-only weapon names","hidden nested container","split/merge lineage","shared ownership/lending","equip without ownership change","atomic consume/reload","identification/reveal","durability/repair","transfer reconnect/idempotency","crafting reservation"]
+  }
+}
