@@ -174,7 +174,7 @@ def main() -> None:
     require(all(value is False for value in policy.values()), "all corpus guardrail policy booleans must remain false")
 
     require(len(taxonomy["identity_state_layers"]) == 15, "foundation taxonomy lost 15 layers")
-    for phrase in ("9 PDFs / 170 pages", "4 retained CSVs", "2,225 rows", "3 explicit rune records", "16 records sourced from Scripts and Macros"):
+    for phrase in ("9 PDFs / 170 pages", "Four retained CSVs", "2,225 rows", "3 explicit rune records", "16 records sourced from Scripts and Macros"):
         require(phrase in foundation, f"foundation inventory missing {phrase!r}")
     for phrase in ("functional atom vocabulary", "no implicit precedence", "20 bounded cases", "cost/balance"):
         require(phrase.lower() in note.lower(), f"candidate note missing {phrase!r}")
