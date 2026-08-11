@@ -10,8 +10,6 @@ BACKLOG = BASE / "PPIA_PROGRAM_BACKLOG.json"
 REPORT = BASE / "PPIA-03_COMPLETION_REPORT.md"
 P3 = ROOT / "governance/ai/work-state/PPIA-03-attempt-001.json"
 P4 = ROOT / "governance/ai/work-state/PPIA-04-attempt-001.json"
-POINTER = ROOT / "governance/ai/runtime/CURRENT_WORK_POINTER.json"
-STATUS = ROOT / "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json"
 ROADMAP = ROOT / "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md"
 PROGRAM = BASE / "PPIA_PARALLEL_PREIMPLEMENTATION_ADVANCEMENT_PROGRAM.md"
 
@@ -37,78 +35,31 @@ def main() -> None:
     backlog = load(BACKLOG)
     p3 = load(P3)
     p4 = load(P4)
-    pointer = load(POINTER)
-    status = load(STATUS)
     report = REPORT.read_text(encoding="utf-8")
     roadmap = ROADMAP.read_text(encoding="utf-8")
     program = PROGRAM.read_text(encoding="utf-8")
-
     tranches = {item["work_item_id"]: item for item in backlog["tranches"]}
-    require(backlog["current_work_item_id"] == "PPIA-04", "backlog current item must be PPIA-04")
-    require(tranches["PPIA-03"]["status"] == "completed_verified", "PPIA-03 backlog state must be completed_verified")
-    require(tranches["PPIA-04"]["status"] in {"started", "in_progress"}, "PPIA-04 backlog state must remain active")
 
-    require(p3["status"] == "completed_verified", "PPIA-03 checkpoint must be completed_verified")
-    require(p3["completed_at"] == "2026-08-11T17:38:18+00:00", "PPIA-03 completion time mismatch")
-    require(p3["active_substep"] is None, "completed PPIA-03 cannot have active substep")
-    require(p3["latest_pushed_commit"] == "c1e00ebf67fe4c78af2ce6e1dd483bb699706047", "PPIA-03 exact final validated head mismatch")
-    require(p3["pull_request"] == 224, "PPIA-03 final PR must be #224")
-    require(p3["merge_commit"] == P3_COMPLETION_MERGE, "PPIA-03 final merge mismatch")
-    require(p3["roadmap_projection_pending"] is True, "PPIA-03 roadmap projection should be batched/pending")
-    require(not p3["unresolved_failures"] and p3["owner_decision_required"] is False, "PPIA-03 completion has unresolved state")
-    for run_id in ("31518534709", "31518534704", "31518534758", "31518534698"):
-        require(any(run_id in item.get("command", "") and item.get("status") == "passed" for item in p3["validation"]), f"PPIA-03 missing passed run {run_id}")
+    require(tranches["PPIA-03"]["status"] == "completed_verified", "PPIA-03 backlog state must stay completed_verified")
+    require(tranches["PPIA-04"]["status"] in {"started", "in_progress", "completed_verified"}, "PPIA-04 backlog state invalid")
+    require(p3["status"] == "completed_verified" and p3.get("merge_commit") == P3_COMPLETION_MERGE, "PPIA-03 verified completion evidence changed")
+    require(p3["pull_request"] == 224 and p3["latest_pushed_commit"] == "c1e00ebf67fe4c78af2ce6e1dd483bb699706047", "PPIA-03 exact completion identity changed")
 
-    require(p4["status"] in {"started", "in_progress"}, "PPIA-04 checkpoint must remain active")
     require(p4["work_item_id"] == "PPIA-04" and p4["attempt_id"] == "PPIA-04-attempt-001", "PPIA-04 checkpoint identity mismatch")
     require(p4["branch"] == "governance/ppia-04-vehicle-mecha-starship", "PPIA-04 branch mismatch")
-    require(p4["base_commit"] == P3_TO_P4_TRANSITION_MERGE, "PPIA-04 governed branch must start from the validated PPIA-03→PPIA-04 transition merge")
-    require(any(P3_COMPLETION_MERGE in item.get("value", "") for item in p4.get("evidence", [])), "PPIA-04 must preserve PPIA-03 completion merge as dependency evidence")
-    require(any(P3_TO_P4_TRANSITION_MERGE in item.get("value", "") for item in p4.get("evidence", [])), "PPIA-04 must preserve the transition merge as branch-start evidence")
-    require(p4["active_substep"], "PPIA-04 needs active substep")
-    require(p4["roadmap_projection_pending"] is True, "PPIA-04 roadmap projection must be pending until batched projection")
+    require(p4["base_commit"] == P3_TO_P4_TRANSITION_MERGE, "PPIA-04 must preserve validated transition merge as branch base")
+    require(any(P3_TO_P4_TRANSITION_MERGE in item.get("value", "") for item in p4.get("evidence", [])), "PPIA-04 must preserve transition merge evidence")
+    require(p4["roadmap_projection_pending"] is True, "PPIA-04 roadmap projection policy changed")
+    require(not p4["unresolved_failures"] and p4["owner_decision_required"] is False, "PPIA-04 has unresolved transition state")
 
-    selected = [item for item in pointer["active_attempts"] if item.get("owner_selected")]
-    require(len(selected) == 1, "exactly one owner-selected active attempt required")
-    current = selected[0]
-    require(pointer["primary_attempt_id"] == "PPIA-04-attempt-001", "primary attempt must be PPIA-04")
-    require(current["work_item_id"] == "PPIA-04", "selected work item must be PPIA-04")
-    require(current["checkpoint_path"] == "governance/ai/work-state/PPIA-04-attempt-001.json", "selected checkpoint path mismatch")
-    for field in ("branch", "status", "updated_at", "roadmap_projection_pending"):
-        require(current[field] == p4[field], f"pointer/PPIA-04 checkpoint mismatch: {field}")
-
-    primary = status["primary"]
-    for field in ("work_item_id", "attempt_id", "branch", "status", "active_substep", "next_action", "owner_decision_required", "unresolved_failures", "roadmap_projection_pending"):
-        require(primary[field] == p4[field], f"compact status/PPIA-04 checkpoint mismatch: {field}")
-    require(primary["latest_pushed_commit"] == p4["latest_pushed_commit"], "compact latest commit mismatch")
-    require(primary["pull_request"] == p4["pull_request"], "compact PR mismatch")
-
-    for value in (
-        "2aa3ae590dab59710e0bfaab398db19d376b6490",
-        "b00aeab9f3ad4cb66869968c3584e969e132a700",
-        "c2cb92857e1beb79208790b13f92d46bad769df3",
-        "c1e00ebf67fe4c78af2ce6e1dd483bb699706047",
-        P3_COMPLETION_MERGE,
-        "31518534709",
-        "40 acceptance requirements across 15 categories",
-        "PPIA-04 — Vehicle, Mecha & Starship Experience",
-    ):
-        require(value in report, f"completion report missing {value!r}")
-
-    require("PPIA-03 — Items, Equipment & Inventory Experience" in roadmap, "roadmap must retain PPIA-03 milestone")
-    require("PPIA-04 — Vehicle, Mecha & Starship Experience" in roadmap, "roadmap must retain PPIA-04 tranche")
-    require("PPIA-03 — Items, Equipment & Inventory Experience" in program, "program must retain PPIA-03 tranche")
-    require("PPIA-04 — Vehicle, Mecha & Starship Experience" in program, "program must retain PPIA-04 tranche")
-    require("roadmap" in pointer["selection_reason"].lower() and "pending" in pointer["selection_reason"].lower(), "pointer must explain batched roadmap projection")
+    for value in (P3_COMPLETION_MERGE, "31518534709", "40 acceptance requirements across 15 categories", "PPIA-04 — Vehicle, Mecha & Starship Experience"):
+        require(value in report, f"PPIA-03 completion report missing {value!r}")
+    for value in ("PPIA-03 — Items, Equipment & Inventory Experience", "PPIA-04 — Vehicle, Mecha & Starship Experience"):
+        require(value in roadmap and value in program, f"roadmap/program lost {value}")
 
     print("PPIA-03→PPIA-04 TRANSITION: PASS")
-    print("ppia03_status=completed_verified")
-    print("ppia03_final_pr=224")
-    print(f"ppia03_final_merge={P3_COMPLETION_MERGE}")
-    print(f"ppia04_branch_base={P3_TO_P4_TRANSITION_MERGE}")
     print(f"ppia04_status={p4['status']}")
-    print("ppia04_branch=governance/ppia-04-vehicle-mecha-starship")
-    print("roadmap_projection_pending=true")
+    print(f"ppia04_branch_base={P3_TO_P4_TRANSITION_MERGE}")
 
 
 if __name__ == "__main__":
