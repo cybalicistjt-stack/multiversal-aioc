@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 15,
+  "revision": 16,
   "work_item_id": "PPIA-07",
   "attempt_id": "PPIA-07-attempt-001",
   "track": "parallel-preimplementation-advancement",
@@ -8,7 +8,7 @@
   "branch": "governance/ppia-07-rune-construction-rpg-system",
   "status": "completed_verified",
   "started_at": "2026-08-11T21:22:00+00:00",
-  "updated_at": "2026-08-11T23:16:00+00:00",
+  "updated_at": "2026-08-11T23:40:00+00:00",
   "completed_at": "2026-08-11T23:16:00+00:00",
   "base_commit": "a7803f8438a837b741f78c875d7ec2e915d37a19",
   "latest_pushed_commit": "c8e9d1ab677ca4bb37a772b1883099d23abb8187",
@@ -16,7 +16,7 @@
   "pull_request": 246,
   "merge_commit": "ac1628227d34df7fc1585b21c21988fb2fd7080a",
   "objective": "Produce a playable, data-ready compositional Rune Construction RPG System with source-grounded rune vocabulary, deterministic construction grammar, connection and shaping semantics, costs, limits, counters, progression, crafting, worked examples, balance/acceptance material, blind GM-adjudicated play, permission-safe presentation, recovery and accessible operation.",
-  "last_verified_action": "PPIA-07 final completion exact head c8e9d1ab677ca4bb37a772b1883099d23abb8187 passed all twenty-two applicable repository gates, including Validate PPIA-07 Completion Contract run 31545759090. PR #246 squash-merged into canonical main as ac1628227d34df7fc1585b21c21988fb2fd7080a.",
+  "last_verified_action": "PPIA-07 final completion exact head c8e9d1ab677ca4bb37a772b1883099d23abb8187 passed all twenty-two applicable repository gates, including Validate PPIA-07 Completion Contract run 31545759090. PR #246 squash-merged into canonical main as ac1628227d34df7fc1585b21c21988fb2fd7080a. Historical milestone merge anchors were subsequently restored to this completed checkpoint for downstream regression continuity without changing completion semantics.",
   "active_substep": null,
   "completed_substeps": [
     "PPIA-01 dependency is complete.",
@@ -41,7 +41,7 @@
     "Verified final acceptance matrix contains 48 blocking requirements across 16 categories and preserves all 20 grammar cases, 34 expanded-rune cases, 16 cost/stability benchmarks, 16 workflows, 18 actions, 10 handoffs and 16 blind cases.",
     "PPIA-07 final completion exact head c8e9d1ab677ca4bb37a772b1883099d23abb8187 passed all twenty-two applicable gates and PR #246 squash-merged as ac1628227d34df7fc1585b21c21988fb2fd7080a."
   ],
-  "next_action": "PPIA-07 is completed_verified. Continue the dependency-optimized PPIA sequence at PPIA-08 — Campaign / Scene / Session Authoring Depth through the governed PPIA-07→PPIA-08 transition; do not mark PPIA-08 started until its own governed attempt is initialized.",
+  "next_action": "PPIA-07 is completed_verified. Continue the dependency-optimized PPIA sequence at PPIA-08 — Campaign / Scene / Session Authoring Depth through the governed PPIA-07→PPIA-08 transition; do not reopen PPIA-07 except for evidence-preserving regression compatibility.",
   "changed_paths": [
     "governance/application-planning/parallel-preimplementation/PPIA-07_RUNE_CONSTRUCTION_EXPERIENCE_SPEC_v1.0.0.md",
     "governance/application-planning/parallel-preimplementation/PPIA-07_BLIND_RUNE_PLAY_CONSUMER_PROFILE_v1.0.0.json",
@@ -84,6 +84,13 @@
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
+    {"kind":"merge","value":"PPIA-12 final completion squash merge 0ed9f9a0c53b2a132d8f38c0d3cae22cc7ae14a0"},
+    {"kind":"merge","value":"PPIA-12→PPIA-07 transition squash merge a7803f8438a837b741f78c875d7ec2e915d37a19"},
+    {"kind":"merge","value":"PPIA-07 foundation squash merge 183d199d69f5cce121d4b971f33fe6c0145a6c45"},
+    {"kind":"merge","value":"PPIA-07 grammar/reference squash merge 15202626a0ba96d7675ee4ab4cbec4923158cd63"},
+    {"kind":"merge","value":"PPIA-07 cost/stability/progression squash merge 210ca8f13eaba7c1ea295c280368c68a13a300f3"},
+    {"kind":"merge","value":"PPIA-07 Rune Builder workflow squash merge f6ed3a71cf5dc01b14f85879e9acbdf5152af437"},
+    {"kind":"merge","value":"PPIA-07 expanded rune magic-system squash merge 86617eb2b9a823950708a88e1a049d5ec72e56d0"},
     {"kind":"commit","value":"PPIA-07 final completion validated exact head c8e9d1ab677ca4bb37a772b1883099d23abb8187"},
     {"kind":"pull_request","value":"PPIA-07 final completion PR #246"},
     {"kind":"merge","value":"PPIA-07 final completion squash merge ac1628227d34df7fc1585b21c21988fb2fd7080a"},
@@ -91,7 +98,7 @@
   ],
   "roadmap_projection_pending": true,
   "notes": [
-    "Top-level roadmap prose remains intentionally batched; transition checkpoint/pointer authority will move the PPIA current-work state to PPIA-08.",
+    "Top-level roadmap prose remains intentionally batched; transition checkpoint/pointer authority moves current PPIA work to PPIA-08.",
     "The 34-rune vocabulary is governed implementation-ready design rather than recovered source canon.",
     "Blind-gm-adjudicated mode is a Campaign/Session visibility and approval policy over the same Rune parser/evaluator, not a second magic engine.",
     "Player blind effect suppression is server-side role projection and cannot be bypassed by AI, diagnostics, exports, notifications, history or client-hidden payloads.",
