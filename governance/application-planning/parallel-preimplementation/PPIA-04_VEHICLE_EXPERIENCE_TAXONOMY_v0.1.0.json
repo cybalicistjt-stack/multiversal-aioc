@@ -1,0 +1,193 @@
+{
+  "format": "multiversal-ppia04-vehicle-mecha-starship-experience-taxonomy",
+  "version": "0.1.0",
+  "work_item": "PPIA-04",
+  "status": "foundation-taxonomy",
+  "authority": {
+    "operational_baseline": "MV-IA-F014 Vehicle, Mecha, and Starship Operations",
+    "positioning_baseline": "MV-IA-F013 Bounded Maps, Zones, and Tactical Positioning",
+    "asset_baseline": "MV-IA-F008 plus PPIA-03 Items, Equipment & Inventory Experience",
+    "structured_content_authority": "8E-009 CSV-first vehicle domain within final 20-dataset / 19,199-row reconciliation",
+    "vehicle_csv_datasets": 3,
+    "vehicle_csv_rows": 5628,
+    "retained_direct_pdfs": 24,
+    "retained_direct_pdf_pages": 608,
+    "recovered_r1_vehicle_system_candidates": 10,
+    "obsolete_semantic_database_is_content_authority": false,
+    "r1_structural_candidates_are_canonical_vehicle_or_system_definitions": false
+  },
+  "identity_state_layers": [
+    {
+      "id": "vehicle-definition",
+      "name": "Reusable Vehicle / Mecha / Starship Definition",
+      "owns": ["stable source identity", "version", "class/profile", "intrinsic mechanics", "source provenance", "allowed capabilities"],
+      "must_not_own": ["Campaign ownership", "crew assignment", "current hull", "current fuel", "Scene position"]
+    },
+    {
+      "id": "definition-configuration-variant",
+      "name": "Definition Variant / Class / Configuration",
+      "owns": ["source-backed variant/class relationship", "version alternative", "compatible configuration profile", "conflict alternative"],
+      "rules": ["configuration is not a live owned vehicle", "same name or source grouping never creates identity merge"]
+    },
+    {
+      "id": "component-system-definition",
+      "name": "Component / Module / System Definition",
+      "owns": ["component identity", "component family", "compatibility evidence", "intrinsic output/resource/failure rules", "provenance"],
+      "rules": ["name similarity cannot create parent link", "component Definition is distinct from installation state"]
+    },
+    {
+      "id": "owned-vehicle-asset-instance",
+      "name": "Campaign Vehicle Asset Instance",
+      "owns": ["Campaign-scoped vehicle instance ID", "Definition/version snapshot", "ownership/custody lineage", "configuration reference"],
+      "must_not_own": ["source Definition rewrites", "temporary Scene coordinates as identity"]
+    },
+    {
+      "id": "installed-configuration-state",
+      "name": "Installed Components / Loadout / Hardpoints",
+      "owns": ["installed component instance/ref", "hardpoint/slot", "installation state", "readiness", "compatibility result", "configuration snapshot"],
+      "rules": ["installation never silently transfers component ownership", "hidden installed systems are permission-filtered before counts"]
+    },
+    {
+      "id": "scene-deployment-placement",
+      "name": "Scene Deployment / Placement",
+      "owns": ["Campaign/Scene placement", "deployment state", "semantic footprint adapter", "launch/attached/carried relationship"],
+      "rules": ["placement does not duplicate the vehicle Asset", "canvas coordinates are presentation unless rules-bound"]
+    },
+    {
+      "id": "live-operational-state",
+      "name": "Live Session / Encounter Operational State",
+      "owns": ["current operational mode", "command windows", "readiness", "active Effects/Conditions", "current encounter participation", "expected version"],
+      "rules": ["server-authoritative", "client controls/projections do not directly mutate state"]
+    },
+    {
+      "id": "authority-relations",
+      "name": "Ownership / Custody / Control / Access",
+      "owns": ["ownership interests", "custody", "control grants", "remote-operation grants", "usage/access rights"],
+      "rules": ["ownership does not imply control", "custody does not imply station authority", "station assignment does not transfer ownership"]
+    },
+    {
+      "id": "crew-passenger-station-state",
+      "name": "Crew / Passenger / Station Assignments",
+      "owns": ["crew manifest", "passengers", "station assignments", "station reservations", "command policy", "controller grants"],
+      "rules": ["station authority is explicit", "multiple stations only where profile permits", "conflicting commands resolve by declared command policy rather than UI order"]
+    },
+    {
+      "id": "cargo-containment-carried-craft",
+      "name": "Cargo / Containment / Carried or Attached Craft",
+      "owns": ["cargo inventory refs", "containers", "passenger/cargo capacity state", "hangar/attached craft relations", "nested Asset lineage"],
+      "rules": ["generic Asset/inventory semantics inherit PPIA-03", "hidden cargo/occupants/craft are filtered before totals/counts"]
+    },
+    {
+      "id": "damage-condition-failure",
+      "name": "Hull / Frame / Subsystem Damage and Failure",
+      "owns": ["hull/frame condition", "motive state", "power state", "sensor state", "weapon/system damage", "station damage", "breach/seal state", "disabled/immobilized/adrift/destroyed/captured/salvaged state"],
+      "rules": ["zero hull never universally deletes Asset/history", "damage consequences are profile/rule bound"]
+    },
+    {
+      "id": "resources-power-fuel-heat",
+      "name": "Power / Fuel / Ammo / Charge / Heat / Stress / Maintenance Resources",
+      "owns": ["current resource quantities", "capacity where governed", "power allocation mode", "heat/stress", "maintenance state", "atomic resource costs"],
+      "rules": ["unknown/source-unspecified is not zero or unlimited", "accepted actions mutate resources atomically with outcomes"]
+    },
+    {
+      "id": "movement-position-environment",
+      "name": "Movement / Position / Environment / Docking State",
+      "owns": ["semantic zone/anchor", "range band", "adjacency", "facing", "altitude/depth", "velocity band", "movement mode", "docking/boarding state", "interior/exterior position", "environment constraints"],
+      "rules": ["semantic position is authoritative", "visual geometry alone cannot determine rules"]
+    },
+    {
+      "id": "provenance-history-recovery",
+      "name": "Source / Provenance / History / Recovery",
+      "owns": ["source coordinates", "source/recommendation/conflict state", "ownership/configuration/service history", "damage/repair history", "crew/control history", "operation IDs", "expected versions", "recovery receipts"],
+      "rules": ["history is role-filtered before aggregation/export", "ambiguous network outcomes use status lookup before retry"]
+    }
+  ],
+  "presentation_profiles": [
+    "ground-vehicle",
+    "watercraft",
+    "aircraft",
+    "submersible",
+    "amphibious-hybrid",
+    "mount-or-abstract-conveyance",
+    "mecha-frame",
+    "mecha-component",
+    "spacecraft",
+    "spacecraft-component",
+    "carrier-or-hangar-capable",
+    "support-service-or-facility-context"
+  ],
+  "station_types": [
+    "pilot-driver",
+    "commander",
+    "navigator",
+    "gunner",
+    "engineer",
+    "sensor",
+    "communications",
+    "defense",
+    "medical",
+    "cargo",
+    "passenger",
+    "remote-operator"
+  ],
+  "retained_internal_alpha_capabilities": [
+    "semantic zones and anchors",
+    "typed adjacency and bounded distance/elevation",
+    "stable vehicle classes",
+    "crew/stations and command authority",
+    "bounded resources",
+    "component/system state",
+    "damage/failure states",
+    "docking and boarding",
+    "carried/attached craft",
+    "hidden-information filtering",
+    "provenance and recovery",
+    "accessible/nonvisual operation"
+  ],
+  "explicitly_deferred_capabilities": [
+    "continuous Newtonian flight",
+    "full orbital mechanics",
+    "subsystem circuit simulation",
+    "real-time crew station concurrency at scale",
+    "detailed power-grid routing",
+    "structural finite-element damage",
+    "atmospheric transition simulation",
+    "carrier fleet command",
+    "autonomous drones",
+    "programmable vehicle AI",
+    "full interior/exterior synchronized geometry",
+    "unrestricted custom vehicle processors"
+  ],
+  "source_guardrails": [
+    "Raw CSV/source provenance and unmapped source fields remain preserved.",
+    "Cross-domain coercion is forbidden.",
+    "No silent defaults are introduced to make a vehicle UI appear complete.",
+    "Mecha/spacecraft component parent relationships require explicit evidence; name similarity is insufficient.",
+    "Recovered R1 vehicle/system headings remain source-review candidates and cannot create Definitions or mechanics by themselves.",
+    "Source fact, source-unspecified value, inference/recommendation, conflict, configuration state, Campaign state and runtime state remain distinguishable."
+  ],
+  "permission_invariants": [
+    "authorize before vehicle existence, search, station roster, occupant/cargo counts, system list, resources, routes, capabilities, provenance, history, exports, diagnostics, notifications or AI context",
+    "hidden occupants, cargo, systems, carried craft, routes and capabilities cannot leak through totals, capacity summaries, readiness indicators or failed actions",
+    "GM authority is Campaign-scoped and does not imply unrelated user-private or other-Campaign access",
+    "station controls disappear immediately after authority revocation and protected caches are invalidated",
+    "AI/service projections are minimum necessary and cannot independently command, move, attack, route power, reveal, transfer ownership or promote content"
+  ],
+  "mutation_invariants": [
+    "vehicle Definition inspection never mutates source content",
+    "deployment/placement never creates a duplicate owned vehicle Asset",
+    "station assignment never transfers ownership",
+    "install/uninstall never silently transfers component ownership",
+    "accepted movement/actions/damage/resource outcomes are atomic and server-authoritative",
+    "commands use idempotency and expected versions",
+    "offline authoritative vehicle mutation is prohibited"
+  ],
+  "cross_domain_routes": {
+    "personal_items_cargo_lots_generic_asset_lineage": "PPIA-03",
+    "species_forms_host_biology": "PPIA-05",
+    "campaign_scene_authoring_depth": "PPIA-08",
+    "encounter_and_balance_calibration": "PPIA-11",
+    "world_specific_vehicle_extensions": "PPIA-12"
+  },
+  "boundary": "This taxonomy is an implementation-ready PPIA-04 foundation. It does not promote CSV/R1 content, invent source facts, implement application runtime, activate A2, or authorize release/deployment."
+}
