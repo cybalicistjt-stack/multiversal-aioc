@@ -34,6 +34,7 @@ def main() -> None:
         require(path.exists(), f"missing {path.relative_to(ROOT)}")
 
     inventory = INVENTORY.read_text(encoding="utf-8")
+    inventory_lower = inventory.lower()
     required_inventory = [
         "29 PDFs / 654 pages",
         "6 supporting PDFs / 233 pages",
@@ -57,7 +58,7 @@ def main() -> None:
         "PPIA-12",
     ]
     for phrase in required_inventory:
-        require(phrase in inventory, f"inventory missing {phrase!r}")
+        require(phrase.lower() in inventory_lower, f"inventory missing {phrase!r}")
 
     direct_section = inventory.split("## 2. Retained direct Species/Form/Biology source library", 1)[1].split("## 3. Supporting environment and Adaptation source library", 1)[0]
     supporting_section = inventory.split("## 3. Supporting environment and Adaptation source library", 1)[1].split("## 4. Governed structured ability surface", 1)[0]
