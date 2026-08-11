@@ -21,23 +21,43 @@ Inference is not automatically an error. The standing owner delegation explicitl
 | Delegated metadata inference | 403 | Low-impact metadata/attunement/weight/origin inference; retain unless downstream implementation exposes conflict. |
 | Systematic magic completion | 385 | Review as one governed Magic normalization system, not 385 isolated source failures. |
 | Systematic base-engineering completion | 350 | Review as one construction/hardness/crafting normalization system; route balance to PPIA-11 and authoring semantics to PPIA-12/PPIA-08. |
-| Mechanical interpretation review | 531 | Material gameplay behavior was inferred; this is the substantive review queue. |
-| — P1 high priority | 111 | Three or more inferred fields; review before normal-priority mechanical records. |
-| — P2 normal priority | 420 | One or two inferred mechanical fields; review after P1 or in consuming tranche. |
+| Mechanical interpretation review | 531 | Material behavior or lifecycle behavior was inferred; prioritized by **core gameplay fields**, not raw inferred-field count. |
+| — P1 high-core | 36 | Three or more inferred core runtime-mechanical fields; bounded source review belongs in PPIA-01. |
+| — P2 substantive-core | 73 | Two inferred core runtime-mechanical fields; route to consuming feature/balance tranche unless another source-risk signal exists. |
+| — P3 bounded-core | 183 | One inferred core runtime-mechanical field; preserve as explicit recommendation and review during consuming feature work. |
+| — P4 lifecycle/metadata-only | 239 | No inferred core effect field; inference is confined to recovery/removal/weight/crafting/annotation/lifecycle context. |
 | Exact source-recovery review | 1 | `Quantum Weaver`; source is too thin to support the authored mechanics. |
 
 Total inference/estimate-bearing rows: **10,594**.
 
-## P1 mechanical review distribution
+## P1 high-core review distribution
 
-The 111 P1 rows are concentrated rather than cross-domain chaos:
+The refined P1 queue contains only **36** records:
 
-- 59 — `expanded_symbiotes_and_cybernetics_all_genres.csv`
-- 45 — `expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv`
-- 5 — `expanded_items_all_genres.csv`
-- 2 — `expanded_melee_weapons_all_genres.csv`
+- 18 — `expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv`
+- 15 — `expanded_symbiotes_and_cybernetics_all_genres.csv`
+- 3 — `expanded_items_all_genres.csv`
 
-These rows are implementation-useful but do not require case-by-case owner approval under the standing delegation. Their inferred mechanics must remain distinguishable from source facts and are candidates for bounded source comparison or later PPIA-11 balancing.
+This replaces the earlier raw-field-count heuristic, which incorrectly elevated weight/removal/recovery/crafting metadata. Priority is now determined by inferred fields that materially affect runtime behavior.
+
+Representative P1 records include:
+
+- Wand of Disruption
+- Staff of Earthshaping
+- Rod of Control
+- Ring of Counterfire
+- Staff of Bonebark
+- Pyrostorm
+- Mind Healer
+- Abysswalker
+- Hypnotic Gaze
+- Mind Reader
+- Plasma Blaster
+- Taser
+- Stun Gun
+- Tranquilizer Gun
+
+The complete row-level P1/P2/P3/P4 queues are generated deterministically by `scripts/analyze-ppia01-inference-thin-content.py` from immutable `Csv.zip` and retained as CI evidence.
 
 ## Structural blank review
 
@@ -67,6 +87,14 @@ This is not a missed source paragraph. It is a genuine authored-completion case.
 
 See `PPIA-01_OWNER_EYE_QUANTUM_WEAVER.md`.
 
+## Historical provenance question
+
+The retained 8E-008G v0.1.0 audit was blocked because 2,766 of 7,144 page-primary structural candidates lacked formal disposition at that historical frozen baseline. Those **must not be counted as 2,766 current missing mechanics**.
+
+A later continuity inventory proves an exact package named `Multiversal_8E-008G-R1_Source_Boundary_and_Provenance_Closure_v0.1.0` once existed in `Aaac (1).zip`, but the exact R1 bytes are absent from the current repository and Project Sources. If recovered, they can determine whether that historical provenance gate was actually closed.
+
+The later 8E-009 program remains the current structured-content authority: the roadmap marks it complete and the full-registry contract validates 20 CSV datasets / 19,199 rows / zero unprocessed rows.
+
 ## Feature-surface traceability
 
 All review records are tagged by the deterministic analyzer to their likely consuming PPIA tranches. The primary destinations are:
@@ -91,14 +119,15 @@ The Screen Design Bible requires provenance visibility and bidirectional traceab
 Completed inside PPIA-01:
 
 - 84/84 explicit high-priority source-gap rows have governed closure artifacts.
-- 10,594 inference/estimate-bearing rows have deterministic category and priority assignment.
+- 10,594 inference/estimate-bearing rows have deterministic category and core-impact priority assignment.
 - 33 structural-blank rows have applicability classification.
+- one true source-recovery/owner-eye record has been isolated.
+- historical 8E-008G provenance uncertainty is separated from current 8E-009 row completeness.
 - raw `Csv.zip` remains immutable.
 - no automatic identity merge is authorized or performed.
 
 Still unfinished:
 
-- freeze the unresolved-source/provenance register;
-- reconcile the historical 8E-008G source-boundary blocker against the later CSV-first authority without treating its 2,766 candidates as 2,766 current missing mechanics;
-- perform a bounded source review of the P1 mechanical queue or explicitly route its unresolved balance/content decisions to consuming PPIA tranches;
-- complete final PPIA-01 traceability/repair backlog and closure evidence.
+- bounded exact-source review of the 36 P1 high-core records;
+- final routing of unresolved P2/P3/systematic balance/content decisions to consuming PPIA tranches;
+- final PPIA-01 traceability/repair backlog and completion evidence.
