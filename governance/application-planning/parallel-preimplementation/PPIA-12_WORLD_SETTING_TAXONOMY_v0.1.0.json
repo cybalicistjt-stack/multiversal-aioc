@@ -1,0 +1,48 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "PPIA-12",
+  "title": "World & Setting identity-state taxonomy",
+  "status": "foundation_candidate",
+  "source_summary": {
+    "primary_setting_cosmology_location_pdfs": 22,
+    "primary_pages": 693,
+    "environment_template_pdfs": 8,
+    "environment_template_pages": 238,
+    "authoring_guidance_pdfs": 2,
+    "authoring_guidance_pages": 30,
+    "total_pdfs": 32,
+    "total_pages": 961,
+    "dedicated_world_setting_csv_catalog_present": false
+  },
+  "identity_state_layers": [
+    {"id":"world-setting-definition","definition":"Reusable source-backed identity, type, names, premise, descriptors, and stable setting metadata.","not":"Campaign-local state or current Scene state."},
+    {"id":"cosmology-branch-reality-placement","definition":"Explicit source-backed placement in branches, planes, layers, realities, eras, or other cosmological containers.","not":"A hierarchy inferred from thematic similarity or co-occurrence."},
+    {"id":"region-location-site-hierarchy","definition":"Typed source-backed containment and location relations among worlds, realms, regions, zones, settlements, districts, stations, ships, routes, landmarks, and sites.","not":"A planet-only geographic tree."},
+    {"id":"environment-biome-hazard-profile","definition":"Setting-attached or reusable environment/biome/hazard/resource/traversal context with provenance.","not":"Automatic instantiation of a generic environment template."},
+    {"id":"settlement-infrastructure-landmark","definition":"Source-backed settlements, structures, infrastructure, landmarks, portals, roads, hubs, and constructed locations.","not":"Generic Item/Vehicle ownership or live runtime position."},
+    {"id":"faction-institution-governance","definition":"Setting-scoped factions, organizations, governments, corporations, institutions, jurisdictions, and authority relations.","not":"Campaign-local current faction metrics or generic relationship mechanics."},
+    {"id":"culture-society-economy","definition":"Setting-scoped cultures, societies, religions, languages, calendars, customs, economies, and social structures.","not":"Species biology or immutable Character traits."},
+    {"id":"history-era-event-timeline","definition":"Source-backed eras, historical events, chronology, causal relations, and unresolved chronology conflicts.","not":"Current Campaign timeline or inferred chronology."},
+    {"id":"world-local-content-extension","definition":"Setting availability, membership, provenance, and world-local extension metadata for Species, Creatures/NPCs, Items, Vehicles, Abilities, and other governed objects.","not":"Replacement of the owning object definition domain."},
+    {"id":"world-local-rule-mechanic-extension","definition":"Rules or mechanics explicitly scoped to a world, reality, branch, plane, zone, or setting context.","not":"Automatic promotion to universal/core rules."},
+    {"id":"transit-portal-route-connectivity","definition":"Explicit roads, portals, routes, adjacency, access rules, and inter-setting connectivity.","not":"Connectivity inferred from shared organizations or multiversal context."},
+    {"id":"campaign-instantiation-current-setting-state","definition":"Campaign-local instantiation, changed/destroyed/occupied state, current control, discovery, and Scene/session context referencing reusable setting definitions.","not":"Mutation of reusable source Definitions."},
+    {"id":"knowledge-visibility-secret-state","definition":"Role- and Campaign-scoped reveal, discovery, secret, GM-only, rumor, and knowledge projection state.","not":"Source truth itself; hidden truth remains source-backed but filtered."},
+    {"id":"provenance-conflict-recovery","definition":"Source references, assertions, conflicts, revisions, authoring decisions, history, export, recovery, expected-version, and idempotency metadata.","not":"Silent reconciliation or overwrite."}
+  ],
+  "presentation_profiles": ["library-summary","world-setting-inspector","hierarchy-tree","region-location-browser","map-and-text-outline","environment-profile","faction-culture-history","extension-inventory","campaign-instance-state","gm-world-builder","player-revealed-view","provenance-conflict-recovery"],
+  "invariants": [
+    "world-local content remains scoped absent explicit promotion authority",
+    "definition state is separate from campaign/runtime state",
+    "typed hierarchy supports nonplanetary settings",
+    "relations require explicit source or governed authoring evidence",
+    "generic environment template does not imply setting membership",
+    "world-local extensions do not replace owning domain definitions",
+    "authoring aids and AI output remain proposals until governed acceptance",
+    "unknown and conflicted source state remain explicit",
+    "permission filtering occurs before aggregation and AI context",
+    "maps are supplemental; accessible textual/nonvisual operation is required",
+    "mutations require governed authority, expected-version checks and idempotent recovery",
+    "no application runtime activation is authorized"
+  ]
+}

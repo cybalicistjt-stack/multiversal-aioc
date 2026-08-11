@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "PPIA-12",
+  "title": "Setting extension ownership and routing",
+  "status": "foundation_candidate",
+  "source_classes": [
+    {"class":"primary-setting-cosmology-location","count":22,"pages":693,"canonical_effect":"May establish setting facts only at the scope and confidence supported by the source."},
+    {"class":"environment-template","count":8,"pages":238,"canonical_effect":"Reusable environment/archetype evidence; no named-setting instantiation without explicit evidence or governed authoring."},
+    {"class":"authoring-guidance","count":2,"pages":30,"canonical_effect":"Proposal/template/generator input only; never canonical by generation alone."}
+  ],
+  "ownership_routes": [
+    {"content":"World/Setting identity, typed hierarchy, source-backed setting membership, world-local extension scope","owner":"PPIA-12"},
+    {"content":"Campaign/Scene instantiation, current world state, branching preparation/live/post-session authoring","owner":"PPIA-08"},
+    {"content":"Creature/NPC core definitions and playable Creature semantics","owner":"PPIA-02"},
+    {"content":"Item/equipment/inventory core definitions and Asset semantics","owner":"PPIA-03"},
+    {"content":"Vehicle/mecha/starship core definitions and instance semantics","owner":"PPIA-04"},
+    {"content":"Species/Form/biology core definitions and Character biological state","owner":"PPIA-05"},
+    {"content":"Character visual appearance creation","owner":"PPIA-06"},
+    {"content":"Encounter threat/balance calibration","owner":"PPIA-11"},
+    {"content":"Generic travel/discovery/environment/navigation semantics","owner":"Feature Bible Exploration / downstream PPIA-08 integration"},
+    {"content":"Permission/reveal filtering and recovery/idempotency","owner":"MV-IA-F020 / MV-IA-F021"},
+    {"content":"Generic object browse/inspect/provenance UI","owner":"MV-IA-F002"}
+  ],
+  "relation_evidence_rules": {
+    "allowed": ["explicit relation in a retained source","explicit governed authoring decision with provenance","validated import/migration preserving explicit source relation"],
+    "not_sufficient": ["same file","same name","name similarity","thematic similarity","shared faction or culture","geographic plausibility","co-occurrence","AI inference","random table result"]
+  },
+  "setting_local_mechanics": {
+    "default_scope": "source setting/branch/plane/reality/location only",
+    "universal_promotion": "requires separate explicit authority and owning-domain validation"
+  },
+  "unknown_conflict_policy": {
+    "missing": "preserve unknown/null with provenance",
+    "conflict": "retain competing assertions/revision identity until governed resolution",
+    "draft_revision": "do not silently merge older/current/new statements"
+  },
+  "authoring_policy": {
+    "random_tables": "proposal_only",
+    "ai_assistance": "proposal_only",
+    "templates": "structure_only",
+    "accepted_authoring": "must record author, scope, provenance, validation and version"
+  },
+  "permission_policy": "Filter hidden/unrevealed setting facts before counts, search, maps, route results, summaries, warnings, exports, diagnostics, notifications, or AI context.",
+  "accessibility_policy": "Every hierarchy, route, environment, reveal, conflict and authoring operation must be usable without relying solely on map position, color, hover, drag, animation, or visual geometry."
+}
