@@ -11,6 +11,7 @@ PROGRAM = ROOT / "governance/application-planning/parallel-preimplementation"
 UNRESOLVED = PROGRAM / "PPIA-01_UNRESOLVED_SOURCE_REGISTER.json"
 REVIEW_MD = PROGRAM / "PPIA-01_INFERENCE_THIN_CONTENT_REVIEW_REGISTER.md"
 OWNER_MD = PROGRAM / "PPIA-01_OWNER_EYE_QUANTUM_WEAVER.md"
+P1_REVIEW = PROGRAM / "PPIA-01_P1_CORE_MECHANICAL_SOURCE_REVIEW_v0.1.0.json"
 
 
 def main() -> int:
@@ -20,6 +21,7 @@ def main() -> int:
 
     triage = json.loads(Path(args.triage).read_text(encoding="utf-8"))
     unresolved = json.loads(UNRESOLVED.read_text(encoding="utf-8"))
+    p1_review = json.loads(P1_REVIEW.read_text(encoding="utf-8"))
     review = REVIEW_MD.read_text(encoding="utf-8")
     owner = OWNER_MD.read_text(encoding="utf-8")
 
@@ -53,7 +55,8 @@ def main() -> int:
     if quantum.get("priority") != "P0-owner-eye-useful":
         raise SystemExit("Quantum Weaver priority changed")
 
-    if len(triage.get("p1HighCoreMechanicalReview") or []) != 36:
+    p1_rows = triage.get("p1HighCoreMechanicalReview") or []
+    if len(p1_rows) != 36:
         raise SystemExit("P1 high-core queue count changed")
     if len(triage.get("p2SubstantiveCoreMechanicalReview") or []) != 73:
         raise SystemExit("P2 substantive-core queue count changed")
@@ -129,6 +132,53 @@ def main() -> int:
     if "OPTIONAL OWNER REVIEW — NOT A BLOCKER" not in owner:
         raise SystemExit("Quantum Weaver owner-eye note incorrectly changed its blocking status")
 
+    if p1_review.get("format") != "multiversal-ppia01-p1-core-mechanical-source-review" or p1_review.get("version") != "0.1.0":
+        raise SystemExit("unexpected P1 source-review identity/version")
+    p1_policy = p1_review.get("policy") or {}
+    if p1_policy.get("preserve_raw_csv") is not True or p1_policy.get("automatic_identity_merge") is not False:
+        raise SystemExit("P1 source review violates raw-source/identity boundary")
+    if p1_policy.get("source_facts_distinct_from_recommendations") is not True:
+        raise SystemExit("P1 source review collapses recommendations into source facts")
+    if p1_policy.get("owner_review_required") is not False or p1_policy.get("later_balance_review") != "PPIA-11":
+        raise SystemExit("P1 source-review owner/balance routing changed")
+
+    triage_p1 = {(row["dataset"], row["name"]) for row in p1_rows}
+    reviewed_p1: set[tuple[str, str]] = set()
+    for group in p1_review.get("groups") or []:
+        dataset = group.get("dataset")
+        names = group.get("records") or []
+        if group.get("count") != len(names):
+            raise SystemExit(f"P1 group count mismatch for {group.get('group_id')}")
+        for name in names:
+            key = (dataset, name)
+            if key in reviewed_p1:
+                raise SystemExit(f"duplicate P1 source-review identity {key}")
+            reviewed_p1.add(key)
+    if reviewed_p1 != triage_p1:
+        raise SystemExit(
+            f"P1 source-review coverage mismatch missing={sorted(triage_p1-reviewed_p1)} extra={sorted(reviewed_p1-triage_p1)}"
+        )
+
+    p1_summary = p1_review.get("summary") or {}
+    if p1_summary != {
+        "p1_high_core_rows_reviewed": 36,
+        "explicit_core_source_support_rows": 26,
+        "narrative_seed_only_rows": 7,
+        "source_fusion_core_support_rows": 3,
+        "source_conflicts_found": 1,
+        "automatic_identity_merges": 0,
+        "raw_csv_rows_modified": 0,
+        "owner_blockers": 0,
+    }:
+        raise SystemExit(f"P1 source-review summary changed: {p1_summary}")
+
+    combat_group = next(group for group in p1_review["groups"] if group["group_id"] == "PPIA-01-P1-ADVANCED-COMBAT-ITEMS")
+    taser = next(item for item in combat_group["record_dispositions"] if item["name"] == "Taser")
+    if taser.get("finding") != "source_conflict_two_published_variants":
+        raise SystemExit("Taser source-conflict finding disappeared")
+    if "Do not auto-merge" not in taser.get("recommendation", ""):
+        raise SystemExit("Taser source-conflict recommendation no longer preserves identity boundary")
+
     boundaries = unresolved.get("boundaries") or {}
     if boundaries.get("raw_csv_modified") is not False:
         raise SystemExit("unresolved register claims raw CSV mutation")
@@ -141,6 +191,8 @@ def main() -> int:
         "triageVersion": triage["version"],
         "inferenceEstimateRows": s["inferenceEstimateRows"],
         "p1HighCoreMechanicalRows": s["p1HighCoreMechanicalRows"],
+        "p1SourceReviewedRows": p1_summary["p1_high_core_rows_reviewed"],
+        "sourceConflictsFound": p1_summary["source_conflicts_found"],
         "ownerEyeRecords": summary["current_registry_owner_eye_records"],
         "historicalProvenanceQuestions": summary["historical_provenance_audit_questions"],
         "result": "PASS",
