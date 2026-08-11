@@ -1,6 +1,6 @@
 {
   "format": "multiversal-ppia01-unresolved-source-register",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "work_item": "PPIA-01",
   "status": "active_bounded_unresolved_register",
   "authority": {
@@ -16,7 +16,8 @@
     "owner_resolved_authored_completion_records": 1,
     "current_registry_source_unspecified_capacity_records": 7,
     "current_registry_source_reference_only_records": 3,
-    "historical_provenance_audit_questions": 1,
+    "historical_provenance_audit_questions": 0,
+    "historical_provenance_closures_recovered": 1,
     "current_registry_explicit_high_priority_gaps_without_closure": 0
   },
   "owner_resolutions": [
@@ -31,6 +32,36 @@
         "later symbiote-family contract inconsistency",
         "deliberate PPIA-11 balance change"
       ]
+    }
+  ],
+  "provenance_resolutions": [
+    {
+      "id": "PPIA-01-USR-004",
+      "resolved_at": "2026-08-11",
+      "kind": "historical_provenance_audit_closure_recovered",
+      "blocking": false,
+      "historical_baseline": "mv.freeze.8e008a.0.1.3",
+      "owner_supplied_wrapper": "This.zip",
+      "owner_supplied_wrapper_sha256": "daa8d2eed1d23400812c8a003fbee5c6680041227d42dc90555ebc2031715a18",
+      "finding": "The supplied archive contains the substantive 8E-008G-R1 closure outputs and final validation evidence. The historical R1 closure-result question is resolved even though the original historical wrapper ZIP name/checksum is not recoverable from this extracted wrapper.",
+      "closure_result": {
+        "status": "PASS",
+        "acceptance_checks": 101,
+        "acceptance_checks_passed": 101,
+        "structural_candidates_accounted": 7144,
+        "formerly_unbound_candidates_closed": 2766,
+        "unbound_source_sections_remaining": 0,
+        "authoritative_records_provenance_accounted": 158189,
+        "authoritative_records_unaccounted": 0,
+        "foundational_inventory_records_accounted": 1347,
+        "canonical_page_bindings_added": 254,
+        "supporting_or_layout_dispositions": 841,
+        "formally_deferred_candidates": 1671,
+        "deferred_domain_candidates": 447,
+        "deferred_unclassified_candidates": 1224
+      },
+      "public_canon_boundary": "R1 passes source accountability, not public-canon completeness. The 1,671 formal deferrals remain explicit future convert/exclude/supersede/waive decisions; they are not current missing mechanics.",
+      "evidence": "PPIA-01_8E-008G-R1_RECOVERY_CLOSURE.md"
     }
   ],
   "records": [
@@ -49,10 +80,19 @@
         "Plasma Pistol",
         "Sonic Rifle"
       ],
-      "unresolved_fields": ["Standard Capacity", "Extended Clip", "High-Capacity Mag"],
+      "unresolved_fields": [
+        "Standard Capacity",
+        "Extended Clip",
+        "High-Capacity Mag"
+      ],
       "disposition": "Preserve as source-unspecified rather than invent magazine values solely to eliminate blanks; resolve in PPIA-03/PPIA-11 only if implementation requires explicit capacity rules.",
       "owner_action": "None unless the owner has another source giving capacities.",
-      "traceability": ["PPIA-03", "PPIA-11", "STAGE-A-A2", "SD-1007"]
+      "traceability": [
+        "PPIA-03",
+        "PPIA-11",
+        "STAGE-A-A2",
+        "SD-1007"
+      ]
     },
     {
       "id": "PPIA-01-USR-003",
@@ -74,47 +114,21 @@
           "source_note": "Ammo-only weapon name shown in source."
         }
       ],
-      "unresolved_fields": ["Damage", "Range", "Weight", "Cost", "Special Rules"],
+      "unresolved_fields": [
+        "Damage",
+        "Range",
+        "Weight",
+        "Cost",
+        "Special Rules"
+      ],
       "disposition": "Keep as source/reference-only names. Do not promote into invented full weapon definitions and do not auto-merge identities.",
       "owner_action": "None unless another controlling weapon-stat source exists.",
-      "traceability": ["PPIA-03", "STAGE-A-A2", "SD-1007", "SD-1107"]
-    },
-    {
-      "id": "PPIA-01-USR-004",
-      "kind": "historical_provenance_audit_closure_status",
-      "priority": "P1-governance-followup",
-      "blocking": false,
-      "current_registry_gap_count": 0,
-      "evidence_package": "Multiversal_8E-008G_Source_Coverage_and_Provenance_Audit_v0.1.0.zip",
-      "evidence_package_sha256": "4a98058b03d3ced252f01dac3026997de2dfd0b064be6a691debb93a0c485fff",
-      "historical_baseline": "mv.freeze.8e008a.0.1.3",
-      "historical_result": {
-        "status": "BLOCKED",
-        "authoritative_records_provenance_accounted": 158189,
-        "foundational_inventory_records_accounted": 1347,
-        "source_identifier_dialects_classified": 168,
-        "page_primary_structural_candidates": 7144,
-        "candidates_without_formal_disposition": 2766,
-        "unclassified_candidates": 2039,
-        "domain_classified_candidates": 727,
-        "required_next_at_that_time": "8E-008G-R1 - Source Boundary and Provenance Closure"
-      },
-      "historical_package_evidence": {
-        "exact_package_name": "Multiversal_8E-008G-R1_Source_Boundary_and_Provenance_Closure_v0.1.0",
-        "historical_container_name": "Aaac (1).zip",
-        "evidence_source": "Catch up.zip / AIOC-0-002 Complete Historical Feature Inventory",
-        "inventory_disposition": "PRESERVED / REGISTER_AND_REUSE_AS_PROJECT_ASSET",
-        "inventory_state": "existing-package-not-yet-indexed-in-aioc",
-        "bytes_available_in_current_project_sources": false,
-        "bytes_found_in_current_repository": false,
-        "owner_resupplied_audit_filename": "8E008G_Source_Audit.zip",
-        "owner_resupplied_audit_sha256": "4a98058b03d3ced252f01dac3026997de2dfd0b064be6a691debb93a0c485fff",
-        "owner_resupplied_audit_finding": "Exact match to the original 8E-008G audit package. It contains the 8E-008G-R1 closure plan and the original BLOCKED audit evidence, but not the later R1 closure package/results."
-      },
-      "later_authority": "The current roadmap declares 8E-009 Canonical Object Template and CSV-First Program complete with 20 datasets / 19,199 promoted rows / zero unprocessed rows. The current full-registry contract declares Csv.zip the primary structured source and validates all 19,199 CSV rows.",
-      "disposition": "Do not reinterpret the historical 2,766 candidates as 2,766 current missing mechanics. The owner-resupplied audit package verifies the original blocked audit and R1 plan, but does not contain the later R1 closure results. Preserve this as a historical provenance-closure question separate from the current CSV content-quality gap count.",
-      "owner_action": "Do not resupply the same `8E008G_Source_Audit.zip`; it has now been verified. Only `Aaac (1).zip` containing the exact R1 package, or the exact `Multiversal_8E-008G-R1_Source_Boundary_and_Provenance_Closure_v0.1.0` package itself, would materially advance this historical question. This remains nonblocking.",
-      "traceability": ["PPIA-01", "STAGE-A-A2", "SD-1107"]
+      "traceability": [
+        "PPIA-03",
+        "STAGE-A-A2",
+        "SD-1007",
+        "SD-1107"
+      ]
     }
   ],
   "boundaries": {
@@ -122,6 +136,7 @@
     "automatic_identity_merge_authorized": false,
     "source_absence_may_be_filled_as_source_fact": false,
     "historical_2766_candidates_are_current_missing_mechanics": false,
+    "formal_deferral_is_public_canon_completion": false,
     "canonical_promotion_authorized_by_this_register": false
   }
 }
