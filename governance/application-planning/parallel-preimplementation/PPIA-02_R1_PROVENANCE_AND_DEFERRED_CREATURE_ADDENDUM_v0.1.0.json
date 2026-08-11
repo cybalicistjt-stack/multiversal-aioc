@@ -1,0 +1,65 @@
+{
+  "format": "multiversal-ppia02-r1-provenance-deferred-creature-addendum",
+  "version": "0.1.0",
+  "work_item": "PPIA-02",
+  "status": "required_completion_addendum",
+  "canonical_r1_recovery": {
+    "merge": "d271d1e7ec453cd153a7bf5768b3df837ba677a9",
+    "owner_supplied_wrapper": "This.zip",
+    "owner_supplied_wrapper_sha256": "daa8d2eed1d23400812c8a003fbee5c6680041227d42dc90555ebc2031715a18",
+    "historical_baseline": "mv.freeze.8e008a.0.1.3",
+    "result": "PASS",
+    "acceptance_checks": 101,
+    "acceptance_checks_passed": 101,
+    "structural_candidates_accounted": 7144,
+    "formerly_unbound_candidates_closed": 2766,
+    "unbound_source_sections_remaining": 0,
+    "authoritative_records_provenance_accounted": 158189,
+    "authoritative_records_unaccounted": 0,
+    "formally_deferred_candidates": 1671,
+    "formal_deferral_is_public_canon_completion": false
+  },
+  "creature_deferral_reference_set": {
+    "path": "PPIA-02_R1_DEFERRED_CREATURE_CANDIDATES.csv",
+    "derived_sha256": "dda92f7b4294e4162b633616b82256037855742bfe08fa07cc5376f5d5eb4ec0",
+    "rows": 93,
+    "source_distribution": {
+      "src.logical.legacy-corpus-a-2251": 79,
+      "src.logical.world-faction-compilation": 13,
+      "src.logical.legacy-corpus-b-2271": 1
+    },
+    "derivation": "Exact identity/coordinate/heading subset of the recovered Multiversal_8E-008G-R1_Formally_Deferred_Source_Candidate_Register.csv; rows where proposed_content_class == creature.",
+    "source_register_sha256": "39488657e712c1d834d83c1bb6e3400100252c5f2ce5a29170e6a7e63ee8d67b"
+  },
+  "experience_contract": {
+    "content_state": "formally_deferred_source_candidate",
+    "meaning": "Source-accounted candidate with no verified canonical binding or approved exclusion; available to authorized provenance/source-recovery views but not presented as a canonical Creature/NPC Definition.",
+    "library_default": "Exclude from canonical Creature/NPC browse results unless the current surface explicitly includes source-recovery/deferred candidates.",
+    "inspector_behavior": "Show source coordinates, heading text, candidate identity, R1 disposition, and public-canon status; do not synthesize a stat block, stable Definition identity, CR, ecology, relationships, or mechanics absent separate governed evidence.",
+    "compare_behavior": "May compare source candidate evidence to an authorized canonical or draft target only as provenance/recovery analysis; candidate status never becomes identity equivalence.",
+    "authoring_behavior": "GM/Creator may open the source candidate as recovery/reference evidence. Converting it into a Campaign-local draft or future canonical proposal requires a separate owning workflow and explicit provenance receipt.",
+    "scene_encounter_behavior": "A formally deferred source candidate cannot be quick-added or launched as a Creature/NPC participant until a governed usable Definition or Campaign-local authored object exists.",
+    "privacy_behavior": "Candidate existence, source coordinates, counts, headings, and recovery metadata are permission-filtered before serialization and derived counts/facets.",
+    "public_canon_behavior": "Formal deferral is neither canonical promotion nor exclusion. Public-canon completion requires an explicit later convert/bind/exclude/supersede/waive disposition."
+  },
+  "acceptance_mapping": [
+    {"requirement_id":"PPIA02-REQ-003","reason":"Heading/display-name similarity cannot create identity or automatic merge."},
+    {"requirement_id":"PPIA02-REQ-007","reason":"Deferred candidate existence and derived counts are authorization-filtered before serialization."},
+    {"requirement_id":"PPIA02-REQ-034","reason":"Authorized provenance views must distinguish formal deferral from source fact, recommendation, conflict, and canonical Definition state."},
+    {"requirement_id":"PPIA02-REQ-035","reason":"Incomplete/deferred source evidence remains inspectable without fabricated replacement Creature fields."}
+  ],
+  "supersession": {
+    "source_inventory_addendum": "The recovered R1 PASS result and the 93 creature deferrals supplement PPIA-02_SOURCE_AND_DESIGN_INVENTORY.md.",
+    "completion_candidate_correction": "The optional request in PPIA-02_COMPLETION_CANDIDATE.md to upload Aaac (1).zip or the exact R1 package is superseded: substantive R1 closure evidence is recovered and the historical result is closed.",
+    "integrated_spec_addendum": "Sections 2, 5, 21, and 24 of PPIA-02_CREATURE_NPC_EXPERIENCE_SPEC_v1.0.0.md are interpreted with this formal-deferral content state and no-silent-promotion rule."
+  },
+  "boundaries": {
+    "raw_csv_modified": false,
+    "r1_formal_deferral_promotes_canonical_content": false,
+    "deferred_candidate_is_usable_definition": false,
+    "automatic_candidate_binding_authorized": false,
+    "application_runtime_mutation_authorized": false,
+    "a2_activation_authorized": false,
+    "release_authorized": false
+  }
+}

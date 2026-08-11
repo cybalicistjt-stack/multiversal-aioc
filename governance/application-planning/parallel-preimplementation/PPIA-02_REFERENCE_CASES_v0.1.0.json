@@ -76,7 +76,12 @@
       "case_id":"PPIA02-RC-012","title":"Incomplete or conflicted Creature/NPC source record","kind":"synthetic_qa","canonical_content":false,"profile":"creature_standard","contexts":["library_reference","comparison_variant","gm_authoring"],
       "fixture_requirements":["known source identity","missing optional mechanics","explicit recommendation","conflicting source/version candidate","provenance receipt"],
       "acceptance":["Inspector remains usable without fabricating missing fields.","Source fact, recommendation, conflict, and unresolved state are distinguishable.","Compare never silently selects a winning source/version and no same-name auto-merge occurs."]
+    },
+    {
+      "case_id":"PPIA02-RC-013","title":"Live alternate-form transformation with privacy and reconnect","kind":"synthetic_qa","canonical_content":false,"profile":"stage_variant","contexts":["live_runtime","comparison_variant","investigation_social"],
+      "fixture_requirements":["source Definition with governed alternate-form relationship","live instance","owning transformation Ability or Action","authorized current form","unrevealed alternate form","form-specific visible traits","authoritative runtime event","reconnect snapshot"],
+      "acceptance":["Transformation executes through the owning Ability/Action/Session workflow and updates only authorized live form state; it does not rewrite the reusable Definition.","Player projection exposes only currently authorized/revealed form identity and fields; an unrevealed alternate form contributes no name, count, compare target, facet, or diagnostic clue.","GM projection can inspect the authorized form relationship and transition provenance without collapsing the two form Definitions/variants into one identity.","Reconnect restores the authoritative current form and permission projection; stale cache cannot revert the instance, reveal the hidden form, or fabricate a transformation event."]
     }
   ],
-  "summary": {"cases":12,"source_grounded_cases":7,"synthetic_qa_cases":5,"canonical_synthetic_records":0,"source_pdfs_used":4}
+  "summary": {"cases":13,"source_grounded_cases":7,"synthetic_qa_cases":6,"canonical_synthetic_records":0,"source_pdfs_used":4}
 }
