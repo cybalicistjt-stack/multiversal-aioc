@@ -1,0 +1,34 @@
+name: Validate PPIA-12 Inspector and Reference Cases
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-12_*'
+      - 'scripts/validate-ppia12-*.py'
+      - '.github/workflows/validate-ppia-12-*.yml'
+      - 'governance/ai/work-state/PPIA-12-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+  push:
+    branches: [main]
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-12_*'
+      - 'scripts/validate-ppia12-*.py'
+      - '.github/workflows/validate-ppia-12-*.yml'
+
+jobs:
+  validate-inspector-reference:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PPIA-12 foundation
+        run: python scripts/validate-ppia12-foundation.py
+      - name: Validate PPIA-12 Inspector and reference cases
+        run: python scripts/validate-ppia12-inspector-reference-cases.py
+      - name: Validate generalized PPIA program continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
+      - name: Validate PPIA-05 to PPIA-12 transition regression
+        run: python scripts/validate-ppia05-to-ppia12-transition.py
