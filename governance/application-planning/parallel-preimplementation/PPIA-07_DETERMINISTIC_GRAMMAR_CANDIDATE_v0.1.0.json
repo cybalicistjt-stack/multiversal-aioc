@@ -1,0 +1,124 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "PPIA-07",
+  "title": "Rune Construction deterministic grammar candidate",
+  "status": "design_candidate_not_final_balance",
+  "authority_note": "The retained sources establish rune engraving and composition precedent but do not publish a rune atom catalog or deterministic grammar. This candidate turns the owner-directed goals of basic reusable runes, connection types, shaping, combinatorial reuse, and low cognitive burden into an explicit governed design proposal. It is not source canon and does not define final cost/balance equations.",
+  "source_precedent": {
+    "explicit": [
+      "Scripts/Macros support modular overlays, shape/radius changes, chaining, triggers, conditions, timing, synchronization and Resonance.",
+      "Sigilcrafting explicitly uses symbols, glyphs and logic structures.",
+      "Crafting/enchanting explicitly supports rune engraving, placement checks, material/workstation requirements, failure and removal/reversal.",
+      "Core magic supplies existing effect vocabulary, mana/resistance/counterspell/fatigue/Overreach context without automatically becoming a rune formula."
+    ],
+    "not_source_defined": [
+      "the eight functional atom IDs below",
+      "the four connector tokens below",
+      "the exact modifier-slot syntax below",
+      "the no-implicit-precedence parsing rule below",
+      "any automatic spell-to-rune conversion",
+      "any arbitrary-construction cost or balance equation"
+    ]
+  },
+  "design_goals": {
+    "small_core_vocabulary": true,
+    "same_atom_reusable_in_many_constructions": true,
+    "explicit_connections": true,
+    "shaping_without_new_spell_names": true,
+    "linear_text_equivalent_for_every_visual_graph": true,
+    "no_implicit_operator_precedence": true,
+    "cost_and_balance_separate_from_syntax": true
+  },
+  "atom_vocabulary": [
+    {"id":"SOURCE","purpose":"Introduce or manifest a typed payload/effect into a construction.","required_slots":["payload"],"authority":"proposal_candidate_informed_by_owner_intent"},
+    {"id":"MOVE","purpose":"Move, direct or redirect the active payload/effect/target.","required_slots":[],"authority":"proposal_candidate_informed_by_owner_intent"},
+    {"id":"SHAPE","purpose":"Apply explicit geometry/topology to the active effect.","required_slots":["geometry"],"authority":"proposal_candidate_with_source_precedent_from_script_shape_radius_modification"},
+    {"id":"BIND","purpose":"Attach, anchor, constrain or hold an active effect/target.","required_slots":[],"authority":"proposal_candidate_informed_by_composition_and_enchanting_precedent"},
+    {"id":"CHANGE","purpose":"Transform an active payload/target into a declared result.","required_slots":["to"],"authority":"proposal_candidate"},
+    {"id":"SENSE","purpose":"Detect or observe a typed property, condition or payload.","required_slots":["payload"],"authority":"proposal_candidate"},
+    {"id":"WARD","purpose":"Oppose, block, suppress or mitigate a typed payload/effect.","required_slots":["payload"],"authority":"proposal_candidate_informed_by_resistance_counterspell_and_enchanting_context"},
+    {"id":"LINK","purpose":"Route, couple or share an output between declared targets/channels.","required_slots":[],"authority":"proposal_candidate_informed_by_macro_synchronization_precedent"}
+  ],
+  "general_modifier_slots": [
+    {"id":"payload","meaning":"typed effect/domain registry reference; a spell name is not automatically a payload rune"},
+    {"id":"target","meaning":"typed target or target-set reference"},
+    {"id":"geometry","meaning":"shape/area topology reference"},
+    {"id":"direction","meaning":"direction/flow reference"},
+    {"id":"range_ref","meaning":"reference to an adopted range rule/value; grammar does not invent the number"},
+    {"id":"area_ref","meaning":"reference to an adopted area rule/value; grammar does not invent the number"},
+    {"id":"duration_ref","meaning":"reference to an adopted duration rule/value; grammar does not invent the number"},
+    {"id":"timing","meaning":"timing/order reference"},
+    {"id":"condition","meaning":"boolean condition reference"},
+    {"id":"trigger","meaning":"activation-event reference"},
+    {"id":"channel","meaning":"link/synchronization channel reference"},
+    {"id":"anchor","meaning":"binding/inscription anchor reference"},
+    {"id":"to","meaning":"declared transform result reference"}
+  ],
+  "connection_types": [
+    {"id":"THEN","token":">","semantics":"Evaluate left expression, then feed its resulting context/output into the right expression.","source_precedent":"macro spell sequence/chaining","syntax_authority":"proposal_candidate"},
+    {"id":"WITH","token":"&","semantics":"Evaluate sibling expressions as one explicitly grouped composite without implying temporal order between them.","source_precedent":"multiple/hybrid effects and composition precedent","syntax_authority":"proposal_candidate"},
+    {"id":"WHEN","token":"@","semantics":"Treat the left expression/event as the trigger that gates evaluation of the right expression.","source_precedent":"macro activators/triggers/timing","syntax_authority":"proposal_candidate"},
+    {"id":"IF","token":"?","semantics":"Treat the left expression/result as the condition that gates evaluation of the right expression.","source_precedent":"macro conditions/logic structures","syntax_authority":"proposal_candidate"}
+  ],
+  "serialization": {
+    "atom_form": "ATOM[key=value,key=value]",
+    "group_form": "(EXPRESSION)",
+    "canonical_rules": [
+      "Atom IDs are uppercase canonical IDs.",
+      "Modifier keys are serialized in ascending lexical order.",
+      "Registry/reference values use canonical lowercase kebab-case IDs unless the owning registry specifies another stable ID format.",
+      "Whitespace is ignored for parsing and removed from canonical serialization.",
+      "Parentheses are preserved where needed to disambiguate mixed connectors.",
+      "Every visual topology must round-trip to one canonical linear serialization and back to an equivalent AST."
+    ]
+  },
+  "parse_and_evaluation": {
+    "rule":"There is no implicit precedence among >, &, @ and ?. Parentheses define mixed-connector grouping. A single connector type may chain at one nesting level and is evaluated left-to-right.",
+    "steps":[
+      "permission-filter referenced registries/context before resolving labels, previews or aggregates",
+      "tokenize atoms, modifier blocks, connectors and parentheses",
+      "reject unknown atoms/connectors, duplicate modifier keys and structurally incomplete expressions",
+      "reject mixed connector types at the same nesting level unless parentheses make grouping explicit",
+      "validate required atom slots and owning-registry references",
+      "build the typed AST",
+      "evaluate innermost groups, then same-connector chains left-to-right",
+      "produce effect/target/stability/counterplay previews without assigning a final universal cost formula",
+      "serialize the AST canonically and verify parse-serialize-parse equivalence"
+    ]
+  },
+  "validity_rules": [
+    {"id":"G-001","rule":"Only registered atom IDs are valid in an authoritative construction."},
+    {"id":"G-002","rule":"SOURCE, SHAPE, CHANGE, SENSE and WARD must contain their declared required modifier slots."},
+    {"id":"G-003","rule":"Every connector has a complete left and right expression."},
+    {"id":"G-004","rule":"Mixed connector types at one nesting level require explicit parentheses; the parser never guesses precedence."},
+    {"id":"G-005","rule":"Modifier keys are unique within an atom and use registered slot IDs."},
+    {"id":"G-006","rule":"Authoritative registry references must resolve within the caller's permission scope; draft/proposal references may remain explicitly unresolved."},
+    {"id":"G-007","rule":"A spell name, glyph, sigil, script or macro is not automatically accepted as a rune atom or equivalent construction."},
+    {"id":"G-008","rule":"Visual graph topology and canonical linear serialization must produce equivalent ASTs."},
+    {"id":"G-009","rule":"Execution context, item inscription and campaign placement do not transfer ownership of Item Definition or Campaign/Scene state into PPIA-07."},
+    {"id":"G-010","rule":"Cost, mana, XP, material, charge and Resonance numbers are annotations/references until a separately validated cost/balance contract adopts them."},
+    {"id":"G-011","rule":"Setting-local magic remains setting-local unless explicit promotion authority exists."},
+    {"id":"G-012","rule":"Authoritative mutations require expected-version and operation-id/idempotent recovery semantics."}
+  ],
+  "construction_envelope": {
+    "required_fields":["construction_id","grammar_version","expression","execution_context","provenance","version"],
+    "authoritative_mutation_fields":["expected_version","operation_id"],
+    "execution_context_candidates":["cast","ritual","inscribed","item-bound","prepared-macro"],
+    "note":"Execution-context labels are proposal-stage integration categories, not new source claims."
+  },
+  "complexity_guidance": {
+    "builder_warning_above_atom_count":6,
+    "builder_warning_above_group_depth":2,
+    "effect":"warning_and_explainability_prompt_only",
+    "authority":"proposal_candidate_for_low_cognitive_burden; not a balance limit and not a parser hard cap"
+  },
+  "non_assumptions": {
+    "final_atom_vocabulary_locked":false,
+    "final_cost_formula_defined":false,
+    "final_balance_defined":false,
+    "all_spells_convertible":false,
+    "all_payloads_universal":false,
+    "visual_graph_required":false,
+    "source_specific_progression_prices_promoted":false
+  }
+}
