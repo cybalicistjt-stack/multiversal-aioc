@@ -1,0 +1,157 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "PPIA-07",
+  "title": "Rune Construction cost, complexity, stability and progression contract",
+  "status": "design_candidate_not_final_balance",
+  "verified_inputs": {
+    "foundation_merge": "183d199d69f5cce121d4b971f33fe6c0145a6c45",
+    "grammar_reference_merge": "15202626a0ba96d7675ee4ab4cbec4923158cd63",
+    "grammar": "PPIA-07_DETERMINISTIC_GRAMMAR_CANDIDATE_v0.1.0.json",
+    "reference_corpus": "PPIA-07_RUNE_REFERENCE_CORPUS_v0.1.0.json"
+  },
+  "authority_note": "The retained sources explicitly provide mana, charges, materials, time/DC, enchanting/rune engraving, resistance/counterspell, fatigue/Overreach and Resonance precedents, but they do not provide a universal arbitrary-rune cost formula, universal progression prices, or final balance thresholds. This contract therefore separates structural complexity, resource adapters, composition-stability load and later power/balance calibration. All new thresholds here are governed proposal-stage design unless a field explicitly says source_explicit.",
+  "axis_separation": {
+    "structural_complexity_is_power": false,
+    "structural_complexity_is_resource_cost": false,
+    "stability_load_is_failure_probability": false,
+    "valid_grammar_guarantees_affordability": false,
+    "valid_grammar_guarantees_success": false,
+    "valid_grammar_guarantees_balance": false,
+    "one_universal_resource_formula": false,
+    "final_balance_owner": "PPIA-11"
+  },
+  "structural_complexity": {
+    "metric_id": "SCI",
+    "name": "Structural Complexity Index",
+    "purpose": "Explain authoring/cognitive complexity and support progression/usability warnings without measuring power.",
+    "authority": "proposal_candidate_for_low_cognitive_burden",
+    "formula": "SCI = atom_count + connector_points + group_nesting_points + modifier_density_points",
+    "components": {
+      "atom_count": {"points_per_atom": 1},
+      "connector_points": {"THEN": 1, "WITH": 2, "WHEN": 2, "IF": 2},
+      "group_nesting_points": {"formula": "max(0,max_group_depth-1)*2"},
+      "modifier_density_points": {"formula": "ceil(nonrequired_modifier_count/2)"}
+    },
+    "bands": [
+      {"id": "simple", "min": 1, "max": 3, "ui": "default concise explanation"},
+      {"id": "standard", "min": 4, "max": 6, "ui": "show step-by-step explanation on demand"},
+      {"id": "advanced", "min": 7, "max": 10, "ui": "show complexity warning plus step-by-step explanation"},
+      {"id": "expert", "min": 11, "max": null, "ui": "show high-complexity warning, decomposition suggestion and full linear explanation"}
+    ],
+    "hard_parser_cap": false,
+    "preserved_builder_warnings": {"atom_count_above": 6, "group_depth_above": 2}
+  },
+  "resource_adapter_contract": {
+    "rule": "Rune Construction never invents one universal cost. It requests typed values/references from the owning execution, spellcasting, crafting, item, campaign or setting rules and reports unresolved inputs explicitly.",
+    "adapter_keys": [
+      "mana_ref",
+      "charge_ref",
+      "material_ref",
+      "time_ref",
+      "crafting_dc_ref",
+      "capacity_ref",
+      "fatigue_ref",
+      "overreach_ref",
+      "resonance_rule_ref",
+      "counterspell_ref",
+      "resistance_ref",
+      "progression_ref"
+    ],
+    "resolution_states": ["not_applicable", "unresolved", "resolved"],
+    "execution_profiles": {
+      "cast": ["mana_ref", "fatigue_ref", "overreach_ref", "counterspell_ref", "resistance_ref"],
+      "ritual": ["mana_ref", "material_ref", "time_ref", "fatigue_ref", "resonance_rule_ref"],
+      "inscribed": ["material_ref", "time_ref", "crafting_dc_ref", "resonance_rule_ref"],
+      "item-bound": ["material_ref", "time_ref", "crafting_dc_ref", "capacity_ref", "charge_ref", "resonance_rule_ref"],
+      "prepared-macro": ["mana_ref", "time_ref", "resonance_rule_ref", "counterspell_ref", "resistance_ref"]
+    },
+    "authoritative_rule": "If an owning rule says an adapter is required for the selected execution context, authoritative execution/crafting cannot substitute a guessed or default numeric value when that adapter is unresolved.",
+    "source_specific_values_remain_scoped": true
+  },
+  "composition_stability": {
+    "metric_id": "CSL",
+    "name": "Composition Stability Load",
+    "purpose": "Provide an explainable structural risk signal informed by Scripts/Macros Resonance and crafting-failure precedent; it is not itself a failure probability or damage formula.",
+    "authority": "proposal_candidate_with_source_resonance_precedent",
+    "formula": "CSL = with_count + when_count + if_count + max(0,link_count-1) + max(0,unique_payload_count-1) + max(0,max_group_depth-2) + prepared_macro_context",
+    "components": {
+      "WITH_connector": 1,
+      "WHEN_connector": 1,
+      "IF_connector": 1,
+      "additional_LINK_atoms_after_first": 1,
+      "additional_unique_payloads_after_first": 1,
+      "group_depth_above_two": 1,
+      "prepared_macro_execution_context": 1
+    },
+    "bands": [
+      {"id": "baseline", "min": 0, "max": 0, "ui": "no structural stability warning"},
+      {"id": "watch", "min": 1, "max": 2, "ui": "show stability factors"},
+      {"id": "strained", "min": 3, "max": 4, "ui": "show prominent stability warning and mitigation/counterplay hooks"},
+      {"id": "high-attention", "min": 5, "max": null, "ui": "require explicit stability review before authoritative use when the owning rules require such review"}
+    ],
+    "automatic_failure_chance": false,
+    "automatic_damage_or_backlash": false,
+    "final_resonance_calibration": "PPIA-11 or explicitly adopted owning magic rules"
+  },
+  "counterplay_hooks": [
+    {"id": "recognize", "purpose": "Expose permission-safe atom/payload/shape/trigger facts to an owning recognition rule."},
+    {"id": "resist", "purpose": "Route payload/effect resistance to adopted runtime rules."},
+    {"id": "counter", "purpose": "Route cast/prepared-macro interruption to adopted counterspell/disruption rules."},
+    {"id": "sever-link", "purpose": "Allow an owning rule to target LINK/synchronization channels without redefining that rule here."},
+    {"id": "disable-trigger", "purpose": "Allow an owning rule to suppress or invalidate WHEN/IF trigger inputs."},
+    {"id": "dispel-or-remove", "purpose": "Route persistent inscription/binding removal to adopted enchanting/disenchanting rules."}
+  ],
+  "crafting_and_inscription_interface": {
+    "owner_boundary": "PPIA-03 retains Item Definition/instance ownership; PPIA-07 owns only rune-extension semantics and validation.",
+    "workbench_precedent": "Screen Design V08 / SD-707 Enchanting & Enhancement",
+    "required_contract_fields": ["construction_ref", "substrate_or_item_ref", "execution_context", "compatibility_state", "resource_adapters", "predicted_effect_summary", "SCI", "CSL", "provenance", "version"],
+    "mutation_fields": ["expected_version", "operation_id"],
+    "recovery_rule": "Check operation/current-version state before retrying an ambiguous authoritative write; reuse the same operation_id and never duplicate an inscription."
+  },
+  "progression_contract": {
+    "authority": "proposal_candidate_for_teachability; exact XP/perk prices remain source-scoped or future governed values",
+    "bands": [
+      {"id": "band-0-literacy", "recommended_scope": "single-atom constructions and read/inspect/validate/explain operations", "SCI_guidance": "simple", "connector_guidance": []},
+      {"id": "band-1-composition", "recommended_scope": "small sequential constructions, shaping, movement, binding and basic inscription", "SCI_guidance": "simple_or_standard", "connector_guidance": ["THEN"]},
+      {"id": "band-2-logic", "recommended_scope": "explicit grouping, parallel composition, triggers, conditions and prepared logic", "SCI_guidance": "standard_or_advanced", "connector_guidance": ["THEN", "WITH", "WHEN", "IF"]},
+      {"id": "band-3-architecture", "recommended_scope": "advanced/expert composition, synchronization/LINK-heavy designs, deep inspection and decomposition", "SCI_guidance": "advanced_or_expert", "connector_guidance": ["THEN", "WITH", "WHEN", "IF"]}
+    ],
+    "recommended_minimum_band_rules": [
+      "Start from SCI: simple->0, standard->1, advanced->2, expert->3.",
+      "WHEN or IF requires at least band 2.",
+      "prepared-macro execution requires at least band 2.",
+      "two or more LINK atoms requires at least band 3.",
+      "The final recommended band is the maximum of applicable rules."
+    ],
+    "hard_gameplay_unlock_without_adoption": false,
+    "source_specific_xp_prices_promoted": false,
+    "scripts_macros_progression_conflict_silently_resolved": false
+  },
+  "usability_and_accessibility": {
+    "plain_language_expansion_required": true,
+    "show_why_SCI": true,
+    "show_why_CSL": true,
+    "show_unresolved_resource_inputs": true,
+    "visual_topology_requires_linear_equivalent": true,
+    "keyboard_operable": true,
+    "screen_reader_summary": true,
+    "non_color_warnings": true,
+    "AI_suggestions_are_proposals": true
+  },
+  "benchmark_expectations": {
+    "all_20_grammar_reference_cases_remain_valid_as_previously_expected": true,
+    "cost_stability_progression_benchmark_file": "PPIA-07_COST_STABILITY_PROGRESSION_BENCHMARKS_v0.1.0.json",
+    "deterministic_recompute_required": ["SCI", "SCI_band", "CSL", "CSL_band", "recommended_minimum_progression_band"]
+  },
+  "non_assumptions": {
+    "final_power_formula_defined": false,
+    "final_mana_formula_defined": false,
+    "final_material_formula_defined": false,
+    "final_charge_formula_defined": false,
+    "final_resonance_probability_defined": false,
+    "final_failure_table_defined": false,
+    "final_XP_prices_defined": false,
+    "guaranteed_balance_claimed": false,
+    "setting_local_values_universalized": false
+  }
+}
