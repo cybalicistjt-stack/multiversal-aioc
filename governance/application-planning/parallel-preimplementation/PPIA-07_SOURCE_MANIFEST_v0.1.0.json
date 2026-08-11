@@ -1,0 +1,164 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "PPIA-07",
+  "title": "Rune Construction source manifest",
+  "status": "foundation_candidate",
+  "source_container": {
+    "name": "MV_Master_01_Core.zip",
+    "sha256": "c5732c5b4c3cdf5eca1d19eef7354289d1f92a87397b56aa7623b3f0a24177ec"
+  },
+  "pdf_summary": {
+    "direct_composition_enchanting_pdfs": 3,
+    "direct_pages": 77,
+    "core_magic_context_pdfs": 4,
+    "core_context_pages": 66,
+    "risk_object_context_pdfs": 2,
+    "risk_object_context_pages": 27,
+    "total_pdfs": 9,
+    "total_pages": 170,
+    "dedicated_rune_pdf_present": false
+  },
+  "pdfs": [
+    {
+      "file": "Scripts and Macros.PDF",
+      "class": "direct-composition-enchanting",
+      "pages": 27,
+      "sha256": "70ff451360a0e0f25f6cc7bad5e655b615e2cce13cd32b2a7187ea50493ee96b",
+      "authority": "Direct source for Scriptcraft, Sigilcrafting, spell modification, macro chaining, triggers, timing, resonance, materials and progression."
+    },
+    {
+      "file": "Crafting, repair, enchanting v2.PDF",
+      "class": "direct-composition-enchanting",
+      "pages": 38,
+      "sha256": "e46b3bc62795e137f74ac2b507c0f7a13c9bc9920b4705635e13d20e5e77e02e",
+      "authority": "Direct source for rune engraving references, enchanting, infusion, hybrid effects, crafting checks, failure and item-workbench context."
+    },
+    {
+      "file": "Magic charge holders.PDF",
+      "class": "direct-composition-enchanting",
+      "pages": 12,
+      "sha256": "7db1b047a24037ebfd783c6a25d210546584e90f272f85031bba1f9eb22b745d",
+      "authority": "Direct source for magical containers, charge capacity, rings fitted with symbols/runes, attunement, resonance and upgrade context."
+    },
+    {
+      "file": "Magic rules.PDF",
+      "class": "core-magic-context",
+      "pages": 30,
+      "sha256": "c680bc11a8dd7c861b310ee3d71d5326b66f134ff72501d89b12023e38840c53",
+      "authority": "Context authority for mana, spell levels, preparation/known limits, focus, spell resistance, counterspelling, fatigue and Arcane Overreach."
+    },
+    {
+      "file": "Mana.PDF",
+      "class": "core-magic-context",
+      "pages": 3,
+      "sha256": "a88b1d6bad3fe7d965d647b87fb601405751a6c7face20316a4d7f8a4bea8b7c",
+      "authority": "Context authority for mana pools, per-spell costs, reserve mana and Overreach."
+    },
+    {
+      "file": "Magic Schools and Spells.PDF",
+      "class": "core-magic-context",
+      "pages": 24,
+      "sha256": "9f0d9561b47ed540fa5137181d0ae27daa1545c2df3c1a000b7abcc278b2ac2b",
+      "authority": "Context authority for spell/effect vocabulary and school-level effect examples; not a rune atom catalog."
+    },
+    {
+      "file": "Abilities- Magic & Arcane Specializations.PDF",
+      "class": "core-magic-context",
+      "pages": 9,
+      "sha256": "abb76ce35a9aad8cdde1b5e297de569f4cae359a9556054e144e191d01e8ec33",
+      "authority": "Context authority for progression/specialization and magic-item enchanting ability-tree ownership."
+    },
+    {
+      "file": "Chaos Magic.PDF",
+      "class": "risk-object-context",
+      "pages": 16,
+      "sha256": "f03014a9ba1f0f1a130791b6c46db5bf3d413eaf0c3c51b9adbafaee09e46aee",
+      "authority": "Risk/counterexample source for scope, specificity, instability and misfire; does not define rune grammar."
+    },
+    {
+      "file": "Living Spellbooks.PDF",
+      "class": "risk-object-context",
+      "pages": 11,
+      "sha256": "1c860f5697f278210b8afd1275e88c544d4bfff5e28db3d84209c4b600d3c1c1",
+      "authority": "Object/storage/casting context; does not define rune grammar."
+    }
+  ],
+  "csv_summary": {
+    "csvs": 4,
+    "rows_total": 2225,
+    "profession_crafting_rows": 221,
+    "profession_rows_explicitly_about_runes": 3,
+    "magic_faction_rows": 118,
+    "scripts_macros_source_rows": 16,
+    "magic_spell_rows": 385,
+    "magic_spell_rows_explicitly_about_runes": 0,
+    "living_spellbook_rows": 1501,
+    "living_spellbooks_catalog_is_context_not_grammar_authority": true
+  },
+  "csvs": [
+    {
+      "file": "Profession_Crafting_Abilities.csv",
+      "rows": 221,
+      "sha256": "ee2c2b921e1bd286f9b383e7850d8c9b7b6b70d786f645a0b5fa69801104db6f",
+      "relevant_records": [
+        "Magical Item Enchanting Tree",
+        "Rune Carving Basics",
+        "Perfect Rune Placement"
+      ]
+    },
+    {
+      "file": "Magic_Faction_Abilities.csv",
+      "rows": 118,
+      "sha256": "b3e5780e7dfe6e16d74a16eb6a87e47846da64fda5c5861fd525a0957ea96bae",
+      "scripts_macros_source_rows": 16
+    },
+    {
+      "file": "Magic_Spells.csv",
+      "rows": 385,
+      "sha256": "d3475d1383b1c29f6877a495345498e2b8daf01bf03a85920760adce90c9a8e3",
+      "role": "effect/spell context only; zero explicit rune records"
+    },
+    {
+      "file": "Living_Spellbooks.csv",
+      "rows": 1501,
+      "sha256": "9330cb953171667374e7233c9dbf70fcc2261c163006c7832d33a8976d7e353d",
+      "role": "derived/item example context only; not canonical rune grammar authority"
+    }
+  ],
+  "explicit_source_findings": [
+    "Scripts are pre-written magical overlays that alter one spell, including damage type, delayed activation, secondary effects, and shape/radius.",
+    "Macros are sigil/glyph-based magical constructs that chain spells, encode triggers/conditions/timing, synchronize casters, and carry resonance risk.",
+    "Sigilcrafting explicitly embeds symbols, glyphs, and logic structures into magical casting.",
+    "The crafting source explicitly says an enchanter binds runes and manages charge capacity.",
+    "Rune Carving Basics grants +2 to Arcana checks when engraving runes and reduces the DC for basic rune engraving by 2.",
+    "Perfect Rune Placement grants +1 to rune-carving rolls and rewards exceeding a crafting DC by 5+ with a minor item bonus.",
+    "Magic rings may be fitted with gemstones, symbols, or runes representing origin or school of magic for identification/lore.",
+    "The retained sources do not publish a canonical basic-rune vocabulary, connection-type grammar, shaping grammar, or deterministic rune-composition algorithm."
+  ],
+  "source_conflicts_and_gaps": [
+    {
+      "topic": "Scripts & Macros XP progression",
+      "state": "conflict",
+      "rule": "Preserve the published conflict between detailed-tree values and Appendix D; do not silently reconcile."
+    },
+    {
+      "topic": "Basic rune atom vocabulary",
+      "state": "missing",
+      "rule": "Owner design intent calls for basic reusable runes, but retained sources do not enumerate them."
+    },
+    {
+      "topic": "Connection types",
+      "state": "missing",
+      "rule": "Owner design intent calls for connection types, but retained sources do not define a rune topology grammar."
+    },
+    {
+      "topic": "Shaping semantics",
+      "state": "partial",
+      "rule": "Scripts can alter spell shape/radius, but a rune-specific shaping syntax is not published."
+    }
+  ],
+  "visual_review": {
+    "rendered_pages": 170,
+    "method": "rendered all nine retained PDFs to page images and visually reviewed contact sheets; text extraction used only as a search aid"
+  }
+}
