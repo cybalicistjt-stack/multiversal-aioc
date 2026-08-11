@@ -1,0 +1,103 @@
+{
+  "schema_version": "0.2.0",
+  "work_item_id": "PPIA-07",
+  "title": "Expanded Rune Construction magic-system vocabulary",
+  "status": "owner_directed_expansion_candidate",
+  "supersedes_for_final_design": "PPIA-07_DETERMINISTIC_GRAMMAR_CANDIDATE_v0.1.0.json atom_vocabulary only; connector grammar and source-boundary safeguards remain inherited unless explicitly changed here",
+  "authority_note": "The owner directed expansion of the eight-rune candidate into a fully usable magic system. The retained sources establish ten magic schools, 385 structured spells, Scripts/Macros compositional precedent, mana/counterspell/resistance/Overreach rules, rune engraving/enchanting, and broad elemental/metaphysical effect domains, but they do not publish this exact rune catalog. The 34-rune set below is therefore governed design, not recovered source canon.",
+  "design_goal": "A compact but complete compositional vocabulary: few enough runes to learn in families, broad enough to route the complete retained spell catalog without turning every spell into its own rune.",
+  "rune_count": 34,
+  "rune_families": {
+    "operation": 16,
+    "essence": 18
+  },
+  "operation_runes": [
+    {"id":"SOURCE","legacy":true,"purpose":"Manifest, emit, generate, or introduce an effect, substance, energy, or declared payload into a construction.","typical_effects":["creation","projection","elemental emission","resource generation"],"payload_mode":"required_or_inherited"},
+    {"id":"MOVE","legacy":true,"purpose":"Move, push, pull, redirect, propel, relocate, or transport a target or active payload.","typical_effects":["forced movement","mobility","teleportation when paired with SPACE"],"payload_mode":"optional_or_inherited"},
+    {"id":"SHAPE","legacy":true,"purpose":"Give an active effect explicit geometry, area, boundary, path, volume, or topology.","typical_effects":["cone","line","wall","sphere","field","portal geometry"],"payload_mode":"inherited"},
+    {"id":"BIND","legacy":true,"purpose":"Anchor, restrain, hold, seal, attach, immobilize, stabilize, or impose stasis on a target/effect.","typical_effects":["restraint","sealing","anchoring","stasis"],"payload_mode":"optional_or_inherited"},
+    {"id":"CHANGE","legacy":true,"purpose":"Transform a declared target, property, state, substance, form, or spatial relation into another declared state.","typical_effects":["transmutation","polymorph","state change","spatial transformation"],"payload_mode":"optional_or_inherited"},
+    {"id":"SENSE","legacy":true,"purpose":"Detect, reveal, identify, locate, measure, perceive, or remotely observe a declared property/domain.","typical_effects":["divination","detection","scrying","true sight","magic sense"],"payload_mode":"required_or_declared_sense_ref"},
+    {"id":"WARD","legacy":true,"purpose":"Block, resist, suppress, absorb, shield from, or exclude a declared effect/domain.","typical_effects":["barriers","resistance","immunity","suppression","silence fields"],"payload_mode":"required_or_declared_target_effect"},
+    {"id":"LINK","legacy":true,"purpose":"Route, couple, synchronize, share, relay, or transfer an output/state between declared targets or channels.","typical_effects":["chains","shared effects","synchronization","life/resource transfer"],"payload_mode":"optional_or_inherited"},
+    {"id":"RESTORE","legacy":false,"purpose":"Repair, heal, cleanse, replenish, reconstitute, or return a target toward a declared prior/healthy state.","typical_effects":["healing","repair","cleansing","resource restoration"],"payload_mode":"required_or_declared_state_ref"},
+    {"id":"UNMAKE","legacy":false,"purpose":"Break, damage, erode, unravel, negate, dispel, disintegrate, or destroy a declared target/effect under owning rules.","typical_effects":["damage","destruction","countermagic","dispel","decay"],"payload_mode":"optional_or_inherited"},
+    {"id":"VEIL","legacy":false,"purpose":"Hide, obscure, disguise, misdirect, mask, or create an illusory sensory presentation.","typical_effects":["invisibility","illusion","concealment","false sensory information"],"payload_mode":"optional_or_declared_sense_ref"},
+    {"id":"CALL","legacy":false,"purpose":"Summon, conjure, invite, draw, or instantiate a referenced creature, spirit, construct, object, or effect from an allowed source/context.","typical_effects":["summoning","conjuration","spirit calling","construct calling"],"payload_mode":"required_external_or_essence_ref"},
+    {"id":"BANISH","legacy":false,"purpose":"Dismiss, exile, eject, return, sever from the current plane/context, or forcibly send away a valid target.","typical_effects":["banishment","dismissal","planar ejection","summon removal"],"payload_mode":"optional_or_inherited"},
+    {"id":"COMMAND","legacy":false,"purpose":"Influence, compel, soothe, frighten, confuse, inspire, or otherwise alter behavior/emotion/intention under owning resistance rules.","typical_effects":["charm","fear","emotion","compulsion","mental control"],"payload_mode":"normally_MIND_or_SPIRIT"},
+    {"id":"DRAIN","legacy":false,"purpose":"Reduce, suppress, siphon, exhaust, weaken, or transfer a declared resource, energy, essence, capability, or condition.","typical_effects":["mana drain","life drain","debuff","fatigue","resource suppression"],"payload_mode":"required_or_declared_resource_ref"},
+    {"id":"IMBUE","legacy":false,"purpose":"Infuse, enchant, empower, charge, bless, curse, or persistently attach a declared magical property to a target/substrate.","typical_effects":["enchantment","weapon infusion","persistent property","rune inscription"],"payload_mode":"required"}
+  ],
+  "essence_runes": [
+    {"id":"FIRE","class":"elemental","source_routes":["Fire"],"meaning":"heat, flame, combustion, magma-adjacent fire effects"},
+    {"id":"COLD","class":"elemental","source_routes":["Cold"],"meaning":"cold, frost, ice, heat removal"},
+    {"id":"LIGHTNING","class":"elemental","source_routes":["Lightning"],"meaning":"electricity, lightning, electrical discharge"},
+    {"id":"AIR","class":"elemental","source_routes":["Air"],"meaning":"wind, atmosphere, air pressure, gaseous motion"},
+    {"id":"WATER","class":"elemental","source_routes":["Water"],"meaning":"water, fluid flow, liquid shaping"},
+    {"id":"EARTH","class":"elemental","source_routes":["Earth/Mineral"],"meaning":"earth, stone, mineral, sand, crystal-adjacent matter"},
+    {"id":"ACID","class":"elemental","source_routes":["Acid"],"meaning":"corrosive or acidic magical medium"},
+    {"id":"FORCE","class":"energy","source_routes":["Arcane/Force"],"meaning":"kinetic, pressure, raw force, impact, force barriers"},
+    {"id":"LIGHT","class":"energy","source_routes":["Radiant"],"meaning":"light, radiance, illumination, radiant energy"},
+    {"id":"VOID","class":"metaphysical","source_routes":["Void/Necrotic"],"meaning":"void, necrotic decay, entropy, shadow-adjacent absence"},
+    {"id":"LIFE","class":"metaphysical","source_routes":["Life/Essence","Life/Balance"],"meaning":"life force, vitality, biological restoration, living essence"},
+    {"id":"MIND","class":"metaphysical","source_routes":["Psychic/Emotion","Illusion"],"meaning":"thought, emotion, cognition, psychic influence, mind-facing illusion"},
+    {"id":"SPIRIT","class":"metaphysical","source_routes":["Shamanism/Voodoo/familiar/spirit source precedent"],"meaning":"souls, spirits, incorporeal entities, spiritual relationships"},
+    {"id":"NATURE","class":"metaphysical","source_routes":["Nature"],"meaning":"plants, ecosystems, natural growth, living environmental forces"},
+    {"id":"SPACE","class":"cosmological","source_routes":["Planar/Spatial","Transmutation/Spatial"],"meaning":"distance, location, portals, planes, spatial relations"},
+    {"id":"TIME","class":"cosmological","source_routes":["Temporal"],"meaning":"timing, duration, temporal stasis, acceleration, delay"},
+    {"id":"SOUND","class":"energy","source_routes":["Thunder"],"meaning":"sound, vibration, thunder, audible/pressure waves"},
+    {"id":"ARCANE","class":"metaphysical","source_routes":["Arcane Energy","Divination/Perception","Conjuration/Creation"],"meaning":"untyped magical energy, spell structure, magical signatures, generic arcane medium when no narrower essence applies"}
+  ],
+  "connector_grammar_inherited": [
+    {"id":"THEN","token":">","meaning":"ordered flow"},
+    {"id":"WITH","token":"&","meaning":"explicit parallel/sibling composite"},
+    {"id":"WHEN","token":"@","meaning":"trigger gate"},
+    {"id":"IF","token":"?","meaning":"condition gate"}
+  ],
+  "payload_rune_rule": {
+    "syntax":"payload=rune:ESSENCE_ID",
+    "standalone_essence_node_allowed":false,
+    "reason":"Essence runes fill typed payload/domain slots while operation runes remain executable AST nodes; this preserves the verified parser model and keeps combinations readable.",
+    "multiple_essences":"Use explicitly grouped WITH branches rather than an implicit multi-payload list, e.g. (SOURCE[payload=rune:FIRE]&SOURCE[payload=rune:LIGHTNING])>SHAPE[geometry=storm-field]."
+  },
+  "expanded_modifier_slots": [
+    "payload","target","geometry","direction","range_ref","area_ref","duration_ref","timing","condition","trigger","channel","anchor","to","destination_ref","state_ref","resource_ref","sense_ref","intent_ref","magnitude_ref","count_ref","persistence_ref"
+  ],
+  "required_semantic_rules": [
+    "Operation runes describe what magic does; essence runes describe what magical domain/medium it acts through or upon.",
+    "No spell name automatically becomes a rune.",
+    "A valid rune expression is not automatically affordable, successful, resisted, balanced, or legal in every setting.",
+    "Source-specific mana, charge, material, crafting DC, resistance, counterspell, Overreach, Resonance, duration, range, damage, healing, save and XP values remain typed owning-rule inputs.",
+    "UNMAKE does not bypass object durability, saves, resistance, counterspell, dispel rules, or GM/setting restrictions.",
+    "COMMAND does not bypass Will/resistance/permission rules and does not silently make all creatures valid mental targets.",
+    "CALL and BANISH require valid source/destination/target authority and do not create unrestricted creature or planar access.",
+    "RESTORE cannot invent a healthy/prior state when the owning rules or record do not define one.",
+    "IMBUE and inscription preserve PPIA-03 Item ownership and crafting/enchanting requirements.",
+    "SPACE/TIME effects preserve Transition/Stasis/setting-local limitations and do not universalize world-local cosmology rules.",
+    "Every visual rune graph has a canonical ordered text equivalent; color, drag, geometry, hover, or animation are never the only operable representation.",
+    "Permission filtering occurs before hidden rune references, targets, costs, labels, counts, previews, diagnostics, exports, or AI context are resolved.",
+    "Authoritative rune mutations use expected_version plus operation_id/idempotent recovery."
+  ],
+  "source_school_seals": [
+    {"school":"Creation","recommended_operations":["SOURCE","CALL","SHAPE","IMBUE"]},
+    {"school":"Destruction","recommended_operations":["UNMAKE","SOURCE","MOVE","DRAIN"]},
+    {"school":"Void","recommended_operations":["UNMAKE","DRAIN","VEIL","BANISH"]},
+    {"school":"Perception","recommended_operations":["SENSE","VEIL","LINK"]},
+    {"school":"Transition","recommended_operations":["MOVE","CHANGE","CALL","BANISH","LINK"]},
+    {"school":"Emotion","recommended_operations":["COMMAND","VEIL","SENSE","LINK"]},
+    {"school":"Balance","recommended_operations":["RESTORE","DRAIN","LINK","WARD"]},
+    {"school":"Stasis","recommended_operations":["BIND","WARD","IMBUE"]},
+    {"school":"Essence","recommended_operations":["RESTORE","DRAIN","CHANGE","IMBUE","CALL"]},
+    {"school":"Energy","recommended_operations":["SOURCE","MOVE","SHAPE","WARD","UNMAKE"]}
+  ],
+  "progressive_disclosure": {
+    "teach_first":"Operation family first; introduce essence family as payload choices; introduce connectors after single-operation literacy.",
+    "starter_operations":["SOURCE","MOVE","SHAPE","SENSE","WARD","RESTORE"],
+    "starter_essences":["FIRE","COLD","AIR","WATER","EARTH","FORCE","LIGHT","LIFE"],
+    "advanced_operations":["LINK","UNMAKE","VEIL","CALL","BANISH","COMMAND","DRAIN","IMBUE","CHANGE","BIND"],
+    "advanced_essences":["LIGHTNING","ACID","VOID","MIND","SPIRIT","NATURE","SPACE","TIME","SOUND","ARCANE"],
+    "hard_unlocks_defined_here":false
+  },
+  "final_balance_boundary":"PPIA-11 retains final power/balance calibration. This expansion defines vocabulary and deterministic construction semantics, not a universal spell-level or mana formula."
+}

@@ -1,0 +1,53 @@
+name: Validate PPIA-07 Expanded Rune Magic System
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_EXPANDED_RUNE_MAGIC_SYSTEM_v0.2.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_SOURCE_SPELL_COVERAGE_AUDIT_v0.2.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_EXPANDED_RUNE_REFERENCE_CORPUS_v0.2.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_EXPANDED_RUNE_MAGIC_SYSTEM_CANDIDATE.md'
+      - 'governance/ai/work-state/PPIA-07-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia07-expanded-rune-magic-system.py'
+      - '.github/workflows/validate-ppia-07-expanded-rune-magic-system.yml'
+  push:
+    branches:
+      - governance/ppia-07-rune-construction-rpg-system
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_EXPANDED_RUNE_MAGIC_SYSTEM_v0.2.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_SOURCE_SPELL_COVERAGE_AUDIT_v0.2.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_EXPANDED_RUNE_REFERENCE_CORPUS_v0.2.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-07_EXPANDED_RUNE_MAGIC_SYSTEM_CANDIDATE.md'
+      - 'governance/ai/work-state/PPIA-07-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia07-expanded-rune-magic-system.py'
+      - '.github/workflows/validate-ppia-07-expanded-rune-magic-system.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-expanded-rune-magic-system:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate expanded Rune Construction magic system
+        run: python scripts/validate-ppia07-expanded-rune-magic-system.py
+      - name: Validate integrated Rune Builder workflows regression
+        run: python scripts/validate-ppia07-rune-builder-workflows.py
+      - name: Validate cost stability progression regression
+        run: python scripts/validate-ppia07-cost-stability-progression.py
+      - name: Validate grammar and reference regression
+        run: python scripts/validate-ppia07-grammar-reference.py
+      - name: Validate PPIA-07 foundation regression
+        run: python scripts/validate-ppia07-foundation.py
+      - name: Validate PPIA-12 to PPIA-07 transition regression
+        run: python scripts/validate-ppia12-to-ppia07-transition.py
+      - name: Validate generalized PPIA program continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
