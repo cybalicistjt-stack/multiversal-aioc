@@ -1,45 +1,51 @@
-# PPIA-01 Owner-Eye Record — Quantum Weaver
+# PPIA-01 Owner Resolution — Quantum Weaver
 
-**Status:** OPTIONAL OWNER REVIEW — NOT A BLOCKER  
+**Status:** RESOLVED — OWNER-APPROVED AUTHORED COMPLETION  
 **Work item:** PPIA-01  
+**Owner decision:** 2026-08-11  
 **Dataset:** `expanded_symbiotes_and_cybernetics_all_genres.csv`  
 **Source row:** 9  
 **Source:** `Symbiotes 11-9-24(3).PDF`
 
-## What the source actually says
+## Source fact boundary
 
 The retained source establishes only that **Quantum Weaver feeds on energy fields and needs exposure to power sources**.
 
-No additional Quantum Weaver mechanics were found in the retained PDF.
+No additional Quantum Weaver mechanics were found in the retained PDF. That source boundary remains permanent unless contradictory controlling source evidence is later recovered.
 
-## What the CSV currently labels as inferred
+## Owner decision
 
-The governed CSV explicitly marks the following as inferred/authored completion rather than source facts:
+The owner explicitly delegated completion of Quantum Weaver to the project recommendation process and approved the recommended authored completion so the record is usable and is no longer an unresolved content-quality issue.
 
-- sense energy fields within 60 ft.;
-- store up to 3 energy charges;
-- 1d6 energy discharge per stored charge;
-- 30-ft. discharge range;
-- action-based discharge while sensing is passive;
-- Conduit Path / Probability Path progression;
-- 5 SP, 10 SP, and 15 SP unlocks;
-- uncontrolled energy drain or random discharge drawback;
-- 1.5 lb integrated biological mass;
-- missing cost, activation, and market details completed by best judgment.
+The authored completion must remain distinguishable from recovered source text. Approval makes the recommended mechanics an owner-authorized Multiversal design decision; it does **not** retroactively turn them into source-derived facts.
 
-## Recommended disposition
+## Approved authored completion
 
-**Retain the current material only as an explicitly non-source-authored recommendation, not as recovered source fact.**
+Retain the governed Quantum Weaver completion already present in the CSV program as the approved playable baseline:
 
-Reasons:
+- **Type:** Energy-Feeding Symbiote; bonded through the nervous system and bioelectric field; one symbiote bond.
+- **Energy Sense:** passive sensing of energy fields within 60 ft.
+- **Energy Reservoir:** stores up to 3 energy charges.
+- **Energy Discharge:** action; 30-ft. range; 1d6 energy damage per stored charge used.
+- **Need:** exposure to a substantial power source at least once every 24 hours.
+- **Bond progression:** +1 Synergy Point per week of active bonding plus normal milestone awards.
+- **Progression hooks:** Conduit Path or Probability Path; 5 SP improved storage, 10 SP Energy Weave, 15 SP Quantum Slip.
+- **Instability:** unmet energy need or unstable-power exposure can cause uncontrolled energy drain or random discharge under the existing symbiote conflict framework.
+- **Detection:** electromagnetic scanners can detect the bond; faint geometric light patterns may appear.
+- **Integrated mass:** 1.5 lb., treated as authored/inferred biological mass rather than source measurement.
+- **Market baseline:** 7,600 credits; Rare; Advanced Symbiote; restricted or prohibited in many jurisdictions.
+- **Bonding/removal/host/conflict mechanics:** retain the existing governed symbiote-family defaults already recorded for the row unless a later symbiote-system tranche deliberately revises the family-wide contract.
 
-1. The source identity and central fantasy are clear: an energy-field-feeding symbiote requiring access to power.
-2. The source does not provide enough detail to claim any of the numerical or progression mechanics as canonical source text.
-3. The standing owner recommendation delegation permits bounded completion when source values are incomplete, provided the distinction is preserved and the result stays reversible.
-4. The numerical mechanics belong in later PPIA-11 balance review; symbiote/body integration also touches PPIA-05 and inventory/equipment behavior touches PPIA-03.
+These values are accepted as the current design baseline. PPIA-03/PPIA-05 may refine equipment/body-integration presentation, and PPIA-11 may tune numerical balance, but those later reviews do not make Quantum Weaver an unresolved source-completeness problem.
 
-## What would clear this further
+## Closure rule
 
-If the owner knows of another source page, older draft, handwritten note, or design decision that defines Quantum Weaver beyond the single sentence above, that source would materially improve this record.
+Quantum Weaver is no longer an owner-eye or missing-information blocker.
 
-If no such source exists, **no owner action is required**. PPIA-01 should keep the inferred mechanics visibly non-source and carry them forward for later balance/design review rather than fabricate provenance.
+Reopen this record only if:
+
+1. a controlling source is recovered that contradicts the authored completion;
+2. later implementation proves a rule internally inconsistent with the symbiote-family contract; or
+3. PPIA-11 deliberately changes numerical balance.
+
+Otherwise the approved authored completion stands and no further owner action is required.
