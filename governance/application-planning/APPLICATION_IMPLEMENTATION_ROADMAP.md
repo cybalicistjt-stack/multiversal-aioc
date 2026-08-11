@@ -1,226 +1,184 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 2.2.0  
-**Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED  
+**Version:** 2.3.0  
+**Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED + PARALLEL PRE-IMPLEMENTATION WORK ACTIVE  
 **Owner and final authority:** John Brandon Turner  
 **Originally approved:** 2026-08-03  
 **Last updated:** 2026-08-11
 
 ## Purpose
 
-This roadmap governs the transition from completed source recovery, canonicalization, architecture, and AI-team preparation into verified application construction.
+This roadmap governs the transition from completed source recovery, canonicalization, architecture, AI-team preparation, and Phase 9 implementation foundations into verified application construction and related parallel preparation work.
 
 Repository evidence is mandatory. Nothing is complete merely because it was discussed, planned, drafted, generated outside the repository, or claimed. Completion requires the evidence declared by the governing work item.
 
-The authoritative ordered Phase 9 backlog is `governance/phase9/P9-06_IMPLEMENTATION_BACKLOG_AND_ACCEPTANCE_GATES.json`. If a derived roadmap description conflicts with that backlog, the canonical backlog controls and the roadmap must be corrected before implementation.
-
-The permanent recovery protocol is `governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md`. Runtime pointers and compact status projections may lag legitimate attempt-branch evidence; when they do, the newest internally consistent repository evidence controls recovery and the stale projection must be corrected through a bounded verified change.
+The authoritative ordered Phase 9 backlog remains `governance/phase9/P9-06_IMPLEMENTATION_BACKLOG_AND_ACCEPTANCE_GATES.json`. Runtime recovery is governed by `governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md`. When a newer internally consistent attempt-branch checkpoint or repository record is more recent than a compact runtime projection, the newer evidence controls recovery until merged or explicitly superseded.
 
 ## Current verified execution position — 2026-08-11
 
-Repository evidence establishes the following current boundary:
+Repository and source evidence establishes the following boundary:
 
-- **Phase 9 bounded implementation through P9-06-023 is complete.** The final P9-06-023 / AG-07 two-physical-device acceptance was completed in `Multiversal-app` PR #102 and squash-merged as `fb22295948745347913bcbfebf56ecca26bf39fb`. The evidence records a Windows laptop GM and Android Player, ordered authoritative events, hidden-information protection, reconnect, and passing focused physical-evidence validation. `releaseAuthorized` remains `false`.
-- **P9-06-024 owner decision is recorded.** `Multiversal-app` PR #103, merge `8b7f53da1f72c280226f64be67c9aa1c280fefdf`, closed P9-06-023 continuity and set `STAGE-A-A2 — Universal Object Experience` as the authorized current application work item. This did not authorize release or deployment.
-- **STAGE-A-A2 is authorized and prepared, but implementation has not started.** `Multiversal-app` PR #104, merge `dced7f92163050690c807c1fda937146bb8dce85`, added the governed ready work order. At the 2026-08-11 recovery check, the prescribed branch `stage-a/a2-universal-object-experience` did not yet exist.
-- **Internal Alpha feature design is complete through IA-D09.** IA-D09 remains the release-design anchor. Subsequent tester/reference, tester-package, demo-campaign, future-workspace-verification, and pack-lifecycle acceptance assets are prepared support packages; they do not activate tester access, later Stage A programs, release, deployment, or canonical game-content promotion.
-- **Design Standards preparation is complete; exact-byte repository ingestion is not.** The audit/canonicalization tranche merged through PR #208. The active `DS-008-working-series-attempt-002` branch subsequently completed pre-ingestion preparation at `f0d9295215a057e0f42603a0777c276a7437aad4`, but T1–T4 exact-byte transfer, checksum receipts, validators, exact-head CI, PR/merge, and completion evidence remain unfinished.
-- **Parallel-track rule:** the AIOC conversational primary may remain the unfinished Design Standards attempt while `Multiversal-app` independently records A2 as its authorized current implementation work order. Neither track silently supersedes or completes the other.
+- **Phase 9 bounded implementation through P9-06-023 is complete.** Final P9-06-023 / AG-07 physical-device acceptance was merged in `Multiversal-app` PR #102 at `fb22295948745347913bcbfebf56ecca26bf39fb`. The evidence includes Windows GM + Android Player, ordered authoritative events, hidden-information protection, reconnect, and focused physical-evidence validation. `releaseAuthorized=false`.
+- **P9-06-024 owner decision is recorded.** `Multiversal-app` PR #103 / merge `8b7f53da1f72c280226f64be67c9aa1c280fefdf` authorized **STAGE-A-A2 — Universal Object Experience** as the exact current application work item. It did not authorize deployment or release.
+- **The A2 ready work order is merged.** Application PR #104 / merge `dced7f92163050690c807c1fda937146bb8dce85` added `.ai/ready-work-orders/STAGE-A-A2-universal-object-experience.md`.
+- **DT-001 through DT-010 Developer Toolbelt is complete.** Application PRs #105 through #114 produced `mv-dev` v0.10.0 on `main`, ending at squash merge `354e24007d2c453d090a2a6cdb31d3e3333c84c1`. The series includes doctor/preflight, task capsules, fixture gateway, scenario runner, permission leak scanner, UI evidence harvester, design-system linter, traceability compiler, and recovery/performance harness.
+- **The previously missing exact A2 source authority has been recovered.** Owner-supplied `Pre-A2.zip` contained and verified the superseding Sunday master v2.7.1, the v1.0.0 preimplementation package, the v2.7.0 repository compatibility audit, and exact `A2_CHANGED_PATH_SCOPE_v1.0.0.csv`. The CSV SHA-256 is `945b3619b25bd24e54267c8259fc17e667063a3056214e080cbe8034836d5aa6`.
+- **The governed A2 branch now exists but A2 is not activated.** `stage-a/a2-universal-object-experience` was created from application `main` `354e24007d2c453d090a2a6cdb31d3e3333c84c1`. No A2 implementation commit has been made. The mandatory v2.6 evidence/checkpoint/recovery runner still requires a repository-capable private checkout before activation, preflight/task-capsule `READY`, and A2-01 work.
+- **Internal Alpha feature design is complete through IA-D09.** IA-D09 remains the completed release-design anchor. Prepared tester/reference, tester-package, demo-campaign, future-workspace-verification, and pack-lifecycle assets do not activate tester access or release.
+- **Design Standards preparation is complete; exact-byte ingestion is still unfinished.** `DS-008-working-series-attempt-002` remains blocked on a repository-capable exact-byte transfer/validation surface and is not completed by preparation artifacts alone.
+- **A new owner-approved parallel work track is active:** **PPIA — Parallel Pre-Implementation Advancement Program**. It contains sixteen non-Codex tranches designed to advance content quality, UX/content authoring, gameplay systems, acceptance material, onboarding, and developer-control design while A2/Design Standards wait for their required execution surfaces. PPIA does not replace or activate A2.
 
 This section is a recovery summary, not an autosave ledger. More recent verified repository evidence controls if the project advances beyond it.
 
 ## Project phase history
 
-- **Phase 0 — Legacy source creation:** John Brandon Turner and his brother created the legacy PDF game content.
-- **Phase 0.5 — Definition document:** established Multiversal as a broad, system-flexible tabletop RPG platform.
-- **Phases 1–7:** product conception, functional design, data and pack architecture, mechanics architecture, content-domain architecture, interface/workflow design, and governed repository preparation.
+- **Phase 0 — Legacy source creation:** original Multiversal game/source material.
+- **Phase 0.5 — Definition document:** broad, system-flexible tabletop RPG platform definition.
+- **Phases 1–7:** product conception, functional design, data/pack architecture, mechanics architecture, content-domain architecture, interface/workflow design, and governed repository preparation.
 - **Phase 8:** standards, normalization, canonical domain architecture, source conversion, final validation, golden regression corpus, balance harness, and AI Development Team Operating Package.
 - **Phase 9:** canonical product architecture, provider-neutral implementation foundations, acceptance gates, and bounded implementation readiness.
 - **Phase 10 / Stage A:** current core application implementation program.
+- **PPIA:** parallel pre-implementation advancement track that may run while checkout-dependent implementation is blocked.
 
 ## Completed Phase 8 milestones
 
 - **8D-007 — Golden Test Corpus and Balance Harness:** COMPLETE.
 - **8D-008 — AI Development Team Operating Package:** COMPLETE.
 - **8E-009 — Canonical Object Template and CSV-First Program:** COMPLETE.
-- 20 governed datasets, 19,199 source rows, 19,199 promoted records, zero unprocessed rows, and passing provenance/runtime/install/uninstall validation.
+- Canonical conversion/normalization established 20 governed datasets, 19,199 source rows, 19,199 promoted records, zero unprocessed rows, and passing provenance/runtime/install/uninstall validation at that milestone.
 
 ## Phase 9 — Product Architecture and Implementation Readiness
 
-The uploaded Phase 9 package remains canonical. The generic AI roadmap was renamed **Phase 9R** to prevent duplication.
-
 Completed first-level packages:
 
-1. **P9-01 — Entitlements and freemium architecture:** subscriptions, sponsored months, campaign grants, restrictions, cancellation, and portability.
-2. **P9-02 — Authoritative session architecture:** two-device multiplayer, reconnect, checkpoints, hidden information, and transport abstraction.
-3. **P9-03 — Technology and service decision package:** selected a Postgres-centered managed-backend architecture class while preserving provider neutrality.
-4. **P9-04 — Postgres-centered architecture contract:** database, identity, authorization, entitlements, sessions, realtime, security, migration, backup, observability, and provider-exit contracts.
-5. **P9-05 — Bounded technical spike and cost envelope:** deterministic two-device validation and a target operating envelope of $0–$25/month, with owner review above $35/month.
-6. **P9-06 — Implementation backlog and acceptance gates:** 7 workstreams, 24 ordered backlog items, and 8 acceptance gates.
+1. P9-01 — Entitlements and freemium architecture.
+2. P9-02 — Authoritative session architecture.
+3. P9-03 — Technology and service decision package.
+4. P9-04 — Postgres-centered architecture contract.
+5. P9-05 — Bounded technical spike and cost envelope.
+6. P9-06 — Implementation backlog and acceptance gates.
 
-## Owner authorization and release boundary
+### P9-06 implementation progress
 
-John Brandon Turner authorized bounded implementation of **P9-06-001 through P9-06-023**. That bounded implementation program has now reached verified completion through P9-06-023.
+P9-06-001 through P9-06-023 are complete and merged in `cybalicistjt-stack/Multiversal-app`. This includes repository/environment/secrets foundations; provider-neutral identity, entitlement, persistence, migration, realtime/session ports; 17-table logical schema, deterministic seed/reset, migration checks, recovery rehearsal, identity mapping, row/campaign authorization, entitlement transitions, authoritative command handling, ordered realtime events, hidden-information filtering, reconnect/restoration, telemetry, cost thresholds, provider-exit rehearsal, and final two-device acceptance.
 
-The subsequent owner decision recorded by P9-06-024 authorizes `STAGE-A-A2 — Universal Object Experience` as the current application work item.
+`P9-06-024-OWNER-DECISION-001`, recorded in application PR #103, transitions the current application focus to STAGE-A-A2. It does not authorize release or deployment.
 
-These authorizations permit repository implementation, tests, CI, local/provider-neutral adapters, and the governed A2 work defined by its work order. They do **not** authorize paid services or paid-plan enrollment, production deployment, public release, irreversible vendor coupling, credentials or production secrets, tester access, or spending beyond a separately approved owner gate.
+## Developer Toolbelt — DT-001 through DT-010
 
-## P9-06 implementation progress — completed through P9-06-023
+The owner-approved Developer Toolbelt support series is complete in `Multiversal-app`.
 
-Completed and merged in `cybalicistjt-stack/Multiversal-app`:
+1. **DT-001 — Developer Toolbelt Foundation** — `mv-dev doctor`.
+2. **DT-002 — A2 Preflight / Compatibility Mapper**.
+3. **DT-003 — Codex Task Capsule Builder**.
+4. **DT-004 — Governed Fixture Gateway**.
+5. **DT-005 — Scenario/E2E Runner**.
+6. **DT-006 — Permission Leak Scanner**.
+7. **DT-007 — UI Evidence Harvester**.
+8. **DT-008 — Design-System Compliance Linter**.
+9. **DT-009 — Traceability Compiler**.
+10. **DT-010 — Recovery / Performance Harness**.
 
-1. **P9-06-001 — Implementation authorization and repository baseline** — COMPLETE, PR #71.
-2. **P9-06-002 — Local-only development environment contract** — COMPLETE, PR #72.
-3. **P9-06-003 — Secrets and environment isolation policy** — COMPLETE, PR #73. **Acceptance Gate AG-01 complete.**
-4. **P9-06-004 — Provider-neutral identity service port** — COMPLETE, PR #74.
-5. **P9-06-005 — Provider-neutral entitlement service port** — COMPLETE, PR #75.
-6. **P9-06-006 — Provider-neutral persistence and migration ports** — COMPLETE, PR #76.
-7. **P9-06-007 — Realtime and authoritative-session service ports** — COMPLETE, PR #77, squash commit `149b866f530f3a8896170bfe3ba6af0c01fb2f72`.
-8. **P9-06-008 — Initial 17-table logical schema migration** — COMPLETE.
-9. **P9-06-009 — Deterministic seed and reset fixtures** — COMPLETE.
-10. **P9-06-010 — Expand-migrate-contract migration checks** — COMPLETE.
-11. **P9-06-011 — Backup restore and export rehearsal scripts** — COMPLETE, building on the preserved P9-06-011A recovery-contract foundation.
-12. **P9-06-012 — Provider-independent user identity mapping** — COMPLETE.
-13. **P9-06-013 — Row and campaign authorization policies** — COMPLETE.
-14. **P9-06-014 — Subscription and sponsored-month entitlement evaluator** — COMPLETE.
-15. **P9-06-015 — Entitlement transition and cancellation tests** — COMPLETE.
-16. **P9-06-016 — Authoritative session command handler** — COMPLETE.
-17. **P9-06-017 — Ordered realtime event delivery** — COMPLETE.
-18. **P9-06-018 — Hidden-information response filtering** — COMPLETE, PR #90.
-19. **P9-06-019 — Checkpoint reconnect and deterministic restoration** — COMPLETE, PR #91.
-20. **P9-06-020 — Structured audit and operational telemetry** — COMPLETE, PR #92.
-21. **P9-06-021 — Cost budget and resource threshold alarms** — COMPLETE, PR #93.
-22. **P9-06-022 — Provider-exit export/import rehearsal** — COMPLETE, PR #94.
-23. **P9-06-023 — Two-device online internal-alpha acceptance suite / AG-07** — COMPLETE. Deterministic simulated acceptance and the physical-device operator/evidence tooling were built through PRs #95–#101; the final real laptop + Android evidence and insecure-LAN browser correction were merged in PR #102 at `fb22295948745347913bcbfebf56ecca26bf39fb`.
+Final support-series state:
+- application PRs #105–#114 merged;
+- `mv-dev` version `0.10.0`;
+- final merge `354e24007d2c453d090a2a6cdb31d3e3333c84c1`;
+- no A2 product implementation was performed by the toolbelt series;
+- no release/deployment/paid-service authority was added.
 
-### Preserved preparatory history
-
-Application PR #78 created a valid provider-neutral backup, restore, and provider-exit contract package after an older derived roadmap description mislabeled that scope as P9-06-008.
-
-Application PR #79 reclassified the package as **P9-06-011A — Recovery Contract Foundation**. That package remains preparatory provenance for the completed P9-06-011 work and must not be rewritten as a separate later migration.
-
-### P9-06-024 transition
-
-`P9-06-024-OWNER-DECISION-001` is recorded in `Multiversal-app` PR #103. It closes the old P9 queue as the current implementation focus and authorizes **STAGE-A-A2 — Universal Object Experience** as the exact current application work item.
-
-P9-06-024 does not set `releaseAuthorized=true`, does not authorize deployment, and does not activate a later Stage A item.
+These tools are intended to reduce manual repository exploration, enforce bounded scope, generate exact task packets, standardize fixtures/scenarios/evidence, detect privacy/design regressions, compile traceability, and support recovery/performance verification during later implementation.
 
 ## Internal Alpha feature-design track — completed design anchor
 
 The canonical backlog is `governance/application-planning/internal-alpha/INTERNAL_ALPHA_DESIGN_BACKLOG.md`.
 
-Repository evidence now establishes:
-
-- **IA-D01 — Program foundation:** COMPLETE.
-- **IA-D02 — Shared foundations:** COMPLETE.
-- **IA-D03 — Character and Campaign preparation:** COMPLETE.
-- **IA-D04 — First playable loop:** COMPLETE.
-- **IA-D05 — Relationship, social, and investigation systems:** COMPLETE.
-- **IA-D06 — Combat and Assets:** COMPLETE.
-- **IA-D07 — World, adventure, and Project depth:** COMPLETE.
-- **IA-D08 — Optional/experimental boundaries and deferrals:** COMPLETE, including optional AI boundaries, AI permission/provenance/cost/fallback, advanced map/vehicle deferral, broad-offline deferral, and optional/experimental isolation review.
+Repository evidence establishes:
+- IA-D01 through IA-D08: COMPLETE.
 - **IA-D09 — Internal-alpha release-design package:** COMPLETE and retained as the release-design anchor.
 
-IA-D09 does not itself authorize an Internal Alpha release. Its release/tester gates remain owner-controlled.
+Prepared post-IA-D09 support assets include:
+- Stage A Tester / Reference Campaign Kit v0.1.0;
+- Internal Alpha Tester Package v1.0.0, prepared but not activated;
+- Canonical Demo Campaigns + E2E Portfolio v1.0.0;
+- Future Workspace UI Verification Package v1.0.0, prepared not executed;
+- Pack Lifecycle Acceptance Library v1.0.0, prepared not app-integrated.
 
-### Prepared post-IA-D09 support assets
+These support assets reduce future implementation/hardening work but do not authorize tester access, release, deployment, or canonical game-lore promotion.
 
-The following later preparation packages are durable support evidence and must retain their nonauthorization boundaries:
+## PPIA — Parallel Pre-Implementation Advancement Program
 
-- **Stage A Tester / Reference Campaign Kit v0.1.0** — prepared complete synthetic/noncanonical test fixture package; 27 portable synthetic records, 24 IA-D09 mapped journeys, six role profiles, deterministic reset. Handoff commit `156e5559a82406bdc884568b3f1046cb96c8fbf9`.
-- **Internal Alpha Tester Package v1.0.0** — prepared complete but not activated; tester access remains unauthorized until candidate-specific parameters and owner gate are satisfied. Handoff commit `07a7628e319f03d49d9ff0ad0e69c496a91ffa1f`.
-- **Canonical Demo Campaigns + E2E Portfolio v1.0.0** — four canonical demo/QA Campaign fixtures, 57 portable synthetic records, 48 E2E steps, 52 checkpoints; canonical for demo/test behavior, not canonical game lore. Handoff commit `2a7bd4671175d503efcf6e3471fe2e200aa57e67`.
-- **Future Workspace UI Verification Package v1.0.0** — prepared complete, not executed; eight major future workspaces and 96 blocking screenshot requirements. Handoff commit `37d9847789affe37b5b7a6d0922207f1ebdd8dfc`.
-- **Pack Lifecycle Acceptance Library v1.0.0** — prepared complete, not app-integrated; 33 real fixture pack archives, 50 deterministic lifecycle scenarios, 25 threat cases, 24 blocking acceptance gates, and a 12,000-object bounded large-pack fixture. Handoff commit `7b52b803a086614285c9663fa1d6a03b571546dd`.
+Governing documents:
+- `governance/application-planning/parallel-preimplementation/PPIA_PARALLEL_PREIMPLEMENTATION_ADVANCEMENT_PROGRAM.md`
+- `governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json`
 
-These assets are intended to reduce reinterpretation during A2–A12 implementation and hardening. They do not move the current application pointer by themselves.
+**Status:** ACTIVE — OWNER APPROVED PARALLEL WORK.
 
-## Design Standards Completion subproject — active unfinished ingestion track
+Purpose: perform substantial source/content/design/authoring/acceptance work that does not require a repository-capable Codex checkout, especially while A2 and Design Standards remain blocked on execution surfaces.
 
-This remains a **parallel documentation/design-system subproject**. It can be the AIOC conversational primary while A2 remains the authorized current application work item.
+PPIA is additive. It does not supersede or complete:
+- STAGE-A-A2;
+- Design Standards exact-byte ingestion;
+- WP-011 / Apple-only work;
+- later Stage A items;
+- Internal Alpha release;
+- deployment/public release.
 
-### Completed Design Standards recovery/canonicalization work
+### Approved sixteen tranches
 
-The owner-supplied Design Standards series has now passed the initial recovery/audit tranche that the previous roadmap described as future work.
+1. **PPIA-01 — Content Quality & Missing-Information Closure**
+2. **PPIA-02 — Creature & NPC Experience**
+3. **PPIA-03 — Items, Equipment & Inventory Experience**
+4. **PPIA-04 — Vehicle, Mecha & Starship Experience**
+5. **PPIA-05 — Species, Forms & Character Biology**
+6. **PPIA-06 — Character Appearance Creator**
+7. **PPIA-07 — Rune Construction RPG System**
+8. **PPIA-08 — Campaign / Scene / Session Authoring Depth**
+9. **PPIA-09 — Investigation & Mystery Authoring Kit**
+10. **PPIA-10 — Relationship, Social & Faction Content Framework**
+11. **PPIA-11 — Encounter & Balance Design Laboratory**
+12. **PPIA-12 — World & Setting Authoring System**
+13. **PPIA-13 — Onboarding, Help & In-App Teaching Content**
+14. **PPIA-14 — Error, Recovery & Permission Microcopy**
+15. **PPIA-15 — Internal Alpha Test Content Expansion**
+16. **PPIA-16 — Developer Console / AI-Team Control Surface**
 
-Verified repository evidence includes:
+Dependency-optimized execution order:
+`PPIA-01 → 02 → 03 → 04 → 05 → 12 → 07 → 08 → 09 → 10 → 11 → 06 → 13 → 14 → 15 → 16`.
 
-- PR #207 / merge `bd3071f6f855b66b740ba4bf1f1ba0208636548c` — governed Design Standards working-series inventory/canonicalization audit;
-- PR #208 / merge `0cfd8128786e4cdd055e3e3be26bdd1854efdfa7` — records the audit tranche as `completed_verified`;
-- PR #209 / merge `708e0ea72a6dce6f5d46ddacd042c1ddb80eee0a` — records the exact-publication ingestion boundary without falsely claiming the publication bytes were already canonical;
-- active attempt branch `governance/design-standards-publication-ingestion` — newer pre-ingestion preparation and checkpoint evidence beyond the merged `main` projection;
-- commit `f0d9295215a057e0f42603a0777c276a7437aad4` — prepared Design Standards exact-byte ingestion completion package/handoff.
+### Current PPIA work item
 
-The prepared Design Standards state now freezes:
+**PPIA-01 — Content Quality & Missing-Information Closure** is the owner-selected current conversational work item.
 
-- 56 candidate artifacts / 55 unique active or working IDs;
-- 27 DS-001–DS-005 foundation artifacts preserved as working references;
-- 14 selected DS-006 Pattern Library packages;
-- 10 selected DS-007 Responsive Standards packages;
-- five FINAL_VALIDATED DS-008–DS-012 publications;
-- duplicate/legacy/numbering dispositions;
-- an acyclic dependency graph;
-- a 12-program Phase-10 usage map;
-- a 25-gate ingestion acceptance matrix;
-- source/target checksum receipt requirements;
-- exact-byte transfer manifests and full-ingestion validation tooling.
+PPIA-01 must:
+- inventory canonical content domains and source/provenance surfaces;
+- classify incomplete/thin/inconsistent/orphaned/duplicated/ambiguous/presentation-deficient records;
+- distinguish recoverable source-backed omissions from genuine source absence and authored proposals;
+- create a prioritized repair backlog;
+- perform only source-supported repairs;
+- preserve unresolved source gaps explicitly;
+- trace repairs/gaps to affected future feature surfaces.
 
-### Canonical status boundary
+No canonical fact may be invented merely to achieve completeness.
 
-Preparation is complete. Repository ingestion is not.
+## Design Standards Completion subproject — unfinished parallel track
 
-The current attempt remains unfinished until the exact source bytes are transferred and every declared completion gate exists. The four transfer classes are:
+The audited/canonicalization tranche is complete, but exact repository ingestion is not.
 
-1. **T1 — DS-008–DS-012:** exact FINAL_VALIDATED publication/evidence bytes.
-2. **T2 — DS-006 A–N:** selected recovered Pattern Library packages.
-3. **T3 — DS-007 A–J:** selected recovered Responsive Standards packages.
-4. **T4 — DS-001–DS-005:** exact preservation as working references only, including deterministic DS-004A collision comparison/quarantine.
+Verified preparation includes:
+- PR #207 / merge `bd3071f6f855b66b740ba4bf1f1ba0208636548c`;
+- PR #208 / merge `0cfd8128786e4cdd055e3e3be26bdd1854efdfa7`;
+- PR #209 / merge `708e0ea72a6dce6f5d46ddacd042c1ddb80eee0a`;
+- attempt branch `governance/design-standards-publication-ingestion`;
+- prepared ingestion handoff commit `f0d9295215a057e0f42603a0777c276a7437aad4`.
 
-Required final evidence includes exact source/target checksums, `DS_EXACT_BYTE_TRANSFER_RECEIPTS.json`, `python tools/validate_design_standards_publications.py`, `python tools/validate_design_standards_full_ingestion.py`, focused exact-head hosted CI, PR, merge, and governed completion evidence.
+The unfinished completion gate still requires T1–T4 exact-byte transfer, source/target checksum receipts, publication/full-ingestion validators, focused exact-head CI, PR/merge, and completion evidence.
 
-If the required owner/source archive or prepared exact-byte packages are not available on the active execution surface, record **source bytes unavailable**. If the bytes are available but a repository tool cannot transfer them byte-for-byte, record an **execution-surface transfer blocker**. Do not reconstruct checksum-bound artifacts from truncated text, generated prose, screenshots, OCR, or memory.
-
-No owner decision is currently required for the mechanical ingestion work itself.
-
-### Collision, precedence, and stack rules
-
-- Current DS-006 is the Pattern Library A–N; legacy DS-006 Iconography is evidence only.
-- Current DS-007 is Responsive Standards A–J; legacy DS-007 Motion is evidence only.
-- DS-007A v0.2 is superseded by v1.0 FINAL.
-- `67.zip` is a duplicate transport/recovery container and is not an additional standard source.
-- Older DS-008 drafts and earlier Audio/Haptic → Accessibility → Layout → Navigation numbering files remain evidence only.
-- DS-001–DS-005 remain working references and must not be upgraded to `FINAL — VALIDATED` by ingestion mechanics.
-- DS-009 governs token architecture/naming/governance after ingestion while earlier color/typography/spacing/elevation standards remain preserved semantic/value references.
-- DS-012 remains visual-language authority; later Stage A functional specifications are additive where nonconflicting.
-- DS-010 remains a valid Flutter-specific standard, but the current Stage A application is React/Vite/TypeScript. DS-010 must not introduce Flutter, Riverpod, or a stack migration into the current client. Stack-neutral principles may be consulted where applicable.
-
-### Design Standards exact next action
-
-When the required exact source packages/archive are accessible in a repository-capable checkout, resume `DS-008-working-series-attempt-002` from its newest branch checkpoint and perform T1–T4 byte transfer, checksum capture, prepared validators, focused exact-head CI, PR/merge, and completion projection. Do not redesign or regenerate the standards.
-
-## Validation and CI efficiency rule
-
-`governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md` is controlling policy.
-
-Going forward:
-
-- use the smallest deterministic validator declared by the active work item during construction;
-- do not run every historical validator after every new package or implementation edit;
-- do not regenerate historical scorecards because a work pointer changed;
-- use one final relevant hosted validation gate on the completed bounded package unless the declared completion gate requires more;
-- inspect and repair only checks that are actually relevant or genuinely blocking;
-- keep workflow path filters scoped so one work item does not trigger unrelated historical suites;
-- batch related validator/workflow fixes instead of creating a full CI cycle per assertion;
-- treat recurring unrelated fan-out as an infrastructure defect rather than normalizing dozens of irrelevant checks;
-- distinguish historical entries in `governance/ci-failures/INDEX.md` from a current blocking failure by binding blockers to the active attempt/head/gate.
+Do not reconstruct checksum-bound publications from excerpts, OCR, screenshots, regenerated prose, or memory.
 
 ## Phase 10 / Stage A — Core Application Implementation
 
-Connect verified engines, registries, services, permissions, and canonical design standards to production-quality user interfaces through governed vertical slices.
-
-Primary programs:
+Primary programs remain:
 
 1. application shell and design system;
 2. universal object browser, inspector, picker, relationships, variants, and provenance;
@@ -235,114 +193,95 @@ Primary programs:
 11. contextual AI interfaces;
 12. internal-alpha hardening.
 
-### Current authorized Stage A work item — STAGE-A-A2
+### Current authorized application work item — STAGE-A-A2
 
 `Multiversal-app/.ai/current-work-order.md` names **STAGE-A-A2 — Universal Object Experience** as `AUTHORIZED CURRENT NEXT`.
 
-The governed work order merged in application PR #104 at `dced7f92163050690c807c1fda937146bb8dce85`. It explicitly records **READY FOR ACTIVATION — IMPLEMENTATION NOT YET STARTED**.
-
 A2 implements:
-
 - governed universal object Library/search and exact stable-ID lookup;
 - authorization-safe suggestions, filters, facets, and sorting;
 - list/card presentation;
 - responsive universal Inspector and explicit presentation profiles;
-- Generic fallback and bounded source-only diagnostic mode;
-- relationships and accessible nonvisual relationship traversal;
+- Generic fallback and bounded source-only diagnostics;
+- relationships and accessible nonvisual traversal;
 - progressive provenance with safe redaction;
 - read-only version/variant/conflict comparison;
-- reusable constrained Picker with current-authority revalidation;
-- one bounded Scene Add Object caller adapter creating a distinct Campaign-local placement without mutating the source Definition;
+- constrained Picker with current-authority revalidation;
+- bounded Scene Add Object caller creating a distinct Campaign-local placement without mutating the Definition;
 - deep-link/history/recovery semantics;
-- privacy, keyboard, focus, responsive/mobile, reduced-motion, high-zoom/reflow, and accessibility acceptance;
-- real-data validation in addition to synthetic fixtures.
+- privacy, keyboard/focus, responsive/mobile, reduced-motion, high-zoom/reflow, accessibility, and real-data acceptance.
 
-The established implementation sequence is:
+Established slices remain A2-01 through A2-10.
 
-- **A2-01** — contracts, schemas, fixtures, explicit profile registry, deterministic local adapter;
-- **A2-02** — Library and deterministic search/exact-ID/suggestions;
-- **A2-03** — filters, authorized facets, sort, card/list views;
-- **A2-04** — universal Inspector shell, record layers, anchor profiles;
-- **A2-05** — remaining profiles, Generic fallback, source-only diagnostic mode;
-- **A2-06** — relationships, provenance, related-object navigation;
-- **A2-07** — Picker, provisional selection, final revalidation;
-- **A2-08** — Scene Add Object reference caller adapter and local/test persistence;
-- **A2-09** — version/variant/conflict compare plus deep-link/history recovery;
-- **A2-10** — privacy, accessibility, responsive, large-corpus, and evidence closure.
+### A2 exact-source and activation state
 
-The companion A2 automation/Sunday-master handoff v2.6.0 records:
+The previous changed-path authority blocker is resolved.
 
-- all ten slices A2-01 through A2-10;
-- 49 evidence requirements;
-- all 36 hostile blocking cases;
-- 11,881 governed release objects in the master corpus;
-- exact-head evidence controls that prevent an older PASS or mismatched PR/CI head from satisfying completion.
+Verified supplied artifacts:
+- `STAGE_A_A2_SUNDAY_CODEX_MASTER_EXECUTION_v2.7.1.zip` — SHA-256 matched its recorded authority;
+- `STAGE_A_A2_PREIMPLEMENTATION_EXECUTION_PACKAGE_v1.0.0.zip` — SHA-256 matched;
+- `STAGE_A_A2_APPLICATION_REPOSITORY_COMPATIBILITY_AUDIT_v2.7.0.zip` — SHA-256 matched;
+- exact `A2_CHANGED_PATH_SCOPE_v1.0.0.csv` — SHA-256 `945b3619b25bd24e54267c8259fc17e667063a3056214e080cbe8034836d5aa6`.
 
-### Exact next application operation
+The v2.7.1 master validation passed with 14 top-level packages, 20 recursive ZIP archives, 16 discovered validators, 337 checksum entries, 16 execution steps, and 28 blocking evidence-ledger entries. The compatibility audit passed with 50 planned path actions and zero required new runtime dependencies.
 
-Before A2 implementation mutation, perform the recorded compatibility audit against current `Multiversal-app` React/Vite/TypeScript/A1 structure and the final A2 v2.6.0 execution package. Produce the Codex-facing existing-module/path/script/workflow map and collision/dependency review. Then, if current repository evidence still authorizes A2 and no stop condition is triggered, create exactly one implementation branch:
+The branch `stage-a/a2-universal-object-experience` exists from app `main` `354e24007d2c453d090a2a6cdb31d3e3333c84c1`.
 
-`stage-a/a2-universal-object-experience`
+**A2 is not activated.**
 
-and begin **A2-01**.
+### Exact next A2 operation
 
-At the 2026-08-11 verification boundary, that branch had not yet been created. Recheck before acting; do not recreate or overwrite it if newer evidence exists.
+On a repository-capable private checkout:
 
-### Stage A implementation method
+1. checkout/reverify the existing governed A2 branch; do not create a second branch;
+2. initialize the mandatory v2.6 evidence/checkpoint/recovery runner exactly as the v2.7.1 Sunday master directs;
+3. require runner `verify-state` PASS and zero substantive dirty paths;
+4. continue `MASTER_EXECUTION_ORDER_v2.7.1.csv` from the applicable activation step;
+5. transfer/use the exact `A2_CHANGED_PATH_SCOPE_v1.0.0.csv` at the governed point in that sequence;
+6. run `python -m tools.mv_dev preflight a2 --json`;
+7. run `python -m tools.mv_dev task A2-01 --json`;
+8. require exact scope authority `READY` before A2-01 implementation;
+9. keep release/deployment false.
 
-- build vertical slices, not disconnected mock screens;
-- each slice includes navigation, real data, actions, permissions, save/load, loading/error states, responsive behavior, tests, and evidence appropriate to the slice;
-- reuse universal object and relationship components rather than creating domain-specific duplicates;
-- significant UI changes require reproducible interaction/visual verification against the governing standards and A2 evidence contract;
-- apply canonical Design Standards once ingested; while exact ingestion remains incomplete, use already-approved repository authority and the audited DS reconciliation boundary without pretending uncommitted bytes are canonical;
-- keep source identity, version, provenance, Definition/Variant/Placement/Live Instance/Snapshot/Projection distinctions intact;
-- do not activate A3–A12 merely because their designs or support packages are prepared.
+Do not activate A3–A12 merely because their designs/support packages are prepared.
 
-### A2 completion boundary
+## Validation and CI efficiency rule
 
-A2 requires all declared contract/behavior/real-data/privacy/accessibility/evidence gates, final exact-head CI, merge evidence, and closure receipt. A2 is not complete if only synthetic/mock records pass while the governed real-data flow fails.
+`governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md` remains controlling.
 
-No later Stage A item is activated by A2 completion alone. After verified A2 merge, update canonical state and follow the next explicit roadmap/owner authority.
+- use the smallest deterministic validator during construction;
+- batch related repairs;
+- run final relevant hosted validation at the bounded package gate;
+- keep workflow path filters scoped;
+- do not treat historical CI failures as current blockers without binding them to the active head/gate;
+- update checkpoints at material recovery/ready/completion boundaries, not every minor action.
 
 ## Phase 11 — GM and Player Experience
 
-Complete the day-to-day product experience for campaign creation, character creation, scene building, combat and non-combat play, persistence, disconnect/reconnect, and safe resumption.
+Complete the day-to-day product experience for campaign creation, character creation, scene building, combat/non-combat play, persistence, disconnect/reconnect, and safe resumption.
 
 ## Phase 12 — AI Team and Automation
 
 Integrate specialized GM, Rules, Narrative, World, Character, Encounter, and Developer/Content assistants with canonical retrieval, provenance, permissions, visible proposals, reversible actions, and approval gates.
 
-AI remains optional/non-authoritative unless a later explicitly approved contract changes that boundary. Core application completion must not depend on an AI provider.
+AI remains optional/non-authoritative unless a later explicitly approved contract changes that boundary.
 
 ## Phase 13 — Internal Alpha Completion
 
-Complete major workflows, real-service integration where separately authorized, approved content population, gameplay testing, multiplayer/recovery, accessibility, performance, pack lifecycle, onboarding, telemetry, tester documentation, and candidate-specific Internal Alpha gates.
+Complete major workflows, authorized service integration, approved content population, gameplay testing, multiplayer/recovery, accessibility, performance, pack lifecycle, onboarding, telemetry, tester documentation, and candidate-specific Internal Alpha gates.
 
-The prepared Internal Alpha tester package and demo/reference fixtures reduce future preparation work but do not authorize tester access or an Internal Alpha release by themselves.
-
-## Public-live path after Phase 13
-
-A formal release program must govern closed alpha, beta stabilization and load testing, commercial/legal/privacy/moderation/backup/support readiness, staged production deployment and platform certification, and public launch with monitoring and rollback.
-
-No current Phase 9, Design Standards, IA-design, Stage A preparation, or A2 authorization grants public-live authority.
+Prepared tester/demo/reference assets do not authorize tester access or release by themselves.
 
 ## Parallel Apple track
 
-`WP-011 — Tauri iOS/iPadOS Spike` remains a bounded Mac-dependent track. The borrowed Mac is for one-time Apple-only build, signing, simulator/device, provisioning, packaging, and certification work. Most development must proceed without waiting for it, and project material must be removable afterward.
-
-The Apple track must not be inferred complete or rerun from roadmap prose alone; use its latest repository checkpoint/branch/evidence when it is selected.
+`WP-011 — Tauri iOS/iPadOS Spike` remains a bounded Mac-dependent track. Use its latest repository checkpoint/branch/evidence when selected; do not infer completion or rerun authority from roadmap prose.
 
 ## Mandatory execution behavior
 
-- “Continue” means perform the next verified unfinished repository operation.
-- Do not substitute explanations or plans for work.
-- Use the owner-approved recommendation process to resolve reversible ambiguity unless a decision truly requires the owner personally.
-- Group compatible validation, conversion, and repair work into efficient tranches.
-- Inspect CI failures, repair relevant failures, rerun the smallest applicable set, and continue automatically.
-- Read the authoritative backlog/work order before starting each implementation item; derived roadmap prose cannot override it.
-- Compare `main` recovery state with the exact attempt branch before restarting unfinished work; preserve newer branch checkpoints and substantive commits.
-- Distinguish missing source bytes from unavailable transfer tooling, unavailable checkout, failed validation, and owner-only gates.
-- Never claim completion, files, commits, PRs, merges, tests, artifacts, deployments, or exact-byte ingestion without matching tool/repository evidence.
-- Report the next step after every completed bounded step.
-- Preserve source truth, provenance, variants, conflicts, stable IDs, exact-byte requirements, and reversibility.
+- “Continue” means perform the next verified unfinished operation.
+- Read the authoritative backlog/work order before starting each item.
+- Preserve parallel tracks; selecting PPIA does not complete or supersede A2, Design Standards, or Apple work.
+- Distinguish missing source bytes, transfer-tool limits, unavailable checkout, validation failure, and owner-only gates.
+- Never claim completion, files, commits, PRs, merges, tests, artifacts, deployments, or exact-byte ingestion without matching evidence.
+- Preserve source truth, provenance, variants, conflicts, stable IDs, exact-byte requirements, permissions, hidden-information boundaries, and reversibility.
 - John Brandon Turner retains final authority.
