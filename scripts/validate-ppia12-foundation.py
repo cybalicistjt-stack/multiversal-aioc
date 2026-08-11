@@ -12,6 +12,8 @@ CP=ROOT/'governance/ai/work-state/PPIA-12-attempt-001.json'
 PTR=ROOT/'governance/ai/runtime/CURRENT_WORK_POINTER.json'
 STATUS=ROOT/'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
 TRANSITION='17dc6be36960b65bbcef5c4382b67de75c05218c'
+FINAL_HEAD='ae3d538e85e09e52681df5a05bd8ee343aa5e908'
+FINAL_MERGE='0ed9f9a0c53b2a132d8f38c0d3cae22cc7ae14a0'
 
 def req(c,m):
     if not c: raise SystemExit('PPIA-12 FOUNDATION: FAIL — '+m)
@@ -34,9 +36,19 @@ def main():
     req(route['authoring_policy']['random_tables']=='proposal_only' and route['authoring_policy']['ai_assistance']=='proposal_only','authoring proposal boundary missing')
     for value in ['foundation candidate only','exact PR head','17dc6be36960b65bbcef5c4382b67de75c05218c']:
         req(value in cand,f'candidate missing {value!r}')
-    req(cp['work_item_id']=='PPIA-12' and cp['attempt_id']=='PPIA-12-attempt-001','checkpoint identity mismatch'); req(cp['status'] in {'started','in_progress'},'PPIA-12 must remain active'); req(cp['base_commit']==TRANSITION,'checkpoint base must be transition merge'); req(cp['owner_decision_required'] is False and not cp['unresolved_failures'],'checkpoint unresolved state')
-    selected=[x for x in ptr['active_attempts'] if x.get('owner_selected')]; req(len(selected)==1 and selected[0]['work_item_id']=='PPIA-12','pointer must select PPIA-12'); req(ptr['primary_attempt_id']=='PPIA-12-attempt-001','primary attempt mismatch')
-    primary=status['primary']; req(primary['work_item_id']=='PPIA-12' and primary['attempt_id']==cp['attempt_id'],'compact status identity mismatch'); req(primary['status']==cp['status'],'compact status/checkpoint mismatch')
-    req('world' in ptr['selection_reason'].lower() and 'roadmap' in ptr['selection_reason'].lower() and 'pending' in ptr['selection_reason'].lower(),'selection reason must preserve world transition and batched roadmap state')
-    print('PPIA-12 FOUNDATION: PASS'); print('primary_sources=22 pages=693'); print('environment_templates=8 pages=238'); print('authoring_guidance=2 pages=30'); print('total_pdfs=32 pages=961'); print('identity_state_layers=14'); print('presentation_profiles=12'); print('runtime_activation=false')
+    req(cp['work_item_id']=='PPIA-12' and cp['attempt_id']=='PPIA-12-attempt-001','checkpoint identity mismatch')
+    req(cp['base_commit']==TRANSITION,'checkpoint base must be transition merge')
+    req(cp['owner_decision_required'] is False and not cp['unresolved_failures'],'checkpoint unresolved state')
+    if cp['status'] in {'started','in_progress'}:
+        selected=[x for x in ptr['active_attempts'] if x.get('owner_selected')]
+        req(len(selected)==1 and selected[0]['work_item_id']=='PPIA-12','active PPIA-12 pointer must select PPIA-12')
+        req(ptr['primary_attempt_id']=='PPIA-12-attempt-001','active PPIA-12 primary attempt mismatch')
+        primary=status['primary']; req(primary['work_item_id']=='PPIA-12' and primary['attempt_id']==cp['attempt_id'],'active compact status identity mismatch'); req(primary['status']==cp['status'],'active compact status/checkpoint mismatch')
+        req('world' in ptr['selection_reason'].lower() and 'roadmap' in ptr['selection_reason'].lower() and 'pending' in ptr['selection_reason'].lower(),'active selection reason must preserve world transition and batched roadmap state')
+    else:
+        req(cp['status']=='completed_verified','PPIA-12 must be active or completed_verified')
+        req(cp.get('active_substep') is None,'completed PPIA-12 active_substep must be null')
+        req(cp.get('latest_pushed_commit')==FINAL_HEAD and cp.get('pull_request')==239 and cp.get('merge_commit')==FINAL_MERGE,'completed PPIA-12 final evidence mismatch')
+        req(any('31536379370' in x.get('command','') and x.get('status')=='passed' for x in cp.get('validation',[])),'completed PPIA-12 completion gate evidence missing')
+    print('PPIA-12 FOUNDATION: PASS'); print('primary_sources=22 pages=693'); print('environment_templates=8 pages=238'); print('authoring_guidance=2 pages=30'); print('total_pdfs=32 pages=961'); print('identity_state_layers=14'); print('presentation_profiles=12'); print(f'checkpoint_state={cp["status"]}'); print('runtime_activation=false')
 if __name__=='__main__': main()
