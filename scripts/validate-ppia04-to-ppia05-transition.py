@@ -17,6 +17,7 @@ PROGRAM = BASE / "PPIA_PARALLEL_PREIMPLEMENTATION_ADVANCEMENT_PROGRAM.md"
 
 P4_FINAL_HEAD = "a821f53794d675e73ae71d6c02d577141981ba22"
 P4_COMPLETION_MERGE = "e8ec662534820e53fcb8a7d958c0946f494faefd"
+P4_TO_P5_TRANSITION_MERGE = "6e9e82252d389f1360e7f1b1191afe5e8c336aa0"
 P5_BRANCH = "governance/ppia-05-species-forms-biology"
 
 
@@ -60,8 +61,9 @@ def main() -> None:
     require(p5["work_item_id"] == "PPIA-05" and p5["attempt_id"] == "PPIA-05-attempt-001", "PPIA-05 checkpoint identity mismatch")
     require(p5["branch"] == P5_BRANCH, "PPIA-05 governed branch mismatch")
     require(p5["status"] in {"started", "in_progress"}, "PPIA-05 checkpoint must be active")
-    require(p5["base_commit"] == P4_COMPLETION_MERGE, "PPIA-05 transition checkpoint must start from exact PPIA-04 completion merge")
+    require(p5["base_commit"] == P4_TO_P5_TRANSITION_MERGE, "PPIA-05 governed branch must start from the canonical PPIA-04→PPIA-05 transition merge")
     require(any(P4_COMPLETION_MERGE in item.get("value", "") for item in p5.get("evidence", [])), "PPIA-05 must preserve PPIA-04 completion merge as dependency evidence")
+    require(any(P4_TO_P5_TRANSITION_MERGE in item.get("value", "") for item in p5.get("evidence", [])), "PPIA-05 must preserve the transition merge as branch-start evidence")
     require(p5["active_substep"] and p5["roadmap_projection_pending"] is True, "PPIA-05 must have active source/design substep and pending roadmap projection")
 
     selected = [item for item in pointer["active_attempts"] if item.get("owner_selected")]
@@ -88,7 +90,7 @@ def main() -> None:
     print(f"ppia04_final_head={P4_FINAL_HEAD}")
     print(f"ppia04_final_merge={P4_COMPLETION_MERGE}")
     print("ppia05_status=started")
-    print(f"ppia05_initial_base={P4_COMPLETION_MERGE}")
+    print(f"ppia05_transition_merge={P4_TO_P5_TRANSITION_MERGE}")
     print(f"ppia05_branch={P5_BRANCH}")
     print("roadmap_projection_pending=true")
 
