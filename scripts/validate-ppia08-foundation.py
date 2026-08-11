@@ -65,7 +65,7 @@ def main():
     for x in ['destructively','camera','source definition','hidden','launch snapshots','gridless','nonvisual']:
         req(x in guard,f'guardrail missing {x}')
 
-    for x in ['SD-302','SD-1003','MV-IA-F005','square grid','pan/translated','basic dungeon map construction kit','Gridless','nonvisual']:
+    for x in ['SD-302','SD-1003','MV-IA-F005','square grid','panned/translated','basic dungeon map construction kit','Gridless','nonvisual']:
         req(x.lower() in inv.lower(),f'inventory missing {x}')
     for x in ['FOUNDATION CANDIDATE — NOT PPIA-08 COMPLETE','cellSizePx','originOffsetXPx','originOffsetYPx','rooms/floors','launch snapshots','PPIA-08 remains `started`']:
         req(x.lower() in cand.lower(),f'candidate missing {x}')
