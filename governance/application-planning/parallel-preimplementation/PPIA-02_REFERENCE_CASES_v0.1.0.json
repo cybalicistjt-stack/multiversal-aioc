@@ -1,0 +1,272 @@
+{
+  "format": "multiversal-ppia02-creature-npc-reference-cases",
+  "version": "0.1.0",
+  "work_item": "PPIA-02",
+  "status": "design_acceptance_reference_set",
+  "policy": {
+    "source_grounded_cases_preserve_source_facts": true,
+    "synthetic_cases_are_canonical_content": false,
+    "synthetic_cases_may_test_permissions_and_ui": true,
+    "legacy_semantic_database_required": false,
+    "automatic_identity_merge": false
+  },
+  "source_evidence": [
+    {
+      "id": "SRC-HAVALAEA-CREATURES",
+      "title": "Havalaea Creatures",
+      "member": "MV_Master_01_Core/02_PDF_Sources/Creatures/Havalaea Creatures.PDF",
+      "sha256": "78bc18c5026c623261ccd312c4fbae8b015f8c2d42d212904b7dfeb5b20afeab"
+    },
+    {
+      "id": "SRC-CREATURE-TYPES",
+      "title": "Creature types",
+      "member": "MV_Master_01_Core/02_PDF_Sources/Creatures/Creature types.PDF",
+      "sha256": "5001dc9dd25096ea559c7d6c0f11bfd2113bd4637b07cb64455fc448cfed6fd5"
+    },
+    {
+      "id": "SRC-DRAGONS",
+      "title": "Dragons",
+      "member": "MV_Master_01_Core/02_PDF_Sources/Creatures/Dragons(1).PDF",
+      "sha256": "21a188666b72e0d083fb40e4105b240d9c12a9989198ac416e568900a4dc29fc"
+    },
+    {
+      "id": "SRC-PLAYER-CREATURES",
+      "title": "Player Creatures",
+      "member": "MV_Master_01_Core/02_PDF_Sources/Part 1/Creation/Player Creatures.PDF",
+      "sha256": "b6626049ddab2cc30295602fa03581a7d66b4352dc4e0cdc30fd1dc5929613f3"
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "PPIA02-RC-001",
+      "title": "Source-backed ordinary bestiary creature",
+      "kind": "source_grounded",
+      "source_id": "SRC-HAVALAEA-CREATURES",
+      "source_coordinate": "page 1",
+      "subject": "Sাপcrawl Varnet",
+      "source_facts": [
+        "CR 1 Small Beast (Insectoid), Unaligned",
+        "AC 13, HP 14, speed 30 ft. and climb 20 ft.",
+        "Poison resistance, tremorsense 30 ft., darkvision 60 ft.",
+        "Phosphorescent Trails and Swarm Instinct traits",
+        "Bite action",
+        "Behavior describes a nocturnal sap-feeder with bioluminescent mating/nesting behavior"
+      ],
+      "profile": "creature_standard",
+      "contexts": ["library_reference", "exploration_bestiary", "encounter_preparation"],
+      "acceptance": [
+        "Combat statistics and Behavior are both inspectable without flattening Behavior into notes.",
+        "A linked swarm/group behavior can be presented without changing the creature's source identity.",
+        "Source coordinate/provenance is visible to an authorized diagnostic role."
+      ]
+    },
+    {
+      "case_id": "PPIA02-RC-002",
+      "title": "Source-backed mobility and reaction creature",
+      "kind": "source_grounded",
+      "source_id": "SRC-HAVALAEA-CREATURES",
+      "source_coordinate": "page 1",
+      "subject": "Mossling Glider",
+      "source_facts": [
+        "CR 1 Tiny Beast",
+        "land, climb, and glide movement modes",
+        "Tail Flares reaction",
+        "Canopy Dancer trait",
+        "Scratch and Bolt action",
+        "Behavior describes clever alert alarm signaling"
+      ],
+      "profile": "creature_standard",
+      "contexts": ["library_reference", "live_runtime", "exploration_bestiary"],
+      "acceptance": [
+        "Multiple movement modes are readable and noncolor-coded.",
+        "Reaction is distinguishable from ordinary actions.",
+        "Compact/mobile presentation preserves movement, reaction availability, and behavior context."
+      ]
+    },
+    {
+      "case_id": "PPIA02-RC-003",
+      "title": "Source-backed type/affinity modifier",
+      "kind": "source_grounded",
+      "source_id": "SRC-CREATURE-TYPES",
+      "source_coordinate": "pages 1-2",
+      "subject": "Fire-Type Animals",
+      "source_facts": [
+        "Fire resistance",
+        "possible cold vulnerability",
+        "fire abilities",
+        "hot-environment adaptation",
+        "appearance changes"
+      ],
+      "profile": "type_modifier",
+      "contexts": ["library_reference", "comparison_variant"],
+      "acceptance": [
+        "Modifier is presented as an applies-to relationship rather than silently replacing base identity.",
+        "Resistance, possible vulnerability, abilities, environmental adaptation, and appearance can be compared as field effects.",
+        "The word 'may' remains conditional rather than being converted into a guaranteed source fact."
+      ]
+    },
+    {
+      "case_id": "PPIA02-RC-004",
+      "title": "Source-backed age/power stage chain",
+      "kind": "source_grounded",
+      "source_id": "SRC-DRAGONS",
+      "source_coordinate": "pages 1-3",
+      "subject": "Dragon age and power stages",
+      "source_facts": [
+        "Hatchling/Wyrmling, Juvenile, Adult, Elder, Ancient are listed as possible age stages",
+        "Greatwyrm is Chromatic-only",
+        "not all dragon types follow the same stage model",
+        "Reptilian, Bird-Dragon, Chromatic, Arcane-Born, and Exo intelligence patterns differ"
+      ],
+      "profile": "stage_variant",
+      "contexts": ["library_reference", "comparison_variant", "encounter_preparation"],
+      "acceptance": [
+        "Stage chain preserves category-specific exceptions instead of forcing one universal ladder.",
+        "Variant comparison does not imply every stage exists for every dragon category.",
+        "Known stage siblings are traversable without display-name identity matching."
+      ]
+    },
+    {
+      "case_id": "PPIA02-RC-005",
+      "title": "Source-backed sentience spectrum",
+      "kind": "source_grounded",
+      "source_id": "SRC-DRAGONS",
+      "source_coordinate": "page 1",
+      "subject": "Dragon intelligence spectrum",
+      "source_facts": [
+        "Reptilian Dragons are described as animalistic (INT 2-5)",
+        "Bird-Dragons as semi-sapient (INT 6-9)",
+        "Chromatic Dragons as sapient (INT 10-16)",
+        "Arcane-Born as highly intelligent (INT 14-26)",
+        "Exo Dragons may have divine-class intellect"
+      ],
+      "profile": "sentient_hybrid",
+      "contexts": ["library_reference", "investigation_social", "encounter_preparation"],
+      "acceptance": [
+        "Presentation can foreground both creature mechanics and persona/social information where relevant.",
+        "Intelligence/sapience source wording does not automatically grant Campaign relationships, motives, or faction memberships not present in source/Campaign data."
+      ]
+    },
+    {
+      "case_id": "PPIA02-RC-006",
+      "title": "Source-backed playable creature conversion",
+      "kind": "source_grounded",
+      "source_id": "SRC-PLAYER-CREATURES",
+      "source_coordinate": "pages 1-3",
+      "subject": "Monster-to-playable-species procedure",
+      "source_facts": [
+        "start from the lowest-CR version",
+        "retain inherent physical traits such as size, movement, natural armor/senses/weapons",
+        "base XP cost uses CR x 500 XP with a source-stated limited-resource discount rule",
+        "unique abilities begin locked and can be purchased",
+        "HP and defenses are normalized for character play",
+        "ability scores are recalculated",
+        "multi-tiered abilities can become progression tiers"
+      ],
+      "profile": "playable_conversion",
+      "contexts": ["playable_conversion", "comparison_variant"],
+      "acceptance": [
+        "Conversion links source creature to a playable-species/Character workflow without identity equivalence.",
+        "Source monster HP/state is not reused as live Character HP.",
+        "Conversion provenance identifies retained, normalized, excluded, and unlockable parts."
+      ]
+    },
+    {
+      "case_id": "PPIA02-RC-007",
+      "title": "Source-backed Havalaean sapient-animal conversion",
+      "kind": "source_grounded",
+      "source_id": "SRC-PLAYER-CREATURES",
+      "source_coordinate": "page 3 onward",
+      "subject": "Havalaean Sapient Animal Template",
+      "source_facts": [
+        "normal animal can be converted into a sentient speaking culturally aware Havalaean native",
+        "creature type can change toward Beast (Sapient) or Beastfolk",
+        "Intelligence is raised to a minimum stated by source",
+        "language and cultural heritage are added"
+      ],
+      "profile": "sentient_hybrid",
+      "contexts": ["playable_conversion", "investigation_social", "library_reference"],
+      "acceptance": [
+        "A creature-to-persona conversion can expose social/persona sections without overwriting the base animal source record.",
+        "Culture/language additions remain part of the conversion result/provenance rather than retroactive facts about every base animal."
+      ]
+    },
+    {
+      "case_id": "PPIA02-RC-008",
+      "title": "Named NPC with hidden motive and visible testimony",
+      "kind": "synthetic_qa",
+      "canonical_content": false,
+      "profile": "npc_persona",
+      "contexts": ["investigation_social", "library_reference", "live_runtime"],
+      "fixture_requirements": ["public identity", "visible statement", "hidden motive", "hidden relationship", "combat-capable actions", "carried visible item", "hidden inventory"],
+      "acceptance": [
+        "Player sees identity and revealed statement but not hidden motive/relationship/inventory.",
+        "GM sees authorized full persona and can open linked relationship/equipment objects.",
+        "Changing to combat/runtime context adds instance state without mutating the reusable NPC Definition."
+      ]
+    },
+    {
+      "case_id": "PPIA02-RC-009",
+      "title": "Hidden scene placement and reinforcement",
+      "kind": "synthetic_qa",
+      "canonical_content": false,
+      "profile": "creature_standard",
+      "contexts": ["scene_placement", "encounter_preparation", "live_runtime"],
+      "fixture_requirements": ["source definition", "hidden placement", "quantity greater than one", "later wave", "GM-only tactic", "reveal trigger"],
+      "acceptance": [
+        "Unauthorized Player projection contains no existence, count, wave, tactic, search suggestion, facet contribution, relationship count, or compare target before reveal.",
+        "GM projection preserves source stable ID plus distinct placement/instance IDs.",
+        "Reveal changes future authorized projection through the owning workflow; it is not a client-side unhide of already delivered secret data."
+      ]
+    },
+    {
+      "case_id": "PPIA02-RC-010",
+      "title": "Summon/minion lifecycle and controller",
+      "kind": "synthetic_qa",
+      "canonical_content": false,
+      "profile": "summon_minion_spawn",
+      "contexts": ["summon_minion_spawn", "scene_placement", "live_runtime"],
+      "fixture_requirements": ["master reference", "summoned definition", "placement", "runtime instance", "control limit", "duration/resource limit"],
+      "acceptance": [
+        "Master/source relationship is visible only where authorized.",
+        "Summoned instance lifecycle does not mutate the summoned Definition.",
+        "Controller, owner, summoner, and source creator are not collapsed into one role."
+      ]
+    },
+    {
+      "case_id": "PPIA02-RC-011",
+      "title": "Swarm/group projection",
+      "kind": "synthetic_qa",
+      "canonical_content": false,
+      "profile": "swarm_group",
+      "contexts": ["encounter_preparation", "live_runtime", "comparison_variant"],
+      "fixture_requirements": ["group definition or governed grouping relationship", "member relationship", "group action", "quantity/scale", "member-level source refs"],
+      "acceptance": [
+        "Group-level mechanics do not erase member source identities.",
+        "Authorized UI distinguishes group quantity/scale from hidden encounter placement count.",
+        "Keyboard/screen-reader path can traverse group/member relationships nonvisually."
+      ]
+    },
+    {
+      "case_id": "PPIA02-RC-012",
+      "title": "Incomplete or conflicted Creature/NPC source record",
+      "kind": "synthetic_qa",
+      "canonical_content": false,
+      "profile": "creature_standard",
+      "contexts": ["library_reference", "comparison_variant", "gm_authoring"],
+      "fixture_requirements": ["known source identity", "missing optional mechanics", "explicit recommendation", "conflicting source/version candidate", "provenance receipt"],
+      "acceptance": [
+        "Inspector remains usable without fabricating missing fields.",
+        "Source fact, recommendation, conflict, and unresolved state are distinguishable.",
+        "Compare never silently selects a winning source/version and no same-name auto-merge occurs."
+      ]
+    }
+  ],
+  "summary": {
+    "cases": 12,
+    "source_grounded_cases": 7,
+    "synthetic_qa_cases": 5,
+    "canonical_synthetic_records": 0,
+    "source_pdfs_used": 4
+  }
+}
