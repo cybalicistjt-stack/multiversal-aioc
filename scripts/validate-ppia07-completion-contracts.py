@@ -145,7 +145,7 @@ def main():
         "deny",
         "modify-and-approve",
         "Silence is never approval",
-        "server-side projection",
+        "server-side role projection",
         "PPIA-11",
         "expected_version",
         "operation_id",
