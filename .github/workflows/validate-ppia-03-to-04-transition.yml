@@ -1,0 +1,40 @@
+name: Validate PPIA-03 to PPIA-04 Transition
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json'
+      - 'governance/application-planning/parallel-preimplementation/validate_ppia_program.py'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-03_COMPLETION_REPORT.md'
+      - 'governance/ai/work-state/PPIA-03-attempt-001.json'
+      - 'governance/ai/work-state/PPIA-04-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia03-to-ppia04-transition.py'
+      - '.github/workflows/validate-ppia-03-to-04-transition.yml'
+  push:
+    branches:
+      - governance/ppia-03-completion-transition
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json'
+      - 'governance/application-planning/parallel-preimplementation/validate_ppia_program.py'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-03_COMPLETION_REPORT.md'
+      - 'governance/ai/work-state/PPIA-03-attempt-001.json'
+      - 'governance/ai/work-state/PPIA-04-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia03-to-ppia04-transition.py'
+      - '.github/workflows/validate-ppia-03-to-04-transition.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-transition:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate PPIA-03 completion and PPIA-04 transition
+        run: python scripts/validate-ppia03-to-ppia04-transition.py
+      - name: Validate generalized PPIA program continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
