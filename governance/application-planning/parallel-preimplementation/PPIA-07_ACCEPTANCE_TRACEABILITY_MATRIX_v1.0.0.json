@@ -1,0 +1,96 @@
+{
+  "format": "multiversal-ppia07-rune-construction-acceptance-traceability-matrix",
+  "version": "1.0.0",
+  "work_item": "PPIA-07",
+  "status": "completion_contract_candidate",
+  "requirements": [
+    {"requirement_id":"PPIA07-AC-001","category":"authority_source","requirement":"The 34-rune vocabulary is identified as governed owner-directed design rather than recovered source canon.","traces":["PPIA-07_EXPANDED_RUNE_MAGIC_SYSTEM_v0.2.0.json","spec:2","spec:4"],"reference_cases":["PPIA07-ER-001"]},
+    {"requirement_id":"PPIA07-AC-002","category":"authority_source","requirement":"Source-specific spell, mana, resistance, counterspell, crafting, Overreach, Resonance, duration, range, damage, healing and XP fields remain owning-rule inputs.","traces":["spec:3","spec:13","RB-HO-006"],"reference_cases":["PPIA07-CSP-010","PPIA07-CSP-011"]},
+    {"requirement_id":"PPIA07-AC-003","category":"authority_source","requirement":"PPIA-03, PPIA-08, PPIA-11, PPIA-12, F006/F007, F020 and F021 ownership boundaries remain explicit and nonabsorbed.","traces":["spec:3","RB-HO-002","RB-HO-003","RB-HO-004","RB-HO-005","RB-HO-006","RB-HO-007","RB-HO-008"],"reference_cases":["PPIA07-CSP-008","PPIA07-BR-010"]},
+
+    {"requirement_id":"PPIA07-AC-004","category":"vocabulary","requirement":"The final registry contains exactly 16 unique Operation Runes and 18 unique Essence Runes for 34 total core runes.","traces":["spec:4","PPIA-07_EXPANDED_RUNE_MAGIC_SYSTEM_v0.2.0.json"],"reference_cases":["PPIA07-ER-001","PPIA07-ER-034"]},
+    {"requirement_id":"PPIA07-AC-005","category":"vocabulary","requirement":"Operation Runes describe what magic does while Essence Runes fill typed payload/domain roles and are not standalone executable AST nodes.","traces":["spec:4.1","spec:4.2","payload_rune_rule"],"reference_cases":["PPIA07-ER-001","PPIA07-ER-030"]},
+    {"requirement_id":"PPIA07-AC-006","category":"vocabulary","requirement":"No spell name automatically becomes a rune and the retained 385-spell catalog remains source content rather than being replaced by rune records.","traces":["spec:25","PPIA-07_SOURCE_SPELL_COVERAGE_AUDIT_v0.2.0.json"],"reference_cases":["PPIA07-CSP-012"]},
+
+    {"requirement_id":"PPIA07-AC-007","category":"grammar","requirement":"THEN, WITH, WHEN and IF are the four explicit connection types and mixed connectors never receive implicit precedence.","traces":["spec:5","PPIA-07_DETERMINISTIC_GRAMMAR_CANDIDATE_v0.1.0.json"],"reference_cases":["PPIA07-RC-006","PPIA07-RC-009"]},
+    {"requirement_id":"PPIA07-AC-008","category":"grammar","requirement":"Every valid visual graph round-trips to one canonical ordered linear serialization with equivalent AST meaning.","traces":["spec:5","spec:8","RB-ACT-006","RB-ACT-018"],"reference_cases":["PPIA07-RC-002","PPIA07-BR-014"]},
+    {"requirement_id":"PPIA07-AC-009","category":"grammar","requirement":"Invalid or ambiguous syntax fails before authoritative cost, effect or GM proposal creation and errors do not invent semantic outcomes.","traces":["spec:8","spec:11.2"],"reference_cases":["PPIA07-RC-009","PPIA07-CSP-016","PPIA07-BR-008"]},
+
+    {"requirement_id":"PPIA07-AC-010","category":"semantic_resolution","requirement":"Semantic evaluation classifies constructions as deterministic-supported, governed-adjudication-required, unresolved-owning-rule or invalid.","traces":["spec:8","spec:9"],"reference_cases":["PPIA07-ER-020","PPIA07-CSP-010"]},
+    {"requirement_id":"PPIA07-AC-011","category":"semantic_resolution","requirement":"Valid open combinations may be GM-adjudicated without hallucinating missing damage, duration, template, destination, resistance or other authoritative game facts.","traces":["spec:9","spec:11.4"],"reference_cases":["PPIA07-BR-005","PPIA07-BR-009"]},
+    {"requirement_id":"PPIA07-AC-012","category":"semantic_resolution","requirement":"A valid Rune Construction never by itself guarantees affordability, success, target legality, lack of resistance or balance.","traces":["spec:8","spec:13","spec:17"],"reference_cases":["PPIA07-CSP-012","PPIA07-BR-003"]},
+
+    {"requirement_id":"PPIA07-AC-013","category":"costs_limits","requirement":"Rune Construction uses the 12 typed resource adapters and never introduces one universal cost equation.","traces":["spec:13","PPIA-07_COST_COMPLEXITY_STABILITY_PROGRESSION_CONTRACT_v0.1.0.json"],"reference_cases":["PPIA07-CSP-010","PPIA07-CSP-011"]},
+    {"requirement_id":"PPIA07-AC-014","category":"costs_limits","requirement":"Required unresolved adapters block or defer authoritative use according to owning rules rather than receiving guessed defaults.","traces":["spec:13"],"reference_cases":["PPIA07-CSP-010","PPIA07-BR-009"]},
+    {"requirement_id":"PPIA07-AC-015","category":"costs_limits","requirement":"Source-scoped resource values are preserved without automatic rune-wide repricing.","traces":["spec:13"],"reference_cases":["PPIA07-CSP-011"]},
+
+    {"requirement_id":"PPIA07-AC-016","category":"stability_risk","requirement":"SCI remains a structural/cognitive complexity metric with simple, standard, advanced and expert bands and is not power.","traces":["spec:14"],"reference_cases":["PPIA07-CSP-001","PPIA07-CSP-009"]},
+    {"requirement_id":"PPIA07-AC-017","category":"stability_risk","requirement":"CSL remains a structural stability-attention signal with baseline, watch, strained and high-attention bands and is not failure probability.","traces":["spec:15"],"reference_cases":["PPIA07-CSP-004","PPIA07-CSP-009"]},
+    {"requirement_id":"PPIA07-AC-018","category":"stability_risk","requirement":"No automatic backlash, damage or failure table is inferred from SCI/CSL and final calibration remains with owning rules/PPIA-11.","traces":["spec:14","spec:15","RB-HO-004"],"reference_cases":["PPIA07-CSP-009"]},
+
+    {"requirement_id":"PPIA07-AC-019","category":"progression","requirement":"Progressive disclosure teaches Operation Runes first, then Essence payload choices, then connectors and advanced architecture.","traces":["spec:16","progressive_disclosure"],"reference_cases":["PPIA07-CSP-001","PPIA07-CSP-007"]},
+    {"requirement_id":"PPIA07-AC-020","category":"progression","requirement":"The four progression bands are guidance unless adopted by owning progression rules and do not silently create hard gameplay unlocks.","traces":["spec:16"],"reference_cases":["PPIA07-CSP-013"]},
+    {"requirement_id":"PPIA07-AC-021","category":"progression","requirement":"Conflicting Scripts & Macros progression values remain attributable rather than silently reconciled into universal Rune XP prices.","traces":["spec:16"],"reference_cases":["PPIA07-CSP-013"]},
+
+    {"requirement_id":"PPIA07-AC-022","category":"crafting_inscription","requirement":"PPIA-07 owns rune-extension/validation semantics while PPIA-03 retains Item Definition and instance ownership.","traces":["spec:18","RB-HO-002","RB-HO-010"],"reference_cases":["PPIA07-CSP-008"]},
+    {"requirement_id":"PPIA07-AC-023","category":"crafting_inscription","requirement":"Inscription compatibility, resources, SCI/CSL, predicted authorized effect, provenance and versions are inspectable before mutation.","traces":["spec:18","RB-WF-010"],"reference_cases":["PPIA07-RC-013","PPIA07-CSP-008"]},
+    {"requirement_id":"PPIA07-AC-024","category":"crafting_inscription","requirement":"Inscription/removal writes use expected-version and operation-ID recovery and cannot duplicate resource use or attached runes.","traces":["spec:18","spec:21","RB-ACT-010","RB-ACT-011"],"reference_cases":["PPIA07-CSP-015","PPIA07-BR-011"]},
+
+    {"requirement_id":"PPIA07-AC-025","category":"counterplay","requirement":"Rune resolution exposes recognize, resist, counter, sever-link, disable-trigger and dispel-or-remove hooks to owning rules.","traces":["spec:17"],"reference_cases":["PPIA07-CSP-012"]},
+    {"requirement_id":"PPIA07-AC-026","category":"counterplay","requirement":"UNMAKE, COMMAND, CALL, BANISH, SPACE and TIME do not bypass saves, resistance, source/destination validity or setting-local restrictions.","traces":["spec:17","PPIA-07_EXPANDED_RUNE_MAGIC_SYSTEM_v0.2.0.json"],"reference_cases":["PPIA07-ER-010","PPIA07-BR-003"]},
+    {"requirement_id":"PPIA07-AC-027","category":"counterplay","requirement":"Blind mode may suppress counterplay evidence from the player but never removes it from authorized GM/authoritative resolution.","traces":["spec:17","PPIA-07_BLIND_RUNE_PLAY_CONSUMER_PROFILE_v1.0.0.json"],"reference_cases":["PPIA07-BR-003","PPIA07-BR-007"]},
+
+    {"requirement_id":"PPIA07-AC-028","category":"standard_play","requirement":"Standard-preview mode may show only permission-authorized semantic effect, costs, SCI/CSL, targets and rule references.","traces":["spec:10","RB-WF-007"],"reference_cases":["PPIA07-RC-003"]},
+    {"requirement_id":"PPIA07-AC-029","category":"standard_play","requirement":"A standard preview is nonauthoritative and never commits an effect or consumes a resource by itself.","traces":["spec:10","RB-HO-006"],"reference_cases":["PPIA07-CSP-011"]},
+    {"requirement_id":"PPIA07-AC-030","category":"standard_play","requirement":"Whether standard play requires GM decision remains an owning Campaign/Action policy rather than a PPIA-07 shortcut.","traces":["spec:10","MV-IA-F006"],"reference_cases":["PPIA07-RC-012"]},
+
+    {"requirement_id":"PPIA07-AC-031","category":"blind_rune_play","requirement":"In blind-gm-adjudicated mode the player can construct/serialize/validate/submit runes but cannot receive the interpreted or predicted magical effect before GM adjudication.","traces":["spec:11","PPIA-07_BLIND_RUNE_PLAY_CONSUMER_PROFILE_v1.0.0.json"],"reference_cases":["PPIA07-BR-001","PPIA07-BR-002"]},
+    {"requirement_id":"PPIA07-AC-032","category":"blind_rune_play","requirement":"Blind-effect suppression is enforced through server-side role projection and cannot be bypassed by tooltips, counts, errors, history, export, diagnostics, notifications or player AI.","traces":["spec:11.1","spec:20","spec:24"],"reference_cases":["PPIA07-BR-001","PPIA07-BR-007","PPIA07-BR-013"]},
+    {"requirement_id":"PPIA07-AC-033","category":"blind_rune_play","requirement":"Post-resolution learning follows outcome-only, observed-details or full-after-resolution policy and successful use does not automatically reveal all rune mechanics.","traces":["spec:11.5","blind_profile:knowledge_and_discovery"],"reference_cases":["PPIA07-BR-016"]},
+
+    {"requirement_id":"PPIA07-AC-034","category":"gm_approval","requirement":"An authorized GM receives a complete permission-safe effect card with decoded construction, interpreted result, targets, resources, SCI/CSL, counterplay, warnings, provenance and predicted mutations.","traces":["spec:11.3","MV-IA-F006","IA-D04-002"],"reference_cases":["PPIA07-BR-001","PPIA07-BR-003"]},
+    {"requirement_id":"PPIA07-AC-035","category":"gm_approval","requirement":"Blind final decisions are exactly approve, deny and modify-and-approve; silence or timeout is never approval.","traces":["spec:11.4","blind_profile:decision_contract"],"reference_cases":["PPIA07-BR-004","PPIA07-BR-005"]},
+    {"requirement_id":"PPIA07-AC-036","category":"gm_approval","requirement":"Modify-and-approve preserves the immutable player expression and original resolved proposal plus exact diff/reasons; expression rewrites are explicit GM modifications and never attributed to the player.","traces":["spec:11.4","IA-D04-002"],"reference_cases":["PPIA07-BR-005","PPIA07-BR-006"]},
+
+    {"requirement_id":"PPIA07-AC-037","category":"permissions_visibility","requirement":"Permission filtering precedes hidden runes, targets, anchors, channels, resources, semantic resolution, counts, queue entries, notifications, history, exports, diagnostics and AI context.","traces":["spec:20","RB-HO-007"],"reference_cases":["PPIA07-RC-018","PPIA07-BR-007"]},
+    {"requirement_id":"PPIA07-AC-038","category":"permissions_visibility","requirement":"Unauthorized errors, counts, disabled states and timing-visible metadata cannot disclose protected rune/effect/target existence.","traces":["spec:20","MV-IA-F020"],"reference_cases":["PPIA07-BR-007"]},
+    {"requirement_id":"PPIA07-AC-039","category":"permissions_visibility","requirement":"Blind-mode semantic suppression is an additional visibility boundary even when syntax and player-originated construction fields are visible.","traces":["spec:20","blind_profile:player_predecision_projection"],"reference_cases":["PPIA07-BR-001","PPIA07-BR-014"]},
+
+    {"requirement_id":"PPIA07-AC-040","category":"recovery_concurrency","requirement":"Authoritative rune mutations, proposal submits, GM decisions and commits use stable operation identities and expected-version/current-version checks.","traces":["spec:21","RB-HO-008","MV-IA-F021"],"reference_cases":["PPIA07-CSP-015","PPIA07-BR-011"]},
+    {"requirement_id":"PPIA07-AC-041","category":"recovery_concurrency","requirement":"Ambiguous submit or decision responses query status with the original identity before retry and cannot duplicate proposals, effects, costs, inscriptions or notifications.","traces":["spec:21","blind_profile:offline_and_recovery"],"reference_cases":["PPIA07-BR-011","PPIA07-BR-012"]},
+    {"requirement_id":"PPIA07-AC-042","category":"recovery_concurrency","requirement":"Stale actor, target, Session, resource, permission or rule state is revalidated and cannot silently become the accepted original proposal.","traces":["spec:21","MV-IA-F006"],"reference_cases":["PPIA07-BR-010"]},
+
+    {"requirement_id":"PPIA07-AC-043","category":"accessibility_ai","requirement":"Every required visual graph, topology, shape, SCI/CSL view and GM effect card has an ordered semantic text/table equivalent usable by keyboard, touch and screen reader.","traces":["spec:23","RB-HO-009"],"reference_cases":["PPIA07-RC-020","PPIA07-BR-014"]},
+    {"requirement_id":"PPIA07-AC-044","category":"accessibility_ai","requirement":"Blind gameplay never implies visual-only gameplay; accessibility output preserves permitted construction semantics without leaking suppressed interpreted effects.","traces":["spec:23","blind_profile:accessibility"],"reference_cases":["PPIA07-BR-014"]},
+    {"requirement_id":"PPIA07-AC-045","category":"accessibility_ai","requirement":"Player-facing AI in blind mode may help syntax/accessibility but cannot decode hidden effects or predict GM approval; GM AI remains advisory and cannot decide or commit.","traces":["spec:24","blind_profile:ai_boundary"],"reference_cases":["PPIA07-BR-013"]},
+
+    {"requirement_id":"PPIA07-AC-046","category":"traceability_handoffs","requirement":"All original 20 grammar cases, 34 expanded-rune cases, 16 cost/stability benchmarks, 16 workflows, 18 actions, 10 handoffs and 16 blind-play cases remain represented in the completion contract.","traces":["spec:27","coverage"],"reference_cases":["PPIA07-RC-001","PPIA07-ER-034","PPIA07-CSP-016","PPIA07-BR-016"]},
+    {"requirement_id":"PPIA07-AC-047","category":"traceability_handoffs","requirement":"The 385-spell source audit retains 10 schools, 7 roles, 14 effect families, 22 subtype families and zero vocabulary-level unroutable spell IDs.","traces":["spec:25","PPIA-07_SOURCE_SPELL_COVERAGE_AUDIT_v0.2.0.json"],"reference_cases":["PPIA07-ER-020"]},
+    {"requirement_id":"PPIA07-AC-048","category":"traceability_handoffs","requirement":"Completion does not activate application runtime, STAGE-A-A2, release, deployment, tester access, paid services, production credentials or unsupported canonical promotion.","traces":["spec:28","checkpoint"],"reference_cases":["PPIA07-BR-015"]}
+  ],
+  "coverage": {
+    "requirement_count": 48,
+    "category_count": 16,
+    "categories": ["authority_source","vocabulary","grammar","semantic_resolution","costs_limits","stability_risk","progression","crafting_inscription","counterplay","standard_play","blind_rune_play","gm_approval","permissions_visibility","recovery_concurrency","accessibility_ai","traceability_handoffs"],
+    "required_case_sets": {
+      "grammar_reference": {"count":20,"prefix":"PPIA07-RC-"},
+      "expanded_rune": {"count":34,"prefix":"PPIA07-ER-"},
+      "cost_stability_progression": {"count":16,"prefix":"PPIA07-CSP-"},
+      "blind_rune_play": {"count":16,"prefix":"PPIA07-BR-"}
+    },
+    "workflow_contract": {"workflows":16,"actions":18,"handoffs":10},
+    "rune_registry": {"operation":16,"essence":18,"total":34,"connectors":4},
+    "source_spell_audit": {"spells":385,"schools":10,"roles":7,"effect_families":14,"subtype_families":22,"unroutable_spell_ids":0}
+  },
+  "blocking_policy": {
+    "missing_requirement_allowed": false,
+    "missing_case_set_allowed": false,
+    "blind_player_effect_preview_allowed": false,
+    "silence_is_approval": false,
+    "gm_silent_expression_rewrite_allowed": false,
+    "universal_cost_or_failure_formula_allowed": false,
+    "permission_leak_allowed": false,
+    "duplicate_authoritative_effect_allowed": false,
+    "final_balance_owner": "PPIA-11"
+  }
+}
