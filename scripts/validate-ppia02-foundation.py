@@ -33,14 +33,13 @@ def main() -> int:
         "SD-1004",
         "SD-1007",
         "SD-1107",
-        "failed semantic-parse database",
+        "unsuccessful semantic-parse database",
         "does **not** contain a dedicated creature catalog",
     ]
     for phrase in required_inventory:
         if phrase not in inventory:
             raise SystemExit(f"inventory missing required boundary/surface: {phrase}")
 
-    # The source table contains exactly the 24 Creature-domain PDFs inventoried for PPIA-02.
     source_rows = [line for line in inventory.splitlines() if line.startswith("| `Creatures/") or line.startswith("| `Part 1/Creation/Player Creatures.PDF`")]
     if len(source_rows) != 24:
         raise SystemExit(f"expected 24 Creature-domain source rows; found {len(source_rows)}")
