@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "PPIA-08",
+  "status": "foundation_candidate",
+  "transition_merge": "ccdad24fc26ca853b92411ad1066eb6b7ec1f0f5",
+  "authority_order": [
+    "owner_decisions_and_current_repository",
+    "PPIA_program_backlog_and_checkpoints",
+    "MV-IA-F005_and_shared_internal_alpha_contracts",
+    "completed_PPIA_domain_contracts",
+    "retained_design_bibles",
+    "later_PPIA08_proposals"
+  ],
+  "canonical_repository_sources": [
+    {"id":"F005","path":"governance/application-planning/internal-alpha/feature-packets/MV-IA-F005_CAMPAIGN_SCENE_AND_SESSION_BUILDER.md","role":"Campaign/Scene/Session aggregates, launch snapshot, placements, visibility, map/media reference and nonvisual boundary"},
+    {"id":"F020","path":"governance/application-planning/internal-alpha/feature-packets/MV-IA-F020_PERMISSIONS_AND_HIDDEN_INFORMATION.md","role":"authorization, hidden-information and projection boundary"},
+    {"id":"F021","path":"governance/application-planning/internal-alpha/feature-packets/MV-IA-F021_AUTOSAVE_RECONNECT_RECOVERY_AND_BOUNDED_OFFLINE_USE.md","role":"autosave, expected-version, operation identity, reconnect and bounded offline boundary"},
+    {"id":"F012","path":"governance/application-planning/internal-alpha/feature-packets/MV-IA-F012_ENCOUNTER_BUILDER_AND_BALANCE_LAB.md","role":"Encounter definition/balance ownership and placement handoff"},
+    {"id":"PPIA12","path":"governance/application-planning/parallel-preimplementation/PPIA-12_WORLD_SETTING_AUTHORING_EXPERIENCE_SPEC_v1.0.0.md","role":"reusable Setting Definition versus Campaign-local state boundary"},
+    {"id":"PPIA02","path":"governance/application-planning/parallel-preimplementation/PPIA-02_CREATURE_NPC_EXPERIENCE_SPEC_v1.0.0.md","role":"Creature/NPC ownership boundary"},
+    {"id":"PPIA03","path":"governance/application-planning/parallel-preimplementation/PPIA-03_ITEMS_EQUIPMENT_INVENTORY_EXPERIENCE_SPEC_v1.0.0.md","role":"Item/Inventory ownership boundary"},
+    {"id":"PPIA04","path":"governance/application-planning/parallel-preimplementation/PPIA-04_VEHICLE_MECHA_STARSHIP_EXPERIENCE_SPEC_v1.0.0.md","role":"Vehicle ownership boundary"},
+    {"id":"PPIA05","path":"governance/application-planning/parallel-preimplementation/PPIA-05_SPECIES_FORMS_BIOLOGY_EXPERIENCE_SPEC_v1.0.0.md","role":"Species/Form ownership boundary"}
+  ],
+  "retained_supporting_design_sources": [
+    {"source":"SCREEN_DESIGN_BIBLE.md","sections":["SD-302 Battle Map","SD-1003 Scene Builder","SD-1004 Encounter Builder","Shared Behaviors","Accessibility"],"supported_intent":["grid/gridless","fog/terrain/hazards/templates/measurement","map pan/zoom/select/inspect","Scene canvas/map/actors/triggers/validation/inspector","layer management","keyboard/screen-reader/high-contrast/touch authoring"]},
+    {"source":"UI_DESIGN_BIBLE.md","sections":["GM Authoring and Content Management","Scene Builder"],"supported_intent":["Scene hierarchy","maps","notes","objectives","environmental effects","triggers","transitions","Scene canvas","Inspector","asset browser","validation panel"]},
+    {"source":"FEATURE_BIBLE.md","sections":["Exploration Discovery","Environmental Systems","Encounter Object"],"supported_intent":["maps","hazards","hidden discoveries","Dungeon discovery type","stable encounter IDs","trigger/environment/participant/reward/risk/provenance fields"]}
+  ],
+  "owner_directed_extension": {
+    "date": "2026-08-11",
+    "blocking": true,
+    "requirements": [
+      "GM map image upload",
+      "square-grid scale/cell-size calibration",
+      "grid pan/origin-offset alignment over the image",
+      "versioned calibration lock and recalibration",
+      "cell/area-addressable Scene content assignments",
+      "Item/Hazard/Encounter and other governed stable-reference placements",
+      "basic dungeon-map construction kit"
+    ]
+  },
+  "source_boundary_findings": [
+    "MV-IA-F005 already permits map/media references and requires nonvisual alternatives but intentionally deferred full map authoring in its bounded alpha slice.",
+    "Owner direction authorizes PPIA-08 to close that deferred map-authoring gap without changing F005 authority/privacy/recovery/snapshot semantics.",
+    "Retained design bibles support grid/gridless battle maps, map interactions, Scene Builder maps/layers/triggers and Dungeon as a discovery type.",
+    "No retained source defines the exact uploaded-image square-grid calibration transform, cell addressing schema or dungeon primitive schema; those are governed PPIA-08 design rather than recovered source canon."
+  ]
+}
