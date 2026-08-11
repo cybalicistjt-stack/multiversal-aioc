@@ -1,39 +1,65 @@
 # PPIA-02 Completion Candidate
 
 **Work item:** PPIA-02 — Creature & NPC Experience  
-**State:** READY FOR FINAL EXACT-HEAD VALIDATION — NOT COMPLETE UNTIL MERGED  
-**Branch:** `governance/ppia-02-creature-npc-experience`  
-**Pull request:** #217
+**State:** PR #217 MERGED — REQUIRED R1 RECOVERY AMENDMENT PENDING EXACT-HEAD VALIDATION/MERGE  
+**Original completion PR:** #217  
+**Original completion merge:** `f6568e77de2790e9012a95942435c8d88b2e1dd5`  
+**Amendment branch:** `governance/ppia-02-r1-completion-amendment`
 
 ## Completion-gate requirement
 
-PPIA-02 must deliver an implementation-ready Creature/NPC experience packet with permission-safe presentation, authoring, encounter, variant, relationship, asset, transformation, accessibility, and source-grounded reference contracts.
+PPIA-02 delivers an implementation-ready Creature/NPC experience packet with permission-safe presentation, authoring, encounter, variant, relationship, asset, transformation, accessibility, and source-grounded reference contracts.
 
-The branch now contains all required design artifacts.
+PR #217 merged the full Creature/NPC design packet. Immediately before/around that closure, owner-supplied R1 evidence became available and materially improved the provenance boundary. This amendment is therefore required before the PPIA-02 continuity checkpoint advances to the next tranche.
 
 ## Source and authority package
 
-- `PPIA-02_SOURCE_AND_DESIGN_INVENTORY.md`
-- 23 dedicated Creature PDFs + `Player Creatures.PDF` inventoried with SHA-256 provenance.
-- Representative source review covers Creature Types, Havalaea Creatures, Dragons, and Player Creatures.
-- The later 8E-009 CSV-first registry is respected for its own domains but is not falsely treated as a dedicated Creature catalog.
-- The unsuccessful 487-object semantic-parse database is explicitly excluded from Creature/NPC content authority.
+The merged PPIA-02 packet includes:
+
+- `PPIA-02_SOURCE_AND_DESIGN_INVENTORY.md`;
+- 23 dedicated Creature PDFs + `Player Creatures.PDF` inventoried with SHA-256 provenance;
+- representative source review for Creature Types, Havalaea Creatures, Dragons, and Player Creatures;
+- explicit exclusion of the unsuccessful 487-object semantic-parse database from Creature/NPC content authority;
+- respect for the later 8E-009 CSV-first registry without falsely treating it as a dedicated Creature catalog.
+
+## Recovered 8E-008G-R1 source accountability
+
+Owner-supplied `This.zip` recovered the substantive 8E-008G-R1 closure outputs and was canonically recorded in merge `d271d1e7ec453cd153a7bf5768b3df837ba677a9`.
+
+Recovered R1 result:
+
+- 101 / 101 acceptance checks PASS;
+- 7,144 / 7,144 structural candidates accounted;
+- 2,766 formerly unbound candidates closed;
+- 0 unbound source sections remain;
+- 158,189 authoritative records provenance-accounted;
+- 1,671 candidates formally deferred rather than silently excluded.
+
+R1 passes source accountability, not Public Canon completeness. Formal deferral is neither canonical promotion nor exclusion.
+
+The recovered R1 register contains **93 formally deferred creature candidates**. PPIA-02 retains their exact identity/source/page/heading subset in `PPIA-02_R1_DEFERRED_CREATURE_CANDIDATES.csv` and governs their experience in `PPIA-02_R1_PROVENANCE_AND_DEFERRED_CREATURE_ADDENDUM_v0.1.0.json`.
+
+A formally deferred creature candidate may be inspected as authorized source-recovery/provenance evidence but:
+
+- is not a canonical Creature/NPC Definition;
+- is excluded from ordinary canonical Library results unless a source-recovery/deferred filter is explicitly requested and authorized;
+- cannot be quick-added or launched as a Scene/Encounter participant without a governed usable Definition or Campaign-local authored object;
+- cannot receive an invented stat block, CR, ecology, relationships, or mechanics merely to make it usable;
+- cannot be auto-bound to a similarly named existing Creature/NPC;
+- remains a later convert/bind/exclude/supersede/waive decision with provenance.
+
+**This historical recovery request is now resolved.** No further upload of `Aaac (1).zip` or the historically named R1 wrapper is required to complete PPIA-02.
 
 ## Experience architecture
 
-- `PPIA-02_EXPERIENCE_TAXONOMY_v0.1.0.json`
-  - 7 object/experience layers;
-  - 8 presentation profiles;
-  - 10 experience contexts;
-  - 13 Inspector section families;
-  - explicit no-A2/no-runtime-mutation boundaries.
+The merged packet retains:
 
-- `PPIA-02_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json`
-  - permission-before-serialization model;
-  - Player/GM/Assistant-GM/Creator-Owner-Admin/service-AI projection boundaries;
-  - profile section ordering and context overlays;
-  - responsive/accessibility behavior;
-  - source/recommendation/conflict/provenance handling.
+- 7 object/experience layers;
+- 8 presentation profiles;
+- 10 experience contexts;
+- 13 Inspector section families;
+- permission-before-serialization projections;
+- explicit no-A2/no-runtime-mutation boundaries.
 
 ## Workflow package
 
@@ -50,86 +76,43 @@ The branch now contains all required design artifacts.
 9. Summon / minion / spawn
 10. Playable creature conversion
 
-Each workflow identifies entry points, preconditions, actions, outputs, owning mutation surface, revalidation, privacy, recovery, accessibility, and identity boundaries. Nine explicit cross-workflow handoff contracts prevent provisional/read-only surfaces from becoming authoritative mutation paths.
+The R1 addendum does not create an eleventh mutation workflow. Source-recovery inspection remains non-authoritative; any later conversion/binding action must use a separate governed owning workflow and preserve provenance.
 
 ## Integrated specification
 
-`PPIA-02_CREATURE_NPC_EXPERIENCE_SPEC_v1.0.0.md` consolidates:
-
-- definitive Creature/NPC presentation hierarchy;
-- ordinary creature, NPC persona, sentient hybrid, swarm/group, summon/minion, stage/variant/form, type-modifier, and playable-conversion behavior;
-- Definition/placement/live-instance distinction;
-- GM Manager and authoring rules;
-- quick-add and placement rules;
-- Encounter preparation and launch boundary;
-- live runtime action/reconnect boundary;
-- named NPC versus generic creature behavior;
-- ecology/bestiary/discovery;
-- relationships/factions/investigation/social use;
-- equipment/inventory/loot linkage;
-- variants/forms/transformations;
-- summons/minions/spawns;
-- playable conversion;
-- search/filter/compare/quick actions;
-- responsive/accessibility;
-- recovery/offline;
-- provenance/conflict;
-- downstream dependency routing.
+`PPIA-02_CREATURE_NPC_EXPERIENCE_SPEC_v1.0.0.md` remains the primary integrated specification. The R1 addendum supplements its source, Inspector, provenance, and completion sections with the explicit `formally_deferred_source_candidate` state and no-silent-promotion rule.
 
 ## Reference cases
 
-`PPIA-02_REFERENCE_CASES_v0.1.0.json` now contains **13** cases:
+The merged packet retains 13 governed reference cases:
 
-- **7 source-grounded** cases:
-  - Sapcrawl Varnet ordinary bestiary/Behavior;
-  - Mossling Glider movement/reaction;
-  - Fire-Type Animals type-modifier semantics;
-  - Dragon age/power stage chain;
-  - Dragon sentience spectrum;
-  - monster-to-playable-species conversion;
-  - Havalaean Sapient Animal conversion.
+- 7 source-grounded cases;
+- 6 explicitly noncanonical synthetic QA cases.
 
-- **6 explicitly noncanonical synthetic QA** cases:
-  - named NPC hidden motive/testimony/inventory;
-  - hidden Scene placement/reinforcement privacy;
-  - summon/minion lifecycle/controller;
-  - swarm/group projection;
-  - incomplete/conflicted source record;
-  - live alternate-form transformation/privacy/reconnect.
-
-Synthetic QA cases are not lore/canonical content.
+The 93 recovered R1 creature candidates are **not** converted into reference-case lore, synthetic creatures, or canonical Definitions. They remain a provenance/source-recovery dataset.
 
 ## Acceptance and traceability
 
-`PPIA-02_ACCEPTANCE_TRACEABILITY_MATRIX_v0.1.0.json` defines **36 requirements** with upstream/source, contract, reference-case, and verification traceability.
+The existing 36 requirements in 16 categories remain unchanged. The R1 addendum maps formal-deferral behavior to existing requirements:
 
-`PPIA-02_ACCEPTANCE_TRACEABILITY_MATRIX_v0.1.1.json` corrects the original summary category count from 15 to the effective **16 categories** without changing the 36 requirement bodies.
+- `PPIA02-REQ-003` — name similarity cannot create identity/merge;
+- `PPIA02-REQ-007` — privacy filtering occurs before serialization and derived counts;
+- `PPIA02-REQ-034` — authorized provenance views distinguish source/content states;
+- `PPIA02-REQ-035` — incomplete/deferred evidence remains inspectable without invented replacement fields.
 
-The sixteen categories are:
+The completion validator additionally verifies:
 
-1. identity
-2. presentation
-3. privacy
-4. authoring
-5. Scene placement
-6. encounter
-7. runtime
-8. social/investigation
-9. ecology/bestiary
-10. assets
-11. variants/forms
-12. summons
-13. playable conversion
-14. accessibility
-15. provenance
-16. recovery
+- canonical R1 merge/hash and PASS result;
+- the 93-candidate subset's SHA-256, row count, unique IDs, and source distribution;
+- no-silent-promotion behavior;
+- source-recovery privacy/authoring/Scene/Encounter boundaries;
+- the fact that the earlier optional owner upload request has been resolved.
 
 ## Key non-negotiable outcomes
 
 - Hidden Creature/NPC existence and derived cardinality never reach unauthorized projections.
 - Definition, placement, and live-instance identities remain separate.
 - Presentation profile never grants authority or creates a canonical type.
-- Linked governed mechanics remain references to owning objects.
 - Campaign-local authoring never becomes source truth silently.
 - Encounter balance output remains advisory.
 - Runtime state never writes back to reusable Definitions.
@@ -138,21 +121,9 @@ The sixteen categories are:
 - Summons preserve source/placement/instance/controller/master distinctions.
 - Playable conversion produces Character/species draft/provenance, not identity equivalence.
 - Incomplete/conflicted sources remain usable without invented replacement facts.
-- Dense stat presentation has keyboard, screen-reader, touch, high-zoom, reduced-motion, and textual comparison alternatives.
+- Formally deferred R1 creature candidates remain source-recovery/provenance evidence until a separate governed disposition creates/binds/excludes/supersedes/waives them.
 - PPIA-02 does not activate A2, implement runtime behavior, release, deploy, or promote unsupported source content.
 
-## Validation gates
+## Closure condition
 
-The branch includes:
-
-- `validate-ppia02-foundation.py`
-- `validate-ppia02-experience-contracts.py`
-- `validate-ppia02-completion-contracts.py`
-- `validate-ppia-02-foundation.yml`
-- `validate-ppia-02-completion.yml`
-
-PPIA-02 must not be declared complete unless the final candidate head passes all applicable exact-head repository gates and PR #217 merges canonically.
-
-## Optional owner-side provenance recovery
-
-Not blocking PPIA-02: if the owner has `Aaac (1).zip` or the exact package `Multiversal_8E-008G-R1_Source_Boundary_and_Provenance_Closure_v0.1.0`, upload it. It may close the old historical 8E-008G provenance question. It is not needed to validate the current Creature/NPC experience package.
+PR #217 is already merged. PPIA-02 continuity may advance to PPIA-03 only after this R1 amendment passes all applicable exact-head gates and is merged canonically, followed by a completion checkpoint/readback that cites both the original PPIA-02 merge and the R1 amendment merge.
