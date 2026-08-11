@@ -1,6 +1,6 @@
 {
   "format": "multiversal-ppia01-unresolved-source-register",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "work_item": "PPIA-01",
   "status": "active_bounded_unresolved_register",
   "authority": {
@@ -12,38 +12,28 @@
     "standing_owner_delegation": "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json"
   },
   "summary": {
-    "current_registry_owner_eye_records": 1,
+    "current_registry_owner_eye_records": 0,
+    "owner_resolved_authored_completion_records": 1,
     "current_registry_source_unspecified_capacity_records": 7,
     "current_registry_source_reference_only_records": 3,
     "historical_provenance_audit_questions": 1,
     "current_registry_explicit_high_priority_gaps_without_closure": 0
   },
-  "records": [
+  "owner_resolutions": [
     {
       "id": "PPIA-01-USR-001",
-      "kind": "authored_completion_source_too_thin",
-      "priority": "P0-owner-eye-useful",
-      "blocking": false,
-      "dataset": "expanded_symbiotes_and_cybernetics_all_genres.csv",
-      "source_row": 9,
       "name": "Quantum Weaver",
-      "source_pdf": "Symbiotes 11-9-24(3).PDF",
-      "source_support": "The retained source supports only that Quantum Weaver feeds on energy fields and needs exposure to power sources.",
-      "unsupported_as_source_fact": [
-        "60-ft energy sensing",
-        "3 stored energy charges",
-        "1d6 energy discharge per charge",
-        "30-ft discharge range",
-        "action activation",
-        "Conduit Path / Probability Path progression",
-        "5/10/15 SP unlocks",
-        "uncontrolled drain/random discharge drawback",
-        "1.5 lb integrated mass"
-      ],
-      "disposition": "Retain existing completion only as explicitly non-source-authored and reversible under standing owner delegation; route mechanics to PPIA-11, PPIA-05, and PPIA-03.",
-      "owner_action": "Optional. If another controlling Quantum Weaver source exists, identify or supply it; otherwise no owner action is required.",
-      "traceability": ["PPIA-03", "PPIA-05", "PPIA-11", "STAGE-A-A2", "SD-1007", "SD-1107"]
-    },
+      "resolved_at": "2026-08-11",
+      "resolution": "Owner approved the existing governed recommended mechanics as authored Multiversal completion while preserving the boundary that only energy-field feeding and power-source dependence are recovered source facts.",
+      "evidence": "PPIA-01_OWNER_EYE_QUANTUM_WEAVER.md",
+      "reopen_only_on": [
+        "contradictory controlling source recovery",
+        "later symbiote-family contract inconsistency",
+        "deliberate PPIA-11 balance change"
+      ]
+    }
+  ],
+  "records": [
     {
       "id": "PPIA-01-USR-002",
       "kind": "source_unspecified_capacity_group",
@@ -116,11 +106,14 @@
         "inventory_disposition": "PRESERVED / REGISTER_AND_REUSE_AS_PROJECT_ASSET",
         "inventory_state": "existing-package-not-yet-indexed-in-aioc",
         "bytes_available_in_current_project_sources": false,
-        "bytes_found_in_current_repository": false
+        "bytes_found_in_current_repository": false,
+        "owner_resupplied_audit_filename": "8E008G_Source_Audit.zip",
+        "owner_resupplied_audit_sha256": "4a98058b03d3ced252f01dac3026997de2dfd0b064be6a691debb93a0c485fff",
+        "owner_resupplied_audit_finding": "Exact match to the original 8E-008G audit package. It contains the 8E-008G-R1 closure plan and the original BLOCKED audit evidence, but not the later R1 closure package/results."
       },
       "later_authority": "The current roadmap declares 8E-009 Canonical Object Template and CSV-First Program complete with 20 datasets / 19,199 promoted rows / zero unprocessed rows. The current full-registry contract declares Csv.zip the primary structured source and validates all 19,199 CSV rows.",
-      "disposition": "Do not reinterpret the historical 2,766 candidates as 2,766 current missing mechanics. Historical continuity evidence proves an R1 closure package existed, but its exact bytes and final validation result are absent from the current repository/project-source set. Preserve this as a historical provenance-closure question separate from the current CSV content-quality gap count.",
-      "owner_action": "If the owner still has `Aaac (1).zip` or a ZIP containing the exact R1 package name, supplying it would allow checksum/content inspection and may close this historical provenance question. This does not block current PPIA-01 CSV quality work.",
+      "disposition": "Do not reinterpret the historical 2,766 candidates as 2,766 current missing mechanics. The owner-resupplied audit package verifies the original blocked audit and R1 plan, but does not contain the later R1 closure results. Preserve this as a historical provenance-closure question separate from the current CSV content-quality gap count.",
+      "owner_action": "Do not resupply the same `8E008G_Source_Audit.zip`; it has now been verified. Only `Aaac (1).zip` containing the exact R1 package, or the exact `Multiversal_8E-008G-R1_Source_Boundary_and_Provenance_Closure_v0.1.0` package itself, would materially advance this historical question. This remains nonblocking.",
       "traceability": ["PPIA-01", "STAGE-A-A2", "SD-1107"]
     }
   ],
