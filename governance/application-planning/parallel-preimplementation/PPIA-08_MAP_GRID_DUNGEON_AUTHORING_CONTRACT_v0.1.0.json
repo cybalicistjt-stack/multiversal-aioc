@@ -1,0 +1,93 @@
+{
+  "schema_version":"0.1.0",
+  "work_item_id":"PPIA-08",
+  "status":"foundation_candidate",
+  "owner_requirement_blocking":true,
+  "map_asset_contract":{
+    "asset_is_separate_from_calibration":true,
+    "required_identity_fields":["mapMediaReferenceId","assetVersion","provenance","pixelWidth","pixelHeight"],
+    "destructive_rewrite_for_grid_alignment":false,
+    "replacement_requires_new_asset_or_version":true
+  },
+  "coordinate_modes":["square","gridless"],
+  "square_grid_calibration":{
+    "required_fields":["calibrationId","version","mapMediaReferenceId","cellSizePx","originOffsetXPx","originOffsetYPx","locked","expected_version"],
+    "meaning":{
+      "cellSizePx":"square side length in source-image pixel coordinate space",
+      "originOffsetXPx":"horizontal translation from image origin to grid origin",
+      "originOffsetYPx":"vertical translation from image origin to grid origin",
+      "locked":"whether ordinary placement editing may rely on this calibration version"
+    },
+    "gm_interactions":["adjust cell size/scale","pan/translate grid overlay horizontally","pan/translate grid overlay vertically","preview alignment","lock calibration","reopen/revise as a new version"],
+    "camera_view_state_is_not_calibration_state":true,
+    "automatic_scale_inference_required":false,
+    "rotation_required":false
+  },
+  "cell_addressing":{
+    "canonical_coordinate":"integer column,row under calibrationId+version",
+    "optional_display_label":"A1-style or Campaign-configured label",
+    "cell_identity_requires_calibration_version":true,
+    "areas_may_span_multiple_cells":true,
+    "zones_may_be_named":true,
+    "gridless_semantic_locations_supported":true
+  },
+  "placement_record":{
+    "required_fields":["placementId","sceneId","placementKind","owningObjectRef","locationRef","visibilityState","version","provenance"],
+    "location_ref_types":["cell","cell-area","named-zone","gridless-location"],
+    "placement_kinds":["item","hazard","encounter","creature-npc","vehicle","objective","trigger","note","environment-feature","door-feature","transition-marker","other-governed-scene-content"],
+    "owning_object_ref_fields":["ownerDomain","objectId","objectVersion"],
+    "copies_source_definition":false,
+    "multiple_placements_may_reference_same_source_definition":true,
+    "large_object_may_reference_area_without_duplicate_objects":true
+  },
+  "hidden_information":{
+    "filter_before_counts":true,
+    "filter_before_search_autocomplete":true,
+    "filter_before_map_layer_serialization":true,
+    "filter_before_exports_diagnostics_ai":true,
+    "gm_private_placement_supported":true,
+    "governed_reveal_state_supported":true
+  },
+  "launch_snapshot":{
+    "freezes":["mapMediaReferenceId+assetVersion","calibrationId+version","placement IDs+versions","reveal/visibility projection policy","Scene version"],
+    "post_launch_recalibration_silently_moves_active_session":false,
+    "required_change_path":"new launch snapshot or governed live-session amendment"
+  },
+  "dungeon_construction_kit":{
+    "purpose":"basic Scene map authoring without external map image",
+    "primitive_families":["room-floor-region","corridor-path-region","wall-segment","door-opening","terrain-feature-region","stairs-portal-transition-marker","reusable-tile-stamp"],
+    "shared_operations":["create","select","move","resize where primitive permits","duplicate","remove","undo","redo","snap where grid mode permits"],
+    "output":"Scene-owned dungeon geometry layer with renderable and semantic/nonvisual projections",
+    "procedural_generator_required":false,
+    "automatic_collision_cover_los_rules":false,
+    "advanced_dynamic_lighting_required":false,
+    "advanced_fog_simulation_required":false
+  },
+  "recovery":{
+    "authoritative_mutations_require_expected_version":true,
+    "authoritative_mutations_require_operation_id":true,
+    "ambiguous_response_requires_status_lookup_before_retry":true,
+    "recalibration_preserves_prior_version_for_recovery_history":true,
+    "duplicate_retry_may_duplicate_placement":false
+  },
+  "accessibility":{
+    "map_is_only_authoritative_representation":false,
+    "cell_and_zone_semantic_list_required":true,
+    "keyboard_cell_navigation_required":true,
+    "screen_reader_coordinate_and_content_summary_required":true,
+    "touch_alternative_to_drag_required":true,
+    "high_zoom_reflow_inspector_required":true,
+    "color_only_hidden_or_hazard_state_forbidden":true
+  },
+  "ownership_boundaries":{
+    "PPIA-02":"Creature/NPC Definitions and variants",
+    "PPIA-03":"Item/Inventory Definitions and instances",
+    "PPIA-04":"Vehicle Definitions and instances",
+    "PPIA-05":"Species/Form Definitions",
+    "PPIA-12":"Reusable Setting Definitions and setting-local rules",
+    "MV-IA-F012_PPIA-11":"Encounter definition, simulation and balance",
+    "MV-IA-F020":"permissions and hidden information",
+    "MV-IA-F021":"recovery/idempotency",
+    "PPIA-08":"Campaign/Scene/Session composition, placement, map calibration and dungeon authoring geometry"
+  }
+}

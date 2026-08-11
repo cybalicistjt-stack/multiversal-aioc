@@ -1,0 +1,58 @@
+{
+  "schema_version":"0.1.0",
+  "work_item_id":"PPIA-08",
+  "status":"foundation_candidate",
+  "identity_state_layers":[
+    {"id":"campaign-definition-and-policy","purpose":"Campaign identity, policy, memberships, enabled content and authoring lifecycle."},
+    {"id":"membership-role-and-character-control","purpose":"GM/assistant/player/observer authority, delegation and controlled actor references."},
+    {"id":"scene-definition-and-hierarchy","purpose":"Scene identity, parent/child structure, ordering, reusable Scene composition and lifecycle."},
+    {"id":"scene-template-and-branching","purpose":"Templates, prerequisites, branch conditions, alternate Scene paths and outcome links."},
+    {"id":"reusable-source-reference","purpose":"Stable references to reusable Setting, Creature/NPC, Item, Vehicle, Species/Form, Ability and Encounter definitions."},
+    {"id":"campaign-local-placement-and-override","purpose":"Campaign-local placement, state, labels and permitted overrides without rewriting source Definitions."},
+    {"id":"map-media-asset-reference","purpose":"Uploaded or linked map/media asset identity, versions, dimensions, provenance and authorized projections."},
+    {"id":"grid-calibration-and-coordinate-transform","purpose":"Grid kind, square cell size/scale, X/Y origin offset, calibration version, lock/recalibration and image-relative transform."},
+    {"id":"cell-area-zone-addressing","purpose":"Stable square-cell coordinates, multi-cell areas, named zones and gridless semantic locations."},
+    {"id":"map-content-placement-and-layering","purpose":"Cell/area/zone placement references, map layers, z/order/presentation metadata, hidden state and selection semantics."},
+    {"id":"dungeon-geometry-and-construction","purpose":"Basic rooms, corridors, floors, walls, doors/openings, terrain/features, stairs/portals and reusable tile/stamp authoring."},
+    {"id":"hidden-reveal-and-knowledge-state","purpose":"GM-only, player-known, discovered, concealed and reveal-state projections across Scene/map content."},
+    {"id":"encounter-objective-trigger-and-event-links","purpose":"Encounter references, objectives, triggers, hazards, scripted hooks and durable event linkages without absorbing owning-domain rules."},
+    {"id":"preparation-launch-snapshot-and-session-binding","purpose":"Readiness validation, exact launch snapshot, frozen map/calibration/placement versions and Session binding."},
+    {"id":"live-session-amendment-and-post-session-history","purpose":"Governed live amendments, current Session state, post-session outcomes, history and reusable-definition isolation."},
+    {"id":"permission-provenance-recovery-accessibility","purpose":"Authorization-before-resolution, source/authoring provenance, expected-version/idempotency/recovery, and semantic nonvisual authoring."}
+  ],
+  "presentation_profiles":[
+    "campaign-overview",
+    "campaign-policy-and-membership",
+    "scene-outline-and-branching",
+    "scene-builder",
+    "map-asset-and-grid-calibration",
+    "grid-cell-area-zone-inspector",
+    "placement-layer-browser",
+    "dungeon-construction-kit",
+    "hidden-reveal-preview",
+    "launch-readiness-and-snapshot",
+    "live-session-control-and-amendment",
+    "history-recovery-and-accessible-linear-view"
+  ],
+  "map_coordinate_invariants":[
+    "square and gridless are the required initial coordinate modes",
+    "grid overlay alignment state is distinct from camera pan/zoom view state",
+    "image asset bytes are not rewritten by calibration",
+    "square cells use stable integer column,row coordinates under a versioned calibration",
+    "multi-cell areas reference coordinate sets or governed region geometry rather than duplicating placed source objects",
+    "gridless Scenes retain named semantic locations/zones and nonvisual placement descriptions"
+  ],
+  "foundation_non_assumptions":{
+    "every_scene_has_map":false,
+    "every_map_has_grid":false,
+    "hex_required_now":false,
+    "fixed_distance_per_square_invented":false,
+    "image_scale_inferred_without_calibration":false,
+    "artwork_implies_collision_los_cover":false,
+    "placement_copies_source_definition":false,
+    "encounter_balance_owned_by_ppia08":false,
+    "hidden_placements_in_unauthorized_aggregates":false,
+    "dungeon_geometry_is_tactical_rules_engine":false,
+    "ai_output_auto_commits_campaign_state":false
+  }
+}
