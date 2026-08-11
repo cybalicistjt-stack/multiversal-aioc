@@ -9,7 +9,7 @@
 
 PPIA-02 must deliver an implementation-ready Creature/NPC experience packet with permission-safe presentation, authoring, encounter, variant, relationship, asset, transformation, accessibility, and source-grounded reference contracts.
 
-The branch now contains all required design artifacts.
+The branch contains the required design artifacts. Completion still requires exact-head validation and canonical merge.
 
 ## Source and authority package
 
@@ -19,21 +19,44 @@ The branch now contains all required design artifacts.
 - The later 8E-009 CSV-first registry is respected for its own domains but is not falsely treated as a dedicated Creature catalog.
 - The unsuccessful 487-object semantic-parse database is explicitly excluded from Creature/NPC content authority.
 
+### Recovered 8E-008G-R1 source accountability
+
+Owner-supplied `This.zip` recovered the substantive 8E-008G-R1 closure outputs and was canonically recorded in merge `d271d1e7ec453cd153a7bf5768b3df837ba677a9`.
+
+Recovered R1 result:
+
+- 101 / 101 acceptance checks PASS;
+- 7,144 / 7,144 structural candidates accounted;
+- 2,766 formerly unbound candidates closed;
+- 0 unbound source sections remain;
+- 158,189 authoritative records provenance-accounted;
+- 1,671 candidates formally deferred rather than silently excluded.
+
+R1 passes source accountability, not Public Canon completeness. Formal deferral is neither canonical promotion nor exclusion.
+
+The recovered R1 register contains **93 formally deferred creature candidates**. PPIA-02 retains their exact identity/source/page/heading subset in `PPIA-02_R1_DEFERRED_CREATURE_CANDIDATES.csv` and governs their experience in `PPIA-02_R1_PROVENANCE_AND_DEFERRED_CREATURE_ADDENDUM_v0.1.0.json`.
+
+A formally deferred creature candidate may be inspected as authorized source-recovery/provenance evidence but is not a canonical Creature/NPC Definition, is not included in ordinary canonical Library results, cannot be quick-added/launched as a participant without a governed usable Definition or Campaign-local authored object, and receives no invented stat block or mechanics merely to make it usable.
+
+**This historical recovery request is now resolved.** No further upload of `Aaac (1).zip` or the historically named R1 wrapper is required to complete PPIA-02.
+
 ## Experience architecture
 
-- `PPIA-02_EXPERIENCE_TAXONOMY_v0.1.0.json`
-  - 7 object/experience layers;
-  - 8 presentation profiles;
-  - 10 experience contexts;
-  - 13 Inspector section families;
-  - explicit no-A2/no-runtime-mutation boundaries.
+`PPIA-02_EXPERIENCE_TAXONOMY_v0.1.0.json` defines:
 
-- `PPIA-02_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json`
-  - permission-before-serialization model;
-  - Player/GM/Assistant-GM/Creator-Owner-Admin/service-AI projection boundaries;
-  - profile section ordering and context overlays;
-  - responsive/accessibility behavior;
-  - source/recommendation/conflict/provenance handling.
+- 7 object/experience layers;
+- 8 presentation profiles;
+- 10 experience contexts;
+- 13 Inspector section families;
+- explicit no-A2/no-runtime-mutation boundaries.
+
+`PPIA-02_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json` defines:
+
+- permission-before-serialization behavior;
+- Player/GM/Assistant-GM/Creator-Owner-Admin/service-AI projection boundaries;
+- profile section ordering and context overlays;
+- responsive/accessibility behavior;
+- source/recommendation/conflict/provenance handling.
 
 ## Workflow package
 
@@ -76,53 +99,49 @@ Each workflow identifies entry points, preconditions, actions, outputs, owning m
 - provenance/conflict;
 - downstream dependency routing.
 
+The R1 provenance/deferred-creature addendum supplements the integrated specification's source, Inspector, provenance, and completion sections with the explicit `formally_deferred_source_candidate` state and no-silent-promotion rule.
+
 ## Reference cases
 
-`PPIA-02_REFERENCE_CASES_v0.1.0.json` now contains **13** cases:
+`PPIA-02_REFERENCE_CASES_v0.1.0.json` contains **13** cases.
 
-- **7 source-grounded** cases:
-  - Sapcrawl Varnet ordinary bestiary/Behavior;
-  - Mossling Glider movement/reaction;
-  - Fire-Type Animals type-modifier semantics;
-  - Dragon age/power stage chain;
-  - Dragon sentience spectrum;
-  - monster-to-playable-species conversion;
-  - Havalaean Sapient Animal conversion.
+Seven source-grounded cases:
 
-- **6 explicitly noncanonical synthetic QA** cases:
-  - named NPC hidden motive/testimony/inventory;
-  - hidden Scene placement/reinforcement privacy;
-  - summon/minion lifecycle/controller;
-  - swarm/group projection;
-  - incomplete/conflicted source record;
-  - live alternate-form transformation/privacy/reconnect.
+- Sapcrawl Varnet ordinary bestiary/Behavior;
+- Mossling Glider movement/reaction;
+- Fire-Type Animals type-modifier semantics;
+- Dragon age/power stage chain;
+- Dragon sentience spectrum;
+- monster-to-playable-species conversion;
+- Havalaean Sapient Animal conversion.
+
+Six explicitly noncanonical synthetic QA cases:
+
+- named NPC hidden motive/testimony/inventory;
+- hidden Scene placement/reinforcement privacy;
+- summon/minion lifecycle/controller;
+- swarm/group projection;
+- incomplete/conflicted source record;
+- live alternate-form transformation/privacy/reconnect.
 
 Synthetic QA cases are not lore/canonical content.
 
+The recovered 93 R1 creature candidates are **not** added as synthetic or canonical reference creatures. They are a provenance/source-recovery dataset governed by existing provenance requirements plus the R1 addendum.
+
 ## Acceptance and traceability
 
-`PPIA-02_ACCEPTANCE_TRACEABILITY_MATRIX_v0.1.0.json` defines **36 requirements** with upstream/source, contract, reference-case, and verification traceability.
+`PPIA-02_ACCEPTANCE_TRACEABILITY_MATRIX_v0.1.0.json` defines **36 requirements**.
 
-`PPIA-02_ACCEPTANCE_TRACEABILITY_MATRIX_v0.1.1.json` corrects the original summary category count from 15 to the effective **16 categories** without changing the 36 requirement bodies.
+`PPIA-02_ACCEPTANCE_TRACEABILITY_MATRIX_v0.1.1.json` corrects the original summary category count to the effective **16 categories** without changing the 36 requirement bodies.
 
-The sixteen categories are:
+The R1 addendum maps formal-deferral behavior to existing requirements:
 
-1. identity
-2. presentation
-3. privacy
-4. authoring
-5. Scene placement
-6. encounter
-7. runtime
-8. social/investigation
-9. ecology/bestiary
-10. assets
-11. variants/forms
-12. summons
-13. playable conversion
-14. accessibility
-15. provenance
-16. recovery
+- PPIA02-REQ-003 — no identity/merge from name similarity;
+- PPIA02-REQ-007 — privacy filtering before serialization and derived counts;
+- PPIA02-REQ-034 — provenance state distinctions;
+- PPIA02-REQ-035 — incomplete/deferred evidence remains usable without invented replacement fields.
+
+The sixteen categories remain identity, presentation, privacy, authoring, Scene placement, encounter, runtime, social/investigation, ecology/bestiary, assets, variants/forms, summons, playable conversion, accessibility, provenance, and recovery.
 
 ## Key non-negotiable outcomes
 
@@ -138,6 +157,7 @@ The sixteen categories are:
 - Summons preserve source/placement/instance/controller/master distinctions.
 - Playable conversion produces Character/species draft/provenance, not identity equivalence.
 - Incomplete/conflicted sources remain usable without invented replacement facts.
+- Formally deferred R1 creature candidates remain source-recovery/provenance evidence until a separate governed disposition creates/binds/excludes/supersedes/waives them.
 - Dense stat presentation has keyboard, screen-reader, touch, high-zoom, reduced-motion, and textual comparison alternatives.
 - PPIA-02 does not activate A2, implement runtime behavior, release, deploy, or promote unsupported source content.
 
@@ -151,8 +171,6 @@ The branch includes:
 - `validate-ppia-02-foundation.yml`
 - `validate-ppia-02-completion.yml`
 
+The final completion validator additionally verifies the recovered R1 PASS evidence, the 93-candidate reference-set count/distribution/hash, formal-deferral behavior, and no-promotion boundaries.
+
 PPIA-02 must not be declared complete unless the final candidate head passes all applicable exact-head repository gates and PR #217 merges canonically.
-
-## Optional owner-side provenance recovery
-
-Not blocking PPIA-02: if the owner has `Aaac (1).zip` or the exact package `Multiversal_8E-008G-R1_Source_Boundary_and_Provenance_Closure_v0.1.0`, upload it. It may close the old historical 8E-008G provenance question. It is not needed to validate the current Creature/NPC experience package.
