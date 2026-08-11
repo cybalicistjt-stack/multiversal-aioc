@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "PPIA-07",
+  "title": "Rune Construction deterministic grammar bounded reference corpus",
+  "status": "design_acceptance_candidate",
+  "authority_note": "These examples exercise the proposed grammar. They are synthetic QA/design fixtures unless a case explicitly cites a source precedent. Example payload IDs illustrate typed references; they do not declare new canonical spells, rune meanings, costs or balance values.",
+  "grammar":"PPIA-07_DETERMINISTIC_GRAMMAR_CANDIDATE_v0.1.0.json",
+  "cases":[
+    {"case_id":"PPIA07-RC-001","title":"Single reusable source atom","kind":"synthetic_qa","expression":"SOURCE[payload=light]","execution_context":"cast","expected":"valid","covers":["SOURCE","required-slot","linear-serialization"],"acceptance":"Parses to one SOURCE node with payload light and canonicalizes without changing meaning."},
+    {"case_id":"PPIA07-RC-002","title":"Directed force flow","kind":"synthetic_qa","expression":"SOURCE[payload=force]>MOVE[direction=away]","execution_context":"cast","expected":"valid","covers":["SOURCE","MOVE","THEN"],"acceptance":"Parses as a left-to-right THEN chain; MOVE consumes the active context without inventing a cost."},
+    {"case_id":"PPIA07-RC-003","title":"Shaped emitted payload","kind":"source_precedent_plus_proposal","expression":"SOURCE[payload=fire]>SHAPE[geometry=cone]","execution_context":"cast","expected":"valid","covers":["SOURCE","SHAPE","THEN","shape-modification"],"acceptance":"SHAPE requires geometry and changes topology only; payload identity remains a typed reference."},
+    {"case_id":"PPIA07-RC-004","title":"Shaped ward","kind":"synthetic_qa","expression":"WARD[payload=force]>SHAPE[geometry=wall]","execution_context":"cast","expected":"valid","covers":["WARD","SHAPE","THEN"],"acceptance":"Ward and geometry remain separate reusable units and serialize deterministically."},
+    {"case_id":"PPIA07-RC-005","title":"Detection atom","kind":"synthetic_qa","expression":"SENSE[payload=heat]","execution_context":"cast","expected":"valid","covers":["SENSE","required-slot"],"acceptance":"SENSE is valid only with a typed payload/property reference and does not imply a spell conversion."},
+    {"case_id":"PPIA07-RC-006","title":"Anchored bind","kind":"synthetic_qa","expression":"BIND[anchor=hinge,target=door]","execution_context":"inscribed","expected":"valid","covers":["BIND","modifier-ordering","inscription"],"acceptance":"Canonical serialization sorts anchor before target and preserves the owning object's identity outside the grammar."},
+    {"case_id":"PPIA07-RC-007","title":"Declared transformation","kind":"synthetic_qa","expression":"CHANGE[target=water,to=ice]","execution_context":"cast","expected":"valid","covers":["CHANGE","required-slot"],"acceptance":"CHANGE requires a declared result reference; the grammar does not decide whether the transformation is permitted, affordable or balanced."},
+    {"case_id":"PPIA07-RC-008","title":"Linked output","kind":"macro_precedent_plus_proposal","expression":"SOURCE[payload=light]>LINK[target=ally]","execution_context":"prepared-macro","expected":"valid","covers":["LINK","THEN","macro-integration"],"acceptance":"LINK routes the previous output to a declared target without asserting macro==rune-construction identity."},
+    {"case_id":"PPIA07-RC-009","title":"Triggered ward","kind":"macro_precedent_plus_proposal","expression":"SENSE[payload=intrusion]@WARD[payload=force]","execution_context":"inscribed","expected":"valid","covers":["WHEN","trigger","SENSE","WARD"],"acceptance":"The left event/detector gates the right expression and no implicit timing beyond the WHEN relation is invented."},
+    {"case_id":"PPIA07-RC-010","title":"Conditional push","kind":"macro_precedent_plus_proposal","expression":"SENSE[payload=hostility]?(SOURCE[payload=force]>MOVE[direction=away])","execution_context":"cast","expected":"valid","covers":["IF","condition","grouping","THEN"],"acceptance":"Parentheses make the gated branch explicit; the parser does not guess mixed-connector precedence."},
+    {"case_id":"PPIA07-RC-011","title":"Explicit parallel composite","kind":"composition_precedent_plus_proposal","expression":"(SOURCE[payload=light]>SHAPE[geometry=sphere])&WARD[payload=heat]","execution_context":"cast","expected":"valid","covers":["WITH","grouping","parallel-composite"],"acceptance":"The grouped light sequence and ward are sibling composite branches; no temporal order between WITH siblings is implied."},
+    {"case_id":"PPIA07-RC-012","title":"Chained synchronized routing","kind":"macro_precedent_plus_proposal","expression":"SOURCE[payload=signal]>LINK[channel=party]>LINK[target=ally]","execution_context":"prepared-macro","expected":"valid","covers":["THEN-chain","LINK","channel"],"acceptance":"A same-connector chain evaluates left-to-right and canonicalizes to the same AST."},
+    {"case_id":"PPIA07-RC-013","title":"Inscribed item-bound ward","kind":"rune_engraving_precedent_plus_proposal","expression":"WARD[payload=heat]>BIND[anchor=item-surface]","execution_context":"item-bound","expected":"valid","covers":["inscription","PPIA-03-handoff","WARD","BIND"],"acceptance":"The rune extension may attach to an Item reference, but Item Definition/instance ownership remains with PPIA-03."},
+    {"case_id":"PPIA07-RC-014","title":"Missing required payload","kind":"guardrail","expression":"SOURCE[]","execution_context":"cast","expected":"invalid","covers":["G-002","required-slot"],"acceptance":"Validation rejects SOURCE without payload and reports the missing slot without inventing a default."},
+    {"case_id":"PPIA07-RC-015","title":"Unknown atom","kind":"guardrail","expression":"BLAST[payload=fire]","execution_context":"cast","expected":"invalid","covers":["G-001","unknown-atom"],"acceptance":"Validation rejects BLAST because it is not in the candidate atom registry; spell/action names do not auto-promote to atoms."},
+    {"case_id":"PPIA07-RC-016","title":"Mixed connectors without grouping","kind":"guardrail","expression":"SOURCE[payload=force]>MOVE[direction=away]&WARD[payload=force]","execution_context":"cast","expected":"invalid","covers":["G-004","no-implicit-precedence"],"acceptance":"Validation rejects the expression and requires explicit grouping instead of choosing precedence."},
+    {"case_id":"PPIA07-RC-017","title":"Explicitly grouped mixed connectors","kind":"synthetic_qa","expression":"(SOURCE[payload=force]>MOVE[direction=away])&WARD[payload=force]","execution_context":"cast","expected":"valid","covers":["G-004","WITH","THEN","grouping"],"acceptance":"The explicit group resolves the structure deterministically and round-trips through the linear representation."},
+    {"case_id":"PPIA07-RC-018","title":"Permission-filtered hidden reference","kind":"privacy_guardrail","expression":"LINK[target=hidden-ward-node]","execution_context":"cast","expected":"structurally_valid_reference_filtered","covers":["permission-before-preview","hidden-reference","F020"],"acceptance":"Syntax may parse, but labels, existence, counts, diagnostics, export and AI context are filtered before reference resolution; no hidden target fact leaks."},
+    {"case_id":"PPIA07-RC-019","title":"Countered or disrupted construction","kind":"source_precedent_plus_guardrail","expression":"SOURCE[payload=force]>MOVE[direction=away]","execution_context":"cast","expected":"valid_syntax_external_counterplay","covers":["counterspell","resistance","disruption","PPIA-11-boundary"],"acceptance":"Grammar validity does not imply successful resolution. Counterspell/resistance/disruption are evaluated by adopted runtime rules and later balance contracts."},
+    {"case_id":"PPIA07-RC-020","title":"Ambiguous authoritative write recovery","kind":"recovery_guardrail","expression":"WARD[payload=force]>BIND[anchor=item-surface]","execution_context":"item-bound","expected":"valid_with_idempotent_mutation_protocol","covers":["expected-version","operation-id","F021","provenance"],"acceptance":"If a write response is lost, the client checks operation status/current version before retrying with the same operation ID; it must not duplicate the inscription or silently overwrite a newer version."}
+  ],
+  "coverage_requirements": {
+    "all_atoms": ["SOURCE","MOVE","SHAPE","BIND","CHANGE","SENSE","WARD","LINK"],
+    "all_connections": ["THEN","WITH","WHEN","IF"],
+    "required_scenarios": ["simple","shaped","triggered","conditional","chained","parallel","inscribed","invalid-required-slot","invalid-unknown-atom","invalid-ambiguous-mixed-connectors","permission-filtered","countered","recovery"],
+    "case_ids_contiguous":"PPIA07-RC-001..PPIA07-RC-020"
+  },
+  "policy": {
+    "example_payload_is_canonical_spell":false,
+    "spell_name_auto_becomes_rune":false,
+    "valid_syntax_guarantees_success":false,
+    "valid_syntax_guarantees_balance":false,
+    "hidden_reference_may_leak_in_validation":false,
+    "inscription_transfers_item_ownership_to_ppia07":false,
+    "counterplay_is_bypassed_by_valid_grammar":false,
+    "retry_may_duplicate_authoritative_write":false
+  }
+}
