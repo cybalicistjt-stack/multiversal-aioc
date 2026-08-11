@@ -46,9 +46,7 @@ R1 passes **source accountability**, not public-canon completeness. The 1,671 fo
 
 ## PPIA routing
 
-The recovered formal-deferral register contains **93 creature candidates**: 79 from `src.logical.legacy-corpus-a-2251`, 13 from `src.logical.world-faction-compilation`, and 1 from `src.logical.legacy-corpus-b-2271`. PPIA-02 preserves these as source-recovery/reference candidates rather than silently converting them into canonical creature definitions.
-
-A derived exact-row subset is retained as `PPIA-02_R1_DEFERRED_CREATURE_CANDIDATES.csv` for Creature/NPC experience work.
+The recovered formal-deferral register contains **93 creature candidates**: 79 from `src.logical.legacy-corpus-a-2251`, 13 from `src.logical.world-faction-compilation`, and 1 from `src.logical.legacy-corpus-b-2271`. PPIA-02 preserves these as source-recovery/reference candidates rather than silently converting them into canonical creature definitions. Their exact source registry is the recovered `Multiversal_8E-008G-R1_Formally_Deferred_Source_Candidate_Register.csv`, whose SHA-256 is frozen above.
 
 ## Effect on PPIA-01
 
