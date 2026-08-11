@@ -11,7 +11,8 @@ ROADMAP_PATH = ROOT / "governance" / "application-planning" / "APPLICATION_IMPLE
 INDEX_PATH = ROOT / "governance" / "ai" / "runtime" / "ROADMAP_INDEX.json"
 POINTER_PATH = ROOT / "governance" / "ai" / "runtime" / "CURRENT_WORK_POINTER.json"
 STATUS_PATH = ROOT / "governance" / "ai" / "runtime" / "CURRENT_IMPLEMENTATION_STATUS.json"
-CHECKPOINT_PATH = ROOT / "governance" / "ai" / "work-state" / "PPIA-01-attempt-001.json"
+PPIA01_CHECKPOINT_PATH = ROOT / "governance" / "ai" / "work-state" / "PPIA-01-attempt-001.json"
+PPIA02_CHECKPOINT_PATH = ROOT / "governance" / "ai" / "work-state" / "PPIA-02-attempt-001.json"
 
 EXPECTED_IDS = [f"PPIA-{index:02d}" for index in range(1, 17)]
 EXPECTED_ORDER = [
@@ -20,6 +21,7 @@ EXPECTED_ORDER = [
     "PPIA-13", "PPIA-14", "PPIA-15", "PPIA-16",
 ]
 ACTIVE_STATUSES = {"started", "in_progress"}
+COMPLETE_STATUSES = {"complete", "completed"}
 
 
 def load_json(path: Path) -> dict:
@@ -31,20 +33,22 @@ def main() -> int:
     index = load_json(INDEX_PATH)
     pointer = load_json(POINTER_PATH)
     status = load_json(STATUS_PATH)
-    checkpoint = load_json(CHECKPOINT_PATH)
+    ppia01 = load_json(PPIA01_CHECKPOINT_PATH)
+    checkpoint = load_json(PPIA02_CHECKPOINT_PATH)
     program = PROGRAM_PATH.read_text(encoding="utf-8")
     roadmap = ROADMAP_PATH.read_text(encoding="utf-8")
 
     assert backlog["program_id"] == "PPIA"
     assert backlog["version"] == "1.0.0"
-    assert backlog["current_work_item_id"] == "PPIA-01"
+    assert backlog["current_work_item_id"] == "PPIA-02"
     assert backlog["execution_order"] == EXPECTED_ORDER
     tranche_ids = [item["work_item_id"] for item in backlog["tranches"]]
     assert tranche_ids == EXPECTED_IDS
     assert len(set(tranche_ids)) == 16
-    current_tranche = backlog["tranches"][0]
+    assert backlog["tranches"][0]["status"] in COMPLETE_STATUSES
+    current_tranche = backlog["tranches"][1]
     assert current_tranche["status"] in ACTIVE_STATUSES
-    assert all(item["status"] == "planned" for item in backlog["tranches"][1:])
+    assert all(item["status"] == "planned" for item in backlog["tranches"][2:])
 
     boundaries = backlog["boundaries"]
     assert boundaries["requires_codex"] is False
@@ -60,20 +64,27 @@ def main() -> int:
     assert "STAGE-A-A2" in index_ids
     assert "DS-008-working-series" in index_ids
 
-    assert pointer["primary_attempt_id"] == "PPIA-01-attempt-001"
+    assert ppia01["work_item_id"] == "PPIA-01"
+    assert ppia01["attempt_id"] == "PPIA-01-attempt-001"
+    assert ppia01["status"] in COMPLETE_STATUSES
+    assert ppia01["completed_at"]
+    assert ppia01.get("merge_commit") == "f9e2b1fb7c340d27813b09c180b60d34d5fb6f92"
+    assert ppia01["owner_decision_required"] is False
+
+    assert pointer["primary_attempt_id"] == "PPIA-02-attempt-001"
     selected = [item for item in pointer["active_attempts"] if item["owner_selected"]]
     assert len(selected) == 1
-    assert selected[0]["work_item_id"] == "PPIA-01"
-    assert selected[0]["checkpoint_path"].endswith("PPIA-01-attempt-001.json")
+    assert selected[0]["work_item_id"] == "PPIA-02"
+    assert selected[0]["checkpoint_path"].endswith("PPIA-02-attempt-001.json")
 
     app_tracks = [item for item in pointer["deferred_tracks"] if item["track"] == "application-implementation"]
     assert len(app_tracks) == 1
     assert app_tracks[0]["next_work_item_id"] == "STAGE-A-A2"
     assert "checkout_runner_blocked" in app_tracks[0]["state"]
 
-    assert status["primary"]["work_item_id"] == "PPIA-01"
-    assert checkpoint["work_item_id"] == "PPIA-01"
-    assert checkpoint["attempt_id"] == "PPIA-01-attempt-001"
+    assert status["primary"]["work_item_id"] == "PPIA-02"
+    assert checkpoint["work_item_id"] == "PPIA-02"
+    assert checkpoint["attempt_id"] == "PPIA-02-attempt-001"
     assert checkpoint["owner_decision_required"] is False
     assert checkpoint["status"] in ACTIVE_STATUSES
     assert status["primary"]["status"] == checkpoint["status"] == selected[0]["status"] == current_tranche["status"]
@@ -86,14 +97,17 @@ def main() -> int:
     for work_item_id in EXPECTED_IDS:
         assert work_item_id in program
         assert work_item_id in roadmap
-    assert "**Version:** 2.3.0" in roadmap
+    assert "**Version:** 2.4.0" in roadmap
+    assert "PPIA-01 — Content Quality & Missing-Information Closure is complete" in roadmap
+    assert "PPIA-02 — Creature & NPC Experience is now the current PPIA work item" in roadmap
     assert "DT-001 through DT-010 Developer Toolbelt is complete" in roadmap
     assert "A2_CHANGED_PATH_SCOPE_v1.0.0.csv" in roadmap
     assert "A2 is not activated" in roadmap
 
     print("PPIA program validation: PASS")
     print("tranches: 16")
-    print("current: PPIA-01")
+    print("completed: PPIA-01")
+    print("current: PPIA-02")
     print(f"current_status: {current_tranche['status']}")
     print("a2_activation_authorized: false")
     return 0

@@ -125,9 +125,9 @@ Design the developer-facing cockpit over DT-001 through DT-010: current work/sli
 
 ## Current tranche
 
-**PPIA-01 — Content Quality & Missing-Information Closure** is the owner-selected first tranche.
+**PPIA-02 — Creature & NPC Experience** is the current owner-approved tranche in the dependency-optimized sequence. PPIA-01 completed and merged in PR #212 at canonical squash `f9e2b1fb7c340d27813b09c180b60d34d5fb6f92`.
 
-The initial bounded action is to establish the content-quality audit frame and source inventory, then identify and classify gaps before attempting any repair.
+The initial bounded action is to inventory current Creature/NPC source, object, feature, screen, encounter, relationship, asset, transformation, permission, provenance, and accessibility surfaces; then establish the implementation-ready experience taxonomy before writing new specifications.
 
 ## Completion boundary
 
