@@ -1,0 +1,30 @@
+name: Validate PPIA-05 Completion Contract
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_SPECIES_FORMS_CHARACTER_BIOLOGY_EXPERIENCE_SPEC_v1.0.0.md'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_ACCEPTANCE_TRACEABILITY_MATRIX_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_COMPLETION_CANDIDATE.md'
+      - 'scripts/validate-ppia05-completion-contracts.py'
+      - '.github/workflows/validate-ppia-05-completion-contracts.yml'
+  push:
+    branches:
+      - governance/ppia-05-species-forms-biology
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_SPECIES_FORMS_CHARACTER_BIOLOGY_EXPERIENCE_SPEC_v1.0.0.md'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_ACCEPTANCE_TRACEABILITY_MATRIX_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_COMPLETION_CANDIDATE.md'
+      - 'scripts/validate-ppia05-completion-contracts.py'
+      - '.github/workflows/validate-ppia-05-completion-contracts.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia05-completion-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate PPIA-05 completion candidate contracts
+        run: python scripts/validate-ppia05-completion-contracts.py
