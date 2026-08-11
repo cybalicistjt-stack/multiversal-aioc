@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 3,
+  "revision": 4,
   "work_item_id": "PPIA-12",
   "attempt_id": "PPIA-12-attempt-001",
   "track": "parallel-preimplementation-advancement",
@@ -8,15 +8,15 @@
   "branch": "governance/ppia-12-world-setting-authoring",
   "status": "started",
   "started_at": "2026-08-11T19:53:00+00:00",
-  "updated_at": "2026-08-11T20:09:00+00:00",
+  "updated_at": "2026-08-11T20:19:17+00:00",
   "completed_at": null,
   "base_commit": "17dc6be36960b65bbcef5c4382b67de75c05218c",
-  "latest_pushed_commit": "966a93faf5e381a46353effe6d1f08b9d181b46f",
-  "expected_remote_head": "966a93faf5e381a46353effe6d1f08b9d181b46f",
-  "pull_request": null,
+  "latest_pushed_commit": "afab798a4d864056ecc1f8f5b2ed2c6dc9290c38",
+  "expected_remote_head": "afab798a4d864056ecc1f8f5b2ed2c6dc9290c38",
+  "pull_request": 236,
   "objective": "Produce an implementation-ready World & Setting Authoring System and source-grounded reference mappings across available worlds, preserving provenance, world-specific extension boundaries, reusable setting Definitions versus Campaign-local state, cross-domain content ownership, permissions, recovery, responsive/mobile/accessibility behavior, and downstream Campaign/Scene authoring handoffs.",
-  "last_verified_action": "PPIA-05→PPIA-12 transition exact head a9f4be7d508bdaf1d71a8d44fd9493d59cc55662 passed all eleven applicable repository gates and PR #235 squash-merged as 17dc6be36960b65bbcef5c4382b67de75c05218c. The governed PPIA-12 branch was created from that exact merge. The PPIA-12 foundation candidate is now assembled through substantive head 966a93faf5e381a46353effe6d1f08b9d181b46f and remains unverified until exact-head CI passes and the foundation PR merges.",
-  "active_substep": "Validate and merge the assembled PPIA-12 World & Setting source/design foundation candidate covering retained source inventory, typed identity/state taxonomy, setting-extension ownership routing, and non-universalization/provenance/accessibility guardrails.",
+  "last_verified_action": "PPIA-12 foundation exact head afab798a4d864056ecc1f8f5b2ed2c6dc9290c38 passed all twelve applicable repository gates: Validate PPIA-12 Foundation run 31532214696, Validate PPIA Program run 31532214590, Validate PPIA-05 to PPIA-12 Transition run 31532214596, Validate PPIA-04 to PPIA-05 Transition run 31532214659, Validate PPIA-03 to PPIA-04 Transition run 31532214669, Validate PPIA-02 Completion Contract run 31532214712, Validate PPIA-02 Foundation run 31532214738, Validate Conversation Continuity run 31532214678, Validate Interaction Enforcement run 31532214577, Validate Operational AIOC Baseline run 31532214778, Validate Correction to Regression run 31532214640, and Validate Design Standards Canonicalization run 31532214718. PR #236 then squash-merged into canonical main as f5feda7d8250cd20fbe59176dff9af397ac61932 and the governed PPIA-12 branch was reset to that canonical merge before milestone projection.",
+  "active_substep": "Define the PPIA-12 World/Setting Inspector projection matrix, governed authoring/action contracts, role-safe projection behavior, and bounded source-grounded reference cases over the verified 14-layer World/Setting taxonomy.",
   "completed_substeps": [
     "Dependencies PPIA-01, PPIA-02, PPIA-03, PPIA-04 and PPIA-05 are complete/completed_verified.",
     "PPIA-05 final exact candidate head e6e2bcfd0f22f537a73721dfd8069531bd1af24c passed all eleven applicable gates and PR #234 squash-merged as 0ffaa34ef15f9a7e4b77776688c6be3fc3047446.",
@@ -26,28 +26,41 @@
     "Confirmed that the retained CSV source directory contains no dedicated World/Setting CSV catalog; explicit governed mapping is required for structured setting relationships.",
     "Defined a 14-layer World/Setting identity-state taxonomy and 12 presentation profiles supporting nonplanetary settings, typed hierarchy, Campaign-state separation, local-rule scoping, permission filtering, provenance/conflict recovery, and accessible nonvisual operation.",
     "Defined setting-extension ownership routing: PPIA-12 owns setting structure/scope; PPIA-08 owns Campaign/Scene instantiation; PPIA-02/03/04/05 retain core Creature/Item/Vehicle/Species definitions; PPIA-11 retains encounter/balance calibration; world-local mechanics are not automatically universalized.",
-    "Encoded evidence guardrails: no hierarchy/membership/route/chronology from co-occurrence or name similarity; generic environment templates do not instantiate named-setting facts; random tables, templates and AI output remain proposals; unknown/conflicted/revision-heavy source state remains explicit."
+    "Encoded evidence guardrails: no hierarchy/membership/route/chronology from co-occurrence or name similarity; generic environment templates do not instantiate named-setting facts; random tables, templates and AI output remain proposals; unknown/conflicted/revision-heavy source state remains explicit.",
+    "PPIA-12 foundation exact head afab798a4d864056ecc1f8f5b2ed2c6dc9290c38 passed all twelve applicable repository gates and PR #236 squash-merged as f5feda7d8250cd20fbe59176dff9af397ac61932."
   ],
-  "next_action": "Open the PPIA-12 foundation pull request from governance/ppia-12-world-setting-authoring to main, validate the exact PR head with the PPIA-12 foundation gate plus every applicable repository regression gate, merge only if all exact-head gates pass, reset the governed branch to the canonical merge, record the milestone checkpoint, then proceed to the World/Setting Inspector projection matrix, governed authoring/action contracts, and bounded reference cases.",
+  "next_action": "Create and validate the PPIA-12 World/Setting Inspector projection matrix and governed authoring/action contract layer. Align projection groups to the verified 14 identity/state layers; define role-safe inspect, hierarchy, environment, faction/culture/history, setting-extension, local-rule, route/connectivity, Campaign-handoff, reveal/knowledge, source-conflict and recovery actions; create bounded source-grounded and synthetic-QA reference cases covering Havalaea↔Vertigon explicit hierarchy, nonplanetary settings, cross-reality routes, setting-local mechanics, reusable environment templates, revision conflicts, authoring proposals, permission filtering and accessible nonvisual navigation. Preserve source scope, unknown/conflict state, no-co-occurrence inference, owning-domain boundaries, and PPIA-08 Campaign/Scene ownership.",
   "changed_paths": [
     ".github/workflows/validate-ppia-12-foundation.yml",
     "governance/application-planning/parallel-preimplementation/PPIA-12_SOURCE_AND_DESIGN_INVENTORY.md",
     "governance/application-planning/parallel-preimplementation/PPIA-12_WORLD_SETTING_TAXONOMY_v0.1.0.json",
     "governance/application-planning/parallel-preimplementation/PPIA-12_SETTING_EXTENSION_ROUTING_v0.1.0.json",
     "governance/application-planning/parallel-preimplementation/PPIA-12_FOUNDATION_CANDIDATE.md",
-    "scripts/validate-ppia12-foundation.py"
+    "scripts/validate-ppia12-foundation.py",
+    "scripts/validate-ppia05-to-ppia12-transition.py"
   ],
   "completion_gate": {"required_evidence_kinds":["commit","pull_request","merge"],"required_validation_commands":[],"owner_approval_required":false},
   "validation": [
-    {"command":"Validate PPIA-05 to PPIA-12 Transition run 31530600410","status":"passed","evidence":"exact transition head a9f4be7d508bdaf1d71a8d44fd9493d59cc55662"},
-    {"command":"Validate PPIA Program run 31530600438","status":"passed","evidence":"exact transition head a9f4be7d508bdaf1d71a8d44fd9493d59cc55662"}
+    {"command":"Validate PPIA-12 Foundation run 31532214696","status":"passed","evidence":"exact foundation head afab798a4d864056ecc1f8f5b2ed2c6dc9290c38"},
+    {"command":"Validate PPIA Program run 31532214590","status":"passed","evidence":"exact foundation head afab798a4d864056ecc1f8f5b2ed2c6dc9290c38"},
+    {"command":"Validate PPIA-05 to PPIA-12 Transition run 31532214596","status":"passed","evidence":"exact foundation head afab798a4d864056ecc1f8f5b2ed2c6dc9290c38"},
+    {"command":"Validate PPIA-04 to PPIA-05 Transition run 31532214659","status":"passed","evidence":"exact foundation head afab798a4d864056ecc1f8f5b2ed2c6dc9290c38"},
+    {"command":"Validate PPIA-03 to PPIA-04 Transition run 31532214669","status":"passed","evidence":"exact foundation head afab798a4d864056ecc1f8f5b2ed2c6dc9290c38"},
+    {"command":"Validate PPIA-02 Completion Contract run 31532214712","status":"passed","evidence":"exact foundation head afab798a4d864056ecc1f8f5b2ed2c6dc9290c38"},
+    {"command":"Validate PPIA-02 Foundation run 31532214738","status":"passed","evidence":"exact foundation head afab798a4d864056ecc1f8f5b2ed2c6dc9290c38"},
+    {"command":"Validate Conversation Continuity run 31532214678","status":"passed","evidence":"exact foundation head afab798a4d864056ecc1f8f5b2ed2c6dc9290c38"},
+    {"command":"Validate Interaction Enforcement run 31532214577","status":"passed","evidence":"exact foundation head afab798a4d864056ecc1f8f5b2ed2c6dc9290c38"},
+    {"command":"Validate Operational AIOC Baseline run 31532214778","status":"passed","evidence":"exact foundation head afab798a4d864056ecc1f8f5b2ed2c6dc9290c38"},
+    {"command":"Validate Correction to Regression run 31532214640","status":"passed","evidence":"exact foundation head afab798a4d864056ecc1f8f5b2ed2c6dc9290c38"},
+    {"command":"Validate Design Standards Canonicalization run 31532214718","status":"passed","evidence":"exact foundation head afab798a4d864056ecc1f8f5b2ed2c6dc9290c38"}
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
-    {"kind":"merge","value":"PPIA-05 final completion squash merge 0ffaa34ef15f9a7e4b77776688c6be3fc3047446"},
     {"kind":"merge","value":"PPIA-05→PPIA-12 transition squash merge 17dc6be36960b65bbcef5c4382b67de75c05218c"},
-    {"kind":"commit","value":"PPIA-12 foundation substantive head 966a93faf5e381a46353effe6d1f08b9d181b46f"},
+    {"kind":"commit","value":"PPIA-12 foundation validated exact head afab798a4d864056ecc1f8f5b2ed2c6dc9290c38"},
+    {"kind":"pull_request","value":"PPIA-12 foundation PR #236"},
+    {"kind":"merge","value":"PPIA-12 foundation squash merge f5feda7d8250cd20fbe59176dff9af397ac61932"},
     {"kind":"file","value":"PPIA-12 source/design inventory, 14-layer taxonomy, setting-extension routing, foundation candidate, deterministic validator and CI gate"}
   ],
   "roadmap_projection_pending": true,
