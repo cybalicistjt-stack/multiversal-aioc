@@ -2,6 +2,8 @@
 """Validate the integrated PPIA-02 workflow/spec/acceptance packet."""
 from __future__ import annotations
 
+import csv
+import hashlib
 import json
 from pathlib import Path
 
@@ -12,6 +14,10 @@ ACCEPTANCE = PROGRAM / "PPIA-02_ACCEPTANCE_TRACEABILITY_MATRIX_v0.1.0.json"
 ACCEPTANCE_FIX = PROGRAM / "PPIA-02_ACCEPTANCE_TRACEABILITY_MATRIX_v0.1.1.json"
 SPEC = PROGRAM / "PPIA-02_CREATURE_NPC_EXPERIENCE_SPEC_v1.0.0.md"
 CASES = PROGRAM / "PPIA-02_REFERENCE_CASES_v0.1.0.json"
+R1_ADDENDUM = PROGRAM / "PPIA-02_R1_PROVENANCE_AND_DEFERRED_CREATURE_ADDENDUM_v0.1.0.json"
+R1_CANDIDATES = PROGRAM / "PPIA-02_R1_DEFERRED_CREATURE_CANDIDATES.csv"
+R1_RECOVERY = PROGRAM / "PPIA-01_8E-008G-R1_RECOVERY_CLOSURE.md"
+COMPLETION_CANDIDATE = PROGRAM / "PPIA-02_COMPLETION_CANDIDATE.md"
 
 
 def main() -> int:
@@ -20,6 +26,9 @@ def main() -> int:
     correction = json.loads(ACCEPTANCE_FIX.read_text(encoding="utf-8"))
     cases = json.loads(CASES.read_text(encoding="utf-8"))
     spec = SPEC.read_text(encoding="utf-8")
+    r1_addendum = json.loads(R1_ADDENDUM.read_text(encoding="utf-8"))
+    r1_recovery = R1_RECOVERY.read_text(encoding="utf-8")
+    completion_candidate = COMPLETION_CANDIDATE.read_text(encoding="utf-8")
 
     if workflows.get("format") != "multiversal-ppia02-creature-npc-workflow-authoring-contract-matrix":
         raise SystemExit("unexpected workflow matrix format")
@@ -158,13 +167,87 @@ def main() -> int:
     if "PPIA02-RC-009" not in privacy_req.get("case_refs", []):
         raise SystemExit("privacy-before-derived-data requirement lost hidden-placement case")
 
+    # Recovered 8E-008G-R1 provenance closure is a required PPIA-02 completion addendum.
+    if r1_addendum.get("format") != "multiversal-ppia02-r1-provenance-deferred-creature-addendum" or r1_addendum.get("version") != "0.1.0":
+        raise SystemExit("unexpected PPIA-02 R1 addendum identity/version")
+    if r1_addendum.get("work_item") != "PPIA-02" or r1_addendum.get("status") != "required_completion_addendum":
+        raise SystemExit("PPIA-02 R1 addendum is not completion-governed")
+    r1 = r1_addendum.get("canonical_r1_recovery") or {}
+    expected_r1 = {
+        "merge": "d271d1e7ec453cd153a7bf5768b3df837ba677a9",
+        "owner_supplied_wrapper": "This.zip",
+        "owner_supplied_wrapper_sha256": "daa8d2eed1d23400812c8a003fbee5c6680041227d42dc90555ebc2031715a18",
+        "historical_baseline": "mv.freeze.8e008a.0.1.3",
+        "result": "PASS",
+        "acceptance_checks": 101,
+        "acceptance_checks_passed": 101,
+        "structural_candidates_accounted": 7144,
+        "formerly_unbound_candidates_closed": 2766,
+        "unbound_source_sections_remaining": 0,
+        "authoritative_records_provenance_accounted": 158189,
+        "authoritative_records_unaccounted": 0,
+        "formally_deferred_candidates": 1671,
+        "formal_deferral_is_public_canon_completion": False,
+    }
+    if r1 != expected_r1:
+        raise SystemExit(f"PPIA-02 R1 recovered authority changed: {r1}")
+
+    candidate_bytes = R1_CANDIDATES.read_bytes()
+    candidate_hash = hashlib.sha256(candidate_bytes).hexdigest()
+    reference = r1_addendum.get("creature_deferral_reference_set") or {}
+    if candidate_hash != "dda92f7b4294e4162b633616b82256037855742bfe08fa07cc5376f5d5eb4ec0":
+        raise SystemExit(f"R1 creature candidate subset hash changed: {candidate_hash}")
+    if reference.get("derived_sha256") != candidate_hash or reference.get("source_register_sha256") != "39488657e712c1d834d83c1bb6e3400100252c5f2ce5a29170e6a7e63ee8d67b":
+        raise SystemExit("R1 creature candidate derivation evidence changed")
+    with R1_CANDIDATES.open(encoding="utf-8", newline="") as handle:
+        deferred_rows = list(csv.DictReader(handle))
+    if len(deferred_rows) != 93 or reference.get("rows") != 93:
+        raise SystemExit("R1 creature deferral count changed")
+    ids = [row["structural_candidate_id"] for row in deferred_rows]
+    if len(ids) != len(set(ids)):
+        raise SystemExit("R1 creature candidate subset contains duplicate IDs")
+    distribution: dict[str, int] = {}
+    for row in deferred_rows:
+        distribution[row["logical_source_id"]] = distribution.get(row["logical_source_id"], 0) + 1
+    expected_distribution = {
+        "src.logical.legacy-corpus-a-2251": 79,
+        "src.logical.world-faction-compilation": 13,
+        "src.logical.legacy-corpus-b-2271": 1,
+    }
+    if distribution != expected_distribution or reference.get("source_distribution") != expected_distribution:
+        raise SystemExit(f"R1 creature source distribution changed: {distribution}")
+
+    contract = r1_addendum.get("experience_contract") or {}
+    if contract.get("content_state") != "formally_deferred_source_candidate":
+        raise SystemExit("R1 formal deferral content state changed")
+    for key in ("library_default", "inspector_behavior", "authoring_behavior", "scene_encounter_behavior", "privacy_behavior", "public_canon_behavior"):
+        if not contract.get(key):
+            raise SystemExit(f"R1 formal-deferral experience contract missing {key}")
+    mapped = {item.get("requirement_id") for item in r1_addendum.get("acceptance_mapping") or []}
+    if mapped != {"PPIA02-REQ-003", "PPIA02-REQ-007", "PPIA02-REQ-034", "PPIA02-REQ-035"}:
+        raise SystemExit(f"R1 acceptance mapping changed: {sorted(mapped)}")
+    for key, value in (r1_addendum.get("boundaries") or {}).items():
+        if key.endswith("authorized") or key in {"raw_csv_modified", "r1_formal_deferral_promotes_canonical_content", "deferred_candidate_is_usable_definition"}:
+            if value is not False:
+                raise SystemExit(f"R1 addendum violates boundary {key}")
+
+    for phrase in ("101 acceptance checks", "7,144 / 7,144", "1,671 candidates", "93 creature candidates"):
+        if phrase not in r1_recovery:
+            raise SystemExit(f"canonical R1 recovery note missing {phrase!r}")
+    if "formal deferral is neither canonical promotion nor exclusion" not in json.dumps(r1_addendum).lower():
+        raise SystemExit("R1 formal-deferral public-canon boundary is missing")
+    if "This historical recovery request is now resolved" not in completion_candidate:
+        raise SystemExit("PPIA-02 completion candidate still presents R1 recovery as owner action")
+
     print(json.dumps({
         "workflows": len(rows),
         "crossWorkflowHandoffs": len(workflows.get('cross_workflow_handoffs') or []),
         "requirements": len(reqs),
         "categories": len(categories),
         "referenceCases": len(case_ids),
-        "effectiveAcceptanceVersion": "0.1.1",
+        "r1DeferredCreatureCandidates": len(deferred_rows),
+        "r1AcceptanceChecksPassed": 101,
+        "effectiveAcceptanceVersion": "0.1.1+r1-addendum-0.1.0",
         "a2Activated": False,
         "runtimeImplementationAuthorized": False,
         "result": "PASS",
