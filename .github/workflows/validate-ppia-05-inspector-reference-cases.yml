@@ -1,0 +1,34 @@
+name: Validate PPIA-05 Inspector and Reference Cases
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_SPECIES_FORM_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_REFERENCE_CASES_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_SPECIES_FORMS_BIOLOGY_TAXONOMY_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_ABILITY_BIOLOGY_ROUTING_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_SOURCE_AND_DESIGN_INVENTORY.md'
+      - 'scripts/validate-ppia05-inspector-reference-cases.py'
+      - '.github/workflows/validate-ppia-05-inspector-reference-cases.yml'
+  push:
+    branches:
+      - governance/ppia-05-species-forms-biology
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_SPECIES_FORM_INSPECTOR_PROJECTION_MATRIX_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_REFERENCE_CASES_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_SPECIES_FORMS_BIOLOGY_TAXONOMY_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_ABILITY_BIOLOGY_ROUTING_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-05_SOURCE_AND_DESIGN_INVENTORY.md'
+      - 'scripts/validate-ppia05-inspector-reference-cases.py'
+      - '.github/workflows/validate-ppia-05-inspector-reference-cases.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia05-inspector-reference-cases:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate PPIA-05 projection matrix and reference cases
+        run: python scripts/validate-ppia05-inspector-reference-cases.py
