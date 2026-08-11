@@ -1,0 +1,166 @@
+name: Validate PPIA-01 Content Quality
+
+on:
+  pull_request:
+    paths:
+      - 'Csv.zip'
+      - 'governance/object-system/csv-intake/**'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-01_*'
+      - 'scripts/audit-ppia01-csv-content-quality.py'
+      - 'scripts/analyze-ppia01-shapeshifter-pricing.py'
+      - 'scripts/analyze-ppia01-gap-name-candidates.py'
+      - 'scripts/analyze-ppia01-inference-thin-content.py'
+      - 'scripts/validate-ppia01-repair-overlay.py'
+      - 'scripts/validate-ppia01-missing-definitions.py'
+      - 'scripts/validate-ppia01-quantitative-closure.py'
+      - 'scripts/run-full-csv-registry-reconciliation.py'
+      - '.github/workflows/validate-ppia-01-content-quality.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Reproduce final 19,199-row registry reconciliation
+        run: python scripts/run-full-csv-registry-reconciliation.py
+
+      - name: Generate deterministic PPIA-01 baseline
+        run: |
+          rm -rf build/ppia01-content-quality
+          mkdir -p build/ppia01-content-quality
+          python scripts/audit-ppia01-csv-content-quality.py \
+            --output build/ppia01-content-quality/baseline.json \
+            > build/ppia01-content-quality/summary.json
+          python scripts/audit-ppia01-csv-content-quality.py \
+            --output build/ppia01-content-quality/baseline-second.json \
+            > build/ppia01-content-quality/summary-second.json
+          cmp build/ppia01-content-quality/baseline.json build/ppia01-content-quality/baseline-second.json
+          python - <<'PY'
+          import json
+          report=json.load(open('build/ppia01-content-quality/baseline.json',encoding='utf-8'))
+          assert report['format']=='multiversal-ppia01-csv-content-quality-baseline'
+          assert report['summary']['datasets']==20
+          assert report['summary']['rows']==19199
+          assert report['sourceAuthority']['finalRegistryWorkstream']=='8E-009L63'
+          assert report['sourceAuthority']['ownerDelegationStatus']=='approved-and-active'
+          assert report['summary']['highPrioritySourceGapRows']==84
+          print(json.dumps(report['summary'],sort_keys=True))
+          PY
+
+      - name: Analyze exact-name candidates for explicit gaps
+        run: |
+          python scripts/analyze-ppia01-gap-name-candidates.py \
+            --baseline build/ppia01-content-quality/baseline.json \
+            --output build/ppia01-content-quality/gap-name-candidates.json \
+            > build/ppia01-content-quality/gap-name-summary.json
+          python - <<'PY'
+          import json
+          report=json.load(open('build/ppia01-content-quality/gap-name-candidates.json',encoding='utf-8'))
+          assert report['summary']=={
+            'gapRows':84,
+            'gapRowsWithExactNameCandidates':4,
+            'gapRowsWithoutExactNameCandidates':80,
+            'exactNameCandidateOccurrences':5,
+            'automaticResolutions':0,
+          }
+          print(json.dumps(report['summary'],sort_keys=True))
+          PY
+
+      - name: Analyze Shapeshifter pricing-only rows
+        run: |
+          python scripts/analyze-ppia01-shapeshifter-pricing.py \
+            --output build/ppia01-content-quality/shapeshifter-pricing.json \
+            --csv-output build/ppia01-content-quality/shapeshifter-pricing.csv \
+            > build/ppia01-content-quality/shapeshifter-summary.json
+          python - <<'PY'
+          import json
+          report=json.load(open('build/ppia01-content-quality/shapeshifter-pricing.json',encoding='utf-8'))
+          assert report['summary']['detailedAbilityRows']==60
+          assert report['summary']['pricingOnlyRows']==57
+          assert report['summary']['exactNameSameBranchCandidates']==0
+          assert report['summary']['exactNameCrossBranchCandidates']==1
+          assert report['summary']['automaticMerges']==0
+          assert report['branches']['Combat Forms']['pricingOnlyRows']==20
+          assert report['branches']['Environmental Adaptations']['pricingOnlyRows']==19
+          assert report['branches']['Utility Transformations']['pricingOnlyRows']==18
+          print(json.dumps(report['summary'],sort_keys=True))
+          PY
+
+      - name: Validate all governed explicit-gap closures strictly
+        run: |
+          python scripts/validate-ppia01-repair-overlay.py > build/ppia01-content-quality/repair-overlay-validation.json
+          python scripts/validate-ppia01-missing-definitions.py > build/ppia01-content-quality/missing-definition-validation.json
+          python scripts/validate-ppia01-quantitative-closure.py > build/ppia01-content-quality/quantitative-gap-validation.json
+          cat build/ppia01-content-quality/repair-overlay-validation.json
+          cat build/ppia01-content-quality/missing-definition-validation.json
+          cat build/ppia01-content-quality/quantitative-gap-validation.json
+
+      - name: Prioritize inference and thin-content review
+        run: |
+          python scripts/analyze-ppia01-inference-thin-content.py \
+            --output build/ppia01-content-quality/inference-thin-content.json \
+            --csv-output build/ppia01-content-quality/inference-thin-content.csv \
+            > build/ppia01-content-quality/inference-thin-summary.json
+          python scripts/analyze-ppia01-inference-thin-content.py \
+            --output build/ppia01-content-quality/inference-thin-content-second.json \
+            --csv-output build/ppia01-content-quality/inference-thin-content-second.csv \
+            > build/ppia01-content-quality/inference-thin-summary-second.json
+          cmp build/ppia01-content-quality/inference-thin-content.json build/ppia01-content-quality/inference-thin-content-second.json
+          cmp build/ppia01-content-quality/inference-thin-content.csv build/ppia01-content-quality/inference-thin-content-second.csv
+          python - <<'PY'
+          import json
+          report=json.load(open('build/ppia01-content-quality/inference-thin-content.json',encoding='utf-8'))
+          s=report['summary']
+          assert s['inferenceEstimateRows']==10594
+          assert s['delegatedBalanceEstimateRows']==8554
+          assert s['delegatedMissingFieldCompletionRows']==370
+          assert s['delegatedMetadataInferenceRows']==403
+          assert s['systematicMagicCompletionRows']==385
+          assert s['systematicBaseEngineeringCompletionRows']==350
+          assert s['mechanicalInterpretationReviewRows']==531
+          assert s['highPriorityMechanicalReviewRows']==111
+          assert s['normalPriorityMechanicalReviewRows']==420
+          assert s['sourceRecoveryReviewRows']==1
+          assert s['structuralBlankRows']==33
+          assert s['structuralBlankCells']==76
+          assert len(report['ownerAttentionCandidates'])==1
+          assert report['ownerAttentionCandidates'][0]['name']=='Quantum Weaver'
+          print(json.dumps(s,sort_keys=True))
+          PY
+
+      - name: Verify tracked checkout was not mutated
+        run: git diff --exit-code
+
+      - name: Upload exact audit evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: ppia-01-csv-content-quality-baseline
+          path: |
+            build/ppia01-content-quality/baseline.json
+            build/ppia01-content-quality/summary.json
+            build/ppia01-content-quality/gap-name-candidates.json
+            build/ppia01-content-quality/gap-name-summary.json
+            build/ppia01-content-quality/shapeshifter-pricing.json
+            build/ppia01-content-quality/shapeshifter-pricing.csv
+            build/ppia01-content-quality/shapeshifter-summary.json
+            build/ppia01-content-quality/repair-overlay-validation.json
+            build/ppia01-content-quality/missing-definition-validation.json
+            build/ppia01-content-quality/quantitative-gap-validation.json
+            build/ppia01-content-quality/inference-thin-content.json
+            build/ppia01-content-quality/inference-thin-content.csv
+            build/ppia01-content-quality/inference-thin-summary.json
+          retention-days: 30
