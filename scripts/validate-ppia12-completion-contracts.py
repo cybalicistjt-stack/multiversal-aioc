@@ -103,7 +103,7 @@ def main() -> None:
     ):
         require(phrase in inventory, f"source inventory changed/missing {phrase!r}")
 
-    require(routing.get("work_item") == "PPIA-12", "setting-extension routing work item changed")
+    require(routing.get("work_item_id") == "PPIA-12", "setting-extension routing work item changed")
     routing_text = json.dumps(routing, ensure_ascii=False).lower()
     for phrase in ("ppia-02", "ppia-03", "ppia-04", "ppia-05", "ppia-08", "ppia-11"):
         require(phrase in routing_text, f"setting-extension routing missing {phrase!r}")
