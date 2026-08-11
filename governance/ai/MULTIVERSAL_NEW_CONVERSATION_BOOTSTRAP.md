@@ -2,12 +2,12 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 5.3.0  
+**Version:** 5.4.0  
 **Status:** ACTIVE  
 **Owner and final authority:** John Brandon Turner  
 **Governance repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Application repository:** `cybalicistjt-stack/Multiversal-app`  
-**Last updated:** 2026-08-07
+**Last updated:** 2026-08-11
 
 ## Permanent owner entry point
 
@@ -44,16 +44,46 @@ Perform this sequence before explaining, planning, or claiming work:
 1. Verify connected read/write access and the authenticated GitHub identity against `governance/access/AIOC_CONTRIBUTOR_REGISTRY.json`.
 2. Read this bootstrap from `main`.
 3. Read both mandatory operating policies named above.
-4. Read `governance/ai/runtime/CURRENT_WORK_POINTER.json` and its `mandatory_operating_policy` when present.
-5. Read the checkpoint named by `primary_attempt_id` and its exact branch or pull-request evidence.
+4. Read `governance/ai/runtime/CURRENT_WORK_POINTER.json` from `main` and its `mandatory_operating_policy` when present.
+5. Read the checkpoint named by `primary_attempt_id` from `main`, then inspect that attempt's exact recorded branch and pull-request evidence. If the checkpoint exists on the recorded attempt branch, compare it with the `main` copy. A newer internally consistent branch checkpoint or substantive branch commit controls recovery until it is merged or explicitly superseded; do not discard newer branch state merely because `main` has an older projection.
 6. Read `governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json`. Treat it as the compact control-health projection; follow its source scorecard only when a pilot result, limitation, or regression needs inspection.
-7. Inspect the latest commits, pull requests, reviews, and CI relevant to the checkpoint in both repositories.
-8. Read `governance/ci-failures/INDEX.md` from branch `ci/failure-records`; repair any current blocking failure before unrelated work.
+7. Inspect the latest commits, pull requests, reviews, and CI relevant to the checkpoint in both repositories, including repository evidence newer than the pointer's timestamp.
+8. Read `governance/ci-failures/INDEX.md` from branch `ci/failure-records`; repair any current blocking failure before unrelated work. Historical recorded failures are not automatically current blockers; bind any blocker claim to the active attempt or current required gate.
 9. Read `governance/ai/runtime/ROADMAP_INDEX.json` and only the governing roadmap section for the primary work item.
-10. Load additional canonical documents only when required by the active operation. Do not read or rewrite the full roadmap merely to save routine progress.
-11. Run `python tools/continuity_state.py validate` when a usable checkout is available. When only connector access is available, verify the same pointer/checkpoint/evidence invariants directly.
+10. If the active operation depends on owner-supplied archives, generated packages, binaries, exact publication bytes, screenshots, physical-device artifacts, or other external source material, inspect the actually available project/session sources before declaring an execution-surface blocker. Distinguish `source bytes unavailable`, `source bytes available but tool cannot transfer them`, `repository checkout unavailable`, and `validation/CI failure`; these are different recovery states.
+11. Load additional canonical documents only when required by the active operation. Do not read or rewrite the full roadmap merely to save routine progress.
+12. Run `python tools/continuity_state.py validate` when a usable checkout is available. When only connector access is available, verify the same pointer/checkpoint/branch/evidence invariants directly.
 
-Repository evidence is authoritative over stale prose. A newer verified commit, pull request, CI run, or checkpoint controls; stale governance must be corrected through a bounded verified change.
+Repository evidence is authoritative over stale prose. A newer verified commit, pull request, CI run, checkpoint, or attempt-branch handoff controls; stale governance must be corrected through a bounded verified change.
+
+## Branch-versus-main recovery rule
+
+`main` is the canonical merged baseline, but an unfinished governed attempt may legitimately contain newer recovery evidence on its recorded branch.
+
+When `CURRENT_WORK_POINTER.json` names an unfinished attempt:
+
+1. read the `main` checkpoint;
+2. inspect the exact branch named by that checkpoint/pointer;
+3. compare the branch to `main` and identify newer checkpoint or substantive work commits;
+4. prefer the newest internally consistent attempt evidence for resumption while preserving `main` as the last merged canonical baseline;
+5. never reset, recreate, or overwrite the attempt merely because its branch is ahead of or diverged from `main`;
+6. if branch and `main` contradict each other materially, stop unrelated mutation and reconcile continuity through a bounded governance change.
+
+A branch checkpoint is not itself a completion claim. `completed_verified` still requires the declared completion evidence and merge boundary.
+
+## Source-material and execution-surface rule
+
+Do not collapse all file-access problems into a generic statement that a tool or interface "cannot do the work."
+
+For any exact-byte, checksum-bound, binary, archive, or evidence-ingestion task, determine which condition actually applies:
+
+- **source bytes unavailable:** the required owner/source artifact is not present in the current accessible sources;
+- **source bytes available, transfer unavailable:** the exact source exists, but the active repository tool cannot ingest/copy it byte-for-byte;
+- **repository checkout unavailable:** file-system operations or validators require a checkout not exposed on the current surface;
+- **validation failed:** the bytes/work exist but a required deterministic or hosted gate failed;
+- **owner gate required:** a genuine owner-only approval, spending, release, credential, production, or irreversible decision is required.
+
+Never reconstruct exact-byte artifacts from truncated excerpts, paraphrase, regenerated prose, OCR, screenshots, or memory when checksum identity is part of the acceptance gate. Never invent missing checksums. If the required source becomes available on a later surface, re-evaluate the blocker instead of repeating an obsolete tool-limitation claim.
 
 ## Work-state interpretation
 
@@ -120,6 +150,8 @@ If the scorecard is missing, failing, or contradicts its source scorecard for th
 
 Starting a side mission must not mark another track complete, superseded, or abandoned. Paused and planned tracks remain explicit with their next work item and evidence. Changing the primary attempt is a pointer selection, not a rewrite of the underlying roadmap or checkpoints.
 
+Application implementation authority may also be recorded canonically inside `cybalicistjt-stack/Multiversal-app` even while the AIOC conversational primary points to a governance/design side mission. A selected AIOC primary attempt does not by itself supersede the application repository's authorized current work order, and an application work order does not silently complete or discard the AIOC primary attempt.
+
 ## Roadmap-performance rule
 
 The full roadmap is a milestone and dependency authority, not an autosave file.
@@ -150,7 +182,7 @@ Patch the full roadmap only when a work item becomes `completed_verified`, a mil
 ### Truthfulness
 
 - Never claim a file, commit, branch, pull request, review, merge, test, CI result, artifact, deployment, extraction, index, audit, validation, or completion without matching tool verification.
-- Distinguish authority, permission, connector availability, attempted action, and successful evidence.
+- Distinguish authority, permission, connector availability, source-material availability, repository-checkout availability, attempted action, and successful evidence.
 - If a tool action fails, record the failure, repair it when possible, and continue.
 
 ### Approved recommendations
@@ -178,11 +210,12 @@ Every material status claim must have matching current execution or canonical-re
 
 ## Recovery fallback
 
-If the pointer or checkpoint is missing, corrupt, contradictory, or references unavailable evidence:
+If the pointer or checkpoint is missing, corrupt, contradictory, references unavailable evidence, or is materially older than the attempt branch it names:
 
-1. stop mutation;
+1. stop unrelated mutation;
 2. preserve the conflicting records;
-3. reconstruct state from branches, commits, pull requests, CI, and the roadmap index;
-4. create a recovery checkpoint marked unfinished;
-5. validate and merge the correction;
-6. resume only after the repository again has one deterministic primary state.
+3. reconstruct state from the named attempt branch, commits, pull requests, CI, the application current-work order, and the roadmap index;
+4. inspect required external/project source availability when the operation is checksum- or artifact-bound;
+5. create or update a recovery checkpoint marked unfinished without erasing the prior attempt;
+6. validate and merge the correction when repository state itself is contradictory;
+7. resume only after the recovery path has one deterministic primary state and an evidence-backed exact next action.
