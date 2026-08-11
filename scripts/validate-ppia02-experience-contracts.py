@@ -96,11 +96,14 @@ def main() -> int:
         raise SystemExit("reference-case source evidence has invalid SHA-256")
 
     rows = cases.get("cases") or []
-    if len(rows) != 12 or len({row.get("case_id") for row in rows}) != 12:
-        raise SystemExit("reference-case set must contain 12 unique cases")
+    if len(rows) != 13 or len({row.get("case_id") for row in rows}) != 13:
+        raise SystemExit("reference-case set must contain 13 unique cases")
+    expected_case_ids = [f"PPIA02-RC-{n:03d}" for n in range(1, 14)]
+    if [row.get("case_id") for row in rows] != expected_case_ids:
+        raise SystemExit("reference-case ID/order set changed")
     source_grounded = [row for row in rows if row.get("kind") == "source_grounded"]
     synthetic = [row for row in rows if row.get("kind") == "synthetic_qa"]
-    if len(source_grounded) != 7 or len(synthetic) != 5:
+    if len(source_grounded) != 7 or len(synthetic) != 6:
         raise SystemExit("reference-case source/synthetic split changed")
     if any(row.get("canonical_content") is not False for row in synthetic):
         raise SystemExit("a synthetic reference case is not explicitly noncanonical")
@@ -129,11 +132,21 @@ def main() -> int:
         if term not in hidden_acceptance:
             raise SystemExit(f"hidden placement case lost leak-protection term: {term}")
 
+    transformation = next(row for row in rows if row["case_id"] == "PPIA02-RC-013")
+    if transformation.get("kind") != "synthetic_qa" or transformation.get("canonical_content") is not False:
+        raise SystemExit("runtime transformation case is not explicitly noncanonical QA")
+    if transformation.get("profile") != "stage_variant" or "live_runtime" not in transformation.get("contexts", []):
+        raise SystemExit("runtime transformation case lost form/runtime coverage")
+    transformation_acceptance = " ".join(transformation.get("acceptance") or [])
+    for term in ("owning Ability/Action/Session workflow", "does not rewrite the reusable Definition", "unrevealed alternate form", "Reconnect restores the authoritative current form", "stale cache"):
+        if term not in transformation_acceptance:
+            raise SystemExit(f"runtime transformation case lost requirement: {term}")
+
     summary = cases.get("summary") or {}
     expected_summary = {
-        "cases": 12,
+        "cases": 13,
         "source_grounded_cases": 7,
-        "synthetic_qa_cases": 5,
+        "synthetic_qa_cases": 6,
         "canonical_synthetic_records": 0,
         "source_pdfs_used": 4,
     }
