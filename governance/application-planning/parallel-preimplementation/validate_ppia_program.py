@@ -18,6 +18,9 @@ EXPECTED_ORDER = ["PPIA-01","PPIA-02","PPIA-03","PPIA-04","PPIA-05","PPIA-12","P
 ACTIVE_STATUSES = {"started", "in_progress"}
 COMPLETE_STATUSES = {"complete", "completed", "completed_verified"}
 
+P7_FINAL_HEAD = "c8e9d1ab677ca4bb37a772b1883099d23abb8187"
+P7_FINAL_MERGE = "ac1628227d34df7fc1585b21c21988fb2fd7080a"
+
 
 def load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -34,6 +37,7 @@ def historical_completion_checks() -> None:
     p4 = load_json(WORK_STATE_DIR / "PPIA-04-attempt-001.json")
     p5 = load_json(WORK_STATE_DIR / "PPIA-05-attempt-001.json")
     p12 = load_json(WORK_STATE_DIR / "PPIA-12-attempt-001.json")
+    p7 = load_json(WORK_STATE_DIR / "PPIA-07-attempt-001.json")
 
     assert p1["status"] in COMPLETE_STATUSES and p1.get("merge_commit") == "f9e2b1fb7c340d27813b09c180b60d34d5fb6f92"
     assert p2["status"] == "completed_verified" and p2.get("merge_commit") == "f768345a44a662a5a1981f4cb35d218c926a5cb6"
@@ -50,6 +54,11 @@ def historical_completion_checks() -> None:
     assert p12["active_substep"] is None and not p12["unresolved_failures"] and p12["owner_decision_required"] is False
     assert any("31536379370" in item.get("command", "") and item.get("status") == "passed" for item in p12["validation"])
     assert any("0ed9f9a0c53b2a132d8f38c0d3cae22cc7ae14a0" in item.get("value", "") for item in p12["evidence"])
+    assert p7["status"] == "completed_verified" and p7.get("merge_commit") == P7_FINAL_MERGE
+    assert p7["latest_pushed_commit"] == P7_FINAL_HEAD and p7["pull_request"] == 246
+    assert p7["active_substep"] is None and not p7["unresolved_failures"] and p7["owner_decision_required"] is False
+    assert any("31545759090" in item.get("command", "") and item.get("status") == "passed" for item in p7["validation"])
+    assert any(P7_FINAL_MERGE in item.get("value", "") for item in p7["evidence"])
 
 
 def main() -> int:
@@ -75,6 +84,11 @@ def main() -> int:
     assert current_tranche["status"] in ACTIVE_STATUSES
     for work_item_id in EXPECTED_ORDER[current_index + 1:]:
         assert tranche_by_id[work_item_id]["status"] == "planned"
+
+    if current_id == "PPIA-08":
+        gate = current_tranche["completion_gate"].lower()
+        for term in ("map-image upload", "grid", "calibration", "cell-addressable", "dungeon-map construction kit"):
+            assert term in gate, f"PPIA-08 completion gate missing owner-directed map requirement: {term}"
 
     boundaries = backlog["boundaries"]
     for flag in ("application_runtime_mutation_authorized","a2_activation_authorized","release_authorized","deployment_authorized","tester_access_authorized","canonical_promotion_without_source_evidence_authorized"):
@@ -116,6 +130,9 @@ def main() -> int:
     print(f"current: {current_id}")
     print(f"completed_before_current: {current_index}")
     print("p12_verified_completion_merge: 0ed9f9a0c53b2a132d8f38c0d3cae22cc7ae14a0")
+    print(f"p7_verified_completion_merge: {P7_FINAL_MERGE}")
+    if current_id == "PPIA-08":
+        print("ppia08_map_grid_dungeon_scope: required")
     print("a2_activation_authorized: false")
     return 0
 

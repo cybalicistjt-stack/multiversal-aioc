@@ -13,6 +13,9 @@ CP=ROOT/'governance/ai/work-state/PPIA-07-attempt-001.json'
 PTR=ROOT/'governance/ai/runtime/CURRENT_WORK_POINTER.json'
 STATUS=ROOT/'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
 TRANSITION='a7803f8438a837b741f78c875d7ec2e915d37a19'
+FOUNDATION_MERGE='183d199d69f5cce121d4b971f33fe6c0145a6c45'
+FINAL_HEAD='c8e9d1ab677ca4bb37a772b1883099d23abb8187'
+FINAL_MERGE='ac1628227d34df7fc1585b21c21988fb2fd7080a'
 
 def req(c,m):
     if not c: raise SystemExit('PPIA-07 FOUNDATION: FAIL — '+m)
@@ -42,8 +45,19 @@ def main():
         req(value in inv,f'inventory missing {value!r}')
     for value in ['FOUNDATION CANDIDATE — NOT PPIA-07 COMPLETE',TRANSITION,'15 Rune Construction identity/state layers','PPIA-07 itself remains `started`']:
         req(value in cand,f'candidate missing {value!r}')
-    req(cp['work_item_id']=='PPIA-07' and cp['attempt_id']=='PPIA-07-attempt-001','checkpoint identity mismatch'); req(cp['status'] in {'started','in_progress'},'PPIA-07 must remain active'); req(cp['base_commit']==TRANSITION,'checkpoint base must be canonical transition merge'); req(cp['owner_decision_required'] is False and not cp['unresolved_failures'],'checkpoint unresolved state')
-    selected=[x for x in ptr['active_attempts'] if x.get('owner_selected')]; req(len(selected)==1 and selected[0]['work_item_id']=='PPIA-07','pointer must select PPIA-07'); req(ptr['primary_attempt_id']=='PPIA-07-attempt-001','primary attempt mismatch')
-    primary=status['primary']; req(primary['work_item_id']=='PPIA-07' and primary['attempt_id']==cp['attempt_id'],'compact status identity mismatch'); req(primary['status']==cp['status'],'compact status/checkpoint mismatch')
-    print('PPIA-07 FOUNDATION: PASS'); print('pdfs=9 pages=170'); print('direct_pdfs=3 pages=77'); print('context_pdfs=6 pages=93'); print('csvs=4 rows=2225'); print('explicit_rune_records=3'); print('scripts_macros_records=16'); print('identity_state_layers=15'); print('presentation_profiles=12'); print('deterministic_grammar_defined=false'); print('runtime_activation=false')
+
+    req(cp['work_item_id']=='PPIA-07' and cp['attempt_id']=='PPIA-07-attempt-001','checkpoint identity mismatch')
+    req(cp['base_commit']==TRANSITION,'checkpoint base must be canonical transition merge')
+    req(cp['owner_decision_required'] is False and not cp['unresolved_failures'],'checkpoint unresolved state')
+    req(any(FOUNDATION_MERGE in e.get('value','') for e in cp.get('evidence',[])),'checkpoint lost foundation merge evidence')
+    if cp['status'] in {'started','in_progress'}:
+        selected=[x for x in ptr['active_attempts'] if x.get('owner_selected')]; req(len(selected)==1 and selected[0]['work_item_id']=='PPIA-07','active PPIA-07 pointer must select PPIA-07'); req(ptr['primary_attempt_id']=='PPIA-07-attempt-001','primary attempt mismatch')
+        primary=status['primary']; req(primary['work_item_id']=='PPIA-07' and primary['attempt_id']==cp['attempt_id'],'compact status identity mismatch'); req(primary['status']==cp['status'],'compact status/checkpoint mismatch')
+        mode='active'
+    else:
+        req(cp['status']=='completed_verified','unexpected historical PPIA-07 status')
+        req(cp['latest_pushed_commit']==FINAL_HEAD and cp['pull_request']==246 and cp['merge_commit']==FINAL_MERGE,'historical PPIA-07 final evidence mismatch')
+        req(any('31545759090' in v.get('command','') and v.get('status')=='passed' for v in cp.get('validation',[])),'historical completion validation missing')
+        mode='historical_completed'
+    print('PPIA-07 FOUNDATION: PASS'); print('pdfs=9 pages=170'); print('direct_pdfs=3 pages=77'); print('context_pdfs=6 pages=93'); print('csvs=4 rows=2225'); print('explicit_rune_records=3'); print('scripts_macros_records=16'); print('identity_state_layers=15'); print('presentation_profiles=12'); print('deterministic_grammar_defined=false'); print(f'continuity_mode={mode}'); print('runtime_activation=false')
 if __name__=='__main__': main()
