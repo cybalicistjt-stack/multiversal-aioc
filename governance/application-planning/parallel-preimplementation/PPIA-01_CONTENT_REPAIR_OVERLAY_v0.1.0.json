@@ -1,0 +1,206 @@
+{
+  "format": "multiversal-ppia01-content-repair-overlay",
+  "version": "0.1.0",
+  "work_item": "PPIA-01",
+  "status": "governed_recommendation_overlay_not_source_rewrite",
+  "authority": "governance/object-system/csv-intake/OWNER_RECOMMENDATION_DELEGATION.json",
+  "policy": {
+    "preserve_raw_source": true,
+    "recommendations_are_source_facts": false,
+    "automatic_identity_merge": false,
+    "reversible": true,
+    "later_balance_review": "PPIA-11"
+  },
+  "batches": [
+    {
+      "batch_id": "PPIA-01-R01-shapeshifter-combat-forms",
+      "dataset": "species_elementalist_and_innate_abilities_catalog.csv",
+      "source_pdf": "Innate Trees(3).PDF",
+      "branch": "Combat Forms",
+      "source_page": "16",
+      "reason": "The source pricing list publishes twenty Combat Forms names, tiers, and XP prices but provides no effect text for those listing rows. These recommendations make the records usable without claiming that the proposed mechanics appeared in the source.",
+      "repairs": [
+        {
+          "target": {"source_row": 1898, "record_id": "ABLREC-01897", "name": "Bestial Claws", "tier": "1", "xp_cost": "500 XP"},
+          "recommendation": {"Effect": "While transformed, grow combat-ready claws that deal 1d8 slashing damage and may use Strength or Dexterity for attack and damage rolls.", "Mechanics": "The claws are natural weapons. Drawing or retracting them requires no action while transformed."},
+          "evidence": ["Source listing supplies the name Bestial Claws, Tier 1 placement, and 500 XP price.", "Nearby published Combat Forms establish natural weapons as an appropriate Tier 1 Shapeshifter mechanic."],
+          "rationale": "Provides a simple entry-level natural weapon at the lower Tier 1 price without copying a different published ability by identity.",
+          "alternatives_considered": ["Use a smaller 1d6 damage die plus a climbing bonus.", "Treat Bestial Claws as an alias of Feral Strikes; rejected because the source gives a distinct name and identity."],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {"source_row": 1899, "record_id": "ABLREC-01898", "name": "Reinforced Hide", "tier": "1", "xp_cost": "750 XP"},
+          "recommendation": {"Effect": "While transformed, gain +1 AC and reduce nonmagical slashing, piercing, and bludgeoning damage you take by 1.", "Mechanics": "The reduction applies after resistance and does not stack with another effect named Reinforced Hide."},
+          "evidence": ["Source listing supplies the name Reinforced Hide, Tier 1 placement, and 750 XP price.", "Published Combat Forms use natural armor and bounded physical damage reduction at early tiers."],
+          "rationale": "The higher Tier 1 price supports a defensive package slightly stronger than a single armor bonus while staying below later resistance effects.",
+          "alternatives_considered": ["Grant +2 AC with no damage reduction.", "Grant full physical resistance; rejected as too close to higher-tier defenses."],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {"source_row": 1900, "record_id": "ABLREC-01899", "name": "Predator's Bite", "tier": "1", "xp_cost": "500 XP"},
+          "recommendation": {"Effect": "While transformed, gain a bite natural weapon that deals 1d8 piercing damage. Against a creature you are already grappling, the bite deals an additional 1d4 piercing damage once per turn.", "Mechanics": "Use Strength for the grapple interaction; the normal bite attack may use Strength or Dexterity."},
+          "evidence": ["Source listing supplies the name Predator's Bite, Tier 1 placement, and 500 XP price.", "Published Combat Forms support natural-weapon attacks and predator-themed close combat."],
+          "rationale": "Creates a distinct low-cost bite option with a small positional payoff rather than duplicating the claw recommendation.",
+          "alternatives_considered": ["Make the bite a flat 1d10 attack.", "Add a free grapple on hit; rejected as too strong for the lower Tier 1 price."],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {"source_row": 1901, "record_id": "ABLREC-01900", "name": "Enhanced Muscles", "tier": "1", "xp_cost": "750 XP"},
+          "recommendation": {"Effect": "While transformed, gain +2 on Athletics checks, double your normal carrying capacity, and add +1 damage to Strength-based natural-weapon attacks.", "Mechanics": "The carrying-capacity increase does not change creature size or reach."},
+          "evidence": ["Source listing supplies the name Enhanced Muscles, Tier 1 placement, and 750 XP price.", "Published Shapeshifter abilities use bounded numeric bonuses and physical utility at early tiers."],
+          "rationale": "Uses the higher Tier 1 cost for a mixed combat-and-utility strength package without granting an attribute increase.",
+          "alternatives_considered": ["Grant +1 Strength directly.", "Grant advantage on all Strength checks; rejected as broader than needed."],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {"source_row": 1902, "record_id": "ABLREC-01901", "name": "Rending Talons", "tier": "2", "xp_cost": "1,500 XP"},
+          "recommendation": {"Effect": "Natural-weapon critical hits inflict a bleeding wound that deals 1d4 damage at the end of the target's next two turns unless the target or an adjacent creature uses an action to stop the bleeding.", "Mechanics": "A creature can have only one bleeding wound from Rending Talons at a time."},
+          "evidence": ["Source listing supplies the name Rending Talons, Tier 2 placement, and 1,500 XP price.", "The published Combat Forms progression introduces conditional extra damage at Tier 2."],
+          "rationale": "Creates a bounded Tier 2 bleed effect while avoiding unrestricted damage stacking.",
+          "alternatives_considered": ["Apply bleed on every hit.", "Use a flat +1d6 damage bonus with no bleed."],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {"source_row": 1903, "record_id": "ABLREC-01902", "name": "Thickened Bone Structure", "tier": "2", "xp_cost": "2,000 XP"},
+          "recommendation": {"Effect": "While transformed, gain +1 AC, reduce bludgeoning damage by 2, and gain advantage on checks or saves made to resist being shoved or knocked prone.", "Mechanics": "This is a structural defense and does not grant immunity to forced movement."},
+          "evidence": ["Source listing supplies the name Thickened Bone Structure, Tier 2 placement, and 2,000 XP price.", "Tier 2 Combat Forms include stronger physical defenses and anti-control resilience."],
+          "rationale": "The mid-tier price supports a durable skeletal defense distinct from hide-based slashing/piercing protection.",
+          "alternatives_considered": ["Grant resistance to bludgeoning damage.", "Grant +2 AC only."],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {"source_row": 1904, "record_id": "ABLREC-01903", "name": "Pouncing Strikes", "tier": "2", "xp_cost": "1,500 XP"},
+          "recommendation": {"Effect": "Once per turn, if you move at least 20 feet straight toward a creature before hitting it with a natural weapon, the target must succeed on a Strength save or fall prone.", "Mechanics": "Save DC = 10 + your Strength or Dexterity modifier, using the ability applied to the triggering attack."},
+          "evidence": ["Source listing supplies the name Pouncing Strikes, Tier 2 placement, and 1,500 XP price.", "Published Combat Forms use movement-gated prone effects at Tier 2."],
+          "rationale": "A clear movement-to-control payoff matches both the name and established Tier 2 Shapeshifter combat language.",
+          "alternatives_considered": ["Add bonus damage instead of prone.", "Allow the pounce on any movement distance; rejected to preserve setup cost."],
+          "confidence": "high",
+          "reversible": true
+        },
+        {
+          "target": {"source_row": 1905, "record_id": "ABLREC-01904", "name": "Pain Resistance", "tier": "2", "xp_cost": "2,500 XP"},
+          "recommendation": {"Effect": "While transformed, reduce physical damage you take by 2 and gain advantage on saves against being stunned by pain, injury, or bodily trauma.", "Mechanics": "This does not apply to mental, magical, or environmental stun effects unless they explicitly act through physical pain."},
+          "evidence": ["Source listing supplies the name Pain Resistance, Tier 2 placement, and 2,500 XP price.", "Published Combat Forms progressively add bounded damage reduction and condition resilience."],
+          "rationale": "The highest Tier 2 price supports a broad but bounded physical resilience benefit without approaching Tier 4 total-damage defenses.",
+          "alternatives_considered": ["Grant resistance to all physical damage.", "Grant temporary HP each round."],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {"source_row": 1906, "record_id": "ABLREC-01905", "name": "Regenerating Flesh", "tier": "3", "xp_cost": "3,500 XP"},
+          "recommendation": {"Effect": "Once per short rest while transformed, use a bonus action to begin rapid regeneration for 3 rounds; at the start of each of your turns, regain 1d6 HP if you have at least 1 HP.", "Mechanics": "Taking fire or necrotic damage suppresses the healing at the start of your next turn."},
+          "evidence": ["Source listing supplies the name Regenerating Flesh, Tier 3 placement, and 3,500 XP price.", "A stronger published Tier 5 regeneration effect establishes fire/necrotic suppression as compatible Shapeshifter language."],
+          "rationale": "Provides a limited mid-tier precursor to endgame regeneration without copying its always-on strength.",
+          "alternatives_considered": ["Regain a flat 5 HP every turn continuously.", "Use a one-time 3d8 self-heal."],
+          "confidence": "high",
+          "reversible": true
+        },
+        {
+          "target": {"source_row": 1907, "record_id": "ABLREC-01906", "name": "Crushing Jaws", "tier": "3", "xp_cost": "4,000 XP"},
+          "recommendation": {"Effect": "Your bite natural weapon deals 2d8 piercing damage. Once per turn after hitting a creature no more than one size larger than you, you may attempt to grapple it as a bonus action.", "Mechanics": "The grapple uses the normal opposed grapple rules; the bite itself does not automatically restrain the target."},
+          "evidence": ["Source listing supplies the name Crushing Jaws, Tier 3 placement, and 4,000 XP price.", "Tier 3 Combat Forms support stronger natural weapons and size-aware control."],
+          "rationale": "The higher Tier 3 cost supports both improved bite damage and a bounded grapple rider.",
+          "alternatives_considered": ["Make the target automatically restrained on hit.", "Increase bite damage to 3d8 with no control effect."],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {"source_row": 1908, "record_id": "ABLREC-01907", "name": "Brute Strength Form", "tier": "3", "xp_cost": "3,500 XP"},
+          "recommendation": {"Effect": "While transformed, gain +2 on Strength checks and Strength saves, deal +2 damage with Strength-based melee attacks, and count as one size larger for carrying, pushing, dragging, and grappling.", "Mechanics": "This does not change your actual space, reach, or maximum target size for effects other than carrying and grappling."},
+          "evidence": ["Source listing supplies the name Brute Strength Form, Tier 3 placement, and 3,500 XP price.", "Published Combat Forms use size and bounded attack/damage modifiers at mid tiers."],
+          "rationale": "Creates a clear strength-specialist form without changing the base Strength score or duplicating a size-increase ability.",
+          "alternatives_considered": ["Increase Strength by 2.", "Increase creature size by one category."],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {"source_row": 1909, "record_id": "ABLREC-01908", "name": "Pack Hunter's Instinct", "tier": "3", "xp_cost": "4,500 XP"},
+          "recommendation": {"Effect": "Once per turn when you hit a creature that is within melee reach of one of your allies, deal an additional 1d6 damage. You also gain advantage on checks made to track a creature previously damaged by you or an ally.", "Mechanics": "The bonus damage applies only once per turn regardless of the number of adjacent allies."},
+          "evidence": ["Source listing supplies the name Pack Hunter's Instinct, Tier 3 placement, and 4,500 XP price.", "Published Combat Forms include ally-adjacency and predator-tracking themes at Tier 3."],
+          "rationale": "The highest Tier 3 price supports a combat teamwork rider plus thematic tracking utility while limiting damage frequency.",
+          "alternatives_considered": ["Grant advantage on all attacks while an ally is adjacent.", "Grant +1 AC and +1 attack instead of bonus damage."],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {"source_row": 1910, "record_id": "ABLREC-01909", "name": "Razor-Spiked Form", "tier": "4", "xp_cost": "6,500 XP"},
+          "recommendation": {"Effect": "While transformed, your natural weapons deal an additional 1d6 piercing damage. A creature that starts its turn grappling you or that hits you with an unarmed or natural melee attack takes 1d6 piercing damage.", "Mechanics": "Reactive spike damage can affect a creature only once per turn."},
+          "evidence": ["Source listing supplies the name Razor-Spiked Form, Tier 4 placement, and 6,500 XP price.", "Tier 4 Combat Forms support persistent offensive mutations and retaliation effects."],
+          "rationale": "Creates both offensive and defensive spike value appropriate to the entry Tier 4 price while capping retaliation frequency.",
+          "alternatives_considered": ["Deal 2d6 reactive damage with no attack bonus.", "Apply Bleeding to every natural-weapon hit."],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {"source_row": 1911, "record_id": "ABLREC-01910", "name": "Titanic Resilience", "tier": "4", "xp_cost": "7,000 XP"},
+          "recommendation": {"Effect": "When you transform, gain temporary HP equal to 10 + your Constitution modifier. While those temporary HP remain, reduce physical damage you take by 3 and gain advantage on Constitution saves.", "Mechanics": "The temporary HP do not refresh until you transform again after a short or long rest."},
+          "evidence": ["Source listing supplies the name Titanic Resilience, Tier 4 placement, and 7,000 XP price.", "Published Combat Forms use temporary HP, damage reduction, and Constitution resilience as advanced defenses."],
+          "rationale": "Combines a finite durability pool with bounded damage reduction rather than granting permanent broad resistance.",
+          "alternatives_considered": ["Grant +20 maximum HP while transformed.", "Grant resistance to all damage."],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {"source_row": 1912, "record_id": "ABLREC-01911", "name": "War Form Mastery", "tier": "4", "xp_cost": "8,000 XP"},
+          "recommendation": {"Effect": "When entering a combat transformation, choose two Tier 1 or Tier 2 Combat Forms you know; both chosen benefits may operate at the same time for that transformation.", "Mechanics": "The selected benefits must be compatible and cannot be the same ability twice. Selection is made when the transformation begins."},
+          "evidence": ["Source listing supplies the name War Form Mastery, Tier 4 placement, and 8,000 XP price.", "Advanced Shapeshifter design already uses combining lower-tier adaptations as a mastery pattern."],
+          "rationale": "The highest-cost early Tier 4 ability rewards investment in the Combat Forms tree without inventing a new unrelated damage package.",
+          "alternatives_considered": ["Permanently grant every Tier 1 Combat Form.", "Grant a flat +2 attack and +2 AC bonus."],
+          "confidence": "high",
+          "reversible": true
+        },
+        {
+          "target": {"source_row": 1913, "record_id": "ABLREC-01912", "name": "Battlefield Predator", "tier": "4", "xp_cost": "7,500 XP"},
+          "recommendation": {"Effect": "While transformed, gain +10 feet movement speed, cannot be surprised, and once per round when a hostile creature within 30 feet is reduced to 0 HP you may move up to half your speed without provoking opportunity attacks.", "Mechanics": "The reaction movement cannot be used if your speed is 0 and does not itself grant an attack."},
+          "evidence": ["Source listing supplies the name Battlefield Predator, Tier 4 placement, and 7,500 XP price.", "Published predator-themed Shapeshifter abilities combine awareness and mobility."],
+          "rationale": "Creates advanced battlefield positioning rather than another raw damage steroid and matches the predator identity.",
+          "alternatives_considered": ["Grant advantage on every attack against wounded creatures.", "Grant an immediate bonus attack when a creature falls."],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {"source_row": 1914, "record_id": "ABLREC-01913", "name": "Ultimate Combat Form", "tier": "5", "xp_cost": "12,000 XP"},
+          "recommendation": {"Effect": "When you transform for combat, choose up to three Tier 1–3 Combat Forms you know and use all chosen benefits simultaneously. While this form lasts, gain +1 AC.", "Mechanics": "Selected effects remain subject to their normal once-per-turn, rest, and incompatibility limits."},
+          "evidence": ["Source listing supplies the name Ultimate Combat Form, Tier 5 placement, and 12,000 XP price.", "Mastery-style combination is an established high-tier Shapeshifter progression pattern."],
+          "rationale": "Provides a capstone synthesis ability while preserving the limits of the lower-tier components it combines.",
+          "alternatives_considered": ["Gain every lower-tier Combat Form simultaneously.", "Create a fixed new form with +3 attack, +3 AC, and bonus damage."],
+          "confidence": "high",
+          "reversible": true
+        },
+        {
+          "target": {"source_row": 1915, "record_id": "ABLREC-01914", "name": "Apex Predator's Wrath", "tier": "5", "xp_cost": "11,000 XP"},
+          "recommendation": {"Effect": "Once per long rest while transformed, enter Apex Wrath for 1 minute: gain +2 to natural-weapon damage, score critical hits on 19–20, and gain immunity to the Frightened condition.", "Mechanics": "Apex Wrath ends early if the transformation ends. It does not stack with another effect that expands the critical range below 19."},
+          "evidence": ["Source listing supplies the name Apex Predator's Wrath, Tier 5 placement, and 11,000 XP price.", "Published Tier 5 Combat Forms use expanded critical ranges and apex-predator themes."],
+          "rationale": "A once-per-rest offensive mode fits the lower-priced Tier 5 slot without making the benefits permanently active.",
+          "alternatives_considered": ["Grant advantage on every natural-weapon attack for 1 minute.", "Double all natural-weapon damage dice."],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {"source_row": 1916, "record_id": "ABLREC-01915", "name": "Unstoppable Berserker", "tier": "5", "xp_cost": "12,500 XP"},
+          "recommendation": {"Effect": "Once per long rest when damage would reduce you to 0 HP while transformed, remain at 1 HP and enter a berserk state until the end of your next turn. During that state, gain resistance to nonmagical physical damage and +2 melee damage.", "Mechanics": "After the berserk state ends, gain one level of exhaustion unless another rule explicitly prevents it."},
+          "evidence": ["Source listing supplies the name Unstoppable Berserker, Tier 5 placement, and 12,500 XP price.", "The published Combat Forms progression includes berserk-state and advanced resilience mechanics."],
+          "rationale": "Makes the ability feel genuinely unstoppable while limiting the death-prevention trigger to once per long rest and attaching a cost.",
+          "alternatives_considered": ["Become immune to damage for 1 round.", "Regain half maximum HP when reduced to 0."],
+          "confidence": "medium",
+          "reversible": true
+        },
+        {
+          "target": {"source_row": 1917, "record_id": "ABLREC-01916", "name": "Godbeast Evolution", "tier": "5", "xp_cost": "15,000 XP"},
+          "recommendation": {"Effect": "Your perfected combat transformation may be entered or ended at will. When you enter it, choose Strength or Dexterity; that ability gains +2 while transformed, your natural weapons count as magical, and once per turn a natural-weapon hit deals an additional 1d10 damage.", "Mechanics": "The +2 ability increase cannot raise the chosen score above the campaign's normal cap. The bonus damage applies once per turn."},
+          "evidence": ["Source listing supplies the name Godbeast Evolution, Tier 5 placement, and the highest Combat Forms price of 15,000 XP.", "Published Tier 5 Combat Forms establish permanent/at-will transformation, ability improvement, magical natural weapons, and additional damage as capstone-scale mechanics."],
+          "rationale": "Uses the highest price for a broad capstone while bounding the attribute increase and bonus damage so later balance work can tune it safely.",
+          "alternatives_considered": ["Increase both Strength and Dexterity by 2.", "Grant permanent Large size and resistance to all damage."],
+          "confidence": "high",
+          "reversible": true
+        }
+      ]
+    }
+  ]
+}
