@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "PPIA-14",
+  "artifact_version": "0.1.0",
+  "title": "PPIA-14 Microcopy Action Contract Matrix",
+  "status": "candidate",
+  "counts": {"actions":20,"mutating_presentations":2,"nonmutating_presentations":18},
+  "actions": [
+    {"id":"P14-ACT-001","key":"resolve-message-state","kind":"read","may_mutate_upstream":false,"rule":"Resolve an already-authorized semantic message state after disclosure reduction."},
+    {"id":"P14-ACT-002","key":"inspect-safe-message","kind":"read","may_mutate_upstream":false,"rule":"Inspect the selected safe message object and its provenance without hidden-state expansion."},
+    {"id":"P14-ACT-003","key":"preview-visual-render","kind":"read","may_mutate_upstream":false,"rule":"Preview localized visual copy with allowlisted interpolation."},
+    {"id":"P14-ACT-004","key":"preview-nonvisual-render","kind":"read","may_mutate_upstream":false,"rule":"Preview equivalent screen-reader/nonvisual copy."},
+    {"id":"P14-ACT-005","key":"list-safe-affordances","kind":"read","may_mutate_upstream":false,"rule":"List only affordance classes already authorized for the selected state and subject."},
+    {"id":"P14-ACT-006","key":"inspect-support-reference-policy","kind":"read","may_mutate_upstream":false,"rule":"Inspect the minimum-safe support-reference policy."},
+    {"id":"P14-ACT-007","key":"preview-redacted-diagnostics","kind":"read","may_mutate_upstream":false,"rule":"Preview allowlisted/redacted diagnostics; no raw logs or secrets."},
+    {"id":"P14-ACT-008","key":"retry-read","kind":"recovery_presentation","may_mutate_upstream":false,"rule":"Present the upstream retryable nonmutating read operation."},
+    {"id":"P14-ACT-009","key":"reconnect","kind":"recovery_presentation","may_mutate_upstream":false,"rule":"Present transport reconnection; never imply mutation success."},
+    {"id":"P14-ACT-010","key":"lookup-operation-status","kind":"recovery_presentation","may_mutate_upstream":false,"rule":"Present authorized status lookup for status-unknown."},
+    {"id":"P14-ACT-011","key":"refresh-projection","kind":"recovery_presentation","may_mutate_upstream":false,"rule":"Present a projection refresh after an accepted durable Event."},
+    {"id":"P14-ACT-012","key":"review-current-version","kind":"recovery_presentation","may_mutate_upstream":false,"rule":"Present upstream current-version inspection for stale state."},
+    {"id":"P14-ACT-013","key":"review-conflict","kind":"recovery_presentation","may_mutate_upstream":false,"rule":"Present upstream conflict review without resolving it in copy."},
+    {"id":"P14-ACT-014","key":"observe-approval","kind":"recovery_presentation","may_mutate_upstream":false,"rule":"Observe an already-visible approval state."},
+    {"id":"P14-ACT-015","key":"retry-idempotent-operation","kind":"upstream_mutation_presentation","may_mutate_upstream":true,"rule":"Present retry only when operation_id/status/idempotency semantics prove it safe."},
+    {"id":"P14-ACT-016","key":"correct-visible-input","kind":"local_edit","may_mutate_upstream":false,"rule":"Edit only an already-visible editable field; no authoritative mutation is created here."},
+    {"id":"P14-ACT-017","key":"open-help","kind":"support","may_mutate_upstream":false,"rule":"Open F025-authorized help without expanding visibility."},
+    {"id":"P14-ACT-018","key":"report-issue-redacted","kind":"support_write","may_mutate_upstream":true,"rule":"Submit only F025 minimum fields after consent/redaction and upstream operation authorization."},
+    {"id":"P14-ACT-019","key":"dismiss-or-return","kind":"navigation","may_mutate_upstream":false,"rule":"Dismiss or return without changing authoritative state."},
+    {"id":"P14-ACT-020","key":"inspect-source-gap","kind":"governance_read","may_mutate_upstream":false,"rule":"Owner/admin/service inspection of unresolved source gaps; ordinary users receive safe-unavailable fallback."}
+  ],
+  "upstream_mutation_protocol": {
+    "protocol_id":"P14-MUT-PRESENT-001",
+    "authority":"upstream-only",
+    "required_for_mutating_presentations":["authenticated_actor","authorization_context","operation_id","governing_operation_contract"],
+    "retry_extra_requirements":["idempotency_or_safe_retry_proof","status_lookup_when_outcome_ambiguous"],
+    "rules":[
+      "PPIA-14 presents an operation; it never creates mutation authority.",
+      "status-unknown must resolve through status lookup before any retry unless the upstream contract independently proves idempotent retry safety.",
+      "issue reporting follows F025 consent, redaction, minimum-field and submission rules.",
+      "offline/local state never becomes authoritative mutation because copy offers an action."
+    ]
+  },
+  "forbidden":["permission escalation","hidden-existence-proving action","blind ambiguous-mutation retry","forced conflict overwrite","raw diagnostic reveal","automatic support screenshot","invented F024 Pack lifecycle action","AI decision authority"]
+}

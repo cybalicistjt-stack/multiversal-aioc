@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "PPIA-14",
+  "artifact_version": "0.1.0",
+  "title": "PPIA-14 Microcopy Inspector Contract",
+  "status": "candidate",
+  "projection_groups": [
+    {"id":"P14-PG-001","key":"message-identity","fields":["id","message_state_id","semantic_intent_key","family"]},
+    {"id":"P14-PG-002","key":"safe-copy","fields":["title_key","body_key","default_en"]},
+    {"id":"P14-PG-003","key":"disclosure","fields":["disclosure_class","render_rule","audience_scope","fallback_for_other_roles"]},
+    {"id":"P14-PG-004","key":"severity","fields":["severity_semantic"]},
+    {"id":"P14-PG-005","key":"interpolation","fields":["allowed_interpolation_keys","interpolation_policy"]},
+    {"id":"P14-PG-006","key":"actions","fields":["primary_action_class","secondary_action_classes"]},
+    {"id":"P14-PG-007","key":"nonvisual","fields":["nonvisual_status_key","default_en_nonvisual"]},
+    {"id":"P14-PG-008","key":"localization","fields":["pluralization_policy"]},
+    {"id":"P14-PG-009","key":"support","fields":["support_reference_policy"]},
+    {"id":"P14-PG-010","key":"variant-selection","fields":["role","help_context","delivery_channel","disclosure_ceiling"]},
+    {"id":"P14-PG-011","key":"authority-provenance","fields":["authoritative_source_refs","semantic_state_origin"]},
+    {"id":"P14-PG-012","key":"recovery-trace","fields":["operation_id_presence","status_lookup_supported","accepted_event_state","projection_state"]}
+  ],
+  "projection_policy": {
+    "permission_filter_before_message_discovery": true,
+    "permission_filter_before_actions": true,
+    "permission_filter_before_interpolation": true,
+    "permission_filter_before_diagnostics_support": true,
+    "hidden_missing_equivalence_required": true,
+    "nonvisual_semantic_parity_required": true,
+    "raw_internal_diagnostics_visible": false,
+    "hidden_counts_visible": false,
+    "copy_can_override_authority": false,
+    "ai_decision_authority": false
+  },
+  "inspect_rules": [
+    "Inspector reads only the already-authorized message projection.",
+    "Protected facts do not appear in IDs, counts, variants, actions, timing, diagnostics or support references.",
+    "Internal diagnostic/status codes remain separate from localized user copy.",
+    "Service-actor and owner-admin inspection may expose governance metadata only when separately authorized."
+  ]
+}
