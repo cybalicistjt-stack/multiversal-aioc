@@ -1,0 +1,49 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"PPIA-15",
+  "artifact_version":"0.1.0",
+  "title":"PPIA-15 Inherited Scenario Inventory and Nonduplication Ledger",
+  "status":"foundation-candidate",
+  "corpora":[
+    {"id":"P15-COR-001","name":"IA-D09 bounded release fixtures","source":"IA-D09_FIXTURE_CATALOG.json","case_count":24,"stable_id_range":"IA09-FX-001..024","additive_case_records":24,"classification":"release-design baseline","notes":"Minimum deterministic release-design fixture families, explicitly not a complete-game corpus."},
+    {"id":"P15-COR-002","name":"Stage A Glass Harbor / Meridian reference kit","source":"STAGE_A_TESTER_REFERENCE_CAMPAIGN_KIT_v0.1.0.zip via durable handoff","case_count":24,"stable_id_range":"journey mapping exactly IA09-FX-001..024","additive_case_records":0,"classification":"portable execution representation","notes":"Exact one-to-one execution mapping of P15-COR-001; 27 portable synthetic records and six role profiles support the scenarios but do not create 24 additional scenario identities."},
+    {"id":"P15-COR-003","name":"Internal Alpha Tester Package scripted scenarios","source":"MULTIVERSAL_INTERNAL_ALPHA_TESTER_PACKAGE_v1.0.0.zip via durable handoff","case_count":24,"stable_id_range":"IA-D09 scripted scenario mapping","additive_case_records":0,"classification":"tester-facing execution packaging","notes":"Contains all 24 IA-D09 scripted scenarios and expected outcomes; tester access remains unauthorized."},
+    {"id":"P15-COR-004","name":"PPIA-09 Investigation reference corpus","source":"PPIA-09_REFERENCE_CASES_v0.1.0.json","case_count":36,"stable_id_range":"PPIA09-RC-001..036","additive_case_records":36,"classification":"dependency corpus","notes":"First 24 preserve F011 INV-FX-001..024 one-to-one; remaining 12 add PPIA-09 solvability/reveal/provenance cases."},
+    {"id":"P15-COR-005","name":"PPIA-10 Relationship/Social/Faction resolved corpus","source":"PPIA-10_REFERENCE_CASES_v0.1.0.json","case_count":90,"stable_id_range":"PPIA10-RC-001..090","additive_case_records":90,"classification":"dependency corpus","notes":"72 imported F009/F010/F016 fixtures plus 18 PPIA-10 local cases."},
+    {"id":"P15-COR-006","name":"PPIA-11 Encounter Lab resolved corpus","source":"PPIA-11_ENCOUNTER_LAB_REFERENCE_CASES_v0.1.0.json","case_count":42,"stable_id_range":"PPIA11-IR-001..042","additive_case_records":42,"classification":"dependency corpus","notes":"18 benchmark methodology fixtures plus 24 local permission/recovery/privacy/accessibility/calibration cases."},
+    {"id":"P15-COR-007","name":"PPIA-14 Error/Recovery/Permission effective corpus","source":"PPIA-14 Foundation + Microcopy IAR + Integrated reference cases","case_count":108,"stable_id_range":"32 Foundation + P14-IAR-001..040 + P14-IW-001..036","additive_case_records":108,"classification":"dependency corpus","notes":"Covers all 18 message states, hidden/missing equivalence, status-unknown, safe retry, accepted Event/projection lag, approval, support, diagnostics, F024 source gap and accessibility/mobile/nonvisual cases."}
+  ],
+  "supporting_harnesses":[
+    {"id":"P15-HAR-001","name":"8D-007 Golden Test Corpus & Balance Harness retained by PPIA-11","counts":{"source_datasets":20,"promoted_records":19199,"coverage_domains":18,"golden_fixtures":36,"deterministic_scenarios":24,"scenario_executions":72,"recommendations":36,"mutation_sensitivity_cases":7},"add_to_primary_case_record_count":false,"reason":"Supporting balance evidence/harness, not an additional PPIA-15 reference-case schema."},
+    {"id":"P15-HAR-002","name":"PPIA-03 Items/Inventory reference surface","counts":{"reference_cases":18,"integrated_workflows":12},"add_to_primary_case_record_count":false,"reason":"Secondary object-edge grounding for inventory identity, transfer, concurrency, provenance and accessibility."},
+    {"id":"P15-HAR-003","name":"PPIA-04 Vehicle/Mecha/Starship reference surface","counts":{"reference_cases":20,"integrated_workflows":15},"add_to_primary_case_record_count":false,"reason":"Secondary object-edge grounding for crew/cargo/control/resource/transfer and mobile/accessibility."},
+    {"id":"P15-HAR-004","name":"PPIA-05 Species/Forms/Biology reference surface","counts":{"reference_cases":20,"integrated_workflows":15},"add_to_primary_case_record_count":false,"reason":"Secondary object-edge grounding for unusual morphology/forms/Adaptations and nonvisual accessibility."},
+    {"id":"P15-HAR-005","name":"PPIA-07 Rune Construction reference/benchmark surface","counts":{"grammar_reference_cases":20,"expanded_rune_cases":34,"cost_stability_progression_benchmarks":16,"blind_play_cases":16,"integrated_workflows":16},"add_to_primary_case_record_count":false,"reason":"Secondary grounding for interrupted crafting/adjudication/recovery without changing PPIA-15 dependency set."}
+  ],
+  "accounting":{
+    "raw_packaged_scenario_representations":348,
+    "exact_alias_representations_removed":48,
+    "primary_effective_case_records_after_exact_alias_collapse":300,
+    "semantic_overlap_still_requires_review":true
+  },
+  "nonduplication_rules":[
+    {"id":"P15-ND-001","rule":"Exact one-to-one aliases, packaged copies or execution wrappers of an existing stable scenario contribute zero additive scenario count."},
+    {"id":"P15-ND-002","rule":"A new title or stable ID alone does not establish new coverage."},
+    {"id":"P15-ND-003","rule":"A proposed case is additive only when at least one material test dimension changes: actor/authority, object identity or ownership state, timing/concurrency, failure/recovery path, device/interaction/accessibility mode, bounded scale/density, or cross-domain authority handoff."},
+    {"id":"P15-ND-004","rule":"If the changed dimension cannot alter the observable safe oracle, the proposal is presumptively duplicate and should be linked to the existing case instead."},
+    {"id":"P15-ND-005","rule":"Cross-domain composition can justify a new case when the composition creates a risk not proven by the component cases separately, such as reveal plus revocation, transfer plus stale version, or approval plus reconnect."},
+    {"id":"P15-ND-006","rule":"Scale cases must name the deterministic fixture size used in that case but may not turn a QA fixture size into a product capacity, performance or support promise."},
+    {"id":"P15-ND-007","rule":"Accessibility/mobile cases must prove task and semantic parity, not merely render the same content at another viewport."},
+    {"id":"P15-ND-008","rule":"No scenario may invent F024 Pack Lifecycle semantics or an owning-domain rule that its source leaves unspecified."}
+  ],
+  "baseline_coverage_anchors":{
+    "gm_modification":"IA09-FX-003 and PPIA-07 blind GM modify-and-approve already prove baseline modification attribution; PPIA-15 must not clone them.",
+    "basic_reconnect":"IA09-FX-004/005 and PPIA-14 status/recovery cases already prove baseline reconnect/status recovery.",
+    "basic_hidden_read":"IA09-FX-006 and PPIA-14 hidden/missing cases already prove baseline permission-safe absence.",
+    "basic_asset_transfer_conflict":"IA09-FX-011 and PPIA-03 transfer/concurrency contracts already prove baseline asset contention.",
+    "basic_vehicle_operation":"IA09-FX-013 and PPIA-04 already prove bounded vehicle operation.",
+    "basic_campaign_local_edit":"IA09-FX-014 and PPIA-08 already prove Campaign-local scope preservation.",
+    "basic_offline_stale_permission":"IA09-FX-019/020 and PPIA-14 recovery states already prove no fabricated offline Event and reauthorization on reconnect.",
+    "basic_accessibility":"IA09-FX-021/022/023 and PPIA-14 accessibility requirements already prove keyboard, nonvisual and 200-percent-text baselines."
+  }
+}
