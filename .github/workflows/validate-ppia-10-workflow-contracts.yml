@@ -1,0 +1,34 @@
+name: Validate PPIA-10 Workflow Contracts
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-10_*'
+      - 'governance/ai/work-state/PPIA-10-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia10-*.py'
+      - '.github/workflows/validate-ppia-10-*.yml'
+      - 'governance/application-planning/parallel-preimplementation/validate_ppia_program.py'
+  push:
+    branches: [main]
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-10_*'
+      - 'governance/ai/work-state/PPIA-10-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia10-*.py'
+      - '.github/workflows/validate-ppia-10-*.yml'
+      - 'governance/application-planning/parallel-preimplementation/validate_ppia_program.py'
+jobs:
+  validate-ppia10-workflow-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python scripts/validate-ppia10-workflow-contracts.py
+      - run: python scripts/validate-ppia10-inspector-reference-cases.py
+      - run: python scripts/validate-ppia10-foundation.py
+      - run: python scripts/validate-ppia09-to-ppia10-transition.py
+      - run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
+      - run: python tools/continuity_state.py validate
