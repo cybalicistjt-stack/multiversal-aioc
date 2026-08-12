@@ -1,0 +1,73 @@
+{
+  "schema_version":"0.1.0",
+  "work_item":"PPIA-06",
+  "purpose":"Define deterministic lockable randomization plus portable preset/import/export behavior for player-authored Character appearance without mutating Species/Form biology, hidden state, equipment ownership or renderer truth.",
+  "preset_scopes":[
+    {"id":"appearance","contains":["eligible player-authored semantic appearance fields","profile-specific authored overrides where scope permits"],"excludes":["source-owned biology","current Form selector","persistent acquired biology","actual equipment ownership"]},
+    {"id":"palette","contains":["eligible cosmetic palette zones","dye overlays","Species-bounded authored biological palette choices where explicitly editable"],"excludes":["hidden biological markers"]},
+    {"id":"head_face","contains":["compatible authored head/face choices"],"excludes":["required anatomy removal","derived/read-only head structures"]},
+    {"id":"wardrobe","contains":["presentation-only wardrobe IDs","compatible topology variant IDs"],"excludes":["inventory/equipment ownership"]},
+    {"id":"presentation","contains":["saved pose","expression","portrait framing","presentation effects"],"excludes":["free rotation","mechanical stance effects"]},
+    {"id":"profile_specific","contains":["authored fields for one declared editable Species/Form/season/transition profile"],"excludes":["derived profiles","upstream current-state selectors"]}
+  ],
+  "randomization_modes":["randomize_all_eligible","randomize_unlocked","randomize_category","reroll_palette","reroll_accessories","reroll_silhouette_where_legal"],
+  "randomization_inputs":["seed","lock_set","eligible_choice_set_version","appearance_state_version","profile_id","Species_morphology_profile_version","renderer_independent_choice_catalog_version"],
+  "determinism_rule":"Same authorized semantic state, profile, seed, lock set and eligible choice-set/version inputs yield the same proposed semantic randomization result; renderer asset filenames are not randomization identity.",
+  "randomization_guards":[
+    "Only authorized compatible player-authored choices participate.",
+    "Required anatomy cannot be removed.",
+    "Unknown/source-unspecified anatomy cannot be fabricated.",
+    "Current Form, transition occurrence, persistent biological history and hidden markers cannot be randomized.",
+    "Equipment ownership/equipped state cannot be randomized.",
+    "Presentation wardrobe may randomize only from curated compatible nonmechanical presentation assets.",
+    "Unavailable pack content and permission-filtered content are absent from the eligible set.",
+    "Randomization is proposal-only until P06-ACT-025 accepts it through P06-MUT-001."
+  ],
+  "locks":{
+    "granularity":["category","semantic_field","profile","palette_zone","wardrobe_region"],
+    "behavior":"Locked fields retain current authored value and are excluded from candidate draws.",
+    "source_owned_fields":"implicitly locked and not user-unlockable",
+    "derived_fields":"not lock targets because they are recomputed from authoritative/authored parents",
+    "persistence":"Locks may be stored with a preset; transient editing locks need not mutate Character appearance."
+  },
+  "undo_preview":{
+    "proposal_history_required":true,
+    "preview_undo_nonmutating":true,
+    "committed_undo":"requires a new authorized P06-MUT-001 write using current expected_version; historical receipts remain immutable"
+  },
+  "portable_identity":{
+    "stable_semantic_ids_required":true,
+    "stable_choice_ids_required":true,
+    "profile_id_required_where_applicable":true,
+    "source_version_or_pack_lock_required":true,
+    "renderer_filename_identity_forbidden":true,
+    "asset_array_position_identity_forbidden":true
+  },
+  "import_classifications":["compatible","substituted_explicitly_permitted","unavailable","incompatible","missing_pack","unsupported_renderer","restricted","partially_recoverable","unknown"],
+  "import_rules":[
+    "Validation is nonmutating and permission-filtered.",
+    "No silent substitution.",
+    "Substitution is allowed only when a declared compatibility rule permits it and the exact substitution is shown before authorization.",
+    "Source-owned biological fields in imported data are ignored/rejected as nonportable authority, never written into Character truth.",
+    "A preset for a different Species/morphology profile reports incompatibilities instead of coercing anatomy.",
+    "A renderer-unsupported preset can still be semantically compatible; renderer support is reported separately.",
+    "Partially recoverable import exposes the compatible subset, rejected subset and required owner/player review before P06-ACT-028."
+  ],
+  "export_rules":[
+    "Export contains only permission-authorized portable authored appearance/presentation data.",
+    "Hidden biology and hidden equipment never appear in export or derived metadata.",
+    "Export records stable IDs, semantic values, profile scopes, versions, optional seed/locks and provenance class for portable fields.",
+    "Export may reference presentation wardrobe IDs but never claims inventory ownership.",
+    "Export may state renderer preferences/coverage as nonauthoritative metadata."
+  ],
+  "species_examples":[
+    {"species":"Arborae","rule":"A full appearance preset may contain four separately authored seasonal profiles; import never changes current season."},
+    {"species":"Mythragara","rule":"Preset stores base and authorized animal authored identities; hybrid is recomputed and not serialized as independent authority."},
+    {"species":"Nekron","rule":"Post-transition profile data can apply only to a Character whose upstream transition state matches that outcome."},
+    {"species":"Suula","rule":"Persistent adaptation history is excluded from preset portability; cosmetics that accommodate visible markers remain portable."},
+    {"species":"Furashin","rule":"Preferred phenotype preset may contain at most three fur colors plus pattern/texture; live mechanics-owned state is not serialized as cosmetic authority."},
+    {"species":"ManyToms","rule":"Preset stores one constituent identity plus presentation preferences; it does not serialize seventeen independent constituent appearances."},
+    {"species":"Toba-Madra","rule":"Natural fur and cosmetic dye remain separate channels; only source-bounded authored natural choice and cosmetic dye are portable, not invented biology."},
+    {"species":"Vespin","rule":"Wardrobe presets require a four-arm-compatible topology variant or explicit unavailable status."}
+  ]
+}
