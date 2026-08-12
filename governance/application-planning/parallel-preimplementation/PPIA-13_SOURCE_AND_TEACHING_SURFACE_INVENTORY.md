@@ -147,4 +147,4 @@ Teaching is not complete if only a visual desktop walkthrough works. Required se
 
 The Foundation is ready for hosted review when its source manifest, taxonomy, authority/boundary matrix, audience/context/delivery matrix and 30 deterministic noncanonical reference cases validate together, while the PPIA-06→PPIA-13 transition, generalized PPIA program and conversation continuity regressions remain green.
 
-This milestone does **not** claim PPIA-13 completion and does not authorize application runtime, STAGE-A-A2, release, deployment, tester access, paid services or production credentials.
+This milestone does **not** claim PPIA-13 completion. **No application runtime** activation, STAGE-A-A2 activation, release, deployment, tester access, paid services or production credentials are authorized.
