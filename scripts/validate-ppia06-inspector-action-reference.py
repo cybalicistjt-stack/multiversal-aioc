@@ -35,7 +35,6 @@ def main()->None:
     d={k:load(v) for k,v in FILES.items()}
     cp=load(CHECKPOINT)
 
-    # Source/art correction supplied immediately before this milestone.
     owner=d["owner"]
     need(any(x.get("id")=="OVC-026" and "Furashin" in x.get("decision","") for x in owner["decisions"]),"OVC-026 Furashin rat-ninja correction missing")
     need("non-authoritative" in owner["source_authority_policy"].get("filename_or_prompt_label","").lower(),"filename/prompt non-authority policy missing")
@@ -47,7 +46,6 @@ def main()->None:
     need(ninja[0].get("species_binding")=="Furashin","rat-ninja art must bind to Furashin")
     need(ninja[0].get("binding_authority")=="owner_identification_OVC-026","rat-ninja binding authority missing")
 
-    # Verified Species-aware base.
     taxonomy=d["taxonomy"]
     need(taxonomy["schema_version"]=="0.2.0","taxonomy v0.2 required")
     need(len(taxonomy["identity_state_layers"])==18,"expected 18 semantic layers")
@@ -61,7 +59,6 @@ def main()->None:
     inherited=d["species_cases"]
     need(inherited.get("case_count")==36 and len(inherited.get("cases",[]))==36,"36 inherited Species visual cases required")
 
-    # Inspector surface.
     surface=d["surface"]
     need(len(surface["inspector_sections"])==18,"Appearance Studio must define 18 Inspector sections")
     section_ids=[x["id"] for x in surface["inspector_sections"]]
@@ -72,7 +69,6 @@ def main()->None:
     for name in ["Arborae","Mythragara","Nekron","Suula","Furashin","ManyToms","Stygian","Toba-Madra","The Free","Vespin","Moravi","Rakuuta"]:
         need(name in surface["profile_behaviors"],"control surface missing special behavior "+name)
 
-    # Projection/action contract.
     contract=d["contract"]
     counts=contract["counts"]
     need(counts=={"projection_groups":20,"semantic_layers":18,"compatibility_dimensions":5,"actions":30,"reads":12,"analysis_proposals":10,"writes":8,"inherited_species_reference_cases":36},"contract counts changed unexpectedly")
@@ -97,16 +93,14 @@ def main()->None:
         need(policy[key] is True,"projection policy disabled: "+key)
     need(policy["filename_prompt_species_inference"] is False,"filename/prompt Species inference must be false")
 
-    # Preset/randomization portability.
     preset=d["preset"]
     need(len(preset["preset_scopes"])==6,"expected six preset scopes")
     need(len(preset["import_classifications"])==9,"import classifications incomplete")
     need("seed" in preset["randomization_inputs"] and "lock_set" in preset["randomization_inputs"],"deterministic randomization inputs incomplete")
     low_preset=json.dumps(preset,ensure_ascii=False).lower()
-    for phrase in ["no silent substitution","required anatomy cannot be removed","equipment ownership/equipped state cannot be randomized","renderer filename identity forbidden"]:
+    for phrase in ["no silent substitution","required anatomy cannot be removed","equipment ownership/equipped state cannot be randomized","renderer_filename_identity_forbidden"]:
         need(phrase in low_preset,"preset/randomization contract missing "+phrase)
 
-    # New deterministic reference corpus covers every group and action.
     cases=d["cases"]
     need(cases["counts"]=={"new_inspector_action_reference_cases":48,"inherited_species_visual_cases":36,"effective_case_surface":84},"reference case counts mismatch")
     need(len(cases["cases"])==48,"must define exactly 48 new IAR cases")
@@ -120,7 +114,6 @@ def main()->None:
     for phrase in ["rat-ninja","four arms, 2 legs","persistent adaptation","hybrid derives","stale expected_version","duplicate operation_id","hidden biological marker","keyboard-only","screen reader"]:
         need(phrase in low_cases,"reference corpus missing "+phrase)
 
-    # Candidate narrative and governed current state.
     candidate=d["candidate"].lower()
     for phrase in ["20 projection groups","30 actions","12 permission-filtered reads","10 nonmutating analysis/proposal actions","8 narrowly scoped writes","p06-mut-001","48 deterministic inspector/action/reference cases","84 cases","rat-ninja","filename/prompt text is explicitly non-authoritative","integrated workflow/traceability"]:
         need(phrase in candidate,"candidate missing "+phrase)
