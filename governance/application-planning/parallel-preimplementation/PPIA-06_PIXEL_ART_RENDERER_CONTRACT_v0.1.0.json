@@ -1,0 +1,19 @@
+{
+  "schema_version":"0.1.0","work_item":"PPIA-06","renderer_id":"pixel-art-v1","renderer_version":"0.1.0",
+  "role":"first fully specified renderer profile over renderer-independent Character appearance state",
+  "future_renderer_boundary":{"future_3d_supported_by_contract":true,"core_state_may_not_require_sprite_or_pixel_fields":true,"renderer_metadata_separate_from_character_truth":true},
+  "render_plan_identity":["appearance_state_version","authoritative_form_snapshot","renderer_id","renderer_version","asset_pack_lock","pose_id","view_id","permission_projection_version"],
+  "determinism":"Same authorized semantic appearance state + authoritative Form snapshot + renderer/version + asset-pack lock + pose/view yields the same semantic render plan.",
+  "stable_asset_identity":{"required":true,"display_name_authoritative":false,"filename_authoritative":false,"array_position_authoritative":false},
+  "semantic_render_bands":[
+    {"id":"P06-RB-01","name":"body_base"},{"id":"P06-RB-02","name":"surface_and_pattern"},{"id":"P06-RB-03","name":"structural_appendages"},{"id":"P06-RB-04","name":"hair_fur_scales_feathers"},{"id":"P06-RB-05","name":"markings_scars_cosmetics"},{"id":"P06-RB-06","name":"clothing_cosmetic_overlay"},{"id":"P06-RB-07","name":"equipment_projection"},{"id":"P06-RB-08","name":"foreground_occlusion"}
+  ],
+  "anchors":{"universal_semantic":["root","visual_center","portrait_focus","occupancy_bounds"],"topology_specific_allowed":true,"rule":"Topology profiles may require additional semantic anchors. Missing required anchors produces partial/unsupported coverage; never silent anatomical approximation.","pixel_coordinates_authoritative":false},
+  "occlusion":{"mask_ids_required_for_overlaps":true,"order_is_semantic_not_species_taxonomy":true,"missing_required_mask":"partial_or_unsupported_no_silent_substitution"},
+  "palette":{"zone_ids_required":true,"controlled_ramps":true,"semantic_names_required":true,"noncolor_labels_required":true,"color_alone_forbidden":true},
+  "topology":{"profiles_are_renderer_compatibility_classes_not_species_taxonomy":true,"humanoid_default_forbidden":true,"nonhumanoid_supported_as_first_class":true,"unsupported_topology_does_not_invalidate_character":true},
+  "poses":{"stable_pose_ids":true,"support_matrix_by_topology":true,"unsupported_pose":"report_unsupported_or_select_only_explicit_compatible_pose"},
+  "randomization":{"deterministic_inputs":["seed","lock_set","eligible_choice_set_version","appearance_state_version"],"source_owned_fields_excluded":true,"hidden_fields_excluded":true,"equipment_ownership_excluded":true,"locks_must_be_respected":true},
+  "permission_and_export":{"permission_filter_before_asset_selection":true,"permission_filter_before_derivatives":true,"permission_filter_before_export":true,"permission_filter_before_ai_context":true,"hidden_derivative_leak":false},
+  "failure_behavior":["Missing renderer asset, anchor, mask, palette ramp or topology support never fabricates a substitute.","Partial/unsupported rendering preserves the authoritative semantic appearance state.","Asset-pack/version mismatch is explicit; no silent latest-version substitution."]
+}
