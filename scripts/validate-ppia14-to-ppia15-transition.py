@@ -84,7 +84,7 @@ def main() -> None:
         require(tranches[wid]["status"] in COMPLETE, f"{wid} must be complete before PPIA-15")
 
     require(package.get("transition_after_completion") == "PPIA-14 -> PPIA-15 separate governed operation", "PPIA-14 completion transition boundary changed")
-    for phrase in ("complete permission-safe error/recovery microcopy library", "108 effective deterministic cases", "p14-gap-001", "f024", "p13 teaching ownership", "no application runtime", "ppia-14 → ppia-15 transition"):
+    for phrase in ("complete permission-safe error/recovery microcopy library", "108 effective deterministic cases", "p14-gap-001", "f024", "ppia-13 retains concept-teaching ownership", "no application runtime", "ppia-14 → ppia-15 transition"):
         require(phrase in report, f"PPIA-14 completion report lost {phrase!r}")
 
     require(p15.get("work_item_id") == "PPIA-15" and p15.get("attempt_id") == "PPIA-15-attempt-001", "PPIA-15 checkpoint identity mismatch")
