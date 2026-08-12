@@ -101,7 +101,7 @@ Workflow traceability covers all **16 projection groups, 12 presentation profile
 
 ## 11. Accessibility and nonvisual authority
 
-Spatial clue-board placement and graph position are presentation state, not semantic authority. Typed predicates, ordered lists, tables and semantic linear representations remain authoritative equivalents.
+Spatial clue-board placement and graph position are presentation state, not semantic authority. Typed predicates, ordered lists, tables and semantic linear representations remain authoritative equivalents. **Semantic nonvisual representations are mandatory authoritative equivalents for every graph, timeline, relationship, clue-board, and Investigation workflow.**
 
 Keyboard, touch, high-zoom/reflow and screen-reader operation must support the complete Investigation workflow. Drag, hover, color, graph position and animation are never the sole required input or meaning.
 
