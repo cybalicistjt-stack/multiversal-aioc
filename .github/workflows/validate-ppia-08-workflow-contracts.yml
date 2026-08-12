@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'governance/application-planning/parallel-preimplementation/PPIA-08_*'
+      - 'governance/application-planning/parallel-preimplementation/validate_ppia_program.py'
       - 'governance/ai/work-state/PPIA-08-attempt-001.json'
       - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
       - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
@@ -11,7 +12,6 @@ on:
       - 'scripts/validate-ppia08-inspector-reference-cases.py'
       - 'scripts/validate-ppia08-foundation.py'
       - 'scripts/validate-ppia07-to-ppia08-transition.py'
-      - 'scripts/validate-ppia-program.py'
       - '.github/workflows/validate-ppia-08-workflow-contracts.yml'
   workflow_dispatch:
 
@@ -35,4 +35,4 @@ jobs:
       - name: Validate PPIA-07 to PPIA-08 transition regression
         run: python scripts/validate-ppia07-to-ppia08-transition.py
       - name: Validate generalized PPIA program continuity
-        run: python scripts/validate-ppia-program.py
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
