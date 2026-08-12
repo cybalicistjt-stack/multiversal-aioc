@@ -1,0 +1,61 @@
+{
+  "schema_version":"0.1.0",
+  "work_item":"PPIA-06",
+  "purpose":"Define the Species/Form-aware Character Appearance Studio Inspector surface over semantic taxonomy v0.2 without hard-coding a humanoid paper doll or transferring biological/equipment authority into appearance state.",
+  "source_contracts":[
+    "PPIA-06_APPEARANCE_SEMANTIC_TAXONOMY_v0.2.0.json",
+    "PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json",
+    "PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json",
+    "PPIA-06_PIXEL_ART_RENDERER_CONTRACT_v0.2.0.json"
+  ],
+  "global_rules":[
+    "Controls are derived from authorized morphology/profile choice schemas, never from a universal humanoid slider inventory.",
+    "A missing anatomy field is unknown/unavailable, not implicitly human, absent or zero.",
+    "Source-owned biology/current Form/history is inspectable but not cosmetically rewritten.",
+    "Every visual control has a text label/value and nonvisual summary effect; color is never the only state carrier.",
+    "Mobile/touch, keyboard-only, screen-reader and high-zoom operation must expose the same semantic choices.",
+    "AI may propose appearance choices but never commits them without the same explicit write authorization as a human action."
+  ],
+  "inspector_sections":[
+    {"id":"P06-UI-001","name":"identity_and_profile_context","layers":["P06-L01","P06-L02","P06-L03"],"mode":"read_context","contents":["Species","lineage/variant","current Form","active profile","appearance state version","source/provenance status"]},
+    {"id":"P06-UI-002","name":"body_and_proportions","layers":["P06-L04","P06-L05"],"mode":"source_bounded_authoring","contents":["body proportions","silhouette","authorized region sizes","posture baseline","required/optional appendage presentation"]},
+    {"id":"P06-UI-003","name":"head_and_face","layers":["P06-L07"],"mode":"source_bounded_authoring","contents":["head shape","muzzle/beak/snout structures","eyes","ears/antennae/mandibles/horns where authorized","facial detail"]},
+    {"id":"P06-UI-004","name":"surface_and_material","layers":["P06-L06","P06-L08"],"mode":"source_bounded_authoring","contents":["skin/chitin/bark/metal/bone/fur/feather/scale material","covering density","texture","crest/mane/hair/feather/scales styling"]},
+    {"id":"P06-UI-005","name":"color_and_palette","layers":["P06-L09"],"mode":"channel_aware_authoring","contents":["biological bounded palette","player cosmetic palette","dye overlay","semantic palette zones","up to Species-defined color cardinality"]},
+    {"id":"P06-UI-006","name":"markings_history_and_cosmetics","layers":["P06-L10","P06-L14"],"mode":"mixed_read_authoring","contents":["player markings","tattoos","paint","scars where editable","source-owned persistent markers read-only","hidden-marker permission filtering"]},
+    {"id":"P06-UI-007","name":"age_presentation","layers":["P06-L11"],"mode":"source_bounded_authoring","contents":["age presentation range","Species-valid age cues","no unsupported aging assumptions"]},
+    {"id":"P06-UI-008","name":"forms_seasons_variants_and_transitions","layers":["P06-L02","P06-L03","P06-L14"],"mode":"profile_manager","contents":["lineage profile","current Form profile","derived Form preview","season profile set","one-time transition derived profile","active biological-state overlay"]},
+    {"id":"P06-UI-009","name":"presentation_wardrobe","layers":["P06-L12"],"mode":"presentation_only_authoring","contents":["curated clothing","armor-looking cosmetics","weapons/gear presentation props","topology-compatible visual variants","no inventory implication"]},
+    {"id":"P06-UI-010","name":"actual_equipment_preview","layers":["P06-L13"],"mode":"read_projection","contents":["authorized equipped/candidate items","compatible renderer variant","explicit unsupported visual fit","no ownership/equipment mutation"]},
+    {"id":"P06-UI-011","name":"pose_and_expression","layers":["P06-L15"],"mode":"presentation_authoring","contents":["supported pose","expression","live appendage pose where nonmechanical","saved portrait presentation"]},
+    {"id":"P06-UI-012","name":"view_switcher","layers":["P06-L15","P06-L17"],"mode":"ephemeral_view","contents":["fixed 3/4 full-body master","portrait/zoom","tactical token"],"forbidden":["free rotation","pseudo-3D orbit","view-dependent hidden-state disclosure"]},
+    {"id":"P06-UI-013","name":"randomize_and_locks","layers":["P06-L16"],"mode":"proposal_then_accept","contents":["randomize all eligible","randomize unlocked","randomize category","seed","locks","reroll","undo preview"],"rule":"randomization never changes source-owned biology/history/current Form/equipment ownership"},
+    {"id":"P06-UI-014","name":"presets_import_export","layers":["P06-L16"],"mode":"portable_authored_state","contents":["appearance preset","palette preset","face/head preset where compatible","outfit presentation preset","presentation preset","Form/profile-specific preset","import compatibility report","export with stable IDs/versions"]},
+    {"id":"P06-UI-015","name":"renderer_coverage_and_diagnostics","layers":["P06-L17"],"mode":"read_analysis","contents":["supported/partial/unsupported/unknown","missing asset/anchor/mask/palette/topology","asset-pack/version lock","no silent substitution"]},
+    {"id":"P06-UI-016","name":"accessibility_and_nonvisual_summary","layers":["P06-L18"],"mode":"read_projection","contents":["structured appearance summary","changed-field announcements","compatibility/failure text","noncolor status","keyboard focus order","screen-reader region summaries"]},
+    {"id":"P06-UI-017","name":"provenance_and_authority","layers":["P06-L02","P06-L14","P06-L17"],"mode":"read_context","contents":["source truth","owner canon decision","owner concept reference","AI-art noncanonical status","unresolved gap","filename/prompt metadata non-authority"]},
+    {"id":"P06-UI-018","name":"history_recovery_and_version","layers":["P06-L01","P06-L16"],"mode":"read_recovery","contents":["current version","pending operation status","last committed appearance receipt","preset import receipt","ambiguous-result recovery"]}
+  ],
+  "profile_behaviors":{
+    "Arborae":{"editable_profiles":["spring","summer","autumn","winter"],"current_season":"upstream_read_only","rule":"four linked but separately customizable profiles; do not reduce to one recolor"},
+    "Mythragara":{"editable_profiles":["base_humanoid","authorized_animal_forms"],"derived_profiles":["hybrid"],"rule":"hybrid derives from authored identities and is not independently freeform"},
+    "Nekron":{"editable_profiles":["base","post_transition_once_transition_exists"],"transition_trigger":"upstream_read_only","rule":"appearance cannot trigger ascension or select an unavailable outcome"},
+    "Suula":{"editable_profiles":["base_cosmetic"],"read_only_overlays":["persistent_adaptation_history","active_adaptation_state"],"rule":"persistent markers cannot be erased; hand-in-claw state is live/pose"},
+    "Furashin":{"editable_profiles":["preferred_fur_phenotype"],"live_projection":"upstream_when_mechanics_controls_current_phenotype","rule":"up to three colors plus pattern/texture; filename labels on reference art do not define Species"},
+    "ManyToms":{"editable_profiles":["constituent_identity"],"renderer_behavior":"repeat/cohere constituent appearance as one collective entity","rule":"do not require exactly seventeen visible sprites"},
+    "Stygian":{"editable_profiles":["base"],"conditional_controls":["horns","wings"],"rule":"wing appearance never grants flight; functional/vestigial status comes from upstream state"},
+    "Toba-Madra":{"editable_profiles":["base"],"separate_channels":["natural_biological_fur","cosmetic_dye"],"rule":"actual cybernetics are equipment/augmentation projection; cosmetic plating remains presentation"},
+    "The Free":{"editable_profiles":["broad_humanoid_android"],"rule":"very broad humanoid android grammar; actual replacement hardware remains mechanics-owned"},
+    "Vespin":{"topology_requirement":"4 arms + 2 legs + wings + abdomen/stinger","rule":"wardrobe/equipment variants must support four-arm anchors or report unsupported"},
+    "Moravi":{"topology_requirement":"2 arms + 4 legs","rule":"never collapse to two-leg humanoid layout"},
+    "Rakuuta":{"required_visual_feature":"black raven-shaped facial feather field","rule":"swept-back structures are ears, not horns"}
+  },
+  "responsive_behavior":{
+    "desktop":"Inspector + preview may coexist; semantic controls remain primary over canvas size.",
+    "mobile":"Preview and Inspector may stack/switch; no control disappears; touch targets and text summaries remain equivalent.",
+    "keyboard":"All category, value, view, preset, randomize and commit actions reachable without pointer input.",
+    "screen_reader":"Every preview has structured nonvisual summary and deterministic changed-field announcements.",
+    "high_zoom":"No clipped mandatory controls; preview may reduce before semantic control loss.",
+    "reduced_motion":"No appearance state requires animation to understand; transitions use textual/state alternatives."
+  }
+}
