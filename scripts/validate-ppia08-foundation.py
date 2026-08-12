@@ -16,6 +16,9 @@ PTR=ROOT/'governance/ai/runtime/CURRENT_WORK_POINTER.json'
 STATUS=ROOT/'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
 BACKLOG=BASE/'PPIA_PROGRAM_BACKLOG.json'
 TRANSITION='ccdad24fc26ca853b92411ad1066eb6b7ec1f0f5'
+P8_FINAL_HEAD='1a2a8590730a905cf4bba84abd59d0a8f00de89c'
+P8_COMPLETION_PR=251
+P8_COMPLETION_MERGE='09f9df2607398010097e834e8ad7b129cd10645f'
 
 def req(c,m):
     if not c: raise SystemExit('PPIA-08 FOUNDATION: FAIL — '+m)
@@ -70,17 +73,34 @@ def main():
     for x in ['FOUNDATION CANDIDATE — NOT PPIA-08 COMPLETE','cellSizePx','originOffsetXPx','originOffsetYPx','rooms/floors','launch snapshots','PPIA-08 remains `started`']:
         req(x.lower() in cand.lower(),f'candidate missing {x}')
 
-    tr={x['work_item_id']:x for x in backlog['tranches']}; req(backlog['current_work_item_id']=='PPIA-08' and tr['PPIA-08']['status'] in {'started','in_progress'},'backlog must select active PPIA-08')
+    tr={x['work_item_id']:x for x in backlog['tranches']}
     gate=tr['PPIA-08']['completion_gate'].lower()
     for x in ['map-image upload','grid','calibration','cell-addressable','dungeon-map construction kit']:
         req(x in gate,f'backlog gate lost {x}')
-    req(cp['work_item_id']=='PPIA-08' and cp['attempt_id']=='PPIA-08-attempt-001' and cp['status'] in {'started','in_progress'},'PPIA-08 checkpoint identity/state mismatch')
+    req(cp['work_item_id']=='PPIA-08' and cp['attempt_id']=='PPIA-08-attempt-001','PPIA-08 checkpoint identity mismatch')
     req(cp['base_commit']=='ac1628227d34df7fc1585b21c21988fb2fd7080a','PPIA-08 checkpoint original base mismatch')
     req(not cp['unresolved_failures'] and cp['owner_decision_required'] is False,'PPIA-08 checkpoint unresolved state')
-    selected=[x for x in ptr['active_attempts'] if x.get('owner_selected')]; req(len(selected)==1 and selected[0]['work_item_id']=='PPIA-08','pointer must select PPIA-08')
-    req(ptr['primary_attempt_id']=='PPIA-08-attempt-001','primary PPIA attempt mismatch')
-    primary=status['primary']; req(primary['work_item_id']=='PPIA-08' and primary['attempt_id']=='PPIA-08-attempt-001' and primary['status']==cp['status'],'compact status mismatch')
-    req(primary['active_substep']==cp['active_substep'] and primary['next_action']==cp['next_action'],'compact checkpoint work mismatch')
+
+    if cp['status'] in {'started','in_progress'}:
+        req(backlog['current_work_item_id']=='PPIA-08' and tr['PPIA-08']['status'] in {'started','in_progress'},'backlog must select active PPIA-08')
+        selected=[x for x in ptr['active_attempts'] if x.get('owner_selected')]
+        req(len(selected)==1 and selected[0]['work_item_id']=='PPIA-08','pointer must select PPIA-08')
+        req(ptr['primary_attempt_id']=='PPIA-08-attempt-001','primary PPIA attempt mismatch')
+        primary=status['primary']
+        req(primary['work_item_id']=='PPIA-08' and primary['attempt_id']=='PPIA-08-attempt-001' and primary['status']==cp['status'],'compact status mismatch')
+        req(primary['active_substep']==cp['active_substep'] and primary['next_action']==cp['next_action'],'compact checkpoint work mismatch')
+        continuity_mode='active'
+    elif cp['status']=='completed_verified':
+        req(tr['PPIA-08']['status']=='completed_verified','completed PPIA-08 requires completed_verified backlog tranche')
+        req(cp.get('completed_at'),'completed PPIA-08 requires completed_at')
+        req(cp.get('active_substep') is None,'completed PPIA-08 may not retain active substep')
+        req(cp['latest_pushed_commit']==P8_FINAL_HEAD,'PPIA-08 final exact head mismatch')
+        req(cp['pull_request']==P8_COMPLETION_PR,'PPIA-08 completion PR mismatch')
+        req(cp['merge_commit']==P8_COMPLETION_MERGE,'PPIA-08 completion merge mismatch')
+        req(any(v.get('command','').startswith('Validate PPIA-08 Completion Contract') and v.get('status')=='passed' for v in cp.get('validation',[])),'PPIA-08 passed completion-gate evidence missing')
+        continuity_mode='historical_completed'
+    else:
+        req(False,f"unexpected PPIA-08 checkpoint state {cp['status']!r}")
 
     print('PPIA-08 FOUNDATION: PASS')
     print('semantic_layers=16')
@@ -90,5 +110,6 @@ def main():
     print('dungeon_primitive_families=7')
     print('map_image_rewrite_for_calibration=false')
     print('map_grid_dungeon_owner_requirement=blocking')
+    print(f'continuity_mode={continuity_mode}')
     print('runtime_activation=false')
 if __name__=='__main__': main()
