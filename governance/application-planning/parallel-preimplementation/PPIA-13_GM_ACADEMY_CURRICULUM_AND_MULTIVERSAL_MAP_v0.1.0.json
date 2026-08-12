@@ -1,0 +1,85 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"PPIA-13",
+  "artifact_version":"0.1.0",
+  "status":"candidate",
+  "principle":"GM Academy teaches GM craft; PPIA-13 core teaching teaches Multiversal/app use. Where they overlap, the library may combine them while clearly separating advisory GM craft from canonical Multiversal mechanics and application behavior.",
+  "tracks":[
+    {
+      "track_id":"P13-GMA-T01",
+      "name":"GM Foundations",
+      "source_status":"developed",
+      "source_id":"P13-GMA-SRC-002",
+      "topics":["Introduction to Roleplaying Games","Game Mastering 101","Fundamentals of Narrative Design","Character Development for GMs","Player Psychology and Engagement","Improvisation and Storytelling","Game Mechanics and Rule Systems","Dice Probability and Randomization","Session Planning and Encounter Design"],
+      "initial_curated_topics":["Game Mastering 101","Fundamentals of Narrative Design","Player Psychology and Engagement","Improvisation and Storytelling","Game Mechanics and Rule Systems","Session Planning and Encounter Design"]
+    },
+    {
+      "track_id":"P13-GMA-T02",
+      "name":"Intermediate GM",
+      "source_status":"developed",
+      "source_id":"P13-GMA-SRC-003",
+      "topics":["Advanced Game Mastering Techniques","Campaign Building and Story Arcs","Fantasy, Sci-Fi, and Multi-Genre GMing","Building Immersive NPCs and Villains","Session Zero and Player Expectations","Homebrewing Rules and Game Mechanics","Pacing, Tension, and Player Investment","Conflict Resolution and GM Authority"],
+      "initial_curated_topics":["Advanced Game Mastering Techniques","Campaign Building and Story Arcs","Building Immersive NPCs and Villains","Session Zero and Player Expectations","Pacing, Tension, and Player Investment","Conflict Resolution and GM Authority"]
+    },
+    {
+      "track_id":"P13-GMA-T03",
+      "name":"Advanced GM",
+      "source_status":"developed",
+      "source_id":"P13-GMA-SRC-004",
+      "topics":["Epic-Scale Campaigns and Multi-Group Play","Horror, Mystery, and Psychological TTRPGs","Sandbox vs. Narrative Campaigns","Advanced Combat and Tactical Encounters","Running Comedy and Lighthearted Games","AI, Technology, and RPG Automation","Psychology of Roleplaying & Immersion","Collaborative Storytelling & Shared GMing"],
+      "initial_curated_topics":["Epic-Scale Campaigns and Multi-Group Play","Horror, Mystery, and Psychological TTRPGs","Sandbox vs. Narrative Campaigns","Advanced Combat and Tactical Encounters","Collaborative Storytelling & Shared GMing"]
+    },
+    {
+      "track_id":"P13-GMA-T04",
+      "name":"Worldbuilding Masterclass",
+      "source_status":"developed",
+      "source_id":"P13-GMA-SRC-005",
+      "topics":["Worldbuilding Fundamentals","Lore and Mythology Creation","Fantasy and Sci-Fi Civilization Design","Worldbuilding Through History and Politics","Magic Systems and Supernatural Elements","Alien and Non-Human Cultures","Maps, Regions, and Cities","Alternative Worldbuilding Methods","Societal Collapse and Post-Apocalyptic Settings","Technology, Science, and Fictional Realism"],
+      "initial_curated_topics":["Worldbuilding Fundamentals","Lore and Mythology Creation","Fantasy and Sci-Fi Civilization Design","Worldbuilding Through History and Politics","Magic Systems and Supernatural Elements","Alien and Non-Human Cultures","Maps, Regions, and Cities"]
+    },
+    {
+      "track_id":"P13-GMA-T05",
+      "name":"GMing Multiversal & System Mastery",
+      "source_status":"outline_only",
+      "source_id":"P13-GMA-SRC-001",
+      "topics":["Multiversal System Mastery","Advanced Multiversal Combat Design","Customizing and Hacking the Multiversal System","Multiversal Character Progression & Player Choices","GMing a Multiversal Sandbox","Handling Inter-Reality Travel & Causal Complexity","Narrative Entanglement & Multiversal Themes","Creating Engaging Side Content","Improvisational GMing in Multiversal","The Art of Multiversal Pacing","Mastering Faction Play in Multiversal","Advanced Multiversal Economics & Politics","TTRPG Horror and Psychological Play in Multiversal","Running Multiversal Warfare and Strategic Play","Multiversal Ethical Dilemmas & High-Level Roleplay","Running Multiplayer Multiversal Events","Player Investment and Long-Term Engagement","Creating a Living Multiversal Setting"],
+      "initial_curated_topics":[],
+      "initial_grounding_priorities":["Multiversal System Mastery","Advanced Multiversal Combat Design","Multiversal Character Progression & Player Choices","GMing a Multiversal Sandbox","Handling Inter-Reality Travel & Causal Complexity","The Art of Multiversal Pacing","Mastering Faction Play in Multiversal","Advanced Multiversal Economics & Politics","Running Multiversal Warfare and Strategic Play","Creating a Living Multiversal Setting"]
+    }
+  ],
+  "locked_counts":{"tracks":5,"total_modules":53,"developed_source_modules":35,"outline_only_multiversal_modules":18,"initial_curated_source_backed_modules":24},
+  "delivery_model":{
+    "mandatory_onboarding":"minimal contextual excerpts only",
+    "academy_track":"optional progressive learning track",
+    "progression":"GM Foundations -> Intermediate GM -> Advanced GM -> Worldbuilding -> GMing Multiversal",
+    "deep_dive":"user-invoked and replayable",
+    "contextual_injection":"short source-grounded tips, checklists and examples on relevant GM/Creator surfaces",
+    "course_progress":"optional and never a permission/capability gate",
+    "teaching_copy_status":"not authored by this extraction milestone"
+  },
+  "surface_mapping":{
+    "primary_surfaces":["P13-SF-007","P13-SF-013","P13-SF-015","P13-SF-017"],
+    "combat_and_rules_surfaces":["P13-SF-006","P13-SF-008","P13-SF-007","P13-SF-017"],
+    "gm_authority_and_session_zero_surfaces":["P13-SF-009","P13-SF-013","P13-SF-017"]
+  },
+  "canonical_grounding":[
+    {"academy_topics":["Game Mechanics and Rule Systems","Multiversal System Mastery","Customizing and Hacking the Multiversal System"],"grounding":["DB-004 Game Framework","canonical rules/object contracts","PPIA-07 where Rune mechanics are involved"],"rule":"Academy advice cannot redefine rules or system authority."},
+    {"academy_topics":["Session Planning and Encounter Design","Advanced Combat and Tactical Encounters","Advanced Multiversal Combat Design"],"grounding":["PPIA-11 Encounter Lab","PPIA-08 Campaign/Scene/Session authoring","canonical combat rules"],"rule":"Teach design craft separately from mechanical legality and balance truth."},
+    {"academy_topics":["Horror, Mystery, and Psychological TTRPGs","TTRPG Horror and Psychological Play in Multiversal"],"grounding":["PPIA-09 Investigation/Mystery workflows","permission and safety contracts"],"rule":"No hidden-state leakage; safety guidance remains distinct from game mechanics."},
+    {"academy_topics":["Worldbuilding Fundamentals","Maps, Regions, and Cities","Creating a Living Multiversal Setting"],"grounding":["PPIA-08 Campaign/Scene/Session authoring","world/setting source packs","canonical setting content"],"rule":"Exercises create drafts/noncanonical fixtures until separately promoted through governed content authority."},
+    {"academy_topics":["Magic Systems and Supernatural Elements"],"grounding":["PPIA-07 Rune Magic","canonical ability/effect/resource rules","setting-specific source truth"],"rule":"Generic worldbuilding theory may inspire design but cannot assert Multiversal magic facts."},
+    {"academy_topics":["Alien and Non-Human Cultures"],"grounding":["canonical Species and setting sources","PPIA-06 only where visual morphology/presentation is relevant"],"rule":"Do not invent biological or cultural claims for canonical Species."},
+    {"academy_topics":["Session Zero and Player Expectations","Conflict Resolution and GM Authority","Player Psychology and Engagement","Psychology of Roleplaying & Immersion"],"grounding":["MV-IA-F025","MV-IA-F006","permissions/safety contracts"],"rule":"GM craft guidance cannot override role/permission boundaries or imply coercive authority."},
+    {"academy_topics":["AI, Technology, and RPG Automation"],"grounding":["current AI governance and optional-AI boundaries"],"rule":"Treat the PDF as instructional reference, not current product-capability authority."}
+  ],
+  "multiversal_outline_policy":{
+    "status":"approved_outline_scaffold_not_developed_lesson_source",
+    "authoring_rule":"Each Multiversal-specific lesson must cite canonical Multiversal sources and separate source-backed facts from GM-craft interpretation. If canonical sources do not support a heading, retain an explicit curriculum gap instead of filling it from generic RPG knowledge."
+  },
+  "world_creation_tables_policy":{
+    "source_id":"P13-GMA-SRC-006",
+    "use":"optional synthetic worldbuilding exercises and examples",
+    "authority":"prompt_or_draft_only",
+    "canonical_promotion":false
+  }
+}

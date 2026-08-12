@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "PPIA-13",
+  "artifact_version": "0.1.0",
+  "title": "PPIA-13 GM Academy Curriculum Extraction — Source Manifest",
+  "status": "candidate",
+  "owner_directive": "Include a curated amount of GM Academy material in the PPIA-13 teaching library, including foundations, intermediate, advanced, worldbuilding and GMing Multiversal; add bounded steps if needed.",
+  "source_authority_rule": "GM Academy PDFs are project-source instructional/design material. They may teach GM craft but do not override canonical Multiversal rules, permissions, feature contracts or repository evidence. Conflicts defer to canonical repository/system truth.",
+  "sources": [
+    {"id":"P13-GMA-SRC-001","filename":"Academy index.PDF","class":"project_source_design_contract","source_role":"curriculum_scaffold","pages":3,"sha256":"9b8a55023c404442613d5933d760b16c8064a9fce14f51475465b62ef47d4976"},
+    {"id":"P13-GMA-SRC-002","filename":"GM Academy 1.PDF","class":"project_source_design_contract","source_role":"developed_instructional_source","pages":19,"sha256":"2063cc0c1dbb69c11e32d4b1d109621ae872eebca8b87c2b8bc24c2a994cbbeb"},
+    {"id":"P13-GMA-SRC-003","filename":"INTERMEDIATE GAME MASTERING.PDF","class":"project_source_design_contract","source_role":"developed_instructional_source","pages":18,"sha256":"cf49e0e713ad4fe63ebccc42cc47d6dc7bf3230f94625141da38d1bd6075ef98"},
+    {"id":"P13-GMA-SRC-004","filename":"ADVANCED GAME MASTERING.PDF","class":"project_source_design_contract","source_role":"developed_instructional_source","pages":22,"sha256":"07faac0edc9206d26d561e18d5876e146ed53a3c51694aa5c1cfdf0a2f641711"},
+    {"id":"P13-GMA-SRC-005","filename":"Worldbuilding.PDF","class":"project_source_design_contract","source_role":"developed_instructional_source","pages":23,"sha256":"9b9b8cfdfc9fb9358e151bd4753396ff75f7a5f6fd00927557d262787665174d"},
+    {"id":"P13-GMA-SRC-006","filename":"World Creation tables.PDF","class":"project_source_design_contract","source_role":"practice_reference_appendix","pages":7,"sha256":"ccd901fde30b37547e988d2db6fa9286c631330cbbba0fb14d284e334535cab8"}
+  ],
+  "curriculum_status": {
+    "foundations": "developed_source",
+    "intermediate": "developed_source",
+    "advanced": "developed_source",
+    "worldbuilding": "developed_source",
+    "multiversal_gming_and_system_mastery": "outline_only_in_academy_index"
+  },
+  "outline_gap_rule": "The Multiversal GMing & System Mastery headings are an approved curriculum scaffold only. User-facing lesson claims require grounding in canonical Multiversal repository/game-framework sources; unsupported details remain explicit gaps.",
+  "world_creation_tables_rule": "World Creation tables may support optional synthetic exercises and examples. Random results are noncanonical prompts and never establish setting truth automatically.",
+  "scope_rule": "Index all Academy topics for traceability, but initial in-app teaching uses a curated subset. The Academy must not turn required onboarding into a long mandatory course.",
+  "no_activation": ["application_runtime","STAGE-A-A2","release","deployment","tester_access","paid_services","production_credentials"]
+}
