@@ -111,7 +111,7 @@ def main()->None:
     need(covered_groups==expected_groups,"reference cases do not cover every projection group")
     need(covered_actions==expected_actions,"reference cases do not cover every action")
     low_cases=json.dumps(cases,ensure_ascii=False).lower()
-    for phrase in ["rat-ninja","four arms, 2 legs","persistent adaptation","hybrid derives","stale expected_version","duplicate operation_id","hidden biological marker","keyboard-only","screen reader"]:
+    for phrase in ["rat-ninja","4 arms, 2 legs","persistent adaptation","hybrid derives","stale expected_version","duplicate operation_id","hidden biological marker","keyboard-only","screen reader"]:
         need(phrase in low_cases,"reference corpus missing "+phrase)
 
     candidate=d["candidate"].lower()
