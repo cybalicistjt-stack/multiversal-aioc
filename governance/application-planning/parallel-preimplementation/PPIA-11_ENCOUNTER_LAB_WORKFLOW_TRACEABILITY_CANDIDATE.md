@@ -9,7 +9,7 @@
 
 Integrate the verified PPIA-11 source/design foundation, Encounter Methodology & Benchmark Contract, and Encounter Lab Inspector / Action / Reference contracts into bounded human-governed end-to-end workflows with complete deterministic traceability.
 
-This milestone does **not** create a universal CR, difficulty score, threat number, encounter level or power scalar. It does not collapse the twenty factors or twelve inherited MV-IA-F012 pressure dimensions into a weighted balance score. It does not rewrite source mechanics, fill unknown values with defaults, canonically promote benchmark observations, or certify an encounter as balanced, fair, safe, winnable, optimal or guaranteed.
+**No universal CR**, difficulty score, threat number, encounter level or power scalar is created by this milestone. It does not collapse the twenty factors or twelve inherited MV-IA-F012 pressure dimensions into a weighted balance score. It does not rewrite source mechanics, fill unknown values with defaults, canonically promote benchmark observations, or certify an encounter as balanced, fair, safe, winnable, optimal or guaranteed.
 
 ## Integrated workflow surface
 
