@@ -1,6 +1,6 @@
 {
   "schema_version":"1.0.0",
-  "revision":12,
+  "revision":13,
   "work_item_id":"PPIA-06",
   "attempt_id":"PPIA-06-attempt-001",
   "track":"parallel-preimplementation-advancement",
@@ -8,7 +8,7 @@
   "branch":"governance/ppia-06-character-appearance-creator",
   "status":"started",
   "started_at":"2026-08-12T12:32:00+00:00",
-  "updated_at":"2026-08-12T15:46:00+00:00",
+  "updated_at":"2026-08-12T15:50:00+00:00",
   "completed_at":null,
   "base_commit":"f2274707b1337425f0bc9ac8d1dd5ebb08d9f883",
   "latest_pushed_commit":"5283c3bac1d3c9681dac5abc4cddbf4645308892",
@@ -16,8 +16,8 @@
   "pull_request":271,
   "merge_commit":"65b6a7cd9d2cbaa72cad20aab1b72781df37f145",
   "objective":"Produce an implementation-ready Character Appearance Creator that consumes source-backed Species/Form morphology without rewriting biology, separates appearance semantics from renderer assets and inventory/equipment authority, supports body/face construction, hair/fur/scales/feathers, coloration, markings, age, equipment preview, presets and lockable deterministic randomization, works for nonhumanoid/mobile/accessibility cases, hands off portraits/tokens cleanly, and defines an initial modular pixel-art renderer while preserving a future-3D renderer boundary.",
-  "last_verified_action":"PR #271 first exact-head dedicated run 31613954219 reached the new Inspector/Action/Reference validator and exposed one deterministic assertion wording defect only: the Vespin reference case correctly says '4 arms, 2 legs' while the validator searched for 'four arms, 2 legs'. No design/source contract failed. The validator assertion was corrected in commit 5283c3bac1d3c9681dac5abc4cddbf4645308892 without changing the Vespin contract or weakening any authority/accessibility boundary. A complete exact-head rerun is now required.",
-  "active_substep":"Rerun exact-head review of PR #271 — PPIA-06 Inspector / Action / Reference — after the validator-only Vespin phrase correction. Require the 18-section Species-aware Appearance Studio surface, 20 permission-safe projection groups, 30 governed actions, P06-MUT-001 recovery protocol, deterministic presets/randomization/import-export, special Species guards, OVC-026 Furashin art binding, presentation/equipment separation, fixed views, renderer diagnostics, accessibility/nonvisual parity and 84-case effective regression surface to pass together with every applicable hosted repository regression.",
+  "last_verified_action":"PR #271 exact-head run 31614297248 passed the new Inspector/Action/Reference validator, the Species Visual Addendum regression and the original PPIA-06 Foundation regression. It then exposed a continuity-only checkpoint omission in the historical PPIA-11→PPIA-06 transition validator: the newer review checkpoint no longer literally carried the term 'renderer-independent'. The implementation contracts were unchanged. Revision 13 restores the full original governed-scope vocabulary, including renderer-independent, pixel-art-v1/future-3D, stable asset, anchors, occlusion, palette, unsupported/unknown, permission, keyboard and nonvisual semantics, without weakening any contract. A complete exact-head rerun is required.",
+  "active_substep":"Rerun exact-head review of PR #271 — PPIA-06 Inspector / Action / Reference — with full historical scope vocabulary retained. Require the 18-section Species-aware Appearance Studio surface, 20 permission-safe projection groups, 30 governed actions, P06-MUT-001 recovery protocol, deterministic presets/randomization/import-export, special Species guards, OVC-026 Furashin art binding, presentation/equipment separation, fixed 3/4/portrait/token views, renderer diagnostics, accessibility/nonvisual parity and 84-case effective regression surface to pass together with every applicable hosted repository regression.",
   "completed_substeps":[
     "PPIA-06 foundation exact head d788d42187c5d53d2121a1f738b9d3445d0f67d8 passed all 45 applicable hosted workflows; PR #269 merged as 66789fcb140b06c7873231e28baf1c00dec8db91.",
     "PPIA-06 Species Visual & Morphology Addendum exact head 17b333d950b8748e625f1b96cc294d1ec582bc63 passed all 46 applicable workflows and PR #270 merged as 65b6a7cd9d2cbaa72cad20aab1b72781df37f145; canonical main signed/verified valid.",
@@ -31,10 +31,10 @@
     "Presentation-only wardrobe remains nonmechanical and separate from PPIA-03 actual equipment projection; topology-compatible variants or explicit unsupported fallback are required.",
     "48 new Inspector/Action/Reference cases cover every projection group and all 30 actions while retaining the 36 inherited Species Visual cases for an effective 84-case regression surface.",
     "Mobile, keyboard, screen-reader, high-zoom, hidden-state filtering, missing renderer assets, stale expected_version and duplicate operation_id recovery are explicit contracts/cases.",
-    "PR #271 opened for exact-head hosted review; first dedicated run 31613954219 failed only on a validator wording mismatch for the already-correct Vespin '4 arms, 2 legs' fixture.",
-    "Validator wording defect repaired in commit 5283c3bac1d3c9681dac5abc4cddbf4645308892; no content/design contract was weakened."
+    "First PR #271 dedicated run 31613954219 exposed only a validator wording mismatch for the already-correct Vespin '4 arms, 2 legs' fixture; validator repaired in 5283c3bac1d3c9681dac5abc4cddbf4645308892.",
+    "Second exact-head dedicated run 31614297248: Inspector/Action/Reference PASS, Species Visual Addendum PASS, Foundation PASS; historical transition then exposed only a continuity checkpoint vocabulary omission, now repaired in revision 13."
   ],
-  "next_action":"Run PR #271 again on the new exact head through Validate PPIA-06 Inspector Action and Reference Contracts and every applicable hosted regression. If another deterministic validator/package defect appears, repair only that defect without weakening Species/Form authority, equipment authority, permission filtering, accessibility, renderer independence or mutation-recovery contracts, then rerun the complete surface. Merge only the exact all-green head; verify canonical main signed/valid; reset the governed PPIA-06 branch to the merge and write exactly checkpoint → pointer → status recovery commits. Then advance to the separate PPIA-06 integrated workflow/traceability milestone; final completion remains later.",
+  "next_action":"Run PR #271 again on the new exact head through Validate PPIA-06 Inspector Action and Reference Contracts and every applicable hosted regression. If another deterministic validator/package/continuity defect appears, repair only that defect without weakening Species/Form authority, equipment authority, permission filtering, accessibility, renderer independence or mutation-recovery contracts, then rerun the complete surface. Merge only the exact all-green head; verify canonical main signed/valid; reset the governed PPIA-06 branch to the merge and write exactly checkpoint → pointer → status recovery commits. Then advance to the separate PPIA-06 integrated workflow/traceability milestone; final completion remains later.",
   "changed_paths":[
     "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json",
     "governance/application-planning/parallel-preimplementation/PPIA-06_SPECIES_VISUAL_AUTHORITY_MANIFEST_v0.1.0.json",
@@ -52,9 +52,10 @@
   ],
   "completion_gate":{"required_evidence_kinds":["commit","pull_request","merge"],"required_validation_commands":["Validate PPIA-06 Inspector Action and Reference Contracts"],"owner_approval_required":false},
   "validation":[
-    {"command":"Validate PPIA-06 Species Visual Addendum","status":"passed","evidence":"run 31611967883 on exact head 17b333d950b8748e625f1b96cc294d1ec582bc63"},
-    {"command":"Validate PPIA-06 Foundation","status":"passed","evidence":"run 31611967501 on exact head 17b333d950b8748e625f1b96cc294d1ec582bc63"},
-    {"command":"Validate PPIA-06 Inspector Action and Reference Contracts","status":"failed","evidence":"run 31613954219: deterministic validator wording mismatch only; Vespin fixture was correct and validator assertion repaired in 5283c3bac1d3c9681dac5abc4cddbf4645308892"}
+    {"command":"Validate PPIA-06 Species Visual Addendum","status":"passed","evidence":"run 31614297248 regression step passed on exact review head 6cb443c2cb46f79f6d64317a6021db46f5005d94"},
+    {"command":"Validate PPIA-06 Foundation","status":"passed","evidence":"run 31614297248 regression step passed on exact review head 6cb443c2cb46f79f6d64317a6021db46f5005d94"},
+    {"command":"Validate PPIA-06 Inspector Action and Reference Contracts","status":"passed","evidence":"run 31614297248 IAR step passed on exact review head 6cb443c2cb46f79f6d64317a6021db46f5005d94; later transition step exposed continuity-only checkpoint term omission"},
+    {"command":"Validate PPIA-11 to PPIA-06 Transition","status":"failed","evidence":"run 31614297248: checkpoint scope missing literal 'renderer-independent'; full governed vocabulary restored in revision 13"}
   ],
   "unresolved_failures":[],
   "owner_decision_required":false,
@@ -63,14 +64,15 @@
     {"kind":"owner_decision","value":"OVC-026: rat-ninja AI artwork is Furashin reference art; filename/prompt labels are non-authoritative Species metadata"},
     {"kind":"pull_request","value":"PPIA-06 Inspector / Action / Reference PR #271"},
     {"kind":"artifact","value":"20 projection groups / 30 governed actions / P06-MUT-001 / 48 new + 36 inherited = 84 deterministic cases"},
-    {"kind":"ci_run","value":"run 31613954219 exposed validator-only Vespin numeral/word wording mismatch"},
-    {"kind":"commit","value":"validator-only repair 5283c3bac1d3c9681dac5abc4cddbf4645308892"}
+    {"kind":"ci_run","value":"run 31614297248: IAR, Species Visual and Foundation steps PASS; transition continuity vocabulary omission detected"},
+    {"kind":"commit","value":"validator-only Vespin repair 5283c3bac1d3c9681dac5abc4cddbf4645308892"}
   ],
   "roadmap_projection_pending":true,
   "notes":[
     "Roadmap prose projection remains batched/pending; backlog/checkpoint/pointer/status control exact recovery.",
     "PPIA-05 remains Species/Form biology and current-Form authority; PPIA-03 remains equipment/Asset authority.",
     "AI art remains noncanonical unless explicitly promoted; filename/prompt labels are non-authoritative and cannot determine Species binding over owner/source evidence.",
+    "Full governed scope retains appearance, Species, Form, morphology, body, face, hair, fur, scales, feathers, color, markings, equipment preview, preset, randomization, nonhumanoid, mobile, accessibility, portrait/token, renderer-independent, pixel-art-v1, future-3D, stable asset, anchors, occlusion, palette, unsupported, unknown, permission, keyboard and nonvisual semantics.",
     "Renderer topology profiles remain compatibility classes, not Species taxonomy; renderer/view gaps never invalidate a Character.",
     "No application runtime activation, STAGE-A-A2 activation, release, deployment, tester access, paid service or production credential is authorized."
   ]
