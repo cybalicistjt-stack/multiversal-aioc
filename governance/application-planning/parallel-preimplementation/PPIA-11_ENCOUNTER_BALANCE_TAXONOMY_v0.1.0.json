@@ -1,0 +1,43 @@
+{
+  "work_item":"PPIA-11",
+  "version":"0.1.0",
+  "classification":"authored_methodology",
+  "rule":"These factors organize evidence and authoring. They are not a recovered universal encounter formula and do not assign automatic weights or scores.",
+  "factor_families":[
+    {"id":"P11-F-001","name":"encounter_identity_intent","question":"What experience, conflict, objective or pressure is the encounter intended to create?"},
+    {"id":"P11-F-002","name":"participants_sides_roles","question":"Which governed actors/objects participate, on which sides, with what roles and exact versions?"},
+    {"id":"P11-F-003","name":"capability_profile","question":"What source-backed actions, defenses, movement, senses, resistances, vulnerabilities, equipment, forms and other relevant capabilities are actually available?"},
+    {"id":"P11-F-004","name":"output_pressure","question":"What repeatable or burst output can participants produce under the actual rules/context?"},
+    {"id":"P11-F-005","name":"survivability_recovery","question":"What defenses, durability, healing, repair, mitigation, escape or recovery affect persistence?"},
+    {"id":"P11-F-006","name":"action_economy","question":"How many meaningful actions/reactions/stations/parallel actors and timing opportunities exist, and how can control effects alter them?"},
+    {"id":"P11-F-007","name":"resource_pressure","question":"Which ammunition, charges, mana, power, fuel, heat, consumables, fatigue, maintenance or other governed resources constrain the encounter?"},
+    {"id":"P11-F-008","name":"range_mobility_access","question":"How do range, movement modes, adjacency, facing, altitude/depth, velocity, reachability and access shape available actions?"},
+    {"id":"P11-F-009","name":"environment_terrain","question":"Which source-backed Scene/environment features, hazards, terrain or environmental constraints materially change capability or exposure?"},
+    {"id":"P11-F-010","name":"objectives_time_failure","question":"What ends the encounter, what can fail besides defeat, and what time/escalation pressure exists?"},
+    {"id":"P11-F-011","name":"hazards_traps_external_pressure","question":"Which hazards, traps, environmental effects or nonparticipant pressures act independently of opposing participants?"},
+    {"id":"P11-F-012","name":"mixed_composition_scale","question":"Does the encounter combine creatures, characters, items, vehicles, mecha, spacecraft or other scales, and what explicit rules make that interaction meaningful?"},
+    {"id":"P11-F-013","name":"boss_elite_solo_structure","question":"Does a concentrated threat have enough actions, defenses, phases, support or objective pressure to function as intended without inventing boss-only rules?"},
+    {"id":"P11-F-014","name":"waves_reinforcements_escalation","question":"What later arrivals, phase changes or escalating conditions alter the state, and when are they introduced?"},
+    {"id":"P11-F-015","name":"retreat_disengagement_alternatives","question":"What retreat, surrender, bypass, negotiation, rescue or other non-defeat outcomes are actually allowed by the governing context?"},
+    {"id":"P11-F-016","name":"information_uncertainty","question":"Which relevant facts are known, hidden, source-unspecified, conflicted, recommendation-only or dependent on GM/rules interpretation?"},
+    {"id":"P11-F-017","name":"benchmark_fixture_scenario","question":"Which deterministic fixture/scenario or later encounter benchmark supplies comparable evidence, and what does it not prove?"},
+    {"id":"P11-F-018","name":"observed_result_target_band","question":"Which output/cost/resource/survivability/action-economy/range/duration/reliability/compatibility/complexity observations exist, and are comparisons within their valid peer scope?"},
+    {"id":"P11-F-019","name":"uncertainty_band_calibration","question":"How confident is the assessment, what evidence is missing, and what later playtest/benchmark result should recalibrate the recommendation?"},
+    {"id":"P11-F-020","name":"provenance_recommendation_history","question":"Which source facts, inherited contracts, observations, authored recommendations and later revisions produced the current assessment?"}
+  ],
+  "encounter_forms":["single_opposition","mixed_opposition","boss_or_solo","elite_group","waves","reinforcements","hazard_or_trap_pressure","objective_or_timed","pursuit_or_escape","vehicle_mecha_spacecraft","mixed_scale","social_or_noncombat_pressure","hybrid"],
+  "uncertainty_bands":[
+    {"id":"low","meaning":"Relevant governing mechanics and comparable evidence are sufficiently explicit for a bounded recommendation; not a guarantee."},
+    {"id":"moderate","meaning":"Some material context depends on limited benchmark coverage, source-unspecified values or encounter-specific interactions."},
+    {"id":"high","meaning":"Material mechanics, cross-scale interactions, hidden information, comparators or assumptions are unresolved; recommendation requires cautious human adjudication/testing."},
+    {"id":"indeterminate","meaning":"Evidence is insufficient to make a responsible balance recommendation without first resolving named gaps."}
+  ],
+  "comparison_rules":[
+    "Compare like evidence within governed peer/context whenever possible.",
+    "Never infer a universal scalar from 8D-007 normalized target bands.",
+    "Treat action economy, environment, objectives and resource pressure as independent factors rather than forcing them into HP/damage equivalence.",
+    "Cross-scale comparison requires an explicit governing interaction context and preserves each owning domain's mechanics.",
+    "Benchmark outputs describe observed behavior under a fixed scenario; they do not prove universal balance.",
+    "Every recommendation carries provenance, uncertainty and a calibration/review path."
+  ]
+}
