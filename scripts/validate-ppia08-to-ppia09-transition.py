@@ -76,7 +76,7 @@ def main() -> None:
     require(p9["latest_pushed_commit"] is None and p9["pull_request"] is None and p9["merge_commit"] is None, "transition may not fabricate PPIA-09 implementation evidence")
     require(p9["owner_decision_required"] is False and p9["unresolved_failures"] == [], "PPIA-09 transition must be unblocked")
     require(p9["active_substep"] and "source/design foundation" in p9["active_substep"].lower(), "PPIA-09 must start at source/design foundation")
-    scope = (p9["active_substep"] + " " + p9["next_action"] + " " + " ".join(p9.get("notes", []))).lower()
+    scope = (p9.get("objective", "") + " " + p9["active_substep"] + " " + p9["next_action"] + " " + " ".join(p9.get("notes", []))).lower()
     for phrase in ("objective truth", "gm conclusion", "clue", "evidence", "hypothesis", "false lead", "contradiction", "reveal", "uncertainty", "provenance", "nonvisual"):
         require(phrase in scope, f"PPIA-09 starting scope missing {phrase!r}")
 
