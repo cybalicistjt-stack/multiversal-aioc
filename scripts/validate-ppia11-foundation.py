@@ -70,10 +70,18 @@ def main():
     for phrase in ("five evidence classes","20 independently inspectable","no universal cr","within-domain","sci measures structural/cognitive complexity, not power","map pixels","indeterminate","no guaranteed-balance"):
         req(phrase in inv+" "+cand,f"narrative missing {phrase}")
 
-    req(cp["work_item_id"]=="PPIA-11" and cp["attempt_id"]=="PPIA-11-attempt-001" and cp["status"] in {"started","in_progress","ready_for_review"},"PPIA-11 checkpoint")
+    req(cp["work_item_id"]=="PPIA-11" and cp["attempt_id"]=="PPIA-11-attempt-001" and cp["status"] in {"started","in_progress","ready_for_review","completed_verified"},"PPIA-11 checkpoint")
     req(cp["branch"]=="governance/ppia-11-encounter-balance-laboratory" and cp["owner_decision_required"] is False and cp["unresolved_failures"]==[],"PPIA-11 checkpoint boundary")
-    req(pointer["primary_attempt_id"]=="PPIA-11-attempt-001","pointer")
-    req(status["primary"]["work_item_id"]=="PPIA-11","status projection")
+    if cp["status"] == "completed_verified":
+        req(pointer["primary_attempt_id"] != "PPIA-11-attempt-001","historical pointer must advance beyond PPIA-11")
+        req(status["primary"]["work_item_id"] != "PPIA-11","historical status projection must advance beyond PPIA-11")
+        history=json.dumps({"last_verified_action":cp.get("last_verified_action"),"completed_substeps":cp.get("completed_substeps",[]),"validation":cp.get("validation",[]),"evidence":cp.get("evidence",[])},ensure_ascii=False).lower()
+        req("bcd9464ebbf4be7ce15d1764d74890ef12e831fc" in history,"historical foundation merge evidence missing")
+        continuity_mode="historical_after_ppia11"
+    else:
+        req(pointer["primary_attempt_id"]=="PPIA-11-attempt-001","pointer")
+        req(status["primary"]["work_item_id"]=="PPIA-11","status projection")
+        continuity_mode="active_ppia11"
     boundaries=backlog["boundaries"]
     for key in ("application_runtime_mutation_authorized","a2_activation_authorized","release_authorized","deployment_authorized","tester_access_authorized","canonical_promotion_without_source_evidence_authorized"):
         req(boundaries[key] is False,f"forbidden boundary enabled: {key}")
@@ -82,5 +90,6 @@ def main():
     print("evidence_classes=5 factors=20 uncertainty_bands=4 handoffs=10")
     print("8D007=18 domains / 36 fixtures / 24 scenarios / 72 executions")
     print("source_truth_immutable=true automatic_balance_rewrite=false universal_scalar=false guaranteed_balance=false")
+    print(f"continuity_mode={continuity_mode}")
     return 0
 if __name__=="__main__": raise SystemExit(main())

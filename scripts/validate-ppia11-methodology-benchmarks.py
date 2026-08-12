@@ -100,10 +100,18 @@ def main():
     for phrase in ("thirteen-step","twelve f012 pressure dimensions","eighteen contiguous","indeterminate/blocked","boss-only","waves and reinforcements","retreat","calibration never silently edits","no weighted sum"):
         req(phrase in narrative,f"candidate narrative missing {phrase}")
 
-    req(cp["work_item_id"]=="PPIA-11" and cp["attempt_id"]=="PPIA-11-attempt-001" and cp["status"] in {"started","in_progress","ready_for_review"},"checkpoint")
+    req(cp["work_item_id"]=="PPIA-11" and cp["attempt_id"]=="PPIA-11-attempt-001" and cp["status"] in {"started","in_progress","ready_for_review","completed_verified"},"checkpoint")
     req(cp["branch"]=="governance/ppia-11-encounter-balance-laboratory" and cp["owner_decision_required"] is False and cp["unresolved_failures"]==[],"checkpoint boundary")
-    req(pointer["primary_attempt_id"]=="PPIA-11-attempt-001","pointer")
-    req(status["primary"]["work_item_id"]=="PPIA-11","status")
+    if cp["status"] == "completed_verified":
+        req(pointer["primary_attempt_id"] != "PPIA-11-attempt-001","historical pointer must advance beyond PPIA-11")
+        req(status["primary"]["work_item_id"] != "PPIA-11","historical compact status must advance beyond PPIA-11")
+        history=json.dumps({"last_verified_action":cp.get("last_verified_action"),"completed_substeps":cp.get("completed_substeps",[]),"validation":cp.get("validation",[]),"evidence":cp.get("evidence",[])},ensure_ascii=False).lower()
+        req("a5556fb3253baae0f302d9ea9b4b5f582fa9e05e" in history,"historical methodology merge evidence missing")
+        continuity_mode="historical_after_ppia11"
+    else:
+        req(pointer["primary_attempt_id"]=="PPIA-11-attempt-001","pointer")
+        req(status["primary"]["work_item_id"]=="PPIA-11","status")
+        continuity_mode="active_ppia11"
     boundaries=backlog["boundaries"]
     for key in ("application_runtime_mutation_authorized","a2_activation_authorized","release_authorized","deployment_authorized","tester_access_authorized","canonical_promotion_without_source_evidence_authorized"):
         req(boundaries[key] is False,f"forbidden boundary enabled: {key}")
@@ -112,6 +120,7 @@ def main():
     print("methodology_steps=13 factors=20 pressure_dimensions=12 recommendation_types=9")
     print("benchmark_cases=18 encounter_forms=%d uncertainty_bands=4" % len(t["encounter_forms"]))
     print("universal_scalar=false guaranteed_balance=false source_rewrite=false runtime_activation=false")
+    print(f"continuity_mode={continuity_mode}")
     return 0
 
 if __name__=="__main__":
