@@ -30,6 +30,7 @@ def main():
     profiles=load("PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json")
     owner=load("PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json")
     manifest=load("PPIA-06_SPECIES_VISUAL_AUTHORITY_MANIFEST_v0.1.0.json")
+    backlog=load("PPIA_PROGRAM_BACKLOG.json")
     candidate=(B/"PPIA-06_APPEARANCE_WORKFLOW_TRACEABILITY_CANDIDATE.md").read_text(encoding="utf-8").lower()
 
     req(wf["schema_version"]=="0.2.0" and wf["work_item"]=="PPIA-06","workflow contract version/work item mismatch")
@@ -100,7 +101,6 @@ def main():
     for key in ["hidden_derivative_leak","renderer_output_authoritative","view_output_authoritative","filename_prompt_species_inference","species_form_biology_mutation","equipment_state_mutation","presentation_wardrobe_grants_mechanics","silent_preset_substitution","arbitrary_rotation","pseudo_3d","runtime_activation"]:
         req(policy[key] is False,f"workflow policy weakened: {key}")
 
-    # OVC-027: all rat-humanoid Arthold art is Furashin, while Ratman remains a Species.
     req(any(x.get("id")=="OVC-027" and "all rat-humanoid" in x.get("decision","").lower() and "Furashin" in x.get("decision","") for x in owner["decisions"]),"OVC-027 missing")
     assets=[]
     for name in manifest["art_manifest_parts"]: assets.extend(load(name)["assets"])
@@ -111,7 +111,6 @@ def main():
     fur_wf=by["P06-WF-008"]
     req(set(fur_wf["species"])=={"Furashin","Ratman"},"Furashin/Ratman separation workflow changed")
 
-    # Special all-species assertions.
     iw_text=json.dumps(iw,ensure_ascii=False).lower()
     for phrase in ["four legs","four arms","four arborae seasonal","hybrid recomputes","one upstream ascension","persistent markers remain nonerasable","three simultaneous fur colors","one constituent identity","functional/vestigial","humanoid mechanical grammar","rakuuta feathers/ears","kola-ha fins/tail"]:
         req(phrase in iw_text,f"integrated case surface missing {phrase}")
@@ -120,10 +119,18 @@ def main():
         req(phrase in candidate,f"candidate narrative missing {phrase}")
 
     checkpoint=json.loads((ROOT/"governance/ai/work-state/PPIA-06-attempt-001.json").read_text(encoding="utf-8"))
-    req(checkpoint["work_item_id"]=="PPIA-06" and checkpoint["status"]=="started","PPIA-06 must remain started")
-    scope=((checkpoint.get("active_substep") or "")+" "+(checkpoint.get("next_action") or "")).lower()
-    req("workflow" in scope and "traceability" in scope,"checkpoint no longer selects workflow/traceability")
+    req(checkpoint["work_item_id"]=="PPIA-06","PPIA-06 checkpoint identity changed")
     req(checkpoint["owner_decision_required"] is False and checkpoint["unresolved_failures"]==[],"unexpected PPIA-06 block")
+    if backlog["current_work_item_id"]=="PPIA-06":
+        req(checkpoint["status"] in {"started","in_progress"},"active PPIA-06 checkpoint must remain active")
+        scope=((checkpoint.get("active_substep") or "")+" "+(checkpoint.get("next_action") or "")).lower()
+        req("workflow" in scope and "traceability" in scope,"checkpoint no longer selects workflow/traceability")
+        continuity="active_ppia06"
+    else:
+        order=backlog["execution_order"]
+        req(order.index(backlog["current_work_item_id"])>order.index("PPIA-06"),"historical workflow validation requires downstream current work")
+        req(checkpoint["status"]=="completed_verified","historical PPIA-06 checkpoint must be completed_verified")
+        continuity="historical_after_ppia06"
 
     print("PPIA-06 INTEGRATED WORKFLOW/TRACEABILITY: PASS")
     print("workflows=16 mutation=14 read_analysis=2 species=25")
@@ -131,6 +138,7 @@ def main():
     print("cases=48 IAR + 36 SpeciesVisual + 32 integrated = 116; inherited cases assigned exactly once")
     print(f"arthold_rat_humanoid_art={len(rat_art)} all=Furashin OVC-027=true Ratman_species_preserved=true")
     print("biology_mutation=false equipment_mutation=false hidden_leak=false arbitrary_rotation=false runtime_activation=false")
+    print("continuity_mode="+continuity)
     return 0
 
 if __name__=="__main__":
