@@ -11,7 +11,7 @@ on:
       - 'scripts/validate-ppia08-inspector-reference-cases.py'
       - 'scripts/validate-ppia08-foundation.py'
       - 'scripts/validate-ppia07-to-ppia08-transition.py'
-      - 'scripts/validate_ppia_program.py'
+      - 'scripts/validate-ppia-program.py'
       - '.github/workflows/validate-ppia-08-workflow-contracts.yml'
   workflow_dispatch:
 
@@ -35,4 +35,4 @@ jobs:
       - name: Validate PPIA-07 to PPIA-08 transition regression
         run: python scripts/validate-ppia07-to-ppia08-transition.py
       - name: Validate generalized PPIA program continuity
-        run: python scripts/validate_ppia_program.py
+        run: python scripts/validate-ppia-program.py
