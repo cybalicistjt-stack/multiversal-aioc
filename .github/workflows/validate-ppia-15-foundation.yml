@@ -1,0 +1,55 @@
+name: Validate PPIA-15 Foundation
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-15_*'
+      - 'governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json'
+      - 'governance/ai/work-state/PPIA-15-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'governance/application-planning/internal-alpha/IA-D09_*'
+      - 'governance/application-planning/internal-alpha/INTERNAL_ALPHA_TESTER_PACKAGE_HANDOFF_v1.0.0.md'
+      - 'governance/application-planning/stage-a-reference-campaign/STAGE_A_TESTER_REFERENCE_CAMPAIGN_KIT_HANDOFF_v0.1.0.md'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-09_*'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-10_*'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-11_*'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-14_*'
+      - 'scripts/validate-ppia15-foundation.py'
+      - 'scripts/validate-ppia14-to-ppia15-transition.py'
+      - 'scripts/validate-ppia14-completion-contracts.py'
+      - 'scripts/validate-ppia11-completion-contracts.py'
+      - 'scripts/validate-ppia10-completion-contracts.py'
+      - 'scripts/validate-ppia09-completion-contracts.py'
+      - '.github/workflows/validate-ppia-15-foundation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia15-foundation:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PPIA-15 Foundation
+        run: python scripts/validate-ppia15-foundation.py
+      - name: Validate PPIA-14 to PPIA-15 transition regression
+        run: python scripts/validate-ppia14-to-ppia15-transition.py
+      - name: Validate PPIA-14 completion dependency regression
+        run: python scripts/validate-ppia14-completion-contracts.py
+      - name: Validate PPIA-11 completion dependency regression
+        run: python scripts/validate-ppia11-completion-contracts.py
+      - name: Validate PPIA-10 completion dependency regression
+        run: python scripts/validate-ppia10-completion-contracts.py
+      - name: Validate PPIA-09 completion dependency regression
+        run: python scripts/validate-ppia09-completion-contracts.py
+      - name: Validate generalized PPIA continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
+      - name: Validate conversation continuity
+        run: python tools/continuity_state.py validate
+      - name: Run conversation continuity regression tests
+        run: python -m unittest discover -s tests/continuity -v
