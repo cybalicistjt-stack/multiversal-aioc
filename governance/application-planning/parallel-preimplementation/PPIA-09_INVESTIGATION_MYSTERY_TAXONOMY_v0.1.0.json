@@ -1,0 +1,66 @@
+{
+  "schema_version":"0.1.0",
+  "work_item_id":"PPIA-09",
+  "status":"foundation_candidate",
+  "identity_state_layers":[
+    {"id":"investigation-case-definition","purpose":"case identity, premise, scope, status, objectives and owning Campaign/Scene references"},
+    {"id":"objective-truth-and-gm-solution","purpose":"authorized hidden truth statements, responsible actors, motives, causes, twists and solution/conclusion basis"},
+    {"id":"clue-definition-and-source-template","purpose":"reusable clue/evidence template identity, source version, discovery/analysis affordances and pack provenance"},
+    {"id":"campaign-clue-discovery-and-analysis-state","purpose":"Campaign-local discovery, discoverer, time/place, analysis state, reveal audience and historical snapshot"},
+    {"id":"observation-claim-and-statement","purpose":"what was perceived, asserted, reported or remembered without collapsing statement into truth"},
+    {"id":"evidence-item-and-owning-domain-reference","purpose":"reference physical/digital/document/sample/record Assets and other owning-domain evidence without copying ownership"},
+    {"id":"witness-source-reliability-and-authenticity","purpose":"speaker/source identity, belief, reliability, authenticity/forgery state and provenance as separate dimensions"},
+    {"id":"hypothesis-theory-and-deduction","purpose":"Player/character/GM working theories, supporting/contradicting material, confidence and review state without automatic fact promotion"},
+    {"id":"typed-connection-and-semantic-relationship","purpose":"typed semantic edges between clues, claims, evidence, hypotheses, people, places and events independent of graph layout"},
+    {"id":"question-lead-and-next-step","purpose":"open questions, leads, follow-ups, research requests and investigation objectives"},
+    {"id":"timeline-temporal-order-and-alibi","purpose":"case-local chronology, before/after relationships, participant/location temporal claims and alibi comparison"},
+    {"id":"contradiction-false-lead-and-uncertainty","purpose":"conflicts, red herrings, false/corrupted evidence, unresolved ambiguity, confidence/relevance and uncertainty without automatic truth verdict"},
+    {"id":"discovery-condition-reveal-and-knowledge-audience","purpose":"discovery triggers, private/party/role audiences, reveal decisions and knowledge-state transitions"},
+    {"id":"solvability-redundancy-progression-and-stall-recovery","purpose":"authoring review of clue routes, important-information redundancy, progress states, dynamic/extra clues and stall recovery without invented universal clue counts"},
+    {"id":"conclusion-resolution-outcome-and-history","purpose":"authorized conclusions, case resolution/partial resolution/failure, rewards/consequences and retained hypothesis/discovery history"},
+    {"id":"permission-provenance-version-recovery-accessibility","purpose":"default-deny projection, source/version/Event evidence, expected-version/idempotency, reconnect, export/AI filtering and semantic nonvisual parity"}
+  ],
+  "presentation_profiles":[
+    "investigation-dashboard",
+    "clue-board-and-semantic-connection-view",
+    "clue-and-campaign-clue-inspector",
+    "evidence-inspector-and-source-provenance",
+    "timeline-alibi-and-event-view",
+    "witness-source-and-claim-profile",
+    "hypothesis-theory-builder",
+    "gm-truth-solution-and-reveal-control",
+    "lead-question-and-research-tracker",
+    "solvability-redundancy-and-progress-audit",
+    "reference-mystery-and-dossier-authoring-workbench",
+    "history-provenance-recovery-and-accessible-linear-view"
+  ],
+  "truth_belief_invariants":[
+    "objective truth, GM conclusion, observation, claim, evidence, hypothesis and Player knowledge are separately typed",
+    "a visible clue or claim may be true, false, incomplete, misleading or unresolved without changing its visibility state",
+    "a contradiction identifies incompatible statements/evidence but does not itself choose which side is true",
+    "witness belief, witness reliability, statement truth and source authenticity are independent concepts",
+    "Player hypotheses remain noncanonical until an authorized conclusion/promotion path explicitly records a conclusion",
+    "GM truth may remain hidden while Player-facing projections contain clues, claims, evidence and hypotheses"
+  ],
+  "authoring_invariants":[
+    "important-information redundancy guidance is represented and reviewable without imposing a universal clue count",
+    "dynamic or extra clues retain author, trigger/delivery reason, source and reveal provenance",
+    "spatial clue-board position is presentation state and never the sole semantic relationship representation",
+    "typed connections have ordered textual/nonvisual equivalents",
+    "evidence references owning-domain records rather than cloning Item, Creature/NPC, Vehicle, Setting or Event ownership",
+    "world/setting timeline facts remain owning-domain truth and require permission/knowledge projection before becoming Player-known case facts",
+    "research and Knowledge mechanics may unlock/interpret information but do not bypass permissions or auto-create truth"
+  ],
+  "foundation_non_assumptions":{
+    "deterministic_solvability_algorithm_defined":false,
+    "universal_required_clue_count_defined":false,
+    "universal_confidence_probability_scale_defined":false,
+    "universal_false_lead_fairness_threshold_defined":false,
+    "automatic_contradiction_truth_resolution_defined":false,
+    "all_historical_clues_exhaustively_extracted":false,
+    "all_timeline_facts_player_visible":false,
+    "research_roll_defines_truth":false,
+    "ai_hypothesis_authoritative":false,
+    "graph_layout_authoritative":false
+  }
+}
