@@ -1,0 +1,38 @@
+name: Validate PPIA-09 Foundation
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-09_*'
+      - 'governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json'
+      - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F011_*'
+      - 'governance/ai/work-state/PPIA-08-attempt-001.json'
+      - 'governance/ai/work-state/PPIA-09-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia09-foundation.py'
+      - 'scripts/validate-ppia08-to-ppia09-transition.py'
+      - 'scripts/validate-ppia08-completion-contracts.py'
+      - 'governance/application-planning/parallel-preimplementation/validate_ppia_program.py'
+      - '.github/workflows/validate-ppia-09-foundation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia09-foundation:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PPIA-09 source/design foundation
+        run: python scripts/validate-ppia09-foundation.py
+      - name: Validate PPIA-08 to PPIA-09 transition regression
+        run: python scripts/validate-ppia08-to-ppia09-transition.py
+      - name: Validate PPIA-08 completion regression
+        run: python scripts/validate-ppia08-completion-contracts.py
+      - name: Validate generalized PPIA continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
