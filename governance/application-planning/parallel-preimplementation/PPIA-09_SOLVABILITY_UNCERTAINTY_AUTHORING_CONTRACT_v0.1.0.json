@@ -1,0 +1,112 @@
+{
+  "format": "multiversal-ppia09-solvability-uncertainty-authoring-contract",
+  "version": "0.1.0",
+  "work_item": "PPIA-09",
+  "status": "governed_design_candidate",
+  "source_boundary": {
+    "source_backed": [
+      "Important information should appear in at least two places as redundancy against stalls.",
+      "Dynamic or extra clues may be delivered when investigation progress stalls.",
+      "Mysteries may contain red herrings, false evidence, unreliable witnesses and corrupted information.",
+      "Mystery authoring separates surface clues, hidden connections and revealed or core truth.",
+      "Player-facing case material and GM solution material remain separate projections."
+    ],
+    "not_source_defined": [
+      "universal deterministic solvability algorithm",
+      "universal required clue count",
+      "universal numeric confidence probability scale",
+      "automatic contradiction truth adjudication",
+      "universal false-lead fairness threshold"
+    ]
+  },
+  "revelation_contract": {
+    "requirement_classes": ["required","optional","bonus"],
+    "dependency_kinds": ["direct","all-of","any-of","ordered-after","requires-analysis","requires-authorized-reveal","custom"],
+    "route_identity_fields": ["routeId","entryRefs","prerequisiteRefs","deliveryMode","audienceScope","sourceRefs","version"],
+    "rules": [
+      "A required revelation is an author-declared case objective dependency, not an automatically inferred truth.",
+      "Optional and bonus revelations may enrich or simplify a case but are not required for the authored minimum resolution path.",
+      "Dependencies must be explicit and versioned; spatial board proximity never creates a dependency.",
+      "Hidden or unauthorized nodes may participate in GM authoring diagnostics but are excluded from unauthorized Player diagnostics and projections.",
+      "A route is not considered available to an audience when an author-declared prerequisite is impossible or permanently unauthorized for that audience."
+    ]
+  },
+  "solvability_diagnostic": {
+    "status": "governed_ppia09_design_not_recovered_source_canon",
+    "inputs": ["investigationVersion","requiredRevelationRefs","revelationDependencyGraph","audienceScope","currentAuthoringState"],
+    "outputs": ["reachableRequiredRefs","unreachableRequiredRefs","routeCounts","singlePointWarnings","circularDependencyWarnings","blockedByAuthorizationWarnings","stallRecoveryCoverage","diagnosticBasisVersion"],
+    "deterministic_rules": [
+      "Start from author-declared entry routes whose prerequisites are satisfied in the diagnostic authoring model.",
+      "Traverse only explicit revelation dependencies and typed delivery routes.",
+      "Mark each required revelation reachable when at least one complete explicit route exists from an entry route under the selected audience scope.",
+      "Report but do not auto-correct unreachable required revelations.",
+      "Report circular dependencies that have no external entry route.",
+      "Report a single-point warning when a required revelation has exactly one surviving authored route.",
+      "Never infer a route from semantic similarity, graph proximity, AI suggestion or unstated GM intent.",
+      "The diagnostic is authoring evidence only and never resolves the Investigation or determines Player success."
+    ]
+  },
+  "redundancy_contract": {
+    "source_guidance": "Important information should appear in at least two places.",
+    "governed_interpretation": [
+      "Authors may mark revelations as important_for_progression.",
+      "For an important_for_progression revelation, the diagnostic counts distinct explicit routes after collapsing duplicate-of routes.",
+      "Fewer than two distinct routes produces an authoring warning, not an automatic invalidation of every mystery.",
+      "Two or more routes satisfies the source-grounded redundancy warning condition but does not guarantee narrative quality, balance or Player success.",
+      "No rule converts the source guidance into a universal minimum number of clues across the whole Investigation."
+    ]
+  },
+  "stall_recovery_contract": {
+    "delivery_modes": ["dynamic-clue","extra-clue","gm-reveal","research-opportunity","scene-opportunity","custom"],
+    "required_fields": ["recoveryRef","triggerOrDeliveryReason","authorRef","sourceRef","audienceScope","deliveryMode","eventPolicy","version"],
+    "rules": [
+      "Stall recovery is attributable and does not silently alter prior clues or truth.",
+      "A recovery route may unlock a required revelation or another route but must remain explicit in diagnostics.",
+      "Dynamic delivery must preserve why it occurred so later review can distinguish authored baseline content from adaptive recovery.",
+      "Recovery never bypasses permissions or owning Action, Ability, Scene, Campaign or Setting rules."
+    ]
+  },
+  "false_lead_and_corruption_diagnostic": {
+    "status": "governed_ppia09_design_not_recovered_source_canon",
+    "states": ["not-designated","intentional-false-lead","known-lie","corrupted-source","forged-or-inauthentic","unreliable-source","unresolved"],
+    "findings": ["no-correction-path","only-route-depends-on-false-material","all-required-routes-blocked","misleading-material-has-recovery-path","source-state-unresolved"],
+    "rules": [
+      "False or misleading material remains visible according to reveal policy and does not mutate objective truth.",
+      "Diagnostics report when misleading material is the sole explicit route to a required revelation or when no authored correction or recovery path exists.",
+      "A diagnostic finding is not a universal fairness verdict and does not forbid a deliberate hard mystery.",
+      "Authors may accept a warning only through an attributable authoring decision; the warning itself does not rewrite content."
+    ]
+  },
+  "uncertainty_contract": {
+    "status": "governed_ppia09_design_not_recovered_source_canon",
+    "dimensions": ["confidence","relevance","authenticity","source-reliability"],
+    "record_fields": ["dimension","annotation","basisRefs","authorRef","visibilityState","reviewState","version"],
+    "rules": [
+      "Annotations may use text or an explicitly adopted Campaign/rules vocabulary; PPIA-09 defines no mandatory universal numeric scale.",
+      "Unset and unknown are valid states.",
+      "Confidence is confidence in an assessment or theory, not objective truth probability.",
+      "Relevance describes authored investigative usefulness or relationship, not truth.",
+      "Authenticity concerns whether an object, source or record is genuine, altered or forged; it is independent of whether its contents are true.",
+      "Source reliability concerns an attributable source assessment and remains independent of witness belief and statement truth."
+    ]
+  },
+  "contradiction_diagnostic": {
+    "classifications": ["temporal","location","identity","causal","statement","source-authenticity","evidence-state","custom"],
+    "review_states": ["unreviewed","acknowledged","under-review","explained","resolved-by-authorized-conclusion","superseded"],
+    "rules": [
+      "Contradiction records are explicit authoring relationships; the system does not infer a truth winner.",
+      "Timeline or alibi comparison may produce a contradiction finding only from explicit temporal records and declared incompatibility rules.",
+      "Resolved contradiction history retains both prior inputs and the authorized explanation or conclusion reference.",
+      "A contradiction hidden from an audience cannot leak through counts, badges, search, diagnostics or AI context."
+    ]
+  },
+  "acceptance_rules": [
+    "Every required revelation can be checked for explicit reachability without inspecting unauthorized Player-hidden content in Player-facing diagnostics.",
+    "Important-information redundancy warnings use distinct explicit routes and preserve the source's at-least-two guidance without creating a universal clue count.",
+    "Circular and blocked dependencies are reported deterministically and never auto-repaired.",
+    "False-lead and corrupted-evidence diagnostics preserve attribution and do not adjudicate truth.",
+    "Uncertainty annotations never become objective truth probability by default.",
+    "Dynamic stall-recovery routes retain author, reason, source, audience and version evidence.",
+    "All diagnostic outputs are read-only authoring findings and cannot mutate truth, reveal state, conclusions or owning-domain objects."
+  ]
+}
