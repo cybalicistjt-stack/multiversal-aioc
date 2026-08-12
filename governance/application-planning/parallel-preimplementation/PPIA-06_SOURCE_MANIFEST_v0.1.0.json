@@ -1,0 +1,30 @@
+{
+  "schema_version": "0.1.0",
+  "work_item": "PPIA-06",
+  "title": "Character Appearance Creator Source and Design Manifest",
+  "foundation_scope": "renderer-independent appearance semantics and first pixel-art-v1 renderer contract",
+  "evidence_classes": [
+    {"id":"source_truth","meaning":"Recovered or previously verified game/source fact. PPIA-06 may project but not rewrite it."},
+    {"id":"inherited_contract","meaning":"Verified repository contract delegated by an owning PPIA/feature packet."},
+    {"id":"project_source_design_contract","meaning":"Approved project design-bible requirement preserved as a design contract, not game-source truth."},
+    {"id":"player_authored_appearance","meaning":"Authorized descriptive/cosmetic choice authored by the player within source/inherited constraints."},
+    {"id":"renderer_metadata","meaning":"Renderer implementation metadata such as stable asset IDs, anchors, occlusion masks and palette ramps."},
+    {"id":"unresolved_gap","meaning":"Source/design information not specified; remains unknown/unsupported rather than synthesized."}
+  ],
+  "sources": [
+    {"id":"P06-SRC-001","class":"inherited_contract","path":"governance/application-planning/parallel-preimplementation/PPIA-05_COMPLETION_REPORT.md","authority":"Species/Form biology, morphology, current body/form state, compatibility, visibility, hidden biological non-inference, unknown/source-unspecified anatomy."},
+    {"id":"P06-SRC-002","class":"inherited_contract","path":"governance/application-planning/internal-alpha/feature-packets/MV-IA-F004_CHARACTER_CREATION_AND_ADVANCEMENT.md","authority":"Character identity/mechanical separation, stable IDs, permission filtering, responsive/accessibility behavior, visual appearance deferred."},
+    {"id":"P06-SRC-003","class":"inherited_contract","path":"governance/application-planning/parallel-preimplementation/PPIA-03_COMPLETION_REPORT.md","authority":"Equipment/Asset Definition-vs-instance, ownership/custody/possession/control/access/equipment/runtime state, permission-safe projections."},
+    {"id":"P06-SRC-004","class":"project_source_design_contract","path":"project-source:SCREEN_DESIGN_BIBLE.md#SD-105","authority":"Body, Face, Hair, Colors, Clothing preview, Equipment preview, Accessibility preview; Randomize, Save preset, Import/export appearance."},
+    {"id":"P06-SRC-005","class":"project_source_design_contract","path":"project-source:UI_DESIGN_BIBLE.md#Accessibility-Foundation","authority":"Desktop/tablet/mobile, keyboard, screen-reader, touch, high zoom, reduced motion, noncolor semantics, no hover-only core interaction."},
+    {"id":"P06-SRC-006","class":"inherited_contract","path":"governance/ai/work-state/PPIA-06-attempt-001.json","authority":"Owner-selected high-detail modular pixel-art first renderer, renderer-independent state, future-3D boundary, nonhumanoid and portrait/token handoff scope."}
+  ],
+  "verified_inherited_counts": {"ppia05_direct_pdfs":29,"ppia05_direct_pages":654,"ppia05_supporting_adaptation_pdfs":6,"ppia05_supporting_adaptation_pages":233,"ppia05_mixed_ability_rows":2203,"ppia05_supporting_ability_rows":1018,"ppia05_environment_based_rows":296,"ppia03_item_csv_rows":5389},
+  "explicit_non_assumptions": {"human_or_humanoid_default_anatomy":false,"unknown_anatomy_defaulted":false,"appearance_rewrites_biology":false,"appearance_grants_or_mutates_equipment":false,"hidden_form_or_marker_inference":false,"renderer_support_defines_character_validity":false,"renderer_topology_is_species_taxonomy":false,"pixel_coordinates_are_source_truth":false,"color_is_only_semantic_channel":false,"randomization_mutates_source_owned_state":false,"pixel_art_is_permanent_platform_model":false,"runtime_activation":false},
+  "design_requirements": {
+    "sd105_controls": ["Body","Face","Hair","Colors","Clothing preview","Equipment preview","Accessibility preview"],
+    "sd105_supports": ["Randomize","Save preset","Import/export appearance"],
+    "accessibility": ["desktop","tablet","mobile","keyboard","touch","screen-reader","high-zoom","reduced-motion","noncolor-status","no-hover-only-core-flow"],
+    "handoffs": ["portrait","token"]
+  }
+}
