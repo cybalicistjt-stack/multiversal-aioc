@@ -29,7 +29,6 @@ def main():
     corpus=load(BAL/"8D-007_GOLDEN_CORPUS_CONTRACT.json")
     fixtures=load(BAL/"8D-007_GOLDEN_CORPUS_MANIFEST.json")
     scenarios=load(BAL/"8D-007_RUNTIME_SCENARIO_REGISTRY.json")
-    obs=load(BAL/"8D-007_BALANCE_OBSERVATION_SCHEMA.json")
     peer=load(BAL/"8D-007_PEER_GROUP_TARGET_BAND_CONTRACT.json")
     completion=load(BAL/"8D-007_COMPLETION_GOVERNANCE.json")
     inv=INVENTORY.read_text(encoding="utf-8").lower(); cand=CANDIDATE.read_text(encoding="utf-8").lower()
@@ -43,7 +42,7 @@ def main():
     req(len(m["inherited_contracts"])==6 and {x["work_item"] for x in m["inherited_contracts"]}=={"PPIA-02","PPIA-03","PPIA-04","PPIA-05","PPIA-07","PPIA-08"},"inherited contract set")
     for x in m["inherited_contracts"]: req((ROOT/x["path"]).exists(),f"missing inherited {x['work_item']}")
     non=" ".join(m["explicit_non_assumptions"]).lower()
-    for phrase in ("no universal challenge-rating","within-domain","not source truth","action economy","cross-scale","map pixels","sci/csl","automatically","does not activate"):
+    for phrase in ("no universal challenge-rating","within-domain","not source truth","action economy","not numerically interchangeable","map pixels","sci/csl","automatically","does not activate"):
         req(phrase in non,f"non-assumption missing {phrase}")
 
     req(corpus["documentId"]=="MV-8D-007-CONTRACT-001" and corpus["sourceCorpus"]["datasets"]==20 and corpus["sourceCorpus"]["promotedRecords"]==19199,"8D corpus contract")
