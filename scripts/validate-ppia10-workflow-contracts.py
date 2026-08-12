@@ -16,6 +16,9 @@ CP=ROOT/'governance/ai/work-state/PPIA-10-attempt-001.json'
 PTR=ROOT/'governance/ai/runtime/CURRENT_WORK_POINTER.json'
 STATUS=ROOT/'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
 INSPECTOR_MERGE='6985dd1e1f6d2e2b696f409cc74ae9e0ad18d728'
+WORKFLOW_HEAD='7e23b04fa920b706278ae0467b022713cc6a9334'
+WORKFLOW_PR=260
+WORKFLOW_MERGE='36da845855a01da8003b699f8a68478427424d42'
 def load(p): return json.loads(p.read_text(encoding='utf-8'))
 def req(x,m):
     if not x: raise AssertionError(m)
@@ -54,9 +57,16 @@ def main():
     req(ins['projection_policy']['filter_before_derivatives'] is True and ins['projection_policy']['hidden_derivative_leak'] is False and ins['projection_policy']['graph_authoritative'] is False,'projection policy regression')
     full=(json.dumps(idx,ensure_ascii=False)+'\n'+''.join(json.dumps(load(p),ensure_ascii=False) for p in shards)+'\n'+json.dumps(tr,ensure_ascii=False)+'\n'+note).lower()
     for phrase in ('18 end-to-end relationship/social/faction workflows','15 workflows perform authoritative mutation','3 are read-only','34 governed actions','24 authoritative mutations','90 deterministic reference cases','72 inherited','five bond','seven converted organizations','directional','plausible information path','influence is not standing','atomic event group or none','permission filtering','expected_version','operation_id','status/current-version','semantic nonvisual','proposal-only','not ppia-10 complete','no application runtime','stage-a-a2'): req(phrase in full,f'missing boundary {phrase}')
-    req(cp['work_item_id']=='PPIA-10' and cp['branch']=='governance/ppia-10-relationship-social-faction' and cp['status']=='started','checkpoint identity/status'); req(cp.get('owner_decision_required') is False and cp.get('unresolved_failures')==[],'checkpoint unresolved')
-    history=json.dumps({'last_verified_action':cp.get('last_verified_action'),'completed_substeps':cp.get('completed_substeps',[]),'evidence':cp.get('evidence',[])},ensure_ascii=False).lower(); req(INSPECTOR_MERGE in history,'inspector merge evidence missing')
-    active=((cp.get('active_substep') or '')+' '+(cp.get('next_action') or '')).lower(); req('workflow' in active and 'relationship/social/faction' in active,'checkpoint workflow continuity'); req(ptr['primary_attempt_id']=='PPIA-10-attempt-001' and status['primary']['work_item_id']=='PPIA-10' and status['primary']['status']=='started','pointer/status continuity')
+    req(cp['work_item_id']=='PPIA-10' and cp['branch']=='governance/ppia-10-relationship-social-faction' and cp['status'] in {'started','completed_verified'},'checkpoint identity/status'); req(cp.get('owner_decision_required') is False and cp.get('unresolved_failures')==[],'checkpoint unresolved')
+    history=json.dumps({'last_verified_action':cp.get('last_verified_action'),'completed_substeps':cp.get('completed_substeps',[]),'validation':cp.get('validation',[]),'evidence':cp.get('evidence',[])},ensure_ascii=False).lower(); req(INSPECTOR_MERGE in history,'inspector merge evidence missing')
+    active=((cp.get('active_substep') or '')+' '+(cp.get('next_action') or '')).lower()
+    workflow_historical=all(v in history for v in (WORKFLOW_HEAD.lower(),f'pr #{WORKFLOW_PR}',WORKFLOW_MERGE.lower()))
+    if cp['status']=='started' and not workflow_historical:
+        req('workflow' in active and 'relationship/social/faction' in active,'checkpoint workflow continuity')
+    else:
+        req(workflow_historical,'historical workflow head/PR/merge evidence missing')
+    if cp['status']=='started':
+        req(ptr['primary_attempt_id']=='PPIA-10-attempt-001' and status['primary']['work_item_id']=='PPIA-10' and status['primary']['status']=='started','pointer/status continuity')
     print('PPIA-10 WORKFLOW CONTRACTS: PASS')
     print('workflows=18 mutation=15 read_only=3 projections=18 profiles=14 actions=34 cases=90 handoffs=15')
 if __name__=='__main__': main()
