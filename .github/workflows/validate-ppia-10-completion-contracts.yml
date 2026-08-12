@@ -1,0 +1,41 @@
+name: Validate PPIA-10 Completion Contract
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-10_*'
+      - 'governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json'
+      - 'governance/ai/work-state/PPIA-10-attempt-001.json'
+      - 'governance/ai/work-state/PPIA-11-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia10-*.py'
+      - '.github/workflows/validate-ppia-10-*.yml'
+      - 'governance/application-planning/parallel-preimplementation/validate_ppia_program.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia10-completion-contract:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PPIA-10 completion contract
+        run: python scripts/validate-ppia10-completion-contracts.py
+      - name: Validate PPIA-10 workflow regression
+        run: python scripts/validate-ppia10-workflow-contracts.py
+      - name: Validate PPIA-10 inspector/reference regression
+        run: python scripts/validate-ppia10-inspector-reference-cases.py
+      - name: Validate PPIA-10 foundation regression
+        run: python scripts/validate-ppia10-foundation.py
+      - name: Validate PPIA-09 to PPIA-10 transition regression
+        run: python scripts/validate-ppia09-to-ppia10-transition.py
+      - name: Validate generalized PPIA continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
+      - name: Validate conversation continuity
+        run: python tools/continuity_state.py validate
