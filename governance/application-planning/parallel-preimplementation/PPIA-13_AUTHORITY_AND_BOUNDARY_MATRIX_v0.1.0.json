@@ -1,0 +1,40 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"PPIA-13",
+  "artifact_version":"0.1.0",
+  "status":"foundation-candidate",
+  "authority_domains":[
+    {"id":"P13-AU-001","domain":"identity-role-workspace","owner":"MV-IA-F003","teaching_authority":"explain authorized entry, selection and resume only"},
+    {"id":"P13-AU-002","domain":"character-rules-and-creation","owner":"MV-IA-F004 and owning Character/game-rule contracts","teaching_authority":"explain visible governed steps; never create Character mechanics"},
+    {"id":"P13-AU-003","domain":"campaign-scene-session-authoring","owner":"MV-IA-F005 / PPIA-08 and owning Campaign/Scene/Session contracts","teaching_authority":"explain authorized authoring and live-state boundaries"},
+    {"id":"P13-AU-004","domain":"first-action-and-approval","owner":"MV-IA-F006","teaching_authority":"explain proposal, pending, decision and committed-result distinctions"},
+    {"id":"P13-AU-005","domain":"permissions-hidden-information","owner":"MV-IA-F020","teaching_authority":"explain only the user's already-authorized projection and user-safe denial reasons"},
+    {"id":"P13-AU-006","domain":"autosave-reconnect-recovery-offline","owner":"MV-IA-F021","teaching_authority":"explain local draft, authoritative save, command status, Event and bounded offline distinctions"},
+    {"id":"P13-AU-007","domain":"onboarding-help-diagnostics-issue-reporting","owner":"MV-IA-F025","teaching_authority":"primary inherited content-delivery and support contract"},
+    {"id":"P13-AU-008","domain":"packs-and-content-registry","owner":"existing pack locks/source-pack/version/entitlement contracts; F024 packet unresolved","teaching_authority":"teach only evidenced Pack context; no invented lifecycle semantics"},
+    {"id":"P13-AU-009","domain":"error-recovery-permission-microcopy","owner":"PPIA-14 successor","teaching_authority":"PPIA-13 teaches concepts and handoff points; complete state-by-state wording belongs to PPIA-14"},
+    {"id":"P13-AU-010","domain":"tutorial-campaign","owner":"PPIA-13 authored noncanonical teaching fixture","teaching_authority":"demonstrate governed flows only; never canonicalize fixture content automatically"}
+  ],
+  "blocking_invariants":[
+    "Teaching content never creates or modifies gameplay mechanics, source truth, canonical content, Character rules, Campaign truth or Pack lifecycle truth.",
+    "Authentication, entitlement, Campaign membership, role, delegation and field visibility remain separate authority dimensions.",
+    "Permission filtering occurs before help search, topic selection, counts, examples, screenshots, tutorial branches, diagnostics, exports, notifications and AI context.",
+    "A hidden object, feature, proposal, issue, relationship, participant or state may not leak through counts, disabled options, missing-topic wording, autocomplete, ranking, tutorial prerequisites, diagnostics or examples.",
+    "Player teaching may not contain GM-only truth, secret modifiers, unrevealed clues, private motives, unrelated Campaign data or protected source fields.",
+    "Local draft, local autosave, submitted command, accepted Event and displayed projection are taught as distinct states; offline state never implies authoritative mutation.",
+    "Ambiguous network outcome is taught as status-unknown/recovery-required until authoritative status lookup resolves it; no duplicate user intent is encouraged.",
+    "Contextual teaching preserves return context and does not force irreversible progress or trap keyboard, touch or screen-reader users.",
+    "Mobile, keyboard, touch, screen-reader, high-zoom, reduced-motion and noncolor teaching convey the same required evidence and decisions.",
+    "Generated or AI-assisted teaching may summarize an already-authorized projection but has no authority to widen access, decide, approve, mutate or promote content.",
+    "Tutorial-Campaign content is synthetic/noncanonical teaching material unless separately promoted through a governed canonical-content process.",
+    "PPIA-13 may point to error/recovery/permission concepts but may not consume PPIA-14 by pretending the complete microcopy library already exists.",
+    "The unresolved F024 packet must remain a visible source gap; PPIA-13 may not fabricate missing Pack lifecycle actions or policy.",
+    "No application runtime, STAGE-A-A2, internal-alpha release, deployment, tester access, paid service or production credential is activated by PPIA-13 artifacts."
+  ],
+  "permission_safe_pipeline":["resolve subject and active context","authorize candidate teaching topic","filter governed source projection","remove protected fields and inference channels","construct teaching projection","construct nonvisual equivalent","render or export","optional AI receives only the filtered teaching projection"],
+  "p14_handoff":{
+    "owned_here":["concept explanation","what state means","what evidence remains authoritative","safe next-step category","link to help or support surface"],
+    "owned_by_ppia14":["complete final user-facing error strings","state-by-state permission/recovery microcopy library","tone variants for every denial/conflict/retry state","final leak-safe wording matrix"],
+    "rule":"PPIA-13 must not use placeholder wording as if it were approved PPIA-14 final copy."
+  }
+}
