@@ -1,0 +1,49 @@
+{
+  "work_item": "PPIA-11",
+  "version": "0.1.0",
+  "classification": "authored_methodology",
+  "schema_name": "PPIA-11 Benchmark Encounter",
+  "purpose": "Describe reproducible encounter-analysis benchmarks without treating a synthetic fixture, deterministic observation or authored recommendation as canonical game content.",
+  "benchmark_classes": [
+    "source_grounded_bounded",
+    "synthetic_qa",
+    "regression_replay",
+    "sensitivity_case",
+    "post_playtest_calibration"
+  ],
+  "required_fields": [
+    "benchmark_id","version","name","benchmark_class","purpose","rules_profile_ref","schema_ref","pack_lock_ref","context_snapshot","encounter_forms","sides","objective","environment_and_hazards","waves_and_reinforcements","retreat_and_failure_paths","evidence_ledger","factor_review","pressure_dimension_review","comparison_scope","deterministic_protocol","uncertainty","expected_findings","prohibited_claims","calibration_hooks","provenance"
+  ],
+  "field_contract": {
+    "context_snapshot": "Exact Campaign/Scene/Session or synthetic-fixture context plus immutable versions used for analysis.",
+    "sides": "Stable governed references and versions, or explicitly noncanonical synthetic fixture identities; never display-name equivalence.",
+    "evidence_ledger": "Every material input classified as source_truth, inherited_contract, observed_benchmark, authored_methodology or unresolved_gap.",
+    "factor_review": "Subset or full set of P11-F-001..020 with evidence and omissions; absence is explicit.",
+    "pressure_dimension_review": "Independent F012 pressure dimensions; no required composite score.",
+    "comparison_scope": "Why a comparator is valid, which dimensions/factors are comparable and which are not.",
+    "deterministic_protocol": "Mode, seed if applicable, iteration bound, reset rule, versions and checksum inputs.",
+    "uncertainty": "One verified PPIA-11 uncertainty band plus named reasons.",
+    "expected_findings": "Deterministic methodology expectations such as warning, block, pressure focus, reproducibility or recommendation class; not a guaranteed gameplay outcome.",
+    "calibration_hooks": "What later observation would support, weaken or supersede the authored recommendation."
+  },
+  "deterministic_protocol_rules": [
+    "deterministic-script and regression-replay must reproduce the same analysis result for the same immutable inputs.",
+    "bounded-seeded-sampling records the seed, bounded sample count and policy version.",
+    "sensitivity-sweep changes only named variables and records every delta.",
+    "Benchmark execution is nonmutating and may not change source truth or live Session state.",
+    "Ambiguous service result uses the owning recovery/idempotency path before retry."
+  ],
+  "provenance_rules": [
+    "Synthetic QA fixtures are labeled noncanonical.",
+    "Source-grounded benchmark inputs retain exact stable IDs, versions and source coordinates where available.",
+    "8D-007 observations remain observed benchmark evidence and its peer bands remain within-domain.",
+    "Authored encounter recommendations are never relabeled as recovered source mechanics.",
+    "Unresolved gaps remain explicit and may block a responsible recommendation."
+  ],
+  "privacy_rules": [
+    "Permission filtering occurs before protected benchmark inputs, counts, derived pressure summaries, warnings, comparisons, exports, diagnostics or AI context.",
+    "A Player/observer-safe benchmark projection cannot reveal hidden participants, waves, triggers, objectives, tactics or internal pressure shapes that would disclose them.",
+    "Calibration evidence derived from a private Session remains scoped to authorized subjects."
+  ],
+  "prohibited_claims": ["balanced","fair","safe","winnable","optimal","guaranteed","universal difficulty","actual player prediction"]
+}
