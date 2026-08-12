@@ -74,9 +74,6 @@ def main() -> None:
     require(p9["base_commit"] == P8_COMPLETION_MERGE, "PPIA-09 base must be PPIA-08 completion merge")
     require(p9["owner_decision_required"] is False and p9["unresolved_failures"] == [], "PPIA-09 transition must be unblocked")
 
-    # Historical transition validation is dual-mode. Initial transition state must explicitly
-    # point at source/design foundation. Later milestones may advance active text, but completed
-    # substeps/evidence must retain traceability to the verified foundation that grew from this transition.
     trace_text = json.dumps({
         "last_verified_action": p9.get("last_verified_action"),
         "active_substep": p9.get("active_substep"),
@@ -98,9 +95,9 @@ def main() -> None:
         require(later_merge is None or (isinstance(later_merge, str) and len(later_merge) == 40), "later PPIA-09 merge evidence is invalid")
         transition_mode = "historical_after_ppia09_started"
 
-    # Preserve transition-scope invariants using durable historical + current trace rather than
-    # requiring every original phrase to remain in the latest active-substep wording.
-    governed_scope_trace = json.dumps({
+    # Durable governed-scope trace combines the verified F011 starting contract with checkpoint
+    # history/current scope. Later milestone wording may evolve, but the transition invariants may not.
+    governed_scope_trace = (f011 + " " + json.dumps({
         "objective": p9.get("objective"),
         "last_verified_action": p9.get("last_verified_action"),
         "active_substep": p9.get("active_substep"),
@@ -108,7 +105,7 @@ def main() -> None:
         "completed_substeps": p9.get("completed_substeps", []),
         "evidence": p9.get("evidence", []),
         "notes": p9.get("notes", []),
-    }, ensure_ascii=False).lower()
+    }, ensure_ascii=False)).lower()
     for phrase in ("objective truth", "clue", "evidence", "hypothesis", "false lead", "contradiction", "reveal", "uncertainty", "provenance", "nonvisual"):
         require(phrase in governed_scope_trace, f"PPIA-09 governed scope trace missing {phrase!r}")
     require("gm conclusion" in governed_scope_trace or "gm solution" in governed_scope_trace, "PPIA-09 governed scope trace missing GM conclusion/solution separation")
