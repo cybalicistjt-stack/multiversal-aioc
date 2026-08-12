@@ -20,6 +20,8 @@ CHECKPOINT=ROOT/"governance/ai/work-state/PPIA-10-attempt-001.json"
 POINTER=ROOT/"governance/ai/runtime/CURRENT_WORK_POINTER.json"
 STATUS=ROOT/"governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json"
 FOUNDATION_MERGE="0c0b8ce17cd80e47b7b12285a2bd8278e58a732e"
+INSPECTOR_HEAD="9cc894e3544203f42ec23c12efd256041cb630a2"
+INSPECTOR_MERGE="6985dd1e1f6d2e2b696f409cc74ae9e0ad18d728"
 
 def load(p:Path): return json.loads(p.read_text(encoding="utf-8"))
 def req(x,msg):
@@ -118,12 +120,16 @@ def main():
                    "permission filtering","atomic event group","semantic nonvisual","ai"):
         req(phrase in narrative,f"candidate narrative missing {phrase}")
 
-    req(cp["work_item_id"]=="PPIA-10" and cp["branch"]=="governance/ppia-10-relationship-social-faction" and cp["status"]=="started","checkpoint identity/status")
+    req(cp["work_item_id"]=="PPIA-10" and cp["branch"]=="governance/ppia-10-relationship-social-faction" and cp["status"] in {"started","completed_verified"},"checkpoint identity/status")
     req(cp.get("owner_decision_required") is False and cp.get("unresolved_failures")==[],"checkpoint unresolved state")
-    milestone=((cp.get("active_substep") or "")+" "+(cp.get("next_action") or "")).lower()
-    req("inspector" in milestone and "reference" in milestone,"checkpoint milestone continuity")
-    req(pointer["primary_attempt_id"]=="PPIA-10-attempt-001","pointer selection")
-    req(status["primary"]["work_item_id"]=="PPIA-10" and status["primary"]["status"]=="started","compact status selection")
+    if cp["status"]=="started":
+        milestone=((cp.get("active_substep") or "")+" "+(cp.get("next_action") or "")).lower()
+        req("inspector" in milestone and "reference" in milestone,"checkpoint milestone continuity")
+        req(pointer["primary_attempt_id"]=="PPIA-10-attempt-001","pointer selection")
+        req(status["primary"]["work_item_id"]=="PPIA-10" and status["primary"]["status"]=="started","compact status selection")
+    else:
+        history=json.dumps({"last_verified_action":cp.get("last_verified_action"),"completed_substeps":cp.get("completed_substeps",[]),"evidence":cp.get("evidence",[])},ensure_ascii=False).lower()
+        req(INSPECTOR_HEAD in history and "pr #259" in history and INSPECTOR_MERGE in history,"historical inspector completion evidence missing")
 
     print("PPIA-10 inspector/action/reference validation passed: 18 layers, 14 profiles, 34 actions, 90 resolved cases.")
     return 0
