@@ -1,0 +1,24 @@
+{
+  "format":"multiversal-ppia09-workflow-acceptance-summary",
+  "version":"0.1.0",
+  "work_item":"PPIA-09",
+  "status":"candidate",
+  "claims":[
+    {"id":"P9-WA-001","claim":"18 end-to-end Investigation/Mystery workflows are defined.","evidence":"PPIA-09_WORKFLOW_AUTHORING_CONTRACT_MATRIX_v0.1.0.json","required":true},
+    {"id":"P9-WA-002","claim":"15 workflows perform authoritative mutation and 3 are read-only.","evidence":"workflow_policy and deterministic validator","required":true},
+    {"id":"P9-WA-003","claim":"All 16 verified projection groups are routed with no gaps.","evidence":"workflow traceability matrix","required":true},
+    {"id":"P9-WA-004","claim":"All 12 verified presentation profiles are routed with no gaps.","evidence":"workflow traceability matrix","required":true},
+    {"id":"P9-WA-005","claim":"All 30 governed actions are routed, preserving the verified 22-write / 8-read split.","evidence":"inspector/action matrix plus workflow validator","required":true},
+    {"id":"P9-WA-006","claim":"All 36 deterministic reference cases are assigned exactly once across the workflow set.","evidence":"workflow validator Counter assertion","required":true},
+    {"id":"P9-WA-007","claim":"All 12 domain handoffs are exercised without transferring ownership to PPIA-09.","evidence":"authority matrix plus workflow traceability","required":true},
+    {"id":"P9-WA-008","claim":"Permission filtering occurs before every protected derivative, diagnostic and AI-context path.","evidence":"global invariants and workflow privacy requirements","required":true},
+    {"id":"P9-WA-009","claim":"Objective truth, GM conclusion, Player knowledge, observations, claims, evidence and hypotheses remain separately typed.","evidence":"global invariants and workflow forbidden mutations","required":true},
+    {"id":"P9-WA-010","claim":"Solvability, redundancy, contradiction and false-lead diagnostics remain read-only and cannot adjudicate truth or mutate reveal state.","evidence":"workflow policy plus inherited solvability/inspector contracts","required":true},
+    {"id":"P9-WA-011","claim":"The at-least-two-places guidance remains a warning, not a universal clue-count law or guarantee.","evidence":"workflow 010 and candidate boundary","required":true},
+    {"id":"P9-WA-012","claim":"Every mutating action path preserves expected_version plus operation_id and ambiguous-retry status/current-version lookup.","evidence":"workflow validator against verified action inputs","required":true},
+    {"id":"P9-WA-013","claim":"Graph/timeline/relationship workflows preserve semantic nonvisual parity.","evidence":"accessibility requirements and workflow 017","required":true},
+    {"id":"P9-WA-014","claim":"AI-generated investigation material remains proposal-only until explicit acceptance.","evidence":"workflow 016 and global invariant","required":true},
+    {"id":"P9-WA-015","claim":"No application runtime, STAGE-A-A2, release, deployment, tester, paid-service or production credential is activated.","evidence":"runtime boundary","required":true}
+  ],
+  "acceptance_gate":{"required_claim_count":15,"required_claims_satisfied_by_design":15,"runtime_activation_required":false,"ppia09_completion_claimed":false}
+}
