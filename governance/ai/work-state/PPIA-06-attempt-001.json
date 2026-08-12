@@ -1,76 +1,40 @@
 {
-  "schema_version": "1.0.0",
-  "revision": 2,
-  "work_item_id": "PPIA-06",
-  "attempt_id": "PPIA-06-attempt-001",
-  "track": "parallel-preimplementation-advancement",
-  "repository": "cybalicistjt-stack/multiversal-aioc",
-  "branch": "governance/ppia-06-character-appearance-creator",
-  "status": "started",
-  "started_at": "2026-08-12T12:32:00+00:00",
-  "updated_at": "2026-08-12T12:50:33+00:00",
-  "completed_at": null,
-  "base_commit": "f2274707b1337425f0bc9ac8d1dd5ebb08d9f883",
-  "latest_pushed_commit": "0de2b2bbe38fee85d61058a747a0fbf177b0ab8d",
-  "expected_remote_head": "b0e54b3d8887e3c734c9d02ea65039574ec94e02",
-  "pull_request": 268,
-  "merge_commit": "b0e54b3d8887e3c734c9d02ea65039574ec94e02",
-  "objective": "Produce an implementation-ready Character Appearance Creator that consumes source-backed Species/Form morphology without rewriting biology, separates appearance semantics from renderer assets and inventory/equipment authority, supports body/face construction, hair/fur/scales/feathers, coloration, markings, age, equipment preview, presets and lockable deterministic randomization, works for nonhumanoid/mobile/accessibility cases, hands off portraits/tokens cleanly, and defines an initial modular pixel-art renderer while preserving a future-3D renderer boundary.",
-  "last_verified_action": "PPIA-11→PPIA-06 transition exact head 0de2b2bbe38fee85d61058a747a0fbf177b0ab8d passed all 44 applicable hosted workflows. Validate PPIA-11 to PPIA-06 Transition run 31598189727, PPIA Program run 31598189756, Conversation Continuity run 31598189726, Operational AIOC Baseline run 31598189690, PPIA-11 Completion run 31598189770 and historical PPIA-10→PPIA-11 run 31598189854 passed on that exact head. PR #268 squash-merged as b0e54b3d8887e3c734c9d02ea65039574ec94e02 at 2026-08-12T12:50:33+00:00; canonical main is signed/verified and the governed PPIA-06 branch was created from that canonical transition merge.",
-  "active_substep": "Establish the PPIA-06 source/design foundation. Inventory PPIA-05 Species/Form visible morphology and current-Form boundaries, MV-IA-F004 Character Creation, SD-105 Character Appearance, UI/accessibility requirements, PPIA-03 equipment-preview ownership, portrait/token handoffs and existing visual-design references; then define appearance semantic layers, provenance classes, morphology compatibility, appearance-versus-biology/equipment boundaries, renderer independence and the first pixel-art-v1 asset/compositing contract.",
-  "completed_substeps": [
-    "PPIA-05 Species, Forms & Character Biology is completed_verified and explicitly delegates full visual Character Appearance Creator behavior to PPIA-06 while retaining biological truth and compatibility authority.",
-    "MV-IA-F004 Character Creation keeps Species/Form selections and governed mechanics separate from Player-authored descriptive identity and explicitly defers full visual appearance work.",
-    "SD-105 already requires Body, Face, Hair, Colors, Clothing preview, Equipment preview, Accessibility preview, Randomize, Save preset and appearance import/export behavior.",
-    "Owner-selected design direction retained: high-detail modular pixel art as the first fully specified renderer, with controlled palette ramps, layered assets, anchors, occlusion/compatibility metadata and authored poses; this is a renderer profile rather than Species taxonomy or permanent platform limitation.",
-    "Hard boundaries retained: unknown/source-unspecified anatomy is not human-defaulted; appearance cannot grant equipment, rewrite Species/Form biology, reveal hidden Forms/markers or turn unsupported renderer coverage into invalid Character state.",
-    "PPIA-11→PPIA-06 transition exact head 0de2b2bbe38fee85d61058a747a0fbf177b0ab8d passed all 44 applicable hosted workflows; PR #268 squash-merged as b0e54b3d8887e3c734c9d02ea65039574ec94e02 and canonical main is signed/verified.",
-    "Governed branch governance/ppia-06-character-appearance-creator was created from canonical transition merge b0e54b3d8887e3c734c9d02ea65039574ec94e02.",
-    "No application runtime, STAGE-A-A2, release, deployment, tester, paid-service or production-credential activation occurred."
+  "schema_version":"1.0.0","revision":3,"work_item_id":"PPIA-06","attempt_id":"PPIA-06-attempt-001","track":"parallel-preimplementation-advancement","repository":"cybalicistjt-stack/multiversal-aioc","branch":"governance/ppia-06-character-appearance-creator","status":"started","started_at":"2026-08-12T12:32:00+00:00","updated_at":"2026-08-12T12:54:00+00:00","completed_at":null,"base_commit":"b0e54b3d8887e3c734c9d02ea65039574ec94e02","latest_pushed_commit":"567eb52ca68f8d425f98348b9df546af6a5f57cd","expected_remote_head":"567eb52ca68f8d425f98348b9df546af6a5f57cd","pull_request":null,"merge_commit":null,
+  "objective":"Produce an implementation-ready Character Appearance Creator that consumes source-backed Species/Form morphology without rewriting biology, separates appearance semantics from renderer assets and inventory/equipment authority, supports body/face construction, hair/fur/scales/feathers, coloration, markings, age, equipment preview, presets and lockable deterministic randomization, works for nonhumanoid/mobile/accessibility cases, hands off portraits/tokens cleanly, and defines an initial modular pixel-art renderer while preserving a future-3D renderer boundary.",
+  "last_verified_action":"PPIA-06 foundation source/design inspection and bounded authoring package is committed through 567eb52ca68f8d425f98348b9df546af6a5f57cd. The package derives PPIA-05 biology/current-Form/unknown-anatomy/hidden-state boundaries, MV-IA-F004 Character identity and accessibility constraints, PPIA-03 equipment authority, approved SD-105/UI design-source requirements and the owner-selected pixel-art-v1 direction into six evidence classes, eighteen renderer-independent semantic layers, four compatibility dimensions, a governed pixel-art-v1 renderer contract and twenty-four noncanonical foundation QA cases. Hosted exact-head validation has not yet been claimed.",
+  "active_substep":"Validate and merge the bounded PPIA-06 foundation package without advancing PPIA-06 beyond started. Prove source/inherited boundaries, renderer independence, pixel-art-v1 determinism/failure behavior, nonhumanoid support, equipment nonmutation, hidden-state nonleak, unknown-anatomy preservation, accessibility parity and future-3D compatibility on one exact PR head.",
+  "completed_substeps":[
+    "PPIA-05 Species, Forms & Character Biology is completed_verified and delegates downstream visual appearance while retaining biology, morphology, current-Form, compatibility and visibility authority.",
+    "MV-IA-F004 keeps Player-authored descriptive identity separate from governed mechanics, defers richer visual appearance and requires responsive/accessibility behavior.",
+    "Approved SD-105/UI design sources require Body, Face, Hair, Colors, Clothing preview, Equipment preview, Accessibility preview, Randomize, Save preset, appearance import/export, responsive layouts, keyboard/touch/screen-reader/high-zoom/reduced-motion/noncolor behavior.",
+    "PPIA-03 remains authoritative for Item/Asset ownership, equipment and runtime state; appearance equipment preview is projection-only.",
+    "Owner-selected high-detail modular pixel art is retained as pixel-art-v1, the first renderer profile rather than Species taxonomy or permanent Character data model.",
+    "Foundation package committed: source/design manifest and inventory; eighteen-layer semantic taxonomy; authority/boundary matrix; pixel-art-v1 renderer contract; twenty-four noncanonical reference cases; candidate narrative; deterministic validator and dedicated CI gate.",
+    "Hard boundaries retained: no human/humanoid default anatomy, no biology rewrite, no equipment mutation, no hidden derivative leak, no renderer-validity coupling, no source-owned randomization and no runtime/STAGE-A-A2/release activation."
   ],
-  "next_action": "Build the bounded PPIA-06 foundation package. Create a source/design inventory and manifest spanning PPIA-05 morphology/current-Form inputs, Character Creation/Appearance UI contracts, equipment-preview handoff and accessibility/portrait requirements; define a renderer-independent Appearance semantic/state taxonomy, authority/boundary matrix and compatibility model; specify pixel-art-v1 semantic render bands, stable asset IDs, anchors, occlusion masks, palette zones/ramps, topology compatibility and unsupported-renderer behavior; include explicit nonhumanoid, transformation, equipment, hidden-marker, unknown-anatomy, mobile, keyboard and nonvisual reference coverage. Add deterministic foundation validation/CI and merge only when every applicable regression is green.",
-  "changed_paths": [
-    "governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json",
-    "governance/ai/work-state/PPIA-11-attempt-001.json",
-    "governance/ai/work-state/PPIA-06-attempt-001.json",
-    "governance/ai/runtime/CURRENT_WORK_POINTER.json",
-    "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
-    "governance/application-planning/parallel-preimplementation/validate_ppia_program.py",
-    "scripts/validate-ppia11-to-ppia06-transition.py",
-    "scripts/validate-ppia11-encounter-lab-workflows.py",
-    "scripts/validate-ppia11-methodology-benchmarks.py",
-    "scripts/validate-ppia11-foundation.py",
-    "scripts/validate-ppia10-to-ppia11-transition.py",
-    "scripts/validate-ppia10-completion-contracts.py",
-    ".github/workflows/validate-ppia-11-to-ppia-06-transition.yml"
+  "next_action":"Open one PPIA-06 foundation PR from governance/ppia-06-character-appearance-creator to main, project the PR number into checkpoint/pointer/status, then require Validate PPIA-06 Foundation plus every applicable hosted regression to pass on one exact head. Repair only deterministic package/validator defects without weakening authority boundaries; squash-merge that exact head only when all gates are green.",
+  "changed_paths":[
+    "governance/application-planning/parallel-preimplementation/PPIA-06_SOURCE_MANIFEST_v0.1.0.json","governance/application-planning/parallel-preimplementation/PPIA-06_APPEARANCE_SEMANTIC_TAXONOMY_v0.1.0.json","governance/application-planning/parallel-preimplementation/PPIA-06_AUTHORITY_AND_BOUNDARY_MATRIX_v0.1.0.json","governance/application-planning/parallel-preimplementation/PPIA-06_PIXEL_ART_RENDERER_CONTRACT_v0.1.0.json","governance/application-planning/parallel-preimplementation/PPIA-06_FOUNDATION_REFERENCE_CASES_v0.1.0.json","governance/application-planning/parallel-preimplementation/PPIA-06_SOURCE_AND_DESIGN_INVENTORY.md","governance/application-planning/parallel-preimplementation/PPIA-06_FOUNDATION_CANDIDATE.md","scripts/validate-ppia06-foundation.py",".github/workflows/validate-ppia-06-foundation.yml","governance/ai/work-state/PPIA-06-attempt-001.json","governance/ai/runtime/CURRENT_WORK_POINTER.json","governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json"
   ],
-  "completion_gate": {
-    "required_evidence_kinds": ["commit", "pull_request", "merge"],
-    "required_validation_commands": ["Validate PPIA-11 to PPIA-06 Transition"],
-    "owner_approval_required": false
-  },
-  "validation": [
-    {"command": "Validate PPIA-11 to PPIA-06 Transition", "status": "passed", "evidence": "run 31598189727 on exact transition head 0de2b2bbe38fee85d61058a747a0fbf177b0ab8d"}
+  "completion_gate":{"required_evidence_kinds":["commit","pull_request","merge"],"required_validation_commands":["Validate PPIA-06 Foundation"],"owner_approval_required":false},
+  "validation":[{"command":"Validate PPIA-11 to PPIA-06 Transition","status":"passed","evidence":"run 31598189727 on exact transition head 0de2b2bbe38fee85d61058a747a0fbf177b0ab8d"},{"command":"Validate PPIA-06 Foundation","status":"not_run","evidence":null}],
+  "unresolved_failures":[],"owner_decision_required":false,
+  "evidence":[
+    {"kind":"commit","value":"PPIA-11 exact completion head 9bf4627f9e8e4a4c21dcc2614dcb74d54d62d724 / PR #267 / completion gate run 31595927902 / merge f2274707b1337425f0bc9ac8d1dd5ebb08d9f883"},
+    {"kind":"merge","value":"PPIA-06 transition squash merge b0e54b3d8887e3c734c9d02ea65039574ec94e02"},
+    {"kind":"artifact","value":"PPIA-05 completed_verified Species/Form/Biology packet supplies morphology/current-Form/compatibility/visibility authority to PPIA-06"},
+    {"kind":"artifact","value":"PPIA-03 completed_verified Item/Asset packet retains equipment/ownership/runtime-state authority outside PPIA-06"},
+    {"kind":"owner_decision","value":"Initial renderer direction: high-detail modular pixel art; renderer-independent appearance semantics and future-3D boundary retained"},
+    {"kind":"commit","value":"PPIA-06 bounded foundation package committed through 567eb52ca68f8d425f98348b9df546af6a5f57cd"}
   ],
-  "unresolved_failures": [],
-  "owner_decision_required": false,
-  "evidence": [
-    {"kind": "commit", "value": "PPIA-11 exact completion head 9bf4627f9e8e4a4c21dcc2614dcb74d54d62d724 / PR #267 / completion gate run 31595927902 / merge f2274707b1337425f0bc9ac8d1dd5ebb08d9f883"},
-    {"kind": "artifact", "value": "PPIA-05 completed_verified Species/Form/Biology packet supplies morphology/current-Form/compatibility/visibility authority to PPIA-06"},
-    {"kind": "owner_decision", "value": "Initial renderer direction: high-detail modular pixel art; renderer-independent appearance semantics and future-3D boundary retained"},
-    {"kind": "commit", "value": "PPIA-06 transition exact validated head 0de2b2bbe38fee85d61058a747a0fbf177b0ab8d"},
-    {"kind": "pull_request", "value": "PPIA-06 transition PR #268"},
-    {"kind": "ci_run", "value": "Validate PPIA-11 to PPIA-06 Transition run 31598189727 and all 44 applicable hosted workflows passed on exact head 0de2b2bbe38fee85d61058a747a0fbf177b0ab8d"},
-    {"kind": "merge", "value": "PPIA-06 transition squash merge b0e54b3d8887e3c734c9d02ea65039574ec94e02"}
-  ],
-  "roadmap_projection_pending": true,
-  "notes": [
+  "roadmap_projection_pending":true,
+  "notes":[
     "Roadmap prose projection remains batched/pending; backlog/checkpoint/pointer/status control exact recovery.",
-    "Species/Form biological truth, morphology, current Form, transformations and hidden biological markers remain owned by PPIA-05/owning runtime contracts; PPIA-06 consumes permission-safe authorized projections and never rewrites them.",
-    "Equipment ownership/state remains owned by PPIA-03 and Character/inventory systems. Appearance may preview or cosmetically project authorized equipment but cannot grant, consume or mutate it.",
-    "The first renderer is pixel-art-v1, but Character appearance state is renderer-independent. A valid Character with unsupported visual topology remains valid and reports renderer coverage as unsupported rather than inventing or flattening anatomy.",
-    "Render-template/topology categories are implementation compatibility classes, not Species/lineage taxonomy.",
-    "Palette and style choices must remain accessible without relying on color alone; nonvisual semantic summaries and keyboard/mobile controls are mandatory.",
+    "Project design-source SD-105/UI requirements are preserved as approved design contracts, not game-source truth.",
+    "Species/Form biological truth, morphology, current Form, transformations and hidden biological markers remain owned by PPIA-05/owning Character contracts.",
+    "Equipment ownership/state remains owned by PPIA-03 and Character/inventory systems; Appearance only previews authorized projection.",
+    "A valid Character with unsupported renderer topology remains valid and reports renderer coverage explicitly rather than inventing or flattening anatomy.",
+    "Renderer topology profiles are compatibility classes, not Species/lineage taxonomy; pixel-art-v1 metadata stays outside core Character truth.",
     "No application runtime activation, STAGE-A-A2 activation, release, deployment, tester access, paid service or production credential is authorized."
   ]
 }
