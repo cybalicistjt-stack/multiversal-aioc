@@ -1,0 +1,49 @@
+{
+  "format": "multiversal-ppia10-authority-boundary-matrix",
+  "version": "0.1.0",
+  "work_item": "PPIA-10",
+  "authority_levels": [
+    {"level":"recovered-source-canon","meaning":"retained source text/structured records may be quoted or normalized without adding missing rules"},
+    {"level":"verified-internal-alpha-contract","meaning":"F009/F010/F016 implementation-ready design contracts are authoritative design inputs"},
+    {"level":"governed-ppia10-integration-design","meaning":"PPIA-10 may define typed integration/authoring semantics where sources leave gaps, clearly labeled as design rather than recovered canon"},
+    {"level":"external-owning-domain","meaning":"state mutation, balance or content owned elsewhere remains delegated and may not be copied or redefined here"}
+  ],
+  "domain_handoffs": [
+    {"id":"P10-HO-001","owner":"MV-IA-F009 Relationship Tracker","boundary":"directional relationship edges, dimensions, Bonds/leverage/obligations and reveal ownership"},
+    {"id":"P10-HO-002","owner":"MV-IA-F010 Social Interaction Mode","boundary":"interaction lifecycle, proposals, GM decisions and social resolution orchestration"},
+    {"id":"P10-HO-003","owner":"MV-IA-F016 Factions/Reputation/Organizations","boundary":"faction placement, membership/rank/office, standing, influence, agenda/operation/alert and services"},
+    {"id":"P10-HO-004","owner":"PPIA-08 Campaign/Scene/Session","boundary":"Campaign/Scene/Session placement, participants, launch/live history and session context"},
+    {"id":"P10-HO-005","owner":"PPIA-09 Investigation/Mystery","boundary":"objective truth, evidence/clue/knowledge/reveal and investigation chronology boundaries"},
+    {"id":"P10-HO-006","owner":"PPIA-12 World/Setting","boundary":"world/setting culture, jurisdiction, chronology, locations and setting-specific faction definitions"},
+    {"id":"P10-HO-007","owner":"PPIA-02 Creature/NPC","boundary":"NPC identity, creature/NPC state and owning NPC records referenced by social/faction state"},
+    {"id":"P10-HO-008","owner":"PPIA-03 Items/Inventory","boundary":"items, currency, custody and transfer remain inventory-owned"},
+    {"id":"P10-HO-009","owner":"Condition/Status contracts","boundary":"mechanical social-status/Condition application remains typed scoped status ownership"},
+    {"id":"P10-HO-010","owner":"Project/Contract domains","boundary":"large permanent changes, obligations, projects and contracts remain owning-domain state"},
+    {"id":"P10-HO-011","owner":"Asset/Resource/Location domains","boundary":"faction resources, assets, territory and locations are stable references without copied ownership"},
+    {"id":"P10-HO-012","owner":"Permissions/Hidden Information","boundary":"field/layer authorization, hidden existence, per-player reveals and revocation"},
+    {"id":"P10-HO-013","owner":"Recovery/History/Realtime","boundary":"expected-version, operation-id, status lookup, ordered Event recovery and revocation across devices"},
+    {"id":"P10-HO-014","owner":"Proposal/Approval Shared Component","boundary":"Player-proposed persistent consequences remain explicit authorized decisions; silence is not approval"},
+    {"id":"P10-HO-015","owner":"PPIA-11 Encounter/Balance authority","boundary":"final numeric balance and encounter effect authority remains downstream; PPIA-10 does not invent global balance constants"}
+  ],
+  "blocking_guardrails": [
+    "Relationship edges are directional; reciprocal state requires a second explicit edge or explicit paired-edge contract.",
+    "No universal relationship, standing/reputation, influence or social DC scale may be invented.",
+    "Relationship, standing/reputation, influence, social status, mood, intent and stance remain distinct.",
+    "Membership, rank, office, permission, ownership, equipment and progression remain distinct.",
+    "Objective truth, NPC belief, Player belief, claim/lie, rumor, motive, secret and knowledge remain distinct.",
+    "Persuasion is not mind control; Insight is not automatic exact-truth reveal; Intimidation is not loyalty.",
+    "Hidden entity existence and fields are filtered before graph topology, counts, search, suggestions, exports, notifications, realtime, diagnostics and AI context.",
+    "Persistent Social Mode consequences use one accepted atomic Event group and delegated owning-domain Events; partial cross-domain commit is forbidden.",
+    "Faction standing change requires an attributable source Event and plausible information path.",
+    "External Item/NPC/Asset/Resource/Location/Project/Contract references do not transfer ownership into PPIA-10.",
+    "Source progression/capability records never automatically grant faction membership, rank, office, ownership, equipment or permission.",
+    "Source example DCs, Bond thresholds, reaction bands and standing tracks remain examples/profile data unless explicitly bound.",
+    "Authoritative mutations require authorization, expected_version and operation_id; ambiguous responses require status/current-version lookup before retry.",
+    "Offline mode permits bounded drafts/cached reads only, not authoritative social/relationship/faction mutation.",
+    "Graph/canvas position and visualization are nonauthoritative; semantic nonvisual list/table equivalents must preserve full authorized meaning and actions.",
+    "AI may validate, summarize or propose only from role-safe projections and has no irreversible NPC, reveal, decision, mutation or canonical authority.",
+    "No application runtime, STAGE-A-A2, deployment, release, tester, paid-service or production-credential activation is authorized by PPIA-10 design work."
+  ],
+  "proposal_stage_design_domains": ["social-status-to-condition-binding","reference-faction-normalization","relationship-type-extension-registry","standing/influence profile authoring","cross-domain consequence routing","reference social/faction fixture selection"],
+  "forbidden_ownership_transfers": ["item/inventory","creature/npc","world/setting chronology","investigation truth/evidence","asset/resource/location","project/contract","combat/encounter balance","permission/identity"]
+}
