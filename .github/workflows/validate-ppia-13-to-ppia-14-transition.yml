@@ -1,0 +1,45 @@
+name: Validate PPIA-13 to PPIA-14 Transition
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/**'
+      - 'governance/ai/work-state/**'
+      - 'governance/ai/runtime/**'
+      - 'scripts/validate-ppia13-to-ppia14-transition.py'
+      - 'scripts/validate-ppia13-*.py'
+      - 'scripts/validate-ppia06-*.py'
+      - '.github/workflows/validate-ppia-13-to-ppia-14-transition.yml'
+
+jobs:
+  validate-ppia13-to-ppia14-transition:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PPIA-13 to PPIA-14 Transition
+        run: python scripts/validate-ppia13-to-ppia14-transition.py
+      - name: Validate PPIA-13 Completion historical regression
+        run: python scripts/validate-ppia13-completion-contracts.py
+      - name: Validate PPIA-13 Integrated Teaching regression
+        run: python scripts/validate-ppia13-integrated-teaching-workflows.py
+      - name: Validate PPIA-13 Teaching Library IAR regression
+        run: python scripts/validate-ppia13-teaching-library-iar.py
+      - name: Validate PPIA-13 GM Academy regression
+        run: python scripts/validate-ppia13-gm-academy.py
+      - name: Validate PPIA-13 Foundation regression
+        run: python scripts/validate-ppia13-foundation.py
+      - name: Validate PPIA-06 to PPIA-13 historical transition
+        run: python scripts/validate-ppia06-to-ppia13-transition.py
+      - name: Validate PPIA-06 completion historical regression
+        run: python scripts/validate-ppia06-completion-contracts.py
+      - name: Validate PPIA-08 completion dependency
+        run: python scripts/validate-ppia08-completion-contracts.py
+      - name: Validate generalized PPIA continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
+      - name: Validate conversation continuity
+        run: python tools/continuity_state.py validate
+      - name: Run conversation continuity regression tests
+        run: python -m unittest discover -s tests/continuity -v

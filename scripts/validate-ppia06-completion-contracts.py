@@ -165,10 +165,18 @@ def main():
             req("validate ppia-06 completion contract" in history, "completed checkpoint missing completion evidence")
         continuity = "ppia06_completion_pretransition"
     else:
-        req(tranches.get("PPIA-06", {}).get("status") == "completed_verified" and tranches.get("PPIA-13", {}).get("status") == "started", "post-transition backlog state invalid")
-        req(backlog.get("current_work_item_id") == "PPIA-13" and status.get("primary", {}).get("work_item_id") == "PPIA-13", "post-transition runtime must select PPIA-13")
+        req(tranches.get("PPIA-06", {}).get("status") == "completed_verified", "historical PPIA-06 must remain completed_verified")
         req(cp.get("status") == "completed_verified", "historical PPIA-06 checkpoint must remain completed_verified")
-        continuity = "ppia06_historical_after_ppia13_transition"
+        order = backlog.get("execution_order", [])
+        current = backlog.get("current_work_item_id")
+        req("PPIA-13" in order and current in order and order.index(current) >= order.index("PPIA-13"), "historical successor position invalid")
+        if current == "PPIA-13":
+            req(tranches.get("PPIA-13", {}).get("status") == "started" and status.get("primary", {}).get("work_item_id") == "PPIA-13", "PPIA-13 current-state continuity invalid")
+            continuity = "ppia06_historical_after_ppia13_transition"
+        else:
+            req(tranches.get("PPIA-13", {}).get("status") == "completed_verified", "historical PPIA-13 must remain completed_verified after successor activation")
+            req(status.get("primary", {}).get("work_item_id") == current, "runtime continuity must select canonical current PPIA tranche")
+            continuity = "ppia06_historical_after_later_ppia_transition"
 
     for key in ("application_runtime_mutation_authorized","a2_activation_authorized","release_authorized","deployment_authorized","tester_access_authorized","canonical_promotion_without_source_evidence_authorized"):
         req(backlog.get("boundaries", {}).get(key) is False, f"program boundary changed: {key}")
