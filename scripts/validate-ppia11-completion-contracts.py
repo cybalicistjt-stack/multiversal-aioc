@@ -147,10 +147,20 @@ def main():
         continuity = "ppia11_completion_pretransition"
     else:
         req(tranches["PPIA-11"].get("status") == "completed_verified", "post-transition PPIA-11 must be completed_verified")
-        req(tranches["PPIA-06"].get("status") == "started" and backlog.get("current_work_item_id") == "PPIA-06", "post-transition backlog must select PPIA-06")
         req(cp_status == "completed_verified", "post-transition PPIA-11 checkpoint must remain completed_verified")
-        req(status.get("primary", {}).get("work_item_id") == "PPIA-06" and status.get("primary", {}).get("status") == "started", "post-transition compact status must select PPIA-06")
-        continuity = "ppia11_historical_after_ppia06_transition"
+        order = backlog.get("execution_order", [])
+        current_id = backlog.get("current_work_item_id")
+        req("PPIA-11" in order and "PPIA-06" in order and current_id in order, "post-transition execution order/current item invalid")
+        req(order.index(current_id) >= order.index("PPIA-06"), "post-transition current item cannot precede PPIA-06")
+        if current_id == "PPIA-06":
+            req(tranches["PPIA-06"].get("status") == "started", "PPIA-06 must be started immediately after PPIA-11 transition")
+            req(status.get("primary", {}).get("work_item_id") == "PPIA-06" and status.get("primary", {}).get("status") == "started", "post-transition compact status must select PPIA-06")
+            continuity = "ppia11_historical_after_ppia06_transition"
+        else:
+            req(order.index(current_id) > order.index("PPIA-06"), "later historical validation must be downstream of PPIA-06")
+            req(tranches["PPIA-06"].get("status") == "completed_verified", "later historical validation requires PPIA-06 completed_verified")
+            req(status.get("primary", {}).get("work_item_id") == current_id and status.get("primary", {}).get("status") in {"started","in_progress"}, "compact status must select the current downstream PPIA item")
+            continuity = "ppia11_historical_after_ppia06_completion"
 
     bounds = backlog.get("boundaries", {})
     for key in ("application_runtime_mutation_authorized","a2_activation_authorized","release_authorized","deployment_authorized","tester_access_authorized","canonical_promotion_without_source_evidence_authorized"):

@@ -1,0 +1,48 @@
+name: Validate PPIA-06 to PPIA-13 Transition
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json'
+      - 'governance/ai/work-state/PPIA-06-attempt-001.json'
+      - 'governance/ai/work-state/PPIA-13-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'governance/application-planning/parallel-preimplementation/validate_ppia_program.py'
+      - 'scripts/validate-ppia06-to-ppia13-transition.py'
+      - 'scripts/validate-ppia06-*.py'
+      - 'scripts/validate-ppia11-to-ppia06-transition.py'
+      - '.github/workflows/validate-ppia-06-to-ppia-13-transition.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia06-to-ppia13-transition:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PPIA-06 to PPIA-13 transition
+        run: python scripts/validate-ppia06-to-ppia13-transition.py
+      - name: Validate PPIA-06 completion regression
+        run: python scripts/validate-ppia06-completion-contracts.py
+      - name: Validate PPIA-06 integrated workflow regression
+        run: python scripts/validate-ppia06-integrated-workflows.py
+      - name: Validate PPIA-06 inspector/action/reference regression
+        run: python scripts/validate-ppia06-inspector-action-reference.py
+      - name: Validate PPIA-06 Species Visual regression
+        run: python scripts/validate-ppia06-species-visual-addendum.py
+      - name: Validate PPIA-06 foundation regression
+        run: python scripts/validate-ppia06-foundation.py
+      - name: Validate PPIA-11 to PPIA-06 transition regression
+        run: python scripts/validate-ppia11-to-ppia06-transition.py
+      - name: Validate generalized PPIA continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
+      - name: Validate conversation continuity
+        run: python tools/continuity_state.py validate
+      - name: Run conversation continuity regression tests
+        run: python -m unittest discover -s tests/continuity -v

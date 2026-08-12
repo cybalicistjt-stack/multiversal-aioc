@@ -6,6 +6,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 B=ROOT/"governance/application-planning/parallel-preimplementation"
 CHECKPOINT=ROOT/"governance/ai/work-state/PPIA-06-attempt-001.json"
+BACKLOG=B/"PPIA_PROGRAM_BACKLOG.json"
 
 FILES={
  "owner":B/"PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json",
@@ -34,6 +35,7 @@ def load(path:Path):
 def main()->None:
     d={k:load(v) for k,v in FILES.items()}
     cp=load(CHECKPOINT)
+    backlog=load(BACKLOG)
 
     owner=d["owner"]
     need(any(x.get("id")=="OVC-026" and "Furashin" in x.get("decision","") for x in owner["decisions"]),"OVC-026 Furashin rat-ninja correction missing")
@@ -117,10 +119,18 @@ def main()->None:
     candidate=d["candidate"].lower()
     for phrase in ["20 projection groups","30 actions","12 permission-filtered reads","10 nonmutating analysis/proposal actions","8 narrowly scoped writes","p06-mut-001","48 deterministic inspector/action/reference cases","84 cases","rat-ninja","filename/prompt text is explicitly non-authoritative","integrated workflow/traceability"]:
         need(phrase in candidate,"candidate missing "+phrase)
-    need(cp["work_item_id"]=="PPIA-06" and cp["status"] in {"started","in_progress"},"PPIA-06 checkpoint must remain active")
-    need(cp["branch"]=="governance/ppia-06-character-appearance-creator","PPIA-06 governed branch mismatch")
-    scope=(cp.get("active_substep","")+" "+cp.get("next_action","")).lower()
-    need("inspector" in scope and "action" in scope and "reference" in scope,"checkpoint no longer covers Inspector/Action/Reference")
+    need(cp["work_item_id"]=="PPIA-06" and cp["branch"]=="governance/ppia-06-character-appearance-creator","PPIA-06 checkpoint identity/branch mismatch")
+    need(cp["owner_decision_required"] is False and cp["unresolved_failures"]==[],"PPIA-06 checkpoint unexpectedly blocked")
+    if backlog["current_work_item_id"]=="PPIA-06":
+        need(cp["status"] in {"started","in_progress"},"active PPIA-06 checkpoint must remain active")
+        scope=((cp.get("active_substep") or "")+" "+(cp.get("next_action") or "")).lower()
+        need("inspector" in scope and "action" in scope and "reference" in scope,"checkpoint no longer covers Inspector/Action/Reference")
+        continuity="active_ppia06"
+    else:
+        order=backlog["execution_order"]
+        need(order.index(backlog["current_work_item_id"])>order.index("PPIA-06"),"historical IAR validation requires downstream current work")
+        need(cp["status"]=="completed_verified","historical PPIA-06 checkpoint must be completed_verified")
+        continuity="historical_after_ppia06"
 
     prohibited=(candidate+" "+low_surface+" "+json.dumps(contract).lower())
     for phrase in ["runtime_activation=true","stage-a-a2 activation=true","appearance may grant equipment","appearance may trigger ascension","arbitrary rotation allowed"]:
@@ -133,6 +143,7 @@ def main()->None:
     print("mutation_protocol=P06-MUT-001 authorization+expected_version+operation_id idempotent_recovery=true")
     print("furashin_rat_ninja_binding=owner_confirmed historical_authority=OVC-026_or_OVC-027 filename_prompt_authority=false")
     print("biology_mutation=false equipment_mutation=false hidden_leak=false runtime_activation=false")
+    print("continuity_mode="+continuity)
 
 if __name__=="__main__":
     main()

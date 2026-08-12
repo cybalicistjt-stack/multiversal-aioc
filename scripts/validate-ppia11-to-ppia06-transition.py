@@ -19,6 +19,10 @@ P11_COMPLETION_PR = 267
 P11_COMPLETION_MERGE = "f2274707b1337425f0bc9ac8d1dd5ebb08d9f883"
 P11_COMPLETION_RUN = "31595927902"
 P6_BRANCH = "governance/ppia-06-character-appearance-creator"
+P6_FINAL_HEAD = "6d2da6fb5a7c2d62492de895c6a9c7a1fe970a06"
+P6_COMPLETION_PR = 273
+P6_COMPLETION_MERGE = "ffce4859a8912813021776c4f5825c3d219bb0f2"
+P6_COMPLETION_RUN = "31622184027"
 COMPLETE = {"complete", "completed", "completed_verified"}
 ACTIVE = {"started", "in_progress"}
 
@@ -49,7 +53,7 @@ def main() -> None:
 
     tranches = {x["work_item_id"]: x for x in backlog["tranches"]}
     require(tranches["PPIA-11"]["status"] == "completed_verified", "PPIA-11 backlog must be completed_verified")
-    require(tranches["PPIA-06"]["status"] in ACTIVE, "PPIA-06 backlog must be started/in_progress")
+    require(tranches["PPIA-06"]["status"] in ACTIVE | COMPLETE, "PPIA-06 backlog state invalid")
     require(tranches["PPIA-06"].get("dependencies") == ["PPIA-05"], "PPIA-06 dependency declaration changed")
     require(tranches["PPIA-05"]["status"] in COMPLETE, "PPIA-05 dependency is not complete")
     order = backlog["execution_order"]
@@ -74,7 +78,7 @@ def main() -> None:
     require(p6["work_item_id"] == "PPIA-06" and p6["attempt_id"] == "PPIA-06-attempt-001", "PPIA-06 checkpoint identity mismatch")
     require(p6["branch"] == P6_BRANCH, "PPIA-06 governed branch mismatch")
     require(p6["base_commit"] == P11_COMPLETION_MERGE, "PPIA-06 base must be PPIA-11 completion merge")
-    require(p6["status"] in ACTIVE, "PPIA-06 checkpoint must be active")
+    require(p6["status"] in ACTIVE | {"completed_verified"}, "PPIA-06 checkpoint state invalid")
     require(p6["owner_decision_required"] is False and p6["unresolved_failures"] == [], "PPIA-06 transition must be unblocked")
     scope = json.dumps({
         "objective": p6.get("objective"),
@@ -96,6 +100,7 @@ def main() -> None:
 
     current_id = backlog["current_work_item_id"]
     if current_id == "PPIA-06":
+        require(p6["status"] in ACTIVE, "active PPIA-06 transition requires active checkpoint")
         require(pointer["primary_attempt_id"] == "PPIA-06-attempt-001", "pointer must select PPIA-06")
         selected = [x for x in pointer["active_attempts"] if x.get("owner_selected")]
         require(len(selected) == 1 and selected[0]["work_item_id"] == "PPIA-06", "exactly one owner-selected PPIA-06 attempt required")
@@ -109,7 +114,10 @@ def main() -> None:
         transition_mode = "active_ppia06"
     else:
         require(order.index(current_id) > order.index("PPIA-06"), "historical transition may only validate after PPIA-06")
-        require(tranches["PPIA-06"]["status"] in COMPLETE, "historical PPIA-06 backlog must be complete")
+        require(tranches["PPIA-06"]["status"] == "completed_verified", "historical PPIA-06 backlog must be completed_verified")
+        require(p6["status"] == "completed_verified" and p6["active_substep"] is None, "historical PPIA-06 checkpoint must be completed_verified")
+        require(p6["latest_pushed_commit"] == P6_FINAL_HEAD and p6["pull_request"] == P6_COMPLETION_PR and p6["merge_commit"] == P6_COMPLETION_MERGE, "historical PPIA-06 immutable completion evidence mismatch")
+        require(any(P6_COMPLETION_RUN in v.get("command", "") and v.get("status") == "passed" for v in p6.get("validation", [])), "historical PPIA-06 completion gate evidence missing")
         transition_mode = "historical_after_ppia06"
 
     require("roadmap" in pointer["selection_reason"].lower() and "pending" in pointer["selection_reason"].lower(), "pointer must explain batched roadmap projection")
