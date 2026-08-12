@@ -1,0 +1,39 @@
+name: Validate PPIA-11 Methodology and Benchmark Contracts
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-11_*'
+      - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F012_*'
+      - 'governance/ai/work-state/PPIA-11-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia11-methodology-benchmarks.py'
+      - 'scripts/validate-ppia11-foundation.py'
+      - 'scripts/validate-ppia10-to-ppia11-transition.py'
+      - 'governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json'
+      - 'governance/application-planning/parallel-preimplementation/validate_ppia_program.py'
+      - 'governance/ai/validate_conversation_continuity.py'
+      - '.github/workflows/validate-ppia-11-methodology-benchmarks.yml'
+  workflow_dispatch:
+
+jobs:
+  validate-ppia11-methodology-benchmarks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PPIA-11 methodology and benchmarks
+        run: python scripts/validate-ppia11-methodology-benchmarks.py
+      - name: Validate PPIA-11 foundation regression
+        run: python scripts/validate-ppia11-foundation.py
+      - name: Validate MV-IA-F012 encounter design regression
+        run: python governance/application-planning/internal-alpha/validate_encounter_builder_balance_lab_design.py
+      - name: Validate PPIA-10 to PPIA-11 transition regression
+        run: python scripts/validate-ppia10-to-ppia11-transition.py
+      - name: Validate generalized PPIA continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
+      - name: Validate conversation continuity
+        run: python governance/ai/validate_conversation_continuity.py
