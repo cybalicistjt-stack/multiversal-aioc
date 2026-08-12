@@ -1,0 +1,39 @@
+name: Validate PPIA-13 Integrated Teaching Workflows and Traceability
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-13_*'
+      - 'governance/ai/work-state/PPIA-13-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia13-*.py'
+      - '.github/workflows/validate-ppia-13-*.yml'
+  workflow_dispatch:
+
+jobs:
+  validate-ppia13-integrated-teaching-workflows:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate PPIA-13 Integrated Teaching Workflows and Traceability
+        run: python scripts/validate-ppia13-integrated-teaching-workflows.py
+      - name: Validate PPIA-13 Teaching Library IAR regression
+        run: python scripts/validate-ppia13-teaching-library-iar.py
+      - name: Validate PPIA-13 GM Academy regression
+        run: python scripts/validate-ppia13-gm-academy.py
+      - name: Validate PPIA-13 Foundation regression
+        run: python scripts/validate-ppia13-foundation.py
+      - name: Validate PPIA-06 to PPIA-13 transition regression
+        run: python scripts/validate-ppia06-to-ppia13-transition.py
+      - name: Validate PPIA-08 completion dependency regression
+        run: python scripts/validate-ppia08-completion-contracts.py
+      - name: Validate generalized PPIA continuity
+        run: python scripts/validate-ppia-program.py
+      - name: Validate conversation continuity
+        run: python scripts/validate-conversation-continuity-state.py
+      - name: Run conversation continuity regression tests
+        run: python -m unittest discover -s tests -p 'test_conversation_continuity*.py'
