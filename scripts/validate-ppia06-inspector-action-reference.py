@@ -44,7 +44,7 @@ def main()->None:
     ninja=[x for x in art4["assets"] if "ratman ninja" in x["filename"].lower()]
     need(len(ninja)==1,"rat-ninja art record missing or duplicated")
     need(ninja[0].get("species_binding")=="Furashin","rat-ninja art must bind to Furashin")
-    need(ninja[0].get("binding_authority")=="owner_identification_OVC-026","rat-ninja binding authority missing")
+    need(ninja[0].get("binding_authority") in {"owner_identification_OVC-026","owner_identification_OVC-027"},"rat-ninja binding authority missing")
 
     taxonomy=d["taxonomy"]
     need(taxonomy["schema_version"]=="0.2.0","taxonomy v0.2 required")
@@ -131,7 +131,7 @@ def main()->None:
     print("new_reference_cases=48 inherited_species_cases=36 effective_cases=84")
     print("species_profiles=25 inspector_sections=18 compatibility_dimensions=5")
     print("mutation_protocol=P06-MUT-001 authorization+expected_version+operation_id idempotent_recovery=true")
-    print("furashin_rat_ninja_binding=owner_confirmed filename_prompt_authority=false")
+    print("furashin_rat_ninja_binding=owner_confirmed historical_authority=OVC-026_or_OVC-027 filename_prompt_authority=false")
     print("biology_mutation=false equipment_mutation=false hidden_leak=false runtime_activation=false")
 
 if __name__=="__main__":
