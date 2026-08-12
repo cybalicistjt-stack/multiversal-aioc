@@ -1,0 +1,48 @@
+name: Validate PPIA-14 Integrated Error Recovery Permission Workflows and Traceability
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-14_*'
+      - 'governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json'
+      - 'governance/ai/work-state/PPIA-14-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F006_*'
+      - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F020_*'
+      - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F021_*'
+      - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F025_*'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-13_*'
+      - 'scripts/validate-ppia14-integrated-error-recovery-permission-workflows.py'
+      - 'scripts/validate-ppia14-microcopy-library-iar.py'
+      - 'scripts/validate-ppia14-foundation.py'
+      - '.github/workflows/validate-ppia-14-integrated-error-recovery-permission-workflows.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia14-integrated-error-recovery-permission-workflows:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PPIA-14 integrated error recovery permission workflows and traceability
+        run: python scripts/validate-ppia14-integrated-error-recovery-permission-workflows.py
+      - name: Validate PPIA-14 Microcopy Library IAR regression
+        run: python scripts/validate-ppia14-microcopy-library-iar.py
+      - name: Validate PPIA-14 Foundation regression
+        run: python scripts/validate-ppia14-foundation.py
+      - name: Validate PPIA-13 completion dependency regression
+        run: python scripts/validate-ppia13-completion-contracts.py
+      - name: Validate PPIA-08 completion dependency regression
+        run: python scripts/validate-ppia08-completion-contracts.py
+      - name: Validate generalized PPIA continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
+      - name: Validate conversation continuity
+        run: python tools/continuity_state.py validate
+      - name: Run conversation continuity regression tests
+        run: python -m unittest discover -s tests/continuity -v
