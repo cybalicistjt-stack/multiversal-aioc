@@ -58,13 +58,6 @@ def main() -> None:
         for key in required:
             require(workflow.get(key), f"{workflow['workflow_id']} missing {key}")
 
-    mutation_workflows = [w for w in workflows if w.get("authoritative_mutation_performed") is True]
-    require(len(mutation_workflows) == 15, f"expected 15 authoritative mutation workflows, got {len(mutation_workflows)}")
-    for workflow in mutation_workflows:
-        text = json.dumps(workflow, ensure_ascii=False).lower()
-        require("expected_version" in text or "expected-version" in text or "version" in text, f"{workflow['workflow_id']} missing version boundary")
-        require("operation_id" in text or "operation id" in text or "idempot" in text, f"{workflow['workflow_id']} missing operation/idempotency boundary")
-
     expected_pgs = [f"P8-PG-{n:03d}" for n in range(1, 17)]
     expected_profiles = taxonomy.get("presentation_profiles", [])
     expected_actions = [f"P8-ACT-{n:03d}" for n in range(1, 27)]
@@ -77,6 +70,17 @@ def main() -> None:
     require([x.get("action_id") for x in inspector.get("action_contracts", [])] == expected_actions, "verified action set changed")
     require([x.get("case_id") for x in cases_doc.get("cases", [])] == expected_cases, "verified reference-case set changed")
     require([x.get("id") for x in authority.get("domain_handoffs", [])] == expected_handoffs, "verified handoff set changed")
+
+    action_by_id = {x["action_id"]: x for x in inspector.get("action_contracts", [])}
+    mutation_workflows = [w for w in workflows if w.get("authoritative_mutation_performed") is True]
+    require(len(mutation_workflows) == 15, f"expected 15 authoritative mutation workflows, got {len(mutation_workflows)}")
+    for workflow in mutation_workflows:
+        write_actions = [action_by_id[action_id] for action_id in workflow["actions"] if action_by_id[action_id].get("mutation") == "write"]
+        require(write_actions, f"{workflow['workflow_id']} declares authoritative mutation but invokes no write action")
+        for action in write_actions:
+            inputs = set(action.get("inputs", []))
+            require("expected_version" in inputs, f"{workflow['workflow_id']} write action {action['action_id']} missing expected_version")
+            require("operation_id" in inputs, f"{workflow['workflow_id']} write action {action['action_id']} missing operation_id")
 
     routed_pgs = {x for workflow in workflows for x in workflow["projection_groups"]}
     routed_profiles = {x for workflow in workflows for x in workflow["presentation_profiles"]}
