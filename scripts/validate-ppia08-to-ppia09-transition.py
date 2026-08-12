@@ -20,6 +20,8 @@ P8_COMPLETION_PR = 251
 P8_COMPLETION_MERGE = "09f9df2607398010097e834e8ad7b129cd10645f"
 P9_BRANCH = "governance/ppia-09-investigation-mystery-authoring"
 P9_FOUNDATION_MERGE = "511b7b3edc0b88ff8ea5683fd093d2853b50ccf1"
+ACTIVE = {"started", "in_progress"}
+COMPLETE = {"complete", "completed", "completed_verified"}
 
 
 def fail(message: str) -> None:
@@ -48,12 +50,11 @@ def main() -> None:
 
     tranches = {x["work_item_id"]: x for x in backlog["tranches"]}
     require(tranches["PPIA-08"]["status"] == "completed_verified", "PPIA-08 backlog must be completed_verified")
-    require(tranches["PPIA-09"]["status"] == "started", "PPIA-09 backlog must be started")
     require("PPIA-08" in tranches["PPIA-09"].get("dependencies", []), "PPIA-09 dependency on PPIA-08 missing")
-    require(backlog["current_work_item_id"] == "PPIA-09", "backlog must select PPIA-09")
     order = backlog["execution_order"]
     require(order.index("PPIA-08") + 1 == order.index("PPIA-09"), "dependency-optimized order must place PPIA-09 after PPIA-08")
 
+    # Immutable PPIA-08 completion anchor.
     require(p8["status"] == "completed_verified", "PPIA-08 checkpoint must be completed_verified")
     require(p8["active_substep"] is None and p8.get("completed_at"), "PPIA-08 completion timestamp/substep invalid")
     require(p8["latest_pushed_commit"] == P8_FINAL_HEAD, "PPIA-08 exact validated completion head mismatch")
@@ -64,40 +65,17 @@ def main() -> None:
     evidence_text = json.dumps(p8.get("evidence", []), ensure_ascii=False)
     for value in (P8_FINAL_HEAD, "PR #251", P8_COMPLETION_MERGE):
         require(value in evidence_text, f"PPIA-08 immutable completion evidence missing {value}")
-
     for value in ("48 blocking acceptance requirements", "PPIA-09"):
         require(value.lower() in report.lower(), f"PPIA-08 completion report missing {value!r}")
 
+    # PPIA-09 transition identity remains immutable even after PPIA-09 later completes.
     require(p9["work_item_id"] == "PPIA-09" and p9["attempt_id"] == "PPIA-09-attempt-001", "PPIA-09 checkpoint identity mismatch")
-    require(p9["status"] == "started", "PPIA-09 checkpoint must be started")
     require(p9["branch"] == P9_BRANCH, "PPIA-09 governed branch mismatch")
     require(p9["base_commit"] == P8_COMPLETION_MERGE, "PPIA-09 base must be PPIA-08 completion merge")
-    require(p9["owner_decision_required"] is False and p9["unresolved_failures"] == [], "PPIA-09 transition must be unblocked")
+    require(p9["owner_decision_required"] is False and p9["unresolved_failures"] == [], "PPIA-09 must remain unblocked")
+    require(p9["status"] in ACTIVE | {"completed_verified"}, f"unexpected PPIA-09 status {p9['status']!r}")
 
     trace_text = json.dumps({
-        "last_verified_action": p9.get("last_verified_action"),
-        "active_substep": p9.get("active_substep"),
-        "next_action": p9.get("next_action"),
-        "completed_substeps": p9.get("completed_substeps", []),
-        "evidence": p9.get("evidence", []),
-    }, ensure_ascii=False).lower()
-    require("source/design foundation" in trace_text or P9_FOUNDATION_MERGE in trace_text, "PPIA-09 must remain traceable to source/design foundation")
-
-    later_head = p9.get("latest_pushed_commit")
-    later_pr = p9.get("pull_request")
-    later_merge = p9.get("merge_commit")
-    if later_head is None:
-        require(later_pr is None and later_merge is None, "transition checkpoint may not fabricate PPIA-09 PR/merge evidence")
-        transition_mode = "initial_transition"
-    else:
-        require(isinstance(later_head, str) and len(later_head) == 40, "later PPIA-09 milestone head must be a 40-character SHA")
-        require(later_pr is None or (isinstance(later_pr, int) and later_pr > 252), "later PPIA-09 PR evidence is invalid")
-        require(later_merge is None or (isinstance(later_merge, str) and len(later_merge) == 40), "later PPIA-09 merge evidence is invalid")
-        transition_mode = "historical_after_ppia09_started"
-
-    # Durable governed-scope trace combines the verified F011 starting contract with checkpoint
-    # history/current scope. Later milestone wording may evolve, but the transition invariants may not.
-    governed_scope_trace = (f011 + " " + json.dumps({
         "objective": p9.get("objective"),
         "last_verified_action": p9.get("last_verified_action"),
         "active_substep": p9.get("active_substep"),
@@ -105,7 +83,17 @@ def main() -> None:
         "completed_substeps": p9.get("completed_substeps", []),
         "evidence": p9.get("evidence", []),
         "notes": p9.get("notes", []),
-    }, ensure_ascii=False)).lower()
+    }, ensure_ascii=False).lower()
+    require("source/design foundation" in trace_text or P9_FOUNDATION_MERGE in trace_text, "PPIA-09 must remain traceable to source/design foundation")
+
+    later_head = p9.get("latest_pushed_commit")
+    later_pr = p9.get("pull_request")
+    later_merge = p9.get("merge_commit")
+    require(later_head is None or (isinstance(later_head, str) and len(later_head) == 40), "later PPIA-09 milestone head is invalid")
+    require(later_pr is None or (isinstance(later_pr, int) and later_pr > 252), "later PPIA-09 PR evidence is invalid")
+    require(later_merge is None or (isinstance(later_merge, str) and len(later_merge) == 40), "later PPIA-09 merge evidence is invalid")
+
+    governed_scope_trace = (f011 + " " + trace_text).lower()
     for phrase in ("objective truth", "clue", "evidence", "hypothesis", "false lead", "contradiction", "reveal", "uncertainty", "provenance", "nonvisual"):
         require(phrase in governed_scope_trace, f"PPIA-09 governed scope trace missing {phrase!r}")
     require("gm conclusion" in governed_scope_trace or "gm solution" in governed_scope_trace, "PPIA-09 governed scope trace missing GM conclusion/solution separation")
@@ -116,19 +104,27 @@ def main() -> None:
     require("player deductions are not auto-promoted to fact" in f011_low, "MV-IA-F011 truth/belief guardrail missing")
     require("spatial placement is presentation state" in f011_low, "MV-IA-F011 graph-position guardrail missing")
 
-    require(pointer["primary_attempt_id"] == "PPIA-09-attempt-001", "pointer must select PPIA-09")
-    selected = [x for x in pointer["active_attempts"] if x.get("owner_selected")]
-    require(len(selected) == 1 and selected[0]["work_item_id"] == "PPIA-09", "exactly one owner-selected PPIA-09 attempt required")
-    current = selected[0]
-    for field in ("attempt_id", "branch", "status", "updated_at", "roadmap_projection_pending"):
-        require(current[field] == p9[field], f"pointer/PPIA-09 checkpoint mismatch: {field}")
-    require(current["checkpoint_path"] == "governance/ai/work-state/PPIA-09-attempt-001.json", "PPIA-09 checkpoint path mismatch")
+    current_id = backlog["current_work_item_id"]
+    if current_id == "PPIA-09":
+        require(tranches["PPIA-09"]["status"] in ACTIVE and p9["status"] in ACTIVE, "active PPIA-09 must remain started/in_progress")
+        require(pointer["primary_attempt_id"] == "PPIA-09-attempt-001", "pointer must select PPIA-09")
+        selected = [x for x in pointer["active_attempts"] if x.get("owner_selected")]
+        require(len(selected) == 1 and selected[0]["work_item_id"] == "PPIA-09", "exactly one owner-selected PPIA-09 attempt required")
+        current = selected[0]
+        for field in ("attempt_id", "branch", "status", "updated_at", "roadmap_projection_pending"):
+            require(current[field] == p9[field], f"pointer/PPIA-09 checkpoint mismatch: {field}")
+        require(current["checkpoint_path"] == "governance/ai/work-state/PPIA-09-attempt-001.json", "PPIA-09 checkpoint path mismatch")
+        primary = status["primary"]
+        for field in ("work_item_id", "attempt_id", "branch", "status", "active_substep", "next_action", "latest_pushed_commit", "pull_request", "owner_decision_required", "unresolved_failures", "roadmap_projection_pending"):
+            require(primary[field] == p9[field], f"compact status/PPIA-09 checkpoint mismatch: {field}")
+        transition_mode = "active_ppia09"
+    else:
+        require(order.index(current_id) > order.index("PPIA-09"), "historical transition may only validate after PPIA-09")
+        require(tranches["PPIA-09"]["status"] in COMPLETE, "historical PPIA-09 backlog must be complete")
+        require(p9["status"] == "completed_verified" and p9.get("completed_at") and p9["active_substep"] is None, "historical PPIA-09 checkpoint must be completed_verified")
+        transition_mode = "historical_after_ppia09"
 
-    primary = status["primary"]
-    for field in ("work_item_id", "attempt_id", "branch", "status", "active_substep", "next_action", "latest_pushed_commit", "pull_request", "owner_decision_required", "unresolved_failures", "roadmap_projection_pending"):
-        require(primary[field] == p9[field], f"compact status/PPIA-09 checkpoint mismatch: {field}")
     require("roadmap" in pointer["selection_reason"].lower() and "pending" in pointer["selection_reason"].lower(), "pointer must explain batched roadmap projection")
-
     boundaries = backlog["boundaries"]
     for key in ("application_runtime_mutation_authorized", "a2_activation_authorized", "release_authorized", "deployment_authorized", "tester_access_authorized", "canonical_promotion_without_source_evidence_authorized"):
         require(boundaries[key] is False, f"transition may not enable {key}")
@@ -137,7 +133,7 @@ def main() -> None:
     print(f"ppia08_final_head={P8_FINAL_HEAD}")
     print(f"ppia08_final_merge={P8_COMPLETION_MERGE}")
     print("ppia08_status=completed_verified")
-    print("ppia09_status=started")
+    print(f"ppia09_status={p9['status']}")
     print(f"ppia09_branch={P9_BRANCH}")
     print(f"transition_mode={transition_mode}")
     print("starting_contract=MV-IA-F011 + PPIA-08 + permissions/recovery/accessibility")
