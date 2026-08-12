@@ -1,0 +1,26 @@
+{
+  "schema_version":"0.1.0",
+  "work_item":"PPIA-06",
+  "classification":"completion_acceptance_matrix",
+  "completion_gate":"Implementation-ready appearance-studio specification with species-aware controls, randomization/presets, nonhumanoid/mobile/accessibility behavior, portrait handoff, and scope boundary.",
+  "counts":{"acceptance_categories":16,"species":25,"semantic_layers":18,"compatibility_dimensions":5,"projection_groups":20,"actions":30,"workflows":16,"handoffs":9,"effective_cases":116},
+  "categories":[
+    {"id":"P06-CG-01","name":"species_and_morphology","proof":["25/25 Species profiles","unknown anatomy remains unknown","nonhumanoid/composite/nested morphology first-class"]},
+    {"id":"P06-CG-02","name":"appearance_semantics","proof":["18/18 renderer-independent semantic layers","source-owned biology separated from authored appearance"]},
+    {"id":"P06-CG-03","name":"compatibility","proof":["5/5 compatibility dimensions","supported/partial/unsupported/unknown renderer states"]},
+    {"id":"P06-CG-04","name":"owner_visual_provenance","proof":["OVC-001 through OVC-027 retained","OVC-027 Furashin art binding","Ratman remains separate Species"]},
+    {"id":"P06-CG-05","name":"inspector_projection","proof":["20/20 permission-safe projection groups","18 Appearance Studio semantic sections"]},
+    {"id":"P06-CG-06","name":"governed_actions","proof":["30/30 actions","12 reads","10 analysis/proposals","8 writes"]},
+    {"id":"P06-CG-07","name":"mutation_recovery","proof":["P06-MUT-001","authorization","expected_version","operation_id","idempotent ambiguous-result recovery"]},
+    {"id":"P06-CG-08","name":"randomization_presets_import_export","proof":["deterministic seed/version/locks","stable semantic IDs","explicit compatibility outcomes","no silent substitution"]},
+    {"id":"P06-CG-09","name":"wardrobe_equipment_boundary","proof":["presentation wardrobe visual-only","PPIA-03 actual equipment projection","no equipment mutation"]},
+    {"id":"P06-CG-10","name":"renderer","proof":["pixel-art-v1","stable asset IDs","anchors","occlusion","palette semantics","no anatomical approximation"]},
+    {"id":"P06-CG-11","name":"views_and_handoffs","proof":["fixed full-body three-quarter master","portrait/zoom","tactical token","no arbitrary rotation","downstream derivatives nonauthoritative"]},
+    {"id":"P06-CG-12","name":"future_renderer_boundary","proof":["core state renderer-independent","future 3D adapter allowed","sprite/pixel fields not required in Character truth"]},
+    {"id":"P06-CG-13","name":"permission_privacy","proof":["permission filtering before references/assets/derivatives/export/AI context","hidden-state derivative nonleak"]},
+    {"id":"P06-CG-14","name":"accessibility_mobile","proof":["mobile parity","keyboard-only parity","screen-reader/nonvisual parity","high zoom","reduced motion","noncolor semantics"]},
+    {"id":"P06-CG-15","name":"integrated_traceability","proof":["16/16 workflows","9/9 handoffs","48/48 IAR exactly once","36/36 Species Visual exactly once","32/32 integrated exactly once","116 effective cases"]},
+    {"id":"P06-CG-16","name":"program_boundary","proof":["PPIA-05 biology authority retained","PPIA-03 equipment authority retained","AI nonauthoritative","runtime/STAGE-A-A2/release/deployment/tester/paid/production activation false"]}
+  ],
+  "result":"completion_candidate_only_until_exact_head_validation_and_merge"
+}
