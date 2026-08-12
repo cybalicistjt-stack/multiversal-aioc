@@ -28,4 +28,6 @@ jobs:
       - name: Validate generalized PPIA continuity
         run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
       - name: Validate conversation continuity
-        run: python scripts/validate-conversation-continuity.py
+        run: python tools/continuity_state.py validate
+      - name: Run conversation continuity regression tests
+        run: python -m unittest discover -s tests/continuity -v
