@@ -1,0 +1,33 @@
+{
+  "schema_version":"0.1.0","work_item":"PPIA-06","format":"multiversal-ppia06-authority-boundary-matrix",
+  "domains":[
+    {"domain":"species_form_biology","owner":"PPIA-05","ppia06":"consume authorized projection","may_mutate":false},
+    {"domain":"current_form_transformation","owner":"PPIA-05/owning Character workflow","ppia06":"reproject and retain only compatible portable appearance choices","may_mutate":false},
+    {"domain":"player_authored_visual_appearance","owner":"PPIA-06 governed Character appearance state","ppia06":"author/edit within constraints","may_mutate":true},
+    {"domain":"equipment_inventory_asset_state","owner":"PPIA-03/Character inventory","ppia06":"preview authorized projection only","may_mutate":false},
+    {"domain":"hidden_information_visibility","owner":"F020/PPIA-05/PPIA-03 owning policy","ppia06":"filter before derivation/render/export","may_mutate":false},
+    {"domain":"renderer_assets_metadata","owner":"renderer/asset pack","ppia06":"select version-pinned compatible metadata","may_mutate":false},
+    {"domain":"portrait_token_presentation","owner":"PPIA-06 output handoff","ppia06":"produce semantic/versioned presentation outputs without changing Character truth","may_mutate":false}
+  ],
+  "blocking_invariants":[
+    "Appearance must never rewrite Species/Form biology, morphology, current Form, transformations, eligibility or compatibility.",
+    "Unknown/source-unspecified anatomy remains unknown and is never replaced by a human/humanoid default.",
+    "Renderer topology profiles are implementation compatibility classes, not Species, lineage or biological taxonomy.",
+    "Renderer coverage does not determine Character validity.",
+    "Equipment preview never grants, consumes, transfers, equips, unequips or mutates Asset/Inventory state.",
+    "Permission filtering occurs before hidden morphology/equipment is used for derivatives, renderer selection, counts, exports, diagnostics or AI context.",
+    "Hidden Form/marker/equipment state cannot leak through silhouette, layer count, missing-asset warnings, palette zones, anchors or renderer diagnostics.",
+    "Randomization never mutates source-owned morphology, hidden state or equipment ownership and always respects locks.",
+    "Color is not the only semantic channel; keyboard, touch, screen-reader, high-zoom, reduced-motion and nonvisual behavior are first-class.",
+    "pixel-art-v1 is the first renderer, not the permanent Character appearance data model.",
+    "No application runtime, STAGE-A-A2, release, deployment, tester, paid-service or production-credential activation is authorized."
+  ],
+  "handoffs":[
+    {"id":"P06-HO-001","to":"PPIA-05","purpose":"morphology/current Form/compatibility/visibility truth"},
+    {"id":"P06-HO-002","to":"PPIA-03","purpose":"equipment/Asset projection and ownership/state"},
+    {"id":"P06-HO-003","to":"MV-IA-F004","purpose":"Character creation identity and authoritative Character aggregate"},
+    {"id":"P06-HO-004","to":"MV-IA-F020","purpose":"permission and hidden-information projection"},
+    {"id":"P06-HO-005","to":"MV-IA-F021","purpose":"version/recovery/idempotency for future appearance mutations"},
+    {"id":"P06-HO-006","to":"Character presentation consumers","purpose":"portrait/token semantic outputs"}
+  ]
+}
