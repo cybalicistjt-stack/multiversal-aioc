@@ -1,0 +1,97 @@
+{
+  "work_item": "PPIA-11",
+  "version": "0.1.0",
+  "classification": "authored_methodology",
+  "purpose": "Define a human-facing encounter assessment, comparison, benchmark, recommendation and calibration procedure that deepens MV-IA-F012 without inventing a universal challenge scalar or rewriting owning-domain mechanics.",
+  "inherited_authority": {
+    "feature": "MV-IA-F012 Encounter Builder and Balance Lab",
+    "pressure_dimensions": [
+      "durability-recovery",
+      "sustained-output",
+      "burst-spike",
+      "action-economy",
+      "control-denial",
+      "mobility-position",
+      "environment-hazard",
+      "objective-time",
+      "information-surprise",
+      "attrition-resource",
+      "reinforcement-escalation",
+      "failure-path"
+    ],
+    "simulation_modes": [
+      "deterministic-script",
+      "bounded-seeded-sampling",
+      "sensitivity-sweep",
+      "regression-replay"
+    ],
+    "required_outcomes": [
+      "Every analysis exposes inputs, assumptions, evidence quality, uncertainty, omitted variables and versions.",
+      "Independent pressure dimensions remain inspectable.",
+      "Comparison records explicit deltas between immutable snapshots.",
+      "Bounded simulation is deterministic, advisory and nonmutating.",
+      "No balanced, fair, safe, winnable, optimal or guaranteed label is permitted."
+    ]
+  },
+  "assessment_steps": [
+    {"id":"P11-M-001","name":"declare_intent_and_failure_paths","outputs":["encounter_intent","objectives","success_partial_success_failure_paths","time_or_escalation_intent"],"factor_ids":["P11-F-001","P11-F-010","P11-F-015"]},
+    {"id":"P11-M-002","name":"bind_exact_authoritative_snapshot","outputs":["rules_profile_version","schema_version","pack_lock_version","campaign_scene_session_refs","participant_and_object_versions"],"factor_ids":["P11-F-002","P11-F-020"]},
+    {"id":"P11-M-003","name":"classify_encounter_form","outputs":["encounter_forms","mixed_scale_flag","wave_or_reinforcement_structure"],"factor_ids":["P11-F-012","P11-F-013","P11-F-014"]},
+    {"id":"P11-M-004","name":"validate_authority_dependencies_and_interaction_rules","outputs":["blocking_findings","permission_safe_projection","compatibility_findings","explicit_cross_scale_interaction_status"],"factor_ids":["P11-F-002","P11-F-012","P11-F-016"]},
+    {"id":"P11-M-005","name":"classify_evidence","outputs":["source_truth_records","inherited_contract_records","observed_benchmark_records","authored_methodology_records","unresolved_gaps"],"factor_ids":["P11-F-016","P11-F-017","P11-F-020"]},
+    {"id":"P11-M-006","name":"inspect_capabilities_and_constraints","outputs":["capability_summary","output_pressure","survivability","action_economy","resource_pressure","range_mobility_access"],"factor_ids":["P11-F-003","P11-F-004","P11-F-005","P11-F-006","P11-F-007","P11-F-008"]},
+    {"id":"P11-M-007","name":"inspect_environment_objective_and_escalation","outputs":["environment_terrain","hazards_external_pressure","objective_time_pressure","waves_reinforcements","retreat_alternatives"],"factor_ids":["P11-F-009","P11-F-010","P11-F-011","P11-F-014","P11-F-015"]},
+    {"id":"P11-M-008","name":"project_independent_pressure_dimensions","outputs":["pressure_dimension_findings","omitted_variables"],"factor_ids":["P11-F-003","P11-F-004","P11-F-005","P11-F-006","P11-F-007","P11-F-008","P11-F-009","P11-F-010","P11-F-011","P11-F-013","P11-F-014","P11-F-015"]},
+    {"id":"P11-M-009","name":"select_valid_comparators","outputs":["comparator_ids","comparison_scope","explicit_deltas","rejected_comparators"],"factor_ids":["P11-F-017","P11-F-018"]},
+    {"id":"P11-M-010","name":"run_optional_bounded_benchmark","outputs":["simulation_or_replay_receipts","observed_results","sensitivity_findings"],"factor_ids":["P11-F-017","P11-F-018"]},
+    {"id":"P11-M-011","name":"classify_uncertainty","outputs":["uncertainty_band","named_gaps","confidence_limits"],"factor_ids":["P11-F-016","P11-F-019"]},
+    {"id":"P11-M-012","name":"produce_human_facing_recommendation","outputs":["factor_specific_findings","proposed_deltas","do_not_change_source_truth","review_needed"],"factor_ids":["P11-F-018","P11-F-019","P11-F-020"]},
+    {"id":"P11-M-013","name":"calibrate_from_later_evidence","outputs":["calibration_record","before_after_assessment","recommendation_history","unchanged_source_truth"],"factor_ids":["P11-F-017","P11-F-019","P11-F-020"]}
+  ],
+  "pressure_dimension_support": {
+    "durability-recovery":["P11-F-003","P11-F-005"],
+    "sustained-output":["P11-F-003","P11-F-004","P11-F-007"],
+    "burst-spike":["P11-F-004","P11-F-006"],
+    "action-economy":["P11-F-006","P11-F-013","P11-F-014"],
+    "control-denial":["P11-F-003","P11-F-006"],
+    "mobility-position":["P11-F-008","P11-F-009"],
+    "environment-hazard":["P11-F-009","P11-F-011"],
+    "objective-time":["P11-F-001","P11-F-010"],
+    "information-surprise":["P11-F-016","P11-F-014"],
+    "attrition-resource":["P11-F-007","P11-F-010"],
+    "reinforcement-escalation":["P11-F-014","P11-F-010"],
+    "failure-path":["P11-F-010","P11-F-015"]
+  },
+  "recommendation_types": [
+    {"id":"composition_delta","examples":["change participant quantity","change support composition"],"authority":"proposal_only"},
+    {"id":"timing_wave_delta","examples":["delay or advance a wave","change reinforcement trigger"],"authority":"proposal_only"},
+    {"id":"environment_hazard_delta","examples":["change governed hazard or terrain selection","change exposure timing"],"authority":"proposal_only"},
+    {"id":"objective_failure_path_delta","examples":["add or revise a retreat, surrender, bypass or partial-success path"],"authority":"proposal_only"},
+    {"id":"resource_constraint_delta","examples":["change encounter-local resource availability or rest assumption where governing rules allow"],"authority":"proposal_only"},
+    {"id":"information_visibility_delta","examples":["change revealed encounter-local information where Campaign rules allow"],"authority":"proposal_only"},
+    {"id":"rules_gap_resolution","examples":["resolve missing interaction rule or source contradiction before assessment"],"authority":"blocking_human_or_owning_rule_resolution"},
+    {"id":"benchmark_request","examples":["run a bounded deterministic replay or targeted sensitivity case"],"authority":"analysis_only"},
+    {"id":"no_change_supported","examples":["retain current draft because available evidence does not support a change"],"authority":"analysis_only"}
+  ],
+  "comparison_contract": {
+    "required":["same_or_explicitly_compatible_rules_profile","same_or_explicitly_compatible_scale_and_interaction_context","exact_snapshot_versions","explicit_delta_set","permission_safe_inputs"],
+    "prohibited":["cross_domain_scalar_inference","within_domain_target_band_as_cross_domain_equivalence","hidden_input_leakage","silent_policy_version_change","claim_of_guaranteed_balance"]
+  },
+  "uncertainty_rule": "Use low, moderate, high or indeterminate from the verified PPIA-11 taxonomy. Missing source mechanics, unresolved cross-scale rules, inaccessible hidden inputs or materially incomparable benchmarks increase uncertainty; indeterminate is valid and preferable to fabricated precision.",
+  "calibration_contract": {
+    "inputs":["prior_assessment_id","prior_snapshot_id","later_benchmark_or_playtest_evidence","observed_pressure_findings","named_context_deltas"],
+    "outputs":["calibration_id","before_assessment","after_assessment","changed_recommendations","unchanged_source_truth","evidence_provenance"],
+    "rule":"Calibration updates authored recommendations and benchmark evidence only. It never silently edits source truth, owning-domain mechanics or historical assessment receipts."
+  },
+  "blocking_invariants": [
+    "No universal CR, encounter level, difficulty score, threat number or cross-domain power scalar is produced.",
+    "No weighted sum is required to collapse the twelve pressure dimensions or twenty factors.",
+    "Unknown/source-unspecified values are never replaced with midpoint, zero, average or human-default values.",
+    "Boss, wave, reinforcement, retreat, hazard, objective and mixed-scale analysis organizes existing rules but does not invent mechanics.",
+    "Mixed-scale assessment requires explicit governing interaction rules; absent interaction rules can yield indeterminate.",
+    "Simulation and benchmark output is evidence, not actual-player prediction or source canon.",
+    "AI may explain or propose from the authorized projection only; it cannot approve, attach, mutate or certify balance.",
+    "Approval and Scene attachment remain MV-IA-F012/PPIA-08 human-governed operations outside the advisory analysis result.",
+    "No application runtime, STAGE-A-A2, release, deployment, tester access, paid service or production credential is activated."
+  ]
+}
