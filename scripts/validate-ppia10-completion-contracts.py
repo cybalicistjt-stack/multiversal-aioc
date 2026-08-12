@@ -89,7 +89,7 @@ def main():
         req(title in titles, f"required completion reference case missing {title}")
 
     req(wf.get("format") == "multiversal-ppia10-workflow-authoring-contract-matrix", "workflow index identity")
-    req(wf.get("counts") == {"workflows": 18, "mutation": 15, "read_only": 3}, "workflow index counts changed")
+    req(wf.get("policy", {}).get("workflow_count") == 18 and wf.get("policy", {}).get("authoritative_mutation_workflow_count") == 15 and wf.get("policy", {}).get("read_only_workflow_count") == 3, "workflow index counts changed")
     req(trace.get("format") == "multiversal-ppia10-workflow-traceability-matrix", "traceability identity")
     req(trace.get("counts") == {"workflows": 18, "mutation": 15, "read_only": 3}, "trace workflow counts changed")
     req(trace.get("coverage") == {"pg": "18/18", "profiles": "14/14", "actions": "34/34", "cases": "90/90 exactly once", "handoffs": "15/15"}, "workflow traceability coverage changed")
