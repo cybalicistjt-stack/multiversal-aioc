@@ -20,6 +20,10 @@ COMPLETE_STATUSES = {"complete", "completed", "completed_verified"}
 
 P7_FINAL_HEAD = "c8e9d1ab677ca4bb37a772b1883099d23abb8187"
 P7_FINAL_MERGE = "ac1628227d34df7fc1585b21c21988fb2fd7080a"
+P8_FINAL_HEAD = "1a2a8590730a905cf4bba84abd59d0a8f00de89c"
+P8_FINAL_MERGE = "09f9df2607398010097e834e8ad7b129cd10645f"
+P9_FINAL_HEAD = "7393eac19d88eb5b2c58e44b51c1c3a2f3e2b968"
+P9_FINAL_MERGE = "3996ca97a2e31fa89ce5c9d4101c96affb83ea71"
 
 
 def load_json(path: Path) -> dict:
@@ -38,6 +42,8 @@ def historical_completion_checks() -> None:
     p5 = load_json(WORK_STATE_DIR / "PPIA-05-attempt-001.json")
     p12 = load_json(WORK_STATE_DIR / "PPIA-12-attempt-001.json")
     p7 = load_json(WORK_STATE_DIR / "PPIA-07-attempt-001.json")
+    p8 = load_json(WORK_STATE_DIR / "PPIA-08-attempt-001.json")
+    p9 = load_json(WORK_STATE_DIR / "PPIA-09-attempt-001.json")
 
     assert p1["status"] in COMPLETE_STATUSES and p1.get("merge_commit") == "f9e2b1fb7c340d27813b09c180b60d34d5fb6f92"
     assert p2["status"] == "completed_verified" and p2.get("merge_commit") == "f768345a44a662a5a1981f4cb35d218c926a5cb6"
@@ -59,6 +65,16 @@ def historical_completion_checks() -> None:
     assert p7["active_substep"] is None and not p7["unresolved_failures"] and p7["owner_decision_required"] is False
     assert any("31545759090" in item.get("command", "") and item.get("status") == "passed" for item in p7["validation"])
     assert any(P7_FINAL_MERGE in item.get("value", "") for item in p7["evidence"])
+    assert p8["status"] == "completed_verified" and p8.get("merge_commit") == P8_FINAL_MERGE
+    assert p8["latest_pushed_commit"] == P8_FINAL_HEAD and p8["pull_request"] == 251
+    assert p8["active_substep"] is None and not p8["unresolved_failures"] and p8["owner_decision_required"] is False
+    assert any("31553303602" in item.get("command", "") and item.get("status") == "passed" for item in p8["validation"])
+    assert any(P8_FINAL_MERGE in item.get("value", "") for item in p8["evidence"])
+    assert p9["status"] == "completed_verified" and p9.get("merge_commit") == P9_FINAL_MERGE
+    assert p9["latest_pushed_commit"] == P9_FINAL_HEAD and p9["pull_request"] == 256
+    assert p9["active_substep"] is None and not p9["unresolved_failures"] and p9["owner_decision_required"] is False
+    assert any("31558007822" in item.get("command", "") and item.get("status") == "passed" for item in p9["validation"])
+    assert any(P9_FINAL_MERGE in item.get("value", "") for item in p9["evidence"])
 
 
 def main() -> int:
@@ -131,6 +147,8 @@ def main() -> int:
     print(f"completed_before_current: {current_index}")
     print("p12_verified_completion_merge: 0ed9f9a0c53b2a132d8f38c0d3cae22cc7ae14a0")
     print(f"p7_verified_completion_merge: {P7_FINAL_MERGE}")
+    print(f"p8_verified_completion_merge: {P8_FINAL_MERGE}")
+    print(f"p9_verified_completion_merge: {P9_FINAL_MERGE}")
     if current_id == "PPIA-08":
         print("ppia08_map_grid_dungeon_scope: required")
     print("a2_activation_authorized: false")
