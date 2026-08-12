@@ -14,6 +14,11 @@ CHECKPOINT = ROOT / "governance/ai/work-state/PPIA-08-attempt-001.json"
 POINTER = ROOT / "governance/ai/runtime/CURRENT_WORK_POINTER.json"
 STATUS = ROOT / "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json"
 
+INSPECTOR_FINAL_HEAD = "e460f747aa9d909a88fd7e08654c74e0dc013f47"
+INSPECTOR_MERGE = "91cc220c846f132ca539531574b42f56425e9a57"
+INSPECTOR_PR = 249
+INSPECTOR_RUN = "31550661142"
+
 
 def load(path):
     return json.loads(path.read_text(encoding="utf-8"))
@@ -125,11 +130,25 @@ def main():
     policy = cases["policy"]
     require(all(value is False for value in policy.values()), "reference-case guardrail policy drifted")
 
-    require(checkpoint["work_item_id"] == "PPIA-08" and checkpoint["status"] == "started", "PPIA-08 checkpoint must remain started")
-    require(checkpoint["owner_decision_required"] is False and checkpoint["unresolved_failures"] == [], "checkpoint must be unblocked")
-    require("inspector" in (checkpoint.get("active_substep") or "").lower(), "active substep must remain inspector/action/reference milestone until merge")
-    require(pointer["primary_attempt_id"] == "PPIA-08-attempt-001", "current pointer must select PPIA-08")
-    require(status["primary"]["work_item_id"] == "PPIA-08" and status["primary"]["status"] == "started", "compact status must remain on started PPIA-08")
+    # Historical milestone validation is dual-mode. The inspector milestone no longer owns
+    # mutable active_substep prose after PR #249 merges; immutable evidence must remain.
+    require(checkpoint["work_item_id"] == "PPIA-08", "PPIA-08 checkpoint identity changed")
+    require(checkpoint["status"] in {"started","in_progress","completed_verified"}, "invalid PPIA-08 checkpoint status")
+    evidence_text = json.dumps({
+        "last_verified_action": checkpoint.get("last_verified_action"),
+        "completed_substeps": checkpoint.get("completed_substeps", []),
+        "validation": checkpoint.get("validation", []),
+        "evidence": checkpoint.get("evidence", []),
+    }, ensure_ascii=False)
+    for value in (INSPECTOR_FINAL_HEAD, INSPECTOR_MERGE, f"PR #{INSPECTOR_PR}", INSPECTOR_RUN):
+        require(value in evidence_text, f"immutable inspector milestone evidence missing {value}")
+    require(checkpoint["owner_decision_required"] is False and checkpoint["unresolved_failures"] == [], "checkpoint has unresolved inspector state")
+
+    if checkpoint["status"] != "completed_verified":
+        require(pointer["primary_attempt_id"] == "PPIA-08-attempt-001", "active PPIA-08 must remain selected while unfinished")
+        require(status["primary"]["work_item_id"] == "PPIA-08" and status["primary"]["status"] in {"started","in_progress"}, "compact status must remain on active PPIA-08")
+    else:
+        require(checkpoint.get("completed_at"), "completed_verified PPIA-08 must have completed_at")
 
     low = note.lower()
     for phrase in ["16 inspector projection groups","26 actions","22 are authoritative mutations","26 contiguous reference cases","cellsizepx","originoffsetxpx","originoffsetypx","gridless","seven verified primitive families","expected_version","operation_id","not ppia-08 complete"]:
@@ -140,6 +159,7 @@ def main():
     print("map_workflow=upload+calibrate+address+place+reveal+snapshot+amendment+recovery")
     print("dungeon_primitive_families=7 coordinate_modes=square,gridless")
     print("source_definition_copy=false hidden_aggregate_leak=false visual_only=false")
+    print(f"historical_inspector_merge={INSPECTOR_MERGE}")
     return 0
 
 
