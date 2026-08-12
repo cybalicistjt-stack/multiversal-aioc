@@ -29,6 +29,9 @@ P10_FINAL_MERGE = "b4ac8c080af7055e2d150ab6d37de41e9cc2a68f"
 P11_FINAL_HEAD = "9bf4627f9e8e4a4c21dcc2614dcb74d54d62d724"
 P11_FINAL_MERGE = "f2274707b1337425f0bc9ac8d1dd5ebb08d9f883"
 P11_FINAL_RUN = "31595927902"
+P6_FINAL_HEAD = "6d2da6fb5a7c2d62492de895c6a9c7a1fe970a06"
+P6_FINAL_MERGE = "ffce4859a8912813021776c4f5825c3d219bb0f2"
+P6_FINAL_RUN = "31622184027"
 
 
 def load_json(path: Path) -> dict:
@@ -51,6 +54,7 @@ def historical_completion_checks() -> None:
     p9 = load_json(WORK_STATE_DIR / "PPIA-09-attempt-001.json")
     p10 = load_json(WORK_STATE_DIR / "PPIA-10-attempt-001.json")
     p11 = load_json(WORK_STATE_DIR / "PPIA-11-attempt-001.json")
+    p6 = load_json(WORK_STATE_DIR / "PPIA-06-attempt-001.json")
 
     assert p1["status"] in COMPLETE_STATUSES and p1.get("merge_commit") == "f9e2b1fb7c340d27813b09c180b60d34d5fb6f92"
     assert p2["status"] == "completed_verified" and p2.get("merge_commit") == "f768345a44a662a5a1981f4cb35d218c926a5cb6"
@@ -92,6 +96,11 @@ def historical_completion_checks() -> None:
     assert p11["active_substep"] is None and not p11["unresolved_failures"] and p11["owner_decision_required"] is False
     assert any(P11_FINAL_RUN in item.get("command", "") and item.get("status") == "passed" for item in p11["validation"])
     assert any(P11_FINAL_MERGE in item.get("value", "") for item in p11["evidence"])
+    assert p6["status"] == "completed_verified" and p6.get("merge_commit") == P6_FINAL_MERGE
+    assert p6["latest_pushed_commit"] == P6_FINAL_HEAD and p6["pull_request"] == 273
+    assert p6["active_substep"] is None and not p6["unresolved_failures"] and p6["owner_decision_required"] is False
+    assert any(P6_FINAL_RUN in item.get("command", "") and item.get("status") == "passed" for item in p6["validation"])
+    assert any(P6_FINAL_MERGE in item.get("value", "") for item in p6["evidence"])
 
 
 def main() -> int:
@@ -168,6 +177,7 @@ def main() -> int:
     print(f"p9_verified_completion_merge: {P9_FINAL_MERGE}")
     print(f"p10_verified_completion_merge: {P10_FINAL_MERGE}")
     print(f"p11_verified_completion_merge: {P11_FINAL_MERGE}")
+    print(f"p6_verified_completion_merge: {P6_FINAL_MERGE}")
     if current_id == "PPIA-08":
         print("ppia08_map_grid_dungeon_scope: required")
     print("a2_activation_authorized: false")
