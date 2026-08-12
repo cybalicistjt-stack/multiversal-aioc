@@ -19,6 +19,12 @@ F011 = ROOT / "governance/application-planning/internal-alpha/feature-packets/MV
 F011_MATRIX = ROOT / "governance/application-planning/internal-alpha/feature-packets/MV-IA-F011_INVESTIGATION_CLUE_MATRIX.json"
 
 FOUNDATION_MERGE = "511b7b3edc0b88ff8ea5683fd093d2853b50ccf1"
+INSPECTOR_FINAL_HEAD = "844b9e100ea3fe9bbf009ef29764967173a331f5"
+INSPECTOR_PR = 254
+INSPECTOR_MERGE = "5768ce7864cac4e03e12a610c22d126797583599"
+P9_COMPLETION_HEAD = "7393eac19d88eb5b2c58e44b51c1c3a2f3e2b968"
+P9_COMPLETION_PR = 256
+P9_COMPLETION_MERGE = "3996ca97a2e31fa89ce5c9d4101c96affb83ea71"
 
 
 def load(path: Path) -> dict:
@@ -153,25 +159,42 @@ def main() -> int:
 
     require(all(v is False for v in cases["policy"].values()), "reference-case policy guardrail drifted")
 
-    # Verified source/design truth-separation remains intact.
     for phrase in ("player deductions are not auto-promoted to fact", "spatial placement is presentation state", "false lead", "private clue", "idempotency", "nonvisual"):
         require(phrase in f011, f"F011 invariant missing {phrase!r}")
     require(len(authority["domain_handoffs"]) == 12, "foundation must retain twelve ownership handoffs")
 
-    # Milestone continuity remains active on PPIA-09.
-    require(checkpoint["work_item_id"] == "PPIA-09" and checkpoint["status"] == "started", "PPIA-09 checkpoint must remain started")
+    # Milestone continuity supports active inspector-candidate mode and immutable historical mode after merge/completion.
+    require(checkpoint["work_item_id"] == "PPIA-09", "PPIA-09 checkpoint identity mismatch")
     require(checkpoint["branch"] == "governance/ppia-09-investigation-mystery-authoring", "PPIA-09 branch mismatch")
     require(checkpoint["owner_decision_required"] is False and checkpoint["unresolved_failures"] == [], "PPIA-09 checkpoint has unresolved state")
-    milestone_text = ((checkpoint.get("active_substep") or "") + " " + (checkpoint.get("next_action") or "")).lower()
-    require("inspector" in milestone_text and "reference" in milestone_text and "solvability" in milestone_text, "checkpoint must remain on detailed inspector/reference milestone")
-    require(pointer["primary_attempt_id"] == "PPIA-09-attempt-001", "pointer must select PPIA-09")
-    require(status["primary"]["work_item_id"] == "PPIA-09" and status["primary"]["status"] == "started", "compact status must select started PPIA-09")
+    require(checkpoint["status"] in {"started", "completed_verified"}, f"unexpected PPIA-09 checkpoint status {checkpoint['status']!r}")
+    history = json.dumps({
+        "last_verified_action": checkpoint.get("last_verified_action"),
+        "completed_substeps": checkpoint.get("completed_substeps", []),
+        "validation": checkpoint.get("validation", []),
+        "evidence": checkpoint.get("evidence", []),
+    }, ensure_ascii=False).lower()
+    inspector_historical = all(value in history for value in (INSPECTOR_FINAL_HEAD.lower(), f"pr #{INSPECTOR_PR}", INSPECTOR_MERGE.lower()))
+    if checkpoint["status"] == "started":
+        if not inspector_historical:
+            milestone_text = ((checkpoint.get("active_substep") or "") + " " + (checkpoint.get("next_action") or "")).lower()
+            require("inspector" in milestone_text and "reference" in milestone_text and "solvability" in milestone_text, "checkpoint must remain on detailed inspector/reference milestone")
+        require(pointer["primary_attempt_id"] == "PPIA-09-attempt-001", "active pointer must select PPIA-09")
+        require(status["primary"]["work_item_id"] == "PPIA-09" and status["primary"]["status"] == "started", "active compact status must select started PPIA-09")
+        continuity_mode = "active_ppia09"
+    else:
+        require(inspector_historical, "completed PPIA-09 must retain inspector head/PR/merge evidence")
+        require(checkpoint.get("active_substep") is None and checkpoint.get("completed_at"), "completed PPIA-09 state invalid")
+        require(checkpoint.get("latest_pushed_commit") == P9_COMPLETION_HEAD, "PPIA-09 completion head changed")
+        require(checkpoint.get("pull_request") == P9_COMPLETION_PR and checkpoint.get("merge_commit") == P9_COMPLETION_MERGE, "PPIA-09 completion PR/merge changed")
+        require(pointer.get("primary_attempt_id") != "PPIA-09-attempt-001" or status["primary"]["work_item_id"] == "PPIA-09", "historical pointer/status mismatch")
+        continuity_mode = "historical_after_ppia09"
 
     for phrase in (
         "16 projection groups", "30 actions", "22 authoritative mutations", "36 deterministic cases",
         "24 f011 deterministic fixtures", "the vanishing of dr. wen", "at least two places",
         "no mandatory universal numeric probability scale", "contradiction", "stall recovery",
-        "not ppiA-09 complete".lower(), "no application runtime"
+        "not ppia-09 complete", "no application runtime"
     ):
         require(phrase.lower() in candidate, f"candidate note missing phrase: {phrase}")
 
@@ -181,7 +204,7 @@ def main() -> int:
     print("annotation_dimensions=4 contradiction_classes=8 revelation_classes=3")
     print("solvability=read_only redundancy_warning=source_grounded universal_clue_count=false")
     print("truth_auto_adjudication=false hidden_diagnostic_leak=false graph_layout_authority=false")
-    print("runtime_activation=false")
+    print(f"continuity_mode={continuity_mode} runtime_activation=false")
     return 0
 
 

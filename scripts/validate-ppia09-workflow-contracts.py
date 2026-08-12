@@ -22,6 +22,12 @@ STATUS = ROOT / "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json"
 INSPECTOR_FINAL_HEAD = "844b9e100ea3fe9bbf009ef29764967173a331f5"
 INSPECTOR_PR = 254
 INSPECTOR_MERGE = "5768ce7864cac4e03e12a610c22d126797583599"
+WORKFLOW_FINAL_HEAD = "32e4d6ff560966eed9aab4fca57236ae6f992e79"
+WORKFLOW_PR = 255
+WORKFLOW_MERGE = "02e359606087d88f19b3dd4cfe504a934cc8ede0"
+P9_COMPLETION_HEAD = "7393eac19d88eb5b2c58e44b51c1c3a2f3e2b968"
+P9_COMPLETION_PR = 256
+P9_COMPLETION_MERGE = "3996ca97a2e31fa89ce5c9d4101c96affb83ea71"
 
 
 def fail(message: str) -> None:
@@ -154,7 +160,6 @@ def main() -> None:
     require(trace.get("coverage_summary") == expected_summary, "traceability gaps/counts changed")
     require(len(trace.get("end_to_end_assertions", [])) == 12, "expected 12 end-to-end trace assertions")
 
-    # Read-only diagnostic boundaries remain inherited rather than redefined by workflow convenience.
     require(solv["solvability_diagnostic"]["status"] == "governed_ppia09_design_not_recovered_source_canon", "solvability authority label changed")
     require(any("at least two places" in x.lower() for x in solv["source_boundary"]["source_backed"]), "source-grounded redundancy guidance missing")
     require(any("universal required clue count" in x.lower() for x in solv["source_boundary"]["not_source_defined"]), "universal clue-count source gap missing")
@@ -174,10 +179,11 @@ def main() -> None:
     ):
         require(phrase in full, f"missing required workflow boundary {phrase!r}")
 
-    # Milestone continuity supports active-candidate mode and immutable historical mode after merge.
-    require(checkpoint.get("work_item_id") == "PPIA-09" and checkpoint.get("status") == "started", "PPIA-09 checkpoint identity/state mismatch")
+    # Milestone continuity supports active workflow-candidate mode and immutable historical mode after merge/completion.
+    require(checkpoint.get("work_item_id") == "PPIA-09", "PPIA-09 checkpoint identity mismatch")
     require(checkpoint.get("branch") == "governance/ppia-09-investigation-mystery-authoring", "PPIA-09 branch mismatch")
     require(checkpoint.get("owner_decision_required") is False and checkpoint.get("unresolved_failures") == [], "PPIA-09 checkpoint unresolved state")
+    require(checkpoint.get("status") in {"started", "completed_verified"}, f"unexpected PPIA-09 checkpoint status {checkpoint.get('status')!r}")
     history = json.dumps({
         "last_verified_action": checkpoint.get("last_verified_action"),
         "completed_substeps": checkpoint.get("completed_substeps", []),
@@ -186,12 +192,21 @@ def main() -> None:
     }, ensure_ascii=False).lower()
     for value in (INSPECTOR_FINAL_HEAD.lower(), f"pr #{INSPECTOR_PR}", INSPECTOR_MERGE.lower()):
         require(value in history, f"immutable inspector/reference evidence missing {value}")
-    workflow_historical = "ppia-09 workflow" in history and "squash merge" in history
-    if not workflow_historical:
-        active = ((checkpoint.get("active_substep") or "") + " " + (checkpoint.get("next_action") or "")).lower()
-        require("workflow" in active and "investigation/mystery" in active, "checkpoint must remain on workflow milestone before merge")
-    require(pointer.get("primary_attempt_id") == "PPIA-09-attempt-001", "pointer must select PPIA-09")
-    require(status.get("primary", {}).get("work_item_id") == "PPIA-09" and status.get("primary", {}).get("status") == "started", "compact status must select started PPIA-09")
+    workflow_historical = all(value in history for value in (WORKFLOW_FINAL_HEAD.lower(), f"pr #{WORKFLOW_PR}", WORKFLOW_MERGE.lower()))
+    if checkpoint.get("status") == "started":
+        if not workflow_historical:
+            active = ((checkpoint.get("active_substep") or "") + " " + (checkpoint.get("next_action") or "")).lower()
+            require("workflow" in active and "investigation/mystery" in active, "checkpoint must remain on workflow milestone before merge")
+        require(pointer.get("primary_attempt_id") == "PPIA-09-attempt-001", "active pointer must select PPIA-09")
+        require(status.get("primary", {}).get("work_item_id") == "PPIA-09" and status.get("primary", {}).get("status") == "started", "active compact status must select started PPIA-09")
+        continuity_mode = "active_ppia09"
+    else:
+        require(workflow_historical, "completed PPIA-09 must retain workflow head/PR/merge evidence")
+        require(checkpoint.get("active_substep") is None and checkpoint.get("completed_at"), "completed PPIA-09 state invalid")
+        require(checkpoint.get("latest_pushed_commit") == P9_COMPLETION_HEAD, "PPIA-09 completion head changed")
+        require(checkpoint.get("pull_request") == P9_COMPLETION_PR and checkpoint.get("merge_commit") == P9_COMPLETION_MERGE, "PPIA-09 completion PR/merge changed")
+        require(pointer.get("primary_attempt_id") != "PPIA-09-attempt-001" or status.get("primary", {}).get("work_item_id") == "PPIA-09", "historical pointer/status mismatch")
+        continuity_mode = "historical_after_ppia09"
 
     print("PPIA-09 INVESTIGATION / MYSTERY WORKFLOWS: PASS")
     print("workflows=18 authoritative_mutation_workflows=15 read_only_workflows=3")
@@ -199,7 +214,7 @@ def main() -> None:
     print("reference_cases=36 cases_assigned_exactly_once=true handoffs=12 traceability_gaps=0")
     print("solvability_read_only=true contradiction_truth_adjudication=false universal_clue_count=false")
     print("permission_before_derivatives=true semantic_nonvisual=true proposal_only_ai=true")
-    print("runtime_activation=false")
+    print(f"continuity_mode={continuity_mode} runtime_activation=false")
 
 
 if __name__ == "__main__":

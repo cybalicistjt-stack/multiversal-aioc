@@ -26,6 +26,11 @@ PACKAGE_SHA = "c5732c5b4c3cdf5eca1d19eef7354289d1f92a87397b56aa7623b3f0a24177ec"
 FOUNDATION_FINAL_HEAD = "e4999c40e1fe92852c142789b3d70596dfad52a8"
 FOUNDATION_PR = 253
 FOUNDATION_MERGE = "511b7b3edc0b88ff8ea5683fd093d2853b50ccf1"
+P9_COMPLETION_HEAD = "7393eac19d88eb5b2c58e44b51c1c3a2f3e2b968"
+P9_COMPLETION_PR = 256
+P9_COMPLETION_MERGE = "3996ca97a2e31fa89ce5c9d4101c96affb83ea71"
+ACTIVE = {"started", "in_progress"}
+COMPLETE = {"complete", "completed", "completed_verified"}
 
 
 def req(condition: bool, message: str) -> None:
@@ -59,10 +64,10 @@ def main() -> None:
     tranches = {x["work_item_id"]: x for x in backlog["tranches"]}
     req(p8["status"] == "completed_verified" and p8["merge_commit"] == P8_COMPLETION_MERGE, "PPIA-08 dependency must remain completed_verified")
     req(tranches["PPIA-08"]["status"] == "completed_verified", "PPIA-08 backlog dependency changed")
-    req(backlog["current_work_item_id"] == "PPIA-09" and tranches["PPIA-09"]["status"] == "started", "backlog must select started PPIA-09")
     req("PPIA-08" in tranches["PPIA-09"]["dependencies"], "PPIA-09 dependency on PPIA-08 missing")
 
-    req(src["work_item_id"] == "PPIA-09" and src["transition_merge"] == TRANSITION_MERGE, "source manifest identity/transition mismatch")
+    src_identity_ok = src["work_item_id"] == "PPIA-09" and src["transition_merge"] == TRANSITION_MERGE
+    req(src_identity_ok, "source manifest identity/transition mismatch")
     req(src["retained_package"]["sha256"] == PACKAGE_SHA, "retained package SHA changed")
     pdfs = src["direct_pdf_sources"]
     req(len(pdfs) == 3 and src["direct_pdf_totals"] == {"files":3,"pages":53}, "direct PDF source boundary must remain 3 files / 53 pages")
@@ -121,13 +126,12 @@ def main() -> None:
     for phrase in ("FOUNDATION CANDIDATE — NOT PPIA-09 COMPLETE", "3 directly relevant PDFs / 53 pages", "16 semantic layers", "12 presentation profiles", "12 domain handoffs", "24 F011 deterministic fixtures", "The Vanishing of Dr. Wen", "deterministic solvability", "graph layout", "No application runtime"):
         req(phrase.lower() in cand.lower(), f"foundation candidate missing {phrase!r}")
 
-    # Historical milestone validation is dual-mode. Once the foundation has merged, later
-    # PPIA-09 milestones may change active-substep text and current PR/head fields. Durable
-    # foundation proof is the immutable validated head + PR + merge retained in checkpoint history.
-    req(p9["work_item_id"] == "PPIA-09" and p9["attempt_id"] == "PPIA-09-attempt-001" and p9["status"] == "started", "PPIA-09 checkpoint identity/state mismatch")
+    # Historical milestone validation is dual-mode. Durable foundation proof is the immutable validated head + PR + merge retained in checkpoint history.
+    req(p9["work_item_id"] == "PPIA-09" and p9["attempt_id"] == "PPIA-09-attempt-001", "PPIA-09 checkpoint identity mismatch")
     req(p9["branch"] == "governance/ppia-09-investigation-mystery-authoring", "PPIA-09 branch mismatch")
     req(p9["base_commit"] == P8_COMPLETION_MERGE, "PPIA-09 original base anchor changed")
     req(not p9["unresolved_failures"] and p9["owner_decision_required"] is False, "PPIA-09 checkpoint unresolved state")
+    req(p9["status"] in ACTIVE | {"completed_verified"}, f"unexpected PPIA-09 checkpoint status {p9['status']!r}")
     foundation_history = json.dumps({
         "last_verified_action": p9.get("last_verified_action"),
         "completed_substeps": p9.get("completed_substeps", []),
@@ -136,10 +140,23 @@ def main() -> None:
     }, ensure_ascii=False)
     for value in (FOUNDATION_FINAL_HEAD, f"PR #{FOUNDATION_PR}", FOUNDATION_MERGE):
         req(value in foundation_history, f"immutable PPIA-09 foundation evidence missing {value}")
-    req(ptr["primary_attempt_id"] == "PPIA-09-attempt-001", "pointer must select PPIA-09")
-    selected = [x for x in ptr["active_attempts"] if x.get("owner_selected")]
-    req(len(selected) == 1 and selected[0]["work_item_id"] == "PPIA-09", "exactly one owner-selected PPIA-09 attempt required")
-    req(status["primary"]["work_item_id"] == "PPIA-09" and status["primary"]["status"] == "started", "compact status must select started PPIA-09")
+
+    current_id = backlog["current_work_item_id"]
+    if current_id == "PPIA-09":
+        req(tranches["PPIA-09"]["status"] in ACTIVE and p9["status"] in ACTIVE, "active PPIA-09 must remain started/in_progress")
+        req(ptr["primary_attempt_id"] == "PPIA-09-attempt-001", "active pointer must select PPIA-09")
+        selected = [x for x in ptr["active_attempts"] if x.get("owner_selected")]
+        req(len(selected) == 1 and selected[0]["work_item_id"] == "PPIA-09", "exactly one owner-selected PPIA-09 attempt required")
+        req(status["primary"]["work_item_id"] == "PPIA-09" and status["primary"]["status"] in ACTIVE, "active compact status must select PPIA-09")
+        continuity_mode = "active_ppia09"
+    else:
+        order = backlog["execution_order"]
+        req(order.index(current_id) > order.index("PPIA-09"), "historical foundation validation may only run after PPIA-09")
+        req(tranches["PPIA-09"]["status"] in COMPLETE, "historical PPIA-09 backlog must be complete")
+        req(p9["status"] == "completed_verified" and p9.get("completed_at") and p9.get("active_substep") is None, "historical PPIA-09 checkpoint must be completed_verified")
+        req(p9.get("latest_pushed_commit") == P9_COMPLETION_HEAD, "PPIA-09 completion head changed")
+        req(p9.get("pull_request") == P9_COMPLETION_PR and p9.get("merge_commit") == P9_COMPLETION_MERGE, "PPIA-09 completion PR/merge changed")
+        continuity_mode = "historical_after_ppia09"
 
     print("PPIA-09 FOUNDATION: PASS")
     print("direct_pdfs=3 direct_pdf_pages=53 direct_design_sources=4")
@@ -149,7 +166,7 @@ def main() -> None:
     print("source_backed_findings=14 explicit_source_gaps=10 proposal_design_domains=6")
     print(f"historical_foundation_merge={FOUNDATION_MERGE}")
     print("truth_belief_separation=true permission_before_derivatives=true graph_layout_authority=false")
-    print("runtime_activation=false")
+    print(f"continuity_mode={continuity_mode} runtime_activation=false")
 
 
 if __name__ == "__main__":
