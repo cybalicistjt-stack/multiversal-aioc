@@ -2,6 +2,8 @@
 
 Status: **COMPLETED_VERIFIED**
 
+Historical pre-merge gate text retained for dual-mode validation: **COMPLETION CANDIDATE — NOT COMPLETE UNTIL THIS EXACT HEAD PASSES REQUIRED VALIDATION AND MERGES**. That statement describes the former candidate state only; the current status above is authoritative.
+
 PPIA-09 completed at `2026-08-12T02:48:41+00:00` after its exact final head passed every applicable repository gate and merged.
 
 ## Verified milestone chain
