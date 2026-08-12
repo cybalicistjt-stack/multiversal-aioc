@@ -97,11 +97,22 @@ def main():
     for phrase in ("18 stable message objects","12 permission-safe projection groups","20 action presentations","72 effective deterministic cases","hidden-vs-missing","status-unknown","accepted durable event","p14-gap-001","f024","ppia-14 integrated error recovery permission workflows / traceability","application runtime"):
         require(phrase in low,f"candidate narrative missing {phrase!r}")
 
-    require(checkpoint["work_item_id"]=="PPIA-14" and checkpoint["status"] in {"started","ready_for_review"},"PPIA-14 checkpoint must remain active")
+    require(checkpoint["work_item_id"]=="PPIA-14","PPIA-14 checkpoint identity changed")
     require(checkpoint["owner_decision_required"] is False and checkpoint["unresolved_failures"]==[],"PPIA-14 unresolved state changed")
-    require(backlog["current_work_item_id"]=="PPIA-14","PPIA-14 must remain current")
-    selected=[x for x in pointer["active_attempts"] if x.get("owner_selected")]
-    require(len(selected)==1 and selected[0]["work_item_id"]=="PPIA-14" and status["primary"]["work_item_id"]=="PPIA-14","runtime continuity must select PPIA-14")
+    current_id=backlog["current_work_item_id"]
+    if current_id=="PPIA-14":
+        require(checkpoint["status"] in {"started","ready_for_review"},"active PPIA-14 checkpoint must remain active")
+        selected=[x for x in pointer["active_attempts"] if x.get("owner_selected")]
+        require(len(selected)==1 and selected[0]["work_item_id"]=="PPIA-14" and status["primary"]["work_item_id"]=="PPIA-14","runtime continuity must select PPIA-14")
+        continuity_mode="active_ppia14"
+    else:
+        order=backlog["execution_order"]
+        require(current_id in order and order.index(current_id)>order.index("PPIA-14"),"historical Microcopy IAR validation may only occur after PPIA-14")
+        tranches={x["work_item_id"]:x for x in backlog["tranches"]}
+        require(tranches["PPIA-14"]["status"]=="completed_verified","historical PPIA-14 backlog must be completed_verified")
+        require(checkpoint["status"]=="completed_verified" and checkpoint.get("active_substep") is None and checkpoint.get("completed_at"),"historical PPIA-14 checkpoint must be completed_verified")
+        continuity_mode="historical_after_ppia14"
+
     gap_by_id={x["id"]:x for x in gaps["gaps"]}
     require(gap_by_id["P14-GAP-001"].get("status")=="open" and "f024" in json.dumps(gap_by_id["P14-GAP-001"]).lower(),"F024 source gap must remain explicit/open")
     require(gap_by_id["P14-GAP-002"].get("status")=="resolved_by_candidate" and "microcopy_library" in json.dumps(gap_by_id["P14-GAP-002"]).lower(),"wording-library gap must be resolved by this candidate only")
@@ -112,6 +123,6 @@ def main():
     print("library=18 message objects / 12 projection groups / 20 action presentations")
     print("cases=40 new + 32 Foundation = 72 effective")
     print("hidden_missing_equivalence=true status_unknown_not_failure=true f024_gap_preserved=true")
-    print("runtime_activation=false")
+    print(f"continuity_mode={continuity_mode} runtime_activation=false")
 
 if __name__=="__main__": main()

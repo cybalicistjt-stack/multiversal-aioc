@@ -126,7 +126,6 @@ def main() -> None:
         require(w["sequence"][2] == "apply_hidden_information_and_minimum_field_disclosure_reduction", f"{w['id']} must reduce disclosure before message selection")
         require(w["sequence"][-1] == "record_safe_audit_and_provenance_trace", f"{w['id']} missing audit/provenance trace")
 
-    # Exact-once inherited/new case assignment.
     assigned_fc = [cid for w in wfs for cid in w["foundation_case_ids"]]
     assigned_iar = [cid for w in wfs for cid in w["iar_case_ids"]]
     assigned_iw = [cid for w in wfs for cid in w["integrated_case_ids"]]
@@ -153,7 +152,6 @@ def main() -> None:
             require(key in action_key_to_id, f"{c['id']} unknown action key {key}")
             require(action_key_to_id[key] in w["actions"], f"{c['id']} action {key} absent from workflow")
 
-    # Critical state-specific recovery/nonleak invariants.
     by_id = {w["id"]: w for w in wfs}
     require("P14-MS-002" in by_id["P14-WF-003"]["fallback_message_state_ids"], "hidden state must collapse to safe-unavailable")
     require("P14-ACT-010" in by_id["P14-WF-009"]["actions"] and "P14-ACT-015" not in by_id["P14-WF-009"]["actions"], "status-unknown must lookup status and forbid retry")
@@ -203,13 +201,23 @@ def main() -> None:
     require(gap_by_id["P14-GAP-001"].get("status") == "open" and "f024" in json.dumps(gap_by_id["P14-GAP-001"]).lower(), "P14-GAP-001/F024 must remain explicit and open")
     require(gap_by_id["P14-GAP-002"].get("status") == "resolved_by_candidate", "Microcopy wording gap resolution regressed")
 
-    require(checkpoint["work_item_id"] == "PPIA-14" and checkpoint["status"] in {"started", "ready_for_review"}, "PPIA-14 checkpoint must remain active")
-    require("Integrated Error Recovery Permission Workflows / Traceability" in checkpoint["active_substep"], "checkpoint is not on integrated workflow substep")
+    require(checkpoint["work_item_id"] == "PPIA-14", "PPIA-14 checkpoint identity changed")
     require(checkpoint["owner_decision_required"] is False and checkpoint["unresolved_failures"] == [], "PPIA-14 unresolved state changed")
-    require(backlog["current_work_item_id"] == "PPIA-14", "PPIA-14 must remain current backlog item")
-    selected = [x for x in pointer["active_attempts"] if x.get("owner_selected")]
-    require(len(selected) == 1 and selected[0]["work_item_id"] == "PPIA-14", "runtime pointer must select PPIA-14")
-    require(status["primary"]["work_item_id"] == "PPIA-14", "compact status must select PPIA-14")
+    current_id = backlog["current_work_item_id"]
+    if current_id == "PPIA-14":
+        require(checkpoint["status"] in {"started", "ready_for_review"}, "active PPIA-14 checkpoint must remain active")
+        require(checkpoint.get("active_substep") and "Integrated Error Recovery Permission Workflows / Traceability" in checkpoint["active_substep"], "checkpoint is not on integrated workflow substep")
+        selected = [x for x in pointer["active_attempts"] if x.get("owner_selected")]
+        require(len(selected) == 1 and selected[0]["work_item_id"] == "PPIA-14", "runtime pointer must select PPIA-14")
+        require(status["primary"]["work_item_id"] == "PPIA-14", "compact status must select PPIA-14")
+        continuity_mode = "active_ppia14"
+    else:
+        order = backlog["execution_order"]
+        require(current_id in order and order.index(current_id) > order.index("PPIA-14"), "historical integrated-workflow validation may only occur after PPIA-14")
+        tranches = {x["work_item_id"]: x for x in backlog["tranches"]}
+        require(tranches["PPIA-14"]["status"] == "completed_verified", "historical PPIA-14 backlog must be completed_verified")
+        require(checkpoint["status"] == "completed_verified" and checkpoint.get("active_substep") is None and checkpoint.get("completed_at"), "historical PPIA-14 checkpoint must be completed_verified")
+        continuity_mode = "historical_after_ppia14"
 
     low = candidate.lower()
     for phrase in (
@@ -243,7 +251,7 @@ def main() -> None:
     print("coverage=12 projection groups / 20 actions / 11 handoffs")
     print("cases=36 integrated + 32 Foundation + 40 IAR = 108 effective")
     print("hidden_missing_equivalence=true status_unknown_not_failure=true f024_gap_preserved=true")
-    print("runtime_activation=false")
+    print(f"continuity_mode={continuity_mode} runtime_activation=false")
 
 
 if __name__ == "__main__":
