@@ -1,0 +1,47 @@
+name: Validate PPIA-08 Inspector and Reference Cases
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-08_INSPECTOR_ACTION_CONTRACT_MATRIX_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-08_REFERENCE_CASES_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-08_INSPECTOR_ACTION_REFERENCE_CANDIDATE.md'
+      - 'governance/ai/work-state/PPIA-08-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia08-inspector-reference-cases.py'
+      - '.github/workflows/validate-ppia-08-inspector-reference-cases.yml'
+  push:
+    branches:
+      - governance/ppia-08-campaign-scene-session-authoring
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-08_INSPECTOR_ACTION_CONTRACT_MATRIX_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-08_REFERENCE_CASES_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-08_INSPECTOR_ACTION_REFERENCE_CANDIDATE.md'
+      - 'governance/ai/work-state/PPIA-08-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia08-inspector-reference-cases.py'
+      - '.github/workflows/validate-ppia-08-inspector-reference-cases.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia08-inspector-reference-cases:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PPIA-08 inspector action and reference contracts
+        run: python scripts/validate-ppia08-inspector-reference-cases.py
+      - name: Validate PPIA-08 foundation regression
+        run: python scripts/validate-ppia08-foundation.py
+      - name: Validate PPIA-07 to PPIA-08 transition regression
+        run: python scripts/validate-ppia07-to-ppia08-transition.py
+      - name: Validate PPIA-07 completion regression
+        run: python scripts/validate-ppia07-completion-contracts.py
+      - name: Validate generalized PPIA program continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
