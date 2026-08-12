@@ -1,0 +1,48 @@
+name: Validate PPIA-10 Inspector and Reference Cases
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-10_*'
+      - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F009_*'
+      - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F010_*'
+      - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F016_*'
+      - 'governance/ai/work-state/PPIA-10-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia10-*.py'
+      - '.github/workflows/validate-ppia-10-*.yml'
+      - 'governance/application-planning/parallel-preimplementation/validate_ppia_program.py'
+  push:
+    branches:
+      - main
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-10_*'
+      - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F009_*'
+      - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F010_*'
+      - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F016_*'
+      - 'governance/ai/work-state/PPIA-10-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia10-*.py'
+      - '.github/workflows/validate-ppia-10-*.yml'
+      - 'governance/application-planning/parallel-preimplementation/validate_ppia_program.py'
+
+jobs:
+  validate-ppia10-inspector-reference-cases:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PPIA-10 inspector action and reference contracts
+        run: python scripts/validate-ppia10-inspector-reference-cases.py
+      - name: Validate PPIA-10 foundation regression
+        run: python scripts/validate-ppia10-foundation.py
+      - name: Validate PPIA-09 to PPIA-10 transition regression
+        run: python scripts/validate-ppia09-to-ppia10-transition.py
+      - name: Validate PPIA-09 completion regression
+        run: python scripts/validate-ppia09-completion-contracts.py
+      - name: Validate generalized PPIA continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
