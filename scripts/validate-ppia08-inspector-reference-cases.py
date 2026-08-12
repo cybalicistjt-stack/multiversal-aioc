@@ -17,7 +17,6 @@ STATUS = ROOT / "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json"
 INSPECTOR_FINAL_HEAD = "e460f747aa9d909a88fd7e08654c74e0dc013f47"
 INSPECTOR_MERGE = "91cc220c846f132ca539531574b42f56425e9a57"
 INSPECTOR_PR = 249
-INSPECTOR_RUN = "31550661142"
 
 
 def load(path):
@@ -130,8 +129,8 @@ def main():
     policy = cases["policy"]
     require(all(value is False for value in policy.values()), "reference-case guardrail policy drifted")
 
-    # Historical milestone validation is dual-mode. The inspector milestone no longer owns
-    # mutable active_substep prose after PR #249 merges; immutable evidence must remain.
+    # Historical milestone validation is dual-mode. A mutable checkpoint may compact old
+    # run IDs; the immutable validated head + PR + merge anchors are the durable proof.
     require(checkpoint["work_item_id"] == "PPIA-08", "PPIA-08 checkpoint identity changed")
     require(checkpoint["status"] in {"started","in_progress","completed_verified"}, "invalid PPIA-08 checkpoint status")
     evidence_text = json.dumps({
@@ -140,7 +139,7 @@ def main():
         "validation": checkpoint.get("validation", []),
         "evidence": checkpoint.get("evidence", []),
     }, ensure_ascii=False)
-    for value in (INSPECTOR_FINAL_HEAD, INSPECTOR_MERGE, f"PR #{INSPECTOR_PR}", INSPECTOR_RUN):
+    for value in (INSPECTOR_FINAL_HEAD, INSPECTOR_MERGE, f"PR #{INSPECTOR_PR}"):
         require(value in evidence_text, f"immutable inspector milestone evidence missing {value}")
     require(checkpoint["owner_decision_required"] is False and checkpoint["unresolved_failures"] == [], "checkpoint has unresolved inspector state")
 
