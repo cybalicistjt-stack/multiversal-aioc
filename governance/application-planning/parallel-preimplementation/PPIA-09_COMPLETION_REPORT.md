@@ -71,4 +71,4 @@ This package authorizes no application runtime activation, STAGE-A-A2 activation
 
 ## Exact next governed operation
 
-Execute the separate **PPIA-09 → PPIA-10 transition**. That transition must atomically project PPIA-09 to `completed_verified` in the canonical backlog, initialize the governed PPIA-10 attempt/branch, select PPIA-10 in current-work continuity, add historical-safe transition validation, exact-head validate every applicable gate, and merge only when green. It must not reopen or weaken PPIA-09 completion semantics.
+Execute the separate **PPIA-09 → PPIA-10 transition** (`PPIA-09→PPIA-10 transition`). That transition must atomically project PPIA-09 to `completed_verified` in the canonical backlog, initialize the governed PPIA-10 attempt/branch, select PPIA-10 in current-work continuity, add historical-safe transition validation, exact-head validate every applicable gate, and merge only when green. It must not reopen or weaken PPIA-09 completion semantics.
