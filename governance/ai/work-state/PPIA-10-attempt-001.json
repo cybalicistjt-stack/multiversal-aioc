@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 6,
+  "revision": 8,
   "work_item_id": "PPIA-10",
   "attempt_id": "PPIA-10-attempt-001",
   "track": "parallel-preimplementation-advancement",
@@ -8,16 +8,16 @@
   "branch": "governance/ppia-10-relationship-social-faction",
   "status": "started",
   "started_at": "2026-08-12T02:52:00+00:00",
-  "updated_at": "2026-08-12T09:24:10+00:00",
+  "updated_at": "2026-08-12T09:46:03+00:00",
   "completed_at": null,
   "base_commit": "3996ca97a2e31fa89ce5c9d4101c96affb83ea71",
-  "latest_pushed_commit": "f11c25a47ad9d0a9a8c0d3a9c8d0402f7be1454f",
-  "expected_remote_head": "f11c25a47ad9d0a9a8c0d3a9c8d0402f7be1454f",
-  "pull_request": 259,
-  "merge_commit": "0c0b8ce17cd80e47b7b12285a2bd8278e58a732e",
+  "latest_pushed_commit": "3cf251fbcd941af8aa5155b2e7bd703c23fdab96",
+  "expected_remote_head": "3cf251fbcd941af8aa5155b2e7bd703c23fdab96",
+  "pull_request": 260,
+  "merge_commit": "6985dd1e1f6d2e2b696f409cc74ae9e0ad18d728",
   "objective": "Produce an implementation-ready Relationship, Social & Faction Content Framework with source-grounded directional relationship metrics, social-action/context boundaries, secrets and reveal layers, reputation/standing and influence, explicit faction membership/rank/office structures, attributable consequences/history, permission-safe projections, recovery/accessibility, and reference fixtures while preserving Campaign/Scene/Session ownership and all owning-domain consequence boundaries.",
-  "last_verified_action": "PR #259 initial exact head e26d21f50459931a208ee1a8d7775ecb7dea002c completed hosted validation. The substantive PPIA-10 foundation and all unrelated regressions remained green, while the new inspector gate failed on an over-literal validator phrase and conversation continuity rejected the unsupported checkpoint evidence kind local_validation. The defects are tooling/bookkeeping defects only; the 18-layer/14-profile/34-action/90-case design package is unchanged. This revision repairs the validator to match the authoritative \"Relationship edges are directional\" contract wording and converts the local deterministic validation receipt to the supported artifact evidence kind.",
-  "active_substep": "Revalidate the repaired PPIA-10 inspector/action/reference candidate on the next exact PR #259 head. Preserve the unchanged 18 one-to-one projection groups, all 14 presentation profiles, 34 governed actions, shared authorization/expected_version/operation_id recovery protocol, 72 inherited F009/F010/F016 fixtures plus 18 PPIA-10 source/integration cases, permission filtering before derivatives, owning-domain atomic Event delegation, revocation and semantic nonvisual parity.",
+  "last_verified_action": "PPIA-10 inspector/action/reference exact head 9cc894e3544203f42ec23c12efd256041cb630a2 passed all 35 applicable hosted workflows and PR #259 squash-merged as 6985dd1e1f6d2e2b696f409cc74ae9e0ad18d728. The integrated workflow candidate is now constructed through artifact head 3cf251fbcd941af8aa5155b2e7bd703c23fdab96 and PR #260 is open; targeted deterministic self-check covers 18 workflows, 15 mutation paths, 3 read-only paths, all 18 projection groups, 14 presentation profiles, 34 actions, 90 cases exactly once and 15 handoffs. Hosted exact-head validation and merge are still required, so PPIA-10 remains started.",
+  "active_substep": "Validate the integrated PPIA-10 relationship/social/faction authoring-workflow candidate over the verified foundation and inspector/action/reference contracts. Preserve 18 workflows, 15 mutation and 3 read-only paths, all 18 projection groups, 14 presentation profiles, 34 governed actions, 90 resolved reference cases exactly once, 15 domain handoffs, directional relationships, source/profile-defined scales, standing information paths, atomic owning-domain Event delegation, permission filtering before derivatives, recovery/revocation and semantic nonvisual parity.",
   "completed_substeps": [
     "PPIA-08 Campaign / Scene / Session Authoring Depth remains completed_verified and satisfies the canonical PPIA-10 dependency.",
     "PPIA-09 Investigation & Mystery Authoring Kit remains completed_verified at exact head 7393eac19d88eb5b2c58e44b51c1c3a2f3e2b968 / PR #256 / merge 3996ca97a2e31fa89ce5c9d4101c96affb83ea71 / completion gate run 31558007822.",
@@ -27,131 +27,61 @@
     "PPIA-10 foundation defines 18 semantic layers, 14 presentation profiles and 15 explicit domain handoffs while preserving owning-domain authority.",
     "The foundation records explicit gaps rather than inventing universal relationship/standing/influence scales, universal social DCs, automatic reciprocity, title/progression-derived membership, rank/office-derived permission or AI authority.",
     "PPIA-10 foundation exact head 1c9216cf821a33f0386a0d43ec9290db4b5723fa passed all 32 applicable gates; PR #258 squash-merged as 0c0b8ce17cd80e47b7b12285a2bd8278e58a732e.",
-    "Inspector/action/reference candidate commit f11c25a47ad9d0a9a8c0d3a9c8d0402f7be1454f defines 18 projection groups, 34 actions and a 90-case deterministic corpus; targeted local validation passed before PR #259.",
-    "Application runtime, STAGE-A-A2, release, deployment, tester access, paid services and production credentials remain unauthorized by PPIA-10 design work.",
-    "PR #259 initial exact-head validation isolated two deterministic tooling/bookkeeping defects without changing substantive PPIA-10 design: authority phrase matching and continuity evidence-kind schema."
+    "PPIA-10 inspector/action/reference candidate defines 18 projection groups, 34 actions and a 90-case deterministic corpus; exact head 9cc894e3544203f42ec23c12efd256041cb630a2 passed all 35 applicable hosted workflows and PR #259 squash-merged as 6985dd1e1f6d2e2b696f409cc74ae9e0ad18d728.",
+    "The integrated PPIA-10 workflow candidate defines 18 end-to-end workflows: 15 authoritative mutation paths and 3 read-only proposal/provenance, reconnect/accessibility and cross-domain audit paths.",
+    "Workflow traceability covers all 18 projection groups, all 14 presentation profiles, all 34 actions, all 90 resolved reference cases exactly once and all 15 domain handoffs, with dedicated deterministic validation and CI.",
+    "Application runtime, STAGE-A-A2, release, deployment, tester access, paid services and production credentials remain unauthorized by PPIA-10 design work."
   ],
-  "next_action": "Run PR #259 exact-head hosted validation again after the deterministic validator/checkpoint repair. Require Validate PPIA-10 Inspector and Reference Cases, Conversation Continuity, PPIA-10 Foundation and every other applicable regression to pass on the same exact head; squash-merge only when the full set is green. After verified merge, reset the governed PPIA-10 branch to the canonical merge and advance continuity to the integrated relationship/social/faction authoring-workflow milestone while keeping PPIA-10 started.",
+  "next_action": "Validate PR #260 on one exact final review head. Require Validate PPIA-10 Workflow Contracts plus every applicable repository regression, including Inspector and Reference Cases, Foundation, PPIA Program, Conversation Continuity and Operational AIOC Baseline, to pass on that same head. Repair deterministic defects as one bounded batch if required and squash-merge only when the full exact-head set is green. After verified merge, reset the governed branch to the canonical merge and advance PPIA-10 to its final completion gate; do not mark PPIA-10 complete from this workflow milestone alone.",
   "changed_paths": [
-    "governance/application-planning/parallel-preimplementation/PPIA-10_INSPECTOR_ACTION_CONTRACT_MATRIX_v0.1.0.json",
-    "governance/application-planning/parallel-preimplementation/PPIA-10_REFERENCE_CASES_v0.1.0.json",
-    "governance/application-planning/parallel-preimplementation/PPIA-10_INSPECTOR_ACTION_REFERENCE_CANDIDATE.md",
-    "scripts/validate-ppia10-inspector-reference-cases.py",
-    ".github/workflows/validate-ppia-10-inspector-reference-cases.yml",
+    "governance/application-planning/parallel-preimplementation/PPIA-10_WORKFLOW_AUTHORING_CONTRACT_MATRIX_v0.1.0.json",
+    "governance/application-planning/parallel-preimplementation/PPIA-10_WORKFLOW_AUTHORING_SHARD_A_v0.1.0.json",
+    "governance/application-planning/parallel-preimplementation/PPIA-10_WORKFLOW_AUTHORING_SHARD_B_v0.1.0.json",
+    "governance/application-planning/parallel-preimplementation/PPIA-10_WORKFLOW_AUTHORING_SHARD_C_v0.1.0.json",
+    "governance/application-planning/parallel-preimplementation/PPIA-10_WORKFLOW_TRACEABILITY_MATRIX_v0.1.0.json",
+    "governance/application-planning/parallel-preimplementation/PPIA-10_WORKFLOW_AUTHORING_CANDIDATE.md",
+    "scripts/validate-ppia10-workflow-contracts.py",
+    ".github/workflows/validate-ppia-10-workflow-contracts.yml",
     "governance/ai/work-state/PPIA-10-attempt-001.json",
     "governance/ai/runtime/CURRENT_WORK_POINTER.json",
     "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json"
   ],
   "completion_gate": {
-    "required_evidence_kinds": [
-      "commit",
-      "pull_request",
-      "merge"
-    ],
-    "required_validation_commands": [
-      "Validate PPIA-10 Inspector and Reference Cases"
-    ],
+    "required_evidence_kinds": ["commit", "pull_request", "merge"],
+    "required_validation_commands": ["Validate PPIA-10 Workflow Contracts"],
     "owner_approval_required": false
   },
   "validation": [
-    {
-      "command": "Validate PPIA-10 Foundation",
-      "status": "passed",
-      "evidence": "run 31579050358 on exact head 1c9216cf821a33f0386a0d43ec9290db4b5723fa"
-    },
-    {
-      "command": "Validate PPIA-09 to PPIA-10 Transition",
-      "status": "passed",
-      "evidence": "run 31579050334 on exact foundation head"
-    },
-    {
-      "command": "Validate PPIA Program",
-      "status": "passed",
-      "evidence": "run 31579050217 on exact foundation head"
-    },
-    {
-      "command": "Validate Conversation Continuity",
-      "status": "passed",
-      "evidence": "run 31579050261 on exact foundation head"
-    },
-    {
-      "command": "Validate Operational AIOC Baseline",
-      "status": "passed",
-      "evidence": "run 31579050361 on exact foundation head"
-    },
-    {
-      "command": "Validate PPIA-10 Inspector and Reference Cases",
-      "status": "not_run",
-      "evidence": "targeted local deterministic validation passed before PR #259; hosted exact-head gate pending"
-    }
+    {"command": "Validate PPIA-10 Foundation", "status": "passed", "evidence": "run 31579050358 on exact foundation head 1c9216cf821a33f0386a0d43ec9290db4b5723fa"},
+    {"command": "Validate PPIA-09 to PPIA-10 Transition", "status": "passed", "evidence": "run 31579050334 on exact foundation head"},
+    {"command": "Validate PPIA Program", "status": "passed", "evidence": "run 31583060020 on exact inspector/reference head 9cc894e3544203f42ec23c12efd256041cb630a2"},
+    {"command": "Validate Conversation Continuity", "status": "passed", "evidence": "run 31583059806 on exact inspector/reference head 9cc894e3544203f42ec23c12efd256041cb630a2"},
+    {"command": "Validate Operational AIOC Baseline", "status": "passed", "evidence": "run 31583060023 on exact inspector/reference head 9cc894e3544203f42ec23c12efd256041cb630a2"},
+    {"command": "Validate PPIA-10 Inspector and Reference Cases", "status": "passed", "evidence": "run 31583060091 on exact head 9cc894e3544203f42ec23c12efd256041cb630a2"},
+    {"command": "Validate PPIA-10 Workflow Contracts", "status": "not_run", "evidence": "pre-PR deterministic self-check passed; hosted exact-head PR #260 gate pending"}
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
-    {
-      "kind": "commit",
-      "value": "PPIA-09 final completion validated exact head 7393eac19d88eb5b2c58e44b51c1c3a2f3e2b968"
-    },
-    {
-      "kind": "pull_request",
-      "value": "PPIA-09 completion PR #256"
-    },
-    {
-      "kind": "merge",
-      "value": "PPIA-09 completion squash merge 3996ca97a2e31fa89ce5c9d4101c96affb83ea71"
-    },
-    {
-      "kind": "commit",
-      "value": "PPIA-09→PPIA-10 transition validated exact head 61b0a1ad1eab95439268382192d95b9443a9eeda"
-    },
-    {
-      "kind": "pull_request",
-      "value": "PPIA-09→PPIA-10 transition PR #257"
-    },
-    {
-      "kind": "merge",
-      "value": "PPIA-09→PPIA-10 transition squash merge ad28c01984883c102e872145a2b48b25e0409b5a"
-    },
-    {
-      "kind": "artifact",
-      "value": "PPIA-10 foundation source boundary: 5 PDFs / 44 pages; 2 CSVs / 1,374 rows / 94 structurally explicit social-faction rows"
-    },
-    {
-      "kind": "commit",
-      "value": "PPIA-10 foundation validated exact head 1c9216cf821a33f0386a0d43ec9290db4b5723fa"
-    },
-    {
-      "kind": "pull_request",
-      "value": "PPIA-10 foundation PR #258"
-    },
-    {
-      "kind": "merge",
-      "value": "PPIA-10 foundation squash merge 0c0b8ce17cd80e47b7b12285a2bd8278e58a732e"
-    },
-    {
-      "kind": "ci_run",
-      "value": "Validate PPIA-10 Foundation run 31579050358 passed on exact foundation head"
-    },
-    {
-      "kind": "commit",
-      "value": "PPIA-10 inspector/action/reference candidate f11c25a47ad9d0a9a8c0d3a9c8d0402f7be1454f"
-    },
-    {
-      "kind": "pull_request",
-      "value": "PPIA-10 inspector/action/reference PR #259"
-    },
-    {
-      "kind": "artifact",
-      "value": "Targeted deterministic validation receipt: 18 layers / 14 profiles / 34 actions / 90 resolved cases passed before PR #259"
-    },
-    {
-      "kind": "ci_run",
-      "value": "PR #259 initial exact head e26d21f50459931a208ee1a8d7775ecb7dea002c — inspector run 31582416719 failed on over-literal authority phrase assertion"
-    },
-    {
-      "kind": "ci_run",
-      "value": "PR #259 initial exact head e26d21f50459931a208ee1a8d7775ecb7dea002c — conversation continuity run 31582416796 failed on unsupported evidence kind local_validation"
-    }
+    {"kind": "commit", "value": "PPIA-09 final completion validated exact head 7393eac19d88eb5b2c58e44b51c1c3a2f3e2b968"},
+    {"kind": "pull_request", "value": "PPIA-09 completion PR #256"},
+    {"kind": "merge", "value": "PPIA-09 completion squash merge 3996ca97a2e31fa89ce5c9d4101c96affb83ea71"},
+    {"kind": "commit", "value": "PPIA-09→PPIA-10 transition validated exact head 61b0a1ad1eab95439268382192d95b9443a9eeda"},
+    {"kind": "pull_request", "value": "PPIA-09→PPIA-10 transition PR #257"},
+    {"kind": "merge", "value": "PPIA-09→PPIA-10 transition squash merge ad28c01984883c102e872145a2b48b25e0409b5a"},
+    {"kind": "artifact", "value": "PPIA-10 foundation source boundary: 5 PDFs / 44 pages; 2 CSVs / 1,374 rows / 94 structurally explicit social-faction rows"},
+    {"kind": "commit", "value": "PPIA-10 foundation validated exact head 1c9216cf821a33f0386a0d43ec9290db4b5723fa"},
+    {"kind": "pull_request", "value": "PPIA-10 foundation PR #258"},
+    {"kind": "merge", "value": "PPIA-10 foundation squash merge 0c0b8ce17cd80e47b7b12285a2bd8278e58a732e"},
+    {"kind": "ci_run", "value": "Validate PPIA-10 Foundation run 31579050358 passed on exact foundation head"},
+    {"kind": "commit", "value": "PPIA-10 inspector/action/reference validated exact head 9cc894e3544203f42ec23c12efd256041cb630a2"},
+    {"kind": "pull_request", "value": "PPIA-10 inspector/action/reference PR #259"},
+    {"kind": "ci_run", "value": "Validate PPIA-10 Inspector and Reference Cases run 31583060091 passed on exact head 9cc894e3544203f42ec23c12efd256041cb630a2"},
+    {"kind": "ci_run", "value": "All 35 applicable PR #259 exact-head hosted workflows passed on 9cc894e3544203f42ec23c12efd256041cb630a2"},
+    {"kind": "merge", "value": "PPIA-10 inspector/action/reference squash merge 6985dd1e1f6d2e2b696f409cc74ae9e0ad18d728"},
+    {"kind": "commit", "value": "PPIA-10 integrated workflow candidate artifact head 3cf251fbcd941af8aa5155b2e7bd703c23fdab96"},
+    {"kind": "pull_request", "value": "PPIA-10 integrated workflow PR #260"},
+    {"kind": "artifact", "value": "PPIA-10 workflow deterministic self-check: 18 workflows / 15 mutation / 3 read-only / 18 projections / 14 profiles / 34 actions / 90 cases exactly once / 15 handoffs"}
   ],
   "roadmap_projection_pending": true,
   "notes": [
