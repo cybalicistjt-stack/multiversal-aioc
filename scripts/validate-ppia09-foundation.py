@@ -23,6 +23,9 @@ F011_SOURCE = ROOT / "governance/application-planning/internal-alpha/feature-pac
 TRANSITION_MERGE = "a3545f2b77bd2bddade747ffc2ef58863eedff21"
 P8_COMPLETION_MERGE = "09f9df2607398010097e834e8ad7b129cd10645f"
 PACKAGE_SHA = "c5732c5b4c3cdf5eca1d19eef7354289d1f92a87397b56aa7623b3f0a24177ec"
+FOUNDATION_FINAL_HEAD = "e4999c40e1fe92852c142789b3d70596dfad52a8"
+FOUNDATION_PR = 253
+FOUNDATION_MERGE = "511b7b3edc0b88ff8ea5683fd093d2853b50ccf1"
 
 
 def req(condition: bool, message: str) -> None:
@@ -53,14 +56,12 @@ def main() -> None:
     f011_matrix = load(F011_MATRIX)
     f011_source = load(F011_SOURCE)
 
-    # Transition/dependency continuity.
     tranches = {x["work_item_id"]: x for x in backlog["tranches"]}
     req(p8["status"] == "completed_verified" and p8["merge_commit"] == P8_COMPLETION_MERGE, "PPIA-08 dependency must remain completed_verified")
     req(tranches["PPIA-08"]["status"] == "completed_verified", "PPIA-08 backlog dependency changed")
     req(backlog["current_work_item_id"] == "PPIA-09" and tranches["PPIA-09"]["status"] == "started", "backlog must select started PPIA-09")
     req("PPIA-08" in tranches["PPIA-09"]["dependencies"], "PPIA-09 dependency on PPIA-08 missing")
 
-    # Retained source manifest.
     req(src["work_item_id"] == "PPIA-09" and src["transition_merge"] == TRANSITION_MERGE, "source manifest identity/transition mismatch")
     req(src["retained_package"]["sha256"] == PACKAGE_SHA, "retained package SHA changed")
     pdfs = src["direct_pdf_sources"]
@@ -82,7 +83,6 @@ def main() -> None:
     req(len(src["explicit_source_gaps"]) == 10, "expected ten explicit source gaps")
     req(all(v is False for v in src["non_assumptions"].values()), "source non-assumptions must remain false")
 
-    # F011 preserved as verified starting contract, not exhaustive authority.
     req(f011_matrix["featureId"] == "MV-IA-F011", "wrong F011 matrix feature")
     req(len(f011_matrix["records"]) == 10, "F011 must retain ten core record families")
     req(len(f011_matrix["connectionTypes"]) == 15, "F011 must retain fifteen typed connection predicates")
@@ -93,7 +93,6 @@ def main() -> None:
     for phrase in ("player deductions are not auto-promoted to fact", "spatial placement is presentation state", "private clue", "false lead", "idempotency", "nonvisual"):
         req(phrase in low_f011, f"F011 invariant missing {phrase!r}")
 
-    # Taxonomy and design boundaries.
     layers = tax["identity_state_layers"]
     req(len(layers) == 16 and len({x["id"] for x in layers}) == 16, "expected sixteen unique PPIA-09 semantic layers")
     required_layers = {
@@ -117,20 +116,26 @@ def main() -> None:
         req(phrase in guard, f"authority guardrail missing {phrase!r}")
     req(len(auth["proposal_stage_design_domains"]) == 6, "proposal-stage design-domain set changed")
 
-    # Human-readable inventory/candidate evidence.
     for phrase in ("3 PDFs / 53 pages", "4 CSVs / 4,936 rows", "109 records", "The Vanishing of Dr. Wen", "surface / hidden / revealed", "at least two places", "explicit source/design gaps", "truth ≠ belief"):
         req(phrase.lower() in inv.lower(), f"source inventory missing {phrase!r}")
     for phrase in ("FOUNDATION CANDIDATE — NOT PPIA-09 COMPLETE", "3 directly relevant PDFs / 53 pages", "16 semantic layers", "12 presentation profiles", "12 domain handoffs", "24 F011 deterministic fixtures", "The Vanishing of Dr. Wen", "deterministic solvability", "graph layout", "No application runtime"):
         req(phrase.lower() in cand.lower(), f"foundation candidate missing {phrase!r}")
 
-    # Active continuity during the foundation milestone. The checkpoint may be in design
-    # or exact-head validation state; both remain the same source/design foundation milestone.
+    # Historical milestone validation is dual-mode. Once the foundation has merged, later
+    # PPIA-09 milestones may change active-substep text and current PR/head fields. Durable
+    # foundation proof is the immutable validated head + PR + merge retained in checkpoint history.
     req(p9["work_item_id"] == "PPIA-09" and p9["attempt_id"] == "PPIA-09-attempt-001" and p9["status"] == "started", "PPIA-09 checkpoint identity/state mismatch")
     req(p9["branch"] == "governance/ppia-09-investigation-mystery-authoring", "PPIA-09 branch mismatch")
     req(p9["base_commit"] == P8_COMPLETION_MERGE, "PPIA-09 original base anchor changed")
     req(not p9["unresolved_failures"] and p9["owner_decision_required"] is False, "PPIA-09 checkpoint unresolved state")
-    combined = ((p9.get("active_substep") or "") + " " + (p9.get("next_action") or "")).lower()
-    req("source/design foundation" in combined and "foundation" in combined, "PPIA-09 checkpoint must remain on source/design foundation milestone")
+    foundation_history = json.dumps({
+        "last_verified_action": p9.get("last_verified_action"),
+        "completed_substeps": p9.get("completed_substeps", []),
+        "validation": p9.get("validation", []),
+        "evidence": p9.get("evidence", []),
+    }, ensure_ascii=False)
+    for value in (FOUNDATION_FINAL_HEAD, f"PR #{FOUNDATION_PR}", FOUNDATION_MERGE):
+        req(value in foundation_history, f"immutable PPIA-09 foundation evidence missing {value}")
     req(ptr["primary_attempt_id"] == "PPIA-09-attempt-001", "pointer must select PPIA-09")
     selected = [x for x in ptr["active_attempts"] if x.get("owner_selected")]
     req(len(selected) == 1 and selected[0]["work_item_id"] == "PPIA-09", "exactly one owner-selected PPIA-09 attempt required")
@@ -142,6 +147,7 @@ def main() -> None:
     print("f011_records=10 f011_connection_types=15 f011_fixtures=24")
     print("semantic_layers=16 presentation_profiles=12 domain_handoffs=12")
     print("source_backed_findings=14 explicit_source_gaps=10 proposal_design_domains=6")
+    print(f"historical_foundation_merge={FOUNDATION_MERGE}")
     print("truth_belief_separation=true permission_before_derivatives=true graph_layout_authority=false")
     print("runtime_activation=false")
 
