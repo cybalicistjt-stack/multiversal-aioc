@@ -127,7 +127,7 @@ Multiple placements may reference the same source Definition where the owning do
 
 ## 9. Hidden information and reveal
 
-Authorization and filtering occur before protected reference resolution, aggregation or serialization.
+Authorization and filtering occur before protected reference resolution, aggregation or serialization. **Permission filtering precedes resolution and aggregation**, preserving the verified permission-before-aggregation rule.
 
 Unauthorized users must not learn hidden Scene/map existence through counts, labels, search/autocomplete, layer serialization, errors, exports, diagnostics, notifications or AI context.
 
