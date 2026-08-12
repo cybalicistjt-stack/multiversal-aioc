@@ -19,6 +19,10 @@ P13_COMPLETION_PR = 279
 P13_COMPLETION_RUN = "31638609641"
 P13_COMPLETION_MERGE = "cbfb6b931b11326afd5b826ad2a500e9b6d2d9c9"
 P14_BRANCH = "governance/ppia-14-error-recovery-permission-microcopy"
+P14_FINAL_HEAD = "34c4575ad4ec7dad705b5e292b11c94699a648ac"
+P14_COMPLETION_RUN = "31646879101"
+P14_COMPLETION_PR = 284
+P14_COMPLETION_MERGE = "2bebbfcfeac78081ab942be1a15eab1745d35c3a"
 EXPECTED_ORDER = ["PPIA-01","PPIA-02","PPIA-03","PPIA-04","PPIA-05","PPIA-12","PPIA-07","PPIA-08","PPIA-09","PPIA-10","PPIA-11","PPIA-06","PPIA-13","PPIA-14","PPIA-15","PPIA-16"]
 COMPLETE = {"complete","completed","completed_verified"}
 ACTIVE = {"started","in_progress","ready_for_review"}
@@ -57,12 +61,12 @@ def main() -> None:
     require(p14["branch"]==P14_BRANCH and p14["base_commit"]==P13_COMPLETION_MERGE, "PPIA-14 branch/base mismatch")
     require(p14["status"] in ACTIVE | {"completed_verified"}, "PPIA-14 status invalid")
     require(p14["owner_decision_required"] is False and p14["unresolved_failures"]==[], "PPIA-14 transition state must be unblocked")
-    scope=json.dumps({"objective":p14.get("objective"),"last_verified_action":p14.get("last_verified_action"),"active_substep":p14.get("active_substep"),"next_action":p14.get("next_action"),"completed_substeps":p14.get("completed_substeps",[]),"notes":p14.get("notes",[])},ensure_ascii=False).lower()
-    for phrase in ("error","recovery","permission","hidden-information","validation","stale","conflict","offline","reconnect","status unknown","retry","approval","support","diagnostics","player","gm","creator","mobile","keyboard","screen-reader","nonvisual","localization","f024","ppia-13"):
-        require(phrase in scope, f"PPIA-14 governed scope missing {phrase!r}")
 
     current_id=backlog["current_work_item_id"]
     if current_id=="PPIA-14":
+        scope=json.dumps({"objective":p14.get("objective"),"last_verified_action":p14.get("last_verified_action"),"active_substep":p14.get("active_substep"),"next_action":p14.get("next_action"),"completed_substeps":p14.get("completed_substeps",[]),"notes":p14.get("notes",[])},ensure_ascii=False).lower()
+        for phrase in ("error","recovery","permission","hidden-information","validation","stale","conflict","offline","reconnect","status unknown","retry","approval","support","diagnostics","player","gm","creator","mobile","keyboard","screen-reader","nonvisual","localization","f024","ppia-13"):
+            require(phrase in scope, f"PPIA-14 governed scope missing {phrase!r}")
         require(tranches["PPIA-14"]["status"] in ACTIVE, "active PPIA-14 backlog must be started")
         require(p14["status"] in ACTIVE and p14.get("active_substep") and p14.get("next_action"), "active PPIA-14 must be on a bounded step")
         for wid in EXPECTED_ORDER[EXPECTED_ORDER.index("PPIA-14")+1:]: require(tranches[wid]["status"]=="planned", f"{wid} must remain planned during PPIA-14 activation")
@@ -80,6 +84,10 @@ def main() -> None:
         require(EXPECTED_ORDER.index(current_id)>EXPECTED_ORDER.index("PPIA-14"), "historical transition may only validate after PPIA-14")
         require(tranches["PPIA-14"]["status"] in COMPLETE, "historical PPIA-14 backlog must be complete")
         require(p14["status"]=="completed_verified" and p14["active_substep"] is None and p14.get("completed_at"), "historical PPIA-14 checkpoint must be completed_verified")
+        require(p14.get("latest_pushed_commit")==P14_FINAL_HEAD and p14.get("pull_request")==P14_COMPLETION_PR and p14.get("merge_commit")==P14_COMPLETION_MERGE, "historical PPIA-14 immutable completion coordinates changed")
+        require(any(P14_COMPLETION_RUN in (x.get("command","")+" "+str(x.get("evidence",""))) and x.get("status")=="passed" for x in p14.get("validation",[])), "historical PPIA-14 completion run missing")
+        p14_ev=json.dumps(p14.get("evidence",[]),ensure_ascii=False)+p14.get("last_verified_action","")
+        for v in (P14_FINAL_HEAD,P14_COMPLETION_MERGE,"PR #284",P14_COMPLETION_RUN): require(v in p14_ev, f"historical PPIA-14 immutable evidence missing {v}")
         transition_mode="historical_after_ppia14"
 
     require("roadmap" in pointer["selection_reason"].lower() and "pending" in pointer["selection_reason"].lower(), "pointer must explain batched roadmap projection")
