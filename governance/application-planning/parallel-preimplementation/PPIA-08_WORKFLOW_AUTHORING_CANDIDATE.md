@@ -31,7 +31,7 @@ It is an implementation-ready workflow candidate, not PPIA-08 completion.
 16. Gridless Scene authoring and placement.
 17. Post-launch map replacement or recalibration isolation and adoption.
 
-Exactly **14 workflows perform authoritative mutation**. Mutation workflows use the verified global mutation protocol: reauthorize, revalidate current versions, require `expected_version`, require a stable `operation_id`, and perform operation-status/current-version lookup before retry after an ambiguous outcome.
+Exactly **15 workflows perform authoritative mutation**. The two read/recovery projection workflows do not directly commit authoritative state. Mutation workflows use the verified global mutation protocol: reauthorize, revalidate current versions, require `expected_version`, require a stable `operation_id`, and perform operation-status/current-version lookup before retry after an ambiguous outcome.
 
 ## End-to-end map authoring
 
