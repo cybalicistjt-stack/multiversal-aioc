@@ -20,6 +20,7 @@ P10_COMPLETION_PR = 261
 P10_COMPLETION_MERGE = "b4ac8c080af7055e2d150ab6d37de41e9cc2a68f"
 P10_COMPLETION_RUN = "31585946135"
 P11_BRANCH = "governance/ppia-11-encounter-balance-laboratory"
+P11_FINAL_MERGE = "f2274707b1337425f0bc9ac8d1dd5ebb08d9f883"
 COMPLETE = {"complete", "completed", "completed_verified"}
 ACTIVE = {"started", "in_progress"}
 
@@ -50,7 +51,7 @@ def main() -> None:
 
     tranches = {x["work_item_id"]: x for x in backlog["tranches"]}
     require(tranches["PPIA-10"]["status"] == "completed_verified", "PPIA-10 backlog must be completed_verified")
-    require(tranches["PPIA-11"]["status"] in ACTIVE, "PPIA-11 backlog must be started/in_progress")
+    require(tranches["PPIA-11"]["status"] in ACTIVE | COMPLETE, "PPIA-11 backlog must be active or historically complete")
     require(set(tranches["PPIA-11"].get("dependencies", [])) == {"PPIA-02","PPIA-03","PPIA-04","PPIA-05"}, "PPIA-11 declared dependencies changed")
     for dep in tranches["PPIA-11"]["dependencies"]:
         require(tranches[dep]["status"] in COMPLETE, f"PPIA-11 dependency {dep} is not complete")
@@ -73,7 +74,7 @@ def main() -> None:
     require(p11["work_item_id"] == "PPIA-11" and p11["attempt_id"] == "PPIA-11-attempt-001", "PPIA-11 checkpoint identity mismatch")
     require(p11["branch"] == P11_BRANCH, "PPIA-11 governed branch mismatch")
     require(p11["base_commit"] == P10_COMPLETION_MERGE, "PPIA-11 base must be PPIA-10 completion merge")
-    require(p11["status"] in ACTIVE, "PPIA-11 checkpoint must be active")
+    require(p11["status"] in ACTIVE | {"completed_verified"}, "PPIA-11 checkpoint must be active or completed_verified")
     require(p11["owner_decision_required"] is False and p11["unresolved_failures"] == [], "PPIA-11 transition must be unblocked")
     scope = json.dumps({
         "objective": p11.get("objective"), "active_substep": p11.get("active_substep"), "next_action": p11.get("next_action"),
@@ -95,6 +96,7 @@ def main() -> None:
 
     current_id = backlog["current_work_item_id"]
     if current_id == "PPIA-11":
+        require(tranches["PPIA-11"]["status"] in ACTIVE and p11["status"] in ACTIVE, "active PPIA-11 continuity requires active status")
         require(pointer["primary_attempt_id"] == "PPIA-11-attempt-001", "pointer must select PPIA-11")
         selected = [x for x in pointer["active_attempts"] if x.get("owner_selected")]
         require(len(selected) == 1 and selected[0]["work_item_id"] == "PPIA-11", "exactly one owner-selected PPIA-11 attempt required")
@@ -109,6 +111,10 @@ def main() -> None:
     else:
         require(order.index(current_id) > order.index("PPIA-11"), "historical transition may only validate after PPIA-11")
         require(tranches["PPIA-11"]["status"] in COMPLETE, "historical PPIA-11 backlog must be complete")
+        require(p11["status"] == "completed_verified", "historical PPIA-11 checkpoint must be completed_verified")
+        require(p11.get("merge_commit") == P11_FINAL_MERGE, "historical PPIA-11 completion merge changed")
+        require(pointer["primary_attempt_id"] != "PPIA-11-attempt-001", "historical pointer must advance beyond PPIA-11")
+        require(status["primary"]["work_item_id"] != "PPIA-11", "historical compact status must advance beyond PPIA-11")
         transition_mode = "historical_after_ppia11"
 
     require("roadmap" in pointer["selection_reason"].lower() and "pending" in pointer["selection_reason"].lower(), "pointer must explain batched roadmap projection")
