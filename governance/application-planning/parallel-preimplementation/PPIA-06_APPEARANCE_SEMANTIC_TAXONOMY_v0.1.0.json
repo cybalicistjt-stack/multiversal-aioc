@@ -1,0 +1,41 @@
+{
+  "schema_version":"0.1.0","work_item":"PPIA-06","format":"multiversal-ppia06-appearance-semantic-taxonomy",
+  "provenance_classes":["source_truth","inherited_contract","project_source_design_contract","player_authored_appearance","renderer_metadata","unresolved_gap"],
+  "identity_state_layers":[
+    {"id":"P06-L01","name":"appearance_identity_version","authority":"PPIA-06"},
+    {"id":"P06-L02","name":"authoritative_morphology_projection","authority":"PPIA-05"},
+    {"id":"P06-L03","name":"current_form_projection","authority":"PPIA-05"},
+    {"id":"P06-L04","name":"body_topology","authority":"PPIA-05 constraints / PPIA-06 presentation"},
+    {"id":"P06-L05","name":"proportion_scale_presentation","authority":"source-bounded PPIA-06"},
+    {"id":"P06-L06","name":"surface_phenotype","authority":"source-bounded PPIA-06"},
+    {"id":"P06-L07","name":"head_face_structures","authority":"source-bounded PPIA-06"},
+    {"id":"P06-L08","name":"hair_fur_scales_feathers_appendage_style","authority":"source-bounded PPIA-06"},
+    {"id":"P06-L09","name":"coloration_palette_zones","authority":"PPIA-06"},
+    {"id":"P06-L10","name":"markings_scars_tattoos_cosmetics","authority":"PPIA-06 subject to visibility/biology"},
+    {"id":"P06-L11","name":"age_presentation","authority":"source-bounded PPIA-06"},
+    {"id":"P06-L12","name":"clothing_cosmetic_overlay","authority":"PPIA-06 presentation"},
+    {"id":"P06-L13","name":"authorized_equipment_projection","authority":"PPIA-03"},
+    {"id":"P06-L14","name":"visibility_hidden_marker_projection","authority":"PPIA-05/F020"},
+    {"id":"P06-L15","name":"pose_expression_portrait_token_framing","authority":"PPIA-06 presentation"},
+    {"id":"P06-L16","name":"preset_randomization_locks","authority":"PPIA-06"},
+    {"id":"P06-L17","name":"renderer_coverage_fallback","authority":"renderer adapter"},
+    {"id":"P06-L18","name":"accessibility_nonvisual_summary","authority":"PPIA-06/UI accessibility"}
+  ],
+  "compatibility_dimensions":[
+    {"id":"P06-COMP-01","name":"biological_validity","owner":"PPIA-05","rule":"PPIA-06 never overrides morphology/current-Form/compatibility truth."},
+    {"id":"P06-COMP-02","name":"appearance_choice_compatibility","owner":"PPIA-06","rule":"Player-authored choices must remain within authorized biological and visibility constraints."},
+    {"id":"P06-COMP-03","name":"renderer_compatibility","owner":"renderer adapter","rule":"Renderer support may be supported, partial, unsupported or unknown without invalidating the Character."},
+    {"id":"P06-COMP-04","name":"equipment_visual_compatibility","owner":"PPIA-03 projection + PPIA-06 presentation","rule":"Visual fit/occlusion may be assessed without granting, consuming or mutating equipment."}
+  ],
+  "renderer_support_states":["supported","partial","unsupported","unknown"],
+  "state_rules":[
+    "Unknown or source-unspecified anatomy remains unknown; no human/humanoid default is synthesized.",
+    "Current Form is an authoritative PPIA-05 projection and gates applicable appearance choices.",
+    "A valid Character remains valid when a renderer is partial, unsupported or unknown.",
+    "Hidden Forms, markers and biological facts are permission-filtered before appearance derivation, rendering, export and AI context.",
+    "Equipment preview is a permission-safe projection only and never changes Asset ownership, equipment state, Resources or inventory.",
+    "Presets store portable authored appearance choices and renderer preferences, not source-owned biology.",
+    "Randomization changes only eligible player-authored choices; source-owned morphology, hidden state and equipment ownership are excluded.",
+    "Every visual state has a semantic nonvisual representation; color is never the only state carrier."
+  ]
+}
