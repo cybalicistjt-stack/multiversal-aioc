@@ -73,9 +73,24 @@ def main() -> None:
     require(p9["status"] == "started", "PPIA-09 checkpoint must be started")
     require(p9["branch"] == P9_BRANCH, "PPIA-09 governed branch mismatch")
     require(p9["base_commit"] == P8_COMPLETION_MERGE, "PPIA-09 base must be PPIA-08 completion merge")
-    require(p9["latest_pushed_commit"] is None and p9["pull_request"] is None and p9["merge_commit"] is None, "transition may not fabricate PPIA-09 implementation evidence")
     require(p9["owner_decision_required"] is False and p9["unresolved_failures"] == [], "PPIA-09 transition must be unblocked")
-    require(p9["active_substep"] and "source/design foundation" in p9["active_substep"].lower(), "PPIA-09 must start at source/design foundation")
+    require(p9["active_substep"] and "source/design foundation" in p9["active_substep"].lower(), "PPIA-09 must start from and remain traceable to source/design foundation")
+
+    # Dual-mode historical transition validation. At the transition itself PPIA-09 has no
+    # milestone evidence. Once legitimate PPIA-09 work begins, later commit/PR evidence is
+    # allowed, but the original base and transition anchors above must remain immutable.
+    later_head = p9.get("latest_pushed_commit")
+    later_pr = p9.get("pull_request")
+    later_merge = p9.get("merge_commit")
+    if later_head is None:
+        require(later_pr is None and later_merge is None, "transition checkpoint may not fabricate PPIA-09 PR/merge evidence")
+        transition_mode = "initial_transition"
+    else:
+        require(isinstance(later_head, str) and len(later_head) == 40, "later PPIA-09 milestone head must be a 40-character SHA")
+        require(later_pr is None or (isinstance(later_pr, int) and later_pr > 252), "later PPIA-09 PR evidence is invalid")
+        require(later_merge is None or (isinstance(later_merge, str) and len(later_merge) == 40), "later PPIA-09 merge evidence is invalid")
+        transition_mode = "historical_after_ppia09_started"
+
     scope = (p9.get("objective", "") + " " + p9["active_substep"] + " " + p9["next_action"] + " " + " ".join(p9.get("notes", []))).lower()
     for phrase in ("objective truth", "gm conclusion", "clue", "evidence", "hypothesis", "false lead", "contradiction", "reveal", "uncertainty", "provenance", "nonvisual"):
         require(phrase in scope, f"PPIA-09 starting scope missing {phrase!r}")
@@ -109,6 +124,7 @@ def main() -> None:
     print("ppia08_status=completed_verified")
     print("ppia09_status=started")
     print(f"ppia09_branch={P9_BRANCH}")
+    print(f"transition_mode={transition_mode}")
     print("starting_contract=MV-IA-F011 + PPIA-08 + permissions/recovery/accessibility")
     print("truth_belief_separation=required hidden_information_filtering=required nonvisual=required")
     print("roadmap_projection_pending=true runtime_activation=false")

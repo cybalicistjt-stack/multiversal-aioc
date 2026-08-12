@@ -1,0 +1,81 @@
+{
+  "schema_version":"0.1.0",
+  "work_item_id":"PPIA-09",
+  "status":"foundation_candidate",
+  "transition_merge":"a3545f2b77bd2bddade747ffc2ef58863eedff21",
+  "retained_package":{"path":"MV_Master_01_Core.zip","sha256":"c5732c5b4c3cdf5eca1d19eef7354289d1f92a87397b56aa7623b3f0a24177ec"},
+  "direct_pdf_sources":[
+    {"path":"02_PDF_Sources/Part 1/Creation/Margot McBride's and Investigation.PDF","pages":40,"sha256":"ac76b433d2b0d007667eaf4701070aae738dd20262b9d9c30d13a09a3a888760","authority":"direct investigation gameplay, mystery construction, clue progression, dossier/reference mystery format","visual_review_complete":true},
+    {"path":"02_PDF_Sources/Part 1/Creation/Knowledge 2-24-25.PDF","pages":11,"sha256":"f3df38da25d46e03724d0161663bb81c805411f62df7886337e95c26594a20a6","authority":"supporting Knowledge, research and problem-solving game rules","visual_review_complete":true},
+    {"path":"02_PDF_Sources/P2/Lore/Timeline revision.PDF","pages":2,"sha256":"929b3fcf928fd6ec423128ca0688061eaaff812605b5986380553adda3795ffc","authority":"supporting canonical chronological/world timeline example","visual_review_complete":true}
+  ],
+  "direct_pdf_totals":{"files":3,"pages":53},
+  "direct_design_sources":[
+    {"path":"01_Docs/03_Screen_Design/V05_Investigation.md","authority":"Internal Alpha Investigation interface/screen intent"},
+    {"path":"governance/application-planning/internal-alpha/feature-packets/MV-IA-F011_INVESTIGATION_AND_CLUE_BOARD.md","authority":"verified Investigation/Clue Board semantic and workflow starting contract"},
+    {"path":"governance/application-planning/internal-alpha/feature-packets/MV-IA-F011_INVESTIGATION_CLUE_MATRIX.json","authority":"10 core record families, 15 typed predicates, 24 deterministic fixtures"},
+    {"path":"governance/application-planning/internal-alpha/feature-packets/MV-IA-F011_SOURCE_COVERAGE_AND_PROVENANCE.json","authority":"bounded synthesis scope and provenance limitations"}
+  ],
+  "structured_support_sources":[
+    {"path":"03_CSV_Sources/Abilities_Core.csv","rows":1256,"sha256":"0a65391edd6659a7f076760cff6f1368b606904fb746655182c76a89c8bdb6f7","bounded_keyword_hit_rows":142,"explicit_investigation_knowledge_tree_rows":109,"role":"skill/ability/progression integration only"},
+    {"path":"03_CSV_Sources/Prestige_Env_Abilities.csv","rows":1018,"sha256":"052897f355daa1719d7e44ad04642f3cdb5ccff208b2302f24c81711f8a205d4","bounded_keyword_hit_rows":69,"role":"specialized capability/environment integration"},
+    {"path":"03_CSV_Sources/Items.csv","rows":761,"sha256":"f67a02a7d36e39f4837dbca4c2b75e3773fe6a0a8de58c278b2703c2b45d5cee","bounded_keyword_hit_rows":15,"role":"forensic/investigative Item evidence references; PPIA-03 owns Items"},
+    {"path":"03_CSV_Sources/Hazards_Traps.csv","rows":1901,"sha256":"391854834b50bdf175fe0bdd949280adbff67918889daae662fb40c40c418417","bounded_keyword_hit_rows":1344,"role":"broad detection/environment/psychological/misleading-clue integration; not blanket Investigation authority"}
+  ],
+  "structured_support_totals":{"files":4,"rows":4936,"bounded_keyword_hit_rows":1570},
+  "canonical_repository_support":[
+    {"id":"PPIA-08","scope":"Campaign/Scene/Session composition, placement, snapshots, live/post-session state"},
+    {"id":"MV-IA-F002","scope":"object browse/inspect/search/provenance/relationship traversal"},
+    {"id":"PPIA-02","scope":"Creature/NPC and witness identity/state"},
+    {"id":"PPIA-03","scope":"Item/Asset evidence identity and instance ownership"},
+    {"id":"PPIA-04","scope":"Vehicle evidence/reference identity where applicable"},
+    {"id":"PPIA-12","scope":"World/Setting definitions and canonical Setting timeline facts"},
+    {"id":"MV-IA-F009","scope":"directional relationships and relationship history"},
+    {"id":"MV-IA-F010","scope":"social statements, rumors, secrets and reveal interactions"},
+    {"id":"MV-IA-F020","scope":"permissions and hidden-information filtering"},
+    {"id":"MV-IA-F021","scope":"expected-version/idempotent recovery and reconnect"},
+    {"id":"MV-IA-F022","scope":"accessibility/adaptive interface and nonvisual equivalence"},
+    {"id":"PPIA-01/PPIA-06-boundary","scope":"Investigation/Research/Knowledge action and ability resolution remains rules-domain behavior"}
+  ],
+  "source_backed_findings":[
+    "Investigation truth/solution must remain distinct from Player hypotheses and claims.",
+    "Clues may be objects, testimony, environmental observations, hidden messages or digital information.",
+    "Discovery and analysis are distinct stages and analysis may expose significance, inconsistencies or further clues.",
+    "Red herrings, false evidence, unreliable witnesses and corrupted information are supported mystery elements.",
+    "Witness statements, contradictions and reliability are first-class concerns.",
+    "Typed temporal reasoning and Investigation timeline views are supported.",
+    "Important information should have redundant discovery paths; direct source recommends at least two placements for important information.",
+    "Dynamic/extra clues may be used to recover stalled progress with attributable delivery conditions.",
+    "Surface, hidden and revealed/core-truth layers are direct source concepts.",
+    "Mystery construction uses core event, actor/culprit, motive, twist, setting, clues, NPCs, locations, complications and resolution components.",
+    "Player-facing dossier material and GM truth/solution material are distinct projections.",
+    "Research, archives and Knowledge can discover/correlate information but do not bypass permissions or define canonical truth by themselves.",
+    "Cross-case correlation and historical records are supported.",
+    "Provenance is required for clues, connections and evidence."
+  ],
+  "explicit_source_gaps":[
+    "No single deterministic objective-truth statement/version schema is supplied by source.",
+    "No normalized universal confidence/relevance/authenticity/source-reliability scale is supplied across all clue types.",
+    "No deterministic mystery-solvability algorithm is supplied.",
+    "No machine-checkable universal clue-redundancy or reachability rule is supplied beyond source guidance.",
+    "No formal contradiction taxonomy/resolution workflow is supplied.",
+    "No universal fairness threshold for red herrings/false leads is supplied.",
+    "No universal required-versus-optional revelation schema is supplied.",
+    "No universal minimum clue count or success/failure consequence formula is supplied.",
+    "Investigation/Knowledge abilities do not automatically become clue truth or authoring schema.",
+    "World timeline facts do not automatically become Player-known Investigation facts."
+  ],
+  "non_assumptions":{
+    "visible_means_true":false,
+    "hidden_means_nonexistent":false,
+    "hypothesis_means_fact":false,
+    "claim_means_truth":false,
+    "contradiction_means_automatic_falsehood":false,
+    "confidence_means_objective_probability":false,
+    "graph_position_is_semantic_authority":false,
+    "research_success_bypasses_permission":false,
+    "source_redundancy_guidance_creates_universal_clue_count":false,
+    "world_timeline_facts_are_automatically_player_known":false,
+    "ai_deduction_is_authoritative":false
+  }
+}
