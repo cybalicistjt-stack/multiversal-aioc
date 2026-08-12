@@ -1,0 +1,42 @@
+name: Validate PPIA-09 to PPIA-10 Transition
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json'
+      - 'governance/ai/work-state/PPIA-09-attempt-001.json'
+      - 'governance/ai/work-state/PPIA-10-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'governance/application-planning/parallel-preimplementation/validate_ppia_program.py'
+      - 'scripts/validate-ppia09-to-ppia10-transition.py'
+      - 'scripts/validate-ppia09-*.py'
+      - 'scripts/validate-ppia08-to-ppia09-transition.py'
+      - '.github/workflows/validate-ppia-09-to-ppia-10-transition.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia09-to-ppia10-transition:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PPIA-09 to PPIA-10 transition
+        run: python scripts/validate-ppia09-to-ppia10-transition.py
+      - name: Validate PPIA-09 completion regression
+        run: python scripts/validate-ppia09-completion-contracts.py
+      - name: Validate PPIA-09 workflow regression
+        run: python scripts/validate-ppia09-workflow-contracts.py
+      - name: Validate PPIA-09 inspector/reference regression
+        run: python scripts/validate-ppia09-inspector-reference-cases.py
+      - name: Validate PPIA-09 foundation regression
+        run: python scripts/validate-ppia09-foundation.py
+      - name: Validate PPIA-08 to PPIA-09 transition regression
+        run: python scripts/validate-ppia08-to-ppia09-transition.py
+      - name: Validate generalized PPIA continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
