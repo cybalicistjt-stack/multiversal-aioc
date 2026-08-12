@@ -79,7 +79,7 @@ def main() -> None:
         "objective": p11.get("objective"), "active_substep": p11.get("active_substep"), "next_action": p11.get("next_action"),
         "completed_substeps": p11.get("completed_substeps", []), "evidence": p11.get("evidence", []), "notes": p11.get("notes", [])
     }, ensure_ascii=False).lower()
-    for phrase in ("threat", "capability", "environment", "action economy", "resource", "mixed encounter", "boss", "wave", "reinforcement", "retreat", "uncertainty", "benchmark", "calibration", "no guaranteed", "source mechanics", "non-destructive"):
+    for phrase in ("threat", "capability", "environment", "action economy", "resource", "mixed encounter", "boss", "wave", "reinforcement", "retreat", "uncertainty", "benchmark", "calibration", "guaranteed-balance", "source mechanics", "non-destructive"):
         require(phrase in scope, f"PPIA-11 governed scope missing {phrase!r}")
 
     require(balance.get("workstream") == "8D-007 Golden Test Corpus and Balance Harness", "8D-007 balance governance identity changed")
