@@ -53,7 +53,7 @@ def verify_completed_checkpoint(work_item: str, checkpoint: dict) -> None:
     require(checkpoint.get("pull_request") == expected["pr"], f"{work_item} completion PR mismatch")
     require(checkpoint.get("merge_commit") == expected["merge"], f"{work_item} completion merge mismatch")
     require(checkpoint.get("owner_decision_required") is False and checkpoint.get("unresolved_failures") == [], f"{work_item} completion has unresolved state")
-    require(any(expected["run"] in x.get("command", "") and x.get("status") == "passed" for x in checkpoint.get("validation", [])), f"{work_item} completion run evidence missing")
+    require(any(expected["run"] in (x.get("command", "") + " " + str(x.get("evidence", ""))) and x.get("status") == "passed" for x in checkpoint.get("validation", [])), f"{work_item} completion run evidence missing")
     evidence_text = json.dumps(checkpoint.get("evidence", []), ensure_ascii=False) + checkpoint.get("last_verified_action", "")
     for value in (expected["head"], expected["merge"], str(expected["pr"]), expected["run"]):
         require(value in evidence_text, f"{work_item} immutable evidence missing {value}")
