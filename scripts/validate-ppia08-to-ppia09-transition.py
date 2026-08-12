@@ -64,7 +64,9 @@ def main() -> None:
     for value in (P8_FINAL_HEAD, "PR #251", P8_COMPLETION_MERGE):
         require(value in evidence_text, f"PPIA-08 immutable completion evidence missing {value}")
 
-    for value in (P8_FINAL_HEAD, P8_COMPLETION_MERGE, "48 blocking acceptance requirements", "PPIA-09"):
+    # The completion report is a pre-merge candidate artifact; immutable final head/PR/merge
+    # evidence belongs to the completed checkpoint above, not to the historical report.
+    for value in ("48 blocking acceptance requirements", "PPIA-09"):
         require(value.lower() in report.lower(), f"PPIA-08 completion report missing {value!r}")
 
     require(p9["work_item_id"] == "PPIA-09" and p9["attempt_id"] == "PPIA-09-attempt-001", "PPIA-09 checkpoint identity mismatch")
