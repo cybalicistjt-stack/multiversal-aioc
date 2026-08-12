@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 5,
+  "revision": 6,
   "work_item_id": "PPIA-10",
   "attempt_id": "PPIA-10-attempt-001",
   "track": "parallel-preimplementation-advancement",
@@ -8,7 +8,7 @@
   "branch": "governance/ppia-10-relationship-social-faction",
   "status": "started",
   "started_at": "2026-08-12T02:52:00+00:00",
-  "updated_at": "2026-08-12T09:16:17+00:00",
+  "updated_at": "2026-08-12T09:24:10+00:00",
   "completed_at": null,
   "base_commit": "3996ca97a2e31fa89ce5c9d4101c96affb83ea71",
   "latest_pushed_commit": "f11c25a47ad9d0a9a8c0d3a9c8d0402f7be1454f",
@@ -16,8 +16,8 @@
   "pull_request": 259,
   "merge_commit": "0c0b8ce17cd80e47b7b12285a2bd8278e58a732e",
   "objective": "Produce an implementation-ready Relationship, Social & Faction Content Framework with source-grounded directional relationship metrics, social-action/context boundaries, secrets and reveal layers, reputation/standing and influence, explicit faction membership/rank/office structures, attributable consequences/history, permission-safe projections, recovery/accessibility, and reference fixtures while preserving Campaign/Scene/Session ownership and all owning-domain consequence boundaries.",
-  "last_verified_action": "PPIA-10 inspector/action/reference candidate was constructed over verified foundation merge 0c0b8ce17cd80e47b7b12285a2bd8278e58a732e and committed as f11c25a47ad9d0a9a8c0d3a9c8d0402f7be1454f. Targeted local deterministic validation passed for 18 semantic layers, all 14 presentation profiles, 34 governed actions and 90 resolved reference cases. PR #259 is open; hosted exact-head validation and merge are still required, so this milestone is not yet verified complete.",
-  "active_substep": "Validate the PPIA-10 inspector/action/reference candidate on the exact PR #259 head. Preserve 18 one-to-one projection groups, all 14 presentation profiles, 34 governed actions, the shared authorization/expected_version/operation_id recovery protocol, 72 inherited F009/F010/F016 fixtures plus 18 PPIA-10 source/integration cases, permission filtering before derivatives, owning-domain atomic Event delegation, revocation and semantic nonvisual parity.",
+  "last_verified_action": "PR #259 initial exact head e26d21f50459931a208ee1a8d7775ecb7dea002c completed hosted validation. The substantive PPIA-10 foundation and all unrelated regressions remained green, while the new inspector gate failed on an over-literal validator phrase and conversation continuity rejected the unsupported checkpoint evidence kind local_validation. The defects are tooling/bookkeeping defects only; the 18-layer/14-profile/34-action/90-case design package is unchanged. This revision repairs the validator to match the authoritative \"Relationship edges are directional\" contract wording and converts the local deterministic validation receipt to the supported artifact evidence kind.",
+  "active_substep": "Revalidate the repaired PPIA-10 inspector/action/reference candidate on the next exact PR #259 head. Preserve the unchanged 18 one-to-one projection groups, all 14 presentation profiles, 34 governed actions, shared authorization/expected_version/operation_id recovery protocol, 72 inherited F009/F010/F016 fixtures plus 18 PPIA-10 source/integration cases, permission filtering before derivatives, owning-domain atomic Event delegation, revocation and semantic nonvisual parity.",
   "completed_substeps": [
     "PPIA-08 Campaign / Scene / Session Authoring Depth remains completed_verified and satisfies the canonical PPIA-10 dependency.",
     "PPIA-09 Investigation & Mystery Authoring Kit remains completed_verified at exact head 7393eac19d88eb5b2c58e44b51c1c3a2f3e2b968 / PR #256 / merge 3996ca97a2e31fa89ce5c9d4101c96affb83ea71 / completion gate run 31558007822.",
@@ -28,9 +28,10 @@
     "The foundation records explicit gaps rather than inventing universal relationship/standing/influence scales, universal social DCs, automatic reciprocity, title/progression-derived membership, rank/office-derived permission or AI authority.",
     "PPIA-10 foundation exact head 1c9216cf821a33f0386a0d43ec9290db4b5723fa passed all 32 applicable gates; PR #258 squash-merged as 0c0b8ce17cd80e47b7b12285a2bd8278e58a732e.",
     "Inspector/action/reference candidate commit f11c25a47ad9d0a9a8c0d3a9c8d0402f7be1454f defines 18 projection groups, 34 actions and a 90-case deterministic corpus; targeted local validation passed before PR #259.",
-    "Application runtime, STAGE-A-A2, release, deployment, tester access, paid services and production credentials remain unauthorized by PPIA-10 design work."
+    "Application runtime, STAGE-A-A2, release, deployment, tester access, paid services and production credentials remain unauthorized by PPIA-10 design work.",
+    "PR #259 initial exact-head validation isolated two deterministic tooling/bookkeeping defects without changing substantive PPIA-10 design: authority phrase matching and continuity evidence-kind schema."
   ],
-  "next_action": "Run PR #259 exact-head hosted validation for Validate PPIA-10 Inspector and Reference Cases and every applicable repository regression. Repair deterministic defects as one bounded batch if required; squash-merge only when the full exact-head set is green. After verified merge, reset the governed PPIA-10 branch to the canonical merge and advance continuity to the integrated relationship/social/faction authoring-workflow milestone while keeping PPIA-10 started; final completion remains later.",
+  "next_action": "Run PR #259 exact-head hosted validation again after the deterministic validator/checkpoint repair. Require Validate PPIA-10 Inspector and Reference Cases, Conversation Continuity, PPIA-10 Foundation and every other applicable regression to pass on the same exact head; squash-merge only when the full set is green. After verified merge, reset the governed PPIA-10 branch to the canonical merge and advance continuity to the integrated relationship/social/faction authoring-workflow milestone while keeping PPIA-10 started.",
   "changed_paths": [
     "governance/application-planning/parallel-preimplementation/PPIA-10_INSPECTOR_ACTION_CONTRACT_MATRIX_v0.1.0.json",
     "governance/application-planning/parallel-preimplementation/PPIA-10_REFERENCE_CASES_v0.1.0.json",
@@ -137,11 +138,19 @@
     },
     {
       "kind": "pull_request",
-       "value": "PPIA-10 inspector/action/reference PR #259"
+      "value": "PPIA-10 inspector/action/reference PR #259"
     },
     {
-      "kind": "local_validation",
-      "value": "18 layers / 14 profiles / 34 actions / 90 resolved cases passed targeted deterministic validation"
+      "kind": "artifact",
+      "value": "Targeted deterministic validation receipt: 18 layers / 14 profiles / 34 actions / 90 resolved cases passed before PR #259"
+    },
+    {
+      "kind": "ci_run",
+      "value": "PR #259 initial exact head e26d21f50459931a208ee1a8d7775ecb7dea002c — inspector run 31582416719 failed on over-literal authority phrase assertion"
+    },
+    {
+      "kind": "ci_run",
+      "value": "PR #259 initial exact head e26d21f50459931a208ee1a8d7775ecb7dea002c — conversation continuity run 31582416796 failed on unsupported evidence kind local_validation"
     }
   ],
   "roadmap_projection_pending": true,

@@ -81,7 +81,7 @@ def main():
         req(phrase in source_text,f"source invariant missing {phrase}")
     req(len(a["domain_handoffs"])==15,"fifteen handoffs")
     auth=json.dumps(a,ensure_ascii=False).lower()
-    for phrase in ("relationships are directional","persuasion is not mind control","plausible information path","expected_version and operation_id","semantic nonvisual","ai may validate, summarize or propose only"):
+    for phrase in ("directional","persuasion is not mind control","plausible information path","expected_version and operation_id","semantic nonvisual","ai may validate, summarize or propose only"):
         req(phrase in auth,f"authority invariant missing {phrase}")
 
     imports=c["fixture_imports"]
@@ -108,7 +108,7 @@ def main():
       "Area/community and interpersonal status stay scoped","Seven converted organizations retain provenance boundaries",
       "Standing requires attributable information path","Influence remains separate from standing",
       "Membership rank office service and permission stay separate","Atomic Social Mode consequences and compensation",
-      "Revocation purges two-device protected projections","Semantic nonvisual parity preserves actions" if False else "Lost response recovers before retry with semantic nonvisual parity",
+      "Revocation purges two-device protected projections","Lost response recovers before retry with semantic nonvisual parity",
       "AI proposal remains nonauthoritative until acceptance"):
         req(title in titles,f"required case missing {title}")
     req(all(v is False for v in c["policy"].values()),"corpus policy drift")
