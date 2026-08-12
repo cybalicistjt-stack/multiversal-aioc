@@ -114,13 +114,22 @@ def main():
     pointer = json.loads((ROOT / "governance/ai/runtime/CURRENT_WORK_POINTER.json").read_text(encoding="utf-8"))
     compact = json.loads((ROOT / "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json").read_text(encoding="utf-8"))
     req(checkpoint["work_item_id"] == "PPIA-11" and checkpoint["status"] in {"started", "completed_verified"}, "PPIA-11 checkpoint state invalid")
-    req(pointer["primary_attempt_id"] == "PPIA-11-attempt-001", "pointer no longer selects PPIA-11")
-    req(compact["primary"]["work_item_id"] == "PPIA-11", "compact status no longer selects PPIA-11")
     active = (checkpoint.get("active_substep") or "").lower()
     evidence_text = " ".join(str(x.get("value", "")) for x in checkpoint.get("evidence", [])).lower()
     candidate_mode = "workflow" in active and "traceability" in active
     historical_mode = "workflow / traceability squash merge" in evidence_text or "workflow/traceability squash merge" in evidence_text
     req(candidate_mode or historical_mode or checkpoint["status"] == "completed_verified", "checkpoint lacks active or historical workflow milestone evidence")
+
+    if checkpoint["status"] == "started":
+        req(pointer["primary_attempt_id"] == "PPIA-11-attempt-001", "active workflow milestone pointer no longer selects PPIA-11")
+        req(compact["primary"]["work_item_id"] == "PPIA-11", "active workflow milestone compact status no longer selects PPIA-11")
+        continuity_mode = "active_ppia11"
+    else:
+        req(checkpoint["status"] == "completed_verified", "historical workflow checkpoint must be completed_verified")
+        req(pointer["primary_attempt_id"] != "PPIA-11-attempt-001", "historical PPIA-11 must not remain selected")
+        req(compact["primary"]["work_item_id"] != "PPIA-11", "historical PPIA-11 must not remain compact primary")
+        req("6ef3347ba061e80f42bb77b88a62af33228af46f" in evidence_text, "historical workflow merge evidence missing")
+        continuity_mode = "historical_after_ppia11"
 
     req(checkpoint["owner_decision_required"] is False, "unexpected owner decision gate")
     req(checkpoint["unresolved_failures"] == [], "checkpoint has unresolved failures")
@@ -128,6 +137,7 @@ def main():
     print("PPIA-11 Encounter Lab workflow/traceability validation: PASS")
     print("workflows=14 mutation=5 read_analysis=9")
     print("coverage=16 projections / 24 actions / 42 cases exactly once / 20 factors / 12 pressures / 4 uncertainty bands / 13 method steps / 10 handoffs")
+    print(f"continuity_mode={continuity_mode}")
     return 0
 
 
