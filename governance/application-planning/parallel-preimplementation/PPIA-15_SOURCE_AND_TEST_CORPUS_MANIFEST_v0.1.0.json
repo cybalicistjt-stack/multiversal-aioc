@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "PPIA-15",
+  "artifact_version": "0.1.0",
+  "title": "PPIA-15 Source and Existing Test Corpus Manifest",
+  "status": "foundation-candidate",
+  "source_precedence": [
+    "current canonical repository governance, current-work state and owner-approved PPIA backlog",
+    "verified IA-D09 Internal Alpha release-design and tester/reference fixture packages",
+    "completed_verified PPIA-09, PPIA-10, PPIA-11 and PPIA-14 dependency contracts and deterministic corpora",
+    "completed_verified object-domain PPIA packages used only to ground named PPIA-15 object-edge families",
+    "synthetic/noncanonical PPIA-15 QA fixtures authored under this work item"
+  ],
+  "verified_dependencies": [
+    {"work_item_id":"PPIA-09","validated_head":"7393eac19d88eb5b2c58e44b51c1c3a2f3e2b968","pull_request":256,"merge":"3996ca97a2e31fa89ce5c9d4101c96affb83ea71","completion_run":"31558007822"},
+    {"work_item_id":"PPIA-10","validated_head":"507c9da21dd74d771f910861323693e2d7193bfa","pull_request":261,"merge":"b4ac8c080af7055e2d150ab6d37de41e9cc2a68f","completion_run":"31585946135"},
+    {"work_item_id":"PPIA-11","validated_head":"9bf4627f9e8e4a4c21dcc2614dcb74d54d62d724","pull_request":267,"merge":"f2274707b1337425f0bc9ac8d1dd5ebb08d9f883","completion_run":"31595927902"},
+    {"work_item_id":"PPIA-14","validated_head":"34c4575ad4ec7dad705b5e292b11c94699a648ac","pull_request":284,"merge":"2bebbfcfeac78081ab942be1a15eab1745d35c3a","completion_run":"31646879101"}
+  ],
+  "repository_sources": [
+    {"id":"P15-SRC-001","path":"governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json","role":"canonical PPIA-15 scope, dependency and nonactivation boundary"},
+    {"id":"P15-SRC-002","path":"governance/application-planning/internal-alpha/IA-D09_INTERNAL_ALPHA_RELEASE_DESIGN_PACKAGE.md","role":"bounded Internal Alpha release-design fixture/evidence/tester-entry authority"},
+    {"id":"P15-SRC-003","path":"governance/application-planning/internal-alpha/IA-D09_FIXTURE_CATALOG.json","role":"24 bounded deterministic release fixture families"},
+    {"id":"P15-SRC-004","path":"governance/application-planning/internal-alpha/INTERNAL_ALPHA_TESTER_PACKAGE_HANDOFF_v1.0.0.md","role":"prepared tester package; all 24 IA-D09 scripted scenarios and expected outcomes; tester access not activated"},
+    {"id":"P15-SRC-005","path":"governance/application-planning/stage-a-reference-campaign/STAGE_A_TESTER_REFERENCE_CAMPAIGN_KIT_HANDOFF_v0.1.0.md","role":"Glass Harbor Incident / Meridian Testbed portable synthetic fixture; 24 journeys map exactly to IA09-FX-001..024"},
+    {"id":"P15-SRC-006","path":"governance/application-planning/parallel-preimplementation/PPIA-09_REFERENCE_CASES_v0.1.0.json","role":"36 Investigation deterministic reference cases; 24 preserved F011 fixtures plus 12 PPIA-09 cases"},
+    {"id":"P15-SRC-007","path":"governance/application-planning/parallel-preimplementation/PPIA-10_REFERENCE_CASES_v0.1.0.json","role":"90 resolved Relationship/Social/Faction cases; 72 imported F009/F010/F016 fixtures plus 18 local cases"},
+    {"id":"P15-SRC-008","path":"governance/application-planning/parallel-preimplementation/PPIA-11_ENCOUNTER_LAB_REFERENCE_CASES_v0.1.0.json","role":"42 Encounter Lab reference cases; 18 benchmark cases plus 24 local cases"},
+    {"id":"P15-SRC-009","path":"governance/application-planning/parallel-preimplementation/PPIA-11_COMPLETION_REPORT.md","role":"8D-007 retained balance-harness inventory and no-guaranteed-balance methodology boundary"},
+    {"id":"P15-SRC-010","path":"governance/application-planning/parallel-preimplementation/PPIA-14_FOUNDATION_REFERENCE_CASES_v0.1.0.json","role":"32 permission/recovery microcopy Foundation cases"},
+    {"id":"P15-SRC-011","path":"governance/application-planning/parallel-preimplementation/PPIA-14_MICROCOPY_REFERENCE_CASES_v0.1.0.json","role":"40 microcopy Inspector/Action/Reference cases"},
+    {"id":"P15-SRC-012","path":"governance/application-planning/parallel-preimplementation/PPIA-14_INTEGRATED_ERROR_RECOVERY_PERMISSION_REFERENCE_CASES_v0.1.0.json","role":"36 integrated permission/recovery workflow cases; PPIA-14 effective total 108"},
+    {"id":"P15-SRC-013","path":"governance/application-planning/parallel-preimplementation/PPIA-14_ACTOR_CONTEXT_AND_DELIVERY_MATRIX_v0.1.0.json","role":"nine role IDs, twenty contexts and seven delivery channels"},
+    {"id":"P15-SRC-014","path":"governance/application-planning/parallel-preimplementation/PPIA-14_ACCESSIBILITY_MOBILE_NONVISUAL_LOCALIZATION_REQUIREMENTS_v0.1.0.json","role":"keyboard/touch/screen-reader/mobile/high-zoom/reduced-motion/noncolor semantic-parity requirements"},
+    {"id":"P15-SRC-015","path":"governance/application-planning/parallel-preimplementation/PPIA-14_SOURCE_GAPS_v0.1.0.json","role":"P14-GAP-001 / inherited P13-GAP-001 F024 Pack Lifecycle unresolved provenance"},
+    {"id":"P15-SRC-016","path":"governance/application-planning/parallel-preimplementation/PPIA-03_COMPLETION_REPORT.md","role":"secondary object-edge grounding for Items/Inventory ownership, transfer and scale; not a PPIA-15 dependency"},
+    {"id":"P15-SRC-017","path":"governance/application-planning/parallel-preimplementation/PPIA-04_COMPLETION_REPORT.md","role":"secondary object-edge grounding for Vehicle instance/crew/cargo/transfer behavior; not a PPIA-15 dependency"},
+    {"id":"P15-SRC-018","path":"governance/application-planning/parallel-preimplementation/PPIA-05_COMPLETION_REPORT.md","role":"secondary object-edge grounding for Species/Forms/Biology and unusual morphology; not a PPIA-15 dependency"},
+    {"id":"P15-SRC-019","path":"governance/application-planning/parallel-preimplementation/PPIA-07_COMPLETION_REPORT.md","role":"secondary object-edge grounding for Rune construction/crafting interruption; not a PPIA-15 dependency"},
+    {"id":"P15-SRC-020","path":"governance/application-planning/parallel-preimplementation/PPIA-08_CAMPAIGN_SCENE_SESSION_AUTHORING_EXPERIENCE_SPEC_v1.0.0.md","role":"secondary grounding for Campaign-local override, hidden placement, live-session and versioned authoring edges"}
+  ],
+  "primary_scenario_accounting": {
+    "ia_d09_release_fixtures": 24,
+    "stage_a_reference_kit_journeys": 24,
+    "stage_a_reference_kit_additive_scenarios": 0,
+    "tester_package_scripted_scenarios": 24,
+    "tester_package_additive_scenarios": 0,
+    "ppia09_resolved_cases": 36,
+    "ppia10_resolved_cases": 90,
+    "ppia11_resolved_cases": 42,
+    "ppia14_effective_cases": 108,
+    "effective_distinct_case_records_after_exact_alias_collapse": 300,
+    "semantic_deduplication_complete": false
+  },
+  "exact_alias_rule": "The Stage A reference kit's 24 scripted journeys and the tester package's 24 scripted scenarios are packaging/execution representations of IA09-FX-001..024, not forty-eight additional scenarios. They contribute zero additive scenario count.",
+  "semantic_overlap_rule": "Different stable IDs do not prove nonduplicate coverage. PPIA-15 must compare actor, object, timing, authority, failure mode, recovery path, device/accessibility mode, scale and expected oracle before deciding that a new scenario adds coverage.",
+  "secondary_source_rule": "PPIA-02 through PPIA-08 completed artifacts may ground a named object-edge case without becoming PPIA-15 dependencies or changing the canonical dependency set.",
+  "source_gaps": [
+    {"id":"P15-GAP-001","inherits":"P14-GAP-001 / P13-GAP-001","subject":"MV-IA-F024 Pack Lifecycle / Canonical Content Registry","status":"open","rule":"Do not invent Pack lifecycle states, operations, permissions, expected results or regression oracles. A case encountering the gap must produce an explicit unsupported/source-gap oracle."}
+  ],
+  "fixture_authority": {
+    "ppia15_fixtures_are_synthetic": true,
+    "ppia15_fixtures_are_noncanonical": true,
+    "qa_fixture_may_promote_canonical_content": false,
+    "fixture_expected_result_may_override_owning_domain": false,
+    "tester_access_authorized": false,
+    "runtime_activation": false
+  }
+}
