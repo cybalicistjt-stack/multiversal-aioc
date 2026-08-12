@@ -1,6 +1,6 @@
 {
   "schema_version":"1.0.0",
-  "revision":8,
+  "revision":9,
   "work_item_id":"PPIA-06",
   "attempt_id":"PPIA-06-attempt-001",
   "track":"parallel-preimplementation-advancement",
@@ -8,30 +8,32 @@
   "branch":"governance/ppia-06-character-appearance-creator",
   "status":"started",
   "started_at":"2026-08-12T12:32:00+00:00",
-  "updated_at":"2026-08-12T15:18:00+00:00",
+  "updated_at":"2026-08-12T15:20:00+00:00",
   "completed_at":null,
   "base_commit":"f2274707b1337425f0bc9ac8d1dd5ebb08d9f883",
-  "latest_pushed_commit":"2cf5d8acd2ff855b8af8feee43a96af5cd344659",
-  "expected_remote_head":"2cf5d8acd2ff855b8af8feee43a96af5cd344659",
-  "pull_request":null,
+  "latest_pushed_commit":"fd0b4b6a0a663aba51493fe0cd6c15f463e15042",
+  "expected_remote_head":"fd0b4b6a0a663aba51493fe0cd6c15f463e15042",
+  "pull_request":270,
   "merge_commit":"66789fcb140b06c7873231e28baf1c00dec8db91",
   "objective":"Produce an implementation-ready Character Appearance Creator that consumes source-backed Species/Form morphology without rewriting biology, separates appearance semantics from renderer assets and inventory/equipment authority, supports body/face construction, hair/fur/scales/feathers, coloration, markings, age, equipment preview, presets and lockable deterministic randomization, works for nonhumanoid/mobile/accessibility cases, hands off portraits/tokens cleanly, and defines an initial modular pixel-art renderer while preserving a future-3D renderer boundary.",
-  "last_verified_action":"PPIA-06 foundation exact head d788d42187c5d53d2121a1f738b9d3445d0f67d8 passed all 45 applicable hosted workflows and PR #269 squash-merged as 66789fcb140b06c7873231e28baf1c00dec8db91 with canonical main signed/verified. Before Inspector/Action/Reference, the owner supplied Arthold.zip (27 PDFs: 25 direct Species plus Kola-Ha Bioengineering and Species Perks; 88 art files) and newer Toba-madra vAlpha.mht, then resolved all material visual/morphology conflicts found in review. The bounded corrective Species Visual & Morphology Addendum is now committed through 2cf5d8acd2ff855b8af8feee43a96af5cd344659. Its deterministic preflight passes with 25 Species profiles, all 88 art files inventoried, 10 resolved conflicts and 36 QA cases. Hosted exact-head validation remains required before merge.",
-  "active_substep":"Review and exact-head validate the PPIA-06 Species Visual & Morphology Source Addendum before Inspector/Action/Reference. The corrective package records owner visual-canon authority, all 27 supplied PDF sources and 88 art assets, 25 per-Species morphology profiles, 10 resolved visual conflicts, an explicit morphology graph for ordinary/six-limb/nested/composite bodies, biological visual-state kinds for seasonal/Form/persistent/active/one-time-transition behavior, semantic taxonomy v0.2, pixel-art-v1 renderer contract v0.2 with fixed 3/4 full-body master view plus portrait/zoom and tactical-token views, a nonmechanical presentation-only wardrobe separate from actual PPIA-03 equipment projection, and 36 deterministic reference cases. Preserve PPIA-05 biological authority and all existing permission/accessibility/renderer boundaries.",
+  "last_verified_action":"The owner-supplied Species visual/morphology correction package is committed and deterministic preflight passes: 25 direct Species profiles, 27 supplied PDFs, all 88 art assets inventoried, 10 visual/source conflicts resolved, 36 QA cases, morphology-graph support for six-limb/nested/composite bodies, semantic taxonomy v0.2 and pixel-art-v1 v0.2. PR #270 is open against canonical foundation merge 66789fcb140b06c7873231e28baf1c00dec8db91. Hosted exact-head validation is now required before this corrective milestone can merge.",
+  "active_substep":"Exact-head review of PR #270 — PPIA-06 Species Visual & Morphology Source Addendum — before Inspector/Action/Reference. Validate owner visual-canon/source authority, all 27 PDF and 88 art inventory, 25 per-Species morphology profiles, 10 resolved conflicts, morphology graph and biological visual-state kinds, semantic taxonomy v0.2, pixel-art-v1 renderer v0.2 fixed 3/4 full-body/portrait-token view contract, presentation-only wardrobe versus actual equipment projection, PPIA-05 biology authority, permission filtering, accessibility/nonvisual behavior and 36 deterministic reference cases.",
   "completed_substeps":[
     "PPIA-06 foundation exact head d788d42187c5d53d2121a1f738b9d3445d0f67d8 passed all 45 applicable hosted workflows; PR #269 merged as 66789fcb140b06c7873231e28baf1c00dec8db91 and canonical main is signed/verified.",
     "Owner supplied Arthold.zip containing 27 PDFs and 88 visual reference files plus newer Toba-madra vAlpha.mht; the corpus was inspected before continuing appearance feature design.",
     "Source authority locked: Species PDFs are canonical written biology unless superseded; owner-created/labeled concept art is strong visual canon when confirmed; AI art remains noncanonical inspiration unless explicitly promoted; contradictions are surfaced rather than silently broadened.",
     "Owner resolved Stygian, Vespin, Rakuuta, Furashin, Rog, Kola-Ha, Mythragara, Traiga, Arborae, Suula, Nekron, ManyToms, Orc, Dwarf, Gray, Toba-Madra, Sharr, The Free and Giantkin visual/morphology questions plus renderer view and wardrobe/equipment policy.",
     "All 25 direct Species now have governed morphology profiles; Vespin four-arm/two-leg, Moravi two-arm/four-leg, Suula nested-hand/claw and ManyToms composite-body cases are structural regression anchors rather than renderer approximations.",
-    "Biological visual state now distinguishes baseline biology, lineage/variant, bounded authored choice, current Form, derived Form, persistent acquired biology, active biological state, one-time transition state, live pose state, Player cosmetics, presentation wardrobe and actual equipment projection.",
+    "Biological visual state distinguishes baseline biology, lineage/variant, bounded authored choice, current Form, derived Form, persistent acquired biology, active biological state, one-time transition state, live pose state, Player cosmetics, presentation wardrobe and actual equipment projection.",
     "Arborae uses four separately customizable seasonal profiles; Mythragara hybrid appearance derives from base/animal identity; Nekron ascension is a one-time derived second customization; Suula adaptation markers remain persistent source-owned biology; Furashin live phenotype allows up to three fur colors plus pattern/texture.",
     "Toba-Madra newer owner source supersedes the older gorilloid visual origin: canonical appearance is anthropomorphic ursine, with natural biological fur plus separate any-color cosmetic dye and a visible bear tail.",
-    "pixel-art-v1 v0.2 keeps renderer-independent Character truth while requiring fixed full-body 3/4 master composition, switchable portrait/zoom and tactical-token views, no arbitrary rotation/pseudo-3D, six-limb/composite/nested-anchor support, surface/material channels and explicit unsupported fallback.",
-    "Customizer presentation wardrobe is a curated visual-only layer independent of inventory and grants no mechanics; actual equipped-item projection remains PPIA-03-authorized and uses topology-compatible variants or explicit unavailable fallback rather than unrestricted warping.",
-    "Deterministic addendum preflight passes: species_profiles=25, art_assets=88, resolved_conflicts=10, qa_cases=36, morphology_graph=true, six_limb=true, composite=true, nested_appendage=true, arbitrary_rotation=false, runtime_activation=false."
+    "pixel-art-v1 v0.2 requires fixed full-body 3/4 master composition, switchable portrait/zoom and tactical-token views, no arbitrary rotation/pseudo-3D, six-limb/composite/nested-anchor support, semantic material channels and explicit unsupported fallback.",
+    "Presentation wardrobe is curated visual-only state independent of inventory and grants no mechanics; actual equipped-item projection remains PPIA-03-authorized and uses topology-compatible variants or explicit unavailable fallback rather than unrestricted warping.",
+    "All 88 supplied art filenames are governed across four manifest parts. Ambiguous AI art remains unresolved/noncanonical rather than being assigned to the wrong Species; owner-created concept bindings are explicit.",
+    "Deterministic addendum preflight PASS: species_profiles=25, art_assets=88, resolved_conflicts=10, qa_cases=36, morphology_graph=true, six_limb=true, composite=true, nested_appendage=true, arbitrary_rotation=false, runtime_activation=false.",
+    "PR #270 opened for bounded source-corrective exact-head review."
   ],
-  "next_action":"Open one bounded PPIA-06 Species Visual & Morphology Addendum PR from the existing governed branch to main. Run Validate PPIA-06 Species Visual Addendum plus every applicable hosted regression on one exact final head. Repair only deterministic package/continuity defects without weakening contracts; merge only the all-green exact head. Then verify canonical main signed/valid, reset governance/ppia-06-character-appearance-creator to the addendum merge, and write exactly checkpoint → pointer → status recovery commits. Only after that resume Inspector / Action / Reference using semantic taxonomy v0.2 and pixel-art-v1 renderer contract v0.2.",
+  "next_action":"Validate PR #270 on one exact final head with Validate PPIA-06 Species Visual Addendum and every applicable hosted regression. If deterministic package/continuity defects appear, repair only those defects without weakening existing contracts and rerun the entire applicable surface. Merge only the all-green exact head; verify canonical main signed/valid; reset the governed PPIA-06 branch to the addendum merge; write exactly checkpoint → pointer → status recovery commits; then resume Inspector / Action / Reference using taxonomy v0.2 and renderer v0.2.",
   "changed_paths":[
     "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json",
     "governance/application-planning/parallel-preimplementation/PPIA-06_SPECIES_VISUAL_MORPHOLOGY_SOURCE_ADDENDUM_v0.1.0.md",
@@ -55,7 +57,7 @@
   "validation":[
     {"command":"Validate PPIA-11 to PPIA-06 Transition","status":"passed","evidence":"run 31600361652 on exact foundation head d788d42187c5d53d2121a1f738b9d3445d0f67d8"},
     {"command":"Validate PPIA-06 Foundation","status":"passed","evidence":"run 31600361624 on exact foundation head d788d42187c5d53d2121a1f738b9d3445d0f67d8; all 45 applicable hosted workflows passed"},
-    {"command":"Validate PPIA-06 Species Visual Addendum (deterministic preflight)","status":"passed","evidence":"25 Species profiles / 88 art assets / 10 resolved conflicts / 36 QA cases; hosted exact-head gate still pending"}
+    {"command":"Validate PPIA-06 Species Visual Addendum (deterministic preflight)","status":"passed","evidence":"25 Species profiles / 88 unique art assets / 10 resolved conflicts / 36 QA cases; hosted exact-head gate pending"}
   ],
   "unresolved_failures":[],
   "owner_decision_required":false,
@@ -63,9 +65,10 @@
     {"kind":"merge","value":"PPIA-06 foundation squash merge 66789fcb140b06c7873231e28baf1c00dec8db91"},
     {"kind":"artifact","value":"Owner-supplied Arthold.zip: 27 PDFs / 88 art files reviewed for Species visual and morphology coverage"},
     {"kind":"artifact","value":"Owner-supplied newer Toba-madra vAlpha.mht supersedes older gorilloid visual origin with ursine uplift source"},
-    {"kind":"owner_decision","value":"2026-08-12 PPIA-06 visual canon decisions OVC-001 through OVC-025 resolve source/art authority, Species morphology conflicts, fixed 2D view policy and presentation-wardrobe/equipment boundary"},
-    {"kind":"commit","value":"Species Visual & Morphology Addendum package committed through 2cf5d8acd2ff855b8af8feee43a96af5cd344659"},
-    {"kind":"artifact","value":"Deterministic source-corrective preflight PASS: 25 Species profiles, 88 unique art files, 10 resolved conflicts, 36 QA cases"}
+    {"kind":"owner_decision","value":"2026-08-12 PPIA-06 visual canon decisions OVC-001 through OVC-025"},
+    {"kind":"commit","value":"Species Visual & Morphology Addendum artifact package through 2cf5d8acd2ff855b8af8feee43a96af5cd344659"},
+    {"kind":"pull_request","value":"PPIA-06 Species Visual & Morphology Addendum PR #270"},
+    {"kind":"artifact","value":"Deterministic preflight PASS: 25 Species profiles / 88 unique art files / 10 resolved conflicts / 36 QA cases"}
   ],
   "roadmap_projection_pending":true,
   "notes":[
