@@ -1,0 +1,46 @@
+name: Validate PPIA-06 Completion Contract
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-06_*'
+      - 'governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json'
+      - 'governance/application-planning/parallel-preimplementation/validate_ppia_program.py'
+      - 'governance/ai/work-state/PPIA-06-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia06-*.py'
+      - 'scripts/validate-ppia11-to-ppia06-transition.py'
+      - 'tools/continuity_state.py'
+      - '.github/workflows/validate-ppia-06-*.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia06-completion:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PPIA-06 Completion Contract
+        run: python scripts/validate-ppia06-completion-contracts.py
+      - name: Validate PPIA-06 Integrated Workflow regression
+        run: python scripts/validate-ppia06-integrated-workflows.py
+      - name: Validate PPIA-06 Inspector Action Reference regression
+        run: python scripts/validate-ppia06-inspector-action-reference.py
+      - name: Validate PPIA-06 Species Visual Addendum regression
+        run: python scripts/validate-ppia06-species-visual-addendum.py
+      - name: Validate PPIA-06 Foundation regression
+        run: python scripts/validate-ppia06-foundation.py
+      - name: Validate PPIA-11 to PPIA-06 Transition regression
+        run: python scripts/validate-ppia11-to-ppia06-transition.py
+      - name: Validate generalized PPIA continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
+      - name: Validate conversation continuity
+        run: python tools/continuity_state.py validate
+      - name: Run conversation continuity regression tests
+        run: python -m unittest discover -s tests/continuity -v
