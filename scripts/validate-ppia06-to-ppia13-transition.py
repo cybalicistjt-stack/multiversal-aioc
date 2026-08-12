@@ -69,7 +69,7 @@ def main() -> None:
 
     require(p13["work_item_id"] == "PPIA-13" and p13["attempt_id"] == "PPIA-13-attempt-001", "PPIA-13 checkpoint identity mismatch")
     require(p13["branch"] == P13_BRANCH and p13["base_commit"] == P6_COMPLETION_MERGE, "PPIA-13 branch/base mismatch")
-    require(p13["status"] == "started" and p13["active_substep"] and p13["next_action"], "PPIA-13 must begin with an active bounded foundation step")
+    require(p13["status"] in {"started", "ready_for_review"} and p13["active_substep"] and p13["next_action"], "PPIA-13 must remain on an active bounded in-tranche step")
     require(p13["owner_decision_required"] is False and p13["unresolved_failures"] == [] and p13["roadmap_projection_pending"] is True, "PPIA-13 transition state must be unblocked with pending roadmap projection")
     scope = json.dumps({
         "objective": p13.get("objective"),
@@ -113,7 +113,7 @@ def main() -> None:
     print(f"ppia06_final_merge={P6_COMPLETION_MERGE}")
     print(f"ppia06_completion_run={P6_COMPLETION_RUN}")
     print("ppia06_status=completed_verified")
-    print("ppia13_status=started")
+    print(f"ppia13_status={p13['status']}")
     print(f"ppia13_branch={P13_BRANCH}")
     print("ppia13_dependency=PPIA-08 completed_verified")
     print("ppia13_foundation=role-aware onboarding/help/teaching source inventory")
