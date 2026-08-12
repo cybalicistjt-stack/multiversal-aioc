@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "PPIA-15",
+  "artifact_version": "0.1.0",
+  "title": "PPIA-15 Foundation Package Index",
+  "milestone": "Foundation / Existing Test Corpus and Coverage-Gap Inventory",
+  "status": "foundation-candidate",
+  "package_artifacts": [
+    {"id":"P15-FND-001","path":"governance/application-planning/parallel-preimplementation/PPIA-15_SOURCE_AND_TEST_CORPUS_MANIFEST_v0.1.0.json","role":"source/test-package manifest and immutable dependency evidence"},
+    {"id":"P15-FND-002","path":"governance/application-planning/parallel-preimplementation/PPIA-15_INHERITED_SCENARIO_INVENTORY_v0.1.0.json","role":"inherited scenario accounting and nonduplication ledger"},
+    {"id":"P15-FND-003","path":"governance/application-planning/parallel-preimplementation/PPIA-15_AWKWARD_CASE_TAXONOMY_v0.1.0.json","role":"awkward-case taxonomy plus role/context/device/accessibility dimensions"},
+    {"id":"P15-FND-004","path":"governance/application-planning/parallel-preimplementation/PPIA-15_COVERAGE_GAP_MATRIX_v0.1.0.json","role":"18-family inherited-coverage versus genuine-gap matrix"},
+    {"id":"P15-FND-005","path":"governance/application-planning/parallel-preimplementation/PPIA-15_ORACLE_AND_FIXTURE_RULES_v0.1.0.json","role":"deterministic oracle, provenance, fixture isolation and nonactivation rules"},
+    {"id":"P15-FND-006","path":"governance/application-planning/parallel-preimplementation/PPIA-15_FOUNDATION_REFERENCE_CASES_v0.1.0.json","role":"32 initial synthetic noncanonical Foundation reference cases"},
+    {"id":"P15-FND-007","path":"governance/application-planning/parallel-preimplementation/PPIA-15_FOUNDATION_EXISTING_TEST_CORPUS_AND_COVERAGE_GAP_INVENTORY.md","role":"human-readable Foundation inventory and design contract"},
+    {"id":"P15-FND-008","path":"scripts/validate-ppia15-foundation.py","role":"deterministic Foundation validator"},
+    {"id":"P15-FND-009","path":".github/workflows/validate-ppia-15-foundation.yml","role":"hosted Foundation acceptance gate"}
+  ],
+  "locked_counts": {
+    "primary_inherited_case_records_after_exact_alias_collapse": 300,
+    "required_awkward_families": 18,
+    "direct_gaps": 7,
+    "partial_awkward_variants": 10,
+    "baseline_covered_no_clone": 1,
+    "foundation_reference_cases": 32
+  },
+  "nonduplication_contract": {
+    "exact_alias_packaging_adds_cases": false,
+    "tester_package_and_reference_kit_alias_ia_d09": true,
+    "baseline_gm_modification_may_be_cloned": false,
+    "new_case_requires_material_oracle_affecting_differential": true
+  },
+  "provenance_contract": {
+    "synthetic_fixtures_noncanonical": true,
+    "p14_gap_001_f024_remains_open": true,
+    "missing_pack_lifecycle_behavior_may_be_invented": false,
+    "secondary_object_packages_change_dependency_set": false
+  },
+  "acceptance": {
+    "validation_command": "python scripts/validate-ppia15-foundation.py",
+    "hosted_gate": "Validate PPIA-15 Foundation",
+    "foundation_only_not_ppia15_completion": true,
+    "application_runtime_activation": false,
+    "stage_a_a2_activation": false,
+    "tester_access_activation": false,
+    "release_activation": false,
+    "deployment_activation": false,
+    "paid_service_activation": false,
+    "production_credentials_activation": false,
+    "canonical_promotion": false
+  }
+}

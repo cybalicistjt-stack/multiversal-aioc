@@ -1,0 +1,53 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"PPIA-15",
+  "artifact_version":"0.1.0",
+  "title":"PPIA-15 Awkward Regression Case Taxonomy and Test Dimensions",
+  "status":"foundation-candidate",
+  "taxonomy_families":[
+    {"id":"P15-AX-001","key":"permission-hidden-state","definition":"Authority, entitlement, hidden existence, revocation and minimum-disclosure edges."},
+    {"id":"P15-AX-002","key":"conflict-concurrency","definition":"Simultaneous intent, expected-version conflict, stale editors, duplicate operations and incompatible updates."},
+    {"id":"P15-AX-003","key":"recovery-ambiguous-status","definition":"Disconnect, reconnect, status-unknown, accepted Event/projection lag, interrupted flows and safe retry."},
+    {"id":"P15-AX-004","key":"scale-density","definition":"Bounded deterministic high-cardinality fixtures that stress selection, projection, navigation and semantic accessibility without becoming product limits."},
+    {"id":"P15-AX-005","key":"accessibility-nonvisual","definition":"Keyboard, screen-reader/nonvisual, high-zoom/text-scale, reduced-motion and noncolor semantic/task parity."},
+    {"id":"P15-AX-006","key":"mobile-touch","definition":"Phone/tablet, touch-only and compact single-focus flows where task sequencing differs from wide desktop presentation."},
+    {"id":"P15-AX-007","key":"object-identity-edge","definition":"Stable-ID identity, duplicate names, Definition versus instance, source-only versus instantiated state, unusual forms and cross-owner transfers."},
+    {"id":"P15-AX-008","key":"cross-domain-authority-provenance","definition":"Cases spanning owning domains where accepted Events, reveal/approval, Campaign-local scope, provenance and nonpromotion boundaries must remain intact."}
+  ],
+  "required_awkward_families":[
+    {"id":"P15-AWK-001","key":"simultaneous-selection","taxonomy":["P15-AX-002","P15-AX-007"],"required_differential":"two authorized actors select or act on the same stable object/state before either client observes the other's result"},
+    {"id":"P15-AWK-002","key":"mid-session-reveals","taxonomy":["P15-AX-001","P15-AX-003","P15-AX-008"],"required_differential":"reveal state changes while the live session and cached projections are already open"},
+    {"id":"P15-AWK-003","key":"entitlement-loss","taxonomy":["P15-AX-001","P15-AX-003"],"required_differential":"entitlement or permission is valid at entry and revoked while protected projections/actions are cached"},
+    {"id":"P15-AWK-004","key":"gm-modifications","taxonomy":["P15-AX-002","P15-AX-008"],"required_differential":"do not duplicate baseline GM modification; only add a case when modification combines with stale state, reconnect, hidden state or another unproven edge"},
+    {"id":"P15-AWK-005","key":"duplicate-name-objects","taxonomy":["P15-AX-007"],"required_differential":"multiple visible objects share a display name but must remain distinguishable by stable identity/provenance without unsafe hidden metadata"},
+    {"id":"P15-AWK-006","key":"version-conflict","taxonomy":["P15-AX-002","P15-AX-003"],"required_differential":"two edits or operations collide on expected version and require current-version/status recovery rather than silent last-write-wins"},
+    {"id":"P15-AWK-007","key":"campaign-local-override","taxonomy":["P15-AX-002","P15-AX-008"],"required_differential":"a Campaign-local override collides with inherited/source state and must remain local with explicit provenance"},
+    {"id":"P15-AWK-008","key":"source-only-objects","taxonomy":["P15-AX-007","P15-AX-008"],"required_differential":"a reusable source Definition is visible/selectable without an owned/Campaign/live instance and must not be silently instantiated or promoted"},
+    {"id":"P15-AWK-009","key":"vehicle-transfer","taxonomy":["P15-AX-002","P15-AX-007","P15-AX-008"],"required_differential":"Vehicle ownership/custody/control/crew/cargo relations change through a transfer edge without collapsing distinct authority relations"},
+    {"id":"P15-AWK-010","key":"relationship-secret-reveal","taxonomy":["P15-AX-001","P15-AX-008"],"required_differential":"a protected relationship/claim/secret becomes visible to a bounded audience while topology/counts/other recipients remain nonleaking"},
+    {"id":"P15-AWK-011","key":"interrupted-crafting","taxonomy":["P15-AX-002","P15-AX-003","P15-AX-008"],"required_differential":"a Rune/crafting or analogous governed construction flow is interrupted between local draft/proposal/approval/accepted authoritative state without fabricating completion"},
+    {"id":"P15-AWK-012","key":"reconnect-during-approval","taxonomy":["P15-AX-001","P15-AX-003","P15-AX-008"],"required_differential":"actor reconnects while an approval decision may have happened; status/current authority are re-resolved before retry or display"},
+    {"id":"P15-AWK-013","key":"large-inventories","taxonomy":["P15-AX-004","P15-AX-005","P15-AX-006","P15-AX-007"],"required_differential":"bounded high-cardinality Item/Asset fixture stresses identity, search/selection, hidden aggregates and accessible navigation"},
+    {"id":"P15-AWK-014","key":"dense-creatures","taxonomy":["P15-AX-004","P15-AX-005","P15-AX-006"],"required_differential":"bounded high-cardinality Creature/NPC/encounter fixture stresses semantic targeting, permission-safe counts and accessible navigation without asserting a production capacity"},
+    {"id":"P15-AWK-015","key":"unusual-species","taxonomy":["P15-AX-005","P15-AX-006","P15-AX-007"],"required_differential":"nonhuman/nonstandard morphology or form must remain semantically complete without human-body defaults, silent compatibility synthesis or inaccessible controls"},
+    {"id":"P15-AWK-016","key":"mobile-only","taxonomy":["P15-AX-006"],"required_differential":"complete a workflow using a compact/touch path whose sequencing is materially different from wide desktop, not a viewport-only clone"},
+    {"id":"P15-AWK-017","key":"keyboard-accessibility","taxonomy":["P15-AX-005"],"required_differential":"complete an awkward conflict/recovery/object-edge flow without drag/spatial-only/icon-only dependence and with equivalent semantic status"},
+    {"id":"P15-AWK-018","key":"offline-read-only","taxonomy":["P15-AX-001","P15-AX-003"],"required_differential":"offline/read-only state permits only explicitly bounded local/read behavior; canonical mutation, hidden-state expansion and fabricated authoritative Events remain prohibited"}
+  ],
+  "roles":["invited-tester","player","game-master","assistant-gm","content-creator","observer","owner-admin","service-actor","ai"],
+  "contexts":["global-shell","identity-entry","dashboard","workspace-selection","universal-object","character","campaign-builder","scene-builder","live-session","combat","inventory","social","investigation","world-builder","offline","stale","conflict","forbidden","entitlement-restricted","recovery"],
+  "delivery_channels":["inline-field","inline-status","toast-or-transient","blocking-dialog","empty-or-unavailable-surface","nonvisual-live-status","help-or-support"],
+  "device_profiles":["desktop-wide","laptop-compact","tablet-touch","phone-portrait","phone-landscape"],
+  "interaction_modes":["pointer-and-keyboard","keyboard-only","touch-only","screen-reader-and-keyboard","screen-reader-and-touch"],
+  "accessibility_modes":["baseline","high-zoom-or-text-scale","reduced-motion","noncolor","semantic-nonvisual"],
+  "connection_states":["online","degraded","disconnected","reconnecting","bounded-offline-read-only"],
+  "scale_rule":"Scale labels are QA dimensions only. Every stress case must declare its concrete synthetic fixture size, but no fixture size becomes a product capacity, performance, support or release promise.",
+  "dimension_requirements":[
+    "Every new scenario names at least one required awkward family and one material differential from its nearest inherited anchor.",
+    "Every scenario names actor role, context, device/interaction mode, authority precondition and expected safe oracle.",
+    "Protected-state scenarios resolve permission/entitlement before counts, search, selection, actions, diagnostics, exports, notifications, support or AI context.",
+    "Visual and nonvisual variants must preserve semantic outcome and disclosure ceiling.",
+    "AI is a service actor over the already-authorized projection and never an oracle authority or required core path.",
+    "F024 Pack Lifecycle remains unsupported until upstream authority exists."
+  ]
+}

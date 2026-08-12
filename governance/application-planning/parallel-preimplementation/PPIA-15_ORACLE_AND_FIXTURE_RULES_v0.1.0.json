@@ -1,0 +1,86 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"PPIA-15",
+  "artifact_version":"0.1.0",
+  "title":"PPIA-15 Deterministic Oracle, Fixture Isolation and Evidence Rules",
+  "status":"foundation-candidate",
+  "oracle_model":{
+    "required_fields":["case_id","awkward_family_ids","nearest_inherited_anchors","material_differential","fixture_state","actor_role","context","device_profile","interaction_mode","authority_precondition","operation_or_read_phase","expected_authoritative_outcome","expected_visible_projection","expected_nonvisual_projection","expected_recovery_or_conflict_state","expected_provenance","forbidden_outcomes"],
+    "authoritative_outcome_classes":["no-authoritative-mutation","one-accepted-event-or-equivalent-owning-domain-result","explicit-rejection","status-unknown-pending-lookup","accepted-event-projection-pending","indeterminate-blocked-source-gap"],
+    "projection_outcome_classes":["visible-authorized","safe-unavailable","hidden-missing-equivalent","redacted-minimum-safe","read-only-local","projection-pending","semantic-nonvisual-equivalent"],
+    "recovery_outcome_classes":["none","refresh-current-version","lookup-operation-status","reconnect-reauthorize","review-conflict","retry-only-with-idempotency-proof","discard-or-preserve-local-draft-as-declared","unsupported-source-gap"],
+    "rule":"The oracle describes externally and authoritatively governed results, not an implementation technique. When source authority does not define an outcome, the deterministic expected result is explicit unsupported/indeterminate behavior rather than a guessed rule."
+  },
+  "authority_rules":[
+    "Permission and entitlement resolution precede protected object resolution, counts, search, selection, actions, diagnostics, support, export, notifications and optional AI context.",
+    "When existence is protected, hidden and missing must remain externally equivalent across wording, counts, timing, action availability and recovery behavior.",
+    "Local draft/edit state, save intent, authoritative command, accepted durable Event and derived projection/cache are distinct phases.",
+    "status-unknown is not failure and must not authorize blind mutation retry.",
+    "An accepted durable Event with projection lag is not an unsuccessful command.",
+    "Offline/local state is not authoritative mutation.",
+    "Every owning-domain mutation contract retains its expected-version, operation-id, authorization and idempotency semantics; PPIA-15 does not create a new mutation protocol.",
+    "AI may consume only the authorized redacted projection and cannot decide permission, approval, recovery, canonical truth, balance or promotion."
+  ],
+  "conflict_and_concurrency_rules":[
+    "Silent last-write-wins is forbidden for governed conflicts.",
+    "Two concurrent intents must either resolve through the owning-domain contract to one accepted authoritative outcome, reject one or both with explicit conflict/current-version state, or remain status-unknown pending lookup.",
+    "Compatible duplicate operation IDs converge to the prior result/status; incompatible operation-ID reuse fails without mutation where the owning domain specifies idempotency.",
+    "A new PPIA-15 case cannot assert merge semantics that the owning domain has not defined."
+  ],
+  "scale_rules":[
+    "Every scale/density case declares a concrete synthetic fixture count inside that case.",
+    "Case-local counts are QA stress inputs only and never establish supported maximums, performance budgets or release guarantees.",
+    "Scale tests must preserve stable identity, deterministic ordering/filtering where specified, permission-safe aggregates and semantic accessibility.",
+    "PPIA-11 analysis may surface low/moderate/high/indeterminate uncertainty and may terminate indeterminate_blocked when governing interaction rules are missing; no balanced/fair/safe/winnable/optimal/guaranteed oracle is permitted."
+  ],
+  "accessibility_rules":{
+    "keyboard_complete":true,
+    "touch_complete":true,
+    "screen_reader_complete":true,
+    "mobile_single_focus_supported":true,
+    "high_zoom_reflow_supported":true,
+    "reduced_motion_supported":true,
+    "noncolor_equivalent_required":true,
+    "meaning_not_icon_only":true,
+    "required_recovery_not_transient_only":true,
+    "safe_semantic_parity_visual_nonvisual":true
+  },
+  "fixture_isolation":{
+    "classification":"synthetic_noncanonical_qa_fixture",
+    "stable_id_namespace":"p15-ref-",
+    "canonical":false,
+    "production_data":false,
+    "real_user_data":false,
+    "production_credentials":false,
+    "paid_provider_required":false,
+    "reset_scope":"PPIA-15 synthetic fixture only",
+    "reset_may_target_user_or_production_data":false,
+    "fixture_may_promote_itself":false,
+    "fixture_may_create_source_truth":false,
+    "fixture_may_invent_missing_pack_lifecycle":false,
+    "fixture_may_override_owning_domain":false
+  },
+  "provenance_classes":[
+    {"id":"P15-PV-001","key":"inherited-exact","meaning":"Exact existing fixture/case or one-to-one execution representation; additive count zero when aliased."},
+    {"id":"P15-PV-002","key":"inherited-composed-anchor","meaning":"Existing cases/contracts used as component proofs for a new cross-domain or timing composition."},
+    {"id":"P15-PV-003","key":"synthetic-awkward-expansion","meaning":"New PPIA-15 deterministic QA case adding a material test dimension; noncanonical."},
+    {"id":"P15-PV-004","key":"source-gap-oracle","meaning":"Case intentionally proves unsupported/indeterminate behavior because upstream authority is missing."},
+    {"id":"P15-PV-005","key":"observed-test-evidence","meaning":"Future execution evidence from a candidate build; evidence only, not source truth or automatic canon."}
+  ],
+  "evidence_requirements":[
+    "Every future executed scenario records exact candidate/build identity, fixture version/digest, role/authority state, operation IDs when applicable, expected oracle and actual result.",
+    "Execution evidence is separate from the design-time scenario definition and cannot retroactively change its source basis.",
+    "A passing scenario proves only the bounded case; it does not imply complete-game coverage, production readiness, tester authorization or release approval.",
+    "A failing scenario remains unfinished evidence and cannot be converted to pass through wording alone."
+  ],
+  "nonactivation":{
+    "application_runtime":false,
+    "stage_a_a2":false,
+    "tester_access":false,
+    "release":false,
+    "deployment":false,
+    "paid_service":false,
+    "production_credentials":false,
+    "canonical_promotion":false
+  }
+}
