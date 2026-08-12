@@ -53,7 +53,7 @@ Controls deny-by-default visibility and inference safety. Filtering must occur b
 
 ### MV-IA-F021 — Autosave, Reconnect, Recovery, and Bounded Offline Use
 
-Controls teaching of interruption and recovery. PPIA-13 must distinguish local draft, local autosave, authoritative save, submitted command, accepted Event, realtime delivery, and displayed projection. Offline authoritative mutation is prohibited. Ambiguous network outcomes use status lookup and idempotent recovery instead of guessing.
+Controls teaching of interruption and recovery. PPIA-13 must distinguish local draft, local autosave, authoritative save, submitted command, accepted durable Event, realtime delivery, and displayed projection. Offline authoritative mutation is prohibited. Ambiguous network outcomes use status lookup and idempotent recovery instead of guessing.
 
 ### PPIA-08 — Campaign / Scene / Session Authoring Depth
 
