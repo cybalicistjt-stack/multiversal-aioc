@@ -78,7 +78,7 @@ The 26-case corpus explicitly proves the map-authoring requirement end to end:
 
 ## 5. Dungeon construction coverage
 
-Reference cases cover all verified primitive families:
+The **seven verified primitive families** are all covered by reference cases:
 
 - room/floor region;
 - corridor/path region;
