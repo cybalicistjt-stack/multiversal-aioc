@@ -58,7 +58,7 @@ def main():
     require(msgs[8]["semantic_intent_key"].endswith("status-unknown"),"status-unknown message identity changed")
     require("check its status" in msgs[8]["default_en"]["body"].lower(),"status-unknown must direct status lookup")
     require("recorded" in msgs[9]["default_en"]["body"].lower() and "caught up" in msgs[9]["default_en"]["body"].lower(),"accepted Event/projection lag copy changed")
-    require(msgs[17].get("audience_scope")==["owner-admin","service-actor"] and msgs[17].get("fallback_for_other_roles")=="P14-MSG-002","source-gap audience/fallback changed")
+    require("source-gap fact" in msgs[17].get("render_rule","").lower() and "p14-msg-002" in msgs[17].get("render_rule","").lower(),"source-gap disclosure/fallback rule changed")
     gp=library["global_copy_rules"]
     for k in ("hidden_missing_equivalence","status_unknown_is_not_failure","accepted_event_is_distinct_from_projection","offline_local_state_is_not_authoritative_mutation","blind_ambiguous_mutation_retry_forbidden"):
         require(gp[k] is True,f"global copy invariant {k} changed")
