@@ -73,7 +73,7 @@ The local cases explicitly prove:
 
 ## Preserved boundaries
 
-This milestone does not invent boss-only mechanics, universal CR/difficulty/threat/power scoring, cross-domain target-band equivalence, source defaults, weighted pressure collapse, automatic balance rewrite, automatic canonical promotion, hidden-state inference, guaranteed-balance claims or AI irreversible authority.
+There is **no universal CR**, difficulty score, threat number, encounter level or cross-domain power scalar in this contract. This milestone does not invent boss-only mechanics, cross-domain target-band equivalence, source defaults, weighted pressure collapse, automatic balance rewrite, automatic canonical promotion, hidden-state inference, guaranteed-balance claims or AI irreversible authority.
 
 It activates no application runtime, STAGE-A-A2, release, deployment, tester access, paid service or production credential.
 
