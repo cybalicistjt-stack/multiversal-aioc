@@ -46,8 +46,8 @@ PPIA-06 satisfies that gate through the verified milestone chain:
 - 20 permission-safe projection groups.
 - 30 governed actions: 12 reads / 10 analysis-proposals / 8 writes.
 - 1 versioned/idempotent write protocol: `P06-MUT-001`.
-- 16 integrated workflows: 14 mutation-capable / 2 read-analysis-only.
-- 9 explicit authority/domain handoffs.
+- Sixteen integrated workflows: 14 mutation-capable / 2 read-analysis-only.
+- Nine explicit authority/domain handoffs.
 - 48 Inspector/Action/Reference cases.
 - 36 Species Visual cases.
 - 32 integrated workflow cases.
