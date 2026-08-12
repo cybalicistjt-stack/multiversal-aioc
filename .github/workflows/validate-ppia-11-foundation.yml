@@ -1,0 +1,27 @@
+name: Validate PPIA-11 Foundation
+
+on:
+  pull_request:
+  push:
+    branches:
+      - governance/ppia-11-encounter-balance-laboratory
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia11-foundation:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PPIA-11 foundation
+        run: python scripts/validate-ppia11-foundation.py
+      - name: Validate PPIA-10 to PPIA-11 transition regression
+        run: python scripts/validate-ppia10-to-ppia11-transition.py
+      - name: Validate generalized PPIA continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
+      - name: Validate conversation continuity
+        run: python tools/continuity_state.py validate

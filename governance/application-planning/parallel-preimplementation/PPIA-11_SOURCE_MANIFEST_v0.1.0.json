@@ -1,0 +1,56 @@
+{
+  "work_item":"PPIA-11",
+  "version":"0.1.0",
+  "purpose":"Bound the Encounter & Balance Design Laboratory foundation to verified repository evidence without promoting observations or authored methodology into source truth.",
+  "evidence_classes":[
+    {"id":"source_truth","authority":"owning retained source/rules only","may_mutate_source":false},
+    {"id":"inherited_contract","authority":"completed governed PPIA/Internal Alpha contract; downstream boundary only","may_mutate_source":false},
+    {"id":"observed_benchmark","authority":"verified deterministic test/observation evidence; not canon","may_mutate_source":false},
+    {"id":"authored_methodology","authority":"PPIA-11 design guidance; must be labeled as methodology","may_mutate_source":false},
+    {"id":"unresolved_gap","authority":"explicit unknown/non-assumption","may_mutate_source":false}
+  ],
+  "governed_balance_anchor":{
+    "workstream":"8D-007 Golden Test Corpus and Balance Harness",
+    "source_corpus":{"datasets":20,"promoted_records":19199,"reconciliation_sha256":"112ef5116b4090cc266eefe36e1c539b6567f022d6b857db6e1d2bdd77e30e40"},
+    "coverage_domains":18,
+    "golden_fixtures":36,
+    "deterministic_scenarios":24,
+    "scenario_executions":72,
+    "non_destructive_recommendations":36,
+    "mutation_sensitivity_cases":7,
+    "installation_residue":0,
+    "blocking_observations":0,
+    "source_truth_changed":false,
+    "observation_areas":["output","cost","resource_efficiency","survivability","action_economy","range","duration","reliability","compatibility","complexity"],
+    "comparison_scope":"within-domain deterministic comparison only",
+    "files":[
+      "governance/balance/8D-007_GOLDEN_CORPUS_CONTRACT.json",
+      "governance/balance/8D-007_GOLDEN_CORPUS_MANIFEST.json",
+      "governance/balance/8D-007_RUNTIME_SCENARIO_REGISTRY.json",
+      "governance/balance/8D-007_BALANCE_OBSERVATION_SCHEMA.json",
+      "governance/balance/8D-007_PEER_GROUP_TARGET_BAND_CONTRACT.json",
+      "governance/balance/8D-007_COMPLETION_GOVERNANCE.json",
+      "governance/balance/8D-007_EXECUTABLE_BASELINE_STATUS.md"
+    ]
+  },
+  "inherited_contracts":[
+    {"work_item":"PPIA-02","domain":"Creature/NPC","path":"governance/application-planning/parallel-preimplementation/PPIA-02_COMPLETION_CANDIDATE.md","encounter_boundary":"Encounter balance output is advisory; Definition, placement and live-instance identities stay distinct; deferred creatures receive no invented CR/stat/mechanics."},
+    {"work_item":"PPIA-03","domain":"Items/Equipment/Inventory","path":"governance/application-planning/parallel-preimplementation/PPIA-03_ITEMS_EQUIPMENT_INVENTORY_EXPERIENCE_SPEC_v1.0.0.md","encounter_boundary":"Resource, equipment, quantity, mutable state and action costs remain owning-domain state; numerical balance conclusions route to PPIA-11."},
+    {"work_item":"PPIA-04","domain":"Vehicles/Mecha/Starships","path":"governance/application-planning/parallel-preimplementation/PPIA-04_VEHICLE_MECHA_STARSHIP_EXPERIENCE_SPEC_v1.0.0.md","encounter_boundary":"Semantic movement/environment, systems, resources, station authority and damage remain PPIA-04; action output and resource cost commit atomically; unknown capacity is not zero/unlimited."},
+    {"work_item":"PPIA-05","domain":"Species/Forms/Biology","path":"governance/application-planning/parallel-preimplementation/PPIA-05_SPECIES_FORMS_CHARACTER_BIOLOGY_EXPERIENCE_SPEC_v1.0.0.md","encounter_boundary":"Biological traits, forms, adaptations, senses, movement, compatibility and vulnerabilities retain source/owning authority; encounter/balance calibration routes to PPIA-11."},
+    {"work_item":"PPIA-07","domain":"Rune Construction","path":"governance/application-planning/parallel-preimplementation/PPIA-07_RUNE_CONSTRUCTION_EXPERIENCE_SPEC_v1.0.0.md","encounter_boundary":"SCI measures structural/cognitive complexity, not power; CSL is not failure probability/damage; no universal mana/cost formula; final balance calibration remains PPIA-11."},
+    {"work_item":"PPIA-08","domain":"Campaign/Scene/Session Authoring","path":"governance/application-planning/parallel-preimplementation/PPIA-08_CAMPAIGN_SCENE_SESSION_AUTHORING_EXPERIENCE_SPEC_v1.0.0.md","encounter_boundary":"Scenes may place/link Encounter, objective, hazard, spawn, trigger and Event references; encounter definition, tactical resolution and final balance remain PPIA-11/MV-IA-F012; map art/geometry does not imply threat."}
+  ],
+  "explicit_non_assumptions":[
+    "No universal challenge-rating, encounter-level, power-score or cross-domain scalar is recovered by these sources.",
+    "No target band is a universal balance guarantee; 8D-007 target bands are within-domain deterministic comparisons.",
+    "A benchmark result, observed metric, regression threshold or recommendation is not source truth.",
+    "Action economy cannot be reduced to hit points or damage alone.",
+    "Unknown capacity, compatibility, capability, vulnerability, resource maximum or source mechanic is not zero, unlimited, absent, compatible or safe by default.",
+    "Creature, character, vehicle, mecha and spacecraft scale are not numerically interchangeable without an explicit governing rules context.",
+    "Map pixels, dungeon geometry and visual density do not determine threat, legality or balance.",
+    "SCI/CSL do not encode rune power, success probability, damage or universal resource cost.",
+    "Post-playtest calibration may recommend changes but never rewrites canonical source mechanics automatically.",
+    "PPIA-11 does not activate application runtime, STAGE-A-A2, release, deployment, tester access, paid services or production credentials."
+  ]
+}
