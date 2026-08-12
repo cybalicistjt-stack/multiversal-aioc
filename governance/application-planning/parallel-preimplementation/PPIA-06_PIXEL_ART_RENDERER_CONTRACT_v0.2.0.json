@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.2.0",
+  "work_item": "PPIA-06",
+  "renderer_id": "pixel-art-v1",
+  "renderer_version": "0.2.0",
+  "supersedes_for_future_ppia06_work": "PPIA-06_PIXEL_ART_RENDERER_CONTRACT_v0.1.0.json",
+  "role": "first fully specified renderer over renderer-independent species-aware appearance state",
+  "future_renderer_boundary": {
+    "future_3d_supported_by_contract": true,
+    "core_state_may_not_require_sprite_or_pixel_fields": true,
+    "renderer_metadata_separate_from_character_truth": true
+  },
+  "view_contract": {
+    "master_view": "full_body_three_quarter",
+    "switchable_during_customization": ["full_body_three_quarter","portrait_zoom","tactical_token"],
+    "arbitrary_rotation": false,
+    "pseudo_3d_rotation": false,
+    "zoom_allowed": true,
+    "rule": "Switch views without pretending a 2D asset set is a rotatable 3D model."
+  },
+  "render_plan_identity": ["appearance_state_version","authoritative_form_snapshot","persistent_biology_snapshot","renderer_id","renderer_version","asset_pack_lock","pose_id","view_id","permission_projection_version"],
+  "stable_asset_identity": {"required":true,"filename_authoritative":false,"display_name_authoritative":false},
+  "semantic_render_bands": ["body_base","surface_and_pattern","structural_appendages","covering_and_hair","persistent_biology_markers","player_markings_cosmetics","presentation_wardrobe","actual_equipment_projection","foreground_occlusion","presentation_effects"],
+  "anchors": {
+    "universal": ["root","visual_center","portrait_focus","occupancy_bounds"],
+    "topology_specific": true,
+    "repeated_constituent_anchors": true,
+    "nested_appendage_anchors": true,
+    "missing_required_anchor": "partial_or_unsupported_never_anatomical_approximation"
+  },
+  "topology": {
+    "profiles_are_compatibility_classes_not_species_taxonomy": true,
+    "humanoid_default_forbidden": true,
+    "six_limb_and_composite_support_required": true,
+    "species_examples": {
+      "Moravi": "2 arms + 4 legs",
+      "Vespin": "4 arms + 2 legs",
+      "ManyToms": "composite repeated constituents",
+      "Suula": "nested hands inside claws"
+    },
+    "unsupported_topology_does_not_invalidate_character": true
+  },
+  "surface_material_channels": ["skin","fur","feathers","scales","chitin","bark_woodgrain","metal","bone","translucent_tissue","bioluminescence","void_or_necrotic_effect","plant_growth"],
+  "palette": {
+    "biological_base_separate_from_cosmetic_dye": true,
+    "zone_ids_required": true,
+    "controlled_ramps": true,
+    "semantic_names_required": true,
+    "noncolor_labels_required": true,
+    "color_alone_forbidden": true
+  },
+  "wardrobe_and_equipment": {
+    "presentation_wardrobe": "curated visual-only library; no inventory match required and no mechanics granted",
+    "actual_equipment_projection": "only when authorized and a compatible visual asset exists",
+    "fit_policy": "topology-compatible variants with explicit fallback; no unrestricted warp",
+    "missing_variant": "show explicit unsupported/unavailable visual fit without changing actual equipment"
+  },
+  "determinism": "Same authorized semantic state + authoritative biological snapshots + renderer/version + asset lock + view/pose yields same semantic render plan.",
+  "failure_behavior": [
+    "Missing asset/anchor/mask/palette/topology/view support never fabricates anatomy.",
+    "Partial/unsupported rendering preserves semantic appearance state.",
+    "Asset/version mismatch is explicit; no silent latest substitution.",
+    "Visual-only wardrobe never mutates mechanics."
+  ],
+  "permission_and_export": {"filter_before_asset_selection":true,"filter_before_derivatives":true,"filter_before_export":true,"filter_before_ai_context":true}
+}

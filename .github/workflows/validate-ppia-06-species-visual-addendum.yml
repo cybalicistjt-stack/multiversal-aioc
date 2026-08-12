@@ -1,0 +1,33 @@
+name: Validate PPIA-06 Species Visual Addendum
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-06_*'
+      - 'governance/ai/work-state/PPIA-06-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia06-species-visual-addendum.py'
+      - '.github/workflows/validate-ppia-06-species-visual-addendum.yml'
+  workflow_dispatch:
+
+jobs:
+  validate-ppia06-species-visual-addendum:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PPIA-06 Species Visual Addendum
+        run: python scripts/validate-ppia06-species-visual-addendum.py
+      - name: Validate PPIA-06 foundation regression
+        run: python scripts/validate-ppia06-foundation.py
+      - name: Validate PPIA-11 to PPIA-06 transition regression
+        run: python scripts/validate-ppia11-to-ppia06-transition.py
+      - name: Validate generalized PPIA continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
+      - name: Validate conversation continuity
+        run: python tools/continuity_state.py validate
+      - name: Run conversation continuity regression tests
+        run: python -m unittest discover -s tests/continuity -v
