@@ -24,6 +24,8 @@ INSPECTOR_HEAD = "9cc894e3544203f42ec23c12efd256041cb630a2"
 INSPECTOR_MERGE = "6985dd1e1f6d2e2b696f409cc74ae9e0ad18d728"
 WORKFLOW_HEAD = "7e23b04fa920b706278ae0467b022713cc6a9334"
 WORKFLOW_MERGE = "36da845855a01da8003b699f8a68478427424d42"
+COMPLETE = {"complete", "completed", "completed_verified"}
+ACTIVE = {"started", "in_progress"}
 
 def fail(msg):
     raise SystemExit("PPIA-10 COMPLETION CONTRACT: FAIL — " + msg)
@@ -120,8 +122,11 @@ def main():
     for value in (FOUNDATION_HEAD, FOUNDATION_MERGE, INSPECTOR_HEAD, INSPECTOR_MERGE, WORKFLOW_HEAD, WORKFLOW_MERGE):
         req(value.lower() in history, f"immutable milestone evidence missing {value}")
 
+    order = backlog.get("execution_order", [])
+    current_id = backlog.get("current_work_item_id")
+    req(current_id in order and "PPIA-10" in order and "PPIA-11" in order, "PPIA execution order/current item invalid")
     if tranches["PPIA-10"].get("status") == "started":
-        req(backlog.get("current_work_item_id") == "PPIA-10", "candidate/pre-transition backlog must keep PPIA-10 current")
+        req(current_id == "PPIA-10", "candidate/pre-transition backlog must keep PPIA-10 current")
         req(tranches["PPIA-11"].get("status") == "planned", "PPIA-11 must remain planned before transition")
         req(ptr.get("primary_attempt_id") == "PPIA-10-attempt-001", "pointer must remain on PPIA-10 before transition")
         req(status.get("primary", {}).get("work_item_id") == "PPIA-10", "compact status must remain on PPIA-10 before transition")
@@ -133,11 +138,19 @@ def main():
         continuity = "ppia10_completion_pretransition"
     else:
         req(tranches["PPIA-10"].get("status") == "completed_verified", "post-transition PPIA-10 status must be completed_verified")
-        req(tranches["PPIA-11"].get("status") == "started" and backlog.get("current_work_item_id") == "PPIA-11", "post-transition backlog must select started PPIA-11")
         req(cp_status == "completed_verified", "post-transition PPIA-10 checkpoint must remain completed_verified")
-        req(ptr.get("primary_attempt_id") == "PPIA-11-attempt-001", "post-transition pointer must select PPIA-11")
-        req(status.get("primary", {}).get("work_item_id") == "PPIA-11" and status.get("primary", {}).get("status") == "started", "post-transition compact status must select started PPIA-11")
-        continuity = "ppia10_historical_after_ppia11_transition"
+        req(order.index(current_id) > order.index("PPIA-10"), "post-transition current work must advance beyond PPIA-10")
+        if current_id == "PPIA-11":
+            req(tranches["PPIA-11"].get("status") in ACTIVE, "PPIA-11 must be active when current")
+            req(ptr.get("primary_attempt_id") == "PPIA-11-attempt-001", "post-transition pointer must select PPIA-11")
+            req(status.get("primary", {}).get("work_item_id") == "PPIA-11" and status.get("primary", {}).get("status") in ACTIVE, "post-transition compact status must select active PPIA-11")
+            continuity = "ppia10_historical_during_ppia11"
+        else:
+            req(order.index(current_id) > order.index("PPIA-11"), "later historical state must advance beyond PPIA-11")
+            req(tranches["PPIA-11"].get("status") in COMPLETE, "later historical state requires PPIA-11 complete")
+            req(ptr.get("primary_attempt_id") != "PPIA-10-attempt-001", "historical pointer must not return to PPIA-10")
+            req(status.get("primary", {}).get("work_item_id") == current_id, "compact status must match current later PPIA work item")
+            continuity = "ppia10_historical_after_ppia11"
 
     req(backlog.get("boundaries", {}).get("application_runtime_mutation_authorized") is False, "runtime mutation boundary changed")
     req(backlog.get("boundaries", {}).get("a2_activation_authorized") is False, "A2 activation boundary changed")
