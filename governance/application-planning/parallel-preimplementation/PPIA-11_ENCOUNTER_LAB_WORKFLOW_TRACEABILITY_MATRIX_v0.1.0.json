@@ -1,0 +1,45 @@
+{
+  "work_item":"PPIA-11",
+  "version":"0.1.0",
+  "classification":"authored_methodology",
+  "workflow_contract":"PPIA-11_ENCOUNTER_LAB_WORKFLOW_CONTRACT_MATRIX_v0.1.0.json",
+  "counts":{"workflows":14,"mutation_workflows":5,"read_analysis_workflows":9,"projection_groups":16,"actions":24,"reference_cases":42,"factor_families":20,"pressure_dimensions":12,"uncertainty_bands":4,"methodology_steps":13,"domain_handoffs":10},
+  "rows":[
+    {"id":"P11-WF-001","cases":["PPIA11-IR-001","PPIA11-IR-002","PPIA11-IR-003"],"mutation":false},
+    {"id":"P11-WF-002","cases":["PPIA11-IR-004","PPIA11-IR-005","PPIA11-IR-006"],"mutation":false},
+    {"id":"P11-WF-003","cases":["PPIA11-IR-007","PPIA11-IR-008","PPIA11-IR-009"],"mutation":false},
+    {"id":"P11-WF-004","cases":["PPIA11-IR-010","PPIA11-IR-011","PPIA11-IR-012"],"mutation":false},
+    {"id":"P11-WF-005","cases":["PPIA11-IR-013","PPIA11-IR-014","PPIA11-IR-015"],"mutation":true},
+    {"id":"P11-WF-006","cases":["PPIA11-IR-016","PPIA11-IR-017","PPIA11-IR-018"],"mutation":false},
+    {"id":"P11-WF-007","cases":["PPIA11-IR-019","PPIA11-IR-020","PPIA11-IR-021"],"mutation":false},
+    {"id":"P11-WF-008","cases":["PPIA11-IR-022","PPIA11-IR-023","PPIA11-IR-024"],"mutation":false},
+    {"id":"P11-WF-009","cases":["PPIA11-IR-025","PPIA11-IR-026","PPIA11-IR-027"],"mutation":false},
+    {"id":"P11-WF-010","cases":["PPIA11-IR-028","PPIA11-IR-029","PPIA11-IR-030"],"mutation":true},
+    {"id":"P11-WF-011","cases":["PPIA11-IR-031","PPIA11-IR-032","PPIA11-IR-033"],"mutation":true},
+    {"id":"P11-WF-012","cases":["PPIA11-IR-034","PPIA11-IR-035","PPIA11-IR-036"],"mutation":true},
+    {"id":"P11-WF-013","cases":["PPIA11-IR-037","PPIA11-IR-038","PPIA11-IR-039"],"mutation":true},
+    {"id":"P11-WF-014","cases":["PPIA11-IR-040","PPIA11-IR-041","PPIA11-IR-042"],"mutation":false}
+  ],
+  "coverage":{
+    "projection_groups":"16/16",
+    "actions":"24/24",
+    "reference_cases":"42/42 exactly once",
+    "factor_families":"20/20",
+    "pressure_dimensions":"12/12 independently inspectable",
+    "uncertainty_bands":"4/4",
+    "methodology_steps":"13/13",
+    "domain_handoffs":"10/10"
+  },
+  "assertions":[
+    "All forty-two deterministic reference cases are assigned to exactly one workflow traceability row.",
+    "Every projection group and governed action appears in at least one workflow contract.",
+    "All twenty factors and twelve inherited pressure dimensions remain independently inspectable; no weighted aggregate is required.",
+    "Low, moderate, high and indeterminate uncertainty remain explicit workflow outcomes.",
+    "All thirteen methodology steps and ten authority handoffs are exercised by the workflow set.",
+    "Mutation workflows use P11-MUT-001 and remain limited to authorized encounter drafts/configuration, observations, calibration outcomes and explicitly noncanonical QA benchmarks.",
+    "Hidden-state filtering precedes protected counts, derivatives, benchmark selection, export, diagnostics and AI context.",
+    "Mixed-scale analysis without governing interaction rules may terminate indeterminate_blocked.",
+    "Benchmark and simulation results remain evidence, never source truth or guaranteed-balance certification.",
+    "No workflow activates application runtime, STAGE-A-A2, release, deployment, tester access, paid services or production credentials."
+  ]
+}
