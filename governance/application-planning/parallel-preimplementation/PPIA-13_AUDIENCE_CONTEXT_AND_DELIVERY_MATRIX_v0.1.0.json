@@ -1,0 +1,56 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"PPIA-13",
+  "artifact_version":"0.1.0",
+  "status":"foundation-candidate",
+  "role_profiles":[
+    {"role":"invited-tester","teaching_scope":"assigned alpha release, allowed journey boundaries, help discovery and own issue-report path","may_receive_hidden_expansion":false},
+    {"role":"player","teaching_scope":"Player-safe first launch, Campaign join, Character creation, first action, own approvals/status, Library/Inspector, offline/reconnect and tutorial-Campaign path","may_receive_hidden_expansion":false},
+    {"role":"game-master","teaching_scope":"GM-authorized workspace, Campaign/Scene/Session authoring, approval/adjudication, Player-projection preview, support and tutorial-Campaign facilitation","may_receive_hidden_expansion":false},
+    {"role":"assistant-gm","teaching_scope":"delegated GM teaching only inside active delegation","may_receive_hidden_expansion":false},
+    {"role":"content-creator","teaching_scope":"creator workspace, source/provenance, content authoring, Pack-context explanation limited to evidenced contracts and review/promotion boundaries","may_receive_hidden_expansion":false},
+    {"role":"observer","teaching_scope":"observer-safe navigation, read-only projection, help and own issue-report path","may_receive_hidden_expansion":false},
+    {"role":"owner-admin","teaching_scope":"approved administration and support workflow; no blanket Campaign-private teaching projection","may_receive_hidden_expansion":false},
+    {"role":"service-actor","teaching_scope":"no human teaching UI; narrow manifest/storage/intake/notification/export contract metadata only","may_receive_hidden_expansion":false},
+    {"role":"ai","teaching_scope":"optional read-only explanation over initiating subject's already-filtered teaching projection; zero-AI path always exists","may_receive_hidden_expansion":false}
+  ],
+  "foundation_journeys":[
+    {"id":"P13-JR-001","name":"player-first-use","ordered_surfaces":["first-launch-and-release-identification","identity-role-and-workspace-entry","dashboard-and-resume","campaign-join","character-creation","library-and-universal-object-inspector","first-playable-action","gm-approval-loop","completion-resume-and-help-rediscovery"]},
+    {"id":"P13-JR-002","name":"gm-first-use","ordered_surfaces":["first-launch-and-release-identification","identity-role-and-workspace-entry","dashboard-and-resume","campaign-scene-session-authoring","library-and-universal-object-inspector","gm-approval-loop","permissions-and-hidden-information","completion-resume-and-help-rediscovery"]},
+    {"id":"P13-JR-003","name":"creator-first-use","ordered_surfaces":["first-launch-and-release-identification","identity-role-and-workspace-entry","dashboard-and-resume","library-and-universal-object-inspector","content-and-pack-context","glossary-and-source-grounded-reference","completion-resume-and-help-rediscovery"]},
+    {"id":"P13-JR-004","name":"reconnect-and-recovery-teaching","ordered_surfaces":["offline-reconnect-and-recovery","contextual-help-and-known-limitations","diagnostics-and-issue-report-introduction","completion-resume-and-help-rediscovery"]},
+    {"id":"P13-JR-005","name":"tutorial-campaign-flow","ordered_surfaces":["tutorial-campaign","campaign-join","character-creation","library-and-universal-object-inspector","first-playable-action","gm-approval-loop","permissions-and-hidden-information","offline-reconnect-and-recovery","completion-resume-and-help-rediscovery"]}
+  ],
+  "context_rules":[
+    {"context":"first-launch","required":"release identity, role-safe boundary acknowledgement, supported-journey introduction, help discovery and resume path","forbidden":"production promises, hidden release metadata, forced disclosure of unsupported features"},
+    {"context":"campaign-join","required":"membership/role context and safe next step","forbidden":"enumerating Campaigns or participants outside authorization"},
+    {"context":"character-creation","required":"ordered governed creation flow, source/provenance help, draft/save status and review boundary","forbidden":"inventing defaults for unspecified source truth"},
+    {"context":"first-action","required":"draft, quick-rule inspection, target/cost/requirement preview, submit, pending-GM, decision and committed-result distinctions","forbidden":"claiming preview or local draft is accepted state"},
+    {"context":"approval-loop","required":"role-safe pending status, GM-authorized review concepts, approve/deny/modify-and-approve semantics and final authoritative result","forbidden":"Player access to GM-only queue or adjudication evidence"},
+    {"context":"library-inspector","required":"stable source identity, provenance, permission-safe object explanation and return context","forbidden":"help/search leakage of unavailable objects, relationships or source fields"},
+    {"context":"permissions-hidden","required":"user-safe explanation of visible capability or unavailable state where inference-safe","forbidden":"policy internals or protected-existence confirmation"},
+    {"context":"offline-reconnect","required":"cached/read-only vs authoritative distinction, expiry, pending operation status, conflict/recovery route","forbidden":"offline authoritative mutation or automatic last-write-wins teaching"},
+    {"context":"packs","required":"source pack/version, installed/locked context and entitlement concepts only when already evidenced","forbidden":"invented F024 lifecycle commands or final UI"},
+    {"context":"troubleshooting","required":"what state category means, what is preserved, safe next action category, diagnostic/support handoff","forbidden":"complete PPIA-14 final microcopy or secret-bearing diagnostics"},
+    {"context":"empty-state","required":"clear explanation, primary action, optional safe secondary action and help access","forbidden":"counts or labels that reveal hidden candidates"},
+    {"context":"tutorial-campaign","required":"noncanonical label, lesson objective, governed source links, role-safe branch, restart/replay and completion receipt","forbidden":"automatic canonical promotion or test fixture becoming source truth"}
+  ],
+  "accessibility_delivery":{
+    "keyboard_complete":true,
+    "touch_complete":true,
+    "screen_reader_complete":true,
+    "mobile_single_focus_supported":true,
+    "high_zoom_supported":true,
+    "reduced_motion_supported":true,
+    "noncolor_equivalent_required":true,
+    "minimum_touch_target":"44x44 where interactive controls are presented",
+    "semantic_nonvisual_equivalent":"Every required visual teaching cue has text/semantic status, ordering, action, warning and completion information."
+  },
+  "resume_and_dismissal":{
+    "preserve_return_context":true,
+    "remember_optional_progress":"subject/context scoped, permission-safe, versioned",
+    "dismissal":"allowed for optional guidance; does not remove Help access or required legal/alpha acknowledgements",
+    "replay":"available for authored onboarding/tutorial sequences without duplicating authoritative game effects",
+    "revocation":"invalidates protected cached teaching derivatives and resume entries"
+  }
+}

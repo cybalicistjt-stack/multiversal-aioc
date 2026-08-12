@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "PPIA-13",
+  "artifact_version": "0.1.0",
+  "title": "PPIA-13 Onboarding, Help & In-App Teaching Content — Source Manifest",
+  "owner": "John Brandon Turner",
+  "status": "foundation-candidate",
+  "evidence_classes": [
+    "source_truth",
+    "inherited_contract",
+    "project_source_design_contract",
+    "authored_teaching_content",
+    "delivery_context_metadata",
+    "unresolved_gap"
+  ],
+  "primary_inherited_contract": {
+    "feature_id": "MV-IA-F025",
+    "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F025_ONBOARDING_HELP_DIAGNOSTICS_AND_ISSUE_REPORTING.md",
+    "version": "0.1.0",
+    "design_status": "implementation-ready",
+    "companion_matrix": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F025_ONBOARDING_SUPPORT_MATRIX.json",
+    "support_matrix_sha": "4220c651ce740820c8227aa32db490313e4cae6b",
+    "inherited_counts": {
+      "roles": 9,
+      "onboarding_stages": 10,
+      "help_contexts": 20,
+      "issue_categories": 16,
+      "severity_values": 5,
+      "protected_diagnostic_surfaces": 24,
+      "required_denied_cases": 26,
+      "acceptance_criteria": 20
+    },
+    "default_help_decision": "deny-unless-topic-is-public-or-context-authorized",
+    "default_diagnostic_decision": "exclude",
+    "default_issue_decision": "deny"
+  },
+  "repository_sources": [
+    {
+      "id": "P13-SRC-001",
+      "class": "inherited_contract",
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F025_ONBOARDING_HELP_DIAGNOSTICS_AND_ISSUE_REPORTING.md",
+      "purpose": "Primary onboarding, help, diagnostics, issue-reporting and support architecture."
+    },
+    {
+      "id": "P13-SRC-002",
+      "class": "inherited_contract",
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F025_ONBOARDING_SUPPORT_MATRIX.json",
+      "purpose": "Canonical F025 role, stage, help-context, denial, diagnostic and zero-service vocabulary."
+    },
+    {
+      "id": "P13-SRC-003",
+      "class": "inherited_contract",
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F003_IDENTITY_DASHBOARD_AND_WORKSPACE_SELECTION.md",
+      "purpose": "First launch, identity, role/workspace selection, resume and safe return-context semantics."
+    },
+    {
+      "id": "P13-SRC-004",
+      "class": "inherited_contract",
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F004_CHARACTER_CREATION_AND_ADVANCEMENT.md",
+      "purpose": "Character-creation teaching surface and Character authority boundary."
+    },
+    {
+      "id": "P13-SRC-005",
+      "class": "inherited_contract",
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+      "purpose": "First Action, quick rules inspection, proposal, GM approval and final-result teaching path."
+    },
+    {
+      "id": "P13-SRC-006",
+      "class": "inherited_contract",
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F020_PERMISSIONS_AND_HIDDEN_INFORMATION.md",
+      "purpose": "Deny-by-default visibility, inference safety and permission filtering before every teaching derivative."
+    },
+    {
+      "id": "P13-SRC-007",
+      "class": "inherited_contract",
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F021_AUTOSAVE_RECONNECT_RECOVERY_AND_BOUNDED_OFFLINE_USE.md",
+      "purpose": "Draft/save/submit/Event distinctions, reconnect, recovery and bounded offline teaching."
+    },
+    {
+      "id": "P13-SRC-008",
+      "class": "source_truth",
+      "path": "governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json",
+      "purpose": "Owner-approved PPIA-13 scope, PPIA-08 dependency and PPIA-14 successor boundary."
+    }
+  ],
+  "project_source_support": [
+    {
+      "id": "P13-PS-001",
+      "class": "project_source_design_contract",
+      "name": "SCREEN_DESIGN_BIBLE.md",
+      "purpose": "Journey, state-flow, return-context, empty-state and permission-aware screen requirements."
+    },
+    {
+      "id": "P13-PS-002",
+      "class": "project_source_design_contract",
+      "name": "UI_DESIGN_BIBLE.md",
+      "purpose": "Responsive, mobile, keyboard, screen-reader, reduced-motion, high-zoom, noncolor and help-surface requirements."
+    },
+    {
+      "id": "P13-PS-003",
+      "class": "project_source_design_contract",
+      "name": "FEATURE_BIBLE.md",
+      "purpose": "Role, permission, hidden-information, proposal lifecycle and AI-context boundaries."
+    }
+  ],
+  "explicit_source_gaps": [
+    {
+      "id": "P13-GAP-001",
+      "class": "unresolved_gap",
+      "subject": "MV-IA-F024 Pack Lifecycle and Canonical Content Registry",
+      "finding": "F020 and F021 reference MV-IA-F024 as a dependency, but no completed F024 feature packet was found in the canonical internal-alpha feature-packet directory during PPIA-13 foundation inventory.",
+      "foundation_rule": "Teach only Pack concepts already evidenced by existing pack locks, installed-pack context, source pack/version and entitlement contracts. Do not invent F024-specific lifecycle mechanics, UI, actions or wording."
+    },
+    {
+      "id": "P13-GAP-002",
+      "class": "unresolved_gap",
+      "subject": "Complete user-facing teaching copy",
+      "finding": "Existing sources define behavior and support architecture but do not provide the complete PPIA-13 teaching-content library.",
+      "foundation_rule": "Later PPIA-13 milestones may author teaching copy when attributable to governed behavior; authored copy remains teaching content, not gameplay/source truth."
+    }
+  ],
+  "authority_rule": "Repository evidence and owner decisions outrank project-source support. Teaching content may explain governed behavior but may not create gameplay mechanics, permissions, Pack lifecycle truth, hidden state, entitlement, recovery authority, canonical content or runtime activation."
+}
