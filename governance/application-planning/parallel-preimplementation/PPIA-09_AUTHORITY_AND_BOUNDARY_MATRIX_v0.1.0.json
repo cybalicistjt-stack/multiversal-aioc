@@ -1,0 +1,49 @@
+{
+  "schema_version":"0.1.0",
+  "work_item_id":"PPIA-09",
+  "status":"foundation_candidate",
+  "authority_levels":[
+    {"id":"source-backed-game-content","rule":"Retained game/source material may define investigation mechanics, examples, narrative structures and content only to the extent explicitly supported and attributable."},
+    {"id":"verified-canonical-design","rule":"Merged MV-IA/PPIA contracts define implementation boundaries, permissions, recovery and feature semantics even when not recovered game-source canon."},
+    {"id":"governed-ppia09-design","rule":"PPIA-09 may normalize source-supported concepts and fill explicit product-design gaps, but every such addition must remain labeled governed design rather than source canon."},
+    {"id":"proposal-only-derived-output","rule":"AI suggestions, inferred connections, generated clues/theories and speculative solvability advice remain proposals until an authorized action accepts them."}
+  ],
+  "domain_handoffs":[
+    {"id":"P9-HO-001","owner":"MV-IA-F011","scope":"Investigation/Clue Board starting semantics, records, typed connections, truth-vs-belief separation and 24 fixtures","ppia09_may":"deepen authoring contracts and add source-grounded mystery-construction/validation layers","ppia09_may_not":"erase verified F011 truth, privacy, recovery or accessibility invariants"},
+    {"id":"P9-HO-002","owner":"PPIA-08 / MV-IA-F005","scope":"Campaign, Scene, Session, Scene location/placement, snapshots, live amendments and Campaign-local history","ppia09_may":"reference Campaign/Scene/Session and case-local locations/events","ppia09_may_not":"own Campaign/Scene/Session lifecycle or silently mutate launch/live state"},
+    {"id":"P9-HO-003","owner":"MV-IA-F002","scope":"universal object inspect/search/provenance/relationship traversal","ppia09_may":"use object references and investigation-specific projections","ppia09_may_not":"replace universal browse/inspect authority"},
+    {"id":"P9-HO-004","owner":"PPIA-02","scope":"Creature/NPC identity, witness identity/state and variants","ppia09_may":"attach statements, observations, reliability annotations and case-local knowledge references","ppia09_may_not":"rewrite Creature/NPC Definitions as investigation conclusions"},
+    {"id":"P9-HO-005","owner":"PPIA-03","scope":"Item/Asset Definition and instance ownership","ppia09_may":"reference Items, documents, samples, records and forensic tools as evidence","ppia09_may_not":"copy or transfer Item ownership into the clue board"},
+    {"id":"P9-HO-006","owner":"PPIA-04","scope":"Vehicle Definition/instance ownership","ppia09_may":"reference Vehicles, logs, components or Vehicle-linked events as evidence","ppia09_may_not":"rewrite Vehicle authoritative state through a theory or clue"},
+    {"id":"P9-HO-007","owner":"PPIA-12","scope":"World/Setting definitions, setting-local rules and canonical chronology","ppia09_may":"reference Setting facts and timeline events subject to knowledge/permission projection","ppia09_may_not":"convert hidden Setting truth into Player knowledge automatically"},
+    {"id":"P9-HO-008","owner":"MV-IA-F009 / MV-IA-F010","scope":"relationship facts/history and social statements, rumors, secrets and interaction outcomes","ppia09_may":"reference relationships, claims, testimony, rumors and social discoveries","ppia09_may_not":"equate rumor/relationship annotation with objective truth"},
+    {"id":"P9-HO-009","owner":"PPIA-01 / later PPIA-06 Action & Ability Resolution","scope":"Investigation, Research, Knowledge, Perception, Insight, Forensics and other roll/resource/action mechanics","ppia09_may":"declare authoring hooks and required resolution inputs/results","ppia09_may_not":"invent universal DC, skill, XP, time or success formulas where source/owning rules do not define them"},
+    {"id":"P9-HO-010","owner":"MV-IA-F020","scope":"permissions, hidden information, role/field/query/search/export/realtime/AI visibility","ppia09_may":"define clue/reveal audience requirements","ppia09_may_not":"resolve or aggregate protected clues, edges, truth, sources or counts before authorization filtering"},
+    {"id":"P9-HO-011","owner":"MV-IA-F021","scope":"expected-version/idempotency, interruption, reconnect and bounded offline rules","ppia09_may":"define Investigation mutation recovery expectations","ppia09_may_not":"permit blind retry, last-write-wins or broad offline authoritative mutation"},
+    {"id":"P9-HO-012","owner":"MV-IA-F022 / accessibility standards","scope":"keyboard, touch, high-zoom/reflow, screen-reader and nonvisual equivalence","ppia09_may":"define investigation-specific semantic linear/list/table projections","ppia09_may_not":"make drag, graph position, hover, color or animation the sole required operation/meaning"}
+  ],
+  "blocking_guardrails":[
+    "Player-visible information must not be treated as objective truth merely because it is visible.",
+    "Objective truth and GM solution content are filtered before query, search, counts, exports, realtime payloads, diagnostics, notifications and AI context.",
+    "Player hypothesis creation cannot mutate objective truth or authoritative source-domain objects.",
+    "A contradiction is an authored relationship requiring review; it is not an automatic truth adjudicator.",
+    "False leads and corrupted evidence remain attributable authored content and cannot silently rewrite truth.",
+    "Evidence keeps owning-domain identity and provenance; PPIA-09 stores references and case-local investigation state.",
+    "World/Setting chronology stays PPIA-12-owned and does not automatically become Player-known Investigation chronology.",
+    "Investigation/Research/Knowledge ability mechanics remain rules-domain behavior; PPIA-09 does not invent missing universal formulas.",
+    "Dynamic/extra clue delivery retains trigger/delivery reason, author/source, audience and Event provenance.",
+    "Solvability/redundancy checks may be governed design but may not be presented as recovered source canon where the source supplies only guidance.",
+    "Spatial clue-board layout remains non-authoritative presentation state with equivalent typed textual relationships.",
+    "AI-generated organization, connections, theories, clue suggestions or mystery material remain proposals until explicitly accepted by an authorized user.",
+    "All authoritative Investigation mutations inherit expected-version plus operation-ID recovery semantics.",
+    "No PPIA-09 artifact activates application runtime, STAGE-A-A2, release, deployment, tester access, paid services or production credentials."
+  ],
+  "proposal_stage_design_domains":[
+    "normalized authoring metadata for confidence/relevance/authenticity/source reliability",
+    "formal contradiction classifications and review states",
+    "solvability/reachability/redundancy validation model",
+    "required versus optional revelation authoring contract",
+    "reference-mystery fixture schema",
+    "fairness/explainability diagnostics for red herrings and stalled investigations"
+  ]
+}
