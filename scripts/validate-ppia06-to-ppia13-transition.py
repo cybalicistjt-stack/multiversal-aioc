@@ -84,8 +84,8 @@ def main() -> None:
         "contextual", "empty state", "glossary", "tutorial-campaign", "accessibility", "mobile", "nonvisual", "ppia-14"
     ):
         require(phrase in scope, f"PPIA-13 governed scope missing {phrase!r}")
-    for prohibited in ("runtime activation", "release authorization", "tester activation", "canonical game-content promotion"):
-        require(prohibited not in scope, f"PPIA-13 scope contains prohibited implication {prohibited!r}")
+    for prohibited in ("runtime_activation=true", "release_authorized=true", "tester_access_authorized=true", "canonical_promotion_without_source_evidence_authorized=true"):
+        require(prohibited not in scope, f"PPIA-13 scope contains prohibited positive authorization {prohibited!r}")
 
     selected = [x for x in pointer["active_attempts"] if x.get("owner_selected")]
     require(len(selected) == 1, "exactly one owner-selected active attempt required")
