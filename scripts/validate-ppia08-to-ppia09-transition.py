@@ -19,6 +19,7 @@ P8_FINAL_HEAD = "1a2a8590730a905cf4bba84abd59d0a8f00de89c"
 P8_COMPLETION_PR = 251
 P8_COMPLETION_MERGE = "09f9df2607398010097e834e8ad7b129cd10645f"
 P9_BRANCH = "governance/ppia-09-investigation-mystery-authoring"
+P9_FOUNDATION_MERGE = "511b7b3edc0b88ff8ea5683fd093d2853b50ccf1"
 
 
 def fail(message: str) -> None:
@@ -64,8 +65,6 @@ def main() -> None:
     for value in (P8_FINAL_HEAD, "PR #251", P8_COMPLETION_MERGE):
         require(value in evidence_text, f"PPIA-08 immutable completion evidence missing {value}")
 
-    # The completion report is a pre-merge candidate artifact; immutable final head/PR/merge
-    # evidence belongs to the completed checkpoint above, not to the historical report.
     for value in ("48 blocking acceptance requirements", "PPIA-09"):
         require(value.lower() in report.lower(), f"PPIA-08 completion report missing {value!r}")
 
@@ -74,11 +73,16 @@ def main() -> None:
     require(p9["branch"] == P9_BRANCH, "PPIA-09 governed branch mismatch")
     require(p9["base_commit"] == P8_COMPLETION_MERGE, "PPIA-09 base must be PPIA-08 completion merge")
     require(p9["owner_decision_required"] is False and p9["unresolved_failures"] == [], "PPIA-09 transition must be unblocked")
-    require(p9["active_substep"] and "source/design foundation" in p9["active_substep"].lower(), "PPIA-09 must start from and remain traceable to source/design foundation")
 
-    # Dual-mode historical transition validation. At the transition itself PPIA-09 has no
-    # milestone evidence. Once legitimate PPIA-09 work begins, later commit/PR evidence is
-    # allowed, but the original base and transition anchors above must remain immutable.
+    trace_text = json.dumps({
+        "last_verified_action": p9.get("last_verified_action"),
+        "active_substep": p9.get("active_substep"),
+        "next_action": p9.get("next_action"),
+        "completed_substeps": p9.get("completed_substeps", []),
+        "evidence": p9.get("evidence", []),
+    }, ensure_ascii=False).lower()
+    require("source/design foundation" in trace_text or P9_FOUNDATION_MERGE in trace_text, "PPIA-09 must remain traceable to source/design foundation")
+
     later_head = p9.get("latest_pushed_commit")
     later_pr = p9.get("pull_request")
     later_merge = p9.get("merge_commit")
@@ -91,9 +95,20 @@ def main() -> None:
         require(later_merge is None or (isinstance(later_merge, str) and len(later_merge) == 40), "later PPIA-09 merge evidence is invalid")
         transition_mode = "historical_after_ppia09_started"
 
-    scope = (p9.get("objective", "") + " " + p9["active_substep"] + " " + p9["next_action"] + " " + " ".join(p9.get("notes", []))).lower()
-    for phrase in ("objective truth", "gm conclusion", "clue", "evidence", "hypothesis", "false lead", "contradiction", "reveal", "uncertainty", "provenance", "nonvisual"):
-        require(phrase in scope, f"PPIA-09 starting scope missing {phrase!r}")
+    # Durable governed-scope trace combines the verified F011 starting contract with checkpoint
+    # history/current scope. Later milestone wording may evolve, but the transition invariants may not.
+    governed_scope_trace = (f011 + " " + json.dumps({
+        "objective": p9.get("objective"),
+        "last_verified_action": p9.get("last_verified_action"),
+        "active_substep": p9.get("active_substep"),
+        "next_action": p9.get("next_action"),
+        "completed_substeps": p9.get("completed_substeps", []),
+        "evidence": p9.get("evidence", []),
+        "notes": p9.get("notes", []),
+    }, ensure_ascii=False)).lower()
+    for phrase in ("objective truth", "clue", "evidence", "hypothesis", "false lead", "contradiction", "reveal", "uncertainty", "provenance", "nonvisual"):
+        require(phrase in governed_scope_trace, f"PPIA-09 governed scope trace missing {phrase!r}")
+    require("gm conclusion" in governed_scope_trace or "gm solution" in governed_scope_trace, "PPIA-09 governed scope trace missing GM conclusion/solution separation")
 
     f011_low = f011.lower()
     for phrase in ("objective truth", "gm conclusion", "clue definition", "campaign clue", "observation", "claim", "evidence item", "hypothesis", "connection", "question", "conclusion", "false lead", "private clue", "idempotency", "nonvisual"):

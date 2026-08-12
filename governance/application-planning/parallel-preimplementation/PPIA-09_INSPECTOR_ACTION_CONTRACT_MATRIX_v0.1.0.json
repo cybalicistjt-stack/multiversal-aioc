@@ -1,0 +1,132 @@
+{
+  "format": "multiversal-ppia09-inspector-action-contract-matrix",
+  "version": "0.1.0",
+  "work_item": "PPIA-09",
+  "status": "implementation_ready_design_contract_candidate",
+  "foundation_merge": "511b7b3edc0b88ff8ea5683fd093d2853b50ccf1",
+  "global_invariants": [
+    "Objective truth, GM solution or conclusion, clue, observation, claim, evidence, hypothesis and Player knowledge remain separately typed.",
+    "Visibility, confidence, relevance, authenticity and source reliability never become objective truth probability by implication.",
+    "Contradiction records identify incompatible material for review and never automatically adjudicate which side is true.",
+    "False leads, lies, corrupted evidence and unreliable testimony remain attributable authored content and cannot silently rewrite objective truth.",
+    "Evidence references owning-domain objects and PPIA-09 stores Investigation-local state without copying Item, Creature or NPC, Vehicle, Setting, Location or Event ownership.",
+    "World and Setting chronology remains PPIA-12-owned; case timelines may reference it only through permission-safe knowledge projections.",
+    "Important-information redundancy is reviewable from source guidance without imposing a universal clue count on every mystery.",
+    "Dynamic or extra clue delivery retains author, trigger or delivery reason, source, audience and durable Event provenance.",
+    "Authorization filtering occurs before protected truth, clues, links, sources, counts, search, export, realtime, diagnostics, notifications or AI context are resolved or aggregated.",
+    "Spatial clue-board layout is presentation state; semantic typed-edge and ordered nonvisual forms remain authoritative.",
+    "Every authoritative mutation requires expected_version plus operation_id and ambiguous outcomes require operation-status and current-version lookup before retry.",
+    "AI-generated organization, theory, connection, clue or mystery material remains proposal-only until explicitly accepted by authorized action.",
+    "No contract activates application runtime, STAGE-A-A2, release, deployment, testers, paid services or production credentials."
+  ],
+  "projection_groups": [
+    {"projection_group_id":"P9-PG-001","layer_id":"investigation-case-definition","title":"Investigation case definition","fields":["investigationId","version","campaignRef","sceneRefs","title","premise","status","objectiveRefs","participantSummary","provenance"]},
+    {"projection_group_id":"P9-PG-002","layer_id":"objective-truth-and-gm-solution","title":"Objective truth and GM solution","fields":["truthStatementIds","truthVersion","responsibleActorRefs","motiveRefs","causeRefs","twistRefs","solutionBasisRefs","conclusionBasisRefs","authorizationState","provenance"]},
+    {"projection_group_id":"P9-PG-003","layer_id":"clue-definition-and-source-template","title":"Clue definitions and source templates","fields":["clueDefinitionId","sourceVersion","clueKind","categories","tags","discoveryAffordanceRefs","analysisAffordanceRefs","defaultRevealPolicy","provenance"]},
+    {"projection_group_id":"P9-PG-004","layer_id":"campaign-clue-discovery-and-analysis-state","title":"Campaign clue discovery and analysis","fields":["campaignClueId","clueDefinitionRef","discoveryState","discoveredByRefs","discoveredAtEventRef","methodRef","analysisState","analysisFindings","revealAudience","sourceSnapshot","version"]},
+    {"projection_group_id":"P9-PG-005","layer_id":"observation-claim-and-statement","title":"Observations, claims and statements","fields":["statementId","statementKind","speakerOrObserverRef","content","beliefState","timeRef","locationRef","sourceRef","visibilityState","version","provenance"]},
+    {"projection_group_id":"P9-PG-006","layer_id":"evidence-item-and-owning-domain-reference","title":"Evidence and owning-domain references","fields":["evidenceItemId","ownerDomain","objectId","objectVersion","evidenceRole","caseLocalNotes","authorizedProjection","availabilityState","version","provenance"]},
+    {"projection_group_id":"P9-PG-007","layer_id":"witness-source-reliability-and-authenticity","title":"Witness, source reliability and authenticity","fields":["assessmentId","subjectOrSourceRef","reliabilityAnnotation","authenticityAnnotation","confidenceAnnotation","relevanceAnnotation","basisRefs","authorRef","visibilityState","reviewState","version"]},
+    {"projection_group_id":"P9-PG-008","layer_id":"hypothesis-theory-and-deduction","title":"Hypotheses, theories and deductions","fields":["hypothesisId","authorRef","proposition","status","supportingRefs","contradictingRefs","neutralRefs","confidenceAnnotation","visibilityState","reviewState","version","provenance"]},
+    {"projection_group_id":"P9-PG-009","layer_id":"typed-connection-and-semantic-relationship","title":"Typed semantic connections","fields":["connectionId","predicate","sourceNodeRef","targetNodeRef","rationale","authorRef","visibilityState","version","provenance","linearPredicateText"]},
+    {"projection_group_id":"P9-PG-010","layer_id":"question-lead-and-next-step","title":"Questions, leads and next steps","fields":["questionOrLeadId","kind","prompt","ownerRefs","status","sourceRefs","followUpRefs","researchRequestRefs","priorityAnnotation","visibilityState","version"]},
+    {"projection_group_id":"P9-PG-011","layer_id":"timeline-temporal-order-and-alibi","title":"Timeline, temporal order and alibi","fields":["timelineEntryId","eventOrClaimRef","timeWindow","participantRefs","locationRef","temporalRelationRefs","alibiState","supportingRefs","contradictingRefs","sourceRef","visibilityState","version"]},
+    {"projection_group_id":"P9-PG-012","layer_id":"contradiction-false-lead-and-uncertainty","title":"Contradictions, false leads and uncertainty","fields":["reviewRecordId","classification","subjectRefs","reviewState","falseLeadState","corruptionState","uncertaintyAnnotation","confidenceAnnotation","relevanceAnnotation","correctionOrRecoveryRefs","authorRef","version"]},
+    {"projection_group_id":"P9-PG-013","layer_id":"discovery-condition-reveal-and-knowledge-audience","title":"Discovery, reveal and knowledge audience","fields":["revealRecordId","subjectRef","discoveryConditionRefs","currentAudience","proposedAudience","revealState","decisionReason","eventRefs","version","authorizationReceipt"]},
+    {"projection_group_id":"P9-PG-014","layer_id":"solvability-redundancy-progression-and-stall-recovery","title":"Solvability, redundancy and stall recovery","fields":["diagnosticId","requiredRevelationRefs","optionalRevelationRefs","dependencyRefs","reachableRequiredRefs","unreachableRequiredRefs","routeCounts","singlePointWarnings","redundancyWarnings","stallRecoveryRefs","diagnosticBasisVersion"]},
+    {"projection_group_id":"P9-PG-015","layer_id":"conclusion-resolution-outcome-and-history","title":"Conclusion, resolution, outcome and history","fields":["conclusionId","resolutionState","conclusionText","basisRefs","acceptedByRef","resolvedAtEventRef","outcomeRefs","retainedHypothesisRefs","retainedDiscoveryRefs","historySummary","version","provenance"]},
+    {"projection_group_id":"P9-PG-016","layer_id":"permission-provenance-version-recovery-accessibility","title":"Permission, provenance, recovery and accessibility","fields":["authorizationReceipt","provenanceSummary","expectedVersion","operationId","operationStatus","recoveryChoices","semanticLinearProjection","accessibleRelationshipSummary","revocationState","historyRefs"]}
+  ],
+  "projection_policy": {
+    "server_side_filter_before_resolution_and_aggregation": true,
+    "hidden_content_in_unauthorized_counts_search_or_diagnostics": false,
+    "confidence_is_truth_probability": false,
+    "contradiction_auto_adjudicates_truth": false,
+    "graph_layout_authoritative": false,
+    "evidence_reference_transfers_ownership": false,
+    "research_success_bypasses_permissions": false
+  },
+  "annotation_contract": {
+    "status": "governed_ppia09_design_not_recovered_source_canon",
+    "dimensions": ["confidence","relevance","authenticity","source-reliability"],
+    "required_fields": ["dimension","annotation","basisRefs","authorRef","visibilityState","reviewState","version"],
+    "rules": [
+      "Annotations are attributable assessments, not objective truth probabilities.",
+      "No universal numeric scale is required; a Campaign or rules profile may supply a vocabulary when explicitly adopted.",
+      "Unknown or unset remains valid and must not be silently defaulted.",
+      "Witness belief, statement truth, source reliability and evidence authenticity remain independently authorable."
+    ]
+  },
+  "timeline_alibi_contract": {
+    "status": "governed_ppia09_design_with_source_temporal_support",
+    "time_forms": ["exact","bounded-window","relative-before","relative-after","unknown"],
+    "alibi_review_states": ["unreviewed","consistent-with-known-record","in-tension","contradicted-by-record","unresolved"],
+    "rules": [
+      "Timeline entries reference owning Events, Setting chronology or attributable claims instead of copying authority.",
+      "Temporal ordering may expose contradictions but never adjudicates objective truth automatically.",
+      "Player-visible case chronology is permission-filtered separately from hidden Setting or GM chronology."
+    ]
+  },
+  "contradiction_contract": {
+    "status": "governed_ppia09_design_not_recovered_source_canon",
+    "classifications": ["temporal","location","identity","causal","statement","source-authenticity","evidence-state","custom"],
+    "review_states": ["unreviewed","acknowledged","under-review","explained","resolved-by-authorized-conclusion","superseded"],
+    "rules": [
+      "A contradiction record references the material in tension and its authored rationale.",
+      "Resolved review state records an authorized explanation or conclusion reference; it does not erase either historical input.",
+      "Contradiction detection and review never decide which source is true without explicit authorized conclusion evidence."
+    ]
+  },
+  "global_mutation_protocol": [
+    "authorize current subject, role, Campaign membership and delegation before protected reference resolution",
+    "filter protected truth, clue, source and audience fields before derived projection or diagnostic input",
+    "revalidate Investigation and referenced object versions",
+    "require expected_version",
+    "require stable operation_id",
+    "on ambiguous response query operation status and current version before retry",
+    "compatible duplicate returns prior result or status while conflicting operation-ID reuse fails safely",
+    "emit attributable durable Event or receipt only after accepted atomic mutation"
+  ],
+  "action_contracts": [
+    {"action_id":"P9-ACT-001","name":"inspect_investigation","mutation":"read","owner":"PPIA-09/MV-IA-F011","inputs":["investigationId"],"result":"Role-safe Investigation dashboard, visible progress and provenance projection."},
+    {"action_id":"P9-ACT-002","name":"inspect_truth_solution","mutation":"read","owner":"PPIA-09 GM authority projection","inputs":["investigationId"],"result":"Authorized GM-only truth, solution basis and conclusion-basis projection with no Player leakage."},
+    {"action_id":"P9-ACT-003","name":"inspect_clue_evidence","mutation":"read","owner":"PPIA-09 plus owning-domain references","inputs":["investigationId","clueOrEvidenceRef"],"result":"Permission-safe clue, analysis, evidence-reference and provenance projection."},
+    {"action_id":"P9-ACT-004","name":"inspect_timeline_alibi","mutation":"read","owner":"PPIA-09/PPIA-08/PPIA-12 adapters","inputs":["investigationId","timelineFilter"],"result":"Role-safe case timeline, temporal claims, alibi review and authorized source references."},
+    {"action_id":"P9-ACT-005","name":"inspect_hypothesis_connections","mutation":"read","owner":"PPIA-09/MV-IA-F011","inputs":["investigationId","hypothesisIdOptional"],"result":"Visible hypotheses, typed semantic edges and ordered nonvisual relationship projection."},
+    {"action_id":"P9-ACT-006","name":"run_solvability_diagnostics","mutation":"read","owner":"PPIA-09 authoring diagnostics","inputs":["investigationId","candidateVersionSet"],"result":"Permission-safe authoring findings for revelation reachability, redundancy, single points, stalls and false-lead recovery; never a truth verdict."},
+    {"action_id":"P9-ACT-007","name":"preview_reveal_audience","mutation":"read","owner":"MV-IA-F020/PPIA-09","inputs":["subjectRef","proposedAudience"],"result":"Authorization-safe preview of who would receive which permitted projection without mutating reveal state."},
+    {"action_id":"P9-ACT-008","name":"inspect_history_recovery_accessible","mutation":"read","owner":"MV-IA-F021/F022/PPIA-09","inputs":["investigationId","operationIdOptional","lastKnownVersionOptional"],"result":"Role-safe history, operation status, recovery choices and semantic linear/list/table relationship projection."},
+    {"action_id":"P9-ACT-009","name":"create_or_edit_investigation","mutation":"write","owner":"PPIA-09","inputs":["investigationIdOrDraft","caseDiff","expected_version","operation_id"],"result":"Versioned Investigation container update without mutating Campaign or Scene ownership."},
+    {"action_id":"P9-ACT-010","name":"author_truth_statement","mutation":"write","owner":"PPIA-09 GM truth authority","inputs":["investigationId","truthStatementDiff","expected_version","operation_id"],"result":"Versioned authorized objective-truth statement hidden from unauthorized projections."},
+    {"action_id":"P9-ACT-011","name":"author_solution_conclusion_basis","mutation":"write","owner":"PPIA-09 GM solution authority","inputs":["investigationId","solutionBasisDiff","expected_version","operation_id"],"result":"Versioned GM solution or conclusion-basis material distinct from Player hypothesis state."},
+    {"action_id":"P9-ACT-012","name":"register_clue_definition","mutation":"write","owner":"PPIA-09 clue-definition adapter","inputs":["investigationOrPackRef","clueDefinitionDraft","expected_version","operation_id"],"result":"Versioned clue template with discovery/analysis affordances, reveal defaults and provenance."},
+    {"action_id":"P9-ACT-013","name":"instantiate_campaign_clue","mutation":"write","owner":"PPIA-09 Campaign-local clue state","inputs":["investigationId","clueDefinitionRef","sourceSnapshot","expected_version","operation_id"],"result":"One Campaign Clue instance retaining exact source/version snapshot and initial visibility state."},
+    {"action_id":"P9-ACT-014","name":"record_discovery_analysis","mutation":"write","owner":"PPIA-09 discovery adapter plus owning resolution workflow","inputs":["campaignClueId","discoveryOrAnalysisResultRef","actorRef","methodRef","revealAudience","expected_version","operation_id"],"result":"Attributable idempotent discovery or analysis state and durable Event evidence."},
+    {"action_id":"P9-ACT-015","name":"record_observation","mutation":"write","owner":"PPIA-09/MV-IA-F011","inputs":["investigationId","observationDraft","expected_version","operation_id"],"result":"Attributable observation that remains distinct from objective truth."},
+    {"action_id":"P9-ACT-016","name":"record_claim","mutation":"write","owner":"PPIA-09/MV-IA-F011/F010","inputs":["investigationId","claimDraft","expected_version","operation_id"],"result":"Attributable claim preserving speaker, belief, source and visibility independently from truth."},
+    {"action_id":"P9-ACT-017","name":"attach_evidence_reference","mutation":"write","owner":"PPIA-09 reference adapter plus owning domain","inputs":["investigationId","ownerDomain","objectId","objectVersion","evidenceRole","expected_version","operation_id"],"result":"Case-local evidence reference without ownership copy or source-object mutation."},
+    {"action_id":"P9-ACT-018","name":"annotate_evidence_or_source_quality","mutation":"write","owner":"PPIA-09 governed annotation layer","inputs":["subjectRef","dimension","annotation","basisRefs","visibilityState","expected_version","operation_id"],"result":"Attributable confidence/relevance/authenticity/source-reliability annotation that is not objective truth probability."},
+    {"action_id":"P9-ACT-019","name":"create_or_edit_hypothesis","mutation":"write","owner":"PPIA-09/MV-IA-F011","inputs":["investigationId","hypothesisDiff","expected_version","operation_id"],"result":"Versioned working theory with support/contradiction links and no automatic fact promotion."},
+    {"action_id":"P9-ACT-020","name":"create_or_edit_connection","mutation":"write","owner":"PPIA-09/MV-IA-F011","inputs":["investigationId","predicate","sourceNodeRef","targetNodeRef","rationale","visibilityState","expected_version","operation_id"],"result":"Typed attributable semantic edge independent of graph position."},
+    {"action_id":"P9-ACT-021","name":"create_or_edit_question_lead","mutation":"write","owner":"PPIA-09","inputs":["investigationId","questionOrLeadDiff","expected_version","operation_id"],"result":"Versioned open question, lead, follow-up or research request."},
+    {"action_id":"P9-ACT-022","name":"author_timeline_entry","mutation":"write","owner":"PPIA-09 case chronology adapter","inputs":["investigationId","eventOrClaimRef","timeForm","timeValue","participantRefs","locationRef","expected_version","operation_id"],"result":"Case-local temporal record referencing owning chronology or attributable claims."},
+    {"action_id":"P9-ACT-023","name":"author_alibi_claim","mutation":"write","owner":"PPIA-09 claim/timeline adapter","inputs":["investigationId","speakerRef","timeWindow","locationRef","sourceRefs","expected_version","operation_id"],"result":"Attributable alibi claim available for comparison without automatic truth adjudication."},
+    {"action_id":"P9-ACT-024","name":"author_contradiction_review","mutation":"write","owner":"PPIA-09 governed review layer","inputs":["investigationId","classification","subjectRefs","reviewState","rationale","expected_version","operation_id"],"result":"Versioned contradiction-review record retaining both inputs and any authorized explanation reference."},
+    {"action_id":"P9-ACT-025","name":"set_false_lead_or_corruption_metadata","mutation":"write","owner":"PPIA-09 GM authoring","inputs":["subjectRef","falseLeadState","corruptionState","correctionOrRecoveryRefs","expected_version","operation_id"],"result":"Attributable GM-authored misleading/corruption metadata that never rewrites objective truth."},
+    {"action_id":"P9-ACT-026","name":"author_revelation_dependency","mutation":"write","owner":"PPIA-09 governed solvability design","inputs":["investigationId","revelationRef","requirementClass","prerequisiteRefs","routeRefs","expected_version","operation_id"],"result":"Versioned required/optional revelation dependency for deterministic authoring diagnostics, not a universal clue count."},
+    {"action_id":"P9-ACT-027","name":"author_stall_recovery_clue","mutation":"write","owner":"PPIA-09 plus authorized clue author","inputs":["investigationId","clueOrRevealRef","triggerOrDeliveryReason","sourceRef","audience","expected_version","operation_id"],"result":"Attributable extra/dynamic clue or reveal path retaining delivery reason and provenance."},
+    {"action_id":"P9-ACT-028","name":"reveal_withhold_or_revoke","mutation":"write","owner":"MV-IA-F020/PPIA-09","inputs":["subjectRef","audienceDiff","decision","reason","expected_version","operation_id"],"result":"Versioned reveal, withhold or revoke transition followed by freshly filtered derivative projections."},
+    {"action_id":"P9-ACT-029","name":"resolve_investigation_conclusion","mutation":"write","owner":"PPIA-09 GM conclusion authority","inputs":["investigationId","conclusionDraft","basisRefs","resolutionState","expected_version","operation_id"],"result":"Attributable durable conclusion and outcome while retaining Player hypothesis and discovery history."},
+    {"action_id":"P9-ACT-030","name":"accept_generated_investigation_proposal","mutation":"write","owner":"PPIA-09 authorized acceptance boundary","inputs":["investigationId","proposalId","acceptedDiff","expected_version","operation_id"],"result":"Explicitly accepted generated material becomes attributable governed state; unaccepted generated output remains nonauthoritative."}
+  ],
+  "action_policy": {
+    "authoritative_mutation_count": 22,
+    "read_action_count": 8,
+    "write_actions_require_global_mutation_protocol": true,
+    "player_hypothesis_mutates_truth": false,
+    "contradiction_mutates_truth_automatically": false,
+    "diagnostic_mutates_truth_or_reveal_state": false,
+    "evidence_reference_transfers_source_ownership": false,
+    "offline_authoritative_investigation_mutation_allowed": false
+  }
+}
