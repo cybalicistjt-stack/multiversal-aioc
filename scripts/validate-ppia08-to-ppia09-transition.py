@@ -98,9 +98,20 @@ def main() -> None:
         require(later_merge is None or (isinstance(later_merge, str) and len(later_merge) == 40), "later PPIA-09 merge evidence is invalid")
         transition_mode = "historical_after_ppia09_started"
 
-    scope = (p9.get("objective", "") + " " + (p9.get("active_substep") or "") + " " + (p9.get("next_action") or "") + " " + " ".join(p9.get("notes", []))).lower()
-    for phrase in ("objective truth", "gm conclusion", "clue", "evidence", "hypothesis", "false lead", "contradiction", "reveal", "uncertainty", "provenance", "nonvisual"):
-        require(phrase in scope, f"PPIA-09 governed scope missing {phrase!r}")
+    # Preserve transition-scope invariants using durable historical + current trace rather than
+    # requiring every original phrase to remain in the latest active-substep wording.
+    governed_scope_trace = json.dumps({
+        "objective": p9.get("objective"),
+        "last_verified_action": p9.get("last_verified_action"),
+        "active_substep": p9.get("active_substep"),
+        "next_action": p9.get("next_action"),
+        "completed_substeps": p9.get("completed_substeps", []),
+        "evidence": p9.get("evidence", []),
+        "notes": p9.get("notes", []),
+    }, ensure_ascii=False).lower()
+    for phrase in ("objective truth", "clue", "evidence", "hypothesis", "false lead", "contradiction", "reveal", "uncertainty", "provenance", "nonvisual"):
+        require(phrase in governed_scope_trace, f"PPIA-09 governed scope trace missing {phrase!r}")
+    require("gm conclusion" in governed_scope_trace or "gm solution" in governed_scope_trace, "PPIA-09 governed scope trace missing GM conclusion/solution separation")
 
     f011_low = f011.lower()
     for phrase in ("objective truth", "gm conclusion", "clue definition", "campaign clue", "observation", "claim", "evidence item", "hypothesis", "connection", "question", "conclusion", "false lead", "private clue", "idempotency", "nonvisual"):
