@@ -1,0 +1,124 @@
+{
+  "schema_version": "0.1.0",
+  "program_id": "CAPP",
+  "title": "Character Appearance Production Preparation",
+  "status": "owner_approved_authorized_parallel_work_not_started",
+  "approved_at": "2026-08-13T07:12:00-05:00",
+  "owner": "John Brandon Turner",
+  "governing_document": "governance/application-planning/character-appearance-production/CAPP_CHARACTER_APPEARANCE_PRODUCTION_PREPARATION_PROGRAM.md",
+  "upstream_authorities": {
+    "appearance_architecture": "PPIA-06",
+    "species_form_biology": "PPIA-05",
+    "asset_equipment_state": "PPIA-03"
+  },
+  "execution_order": [
+    "CAPP-01",
+    "CAPP-02",
+    "CAPP-03",
+    "CAPP-04",
+    "CAPP-05",
+    "CAPP-06",
+    "CAPP-07",
+    "CAPP-08",
+    "CAPP-09",
+    "CAPP-10",
+    "CAPP-11",
+    "CAPP-12"
+  ],
+  "work_items": [
+    {
+      "id": "CAPP-01",
+      "title": "25-Species Appearance Choice Registry + Constraint Model",
+      "status": "authorized_next_not_started",
+      "dependencies": [],
+      "completion_gate": "Machine-readable choice registry covers all 25 governed Species/Form profiles with stable IDs, provenance, semantic classification, eligibility, explicit unknown/unavailable handling, and executable dependency/constraint rules; deterministic validation, exact-head hosted CI, PR and signed/verified merge evidence required."
+    },
+    {
+      "id": "CAPP-02",
+      "title": "Preset, Randomization and Lock Libraries",
+      "status": "planned",
+      "dependencies": ["CAPP-01"],
+      "completion_gate": "Deterministic eligible pools, weighting/coherence rules, seed/lock behavior and portable synthetic reference presets cover all governed Species and special profile cases with validation and merge evidence."
+    },
+    {
+      "id": "CAPP-03",
+      "title": "Pixel-Art Asset Production Standard",
+      "status": "planned",
+      "dependencies": ["CAPP-01"],
+      "completion_gate": "Production specification fixes semantic asset metadata, canvas/view classes, anchors, masks, palette zones/ramps, topology templates, packaging and acceptance criteria without moving renderer metadata into Character truth."
+    },
+    {
+      "id": "CAPP-04",
+      "title": "Asset Manifest and Coverage Analyzer Contract",
+      "status": "planned",
+      "dependencies": ["CAPP-01", "CAPP-03"],
+      "completion_gate": "Versioned asset registry and deterministic coverage model report supported/partial/unsupported/unknown coverage without invalidating Character state or leaking hidden information."
+    },
+    {
+      "id": "CAPP-05",
+      "title": "Deterministic Appearance Compiler / Reference Engine",
+      "status": "planned",
+      "dependencies": ["CAPP-01", "CAPP-03", "CAPP-04"],
+      "completion_gate": "Repository-side reference engine emits deterministic semantic render-plan JSON from authorized appearance/biology/renderer/permission inputs with explicit diagnostics/fallback and passing deterministic tests."
+    },
+    {
+      "id": "CAPP-06",
+      "title": "Wardrobe and Equipment-Fit Compatibility Catalog",
+      "status": "planned",
+      "dependencies": ["CAPP-01", "CAPP-03"],
+      "completion_gate": "Topology-aware presentation wardrobe and actual-equipment visual fit catalog covers governed morphology classes without implying ownership/mechanics or silently warping unsupported assets."
+    },
+    {
+      "id": "CAPP-07",
+      "title": "Full Appearance Studio Screen and State Specification",
+      "status": "planned",
+      "dependencies": ["CAPP-01", "CAPP-02", "CAPP-04", "CAPP-06"],
+      "completion_gate": "Implementation-grade screen/state/control/responsive/accessibility/recovery specification is traceable to the choice/constraint registry and existing PPIA-06 control surface."
+    },
+    {
+      "id": "CAPP-08",
+      "title": "Portrait, Token and Export Production Contract",
+      "status": "planned",
+      "dependencies": ["CAPP-03", "CAPP-05", "CAPP-07"],
+      "completion_gate": "Versioned portrait/token/export framing, derivative identity, permission filtering, invalidation/regeneration and downstream handoff behavior are deterministic and validated."
+    },
+    {
+      "id": "CAPP-09",
+      "title": "Appearance Versioning and Migration Engine Contract",
+      "status": "planned",
+      "dependencies": ["CAPP-01", "CAPP-02", "CAPP-04"],
+      "completion_gate": "Schema/option/asset-pack/renderer/preset migration behavior is deterministic, explicitly classifies recoverability and forbids silent substitution."
+    },
+    {
+      "id": "CAPP-10",
+      "title": "Accessibility Description Grammar",
+      "status": "planned",
+      "dependencies": ["CAPP-01", "CAPP-07"],
+      "completion_gate": "Structured nonvisual appearance descriptions and change announcements cover topology, surface, coloration, distinguishing features, wardrobe/equipment projection and renderer support while preserving permission filtering."
+    },
+    {
+      "id": "CAPP-11",
+      "title": "Expanded Generated QA and Coverage Corpus",
+      "status": "planned",
+      "dependencies": ["CAPP-01", "CAPP-02", "CAPP-04", "CAPP-05", "CAPP-06", "CAPP-07", "CAPP-08", "CAPP-09", "CAPP-10"],
+      "completion_gate": "Large deterministic synthetic/noncanonical regression corpus covers Species/topology/forms/transitions/randomization/hidden state/renderer gaps/equipment fit/migration/mobile/keyboard/accessibility with traceable expected results."
+    },
+    {
+      "id": "CAPP-12",
+      "title": "Integrated Production Handoff and Completion Gate",
+      "status": "planned",
+      "dependencies": ["CAPP-11"],
+      "completion_gate": "CAPP-01 through CAPP-11 integrate into one validated implementation handoff with zero unintended orphaned coverage, exact upstream authority traceability, exact-head hosted CI, completion report, PR and signed/verified merge evidence."
+    }
+  ],
+  "boundaries": {
+    "application_runtime_activation": false,
+    "stage_a_a2_activation": false,
+    "release_authorized": false,
+    "deployment_authorized": false,
+    "tester_access_authorized": false,
+    "paid_services_authorized": false,
+    "production_credentials_authorized": false,
+    "unsupported_canonical_promotion_authorized": false
+  }
+}
