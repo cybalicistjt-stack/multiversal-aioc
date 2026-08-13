@@ -17,6 +17,7 @@ on:
       - 'governance/application-planning/parallel-preimplementation/PPIA-14_*'
       - 'scripts/validate-ppia15-foundation.py'
       - 'scripts/validate-ppia14-to-ppia15-transition.py'
+      - 'scripts/validate-ppia14-to-ppia15-transition-historical-safe.py'
       - 'scripts/validate-ppia14-completion-contracts.py'
       - 'scripts/validate-ppia11-completion-contracts.py'
       - 'scripts/validate-ppia11-completion-historical-safe.py'
@@ -40,8 +41,8 @@ jobs:
           python-version: '3.12'
       - name: Validate PPIA-15 Foundation
         run: python scripts/validate-ppia15-foundation.py
-      - name: Validate PPIA-14 to PPIA-15 transition regression
-        run: python scripts/validate-ppia14-to-ppia15-transition.py
+      - name: Validate PPIA-14 to PPIA-15 transition current or historical evidence
+        run: python scripts/validate-ppia14-to-ppia15-transition-historical-safe.py
       - name: Validate PPIA-14 completion dependency regression
         run: python scripts/validate-ppia14-completion-contracts.py
       - name: Validate PPIA-11 completion dependency current or historical evidence
