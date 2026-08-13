@@ -7,12 +7,14 @@ on:
       - 'governance/ai/work-state/**'
       - 'governance/ai/runtime/**'
       - 'scripts/validate-ppia14-to-ppia15-transition.py'
+      - 'scripts/validate-ppia14-to-ppia15-transition-historical-safe.py'
       - 'scripts/validate-ppia14-*.py'
       - 'scripts/validate-ppia13-to-ppia14-transition.py'
       - 'scripts/validate-ppia13-completion-contracts.py'
       - 'scripts/validate-ppia09-completion-contracts.py'
       - 'scripts/validate-ppia10-completion-contracts.py'
       - 'scripts/validate-ppia11-completion-contracts.py'
+      - 'scripts/validate-ppia11-completion-historical-safe.py'
       - '.github/workflows/validate-ppia-14-to-ppia-15-transition.yml'
 
 permissions:
@@ -23,11 +25,13 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate PPIA-14 to PPIA-15 Transition
-        run: python scripts/validate-ppia14-to-ppia15-transition.py
+      - name: Validate PPIA-14 to PPIA-15 Transition current or historical evidence
+        run: python scripts/validate-ppia14-to-ppia15-transition-historical-safe.py
       - name: Validate PPIA-14 Completion historical regression
         run: python scripts/validate-ppia14-completion-contracts.py
       - name: Validate PPIA-14 Integrated Workflows historical regression
@@ -44,8 +48,8 @@ jobs:
         run: python scripts/validate-ppia09-completion-contracts.py
       - name: Validate PPIA-10 completion dependency
         run: python scripts/validate-ppia10-completion-contracts.py
-      - name: Validate PPIA-11 completion dependency
-        run: python scripts/validate-ppia11-completion-contracts.py
+      - name: Validate PPIA-11 completion dependency current or historical evidence
+        run: python scripts/validate-ppia11-completion-historical-safe.py
       - name: Validate generalized PPIA continuity
         run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
       - name: Validate conversation continuity

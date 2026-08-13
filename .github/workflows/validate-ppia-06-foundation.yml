@@ -10,6 +10,7 @@ on:
       - 'scripts/validate-ppia06-foundation.py'
       - '.github/workflows/validate-ppia-06-foundation.yml'
       - 'scripts/validate-ppia11-to-ppia06-transition.py'
+      - 'scripts/validate-ppia11-completion-historical-safe.py'
       - 'scripts/validate-ppia05-completion-contracts.py'
       - 'scripts/validate-ppia03-completion-contracts.py'
   workflow_dispatch:
@@ -19,6 +20,8 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -26,8 +29,8 @@ jobs:
         run: python scripts/validate-ppia06-foundation.py
       - name: Validate PPIA-11 to PPIA-06 transition regression
         run: python scripts/validate-ppia11-to-ppia06-transition.py
-      - name: Validate PPIA-11 completion regression
-        run: python scripts/validate-ppia11-completion-contracts.py
+      - name: Validate PPIA-11 completion current or historical evidence
+        run: python scripts/validate-ppia11-completion-historical-safe.py
       - name: Validate PPIA-05 completion dependency
         run: python scripts/validate-ppia05-completion-contracts.py
       - name: Validate PPIA-03 completion dependency

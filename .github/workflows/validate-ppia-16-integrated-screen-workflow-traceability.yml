@@ -13,6 +13,8 @@ on:
       - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
       - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
       - 'scripts/validate-ppia16-integrated-screen-workflow-traceability.py'
+      - 'scripts/validate-ppia16-historical-predecessor.py'
+      - 'governance/application-planning/parallel-preimplementation/validate_ppia_program_state.py'
       - '.github/workflows/validate-ppia-16-integrated-screen-workflow-traceability.yml'
   workflow_dispatch:
 
@@ -24,21 +26,21 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate PPIA-16 Integrated Screen / Workflow Traceability
-        run: python scripts/validate-ppia16-integrated-screen-workflow-traceability.py
-      - name: Validate PPIA-16 Screen Action Reference regression
-        run: python scripts/validate-ppia16-screen-action-reference.py
-      - name: Validate PPIA-16 Foundation regression
-        run: python scripts/validate-ppia16-foundation.py
-      - name: Validate PPIA-15 to PPIA-16 transition regression
-        run: python scripts/validate-ppia15-to-ppia16-transition.py
+      - name: Validate PPIA-16 Integrated Screen / Workflow Traceability current or historical evidence
+        run: python scripts/validate-ppia16-historical-predecessor.py integrated
+      - name: Validate PPIA-16 Screen predecessor evidence
+        run: python scripts/validate-ppia16-historical-predecessor.py screen
+      - name: Validate PPIA-16 Foundation predecessor evidence
+        run: python scripts/validate-ppia16-historical-predecessor.py foundation
       - name: Validate PPIA-15 completion regression
         run: python scripts/validate-ppia15-completion-contracts.py
       - name: Validate generalized PPIA continuity
-        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program_state.py
       - name: Validate conversation continuity
         run: python tools/continuity_state.py validate
       - name: Run conversation continuity regression tests

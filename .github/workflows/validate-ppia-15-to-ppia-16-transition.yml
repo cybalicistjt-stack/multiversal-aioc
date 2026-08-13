@@ -10,12 +10,14 @@ on:
       - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
       - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
       - 'scripts/validate-ppia15-to-ppia16-transition.py'
+      - 'scripts/validate-ppia16-historical-predecessor.py'
       - 'scripts/validate-ppia15-completion-contracts.py'
       - 'scripts/validate-ppia15-expanded-regression-iar.py'
       - 'scripts/validate-ppia15-foundation.py'
       - 'scripts/validate-ppia14-to-ppia15-transition.py'
+      - 'scripts/validate-ppia14-to-ppia15-transition-historical-safe.py'
       - 'scripts/validate-ppia14-completion-contracts.py'
-      - 'governance/application-planning/parallel-preimplementation/validate_ppia_program.py'
+      - 'governance/application-planning/parallel-preimplementation/validate_ppia_program_state.py'
       - '.github/workflows/validate-ppia-15-to-ppia-16-transition.yml'
   workflow_dispatch:
 
@@ -27,23 +29,25 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate PPIA-15 to PPIA-16 Transition
-        run: python scripts/validate-ppia15-to-ppia16-transition.py
+      - name: Validate PPIA-15 to PPIA-16 Transition current or historical evidence
+        run: python scripts/validate-ppia16-historical-predecessor.py transition
       - name: Validate PPIA-15 Completion Contract regression
         run: python scripts/validate-ppia15-completion-contracts.py
       - name: Validate PPIA-15 Expanded Regression IAR regression
         run: python scripts/validate-ppia15-expanded-regression-iar.py
       - name: Validate PPIA-15 Foundation regression
         run: python scripts/validate-ppia15-foundation.py
-      - name: Validate PPIA-14 to PPIA-15 transition regression
-        run: python scripts/validate-ppia14-to-ppia15-transition.py
+      - name: Validate PPIA-14 to PPIA-15 transition current or historical evidence
+        run: python scripts/validate-ppia14-to-ppia15-transition-historical-safe.py
       - name: Validate PPIA-14 completion regression
         run: python scripts/validate-ppia14-completion-contracts.py
       - name: Validate generalized PPIA continuity
-        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program_state.py
       - name: Validate conversation continuity
         run: python tools/continuity_state.py validate
       - name: Run conversation continuity regression tests

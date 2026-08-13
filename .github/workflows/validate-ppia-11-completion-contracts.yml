@@ -20,11 +20,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate PPIA-11 Completion Contract
-        run: python scripts/validate-ppia11-completion-contracts.py
+      - name: Validate PPIA-11 Completion Contract current or historical evidence
+        run: python scripts/validate-ppia11-completion-historical-safe.py
       - name: Validate PPIA-11 Encounter Lab Workflow regression
         run: python scripts/validate-ppia11-encounter-lab-workflows.py
       - name: Validate PPIA-11 Inspector Action and Reference regression
