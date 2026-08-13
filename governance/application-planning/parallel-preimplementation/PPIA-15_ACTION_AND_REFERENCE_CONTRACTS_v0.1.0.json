@@ -1,0 +1,39 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"PPIA-15",
+  "artifact_version":"0.1.0",
+  "title":"PPIA-15 Inspector Action and Reference Contracts",
+  "status":"iar-candidate",
+  "action_count":20,
+  "actions":[
+    {"id":"P15-ACT-001","key":"inspect-authorized-object","class":"read","ppia15_mutates_authoritative_state":false,"requires":"current authorized projection","result":"permission-filtered object Inspector"},
+    {"id":"P15-ACT-002","key":"select-stable-id-target","class":"read-intent","ppia15_mutates_authoritative_state":false,"requires":"stable authorized object identity","result":"selection remains bound to stable ID rather than display name"},
+    {"id":"P15-ACT-003","key":"observe-governed-reveal","class":"read","ppia15_mutates_authoritative_state":false,"requires":"upstream reveal already authorized/accepted","result":"reproject current authorized reveal state"},
+    {"id":"P15-ACT-004","key":"reauthorize-projection","class":"recovery-read","ppia15_mutates_authoritative_state":false,"requires":"current entitlement/permission lookup","result":"rebuild or collapse projection from current authority"},
+    {"id":"P15-ACT-005","key":"inspect-current-version-and-own-intent","class":"conflict-read","ppia15_mutates_authoritative_state":false,"requires":"authorized current version and actor-owned stale intent","result":"conflict review without invented merge"},
+    {"id":"P15-ACT-006","key":"inspect-local-and-inherited-provenance","class":"read","ppia15_mutates_authoritative_state":false,"requires":"authorized Campaign-local and inherited/source states","result":"scope/provenance comparison"},
+    {"id":"P15-ACT-007","key":"inspect-definition-reference-only","class":"read","ppia15_mutates_authoritative_state":false,"requires":"authorized reusable Definition","result":"read/reference without instance or ownership synthesis"},
+    {"id":"P15-ACT-008","key":"inspect-vehicle-relations","class":"read","ppia15_mutates_authoritative_state":false,"requires":"authorized Vehicle relation projection","result":"distinct ownership/custody/control/access/crew/passenger/cargo state"},
+    {"id":"P15-ACT-009","key":"preserve-bounded-local-draft","class":"local-only","ppia15_mutates_authoritative_state":false,"requires":"declared local draft support","result":"local draft preserved without authoritative Event"},
+    {"id":"P15-ACT-010","key":"lookup-operation-status","class":"recovery-read","ppia15_mutates_authoritative_state":false,"requires":"tracked operation_id or owning-domain status key","result":"accepted/rejected/pending/status-unknown information allowed by owning domain"},
+    {"id":"P15-ACT-011","key":"refresh-authorized-projection","class":"recovery-read","ppia15_mutates_authoritative_state":false,"requires":"current authority and authoritative/projection status","result":"refresh derived projection without replaying mutation"},
+    {"id":"P15-ACT-012","key":"inspect-encounter-uncertainty","class":"analysis-read","ppia15_mutates_authoritative_state":false,"requires":"PPIA-11 governed inputs","result":"bounded uncertainty/pressure information; may be indeterminate","forbidden_claims":["balanced","fair","safe","winnable","optimal","guaranteed"]},
+    {"id":"P15-ACT-013","key":"request-current-version","class":"recovery-read","ppia15_mutates_authoritative_state":false,"requires":"owning-domain version contract","result":"current authorized version/status for review"},
+    {"id":"P15-ACT-014","key":"preserve-or-discard-own-stale-intent","class":"local-conflict","ppia15_mutates_authoritative_state":false,"requires":"actor-owned local/stale intent","result":"local intent handling only; no authoritative merge implied"},
+    {"id":"P15-ACT-015","key":"enter-read-only-offline-state","class":"local-only","ppia15_mutates_authoritative_state":false,"requires":"explicit bounded offline/read-only support","result":"locally marked nonauthoritative state"},
+    {"id":"P15-ACT-016","key":"retry-only-with-idempotency-proof","class":"upstream-command-presentation","ppia15_mutates_authoritative_state":false,"upstream_mutation_possible":true,"requires":"owning-domain authorization plus compatible operation_id/idempotency proof and current authority","result":"may present only the upstream-proven safe retry command","forbidden":"blind ambiguous mutation retry"},
+    {"id":"P15-ACT-017","key":"present-owning-domain-versioned-command","class":"upstream-command-presentation","ppia15_mutates_authoritative_state":false,"upstream_mutation_possible":true,"requires":"owning-domain authorization, expected_version and operation_id when required","result":"presentation delegates mutation semantics to owning domain","forbidden":"PPIA-15-created mutation protocol"},
+    {"id":"P15-ACT-018","key":"present-authorized-instantiate-or-add-command","class":"upstream-command-presentation","ppia15_mutates_authoritative_state":false,"upstream_mutation_possible":true,"requires":"separate owning-domain authorization distinct from source inspection","result":"explicit command may be shown only when independently governed","forbidden":"implicit mutation from read/reference action"},
+    {"id":"P15-ACT-019","key":"present-governed-reveal-or-revoke-command","class":"upstream-command-presentation","ppia15_mutates_authoritative_state":false,"upstream_mutation_possible":true,"requires":"PPIA-09/PPIA-10 owning-domain authorization and audience scope","result":"delegates reveal/revoke decision and mutation to owning domain","forbidden":"PPIA-15 deciding audience or secret truth"},
+    {"id":"P15-ACT-020","key":"report-source-gap-unsupported","class":"governance-read","ppia15_mutates_authoritative_state":false,"requires":"authorized knowledge that the F024 source gap exists","result":"unsupported/indeterminate source-gap state only","forbidden":"invented Pack lifecycle action"}
+  ],
+  "global_contract":[
+    "PPIA-15 creates regression reference contracts, not new application commands or mutation authority.",
+    "Any action capable of causing authoritative mutation is only a presentation of an existing owning-domain command and retains that domain's authorization, expected_version, operation_id, idempotency and recovery rules.",
+    "Permission/entitlement filtering precedes action availability and action labels where protected existence is involved.",
+    "status-unknown never becomes permission to retry blindly.",
+    "Offline/local state never fabricates an authoritative Event.",
+    "P15-ACT-020 preserves P15-GAP-001/F024 as unsupported rather than supplying lifecycle semantics."
+  ],
+  "nonactivation":{"application_runtime":false,"stage_a_a2":false,"tester_access":false,"release":false,"deployment":false,"paid_service":false,"production_credentials":false,"canonical_promotion":false}
+}
