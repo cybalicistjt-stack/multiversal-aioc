@@ -1,0 +1,35 @@
+{
+  "schema_version":"0.1.0",
+  "work_item_id":"CAPP-01",
+  "status":"ready_for_review_candidate",
+  "authoritative_inputs":[
+    "governance/application-planning/parallel-preimplementation/PPIA-05_SPECIES_FORMS_BIOLOGY_TAXONOMY_v0.1.0.json",
+    "governance/application-planning/parallel-preimplementation/PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json",
+    "governance/application-planning/parallel-preimplementation/PPIA-06_APPEARANCE_SEMANTIC_TAXONOMY_v0.2.0.json",
+    "governance/application-planning/parallel-preimplementation/PPIA-06_APPEARANCE_STUDIO_CONTROL_SURFACE_v0.1.0.json",
+    "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json"
+  ],
+  "substantive_artifacts":[
+    "governance/application-planning/character-appearance-production/CAPP-01_SOURCE_AUTHORITY_AND_PROFILE_INDEX_v0.1.0.json",
+    "governance/application-planning/character-appearance-production/CAPP-01_APPEARANCE_CHOICE_REGISTRY_v0.1.0.json",
+    "governance/application-planning/character-appearance-production/CAPP-01_CONSTRAINT_MODEL_v0.1.0.json",
+    "governance/application-planning/character-appearance-production/CAPP-01_FOUNDATION_REPORT.md",
+    "governance/application-planning/character-appearance-production/CAPP-01_COMPLETION_ACCEPTANCE_MATRIX_v0.1.0.json",
+    "governance/application-planning/character-appearance-production/CAPP-01_COMPLETION_REPORT.md",
+    "governance/application-planning/character-appearance-production/CAPP-01_CANONICAL_SOURCE_CORRECTION.md"
+  ],
+  "deterministic_tools":[
+    "scripts/generate-capp01-registry.py",
+    "scripts/validate-capp01-foundation.py",
+    "scripts/sync-capp-roadmap-index.py",
+    "scripts/validate-capp01-completion.py"
+  ],
+  "hosted_evidence_before_final_pr":[
+    {"run_id":31702343075,"result":"failure","meaning":"preserved source-truth failure exposing legacy/noncanonical profile set"},
+    {"run_id":31703091730,"result":"success","meaning":"canonical regeneration plus embedded foundation validation"},
+    {"run_id":31703316324,"result":"success","meaning":"owner-authored corrected foundation validation; 25 profiles, 10 surfaces, 180 stable IDs"},
+    {"run_id":31703569637,"result":"success","meaning":"CAPP roadmap-index generation/check/commit"}
+  ],
+  "completion_evidence_pending":["exact PR head","completion CI run","all applicable CI","pull request","merge commit","valid merge signature"],
+  "completion_claim":false
+}
