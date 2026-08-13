@@ -1,0 +1,43 @@
+name: Apply CAPP CI Scope Maintenance
+
+on:
+  push:
+    branches:
+      - 'governance/capp-*'
+    paths:
+      - 'governance/application-planning/character-appearance-production/ci-scope-requests/*.json'
+
+permissions:
+  contents: write
+
+jobs:
+  scope:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply and validate closed-program workflow isolation
+        run: |
+          python tools/capp_ci_scope.py apply
+          python tools/capp_ci_scope.py check
+      - name: Remove processed scope request
+        shell: bash
+        run: rm -f governance/application-planning/character-appearance-production/ci-scope-requests/*.json
+      - name: Commit scope maintenance
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .github/workflows governance/application-planning/character-appearance-production/ci-scope-requests
+          if git diff --cached --quiet; then
+            echo 'No CI-scope changes.'
+            exit 0
+          fi
+          git commit -m 'Apply CAPP CI scope maintenance'
+          git push origin "HEAD:${GITHUB_REF_NAME}"
