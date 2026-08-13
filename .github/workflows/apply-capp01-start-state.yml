@@ -1,0 +1,38 @@
+name: Apply CAPP-01 Start State
+
+on:
+  push:
+    branches: [governance/capp-01-appearance-choice-registry]
+    paths: ['.github/workflows/apply-capp01-start-state.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: governance/capp-01-appearance-choice-registry
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Project start state
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          b=Path('governance/application-planning/character-appearance-production/CAPP_PROGRAM_BACKLOG.json')
+          x=json.loads(b.read_text()); x['status']='owner_approved_active_parallel_work'; x['started_at']='2026-08-13T07:35:00-05:00'; next(i for i in x['work_items'] if i['id']=='CAPP-01')['status']='in_progress'; b.write_text(json.dumps(x,indent=2)+'\n')
+          s=Path('governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json')
+          y=json.loads(s.read_text()); y['generated_at']='2026-08-13T07:35:00-05:00'; y['primary']={'work_item_id':'CAPP-01','attempt_id':'CAPP-01-attempt-001','track':'character-appearance-production','repository':'cybalicistjt-stack/multiversal-aioc','branch':'governance/capp-01-appearance-choice-registry','status':'started','active_substep':'Build and validate the 25-profile source/choice/constraint foundation.','next_action':'Validate CAPP-01 foundation, repair failures, then prepare completion evidence.','latest_pushed_commit':None,'pull_request':None,'owner_decision_required':False,'unresolved_failures':[],'roadmap_projection_pending':True}; y['active_attempt_count']=2; y['deferred_track_count']=2; s.write_text(json.dumps(y,separators=(',',':')))
+          Path('.github/workflows/apply-capp01-start-state.yml').unlink()
+          PY
+      - name: Commit projection
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Project CAPP-01 start state'
+          git push origin HEAD:governance/capp-01-appearance-choice-registry
