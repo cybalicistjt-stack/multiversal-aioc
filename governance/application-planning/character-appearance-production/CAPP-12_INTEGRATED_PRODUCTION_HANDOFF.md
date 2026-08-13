@@ -1,6 +1,6 @@
 # CAPP-12 Integrated Production Handoff
 
-**State:** content built; integrated validation pending. This is not a `completed_verified` claim.
+**State:** CAPP-04 through CAPP-12 completed and verified as one integrated production-preparation tranche.
 
 ## Authority
 
@@ -28,6 +28,6 @@ Special topology regressions explicitly include Vespin four-arm/two-leg, Moravi 
 
 `python scripts/validate-capp-integrated-build.py`
 
-Per the owner's current direction, the tranche is built first. The next phase is one or more integrated validation rounds: repository validator, targeted artifact review, generated-corpus inspection, exact-head hosted CI, PR/merge evidence, then and only then `completed_verified` state projection.
+Final state projection is validated in PR #307 after the integrated substantive merge. The build-first operating model is: complete the bounded tranche, run integrated QA and repair rounds, run one final hosted gate, merge, then project completion once.
 
 No application runtime, STAGE-A-A2, release, deployment, tester access, paid services, production credentials or unsupported canonical promotion is activated by this handoff.
