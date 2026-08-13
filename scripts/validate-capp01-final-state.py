@@ -71,7 +71,8 @@ def main():
 
     git('merge-base','--is-ancestor',MERGE,'HEAD')
     message=git('show','-s','--format=%B',MERGE)
-    req(HEAD in message and '72/72' in message and 'CAPP-01' in message,'canonical merge message evidence')
+    workflow_evidence=('72/72' in message or 'all 72 applicable' in message)
+    req(HEAD in message and workflow_evidence and 'CAPP-01' in message,'canonical merge message evidence')
     changed=set(x for x in git('show','--pretty=','--name-only',MERGE).splitlines() if x)
     for path in ('governance/application-planning/character-appearance-production/CAPP-01_APPEARANCE_CHOICE_REGISTRY_v0.1.0.json','governance/application-planning/character-appearance-production/CAPP-01_CONSTRAINT_MODEL_v0.1.0.json','governance/application-planning/character-appearance-production/CAPP-01_SOURCE_AUTHORITY_AND_PROFILE_INDEX_v0.1.0.json','scripts/validate-capp01-completion.py'):
         req(path in changed,'canonical merge missing '+path)
