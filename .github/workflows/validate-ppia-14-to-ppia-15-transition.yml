@@ -7,6 +7,7 @@ on:
       - 'governance/ai/work-state/**'
       - 'governance/ai/runtime/**'
       - 'scripts/validate-ppia14-to-ppia15-transition.py'
+      - 'scripts/validate-ppia14-to-ppia15-transition-historical-safe.py'
       - 'scripts/validate-ppia14-*.py'
       - 'scripts/validate-ppia13-to-ppia14-transition.py'
       - 'scripts/validate-ppia13-completion-contracts.py'
@@ -29,8 +30,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate PPIA-14 to PPIA-15 Transition
-        run: python scripts/validate-ppia14-to-ppia15-transition.py
+      - name: Validate PPIA-14 to PPIA-15 Transition current or historical evidence
+        run: python scripts/validate-ppia14-to-ppia15-transition-historical-safe.py
       - name: Validate PPIA-14 Completion historical regression
         run: python scripts/validate-ppia14-completion-contracts.py
       - name: Validate PPIA-14 Integrated Workflows historical regression
