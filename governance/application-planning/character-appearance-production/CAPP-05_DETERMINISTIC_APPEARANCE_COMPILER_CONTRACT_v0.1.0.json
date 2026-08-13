@@ -23,49 +23,22 @@
   },
   "output_contract": {
     "format": "semantic_render_plan_json",
-    "required": [
-      "renderer_id",
-      "renderer_version",
-      "asset_pack_id",
-      "asset_pack_version",
-      "profile_id",
-      "biology_snapshot_id",
-      "appearance_state_id",
-      "view_id",
-      "pose_id",
-      "topology_template_id",
-      "semantic_choice_ids",
-      "layers",
-      "coverage_state",
-      "fallback_state",
-      "diagnostics",
-      "permission_filter_applied",
-      "render_plan_sha256",
-      "character_truth_changed",
-      "actual_equipment_changed",
-      "biology_changed"
-    ],
-    "layer_fields": ["asset_id", "asset_version", "semantic_band", "layer_order", "anchor_map", "mask_ids", "palette_zone_ids", "occlusion", "support_state"]
+    "required": ["renderer_id","renderer_version","asset_pack_id","asset_pack_version","profile_id","biology_snapshot_id","appearance_state_id","view_id","pose_id","topology_template_id","semantic_choice_ids","layers","coverage_state","fallback_state","diagnostics","permission_filter_applied","render_plan_sha256","character_truth_changed","actual_equipment_changed","biology_changed"],
+    "layer_fields": ["asset_id","asset_version","semantic_band","layer_order","anchor_map","mask_ids","palette_zone_ids","occlusion","support_state"]
   },
   "determinism": {
     "canonicalization": "UTF-8 JSON, keys sorted, compact separators for hashing",
     "hash": "SHA-256",
-    "layer_sort": ["semantic_band", "layer_order", "asset_id", "asset_version"],
+    "layer_sort": ["semantic_band","layer_order","asset_id","asset_version"],
     "same_authorized_inputs_same_output": true
   },
   "permission_rules": [
     "Permission filtering runs before matching, support classification and fallback.",
     "Hidden asset identity and hidden asset counts are never emitted or inferred.",
-    "permission_filter_applied reports that the filtering stage ran; it does not reveal whether hidden assets existed."
+    "permission_filter_applied reports that the filtering stage ran and reveals no filtered identity or quantity."
   ],
-  "compatibility_rules": [
-    "A requested renderer ID must match the manifest renderer ID or the result is explicit unknown coverage with a diagnostic.",
-    "A requested asset-pack ID/version must match the manifest identity/version or the result is explicit unknown coverage with a diagnostic.",
-    "A nonempty asset_lock permits only the explicitly locked asset IDs; unavailable locked IDs are diagnosed and never silently replaced.",
-    "Coverage aggregation matches CAPP-04: all supported is supported, all unsupported is unsupported, all unknown is unknown, and mixed states are partial."
-  ],
-  "fallback_states": ["none", "partial_renderer_plan", "renderer_fallback_required", "no_authorized_asset_match"],
-  "coverage_states": ["supported", "partial", "unsupported", "unknown"],
+  "fallback_states": ["none","partial_renderer_plan","renderer_fallback_required","no_authorized_asset_match"],
+  "coverage_states": ["supported","partial","unsupported","unknown"],
   "invariants": {
     "character_truth_changed": false,
     "actual_equipment_changed": false,
@@ -79,9 +52,6 @@
     "same inputs produce byte-equivalent semantic result",
     "layer ordering is stable",
     "unauthorized assets are filtered without identity/count disclosure",
-    "renderer and asset-pack mismatches return explicit diagnostics",
-    "asset locks never silently substitute",
-    "coverage aggregation matches CAPP-04 semantics",
     "missing authorized coverage returns explicit unknown fallback",
     "compiler never mutates Character, biology, or equipment truth"
   ]
