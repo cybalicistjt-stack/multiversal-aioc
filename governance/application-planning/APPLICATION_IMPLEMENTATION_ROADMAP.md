@@ -1,11 +1,11 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 2.5.0  
-**Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED + PARALLEL PRE-IMPLEMENTATION WORK ACTIVE  
+**Version:** 2.6.0  
+**Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED; PPIA COMPLETED_VERIFIED  
 **Owner and final authority:** John Brandon Turner  
 **Originally approved:** 2026-08-03  
-**Last updated:** 2026-08-11
+**Last updated:** 2026-08-13
 
 ## Purpose
 
@@ -15,23 +15,21 @@ Repository evidence is mandatory. Nothing is complete merely because it was disc
 
 The authoritative ordered Phase 9 backlog remains `governance/phase9/P9-06_IMPLEMENTATION_BACKLOG_AND_ACCEPTANCE_GATES.json`. Runtime recovery is governed by `governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md`. When a newer internally consistent attempt-branch checkpoint or repository record is more recent than a compact runtime projection, the newer evidence controls recovery until merged or explicitly superseded.
 
-## Current verified execution position — 2026-08-11
+## Current verified execution position — 2026-08-13
 
 Repository and source evidence establishes the following boundary:
 
-- **Phase 9 bounded implementation through P9-06-023 is complete.** Final P9-06-023 / AG-07 physical-device acceptance was merged in `Multiversal-app` PR #102 at `fb22295948745347913bcbfebf56ecca26bf39fb`. The evidence includes Windows GM + Android Player, ordered authoritative events, hidden-information protection, reconnect, and focused physical-evidence validation. `releaseAuthorized=false`.
+- **Phase 9 bounded implementation through P9-06-023 is complete.** Final P9-06-023 / AG-07 physical-device acceptance was merged in `Multiversal-app` PR #102 at `fb22295948745347913bcbfebf56ecca26bf39fb`. Evidence includes Windows GM + Android Player, ordered authoritative events, hidden-information protection, reconnect, and focused physical-evidence validation. `releaseAuthorized=false`.
 - **P9-06-024 owner decision is recorded.** `Multiversal-app` PR #103 / merge `8b7f53da1f72c280226f64be67c9aa1c280fefdf` authorized **STAGE-A-A2 — Universal Object Experience** as the exact current application work item. It did not authorize deployment or release.
 - **The A2 ready work order is merged.** Application PR #104 / merge `dced7f92163050690c807c1fda937146bb8dce85` added `.ai/ready-work-orders/STAGE-A-A2-universal-object-experience.md`.
 - **DT-001 through DT-010 Developer Toolbelt is complete.** Application PRs #105 through #114 produced `mv-dev` v0.10.0 on `main`, ending at squash merge `354e24007d2c453d090a2a6cdb31d3e3333c84c1`. The series includes doctor/preflight, task capsules, fixture gateway, scenario runner, permission leak scanner, UI evidence harvester, design-system linter, traceability compiler, and recovery/performance harness.
 - **The previously missing exact A2 source authority has been recovered.** Owner-supplied `Pre-A2.zip` contained and verified the superseding Sunday master v2.7.1, the v1.0.0 preimplementation package, the v2.7.0 repository compatibility audit, and exact `A2_CHANGED_PATH_SCOPE_v1.0.0.csv`. The CSV SHA-256 is `945b3619b25bd24e54267c8259fc17e667063a3056214e080cbe8034836d5aa6`.
-- **The governed A2 branch now exists but A2 is not activated.** `stage-a/a2-universal-object-experience` was created from application `main` `354e24007d2c453d090a2a6cdb31d3e3333c84c1`. No A2 implementation commit has been made. The mandatory v2.6 evidence/checkpoint/recovery runner still requires a repository-capable private checkout before activation, preflight/task-capsule `READY`, and A2-01 work.
+- **The governed A2 branch exists but A2 is not activated.** `stage-a/a2-universal-object-experience` was created from application `main` `354e24007d2c453d090a2a6cdb31d3e3333c84c1`. No A2 implementation commit has been made. The mandatory v2.6 evidence/checkpoint/recovery runner still requires a repository-capable private checkout before activation, preflight/task-capsule `READY`, and A2-01 work.
 - **Internal Alpha feature design is complete through IA-D09.** IA-D09 remains the completed release-design anchor. Prepared tester/reference, tester-package, demo-campaign, future-workspace-verification, and pack-lifecycle assets do not activate tester access or release.
 - **Design Standards preparation is complete; exact-byte ingestion is still unfinished.** `DS-008-working-series-attempt-002` remains blocked on a repository-capable exact-byte transfer/validation surface and is not completed by preparation artifacts alone.
-- **The owner-approved PPIA parallel work track is active.** PPIA contains sixteen non-Codex tranches designed to advance content quality, UX/content authoring, gameplay systems, acceptance material, onboarding, and developer-control design while A2/Design Standards wait for their required execution surfaces. PPIA does not replace or activate A2.
-- **PPIA-01 — Content Quality & Missing-Information Closure is complete.** AIOC PR #212 merged as `f9e2b1fb7c340d27813b09c180b60d34d5fb6f92` after all eight applicable exact-head gates passed on `cb29b217a48b58df03114f4345a71d8c4c2a898a`. The tranche used the 8E-009 CSV-first 20-dataset / 19,199-row authority, closed all 84 explicit high-priority source gaps through governed source/recommendation boundaries, triaged all 10,594 inference/estimate-bearing rows, source-reviewed the 36 P1 high-core records, and froze a repair/routing backlog without modifying raw `Csv.zip`. Quantum Weaver was later resolved as owner-approved authored Multiversal completion while preserving its source boundary.
-- **Historical 8E-008G-R1 source-accountability closure is recovered and PASS.** Owner-supplied `This.zip`, SHA-256 `daa8d2eed1d23400812c8a003fbee5c6680041227d42dc90555ebc2031715a18`, recovered the substantive R1 closure outputs. PR #218 / merge `d271d1e7ec453cd153a7bf5768b3df837ba677a9` records 101/101 acceptance checks PASS, 7,144/7,144 structural candidates accounted, 2,766 formerly unbound candidates closed, 0 unbound source sections, and 1,671 formal deferrals preserved. R1 proves source accountability; formal deferral is neither automatic Public Canon promotion nor exclusion.
-- **PPIA-02 — Creature & NPC Experience is completed_verified.** Original PR #217 / merge `f6568e77de2790e9012a95942435c8d88b2e1dd5` produced the integrated Creature/NPC design packet, but its final completion contract later exposed that only 12 of the intended 13 reference cases had been merged. Required amendment PR #219 restored `PPIA02-RC-013`, integrated the recovered R1 provenance model and 93 deferred creature candidates, and passed all four applicable exact-head gates on `1909a607bbb3ff57a959ae8cc47058ad2882a4e3`. Amendment merge `f768345a44a662a5a1981f4cb35d218c926a5cb6` is therefore part of the verified PPIA-02 completion boundary; PR #217 alone is not.
-- **PPIA-03 — Items, Equipment & Inventory Experience is now the current PPIA work item.** Branch `governance/ppia-03-items-equipment-inventory` was created from verified PPIA-02 completion merge `f768345a44a662a5a1981f4cb35d218c926a5cb6`. Initial work is source/design inventory plus state, ownership, container, equipment, identification, permission, and provenance taxonomy. PPIA-03 is preparatory design/content work only and does not activate A2 or authorize runtime mutation.
+- **The owner-approved PPIA parallel program is completed_verified.** All sixteen tranches are complete/completed_verified in `PPIA_PROGRAM_BACKLOG.json`. Final substantive PPIA-16 completion exact head `eede4bfb530056963a4a595faac54515ff151c3b` passed **70/70** applicable hosted workflows; dedicated run `31694048323` passed; PR #294 squash-merged as signed/verified `5b87d57d9b06fbb7427b6fae7ca022509f92a5fe`.
+- **Canonical PPIA final-state recovery is merged.** Recovery exact head `031d4c7af10245069a5cf8bd5b2819965e338cee` passed **70/70** hosted workflows; PR #295 squash-merged as signed/verified `8357cc812436e8bbe40c214ac0ca6e44363cc1a5`. PPIA-16 remains the completed evidence anchor and does not select a successor.
+- **Historical 8E-008G-R1 source-accountability closure remains recovered and PASS.** Owner-supplied `This.zip`, SHA-256 `daa8d2eed1d23400812c8a003fbee5c6680041227d42dc90555ebc2031715a18`, recovered substantive R1 closure outputs. PR #218 / merge `d271d1e7ec453cd153a7bf5768b3df837ba677a9` records 101/101 acceptance checks PASS, 7,144/7,144 structural candidates accounted, 2,766 formerly unbound candidates closed, 0 unbound source sections, and 1,671 formal deferrals preserved. R1 proves source accountability; formal deferral is neither automatic Public Canon promotion nor exclusion.
 
 This section is a recovery summary, not an autosave ledger. More recent verified repository evidence controls if the project advances beyond it.
 
@@ -43,7 +41,7 @@ This section is a recovery summary, not an autosave ledger. More recent verified
 - **Phase 8:** standards, normalization, canonical domain architecture, source conversion, final validation, golden regression corpus, balance harness, and AI Development Team Operating Package.
 - **Phase 9:** canonical product architecture, provider-neutral implementation foundations, acceptance gates, and bounded implementation readiness.
 - **Phase 10 / Stage A:** current core application implementation program.
-- **PPIA:** parallel pre-implementation advancement track that may run while checkout-dependent implementation is blocked.
+- **PPIA:** completed parallel pre-implementation advancement program retained as implementation input and historical evidence.
 
 ## Completed Phase 8 milestones
 
@@ -116,11 +114,11 @@ Governing documents:
 - `governance/application-planning/parallel-preimplementation/PPIA_PARALLEL_PREIMPLEMENTATION_ADVANCEMENT_PROGRAM.md`
 - `governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json`
 
-**Status:** ACTIVE — OWNER APPROVED PARALLEL WORK.
+**Status:** COMPLETED_VERIFIED — OWNER-APPROVED PARALLEL PROGRAM CLOSED.
 
-Purpose: perform substantial source/content/design/authoring/acceptance work that does not require a repository-capable Codex checkout, especially while A2 and Design Standards remain blocked on execution surfaces.
+PPIA performed substantial source/content/design/authoring/acceptance work that did not require a repository-capable Codex checkout while A2 and Design Standards waited for required execution surfaces.
 
-PPIA is additive. It does not supersede or complete:
+PPIA remains additive. Its completion does not supersede or complete:
 - STAGE-A-A2;
 - Design Standards exact-byte ingestion;
 - WP-011 / Apple-only work;
@@ -130,71 +128,63 @@ PPIA is additive. It does not supersede or complete:
 
 ### Approved sixteen tranches
 
-1. **PPIA-01 — Content Quality & Missing-Information Closure**
-2. **PPIA-02 — Creature & NPC Experience**
-3. **PPIA-03 — Items, Equipment & Inventory Experience**
-4. **PPIA-04 — Vehicle, Mecha & Starship Experience**
-5. **PPIA-05 — Species, Forms & Character Biology**
-6. **PPIA-06 — Character Appearance Creator**
-7. **PPIA-07 — Rune Construction RPG System**
-8. **PPIA-08 — Campaign / Scene / Session Authoring Depth**
-9. **PPIA-09 — Investigation & Mystery Authoring Kit**
-10. **PPIA-10 — Relationship, Social & Faction Content Framework**
-11. **PPIA-11 — Encounter & Balance Design Laboratory**
-12. **PPIA-12 — World & Setting Authoring System**
-13. **PPIA-13 — Onboarding, Help & In-App Teaching Content**
-14. **PPIA-14 — Error, Recovery & Permission Microcopy**
-15. **PPIA-15 — Internal Alpha Test Content Expansion**
-16. **PPIA-16 — Developer Console / AI-Team Control Surface**
+1. **PPIA-01 — Content Quality & Missing-Information Closure** — COMPLETE
+2. **PPIA-02 — Creature & NPC Experience** — COMPLETED_VERIFIED
+3. **PPIA-03 — Items, Equipment & Inventory Experience** — COMPLETED_VERIFIED
+4. **PPIA-04 — Vehicle, Mecha & Starship Experience** — COMPLETED_VERIFIED
+5. **PPIA-05 — Species, Forms & Character Biology** — COMPLETED_VERIFIED
+6. **PPIA-06 — Character Appearance Creator** — COMPLETED_VERIFIED
+7. **PPIA-07 — Rune Construction RPG System** — COMPLETED_VERIFIED
+8. **PPIA-08 — Campaign / Scene / Session Authoring Depth** — COMPLETED_VERIFIED
+9. **PPIA-09 — Investigation & Mystery Authoring Kit** — COMPLETED_VERIFIED
+10. **PPIA-10 — Relationship, Social & Faction Content Framework** — COMPLETED_VERIFIED
+11. **PPIA-11 — Encounter & Balance Design Laboratory** — COMPLETED_VERIFIED
+12. **PPIA-12 — World & Setting Authoring System** — COMPLETED_VERIFIED
+13. **PPIA-13 — Onboarding, Help & In-App Teaching Content** — COMPLETED_VERIFIED
+14. **PPIA-14 — Error, Recovery & Permission Microcopy** — COMPLETED_VERIFIED
+15. **PPIA-15 — Internal Alpha Test Content Expansion** — COMPLETED_VERIFIED
+16. **PPIA-16 — Developer Console / AI-Team Control Surface** — COMPLETED_VERIFIED
 
 Dependency-optimized execution order:
 `PPIA-01 → 02 → 03 → 04 → 05 → 12 → 07 → 08 → 09 → 10 → 11 → 06 → 13 → 14 → 15 → 16`.
 
-### PPIA completion and current state
+### Verified completion evidence
 
-**PPIA-01 — Content Quality & Missing-Information Closure: COMPLETE.**
+Final substantive PPIA-16 closure:
+- exact validated head `eede4bfb530056963a4a595faac54515ff151c3b`;
+- **70/70** applicable hosted pull-request workflows successful;
+- dedicated `Validate PPIA-16 Completion Contract` run `31694048323` successful;
+- PR #294;
+- signed/verified squash merge `5b87d57d9b06fbb7427b6fae7ca022509f92a5fe`.
 
-Canonical evidence:
-- PR #212 / merge `f9e2b1fb7c340d27813b09c180b60d34d5fb6f92`;
-- all 84 explicit source gaps governed/closed;
-- all 10,594 inference/estimate-bearing rows classified and routed;
-- all 36 P1 high-core rows source-reviewed;
-- Quantum Weaver later owner-resolved as authored completion without rewriting recovered source facts;
-- historical R1 source-accountability result later recovered PASS in PR #218 / merge `d271d1e7ec453cd153a7bf5768b3df837ba677a9`.
+Final machine-readable recovery/projection:
+- exact recovery head `031d4c7af10245069a5cf8bd5b2819965e338cee`;
+- **70/70** hosted workflows successful;
+- PR #295;
+- signed/verified squash merge `8357cc812436e8bbe40c214ac0ca6e44363cc1a5`;
+- `PPIA_PROGRAM_BACKLOG.json` status `completed_verified_owner_approved_parallel_work`;
+- all sixteen tranches complete/completed_verified;
+- PPIA-16 retained as the completed evidence anchor.
 
-**PPIA-02 — Creature & NPC Experience: COMPLETED_VERIFIED.**
+The completed PPIA-16 surface preserves the Development Console design over DT-001 through DT-010: 10 DT tools, 10 AIOC control surfaces, 16 program concerns, 5 authority layers, 10 screens, 8 shared states, 8 action classes, 8 components, 12 workflows, 12 handoffs, 48 predecessor cases exact-once, and 12 integrated synthetic/noncanonical cases for 60 effective QA cases with zero intended orphaned coverage.
 
-Verified completion evidence:
-- original integrated design PR #217 / merge `f6568e77de2790e9012a95942435c8d88b2e1dd5`;
-- final completion contract subsequently exposed a missing 13th reference case, so PR #217 alone is not the verified completion boundary;
-- amendment PR #219 restored `PPIA02-RC-013`, integrated the recovered 93-row R1 deferred-creature provenance set, and passed PPIA-02 Completion Contract run `31506614994`, PPIA-02 Foundation run `31506614982`, PPIA Program run `31506614892`, and Operational AIOC Baseline run `31506614861` on exact head `1909a607bbb3ff57a959ae8cc47058ad2882a4e3`;
-- amendment squash merge `f768345a44a662a5a1981f4cb35d218c926a5cb6` closes the verified PPIA-02 boundary;
-- final packet includes 7 object layers, 8 profiles, 10 contexts, 13 Inspector groups, 10 workflows, 13 reference cases, 36 requirements across 16 categories, and explicit formal-deferral/no-silent-promotion behavior.
+### Post-PPIA selection boundary
 
-### Current PPIA work item
+No automatic successor is selected by PPIA completion.
 
-**PPIA-03 — Items, Equipment & Inventory Experience** is the owner-selected current conversational work item.
+The independent unfinished/blocked tracks remain:
+- **STAGE-A-A2:** authorized current application item, not activated; mandatory runner still requires a repository-capable checkout.
+- **Design Standards / DS-008 attempt-002:** unfinished/blocked on exact-byte transfer and validation capability.
+- **WP-011 / Apple track:** separate bounded Mac-dependent work when explicitly selected and supported by its own current repository evidence.
 
-PPIA-03 must produce an implementation-ready asset/inventory packet covering:
-- weapons, armor, consumables, tools, ammunition, currency, containers, and special items;
-- Definition versus owned/carried/equipped/stored/placed/live-use state;
-- stacks, quantities, charges, durability, magazines/capacity, attachments, and modifications;
-- ownership, possession, custody, party/shared assets, transfer, trade, drop, pickup, and loot;
-- identification, appraisal, hidden properties, reveal state, GM-only information, and permission-safe projections;
-- nested containers and inventory relationships without identity collapse;
-- provenance/history, source variants/conflicts, authored recommendations, and formally deferred source candidates;
-- Character, Creature/NPC, Scene, Encounter, crafting, vehicle, and world-authoring integration boundaries;
-- accessible, responsive, keyboard/screen-reader/mobile alternatives for dense inventory/equipment interfaces;
-- source-grounded and explicitly synthetic acceptance/reference cases.
-
-PPIA-03 must consume the PPIA-01 routed Taser source-variant conflict, seven source-unspecified energy-weapon capacities, three ammo-reference-only names, relevant inferred mechanics, and any recovered R1 item deferrals without fabricating source facts or auto-merging identities.
+PPIA completion does not authorize runtime mutation, release, deployment, tester access, paid services, production credentials, or unsupported canonical-content promotion.
 
 ## Design Standards Completion subproject — unfinished parallel track
 
 The audited/canonicalization tranche is complete, but exact repository ingestion is not.
 
 Verified preparation includes:
-- PR #207 / merge `bd3071f6f855b66b740ba4bf1f1ba0208636548c`;
+- PR #207 / merge `bd3071f6f855b66b7404bf1f1ba0208636548c`;
 - PR #208 / merge `0cfd8128786e4cdd055e3e3be26bdd1854efdfa7`;
 - PR #209 / merge `708e0ea72a6dce6f5d46ddacd042c1ddb80eee0a`;
 - attempt branch `governance/design-standards-publication-ingestion`;
@@ -308,7 +298,7 @@ Prepared tester/demo/reference assets do not authorize tester access or release 
 
 - “Continue” means perform the next verified unfinished operation.
 - Read the authoritative backlog/work order before starting each item.
-- Preserve parallel tracks; selecting PPIA does not complete or supersede A2, Design Standards, or Apple work.
+- Preserve parallel tracks; completing PPIA does not complete or supersede A2, Design Standards, or Apple work.
 - Distinguish missing source bytes, transfer-tool limits, unavailable checkout, validation failure, and owner-only gates.
 - Never claim completion, files, commits, PRs, merges, tests, artifacts, deployments, or exact-byte ingestion without matching evidence.
 - Preserve source truth, provenance, variants, conflicts, stable IDs, exact-byte requirements, permissions, hidden-information boundaries, and reversibility.
