@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -45,19 +46,32 @@ class CorrectionRegressionTests(unittest.TestCase):
     def ledger(self):
         return json.loads((self.root / "governance/ai/interaction-system/corrections/CORRECTION_REGRESSION_LEDGER.json").read_text())
 
+    def promoted(self):
+        return json.loads((self.root / "governance/ai/interaction-system/evaluation/PROMOTED_EVALUATION_CASES.json").read_text())
+
+    def captured_candidate_id(self, result) -> str:
+        match = re.search(r"candidate=(\S+)", result.stdout)
+        self.assertIsNotNone(match, result.stdout)
+        return match.group(1)
+
+    def candidate(self, candidate_id: str):
+        return next(item for item in self.ledger()["candidates"] if item["candidate_id"] == candidate_id)
+
     def test_repository_baseline_validates(self):
         self.assertIn("PASS", self.run_tool("validate").stdout)
 
     def test_capture_is_deterministic_and_idempotent(self):
+        before = self.ledger()
         input_path = self.write_input()
         first = self.run_tool("capture", "--input", str(input_path))
         second = self.run_tool("capture", "--input", str(input_path))
         self.assertIn("created correction=", first.stdout)
         self.assertIn("existing correction=", second.stdout)
+        candidate_id = self.captured_candidate_id(first)
         ledger = self.ledger()
-        self.assertEqual(1, len(ledger["corrections"]))
-        self.assertEqual(1, len(ledger["candidates"]))
-        self.assertEqual("proposed", ledger["candidates"][0]["status"])
+        self.assertEqual(len(before["corrections"]) + 1, len(ledger["corrections"]))
+        self.assertEqual(len(before["candidates"]) + 1, len(ledger["candidates"]))
+        self.assertEqual("proposed", self.candidate(candidate_id)["status"])
         self.run_tool("validate")
 
     def test_capture_rejects_raw_transcript_field_without_mutation(self):
@@ -76,31 +90,31 @@ class CorrectionRegressionTests(unittest.TestCase):
 
     def test_review_requires_owner_authority(self):
         path = self.write_input()
-        self.run_tool("capture", "--input", str(path))
-        candidate_id = self.ledger()["candidates"][0]["candidate_id"]
+        capture = self.run_tool("capture", "--input", str(path))
+        candidate_id = self.captured_candidate_id(capture)
         result = self.run_tool(
             "review", "--candidate-id", candidate_id, "--decision", "approved",
             "--reviewer", "other-reviewer", "--evidence", "review evidence", expect=1,
         )
         self.assertIn("only the owner", result.stderr)
-        self.assertEqual("proposed", self.ledger()["candidates"][0]["status"])
+        self.assertEqual("proposed", self.candidate(candidate_id)["status"])
 
     def test_promotion_requires_approved_candidate(self):
         path = self.write_input()
-        self.run_tool("capture", "--input", str(path))
-        candidate_id = self.ledger()["candidates"][0]["candidate_id"]
+        capture = self.run_tool("capture", "--input", str(path))
+        candidate_id = self.captured_candidate_id(capture)
+        promoted_before = self.promoted()
         result = self.run_tool(
             "promote", "--candidate-id", candidate_id, "--case-id", "MV-EVAL-016",
             "--evidence", "promotion evidence", expect=1,
         )
         self.assertIn("must be owner-approved", result.stderr)
-        promoted = json.loads((self.root / "governance/ai/interaction-system/evaluation/PROMOTED_EVALUATION_CASES.json").read_text())
-        self.assertEqual([], promoted["cases"])
+        self.assertEqual(promoted_before, self.promoted())
 
     def test_owner_review_and_promotion_materialize_extension_case(self):
         path = self.write_input()
-        self.run_tool("capture", "--input", str(path))
-        candidate_id = self.ledger()["candidates"][0]["candidate_id"]
+        capture = self.run_tool("capture", "--input", str(path))
+        candidate_id = self.captured_candidate_id(capture)
         self.run_tool(
             "review", "--candidate-id", candidate_id, "--decision", "approved",
             "--reviewer", "john-brandon-turner", "--evidence", "owner decision ref",
@@ -110,10 +124,10 @@ class CorrectionRegressionTests(unittest.TestCase):
             "promote", "--candidate-id", candidate_id, "--case-id", "MV-EVAL-016",
             "--evidence", "promotion PR ref", "--promoted-at", "2026-08-05T23:31:00Z",
         )
-        ledger = self.ledger()
-        self.assertEqual("promoted", ledger["candidates"][0]["status"])
-        promoted = json.loads((self.root / "governance/ai/interaction-system/evaluation/PROMOTED_EVALUATION_CASES.json").read_text())
-        self.assertEqual("MV-EVAL-016", promoted["cases"][0]["case_id"])
+        self.assertEqual("promoted", self.candidate(candidate_id)["status"])
+        promoted = self.promoted()
+        new_case = next(item for item in promoted["cases"] if item["case_id"] == "MV-EVAL-016")
+        self.assertEqual(candidate_id, new_case["source_candidate_id"])
         mapping = json.loads((self.root / "governance/ai/interaction-system/corrections/EVALUATION_CONTROL_EXTENSION.json").read_text())
         new_map = next(item for item in mapping["cases"] if item["case_id"] == "MV-EVAL-016")
         self.assertIn("C-CORRECTION-REGRESSION-INTAKE", new_map["control_ids"])
