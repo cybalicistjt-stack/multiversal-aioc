@@ -1,0 +1,24 @@
+name: Validate CAPP-01 Foundation
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/character-appearance-production/CAPP-01_*'
+      - 'scripts/validate-capp01-foundation.py'
+      - '.github/workflows/validate-capp-01-foundation.yml'
+  push:
+    branches:
+      - governance/capp-01-appearance-choice-registry
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-capp01-foundation.py
