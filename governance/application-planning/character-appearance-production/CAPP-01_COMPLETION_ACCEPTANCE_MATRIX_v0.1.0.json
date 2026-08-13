@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "CAPP-01",
+  "title": "Completion Acceptance Matrix",
+  "status": "ready_for_review_candidate",
+  "acceptance_checks": [
+    {"id":"CAPP01-A01","requirement":"Canonical profile authority","expected":"25 profiles in exact PPIA-06 morphology order and source hashes bound","evidence":["CAPP-01_SOURCE_AUTHORITY_AND_PROFILE_INDEX_v0.1.0.json","scripts/generate-capp01-registry.py"],"status":"pass_candidate"},
+    {"id":"CAPP01-A02","requirement":"Stable profile identity","expected":"one unique stable species.<slug> ID for every canonical profile","evidence":["CAPP-01_SOURCE_AUTHORITY_AND_PROFILE_INDEX_v0.1.0.json"],"status":"pass_candidate"},
+    {"id":"CAPP01-A03","requirement":"Canonical authoring surfaces","expected":"P06-UI-002 through P06-UI-011 exact semantic-layer refs and modes","evidence":["CAPP-01_APPEARANCE_CHOICE_REGISTRY_v0.1.0.json"],"status":"pass_candidate"},
+    {"id":"CAPP01-A04","requirement":"Required feature traceability","expected":"required_feature_contracts exactly mirror PPIA-06 required_features","evidence":["CAPP-01_APPEARANCE_CHOICE_REGISTRY_v0.1.0.json"],"status":"pass_candidate"},
+    {"id":"CAPP01-A05","requirement":"Bounded variation traceability","expected":"bounded_choice_contracts exactly mirror PPIA-06 bounded_variation","evidence":["CAPP-01_APPEARANCE_CHOICE_REGISTRY_v0.1.0.json"],"status":"pass_candidate"},
+    {"id":"CAPP01-A06","requirement":"Stable choice IDs","expected":"180 unique stable source-derived choice/constraint IDs for current source set","evidence":["Validate CAPP-01 Foundation run 31703316324"],"status":"pass_candidate"},
+    {"id":"CAPP01-A07","requirement":"Owner-resolved special contracts","expected":"Giantkin, Stygian, Vespin, Moravi, Rakuuta, Traiga, Furashin, Kola-Ha, Toba-Madra, Arborae, Mythragara, Suula, Nekron, ManyToms, The Free, Dwarf, Orc, Gray and Sharr behaviors retained without invented canon","evidence":["CAPP-01_APPEARANCE_CHOICE_REGISTRY_v0.1.0.json","PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json"],"status":"pass_candidate"},
+    {"id":"CAPP01-A08","requirement":"No implicit humanoid default","expected":"nonstandard topology is explicit and unknown/source-unspecified anatomy remains unknown","evidence":["CAPP-01_CONSTRAINT_MODEL_v0.1.0.json","PPIA-06_APPEARANCE_SEMANTIC_TAXONOMY_v0.2.0.json"],"status":"pass_candidate"},
+    {"id":"CAPP01-A09","requirement":"Upstream biological ownership","expected":"current Form, persistent/active biology and history remain upstream/read-only where governed","evidence":["CAPP-01_CONSTRAINT_MODEL_v0.1.0.json"],"status":"pass_candidate"},
+    {"id":"CAPP01-A10","requirement":"Explicit eligibility states","expected":"eligible/read_only/unavailable/unknown/invalid_requires_review semantics are preserved and no silent substitution occurs","evidence":["CAPP-01_CONSTRAINT_MODEL_v0.1.0.json"],"status":"pass_candidate"},
+    {"id":"CAPP01-A11","requirement":"Renderer independence","expected":"partial/unsupported/unknown renderer coverage never invalidates biological or identity truth","evidence":["CAPP-01_APPEARANCE_CHOICE_REGISTRY_v0.1.0.json","CAPP-01_CONSTRAINT_MODEL_v0.1.0.json"],"status":"pass_candidate"},
+    {"id":"CAPP01-A12","requirement":"Permission filtering","expected":"hidden biology/current Form/history/equipment filtered before choices, counts, diagnostics, derivation, export or AI context","evidence":["CAPP-01_CONSTRAINT_MODEL_v0.1.0.json"],"status":"pass_candidate"},
+    {"id":"CAPP01-A13","requirement":"Wardrobe/equipment separation","expected":"presentation wardrobe is nonmechanical and actual equipment is read-only PPIA-03 projection","evidence":["CAPP-01_APPEARANCE_CHOICE_REGISTRY_v0.1.0.json","CAPP-01_CONSTRAINT_MODEL_v0.1.0.json"],"status":"pass_candidate"},
+    {"id":"CAPP01-A14","requirement":"Randomization boundary","expected":"CAPP-02-only randomization can affect only eligible authored/cosmetic pools and never source-owned state","evidence":["CAPP-01_CONSTRAINT_MODEL_v0.1.0.json"],"status":"pass_candidate"},
+    {"id":"CAPP01-A15","requirement":"Deterministic regeneration","expected":"generator --check reproduces exact registry/index/constraints/report from canonical inputs","evidence":["scripts/generate-capp01-registry.py","Validate CAPP-01 Foundation"],"status":"pass_candidate"},
+    {"id":"CAPP01-A16","requirement":"Recovery indexing","expected":"ROADMAP_INDEX contains exactly 12 CAPP work items derived from CAPP backlog","evidence":["scripts/sync-capp-roadmap-index.py","governance/ai/runtime/ROADMAP_INDEX.json","run 31703569637"],"status":"pass_candidate"},
+    {"id":"CAPP01-A17","requirement":"Continuity state","expected":"CAPP-01 governed attempt remains primary through review while A2 and DS-008 boundaries remain explicit","evidence":["CAPP-01-attempt-001.json","CURRENT_WORK_POINTER.json","CURRENT_IMPLEMENTATION_STATUS.json"],"status":"pass_candidate"},
+    {"id":"CAPP01-A18","requirement":"Authority boundary","expected":"no runtime, A2 activation, release, deployment, tester, paid-service, production-credential or unsupported canonical-promotion authority","evidence":["CAPP_PROGRAM_BACKLOG.json"],"status":"pass_candidate"},
+    {"id":"CAPP01-A19","requirement":"Failure/correction integrity","expected":"failed legacy-profile run 31702343075 remains preserved and led to source-derived regeneration, not validator weakening","evidence":["CAPP-01_CANONICAL_SOURCE_CORRECTION.md","run 31703091730","run 31703316324"],"status":"pass_candidate"},
+    {"id":"CAPP01-A20","requirement":"Completion evidence boundary","expected":"completed_verified is prohibited until exact-head CI, PR merge and signed/verified merge evidence exist","evidence":["CAPP-01-attempt-001.json","CAPP-01_COMPLETION_REPORT.md"],"status":"pass_candidate"}
+  ],
+  "candidate_summary":{"checks":20,"pass_candidate":20,"failed":0,"completion_claim":false}
+}
