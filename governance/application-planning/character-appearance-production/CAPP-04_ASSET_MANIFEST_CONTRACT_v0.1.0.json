@@ -3,8 +3,9 @@
   "work_item_id":"CAPP-04",
   "renderer_id":"pixel-art-v1",
   "manifest_required":["manifest_id","manifest_version","asset_pack_id","asset_pack_version","renderer_id","authorized_projection","assets"],
-  "asset_required":["asset_id","asset_version","artifact_state","support_state","semantic_band","view_ids","topology_template_ids","provenance_class"],
+  "asset_required":["asset_id","asset_version","artifact_state","support_state","profile_ids","semantic_band","view_ids","topology_template_ids","provenance_class"],
   "artifact_states":["available","metadata_only","missing","retired"],
   "support_states":["supported","partial","unsupported","unknown"],
-  "rules":["stable_asset_id","versioned_manifest","authorized_projection_only","available_requires_content_hash","metadata_only_cannot_report_supported","missing_is_unknown_unless_explicitly_unsupported","retired_not_selected"]
+  "provenance_classes":["source_derived","owner_canon","renderer_derived","synthetic_test","unknown"],
+  "rules":["stable_asset_id","versioned_manifest","authorized_projection_only","profile_ids_must_exist_in_capp01","available_requires_content_hash","available_hash_is_sha256","metadata_only_cannot_report_supported","missing_is_unknown_unless_explicitly_unsupported","retired_not_selected","view_ids_must_exist_in_capp03","semantic_band_must_exist_in_capp03","topology_template_must_match_profile_or_declared_unknown","renderer_metadata_never_changes_character_truth","no_hidden_asset_ids_or_counts"]
 }
