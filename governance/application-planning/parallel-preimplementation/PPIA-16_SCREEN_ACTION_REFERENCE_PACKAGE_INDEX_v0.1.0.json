@@ -1,0 +1,21 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"PPIA-16",
+  "artifact_version":"0.1.0",
+  "title":"PPIA-16 Screen States / Action Contracts / Reference Cases Package Index",
+  "status":"screen-action-reference-candidate",
+  "foundation_merge":"015f200595fd6e8ba5da85a2956ee1c9dc8fb15b",
+  "artifacts":[
+    {"path":"governance/application-planning/parallel-preimplementation/PPIA-16_SCREEN_STATE_CONTRACTS_v0.1.0.json","role":"deterministic states and responsive/accessibility behavior for P16-SCR-001..010"},
+    {"path":"governance/application-planning/parallel-preimplementation/PPIA-16_ACTION_CONTRACTS_v0.1.0.json","role":"enablement, confirmation, execution, result, retry and authority contracts for eight Foundation action classes"},
+    {"path":"governance/application-planning/parallel-preimplementation/PPIA-16_COMPONENT_INTERACTION_CONTRACTS_v0.1.0.json","role":"candidate/provenance/status/finding/receipt/stop/nonactivation cross-screen behavior for P16-CMP-001..008"},
+    {"path":"governance/application-planning/parallel-preimplementation/PPIA-16_SCREEN_ACTION_REFERENCE_CASES_v0.1.0.json","role":"48 synthetic noncanonical deterministic reference cases covering all 12 Foundation workflows"},
+    {"path":"governance/application-planning/parallel-preimplementation/PPIA-16_SCREEN_ACTION_REFERENCE_CONTRACT.md","role":"human-readable substep contract and acceptance boundary"}
+  ],
+  "validator":"scripts/validate-ppia16-screen-action-reference.py",
+  "hosted_workflow":".github/workflows/validate-ppia-16-screen-action-reference.yml",
+  "locked_counts":{"screens":10,"shared_states":8,"action_classes":8,"components":8,"foundation_workflows":12,"reference_cases":48,"reference_cases_per_workflow":4},
+  "required_coverage":["all P16-SCR-001..010","all eight Foundation action classes","all P16-CMP-001..008","all P16-WF-001..012 exactly four reference cases each","loading/ready/empty/stale/conflict/blocked/error/recovering vocabulary","keyboard and screen-reader behavior","200%+ high-zoom/reflow behavior","mobile/touch behavior","reduced-motion and noncolor parity","exact candidate binding and stale evidence handling","finding raw state/source/scope/blocker behavior","producer-defined evidence receipt digests and mutation flags","stop-condition adjacency","owner-gated nonexecution","ambiguous mutation status no-blind-retry","all Foundation nonactivation boundaries"],
+  "acceptance_rule":"One exact PR head must pass the dedicated screen/action/reference gate plus every applicable hosted workflow before merge. Merge must be signature verified, followed by exactly checkpoint/pointer/status recovery commits. This substep does not complete PPIA-16.",
+  "nonactivation":{"application_runtime":false,"stage_a_a2":false,"release":false,"deployment":false,"tester_access":false,"paid_service":false,"production_credentials":false,"canonical_promotion":false}
+}
