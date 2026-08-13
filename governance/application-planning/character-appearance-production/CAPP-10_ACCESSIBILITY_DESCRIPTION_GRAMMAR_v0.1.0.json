@@ -1,0 +1,144 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "CAPP-10",
+  "title": "Accessibility Description Grammar",
+  "status": "built_pending_integrated_validation",
+  "tool": "tools/capp10_accessibility_description.py",
+  "authorities": [
+    "CAPP-01",
+    "CAPP-07",
+    "CAPP-06",
+    "CAPP-04",
+    "PPIA-06"
+  ],
+  "purpose": "Deterministic structured nonvisual description and change-announcement grammar for appearance state and renderer projection.",
+  "section_order": [
+    "topology",
+    "surface",
+    "coloration",
+    "distinguishing_features",
+    "wardrobe",
+    "equipment_projection",
+    "renderer_support"
+  ],
+  "section_contracts": {
+    "topology": {
+      "source": "authorized biology/topology snapshot",
+      "must_include_when_known": [
+        "body organization",
+        "governed limb/appendage structure relevant to appearance"
+      ],
+      "forbidden": [
+        "invented humanoid assumptions",
+        "mechanical reach/speed inference"
+      ]
+    },
+    "surface": {
+      "source": "authorized semantic appearance state",
+      "may_include": [
+        "skin",
+        "fur",
+        "feather",
+        "scale",
+        "chitin",
+        "bark",
+        "metal",
+        "bone",
+        "texture",
+        "covering style"
+      ],
+      "rule": "Only terms actually authorized by source/profile choices may be emitted."
+    },
+    "coloration": {
+      "source": "semantic palette zones and authored choices",
+      "must_distinguish": [
+        "biological coloration",
+        "cosmetic dye when applicable"
+      ],
+      "rule": "Color names always have textual labels; color is never the sole state carrier."
+    },
+    "distinguishing_features": {
+      "source": "authorized markings, structural features, persistent markers, and permission-safe history projection",
+      "rule": "Persistent/source-owned markers are described but not presented as cosmetically removable."
+    },
+    "wardrobe": {
+      "source": "presentation wardrobe",
+      "rule": "Explicitly presentation-only where ambiguity with actual owned equipment is possible."
+    },
+    "equipment_projection": {
+      "source": "permission-filtered actual equipment visual projection",
+      "rule": "Description reports visible projection only and does not claim ownership/equip mechanics beyond authorized state."
+    },
+    "renderer_support": {
+      "source": "CAPP-04/CAPP-05 support and diagnostic state",
+      "must_expose": [
+        "supported",
+        "partial",
+        "unsupported",
+        "unknown"
+      ],
+      "rule": "Missing visual coverage must be described without implying the Character state is invalid."
+    }
+  },
+  "sentence_grammar": {
+    "section": "<section_label>: <ordered_unique_fact>[; <ordered_unique_fact>]*.",
+    "change": "<field_label>: <before_value> to <after_value>.",
+    "empty": "No authorized appearance description is available.",
+    "ordering": "stable section order then case-insensitive lexical fact order",
+    "deduplication": true
+  },
+  "change_announcement_events": [
+    "authored_choice_changed",
+    "profile_or_form_projection_changed",
+    "persistent_marker_projection_changed",
+    "wardrobe_changed",
+    "equipment_projection_changed",
+    "renderer_support_changed",
+    "asset_pack_or_renderer_migration_changed_projection",
+    "permission_projection_changed_visible_description"
+  ],
+  "announcement_rules": [
+    "Announce semantic changed fields, not pixel coordinates or animation-only differences.",
+    "Do not announce hidden before/after values when either side is unauthorized.",
+    "Do not infer causality or mechanics from a visual change.",
+    "Multiple changes are deterministically ordered by stable field identifier.",
+    "Preview regeneration with no semantic change does not produce a semantic change announcement."
+  ],
+  "permission_filtering": {
+    "stage": "before description assembly and before change comparison output",
+    "item_contract": {
+      "text": "string",
+      "permission_tags": "optional list"
+    },
+    "hidden_identity_output": false,
+    "filtered_count_may_be_reported": false
+  },
+  "nonvisual_status_vocabulary": {
+    "selected": "Selected",
+    "locked": "Locked",
+    "read_only": "Read only",
+    "unavailable": "Unavailable",
+    "unknown": "Unknown",
+    "supported": "Renderer supported",
+    "partial": "Renderer partially supported",
+    "unsupported": "Renderer unsupported",
+    "review_required": "Review required"
+  },
+  "special_case_requirements": [
+    "Vespin descriptions preserve four-arm topology when authorized.",
+    "Moravi descriptions preserve two-arm/four-leg topology when authorized.",
+    "Suula nested hand/claw structure is described as nested structure when authorized rather than flattened.",
+    "ManyToms description identifies composite/constituent presentation without asserting an exact rendered constituent count unless upstream state supplies it.",
+    "Arborae current season is identified as upstream state and authored seasonal appearance profile as appearance state.",
+    "Nekron transition appearance never describes an unavailable ascension as selected.",
+    "Unknown Munyubbles/Wogol morphology remains explicitly unknown rather than described as humanoid.",
+    "Thetan occupied/current body description follows upstream body authority rather than Species default anatomy."
+  ],
+  "boundaries": {
+    "hidden_information_leak": false,
+    "character_truth_write": false,
+    "mechanics_inference": false,
+    "invented_anatomy": false,
+    "runtime_activation": false
+  }
+}
