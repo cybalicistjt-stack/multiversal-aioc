@@ -2,12 +2,12 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 5.4.0  
+**Version:** 5.5.0  
 **Status:** ACTIVE  
 **Owner and final authority:** John Brandon Turner  
 **Governance repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Application repository:** `cybalicistjt-stack/Multiversal-app`  
-**Last updated:** 2026-08-11
+**Last updated:** 2026-08-13
 
 ## Permanent owner entry point
 
@@ -49,7 +49,7 @@ Perform this sequence before explaining, planning, or claiming work:
 6. Read `governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json`. Treat it as the compact control-health projection; follow its source scorecard only when a pilot result, limitation, or regression needs inspection.
 7. Inspect the latest commits, pull requests, reviews, and CI relevant to the checkpoint in both repositories, including repository evidence newer than the pointer's timestamp.
 8. Read `governance/ci-failures/INDEX.md` from branch `ci/failure-records`; repair any current blocking failure before unrelated work. Historical recorded failures are not automatically current blockers; bind any blocker claim to the active attempt or current required gate.
-9. Read `governance/ai/runtime/ROADMAP_INDEX.json` and only the governing roadmap section for the primary work item.
+9. Read `governance/ai/runtime/ROADMAP_INDEX.json` and only the governing roadmap section for the primary work item. If the primary work item is in CAPP, also read `governance/application-planning/character-appearance-production/CAPP_CHARACTER_APPEARANCE_PRODUCTION_PREPARATION_PROGRAM.md` and `CAPP_PROGRAM_BACKLOG.json` before execution.
 10. If the active operation depends on owner-supplied archives, generated packages, binaries, exact publication bytes, screenshots, physical-device artifacts, or other external source material, inspect the actually available project/session sources before declaring an execution-surface blocker. Distinguish `source bytes unavailable`, `source bytes available but tool cannot transfer them`, `repository checkout unavailable`, and `validation/CI failure`; these are different recovery states.
 11. Load additional canonical documents only when required by the active operation. Do not read or rewrite the full roadmap merely to save routine progress.
 12. Run `python tools/continuity_state.py validate` when a usable checkout is available. When only connector access is available, verify the same pointer/checkpoint/branch/evidence invariants directly.
@@ -151,6 +151,10 @@ If the scorecard is missing, failing, or contradicts its source scorecard for th
 Starting a side mission must not mark another track complete, superseded, or abandoned. Paused and planned tracks remain explicit with their next work item and evidence. Changing the primary attempt is a pointer selection, not a rewrite of the underlying roadmap or checkpoints.
 
 Application implementation authority may also be recorded canonically inside `cybalicistjt-stack/Multiversal-app` even while the AIOC conversational primary points to a governance/design side mission. A selected AIOC primary attempt does not by itself supersede the application repository's authorized current work order, and an application work order does not silently complete or discard the AIOC primary attempt.
+
+CAPP — Character Appearance Production Preparation is an owner-approved parallel track that inherits completed PPIA-06 without reopening it. When CAPP is selected, recover its active work from `governance/application-planning/character-appearance-production/CAPP_PROGRAM_BACKLOG.json`, the CAPP checkpoint, exact branch/PR/CI evidence and the CAPP program document. Selecting CAPP does not activate or supersede STAGE-A-A2, DS-008, WP-011 / Apple work or any other retained track.
+
+CAPP work is repository/governance production preparation unless a specific item explicitly requires a checkout or external exact bytes. Do not invent an A2-style checkout blocker for CAPP merely because A2 itself is checkout-blocked; evaluate the actual CAPP work item and available connector/source surface.
 
 ## Roadmap-performance rule
 
