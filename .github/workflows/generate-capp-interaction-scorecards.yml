@@ -19,7 +19,9 @@ jobs:
         with:
           python-version: '3.12'
       - name: Generate deterministic interaction scorecards
-        run: python tools/interaction_pilot.py run --generated-at 2026-08-13T12:26:00+00:00
+        id: generate
+        continue-on-error: true
+        run: python tools/interaction_pilot.py run --generated-at 2026-08-13T12:29:00+00:00
       - name: Print source scorecard
         run: |
           echo '===SOURCE_SCORECARD_BEGIN==='
@@ -30,3 +32,6 @@ jobs:
           echo '===RUNTIME_SCORECARD_BEGIN==='
           cat governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json
           echo '===RUNTIME_SCORECARD_END==='
+      - name: Preserve pilot conclusion
+        if: steps.generate.outcome != 'success'
+        run: exit 1
