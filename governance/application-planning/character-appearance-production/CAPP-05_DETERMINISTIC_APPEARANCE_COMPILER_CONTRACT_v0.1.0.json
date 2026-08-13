@@ -39,7 +39,7 @@
       "coverage_state",
       "fallback_state",
       "diagnostics",
-      "hidden_asset_count",
+      "permission_filter_applied",
       "render_plan_sha256",
       "character_truth_changed",
       "actual_equipment_changed",
@@ -54,9 +54,15 @@
     "same_authorized_inputs_same_output": true
   },
   "permission_rules": [
-    "Assets with permission tags not contained in the request projection are omitted before matching.",
-    "Hidden asset identity is not emitted; only hidden_asset_count may be reported.",
-    "Permission filtering occurs before fallback and support classification."
+    "Permission filtering runs before matching, support classification and fallback.",
+    "Hidden asset identity and hidden asset counts are never emitted or inferred.",
+    "permission_filter_applied reports that the filtering stage ran; it does not reveal whether hidden assets existed."
+  ],
+  "compatibility_rules": [
+    "A requested renderer ID must match the manifest renderer ID or the result is explicit unknown coverage with a diagnostic.",
+    "A requested asset-pack ID/version must match the manifest identity/version or the result is explicit unknown coverage with a diagnostic.",
+    "A nonempty asset_lock permits only the explicitly locked asset IDs; unavailable locked IDs are diagnosed and never silently replaced.",
+    "Coverage aggregation matches CAPP-04: all supported is supported, all unsupported is unsupported, all unknown is unknown, and mixed states are partial."
   ],
   "fallback_states": ["none", "partial_renderer_plan", "renderer_fallback_required", "no_authorized_asset_match"],
   "coverage_states": ["supported", "partial", "unsupported", "unknown"],
@@ -66,12 +72,16 @@
     "biology_changed": false,
     "invent_anatomy": false,
     "silent_substitution": false,
+    "hidden_asset_count_reported": false,
     "runtime_activation": false
   },
   "reference_tests": [
     "same inputs produce byte-equivalent semantic result",
     "layer ordering is stable",
-    "unauthorized assets are filtered",
+    "unauthorized assets are filtered without identity/count disclosure",
+    "renderer and asset-pack mismatches return explicit diagnostics",
+    "asset locks never silently substitute",
+    "coverage aggregation matches CAPP-04 semantics",
     "missing authorized coverage returns explicit unknown fallback",
     "compiler never mutates Character, biology, or equipment truth"
   ]
