@@ -11,6 +11,7 @@ on:
 
 jobs:
   validate-ppia13-to-ppia14-transition:
+    if: ${{ !startsWith(github.head_ref, 'governance/capp-') }}
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
