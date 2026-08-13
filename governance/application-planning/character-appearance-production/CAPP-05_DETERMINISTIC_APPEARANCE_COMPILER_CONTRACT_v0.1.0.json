@@ -1,0 +1,78 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "CAPP-05",
+  "title": "Deterministic Appearance Compiler / Reference Engine",
+  "status": "built_pending_integrated_validation",
+  "tool": "tools/capp05_appearance_compiler.py",
+  "purpose": "Repository-side reference and validation engine; not application runtime.",
+  "authorities": {
+    "appearance_choice_constraints": "CAPP-01",
+    "pixel_asset_production": "CAPP-03",
+    "asset_manifest_coverage": "CAPP-04",
+    "biology": "PPIA-05",
+    "actual_equipment": "PPIA-03",
+    "appearance_architecture": "PPIA-06"
+  },
+  "input_contract": {
+    "appearance_state": ["appearance_state_id", "semantic_choice_ids"],
+    "biology_snapshot": ["biology_snapshot_id", "profile_id", "topology_template_id"],
+    "renderer": ["renderer_id", "renderer_version"],
+    "asset": ["asset_pack_id", "asset_pack_version", "asset_lock"],
+    "presentation": ["pose_id", "view_id", "fit_class"],
+    "permission": ["permission_projection"]
+  },
+  "output_contract": {
+    "format": "semantic_render_plan_json",
+    "required": [
+      "renderer_id",
+      "renderer_version",
+      "asset_pack_id",
+      "asset_pack_version",
+      "profile_id",
+      "biology_snapshot_id",
+      "appearance_state_id",
+      "view_id",
+      "pose_id",
+      "topology_template_id",
+      "semantic_choice_ids",
+      "layers",
+      "coverage_state",
+      "fallback_state",
+      "diagnostics",
+      "hidden_asset_count",
+      "render_plan_sha256",
+      "character_truth_changed",
+      "actual_equipment_changed",
+      "biology_changed"
+    ],
+    "layer_fields": ["asset_id", "asset_version", "semantic_band", "layer_order", "anchor_map", "mask_ids", "palette_zone_ids", "occlusion", "support_state"]
+  },
+  "determinism": {
+    "canonicalization": "UTF-8 JSON, keys sorted, compact separators for hashing",
+    "hash": "SHA-256",
+    "layer_sort": ["semantic_band", "layer_order", "asset_id", "asset_version"],
+    "same_authorized_inputs_same_output": true
+  },
+  "permission_rules": [
+    "Assets with permission tags not contained in the request projection are omitted before matching.",
+    "Hidden asset identity is not emitted; only hidden_asset_count may be reported.",
+    "Permission filtering occurs before fallback and support classification."
+  ],
+  "fallback_states": ["none", "partial_renderer_plan", "renderer_fallback_required", "no_authorized_asset_match"],
+  "coverage_states": ["supported", "partial", "unsupported", "unknown"],
+  "invariants": {
+    "character_truth_changed": false,
+    "actual_equipment_changed": false,
+    "biology_changed": false,
+    "invent_anatomy": false,
+    "silent_substitution": false,
+    "runtime_activation": false
+  },
+  "reference_tests": [
+    "same inputs produce byte-equivalent semantic result",
+    "layer ordering is stable",
+    "unauthorized assets are filtered",
+    "missing authorized coverage returns explicit unknown fallback",
+    "compiler never mutates Character, biology, or equipment truth"
+  ]
+}
