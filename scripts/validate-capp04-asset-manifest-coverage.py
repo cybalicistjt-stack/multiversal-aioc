@@ -29,6 +29,7 @@ need(empty.get('authorized_projection') is True and empty.get('assets')==[] and 
 need(len(acc.get('cases',[]))==18 and len(ext.get('acceptance_cases',[]))==4,'22-case acceptance coverage')
 need(set(ext.get('contextual_dimensions',[]))=={'semantic_choice_id','pose_id','fit_class','asset_pack_id','asset_pack_version'},'context dimensions')
 items={x['id']:x for x in back.get('work_items',[])}
-need(items.get('CAPP-04',{}).get('status')=='in_progress' and items.get('CAPP-05',{}).get('status')=='planned','lifecycle boundary')
+c4=items.get('CAPP-04',{}).get('status'); c5=items.get('CAPP-05',{}).get('status')
+need((c4=='in_progress' and c5=='planned') or (c4=='completed_verified' and c5=='completed_verified'),'lifecycle boundary')
 need(not any(back.get('boundaries',{}).values()),'non-activation boundary')
 print('CAPP-04 VALIDATION: PASS — profiles=25 views=3 bands=10 base_cells=750 cases=22')
