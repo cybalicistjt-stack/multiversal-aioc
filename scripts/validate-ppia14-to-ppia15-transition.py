@@ -34,6 +34,12 @@ FOUNDATION = {
     "pr":286,
     "merge":"a1f6b7380a07e65469ba8072e8aa4135d7b1e42f",
 }
+TRANSITION = {
+    "head":"da5857e217425fbc637ecdc2447b0a309e3c771e",
+    "run":"31648209814",
+    "pr":285,
+    "merge":"f08d90a1dca686da9c86913f0635f206758b5da7",
+}
 
 
 def fail(message: str) -> None:
@@ -113,19 +119,22 @@ def main() -> None:
     for phrase in ("expand", "not duplicate", "internal alpha", "regression", "permission", "conflict", "recovery", "scale", "accessibility", "mobile", "object-edge", "synthetic/noncanonical", "p14-gap-001", "f024"):
         require(phrase in scope, f"PPIA-15 governed scope missing {phrase!r}")
 
-    foundation_evidence = " ".join((FOUNDATION["head"], FOUNDATION["run"], str(FOUNDATION["pr"]), FOUNDATION["merge"]))
-    foundation_verified = all(value in scope for value in (FOUNDATION["head"], FOUNDATION["run"], FOUNDATION["merge"])) and ("pr #286" in scope or '"pull_request", "value": "PPIA-15 Foundation PR #286"'.lower() in scope or str(FOUNDATION["pr"]) in scope)
+    # The original transition evidence must remain recoverable from the PPIA-15 checkpoint
+    # even when the runtime pointer advances to later PPIA-15 milestones.
+    for value in (TRANSITION["head"], TRANSITION["run"], TRANSITION["merge"]):
+        require(value in scope, f"PPIA-15 checkpoint lost immutable transition evidence {value}")
+    require("#285" in scope or '"pull_request", "value": "PPIA-14→PPIA-15 transition PR #285"'.lower() in scope, "PPIA-15 checkpoint lost transition PR #285 evidence")
+
+    foundation_verified = all(value in scope for value in (FOUNDATION["head"], FOUNDATION["run"], FOUNDATION["merge"])) and ("#286" in scope or str(FOUNDATION["pr"]) in scope)
     if foundation_verified:
-        # Once PPIA-15 has advanced beyond its first Foundation milestone, the transition
-        # validator becomes historical/successor-safe. Preserve the immutable Foundation
-        # evidence instead of requiring the initial Foundation next_action wording forever.
+        # Once PPIA-15 advances beyond its first Foundation milestone, validate immutable
+        # Foundation evidence rather than requiring stale Foundation active-substep wording.
         require("62/62" in scope, "verified Foundation hosted-workflow evidence missing")
         require("foundation" in scope and "coverage-gap" in scope, "verified Foundation milestone evidence missing")
         require("p15-gap-001" in scope or "p14-gap-001" in scope, "verified Foundation F024 provenance missing")
         scope_mode = "successor_after_verified_foundation"
     else:
-        # During the initial transition/activation state, require the complete owner-approved
-        # awkward-case scope explicitly before any Foundation package has been verified.
+        # During initial activation, require the complete owner-approved awkward-case scope.
         for phrase in (
             "simultaneous selection", "mid-session reveals", "entitlement loss", "gm modifications", "duplicate-name objects", "version conflict", "campaign-local override",
             "source-only objects", "vehicle transfer", "relationship secret reveal", "interrupted crafting", "reconnect during approval", "large inventories", "dense creatures",
@@ -158,9 +167,13 @@ def main() -> None:
         transition_mode = "historical_after_ppia15"
 
     reason = pointer["selection_reason"]
-    for value in (DEPENDENCIES["PPIA-14"]["head"], DEPENDENCIES["PPIA-14"]["run"], DEPENDENCIES["PPIA-14"]["merge"]):
-        require(value in reason, f"pointer must preserve PPIA-14 completion evidence {value}")
     require("roadmap" in reason.lower() and "pending" in reason.lower(), "pointer must explain batched roadmap projection")
+    if foundation_verified:
+        for value in (FOUNDATION["head"], FOUNDATION["run"], FOUNDATION["merge"]):
+            require(value in reason, f"successor pointer must preserve verified Foundation evidence {value}")
+    else:
+        for value in (DEPENDENCIES["PPIA-14"]["head"], DEPENDENCIES["PPIA-14"]["run"], DEPENDENCIES["PPIA-14"]["merge"]):
+            require(value in reason, f"initial transition pointer must preserve PPIA-14 completion evidence {value}")
 
     boundaries = backlog["boundaries"]
     for key in ("application_runtime_mutation_authorized", "a2_activation_authorized", "release_authorized", "deployment_authorized", "tester_access_authorized", "canonical_promotion_without_source_evidence_authorized"):
