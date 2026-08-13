@@ -1,0 +1,10 @@
+{
+  "schema_version":"0.1.0",
+  "work_item_id":"CAPP-04",
+  "renderer_id":"pixel-art-v1",
+  "manifest_required":["manifest_id","manifest_version","asset_pack_id","asset_pack_version","renderer_id","assets"],
+  "asset_required":["asset_id","asset_version","artifact_state","support_state","semantic_band","view_ids","topology_template_ids","provenance_class"],
+  "artifact_states":["available","metadata_only","missing","retired"],
+  "support_states":["supported","partial","unsupported","unknown"],
+  "rules":["stable_asset_id","versioned_manifest","available_requires_content_hash","metadata_only_cannot_report_supported","missing_is_unknown_unless_explicitly_unsupported","retired_not_selected"]
+}
