@@ -19,6 +19,10 @@ REGISTERED={
  'capp-transition':['python','tools/capp_transition.py','apply'],
  'capp-transition-self-test':['python','tools/capp_transition.py','self-test'],
  'capp-ci-scope':['python','tools/capp_ci_scope.py','check'],
+ 'continuity-validate':['python','tools/continuity_state.py','validate'],
+ 'continuity-refresh':['python','tools/continuity_state.py','refresh-status'],
+ 'correction-capture':['python','tools/correction_regression.py','capture'],
+ 'correction-validate':['python','tools/correction_regression.py','validate'],
 }
 
 def fail(msg): raise SystemExit('WRITE BRIDGE: FAIL — '+msg)
@@ -100,7 +104,8 @@ def self_test():
  for root in ALLOWED_ROOTS: assert root.endswith('/')
  assert '.github/workflows/' not in ALLOWED_ROOTS
  assert 'tools/governed_write_bridge.py' in PROTECTED
- assert 'capp-transition' in REGISTERED
+ for name in ('capp-transition','continuity-validate','correction-capture'):
+  assert name in REGISTERED
  print('WRITE BRIDGE SELF-TEST: PASS')
 def main():
  ap=argparse.ArgumentParser(); sub=ap.add_subparsers(dest='cmd',required=True)
