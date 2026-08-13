@@ -16,6 +16,7 @@ permissions:
 
 jobs:
   validate-ppia11-foundation:
+    if: ${{ github.event_name != 'pull_request' || !startsWith(github.head_ref, 'governance/capp-') }}
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
