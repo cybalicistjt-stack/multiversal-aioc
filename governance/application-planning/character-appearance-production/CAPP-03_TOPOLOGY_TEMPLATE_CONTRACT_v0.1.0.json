@@ -2,15 +2,9 @@
   "schema_version":"0.1.0",
   "work_item_id":"CAPP-03",
   "authority":"renderer_compatibility_only",
-  "profile_mapping_source":"CAPP-01_APPEARANCE_CHOICE_REGISTRY_v0.1.0.json#/profiles/*/topology_profile",
   "profile_coverage_required":25,
   "template_id_rule":"CAPP03-TOP-<NORMALIZED_TOPOLOGY_PROFILE>",
   "rules":["no_implicit_humanoid_limb_count","unknown_anatomy_stays_unknown","missing_required_anchor_is_not_approximated","renderer_template_is_not_species_taxonomy"],
-  "special_templates":{
-    "CAPP03-TOP-MORAVI":{"profile_id":"species.moravi","arms":2,"legs":4},
-    "CAPP03-TOP-VESPIN":{"profile_id":"species.vespin","arms":4,"legs":2},
-    "CAPP03-TOP-SUULA":{"profile_id":"species.suula","nested_hands":true},
-    "CAPP03-TOP-MANYTOMS":{"profile_id":"species.manytoms","repeated_constituents":true}
-  },
+  "special_templates":{"CAPP03-TOP-MORAVI":{"arms":2,"legs":4},"CAPP03-TOP-VESPIN":{"arms":4,"legs":2},"CAPP03-TOP-SUULA":{"nested_hands":true},"CAPP03-TOP-MANYTOMS":{"repeated_constituents":true}},
   "fallback":{"template_id":"CAPP03-TOP-UNKNOWN","support_state":"unknown","synthesize_anatomy":false}
 }
