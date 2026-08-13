@@ -1,0 +1,31 @@
+name: Validate CAPP Hardening
+
+on:
+  pull_request:
+    paths:
+      - 'tools/capp_ci_scope.py'
+      - 'tools/capp_transition.py'
+      - 'scripts/validate-capp-execution-hardening.py'
+      - 'scripts/validate-capp01-completion.py'
+      - 'scripts/validate-capp02-completion.py'
+      - 'scripts/validate-capp01-final-state-structured.py'
+      - 'scripts/validate-capp02-final-state-structured.py'
+      - '.github/workflows/capp-transition.yml'
+      - '.github/workflows/validate-capp-hardening.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-capp-execution-hardening.py
+      - run: python scripts/validate-capp01-completion.py
+      - run: python scripts/validate-capp02-completion.py

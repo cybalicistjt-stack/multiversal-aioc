@@ -1,0 +1,53 @@
+name: Apply CAPP Transition
+
+on:
+  push:
+    branches:
+      - 'governance/capp-*'
+    paths:
+      - 'governance/application-planning/character-appearance-production/transition-requests/*.json'
+
+permissions:
+  contents: write
+
+jobs:
+  transition:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply pending transition requests
+        shell: bash
+        run: |
+          shopt -s nullglob
+          requests=(governance/application-planning/character-appearance-production/transition-requests/*.json)
+          if [ ${#requests[@]} -eq 0 ]; then
+            echo 'No pending CAPP transition requests.'
+            exit 0
+          fi
+          if [ ${#requests[@]} -ne 1 ]; then
+            echo 'Exactly one CAPP transition request is permitted per commit.' >&2
+            exit 1
+          fi
+          python tools/capp_transition.py apply --request "${requests[0]}"
+          python tools/capp_transition.py self-test
+      - name: Validate workflow isolation
+        run: python tools/capp_ci_scope.py check
+      - name: Commit atomic transition projection
+        shell: bash
+        run: |
+          if git diff --quiet && git diff --cached --quiet; then
+            echo 'No transition changes to commit.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add governance/application-planning/character-appearance-production governance/ai/work-state governance/ai/runtime
+          git commit -m 'Apply governed CAPP lifecycle transition'
+          git push origin "HEAD:${GITHUB_REF_NAME}"

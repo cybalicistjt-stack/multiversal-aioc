@@ -5,7 +5,7 @@ from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 CP=R/'governance/ai/work-state/CAPP-01-attempt-001.json'
 CANDIDATE=R/'scripts/validate-capp01-completion-candidate.py'
-FINAL=R/'scripts/validate-capp01-final-state.py'
+FINAL=R/'scripts/validate-capp01-final-state-structured.py'
 
 def main():
     cp=json.loads(CP.read_text(encoding='utf-8'))

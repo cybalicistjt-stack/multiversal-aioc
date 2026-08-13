@@ -1,7 +1,86 @@
 {
   "schema_version": "1.0.0",
   "work_item_id": "MV-CONT-004",
-  "updated_at": "2026-08-05T23:22:00Z",
-  "corrections": [],
-  "candidates": []
+  "updated_at": "2026-08-13T15:58:00Z",
+  "corrections": [
+    {
+      "correction_id": "MV-CORR-A4FB6F56ED71",
+      "fingerprint": "7dabf45a9c12ccf56bbdaf1c41ca002325a3b96a837f434b99707c1909e8485e",
+      "captured_at": "2026-08-13T15:58:00Z",
+      "source_ref": "opaque:capp-execution-hardening-20260813",
+      "correction_summary": "CAPP continuation must use one dependency-ordered transition, structured completion evidence, targeted validation, and connector-safe state projection instead of duplicate completion PRs or prose-sensitive checks.",
+      "failure_summary": "CAPP-01 and CAPP-02 incurred repeated full CI fanout, completion-recovery loops, safety-wrapper retries, and exact-wording validator failures that added large avoidable latency.",
+      "severity": "P1",
+      "pattern_ids": [
+        "MV-FRIC-ROADMAP-001",
+        "MV-FRIC-CAP-001"
+      ],
+      "control_ids": [
+        "C-CONTINUITY-STATE",
+        "C-CAPABILITY-RECEIPT"
+      ],
+      "authority": {
+        "actor_id": "john-brandon-turner",
+        "explicit_correction": true,
+        "evidence": [
+          "opaque:owner-approved-capp-hardening-20260813"
+        ]
+      },
+      "immediate_correction": {
+        "status": "applied",
+        "evidence": [
+          "branch:governance/capp-execution-hardening"
+        ]
+      },
+      "privacy": {
+        "raw_transcript_included": false,
+        "minimized": true,
+        "sensitive_attachment_included": false
+      },
+      "candidate_id": "MV-REG-2464077CADDA",
+      "status": "proposed"
+    }
+  ],
+  "candidates": [
+    {
+      "candidate_id": "MV-REG-2464077CADDA",
+      "correction_id": "MV-CORR-A4FB6F56ED71",
+      "fingerprint": "7dabf45a9c12ccf56bbdaf1c41ca002325a3b96a837f434b99707c1909e8485e",
+      "created_at": "2026-08-13T15:58:00Z",
+      "status": "proposed",
+      "source_patterns": [
+        "MV-FRIC-ROADMAP-001",
+        "MV-FRIC-CAP-001"
+      ],
+      "proposed_case": {
+        "name": "CAPP continuation uses structured single-transition fast path",
+        "setup": "A completed CAPP item has exact-head CI and signed merge evidence, the next dependency-ordered CAPP item is planned, and repository access is connector-first with historical PPIA validators retained.",
+        "owner_input": "Continue with the next CAPP item after approving execution hardening.",
+        "expected_actions": [
+          "Bundle the prior CAPP completion projection with the next CAPP start instead of opening a standalone completion-only pull request.",
+          "Use structured receipt, checkpoint, backlog, commit, pull-request, and merge evidence rather than exact explanatory prose.",
+          "Keep closed PPIA feature workflows isolated from generic CAPP pointer and compact-status changes.",
+          "Use the connector-safe transition request path for coupled CAPP state projection when direct large-file replacement is fragile."
+        ],
+        "prohibited_actions": [
+          "Run a second full completion-recovery pull-request cycle solely to copy already-verified merge evidence.",
+          "Require exact wording in selection reasons or merge messages to establish completion truth.",
+          "Trigger all closed PPIA feature workflows solely because generic CAPP runtime projection files changed.",
+          "Treat a safety-wrapper or GitHub Actions workflow-permission limitation as a content or validation failure."
+        ],
+        "pass_condition": "The prior CAPP item remains completed_verified from structured evidence, the next item starts in dependency order through one coupled transition, only relevant validation is required, and explanatory prose can change without changing completion truth."
+      },
+      "review": {
+        "decision": "pending",
+        "decided_at": null,
+        "reviewer": null,
+        "evidence": []
+      },
+      "promotion": {
+        "case_id": null,
+        "promoted_at": null,
+        "evidence": []
+      }
+    }
+  ]
 }
