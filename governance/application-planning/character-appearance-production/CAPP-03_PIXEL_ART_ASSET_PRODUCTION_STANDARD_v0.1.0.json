@@ -1,0 +1,20 @@
+{
+  "schema_version":"0.1.0",
+  "work_item_id":"CAPP-03",
+  "renderer_id":"pixel-art-v1",
+  "status":"foundation_candidate",
+  "authority":["PPIA-06_PIXEL_ART_RENDERER_CONTRACT_v0.2.0.json","PPIA-06_APPEARANCE_SEMANTIC_TAXONOMY_v0.2.0.json","PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","CAPP-01_APPEARANCE_CHOICE_REGISTRY_v0.1.0.json"],
+  "boundary":{"classification":"renderer_metadata","character_truth":false,"species_taxonomy":false,"biology":false,"equipment_ownership":false},
+  "canvases":{"full_body_three_quarter":[256,320,16],"portrait_zoom":[192,192,12],"tactical_token":[128,128,8]},
+  "sampling":"nearest_neighbor_only",
+  "rotation":{"arbitrary":false,"pseudo_3d":false},
+  "bands":["body_base","surface_and_pattern","structural_appendages","covering_and_hair","persistent_biology_markers","player_markings_cosmetics","presentation_wardrobe","actual_equipment_projection","foreground_occlusion","presentation_effects"],
+  "anchors":{"coordinate_space":"integer_pixels","universal":["root","visual_center","portrait_focus","occupancy_bounds"],"topology_specific":true,"repeated_constituents":true,"nested_appendages":true,"missing":"partial_or_unsupported"},
+  "masks":["silhouette","occlusion","palette_zone","cosmetic_dye","wardrobe_fit","equipment_projection"],
+  "palette":{"zone_ids":true,"controlled_ramps":true,"semantic_names":true,"noncolor_labels":true,"biological_vs_cosmetic_split":true},
+  "support_states":["supported","partial","unsupported","unknown"],
+  "asset_identity":{"stable_id":true,"filename_authoritative":false,"display_name_authoritative":false},
+  "package_root":"appearance-assets/<pack>/<version>/pixel-art-v1/",
+  "package_dirs":["assets","metadata","masks","palettes","topologies","views"],
+  "invariants":["filter_hidden_before_asset_selection","no_anatomy_fabrication","no_silent_asset_substitution","unsupported_renderer_preserves_character","presentation_wardrobe_nonmechanical","equipment_projection_read_only"]
+}
