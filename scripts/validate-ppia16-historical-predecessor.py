@@ -22,6 +22,9 @@ STAGES = {
         "run": "31682807809",
         "pr": 290,
         "workflows": 66,
+        "immutable_paths": [
+            "scripts/validate-ppia15-to-ppia16-transition.py",
+        ],
     },
     "foundation": {
         "script": ROOT / "scripts/validate-ppia16-foundation.py",
@@ -31,6 +34,15 @@ STAGES = {
         "run": "31685859485",
         "pr": 291,
         "workflows": 67,
+        "immutable_paths": [
+            "governance/application-planning/parallel-preimplementation/PPIA-16_FOUNDATION_EXISTING_TOOLBELT_AND_CONTROL_SURFACE_AUTHORITY_INVENTORY.md",
+            "governance/application-planning/parallel-preimplementation/PPIA-16_FOUNDATION_PACKAGE_INDEX_v0.1.0.json",
+            "governance/application-planning/parallel-preimplementation/PPIA-16_FOUNDATION_AUTHORITY_AND_STATUS_MODEL_v0.1.0.json",
+            "governance/application-planning/parallel-preimplementation/PPIA-16_FOUNDATION_TOOLBELT_AND_AUTHORITY_INVENTORY_v0.1.0.json",
+            "governance/application-planning/parallel-preimplementation/PPIA-16_FOUNDATION_SCREEN_WORKFLOW_COVERAGE_MAP_v0.1.0.json",
+            "governance/application-planning/parallel-preimplementation/PPIA-16_FOUNDATION_INFORMATION_ARCHITECTURE_v0.1.0.json",
+            "scripts/validate-ppia16-foundation.py",
+        ],
     },
     "screen": {
         "script": ROOT / "scripts/validate-ppia16-screen-action-reference.py",
@@ -40,6 +52,15 @@ STAGES = {
         "run": "31689903909",
         "pr": 292,
         "workflows": 68,
+        "immutable_paths": [
+            "governance/application-planning/parallel-preimplementation/PPIA-16_SCREEN_ACTION_REFERENCE_CONTRACT.md",
+            "governance/application-planning/parallel-preimplementation/PPIA-16_SCREEN_ACTION_REFERENCE_PACKAGE_INDEX_v0.1.0.json",
+            "governance/application-planning/parallel-preimplementation/PPIA-16_SCREEN_STATE_CONTRACTS_v0.1.0.json",
+            "governance/application-planning/parallel-preimplementation/PPIA-16_ACTION_CONTRACTS_v0.1.0.json",
+            "governance/application-planning/parallel-preimplementation/PPIA-16_COMPONENT_INTERACTION_CONTRACTS_v0.1.0.json",
+            "governance/application-planning/parallel-preimplementation/PPIA-16_SCREEN_ACTION_REFERENCE_CASES_v0.1.0.json",
+            "scripts/validate-ppia16-screen-action-reference.py",
+        ],
     },
     "integrated": {
         "script": ROOT / "scripts/validate-ppia16-integrated-screen-workflow-traceability.py",
@@ -49,12 +70,26 @@ STAGES = {
         "run": "31692631899",
         "pr": 293,
         "workflows": 69,
+        "immutable_paths": [
+            "governance/application-planning/parallel-preimplementation/PPIA-16_INTEGRATED_SCREEN_WORKFLOW_CONTRACT_MATRIX_v0.1.0.json",
+            "governance/application-planning/parallel-preimplementation/PPIA-16_INTEGRATED_SCREEN_WORKFLOW_TRACEABILITY_MATRIX_v0.1.0.json",
+            "governance/application-planning/parallel-preimplementation/PPIA-16_INTEGRATED_SCREEN_WORKFLOW_REFERENCE_CASES_v0.1.0.json",
+            "governance/application-planning/parallel-preimplementation/PPIA-16_INTEGRATED_SCREEN_WORKFLOW_PACKAGE_INDEX_v0.1.0.json",
+            "governance/application-planning/parallel-preimplementation/PPIA-16_INTEGRATED_SCREEN_WORKFLOW_CANDIDATE.md",
+            "scripts/validate-ppia16-integrated-screen-workflow-traceability.py",
+        ],
     },
 }
 
 
 def load(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def assert_immutable_since_merge(merge: str, paths: list[str]) -> None:
+    subprocess.run(["git", "cat-file", "-e", f"{merge}^{{commit}}"], cwd=ROOT, check=True)
+    result = subprocess.run(["git", "diff", "--exit-code", "--quiet", merge, "--", *paths], cwd=ROOT)
+    assert result.returncode == 0, f"verified predecessor artifacts changed after {merge}"
 
 
 def main() -> int:
@@ -84,6 +119,7 @@ def main() -> int:
     evidence_text = json.dumps({"completed":checkpoint["completed_substeps"],"validation":checkpoint["validation"],"evidence":checkpoint["evidence"]})
     for token in (expected["head"], expected["merge"], expected["run"], f"#{expected['pr']}"):
         assert token in evidence_text
+    assert_immutable_since_merge(expected["merge"], expected["immutable_paths"])
     print(f"PPIA-16 historical predecessor validation: PASS ({args.stage})")
     return 0
 
