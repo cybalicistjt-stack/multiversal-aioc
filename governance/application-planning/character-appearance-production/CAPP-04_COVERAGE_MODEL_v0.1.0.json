@@ -1,0 +1,12 @@
+{
+  "schema_version":"0.1.0",
+  "work_item_id":"CAPP-04",
+  "dimensions":["profile_id","view_id","semantic_band","topology_template_id"],
+  "states":["supported","partial","unsupported","unknown"],
+  "missing_cell_state":"unknown",
+  "aggregate":{"all_supported":"supported","all_unsupported":"unsupported","all_unknown":"unknown","mixed":"partial"},
+  "eligibility":{"available":true,"metadata_only":false,"missing":false,"retired":false},
+  "privacy":{"input_must_be_authorized_projection":true,"hidden_asset_counts_reported":false,"hidden_asset_ids_reported":false},
+  "character_effect":{"invalidates_character":false,"changes_character_truth":false},
+  "determinism":["sort_by_stable_ids","deduplicate_exact_asset_version","no_filename_inference","no_hidden_count_inference"]
+}
