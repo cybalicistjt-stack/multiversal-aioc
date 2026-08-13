@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "PPIA-16",
+  "artifact_version": "0.1.0",
+  "status": "foundation-candidate",
+  "package_name": "PPIA-16 Foundation / Existing Developer Toolbelt and Control-Surface Authority Inventory",
+  "application_source_anchor": "cybalicistjt-stack/Multiversal-app@354e24007d2c453d090a2a6cdb31d3e3333c84c1",
+  "toolbelt_anchor": "mv-dev v0.10.0 / DT-001..DT-010",
+  "artifacts": [
+    {
+      "path": "governance/application-planning/parallel-preimplementation/PPIA-16_FOUNDATION_TOOLBELT_AND_AUTHORITY_INVENTORY_v0.1.0.json",
+      "role": "immutable DT-001..DT-010 source inventory plus AIOC/application authority surfaces"
+    },
+    {
+      "path": "governance/application-planning/parallel-preimplementation/PPIA-16_FOUNDATION_AUTHORITY_AND_STATUS_MODEL_v0.1.0.json",
+      "role": "authority precedence, lifecycle/tool statuses, action classes, receipts, findings and interruption recovery"
+    },
+    {
+      "path": "governance/application-planning/parallel-preimplementation/PPIA-16_FOUNDATION_INFORMATION_ARCHITECTURE_v0.1.0.json",
+      "role": "ten-screen semantic information architecture and cross-screen components"
+    },
+    {
+      "path": "governance/application-planning/parallel-preimplementation/PPIA-16_FOUNDATION_SCREEN_WORKFLOW_COVERAGE_MAP_v0.1.0.json",
+      "role": "sixteen-program-requirement, ten-tool, ten-screen and twelve-workflow coverage map"
+    },
+    {
+      "path": "governance/application-planning/parallel-preimplementation/PPIA-16_FOUNDATION_EXISTING_TOOLBELT_AND_CONTROL_SURFACE_AUTHORITY_INVENTORY.md",
+      "role": "human-readable Foundation contract and exit boundary"
+    },
+    {
+      "path": "scripts/validate-ppia16-foundation.py",
+      "role": "deterministic Foundation validator"
+    },
+    {
+      "path": ".github/workflows/validate-ppia-16-foundation.yml",
+      "role": "hosted exact-candidate Foundation gate"
+    }
+  ],
+  "expected_counts": {
+    "toolbelt_entries": 10,
+    "aioc_control_surfaces": 10,
+    "program_requirements": 16,
+    "screens": 10,
+    "workflows": 12,
+    "cross_screen_components": 8,
+    "authority_precedence_layers": 5,
+    "action_classes": 8
+  },
+  "required_boundaries": [
+    "tool outputs are scoped observations/evidence/generated aids, not new authority",
+    "only completed_verified is complete",
+    "candidate-bound evidence cannot silently carry forward to a newer candidate",
+    "DT-003 capsules cannot replace missing exact scope authority",
+    "DT-004 projections remain non-authoritative and permission-filtered",
+    "DT-005 cannot fake authoritative mutation with fixture writes",
+    "DT-006 PASS is not production security certification",
+    "DT-007 synthetic CI images are not product UI evidence",
+    "DT-008 static lint does not prove full accessibility/privacy/visual conformance",
+    "DT-009 mentions are not proof and PROVEN is not work-item closure",
+    "DT-010 reference probes/tool timings are not product recovery/performance authority",
+    "historical CI failures are not automatic current blockers",
+    "PPIA-16 does not activate runtime, A2, release, deployment, tester access, paid services, production credentials or unsupported canonical promotion"
+  ],
+  "known_staleness": {
+    "path": "governance/application-planning/parallel-preimplementation/PPIA_PARALLEL_PREIMPLEMENTATION_ADVANCEMENT_PROGRAM.md",
+    "condition": "PPIA-16 tranche definition is current but historical Current tranche paragraph still names PPIA-03",
+    "controlling_sources": ["PPIA_PROGRAM_BACKLOG.json", "PPIA-16 checkpoint", "CURRENT_WORK_POINTER.json", "verified PPIA-15→PPIA-16 transition evidence"]
+  },
+  "foundation_exit": "Dedicated Foundation validator and all applicable hosted workflows pass on one exact PR head; merge and signed verification complete; recovery checkpoint then advances active_substep to Screen States / Action Contracts / Reference Cases without marking PPIA-16 complete."
+}

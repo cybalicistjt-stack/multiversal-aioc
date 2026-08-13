@@ -1,0 +1,226 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "PPIA-16",
+  "artifact_version": "0.1.0",
+  "status": "foundation-candidate",
+  "purpose": "Map every owner-approved PPIA-16 cockpit concern and DT-001 through DT-010 surface to an initial screen and end-to-end operator workflow before detailed interaction contracts are authored.",
+  "program_requirement_coverage": [
+    {"requirement": "current work/slice", "screens": ["P16-SCR-001", "P16-SCR-002", "P16-SCR-010"], "workflow_ids": ["P16-WF-001", "P16-WF-002", "P16-WF-012"], "status": "foundation-covered"},
+    {"requirement": "scope authority", "screens": ["P16-SCR-002"], "workflow_ids": ["P16-WF-002", "P16-WF-003"], "status": "foundation-covered"},
+    {"requirement": "stop conditions", "screens": ["P16-SCR-002", "P16-SCR-010"], "workflow_ids": ["P16-WF-002", "P16-WF-003", "P16-WF-012"], "status": "foundation-covered"},
+    {"requirement": "repository health", "screens": ["P16-SCR-003"], "workflow_ids": ["P16-WF-002"], "tool_ids": ["DT-001", "DT-002"], "status": "foundation-covered"},
+    {"requirement": "fixtures", "screens": ["P16-SCR-004"], "workflow_ids": ["P16-WF-004", "P16-WF-005"], "tool_ids": ["DT-004"], "status": "foundation-covered"},
+    {"requirement": "scenarios", "screens": ["P16-SCR-004"], "workflow_ids": ["P16-WF-005"], "tool_ids": ["DT-005"], "status": "foundation-covered"},
+    {"requirement": "privacy scanning", "screens": ["P16-SCR-005"], "workflow_ids": ["P16-WF-006"], "tool_ids": ["DT-006"], "status": "foundation-covered"},
+    {"requirement": "UI evidence", "screens": ["P16-SCR-006"], "workflow_ids": ["P16-WF-007"], "tool_ids": ["DT-007"], "status": "foundation-covered"},
+    {"requirement": "design lint", "screens": ["P16-SCR-005"], "workflow_ids": ["P16-WF-008"], "tool_ids": ["DT-008"], "status": "foundation-covered"},
+    {"requirement": "traceability", "screens": ["P16-SCR-007"], "workflow_ids": ["P16-WF-009"], "tool_ids": ["DT-009"], "status": "foundation-covered"},
+    {"requirement": "recovery/performance", "screens": ["P16-SCR-009"], "workflow_ids": ["P16-WF-010"], "tool_ids": ["DT-010"], "status": "foundation-covered"},
+    {"requirement": "CI/evidence receipts", "screens": ["P16-SCR-008"], "workflow_ids": ["P16-WF-011", "P16-WF-012"], "status": "foundation-covered"},
+    {"requirement": "findings", "screens": ["P16-SCR-003", "P16-SCR-005", "P16-SCR-007", "P16-SCR-008", "P16-SCR-009"], "workflow_ids": ["P16-WF-002", "P16-WF-006", "P16-WF-008", "P16-WF-009", "P16-WF-010", "P16-WF-012"], "status": "foundation-covered"},
+    {"requirement": "Codex task capsules", "screens": ["P16-SCR-002", "P16-SCR-010"], "workflow_ids": ["P16-WF-003"], "tool_ids": ["DT-003"], "status": "foundation-covered"},
+    {"requirement": "proof exploration", "screens": ["P16-SCR-007", "P16-SCR-008"], "workflow_ids": ["P16-WF-009", "P16-WF-011"], "tool_ids": ["DT-009"], "status": "foundation-covered"},
+    {"requirement": "interruption recovery", "screens": ["P16-SCR-001", "P16-SCR-010"], "workflow_ids": ["P16-WF-001", "P16-WF-012"], "status": "foundation-covered"}
+  ],
+  "tool_coverage": [
+    {"tool_id": "DT-001", "screens": ["P16-SCR-003"], "workflow_ids": ["P16-WF-002"]},
+    {"tool_id": "DT-002", "screens": ["P16-SCR-002", "P16-SCR-003"], "workflow_ids": ["P16-WF-002", "P16-WF-003"]},
+    {"tool_id": "DT-003", "screens": ["P16-SCR-002", "P16-SCR-010"], "workflow_ids": ["P16-WF-003"]},
+    {"tool_id": "DT-004", "screens": ["P16-SCR-004"], "workflow_ids": ["P16-WF-004", "P16-WF-005", "P16-WF-006"]},
+    {"tool_id": "DT-005", "screens": ["P16-SCR-004"], "workflow_ids": ["P16-WF-005", "P16-WF-006", "P16-WF-010"]},
+    {"tool_id": "DT-006", "screens": ["P16-SCR-005"], "workflow_ids": ["P16-WF-006"]},
+    {"tool_id": "DT-007", "screens": ["P16-SCR-006"], "workflow_ids": ["P16-WF-007", "P16-WF-011"]},
+    {"tool_id": "DT-008", "screens": ["P16-SCR-005"], "workflow_ids": ["P16-WF-008", "P16-WF-011"]},
+    {"tool_id": "DT-009", "screens": ["P16-SCR-007"], "workflow_ids": ["P16-WF-009", "P16-WF-011"]},
+    {"tool_id": "DT-010", "screens": ["P16-SCR-009"], "workflow_ids": ["P16-WF-010", "P16-WF-011"]}
+  ],
+  "workflows": [
+    {
+      "workflow_id": "P16-WF-001",
+      "name": "Resume Interrupted Governed Work",
+      "entry": "Developer Cockpit Overview or direct restart",
+      "steps": [
+        "Read current pointer and active checkpoint.",
+        "Inspect named governed branch/open PR and evidence newer than the pointer timestamp.",
+        "Compare active branch state with main when unfinished.",
+        "Identify exact active substep, next action, blockers and completion gate.",
+        "Surface conflicts/staleness instead of merging them silently.",
+        "Navigate to the exact unfinished tool/workflow."
+      ],
+      "success_oracle": "One exact unfinished operation is recovered from repository evidence; no completion is inferred from conversation history or branch/PR existence.",
+      "mutation": false
+    },
+    {
+      "workflow_id": "P16-WF-002",
+      "name": "Assess Repository Readiness and Scope",
+      "entry": "Current Work & Scope Authority",
+      "steps": [
+        "Resolve governing work item, repository, branch/ref and stop conditions.",
+        "Run DT-001 doctor.",
+        "Run DT-002 preflight for A2 only when A2 is the relevant application work item.",
+        "Present PASS/WARN/BLOCK findings with raw semantics.",
+        "Show exact changed-path authority if available; otherwise show the gap/preliminary roots as non-authoritative.",
+        "Produce a deterministic readiness/next-action summary."
+      ],
+      "success_oracle": "Readiness state is source-bound and does not activate implementation or promote preliminary scope authority.",
+      "mutation": false
+    },
+    {
+      "workflow_id": "P16-WF-003",
+      "name": "Prepare a Bounded AI/Codex Task",
+      "entry": "Current Work & Scope Authority",
+      "steps": [
+        "Select an already governed slice/work item.",
+        "Refresh relevant doctor/preflight state.",
+        "Render DT-003 task capsule.",
+        "Show PREPARED/READY_TO_EXECUTE/BLOCKED plus exact reasons.",
+        "Require explicit output destination for file writes and explicit force semantics for overwrite.",
+        "Hand off only the selected bounded task packet."
+      ],
+      "success_oracle": "Generated packet preserves source authority, allowed scope, validations and stop conditions and is not described as governance authority.",
+      "mutation": "generated output only"
+    },
+    {
+      "workflow_id": "P16-WF-004",
+      "name": "Inspect and Project Governed Fixtures",
+      "entry": "Fixtures & Scenario Laboratory",
+      "steps": [
+        "Select fixture source and show provenance/class.",
+        "Verify fixture set.",
+        "Optionally normalize to an explicit output.",
+        "Project for a selected role.",
+        "Show only role-safe record/field counts and authoritative=false projection state.",
+        "Block class/identity/provenance contradictions instead of repairing them silently."
+      ],
+      "success_oracle": "Canonical, synthetic_qa, campaign_local and source_only boundaries remain intact and hidden data does not leak into projections/counts.",
+      "mutation": "explicit output only"
+    },
+    {
+      "workflow_id": "P16-WF-005",
+      "name": "Run Deterministic Scenario and Replay",
+      "entry": "Fixtures & Scenario Laboratory",
+      "steps": [
+        "Verify scenario against fixture set.",
+        "Run ordered steps through the selected adapter.",
+        "Display PASS/FAIL/BLOCK, step observations and checkpoint digests.",
+        "Run replay when requested.",
+        "Compare deterministic whole-run evidence.",
+        "If authoritative mutation is required but no owning-domain adapter exists, BLOCK rather than simulate mutation."
+      ],
+      "success_oracle": "Evidence is deterministic and role-safe; mutation boundary is explicit.",
+      "mutation": false
+    },
+    {
+      "workflow_id": "P16-WF-006",
+      "name": "Scan Permission/Hidden-Information Leakage",
+      "entry": "Privacy & Design Quality",
+      "steps": [
+        "Select validated fixtures, roles and optional scenario.",
+        "Run DT-006 privacy scan.",
+        "Show cardinality, record, field, identifier, authorization-metadata and scenario-evidence findings.",
+        "Preserve caller-known identifier exception semantics.",
+        "Treat any scanner finding as blocking for the supplied scan scope.",
+        "Do not label PASS as production security certification."
+      ],
+      "success_oracle": "No supplied projection/evidence leak is hidden or downgraded; scope limitations remain visible.",
+      "mutation": false
+    },
+    {
+      "workflow_id": "P16-WF-007",
+      "name": "Capture or Harvest Exact-Candidate UI Evidence",
+      "entry": "UI Evidence Workspace",
+      "steps": [
+        "Verify capture plan.",
+        "Bind exact candidate SHA.",
+        "Choose harvest-existing or explicit browser-adapter run.",
+        "Verify PNG dimensions/signature and metadata/attestations.",
+        "Generate item and receipt digests.",
+        "Mark synthetic CI images as tool-test-only."
+      ],
+      "success_oracle": "Receipt is bound to the exact candidate and planned evidence; stale or synthetic tool-test evidence cannot satisfy product gates.",
+      "mutation": "evidence output only"
+    },
+    {
+      "workflow_id": "P16-WF-008",
+      "name": "Audit and Ratchet Design-System Compliance",
+      "entry": "Privacy & Design Quality",
+      "steps": [
+        "Run full DT-008 audit and display legacy WARN debt.",
+        "For a candidate change, run changed-since exact base SHA.",
+        "Show MVDS001-MVDS010 findings and fingerprints.",
+        "BLOCK newly added violations.",
+        "Link complementary accessibility/privacy/UI-evidence surfaces for requirements DT-008 cannot prove."
+      ],
+      "success_oracle": "Existing debt remains visible and new violations cannot be silently added; static lint scope is not overstated.",
+      "mutation": false
+    },
+    {
+      "workflow_id": "P16-WF-009",
+      "name": "Explore Traceability and Proof",
+      "entry": "Traceability & Proof Explorer",
+      "steps": [
+        "Compile relevant source roots and explicit manifests.",
+        "Query stable ID.",
+        "Show occurrences separately from structured relations.",
+        "Show UNDECLARED/DECLARED/PROVEN with candidate/evidence integrity fields.",
+        "Open implementing/verifying/evidencing target.",
+        "Never convert textual co-occurrence into proof or PROVEN into work-item completion."
+      ],
+      "success_oracle": "Proof state derives only from integrity-valid explicit relations and exact candidate/evidence identity.",
+      "mutation": false
+    },
+    {
+      "workflow_id": "P16-WF-010",
+      "name": "Run Recovery and Performance Evidence",
+      "entry": "Recovery & Performance Harness",
+      "steps": [
+        "Verify DT-010 plan.",
+        "Classify cases as reference probe, scenario replay, explicit external adapter or performance probe.",
+        "Require adapter when the case contract requires real application/service behavior.",
+        "Require numerical performance budget plus budget_source.",
+        "Run and show PASS/FAIL/BLOCK, functional digest, samples and violations.",
+        "Preserve reference-vs-product evidence scope."
+      ],
+      "success_oracle": "No reference probe or tool timing is promoted into product recovery/performance authority.",
+      "mutation": false
+    },
+    {
+      "workflow_id": "P16-WF-011",
+      "name": "Review Exact-Head CI and Evidence Gate",
+      "entry": "CI, Evidence Receipts & Findings",
+      "steps": [
+        "Select exact candidate SHA and governing completion gate.",
+        "Enumerate all applicable hosted workflows for that head.",
+        "Inspect dedicated gate and failed jobs/logs as needed.",
+        "Associate candidate-bound UI/trace/recovery/tool receipts.",
+        "Distinguish current failures from historical failure-index records.",
+        "Present completion eligibility only when every declared evidence kind/validation is satisfied."
+      ],
+      "success_oracle": "Partial green state cannot appear as final exact-head success; stale evidence remains visibly stale.",
+      "mutation": false
+    },
+    {
+      "workflow_id": "P16-WF-012",
+      "name": "Triage Blocking Finding and Recover Next Action",
+      "entry": "Any finding or CI failure",
+      "steps": [
+        "Open raw finding/run/source and bind it to current candidate/input.",
+        "Determine whether it changes the active recovery path or is historical/nonblocking.",
+        "If repairable under current authority, identify the smallest owning scope and targeted rerun.",
+        "If owner-only/irreversible, surface the exact gate without executing it.",
+        "If state becomes contradictory or work must stop, update the governed checkpoint at the milestone boundary.",
+        "Return to the exact next unfinished action."
+      ],
+      "success_oracle": "Finding disposition preserves raw evidence, authority and checkpoint cadence; unresolved required failures remain unfinished.",
+      "mutation": "none unless separately governed repair is authorized"
+    }
+  ],
+  "foundation_counts": {
+    "program_requirements": 16,
+    "tool_ids": 10,
+    "screens": 10,
+    "workflows": 12,
+    "cross_screen_components": 8
+  },
+  "next_design_boundary": "Detailed screen states, action enablement/confirmation rules, component interaction contracts, keyboard/mobile behavior, empty/loading/error/recovery variants and deterministic screen/workflow reference cases belong to the next PPIA-16 bounded substep."
+}

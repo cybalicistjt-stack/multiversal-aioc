@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "PPIA-16",
+  "artifact_version": "0.1.0",
+  "status": "foundation-candidate",
+  "purpose": "Define the initial implementation-ready information architecture for a developer-facing cockpit over DT-001 through DT-010 and AIOC governance/evidence state, without implementing a runtime console or granting new authority.",
+  "design_principles": [
+    "Authority before action: every actionable surface shows the owning source, candidate/ref, scope and stop conditions before execution controls.",
+    "Source and projection are distinct: derived status cards never visually masquerade as governing repository state.",
+    "One tool, one contract: DT-001 through DT-010 remain individually named and their raw result semantics remain visible.",
+    "Evidence is candidate-bound: receipts, CI, screenshots, traces and proof links show exact candidate/source identity.",
+    "Findings are navigable but source-preserving: grouping does not erase raw severity, source or scope.",
+    "Interruption recovery is a first-class workflow, not a hidden operator procedure.",
+    "No console screen implies runtime, A2, release, deployment, tester, credential, spending or canonical-promotion authority."
+  ],
+  "navigation": {
+    "primary_sections": [
+      {"id": "NAV-OVERVIEW", "label": "Overview", "screens": ["P16-SCR-001"]},
+      {"id": "NAV-WORK", "label": "Work & Scope", "screens": ["P16-SCR-002", "P16-SCR-003"]},
+      {"id": "NAV-TOOLBELT", "label": "Toolbelt", "screens": ["P16-SCR-004", "P16-SCR-005", "P16-SCR-006"]},
+      {"id": "NAV-EVIDENCE", "label": "Evidence & Proof", "screens": ["P16-SCR-007", "P16-SCR-008"]},
+      {"id": "NAV-RECOVERY", "label": "Recovery", "screens": ["P16-SCR-009", "P16-SCR-010"]}
+    ],
+    "persistent_context_bar": ["repository", "branch/ref", "exact candidate SHA when applicable", "work item", "attempt", "raw lifecycle state", "authority badge", "freshness/source timestamp"],
+    "persistent_safety_indicator": "A nonactivation/authority strip states whether application mutation, A2 activation, release, deployment, tester access and owner-only gates are authorized; Foundation default is all false."
+  },
+  "screens": [
+    {
+      "screen_id": "P16-SCR-001",
+      "name": "Developer Cockpit Overview",
+      "purpose": "Answer what is active, what is healthy, what is blocked, what evidence is current, and what the exact next governed action is.",
+      "primary_sources": ["CURRENT_WORK_POINTER.json", "active checkpoint", "CURRENT_IMPLEMENTATION_STATUS.json", "application .ai/current-work-order.md", "latest relevant GitHub commit/PR/workflow evidence"],
+      "major_regions": ["current work card", "next action", "authority/nonactivation strip", "repository health summary", "active findings summary", "CI/evidence summary", "parallel/deferred tracks", "interruption recovery shortcut"],
+      "allowed_actions": ["refresh observations", "open governing source", "open active branch/PR/run", "navigate to tool or recovery workflow"],
+      "forbidden_implication": "The overview cannot present a derived green summary as completed_verified unless the checkpoint completion gate and merge evidence support it."
+    },
+    {
+      "screen_id": "P16-SCR-002",
+      "name": "Current Work & Scope Authority",
+      "purpose": "Expose work-item authority, active substep/slice, allowed scope, exact changed-path authority when available, stop conditions, completion gate and next action.",
+      "primary_sources": ["active checkpoint", "PPIA backlog or governing work order", "application current/ready work order", "DT-002 preflight", "DT-003 task capsule"],
+      "major_regions": ["work identity", "governing-source stack", "scope table", "stop conditions", "completion gate", "slice/task capsule state", "source gaps/conflicts"],
+      "allowed_actions": ["open source", "run/refresh preflight", "render task capsule", "prepare separately governed action"],
+      "forbidden_implication": "Preliminary DT-002 target roots or a PREPARED capsule cannot replace an exact changed-path authority artifact."
+    },
+    {
+      "screen_id": "P16-SCR-003",
+      "name": "Repository Health & Preflight",
+      "purpose": "Present DT-001 doctor and DT-002 compatibility observations with raw PASS/WARN/BLOCK semantics and repository/candidate context.",
+      "tool_ids": ["DT-001", "DT-002"],
+      "major_regions": ["doctor checks", "toolchain", "branch/worktree", "governed work-order alignment", "A2 seam/collision map", "workflow/validation readiness", "blocking/warning findings"],
+      "allowed_actions": ["run doctor", "run preflight", "copy/export machine-readable observation", "open finding source"],
+      "forbidden_implication": "A PASS is readiness for the tool's declared checks only; it is not A2 activation or implementation proof."
+    },
+    {
+      "screen_id": "P16-SCR-004",
+      "name": "Fixtures & Scenario Laboratory",
+      "purpose": "Work with DT-004 fixture classes/projections and DT-005 deterministic scenario evidence while preserving non-authoritative and mutation boundaries.",
+      "tool_ids": ["DT-004", "DT-005"],
+      "major_regions": ["fixture source/class/provenance", "verify/normalize/project", "role projection preview", "scenario plan", "step evidence", "checkpoint/run digests", "replay result", "adapter/mutation boundary"],
+      "allowed_actions": ["verify fixtures", "normalize to explicit output", "project by role", "verify/run/replay scenario", "export evidence"],
+      "forbidden_implication": "Fixture edits or expected-state injection cannot stand in for owning-domain authoritative mutation."
+    },
+    {
+      "screen_id": "P16-SCR-005",
+      "name": "Privacy & Design Quality",
+      "purpose": "Unify DT-006 permission-leak findings and DT-008 design-system findings without collapsing their distinct scopes.",
+      "tool_ids": ["DT-006", "DT-008"],
+      "major_regions": ["privacy scan configuration", "role matrix", "blocking leak findings", "design full audit", "changed-line ratchet", "MVDS rule findings", "source links/fingerprints"],
+      "allowed_actions": ["run privacy scan", "run design audit", "run changed-since lint", "filter findings", "open source"],
+      "forbidden_implication": "Privacy PASS is not production security certification; design-lint PASS is not complete accessibility/visual conformance proof."
+    },
+    {
+      "screen_id": "P16-SCR-006",
+      "name": "UI Evidence Workspace",
+      "purpose": "Plan, run/harvest and inspect DT-007 exact-candidate UI evidence and distinguish tool-test PNGs from product evidence.",
+      "tool_ids": ["DT-007"],
+      "major_regions": ["capture plan", "candidate SHA", "viewport/density/role/theme/state matrix", "adapter identity", "capture status", "screenshot/metadata integrity", "attestations", "receipt/evidence digests"],
+      "allowed_actions": ["verify plan", "harvest existing evidence", "invoke explicit browser adapter", "open evidence artifact", "export receipt"],
+      "forbidden_implication": "Synthetic CI images or stale-candidate screenshots cannot satisfy product UI evidence gates."
+    },
+    {
+      "screen_id": "P16-SCR-007",
+      "name": "Traceability & Proof Explorer",
+      "purpose": "Separate stable-ID occurrence discovery from explicit implementation/verification/evidence proof relationships.",
+      "tool_ids": ["DT-009"],
+      "major_regions": ["stable-ID search", "occurrence list by source root/artifact class", "structured links", "UNDECLARED/DECLARED/PROVEN state", "candidate/evidence digests", "graph digest", "proof integrity errors"],
+      "allowed_actions": ["compile graph", "query ID", "add explicit source roots/manifests to a run", "open source/target"],
+      "forbidden_implication": "Mentions, planned paths or PROVEN graph state cannot independently close a governed work item or authorize release."
+    },
+    {
+      "screen_id": "P16-SCR-008",
+      "name": "CI, Evidence Receipts & Findings",
+      "purpose": "Bind GitHub candidate identity, applicable hosted workflows, PR/merge state, receipts and active findings into one evidence review surface.",
+      "primary_sources": ["GitHub commit/PR/workflow evidence", "tool receipts", "active checkpoint completion gate", "ci/failure-records historical index"],
+      "major_regions": ["exact candidate", "applicable workflow matrix", "dedicated gate", "PR/mergeability", "signature verification", "receipt list", "current findings", "historical failure diagnostics"],
+      "allowed_actions": ["refresh hosted evidence", "open run/job/log", "open receipt", "filter current vs historical findings", "prepare separately authorized merge/retry"],
+      "forbidden_implication": "Historical failures are not automatically current blockers, and a partial green workflow set is not a final exact-head gate."
+    },
+    {
+      "screen_id": "P16-SCR-009",
+      "name": "Recovery & Performance Harness",
+      "purpose": "Run/inspect DT-010 recovery probes and explicitly sourced performance budgets while preserving reference-vs-product evidence scope.",
+      "tool_ids": ["DT-010"],
+      "major_regions": ["plan/case list", "reference vs external-adapter evidence scope", "PASS/FAIL/BLOCK", "functional digest", "timing samples", "budget source", "budget violations", "adapter requirement"],
+      "allowed_actions": ["verify plan", "run built-in probes", "invoke explicit adapter", "export receipt"],
+      "forbidden_implication": "Reference probes are not product recovery proof and CI/tool timing is not a product performance budget without approved budget authority."
+    },
+    {
+      "screen_id": "P16-SCR-010",
+      "name": "Interruption Recovery & AI-Team Handoff",
+      "purpose": "Recover the exact unfinished operation from repository state and produce a compact, provenance-rich handoff for a human or AI implementer.",
+      "primary_sources": ["CURRENT_WORK_POINTER.json", "active checkpoint", "governed branch", "open PR", "latest exact CI evidence", "application current work order", "ROADMAP_INDEX.json", "DT-003 task capsule when applicable"],
+      "major_regions": ["recovery source consistency", "active branch/PR", "last verified action", "active substep", "exact next action", "known blockers", "completion gate", "task capsule/handoff packet", "conflict/staleness warnings"],
+      "allowed_actions": ["validate continuity", "open recovery source", "render compact handoff/task capsule", "navigate to exact unfinished tool/workflow"],
+      "forbidden_implication": "Conversation history, an old status card, branch existence or an open PR cannot substitute for inspected repository recovery evidence."
+    }
+  ],
+  "cross_screen_components": [
+    {"id": "P16-CMP-001", "name": "Authority Badge", "purpose": "Label source as governing, active-attempt, derived projection, tool evidence or generated aid."},
+    {"id": "P16-CMP-002", "name": "Candidate Identity Chip", "purpose": "Show repository/ref/SHA and stale-vs-current relationship for candidate-bound evidence."},
+    {"id": "P16-CMP-003", "name": "Raw Status Pill", "purpose": "Preserve PASS/WARN/FAIL/BLOCK/PREPARED/READY_TO_EXECUTE/UNDECLARED/DECLARED/PROVEN/completion states without semantic flattening."},
+    {"id": "P16-CMP-004", "name": "Source Stack", "purpose": "Show precedence-ordered governing and derived sources with direct navigation."},
+    {"id": "P16-CMP-005", "name": "Finding Row", "purpose": "Preserve source, raw severity/state, scope, locator, candidate/input identity, blocking effect and resolution."},
+    {"id": "P16-CMP-006", "name": "Evidence Receipt Card", "purpose": "Show tool/workflow, candidate, run/digest, scope, mutation flag and limitations."},
+    {"id": "P16-CMP-007", "name": "Stop Condition Panel", "purpose": "Keep owner/work-order stop conditions visible beside any action that could cross an authority boundary."},
+    {"id": "P16-CMP-008", "name": "Nonactivation Strip", "purpose": "Make absent runtime/A2/release/deployment/tester/credential/paid/canonical-promotion authority explicit."}
+  ],
+  "responsive_and_accessibility_foundation": {
+    "requirements": [
+      "All information required to distinguish authority, status and blocker state must be available without color alone.",
+      "Dense tables require keyboard-operable sorting/filtering and a linear nonvisual representation.",
+      "No core workflow may depend on hover.",
+      "Focus state and source/action relationships remain perceivable at high zoom/reflow.",
+      "Mobile/compact layouts preserve the same semantic task and authority disclosures rather than hiding safety context.",
+      "Long logs/evidence bodies may be progressively disclosed, but candidate identity, raw result and blocking state remain visible."
+    ],
+    "note": "Detailed component behavior and screen interaction contracts belong to the next PPIA-16 substep; Foundation locks only the semantic IA and coverage boundary."
+  },
+  "nonactivation_boundary": "This artifact is a design contract only. It does not implement a Developer Console, mutate application runtime, activate STAGE-A-A2, authorize release/deployment/tester access, use credentials/paid services, or promote canonical content."
+}

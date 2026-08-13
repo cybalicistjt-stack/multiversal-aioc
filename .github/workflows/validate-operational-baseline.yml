@@ -36,7 +36,10 @@ permissions:
   contents: read
 
 concurrency:
-  group: validate-operational-aioc-${{ github.ref }}
+  # Exact-head validation must not be blocked by a stalled run from an obsolete
+  # commit on the same pull-request ref. Keep duplicate suppression scoped to
+  # the same candidate SHA instead of coupling every PR revision together.
+  group: validate-operational-aioc-${{ github.ref }}-${{ github.event.pull_request.head.sha || github.sha }}
   cancel-in-progress: true
 
 jobs:

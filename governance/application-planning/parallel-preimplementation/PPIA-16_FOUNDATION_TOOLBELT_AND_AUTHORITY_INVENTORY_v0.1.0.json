@@ -1,0 +1,236 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "PPIA-16",
+  "artifact_version": "0.1.0",
+  "status": "foundation-candidate",
+  "purpose": "Inventory the completed DT-001 through DT-010 Developer Toolbelt and the AIOC control/evidence surfaces that a future Developer Console may present or invoke without becoming a new authority source.",
+  "application_source_anchor": {
+    "repository": "cybalicistjt-stack/Multiversal-app",
+    "commit": "354e24007d2c453d090a2a6cdb31d3e3333c84c1",
+    "toolbelt_version": "mv-dev v0.10.0",
+    "runtime_impact": "none",
+    "a2_activation": false,
+    "release_deployment_authority": false
+  },
+  "toolbelt": [
+    {
+      "id": "DT-001",
+      "title": "Developer Toolbelt Foundation / Doctor",
+      "doc_path": "docs/development/DT-001-developer-toolbelt.md",
+      "doc_blob_sha": "ad015a00efdb594c9c1ae6599ab84b459faafed5",
+      "command_family": ["python -m tools.mv_dev doctor", "python -m tools.mv_dev doctor --json", "pnpm mv-dev:doctor"],
+      "console_group": "repository-health",
+      "authority_class": "read_only_observation",
+      "primary_outputs": ["PASS/WARN/BLOCK findings", "repository shape", "branch/worktree state", "governed work-order observation", "toolchain and validation-surface readiness"],
+      "mutation_allowed": false,
+      "console_rule": "May display and refresh doctor observations. WARN must not be presented as BLOCK, and a doctor PASS is not work-item completion."
+    },
+    {
+      "id": "DT-002",
+      "title": "STAGE-A-A2 Preflight / Compatibility Mapper",
+      "doc_path": "docs/development/DT-002-a2-preflight.md",
+      "doc_blob_sha": "82c29470c47806871f534f37b752e084a33a4ce9",
+      "command_family": ["python -m tools.mv_dev preflight a2", "python -m tools.mv_dev preflight a2 --json", "python -m tools.mv_dev preflight a2 --markdown", "pnpm mv-dev:preflight:a2"],
+      "console_group": "scope-and-preflight",
+      "authority_class": "read_only_observation",
+      "primary_outputs": ["A2 slice seam map", "collision/dependency findings", "branch alignment", "stop conditions", "deterministic next action"],
+      "mutation_allowed": false,
+      "console_rule": "May show compatibility and stop-condition state. It must not activate A2, create its branch, install dependencies, or convert preliminary target roots into exact changed-path authority."
+    },
+    {
+      "id": "DT-003",
+      "title": "Codex Task Capsule Builder",
+      "doc_path": "docs/development/DT-003-task-capsules.md",
+      "doc_blob_sha": "b70060272998f7bc856ce997523ba6bd410cec95",
+      "command_family": ["python -m tools.mv_dev task A2-04", "python -m tools.mv_dev task A2-04 --json", "python -m tools.mv_dev task A2-04 --write /tmp/A2-04", "pnpm mv-dev:task A2-04"],
+      "console_group": "task-capsules",
+      "authority_class": "generated_development_aid",
+      "primary_outputs": ["TASK.md", "CAPSULE.json", "ALLOWED_PATHS.txt", "VALIDATION_COMMANDS.txt", "STOP_CONDITIONS.md", "SOURCES.md", "PREPARED/READY_TO_EXECUTE/BLOCKED state"],
+      "mutation_allowed": "explicit_output_only",
+      "console_rule": "Generated capsules are execution aids, not governance authority. READY_TO_EXECUTE requires the governed branch, a nonblocking preflight, and exact changed-path authority; write/force actions must be explicit."
+    },
+    {
+      "id": "DT-004",
+      "title": "Fixture Gateway",
+      "doc_path": "docs/development/DT-004-fixture-gateway.md",
+      "doc_blob_sha": "fc63e79941ac3a353e40c8fb26a492c064f45ce2",
+      "command_family": ["python -m tools.mv_dev fixtures verify <fixtures>", "python -m tools.mv_dev fixtures normalize <fixtures>", "python -m tools.mv_dev fixtures project <fixtures> --role <role>", "pnpm mv-dev:fixtures -- verify <fixtures>"],
+      "console_group": "fixtures",
+      "authority_class": "test_data_gateway",
+      "primary_outputs": ["fixture validation", "deterministic normalization", "role-safe non-authoritative projection", "fixture provenance/class state"],
+      "mutation_allowed": "explicit_output_only",
+      "console_rule": "Must preserve canonical, synthetic_qa, campaign_local, and source_only classes. Projection authorization occurs before counts/records/fields; projection stays authoritative=false."
+    },
+    {
+      "id": "DT-005",
+      "title": "Deterministic Scenario / E2E Runner",
+      "doc_path": "docs/development/DT-005-scenario-runner.md",
+      "doc_blob_sha": "79c962daaff107f830f672826afc84b56441e754",
+      "command_family": ["python -m tools.mv_dev scenarios verify <scenario> --fixtures <fixtures>", "python -m tools.mv_dev scenarios run <scenario> --fixtures <fixtures>", "python -m tools.mv_dev scenarios replay <scenario> --fixtures <fixtures>"],
+      "console_group": "scenarios",
+      "authority_class": "deterministic_test_evidence",
+      "primary_outputs": ["ordered step evidence", "PASS/FAIL/BLOCK", "checkpoint digests", "whole-run digest", "replay determinism"],
+      "mutation_allowed": false,
+      "console_rule": "The built-in fixture-gateway adapter is read-only. Authoritative mutation requirements BLOCK until an owning-domain application/service adapter exists; the console must not simulate success by editing fixture state."
+    },
+    {
+      "id": "DT-006",
+      "title": "Permission Leak Scanner",
+      "doc_path": "docs/development/DT-006-permission-leak-scanner.md",
+      "doc_blob_sha": "c32d1674491b66a87390783eecc243f54e30efe4",
+      "command_family": ["python -m tools.mv_dev privacy scan <fixtures> --roles <roles>", "python -m tools.mv_dev privacy scan <fixtures> --roles <roles> --scenario <scenario>", "pnpm mv-dev:privacy scan <fixtures> --roles <roles>"],
+      "console_group": "privacy",
+      "authority_class": "deterministic_security_finding",
+      "primary_outputs": ["blocking leak findings", "role matrix", "cardinality/record/field/identifier checks", "scenario evidence scan"],
+      "mutation_allowed": false,
+      "console_rule": "Any finding is blocking for the supplied scan surface, but PASS is not a production security certification and the scanner does not invent a role hierarchy."
+    },
+    {
+      "id": "DT-007",
+      "title": "UI Evidence Harvester",
+      "doc_path": "docs/development/DT-007-ui-evidence-harvester.md",
+      "doc_blob_sha": "fd52662a3148a01670ef155791e7f37fd23f2ec9",
+      "command_family": ["python -m tools.mv_dev ui-evidence verify-plan <plan>", "python -m tools.mv_dev ui-evidence harvest <plan> --evidence-dir <dir> --build-sha <sha>", "python -m tools.mv_dev ui-evidence run <plan> --evidence-dir <dir> --build-sha <sha> --adapter-command <adapter>"],
+      "console_group": "ui-evidence",
+      "authority_class": "candidate_bound_evidence_receipt",
+      "primary_outputs": ["capture-plan validation", "PNG/metadata integrity checks", "per-item evidence digest", "receipt digest", "exact build-SHA binding"],
+      "mutation_allowed": "external_evidence_output_only",
+      "console_rule": "Synthetic CI PNGs are tool tests, not product UI evidence. A receipt is valid only for its exact candidate SHA and required attestations."
+    },
+    {
+      "id": "DT-008",
+      "title": "Design-System Compliance Linter",
+      "doc_path": "docs/development/DT-008-design-system-linter.md",
+      "doc_blob_sha": "8e6329c59eade15c3faa34326aa90f544e455b79",
+      "command_family": ["python -m tools.mv_dev design-lint", "python -m tools.mv_dev design-lint --json", "python -m tools.mv_dev design-lint --changed-since <base-sha>"],
+      "console_group": "design-lint",
+      "authority_class": "deterministic_source_finding",
+      "primary_outputs": ["MVDS001-MVDS010 findings", "legacy WARN audit", "changed-line PASS/BLOCK ratchet", "finding fingerprints"],
+      "mutation_allowed": false,
+      "console_rule": "Legacy findings remain visible as WARN; newly added violations BLOCK. The console must not imply static lint proves semantic accessibility, privacy, focus behavior, contrast, responsive quality, or screenshot conformance."
+    },
+    {
+      "id": "DT-009",
+      "title": "Traceability Compiler",
+      "doc_path": "docs/development/DT-009-traceability-compiler.md",
+      "doc_blob_sha": "a5d66b2ab75b0b00d5b8046c720a0a2a8b21da7f",
+      "command_family": ["python -m tools.mv_dev traceability compile", "python -m tools.mv_dev traceability query <stable-id>", "python -m tools.mv_dev traceability compile --source-root aioc=../multiversal-aioc"],
+      "console_group": "traceability",
+      "authority_class": "evidence_graph_projection",
+      "primary_outputs": ["stable-ID occurrence index", "explicit trace links", "UNDECLARED/DECLARED/PROVEN state", "relation/status counts", "deterministic graph digest"],
+      "mutation_allowed": false,
+      "console_rule": "Text mention is never proof. PROVEN requires explicit structured PASS/COMPLETE proof links with exact candidate identity, and evidence proof also requires an evidence digest. PROVEN does not independently close a work item."
+    },
+    {
+      "id": "DT-010",
+      "title": "Recovery / Performance Harness",
+      "doc_path": "docs/development/DT-010-recovery-performance-harness.md",
+      "doc_blob_sha": "29bb61ee85e60151570dc0a73bdeecff25eea7b6",
+      "command_family": ["python -m tools.mv_dev recovery-perf verify-plan <plan>", "python -m tools.mv_dev recovery-perf run <plan> --json", "python -m tools.mv_dev recovery-perf run <plan> --adapter-command <adapter>"],
+      "console_group": "recovery-performance",
+      "authority_class": "deterministic_recovery_and_budget_evidence",
+      "primary_outputs": ["PASS/FAIL/BLOCK case results", "functional digest", "recovery observations", "timing samples", "explicit sourced-budget violations"],
+      "mutation_allowed": false,
+      "console_rule": "Reference probes are not product recovery proof. Numerical budgets require an explicit approved budget_source; tool/CI timing must not become a product target by implication."
+    }
+  ],
+  "aioc_control_surfaces": [
+    {
+      "id": "AIOC-CONTROL-001",
+      "surface": "current work pointer",
+      "path": "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+      "authority": "selected conversational execution pointer; not completion evidence by itself",
+      "console_use": "primary work/slice header, parallel attempts, deferred tracks, selection provenance"
+    },
+    {
+      "id": "AIOC-CONTROL-002",
+      "surface": "active work checkpoint",
+      "path": "governance/ai/work-state/PPIA-16-attempt-001.json",
+      "authority": "recovery boundary for exact active substep, branch, completion gate, blockers and validation state",
+      "console_use": "scope, stop state, completion gate, next action, immutable evidence references"
+    },
+    {
+      "id": "AIOC-CONTROL-003",
+      "surface": "compact implementation status",
+      "path": "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
+      "authority": "derived compact projection; must match pointer/checkpoint",
+      "console_use": "fast status card only; never overrides source checkpoint"
+    },
+    {
+      "id": "AIOC-CONTROL-004",
+      "surface": "PPIA backlog",
+      "path": "governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json",
+      "authority": "current PPIA tranche/order/status/completion-gate authority",
+      "console_use": "program position and tranche completion status"
+    },
+    {
+      "id": "AIOC-CONTROL-005",
+      "surface": "roadmap index",
+      "path": "governance/ai/runtime/ROADMAP_INDEX.json",
+      "authority": "compact work-item to governing-roadmap/dependency map",
+      "console_use": "governing-source navigation; do not treat as an activity log"
+    },
+    {
+      "id": "AIOC-CONTROL-006",
+      "surface": "bootstrap and operating policies",
+      "paths": ["governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md", "governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md", "governance/ai/MULTIVERSAL_COMPLETION_CLAIM_INTEGRITY_POLICY.md"],
+      "authority": "repository-first recovery, checkpoint cadence, final-gate validation and evidence-before-claim rules",
+      "console_use": "explain why an action is observation-only, owner-gated, blocked, ready-for-review or completed_verified"
+    },
+    {
+      "id": "AIOC-CONTROL-007",
+      "surface": "interaction operational scorecard",
+      "path": "governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json",
+      "authority": "historical deterministic control-health result for its recorded pilot; not live work-state",
+      "console_use": "control-health panel with recorded run scope and explicit unmeasured longitudinal metrics"
+    },
+    {
+      "id": "AIOC-CONTROL-008",
+      "surface": "continuity validator/state manager",
+      "path": "tools/continuity_state.py",
+      "authority": "mechanical pointer/checkpoint/status consistency and evidence-kind validation",
+      "console_use": "interruption recovery diagnostics and state-integrity checks"
+    },
+    {
+      "id": "AIOC-CONTROL-009",
+      "surface": "CI failure index",
+      "path": "governance/ci-failures/INDEX.md",
+      "branch": "ci/failure-records",
+      "authority": "historical automated failure record",
+      "console_use": "diagnostic history; a record becomes a current blocker only when bound to the active attempt/current required gate"
+    },
+    {
+      "id": "AIOC-CONTROL-010",
+      "surface": "GitHub commit/PR/workflow evidence",
+      "authority": "canonical repository evidence for candidate identity, review/merge state, hosted validation and signature verification",
+      "console_use": "CI/evidence receipts, exact-head gate, mergeability and completion evidence"
+    }
+  ],
+  "application_work_authority": {
+    "current_work_order_path": ".ai/current-work-order.md",
+    "ready_work_order_path": ".ai/ready-work-orders/STAGE-A-A2-universal-object-experience.md",
+    "current_state": "STAGE-A-A2 authorized current next; ready for activation; implementation not yet started",
+    "implementation_branch": "stage-a/a2-universal-object-experience",
+    "release_deployment_authority": false,
+    "console_boundary": "PPIA-16 may expose this authority and the DT-002/DT-003 preparation state but must not activate A2 or imply that the AIOC primary pointer supersedes application work-order authority."
+  },
+  "known_staleness": [
+    {
+      "artifact": "governance/application-planning/parallel-preimplementation/PPIA_PARALLEL_PREIMPLEMENTATION_ADVANCEMENT_PROGRAM.md",
+      "condition": "The PPIA-16 tranche definition is current, but the document's later Current tranche paragraph still names PPIA-03.",
+      "controlling_state": "PPIA_PROGRAM_BACKLOG.json plus the PPIA-16 checkpoint/pointer",
+      "foundation_disposition": "Expose the stale-prose condition as provenance/health information; do not silently use the stale paragraph as current state."
+    }
+  ],
+  "global_non_authorizations": [
+    "application runtime mutation",
+    "STAGE-A-A2 activation",
+    "release or deployment",
+    "tester access",
+    "paid services",
+    "production credentials",
+    "canonical-content promotion without source authority",
+    "automatic weakening of validation assertions",
+    "automatic retry of ambiguous authoritative mutations"
+  ]
+}
