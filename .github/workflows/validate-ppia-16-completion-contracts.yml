@@ -1,0 +1,49 @@
+name: Validate PPIA-16 Completion Contract
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-16_*'
+      - 'governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json'
+      - 'governance/application-planning/parallel-preimplementation/validate_ppia_program.py'
+      - 'governance/ai/work-state/PPIA-16-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'scripts/validate-ppia16-completion-contracts.py'
+      - 'scripts/validate-ppia16-integrated-screen-workflow-traceability.py'
+      - 'scripts/validate-ppia16-screen-action-reference.py'
+      - 'scripts/validate-ppia16-foundation.py'
+      - 'scripts/validate-ppia15-to-ppia16-transition.py'
+      - 'scripts/validate-ppia15-completion-contracts.py'
+      - '.github/workflows/validate-ppia-16-completion-contracts.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia16-completion-contract:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PPIA-16 Completion Contract
+        run: python scripts/validate-ppia16-completion-contracts.py
+      - name: Validate PPIA-16 Integrated Screen Workflow Traceability regression
+        run: python scripts/validate-ppia16-integrated-screen-workflow-traceability.py
+      - name: Validate PPIA-16 Screen Action Reference regression
+        run: python scripts/validate-ppia16-screen-action-reference.py
+      - name: Validate PPIA-16 Foundation regression
+        run: python scripts/validate-ppia16-foundation.py
+      - name: Validate PPIA-15 to PPIA-16 transition regression
+        run: python scripts/validate-ppia15-to-ppia16-transition.py
+      - name: Validate PPIA-15 completion dependency regression
+        run: python scripts/validate-ppia15-completion-contracts.py
+      - name: Validate generalized PPIA continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
+      - name: Validate conversation continuity
+        run: python tools/continuity_state.py validate
+      - name: Run conversation continuity regression tests
+        run: python -m unittest discover -s tests/continuity -v
