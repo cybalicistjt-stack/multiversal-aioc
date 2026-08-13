@@ -13,7 +13,7 @@ COMPONENTS = BASE / "PPIA-16_COMPONENT_INTERACTION_CONTRACTS_v0.1.0.json"
 CASES = BASE / "PPIA-16_SCREEN_ACTION_REFERENCE_CASES_v0.1.0.json"
 NARRATIVE = BASE / "PPIA-16_SCREEN_ACTION_REFERENCE_CONTRACT.md"
 PACKAGE = BASE / "PPIA-16_SCREEN_ACTION_REFERENCE_PACKAGE_INDEX_v0.1.0.json"
-FOUNDATION_IA = BASE / "PPIA-16_FOUNDATION_INFORMATION_ARCHITECTURE_v0.1.0.json"
+FOUNDATION_IA = BASE / "PPIA-16_FOUNDATION_INFORMATION_ARCHITEURE_v0.1.0.json"
 FOUNDATION_AUTH = BASE / "PPIA-16_FOUNDATION_AUTHORITY_AND_STATUS_MODEL_v0.1.0.json"
 FOUNDATION_COVERAGE = BASE / "PPIA-16_FOUNDATION_SCREEN_WORKFLOW_COVERAGE_MAP_v0.1.0.json"
 BACKLOG = BASE / "PPIA_PROGRAM_BACKLOG.json"
@@ -129,7 +129,7 @@ def main() -> None:
         for key in ("enable_when", "disable_when", "confirmation", "execution_contract", "result_contract", "retry", "keyboard", "mobile_touch"):
             req(row.get(key) not in (None, [], {}), f"{row.get('id')} missing {key}")
     ablob = json.dumps(actions).lower()
-    for phrase in ("confirmation cannot create authority", "never blind-retry", "never auto-execute", "p16", "owner", "candidate", "stop conditions"):
+    for phrase in ("confirmation cannot create authority", "never blind-retry", "never auto-execute", "ppia-16", "owner", "candidate", "stop conditions"):
         req(phrase in ablob, f"action contract missing invariant {phrase}")
     recovery = actions.get("ambiguous_status_recovery", {})
     req("freeze blind retry" in json.dumps(recovery).lower() and "applied/not-applied/unknown" in json.dumps(recovery).lower(), "ambiguous mutation recovery weakened")
