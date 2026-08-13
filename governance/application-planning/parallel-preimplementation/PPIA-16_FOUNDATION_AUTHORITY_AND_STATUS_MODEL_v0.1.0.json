@@ -1,0 +1,213 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "PPIA-16",
+  "artifact_version": "0.1.0",
+  "status": "foundation-candidate",
+  "purpose": "Define how a future Developer Console distinguishes repository authority, tool observations, generated aids, findings, evidence receipts, governed mutation boundaries and completion state.",
+  "authority_precedence": [
+    {
+      "rank": 1,
+      "class": "canonical_repository_authority",
+      "examples": ["merged governing documents", "application current work order", "PPIA backlog", "owner-approved policies", "exact changed-path authority when present"],
+      "rule": "Controls semantics and authorization unless a newer internally consistent active-attempt branch checkpoint/substantive branch state governs unfinished recovery."
+    },
+    {
+      "rank": 2,
+      "class": "active_attempt_repository_state",
+      "examples": ["named governed branch", "active checkpoint", "open PR", "exact candidate commits", "hosted workflow results"],
+      "rule": "Controls unfinished attempt recovery and candidate state; does not become completed_verified without its declared gate."
+    },
+    {
+      "rank": 3,
+      "class": "derived_repository_projection",
+      "examples": ["CURRENT_IMPLEMENTATION_STATUS.json", "ROADMAP_INDEX.json", "interaction operational scorecard"],
+      "rule": "Fast projection only. It must retain its source identity and may not override the source pointer/checkpoint/governing artifact."
+    },
+    {
+      "rank": 4,
+      "class": "tool_observation_or_evidence",
+      "examples": ["doctor result", "preflight result", "privacy finding", "UI receipt", "traceability graph", "recovery/performance receipt"],
+      "rule": "Scoped to the tool contract, candidate/source inputs and run. It is evidence or diagnosis, not new governance authority."
+    },
+    {
+      "rank": 5,
+      "class": "generated_development_aid",
+      "examples": ["Codex task capsule", "normalized fixture output", "rendered compatibility markdown"],
+      "rule": "May package or transform existing authority, but may not fill missing authority, promote synthetic data, or weaken stop/completion gates."
+    }
+  ],
+  "work_lifecycle_states": {
+    "complete_state": "completed_verified",
+    "unfinished_states": ["started", "in_progress", "validation_failed", "blocked_non_owner", "blocked_owner", "ready_for_review"],
+    "noncompletion_state": "superseded",
+    "rule": "Only completed_verified is complete; candidate artifacts, green partial checks, an open PR, or a generated package do not upgrade lifecycle state."
+  },
+  "tool_result_semantics": [
+    {
+      "raw": "PASS",
+      "normalized": "pass",
+      "meaning": "The declared tool check ran and satisfied its implemented scope.",
+      "forbidden_upgrade": "Do not display as work-item completion, production certification, release readiness, or canonical promotion."
+    },
+    {
+      "raw": "WARN",
+      "normalized": "warning",
+      "meaning": "Work may continue, but the condition needs operator awareness.",
+      "forbidden_upgrade": "Do not display as BLOCK."
+    },
+    {
+      "raw": "FAIL",
+      "normalized": "failure",
+      "meaning": "The operation ran but a declared assertion, recovery invariant, expectation or budget failed.",
+      "forbidden_upgrade": "Do not hide behind a later successful packaging step."
+    },
+    {
+      "raw": "BLOCK",
+      "normalized": "blocked",
+      "meaning": "The tool cannot validly continue under its contract or a blocking leak/compatibility condition exists.",
+      "forbidden_upgrade": "Do not retry by weakening authority, assertions or hidden-information rules."
+    },
+    {
+      "raw": "PREPARED",
+      "normalized": "prepared",
+      "meaning": "A generated execution aid is structurally prepared but the governed execution prerequisites are not all satisfied.",
+      "forbidden_upgrade": "Do not present as READY_TO_EXECUTE."
+    },
+    {
+      "raw": "READY_TO_EXECUTE",
+      "normalized": "ready_to_execute",
+      "meaning": "The task-capsule-specific prerequisites are satisfied.",
+      "forbidden_upgrade": "Does not waive the owning work order's stop conditions, acceptance gates or final evidence requirements."
+    },
+    {
+      "raw": "UNDECLARED",
+      "normalized": "trace_undeclared",
+      "meaning": "Stable-ID occurrences may exist but no structured trace relationship is declared.",
+      "forbidden_upgrade": "A mention is not proof."
+    },
+    {
+      "raw": "DECLARED",
+      "normalized": "trace_declared",
+      "meaning": "Structured links exist but no qualifying proof-status link exists.",
+      "forbidden_upgrade": "Do not present as PROVEN."
+    },
+    {
+      "raw": "PROVEN",
+      "normalized": "trace_proven",
+      "meaning": "At least one explicit integrity-valid proof relation is PASS or COMPLETE for an exact candidate/evidence identity.",
+      "forbidden_upgrade": "Does not independently close a governed work item or authorize release/deployment."
+    }
+  ],
+  "action_classes": [
+    {
+      "id": "ACT-OBSERVE",
+      "label": "Observe / refresh",
+      "examples": ["read pointer/checkpoint", "doctor", "preflight", "query traceability"],
+      "mutation": "none",
+      "console_requirement": "No confirmation beyond ordinary command selection; display exact source/candidate context."
+    },
+    {
+      "id": "ACT-NAVIGATE",
+      "label": "Open governing source / evidence",
+      "examples": ["open work order", "open PR", "open workflow run", "open finding source"],
+      "mutation": "none",
+      "console_requirement": "Preserve source repository/ref/path/run identity."
+    },
+    {
+      "id": "ACT-GENERATE",
+      "label": "Generate development artifact",
+      "examples": ["task capsule render", "fixture normalization", "machine-readable report"],
+      "mutation": "output artifact only",
+      "console_requirement": "Show destination and overwrite semantics; label output as generated aid/evidence, never source authority."
+    },
+    {
+      "id": "ACT-RUN-EVIDENCE",
+      "label": "Run deterministic validation/evidence tool",
+      "examples": ["scenario run/replay", "privacy scan", "design lint", "UI harvest", "recovery/performance harness"],
+      "mutation": "none or external evidence output only according to tool contract",
+      "console_requirement": "Bind result to exact inputs/candidate and preserve PASS/WARN/FAIL/BLOCK semantics."
+    },
+    {
+      "id": "ACT-EXTERNAL-ADAPTER",
+      "label": "Invoke explicit external adapter",
+      "examples": ["DT-007 browser adapter", "DT-010 recovery adapter", "future DT-005 owning-domain adapter"],
+      "mutation": "adapter-defined and separately governed",
+      "console_requirement": "Never infer mutation authority from the console. Require the adapter path/identity, owning authority, candidate identity, and tool-specific prerequisites. Missing adapter is BLOCK when required."
+    },
+    {
+      "id": "ACT-PROPOSE-GOVERNED-MUTATION",
+      "label": "Prepare governed repository/application action",
+      "examples": ["prepare Codex task", "prepare PR/merge action", "prepare application-slice execution"],
+      "mutation": "not yet performed",
+      "console_requirement": "Show owning work order, exact allowed scope, stop conditions and required evidence."
+    },
+    {
+      "id": "ACT-EXECUTE-GOVERNED-MUTATION",
+      "label": "Execute separately authorized mutation",
+      "examples": ["repository edit", "branch/PR/merge", "future application owning-domain mutation"],
+      "mutation": "yes",
+      "console_requirement": "PPIA-16 does not grant this authority. Execution is enabled only when an external governing work order/tool/owner gate already authorizes it."
+    },
+    {
+      "id": "ACT-OWNER-GATED",
+      "label": "Owner-only / irreversible gate",
+      "examples": ["spending", "paid plan", "production credential use", "deployment", "internal-alpha release", "public release", "irreversible vendor commitment"],
+      "mutation": "owner-gated",
+      "console_requirement": "Never auto-execute. Surface the exact gate and required owner decision."
+    }
+  ],
+  "evidence_receipt_minimum": {
+    "required_fields": [
+      "source_tool_or_workflow",
+      "source_repository",
+      "candidate_or_source_ref",
+      "execution_scope",
+      "raw_result",
+      "generated_at_or_run_identity",
+      "inputs_or_source_roots",
+      "artifact_or_evidence_digest_when_available",
+      "authoritative_mutation_performed",
+      "authority_limitations"
+    ],
+    "candidate_binding_rule": "Any proof/evidence claimed for a specific code candidate must carry its exact candidate SHA; stale candidate evidence is visibly stale, never silently reused.",
+    "digest_rule": "Where the producing tool defines an evidence, receipt, graph or functional digest, preserve that digest exactly rather than inventing a replacement.",
+    "historical_rule": "Historical successful evidence remains historical evidence for its recorded candidate/run; it is not a live success claim for a later head."
+  },
+  "finding_model": {
+    "required_fields": ["source", "raw_severity_or_state", "summary", "scope", "source_locator", "candidate_or_input_identity", "blocking_effect", "resolution_or_next_action"],
+    "raw_preservation": true,
+    "normalization_rule": "The console may group findings for navigation but must preserve raw source severity/state and source-specific semantics.",
+    "current_blocker_rule": "A historical CI failure or stale finding is a current blocker only when the active attempt or current required gate binds to it.",
+    "privacy_rule": "Finding text and diagnostics must not expose protected secrets/hidden fixture data merely to explain a failure."
+  },
+  "status_and_provenance_display": {
+    "must_show": [
+      "repository",
+      "ref/branch/candidate SHA",
+      "work item and attempt when applicable",
+      "source path/run/tool",
+      "raw status",
+      "derived-vs-authoritative label",
+      "freshness or recorded timestamp when available",
+      "authority/nonauthorization boundary"
+    ],
+    "conflict_rule": "When sources conflict, show the conflict and controlling precedence; never silently merge contradictory state.",
+    "stale_rule": "Derived or prose state that lags a controlling checkpoint/backlog must be visibly marked stale."
+  },
+  "interruption_recovery_model": {
+    "recovery_sources": ["CURRENT_WORK_POINTER.json", "named checkpoint", "governed branch", "open PR", "exact commit/workflow evidence", "application current work order", "ROADMAP_INDEX.json"],
+    "required_recovery_output": ["exact active operation", "exact next action", "known blockers", "completion gate", "branch/ref identity", "last verified evidence"],
+    "rules": [
+      "Prefer a newer internally consistent active-branch checkpoint/substantive branch state over stale main projection for unfinished work.",
+      "Never infer completion from conversation text, branch existence, an open PR, a partial green check or silence.",
+      "Do not erase failed/interrupted attempts to make state look complete.",
+      "If pointer/checkpoint/state contradict materially, stop unrelated mutation and reconcile continuity first."
+    ]
+  },
+  "non_authorizations": [
+    "PPIA-16 does not create application runtime mutation authority.",
+    "PPIA-16 does not activate STAGE-A-A2.",
+    "PPIA-16 does not create release, deployment, tester-access, paid-service, production-credential or canonical-promotion authority.",
+    "PPIA-16 does not allow a console to weaken assertions, fabricate missing source authority, invent performance budgets, or treat synthetic tool-test evidence as product evidence."
+  ]
+}
