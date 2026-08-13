@@ -1,1 +1,4059 @@
-{"schema_version":"0.1.0","work_item_id":"CAPP-01","title":"25-Species Appearance Choice Registry","status":"foundation_candidate","authority":{"biology":"PPIA-05_SPECIES_FORMS_BIOLOGY_TAXONOMY_v0.1.0.json","morphology":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","semantics":"PPIA-06_APPEARANCE_SEMANTIC_TAXONOMY_v0.2.0.json","owner_decisions":"PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json"},"profile_count":25,"category_count":14,"coverage_model":"Every profile is evaluated against every stable category; default_dimension_policy plus explicit overrides determines eligibility without duplicating category lists.","categories":[{"category_id":"scale.relative_size","name":"Scale / Relative Size","semantic_owner":"character-appearance-and-species-form-biology","selection_semantics":"persistent or form-scoped identity-state as supported by source"},{"category_id":"body_shape.silhouette","name":"Body Shape / Silhouette","semantic_owner":"character-appearance-and-species-form-biology","selection_semantics":"persistent or form-scoped identity-state as supported by source"},{"category_id":"symmetry.laterality","name":"Symmetry / Laterality","semantic_owner":"character-appearance-and-species-form-biology","selection_semantics":"persistent or form-scoped identity-state as supported by source"},{"category_id":"locomotion.appendages","name":"Locomotion / Appendages","semantic_owner":"character-appearance-and-species-form-biology","selection_semantics":"persistent or form-scoped identity-state as supported by source"},{"category_id":"texture.covering","name":"Texture / Covering","semantic_owner":"character-appearance-and-species-form-biology","selection_semantics":"persistent or form-scoped identity-state as supported by source"},{"category_id":"coloration.marking","name":"Coloration / Marking","semantic_owner":"character-appearance-and-species-form-biology","selection_semantics":"persistent or form-scoped identity-state as supported by source"},{"category_id":"head_face.structure","name":"Head / Face Structure","semantic_owner":"character-appearance-and-species-form-biology","selection_semantics":"persistent or form-scoped identity-state as supported by source"},{"category_id":"hair_crest_spine","name":"Hair / Beard / Crest / Spine Analogs","semantic_owner":"character-appearance-and-species-form-biology","selection_semantics":"persistent or form-scoped identity-state as supported by source"},{"category_id":"evolutionary_residue","name":"Evolutionary Residue","semantic_owner":"character-appearance-and-species-form-biology","selection_semantics":"persistent or form-scoped identity-state as supported by source"},{"category_id":"age_bearing_posture","name":"Age / Bearing / Posture","semantic_owner":"character-appearance-and-species-form-biology","selection_semantics":"persistent or form-scoped identity-state as supported by source"},{"category_id":"gender_manifestation","name":"Gender Manifestation","semantic_owner":"character-appearance-and-species-form-biology","selection_semantics":"persistent or form-scoped identity-state as supported by source"},{"category_id":"adornment","name":"Adornment","semantic_owner":"character-appearance-and-species-form-biology","selection_semantics":"persistent or form-scoped identity-state as supported by source"},{"category_id":"presentation_wardrobe","name":"Presentation Wardrobe","semantic_owner":"renderer-presentation","selection_semantics":"renderer-presentation state"},{"category_id":"equipment_state","name":"Equipment State","semantic_owner":"ppia03-asset-equipment","selection_semantics":"governed property link"}],"option_policy":"Enumerate only source-supported discrete options. If source defines a dimension but not its legal values, preserve it as source-bounded/unspecified rather than inventing a palette, anatomy, or preset.","selection_modes":{"source_bounded_conditional":"Dimension exists in the semantic registry, but concrete legal values are exposed only when supported by source or owner-resolved canon.","unknown_preserved":"Eligibility/value space is unresolved; unknown must stay distinguishable from false.","delegated_not_species_owned":"Species profile does not own the physical dimension; current occupied body/form authority resolves it."},"profiles":[{"profile_id":"species.antyrri","display_name":"Antyrri","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Antyrri"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.brambleborn","display_name":"Brambleborn","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Brambleborn"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.caligan","display_name":"Caligan","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Caligan"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.cesidian","display_name":"Cesidian","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Cesidian"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.cosmenella","display_name":"Cosmenella","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Cosmenella"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.crystal_dragon","display_name":"Crystal Dragon","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Crystal Dragon"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.feline","display_name":"Feline","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Feline"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.ganymede","display_name":"Ganymede","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Ganymede"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.gliesian","display_name":"Gliesian","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Gliesian"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.human","display_name":"Human","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Human"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.iaoth","display_name":"Iaoth","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Iaoth"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.kobold","display_name":"Kobold","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Kobold"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.logical_stage","display_name":"Logical Stage","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Logical Stage"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.malaphant","display_name":"Malaphant","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Malaphant"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.manytoms","display_name":"ManyToms","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"ManyToms"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.munyubbles","display_name":"Munyubbles","authority_status":"unknown_morphology","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Munyubbles"},"default_dimension_policy":"unknown_preserved","explicit_unknown_fields":["normalized_topology","locomotion","appendage_count","head_structure","covering","coloration","distinguishing_features","sex_gender_manifestation","life_cycle_transitions","residue_rules"],"dimension_overrides":{"adornment":"conditional_until_topology_known","presentation_wardrobe":"conditional_until_topology_and_renderer_known","equipment_state":"conditional_until_topology_and_ppia03_known"}},{"profile_id":"species.nekron","display_name":"Nekron","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Nekron"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.raconite","display_name":"Raconite","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Raconite"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.ramogliese","display_name":"Ramogliese","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Ramogliese"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.regalian","display_name":"Regalian","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Regalian"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.the_great_race","display_name":"The Great Race","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"The Great Race"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.thetans","display_name":"Thetans","authority_status":"nonphysical_body_ontology","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Thetans"},"default_dimension_policy":"delegated_not_species_owned","body_delegation":"current occupied body/form/current-body authority","dimension_overrides":{"adornment":"conditional_occupied_body","presentation_wardrobe":"conditional_occupied_body_renderer","equipment_state":"conditional_occupied_body_ppia03"}},{"profile_id":"species.vortex_cat","display_name":"Vortex Cat","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Vortex Cat"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.whimsbug","display_name":"Whimsbug","authority_status":"governed","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Whimsbug"},"default_dimension_policy":"source_bounded_conditional"},{"profile_id":"species.wogol","display_name":"Wogol","authority_status":"unknown_morphology","source_fact_reference":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Wogol"},"default_dimension_policy":"unknown_preserved","explicit_unknown_fields":["normalized_topology","locomotion","appendage_count","head_structure","covering","coloration","distinguishing_features","sex_gender_manifestation","life_cycle_transitions","residue_rules"],"dimension_overrides":{"adornment":"conditional_until_topology_known","presentation_wardrobe":"conditional_until_topology_and_renderer_known","equipment_state":"conditional_until_topology_and_ppia03_known"}}],"global_invariants":["A registry entry may expose a discrete option only when a canonical source or owner-resolved decision supports that value.","Source-supported variability without enumerated legal values remains source_bounded_or_unspecified; no synthetic palette/anatomy is promoted to canon.","unknown eligibility is distinct from false/not-applicable.","Presentation wardrobe is renderer-presentation state and actual equipment is a governed PPIA-03 property link; neither implies ownership or mechanics from appearance.","Renderer unsupported/unknown/error does not invalidate Character identity or Species/Form biology truth.","Randomization and presets are downstream CAPP-02 concerns and may only draw from CAPP-01 eligible source-supported pools."]}
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "CAPP-01",
+  "title": "Canonical 25-Species Appearance Choice Registry",
+  "status": "foundation_candidate",
+  "source_hashes": {
+    "morphology": {
+      "path": "governance/application-planning/parallel-preimplementation/PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json",
+      "sha256": "0b6f49b90ea9867e612c56dd40cf63fdb341d5d7d1d31459b13cdef23d17ef7b"
+    },
+    "semantics": {
+      "path": "governance/application-planning/parallel-preimplementation/PPIA-06_APPEARANCE_SEMANTIC_TAXONOMY_v0.2.0.json",
+      "sha256": "a10958338d82c00bf24d62a83ab85a88ff08c440a66553b54349fc326e34978d"
+    },
+    "studio": {
+      "path": "governance/application-planning/parallel-preimplementation/PPIA-06_APPEARANCE_STUDIO_CONTROL_SURFACE_v0.1.0.json",
+      "sha256": "6ee16aa924e8aa461231067576fbdb7f3b6e1f34075c60263ef24793d61614a7"
+    },
+    "owner_decisions": {
+      "path": "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json",
+      "sha256": "28eb5ac095c7f1ee29ccae4894228f5e13859f76bfff223fdfbd90ba63d58b04"
+    },
+    "biology": {
+      "path": "governance/application-planning/parallel-preimplementation/PPIA-05_SPECIES_FORMS_BIOLOGY_TAXONOMY_v0.1.0.json",
+      "sha256": "0901835672434c584f7fe7af814abb49978a8ce84f7debceb413cd2409e16552"
+    }
+  },
+  "profile_count": 25,
+  "choice_surface_count": 10,
+  "choice_surfaces": [
+    {
+      "surface_id": "P06-UI-002",
+      "name": "body_and_proportions",
+      "semantic_layer_refs": [
+        "P06-L04",
+        "P06-L05"
+      ],
+      "mode": "source_bounded_authoring",
+      "classification": "source_bounded_authored_identity",
+      "canonical_contents": [
+        "body proportions",
+        "silhouette",
+        "authorized region sizes",
+        "posture baseline",
+        "required/optional appendage presentation"
+      ]
+    },
+    {
+      "surface_id": "P06-UI-003",
+      "name": "head_and_face",
+      "semantic_layer_refs": [
+        "P06-L07"
+      ],
+      "mode": "source_bounded_authoring",
+      "classification": "source_bounded_authored_identity",
+      "canonical_contents": [
+        "head shape",
+        "muzzle/beak/snout structures",
+        "eyes",
+        "ears/antennae/mandibles/horns where authorized",
+        "facial detail"
+      ]
+    },
+    {
+      "surface_id": "P06-UI-004",
+      "name": "surface_and_material",
+      "semantic_layer_refs": [
+        "P06-L06",
+        "P06-L08"
+      ],
+      "mode": "source_bounded_authoring",
+      "classification": "source_bounded_authored_identity",
+      "canonical_contents": [
+        "skin/chitin/bark/metal/bone/fur/feather/scale material",
+        "covering density",
+        "texture",
+        "crest/mane/hair/feather/scales styling"
+      ]
+    },
+    {
+      "surface_id": "P06-UI-005",
+      "name": "color_and_palette",
+      "semantic_layer_refs": [
+        "P06-L09"
+      ],
+      "mode": "channel_aware_authoring",
+      "classification": "source_bounded_authored_identity",
+      "canonical_contents": [
+        "biological bounded palette",
+        "player cosmetic palette",
+        "dye overlay",
+        "semantic palette zones",
+        "up to Species-defined color cardinality"
+      ]
+    },
+    {
+      "surface_id": "P06-UI-006",
+      "name": "markings_history_and_cosmetics",
+      "semantic_layer_refs": [
+        "P06-L10",
+        "P06-L14"
+      ],
+      "mode": "mixed_read_authoring",
+      "classification": "mixed_authored_and_source_owned_read_only",
+      "canonical_contents": [
+        "player markings",
+        "tattoos",
+        "paint",
+        "scars where editable",
+        "source-owned persistent markers read-only",
+        "hidden-marker permission filtering"
+      ]
+    },
+    {
+      "surface_id": "P06-UI-007",
+      "name": "age_presentation",
+      "semantic_layer_refs": [
+        "P06-L11"
+      ],
+      "mode": "source_bounded_authoring",
+      "classification": "source_bounded_authored_identity",
+      "canonical_contents": [
+        "age presentation range",
+        "Species-valid age cues",
+        "no unsupported aging assumptions"
+      ]
+    },
+    {
+      "surface_id": "P06-UI-008",
+      "name": "forms_seasons_variants_and_transitions",
+      "semantic_layer_refs": [
+        "P06-L02",
+        "P06-L03",
+        "P06-L14"
+      ],
+      "mode": "profile_manager",
+      "classification": "mixed_profile_authoring_and_upstream_read_only",
+      "canonical_contents": [
+        "lineage profile",
+        "current Form profile",
+        "derived Form preview",
+        "season profile set",
+        "one-time transition derived profile",
+        "active biological-state overlay"
+      ]
+    },
+    {
+      "surface_id": "P06-UI-009",
+      "name": "presentation_wardrobe",
+      "semantic_layer_refs": [
+        "P06-L12"
+      ],
+      "mode": "presentation_only_authoring",
+      "classification": "presentation_only",
+      "canonical_contents": [
+        "curated clothing",
+        "armor-looking cosmetics",
+        "weapons/gear presentation props",
+        "topology-compatible visual variants",
+        "no inventory implication"
+      ]
+    },
+    {
+      "surface_id": "P06-UI-010",
+      "name": "actual_equipment_preview",
+      "semantic_layer_refs": [
+        "P06-L13"
+      ],
+      "mode": "read_projection",
+      "classification": "read_only_actual_equipment_projection",
+      "canonical_contents": [
+        "authorized equipped/candidate items",
+        "compatible renderer variant",
+        "explicit unsupported visual fit",
+        "no ownership/equipment mutation"
+      ]
+    },
+    {
+      "surface_id": "P06-UI-011",
+      "name": "pose_and_expression",
+      "semantic_layer_refs": [
+        "P06-L15"
+      ],
+      "mode": "presentation_authoring",
+      "classification": "presentation_only",
+      "canonical_contents": [
+        "supported pose",
+        "expression",
+        "live appendage pose where nonmechanical",
+        "saved portrait presentation"
+      ]
+    }
+  ],
+  "profiles": [
+    {
+      "profile_id": "species.human",
+      "species": "Human",
+      "topology_profile": "humanoid_biped",
+      "appearance_state_model": "single_profile",
+      "required_feature_contracts": [],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-HUMAN-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "height about 4.5–6.5 ft",
+          "provenance": {
+            "written_source": "Humans vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-HUMAN-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "broad human skin/hair/body variation",
+          "provenance": {
+            "written_source": "Humans vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        }
+      ],
+      "explicit_choice_contracts": {},
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "unavailable",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "humanoid_biped",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.elf",
+      "species": "Elf",
+      "topology_profile": "humanoid_biped",
+      "appearance_state_model": "single_profile",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-ELF-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "slightly pointed ears",
+          "provenance": {
+            "written_source": "Elves vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-ELF-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "height about 5–6.5 ft",
+          "provenance": {
+            "written_source": "Elves vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-ELF-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "wide skin tones",
+          "provenance": {
+            "written_source": "Elves vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-ELF-BOUND-003",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "human plus silver/white/mineral hair",
+          "provenance": {
+            "written_source": "Elves vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-ELF-BOUND-004",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "possible subtle shimmer/glow",
+          "provenance": {
+            "written_source": "Elves vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        }
+      ],
+      "explicit_choice_contracts": {},
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "unavailable",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "humanoid_biped",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.dwarf",
+      "species": "Dwarf",
+      "topology_profile": "humanoid_biped",
+      "appearance_state_model": "single_profile",
+      "required_feature_contracts": [],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-DWARF-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "height about 4–5 ft",
+          "provenance": {
+            "written_source": "Dwarves vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-015"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-DWARF-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "metallic undertones by lineage/context",
+          "provenance": {
+            "written_source": "Dwarves vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-015"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-DWARF-BOUND-003",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "gem-like eye colors",
+          "provenance": {
+            "written_source": "Dwarves vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-015"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-DWARF-BOUND-004",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "beard grooming and hair styling",
+          "provenance": {
+            "written_source": "Dwarves vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-015"
+            ]
+          }
+        }
+      ],
+      "explicit_choice_contracts": {
+        "beard": {
+          "stable_id": "CAPP01-DWARF-BEARD",
+          "kind": "conditional_control",
+          "eligibility": "eligible_regardless_of_sex",
+          "source": [
+            "OVC-015"
+          ],
+          "mechanics_effect": false
+        }
+      },
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "unavailable",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "humanoid_biped",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.goblin",
+      "species": "Goblin",
+      "topology_profile": "humanoid_biped",
+      "appearance_state_model": "single_profile",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-GOBLIN-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "pointed ears",
+          "provenance": {
+            "written_source": "Goblins vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-GOBLIN-REQ-002",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "sharp teeth",
+          "provenance": {
+            "written_source": "Goblins vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-GOBLIN-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "height about 3–4 ft",
+          "provenance": {
+            "written_source": "Goblins vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-GOBLIN-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "green/gray/yellowish skin",
+          "provenance": {
+            "written_source": "Goblins vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-GOBLIN-BOUND-003",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "wide hair colors",
+          "provenance": {
+            "written_source": "Goblins vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        }
+      ],
+      "explicit_choice_contracts": {},
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "unavailable",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "humanoid_biped",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.orc",
+      "species": "Orc",
+      "topology_profile": "humanoid_biped",
+      "appearance_state_model": "single_profile",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-ORC-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "powerful humanoid build",
+          "provenance": {
+            "written_source": "Orcs vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-014"
+            ]
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-ORC-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "height about 6–7 ft",
+          "provenance": {
+            "written_source": "Orcs vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-014"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-ORC-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "ritual scars/tattoos",
+          "provenance": {
+            "written_source": "Orcs vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-014"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-ORC-BOUND-003",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "yellow/amber/red eyes",
+          "provenance": {
+            "written_source": "Orcs vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-014"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-ORC-BOUND-004",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "coarse natural-color hair",
+          "provenance": {
+            "written_source": "Orcs vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-014"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-ORC-BOUND-005",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "lower canine/tusk visibility optional",
+          "provenance": {
+            "written_source": "Orcs vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-014"
+            ]
+          }
+        }
+      ],
+      "explicit_choice_contracts": {
+        "visible_tusks": {
+          "stable_id": "CAPP01-ORC-VISIBLE-TUSKS",
+          "kind": "optional_presentation",
+          "eligibility": "optional",
+          "source": [
+            "OVC-014"
+          ],
+          "mechanics_effect": false
+        }
+      },
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "unavailable",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "humanoid_biped",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.giantkin",
+      "species": "Giantkin",
+      "topology_profile": "humanoid_large",
+      "appearance_state_model": "lineage_profile",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-GIANTKIN-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "large stature",
+          "provenance": {
+            "written_source": "Giantkin.PDF",
+            "owner_canon_ids": [
+              "OVC-021"
+            ]
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-GIANTKIN-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "height about 8–10 ft",
+          "provenance": {
+            "written_source": "Giantkin.PDF",
+            "owner_canon_ids": [
+              "OVC-021"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-GIANTKIN-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "Grendelkin: mossy green/gray, rough barklike textures",
+          "provenance": {
+            "written_source": "Giantkin.PDF",
+            "owner_canon_ids": [
+              "OVC-021"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-GIANTKIN-BOUND-003",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "Surtrborn: red/obsidian skin with molten glow and firelike hair",
+          "provenance": {
+            "written_source": "Giantkin.PDF",
+            "owner_canon_ids": [
+              "OVC-021"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-GIANTKIN-BOUND-004",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "Daityr: bronze/gold metallic sheen and fierce luminous eyes",
+          "provenance": {
+            "written_source": "Giantkin.PDF",
+            "owner_canon_ids": [
+              "OVC-021"
+            ]
+          }
+        }
+      ],
+      "explicit_choice_contracts": {
+        "lineage": {
+          "stable_id": "CAPP01-GIANTKIN-LINEAGE",
+          "kind": "enumerated_profile_choice",
+          "values": [
+            "Grendelkin",
+            "Surtrborn",
+            "Daityr"
+          ],
+          "forbidden_legacy_labels": [
+            "Skyborn",
+            "Stoneborn",
+            "Flameborn"
+          ],
+          "source": [
+            "OVC-021"
+          ]
+        }
+      },
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "humanoid_large",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.stygian",
+      "species": "Stygian",
+      "topology_profile": "humanoid_biped_optional_wings",
+      "appearance_state_model": "single_profile_with_authorized_appendage_state",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-STYGIAN-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "dark/ashy skin",
+          "provenance": {
+            "written_source": "Stygian vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-001",
+              "OVC-002"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-STYGIAN-REQ-002",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "tail",
+          "provenance": {
+            "written_source": "Stygian vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-001",
+              "OVC-002"
+            ]
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-STYGIAN-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "height about 4–5.5 ft",
+          "provenance": {
+            "written_source": "Stygian vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-001",
+              "OVC-002"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-STYGIAN-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "horns optional with broad shapes/sizes",
+          "provenance": {
+            "written_source": "Stygian vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-001",
+              "OVC-002"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-STYGIAN-BOUND-003",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "hair commonly black/deep red but presentation may follow resolved source bounds",
+          "provenance": {
+            "written_source": "Stygian vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-001",
+              "OVC-002"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-STYGIAN-BOUND-004",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "wings optional",
+          "provenance": {
+            "written_source": "Stygian vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-001",
+              "OVC-002"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-STYGIAN-BOUND-005",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "wing functionality source/runtime governed",
+          "provenance": {
+            "written_source": "Stygian vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-001",
+              "OVC-002"
+            ]
+          }
+        }
+      ],
+      "explicit_choice_contracts": {
+        "horns": {
+          "stable_id": "CAPP01-STYGIAN-HORNS",
+          "kind": "optional_source_bounded_control",
+          "eligibility": "optional",
+          "source": [
+            "OVC-001"
+          ]
+        },
+        "wings": {
+          "stable_id": "CAPP01-STYGIAN-WINGS",
+          "kind": "conditional_control",
+          "eligibility": "optional",
+          "mechanics_authority": "upstream functional/vestigial state; appearance never grants flight",
+          "source": [
+            "OVC-001",
+            "OVC-002"
+          ]
+        },
+        "pointed_ears": {
+          "stable_id": "CAPP01-STYGIAN-POINTED-EARS",
+          "kind": "forbidden_noncanon",
+          "eligibility": "unavailable",
+          "source": [
+            "OVC-001"
+          ]
+        }
+      },
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "humanoid_biped_optional_wings",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.sharr",
+      "species": "Sharr",
+      "topology_profile": "humanoid_biped",
+      "appearance_state_model": "single_profile",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-SHARR-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "larger cranial proportion",
+          "provenance": {
+            "written_source": "The Sharr vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-019"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-SHARR-REQ-002",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "robust facial structure",
+          "provenance": {
+            "written_source": "The Sharr vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-019"
+            ]
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-SHARR-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "height about 5–6 ft",
+          "provenance": {
+            "written_source": "The Sharr vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-019"
+            ]
+          }
+        }
+      ],
+      "explicit_choice_contracts": {
+        "facial_morphology": {
+          "stable_id": "CAPP01-SHARR-FACE",
+          "kind": "required_feature_group",
+          "requires": [
+            "heavy brow",
+            "broad nose",
+            "robust facial structure"
+          ],
+          "source": [
+            "OVC-019"
+          ]
+        }
+      },
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "unavailable",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "humanoid_biped",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.gray",
+      "species": "Gray",
+      "topology_profile": "humanoid_small",
+      "appearance_state_model": "single_profile",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-GRAY-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "four fingers",
+          "provenance": {
+            "written_source": "The Grays vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-016"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-GRAY-REQ-002",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "large black almond eyes",
+          "provenance": {
+            "written_source": "The Grays vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-016"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-GRAY-REQ-003",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "hairless",
+          "provenance": {
+            "written_source": "The Grays vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-016"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-GRAY-REQ-004",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "no discernible external ears",
+          "provenance": {
+            "written_source": "The Grays vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-016"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-GRAY-REQ-005",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "minimal nose",
+          "provenance": {
+            "written_source": "The Grays vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-016"
+            ]
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-GRAY-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "height 4–5 ft",
+          "provenance": {
+            "written_source": "The Grays vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-016"
+            ]
+          }
+        }
+      ],
+      "explicit_choice_contracts": {
+        "hair": {
+          "stable_id": "CAPP01-GRAY-HAIR",
+          "kind": "forbidden_anatomy",
+          "eligibility": "unavailable",
+          "source": [
+            "OVC-016"
+          ]
+        },
+        "external_ears": {
+          "stable_id": "CAPP01-GRAY-EARS",
+          "kind": "forbidden_anatomy",
+          "eligibility": "unavailable",
+          "source": [
+            "OVC-016"
+          ]
+        }
+      },
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "unavailable",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "humanoid_small",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.the_free",
+      "species": "The Free",
+      "topology_profile": "humanoid_android",
+      "appearance_state_model": "open_humanoid_android_profile",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-THE-FREE-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "humanoid overall topology",
+          "provenance": {
+            "written_source": "The Free vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-020"
+            ]
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-THE-FREE-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "very broad humanoid android silhouettes/materials/faces",
+          "provenance": {
+            "written_source": "The Free vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-020"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-THE-FREE-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "glowing/illuminated optics optional within design grammar",
+          "provenance": {
+            "written_source": "The Free vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-020"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-THE-FREE-BOUND-003",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "etched/presentation patterns player-authored",
+          "provenance": {
+            "written_source": "The Free vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-020"
+            ]
+          }
+        }
+      ],
+      "explicit_choice_contracts": {
+        "topology_scope": {
+          "stable_id": "CAPP01-THE-FREE-TOPOLOGY",
+          "kind": "topology_boundary",
+          "allowed": "broad humanoid android",
+          "forbidden": "arbitrary nonhumanoid topology",
+          "actual_replacement_hardware": "mechanics_owned",
+          "source": [
+            "OVC-020"
+          ]
+        }
+      },
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "humanoid_android",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.ratman",
+      "species": "Ratman",
+      "topology_profile": "humanoid_rodent",
+      "appearance_state_model": "single_profile",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-RATMAN-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "fur",
+          "provenance": {
+            "written_source": "Ratmen vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-RATMAN-REQ-002",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "rounded ears",
+          "provenance": {
+            "written_source": "Ratmen vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-RATMAN-REQ-003",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "whiskers",
+          "provenance": {
+            "written_source": "Ratmen vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-RATMAN-REQ-004",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "narrow snout",
+          "provenance": {
+            "written_source": "Ratmen vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-RATMAN-REQ-005",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "long prehensile tail",
+          "provenance": {
+            "written_source": "Ratmen vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-RATMAN-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "height about 3.5–5 ft",
+          "provenance": {
+            "written_source": "Ratmen vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-RATMAN-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "brown/gray/black/white fur",
+          "provenance": {
+            "written_source": "Ratmen vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-RATMAN-BOUND-003",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "patchy or smooth fur",
+          "provenance": {
+            "written_source": "Ratmen vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-RATMAN-BOUND-004",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "natural clan markings",
+          "provenance": {
+            "written_source": "Ratmen vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        }
+      ],
+      "explicit_choice_contracts": {},
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "unavailable",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "humanoid_rodent",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.furashin",
+      "species": "Furashin",
+      "topology_profile": "humanoid_mouse",
+      "appearance_state_model": "live_dynamic_phenotype",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-FURASHIN-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "mouse-like ears/snout",
+          "provenance": {
+            "written_source": "Furashin vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-005"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-FURASHIN-REQ-002",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "tail",
+          "provenance": {
+            "written_source": "Furashin vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-005"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-FURASHIN-REQ-003",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "fur",
+          "provenance": {
+            "written_source": "Furashin vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-005"
+            ]
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-FURASHIN-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "height about 4–5 ft",
+          "provenance": {
+            "written_source": "Furashin vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-005"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-FURASHIN-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "up to three simultaneous fur colors",
+          "provenance": {
+            "written_source": "Furashin vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-005"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-FURASHIN-BOUND-003",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "player-controlled fur pattern",
+          "provenance": {
+            "written_source": "Furashin vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-005"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-FURASHIN-BOUND-004",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "player-controlled fur texture",
+          "provenance": {
+            "written_source": "Furashin vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-005"
+            ]
+          }
+        }
+      ],
+      "explicit_choice_contracts": {
+        "fur_phenotype": {
+          "stable_id": "CAPP01-FURASHIN-FUR-PHENOTYPE",
+          "kind": "live_dynamic_phenotype",
+          "max_simultaneous_colors": 3,
+          "fields": [
+            "color",
+            "pattern",
+            "texture"
+          ],
+          "saved_state": "preferred_fur_phenotype",
+          "live_state": "upstream_when_mechanics_controls_current_phenotype",
+          "source": [
+            "OVC-005"
+          ]
+        }
+      },
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "humanoid_mouse",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.rog",
+      "species": "Rog",
+      "topology_profile": "humanoid_porciod",
+      "appearance_state_model": "single_profile",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-ROG-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "porcine snout/face/ears",
+          "provenance": {
+            "written_source": "The Rog v2.PDF",
+            "owner_canon_ids": [
+              "OVC-006"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-ROG-REQ-002",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "stocky build",
+          "provenance": {
+            "written_source": "The Rog v2.PDF",
+            "owner_canon_ids": [
+              "OVC-006"
+            ]
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-ROG-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "tusks and tusk adornment/markings within source",
+          "provenance": {
+            "written_source": "The Rog v2.PDF",
+            "owner_canon_ids": [
+              "OVC-006"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-ROG-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "multiversal cultural presentation",
+          "provenance": {
+            "written_source": "The Rog v2.PDF",
+            "owner_canon_ids": [
+              "OVC-006"
+            ]
+          }
+        }
+      ],
+      "explicit_choice_contracts": {},
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "unavailable",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "humanoid_porciod",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.rohai",
+      "species": "Rohai",
+      "topology_profile": "humanoid_insect_biped",
+      "appearance_state_model": "lineage_profile",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-ROHAI-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "segmented exoskeleton",
+          "provenance": {
+            "written_source": "Rohai vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-ROHAI-REQ-002",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "compound eyes",
+          "provenance": {
+            "written_source": "Rohai vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-ROHAI-REQ-003",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "two antennae",
+          "provenance": {
+            "written_source": "Rohai vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-ROHAI-REQ-004",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "hooked claws",
+          "provenance": {
+            "written_source": "Rohai vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-ROHAI-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "dark brown to jet black baseline with iridescence",
+          "provenance": {
+            "written_source": "Rohai vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-ROHAI-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "variant-specific chitin colors/textures/ridges",
+          "provenance": {
+            "written_source": "Rohai vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-ROHAI-BOUND-003",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "variant-specific sensory/limb emphasis",
+          "provenance": {
+            "written_source": "Rohai vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        }
+      ],
+      "explicit_choice_contracts": {},
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "humanoid_insect_biped",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.moravi",
+      "species": "Moravi",
+      "topology_profile": "humanoid_insect_six_limb",
+      "appearance_state_model": "lineage_profile",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-MORAVI-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "2 arms",
+          "provenance": {
+            "written_source": "Moravi vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-MORAVI-REQ-002",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "4 legs",
+          "provenance": {
+            "written_source": "Moravi vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-MORAVI-REQ-003",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "compound eyes",
+          "provenance": {
+            "written_source": "Moravi vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-MORAVI-REQ-004",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "antennae",
+          "provenance": {
+            "written_source": "Moravi vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-MORAVI-REQ-005",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "mandibles",
+          "provenance": {
+            "written_source": "Moravi vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-MORAVI-REQ-006",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "exoskeleton",
+          "provenance": {
+            "written_source": "Moravi vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-MORAVI-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "glossy black/earth brown/deep red/iridescent blue/gold",
+          "provenance": {
+            "written_source": "Moravi vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-MORAVI-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "caste/variant carapace forms and markings",
+          "provenance": {
+            "written_source": "Moravi vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        },
+        {
+          "choice_id": "CAPP01-MORAVI-BOUND-003",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "variant-specific limb proportions/material effects",
+          "provenance": {
+            "written_source": "Moravi vAlpha.PDF",
+            "owner_canon_ids": []
+          }
+        }
+      ],
+      "explicit_choice_contracts": {
+        "topology": {
+          "stable_id": "CAPP01-MORAVI-TOPOLOGY",
+          "kind": "required_topology",
+          "arms": 2,
+          "legs": 4,
+          "requires": [
+            "compound eyes",
+            "antennae",
+            "mandibles",
+            "exoskeleton"
+          ],
+          "renderer_anchor_policy": "six_limb_no_two_leg_collapse"
+        }
+      },
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "humanoid_insect_six_limb",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.vespin",
+      "species": "Vespin",
+      "topology_profile": "humanoid_wasp_six_limb",
+      "appearance_state_model": "single_profile",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-VESPIN-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "4 arms",
+          "provenance": {
+            "written_source": "Vespin vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-003"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-VESPIN-REQ-002",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "2 legs",
+          "provenance": {
+            "written_source": "Vespin vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-003"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-VESPIN-REQ-003",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "compound eyes",
+          "provenance": {
+            "written_source": "Vespin vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-003"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-VESPIN-REQ-004",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "2 antennae",
+          "provenance": {
+            "written_source": "Vespin vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-003"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-VESPIN-REQ-005",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "wing pair",
+          "provenance": {
+            "written_source": "Vespin vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-003"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-VESPIN-REQ-006",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "prominent wasp abdomen/stinger",
+          "provenance": {
+            "written_source": "Vespin vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-003"
+            ]
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-VESPIN-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "height about 5–6 ft",
+          "provenance": {
+            "written_source": "Vespin vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-003"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-VESPIN-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "exoskeletal colors/patterns",
+          "provenance": {
+            "written_source": "Vespin vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-003"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-VESPIN-BOUND-003",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "subtle source-backed dimorphism without hard role locks",
+          "provenance": {
+            "written_source": "Vespin vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-003"
+            ]
+          }
+        }
+      ],
+      "explicit_choice_contracts": {
+        "topology": {
+          "stable_id": "CAPP01-VESPIN-TOPOLOGY",
+          "kind": "required_topology",
+          "arms": 4,
+          "legs": 2,
+          "requires": [
+            "compound eyes",
+            "2 antennae",
+            "wing pair",
+            "prominent wasp abdomen/stinger"
+          ],
+          "source": [
+            "OVC-003"
+          ]
+        }
+      },
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "unavailable",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "humanoid_wasp_six_limb",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.rakuuta",
+      "species": "Rakuuta",
+      "topology_profile": "small_reptilian_biped",
+      "appearance_state_model": "single_profile",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-RAKUUTA-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "scaled body",
+          "provenance": {
+            "written_source": "Rakuuta v2.PDF",
+            "owner_canon_ids": [
+              "OVC-004"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-RAKUUTA-REQ-002",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "hardened beak",
+          "provenance": {
+            "written_source": "Rakuuta v2.PDF",
+            "owner_canon_ids": [
+              "OVC-004"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-RAKUUTA-REQ-003",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "long tail",
+          "provenance": {
+            "written_source": "Rakuuta v2.PDF",
+            "owner_canon_ids": [
+              "OVC-004"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-RAKUUTA-REQ-004",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "swept-back ears",
+          "provenance": {
+            "written_source": "Rakuuta v2.PDF",
+            "owner_canon_ids": [
+              "OVC-004"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-RAKUUTA-REQ-005",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "black raven-shaped facial feather field",
+          "provenance": {
+            "written_source": "Rakuuta v2.PDF",
+            "owner_canon_ids": [
+              "OVC-004"
+            ]
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-RAKUUTA-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "height about 3–4.5 ft",
+          "provenance": {
+            "written_source": "Rakuuta v2.PDF",
+            "owner_canon_ids": [
+              "OVC-004"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-RAKUUTA-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "gray/green scale families and source-valid patterns",
+          "provenance": {
+            "written_source": "Rakuuta v2.PDF",
+            "owner_canon_ids": [
+              "OVC-004"
+            ]
+          }
+        }
+      ],
+      "explicit_choice_contracts": {
+        "facial_feathers": {
+          "stable_id": "CAPP01-RAKUUTA-FACIAL-FEATHERS",
+          "kind": "required_feature",
+          "value": "black raven-shaped facial feather field",
+          "source": [
+            "OVC-004"
+          ]
+        },
+        "horns": {
+          "stable_id": "CAPP01-RAKUUTA-HORNS",
+          "kind": "forbidden_noncanon",
+          "eligibility": "unavailable",
+          "source": [
+            "OVC-004"
+          ]
+        },
+        "swept_back_structures": {
+          "stable_id": "CAPP01-RAKUUTA-EARS",
+          "kind": "required_identity",
+          "value": "ears_not_horns",
+          "source": [
+            "OVC-004"
+          ]
+        }
+      },
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "unavailable",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "small_reptilian_biped",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.traiga",
+      "species": "Traiga",
+      "topology_profile": "raptor_biped",
+      "appearance_state_model": "lineage_adaptation_profile",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-TRAIGA-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "2 arms",
+          "provenance": {
+            "written_source": "Traiga vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-009"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-TRAIGA-REQ-002",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "2 legs",
+          "provenance": {
+            "written_source": "Traiga vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-009"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-TRAIGA-REQ-003",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "tail",
+          "provenance": {
+            "written_source": "Traiga vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-009"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-TRAIGA-REQ-004",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "clawed digits",
+          "provenance": {
+            "written_source": "Traiga vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-009"
+            ]
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-TRAIGA-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "height about 4–6 ft",
+          "provenance": {
+            "written_source": "Traiga vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-009"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-TRAIGA-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "feathered↔scaled↔mixed spectrum",
+          "provenance": {
+            "written_source": "Traiga vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-009"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-TRAIGA-BOUND-003",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "crests/forearm feathers/gliding structures when source-authorized",
+          "provenance": {
+            "written_source": "Traiga vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-009"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-TRAIGA-BOUND-004",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "lineage adaptations such as webbing/gills/reflective patches",
+          "provenance": {
+            "written_source": "Traiga vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-009"
+            ]
+          }
+        }
+      ],
+      "explicit_choice_contracts": {
+        "wing_pair": {
+          "stable_id": "CAPP01-TRAIGA-EXTRA-WINGS",
+          "kind": "forbidden_base_topology",
+          "eligibility": "unavailable",
+          "source": [
+            "OVC-009"
+          ]
+        },
+        "surface_spectrum": {
+          "stable_id": "CAPP01-TRAIGA-SURFACE-SPECTRUM",
+          "kind": "source_bounded_choice",
+          "values": [
+            "feathered",
+            "scaled",
+            "mixed"
+          ],
+          "condition": "variant permits",
+          "source": [
+            "OVC-009"
+          ]
+        }
+      },
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "raptor_biped",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.kola_ha",
+      "species": "Kola-Ha",
+      "topology_profile": "aquatic_humanoid",
+      "appearance_state_model": "base_plus_bioengineered_forms",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-KOLA-HA-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "gill slits",
+          "provenance": {
+            "written_source": "Kola-Ha vAlpha2.PDF + Kola-Ha Bioengineering.PDF",
+            "owner_canon_ids": [
+              "OVC-007"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-KOLA-HA-REQ-002",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "webbed fingers/toes",
+          "provenance": {
+            "written_source": "Kola-Ha vAlpha2.PDF + Kola-Ha Bioengineering.PDF",
+            "owner_canon_ids": [
+              "OVC-007"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-KOLA-HA-REQ-003",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "aquatic head/eyes/teeth",
+          "provenance": {
+            "written_source": "Kola-Ha vAlpha2.PDF + Kola-Ha Bioengineering.PDF",
+            "owner_canon_ids": [
+              "OVC-007"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-KOLA-HA-REQ-004",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "fin structures",
+          "provenance": {
+            "written_source": "Kola-Ha vAlpha2.PDF + Kola-Ha Bioengineering.PDF",
+            "owner_canon_ids": [
+              "OVC-007"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-KOLA-HA-REQ-005",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "tail",
+          "provenance": {
+            "written_source": "Kola-Ha vAlpha2.PDF + Kola-Ha Bioengineering.PDF",
+            "owner_canon_ids": [
+              "OVC-007"
+            ]
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-KOLA-HA-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "height about 5–7 ft",
+          "provenance": {
+            "written_source": "Kola-Ha vAlpha2.PDF + Kola-Ha Bioengineering.PDF",
+            "owner_canon_ids": [
+              "OVC-007"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-KOLA-HA-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "tail size/shape",
+          "provenance": {
+            "written_source": "Kola-Ha vAlpha2.PDF + Kola-Ha Bioengineering.PDF",
+            "owner_canon_ids": [
+              "OVC-007"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-KOLA-HA-BOUND-003",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "fin size/shape",
+          "provenance": {
+            "written_source": "Kola-Ha vAlpha2.PDF + Kola-Ha Bioengineering.PDF",
+            "owner_canon_ids": [
+              "OVC-007"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-KOLA-HA-BOUND-004",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "baseline coloration within source/owner bounds",
+          "provenance": {
+            "written_source": "Kola-Ha vAlpha2.PDF + Kola-Ha Bioengineering.PDF",
+            "owner_canon_ids": [
+              "OVC-007"
+            ]
+          }
+        }
+      ],
+      "explicit_choice_contracts": {
+        "bioengineering_forms": {
+          "stable_id": "CAPP01-KOLA-HA-BIOENGINEERING-FORMS",
+          "kind": "upstream_form_profile",
+          "baseline_mutation": false,
+          "source": [
+            "OVC-007"
+          ]
+        }
+      },
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "aquatic_humanoid",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.toba_madra",
+      "species": "Toba-Madra",
+      "topology_profile": "anthropomorphic_bear_biped",
+      "appearance_state_model": "single_profile",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-TOBA-MADRA-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "bear muzzle/nose/ears",
+          "provenance": {
+            "written_source": "Toba-madra vAlpha.mht (newer owner source; supersedes gorilloid PDF visual origin)",
+            "owner_canon_ids": [
+              "OVC-017",
+              "OVC-018"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-TOBA-MADRA-REQ-002",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "fur",
+          "provenance": {
+            "written_source": "Toba-madra vAlpha.mht (newer owner source; supersedes gorilloid PDF visual origin)",
+            "owner_canon_ids": [
+              "OVC-017",
+              "OVC-018"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-TOBA-MADRA-REQ-003",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "bear tail",
+          "provenance": {
+            "written_source": "Toba-madra vAlpha.mht (newer owner source; supersedes gorilloid PDF visual origin)",
+            "owner_canon_ids": [
+              "OVC-017",
+              "OVC-018"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-TOBA-MADRA-REQ-004",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "upright bipedal limb use",
+          "provenance": {
+            "written_source": "Toba-madra vAlpha.mht (newer owner source; supersedes gorilloid PDF visual origin)",
+            "owner_canon_ids": [
+              "OVC-017",
+              "OVC-018"
+            ]
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-TOBA-MADRA-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "height about 6–8 ft",
+          "provenance": {
+            "written_source": "Toba-madra vAlpha.mht (newer owner source; supersedes gorilloid PDF visual origin)",
+            "owner_canon_ids": [
+              "OVC-017",
+              "OVC-018"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-TOBA-MADRA-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "natural bear-range biological fur colors",
+          "provenance": {
+            "written_source": "Toba-madra vAlpha.mht (newer owner source; supersedes gorilloid PDF visual origin)",
+            "owner_canon_ids": [
+              "OVC-017",
+              "OVC-018"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-TOBA-MADRA-BOUND-003",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "any-color/pattern cosmetic dye overlay",
+          "provenance": {
+            "written_source": "Toba-madra vAlpha.mht (newer owner source; supersedes gorilloid PDF visual origin)",
+            "owner_canon_ids": [
+              "OVC-017",
+              "OVC-018"
+            ]
+          }
+        }
+      ],
+      "explicit_choice_contracts": {
+        "fur_channel": {
+          "stable_id": "CAPP01-TOBA-MADRA-FUR",
+          "kind": "split_channel",
+          "biological": "natural bear-range colors",
+          "cosmetic": "any-color/pattern dye overlay",
+          "source": [
+            "OVC-017"
+          ]
+        },
+        "cybernetics": {
+          "stable_id": "CAPP01-TOBA-MADRA-CYBERNETICS",
+          "kind": "equipment_projection",
+          "editable_as_identity": false,
+          "cosmetic_plating_separate": true,
+          "source": [
+            "OVC-018"
+          ]
+        }
+      },
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "unavailable",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "anthropomorphic_bear_biped",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.arborae",
+      "species": "Arborae",
+      "topology_profile": "plant_humanoid",
+      "appearance_state_model": "four_season_profiles_current_state_selects_one",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-ARBORAE-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "plant/wood body semantics",
+          "provenance": {
+            "written_source": "Arborae vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-010"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-ARBORAE-REQ-002",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "seasonal biological state",
+          "provenance": {
+            "written_source": "Arborae vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-010"
+            ]
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-ARBORAE-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "height under 5 ft to just over 6 ft",
+          "provenance": {
+            "written_source": "Arborae vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-010"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-ARBORAE-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "woodgrain intensity barely visible→tree bark",
+          "provenance": {
+            "written_source": "Arborae vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-010"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-ARBORAE-BOUND-003",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "moss/vines/leaves/flowers hair",
+          "provenance": {
+            "written_source": "Arborae vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-010"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-ARBORAE-BOUND-004",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "four separately customizable seasonal profiles",
+          "provenance": {
+            "written_source": "Arborae vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-010"
+            ]
+          }
+        }
+      ],
+      "explicit_choice_contracts": {
+        "season_profiles": {
+          "stable_id": "CAPP01-ARBORAE-SEASONS",
+          "kind": "linked_profile_set",
+          "values": [
+            "spring",
+            "summer",
+            "autumn",
+            "winter"
+          ],
+          "current_state": "upstream_read_only",
+          "independently_customizable": true,
+          "source": [
+            "OVC-010"
+          ]
+        }
+      },
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "plant_humanoid",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.mythragara",
+      "species": "Mythragara",
+      "topology_profile": "hyena_digitigrade_biped",
+      "appearance_state_model": "base_and_animal_profiles_plus_derived_hybrid",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-MYTHRAGARA-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "hyena-like head/muzzle",
+          "provenance": {
+            "written_source": "Mythragara vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-008"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-MYTHRAGARA-REQ-002",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "fur",
+          "provenance": {
+            "written_source": "Mythragara vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-008"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-MYTHRAGARA-REQ-003",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "mobile ears",
+          "provenance": {
+            "written_source": "Mythragara vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-008"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-MYTHRAGARA-REQ-004",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "digitigrade legs",
+          "provenance": {
+            "written_source": "Mythragara vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-008"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-MYTHRAGARA-REQ-005",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "tail",
+          "provenance": {
+            "written_source": "Mythragara vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-008"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-MYTHRAGARA-REQ-006",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "identity markings retained across forms",
+          "provenance": {
+            "written_source": "Mythragara vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-008"
+            ]
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-MYTHRAGARA-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "body/fur/marking styling within source",
+          "provenance": {
+            "written_source": "Mythragara vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-008"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-MYTHRAGARA-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "one or more source-authorized animal forms",
+          "provenance": {
+            "written_source": "Mythragara vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-008"
+            ]
+          }
+        }
+      ],
+      "explicit_choice_contracts": {
+        "hybrid": {
+          "stable_id": "CAPP01-MYTHRAGARA-HYBRID",
+          "kind": "derived_profile",
+          "editable_independently": false,
+          "derived_from": [
+            "base_humanoid",
+            "authorized_animal_form"
+          ],
+          "source": [
+            "OVC-008"
+          ]
+        }
+      },
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "hyena_digitigrade_biped",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.suula",
+      "species": "Suula",
+      "topology_profile": "chitin_biped_nested_hands",
+      "appearance_state_model": "base_plus_persistent_adaptation_history_plus_active_adaptations",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-SUULA-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "chitin armor",
+          "provenance": {
+            "written_source": "Suula.PDF",
+            "owner_canon_ids": [
+              "OVC-011"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-SUULA-REQ-002",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "permanent claw structures",
+          "provenance": {
+            "written_source": "Suula.PDF",
+            "owner_canon_ids": [
+              "OVC-011"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-SUULA-REQ-003",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "hands nested within claws",
+          "provenance": {
+            "written_source": "Suula.PDF",
+            "owner_canon_ids": [
+              "OVC-011"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-SUULA-REQ-004",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "segmented tail",
+          "provenance": {
+            "written_source": "Suula.PDF",
+            "owner_canon_ids": [
+              "OVC-011"
+            ]
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-SUULA-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "carapace density/texture and source-valid ridges/markings",
+          "provenance": {
+            "written_source": "Suula.PDF",
+            "owner_canon_ids": [
+              "OVC-011"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-SUULA-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "adaptation-derived coloration/structure",
+          "provenance": {
+            "written_source": "Suula.PDF",
+            "owner_canon_ids": [
+              "OVC-011"
+            ]
+          }
+        }
+      ],
+      "explicit_choice_contracts": {
+        "persistent_adaptation_markers": {
+          "stable_id": "CAPP01-SUULA-PERSISTENT-ADAPTATIONS",
+          "kind": "source_owned_history",
+          "editable": false,
+          "erasable": false,
+          "source": [
+            "OVC-011"
+          ]
+        },
+        "active_adaptations": {
+          "stable_id": "CAPP01-SUULA-ACTIVE-ADAPTATIONS",
+          "kind": "live_upstream_projection",
+          "editable": false,
+          "source": [
+            "OVC-011"
+          ]
+        },
+        "hand_claw_pose": {
+          "stable_id": "CAPP01-SUULA-HAND-CLAW-POSE",
+          "kind": "live_pose_state",
+          "saved_identity": false,
+          "source": [
+            "OVC-011"
+          ]
+        }
+      },
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "chitin_biped_nested_hands",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.nekron",
+      "species": "Nekron",
+      "topology_profile": "fell_humanoid",
+      "appearance_state_model": "base_then_one_time_derived_ascension_profile",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-NEKRON-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "base Nekron identity retained as derivation source",
+          "provenance": {
+            "written_source": "Nekrons vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-012"
+            ]
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-NEKRON-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "base 5–6 ft pale/gaunt appearance",
+          "provenance": {
+            "written_source": "Nekrons vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-012"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-NEKRON-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "Revenant: skeletal/rune/voidlight bone",
+          "provenance": {
+            "written_source": "Nekrons vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-012"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-NEKRON-BOUND-003",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "Sanguivore: pale translucent organic body, shadow veins, elongated canines, blood-hued eyes",
+          "provenance": {
+            "written_source": "Nekrons vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-012"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-NEKRON-BOUND-004",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "Fragmentarii: cracked/unraveling/translucent body with floating parchment-like flesh/memory strips",
+          "provenance": {
+            "written_source": "Nekrons vAlpha2.PDF",
+            "owner_canon_ids": [
+              "OVC-012"
+            ]
+          }
+        }
+      ],
+      "explicit_choice_contracts": {
+        "ascension": {
+          "stable_id": "CAPP01-NEKRON-ASCENSION",
+          "kind": "one_time_transition_profile",
+          "values": [
+            "Revenant",
+            "Sanguivore",
+            "Fragmentarii"
+          ],
+          "transition_count_max": 1,
+          "selection_authority": "upstream availability/outcome",
+          "second_customization_pass": true,
+          "derived_from": "base",
+          "source": [
+            "OVC-012"
+          ]
+        }
+      },
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "fell_humanoid",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.manytoms",
+      "species": "ManyToms",
+      "topology_profile": "composite_collective_humanoid",
+      "appearance_state_model": "composite_entity_single_constituent_design",
+      "required_feature_contracts": [
+        {
+          "choice_id": "CAPP01-MANYTOMS-REQ-001",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "identical constituent appearance",
+          "provenance": {
+            "written_source": "ManyToms vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-013"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-MANYTOMS-REQ-002",
+          "kind": "required_source_owned_feature",
+          "classification": "biological_read_only_requirement",
+          "value": "collective reads as one entity",
+          "provenance": {
+            "written_source": "ManyToms vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-013"
+            ]
+          }
+        }
+      ],
+      "bounded_choice_contracts": [
+        {
+          "choice_id": "CAPP01-MANYTOMS-BOUND-001",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "collective composition/formation as presentation/pose",
+          "provenance": {
+            "written_source": "ManyToms vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-013"
+            ]
+          }
+        },
+        {
+          "choice_id": "CAPP01-MANYTOMS-BOUND-002",
+          "kind": "source_bounded_authoring_constraint",
+          "classification": "source_bounded_identity_choice_space",
+          "statement": "psychic strand intensity/effects where authorized",
+          "provenance": {
+            "written_source": "ManyToms vAlpha.PDF",
+            "owner_canon_ids": [
+              "OVC-013"
+            ]
+          }
+        }
+      ],
+      "explicit_choice_contracts": {
+        "constituent_identity": {
+          "stable_id": "CAPP01-MANYTOMS-CONSTITUENT",
+          "kind": "composite_entity_identity",
+          "design_once_replicate": true,
+          "exact_visible_count_required": false,
+          "lore_count_context": 17,
+          "source": [
+            "OVC-013"
+          ]
+        }
+      },
+      "surface_eligibility": [
+        {
+          "surface_id": "P06-UI-002",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-003",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-004",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-005",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-006",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-007",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-008",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-009",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-010",
+          "state": "read_only",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        },
+        {
+          "surface_id": "P06-UI-011",
+          "state": "conditional",
+          "condition": "resolve source/profile/topology/current-form/permission constraints; renderer support does not determine identity validity"
+        }
+      ],
+      "renderer_requirement": {
+        "topology_profile": "composite_collective_humanoid",
+        "support_state_owner": "renderer adapter",
+        "no_unrestricted_warp": true,
+        "unsupported_does_not_invalidate_identity": true
+      },
+      "visibility_permission_behavior": "filter hidden biology/current Form/history/equipment before derivation, counts, diagnostics, export or AI context",
+      "unresolved_visual_conflicts": []
+    }
+  ],
+  "explicit_unknown_unavailable_semantics": {
+    "unknown": "upstream source/authority insufficient; never synthesize human/humanoid default",
+    "unavailable": "resolved profile/topology/state makes the surface or value ineligible",
+    "conditional": "requires current source/profile/form/topology/permission resolution",
+    "read_only": "visible projection may be inspected but appearance editor does not own mutation"
+  },
+  "global_invariants": [
+    "Unknown/source-unspecified anatomy remains unknown; no human/humanoid default is synthesized.",
+    "Current Form and persistent/active biological states are authoritative upstream projections, not editable cosmetics.",
+    "A valid Character remains valid when a renderer or view is partial/unsupported/unknown.",
+    "Hidden biological facts are filtered before appearance derivation, rendering, export and AI context.",
+    "Presentation wardrobe is nonmechanical and does not imply inventory/equipment ownership.",
+    "Actual equipment preview is a permission-safe projection only and never changes Asset state.",
+    "Randomization changes only eligible authored/cosmetic choices and never source-owned morphology/history/equipment.",
+    "Every visual state has semantic nonvisual representation; color is never the only state carrier."
+  ]
+}

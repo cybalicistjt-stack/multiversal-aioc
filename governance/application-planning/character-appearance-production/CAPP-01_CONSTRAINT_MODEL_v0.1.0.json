@@ -1,1 +1,1022 @@
-{"schema_version":"0.1.0","work_item_id":"CAPP-01","title":"Appearance Eligibility and Constraint Model","status":"foundation_candidate","authority":{"semantic_taxonomy":"PPIA-06_APPEARANCE_SEMANTIC_TAXONOMY_v0.2.0.json","choice_registry":"CAPP-01_APPEARANCE_CHOICE_REGISTRY_v0.1.0.json"},"constraint_classes":[{"id":"topology","meaning":"Structural eligibility derives from current governed morphology/body topology."},{"id":"species","meaning":"Eligibility restricted by Species profile source facts."},{"id":"form","meaning":"Eligibility restricted by current governed Form/current-body state."},{"id":"phase","meaning":"Life-cycle, metamorphosis, growth, residue or other phase state changes eligibility."},{"id":"dependency","meaning":"A selection requires another governed option or state."},{"id":"exclusion","meaning":"Selections are mutually incompatible under the same resolved state."},{"id":"cardinality","meaning":"Selection count/slot bounds are explicit."},{"id":"permission","meaning":"Editor/viewer authority filters selection visibility and mutation authority."}],"eligibility_domain":["true","false","conditional","unknown"],"evaluation_order":["permission","species","form","phase","topology","dependency","exclusion","cardinality","renderer_support"],"generic_rules":[{"rule_id":"CAPP01-R001","class":"permission","if":"editor lacks authority to view/edit the field","then":"do not reveal option existence, counts, diagnostics or hidden values; mutation prohibited"},{"rule_id":"CAPP01-R002","class":"species","if":"profile/category eligibility is unknown","then":"preserve allowed=unknown; never coerce unknown to false or true"},{"rule_id":"CAPP01-R003","class":"topology","if":"an option requires a body structure absent from resolved topology","then":"allowed=false with source-backed reason; do not silently substitute"},{"rule_id":"CAPP01-R004","class":"form","if":"current Form/current-body changes topology","then":"recompute governed eligibility deterministically against current Form without rewriting reusable Species/Form definitions"},{"rule_id":"CAPP01-R005","class":"phase","if":"life-cycle phase changes a structure or presentation","then":"phase-specific eligibility controls the structure while preserving stable identity/history"},{"rule_id":"CAPP01-R006","class":"dependency","if":"upstream selection/state changes","then":"recompute all dependent dimensions deterministically; invalidated committed choices enter explicit review/diagnostic state rather than auto-replacement"},{"rule_id":"CAPP01-R007","class":"exclusion","if":"two source-backed options are mutually exclusive","then":"reject simultaneous committed state with explicit conflict evidence"},{"rule_id":"CAPP01-R008","class":"cardinality","if":"source/controller defines slots or counts","then":"enforce those counts; absence of a sourced count does not authorize an invented default"},{"rule_id":"CAPP01-R009","class":"renderer_support","if":"renderer support is partial/unsupported/unknown/error","then":"preserve valid identity/biology state and emit deterministic fallback diagnostic; renderer state never erases source truth"},{"rule_id":"CAPP01-R010","class":"equipment","if":"visual item resembles equipment or wardrobe","then":"presentation may reference it only through PPIA-03 actual Asset/equipment authority; appearance never implies ownership/mechanics"},{"rule_id":"CAPP01-R011","class":"source_truth","if":"source names a dimension but does not enumerate legal values","then":"keep selection mode source_bounded_or_unspecified and do not invent canonical options"},{"rule_id":"CAPP01-R012","class":"mutation","if":"mutation outcome is ambiguous","then":"query authoritative operation/current state before retry; never blind-retry identity mutation"},{"rule_id":"CAPP01-R013","class":"reset","if":"user resets renderer/presentation controls","then":"do not silently discard committed biological or identity appearance truth"},{"rule_id":"CAPP01-R014","class":"randomization","if":"randomization is requested","then":"downstream CAPP-02 may draw only from currently eligible CAPP-01 source-supported pools and must respect locks"}],"profile_rules":[{"rule_id":"CAPP01-P-MUNYUBBLES","profile_id":"species.munyubbles","classes":["species","topology"],"effect":"All morphology-dependent categories remain allowed=unknown until canonical morphology is recovered; presentation/equipment categories are conditional on independently resolved current-body/topology authority."},{"rule_id":"CAPP01-P-WOGOL","profile_id":"species.wogol","classes":["species","topology"],"effect":"All morphology-dependent categories remain allowed=unknown until canonical morphology is recovered; no human-default body plan may be inferred."},{"rule_id":"CAPP01-P-THETANS","profile_id":"species.thetans","classes":["species","form","topology"],"effect":"Thetan Species does not own a standalone physical body. Resolve physical appearance against occupied body/current-body authority; species-level physical controls are not applicable."},{"rule_id":"CAPP01-P-RACONITE","profile_id":"species.raconite","classes":["topology"],"effect":"Discrete limb/head/hair controls are ineligible for the native single-cell body unless a separate governed occupied/current Form supplies such topology."},{"rule_id":"CAPP01-P-CRYSTAL-DRAGON","profile_id":"species.crystal_dragon","classes":["phase","topology"],"effect":"Hatchling phase is wingless; wing-related dimensions become eligible only in a source-supported later phase. No visible-sex-organ control is created from this profile."},{"rule_id":"CAPP01-P-LOGICAL-STAGE","profile_id":"species.logical_stage","classes":["phase","topology"],"effect":"Programmed puberty/metamorphosis from Lesser Stage may change topology and size; evaluate adult Logical Stage controls against the current phase/form."},{"rule_id":"CAPP01-P-MALAPHANT","profile_id":"species.malaphant","classes":["form","dependency"],"effect":"Form/presentation depends on ambient diet, allergens and location; environment may affect current form state but must not rewrite Species source facts."},{"rule_id":"CAPP01-P-REGALIAN","profile_id":"species.regalian","classes":["phase"],"effect":"Gender manifestation follows source-backed sequential life changes; phase-aware eligibility must not flatten them into a fixed human-default model."},{"rule_id":"CAPP01-P-NEKRON","profile_id":"species.nekron","classes":["species","phase"],"effect":"Gender is fixed at birth with a source-supported nongendered transition path; do not invent additional transition states."},{"rule_id":"CAPP01-P-MANYTOMS","profile_id":"species.manytoms","classes":["phase","species"],"effect":"Post-pubescent grooming presentation can vary while sex organs remain internal; grooming presentation must not be treated as external reproductive anatomy."},{"rule_id":"CAPP01-P-IAOTH","profile_id":"species.iaoth","classes":["topology"],"effect":"Native armless and mouthless phenotype disables arm- and mouth-dependent controls unless current governed Form overrides topology."},{"rule_id":"CAPP01-P-GANYMEDE","profile_id":"species.ganymede","classes":["topology"],"effect":"Native topology includes four arms, two legs and wing membranes involving middle arms/tail; do not normalize to two-arm humanoid controls."},{"rule_id":"CAPP01-P-GLIESIAN","profile_id":"species.gliesian","classes":["topology"],"effect":"Native topology distinguishes two general arms from two dedicated flight wings; dedicated wings are not ordinary arm slots."},{"rule_id":"CAPP01-P-WHIMSBUG","profile_id":"species.whimsbug","classes":["topology","cardinality"],"effect":"Native topology has four wings, two larger and two smaller; wing presentation must retain four-wing cardinality where source topology controls."}],"unknown_and_failure_semantics":{"unknown":"Source/authority is insufficient; keep explicit and diagnosable.","false":"Resolved authority says option/category is not eligible.","conditional":"Eligibility depends on another governed state.","true":"Resolved authority permits the option/category.","no_silent_substitution":true,"identity_validity_independent_of_renderer_support":true,"renderer_fallback_severity":["supported","partial","unsupported","unknown","error"]},"non_authorities":["renderer asset availability cannot create or delete Species/Form biology","presentation wardrobe cannot create actual Asset ownership","randomization cannot invent source options","AI recommendations cannot promote source truth","CAPP-01 does not activate application runtime or STAGE-A-A2"]}
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "CAPP-01",
+  "title": "Canonical Appearance Dependency and Constraint Model",
+  "status": "foundation_candidate",
+  "source_hashes": {
+    "morphology": {
+      "path": "governance/application-planning/parallel-preimplementation/PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json",
+      "sha256": "0b6f49b90ea9867e612c56dd40cf63fdb341d5d7d1d31459b13cdef23d17ef7b"
+    },
+    "semantics": {
+      "path": "governance/application-planning/parallel-preimplementation/PPIA-06_APPEARANCE_SEMANTIC_TAXONOMY_v0.2.0.json",
+      "sha256": "a10958338d82c00bf24d62a83ab85a88ff08c440a66553b54349fc326e34978d"
+    },
+    "studio": {
+      "path": "governance/application-planning/parallel-preimplementation/PPIA-06_APPEARANCE_STUDIO_CONTROL_SURFACE_v0.1.0.json",
+      "sha256": "6ee16aa924e8aa461231067576fbdb7f3b6e1f34075c60263ef24793d61614a7"
+    },
+    "owner_decisions": {
+      "path": "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json",
+      "sha256": "28eb5ac095c7f1ee29ccae4894228f5e13859f76bfff223fdfbd90ba63d58b04"
+    },
+    "biology": {
+      "path": "governance/application-planning/parallel-preimplementation/PPIA-05_SPECIES_FORMS_BIOLOGY_TAXONOMY_v0.1.0.json",
+      "sha256": "0901835672434c584f7fe7af814abb49978a8ce84f7debceb413cd2409e16552"
+    }
+  },
+  "input_contract": {
+    "profile_id": "stable CAPP-01 profile ID",
+    "current_form": "PPIA-05 upstream projection",
+    "persistent_and_active_biology": "PPIA-05 upstream projection",
+    "permissions": "authorized viewer/editor projection",
+    "authored_choices": "CAPP-01 choice IDs and values",
+    "renderer_capability": "renderer adapter support state",
+    "actual_equipment": "PPIA-03 permission-safe projection"
+  },
+  "evaluation_order": [
+    "permission",
+    "upstream_biology_and_current_form",
+    "profile_topology",
+    "required_features",
+    "appearance_state_model",
+    "profile_behavior",
+    "authored_choice_dependencies",
+    "renderer_compatibility",
+    "equipment_projection"
+  ],
+  "outcomes": [
+    "eligible",
+    "read_only",
+    "unavailable",
+    "unknown",
+    "invalid_requires_review"
+  ],
+  "morphology_graph_contract": {
+    "node_kinds": [
+      "body_root",
+      "torso",
+      "head",
+      "limb",
+      "nested_appendage",
+      "structural_appendage",
+      "tail",
+      "wing",
+      "surface_region",
+      "constituent_body"
+    ],
+    "relations": [
+      "attached_to",
+      "contains",
+      "paired_with",
+      "repeated_as",
+      "derived_from",
+      "occludes",
+      "active_state_of"
+    ],
+    "cardinality_states": [
+      "required",
+      "optional",
+      "source_derived",
+      "form_derived",
+      "history_derived"
+    ],
+    "rules": [
+      "No implicit humanoid limb count.",
+      "Nested appendages are first-class (for example Suula hands within claws).",
+      "Composite entities can contain repeated constituent bodies (ManyToms).",
+      "A renderer topology profile is only a compatibility class and never a Species/lineage definition."
+    ]
+  },
+  "generic_rules": [
+    {
+      "rule_id": "CAPP01-GEN-001",
+      "type": "permission_first",
+      "effect": "Filter hidden biology/current Form/history/equipment before choices, counts, diagnostics, renderer derivation, export or AI context."
+    },
+    {
+      "rule_id": "CAPP01-GEN-002",
+      "type": "unknown_preservation",
+      "effect": "Unknown/source-unspecified anatomy remains unknown; no human/humanoid default is synthesized."
+    },
+    {
+      "rule_id": "CAPP01-GEN-003",
+      "type": "upstream_read_only",
+      "effect": "Current Form and persistent/active biological states are upstream projections and cannot be cosmetically rewritten."
+    },
+    {
+      "rule_id": "CAPP01-GEN-004",
+      "type": "topology_required",
+      "effect": "Required morphology graph nodes/cardinality must exist before topology-dependent authored choices or fit are eligible."
+    },
+    {
+      "rule_id": "CAPP01-GEN-005",
+      "type": "renderer_independence",
+      "effect": "Renderer supported/partial/unsupported/unknown never changes biological or identity validity."
+    },
+    {
+      "rule_id": "CAPP01-GEN-006",
+      "type": "wardrobe_nonmechanical",
+      "effect": "Presentation wardrobe is nonmechanical and never implies inventory/equipment ownership."
+    },
+    {
+      "rule_id": "CAPP01-GEN-007",
+      "type": "equipment_projection_read_only",
+      "effect": "Actual equipment preview is permission-safe PPIA-03 projection and never mutates Asset state."
+    },
+    {
+      "rule_id": "CAPP01-GEN-008",
+      "type": "randomization_scope",
+      "effect": "Randomization may change only eligible authored/cosmetic choices, never source-owned biology/history/current Form/equipment."
+    },
+    {
+      "rule_id": "CAPP01-GEN-009",
+      "type": "no_silent_substitution",
+      "effect": "If a committed choice becomes incompatible, return explicit review/diagnostic state; do not replace it silently."
+    },
+    {
+      "rule_id": "CAPP01-GEN-010",
+      "type": "ambiguous_mutation_recovery",
+      "effect": "On ambiguous mutation result, inspect authoritative operation/current state before retry."
+    }
+  ],
+  "profile_contracts": [
+    {
+      "profile_id": "species.human",
+      "species": "Human",
+      "topology_profile": "humanoid_biped",
+      "required_features": [],
+      "appearance_state_model": "single_profile",
+      "special_customizer_guardrails": [],
+      "studio_profile_behavior": null,
+      "explicit_choice_contracts": {},
+      "owner_canon_ids": [],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.elf",
+      "species": "Elf",
+      "topology_profile": "humanoid_biped",
+      "required_features": [
+        "slightly pointed ears"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_guardrails": [],
+      "studio_profile_behavior": null,
+      "explicit_choice_contracts": {},
+      "owner_canon_ids": [],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.dwarf",
+      "species": "Dwarf",
+      "topology_profile": "humanoid_biped",
+      "required_features": [],
+      "appearance_state_model": "single_profile",
+      "special_customizer_guardrails": [
+        "beard controls available regardless of sex; do not hard-lock by gender"
+      ],
+      "studio_profile_behavior": null,
+      "explicit_choice_contracts": {
+        "beard": {
+          "stable_id": "CAPP01-DWARF-BEARD",
+          "kind": "conditional_control",
+          "eligibility": "eligible_regardless_of_sex",
+          "source": [
+            "OVC-015"
+          ],
+          "mechanics_effect": false
+        }
+      },
+      "owner_canon_ids": [
+        "OVC-015"
+      ],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.goblin",
+      "species": "Goblin",
+      "topology_profile": "humanoid_biped",
+      "required_features": [
+        "pointed ears",
+        "sharp teeth"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_guardrails": [],
+      "studio_profile_behavior": null,
+      "explicit_choice_contracts": {},
+      "owner_canon_ids": [],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.orc",
+      "species": "Orc",
+      "topology_profile": "humanoid_biped",
+      "required_features": [
+        "powerful humanoid build"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_guardrails": [
+        "visible tusks are optional and usually not prominent"
+      ],
+      "studio_profile_behavior": null,
+      "explicit_choice_contracts": {
+        "visible_tusks": {
+          "stable_id": "CAPP01-ORC-VISIBLE-TUSKS",
+          "kind": "optional_presentation",
+          "eligibility": "optional",
+          "source": [
+            "OVC-014"
+          ],
+          "mechanics_effect": false
+        }
+      },
+      "owner_canon_ids": [
+        "OVC-014"
+      ],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.giantkin",
+      "species": "Giantkin",
+      "topology_profile": "humanoid_large",
+      "required_features": [
+        "large stature"
+      ],
+      "appearance_state_model": "lineage_profile",
+      "special_customizer_guardrails": [
+        "only Grendelkin, Surtrborn and Daityr are valid appearance lineages; legacy Skyborn/Stoneborn/Flameborn labels are not additional lineages"
+      ],
+      "studio_profile_behavior": null,
+      "explicit_choice_contracts": {
+        "lineage": {
+          "stable_id": "CAPP01-GIANTKIN-LINEAGE",
+          "kind": "enumerated_profile_choice",
+          "values": [
+            "Grendelkin",
+            "Surtrborn",
+            "Daityr"
+          ],
+          "forbidden_legacy_labels": [
+            "Skyborn",
+            "Stoneborn",
+            "Flameborn"
+          ],
+          "source": [
+            "OVC-021"
+          ]
+        }
+      },
+      "owner_canon_ids": [
+        "OVC-021"
+      ],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.stygian",
+      "species": "Stygian",
+      "topology_profile": "humanoid_biped_optional_wings",
+      "required_features": [
+        "dark/ashy skin",
+        "tail"
+      ],
+      "appearance_state_model": "single_profile_with_authorized_appendage_state",
+      "special_customizer_guardrails": [
+        "do not use pointed ears from concept art",
+        "wing appearance cannot grant flight; wings may be functional or vestigial"
+      ],
+      "studio_profile_behavior": {
+        "editable_profiles": [
+          "base"
+        ],
+        "conditional_controls": [
+          "horns",
+          "wings"
+        ],
+        "rule": "wing appearance never grants flight; functional/vestigial status comes from upstream state"
+      },
+      "explicit_choice_contracts": {
+        "horns": {
+          "stable_id": "CAPP01-STYGIAN-HORNS",
+          "kind": "optional_source_bounded_control",
+          "eligibility": "optional",
+          "source": [
+            "OVC-001"
+          ]
+        },
+        "wings": {
+          "stable_id": "CAPP01-STYGIAN-WINGS",
+          "kind": "conditional_control",
+          "eligibility": "optional",
+          "mechanics_authority": "upstream functional/vestigial state; appearance never grants flight",
+          "source": [
+            "OVC-001",
+            "OVC-002"
+          ]
+        },
+        "pointed_ears": {
+          "stable_id": "CAPP01-STYGIAN-POINTED-EARS",
+          "kind": "forbidden_noncanon",
+          "eligibility": "unavailable",
+          "source": [
+            "OVC-001"
+          ]
+        }
+      },
+      "owner_canon_ids": [
+        "OVC-001",
+        "OVC-002"
+      ],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.sharr",
+      "species": "Sharr",
+      "topology_profile": "humanoid_biped",
+      "required_features": [
+        "larger cranial proportion",
+        "robust facial structure"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_guardrails": [],
+      "studio_profile_behavior": null,
+      "explicit_choice_contracts": {
+        "facial_morphology": {
+          "stable_id": "CAPP01-SHARR-FACE",
+          "kind": "required_feature_group",
+          "requires": [
+            "heavy brow",
+            "broad nose",
+            "robust facial structure"
+          ],
+          "source": [
+            "OVC-019"
+          ]
+        }
+      },
+      "owner_canon_ids": [
+        "OVC-019"
+      ],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.gray",
+      "species": "Gray",
+      "topology_profile": "humanoid_small",
+      "required_features": [
+        "four fingers",
+        "large black almond eyes",
+        "hairless",
+        "no discernible external ears",
+        "minimal nose"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_guardrails": [],
+      "studio_profile_behavior": null,
+      "explicit_choice_contracts": {
+        "hair": {
+          "stable_id": "CAPP01-GRAY-HAIR",
+          "kind": "forbidden_anatomy",
+          "eligibility": "unavailable",
+          "source": [
+            "OVC-016"
+          ]
+        },
+        "external_ears": {
+          "stable_id": "CAPP01-GRAY-EARS",
+          "kind": "forbidden_anatomy",
+          "eligibility": "unavailable",
+          "source": [
+            "OVC-016"
+          ]
+        }
+      },
+      "owner_canon_ids": [
+        "OVC-016"
+      ],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.the_free",
+      "species": "The Free",
+      "topology_profile": "humanoid_android",
+      "required_features": [
+        "humanoid overall topology"
+      ],
+      "appearance_state_model": "open_humanoid_android_profile",
+      "special_customizer_guardrails": [
+        "not arbitrary quadruped/floating/nonhumanoid topology",
+        "mechanical replacement hardware and real augmentations are mechanics-owned"
+      ],
+      "studio_profile_behavior": {
+        "editable_profiles": [
+          "broad_humanoid_android"
+        ],
+        "rule": "very broad humanoid android grammar; actual replacement hardware remains mechanics-owned"
+      },
+      "explicit_choice_contracts": {
+        "topology_scope": {
+          "stable_id": "CAPP01-THE-FREE-TOPOLOGY",
+          "kind": "topology_boundary",
+          "allowed": "broad humanoid android",
+          "forbidden": "arbitrary nonhumanoid topology",
+          "actual_replacement_hardware": "mechanics_owned",
+          "source": [
+            "OVC-020"
+          ]
+        }
+      },
+      "owner_canon_ids": [
+        "OVC-020"
+      ],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.ratman",
+      "species": "Ratman",
+      "topology_profile": "humanoid_rodent",
+      "required_features": [
+        "fur",
+        "rounded ears",
+        "whiskers",
+        "narrow snout",
+        "long prehensile tail"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_guardrails": [],
+      "studio_profile_behavior": null,
+      "explicit_choice_contracts": {},
+      "owner_canon_ids": [],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.furashin",
+      "species": "Furashin",
+      "topology_profile": "humanoid_mouse",
+      "required_features": [
+        "mouse-like ears/snout",
+        "tail",
+        "fur"
+      ],
+      "appearance_state_model": "live_dynamic_phenotype",
+      "special_customizer_guardrails": [
+        "fur phenotype changes are biological appearance controls and may also communicate/camouflage; separate current visual state from saved preferred state when mechanics require"
+      ],
+      "studio_profile_behavior": {
+        "editable_profiles": [
+          "preferred_fur_phenotype"
+        ],
+        "live_projection": "upstream_when_mechanics_controls_current_phenotype",
+        "rule": "up to three colors plus pattern/texture; filename labels on reference art do not define Species"
+      },
+      "explicit_choice_contracts": {
+        "fur_phenotype": {
+          "stable_id": "CAPP01-FURASHIN-FUR-PHENOTYPE",
+          "kind": "live_dynamic_phenotype",
+          "max_simultaneous_colors": 3,
+          "fields": [
+            "color",
+            "pattern",
+            "texture"
+          ],
+          "saved_state": "preferred_fur_phenotype",
+          "live_state": "upstream_when_mechanics_controls_current_phenotype",
+          "source": [
+            "OVC-005"
+          ]
+        }
+      },
+      "owner_canon_ids": [
+        "OVC-005"
+      ],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.rog",
+      "species": "Rog",
+      "topology_profile": "humanoid_porciod",
+      "required_features": [
+        "porcine snout/face/ears",
+        "stocky build"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_guardrails": [],
+      "studio_profile_behavior": null,
+      "explicit_choice_contracts": {},
+      "owner_canon_ids": [
+        "OVC-006"
+      ],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.rohai",
+      "species": "Rohai",
+      "topology_profile": "humanoid_insect_biped",
+      "required_features": [
+        "segmented exoskeleton",
+        "compound eyes",
+        "two antennae",
+        "hooked claws"
+      ],
+      "appearance_state_model": "lineage_profile",
+      "special_customizer_guardrails": [],
+      "studio_profile_behavior": null,
+      "explicit_choice_contracts": {},
+      "owner_canon_ids": [],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.moravi",
+      "species": "Moravi",
+      "topology_profile": "humanoid_insect_six_limb",
+      "required_features": [
+        "2 arms",
+        "4 legs",
+        "compound eyes",
+        "antennae",
+        "mandibles",
+        "exoskeleton"
+      ],
+      "appearance_state_model": "lineage_profile",
+      "special_customizer_guardrails": [
+        "renderer must support six-limb bipedal/insectoid anchor set; never collapse second leg pair or invent humanoid two-leg topology"
+      ],
+      "studio_profile_behavior": {
+        "topology_requirement": "2 arms + 4 legs",
+        "rule": "never collapse to two-leg humanoid layout"
+      },
+      "explicit_choice_contracts": {
+        "topology": {
+          "stable_id": "CAPP01-MORAVI-TOPOLOGY",
+          "kind": "required_topology",
+          "arms": 2,
+          "legs": 4,
+          "requires": [
+            "compound eyes",
+            "antennae",
+            "mandibles",
+            "exoskeleton"
+          ],
+          "renderer_anchor_policy": "six_limb_no_two_leg_collapse"
+        }
+      },
+      "owner_canon_ids": [],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.vespin",
+      "species": "Vespin",
+      "topology_profile": "humanoid_wasp_six_limb",
+      "required_features": [
+        "4 arms",
+        "2 legs",
+        "compound eyes",
+        "2 antennae",
+        "wing pair",
+        "prominent wasp abdomen/stinger"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_guardrails": [
+        "owner concept supersedes PDF two-arm sentence"
+      ],
+      "studio_profile_behavior": {
+        "topology_requirement": "4 arms + 2 legs + wings + abdomen/stinger",
+        "rule": "wardrobe/equipment variants must support four-arm anchors or report unsupported"
+      },
+      "explicit_choice_contracts": {
+        "topology": {
+          "stable_id": "CAPP01-VESPIN-TOPOLOGY",
+          "kind": "required_topology",
+          "arms": 4,
+          "legs": 2,
+          "requires": [
+            "compound eyes",
+            "2 antennae",
+            "wing pair",
+            "prominent wasp abdomen/stinger"
+          ],
+          "source": [
+            "OVC-003"
+          ]
+        }
+      },
+      "owner_canon_ids": [
+        "OVC-003"
+      ],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.rakuuta",
+      "species": "Rakuuta",
+      "topology_profile": "small_reptilian_biped",
+      "required_features": [
+        "scaled body",
+        "hardened beak",
+        "long tail",
+        "swept-back ears",
+        "black raven-shaped facial feather field"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_guardrails": [
+        "no horns; hornlike shapes in older Kobold concept are noncanonical"
+      ],
+      "studio_profile_behavior": {
+        "required_visual_feature": "black raven-shaped facial feather field",
+        "rule": "swept-back structures are ears, not horns"
+      },
+      "explicit_choice_contracts": {
+        "facial_feathers": {
+          "stable_id": "CAPP01-RAKUUTA-FACIAL-FEATHERS",
+          "kind": "required_feature",
+          "value": "black raven-shaped facial feather field",
+          "source": [
+            "OVC-004"
+          ]
+        },
+        "horns": {
+          "stable_id": "CAPP01-RAKUUTA-HORNS",
+          "kind": "forbidden_noncanon",
+          "eligibility": "unavailable",
+          "source": [
+            "OVC-004"
+          ]
+        },
+        "swept_back_structures": {
+          "stable_id": "CAPP01-RAKUUTA-EARS",
+          "kind": "required_identity",
+          "value": "ears_not_horns",
+          "source": [
+            "OVC-004"
+          ]
+        }
+      },
+      "owner_canon_ids": [
+        "OVC-004"
+      ],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.traiga",
+      "species": "Traiga",
+      "topology_profile": "raptor_biped",
+      "required_features": [
+        "2 arms",
+        "2 legs",
+        "tail",
+        "clawed digits"
+      ],
+      "appearance_state_model": "lineage_adaptation_profile",
+      "special_customizer_guardrails": [
+        "no independent extra wing pair in base topology"
+      ],
+      "studio_profile_behavior": null,
+      "explicit_choice_contracts": {
+        "wing_pair": {
+          "stable_id": "CAPP01-TRAIGA-EXTRA-WINGS",
+          "kind": "forbidden_base_topology",
+          "eligibility": "unavailable",
+          "source": [
+            "OVC-009"
+          ]
+        },
+        "surface_spectrum": {
+          "stable_id": "CAPP01-TRAIGA-SURFACE-SPECTRUM",
+          "kind": "source_bounded_choice",
+          "values": [
+            "feathered",
+            "scaled",
+            "mixed"
+          ],
+          "condition": "variant permits",
+          "source": [
+            "OVC-009"
+          ]
+        }
+      },
+      "owner_canon_ids": [
+        "OVC-009"
+      ],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.kola_ha",
+      "species": "Kola-Ha",
+      "topology_profile": "aquatic_humanoid",
+      "required_features": [
+        "gill slits",
+        "webbed fingers/toes",
+        "aquatic head/eyes/teeth",
+        "fin structures",
+        "tail"
+      ],
+      "appearance_state_model": "base_plus_bioengineered_forms",
+      "special_customizer_guardrails": [
+        "Bioengineering Forms are separate source-owned Form state; do not promote Form anatomy into baseline"
+      ],
+      "studio_profile_behavior": null,
+      "explicit_choice_contracts": {
+        "bioengineering_forms": {
+          "stable_id": "CAPP01-KOLA-HA-BIOENGINEERING-FORMS",
+          "kind": "upstream_form_profile",
+          "baseline_mutation": false,
+          "source": [
+            "OVC-007"
+          ]
+        }
+      },
+      "owner_canon_ids": [
+        "OVC-007"
+      ],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.toba_madra",
+      "species": "Toba-Madra",
+      "topology_profile": "anthropomorphic_bear_biped",
+      "required_features": [
+        "bear muzzle/nose/ears",
+        "fur",
+        "bear tail",
+        "upright bipedal limb use"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_guardrails": [
+        "older gorilloid PDF visual origin is superseded",
+        "actual cybernetics from installed augmentation projection; cosmetic tech plating separate"
+      ],
+      "studio_profile_behavior": {
+        "editable_profiles": [
+          "base"
+        ],
+        "separate_channels": [
+          "natural_biological_fur",
+          "cosmetic_dye"
+        ],
+        "rule": "actual cybernetics are equipment/augmentation projection; cosmetic plating remains presentation"
+      },
+      "explicit_choice_contracts": {
+        "fur_channel": {
+          "stable_id": "CAPP01-TOBA-MADRA-FUR",
+          "kind": "split_channel",
+          "biological": "natural bear-range colors",
+          "cosmetic": "any-color/pattern dye overlay",
+          "source": [
+            "OVC-017"
+          ]
+        },
+        "cybernetics": {
+          "stable_id": "CAPP01-TOBA-MADRA-CYBERNETICS",
+          "kind": "equipment_projection",
+          "editable_as_identity": false,
+          "cosmetic_plating_separate": true,
+          "source": [
+            "OVC-018"
+          ]
+        }
+      },
+      "owner_canon_ids": [
+        "OVC-017",
+        "OVC-018"
+      ],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.arborae",
+      "species": "Arborae",
+      "topology_profile": "plant_humanoid",
+      "required_features": [
+        "plant/wood body semantics",
+        "seasonal biological state"
+      ],
+      "appearance_state_model": "four_season_profiles_current_state_selects_one",
+      "special_customizer_guardrails": [
+        "season is source-owned current biological state; appearance stores four linked seasonal custom profiles rather than deriving one generic recolor"
+      ],
+      "studio_profile_behavior": {
+        "editable_profiles": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "current_season": "upstream_read_only",
+        "rule": "four linked but separately customizable profiles; do not reduce to one recolor"
+      },
+      "explicit_choice_contracts": {
+        "season_profiles": {
+          "stable_id": "CAPP01-ARBORAE-SEASONS",
+          "kind": "linked_profile_set",
+          "values": [
+            "spring",
+            "summer",
+            "autumn",
+            "winter"
+          ],
+          "current_state": "upstream_read_only",
+          "independently_customizable": true,
+          "source": [
+            "OVC-010"
+          ]
+        }
+      },
+      "owner_canon_ids": [
+        "OVC-010"
+      ],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.mythragara",
+      "species": "Mythragara",
+      "topology_profile": "hyena_digitigrade_biped",
+      "required_features": [
+        "hyena-like head/muzzle",
+        "fur",
+        "mobile ears",
+        "digitigrade legs",
+        "tail",
+        "identity markings retained across forms"
+      ],
+      "appearance_state_model": "base_and_animal_profiles_plus_derived_hybrid",
+      "special_customizer_guardrails": [
+        "hybrid form derives from authored base and animal identity rather than independent freeform customization"
+      ],
+      "studio_profile_behavior": {
+        "editable_profiles": [
+          "base_humanoid",
+          "authorized_animal_forms"
+        ],
+        "derived_profiles": [
+          "hybrid"
+        ],
+        "rule": "hybrid derives from authored identities and is not independently freeform"
+      },
+      "explicit_choice_contracts": {
+        "hybrid": {
+          "stable_id": "CAPP01-MYTHRAGARA-HYBRID",
+          "kind": "derived_profile",
+          "editable_independently": false,
+          "derived_from": [
+            "base_humanoid",
+            "authorized_animal_form"
+          ],
+          "source": [
+            "OVC-008"
+          ]
+        }
+      },
+      "owner_canon_ids": [
+        "OVC-008"
+      ],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.suula",
+      "species": "Suula",
+      "topology_profile": "chitin_biped_nested_hands",
+      "required_features": [
+        "chitin armor",
+        "permanent claw structures",
+        "hands nested within claws",
+        "segmented tail"
+      ],
+      "appearance_state_model": "base_plus_persistent_adaptation_history_plus_active_adaptations",
+      "special_customizer_guardrails": [
+        "acquired adaptation markers cannot be erased",
+        "active adaptation state changes live appearance automatically",
+        "hand deployed/folded is pose/live state"
+      ],
+      "studio_profile_behavior": {
+        "editable_profiles": [
+          "base_cosmetic"
+        ],
+        "read_only_overlays": [
+          "persistent_adaptation_history",
+          "active_adaptation_state"
+        ],
+        "rule": "persistent markers cannot be erased; hand-in-claw state is live/pose"
+      },
+      "explicit_choice_contracts": {
+        "persistent_adaptation_markers": {
+          "stable_id": "CAPP01-SUULA-PERSISTENT-ADAPTATIONS",
+          "kind": "source_owned_history",
+          "editable": false,
+          "erasable": false,
+          "source": [
+            "OVC-011"
+          ]
+        },
+        "active_adaptations": {
+          "stable_id": "CAPP01-SUULA-ACTIVE-ADAPTATIONS",
+          "kind": "live_upstream_projection",
+          "editable": false,
+          "source": [
+            "OVC-011"
+          ]
+        },
+        "hand_claw_pose": {
+          "stable_id": "CAPP01-SUULA-HAND-CLAW-POSE",
+          "kind": "live_pose_state",
+          "saved_identity": false,
+          "source": [
+            "OVC-011"
+          ]
+        }
+      },
+      "owner_canon_ids": [
+        "OVC-011"
+      ],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.nekron",
+      "species": "Nekron",
+      "topology_profile": "fell_humanoid",
+      "required_features": [
+        "base Nekron identity retained as derivation source"
+      ],
+      "appearance_state_model": "base_then_one_time_derived_ascension_profile",
+      "special_customizer_guardrails": [
+        "transition opens second customization opportunity constrained/derived from original; cannot freely switch among ascensions"
+      ],
+      "studio_profile_behavior": {
+        "editable_profiles": [
+          "base",
+          "post_transition_once_transition_exists"
+        ],
+        "transition_trigger": "upstream_read_only",
+        "rule": "appearance cannot trigger ascension or select an unavailable outcome"
+      },
+      "explicit_choice_contracts": {
+        "ascension": {
+          "stable_id": "CAPP01-NEKRON-ASCENSION",
+          "kind": "one_time_transition_profile",
+          "values": [
+            "Revenant",
+            "Sanguivore",
+            "Fragmentarii"
+          ],
+          "transition_count_max": 1,
+          "selection_authority": "upstream availability/outcome",
+          "second_customization_pass": true,
+          "derived_from": "base",
+          "source": [
+            "OVC-012"
+          ]
+        }
+      },
+      "owner_canon_ids": [
+        "OVC-012"
+      ],
+      "unresolved_visual_conflicts": []
+    },
+    {
+      "profile_id": "species.manytoms",
+      "species": "ManyToms",
+      "topology_profile": "composite_collective_humanoid",
+      "required_features": [
+        "identical constituent appearance",
+        "collective reads as one entity"
+      ],
+      "appearance_state_model": "composite_entity_single_constituent_design",
+      "special_customizer_guardrails": [
+        "design one constituent identity and replicate compositionally",
+        "lore count 17 is not a requirement to visibly render exactly 17 figures in every output"
+      ],
+      "studio_profile_behavior": {
+        "editable_profiles": [
+          "constituent_identity"
+        ],
+        "renderer_behavior": "repeat/cohere constituent appearance as one collective entity",
+        "rule": "do not require exactly seventeen visible sprites"
+      },
+      "explicit_choice_contracts": {
+        "constituent_identity": {
+          "stable_id": "CAPP01-MANYTOMS-CONSTITUENT",
+          "kind": "composite_entity_identity",
+          "design_once_replicate": true,
+          "exact_visible_count_required": false,
+          "lore_count_context": 17,
+          "source": [
+            "OVC-013"
+          ]
+        }
+      },
+      "owner_canon_ids": [
+        "OVC-013"
+      ],
+      "unresolved_visual_conflicts": []
+    }
+  ],
+  "renderer_support_states": [
+    "supported",
+    "partial",
+    "unsupported",
+    "unknown"
+  ],
+  "non_authorities": [
+    "renderer topology/asset coverage never creates Species taxonomy",
+    "appearance never grants mechanics or equipment ownership",
+    "AI proposals cannot commit without normal write authority",
+    "CAPP-01 does not activate application runtime or STAGE-A-A2"
+  ]
+}

@@ -1,1 +1,823 @@
-{"schema_version":"0.1.0","work_item_id":"CAPP-01","title":"Source Authority and 25-Profile Index","status":"foundation_candidate","base_commit":"ac830d90945424eccf3ef99ed85abc6883e430b9","authority_order":[{"id":"ppia05_species_form_biology","path":"governance/application-planning/parallel-preimplementation/PPIA-05_SPECIES_FORMS_BIOLOGY_TAXONOMY_v0.1.0.json","role":"Species/Form biology and source-truth layer authority"},{"id":"ppia06_species_morphology","path":"governance/application-planning/parallel-preimplementation/PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","role":"normalized visual/morphology profile authority for the 25 governed profiles"},{"id":"ppia06_semantic_taxonomy","path":"governance/application-planning/parallel-preimplementation/PPIA-06_APPEARANCE_SEMANTIC_TAXONOMY_v0.2.0.json","role":"appearance semantic categories, selection semantics, constraint classes and unknown eligibility behavior"},{"id":"ppia06_owner_visual_decisions","path":"governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json","role":"owner-resolved visual identity token decisions; unresolved decisions remain diagnostics"},{"id":"ppia06_visual_coverage","path":"governance/application-planning/parallel-preimplementation/PPIA-06_SPECIES_VISUAL_COVERAGE_MATRIX_v0.2.0.json","role":"per-profile visual coverage and explicit gaps"},{"id":"ppia06_studio_controls","path":"governance/application-planning/parallel-preimplementation/PPIA-06_APPEARANCE_STUDIO_CONTROL_SURFACE_v0.1.0.json","role":"selection/control/recompute/lock/randomize/reset semantics"},{"id":"ppia06_renderer_contract","path":"governance/application-planning/parallel-preimplementation/PPIA-06_PIXEL_ART_RENDERER_CONTRACT_v0.2.0.json","role":"separation of biology, identity appearance, renderer presentation and actual equipment; fallback severity semantics"},{"id":"ppia03_asset_equipment","path":"governance/application-planning/parallel-preimplementation/PPIA-03_COMPLETION_README.md","role":"actual Asset/equipment authority; CAPP never infers ownership from visual presentation"}],"profile_count":25,"profiles":[{"profile_id":"species.antyrri","display_name":"Antyrri","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Antyrri"},"source_backed_morphology_facts":["bilateral vertebrate humanoid","bipedal","two arms","two legs","five digits","vestigial omnidirectional toe","hidden superficial ear flaps","dodecahedron-pyramidal head silhouette","variable dorsal neck/back area"]},{"profile_id":"species.brambleborn","display_name":"Brambleborn","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Brambleborn"},"source_backed_morphology_facts":["bilateral humanoid bramble/leaf exterior","bipedal","two arms","two legs","leaf hair","bare bramble-and-leaf covering"]},{"profile_id":"species.caligan","display_name":"Caligan","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Caligan"},"source_backed_morphology_facts":["bilateral humanoid","partially redundant torso systems","dual hearts","four lungs","external anatomy otherwise underdescribed"]},{"profile_id":"species.cesidian","display_name":"Cesidian","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Cesidian"},"source_backed_morphology_facts":["bilateral vertebrate humanoid","bipedal","two arms","two legs","five-digit extremities","acute auditory modifications"]},{"profile_id":"species.cosmenella","display_name":"Cosmenella","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Cosmenella"},"source_backed_morphology_facts":["bilateral slender humanoid","short flat nose","recessed mouth","wide mushroom-shaped skull","fin/orifice ears","glossy translucent orange eyes","short reddish-brown hair","no external sexual organs"]},{"profile_id":"species.crystal_dragon","display_name":"Crystal Dragon","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Crystal Dragon"},"source_backed_morphology_facts":["bilateral draconic winged vertebrate","quadrupedal","forelimbs and hindlimbs plus wings","four talons per paw","long tail","large bat-like wings","no visible sex organs","hatchlings hatch wingless and engorged"]},{"profile_id":"species.feline","display_name":"Feline","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Feline"},"source_backed_morphology_facts":["bilateral feline humanoid","two arms","two legs","feline ears","fur","paws/claw digits","tail","wide color/fur/hair variation"]},{"profile_id":"species.ganymede","display_name":"Ganymede","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Ganymede"},"source_backed_morphology_facts":["bilateral heavy reptilian anthropoid","natural quadruped","four arms","two legs","middle arms membrane to tail as wings","long strong tail","thick scales","semi-serpentine head","eyes usually shut/hidden but present"]},{"profile_id":"species.gliesian","display_name":"Gliesian","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Gliesian"},"source_backed_morphology_facts":["bilateral elongated humanoid with glider wings","bipedal","two legs with claw-like feet","two general arms","two dedicated flight wings","long-fingered hands","sparse back/tail/arm-web hair","six irises/pupils per eye"]},{"profile_id":"species.human","display_name":"Human","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Human"},"source_backed_morphology_facts":["bilateral vertebrate humanoid","bipedal","two arms","two legs","five digits","broad variation","birth sex convention male/female/TGI, potentially other"]},{"profile_id":"species.iaoth","display_name":"Iaoth","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Iaoth"},"source_backed_morphology_facts":["bilateral dark-skinned humanoid","armless","mouthless external phenotype","two legs","dark black skin","two nostrils","two yellow catlike eyes with eyelids","telepathy"]},{"profile_id":"species.kobold","display_name":"Kobold","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Kobold"},"source_backed_morphology_facts":["short dark-furred humanoid","two arms","two legs","short pitch-black fur","white eyes","no visible pupils","mixed facial silhouette"]},{"profile_id":"species.logical_stage","display_name":"Logical Stage","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Logical Stage"},"source_backed_morphology_facts":["adult logical-stage body is asymmetrical, variable-limbed and furred","multiple/all lower appendages can serve as locomotors","several graspers around upper body","furry bare skin","one large eye","toothless mouth","puberty from Lesser Stage via programmed metamorphosis","adult size can get large"]},{"profile_id":"species.malaphant","display_name":"Malaphant","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Malaphant"},"source_backed_morphology_facts":["bilateral humanoid with ape-elephant convergence","upright/bipedal","two arms","two legs","thick grey calloused skin","trunk","elephant ears","long incisors","variant facial skin colors","form depends on ambient diet/allergens and location"]},{"profile_id":"species.manytoms","display_name":"ManyToms","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"ManyToms"},"source_backed_morphology_facts":["bilateral compact newtlike humanoid","bipedal","two arms","two legs","extremely silky smooth skin","eye covering transparent when closed","aquatic survival under extreme pressure","post-pubescent grooming norm masculine/feminine leaning","sex organs internal"]},{"profile_id":"species.munyubbles","display_name":"Munyubbles","authority_status":"unknown_morphology","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Munyubbles"},"source_backed_morphology_facts":[],"explicit_unknown_fields":["normalized_topology","locomotion","appendage_count","head_structure","covering","coloration","distinguishing_features","sex_gender_manifestation","life_cycle_transitions","residue_rules"]},{"profile_id":"species.nekron","display_name":"Nekron","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Nekron"},"source_backed_morphology_facts":["bilateral humanoid","small cosmetic forehead horns","two arms","two legs","yellow-tinted flesh","no body hair","mostly white eyeballs","gender fixed at birth with nongendered transition possible"]},{"profile_id":"species.raconite","display_name":"Raconite","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Raconite"},"source_backed_morphology_facts":["tiny colloidal unicellular lifeform","single-cell colloid","drift/surface movement within environment","no discrete limbs","no assumed axes of symmetry","no head","no covering"]},{"profile_id":"species.ramogliese","display_name":"Ramogliese","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Ramogliese"},"source_backed_morphology_facts":["bilateral serpentine humanoid","bipedal","two arms","two legs","very long tail","semi-snake wide mouth","external nostrils absent","green scales/flesh","white hair on head equivalent"]},{"profile_id":"species.regalian","display_name":"Regalian","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Regalian"},"source_backed_morphology_facts":["bilateral humanoid","hard beak","color-changing keratin/scale ridges","bipedal","two arms","two legs","translucent flesh with colorful varicolored covering","large bug-like solid-black eyes","sequential life gender changes"]},{"profile_id":"species.the_great_race","display_name":"The Great Race","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"The Great Race"},"source_backed_morphology_facts":["bilateral humanoid kelp-skinned lifeform","bipedal","two arms","two legs","dark green kelp-like skin","small yellow eyes","nostrils and mouth interior appear lit"]},{"profile_id":"species.thetans","display_name":"Thetans","authority_status":"nonphysical_body_ontology","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Thetans"},"source_backed_morphology_facts":["nonphysical immortal being","can leave family-line body","can occupy inorganic objects or any convenient body","physical anatomy not fixed or owned by species profile","no standalone canonical body"],"physical_body_rule":"No standalone canonical physical body; physical appearance comes from occupied body/current-body authority."},{"profile_id":"species.vortex_cat","display_name":"Vortex Cat","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Vortex Cat"},"source_backed_morphology_facts":["bilateral feline-like humanoid predator","dorsal ridge","spiked tail","bipedal humanoid posture","two arms","two legs","claws","thin dark green skin","yellow eyes"]},{"profile_id":"species.whimsbug","display_name":"Whimsbug","authority_status":"governed","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Whimsbug"},"source_backed_morphology_facts":["bilateral insectoid flyer","bipedal plus wings","two arms","two legs","four wings: two larger and two smaller","two antennae","segmented chitinous/insect exterior"]},{"profile_id":"species.wogol","display_name":"Wogol","authority_status":"unknown_morphology","morphology_authority":{"artifact":"PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json","lookup_name":"Wogol"},"source_backed_morphology_facts":[],"explicit_unknown_fields":["normalized_topology","locomotion","appendage_count","head_structure","covering","coloration","distinguishing_features","sex_gender_manifestation","life_cycle_transitions","residue_rules"]}],"source_truth_invariants":["Source absence remains absence/unknown and is never filled with a human-default anatomy.","Appearance prose and biological mechanics remain distinguishable.","Culture, learned behavior, equipment, temporary Effects/Conditions and Campaign environment do not become permanent source biology.","Species eligibility alone does not prove a feature is physiological.","Renderer support never determines whether identity or biology state is valid.","PPIA-03 remains authority for actual Asset/equipment ownership and mechanical state.","Unresolved owner visual questions remain explicit diagnostics and do not authorize invented canon."]}
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "CAPP-01",
+  "title": "Source Authority and Canonical 25-Profile Index",
+  "status": "foundation_candidate",
+  "authority_rule": "PPIA-06 morphology profiles are the canonical 25-profile appearance set; PPIA-05 remains biology truth and PPIA-03 remains actual equipment authority.",
+  "source_hashes": {
+    "morphology": {
+      "path": "governance/application-planning/parallel-preimplementation/PPIA-06_SPECIES_MORPHOLOGY_PROFILES_v0.1.0.json",
+      "sha256": "0b6f49b90ea9867e612c56dd40cf63fdb341d5d7d1d31459b13cdef23d17ef7b"
+    },
+    "semantics": {
+      "path": "governance/application-planning/parallel-preimplementation/PPIA-06_APPEARANCE_SEMANTIC_TAXONOMY_v0.2.0.json",
+      "sha256": "a10958338d82c00bf24d62a83ab85a88ff08c440a66553b54349fc326e34978d"
+    },
+    "studio": {
+      "path": "governance/application-planning/parallel-preimplementation/PPIA-06_APPEARANCE_STUDIO_CONTROL_SURFACE_v0.1.0.json",
+      "sha256": "6ee16aa924e8aa461231067576fbdb7f3b6e1f34075c60263ef24793d61614a7"
+    },
+    "owner_decisions": {
+      "path": "governance/application-planning/parallel-preimplementation/PPIA-06_OWNER_VISUAL_CANON_DECISIONS_v0.1.0.json",
+      "sha256": "28eb5ac095c7f1ee29ccae4894228f5e13859f76bfff223fdfbd90ba63d58b04"
+    },
+    "biology": {
+      "path": "governance/application-planning/parallel-preimplementation/PPIA-05_SPECIES_FORMS_BIOLOGY_TAXONOMY_v0.1.0.json",
+      "sha256": "0901835672434c584f7fe7af814abb49978a8ce84f7debceb413cd2409e16552"
+    }
+  },
+  "profile_count": 25,
+  "profiles": [
+    {
+      "profile_id": "species.human",
+      "species": "Human",
+      "written_source": "Humans vAlpha.PDF",
+      "baseline_topology": "humanoid_biped",
+      "visual_summary": "Familiar humanoid body with highly diverse body types, facial features, skin tones and hair across the Many Earths.",
+      "required_features": [],
+      "bounded_variation": [
+        "height about 4.5–6.5 ft",
+        "broad human skin/hair/body variation"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_behavior": [],
+      "owner_canon_ids": [],
+      "owner_canon_decisions": [],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": null
+    },
+    {
+      "profile_id": "species.elf",
+      "species": "Elf",
+      "written_source": "Elves vAlpha.PDF",
+      "baseline_topology": "humanoid_biped",
+      "visual_summary": "Slender graceful humanoid with refined angular features, high cheekbones, slightly pointed ears and almond-shaped eyes; some lineages show shimmer/glow or unusual mineral hair tones.",
+      "required_features": [
+        "slightly pointed ears"
+      ],
+      "bounded_variation": [
+        "height about 5–6.5 ft",
+        "wide skin tones",
+        "human plus silver/white/mineral hair",
+        "possible subtle shimmer/glow"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_behavior": [],
+      "owner_canon_ids": [],
+      "owner_canon_decisions": [],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": null
+    },
+    {
+      "profile_id": "species.dwarf",
+      "species": "Dwarf",
+      "written_source": "Dwarves vAlpha.PDF",
+      "baseline_topology": "humanoid_biped",
+      "visual_summary": "Stout, sturdy humanoid with powerful shoulders/limbs; Heimenhearth examples can show metallic skin undertones and gem-like eyes.",
+      "required_features": [],
+      "bounded_variation": [
+        "height about 4–5 ft",
+        "metallic undertones by lineage/context",
+        "gem-like eye colors",
+        "beard grooming and hair styling"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_behavior": [
+        "beard controls available regardless of sex; do not hard-lock by gender"
+      ],
+      "owner_canon_ids": [
+        "OVC-015"
+      ],
+      "owner_canon_decisions": [
+        "Beard morphology is available regardless of sex and is not hard gender-locked. Mild dimorphism generally uses optional presets/ranges rather than mandatory gender gates."
+      ],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": null
+    },
+    {
+      "profile_id": "species.goblin",
+      "species": "Goblin",
+      "written_source": "Goblins vAlpha.PDF",
+      "baseline_topology": "humanoid_biped",
+      "visual_summary": "Small wiry impish/gaunt humanoid with green, gray or yellowish skin, large yellow-to-red eyes, pointed ears and sharp teeth.",
+      "required_features": [
+        "pointed ears",
+        "sharp teeth"
+      ],
+      "bounded_variation": [
+        "height about 3–4 ft",
+        "green/gray/yellowish skin",
+        "wide hair colors"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_behavior": [],
+      "owner_canon_ids": [],
+      "owner_canon_decisions": [],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": null
+    },
+    {
+      "profile_id": "species.orc",
+      "species": "Orc",
+      "written_source": "Orcs vAlpha.PDF",
+      "baseline_topology": "humanoid_biped",
+      "visual_summary": "Large muscular broad-shouldered humanoid with gray-green/gray/black skin, pronounced brow, wide upturned nose and strong jaws.",
+      "required_features": [
+        "powerful humanoid build"
+      ],
+      "bounded_variation": [
+        "height about 6–7 ft",
+        "ritual scars/tattoos",
+        "yellow/amber/red eyes",
+        "coarse natural-color hair",
+        "lower canine/tusk visibility optional"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_behavior": [
+        "visible tusks are optional and usually not prominent"
+      ],
+      "owner_canon_ids": [
+        "OVC-014"
+      ],
+      "owner_canon_decisions": [
+        "Lower canine/tusk structures are optional in visible presentation; most Orcs do not show prominent tusks."
+      ],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": null
+    },
+    {
+      "profile_id": "species.giantkin",
+      "species": "Giantkin",
+      "written_source": "Giantkin.PDF",
+      "baseline_topology": "humanoid_large",
+      "visual_summary": "Very large muscular humanoid with luminous eyes, lineage-specific skin/material cues and rune-like markings.",
+      "required_features": [
+        "large stature"
+      ],
+      "bounded_variation": [
+        "height about 8–10 ft",
+        "Grendelkin: mossy green/gray, rough barklike textures",
+        "Surtrborn: red/obsidian skin with molten glow and firelike hair",
+        "Daityr: bronze/gold metallic sheen and fierce luminous eyes"
+      ],
+      "appearance_state_model": "lineage_profile",
+      "special_customizer_behavior": [
+        "only Grendelkin, Surtrborn and Daityr are valid appearance lineages; legacy Skyborn/Stoneborn/Flameborn labels are not additional lineages"
+      ],
+      "owner_canon_ids": [
+        "OVC-021"
+      ],
+      "owner_canon_decisions": [
+        "Canonical lineages are Grendelkin, Surtrborn and Daityr. Skyborn/Stoneborn/Flameborn in example NPC prose are naming errors and must not become additional appearance lineages."
+      ],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": null
+    },
+    {
+      "profile_id": "species.stygian",
+      "species": "Stygian",
+      "written_source": "Stygian vAlpha.PDF",
+      "baseline_topology": "humanoid_biped_optional_wings",
+      "visual_summary": "Mostly human-looking compact humanoid with dark charcoal/ashy skin, luminous eyes, demonic horns/tail, clawlike nails and optional wings.",
+      "required_features": [
+        "dark/ashy skin",
+        "tail"
+      ],
+      "bounded_variation": [
+        "height about 4–5.5 ft",
+        "horns optional with broad shapes/sizes",
+        "hair commonly black/deep red but presentation may follow resolved source bounds",
+        "wings optional",
+        "wing functionality source/runtime governed"
+      ],
+      "appearance_state_model": "single_profile_with_authorized_appendage_state",
+      "special_customizer_behavior": [
+        "do not use pointed ears from concept art",
+        "wing appearance cannot grant flight; wings may be functional or vestigial"
+      ],
+      "owner_canon_ids": [
+        "OVC-001",
+        "OVC-002"
+      ],
+      "owner_canon_decisions": [
+        "Concept-art visual direction is canonical except pointed ears are not. Stygians otherwise look mostly human apart from dark/ashy skin, horns and other explicitly authorized demonic traits. Tails are canonical; horns are optional and broadly variable; wings occur sometimes.",
+        "Optional wings may be functional or vestigial/nonfunctional; appearance never grants flight mechanics."
+      ],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": {
+        "editable_profiles": [
+          "base"
+        ],
+        "conditional_controls": [
+          "horns",
+          "wings"
+        ],
+        "rule": "wing appearance never grants flight; functional/vestigial status comes from upstream state"
+      }
+    },
+    {
+      "profile_id": "species.sharr",
+      "species": "Sharr",
+      "written_source": "The Sharr vAlpha.PDF",
+      "baseline_topology": "humanoid_biped",
+      "visual_summary": "Human-adjacent but broader and more muscular, with proportionally larger cranium and robust Neanderthal-associated facial morphology.",
+      "required_features": [
+        "larger cranial proportion",
+        "robust facial structure"
+      ],
+      "bounded_variation": [
+        "height about 5–6 ft"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_behavior": [],
+      "owner_canon_ids": [
+        "OVC-019"
+      ],
+      "owner_canon_decisions": [
+        "Sharr visibly include robust Neanderthal-associated facial morphology such as heavy brow, broad nose and robust facial structure."
+      ],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": null
+    },
+    {
+      "profile_id": "species.gray",
+      "species": "Gray",
+      "written_source": "The Grays vAlpha.PDF",
+      "baseline_topology": "humanoid_small",
+      "visual_summary": "Slender lightweight gray humanoid with long thin limbs, four elongated fingers with round pads, enlarged elongated skull, high forehead, tiny jaw, large black almond eyes, no external ears and minimal mouth/nose structures.",
+      "required_features": [
+        "four fingers",
+        "large black almond eyes",
+        "hairless",
+        "no discernible external ears",
+        "minimal nose"
+      ],
+      "bounded_variation": [
+        "height 4–5 ft"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_behavior": [],
+      "owner_canon_ids": [
+        "OVC-016"
+      ],
+      "owner_canon_decisions": [
+        "Canonical height is 4 to 5 feet. Grays are hairless, effectively earless, and have minimal nose structure."
+      ],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": null
+    },
+    {
+      "profile_id": "species.the_free",
+      "species": "The Free",
+      "written_source": "The Free vAlpha.PDF",
+      "baseline_topology": "humanoid_android",
+      "visual_summary": "Sentient mechanical humanoid; original prose favors silvery alloy, glowing eyes, elegant segmentation and etched patterns, while owner canon broadens the allowed humanoid android grammar substantially.",
+      "required_features": [
+        "humanoid overall topology"
+      ],
+      "bounded_variation": [
+        "very broad humanoid android silhouettes/materials/faces",
+        "glowing/illuminated optics optional within design grammar",
+        "etched/presentation patterns player-authored"
+      ],
+      "appearance_state_model": "open_humanoid_android_profile",
+      "special_customizer_behavior": [
+        "not arbitrary quadruped/floating/nonhumanoid topology",
+        "mechanical replacement hardware and real augmentations are mechanics-owned"
+      ],
+      "owner_canon_ids": [
+        "OVC-020"
+      ],
+      "owner_canon_decisions": [
+        "The Free support an extremely broad range of humanoid android designs, not arbitrary nonhumanoid topology. Etched/presentation patterns may be player-authored; actual replacement hardware/augmentations remain mechanics-owned."
+      ],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": {
+        "editable_profiles": [
+          "broad_humanoid_android"
+        ],
+        "rule": "very broad humanoid android grammar; actual replacement hardware remains mechanics-owned"
+      }
+    },
+    {
+      "profile_id": "species.ratman",
+      "species": "Ratman",
+      "written_source": "Ratmen vAlpha.PDF",
+      "baseline_topology": "humanoid_rodent",
+      "visual_summary": "Small lean furred rodent humanoid with sharp rodent features, large expressive eyes, rounded ears, whiskers, narrow snout, clawed fingers, padded feet and long prehensile tail.",
+      "required_features": [
+        "fur",
+        "rounded ears",
+        "whiskers",
+        "narrow snout",
+        "long prehensile tail"
+      ],
+      "bounded_variation": [
+        "height about 3.5–5 ft",
+        "brown/gray/black/white fur",
+        "patchy or smooth fur",
+        "natural clan markings"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_behavior": [],
+      "owner_canon_ids": [],
+      "owner_canon_decisions": [],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": null
+    },
+    {
+      "profile_id": "species.furashin",
+      "species": "Furashin",
+      "written_source": "Furashin vAlpha2.PDF",
+      "baseline_topology": "humanoid_mouse",
+      "visual_summary": "Small agile mouse-like humanoid with soft consciously mutable fur, sensitive ears/snouts and a tail.",
+      "required_features": [
+        "mouse-like ears/snout",
+        "tail",
+        "fur"
+      ],
+      "bounded_variation": [
+        "height about 4–5 ft",
+        "up to three simultaneous fur colors",
+        "player-controlled fur pattern",
+        "player-controlled fur texture"
+      ],
+      "appearance_state_model": "live_dynamic_phenotype",
+      "special_customizer_behavior": [
+        "fur phenotype changes are biological appearance controls and may also communicate/camouflage; separate current visual state from saved preferred state when mechanics require"
+      ],
+      "owner_canon_ids": [
+        "OVC-005"
+      ],
+      "owner_canon_decisions": [
+        "Furashin are more mouse-related than rat-related and have tails. They have full conscious fur control over color, pattern and texture, with up to three colors simultaneously."
+      ],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": {
+        "editable_profiles": [
+          "preferred_fur_phenotype"
+        ],
+        "live_projection": "upstream_when_mechanics_controls_current_phenotype",
+        "rule": "up to three colors plus pattern/texture; filename labels on reference art do not define Species"
+      }
+    },
+    {
+      "profile_id": "species.rog",
+      "species": "Rog",
+      "written_source": "The Rog v2.PDF",
+      "baseline_topology": "humanoid_porciod",
+      "visual_summary": "Stocky porcine humanoid descended from tusked subterranean Rog, with inherent pig/boar facial features.",
+      "required_features": [
+        "porcine snout/face/ears",
+        "stocky build"
+      ],
+      "bounded_variation": [
+        "tusks and tusk adornment/markings within source",
+        "multiversal cultural presentation"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_behavior": [],
+      "owner_canon_ids": [
+        "OVC-006"
+      ],
+      "owner_canon_decisions": [
+        "Rog have inherent porcine features in addition to the source-backed stocky/tusked morphology."
+      ],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": null
+    },
+    {
+      "profile_id": "species.rohai",
+      "species": "Rohai",
+      "written_source": "Rohai vAlpha.PDF",
+      "baseline_topology": "humanoid_insect_biped",
+      "visual_summary": "Humanoid cockroach-like species with segmented hardened exoskeleton, large glossy compound eyes, long antennae and hooked claws; highly flexible segmented body.",
+      "required_features": [
+        "segmented exoskeleton",
+        "compound eyes",
+        "two antennae",
+        "hooked claws"
+      ],
+      "bounded_variation": [
+        "dark brown to jet black baseline with iridescence",
+        "variant-specific chitin colors/textures/ridges",
+        "variant-specific sensory/limb emphasis"
+      ],
+      "appearance_state_model": "lineage_profile",
+      "special_customizer_behavior": [],
+      "owner_canon_ids": [],
+      "owner_canon_decisions": [],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": null
+    },
+    {
+      "profile_id": "species.moravi",
+      "species": "Moravi",
+      "written_source": "Moravi vAlpha.PDF",
+      "baseline_topology": "humanoid_insect_six_limb",
+      "visual_summary": "Humanoid ant species with segmented chitinous body, one pair of arms plus two pairs of legs, compound eyes, antennae and mandibles.",
+      "required_features": [
+        "2 arms",
+        "4 legs",
+        "compound eyes",
+        "antennae",
+        "mandibles",
+        "exoskeleton"
+      ],
+      "bounded_variation": [
+        "glossy black/earth brown/deep red/iridescent blue/gold",
+        "caste/variant carapace forms and markings",
+        "variant-specific limb proportions/material effects"
+      ],
+      "appearance_state_model": "lineage_profile",
+      "special_customizer_behavior": [
+        "renderer must support six-limb bipedal/insectoid anchor set; never collapse second leg pair or invent humanoid two-leg topology"
+      ],
+      "owner_canon_ids": [],
+      "owner_canon_decisions": [],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": {
+        "topology_requirement": "2 arms + 4 legs",
+        "rule": "never collapse to two-leg humanoid layout"
+      }
+    },
+    {
+      "profile_id": "species.vespin",
+      "species": "Vespin",
+      "written_source": "Vespin vAlpha2.PDF",
+      "baseline_topology": "humanoid_wasp_six_limb",
+      "visual_summary": "Wasp-like upright insectoid with four arms, two legs, compound eyes, antennae, gossamer wings, prominent abdomen and stinger; hand-drawn concept controls where prose says two arms.",
+      "required_features": [
+        "4 arms",
+        "2 legs",
+        "compound eyes",
+        "2 antennae",
+        "wing pair",
+        "prominent wasp abdomen/stinger"
+      ],
+      "bounded_variation": [
+        "height about 5–6 ft",
+        "exoskeletal colors/patterns",
+        "subtle source-backed dimorphism without hard role locks"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_behavior": [
+        "owner concept supersedes PDF two-arm sentence"
+      ],
+      "owner_canon_ids": [
+        "OVC-003"
+      ],
+      "owner_canon_decisions": [
+        "Canonical anatomy is four arms and two legs. Hand-drawn Vespin art is the closest visual authority, including the prominent wasp abdomen/stinger structure."
+      ],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": {
+        "topology_requirement": "4 arms + 2 legs + wings + abdomen/stinger",
+        "rule": "wardrobe/equipment variants must support four-arm anchors or report unsupported"
+      }
+    },
+    {
+      "profile_id": "species.rakuuta",
+      "species": "Rakuuta",
+      "written_source": "Rakuuta v2.PDF",
+      "baseline_topology": "small_reptilian_biped",
+      "visual_summary": "Small reptilian kobold-evolution with scales, hardened beak, long tail, swept-back ears and actual black facial feathers arranged roughly as a raven-shaped marking.",
+      "required_features": [
+        "scaled body",
+        "hardened beak",
+        "long tail",
+        "swept-back ears",
+        "black raven-shaped facial feather field"
+      ],
+      "bounded_variation": [
+        "height about 3–4.5 ft",
+        "gray/green scale families and source-valid patterns"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_behavior": [
+        "no horns; hornlike shapes in older Kobold concept are noncanonical"
+      ],
+      "owner_canon_ids": [
+        "OVC-004"
+      ],
+      "owner_canon_decisions": [
+        "Rakuuta are an evolution/cousin line of kobolds. IMG_20240811_115259 is the closest visual reference. They do not have horns; the swept-back structures are ears. The black facial marking is made of actual black feathers arranged roughly in a raven shape."
+      ],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": {
+        "required_visual_feature": "black raven-shaped facial feather field",
+        "rule": "swept-back structures are ears, not horns"
+      }
+    },
+    {
+      "profile_id": "species.traiga",
+      "species": "Traiga",
+      "written_source": "Traiga vAlpha2.PDF",
+      "baseline_topology": "raptor_biped",
+      "visual_summary": "Lean raptor-descended biped with two arms, two legs, long semi-prehensile tail, large expressive eyes and clawed hands/feet.",
+      "required_features": [
+        "2 arms",
+        "2 legs",
+        "tail",
+        "clawed digits"
+      ],
+      "bounded_variation": [
+        "height about 4–6 ft",
+        "feathered↔scaled↔mixed spectrum",
+        "crests/forearm feathers/gliding structures when source-authorized",
+        "lineage adaptations such as webbing/gills/reflective patches"
+      ],
+      "appearance_state_model": "lineage_adaptation_profile",
+      "special_customizer_behavior": [
+        "no independent extra wing pair in base topology"
+      ],
+      "owner_canon_ids": [
+        "OVC-009"
+      ],
+      "owner_canon_decisions": [
+        "Canonical base plan is two arms, two legs and a tail. Winglike traits are forearm feathering/gliding structures or source-authorized adaptations, not an extra wing pair. Source-valid characters may range freely across feathered, scaled and mixed presentation where their variant permits."
+      ],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": null
+    },
+    {
+      "profile_id": "species.kola_ha",
+      "species": "Kola-Ha",
+      "written_source": "Kola-Ha vAlpha2.PDF + Kola-Ha Bioengineering.PDF",
+      "baseline_topology": "aquatic_humanoid",
+      "visual_summary": "Aquatic/fishlike humanoid with slick bluish-green skin, large eyes, needle teeth, neck gills, webbed digits, spinal fin ridge and owner-canonical tail/fins from the hand-drawn baseline concept.",
+      "required_features": [
+        "gill slits",
+        "webbed fingers/toes",
+        "aquatic head/eyes/teeth",
+        "fin structures",
+        "tail"
+      ],
+      "bounded_variation": [
+        "height about 5–7 ft",
+        "tail size/shape",
+        "fin size/shape",
+        "baseline coloration within source/owner bounds"
+      ],
+      "appearance_state_model": "base_plus_bioengineered_forms",
+      "special_customizer_behavior": [
+        "Bioengineering Forms are separate source-owned Form state; do not promote Form anatomy into baseline"
+      ],
+      "owner_canon_ids": [
+        "OVC-007"
+      ],
+      "owner_canon_decisions": [
+        "The hand-drawn aquatic/fishlike concept is baseline Kola-Ha anatomy. Tail and fin size/shape vary. Bioengineering Forms remain separate from baseline biology."
+      ],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": null
+    },
+    {
+      "profile_id": "species.toba_madra",
+      "species": "Toba-Madra",
+      "written_source": "Toba-madra vAlpha.mht (newer owner source; supersedes gorilloid PDF visual origin)",
+      "baseline_topology": "anthropomorphic_bear_biped",
+      "visual_summary": "Large anthropomorphic bear humanoid leaning slightly toward bear physiology: fur-covered, ursine muzzle/nose/ears, powerful upright body and visible bear tail.",
+      "required_features": [
+        "bear muzzle/nose/ears",
+        "fur",
+        "bear tail",
+        "upright bipedal limb use"
+      ],
+      "bounded_variation": [
+        "height about 6–8 ft",
+        "natural bear-range biological fur colors",
+        "any-color/pattern cosmetic dye overlay"
+      ],
+      "appearance_state_model": "single_profile",
+      "special_customizer_behavior": [
+        "older gorilloid PDF visual origin is superseded",
+        "actual cybernetics from installed augmentation projection; cosmetic tech plating separate"
+      ],
+      "owner_canon_ids": [
+        "OVC-017",
+        "OVC-018"
+      ],
+      "owner_canon_decisions": [
+        "Newer owner source supersedes the older gorilloid concept: Toba-Madra are anthropomorphic bears leaning slightly toward bear physiology, upright/humanoid in limb use, fur-covered with ursine muzzle/nose/ears and a visible bear tail. Biological fur stays broadly within natural bear ranges; cosmetic dye may use any colors and patterns.",
+        "Visible cybernetics are projections of actual installed augmentations; cosmetic tech plating remains a separate presentation-only layer."
+      ],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": {
+        "editable_profiles": [
+          "base"
+        ],
+        "separate_channels": [
+          "natural_biological_fur",
+          "cosmetic_dye"
+        ],
+        "rule": "actual cybernetics are equipment/augmentation projection; cosmetic plating remains presentation"
+      }
+    },
+    {
+      "profile_id": "species.arborae",
+      "species": "Arborae",
+      "written_source": "Arborae vAlpha2.PDF",
+      "baseline_topology": "plant_humanoid",
+      "visual_summary": "Plant/tree humanoid with bark/woodgrain skin, plant-form hair, gemlike bioluminescent eyes and biological seasonal transformations.",
+      "required_features": [
+        "plant/wood body semantics",
+        "seasonal biological state"
+      ],
+      "bounded_variation": [
+        "height under 5 ft to just over 6 ft",
+        "woodgrain intensity barely visible→tree bark",
+        "moss/vines/leaves/flowers hair",
+        "four separately customizable seasonal profiles"
+      ],
+      "appearance_state_model": "four_season_profiles_current_state_selects_one",
+      "special_customizer_behavior": [
+        "season is source-owned current biological state; appearance stores four linked seasonal custom profiles rather than deriving one generic recolor"
+      ],
+      "owner_canon_ids": [
+        "OVC-010"
+      ],
+      "owner_canon_decisions": [
+        "Use the source range 'under 5 feet to just over 6 feet'. Players author four coordinated but separately customizable seasonal appearance profiles. Woodgrain/bark visibility ranges from barely visible to strongly tree-bark-like."
+      ],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": {
+        "editable_profiles": [
+          "spring",
+          "summer",
+          "autumn",
+          "winter"
+        ],
+        "current_season": "upstream_read_only",
+        "rule": "four linked but separately customizable profiles; do not reduce to one recolor"
+      }
+    },
+    {
+      "profile_id": "species.mythragara",
+      "species": "Mythragara",
+      "written_source": "Mythragara vAlpha2.PDF",
+      "baseline_topology": "hyena_digitigrade_biped",
+      "visual_summary": "Hyena-descended shapeshifter. Humanoid/base form remains visibly hyenic with fur, strong muzzle/head, mobile ears, digitigrade legs, tail and arcano-organic tattoos/markings.",
+      "required_features": [
+        "hyena-like head/muzzle",
+        "fur",
+        "mobile ears",
+        "digitigrade legs",
+        "tail",
+        "identity markings retained across forms"
+      ],
+      "bounded_variation": [
+        "body/fur/marking styling within source",
+        "one or more source-authorized animal forms"
+      ],
+      "appearance_state_model": "base_and_animal_profiles_plus_derived_hybrid",
+      "special_customizer_behavior": [
+        "hybrid form derives from authored base and animal identity rather than independent freeform customization"
+      ],
+      "owner_canon_ids": [
+        "OVC-008"
+      ],
+      "owner_canon_decisions": [
+        "Normal humanoid form always retains the hyena-like head/muzzle, fur, mobile ears, digitigrade legs and tail shown by the concept direction; hybrid form is derived rather than independently authored."
+      ],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": {
+        "editable_profiles": [
+          "base_humanoid",
+          "authorized_animal_forms"
+        ],
+        "derived_profiles": [
+          "hybrid"
+        ],
+        "rule": "hybrid derives from authored identities and is not independently freeform"
+      }
+    },
+    {
+      "profile_id": "species.suula",
+      "species": "Suula",
+      "written_source": "Suula.PDF",
+      "baseline_topology": "chitin_biped_nested_hands",
+      "visual_summary": "Bipedal chitin-armored species with helmet-like head plating, permanent combat claws containing retractable hands, and flexible segmented weapon tail.",
+      "required_features": [
+        "chitin armor",
+        "permanent claw structures",
+        "hands nested within claws",
+        "segmented tail"
+      ],
+      "bounded_variation": [
+        "carapace density/texture and source-valid ridges/markings",
+        "adaptation-derived coloration/structure"
+      ],
+      "appearance_state_model": "base_plus_persistent_adaptation_history_plus_active_adaptations",
+      "special_customizer_behavior": [
+        "acquired adaptation markers cannot be erased",
+        "active adaptation state changes live appearance automatically",
+        "hand deployed/folded is pose/live state"
+      ],
+      "owner_canon_ids": [
+        "OVC-011"
+      ],
+      "owner_canon_decisions": [
+        "Acquired Adaptation markers are source-owned persistent biological history and cannot be erased in the appearance editor. Active Adaptations automatically update live appearance. Hands-extended versus hands-folded-inside-claws is live/pose state, not saved identity morphology."
+      ],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": {
+        "editable_profiles": [
+          "base_cosmetic"
+        ],
+        "read_only_overlays": [
+          "persistent_adaptation_history",
+          "active_adaptation_state"
+        ],
+        "rule": "persistent markers cannot be erased; hand-in-claw state is live/pose"
+      }
+    },
+    {
+      "profile_id": "species.nekron",
+      "species": "Nekron",
+      "written_source": "Nekrons vAlpha2.PDF",
+      "baseline_topology": "fell_humanoid",
+      "visual_summary": "Pale gaunt Fell humanoid base with unsettling/necrotic presentation, followed by at most one irreversible ascension into Revenant, Sanguivore or Fragmentarii morphology.",
+      "required_features": [
+        "base Nekron identity retained as derivation source"
+      ],
+      "bounded_variation": [
+        "base 5–6 ft pale/gaunt appearance",
+        "Revenant: skeletal/rune/voidlight bone",
+        "Sanguivore: pale translucent organic body, shadow veins, elongated canines, blood-hued eyes",
+        "Fragmentarii: cracked/unraveling/translucent body with floating parchment-like flesh/memory strips"
+      ],
+      "appearance_state_model": "base_then_one_time_derived_ascension_profile",
+      "special_customizer_behavior": [
+        "transition opens second customization opportunity constrained/derived from original; cannot freely switch among ascensions"
+      ],
+      "owner_canon_ids": [
+        "OVC-012"
+      ],
+      "owner_canon_decisions": [
+        "Skeletal/Revenant, Vampiric/Sanguivore and Shardmind/Fragmentarii are distinct one-time ascension outcomes. A base Nekron may transition only once into one outcome and receives a second customization pass derived from the original appearance."
+      ],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": {
+        "editable_profiles": [
+          "base",
+          "post_transition_once_transition_exists"
+        ],
+        "transition_trigger": "upstream_read_only",
+        "rule": "appearance cannot trigger ascension or select an unavailable outcome"
+      }
+    },
+    {
+      "profile_id": "species.manytoms",
+      "species": "ManyToms",
+      "written_source": "ManyToms vAlpha.PDF",
+      "baseline_topology": "composite_collective_humanoid",
+      "visual_summary": "One game entity represented by a cohesive collective of visually identical small elderly humanoid constituents connected by psychic visual language.",
+      "required_features": [
+        "identical constituent appearance",
+        "collective reads as one entity"
+      ],
+      "bounded_variation": [
+        "collective composition/formation as presentation/pose",
+        "psychic strand intensity/effects where authorized"
+      ],
+      "appearance_state_model": "composite_entity_single_constituent_design",
+      "special_customizer_behavior": [
+        "design one constituent identity and replicate compositionally",
+        "lore count 17 is not a requirement to visibly render exactly 17 figures in every output"
+      ],
+      "owner_canon_ids": [
+        "OVC-013"
+      ],
+      "owner_canon_decisions": [
+        "Constituent bodies are visually identical and think/act as one entity. Seventeen remains lore/source context rather than a renderer requirement to visibly place exactly seventeen figures; rendered composition should read as one cohesive collective."
+      ],
+      "unresolved_visual_conflicts": [],
+      "studio_profile_behavior": {
+        "editable_profiles": [
+          "constituent_identity"
+        ],
+        "renderer_behavior": "repeat/cohere constituent appearance as one collective entity",
+        "rule": "do not require exactly seventeen visible sprites"
+      }
+    }
+  ],
+  "source_truth_invariants": [
+    "Raw PDF/CSV source provenance remains preserved; PPIA-05 does not rewrite source to make biology cleaner or more complete.",
+    "Culture, society, belief, philosophy, profession, history and learned behavior are not immutable biology unless the source explicitly states a biological mechanism.",
+    "A Species perk can be biological, learned, cultural, mystical, technological or mixed; species eligibility alone is insufficient to classify physiology.",
+    "Environment-based perks and abilities are not biological Adaptations without explicit Species/Form/innate/body evidence.",
+    "The 2,203-row species/elementalist/innate dataset contains 260 Species Perks, 539 Innate Abilities and 1,404 Elementalist rows; dataset membership is insufficient to establish biology ownership.",
+    "The 57 Shapeshifter pricing-only rows cannot be automatically merged with the 60 detailed Ability rows by name, tier, position or similarity.",
+    "Same-name, shared-document, appearance, species label or narrative similarity is insufficient to create lineage, Form, compatibility or identity relationships.",
+    "Source fact, source absence, inference/recommendation, Character selection, runtime form state, temporary Effect/Condition state and Campaign environment remain distinguishable.",
+    "Unknown/source-unspecified anatomy remains unknown; no human/humanoid default is synthesized.",
+    "Current Form and persistent/active biological states are authoritative upstream projections, not editable cosmetics.",
+    "A valid Character remains valid when a renderer or view is partial/unsupported/unknown.",
+    "Hidden biological facts are filtered before appearance derivation, rendering, export and AI context.",
+    "Presentation wardrobe is nonmechanical and does not imply inventory/equipment ownership.",
+    "Actual equipment preview is a permission-safe projection only and never changes Asset state.",
+    "Randomization changes only eligible authored/cosmetic choices and never source-owned morphology/history/equipment.",
+    "Every visual state has semantic nonvisual representation; color is never the only state carrier."
+  ]
+}
