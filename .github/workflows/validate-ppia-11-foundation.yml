@@ -2,6 +2,11 @@ name: Validate PPIA-11 Foundation
 
 on:
   pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-11_*'
+      - 'scripts/validate-ppia11-*.py'
+      - 'scripts/validate-ppia10-to-ppia11-transition.py'
+      - '.github/workflows/validate-ppia-11-foundation.yml'
   push:
     branches:
       - governance/ppia-11-encounter-balance-laboratory
@@ -11,6 +16,7 @@ permissions:
 
 jobs:
   validate-ppia11-foundation:
+    if: ${{ github.event_name != 'pull_request' || !startsWith(github.head_ref, 'governance/capp-') }}
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4

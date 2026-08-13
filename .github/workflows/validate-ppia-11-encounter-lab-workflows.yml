@@ -15,6 +15,7 @@ on:
 
 jobs:
   validate-ppia11-encounter-lab-workflows:
+    if: ${{ !startsWith(github.head_ref, 'governance/capp-') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

@@ -1,0 +1,22 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"multiversal:capp03:pixel-art-asset-metadata:0.1.0",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["asset_id","asset_pack_id","asset_pack_version","renderer_id","asset_kind","semantic_band","view_ids","topology_template_ids","support_state","anchors","mask_refs","palette_zone_refs","provenance_class"],
+  "properties":{
+    "asset_id":{"type":"string","pattern":"^CAPP03-ASSET-[A-Z0-9-]+$"},
+    "asset_pack_id":{"type":"string","minLength":1},
+    "asset_pack_version":{"type":"string","minLength":1},
+    "renderer_id":{"const":"pixel-art-v1"},
+    "asset_kind":{"type":"string","minLength":1},
+    "semantic_band":{"type":"string","minLength":1},
+    "view_ids":{"type":"array","minItems":1,"uniqueItems":true,"items":{"enum":["full_body_three_quarter","portrait_zoom","tactical_token"]}},
+    "topology_template_ids":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},
+    "support_state":{"enum":["supported","partial","unsupported","unknown"]},
+    "anchors":{"type":"object"},
+    "mask_refs":{"type":"array","uniqueItems":true,"items":{"type":"string"}},
+    "palette_zone_refs":{"type":"array","uniqueItems":true,"items":{"type":"string"}},
+    "provenance_class":{"enum":["source_truth","owner_canon_decision","owner_concept_art","inherited_contract","project_source_design_contract","player_authored_appearance","presentation_wardrobe","equipment_projection","renderer_metadata","unresolved_gap"]}
+  }
+}
