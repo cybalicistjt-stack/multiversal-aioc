@@ -74,56 +74,22 @@ def main() -> None:
     acc = d["acceptance"]
     req(acc.get("work_item") == "PPIA-15" and acc.get("classification") == "completion_acceptance_matrix", "acceptance identity changed")
     req(acc.get("completion_gate") == gate, "acceptance gate changed")
-    expected_counts = {
-        "acceptance_categories":18,
-        "primary_inherited_case_records_after_exact_alias_collapse":300,
-        "awkward_families":18,
-        "stable_scenarios":24,
-        "foundation_cases":32,
-        "projection_groups":12,
-        "actions":20,
-        "iar_cases":40,
-        "workflows":18,
-        "handoffs":12,
-        "integrated_cases":18,
-        "effective_authored_cases":90,
-        "ordinary_gm_modification_clones":0,
-        "open_f024_source_gaps":1,
-    }
+    expected_counts = {"acceptance_categories":18,"primary_inherited_case_records_after_exact_alias_collapse":300,"awkward_families":18,"stable_scenarios":24,"foundation_cases":32,"projection_groups":12,"actions":20,"iar_cases":40,"workflows":18,"handoffs":12,"integrated_cases":18,"effective_authored_cases":90,"ordinary_gm_modification_clones":0,"open_f024_source_gaps":1}
     req(acc.get("counts") == expected_counts, "completion acceptance counts changed")
     cats = acc.get("categories", [])
     req([x.get("id") for x in cats] == [f"P15-CG-{i:02d}" for i in range(1, 19)], "completion category IDs changed")
-    req(len({x.get("name") for x in cats}) == 18, "completion category names must be unique")
-    req(all(x.get("proof") for x in cats), "completion category proof missing")
+    req(len({x.get("name") for x in cats}) == 18 and all(x.get("proof") for x in cats), "completion category proof/name integrity changed")
 
     pkg = d["package"]
     req(pkg.get("work_item") == "PPIA-15" and pkg.get("milestone") == "final_completion_gate", "completion package identity changed")
-    req(pkg.get("completion_surface", {}) == {
-        "acceptance_categories":18,
-        "primary_inherited_case_records_after_exact_alias_collapse":300,
-        "awkward_families":18,
-        "direct_gaps":7,
-        "partial_awkward_variants":10,
-        "baseline_covered_no_clone":1,
-        "stable_scenarios":24,
-        "foundation_cases":32,
-        "projection_groups":12,
-        "actions":20,
-        "iar_cases":40,
-        "workflows":18,
-        "handoffs":12,
-        "integrated_cases":18,
-        "effective_authored_cases":90,
-        "ordinary_gm_modification_clones":0,
-        "open_f024_source_gaps":1,
-    }, "completion package surface changed")
+    req(pkg.get("completion_surface", {}) == {"acceptance_categories":18,"primary_inherited_case_records_after_exact_alias_collapse":300,"awkward_families":18,"direct_gaps":7,"partial_awkward_variants":10,"baseline_covered_no_clone":1,"stable_scenarios":24,"foundation_cases":32,"projection_groups":12,"actions":20,"iar_cases":40,"workflows":18,"handoffs":12,"integrated_cases":18,"effective_authored_cases":90,"ordinary_gm_modification_clones":0,"open_f024_source_gaps":1}, "completion package surface changed")
     milestones = pkg.get("verified_milestones", [])
-    req(len(milestones) == 3, "completion package predecessor milestone count changed")
     expected_milestones = [
         ("foundation_existing_test_corpus_and_coverage_gap_inventory", "d876093989e656d3cf8366c19755295ef0f785e8", "a1f6b7380a07e65469ba8072e8aa4135d7b1e42f", 62, 286, "31652241636"),
         ("expanded_regression_scenario_library_inspector_action_reference", "94029c704fa097f99440a58a64c4293d52b4ad36", "740683e33ff6e3a0b1a8672c06fbbf9d87fa3bf5", 63, 287, "31653764114"),
         ("integrated_expanded_regression_workflows_traceability", "8e02c87504555ce8fc27b902a68cae8384f4ab25", "d98a2fc6fc31c62b91d7c11a92b8242469965b7d", 64, 288, "31656064001"),
     ]
+    req(len(milestones) == 3, "completion package predecessor milestone count changed")
     for row, exp in zip(milestones, expected_milestones):
         req((row.get("milestone"), row.get("validated_head"), row.get("merge"), row.get("hosted_workflows"), row.get("pull_request"), row.get("dedicated_run")) == exp, f"immutable milestone evidence changed: {exp[0]}")
     req(pkg.get("state") == "completion_candidate_only_until_exact_head_all_green_and_merge", "completion candidate state changed")
@@ -154,24 +120,14 @@ def main() -> None:
     exact_once([cid for w in wf for cid in w.get("foundation_case_ids", [])], [x["id"] for x in fc], "Foundation cases")
     exact_once([cid for w in wf for cid in w.get("iar_case_ids", [])], [x["id"] for x in ic], "IAR cases")
     exact_once([cid for w in wf for cid in w.get("integrated_case_ids", [])], [x["id"] for x in iw], "Integrated cases")
-    req({f"P15-AWK-{i:03d}" for i in range(1,19)} == {w.get("primary_awkward_family_id") for w in wf}, "workflow awkward-family coverage changed")
+    req({f"P15-AWK-{i:03d}" for i in range(1,19)} == {w.get("awkward_family_id") for w in wf}, "workflow awkward-family coverage changed")
     req({x.get("id") for x in sr} == {sid for w in wf for sid in w.get("scenario_ids", [])}, "workflow scenario coverage changed")
     req({x.get("id") for x in pg} == {pid for w in wf for pid in w.get("projection_group_ids", [])}, "workflow projection coverage changed")
     req({x.get("id") for x in ac} == {aid for w in wf for aid in w.get("action_ids", [])}, "workflow action coverage changed")
     req(all(x.get("ppia15_mutates_authoritative_state") is False for x in ac), "PPIA-15 action gained mutation authority")
 
     txt = (REPORT.read_text(encoding="utf-8") + "\n" + README.read_text(encoding="utf-8")).lower()
-    for phrase in (
-        "90 effective authored ppia-15 cases",
-        "zero ordinary-gm-modification standalone clones",
-        "p15-gap-001",
-        "f024",
-        "status unknown is not failure",
-        "offline/local/read-only state",
-        "512 inventory",
-        "128 creature/npc",
-        "separate governed operation",
-    ):
+    for phrase in ("90 effective authored ppia-15 cases","zero ordinary-gm-modification standalone clones","p15-gap-001","f024","status unknown is not failure","offline/local/read-only state","512 inventory","128 creature/npc","separate governed operation"):
         req(phrase in txt, f"completion narrative missing {phrase!r}")
 
     tranches = {x.get("work_item_id"): x for x in backlog.get("tranches", [])}
@@ -193,7 +149,6 @@ def main() -> None:
         req(checkpoint.get("status") == "completed_verified" and checkpoint.get("completed_at"), "historical checkpoint must be completed_verified")
         continuity_mode = "historical_after_ppia15"
     req(checkpoint.get("owner_decision_required") is False and checkpoint.get("unresolved_failures") == [], "PPIA-15 unresolved blocker exists")
-
     bounds = backlog.get("boundaries", {})
     for key in ("application_runtime_mutation_authorized","a2_activation_authorized","release_authorized","deployment_authorized","tester_access_authorized","canonical_promotion_without_source_evidence_authorized"):
         req(bounds.get(key) is False, f"program boundary changed: {key}")
