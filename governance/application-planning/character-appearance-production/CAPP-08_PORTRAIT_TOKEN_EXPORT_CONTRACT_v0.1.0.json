@@ -1,0 +1,127 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "CAPP-08",
+  "title": "Portrait, Token and Export Production Contract",
+  "status": "built_pending_integrated_validation",
+  "authorities": ["CAPP-03", "CAPP-05", "CAPP-07", "PPIA-06"],
+  "renderer_id": "pixel-art-v1",
+  "derivative_classes": [
+    {
+      "derivative_type": "full_body_master",
+      "source_view": "full_body_three_quarter",
+      "canvas": [256, 320],
+      "safe_inset_px": 16,
+      "background_modes": ["transparent", "solid", "authorized_scene"],
+      "required_anchor": "visual_center"
+    },
+    {
+      "derivative_type": "portrait",
+      "source_view": "portrait_zoom",
+      "canvas": [192, 192],
+      "safe_inset_px": 12,
+      "background_modes": ["transparent", "solid", "authorized_scene"],
+      "required_anchor": "portrait_focus"
+    },
+    {
+      "derivative_type": "tactical_token",
+      "source_view": "tactical_token",
+      "canvas": [128, 128],
+      "safe_inset_px": 8,
+      "background_modes": ["transparent", "solid", "ringed"],
+      "required_anchor": "visual_center"
+    }
+  ],
+  "export_formats": [
+    {"format_id": "png_rgba", "alpha_supported": true, "lossless": true},
+    {"format_id": "png_rgb", "alpha_supported": false, "lossless": true},
+    {"format_id": "semantic_render_plan_json", "alpha_supported": false, "lossless": true},
+    {"format_id": "appearance_derivative_manifest_json", "alpha_supported": false, "lossless": true}
+  ],
+  "derivative_identity": {
+    "id_rule": "CAPP08-DERIV-<SHA256_OF_CANONICAL_DERIVATIVE_INPUTS>",
+    "hash": "SHA-256",
+    "canonical_inputs": [
+      "appearance_state_version",
+      "biology_snapshot_id",
+      "renderer_id",
+      "renderer_version",
+      "asset_pack_id",
+      "asset_pack_version",
+      "render_plan_sha256",
+      "derivative_type",
+      "framing_profile_id",
+      "background_profile_id",
+      "permission_projection_id"
+    ],
+    "same_inputs_same_identity": true
+  },
+  "framing_rules": [
+    "Use CAPP-03 integer-pixel canvas and safe-area classes exactly for pixel-art-v1.",
+    "Use the derivative class required anchor; missing required anchor produces partial/unsupported diagnostic rather than estimated anatomy.",
+    "Nearest-neighbor scaling only for pixel-art-v1.",
+    "Arbitrary rotation and pseudo-3D orbit remain forbidden.",
+    "Cropping may remove empty canvas but must not knowingly remove required topology without an explicit partial result.",
+    "Composite/repeated-constituent framing uses declared occupancy bounds rather than assuming one humanoid silhouette.",
+    "Portrait framing may not expose hidden state absent from the permission-filtered render plan.",
+    "Tactical token framing is a presentation derivative and does not define combat size, reach, facing, or mechanics."
+  ],
+  "permission_filtering": {
+    "order": ["authorize_source_state", "filter_hidden_fields", "compile_permission_safe_render_plan", "frame_derivative", "write_metadata"],
+    "forbidden": ["hidden_asset_ids", "hidden_semantic_choice_ids", "hidden_equipment_identity", "gm_only_notes", "unfiltered_diagnostics"],
+    "allowed_metadata": ["permission_projection_id", "filtered_field_count", "coverage_state", "public_diagnostics"]
+  },
+  "invalidation_rules": [
+    {"cause": "appearance_state_version_changed", "action": "stale_regenerate"},
+    {"cause": "biology_snapshot_changed", "action": "stale_regenerate"},
+    {"cause": "renderer_version_changed", "action": "recompile_then_regenerate"},
+    {"cause": "asset_pack_version_changed", "action": "recompile_then_regenerate"},
+    {"cause": "permission_projection_changed", "action": "invalidate_and_regenerate_from_new_filtered_plan"},
+    {"cause": "framing_or_background_profile_changed", "action": "regenerate_derivative_only"},
+    {"cause": "upstream_fit_state_changed", "action": "recompile_then_regenerate"}
+  ],
+  "stale_states": ["current", "stale_regeneration_required", "blocked_missing_authorized_coverage", "blocked_permission_projection", "unknown"],
+  "derivative_manifest_required": [
+    "schema_version",
+    "derivative_id",
+    "derivative_type",
+    "appearance_state_version",
+    "biology_snapshot_id",
+    "renderer_id",
+    "renderer_version",
+    "asset_pack_id",
+    "asset_pack_version",
+    "render_plan_sha256",
+    "framing_profile_id",
+    "background_profile_id",
+    "permission_projection_id",
+    "coverage_state",
+    "stale_state",
+    "output_format",
+    "output_sha256",
+    "generated_from_character_truth_without_mutation"
+  ],
+  "downstream_handoffs": [
+    {"consumer": "Character portrait surfaces", "contract": "consume derivative identity and output; do not infer Character semantics from pixels"},
+    {"consumer": "Tactical/map token surfaces", "contract": "consume token derivative only; no mechanics inferred from framing"},
+    {"consumer": "Export/share workflow", "contract": "permission-safe derivative and metadata only"},
+    {"consumer": "CAPP-09", "contract": "migration may mark derivatives stale but cannot silently substitute identity"},
+    {"consumer": "CAPP-11", "contract": "generate deterministic stale/regeneration/permission regression cases"}
+  ],
+  "diagnostic_codes": [
+    "CAPP08-MISSING-FOCUS-ANCHOR",
+    "CAPP08-PARTIAL-FRAME",
+    "CAPP08-UNSUPPORTED-DERIVATIVE",
+    "CAPP08-STALE-DERIVATIVE",
+    "CAPP08-PERMISSION-FILTERED",
+    "CAPP08-NO-SILENT-REGEN",
+    "CAPP08-HASH-MISMATCH"
+  ],
+  "boundaries": {
+    "character_truth_write": false,
+    "biology_write": false,
+    "equipment_write": false,
+    "mechanics_from_token": false,
+    "hidden_information_export": false,
+    "runtime_activation": false
+  }
+}
