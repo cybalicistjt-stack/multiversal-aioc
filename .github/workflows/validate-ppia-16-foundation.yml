@@ -1,0 +1,46 @@
+name: Validate PPIA-16 Foundation
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/parallel-preimplementation/PPIA-16_*'
+      - 'governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA_PARALLEL_PREIMPLEMENTATION_ADVANCEMENT_PROGRAM.md'
+      - 'governance/ai/work-state/PPIA-16-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'governance/ai/runtime/ROADMAP_INDEX.json'
+      - 'governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json'
+      - 'governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md'
+      - 'governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md'
+      - 'governance/ai/MULTIVERSAL_COMPLETION_CLAIM_INTEGRITY_POLICY.md'
+      - 'tools/continuity_state.py'
+      - 'scripts/validate-ppia16-foundation.py'
+      - 'scripts/validate-ppia15-to-ppia16-transition.py'
+      - 'scripts/validate-ppia15-completion-contracts.py'
+      - '.github/workflows/validate-ppia-16-foundation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-ppia16-foundation:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate PPIA-16 Foundation
+        run: python scripts/validate-ppia16-foundation.py
+      - name: Validate PPIA-15 to PPIA-16 transition regression
+        run: python scripts/validate-ppia15-to-ppia16-transition.py
+      - name: Validate PPIA-15 completion regression
+        run: python scripts/validate-ppia15-completion-contracts.py
+      - name: Validate generalized PPIA continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
+      - name: Validate conversation continuity
+        run: python tools/continuity_state.py validate
+      - name: Run conversation continuity regression tests
+        run: python -m unittest discover -s tests/continuity -v
