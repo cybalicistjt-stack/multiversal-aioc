@@ -1,12 +1,15 @@
 # AIOC Session Handoff
 
-**Status:** 8E-009 CSV-FIRST PIPELINE COMPLETE; 8D-007 ACTIVE  
+> **HISTORICAL SNAPSHOT — 2026-08-04. DO NOT RESUME WORK FROM THIS FILE.**  
+> Current recovery is governed by `governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md`, `governance/ai/runtime/CURRENT_WORK_POINTER.json`, its named checkpoint/evidence, the current roadmap index, and `Multiversal-app/.ai/current-work-order.md`. The content below is retained only as provenance for the August 4 handoff.
+
+**Historical status:** 8E-009 CSV-FIRST PIPELINE COMPLETE; 8D-007 ACTIVE  
 **Owner and final authority:** John Brandon Turner  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Branch after merge:** `main`  
 **Handoff date:** 2026-08-04
 
-## Last verified completion
+## Last verified completion at this snapshot
 
 PR #111 completed the full CSV registry reconciliation.
 
@@ -25,7 +28,7 @@ Reconciliation artifact SHA-256:
 
 `112ef5116b4090cc266eefe36e1c539b6567f022d6b857db6e1d2bdd77e30e40`
 
-## Completed execution sequence
+## Completed execution sequence at this snapshot
 
 The CSV-first object pipeline completed:
 
@@ -42,36 +45,17 @@ The CSV-first object pipeline completed:
 11. bounded batch conversion;
 12. complete registry reconciliation.
 
-## Active workstream
+## Historical active workstream
 
 **8D-007 — Golden Test Corpus and Balance Harness**
 
-This workstream must build deterministic representative fixtures and regression scenarios from the promoted canonical corpus. Balance observations must remain separate from source truth and must not silently rewrite source mechanics.
+This was the active workstream on 2026-08-04. It has since advanced; do not infer present activity from this historical section.
 
-## Next executable operation
+## Historical next executable operation
 
-Create and validate the initial governed 8D-007 corpus contract and selection matrix.
+At this snapshot the next executable operation was to create and validate the initial governed 8D-007 corpus contract and selection matrix.
 
-Required first-batch artifacts:
-
-- canonical corpus-selection contract;
-- representative domain/subtype coverage matrix;
-- provenance and completeness eligibility rules;
-- deterministic runtime-scenario registry;
-- expected install/uninstall and migration outcomes;
-- balance-observation schema;
-- regression fingerprint rules;
-- first bounded golden corpus manifest;
-- CI validator and artifact output.
-
-The representative matrix must cover all major converted domains, including items, melee and ranged weapons, ammunition, computers/software, cybernetics/symbiotes, EVA suits/modules, magitech, vehicles, mecha, spacecraft, bases/facilities, materials/agriculture/homesteading, abilities, spells, spellbooks, hazards, and traps.
-
-## Subsequent governed order
-
-1. complete 8D-007;
-2. execute 8D-008 — AI Development Team Operating Package;
-3. complete Phase 9 — Agentic AI Development Roadmap;
-4. continue approved application implementation.
+The subsequent repository history, bootstrap, runtime pointer/checkpoint, roadmap and application work order now control execution.
 
 ## Operating rule
 
