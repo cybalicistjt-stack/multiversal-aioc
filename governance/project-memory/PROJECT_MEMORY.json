@@ -1,8 +1,8 @@
 {
   "documentId": "MV-PROJECT-MEMORY-001",
-  "version": "1.0.0",
-  "status": "ACTIVE",
-  "lastUpdated": "2026-08-04",
+  "version": "2.0.0",
+  "status": "ACTIVE_INDEX",
+  "lastUpdated": "2026-08-13",
   "owner": {
     "name": "John Brandon Turner",
     "github": "cybalicistjt-stack",
@@ -13,57 +13,75 @@
     "application": "cybalicistjt-stack/Multiversal-app"
   },
   "authorityRegistry": "governance/access/AIOC_CONTRIBUTOR_REGISTRY.json",
-  "authoritativeStateFiles": [
+  "currentRecoveryAuthority": [
+    "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
+    "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+    "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
+    "governance/ai/runtime/ROADMAP_INDEX.json",
+    "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
+    "Multiversal-app/.ai/current-work-order.md"
+  ],
+  "historicalSnapshots": [
     "governance/current-state/AIOC_CURRENT_STATE.md",
     "governance/current-state/SESSION_HANDOFF.md",
     "governance/current-state/AIOC_OPERATIONAL_HANDOFF.md",
     "governance/current-state/AIOC_DEPLOYMENT_BASELINE.md"
   ],
-  "bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
-  "activeWorkstream": {
-    "id": "8E-009",
-    "name": "Canonical Object Template Library",
-    "program": "governance/object-system/CANONICAL_OBJECT_TEMPLATE_PROGRAM.md",
-    "nextExecutableWorkItem": "8E-009A — Item Family Discovery"
+  "historicalSnapshotRule": "Historical current-state and handoff documents preserve milestone provenance only. They do not select current work. Bootstrap, runtime pointer/checkpoint evidence, current roadmap, and application current-work-order control recovery.",
+  "currentApplication": {
+    "workItem": "STAGE-A-A2 — Universal Object Experience",
+    "state": "authorized_current_next_not_activated",
+    "implementationRepository": "cybalicistjt-stack/Multiversal-app",
+    "activationBoundary": "repository-capable private checkout and mandatory governed runner verification"
   },
+  "retainedParallelTracks": [
+    {
+      "id": "DS-008-working-series-attempt-002",
+      "state": "blocked_non_owner",
+      "boundary": "exact-byte transfer and validation capability"
+    },
+    {
+      "id": "WP-011",
+      "state": "mac_dependent_bounded_track",
+      "boundary": "supported Mac/Xcode execution"
+    },
+    {
+      "id": "PPIA",
+      "state": "completed_verified"
+    },
+    {
+      "id": "CAPP",
+      "state": "completed_verified"
+    }
+  ],
   "verifiedFoundations": [
     "Operational AIOC certification",
     "Development Brain Releases A-G, Steps 1-21",
-    "Source census",
-    "Neutral recovery ledger",
-    "Canonical Object Template Program activation"
+    "Phase 8 canonical content/object work",
+    "8D-007 Golden Test Corpus and Balance Harness",
+    "8D-008 AI Development Team Operating Package",
+    "Phase 9 bounded implementation through P9-06-023",
+    "Internal Alpha design through IA-D09",
+    "PPIA-01 through PPIA-16 completed_verified",
+    "CAPP-01 through CAPP-12 completed_verified",
+    "Developer Toolbelt DT-001 through DT-010"
   ],
   "contentState": {
-    "certifiedCollectionRecordCount": 487,
-    "certifiedCollectionCompleteness": "partial; many records are stubs or thin wrappers",
-    "recoveryLedgerRecordCount": 359291,
-    "recoveryLedgerMeaning": "source recovery records, not complete canonical game objects",
-    "bulkConversionAllowed": false,
-    "bulkConversionPrerequisites": [
-      "canonical family hierarchy",
-      "full source-supported parameter matrix",
-      "shared capability modules",
-      "family templates",
-      "validators",
-      "schema-driven Design Studio forms",
-      "gold-standard examples",
-      "staging validation",
-      "owner approval"
-    ]
+    "csvFirstProgram": "completed historical foundation",
+    "registeredDatasetCount": 20,
+    "promotedRecordCountAtReconciliationMilestone": 19199,
+    "provenanceRequired": true,
+    "historicalRecoveryLedgerIsCanonicalGameContent": false
   },
   "operatingRules": [
-    "Repository state is authoritative; conversation memory is supporting context only.",
+    "Repository evidence is authoritative; conversation memory is supporting context only.",
+    "Bootstrap/runtime pointer/checkpoint evidence outranks stale current-state prose.",
     "Continue means execute the next verified unfinished operation, not explain it.",
     "Never claim files, commits, tests, pull requests, merges, deployments, or repairs without verification.",
-    "Never treat an identity, type, and provenance wrapper as a complete game object.",
-    "Never begin bulk conversion until the canonical template and validator for the object family exist.",
+    "Historical branches and handoffs are provenance or salvage inputs unless current authority explicitly selects them.",
     "Keep explanations to the minimum required for correctness and prioritize verified repository work."
   ],
   "contributorAuthority": {
     "zakvalentine": "proposal-only"
-  },
-  "macTrack": {
-    "workPackage": "WP-011 — Tauri iOS/iPadOS Spike",
-    "policy": "Reserve borrowed-Mac and Codex usage for high-leverage Apple/Xcode execution."
   }
 }
