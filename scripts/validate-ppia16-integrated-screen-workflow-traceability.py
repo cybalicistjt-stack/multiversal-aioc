@@ -106,7 +106,8 @@ def main():
     for group,ids in expected.items():
         req(set(reverse.get(group,{}))==ids,f"reverse {group} set")
         for ident,wids in reverse[group].items(): req(wids==[w for w in WFS if ident in by[w].get(group,[])],f"reverse {group} {ident}")
-    req("no orphan" in tr.get("no_orphan_rule","").lower() and "exactly once" in tr.get("no_orphan_rule","").lower(),"no-orphan rule")
+    no_orphan=tr.get("no_orphan_rule","").lower()
+    req("at least one integrated workflow" in no_orphan and "exactly once" in no_orphan,"no-orphan rule")
     req(cases.get("classification")=="synthetic_noncanonical_qa_integrated_reference_cases" and cases.get("canonical") is False,"integrated case classification")
     req(cases.get("counts")=={"new_integrated_cases":12,"inherited_screen_action_reference_cases":48,"effective_qa_cases":60},"integrated case counts")
     crows=cases.get("cases",[]); req([x.get("id") for x in crows]==IW,"integrated case IDs")
