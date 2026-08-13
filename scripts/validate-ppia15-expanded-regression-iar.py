@@ -122,18 +122,33 @@ def main():
 
  tranches={x.get("work_item_id"):x for x in backlog.get("tranches",[])}
  for dep in ("PPIA-09","PPIA-10","PPIA-11","PPIA-14"): req(tranches.get(dep,{}).get("status")=="completed_verified",f"{dep} dependency changed")
- req(backlog.get("current_work_item_id")=="PPIA-15" and tranches.get("PPIA-15",{}).get("status") in {"started","ready_for_review"},"PPIA-15 backlog state changed")
+ current=backlog.get("current_work_item_id")
  req(checkpoint.get("attempt_id")=="PPIA-15-attempt-001" and checkpoint.get("branch")=="governance/ppia-15-internal-alpha-test-content-expansion","checkpoint identity changed")
- req(checkpoint.get("status") in {"started","ready_for_review"} and checkpoint.get("completed_at") is None,"IAR milestone cannot complete PPIA-15")
- req("Expanded Regression Scenario Library" in (checkpoint.get("active_substep") or ""),"checkpoint does not select IAR milestone")
- req(pointer.get("primary_attempt_id")=="PPIA-15-attempt-001","pointer does not select PPIA-15")
- req(status.get("primary",{}).get("work_item_id")=="PPIA-15" and status.get("primary",{}).get("status") in {"started","ready_for_review"},"compact status does not select PPIA-15")
  req(checkpoint.get("unresolved_failures")==[] and checkpoint.get("owner_decision_required") is False,"PPIA-15 unresolved state")
+ if current=="PPIA-15":
+  req(tranches.get("PPIA-15",{}).get("status") in {"started","ready_for_review"},"PPIA-15 backlog state changed")
+  req(checkpoint.get("status") in {"started","ready_for_review"} and checkpoint.get("completed_at") is None,"active PPIA-15 state changed")
+  sub=checkpoint.get("active_substep") or ""
+  if "Expanded Regression Scenario Library" in sub:
+   mode="active_iar"
+  else:
+   req(any(s in sub for s in ("Integrated Expanded Regression Workflows","Completion Contract / Evidence Closure")),"PPIA-15 successor milestone is not recognized")
+   evidence=json.dumps(checkpoint,ensure_ascii=False)
+   for token in ("94029c704fa097f99440a58a64c4293d52b4ad36","31653764114","#287","740683e33ff6e3a0b1a8672c06fbbf9d87fa3bf5"):
+    req(token in evidence,f"successor mode missing immutable IAR evidence {token}")
+   mode="successor_after_verified_iar"
+  req(pointer.get("primary_attempt_id")=="PPIA-15-attempt-001","pointer does not select PPIA-15")
+  req(status.get("primary",{}).get("work_item_id")=="PPIA-15" and status.get("primary",{}).get("status") in {"started","ready_for_review"},"compact status does not select PPIA-15")
+ else:
+  order=backlog.get("execution_order",[])
+  req(current in order and order.index(current)>order.index("PPIA-15"),"historical IAR validation only allowed after PPIA-15")
+  req(tranches.get("PPIA-15",{}).get("status")=="completed_verified","historical PPIA-15 backlog must be completed_verified")
+  req(checkpoint.get("status")=="completed_verified" and checkpoint.get("completed_at"),"historical checkpoint must be completed_verified")
+  mode="historical_after_ppia15"
  bounds=backlog.get("boundaries",{})
  for k in ("application_runtime_mutation_authorized","a2_activation_authorized","release_authorized","deployment_authorized","tester_access_authorized","canonical_promotion_without_source_evidence_authorized"): req(bounds.get(k) is False,f"program boundary changed: {k}")
  print("PPIA-15 EXPANDED REGRESSION IAR: PASS")
  print("scenarios=24 awkward_families=18 projections=12 actions=20 new_iar_cases=40 effective_cases=72")
  print("gm_baseline_clones=0 f024_gap=open-not-invented synthetic_noncanonical=true")
- print("permission_filter=true hidden_missing_equivalence=true status_unknown_not_failure=true")
- print("runtime_activation=false a2_activation=false tester_access=false release=false deployment=false")
+ print(f"milestone_mode={mode} runtime_activation=false a2_activation=false tester_access=false release=false deployment=false")
 if __name__=="__main__": main()
