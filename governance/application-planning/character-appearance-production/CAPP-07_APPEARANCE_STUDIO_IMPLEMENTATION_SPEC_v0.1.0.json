@@ -21,47 +21,201 @@
     "commit_state": "explicit_authorized_write_only",
     "undo_redo": "draft_history_only_until_commit",
     "revert": "restore_last_committed_appearance_receipt",
-    "renderer_state": ["supported", "partial", "unsupported", "unknown"],
-    "recovery_state": ["clean", "dirty_recoverable", "ambiguous_prior_commit", "stale_renderer_projection", "import_requires_review"]
+    "renderer_state": [
+      "supported",
+      "partial",
+      "unsupported",
+      "unknown"
+    ],
+    "recovery_state": [
+      "clean",
+      "dirty_recoverable",
+      "ambiguous_prior_commit",
+      "stale_renderer_projection",
+      "import_requires_review"
+    ]
   },
   "layout_regions": [
-    {"region_id": "CAPP07-R01", "name": "context_header", "contains": ["Species", "lineage_or_variant", "current_Form", "active_profile", "appearance_version", "provenance_state"]},
-    {"region_id": "CAPP07-R02", "name": "semantic_inspector", "contains": ["18 inherited PPIA-06 inspector sections"], "scroll_policy": "independent_when_space_allows"},
-    {"region_id": "CAPP07-R03", "name": "preview_stage", "contains": ["full_body_3q", "portrait_zoom", "tactical_token", "coverage_status", "nonvisual_summary"]},
-    {"region_id": "CAPP07-R04", "name": "action_bar", "contains": ["undo", "redo", "revert", "save_preset", "import_export", "randomize", "commit"]},
-    {"region_id": "CAPP07-R05", "name": "diagnostics_drawer", "contains": ["constraint_diagnostics", "renderer_diagnostics", "fit_diagnostics", "migration_import_diagnostics", "provenance"]}
+    {
+      "region_id": "CAPP07-R01",
+      "name": "context_header",
+      "contains": [
+        "Species",
+        "lineage_or_variant",
+        "current_Form",
+        "active_profile",
+        "appearance_version",
+        "provenance_state"
+      ]
+    },
+    {
+      "region_id": "CAPP07-R02",
+      "name": "semantic_inspector",
+      "contains": [
+        "18 inherited PPIA-06 inspector sections"
+      ],
+      "scroll_policy": "independent_when_space_allows"
+    },
+    {
+      "region_id": "CAPP07-R03",
+      "name": "preview_stage",
+      "contains": [
+        "full_body_three_quarter",
+        "portrait_zoom",
+        "tactical_token",
+        "coverage_status",
+        "nonvisual_summary"
+      ]
+    },
+    {
+      "region_id": "CAPP07-R04",
+      "name": "action_bar",
+      "contains": [
+        "undo",
+        "redo",
+        "revert",
+        "save_preset",
+        "import_export",
+        "randomize",
+        "commit"
+      ]
+    },
+    {
+      "region_id": "CAPP07-R05",
+      "name": "diagnostics_drawer",
+      "contains": [
+        "constraint_diagnostics",
+        "renderer_diagnostics",
+        "fit_diagnostics",
+        "migration_import_diagnostics",
+        "provenance"
+      ]
+    }
   ],
   "section_bindings": [
-    {"section_id": "P06-UI-001", "control_pattern": "read_only_context_rows", "write_mode": "none"},
-    {"section_id": "P06-UI-002", "control_pattern": "registry_driven_selectors_and_bounded_inputs", "write_mode": "draft_only"},
-    {"section_id": "P06-UI-003", "control_pattern": "registry_driven_structural_feature_groups", "write_mode": "draft_only"},
-    {"section_id": "P06-UI-004", "control_pattern": "material_texture_covering_groups", "write_mode": "draft_only"},
-    {"section_id": "P06-UI-005", "control_pattern": "semantic_palette_zone_editor", "write_mode": "draft_only"},
-    {"section_id": "P06-UI-006", "control_pattern": "mixed_editable_read_only_marking_rows", "write_mode": "draft_only_for_authorized_fields"},
-    {"section_id": "P06-UI-007", "control_pattern": "source_bounded_age_presentation", "write_mode": "draft_only"},
-    {"section_id": "P06-UI-008", "control_pattern": "profile_manager", "write_mode": "appearance_profiles_only", "mechanics_write": false},
-    {"section_id": "P06-UI-009", "control_pattern": "presentation_wardrobe_browser", "write_mode": "presentation_only"},
-    {"section_id": "P06-UI-010", "control_pattern": "actual_equipment_projection_list", "write_mode": "none"},
-    {"section_id": "P06-UI-011", "control_pattern": "pose_expression_selector", "write_mode": "presentation_only"},
-    {"section_id": "P06-UI-012", "control_pattern": "three_state_view_switcher", "write_mode": "ephemeral_view_only"},
-    {"section_id": "P06-UI-013", "control_pattern": "randomization_recipe_and_lock_panel", "write_mode": "proposal_to_draft"},
-    {"section_id": "P06-UI-014", "control_pattern": "preset_import_export_panel", "write_mode": "draft_or_portable_preset_only"},
-    {"section_id": "P06-UI-015", "control_pattern": "coverage_diagnostic_table", "write_mode": "none"},
-    {"section_id": "P06-UI-016", "control_pattern": "accessible_summary_and_announcements", "write_mode": "none"},
-    {"section_id": "P06-UI-017", "control_pattern": "provenance_inspector", "write_mode": "none"},
-    {"section_id": "P06-UI-018", "control_pattern": "history_and_recovery_panel", "write_mode": "recovery_actions_only"}
+    {
+      "section_id": "P06-UI-001",
+      "control_pattern": "read_only_context_rows",
+      "write_mode": "none"
+    },
+    {
+      "section_id": "P06-UI-002",
+      "control_pattern": "registry_driven_selectors_and_bounded_inputs",
+      "write_mode": "draft_only"
+    },
+    {
+      "section_id": "P06-UI-003",
+      "control_pattern": "registry_driven_structural_feature_groups",
+      "write_mode": "draft_only"
+    },
+    {
+      "section_id": "P06-UI-004",
+      "control_pattern": "material_texture_covering_groups",
+      "write_mode": "draft_only"
+    },
+    {
+      "section_id": "P06-UI-005",
+      "control_pattern": "semantic_palette_zone_editor",
+      "write_mode": "draft_only"
+    },
+    {
+      "section_id": "P06-UI-006",
+      "control_pattern": "mixed_editable_read_only_marking_rows",
+      "write_mode": "draft_only_for_authorized_fields"
+    },
+    {
+      "section_id": "P06-UI-007",
+      "control_pattern": "source_bounded_age_presentation",
+      "write_mode": "draft_only"
+    },
+    {
+      "section_id": "P06-UI-008",
+      "control_pattern": "profile_manager",
+      "write_mode": "appearance_profiles_only",
+      "mechanics_write": false
+    },
+    {
+      "section_id": "P06-UI-009",
+      "control_pattern": "presentation_wardrobe_browser",
+      "write_mode": "presentation_only"
+    },
+    {
+      "section_id": "P06-UI-010",
+      "control_pattern": "actual_equipment_projection_list",
+      "write_mode": "none"
+    },
+    {
+      "section_id": "P06-UI-011",
+      "control_pattern": "pose_expression_selector",
+      "write_mode": "presentation_only"
+    },
+    {
+      "section_id": "P06-UI-012",
+      "control_pattern": "three_state_view_switcher",
+      "write_mode": "ephemeral_view_only"
+    },
+    {
+      "section_id": "P06-UI-013",
+      "control_pattern": "randomization_recipe_and_lock_panel",
+      "write_mode": "proposal_to_draft"
+    },
+    {
+      "section_id": "P06-UI-014",
+      "control_pattern": "preset_import_export_panel",
+      "write_mode": "draft_or_portable_preset_only"
+    },
+    {
+      "section_id": "P06-UI-015",
+      "control_pattern": "coverage_diagnostic_table",
+      "write_mode": "none"
+    },
+    {
+      "section_id": "P06-UI-016",
+      "control_pattern": "accessible_summary_and_announcements",
+      "write_mode": "none"
+    },
+    {
+      "section_id": "P06-UI-017",
+      "control_pattern": "provenance_inspector",
+      "write_mode": "none"
+    },
+    {
+      "section_id": "P06-UI-018",
+      "control_pattern": "history_and_recovery_panel",
+      "write_mode": "recovery_actions_only"
+    }
   ],
   "progressive_disclosure": {
     "rule": "Controls are generated from CAPP-01 eligibility and constraints; unavailable controls are omitted or explicitly disabled with reason, never replaced by humanoid defaults.",
-    "levels": ["category", "authorized_choice_group", "advanced_renderer_or_provenance_detail"],
+    "levels": [
+      "category",
+      "authorized_choice_group",
+      "advanced_renderer_or_provenance_detail"
+    ],
     "remember_expansion": "per_user_local_preference_not_character_state"
   },
   "responsive": {
-    "desktop": {"composition": "inspector_and_preview_side_by_side_when_width_allows", "preview_priority": "secondary_to_semantic_controls"},
-    "tablet": {"composition": "resizable_or_switchable_inspector_preview", "all_controls_preserved": true},
-    "mobile": {"composition": "stacked_or_tabbed_inspector_preview", "sticky_action_bar": true, "all_semantic_actions_preserved": true},
-    "high_zoom": {"rule": "preview collapses before mandatory semantic controls", "horizontal_scroll_for_primary_controls": false},
-    "reduced_motion": {"animated_transition_required": false, "textual_state_equivalent": true}
+    "desktop": {
+      "composition": "inspector_and_preview_side_by_side_when_width_allows",
+      "preview_priority": "secondary_to_semantic_controls"
+    },
+    "tablet": {
+      "composition": "resizable_or_switchable_inspector_preview",
+      "all_controls_preserved": true
+    },
+    "mobile": {
+      "composition": "stacked_or_tabbed_inspector_preview",
+      "sticky_action_bar": true,
+      "all_semantic_actions_preserved": true
+    },
+    "high_zoom": {
+      "rule": "preview collapses before mandatory semantic controls",
+      "horizontal_scroll_for_primary_controls": false
+    },
+    "reduced_motion": {
+      "animated_transition_required": false,
+      "textual_state_equivalent": true
+    }
   },
   "keyboard_focus_order": [
     "context_header",
@@ -82,8 +236,20 @@
     "Escape cancels transient dialogs but never silently discards dirty draft state."
   ],
   "screen_reader": {
-    "regions": ["context", "inspector", "preview_summary", "diagnostics", "actions"],
-    "announcements": ["changed_field", "constraint_rejection", "renderer_support_change", "import_review_required", "commit_result"],
+    "regions": [
+      "context",
+      "inspector",
+      "preview_summary",
+      "diagnostics",
+      "actions"
+    ],
+    "announcements": [
+      "changed_field",
+      "constraint_rejection",
+      "renderer_support_change",
+      "import_review_required",
+      "commit_result"
+    ],
     "color_only_state_forbidden": true,
     "preview_requires_structured_summary": true
   },
@@ -97,13 +263,34 @@
     "successful_commit": "replace baseline, clear dirty flag, preserve history receipt"
   },
   "error_empty_partial_states": [
-    {"state": "renderer_unsupported", "behavior": "keep Character editable; show nonvisual summary and unsupported coverage diagnostics"},
-    {"state": "renderer_partial", "behavior": "show available projection plus explicit missing coverage; never silently substitute"},
-    {"state": "no_assets", "behavior": "semantic editing remains available; preview uses explicit unknown/no-coverage state"},
-    {"state": "unknown_anatomy", "behavior": "no implicit humanoid controls; explain unavailable unresolved area"},
-    {"state": "import_requires_review", "behavior": "show unresolved stable IDs/incompatibilities before any commit"},
-    {"state": "hidden_information", "behavior": "filtered before preview, summaries, diagnostics, and export"},
-    {"state": "stale_preview", "behavior": "mark stale and regenerate from current authorized inputs before export"}
+    {
+      "state": "renderer_unsupported",
+      "behavior": "keep Character editable; show nonvisual summary and unsupported coverage diagnostics"
+    },
+    {
+      "state": "renderer_partial",
+      "behavior": "show available projection plus explicit missing coverage; never silently substitute"
+    },
+    {
+      "state": "no_assets",
+      "behavior": "semantic editing remains available; preview uses explicit unknown/no-coverage state"
+    },
+    {
+      "state": "unknown_anatomy",
+      "behavior": "no implicit humanoid controls; explain unavailable unresolved area"
+    },
+    {
+      "state": "import_requires_review",
+      "behavior": "show unresolved stable IDs/incompatibilities before any commit"
+    },
+    {
+      "state": "hidden_information",
+      "behavior": "filtered before preview, summaries, diagnostics, and export"
+    },
+    {
+      "state": "stale_preview",
+      "behavior": "mark stale and regenerate from current authorized inputs before export"
+    }
   ],
   "special_profile_rules": {
     "Arborae": "four linked separately customizable seasonal profiles; current season remains upstream read-only",

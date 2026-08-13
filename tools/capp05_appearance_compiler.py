@@ -60,13 +60,11 @@ def compile_render_plan(request: dict[str, Any], manifest: dict[str, Any]) -> di
         raise ValueError("manifest.assets must be a list")
 
     eligible: list[dict[str, Any]] = []
-    hidden_count = 0
     for asset in assets:
         if not isinstance(asset, dict):
             diagnostics.append({"code": "invalid_manifest_entry", "severity": "error"})
             continue
         if not _visible(asset, permissions):
-            hidden_count += 1
             continue
         if _matches(asset, request):
             eligible.append(asset)
@@ -129,7 +127,7 @@ def compile_render_plan(request: dict[str, Any], manifest: dict[str, Any]) -> di
         "coverage_state": coverage_state,
         "fallback_state": fallback_state,
         "diagnostics": diagnostics,
-        "hidden_asset_count": hidden_count,
+        "permission_filter_applied": True,
         "character_truth_changed": False,
         "actual_equipment_changed": False,
         "biology_changed": False,
@@ -144,21 +142,21 @@ def self_test() -> None:
         "asset_pack_version": "0",
         "assets": [
             {"asset_id": "b", "asset_version": "1", "semantic_band": "body", "layer_order": 2,
-             "profile_ids": ["P"], "view_ids": ["full_body_3q"], "support_state": "supported"},
+             "profile_ids": ["P"], "view_ids": ["full_body_three_quarter"], "support_state": "supported"},
             {"asset_id": "a", "asset_version": "1", "semantic_band": "body", "layer_order": 1,
-             "profile_ids": ["P"], "view_ids": ["full_body_3q"], "support_state": "supported"},
+             "profile_ids": ["P"], "view_ids": ["full_body_three_quarter"], "support_state": "supported"},
             {"asset_id": "secret", "asset_version": "1", "semantic_band": "body", "layer_order": 0,
-             "profile_ids": ["P"], "view_ids": ["full_body_3q"], "support_state": "supported",
+             "profile_ids": ["P"], "view_ids": ["full_body_three_quarter"], "support_state": "supported",
              "permission_tags": ["gm_only"]},
         ],
     }
     request = {"renderer_id": "pixel-art-v1", "renderer_version": "1", "profile_id": "P",
-               "view_id": "full_body_3q", "permission_projection": []}
+               "view_id": "full_body_three_quarter", "permission_projection": []}
     one = compile_render_plan(request, manifest)
     two = compile_render_plan(request, manifest)
     assert one == two
     assert [x["asset_id"] for x in one["layers"]] == ["a", "b"]
-    assert one["hidden_asset_count"] == 1
+    assert one["permission_filter_applied"] is True and "hidden_asset_count" not in one
     assert one["character_truth_changed"] is False
     altered = dict(request)
     altered["view_id"] = "portrait"

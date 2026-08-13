@@ -4,7 +4,13 @@
   "title": "Accessibility Description Grammar",
   "status": "built_pending_integrated_validation",
   "tool": "tools/capp10_accessibility_description.py",
-  "authorities": ["CAPP-01", "CAPP-07", "CAPP-06", "CAPP-04", "PPIA-06"],
+  "authorities": [
+    "CAPP-01",
+    "CAPP-07",
+    "CAPP-06",
+    "CAPP-04",
+    "PPIA-06"
+  ],
   "purpose": "Deterministic structured nonvisual description and change-announcement grammar for appearance state and renderer projection.",
   "section_order": [
     "topology",
@@ -18,17 +24,37 @@
   "section_contracts": {
     "topology": {
       "source": "authorized biology/topology snapshot",
-      "must_include_when_known": ["body organization", "governed limb/appendage structure relevant to appearance"],
-      "forbidden": ["invented humanoid assumptions", "mechanical reach/speed inference"]
+      "must_include_when_known": [
+        "body organization",
+        "governed limb/appendage structure relevant to appearance"
+      ],
+      "forbidden": [
+        "invented humanoid assumptions",
+        "mechanical reach/speed inference"
+      ]
     },
     "surface": {
       "source": "authorized semantic appearance state",
-      "may_include": ["skin", "fur", "feather", "scale", "chitin", "bark", "metal", "bone", "texture", "covering style"],
+      "may_include": [
+        "skin",
+        "fur",
+        "feather",
+        "scale",
+        "chitin",
+        "bark",
+        "metal",
+        "bone",
+        "texture",
+        "covering style"
+      ],
       "rule": "Only terms actually authorized by source/profile choices may be emitted."
     },
     "coloration": {
       "source": "semantic palette zones and authored choices",
-      "must_distinguish": ["biological coloration", "cosmetic dye when applicable"],
+      "must_distinguish": [
+        "biological coloration",
+        "cosmetic dye when applicable"
+      ],
       "rule": "Color names always have textual labels; color is never the sole state carrier."
     },
     "distinguishing_features": {
@@ -45,7 +71,12 @@
     },
     "renderer_support": {
       "source": "CAPP-04/CAPP-05 support and diagnostic state",
-      "must_expose": ["supported", "partial", "unsupported", "unknown"],
+      "must_expose": [
+        "supported",
+        "partial",
+        "unsupported",
+        "unknown"
+      ],
       "rule": "Missing visual coverage must be described without implying the Character state is invalid."
     }
   },
@@ -75,9 +106,12 @@
   ],
   "permission_filtering": {
     "stage": "before description assembly and before change comparison output",
-    "item_contract": {"text": "string", "permission_tags": "optional list"},
+    "item_contract": {
+      "text": "string",
+      "permission_tags": "optional list"
+    },
     "hidden_identity_output": false,
-    "filtered_count_may_be_reported": true
+    "filtered_count_may_be_reported": false
   },
   "nonvisual_status_vocabulary": {
     "selected": "Selected",
