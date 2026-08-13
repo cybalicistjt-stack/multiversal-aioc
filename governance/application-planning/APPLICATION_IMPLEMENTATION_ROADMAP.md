@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 2.6.0  
-**Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED; PPIA COMPLETED_VERIFIED  
+**Version:** 2.7.0  
+**Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED; PPIA COMPLETED_VERIFIED; CAPP AUTHORIZED PARALLEL WORK  
 **Owner and final authority:** John Brandon Turner  
 **Originally approved:** 2026-08-03  
 **Last updated:** 2026-08-13
@@ -26,6 +26,7 @@ The authoritative ordered Phase 9 backlog remains `governance/phase9/P9-06_IMPLE
 - **Design Standards exact-byte ingestion remains unfinished.** `DS-008-working-series-attempt-002` remains blocked on a capable exact-byte transfer/validation surface. Verified preparation remains PR #207 / merge `bd3071f6f855b66b740ba4bf1f1ba0208636548c`, PR #208 / merge `0cfd8128786e4cdd055e3e3be26bdd1854efdfa7`, PR #209 / merge `708e0ea72a6dce6f5d46ddacd042c1ddb80eee0a`, and prepared handoff commit `f0d9295215a057e0f42603a0777c276a7437aad4`.
 - **PPIA is completed_verified.** All sixteen tranches are complete/completed_verified. Final substantive PPIA-16 exact head `eede4bfb530056963a4a595faac54515ff151c3b` passed **70/70** applicable hosted workflows; dedicated run `31694048323` passed; PR #294 squash-merged as signed/verified `5b87d57d9b06fbb7427b6fae7ca022509f92a5fe`.
 - **PPIA final-state recovery is merged.** Exact recovery head `031d4c7af10245069a5cf8bd5b2819965e338cee` passed **70/70** hosted workflows; PR #295 squash-merged as signed/verified `8357cc812436e8bbe40c214ac0ca6e44363cc1a5`. PPIA-16 remains the completed evidence anchor; no successor is selected by PPIA completion.
+- **CAPP — Character Appearance Production Preparation is owner-approved parallel work.** CAPP inherits the completed PPIA-06 appearance architecture without reopening it. `CAPP-01 — 25-Species Appearance Choice Registry + Constraint Model` is the authorized first work item and is not yet started. CAPP does not activate A2/runtime/release/deployment/tester/paid-service/production-credential authority.
 - **Historical 8E-008G-R1 source-accountability closure remains PASS.** PR #218 / merge `d271d1e7ec453cd153a7bf5768b3df837ba677a9` records 101/101 acceptance checks PASS, 7,144/7,144 structural candidates accounted, 0 unbound source sections, and 1,671 formal deferrals preserved.
 
 This section is a recovery summary, not an autosave ledger. More recent verified repository evidence controls if the project advances beyond it.
@@ -39,6 +40,7 @@ This section is a recovery summary, not an autosave ledger. More recent verified
 - **Phase 9:** canonical product architecture, provider-neutral implementation foundations, acceptance gates, and bounded implementation readiness.
 - **Phase 10 / Stage A:** current core application implementation program.
 - **PPIA:** completed parallel pre-implementation advancement program retained as implementation input and historical evidence.
+- **CAPP:** owner-approved parallel Character Appearance production-preparation program that converts completed PPIA-06 architecture into production-ready data, tooling, renderer specifications, UX states and QA without activating application runtime.
 
 ## Completed Phase 8 milestones
 
@@ -128,6 +130,38 @@ No automatic successor is selected by PPIA completion. Independent unfinished/bl
 
 PPIA completion does not authorize runtime mutation, release, deployment, tester access, paid services, production credentials, or unsupported canonical-content promotion.
 
+## CAPP — Character Appearance Production Preparation — authorized parallel track
+
+Governing documents:
+- `governance/application-planning/character-appearance-production/CAPP_CHARACTER_APPEARANCE_PRODUCTION_PREPARATION_PROGRAM.md`
+- `governance/application-planning/character-appearance-production/CAPP_PROGRAM_BACKLOG.json`
+
+**Status:** OWNER-APPROVED — AUTHORIZED PARALLEL WORK; NOT YET STARTED.
+
+CAPP inherits and extends the completed PPIA-06 Character Appearance Creator architecture into production preparation. It does not reopen PPIA-06. PPIA-05 remains Species/Form biology authority and PPIA-03 remains actual Asset/equipment authority.
+
+Approved execution order:
+1. **CAPP-01 — 25-Species Appearance Choice Registry + Constraint Model** — AUTHORIZED NEXT / NOT STARTED
+2. **CAPP-02 — Preset, Randomization and Lock Libraries** — PLANNED
+3. **CAPP-03 — Pixel-Art Asset Production Standard** — PLANNED
+4. **CAPP-04 — Asset Manifest and Coverage Analyzer Contract** — PLANNED
+5. **CAPP-05 — Deterministic Appearance Compiler / Reference Engine** — PLANNED
+6. **CAPP-06 — Wardrobe and Equipment-Fit Compatibility Catalog** — PLANNED
+7. **CAPP-07 — Full Appearance Studio Screen and State Specification** — PLANNED
+8. **CAPP-08 — Portrait, Token and Export Production Contract** — PLANNED
+9. **CAPP-09 — Appearance Versioning and Migration Engine Contract** — PLANNED
+10. **CAPP-10 — Accessibility Description Grammar** — PLANNED
+11. **CAPP-11 — Expanded Generated QA and Coverage Corpus** — PLANNED
+12. **CAPP-12 — Integrated Production Handoff and Completion Gate** — PLANNED
+
+Dependency-optimized order: `CAPP-01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10 → 11 → 12`.
+
+CAPP-01 is first because later presets, randomization, asset production, coverage analysis, renderer tooling, UI controls and QA must derive from one stable machine-readable choice/constraint authority.
+
+CAPP may be selected as the conversational primary while STAGE-A-A2 remains the authorized current application item. CAPP selection does not activate A2 or alter the application work order. CAPP also does not complete/supersede DS-008 or WP-011 / Apple work.
+
+No CAPP item authorizes application runtime mutation, release, deployment, tester access, paid services, production credentials, or unsupported canonical-content promotion.
+
 ## Design Standards Completion subproject — unfinished parallel track
 
 The audited/canonicalization tranche is complete, but exact repository ingestion is not. The unfinished gate still requires T1–T4 exact-byte transfer, source/target checksum receipts, publication/full-ingestion validators, focused exact-head CI, PR/merge, and completion evidence. Do not reconstruct checksum-bound publications from excerpts, OCR, screenshots, regenerated prose, or memory.
@@ -187,7 +221,7 @@ Complete major workflows, authorized service integration, approved content popul
 
 - “Continue” means perform the next verified unfinished operation.
 - Read the authoritative backlog/work order before starting each item.
-- Preserve parallel tracks; completing PPIA does not complete or supersede A2, Design Standards, or Apple work.
+- Preserve parallel tracks; completing PPIA or working CAPP does not complete or supersede A2, Design Standards, Apple work, or other retained tracks.
 - Distinguish missing source bytes, transfer-tool limits, unavailable checkout, validation failure, and owner-only gates.
 - Never claim completion, files, commits, PRs, merges, tests, artifacts, deployments, or exact-byte ingestion without matching evidence.
 - Preserve source truth, provenance, variants, conflicts, stable IDs, exact-byte requirements, permissions, hidden-information boundaries, and reversibility.
