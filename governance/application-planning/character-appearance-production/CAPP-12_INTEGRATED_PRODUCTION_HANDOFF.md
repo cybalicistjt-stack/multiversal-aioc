@@ -1,6 +1,6 @@
 # CAPP-12 Integrated Production Handoff
 
-**State:** content built; integrated validation pending. This is not a `completed_verified` claim.
+**State:** CAPP-04 through CAPP-12 completed and verified as one integrated production-preparation tranche.
 
 ## Authority
 
