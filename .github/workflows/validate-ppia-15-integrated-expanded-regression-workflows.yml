@@ -15,6 +15,7 @@ on:
       - 'scripts/validate-ppia14-to-ppia15-transition.py'
       - 'scripts/validate-ppia14-completion-contracts.py'
       - 'scripts/validate-ppia11-completion-contracts.py'
+      - 'scripts/validate-ppia11-completion-historical-safe.py'
       - 'scripts/validate-ppia10-completion-contracts.py'
       - 'scripts/validate-ppia09-completion-contracts.py'
       - '.github/workflows/validate-ppia-15-integrated-expanded-regression-workflows.yml'
@@ -28,6 +29,8 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -40,10 +43,6 @@ jobs:
           if backlog.get('current_work_item_id') == 'PPIA-15':
               cmd = ['python', 'scripts/validate-ppia15-integrated-expanded-regression-workflows.py']
           else:
-              # Once PPIA-15 is completed and a successor is active, its final
-              # completion contract is the stronger historical regression: it
-              # revalidates the integrated surface, exact-once case assignment,
-              # immutable milestone evidence and nonactivation boundaries.
               cmd = ['python', 'scripts/validate-ppia15-completion-contracts.py']
           raise SystemExit(subprocess.call(cmd))
           PY
@@ -55,8 +54,8 @@ jobs:
         run: python scripts/validate-ppia14-to-ppia15-transition.py
       - name: Validate PPIA-14 completion dependency regression
         run: python scripts/validate-ppia14-completion-contracts.py
-      - name: Validate PPIA-11 completion dependency regression
-        run: python scripts/validate-ppia11-completion-contracts.py
+      - name: Validate PPIA-11 completion dependency current or historical evidence
+        run: python scripts/validate-ppia11-completion-historical-safe.py
       - name: Validate PPIA-10 completion dependency regression
         run: python scripts/validate-ppia10-completion-contracts.py
       - name: Validate PPIA-09 completion dependency regression
