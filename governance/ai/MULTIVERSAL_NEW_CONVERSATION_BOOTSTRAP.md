@@ -2,7 +2,7 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 5.5.0  
+**Version:** 5.6.0  
 **Status:** ACTIVE  
 **Owner and final authority:** John Brandon Turner  
 **Governance repository:** `cybalicistjt-stack/multiversal-aioc`  
@@ -49,7 +49,7 @@ Perform this sequence before explaining, planning, or claiming work:
 6. Read `governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json`. Treat it as the compact control-health projection; follow its source scorecard only when a pilot result, limitation, or regression needs inspection.
 7. Inspect the latest commits, pull requests, reviews, and CI relevant to the checkpoint in both repositories, including repository evidence newer than the pointer's timestamp.
 8. Read `governance/ci-failures/INDEX.md` from branch `ci/failure-records`; repair any current blocking failure before unrelated work. Historical recorded failures are not automatically current blockers; bind any blocker claim to the active attempt or current required gate.
-9. Read `governance/ai/runtime/ROADMAP_INDEX.json` and only the governing roadmap section for the primary work item. If the primary work item is in CAPP, also read `governance/application-planning/character-appearance-production/CAPP_CHARACTER_APPEARANCE_PRODUCTION_PREPARATION_PROGRAM.md` and `CAPP_PROGRAM_BACKLOG.json` before execution.
+9. Read `governance/ai/runtime/ROADMAP_INDEX.json` and only the governing roadmap section for the primary work item. For Stage A application work, product strategy, feature planning, or creator/spatial/AI experience decisions, also read `governance/application-planning/multiversal-experience-superset/MXS_PROGRAM_STATE_v0.1.0.json` and the applicable MXS program/reconciliation section. If the primary recovery anchor is CAPP, read its backlog only to confirm the completed state rather than restarting it.
 10. If the active operation depends on owner-supplied archives, generated packages, binaries, exact publication bytes, screenshots, physical-device artifacts, or other external source material, inspect the actually available project/session sources before declaring an execution-surface blocker. Distinguish `source bytes unavailable`, `source bytes available but tool cannot transfer them`, `repository checkout unavailable`, and `validation/CI failure`; these are different recovery states.
 11. Load additional canonical documents only when required by the active operation. Do not read or rewrite the full roadmap merely to save routine progress.
 12. Run `python tools/continuity_state.py validate` when a usable checkout is available. When only connector access is available, verify the same pointer/checkpoint/branch/evidence invariants directly.
@@ -85,6 +85,14 @@ For any exact-byte, checksum-bound, binary, archive, or evidence-ingestion task,
 
 Never reconstruct exact-byte artifacts from truncated excerpts, paraphrase, regenerated prose, OCR, screenshots, or memory when checksum identity is part of the acceptance gate. Never invent missing checksums. If the required source becomes available on a later surface, re-evaluate the blocker instead of repeating an obsolete tool-limitation claim.
 
+## MXS strategic authority rule
+
+The owner-approved **MXS — Multiversal Experience Superset Strategy** governs product-direction and Stage A acceptance without replacing repository implementation evidence. For Stage A planning/implementation, preserve the current application work order and apply MXS through the earliest relevant stage rather than creating a new giant preimplementation blocker.
+
+MXS requires three product-value questions where applicable: what established tabletop user value is the parity floor; how the capability uses shared Multiversal identity/permissions/provenance/recovery; and what additional value becomes possible because systems are connected. It also governs Play Experience Profiles, progressive complexity, human-experience/anti-dark-pattern constraints, creator portability, bridge-first VTT/spatial maturity, campaign memory/causal-history direction, governed AI and the cross-cutting controls recorded in `MXS_PROGRAM_STATE_v0.1.0.json`.
+
+MXS does not itself activate A2, reorder Stage A, reopen IA/PPIA/CAPP, authorize full VTT work ahead of its dependencies, select pricing/providers, or grant release/deployment/tester/marketplace/public-community authority.
+
 ## Work-state interpretation
 
 Only `completed_verified` is complete.
@@ -105,6 +113,8 @@ Never infer completion from a previous conversation ending, a long response, a g
 ## Milestone-only checkpoint protocol
 
 The owner must not manually copy, promote, or summarize progress between conversations.
+
+When the owner has authorized a bounded multi-item tranche, default to **build first, integrate second**: construct the full bounded tranche with the smallest targeted checks needed to avoid compounding defects, then run integrated QA/repair, one final hosted gate where required, and one completion projection. Do not manufacture a separate validation/roadmap/merge cycle for every small item unless an explicit hard dependency or safety/completion gate requires it. A failed integrated gate still leaves the tranche unfinished.
 
 For every governed operation:
 
@@ -152,9 +162,7 @@ Starting a side mission must not mark another track complete, superseded, or aba
 
 Application implementation authority may also be recorded canonically inside `cybalicistjt-stack/Multiversal-app` even while the AIOC conversational primary points to a governance/design side mission. A selected AIOC primary attempt does not by itself supersede the application repository's authorized current work order, and an application work order does not silently complete or discard the AIOC primary attempt.
 
-CAPP — Character Appearance Production Preparation is an owner-approved parallel track that inherits completed PPIA-06 without reopening it. When CAPP is selected, recover its active work from `governance/application-planning/character-appearance-production/CAPP_PROGRAM_BACKLOG.json`, the CAPP checkpoint, exact branch/PR/CI evidence and the CAPP program document. Selecting CAPP does not activate or supersede STAGE-A-A2, DS-008, WP-011 / Apple work or any other retained track.
-
-CAPP work is repository/governance production preparation unless a specific item explicitly requires a checkout or external exact bytes. Do not invent an A2-style checkout blocker for CAPP merely because A2 itself is checkout-blocked; evaluate the actual CAPP work item and available connector/source surface.
+CAPP — Character Appearance Production Preparation is completed_verified and retained as implementation input. Its completed backlog/checkpoint/PR/CI evidence may be read for provenance or downstream implementation requirements, but CAPP must not be restarted as active work merely because its recovery anchor remains in a runtime pointer. CAPP completion does not activate or supersede STAGE-A-A2, DS-008, WP-011 / Apple work or any other retained track.
 
 ## Roadmap-performance rule
 

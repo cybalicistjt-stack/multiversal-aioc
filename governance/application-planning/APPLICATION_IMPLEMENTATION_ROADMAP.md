@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 2.7.0  
-**Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED; PPIA COMPLETED_VERIFIED; CAPP AUTHORIZED PARALLEL WORK  
+**Version:** 2.8.0  
+**Status:** ACTIVE — STAGE-A-A2 AUTHORIZED CURRENT; PPIA AND CAPP COMPLETED_VERIFIED; MXS OWNER-APPROVED STRATEGIC AUTHORITY  
 **Owner and final authority:** John Brandon Turner  
 **Originally approved:** 2026-08-03  
 **Last updated:** 2026-08-13
@@ -26,7 +26,9 @@ The authoritative ordered Phase 9 backlog remains `governance/phase9/P9-06_IMPLE
 - **Design Standards exact-byte ingestion remains unfinished.** `DS-008-working-series-attempt-002` remains blocked on a capable exact-byte transfer/validation surface. Verified preparation remains PR #207 / merge `bd3071f6f855b66b740ba4bf1f1ba0208636548c`, PR #208 / merge `0cfd8128786e4cdd055e3e3be26bdd1854efdfa7`, PR #209 / merge `708e0ea72a6dce6f5d46ddacd042c1ddb80eee0a`, and prepared handoff commit `f0d9295215a057e0f42603a0777c276a7437aad4`.
 - **PPIA is completed_verified.** All sixteen tranches are complete/completed_verified. Final substantive PPIA-16 exact head `eede4bfb530056963a4a595faac54515ff151c3b` passed **70/70** applicable hosted workflows; dedicated run `31694048323` passed; PR #294 squash-merged as signed/verified `5b87d57d9b06fbb7427b6fae7ca022509f92a5fe`.
 - **PPIA final-state recovery is merged.** Exact recovery head `031d4c7af10245069a5cf8bd5b2819965e338cee` passed **70/70** hosted workflows; PR #295 squash-merged as signed/verified `8357cc812436e8bbe40c214ac0ca6e44363cc1a5`. PPIA-16 remains the completed evidence anchor; no successor is selected by PPIA completion.
-- **CAPP — Character Appearance Production Preparation is owner-approved parallel work.** CAPP inherits the completed PPIA-06 appearance architecture without reopening it. `CAPP-01 — 25-Species Appearance Choice Registry + Constraint Model` is the authorized first work item and is not yet started. CAPP does not activate A2/runtime/release/deployment/tester/paid-service/production-credential authority.
+- **CAPP — Character Appearance Production Preparation is completed_verified.** CAPP-01 through CAPP-12 are closed as one integrated production-preparation program. Final completion projection merged in PR #307 at signed/verified merge `586d9d01c7b28bc8adb483fee5b001b50585ea37`; CAPP does not activate A2/runtime/release/deployment/tester/paid-service/production-credential authority.
+- **MXS — Multiversal Experience Superset Strategy is owner-approved strategic authority.** MXS defines industry-parity, playstyle, human-experience, creator, spatial-bridge and signature-experience gates for Stage A without changing the authorized current item: STAGE-A-A2 remains next.
+- **Repository-solidity recovery is preserved.** Current-main audits, Stage A A2–A12 recovery mapping and tooling-salvage inventories are retained as reconciliation inputs; historical branches are not current authority merely because they exist.
 - **Historical 8E-008G-R1 source-accountability closure remains PASS.** PR #218 / merge `d271d1e7ec453cd153a7bf5768b3df837ba677a9` records 101/101 acceptance checks PASS, 7,144/7,144 structural candidates accounted, 0 unbound source sections, and 1,671 formal deferrals preserved.
 
 This section is a recovery summary, not an autosave ledger. More recent verified repository evidence controls if the project advances beyond it.
@@ -40,7 +42,8 @@ This section is a recovery summary, not an autosave ledger. More recent verified
 - **Phase 9:** canonical product architecture, provider-neutral implementation foundations, acceptance gates, and bounded implementation readiness.
 - **Phase 10 / Stage A:** current core application implementation program.
 - **PPIA:** completed parallel pre-implementation advancement program retained as implementation input and historical evidence.
-- **CAPP:** owner-approved parallel Character Appearance production-preparation program that converts completed PPIA-06 architecture into production-ready data, tooling, renderer specifications, UX states and QA without activating application runtime.
+- **CAPP:** completed_verified Character Appearance production-preparation program retained as implementation input.
+- **MXS:** owner-approved Experience Superset strategic program defining the product floor, supported play families, human-experience constraints, creator/spatial strategy and Multiversal-specific differentiation consumed by Stage A.
 
 ## Completed Phase 8 milestones
 
@@ -130,37 +133,49 @@ No automatic successor is selected by PPIA completion. Independent unfinished/bl
 
 PPIA completion does not authorize runtime mutation, release, deployment, tester access, paid services, production credentials, or unsupported canonical-content promotion.
 
-## CAPP — Character Appearance Production Preparation — authorized parallel track
+## CAPP — Character Appearance Production Preparation — completed_verified parallel track
 
 Governing documents:
 - `governance/application-planning/character-appearance-production/CAPP_CHARACTER_APPEARANCE_PRODUCTION_PREPARATION_PROGRAM.md`
 - `governance/application-planning/character-appearance-production/CAPP_PROGRAM_BACKLOG.json`
 
-**Status:** OWNER-APPROVED — AUTHORIZED PARALLEL WORK; NOT YET STARTED.
+**Status:** COMPLETED_VERIFIED — OWNER-APPROVED PARALLEL PROGRAM CLOSED.
 
 CAPP inherits and extends the completed PPIA-06 Character Appearance Creator architecture into production preparation. It does not reopen PPIA-06. PPIA-05 remains Species/Form biology authority and PPIA-03 remains actual Asset/equipment authority.
 
-Approved execution order:
-1. **CAPP-01 — 25-Species Appearance Choice Registry + Constraint Model** — AUTHORIZED NEXT / NOT STARTED
-2. **CAPP-02 — Preset, Randomization and Lock Libraries** — PLANNED
-3. **CAPP-03 — Pixel-Art Asset Production Standard** — PLANNED
-4. **CAPP-04 — Asset Manifest and Coverage Analyzer Contract** — PLANNED
-5. **CAPP-05 — Deterministic Appearance Compiler / Reference Engine** — PLANNED
-6. **CAPP-06 — Wardrobe and Equipment-Fit Compatibility Catalog** — PLANNED
-7. **CAPP-07 — Full Appearance Studio Screen and State Specification** — PLANNED
-8. **CAPP-08 — Portrait, Token and Export Production Contract** — PLANNED
-9. **CAPP-09 — Appearance Versioning and Migration Engine Contract** — PLANNED
-10. **CAPP-10 — Accessibility Description Grammar** — PLANNED
-11. **CAPP-11 — Expanded Generated QA and Coverage Corpus** — PLANNED
-12. **CAPP-12 — Integrated Production Handoff and Completion Gate** — PLANNED
+Verified completion order:
+1. **CAPP-01 — 25-Species Appearance Choice Registry + Constraint Model** — COMPLETED_VERIFIED
+2. **CAPP-02 — Preset, Randomization and Lock Libraries** — COMPLETED_VERIFIED
+3. **CAPP-03 — Pixel-Art Asset Production Standard** — COMPLETED_VERIFIED
+4. **CAPP-04 — Asset Manifest and Coverage Analyzer Contract** — COMPLETED_VERIFIED
+5. **CAPP-05 — Deterministic Appearance Compiler / Reference Engine** — COMPLETED_VERIFIED
+6. **CAPP-06 — Wardrobe and Equipment-Fit Compatibility Catalog** — COMPLETED_VERIFIED
+7. **CAPP-07 — Full Appearance Studio Screen and State Specification** — COMPLETED_VERIFIED
+8. **CAPP-08 — Portrait, Token and Export Production Contract** — COMPLETED_VERIFIED
+9. **CAPP-09 — Appearance Versioning and Migration Engine Contract** — COMPLETED_VERIFIED
+10. **CAPP-10 — Accessibility Description Grammar** — COMPLETED_VERIFIED
+11. **CAPP-11 — Expanded Generated QA and Coverage Corpus** — COMPLETED_VERIFIED
+12. **CAPP-12 — Integrated Production Handoff and Completion Gate** — COMPLETED_VERIFIED
 
 Dependency-optimized order: `CAPP-01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10 → 11 → 12`.
 
-CAPP-01 is first because later presets, randomization, asset production, coverage analysis, renderer tooling, UI controls and QA must derive from one stable machine-readable choice/constraint authority.
+CAPP is closed as implementation input. The final integrated tranche preserved PPIA-05 biology authority, PPIA-03 equipment authority, permission-safe rendering/export behavior and generated QA. CAPP completion does not complete/supersede STAGE-A-A2, DS-008 or WP-011 / Apple work and grants no runtime mutation, release, deployment, tester access, paid-service, production-credential or unsupported canonical-content-promotion authority.
 
-CAPP may be selected as the conversational primary while STAGE-A-A2 remains the authorized current application item. CAPP selection does not activate A2 or alter the application work order. CAPP also does not complete/supersede DS-008 or WP-011 / Apple work.
+## MXS — Multiversal Experience Superset Strategy — owner-approved strategic authority
 
-No CAPP item authorizes application runtime mutation, release, deployment, tester access, paid services, production credentials, or unsupported canonical-content promotion.
+Governing documents:
+- `governance/application-planning/multiversal-experience-superset/MXS_MULTIVERSAL_EXPERIENCE_SUPERSET_STRATEGY_PROGRAM.md`
+- `governance/application-planning/multiversal-experience-superset/MXS_PROGRAM_STATE_v0.1.0.json`
+- `governance/application-planning/multiversal-experience-superset/MXS-12_PRODUCT_SUPERSET_STAGE_A_RECONCILIATION_v0.1.0.md`
+- `governance/application-planning/STAGE_A_PREIMPLEMENTATION_RECOVERY_MATRIX_2026-08-13.md`
+
+MXS makes the strongest current tabletop products and play systems the product floor while preserving Multiversal's own architecture. Every affected Stage A package should distinguish: **Parity Gate** (expected user value), **Integration Gate** (shared Multiversal identity/permissions/provenance/recovery) and **Multiversal Gate** (additional value created by interconnection).
+
+MXS adds Play Experience Profiles over stable canonical truth; progressive complexity; GM cognitive-load constraints; session-zero/table-dynamics support; meaningful campaign memory/World Pulse; causal-history/Why Engine direction; creator/rules-profile architecture; bridge-first spatial/VTT maturity; human-governed AI; data portability; content-rights/economic/community boundaries; bounded scale/discovery/time-to-table requirements; and product-quality evidence that does not optimize compulsive app engagement.
+
+MXS does **not** reorder Stage A or create a giant pre-A2 blocker. STAGE-A-A2 remains the authorized current application item. Cross-cutting MXS contracts are finalized only when the earliest dependent Stage A item needs them. Native VTT maturity is staged from theater-of-the-mind and abstract spatial support toward later 2D/dynamic-visibility/advanced spatial capability.
+
+MXS strategy grants no application activation, release, deployment, tester access, paid-service, production-credential, marketplace, public-community or autonomous-AI authority.
 
 ## Design Standards Completion subproject — unfinished parallel track
 
@@ -168,7 +183,7 @@ The audited/canonicalization tranche is complete, but exact repository ingestion
 
 ## Phase 10 / Stage A — Core Application Implementation
 
-Primary programs remain application shell/design system; universal objects; identity/workspaces/permissions; character workspace; campaign/scene builder; live session; combat; inventory/equipment/crafting/vehicles; investigation/social; world builder; contextual AI; and internal-alpha hardening.
+Primary programs remain application shell/design system; universal objects; identity/workspaces/permissions; character workspace; campaign/scene builder; live session; combat; inventory/equipment/crafting/vehicles; investigation/social; world builder; contextual AI; and internal-alpha hardening. MXS strategic acceptance applies where relevant across A2–A12: profile-neutral architecture, Parity/Integration/Multiversal gates, progressive complexity, human-experience constraints, campaign memory, creator portability, bridge-first spatial strategy, bounded scale and evidence-backed product quality.
 
 ### Current authorized application work item — STAGE-A-A2
 
