@@ -23,13 +23,15 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: Validate PPIA-06 to PPIA-13 transition
         run: python scripts/validate-ppia06-to-ppia13-transition.py
       - name: Validate PPIA-06 completion regression
-        run: python scripts/validate-ppia06-completion-contracts.py
+        run: python scripts/validate-ppia06-completion-historical-safe.py
       - name: Validate PPIA-06 integrated workflow regression
         run: python scripts/validate-ppia06-integrated-workflows.py
       - name: Validate PPIA-06 inspector/action/reference regression
@@ -38,7 +40,7 @@ jobs:
         run: python scripts/validate-ppia06-species-visual-addendum.py
       - name: Validate PPIA-06 foundation regression
         run: python scripts/validate-ppia06-foundation.py
-      - name: Validate PPIA-11 to PPIA-06 transition regression
+      - name: Validate PPIA-11 to PPIA-06 Transition regression
         run: python scripts/validate-ppia11-to-ppia06-transition.py
       - name: Validate generalized PPIA continuity
         run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
