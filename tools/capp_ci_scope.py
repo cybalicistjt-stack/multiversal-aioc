@@ -34,7 +34,7 @@ def forbidden_lines(text: str) -> list[str]:
 
 
 def apply() -> int:
-    changed = 0
+    changed_paths: list[str] = []
     for path in ppi_feature_workflows():
         text = path.read_text(encoding="utf-8")
         lines = []
@@ -49,8 +49,10 @@ def apply() -> int:
             lines.append(line)
         if removed:
             path.write_text("".join(lines), encoding="utf-8", newline="\n")
-            changed += 1
-    print(f"CAPP CI scope apply: changed_workflows={changed}")
+            changed_paths.append(str(path.relative_to(ROOT)))
+    print(f"CAPP CI scope apply: changed_workflows={len(changed_paths)}")
+    for path in changed_paths:
+        print(f"CAPP_CI_SCOPE_CHANGED={path}")
     return 0
 
 
