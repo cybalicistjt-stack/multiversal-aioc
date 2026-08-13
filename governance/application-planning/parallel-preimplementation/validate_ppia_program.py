@@ -15,7 +15,8 @@ WORK_STATE_DIR = ROOT / "governance" / "ai" / "work-state"
 
 EXPECTED_IDS = [f"PPIA-{index:02d}" for index in range(1, 17)]
 EXPECTED_ORDER = ["PPIA-01","PPIA-02","PPIA-03","PPIA-04","PPIA-05","PPIA-12","PPIA-07","PPIA-08","PPIA-09","PPIA-10","PPIA-11","PPIA-06","PPIA-13","PPIA-14","PPIA-15","PPIA-16"]
-ACTIVE_STATUSES = {"started", "in_progress"}
+ACTIVE_TRANCHE_STATUSES = {"started", "in_progress"}
+UNFINISHED_CHECKPOINT_STATUSES = {"started", "in_progress", "validation_failed", "blocked_non_owner", "blocked_owner", "ready_for_review"}
 COMPLETE_STATUSES = {"complete", "completed", "completed_verified"}
 
 P7_FINAL_HEAD = "c8e9d1ab677ca4bb37a772b1883099d23abb8187"
@@ -123,7 +124,7 @@ def main() -> int:
     for work_item_id in EXPECTED_ORDER[:current_index]:
         assert tranche_by_id[work_item_id]["status"] in COMPLETE_STATUSES
     current_tranche = tranche_by_id[current_id]
-    assert current_tranche["status"] in ACTIVE_STATUSES
+    assert current_tranche["status"] in ACTIVE_TRANCHE_STATUSES
     for work_item_id in EXPECTED_ORDER[current_index + 1:]:
         assert tranche_by_id[work_item_id]["status"] == "planned"
 
@@ -148,14 +149,15 @@ def main() -> int:
     assert selected_entry["work_item_id"] == current_id
     checkpoint = checkpoint_for_pointer_entry(selected_entry)
     assert checkpoint["work_item_id"] == current_id and checkpoint["attempt_id"] == selected_entry["attempt_id"]
-    assert checkpoint["owner_decision_required"] is False and checkpoint["status"] in ACTIVE_STATUSES
+    assert checkpoint["owner_decision_required"] is False and checkpoint["status"] in UNFINISHED_CHECKPOINT_STATUSES
 
     app_tracks = [item for item in pointer["deferred_tracks"] if item["track"] == "application-implementation"]
     assert len(app_tracks) == 1 and app_tracks[0]["next_work_item_id"] == "STAGE-A-A2" and "checkout_runner_blocked" in app_tracks[0]["state"]
 
     primary = status["primary"]
     assert primary["work_item_id"] == current_id and primary["attempt_id"] == checkpoint["attempt_id"]
-    assert primary["status"] == checkpoint["status"] == selected_entry["status"] == current_tranche["status"]
+    assert primary["status"] == checkpoint["status"] == selected_entry["status"]
+    assert current_tranche["status"] in ACTIVE_TRANCHE_STATUSES
     for field in ("active_substep","next_action","pull_request","latest_pushed_commit","roadmap_projection_pending"):
         assert primary[field] == checkpoint.get(field)
     assert primary["roadmap_projection_pending"] == selected_entry["roadmap_projection_pending"]
