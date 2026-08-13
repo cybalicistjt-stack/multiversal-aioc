@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "CAPP-06",
+  "title": "Wardrobe and Equipment-Fit Compatibility Catalog",
+  "status": "built_pending_integrated_validation",
+  "authority": "renderer_presentation_compatibility_only",
+  "upstream": ["CAPP-01", "CAPP-03", "PPIA-03", "PPIA-05", "PPIA-06"],
+  "compatibility_states": ["supported", "partial", "unsupported", "unknown", "not_applicable"],
+  "fit_classes": [
+    {"fit_class_id": "CAPP06-FIT-BODY-STANDARD", "semantic_scope": "body_garment", "description": "Standard body garment projection where the governed topology declares the required anchors."},
+    {"fit_class_id": "CAPP06-FIT-BODY-LARGE", "semantic_scope": "body_garment", "description": "Large-frame presentation projection; scale is renderer metadata and does not alter biology."},
+    {"fit_class_id": "CAPP06-FIT-BODY-SMALL", "semantic_scope": "body_garment", "description": "Small-frame presentation projection; scale is renderer metadata and does not alter biology."},
+    {"fit_class_id": "CAPP06-FIT-FOUR-ARM", "semantic_scope": "upper_body_and_armwear", "description": "Four-arm topology with explicit secondary-arm anchors."},
+    {"fit_class_id": "CAPP06-FIT-SIX-LIMB", "semantic_scope": "body_and_limbwear", "description": "Six-limb topology; exact limb allocation is taken from topology authority rather than inferred."},
+    {"fit_class_id": "CAPP06-FIT-WING-CLEARANCE", "semantic_scope": "back_and_outerwear", "description": "Requires explicit wing-root clearance or compatible cutout/mask data."},
+    {"fit_class_id": "CAPP06-FIT-TAIL-CLEARANCE", "semantic_scope": "lower_body_and_outerwear", "description": "Requires explicit tail-root clearance or compatible cutout/mask data."},
+    {"fit_class_id": "CAPP06-FIT-UNUSUAL-HEAD", "semantic_scope": "headwear", "description": "Headwear requires declared head anchors and must not force humanoid ear/horn assumptions."},
+    {"fit_class_id": "CAPP06-FIT-NESTED-APPENDAGE", "semantic_scope": "hand_and_appendage", "description": "Nested appendage projection such as Suula hand/claw structures; parent/child anchors remain explicit."},
+    {"fit_class_id": "CAPP06-FIT-AQUATIC", "semantic_scope": "body_and_accessory", "description": "Aquatic presentation class; no locomotion or breathing mechanics are inferred."},
+    {"fit_class_id": "CAPP06-FIT-INSECTOID", "semantic_scope": "body_and_appendage", "description": "Insectoid renderer fit class; segment and limb facts must come from upstream topology authority."},
+    {"fit_class_id": "CAPP06-FIT-PLANT", "semantic_scope": "body_and_accessory", "description": "Plant renderer fit class; no botanical anatomy is invented beyond upstream profiles."},
+    {"fit_class_id": "CAPP06-FIT-COMPOSITE", "semantic_scope": "multi_constituent_projection", "description": "Composite presentation class for repeated/constituent bodies such as ManyToms."},
+    {"fit_class_id": "CAPP06-FIT-UNKNOWN", "semantic_scope": "unknown", "description": "Explicit unresolved fit class. No standard humanoid fallback is implied."}
+  ],
+  "topology_overrides": {
+    "CAPP03-TOP-MORAVI": {
+      "required_facts": {"arms": 2, "legs": 4},
+      "preferred_fit_classes": ["CAPP06-FIT-SIX-LIMB"],
+      "forbidden_behavior": ["collapse_to_biped", "discard_extra_legs", "warp_standard_pants_silently"]
+    },
+    "CAPP03-TOP-VESPIN": {
+      "required_facts": {"arms": 4, "legs": 2},
+      "preferred_fit_classes": ["CAPP06-FIT-FOUR-ARM", "CAPP06-FIT-SIX-LIMB"],
+      "forbidden_behavior": ["hide_secondary_arms_without_diagnostic", "reuse_two_arm_sleeve_asset_as_supported"]
+    },
+    "CAPP03-TOP-SUULA": {
+      "required_facts": {"nested_hands": true},
+      "preferred_fit_classes": ["CAPP06-FIT-NESTED-APPENDAGE"],
+      "forbidden_behavior": ["flatten_nested_hand_claw_structure", "approximate_missing_child_anchor"]
+    },
+    "CAPP03-TOP-MANYTOMS": {
+      "required_facts": {"repeated_constituents": true},
+      "preferred_fit_classes": ["CAPP06-FIT-COMPOSITE"],
+      "forbidden_behavior": ["treat_constituents_as_independent_inventory_owners", "randomly_drop_constituents"]
+    },
+    "CAPP03-TOP-UNKNOWN": {
+      "preferred_fit_classes": ["CAPP06-FIT-UNKNOWN"],
+      "support_state": "unknown",
+      "synthesize_anatomy": false
+    }
+  },
+  "catalog_entry_contract": {
+    "required": ["catalog_entry_id", "asset_or_semantic_item_id", "projection_kind", "fit_class_id", "topology_template_ids", "support_state", "provenance_class"],
+    "projection_kinds": ["presentation_wardrobe", "actual_equipment_visual_projection"],
+    "optional": ["required_anchor_ids", "required_mask_ids", "occlusion_rules", "variant_ids", "diagnostic_code", "notes"]
+  },
+  "rules": [
+    "Presentation wardrobe never creates or changes actual inventory ownership.",
+    "Actual-equipment visual projection reads equipment authority but never changes mechanics, equip state, slot state, or ownership.",
+    "Unsupported fit is reported as unsupported; assets may not be silently warped, clipped, dropped, or substituted.",
+    "Partial fit requires an explicit diagnostic and may identify missing anchors/masks without inventing them.",
+    "Unknown topology remains unknown and may not receive a default humanoid fit claim.",
+    "Renderer fit metadata is not Character truth.",
+    "Hidden or unauthorized equipment identity must be permission-filtered before visual projection.",
+    "Wing, tail, horn, nested-appendage, and multi-limb clearance must use explicit topology/anchor data.",
+    "CAPP-06 defines fit compatibility; CAPP-08 defines export/framing behavior and CAPP-05 consumes fit_class as presentation input."
+  ],
+  "diagnostic_codes": [
+    "CAPP06-NO-FIT-DATA",
+    "CAPP06-UNSUPPORTED-TOPOLOGY",
+    "CAPP06-MISSING-ANCHOR",
+    "CAPP06-MISSING-MASK",
+    "CAPP06-PARTIAL-PROJECTION",
+    "CAPP06-HIDDEN-BY-PERMISSION",
+    "CAPP06-UNKNOWN-TOPOLOGY",
+    "CAPP06-NO-SILENT-WARP"
+  ],
+  "boundaries": {
+    "inventory_ownership_change": false,
+    "mechanics_change": false,
+    "biology_change": false,
+    "silent_warp": false,
+    "runtime_activation": false
+  }
+}
