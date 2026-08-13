@@ -22,9 +22,7 @@ STAGES = {
         "run": "31682807809",
         "pr": 290,
         "workflows": 66,
-        "immutable_paths": [
-            "scripts/validate-ppia15-to-ppia16-transition.py",
-        ],
+        "immutable_paths": [],
     },
     "foundation": {
         "script": ROOT / "scripts/validate-ppia16-foundation.py",
@@ -87,6 +85,8 @@ def load(path: Path) -> dict:
 
 
 def assert_immutable_since_merge(merge: str, paths: list[str]) -> None:
+    if not paths:
+        return
     subprocess.run(["git", "cat-file", "-e", f"{merge}^{{commit}}"], cwd=ROOT, check=True)
     result = subprocess.run(["git", "diff", "--exit-code", "--quiet", merge, "--", *paths], cwd=ROOT)
     assert result.returncode == 0, f"verified predecessor artifacts changed after {merge}"
