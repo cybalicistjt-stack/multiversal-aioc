@@ -1,0 +1,26 @@
+name: Validate CAPP-03 Production Standard
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'governance/application-planning/character-appearance-production/CAPP-03_*'
+      - 'governance/application-planning/character-appearance-production/CAPP-01_APPEARANCE_CHOICE_REGISTRY_v0.1.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-06_PIXEL_ART_RENDERER_CONTRACT_v0.2.0.json'
+      - 'governance/application-planning/parallel-preimplementation/PPIA-06_APPEARANCE_SEMANTIC_TAXONOMY_v0.2.0.json'
+      - 'scripts/validate-capp03-production-standard.py'
+      - '.github/workflows/validate-capp03-production-standard.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-capp03-production-standard.py
+      - run: python tools/capp_ci_scope.py check
