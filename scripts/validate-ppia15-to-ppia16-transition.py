@@ -73,7 +73,7 @@ def main() -> None:
     for token in (P15_EVIDENCE["head"], P15_EVIDENCE["run"], P15_EVIDENCE["merge"], "#289", P15_EVIDENCE["hosted"], "signature verified valid"):
         req(token.lower() in p15_blob, f"PPIA-15 immutable completion evidence missing {token}")
     req(p15_package.get("transition_after_completion") == "PPIA-15 -> PPIA-16 separate governed operation", "PPIA-15 completion transition boundary changed")
-    for phrase in ("90 effective authored ppia-15 cases", "zero ordinary-gm-modification standalone clones", "p15-gap-001", "f024", "separate governed operation"):
+    for phrase in ("effective authored ppia-15 regression corpus to **90 cases**", "ordinary gm modification is not duplicated as a standalone", "p15-gap-001", "f024", "separate governed operation"):
         req(phrase in report, f"PPIA-15 completion report missing {phrase!r}")
 
     req(p16.get("work_item_id") == "PPIA-16" and p16.get("attempt_id") == "PPIA-16-attempt-001", "PPIA-16 checkpoint identity changed")
