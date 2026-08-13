@@ -16,6 +16,7 @@ on:
       - 'governance/application-planning/internal-alpha/feature-packets/MV-IA-F025_*'
       - 'scripts/validate-ppia13-foundation.py'
       - 'scripts/validate-ppia06-to-ppia13-transition.py'
+      - 'scripts/validate-ppia06-completion-historical-safe.py'
       - '.github/workflows/validate-ppia-13-foundation.yml'
   workflow_dispatch:
 
@@ -27,6 +28,8 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -35,7 +38,7 @@ jobs:
       - name: Validate PPIA-06 to PPIA-13 transition regression
         run: python scripts/validate-ppia06-to-ppia13-transition.py
       - name: Validate PPIA-06 completion dependency regression
-        run: python scripts/validate-ppia06-completion-contracts.py
+        run: python scripts/validate-ppia06-completion-historical-safe.py
       - name: Validate PPIA-08 completion dependency regression
         run: python scripts/validate-ppia08-completion-contracts.py
       - name: Validate generalized PPIA continuity

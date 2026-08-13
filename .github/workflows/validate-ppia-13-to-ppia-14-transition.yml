@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -34,7 +36,7 @@ jobs:
       - name: Validate PPIA-06 to PPIA-13 historical transition
         run: python scripts/validate-ppia06-to-ppia13-transition.py
       - name: Validate PPIA-06 completion historical regression
-        run: python scripts/validate-ppia06-completion-contracts.py
+        run: python scripts/validate-ppia06-completion-historical-safe.py
       - name: Validate PPIA-08 completion dependency
         run: python scripts/validate-ppia08-completion-contracts.py
       - name: Validate generalized PPIA continuity

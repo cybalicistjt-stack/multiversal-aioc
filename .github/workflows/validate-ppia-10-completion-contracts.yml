@@ -22,11 +22,13 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate PPIA-10 completion contract
-        run: python scripts/validate-ppia10-completion-contracts.py
+      - name: Validate PPIA-10 completion evidence
+        run: python scripts/validate-ppia10-completion-historical-safe.py
       - name: Validate PPIA-10 workflow regression
         run: python scripts/validate-ppia10-workflow-contracts.py
       - name: Validate PPIA-10 inspector/reference regression

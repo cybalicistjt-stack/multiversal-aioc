@@ -13,6 +13,7 @@ ROADMAP_PATH = ROOT / "governance" / "application-planning" / "APPLICATION_IMPLE
 INDEX_PATH = ROOT / "governance" / "ai" / "runtime" / "ROADMAP_INDEX.json"
 POINTER_PATH = ROOT / "governance" / "ai" / "runtime" / "CURRENT_WORK_POINTER.json"
 STATUS_PATH = ROOT / "governance" / "ai" / "runtime" / "CURRENT_IMPLEMENTATION_STATUS.json"
+PPIA16_CHECKPOINT_PATH = ROOT / "governance" / "ai" / "work-state" / "PPIA-16-attempt-001.json"
 
 EXPECTED_IDS = [f"PPIA-{index:02d}" for index in range(1, 17)]
 EXPECTED_ORDER = ["PPIA-01","PPIA-02","PPIA-03","PPIA-04","PPIA-05","PPIA-12","PPIA-07","PPIA-08","PPIA-09","PPIA-10","PPIA-11","PPIA-06","PPIA-13","PPIA-14","PPIA-15","PPIA-16"]
@@ -136,19 +137,23 @@ def main() -> int:
     program = PROGRAM_PATH.read_text(encoding="utf-8")
     roadmap = ROADMAP_PATH.read_text(encoding="utf-8")
 
-    current_id, tranche_by_id, checkpoint = validate_common(backlog, index, pointer, status, program, roadmap)
+    current_id, tranche_by_id, live_checkpoint = validate_common(backlog, index, pointer, status, program, roadmap)
     if tranche_by_id["PPIA-16"]["status"] == "completed_verified":
-        validate_final_mode(current_id, tranche_by_id, checkpoint, backlog, pointer)
+        # Live continuity may legitimately select a later owner-approved parallel track.
+        # Closed PPIA proof remains anchored to the immutable PPIA-16 completion checkpoint.
+        ppia_checkpoint = load_json(PPIA16_CHECKPOINT_PATH)
+        validate_final_mode(current_id, tranche_by_id, ppia_checkpoint, backlog, pointer)
         mode = "completed_verified_final_program"
         completed_count = 16
     else:
-        validate_active_mode(current_id, tranche_by_id, checkpoint, pointer)
+        validate_active_mode(current_id, tranche_by_id, live_checkpoint, pointer)
         mode = "active_program"
         completed_count = EXPECTED_ORDER.index(current_id)
 
     print("PPIA program state validation: PASS")
     print(f"mode: {mode}")
     print(f"current_anchor: {current_id}")
+    print(f"live_primary: {live_checkpoint['work_item_id']}")
     print(f"completed_count: {completed_count}")
     print("a2_activation_authorized: false")
     print("release_authorized: false")
