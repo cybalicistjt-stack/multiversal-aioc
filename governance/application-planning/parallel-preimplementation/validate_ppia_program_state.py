@@ -1,8 +1,9 @@
 from __future__ import annotations
 
-import importlib.util
 import json
 from pathlib import Path
+
+from validate_ppia_historical_completions import historical_completion_checks
 
 ROOT = Path(__file__).resolve().parents[3]
 PROGRAM_DIR = ROOT / "governance" / "application-planning" / "parallel-preimplementation"
@@ -12,8 +13,6 @@ ROADMAP_PATH = ROOT / "governance" / "application-planning" / "APPLICATION_IMPLE
 INDEX_PATH = ROOT / "governance" / "ai" / "runtime" / "ROADMAP_INDEX.json"
 POINTER_PATH = ROOT / "governance" / "ai" / "runtime" / "CURRENT_WORK_POINTER.json"
 STATUS_PATH = ROOT / "governance" / "ai" / "runtime" / "CURRENT_IMPLEMENTATION_STATUS.json"
-WORK_STATE_DIR = ROOT / "governance" / "ai" / "work-state"
-LEGACY_VALIDATOR = PROGRAM_DIR / "validate_ppia_program.py"
 
 EXPECTED_IDS = [f"PPIA-{index:02d}" for index in range(1, 17)]
 EXPECTED_ORDER = ["PPIA-01","PPIA-02","PPIA-03","PPIA-04","PPIA-05","PPIA-12","PPIA-07","PPIA-08","PPIA-09","PPIA-10","PPIA-11","PPIA-06","PPIA-13","PPIA-14","PPIA-15","PPIA-16"]
@@ -34,14 +33,6 @@ def checkpoint_for_pointer_entry(entry: dict) -> dict:
     return load_json(ROOT / entry["checkpoint_path"])
 
 
-def run_legacy_historical_checks() -> None:
-    spec = importlib.util.spec_from_file_location("ppia_legacy_validator", LEGACY_VALIDATOR)
-    assert spec and spec.loader
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    module.historical_completion_checks()
-
-
 def validate_common(backlog: dict, index: dict, pointer: dict, status: dict, program: str, roadmap: str) -> tuple[str, dict, dict]:
     assert backlog["program_id"] == "PPIA" and backlog["version"] == "1.0.0"
     assert backlog["execution_order"] == EXPECTED_ORDER
@@ -57,7 +48,7 @@ def validate_common(backlog: dict, index: dict, pointer: dict, status: dict, pro
     index_ids = {entry["work_item_id"] for entry in index["entries"]}
     assert set(EXPECTED_IDS).issubset(index_ids)
     assert "STAGE-A-A2" in index_ids and "DS-008-working-series" in index_ids
-    run_legacy_historical_checks()
+    historical_completion_checks()
 
     assert "**Program ID:** PPIA" in program
     for work_item_id in EXPECTED_IDS:
