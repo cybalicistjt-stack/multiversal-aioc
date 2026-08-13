@@ -28,6 +28,18 @@ DEPENDENCIES = {
     "PPIA-11": {"head":"9bf4627f9e8e4a4c21dcc2614dcb74d54d62d724", "run":"31595927902", "pr":267, "merge":"f2274707b1337425f0bc9ac8d1dd5ebb08d9f883"},
     "PPIA-14": {"head":"34c4575ad4ec7dad705b5e292b11c94699a648ac", "run":"31646879101", "pr":284, "merge":"2bebbfcfeac78081ab942be1a15eab1745d35c3a"},
 }
+FOUNDATION = {
+    "head":"d876093989e656d3cf8366c19755295ef0f785e8",
+    "run":"31652241636",
+    "pr":286,
+    "merge":"a1f6b7380a07e65469ba8072e8aa4135d7b1e42f",
+}
+TRANSITION = {
+    "head":"da5857e217425fbc637ecdc2447b0a309e3c771e",
+    "run":"31648209814",
+    "pr":285,
+    "merge":"f08d90a1dca686da9c86913f0635f206758b5da7",
+}
 
 
 def fail(message: str) -> None:
@@ -100,14 +112,36 @@ def main() -> None:
         "next_action": p15.get("next_action"),
         "notes": p15.get("notes", []),
         "completed_substeps": p15.get("completed_substeps", []),
+        "validation": p15.get("validation", []),
+        "evidence": p15.get("evidence", []),
+        "last_verified_action": p15.get("last_verified_action", ""),
     }, ensure_ascii=False).lower()
-    for phrase in (
-        "expand", "not duplicate", "internal alpha", "regression", "permission", "conflict", "recovery", "scale", "accessibility", "mobile", "object-edge",
-        "simultaneous selection", "mid-session reveals", "entitlement loss", "gm modifications", "duplicate-name objects", "version conflict", "campaign-local override",
-        "source-only objects", "vehicle transfer", "relationship secret reveal", "interrupted crafting", "reconnect during approval", "large inventories", "dense creatures",
-        "unusual species", "mobile-only", "keyboard/accessibility", "offline/read-only", "synthetic/noncanonical", "p14-gap-001", "f024"
-    ):
+    for phrase in ("expand", "not duplicate", "internal alpha", "regression", "permission", "conflict", "recovery", "scale", "accessibility", "mobile", "object-edge", "synthetic/noncanonical", "p14-gap-001", "f024"):
         require(phrase in scope, f"PPIA-15 governed scope missing {phrase!r}")
+
+    # The original transition evidence must remain recoverable from the PPIA-15 checkpoint
+    # even when the runtime pointer advances to later PPIA-15 milestones.
+    for value in (TRANSITION["head"], TRANSITION["run"], TRANSITION["merge"]):
+        require(value in scope, f"PPIA-15 checkpoint lost immutable transition evidence {value}")
+    require("#285" in scope or '"pull_request", "value": "PPIA-14→PPIA-15 transition PR #285"'.lower() in scope, "PPIA-15 checkpoint lost transition PR #285 evidence")
+
+    foundation_verified = all(value in scope for value in (FOUNDATION["head"], FOUNDATION["run"], FOUNDATION["merge"])) and ("#286" in scope or str(FOUNDATION["pr"]) in scope)
+    if foundation_verified:
+        # Once PPIA-15 advances beyond its first Foundation milestone, validate immutable
+        # Foundation evidence rather than requiring stale Foundation active-substep wording.
+        require("62/62" in scope, "verified Foundation hosted-workflow evidence missing")
+        require("foundation" in scope and "coverage-gap" in scope, "verified Foundation milestone evidence missing")
+        require("p15-gap-001" in scope or "p14-gap-001" in scope, "verified Foundation F024 provenance missing")
+        scope_mode = "successor_after_verified_foundation"
+    else:
+        # During initial activation, require the complete owner-approved awkward-case scope.
+        for phrase in (
+            "simultaneous selection", "mid-session reveals", "entitlement loss", "gm modifications", "duplicate-name objects", "version conflict", "campaign-local override",
+            "source-only objects", "vehicle transfer", "relationship secret reveal", "interrupted crafting", "reconnect during approval", "large inventories", "dense creatures",
+            "unusual species", "mobile-only", "keyboard/accessibility", "offline/read-only"
+        ):
+            require(phrase in scope, f"PPIA-15 governed scope missing {phrase!r}")
+        scope_mode = "initial_foundation_scope"
 
     current_id = backlog["current_work_item_id"]
     if current_id == "PPIA-15":
@@ -133,9 +167,13 @@ def main() -> None:
         transition_mode = "historical_after_ppia15"
 
     reason = pointer["selection_reason"]
-    for value in (DEPENDENCIES["PPIA-14"]["head"], DEPENDENCIES["PPIA-14"]["run"], DEPENDENCIES["PPIA-14"]["merge"]):
-        require(value in reason, f"pointer must preserve PPIA-14 completion evidence {value}")
     require("roadmap" in reason.lower() and "pending" in reason.lower(), "pointer must explain batched roadmap projection")
+    if foundation_verified:
+        for value in (FOUNDATION["head"], FOUNDATION["run"], FOUNDATION["merge"]):
+            require(value in reason, f"successor pointer must preserve verified Foundation evidence {value}")
+    else:
+        for value in (DEPENDENCIES["PPIA-14"]["head"], DEPENDENCIES["PPIA-14"]["run"], DEPENDENCIES["PPIA-14"]["merge"]):
+            require(value in reason, f"initial transition pointer must preserve PPIA-14 completion evidence {value}")
 
     boundaries = backlog["boundaries"]
     for key in ("application_runtime_mutation_authorized", "a2_activation_authorized", "release_authorized", "deployment_authorized", "tester_access_authorized", "canonical_promotion_without_source_evidence_authorized"):
@@ -150,7 +188,7 @@ def main() -> None:
     print(f"ppia15_status={p15['status']}")
     print(f"ppia15_branch={P15_BRANCH}")
     print(f"transition_mode={transition_mode}")
-    print("ppia15_foundation=existing test corpus and nonduplicative awkward-case coverage-gap inventory")
+    print(f"scope_mode={scope_mode}")
     print("roadmap_projection_pending=true runtime_activation=false")
 
 

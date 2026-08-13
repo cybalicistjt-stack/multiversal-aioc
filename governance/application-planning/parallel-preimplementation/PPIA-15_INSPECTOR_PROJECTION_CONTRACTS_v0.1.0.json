@@ -1,0 +1,30 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"PPIA-15",
+  "artifact_version":"0.1.0",
+  "title":"PPIA-15 Inspector Projection Contracts for Expanded Regression Scenarios",
+  "status":"iar-candidate",
+  "projection_group_count":12,
+  "projection_groups":[
+    {"id":"P15-PG-001","key":"stable-object-identity","purpose":"authorized object identity, duplicate-name disambiguation, target history and conflict state","required_fields":["stable_id","authorized_display_name","authorized_safe_disambiguator","current_authority_state"],"forbidden_fields":["unauthorized provenance","hidden disambiguator","name-derived identity"],"semantic_nonvisual_parity":true},
+    {"id":"P15-PG-002","key":"permission-reveal-entitlement","purpose":"permission-filtered reveal, hidden/missing equivalence and entitlement-restricted projection","required_fields":["authorized_visible_state","minimum_safe_unavailable_state","current_entitlement_state"],"forbidden_fields":["hidden existence proof","hidden counts","prereveal payload","revoked cached derivatives"],"semantic_nonvisual_parity":true},
+    {"id":"P15-PG-003","key":"version-conflict-review","purpose":"current version, actor-owned stale intent, status and owning-domain allowed recovery choices","required_fields":["current_version","actor_authorized_intent","conflict_or_status_state"],"forbidden_fields":["silent overwrite implication","invented merge result","other actor hidden intent"],"semantic_nonvisual_parity":true},
+    {"id":"P15-PG-004","key":"campaign-local-provenance","purpose":"Campaign-local override versus inherited/source state with explicit scope and provenance","required_fields":["local_scope","authorized_local_value","authorized_inherited_version","provenance"],"forbidden_fields":["automatic global promotion","silent local discard"],"semantic_nonvisual_parity":true},
+    {"id":"P15-PG-005","key":"source-definition-readonly","purpose":"reusable Definition reference without implying instance, ownership, Campaign or live state","required_fields":["definition_identity","authorized_source_fields","read_only_reference_state"],"forbidden_fields":["synthetic instance state","implicit ownership","implicit campaign membership"],"semantic_nonvisual_parity":true},
+    {"id":"P15-PG-006","key":"vehicle-relation-separation","purpose":"Vehicle ownership, custody, control, access, crew, passenger and cargo relations remain distinct","required_fields":["authorized_vehicle_identity","authorized_relation_states","current_version"],"forbidden_fields":["ownership-implies-control","vehicle-ownership-implies-cargo-ownership","unrelated relation mutation"],"semantic_nonvisual_parity":true},
+    {"id":"P15-PG-007","key":"relationship-secret-bounded","purpose":"authorized relationship secret/claim reveal with nonrecipient nonleak equivalence","required_fields":["authorized_secret_or_safe_absence","authorized_provenance","recipient_scope"],"forbidden_fields":["nonrecipient topology inference","secret count leak","unauthorized notification fact"],"semantic_nonvisual_parity":true},
+    {"id":"P15-PG-008","key":"crafting-approval-recovery","purpose":"local draft, submitted operation, approval status, accepted Event and projection lag remain distinct","required_fields":["current_phase","operation_status_when_authorized","projection_status"],"forbidden_fields":["fabricated completion","duplicate cost claim","blind retry affordance"],"semantic_nonvisual_parity":true},
+    {"id":"P15-PG-009","key":"large-inventory-bounded","purpose":"512-record case-local inventory projection with stable identity, permission-safe aggregates and accessible navigation","required_fields":["authorized_result_set","stable_ids","deterministic_filter_state","case_local_fixture_size"],"forbidden_fields":["hidden aggregate influence","position-index identity","product capacity promise"],"semantic_nonvisual_parity":true},
+    {"id":"P15-PG-010","key":"dense-creature-targeting","purpose":"128-record case-local Creature/NPC targeting with stable identity and no balance overclaim","required_fields":["authorized_targets","stable_ids","case_local_fixture_size","uncertainty_state"],"forbidden_fields":["hidden target count","spatial-only identity","guaranteed balance or optimality"],"semantic_nonvisual_parity":true},
+    {"id":"P15-PG-011","key":"unusual-morphology","purpose":"known/unknown Species/Form morphology without human defaults or universal compatibility synthesis","required_fields":["authorized_known_morphology","explicit_unknown_fields","form_identity"],"forbidden_fields":["human-default anatomy","invented compatibility","spatial-body-map-only meaning"],"semantic_nonvisual_parity":true},
+    {"id":"P15-PG-012","key":"offline-recovery-source-gap","purpose":"bounded offline/read-only, reconnect reauthorization, status-unknown and unsupported source-gap projection","required_fields":["connection_state","authority_freshness","local_or_authoritative_status"],"forbidden_fields":["offline canonical mutation","stale authority presented as fresh","invented F024 lifecycle state"],"semantic_nonvisual_parity":true}
+  ],
+  "global_rules":[
+    "Permission and entitlement filtering occurs before protected object resolution and every derivative.",
+    "Hidden and missing remain externally equivalent when existence is protected.",
+    "A visual projection and its nonvisual projection may differ in layout but not in authorized meaning or disclosure ceiling.",
+    "Case-local scale fixture sizes are QA inputs only and do not establish product capacity or performance promises.",
+    "Inspector projections are derived views and never create mutation, permission, canonical-content or lifecycle authority."
+  ],
+  "nonactivation":{"application_runtime":false,"stage_a_a2":false,"tester_access":false,"release":false,"deployment":false,"production_credentials":false}
+}
