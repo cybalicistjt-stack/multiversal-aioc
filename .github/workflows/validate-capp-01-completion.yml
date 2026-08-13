@@ -1,0 +1,35 @@
+name: Validate CAPP-01 Completion
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/character-appearance-production/CAPP-01_*'
+      - 'governance/application-planning/character-appearance-production/CAPP_PROGRAM_BACKLOG.json'
+      - 'governance/ai/runtime/ROADMAP_INDEX.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'governance/ai/work-state/CAPP-01-attempt-001.json'
+      - 'scripts/generate-capp01-registry.py'
+      - 'scripts/validate-capp01-foundation.py'
+      - 'scripts/sync-capp-roadmap-index.py'
+      - 'scripts/validate-capp01-completion.py'
+      - '.github/workflows/validate-capp-01-completion.yml'
+  push:
+    branches:
+      - governance/capp-01-appearance-choice-registry
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate CAPP-01 completion candidate
+        run: python scripts/validate-capp01-completion.py
