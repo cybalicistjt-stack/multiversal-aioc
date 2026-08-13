@@ -69,4 +69,4 @@ All cases are `synthetic_noncanonical_qa_reference_fixture`, `canonical:false`. 
 
 ## Substep acceptance boundary
 
-This package may advance only when one exact PR head passes the deterministic substep validator and every applicable hosted workflow, then merges with verified GitHub signature and receives the standard three-file recovery checkpoint. Passing this package advances PPIA-16 to **Integrated Screen / Workflow Traceability** (exact repository wording must be taken from the recovered checkpoint/program state); it does **not** mark PPIA-16 `completed_verified`.
+This package may advance only when one exact PR head passes the deterministic substep validator and every applicable hosted workflow, then merges with verified GitHub signature and receives the standard three-file recovery checkpoint. Passing this package advances PPIA-16 to **Integrated Screen / Workflow Traceability** (exact repository wording must be taken from the recovered checkpoint/program state); it does not mark PPIA-16 `completed_verified`.
