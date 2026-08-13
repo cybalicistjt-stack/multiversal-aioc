@@ -9,9 +9,12 @@ ALLOWED_ROOTS=(
  'governance/ai/',
  'scripts/',
  'tools/',
- '.github/workflows/',
  'tests/',
 )
+PROTECTED={
+ 'tools/governed_write_bridge.py',
+ 'governance/ai/write-request.json',
+}
 REGISTERED={
  'capp-transition':['python','tools/capp_transition.py','apply'],
  'capp-transition-self-test':['python','tools/capp_transition.py','self-test'],
@@ -23,6 +26,7 @@ def rel(path):
  p=Path(path)
  if p.is_absolute() or '..' in p.parts: fail('unsafe path')
  s=p.as_posix()
+ if s in PROTECTED: fail('protected path: '+s)
  if not any(s.startswith(root) for root in ALLOWED_ROOTS): fail('path outside allowlist: '+s)
  return ROOT/p
 
@@ -94,6 +98,8 @@ def apply(req):
  print(f"WRITE BRIDGE: PASS operations={len(ops)}")
 def self_test():
  for root in ALLOWED_ROOTS: assert root.endswith('/')
+ assert '.github/workflows/' not in ALLOWED_ROOTS
+ assert 'tools/governed_write_bridge.py' in PROTECTED
  assert 'capp-transition' in REGISTERED
  print('WRITE BRIDGE SELF-TEST: PASS')
 def main():
