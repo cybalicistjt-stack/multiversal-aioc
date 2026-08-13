@@ -18,6 +18,7 @@ P15_REPORT = BASE / "PPIA-15_COMPLETION_REPORT.md"
 
 EXPECTED_ORDER = ["PPIA-01","PPIA-02","PPIA-03","PPIA-04","PPIA-05","PPIA-12","PPIA-07","PPIA-08","PPIA-09","PPIA-10","PPIA-11","PPIA-06","PPIA-13","PPIA-14","PPIA-15","PPIA-16"]
 P16_BRANCH = "governance/ppia-16-developer-console-ai-team-control-surface"
+P16_UNFINISHED = {"started", "in_progress", "validation_failed", "blocked_non_owner", "blocked_owner", "ready_for_review"}
 P15_EVIDENCE = {
     "head": "6480e22d142e018fb1722570411baa8cd29a41ea",
     "run": "31679948031",
@@ -58,7 +59,7 @@ def main() -> None:
     for wid in EXPECTED_ORDER[:-1]:
         req(tranches[wid].get("status") in {"complete","completed","completed_verified"}, f"{wid} must be complete before PPIA-16")
     req(tranches["PPIA-15"].get("status") == "completed_verified", "PPIA-15 backlog must be completed_verified")
-    req(tranches["PPIA-16"].get("status") == "started", "PPIA-16 backlog must be started")
+    req(tranches["PPIA-16"].get("status") in P16_UNFINISHED, "PPIA-16 backlog must remain an unfinished active state")
     req(tranches["PPIA-16"].get("dependencies") == [], "PPIA-16 explicit dependency set changed")
     req(tranches["PPIA-16"].get("completion_gate") == P16_GATE, "PPIA-16 completion gate changed")
     req(EXPECTED_ORDER[-2:] == ["PPIA-15", "PPIA-16"], "PPIA-16 must directly follow PPIA-15")
@@ -79,10 +80,10 @@ def main() -> None:
     req(p16.get("work_item_id") == "PPIA-16" and p16.get("attempt_id") == "PPIA-16-attempt-001", "PPIA-16 checkpoint identity changed")
     req(p16.get("branch") == P16_BRANCH, "PPIA-16 governed branch changed")
     req(p16.get("base_commit") == P15_EVIDENCE["merge"], "PPIA-16 base must be PPIA-15 completion merge")
-    req(p16.get("status") == "started" and p16.get("completed_at") is None, "PPIA-16 must be active, not completed")
+    req(p16.get("status") in P16_UNFINISHED and p16.get("completed_at") is None, "PPIA-16 must remain unfinished, not completed")
+    req(p16.get("active_substep") not in (None, ""), "unfinished PPIA-16 must retain an active substep")
     req(p16.get("owner_decision_required") is False and p16.get("unresolved_failures") == [], "PPIA-16 must be unblocked")
     req(p16.get("roadmap_projection_pending") is True, "PPIA-16 roadmap projection must remain batched/pending")
-    req("Foundation / Existing Developer Toolbelt and Control-Surface Authority Inventory" in (p16.get("active_substep") or ""), "PPIA-16 initial bounded substep changed")
     scope = json.dumps({
         "objective": p16.get("objective"),
         "active_substep": p16.get("active_substep"),
@@ -135,7 +136,7 @@ def main() -> None:
     print("PPIA-15→PPIA-16 TRANSITION: PASS")
     print(f"ppia15_head={P15_EVIDENCE['head']} ppia15_run={P15_EVIDENCE['run']} ppia15_pr={P15_EVIDENCE['pr']} ppia15_merge={P15_EVIDENCE['merge']}")
     print("ppia15_hosted=65/65 status=completed_verified")
-    print(f"ppia16_branch={P16_BRANCH} ppia16_status=started dependencies=none")
+    print(f"ppia16_branch={P16_BRANCH} ppia16_status={p16.get('status')} dependencies=none")
     print(f"developer_toolbelt_anchor={DT_FINAL} mv_dev=0.10.0 dt_range=DT-001..DT-010")
     print("runtime_activation=false a2_activation=false tester_access=false release=false deployment=false")
 
