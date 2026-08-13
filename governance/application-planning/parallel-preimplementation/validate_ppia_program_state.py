@@ -78,15 +78,7 @@ def validate_common(backlog: dict, index: dict, pointer: dict, status: dict, pro
         assert primary[field] == checkpoint.get(field)
     assert primary["roadmap_projection_pending"] == selected_entry["roadmap_projection_pending"]
 
-    # PPIA final-state validation must remain bound to the immutable PPIA-16
-    # completion checkpoint even when an owner-selected non-PPIA parallel track
-    # is the current conversational primary after verified PPIA closure.
-    if backlog.get("status") == "completed_verified_owner_approved_parallel_work":
-        ppia_checkpoint = load_json(ROOT / "governance" / "ai" / "work-state" / "PPIA-16-attempt-001.json")
-    else:
-        ppia_checkpoint = checkpoint
-
-    return backlog["current_work_item_id"], tranche_by_id, ppia_checkpoint
+    return backlog["current_work_item_id"], tranche_by_id, checkpoint
 
 
 def validate_active_mode(current_id: str, tranche_by_id: dict, checkpoint: dict, pointer: dict) -> None:
