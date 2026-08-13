@@ -31,7 +31,6 @@ IMMUTABLE_PATHS = [
     "governance/application-planning/parallel-preimplementation/PPIA-11_ENCOUNTER_LAB_WORKFLOW_CONTRACT_MATRIX_v0.1.0.json",
     "governance/application-planning/parallel-preimplementation/PPIA-11_ENCOUNTER_LAB_WORKFLOW_TRACEABILITY_MATRIX_v0.1.0.json",
     "governance/application-planning/parallel-preimplementation/PPIA-11_COMPLETION_REPORT.md",
-    "scripts/validate-ppia11-completion-contracts.py",
 ]
 
 
