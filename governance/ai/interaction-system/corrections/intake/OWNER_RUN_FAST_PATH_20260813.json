@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "source_ref": "opaque:owner-run-fast-path-20260813",
+  "captured_at": "2026-08-13T18:55:00Z",
+  "correction_summary": "Use build-first bounded tranches with integrated QA and one final hosted gate, and route blocked structured repository writes through the governed semantic bridge instead of repeatedly fighting connector wrappers.",
+  "failure_summary": "Repeated per-item completion loops, broad validation cycles, prose-sensitive repairs, and repeated connector wrapper retries caused avoidable stalls despite already-governed repository state and known evidence.",
+  "severity": "P1",
+  "recurrence_material": true,
+  "pattern_ids": [
+    "MV-FRIC-EXEC-001",
+    "MV-FRIC-CAP-001",
+    "MV-FRIC-ROADMAP-001",
+    "MV-SUCC-OWNER-001"
+  ],
+  "control_ids": [
+    "C-BOOTSTRAP",
+    "C-CONTINUITY-STATE",
+    "C-CORRECTION-REGRESSION-INTAKE"
+  ],
+  "authority": {
+    "actor_id": "john-brandon-turner",
+    "explicit_correction": true,
+    "evidence": [
+      "Owner explicitly approved the build-first integrated run pattern as the default for all runs and directed that wrapper handling be simplified."
+    ]
+  },
+  "immediate_correction": {
+    "status": "applied",
+    "evidence": [
+      "CAPP-04 through CAPP-12 were completed as one integrated tranche with one final projection.",
+      "Efficiency policy v1.1.0 adds the build-first run pattern and single-failure connector routing rule.",
+      "Governed write bridge allowlist now includes continuity and correction semantic commands."
+    ]
+  },
+  "proposed_case": {
+    "name": "Blocked governed write routes once to semantic bridge",
+    "setup": "A repository mutation is owner-authorized, reversible, within an allowlisted governed path, and supported by current repository evidence, but the normal connector mutation is rejected by the platform wrapper without a project-policy defect.",
+    "owner_input": "Continue the approved bounded run using the established build-first integrated execution pattern.",
+    "expected_actions": [
+      "Attempt the smallest normal connector mutation once.",
+      "After one wrapper rejection, use a small typed governed write request when the mutation fits the bridge allowlist.",
+      "Preserve read-only final hosted validation and signed merge evidence.",
+      "Build and validate the bounded tranche before projecting completion once."
+    ],
+    "prohibited_actions": [
+      "Repeatedly reformulate or retry the same large blocked mutation.",
+      "Treat platform wrapper rejection as proof that the governed project operation is invalid.",
+      "Weaken completion, permission, privacy, provenance, checksum, or release gates.",
+      "Create a separate completion-only PR for every item in an approved integrated tranche."
+    ],
+    "pass_condition": "The work advances through the governed semantic path after at most one connector-wrapper rejection, the tranche is validated by one final read-only hosted gate, and completion evidence remains intact without redundant per-item completion loops."
+  },
+  "privacy": {
+    "raw_transcript_included": false,
+    "minimized": true,
+    "sensitive_attachment_included": false
+  }
+}
