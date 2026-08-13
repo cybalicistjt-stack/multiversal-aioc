@@ -11,6 +11,7 @@ on:
       - 'scripts/validate-ppia15-integrated-expanded-regression-workflows.py'
       - 'scripts/validate-ppia15-expanded-regression-iar.py'
       - 'scripts/validate-ppia15-foundation.py'
+      - 'scripts/validate-ppia15-completion-contracts.py'
       - 'scripts/validate-ppia14-to-ppia15-transition.py'
       - 'scripts/validate-ppia14-completion-contracts.py'
       - 'scripts/validate-ppia11-completion-contracts.py'
@@ -31,7 +32,21 @@ jobs:
         with:
           python-version: '3.12'
       - name: Validate PPIA-15 Integrated Expanded Regression Workflows
-        run: python scripts/validate-ppia15-integrated-expanded-regression-workflows.py
+        run: |
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          backlog = json.loads(Path('governance/application-planning/parallel-preimplementation/PPIA_PROGRAM_BACKLOG.json').read_text())
+          if backlog.get('current_work_item_id') == 'PPIA-15':
+              cmd = ['python', 'scripts/validate-ppia15-integrated-expanded-regression-workflows.py']
+          else:
+              # Once PPIA-15 is completed and a successor is active, its final
+              # completion contract is the stronger historical regression: it
+              # revalidates the integrated surface, exact-once case assignment,
+              # immutable milestone evidence and nonactivation boundaries.
+              cmd = ['python', 'scripts/validate-ppia15-completion-contracts.py']
+          raise SystemExit(subprocess.call(cmd))
+          PY
       - name: Validate PPIA-15 Expanded Regression IAR regression
         run: python scripts/validate-ppia15-expanded-regression-iar.py
       - name: Validate PPIA-15 Foundation regression
