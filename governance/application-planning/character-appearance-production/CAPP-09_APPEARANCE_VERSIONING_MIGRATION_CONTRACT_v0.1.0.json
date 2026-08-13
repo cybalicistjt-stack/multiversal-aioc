@@ -1,0 +1,87 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "CAPP-09",
+  "title": "Appearance Versioning and Migration Engine Contract",
+  "status": "built_pending_integrated_validation",
+  "tool": "tools/capp09_migration_reference.py",
+  "authorities": ["CAPP-01", "CAPP-02", "CAPP-04", "PPIA-05", "PPIA-06"],
+  "versioned_surfaces": [
+    "appearance_state_schema",
+    "stable_choice_ids",
+    "preset_schema",
+    "renderer_id_and_version",
+    "asset_pack_id_and_version",
+    "derivative_identity",
+    "fit_catalog_version",
+    "accessibility_description_grammar_version"
+  ],
+  "recoverability_classes": [
+    {"id": "recoverable_exact", "meaning": "All referenced semantic IDs and required capabilities remain valid without transformation."},
+    {"id": "recoverable_mapped", "meaning": "Every changed identifier has an explicit authoritative one-to-one migration mapping."},
+    {"id": "review_required", "meaning": "At least one removed, ambiguous, missing-pack, unsupported-renderer, or unknown target reference requires user/operator review."},
+    {"id": "blocked_unrecoverable", "meaning": "Required source identity cannot be represented or safely reconstructed under the target contract."},
+    {"id": "unknown", "meaning": "Authority is insufficient to determine migration behavior."}
+  ],
+  "migration_map_contract": {
+    "required": ["migration_id", "source_schema_version", "target_schema_version", "provenance_class"],
+    "optional": ["option_id_map", "removed_option_ids", "valid_target_option_ids", "asset_pack_id_map", "target_asset_pack_version", "renderer_id_map", "target_renderer_version", "preset_field_map", "fit_class_map", "notes"],
+    "rule": "Mappings are explicit data; similarity, display-name matching, filename matching, or AI guessing may not silently create a migration."
+  },
+  "event_behavior": [
+    {"event": "renamed_option", "behavior": "apply explicit stable-ID mapping; otherwise review_required"},
+    {"event": "removed_option", "behavior": "preserve unresolved source value in migration receipt; never choose replacement automatically"},
+    {"event": "schema_upgrade", "behavior": "apply only versioned deterministic field transforms; preserve unknown fields in diagnostic receipt when safe"},
+    {"event": "asset_pack_upgrade", "behavior": "re-evaluate CAPP-04 coverage; renderer gaps do not invalidate Character state"},
+    {"event": "renderer_capability_change", "behavior": "recompile CAPP-05 render plan; downgrade support state explicitly if required"},
+    {"event": "missing_asset_pack", "behavior": "Character/preset remains semantically valid; renderer state becomes missing/unknown and derivative becomes stale"},
+    {"event": "old_preset", "behavior": "validate stable IDs, profile eligibility and locks before application to draft; unresolved items require review"},
+    {"event": "partially_recoverable_import", "behavior": "produce review receipt separating exact, mapped, unresolved and blocked fields"},
+    {"event": "fit_catalog_change", "behavior": "re-evaluate visual fit only; inventory/equipment truth unchanged"},
+    {"event": "permission_projection_change", "behavior": "invalidate permission-sensitive derivatives and regenerate from newly filtered state"}
+  ],
+  "migration_receipt_required": [
+    "schema_version",
+    "migration_id",
+    "classification",
+    "source_schema_version",
+    "target_schema_version",
+    "source_profile_id",
+    "exact_choice_count",
+    "mapped_choice_count",
+    "review_items",
+    "asset_pack_version",
+    "renderer_version",
+    "silent_substitution",
+    "character_truth_changed",
+    "biology_changed",
+    "equipment_changed",
+    "migration_sha256"
+  ],
+  "silent_substitution_forbidden": [
+    "removed choice to nearest display name",
+    "missing asset to visually similar asset",
+    "missing topology to humanoid default",
+    "unavailable Form to another Form",
+    "invalid equipment fit to warped asset",
+    "unknown biological field to absent/zero/human default",
+    "hidden field to unfiltered export value"
+  ],
+  "preset_lock_rules": [
+    "Mapped lock IDs follow the same explicit mapping as their choice IDs.",
+    "Removed/unknown lock IDs require review and are not reassigned silently.",
+    "Locks protect authored appearance choices only; they do not freeze source-owned biology, mechanics, or equipment state."
+  ],
+  "determinism": {
+    "stable_iteration": "sort stable IDs before transformation",
+    "receipt_hash": "SHA-256 over canonical JSON",
+    "same_inputs_same_receipt": true,
+    "time_or_randomness_dependency": false
+  },
+  "boundaries": {
+    "silent_substitution": false,
+    "character_truth_write": false,
+    "biology_write": false,
+    "equipment_write": false,
+    "runtime_activation": false
+  }
+}
