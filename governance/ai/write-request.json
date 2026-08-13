@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0.0",
+  "operations": [
+    {
+      "op": "json_set",
+      "path": "governance/application-planning/character-appearance-production/CAPP_PROGRAM_BACKLOG.json",
+      "set": {
+        "/work_items/3/status": "completed_verified",
+        "/work_items/4/status": "completed_verified",
+        "/work_items/5/status": "completed_verified",
+        "/work_items/6/status": "completed_verified",
+        "/work_items/7/status": "completed_verified",
+        "/work_items/8/status": "completed_verified",
+        "/work_items/9/status": "completed_verified",
+        "/work_items/10/status": "completed_verified",
+        "/work_items/11/status": "completed_verified",
+        "/completed_work_items": 12,
+        "/active_work_item_id": null,
+        "/next_planned_work_item_id": null,
+        "/last_completed": {
+          "work_item_id": "CAPP-12",
+          "exact_validated_head": "029f76fa4ca3819c8b9e0e4b16dd1644c2b7b553",
+          "workflows": "integrated_hosted_pass",
+          "pull_request": 306,
+          "merge_commit": "d4db2dbf77e4d3009bb42a1fe348e126d0ddbb38",
+          "merge_verification": "verified valid"
+        }
+      }
+    },
+    {
+      "op": "json_set",
+      "path": "governance/ai/work-state/CAPP-04-attempt-001.json",
+      "set": {
+        "/revision": 2,
+        "/branch": "governance/capp-04-asset-manifest-coverage-analyzer-v3",
+        "/status": "completed_verified",
+        "/updated_at": "2026-08-13T18:40:00Z",
+        "/completed_at": "2026-08-13T18:40:00Z",
+        "/latest_pushed_commit": "029f76fa4ca3819c8b9e0e4b16dd1644c2b7b553",
+        "/expected_remote_head": "d4db2dbf77e4d3009bb42a1fe348e126d0ddbb38",
+        "/pull_request": 306,
+        "/objective": "Integrated CAPP-04 through CAPP-12 production-preparation tranche.",
+        "/last_verified_action": "CAPP-04 through CAPP-12 were built as one tranche, repaired through integrated QA, validated in hosted run 31731204423 on repaired tree 029f76fa4ca3819c8b9e0e4b16dd1644c2b7b553, and merged in PR #306 as signed/verified d4db2dbf77e4d3009bb42a1fe348e126d0ddbb38.",
+        "/active_substep": null,
+        "/next_action": "CAPP is completed_verified; select the next project track through the canonical roadmap/bootstrap.",
+        "/completed_substeps": [
+          "Built CAPP-04 through CAPP-12 as one bounded production tranche.",
+          "Ran integrated QA and repaired privacy/view-identifier mismatches.",
+          "Generated and validated 917 deterministic synthetic/noncanonical QA cases.",
+          "Merged the integrated tranche in PR #306 with valid GitHub signature verification."
+        ],
+        "/validation": [
+          {
+            "command": "python scripts/validate-capp04-asset-manifest-coverage.py",
+            "status": "passed",
+            "evidence": "Hosted integrated run 31731204423 passed CAPP-04 foundation validation on the repaired tree that became 029f76fa4ca3819c8b9e0e4b16dd1644c2b7b553."
+          },
+          {
+            "command": "python scripts/validate-capp-integrated-build.py",
+            "status": "passed",
+            "evidence": "Hosted integrated run 31731204423 passed CAPP-05/09/10/11 self-tests, integrated CAPP-04..12 validation, and cross-contract privacy/view checks."
+          }
+        ],
+        "/unresolved_failures": [],
+        "/owner_decision_required": false,
+        "/evidence": [
+          {"kind": "commit", "value": "CAPP-04 through CAPP-12 exact repaired candidate head 029f76fa4ca3819c8b9e0e4b16dd1644c2b7b553"},
+          {"kind": "pull_request", "value": "CAPP-04 through CAPP-12 PR #306 integrated production tranche"},
+          {"kind": "ci_run", "value": "CAPP-04 through CAPP-12 hosted integrated run 31731204423 passed after producing repaired candidate 029f76fa4ca3819c8b9e0e4b16dd1644c2b7b553"},
+          {"kind": "merge", "value": "CAPP-04 through CAPP-12 signed/verified merge d4db2dbf77e4d3009bb42a1fe348e126d0ddbb38"}
+        ],
+        "/roadmap_projection_pending": false,
+        "/merge_commit": "d4db2dbf77e4d3009bb42a1fe348e126d0ddbb38"
+      }
+    },
+    {
+      "op": "json_set",
+      "path": "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+      "set": {
+        "/updated_at": "2026-08-13T18:40:00Z",
+        "/selection_reason": "The owner-selected CAPP program is completed_verified through CAPP-12 as one integrated tranche. CAPP-04-attempt-001 remains the completed recovery anchor; no CAPP work item is active.",
+        "/active_attempts/0/branch": "governance/capp-04-asset-manifest-coverage-analyzer-v3",
+        "/active_attempts/0/owner_selected": false,
+        "/active_attempts/0/status": "completed_verified",
+        "/active_attempts/0/updated_at": "2026-08-13T18:40:00Z",
+        "/active_attempts/0/roadmap_projection_pending": false
+      }
+    },
+    {
+      "op": "json_set",
+      "path": "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
+      "set": {
+        "/generated_at": "2026-08-13T18:40:00Z",
+        "/primary/work_item_id": "CAPP-04",
+        "/primary/attempt_id": "CAPP-04-attempt-001",
+        "/primary/track": "character-appearance-production",
+        "/primary/repository": "cybalicistjt-stack/multiversal-aioc",
+        "/primary/branch": "governance/capp-04-asset-manifest-coverage-analyzer-v3",
+        "/primary/status": "completed_verified",
+        "/primary/active_substep": null,
+        "/primary/next_action": "CAPP is completed_verified; select the next project track through the canonical roadmap/bootstrap.",
+        "/primary/latest_pushed_commit": "029f76fa4ca3819c8b9e0e4b16dd1644c2b7b553",
+        "/primary/pull_request": 306,
+        "/primary/owner_decision_required": false,
+        "/primary/unresolved_failures": [],
+        "/primary/roadmap_projection_pending": false,
+        "/active_attempt_count": 1,
+        "/deferred_track_count": 2
+      }
+    },
+    {
+      "op": "json_create",
+      "path": "governance/application-planning/character-appearance-production/CAPP-04-12_VERIFIED_COMPLETION_RECEIPT_v1.0.0.json",
+      "document": {
+        "schema_version": "1.0.0",
+        "program_id": "CAPP",
+        "state": "completed_verified",
+        "completed_work_items": ["CAPP-04","CAPP-05","CAPP-06","CAPP-07","CAPP-08","CAPP-09","CAPP-10","CAPP-11","CAPP-12"],
+        "exact_repaired_candidate_head": "029f76fa4ca3819c8b9e0e4b16dd1644c2b7b553",
+        "hosted_integrated_run": 31731204423,
+        "pull_request": 306,
+        "merge_commit": "d4db2dbf77e4d3009bb42a1fe348e126d0ddbb38",
+        "merge_verification": "verified valid",
+        "qa_corpus": {"case_count": 917, "sha256": "7b5aeaafb73da140a63065c86cb8a3886516731e66518b05e470d4a23761f024"},
+        "repairs_verified": ["permission_filter_count_disclosure_removed","canonical_full_body_view_id_aligned"],
+        "boundaries": {"application_runtime_activation":false,"stage_a_a2_activation":false,"release_authorized":false,"deployment_authorized":false,"tester_access_authorized":false,"paid_services_authorized":false,"production_credentials_authorized":false,"unsupported_canonical_promotion_authorized":false}
+      }
+    },
+    {
+      "op": "text_replace",
+      "path": "governance/application-planning/character-appearance-production/CAPP-12_INTEGRATED_PRODUCTION_HANDOFF.md",
+      "replacements": [
+        {
+          "old": "**State:** content built; integrated validation pending. This is not a `completed_verified` claim.",
+          "new": "**State:** CAPP-04 through CAPP-12 completed and verified as one integrated production-preparation tranche."
+        }
+      ]
+    }
+  ]
+}
