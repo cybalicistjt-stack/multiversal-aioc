@@ -1,10 +1,23 @@
-name: Validate CAPP-04
+name: Validate CAPP Integrated Tranche
 
 on:
   pull_request:
     paths:
       - 'governance/application-planning/character-appearance-production/CAPP-04_*'
+      - 'governance/application-planning/character-appearance-production/CAPP-05_*'
+      - 'governance/application-planning/character-appearance-production/CAPP-06_*'
+      - 'governance/application-planning/character-appearance-production/CAPP-07_*'
+      - 'governance/application-planning/character-appearance-production/CAPP-08_*'
+      - 'governance/application-planning/character-appearance-production/CAPP-09_*'
+      - 'governance/application-planning/character-appearance-production/CAPP-10_*'
+      - 'governance/application-planning/character-appearance-production/CAPP-12_*'
+      - 'tools/capp04_coverage.py'
+      - 'tools/capp05_appearance_compiler.py'
+      - 'tools/capp09_migration_reference.py'
+      - 'tools/capp10_accessibility_description.py'
+      - 'tools/capp11_generate_qa_corpus.py'
       - 'scripts/validate-capp04-asset-manifest-coverage.py'
+      - 'scripts/validate-capp-integrated-build.py'
       - '.github/workflows/validate-capp-04.yml'
 
 permissions:
@@ -18,4 +31,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python scripts/validate-capp04-asset-manifest-coverage.py
+      - name: Validate CAPP-04 asset coverage foundation
+        run: python scripts/validate-capp04-asset-manifest-coverage.py
+      - name: Validate integrated CAPP-04 through CAPP-12 build
+        run: python scripts/validate-capp-integrated-build.py
