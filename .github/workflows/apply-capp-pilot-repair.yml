@@ -1,0 +1,35 @@
+name: Apply CAPP Interaction Pilot Repair
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'scripts/apply-capp-pilot-repair.py'
+      - '.github/workflows/apply-capp-pilot-repair.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    if: github.head_ref == 'governance/capp-character-appearance-production-prep'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Repair roadmap-lite pilot and regenerate scorecards
+        run: python scripts/apply-capp-pilot-repair.py
+      - name: Validate regenerated pilot
+        run: python tools/interaction_pilot.py validate
+      - name: Commit repaired pilot projections
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Repair interaction pilot for milestone roadmap projection'
+          git push origin HEAD:${{ github.head_ref }}
