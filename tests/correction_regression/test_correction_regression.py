@@ -124,10 +124,13 @@ class CorrectionRegressionTests(unittest.TestCase):
             "promote", "--candidate-id", candidate_id, "--case-id", "MV-EVAL-016",
             "--evidence", "promotion PR ref", "--promoted-at", "2026-08-05T23:31:00Z",
         )
-        self.assertEqual("promoted", self.candidate(candidate_id)["status"])
+        candidate = self.candidate(candidate_id)
+        self.assertEqual("promoted", candidate["status"])
+        self.assertEqual("MV-EVAL-016", candidate["promotion"]["case_id"])
         promoted = self.promoted()
         new_case = next(item for item in promoted["cases"] if item["case_id"] == "MV-EVAL-016")
-        self.assertEqual(candidate_id, new_case["source_candidate_id"])
+        self.assertEqual(candidate["proposed_case"]["name"], new_case["name"])
+        self.assertEqual(candidate["source_patterns"], new_case["source_patterns"])
         mapping = json.loads((self.root / "governance/ai/interaction-system/corrections/EVALUATION_CONTROL_EXTENSION.json").read_text())
         new_map = next(item for item in mapping["cases"] if item["case_id"] == "MV-EVAL-016")
         self.assertIn("C-CORRECTION-REGRESSION-INTAKE", new_map["control_ids"])
