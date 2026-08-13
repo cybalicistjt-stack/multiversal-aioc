@@ -1,0 +1,20 @@
+{
+  "schema_version":"1.0.0",
+  "operations":[
+    {
+      "op":"json_create",
+      "path":"governance/ai/REPOSITORY_WRITE_BRIDGE_PROBE_v1.0.0.json",
+      "document":{
+        "schema_version":"1.0.0",
+        "state":"bridge_probe",
+        "purpose":"Verify repository-side typed writes without prose-heavy connector replacements.",
+        "expected_result":"created_by_governed_write_workflow"
+      }
+    },
+    {
+      "op":"run_registered",
+      "name":"capp-ci-scope",
+      "args":[]
+    }
+  ]
+}
