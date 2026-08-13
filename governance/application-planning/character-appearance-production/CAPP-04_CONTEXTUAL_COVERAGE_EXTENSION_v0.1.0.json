@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "CAPP-04",
+  "extends": [
+    "CAPP-04_ASSET_MANIFEST_CONTRACT_v0.1.0.json",
+    "CAPP-04_COVERAGE_MODEL_v0.1.0.json",
+    "CAPP-04_REFERENCE_ANALYZER_CONTRACT_v0.1.0.json"
+  ],
+  "contextual_dimensions": [
+    "semantic_choice_id",
+    "pose_id",
+    "fit_class",
+    "asset_pack_id",
+    "asset_pack_version"
+  ],
+  "asset_context_fields": [
+    "semantic_choice_ids",
+    "pose_ids",
+    "fit_classes"
+  ],
+  "rules": [
+    "semantic_choice_ids_use_CAPP01_stable_ids_or_empty",
+    "pose_ids_are_renderer_presentation_metadata_or_empty",
+    "fit_classes_are_renderer_compatibility_metadata_or_empty",
+    "empty_contextual_axis_means_unspecified_not_universal_support",
+    "context_values_derive_only_from_authorized_upstream_or_manifest",
+    "CAPP06_retains_fit_catalog_authority",
+    "CAPP08_retains_pose_export_authority"
+  ],
+  "base_expected_grid": {
+    "profile_count": 25,
+    "view_count": 3,
+    "semantic_band_count": 10,
+    "cell_count": 750,
+    "actual_asset_inventory_implied": false
+  },
+  "acceptance_cases": [
+    {
+      "id": "CAPP04-T019",
+      "assert": "semantic choice coverage uses CAPP-01 stable IDs and never invents values"
+    },
+    {
+      "id": "CAPP04-T020",
+      "assert": "pose coverage is renderer presentation metadata and absence is not universal support"
+    },
+    {
+      "id": "CAPP04-T021",
+      "assert": "wardrobe/equipment fit coverage is renderer metadata and defers fit-catalog authority to CAPP-06"
+    },
+    {
+      "id": "CAPP04-T022",
+      "assert": "asset-pack ID and version are explicit report dimensions"
+    }
+  ]
+}
