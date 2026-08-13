@@ -1,27 +1,146 @@
 {
   "schema_version": "1.0.0",
   "work_item_id": "MV-CONT-005",
-  "generated_at": "2026-08-05T23:50:00Z",
+  "generated_at": "2026-08-13T12:33:00+00:00",
   "measurement_scope": "deterministic repository-backed operational pilot",
   "longitudinal_measurement_status": "not_yet_measured",
   "results": [
-    {"scenario_id":"MV-PILOT-001","category":"restart","expected_outcome":"The exact one-line prompt remains static and resolves through the canonical bootstrap.","status":"pass","evidence_summary":"Static prompt is exact, one-line, and bootstrap-referenced.","error":null},
-    {"scenario_id":"MV-PILOT-002","category":"continuity","expected_outcome":"A new attempt persists started state, active substep, and next action before substantive mutation.","status":"pass","evidence_summary":"A synthetic started attempt persisted exact active and next substeps.","error":null},
-    {"scenario_id":"MV-PILOT-003","category":"continuity","expected_outcome":"An in-progress attempt resumes the exact saved substep rather than advancing or restarting.","status":"pass","evidence_summary":"An interrupted attempt resumed from the exact persisted substep.","error":null},
-    {"scenario_id":"MV-PILOT-004","category":"completion_truth","expected_outcome":"A completion attempt without its configured evidence gate fails without mutating the checkpoint.","status":"pass","evidence_summary":"Evidence-free completion was rejected without mutating the checkpoint.","error":null},
-    {"scenario_id":"MV-PILOT-005","category":"parallel_tracks","expected_outcome":"The application and internal-alpha design tracks remain explicit; the selected primary may be active while the other remains deferred, without false completion.","status":"pass","evidence_summary":"Application and internal-alpha tracks remain explicit; active and deferred states are preserved without false completion.","error":null},
-    {"scenario_id":"MV-PILOT-006","category":"roadmap_performance","expected_outcome":"Routine checkpointing does not rewrite the full application roadmap.","status":"pass","evidence_summary":"Routine pilot checkpointing does not rewrite the full application roadmap.","error":null},
-    {"scenario_id":"MV-PILOT-007","category":"privacy","expected_outcome":"A correction intake containing raw transcript material is rejected without ledger mutation.","status":"pass","evidence_summary":"A raw-transcript field was rejected without ledger mutation.","error":null},
-    {"scenario_id":"MV-PILOT-008","category":"correction_intake","expected_outcome":"Repeated capture of the same material correction returns the existing record without duplication.","status":"pass","evidence_summary":"Repeated correction capture was idempotently suppressed.","error":null},
-    {"scenario_id":"MV-PILOT-009","category":"owner_authority","expected_outcome":"A proposed regression candidate cannot enter the canonical extension before owner approval.","status":"pass","evidence_summary":"Canonical promotion was blocked until owner approval exists.","error":null},
-    {"scenario_id":"MV-PILOT-010","category":"deliverable","expected_outcome":"A deliverable cannot pass when existence or owner accessibility is unverified.","status":"pass","evidence_summary":"Unverified deliverable completion was rejected.","error":null},
-    {"scenario_id":"MV-PILOT-011","category":"capability","expected_outcome":"Authorization and permission do not count as successful execution without attempted and successful operation evidence.","status":"pass","evidence_summary":"Permission without successful operation evidence was rejected.","error":null},
-    {"scenario_id":"MV-PILOT-012","category":"source_coverage","expected_outcome":"Completion is rejected when required, evaluated, missing, and deferred source sets are inconsistent.","status":"pass","evidence_summary":"Incomplete source coverage was rejected.","error":null},
-    {"scenario_id":"MV-PILOT-013","category":"ui_verification","expected_outcome":"Current-interface guidance cannot be labeled verified without observation or a current official source.","status":"pass","evidence_summary":"Unverified current-UI guidance was rejected.","error":null},
-    {"scenario_id":"MV-PILOT-014","category":"notification","expected_outcome":"An unchanged notification fingerprint with no material change is suppressed.","status":"pass","evidence_summary":"A stale duplicate notification was suppressed by validation.","error":null},
-    {"scenario_id":"MV-PILOT-015","category":"request_alignment","expected_outcome":"Decision-support or status requests must receive the direct answer before related execution is treated as aligned.","status":"pass","evidence_summary":"Execution without the requested direct answer was rejected.","error":null},
-    {"scenario_id":"MV-PILOT-016","category":"owner_reporting","expected_outcome":"A bounded completion report must state completed work, evidence, remaining work, owner decision, and next action.","status":"pass","evidence_summary":"An incomplete owner-facing report was rejected.","error":null},
-    {"scenario_id":"MV-PILOT-017","category":"coverage","expected_outcome":"All 22 interaction patterns, eight known gaps, and 15 base evaluation cases have effective control coverage.","status":"pass","evidence_summary":"All 22 interaction patterns, eight known gaps, and 15 base evaluation cases have effective controls.","error":null}
+    {
+      "scenario_id": "MV-PILOT-001",
+      "category": "restart",
+      "expected_outcome": "The exact one-line prompt remains static and resolves through the canonical bootstrap.",
+      "status": "pass",
+      "evidence_summary": "Static prompt is exact, one-line, and bootstrap-referenced.",
+      "error": null
+    },
+    {
+      "scenario_id": "MV-PILOT-002",
+      "category": "continuity",
+      "expected_outcome": "A new attempt persists started state, active substep, and next action before substantive mutation.",
+      "status": "pass",
+      "evidence_summary": "A synthetic started attempt persisted exact active and next substeps.",
+      "error": null
+    },
+    {
+      "scenario_id": "MV-PILOT-003",
+      "category": "continuity",
+      "expected_outcome": "An in-progress attempt resumes the exact saved substep rather than advancing or restarting.",
+      "status": "pass",
+      "evidence_summary": "An interrupted attempt resumed from the exact persisted substep.",
+      "error": null
+    },
+    {
+      "scenario_id": "MV-PILOT-004",
+      "category": "completion_truth",
+      "expected_outcome": "A completion attempt without its configured evidence gate fails without mutating the checkpoint.",
+      "status": "pass",
+      "evidence_summary": "Evidence-free completion was rejected without mutating the checkpoint.",
+      "error": null
+    },
+    {
+      "scenario_id": "MV-PILOT-005",
+      "category": "parallel_tracks",
+      "expected_outcome": "The application and internal-alpha design tracks remain explicit; the selected primary may be active while the other remains deferred, without false completion.",
+      "status": "pass",
+      "evidence_summary": "Application and internal-alpha tracks remain explicit; active and deferred states are preserved without false completion.",
+      "error": null
+    },
+    {
+      "scenario_id": "MV-PILOT-006",
+      "category": "roadmap_performance",
+      "expected_outcome": "Routine checkpointing does not rewrite the full application roadmap.",
+      "status": "pass",
+      "evidence_summary": "A completed_verified milestone may carry an allowed roadmap projection; routine unfinished checkpointing remains constrained from rewriting the full roadmap.",
+      "error": null
+    },
+    {
+      "scenario_id": "MV-PILOT-007",
+      "category": "privacy",
+      "expected_outcome": "A correction intake containing raw transcript material is rejected without ledger mutation.",
+      "status": "pass",
+      "evidence_summary": "A raw-transcript field was rejected without ledger mutation.",
+      "error": null
+    },
+    {
+      "scenario_id": "MV-PILOT-008",
+      "category": "correction_intake",
+      "expected_outcome": "Repeated capture of the same material correction returns the existing record without duplication.",
+      "status": "pass",
+      "evidence_summary": "Repeated correction capture was idempotently suppressed.",
+      "error": null
+    },
+    {
+      "scenario_id": "MV-PILOT-009",
+      "category": "owner_authority",
+      "expected_outcome": "A proposed regression candidate cannot enter the canonical extension before owner approval.",
+      "status": "pass",
+      "evidence_summary": "Canonical promotion was blocked until owner approval exists.",
+      "error": null
+    },
+    {
+      "scenario_id": "MV-PILOT-010",
+      "category": "deliverable",
+      "expected_outcome": "A deliverable cannot pass when existence or owner accessibility is unverified.",
+      "status": "pass",
+      "evidence_summary": "Unverified deliverable completion was rejected.",
+      "error": null
+    },
+    {
+      "scenario_id": "MV-PILOT-011",
+      "category": "capability",
+      "expected_outcome": "Authorization and permission do not count as successful execution without attempted and successful operation evidence.",
+      "status": "pass",
+      "evidence_summary": "Permission without successful operation evidence was rejected.",
+      "error": null
+    },
+    {
+      "scenario_id": "MV-PILOT-012",
+      "category": "source_coverage",
+      "expected_outcome": "Completion is rejected when required, evaluated, missing, and deferred source sets are inconsistent.",
+      "status": "pass",
+      "evidence_summary": "Incomplete source coverage was rejected.",
+      "error": null
+    },
+    {
+      "scenario_id": "MV-PILOT-013",
+      "category": "ui_verification",
+      "expected_outcome": "Current-interface guidance cannot be labeled verified without observation or a current official source.",
+      "status": "pass",
+      "evidence_summary": "Unverified current-UI guidance was rejected.",
+      "error": null
+    },
+    {
+      "scenario_id": "MV-PILOT-014",
+      "category": "notification",
+      "expected_outcome": "An unchanged notification fingerprint with no material change is suppressed.",
+      "status": "pass",
+      "evidence_summary": "A stale duplicate notification was suppressed by validation.",
+      "error": null
+    },
+    {
+      "scenario_id": "MV-PILOT-015",
+      "category": "request_alignment",
+      "expected_outcome": "Decision-support or status requests must receive the direct answer before related execution is treated as aligned.",
+      "status": "pass",
+      "evidence_summary": "Execution without the requested direct answer was rejected.",
+      "error": null
+    },
+    {
+      "scenario_id": "MV-PILOT-016",
+      "category": "owner_reporting",
+      "expected_outcome": "A bounded completion report must state completed work, evidence, remaining work, owner decision, and next action.",
+      "status": "pass",
+      "evidence_summary": "An incomplete owner-facing report was rejected.",
+      "error": null
+    },
+    {
+      "scenario_id": "MV-PILOT-017",
+      "category": "coverage",
+      "expected_outcome": "All 22 interaction patterns, eight known gaps, and 15 base evaluation cases have effective control coverage.",
+      "status": "pass",
+      "evidence_summary": "All 22 interaction patterns, eight known gaps, and 15 base evaluation cases have effective controls.",
+      "error": null
+    }
   ],
   "metrics": {
     "scenario_total": 17,
