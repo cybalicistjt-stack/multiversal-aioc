@@ -1,0 +1,21 @@
+name: Validate CAPP-04
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/character-appearance-production/CAPP-04_*'
+      - 'scripts/validate-capp04-asset-manifest-coverage.py'
+      - '.github/workflows/validate-capp-04.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-capp04-asset-manifest-coverage.py
