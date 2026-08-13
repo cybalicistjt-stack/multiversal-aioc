@@ -9,6 +9,7 @@ on:
       - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
       - 'governance/ai/runtime/ROADMAP_INDEX.json'
       - 'governance/ai/work-state/PPIA-01-attempt-001.json'
+      - 'governance/ai/work-state/PPIA-16-attempt-001.json'
       - '.github/workflows/validate-ppia-program.yml'
 
 permissions:
@@ -23,4 +24,4 @@ jobs:
         with:
           python-version: '3.12'
       - name: Validate PPIA program and continuity projections
-        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program.py
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program_state.py
