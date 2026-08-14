@@ -1,9 +1,13 @@
 # AIOC Operational Handoff
 
-**Status:** Certified operational  
+> **HISTORICAL SNAPSHOT — EARLY AIOC OPERATIONAL CERTIFICATION. DO NOT USE ITS BRANCH OR NEXT-ACTION FIELDS FOR CURRENT RECOVERY.**  
+> Current recovery authority is `main` plus `governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md`, `governance/ai/runtime/CURRENT_WORK_POINTER.json`, its named checkpoint/evidence, the current roadmap index, and `Multiversal-app/.ai/current-work-order.md`. The legacy branch and WP-011 next-action text below are retained only as certification provenance.
+
+**Historical status:** Certified operational  
 **Owner:** John Brandon Turner  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
-**Canonical branch:** `governance/session-bootstrap-v1`
+**Historical certification branch:** `governance/session-bootstrap-v1`  
+**Current canonical merged branch:** `main`
 
 ## Certification result
 
@@ -33,9 +37,9 @@ Final evidence for commit `c9345cbc7b6e866a725aa1c5668418b8c46af93d`:
 2. `Continue` executes the next canonical action rather than explaining it.
 3. No work item is completed without durable evidence and required CI PASS.
 4. Blocking certification failures freeze execution until corrected.
-5. New conversations load the bootstrap, current state, and session handoff before acting.
+5. New conversations must use the current bootstrap/runtime recovery chain rather than this historical handoff.
 6. Multiversal application work occurs in the application repository; AIOC remains the command-and-control repository.
 
-## Next executable action
+## Historical next executable action
 
-Execute WP-011 on a supported Mac, capture every Apple-only artifact, complete independent review, and close WP-011 before WP-012 activates.
+At the time of this certification snapshot the next action was WP-011 on a supported Mac. That instruction has been superseded as a universal current-work selector. WP-011 remains a separate Mac-dependent bounded track and must be recovered from its latest current repository evidence when selected.

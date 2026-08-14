@@ -1,10 +1,13 @@
 # AIOC Current State
 
-**Status:** Operational AIOC certified; Development Brain Releases A–G complete; 8E-009 CSV-first canonical conversion complete  
+> **HISTORICAL SNAPSHOT — 2026-08-04. DO NOT USE THIS FILE TO SELECT CURRENT WORK.**  
+> Current recovery authority is `governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md`, `governance/ai/runtime/CURRENT_WORK_POINTER.json`, its named checkpoint/evidence, `governance/ai/runtime/ROADMAP_INDEX.json`, the current application roadmap, and `Multiversal-app/.ai/current-work-order.md`. The material below is retained only as milestone provenance.
+
+**Historical status:** Operational AIOC certified; Development Brain Releases A–G complete; 8E-009 CSV-first canonical conversion complete  
 **Repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Default branch:** `main`  
 **Owner and final authority:** John Brandon Turner  
-**Current governed workstream:** 8D-007 — Golden Test Corpus and Balance Harness
+**Historical governed workstream at snapshot:** 8D-007 — Golden Test Corpus and Balance Harness
 
 ## Verified completed foundations
 
@@ -33,9 +36,9 @@ Repository evidence through PR #111 establishes:
 
 The complete reconciliation artifact is identified by SHA-256 `112ef5116b4090cc266eefe36e1c539b6567f022d6b857db6e1d2bdd77e30e40`.
 
-## Active milestone: 8D-007
+## Historical active milestone at snapshot: 8D-007
 
-**Golden Test Corpus and Balance Harness** is now the next governed workstream.
+**Golden Test Corpus and Balance Harness** was the next governed workstream at this snapshot.
 
 Purpose:
 
@@ -45,32 +48,24 @@ Purpose:
 - create balance-facing scenario harnesses without silently changing source mechanics;
 - record systemic defects and regression gates before application integration expands.
 
-## Immediate next action
+## Historical immediate next action
 
-Create the governed 8D-007 corpus contract and representative selection matrix across all 20 datasets, including simple, complex, modular, magical, technological, living, vehicle, mecha, spacecraft, ability, spell, hazard, trap, weapon, ammunition, facility, material, and software records.
+At the time of this snapshot the next action was to create the governed 8D-007 corpus contract and representative selection matrix across all 20 datasets.
 
-The first tranche must define:
+That action and later roadmap work subsequently advanced; use current recovery authority rather than this section for execution.
 
-- corpus selection rules;
-- domain and subtype coverage targets;
-- provenance and completeness thresholds;
-- deterministic runtime scenarios;
-- expected install/uninstall and migration behavior;
-- balance-observation fields separated from source truth;
-- regression fingerprints;
-- exact pass/fail criteria.
+## Historical subsequent roadmap
 
-## Approved subsequent roadmap
+At this snapshot, the planned order was:
 
-After 8D-007:
-
-1. 8D-008 — AI Development Team Operating Package;
-2. Phase 9 — Complete Agentic AI Development Roadmap;
-3. application implementation work under the approved Phases 10–13 and Stage A roadmap.
+1. 8D-007 — Golden Test Corpus and Balance Harness;
+2. 8D-008 — AI Development Team Operating Package;
+3. Phase 9 — Complete Agentic AI Development Roadmap;
+4. application implementation work under the approved Phases 10–13 and Stage A roadmap.
 
 ## Apple/Mac parallel track
 
-`WP-011 — Tauri iOS/iPadOS Spike` remains a separate Mac-dependent task in `cybalicistjt-stack/Multiversal-app`.
+`WP-011 — Tauri iOS/iPadOS Spike` was and remains a separate Mac-dependent task; recover its current state from current repository evidence when selected.
 
 ## Execution policy
 
