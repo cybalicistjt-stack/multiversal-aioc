@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "0.3.0",
+  "stage": "STAGE-A-A4",
+  "title": "Character Workspace",
+  "status": "revalidated_ready_for_bounded_activation",
+  "verdict": "PASS — READY_FOR_BOUNDED_A4_ACTIVATION",
+  "historicalBranch": {"name": "governance/stage-a-a4-preimplementation", "head": "75eeda3d00747d75b36903a7acd0e48a30e09c8d"},
+  "historicalSources": {
+    "compatibilityArchive": "STAGE_A_A4_REPOSITORY_COMPATIBILITY_AND_IMPLEMENTATION_CONTRACTS_v0.2.0.zip",
+    "compatibilitySha256": "340791f2eae9f1db50904d455aa18de8246463b08d0394da02b3a38f91ae8439",
+    "preimplementationArchive": "STAGE_A_A4_CHARACTER_WORKSPACE_PREIMPLEMENTATION_v0.1.0.zip",
+    "preimplementationSha256": "b3f207e1cae8649afda372d902579bdaade5e3f07470a0ecb149de3978d2c7d9",
+    "checksumValidation": "PASS",
+    "historicalValidators": "PASS"
+  },
+  "baselines": {"aioc": "1b2de74245b082f51c92abfefa09d07353ae3e10", "application": "9173f132ea773cb697364ad0636b8b951fd36699", "a3Merge": "7c1392977962a54b91af4519ed258a2a86823665"},
+  "dependencies": {"a2": "completed_verified", "a3": "completed_verified", "a2PickerPresent": true, "a3CharacterWorkspaceTypePresent": true, "a3CharacterReceiptFieldPresent": true, "a3FreshEntryRechecksCharacterControl": true},
+  "persistenceRecheck": {"migrationRegistry": ["0001_initial_logical_schema.json"], "characterPersistencePresent": false, "a4ContractsPresent": false, "a4ClientPresent": false, "a4SchemasPresent": false, "nextLogicalMigration": "database/migrations/0002_character_workspace.json", "additiveOnly": true, "databaseVendorDecisionRequired": false},
+  "overlays": {"itemsEquipmentAuthority": "PPIA-03", "speciesFormBiologyAuthority": "PPIA-05", "appearanceArchitectureAuthority": "PPIA-06", "appearanceProductionAuthority": "CAPP-01..CAPP-12 completed_verified", "recoveryCopyAndRegression": ["PPIA-13", "PPIA-14", "PPIA-15"]},
+  "changedPathScope": {"file": "A4_CURRENT_CHANGED_PATH_SCOPE_v0.3.0.csv", "rows": 52, "create": 36, "modifyBounded": 2, "reuse": 13, "preserve": 1, "sha256": "489b38e60ec3401a81dc9702a14a48dab692f9aca67022ba01e72aaa2c80da79"},
+  "newRuntimeDependencyRequired": false,
+  "productionProviderRequired": false,
+  "paidServiceRequired": false,
+  "releaseAuthorized": false,
+  "deploymentAuthorized": false,
+  "nextAction": "Merge focused A4 revalidation, activate bounded A4 work order on current application main, then build A4-01 persistence contracts/schemas/fixtures and additive 0002 logical migration before broad validation."
+}
