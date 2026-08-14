@@ -1,6 +1,7 @@
 # STAGE-A-A2 Current Authority Reconciliation
 
 **Date:** 2026-08-13  
+**Reverified:** 2026-08-14  
 **Work item:** STAGE-A-A2 — Universal Object Experience  
 **Purpose:** give ChatGPT, Codex, and repository operators one bounded authority map for A2 without rebuilding historical preparation or treating unmerged strategy work as canonical implementation state.
 
@@ -17,14 +18,14 @@ A2 implementation may start only from a repository-capable private checkout afte
 ### Layer 1 — current application implementation reality
 
 **Repository:** `cybalicistjt-stack/Multiversal-app`  
-**Canonical main:** `354e24007d2c453d090a2a6cdb31d3e3333c84c1`  
+**Canonical main:** `fc1c0e05ce55dfa7e83ab4beaf24fdfdf91cb54a`  
 **Current work order:** `.ai/current-work-order.md`  
 **Authorized item:** `STAGE-A-A2 — Universal Object Experience`  
 **Governed implementation branch:** `stage-a/a2-universal-object-experience`
 
-This layer controls what product code exists and whether A2 is activated. The governed A2 branch currently starts from the same application baseline; historical planning material does not imply hidden A2 product implementation.
+This layer controls what product code exists and whether A2 is activated. The governed A2 branch currently remains at baseline `354e24007d2c453d090a2a6cdb31d3e3333c84c1`; current application `main` is two governance-only commits ahead. Historical planning material and remote branch existence do not imply hidden A2 product implementation.
 
-A solidity correction on application branch `governance/repository-solidity-001-clean` aligns `.ai/next-task.md` with this work order. Until that correction is merged, `.ai/current-work-order.md` remains the stronger current application authority when older application control prose disagrees.
+Repository Solidity corrections are now canonical on application `main`: PR #116 merged as `6430f892c89bef11dcc6dce4f537da3c0f1c18c2` and aligned `.ai/next-task.md` with the current A2 work order; PR #118 merged as `fc1c0e05ce55dfa7e83ab4beaf24fdfdf91cb54a` and clarified that historical `.agent/active-work-orders/` records do not select current work over the `.ai` control chain. The governed A2 branch must therefore be reverified and reconciled against current `main` during the repository-capable activation sequence rather than being treated as already activated or silently reset.
 
 ### Layer 2 — current AIOC recovery/state evidence
 
@@ -82,7 +83,7 @@ CAPP is implementation input primarily for later Character/appearance surfaces. 
 
 ### Layer 7 — MXS owner-approved strategic input, pending canonical merge
 
-Branch `governance/mxs-strategic-product-superset` is owner-approved and currently at `9d6dab320033147da191abda0cd3689ce257619c`, but it has no PR/merge and therefore is **not canonical merged repository authority yet**.
+Branch `governance/mxs-strategic-product-superset` is owner-approved but has no PR/merge and therefore is **not canonical merged repository authority yet**.
 
 MXS may be used as an explicit owner-approved strategic constraint while its branch is preserved, but implementation completion claims must not pretend it is merged. For A2 its relevant direction is:
 
