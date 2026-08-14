@@ -1,0 +1,19 @@
+name: Validate Stage A A4 Scope Amendment
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/stage-a-a4/A4_CURRENT_CHANGED_PATH_SCOPE_v0.3.1.csv'
+      - 'governance/application-planning/stage-a-a4/STAGE_A_A4_SCOPE_AMENDMENT_v0.3.1.md'
+      - 'tools/validate_stage_a_a4_scope_amendment_v0.3.1.py'
+      - '.github/workflows/validate-stage-a-a4-scope-amendment.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-a4-scope-amendment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python tools/validate_stage_a_a4_scope_amendment_v0.3.1.py
