@@ -1,11 +1,11 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 2.7.0  
-**Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED; PPIA COMPLETED_VERIFIED; CAPP AUTHORIZED PARALLEL WORK  
+**Version:** 2.8.0  
+**Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED; STAGE-A-A3 COMPLETED_VERIFIED; A4 REVALIDATION NEXT; PPIA/CAPP COMPLETED_VERIFIED  
 **Owner and final authority:** John Brandon Turner  
 **Originally approved:** 2026-08-03  
-**Last updated:** 2026-08-13
+**Last updated:** 2026-08-14
 
 ## Purpose
 
@@ -15,18 +15,17 @@ Repository evidence is mandatory. Nothing is complete merely because it was disc
 
 The authoritative ordered Phase 9 backlog remains `governance/phase9/P9-06_IMPLEMENTATION_BACKLOG_AND_ACCEPTANCE_GATES.json`. Runtime recovery is governed by `governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md`. When a newer internally consistent attempt-branch checkpoint or repository record is more recent than a compact runtime projection, the newer evidence controls recovery until merged or explicitly superseded.
 
-## Current verified execution position — 2026-08-13
+## Current verified execution position — 2026-08-14
 
 - **Phase 9 bounded implementation through P9-06-023 is complete.** Final P9-06-023 / AG-07 physical-device acceptance merged in `Multiversal-app` PR #102 at `fb22295948745347913bcbfebf56ecca26bf39fb`; `releaseAuthorized=false`.
-- **STAGE-A-A2 — Universal Object Experience is the authorized current application item.** Application PR #103 / merge `8b7f53da1f72c280226f64be67c9aa1c280fefdf` recorded the owner decision; PR #104 / merge `dced7f92163050690c807c1fda937146bb8dce85` added the ready work order. A2 is not activated.
-- **DT-001 through DT-010 Developer Toolbelt is complete.** Application PRs #105–#114 produced `mv-dev` v0.10.0 on `main`, ending at `354e24007d2c453d090a2a6cdb31d3e3333c84c1`.
-- **Exact A2 source authority is recovered.** The superseding Sunday master v2.7.1, preimplementation package v1.0.0, repository compatibility audit v2.7.0, and exact `A2_CHANGED_PATH_SCOPE_v1.0.0.csv` are verified; CSV SHA-256 `945b3619b25bd24e54267c8259fc17e667063a3056214e080cbe8034836d5aa6`.
-- **The governed A2 branch exists but remains unactivated.** `stage-a/a2-universal-object-experience` starts from application `main` `354e24007d2c453d090a2a6cdb31d3e3333c84c1`; the mandatory evidence/checkpoint/recovery runner still requires a repository-capable private checkout before A2-01 implementation.
+- **DT-001 through DT-010 Developer Toolbelt is complete.** Application PRs #105–#114 produced `mv-dev` v0.10.0, ending at `354e24007d2c453d090a2a6cdb31d3e3333c84c1`.
+- **STAGE-A-A2 — Universal Object Experience is `COMPLETED_VERIFIED`.** PR #134 squash-merged as `cdd0713864edc6b6fc3ad78c66b3d2edb5491b2d`; exact closure evidence is retained in `Multiversal-app/receipts/STAGE-A-A2-CLOSURE.json`. Release/deployment remained false.
+- **STAGE-A-A3 — Identity, Dashboard, and Workspace Selection is `COMPLETED_VERIFIED`.** PR #136 final head `e4977daf328606a20f1f334d26b22fe6cd40a91a` passed exact-head A3/A1/A2/DT-008 validation and squash-merged as verified commit `7c1392977962a54b91af4519ed258a2a86823665`. The frozen product/browser-tested head `fd4e6d3ac2c23de80707669dc67411b3ee7bb60a` passed focused A3 validation and headed-Chromium evidence; closure is recorded in `Multiversal-app/receipts/STAGE-A-A3-CLOSURE.json`. No production identity provider, new runtime dependency, release or deployment was authorized.
+- **STAGE-A-A4 — Character Workspace is the current next application target for revalidation and is not activated.** Application `main` now names A4 as `CURRENT NEXT FOR REVALIDATION / NOT ACTIVATED`. The recovered A4 preparation branch `governance/stage-a-a4-preimplementation` remains provenance/input only until reconciled against current application `main`, completed A3, PPIA-05/PPIA-06, CAPP and current application contracts.
 - **Internal Alpha feature design is complete through IA-D09.** Prepared tester/reference/support assets do not activate tester access or release.
 - **Design Standards exact-byte ingestion remains unfinished.** `DS-008-working-series-attempt-002` remains blocked on a capable exact-byte transfer/validation surface. Verified preparation remains PR #207 / merge `bd3071f6f855b66b740ba4bf1f1ba0208636548c`, PR #208 / merge `0cfd8128786e4cdd055e3e3be26bdd1854efdfa7`, PR #209 / merge `708e0ea72a6dce6f5d46ddacd042c1ddb80eee0a`, and prepared handoff commit `f0d9295215a057e0f42603a0777c276a7437aad4`.
-- **PPIA is completed_verified.** All sixteen tranches are complete/completed_verified. Final substantive PPIA-16 exact head `eede4bfb530056963a4a595faac54515ff151c3b` passed **70/70** applicable hosted workflows; dedicated run `31694048323` passed; PR #294 squash-merged as signed/verified `5b87d57d9b06fbb7427b6fae7ca022509f92a5fe`.
-- **PPIA final-state recovery is merged.** Exact recovery head `031d4c7af10245069a5cf8bd5b2819965e338cee` passed **70/70** hosted workflows; PR #295 squash-merged as signed/verified `8357cc812436e8bbe40c214ac0ca6e44363cc1a5`. PPIA-16 remains the completed evidence anchor; no successor is selected by PPIA completion.
-- **CAPP — Character Appearance Production Preparation is owner-approved parallel work.** CAPP inherits the completed PPIA-06 appearance architecture without reopening it. `CAPP-01 — 25-Species Appearance Choice Registry + Constraint Model` is the authorized first work item and is not yet started. CAPP does not activate A2/runtime/release/deployment/tester/paid-service/production-credential authority.
+- **PPIA is `COMPLETED_VERIFIED`.** All sixteen tranches are complete/completed_verified. Final substantive PPIA-16 exact head `eede4bfb530056963a4a595faac54515ff151c3b` passed 70/70 applicable hosted workflows; final-state recovery merged through PR #295 as `8357cc812436e8bbe40c214ac0ca6e44363cc1a5`.
+- **CAPP — Character Appearance Production Preparation is `COMPLETED_VERIFIED`.** `CAPP_PROGRAM_BACKLOG.json` records CAPP-01 through CAPP-12 completed_verified. CAPP is direct implementation input for Character appearance/presentation and related diagnostics, while PPIA-05 remains Species/Form biology authority and PPIA-03 remains Asset/equipment authority.
 - **Historical 8E-008G-R1 source-accountability closure remains PASS.** PR #218 / merge `d271d1e7ec453cd153a7bf5768b3df837ba677a9` records 101/101 acceptance checks PASS, 7,144/7,144 structural candidates accounted, 0 unbound source sections, and 1,671 formal deferrals preserved.
 
 This section is a recovery summary, not an autosave ledger. More recent verified repository evidence controls if the project advances beyond it.
@@ -40,7 +39,7 @@ This section is a recovery summary, not an autosave ledger. More recent verified
 - **Phase 9:** canonical product architecture, provider-neutral implementation foundations, acceptance gates, and bounded implementation readiness.
 - **Phase 10 / Stage A:** current core application implementation program.
 - **PPIA:** completed parallel pre-implementation advancement program retained as implementation input and historical evidence.
-- **CAPP:** owner-approved parallel Character Appearance production-preparation program that converts completed PPIA-06 architecture into production-ready data, tooling, renderer specifications, UX states and QA without activating application runtime.
+- **CAPP:** completed Character Appearance production-preparation program retained as direct implementation input for appearance/presentation domains.
 
 ## Completed Phase 8 milestones
 
@@ -59,7 +58,7 @@ Completed first-level packages:
 5. P9-05 — Bounded technical spike and cost envelope.
 6. P9-06 — Implementation backlog and acceptance gates.
 
-P9-06-001 through P9-06-023 are complete and merged in `cybalicistjt-stack/Multiversal-app`. `P9-06-024-OWNER-DECISION-001` transitions current application focus to STAGE-A-A2 without authorizing release or deployment.
+P9-06-001 through P9-06-023 are complete and merged in `cybalicistjt-stack/Multiversal-app`. `P9-06-024-OWNER-DECISION-001` established the bounded Stage A implementation-readiness boundary without authorizing release or deployment.
 
 ## Developer Toolbelt — DT-001 through DT-010
 
@@ -75,7 +74,7 @@ The owner-approved Developer Toolbelt support series is complete in `Multiversal
 9. DT-009 — Traceability Compiler.
 10. DT-010 — Recovery / Performance Harness.
 
-Final state: application PRs #105–#114 merged, `mv-dev` v0.10.0, final merge `354e24007d2c453d090a2a6cdb31d3e3333c84c1`; no A2 product implementation or release/deployment/paid-service authority was added by this support series.
+Final state: application PRs #105–#114 merged, `mv-dev` v0.10.0, final merge `354e24007d2c453d090a2a6cdb31d3e3333c84c1`. The toolbelt remains support infrastructure; it does not itself authorize release/deployment/paid services.
 
 ## Internal Alpha feature-design track — completed design anchor
 
@@ -89,7 +88,7 @@ Governing documents:
 
 **Status:** COMPLETED_VERIFIED — OWNER-APPROVED PARALLEL PROGRAM CLOSED.
 
-PPIA was additive parallel source/content/design/authoring/acceptance work. Its completion does not supersede or complete STAGE-A-A2, Design Standards exact-byte ingestion, WP-011 / Apple work, later Stage A items, Internal Alpha release, deployment, or public release.
+PPIA was additive parallel source/content/design/authoring/acceptance work. Its completion does not by itself complete a later Stage A implementation item, Design Standards exact-byte ingestion, WP-011 / Apple work, Internal Alpha release, deployment, or public release.
 
 ### Approved sixteen tranches
 
@@ -115,52 +114,46 @@ Dependency-optimized execution order:
 
 ### Verified completion evidence
 
-Final substantive PPIA-16 closure: exact validated head `eede4bfb530056963a4a595faac54515ff151c3b`; **70/70** workflows; dedicated run `31694048323`; PR #294; signed/verified merge `5b87d57d9b06fbb7427b6fae7ca022509f92a5fe`.
+Final substantive PPIA-16 closure: exact validated head `eede4bfb530056963a4a595faac54515ff151c3b`; 70/70 workflows; dedicated run `31694048323`; PR #294; signed/verified merge `5b87d57d9b06fbb7427b6fae7ca022509f92a5fe`.
 
-Final machine-readable recovery: exact head `031d4c7af10245069a5cf8bd5b2819965e338cee`; **70/70** workflows; PR #295; signed/verified merge `8357cc812436e8bbe40c214ac0ca6e44363cc1a5`; backlog status `completed_verified_owner_approved_parallel_work`; all sixteen tranches complete/completed_verified.
+Final machine-readable recovery: exact head `031d4c7af10245069a5cf8bd5b2819965e338cee`; 70/70 hosted workflows; PR #295; signed/verified merge `8357cc812436e8bbe40c214ac0ca6e44363cc1a5`; backlog status `completed_verified_owner_approved_parallel_work`; all sixteen tranches complete/completed_verified.
 
 PPIA-16 preserves the Development Console design over DT-001 through DT-010: 10 DT tools, 10 AIOC control surfaces, 16 program concerns, 5 authority layers, 10 screens, 8 shared states, 8 action classes, 8 components, 12 workflows, 12 handoffs, 48 predecessor cases exact-once, and 12 integrated synthetic/noncanonical cases for 60 effective QA cases with zero intended orphaned coverage.
 
 ### Post-PPIA selection boundary
 
-No automatic successor is selected by PPIA completion. Independent unfinished/blocked boundaries remain:
-- **STAGE-A-A2:** authorized current application item, not activated; mandatory runner still needs a repository-capable checkout.
-- **Design Standards / DS-008 attempt-002:** unfinished/blocked on exact-byte transfer and validation capability.
+PPIA completion does not select work by itself. Current independent boundaries are:
+- **STAGE-A-A4:** current next application target for revalidation, not activated;
+- **Design Standards / DS-008 attempt-002:** unfinished/blocked on exact-byte transfer and validation capability;
 - **WP-011 / Apple track:** separate bounded Mac-dependent work under its own latest repository evidence when selected.
 
-PPIA completion does not authorize runtime mutation, release, deployment, tester access, paid services, production credentials, or unsupported canonical-content promotion.
+PPIA completion does not authorize release, deployment, tester access, paid services, production credentials, or unsupported canonical-content promotion.
 
-## CAPP — Character Appearance Production Preparation — authorized parallel track
+## CAPP — Character Appearance Production Preparation — completed parallel track
 
 Governing documents:
 - `governance/application-planning/character-appearance-production/CAPP_CHARACTER_APPEARANCE_PRODUCTION_PREPARATION_PROGRAM.md`
 - `governance/application-planning/character-appearance-production/CAPP_PROGRAM_BACKLOG.json`
 
-**Status:** OWNER-APPROVED — AUTHORIZED PARALLEL WORK; NOT YET STARTED.
+**Status:** COMPLETED_VERIFIED — OWNER-APPROVED PARALLEL PROGRAM CLOSED.
 
-CAPP inherits and extends the completed PPIA-06 Character Appearance Creator architecture into production preparation. It does not reopen PPIA-06. PPIA-05 remains Species/Form biology authority and PPIA-03 remains actual Asset/equipment authority.
+CAPP inherited and extended completed PPIA-06 Character Appearance Creator architecture into production preparation without reopening PPIA-06. PPIA-05 remains Species/Form biology authority and PPIA-03 remains actual Asset/equipment authority.
 
-Approved execution order:
-1. **CAPP-01 — 25-Species Appearance Choice Registry + Constraint Model** — AUTHORIZED NEXT / NOT STARTED
-2. **CAPP-02 — Preset, Randomization and Lock Libraries** — PLANNED
-3. **CAPP-03 — Pixel-Art Asset Production Standard** — PLANNED
-4. **CAPP-04 — Asset Manifest and Coverage Analyzer Contract** — PLANNED
-5. **CAPP-05 — Deterministic Appearance Compiler / Reference Engine** — PLANNED
-6. **CAPP-06 — Wardrobe and Equipment-Fit Compatibility Catalog** — PLANNED
-7. **CAPP-07 — Full Appearance Studio Screen and State Specification** — PLANNED
-8. **CAPP-08 — Portrait, Token and Export Production Contract** — PLANNED
-9. **CAPP-09 — Appearance Versioning and Migration Engine Contract** — PLANNED
-10. **CAPP-10 — Accessibility Description Grammar** — PLANNED
-11. **CAPP-11 — Expanded Generated QA and Coverage Corpus** — PLANNED
-12. **CAPP-12 — Integrated Production Handoff and Completion Gate** — PLANNED
+Completed execution order:
+1. **CAPP-01 — 25-Species Appearance Choice Registry + Constraint Model** — COMPLETED_VERIFIED
+2. **CAPP-02 — Preset, Randomization and Lock Libraries** — COMPLETED_VERIFIED
+3. **CAPP-03 — Pixel-Art Asset Production Standard** — COMPLETED_VERIFIED
+4. **CAPP-04 — Asset Manifest and Coverage Analyzer Contract** — COMPLETED_VERIFIED
+5. **CAPP-05 — Deterministic Appearance Compiler / Reference Engine** — COMPLETED_VERIFIED
+6. **CAPP-06 — Wardrobe and Equipment-Fit Compatibility Catalog** — COMPLETED_VERIFIED
+7. **CAPP-07 — Full Appearance Studio Screen and State Specification** — COMPLETED_VERIFIED
+8. **CAPP-08 — Portrait, Token and Export Production Contract** — COMPLETED_VERIFIED
+9. **CAPP-09 — Appearance Versioning and Migration Engine Contract** — COMPLETED_VERIFIED
+10. **CAPP-10 — Accessibility Description Grammar** — COMPLETED_VERIFIED
+11. **CAPP-11 — Expanded Generated QA and Coverage Corpus** — COMPLETED_VERIFIED
+12. **CAPP-12 — Integrated Production Handoff and Completion Gate** — COMPLETED_VERIFIED
 
-Dependency-optimized order: `CAPP-01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10 → 11 → 12`.
-
-CAPP-01 is first because later presets, randomization, asset production, coverage analysis, renderer tooling, UI controls and QA must derive from one stable machine-readable choice/constraint authority.
-
-CAPP may be selected as the conversational primary while STAGE-A-A2 remains the authorized current application item. CAPP selection does not activate A2 or alter the application work order. CAPP also does not complete/supersede DS-008 or WP-011 / Apple work.
-
-No CAPP item authorizes application runtime mutation, release, deployment, tester access, paid services, production credentials, or unsupported canonical-content promotion.
+CAPP is direct implementation input to Character appearance/presentation and related diagnostics. It does not become Character mechanical truth, Species/Form biology truth, or Asset/equipment ownership/mechanics truth. CAPP completion does not independently activate A4 or authorize release/deployment/tester access/paid services/production credentials.
 
 ## Design Standards Completion subproject — unfinished parallel track
 
@@ -170,36 +163,46 @@ The audited/canonicalization tranche is complete, but exact repository ingestion
 
 Primary programs remain application shell/design system; universal objects; identity/workspaces/permissions; character workspace; campaign/scene builder; live session; combat; inventory/equipment/crafting/vehicles; investigation/social; world builder; contextual AI; and internal-alpha hardening.
 
-### Current authorized application work item — STAGE-A-A2
+### Completed Stage A implementation — A0 through A3
 
-`Multiversal-app/.ai/current-work-order.md` names **STAGE-A-A2 — Universal Object Experience** as `AUTHORIZED CURRENT NEXT`.
+- **STAGE-A-A0 — UI Baseline Audit:** COMPLETE.
+- **STAGE-A-A1 — Application Shell and Design System:** COMPLETE.
+- **STAGE-A-A2 — Universal Object Experience:** COMPLETED_VERIFIED through application PR #134 / merge `cdd0713864edc6b6fc3ad78c66b3d2edb5491b2d`.
+- **STAGE-A-A3 — Identity, Dashboard, and Workspace Selection:** COMPLETED_VERIFIED through application PR #136 / verified squash merge `7c1392977962a54b91af4519ed258a2a86823665`.
 
-A2 covers governed Library/search and stable-ID lookup; authorization-safe filters/facets/sorting; list/card presentation; responsive Inspector and presentation profiles; Generic fallback/source-only diagnostics; relationships; progressive provenance/redaction; read-only version/variant/conflict comparison; constrained Picker; bounded Scene Add Object placement; deep-link/history/recovery; privacy; keyboard/focus; responsive/mobile; reduced motion; high zoom/reflow; accessibility; and real-data acceptance. Established slices remain A2-01 through A2-10.
+A3 established a provider-neutral local-alpha identity/session path, authorization-first dashboard projection, separate workspace discovery and entry, nonauthoritative selected-context receipts, role/delegation/support boundaries, inference-safe invitation/recent-work/notification behavior, context revocation isolation, recovery states, accessibility/responsive/offline gates, and a real local-alpha vertical flow into a protected workspace. Its final exact-head A3/A1/A2/DT-008 checks passed, and headed-Chromium evidence passed for keyboard entry/dashboard, fresh workspace entry, axe audits, desktop/mobile reflow, touch targets and offline denial. Release/deployment remain false.
 
-### A2 exact-source and activation state
+### Current next application item — STAGE-A-A4 Character Workspace
 
-The previous changed-path authority blocker is resolved. The v2.7.1 master, v1.0.0 preimplementation package, v2.7.0 compatibility audit, and exact `A2_CHANGED_PATH_SCOPE_v1.0.0.csv` are verified. The governed branch exists from application `main` `354e24007d2c453d090a2a6cdb31d3e3333c84c1`.
+`Multiversal-app/.ai/current-work-order.md` names **STAGE-A-A4 — Character Workspace** as `CURRENT NEXT FOR REVALIDATION / NOT ACTIVATED`.
 
-**A2 is not activated.**
+Recovered preparation authority:
 
-### Exact next A2 operation
+- AIOC branch `governance/stage-a-a4-preimplementation`;
+- historical branch tip `75eeda3d00747d75b36903a7acd0e48a30e09c8d`;
+- highest recovered compatibility artifact `STAGE_A_A4_REPOSITORY_COMPATIBILITY_AND_IMPLEMENTATION_CONTRACTS_v0.2.0.zip`;
+- artifact SHA-256 `340791f2eae9f1db50904d455aa18de8246463b08d0394da02b3a38f91ae8439`;
+- historical preparation baseline `dced7f92163050690c807c1fda937146bb8dce85`.
 
-On a repository-capable private checkout:
-1. checkout/reverify the existing governed A2 branch;
-2. initialize the mandatory v2.6 evidence/checkpoint/recovery runner as the v2.7.1 master directs;
-3. require `verify-state` PASS and zero substantive dirty paths;
-4. continue `MASTER_EXECUTION_ORDER_v2.7.1.csv` from the applicable activation step;
-5. use exact `A2_CHANGED_PATH_SCOPE_v1.0.0.csv` at the governed point;
-6. run `python -m tools.mv_dev preflight a2 --json`;
-7. run `python -m tools.mv_dev task A2-01 --json`;
-8. require exact scope authority `READY` before A2-01 implementation;
+The recovered A4 package is provenance/input only. It must be revalidated against current application `main` after A2/A3 completion. Current overlays include PPIA-05 Species/Forms, PPIA-06 Character Appearance, completed CAPP-01 through CAPP-12, PPIA-03 Asset/equipment authority, and the implemented A2 object-selection/A3 identity-workspace foundations.
+
+### Exact next A4 operation
+
+1. reverify current `Multiversal-app` `main` and A3 closure evidence;
+2. inspect recovered `governance/stage-a-a4-preimplementation` without wholesale-merging it;
+3. compare its historical repository/path assumptions to current post-A3 application structure;
+4. preserve stable Character lifecycle/control, governed mechanical references, descriptive/mechanical separation, write/version/history/offline-authority boundaries and predecessor-reuse intent where still valid;
+5. reconcile completed PPIA-05/PPIA-06/CAPP and PPIA-03 domain authority without moving presentation metadata into Character mechanical truth;
+6. refresh exact implementation paths, reuse decisions, compatibility gaps, validators and changed-path authority;
+7. produce a bounded current-repository A4 revalidation/activation record;
+8. only if that gate passes, create/activate the A4 implementation branch/work order and begin construction;
 9. keep release/deployment false.
 
-Do not activate A3–A12 merely because their designs/support packages are prepared.
+Do not activate A5–A12 merely because their historical design/support packages are prepared.
 
 ## Validation and CI efficiency rule
 
-`governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md` remains controlling: use the smallest deterministic validator during construction, batch repairs, run final relevant hosted validation at the bounded package gate, keep workflow path filters scoped, bind failures to the active head/gate, and update checkpoints only at material recovery/ready/completion boundaries.
+`governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md` remains controlling: build meaningful bounded slices first, use the smallest deterministic/focused validator during construction, batch related repairs, run broad relevant hosted validation at the bounded package/final gate rather than after every small mutation, keep workflow path filters scoped, bind failures to the active head/gate, and update checkpoints only at material recovery/ready/completion boundaries.
 
 ## Phase 11 — GM and Player Experience
 
@@ -221,7 +224,7 @@ Complete major workflows, authorized service integration, approved content popul
 
 - “Continue” means perform the next verified unfinished operation.
 - Read the authoritative backlog/work order before starting each item.
-- Preserve parallel tracks; completing PPIA or working CAPP does not complete or supersede A2, Design Standards, Apple work, or other retained tracks.
+- Preserve parallel tracks; completing PPIA/CAPP or one Stage A item does not complete or supersede Design Standards, Apple work, or unrelated retained tracks.
 - Distinguish missing source bytes, transfer-tool limits, unavailable checkout, validation failure, and owner-only gates.
 - Never claim completion, files, commits, PRs, merges, tests, artifacts, deployments, or exact-byte ingestion without matching evidence.
 - Preserve source truth, provenance, variants, conflicts, stable IDs, exact-byte requirements, permissions, hidden-information boundaries, and reversibility.
