@@ -1,0 +1,21 @@
+name: Validate Stage A A3 Current Revalidation
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/stage-a-a3/A3_CURRENT_CHANGED_PATH_SCOPE_v0.3.0.csv'
+      - 'governance/application-planning/stage-a-a3/STAGE_A_A3_CURRENT_REPOSITORY_REVALIDATION_v0.3.0.json'
+      - 'governance/application-planning/stage-a-a3/STAGE_A_A3_CURRENT_REPOSITORY_REVALIDATION_v0.3.0.md'
+      - 'tools/validate_stage_a_a3_current_revalidation_v0.3.0.py'
+      - '.github/workflows/validate-stage-a-a3-current-revalidation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate current A3 revalidation package
+        run: python tools/validate_stage_a_a3_current_revalidation_v0.3.0.py
