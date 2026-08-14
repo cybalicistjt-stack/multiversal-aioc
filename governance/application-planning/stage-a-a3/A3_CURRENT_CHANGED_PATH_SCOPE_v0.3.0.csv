@@ -1,0 +1,50 @@
+Slice,Disposition,Path,Purpose,Constraint
+A3-01,CREATE,packages/contracts/src/a3/stable-subject-session-port.ts,Provider-neutral A3 session facade over existing identity mapping,No provider SDK types
+A3-01,CREATE,apps/client-ui/src/a3/services/localAlphaIdentityAdapter.ts,Deterministic local alpha/test adapter only,No production provider or hosted identity service
+A3-01,CREATE,apps/client-ui/src/a3/identity/IdentityEntry.tsx,Authentication and session lifecycle UI,Use permission-safe PPIA-13/14 microcopy
+A3-01,REUSE,packages/contracts/src/identity-device/identity-service-port.ts,Canonical provider-neutral identity port,Do not rewrite
+A3-01,REUSE,packages/contracts/src/identity-device/provider-independent-identity-mapping.ts,Canonical subject mapping,Stable subject independent of provider binding
+A3-02,CREATE,packages/contracts/src/a3/invitation-port.ts,Invitation lifecycle contract,Atomic idempotent inference-safe acceptance
+A3-02,CREATE,schemas/a3/invitation.schema.json,Invitation state recipient expiry revocation and safe preview schema,Raw token secret and never logged
+A3-02,CREATE,apps/client-ui/src/a3/invitations/InvitationEntry.tsx,Safe invitation preview accept decline states,Offline acceptance forbidden
+A3-03,CREATE,packages/contracts/src/a3/dashboard-projection-port.ts,Authorized dashboard projection contract,Authorize before labels counts activity media or summaries
+A3-03,CREATE,apps/client-ui/src/a3/dashboard/DashboardPage.tsx,Role-aware authorized dashboard,No post-fetch client filtering
+A3-03,CREATE,apps/client-ui/src/a3/dashboard/dashboardProjection.ts,Client-facing adapter over already-authorized projection,Projection is nonauthoritative
+A3-04,CREATE,packages/contracts/src/a3/workspace-discovery-port.ts,Discovery decision separate from entry,Hidden workspace existence cannot leak
+A3-04,CREATE,packages/contracts/src/a3/workspace-entry-port.ts,Fresh workspace entry authorization and receipt,Reauthorize on entry
+A3-04,CREATE,packages/contracts/src/a3/selected-context-receipt.ts,Selected context receipt contract,Navigation and recovery only never authority
+A3-04,CREATE,schemas/a3/selected-context-receipt.schema.json,Machine-readable selected context receipt schema,Preserve 15-field v0.1 contract unless current evidence requires additive versioning
+A3-04,CREATE,apps/client-ui/src/a3/context/WorkspaceEntryGuard.tsx,Protected route guard,Service decision before protected projection
+A3-04,MODIFY_BOUNDED,apps/client-ui/src/App.tsx,Integrate A3 identity/dashboard/workspace context while preserving A2 Library route,A2 Library behavior and hash navigation must remain regression-covered
+A3-05,CREATE,packages/contracts/src/a3/a3-authorization-projection.ts,Compose workspace campaign entitlement character delegation and support decisions,Deny by default and do not weaken campaign policy
+A3-05,CREATE,packages/contracts/src/a3/delegation-support-access.ts,Assistant GM delegation and bounded support access records,Global Owner/Admin never implies campaign private access
+A3-05,CREATE,apps/client-ui/src/a3/context/WorkspaceSwitcher.tsx,Render only authorized alternatives,Workspace discovery and entry remain separate decisions
+A3-05,REUSE,packages/contracts/src/authorization/campaign-authorization-policy.ts,Campaign owner gm player observer authority baseline,Compose do not broaden CampaignRole for application roles
+A3-05,REUSE,packages/entitlements/src/entitlement-service-port.ts,Entitlement decision boundary,Entitlement never implies membership or workspace access
+A3-05,REUSE,packages/contracts/src/identity-device/entitlement-evaluator.ts,Deterministic entitlement evaluation,Preserve P9 transition semantics
+A3-05,REUSE,apps/client-ui/src/a2/data/authorizationProjection.ts,Authorization-before-projection client pattern,A3 uses its own types but preserves ordering invariant
+A3-06,CREATE,packages/contracts/src/a3/recent-work-port.ts,Revocation-aware recent work contract,Revalidate every item before display or open
+A3-06,CREATE,packages/contracts/src/a3/notification-summary-port.ts,A3-bounded safe dashboard summaries,No hidden workspace labels or counts
+A3-06,CREATE,apps/client-ui/src/a3/dashboard/RecentWork.tsx,Authorized recent work cards,No cached authority
+A3-06,CREATE,apps/client-ui/src/a3/dashboard/NotificationSummary.tsx,Inference-safe bounded summaries,Do not expand into full notification platform
+A3-06,REUSE,domains/notifications-work/BOUNDARY.md,Notification domain boundary,Stay inside A3 entry/dashboard summary scope
+A3-06,REUSE,packages/contracts/src/notifications-work/README.md,Notification contract placeholder boundary,Do not treat placeholder as implemented service
+A3-07,CREATE,apps/client-ui/src/a3/context/a3LocationState.ts,A3 deep-link intent codec,URL state never grants authorization
+A3-07,CREATE,apps/client-ui/src/a3/context/contextLifecycle.ts,Switch revocation sign-out cache partition and purge orchestration,Clear protected state before new projection continues
+A3-07,REUSE,apps/client-ui/src/a2/navigation/a2LocationState.ts,Established hash-route compatibility and history pattern,Do not break A2 deep links
+A3-07,REUSE,packages/contracts/src/session/ordered-realtime-event-delivery.ts,Realtime ordering and gap pattern,Duplicate-safe and gap-aware
+A3-07,REUSE,packages/contracts/src/session/checkpoint-reconnect-restoration.ts,Reconnect recovery pattern,Trusted checkpoint only no offline authority
+A3-07,PRESERVE,apps/client-ui/src/a2/library/LibraryPage.tsx,Completed A2 Library route integration,A3 context guards must preserve A2 authorization semantics
+A3-08,CREATE,apps/client-ui/src/a3/recovery/IdentityRecovery.tsx,Bounded recovery conflict support and revoked-session states,Use current PPIA-13/14 recovery language
+A3-08,CREATE,fixtures/a3/support-access/*.json,Purpose time scope-bounded support fixtures,Synthetic test fixtures only
+A3-09,CREATE,apps/client-ui/src/a3/a3.css,A3 responsive identity/dashboard/workspace styles,Reuse global and A2 responsive reduced-motion focus conventions
+A3-09,CREATE,apps/client-ui/src/a3/a3.a11y.test.tsx,A3 keyboard focus reflow zoom reduced-motion permission states,Use existing axe dependency
+A3-09,REUSE,apps/client-ui/src/a2/a2.css,Completed A2 responsive and reduced-motion patterns,Do not duplicate global style system
+A3-09,REUSE,apps/client-ui/src/a2/a2.a11y.test.tsx,Completed A2 accessibility testing pattern,Preserve A2 regression coverage
+A3-09,PRESERVE,apps/client-ui/package.json,Existing React Vitest Testing Library and axe stack,No dependency or lockfile change; run A3 a11y explicitly in focused CI
+A3-10,CREATE,fixtures/a3/acceptance/*.json,Bounded positive denied isolation and revocation fixtures,Include two-subject and hidden-existence cases
+A3-10,CREATE,tests/a3/**,Cross-boundary privacy revocation inference and context tests,No production fixture overlays
+A3-10,CREATE,tools/verify_stage_a_a3.py,Deterministic integrated A3 verifier,Aggregate current P9 plus A1 A2 and A3 gates
+A3-10,CREATE,.github/workflows/validate-stage-a-a3-identity-dashboard.yml,Focused A3 exact-head CI,No deployment and preserve existing workflows
+A3-10,REUSE,.github/workflows/validate-stage-a-a1-client-foundation.yml,A1 shell regression workflow,Keep green on A3 head
+A3-10,REUSE,.github/workflows/validate-stage-a-a2-universal-object-experience.yml,A2 Universal Object regression workflow,Keep green on A3 head when affected paths require it
