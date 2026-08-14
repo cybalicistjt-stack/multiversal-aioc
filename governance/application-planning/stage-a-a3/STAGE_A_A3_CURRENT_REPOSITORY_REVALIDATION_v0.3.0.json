@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "0.3.0",
+  "stage": "STAGE-A-A3",
+  "title": "Identity, Dashboard, and Workspace Selection",
+  "status": "REVALIDATED_READY_FOR_BOUNDED_ACTIVATION",
+  "owner": "John Brandon Turner",
+  "historicalSource": {
+    "branch": "governance/stage-a-a3-preimplementation",
+    "branchTip": "ebba2ddff260a77d32656606a37e6d635cbeaea1",
+    "compatibilityArtifact": "STAGE_A_A3_REPOSITORY_COMPATIBILITY_AND_IMPLEMENTATION_CONTRACTS_v0.2.0.zip",
+    "sha256": "b0396d3945a0c200a2b7d3821bb851c06c57fbc83a29373fc0a5758df32bf1b7",
+    "nestedBase": "STAGE_A_A3_PREIMPLEMENTATION_DESIGN_PACKAGE_v0.1.0.zip",
+    "sourceBytesVerified": true,
+    "historicalValidator": "PASS"
+  },
+  "currentAuthority": {
+    "aiocMain": "4395a38770f1d0049da6fe908b331ce869548513",
+    "applicationMain": "92f3f2e029ca041d2e0fdb739c614d58c7e913e8",
+    "a2Merge": "cdd0713864edc6b6fc3ad78c66b3d2edb5491b2d",
+    "a2Status": "COMPLETED_VERIFIED",
+    "a3QueueState": "CURRENT NEXT — REVALIDATE / NOT ACTIVATED",
+    "a4ThroughA12": "SEQUENTIAL — NOT CURRENT"
+  },
+  "repositoryDeltaSinceA2Merge": {
+    "productSourceChanged": false,
+    "changedPaths": [
+      ".ai/current-work-order.md",
+      ".ai/task-queue.md",
+      "docs/evidence/stage-a-a2/a2_exact_head_ci.json",
+      "docs/evidence/stage-a-a2/a2_merge_evidence.json",
+      "receipts/STAGE-A-A2-CLOSURE.json"
+    ]
+  },
+  "historicalAnchorRevalidation": {
+    "anchors": 22,
+    "exactBlobAnchorsUnchanged": 12,
+    "presenceAnchorsStillPresent": 8,
+    "intentionallyChangedAnchors": 2,
+    "intentionallyChanged": [
+      {
+        "path": "apps/client-ui/src/App.tsx",
+        "reason": "A2 integrated the governed Library route, A2 authorization projection, A2 styles, and A2 hash-route parser. A3 must compose with these completed seams."
+      },
+      {
+        "path": ".ai/task-queue.md",
+        "reason": "A2 is now COMPLETED_VERIFIED and A3 is current next for revalidation."
+      }
+    ]
+  },
+  "p9RegressionValidation": [
+    {"id": "P9-06-012", "status": "PASS", "purpose": "provider-independent identity mapping"},
+    {"id": "P9-06-013", "status": "PASS", "purpose": "campaign authorization"},
+    {"id": "P9-06-014", "status": "PASS", "purpose": "entitlement evaluation"},
+    {"id": "P9-06-015", "status": "PASS", "purpose": "entitlement transition and cancellation"},
+    {"id": "P9-06-016", "status": "PASS", "purpose": "authoritative session command authorization"},
+    {"id": "P9-06-017", "status": "PASS", "purpose": "ordered realtime delivery"},
+    {"id": "P9-06-018", "status": "PASS", "purpose": "hidden-information filtering"}
+  ],
+  "retainedFoundations": [
+    "packages/contracts/src/identity-device/identity-service-port.ts",
+    "packages/contracts/src/identity-device/provider-independent-identity-mapping.ts",
+    "packages/contracts/src/authorization/campaign-authorization-policy.ts",
+    "packages/entitlements/src/entitlement-service-port.ts",
+    "packages/contracts/src/identity-device/entitlement-evaluator.ts",
+    "packages/contracts/src/session/authoritative-session-command-handler.ts",
+    "packages/contracts/src/session/hidden-information-response-filter.ts",
+    "packages/contracts/src/session/ordered-realtime-event-delivery.ts",
+    "packages/contracts/src/session/checkpoint-reconnect-restoration.ts",
+    "database/migrations/0001_initial_logical_schema.json",
+    "schemas/contracts/identity-service-port.schema.json",
+    "schemas/contracts/persistence-port.schema.json",
+    "schemas/contracts/realtime-session-port.schema.json",
+    "schemas/entitlements/entitlement-service-port.schema.json",
+    "domains/notifications-work/BOUNDARY.md",
+    "packages/contracts/src/notifications-work/README.md",
+    ".github/workflows/validate-stage-a-a1-client-foundation.yml"
+  ],
+  "newA2ReuseSeams": [
+    "apps/client-ui/src/a2/data/authorizationProjection.ts",
+    "apps/client-ui/src/a2/navigation/a2LocationState.ts",
+    "apps/client-ui/src/a2/a2.css",
+    "apps/client-ui/src/a2/a2.a11y.test.tsx",
+    "apps/client-ui/src/a2/library/LibraryPage.tsx",
+    ".github/workflows/validate-stage-a-a2-universal-object-experience.yml"
+  ],
+  "gapRevalidation": [
+    {"id": "A3-GAP-001", "status": "REMAINS_ADDITIVE", "finding": "No concrete runtime IdentityServicePort implementation; create deterministic A3 local alpha/test adapter behind provider-neutral contract."},
+    {"id": "A3-GAP-002", "status": "REMAINS_ADDITIVE", "finding": "No invitation runtime/schema/service surface is present."},
+    {"id": "A3-GAP-003", "status": "REMAINS_ADDITIVE", "finding": "CampaignRole remains owner/gm/player/observer; application workspace roles, Assistant GM delegation, creator/tester, and support access must remain separate."},
+    {"id": "A3-GAP-004", "status": "REMAINS_ADDITIVE_UPDATED_SEAM", "finding": "Workspace selector is still local UI state; A3 must replace authority semantics while preserving completed A2 Library integration."},
+    {"id": "A3-GAP-005", "status": "REMAINS_ADDITIVE", "finding": "No authorized dashboard projection service exists."},
+    {"id": "A3-GAP-006", "status": "REMAINS_ADDITIVE", "finding": "Notifications-work remains a domain/contract placeholder; A3 may add only safe dashboard summaries."},
+    {"id": "A3-GAP-007", "status": "REMAINS_ADDITIVE", "finding": "No recent-work service is present."},
+    {"id": "A3-GAP-008", "status": "REMAINS_ADDITIVE", "finding": "No selected-context receipt exists."},
+    {"id": "A3-GAP-009", "status": "REMAINS_SECURITY_INVARIANT", "finding": "Campaign owner grants private-gm access; global Owner/Admin must never be mapped to Campaign owner automatically."},
+    {"id": "A3-GAP-010", "status": "REMAINS_ADDITIVE_UPDATED_SEAM", "finding": "Hash shell now includes A2 route/history integration but still lacks authenticated entry/workspace authorization guard."}
+  ],
+  "supersededHistoricalAssumptions": [
+    "A2 is incomplete or blocks A3 activation.",
+    "dced7f92163050690c807c1fda937146bb8dce85 is the current application baseline.",
+    "The client shell is A1-only and has no A2 route/authorization/history integration.",
+    "The old task queue still names A2 as current next.",
+    "apps/client-ui/package.json may need an A3 a11y script change; current focused CI can run the existing axe stack explicitly without changing dependencies or the lockfile.",
+    "The historical handoff instruction to prepare A4 next is current execution authority; it is superseded because A3 is now the sequential current-next revalidation target."
+  ],
+  "currentOverlays": [
+    "PPIA-13 onboarding/help content",
+    "PPIA-14 permission-safe error/recovery microcopy",
+    "PPIA-15 awkward/scale/accessibility/mobile regression cases",
+    "PPIA-16 developer-console/control-surface authority remains separate from player/GM workspace authority",
+    "A2 authorization-before-projection, hash/history, focus, responsive, reduced-motion and high-zoom acceptance patterns"
+  ],
+  "changedPathScope": {
+    "file": "A3_CURRENT_CHANGED_PATH_SCOPE_v0.3.0.csv",
+    "rows": 49,
+    "create": 31,
+    "modifyBounded": 1,
+    "reuse": 15,
+    "preserve": 2
+  },
+  "activationGate": {
+    "a2CompletedVerified": true,
+    "historicalSourceBytesVerified": true,
+    "historicalPackageValidatorPass": true,
+    "currentProductSourceStableSinceA2Merge": true,
+    "providerNeutralFoundationsPresent": true,
+    "p9RegressionsPass": true,
+    "a3NamespaceCollision": false,
+    "newRuntimeDependencyRequired": false,
+    "productionIdentityProviderRequired": false,
+    "databaseVendorDecisionRequired": false,
+    "paidServiceRequired": false,
+    "releaseAuthorized": false,
+    "deploymentAuthorized": false,
+    "verdict": "PASS — READY_FOR_BOUNDED_A3_ACTIVATION"
+  },
+  "nextAction": "Merge this revalidation through focused validation, then create the bounded STAGE-A-A3 application work order/branch from current Multiversal-app main using A3_CURRENT_CHANGED_PATH_SCOPE_v0.3.0.csv. Activation must preserve release/deployment false and must not add provider SDKs, paid services, production credentials, or lockfile dependencies."
+}
