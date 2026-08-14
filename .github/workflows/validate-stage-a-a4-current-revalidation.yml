@@ -1,0 +1,19 @@
+name: Validate Stage A A4 Current Revalidation
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/stage-a-a4/**'
+      - 'tools/validate_stage_a_a4_current_revalidation_v0.3.0.py'
+      - '.github/workflows/validate-stage-a-a4-current-revalidation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-a4-revalidation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate current A4 revalidation package
+        run: python tools/validate_stage_a_a4_current_revalidation_v0.3.0.py
