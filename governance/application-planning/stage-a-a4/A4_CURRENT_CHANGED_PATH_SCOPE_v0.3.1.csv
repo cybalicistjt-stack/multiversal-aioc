@@ -1,0 +1,54 @@
+Slice,Disposition,Path,Purpose,Constraint
+A4-01,CREATE,packages/contracts/src/a4/character-persistence-records.ts,Provider-neutral Character draft control event snapshot and operation record set,Do not freeze vendor-specific storage or move presentation metadata into Character truth
+A4-01,CREATE,packages/contracts/src/a4/character-draft-port.ts,Authoritative Character draft lifecycle contract,Stable IDs expected version idempotency and current policy bindings
+A4-01,CREATE,packages/contracts/src/a4/character-repository-port.ts,Authoritative aggregate event and snapshot repository boundary,Append-only history and no silent overwrite
+A4-01,CREATE,schemas/a4/character-draft.schema.json,Character draft transfer and persistence schema,Preserve source stable IDs and explicit field classes
+A4-01,CREATE,schemas/a4/character-save-request.schema.json,Expected-version Character save request schema,Authoritative writes require operation identity and current context
+A4-01,CREATE,schemas/a4/character-operation-status.schema.json,Ambiguous-outcome status receipt schema,Never authorize blind retry
+A4-01,CREATE,fixtures/a4/persistence/*.json,Deterministic Character persistence and conflict fixtures,Synthetic/noncanonical fixtures only
+A4-01,CREATE,database/migrations/0002_character_workspace.json,Additive Character logical-schema migration after verified 0001-only registry,Permanent physical/vendor decomposition remains outside this logical contract
+A4-01,REUSE,packages/contracts/src/persistence.ts,Optimistic concurrency transaction and migration foundation,Compose do not rewrite
+A4-01,REUSE,database/migrations/0001_initial_logical_schema.json,Current 17-table provider-neutral logical-schema baseline,Do not modify 0001
+A4-02,CREATE,apps/client-ui/src/a4/creation/CharacterCreationFlow.tsx,Bounded governed Character creation flow,Use A2 Picker for mechanical selections
+A4-02,CREATE,apps/client-ui/src/a4/creation/characterDraftState.ts,Nonauthoritative local draft state,Local state never becomes canonical authority
+A4-02,REUSE,apps/client-ui/src/a2/picker/ObjectPicker.tsx,Completed A2 governed picker,Do not create Character-specific duplicate browser
+A4-02,REUSE,apps/client-ui/src/a2/picker/revalidateSelection.ts,Completed A2 selection revalidation,Revalidate current entitlement and lifecycle before commit
+A4-03,CREATE,packages/contracts/src/a4/character-validation-port.ts,All 18 Character validation classes,Authoritative findings are source-linked and deny incomplete activation
+A4-03,CREATE,packages/contracts/src/a4/character-calculation-port.ts,Deterministic derived-value grant and cost calculation trace,Client calculations advisory only
+A4-03,CREATE,apps/client-ui/src/a4/validation/ValidationSummary.tsx,Source-linked validation findings UI,No client-side authority
+A4-04,CREATE,apps/client-ui/src/a4/persistence/characterAutosave.ts,Local autosave and recovery seam,Explicitly nonauthoritative
+A4-04,CREATE,packages/contracts/src/a4/character-operation-status-port.ts,Ambiguous authoritative-operation recovery contract,Lookup by operationId before retry
+A4-04,REUSE,packages/contracts/src/session/checkpoint-reconnect-restoration.ts,Trusted reconnect/checkpoint pattern,Offline/local state cannot become canonical
+A4-05,CREATE,packages/contracts/src/a4/character-control-port.ts,Character control grant revoke and fresh-check boundary,Campaign membership role ownership and entitlement do not imply control
+A4-05,CREATE,apps/client-ui/src/a4/review/CharacterSubmissionReview.tsx,Submission return approval and activation review UI,Role-safe and current-context checked
+A4-05,REUSE,packages/contracts/src/a3/selected-context-receipt.ts,A3 selected subject/workspace navigation receipt,Receipt is evidence only never authorization
+A4-05,REUSE,packages/contracts/src/a3/workspace-entry-port.ts,A3 fresh workspace entry boundary,Character entry must recheck current Character control
+A4-05,REUSE,packages/contracts/src/a3/a3-authorization-projection.ts,A3 composed authorization projection,Do not weaken A3 authority separation
+A4-06,CREATE,packages/contracts/src/a4/character-projection-port.ts,Role-safe Character list sheet history and source projections,Apply seven field classes before delivery search export diagnostics or AI
+A4-06,CREATE,apps/client-ui/src/a4/workspace/CharacterWorkspace.tsx,Character list overview sheet and source workspace shell,Consume current A3 context and A2 governed-object seams
+A4-06,CREATE,apps/client-ui/src/a4/workspace/**,Build resources conditions assets progression notes history and provenance sections,Full inventory/crafting/vehicles remain A8
+A4-06,CREATE,apps/client-ui/src/a4/a4.css,A4 responsive workspace styles,Reuse A1/A2/A3 tokens focus reflow and reduced-motion conventions
+A4-06,CREATE,fixtures/a4/appearance/*.json,Bounded appearance integration fixtures derived from completed CAPP,Synthetic/derived integration evidence only; CAPP remains presentation authority
+A4-06,MODIFY_BOUNDED,apps/client-ui/src/App.tsx,Route authorized Character context into A4 workspace,Preserve A2 Library and A3 identity/dashboard/workspace behavior
+A4-06,MODIFY_BOUNDED,apps/client-ui/src/a3/services/localAlphaIdentityAdapter.ts,Add synthetic local-alpha Character dashboard/entry case through existing A3 contract,Fixture-only extension; preserve all A3 authorization and offline-deny semantics
+A4-07,CREATE,packages/contracts/src/a4/character-advancement-port.ts,Advancement correction and respec proposal decision receipt ledger,Atomic exact-once commit with attributable before/after versions
+A4-07,CREATE,apps/client-ui/src/a4/advancement/**,Award proposal cost decision and receipt history UI,No self-awarded or client-authoritative progression
+A4-08,CREATE,packages/contracts/src/a4/character-migration-port.ts,History-preserving Character migration wrapper,No silent substitution and compose generic MigrationPort
+A4-08,CREATE,fixtures/a4/migration/*.json,Migration history snapshot and historical-entitlement fixtures,Preserve accepted historical selections while blocking unauthorized new selections
+A4-09,CREATE,packages/contracts/src/a4/character-export-port.ts,Permission-filtered portable Character export manifest,No player-private GM-only secret or security leakage
+A4-09,CREATE,apps/client-ui/src/a4/a4.a11y.test.tsx,Keyboard focus reflow zoom reduced-motion and state accessibility coverage,Use existing axe dependency and no package change
+A4-09,CREATE,apps/client-ui/src/a4/a4.privacy-recovery.test.ts,Denied/offline/export/diagnostic leakage regression coverage,Cover canonical 26 denied cases without hidden-existence leakage
+A4-09,REUSE,apps/client-ui/src/a3/a3.css,A3 responsive protected-workspace conventions,Do not fork global shell styling
+A4-09,REUSE,apps/client-ui/src/a3/a3.a11y.test.tsx,A3 accessibility regression pattern,Keep predecessor behavior green at package gate
+A4-09,PRESERVE,apps/client-ui/package.json,Existing React Vitest Testing Library and axe stack,No new runtime dependency or lockfile change
+A4-10,CREATE,packages/contracts/src/a4/character-scene-reference.ts,Bounded Character-to-Scene reference handoff,No A5/A6 mutation or scene-builder expansion
+A4-10,CREATE,apps/client-ui/src/a4/a4.scene-reference.test.ts,Exit-condition caller/reference test only,Do not implement later Stage A work
+A4-10,CREATE,apps/client-ui/src/a4/a4.integration.test.tsx,Fresh persisted reopen and integrated Character acceptance,Exercise A3 context and A2 selection without duplicating them
+A4-10,CREATE,tools/verify_stage_a_a4.py,Focused deterministic A4 verifier,Aggregate A4 gates and lightweight predecessor invariants
+A4-10,CREATE,.github/workflows/validate-stage-a-a4-character-workspace.yml,Focused exact-head A4 CI,No deployment and broad predecessor sweep only at package boundary
+A4-10,CREATE,docs/evidence/stage-a-a4/**,Final A4 acceptance and browser evidence package,Real evidence only
+A4-10,CREATE,receipts/STAGE-A-A4-*.json,Ready/closure receipts,Completion only after exact-head CI browser evidence merge and closure
+A4-10,REUSE,.github/workflows/validate-stage-a-a1-client-foundation.yml,A1 shell regression lane,Run when shared shell changes at meaningful gate
+A4-10,REUSE,.github/workflows/validate-stage-a-a2-universal-object-experience.yml,A2 Universal Object regression lane,Keep Picker/Library behavior intact
+A4-10,REUSE,.github/workflows/validate-stage-a-a3-identity-dashboard-workspace.yml,A3 identity/dashboard/workspace regression lane,Keep fresh-entry and offline boundaries intact
+A4-10,MODIFY_BOUNDED,apps/client-ui/src/App.test.tsx,Update predecessor shell regression to target the intended Campaign card and add explicit Character entry coverage,Test maintenance only; do not weaken A1/A3 authorization assertions
