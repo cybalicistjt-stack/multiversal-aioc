@@ -1,0 +1,54 @@
+name: Validate Repository Solidity A2-A12 Preparation Reconciliation
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/REPOSITORY_SOLIDITY_A2_A12_PREPARATION_RECONCILIATION_2026-08-14.md'
+      - '.github/workflows/validate-repository-solidity-a2-a12-preparation-reconciliation.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate stage coverage and zero unresolved reservoir
+        shell: bash
+        run: |
+          set -euo pipefail
+          file='governance/application-planning/REPOSITORY_SOLIDITY_A2_A12_PREPARATION_RECONCILIATION_2026-08-14.md'
+          test -f "$file"
+          grep -Fq 'stages_classified = 11' "$file"
+          grep -Fq 'unresolved_recovered_stage_packages = 0' "$file"
+          for stage in A2 A3 A4 A5 A6 A7 A8 A9 A10 A11 A12; do
+            grep -Fq "### STAGE-A-${stage}" "$file"
+          done
+          test "$(grep -Fc '**Execution authority now:** **NO**.' "$file")" -eq 10
+      - name: Validate current Stage A authority boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          file='governance/application-planning/REPOSITORY_SOLIDITY_A2_A12_PREPARATION_RECONCILIATION_2026-08-14.md'
+          grep -Fq 'current_application_item = STAGE-A-A2' "$file"
+          grep -Fq 'current_application_item_activated = false' "$file"
+          grep -Fq 'later_stage_activation_authorized = false' "$file"
+          grep -Fq 'STAGE-A-A2 — Universal Object Experience remains the authorized current application item and is not activated.' "$file"
+          grep -Fq '945b3619b25bd24e54267c8259fc17e667063a3056214e080cbe8034836d5aa6' "$file"
+      - name: Validate newer PPIA CAPP and tester-kit overlays
+        shell: bash
+        run: |
+          set -euo pipefail
+          file='governance/application-planning/REPOSITORY_SOLIDITY_A2_A12_PREPARATION_RECONCILIATION_2026-08-14.md'
+          grep -Fq '`PPIA_PROGRAM_BACKLOG.json` is `completed_verified_owner_approved_parallel_work`' "$file"
+          grep -Fq '`CAPP_PROGRAM_BACKLOG.json` is `completed_verified`' "$file"
+          grep -Fq 'bea56f266449f8b89d855bca9e36973c20c3dd95dfb79897fe1132c94df457f6' "$file"
+          grep -Fq 'the branch-tip v0.2.1 addendum said the tester/reference Campaign kit was missing' "$file"
+          grep -Fq 'superseded by newer canonical evidence' "$file"
+      - name: Validate provenance branch retention and nonpromotion
+        shell: bash
+        run: |
+          set -euo pipefail
+          file='governance/application-planning/REPOSITORY_SOLIDITY_A2_A12_PREPARATION_RECONCILIATION_2026-08-14.md'
+          test "$(grep -Fc -- '- `governance/stage-a-a' "$file")" -eq 11
+          grep -Fq 'Do not mass-delete these branches' "$file"
+          grep -Fq 'None is merged wholesale by this reconciliation.' "$file"
+          grep -Fq 'This file does **not** activate A2' "$file"
