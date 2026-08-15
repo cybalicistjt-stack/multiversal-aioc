@@ -37,12 +37,14 @@ Where an older recovered A8 assumption conflicts with a newer owner-approved con
 ## Files
 
 - `STAGE_A_A8_SUPPLEMENTAL_AUTHORITY_RECONCILIATION.md` — governing reconciliation.
-- `STAGE_A_A8_SUPPLEMENTAL_SOURCE_MANIFEST.json` — exact source hashes and repository transfer status.
+- `STAGE_A_A8_SUPPLEMENTAL_SOURCE_MANIFEST.json` — exact source archive hashes, source-file provenance hashes, and repository transfer status.
 - `STAGE_A_A8_SUPPLEMENTAL_AUTHORITY_MATRIX.csv` — adopt/dormant/defer decisions.
-- `SHARED_CONTENT_CONTEXT_CONTRACT.md` — cross-domain nine-facet foundation.
-- `SHARED_CONTENT_CONTEXT_REGISTRY.csv` — 241 controlled facet values.
-- `source-extracts/` — checksum-bound implementation handoff extracts from the three preparation packages.
-- `conversation-evidence/ADDING_CONVERSATION_PROVENANCE.md` — redacted provenance summary and archive checksum; raw conversation text is not canonical authority.
+- `SHARED_CONTENT_CONTEXT_CONTRACT.md` — cross-domain nine-facet / 241-value source-registry foundation contract.
+- `source-extracts/` — governed UTF-8 implementation handoff projections from the three checksum-bound preparation packages.
+- `conversation-evidence/ADDING_CONVERSATION_PROVENANCE.md` — provenance summary and archive checksum; raw conversation text is not canonical authority.
+- `governance/ai/work-state/STAGE-A-A8-R0-attempt-001.json` — recovery checkpoint for this pre-revalidation operation.
+
+`STAGE-A-A8-R0` is also indexed in `governance/ai/runtime/ROADMAP_INDEX.json`, so repository continuity can recover this bounded reconciliation without misclassifying it as completed A8 implementation.
 
 ## Non-activation boundary
 
