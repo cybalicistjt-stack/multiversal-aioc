@@ -125,13 +125,23 @@ def main() -> None:
         require(phrase in reconcile, f"reconciliation missing invariant: {phrase}")
 
     roadmap = (ROOT / "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md").read_text(encoding="utf-8")
-    require("**Version:** 2.13.0" in roadmap, "roadmap version not projected to 2.13.0")
+    roadmap_initial = "**Version:** 2.13.0" in roadmap
+    roadmap_completed = "**Version:** 2.13.1" in roadmap
+    require(roadmap_initial or roadmap_completed, "roadmap must be A8 reconciliation or completion projection version")
     require("stage-a-a8/supplemental-authority/STAGE_A_A8_SUPPLEMENTAL_AUTHORITY_RECONCILIATION.md" in roadmap, "roadmap missing A8 supplemental authority path")
     require("A8 REVALIDATION NEXT" in roadmap, "roadmap must keep A8 revalidation next")
+    if roadmap_completed:
+        require("A8 SUPPLEMENTAL AUTHORITY RECONCILIATION COMPLETED_VERIFIED" in roadmap, "completed roadmap must mark A8 R0 completed_verified")
+        require("STAGE_A_A8_R0_COMPLETION_RECEIPT.json" in roadmap, "completed roadmap must reference R0 completion receipt")
 
     bootstrap = (ROOT / "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md").read_text(encoding="utf-8")
-    require("**Version:** 5.6.0" in bootstrap, "bootstrap version not projected to 5.6.0")
+    bootstrap_initial = "**Version:** 5.6.0" in bootstrap
+    bootstrap_completed = "**Version:** 5.6.1" in bootstrap
+    require(bootstrap_initial or bootstrap_completed, "bootstrap must be A8 reconciliation or completion projection version")
     require("stage-a-a8/supplemental-authority/STAGE_A_A8_SUPPLEMENTAL_AUTHORITY_RECONCILIATION.md" in bootstrap, "bootstrap missing A8 supplemental authority recovery rule")
+    if bootstrap_completed:
+        require("do not repeat the reconciliation" in bootstrap, "completed bootstrap must prohibit repeating A8 R0")
+        require("proceed to STAGE-A-A8 current-repository revalidation" in bootstrap, "completed bootstrap must route to A8 revalidation")
 
     pointer = json.loads((ROOT / "governance/ai/runtime/CURRENT_WORK_POINTER.json").read_text(encoding="utf-8"))
     require(pointer["primary_attempt_id"] == "STAGE-A-A8-R0-attempt-001", "pointer primary is not A8 R0")
@@ -147,11 +157,19 @@ def main() -> None:
     require(checkpoint["status"] in {"ready_for_review", "completed_verified"}, "unexpected R0 checkpoint state")
     require(checkpoint["restrictions"]["a8_activated"] is False, "R0 must not activate A8")
     require(checkpoint["restrictions"]["full_reality_implementation_authorized"] is False, "R0 must not activate Reality")
+    if checkpoint["status"] == "completed_verified":
+        receipt = BASE / "STAGE_A_A8_R0_COMPLETION_RECEIPT.json"
+        require(receipt.is_file(), "completed R0 must retain completion receipt")
+        receipt_data = json.loads(receipt.read_text(encoding="utf-8"))
+        require(receipt_data.get("state") == "completed_verified", "R0 completion receipt state")
+        require(receipt_data.get("merge_commit") == "08e0ec54808b901a62bfcc537b3dac395ca46490", "R0 completion receipt merge")
+        require(receipt_data.get("authority_outcome", {}).get("a8_activated") is False, "R0 completion receipt must keep A8 inactive")
+        require(status["primary"]["status"] == "completed_verified", "completed R0 must project completed implementation status")
 
     forbidden = list(BASE.rglob("*.zip")) + list(BASE.rglob("*.mht"))
     require(not forbidden, "raw binary/conversation archive must not be reconstructed in text-only transfer package")
 
-    print(f"A8 SUPPLEMENT: PASS extracted_contracts={len(manifest['extracted_contracts'])} authority_rows={len(rows)}")
+    print(f"A8 SUPPLEMENT: PASS extracted_contracts={len(manifest['extracted_contracts'])} authority_rows={len(rows)} checkpoint={checkpoint['status']}")
 
 
 if __name__ == "__main__":
