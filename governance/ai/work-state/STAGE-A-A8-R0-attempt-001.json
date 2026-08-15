@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "STAGE-A-A8-R0",
+  "attempt_id": "STAGE-A-A8-R0-attempt-001",
+  "track": "application-implementation-pre-revalidation",
+  "owner": "John Brandon Turner",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "branch": "governance/stage-a-a8-supplemental-authority-reconciliation",
+  "status": "ready_for_review",
+  "updated_at": "2026-08-15T18:01:00Z",
+  "purpose": "Ingest and reconcile owner-approved Item v0.12.0, Platform v0.11.0 and restricted Reality v0.14.0 preparation into the current A8 authority boundary before A8 current-repository revalidation.",
+  "active_substep": "final hosted validation and merge",
+  "next_action": "Validate and merge this supplemental authority package; after merge project STAGE-A-A8-R0 completed_verified and make STAGE-A-A8 current-repository revalidation the exact next operation.",
+  "source_manifest": "governance/application-planning/stage-a-a8/supplemental-authority/STAGE_A_A8_SUPPLEMENTAL_SOURCE_MANIFEST.json",
+  "governing_reconciliation": "governance/application-planning/stage-a-a8/supplemental-authority/STAGE_A_A8_SUPPLEMENTAL_AUTHORITY_RECONCILIATION.md",
+  "completion_gate": {
+    "required_files": [
+      "governance/application-planning/stage-a-a8/supplemental-authority/README.md",
+      "governance/application-planning/stage-a-a8/supplemental-authority/STAGE_A_A8_SUPPLEMENTAL_AUTHORITY_RECONCILIATION.md",
+      "governance/application-planning/stage-a-a8/supplemental-authority/STAGE_A_A8_SUPPLEMENTAL_SOURCE_MANIFEST.json",
+      "governance/application-planning/stage-a-a8/supplemental-authority/STAGE_A_A8_SUPPLEMENTAL_AUTHORITY_MATRIX.csv",
+      "governance/application-planning/stage-a-a8/supplemental-authority/SHARED_CONTENT_CONTEXT_CONTRACT.md"
+    ],
+    "required_validation": [
+      "python tools/validate_stage_a_a8_supplemental_authority.py"
+    ],
+    "required_repository_evidence": [
+      "focused CI pass",
+      "pull request merge",
+      "post-merge completed_verified projection"
+    ]
+  },
+  "restrictions": {
+    "a8_activated": false,
+    "application_mutation_authorized": false,
+    "full_reality_implementation_authorized": false,
+    "community_features_authorized": false,
+    "release_authorized": false,
+    "deployment_authorized": false,
+    "paid_services_authorized": false
+  },
+  "unresolved_failures": []
+}
