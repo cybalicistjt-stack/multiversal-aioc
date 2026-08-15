@@ -1,0 +1,69 @@
+Slice,Disposition,Path,Purpose
+F006-S01,CREATE,packages/contracts/src/a6/action-proposal-port.ts,"28-field proposal lifecycle, durable submit/status/idempotency."
+F006-S01,CREATE,packages/contracts/src/a6/proposal-approval-shared-adapter.ts,Bind F006 to IA-D04-002 shared proposal/approval semantics without duplicating authority.
+F006-S01,CREATE,schemas/a6/action-proposal.schema.json,Exact 28-field Action proposal transfer schema.
+F006-S01,CREATE,schemas/a6/action-decision-receipt.schema.json,Exact 20-field decision receipt transfer schema.
+F006-S01,CREATE,database/migrations/0004_a6_action_approval.json,Smallest additive A6 migration after 0003; never rewrite 0001-0003.
+F006-S01,CREATE,packages/contracts/src/a6/runtime-utilities.ts,Deterministic clock/id helpers for proposal/decision/status tests.
+F006-S01,REUSE,packages/contracts/src/persistence.ts,Expected-version/transaction persistence foundation.
+F006-S02,CREATE,packages/contracts/src/a6/available-action-projection-port.ts,Authorized actor-compatible entitled snapshot-compatible Action projection.
+F006-S02,CREATE,packages/contracts/src/a6/action-rule-inspection-port.ts,Source-linked quick rules composed from A2.
+F006-S02,CREATE,packages/contracts/src/a6/action-calculation-port.ts,Nonauthoritative deterministic target/cost/roll/modifier/result/effect preview.
+F006-S02,CREATE,apps/client-ui/src/a6/player/ActionComposer.tsx,Player Scene/actor/Action/target/cost/evidence/confirm primary flow.
+F006-S02,CREATE,apps/client-ui/src/a6/player/ActionRuleInspector.tsx,Quick source-linked rules through A2 authority.
+F006-S02,CREATE,apps/client-ui/src/a6/player/actionDraftState.ts,Local/autosaved nonauthoritative Action draft.
+F006-S02,REUSE,apps/client-ui/src/a2/picker/**,Governed Action/source selection seam.
+F006-S02,REUSE,apps/client-ui/src/a2/inspector/**,Current source/provenance/rule inspection UI.
+F006-S02,REUSE,packages/contracts/src/a3/stable-subject-session-port.ts,Stable subject/session identity.
+F006-S02,REUSE,packages/contracts/src/a3/delegation-support-access.ts,Scoped/expiring delegation/support boundary.
+F006-S02,REUSE,packages/contracts/src/a3/selected-context-receipt.ts,Nonauthoritative selected context.
+F006-S02,REUSE,packages/contracts/src/a3/workspace-entry-port.ts,Fresh authorization before protected workspace entry.
+F006-S02,REUSE,packages/contracts/src/a4/character-control-port.ts,Actor Character lifecycle/control authority.
+F006-S02,REUSE,packages/contracts/src/a4/character-repository-port.ts,Current Character/version/resource/condition persistence seam.
+F006-S02,REUSE,packages/contracts/src/a4/character-projection-port.ts,Role-safe current Character projection.
+F006-S03,CREATE,packages/contracts/src/a6/action-validation-port.ts,All 28 F006 validation classes at submit and final decision/commit.
+F006-S03,CREATE,fixtures/a6/submission/**,Happy/duplicate/stale/denied/hidden-target submission fixtures.
+F006-S03,REUSE,packages/contracts/src/a5/launch-snapshot-port.ts,Immutable exact-version Campaign/Scene launch snapshot.
+F006-S03,REUSE,packages/contracts/src/a5/scene-session-handoff.ts,A5→A6 durable Session identity/cursor handoff with no Action authority.
+F006-S03,REUSE,packages/contracts/src/a5/session-repository-port.ts,Launched Session shell persistence.
+F006-S03,REUSE,packages/entitlements/src/entitlement-service-port.ts,Current entitlement check seam.
+F006-S04,CREATE,packages/contracts/src/a6/decision-queue-port.ts,Permission-safe queue/list/count/rank plus advisory review claims.
+F006-S04,CREATE,packages/contracts/src/a6/action-decision-port.ts,Approve/deny/modify-and-approve with fresh revalidation.
+F006-S04,CREATE,packages/contracts/src/a6/modification-diff-port.ts,Allowed paths/original/final/reasons/final confirmation.
+F006-S04,CREATE,apps/client-ui/src/a6/gm/DecisionQueue.tsx,Permission-safe GM/Assistant-GM queue.
+F006-S04,CREATE,apps/client-ui/src/a6/gm/ActionDecisionReview.tsx,Evidence/rules/targets/costs/roll/modifiers/effects/warnings/decision review.
+F006-S04,REUSE,packages/contracts/src/a3/notification-summary-port.ts,Inference-safe notification summary pattern.
+F006-S04,REUSE,packages/contracts/src/a5/authorization-projection-port.ts,Authorization-before-aggregation/projection pattern.
+F006-S05,CREATE,packages/contracts/src/a6/atomic-action-commit-port.ts,All-or-none accepted-result transaction across ten write classes.
+F006-S05,CREATE,packages/contracts/src/a6/action-projection-port.ts,Role-safe post-commit projections with protected cardinality suppressed.
+F006-S05,CREATE,packages/contracts/src/a6/action-event-port.ts,Durable F006 Events atop Session sequence.
+F006-S05,REUSE,packages/contracts/src/session/authoritative-session-command-handler.ts,Campaign auth/idempotency/revision pattern; never sufficient as full A6 validator.
+F006-S05,WRAP,packages/contracts/src/session/hidden-information-response-filter.ts,Authorize first but suppress generic hiddenEventCount from A6 projections.
+F006-S05,REUSE,packages/contracts/src/a5/event-projection-port.ts,A5 durable Event projection boundary.
+F006-S06,CREATE,packages/contracts/src/a6/gm-actor-action-port.ts,GM NPC/enemy governed self-review path.
+F006-S06,CREATE,apps/client-ui/src/a6/gm/GMActorActionComposer.tsx,Same evidence/inspection/confirmation model for GM-controlled actors.
+F006-S07,CREATE,packages/contracts/src/a6/action-status-port.ts,Proposal/decision/command status lookup by original identity.
+F006-S07,CREATE,packages/contracts/src/a6/action-reconnect-port.ts,Checkpoint/event/status/draft/revocation reconciliation.
+F006-S07,REUSE,packages/contracts/src/session/ordered-realtime-event-delivery.ts,Duplicate suppression and event-gap handling.
+F006-S07,REUSE,packages/contracts/src/session/checkpoint-reconnect-restoration.ts,Trusted checkpoint/replay restoration.
+F006-S07,REUSE,packages/contracts/src/a5/operation-status-port.ts,Existing stable-operation/status recovery pattern.
+F006-S08,CREATE,packages/contracts/src/a6/action-notification-port.ts,Inference-safe pending/final/revocation notifications.
+F006-S08,CREATE,packages/contracts/src/a6/action-history-export-port.ts,Role-safe Action history/receipt/export/diagnostic redaction.
+F006-S08,CREATE,apps/client-ui/src/a6/history/ActionHistory.tsx,Secondary role-safe Action history surface.
+F006-S08,CREATE,apps/client-ui/src/a6/player/MyProposals.tsx,Secondary Player proposal/status surface.
+F006-S08,REUSE,packages/contracts/src/a5/notification-port.ts,A5 inference-safe notification extension pattern.
+F006-S08,REUSE,packages/contracts/src/a5/backup-restore-export-extension.ts,Current A5-aware portability extension.
+F006-S08,REUSE,packages/contracts/src/backup-restore-export.ts,Provider-neutral backup/restore/export foundation.
+F006-S09,CREATE,apps/client-ui/src/a6/a6.css,Responsive single-focus mobile/desktop/tablet styling through current tokens.
+F006-S09,CREATE,apps/client-ui/src/a6/a6.a11y.test.tsx,Keyboard/touch/screen-reader/high-zoom/reduced-motion/noncolor parity.
+F006-S09,CREATE,apps/client-ui/src/a6/a6.integration.test.tsx,Campaign→Character→Scene→proposal→decision→result integrated acceptance.
+F006-S09,MODIFY_BOUNDED,apps/client-ui/src/App.tsx,Route A6 only from an authorized launched Session; preserve A1-A5 entry contracts.
+F006-S10,CREATE,fixtures/a6/acceptance/**,14 deterministic F006 fixtures plus 40 denials and shared PAC fixtures as applicable.
+F006-S10,CREATE,apps/client-ui/src/a6/a6.contract.test.ts,Proposal/receipt/shared-component contract coverage.
+F006-S10,CREATE,apps/client-ui/src/a6/a6.authority-privacy.test.ts,28-class authority plus protected-count/queue/rule/target leakage denials.
+F006-S10,CREATE,apps/client-ui/src/a6/a6.atomicity.test.ts,Ten-write all-or-none accepted-result coverage.
+F006-S10,CREATE,apps/client-ui/src/a6/a6.recovery.test.ts,Idempotency/status/reconnect/gap/revocation coverage.
+F006-S10,CREATE,tools/verify_stage_a_a6.py,Integrated FPA-AC-001..020 + PAC/P9/A1-A5 focused verifier.
+F006-S10,CREATE,.github/workflows/validate-stage-a-a6-first-playable-action.yml,Focused exact-head A6 CI; no deployment.
+F006-S10,CREATE,docs/evidence/stage-a-a6/**,Package/final evidence only.
+F006-S10,CREATE,packages/contracts/src/a6/action-result-handoff.ts,Governed A6 final Session/Character/target projection handoff to A7 without combat breadth.
