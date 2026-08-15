@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "operations": [
+    {
+      "op": "text_replace",
+      "path": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
+      "replacements": [
+        {
+          "old": "**Version:** 2.14.0",
+          "new": "**Version:** 2.14.1"
+        },
+        {
+          "old": "**Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED; STAGE-A-A8 COMPLETED_VERIFIED; A9 REVALIDATION NEXT; PPIA/CAPP COMPLETED_VERIFIED",
+          "new": "**Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED; STAGE-A-A8 COMPLETED_VERIFIED; A9 REVALIDATION COMPLETED_VERIFIED; A9 BOUNDED ACTIVATION NEXT; PPIA/CAPP COMPLETED_VERIFIED"
+        },
+        {
+          "old": "- **STAGE-A-A9 — Investigation and Social Workspaces is the current next application target for current-repository revalidation and is not activated.** Recovered `governance/stage-a-a9-preimplementation` remains provenance/input only until its historical 70-path preparation, D24/D25 ownership assumptions, storage/migrations, privacy boundaries, graph implementation assumptions and A9/A10 faction split are refreshed against current post-A8 repository truth and PPIA-09/PPIA-10/PPIA-14/PPIA-15 authority.",
+          "new": "- **STAGE-A-A9 — Investigation and Social Workspaces current-repository revalidation is `COMPLETED_VERIFIED`; A9 remains NOT ACTIVATED.** AIOC PR #325 final head `b03b2258eed0d96bd5ed98149ff90e9dbff1820a` passed focused A9 revalidation, workflow-scope validation and the Operational AIOC Baseline, then squash-merged as GitHub-verified commit `c9e099256f93b3f9dd6f9398c73bb194d9e5158f`. Current authority records 75 dispositions (SHA-256 `afeb7fe5f3b5c10e0376f60db564f070ff8c0812ac82b6da6c28deebed328139`) and 102 unique current paths (SHA-256 `dfc4d9ab91bda68e3f6aa4ab3e6176c4cd4b835d096aac26a3fc8a4e5013b7eb`), with exact next additive migration `database/migrations/0007_a9_investigation_social_runtime.json`. Historical Pack Lifecycle ports were redesigned to source-state preservation because PPIA-14/PPIA-15 retain F024 as unresolved. Exact next application operation is a separate bounded A9 activation; recovered `governance/stage-a-a9-preimplementation` remains provenance/input only and must not be wholesale-merged."
+        }
+      ]
+    },
+    {
+      "op": "text_replace",
+      "path": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
+      "replacements": [
+        {
+          "old": "**Version:** 5.6.2",
+          "new": "**Version:** 5.6.3"
+        },
+        {
+          "old": "9. Read `governance/ai/runtime/ROADMAP_INDEX.json` and only the governing roadmap section for the primary work item. If the primary work item is in CAPP, also read `governance/application-planning/character-appearance-production/CAPP_CHARACTER_APPEARANCE_PRODUCTION_PREPARATION_PROGRAM.md` and `CAPP_PROGRAM_BACKLOG.json` before execution. When a current or next Stage A item has a governed supplemental-authority reconciliation, read it before revalidating recovered historical preparation. For STAGE-A-A8 this remains mandatory historical provenance: `governance/application-planning/stage-a-a8/supplemental-authority/STAGE_A_A8_SUPPLEMENTAL_AUTHORITY_RECONCILIATION.md`; its source manifest and authority matrix remain part of A8 evidence. If `STAGE-A-A8-R0-attempt-001` is `completed_verified`, do not repeat the reconciliation. STAGE-A-A8 is now `COMPLETED_VERIFIED` through application PR #144 / verified squash `e9aaa858b345e6a29e27369c01468551752a2483` with closure receipt `Multiversal-app/receipts/STAGE-A-A8-CLOSURE.json`. The current next application operation is STAGE-A-A9 current-repository revalidation; A9 is not activated. For A9, inspect recovered `governance/stage-a-a9-preimplementation`, current post-A8 application truth, and PPIA-09/PPIA-10/PPIA-14/PPIA-15 authority before any activation.",
+          "new": "9. Read `governance/ai/runtime/ROADMAP_INDEX.json` and only the governing roadmap section for the primary work item. If the primary work item is in CAPP, also read `governance/application-planning/character-appearance-production/CAPP_CHARACTER_APPEARANCE_PRODUCTION_PREPARATION_PROGRAM.md` and `CAPP_PROGRAM_BACKLOG.json` before execution. When a current or next Stage A item has a governed supplemental-authority reconciliation, read it before revalidating recovered historical preparation. For STAGE-A-A8 this remains mandatory historical provenance: `governance/application-planning/stage-a-a8/supplemental-authority/STAGE_A_A8_SUPPLEMENTAL_AUTHORITY_RECONCILIATION.md`; its source manifest and authority matrix remain part of A8 evidence. If `STAGE-A-A8-R0-attempt-001` is `completed_verified`, do not repeat the reconciliation. STAGE-A-A8 is `COMPLETED_VERIFIED` through application PR #144 / verified squash `e9aaa858b345e6a29e27369c01468551752a2483` with closure receipt `Multiversal-app/receipts/STAGE-A-A8-CLOSURE.json`. STAGE-A-A9 current-repository revalidation is `COMPLETED_VERIFIED` through AIOC PR #325 / GitHub-verified squash `c9e099256f93b3f9dd6f9398c73bb194d9e5158f`; do not repeat it. The exact next application operation is a separate bounded STAGE-A-A9 activation using `governance/application-planning/stage-a-a9/STAGE_A_A9_CURRENT_REPOSITORY_REVALIDATION_v0.3.0.md`, its two current authority CSVs, current post-A8 application truth, and PPIA-09/PPIA-10/PPIA-14/PPIA-15 authority. A9 remains not activated until that activation operation creates its governed implementation branch/work order; preserve the F024 Pack Lifecycle restriction and do not wholesale-merge recovered `governance/stage-a-a9-preimplementation`."
+        }
+      ]
+    },
+    {
+      "op": "json_set",
+      "path": "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+      "set": {
+        "/updated_at": "2026-08-15T21:41:00Z",
+        "/selection_reason": "STAGE-A-A9 current-repository revalidation is COMPLETED_VERIFIED through AIOC PR #325 / verified squash c9e099256f93b3f9dd6f9398c73bb194d9e5158f. The exact next application operation is a separate bounded STAGE-A-A9 activation using the merged v0.3.0 revalidation record and its current authority matrices. A9 remains not activated and no A9 application mutation is authorized by this projection.",
+        "/deferred_tracks/0/state": "revalidated_ready_for_bounded_activation_not_activated",
+        "/deferred_tracks/0/reason": "STAGE-A-A9 current-repository revalidation passed and is completed_verified. The exact next application operation is bounded A9 activation against the merged v0.3.0 revalidation authority; A9 remains not activated until that separate activation boundary creates the implementation branch/work order.",
+        "/deferred_tracks/0/evidence": "AIOC PR #325 / verified merge c9e099256f93b3f9dd6f9398c73bb194d9e5158f; A9 authority SHA-256 afeb7fe5f3b5c10e0376f60db564f070ff8c0812ac82b6da6c28deebed328139; A9 scope SHA-256 dfc4d9ab91bda68e3f6aa4ab3e6176c4cd4b835d096aac26a3fc8a4e5013b7eb; Multiversal-app PR #144 / verified merge e9aaa858b345e6a29e27369c01468551752a2483; Multiversal-app/receipts/STAGE-A-A8-CLOSURE.json"
+      }
+    },
+    {
+      "op": "text_replace",
+      "path": "tools/validate_stage_a_a8_supplemental_authority.py",
+      "replacements": [
+        {
+          "old": "roadmap_a8_completed = \"**Version:** 2.14.0\" in roadmap",
+          "new": "roadmap_a8_completed = \"**Version:** 2.14.0\" in roadmap or \"**Version:** 2.14.1\" in roadmap"
+        },
+        {
+          "old": "require(\"A9 REVALIDATION NEXT\" in roadmap, \"post-A8 roadmap must advance to A9 revalidation\")",
+          "new": "require(\"A9 REVALIDATION NEXT\" in roadmap or \"A9 REVALIDATION COMPLETED_VERIFIED\" in roadmap, \"post-A8 roadmap must preserve the governed A9 revalidation state\")"
+        },
+        {
+          "old": "bootstrap_a8_completed = \"**Version:** 5.6.2\" in bootstrap",
+          "new": "bootstrap_a8_completed = \"**Version:** 5.6.2\" in bootstrap or \"**Version:** 5.6.3\" in bootstrap"
+        }
+      ]
+    }
+  ]
+}
