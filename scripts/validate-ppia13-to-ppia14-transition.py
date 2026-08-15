@@ -79,6 +79,7 @@ def main() -> None:
         for field in ("work_item_id","attempt_id","branch","status","active_substep","next_action","latest_pushed_commit","pull_request","owner_decision_required","unresolved_failures","roadmap_projection_pending"): require(primary[field]==p14.get(field), f"compact status/PPIA-14 mismatch {field}")
         reason=pointer["selection_reason"]
         for v in (P13_FINAL_HEAD,P13_COMPLETION_MERGE,P13_COMPLETION_RUN): require(v in reason, f"pointer must preserve PPIA-13 completion evidence {v}")
+        require("roadmap" in pointer["selection_reason"].lower() and "pending" in pointer["selection_reason"].lower(), "active PPIA-14 pointer must explain batched roadmap projection")
         transition_mode="active_ppia14"
     else:
         require(EXPECTED_ORDER.index(current_id)>EXPECTED_ORDER.index("PPIA-14"), "historical transition may only validate after PPIA-14")
@@ -90,7 +91,6 @@ def main() -> None:
         for v in (P14_FINAL_HEAD,P14_COMPLETION_MERGE,"PR #284",P14_COMPLETION_RUN): require(v in p14_ev, f"historical PPIA-14 immutable evidence missing {v}")
         transition_mode="historical_after_ppia14"
 
-    require("roadmap" in pointer["selection_reason"].lower() and "pending" in pointer["selection_reason"].lower(), "pointer must explain batched roadmap projection")
     boundaries=backlog["boundaries"]
     for key in ("application_runtime_mutation_authorized","a2_activation_authorized","release_authorized","deployment_authorized","tester_access_authorized","canonical_promotion_without_source_evidence_authorized"): require(boundaries[key] is False, f"transition may not enable {key}")
     require(boundaries["requires_codex"] is False, "PPIA transition must not require Codex")
@@ -102,6 +102,6 @@ def main() -> None:
     print(f"ppia14_status={p14['status']}")
     print(f"ppia14_branch={P14_BRANCH}")
     print(f"transition_mode={transition_mode}")
-    print("roadmap_projection_pending=true runtime_activation=false")
+    print("runtime_activation=false")
 
 if __name__ == "__main__": main()
