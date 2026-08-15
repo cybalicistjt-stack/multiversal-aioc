@@ -194,7 +194,14 @@ def scenario_roadmap_lite(root: Path):
     primary = next(item for item in pointer["active_attempts"] if item["attempt_id"] == pointer["primary_attempt_id"])
     checkpoint = load_json(root / primary["checkpoint_path"])
     roadmap_changed = str(ROADMAP) in checkpoint.get("changed_paths", [])
-    milestone_projection = checkpoint.get("status") == "completed_verified"
+    completed_projection = checkpoint.get("status") == "completed_verified"
+    governed_pre_revalidation_projection = (
+        checkpoint.get("track") == "application-implementation-pre-revalidation"
+        and checkpoint.get("status") == "ready_for_review"
+        and checkpoint.get("roadmap_projection_pending") is False
+        and checkpoint.get("owner_decision_required") is False
+    )
+    milestone_projection = completed_projection or governed_pre_revalidation_projection
     ok = milestone_projection or not roadmap_changed
     evidence = (
         "A completed_verified milestone may carry an allowed roadmap projection; "
