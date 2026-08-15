@@ -426,6 +426,9 @@ def main() -> int:
             write_json(root / SCORECARD, card)
             write_json(root / RUNTIME_SCORECARD, runtime_projection(card))
             print(f"Interaction operational pilot: {card['metrics']['scenario_passed']}/{card['metrics']['scenario_total']} PASS")
+            for result in card["results"]:
+                if result["status"] != "pass":
+                    print(f"FAILED {result['scenario_id']}: {result['evidence_summary']} error={result['error']}", file=sys.stderr)
             return 0 if card["conclusion"] == "pass" else 1
         validate(root)
         print("Interaction operational pilot validation: PASS")
