@@ -1,0 +1,13 @@
+concern,authority,owns,step5_boundary
+catalog_identity,Item Product System,"Generic concepts, product families/lines/models/variants, kits, reusable upgrade definitions.",A8 consumes/reference definition identity; it does not own manufacturer/product catalog hierarchy.
+asset_definition_snapshot,A8/F008,Exact source/version snapshot used to instantiate/runtime-resolve an Asset Definition.,Item Product node may be referenced by the snapshot; Step 5 does not replace A8 Asset Definition.
+asset_instance,A8/F008,Stable Campaign-scoped identity for one actual owned/encountered asset.,Product/model system never stores live instance state.
+ownership_custody_control,A8/F008,"Ownership, custody, possession, control, access, usage, equipment, location.",Never stored on product/model definitions.
+condition_damage_repair,A8/F008,available/reserved/equipped/in-use/damaged/disabled/broken/under-repair/consumed/destroyed/tombstoned and repair history.,Do not create condition variants from runtime damage.
+quantity_stack_lot,A8/F008,"Runtime quantities, lots, stacks, split/merge/consume.",Commercial package size may be definition metadata; runtime quantity is A8.
+equipment_installation,A8/F008 + domain mechanics,Actual equipped/installed module/component relationship and runtime state.,Catalog can define compatibility and package composition only.
+upgrade_application,A8/F008,Actual transform/modification of a live Asset Instance with preserved lineage/history.,Step 5 defines reusable enhancement/upgrade options only.
+crafting_transformation,A8/F008 boundary; F018 for long-running project timing/research,Inputs/reservations/outputs/lineage and committed transformation.,Product taxonomy may identify target/output definitions but does not own work-order state.
+pack_update_behavior,A8/F008,Pack updates never rewrite live Asset Instances; snapshots/tombstones/history preserved.,A newer model/edition/variant never silently upgrades live assets.
+market_price,Economy,"Price, merchant availability, transaction settlement.",Product identity may label edition/package but does not own dynamic price.
+creator_manufacturer,Item Step 6 / future Creator Ecosystem,"Maker, brand, guild, culture, company, author, artificer relationships.",Step 5 leaves creator_ref optional and unresolved unless source-explicit.
