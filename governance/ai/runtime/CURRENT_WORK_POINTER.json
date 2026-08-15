@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-15T21:17:00Z",
+  "updated_at": "2026-08-15T21:41:00Z",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "static_restart_prompt": "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
   "mandatory_operating_policy": "governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md",
   "primary_attempt_id": "STAGE-A-A8-R0-attempt-001",
-  "selection_reason": "STAGE-A-A8 is COMPLETED_VERIFIED through application PR #144 / verified squash e9aaa858b345e6a29e27369c01468551752a2483 with closure receipt receipts/STAGE-A-A8-CLOSURE.json, and AIOC roadmap v2.14.0 projects that closure. The exact next application operation is STAGE-A-A9 current-repository revalidation against post-A8 application main, recovered historical A9 preparation, and PPIA-09/PPIA-10/PPIA-14/PPIA-15 authority. A9 remains not activated and no A9 application mutation is authorized by this projection.",
+  "selection_reason": "STAGE-A-A9 current-repository revalidation is COMPLETED_VERIFIED through AIOC PR #325 / verified squash c9e099256f93b3f9dd6f9398c73bb194d9e5158f. The exact next application operation is a separate bounded STAGE-A-A9 activation using the merged v0.3.0 revalidation record and its current authority matrices. A9 remains not activated and no A9 application mutation is authorized by this projection.",
   "active_attempts": [
     {
       "work_item_id": "STAGE-A-A8-R0",
@@ -38,9 +38,9 @@
     {
       "track": "application-implementation",
       "next_work_item_id": "STAGE-A-A9",
-      "state": "current_next_revalidation_not_activated",
-      "reason": "STAGE-A-A8 is completed_verified. STAGE-A-A9 is now the current next application operation for current-repository revalidation against post-A8 main plus recovered A9 preparation and PPIA-09/PPIA-10/PPIA-14/PPIA-15 authority. A9 remains not activated until a separate validated activation boundary.",
-      "evidence": "AIOC roadmap v2.14.0; AIOC PR #323 / verified merge dd0e61830af917da50c5cc569d58de3b517b7866; Multiversal-app PR #144 / verified merge e9aaa858b345e6a29e27369c01468551752a2483; Multiversal-app/receipts/STAGE-A-A8-CLOSURE.json"
+      "state": "revalidated_ready_for_bounded_activation_not_activated",
+      "reason": "STAGE-A-A9 current-repository revalidation passed and is completed_verified. The exact next application operation is bounded A9 activation against the merged v0.3.0 revalidation authority; A9 remains not activated until that separate activation boundary creates the implementation branch/work order.",
+      "evidence": "AIOC PR #325 / verified merge c9e099256f93b3f9dd6f9398c73bb194d9e5158f; A9 authority SHA-256 afeb7fe5f3b5c10e0376f60db564f070ff8c0812ac82b6da6c28deebed328139; A9 scope SHA-256 dfc4d9ab91bda68e3f6aa4ab3e6176c4cd4b835d096aac26a3fc8a4e5013b7eb; Multiversal-app PR #144 / verified merge e9aaa858b345e6a29e27369c01468551752a2483; Multiversal-app/receipts/STAGE-A-A8-CLOSURE.json"
     },
     {
       "track": "internal-alpha-feature-design",
