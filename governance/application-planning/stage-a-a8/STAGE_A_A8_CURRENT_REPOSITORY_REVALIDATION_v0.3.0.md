@@ -22,7 +22,7 @@
 **Authority-disposition SHA-256:** `f526aed72745052885f129ed77edc0fbabed0823c893b388b63cf24a9bf3f142`  
 **Authority-disposition rows:** 79 = 55 historical path assumptions + 24 A8-R0 supplemental rows  
 **Current changed-path authority:** `A8_CURRENT_CHANGED_PATH_SCOPE_v0.3.0.csv`  
-**Current scope SHA-256:** `5feef8a6b38ae8ab459bffbd7b8e41e291c0786c066312547493082e62c01d5b`  
+**Current scope SHA-256:** `959d967ca83b1b96d88fa67393f851b117be10b3d7e1da2a2aca8c4627103247`  
 **Current scope rows:** 102 unique paths  
 **Current operations:** 62 CREATE / 30 REUSE / 7 REUSE_CONTEXT / 2 WRAP / 1 MODIFY_BOUNDED  
 **Release/deployment/provider/vendor/paid-service authority:** NONE
@@ -249,7 +249,7 @@ A8 may be activated on a fresh application branch from current `Multiversal-app@
 
 The application activation work order must copy:
 
-- current scope SHA `5feef8a6b38ae8ab459bffbd7b8e41e291c0786c066312547493082e62c01d5b`;
+- current scope SHA `959d967ca83b1b96d88fa67393f851b117be10b3d7e1da2a2aca8c4627103247`;
 - current authority-disposition SHA `f526aed72745052885f129ed77edc0fbabed0823c893b388b63cf24a9bf3f142`;
 - A7 verified product predecessor `2821fd41c06a61983c0cfb96d374c298dcb3fc48` and closure receipt;
 - A8-R0 PR #320 / merge `08e0ec54808b901a62bfcc537b3dac395ca46490` / projection `0a88fc31aacd51e670941779c76ba2374f6e9c40`;
