@@ -1,9 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "work_item_id": "STAGE-A-A8-R0",
   "owner": "John Brandon Turner",
   "prepared_at": "2026-08-15",
   "binary_transfer_note": "The connected GitHub write surface accepts UTF-8 repository content but does not expose a byte-for-byte binary upload parameter. Exact ZIP identities are therefore checksum-bound here while implementation-relevant text contracts are committed under source-extracts/. The original archives remain owner/project source artifacts and are not reconstructed or re-encoded.",
+  "extract_identity_note": "The source-extract files are governed UTF-8 repository projections of implementation-relevant source contracts. Their listed source_file_sha256 values identify the corresponding files inside the checksum-bound source packages; repository projections are not claimed byte-identical because text transfer/newline/CSV serialization may normalize bytes. The validator checks source-package identity, required extract presence and semantic invariants instead of falsely equating normalized repository text with exact source bytes.",
   "sources": [
     {
       "source_id": "platform-v0.11.0",
@@ -39,15 +40,15 @@
     }
   ],
   "extracted_contracts": [
-    {"path":"source-extracts/platform/IA_INTEGRATION_HANDOFF.md","sha256":"41e012c8105e864a4e6cb04bebd51a4c2530eb56ad25a7cb0f79c1fdcc618cce"},
-    {"path":"source-extracts/platform/IA_FUTURE_DATA_MODEL_MANIFEST.csv","sha256":"c6f3b18c9997e9a07462d7fa871c9a4dd0278d081c495b89973cc840456b86db"},
-    {"path":"source-extracts/platform/IA_MIGRATION_SEQUENCE.csv","sha256":"2f9369ca5b23ac0ff742f2bf6e9880190067dd49af8c5c7a1193d532cd920a80"},
-    {"path":"source-extracts/item/IA_ITEM_INTEGRATION_HANDOFF.md","sha256":"914a6feb992eda7c6aa4e1830c446a2d4f1799302cf746b6dc43b6e48da779b0"},
-    {"path":"source-extracts/item/A8_ITEM_PRODUCT_BOUNDARY_MATRIX.csv","sha256":"be01ff37eb7cc6384596e93652010a819bae89c82b3047246cfc47a66bc7220c"},
-    {"path":"source-extracts/item/IA_ITEM_MIGRATION_SEQUENCE.csv","sha256":"9b5108c492ae44f67ac67cdbdca3df93983ce081b1109400a06e7bd4f3311d13"},
-    {"path":"source-extracts/item/INTRINSIC_AFFINITY_COMPATIBILITY_SYSTEM.md","sha256":"3c6c8b3092327094fd4a2e1e89615c6bfbc9a93c9f85f49cef6988d13e99b150"},
-    {"path":"source-extracts/reality/IA_REALITY_INTEGRATION_HANDOFF.md","sha256":"510b6d518137b77c114bed61b682848433349a3da967b8f569b195239891fd10"},
-    {"path":"source-extracts/reality/IA_REALITY_PREPARATION_LAYER_MAP.csv","sha256":"26233c6bdafd65db1bea09d30251b4b6358947fca94420357e1b0aa333964afa"},
-    {"path":"source-extracts/reality/IA_REALITY_CROSS_DOMAIN_HANDOFF_MATRIX.csv","sha256":"7f2557a55d107fc268227b9b3ea524e7c96c8bc4feba2f3ad32ea7f7f3a85b9e"}
+    {"path":"source-extracts/platform/IA_INTEGRATION_HANDOFF.md","source_file_sha256":"41e012c8105e864a4e6cb04bebd51a4c2530eb56ad25a7cb0f79c1fdcc618cce","repository_byte_identity_claimed":false},
+    {"path":"source-extracts/platform/IA_FUTURE_DATA_MODEL_MANIFEST.csv","source_file_sha256":"c6f3b18c9997e9a07462d7fa871c9a4dd0278d081c495b89973cc840456b86db","repository_byte_identity_claimed":false},
+    {"path":"source-extracts/platform/IA_MIGRATION_SEQUENCE.csv","source_file_sha256":"2f9369ca5b23ac0ff742f2bf6e9880190067dd49af8c5c7a1193d532cd920a80","repository_byte_identity_claimed":false},
+    {"path":"source-extracts/item/IA_ITEM_INTEGRATION_HANDOFF.md","source_file_sha256":"914a6feb992eda7c6aa4e1830c446a2d4f1799302cf746b6dc43b6e48da779b0","repository_byte_identity_claimed":false},
+    {"path":"source-extracts/item/A8_ITEM_PRODUCT_BOUNDARY_MATRIX.csv","source_file_sha256":"be01ff37eb7cc6384596e93652010a819bae89c82b3047246cfc47a66bc7220c","repository_byte_identity_claimed":false},
+    {"path":"source-extracts/item/IA_ITEM_MIGRATION_SEQUENCE.csv","source_file_sha256":"9b5108c492ae44f67ac67cdbdca3df93983ce081b1109400a06e7bd4f3311d13","repository_byte_identity_claimed":false},
+    {"path":"source-extracts/item/INTRINSIC_AFFINITY_COMPATIBILITY_SYSTEM.md","source_file_sha256":"3c6c8b3092327094fd4a2e1e89615c6bfbc9a93c9f85f49cef6988d13e99b150","repository_byte_identity_claimed":false},
+    {"path":"source-extracts/reality/IA_REALITY_INTEGRATION_HANDOFF.md","source_file_sha256":"510b6d518137b77c114bed61b682848433349a3da967b8f569b195239891fd10","repository_byte_identity_claimed":false},
+    {"path":"source-extracts/reality/IA_REALITY_PREPARATION_LAYER_MAP.csv","source_file_sha256":"26233c6bdafd65db1bea09d30251b4b6358947fca94420357e1b0aa333964afa","repository_byte_identity_claimed":false},
+    {"path":"source-extracts/reality/IA_REALITY_CROSS_DOMAIN_HANDOFF_MATRIX.csv","source_file_sha256":"7f2557a55d107fc268227b9b3ea524e7c96c8bc4feba2f3ad32ea7f7f3a85b9e","repository_byte_identity_claimed":false}
   ]
 }
