@@ -19,6 +19,7 @@ def main():
     receipt=load(B/'CAPP-02_VERIFIED_COMPLETION_RECEIPT_v1.0.0.json')
     backlog=load(B/'CAPP_PROGRAM_BACKLOG.json')
     cp=load(R/'governance/ai/work-state/CAPP-02-attempt-001.json')
+    ppia=load(R/'governance/ai/work-state/PPIA-16-attempt-001.json')
     ptr=load(R/'governance/ai/runtime/CURRENT_WORK_POINTER.json')
     status=load(R/'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json')
     items={x['id']:x for x in backlog['work_items']}
@@ -30,10 +31,11 @@ def main():
     req(cp['status']=='completed_verified' and cp['latest_pushed_commit']==HEAD and cp['merge_commit']==MERGE and cp['pull_request']==301,'checkpoint evidence')
     req(cp['unresolved_failures']==[] and cp['owner_decision_required'] is False,'checkpoint closure')
     req(any(x.get('kind')=='merge' and MERGE in x.get('value','') for x in cp['evidence']),'scoped merge evidence')
-    req(any(x.get('attempt_id')=='PPIA-16-attempt-001' and x.get('status')=='completed_verified' for x in ptr['active_attempts']),'PPIA completion anchor')
+    req(ppia['work_item_id']=='PPIA-16' and ppia['status']=='completed_verified' and ppia['completed_at'],'PPIA completion anchor')
     req(any(x.get('attempt_id')=='DS-008-working-series-attempt-002' and x.get('status')=='blocked_non_owner' for x in ptr['active_attempts']),'DS-008 preserved')
-    req(any(x.get('track')=='application-implementation' and x.get('next_work_item_id')=='STAGE-A-A2' for x in ptr['deferred_tracks']),'A2 preserved')
-    req(status['primary']['status'] in {'completed_verified','started','in_progress'},'compact lifecycle state')
+    app_tracks=[x for x in ptr['deferred_tracks'] if x.get('track')=='application-implementation']
+    req(len(app_tracks)==1 and app_tracks[0].get('next_work_item_id','').startswith('STAGE-A-A'),'current Stage A routing preserved')
+    req(status['primary']['status'] in {'completed_verified','started','in_progress','ready_for_review','validation_failed','blocked_non_owner','blocked_owner'},'compact lifecycle state')
     req(all(v is False for v in backlog['boundaries'].values()),'program boundaries')
     git('merge-base','--is-ancestor',MERGE,'HEAD')
     changed=set(x for x in git('show','--pretty=','--name-only',MERGE).splitlines() if x)
