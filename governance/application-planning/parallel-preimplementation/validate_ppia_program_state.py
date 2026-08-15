@@ -55,7 +55,15 @@ def validate_common(backlog: dict, index: dict, pointer: dict, status: dict, pro
     for work_item_id in EXPECTED_IDS:
         assert work_item_id in program and work_item_id in roadmap
     assert "DT-001 through DT-010 Developer Toolbelt is complete" in roadmap
-    assert "A2_CHANGED_PATH_SCOPE_v1.0.0.csv" in roadmap and "A2 is not activated" in roadmap
+    # While PPIA was active, its continuity projection correctly required A2 to remain
+    # unactivated. Once the PPIA program is closed, that historical Stage-A selection
+    # must not freeze later verified application progress. Final-mode validation instead
+    # proves the immutable PPIA completion evidence and that the roadmap still records
+    # PPIA as COMPLETED_VERIFIED.
+    if backlog["status"] == "completed_verified_owner_approved_parallel_work":
+        assert "PPIA is `COMPLETED_VERIFIED`" in roadmap
+    else:
+        assert "A2_CHANGED_PATH_SCOPE_v1.0.0.csv" in roadmap and "A2 is not activated" in roadmap
 
     selected = [item for item in pointer["active_attempts"] if item["owner_selected"]]
     assert len(selected) == 1
