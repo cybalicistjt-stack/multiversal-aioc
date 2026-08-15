@@ -1,0 +1,96 @@
+Slice,Disposition,Path,Purpose
+CBT-S01,CREATE,packages/contracts/src/a7/combat-encounter-port.ts,Authoritative Session-scoped encounter lifecycle and current encounter state.
+CBT-S01,CREATE,packages/contracts/src/a7/combat-participant-port.ts,"Typed participants, status, side/team and encounter membership."
+CBT-S01,CREATE,packages/contracts/src/a7/encounter-bootstrap-port.ts,Bootstrap encounter only from authorized launched Session and frozen launch snapshot.
+CBT-S01,CREATE,packages/contracts/src/a7/runtime-utilities.ts,"Deterministic combat ids, clocks and ordering helpers for provider-neutral tests."
+CBT-S01,CREATE,schemas/a7/combat-encounter.schema.json,Combat encounter transfer and persistence schema.
+CBT-S01,CREATE,schemas/a7/combat-participant.schema.json,Combat participant transfer and persistence schema.
+CBT-S01,CREATE,database/migrations/0005_a7_combat_runtime.json,Smallest additive A7 migration after 0004; never rewrite 0001-0004.
+CBT-S01,REUSE,packages/contracts/src/persistence.ts,Expected-version and transaction persistence foundation.
+CBT-S01,REUSE,packages/contracts/src/a5/launch-snapshot-port.ts,Immutable Campaign/Scene launch snapshot authority.
+CBT-S01,REUSE,packages/contracts/src/a5/session-repository-port.ts,Current launched Session shell/revision/checkpoint authority.
+CBT-S01,REUSE,packages/contracts/src/a5/scene-session-handoff.ts,Durable launched-Session identity/cursor handoff; carries no Action authority.
+CBT-S01,REUSE,packages/contracts/src/combat-initiative/README.md,Existing WP-006 placeholder is context only; do not treat it as implemented combat runtime or mutate it.
+CBT-S02,CREATE,packages/contracts/src/a7/combat-controller-assignment-port.ts,Fresh controller assignment and authority for Player/GM/Assistant-GM controlled participants.
+CBT-S02,CREATE,packages/contracts/src/a7/combat-order-timing-port.ts,"Profile-defined rounds, turns, phases, simultaneous groups and windows."
+CBT-S02,CREATE,fixtures/a7/timing/**,"Deterministic order/timing, tie, simultaneous-group and stale-window fixtures."
+CBT-S02,REUSE,packages/contracts/src/a3/stable-subject-session-port.ts,Stable subject/session identity.
+CBT-S02,REUSE,packages/contracts/src/a3/delegation-support-access.ts,Scoped/expiring delegation and support authority.
+CBT-S02,REUSE,packages/contracts/src/a3/selected-context-receipt.ts,Nonauthoritative selected context.
+CBT-S02,REUSE,packages/contracts/src/a3/workspace-entry-port.ts,Fresh workspace authorization boundary.
+CBT-S02,REUSE,packages/contracts/src/a4/character-control-port.ts,Character lifecycle/control authority for controlled participants.
+CBT-S02,REUSE,packages/contracts/src/a4/character-repository-port.ts,Current Character version/Resource/Condition persistence seam.
+CBT-S02,REUSE,packages/contracts/src/a4/character-projection-port.ts,Role-safe Character projection for combat composition.
+CBT-S02,REUSE,packages/entitlements/src/entitlement-service-port.ts,Current entitlement check seam.
+CBT-S03,CREATE,packages/contracts/src/a7/combat-action-adapter.ts,Combat orchestration adapter around A6 proposal/decision/result authority; no second approval engine.
+CBT-S03,CREATE,packages/contracts/src/a7/combat-targeting-port.ts,Deterministic authorized target sets and target eligibility.
+CBT-S03,CREATE,packages/contracts/src/a7/combat-position-port.ts,Semantic zones/range/elevation/cover/occupancy positioning authority.
+CBT-S03,CREATE,schemas/a7/combat-targeting.schema.json,Role-safe semantic target/position transfer schema.
+CBT-S03,CREATE,apps/client-ui/src/a7/player/CombatActionContext.tsx,Combat context around the governed A6 Player Action flow.
+CBT-S03,CREATE,apps/client-ui/src/a7/position/SemanticPositionControl.tsx,Accessible semantic movement/position control; pixels/dragging remain presentation only.
+CBT-S03,REUSE,packages/contracts/src/a6/action-result-handoff.ts,Only committed authoritative A6 result plus durable cursors crosses into A7; combat breadth remains false.
+CBT-S03,REUSE,packages/contracts/src/a6/action-proposal-port.ts,A6 Action proposal evidence and lifecycle authority.
+CBT-S03,REUSE,packages/contracts/src/a6/action-validation-port.ts,A6 Action validation authority.
+CBT-S03,REUSE,packages/contracts/src/a6/action-decision-port.ts,A6 approve/deny/modify-and-approve decision authority.
+CBT-S03,REUSE,packages/contracts/src/a6/modification-diff-port.ts,Immutable original proposal plus attributable modification evidence.
+CBT-S03,REUSE,packages/contracts/src/a6/atomic-action-commit-port.ts,Ten-write all-or-none Action result authority.
+CBT-S03,REUSE,packages/contracts/src/a6/action-status-port.ts,Stable Action operation status lookup before ambiguous retry.
+CBT-S03,REUSE,packages/contracts/src/a6/action-reconnect-port.ts,A6 Action recovery and revocation reconciliation.
+CBT-S03,REUSE,packages/contracts/src/a6/action-event-port.ts,Durable Action events including ActionResultCommitted.
+CBT-S03,REUSE,packages/contracts/src/a6/action-projection-port.ts,Inference-safe role projection of A6 Action results.
+CBT-S03,REUSE,packages/contracts/src/a6/gm-actor-action-port.ts,GM-controlled actor Actions use the same governed A6 review/result path.
+CBT-S03,REUSE,apps/client-ui/src/a2/picker/**,Governed Action/source selection seam.
+CBT-S03,REUSE,apps/client-ui/src/a2/inspector/**,Source/provenance/rule inspection UI.
+CBT-S03,REUSE,apps/client-ui/src/a6/player/ActionComposer.tsx,Existing governed Player Action composer is composed into combat rather than replaced.
+CBT-S03,REUSE,apps/client-ui/src/a6/gm/ActionDecisionReview.tsx,Existing GM evidence/review/decision surface is composed into combat rather than replaced.
+CBT-S04,CREATE,packages/contracts/src/a7/combat-cost-reservation-port.ts,Combat-window Resource reservation/consumption coordination without replacing A6 atomic result.
+CBT-S04,CREATE,packages/contracts/src/a7/combat-effect-processor-port.ts,Profile-governed registry for the source-defined 13 combat Effect processors.
+CBT-S04,CREATE,packages/contracts/src/a7/combat-condition-port.ts,Combat Condition adapters over current Character Condition authority.
+CBT-S04,CREATE,packages/contracts/src/a7/combat-atomic-result-coordinator.ts,Coordinate combat state changes around one authoritative A6 Action result group or none.
+CBT-S04,REUSE,packages/contracts/src/a4/character-calculation-port.ts,Current deterministic Character calculation seam.
+CBT-S04,REUSE,packages/contracts/src/a4/character-validation-port.ts,Current Character validity/lifecycle boundary.
+CBT-S04,REUSE,packages/contracts/src/a4/character-persistence-records.ts,Current Resource/Condition/current-version record semantics.
+CBT-S04,REUSE,packages/contracts/src/a6/action-calculation-port.ts,Nonauthoritative Action calculation/evidence preview.
+CBT-S05,CREATE,packages/contracts/src/a7/combat-reaction-port.ts,Advisory reaction/interrupt claims with exactly one accepted resolution path per slot.
+CBT-S05,CREATE,packages/contracts/src/a7/combat-hazard-environment-port.ts,"Hazards, environmental pulses and environment-controlled combat windows."
+CBT-S05,CREATE,packages/contracts/src/a7/combat-outcome-port.ts,Profile-defined defeat/incapacitation/dying/dead/destroyed/surrender/flee/remove distinctions.
+CBT-S05,CREATE,packages/contracts/src/a7/combat-completion-port.ts,Explicit attributable encounter completion without implicit reward/canonical mutation.
+CBT-S05,CREATE,apps/client-ui/src/a7/gm/ReactionAndHazardPanel.tsx,"GM/Assistant-GM reaction, interrupt and hazard operations surface."
+CBT-S06,CREATE,packages/contracts/src/a7/combat-projection-port.ts,Authorization-first Player/GM/Assistant-GM/observer combat projection with protected cardinality suppression.
+CBT-S06,CREATE,apps/client-ui/src/a7/player/PlayerCombatView.tsx,Player role-safe combat presentation.
+CBT-S06,CREATE,apps/client-ui/src/a7/gm/GMCombatOperations.tsx,GM/Assistant-GM combat operations presentation.
+CBT-S06,CREATE,apps/client-ui/src/a7/CombatOrder.tsx,Accessible semantic order/timing presentation.
+CBT-S06,CREATE,apps/client-ui/src/a7/a7.css,Responsive token-based combat layouts for desktop/tablet/mobile/high zoom.
+CBT-S06,CREATE,apps/client-ui/src/a7/a7.a11y.test.tsx,Keyboard/touch/screen-reader/high-zoom/reduced-motion/noncolor parity.
+CBT-S06,CREATE,apps/client-ui/src/a7/a7.integration.test.tsx,Launched Session→encounter→A6 Action→combat result/reaction/completion integration.
+CBT-S06,MODIFY_BOUNDED,apps/client-ui/src/App.tsx,Route A7 only from fresh authorized launched Session/encounter context; preserve A1-A6 entry contracts.
+CBT-S06,REUSE,packages/contracts/src/a5/authorization-projection-port.ts,Authorization-before-aggregation/projection pattern.
+CBT-S06,REUSE,packages/contracts/src/a3/notification-summary-port.ts,Inference-safe aggregation pattern.
+CBT-S06,REUSE,packages/contracts/src/a6/available-action-projection-port.ts,Authorized available-Action projection remains source/entitlement authority.
+CBT-S07,CREATE,packages/contracts/src/a7/combat-event-port.ts,Combat-specific durable role-safe Events; never publish raw hidden command payload.
+CBT-S07,CREATE,packages/contracts/src/a7/combat-reconnect-port.ts,Combat checkpoint/event-gap/reaction-window/controller/status/revocation recovery.
+CBT-S07,CREATE,packages/contracts/src/a7/combat-history-export-port.ts,Role-safe combat history/export/diagnostic redaction.
+CBT-S07,CREATE,schemas/a7/combat-event.schema.json,Durable combat Event transfer schema.
+CBT-S07,WRAP,packages/contracts/src/session/authoritative-session-command-handler.ts,Reuse authorization/idempotency/revision logic internally but never expose raw hidden combat payload through its public accepted Event.
+CBT-S07,WRAP,packages/contracts/src/session/hidden-information-response-filter.ts,Authorize first but suppress hiddenEventCount and protected combat cardinality from unauthorized projections.
+CBT-S07,REUSE,packages/contracts/src/session/ordered-realtime-event-delivery.ts,Duplicate suppression and durable event-gap detection.
+CBT-S07,REUSE,packages/contracts/src/session/checkpoint-reconnect-restoration.ts,Trusted checkpoint/replay restoration.
+CBT-S07,REUSE,packages/contracts/src/a5/event-projection-port.ts,Existing durable Session Event projection pattern.
+CBT-S07,REUSE,packages/contracts/src/a5/operation-status-port.ts,Stable operation/status recovery pattern.
+CBT-S07,REUSE,packages/contracts/src/a6/action-history-export-port.ts,Action receipts/history remain A6-owned and compose into combat history.
+CBT-S07,REUSE,packages/contracts/src/observability/structured-audit-telemetry.ts,Privacy-bounded structured audit/telemetry foundation.
+CBT-S07,REUSE,packages/contracts/src/backup-restore-export.ts,Provider-neutral backup/restore/export foundation.
+CBT-S07,REUSE,packages/contracts/src/a5/backup-restore-export-extension.ts,Campaign/Scene/Session-aware portability extension.
+CBT-S08,CREATE,fixtures/a7/acceptance/**,24 deterministic source fixtures plus role/privacy/recovery extensions as applicable.
+CBT-S08,CREATE,apps/client-ui/src/a7/a7.contract.test.ts,Encounter/participant/controller/order/effect/completion contract coverage.
+CBT-S08,CREATE,apps/client-ui/src/a7/a7.targeting-position.test.ts,Target eligibility and semantic position/movement coverage.
+CBT-S08,CREATE,apps/client-ui/src/a7/a7.atomicity.test.ts,A6 Action result plus combat coordinator all-or-none coverage.
+CBT-S08,CREATE,apps/client-ui/src/a7/a7.reactions.test.ts,Reaction/interrupt slot/concurrency/stale-window coverage.
+CBT-S08,CREATE,apps/client-ui/src/a7/a7.authority-privacy.test.ts,"Role authority, hidden target/modifier/topology/count leakage denials."
+CBT-S08,CREATE,apps/client-ui/src/a7/a7.recovery.test.ts,Idempotency/status/reconnect/gap/revocation/controller-window recovery.
+CBT-S08,CREATE,tools/verify_stage_a_a7.py,Integrated CBT-AC-001..028 plus A6/P9/A1-A6 focused verifier.
+CBT-S08,CREATE,.github/workflows/validate-stage-a-a7-full-combat.yml,Focused exact-head A7 CI; no deployment.
+CBT-S08,CREATE,docs/evidence/stage-a-a7/**,Package/final evidence only.
+CBT-S08,CREATE,receipts/STAGE-A-A7-CLOSURE.json,Completion receipt created only after verified package merge/closure.
+CBT-S08,REUSE,packages/contracts/src/authorization/campaign-authorization-policy.ts,Campaign/session authorization foundation.
+CBT-S08,REUSE,packages/contracts/src/realtime-session.ts,Session command/event/receipt/checkpoint base types.
