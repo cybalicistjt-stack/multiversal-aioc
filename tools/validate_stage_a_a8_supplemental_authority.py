@@ -143,22 +143,35 @@ def main() -> None:
 
     bootstrap = (ROOT / "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md").read_text(encoding="utf-8")
     bootstrap_initial = "**Version:** 5.6.0" in bootstrap
-    bootstrap_completed = "**Version:** 5.6.1" in bootstrap
-    require(bootstrap_initial or bootstrap_completed, "bootstrap must be A8 reconciliation or completion projection version")
+    bootstrap_r0_completed = "**Version:** 5.6.1" in bootstrap
+    bootstrap_a8_completed = "**Version:** 5.6.2" in bootstrap
+    require(bootstrap_initial or bootstrap_r0_completed or bootstrap_a8_completed, "bootstrap must be A8 reconciliation, R0 completion, or A8 completion projection version")
     require("stage-a-a8/supplemental-authority/STAGE_A_A8_SUPPLEMENTAL_AUTHORITY_RECONCILIATION.md" in bootstrap, "bootstrap missing A8 supplemental authority recovery rule")
-    if bootstrap_completed:
+    if bootstrap_r0_completed or bootstrap_a8_completed:
         require("do not repeat the reconciliation" in bootstrap, "completed bootstrap must prohibit repeating A8 R0")
-        require("proceed to STAGE-A-A8 current-repository revalidation" in bootstrap, "completed bootstrap must route to A8 revalidation")
+    if bootstrap_r0_completed:
+        require("proceed to STAGE-A-A8 current-repository revalidation" in bootstrap, "R0-complete bootstrap must route to A8 revalidation")
+    if bootstrap_a8_completed:
+        require("STAGE-A-A8 is now `COMPLETED_VERIFIED`" in bootstrap, "post-A8 bootstrap must retain A8 completion state")
+        require("STAGE-A-A9 current-repository revalidation" in bootstrap, "post-A8 bootstrap must route to A9 revalidation")
 
     pointer = json.loads((ROOT / "governance/ai/runtime/CURRENT_WORK_POINTER.json").read_text(encoding="utf-8"))
-    require(pointer["primary_attempt_id"] == "STAGE-A-A8-R0-attempt-001", "pointer primary is not A8 R0")
-    require(any(t.get("next_work_item_id") == "STAGE-A-A8" for t in pointer.get("deferred_tracks", [])), "pointer missing A8 next-work routing")
+    require(pointer["primary_attempt_id"] == "STAGE-A-A8-R0-attempt-001", "pointer must retain the completed A8 R0 governance attempt as historical primary until A9 revalidation starts")
+    if roadmap_a8_completed:
+        require(any(t.get("next_work_item_id") == "STAGE-A-A9" for t in pointer.get("deferred_tracks", [])), "pointer missing A9 next-work routing after A8 completion")
+        require("STAGE-A-A9" in pointer.get("selection_reason", ""), "pointer selection reason must advance to A9 after A8 completion")
+    else:
+        require(any(t.get("next_work_item_id") == "STAGE-A-A8" for t in pointer.get("deferred_tracks", [])), "pointer missing A8 next-work routing")
 
     status = json.loads((ROOT / "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json").read_text(encoding="utf-8"))
-    require(status["primary"]["work_item_id"] == "STAGE-A-A8-R0", "implementation status primary is not A8 R0")
+    require(status["primary"]["work_item_id"] == "STAGE-A-A8-R0", "implementation status must retain completed A8 R0 historical primary until A9 revalidation starts")
+    if roadmap_a8_completed:
+        require("STAGE-A-A9" in status["primary"].get("next_action", ""), "implementation status must route next action to A9 after A8 completion")
 
     roadmap_index = json.loads((ROOT / "governance/ai/runtime/ROADMAP_INDEX.json").read_text(encoding="utf-8"))
     require(any(e.get("work_item_id") == "STAGE-A-A8" for e in roadmap_index["entries"]), "ROADMAP_INDEX missing STAGE-A-A8")
+    if roadmap_a8_completed:
+        require(any(e.get("work_item_id") == "STAGE-A-A9" for e in roadmap_index["entries"]), "ROADMAP_INDEX missing STAGE-A-A9 after A8 completion")
 
     checkpoint = json.loads((ROOT / "governance/ai/work-state/STAGE-A-A8-R0-attempt-001.json").read_text(encoding="utf-8"))
     require(checkpoint["status"] in {"ready_for_review", "completed_verified"}, "unexpected R0 checkpoint state")
