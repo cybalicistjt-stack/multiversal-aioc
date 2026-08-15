@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "operations": [
+    {
+      "op": "text_replace",
+      "path": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
+      "replacements": [
+        {
+          "old": "**Version:** 5.6.1",
+          "new": "**Version:** 5.6.2"
+        },
+        {
+          "old": "For STAGE-A-A8 this is mandatory: `governance/application-planning/stage-a-a8/supplemental-authority/STAGE_A_A8_SUPPLEMENTAL_AUTHORITY_RECONCILIATION.md`; its source manifest and authority matrix must be inspected before A8 revalidation or activation. If `STAGE-A-A8-R0-attempt-001` is `completed_verified`, do not repeat the reconciliation; proceed to STAGE-A-A8 current-repository revalidation while preserving A8 as not activated until its separate validated activation boundary.",
+          "new": "For STAGE-A-A8 this remains mandatory historical provenance: `governance/application-planning/stage-a-a8/supplemental-authority/STAGE_A_A8_SUPPLEMENTAL_AUTHORITY_RECONCILIATION.md`; its source manifest and authority matrix remain part of A8 evidence. If `STAGE-A-A8-R0-attempt-001` is `completed_verified`, do not repeat the reconciliation. STAGE-A-A8 is now `COMPLETED_VERIFIED` through application PR #144 / verified squash `e9aaa858b345e6a29e27369c01468551752a2483` with closure receipt `Multiversal-app/receipts/STAGE-A-A8-CLOSURE.json`. The current next application operation is STAGE-A-A9 current-repository revalidation; A9 is not activated. For A9, inspect recovered `governance/stage-a-a9-preimplementation`, current post-A8 application truth, and PPIA-09/PPIA-10/PPIA-14/PPIA-15 authority before any activation."
+        }
+      ]
+    },
+    {
+      "op": "json_set",
+      "path": "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+      "set": {
+        "/updated_at": "2026-08-15T21:17:00Z",
+        "/selection_reason": "STAGE-A-A8 is COMPLETED_VERIFIED through application PR #144 / verified squash e9aaa858b345e6a29e27369c01468551752a2483 with closure receipt receipts/STAGE-A-A8-CLOSURE.json, and AIOC roadmap v2.14.0 projects that closure. The exact next application operation is STAGE-A-A9 current-repository revalidation against post-A8 application main, recovered historical A9 preparation, and PPIA-09/PPIA-10/PPIA-14/PPIA-15 authority. A9 remains not activated and no A9 application mutation is authorized by this projection.",
+        "/deferred_tracks/0/next_work_item_id": "STAGE-A-A9",
+        "/deferred_tracks/0/state": "current_next_revalidation_not_activated",
+        "/deferred_tracks/0/reason": "STAGE-A-A8 is completed_verified. STAGE-A-A9 is now the current next application operation for current-repository revalidation against post-A8 main plus recovered A9 preparation and PPIA-09/PPIA-10/PPIA-14/PPIA-15 authority. A9 remains not activated until a separate validated activation boundary.",
+        "/deferred_tracks/0/evidence": "AIOC roadmap v2.14.0; AIOC PR #323 / verified merge dd0e61830af917da50c5cc569d58de3b517b7866; Multiversal-app PR #144 / verified merge e9aaa858b345e6a29e27369c01468551752a2483; Multiversal-app/receipts/STAGE-A-A8-CLOSURE.json"
+      }
+    },
+    {
+      "op": "json_set",
+      "path": "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
+      "set": {
+        "/generated_at": "2026-08-15T21:17:00Z",
+        "/primary/next_action": "Start STAGE-A-A9 current-repository revalidation against current post-A8 application main, recovered historical A9 preparation, and PPIA-09/PPIA-10/PPIA-14/PPIA-15 authority. A9 remains not activated until a separate validated activation boundary."
+      }
+    },
+    {
+      "op": "text_replace",
+      "path": "governance/ai/runtime/ROADMAP_INDEX.json",
+      "replacements": [
+        {
+          "old": "      \"completion_gate\": \"Current-repository A8 revalidation against post-A7 main and the owner-approved supplemental authority package, followed by bounded implementation, declared validation/CI, merge evidence and closure receipt; release/deployment remain separately gated.\"\n    }\n  ]\n}",
+          "new": "      \"completion_gate\": \"Current-repository A8 revalidation against post-A7 main and the owner-approved supplemental authority package, followed by bounded implementation, declared validation/CI, merge evidence and closure receipt; release/deployment remain separately gated.\"\n    },\n    {\n      \"work_item_id\": \"STAGE-A-A9\",\n      \"track\": \"application-implementation\",\n      \"governing_document\": \"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md\",\n      \"roadmap_document\": \"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md\",\n      \"roadmap_section\": \"Phase 10 / Stage A — STAGE-A-A9 Investigation and Social Workspaces\",\n      \"dependencies\": [\n        \"STAGE-A-A8\",\n        \"PPIA-09\",\n        \"PPIA-10\",\n        \"PPIA-14\",\n        \"PPIA-15\"\n      ],\n      \"completion_gate\": \"Current-repository A9 revalidation against post-A8 main, recovered A9 preparation and PPIA-09/PPIA-10/PPIA-14/PPIA-15 authority, followed only after a passing activation gate by bounded implementation, declared validation/CI, merge evidence and closure receipt; release/deployment remain separately gated.\"\n    }\n  ]\n}"
+        }
+      ]
+    },
+    {
+      "op": "text_replace",
+      "path": "tools/validate_stage_a_a8_supplemental_authority.py",
+      "replacements": [
+        {
+          "old": "    bootstrap_initial = \"**Version:** 5.6.0\" in bootstrap\n    bootstrap_completed = \"**Version:** 5.6.1\" in bootstrap\n    require(bootstrap_initial or bootstrap_completed, \"bootstrap must be A8 reconciliation or completion projection version\")\n    require(\"stage-a-a8/supplemental-authority/STAGE_A_A8_SUPPLEMENTAL_AUTHORITY_RECONCILIATION.md\" in bootstrap, \"bootstrap missing A8 supplemental authority recovery rule\")\n    if bootstrap_completed:\n        require(\"do not repeat the reconciliation\" in bootstrap, \"completed bootstrap must prohibit repeating A8 R0\")\n        require(\"proceed to STAGE-A-A8 current-repository revalidation\" in bootstrap, \"completed bootstrap must route to A8 revalidation\")\n\n    pointer = json.loads((ROOT / \"governance/ai/runtime/CURRENT_WORK_POINTER.json\").read_text(encoding=\"utf-8\"))\n    require(pointer[\"primary_attempt_id\"] == \"STAGE-A-A8-R0-attempt-001\", \"pointer primary is not A8 R0\")\n    require(any(t.get(\"next_work_item_id\") == \"STAGE-A-A8\" for t in pointer.get(\"deferred_tracks\", [])), \"pointer missing A8 next-work routing\")\n\n    status = json.loads((ROOT / \"governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json\").read_text(encoding=\"utf-8\"))\n    require(status[\"primary\"][\"work_item_id\"] == \"STAGE-A-A8-R0\", \"implementation status primary is not A8 R0\")\n\n    roadmap_index = json.loads((ROOT / \"governance/ai/runtime/ROADMAP_INDEX.json\").read_text(encoding=\"utf-8\"))\n    require(any(e.get(\"work_item_id\") == \"STAGE-A-A8\" for e in roadmap_index[\"entries\"]), \"ROADMAP_INDEX missing STAGE-A-A8\")",
+          "new": "    bootstrap_initial = \"**Version:** 5.6.0\" in bootstrap\n    bootstrap_r0_completed = \"**Version:** 5.6.1\" in bootstrap\n    bootstrap_a8_completed = \"**Version:** 5.6.2\" in bootstrap\n    require(bootstrap_initial or bootstrap_r0_completed or bootstrap_a8_completed, \"bootstrap must be A8 reconciliation, R0 completion, or A8 completion projection version\")\n    require(\"stage-a-a8/supplemental-authority/STAGE_A_A8_SUPPLEMENTAL_AUTHORITY_RECONCILIATION.md\" in bootstrap, \"bootstrap missing A8 supplemental authority recovery rule\")\n    if bootstrap_r0_completed or bootstrap_a8_completed:\n        require(\"do not repeat the reconciliation\" in bootstrap, \"completed bootstrap must prohibit repeating A8 R0\")\n    if bootstrap_r0_completed:\n        require(\"proceed to STAGE-A-A8 current-repository revalidation\" in bootstrap, \"R0-complete bootstrap must route to A8 revalidation\")\n    if bootstrap_a8_completed:\n        require(\"STAGE-A-A8 is now `COMPLETED_VERIFIED`\" in bootstrap, \"post-A8 bootstrap must retain A8 completion state\")\n        require(\"STAGE-A-A9 current-repository revalidation\" in bootstrap, \"post-A8 bootstrap must route to A9 revalidation\")\n\n    pointer = json.loads((ROOT / \"governance/ai/runtime/CURRENT_WORK_POINTER.json\").read_text(encoding=\"utf-8\"))\n    require(pointer[\"primary_attempt_id\"] == \"STAGE-A-A8-R0-attempt-001\", \"pointer must retain the completed A8 R0 governance attempt as historical primary until A9 revalidation starts\")\n    if roadmap_a8_completed:\n        require(any(t.get(\"next_work_item_id\") == \"STAGE-A-A9\" for t in pointer.get(\"deferred_tracks\", [])), \"pointer missing A9 next-work routing after A8 completion\")\n        require(\"STAGE-A-A9\" in pointer.get(\"selection_reason\", \"\"), \"pointer selection reason must advance to A9 after A8 completion\")\n    else:\n        require(any(t.get(\"next_work_item_id\") == \"STAGE-A-A8\" for t in pointer.get(\"deferred_tracks\", [])), \"pointer missing A8 next-work routing\")\n\n    status = json.loads((ROOT / \"governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json\").read_text(encoding=\"utf-8\"))\n    require(status[\"primary\"][\"work_item_id\"] == \"STAGE-A-A8-R0\", \"implementation status must retain completed A8 R0 historical primary until A9 revalidation starts\")\n    if roadmap_a8_completed:\n        require(\"STAGE-A-A9\" in status[\"primary\"].get(\"next_action\", \"\"), \"implementation status must route next action to A9 after A8 completion\")\n\n    roadmap_index = json.loads((ROOT / \"governance/ai/runtime/ROADMAP_INDEX.json\").read_text(encoding=\"utf-8\"))\n    require(any(e.get(\"work_item_id\") == \"STAGE-A-A8\" for e in roadmap_index[\"entries\"]), \"ROADMAP_INDEX missing STAGE-A-A8\")\n    if roadmap_a8_completed:\n        require(any(e.get(\"work_item_id\") == \"STAGE-A-A9\" for e in roadmap_index[\"entries\"]), \"ROADMAP_INDEX missing STAGE-A-A9 after A8 completion\")"
+        }
+      ]
+    }
+  ]
+}
