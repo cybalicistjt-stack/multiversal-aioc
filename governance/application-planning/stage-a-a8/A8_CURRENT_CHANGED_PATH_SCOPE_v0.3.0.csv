@@ -1,0 +1,103 @@
+Slice,Authority_Disposition,Operation,Path,Purpose
+AST-S01,ADOPT_SUPPLEMENT,CREATE,packages/contracts/src/inventory-equipment/asset-instance-port.ts,"D17 live Item/Asset Instance identity, Definition/version reference, lineage and mutable inventory state; no reusable Definition mechanics duplication."
+AST-S01,ADOPT_CURRENT,CREATE,packages/contracts/src/shared-assets/shared-asset-port.ts,"D27 shared Asset instance identity, source snapshot, ownership lineage and live state."
+AST-S01,ADOPT_SUPPLEMENT,CREATE,packages/contracts/src/entity-catalog/product-identity-port.ts,D07 shared generic concept/family/model/product/variant/configuration identity ladder; no display-name auto-merge.
+AST-S01,ADOPT_SUPPLEMENT,CREATE,packages/contracts/src/entity-catalog/creator-origin-port.ts,D07 shared Creator/manufacturer/brand/culture/origin references; creator is not automatically a Faction.
+AST-S01,ADOPT_SUPPLEMENT,CREATE,packages/contracts/src/entity-catalog/content-context-port.ts,Provider-neutral D07/shared content-context seam for nine facets and source-stable machine IDs; unknown/unavailable remains explicit.
+AST-S01,ADOPT_SUPPLEMENT,CREATE,packages/contracts/src/entity-catalog/compatibility-evaluation-port.ts,"Separate intrinsic requirements, affinities, scoped context assertions and compatibility results; permission-filtered explanations."
+AST-S01,ADOPT_SUPPLEMENT,CREATE,packages/contracts/src/authoring-provenance/source-state-reference-port.ts,D29 read-only provenance/source-state reference seam; current/source/legacy/authored/unresolved/remechanization states remain distinct.
+AST-S01,ADD_DORMANT,CREATE,packages/contracts/src/entity-catalog/product-lineage-port.ts,Dormant read-only predecessor/successor/derivative product lineage metadata.
+AST-S01,ADD_DORMANT,CREATE,packages/contracts/src/entity-catalog/market-context-metadata-port.ts,Dormant availability/restriction/service/parts/production-history metadata; no canonical price authority.
+AST-S01,ADD_DORMANT,CREATE,packages/contracts/src/authoring-provenance/remechanization-candidate-reference.ts,Dormant read-only references to governed current-rule review queues; never direct-convert legacy mechanics.
+AST-S01,ADOPT_SUPPLEMENT,CREATE,schemas/domains/inventory-equipment/asset-instance.schema.json,D17 live Asset Instance schema with explicit reusable Definition reference.
+AST-S01,ADOPT_SUPPLEMENT,CREATE,schemas/domains/shared-assets/shared-asset.schema.json,D27 live shared Asset schema with explicit reusable Definition/Model reference.
+AST-S01,ADOPT_SUPPLEMENT,CREATE,schemas/domains/entity-catalog/content-context.schema.json,Shared nine-facet context/compatibility transfer schema without embedding world authority.
+AST-S01,MODIFY_BOUNDED,CREATE,database/migrations/0006_a8_asset_foundations.json,Smallest additive A8 migration after implemented 0005; logical D17/D27/D07/D29 ownership remains strict and 0001-0005 are immutable.
+AST-S01,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/persistence.ts,Expected-version and provider-neutral transaction foundation.
+AST-S01|VEH-S01,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a2/object-contracts.ts,Reusable governed Definition/variant/provenance/compatibility projection identity; A8 must not duplicate Item/Vehicle Definition mechanics. / Reusable Vehicle/Platform Model/Definition/variant identity and inspection; no D27 model-mechanics duplication.
+AST-S01,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a2/object-ports.ts,Governed read/picker/provenance/relationship service boundary for reusable definitions.
+AST-S01,ADOPT_CURRENT,REUSE_CONTEXT,domains/entity-catalog/BOUNDARY.md,D07 owns entity catalog/definitions/variants shared metadata and forbids cross-domain persistence imports.
+AST-S01,ADOPT_CURRENT,REUSE_CONTEXT,domains/inventory-equipment/BOUNDARY.md,D17 remains inventory/equipment source-of-truth boundary.
+AST-S01,ADOPT_CURRENT,REUSE_CONTEXT,domains/shared-assets/BOUNDARY.md,D27 remains shared Asset/Vehicle source-of-truth boundary.
+AST-S01,ADOPT_CURRENT,REUSE_CONTEXT,domains/authoring-provenance/BOUNDARY.md,D29 remains provenance/authoring source-of-truth boundary; A8 consumes a read-only seam only.
+AST-S02,ADOPT_CURRENT,CREATE,packages/contracts/src/shared-assets/asset-authority-port.ts,"Separate ownership, custody, possession, control, access, use and approval policy; compose current A3/A4 authority."
+AST-S02,ADOPT_CURRENT,CREATE,packages/contracts/src/shared-assets/asset-location-port.ts,Versioned Campaign/Character/Scene/container/vehicle/shop/vault/transit locations; location never implies ownership.
+AST-S02,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a3/stable-subject-session-port.ts,Stable subject/session identity.
+AST-S02|VEH-S02,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a3/delegation-support-access.ts,Scoped/expiring delegation and support authority. / Scoped/expiring delegated station/control authority.
+AST-S02,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a3/workspace-entry-port.ts,Fresh workspace authorization boundary.
+AST-S02,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a3/selected-context-receipt.ts,Selected context remains nonauthoritative.
+AST-S02,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a4/character-control-port.ts,Current Character control/lifecycle authority for Character-carried/equipped Assets.
+AST-S02,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/authorization/campaign-authorization-policy.ts,Campaign-scoped authorization foundation.
+AST-S02,ADOPT_CURRENT,REUSE_CONTEXT,packages/contracts/src/authority-control/README.md,D04 placeholder is conceptual context only; do not treat it as implemented runtime or make A8 depend on missing code.
+AST-S03,ADOPT_CURRENT,CREATE,packages/contracts/src/shared-assets/containment-port.ts,Acyclic containment with governed capacity/compatibility and no hidden-child aggregate leakage.
+AST-S03,ADOPT_CURRENT,CREATE,packages/contracts/src/inventory-equipment/quantity-lot-stack-port.ts,"Quantity/lots/split/merge/consume with exact lineage, ownership, restrictions and unknown-is-not-zero semantics."
+AST-S03,ADOPT_SUPPLEMENT,CREATE,packages/contracts/src/inventory-equipment/inventory-projection-port.ts,Role-safe inventory/equipment/container projection filtered before counts/totals/weight/value/capacity/search/context compatibility.
+AST-S03,ADOPT_CURRENT,CREATE,apps/client-ui/src/a8/inventory/**,Accessible inventory/container/equipment list/tree/detail surfaces with explicit Definition versus Instance labeling.
+AST-S03,REUSE_IMPLEMENTED,WRAP,packages/contracts/src/session/hidden-information-response-filter.ts,Reuse authorization behavior but suppress hiddenEventCount and all protected Asset/context cardinality/existence aggregates.
+AST-S03,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a3/notification-summary-port.ts,Inference-safe aggregation pattern.
+AST-S04,ADOPT_SUPPLEMENT,CREATE,packages/contracts/src/inventory-equipment/equipment-assignment-port.ts,Hands/slots/layers/readiness/installations/attunement/bonds; no ownership transfer; renderer fit remains CAPP-06 presentation only.
+AST-S04,ADOPT_CURRENT,CREATE,packages/contracts/src/shared-assets/asset-reservation-port.ts,Durable bounded attributable conflict-safe reservations for combat/loadout/trade/craft/repair/stations.
+AST-S04,ADOPT_CURRENT,CREATE,packages/contracts/src/shared-assets/combat-asset-adapter.ts,D17/D27 Asset costs/reservations around current A6/A7 authoritative accepted result; failed/denied Actions spend nothing.
+AST-S04,ADOPT_CURRENT,CREATE,packages/contracts/src/shared-assets/a8-cross-domain-result-coordinator.ts,Coordinate D17/D27/A4/A6/A7 public contracts in one linked ordered result or compensation path; never shared-table cross-domain writes.
+AST-S04,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a4/character-repository-port.ts,Current Character version/Resource/Condition persistence boundary.
+AST-S04,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a4/character-projection-port.ts,Role-safe Character projection.
+AST-S04,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a4/character-persistence-records.ts,Current Character-owned Resource/Condition record semantics.
+AST-S04,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a6/action-result-handoff.ts,Only committed authoritative A6 result crosses into downstream coordination.
+AST-S04|VEH-S05,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a6/atomic-action-commit-port.ts,A6 all-or-none accepted Action result authority remains sole Action commit authority. / A6 authoritative accepted-result commit.
+AST-S04,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a6/action-status-port.ts,Original Action status lookup before ambiguous retry.
+AST-S04,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a7/combat-atomic-result-coordinator.ts,Current combat state coordination remains A7-owned.
+AST-S04|VEH-S03,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a7/combat-position-port.ts,Semantic position authority for equipment/combat/vehicle composition. / Current semantic combat position authority composes with Vehicle movement.
+AST-S05,ADOPT_CURRENT,CREATE,packages/contracts/src/shared-assets/asset-transfer-port.ts,"Transfer/lend/share/deposit/withdraw receipts with relation-by-relation deltas, idempotency and current versions."
+AST-S05,ADOPT_SUPPLEMENT,CREATE,packages/contracts/src/shared-assets/shop-trade-adapter.ts,Separate offer/cart/market metadata from accepted Asset transfer and context-bound economic valuation; no universal price truth.
+AST-S05,ADOPT_CURRENT,CREATE,apps/client-ui/src/a8/transfers/**,Accessible transfer/lending/shared approval and shop/trade proposal UI.
+AST-S05,ADOPT_CURRENT,REUSE_CONTEXT,DevelopmentBible/02-game-framework/crafting-and-economy.md,Current economy/crafting requirement: values are context-dependent offers/references; no universal price table.
+AST-S06,ADOPT_CURRENT,CREATE,packages/contracts/src/shared-assets/asset-damage-repair-port.ts,Profile-driven durability/condition/damage/repair/maintenance with append-only history; zero is not universal deletion.
+AST-S06,ADOPT_SUPPLEMENT,CREATE,packages/contracts/src/shared-assets/craft-salvage-asset-adapter.ts,A8 Asset reservations/transforms/outputs/byproducts/lineage; external long-running work order remains opaque/deferred.
+AST-S06,DEFER,REUSE_CONTEXT,packages/contracts/src/downtime-projects/README.md,D26/F018 remains placeholder; do not implement long-running Project timing/research inside A8.
+AST-S06,ADOPT_CURRENT,CREATE,apps/client-ui/src/a8/crafting/**,Bounded input/reservation/output/salvage UI only; no Project scheduler.
+AST-S07,ADOPT_CURRENT,CREATE,packages/contracts/src/shared-assets/asset-status-reconnect-port.ts,Reconcile reservations/transfers/craft/repair/station/resource state after P9 checkpoint/Event recovery and fresh authorization.
+AST-S07,ADOPT_SUPPLEMENT,CREATE,packages/contracts/src/shared-assets/asset-history-export-port.ts,Permission-safe history/provenance/context/export/diagnostic projection.
+AST-S07,ADOPT_CURRENT,CREATE,packages/contracts/src/shared-assets/asset-pack-lifecycle-port.ts,Definition snapshot/tombstone/entitlement continuity; accepted ownership/history persists.
+AST-S07,ADOPT_CURRENT,CREATE,packages/contracts/src/shared-assets/asset-operation-status-port.ts,Stable original operation status for create/split/merge/transfer/equip/reserve/repair/craft/vehicle operations.
+AST-S07,REUSE_IMPLEMENTED,WRAP,packages/contracts/src/session/authoritative-session-command-handler.ts,Reuse authorization/idempotency/revision internally but never publish raw hidden Asset/Vehicle command payload as generic public accepted Event.
+AST-S07,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/session/checkpoint-reconnect-restoration.ts,Trusted checkpoint/replay foundation.
+AST-S07,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/session/ordered-realtime-event-delivery.ts,"Durable ordering, duplicate suppression and event-gap detection."
+AST-S07,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/observability/structured-audit-telemetry.ts,Privacy-bounded structured audit/telemetry foundation.
+AST-S07,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/backup-restore-export.ts,Provider-neutral backup/restore/export foundation.
+AST-S07,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a5/backup-restore-export-extension.ts,Campaign/Scene/Session-aware portability extension.
+AST-S07,REUSE_IMPLEMENTED,REUSE,packages/entitlements/src/entitlement-service-port.ts,Current entitlement check seam; entitlement loss never erases accepted ownership/history.
+AST-S07,ADOPT_CURRENT,CREATE,apps/client-ui/src/a8/a8.a11y.test.tsx,Keyboard/touch/screen-reader/high-zoom/reduced-motion/noncolor/non-drag parity.
+AST-S08,ADOPT_CURRENT,CREATE,fixtures/domains/inventory-equipment/a8/**,24 AST source fixtures plus supplemental Definition/Instance/context/economy/provenance cases assigned to D17.
+AST-S08,ADOPT_CURRENT,CREATE,fixtures/domains/shared-assets/a8/**,AST/VEH/CAIR and supplemental Model/Asset/context cases assigned to D27/cross-domain ownership.
+AST-S08,ADOPT_CURRENT,CREATE,tests/golden/domains/inventory-equipment/a8/**,D17 golden tests preserving AST-AC IDs without inventing missing wording.
+AST-S08,ADOPT_CURRENT,CREATE,tests/golden/domains/shared-assets/a8/**,D27/vehicle/cross-domain golden tests preserving VEH/CAIR acceptance IDs.
+AST-S08,ADOPT_SUPPLEMENT,CREATE,apps/client-ui/src/a8/a8.contract.test.ts,"Asset/Vehicle identity, Definition/Instance, authority, containment, equipment and supplemental catalog/context seam coverage."
+AST-S08,ADOPT_SUPPLEMENT,CREATE,apps/client-ui/src/a8/a8.atomicity.test.ts,Reservations/transfers/consumption/crafting/vehicle Actions all-or-none and compensation coverage.
+AST-S08,ADOPT_SUPPLEMENT,CREATE,apps/client-ui/src/a8/a8.authority-privacy.test.ts,Hidden Asset/context/cargo/system/count/value/capacity/search/export/AI non-inference coverage.
+AST-S08,ADOPT_SUPPLEMENT,CREATE,apps/client-ui/src/a8/a8.recovery.test.ts,Operation-id/idempotency/status/reconnect/revocation recovery coverage.
+AST-S08,ADOPT_SUPPLEMENT,CREATE,apps/client-ui/src/a8/a8.supplemental-boundaries.test.ts,"24 R0 authority rows: D07/D29 seams, economy boundary, dormant/deferred/prohibited duplication and current-mechanics protection."
+VEH-S01,ADOPT_SUPPLEMENT,CREATE,packages/contracts/src/shared-assets/vehicle-asset-port.ts,"Individual Vehicle/Mecha/Starship Asset identity, live state and reusable Model/Definition reference; replaces historical ambiguous vehicle-profile plan."
+VEH-S01,ADOPT_SUPPLEMENT,CREATE,schemas/domains/shared-assets/vehicle-asset.schema.json,Individual Vehicle Asset/live operational transfer schema with explicit Model/Definition reference.
+VEH-S02,ADOPT_SUPPLEMENT,CREATE,packages/contracts/src/shared-assets/vehicle-crew-station-port.ts,Crew/passenger/station/controller grants and declared command policy separated from ownership/custody.
+VEH-S02,ADOPT_CURRENT,CREATE,apps/client-ui/src/a8/vehicles/StationRoster.tsx,Accessible crew/station/controller surface.
+VEH-S03,ADOPT_CURRENT,CREATE,packages/contracts/src/shared-assets/vehicle-movement-port.ts,Semantic zone/anchor/range/facing/altitude-depth/velocity/docking/interior-exterior movement; pixels nonauthoritative.
+VEH-S03,ADOPT_CURRENT,CREATE,apps/client-ui/src/a8/vehicles/SemanticVehicleMovement.tsx,List/table/keyboard/nonvisual semantic movement controls.
+VEH-S04,ADOPT_SUPPLEMENT,CREATE,packages/contracts/src/shared-assets/vehicle-system-resource-port.ts,Installed systems plus current power/fuel/ammo/charge/heat/stress/maintenance state; unknown capacities stay unknown.
+VEH-S04,ADOPT_CURRENT,CREATE,apps/client-ui/src/a8/vehicles/VehicleSystems.tsx,System/resource readiness UI with hidden-system filtering.
+VEH-S05,ADOPT_CURRENT,CREATE,packages/contracts/src/shared-assets/vehicle-action-adapter.ts,Station/system/target Vehicle Actions through A6/A7; output and Resource costs atomic.
+VEH-S05,ADOPT_CURRENT,CREATE,apps/client-ui/src/a8/vehicles/VehicleActionContext.tsx,Station-scoped Action context around current A6/A7 flow.
+VEH-S05,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a6/action-proposal-port.ts,A6 proposal authority.
+VEH-S05,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a6/action-decision-port.ts,A6 GM approve/deny/modify decision authority.
+VEH-S05,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a7/combat-action-adapter.ts,Current combat orchestration around A6 result.
+VEH-S05,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a7/combat-event-port.ts,Combat-specific durable Event boundary.
+VEH-S06,ADOPT_SUPPLEMENT,CREATE,packages/contracts/src/shared-assets/vehicle-damage-capture-port.ts,Damage/failure/repair/boarding/capture/salvage/carried-craft transitions without implicit nested mutation or ownership rewrite.
+VEH-S06,ADOPT_CURRENT,CREATE,fixtures/domains/shared-assets/a8/vehicle-damage/**,Damage/boarding/carried-craft/capture/salvage deterministic fixtures.
+VEH-S07,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/a7/combat-reconnect-port.ts,Current combat controller/position/Event-gap/status recovery composes with Vehicle state.
+VEH-S07,REUSE_IMPLEMENTED,REUSE,packages/contracts/src/realtime-session.ts,Provider-neutral Session command/Event/receipt/checkpoint base types.
+VEH-S08,ADOPT_CURRENT,CREATE,apps/client-ui/src/a8/vehicles/VehicleOperations.tsx,Accessible Player/GM Vehicle operations surface.
+VEH-S08,ADOPT_CURRENT,CREATE,apps/client-ui/src/a8/a8.css,Design-token-only intrinsically responsive A8 layouts.
+VEH-S08,ADOPT_CURRENT,MODIFY_BOUNDED,apps/client-ui/src/App.tsx,Expose A8 only after current authorized Campaign/Character/Session context and preserve A1-A7 entry paths.
+VEH-S08,ADOPT_SUPPLEMENT,CREATE,tools/verify_stage_a_a8.py,Integrated AST/VEH/CAIR + 24 supplemental authority + A2-A7/P9 verifier.
+VEH-S08,ADOPT_SUPPLEMENT,CREATE,.github/workflows/validate-stage-a-a8-assets-vehicles.yml,Focused exact-head A8 CI with no deployment/release/provider selection.
+VEH-S08,ADOPT_CURRENT,CREATE,docs/evidence/stage-a-a8/**,Package/final validation evidence only.
+VEH-S08,ADOPT_CURRENT,CREATE,receipts/STAGE-A-A8-CLOSURE.json,Completion-only receipt after verified product merge; forbidden during activation/construction.
