@@ -1,11 +1,11 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 2.9.0  
-**Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED; STAGE-A-A4 COMPLETED_VERIFIED; A5 REVALIDATION NEXT; PPIA/CAPP COMPLETED_VERIFIED  
+**Version:** 2.10.0  
+**Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED; STAGE-A-A5 COMPLETED_VERIFIED; A6 REVALIDATION NEXT; PPIA/CAPP COMPLETED_VERIFIED  
 **Owner and final authority:** John Brandon Turner  
 **Originally approved:** 2026-08-03  
-**Last updated:** 2026-08-14
+**Last updated:** 2026-08-15
 
 ## Purpose
 
@@ -15,14 +15,15 @@ Repository evidence is mandatory. Nothing is complete merely because it was disc
 
 The authoritative ordered Phase 9 backlog remains `governance/phase9/P9-06_IMPLEMENTATION_BACKLOG_AND_ACCEPTANCE_GATES.json`. Runtime recovery is governed by `governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md`. When a newer internally consistent attempt-branch checkpoint or repository record is more recent than a compact runtime projection, the newer evidence controls recovery until merged or explicitly superseded.
 
-## Current verified execution position — 2026-08-14
+## Current verified execution position — 2026-08-15
 
 - **Phase 9 bounded implementation through P9-06-023 is complete.** Final P9-06-023 / AG-07 physical-device acceptance merged in `Multiversal-app` PR #102 at `fb22295948745347913bcbfebf56ecca26bf39fb`; `releaseAuthorized=false`.
 - **DT-001 through DT-010 Developer Toolbelt is complete.** Application PRs #105–#114 produced `mv-dev` v0.10.0, ending at `354e24007d2c453d090a2a6cdb31d3e3333c84c1`.
 - **STAGE-A-A2 — Universal Object Experience is `COMPLETED_VERIFIED`.** PR #134 squash-merged as `cdd0713864edc6b6fc3ad78c66b3d2edb5491b2d`; exact closure evidence is retained in `Multiversal-app/receipts/STAGE-A-A2-CLOSURE.json`. Release/deployment remained false.
 - **STAGE-A-A3 — Identity, Dashboard, and Workspace Selection is `COMPLETED_VERIFIED`.** PR #136 final head `e4977daf328606a20f1f334d26b22fe6cd40a91a` passed exact-head A3/A1/A2/DT-008 validation and squash-merged as verified commit `7c1392977962a54b91af4519ed258a2a86823665`. The frozen product/browser-tested head `fd4e6d3ac2c23de80707669dc67411b3ee7bb60a` passed focused A3 validation and headed-Chromium evidence; closure is recorded in `Multiversal-app/receipts/STAGE-A-A3-CLOSURE.json`. No production identity provider, new runtime dependency, release or deployment was authorized.
 - **STAGE-A-A4 — Character Workspace is `COMPLETED_VERIFIED`.** PR #138 final head `9b690328e9f76abd6941b9e4a23f47189b805b47` passed exact-head A4/A1/A2/A3/DT-008 validation and squash-merged as `38f47a8aa7a5a921fb72a7365dfa6c3f0ea94c31`. Frozen product/browser-tested candidate `6668448c63eba93c7441f5a7ff1f5f9d65cf0cdc` passed the focused Character package and 4/4 headed-Chromium scenarios; closure is recorded in `Multiversal-app/receipts/STAGE-A-A4-CLOSURE.json`. Release/deployment remained false.
-- **STAGE-A-A5 — Campaign and Scene Workspace is the current next application target for revalidation and is not activated.** Application `main` names A5 as `CURRENT NEXT FOR REVALIDATION / NOT ACTIVATED`. Recovered branch `governance/stage-a-a5-preimplementation` and its compatibility package remain provenance/input only until reconciled against current post-A4 `main`, completed A2–A4 runtime contracts, PPIA-08 and current placed-domain/recovery authorities.
+- **STAGE-A-A5 — Campaign and Scene Workspace is `COMPLETED_VERIFIED`.** Application PR #139 final head `ddcb98e9e09075fc703b193db9e9e87ca2405717` passed exact-head A5/A1/A2/A3/A4/DT-008 validation and squash-merged as verified commit `89c045b3cf1e04cc906dafac0be2c28c003ae892`. Frozen product/browser-tested candidate `e030089b32634056e212c011022f18d74d4e363f` passed focused A5 validation and 4/4 headed-Chromium scenarios; closure is recorded in `Multiversal-app/receipts/STAGE-A-A5-CLOSURE.json`. Release/deployment remained false.
+- **STAGE-A-A6 — First Playable Action and Approval Loop is the current next application target for revalidation and is not activated.** Recovered AIOC preparation remains provenance/input only until reconciled against current post-A5 `main` and implemented A2–A5 authority.
 - **Internal Alpha feature design is complete through IA-D09.** Prepared tester/reference/support assets do not activate tester access or release.
 - **Design Standards exact-byte ingestion remains unfinished.** `DS-008-working-series-attempt-002` remains blocked on a capable exact-byte transfer/validation surface. Verified preparation remains PR #207 / merge `bd3071f6f855b66b740ba4bf1f1ba0208636548c`, PR #208 / merge `0cfd8128786e4cdd055e3e3be26bdd1854efdfa7`, PR #209 / merge `708e0ea72a6dce6f5d46ddacd042c1ddb80eee0a`, and prepared handoff commit `f0d9295215a057e0f42603a0777c276a7437aad4`.
 - **PPIA is `COMPLETED_VERIFIED`.** All sixteen tranches are complete/completed_verified. Final substantive PPIA-16 exact head `eede4bfb530056963a4a595faac54515ff151c3b` passed 70/70 applicable hosted workflows; final-state recovery merged through PR #295 as `8357cc812436e8bbe40c214ac0ca6e44363cc1a5`.
@@ -124,7 +125,7 @@ PPIA-16 preserves the Development Console design over DT-001 through DT-010: 10 
 ### Post-PPIA selection boundary
 
 PPIA completion does not select work by itself. Current independent boundaries are:
-- **STAGE-A-A5:** current next application target for revalidation, not activated;
+- **STAGE-A-A6:** current next application target for revalidation, not activated;
 - **Design Standards / DS-008 attempt-002:** unfinished/blocked on exact-byte transfer and validation capability;
 - **WP-011 / Apple track:** separate bounded Mac-dependent work under its own latest repository evidence when selected.
 
@@ -164,45 +165,46 @@ The audited/canonicalization tranche is complete, but exact repository ingestion
 
 Primary programs remain application shell/design system; universal objects; identity/workspaces/permissions; character workspace; campaign/scene builder; live session; combat; inventory/equipment/crafting/vehicles; investigation/social; world builder; contextual AI; and internal-alpha hardening.
 
-### Completed Stage A implementation — A0 through A4
+### Completed Stage A implementation — A0 through A5
 
 - **STAGE-A-A0 — UI Baseline Audit:** COMPLETE.
 - **STAGE-A-A1 — Application Shell and Design System:** COMPLETE.
 - **STAGE-A-A2 — Universal Object Experience:** COMPLETED_VERIFIED through application PR #134 / merge `cdd0713864edc6b6fc3ad78c66b3d2edb5491b2d`.
 - **STAGE-A-A3 — Identity, Dashboard, and Workspace Selection:** COMPLETED_VERIFIED through application PR #136 / verified squash merge `7c1392977962a54b91af4519ed258a2a86823665`.
 - **STAGE-A-A4 — Character Workspace:** COMPLETED_VERIFIED through application PR #138 / squash merge `38f47a8aa7a5a921fb72a7365dfa6c3f0ea94c31`.
+- **STAGE-A-A5 — Campaign and Scene Workspace:** COMPLETED_VERIFIED through application PR #139 / verified squash merge `89c045b3cf1e04cc906dafac0be2c28c003ae892`; closure receipt `Multiversal-app/receipts/STAGE-A-A5-CLOSURE.json`.
 
 A3 established a provider-neutral local-alpha identity/session path, authorization-first dashboard projection, separate workspace discovery and entry, nonauthoritative selected-context receipts, role/delegation/support boundaries, inference-safe invitation/recent-work/notification behavior, context revocation isolation, recovery states, accessibility/responsive/offline gates, and a real local-alpha vertical flow into a protected workspace. Its final exact-head A3/A1/A2/DT-008 checks passed, and headed-Chromium evidence passed for keyboard entry/dashboard, fresh workspace entry, axe audits, desktop/mobile reflow, touch targets and offline denial. Release/deployment remain false.
 
 A4 added provider-neutral Character persistence, governed A2 Picker-based creation selections, authoritative calculation and exact 18-class validation, separate Character control, seven-class role-safe projection, Character workspace, append-only advancement/correction and migration history, permission-filtered export, offline/recovery/accessibility boundaries, and a bounded Character-to-Scene reference. Its final exact-head A4/A1/A2/A3/DT-008 checks and focused headed-Chromium Character-entry/workspace evidence passed. Release/deployment remain false.
 
-### Current next application item — STAGE-A-A5 Campaign and Scene Workspace
+### Current next application item — STAGE-A-A6 First Playable Action and Approval Loop
 
-`Multiversal-app/.ai/current-work-order.md` names **STAGE-A-A5 — Campaign and Scene Workspace** as `CURRENT NEXT FOR REVALIDATION / NOT ACTIVATED`.
+`Multiversal-app/.ai/current-work-order.md` names **STAGE-A-A6 — First Playable Action and Approval Loop** as `CURRENT NEXT FOR REVALIDATION / NOT ACTIVATED`.
 
 Recovered preparation authority:
 
-- AIOC branch `governance/stage-a-a5-preimplementation`;
-- historical branch tip `ca93ea4588d1380da596f19d0a89f76ffdf28767`;
-- highest recovered compatibility artifact `STAGE_A_A5_REPOSITORY_COMPATIBILITY_AND_IMPLEMENTATION_CONTRACTS_v0.2.0.zip`;
-- artifact SHA-256 `fd5afc623feed86ea1af88cd915c881fe64b315f50032c2f2a28c92a936cf36e`;
-- historical preparation baseline `dced7f92163050690c807c1fda937146bb8dce85`.
+- AIOC branch `governance/stage-a-a6-preimplementation`;
+- historical branch tip `5f245cd930f82c799c342fce9ccf5d979298c24f`;
+- recovered compatibility artifact record `STAGE_A_A6_REPOSITORY_COMPATIBILITY_AND_IMPLEMENTATION_CONTRACTS_v0.2.0.zip`;
+- recorded artifact SHA-256 `ca80319e0282821f19b7fa4f43e439107bc845f0ececfa2937c8bc5418152d00`;
+- historical preparation describes 20 repository/predecessor anchors, 16 blocking gaps/risks, 18 provider-neutral A6 contracts, 42 exact future path actions, 15 reuse/composition decisions and 18 blocking validation/CI lanes.
 
-The recovered A5 package is provenance/input only. Retain its immutable Session launch snapshot, exactly-once launch/status recovery, Campaign-local placement versus source Definition separation, authorization-before-projection, Assistant-GM delegation limits, realtime-as-advisory, additive persistence, and boundary that A5 stops at a launched Session shell. PPIA-08 is the later Campaign/Scene/Session authoring authority; PPIA-02/03/04/05 constrain placed domain objects; PPIA-13/14/15 constrain onboarding/recovery/permission/regression behavior; current A2 Picker, A3 identity/workspace and A4 Character/Scene-reference contracts control repository reality.
+The recovered A6 package is provenance/input only. Retain authoritative Action proposal validation, immutable original proposal plus approve/deny/modify-and-approve semantics, fresh authorization and Character control, exact Session/snapshot/Action Definition bindings, inference-safe queue/projection behavior, stable operation identity/status lookup, reconnect/event-gap recovery and all-or-none accepted-result commit. A6 must consume implemented A2 lookup, A3 subject/delegation/context, A4 Character lifecycle/control and A5 Campaign/Scene/launch-snapshot/Session-shell contracts rather than recreate them. Revalidate the historical protected-cardinality warning so generic hidden-event counts cannot become Player/observer/queue/notification/analytics leaks; IA-D04-002 proposal/approval semantics remain a design dependency where compatible with current repository reality.
 
-### Exact next A5 operation
+### Exact next A6 operation
 
-1. reverify current `Multiversal-app` post-A4 `main` and A4 closure evidence;
-2. inspect recovered `governance/stage-a-a5-preimplementation` without wholesale-merging it;
-3. compare its historical repository/path assumptions and exact 40 path actions to current A2–A4 implementation;
-4. preserve stable Campaign/Scene/Session launch, placement/Definition separation, authorization, delegation, realtime-advisory and exactly-once recovery boundaries where still valid;
-5. reconcile PPIA-08 plus PPIA-02/03/04/05 and PPIA-13/14/15 without moving source-object truth into Campaign-local placement records;
-6. refresh Scene/placement/note persistence, invitation/delegation, pack-lock, launch-orchestration paths, validators, CI lanes and changed-path authority;
-7. produce a bounded current-repository A5 revalidation/activation record;
-8. only if that gate passes, create/activate the A5 implementation branch/work order and begin construction;
-9. keep release/deployment false.
+1. reverify current `Multiversal-app` post-A5 product baseline `89c045b3cf1e04cc906dafac0be2c28c003ae892` and A5 closure evidence;
+2. inspect recovered `governance/stage-a-a6-preimplementation` without wholesale-merging it;
+3. compare its historical predecessor assumptions and exact 42 path actions to current A2–A5 implementation;
+4. preserve A2 governed lookup, A3 subject/delegation/context, A4 Character lifecycle/control and A5 immutable launch snapshot/Session shell;
+5. revalidate proposal/approval, protected-cardinality/inference safety, Session revision/idempotency, reconnect/status and atomic accepted-result boundaries;
+6. refresh exact A6 path authority, validators, CI lanes and bounded activation contracts against current `main`;
+7. produce a bounded current-repository A6 revalidation/activation record;
+8. only if that gate passes, create/activate the A6 implementation branch/work order and begin construction;
+9. keep release/deployment/provider/vendor/paid-service authority false.
 
-Do not activate A6–A12 merely because their historical design/support packages are prepared.
+Do not activate A7–A12 merely because their historical design/support packages are prepared.
 
 ## Validation and CI efficiency rule
 
