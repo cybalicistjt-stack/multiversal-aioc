@@ -1,0 +1,28 @@
+name: Validate Stage A A10 Revalidation
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/stage-a-a10/current-revalidation/**'
+      - 'governance/ai/work-state/STAGE-A-A10-current-revalidation-attempt-001.json'
+      - 'tools/validate_stage_a_a10_revalidation.py'
+      - '.github/workflows/validate-stage-a-a10-revalidation.yml'
+  push:
+    branches:
+      - governance/stage-a-a10-current-revalidation
+    paths:
+      - 'governance/application-planning/stage-a-a10/current-revalidation/**'
+      - 'governance/ai/work-state/STAGE-A-A10-current-revalidation-attempt-001.json'
+      - 'tools/validate_stage_a_a10_revalidation.py'
+      - '.github/workflows/validate-stage-a-a10-revalidation.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate bounded A10 revalidation package
+        run: python tools/validate_stage_a_a10_revalidation.py
