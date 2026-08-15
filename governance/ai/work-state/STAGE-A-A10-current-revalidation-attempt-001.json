@@ -1,20 +1,20 @@
 {
   "schema_version": "1.0.0",
-  "revision": 2,
+  "revision": 3,
   "work_item_id": "STAGE-A-A10",
   "attempt_id": "STAGE-A-A10-current-revalidation-attempt-001",
   "track": "application-implementation-pre-revalidation",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "governance/stage-a-a10-current-revalidation",
-  "status": "ready_for_review",
+  "status": "completed_verified",
   "started_at": "2026-08-15T22:40:00Z",
-  "updated_at": "2026-08-15T22:47:00Z",
+  "updated_at": "2026-08-15T22:51:20Z",
   "base_commit": "c9e099256f93b3f9dd6f9398c73bb194d9e5158f",
-  "latest_pushed_commit": "b2ca4ed20b81b133cd8a27e1c5bd70ee09eb46f9",
+  "latest_pushed_commit": "05d69ece9666fdd4b121461c95a3fdbdd20299dc",
   "pull_request": 327,
   "objective": "Revalidate recovered STAGE-A-A10 World Content Authoring preparation against post-A9 Multiversal-app main and current PPIA/Stage-A authority before any A10 activation or application mutation.",
-  "last_verified_action": "Bounded current-repository revalidation record, machine-readable authority record, focused validator and CI lane committed; PR #327 opened against AIOC main. A10 remains not activated.",
-  "active_substep": "Final hosted validation and verified merge of the A10 revalidation package.",
+  "last_verified_action": "AIOC PR #327 final repaired head 05d69ece9666fdd4b121461c95a3fdbdd20299dc passed focused A10 revalidation, Conversation Continuity, Workflow Scope, PPIA transition and Operational AIOC Baseline, then squash-merged as GitHub-verified 9124860691ea208bded3800008a2d92b4b2c2139. A10 implementation remains not activated.",
+  "active_substep": null,
   "completed_substeps": [
     "Verified post-A9 Multiversal-app main e0c88756326d00e75d16ee27c198b80b7010f88a and STAGE-A-A9 closure evidence.",
     "Recovered A10 preimplementation branch governance/stage-a-a10-preimplementation at ed1789d071355accd7e3c27070e4e972f568a3a3.",
@@ -22,9 +22,12 @@
     "Revalidated D06/D07/D18/D28/D29/D05/D13 ownership, A6/A7/A8/A9 reuse boundaries, owner-only canonical promotion, privacy-before-derived-output and declarative creator sandbox rules.",
     "Bound the current additive migration slot to database/migrations/0008_a10_world_content_authoring.json after implemented migrations 0001 through 0007.",
     "Preserved all 32 WSM/AM/CC/AI source slices, 120 deterministic fixtures and 140 published blocking acceptance criteria as implementation input without inventing missing source text.",
-    "Opened AIOC PR #327 for focused validation; no A10 application implementation branch was created."
+    "Opened AIOC PR #327 for focused validation; no A10 application implementation branch was created.",
+    "Final repaired A10 revalidation head passed focused and governance CI.",
+    "PR #327 squash-merged as GitHub-verified 9124860691ea208bded3800008a2d92b4b2c2139.",
+    "AIOC recovery projection advanced to A10 implementation authorized/not activated without weakening continuity validators."
   ],
-  "next_action": "Require focused A10 revalidation CI PASS, reconcile the stale AIOC A9-to-A10 restart projection without weakening continuity validators, merge PR #327 verified, then activate A10 in Multiversal-app as a separate bounded work order.",
+  "next_action": "Activate STAGE-A-A10 — World Content Authoring as a separate bounded Multiversal-app work order from current post-A9 main e0c88756326d00e75d16ee27c198b80b7010f88a, preserving the merged A10 revalidation authority. Do not activate A11/A12 or authorize release/deployment/canonical promotion.",
   "changed_paths": [
     "governance/application-planning/stage-a-a10/current-revalidation/**",
     "governance/ai/work-state/STAGE-A-A10-current-revalidation-attempt-001.json",
@@ -32,17 +35,45 @@
     ".github/workflows/validate-stage-a-a10-revalidation.yml"
   ],
   "completion_gate": {
-    "required_evidence_kinds": ["commit","pull_request","ci_run","merge"],
-    "required_validation_commands": ["python tools/validate_stage_a_a10_revalidation.py"],
+    "required_evidence_kinds": [
+      "commit",
+      "pull_request",
+      "ci_run",
+      "merge"
+    ],
+    "required_validation_commands": [
+      "python tools/validate_stage_a_a10_revalidation.py"
+    ],
     "owner_approval_required": false
   },
-  "validation": [],
+  "validation": [
+    {
+      "command": "python tools/validate_stage_a_a10_revalidation.py",
+      "status": "passed",
+      "evidence": "PR #327 final repaired head run 31913130812 passed."
+    }
+  ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
-    {"kind":"pull_request","value":"AIOC PR #327 — STAGE-A-A10 current repository revalidation"}
+    {
+      "kind": "commit",
+      "value": "STAGE-A-A10 current-revalidation final validated head 05d69ece9666fdd4b121461c95a3fdbdd20299dc"
+    },
+    {
+      "kind": "pull_request",
+      "value": "STAGE-A-A10 current-revalidation PR #327"
+    },
+    {
+      "kind": "ci_run",
+      "value": "STAGE-A-A10 current-revalidation focused run 31913130812 plus exact-head continuity/workflow/PPIA/operational gates PASS"
+    },
+    {
+      "kind": "merge",
+      "value": "STAGE-A-A10 current-revalidation PR #327 verified squash merge 9124860691ea208bded3800008a2d92b4b2c2139"
+    }
   ],
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "restrictions": {
     "a10_activated": false,
     "application_mutation_authorized": false,
@@ -52,5 +83,14 @@
     "release_authorized": false,
     "deployment_authorized": false,
     "paid_services_authorized": false
-  }
+  },
+  "completed_at": "2026-08-15T22:51:20Z",
+  "expected_remote_head": "05d69ece9666fdd4b121461c95a3fdbdd20299dc",
+  "merge_commit": "9124860691ea208bded3800008a2d92b4b2c2139",
+  "notes": [
+    "A10 revalidation is completed_verified; this checkpoint does not itself activate application implementation.",
+    "Recovered A10 preparation remains provenance; current-repository revalidation governs activation.",
+    "Application A9 is completed_verified through PR #145 / verified merge c2030febf860a4fc9bcac9c65fa44a6b22418dd4 and closure receipt.",
+    "A10 implementation must preserve the owner-approved all-bounded-slices-before-broad-checks execution preference unless the owner changes it."
+  ]
 }
