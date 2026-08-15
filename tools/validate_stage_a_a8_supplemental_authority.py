@@ -126,13 +126,20 @@ def main() -> None:
 
     roadmap = (ROOT / "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md").read_text(encoding="utf-8")
     roadmap_initial = "**Version:** 2.13.0" in roadmap
-    roadmap_completed = "**Version:** 2.13.1" in roadmap
-    require(roadmap_initial or roadmap_completed, "roadmap must be A8 reconciliation or completion projection version")
+    roadmap_r0_completed = "**Version:** 2.13.1" in roadmap
+    roadmap_a8_completed = "**Version:** 2.14.0" in roadmap
+    require(roadmap_initial or roadmap_r0_completed or roadmap_a8_completed, "roadmap must be A8 reconciliation, R0 completion, or A8 completion projection version")
     require("stage-a-a8/supplemental-authority/STAGE_A_A8_SUPPLEMENTAL_AUTHORITY_RECONCILIATION.md" in roadmap, "roadmap missing A8 supplemental authority path")
-    require("A8 REVALIDATION NEXT" in roadmap, "roadmap must keep A8 revalidation next")
-    if roadmap_completed:
-        require("A8 SUPPLEMENTAL AUTHORITY RECONCILIATION COMPLETED_VERIFIED" in roadmap, "completed roadmap must mark A8 R0 completed_verified")
+    if roadmap_initial or roadmap_r0_completed:
+        require("A8 REVALIDATION NEXT" in roadmap, "pre-A8-completion roadmap must keep A8 revalidation next")
+    if roadmap_r0_completed or roadmap_a8_completed:
+        require("08e0ec54808b901a62bfcc537b3dac395ca46490" in roadmap, "completed roadmap must retain verified A8 R0 merge evidence")
         require("STAGE_A_A8_R0_COMPLETION_RECEIPT.json" in roadmap, "completed roadmap must reference R0 completion receipt")
+    if roadmap_a8_completed:
+        require("STAGE-A-A8 COMPLETED_VERIFIED" in roadmap, "post-A8 roadmap must mark A8 completed_verified")
+        require("A9 REVALIDATION NEXT" in roadmap, "post-A8 roadmap must advance to A9 revalidation")
+        require("e9aaa858b345e6a29e27369c01468551752a2483" in roadmap, "post-A8 roadmap must retain verified A8 application merge evidence")
+        require("Multiversal-app/receipts/STAGE-A-A8-CLOSURE.json" in roadmap, "post-A8 roadmap must reference A8 closure receipt")
 
     bootstrap = (ROOT / "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md").read_text(encoding="utf-8")
     bootstrap_initial = "**Version:** 5.6.0" in bootstrap
