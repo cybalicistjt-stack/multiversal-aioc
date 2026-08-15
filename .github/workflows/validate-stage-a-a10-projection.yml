@@ -1,0 +1,40 @@
+name: Validate Stage A A10 Projection
+
+on:
+  pull_request:
+    paths:
+      - 'governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'governance/ai/runtime/ROADMAP_INDEX.json'
+      - 'governance/ai/work-state/STAGE-A-A10-current-revalidation-attempt-001.json'
+      - 'governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md'
+      - 'tools/validate_stage_a_a10_projection.py'
+      - '.github/workflows/validate-stage-a-a10-projection.yml'
+  push:
+    branches:
+      - governance/stage-a-a10-revalidation-projection
+    paths:
+      - 'governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'governance/ai/runtime/ROADMAP_INDEX.json'
+      - 'governance/ai/work-state/STAGE-A-A10-current-revalidation-attempt-001.json'
+      - 'governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md'
+      - 'tools/validate_stage_a_a10_projection.py'
+      - '.github/workflows/validate-stage-a-a10-projection.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate A10 projection
+        run: python tools/validate_stage_a_a10_projection.py
+      - name: Validate continuity
+        run: python tools/continuity_state.py validate
+      - name: Validate closed PPIA continuity
+        run: python governance/application-planning/parallel-preimplementation/validate_ppia_program_state.py
