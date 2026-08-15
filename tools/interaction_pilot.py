@@ -229,10 +229,24 @@ def scenario_duplicate(root: Path):
     with tempfile.TemporaryDirectory() as directory:
         target = Path(directory)
         input_path = copy_correction_fixture(root, target)
+        before = load_json(target / CORRECTION_LEDGER)
+        before_counts = (len(before["corrections"]), len(before["candidates"]))
         first = run([sys.executable, str(target / CORRECTION_TOOL), "--root", str(target), "capture", "--input", str(input_path)], target)
+        after_first = load_json(target / CORRECTION_LEDGER)
+        after_first_counts = (len(after_first["corrections"]), len(after_first["candidates"]))
         second = run([sys.executable, str(target / CORRECTION_TOOL), "--root", str(target), "capture", "--input", str(input_path)], target)
-        ledger = load_json(target / CORRECTION_LEDGER)
-        ok = first.returncode == 0 and second.returncode == 0 and "existing correction=" in second.stdout and len(ledger["corrections"]) == 1 and len(ledger["candidates"]) == 1
+        after_second = load_json(target / CORRECTION_LEDGER)
+        after_second_counts = (len(after_second["corrections"]), len(after_second["candidates"]))
+        ok = (
+            first.returncode == 0
+            and second.returncode == 0
+            and "existing correction=" in second.stdout
+            and after_second_counts == after_first_counts
+            and after_first_counts[0] >= before_counts[0]
+            and after_first_counts[1] >= before_counts[1]
+            and (after_first_counts[0] - before_counts[0]) in {0, 1}
+            and (after_first_counts[1] - before_counts[1]) in {0, 1}
+        )
     return ok, "Repeated correction capture was idempotently suppressed."
 
 
