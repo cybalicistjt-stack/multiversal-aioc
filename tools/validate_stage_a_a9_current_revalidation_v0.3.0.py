@@ -7,8 +7,8 @@ BASE=ROOT/'governance/application-planning/stage-a-a9'
 SCOPE=BASE/'A9_CURRENT_CHANGED_PATH_SCOPE_v0.3.0.csv'
 AUTH=BASE/'A9_CURRENT_AUTHORITY_DISPOSITION_v0.3.0.csv'
 HANDOFF=BASE/'STAGE_A_A9_CURRENT_REPOSITORY_REVALIDATION_v0.3.0.md'
-EXPECTED_SCOPE_SHA='8436f021735757b0513d71969bd7c4dea06b316d11eb1765535ccb474dba075f'
-EXPECTED_AUTH_SHA='17d96b52dcd65b44c087e2f91c54589361ff3e220d131065bd8a7d4b2e06cb3f'
+EXPECTED_SCOPE_SHA='dfc4d9ab91bda68e3f6aa4ab3e6176c4cd4b835d096aac26a3fc8a4e5013b7eb'
+EXPECTED_AUTH_SHA='afeb7fe5f3b5c10e0376f60db564f070ff8c0812ac82b6da6c28deebed328139'
 EXPECTED_PRE_SHA='95d11bc619bbe48d7ede9565c0c5f8abbb9ccdd9e4386959bbc01cbf6a0e2e11'
 EXPECTED_COMP_SHA='2a9a3b41aba8cf4ecf252fc1676b0420c229ac9fab28057c827d15c0251f37a8'
 EXPECTED_HIST_PLAN_SHA='782c88d2404893546bdab98a1c1429ccb7fa864eca234359b7e2619a65c4af62'
@@ -82,7 +82,7 @@ else:
   'PASS — READY_FOR_BOUNDED_A9_ACTIVATION',EXPECTED_SCOPE_SHA,EXPECTED_AUTH_SHA,EXPECTED_PRE_SHA,EXPECTED_COMP_SHA,EXPECTED_HIST_PLAN_SHA,
   EXPECTED_APP_A8,EXPECTED_APP_MAIN,EXPECTED_AIOC,'0007_a9_investigation_social_runtime.json',
   'F024 / Pack Lifecycle reconciliation','P14-GAP-001','P15-GAP-001','hiddenEventCount','raw `commandPayload`',
-  'A6 remains sole Action','A7 remains combat','A8 remains Asset/currency/ownership','A9 owns only Campaign runtime faction',
+  'A6 remains sole Action','A7 remains combat','A8 remains Asset/currency/ownership','A9 owns Campaign runtime faction',
   'releaseAuthorized=false','deploymentAuthorized=false','providerVendorPaidServiceAuthorized=false'
  )
  for x in required:
