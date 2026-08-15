@@ -44,7 +44,7 @@ Where an older recovered A8 assumption conflicts with a newer owner-approved con
 - `conversation-evidence/ADDING_CONVERSATION_PROVENANCE.md` — provenance summary and archive checksum; raw conversation text is not canonical authority.
 - `governance/ai/work-state/STAGE-A-A8-R0-attempt-001.json` — recovery checkpoint for this pre-revalidation operation.
 
-`STAGE-A-A8-R0` is also indexed in `governance/ai/runtime/ROADMAP_INDEX.json`, so repository continuity can recover this bounded reconciliation without misclassifying it as completed A8 implementation.
+`ROADMAP_INDEX.json` preserves the historical `STAGE-A-A2` entry and now contains `STAGE-A-A8-R0` and `STAGE-A-A8` as separate entries. This keeps completed history intact while allowing continuity to recover the bounded reconciliation and route next to A8 revalidation without misclassifying either as the other.
 
 ## Non-activation boundary
 
