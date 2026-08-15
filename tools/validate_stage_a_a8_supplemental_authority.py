@@ -166,7 +166,7 @@ def main() -> None:
     status = json.loads((ROOT / "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json").read_text(encoding="utf-8"))
     require(status["primary"]["work_item_id"] == "STAGE-A-A8-R0", "implementation status must retain completed A8 R0 historical primary until A9 revalidation starts")
     if roadmap_a8_completed:
-        require("STAGE-A-A9" in status["primary"].get("next_action", ""), "implementation status must route next action to A9 after A8 completion")
+        require(status["primary"]["status"] == "completed_verified", "post-A8 compact status must retain the completed A8 R0 historical checkpoint projection until A9 revalidation starts")
 
     roadmap_index = json.loads((ROOT / "governance/ai/runtime/ROADMAP_INDEX.json").read_text(encoding="utf-8"))
     require(any(e.get("work_item_id") == "STAGE-A-A8" for e in roadmap_index["entries"]), "ROADMAP_INDEX missing STAGE-A-A8")
