@@ -60,7 +60,8 @@ def validate_common(backlog: dict, index: dict, pointer: dict, status: dict, pro
     # must not freeze later verified application progress. Final-mode validation instead
     # proves the immutable PPIA completion evidence and that the roadmap still records
     # PPIA as COMPLETED_VERIFIED.
-    if backlog["status"] == "completed_verified_owner_approved_parallel_work":
+    ppia_closed = backlog["status"] == "completed_verified_owner_approved_parallel_work"
+    if ppia_closed:
         assert "PPIA is `COMPLETED_VERIFIED`" in roadmap
     else:
         assert "A2_CHANGED_PATH_SCOPE_v1.0.0.csv" in roadmap and "A2 is not activated" in roadmap
@@ -76,8 +77,20 @@ def validate_common(backlog: dict, index: dict, pointer: dict, status: dict, pro
 
     app_tracks = [item for item in pointer["deferred_tracks"] if item["track"] == "application-implementation"]
     assert len(app_tracks) == 1
-    assert app_tracks[0]["next_work_item_id"] == "STAGE-A-A2"
-    assert "checkout_runner_blocked" in app_tracks[0]["state"]
+    if ppia_closed:
+        # Closed PPIA retains its immutable A2-era evidence, but live application
+        # continuity is allowed to advance through later governed Stage-A items.
+        assert app_tracks[0]["next_work_item_id"].startswith("STAGE-A-A")
+        assert app_tracks[0]["next_work_item_id"] in index_ids
+        assert app_tracks[0]["next_work_item_id"] != "STAGE-A-A2"
+        assert app_tracks[0]["state"] in {
+            "current_next_revalidation_not_activated",
+            "current_next_not_activated",
+            "authorized_not_activated",
+        }
+    else:
+        assert app_tracks[0]["next_work_item_id"] == "STAGE-A-A2"
+        assert "checkout_runner_blocked" in app_tracks[0]["state"]
 
     primary = status["primary"]
     assert primary["work_item_id"] == checkpoint["work_item_id"]
