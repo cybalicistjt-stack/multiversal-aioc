@@ -43,7 +43,7 @@ def main() -> int:
         "PASS — READY FOR BOUNDED A10 ACTIVATION",
         "0008_a10_world_content_authoring.json",
         "IA-D07-003",
-        "A9 owns Campaign-runtime relationship/faction/social/investigation state",
+        "A9 now concretely owns Campaign-runtime relationship/faction/social/investigation state",
         "canonical promotion",
         "Arbitrary executable code",
     ):
