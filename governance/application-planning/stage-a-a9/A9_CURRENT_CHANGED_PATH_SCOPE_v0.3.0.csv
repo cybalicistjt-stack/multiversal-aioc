@@ -1,0 +1,103 @@
+Path,Operation,Purpose,Authority_Source
+.github/workflows/validate-stage-a-a9-investigation-social.yml,CREATE,Focused exact-head A9 CI; no deployment,NCI-S08
+apps/client-ui/src/App.tsx,MODIFY_BOUNDED,authorized A9 entry,REVAL
+apps/client-ui/src/a9/a9.a11y.test.tsx,CREATE,Automated accessibility checks,GLA-S08
+apps/client-ui/src/a9/a9.contract.test.ts,CREATE,contracts,PPIA
+apps/client-ui/src/a9/a9.css,CREATE,Status/responsive/text scaling/contrast/reduced motion,GLA-S05
+apps/client-ui/src/a9/a9.factions.test.ts,CREATE,factions,PPIA
+apps/client-ui/src/a9/a9.integration.test.tsx,CREATE,integration,PPIA
+apps/client-ui/src/a9/a9.investigation.test.ts,CREATE,investigation,PPIA
+apps/client-ui/src/a9/a9.privacy-topology.test.ts,CREATE,privacy,PPIA
+apps/client-ui/src/a9/a9.recovery.test.ts,CREATE,recovery,PPIA
+apps/client-ui/src/a9/a9.relationships.test.ts,CREATE,relationships,PPIA
+apps/client-ui/src/a9/a9.social.test.ts,CREATE,social,PPIA
+apps/client-ui/src/a9/factions/**,CREATE,Faction graph/list/roster/history and role-safe views,FRO-S06
+apps/client-ui/src/a9/investigation/**,CREATE,List/outline/table/graph/nonvisual board,INV-S06
+apps/client-ui/src/a9/relationships/**,CREATE,Graph/list/editor/inspector/timeline using semantic projection,REL-S04
+apps/client-ui/src/a9/shared/**,CREATE,Cross-view role-safe UI composition,NCI-S05
+apps/client-ui/src/a9/shared/SemanticGraphEditor.tsx,CREATE,Non-drag create/edit/group/share parity,GLA-S04
+apps/client-ui/src/a9/shared/SemanticGraphViews.tsx,CREATE,Equivalent list/outline/table/graph/detail adapters,GLA-S02
+apps/client-ui/src/a9/shared/semanticGraphState.ts,CREATE,Virtualization/reconnect/focus recovery client state only,GLA-S07
+apps/client-ui/src/a9/social/**,CREATE,Player social console/GM social operations/results/history,SOC-S06
+contracts/a9-domain-authority-map.json,CREATE,Implementation-time authority matrix fixture,NCI-S02
+database/migrations/0007_a9_investigation_social_runtime.json,CREATE,Add D25 relationship/runtime records after predecessors,REL-S02+INV-S02
+docs/evidence/stage-a-a9/**,CREATE,Integrated acceptance evidence,NCI-S08
+docs/evidence/stage-a-a9/accessibility/**,CREATE,Manual-review handoff evidence,GLA-S08
+fixtures/domains/investigation/a9/**,CREATE,24 INV source fixtures,INV-S08
+fixtures/domains/social-relations/a9/factions/**,CREATE,24 FRO source fixtures,FRO-S08
+fixtures/domains/social-relations/a9/relationship/**,CREATE,24 REL source fixtures,REL-S08
+fixtures/domains/social-relations/a9/social/**,CREATE,24 SOC source fixtures,SOC-S08
+packages/contracts/src/a2/object-contracts.ts,REUSE,object identity,CURRENT
+packages/contracts/src/a3/delegation-support-access.ts,REUSE,delegation,CURRENT
+packages/contracts/src/a3/selected-context-receipt.ts,REUSE,context,CURRENT
+packages/contracts/src/a3/stable-subject-session-port.ts,REUSE,subject,CURRENT
+packages/contracts/src/a4/character-control-port.ts,REUSE,character control,CURRENT
+packages/contracts/src/a5/authorization-projection-port.ts,REUSE,A5 auth,CURRENT
+packages/contracts/src/a5/campaign-repository-port.ts,REUSE,campaign,CURRENT
+packages/contracts/src/a5/launch-session-port.ts,REUSE,session,CURRENT
+packages/contracts/src/a5/launch-snapshot-port.ts,REUSE,snapshot,CURRENT
+packages/contracts/src/a6/action-decision-port.ts,REUSE,A6 decision,CURRENT
+packages/contracts/src/a6/action-proposal-port.ts,REUSE,A6 proposal,CURRENT
+packages/contracts/src/a6/action-result-handoff.ts,REUSE,A6 result,CURRENT
+packages/contracts/src/a6/atomic-action-commit-port.ts,REUSE,A6 atomic,CURRENT
+packages/contracts/src/a7/**,REUSE,Combat transition adapter,SOC-S07
+packages/contracts/src/a7/combat-atomic-result-coordinator.ts,REUSE,A7 atomic,CURRENT
+packages/contracts/src/a7/combat-event-port.ts,REUSE,A7 events,CURRENT
+packages/contracts/src/a7/combat-reconnect-port.ts,REUSE,A7 reconnect,CURRENT
+packages/contracts/src/authoring-provenance/README.md,REUSE_CONTEXT,D29/A10 deferred,BOUNDARY
+packages/contracts/src/authority-control/README.md,REUSE_CONTEXT,D04 placeholder,BOUNDARY
+packages/contracts/src/authorization/campaign-authorization-policy.ts,REUSE,campaign auth,CURRENT
+packages/contracts/src/backup-restore-export.ts,REUSE,export,CURRENT
+packages/contracts/src/downtime-projects/README.md,REUSE_CONTEXT,D26 deferred,BOUNDARY
+packages/contracts/src/investigation/clue-discovery-reveal-port.ts,CREATE,Investigation/clue node stores,INV-S02+INV-S03+NCI-S04
+packages/contracts/src/investigation/connection-port.ts,CREATE,Typed connection/version conflicts,INV-S04
+packages/contracts/src/investigation/evidence-reference-port.ts,CREATE,InvestigationEvidenceReferencePort,A9-CON-018
+packages/contracts/src/investigation/hypothesis-conclusion-port.ts,CREATE,Hypothesis/conclusion,INV-S04
+packages/contracts/src/investigation/investigation-history-export-port.ts,CREATE,Player/GM search/export/diagnostic privacy,INV-S05
+packages/contracts/src/investigation/investigation-operation-status-port.ts,CREATE,InvestigationOperationStatusPort,A9-CON-024
+packages/contracts/src/investigation/investigation-port.ts,CREATE,IDs/registries/source binding,INV-S01
+packages/contracts/src/investigation/investigation-reconnect-port.ts,CREATE,Events/idempotency/reconnect/revocation,INV-S07
+packages/contracts/src/investigation/investigation-source-state-preservation-port.ts,CREATE,Pack lifecycle,INV-S07
+packages/contracts/src/investigation/observation-claim-port.ts,CREATE,InvestigationObservationClaimPort,A9-CON-015
+packages/contracts/src/investigation/private-note-policy-port.ts,CREATE,Private note policy,INV-S03
+packages/contracts/src/observability/structured-audit-telemetry.ts,REUSE,audit,CURRENT
+packages/contracts/src/persistence.ts,REUSE,version/transaction,CURRENT
+packages/contracts/src/session/authoritative-session-command-handler.ts,WRAP,raw public commandPayload unsafe,PRIVACY
+packages/contracts/src/session/checkpoint-reconnect-restoration.ts,REUSE,P9 reconnect foundation,NCI-S06+CURRENT
+packages/contracts/src/session/hidden-information-response-filter.ts,WRAP,hiddenEventCount unsafe,PRIVACY
+packages/contracts/src/session/ordered-realtime-event-delivery.ts,REUSE,realtime,CURRENT
+packages/contracts/src/shared-assets/**,REUSE,A8 trade/Asset adapter,SOC-S07
+packages/contracts/src/shared-assets/a8-cross-domain-result-coordinator.ts,REUSE,A8 cross-domain,CURRENT
+packages/contracts/src/shared-assets/asset-history-export-port.ts,REUSE,A8 history,CURRENT
+packages/contracts/src/shared-assets/asset-operation-status-port.ts,REUSE,A8 status,CURRENT
+packages/contracts/src/shared-assets/asset-pack-lifecycle-port.ts,REUSE_CONTEXT,F024 context only,BOUNDARY
+packages/contracts/src/social-relations/a6-proposal-adapter.ts,CREATE,Shared proposal consumer/GM inbox,SOC-S03
+packages/contracts/src/social-relations/a9-cross-domain-adapter-registry.ts,CREATE,Relationship/Asset/Resource/Location/Project/Contract refs,FRO-S04+NCI-S01
+packages/contracts/src/social-relations/a9-history-export-port.ts,CREATE,Recovery/export/diagnostics/pack support,FRO-S07
+packages/contracts/src/social-relations/a9-operation-status-port.ts,CREATE,Status recovery,REL-S07+NCI-S06
+packages/contracts/src/social-relations/a9-reconnect-port.ts,CREATE,Reconnect/revocation/undo/status/pack,SOC-S07
+packages/contracts/src/social-relations/a9-source-state-preservation-port.ts,CREATE,Pack lifecycle,REL-S07+NCI-S07
+packages/contracts/src/social-relations/bond-leverage-obligation-port.ts,CREATE,Bond human-agreement/profile gates,REL-S05+REL-S06
+packages/contracts/src/social-relations/faction-agenda-operation-port.ts,CREATE,Agendas/operations/alert/services,FRO-S05
+packages/contracts/src/social-relations/faction-membership-office-port.ts,CREATE,Faction/membership/office runtime,FRO-S02
+packages/contracts/src/social-relations/faction-runtime-port.ts,CREATE,Runtime definition binding/profiles/visibility,FRO-S01
+packages/contracts/src/social-relations/faction-standing-influence-port.ts,CREATE,Standing/influence/reaction/information-path Events,FRO-S03+NCI-S03
+packages/contracts/src/social-relations/relationship-edge-port.ts,CREATE,Directional aggregate/history,REL-S02+NCI-S03
+packages/contracts/src/social-relations/relationship-profile-port.ts,CREATE,IDs/types/dimensions/scales,REL-S01
+packages/contracts/src/social-relations/relationship-reveal-port.ts,CREATE,Audience reveal/projection,REL-S03
+packages/contracts/src/social-relations/social-interaction-port.ts,CREATE,Context/participants/lifecycle,SOC-S02
+packages/contracts/src/social-relations/social-outcome-coordinator.ts,CREATE,Atomic Event group and adapters,SOC-S05+NCI-S04
+packages/contracts/src/social-relations/social-resolution-port.ts,CREATE,Action/resolution/outcome profile registry,SOC-S01+SOC-S04
+packages/contracts/src/social-relations/social-truth-state-port.ts,CREATE,Mood/intent/stance/belief separation,SOC-S02
+packages/contracts/src/visibility-projection/a9-projection-port.ts,CREATE,D05 shared filter,REL-S03+INV-S05+GLA-S06
+packages/contracts/src/visibility-projection/semantic-graph-navigation-port.ts,CREATE,Keyboard/focus/nonvisual navigation,GLA-S03
+packages/contracts/src/visibility-projection/semantic-node-edge-projection-port.ts,CREATE,Shared semantic node/edge projection,GLA-S01
+packages/entitlements/src/entitlement-service-port.ts,REUSE,entitlements,CURRENT
+receipts/STAGE-A-A9-CLOSURE.json,CREATE,completion-only receipt,REVAL
+schemas/domains/investigation/a9-*.schema.json,CREATE,Investigation/clue/hypothesis schemas,INV-S01
+schemas/domains/social-relations/a9-*.schema.json,CREATE,D25 schemas,REVAL
+tests/golden/domains/investigation/a9/**,CREATE,Investigation golden/observability tests,INV-S08
+tests/golden/domains/social-relations/a9/factions/**,CREATE,Faction golden/accessibility tests,FRO-S08
+tests/golden/domains/social-relations/a9/relationship/**,CREATE,Relationship golden/accessibility tests,REL-S08
+tests/golden/domains/social-relations/a9/social/**,CREATE,Social golden/accessibility tests,SOC-S08
+tools/verify_stage_a_a9.py,CREATE,Integrated 144-fixture/168-criteria-ID/domain/privacy/recovery verifier,NCI-S08
