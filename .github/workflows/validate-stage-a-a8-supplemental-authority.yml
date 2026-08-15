@@ -1,0 +1,37 @@
+name: Validate STAGE-A-A8 Supplemental Authority
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/stage-a-a8/supplemental-authority/**'
+      - 'governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md'
+      - 'governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'governance/ai/runtime/ROADMAP_INDEX.json'
+      - 'governance/ai/work-state/STAGE-A-A8-R0-attempt-001.json'
+      - 'tools/validate_stage_a_a8_supplemental_authority.py'
+  push:
+    branches: ['governance/**']
+    paths:
+      - 'governance/application-planning/stage-a-a8/supplemental-authority/**'
+      - 'governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md'
+      - 'governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'governance/ai/runtime/ROADMAP_INDEX.json'
+      - 'governance/ai/work-state/STAGE-A-A8-R0-attempt-001.json'
+      - 'tools/validate_stage_a_a8_supplemental_authority.py'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python tools/validate_stage_a_a8_supplemental_authority.py

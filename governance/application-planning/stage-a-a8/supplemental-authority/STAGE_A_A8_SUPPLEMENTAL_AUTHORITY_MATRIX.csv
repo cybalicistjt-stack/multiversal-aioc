@@ -1,0 +1,25 @@
+authority_id,area,decision,a8_requirement,later_owner,notes
+A8S-001,item_definition_instance,ADOPT_SUPPLEMENT,Preserve reusable Item Definition separately from A8-owned live Item/Asset instance and inventory state,A8,PPIA-03 and Item v0.12.0 agree on this boundary
+A8S-002,vehicle_model_instance,ADOPT_SUPPLEMENT,Preserve reusable Platform/Vehicle Model separately from individual vehicle asset state,A8/PPIA-04,Individual asset carries ownership crew condition modifications maintenance and history
+A8S-003,product_identity,ADOPT_SUPPLEMENT,Represent generic-family-model-variant-configuration identities without name-merging,A8 catalog seam,New fields may remain nullable/dormant
+A8S-004,shared_creator,ADOPT_SUPPLEMENT,Use shared Creator/Origin identity seam across Items and Vehicles,shared content foundation,Creator is not automatically a Faction
+A8S-005,shared_content_context,ADOPT_SUPPLEMENT,Use the nine shared content-context facet machine identities,shared content foundation,A8 consumes vocabulary but does not own it
+A8S-006,intrinsic_affinity_compatibility,ADOPT_SUPPLEMENT,Keep intrinsic requirements thematic affinity and actual compatibility distinct,A8 compatibility seam,Genre affinity never proves compatibility
+A8S-007,setting_context_adapter,ADOPT_SUPPLEMENT,Provide provider-neutral context input with unknown/unavailable as valid result,World/Reality later,A8 must not implement Reality laws
+A8S-008,provenance_source_state,ADOPT_SUPPLEMENT,Preserve current/source/legacy/authored/unresolved/remechanization provenance states,shared provenance,Legacy mechanics remain non-authoritative
+A8S-009,economy_boundary,ADOPT_SUPPLEMENT,A8 may expose availability and market context but not take canonical price/value authority,Economy,Transactions and value remain Economy-owned
+A8S-010,current_mechanics_protection,ADOPT_CURRENT,Preserve current mechanics by default and require governed re-mechanization for missing legacy concepts,owning mechanics domains,No direct legacy numeric conversion
+A8S-011,product_lineage,ADD_DORMANT,Allow predecessor successor derivative and related edges behind gates,catalog later,No need for full alpha UI
+A8S-012,creator_catalog_browse,ADD_DORMANT,Permit future creator/manufacturer catalog read surfaces,catalog later,Do not delay core runtime slice
+A8S-013,production_market_history,ADD_DORMANT,Permit production service parts restriction and market-history metadata,catalog/Economy later,Read-only or dormant first
+A8S-014,coverage_analyzers,DEFER,Retain read-only analyzer contracts for later content/developer tooling,developer/content tooling,Not player inventory responsibility
+A8S-015,legacy_remechanization_queue,ADD_DORMANT,Retain governed work queues and provenance but do not bulk-promote content,content production later,326 Platform concepts and 54 absent Item concepts require current-rule construction/review
+A8S-016,full_reality_topology,DEFER,Do not absorb full Reality/Place topology into A8,PPIA-12/Reality implementation,A8 consumes only context seam
+A8S-017,reality_laws,DEFER,Do not implement full metaphysical law authoring/evaluation in A8,Reality implementation,Compatibility provider can be unavailable/unknown
+A8S-018,community_world_features,DEFER,Do not activate publishing follow bookmark remix moderation or community discovery,future community program,Hard-off
+A8S-019,campaign_setting_state,PROHIBIT_DUPLICATION,A8 must not own Campaign/Scene setting state,PPIA-08,Reference only
+A8S-020,world_definition,PROHIBIT_DUPLICATION,A8 must not own reusable World/Setting Definitions,PPIA-12,Reference/context only
+A8S-021,item_core_definition,PROHIBIT_DUPLICATION,A8 must not duplicate universal Item Definition mechanics outside owning domain,PPIA-03/A8 boundary,A8 owns live inventory state and governed integration
+A8S-022,vehicle_core_definition,PROHIBIT_DUPLICATION,A8 must not duplicate Platform/Vehicle Definition mechanics outside owning domain,PPIA-04/A8 boundary,A8 owns individual asset/runtime integration
+A8S-023,hidden_information,REUSE_IMPLEMENTED,All catalog compatibility inventory and vehicle projections must inherit permission-safe filtering,F020/A2-A7,Filter before counts search exports AI and relationship traversal
+A8S-024,recovery_concurrency,REUSE_IMPLEMENTED,All authoritative A8 mutations inherit operation-id expected-version idempotency and reconnect rules,F021/A2-A7,No broad offline authoritative mutation
