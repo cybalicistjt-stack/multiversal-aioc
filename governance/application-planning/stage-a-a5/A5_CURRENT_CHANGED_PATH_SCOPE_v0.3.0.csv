@@ -1,0 +1,58 @@
+Slice,Disposition,Path,Purpose
+CSS-IMP-01,CREATE,packages/contracts/src/a5/campaign-repository-port.ts,Campaign aggregate + policy binding; compose persistence.
+CSS-IMP-01,CREATE,packages/contracts/src/a5/pack-registry-lock-port.ts,Exact pack/version/dependency lock boundary.
+CSS-IMP-01,CREATE,schemas/a5/campaign.schema.json,Campaign aggregate transfer schema.
+CSS-IMP-01,CREATE,schemas/a5/campaign-policy.schema.json,Campaign policy/delegation binding schema.
+CSS-IMP-01,CREATE,schemas/a5/campaign-pack-lock.schema.json,Exact pack-lock schema.
+CSS-IMP-01,CREATE,database/migrations/0003_a5_campaign_scene.json,Smallest additive provider-neutral A5 migration after A4 0002.
+CSS-IMP-01,REUSE,packages/contracts/src/persistence.ts,Expected-version/transaction persistence foundation.
+CSS-IMP-02,CREATE,packages/contracts/src/a5/membership-invitation-port.ts,Campaign membership/invitation/role/delegation lifecycle composing A3 identity/invitation rules.
+CSS-IMP-02,REUSE,packages/contracts/src/a3/invitation-port.ts,Stable recipient/invitation semantics; no duplicate generic invitation system.
+CSS-IMP-02,REUSE,packages/contracts/src/a3/delegation-support-access.ts,Scoped/expiring delegation/support boundaries.
+CSS-IMP-02,REUSE,packages/contracts/src/a3/selected-context-receipt.ts,Nonauthoritative selected-context handoff.
+CSS-IMP-02,REUSE,packages/contracts/src/a3/workspace-entry-port.ts,Fresh authorization before Campaign entry.
+CSS-IMP-02,REUSE,packages/contracts/src/a4/character-control-port.ts,Character control/lifecycle authority.
+CSS-IMP-02,CREATE,apps/client-ui/src/a5/campaign/ParticipantsPanel.tsx,GM invitation/membership/delegation/observer panel.
+CSS-IMP-03,CREATE,packages/contracts/src/a5/scene-repository-port.ts,Scene aggregate/order/note/history repository.
+CSS-IMP-03,CREATE,packages/contracts/src/a5/scene-placement-port.ts,Campaign-local placement from A2 selection receipts.
+CSS-IMP-03,CREATE,packages/contracts/src/a5/media-reference-port.ts,Bounded map/media reference plus semantic nonvisual alternative.
+CSS-IMP-03,REUSE,apps/client-ui/src/a2/picker/**,A2 governed object Picker; no duplicate selector.
+CSS-IMP-03,REUSE,packages/contracts/src/a4/character-scene-reference.ts,A4 bounded Character-to-Scene reference.
+CSS-IMP-03,CREATE,schemas/a5/scene.schema.json,Scene aggregate and semantic map/grid metadata.
+CSS-IMP-03,CREATE,schemas/a5/scene-placement.schema.json,Placement identity/location/visibility schema.
+CSS-IMP-03,CREATE,schemas/a5/membership-invitation.schema.json,Campaign invitation/delegation transfer schema.
+CSS-IMP-03,CREATE,apps/client-ui/src/a5/scene/SceneBuilder.tsx,Scene draft builder with square/gridless authoring.
+CSS-IMP-03,CREATE,apps/client-ui/src/a5/scene/SceneOutline.tsx,Bounded Campaign Scene ordering.
+CSS-IMP-03,CREATE,apps/client-ui/src/a5/scene/PlacementsPanel.tsx,Source Definition versus placement UI.
+CSS-IMP-03,CREATE,apps/client-ui/src/a5/scene/SceneNotes.tsx,Visibility-scoped notes.
+CSS-IMP-04,CREATE,packages/contracts/src/a5/authorization-projection-port.ts,Role-safe Campaign/Scene/Session-entry projections.
+CSS-IMP-04,CREATE,apps/client-ui/src/a5/preview/PreviewAsSubject.tsx,Server-authorized nonauthoritative preview.
+CSS-IMP-04,REUSE,packages/contracts/src/session/hidden-information-response-filter.ts,Permission-before-projection pattern.
+CSS-IMP-05,CREATE,packages/contracts/src/a5/scene-validation-port.ts,24-class validation + PPIA-08 launch readiness overlay.
+CSS-IMP-05,CREATE,packages/contracts/src/a5/launch-snapshot-port.ts,Immutable exact-version launch snapshot.
+CSS-IMP-05,CREATE,packages/contracts/src/a5/launch-session-port.ts,Exactly-once launch/status lookup.
+CSS-IMP-05,CREATE,schemas/a5/launch-snapshot.schema.json,Pinned Campaign/Scene/map/grid/placement/visibility/session-binding snapshot schema.
+CSS-IMP-05,CREATE,apps/client-ui/src/a5/launch/LaunchReadiness.tsx,Blocking validation + snapshot/launch controls.
+CSS-IMP-05,CREATE,fixtures/a5/launch/**,Valid/invalid/ambiguous/duplicate/post-edit launch fixtures.
+CSS-IMP-05,CREATE,fixtures/a5/persistence/**,Additive migration/save/conflict fixtures.
+CSS-IMP-06,CREATE,packages/contracts/src/a5/session-repository-port.ts,A5 launched Session shell over existing P9 foundations.
+CSS-IMP-06,CREATE,packages/contracts/src/a5/event-projection-port.ts,Durable append/replay + role-safe projection.
+CSS-IMP-06,CREATE,packages/contracts/src/a5/scene-session-handoff.ts,Bounded A5→A6 launched Session handoff; no action-resolution authority.
+CSS-IMP-06,CREATE,apps/client-ui/src/a5/session/SessionShell.tsx,Enter/pause/resume/close/review only.
+CSS-IMP-06,REUSE,packages/contracts/src/session/ordered-realtime-event-delivery.ts,Realtime advisory order/gap foundation.
+CSS-IMP-06,REUSE,packages/contracts/src/session/checkpoint-reconnect-restoration.ts,Durable checkpoint/reconnect recovery.
+CSS-IMP-06,REUSE,packages/contracts/src/session/authoritative-session-command-handler.ts,Fresh-auth/operation-id authoritative mutation pattern.
+CSS-IMP-07,CREATE,packages/contracts/src/a5/backup-restore-export-extension.ts,A5 record/export extension.
+CSS-IMP-07,CREATE,packages/contracts/src/a5/operation-status-port.ts,Ambiguous authoritative outcome recovery.
+CSS-IMP-07,CREATE,packages/contracts/src/a5/notification-port.ts,Inference-safe A5 notification projection composing A3 summaries.
+CSS-IMP-07,CREATE,packages/contracts/src/a5/runtime-utilities.ts,Deterministic clock/id injection.
+CSS-IMP-07,REUSE,packages/contracts/src/a3/notification-summary-port.ts,A3 inference-safe notification summary boundary.
+CSS-IMP-07,CREATE,apps/client-ui/src/a5/a5.privacy-recovery.test.ts,42 denied cases + 13 recovery states + offline rules.
+CSS-IMP-07,REUSE,packages/contracts/src/backup-restore-export.ts,Backup/restore/provider-exit foundation.
+CSS-IMP-08,CREATE,apps/client-ui/src/a5/a5.css,A5 responsive GM/Player styling through current token system.
+CSS-IMP-08,CREATE,apps/client-ui/src/a5/a5.a11y.test.tsx,Keyboard/touch/screen-reader/high-zoom/reduced-motion parity.
+CSS-IMP-08,CREATE,apps/client-ui/src/a5/a5.integration.test.tsx,Integrated Campaign→Scene→snapshot→Session-shell acceptance.
+CSS-IMP-08,MODIFY_BOUNDED,apps/client-ui/src/App.tsx,Route authorized Campaign/Session shell to A5 only.
+CSS-IMP-08,CREATE,tools/verify_stage_a_a5.py,Focused current A5 verifier.
+CSS-IMP-08,CREATE,.github/workflows/validate-stage-a-a5-campaign-scene.yml,Focused exact-head A5 CI; no deployment.
+CSS-IMP-08,CREATE,docs/evidence/stage-a-a5/**,Final evidence only at package/closure boundary.
