@@ -46,6 +46,8 @@ Where an older recovered A8 assumption conflicts with a newer owner-approved con
 
 `ROADMAP_INDEX.json` preserves the historical `STAGE-A-A2` entry and now contains `STAGE-A-A8-R0` and `STAGE-A-A8` as separate entries. This keeps completed history intact while allowing continuity to recover the bounded reconciliation and route next to A8 revalidation without misclassifying either as the other.
 
+Historical completion validators now read immutable predecessor checkpoints instead of freezing the live Stage-A pointer, and the interaction pilot recognizes this owner-approved pre-revalidation roadmap projection while still rejecting routine unfinished roadmap rewrites.
+
 ## Non-activation boundary
 
 This package does **not** authorize release, deployment, paid services, production credentials, public community features, full Reality implementation, or A8 application mutation. The next operation after this package is merged and continuity records are current is **STAGE-A-A8 current-repository revalidation**.
