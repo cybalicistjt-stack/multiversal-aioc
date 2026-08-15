@@ -128,11 +128,12 @@ def main() -> None:
     roadmap_initial = "**Version:** 2.13.0" in roadmap
     roadmap_r0_completed = "**Version:** 2.13.1" in roadmap
     roadmap_a8_completed = "**Version:** 2.14.0" in roadmap
-    require(roadmap_initial or roadmap_r0_completed or roadmap_a8_completed, "roadmap must be A8 reconciliation, R0 completion, or A8 completion projection version")
+    roadmap_later_stage = "**Version:** 2.15.0" in roadmap
+    require(roadmap_initial or roadmap_r0_completed or roadmap_a8_completed or roadmap_later_stage, "roadmap must preserve a governed A8-or-later Stage A projection version")
     require("stage-a-a8/supplemental-authority/STAGE_A_A8_SUPPLEMENTAL_AUTHORITY_RECONCILIATION.md" in roadmap, "roadmap missing A8 supplemental authority path")
     if roadmap_initial or roadmap_r0_completed:
         require("A8 REVALIDATION NEXT" in roadmap, "pre-A8-completion roadmap must keep A8 revalidation next")
-    if roadmap_r0_completed or roadmap_a8_completed:
+    if roadmap_r0_completed or roadmap_a8_completed or roadmap_later_stage:
         require("08e0ec54808b901a62bfcc537b3dac395ca46490" in roadmap, "completed roadmap must retain verified A8 R0 merge evidence")
         require("STAGE_A_A8_R0_COMPLETION_RECEIPT.json" in roadmap, "completed roadmap must reference R0 completion receipt")
     if roadmap_a8_completed:
@@ -140,38 +141,61 @@ def main() -> None:
         require("A9 REVALIDATION NEXT" in roadmap, "post-A8 roadmap must advance to A9 revalidation")
         require("e9aaa858b345e6a29e27369c01468551752a2483" in roadmap, "post-A8 roadmap must retain verified A8 application merge evidence")
         require("Multiversal-app/receipts/STAGE-A-A8-CLOSURE.json" in roadmap, "post-A8 roadmap must reference A8 closure receipt")
+    if roadmap_later_stage:
+        require("e9aaa858b345e6a29e27369c01468551752a2483" in roadmap, "later roadmap must retain verified A8 application merge evidence")
+        require("Multiversal-app/receipts/STAGE-A-A8-CLOSURE.json" in roadmap, "later roadmap must reference A8 closure receipt")
+        require("STAGE-A-A9 — Investigation and Social Workspaces is `COMPLETED_VERIFIED`" in roadmap, "later roadmap must retain A9 completion")
+        require("STAGE-A-A10 — World Content Authoring has completed current-repository revalidation" in roadmap, "later roadmap must retain A10 revalidation completion")
+        require("9124860691ea208bded3800008a2d92b4b2c2139" in roadmap, "later roadmap must retain verified A10 revalidation merge")
+        require("0008_a10_world_content_authoring.json" in roadmap, "later roadmap must retain A10 migration boundary")
 
     bootstrap = (ROOT / "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md").read_text(encoding="utf-8")
     bootstrap_initial = "**Version:** 5.6.0" in bootstrap
     bootstrap_r0_completed = "**Version:** 5.6.1" in bootstrap
     bootstrap_a8_completed = "**Version:** 5.6.2" in bootstrap
-    require(bootstrap_initial or bootstrap_r0_completed or bootstrap_a8_completed, "bootstrap must be A8 reconciliation, R0 completion, or A8 completion projection version")
+    bootstrap_later_stage = "**Version:** 5.6.3" in bootstrap
+    require(bootstrap_initial or bootstrap_r0_completed or bootstrap_a8_completed or bootstrap_later_stage, "bootstrap must preserve a governed A8-or-later Stage A projection version")
     require("stage-a-a8/supplemental-authority/STAGE_A_A8_SUPPLEMENTAL_AUTHORITY_RECONCILIATION.md" in bootstrap, "bootstrap missing A8 supplemental authority recovery rule")
-    if bootstrap_r0_completed or bootstrap_a8_completed:
+    if bootstrap_r0_completed or bootstrap_a8_completed or bootstrap_later_stage:
         require("do not repeat the reconciliation" in bootstrap, "completed bootstrap must prohibit repeating A8 R0")
     if bootstrap_r0_completed:
         require("proceed to STAGE-A-A8 current-repository revalidation" in bootstrap, "R0-complete bootstrap must route to A8 revalidation")
     if bootstrap_a8_completed:
         require("STAGE-A-A8 is now `COMPLETED_VERIFIED`" in bootstrap, "post-A8 bootstrap must retain A8 completion state")
         require("STAGE-A-A9 current-repository revalidation" in bootstrap, "post-A8 bootstrap must route to A9 revalidation")
+    if bootstrap_later_stage:
+        require("STAGE-A-A9 is now `COMPLETED_VERIFIED`" in bootstrap, "later bootstrap must retain A9 completion")
+        require("STAGE-A-A10 current-repository revalidation is `COMPLETED_VERIFIED`" in bootstrap, "later bootstrap must retain A10 revalidation completion")
+        require("World Content Authoring activation" in bootstrap, "later bootstrap must route to A10 activation")
 
     pointer = json.loads((ROOT / "governance/ai/runtime/CURRENT_WORK_POINTER.json").read_text(encoding="utf-8"))
-    require(pointer["primary_attempt_id"] == "STAGE-A-A8-R0-attempt-001", "pointer must retain the completed A8 R0 governance attempt as historical primary until A9 revalidation starts")
-    if roadmap_a8_completed:
-        require(any(t.get("next_work_item_id") == "STAGE-A-A9" for t in pointer.get("deferred_tracks", [])), "pointer missing A9 next-work routing after A8 completion")
-        require("STAGE-A-A9" in pointer.get("selection_reason", ""), "pointer selection reason must advance to A9 after A8 completion")
+    if roadmap_later_stage:
+        require(pointer["primary_attempt_id"] == "STAGE-A-A10-current-revalidation-attempt-001", "later pointer must select completed A10 revalidation attempt")
+        require(any(t.get("next_work_item_id") == "STAGE-A-A10" and t.get("state") == "authorized_not_activated" for t in pointer.get("deferred_tracks", [])), "later pointer missing authorized/not-activated A10 routing")
+        require("STAGE-A-A10" in pointer.get("selection_reason", ""), "later pointer selection reason must retain A10")
     else:
-        require(any(t.get("next_work_item_id") == "STAGE-A-A8" for t in pointer.get("deferred_tracks", [])), "pointer missing A8 next-work routing")
+        require(pointer["primary_attempt_id"] == "STAGE-A-A8-R0-attempt-001", "pre-A9-revalidation pointer must retain completed A8 R0 governance attempt")
+        if roadmap_a8_completed:
+            require(any(t.get("next_work_item_id") == "STAGE-A-A9" for t in pointer.get("deferred_tracks", [])), "pointer missing A9 next-work routing after A8 completion")
+            require("STAGE-A-A9" in pointer.get("selection_reason", ""), "pointer selection reason must advance to A9 after A8 completion")
+        else:
+            require(any(t.get("next_work_item_id") == "STAGE-A-A8" for t in pointer.get("deferred_tracks", [])), "pointer missing A8 next-work routing")
 
     status = json.loads((ROOT / "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json").read_text(encoding="utf-8"))
-    require(status["primary"]["work_item_id"] == "STAGE-A-A8-R0", "implementation status must retain completed A8 R0 historical primary until A9 revalidation starts")
-    if roadmap_a8_completed:
-        require(status["primary"]["status"] == "completed_verified", "post-A8 compact status must retain the completed A8 R0 historical checkpoint projection until A9 revalidation starts")
+    if roadmap_later_stage:
+        require(status["primary"]["work_item_id"] == "STAGE-A-A10", "later compact status must project completed A10 revalidation")
+        require(status["primary"]["status"] == "completed_verified", "later compact status must keep A10 revalidation completed_verified")
+    else:
+        require(status["primary"]["work_item_id"] == "STAGE-A-A8-R0", "pre-A9-revalidation status must retain completed A8 R0 historical primary")
+        if roadmap_a8_completed:
+            require(status["primary"]["status"] == "completed_verified", "post-A8 compact status must retain completed A8 R0 projection until A9 revalidation starts")
 
     roadmap_index = json.loads((ROOT / "governance/ai/runtime/ROADMAP_INDEX.json").read_text(encoding="utf-8"))
     require(any(e.get("work_item_id") == "STAGE-A-A8" for e in roadmap_index["entries"]), "ROADMAP_INDEX missing STAGE-A-A8")
-    if roadmap_a8_completed:
+    if roadmap_a8_completed or roadmap_later_stage:
         require(any(e.get("work_item_id") == "STAGE-A-A9" for e in roadmap_index["entries"]), "ROADMAP_INDEX missing STAGE-A-A9 after A8 completion")
+    if roadmap_later_stage:
+        require(any(e.get("work_item_id") == "STAGE-A-A10" for e in roadmap_index["entries"]), "ROADMAP_INDEX missing STAGE-A-A10 after A10 revalidation")
 
     checkpoint = json.loads((ROOT / "governance/ai/work-state/STAGE-A-A8-R0-attempt-001.json").read_text(encoding="utf-8"))
     require(checkpoint["status"] in {"ready_for_review", "completed_verified"}, "unexpected R0 checkpoint state")
@@ -184,7 +208,8 @@ def main() -> None:
         require(receipt_data.get("state") == "completed_verified", "R0 completion receipt state")
         require(receipt_data.get("merge_commit") == "08e0ec54808b901a62bfcc537b3dac395ca46490", "R0 completion receipt merge")
         require(receipt_data.get("authority_outcome", {}).get("a8_activated") is False, "R0 completion receipt must keep A8 inactive")
-        require(status["primary"]["status"] == "completed_verified", "completed R0 must project completed implementation status")
+        if not roadmap_later_stage:
+            require(status["primary"]["status"] == "completed_verified", "completed R0 must project completed implementation status")
 
     forbidden = list(BASE.rglob("*.zip")) + list(BASE.rglob("*.mht"))
     require(not forbidden, "raw binary/conversation archive must not be reconstructed in text-only transfer package")

@@ -49,7 +49,12 @@ class InteractionPilotTests(unittest.TestCase):
             result = self.run_tool(root, "run", "--generated-at", source["generated_at"])
             self.assertIn("17/17 PASS", result.stdout)
             regenerated = json.loads((root / "governance/ai/interaction-system/pilot/OPERATIONAL_PILOT_SCORECARD.json").read_text())
-            self.assertEqual(source, regenerated)
+            def comparable(card):
+                view = json.loads(json.dumps(card))
+                scenario = next(item for item in view["results"] if item["scenario_id"] == "MV-PILOT-006")
+                scenario.pop("evidence_summary", None)
+                return view
+            self.assertEqual(comparable(source), comparable(regenerated))
             self.run_tool(root, "validate")
         finally:
             temp.cleanup()
@@ -63,6 +68,18 @@ class InteractionPilotTests(unittest.TestCase):
             path.write_text(json.dumps(data, indent=2) + "\n")
             result = self.run_tool(root, "validate", expect=1)
             self.assertIn("runtime scorecard projection is stale", result.stderr)
+        finally:
+            temp.cleanup()
+
+    def test_live_roadmap_evidence_text_does_not_invalidate_historical_scorecard(self):
+        temp, root = self.fixture()
+        try:
+            path = root / "governance/ai/interaction-system/pilot/OPERATIONAL_PILOT_SCORECARD.json"
+            data = json.loads(path.read_text())
+            scenario = next(item for item in data["results"] if item["scenario_id"] == "MV-PILOT-006")
+            scenario["evidence_summary"] = "Historical milestone evidence wording."
+            path.write_text(json.dumps(data, indent=2) + "\n")
+            self.run_tool(root, "validate")
         finally:
             temp.cleanup()
 
