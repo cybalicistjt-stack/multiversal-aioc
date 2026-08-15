@@ -1,30 +1,33 @@
 {
   "schema_version": "1.0.0",
-  "revision": 1,
+  "revision": 2,
   "work_item_id": "STAGE-A-A8-R0",
   "attempt_id": "STAGE-A-A8-R0-attempt-001",
   "track": "application-implementation-pre-revalidation",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "governance/stage-a-a8-supplemental-authority-reconciliation",
-  "status": "ready_for_review",
+  "status": "completed_verified",
   "started_at": "2026-08-15T18:01:00Z",
-  "updated_at": "2026-08-15T18:01:00Z",
-  "completed_at": null,
+  "updated_at": "2026-08-15T18:31:35Z",
+  "completed_at": "2026-08-15T18:31:35Z",
   "base_commit": "ea4d5150f9fea39595d84d80c70634a75ffea7c5",
-  "latest_pushed_commit": null,
-  "expected_remote_head": "b14189124b3453481cd95bde719e26770515c3b1",
+  "latest_pushed_commit": "6637f0a6f658d413975f79223074b39c45c1e04e",
+  "expected_remote_head": "08e0ec54808b901a62bfcc537b3dac395ca46490",
   "pull_request": 320,
+  "merge_commit": "08e0ec54808b901a62bfcc537b3dac395ca46490",
   "objective": "Ingest and reconcile owner-approved Item v0.12.0, Platform v0.11.0 and restricted Reality v0.14.0 preparation into the current A8 authority boundary before A8 current-repository revalidation, while repairing stale bootstrap/runtime recovery state.",
-  "last_verified_action": "PR #320 is open; focused A8 supplemental validation passed in hosted run 31900638851 after the extract byte-identity correction, and this checkpoint schema is being repaired to satisfy canonical continuity validation before merge.",
-  "active_substep": "final hosted validation and merge",
+  "last_verified_action": "PR #320 final head 6637f0a6f658d413975f79223074b39c45c1e04e passed all 23 triggered workflows and squash-merged as 08e0ec54808b901a62bfcc537b3dac395ca46490. The A8 supplemental authority package, roadmap v2.13.0, bootstrap v5.6.0 and repaired continuity state are canonical on main.",
+  "active_substep": null,
   "completed_substeps": [
     "Checksum-bound Item v0.12.0, Platform v0.11.0, Reality v0.14.0 and Adding.zip source identities.",
     "Committed governed implementation-relevant source extracts and a 24-row A8 authority matrix.",
     "Defined the shared nine-facet content-context contract and A8 adoption/defer boundaries.",
-    "Projected roadmap v2.13.0, bootstrap v5.6.0, A8 runtime pointer/status and ROADMAP_INDEX through Governed Write run 31900496498.",
-    "Opened PR #320 and repaired source-extract provenance validation so normalized text is not falsely claimed byte-identical to source package files."
+    "Projected roadmap v2.13.0, bootstrap v5.6.0, A8 runtime pointer/status and ROADMAP_INDEX through governed repository writes.",
+    "Repaired stale PPIA/CAPP/interaction validation assumptions so immutable historical completion evidence no longer freezes the live Stage-A pointer.",
+    "Passed all 23 final-head PR validation workflows, including focused A8 authority, continuity, completion-claim, interaction, PPIA, CAPP, Design Standards and operational AIOC gates.",
+    "Merged PR #320 as 08e0ec54808b901a62bfcc537b3dac395ca46490."
   ],
-  "next_action": "Run the full PR validation set on the repaired checkpoint, merge PR #320 if all required gates pass, then create the post-merge completed_verified projection. Do not begin A8 current-repository revalidation before that projection is canonical.",
+  "next_action": "Start STAGE-A-A8 current-repository revalidation against current post-A7 application main, recovered historical A8 preparation, completed PPIA-03/PPIA-04, applicable CAPP-06 boundaries, and the merged supplemental authority package. A8 remains not activated until a separate validated activation boundary.",
   "changed_paths": [
     "governance/application-planning/stage-a-a8/supplemental-authority/**",
     "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
@@ -33,6 +36,11 @@
     "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
     "governance/ai/runtime/ROADMAP_INDEX.json",
     "governance/ai/work-state/STAGE-A-A8-R0-attempt-001.json",
+    "governance/application-planning/parallel-preimplementation/validate_ppia_program_state.py",
+    "scripts/validate-capp01-final-state-structured.py",
+    "scripts/validate-capp02-final-state-structured.py",
+    "scripts/validate-ppia13-to-ppia14-transition.py",
+    "tools/interaction_pilot.py",
     "tools/validate_stage_a_a8_supplemental_authority.py",
     ".github/workflows/validate-stage-a-a8-supplemental-authority.yml"
   ],
@@ -53,12 +61,27 @@
     {
       "command": "python tools/validate_stage_a_a8_supplemental_authority.py",
       "status": "passed",
-      "evidence": "PR #320 hosted run 31900638851 passed focused A8 supplemental authority validation after source-extract byte-identity handling was corrected."
+      "evidence": "Final-head PR #320 run 31901325213 passed."
     },
     {
       "command": "python tools/continuity_state.py validate",
-      "status": "not_run",
-      "evidence": "Prior run 31900638847 exposed missing canonical checkpoint keys; this revision repairs that schema and requires rerun."
+      "status": "passed",
+      "evidence": "Final-head PR #320 Conversation Continuity run 31901325235 passed."
+    },
+    {
+      "command": "python tools/interaction_pilot.py run/validate",
+      "status": "passed",
+      "evidence": "Final-head PR #320 Interaction Operational Pilot run 31901325212 passed 17/17 after making the duplicate-capture invariant independent of global ledger size."
+    },
+    {
+      "command": "completion claim integrity",
+      "status": "passed",
+      "evidence": "Final-head PR #320 run 31901325226 passed."
+    },
+    {
+      "command": "full triggered PR workflow set",
+      "status": "passed",
+      "evidence": "All 23 workflows triggered on final head 6637f0a6f658d413975f79223074b39c45c1e04e completed successfully before merge."
     }
   ],
   "unresolved_failures": [],
@@ -66,7 +89,7 @@
   "evidence": [
     {
       "kind": "commit",
-      "value": "STAGE-A-A8-R0-attempt-001 branch package through b14189124b3453481cd95bde719e26770515c3b1 before checkpoint schema repair"
+      "value": "STAGE-A-A8-R0-attempt-001 final validated head 6637f0a6f658d413975f79223074b39c45c1e04e"
     },
     {
       "kind": "pull_request",
@@ -74,12 +97,17 @@
     },
     {
       "kind": "ci_run",
-      "value": "STAGE-A-A8-R0-attempt-001 focused validator run 31900638851 passed"
+      "value": "STAGE-A-A8-R0-attempt-001 final focused validator 31901325213; continuity 31901325235; interaction pilot 31901325212; completion integrity 31901325226; all 23 triggered workflows passed"
+    },
+    {
+      "kind": "merge",
+      "value": "STAGE-A-A8-R0-attempt-001 PR #320 squash merge 08e0ec54808b901a62bfcc537b3dac395ca46490"
     }
   ],
   "roadmap_projection_pending": false,
   "source_manifest": "governance/application-planning/stage-a-a8/supplemental-authority/STAGE_A_A8_SUPPLEMENTAL_SOURCE_MANIFEST.json",
   "governing_reconciliation": "governance/application-planning/stage-a-a8/supplemental-authority/STAGE_A_A8_SUPPLEMENTAL_AUTHORITY_RECONCILIATION.md",
+  "completion_receipt": "governance/application-planning/stage-a-a8/supplemental-authority/STAGE_A_A8_R0_COMPLETION_RECEIPT.json",
   "restrictions": {
     "a8_activated": false,
     "application_mutation_authorized": false,
@@ -92,6 +120,6 @@
   "notes": [
     "The GitHub connector is text-write capable but does not expose byte-for-byte ZIP upload; exact source archive hashes are canonicalized in the supplemental source manifest and source extracts are normalized repository projections, not falsely claimed exact bytes.",
     "Full Reality topology/laws/worldbuilding/community systems remain deferred; only shared content-context and compatibility seams are consumed by A8.",
-    "A8 remains not activated until a later separate revalidation and activation boundary."
+    "A8 is current-next for revalidation and remains not activated."
   ]
 }
