@@ -1,0 +1,32 @@
+name: Validate Stage A A8 Current Revalidation
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/stage-a-a8/A8_CURRENT_CHANGED_PATH_SCOPE_v0.3.0.csv'
+      - 'governance/application-planning/stage-a-a8/A8_CURRENT_AUTHORITY_DISPOSITION_v0.3.0.csv'
+      - 'governance/application-planning/stage-a-a8/STAGE_A_A8_CURRENT_REPOSITORY_REVALIDATION_v0.3.0.md'
+      - 'tools/validate_stage_a_a8_current_revalidation_v0.3.0.py'
+      - '.github/workflows/validate-stage-a-a8-current-revalidation.yml'
+  push:
+    branches: ['governance/stage-a-a8-current-revalidation']
+    paths:
+      - 'governance/application-planning/stage-a-a8/A8_CURRENT_CHANGED_PATH_SCOPE_v0.3.0.csv'
+      - 'governance/application-planning/stage-a-a8/A8_CURRENT_AUTHORITY_DISPOSITION_v0.3.0.csv'
+      - 'governance/application-planning/stage-a-a8/STAGE_A_A8_CURRENT_REPOSITORY_REVALIDATION_v0.3.0.md'
+      - 'tools/validate_stage_a_a8_current_revalidation_v0.3.0.py'
+      - '.github/workflows/validate-stage-a-a8-current-revalidation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate A8 current-repository revalidation authority
+        run: python tools/validate_stage_a_a8_current_revalidation_v0.3.0.py
