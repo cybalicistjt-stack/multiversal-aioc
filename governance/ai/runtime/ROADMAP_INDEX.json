@@ -240,18 +240,13 @@
       "completion_gate": "Repository-verified completion under the canonical Phase 9 backlog, including declared validation, CI, evidence, and merge boundary."
     },
     {
-      "work_item_id": "STAGE-A-A8",
+      "work_item_id": "STAGE-A-A2",
       "track": "application-implementation",
       "governing_document": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
       "roadmap_document": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
-      "roadmap_section": "Phase 10 / Stage A — STAGE-A-A8 Inventory, Equipment, Crafting, and Vehicles",
-      "dependencies": [
-        "STAGE-A-A7",
-        "PPIA-03",
-        "PPIA-04",
-        "STAGE-A-A8-R0"
-      ],
-      "completion_gate": "Current-repository A8 revalidation against post-A7 main and the owner-approved supplemental authority package, followed by bounded implementation, declared validation/CI, merge evidence and closure receipt; release/deployment remain separately gated."
+      "roadmap_section": "Phase 10 / Stage A — STAGE-A-A2 Universal Object Experience",
+      "dependencies": [],
+      "completion_gate": "All governed A2 contract/behavior/real-data/privacy/accessibility/evidence gates, exact-head CI, merge evidence, and closure receipt; release/deployment remain separately gated."
     },
     {
       "work_item_id": "IA-D03-003",
@@ -734,8 +729,21 @@
       "governing_document": "governance/application-planning/stage-a-a8/supplemental-authority/STAGE_A_A8_SUPPLEMENTAL_AUTHORITY_RECONCILIATION.md",
       "roadmap_document": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
       "roadmap_section": "Phase 10 / Stage A — A8 Supplemental Authority Reconciliation before STAGE-A-A8 revalidation",
-      "dependencies": ["STAGE-A-A7", "PPIA-03", "PPIA-04"],
+      "dependencies": [
+        "STAGE-A-A7",
+        "PPIA-03",
+        "PPIA-04"
+      ],
       "completion_gate": "Owner-approved Item v0.12.0 and Platform v0.11.0 A8 authority plus restricted Reality v0.14.0 shared seams are checksum-bound and repository-projected, focused and continuity validation pass, PR merges, and completed_verified recovery projection makes STAGE-A-A8 current-repository revalidation the exact next operation without activating A8."
+    },
+    {
+      "work_item_id": "STAGE-A-A8",
+      "track": "application-implementation",
+      "governing_document": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
+      "roadmap_document": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
+      "roadmap_section": "Phase 10 / Stage A — STAGE-A-A8 Inventory, Equipment, Crafting, and Vehicles",
+      "dependencies": ["STAGE-A-A7", "PPIA-03", "PPIA-04", "STAGE-A-A8-R0"],
+      "completion_gate": "Current-repository A8 revalidation against post-A7 main and the owner-approved supplemental authority package, followed by bounded implementation, declared validation/CI, merge evidence and closure receipt; release/deployment remain separately gated."
     }
   ]
 }
