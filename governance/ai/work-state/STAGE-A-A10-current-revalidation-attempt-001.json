@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 2,
+  "work_item_id": "STAGE-A-A10",
+  "attempt_id": "STAGE-A-A10-current-revalidation-attempt-001",
+  "track": "application-implementation-pre-revalidation",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "branch": "governance/stage-a-a10-current-revalidation",
+  "status": "ready_for_review",
+  "started_at": "2026-08-15T22:40:00Z",
+  "updated_at": "2026-08-15T22:47:00Z",
+  "base_commit": "c9e099256f93b3f9dd6f9398c73bb194d9e5158f",
+  "latest_pushed_commit": "b2ca4ed20b81b133cd8a27e1c5bd70ee09eb46f9",
+  "pull_request": 327,
+  "objective": "Revalidate recovered STAGE-A-A10 World Content Authoring preparation against post-A9 Multiversal-app main and current PPIA/Stage-A authority before any A10 activation or application mutation.",
+  "last_verified_action": "Bounded current-repository revalidation record, machine-readable authority record, focused validator and CI lane committed; PR #327 opened against AIOC main. A10 remains not activated.",
+  "active_substep": "Final hosted validation and verified merge of the A10 revalidation package.",
+  "completed_substeps": [
+    "Verified post-A9 Multiversal-app main e0c88756326d00e75d16ee27c198b80b7010f88a and STAGE-A-A9 closure evidence.",
+    "Recovered A10 preimplementation branch governance/stage-a-a10-preimplementation at ed1789d071355accd7e3c27070e4e972f568a3a3.",
+    "Confirmed historical A10 package was prepared against obsolete app main dced7f92163050690c807c1fda937146bb8dce85 and refreshed its repository assumptions.",
+    "Revalidated D06/D07/D18/D28/D29/D05/D13 ownership, A6/A7/A8/A9 reuse boundaries, owner-only canonical promotion, privacy-before-derived-output and declarative creator sandbox rules.",
+    "Bound the current additive migration slot to database/migrations/0008_a10_world_content_authoring.json after implemented migrations 0001 through 0007.",
+    "Preserved all 32 WSM/AM/CC/AI source slices, 120 deterministic fixtures and 140 published blocking acceptance criteria as implementation input without inventing missing source text.",
+    "Opened AIOC PR #327 for focused validation; no A10 application implementation branch was created."
+  ],
+  "next_action": "Require focused A10 revalidation CI PASS, reconcile the stale AIOC A9-to-A10 restart projection without weakening continuity validators, merge PR #327 verified, then activate A10 in Multiversal-app as a separate bounded work order.",
+  "changed_paths": [
+    "governance/application-planning/stage-a-a10/current-revalidation/**",
+    "governance/ai/work-state/STAGE-A-A10-current-revalidation-attempt-001.json",
+    "tools/validate_stage_a_a10_revalidation.py",
+    ".github/workflows/validate-stage-a-a10-revalidation.yml"
+  ],
+  "completion_gate": {
+    "required_evidence_kinds": ["commit","pull_request","ci_run","merge"],
+    "required_validation_commands": ["python tools/validate_stage_a_a10_revalidation.py"],
+    "owner_approval_required": false
+  },
+  "validation": [],
+  "unresolved_failures": [],
+  "owner_decision_required": false,
+  "evidence": [
+    {"kind":"pull_request","value":"AIOC PR #327 — STAGE-A-A10 current repository revalidation"}
+  ],
+  "roadmap_projection_pending": true,
+  "restrictions": {
+    "a10_activated": false,
+    "application_mutation_authorized": false,
+    "canonical_promotion_authorized": false,
+    "real_user_content_intake_authorized": false,
+    "public_marketplace_authorized": false,
+    "release_authorized": false,
+    "deployment_authorized": false,
+    "paid_services_authorized": false
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "STAGE-A-A10",
+  "title": "World Content Authoring",
+  "status": "ready_for_review",
+  "verdict": "PASS_READY_FOR_BOUNDED_A10_ACTIVATION",
+  "implementation_activated": false,
+  "application_baseline": "e0c88756326d00e75d16ee27c198b80b7010f88a",
+  "a9_merge": "c2030febf860a4fc9bcac9c65fa44a6b22418dd4",
+  "a9_closure_receipt": "Multiversal-app/receipts/STAGE-A-A9-CLOSURE.json",
+  "recovered_preimplementation_branch": "governance/stage-a-a10-preimplementation",
+  "recovered_preimplementation_tip": "ed1789d071355accd7e3c27070e4e972f568a3a3",
+  "historical_application_baseline": "dced7f92163050690c807c1fda937146bb8dce85",
+  "source_package": {
+    "preimplementation_sha256": "8a06165bec35a47aa8d24b4bbab1450c11d19e5112f8cf1221ffebc22d27ac6f",
+    "compatibility_sha256": "e8ce3f27a506ff9d34f6b67b4d5b0b9d665724fcf31ad59f88da7f1e12b28279",
+    "source_slices": 32,
+    "deterministic_fixtures": 120,
+    "published_blocking_acceptance_criteria": 140,
+    "families": ["WSM-S01..WSM-S08","AM-S01..AM-S08","CC-S01..CC-S08","AI-S01..AI-S08"]
+  },
+  "canonical_domains": {
+    "D06": "pack-registry",
+    "D07": "entity-catalog",
+    "D18": "world-location-map",
+    "D28": "adventure-travel",
+    "D29": "authoring-provenance",
+    "D05": "visibility-projection",
+    "D13": "media-attachments"
+  },
+  "next_migration": "database/migrations/0008_a10_world_content_authoring.json",
+  "migration_basis": [
+    "database/migrations/0001_initial_logical_schema.json",
+    "database/migrations/0002_character_workspace.json",
+    "database/migrations/0003_a5_campaign_scene.json",
+    "database/migrations/0004_a6_action_approval.json",
+    "database/migrations/0005_a7_combat_runtime.json",
+    "database/migrations/0006_a8_asset_foundations.json",
+    "database/migrations/0007_a9_investigation_social_runtime.json"
+  ],
+  "authority_boundaries": {
+    "a6_action_authority_reuse": true,
+    "a7_combat_authority_reuse": true,
+    "a8_asset_economy_ownership_authority_reuse": true,
+    "a9_campaign_runtime_social_investigation_authority_reuse": true,
+    "canonical_promotion_owner_only": true,
+    "runtime_to_reusable_requires_explicit_clone_propose": true,
+    "hidden_information_filtered_before_derived_output": true,
+    "creator_content_declarative_sandbox_only": true,
+    "monolithic_authoring_persistence_prohibited": true
+  },
+  "source_identifier_disposition": {
+    "creator_campaign_local_content_reference": "IA-D07-003",
+    "f018_conflict_preserved": true,
+    "ai_slice_prefix_meaning": "Authoring Integration"
+  },
+  "restrictions": {
+    "release_authorized": false,
+    "deployment_authorized": false,
+    "paid_services_authorized": false,
+    "production_credentials_authorized": false,
+    "real_user_content_intake_authorized": false,
+    "public_marketplace_authorized": false,
+    "canonical_promotion_authorized": false,
+    "autonomous_publication_authorized": false,
+    "a11_activated": false,
+    "a12_activated": false
+  },
+  "next_operation": "Validate and merge this AIOC revalidation package; only then activate STAGE-A-A10 on a bounded Multiversal-app implementation branch from current main."
+}
