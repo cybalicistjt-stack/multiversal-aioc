@@ -88,12 +88,13 @@ def main() -> int:
     require(tester.get("supported_profiles") == ["browser", "local-runner"], "tester profiles must remain browser/local-runner", errors)
     require(tester.get("owner_access_decision") == "not-decided" and tester.get("tester_access_authorized") is False, "tester access must remain closed", errors)
 
-    require(work.get("status") == "prepared_owner_decision_pending", "work-state status mismatch", errors)
+    require(work.get("status") == "ready_for_review", "work-state status mismatch", errors)
     require(work.get("owner_decision_required") is True and work.get("owner_decision_made") is False, "work-state must require an undecided owner decision", errors)
     require(work.get("release_approved") is False and work.get("tester_access_authorized") is False, "work-state must keep release/tester gates closed", errors)
 
     require(pointer.get("primary_attempt_id") == "IA-D09-owner-decision-evidence-preparation-attempt-001", "current pointer must select IA-D09 owner decision", errors)
     require(status.get("primary", {}).get("work_item_id") == "IA-D09-OWNER-DECISION", "implementation status primary mismatch", errors)
+    require(status.get("primary", {}).get("status") == "ready_for_review", "implementation status lifecycle mismatch", errors)
     require(status.get("primary", {}).get("owner_decision_required") is True, "implementation status must require owner decision", errors)
     require(any(row.get("work_item_id") == "IA-D09-OWNER-DECISION" for row in roadmap.get("entries", [])), "roadmap supplement missing IA-D09 owner-decision entry", errors)
 
