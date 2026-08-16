@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 3,
+  "revision": 4,
   "work_item_id": "GATX-T05",
   "attempt_id": "GATX-T05-attempt-001",
   "track": "guided-alpha-testing-experience",
@@ -8,11 +8,11 @@
   "branch": "internal-alpha/gatx-t05-connection-center",
   "governance_repository": "cybalicistjt-stack/multiversal-aioc",
   "governance_branch": "governance/gatx-t05-connection-center",
-  "status": "ready_for_review",
+  "status": "completed_verified",
   "owner_selected": true,
   "started_at": "2026-08-16T20:17:00Z",
-  "updated_at": "2026-08-16T20:49:00Z",
-  "completed_at": null,
+  "updated_at": "2026-08-16T20:52:00Z",
+  "completed_at": "2026-08-16T20:52:00Z",
   "base_commit": "74f554d9a6ed020dcb8b6302a1c98715e0f23e95",
   "construction_complete": true,
   "construction_head": "6d2bd01c58c6d9906e3e5611fdcfb7c94890ba91",
@@ -30,8 +30,8 @@
   "windows_workflow_artifact_id": 9269910180,
   "windows_workflow_artifact_sha256": "5421391595feeaffb76562c765ec01da74e8eae07a2e314b224168cf591ac919",
   "objective": "Build the Guided Alpha Device and trusted-LAN Connection Center so Windows-host to Android/browser same-LAN setup and troubleshooting are visible, guided, layer-classified, privacy-bounded, and reversible without developer-only knowledge.",
-  "last_verified_action": "GATX-T05 application work is validated and merged. Exact candidate affc3d1259f4abf15b72e8160cf90d3766c05ecb passed dedicated workflow run 31971361588 in both required jobs: deterministic/preservation/client/package/API/9-of-9 headed-browser/T04-bundle inspection and actual Windows LocalSubnet firewall lifecycle all PASS. App PR #173 squash-merged as a220380cb25fd8d155c2e3efe6dbc360f5e80b41. Issue #159 received exact evidence and was closed completed without claiming a new owner physical Android retest. Governance continuity is the only remaining T05 completion gate.",
-  "active_substep": "governance-continuity-pending",
+  "last_verified_action": "GATX-T05 is completed_verified. Exact app candidate affc3d1259f4abf15b72e8160cf90d3766c05ecb passed final dedicated workflow 31971361588 in both required jobs; app PR #173 squash-merged as a220380cb25fd8d155c2e3efe6dbc360f5e80b41; issue #159 was closed completed with exact evidence and no claim of a new owner physical Android retest; AIOC pre-completion continuity run 31971748067 passed state validation, continuity regression tests, and deterministic compact-status projection.",
+  "active_substep": null,
   "completed_substeps": [
     "connection-contract",
     "guided-round",
@@ -53,9 +53,10 @@
     "validation-repair-003-scoped-browser-safety-copy-assertion",
     "final-exact-head-validation",
     "application-merge",
-    "issue-159-resolution"
+    "issue-159-resolution",
+    "governance-precompletion-continuity"
   ],
-  "next_action": "Open the GATX-T05 AIOC closure PR, run Validate Conversation Continuity on this application-validated projection, then project completed_verified and rerun continuity on the exact final governance state. Merge governance only after that passes. Stop before starting GATX-T06.",
+  "next_action": "GATX-T05 is completed_verified. Stop here as requested. The exact next Guided Alpha work item, if later continued, is GATX-T06 — Testing operations and control layer; it is not started by this closure.",
   "dependencies": {
     "GATX-DIAG-F01": {"status":"completed_verified","application_merge_commit":"a6c2bd17962f8ed54dabd0d4d4446fdb58aa5754"},
     "GATX-T03": {"status":"completed_verified","application_merge_commit":"fd643355a6cf10db51190d15037711ee04515637"},
@@ -121,7 +122,7 @@
     {"command":"T04 evidence reuse with T05 connection status","status":"passed","evidence":"GATX-T05 workflow 31971361588 post-browser inspection PASS; T04 environment-runner bundle carries T05 connection status and linked GATX-T05 diagnostic"},
     {"command":"actual Windows LocalSubnet firewall lifecycle and PowerShell runner","status":"passed","evidence":"GATX-T05 workflow 31971361588 Windows job PASS: create/inspect LocalSubnet Profile Any rule, packaged host status/probe/T04 bundle, cleanup with zero rule remaining"},
     {"command":"issue 159 resolution evidence","status":"passed","evidence":"Multiversal-app issue #159 evidence comment 5309597108; issue closed completed 2026-08-16T20:48:25Z without claiming a new owner physical Android retest"},
-    {"command":"governance continuity validation","status":"not_run","evidence":null}
+    {"command":"governance continuity validation","status":"passed","evidence":"GATX-T05 AIOC pre-completion continuity run 31971748067 PASS: state validation, regression tests, deterministic status projection"}
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
@@ -131,6 +132,7 @@
     {"kind":"pull_request","value":"GATX-T05 application PR #173 validated and squash-merged"},
     {"kind":"ci_run","value":"GATX-T05 final exact-head validation run 31971361588 PASS in both required jobs on affc3d1259f4abf15b72e8160cf90d3766c05ecb"},
     {"kind":"merge","value":"GATX-T05 application merge a220380cb25fd8d155c2e3efe6dbc360f5e80b41"},
+    {"kind":"ci_run","value":"GATX-T05 AIOC pre-completion continuity run 31971748067 PASS"},
     {"kind":"artifact","value":"GATX-T05 Linux/browser artifact 9269900651 SHA256 89556280717b086985b338f67cf317a8d7a463a5bfb237e0c263b5a9878d080a"},
     {"kind":"artifact","value":"GATX-T05 Windows artifact 9269910180 SHA256 5421391595feeaffb76562c765ec01da74e8eae07a2e314b224168cf591ac919"},
     {"kind":"checksum","value":"GATX-T05 validated package SHA256 05db3bd47671ece673d1495dce21ab6c7b54fd5f564a830c5f9aceaeafda9d10"},
