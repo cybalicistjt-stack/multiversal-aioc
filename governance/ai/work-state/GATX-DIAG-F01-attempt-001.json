@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 1,
+  "revision": 2,
   "work_item_id": "GATX-DIAG-F01",
   "attempt_id": "GATX-DIAG-F01-attempt-001",
   "track": "guided-alpha-testing-experience",
@@ -11,7 +11,7 @@
   "status": "in_progress",
   "owner_selected": true,
   "started_at": "2026-08-16T17:10:00Z",
-  "updated_at": "2026-08-16T17:10:00Z",
+  "updated_at": "2026-08-16T17:31:00Z",
   "completed_at": null,
   "objective": "Before GATX-T02, establish one reusable privacy-bounded automatic diagnostic collection/export channel so pertinent system-known Alpha context is captured without tester copy/paste and a diagnostic JSON file is written on the host laptop.",
   "owner_instruction": "Make sure any pertinent information is collected automatically by the alpha and, when done, create a file on the laptop with all diagnostic information; prepare anything needed first, then continue to T02.",
@@ -23,11 +23,13 @@
   },
   "construction_rule": "Finish the complete bounded foundation before validation; batch related validation repairs; do not fragment construction with micro-validation.",
   "construction_complete": true,
-  "application_head_pending_readback": true,
-  "pull_request": null,
-  "last_verified_action": "Application construction is sealed on internal-alpha/gatx-diagnostics-foundation; validation has not yet begun.",
-  "active_substep": "sealed-awaiting-validation",
-  "next_action": "Open the application PR, run the complete diagnostics-foundation validation phase, batch any related repairs, merge only after all declared gates pass, then project completed_verified and immediately activate GATX-T02.",
+  "construction_head": "6223ee9946da26ec9c9abd8d85c4c51b6bf794ed",
+  "latest_pushed_commit": "a807920b3e04fa86adb6f50aa563cc64b504596a",
+  "expected_remote_head": "a807920b3e04fa86adb6f50aa563cc64b504596a",
+  "pull_request": 162,
+  "last_verified_action": "Validation began after sealed construction. The first successor run exposed two stale T01 verifier literals caused by intentional tranche-dynamic diagnostics seams; they were repaired together in a807920b3e04fa86adb6f50aa563cc64b504596a. No product/runtime diagnostic failure was established by that finding.",
+  "active_substep": "validation-repair-rerun",
+  "next_action": "Complete the rerun of the declared diagnostics-foundation application gates on exact head a807920b3e04fa86adb6f50aa563cc64b504596a. Batch any additional related findings, merge only after all relevant gates pass, then project completed_verified and immediately activate GATX-T02.",
   "construction_evidence": {
     "browser_client": "apps/client-ui/public/guided-alpha-diagnostics.js",
     "python_collector": "tools/alpha_diagnostics_contract.py",
@@ -77,9 +79,32 @@
     "Package and runner contracts are tranche-dynamic for T02+ reuse.",
     "No authority boundaries are expanded."
   ],
-  "validation": [],
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
+    "required_validation_commands": [
+      "automatic diagnostics deterministic contract",
+      "client regression typecheck accessibility and build",
+      "exact-candidate Python host diagnostic export",
+      "headed-browser round-complete host diagnostic export",
+      "actual packaged Windows PowerShell diagnostic export",
+      "governance continuity validation"
+    ],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {
+      "command": "initial successor source-contract validation",
+      "status": "failed_repaired",
+      "evidence": "App run 31961765803 failed before browser execution because the preserved T01 verifier still required two hard-coded markers that the prerequisite intentionally made tranche-dynamic; repaired together in a807920b3e04fa86adb6f50aa563cc64b504596a."
+    }
+  ],
   "unresolved_failures": [],
   "owner_decision_required": false,
+  "evidence": [
+    {"kind":"commit","value":"Diagnostics construction head 6223ee9946da26ec9c9abd8d85c4c51b6bf794ed; validation-repair head a807920b3e04fa86adb6f50aa563cc64b504596a"},
+    {"kind":"pull_request","value":"Application PR #162; governance PR #344"},
+    {"kind":"file","value":"governance/application-planning/internal-alpha/guided-alpha/GATX_BACKLOG.json and GUIDED_ALPHA_TESTING_EXPERIENCE_PROGRAM.md"}
+  ],
   "roadmap_projection_pending": true,
   "known_blockers": []
 }
