@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 1,
+  "revision": 2,
   "work_item_id": "GATX-T02",
   "attempt_id": "GATX-T02-attempt-001",
   "track": "guided-alpha-testing-experience",
@@ -11,7 +11,7 @@
   "status": "in_progress",
   "owner_selected": true,
   "started_at": "2026-08-16T17:50:00Z",
-  "updated_at": "2026-08-16T17:50:00Z",
+  "updated_at": "2026-08-16T18:17:00Z",
   "completed_at": null,
   "objective": "Integrate the validated Glass Harbor Incident / Meridian Testbed Stage A reference Campaign fixture into the actual Guided Alpha so the current Alpha is a coherent deterministic miniature Campaign rather than a disconnected component showroom.",
   "construction_rule": "Finish the complete bounded T02 construction before T02 validation. Do not execute T03's 24-journey scenario engine early.",
@@ -32,10 +32,14 @@
     "application_merge_commit": "a6c2bd17962f8ed54dabd0d4d4446fdb58aa5754",
     "rule": "T02 reuses the existing automatic host-laptop diagnostics transport/export; do not create a parallel evidence system."
   },
-  "construction_complete": false,
-  "last_verified_action": "T02 application and governance branches were created from canonical diagnostics-enabled main. Canonical source provenance, 27-record runtime projection, Glass Harbor dossier/reset runtime, T02 guided shell/round, additive T02 package builder, work order, and deterministic verifier are being constructed before validation.",
-  "active_substep": "construct-reference-campaign-runtime-and-package",
-  "next_action": "Complete all T02 application wiring and T02 validation infrastructure, seal construction, then run one bounded validation phase.",
+  "construction_complete": true,
+  "construction_head": "3218cd75db454d53cd83f085eac9fbfdf36590e2",
+  "latest_pushed_commit": "bf90a548694375b8b769b84eb62c5f0767a5beb6",
+  "expected_remote_head": "bf90a548694375b8b769b84eb62c5f0767a5beb6",
+  "pull_request": 163,
+  "last_verified_action": "T02 construction was sealed at 3218cd75db454d53cd83f085eac9fbfdf36590e2. Initial T02 run 31963782624 proved the actual Windows PowerShell package/diagnostics lane and inherited account-dispatch lane, while the T02 source verifier exposed one whitespace-sensitive GM-dossier assertion. Runtime inspection confirmed the GM full projection and conservative Player filter are implemented; verifier-only repair bf90a548694375b8b769b84eb62c5f0767a5beb6 is now undergoing the exact T02 rerun.",
+  "active_substep": "exact-head-t02-validation-rerun",
+  "next_action": "Complete exact-head T02 reference Campaign/client/package/browser/Windows validation on bf90a548694375b8b769b84eb62c5f0767a5beb6; batch only validation-discovered repairs, then squash-merge app PR #163, project completed_verified, and immediately activate GATX-T03.",
   "scope": {
     "included": [
       "exact validated source provenance",
@@ -52,6 +56,23 @@
       "journey orchestration/outcome state machine"
     ]
   },
+  "validation": [
+    {
+      "command": "initial T02 source/reference Campaign validation",
+      "status": "failed_repaired",
+      "evidence": "Run 31963782624 failed only the whitespace-sensitive GM full-dossier source assertion; runtime contains role === game-master full projection and Player orientation filter. Repaired verifier only in bf90a548694375b8b769b84eb62c5f0767a5beb6."
+    },
+    {
+      "command": "actual packaged Windows PowerShell T02 diagnostics",
+      "status": "passed_on_sealed_runtime",
+      "evidence": "Run 31963782624 job t02-windows-powershell-package PASS; T02 package construction and host diagnostics export passed before verifier-only repair."
+    },
+    {
+      "command": "exact-head T02 complete validation",
+      "status": "in_progress",
+      "evidence": "Run 31964090643 on bf90a548694375b8b769b84eb62c5f0767a5beb6."
+    }
+  ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "roadmap_projection_pending": true,
