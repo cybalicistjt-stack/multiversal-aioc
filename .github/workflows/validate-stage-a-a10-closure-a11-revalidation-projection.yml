@@ -1,0 +1,34 @@
+name: Validate A10 Closure A11 Revalidation Projection
+
+on:
+  pull_request:
+    paths:
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'governance/ai/runtime/ROADMAP_INDEX_STAGE_A_A11_SUPPLEMENT.json'
+      - 'governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_STAGE_A_A11.md'
+      - 'governance/ai/work-state/STAGE-A-A11-current-revalidation-attempt-001.json'
+      - 'governance/application-planning/stage-a-a11/current-revalidation/**'
+      - 'tools/validate_stage_a_a10_closure_a11_revalidation_projection.py'
+      - '.github/workflows/validate-stage-a-a10-closure-a11-revalidation-projection.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-projection:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate A10 closure and A11 revalidation projection
+        run: python tools/validate_stage_a_a10_closure_a11_revalidation_projection.py
+      - name: Prove no application activation artifact was introduced
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e governance/ai/work-state/STAGE-A-A11-implementation-attempt-001.json
+          ! grep -R --line-number --fixed-strings '"a11_activated": true' governance/ai/runtime governance/ai/work-state/STAGE-A-A11-current-revalidation-attempt-001.json
