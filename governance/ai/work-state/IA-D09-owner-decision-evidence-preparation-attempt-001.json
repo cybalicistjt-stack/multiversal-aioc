@@ -1,16 +1,16 @@
 {
   "schema_version": "1.0.0",
-  "revision": 5,
+  "revision": 6,
   "work_item_id": "IA-D09-OWNER-DECISION",
   "attempt_id": "IA-D09-owner-decision-evidence-preparation-attempt-001",
   "track": "internal-alpha-owner-decision",
   "repository": "cybalicistjt-stack/multiversal-aioc",
-  "branch": "governance/ia-d09-owner-approval",
-  "status": "ready_for_review",
+  "branch": "governance/ia-d09-owner-approval-closure",
+  "status": "completed_verified",
   "owner_selected": true,
   "started_at": "2026-08-16T10:09:00Z",
-  "updated_at": "2026-08-16T11:27:00Z",
-  "completed_at": null,
+  "updated_at": "2026-08-16T11:34:00Z",
+  "completed_at": "2026-08-16T11:33:24Z",
   "objective": "Prepare the IA-D09 owner-decision evidence packet from the completed/verified A12 candidate and record explicit owner decisions without broadening authority beyond the decision-ready gates.",
   "dependency": "STAGE-A-A12 completed_verified / candidate-validated",
   "candidate_sha": "56b127f1fc01eebe5c73ba0472a5b6496fe92b5e",
@@ -23,11 +23,12 @@
   "application_closure_merge": "47a060c70f23bf5b60226f1aaa433bf301fa24db",
   "aioc_a12_closure_merge": "6a153aa51a5699a2659dba44b94b126664451df7",
   "owner_decision_preparation_merge": "3a6f75bff961b5a5ff15392e97cb3bc106c8b939",
-  "latest_pushed_commit": "034579702a3c3b58e1b27116f5599fad227c0665",
-  "expected_remote_head": "034579702a3c3b58e1b27116f5599fad227c0665",
-  "pull_request": null,
-  "last_verified_action": "Owner explicitly approved both decision-ready gates in the Multiversal project conversation: Internal Alpha tester access and Internal Alpha release. A bounded owner decision record was created; the six other owner gates remain not-decided and closed.",
-  "active_substep": "validate-owner-approval-record",
+  "owner_decision_merge": "437250843ce3a366111cf16af40e60465d009dfc",
+  "latest_pushed_commit": "437250843ce3a366111cf16af40e60465d009dfc",
+  "expected_remote_head": "437250843ce3a366111cf16af40e60465d009dfc",
+  "pull_request": 338,
+  "last_verified_action": "Owner approval PR #338 exact head 13cb34326376faa4cf4d7c5fb130b55874991347 passed the dedicated owner-decision record validator, successor-aware IA-D09 packet validator, and canonical continuity in run 31944617345 job 95158633196, then squash-merged as GitHub-verified commit 437250843ce3a366111cf16af40e60465d009dfc.",
+  "active_substep": null,
   "decision_ready_gates": [
     "authorize Internal Alpha tester access",
     "approve Internal Alpha release"
@@ -53,34 +54,40 @@
   "broader_ai_automation_authority_authorized": false,
   "working_design_standards_promoted": false,
   "completion_gate": {
-    "required_evidence_kinds": ["file", "pull_request", "ci_run", "merge"],
+    "required_evidence_kinds": ["file", "pull_request", "ci_run", "merge", "owner_decision"],
     "required_validation_commands": [
+      "python tools/validate_ia_d09_owner_decision_record.py",
       "python tools/validate_ia_d09_owner_decision_evidence_packet.py",
       "python tools/continuity_state.py validate"
     ],
-    "owner_approval_required": false
+    "owner_approval_required": true
   },
   "validation": [
     {
+      "command": "python tools/validate_ia_d09_owner_decision_record.py",
+      "status": "passed",
+      "evidence": "PR #338 exact-head run 31944617345 job 95158633196"
+    },
+    {
       "command": "python tools/validate_ia_d09_owner_decision_evidence_packet.py",
       "status": "passed",
-      "evidence": "PR #336 exact-head run 31941519540 job 95151312826"
+      "evidence": "PR #338 exact-head run 31944617345 job 95158633196"
     },
     {
       "command": "python tools/continuity_state.py validate",
       "status": "passed",
-      "evidence": "PR #336 exact-head run 31941519540 job 95151312826"
+      "evidence": "PR #338 exact-head run 31944617345 job 95158633196"
     }
   ],
   "evidence": [
     {"kind": "file", "value": "IA-D09-OWNER-DECISION governance/application-planning/internal-alpha/owner-decision/IA_D09_OWNER_DECISION_EVIDENCE_PACKET.md"},
-    {"kind": "file", "value": "IA-D09-owner-decision-evidence-preparation-attempt-001 A12 candidate evidence: 56b127f1fc01eebe5c73ba0472a5b6496fe92b5e / artifact 9261392785"},
-    {"kind": "pull_request", "value": "IA-D09-OWNER-DECISION AIOC PR #336"},
-    {"kind": "ci_run", "value": "IA-D09-OWNER-DECISION exact-head PASS run 31941519540 job 95151312826"},
-    {"kind": "merge", "value": "IA-D09-OWNER-DECISION verified preparation merge 3a6f75bff961b5a5ff15392e97cb3bc106c8b939"},
-    {"kind": "owner_decision", "value": "IA-D09-OWNER-DECISION owner approval record IA_D09_OWNER_DECISION_RECORD_20260816.json: tester access approved; Internal Alpha release approved; six other gates not-decided"}
+    {"kind": "file", "value": "IA-D09-owner-decision-evidence-preparation-attempt-001 exact owner record governance/application-planning/internal-alpha/owner-decision/IA_D09_OWNER_DECISION_RECORD_20260816.json"},
+    {"kind": "pull_request", "value": "IA-D09-OWNER-DECISION AIOC approval PR #338"},
+    {"kind": "ci_run", "value": "IA-D09-OWNER-DECISION approval exact-head PASS run 31944617345 job 95158633196"},
+    {"kind": "merge", "value": "IA-D09-OWNER-DECISION verified approval merge 437250843ce3a366111cf16af40e60465d009dfc"},
+    {"kind": "owner_decision", "value": "IA-D09-OWNER-DECISION John Brandon Turner approved Internal Alpha tester access and Internal Alpha release for exact candidate 56b127f1fc01eebe5c73ba0472a5b6496fe92b5e; six other gates remain not-decided"}
   ],
   "unresolved_failures": [],
-  "roadmap_projection_pending": true,
-  "next_action": "Validate and merge the bounded owner-approval record. After merge, project IA-D09 owner-decision work completed_verified and prepare bounded Internal Alpha tester onboarding/access execution. Do not open any of the six remaining owner gates."
+  "roadmap_projection_pending": false,
+  "next_action": "Prepare bounded Internal Alpha tester onboarding/access execution for the approved exact candidate. Each tester must receive an explicit account/Campaign-role access record. Keep real-user data, production credentials, paid providers, public deployment, broader AI authority, and Design Standards promotion closed."
 }

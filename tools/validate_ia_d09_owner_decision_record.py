@@ -34,6 +34,7 @@ def main() -> int:
     gates = load(BASE / "IA_D09_OWNER_GATE_READINESS.json")
     tester = load(BASE / "IA_D09_TESTER_ENTRY_DECISION_PACKAGE.json")
     receipt = load(BASE / "IA_D09_OWNER_DECISION_PREPARATION_RECEIPT.json")
+    completion = BASE / "IA_D09_OWNER_DECISION_COMPLETION_RECEIPT.json"
     work = load(ROOT / "governance/ai/work-state/IA-D09-owner-decision-evidence-preparation-attempt-001.json")
     pointer = load(ROOT / "governance/ai/runtime/CURRENT_WORK_POINTER.json")
     status = load(ROOT / "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json")
@@ -49,8 +50,7 @@ def main() -> int:
     req(all(dmap[g] == "not-decided" for g in set(ALL) - APPROVED), "non-ready gate changed")
 
     auth = record.get("authorization_projection", {})
-    req(auth.get("tester_access_authorized") is True, "tester access not authorized")
-    req(auth.get("internal_alpha_release_approved") is True, "Internal Alpha release not approved")
+    req(auth.get("tester_access_authorized") is True and auth.get("internal_alpha_release_approved") is True, "approved authorization projection mismatch")
     for field in ["real_user_data_authorized", "production_credentials_authorized", "paid_provider_authorized", "public_release_or_deployment_authorized", "broader_ai_automation_authority_authorized", "working_design_standards_promoted"]:
         req(auth.get(field) is False, f"broader authorization opened: {field}")
 
@@ -70,15 +70,24 @@ def main() -> int:
 
     req(work.get("owner_decision_made") is True and work.get("owner_decision_required") is False, "checkpoint owner decision state mismatch")
     req(work.get("release_approved") is True and work.get("tester_access_authorized") is True, "checkpoint approved gate projection mismatch")
-    req(work.get("status") == "ready_for_review", "approval recording must be ready_for_review before merge")
+    req(work.get("status") in {"ready_for_review", "completed_verified"}, "owner decision lifecycle mismatch")
     req(pointer.get("primary_attempt_id") == work.get("attempt_id"), "pointer primary mismatch")
-    req(status.get("primary", {}).get("status") == "ready_for_review", "compact status mismatch")
+    req(status.get("primary", {}).get("status") == work.get("status"), "compact status mismatch")
+
     entry = next((e for e in roadmap.get("entries", []) if e.get("work_item_id") == "IA-D09-OWNER-DECISION"), None)
     req(bool(entry), "roadmap owner-decision entry missing")
     if entry:
         req(set(entry.get("approved_gates", [])) == APPROVED, "roadmap approved gates mismatch")
         req(entry.get("release_approved") is True and entry.get("tester_access_authorized") is True, "roadmap approval projection mismatch")
         req(entry.get("automatic_a13") is False, "automatic A13 must remain false")
+
+    if work.get("status") == "completed_verified":
+        req(completion.is_file(), "completion receipt missing")
+        if completion.is_file():
+            c = load(completion)
+            req(c.get("state") == "completed_verified", "completion receipt state mismatch")
+            req(c.get("approval_merge_commit") == "437250843ce3a366111cf16af40e60465d009dfc", "approval merge mismatch")
+            req(c.get("tester_access_authorized") is True and c.get("internal_alpha_release_approved") is True, "completion approved gates mismatch")
 
     bootstrap = (ROOT / "governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_IA_D09_OWNER_DECISION_APPROVED.md").read_text(encoding="utf-8")
     req("Internal Alpha tester access — approved" in bootstrap, "bootstrap tester approval missing")
@@ -90,7 +99,7 @@ def main() -> int:
         for error in errors: print(f"- {error}")
         return 1
     print("IA-D09 OWNER DECISION RECORD: PASS")
-    print("approved=2 undecided=6 tester_access=true internal_alpha_release=true broader_authority=false")
+    print(f"status={work.get('status')} approved=2 undecided=6 broader_authority=false")
     return 0
 
 

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-16T11:27:00Z",
+  "updated_at": "2026-08-16T11:34:00Z",
   "supplements": "governance/ai/runtime/ROADMAP_INDEX.json",
   "entries": [
     {
@@ -25,17 +25,18 @@
       "release_approved": true,
       "implementation_merge_commit": "4a488f366058c4b63af9f897744388cc77688763",
       "application_closure_merge": "47a060c70f23bf5b60226f1aaa433bf301fa24db",
-      "next_boundary": "IA-D09 owner approvals recorded; bounded Internal Alpha execution after governed decision merge; no automatic A13"
+      "next_boundary": "Internal Alpha tester onboarding/access execution; no automatic A13"
     },
     {
       "work_item_id": "IA-D09-OWNER-DECISION",
       "track": "internal-alpha-owner-decision",
-      "governing_document": "governance/application-planning/internal-alpha/owner-decision/IA_D09_OWNER_DECISION_RECORD_20260816.json",
+      "governing_document": "governance/application-planning/internal-alpha/owner-decision/IA_D09_OWNER_DECISION_COMPLETION_RECEIPT.json",
       "design_anchor": "governance/application-planning/internal-alpha/IA-D09_INTERNAL_ALPHA_RELEASE_DESIGN_PACKAGE.md",
       "owner_decision_register": "governance/application-planning/internal-alpha/IA-D09_OWNER_DECISION_REGISTER.md",
       "dependencies": ["STAGE-A-A12"],
       "preparation_state": "prepared_verified",
-      "owner_decision_state": "recorded_pending_governed_merge",
+      "owner_decision_state": "completed_verified",
+      "owner_decision_record": "governance/application-planning/internal-alpha/owner-decision/IA_D09_OWNER_DECISION_RECORD_20260816.json",
       "approved_gates": ["authorize Internal Alpha tester access", "approve Internal Alpha release"],
       "not_decision_ready_gate_count": 6,
       "other_owner_decisions": "not-decided",
@@ -47,7 +48,19 @@
       "public_release_or_deployment_authorized": false,
       "broader_ai_automation_authority_authorized": false,
       "working_design_standards_promoted": false,
+      "approval_validation_run": 31944617345,
+      "approval_merge_commit": "437250843ce3a366111cf16af40e60465d009dfc",
       "automatic_a13": false
+    },
+    {
+      "work_item_id": "IA-D09-TESTER-ONBOARDING",
+      "track": "internal-alpha-execution",
+      "governing_document": "governance/application-planning/internal-alpha/owner-decision/IA_D09_TESTER_ENTRY_DECISION_PACKAGE.json",
+      "design_anchor": "governance/application-planning/internal-alpha/IA-D09_INTERNAL_ALPHA_RELEASE_DESIGN_PACKAGE.md",
+      "dependencies": ["IA-D09-OWNER-DECISION"],
+      "state": "authorized_not_started",
+      "scope": "exact approved candidate/build; browser/local-runner; synthetic-test-only; per-tester account/Campaign-role access records required",
+      "prohibited_scope": ["real-user data", "production credentials", "paid provider commitment", "public release/deployment", "broader AI authority", "Design Standards promotion"]
     }
   ]
 }
