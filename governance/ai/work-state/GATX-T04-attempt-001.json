@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 2,
+  "revision": 3,
   "work_item_id": "GATX-T04",
   "attempt_id": "GATX-T04-attempt-001",
   "track": "guided-alpha-testing-experience",
@@ -11,17 +11,17 @@
   "status": "in_progress",
   "owner_selected": true,
   "started_at": "2026-08-16T19:03:00Z",
-  "updated_at": "2026-08-16T19:15:00Z",
+  "updated_at": "2026-08-16T19:23:32Z",
   "completed_at": null,
   "base_commit": "fd643355a6cf10db51190d15037711ee04515637",
   "construction_complete": true,
   "construction_head": "7a4f5995a0964f2852f49520be5ea5a57f5a68fa",
   "latest_pushed_commit": "7a4f5995a0964f2852f49520be5ea5a57f5a68fa",
   "expected_remote_head": "7a4f5995a0964f2852f49520be5ea5a57f5a68fa",
-  "pull_request": null,
+  "pull_request": 165,
   "objective": "Build frictionless scenario-aware evidence and defect capture on the existing Guided Alpha diagnostics substrate so a tester can report a reproducible problem with safe system-known context automatically attached and only minimal bounded tester perception/expectation input required.",
-  "last_verified_action": "The complete bounded GATX-T04 construction was sealed on app head 7a4f5995a0964f2852f49520be5ea5a57f5a68fa. The build includes the T04 evidence contract, structured Report a Problem client, T04 round, Python and native PowerShell host bundle writers, package builder, deterministic verifier definition, eight-case headed-browser evidence definition, future Linux/browser + Windows validation workflow, and app handoff files. No T04 validation has run and no T04 application PR has been opened.",
-  "active_substep": "validation-pending",
+  "last_verified_action": "GATX-T04 validation started on exact sealed app head 7a4f5995a0964f2852f49520be5ea5a57f5a68fa by opening draft app PR #165. Dedicated workflow Validate GATX-T04 Evidence Capture run 31967438777 is executing the declared Linux/Python/browser and actual Windows PowerShell bundle gates. From this point, only validation-discovered T04 repairs are permitted.",
+  "active_substep": "validation-running",
   "completed_substeps": [
     "evidence-contract",
     "structured-report-client",
@@ -34,9 +34,10 @@
     "headed-browser-evidence-definition",
     "linux-windows-validation-workflow-definition",
     "app-handoff-update",
-    "construction-seal"
+    "construction-seal",
+    "validation-start"
   ],
-  "next_action": "Begin the single bounded GATX-T04 validation phase by opening an application PR from sealed head 7a4f5995a0964f2852f49520be5ea5a57f5a68fa. Run only the declared T04 evidence/privacy/scenario/client/package/browser/actual-Windows gates; after validation starts make only validation-discovered T04 repairs, then close T04 and advance to GATX-T05.",
+  "next_action": "Finish dedicated T04 validation run 31967438777. If it exposes defects, batch only validation-discovered T04 repairs and rerun the smallest applicable gate; otherwise record the exact package/artifact evidence, merge app PR #165, run governance continuity, project completed_verified, and advance to GATX-T05.",
   "dependencies": {
     "GATX-DIAG-F01": {"status":"completed_verified","application_merge_commit":"a6c2bd17962f8ed54dabd0d4d4446fdb58aa5754"},
     "GATX-T03": {"status":"completed_verified","application_merge_commit":"fd643355a6cf10db51190d15037711ee04515637","governance_merge_commit":"e0ff55a68438dc8af46a6d1b070156ef1d8c671d"}
@@ -94,13 +95,13 @@
     "owner_approval_required": false
   },
   "validation": [
-    {"command":"T04 evidence and defect contract","status":"not_run","evidence":null},
-    {"command":"T04 bounded tester-input and privacy contract","status":"not_run","evidence":null},
-    {"command":"T04 scenario-context and synthetic-state attachment","status":"not_run","evidence":null},
-    {"command":"client regression typecheck accessibility and build","status":"not_run","evidence":null},
-    {"command":"exact T04 package and host reproducibility bundle","status":"not_run","evidence":null},
-    {"command":"headed-browser T04 report and reproduction workflow","status":"not_run","evidence":null},
-    {"command":"actual packaged Windows PowerShell T04 bundle export","status":"not_run","evidence":null},
+    {"command":"T04 evidence and defect contract","status":"running","evidence":"app PR #165 / run 31967438777"},
+    {"command":"T04 bounded tester-input and privacy contract","status":"running","evidence":"app PR #165 / run 31967438777"},
+    {"command":"T04 scenario-context and synthetic-state attachment","status":"running","evidence":"app PR #165 / run 31967438777"},
+    {"command":"client regression typecheck accessibility and build","status":"running","evidence":"app PR #165 / run 31967438777"},
+    {"command":"exact T04 package and host reproducibility bundle","status":"running","evidence":"app PR #165 / run 31967438777"},
+    {"command":"headed-browser T04 report and reproduction workflow","status":"running","evidence":"app PR #165 / run 31967438777"},
+    {"command":"actual packaged Windows PowerShell T04 bundle export","status":"running","evidence":"app PR #165 / run 31967438777"},
     {"command":"governance continuity validation","status":"not_run","evidence":null}
   ],
   "unresolved_failures": [],
@@ -108,6 +109,8 @@
   "evidence": [
     {"kind":"merge","value":"GATX-T04 prerequisite T03 app merge fd643355a6cf10db51190d15037711ee04515637 and AIOC merge e0ff55a68438dc8af46a6d1b070156ef1d8c671d"},
     {"kind":"commit","value":"GATX-T04 sealed construction head 7a4f5995a0964f2852f49520be5ea5a57f5a68fa"},
+    {"kind":"pull_request","value":"GATX-T04 application PR #165"},
+    {"kind":"ci_run","value":"Validate GATX-T04 Evidence Capture run 31967438777 executing on exact sealed head"},
     {"kind":"file","value":"GATX-T04 evidence contract apps/client-ui/public/gatx-evidence/v0.1.0/EVIDENCE_CONTRACT_v0.1.0.json"},
     {"kind":"file","value":"GATX-T04 work order .agent/active-work-orders/WO-GATX-T04-EVIDENCE-DEFECT-CAPTURE.json"}
   ],
