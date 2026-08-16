@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 1,
+  "revision": 2,
   "work_item_id": "IA-D09-OWNER-DECISION",
   "attempt_id": "IA-D09-owner-decision-evidence-preparation-attempt-001",
   "track": "internal-alpha-owner-decision",
@@ -9,7 +9,8 @@
   "status": "prepared_owner_decision_pending",
   "owner_selected": true,
   "started_at": "2026-08-16T10:09:00Z",
-  "updated_at": "2026-08-16T10:09:00Z",
+  "updated_at": "2026-08-16T10:20:00Z",
+  "objective": "Prepare the IA-D09 owner-decision evidence packet from the completed/verified A12 candidate without making or inferring any owner-only decision.",
   "dependency": "STAGE-A-A12 completed_verified / candidate-validated",
   "candidate_sha": "56b127f1fc01eebe5c73ba0472a5b6496fe92b5e",
   "build_id": "5033f55d3344209c1719d6003d1369b4bc201c74ba9d64f046767263daee5a45",
@@ -20,6 +21,9 @@
   "application_implementation_merge": "4a488f366058c4b63af9f897744388cc77688763",
   "application_closure_merge": "47a060c70f23bf5b60226f1aaa433bf301fa24db",
   "aioc_a12_closure_merge": "6a153aa51a5699a2659dba44b94b126664451df7",
+  "expected_remote_head": "56b2715abbd99e3c36951384348fd02cf4fe7ef6",
+  "last_verified_action": "PR #336 run 31941351203 job 95150907868 passed the focused IA-D09 packet validator. Generic continuity validation identified only missing checkpoint schema keys; this revision supplies those keys without changing any owner decision or candidate evidence.",
+  "active_substep": "validate-preparation-pr",
   "decision_ready_gates": [
     "authorize Internal Alpha tester access",
     "approve Internal Alpha release"
@@ -43,5 +47,34 @@
   "public_release_or_deployment_authorized": false,
   "broader_ai_automation_authority_authorized": false,
   "working_design_standards_promoted": false,
-  "next_action": "Run the focused IA-D09 owner-decision packet validator and continuity guard, merge the governed preparation PR if green, then present the two decision-ready owner gates to John Brandon Turner without inferring a decision."
+  "completion_gate": {
+    "required_evidence_kinds": ["candidate", "packet", "pull_request", "ci_run", "merge"],
+    "required_validation_commands": [
+      "python tools/validate_ia_d09_owner_decision_evidence_packet.py",
+      "python tools/continuity_state.py validate"
+    ],
+    "owner_approval_required_for_packet_preparation": false,
+    "owner_decision_required_after_packet_preparation": true
+  },
+  "validation": [
+    {
+      "command": "python tools/validate_ia_d09_owner_decision_evidence_packet.py",
+      "status": "passed",
+      "evidence": "PR #336 run 31941351203 job 95150907868"
+    },
+    {
+      "command": "python tools/continuity_state.py validate",
+      "status": "rerun_required_after_checkpoint_schema_repair",
+      "evidence": "PR #336 run 31941351203 job 95150907868 reported only missing checkpoint schema keys"
+    }
+  ],
+  "evidence": [
+    {"kind": "candidate", "value": "A12 exact validated candidate 56b127f1fc01eebe5c73ba0472a5b6496fe92b5e / build 5033f55d3344209c1719d6003d1369b4bc201c74ba9d64f046767263daee5a45"},
+    {"kind": "packet", "value": "governance/application-planning/internal-alpha/owner-decision/IA_D09_OWNER_DECISION_EVIDENCE_PACKET.md"},
+    {"kind": "pull_request", "value": "AIOC PR #336"},
+    {"kind": "ci_run", "value": "Focused packet validator passed in run 31941351203 job 95150907868; continuity rerun pending after schema repair"}
+  ],
+  "unresolved_failures": [],
+  "roadmap_projection_pending": true,
+  "next_action": "Rerun the focused IA-D09 owner-decision packet workflow and continuity guard on this checkpoint-complete head. If green, merge PR #336 and then present the two decision-ready owner gates to John Brandon Turner without inferring a decision."
 }
