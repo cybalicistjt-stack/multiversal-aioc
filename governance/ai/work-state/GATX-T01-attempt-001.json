@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 2,
+  "revision": 3,
   "work_item_id": "GATX-T01",
   "attempt_id": "GATX-T01-attempt-001",
   "track": "guided-alpha-testing-experience",
@@ -8,10 +8,10 @@
   "branch": "internal-alpha/guided-alpha-tranche-1",
   "governance_repository": "cybalicistjt-stack/multiversal-aioc",
   "governance_branch": "governance/guided-alpha-testing-experience",
-  "status": "in_progress",
+  "status": "blocked_owner",
   "owner_selected": true,
   "started_at": "2026-08-16T16:20:00Z",
-  "updated_at": "2026-08-16T16:34:29Z",
+  "updated_at": "2026-08-16T16:40:30Z",
   "completed_at": null,
   "objective": "Complete Guided Alpha Testing Experience Tranche 1: make the current Internal Alpha a self-explanatory guided test environment with explicit tester identity, role, build/candidate identity, connection mode, test campaign, testing round, progress, current objective, next action, expected result, known limitations, reset/recovery and defect-entry affordances. Preserve the already-constructed GM navigation repair as the tranche baseline.",
   "construction_rule": "Finish the entire tranche construction before running validation checks. Do not interrupt construction with per-slice hosted validation.",
@@ -21,9 +21,9 @@
   "expected_remote_head": "a18d89bcfc002637705f6430fd1486dfd0d67fae",
   "pull_request": 160,
   "validation_started": true,
-  "last_verified_action": "GATX-T01 construction sealed at application head a18d89bcfc002637705f6430fd1486dfd0d67fae; application PR #160 and governance PR #343 opened. Initial governance continuity validation ran and correctly exposed missing checkpoint schema keys; this revision repairs that continuity defect before rerun.",
-  "active_substep": "tranche-1-validation",
-  "next_action": "Rerun governance continuity after the batched checkpoint/index-supplement repair; attempt the app exact-head hosted gates and classify the known billing/spending-limit runner block separately from product validation. Run any exact local/deterministic checks available on the current execution surface.",
+  "last_verified_action": "GATX-T01 governance continuity validation passed on governance PR #343 run 31959253238 after the checkpoint/schema and active roadmap-supplement repair. Application PR #160 exact-head jobs were triggered but GitHub refused to start them because of the account payment/spending-limit condition; no app test step executed.",
+  "active_substep": "restore-private-app-validation-execution-surface",
+  "next_action": "Owner must restore an executable private-repository validation surface by resolving the GitHub Actions billing/spending-limit condition or provide an equivalent exact private checkout execution surface. Then rerun the already-constructed GATX-T01 app validation suite on exact head a18d89bcfc002637705f6430fd1486dfd0d67fae; do not begin GATX-T02 before T01 completes its declared gates.",
   "application_baseline": {
     "base_main": "9dba609d4b5ea9149be5ac79431ac92d1da86316",
     "absorbed_gm_navigation_head": "4d3a8175a931c1561cf2f585be0091da58b9f1c2",
@@ -68,52 +68,22 @@
     "owner_approval_required": false
   },
   "validation": [
-    {
-      "command": "guided-alpha deterministic source contract",
-      "status": "not_run",
-      "evidence": null
-    },
-    {
-      "command": "client regression typecheck accessibility and build",
-      "status": "not_run",
-      "evidence": null
-    },
-    {
-      "command": "exact-candidate package and runner smoke",
-      "status": "not_run",
-      "evidence": null
-    },
-    {
-      "command": "headed-browser Guided Alpha scenarios",
-      "status": "not_run",
-      "evidence": null
-    },
-    {
-      "command": "actual packaged Windows PowerShell runner",
-      "status": "not_run",
-      "evidence": null
-    },
-    {
-      "command": "governance continuity validation",
-      "status": "failed",
-      "evidence": "GATX-T01 governance PR #343 initial run 31959069859 job 95194160376: continuity_state.py rejected the new checkpoint because required schema keys were missing; repair applied in revision 2 and rerun pending."
-    }
+    {"command":"guided-alpha deterministic source contract","status":"not_run","evidence":"App PR #160 workflow was created but GitHub did not start the job because of the account payment/spending-limit condition."},
+    {"command":"client regression typecheck accessibility and build","status":"not_run","evidence":"App PR #160 workflow was created but GitHub did not start the job because of the account payment/spending-limit condition."},
+    {"command":"exact-candidate package and runner smoke","status":"not_run","evidence":"App PR #160 workflow was created but GitHub did not start the job because of the account payment/spending-limit condition."},
+    {"command":"headed-browser Guided Alpha scenarios","status":"not_run","evidence":"App PR #160 run 31959061177 job 95194140152 was not started by GitHub because of the account payment/spending-limit condition."},
+    {"command":"actual packaged Windows PowerShell runner","status":"not_run","evidence":"App PR #160 run 31959061177 job 95194140083 was not started by GitHub because of the account payment/spending-limit condition."},
+    {"command":"governance continuity validation","status":"passed","evidence":"Governance PR #343 run 31959253238 — Validate Conversation Continuity — success on repaired governance head lineage."}
   ],
-  "unresolved_failures": [],
-  "owner_decision_required": false,
+  "unresolved_failures": [
+    "Private application validation execution is unavailable: GitHub Actions jobs for PR #160 are refused before runner start due the account payment/spending-limit condition, and the current container cannot resolve github.com to clone the private repository as an alternative exact checkout."
+  ],
+  "owner_decision_required": true,
   "evidence": [
-    {
-      "kind": "commit",
-      "value": "GATX-T01 application construction head a18d89bcfc002637705f6430fd1486dfd0d67fae"
-    },
-    {
-      "kind": "pull_request",
-      "value": "GATX-T01 application PR #160 and governance PR #343"
-    },
-    {
-      "kind": "file",
-      "value": "GATX-T01 governance program governance/application-planning/internal-alpha/guided-alpha/GUIDED_ALPHA_TESTING_EXPERIENCE_PROGRAM.md"
-    }
+    {"kind":"commit","value":"GATX-T01 application construction head a18d89bcfc002637705f6430fd1486dfd0d67fae"},
+    {"kind":"pull_request","value":"GATX-T01 application PR #160 and governance PR #343"},
+    {"kind":"file","value":"GATX-T01 governance program governance/application-planning/internal-alpha/guided-alpha/GUIDED_ALPHA_TESTING_EXPERIENCE_PROGRAM.md"},
+    {"kind":"ci_run","value":"GATX-T01 governance continuity PASS run 31959253238; app PR #160 runs created but jobs unstarted due billing/spending-limit execution-surface block"}
   ],
   "roadmap_projection_pending": true,
   "known_blockers": [
