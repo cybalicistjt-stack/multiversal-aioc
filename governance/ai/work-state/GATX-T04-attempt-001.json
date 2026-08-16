@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "work_item_id": "GATX-T04",
+  "attempt_id": "GATX-T04-attempt-001",
+  "track": "guided-alpha-testing-experience",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "branch": "internal-alpha/gatx-t04-evidence-defect-capture",
+  "governance_repository": "cybalicistjt-stack/multiversal-aioc",
+  "governance_branch": "governance/gatx-t04-evidence-defect-capture",
+  "status": "started",
+  "owner_selected": true,
+  "started_at": "2026-08-16T19:03:00Z",
+  "updated_at": "2026-08-16T19:03:00Z",
+  "completed_at": null,
+  "base_commit": "fd643355a6cf10db51190d15037711ee04515637",
+  "latest_pushed_commit": null,
+  "expected_remote_head": "fd643355a6cf10db51190d15037711ee04515637",
+  "pull_request": null,
+  "objective": "Build frictionless scenario-aware evidence and defect capture on the existing Guided Alpha diagnostics substrate so a tester can report a reproducible problem with safe system-known context automatically attached and only minimal bounded tester perception/expectation input required.",
+  "last_verified_action": "GATX-T03 is completed_verified and merged: app fd643355a6cf10db51190d15037711ee04515637, AIOC e0ff55a68438dc8af46a6d1b070156ef1d8c671d. T04 app/governance branches were created from those exact merges.",
+  "active_substep": "construction",
+  "completed_substeps": [],
+  "next_action": "Finish the complete bounded T04 construction before validation: recover existing defect/repro terminology; extend DIAG-F01 rather than replacing it; bind current T03 scenario/step/application area and safe synthetic state; add minimal bounded tester observed/expected input; add governed defect classification; create host-side reproducibility bundle export; integrate Guided Alpha report flow/package/runner/docs/verifier/evidence/workflow definitions; seal construction without starting T04 validation.",
+  "dependencies": {
+    "GATX-DIAG-F01": {"status":"completed_verified","application_merge_commit":"a6c2bd17962f8ed54dabd0d4d4446fdb58aa5754"},
+    "GATX-T03": {"status":"completed_verified","application_merge_commit":"fd643355a6cf10db51190d15037711ee04515637","governance_merge_commit":"e0ff55a68438dc8af46a6d1b070156ef1d8c671d"}
+  },
+  "construction_rule": "Finish all bounded T04 construction before T04 validation. After validation starts, make only validation-discovered T04 repairs.",
+  "scope_boundaries": {
+    "t04_owns": [
+      "automatic attachment of current scenario/charter/step/application-area context",
+      "safe synthetic state context needed for reproduction",
+      "minimal bounded tester-observed and tester-expected input",
+      "defect classification",
+      "reproduction metadata and one-click host-side defect bundle export",
+      "diagnostic linkage and privacy manifest"
+    ],
+    "must_reuse": ["GATX-DIAG-F01 diagnostics collector/transport/export", "GATX-T03 scenario engine/current scenario state"],
+    "t05_retains": ["device/LAN connection center", "issue #159"],
+    "not_authorized": ["parallel telemetry backend", "shared-live Campaign/session authority", "remote Internet runtime", "native Android APK", "production credentials", "real-user data", "public deployment", "automatic A13"]
+  },
+  "privacy_contract": {
+    "synthetic_test_only": true,
+    "credentials_collected": false,
+    "keystrokes_collected": false,
+    "arbitrary_form_contents_collected": false,
+    "real_campaign_content_authorized": false,
+    "unrelated_personal_files_collected": false,
+    "browser_history_collected": false,
+    "tester_text_must_be_explicit_bounded_fields": true
+  },
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
+    "required_validation_commands": [
+      "T04 evidence and defect contract",
+      "T04 bounded tester-input and privacy contract",
+      "T04 scenario-context and synthetic-state attachment",
+      "client regression typecheck accessibility and build",
+      "exact T04 package and host reproducibility bundle",
+      "headed-browser T04 report and reproduction workflow",
+      "actual packaged Windows PowerShell T04 bundle export",
+      "governance continuity validation"
+    ],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {"command":"T04 evidence and defect contract","status":"not_run","evidence":null},
+    {"command":"T04 bounded tester-input and privacy contract","status":"not_run","evidence":null},
+    {"command":"T04 scenario-context and synthetic-state attachment","status":"not_run","evidence":null},
+    {"command":"client regression typecheck accessibility and build","status":"not_run","evidence":null},
+    {"command":"exact T04 package and host reproducibility bundle","status":"not_run","evidence":null},
+    {"command":"headed-browser T04 report and reproduction workflow","status":"not_run","evidence":null},
+    {"command":"actual packaged Windows PowerShell T04 bundle export","status":"not_run","evidence":null},
+    {"command":"governance continuity validation","status":"not_run","evidence":null}
+  ],
+  "unresolved_failures": [],
+  "owner_decision_required": false,
+  "evidence": [
+    {"kind":"merge","value":"GATX-T04 prerequisite T03 app merge fd643355a6cf10db51190d15037711ee04515637 and AIOC merge e0ff55a68438dc8af46a6d1b070156ef1d8c671d"},
+    {"kind":"file","value":"GATX-T04 canonical backlog scope: frictionless evidence and defect capture reusing GATX-DIAG-F01 and GATX-T03"}
+  ],
+  "roadmap_projection_pending": true,
+  "notes": []
+}
