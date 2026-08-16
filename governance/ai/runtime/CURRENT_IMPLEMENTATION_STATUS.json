@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-16T16:34:29Z",
+  "generated_at": "2026-08-16T16:40:30Z",
   "source_pointer": "governance/ai/runtime/CURRENT_WORK_POINTER.json",
   "primary": {
     "work_item_id": "GATX-T01",
@@ -8,13 +8,15 @@
     "track": "guided-alpha-testing-experience",
     "repository": "cybalicistjt-stack/Multiversal-app",
     "branch": "internal-alpha/guided-alpha-tranche-1",
-    "status": "in_progress",
-    "active_substep": "tranche-1-validation",
-    "next_action": "Rerun governance continuity after the batched checkpoint/index-supplement repair; attempt the app exact-head hosted gates and classify the known billing/spending-limit runner block separately from product validation. Run any exact local/deterministic checks available on the current execution surface.",
+    "status": "blocked_owner",
+    "active_substep": "restore-private-app-validation-execution-surface",
+    "next_action": "Owner must restore an executable private-repository validation surface by resolving the GitHub Actions billing/spending-limit condition or provide an equivalent exact private checkout execution surface. Then rerun the already-constructed GATX-T01 app validation suite on exact head a18d89bcfc002637705f6430fd1486dfd0d67fae; do not begin GATX-T02 before T01 completes its declared gates.",
     "latest_pushed_commit": "a18d89bcfc002637705f6430fd1486dfd0d67fae",
     "pull_request": 160,
-    "owner_decision_required": false,
-    "unresolved_failures": [],
+    "owner_decision_required": true,
+    "unresolved_failures": [
+      "Private application validation execution is unavailable: GitHub Actions jobs for PR #160 are refused before runner start due the account payment/spending-limit condition, and the current container cannot resolve github.com to clone the private repository as an alternative exact checkout."
+    ],
     "roadmap_projection_pending": true
   },
   "active_attempt_count": 2,
