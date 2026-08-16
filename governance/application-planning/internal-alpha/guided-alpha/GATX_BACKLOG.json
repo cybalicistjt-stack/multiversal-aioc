@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0.0",
+  "program_id": "GATX",
+  "program_title": "Guided Alpha Testing Experience",
+  "owner": "John Brandon Turner",
+  "status": "active",
+  "activated_at": "2026-08-16T16:20:00Z",
+  "execution_rule": "Complete all construction within a tranche before running that tranche's validation checks; batch validation repairs and rerun only the smallest applicable final gate.",
+  "current_stage_completion_boundary": {
+    "required_before_ordinary_roadmap_progression": ["GATX-T01", "GATX-T02", "GATX-T03", "GATX-T04", "GATX-T05", "GATX-T06", "GATX-T07-ARCH"],
+    "dependency_gated_later": ["GATX-T07-REMOTE", "GATX-T08"]
+  },
+  "current_position": {
+    "highest_completed": "GATX-T01",
+    "next_item": "GATX-T02",
+    "next_item_title": "Glass Harbor reference Campaign integration",
+    "next_item_started": false
+  },
+  "items": [
+    {
+      "id": "GATX-T01",
+      "title": "Guided Alpha framework",
+      "status": "completed_verified",
+      "dependencies": [],
+      "application_branch": "internal-alpha/guided-alpha-tranche-1",
+      "attempt_id": "GATX-T01-attempt-001",
+      "validated_candidate_sha": "ba3ad9b13f09f192d9901038ba006fe208e6b534",
+      "application_merge_commit": "503b793dbc3579e41da78d89722118df10889ed4",
+      "application_pull_request": 160,
+      "completed_at": "2026-08-16T17:03:00Z",
+      "validation_runs": [31960148617, 31960148623, 31960148611],
+      "validated_package": "Multiversal-Internal-Alpha-Windows-ba3ad9b13f09-GATX-T01.zip",
+      "validated_package_sha256": "7d29f847e0436b90b5430b7a062ada36305ace8f981fb1bc79c14f9833beafae",
+      "distribution_approved": false,
+      "acceptance_summary": "Persistent role-safe Guided Alpha shell exposes identity, role, exact candidate context, connection mode, reference Campaign, round, objective, expected result, progress, report/reset/connection/limitations controls and preserves GM navigation repair."
+    },
+    {
+      "id": "GATX-T02",
+      "title": "Glass Harbor reference Campaign integration",
+      "status": "planned_next",
+      "dependencies": ["GATX-T01"],
+      "source_authority": "governance/application-planning/stage-a-reference-campaign/STAGE_A_TESTER_REFERENCE_CAMPAIGN_KIT_HANDOFF_v0.1.0.md",
+      "acceptance_summary": "Validated Glass Harbor Incident / Meridian Testbed fixture becomes a deterministic coherent application test Campaign with reset."
+    },
+    {
+      "id": "GATX-T03",
+      "title": "Guided scenario and test-journey engine",
+      "status": "planned",
+      "dependencies": ["GATX-T02"],
+      "acceptance_summary": "Machine-readable role-aware scenarios guide repeatable objectives/actions/expected results/recovery/reset/outcomes across progressively larger test charters."
+    },
+    {
+      "id": "GATX-T04",
+      "title": "Frictionless evidence and defect capture",
+      "status": "planned",
+      "dependencies": ["GATX-T03"],
+      "acceptance_summary": "Safe system-known build/scenario/account/role/platform/connection/state context is captured automatically so tester reports are minimal and reproducible."
+    },
+    {
+      "id": "GATX-T05",
+      "title": "Device and trusted-LAN connection center",
+      "status": "planned",
+      "dependencies": ["GATX-T04"],
+      "related_application_issue": 159,
+      "acceptance_summary": "Same-LAN device setup is guided; server/port/network/firewall/request state is visible; failures are classified by layer and temporary access can be cleaned up."
+    },
+    {
+      "id": "GATX-T06",
+      "title": "Testing operations and control layer",
+      "status": "planned",
+      "dependencies": ["GATX-T05"],
+      "acceptance_summary": "Rounds, assignments, coverage, defects, changed-code retests and highest-value-next-test selection are visible and actionable."
+    },
+    {
+      "id": "GATX-T07-ARCH",
+      "title": "Remote-online-ready Guided Alpha architecture",
+      "status": "planned",
+      "dependencies": ["GATX-T06"],
+      "acceptance_summary": "Guidance/scenario/evidence contracts and UI are transport-neutral and ready for Remote Test Session activation without rebuilding the testing system."
+    },
+    {
+      "id": "GATX-T07-REMOTE",
+      "title": "Remote Test Session activation",
+      "status": "dependency_gated",
+      "dependencies": ["GATX-T07-ARCH", "P9 authoritative online/session prerequisites"],
+      "acceptance_summary": "Remote joining/reconnect/latency/session visibility uses the governed authoritative runtime; no public exposure workaround substitutes for missing dependencies."
+    },
+    {
+      "id": "GATX-T08",
+      "title": "Cross-location Guided Alpha and permanent regression loop",
+      "status": "dependency_gated",
+      "dependencies": ["GATX-T07-REMOTE"],
+      "acceptance_summary": "Geographically separated GM/Player guided session plus adverse reconnect/permission/concurrency cases completes and becomes durable regression coverage."
+    }
+  ],
+  "preserved_boundaries": {
+    "synthetic_test_only": true,
+    "real_user_data_authorized": false,
+    "production_credentials_authorized": false,
+    "paid_provider_authorized": false,
+    "public_release_or_deployment_authorized": false,
+    "native_android_apk_authorized": false,
+    "shared_live_authority_created_by_gatx": false,
+    "automatic_a13": false
+  }
+}
