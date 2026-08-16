@@ -1,0 +1,30 @@
+name: Validate STAGE-A-A11 Current Revalidation
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/stage-a-a11/current-revalidation/**'
+      - 'governance/ai/work-state/STAGE-A-A11-current-revalidation-attempt-001.json'
+      - 'tools/validate_stage_a_a11_revalidation.py'
+      - '.github/workflows/validate-stage-a-a11-current-revalidation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-a11-revalidation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate A11 current-repository revalidation package
+        run: python tools/validate_stage_a_a11_revalidation.py
+      - name: Prove revalidation did not activate implementation
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e governance/ai/work-state/STAGE-A-A11-implementation-attempt-001.json
+          ! grep -R --line-number --fixed-strings '"a11_activated": true' governance/ai/work-state/STAGE-A-A11-current-revalidation-attempt-001.json governance/application-planning/stage-a-a11/current-revalidation
