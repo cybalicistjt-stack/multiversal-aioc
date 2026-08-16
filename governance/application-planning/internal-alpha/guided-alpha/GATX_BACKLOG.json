@@ -11,15 +11,12 @@
     "dependency_gated_later": ["GATX-T07-REMOTE", "GATX-T08"]
   },
   "current_position": {
-    "highest_completed": "GATX-T03",
-    "active_item": "GATX-T04",
-    "active_item_title": "Frictionless evidence and defect capture",
-    "active_state": "application-validated-merged-governance-continuity-pending",
+    "highest_completed": "GATX-T04",
+    "active_item": null,
     "next_tranche_after_active_item": "GATX-T05",
     "next_tranche_title": "Device and trusted-LAN connection center",
     "t03_completed": true,
-    "t04_application_complete": true,
-    "t04_governance_continuity_pending": true
+    "t04_completed": true
   },
   "items": [
     {
@@ -106,7 +103,7 @@
     {
       "id": "GATX-T04",
       "title": "Frictionless evidence and defect capture",
-      "status": "ready_for_review",
+      "status": "completed_verified",
       "dependencies": ["GATX-T03"],
       "foundation_dependency": "GATX-DIAG-F01",
       "attempt_id": "GATX-T04-attempt-001",
@@ -117,7 +114,8 @@
       "application_pull_request": 165,
       "application_merge_commit": "8aa81e12a4e17f23aa98fd8461e635ad35145797",
       "started_at": "2026-08-16T19:03:00Z",
-      "validation_runs": [31968282129],
+      "completed_at": "2026-08-16T19:49:00Z",
+      "validation_runs": [31968282129, 31968647769],
       "validated_package": "Multiversal-Internal-Alpha-Windows-38eb5bcf8e6c-GATX-T04.zip",
       "validated_package_sha256": "e37ce2e9f4c44fa1af460d54881fcfe5873b0b52ce1651088957ac9cf900602d",
       "workflow_artifact_id": 9269106399,
@@ -136,8 +134,8 @@
       "diagnostics_foundation_reused": true,
       "scenario_engine_reused": true,
       "remote_upload": false,
-      "validation_summary": "Final exact-head run passed both declared jobs: 173/173 regression, typecheck, accessibility, build, explicit consent gate, actual packaged Windows PowerShell POST-to-ZIP, 8/8 headed Chromium evidence cases, and host-bundle privacy inspection.",
-      "acceptance_summary": "Safe system-known context is combined with only two bounded tester-supplied observed/expected fields, explicit consent, governed classification and a local reviewable reproducibility ZIP linked to DIAG-F01; protected hidden state is reduced before evidence transport. Governance continuity remains the final completion gate."
+      "validation_summary": "Final exact-head run passed both declared jobs: 173/173 regression, typecheck, accessibility, build, explicit consent gate, actual packaged Windows PowerShell POST-to-ZIP, 8/8 headed Chromium evidence cases, and host-bundle privacy inspection. AIOC continuity then passed before completed_verified projection.",
+      "acceptance_summary": "Safe system-known context is combined with only two bounded tester-supplied observed/expected fields, explicit consent, governed classification and a local reviewable reproducibility ZIP linked to DIAG-F01; protected hidden state is reduced before evidence transport."
     },
     {
       "id": "GATX-T05",
