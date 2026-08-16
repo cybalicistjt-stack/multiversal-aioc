@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "work_item_id": "GATX-T07-ARCH",
+  "attempt_id": "GATX-T07-ARCH-attempt-001",
+  "track": "guided-alpha-testing-experience",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "branch": "internal-alpha/gatx-t07-transport-neutral-architecture",
+  "governance_repository": "cybalicistjt-stack/multiversal-aioc",
+  "governance_branch": "governance/gatx-t07-transport-neutral-architecture",
+  "status": "started",
+  "owner_selected": true,
+  "started_at": "2026-08-16T21:40:00Z",
+  "updated_at": "2026-08-16T21:40:00Z",
+  "completed_at": null,
+  "base_commit": "83063c3cad2330b06b77b4968d86e813c34f55d5",
+  "latest_pushed_commit": null,
+  "expected_remote_head": "83063c3cad2330b06b77b4968d86e813c34f55d5",
+  "pull_request": null,
+  "construction_complete": false,
+  "validation_started": false,
+  "objective": "Make the Guided Alpha guidance, scenario, diagnostics, evidence, connection and testing-operations contracts/UI transport-neutral and reusable for a future governed Remote Test Session without activating remote transport, shared-live authority, public exposure, production identity, or any dependency-gated online runtime.",
+  "last_verified_action": "GATX-T06 is completed_verified; app main is 83063c3cad2330b06b77b4968d86e813c34f55d5 and governance main is d900c1dc6c7fdaa3f4ef46ba1f60c4f1ee2dff2b. T07-ARCH branches were created from those exact heads.",
+  "active_substep": "construction",
+  "completed_substeps": [],
+  "next_action": "Construct the complete bounded T07-ARCH transport contract, browser adapter, local-host/trusted-LAN bindings, dependency-gated remote-test-session mode, Python and packaged PowerShell capability/context seams, package builder, verifier, browser evidence and final validation workflow; seal construction before opening a PR or running T07 validation.",
+  "dependencies": {
+    "GATX-T06": {"status":"completed_verified","application_merge_commit":"f0c7ce6ff6e530266666e54b1c9d3da7816b5d27","postmerge_handoff_commit":"83063c3cad2330b06b77b4968d86e813c34f55d5","governance_merge_commit":"d900c1dc6c7fdaa3f4ef46ba1f60c4f1ee2dff2b"}
+  },
+  "scope_boundaries": {
+    "t07_arch_owns": ["transport-neutral Guided Alpha service contract","browser transport adapter","local-host transport binding","trusted-LAN transport binding","future remote-test-session capability declaration","transport context/capability UI","remote activation guard","transport-neutral packaging and validation"],
+    "must_reuse": ["GATX-DIAG-F01 diagnostics","GATX-T03 scenario engine","GATX-T04 evidence capture","GATX-T05 connection center","GATX-T06 testing operations"],
+    "not_authorized": ["GATX-T07-REMOTE activation","GATX-T08 cross-location execution","shared-live Campaign/session authority","remote Internet runtime or administration","public tunnel or port forwarding","production identity or credentials","real-user data","native Android APK distribution","public deployment or release","paid providers","automatic A13"]
+  },
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
+    "required_validation_commands": [
+      "T07 transport contract adapter and activation-guard verifier",
+      "T06 T05 T04 T03 DIAG-F01 preservation",
+      "client regression typecheck accessibility and build",
+      "exact T07 package transport manifest and binding contract",
+      "headed-browser local-host and trusted-LAN transport workflows",
+      "remote-test-session dependency gate and fail-closed UI",
+      "Python packaged transport context and capabilities",
+      "actual Windows packaged PowerShell transport context and capabilities",
+      "governance continuity validation"
+    ],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {"command":"T07 transport contract adapter and activation-guard verifier","status":"not_run","evidence":null},
+    {"command":"T06 T05 T04 T03 DIAG-F01 preservation","status":"not_run","evidence":null},
+    {"command":"client regression typecheck accessibility and build","status":"not_run","evidence":null},
+    {"command":"exact T07 package transport manifest and binding contract","status":"not_run","evidence":null},
+    {"command":"headed-browser local-host and trusted-LAN transport workflows","status":"not_run","evidence":null},
+    {"command":"remote-test-session dependency gate and fail-closed UI","status":"not_run","evidence":null},
+    {"command":"Python packaged transport context and capabilities","status":"not_run","evidence":null},
+    {"command":"actual Windows packaged PowerShell transport context and capabilities","status":"not_run","evidence":null},
+    {"command":"governance continuity validation","status":"not_run","evidence":null}
+  ],
+  "unresolved_failures": [],
+  "owner_decision_required": false,
+  "evidence": [
+    {"kind":"merge","value":"GATX-T06 application merge f0c7ce6ff6e530266666e54b1c9d3da7816b5d27, postmerge handoff 83063c3cad2330b06b77b4968d86e813c34f55d5, governance merge d900c1dc6c7fdaa3f4ef46ba1f60c4f1ee2dff2b"}
+  ],
+  "roadmap_projection_pending": true,
+  "notes": ["Remote Test Session is an architectural future mode only in T07-ARCH. Actual remote transport remains dependency-gated and must not be simulated into completion.", "Hotfix2 remains the owner-approved tester distribution until a separate owner decision replaces it."]
+}
