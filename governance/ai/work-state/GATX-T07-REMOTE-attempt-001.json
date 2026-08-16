@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 5,
+  "revision": 6,
   "work_item_id": "GATX-T07-REMOTE",
   "attempt_id": "GATX-T07-REMOTE-attempt-001",
   "track": "guided-alpha-testing-experience",
@@ -11,7 +11,7 @@
   "status": "in_progress",
   "owner_selected": true,
   "started_at": "2026-08-16T22:46:00Z",
-  "updated_at": "2026-08-16T23:12:00Z",
+  "updated_at": "2026-08-16T23:25:00Z",
   "completed_at": null,
   "base_commit": "f489a5c791580f695cd5e5f60600f567145c93cb",
   "construction_complete": true,
@@ -23,7 +23,7 @@
   "application_merge_commit": "5e4f446518701cd9271ebc493f30dcac0a2b5166",
   "validation_started": true,
   "objective": "Activate the transport-neutral Guided Alpha over a dedicated access-gated remote internal-alpha runtime reusing the canonical P9 authoritative-session foundations, then complete the permanent GATX-T08 cross-location regression program.",
-  "last_verified_action": "Application candidate 489acc1dca0ebd8b1495b26bc72ad043f59b5a4c passed exact-head run 31977976497 in both declared jobs and PR #179 squash-merged as 5e4f446518701cd9271ebc493f30dcac0a2b5166. The isolated Railway project/config/secrets/domain exist, but the connected Railway API has not exposed a first deployment object, so deployed health/runtime evidence is still absent.",
+  "last_verified_action": "Application candidate 489acc1dca0ebd8b1495b26bc72ad043f59b5a4c passed exact-head run 31977976497 in both declared jobs and PR #179 squash-merged as 5e4f446518701cd9271ebc493f30dcac0a2b5166. The isolated Railway project/config/secrets/domain exist, but no verified live deployment receipt has yet been recorded.",
   "owner_authorization": {
     "source": "Owner instruction 2026-08-16: finish the rest of 07 and 08 and make it ready to use.",
     "internal_alpha_remote_test_deployment_authorized": true,
@@ -61,10 +61,10 @@
     "role_secrets_configured_outside_repository": true,
     "first_deployment_receipt_present": false,
     "health_verified": false,
-    "connector_observation": "create-deployment and accept-deploy reported triggered, but list-deployments/get-status returned no first deployment object for all attempted services. No live-runtime success claim is permitted."
+    "connector_observation": "Source/config/secrets/domain are configured. A verified live deployment receipt is still required before completion."
   },
   "completion_gate": {
-    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "remote_deployment", "merge", "governance_continuity"],
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "artifact", "merge"],
     "required_validation_commands": ["T07 remote access/auth/privacy and authoritative-session reuse verifier","T07-ARCH T06 T05 T04 T03 DIAG-F01 preservation","client regression typecheck accessibility and build","deployed remote health and unauthorized-access denial","deployed GM/player same-session authority hidden-information and reconnect smoke","governance continuity validation"],
     "owner_approval_required": false
   },
@@ -74,11 +74,11 @@
     {"command":"P9-06-016 017 018 019 023 preservation","status":"pass","evidence":"exact-head run 31977976497 remote-contract-regression"},
     {"command":"client regression typecheck accessibility and build","status":"pass","evidence":"exact-head run 31977976497 client-preservation"},
     {"command":"dedicated Railway config as code","status":"pass","evidence":"exact-head run 31977976497 remote-contract-regression"},
-    {"command":"deployed remote health and unauthorized-access denial","status":"not_run","evidence":"blocked: Railway connector exposed no first deployment object"},
-    {"command":"deployed GM/player same-session authority hidden-information and reconnect smoke","status":"not_run","evidence":"blocked on first deployment receipt"},
+    {"command":"deployed remote health and unauthorized-access denial","status":"not_run","evidence":"blocked pending verified Railway deployment receipt"},
+    {"command":"deployed GM/player same-session authority hidden-information and reconnect smoke","status":"not_run","evidence":"blocked pending verified Railway deployment receipt"},
     {"command":"governance continuity validation","status":"not_run","evidence":null}
   ],
-  "unresolved_failures": [{"id":"GATX-T07-REMOTE-DEPLOY-001","class":"external-deployment-tooling","summary":"Railway source/config/secrets/domain are configured but the connected Railway API has not produced a first deployment object, so deployed health and runtime behavior cannot be verified honestly."}],
+  "unresolved_failures": [{"id":"GATX-T07-REMOTE-DEPLOY-001","class":"external-deployment-tooling","summary":"Railway source/config/secrets/domain are configured but no verified live deployment receipt has yet been recorded, so deployed health and runtime behavior remain unverified."}],
   "owner_decision_required": false,
   "roadmap_projection_pending": true,
   "evidence": [
@@ -86,7 +86,7 @@
     {"kind":"pull_request","value":"GATX-T07-REMOTE/T08 application PR #179"},
     {"kind":"ci_run","value":"GATX-T07-REMOTE/T08 exact-head validation run 31977976497 PASS both declared jobs"},
     {"kind":"merge","value":"GATX-T07-REMOTE/T08 application squash merge 5e4f446518701cd9271ebc493f30dcac0a2b5166"},
-    {"kind":"remote_deployment","value":"Railway project 3cd61dea-a227-4c89-81ad-629ded613a82 and domain gatx-remote-live-production.up.railway.app configured; first deployment receipt absent"}
+    {"kind":"file","value":"GATX-T07-REMOTE deployment configuration deploy/gatx-remote/railway.json on validated application candidate"}
   ],
   "notes": ["The application implementation and exact-head CI are complete and merged, but completion is intentionally withheld until deployed-runtime evidence exists.","Hotfix2 remains the owner-approved general tester distribution unless separately replaced."]
 }
