@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 1,
+  "revision": 2,
   "work_item_id": "STAGE-A-A11",
   "attempt_id": "STAGE-A-A11-implementation-attempt-001",
   "track": "application-implementation",
@@ -9,13 +9,16 @@
   "status": "completed_verified",
   "owner_selected": true,
   "started_at": "2026-08-16T07:21:44Z",
-  "updated_at": "2026-08-16T07:47:06Z",
+  "updated_at": "2026-08-16T07:52:00Z",
   "completed_at": "2026-08-16T07:47:06Z",
   "base_commit": "f023c7feab49910b02abccf3ae87fd4b581c64c8",
+  "latest_pushed_commit": "bf54f36737fe02041f02ab44a69f45c3b0b294ac",
+  "expected_remote_head": "bf54f36737fe02041f02ab44a69f45c3b0b294ac",
+  "pull_request": 149,
   "application_pull_request": 149,
   "application_merge_commit": "bf54f36737fe02041f02ab44a69f45c3b0b294ac",
   "objective": "Implement the bounded provider-neutral STAGE-A-A11 Contextual AI Interfaces package after completed current-repository revalidation.",
-  "last_verified_action": "A11 was constructed 24/24 before checks, exact-head CI and all companions passed, PR #149 squash-merged with verified GitHub signature as bf54f36737fe02041f02ab44a69f45c3b0b294ac, and headed-Chromium evidence run 31934719569 job 95134737004 passed against that exact merged product SHA.",
+  "last_verified_action": "STAGE-A-A11 app PR #149 squash-merged with verified GitHub signature as bf54f36737fe02041f02ab44a69f45c3b0b294ac after exact-head A11/P9/client and A1-A10/DT-008 validation; headed-Chromium evidence run 31934719569 job 95134737004 then passed against that exact merged product SHA and uploaded artifact 9260312052.",
   "active_substep": null,
   "completed_substeps": [
     "Constructed AI-S01 through AI-S08.",
@@ -29,8 +32,44 @@
     "Passed real headed-Chromium completion evidence against exact merged product SHA in run 31934719569 job 95134737004."
   ],
   "next_action": "Begin STAGE-A-A12 Internal Alpha Hardening current-repository revalidation only after this A11 closure projection is merged; do not activate A12 implementation from historical preparation alone.",
-  "owner_decision_required": false,
+  "changed_paths": [
+    "packages/contracts/src/optional-ai/**",
+    "apps/client-ui/src/a11/**",
+    "apps/client-ui/src/App.tsx",
+    "fixtures/a11/**",
+    "tests/a11/**",
+    "contracts/a11-capability-dependency-policy.json",
+    "tools/verify_stage_a_a11.py",
+    "tools/verify_a11_optional_dependency_boundaries.py",
+    ".github/workflows/validate-stage-a-a11-contextual-ai.yml",
+    "docs/evidence/stage-a-a11/**"
+  ],
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge", "artifact"],
+    "required_validation_commands": ["Multiversal-app A11 exact-head validation suite", "Multiversal-app A11 headed-Chromium evidence"],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {
+      "command": "Multiversal-app A11 exact-head validation suite",
+      "status": "passed",
+      "evidence": "STAGE-A-A11 exact head fa0780d1b257f6846969426ed2f460dd77d8b5e8 passed A11 run 31934383254 job 95133944772 and all A1-A10/DT-008 companion workflows."
+    },
+    {
+      "command": "Multiversal-app A11 headed-Chromium evidence",
+      "status": "passed",
+      "evidence": "STAGE-A-A11 merged product bf54f36737fe02041f02ab44a69f45c3b0b294ac passed headed-Chromium run 31934719569 job 95134737004 with exact-SHA proof before and after."
+    }
+  ],
   "unresolved_failures": [],
+  "owner_decision_required": false,
+  "evidence": [
+    {"kind": "commit", "value": "STAGE-A-A11 exact validated app head fa0780d1b257f6846969426ed2f460dd77d8b5e8"},
+    {"kind": "pull_request", "value": "STAGE-A-A11 application pull request #149"},
+    {"kind": "ci_run", "value": "STAGE-A-A11 exact-head CI run 31934383254 job 95133944772 passed with all A1-A10/DT-008 companions green"},
+    {"kind": "merge", "value": "STAGE-A-A11 verified-valid squash merge bf54f36737fe02041f02ab44a69f45c3b0b294ac for app PR #149"},
+    {"kind": "artifact", "value": "STAGE-A-A11 headed-browser artifact 9260312052 digest sha256:bc0d683f51e3d809b6353eff8dc23e4a992ef1c51e5ef95568af616edcee9dd7 from run 31934719569"}
+  ],
   "roadmap_projection_pending": false,
   "completion_receipt": "governance/application-planning/stage-a-a11/implementation-closure/STAGE_A_A11_IMPLEMENTATION_COMPLETION_RECEIPT.json",
   "restrictions": {
