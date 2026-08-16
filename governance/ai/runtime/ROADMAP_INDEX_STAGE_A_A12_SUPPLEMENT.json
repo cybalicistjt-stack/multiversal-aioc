@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-16T10:09:00Z",
+  "updated_at": "2026-08-16T11:27:00Z",
   "supplements": "governance/ai/runtime/ROADMAP_INDEX.json",
   "entries": [
     {
@@ -22,23 +22,31 @@
       "revalidation_state": "completed_verified",
       "implementation_state": "completed_verified",
       "candidate_state": "candidate-validated",
-      "release_approved": false,
+      "release_approved": true,
       "implementation_merge_commit": "4a488f366058c4b63af9f897744388cc77688763",
       "application_closure_merge": "47a060c70f23bf5b60226f1aaa433bf301fa24db",
-      "next_boundary": "IA-D09 owner decision; no automatic A13"
+      "next_boundary": "IA-D09 owner approvals recorded; bounded Internal Alpha execution after governed decision merge; no automatic A13"
     },
     {
       "work_item_id": "IA-D09-OWNER-DECISION",
       "track": "internal-alpha-owner-decision",
-      "governing_document": "governance/application-planning/internal-alpha/owner-decision/IA_D09_OWNER_DECISION_EVIDENCE_PACKET.md",
+      "governing_document": "governance/application-planning/internal-alpha/owner-decision/IA_D09_OWNER_DECISION_RECORD_20260816.json",
       "design_anchor": "governance/application-planning/internal-alpha/IA-D09_INTERNAL_ALPHA_RELEASE_DESIGN_PACKAGE.md",
       "owner_decision_register": "governance/application-planning/internal-alpha/IA-D09_OWNER_DECISION_REGISTER.md",
       "dependencies": ["STAGE-A-A12"],
-      "preparation_state": "prepared_owner_decision_pending",
-      "decision_ready_gates": ["authorize Internal Alpha tester access", "approve Internal Alpha release"],
+      "preparation_state": "prepared_verified",
+      "owner_decision_state": "recorded_pending_governed_merge",
+      "approved_gates": ["authorize Internal Alpha tester access", "approve Internal Alpha release"],
       "not_decision_ready_gate_count": 6,
-      "all_owner_decisions": "not-decided",
-      "release_approved": false,
+      "other_owner_decisions": "not-decided",
+      "tester_access_authorized": true,
+      "release_approved": true,
+      "real_user_data_authorized": false,
+      "production_credentials_authorized": false,
+      "paid_provider_authorized": false,
+      "public_release_or_deployment_authorized": false,
+      "broader_ai_automation_authority_authorized": false,
+      "working_design_standards_promoted": false,
       "automatic_a13": false
     }
   ]
