@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0.0",
+  "candidate_sha": "56b127f1fc01eebe5c73ba0472a5b6496fe92b5e",
+  "build_id": "5033f55d3344209c1719d6003d1369b4bc201c74ba9d64f046767263daee5a45",
+  "blocking_limitation_count": 0,
+  "items": [
+    {
+      "limitation_id": "IA09-LIM-001-supported-profiles",
+      "classification": "known-limitation",
+      "summary": "A12 release evidence is bound to the browser and local-runner platform profiles. No broader native or production platform support is established by the candidate build identity.",
+      "evidence_refs": [
+        "Multiversal-app A12 artifact 9261392785:a12-evidence-preserved/build-identity.json",
+        "Multiversal-app receipts/STAGE-A-A12-CLOSURE.json"
+      ],
+      "blocking": false
+    },
+    {
+      "limitation_id": "IA09-LIM-002-optional-ai-provider",
+      "classification": "optional",
+      "summary": "Core candidate operation passes with all optional AI/provider capability disabled. Optional AI/provider features may be unavailable and remain provider-neutral/advisory; no production credential or paid-provider authority is implied.",
+      "evidence_refs": [
+        "Multiversal-app A12 artifact 9261392785:a12-evidence-preserved/all-optionals-off.json",
+        "governance/application-planning/internal-alpha/IA-D09_INTERNAL_ALPHA_RELEASE_DESIGN_PACKAGE.md"
+      ],
+      "blocking": false
+    },
+    {
+      "limitation_id": "IA09-LIM-003-offline-authority",
+      "classification": "unsupported",
+      "summary": "Offline or stale clients may not mutate canonical state or fabricate canonical Events. Broad offline canonical authority is not supported by this candidate.",
+      "evidence_refs": [
+        "Multiversal-app A12 artifact 9261392785:a12-evidence-preserved/recovery.json",
+        "Multiversal-app fixtures/stage-a-a12/release-traceability/a12-release-source.json:A12-GATE-008",
+        "Multiversal-app fixtures/stage-a-a12/onboarding/a12-onboarding-source.json:TRC-FX-019"
+      ],
+      "blocking": false
+    },
+    {
+      "limitation_id": "IA09-LIM-004-advanced-map-vehicle-scope",
+      "classification": "deferred",
+      "summary": "Candidate evidence proves bounded tactical-position and basic vehicle journeys. Advanced map or vehicle behavior beyond those bounded journeys is not established by this Internal Alpha candidate evidence.",
+      "evidence_refs": [
+        "Multiversal-app fixtures/stage-a-a12/onboarding/a12-onboarding-source.json:TRC-FX-012",
+        "Multiversal-app fixtures/stage-a-a12/onboarding/a12-onboarding-source.json:TRC-FX-013",
+        "governance/application-planning/internal-alpha/IA-D09_INTERNAL_ALPHA_RELEASE_DESIGN_PACKAGE.md"
+      ],
+      "blocking": false
+    },
+    {
+      "limitation_id": "IA09-LIM-005-design-standards-promotion",
+      "classification": "deferred",
+      "summary": "Working/noncanonical Design Standards are not promoted by A12 candidate validation. The DS-008 working series remains separately governed and blocked_non_owner.",
+      "evidence_refs": [
+        "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+        "governance/application-planning/internal-alpha/IA-D09_OWNER_DECISION_REGISTER.md"
+      ],
+      "blocking": false
+    }
+  ]
+}
