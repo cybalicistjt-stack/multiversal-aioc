@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-16T23:25:00Z",
+  "generated_at": "2026-08-16T23:44:00Z",
   "source_pointer": "governance/ai/runtime/CURRENT_WORK_POINTER.json",
   "primary": {
     "work_item_id": "GATX-T07-REMOTE",
@@ -9,16 +9,16 @@
     "repository": "cybalicistjt-stack/Multiversal-app",
     "branch": "internal-alpha/gatx-t07-remote-t08-cross-location",
     "status": "in_progress",
-    "active_substep": "remote-first-deployment-blocked",
-    "next_action": "Obtain a real first deployment receipt for the already configured isolated Railway service, then verify /health, unauthorized denial, role-bound GM/Player same-session authority, hidden-information filtering and reconnect against that deployed runtime. Do not mark completed_verified until those deployment gates and governance continuity pass.",
-    "latest_pushed_commit": "489acc1dca0ebd8b1495b26bc72ad043f59b5a4c",
-    "pull_request": 179,
+    "active_substep": "render-free-owner-setup-required",
+    "next_action": "Owner performs the one-time no-cost Render setup: authorize Render's GitHub App for private repository cybalicistjt-stack/Multiversal-app, create a Blueprint from branch main, use deploy/gatx-remote/RENDER_SETUP_HELPER.html to generate the two role keys requested by render.yaml, and allow the first free web-service deploy. Then verify the live onrender.com service with tools/verify_gatx_render_free.py before marking GATX-T07-REMOTE completed_verified.",
+    "latest_pushed_commit": "0179edf6c42080523965e68ab72d3ae461b86f64",
+    "pull_request": 180,
     "owner_decision_required": false,
     "unresolved_failures": [
       {
-        "id": "GATX-T07-REMOTE-DEPLOY-001",
-        "class": "external-deployment-tooling",
-        "summary": "Railway source/config/secrets/domain are configured but no verified live deployment receipt has yet been recorded, so deployed health and runtime behavior remain unverified."
+        "id": "GATX-T07-REMOTE-DEPLOY-002",
+        "class": "external-owner-configuration",
+        "summary": "The no-cost Render deployment path is validated and merged, but Render must be authorized once to read the private Multiversal-app repository and the initial Blueprint deployment must be created in the owner's Render account."
       }
     ],
     "roadmap_projection_pending": true
