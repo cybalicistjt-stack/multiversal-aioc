@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1.0.0",
+  "workItemId": "IA-D09-TA-001",
+  "evidenceId": "IA-D09-TA-001-HOTFIX2-PHYSICAL-WINDOWS-20260816",
+  "recordedAtUtc": "2026-08-16T14:56:00Z",
+  "authority": "Owner physical Windows observation",
+  "package": {
+    "fileName": "Multiversal-Internal-Alpha-Windows-HOTFIX2-a4e262167aa9.zip",
+    "sha256": "5c9f31c96a3373f927f8d3a7ee6ee821aafeda8d0ae26a0c6cecf94ca129e0de",
+    "marker": "IA-HOTFIX-ACCOUNT-DISPATCH-2",
+    "port": 8877
+  },
+  "result": {
+    "account": "john-gm",
+    "expectedRole": "game-master",
+    "accountDispatch": "PASS",
+    "gmWorkspaceOpened": true,
+    "notFoundObserved": false
+  },
+  "withdrawnPackages": [
+    "original owner-approved Windows ZIP that physically returned Not Found from John GM",
+    "first PowerShell-interpolation hotfix candidate that physically returned the same Not Found"
+  ],
+  "separateFinding": {
+    "applicationIssue": 157,
+    "summary": "GM sidebar Campaign/Session/Combat/Assets buttons are inert.",
+    "blockingForAccountDispatch": false,
+    "recommendedDisposition": "fix before broad tester UX polish/distribution"
+  },
+  "ownerDecisionBoundary": {
+    "physicalPassIsPackageApproval": false,
+    "explicitExactPackageApprovalStillRequired": true,
+    "publicDeploymentAuthorized": false,
+    "realUserDataAuthorized": false,
+    "productionCredentialsAuthorized": false,
+    "paidProviderAuthorized": false
+  }
+}
