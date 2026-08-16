@@ -11,15 +11,16 @@
     "dependency_gated_later": ["GATX-T07-REMOTE", "GATX-T08"]
   },
   "current_position": {
-    "highest_completed": "GATX-T04",
-    "active_item": "GATX-T05",
-    "active_item_title": "Device and trusted-LAN connection center",
+    "highest_completed": "GATX-T05",
+    "active_item": null,
+    "active_item_title": null,
     "next_tranche_after_active_item": "GATX-T06",
     "next_tranche_title": "Testing operations and control layer",
     "t04_completed": true,
-    "t05_started": true,
-    "t05_construction_complete": true,
-    "t05_validation_started": false
+    "t05_completed": true,
+    "t05_validation_started": true,
+    "t05_application_merged": true,
+    "stop_before_t06": true
   },
   "items": [
     {
@@ -143,16 +144,30 @@
     {
       "id": "GATX-T05",
       "title": "Device and trusted-LAN connection center",
-      "status": "construction_complete_validation_pending",
+      "status": "completed_verified",
       "dependencies": ["GATX-T04"],
       "attempt_id": "GATX-T05-attempt-001",
       "application_branch": "internal-alpha/gatx-t05-connection-center",
       "governance_branch": "governance/gatx-t05-connection-center",
       "base_application_commit": "74f554d9a6ed020dcb8b6302a1c98715e0f23e95",
       "construction_head": "6d2bd01c58c6d9906e3e5611fdcfb7c94890ba91",
+      "validated_candidate_sha": "affc3d1259f4abf15b72e8160cf90d3766c05ecb",
+      "application_pull_request": 173,
+      "application_merge_commit": "a220380cb25fd8d155c2e3efe6dbc360f5e80b41",
       "started_at": "2026-08-16T20:17:00Z",
-      "validation_started": false,
+      "completed_at": "2026-08-16T20:52:00Z",
+      "validation_started": true,
+      "validation_runs": [31970883113,31970979407,31971201277,31971361588,31971748067],
+      "validated_package": "Multiversal-Internal-Alpha-Windows-affc3d1259f4-GATX-T05.zip",
+      "validated_package_sha256": "05db3bd47671ece673d1495dce21ab6c7b54fd5f564a830c5f9aceaeafda9d10",
+      "linux_workflow_artifact_id": 9269900651,
+      "linux_workflow_artifact_sha256": "89556280717b086985b338f67cf317a8d7a463a5bfb237e0c263b5a9878d080a",
+      "windows_workflow_artifact_id": 9269910180,
+      "windows_workflow_artifact_sha256": "5421391595feeaffb76562c765ec01da74e8eae07a2e314b224168cf591ac919",
       "related_application_issue": 159,
+      "related_issue_state": "closed_completed",
+      "issue_resolution_comment_id": 5309597108,
+      "new_owner_physical_android_retest": false,
       "connection_contract_id": "GATX-T05-CONNECTION-CONTRACT-001",
       "connection_marker": "GATX-T05-CONNECTION-CENTER-1",
       "round_id": "GATX-TRUSTED-LAN-CONNECTION-001",
@@ -171,6 +186,7 @@
       "remote_service": false,
       "public_tunnel": false,
       "distribution_approved": false,
+      "validation_summary": "Final exact-head run 31971361588 passed both declared jobs on affc3d1259f4abf15b72e8160cf90d3766c05ecb: T05/T04/T03/DIAG-F01 deterministic checks, 173/173 regression, typecheck, 3/3 accessibility, production build, exact package and status/probe API, 9/9 headed Chromium, T04 bundle reuse, and actual Windows LocalSubnet firewall create/inspect/runner/status/probe/bundle/cleanup with zero matching rule remaining. AIOC pre-completion continuity 31971748067 also passed.",
       "acceptance_summary": "Same-LAN device setup is guided; listener/port/LAN address/network-profile/firewall/request state is visible; failures are classified by layer; temporary Windows access is explicit-admin, LocalSubnet-only, and removable; T04 evidence carries the T05 layer status without storing remote device IP or network names."
     },
     {
