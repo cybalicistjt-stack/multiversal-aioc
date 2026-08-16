@@ -1,0 +1,30 @@
+name: Validate STAGE-A-A12 Revalidation Closure
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/stage-a-a12/current-revalidation/**'
+      - 'governance/ai/work-state/STAGE-A-A12-current-revalidation-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_STAGE_A_A12_REVALIDATION_CLOSURE.md'
+      - 'governance/ai/runtime/ROADMAP_INDEX_STAGE_A_A12_SUPPLEMENT.json'
+      - 'tools/validate_stage_a_a12_revalidation_closure.py'
+      - '.github/workflows/validate-stage-a-a12-revalidation-closure.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate A12 revalidation closure
+        run: python tools/validate_stage_a_a12_revalidation_closure.py
+      - name: Validate canonical conversation continuity
+        run: python tools/continuity_state.py validate
