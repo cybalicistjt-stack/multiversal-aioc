@@ -1,6 +1,18 @@
 name: Validate IA-D09-TA-001 Owner Approval
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'governance/application-planning/internal-alpha/tester-access/**'
+      - 'governance/ai/work-state/IA-D09-TA-001-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'governance/ai/runtime/ROADMAP_INDEX_STAGE_A_A12_SUPPLEMENT.json'
+      - 'governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_IA_D09_TA_001_HOTFIX2_OWNER_APPROVED.md'
+      - 'tools/validate_ia_d09_ta_001_owner_approval.py'
+      - 'tools/validate_ia_d09_ta_001_successor_packet.py'
+      - '.github/workflows/validate-ia-d09-ta-001-owner-approval.yml'
   pull_request:
     branches: [main]
     paths:
@@ -9,7 +21,7 @@ on:
       - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
       - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
       - 'governance/ai/runtime/ROADMAP_INDEX_STAGE_A_A12_SUPPLEMENT.json'
-      - 'governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_IA_D09_TA_001_OWNER_APPROVED.md'
+      - 'governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_IA_D09_TA_001_HOTFIX2_OWNER_APPROVED.md'
       - 'tools/validate_ia_d09_ta_001_owner_approval.py'
       - 'tools/validate_ia_d09_ta_001_successor_packet.py'
       - '.github/workflows/validate-ia-d09-ta-001-owner-approval.yml'
