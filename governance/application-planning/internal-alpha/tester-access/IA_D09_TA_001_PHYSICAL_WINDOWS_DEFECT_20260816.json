@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "defect_id": "IA-D09-TA-001-DEFECT-001",
+  "reported_at": "2026-08-16T14:29:00-05:00",
+  "reported_by": "John Brandon Turner",
+  "work_item_id": "IA-D09-TA-001",
+  "classification": "physical-windows-distribution-entry-defect",
+  "status": "active-repair",
+  "observed_behavior": "On physical Windows, the 20-account selector opens, but clicking John GM returns Not Found.",
+  "reproduction_count": 2,
+  "affected_packages": [
+    {
+      "package": "Multiversal-Internal-Alpha-Windows-de4ead1a93fa.zip",
+      "sha256": "d3d6e223245b71bc7f6265025168d61d5eb9b39447d662233584395ff0f73983",
+      "prior_owner_approval": true,
+      "distribution_state": "withdrawn-defective"
+    },
+    {
+      "package": "Multiversal-Internal-Alpha-Windows-fe9e0b3cc45d-HOTFIX-CANDIDATE.zip",
+      "prior_owner_approval": false,
+      "distribution_state": "withdrawn-defective"
+    }
+  ],
+  "facts_confirmed": {
+    "gm_html_present_in_package": true,
+    "player_html_present_in_package": true,
+    "static_assets_present_in_package": true,
+    "not_found_literal_in_gm_bundle": false,
+    "not_found_literal_in_player_bundle": true,
+    "first_powershell_interpolation_hotfix_resolved_physical_issue": false
+  },
+  "current_repair": {
+    "application_pr": 156,
+    "branch": "internal-alpha/fix-powershell-account-links",
+    "hotfix_marker": "IA-HOTFIX-ACCOUNT-DISPATCH-2",
+    "default_port": 8877,
+    "dispatch_mode": "server-owned-/account/<id>-route",
+    "request_log": "internal-alpha-runner.log",
+    "candidate_package": "Multiversal-Internal-Alpha-Windows-HOTFIX2-a4e262167aa9.zip",
+    "candidate_package_sha256": "5c9f31c96a3373f927f8d3a7ee6ee821aafeda8d0ae26a0c6cecf94ca129e0de",
+    "physical_windows_confirmation_required": true
+  },
+  "ci_state": {
+    "github_actions_available_for_app_repo": false,
+    "reason": "GitHub reports recent account payments failed or spending limit must be increased; jobs are not started and execute zero test steps.",
+    "hotfix_workflow_run": 31952530030
+  },
+  "preserved_boundaries": {
+    "synthetic_test_only": true,
+    "tester_github_required": false,
+    "production_credentials_authorized": false,
+    "android_apk_authorized": false,
+    "public_deployment_authorized": false,
+    "shared_live_campaign_session_authority": false
+  },
+  "next_action": "Physically test Hotfix 2 on Windows using the visible IA-HOTFIX-ACCOUNT-DISPATCH-2 marker and port 8877. If it fails, collect internal-alpha-runner.log; if it passes, validate and seek explicit owner approval for the new exact package SHA before distribution."
+}
