@@ -10,20 +10,34 @@
     "required_before_ordinary_roadmap_progression": ["GATX-T01", "GATX-T02", "GATX-T03", "GATX-T04", "GATX-T05", "GATX-T06", "GATX-T07-ARCH"],
     "dependency_gated_later": ["GATX-T07-REMOTE", "GATX-T08"]
   },
+  "current_position": {
+    "highest_completed": "GATX-T01",
+    "next_item": "GATX-T02",
+    "next_item_title": "Glass Harbor reference Campaign integration",
+    "next_item_started": false
+  },
   "items": [
     {
       "id": "GATX-T01",
       "title": "Guided Alpha framework",
-      "status": "in_progress",
+      "status": "completed_verified",
       "dependencies": [],
       "application_branch": "internal-alpha/guided-alpha-tranche-1",
       "attempt_id": "GATX-T01-attempt-001",
+      "validated_candidate_sha": "ba3ad9b13f09f192d9901038ba006fe208e6b534",
+      "application_merge_commit": "503b793dbc3579e41da78d89722118df10889ed4",
+      "application_pull_request": 160,
+      "completed_at": "2026-08-16T17:03:00Z",
+      "validation_runs": [31960148617, 31960148623, 31960148611],
+      "validated_package": "Multiversal-Internal-Alpha-Windows-ba3ad9b13f09-GATX-T01.zip",
+      "validated_package_sha256": "7d29f847e0436b90b5430b7a062ada36305ace8f981fb1bc79c14f9833beafae",
+      "distribution_approved": false,
       "acceptance_summary": "Persistent role-safe Guided Alpha shell exposes identity, role, exact candidate context, connection mode, reference Campaign, round, objective, expected result, progress, report/reset/connection/limitations controls and preserves GM navigation repair."
     },
     {
       "id": "GATX-T02",
       "title": "Glass Harbor reference Campaign integration",
-      "status": "planned",
+      "status": "planned_next",
       "dependencies": ["GATX-T01"],
       "source_authority": "governance/application-planning/stage-a-reference-campaign/STAGE_A_TESTER_REFERENCE_CAMPAIGN_KIT_HANDOFF_v0.1.0.md",
       "acceptance_summary": "Validated Glass Harbor Incident / Meridian Testbed fixture becomes a deterministic coherent application test Campaign with reset."
