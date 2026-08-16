@@ -45,6 +45,7 @@ def main() -> int:
         "IA_D09_TESTER_ENTRY_DECISION_PACKAGE.json",
         "IA_D09_OWNER_GATE_READINESS.json",
         "IA_D09_OWNER_DECISION_RECORD_TEMPLATE.json",
+        "IA_D09_OWNER_DECISION_PREPARATION_RECEIPT.json",
     ]
     for name in required_files:
         require((PACKET_DIR / name).is_file(), f"missing packet file: {name}", errors)
@@ -54,6 +55,7 @@ def main() -> int:
     limitations = load(PACKET_DIR / "IA_D09_CANDIDATE_KNOWN_LIMITATIONS.json")
     risks = load(PACKET_DIR / "IA_D09_UNRESOLVED_RISK_REGISTER.json")
     tester = load(PACKET_DIR / "IA_D09_TESTER_ENTRY_DECISION_PACKAGE.json")
+    receipt = load(PACKET_DIR / "IA_D09_OWNER_DECISION_PREPARATION_RECEIPT.json")
     work = load(ROOT / "governance/ai/work-state/IA-D09-owner-decision-evidence-preparation-attempt-001.json")
     pointer = load(ROOT / "governance/ai/runtime/CURRENT_WORK_POINTER.json")
     status = load(ROOT / "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json")
@@ -88,15 +90,20 @@ def main() -> int:
     require(tester.get("supported_profiles") == ["browser", "local-runner"], "tester profiles must remain browser/local-runner", errors)
     require(tester.get("owner_access_decision") == "not-decided" and tester.get("tester_access_authorized") is False, "tester access must remain closed", errors)
 
-    require(work.get("status") == "ready_for_review", "work-state status mismatch", errors)
+    require(work.get("status") in {"ready_for_review", "blocked_owner"}, "work-state status mismatch", errors)
     require(work.get("owner_decision_required") is True and work.get("owner_decision_made") is False, "work-state must require an undecided owner decision", errors)
     require(work.get("release_approved") is False and work.get("tester_access_authorized") is False, "work-state must keep release/tester gates closed", errors)
 
     require(pointer.get("primary_attempt_id") == "IA-D09-owner-decision-evidence-preparation-attempt-001", "current pointer must select IA-D09 owner decision", errors)
     require(status.get("primary", {}).get("work_item_id") == "IA-D09-OWNER-DECISION", "implementation status primary mismatch", errors)
-    require(status.get("primary", {}).get("status") == "ready_for_review", "implementation status lifecycle mismatch", errors)
+    require(status.get("primary", {}).get("status") == work.get("status"), "implementation status lifecycle mismatch", errors)
     require(status.get("primary", {}).get("owner_decision_required") is True, "implementation status must require owner decision", errors)
     require(any(row.get("work_item_id") == "IA-D09-OWNER-DECISION" for row in roadmap.get("entries", [])), "roadmap supplement missing IA-D09 owner-decision entry", errors)
+
+    if work.get("status") == "blocked_owner":
+        require(receipt.get("state") == "prepared_verified_owner_decision_pending", "post-merge preparation receipt mismatch", errors)
+        require(receipt.get("preparation_merge_commit") == "3a6f75bff961b5a5ff15392e97cb3bc106c8b939", "preparation merge evidence mismatch", errors)
+        require(receipt.get("owner_decisions_made") == 0, "post-merge receipt may not make an owner decision", errors)
 
     packet_text = (PACKET_DIR / "IA_D09_OWNER_DECISION_EVIDENCE_PACKET.md").read_text(encoding="utf-8")
     require("does not approve any owner-only gate" in packet_text, "packet must state non-approval boundary", errors)
