@@ -63,8 +63,6 @@ def main() -> None:
         require(path.stat().st_size > 100, f"extracted contract unexpectedly small: {entry['path']}")
         require(entry["repository_byte_identity_claimed"] is False, f"repository extract must not claim exact byte identity: {entry['path']}")
 
-    # Semantic checks keep normalized repository projections tied to the source contracts
-    # without misrepresenting newline/CSV normalization as byte identity.
     platform_handoff = (BASE / "source-extracts/platform/IA_INTEGRATION_HANDOFF.md").read_text(encoding="utf-8")
     for phrase in ["5,628", "2,984", "326", "legacy mechanics are non-authoritative", "expand → project → validate → review → enable", "H1v3 Model S Space Station"]:
         require(phrase in platform_handoff, f"platform extract missing invariant: {phrase}")
@@ -170,9 +168,15 @@ def main() -> None:
 
     pointer = json.loads((ROOT / "governance/ai/runtime/CURRENT_WORK_POINTER.json").read_text(encoding="utf-8"))
     if roadmap_later_stage:
-        require(pointer["primary_attempt_id"] == "STAGE-A-A10-current-revalidation-attempt-001", "later pointer must select completed A10 revalidation attempt")
-        require(any(t.get("next_work_item_id") == "STAGE-A-A10" and t.get("state") == "authorized_not_activated" for t in pointer.get("deferred_tracks", [])), "later pointer missing authorized/not-activated A10 routing")
-        require("STAGE-A-A10" in pointer.get("selection_reason", ""), "later pointer selection reason must retain A10")
+        if pointer["primary_attempt_id"] == "STAGE-A-A10-current-revalidation-attempt-001":
+            require(any(t.get("next_work_item_id") == "STAGE-A-A10" and t.get("state") == "authorized_not_activated" for t in pointer.get("deferred_tracks", [])), "later pointer missing authorized/not-activated A10 routing")
+        else:
+            require(pointer["primary_attempt_id"] == "STAGE-A-A11-current-revalidation-attempt-001", "later pointer must select A10 revalidation or its governed A11 successor")
+            require(any(t.get("next_work_item_id") == "STAGE-A-A11" and t.get("state") == "current_next_revalidation_not_activated" for t in pointer.get("deferred_tracks", [])), "later pointer missing A11 revalidation routing")
+            amendment = (ROOT / "governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_STAGE_A_A11.md").read_text(encoding="utf-8")
+            require("STAGE-A-A10 — World Content Authoring is now `COMPLETED_VERIFIED`" in amendment, "A11 successor amendment must retain A10 completion")
+            require("Do not create or activate an A11 application branch" in amendment, "A11 successor amendment must preserve non-activation")
+        require("STAGE-A-A10" in pointer.get("selection_reason", ""), "later pointer selection reason must retain A10 predecessor evidence")
     else:
         require(pointer["primary_attempt_id"] == "STAGE-A-A8-R0-attempt-001", "pre-A9-revalidation pointer must retain completed A8 R0 governance attempt")
         if roadmap_a8_completed:
@@ -183,19 +187,29 @@ def main() -> None:
 
     status = json.loads((ROOT / "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json").read_text(encoding="utf-8"))
     if roadmap_later_stage:
-        require(status["primary"]["work_item_id"] == "STAGE-A-A10", "later compact status must project completed A10 revalidation")
-        require(status["primary"]["status"] == "completed_verified", "later compact status must keep A10 revalidation completed_verified")
+        require(status["primary"]["work_item_id"] in {"STAGE-A-A10", "STAGE-A-A11"}, "later compact status must project A10 or governed A11 successor")
+        if status["primary"]["work_item_id"] == "STAGE-A-A10":
+            require(status["primary"]["status"] == "completed_verified", "A10 compact status must remain completed_verified")
+        else:
+            require(status["primary"]["status"] in {"started", "in_progress", "ready_for_review", "completed_verified"}, "A11 compact status has invalid lifecycle state")
     else:
         require(status["primary"]["work_item_id"] == "STAGE-A-A8-R0", "pre-A9-revalidation status must retain completed A8 R0 historical primary")
         if roadmap_a8_completed:
             require(status["primary"]["status"] == "completed_verified", "post-A8 compact status must retain completed A8 R0 projection until A9 revalidation starts")
 
     roadmap_index = json.loads((ROOT / "governance/ai/runtime/ROADMAP_INDEX.json").read_text(encoding="utf-8"))
-    require(any(e.get("work_item_id") == "STAGE-A-A8" for e in roadmap_index["entries"]), "ROADMAP_INDEX missing STAGE-A-A8")
+    index_entries = list(roadmap_index["entries"])
+    supplement_path = pointer.get("roadmap_index_supplement")
+    if supplement_path:
+        supplement = json.loads((ROOT / supplement_path).read_text(encoding="utf-8"))
+        index_entries.extend(supplement.get("entries", []))
+    require(any(e.get("work_item_id") == "STAGE-A-A8" for e in index_entries), "ROADMAP_INDEX missing STAGE-A-A8")
     if roadmap_a8_completed or roadmap_later_stage:
-        require(any(e.get("work_item_id") == "STAGE-A-A9" for e in roadmap_index["entries"]), "ROADMAP_INDEX missing STAGE-A-A9 after A8 completion")
+        require(any(e.get("work_item_id") == "STAGE-A-A9" for e in index_entries), "ROADMAP_INDEX missing STAGE-A-A9 after A8 completion")
     if roadmap_later_stage:
-        require(any(e.get("work_item_id") == "STAGE-A-A10" for e in roadmap_index["entries"]), "ROADMAP_INDEX missing STAGE-A-A10 after A10 revalidation")
+        require(any(e.get("work_item_id") == "STAGE-A-A10" for e in index_entries), "ROADMAP_INDEX missing STAGE-A-A10 after A10 revalidation")
+        if pointer["primary_attempt_id"] == "STAGE-A-A11-current-revalidation-attempt-001":
+            require(any(e.get("work_item_id") == "STAGE-A-A11" for e in index_entries), "ROADMAP_INDEX supplement missing STAGE-A-A11 successor")
 
     checkpoint = json.loads((ROOT / "governance/ai/work-state/STAGE-A-A8-R0-attempt-001.json").read_text(encoding="utf-8"))
     require(checkpoint["status"] in {"ready_for_review", "completed_verified"}, "unexpected R0 checkpoint state")

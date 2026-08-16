@@ -96,13 +96,22 @@ def validate_foundation(root):
     counts=manifest["conversation_counts"]; source=ref["source_counts"]
     need((source["conversations"],source["messages"],source["user_messages"],source["assistant_messages"])==(counts["total"],counts["messages"],counts["user_messages"],counts["assistant_messages"]),"foundation counts mismatch")
 
+def roadmap_entries(root,p):
+    entries=list(read(root/INDEX)["entries"])
+    supplement=p.get("roadmap_index_supplement")
+    if supplement:
+        supplement_path=root/Path(supplement)
+        need(supplement_path.is_file(),f"roadmap index supplement missing: {supplement}")
+        entries.extend(read(supplement_path).get("entries",[]))
+    return entries
+
 def validate_all(root):
     text=(root/PROMPT_PATH).read_text(encoding="utf-8"); need(text.rstrip("\n")==PROMPT and "\n" not in text.rstrip("\n"),"static prompt changed")
     need((root/BOOTSTRAP).is_file(),"bootstrap missing")
     validate_foundation(root)
     tests=(root/TESTS).read_text(encoding="utf-8")
     for test_id in [*(f"CONT-{i:03d}" for i in range(1,19)),*(f"PERF-{i:03d}" for i in range(1,5))]: need(test_id in tests,f"acceptance test missing: {test_id}")
-    p,c=validate_pointer(root); idx=read(root/INDEX); ids=[x["work_item_id"] for x in idx["entries"]]
+    p,c=validate_pointer(root); entries=roadmap_entries(root,p); ids=[x["work_item_id"] for x in entries]
     need(len(ids)==len(set(ids)),"duplicate roadmap index item")
     required={x["work_item_id"] for x in p["active_attempts"]}|{x["next_work_item_id"] for x in p["deferred_tracks"]}
     need(required<=set(ids),f"roadmap index missing {sorted(required-set(ids))}")
