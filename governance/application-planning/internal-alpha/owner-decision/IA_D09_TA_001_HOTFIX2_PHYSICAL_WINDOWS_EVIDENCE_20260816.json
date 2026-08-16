@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "1.0.0",
+  "workItemId": "IA-D09-TA-001",
+  "evidenceId": "IA-D09-TA-001-HOTFIX2-PHYSICAL-WINDOWS-20260816",
+  "recordedAtUtc": "2026-08-16T15:03:00Z",
+  "authority": "Owner physical Windows observation",
+  "package": {
+    "fileName": "Multiversal-Internal-Alpha-Windows-HOTFIX2-a4e262167aa9.zip",
+    "sha256": "5c9f31c96a3373f927f8d3a7ee6ee821aafeda8d0ae26a0c6cecf94ca129e0de",
+    "marker": "IA-HOTFIX-ACCOUNT-DISPATCH-2",
+    "port": 8877
+  },
+  "applicationRepair": {
+    "pullRequest": 156,
+    "mergeSha": "7cc9fa4a042a461d03c88d69c2b18ed18c0f9e21"
+  },
+  "result": {
+    "accountSelectorOpened": true,
+    "accountsTested": 20,
+    "gmAccountsExpected": 10,
+    "playerAccountsExpected": 10,
+    "gmAccountsOpenedInGmMode": [
+      "john-gm",
+      "tester1",
+      "tester3",
+      "tester5",
+      "tester7",
+      "tester9",
+      "tester11",
+      "tester13",
+      "tester15",
+      "tester17"
+    ],
+    "playerAccountsOpenedInPlayerMode": [
+      "john-player",
+      "tester2",
+      "tester4",
+      "tester6",
+      "tester8",
+      "tester10",
+      "tester12",
+      "tester14",
+      "tester16",
+      "tester18"
+    ],
+    "gmRoleRoutingPassCount": 10,
+    "playerRoleRoutingPassCount": 10,
+    "incorrectRoleRoutingCount": 0,
+    "notFoundObserved": false,
+    "fullAccountRoleRoutingMatrix": "PASS"
+  },
+  "withdrawnPackages": [
+    "original owner-approved Windows ZIP that physically returned Not Found from John GM",
+    "first PowerShell-interpolation hotfix candidate that physically returned the same Not Found"
+  ],
+  "separateFinding": {
+    "applicationIssue": 157,
+    "summary": "GM sidebar Campaign/Session/Combat/Assets buttons are inert.",
+    "blockingForAccountRoleRouting": false,
+    "disposition": "known internal-alpha usability issue; track separately from distribution-entry repair"
+  },
+  "ciInfrastructureNote": {
+    "appActionsRunnerStarted": false,
+    "reason": "GitHub Actions billing/spending-limit condition blocked app-repository runners before test steps executed.",
+    "failedProductTestObserved": false
+  },
+  "ownerDecisionBoundary": {
+    "physicalPassIsPackageApproval": false,
+    "explicitExactPackageApprovalStillRequired": true,
+    "publicDeploymentAuthorized": false,
+    "realUserDataAuthorized": false,
+    "productionCredentialsAuthorized": false,
+    "paidProviderAuthorized": false,
+    "androidApkAuthorized": false,
+    "sharedLiveCampaignSessionAuthority": false
+  }
+}
