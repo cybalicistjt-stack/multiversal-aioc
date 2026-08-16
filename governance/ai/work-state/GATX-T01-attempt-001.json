@@ -7,27 +7,40 @@
   "branch": "internal-alpha/guided-alpha-tranche-1",
   "governance_repository": "cybalicistjt-stack/multiversal-aioc",
   "governance_branch": "governance/guided-alpha-testing-experience",
-  "status": "started",
+  "status": "in_progress",
   "owner_selected": true,
   "started_at": "2026-08-16T16:20:00Z",
-  "updated_at": "2026-08-16T16:20:00Z",
+  "updated_at": "2026-08-16T16:34:29Z",
   "objective": "Complete Guided Alpha Testing Experience Tranche 1: make the current Internal Alpha a self-explanatory guided test environment with explicit tester identity, role, build/candidate identity, connection mode, test campaign, testing round, progress, current objective, next action, expected result, known limitations, reset/recovery and defect-entry affordances. Preserve the already-constructed GM navigation repair as the tranche baseline.",
   "construction_rule": "Finish the entire tranche construction before running validation checks. Do not interrupt construction with per-slice hosted validation.",
-  "active_substep": "tranche-1-construction",
-  "next_action": "Inspect current Player/GM entry seams, alpha access/runtime metadata, shared UI components, and test configuration; then implement the complete Tranche 1 guided testing shell and deterministic state model before validation.",
+  "construction_complete": true,
+  "construction_head": "a18d89bcfc002637705f6430fd1486dfd0d67fae",
+  "validation_started": false,
+  "active_substep": "tranche-1-validation",
+  "next_action": "Run the sealed Tranche 1 validation phase: deterministic Guided Alpha/setup/account-dispatch verifiers, affected GM/tester identity tests, full client regression, typecheck, accessibility, build, exact-candidate packaging/smoke, headed-browser evidence and actual Windows PowerShell package gate. Batch related repairs before rerunning the smallest applicable final gate.",
   "application_baseline": {
     "base_main": "9dba609d4b5ea9149be5ac79431ac92d1da86316",
     "absorbed_gm_navigation_head": "4d3a8175a931c1561cf2f585be0091da58b9f1c2",
     "source_pull_request": 158,
     "source_issue": 157
   },
+  "construction_evidence": {
+    "guided_shell": "apps/client-ui/public/guided-alpha.html",
+    "round_contract": "apps/client-ui/public/guided-alpha-round.json",
+    "work_order": ".agent/active-work-orders/WO-GATX-T01-GUIDED-ALPHA-FRAMEWORK.json",
+    "deterministic_verifier": "tools/verify_guided_alpha_tranche1.py",
+    "headed_browser_scenarios": 7,
+    "ci_workflows_updated": 3,
+    "reference_campaign_context": "Glass Harbor Incident / Meridian Testbed",
+    "full_reference_campaign_fixture_integrated": false
+  },
   "related_deferred_defect": {
     "issue": 159,
-    "disposition": "Retain for later Guided Alpha device/LAN tranche; do not let Android transport debugging fragment Tranche 1 construction."
+    "disposition": "Retain for later Guided Alpha device/LAN tranche; do not let Android transport debugging fragment Tranche 1."
   },
   "acceptance": [
     "Alpha entry clearly identifies tester/account and role.",
-    "Alpha entry clearly identifies exact test round, build/candidate context, connection mode and reference campaign context.",
+    "Alpha entry clearly identifies exact test round, build/candidate context, connection mode and reference Campaign context.",
     "Tester can see current objective, next step and expected result without external instructions.",
     "Tester can start or resume the guided round and see deterministic progress.",
     "Tester has visible access to current objective, expected result, report-problem, reset-scenario, connection-status, known-limitations and testing-progress functions or surfaces.",
@@ -42,6 +55,6 @@
     "merge_required_for_completed_verified": true
   },
   "known_blockers": [
-    "Application GitHub Actions are currently prevented from starting by the account billing/spending-limit condition; local/deterministic validation evidence may therefore be required before hosted gates can be completed."
+    "Application GitHub Actions have recently been prevented from starting by the account billing/spending-limit condition. Hosted validation must be attempted and classified from current evidence; do not treat an unstarted job as a product failure or a pass."
   ]
 }
