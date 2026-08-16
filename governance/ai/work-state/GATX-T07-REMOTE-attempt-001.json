@@ -1,17 +1,17 @@
 {
   "schema_version": "1.0.0",
-  "revision": 6,
+  "revision": 7,
   "work_item_id": "GATX-T07-REMOTE",
   "attempt_id": "GATX-T07-REMOTE-attempt-001",
   "track": "guided-alpha-testing-experience",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "branch": "internal-alpha/gatx-t07-remote-t08-cross-location",
   "governance_repository": "cybalicistjt-stack/multiversal-aioc",
-  "governance_branch": "governance/gatx-t07-remote-t08-cross-location",
+  "governance_branch": "governance/gatx-t07-railway-repo-access-blocker",
   "status": "in_progress",
   "owner_selected": true,
   "started_at": "2026-08-16T22:46:00Z",
-  "updated_at": "2026-08-16T23:25:00Z",
+  "updated_at": "2026-08-16T23:31:00Z",
   "completed_at": null,
   "base_commit": "f489a5c791580f695cd5e5f60600f567145c93cb",
   "construction_complete": true,
@@ -23,7 +23,7 @@
   "application_merge_commit": "5e4f446518701cd9271ebc493f30dcac0a2b5166",
   "validation_started": true,
   "objective": "Activate the transport-neutral Guided Alpha over a dedicated access-gated remote internal-alpha runtime reusing the canonical P9 authoritative-session foundations, then complete the permanent GATX-T08 cross-location regression program.",
-  "last_verified_action": "Application candidate 489acc1dca0ebd8b1495b26bc72ad043f59b5a4c passed exact-head run 31977976497 in both declared jobs and PR #179 squash-merged as 5e4f446518701cd9271ebc493f30dcac0a2b5166. The isolated Railway project/config/secrets/domain exist, but no verified live deployment receipt has yet been recorded.",
+  "last_verified_action": "AIOC continuity run 31979176786 passed and governance PR #351 squash-merged as b2b68b7dfffd3b00cffc7a08353b793a17126284. A fresh Railway service gatx-remote-live-final was configured with the validated Dockerfile, /health, role-secret variables and a generated domain. Railway redeploy, create-deployment, service-variable deploy trigger, environment accept-deploy and GitHub watcher trigger all produced no deployment. Railway agent thread 850e32d8-8801-46bd-8359-fe109851abbf diagnosed the root cause: Railway cannot access the private cybalicistjt-stack/Multiversal-app repository, so it cannot clone the source for the first build.",
   "owner_authorization": {
     "source": "Owner instruction 2026-08-16: finish the rest of 07 and 08 and make it ready to use.",
     "internal_alpha_remote_test_deployment_authorized": true,
@@ -40,13 +40,13 @@
     "P9-06-023": {"status": "closed", "application_merge_commit": "fb22295948745347913bcbfebf56ecca26bf39fb", "acceptance_gate": "AG-07"},
     "P9-06-024": {"status": "approved-active", "decision_id": "P9-06-024-OWNER-DECISION-001"}
   },
-  "active_substep": "remote-first-deployment-blocked",
-  "completed_substeps": ["dependency-recovery","owner-scope-recovery","application-branch","governance-branch","access-gated-remote-runner","remote-activation-contract","t08-permanent-regression-contract","deterministic-http-verifier","preservation-workflow","minimal-deployment-image","application-work-order-and-handoff","construction-seal","application-pr","validation-start","deployment-config-repair","final-exact-head-application-validation","application-merge"],
-  "next_action": "Obtain a real first deployment receipt for the already configured isolated Railway service, then verify /health, unauthorized denial, role-bound GM/Player same-session authority, hidden-information filtering and reconnect against that deployed runtime. Do not mark completed_verified until those deployment gates and governance continuity pass.",
+  "active_substep": "railway-github-repo-access-blocked",
+  "completed_substeps": ["dependency-recovery","owner-scope-recovery","application-branch","governance-branch","access-gated-remote-runner","remote-activation-contract","t08-permanent-regression-contract","deterministic-http-verifier","preservation-workflow","minimal-deployment-image","application-work-order-and-handoff","construction-seal","application-pr","validation-start","deployment-config-repair","final-exact-head-application-validation","application-merge","blocked-state-continuity","blocked-state-governance-merge","fresh-railway-service-configuration","railway-root-cause-diagnosis"],
+  "next_action": "Grant the Railway GitHub app access to the private cybalicistjt-stack/Multiversal-app repository and ensure gatx-remote-live-final is linked to branch deploy/gatx-t07-remote-validated. Then trigger the first deployment and verify /health, unauthorized denial, role-bound GM/Player same-session authority, hidden-information filtering and reconnect. Do not change repository visibility or publish private source to an unauthenticated registry.",
   "scope_boundaries": {
     "must_reuse": ["GATX-T07-ARCH transport contract", "P9-06-016 authoritative command semantics", "P9-06-017 ordered delivery", "P9-06-018 hidden-information projection", "P9-06-019 reconnect restoration", "P9-06-023 accepted thin-adapter session runner", "GATX T03/T04/T05/T06/DIAG-F01 testing systems"],
     "authorized": ["dedicated access-gated internal-alpha remote test service", "Railway-generated HTTPS domain for the dedicated test service", "synthetic Glass Harbor testing only", "T08 remote regression charters and evidence"],
-    "not_authorized": ["production release", "paid provider commitment", "real-user data", "production credentials", "expose the existing local runner to the public Internet", "port forwarding", "public tunnel", "native Android APK release", "automatic A13"]
+    "not_authorized": ["production release", "paid provider commitment", "real-user data", "production credentials", "make Multiversal-app public", "publish private source to an unauthenticated registry", "expose the existing local runner to the public Internet", "port forwarding", "public tunnel", "native Android APK release", "automatic A13"]
   },
   "construction_contract": {"remote_contract_id":"GATX-T07-REMOTE-CONTRACT-001","remote_marker":"GATX-T07-REMOTE-1","t08_charter_id":"GATX-T08-CROSS-LOCATION-REGRESSION-001","t08_charter_count":10,"separate_role_keys":true,"server_derived_roles":true,"raw_client_ip_stored":false,"synthetic_only":true,"startup_self_test":true,"minimal_docker_image":"deploy/gatx-remote/Dockerfile","railway_config":"deploy/gatx-remote/railway.json"},
   "remote_deployment": {
@@ -54,14 +54,19 @@
     "project_name": "Multiversal Guided Alpha Remote",
     "project_id": "3cd61dea-a227-4c89-81ad-629ded613a82",
     "environment_id": "6b115ce4-ed34-4ec5-b910-dfea7366a791",
-    "target_service_name": "gatx-remote-live",
-    "target_service_id": "a4441a0a-20d6-45d0-b942-0bd4b8025317",
-    "generated_domain": "gatx-remote-live-production.up.railway.app",
-    "domain_id": "083374b4-248f-412f-a12a-26c93649bc5b",
+    "target_service_name": "gatx-remote-live-final",
+    "target_service_id": "5f3954f2-4005-474e-9b37-c2516de5bd1d",
+    "generated_domain": "gatx-remote-live-final-production.up.railway.app",
+    "domain_id": "b631bee5-c12f-4cd7-bc55-85c1ea9021ea",
     "role_secrets_configured_outside_repository": true,
+    "dockerfile_path": "deploy/gatx-remote/Dockerfile",
+    "healthcheck_path": "/health",
+    "source_repo": "cybalicistjt-stack/Multiversal-app",
+    "source_branch": "deploy/gatx-t07-remote-validated",
     "first_deployment_receipt_present": false,
     "health_verified": false,
-    "connector_observation": "Source/config/secrets/domain are configured. A verified live deployment receipt is still required before completion."
+    "root_cause": "Railway GitHub app cannot access the private Multiversal-app repository; source clone/build cannot begin until that repository permission is granted.",
+    "railway_agent_thread": "850e32d8-8801-46bd-8359-fe109851abbf"
   },
   "completion_gate": {
     "required_evidence_kinds": ["commit", "pull_request", "ci_run", "artifact", "merge"],
@@ -74,11 +79,11 @@
     {"command":"P9-06-016 017 018 019 023 preservation","status":"pass","evidence":"exact-head run 31977976497 remote-contract-regression"},
     {"command":"client regression typecheck accessibility and build","status":"pass","evidence":"exact-head run 31977976497 client-preservation"},
     {"command":"dedicated Railway config as code","status":"pass","evidence":"exact-head run 31977976497 remote-contract-regression"},
-    {"command":"deployed remote health and unauthorized-access denial","status":"not_run","evidence":"blocked pending verified Railway deployment receipt"},
-    {"command":"deployed GM/player same-session authority hidden-information and reconnect smoke","status":"not_run","evidence":"blocked pending verified Railway deployment receipt"},
+    {"command":"deployed remote health and unauthorized-access denial","status":"not_run","evidence":"blocked: Railway GitHub app lacks access to private Multiversal-app repository"},
+    {"command":"deployed GM/player same-session authority hidden-information and reconnect smoke","status":"not_run","evidence":"blocked on first deployment after Railway GitHub repo access is granted"},
     {"command":"governance continuity validation","status":"not_run","evidence":null}
   ],
-  "unresolved_failures": [{"id":"GATX-T07-REMOTE-DEPLOY-001","class":"external-deployment-tooling","summary":"Railway source/config/secrets/domain are configured but no verified live deployment receipt has yet been recorded, so deployed health and runtime behavior remain unverified."}],
+  "unresolved_failures": [{"id":"GATX-T07-REMOTE-DEPLOY-001","class":"external-permission","summary":"Railway cannot access the private cybalicistjt-stack/Multiversal-app repository. The Railway GitHub app must be granted access before the configured service can perform its first source clone/build/deployment."}],
   "owner_decision_required": false,
   "roadmap_projection_pending": true,
   "evidence": [
@@ -86,7 +91,9 @@
     {"kind":"pull_request","value":"GATX-T07-REMOTE/T08 application PR #179"},
     {"kind":"ci_run","value":"GATX-T07-REMOTE/T08 exact-head validation run 31977976497 PASS both declared jobs"},
     {"kind":"merge","value":"GATX-T07-REMOTE/T08 application squash merge 5e4f446518701cd9271ebc493f30dcac0a2b5166"},
-    {"kind":"file","value":"GATX-T07-REMOTE deployment configuration deploy/gatx-remote/railway.json on validated application candidate"}
+    {"kind":"file","value":"GATX-T07-REMOTE deployment configuration deploy/gatx-remote/railway.json on validated application candidate"},
+    {"kind":"ci_run","value":"GATX-T07-REMOTE blocked-state governance continuity run 31979176786 PASS"},
+    {"kind":"merge","value":"GATX-T07-REMOTE blocked-state governance merge b2b68b7dfffd3b00cffc7a08353b793a17126284"}
   ],
-  "notes": ["The application implementation and exact-head CI are complete and merged, but completion is intentionally withheld until deployed-runtime evidence exists.","Hotfix2 remains the owner-approved general tester distribution unless separately replaced."]
+  "notes": ["The application implementation and exact-head CI are complete and merged; completion is withheld solely because Railway cannot clone the private repository until its GitHub app permission is corrected.","Railway native local-directory deployment via railway up is a documented alternative, but the connected agent cannot execute local CLI/source upload and the current runtime has no authenticated private image available.","Hotfix2 remains the owner-approved general tester distribution unless separately replaced."]
 }
