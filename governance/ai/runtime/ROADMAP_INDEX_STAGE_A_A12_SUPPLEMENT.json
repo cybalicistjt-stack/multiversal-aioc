@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-16T11:34:00Z",
+  "updated_at": "2026-08-16T12:54:00Z",
   "supplements": "governance/ai/runtime/ROADMAP_INDEX.json",
   "entries": [
     {
@@ -58,9 +58,35 @@
       "governing_document": "governance/application-planning/internal-alpha/owner-decision/IA_D09_TESTER_ENTRY_DECISION_PACKAGE.json",
       "design_anchor": "governance/application-planning/internal-alpha/IA-D09_INTERNAL_ALPHA_RELEASE_DESIGN_PACKAGE.md",
       "dependencies": ["IA-D09-OWNER-DECISION"],
-      "state": "authorized_not_started",
-      "scope": "exact approved candidate/build; browser/local-runner; synthetic-test-only; per-tester account/Campaign-role access records required",
-      "prohibited_scope": ["real-user data", "production credentials", "paid provider commitment", "public release/deployment", "broader AI authority", "Design Standards promotion"]
+      "state": "superseded_by_bounded_tester_access_setup",
+      "superseded_by": "IA-D09-TA-001"
+    },
+    {
+      "work_item_id": "IA-D09-TA-001",
+      "track": "internal-alpha-execution",
+      "governing_document": "governance/application-planning/internal-alpha/tester-access/IA_D09_TA_001_SUCCESSOR_VALIDATION_RECEIPT.json",
+      "roster_document": "governance/application-planning/internal-alpha/tester-access/INTERNAL_ALPHA_TESTER_ACCOUNT_ROSTER_v0.1.0.json",
+      "owner_decision_template": "governance/application-planning/internal-alpha/tester-access/IA_D09_TA_001_OWNER_DISTRIBUTION_DECISION_TEMPLATE.json",
+      "dependencies": ["IA-D09-OWNER-DECISION"],
+      "construction_state": "complete",
+      "validation_state": "validated",
+      "state": "blocked_owner",
+      "successor_candidate_sha": "de4ead1a93fa19daae3e3e5149c50139abc50f14",
+      "application_merge": "ebdb1fdaf05eb535a70255a41f76b66987a8f17a",
+      "package_zip_sha256": "d3d6e223245b71bc7f6265025168d61d5eb9b39447d662233584395ff0f73983",
+      "tester_accounts": 20,
+      "gm_accounts": 10,
+      "player_accounts": 10,
+      "tester_github_required": false,
+      "windows_private_zip": true,
+      "android_browser_lan": true,
+      "android_apk": false,
+      "data_classification": "synthetic-test-only",
+      "browser_state_scope": "local-per-browser-instance",
+      "shared_live_campaign_session_authority": false,
+      "successor_distribution_approved": false,
+      "owner_decision_required": true,
+      "prohibited_scope": ["real-user data", "production credentials", "paid provider commitment", "public release/deployment", "broader AI authority", "Design Standards promotion", "native Android APK", "synchronized shared-live Campaign/session authority"]
     }
   ]
 }
