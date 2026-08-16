@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0.0",
+  "candidate_sha": "56b127f1fc01eebe5c73ba0472a5b6496fe92b5e",
+  "candidate_state": "candidate-validated",
+  "release_approved": false,
+  "gates": [
+    {
+      "gate_id": "authorize Internal Alpha tester access",
+      "decision": "not-decided",
+      "decision_ready": true,
+      "required_evidence_status": "complete-for-bounded-synthetic-internal-alpha",
+      "decision_scope_constraints": [
+        "exact candidate/build only",
+        "browser/local-runner profiles only unless new evidence is added",
+        "synthetic-test-only data",
+        "each tester access record must name the authorized account and Campaign role",
+        "known limitations must be reviewed",
+        "no production credentials, paid-provider credentials, real-user data or public enrollment"
+      ],
+      "evidence_refs": [
+        "IA_D09_OWNER_DECISION_EVIDENCE_PACKET.md",
+        "IA_D09_TESTER_ENTRY_DECISION_PACKAGE.json",
+        "IA_D09_CANDIDATE_KNOWN_LIMITATIONS.json",
+        "IA_D09_CANDIDATE_DATA_PRIVACY_BOUNDARY.md",
+        "IA_D09_TESTER_RECOVERY_SUPPORT_PROCEDURE.md"
+      ]
+    },
+    {
+      "gate_id": "authorize real-user data collection",
+      "decision": "not-decided",
+      "decision_ready": false,
+      "required_evidence_status": "missing-real-user-data-governance-package",
+      "missing_evidence": ["real-user data inventory", "collection purpose", "retention schedule", "real-user privacy/security controls"],
+      "default": "synthetic/test data only"
+    },
+    {
+      "gate_id": "authorize production credentials",
+      "decision": "not-decided",
+      "decision_ready": false,
+      "required_evidence_status": "missing-production-provider-credential-package",
+      "missing_evidence": ["specific provider/service", "credential scope", "secret-handling procedure", "rollback/revocation path"],
+      "default": "no production credentials"
+    },
+    {
+      "gate_id": "authorize paid provider commitment",
+      "decision": "not-decided",
+      "decision_ready": false,
+      "required_evidence_status": "missing-spend-package",
+      "missing_evidence": ["specific provider/plan", "expected cost", "spend limits", "free/manual fallback", "cancellation path"],
+      "default": "no paid commitment"
+    },
+    {
+      "gate_id": "approve Internal Alpha release",
+      "decision": "not-decided",
+      "decision_ready": true,
+      "required_evidence_status": "complete-for-bounded-synthetic-internal-alpha",
+      "decision_scope_constraints": [
+        "exact candidate/build only",
+        "browser/local-runner profiles only unless new evidence is added",
+        "synthetic-test-only tester program",
+        "known limitations and unresolved-risk register accepted as bounded nonblocking scope",
+        "tester access remains a separate owner gate",
+        "no public deployment, production credentials, real-user data or paid-provider commitment"
+      ],
+      "evidence_refs": [
+        "IA_D09_OWNER_DECISION_EVIDENCE_PACKET.md",
+        "IA_D09_UNRESOLVED_RISK_REGISTER.json",
+        "IA_D09_TESTER_ENTRY_DECISION_PACKAGE.json",
+        "Multiversal-app receipts/STAGE-A-A12-CLOSURE.json",
+        "Multiversal-app A12 artifact 9261392785"
+      ]
+    },
+    {
+      "gate_id": "approve public release or deployment",
+      "decision": "not-decided",
+      "decision_ready": false,
+      "required_evidence_status": "not-a-current-internal-alpha-gate",
+      "missing_evidence": ["production readiness package", "explicit public release/deployment package"],
+      "default": "no public release/deployment"
+    },
+    {
+      "gate_id": "promote AI/automation authority",
+      "decision": "not-decided",
+      "decision_ready": false,
+      "required_evidence_status": "separate-governance-required",
+      "missing_evidence": ["broader authority model", "permissions", "audit", "rollback", "failure containment"],
+      "default": "AI remains advisory/proposal-only"
+    },
+    {
+      "gate_id": "promote working/noncanonical design standards",
+      "decision": "not-decided",
+      "decision_ready": false,
+      "required_evidence_status": "ds-008-not-complete",
+      "missing_evidence": ["completed inventory", "audit", "ID reconciliation", "governed repository review and accepted canonical mappings"],
+      "default": "remain working/noncanonical"
+    }
+  ]
+}
