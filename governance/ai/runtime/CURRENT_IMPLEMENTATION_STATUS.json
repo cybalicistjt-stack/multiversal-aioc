@@ -1,22 +1,28 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-16T22:13:00Z",
+  "generated_at": "2026-08-16T23:09:00Z",
   "source_pointer": "governance/ai/runtime/CURRENT_WORK_POINTER.json",
   "primary": {
-    "work_item_id": "GATX-T07-ARCH",
-    "attempt_id": "GATX-T07-ARCH-attempt-001",
+    "work_item_id": "GATX-T07-REMOTE",
+    "attempt_id": "GATX-T07-REMOTE-attempt-001",
     "track": "guided-alpha-testing-experience",
     "repository": "cybalicistjt-stack/Multiversal-app",
-    "branch": "internal-alpha/gatx-t07-transport-neutral-architecture",
-    "status": "completed_verified",
-    "active_substep": null,
-    "next_action": "GATX-T07-ARCH is completed_verified and the required GATX architecture boundary is satisfied. Stop here. GATX-T07-REMOTE and GATX-T08 remain dependency-gated and must not be started without their governed authoritative online/session prerequisites.",
-    "latest_pushed_commit": "2918e7772587b1aad973ca5685d90ea08475bf2d",
-    "pull_request": 177,
+    "branch": "internal-alpha/gatx-t07-remote-t08-cross-location",
+    "status": "in_progress",
+    "active_substep": "remote-first-deployment-blocked",
+    "next_action": "Obtain a real first deployment receipt for the already configured isolated Railway service, then verify /health, unauthorized denial, role-bound GM/Player same-session authority, hidden-information filtering and reconnect against that deployed runtime. Do not mark completed_verified until those deployment gates and governance continuity pass.",
+    "latest_pushed_commit": "489acc1dca0ebd8b1495b26bc72ad043f59b5a4c",
+    "pull_request": 179,
     "owner_decision_required": false,
-    "unresolved_failures": [],
-    "roadmap_projection_pending": false
+    "unresolved_failures": [
+      {
+        "id": "GATX-T07-REMOTE-DEPLOY-001",
+        "class": "external-deployment-tooling",
+        "summary": "Railway source/config/secrets/domain are configured but the connected Railway API has not produced a first deployment object, so deployed health and runtime behavior cannot be verified honestly."
+      }
+    ],
+    "roadmap_projection_pending": true
   },
-  "active_attempt_count": 1,
+  "active_attempt_count": 3,
   "deferred_track_count": 0
 }
