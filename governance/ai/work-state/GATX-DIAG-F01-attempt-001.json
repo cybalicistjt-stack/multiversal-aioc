@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 3,
+  "revision": 4,
   "work_item_id": "GATX-DIAG-F01",
   "attempt_id": "GATX-DIAG-F01-attempt-001",
   "track": "guided-alpha-testing-experience",
@@ -11,16 +11,11 @@
   "status": "completed_verified",
   "owner_selected": true,
   "started_at": "2026-08-16T17:10:00Z",
-  "updated_at": "2026-08-16T17:47:00Z",
+  "updated_at": "2026-08-16T17:48:00Z",
   "completed_at": "2026-08-16T17:47:00Z",
   "objective": "Before GATX-T02, establish one reusable privacy-bounded automatic diagnostic collection/export channel so pertinent system-known Alpha context is captured without tester copy/paste and a diagnostic JSON file is written on the host laptop.",
   "owner_instruction": "Make sure any pertinent information is collected automatically by the alpha and, when done, create a file on the laptop with all diagnostic information; prepare anything needed first, then continue to T02.",
-  "position": {
-    "after": "GATX-T01",
-    "before": "GATX-T02",
-    "kind": "prerequisite_foundation",
-    "pulled_forward_from": "GATX-T04"
-  },
+  "position": {"after":"GATX-T01","before":"GATX-T02","kind":"prerequisite_foundation","pulled_forward_from":"GATX-T04"},
   "construction_rule": "Finish the complete bounded foundation before validation; batch related validation repairs; do not fragment construction with micro-validation.",
   "construction_complete": true,
   "construction_head": "6223ee9946da26ec9c9abd8d85c4c51b6bf794ed",
@@ -38,67 +33,19 @@
     "python_runner": "tools/internal_alpha_tester_runner.py",
     "powershell_runner": "distribution/internal-alpha/START_MULTIVERSAL_ALPHA.ps1",
     "package_builder": "tools/build_internal_alpha_tester_package.py",
-    "deterministic_verifier": "tools/verify_guided_alpha_diagnostics.py",
-    "tester_setup_workflow": ".github/workflows/validate-internal-alpha-tester-setup.yml",
-    "successor_workflow": ".github/workflows/validate-internal-alpha-tester-successor.yml",
-    "powershell_workflow": ".github/workflows/validate-internal-alpha-powershell-account-links.yml"
+    "deterministic_verifier": "tools/verify_guided_alpha_diagnostics.py"
   },
-  "automatic_collection": [
-    "candidate/package/tranche/round identity",
-    "synthetic account and role",
-    "reference Campaign and world identifiers",
-    "host runner/runtime/LAN host/port",
-    "browser platform/language/user-agent/viewport/screen/pixel ratio/timezone",
-    "local/LAN connection observations",
-    "guided start/objective/reset/report/workspace/online-offline events",
-    "bounded JavaScript errors and unhandled rejections",
-    "bounded sanitized PowerShell runner log tail"
-  ],
-  "privacy_exclusions": [
-    "credentials/passwords",
-    "arbitrary form contents",
-    "keystrokes",
-    "free-text problem description",
-    "real Campaign/player data",
-    "unrelated personal files",
-    "browser history"
-  ],
-  "host_output": {
-    "directory": "diagnostics",
-    "in_progress_snapshot": true,
-    "round_complete_final_export": true,
-    "runner_stop_finalization": true,
-    "manual_export": true
-  },
-  "validated_package": {
-    "filename": "Multiversal-Internal-Alpha-Windows-f16a08c7df52-GATX-T01.zip",
-    "sha256": "725294665326fa89bf8d58567e6112f99c91b24db8cb758694e2608e3aa90bfb",
-    "workflow_artifact_id": 9267570968,
-    "workflow_artifact_sha256": "53b98f72deacdfb20e429c380de47cea3854a2247617275ea0fc3d2655fd90bf",
-    "distribution_approved": false
-  },
-  "acceptance": [
-    "Pertinent system-known diagnostic information is collected automatically.",
-    "The host laptop maintains an in-progress diagnostic JSON snapshot.",
-    "Completing the Guided Alpha round writes a final diagnostic JSON file on the host laptop.",
-    "Normal runner shutdown finalizes active sessions and Save Diagnostics Now permits an immediate snapshot.",
-    "Android/trusted-LAN browser events are stored on the Windows host laptop.",
-    "Diagnostic files carry exact build/account/role/round/browser/connection/error context and explicit privacy flags.",
-    "Unknown/free-text fields, credentials and arbitrary application contents do not enter the diagnostic file.",
-    "Package and runner contracts are tranche-dynamic for T02+ reuse.",
-    "No authority boundaries are expanded."
-  ],
-  "completion_gate": {
-    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
-    "required_validation_commands": [
-      "automatic diagnostics deterministic contract",
-      "client regression typecheck accessibility and build",
-      "exact-candidate Python host diagnostic export",
-      "headed-browser round-complete host diagnostic export",
-      "actual packaged Windows PowerShell diagnostic export",
-      "governance continuity validation"
-    ],
-    "owner_approval_required": false
+  "automatic_collection": ["candidate/package/tranche/round identity","synthetic account and role","reference Campaign and world identifiers","host runner/runtime/LAN host/port","browser platform/language/user-agent/viewport/screen/pixel ratio/timezone","local/LAN connection observations","guided start/objective/reset/report/workspace/online-offline events","bounded JavaScript errors and unhandled rejections","bounded sanitized PowerShell runner log tail"],
+  "privacy_exclusions": ["credentials/passwords","arbitrary form contents","keystrokes","free-text problem description","real Campaign/player data","unrelated personal files","browser history"],
+  "host_output": {"directory":"diagnostics","in_progress_snapshot":true,"round_complete_final_export":true,"runner_stop_finalization":true,"manual_export":true},
+  "validated_package": {"filename":"Multiversal-Internal-Alpha-Windows-f16a08c7df52-GATX-T01.zip","sha256":"725294665326fa89bf8d58567e6112f99c91b24db8cb758694e2608e3aa90bfb","workflow_artifact_id":9267570968,"workflow_artifact_sha256":"53b98f72deacdfb20e429c380de47cea3854a2247617275ea0fc3d2655fd90bf","distribution_approved":false},
+  "completion_gate": {"required_evidence_kinds":["commit","pull_request","ci_run","merge"],"required_validation_commands":["automatic diagnostics deterministic contract","client regression typecheck accessibility and build","exact-candidate Python host diagnostic export","headed-browser round-complete host diagnostic export","actual packaged Windows PowerShell diagnostic export","governance continuity validation"],"owner_approval_required":false},
+  "completion_evidence": {
+    "commit": "f16a08c7df520751be041df992c2217d71a3f332",
+    "pull_request": 162,
+    "ci_run": [31962299517,31962299464,31962299523],
+    "merge": "a6c2bd17962f8ed54dabd0d4d4446fdb58aa5754",
+    "artifact": {"id":9267570968,"filename":"Multiversal-Internal-Alpha-Windows-f16a08c7df52-GATX-T01.zip","sha256":"725294665326fa89bf8d58567e6112f99c91b24db8cb758694e2608e3aa90bfb"}
   },
   "validation": [
     {"command":"automatic diagnostics deterministic contract","status":"passed","evidence":"App setup run 31962299517 on f16a08c7df520751be041df992c2217d71a3f332: diagnostics/setup/PowerShell/T01 verifiers PASS."},
@@ -107,7 +54,7 @@
     {"command":"headed-browser round-complete host diagnostic export","status":"passed","evidence":"App successor run 31962299464: 7/7 headed Chromium Guided Alpha scenarios PASS and round completion created a host diagnostic JSON file."},
     {"command":"actual packaged Windows PowerShell diagnostic export","status":"passed","evidence":"App PowerShell run 31962299523: packaged Windows runner captured event, created in-progress JSON, exported final JSON, verified exact candidate/account/role/privacy, and rejected unknown free-text field."},
     {"command":"validation repair history","status":"passed_after_repair","evidence":"Stale verifier literals/casing and one Windows string-overload defect were repaired in bounded validation batches before final candidate f16a08c7df520751be041df992c2217d71a3f332; all declared gates passed on the final candidate."},
-    {"command":"governance continuity validation","status":"pending_final_projection","evidence":"Run final continuity after this completed_verified checkpoint/pointer/status projection before merging governance PR #344."}
+    {"command":"governance continuity validation","status":"pending_final_projection","evidence":"Run final continuity after machine-readable completion evidence is projected before merging governance PR #344."}
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
