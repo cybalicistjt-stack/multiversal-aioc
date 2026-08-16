@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-16T16:34:29Z",
+  "updated_at": "2026-08-16T17:34:00Z",
   "supplements": "governance/ai/runtime/ROADMAP_INDEX.json",
   "entries": [
     {
@@ -87,8 +87,19 @@
       "roadmap_document": "governance/application-planning/internal-alpha/guided-alpha/GATX_BACKLOG.json",
       "roadmap_section": "GATX-T01 — Guided Alpha framework",
       "dependencies": [],
-      "state": "in_progress",
+      "state": "completed_verified",
+      "application_merge_commit": "503b793dbc3579e41da78d89722118df10889ed4",
       "completion_gate": "Complete persistent role-safe guided shell construction, then focused/client/package/browser/Windows validation, PR/merge and canonical completion evidence."
+    },
+    {
+      "work_item_id": "GATX-DIAG-F01",
+      "track": "guided-alpha-testing-experience",
+      "governing_document": "governance/application-planning/internal-alpha/guided-alpha/GUIDED_ALPHA_TESTING_EXPERIENCE_PROGRAM.md",
+      "roadmap_document": "governance/application-planning/internal-alpha/guided-alpha/GATX_BACKLOG.json",
+      "roadmap_section": "GATX prerequisite — Automatic diagnostics foundation",
+      "dependencies": ["GATX-T01"],
+      "state": "in_progress",
+      "completion_gate": "Automatic system-known diagnostic capture, host in-progress/final JSON export, privacy exclusions, tranche-dynamic runner/package transport, headed-browser and actual Windows PowerShell file evidence, merge, and canonical completion evidence."
     },
     {
       "work_item_id": "GATX-T02",
@@ -96,8 +107,8 @@
       "governing_document": "governance/application-planning/internal-alpha/guided-alpha/GUIDED_ALPHA_TESTING_EXPERIENCE_PROGRAM.md",
       "roadmap_document": "governance/application-planning/internal-alpha/guided-alpha/GATX_BACKLOG.json",
       "roadmap_section": "GATX-T02 — Glass Harbor reference Campaign integration",
-      "dependencies": ["GATX-T01"],
-      "state": "planned"
+      "dependencies": ["GATX-DIAG-F01"],
+      "state": "planned_next_after_prerequisite"
     },
     {
       "work_item_id": "GATX-T03",
@@ -114,7 +125,7 @@
       "governing_document": "governance/application-planning/internal-alpha/guided-alpha/GUIDED_ALPHA_TESTING_EXPERIENCE_PROGRAM.md",
       "roadmap_document": "governance/application-planning/internal-alpha/guided-alpha/GATX_BACKLOG.json",
       "roadmap_section": "GATX-T04 — Frictionless evidence and defect capture",
-      "dependencies": ["GATX-T03"],
+      "dependencies": ["GATX-T03", "GATX-DIAG-F01"],
       "state": "planned"
     },
     {
