@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "GATX-T01",
+  "attempt_id": "GATX-T01-attempt-001",
+  "track": "guided-alpha-testing-experience",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "branch": "internal-alpha/guided-alpha-tranche-1",
+  "governance_repository": "cybalicistjt-stack/multiversal-aioc",
+  "governance_branch": "governance/guided-alpha-testing-experience",
+  "status": "started",
+  "owner_selected": true,
+  "started_at": "2026-08-16T16:20:00Z",
+  "updated_at": "2026-08-16T16:20:00Z",
+  "objective": "Complete Guided Alpha Testing Experience Tranche 1: make the current Internal Alpha a self-explanatory guided test environment with explicit tester identity, role, build/candidate identity, connection mode, test campaign, testing round, progress, current objective, next action, expected result, known limitations, reset/recovery and defect-entry affordances. Preserve the already-constructed GM navigation repair as the tranche baseline.",
+  "construction_rule": "Finish the entire tranche construction before running validation checks. Do not interrupt construction with per-slice hosted validation.",
+  "active_substep": "tranche-1-construction",
+  "next_action": "Inspect current Player/GM entry seams, alpha access/runtime metadata, shared UI components, and test configuration; then implement the complete Tranche 1 guided testing shell and deterministic state model before validation.",
+  "application_baseline": {
+    "base_main": "9dba609d4b5ea9149be5ac79431ac92d1da86316",
+    "absorbed_gm_navigation_head": "4d3a8175a931c1561cf2f585be0091da58b9f1c2",
+    "source_pull_request": 158,
+    "source_issue": 157
+  },
+  "related_deferred_defect": {
+    "issue": 159,
+    "disposition": "Retain for later Guided Alpha device/LAN tranche; do not let Android transport debugging fragment Tranche 1 construction."
+  },
+  "acceptance": [
+    "Alpha entry clearly identifies tester/account and role.",
+    "Alpha entry clearly identifies exact test round, build/candidate context, connection mode and reference campaign context.",
+    "Tester can see current objective, next step and expected result without external instructions.",
+    "Tester can start or resume the guided round and see deterministic progress.",
+    "Tester has visible access to current objective, expected result, report-problem, reset-scenario, connection-status, known-limitations and testing-progress functions or surfaces.",
+    "GM and Player experiences use the same guided-testing contract while preserving role isolation.",
+    "Existing GM Campaign/Session/Combat/Assets navigation remains functional and organized.",
+    "No production credentials, real-user data, public deployment, synchronized shared-live authority or native Android APK authority is introduced.",
+    "Affected tests/typecheck/build and bounded guided-alpha regressions pass after construction is complete, subject to external GitHub runner availability."
+  ],
+  "completion_gate": {
+    "required_evidence_kinds": ["application_commit", "pull_request", "validation", "governance_record"],
+    "owner_physical_check_required": false,
+    "merge_required_for_completed_verified": true
+  },
+  "known_blockers": [
+    "Application GitHub Actions are currently prevented from starting by the account billing/spending-limit condition; local/deterministic validation evidence may therefore be required before hosted gates can be completed."
+  ]
+}
