@@ -11,11 +11,12 @@
     "dependency_gated_later": ["GATX-T07-REMOTE", "GATX-T08"]
   },
   "current_position": {
-    "highest_completed": "GATX-DIAG-F01",
+    "highest_completed": "GATX-T02",
     "active_item": null,
-    "next_tranche_after_active_item": "GATX-T02",
-    "next_tranche_title": "Glass Harbor reference Campaign integration",
-    "t02_started": false
+    "next_tranche_after_active_item": "GATX-T03",
+    "next_tranche_title": "Guided scenario and test-journey engine",
+    "t02_started": true,
+    "t02_completed": true
   },
   "items": [
     {
@@ -56,15 +57,25 @@
     {
       "id": "GATX-T02",
       "title": "Glass Harbor reference Campaign integration",
-      "status": "planned_next",
+      "status": "completed_verified",
       "dependencies": ["GATX-DIAG-F01"],
+      "attempt_id": "GATX-T02-attempt-001",
+      "application_branch": "internal-alpha/gatx-t02-glass-harbor-integration",
+      "application_pull_request": 163,
+      "validated_candidate_sha": "9b3be55c2b7aebc7620bf26429f55d3de1dfd84d",
+      "application_merge_commit": "773e24bbb0d3b7b5c484eceb3f37c69c8f6c416b",
+      "completed_at": "2026-08-16T18:26:30Z",
+      "validation_runs": [31964399451],
+      "validated_package": "Multiversal-Internal-Alpha-Windows-9b3be55c2b7a-GATX-T02.zip",
+      "validated_package_sha256": "74c03e034b9e719c7c89f9dff5d81a33a6eeae6b4878a3ba912e427f4172e0dc",
       "source_authority": "governance/application-planning/stage-a-reference-campaign/STAGE_A_TESTER_REFERENCE_CAMPAIGN_KIT_HANDOFF_v0.1.0.md",
-      "acceptance_summary": "Validated Glass Harbor Incident / Meridian Testbed fixture becomes a deterministic coherent application test Campaign with reset and emits pertinent system-known evidence through the automatic diagnostics foundation."
+      "source_package_sha256": "bea56f266449f8b89d855bca9e36973c20c3dd95dfb79897fe1132c94df457f6",
+      "acceptance_summary": "Validated Glass Harbor Incident / Meridian Testbed fixture is now a deterministic coherent Guided Alpha Campaign with 27 canonical records, role-safe projection, reset, real workspace context and host diagnostics; 24 source journeys are catalogued but execution remains T03."
     },
     {
       "id": "GATX-T03",
       "title": "Guided scenario and test-journey engine",
-      "status": "planned",
+      "status": "planned_next",
       "dependencies": ["GATX-T02"],
       "acceptance_summary": "Machine-readable role-aware scenarios guide repeatable objectives/actions/expected results/recovery/reset/outcomes across progressively larger test charters."
     },
