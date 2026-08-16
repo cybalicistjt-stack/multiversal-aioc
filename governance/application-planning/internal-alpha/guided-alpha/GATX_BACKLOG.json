@@ -11,12 +11,12 @@
     "dependency_gated_later": ["GATX-T07-REMOTE", "GATX-T08"]
   },
   "current_position": {
-    "highest_completed": "GATX-T03",
+    "highest_completed": "GATX-T04",
     "active_item": null,
-    "next_tranche_after_active_item": "GATX-T04",
-    "next_tranche_title": "Frictionless evidence and defect capture",
-    "t02_completed": true,
-    "t03_completed": true
+    "next_tranche_after_active_item": "GATX-T05",
+    "next_tranche_title": "Device and trusted-LAN connection center",
+    "t03_completed": true,
+    "t04_completed": true
   },
   "items": [
     {
@@ -84,7 +84,7 @@
       "validated_candidate_sha": "85bd490a0805186071a148768bae661e12dc30b6",
       "application_merge_commit": "fd643355a6cf10db51190d15037711ee04515637",
       "completed_at": "2026-08-16T19:01:00Z",
-      "validation_runs": [31965938394, 31966227328],
+      "validation_runs": [31965938394, 31966227328, 31966327261],
       "validated_package": "Multiversal-Internal-Alpha-Windows-85bd490a0805-GATX-T03.zip",
       "validated_package_sha256": "29091a2c3ad2c415e98ada0a7591cea6c685c5f728dd928b5ffaf346d4c013bc",
       "workflow_artifact_id": 9268507845,
@@ -103,19 +103,47 @@
     {
       "id": "GATX-T04",
       "title": "Frictionless evidence and defect capture",
-      "status": "planned_next",
+      "status": "completed_verified",
       "dependencies": ["GATX-T03"],
       "foundation_dependency": "GATX-DIAG-F01",
-      "remaining_scope_after_foundation": "Attach scenario/step/application-area/synthetic-state context, tester-perceived/expected input, defect classification and reproducibility packaging to the already-installed automatic diagnostics transport/export substrate.",
-      "acceptance_summary": "Safe system-known context is combined with the minimal tester-supplied perception/expectation needed for reproducible classified defect bundles."
+      "attempt_id": "GATX-T04-attempt-001",
+      "application_branch": "internal-alpha/gatx-t04-evidence-defect-capture",
+      "governance_branch": "governance/gatx-t04-evidence-defect-capture",
+      "construction_head": "7a4f5995a0964f2852f49520be5ea5a57f5a68fa",
+      "validated_candidate_sha": "38eb5bcf8e6c5ea9a679f58c75f0ec482510547c",
+      "application_pull_request": 165,
+      "application_merge_commit": "8aa81e12a4e17f23aa98fd8461e635ad35145797",
+      "started_at": "2026-08-16T19:03:00Z",
+      "completed_at": "2026-08-16T19:49:00Z",
+      "validation_runs": [31968282129, 31968647769],
+      "validated_package": "Multiversal-Internal-Alpha-Windows-38eb5bcf8e6c-GATX-T04.zip",
+      "validated_package_sha256": "e37ce2e9f4c44fa1af460d54881fcfe5873b0b52ce1651088957ac9cf900602d",
+      "workflow_artifact_id": 9269106399,
+      "workflow_artifact_sha256": "8c2baff557411848cc32b1f0634b31fea937b06115779a6b0658ec85bef53e97",
+      "distribution_approved": false,
+      "evidence_contract_id": "GATX-T04-EVIDENCE-CONTRACT-001",
+      "bundle_marker": "GATX-T04-EVIDENCE-BUNDLE-1",
+      "tester_text_fields": ["observed", "expected"],
+      "tester_text_max_length": 512,
+      "explicit_consent_required": true,
+      "defect_classes": 7,
+      "severity": ["info", "warning", "error"],
+      "reproducibility": ["not-retried", "once", "intermittent", "every-time"],
+      "application_area_mappings": 24,
+      "bundle_contents": ["defect.json", "diagnostics.json", "README.txt", "SHA256SUMS.txt"],
+      "diagnostics_foundation_reused": true,
+      "scenario_engine_reused": true,
+      "remote_upload": false,
+      "validation_summary": "Final exact-head run passed both declared jobs: 173/173 regression, typecheck, accessibility, build, explicit consent gate, actual packaged Windows PowerShell POST-to-ZIP, 8/8 headed Chromium evidence cases, and host-bundle privacy inspection. AIOC continuity then passed before completed_verified projection.",
+      "acceptance_summary": "Safe system-known context is combined with only two bounded tester-supplied observed/expected fields, explicit consent, governed classification and a local reviewable reproducibility ZIP linked to DIAG-F01; protected hidden state is reduced before evidence transport."
     },
     {
       "id": "GATX-T05",
       "title": "Device and trusted-LAN connection center",
-      "status": "planned",
+      "status": "planned_next",
       "dependencies": ["GATX-T04"],
       "related_application_issue": 159,
-      "acceptance_summary": "Same-LAN device setup is guided; server/port/network/firewall/request state is visible; failures are classified by layer and temporary access can be cleaned up."
+      "acceptance_summary": "Same-LAN device setup is guided; server/port/network-profile/firewall/listener/request state is visible; failures are classified by layer and temporary access can be cleaned up."
     },
     {
       "id": "GATX-T06",
