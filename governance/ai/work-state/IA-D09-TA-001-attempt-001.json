@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 6,
+  "revision": 7,
   "work_item_id": "IA-D09-TA-001",
   "attempt_id": "IA-D09-TA-001-attempt-001",
   "track": "internal-alpha-execution",
@@ -9,14 +9,14 @@
   "status": "completed_verified",
   "owner_selected": true,
   "started_at": "2026-08-16T12:19:00Z",
-  "updated_at": "2026-08-16T15:09:00Z",
+  "updated_at": "2026-08-16T15:18:01Z",
   "completed_at": "2026-08-16T15:09:00Z",
   "objective": "Construct, validate, physically verify, and owner-approve the bounded 20-account Internal Alpha tester identity, role, Windows distribution, and Android LAN/browser access package without broadening production or shared-live authority.",
-  "last_verified_action": "Owner physically verified all 20 Hotfix 2 accounts on Windows (10/10 GM, 10/10 Player, 0 incorrect), app repair PR #156 merged as 7cc9fa4a042a461d03c88d69c2b18ed18c0f9e21, AIOC physical evidence merged as f717f14730bf617e8176806cfb6134d0da30ff19, and John Brandon Turner explicitly approved exact replacement ZIP SHA256 5c9f31c96a3373f927f8d3a7ee6ee821aafeda8d0ae26a0c6cecf94ca129e0de.",
+  "last_verified_action": "Canonical Hotfix 2 approval workflow run 31955221672 job 95184729731 passed the Hotfix-aware successor packet validator, exact owner-approval validator, and continuity validator on head bda50e6e71130389fccef683ea9971a6f42a82d7. Physical Windows evidence remains 20/20 correct role routing.",
   "active_substep": null,
   "next_action": "Use/distribute only the exact owner-approved Hotfix 2 package and capture Internal Alpha defects through normal issue/evidence flow. Do not alter/rebuild the package, activate shared-live runtime, or create A13 without a separate governed decision.",
-  "latest_pushed_commit": "e0e87988898859092c7858a0d78cf5c52bda0c7f",
-  "expected_remote_head": "e0e87988898859092c7858a0d78cf5c52bda0c7f",
+  "latest_pushed_commit": "bda50e6e71130389fccef683ea9971a6f42a82d7",
+  "expected_remote_head": "bda50e6e71130389fccef683ea9971a6f42a82d7",
   "pull_request": null,
   "successor_candidate_sha": "de4ead1a93fa19daae3e3e5149c50139abc50f14",
   "successor_application_merge": "ebdb1fdaf05eb535a70255a41f76b66987a8f17a",
@@ -57,7 +57,10 @@
       "focused tester setup + full client regression + package",
       "headed Chromium successor evidence",
       "actual packaged PowerShell runner on windows-latest",
-      "physical Windows 20-account role routing"
+      "physical Windows 20-account role routing",
+      "python tools/validate_ia_d09_ta_001_successor_packet.py",
+      "python tools/validate_ia_d09_ta_001_owner_approval.py",
+      "python tools/continuity_state.py validate"
     ],
     "owner_approval_required": true
   },
@@ -65,11 +68,14 @@
     {"command":"focused tester setup + full client regression + package","status":"passed","evidence":"IA-D09-TA-001 app run 31948141484 job 95167328126"},
     {"command":"headed Chromium successor evidence","status":"passed","evidence":"IA-D09-TA-001 app run 31948141491 job 95167328143; 6/6 scenarios"},
     {"command":"actual packaged PowerShell runner on windows-latest","status":"passed","evidence":"IA-D09-TA-001 app run 31948141491 job 95167328019"},
-    {"command":"physical Windows 20-account role routing","status":"passed","evidence":"IA-D09-TA-001 owner physical report; 10/10 GM, 10/10 Player, 0 incorrect; AIOC evidence merge f717f14730bf617e8176806cfb6134d0da30ff19"}
+    {"command":"physical Windows 20-account role routing","status":"passed","evidence":"IA-D09-TA-001 owner physical report; 10/10 GM, 10/10 Player, 0 incorrect; AIOC evidence merge f717f14730bf617e8176806cfb6134d0da30ff19"},
+    {"command":"python tools/validate_ia_d09_ta_001_successor_packet.py","status":"passed","evidence":"IA-D09-TA-001 Hotfix 2 run 31955221672 job 95184729731 step 4"},
+    {"command":"python tools/validate_ia_d09_ta_001_owner_approval.py","status":"passed","evidence":"IA-D09-TA-001 Hotfix 2 run 31955221672 job 95184729731 step 5"},
+    {"command":"python tools/continuity_state.py validate","status":"passed","evidence":"IA-D09-TA-001 Hotfix 2 run 31955221672 job 95184729731 step 6"}
   ],
   "evidence": [
     {"kind":"file","value":"IA-D09-TA-001 Hotfix 2 owner decision governance/application-planning/internal-alpha/tester-access/IA_D09_TA_001_HOTFIX2_OWNER_DISTRIBUTION_DECISION_20260816.json"},
-    {"kind":"ci_run","value":"IA-D09-TA-001 original exact successor validation app runs 31948141484 and 31948141491"},
+    {"kind":"ci_run","value":"IA-D09-TA-001 original successor app runs 31948141484/31948141491 and Hotfix 2 governance run 31955221672 job 95184729731"},
     {"kind":"merge","value":"IA-D09-TA-001 app repair merge 7cc9fa4a042a461d03c88d69c2b18ed18c0f9e21 and AIOC physical evidence merge f717f14730bf617e8176806cfb6134d0da30ff19"},
     {"kind":"owner_decision","value":"IA-D09-TA-001 John Brandon Turner explicitly approved exact replacement package Multiversal-Internal-Alpha-Windows-HOTFIX2-a4e262167aa9.zip SHA256 5c9f31c96a3373f927f8d3a7ee6ee821aafeda8d0ae26a0c6cecf94ca129e0de for bounded 20-account Internal Alpha distribution"}
   ],
