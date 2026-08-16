@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 2,
+  "revision": 3,
   "work_item_id": "GATX-T08",
   "attempt_id": "GATX-T08-attempt-001",
   "track": "guided-alpha-testing-experience",
@@ -11,7 +11,7 @@
   "status": "in_progress",
   "owner_selected": false,
   "started_at": "2026-08-16T22:46:00Z",
-  "updated_at": "2026-08-16T23:12:00Z",
+  "updated_at": "2026-08-16T23:25:00Z",
   "completed_at": null,
   "base_commit": "f489a5c791580f695cd5e5f60600f567145c93cb",
   "construction_complete": true,
@@ -23,7 +23,7 @@
   "application_merge_commit": "5e4f446518701cd9271ebc493f30dcac0a2b5166",
   "validation_started": true,
   "objective": "Complete cross-location Guided Alpha and establish the permanent remote-session regression loop using the access-gated T07 remote runtime, including adverse authorization, reconnect, ordering, hidden-information and latency cases.",
-  "last_verified_action": "All ten deterministic T08 charters passed on exact candidate 489acc1dca0ebd8b1495b26bc72ad043f59b5a4c in run 31977976497 and the implementation squash-merged as 5e4f446518701cd9271ebc493f30dcac0a2b5166. Final T08 completion is withheld because T07 has no verified first deployed-runtime receipt and no genuine geographically separated GM/Player evidence has been observed for R01/R02/R03/R06/R09.",
+  "last_verified_action": "All ten deterministic T08 charters passed on exact candidate 489acc1dca0ebd8b1495b26bc72ad043f59b5a4c in run 31977976497 and the implementation squash-merged as 5e4f446518701cd9271ebc493f30dcac0a2b5166. Final T08 completion is withheld because T07 has no verified live deployed-runtime receipt and no genuine geographically separated GM/Player evidence has been observed for R01/R02/R03/R06/R09.",
   "dependency": {
     "GATX-T07-REMOTE": {"status":"in_progress","software_implementation_merged":true,"deployed_runtime_verified":false,"checkpoint":"governance/ai/work-state/GATX-T07-REMOTE-attempt-001.json"}
   },
@@ -39,10 +39,15 @@
     "scenarios": ["T08-R01 remote join and same-session identity","T08-R02 Player proposal and GM authoritative approval","T08-R03 hidden-information boundary","T08-R04 ordered delivery","T08-R05 duplicate suppression","T08-R06 reconnect restoration","T08-R07 permission denial","T08-R08 credential denial","T08-R09 bounded adverse latency","T08-R10 synthetic session reset"],
     "actual_geographic_final_gate": ["T08-R01", "T08-R02", "T08-R03", "T08-R06", "T08-R09"]
   },
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "artifact", "merge"],
+    "required_validation_commands": ["all ten T08 deterministic regression charters","client regression typecheck accessibility and build","deployed remote T08 regression","actual geographically separated GM/Player evidence for R01 R02 R03 R06 R09","governance continuity validation"],
+    "owner_approval_required": false
+  },
   "validation": [
     {"command":"all ten T08 deterministic regression charters","status":"pass","evidence":"exact-head run 31977976497 remote-contract-regression"},
     {"command":"client regression typecheck accessibility and build","status":"pass","evidence":"exact-head run 31977976497 client-preservation"},
-    {"command":"deployed remote T08 regression","status":"not_run","evidence":"blocked on GATX-T07-REMOTE first deployed-runtime receipt"},
+    {"command":"deployed remote T08 regression","status":"not_run","evidence":"blocked on GATX-T07-REMOTE live deployed-runtime receipt"},
     {"command":"actual geographically separated GM/Player evidence for R01 R02 R03 R06 R09","status":"not_run","evidence":"requires genuine cross-location clients; simulation is forbidden"},
     {"command":"governance continuity validation","status":"not_run","evidence":null}
   ],
