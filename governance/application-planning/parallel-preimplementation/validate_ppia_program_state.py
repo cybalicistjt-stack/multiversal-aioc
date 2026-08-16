@@ -34,6 +34,17 @@ def checkpoint_for_pointer_entry(entry: dict) -> dict:
     return load_json(ROOT / entry["checkpoint_path"])
 
 
+def combined_index_ids(index: dict, pointer: dict) -> set[str]:
+    entries = list(index["entries"])
+    supplement_path = pointer.get("roadmap_index_supplement")
+    if supplement_path:
+        supplement = load_json(ROOT / supplement_path)
+        entries.extend(supplement.get("entries", []))
+    ids = [entry["work_item_id"] for entry in entries]
+    assert len(ids) == len(set(ids))
+    return set(ids)
+
+
 def validate_common(backlog: dict, index: dict, pointer: dict, status: dict, program: str, roadmap: str) -> tuple[str, dict, dict]:
     assert backlog["program_id"] == "PPIA" and backlog["version"] == "1.0.0"
     assert backlog["execution_order"] == EXPECTED_ORDER
@@ -46,7 +57,7 @@ def validate_common(backlog: dict, index: dict, pointer: dict, status: dict, pro
         assert boundaries[flag] is False
     assert boundaries["requires_codex"] is False
 
-    index_ids = {entry["work_item_id"] for entry in index["entries"]}
+    index_ids = combined_index_ids(index, pointer)
     assert set(EXPECTED_IDS).issubset(index_ids)
     assert "STAGE-A-A2" in index_ids and "DS-008-working-series" in index_ids
     historical_completion_checks()
