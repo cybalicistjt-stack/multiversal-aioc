@@ -99,13 +99,12 @@ def main() -> int:
 
     packet_text = (PACKET_DIR / "IA_D09_OWNER_DECISION_EVIDENCE_PACKET.md").read_text(encoding="utf-8")
     require("does not approve any owner-only gate" in packet_text, "packet must state non-approval boundary", errors)
-    require("There is no automatic A13" not in packet_text or True, "", errors)
+    require("There is no automatic A13" in (ROOT / "governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_IA_D09_OWNER_DECISION_PENDING.md").read_text(encoding="utf-8"), "bootstrap amendment must prevent automatic A13", errors)
 
     if errors:
         print("IA-D09 OWNER-DECISION EVIDENCE PACKET: FAIL")
         for error in errors:
-            if error:
-                print(f"- {error}")
+            print(f"- {error}")
         return 1
     print("IA-D09 OWNER-DECISION EVIDENCE PACKET: PASS")
     print("decision_ready=2 not_decision_ready=6 owner_decisions=0 release_approved=false")
