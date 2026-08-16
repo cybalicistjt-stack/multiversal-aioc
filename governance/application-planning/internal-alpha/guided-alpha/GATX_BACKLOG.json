@@ -12,11 +12,15 @@
   },
   "current_position": {
     "highest_completed": "GATX-T02",
-    "active_item": null,
-    "next_tranche_after_active_item": "GATX-T03",
-    "next_tranche_title": "Guided scenario and test-journey engine",
-    "t02_started": true,
-    "t02_completed": true
+    "active_item": "GATX-T03",
+    "active_item_title": "Guided scenario and test-journey engine",
+    "active_state": "construction_complete_validation_pending",
+    "next_tranche_after_active_item": "GATX-T04",
+    "next_tranche_title": "Frictionless evidence and defect capture",
+    "t02_completed": true,
+    "t03_started": true,
+    "t03_construction_complete": true,
+    "t03_validation_started": false
   },
   "items": [
     {
@@ -52,7 +56,7 @@
       "validated_package_sha256": "725294665326fa89bf8d58567e6112f99c91b24db8cb758694e2608e3aa90bfb",
       "kind": "prerequisite_foundation",
       "pulled_forward_from": "GATX-T04",
-      "acceptance_summary": "Guided Alpha automatically captures privacy-bounded system-known build/account/role/round/browser/connection/error context and writes in-progress/final JSON diagnostics on the host laptop; package/runner seams are reusable by T02 and later tranches."
+      "acceptance_summary": "Guided Alpha automatically captures privacy-bounded system-known build/account/role/round/browser/connection/error context and writes in-progress/final JSON diagnostics on the host laptop; package/runner seams are reusable by later tranches."
     },
     {
       "id": "GATX-T02",
@@ -70,14 +74,28 @@
       "validated_package_sha256": "74c03e034b9e719c7c89f9dff5d81a33a6eeae6b4878a3ba912e427f4172e0dc",
       "source_authority": "governance/application-planning/stage-a-reference-campaign/STAGE_A_TESTER_REFERENCE_CAMPAIGN_KIT_HANDOFF_v0.1.0.md",
       "source_package_sha256": "bea56f266449f8b89d855bca9e36973c20c3dd95dfb79897fe1132c94df457f6",
-      "acceptance_summary": "Validated Glass Harbor Incident / Meridian Testbed fixture is now a deterministic coherent Guided Alpha Campaign with 27 canonical records, role-safe projection, reset, real workspace context and host diagnostics; 24 source journeys are catalogued but execution remains T03."
+      "acceptance_summary": "Validated Glass Harbor Incident / Meridian Testbed fixture is a deterministic coherent Guided Alpha Campaign; 24 source journeys are catalogued for T03."
     },
     {
       "id": "GATX-T03",
       "title": "Guided scenario and test-journey engine",
-      "status": "planned_next",
+      "status": "construction_complete_validation_pending",
       "dependencies": ["GATX-T02"],
-      "acceptance_summary": "Machine-readable role-aware scenarios guide repeatable objectives/actions/expected results/recovery/reset/outcomes across progressively larger test charters."
+      "attempt_id": "GATX-T03-attempt-001",
+      "application_branch": "internal-alpha/gatx-t03-scenario-engine",
+      "construction_head": "4d9c0a34dc38e5917d4828436cc825769fcc5a87",
+      "source_package_sha256": "bea56f266449f8b89d855bca9e36973c20c3dd95dfb79897fe1132c94df457f6",
+      "runtime_scenarios": 24,
+      "derived_charters": 8,
+      "execution_modes": {"single-role":15,"coordinated-multi-role":5,"operator-or-future-role-required":4},
+      "outcomes": ["pass","fail","blocked","skipped"],
+      "public_player_orientation_records": 3,
+      "protected_full_records": 27,
+      "protected_full_projection_host_game_master_only": true,
+      "source_catalog_packaged": false,
+      "checkpoint_expected_facts_packaged": false,
+      "validation_started": false,
+      "acceptance_summary": "Machine-readable role-aware scenarios and eight T03-derived charters provide repeatable objectives/actions/expected results/recovery/reset/outcomes. Construction also enforces pre-projection privacy by keeping exact source/checkpoint facts repository-only, exposing only a three-record Player orientation projection, and host-gating the protected 27-record projection to roster-assigned Game Master accounts."
     },
     {
       "id": "GATX-T04",
