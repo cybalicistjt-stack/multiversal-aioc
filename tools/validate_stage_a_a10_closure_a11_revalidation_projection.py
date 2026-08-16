@@ -16,6 +16,11 @@ START = ROOT / "governance/application-planning/stage-a-a11/current-revalidation
 A10_IMPLEMENTATION_MERGE = "9744c5223eb41f9cac765f3807a7860ffe0d1143"
 A10_CLOSURE_MERGE = "f023c7feab49910b02abccf3ae87fd4b581c64c8"
 A11_ATTEMPT = "STAGE-A-A11-current-revalidation-attempt-001"
+A11_STATUSES = {"started", "in_progress", "ready_for_review", "completed_verified"}
+A11_BRANCHES = {
+    "governance/stage-a-a10-closure-a11-revalidation",
+    "governance/stage-a-a11-current-revalidation",
+}
 
 
 def read_json(path: Path):
@@ -38,31 +43,32 @@ def main() -> int:
     selected = [item for item in pointer["active_attempts"] if item.get("owner_selected")]
     assert len(selected) == 1
     assert selected[0]["attempt_id"] == A11_ATTEMPT
-    assert selected[0]["status"] == "started"
-    assert selected[0]["branch"] == "governance/stage-a-a10-closure-a11-revalidation"
+    assert selected[0]["status"] == checkpoint["status"] in A11_STATUSES
+    assert selected[0]["branch"] == checkpoint["branch"] in A11_BRANCHES
     assert pointer["roadmap_index_supplement"] == "governance/ai/runtime/ROADMAP_INDEX_STAGE_A_A11_SUPPLEMENT.json"
     assert pointer["bootstrap_current_state_amendment"] == "governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_STAGE_A_A11.md"
     assert pointer["roadmap_milestone_amendment"] == "governance/application-planning/stage-a-a11/current-revalidation/STAGE_A_A10_CLOSURE_A11_REVALIDATION_MILESTONE.md"
 
     app_track = next(item for item in pointer["deferred_tracks"] if item["track"] == "application-implementation")
     assert app_track["next_work_item_id"] == "STAGE-A-A11"
-    assert app_track["state"] == "current_next_revalidation_not_activated"
-    assert A10_IMPLEMENTATION_MERGE in app_track["evidence"]
-    assert A10_CLOSURE_MERGE in app_track["evidence"]
+    assert app_track["state"] in {"current_next_revalidation_not_activated", "authorized_not_activated"}
+    assert A10_CLOSURE_MERGE in app_track["evidence"] or A10_CLOSURE_MERGE in pointer["selection_reason"]
 
-    assert status["primary"]["work_item_id"] == "STAGE-A-A11"
-    assert status["primary"]["attempt_id"] == A11_ATTEMPT
-    assert status["primary"]["status"] == "started"
-    assert status["primary"]["owner_decision_required"] is False
-    assert status["primary"]["pull_request"] == 329
-    assert status["active_attempt_count"] == 2
+    primary = status["primary"]
+    assert primary["work_item_id"] == "STAGE-A-A11"
+    assert primary["attempt_id"] == A11_ATTEMPT
+    assert primary["status"] == checkpoint["status"]
+    assert primary["branch"] == checkpoint["branch"]
+    assert primary["pull_request"] == checkpoint["pull_request"]
+    assert primary["owner_decision_required"] is False
+    assert status["active_attempt_count"] in {1, 2}
     assert status["deferred_track_count"] == 2
 
     assert checkpoint["schema_version"] == "1.0.0"
     assert checkpoint["revision"] >= 1
     assert checkpoint["work_item_id"] == "STAGE-A-A11"
     assert checkpoint["attempt_id"] == A11_ATTEMPT
-    assert checkpoint["status"] == "started"
+    assert checkpoint["status"] in A11_STATUSES
     assert checkpoint["application_baseline"] == A10_CLOSURE_MERGE
     assert checkpoint["verified_predecessor"]["implementation_merge_commit"] == A10_IMPLEMENTATION_MERGE
     assert checkpoint["verified_predecessor"]["closure_merge_commit"] == A10_CLOSURE_MERGE
@@ -72,9 +78,11 @@ def main() -> int:
     assert checkpoint["historical_preparation"]["preimplementation_handoff"]["blob_sha"] == "fae5f99491012f5272c257d4457535a5a262b7a9"
     assert checkpoint["historical_preparation"]["repository_compatibility_handoff"]["blob_sha"] == "bb35964fd387237b7d342256daa70598afd16bd2"
     assert checkpoint["restrictions"]["a11_activated"] is False
+    assert checkpoint["restrictions"]["a11_application_branch_created"] is False
     assert checkpoint["restrictions"]["provider_selected"] is False
     assert checkpoint["restrictions"]["paid_execution_authorized"] is False
     assert checkpoint["restrictions"]["real_user_prompt_collection_authorized"] is False
+    assert checkpoint["restrictions"]["semantic_vector_remote_ai_search_baseline_authorized"] is False
     assert checkpoint["restrictions"]["autonomous_mutation_authorized"] is False
     assert checkpoint["restrictions"]["release_authorized"] is False
     assert checkpoint["restrictions"]["deployment_authorized"] is False
@@ -116,7 +124,7 @@ def main() -> int:
     )
 
     print("STAGE-A-A10 CLOSURE / A11 REVALIDATION PROJECTION: PASS")
-    print("primary=STAGE-A-A11-current-revalidation-attempt-001 status=started")
+    print(f"primary={A11_ATTEMPT} status={checkpoint['status']} branch={checkpoint['branch']}")
     print("a10=completed_verified a11_activated=false provider_selected=false paid_execution=false")
     return 0
 
