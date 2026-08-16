@@ -11,9 +11,8 @@
     "dependency_gated_later": ["GATX-T07-REMOTE", "GATX-T08"]
   },
   "current_position": {
-    "highest_completed": "GATX-T01",
-    "active_item": "GATX-DIAG-F01",
-    "active_item_title": "Automatic diagnostics foundation",
+    "highest_completed": "GATX-DIAG-F01",
+    "active_item": null,
     "next_tranche_after_active_item": "GATX-T02",
     "next_tranche_title": "Glass Harbor reference Campaign integration",
     "t02_started": false
@@ -39,10 +38,17 @@
     {
       "id": "GATX-DIAG-F01",
       "title": "Automatic diagnostics foundation",
-      "status": "in_progress",
+      "status": "completed_verified",
       "dependencies": ["GATX-T01"],
       "attempt_id": "GATX-DIAG-F01-attempt-001",
       "application_branch": "internal-alpha/gatx-diagnostics-foundation",
+      "application_pull_request": 162,
+      "validated_candidate_sha": "f16a08c7df520751be041df992c2217d71a3f332",
+      "application_merge_commit": "a6c2bd17962f8ed54dabd0d4d4446fdb58aa5754",
+      "completed_at": "2026-08-16T17:47:00Z",
+      "validation_runs": [31962299517, 31962299464, 31962299523],
+      "validated_package": "Multiversal-Internal-Alpha-Windows-f16a08c7df52-GATX-T01.zip",
+      "validated_package_sha256": "725294665326fa89bf8d58567e6112f99c91b24db8cb758694e2608e3aa90bfb",
       "kind": "prerequisite_foundation",
       "pulled_forward_from": "GATX-T04",
       "acceptance_summary": "Guided Alpha automatically captures privacy-bounded system-known build/account/role/round/browser/connection/error context and writes in-progress/final JSON diagnostics on the host laptop; package/runner seams are reusable by T02 and later tranches."
@@ -50,7 +56,7 @@
     {
       "id": "GATX-T02",
       "title": "Glass Harbor reference Campaign integration",
-      "status": "planned_next_after_prerequisite",
+      "status": "planned_next",
       "dependencies": ["GATX-DIAG-F01"],
       "source_authority": "governance/application-planning/stage-a-reference-campaign/STAGE_A_TESTER_REFERENCE_CAMPAIGN_KIT_HANDOFF_v0.1.0.md",
       "acceptance_summary": "Validated Glass Harbor Incident / Meridian Testbed fixture becomes a deterministic coherent application test Campaign with reset and emits pertinent system-known evidence through the automatic diagnostics foundation."
