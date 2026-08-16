@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 4,
+  "revision": 5,
   "work_item_id": "GATX-T04",
   "attempt_id": "GATX-T04-attempt-001",
   "track": "guided-alpha-testing-experience",
@@ -8,11 +8,11 @@
   "branch": "internal-alpha/gatx-t04-evidence-defect-capture",
   "governance_repository": "cybalicistjt-stack/multiversal-aioc",
   "governance_branch": "governance/gatx-t04-evidence-defect-capture",
-  "status": "ready_for_review",
+  "status": "completed_verified",
   "owner_selected": true,
   "started_at": "2026-08-16T19:03:00Z",
-  "updated_at": "2026-08-16T19:45:00Z",
-  "completed_at": null,
+  "updated_at": "2026-08-16T19:49:00Z",
+  "completed_at": "2026-08-16T19:49:00Z",
   "base_commit": "fd643355a6cf10db51190d15037711ee04515637",
   "construction_complete": true,
   "construction_head": "7a4f5995a0964f2852f49520be5ea5a57f5a68fa",
@@ -22,8 +22,8 @@
   "pull_request": 165,
   "application_merge_commit": "8aa81e12a4e17f23aa98fd8461e635ad35145797",
   "objective": "Build frictionless scenario-aware evidence and defect capture on the existing Guided Alpha diagnostics substrate so a tester can report a reproducible problem with safe system-known context automatically attached and only minimal bounded tester perception/expectation input required.",
-  "last_verified_action": "GATX-T04 application validation is complete on exact candidate 38eb5bcf8e6c5ea9a679f58c75f0ec482510547c. Dedicated workflow run 31968282129 passed both Linux/Python/headed-browser and actual Windows PowerShell jobs, including 173/173 client regression, typecheck, accessibility, production build, explicit consent denial, native Windows POST-to-ZIP proof, 8/8 headed Chromium scenarios, and final host-bundle privacy inspection. App PR #165 squash-merged as 8aa81e12a4e17f23aa98fd8461e635ad35145797. Governance continuity is the only remaining completion gate.",
-  "active_substep": "governance-continuity-pending",
+  "last_verified_action": "GATX-T04 is completed_verified. Exact app candidate 38eb5bcf8e6c5ea9a679f58c75f0ec482510547c passed dedicated workflow run 31968282129 in both declared jobs; app PR #165 squash-merged as 8aa81e12a4e17f23aa98fd8461e635ad35145797; AIOC pre-completion continuity run 31968647769 passed continuity state validation, regression tests, and deterministic status projection.",
+  "active_substep": null,
   "completed_substeps": [
     "evidence-contract",
     "structured-report-client",
@@ -40,9 +40,10 @@
     "validation-start",
     "validation-repairs",
     "final-exact-head-validation",
-    "application-merge"
+    "application-merge",
+    "governance-continuity"
   ],
-  "next_action": "Run AIOC conversation-continuity validation on the T04 closure projection. If it passes, project GATX-T04 to completed_verified, run final exact closure continuity, merge the governance PR, synchronize app post-merge handoff documents, and advance the exact next task to GATX-T05.",
+  "next_action": "Begin GATX-T05 — Device and trusted-LAN Connection Center — from canonical app merge 8aa81e12a4e17f23aa98fd8461e635ad35145797 after final governance closure merge and app post-merge handoff sync. T05 absorbs application issue #159 and must preserve all existing GATX authority/privacy boundaries.",
   "dependencies": {
     "GATX-DIAG-F01": {"status":"completed_verified","application_merge_commit":"a6c2bd17962f8ed54dabd0d4d4446fdb58aa5754"},
     "GATX-T03": {"status":"completed_verified","application_merge_commit":"fd643355a6cf10db51190d15037711ee04515637","governance_merge_commit":"e0ff55a68438dc8af46a6d1b070156ef1d8c671d"}
@@ -79,7 +80,8 @@
     "workflow-only: remove non-contract access-page wording assertion while retaining actual Windows POST-to-ZIP proof",
     "validator-only: accept charset-qualified application/x-www-form-urlencoded contract content type",
     "product integration: support both legacy report dialog and actual packaged inline report-card surface without changing authority or privacy boundaries",
-    "evidence-script-only: assert textarea preview through its value rather than textContent"
+    "evidence-script-only: assert textarea preview through its value rather than textContent",
+    "governance-projection-only: remove non-canonical extra compact-status fields after continuity correctly reported stale projection"
   ],
   "scope_boundaries": {
     "t04_owns": ["automatic scenario/charter/step/application-area attachment", "safe synthetic state", "two bounded tester text fields", "defect classification", "reproducibility metadata", "local reviewable bundle", "diagnostic linkage and privacy manifest"],
@@ -121,18 +123,18 @@
     {"command":"exact T04 package and host reproducibility bundle","status":"passed","evidence":"Multiversal-Internal-Alpha-Windows-38eb5bcf8e6c-GATX-T04.zip SHA256 e37ce2e9f4c44fa1af460d54881fcfe5873b0b52ce1651088957ac9cf900602d; artifact 9269106399"},
     {"command":"headed-browser T04 report and reproduction workflow","status":"passed","evidence":"run 31968282129 job 95216673504: 8/8 headed Chromium scenarios plus host-bundle privacy inspection PASS"},
     {"command":"actual packaged Windows PowerShell T04 bundle export","status":"passed","evidence":"run 31968282129 job 95216673494: actual packaged PowerShell POST -> ZIP/checksum/privacy/diagnostic proof PASS"},
-    {"command":"governance continuity validation","status":"not_run","evidence":null}
+    {"command":"governance continuity validation","status":"passed","evidence":"AIOC Validate Conversation Continuity run 31968647769 PASS before completed_verified projection"}
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
-    {"kind":"merge","value":"GATX-T04 prerequisite T03 app merge fd643355a6cf10db51190d15037711ee04515637 and AIOC merge e0ff55a68438dc8af46a6d1b070156ef1d8c671d"},
+    {"kind":"merge","value":"GATX-T04 prerequisite T03 app merge fd643355a6cf10db51190d15037711ee04515637 and AIOC merge e0ff55a68438dc8af46a6d1b070156ef1d8c671d; GATX-T04 app merge 8aa81e12a4e17f23aa98fd8461e635ad35145797"},
     {"kind":"commit","value":"GATX-T04 construction seal 7a4f5995a0964f2852f49520be5ea5a57f5a68fa; final validated candidate 38eb5bcf8e6c5ea9a679f58c75f0ec482510547c"},
-    {"kind":"pull_request","value":"GATX-T04 application PR #165 squash-merged as 8aa81e12a4e17f23aa98fd8461e635ad35145797"},
-    {"kind":"ci_run","value":"Validate GATX-T04 Evidence Capture run 31968282129 PASS in both declared jobs"},
-    {"kind":"artifact","value":"workflow artifact 9269106399 SHA256 8c2baff557411848cc32b1f0634b31fea937b06115779a6b0658ec85bef53e97"},
+    {"kind":"pull_request","value":"GATX-T04 application PR #165 squash-merged as 8aa81e12a4e17f23aa98fd8461e635ad35145797; AIOC closure PR #347"},
+    {"kind":"ci_run","value":"GATX-T04 Validate GATX-T04 Evidence Capture run 31968282129 PASS; AIOC continuity run 31968647769 PASS"},
+    {"kind":"artifact","value":"GATX-T04 workflow artifact 9269106399 SHA256 8c2baff557411848cc32b1f0634b31fea937b06115779a6b0658ec85bef53e97"},
     {"kind":"file","value":"GATX-T04 evidence contract apps/client-ui/public/gatx-evidence/v0.1.0/EVIDENCE_CONTRACT_v0.1.0.json"}
   ],
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "notes": ["Validated T04 candidate is not automatically the owner-approved tester distribution; Hotfix2 remains approved until a separate owner decision."]
 }
