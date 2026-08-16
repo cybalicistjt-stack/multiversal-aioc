@@ -1,0 +1,28 @@
+name: Validate IA-D09 Owner-Decision Evidence
+
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/internal-alpha/owner-decision/**'
+      - 'governance/ai/work-state/IA-D09-owner-decision-evidence-preparation-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'governance/ai/runtime/ROADMAP_INDEX_STAGE_A_A12_SUPPLEMENT.json'
+      - 'governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_IA_D09_OWNER_DECISION_PENDING.md'
+      - 'tools/validate_ia_d09_owner_decision_evidence_packet.py'
+      - '.github/workflows/validate-ia-d09-owner-decision-evidence.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python tools/validate_ia_d09_owner_decision_evidence_packet.py
+      - run: python tools/continuity_state.py validate

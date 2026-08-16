@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "candidate_sha": "56b127f1fc01eebe5c73ba0472a5b6496fe92b5e",
+  "blocking_risk_count": 0,
+  "unresolved_high_critical_security_count": 0,
+  "items": [
+    {
+      "risk_id": "IA09-RISK-001-profile-scope",
+      "status": "bounded-nonblocking",
+      "statement": "Evidence covers browser/local-runner profiles rather than a broader native/production platform matrix.",
+      "mitigation": "Scope any Internal Alpha decision to the validated profiles unless new platform evidence is added.",
+      "evidence_ref": "IA_D09_CANDIDATE_KNOWN_LIMITATIONS.json#IA09-LIM-001-supported-profiles"
+    },
+    {
+      "risk_id": "IA09-RISK-002-optional-provider-unavailability",
+      "status": "bounded-nonblocking",
+      "statement": "Optional AI/provider capability may be disabled or unavailable.",
+      "mitigation": "Core operation is required to remain usable all-optionals-off; do not treat optional capability as a prerequisite.",
+      "evidence_ref": "Multiversal-app A12 artifact 9261392785:a12-evidence-preserved/all-optionals-off.json"
+    },
+    {
+      "risk_id": "IA09-RISK-003-offline-authority",
+      "status": "bounded-nonblocking",
+      "statement": "Broad offline canonical mutation is unsupported.",
+      "mitigation": "Require current online authority for governed mutation; recovery/reconnect evidence passed.",
+      "evidence_ref": "IA_D09_CANDIDATE_KNOWN_LIMITATIONS.json#IA09-LIM-003-offline-authority"
+    },
+    {
+      "risk_id": "IA09-RISK-004-advanced-map-vehicle-scope",
+      "status": "bounded-nonblocking",
+      "statement": "Advanced map/vehicle behavior beyond the bounded tactical-position/basic-vehicle journeys is outside the established candidate evidence.",
+      "mitigation": "Limit tester claims and charters to the proven journeys; record broader behavior as future work unless separately evidenced.",
+      "evidence_ref": "IA_D09_CANDIDATE_KNOWN_LIMITATIONS.json#IA09-LIM-004-advanced-map-vehicle-scope"
+    },
+    {
+      "risk_id": "IA09-RISK-005-design-standards-governance",
+      "status": "bounded-nonblocking",
+      "statement": "Working/noncanonical Design Standards remain separately governed and unpromoted.",
+      "mitigation": "Do not infer promotion or canonical status from Internal Alpha candidate validation.",
+      "evidence_ref": "IA_D09_CANDIDATE_KNOWN_LIMITATIONS.json#IA09-LIM-005-design-standards-promotion"
+    }
+  ]
+}

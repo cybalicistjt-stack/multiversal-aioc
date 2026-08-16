@@ -1,9 +1,45 @@
 {
-  "schema_version":"1.0.0",
-  "updated_at":"2026-08-16T09:25:29Z",
-  "supplements":"governance/ai/runtime/ROADMAP_INDEX.json",
-  "entries":[
-    {"work_item_id":"STAGE-A-A11","track":"application-implementation","governing_document":"governance/application-planning/stage-a-a11/implementation-closure/STAGE_A_A11_IMPLEMENTATION_COMPLETION_RECEIPT.json","roadmap_document":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md","roadmap_section":"Phase 10 / Stage A — STAGE-A-A11 Contextual AI Interfaces","dependencies":["STAGE-A-A10"],"completion_gate":"completed_verified"},
-    {"work_item_id":"STAGE-A-A12","track":"application-implementation","governing_document":"governance/application-planning/stage-a-a12/implementation-closure/STAGE_A_A12_IMPLEMENTATION_COMPLETION_RECEIPT.json","roadmap_document":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md","roadmap_section":"Phase 10 / Stage A — STAGE-A-A12 Internal Alpha Hardening","dependencies":["STAGE-A-A11"],"revalidation_state":"completed_verified","implementation_state":"completed_verified","candidate_state":"candidate-validated","release_approved":false,"implementation_merge_commit":"4a488f366058c4b63af9f897744388cc77688763","application_closure_merge":"47a060c70f23bf5b60226f1aaa433bf301fa24db","next_boundary":"IA-D09 owner-decision evidence packet; no automatic A13 or release approval"}
+  "schema_version": "1.0.0",
+  "updated_at": "2026-08-16T10:09:00Z",
+  "supplements": "governance/ai/runtime/ROADMAP_INDEX.json",
+  "entries": [
+    {
+      "work_item_id": "STAGE-A-A11",
+      "track": "application-implementation",
+      "governing_document": "governance/application-planning/stage-a-a11/implementation-closure/STAGE_A_A11_IMPLEMENTATION_COMPLETION_RECEIPT.json",
+      "roadmap_document": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
+      "roadmap_section": "Phase 10 / Stage A — STAGE-A-A11 Contextual AI Interfaces",
+      "dependencies": ["STAGE-A-A10"],
+      "completion_gate": "completed_verified"
+    },
+    {
+      "work_item_id": "STAGE-A-A12",
+      "track": "application-implementation",
+      "governing_document": "governance/application-planning/stage-a-a12/implementation-closure/STAGE_A_A12_IMPLEMENTATION_COMPLETION_RECEIPT.json",
+      "roadmap_document": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
+      "roadmap_section": "Phase 10 / Stage A — STAGE-A-A12 Internal Alpha Hardening",
+      "dependencies": ["STAGE-A-A11"],
+      "revalidation_state": "completed_verified",
+      "implementation_state": "completed_verified",
+      "candidate_state": "candidate-validated",
+      "release_approved": false,
+      "implementation_merge_commit": "4a488f366058c4b63af9f897744388cc77688763",
+      "application_closure_merge": "47a060c70f23bf5b60226f1aaa433bf301fa24db",
+      "next_boundary": "IA-D09 owner decision; no automatic A13"
+    },
+    {
+      "work_item_id": "IA-D09-OWNER-DECISION",
+      "track": "internal-alpha-owner-decision",
+      "governing_document": "governance/application-planning/internal-alpha/owner-decision/IA_D09_OWNER_DECISION_EVIDENCE_PACKET.md",
+      "design_anchor": "governance/application-planning/internal-alpha/IA-D09_INTERNAL_ALPHA_RELEASE_DESIGN_PACKAGE.md",
+      "owner_decision_register": "governance/application-planning/internal-alpha/IA-D09_OWNER_DECISION_REGISTER.md",
+      "dependencies": ["STAGE-A-A12"],
+      "preparation_state": "prepared_owner_decision_pending",
+      "decision_ready_gates": ["authorize Internal Alpha tester access", "approve Internal Alpha release"],
+      "not_decision_ready_gate_count": 6,
+      "all_owner_decisions": "not-decided",
+      "release_approved": false,
+      "automatic_a13": false
+    }
   ]
 }

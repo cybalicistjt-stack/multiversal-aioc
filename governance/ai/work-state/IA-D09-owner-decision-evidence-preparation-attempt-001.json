@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 3,
+  "work_item_id": "IA-D09-OWNER-DECISION",
+  "attempt_id": "IA-D09-owner-decision-evidence-preparation-attempt-001",
+  "track": "internal-alpha-owner-decision",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "branch": "governance/ia-d09-owner-decision-evidence",
+  "status": "ready_for_review",
+  "owner_selected": true,
+  "started_at": "2026-08-16T10:09:00Z",
+  "updated_at": "2026-08-16T10:21:00Z",
+  "completed_at": null,
+  "objective": "Prepare the IA-D09 owner-decision evidence packet from the completed/verified A12 candidate without making or inferring any owner-only decision.",
+  "dependency": "STAGE-A-A12 completed_verified / candidate-validated",
+  "candidate_sha": "56b127f1fc01eebe5c73ba0472a5b6496fe92b5e",
+  "build_id": "5033f55d3344209c1719d6003d1369b4bc201c74ba9d64f046767263daee5a45",
+  "final_a12_run_id": 31938591853,
+  "final_a12_job_id": 95144306531,
+  "final_a12_artifact_id": 9261392785,
+  "final_a12_artifact_sha256": "0387468e79d183da425cf354e4e3a8200872afaf7f4c65973471206d6b88a600",
+  "application_implementation_merge": "4a488f366058c4b63af9f897744388cc77688763",
+  "application_closure_merge": "47a060c70f23bf5b60226f1aaa433bf301fa24db",
+  "aioc_a12_closure_merge": "6a153aa51a5699a2659dba44b94b126664451df7",
+  "latest_pushed_commit": "52f4b551d59bbbe5f1bf8d25686ab6afca955cba",
+  "expected_remote_head": "52f4b551d59bbbe5f1bf8d25686ab6afca955cba",
+  "pull_request": 336,
+  "last_verified_action": "PR #336 runs 31941351203 and 31941387596 both passed the focused IA-D09 packet validator. The remaining continuity error was only the use of a noncanonical checkpoint status; this revision maps the owner-review state to canonical ready_for_review and aligns the checkpoint schema with continuity_state.py.",
+  "active_substep": "validate-preparation-pr",
+  "decision_ready_gates": [
+    "authorize Internal Alpha tester access",
+    "approve Internal Alpha release"
+  ],
+  "not_decision_ready_gates": [
+    "authorize real-user data collection",
+    "authorize production credentials",
+    "authorize paid provider commitment",
+    "approve public release or deployment",
+    "promote AI/automation authority",
+    "promote working/noncanonical design standards"
+  ],
+  "owner_decision_required": true,
+  "owner_decision_made": false,
+  "owner_decisions": "all-not-decided",
+  "release_approved": false,
+  "tester_access_authorized": false,
+  "real_user_data_authorized": false,
+  "production_credentials_authorized": false,
+  "paid_provider_authorized": false,
+  "public_release_or_deployment_authorized": false,
+  "broader_ai_automation_authority_authorized": false,
+  "working_design_standards_promoted": false,
+  "completion_gate": {
+    "required_evidence_kinds": ["file", "pull_request", "ci_run", "merge"],
+    "required_validation_commands": [
+      "python tools/validate_ia_d09_owner_decision_evidence_packet.py",
+      "python tools/continuity_state.py validate"
+    ],
+    "owner_approval_required": false
+  },
+  "validation": [
+    {
+      "command": "python tools/validate_ia_d09_owner_decision_evidence_packet.py",
+      "status": "passed",
+      "evidence": "PR #336 runs 31941351203 and 31941387596"
+    },
+    {
+      "command": "python tools/continuity_state.py validate",
+      "status": "not_run",
+      "evidence": "Rerun required after canonical status/schema alignment."
+    }
+  ],
+  "evidence": [
+    {"kind": "file", "value": "IA-D09-OWNER-DECISION governance/application-planning/internal-alpha/owner-decision/IA_D09_OWNER_DECISION_EVIDENCE_PACKET.md"},
+    {"kind": "file", "value": "IA-D09-owner-decision-evidence-preparation-attempt-001 A12 candidate evidence: 56b127f1fc01eebe5c73ba0472a5b6496fe92b5e / artifact 9261392785"},
+    {"kind": "pull_request", "value": "IA-D09-OWNER-DECISION AIOC PR #336"},
+    {"kind": "ci_run", "value": "IA-D09-OWNER-DECISION focused validator PASS in runs 31941351203 and 31941387596"}
+  ],
+  "unresolved_failures": [],
+  "roadmap_projection_pending": true,
+  "next_action": "Rerun the focused IA-D09 owner-decision packet workflow and continuity guard on this canonical ready_for_review checkpoint. If green, merge PR #336 and then present the two decision-ready owner gates to John Brandon Turner without inferring a decision."
+}
