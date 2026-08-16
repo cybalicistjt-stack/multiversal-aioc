@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 2,
+  "revision": 3,
   "work_item_id": "GATX-T07-ARCH",
   "attempt_id": "GATX-T07-ARCH-attempt-001",
   "track": "guided-alpha-testing-experience",
@@ -11,79 +11,24 @@
   "status": "in_progress",
   "owner_selected": true,
   "started_at": "2026-08-16T21:40:00Z",
-  "updated_at": "2026-08-16T21:50:00Z",
+  "updated_at": "2026-08-16T21:56:30Z",
   "completed_at": null,
   "base_commit": "83063c3cad2330b06b77b4968d86e813c34f55d5",
   "latest_pushed_commit": "db932f25466da335b1f121bffd2e12b2c60a8bdb",
   "expected_remote_head": "db932f25466da335b1f121bffd2e12b2c60a8bdb",
-  "pull_request": null,
+  "pull_request": 177,
   "construction_complete": true,
   "construction_head": "db932f25466da335b1f121bffd2e12b2c60a8bdb",
-  "validation_started": false,
+  "validation_started": true,
   "objective": "Make the Guided Alpha guidance, scenario, diagnostics, evidence, connection and testing-operations contracts/UI transport-neutral and reusable for a future governed Remote Test Session without activating remote transport, shared-live authority, public exposure, production identity, or any dependency-gated online runtime.",
-  "last_verified_action": "Bounded T07-ARCH construction was source-reviewed and sealed on exact app head db932f25466da335b1f121bffd2e12b2c60a8bdb. No T07 validation has run and no T07 application PR exists.",
-  "active_substep": "validation-pending",
-  "completed_substeps": [
-    "transport-contract",
-    "browser-transport-adapter",
-    "guided-transport-round",
-    "python-transport-manager",
-    "python-t07-runner",
-    "powershell-transport-helper",
-    "exact-t07-package-builder",
-    "deterministic-verifier-definition",
-    "headed-browser-evidence-definition",
-    "linux-windows-validation-workflow-definition",
-    "application-work-order",
-    "application-handoff",
-    "source-only-construction-review",
-    "construction-seal"
-  ],
-  "next_action": "Open the GATX-T07-ARCH application draft PR from sealed head db932f25466da335b1f121bffd2e12b2c60a8bdb. Opening that PR starts validation; from then on make only bounded validation-discovered T07 repairs and require one exact-head final run with both T07 jobs green.",
-  "dependencies": {
-    "GATX-T06": {"status":"completed_verified","application_merge_commit":"f0c7ce6ff6e530266666e54b1c9d3da7816b5d27","postmerge_handoff_commit":"83063c3cad2330b06b77b4968d86e813c34f55d5","governance_merge_commit":"d900c1dc6c7fdaa3f4ef46ba1f60c4f1ee2dff2b"}
-  },
-  "construction_contract": {
-    "transport_contract_id": "GATX-T07-TRANSPORT-CONTRACT-001",
-    "transport_marker": "GATX-T07-TRANSPORT-ARCH-1",
-    "round_id": "GATX-TRANSPORT-ARCH-001",
-    "active_modes": ["local-host", "trusted-lan"],
-    "future_mode": "remote-test-session",
-    "logical_service_count": 17,
-    "remote_binding_configured": false,
-    "remote_activation_authorized": false,
-    "remote_transport_activated": false,
-    "shared_live_authority_activated": false,
-    "browser_adapter": "governed fetch interception plus logical-service API",
-    "python_context_endpoint": "GET /api/transport/context",
-    "python_capabilities_endpoint": "GET /api/transport/capabilities",
-    "windows_helper": "distribution/internal-alpha/GATX_T07_TRANSPORT.ps1",
-    "scenario_engine_reused": true,
-    "evidence_capture_reused": true,
-    "connection_center_reused": true,
-    "testing_operations_reused": true,
-    "diagnostics_reused": true
-  },
-  "scope_boundaries": {
-    "t07_arch_owns": ["transport-neutral Guided Alpha service contract","browser transport adapter","local-host transport binding","trusted-LAN transport binding","future remote-test-session capability declaration","transport context/capability UI","remote activation guard","transport-neutral packaging and validation"],
-    "must_reuse": ["GATX-DIAG-F01 diagnostics","GATX-T03 scenario engine","GATX-T04 evidence capture","GATX-T05 connection center","GATX-T06 testing operations"],
-    "not_authorized": ["GATX-T07-REMOTE activation","GATX-T08 cross-location execution","shared-live Campaign/session authority","remote Internet runtime or administration","public tunnel or port forwarding","production identity or credentials","real-user data","native Android APK distribution","public deployment or release","paid providers","automatic A13"]
-  },
-  "completion_gate": {
-    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
-    "required_validation_commands": [
-      "T07 transport contract adapter and activation-guard verifier",
-      "T06 T05 T04 T03 DIAG-F01 preservation",
-      "client regression typecheck accessibility and build",
-      "exact T07 package transport manifest and binding contract",
-      "headed-browser local-host and trusted-LAN transport workflows",
-      "remote-test-session dependency gate and fail-closed UI",
-      "Python packaged transport context and capabilities",
-      "actual Windows packaged PowerShell transport context and capabilities",
-      "governance continuity validation"
-    ],
-    "owner_approval_required": false
-  },
+  "last_verified_action": "App PR #177 opened from exact sealed construction head db932f25466da335b1f121bffd2e12b2c60a8bdb, formally starting T07-ARCH validation. Dedicated run 31974945337 is evaluating both declared T07 jobs.",
+  "active_substep": "validation-running",
+  "completed_substeps": ["transport-contract","browser-transport-adapter","guided-transport-round","python-transport-manager","python-t07-runner","powershell-transport-helper","exact-t07-package-builder","deterministic-verifier-definition","headed-browser-evidence-definition","linux-windows-validation-workflow-definition","application-work-order","application-handoff","source-only-construction-review","construction-seal","validation-start"],
+  "next_action": "Collect the complete first failure batch from dedicated T07 run 31974945337. If repairs are required, change only validation-discovered T07 defects, rerun the smallest affected gates, then require one exact-head final T07 run with both jobs green.",
+  "dependencies": {"GATX-T06":{"status":"completed_verified","application_merge_commit":"f0c7ce6ff6e530266666e54b1c9d3da7816b5d27","postmerge_handoff_commit":"83063c3cad2330b06b77b4968d86e813c34f55d5","governance_merge_commit":"d900c1dc6c7fdaa3f4ef46ba1f60c4f1ee2dff2b"}},
+  "construction_contract": {"transport_contract_id":"GATX-T07-TRANSPORT-CONTRACT-001","transport_marker":"GATX-T07-TRANSPORT-ARCH-1","round_id":"GATX-TRANSPORT-ARCH-001","active_modes":["local-host","trusted-lan"],"future_mode":"remote-test-session","logical_service_count":17,"remote_binding_configured":false,"remote_activation_authorized":false,"remote_transport_activated":false,"shared_live_authority_activated":false,"browser_adapter":"governed fetch interception plus logical-service API","python_context_endpoint":"GET /api/transport/context","python_capabilities_endpoint":"GET /api/transport/capabilities","windows_helper":"distribution/internal-alpha/GATX_T07_TRANSPORT.ps1","scenario_engine_reused":true,"evidence_capture_reused":true,"connection_center_reused":true,"testing_operations_reused":true,"diagnostics_reused":true},
+  "scope_boundaries": {"t07_arch_owns":["transport-neutral Guided Alpha service contract","browser transport adapter","local-host transport binding","trusted-LAN transport binding","future remote-test-session capability declaration","transport context/capability UI","remote activation guard","transport-neutral packaging and validation"],"must_reuse":["GATX-DIAG-F01 diagnostics","GATX-T03 scenario engine","GATX-T04 evidence capture","GATX-T05 connection center","GATX-T06 testing operations"],"not_authorized":["GATX-T07-REMOTE activation","GATX-T08 cross-location execution","shared-live Campaign/session authority","remote Internet runtime or administration","public tunnel or port forwarding","production identity or credentials","real-user data","native Android APK distribution","public deployment or release","paid providers","automatic A13"]},
+  "completion_gate": {"required_evidence_kinds":["commit","pull_request","ci_run","merge"],"required_validation_commands":["T07 transport contract adapter and activation-guard verifier","T06 T05 T04 T03 DIAG-F01 preservation","client regression typecheck accessibility and build","exact T07 package transport manifest and binding contract","headed-browser local-host and trusted-LAN transport workflows","remote-test-session dependency gate and fail-closed UI","Python packaged transport context and capabilities","actual Windows packaged PowerShell transport context and capabilities","governance continuity validation"],"owner_approval_required":false},
   "validation": [
     {"command":"T07 transport contract adapter and activation-guard verifier","status":"not_run","evidence":null},
     {"command":"T06 T05 T04 T03 DIAG-F01 preservation","status":"not_run","evidence":null},
@@ -99,8 +44,10 @@
   "owner_decision_required": false,
   "evidence": [
     {"kind":"merge","value":"GATX-T06 application merge f0c7ce6ff6e530266666e54b1c9d3da7816b5d27, postmerge handoff 83063c3cad2330b06b77b4968d86e813c34f55d5, governance merge d900c1dc6c7fdaa3f4ef46ba1f60c4f1ee2dff2b"},
-    {"kind":"commit","value":"GATX-T07-ARCH construction seal db932f25466da335b1f121bffd2e12b2c60a8bdb"}
+    {"kind":"commit","value":"GATX-T07-ARCH construction seal db932f25466da335b1f121bffd2e12b2c60a8bdb"},
+    {"kind":"pull_request","value":"GATX-T07-ARCH application PR #177"},
+    {"kind":"ci_run","value":"GATX-T07-ARCH initial dedicated validation run 31974945337 started on sealed head db932f25466da335b1f121bffd2e12b2c60a8bdb"}
   ],
   "roadmap_projection_pending": true,
-  "notes": ["Remote Test Session is an architectural future mode only in T07-ARCH. Actual remote transport remains dependency-gated and must not be simulated into completion.", "Hotfix2 remains the owner-approved tester distribution until a separate owner decision replaces it."]
+  "notes": ["Remote Test Session is an architectural future mode only in T07-ARCH. Actual remote transport remains dependency-gated and must not be simulated into completion.","Hotfix2 remains the owner-approved tester distribution until a separate owner decision replaces it."]
 }
