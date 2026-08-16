@@ -1,12 +1,14 @@
 {
   "schema_version": "1.0.0",
   "work_item_id": "IA-D09-OWNER-DECISION",
-  "state": "prepared_verified_owner_decision_pending",
+  "state": "owner_decision_recorded_pending_governed_merge",
   "candidate_sha": "56b127f1fc01eebe5c73ba0472a5b6496fe92b5e",
   "build_id": "5033f55d3344209c1719d6003d1369b4bc201c74ba9d64f046767263daee5a45",
   "decision_ready_gate_count": 2,
   "not_decision_ready_gate_count": 6,
-  "owner_decisions_made": 0,
+  "owner_decisions_made": 2,
+  "owner_decision_record": "IA_D09_OWNER_DECISION_RECORD_20260816.json",
+  "owner_decided_at": "2026-08-16T06:27:00-05:00",
   "focused_validation_run_id": 31941519540,
   "focused_validation_job_id": 95151312826,
   "focused_packet_validator": "PASS",
@@ -14,13 +16,13 @@
   "preparation_pull_request": 336,
   "preparation_merge_commit": "3a6f75bff961b5a5ff15392e97cb3bc106c8b939",
   "preparation_merge_verified": true,
-  "release_approved": false,
-  "tester_access_authorized": false,
+  "release_approved": true,
+  "tester_access_authorized": true,
   "real_user_data_authorized": false,
   "production_credentials_authorized": false,
   "paid_provider_authorized": false,
   "public_release_or_deployment_authorized": false,
   "broader_ai_automation_authority_authorized": false,
   "working_design_standards_promoted": false,
-  "next_operation": "Owner decision required: explicitly approve, deny, or leave undecided the decision-ready Internal Alpha tester-access and Internal Alpha release gates. No other owner gate is decision-ready."
+  "next_operation": "Validate and merge the exact owner-decision record, then project the IA-D09 owner-decision work item completed_verified. Prepare bounded Internal Alpha tester onboarding/access execution only; do not activate any of the six still-closed owner gates."
 }
