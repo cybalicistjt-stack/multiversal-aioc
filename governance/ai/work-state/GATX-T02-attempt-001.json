@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 3,
+  "revision": 4,
   "work_item_id": "GATX-T02",
   "attempt_id": "GATX-T02-attempt-001",
   "track": "guided-alpha-testing-experience",
@@ -8,30 +8,15 @@
   "branch": "internal-alpha/gatx-t02-glass-harbor-integration",
   "governance_repository": "cybalicistjt-stack/multiversal-aioc",
   "governance_branch": "governance/gatx-t02-glass-harbor-integration",
-  "status": "completed_verified",
+  "status": "ready_for_review",
   "owner_selected": true,
   "started_at": "2026-08-16T17:50:00Z",
-  "updated_at": "2026-08-16T18:26:30Z",
-  "completed_at": "2026-08-16T18:26:30Z",
+  "updated_at": "2026-08-16T18:27:30Z",
+  "completed_at": null,
   "objective": "Integrate the validated Glass Harbor Incident / Meridian Testbed Stage A reference Campaign fixture into the actual Guided Alpha so the current Alpha is a coherent deterministic miniature Campaign rather than a disconnected component showroom.",
   "construction_rule": "Finish the complete bounded T02 construction before T02 validation. Do not execute T03's 24-journey scenario engine early.",
-  "source_authority": {
-    "handoff": "governance/application-planning/stage-a-reference-campaign/STAGE_A_TESTER_REFERENCE_CAMPAIGN_KIT_HANDOFF_v0.1.0.md",
-    "package": "STAGE_A_TESTER_REFERENCE_CAMPAIGN_KIT_v0.1.0.zip",
-    "sha256": "bea56f266449f8b89d855bca9e36973c20c3dd95dfb79897fe1132c94df457f6",
-    "campaign": "Glass Harbor Incident",
-    "world": "Meridian Testbed",
-    "records": 27,
-    "journeys": 24,
-    "role_profiles": 6,
-    "reset_id": "ref-reset-baseline"
-  },
-  "diagnostics_dependency": {
-    "work_item_id": "GATX-DIAG-F01",
-    "status": "completed_verified",
-    "application_merge_commit": "a6c2bd17962f8ed54dabd0d4d4446fdb58aa5754",
-    "rule": "T02 reuses the existing automatic host-laptop diagnostics transport/export; do not create a parallel evidence system."
-  },
+  "source_authority": {"handoff":"governance/application-planning/stage-a-reference-campaign/STAGE_A_TESTER_REFERENCE_CAMPAIGN_KIT_HANDOFF_v0.1.0.md","package":"STAGE_A_TESTER_REFERENCE_CAMPAIGN_KIT_v0.1.0.zip","sha256":"bea56f266449f8b89d855bca9e36973c20c3dd95dfb79897fe1132c94df457f6","campaign":"Glass Harbor Incident","world":"Meridian Testbed","records":27,"journeys":24,"role_profiles":6,"reset_id":"ref-reset-baseline"},
+  "diagnostics_dependency": {"work_item_id":"GATX-DIAG-F01","status":"completed_verified","application_merge_commit":"a6c2bd17962f8ed54dabd0d4d4446fdb58aa5754","rule":"T02 reuses the existing automatic host-laptop diagnostics transport/export; do not create a parallel evidence system."},
   "construction_complete": true,
   "construction_head": "3218cd75db454d53cd83f085eac9fbfdf36590e2",
   "validated_application_candidate": "9b3be55c2b7aebc7620bf26429f55d3de1dfd84d",
@@ -39,63 +24,29 @@
   "expected_remote_head": "9b3be55c2b7aebc7620bf26429f55d3de1dfd84d",
   "pull_request": 163,
   "application_merge_commit": "773e24bbb0d3b7b5c484eceb3f37c69c8f6c416b",
-  "last_verified_action": "Exact candidate 9b3be55c2b7aebc7620bf26429f55d3de1dfd84d passed the complete T02 gate in run 31964399451: source/provenance, diagnostics, 173/173 client tests, typecheck, accessibility, build, exact package identity, actual Windows PowerShell host diagnostics, and 7/7 headed Chromium scenarios including role privacy, deterministic reset and round-complete diagnostic export. App PR #163 then squash-merged as 773e24bbb0d3b7b5c484eceb3f37c69c8f6c416b.",
-  "active_substep": null,
-  "next_action": "Begin GATX-T03 — build the machine-readable role-aware guided scenario/test-journey engine from the 24 validated source journeys, preserving hidden-information filtering, diagnostics reuse and construction-first execution.",
-  "scope": {
-    "included": [
-      "exact validated source provenance",
-      "27-record runtime projection",
-      "24-journey catalog preservation without execution engine",
-      "role-safe reference Campaign orientation",
-      "deterministic browser-local reset",
-      "Glass Harbor label/context projection over current app workspaces",
-      "T02-specific Guided Alpha entry/round/package",
-      "automatic diagnostics reuse"
-    ],
-    "deferred_to_t03": [
-      "machine-executable 24-journey scenario engine",
-      "journey orchestration/outcome state machine"
-    ]
-  },
-  "validated_package": {
-    "filename": "Multiversal-Internal-Alpha-Windows-9b3be55c2b7a-GATX-T02.zip",
-    "sha256": "74c03e034b9e719c7c89f9dff5d81a33a6eeae6b4878a3ba912e427f4172e0dc",
-    "workflow_artifact_id": 9268113335,
-    "workflow_artifact_sha256": "e623d176e0bf54d6e0c76bcae17284d51b133526e321c0640cefc2e74b4cc1f5",
-    "distribution_approved": false
-  },
-  "completion_gate": {
-    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
-    "required_validation_commands": [
-      "T02 deterministic source/provenance contract",
-      "client regression typecheck accessibility and build",
-      "exact T02 package identity and source provenance",
-      "actual packaged Windows PowerShell diagnostics",
-      "headed-browser T02 role/privacy/reset/diagnostics scenarios",
-      "governance continuity validation"
-    ],
-    "owner_approval_required": false
-  },
-  "completion_evidence": [
-    {"kind":"commit","value":"validated application candidate 9b3be55c2b7aebc7620bf26429f55d3de1dfd84d"},
-    {"kind":"pull_request","value":"application PR #163; governance PR #345"},
-    {"kind":"ci_run","value":"T02 final PASS run 31964399451"},
-    {"kind":"merge","value":"application PR #163 squash merge 773e24bbb0d3b7b5c484eceb3f37c69c8f6c416b"},
-    {"kind":"artifact","value":"artifact 9268113335; package SHA256 74c03e034b9e719c7c89f9dff5d81a33a6eeae6b4878a3ba912e427f4172e0dc"}
-  ],
+  "last_verified_action": "Exact candidate 9b3be55c2b7aebc7620bf26429f55d3de1dfd84d passed the complete T02 gate in run 31964399451 and app PR #163 squash-merged as 773e24bbb0d3b7b5c484eceb3f37c69c8f6c416b. Governance is awaiting only its final deterministic continuity validation.",
+  "active_substep": "governance-final-continuity",
+  "next_action": "Run final conversation continuity on governance PR #345; if it passes, record that CI receipt, mark T02 completed_verified, merge governance PR #345, then immediately activate GATX-T03.",
+  "scope": {"included":["exact validated source provenance","27-record runtime projection","24-journey catalog preservation without execution engine","role-safe reference Campaign orientation","deterministic browser-local reset","Glass Harbor label/context projection over current app workspaces","T02-specific Guided Alpha entry/round/package","automatic diagnostics reuse"],"deferred_to_t03":["machine-executable 24-journey scenario engine","journey orchestration/outcome state machine"]},
+  "validated_package": {"filename":"Multiversal-Internal-Alpha-Windows-9b3be55c2b7a-GATX-T02.zip","sha256":"74c03e034b9e719c7c89f9dff5d81a33a6eeae6b4878a3ba912e427f4172e0dc","workflow_artifact_id":9268113335,"workflow_artifact_sha256":"e623d176e0bf54d6e0c76bcae17284d51b133526e321c0640cefc2e74b4cc1f5","distribution_approved":false},
+  "completion_gate": {"required_evidence_kinds":["commit","pull_request","ci_run","merge"],"required_validation_commands":["T02 deterministic source/provenance contract","client regression typecheck accessibility and build","exact T02 package identity and source provenance","actual packaged Windows PowerShell diagnostics","headed-browser T02 role/privacy/reset/diagnostics scenarios","governance continuity validation"],"owner_approval_required":false},
   "validation": [
-    {"command":"initial T02 source/reference Campaign validation","status":"passed_after_repair","evidence":"Initial run 31963782624 exposed a whitespace-sensitive GM dossier verifier assertion; runtime was correct and verifier was repaired."},
-    {"command":"package identity/provenance","status":"passed_after_repair","evidence":"Run 31964090643 and follow-up 31964223693 exposed and repaired an exact document-title assertion before browser execution."},
-    {"command":"GM workspace label persistence","status":"passed_after_repair","evidence":"Run 31964223693 passed 6/7 browser scenarios and exposed a real GM React rerender label persistence defect; repaired with bounded mutation observation."},
-    {"command":"T02 deterministic source/provenance contract","status":"passed","evidence":"Final run 31964399451: GATX-T02 reference Campaign verifier PASS; exact source SHA/27 records/24 catalogued journeys/6 roles/reset/T03 boundary confirmed."},
-    {"command":"client regression typecheck accessibility and build","status":"passed","evidence":"Final run 31964399451: 173/173 tests across 61 files PASS; typecheck PASS; accessibility 3/3 PASS; build PASS."},
-    {"command":"actual packaged Windows PowerShell diagnostics","status":"passed","evidence":"Final run 31964399451 Windows job PASS on exact candidate 9b3be55c2b7aebc7620bf26429f55d3de1dfd84d."},
-    {"command":"headed-browser T02 scenarios","status":"passed","evidence":"Final run 31964399451: 7/7 headed Chromium PASS; Player privacy, GM 27-record dossier/labels, GM bypass denial, deterministic reset, progress persistence, host diagnostic export and Android-sized layout PASS."},
-    {"command":"governance continuity validation","status":"pending_final_projection","evidence":"Run final AIOC continuity on governance PR #345 after this completed_verified projection before governance merge."}
+    {"command":"T02 deterministic source/provenance contract","status":"passed","evidence":"Final run 31964399451: exact source SHA, 27 records, 24 catalogued journeys, six roles, reset and T03 boundary confirmed."},
+    {"command":"client regression typecheck accessibility and build","status":"passed","evidence":"Final run 31964399451: 173/173 tests across 61 files, typecheck, accessibility 3/3 and build PASS."},
+    {"command":"exact T02 package identity and source provenance","status":"passed","evidence":"Final run 31964399451: package candidate 9b3be55c2b7a, T02 round and reference source SHA verified."},
+    {"command":"actual packaged Windows PowerShell diagnostics","status":"passed","evidence":"Final run 31964399451 Windows job PASS."},
+    {"command":"headed-browser T02 role/privacy/reset/diagnostics scenarios","status":"passed","evidence":"Final run 31964399451: 7/7 headed Chromium PASS including Player privacy, GM dossier/labels, reset, progress and host diagnostics."},
+    {"command":"governance continuity validation","status":"not_run","evidence":null}
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
+  "evidence": [
+    {"kind":"commit","value":"GATX-T02 validated candidate 9b3be55c2b7aebc7620bf26429f55d3de1dfd84d"},
+    {"kind":"pull_request","value":"GATX-T02 application PR #163 and governance PR #345"},
+    {"kind":"ci_run","value":"GATX-T02 final application validation run 31964399451 PASS"},
+    {"kind":"merge","value":"GATX-T02 app PR #163 squash merge 773e24bbb0d3b7b5c484eceb3f37c69c8f6c416b"},
+    {"kind":"artifact","value":"GATX-T02 artifact 9268113335 package SHA256 74c03e034b9e719c7c89f9dff5d81a33a6eeae6b4878a3ba912e427f4172e0dc"}
+  ],
   "roadmap_projection_pending": false,
   "known_blockers": []
 }
