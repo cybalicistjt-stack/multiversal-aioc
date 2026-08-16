@@ -1,22 +1,35 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-16T11:34:00Z",
+  "updated_at": "2026-08-16T13:01:00Z",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
-  "bootstrap_current_state_amendment": "governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_IA_D09_OWNER_DECISION_APPROVED.md",
+  "bootstrap_current_state_amendment": "governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_IA_D09_TA_001_SUCCESSOR_PENDING_OWNER.md",
   "static_restart_prompt": "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
   "mandatory_operating_policy": "governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md",
   "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
   "roadmap_index_supplement": "governance/ai/runtime/ROADMAP_INDEX_STAGE_A_A12_SUPPLEMENT.json",
-  "roadmap_milestone_amendment": "governance/application-planning/internal-alpha/owner-decision/IA_D09_OWNER_DECISION_COMPLETION_RECEIPT.json",
-  "primary_attempt_id": "IA-D09-owner-decision-evidence-preparation-attempt-001",
-  "selection_reason": "IA-D09 owner-decision work is COMPLETED_VERIFIED. John Brandon Turner explicitly approved Internal Alpha tester access and Internal Alpha release for the exact validated candidate/build; approval PR #338 passed the focused owner-decision, packet, and continuity gates and merged as verified commit 437250843ce3a366111cf16af40e60465d009dfc. The other six owner gates remain not-decided and closed. The next bounded work is Internal Alpha tester onboarding/access execution.",
+  "roadmap_milestone_amendment": "governance/application-planning/internal-alpha/tester-access/IA_D09_TA_001_SUCCESSOR_VALIDATION_RECEIPT.json",
+  "primary_attempt_id": "IA-D09-TA-001-attempt-001",
+  "selection_reason": "IA-D09-TA-001 construction and exact successor validation are complete. The 20-account Windows/Android-browser package is bound to exact candidate de4ead1a93fa19daae3e3e5149c50139abc50f14 and requires a new explicit owner distribution approval because the prior Internal Alpha approval was bound to a different exact candidate/build.",
   "active_attempts": [
+    {
+      "work_item_id": "IA-D09-TA-001",
+      "attempt_id": "IA-D09-TA-001-attempt-001",
+      "track": "internal-alpha-execution",
+      "priority": 1,
+      "owner_selected": true,
+      "repository": "cybalicistjt-stack/multiversal-aioc",
+      "branch": "governance/internal-alpha-tester-access-20-accounts",
+      "checkpoint_path": "governance/ai/work-state/IA-D09-TA-001-attempt-001.json",
+      "status": "blocked_owner",
+      "updated_at": "2026-08-16T13:01:00Z",
+      "roadmap_projection_pending": false
+    },
     {
       "work_item_id": "IA-D09-OWNER-DECISION",
       "attempt_id": "IA-D09-owner-decision-evidence-preparation-attempt-001",
       "track": "internal-alpha-owner-decision",
-      "priority": 1,
-      "owner_selected": true,
+      "priority": 2,
+      "owner_selected": false,
       "repository": "cybalicistjt-stack/multiversal-aioc",
       "branch": "governance/ia-d09-owner-approval-closure",
       "checkpoint_path": "governance/ai/work-state/IA-D09-owner-decision-evidence-preparation-attempt-001.json",
@@ -28,26 +41,13 @@
       "work_item_id": "STAGE-A-A12",
       "attempt_id": "STAGE-A-A12-implementation-attempt-001",
       "track": "application-implementation",
-      "priority": 2,
+      "priority": 3,
       "owner_selected": false,
       "repository": "cybalicistjt-stack/Multiversal-app",
       "branch": "stage-a/a12-internal-alpha-hardening",
       "checkpoint_path": "governance/ai/work-state/STAGE-A-A12-implementation-attempt-001.json",
       "status": "completed_verified",
       "updated_at": "2026-08-16T09:25:29Z",
-      "roadmap_projection_pending": false
-    },
-    {
-      "work_item_id": "STAGE-A-A11",
-      "attempt_id": "STAGE-A-A11-implementation-attempt-001",
-      "track": "application-implementation",
-      "priority": 3,
-      "owner_selected": false,
-      "repository": "cybalicistjt-stack/Multiversal-app",
-      "branch": "stage-a/a11-contextual-ai",
-      "checkpoint_path": "governance/ai/work-state/STAGE-A-A11-implementation-attempt-001.json",
-      "status": "completed_verified",
-      "updated_at": "2026-08-16T07:52:00Z",
       "roadmap_projection_pending": false
     },
     {
@@ -64,13 +64,5 @@
       "roadmap_projection_pending": true
     }
   ],
-  "deferred_tracks": [
-    {
-      "track": "internal-alpha-execution",
-      "next_work_item_id": "IA-D09-TESTER-ONBOARDING",
-      "state": "authorized_not_started",
-      "reason": "Tester access and Internal Alpha release are owner-approved for the exact candidate, but individual tester account/Campaign-role records and onboarding execution have not yet been created.",
-      "evidence": "IA_D09_OWNER_DECISION_RECORD_20260816.json; verified approval merge 437250843ce3a366111cf16af40e60465d009dfc"
-    }
-  ]
+  "deferred_tracks": []
 }

@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_id": "IA-D09-TA-001-SUCCESSOR-VALIDATION-001",
+  "work_item_id": "IA-D09-TA-001",
+  "state": "validated_pending_owner_distribution_approval",
+  "validated_at": "2026-08-16T12:52:12Z",
+  "owner": "John Brandon Turner",
+  "predecessor_owner_approved_candidate": "56b127f1fc01eebe5c73ba0472a5b6496fe92b5e",
+  "predecessor_owner_approved_build": "5033f55d3344209c1719d6003d1369b4bc201c74ba9d64f046767263daee5a45",
+  "successor_candidate_sha": "de4ead1a93fa19daae3e3e5149c50139abc50f14",
+  "successor_application_pr": 154,
+  "successor_application_merge": "ebdb1fdaf05eb535a70255a41f76b66987a8f17a",
+  "successor_application_merge_verified": true,
+  "package": {
+    "filename": "Multiversal-Internal-Alpha-Windows-de4ead1a93fa.zip",
+    "inner_zip_sha256": "d3d6e223245b71bc7f6265025168d61d5eb9b39447d662233584395ff0f73983",
+    "workflow_artifact_id": 9263895118,
+    "workflow_artifact_digest": "sha256:51e708e8e88f93579e4a9ef99dc12340b15dfabd0ef493137f761c88d25b2796",
+    "workflow_run": 31948141484,
+    "workflow_job": 95167328126,
+    "retention_until": "2026-08-23T12:52:09Z"
+  },
+  "browser_evidence": {
+    "workflow_run": 31948141491,
+    "workflow_job": 95167328143,
+    "artifact_id": 9263886146,
+    "artifact_digest": "sha256:eabc62aca829f5f69a72818a6ec6e0d173e2ec4490a4ac0939b00b885c97169a",
+    "scenario_count": 6,
+    "all_passed": true,
+    "includes_android_390px_profile": true,
+    "includes_player_to_gm_direct_url_denial": true,
+    "includes_john_dual_account_separation": true
+  },
+  "windows_evidence": {
+    "workflow_run": 31948141491,
+    "workflow_job": 95167328019,
+    "runner": "windows-latest",
+    "actual_packaged_powershell_runner": "passed"
+  },
+  "regression_evidence": {
+    "focused_role_tests": "13/13 passed",
+    "full_client_tests": "172/172 passed across 61 files",
+    "typecheck": "passed",
+    "accessibility_baseline": "3/3 passed",
+    "multi_entry_build": "passed",
+    "package_smoke": "passed",
+    "a1_companion": "passed",
+    "dt008_companion": "passed",
+    "a3_companion": "substantive verifier/typecheck/tests/build/output passed; legacy cleanup-only assertion failed",
+    "a10_companion": "source accounting/typecheck/tests/build/output passed; legacy cleanup-only assertion failed"
+  },
+  "account_roster": {
+    "roster_id": "IA-D09-TESTER-ROSTER-20-001",
+    "total": 20,
+    "game_master": 10,
+    "player": 10,
+    "john_accounts": ["john-gm", "john-player"],
+    "odd_testers": "game-master",
+    "even_testers": "player"
+  },
+  "distribution_scope": {
+    "windows_private_zip": true,
+    "windows_one_click_runner": true,
+    "android_browser_lan": true,
+    "android_apk": false,
+    "identity_mode": "local-test-identity-selector",
+    "tester_github_required": false,
+    "data_classification": "synthetic-test-only",
+    "browser_state_scope": "local-per-browser-instance",
+    "shared_live_campaign_session_authority": false
+  },
+  "owner_decision": {
+    "required": true,
+    "made": false,
+    "successor_distribution_approved": false,
+    "reason": "The prior owner approval was bound to a different exact candidate/build. Application code changed to add tester identities, role-safe entry, and distribution packaging."
+  },
+  "broader_authorizations": {
+    "real_user_data": false,
+    "production_credentials": false,
+    "paid_provider": false,
+    "public_release_or_deployment": false,
+    "broader_ai_automation_authority": false,
+    "working_design_standards_promotion": false
+  }
+}
