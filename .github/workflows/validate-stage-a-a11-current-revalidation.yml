@@ -5,7 +5,10 @@ on:
     paths:
       - 'governance/application-planning/stage-a-a11/current-revalidation/**'
       - 'governance/ai/work-state/STAGE-A-A11-current-revalidation-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
       - 'tools/validate_stage_a_a11_revalidation.py'
+      - 'tools/validate_stage_a_a10_closure_a11_revalidation_projection.py'
       - '.github/workflows/validate-stage-a-a11-current-revalidation.yml'
   workflow_dispatch:
 
@@ -20,6 +23,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Validate canonical continuity state
+        run: python tools/continuity_state.py validate
+      - name: Validate A10 closure to A11 lifecycle projection
+        run: python tools/validate_stage_a_a10_closure_a11_revalidation_projection.py
       - name: Validate A11 current-repository revalidation package
         run: python tools/validate_stage_a_a11_revalidation.py
       - name: Prove revalidation did not activate implementation
