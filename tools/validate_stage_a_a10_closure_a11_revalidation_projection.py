@@ -46,7 +46,7 @@ def main() -> int:
 
     app_track = next(item for item in pointer["deferred_tracks"] if item["track"] == "application-implementation")
     assert app_track["next_work_item_id"] == "STAGE-A-A11"
-    assert app_track["state"] == "revalidation_required_not_activated"
+    assert app_track["state"] == "current_next_revalidation_not_activated"
     assert A10_IMPLEMENTATION_MERGE in app_track["evidence"]
     assert A10_CLOSURE_MERGE in app_track["evidence"]
 
@@ -54,12 +54,12 @@ def main() -> int:
     assert status["primary"]["attempt_id"] == A11_ATTEMPT
     assert status["primary"]["status"] == "started"
     assert status["primary"]["owner_decision_required"] is False
-    assert status["verified_predecessor"]["work_item_id"] == "STAGE-A-A10"
-    assert status["verified_predecessor"]["status"] == "completed_verified"
-    assert status["verified_predecessor"]["application_merge_commit"] == A10_IMPLEMENTATION_MERGE
-    assert status["verified_predecessor"]["closure_merge_commit"] == A10_CLOSURE_MERGE
-    assert status["restrictions"]["a11_activated"] is False
+    assert status["primary"]["pull_request"] == 329
+    assert status["active_attempt_count"] == 2
+    assert status["deferred_track_count"] == 2
 
+    assert checkpoint["schema_version"] == "1.0.0"
+    assert checkpoint["revision"] >= 1
     assert checkpoint["work_item_id"] == "STAGE-A-A11"
     assert checkpoint["attempt_id"] == A11_ATTEMPT
     assert checkpoint["status"] == "started"
