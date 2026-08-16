@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 4,
+  "revision": 5,
   "work_item_id": "GATX-T06",
   "attempt_id": "GATX-T06-attempt-001",
   "track": "guided-alpha-testing-experience",
@@ -8,11 +8,11 @@
   "branch": "internal-alpha/gatx-t06-testing-operations",
   "governance_repository": "cybalicistjt-stack/multiversal-aioc",
   "governance_branch": "governance/gatx-t06-testing-operations",
-  "status": "ready_for_review",
+  "status": "completed_verified",
   "owner_selected": true,
   "started_at": "2026-08-16T20:59:00Z",
-  "updated_at": "2026-08-16T21:26:30Z",
-  "completed_at": null,
+  "updated_at": "2026-08-16T21:31:00Z",
+  "completed_at": "2026-08-16T21:31:00Z",
   "base_commit": "e850847fbe20d4d716247a6d688a400e1d33400a",
   "construction_complete": true,
   "construction_head": "65efda9cd3d4dd46306c6feb290ea7b18400615c",
@@ -29,12 +29,12 @@
   "windows_workflow_artifact_id": 9270400562,
   "windows_workflow_artifact_sha256": "a32427d1d7c23a62a92b0b0ce042155b163ab785b9ac6e070fcde4470d7f04be",
   "objective": "Build the Guided Alpha testing operations and control layer so round configuration, synthetic tester/role assignments, required and optional scenarios, known-defect metadata, coverage, retest status, and deterministic highest-value-next-test selection are visible and actionable without creating production or shared-live authority.",
-  "last_verified_action": "Exact candidate a82719a1304865a909f7d8d1cd503af085ea4aba passed final dedicated T06 run 31973247727 in both required jobs; app PR #175 then squash-merged unchanged as f0c7ce6ff6e530266666e54b1c9d3da7816b5d27. Governance continuity is now the remaining completion gate.",
-  "active_substep": "governance-continuity-pending",
+  "last_verified_action": "GATX-T06 is completed_verified. Exact app candidate a82719a1304865a909f7d8d1cd503af085ea4aba passed final dedicated run 31973247727 in both required jobs; app PR #175 squash-merged unchanged as f0c7ce6ff6e530266666e54b1c9d3da7816b5d27; corrected pre-completion AIOC continuity run 31973731871 passed state validation, continuity regression tests, and deterministic compact-status projection.",
+  "active_substep": null,
   "completed_substeps": [
-    "operations-contract","round-plan","known-defect-seed","change-impact-projection","guided-round","python-operations-manager","python-t06-runner","tester-operations-card","powershell-operations-helper","exact-t06-package-builder","application-work-order","deterministic-verifier-definition","headed-browser-evidence-definition","linux-windows-validation-workflow-definition","app-handoff-update","construction-seal","validation-start","validation-repair-001-verifier-copy-alignment","final-exact-head-validation","application-merge"
+    "operations-contract","round-plan","known-defect-seed","change-impact-projection","guided-round","python-operations-manager","python-t06-runner","tester-operations-card","powershell-operations-helper","exact-t06-package-builder","application-work-order","deterministic-verifier-definition","headed-browser-evidence-definition","linux-windows-validation-workflow-definition","app-handoff-update","construction-seal","validation-start","validation-repair-001-verifier-copy-alignment","final-exact-head-validation","application-merge","governance-precompletion-continuity"
   ],
-  "next_action": "Run AIOC conversation continuity on this ready_for_review projection. If green, project GATX-T06 to completed_verified with GATX-T07-ARCH planned_next but not started, rerun continuity on that exact completed state, squash-merge governance, and stop.",
+  "next_action": "GATX-T06 is completed_verified. Stop here. When the owner later continues, begin bounded GATX-T07-ARCH under the construction-first rule; do not start it in this operation.",
   "dependencies": {
     "GATX-T05": {"status":"completed_verified","application_merge_commit":"a220380cb25fd8d155c2e3efe6dbc360f5e80b41","postmerge_handoff_commit":"e850847fbe20d4d716247a6d688a400e1d33400a","governance_merge_commit":"b3a121d0cb84fb39c53478a98b43e196597255b6"},
     "GATX-T04": {"status":"completed_verified","application_merge_commit":"8aa81e12a4e17f23aa98fd8461e635ad35145797"},
@@ -94,16 +94,16 @@
     "owner_approval_required": false
   },
   "validation": [
-    {"command":"T06 operations contract and deterministic recommendation verifier","status":"passed","evidence":"app PR #175 / final exact-head run 31973247727"},
-    {"command":"T05 T04 T03 DIAG-F01 preservation","status":"passed","evidence":"app PR #175 / final exact-head run 31973247727"},
-    {"command":"client regression typecheck accessibility and build","status":"passed","evidence":"173/173 across 61 files; typecheck PASS; accessibility 3/3 PASS; production build PASS in run 31973247727"},
-    {"command":"exact T06 package and host operations API contract","status":"passed","evidence":"run 31973247727 exact package/API/change-impact contract PASS"},
-    {"command":"headed-browser operator and tester operations workflows","status":"passed","evidence":"run 31973247727 headed Chromium 10/10 PASS"},
-    {"command":"T03 outcome to host coverage synchronization","status":"passed","evidence":"run 31973247727 TRC-FX-006 pass synchronization and reset clear PASS"},
-    {"command":"T04 defect metadata reuse and privacy inspection","status":"passed","evidence":"run 31973247727 safe metadata projected; observed/expected sentinel absent from operations state and persisted ledger"},
-    {"command":"changed-code retest mapping and next-test selection","status":"passed","evidence":"run 31973247727 path-free GATX-OPS impact plus deterministic TRC-FX-006 defect/retest recommendation PASS"},
-    {"command":"actual Windows packaged PowerShell operations persistence","status":"passed","evidence":"run 31973247727 Windows job PASS: tester/operator state, outcome persistence, T04 metadata reuse/privacy, operations ledger, T05 preservation"},
-    {"command":"governance continuity validation","status":"not_run","evidence":null}
+    {"command":"T06 operations contract and deterministic recommendation verifier","status":"passed","evidence":"GATX-T06 app PR #175 / final exact-head run 31973247727"},
+    {"command":"T05 T04 T03 DIAG-F01 preservation","status":"passed","evidence":"GATX-T06 app PR #175 / final exact-head run 31973247727"},
+    {"command":"client regression typecheck accessibility and build","status":"passed","evidence":"GATX-T06 run 31973247727: 173/173 across 61 files; typecheck PASS; accessibility 3/3 PASS; production build PASS"},
+    {"command":"exact T06 package and host operations API contract","status":"passed","evidence":"GATX-T06 run 31973247727 exact package/API/change-impact contract PASS"},
+    {"command":"headed-browser operator and tester operations workflows","status":"passed","evidence":"GATX-T06 run 31973247727 headed Chromium 10/10 PASS"},
+    {"command":"T03 outcome to host coverage synchronization","status":"passed","evidence":"GATX-T06 run 31973247727 TRC-FX-006 pass synchronization and reset clear PASS"},
+    {"command":"T04 defect metadata reuse and privacy inspection","status":"passed","evidence":"GATX-T06 run 31973247727 safe metadata projected; observed/expected sentinel absent from operations state and persisted ledger"},
+    {"command":"changed-code retest mapping and next-test selection","status":"passed","evidence":"GATX-T06 run 31973247727 path-free GATX-OPS impact plus deterministic TRC-FX-006 defect/retest recommendation PASS"},
+    {"command":"actual Windows packaged PowerShell operations persistence","status":"passed","evidence":"GATX-T06 run 31973247727 Windows job PASS: tester/operator state, outcome persistence, T04 metadata reuse/privacy, operations ledger, T05 preservation"},
+    {"command":"governance continuity validation","status":"passed","evidence":"GATX-T06 pre-completion continuity run 31973731871 PASS: state validation, continuity regression tests, deterministic compact-status projection"}
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
@@ -114,10 +114,11 @@
     {"kind":"ci_run","value":"GATX-T06 sealed-head initial run 31973105847: Windows runtime PASS, Linux exposed verifier-only tester privacy copy mismatch"},
     {"kind":"commit","value":"GATX-T06 validation repair a82719a1304865a909f7d8d1cd503af085ea4aba aligned verifier with actual privacy guidance; no product/runtime/package semantics changed"},
     {"kind":"ci_run","value":"GATX-T06 final exact-head run 31973247727 PASS in both required jobs"},
-    {"kind":"artifact","value":"Linux/browser artifact 9270388528 sha256 39d0a378bc78aea52ef43e290df0fc34761123fc34fe81d3d21998855e02cbbe"},
-    {"kind":"artifact","value":"Windows artifact 9270400562 sha256 a32427d1d7c23a62a92b0b0ce042155b163ab785b9ac6e070fcde4470d7f04be"},
-    {"kind":"file","value":"validated package Multiversal-Internal-Alpha-Windows-a82719a13048-GATX-T06.zip sha256 97563b90e222b8961482f9d8ec3e7f4a02ab2cbb7a3bfced7ba724aaa5aa9afb"},
-    {"kind":"merge","value":"GATX-T06 application squash merge f0c7ce6ff6e530266666e54b1c9d3da7816b5d27"}
+    {"kind":"artifact","value":"GATX-T06 Linux/browser artifact 9270388528 sha256 39d0a378bc78aea52ef43e290df0fc34761123fc34fe81d3d21998855e02cbbe"},
+    {"kind":"artifact","value":"GATX-T06 Windows artifact 9270400562 sha256 a32427d1d7c23a62a92b0b0ce042155b163ab785b9ac6e070fcde4470d7f04be"},
+    {"kind":"file","value":"GATX-T06 validated package Multiversal-Internal-Alpha-Windows-a82719a13048-GATX-T06.zip sha256 97563b90e222b8961482f9d8ec3e7f4a02ab2cbb7a3bfced7ba724aaa5aa9afb"},
+    {"kind":"merge","value":"GATX-T06 application squash merge f0c7ce6ff6e530266666e54b1c9d3da7816b5d27"},
+    {"kind":"ci_run","value":"GATX-T06 governance pre-completion continuity run 31973731871 PASS"}
   ],
   "roadmap_projection_pending": false,
   "notes": ["Validated T06 package is a candidate only; Hotfix2 remains the owner-approved tester distribution until separately replaced."]
