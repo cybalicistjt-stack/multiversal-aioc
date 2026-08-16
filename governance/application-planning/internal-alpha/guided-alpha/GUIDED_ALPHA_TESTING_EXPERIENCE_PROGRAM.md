@@ -5,7 +5,9 @@
 **Owner/final authority:** John Brandon Turner  
 **Activated:** 2026-08-16  
 **Parent context:** Internal Alpha / IA-D09 tester execution  
-**Current tranche:** GATX-T01
+**Highest completed tranche:** GATX-T01  
+**Active prerequisite:** GATX-DIAG-F01 — Automatic diagnostics foundation  
+**Next tranche after prerequisite:** GATX-T02
 
 ## Purpose
 
@@ -17,14 +19,14 @@ This is a bounded subproject that must reach its current-stage completion bounda
 
 ## Owner construction-first execution rule
 
-For every GATX tranche:
+For every GATX tranche or owner-inserted bounded prerequisite:
 
-1. finish the complete bounded construction for the tranche;
+1. finish the complete bounded construction;
 2. do not interrupt construction with repeated per-slice validation cycles;
-3. once construction is sealed, run the tranche's focused and proportionate validation as one validation phase;
+3. once construction is sealed, run the focused and proportionate validation as one validation phase;
 4. batch related repairs discovered by that validation;
 5. rerun the smallest applicable final gate;
-6. record `completed_verified` only after the tranche's declared evidence exists.
+6. record `completed_verified` only after the declared evidence exists.
 
 This rule inherits the repository checkpoint/validation efficiency policy and is stricter where necessary to prevent tiny fix/check/fix loops from dominating the work.
 
@@ -39,13 +41,13 @@ This rule inherits the repository checkpoint/validation efficiency policy and is
 - **Testing the test:** confusion caused by bad instructions is a test-system defect, not automatically an application defect.
 - **No hidden authority expansion:** GATX does not silently activate production identity, shared-live runtime, real-user data, public deployment, paid providers or native Android packaging.
 
-## Tranches
+## Tranches and prerequisite foundations
 
-### GATX-T01 — Guided Alpha framework
+### GATX-T01 — Guided Alpha framework — COMPLETED_VERIFIED
 
 Turn the current Alpha into a recognizable guided testing environment.
 
-Required outcome:
+Completed outcome:
 
 - persistent Guided Alpha shell around the real GM/Player application;
 - tester identity and role;
@@ -63,7 +65,26 @@ Required outcome:
 - known limitations;
 - preservation of the physically confirmed GM Campaign/Session/Combat/Assets navigation repair.
 
-Exit condition: a tester cannot reasonably enter the Alpha and ask what they are supposed to do.
+Exit condition satisfied: a tester can enter the Alpha and understand what they are supposed to do.
+
+### GATX-DIAG-F01 — Automatic diagnostics foundation — ACTIVE PREREQUISITE
+
+Owner-inserted prerequisite before T02. Pull forward only the reusable diagnostic collection/transport/export substrate that T04 would otherwise have needed to retrofit later.
+
+Required outcome:
+
+- automatically capture pertinent **system-known** build/package/tranche/round/account/role/Campaign/browser/device/connection/progress/error context;
+- maintain an in-progress JSON diagnostic snapshot on the host laptop;
+- automatically write a final JSON diagnostic file to the laptop when a guided round completes;
+- finalize active diagnostic sessions during normal runner shutdown;
+- provide an explicit `Save Diagnostics Now` snapshot control;
+- route trusted-LAN/Android browser diagnostic events back to the Windows host laptop;
+- use one tranche-dynamic package/runner contract reusable by T02 and later GATX work;
+- prohibit credential/password, arbitrary form-content, keystroke, free-text problem-description, real Campaign/player-data, unrelated-file and browser-history collection.
+
+This prerequisite **does not complete GATX-T04**. T04 still owns scenario/step/application-area/synthetic-state attachment, tester-perceived/expected input, defect classification and reproducible evidence-bundle workflow.
+
+Exit condition: pertinent technical context is captured automatically and a host-side diagnostic file exists without manual log archaeology.
 
 ### GATX-T02 — Reference Campaign integration
 
@@ -72,7 +93,7 @@ Integrate the already validated Stage A reference Campaign kit into the applicat
 Reference Campaign: **Glass Harbor Incident**  
 Reference World: **Meridian Testbed**
 
-Required outcome: Character, NPC, clue, relationship, faction, combat, vehicle, scene, world and related synthetic surfaces belong to one recognizable campaign with deterministic reset.
+Required outcome: Character, NPC, clue, relationship, faction, combat, vehicle, scene, world and related synthetic surfaces belong to one recognizable campaign with deterministic reset, and pertinent system-known T02 evidence flows through GATX-DIAG-F01.
 
 Exit condition: the Alpha behaves like a small coherent Multiversal campaign instead of a component showroom.
 
@@ -86,9 +107,9 @@ Exit condition: testers execute meaningful repeatable journeys instead of free-f
 
 ### GATX-T04 — Frictionless evidence and defect capture
 
-Automatically attach safe information the system already knows to a tester report: build, scenario, step, account, role, platform, connection mode, application area, synthetic state identity and bounded diagnostics.
+Build on GATX-DIAG-F01. Automatically attach safe information the system already knows to a tester report, including scenario, step, application area and synthetic state identity in addition to the foundation's build/account/role/platform/connection/diagnostic context.
 
-The tester supplies only information the system cannot know, such as what they perceived and expected.
+The tester supplies only information the system cannot know, such as what they perceived and expected. T04 also owns defect classification and reproducible evidence packaging.
 
 Exit condition: a useful defect report requires minimal tester effort and is reproducible without manual archaeology.
 
@@ -128,7 +149,9 @@ Exit condition: geographically separated testers can join, understand, execute, 
 
 Before ordinary roadmap progression resumes, complete and verify:
 
-- GATX-T01 through GATX-T06;
+- GATX-T01;
+- GATX-DIAG-F01;
+- GATX-T02 through GATX-T06;
 - the transport-neutral architecture/UI portion of GATX-T07.
 
 The remote-runtime activation portion of GATX-T07 and physical cross-location execution in GATX-T08 remain gated by the existing authoritative online/session roadmap and must not be simulated into completion.
@@ -159,7 +182,7 @@ After the Guided Alpha framework becomes canonical, any feature intended to ente
 - guided scenario coverage;
 - expected result;
 - reset behavior;
-- evidence/report hooks;
+- automatic diagnostic/evidence hooks;
 - known limitations;
 - regression/retest mapping.
 
@@ -170,6 +193,7 @@ A feature should not be considered truly Alpha-ready merely because its controls
 This program does not by itself authorize:
 
 - real-user data collection;
+- credential/password/arbitrary-form-content collection by diagnostics;
 - production identity or credentials;
 - paid-provider commitment;
 - public deployment or release;
