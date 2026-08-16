@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 3,
+  "revision": 4,
   "work_item_id": "GATX-T07-REMOTE",
   "attempt_id": "GATX-T07-REMOTE-attempt-001",
   "track": "guided-alpha-testing-experience",
@@ -11,16 +11,18 @@
   "status": "in_progress",
   "owner_selected": true,
   "started_at": "2026-08-16T22:46:00Z",
-  "updated_at": "2026-08-16T22:56:00Z",
+  "updated_at": "2026-08-16T23:08:00Z",
   "completed_at": null,
   "base_commit": "f489a5c791580f695cd5e5f60600f567145c93cb",
-  "latest_pushed_commit": "28c03c5572ae849cadaf6cbfd50be415401319c7",
-  "expected_remote_head": "28c03c5572ae849cadaf6cbfd50be415401319c7",
-  "pull_request": 179,
   "construction_complete": true,
   "construction_head": "28c03c5572ae849cadaf6cbfd50be415401319c7",
+  "validated_candidate_sha": "489acc1dca0ebd8b1495b26bc72ad043f59b5a4c",
+  "latest_pushed_commit": "489acc1dca0ebd8b1495b26bc72ad043f59b5a4c",
+  "expected_remote_head": "489acc1dca0ebd8b1495b26bc72ad043f59b5a4c",
+  "pull_request": 179,
+  "application_merge_commit": "5e4f446518701cd9271ebc493f30dcac0a2b5166",
   "validation_started": true,
-  "objective": "Activate the already transport-neutral Guided Alpha over a dedicated access-gated remote internal-alpha runtime that reuses the canonical P9-06 authoritative session, ordered realtime, hidden-information and reconnect foundations; then complete GATX-T08 cross-location regression construction and execute every final gate that can be evidenced honestly.",
+  "objective": "Activate the transport-neutral Guided Alpha over a dedicated access-gated remote internal-alpha runtime reusing the canonical P9 authoritative-session foundations, then complete the permanent GATX-T08 cross-location regression program.",
   "owner_authorization": {
     "source": "Owner instruction 2026-08-16: finish the rest of 07 and 08 and make it ready to use.",
     "internal_alpha_remote_test_deployment_authorized": true,
@@ -37,28 +39,99 @@
     "P9-06-023": {"status": "closed", "application_merge_commit": "fb22295948745347913bcbfebf56ecca26bf39fb", "acceptance_gate": "AG-07"},
     "P9-06-024": {"status": "approved-active", "decision_id": "P9-06-024-OWNER-DECISION-001"}
   },
-  "active_substep": "validation-running",
-  "completed_substeps": ["dependency-recovery","owner-scope-recovery","application-branch","governance-branch","access-gated-remote-runner","remote-activation-contract","t08-permanent-regression-contract","deterministic-http-verifier","preservation-workflow","minimal-deployment-image","application-work-order-and-handoff","construction-seal","application-pr","validation-start"],
-  "next_action": "Collect the complete result of dedicated application run 31977665769 on exact sealed head 28c03c5572ae849cadaf6cbfd50be415401319c7. The remote contract/P9 preservation lane is already PASS; wait for client preservation. If both jobs pass, deploy the exact candidate to a separate access-gated Railway project and prove deployment/runtime gates without changing the candidate.",
+  "active_substep": "remote-first-deployment-blocked",
+  "completed_substeps": [
+    "dependency-recovery",
+    "owner-scope-recovery",
+    "application-branch",
+    "governance-branch",
+    "access-gated-remote-runner",
+    "remote-activation-contract",
+    "t08-permanent-regression-contract",
+    "deterministic-http-verifier",
+    "preservation-workflow",
+    "minimal-deployment-image",
+    "application-work-order-and-handoff",
+    "construction-seal",
+    "application-pr",
+    "validation-start",
+    "deployment-config-repair",
+    "final-exact-head-application-validation",
+    "application-merge"
+  ],
+  "next_action": "Obtain a real first deployment receipt for the already configured isolated Railway service, then verify /health, unauthorized denial, role-bound GM/Player same-session authority, hidden-information filtering and reconnect against that deployed runtime. Do not mark completed_verified until those deployment gates and governance continuity pass.",
   "scope_boundaries": {
     "must_reuse": ["GATX-T07-ARCH transport contract", "P9-06-016 authoritative command semantics", "P9-06-017 ordered delivery", "P9-06-018 hidden-information projection", "P9-06-019 reconnect restoration", "P9-06-023 accepted thin-adapter session runner", "GATX T03/T04/T05/T06/DIAG-F01 testing systems"],
     "authorized": ["dedicated access-gated internal-alpha remote test service", "Railway-generated HTTPS domain for the dedicated test service", "synthetic Glass Harbor testing only", "T08 remote regression charters and evidence"],
     "not_authorized": ["production release", "paid provider commitment", "real-user data", "production credentials", "expose the existing local runner to the public Internet", "port forwarding", "public tunnel", "native Android APK release", "automatic A13"]
   },
-  "construction_contract": {"remote_contract_id":"GATX-T07-REMOTE-CONTRACT-001","remote_marker":"GATX-T07-REMOTE-1","t08_charter_id":"GATX-T08-CROSS-LOCATION-REGRESSION-001","t08_charter_count":10,"separate_role_keys":true,"server_derived_roles":true,"raw_client_ip_stored":false,"synthetic_only":true,"startup_self_test":true,"minimal_docker_image":"deploy/gatx-remote/Dockerfile"},
+  "construction_contract": {
+    "remote_contract_id": "GATX-T07-REMOTE-CONTRACT-001",
+    "remote_marker": "GATX-T07-REMOTE-1",
+    "t08_charter_id": "GATX-T08-CROSS-LOCATION-REGRESSION-001",
+    "t08_charter_count": 10,
+    "separate_role_keys": true,
+    "server_derived_roles": true,
+    "raw_client_ip_stored": false,
+    "synthetic_only": true,
+    "startup_self_test": true,
+    "minimal_docker_image": "deploy/gatx-remote/Dockerfile",
+    "railway_config": "deploy/gatx-remote/railway.json"
+  },
+  "remote_deployment": {
+    "provider": "Railway",
+    "project_name": "Multiversal Guided Alpha Remote",
+    "project_id": "3cd61dea-a227-4c89-81ad-629ded613a82",
+    "environment_id": "6b115ce4-ed34-4ec5-b910-dfea7366a791",
+    "target_service_name": "gatx-remote-live",
+    "target_service_id": "a4441a0a-20d6-45d0-b942-0bd4b8025317",
+    "generated_domain": "gatx-remote-live-production.up.railway.app",
+    "domain_id": "083374b4-248f-412f-a12a-26c93649bc5b",
+    "role_secrets_configured_outside_repository": true,
+    "first_deployment_receipt_present": false,
+    "health_verified": false,
+    "connector_observation": "create-deployment and accept-deploy reported triggered, but list-deployments/get-status returned no first deployment object for all attempted services. No live-runtime success claim is permitted."
+  },
   "completion_gate": {
     "required_evidence_kinds": ["commit", "pull_request", "ci_run", "remote_deployment", "merge", "governance_continuity"],
-    "required_validation_commands": ["T07 remote access/auth/privacy and authoritative-session reuse verifier","T07-ARCH T06 T05 T04 T03 DIAG-F01 preservation","client regression typecheck accessibility and build","deployed remote health and unauthorized-access denial","deployed GM/player same-session authority hidden-information and reconnect smoke","T08 adverse permission reconnect ordering and latency regression charter suite","actual cross-location evidence when geographically separate clients are available","governance continuity validation"],
+    "required_validation_commands": [
+      "T07 remote access/auth/privacy and authoritative-session reuse verifier",
+      "T07-ARCH T06 T05 T04 T03 DIAG-F01 preservation",
+      "client regression typecheck accessibility and build",
+      "deployed remote health and unauthorized-access denial",
+      "deployed GM/player same-session authority hidden-information and reconnect smoke",
+      "governance continuity validation"
+    ],
     "owner_approval_required": false
   },
   "validation": [
-    {"command":"T07 remote access/auth/privacy and authoritative-session reuse verifier","status":"pass","evidence":"GATX-T07-REMOTE run 31977665769 remote-contract-regression job 95239463926"},
-    {"command":"T07-ARCH T06 T05 T04 T03 DIAG-F01 preservation","status":"pass","evidence":"GATX-T07-REMOTE run 31977665769 remote-contract-regression job 95239463926"},
-    {"command":"P9-06-016 017 018 019 023 preservation","status":"pass","evidence":"GATX-T07-REMOTE run 31977665769 remote-contract-regression job 95239463926"},
-    {"command":"client regression typecheck accessibility and build","status":"running","evidence":"GATX-T07-REMOTE run 31977665769 client-preservation job 95239463820"}
+    {"command":"T07 remote access/auth/privacy and authoritative-session reuse verifier","status":"pass","evidence":"exact-head run 31977976497 remote-contract-regression"},
+    {"command":"T07-ARCH T06 T05 T04 T03 DIAG-F01 preservation","status":"pass","evidence":"exact-head run 31977976497 remote-contract-regression"},
+    {"command":"P9-06-016 017 018 019 023 preservation","status":"pass","evidence":"exact-head run 31977976497 remote-contract-regression"},
+    {"command":"client regression typecheck accessibility and build","status":"pass","evidence":"exact-head run 31977976497 client-preservation"},
+    {"command":"dedicated Railway config as code","status":"pass","evidence":"exact-head run 31977976497 remote-contract-regression"},
+    {"command":"deployed remote health and unauthorized-access denial","status":"not_run","evidence":"blocked: Railway connector exposed no first deployment object"},
+    {"command":"deployed GM/player same-session authority hidden-information and reconnect smoke","status":"not_run","evidence":"blocked on first deployment receipt"},
+    {"command":"governance continuity validation","status":"not_run","evidence":null}
   ],
-  "unresolved_failures": [],
+  "unresolved_failures": [
+    {
+      "id": "GATX-T07-REMOTE-DEPLOY-001",
+      "class": "external-deployment-tooling",
+      "summary": "Railway source/config/secrets/domain are configured but the connected Railway API has not produced a first deployment object, so deployed health and runtime behavior cannot be verified honestly."
+    }
+  ],
   "owner_decision_required": false,
   "roadmap_projection_pending": true,
-  "notes": ["Railway project Multiversal AIOC Bridge is unrelated and must not be reused for the remote Guided Alpha runtime.","T08 must not be claimed completed_verified from simulated geography. If actual geographically separate client evidence cannot be produced on the available execution surfaces, complete all construction/remote deployment/regression work and record the remaining physical cross-location gate explicitly."]
+  "evidence": [
+    {"kind":"commit","value":"GATX-T07-REMOTE validated candidate 489acc1dca0ebd8b1495b26bc72ad043f59b5a4c"},
+    {"kind":"pull_request","value":"GATX-T07-REMOTE/T08 application PR #179"},
+    {"kind":"ci_run","value":"GATX-T07-REMOTE/T08 exact-head validation run 31977976497 PASS both declared jobs"},
+    {"kind":"merge","value":"GATX-T07-REMOTE/T08 application squash merge 5e4f446518701cd9271ebc493f30dcac0a2b5166"},
+    {"kind":"remote_deployment","value":"Railway project 3cd61dea-a227-4c89-81ad-629ded613a82 and domain gatx-remote-live-production.up.railway.app configured; first deployment receipt absent"}
+  ],
+  "notes": [
+    "The application implementation and exact-head CI are complete and merged, but completion is intentionally withheld until deployed-runtime evidence exists.",
+    "Hotfix2 remains the owner-approved general tester distribution unless separately replaced."
+  ]
 }
