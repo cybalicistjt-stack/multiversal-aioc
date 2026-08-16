@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 5,
+  "revision": 6,
   "work_item_id": "IA-D09-TA-001",
   "attempt_id": "IA-D09-TA-001-attempt-001",
   "track": "internal-alpha-execution",
@@ -12,8 +12,13 @@
   "updated_at": "2026-08-16T15:09:00Z",
   "completed_at": "2026-08-16T15:09:00Z",
   "objective": "Construct, validate, physically verify, and owner-approve the bounded 20-account Internal Alpha tester identity, role, Windows distribution, and Android LAN/browser access package without broadening production or shared-live authority.",
+  "last_verified_action": "Owner physically verified all 20 Hotfix 2 accounts on Windows (10/10 GM, 10/10 Player, 0 incorrect), app repair PR #156 merged as 7cc9fa4a042a461d03c88d69c2b18ed18c0f9e21, AIOC physical evidence merged as f717f14730bf617e8176806cfb6134d0da30ff19, and John Brandon Turner explicitly approved exact replacement ZIP SHA256 5c9f31c96a3373f927f8d3a7ee6ee821aafeda8d0ae26a0c6cecf94ca129e0de.",
+  "active_substep": null,
+  "next_action": "Use/distribute only the exact owner-approved Hotfix 2 package and capture Internal Alpha defects through normal issue/evidence flow. Do not alter/rebuild the package, activate shared-live runtime, or create A13 without a separate governed decision.",
+  "latest_pushed_commit": "e0e87988898859092c7858a0d78cf5c52bda0c7f",
+  "expected_remote_head": "e0e87988898859092c7858a0d78cf5c52bda0c7f",
+  "pull_request": null,
   "successor_candidate_sha": "de4ead1a93fa19daae3e3e5149c50139abc50f14",
-  "successor_application_pr": 154,
   "successor_application_merge": "ebdb1fdaf05eb535a70255a41f76b66987a8f17a",
   "replacement_application_pr": 156,
   "replacement_application_merge": "7cc9fa4a042a461d03c88d69c2b18ed18c0f9e21",
@@ -30,16 +35,7 @@
     {"file":"Multiversal-Internal-Alpha-Windows-de4ead1a93fa.zip","sha256":"d3d6e223245b71bc7f6265025168d61d5eb9b39447d662233584395ff0f73983","state":"withdrawn-defective"},
     {"file":"Multiversal-Internal-Alpha-Windows-fe9e0b3cc45d-HOTFIX-CANDIDATE.zip","state":"withdrawn-defective"}
   ],
-  "physical_windows_role_routing": {
-    "accounts_tested": 20,
-    "gm_expected": 10,
-    "gm_correct": 10,
-    "player_expected": 10,
-    "player_correct": 10,
-    "incorrect_role_routing": 0,
-    "not_found_reproduced": false,
-    "result": "PASS"
-  },
+  "physical_windows_role_routing": {"accounts_tested":20,"gm_expected":10,"gm_correct":10,"player_expected":10,"player_correct":10,"incorrect_role_routing":0,"not_found_reproduced":false,"result":"PASS"},
   "known_nonblocking_issue": {"application_issue":157,"summary":"GM sidebar Campaign/Session/Combat/Assets controls are inert.","accepted_for_exact_distribution":true},
   "tester_accounts_constructed": 20,
   "gm_accounts": 10,
@@ -55,18 +51,28 @@
   "public_release_or_deployment_authorized": false,
   "broader_ai_automation_authority_authorized": false,
   "working_design_standards_promoted": false,
+  "completion_gate": {
+    "required_evidence_kinds": ["file", "ci_run", "merge", "owner_decision"],
+    "required_validation_commands": [
+      "focused tester setup + full client regression + package",
+      "headed Chromium successor evidence",
+      "actual packaged PowerShell runner on windows-latest",
+      "physical Windows 20-account role routing"
+    ],
+    "owner_approval_required": true
+  },
   "validation": [
-    {"status":"passed","evidence":"original successor app validation runs 31948141484 and 31948141491"},
-    {"status":"passed","evidence":"AIOC owner approval/continuity run 31951223167"},
-    {"status":"passed","evidence":"physical Windows full 20-account matrix reported by owner; app PR #156 merge 7cc9fa4a042a461d03c88d69c2b18ed18c0f9e21; AIOC evidence merge f717f14730bf617e8176806cfb6134d0da30ff19"},
-    {"status":"infrastructure-blocked","evidence":"fresh app Actions jobs did not start because account billing/spending limit blocked runners; zero product test steps executed"}
+    {"command":"focused tester setup + full client regression + package","status":"passed","evidence":"IA-D09-TA-001 app run 31948141484 job 95167328126"},
+    {"command":"headed Chromium successor evidence","status":"passed","evidence":"IA-D09-TA-001 app run 31948141491 job 95167328143; 6/6 scenarios"},
+    {"command":"actual packaged PowerShell runner on windows-latest","status":"passed","evidence":"IA-D09-TA-001 app run 31948141491 job 95167328019"},
+    {"command":"physical Windows 20-account role routing","status":"passed","evidence":"IA-D09-TA-001 owner physical report; 10/10 GM, 10/10 Player, 0 incorrect; AIOC evidence merge f717f14730bf617e8176806cfb6134d0da30ff19"}
   ],
   "evidence": [
-    {"kind":"owner_decision","value":"John Brandon Turner explicitly approved exact replacement package Multiversal-Internal-Alpha-Windows-HOTFIX2-a4e262167aa9.zip SHA256 5c9f31c96a3373f927f8d3a7ee6ee821aafeda8d0ae26a0c6cecf94ca129e0de for bounded 20-account Internal Alpha distribution"},
-    {"kind":"physical_test","value":"20/20 accounts routed to assigned roles: 10/10 GM, 10/10 Player, 0 incorrect"},
-    {"kind":"merge","value":"app repair 7cc9fa4a042a461d03c88d69c2b18ed18c0f9e21; AIOC physical evidence f717f14730bf617e8176806cfb6134d0da30ff19"}
+    {"kind":"file","value":"IA-D09-TA-001 Hotfix 2 owner decision governance/application-planning/internal-alpha/tester-access/IA_D09_TA_001_HOTFIX2_OWNER_DISTRIBUTION_DECISION_20260816.json"},
+    {"kind":"ci_run","value":"IA-D09-TA-001 original exact successor validation app runs 31948141484 and 31948141491"},
+    {"kind":"merge","value":"IA-D09-TA-001 app repair merge 7cc9fa4a042a461d03c88d69c2b18ed18c0f9e21 and AIOC physical evidence merge f717f14730bf617e8176806cfb6134d0da30ff19"},
+    {"kind":"owner_decision","value":"IA-D09-TA-001 John Brandon Turner explicitly approved exact replacement package Multiversal-Internal-Alpha-Windows-HOTFIX2-a4e262167aa9.zip SHA256 5c9f31c96a3373f927f8d3a7ee6ee821aafeda8d0ae26a0c6cecf94ca129e0de for bounded 20-account Internal Alpha distribution"}
   ],
   "unresolved_failures": [],
-  "roadmap_projection_pending": false,
-  "next_action": "Use/distribute only the exact owner-approved Hotfix 2 package and capture Internal Alpha defects through normal issue/evidence flow. Do not alter/rebuild the package, activate shared-live runtime, or create A13 without a separate governed decision."
+  "roadmap_projection_pending": false
 }
