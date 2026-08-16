@@ -11,16 +11,12 @@
     "dependency_gated_later": ["GATX-T07-REMOTE", "GATX-T08"]
   },
   "current_position": {
-    "highest_completed": "GATX-T02",
-    "active_item": "GATX-T03",
-    "active_item_title": "Guided scenario and test-journey engine",
-    "active_state": "construction_complete_validation_pending",
+    "highest_completed": "GATX-T03",
+    "active_item": null,
     "next_tranche_after_active_item": "GATX-T04",
     "next_tranche_title": "Frictionless evidence and defect capture",
     "t02_completed": true,
-    "t03_started": true,
-    "t03_construction_complete": true,
-    "t03_validation_started": false
+    "t03_completed": true
   },
   "items": [
     {
@@ -79,11 +75,19 @@
     {
       "id": "GATX-T03",
       "title": "Guided scenario and test-journey engine",
-      "status": "construction_complete_validation_pending",
+      "status": "completed_verified",
       "dependencies": ["GATX-T02"],
       "attempt_id": "GATX-T03-attempt-001",
       "application_branch": "internal-alpha/gatx-t03-scenario-engine",
+      "application_pull_request": 164,
       "construction_head": "4d9c0a34dc38e5917d4828436cc825769fcc5a87",
+      "validated_candidate_sha": "85bd490a0805186071a148768bae661e12dc30b6",
+      "application_merge_commit": "fd643355a6cf10db51190d15037711ee04515637",
+      "completed_at": "2026-08-16T19:01:00Z",
+      "validation_runs": [31965938394, 31966227328],
+      "validated_package": "Multiversal-Internal-Alpha-Windows-85bd490a0805-GATX-T03.zip",
+      "validated_package_sha256": "29091a2c3ad2c415e98ada0a7591cea6c685c5f728dd928b5ffaf346d4c013bc",
+      "workflow_artifact_id": 9268507845,
       "source_package_sha256": "bea56f266449f8b89d855bca9e36973c20c3dd95dfb79897fe1132c94df457f6",
       "runtime_scenarios": 24,
       "derived_charters": 8,
@@ -94,13 +98,12 @@
       "protected_full_projection_host_game_master_only": true,
       "source_catalog_packaged": false,
       "checkpoint_expected_facts_packaged": false,
-      "validation_started": false,
-      "acceptance_summary": "Machine-readable role-aware scenarios and eight T03-derived charters provide repeatable objectives/actions/expected results/recovery/reset/outcomes. Construction also enforces pre-projection privacy by keeping exact source/checkpoint facts repository-only, exposing only a three-record Player orientation projection, and host-gating the protected 27-record projection to roster-assigned Game Master accounts."
+      "acceptance_summary": "Machine-readable role-aware scenarios and eight T03-derived charters provide repeatable objectives/actions/expected results/recovery/reset/outcomes. Exact source/checkpoint facts remain repository-only; the Player public projection is orientation-safe and the full fixture is host-gated to roster-assigned Game Master accounts."
     },
     {
       "id": "GATX-T04",
       "title": "Frictionless evidence and defect capture",
-      "status": "planned",
+      "status": "planned_next",
       "dependencies": ["GATX-T03"],
       "foundation_dependency": "GATX-DIAG-F01",
       "remaining_scope_after_foundation": "Attach scenario/step/application-area/synthetic-state context, tester-perceived/expected input, defect classification and reproducibility packaging to the already-installed automatic diagnostics transport/export substrate.",
