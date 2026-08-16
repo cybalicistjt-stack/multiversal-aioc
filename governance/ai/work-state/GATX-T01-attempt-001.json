@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 3,
+  "revision": 4,
   "work_item_id": "GATX-T01",
   "attempt_id": "GATX-T01-attempt-001",
   "track": "guided-alpha-testing-experience",
@@ -8,27 +8,31 @@
   "branch": "internal-alpha/guided-alpha-tranche-1",
   "governance_repository": "cybalicistjt-stack/multiversal-aioc",
   "governance_branch": "governance/guided-alpha-testing-experience",
-  "status": "blocked_owner",
+  "status": "completed_verified",
   "owner_selected": true,
   "started_at": "2026-08-16T16:20:00Z",
-  "updated_at": "2026-08-16T16:40:30Z",
-  "completed_at": null,
+  "updated_at": "2026-08-16T17:03:00Z",
+  "completed_at": "2026-08-16T17:03:00Z",
   "objective": "Complete Guided Alpha Testing Experience Tranche 1: make the current Internal Alpha a self-explanatory guided test environment with explicit tester identity, role, build/candidate identity, connection mode, test campaign, testing round, progress, current objective, next action, expected result, known limitations, reset/recovery and defect-entry affordances. Preserve the already-constructed GM navigation repair as the tranche baseline.",
   "construction_rule": "Finish the entire tranche construction before running validation checks. Do not interrupt construction with per-slice hosted validation.",
   "construction_complete": true,
   "construction_head": "a18d89bcfc002637705f6430fd1486dfd0d67fae",
-  "latest_pushed_commit": "a18d89bcfc002637705f6430fd1486dfd0d67fae",
-  "expected_remote_head": "a18d89bcfc002637705f6430fd1486dfd0d67fae",
+  "validated_application_candidate": "ba3ad9b13f09f192d9901038ba006fe208e6b534",
+  "latest_pushed_commit": "ff4a747bd40cc6b5e48437bc9bcaa7ee80f128b0",
+  "expected_remote_head": "ff4a747bd40cc6b5e48437bc9bcaa7ee80f128b0",
   "pull_request": 160,
+  "application_merge_commit": "503b793dbc3579e41da78d89722118df10889ed4",
   "validation_started": true,
-  "last_verified_action": "GATX-T01 governance continuity validation passed on governance PR #343 run 31959253238 after the checkpoint/schema and active roadmap-supplement repair. Application PR #160 exact-head jobs were triggered but GitHub refused to start them because of the account payment/spending-limit condition; no app test step executed.",
-  "active_substep": "restore-private-app-validation-execution-surface",
-  "next_action": "Owner must restore an executable private-repository validation surface by resolving the GitHub Actions billing/spending-limit condition or provide an equivalent exact private checkout execution surface. Then rerun the already-constructed GATX-T01 app validation suite on exact head a18d89bcfc002637705f6430fd1486dfd0d67fae; do not begin GATX-T02 before T01 completes its declared gates.",
+  "last_verified_action": "GATX-T01 exact application candidate ba3ad9b13f09f192d9901038ba006fe208e6b534 passed all declared relevant validation gates after a bounded validation-repair batch; app PR #160 was then squash-merged to main as 503b793dbc3579e41da78d89722118df10889ed4. Superseded PR #158 was closed and issue #157 was closed completed.",
+  "active_substep": null,
+  "next_action": "GATX-T01 is completed_verified. The exact next tranche is GATX-T02 — integrate the validated Glass Harbor Incident / Meridian Testbed reference Campaign fixture into the Guided Alpha application while preserving the construction-first rule.",
   "application_baseline": {
     "base_main": "9dba609d4b5ea9149be5ac79431ac92d1da86316",
     "absorbed_gm_navigation_head": "4d3a8175a931c1561cf2f585be0091da58b9f1c2",
     "source_pull_request": 158,
-    "source_issue": 157
+    "source_issue": 157,
+    "source_pr_disposition": "closed-superseded-by-160",
+    "source_issue_disposition": "closed-completed"
   },
   "construction_evidence": {
     "guided_shell": "apps/client-ui/public/guided-alpha.html",
@@ -40,9 +44,17 @@
     "reference_campaign_context": "Glass Harbor Incident / Meridian Testbed",
     "full_reference_campaign_fixture_integrated": false
   },
+  "validated_package": {
+    "filename": "Multiversal-Internal-Alpha-Windows-ba3ad9b13f09-GATX-T01.zip",
+    "sha256": "7d29f847e0436b90b5430b7a062ada36305ace8f981fb1bc79c14f9833beafae",
+    "workflow_artifact_id": 9267033148,
+    "workflow_wrapper_zip_sha256": "0f68d538f37a0a0aa91975d968eacc276aefad263eaa9581690781bb8712b82a",
+    "distribution_approved": false,
+    "approved_distribution_remains": "Multiversal-Internal-Alpha-Windows-HOTFIX2-a4e262167aa9.zip"
+  },
   "related_deferred_defect": {
     "issue": 159,
-    "disposition": "Retain for later Guided Alpha device/LAN tranche; do not let Android transport debugging fragment Tranche 1."
+    "disposition": "Retain for GATX-T05 device/LAN tranche; T01 does not claim LAN repair."
   },
   "acceptance": [
     "Alpha entry clearly identifies tester/account and role.",
@@ -53,7 +65,7 @@
     "GM and Player experiences use the same guided-testing contract while preserving role isolation.",
     "Existing GM Campaign/Session/Combat/Assets navigation remains functional and organized.",
     "No production credentials, real-user data, public deployment, synchronized shared-live authority or native Android APK authority is introduced.",
-    "Affected tests/typecheck/build and bounded guided-alpha regressions pass after construction is complete, subject to external GitHub runner availability."
+    "Affected tests/typecheck/build and bounded guided-alpha regressions pass after construction is complete."
   ],
   "completion_gate": {
     "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
@@ -68,26 +80,22 @@
     "owner_approval_required": false
   },
   "validation": [
-    {"command":"guided-alpha deterministic source contract","status":"not_run","evidence":"App PR #160 workflow was created but GitHub did not start the job because of the account payment/spending-limit condition."},
-    {"command":"client regression typecheck accessibility and build","status":"not_run","evidence":"App PR #160 workflow was created but GitHub did not start the job because of the account payment/spending-limit condition."},
-    {"command":"exact-candidate package and runner smoke","status":"not_run","evidence":"App PR #160 workflow was created but GitHub did not start the job because of the account payment/spending-limit condition."},
-    {"command":"headed-browser Guided Alpha scenarios","status":"not_run","evidence":"App PR #160 run 31959061177 job 95194140152 was not started by GitHub because of the account payment/spending-limit condition."},
-    {"command":"actual packaged Windows PowerShell runner","status":"not_run","evidence":"App PR #160 run 31959061177 job 95194140083 was not started by GitHub because of the account payment/spending-limit condition."},
-    {"command":"governance continuity validation","status":"passed","evidence":"Governance PR #343 run 31959253238 — Validate Conversation Continuity — success on repaired governance head lineage."}
+    {"command":"guided-alpha deterministic source contract","status":"passed","evidence":"GATX-T01 setup run 31960148617: verify_guided_alpha_tranche1.py PASS; tester setup and PowerShell dispatch verifiers PASS."},
+    {"command":"client regression typecheck accessibility and build","status":"passed","evidence":"GATX-T01 setup run 31960148617 on ba3ad9b13f09f192d9901038ba006fe208e6b534: focused tests 14/14 PASS; full client 173/173 across 61 files PASS; typecheck PASS; accessibility 3/3 PASS; build PASS."},
+    {"command":"exact-candidate package and runner smoke","status":"passed","evidence":"GATX-T01 setup run 31960148617 built package SHA256 7d29f847e0436b90b5430b7a062ada36305ace8f981fb1bc79c14f9833beafae and passed packaged local runner/account/manifest smoke."},
+    {"command":"headed-browser Guided Alpha scenarios","status":"passed","evidence":"GATX-T01 successor run 31960148623 job 95196771945: headed Chromium Guided Alpha 7/7 PASS on exact candidate ba3ad9b13f09f192d9901038ba006fe208e6b534."},
+    {"command":"actual packaged Windows PowerShell runner","status":"passed","evidence":"GATX-T01 successor run 31960148623 job 95196771903 PASS; PowerShell dispatch run 31960148611 static contract and Windows account-dispatch runtime PASS."},
+    {"command":"governance continuity validation","status":"passed","evidence":"GATX-T01 governance continuity passed on PR #343 run 31959421763 before closure projection; final closure continuity is required again before governance merge."}
   ],
-  "unresolved_failures": [
-    "Private application validation execution is unavailable: GitHub Actions jobs for PR #160 are refused before runner start due the account payment/spending-limit condition, and the current container cannot resolve github.com to clone the private repository as an alternative exact checkout."
-  ],
-  "owner_decision_required": true,
+  "unresolved_failures": [],
+  "owner_decision_required": false,
   "evidence": [
-    {"kind":"commit","value":"GATX-T01 application construction head a18d89bcfc002637705f6430fd1486dfd0d67fae"},
-    {"kind":"pull_request","value":"GATX-T01 application PR #160 and governance PR #343"},
-    {"kind":"file","value":"GATX-T01 governance program governance/application-planning/internal-alpha/guided-alpha/GUIDED_ALPHA_TESTING_EXPERIENCE_PROGRAM.md"},
-    {"kind":"ci_run","value":"GATX-T01 governance continuity PASS run 31959253238; app PR #160 runs created but jobs unstarted due billing/spending-limit execution-surface block"}
+    {"kind":"commit","value":"GATX-T01 validated application candidate ba3ad9b13f09f192d9901038ba006fe208e6b534 and closure head ff4a747bd40cc6b5e48437bc9bcaa7ee80f128b0"},
+    {"kind":"pull_request","value":"GATX-T01 application PR #160; governance PR #343"},
+    {"kind":"ci_run","value":"GATX-T01 PASS runs 31960148617, 31960148623, 31960148611; governance continuity PASS 31959421763"},
+    {"kind":"merge","value":"GATX-T01 application PR #160 squash merge 503b793dbc3579e41da78d89722118df10889ed4"},
+    {"kind":"artifact","value":"GATX-T01 package artifact 9267033148; internal ZIP SHA256 7d29f847e0436b90b5430b7a062ada36305ace8f981fb1bc79c14f9833beafae"}
   ],
-  "roadmap_projection_pending": true,
-  "known_blockers": [
-    "Application GitHub Actions on exact head a18d89bcfc002637705f6430fd1486dfd0d67fae were triggered by PR #160 but jobs were not started because GitHub reported the account payment/spending-limit condition. This is an execution-surface blocker, not a product-test failure or pass.",
-    "The current container has no network route to github.com, so it cannot clone the private application repository for a substitute full local client/package run."
-  ]
+  "roadmap_projection_pending": false,
+  "known_blockers": []
 }
