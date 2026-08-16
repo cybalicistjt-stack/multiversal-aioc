@@ -14,10 +14,12 @@
     "highest_completed": "GATX-T03",
     "active_item": "GATX-T04",
     "active_item_title": "Frictionless evidence and defect capture",
+    "active_state": "application-validated-merged-governance-continuity-pending",
     "next_tranche_after_active_item": "GATX-T05",
     "next_tranche_title": "Device and trusted-LAN connection center",
     "t03_completed": true,
-    "t04_started": true
+    "t04_application_complete": true,
+    "t04_governance_continuity_pending": true
   },
   "items": [
     {
@@ -104,19 +106,28 @@
     {
       "id": "GATX-T04",
       "title": "Frictionless evidence and defect capture",
-      "status": "construction_in_progress",
+      "status": "ready_for_review",
       "dependencies": ["GATX-T03"],
       "foundation_dependency": "GATX-DIAG-F01",
       "attempt_id": "GATX-T04-attempt-001",
       "application_branch": "internal-alpha/gatx-t04-evidence-defect-capture",
       "governance_branch": "governance/gatx-t04-evidence-defect-capture",
-      "base_application_commit": "fd643355a6cf10db51190d15037711ee04515637",
+      "construction_head": "7a4f5995a0964f2852f49520be5ea5a57f5a68fa",
+      "validated_candidate_sha": "38eb5bcf8e6c5ea9a679f58c75f0ec482510547c",
+      "application_pull_request": 165,
+      "application_merge_commit": "8aa81e12a4e17f23aa98fd8461e635ad35145797",
       "started_at": "2026-08-16T19:03:00Z",
-      "validation_started": false,
+      "validation_runs": [31968282129],
+      "validated_package": "Multiversal-Internal-Alpha-Windows-38eb5bcf8e6c-GATX-T04.zip",
+      "validated_package_sha256": "e37ce2e9f4c44fa1af460d54881fcfe5873b0b52ce1651088957ac9cf900602d",
+      "workflow_artifact_id": 9269106399,
+      "workflow_artifact_sha256": "8c2baff557411848cc32b1f0634b31fea937b06115779a6b0658ec85bef53e97",
+      "distribution_approved": false,
       "evidence_contract_id": "GATX-T04-EVIDENCE-CONTRACT-001",
       "bundle_marker": "GATX-T04-EVIDENCE-BUNDLE-1",
       "tester_text_fields": ["observed", "expected"],
       "tester_text_max_length": 512,
+      "explicit_consent_required": true,
       "defect_classes": 7,
       "severity": ["info", "warning", "error"],
       "reproducibility": ["not-retried", "once", "intermittent", "every-time"],
@@ -125,8 +136,8 @@
       "diagnostics_foundation_reused": true,
       "scenario_engine_reused": true,
       "remote_upload": false,
-      "remaining_scope_after_foundation": "Attach scenario/step/application-area/synthetic-state context, tester-observed/expected input, defect classification and reproducibility packaging to the already-installed automatic diagnostics transport/export substrate.",
-      "acceptance_summary": "Safe system-known context is combined with only two bounded tester-supplied observed/expected fields, explicit consent, governed classification and a local reviewable reproducibility ZIP linked to DIAG-F01; protected hidden state is reduced before evidence transport."
+      "validation_summary": "Final exact-head run passed both declared jobs: 173/173 regression, typecheck, accessibility, build, explicit consent gate, actual packaged Windows PowerShell POST-to-ZIP, 8/8 headed Chromium evidence cases, and host-bundle privacy inspection.",
+      "acceptance_summary": "Safe system-known context is combined with only two bounded tester-supplied observed/expected fields, explicit consent, governed classification and a local reviewable reproducibility ZIP linked to DIAG-F01; protected hidden state is reduced before evidence transport. Governance continuity remains the final completion gate."
     },
     {
       "id": "GATX-T05",
@@ -134,7 +145,7 @@
       "status": "planned_next",
       "dependencies": ["GATX-T04"],
       "related_application_issue": 159,
-      "acceptance_summary": "Same-LAN device setup is guided; server/port/network/firewall/request state is visible; failures are classified by layer and temporary access can be cleaned up."
+      "acceptance_summary": "Same-LAN device setup is guided; server/port/network-profile/firewall/listener/request state is visible; failures are classified by layer and temporary access can be cleaned up."
     },
     {
       "id": "GATX-T06",
