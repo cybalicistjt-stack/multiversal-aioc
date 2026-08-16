@@ -11,16 +11,17 @@
     "dependency_gated_later": ["GATX-T07-REMOTE", "GATX-T08"]
   },
   "current_position": {
-    "highest_completed": "GATX-T05",
-    "active_item": "GATX-T06",
-    "active_item_title": "Testing operations and control layer",
+    "highest_completed": "GATX-T06",
+    "active_item": null,
+    "active_item_title": null,
     "next_tranche_after_active_item": "GATX-T07-ARCH",
     "next_tranche_title": "Remote-online-ready Guided Alpha architecture",
     "t05_completed": true,
-    "t06_started": true,
+    "t06_completed": true,
     "t06_construction_complete": true,
     "t06_validation_started": true,
     "t06_application_merged": true,
+    "t07_arch_started": false,
     "stop_before_t07_arch": true
   },
   "items": [
@@ -193,7 +194,7 @@
     {
       "id": "GATX-T06",
       "title": "Testing operations and control layer",
-      "status": "ready_for_review",
+      "status": "completed_verified",
       "dependencies": ["GATX-T05"],
       "attempt_id": "GATX-T06-attempt-001",
       "application_branch": "internal-alpha/gatx-t06-testing-operations",
@@ -204,8 +205,9 @@
       "application_pull_request": 175,
       "application_merge_commit": "f0c7ce6ff6e530266666e54b1c9d3da7816b5d27",
       "started_at": "2026-08-16T20:59:00Z",
+      "completed_at": "2026-08-16T21:31:00Z",
       "validation_started": true,
-      "validation_runs": [31973105847,31973247727],
+      "validation_runs": [31973105847,31973247727,31973731871,31973819421],
       "validated_package": "Multiversal-Internal-Alpha-Windows-a82719a13048-GATX-T06.zip",
       "validated_package_sha256": "97563b90e222b8961482f9d8ec3e7f4a02ab2cbb7a3bfced7ba724aaa5aa9afb",
       "linux_workflow_artifact_id": 9270388528,
@@ -231,13 +233,13 @@
       "t04_evidence_reused": true,
       "t05_connection_context_reused": true,
       "distribution_approved": false,
-      "validation_summary": "Final exact-head run 31973247727 passed both declared jobs on a82719a1304865a909f7d8d1cd503af085ea4aba: T06 plus T05/T04/T03/DIAG-F01 deterministic checks, 173/173 regression, typecheck, 3/3 accessibility, production build, exact package/API/change-impact contract, 10/10 headed Chromium, loopback operator/LAN denial, tester assignment privacy, T03 outcome synchronization/reset, T04 safe defect metadata/privacy, deterministic changed-code defect/retest next-test selection, coordinated pass/fail denial, Android-sized usability, and actual packaged Windows PowerShell operations persistence/privacy with T05 preservation. Only validation repair was a verifier-copy alignment with no product/runtime/package behavior change.",
+      "validation_summary": "Final exact-head run 31973247727 passed both declared jobs on a82719a1304865a909f7d8d1cd503af085ea4aba: T06 plus T05/T04/T03/DIAG-F01 deterministic checks, 173/173 regression, typecheck, 3/3 accessibility, production build, exact package/API/change-impact contract, 10/10 headed Chromium, loopback operator/LAN denial, tester assignment privacy, T03 outcome synchronization/reset, T04 safe defect metadata/privacy, deterministic changed-code defect/retest next-test selection, coordinated pass/fail denial, Android-sized usability, and actual packaged Windows PowerShell operations persistence/privacy with T05 preservation. Only validation repair was a verifier-copy alignment with no product/runtime/package behavior change. Pre-completion continuity 31973731871 and completed-state continuity 31973819421 both passed all continuity checks.",
       "acceptance_summary": "Rounds and synthetic assignments are visible; T03 outcomes drive host coverage; T04 defect ZIPs contribute safe classification metadata; exact-candidate change impact drives retests; and a deterministic highest-value-next-test recommendation is available in a loopback-only host dashboard and account-scoped tester queue without expanding application or remote authority."
     },
     {
       "id": "GATX-T07-ARCH",
       "title": "Remote-online-ready Guided Alpha architecture",
-      "status": "planned",
+      "status": "planned_next",
       "dependencies": ["GATX-T06"],
       "acceptance_summary": "Guidance/scenario/evidence contracts and UI are transport-neutral and ready for Remote Test Session activation without rebuilding the testing system."
     },
