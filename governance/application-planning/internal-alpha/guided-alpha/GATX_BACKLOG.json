@@ -12,11 +12,14 @@
   },
   "current_position": {
     "highest_completed": "GATX-T04",
-    "active_item": null,
-    "next_tranche_after_active_item": "GATX-T05",
-    "next_tranche_title": "Device and trusted-LAN connection center",
-    "t03_completed": true,
-    "t04_completed": true
+    "active_item": "GATX-T05",
+    "active_item_title": "Device and trusted-LAN connection center",
+    "next_tranche_after_active_item": "GATX-T06",
+    "next_tranche_title": "Testing operations and control layer",
+    "t04_completed": true,
+    "t05_started": true,
+    "t05_construction_complete": true,
+    "t05_validation_started": false
   },
   "items": [
     {
@@ -140,15 +143,40 @@
     {
       "id": "GATX-T05",
       "title": "Device and trusted-LAN connection center",
-      "status": "planned_next",
+      "status": "construction_complete_validation_pending",
       "dependencies": ["GATX-T04"],
+      "attempt_id": "GATX-T05-attempt-001",
+      "application_branch": "internal-alpha/gatx-t05-connection-center",
+      "governance_branch": "governance/gatx-t05-connection-center",
+      "base_application_commit": "74f554d9a6ed020dcb8b6302a1c98715e0f23e95",
+      "construction_head": "6d2bd01c58c6d9906e3e5611fdcfb7c94890ba91",
+      "started_at": "2026-08-16T20:17:00Z",
+      "validation_started": false,
       "related_application_issue": 159,
-      "acceptance_summary": "Same-LAN device setup is guided; server/port/network-profile/firewall/listener/request state is visible; failures are classified by layer and temporary access can be cleaned up."
+      "connection_contract_id": "GATX-T05-CONNECTION-CONTRACT-001",
+      "connection_marker": "GATX-T05-CONNECTION-CENTER-1",
+      "round_id": "GATX-TRUSTED-LAN-CONNECTION-001",
+      "layers": ["browser","same-lan","host-address","listener","network-profile","firewall","request","application"],
+      "listener_bind": "0.0.0.0",
+      "copyable_account_url": true,
+      "copyable_access_url": true,
+      "windows_firewall": {"direction":"Inbound","action":"Allow","protocol":"TCP","remote_address":"LocalSubnet","profile":"Any","explicit_admin_approval":true,"temporary":true,"cleanup_required":true},
+      "enable_helper": "ENABLE_ANDROID_LAN.cmd",
+      "disable_helper": "DISABLE_ANDROID_LAN.cmd",
+      "remote_device_ip_stored": false,
+      "network_names_stored": false,
+      "diagnostics_foundation_reused": true,
+      "scenario_engine_reused": true,
+      "t04_evidence_reused": true,
+      "remote_service": false,
+      "public_tunnel": false,
+      "distribution_approved": false,
+      "acceptance_summary": "Same-LAN device setup is guided; listener/port/LAN address/network-profile/firewall/request state is visible; failures are classified by layer; temporary Windows access is explicit-admin, LocalSubnet-only, and removable; T04 evidence carries the T05 layer status without storing remote device IP or network names."
     },
     {
       "id": "GATX-T06",
       "title": "Testing operations and control layer",
-      "status": "planned",
+      "status": "planned_next",
       "dependencies": ["GATX-T05"],
       "acceptance_summary": "Rounds, assignments, coverage, defects, changed-code retests and highest-value-next-test selection are visible and actionable."
     },
