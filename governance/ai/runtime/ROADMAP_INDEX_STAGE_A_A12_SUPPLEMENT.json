@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-16T15:09:00Z",
+  "updated_at": "2026-08-16T16:34:29Z",
   "supplements": "governance/ai/runtime/ROADMAP_INDEX.json",
   "entries": [
     {
@@ -79,6 +79,89 @@
       "known_nonblocking_issue": 157,
       "next_boundary": "exact-package Internal Alpha distribution/use and defect capture; altered packages require fresh exact-package approval; no automatic A13",
       "prohibited_scope": ["real-user data", "production credentials", "paid provider commitment", "public release/deployment", "broader AI authority", "Design Standards promotion", "native Android APK", "synchronized shared-live Campaign/session authority"]
+    },
+    {
+      "work_item_id": "GATX-T01",
+      "track": "guided-alpha-testing-experience",
+      "governing_document": "governance/application-planning/internal-alpha/guided-alpha/GUIDED_ALPHA_TESTING_EXPERIENCE_PROGRAM.md",
+      "roadmap_document": "governance/application-planning/internal-alpha/guided-alpha/GATX_BACKLOG.json",
+      "roadmap_section": "GATX-T01 — Guided Alpha framework",
+      "dependencies": [],
+      "state": "in_progress",
+      "completion_gate": "Complete persistent role-safe guided shell construction, then focused/client/package/browser/Windows validation, PR/merge and canonical completion evidence."
+    },
+    {
+      "work_item_id": "GATX-T02",
+      "track": "guided-alpha-testing-experience",
+      "governing_document": "governance/application-planning/internal-alpha/guided-alpha/GUIDED_ALPHA_TESTING_EXPERIENCE_PROGRAM.md",
+      "roadmap_document": "governance/application-planning/internal-alpha/guided-alpha/GATX_BACKLOG.json",
+      "roadmap_section": "GATX-T02 — Glass Harbor reference Campaign integration",
+      "dependencies": ["GATX-T01"],
+      "state": "planned"
+    },
+    {
+      "work_item_id": "GATX-T03",
+      "track": "guided-alpha-testing-experience",
+      "governing_document": "governance/application-planning/internal-alpha/guided-alpha/GUIDED_ALPHA_TESTING_EXPERIENCE_PROGRAM.md",
+      "roadmap_document": "governance/application-planning/internal-alpha/guided-alpha/GATX_BACKLOG.json",
+      "roadmap_section": "GATX-T03 — Guided scenario and test-journey engine",
+      "dependencies": ["GATX-T02"],
+      "state": "planned"
+    },
+    {
+      "work_item_id": "GATX-T04",
+      "track": "guided-alpha-testing-experience",
+      "governing_document": "governance/application-planning/internal-alpha/guided-alpha/GUIDED_ALPHA_TESTING_EXPERIENCE_PROGRAM.md",
+      "roadmap_document": "governance/application-planning/internal-alpha/guided-alpha/GATX_BACKLOG.json",
+      "roadmap_section": "GATX-T04 — Frictionless evidence and defect capture",
+      "dependencies": ["GATX-T03"],
+      "state": "planned"
+    },
+    {
+      "work_item_id": "GATX-T05",
+      "track": "guided-alpha-testing-experience",
+      "governing_document": "governance/application-planning/internal-alpha/guided-alpha/GUIDED_ALPHA_TESTING_EXPERIENCE_PROGRAM.md",
+      "roadmap_document": "governance/application-planning/internal-alpha/guided-alpha/GATX_BACKLOG.json",
+      "roadmap_section": "GATX-T05 — Device and trusted-LAN connection center",
+      "dependencies": ["GATX-T04"],
+      "state": "planned",
+      "related_application_issue": 159
+    },
+    {
+      "work_item_id": "GATX-T06",
+      "track": "guided-alpha-testing-experience",
+      "governing_document": "governance/application-planning/internal-alpha/guided-alpha/GUIDED_ALPHA_TESTING_EXPERIENCE_PROGRAM.md",
+      "roadmap_document": "governance/application-planning/internal-alpha/guided-alpha/GATX_BACKLOG.json",
+      "roadmap_section": "GATX-T06 — Testing operations and control layer",
+      "dependencies": ["GATX-T05"],
+      "state": "planned"
+    },
+    {
+      "work_item_id": "GATX-T07-ARCH",
+      "track": "guided-alpha-testing-experience",
+      "governing_document": "governance/application-planning/internal-alpha/guided-alpha/GUIDED_ALPHA_TESTING_EXPERIENCE_PROGRAM.md",
+      "roadmap_document": "governance/application-planning/internal-alpha/guided-alpha/GATX_BACKLOG.json",
+      "roadmap_section": "GATX-T07 — Remote-online-ready Guided Alpha architecture",
+      "dependencies": ["GATX-T06"],
+      "state": "planned"
+    },
+    {
+      "work_item_id": "GATX-T07-REMOTE",
+      "track": "guided-alpha-testing-experience",
+      "governing_document": "governance/application-planning/internal-alpha/guided-alpha/GUIDED_ALPHA_TESTING_EXPERIENCE_PROGRAM.md",
+      "roadmap_document": "governance/application-planning/internal-alpha/guided-alpha/GATX_BACKLOG.json",
+      "roadmap_section": "GATX-T07 — Remote Test Session activation",
+      "dependencies": ["GATX-T07-ARCH", "governed authoritative online/session prerequisites"],
+      "state": "dependency_gated"
+    },
+    {
+      "work_item_id": "GATX-T08",
+      "track": "guided-alpha-testing-experience",
+      "governing_document": "governance/application-planning/internal-alpha/guided-alpha/GUIDED_ALPHA_TESTING_EXPERIENCE_PROGRAM.md",
+      "roadmap_document": "governance/application-planning/internal-alpha/guided-alpha/GATX_BACKLOG.json",
+      "roadmap_section": "GATX-T08 — Cross-location Guided Alpha and permanent regression loop",
+      "dependencies": ["GATX-T07-REMOTE"],
+      "state": "dependency_gated"
     }
   ]
 }
