@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-16T08:00:00Z",
+  "updated_at": "2026-08-16T08:14:00Z",
   "supplements": "governance/ai/runtime/ROADMAP_INDEX.json",
   "entries": [
     {
@@ -15,7 +15,7 @@
     {
       "work_item_id": "STAGE-A-A12",
       "track": "application-implementation-pre-revalidation",
-      "governing_document": "governance/application-planning/stage-a-a12/current-revalidation/STAGE_A_A12_CURRENT_REPOSITORY_REVALIDATION_START.md",
+      "governing_document": "governance/application-planning/stage-a-a12/current-revalidation/STAGE_A_A12_CURRENT_REPOSITORY_REVALIDATION.md",
       "roadmap_document": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
       "roadmap_section": "Phase 10 / Stage A — STAGE-A-A12 Internal Alpha Hardening",
       "dependencies": ["STAGE-A-A11"],
@@ -23,7 +23,14 @@
         "governance/application-planning/stage-a-a12/STAGE_A_A12_INTERNAL_ALPHA_HARDENING_PREIMPLEMENTATION_HANDOFF_v0.1.0.md",
         "governance/application-planning/stage-a-a12/STAGE_A_A12_REPOSITORY_COMPATIBILITY_HANDOFF_v0.2.0.md"
       ],
-      "revalidation_completion_gate": "Reconcile frozen 12-slice A12 authority, 22 blocking release gates, 30-family/90-scenario security corpus, 26 historical gaps, 26 acceptance contracts, current A2-A11 evidence and DT-006..DT-010; pass focused CI and verified merge; keep A12 implementation inactive until separate activation.",
+      "revalidation_state": "completed_verified",
+      "revalidation_verdict": "PASS_READY_FOR_BOUNDED_A12_ACTIVATION",
+      "revalidation_pull_request": 333,
+      "revalidation_exact_head": "4aaea035af7db583ec0f92796c8c0a7305856b32",
+      "revalidation_ci_run": 31935854339,
+      "revalidation_merge_commit": "528b85b469a68b9f7fec7b04a8bcc19cb677abce",
+      "revalidation_completion_receipt": "governance/application-planning/stage-a-a12/current-revalidation/STAGE_A_A12_REVALIDATION_COMPLETION_RECEIPT.json",
+      "implementation_state": "authorized_not_activated",
       "implementation_completion_gate_after_separate_activation": "All 12 A12 hardening slices and exact-candidate privacy/security/accessibility/device/performance/large-corpus/recovery/destructive/history/optional-isolation/diagnostics/onboarding/traceability/package evidence, stop conditions, required manual evidence, verified merge and closure; release_approved remains owner-only."
     }
   ]
