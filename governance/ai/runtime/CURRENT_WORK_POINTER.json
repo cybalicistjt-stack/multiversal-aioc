@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-16T17:31:00Z",
+  "updated_at": "2026-08-16T17:47:00Z",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "bootstrap_current_state_amendment": "governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_IA_D09_TA_001_HOTFIX2_OWNER_APPROVED.md",
   "static_restart_prompt": "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
@@ -10,7 +10,7 @@
   "roadmap_index_guided_alpha_supplement": "governance/ai/runtime/ROADMAP_INDEX_GATX_SUPPLEMENT.json",
   "roadmap_milestone_amendment": "governance/application-planning/internal-alpha/tester-access/IA_D09_TA_001_HOTFIX2_OWNER_DISTRIBUTION_DECISION_20260816.json",
   "primary_attempt_id": "GATX-DIAG-F01-attempt-001",
-  "selection_reason": "Owner inserted GATX-DIAG-F01 after completed GATX-T01 and before GATX-T02. Construction was sealed at 6223ee9946da26ec9c9abd8d85c4c51b6bf794ed; the first validation pass exposed only stale T01 verifier literals and those were batch-repaired in a807920b3e04fa86adb6f50aa563cc64b504596a. Exact-head validation reruns are active. After completed_verified closure, immediately activate GATX-T02 without repeating T01.",
+  "selection_reason": "GATX-DIAG-F01 is completed_verified. Exact application candidate f16a08c7df520751be041df992c2217d71a3f332 passed all declared automatic-diagnostics gates and PR #162 squash-merged as a6c2bd17962f8ed54dabd0d4d4446fdb58aa5754. The exact next GATX work is GATX-T02 — Glass Harbor reference Campaign integration; do not repeat T01 or the diagnostics foundation.",
   "active_attempts": [
     {
       "work_item_id": "GATX-DIAG-F01",
@@ -21,13 +21,15 @@
       "repository": "cybalicistjt-stack/Multiversal-app",
       "branch": "internal-alpha/gatx-diagnostics-foundation",
       "checkpoint_path": "governance/ai/work-state/GATX-DIAG-F01-attempt-001.json",
-      "status": "in_progress",
-      "active_substep": "validation-repair-rerun",
+      "status": "completed_verified",
+      "active_substep": null,
       "construction_complete": true,
-      "latest_pushed_commit": "a807920b3e04fa86adb6f50aa563cc64b504596a",
+      "validated_application_candidate": "f16a08c7df520751be041df992c2217d71a3f332",
+      "latest_pushed_commit": "048e8b106b27c61f23054ba9cb77fbfdf45f2443",
+      "application_merge_commit": "a6c2bd17962f8ed54dabd0d4d4446fdb58aa5754",
       "pull_request": 162,
-      "updated_at": "2026-08-16T17:31:00Z",
-      "roadmap_projection_pending": true
+      "updated_at": "2026-08-16T17:47:00Z",
+      "roadmap_projection_pending": false
     },
     {
       "work_item_id": "GATX-T01",
