@@ -1,20 +1,22 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "program_id": "GATX",
   "program_title": "Guided Alpha Testing Experience",
   "owner": "John Brandon Turner",
   "status": "active",
   "activated_at": "2026-08-16T16:20:00Z",
-  "execution_rule": "Complete all construction within a tranche before running that tranche's validation checks; batch validation repairs and rerun only the smallest applicable final gate.",
+  "execution_rule": "Complete all construction within a tranche or bounded prerequisite before running its validation checks; batch validation repairs and rerun only the smallest applicable final gate.",
   "current_stage_completion_boundary": {
-    "required_before_ordinary_roadmap_progression": ["GATX-T01", "GATX-T02", "GATX-T03", "GATX-T04", "GATX-T05", "GATX-T06", "GATX-T07-ARCH"],
+    "required_before_ordinary_roadmap_progression": ["GATX-T01", "GATX-DIAG-F01", "GATX-T02", "GATX-T03", "GATX-T04", "GATX-T05", "GATX-T06", "GATX-T07-ARCH"],
     "dependency_gated_later": ["GATX-T07-REMOTE", "GATX-T08"]
   },
   "current_position": {
     "highest_completed": "GATX-T01",
-    "next_item": "GATX-T02",
-    "next_item_title": "Glass Harbor reference Campaign integration",
-    "next_item_started": false
+    "active_item": "GATX-DIAG-F01",
+    "active_item_title": "Automatic diagnostics foundation",
+    "next_tranche_after_active_item": "GATX-T02",
+    "next_tranche_title": "Glass Harbor reference Campaign integration",
+    "t02_started": false
   },
   "items": [
     {
@@ -35,12 +37,23 @@
       "acceptance_summary": "Persistent role-safe Guided Alpha shell exposes identity, role, exact candidate context, connection mode, reference Campaign, round, objective, expected result, progress, report/reset/connection/limitations controls and preserves GM navigation repair."
     },
     {
+      "id": "GATX-DIAG-F01",
+      "title": "Automatic diagnostics foundation",
+      "status": "in_progress",
+      "dependencies": ["GATX-T01"],
+      "attempt_id": "GATX-DIAG-F01-attempt-001",
+      "application_branch": "internal-alpha/gatx-diagnostics-foundation",
+      "kind": "prerequisite_foundation",
+      "pulled_forward_from": "GATX-T04",
+      "acceptance_summary": "Guided Alpha automatically captures privacy-bounded system-known build/account/role/round/browser/connection/error context and writes in-progress/final JSON diagnostics on the host laptop; package/runner seams are reusable by T02 and later tranches."
+    },
+    {
       "id": "GATX-T02",
       "title": "Glass Harbor reference Campaign integration",
-      "status": "planned_next",
-      "dependencies": ["GATX-T01"],
+      "status": "planned_next_after_prerequisite",
+      "dependencies": ["GATX-DIAG-F01"],
       "source_authority": "governance/application-planning/stage-a-reference-campaign/STAGE_A_TESTER_REFERENCE_CAMPAIGN_KIT_HANDOFF_v0.1.0.md",
-      "acceptance_summary": "Validated Glass Harbor Incident / Meridian Testbed fixture becomes a deterministic coherent application test Campaign with reset."
+      "acceptance_summary": "Validated Glass Harbor Incident / Meridian Testbed fixture becomes a deterministic coherent application test Campaign with reset and emits pertinent system-known evidence through the automatic diagnostics foundation."
     },
     {
       "id": "GATX-T03",
@@ -54,7 +67,9 @@
       "title": "Frictionless evidence and defect capture",
       "status": "planned",
       "dependencies": ["GATX-T03"],
-      "acceptance_summary": "Safe system-known build/scenario/account/role/platform/connection/state context is captured automatically so tester reports are minimal and reproducible."
+      "foundation_dependency": "GATX-DIAG-F01",
+      "remaining_scope_after_foundation": "Attach scenario/step/application-area/synthetic-state context, tester-perceived/expected input, defect classification and reproducibility packaging to the already-installed automatic diagnostics transport/export substrate.",
+      "acceptance_summary": "Safe system-known context is combined with the minimal tester-supplied perception/expectation needed for reproducible classified defect bundles."
     },
     {
       "id": "GATX-T05",
