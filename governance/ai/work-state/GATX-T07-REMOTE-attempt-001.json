@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 1,
+  "work_item_id": "GATX-T07-REMOTE",
+  "attempt_id": "GATX-T07-REMOTE-attempt-001",
+  "track": "guided-alpha-testing-experience",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "branch": "internal-alpha/gatx-t07-remote-t08-cross-location",
+  "governance_repository": "cybalicistjt-stack/multiversal-aioc",
+  "governance_branch": "governance/gatx-t07-remote-t08-cross-location",
+  "status": "started",
+  "owner_selected": true,
+  "started_at": "2026-08-16T22:46:00Z",
+  "updated_at": "2026-08-16T22:46:00Z",
+  "completed_at": null,
+  "base_commit": "f489a5c791580f695cd5e5f60600f567145c93cb",
+  "latest_pushed_commit": "f489a5c791580f695cd5e5f60600f567145c93cb",
+  "expected_remote_head": "f489a5c791580f695cd5e5f60600f567145c93cb",
+  "pull_request": null,
+  "construction_complete": false,
+  "validation_started": false,
+  "objective": "Activate the already transport-neutral Guided Alpha over a dedicated access-gated remote internal-alpha runtime that reuses the canonical P9-06 authoritative session, ordered realtime, hidden-information and reconnect foundations; then complete GATX-T08 cross-location regression construction and execute every final gate that can be evidenced honestly.",
+  "owner_authorization": {
+    "source": "Owner instruction 2026-08-16: finish the rest of 07 and 08 and make it ready to use.",
+    "internal_alpha_remote_test_deployment_authorized": true,
+    "production_release_authorized": false,
+    "paid_provider_authorized": false,
+    "real_user_data_authorized": false
+  },
+  "dependency_recovery": {
+    "GATX-T07-ARCH": {"status": "completed_verified", "application_merge_commit": "43dea893d7e0ec0202cf123f8697d9db9ad8201d", "governance_merge_commit": "9500feb9d9ca164452c3315b0e817e314db98f19"},
+    "P9-06-016": {"status": "canonical_foundation_present", "path": "packages/contracts/src/session/authoritative-session-command-handler.ts"},
+    "P9-06-017": {"status": "canonical_foundation_present", "path": "packages/contracts/src/session/ordered-realtime-event-delivery.ts"},
+    "P9-06-018": {"status": "canonical_foundation_present", "path": "packages/contracts/src/session/hidden-information-response-filter.ts"},
+    "P9-06-019": {"status": "canonical_foundation_present", "path": "packages/contracts/src/session/checkpoint-reconnect-restoration.ts"},
+    "P9-06-023": {"status": "closed", "application_merge_commit": "fb22295948745347913bcbfebf56ecca26bf39fb", "acceptance_gate": "AG-07"},
+    "P9-06-024": {"status": "approved-active", "decision_id": "P9-06-024-OWNER-DECISION-001"}
+  },
+  "active_substep": "remote-runtime-construction",
+  "completed_substeps": ["dependency-recovery", "owner-scope-recovery", "application-branch", "governance-branch"],
+  "next_action": "Construct a dedicated access-gated remote Guided Alpha runner over the accepted P9-06-023 authoritative test runner semantics, add remote transport activation and T08 permanent regression contracts, seal construction, then validate and deploy the exact candidate to a separate internal-alpha Railway project without paid resources or production-release claims.",
+  "scope_boundaries": {
+    "must_reuse": ["GATX-T07-ARCH transport contract", "P9-06-016 authoritative command semantics", "P9-06-017 ordered delivery", "P9-06-018 hidden-information projection", "P9-06-019 reconnect restoration", "P9-06-023 accepted thin-adapter session runner", "GATX T03/T04/T05/T06/DIAG-F01 testing systems"],
+    "authorized": ["dedicated access-gated internal-alpha remote test service", "Railway-generated HTTPS domain for the dedicated test service", "synthetic Glass Harbor testing only", "T08 remote regression charters and evidence"],
+    "not_authorized": ["production release", "paid provider commitment", "real-user data", "production credentials", "expose the existing local runner to the public Internet", "port forwarding", "public tunnel", "native Android APK release", "automatic A13"]
+  },
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "remote_deployment", "merge", "governance_continuity"],
+    "required_validation_commands": [
+      "T07 remote access/auth/privacy and authoritative-session reuse verifier",
+      "T07-ARCH T06 T05 T04 T03 DIAG-F01 preservation",
+      "client regression typecheck accessibility and build",
+      "deployed remote health and unauthorized-access denial",
+      "deployed GM/player same-session authority hidden-information and reconnect smoke",
+      "T08 adverse permission reconnect ordering and latency regression charter suite",
+      "actual cross-location evidence when geographically separate clients are available",
+      "governance continuity validation"
+    ],
+    "owner_approval_required": false
+  },
+  "validation": [],
+  "unresolved_failures": [],
+  "owner_decision_required": false,
+  "roadmap_projection_pending": true,
+  "notes": [
+    "Railway project Multiversal AIOC Bridge is unrelated and must not be reused for the remote Guided Alpha runtime.",
+    "T08 must not be claimed completed_verified from simulated geography. If actual geographically separate client evidence cannot be produced on the available execution surfaces, complete all construction/remote deployment/regression work and record the remaining physical cross-location gate explicitly."
+  ]
+}
