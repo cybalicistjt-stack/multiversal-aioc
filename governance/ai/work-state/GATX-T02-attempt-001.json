@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 2,
+  "revision": 3,
   "work_item_id": "GATX-T02",
   "attempt_id": "GATX-T02-attempt-001",
   "track": "guided-alpha-testing-experience",
@@ -8,11 +8,11 @@
   "branch": "internal-alpha/gatx-t02-glass-harbor-integration",
   "governance_repository": "cybalicistjt-stack/multiversal-aioc",
   "governance_branch": "governance/gatx-t02-glass-harbor-integration",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
   "started_at": "2026-08-16T17:50:00Z",
-  "updated_at": "2026-08-16T18:17:00Z",
-  "completed_at": null,
+  "updated_at": "2026-08-16T18:26:30Z",
+  "completed_at": "2026-08-16T18:26:30Z",
   "objective": "Integrate the validated Glass Harbor Incident / Meridian Testbed Stage A reference Campaign fixture into the actual Guided Alpha so the current Alpha is a coherent deterministic miniature Campaign rather than a disconnected component showroom.",
   "construction_rule": "Finish the complete bounded T02 construction before T02 validation. Do not execute T03's 24-journey scenario engine early.",
   "source_authority": {
@@ -34,12 +34,14 @@
   },
   "construction_complete": true,
   "construction_head": "3218cd75db454d53cd83f085eac9fbfdf36590e2",
-  "latest_pushed_commit": "bf90a548694375b8b769b84eb62c5f0767a5beb6",
-  "expected_remote_head": "bf90a548694375b8b769b84eb62c5f0767a5beb6",
+  "validated_application_candidate": "9b3be55c2b7aebc7620bf26429f55d3de1dfd84d",
+  "latest_pushed_commit": "9b3be55c2b7aebc7620bf26429f55d3de1dfd84d",
+  "expected_remote_head": "9b3be55c2b7aebc7620bf26429f55d3de1dfd84d",
   "pull_request": 163,
-  "last_verified_action": "T02 construction was sealed at 3218cd75db454d53cd83f085eac9fbfdf36590e2. Initial T02 run 31963782624 proved the actual Windows PowerShell package/diagnostics lane and inherited account-dispatch lane, while the T02 source verifier exposed one whitespace-sensitive GM-dossier assertion. Runtime inspection confirmed the GM full projection and conservative Player filter are implemented; verifier-only repair bf90a548694375b8b769b84eb62c5f0767a5beb6 is now undergoing the exact T02 rerun.",
-  "active_substep": "exact-head-t02-validation-rerun",
-  "next_action": "Complete exact-head T02 reference Campaign/client/package/browser/Windows validation on bf90a548694375b8b769b84eb62c5f0767a5beb6; batch only validation-discovered repairs, then squash-merge app PR #163, project completed_verified, and immediately activate GATX-T03.",
+  "application_merge_commit": "773e24bbb0d3b7b5c484eceb3f37c69c8f6c416b",
+  "last_verified_action": "Exact candidate 9b3be55c2b7aebc7620bf26429f55d3de1dfd84d passed the complete T02 gate in run 31964399451: source/provenance, diagnostics, 173/173 client tests, typecheck, accessibility, build, exact package identity, actual Windows PowerShell host diagnostics, and 7/7 headed Chromium scenarios including role privacy, deterministic reset and round-complete diagnostic export. App PR #163 then squash-merged as 773e24bbb0d3b7b5c484eceb3f37c69c8f6c416b.",
+  "active_substep": null,
+  "next_action": "Begin GATX-T03 — build the machine-readable role-aware guided scenario/test-journey engine from the 24 validated source journeys, preserving hidden-information filtering, diagnostics reuse and construction-first execution.",
   "scope": {
     "included": [
       "exact validated source provenance",
@@ -56,25 +58,44 @@
       "journey orchestration/outcome state machine"
     ]
   },
+  "validated_package": {
+    "filename": "Multiversal-Internal-Alpha-Windows-9b3be55c2b7a-GATX-T02.zip",
+    "sha256": "74c03e034b9e719c7c89f9dff5d81a33a6eeae6b4878a3ba912e427f4172e0dc",
+    "workflow_artifact_id": 9268113335,
+    "workflow_artifact_sha256": "e623d176e0bf54d6e0c76bcae17284d51b133526e321c0640cefc2e74b4cc1f5",
+    "distribution_approved": false
+  },
+  "completion_gate": {
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
+    "required_validation_commands": [
+      "T02 deterministic source/provenance contract",
+      "client regression typecheck accessibility and build",
+      "exact T02 package identity and source provenance",
+      "actual packaged Windows PowerShell diagnostics",
+      "headed-browser T02 role/privacy/reset/diagnostics scenarios",
+      "governance continuity validation"
+    ],
+    "owner_approval_required": false
+  },
+  "completion_evidence": [
+    {"kind":"commit","value":"validated application candidate 9b3be55c2b7aebc7620bf26429f55d3de1dfd84d"},
+    {"kind":"pull_request","value":"application PR #163; governance PR #345"},
+    {"kind":"ci_run","value":"T02 final PASS run 31964399451"},
+    {"kind":"merge","value":"application PR #163 squash merge 773e24bbb0d3b7b5c484eceb3f37c69c8f6c416b"},
+    {"kind":"artifact","value":"artifact 9268113335; package SHA256 74c03e034b9e719c7c89f9dff5d81a33a6eeae6b4878a3ba912e427f4172e0dc"}
+  ],
   "validation": [
-    {
-      "command": "initial T02 source/reference Campaign validation",
-      "status": "failed_repaired",
-      "evidence": "Run 31963782624 failed only the whitespace-sensitive GM full-dossier source assertion; runtime contains role === game-master full projection and Player orientation filter. Repaired verifier only in bf90a548694375b8b769b84eb62c5f0767a5beb6."
-    },
-    {
-      "command": "actual packaged Windows PowerShell T02 diagnostics",
-      "status": "passed_on_sealed_runtime",
-      "evidence": "Run 31963782624 job t02-windows-powershell-package PASS; T02 package construction and host diagnostics export passed before verifier-only repair."
-    },
-    {
-      "command": "exact-head T02 complete validation",
-      "status": "in_progress",
-      "evidence": "Run 31964090643 on bf90a548694375b8b769b84eb62c5f0767a5beb6."
-    }
+    {"command":"initial T02 source/reference Campaign validation","status":"passed_after_repair","evidence":"Initial run 31963782624 exposed a whitespace-sensitive GM dossier verifier assertion; runtime was correct and verifier was repaired."},
+    {"command":"package identity/provenance","status":"passed_after_repair","evidence":"Run 31964090643 and follow-up 31964223693 exposed and repaired an exact document-title assertion before browser execution."},
+    {"command":"GM workspace label persistence","status":"passed_after_repair","evidence":"Run 31964223693 passed 6/7 browser scenarios and exposed a real GM React rerender label persistence defect; repaired with bounded mutation observation."},
+    {"command":"T02 deterministic source/provenance contract","status":"passed","evidence":"Final run 31964399451: GATX-T02 reference Campaign verifier PASS; exact source SHA/27 records/24 catalogued journeys/6 roles/reset/T03 boundary confirmed."},
+    {"command":"client regression typecheck accessibility and build","status":"passed","evidence":"Final run 31964399451: 173/173 tests across 61 files PASS; typecheck PASS; accessibility 3/3 PASS; build PASS."},
+    {"command":"actual packaged Windows PowerShell diagnostics","status":"passed","evidence":"Final run 31964399451 Windows job PASS on exact candidate 9b3be55c2b7aebc7620bf26429f55d3de1dfd84d."},
+    {"command":"headed-browser T02 scenarios","status":"passed","evidence":"Final run 31964399451: 7/7 headed Chromium PASS; Player privacy, GM 27-record dossier/labels, GM bypass denial, deterministic reset, progress persistence, host diagnostic export and Android-sized layout PASS."},
+    {"command":"governance continuity validation","status":"pending_final_projection","evidence":"Run final AIOC continuity on governance PR #345 after this completed_verified projection before governance merge."}
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "known_blockers": []
 }
