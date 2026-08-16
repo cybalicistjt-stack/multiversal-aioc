@@ -1,5 +1,6 @@
 {
   "schema_version": "1.0.0",
+  "revision": 2,
   "work_item_id": "GATX-T01",
   "attempt_id": "GATX-T01-attempt-001",
   "track": "guided-alpha-testing-experience",
@@ -11,13 +12,18 @@
   "owner_selected": true,
   "started_at": "2026-08-16T16:20:00Z",
   "updated_at": "2026-08-16T16:34:29Z",
+  "completed_at": null,
   "objective": "Complete Guided Alpha Testing Experience Tranche 1: make the current Internal Alpha a self-explanatory guided test environment with explicit tester identity, role, build/candidate identity, connection mode, test campaign, testing round, progress, current objective, next action, expected result, known limitations, reset/recovery and defect-entry affordances. Preserve the already-constructed GM navigation repair as the tranche baseline.",
   "construction_rule": "Finish the entire tranche construction before running validation checks. Do not interrupt construction with per-slice hosted validation.",
   "construction_complete": true,
   "construction_head": "a18d89bcfc002637705f6430fd1486dfd0d67fae",
-  "validation_started": false,
+  "latest_pushed_commit": "a18d89bcfc002637705f6430fd1486dfd0d67fae",
+  "expected_remote_head": "a18d89bcfc002637705f6430fd1486dfd0d67fae",
+  "pull_request": 160,
+  "validation_started": true,
+  "last_verified_action": "GATX-T01 construction sealed at application head a18d89bcfc002637705f6430fd1486dfd0d67fae; application PR #160 and governance PR #343 opened. Initial governance continuity validation ran and correctly exposed missing checkpoint schema keys; this revision repairs that continuity defect before rerun.",
   "active_substep": "tranche-1-validation",
-  "next_action": "Run the sealed Tranche 1 validation phase: deterministic Guided Alpha/setup/account-dispatch verifiers, affected GM/tester identity tests, full client regression, typecheck, accessibility, build, exact-candidate packaging/smoke, headed-browser evidence and actual Windows PowerShell package gate. Batch related repairs before rerunning the smallest applicable final gate.",
+  "next_action": "Rerun governance continuity after the batched checkpoint/index-supplement repair; attempt the app exact-head hosted gates and classify the known billing/spending-limit runner block separately from product validation. Run any exact local/deterministic checks available on the current execution surface.",
   "application_baseline": {
     "base_main": "9dba609d4b5ea9149be5ac79431ac92d1da86316",
     "absorbed_gm_navigation_head": "4d3a8175a931c1561cf2f585be0091da58b9f1c2",
@@ -50,11 +56,68 @@
     "Affected tests/typecheck/build and bounded guided-alpha regressions pass after construction is complete, subject to external GitHub runner availability."
   ],
   "completion_gate": {
-    "required_evidence_kinds": ["application_commit", "pull_request", "validation", "governance_record"],
-    "owner_physical_check_required": false,
-    "merge_required_for_completed_verified": true
+    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "merge"],
+    "required_validation_commands": [
+      "guided-alpha deterministic source contract",
+      "client regression typecheck accessibility and build",
+      "exact-candidate package and runner smoke",
+      "headed-browser Guided Alpha scenarios",
+      "actual packaged Windows PowerShell runner",
+      "governance continuity validation"
+    ],
+    "owner_approval_required": false
   },
+  "validation": [
+    {
+      "command": "guided-alpha deterministic source contract",
+      "status": "not_run",
+      "evidence": null
+    },
+    {
+      "command": "client regression typecheck accessibility and build",
+      "status": "not_run",
+      "evidence": null
+    },
+    {
+      "command": "exact-candidate package and runner smoke",
+      "status": "not_run",
+      "evidence": null
+    },
+    {
+      "command": "headed-browser Guided Alpha scenarios",
+      "status": "not_run",
+      "evidence": null
+    },
+    {
+      "command": "actual packaged Windows PowerShell runner",
+      "status": "not_run",
+      "evidence": null
+    },
+    {
+      "command": "governance continuity validation",
+      "status": "failed",
+      "evidence": "GATX-T01 governance PR #343 initial run 31959069859 job 95194160376: continuity_state.py rejected the new checkpoint because required schema keys were missing; repair applied in revision 2 and rerun pending."
+    }
+  ],
+  "unresolved_failures": [],
+  "owner_decision_required": false,
+  "evidence": [
+    {
+      "kind": "commit",
+      "value": "GATX-T01 application construction head a18d89bcfc002637705f6430fd1486dfd0d67fae"
+    },
+    {
+      "kind": "pull_request",
+      "value": "GATX-T01 application PR #160 and governance PR #343"
+    },
+    {
+      "kind": "file",
+      "value": "GATX-T01 governance program governance/application-planning/internal-alpha/guided-alpha/GUIDED_ALPHA_TESTING_EXPERIENCE_PROGRAM.md"
+    }
+  ],
+  "roadmap_projection_pending": true,
   "known_blockers": [
-    "Application GitHub Actions have recently been prevented from starting by the account billing/spending-limit condition. Hosted validation must be attempted and classified from current evidence; do not treat an unstarted job as a product failure or a pass."
+    "Application GitHub Actions on exact head a18d89bcfc002637705f6430fd1486dfd0d67fae were triggered by PR #160 but jobs were not started because GitHub reported the account payment/spending-limit condition. This is an execution-surface blocker, not a product-test failure or pass.",
+    "The current container has no network route to github.com, so it cannot clone the private application repository for a substitute full local client/package run."
   ]
 }
