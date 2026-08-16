@@ -25,6 +25,7 @@ P6_COMPLETION_MERGE = "ffce4859a8912813021776c4f5825c3d219bb0f2"
 P6_COMPLETION_RUN = "31622184027"
 COMPLETE = {"complete", "completed", "completed_verified"}
 ACTIVE = {"started", "in_progress"}
+PPIA_CLOSED = "completed_verified_owner_approved_parallel_work"
 
 
 def fail(message: str) -> None:
@@ -111,6 +112,7 @@ def main() -> None:
         primary = status["primary"]
         for field in ("work_item_id", "attempt_id", "branch", "status", "active_substep", "next_action", "latest_pushed_commit", "pull_request", "owner_decision_required", "unresolved_failures", "roadmap_projection_pending"):
             require(primary[field] == p6[field], f"compact status/PPIA-06 checkpoint mismatch: {field}")
+        require("roadmap" in pointer["selection_reason"].lower() and "pending" in pointer["selection_reason"].lower(), "active PPIA-06 pointer must explain batched roadmap projection")
         transition_mode = "active_ppia06"
     else:
         require(order.index(current_id) > order.index("PPIA-06"), "historical transition may only validate after PPIA-06")
@@ -118,9 +120,14 @@ def main() -> None:
         require(p6["status"] == "completed_verified" and p6["active_substep"] is None, "historical PPIA-06 checkpoint must be completed_verified")
         require(p6["latest_pushed_commit"] == P6_FINAL_HEAD and p6["pull_request"] == P6_COMPLETION_PR and p6["merge_commit"] == P6_COMPLETION_MERGE, "historical PPIA-06 immutable completion evidence mismatch")
         require(any(P6_COMPLETION_RUN in v.get("command", "") and v.get("status") == "passed" for v in p6.get("validation", [])), "historical PPIA-06 completion gate evidence missing")
-        transition_mode = "historical_after_ppia06"
+        if backlog.get("status") == PPIA_CLOSED:
+            require(current_id == "PPIA-16", "closed PPIA historical transition must retain PPIA-16 final anchor")
+            require(tranches["PPIA-16"]["status"] == "completed_verified", "closed PPIA final tranche must remain completed_verified")
+            transition_mode = "historical_after_ppia06_program_closed"
+        else:
+            require("roadmap" in pointer["selection_reason"].lower() and "pending" in pointer["selection_reason"].lower(), "in-flight historical pointer must explain batched roadmap projection")
+            transition_mode = "historical_after_ppia06"
 
-    require("roadmap" in pointer["selection_reason"].lower() and "pending" in pointer["selection_reason"].lower(), "pointer must explain batched roadmap projection")
     boundaries = backlog["boundaries"]
     for key in ("application_runtime_mutation_authorized", "a2_activation_authorized", "release_authorized", "deployment_authorized", "tester_access_authorized", "canonical_promotion_without_source_evidence_authorized"):
         require(boundaries[key] is False, f"transition may not enable {key}")
@@ -134,7 +141,7 @@ def main() -> None:
     print(f"transition_mode={transition_mode}")
     print("appearance_model=renderer-independent pixel-art-v1 first renderer future-3d boundary")
     print("biology_and_equipment_authority_preserved=true nonhumanoid_accessibility_required=true")
-    print("roadmap_projection_pending=true runtime_activation=false")
+    print("runtime_activation=false")
 
 
 if __name__ == "__main__":
