@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "IA-D09-OWNER-DECISION-20260816-001",
+  "owner_subject": "John Brandon Turner",
+  "candidate_sha": "56b127f1fc01eebe5c73ba0472a5b6496fe92b5e",
+  "build_id": "5033f55d3344209c1719d6003d1369b4bc201c74ba9d64f046767263daee5a45",
+  "decision_source": "Owner explicit instruction in Multiversal project conversation: Approve both",
+  "decided_at": "2026-08-16T06:27:00-05:00",
+  "decisions": [
+    {
+      "gate_id": "authorize Internal Alpha tester access",
+      "decision": "approved",
+      "scope": {
+        "candidate_sha": "56b127f1fc01eebe5c73ba0472a5b6496fe92b5e",
+        "build_id": "5033f55d3344209c1719d6003d1369b4bc201c74ba9d64f046767263daee5a45",
+        "supported_profiles": ["browser", "local-runner"],
+        "data_classification": "synthetic-test-only",
+        "tester_identity_requirement": "each tester access record must name the authorized account and Campaign role",
+        "known_limitations_review_required": true,
+        "prohibited_by_this_approval": [
+          "production credentials",
+          "paid-provider credentials or commitments",
+          "real-user data collection",
+          "public enrollment or public deployment"
+        ]
+      },
+      "notes": "Approval is bounded to the decision-ready IA-D09 tester-access gate and does not broaden any other owner-only authority."
+    },
+    {"gate_id":"authorize real-user data collection","decision":"not-decided","scope":null,"notes":"Not decision-ready; remains closed."},
+    {"gate_id":"authorize production credentials","decision":"not-decided","scope":null,"notes":"Not decision-ready; remains closed."},
+    {"gate_id":"authorize paid provider commitment","decision":"not-decided","scope":null,"notes":"Not decision-ready; remains closed."},
+    {
+      "gate_id": "approve Internal Alpha release",
+      "decision": "approved",
+      "scope": {
+        "candidate_sha": "56b127f1fc01eebe5c73ba0472a5b6496fe92b5e",
+        "build_id": "5033f55d3344209c1719d6003d1369b4bc201c74ba9d64f046767263daee5a45",
+        "supported_profiles": ["browser", "local-runner"],
+        "tester_program": "synthetic-test-only",
+        "known_limitations_and_bounded_risks_accepted": true,
+        "prohibited_by_this_approval": [
+          "public release or deployment",
+          "production credentials",
+          "real-user data collection",
+          "paid-provider commitment",
+          "broader AI/automation authority",
+          "working/noncanonical Design Standards promotion"
+        ]
+      },
+      "notes": "Approval releases only the bounded Internal Alpha candidate described by the IA-D09 evidence packet."
+    },
+    {"gate_id":"approve public release or deployment","decision":"not-decided","scope":null,"notes":"Not decision-ready; remains closed."},
+    {"gate_id":"promote AI/automation authority","decision":"not-decided","scope":null,"notes":"Not decision-ready; remains closed."},
+    {"gate_id":"promote working/noncanonical design standards","decision":"not-decided","scope":null,"notes":"Not decision-ready; remains closed."}
+  ],
+  "authorization_projection": {
+    "tester_access_authorized": true,
+    "internal_alpha_release_approved": true,
+    "real_user_data_authorized": false,
+    "production_credentials_authorized": false,
+    "paid_provider_authorized": false,
+    "public_release_or_deployment_authorized": false,
+    "broader_ai_automation_authority_authorized": false,
+    "working_design_standards_promoted": false
+  }
+}
