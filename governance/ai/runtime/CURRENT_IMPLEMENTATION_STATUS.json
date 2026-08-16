@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-16T23:25:00Z",
+  "generated_at": "2026-08-16T23:31:00Z",
   "source_pointer": "governance/ai/runtime/CURRENT_WORK_POINTER.json",
   "primary": {
     "work_item_id": "GATX-T07-REMOTE",
@@ -9,16 +9,16 @@
     "repository": "cybalicistjt-stack/Multiversal-app",
     "branch": "internal-alpha/gatx-t07-remote-t08-cross-location",
     "status": "in_progress",
-    "active_substep": "remote-first-deployment-blocked",
-    "next_action": "Obtain a real first deployment receipt for the already configured isolated Railway service, then verify /health, unauthorized denial, role-bound GM/Player same-session authority, hidden-information filtering and reconnect against that deployed runtime. Do not mark completed_verified until those deployment gates and governance continuity pass.",
+    "active_substep": "railway-github-repo-access-blocked",
+    "next_action": "Grant the Railway GitHub app access to the private cybalicistjt-stack/Multiversal-app repository and ensure gatx-remote-live-final is linked to branch deploy/gatx-t07-remote-validated. Then trigger the first deployment and verify /health, unauthorized denial, role-bound GM/Player same-session authority, hidden-information filtering and reconnect. Do not change repository visibility or publish private source to an unauthenticated registry.",
     "latest_pushed_commit": "489acc1dca0ebd8b1495b26bc72ad043f59b5a4c",
     "pull_request": 179,
     "owner_decision_required": false,
     "unresolved_failures": [
       {
         "id": "GATX-T07-REMOTE-DEPLOY-001",
-        "class": "external-deployment-tooling",
-        "summary": "Railway source/config/secrets/domain are configured but no verified live deployment receipt has yet been recorded, so deployed health and runtime behavior remain unverified."
+        "class": "external-permission",
+        "summary": "Railway cannot access the private cybalicistjt-stack/Multiversal-app repository. The Railway GitHub app must be granted access before the configured service can perform its first source clone/build/deployment."
       }
     ],
     "roadmap_projection_pending": true
