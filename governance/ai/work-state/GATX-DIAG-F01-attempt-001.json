@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 6,
+  "revision": 7,
   "work_item_id": "GATX-DIAG-F01",
   "attempt_id": "GATX-DIAG-F01-attempt-001",
   "track": "guided-alpha-testing-experience",
@@ -8,11 +8,11 @@
   "branch": "internal-alpha/gatx-diagnostics-foundation",
   "governance_repository": "cybalicistjt-stack/multiversal-aioc",
   "governance_branch": "governance/gatx-diagnostics-foundation",
-  "status": "ready_for_review",
+  "status": "completed_verified",
   "owner_selected": false,
   "started_at": "2026-08-16T17:10:00Z",
-  "updated_at": "2026-08-16T18:30:00Z",
-  "completed_at": null,
+  "updated_at": "2026-08-16T18:31:00Z",
+  "completed_at": "2026-08-16T17:47:00Z",
   "objective": "Before GATX-T02, establish one reusable privacy-bounded automatic diagnostic collection/export channel so pertinent system-known Alpha context is captured without tester copy/paste and a diagnostic JSON file is written on the host laptop.",
   "owner_instruction": "Make sure any pertinent information is collected automatically by the alpha and, when done, create a file on the laptop with all diagnostic information; prepare anything needed first, then continue to T02.",
   "position": {"after":"GATX-T01","before":"GATX-T02","kind":"prerequisite_foundation","pulled_forward_from":"GATX-T04"},
@@ -24,9 +24,9 @@
   "expected_remote_head": "048e8b106b27c61f23054ba9cb77fbfdf45f2443",
   "pull_request": 162,
   "application_merge_commit": "a6c2bd17962f8ed54dabd0d4d4446fdb58aa5754",
-  "last_verified_action": "The diagnostics runtime remains fully validated and merged. T02 final governance continuity exposed a historical checkpoint-format defect: evidence values lacked the work-item token required by the current continuity validator, and the governance-continuity validation row had never been finalized after PR #344. Runtime/product state is unchanged.",
-  "active_substep": "historical-continuity-metadata-repair",
-  "next_action": "Run the current deterministic conversation-continuity gate with the repaired scoped evidence labels; when it passes, restore GATX-DIAG-F01 to completed_verified with that continuity receipt alongside T02 closure.",
+  "last_verified_action": "Diagnostics runtime remains fully validated and merged. Current continuity run 31964815033 passed after repairing historical scoped-evidence labels; the metadata repair changed no runtime/product behavior.",
+  "active_substep": null,
+  "next_action": "GATX-DIAG-F01 remains completed_verified. Continue the active Guided Alpha sequence; after T02 closure the next work is GATX-T03.",
   "construction_evidence": {"browser_client":"apps/client-ui/public/guided-alpha-diagnostics.js","python_collector":"tools/alpha_diagnostics_contract.py","python_runner":"tools/internal_alpha_tester_runner.py","powershell_runner":"distribution/internal-alpha/START_MULTIVERSAL_ALPHA.ps1","package_builder":"tools/build_internal_alpha_tester_package.py","deterministic_verifier":"tools/verify_guided_alpha_diagnostics.py"},
   "automatic_collection": ["candidate/package/tranche/round identity","synthetic account and role","reference Campaign and world identifiers","host runner/runtime/LAN host/port","browser platform/language/user-agent/viewport/screen/pixel ratio/timezone","local/LAN connection observations","guided start/objective/reset/report/workspace/online-offline events","bounded JavaScript errors and unhandled rejections","bounded sanitized PowerShell runner log tail"],
   "privacy_exclusions": ["credentials/passwords","arbitrary form contents","keystrokes","free-text problem description","real Campaign/player data","unrelated personal files","browser history"],
@@ -36,7 +36,7 @@
   "completion_evidence": [
     {"kind":"commit","value":"GATX-DIAG-F01 validated candidate f16a08c7df520751be041df992c2217d71a3f332"},
     {"kind":"pull_request","value":"GATX-DIAG-F01 application PR #162 and governance PR #344"},
-    {"kind":"ci_run","value":"GATX-DIAG-F01 application PASS runs 31962299517, 31962299464, 31962299523"},
+    {"kind":"ci_run","value":"GATX-DIAG-F01 application PASS runs 31962299517, 31962299464, 31962299523; continuity repair PASS 31964815033"},
     {"kind":"merge","value":"GATX-DIAG-F01 app merge a6c2bd17962f8ed54dabd0d4d4446fdb58aa5754 and governance merge 0552f146cdcae6248f0f71c205e14f64f2691b77"},
     {"kind":"artifact","value":"GATX-DIAG-F01 artifact 9267570968 package SHA256 725294665326fa89bf8d58567e6112f99c91b24db8cb758694e2608e3aa90bfb"}
   ],
@@ -46,14 +46,14 @@
     {"command":"exact-candidate Python host diagnostic export","status":"passed","evidence":"App setup run 31962299517 created in-progress and final host diagnostic JSON, verified exact candidate/account/role/privacy, and proved unknown report_text was not captured."},
     {"command":"headed-browser round-complete host diagnostic export","status":"passed","evidence":"App successor run 31962299464: 7/7 headed Chromium Guided Alpha scenarios PASS and round completion created a host diagnostic JSON file."},
     {"command":"actual packaged Windows PowerShell diagnostic export","status":"passed","evidence":"App PowerShell run 31962299523: packaged Windows runner captured event, created in-progress JSON, exported final JSON, verified exact candidate/account/role/privacy, and rejected unknown free-text field."},
-    {"command":"governance continuity validation","status":"not_run","evidence":null}
+    {"command":"governance continuity validation","status":"passed","evidence":"Current AIOC continuity run 31964815033 PASS, including continuity regression tests and deterministic status projection."}
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
   "evidence": [
     {"kind":"commit","value":"GATX-DIAG-F01 validated runtime f16a08c7df520751be041df992c2217d71a3f332"},
     {"kind":"pull_request","value":"GATX-DIAG-F01 application PR #162; governance PR #344"},
-    {"kind":"ci_run","value":"GATX-DIAG-F01 PASS runs 31962299517, 31962299464, 31962299523"},
+    {"kind":"ci_run","value":"GATX-DIAG-F01 PASS runs 31962299517, 31962299464, 31962299523 and continuity 31964815033"},
     {"kind":"merge","value":"GATX-DIAG-F01 application merge a6c2bd17962f8ed54dabd0d4d4446fdb58aa5754; governance merge 0552f146cdcae6248f0f71c205e14f64f2691b77"},
     {"kind":"artifact","value":"GATX-DIAG-F01 package SHA256 725294665326fa89bf8d58567e6112f99c91b24db8cb758694e2608e3aa90bfb; artifact 9267570968"}
   ],
