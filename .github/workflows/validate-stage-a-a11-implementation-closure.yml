@@ -1,0 +1,24 @@
+name: Validate STAGE-A-A11 Implementation Closure
+on:
+  pull_request:
+    paths:
+      - 'governance/application-planning/stage-a-a11/implementation-closure/**'
+      - 'governance/ai/work-state/STAGE-A-A11-implementation-attempt-001.json'
+      - 'governance/ai/runtime/CURRENT_WORK_POINTER.json'
+      - 'governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json'
+      - 'governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_STAGE_A_A11_CLOSURE.md'
+      - 'governance/ai/runtime/ROADMAP_INDEX_STAGE_A_A11_SUPPLEMENT.json'
+      - 'tools/validate_stage_a_a11_implementation_closure.py'
+      - '.github/workflows/validate-stage-a-a11-implementation-closure.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python tools/validate_stage_a_a11_implementation_closure.py
