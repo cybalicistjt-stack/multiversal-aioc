@@ -2,7 +2,7 @@
 
 **Effective:** 2026-08-17  
 **Owner and final authority:** John Brandon Turner  
-**Status:** OWNER-SELECTED PARALLEL MISSION / ITEM CROSS-AXIS REVIEW ACTIVE
+**Status:** OWNER-SELECTED PARALLEL MISSION / PLATFORM CANDIDATE REVIEW ACTIVE
 
 This amendment supplements, but does not replace, `MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md`.
 
@@ -13,35 +13,37 @@ When CCTI is the newest internally consistent owner-selected evidence, recover:
 - program: `governance/application-planning/content-catalog-taxonomy-integration/CONTENT_CATALOG_TAXONOMY_INTEGRATION_PROGRAM.md`;
 - roadmap supplement: `governance/application-planning/content-catalog-taxonomy-integration/CONTENT_CATALOG_TAXONOMY_INTEGRATION_ROADMAP_SUPPLEMENT.md`;
 - active checkpoint: `governance/ai/work-state/CCTI-WRITE-01-attempt-001.json`;
-- axis progress: `governance/application-planning/content-catalog-taxonomy-integration/CCTI_ITEM_TAXONOMY_AXIS_PROGRESS.json`;
-- candidate-pass completion receipt: `governance/application-planning/content-catalog-taxonomy-integration/CCTI_ITEM_TAXONOMY_CANDIDATE_PASS_COMPLETION_RECEIPT_20260817.json`;
+- Item axis progress: `governance/application-planning/content-catalog-taxonomy-integration/CCTI_ITEM_TAXONOMY_AXIS_PROGRESS.json`;
+- Item candidate-pass completion receipt: `governance/application-planning/content-catalog-taxonomy-integration/CCTI_ITEM_TAXONOMY_CANDIDATE_PASS_COMPLETION_RECEIPT_20260817.json`;
+- Item cross-axis review: `governance/application-planning/content-catalog-taxonomy-integration/CCTI09_ITEM_CROSS_AXIS_REVIEW_REPORT_20260817.md`;
+- Item adoption proposal: `governance/application-planning/content-catalog-taxonomy-integration/CCTI_ITEM_TAXONOMY_ADOPTION_PROPOSAL_20260817.md`;
 - Object Game-Readiness program: `governance/application-planning/content-catalog-taxonomy-integration/OBJECT_GAME_READINESS_PROGRAM.md`;
 - exact-source receipt: `governance/application-planning/content-catalog-taxonomy-integration/CCTI02_EXACT_SOURCE_RECOVERY_RECEIPT_20260817.json`.
 
-Do not resume the historical source blocker or any individual IAX axis. Exact Item v0.12.0, Platform v0.11.0 and Reality v0.14.0 preparation packages were checksum-verified, and **IAX-01 through IAX-10 are all complete at candidate-disposition level**.
+Do not resume the historical source blocker or any individual Item IAX axis. Exact Item v0.12.0, Platform v0.11.0 and Reality v0.14.0 preparation packages were checksum-verified.
 
 ## Current verified position
 
 - CCTI read-only CCTI-01 through CCTI-08: `completed_verified`.
 - 11,017/11,017 source rows accounted; source/master CSVs remain unchanged.
-- All ten universal Item taxonomy axes have additive candidate sidecars/evidence and are merged; candidate taxonomy remains disabled/noncanonical.
-- Item corpus accounting remains 5,389 rows = 5,353 current Definitions + 36 legacy/reference rows; IAX-06 through IAX-10 also preserve seven IAX-01 `non_item_support_record` rows as not-applicable where appropriate.
-- Explicit review states remain and must be consolidated rather than hidden: IAX-02 110 unresolved; IAX-03 218 unresolved; IAX-04 95 unresolved; IAX-05 10 unresolved; IAX-07 225 exact `unknown` values; multiple axes also contain medium-confidence/review-required candidates.
-- Object Game-Readiness baseline covers 11,017 rows and certifies zero rows `GAME_READY` at this stage.
-
-Latest verified Item taxonomy merges:
-- IAX-09 `functional_domain`: `51b7765152bb9f37b63ae0d9358451c3342f00a9`.
-- IAX-10 `integration_target`: `4c479043d3427e5e583483acf0dbe85697b52fd2`.
-
-IAX-10 private artifact: `CCTI_Item_Taxonomy_Tranche10_IAX10_20260817.zip`, SHA-256 `eb3737c00b955aa89720f8edf85d6854bcf75e0a1b442fbe38b085783b75dc24`.
+- Item IAX-01 through IAX-10 are complete at candidate-disposition level and remain disabled/noncanonical.
+- Item cross-axis review is complete: 5,389 rows accounted, 91 structural review rows, 85 additive correction proposals; sealed historical candidate evidence remains unchanged.
+- Item canonical adoption is **not ready**. The active workspace has exact row-level sealed evidence for IAX-01 through IAX-05, IAX-09 and IAX-10; IAX-06/IAX-07/IAX-08 currently have canonical aggregate evidence and sealed hashes but not the original private row-level ZIP bytes. Recover those exact bytes or produce explicitly versioned superseding reprojections before any Item enablement.
+- The Object Game-Readiness baseline still certifies zero rows `GAME_READY` at this stage.
 
 ## Exact active substep
 
-**CCTI-09 — Item cross-axis review/consolidation.**
+**CCTI-09 — Platform v0.11.0 additive candidate projection/review.**
 
-Branch: `governance/ccti-item-taxonomy-cross-axis-review`.
+Branch: `governance/ccti-platform-v011-candidate-review`.
 
-Combine all ten Item-axis candidate sidecars into one review ledger. Validate row/identity/provenance continuity and cross-axis invariants; account for every medium-confidence, explicit-unresolved, exact-unknown, not-applicable, and reference-only state; identify corrections as new review/adoption proposals rather than rewriting sealed historical evidence; then prepare the governed candidate-adoption proposal.
+Execute the exact prepared Platform v0.11.0 candidate projection/review across all **5,628 Vehicles/Mecha/Spacecraft-domain rows**. Preserve the established **2,984 platform/model vs 2,644 non-model** routing, stable identity/provenance, confidence/review state and shared-context deferral. Spacecraft remains a first-class platform corpus; do not collapse it into a generic Vehicle bucket.
+
+## Item adoption dependency retained in parallel
+
+- Apply cross-axis corrections only as a new adoption overlay; do not rewrite sealed historical Item evidence.
+- Recover or versionedly reproject IAX-06/IAX-07/IAX-08 row-level evidence.
+- Rebuild one 5,389-row ten-axis adoption ledger and rerun deterministic validation before asking the owner to enable Item taxonomy.
 
 ## Mandatory boundaries
 
@@ -49,7 +51,7 @@ Combine all ten Item-axis candidate sidecars into one review ledger. Validate ro
 - Do not silently change stable identities, aliases or supersession decisions.
 - Do not force taxonomy values solely to eliminate unresolved/unknown states.
 - Preserve Item Definition vs A8 Asset Instance and Platform Model vs individual asset boundaries.
-- Candidate taxonomy remains disabled/noncanonical until a governed adoption gate is explicitly approved.
+- Candidate taxonomy/catalog metadata remains disabled/noncanonical until a governed adoption gate is explicitly approved.
 - Do not begin OGR-05 mechanics reauthoring without first presenting failing mechanics cohorts and repair policy to the owner.
 - Do not begin runtime/app enablement without existing Stage A gates.
 
