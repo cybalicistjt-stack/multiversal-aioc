@@ -1,0 +1,16 @@
+rule_id,catalog_scope,source_condition,proposed_taxonomy_id,confidence,rationale
+IAX01-R000,Weapons_Ammo.csv,legacy reference,,not_applicable,Reference-only/supersession evidence; do not mint a new current Item Definition.
+IAX01-R010,Melee_Weapons.csv|Ranged_Weapons.csv,all current weapon rows,IAX-01-V001,high,Reusable weapon definition -> Standalone Item.
+IAX01-R020,Computers.csv,Record_Type=Software / Protocol|Artificial Intelligence,IAX-01-V009,high,Software/data record.
+IAX01-R021,Computers.csv,Record_Type=Interface Module,IAX-01-V010,high,Interface record.
+IAX01-R022,Computers.csv,component/module/system record types,IAX-01-V003,high,Component/module system.
+IAX01-R023,Computers.csv,complete/specialized/infrastructure/pre-built/legendary/unique/drone,IAX-01-V001,high/medium,Reusable computer/device definition.
+IAX01-R030,EVA_Suits.csv,Item Type=EVA Suit Chassis,IAX-01-V002,high,Base chassis.
+IAX01-R031,EVA_Suits.csv,Item Type=EVA Module,IAX-01-V003,high,Module/component.
+IAX01-R032,EVA_Suits.csv,Item Type=Suit Interface,IAX-01-V010,high,Interface.
+IAX01-R033,EVA_Suits.csv,Item Type=Customization Package,IAX-01-V011,high,Upgrade/modification package.
+IAX01-R034-037,EVA_Suits.csv,support accessory/consumable rows,mixed,high/medium,"Split by explicit product role/name into refill/charge, consumable, interface or accessory."
+IAX01-R040-044,Living_Spellbooks.csv,Record_Type,mixed,high,"Base chassis, module, upgrade, support record or standalone item from exact record type."
+IAX01-R050-055,Symbiotes_Cybernetics.csv,Upgrade Class and explicit support-item name,mixed,high/medium,Augmentations -> upgrade/modification; support items split into consumable/interface/accessory/kit/standalone.
+IAX01-R060-062,Items.csv,Category/Subcategory,mixed,high/medium,Consumables map to Consumable; otherwise conservative Standalone Item candidate except explicit digital credential case.
+IAX01-R070-073,Magitech_Items.csv,Category,mixed,high/medium,"Consumables, Interfaces and Services routed explicitly; remaining reusable magitech definitions conservatively Standalone Item."

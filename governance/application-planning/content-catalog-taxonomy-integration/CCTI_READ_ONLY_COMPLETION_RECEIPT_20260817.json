@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "CCTI-READONLY-01",
+  "attempt_id": "CCTI-READONLY-01-attempt-001",
+  "date": "2026-08-17",
+  "status": "completed_verified",
+  "owner": "John Brandon Turner",
+  "scope": {
+    "source_rows": 11017,
+    "item_rows": 5389,
+    "platform_domain_rows": 5628,
+    "current_definition_targets": 11011,
+    "reference_only_holds": 6
+  },
+  "required_gate_evidence": {
+    "corpus_sidecar_reconstruction": "PASS — 11,017/11,017 represented; Content V2 identity/provenance/normalization/supersession evidence preserved",
+    "platform_routing": "PASS — 2,984 platform/model rows and 2,644 non-model component/module/rules/support/service rows",
+    "deterministic_crosswalk_envelope": "PASS — 11,017-row preprojection envelope, zero taxonomy assignments at audit stage",
+    "exact_registry_recovery": "PASS — Item v0.12.0, Platform v0.11.0 and Reality v0.14.0 package hashes match canonical identities",
+    "item_shadow_projection": "PASS — 5,389/5,389 aligned to exact preparation/current corpus with zero name/position mismatches; prepared intrinsic IAX row assignment identified as remaining write-sidecar work rather than falsely inferred complete",
+    "platform_shadow_projection": "PASS — 5,628/5,628 exact ID/name alignment to Platform v0.11.0; prepared record-scope assignments preserved; unresolved/proposed crosswalk states remain review work",
+    "relationship_reconciliation": "PASS — existing 216 governed relationships preserved and 63,195 selected structured relationship-field occurrences inventoried for candidate edge resolution",
+    "shared_context_compatibility_audit": "PASS — exact shared context registry identity recovered; Item preview independently reconciled and Platform context surfaces inventoried; no unsupported final compatibility claims",
+    "owner_decision_packet": "PASS — additive derived-sidecar/readiness pathway presented; owner directed Continue"
+  },
+  "private_audit_artifact": {
+    "filename": "CCTI_ReadOnly_Integration_Audit_20260817.zip",
+    "sha256": "54685f8aff2a81541dc0201285ecab5a9ae5f1bd794432e80159fd664eeee55f"
+  },
+  "exact_source_receipt": "governance/application-planning/content-catalog-taxonomy-integration/CCTI02_EXACT_SOURCE_RECOVERY_RECEIPT_20260817.json",
+  "next_attempt": "CCTI-WRITE-01-attempt-001",
+  "boundaries": {
+    "source_master_csv_mutated_during_read_only_phase": false,
+    "canonical_taxonomy_enabled_during_read_only_phase": false,
+    "identity_or_supersession_mutated_during_read_only_phase": false,
+    "runtime_asset_created": false,
+    "release_or_deployment_authorized": false
+  }
+}

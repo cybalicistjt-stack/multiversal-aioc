@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "CCTI-WRITE-01",
+  "attempt_id": "CCTI-WRITE-01-attempt-001",
+  "track": "content-catalog-taxonomy-integration",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "branch": "governance/ccti-write-game-readiness-tranche1",
+  "status": "in_progress",
+  "owner_selected": true,
+  "started_at": "2026-08-17T18:46:00Z",
+  "updated_at": "2026-08-17T18:56:00Z",
+  "objective": "Produce additive governed taxonomy/catalog sidecar candidates for the 11,017-row CCTI corpus and establish the route-specific Object Game-Readiness measurement system without rewriting source/master CSVs or enabling unreviewed content.",
+  "active_substep": "CCTI-09-item-taxonomy-IAX-02-object-nature",
+  "next_action": "Generate the bounded IAX-02 object_nature candidate sidecar for the 5,389 Item-corpus rows using the exact v0.12.0 registry and source evidence. Preserve confidence/review state and legacy-reference holds; do not mutate source/master CSVs or begin mechanics reauthoring.",
+  "dependency": {
+    "CCTI-READONLY-01-attempt-001": "completed_verified",
+    "exact_item_registry": "verified",
+    "exact_platform_registry": "verified",
+    "exact_shared_context_registry": "verified"
+  },
+  "completed_substeps": [
+    "CCTI-02 exact source recovery and checksum receipt",
+    "OGR-01 route-specific readiness program/schema/baseline",
+    "CCTI-05 IAX-01 record_scope candidate projection: 5,353 current rows + 36 reference-only holds + 0 active unassigned",
+    "private 11,017-row game-readiness ledger",
+    "tranche-1 deterministic aggregate validation"
+  ],
+  "tranche_1": {
+    "artifact": "CCTI_Game_Readiness_Tranche1_20260817.zip",
+    "artifact_sha256": "c586a01d3d542c0230d09de600995df42408532a5f604dfa02d112a724112a9f",
+    "iax01_candidate_rows": 5353,
+    "iax01_reference_only": 36,
+    "iax01_active_unassigned": 0,
+    "iax01_high_confidence": 4239,
+    "iax01_medium_confidence": 1150,
+    "game_readiness_ledger_rows": 11017,
+    "game_ready_rows": 0
+  },
+  "owner_authorization": {
+    "additive_candidate_taxonomy_sidecars": true,
+    "readiness_schema_and_ledger": true,
+    "roadmap_bootstrap_recovery_updates": true,
+    "source_master_csv_mutation": false,
+    "automatic_canonical_enablement": false,
+    "identity_or_supersession_rewrite": false,
+    "mechanics_reauthoring": false,
+    "runtime_asset_creation_or_activation": false,
+    "release_or_deployment": false
+  },
+  "future_owner_gates": [
+    "Before OGR-05 mechanics mutation: present failing mechanics cohorts and repair policy.",
+    "Before OGR-07 runtime mutation or OGR-08 app-facing enablement: preserve existing Stage A owner gates."
+  ],
+  "parallel_tracks_preserved": [
+    "Multiversal-app PR #185 remains unfinished and not superseded",
+    "DS-008-working-series-attempt-002 remains blocked_non_owner",
+    "ordinary Stage A roadmap remains preserved"
+  ],
+  "completion_gate": {
+    "candidate_sidecars_must_preserve_source_ids_and_provenance": true,
+    "all_active_rows_must_be_assigned_or_explicitly_review_required": true,
+    "no_source_master_mutation": true,
+    "no_false_game_ready_claim": true
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "date": "2026-08-17",
+  "work_item_id": "CCTI-WRITE-01 / OGR-01",
+  "artifact": {
+    "filename": "CCTI_Game_Readiness_Tranche1_20260817.zip",
+    "sha256": "c586a01d3d542c0230d09de600995df42408532a5f604dfa02d112a724112a9f",
+    "storage": "owner/session artifact; full private row-level ledgers intentionally not copied to governance repository"
+  },
+  "contained_evidence": [
+    {
+      "filename": "CCTI_IAX01_RECORD_SCOPE_CANDIDATES.csv",
+      "rows": 5389,
+      "sha256": "0b3c2da9839e3ce687a0766dfb0508cb120a136dcfa28f4358d4e704163c3053"
+    },
+    {
+      "filename": "OBJECT_GAME_READINESS_LEDGER.csv",
+      "rows": 11017,
+      "sha256": "3e055ed7fc95bed14555f8e23c7350bfc6e56c5f33d66203bb7e34c53f3b0b8e"
+    },
+    {
+      "filename": "SOURCE_MASTER_SHA256_MANIFEST.csv",
+      "rows": 12,
+      "sha256": "412d958c4625d88a590c55c3644791a115481fb41972f681155a45de6c5a0204"
+    },
+    {
+      "filename": "CCTI_IAX01_RECORD_SCOPE_RULES.csv",
+      "sha256": "4a8c6f9ba33b0c230ff1b7b57fd1fd4e37308f0f280a83512a272ae998b31401"
+    },
+    {
+      "filename": "OBJECT_GAME_READINESS_BASELINE.json",
+      "sha256": "e82611d50fbf2f460fe7e5c41feeb2077ae42334479093931a8da89761a74fc9"
+    },
+    {
+      "filename": "CCTI_WRITE_TRANCHE1_REPORT.md",
+      "sha256": "f98384e9703b6c35d16519fc8ca02a9b11a8f9b5df8c806542656b0f21e7071d"
+    }
+  ],
+  "validation": {
+    "result": "PASS",
+    "assertions": [
+      "IAX candidate rows = 5,389",
+      "current IAX-01 candidate assignments = 5,353",
+      "legacy/reference-only IAX-01 not-applicable rows = 36",
+      "active IAX-01 unassigned rows = 0",
+      "game-readiness ledger rows = 11,017",
+      "ledger Item rows = 5,389",
+      "ledger Platform rows = 5,628",
+      "ledger NOT_GAME_READY rows = 10,981",
+      "ledger REFERENCE_ONLY rows = 36",
+      "source manifest rows = 12 and total source rows = 11,017",
+      "readiness dimensions = 9",
+      "aggregate baseline hashes agree with contained ledgers"
+    ]
+  },
+  "boundaries": {
+    "source_master_csv_mutated": false,
+    "canonical_taxonomy_enabled": false,
+    "canonical_identity_changed": false,
+    "runtime_asset_created": false,
+    "mechanics_reauthored": false,
+    "game_ready_claimed": false
+  }
+}
