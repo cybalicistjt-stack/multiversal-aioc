@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "CCTI-READONLY-01",
+  "attempt_id": "CCTI-READONLY-01-attempt-001",
+  "track": "content-catalog-taxonomy-integration",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "branch": "governance/content-catalog-taxonomy-integration",
+  "status": "started",
+  "owner_selected": true,
+  "started_at": "2026-08-17T17:42:00Z",
+  "updated_at": "2026-08-17T17:42:00Z",
+  "objective": "Execute owner-approved read-only CCTI-01 through CCTI-08 across the linked Item, Vehicle, Mecha and Spacecraft corpus, preserving Content V2 identity/provenance/normalization/relationship evidence and applying only exact checksum-verified later taxonomy authority.",
+  "active_substep": "CCTI-01-existing-corpus-and-sidecar-reconstruction",
+  "next_action": "Continue read-only reconstruction of the 11,017-row target corpus and its identity/provenance/normalization/relationship sidecars; build deterministic preprojection crosswalk envelopes. Recover exact Item v0.12.0 and Platform v0.11.0 archive bytes before any complete-registry row-level projection. Do not perform persistent taxonomy/catalog writes before the post-CCTI-08 owner decision gate.",
+  "corpus": {
+    "target_records": 11017,
+    "item_records": 5389,
+    "platform_catalog_records": 5628,
+    "platform_model_records": 2984,
+    "platform_non_model_records": 2644,
+    "target_catalogs": 12
+  },
+  "source_evidence": {
+    "content_consolidation_session_sha256": "cf82636489b6a5616766e0631646591bf2e558c90ef8d4529ff04aaa153969b8",
+    "content_consolidation_nested_packages": 15,
+    "item_preparation_sha256": "d12feab1375930e1ef5c121d485aee8622f2abfc34c05f23babb26a293ee47ca",
+    "platform_preparation_sha256": "621b498b6d0fa1b99c86a96eac7446f682c715cb576cf0803d233ec2ffe0bdb6",
+    "reality_shared_context_preparation_sha256": "928aaacbd84082d88ea9e64fc6c3506a321f26633bce718cfb46199b5364f4d6"
+  },
+  "owner_authorization": {
+    "read_only_steps_1_through_8": true,
+    "roadmap_bootstrap_updates": true,
+    "persistent_corpus_taxonomy_adoption": false,
+    "source_csv_mutation": false,
+    "steps_9_through_12": false
+  },
+  "known_blockers": [
+    {
+      "type": "source_bytes_unavailable",
+      "scope": "complete checksum-bound Item v0.12.0 and Platform v0.11.0 preparation archives",
+      "effect": "Blocks complete controlled-registry row-level projection, but does not block CCTI-01 reconstruction, routing analysis, or crosswalk-envelope preparation."
+    }
+  ],
+  "parallel_tracks_preserved": [
+    "Multiversal-app PR #185 post-GATX successor distribution remains unfinished and not superseded",
+    "DS-008-working-series-attempt-002 remains separately blocked_non_owner",
+    "ordinary Stage A roadmap remains preserved"
+  ],
+  "completion_gate": {
+    "read_only_tranche_ready_for_owner_review_requires": [
+      "11,017-row accounting and sidecar reconstruction",
+      "platform/model versus component/rules/support routing",
+      "deterministic crosswalk envelopes",
+      "exact-registry availability/disposition recorded",
+      "Item and Platform shadow-projection evidence where exact registries are available",
+      "cross-domain relationship reconciliation report",
+      "shared context/compatibility audit",
+      "owner decision packet describing proposed persistent writes"
+    ],
+    "persistent_write_authority_requires_owner_decision": true
+  }
+}
