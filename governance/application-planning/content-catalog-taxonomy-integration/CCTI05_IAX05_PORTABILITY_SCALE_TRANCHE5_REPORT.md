@@ -53,7 +53,7 @@ PASS:
 Private candidate SHA-256: `e34d7a8f9f42523349536b25b598b006c1e388dc21afe9a4fb2f77a6a723a54e`  
 Private row-summary SHA-256: `1897674bf799343432b84c86420a8f876a3764474d0c21c41add304ca4d490f5`  
 Rule-usage SHA-256: `5906b24abcbc7224bc569eb85dfcb4135a140f187735bf4b7d0d0c4f55323dd5`  
-Baseline SHA-256: `b8e37100e75e247e6503b30c4b680833e82e7a327cd21b76952c14ae30c34828`
+Baseline SHA-256: `69e5b1365c8fc74c9c918c836a2e3c8fadc7be6c2873fadfd9fe92369e05f3b4`
 
 ## Exact next content operation
 
