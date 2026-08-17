@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "ITEM-CORPUS-AUDIT-001",
+  "purpose": "Quantify the source-native classification/identity surface that must be mapped into the exact v0.12.0 controlled registries without treating source labels as already-normalized taxonomy.",
+  "identity": {
+    "rows_with_explicit_source_ids": 2501,
+    "unique_explicit_source_ids": 2501,
+    "duplicate_explicit_source_ids": 0,
+    "rows_without_explicit_source_ids": 2888,
+    "rows_without_explicit_ids_and_unique_normalized_names": 2771,
+    "rows_without_explicit_ids_participating_in_repeated_normalized_names": 117,
+    "interpretation": "Explicit source IDs provide strong row identity anchors for 2,501 rows. The remaining 2,888 rows require source-row fingerprints and governed identity crosswalks; names alone are not identity."
+  },
+  "source_native_dimension_values": {
+    "category_like": {"populated_rows":5353,"unique_raw_values":375},
+    "subcategory_like": {"populated_rows":4796,"unique_raw_values":999},
+    "technology_or_tier": {"populated_rows":5353,"unique_raw_values":241},
+    "rarity": {"populated_rows":4796,"unique_raw_values":8},
+    "genre": {"populated_rows":5123,"unique_raw_values":179}
+  },
+  "dataset_shape": [
+    {"dataset":"expanded_melee_weapons_all_genres.csv","rows":327,"explicit_ids":0,"unique_categories":156,"unique_subcategories":0,"unique_tech_tiers":40,"unique_rarities":0,"unique_genres":81},
+    {"dataset":"expanded_ranged_weapons_catalog.csv","rows":230,"explicit_ids":0,"unique_categories":101,"unique_subcategories":0,"unique_tech_tiers":10,"unique_rarities":0,"unique_genres":0},
+    {"dataset":"weapons_and_ammo.csv","rows":36,"explicit_ids":0,"unique_categories":0,"unique_subcategories":0,"unique_tech_tiers":0,"unique_rarities":0,"unique_genres":0},
+    {"dataset":"expanded_items_all_genres.csv","rows":761,"explicit_ids":0,"unique_categories":41,"unique_subcategories":363,"unique_tech_tiers":32,"unique_rarities":6,"unique_genres":41},
+    {"dataset":"expanded_magitech_items_all_genres.csv","rows":532,"explicit_ids":0,"unique_categories":45,"unique_subcategories":358,"unique_tech_tiers":10,"unique_rarities":5,"unique_genres":31},
+    {"dataset":"expanded_eva_suits_and_modules_all_genres.csv","rows":430,"explicit_ids":0,"unique_categories":5,"unique_subcategories":28,"unique_tech_tiers":25,"unique_rarities":4,"unique_genres":17},
+    {"dataset":"expanded_computers_all_genres.csv","rows":1000,"explicit_ids":1000,"unique_categories":30,"unique_subcategories":119,"unique_tech_tiers":121,"unique_rarities":5,"unique_genres":31},
+    {"dataset":"expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv","rows":1501,"explicit_ids":1501,"unique_categories":17,"unique_subcategories":106,"unique_tech_tiers":20,"unique_rarities":8,"unique_genres":31},
+    {"dataset":"expanded_symbiotes_and_cybernetics_all_genres.csv","rows":572,"explicit_ids":0,"unique_categories":8,"unique_subcategories":38,"unique_tech_tiers":22,"unique_rarities":4,"unique_genres":18}
+  ],
+  "mixed_record_shape_examples": {
+    "eva_suits": {"EVA Module":360,"Suit Interface":26,"EVA Suit Chassis":25,"EVA Accessory or Consumable":10,"Customization Package":9},
+    "computers_top_record_types": {"Complete Computer":150,"Software / Protocol":137,"Core Component":105,"Specialized Computer":60,"Network Component":60,"Control System":60,"Expansion Module":54},
+    "living_spellbooks": {"Original Living Spellbook":720,"Original Charge Holder":720,"Source Charge Holder":40,"Source Ability Module":10,"Source Personality Archetype":5,"Source Upgrade":4,"Source Base Chassis":1,"Source Progression Rule":1},
+    "symbiotes_cybernetics": {"Cybernetic Implant or System":284,"Symbiote":248,"Symbiotech Integration":15,"Maintenance/Bonding/Surgical Item":10,"Cybernetic Weapon/Projector":8,"Fusion Symbiote":3,"Cybernetic Limb/Replacement":3,"External Cybernetic Frame":1}
+  },
+  "private_source_value_inventory": {
+    "filename":"ITEM_CORPUS_SOURCE_VALUE_REVIEW_INVENTORY_v0.1.0.csv",
+    "rows":1802,
+    "sha256":"da12d5fad3e92afc7ea32ababd526a45ca3cbd3e3a0cc8778ffc198202c74f3f",
+    "repository_publication":"not_published",
+    "contents":"Unique raw source values plus occurrence/dataset counts for category-like, subcategory-like, technology/tier, rarity and Genre dimensions."
+  },
+  "guardrails": [
+    "The 1,802 raw source values are not equivalent to the v0.12.0 controlled registry.",
+    "Do not collapse 179 raw Genre strings into final compatibility rules.",
+    "Do not coerce mixed supporting records such as software/protocols, source ability modules, personality archetypes or progression rules into Item Definitions merely because they live in Item-adjacent CSVs.",
+    "Exact v0.12.0 registry/crosswalk recovery is required before deterministic normalized taxonomy assignment."
+  ]
+}
