@@ -1,0 +1,281 @@
+name: Project GATX T07/T08 Ready State
+
+on:
+  push:
+    branches:
+      - governance/gatx-t07-t08-live-completion
+
+permissions:
+  contents: write
+
+jobs:
+  project-ready-state:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: governance/gatx-t07-t08-live-completion
+          fetch-depth: 0
+      - name: Project live completion evidence into governed state
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          NOW = "2026-08-17T11:12:00Z"
+          APP_VALIDATED_HEAD = "b204fb91797e226d297c75884056bde085e17c0e"
+          APP_RUNTIME_MERGE = "d41a245d72f10d6027c4606cd429abba7028bfab"
+          APP_EVIDENCE_MERGE = "bff19db1d24205c0886df48f04f2febe09e05b65"
+          LIVE_DEPLOY_ID = "dep-da1eepu417fc73ac4fpg"
+          LIVE_SERVICE_ID = "srv-da1730jl550s73f065j0"
+          LIVE_URL = "https://multiversal-gatx-remote.onrender.com"
+          LIVE_PUBLIC_RUN = 32023337155
+          REPAIR_RENDER_RUN = 32021864270
+          REPAIR_REMOTE_RUN = 32021864363
+          EVIDENCE_PATH = "artifacts/gatx-t08/GATX_T07_T08_LIVE_CROSS_LOCATION_EVIDENCE_20260817.json"
+
+          def load(path):
+              return json.loads(Path(path).read_text(encoding="utf-8"))
+
+          def save(path, value):
+              Path(path).write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8")
+
+          def upsert_validation(items, command, status, evidence):
+              for item in items:
+                  if item.get("command") == command:
+                      item["status"] = status
+                      item["evidence"] = evidence
+                      return
+              items.append({"command": command, "status": status, "evidence": evidence})
+
+          def add_evidence(items, kind, value):
+              if not any(x.get("kind") == kind and x.get("value") == value for x in items):
+                  items.append({"kind": kind, "value": value})
+
+          # T07 checkpoint
+          p07 = "governance/ai/work-state/GATX-T07-REMOTE-attempt-001.json"
+          t07 = load(p07)
+          t07["revision"] = int(t07.get("revision", 0)) + 1
+          t07["governance_branch"] = "governance/gatx-t07-t08-live-completion"
+          t07["status"] = "ready_for_review"
+          t07["updated_at"] = NOW
+          t07["completed_at"] = None
+          t07["validated_candidate_sha"] = APP_VALIDATED_HEAD
+          t07["latest_pushed_commit"] = APP_EVIDENCE_MERGE
+          t07["expected_remote_head"] = APP_RUNTIME_MERGE
+          t07["pull_request"] = 183
+          t07["application_merge_commit"] = APP_EVIDENCE_MERGE
+          t07["last_verified_action"] = (
+              "The free Render service was created through the connected Render integration, deployed from canonical app commit "
+              + APP_RUNTIME_MERGE + ", and redeployed after the validated live-refresh repair. Deployment " + LIVE_DEPLOY_ID
+              + " reached live status. Owner-observed geographically separated GM/Player execution satisfied T08-R01/R02/R03/R06, "
+              + "with prior same-service 350 ms physical latency evidence satisfying R09; repaired-head CI revalidated unchanged latency semantics. "
+              + "App PR #183 merged the durable evidence receipt as " + APP_EVIDENCE_MERGE + ", and live public run " + str(LIVE_PUBLIC_RUN)
+              + " passed /health, unauthenticated denial, and deployed repaired-UI checks."
+          )
+          t07["active_substep"] = "governance-continuity-closure"
+          completed = t07.setdefault("completed_substeps", [])
+          for value in ["render-live-deployment", "live-refresh-repair", "live-public-probe", "owner-cross-location-run", "application-evidence-closure"]:
+              if value not in completed:
+                  completed.append(value)
+          t07["next_action"] = "Run governance continuity on this ready-for-review projection; if it passes, promote GATX-T07-REMOTE and GATX-T08 together to completed_verified without starting another tranche."
+          remote = t07.setdefault("remote_deployment", {})
+          remote.update({
+              "provider": "Render",
+              "plan": "free",
+              "service_name": "multiversal-gatx-remote",
+              "service_id": LIVE_SERVICE_ID,
+              "url": LIVE_URL,
+              "deployed_runtime_commit": APP_RUNTIME_MERGE,
+              "deployment_id": LIVE_DEPLOY_ID,
+              "deployment_status": "live",
+              "first_deployment_receipt_present": True,
+              "health_verified": True,
+              "unauthenticated_api_denial_verified": True,
+              "role_secrets_configured_outside_repository": True,
+              "railway_status": "superseded_no_cost_requirement"
+          })
+          vals = t07.setdefault("validation", [])
+          upsert_validation(vals, "T07 remote access/auth/privacy and authoritative-session reuse verifier", "pass", f"repaired exact-head run {REPAIR_REMOTE_RUN} remote-contract-regression")
+          upsert_validation(vals, "T07-ARCH T06 T05 T04 T03 DIAG-F01 preservation", "pass", f"repaired exact-head run {REPAIR_REMOTE_RUN} remote-contract-regression")
+          upsert_validation(vals, "client regression typecheck accessibility and build", "pass", f"repaired exact-head run {REPAIR_REMOTE_RUN} client-preservation")
+          upsert_validation(vals, "Render free Blueprint and exact container smoke", "pass", f"repaired exact-head Render run {REPAIR_RENDER_RUN}")
+          upsert_validation(vals, "deployed remote health and unauthorized-access denial", "pass", f"live public deployment run {LIVE_PUBLIC_RUN}")
+          upsert_validation(vals, "deployed GM/player same-session authority hidden-information and reconnect smoke", "pass", f"{EVIDENCE_PATH} at application merge {APP_EVIDENCE_MERGE}")
+          upsert_validation(vals, "governance continuity validation", "not_run", None)
+          t07["unresolved_failures"] = []
+          t07["roadmap_projection_pending"] = True
+          ev = t07.setdefault("evidence", [])
+          for kind, value in [
+              ("commit", f"GATX live-refresh validated candidate {APP_VALIDATED_HEAD}"),
+              ("pull_request", "GATX live-refresh application PR #182"),
+              ("ci_run", f"GATX repaired Render validation run {REPAIR_RENDER_RUN} PASS"),
+              ("ci_run", f"GATX repaired remote/client validation run {REPAIR_REMOTE_RUN} PASS"),
+              ("merge", f"GATX live-refresh application squash merge {APP_RUNTIME_MERGE}"),
+              ("artifact", f"Render live deployment {LIVE_DEPLOY_ID} service {LIVE_SERVICE_ID} at {LIVE_URL}"),
+              ("artifact", f"Owner cross-location evidence {EVIDENCE_PATH}"),
+              ("ci_run", f"Live public deployment probe {LIVE_PUBLIC_RUN} PASS"),
+              ("pull_request", "GATX live evidence application PR #183"),
+              ("merge", f"GATX live evidence application squash merge {APP_EVIDENCE_MERGE}"),
+          ]:
+              add_evidence(ev, kind, value)
+          save(p07, t07)
+
+          # T08 checkpoint
+          p08 = "governance/ai/work-state/GATX-T08-attempt-001.json"
+          t08 = load(p08)
+          t08["revision"] = int(t08.get("revision", 0)) + 1
+          t08["governance_branch"] = "governance/gatx-t07-t08-live-completion"
+          t08["status"] = "ready_for_review"
+          t08["updated_at"] = NOW
+          t08["completed_at"] = None
+          t08["validated_candidate_sha"] = APP_VALIDATED_HEAD
+          t08["latest_pushed_commit"] = APP_EVIDENCE_MERGE
+          t08["expected_remote_head"] = APP_RUNTIME_MERGE
+          t08["pull_request"] = 183
+          t08["application_merge_commit"] = APP_EVIDENCE_MERGE
+          t08["last_verified_action"] = (
+              "The live repaired Render runtime completed the owner-observed cross-location session. Session p906023-ec4296e5 showed distinct GM/Player device IDs, "
+              "automatic proposal visibility, GM-only approval, GM-only marker presence on GM and explicit absence on Player, approved revision 3/sequence 3 on both roles, "
+              "and Player reconnect #2. Earlier same-service physical evidence recorded the 350 ms latency charter; repaired-head validation preserved the unchanged endpoint."
+          )
+          dep = t08.setdefault("dependency", {}).setdefault("GATX-T07-REMOTE", {})
+          dep.update({"status": "ready_for_review", "software_implementation_merged": True, "render_free_path_validated": True, "deployed_runtime_verified": True, "checkpoint": p07})
+          t08["active_substep"] = "governance-continuity-closure"
+          completed = t08.setdefault("completed_substeps", [])
+          for value in ["render-live-deployment", "owner-geographic-r01-r02-r03-r06-r09", "live-refresh-repair", "live-public-probe", "application-evidence-closure"]:
+              if value not in completed:
+                  completed.append(value)
+          t08["next_action"] = "Run governance continuity on this ready-for-review projection; if it passes, promote GATX-T07-REMOTE and GATX-T08 together to completed_verified. Do not require a physical R10 reset because the governed geographic final gate names only R01/R02/R03/R06/R09 and R10 already passes deterministic repaired-head regression."
+          vals = t08.setdefault("validation", [])
+          upsert_validation(vals, "all ten T08 deterministic regression charters", "pass", f"repaired exact-head run {REPAIR_REMOTE_RUN} remote-contract-regression")
+          upsert_validation(vals, "client regression typecheck accessibility and build", "pass", f"repaired exact-head run {REPAIR_REMOTE_RUN} client-preservation")
+          upsert_validation(vals, "Render free Blueprint and exact container smoke", "pass", f"repaired exact-head Render run {REPAIR_RENDER_RUN}")
+          upsert_validation(vals, "deployed remote T08 regression", "pass", f"live Render deployment {LIVE_DEPLOY_ID}; public probe {LIVE_PUBLIC_RUN}; {EVIDENCE_PATH}")
+          upsert_validation(vals, "actual geographically separated GM/Player evidence for R01 R02 R03 R06 R09", "pass", EVIDENCE_PATH)
+          upsert_validation(vals, "governance continuity validation", "not_run", None)
+          t08["unresolved_failures"] = []
+          t08["roadmap_projection_pending"] = True
+          t08["physical_cross_location_evidence"] = {
+              "artifact": EVIDENCE_PATH,
+              "application_merge_commit": APP_EVIDENCE_MERGE,
+              "current_repaired_session": "p906023-ec4296e5",
+              "required_charters": ["T08-R01", "T08-R02", "T08-R03", "T08-R06", "T08-R09"],
+              "status": "pass",
+              "owner_location_strings": {"player": "jasper Alabama", "gm": "carbon bill Alabama"},
+              "network_strings": {"player": "Verizon data", "gm": "home wifi"}
+          }
+          ev = t08.setdefault("evidence", [])
+          for kind, value in [
+              ("commit", f"GATX live-refresh validated candidate {APP_VALIDATED_HEAD}"),
+              ("pull_request", "GATX live-refresh application PR #182"),
+              ("ci_run", f"GATX repaired Render validation run {REPAIR_RENDER_RUN} PASS"),
+              ("ci_run", f"GATX repaired remote/client validation run {REPAIR_REMOTE_RUN} PASS"),
+              ("merge", f"GATX live-refresh application squash merge {APP_RUNTIME_MERGE}"),
+              ("artifact", f"Owner cross-location evidence {EVIDENCE_PATH}"),
+              ("artifact", f"Render live deployment {LIVE_DEPLOY_ID} service {LIVE_SERVICE_ID}"),
+              ("ci_run", f"Live public deployment probe {LIVE_PUBLIC_RUN} PASS"),
+              ("pull_request", "GATX live evidence application PR #183"),
+              ("merge", f"GATX live evidence application squash merge {APP_EVIDENCE_MERGE}"),
+          ]:
+              add_evidence(ev, kind, value)
+          save(p08, t08)
+
+          # Current work pointer
+          pp = "governance/ai/runtime/CURRENT_WORK_POINTER.json"
+          pointer = load(pp)
+          pointer["updated_at"] = NOW
+          pointer["primary_attempt_id"] = "GATX-T07-REMOTE-attempt-001"
+          pointer["selection_reason"] = "GATX-T07-REMOTE and GATX-T08 have live Render deployment evidence, repaired-head validation, and genuine cross-location GM/Player evidence. Both are ready_for_review pending the governance continuity closure gate."
+          for item in pointer.get("active_attempts", []):
+              if item.get("attempt_id") == "GATX-T07-REMOTE-attempt-001":
+                  item.update({"status":"ready_for_review","active_substep":"governance-continuity-closure","construction_complete":True,"latest_pushed_commit":APP_EVIDENCE_MERGE,"validated_candidate_sha":APP_VALIDATED_HEAD,"application_merge_commit":APP_EVIDENCE_MERGE,"pull_request":183,"updated_at":NOW,"roadmap_projection_pending":True})
+              if item.get("attempt_id") == "GATX-T08-attempt-001":
+                  item.update({"status":"ready_for_review","active_substep":"governance-continuity-closure","construction_complete":True,"latest_pushed_commit":APP_EVIDENCE_MERGE,"validated_candidate_sha":APP_VALIDATED_HEAD,"application_merge_commit":APP_EVIDENCE_MERGE,"pull_request":183,"updated_at":NOW,"roadmap_projection_pending":True})
+          save(pp, pointer)
+
+          # Compact status
+          ps = "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json"
+          status = load(ps)
+          status["generated_at"] = NOW
+          status["primary"] = {
+              "work_item_id": "GATX-T07-REMOTE",
+              "attempt_id": "GATX-T07-REMOTE-attempt-001",
+              "track": "guided-alpha-testing-experience",
+              "repository": "cybalicistjt-stack/Multiversal-app",
+              "branch": "internal-alpha/gatx-t07-remote-t08-cross-location",
+              "status": "ready_for_review",
+              "active_substep": "governance-continuity-closure",
+              "next_action": t07["next_action"],
+              "latest_pushed_commit": APP_EVIDENCE_MERGE,
+              "pull_request": 183,
+              "owner_decision_required": False,
+              "unresolved_failures": [],
+              "roadmap_projection_pending": True
+          }
+          status["active_attempt_count"] = 3
+          save(ps, status)
+
+          # GATX roadmap supplement
+          pr = "governance/ai/runtime/ROADMAP_INDEX_GATX_SUPPLEMENT.json"
+          roadmap = load(pr)
+          for entry in roadmap.get("entries", []):
+              if entry.get("work_item_id") == "GATX-T07-REMOTE":
+                  entry.update({"current_status":"ready_for_review","software_implementation_merged":True,"deployed_runtime_verified":True,"live_public_probe_run":LIVE_PUBLIC_RUN,"completion_gate":"Actual governed remote-session runtime satisfies authority/realtime/hidden-information/reconnect dependencies and deployed live health/credential denial; ready-for-review now awaits only governance continuity."})
+              if entry.get("work_item_id") == "GATX-T08":
+                  entry.update({"current_status":"ready_for_review","software_implementation_merged":True,"deterministic_regression_complete":True,"deployed_runtime_verified":True,"geographic_evidence_verified":True,"geographic_evidence_artifact":EVIDENCE_PATH,"completion_gate":"All ten permanent regression charters pass deterministically and the five required physical charters R01/R02/R03/R06/R09 have genuine geographic evidence; ready-for-review now awaits only governance continuity."})
+          save(pr, roadmap)
+
+          # Current-state amendment
+          pa = "governance/application-planning/internal-alpha/guided-alpha/GATX_REMOTE_T08_CURRENT_STATE_20260816.json"
+          amendment = load(pa)
+          amendment["recorded_at"] = NOW
+          amendment["authority"] = "Current-state amendment for GATX-T07-REMOTE and GATX-T08. Render Free is the verified live synthetic Internal Alpha host; Railway remains superseded. This ready-for-review projection awaits governance continuity before completion is claimed."
+          a07 = amendment["GATX-T07-REMOTE"]
+          a07.update({"status":"ready_for_review","validated_candidate_sha":APP_VALIDATED_HEAD,"hosting_validation_runs":[REPAIR_RENDER_RUN,REPAIR_REMOTE_RUN],"hosting_application_pull_request":182,"hosting_application_merge_commit":APP_RUNTIME_MERGE,"remote_first_deployment_verified":True,"live_service_url":LIVE_URL,"live_deployment_id":LIVE_DEPLOY_ID,"live_public_probe_run":LIVE_PUBLIC_RUN,"completion_blocker":"Governance continuity closure only.","completion_claim_allowed":False})
+          a08 = amendment["GATX-T08"]
+          a08.update({"status":"ready_for_review","validated_candidate_sha":APP_VALIDATED_HEAD,"validation_runs":[REPAIR_RENDER_RUN,REPAIR_REMOTE_RUN,LIVE_PUBLIC_RUN],"application_merge_commit":APP_EVIDENCE_MERGE,"deployed_regression_verified":True,"geographic_evidence_verified":True,"geographic_evidence_artifact":EVIDENCE_PATH,"completion_claim_allowed":False})
+          save(pa, amendment)
+
+          # Program backlog
+          pb = "governance/application-planning/internal-alpha/guided-alpha/GATX_BACKLOG.json"
+          backlog = load(pb)
+          pos = backlog.setdefault("current_position", {})
+          pos.update({
+              "highest_completed": "GATX-T07-ARCH",
+              "active_item": "GATX-T07-REMOTE",
+              "active_item_title": "Remote Test Session activation",
+              "next_tranche_after_active_item": "GATX-T08",
+              "next_tranche_title": "Cross-location Guided Alpha and permanent regression loop",
+              "next_tranche_state": "ready_for_review",
+              "t07_remote_dependency_gated": False,
+              "t07_remote_started": True,
+              "t07_remote_live_verified": True,
+              "t08_started": True,
+              "t08_geographic_evidence_verified": True,
+              "stop_before_t07_remote": False
+          })
+          for item in backlog.get("items", []):
+              if item.get("id") == "GATX-T07-REMOTE":
+                  item.update({"status":"ready_for_review","attempt_id":"GATX-T07-REMOTE-attempt-001","application_pull_request":183,"validated_candidate_sha":APP_VALIDATED_HEAD,"application_merge_commit":APP_EVIDENCE_MERGE,"deployed_runtime_commit":APP_RUNTIME_MERGE,"live_service_url":LIVE_URL,"live_deployment_id":LIVE_DEPLOY_ID,"live_public_probe_run":LIVE_PUBLIC_RUN,"acceptance_summary":"The governed access-gated Render Free runtime is live and verified; server-derived GM/Player roles, authority, hidden-information filtering, reconnect, latency and credential denial are evidenced. Governance continuity is the only remaining completion gate."})
+              if item.get("id") == "GATX-T08":
+                  item.update({"status":"ready_for_review","attempt_id":"GATX-T08-attempt-001","application_pull_request":183,"validated_candidate_sha":APP_VALIDATED_HEAD,"application_merge_commit":APP_EVIDENCE_MERGE,"geographic_evidence_verified":True,"geographic_evidence_artifact":EVIDENCE_PATH,"required_geographic_charters":["T08-R01","T08-R02","T08-R03","T08-R06","T08-R09"],"acceptance_summary":"The permanent ten-charter remote regression loop passes deterministically; live Render operation and genuine geographically separated GM/Player evidence satisfy R01/R02/R03/R06/R09. Governance continuity is the only remaining completion gate."})
+          save(pb, backlog)
+          PY
+
+          git config user.name "multiversal-aioc-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add governance/ai/work-state/GATX-T07-REMOTE-attempt-001.json \
+                  governance/ai/work-state/GATX-T08-attempt-001.json \
+                  governance/ai/runtime/CURRENT_WORK_POINTER.json \
+                  governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json \
+                  governance/ai/runtime/ROADMAP_INDEX_GATX_SUPPLEMENT.json \
+                  governance/application-planning/internal-alpha/guided-alpha/GATX_REMOTE_T08_CURRENT_STATE_20260816.json \
+                  governance/application-planning/internal-alpha/guided-alpha/GATX_BACKLOG.json
+          if git diff --cached --quiet; then
+            echo "Projection already current."
+          else
+            git commit -m "Project GATX T07/T08 live completion ready state"
+            git push origin HEAD:governance/gatx-t07-t08-live-completion
+          fi
