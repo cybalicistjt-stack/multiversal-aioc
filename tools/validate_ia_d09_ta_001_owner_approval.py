@@ -28,8 +28,6 @@ def main() -> int:
     decision = load(decision_path)
     roster = load(roster_path)
     work = load(work_path)
-    pointer = load(ROOT / "governance/ai/runtime/CURRENT_WORK_POINTER.json")
-    status = load(ROOT / "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json")
     roadmap = load(ROOT / "governance/ai/runtime/ROADMAP_INDEX_STAGE_A_A12_SUPPLEMENT.json")
 
     replacement = decision.get("replacement_package", {})
@@ -64,13 +62,12 @@ def main() -> int:
     for field in ("shared_live_campaign_session_authority", "real_user_data_authorized", "production_credentials_authorized", "paid_provider_authorized", "public_release_or_deployment_authorized", "broader_ai_automation_authority_authorized", "working_design_standards_promoted"):
         req(work.get(field) is False, f"closed checkpoint authority opened: {field}", errors)
 
-    req(pointer.get("primary_attempt_id") == "IA-D09-TA-001-attempt-001", "pointer primary mismatch", errors)
-    req(pointer.get("bootstrap_current_state_amendment") == "governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_IA_D09_TA_001_HOTFIX2_OWNER_APPROVED.md", "pointer bootstrap amendment mismatch", errors)
-    req(status.get("primary", {}).get("owner_decision_required") is False, "compact status still requires owner decision", errors)
-
+    # IA-D09 owner approval is a sealed historical gate. Later governed work may
+    # legitimately become the live primary pointer/status without invalidating it.
     entry = next((x for x in roadmap.get("entries", []) if x.get("work_item_id") == "IA-D09-TA-001"), None)
     req(bool(entry), "roadmap missing IA-D09-TA-001", errors)
     if entry:
+        req(entry.get("state") == "completed_verified", "roadmap IA-D09 lifecycle mismatch", errors)
         req(entry.get("approved_package_sha256") == HOTFIX_SHA and entry.get("repair_application_merge") == REPAIR_MERGE, "roadmap exact replacement identity mismatch", errors)
         req(entry.get("replacement_distribution_approved") is True and entry.get("owner_decision_required") is False, "roadmap approval mismatch", errors)
         req(entry.get("shared_live_campaign_session_authority") is False, "roadmap shared-live authority opened", errors)
