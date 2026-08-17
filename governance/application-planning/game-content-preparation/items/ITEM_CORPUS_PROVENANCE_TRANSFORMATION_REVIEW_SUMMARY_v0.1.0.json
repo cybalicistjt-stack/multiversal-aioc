@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "ITEM-CORPUS-AUDIT-001",
+  "purpose": "Identify source-text transformation signals already present in the current 5,389-row Item catalogs so later taxonomy/provenance adoption does not silently upgrade inferred, completed, or expanded-design content into stronger source authority.",
+  "scope": {
+    "direct_item_rows": 5389,
+    "rows_with_one_or_more_review_signals": 2297,
+    "rows_without_these_specific_textual_review_signals": 3092
+  },
+  "signals": {
+    "expanded_design": 1114,
+    "completed_fields": 1071,
+    "best_judgment": 828,
+    "inferred": 342,
+    "ammo_only": 6,
+    "malformed_source_completion": 1
+  },
+  "interpretation": [
+    "Counts overlap; a row may carry more than one signal.",
+    "These are review signals, not automatic defects and not authority downgrades by themselves.",
+    "A source row saying that a value was inferred, completed by best judgment, expanded by design, or completed from a malformed/partial source must preserve that transformation history during migration.",
+    "Current mechanics remain protected by the v0.12.0 preparation contract; this audit does not rewrite or invalidate them.",
+    "The future normalized provenance model should distinguish source-backed fact, current authored/expanded content, inference/completion, unresolved conflict, and later governed revision instead of flattening all Origin text into one authority class."
+  ],
+  "weapons_ammo_source_note_gap": {
+    "original_rows_with_blank_source_notes": 28,
+    "rows_with_recovered_direct_item_definition_provenance_from_8E_008G": 28,
+    "remaining_blank_source_note_rows_after_derived_recovery": 0,
+    "important_boundary": "Recovered provenance is stored as derived crosswalk evidence; the original Weapons_Ammo.csv source bytes are unchanged."
+  },
+  "private_review_queue": {
+    "filename": "ITEM_CORPUS_PROVENANCE_TRANSFORMATION_REVIEW_QUEUE_v0.1.0.csv",
+    "rows": 2297,
+    "sha256": "15772c7609aa59ac9192254e2907c41286aa01f3426dda4abc6a8b86ffc67e11",
+    "repository_publication": "not_published",
+    "reason": "Detailed source-row names and Origin/Source Notes remain owner-held working evidence; the public AIOC repository records aggregate review evidence only."
+  },
+  "required_use_in_projection": [
+    "Carry source-row fingerprint and original provenance text reference into the shadow projection.",
+    "Do not translate textual words such as inferred or best judgment into invented numeric confidence scores.",
+    "Do not promote expanded-design rows into legacy-source fact merely because they coexist with source-derived rows.",
+    "Do not discard current mechanics; authority/provenance state and current mechanics authority are separate concerns.",
+    "Require explicit review when later product identity, compatibility or creator/origin assertions depend on transformed source fields."
+  ]
+}
