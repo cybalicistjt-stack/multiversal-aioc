@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "updated_at": "2026-08-17T19:15:00Z",
+  "updated_at": "2026-08-17T19:28:00Z",
   "item_corpus_rows": 5389,
   "current_definition_rows": 5353,
   "legacy_reference_rows": 36,
@@ -28,8 +28,19 @@
       "candidate_assertions": 9101,
       "artifact_sha256": "5ff36546966e0a438e0c946cf3730ac330522fd9ee5ab383bbdb8afe73ecd5c1"
     },
-    {"axis_id":"IAX-03","axis":"form_factor","state":"next"},
-    {"axis_id":"IAX-04","axis":"use_relation","state":"pending"},
+    {
+      "axis_id": "IAX-03",
+      "axis": "form_factor",
+      "cardinality": "multi",
+      "state": "candidate_disposition_complete_not_enabled",
+      "rows_with_candidate_assertions": 5135,
+      "explicit_unresolved_rows": 218,
+      "reference_only_not_applicable": 36,
+      "active_unaccounted_rows": 0,
+      "candidate_assertions": 7642,
+      "artifact_sha256": "312fe4f8f442279d06c6299271ce134d4f60a7c0b8fb61a3da6994e3fef31202"
+    },
+    {"axis_id":"IAX-04","axis":"use_relation","state":"next"},
     {"axis_id":"IAX-05","axis":"portability_scale","state":"pending"},
     {"axis_id":"IAX-06","axis":"consumption_lifecycle","state":"pending"},
     {"axis_id":"IAX-07","axis":"operational_complexity","state":"pending"},
@@ -43,5 +54,5 @@
     "mechanics_reauthored": false,
     "runtime_activation": false
   },
-  "exact_next_action": "Execute IAX-03 form_factor as a bounded multi-select candidate tranche using the exact v0.12.0 controlled registry; preserve IAX-02 unresolved states independently."
+  "exact_next_action": "Execute IAX-04 use_relation as a bounded multi-select candidate tranche using the exact v0.12.0 controlled registry; preserve IAX-02/IAX-03 unresolved states independently."
 }
