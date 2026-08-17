@@ -4,14 +4,14 @@
   "attempt_id": "CCTI-READONLY-01-attempt-001",
   "track": "content-catalog-taxonomy-integration",
   "repository": "cybalicistjt-stack/multiversal-aioc",
-  "branch": "governance/content-catalog-taxonomy-integration",
+  "branch": "governance/ccti-readonly-registry-recovery",
   "status": "started",
   "owner_selected": true,
   "started_at": "2026-08-17T17:42:00Z",
-  "updated_at": "2026-08-17T17:42:00Z",
-  "objective": "Execute owner-approved read-only CCTI-01 through CCTI-08 across the linked Item, Vehicle, Mecha and Spacecraft corpus, preserving Content V2 identity/provenance/normalization/relationship evidence and applying only exact checksum-verified later taxonomy authority.",
-  "active_substep": "CCTI-01-existing-corpus-and-sidecar-reconstruction",
-  "next_action": "Continue read-only reconstruction of the 11,017-row target corpus and its identity/provenance/normalization/relationship sidecars; build deterministic preprojection crosswalk envelopes. Recover exact Item v0.12.0 and Platform v0.11.0 archive bytes before any complete-registry row-level projection. Do not perform persistent taxonomy/catalog writes before the post-CCTI-08 owner decision gate.",
+  "updated_at": "2026-08-17T18:08:00Z",
+  "objective": "Execute owner-approved read-only CCTI-01 through CCTI-08 across the linked Item, Vehicle, Mecha and Spacecraft corpus while preserving Content V2 evidence and using only exact checksum-verified later taxonomy authority.",
+  "active_substep": "CCTI-02-exact-registry-recovery",
+  "next_action": "Recover and SHA-256 verify Multiversal_IA_Item_Taxonomy_Preparation_v0.12.0.zip and Multiversal_IA_Platform_Catalog_Preparation_v0.11.0.zip. Then use their exact controlled registries for CCTI-05/CCTI-06 shadow projection against the existing 11,017-row preprojection envelope. No persistent taxonomy/catalog adoption before the post-CCTI-08 owner gate.",
   "corpus": {
     "target_records": 11017,
     "item_records": 5389,
@@ -20,10 +20,21 @@
     "platform_non_model_records": 2644,
     "target_catalogs": 12
   },
+  "progress": {
+    "CCTI-01": "read_only_reconstruction_complete: 11,017/11,017 rows and linked identity/provenance/normalization/relationship evidence accounted",
+    "CCTI-02": "blocked_source_bytes: canonical archive hashes known; exact archive bytes not currently accessible",
+    "CCTI-03": "read_only_shared_integration_model_complete",
+    "CCTI-04": "read_only_preprojection_envelope_complete: 11,017 rows; sha256 59921372bb7fffe0a6491a2dc8a01d3a022fff0c8d633cbd15dbe6a70ad1d6ee; zero taxonomy assignments",
+    "CCTI-05": "blocked_on_CCTI-02",
+    "CCTI-06": "blocked_on_CCTI-02; 2,984 model / 2,644 non-model routing already established",
+    "CCTI-07": "preliminary_read_only_relationship_signal_inventory_complete: 63,195 selected field occurrences; 216 existing exact resolved relationships preserved",
+    "CCTI-08": "preliminary_read_only_context_baseline_complete: 63 All Genres / 5,060 specific Genre / 266 no Genre; no final compatibility determinations"
+  },
   "source_evidence": {
     "content_consolidation_session_sha256": "cf82636489b6a5616766e0631646591bf2e558c90ef8d4529ff04aaa153969b8",
-    "content_consolidation_nested_packages": 15,
+    "item_preparation_filename": "Multiversal_IA_Item_Taxonomy_Preparation_v0.12.0.zip",
     "item_preparation_sha256": "d12feab1375930e1ef5c121d485aee8622f2abfc34c05f23babb26a293ee47ca",
+    "platform_preparation_filename": "Multiversal_IA_Platform_Catalog_Preparation_v0.11.0.zip",
     "platform_preparation_sha256": "621b498b6d0fa1b99c86a96eac7446f682c715cb576cf0803d233ec2ffe0bdb6",
     "reality_shared_context_preparation_sha256": "928aaacbd84082d88ea9e64fc6c3506a321f26633bce718cfb46199b5364f4d6"
   },
@@ -38,25 +49,13 @@
     {
       "type": "source_bytes_unavailable",
       "scope": "complete checksum-bound Item v0.12.0 and Platform v0.11.0 preparation archives",
-      "effect": "Blocks complete controlled-registry row-level projection, but does not block CCTI-01 reconstruction, routing analysis, or crosswalk-envelope preparation."
+      "effect": "Blocks complete controlled-registry row-level projection in CCTI-05/CCTI-06; partial extracts are not complete registry authority."
     }
   ],
   "parallel_tracks_preserved": [
-    "Multiversal-app PR #185 post-GATX successor distribution remains unfinished and not superseded",
-    "DS-008-working-series-attempt-002 remains separately blocked_non_owner",
+    "Multiversal-app PR #185 remains unfinished and not superseded",
+    "DS-008-working-series-attempt-002 remains blocked_non_owner",
     "ordinary Stage A roadmap remains preserved"
   ],
-  "completion_gate": {
-    "read_only_tranche_ready_for_owner_review_requires": [
-      "11,017-row accounting and sidecar reconstruction",
-      "platform/model versus component/rules/support routing",
-      "deterministic crosswalk envelopes",
-      "exact-registry availability/disposition recorded",
-      "Item and Platform shadow-projection evidence where exact registries are available",
-      "cross-domain relationship reconciliation report",
-      "shared context/compatibility audit",
-      "owner decision packet describing proposed persistent writes"
-    ],
-    "persistent_write_authority_requires_owner_decision": true
-  }
+  "persistent_write_authority_requires_owner_decision_after_CCTI_08": true
 }
