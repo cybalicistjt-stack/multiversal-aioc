@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.0.0",
-  "updated_at": "2026-08-17",
+  "schema_version": "1.1.0",
+  "updated_at": "2026-08-17T22:00:00Z",
   "item_corpus_rows": 5389,
   "current_definition_rows": 5353,
   "legacy_reference_rows": 36,
@@ -16,7 +16,23 @@
     {"axis_id":"IAX-09","axis":"functional_domain","cardinality":"multi","state":"candidate_disposition_complete_not_enabled","rows_with_candidate_assertions":5346,"record_scope_not_applicable":7,"reference_only_not_applicable":36,"active_unaccounted_rows":0,"candidate_assertions":12028,"artifact_sha256":"38a0e64c957398b4844006f93653bb7ad918c58753cd37aaf107b07f69d6ff99"},
     {"axis_id":"IAX-10","axis":"integration_target","cardinality":"multi","state":"candidate_disposition_complete_not_enabled","rows_with_candidate_assertions":5346,"record_scope_not_applicable":7,"reference_only_not_applicable":36,"active_unaccounted_rows":0,"candidate_assertions":5810,"artifact_sha256":"eb3737c00b955aa89720f8edf85d6854bcf75e0a1b442fbe38b085783b75dc24"}
   ],
-  "boundaries": {"source_master_csv_mutated":false,"candidate_taxonomy_enabled":false,"mechanics_reauthored":false,"runtime_activation":false},
   "universal_item_taxonomy_candidate_pass": "complete_all_10_axes_not_enabled",
-  "exact_next_action": "Execute the cross-axis Item taxonomy review/consolidation gate: combine all ten candidate axes, account for every explicit unresolved/unknown/review-required state, validate cross-axis invariants and provenance, and prepare the governed adoption proposal before any candidate enablement or mechanics reauthoring."
+  "cross_axis_review": {
+    "state": "completed_review_adoption_not_ready",
+    "private_artifact": "CCTI_Item_Cross_Axis_Review_20260817.zip",
+    "artifact_sha256": "42a544b5231a721f909a2e4257a2ebcf5971bfda40411d1a052f079ace43f867",
+    "structural_review_rows": 91,
+    "correction_proposals": 85,
+    "sealed_row_level_evidence_present": ["IAX-01","IAX-02","IAX-03","IAX-04","IAX-05","IAX-09","IAX-10"],
+    "sealed_hash_only_in_active_workspace": ["IAX-06","IAX-07","IAX-08"],
+    "canonical_adoption_state": "not_ready_for_enablement"
+  },
+  "boundaries": {
+    "source_master_csv_mutated": false,
+    "candidate_taxonomy_enabled": false,
+    "sealed_historical_evidence_rewritten": false,
+    "mechanics_reauthored": false,
+    "runtime_activation": false
+  },
+  "exact_next_action": "Proceed to the exact Platform v0.11.0 additive candidate projection/review across all 5,628 Vehicles/Mecha/Spacecraft-domain rows while preserving the established 2,984 platform/model versus 2,644 non-model routing. Item canonical adoption remains separately gated pending correction-overlay consolidation and recovery or versioned superseding reprojection of IAX-06/IAX-07/IAX-08 row-level evidence."
 }

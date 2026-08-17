@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.0.0",
-  "updated_at": "2026-08-17T20:45:00Z",
+  "schema_version": "1.1.0",
+  "updated_at": "2026-08-17T22:00:00Z",
   "supplement_id": "ROADMAP-CCTI-001",
   "owner": "John Brandon Turner",
   "program": "governance/application-planning/content-catalog-taxonomy-integration/CONTENT_CATALOG_TAXONOMY_INTEGRATION_PROGRAM.md",
@@ -8,9 +8,57 @@
   "bootstrap_current_state_amendment": "governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_CCTI_WRITE_20260817.md",
   "primary_attempt_id": "CCTI-WRITE-01-attempt-001",
   "entries": [
-    {"work_item_id":"CCTI-READONLY-01","attempt_id":"CCTI-READONLY-01-attempt-001","track":"content-catalog-taxonomy-integration","state":"completed_verified","owner_selected":false,"checkpoint":"governance/ai/work-state/CCTI-READONLY-01-attempt-001.json","completion_receipt":"governance/application-planning/content-catalog-taxonomy-integration/CCTI_READ_ONLY_COMPLETION_RECEIPT_20260817.json","scope_records":11017,"scope_catalogs":12,"mode":"read_only","source_master_rows_mutated":false},
-    {"work_item_id":"CCTI-WRITE-01","attempt_id":"CCTI-WRITE-01-attempt-001","track":"content-catalog-taxonomy-integration","state":"in_progress","owner_selected":true,"checkpoint":"governance/ai/work-state/CCTI-WRITE-01-attempt-001.json","branch":"governance/ccti-item-taxonomy-cross-axis-review","authorized_scope":"additive candidate taxonomy/catalog sidecars, review/confidence queues, readiness measurement and validation artifacts","active_substep":"CCTI-09-item-taxonomy-cross-axis-review","completed_item_axes":["IAX-01","IAX-02","IAX-03","IAX-04","IAX-05","IAX-06","IAX-07","IAX-08","IAX-09","IAX-10"],"universal_item_taxonomy_candidate_pass":"complete_all_10_axes_not_enabled","candidate_pass_completion_receipt":"governance/application-planning/content-catalog-taxonomy-integration/CCTI_ITEM_TAXONOMY_CANDIDATE_PASS_COMPLETION_RECEIPT_20260817.json","source_master_csv_mutation_authorized":false,"automatic_canonical_enablement_authorized":false,"mechanics_reauthoring_authorized":false,"runtime_activation_authorized":false},
-    {"work_item_id":"OGR-01","track":"object-game-readiness","state":"in_progress","owner_selected":false,"governing_document":"governance/application-planning/content-catalog-taxonomy-integration/OBJECT_GAME_READINESS_PROGRAM.md","dependency":"CCTI-WRITE-01","current_evidence":"11,017-row readiness baseline; zero GAME_READY certifications","mechanics_mutation_gate":"Owner review required before OGR-05"}
+    {
+      "work_item_id": "CCTI-READONLY-01",
+      "attempt_id": "CCTI-READONLY-01-attempt-001",
+      "track": "content-catalog-taxonomy-integration",
+      "state": "completed_verified",
+      "scope_records": 11017,
+      "scope_catalogs": 12,
+      "mode": "read_only",
+      "source_master_rows_mutated": false
+    },
+    {
+      "work_item_id": "CCTI-WRITE-01",
+      "attempt_id": "CCTI-WRITE-01-attempt-001",
+      "track": "content-catalog-taxonomy-integration",
+      "state": "in_progress",
+      "owner_selected": true,
+      "checkpoint": "governance/ai/work-state/CCTI-WRITE-01-attempt-001.json",
+      "branch": "governance/ccti-platform-v011-candidate-review",
+      "active_substep": "CCTI-09-platform-v0.11.0-candidate-review",
+      "completed_item_axes": ["IAX-01","IAX-02","IAX-03","IAX-04","IAX-05","IAX-06","IAX-07","IAX-08","IAX-09","IAX-10"],
+      "item_cross_axis_review": "completed_adoption_not_ready",
+      "item_review_artifact_sha256": "42a544b5231a721f909a2e4257a2ebcf5971bfda40411d1a052f079ace43f867",
+      "platform_catalog_rows": 5628,
+      "platform_model_rows": 2984,
+      "platform_non_model_rows": 2644,
+      "source_master_csv_mutation_authorized": false,
+      "automatic_canonical_enablement_authorized": false,
+      "mechanics_reauthoring_authorized": false,
+      "runtime_activation_authorized": false
+    },
+    {
+      "work_item_id": "OGR-01",
+      "track": "object-game-readiness",
+      "state": "in_progress",
+      "dependency": "CCTI-WRITE-01",
+      "current_evidence": "11,017-row readiness baseline; zero GAME_READY certifications",
+      "mechanics_mutation_gate": "Owner review required before OGR-05"
+    }
   ],
-  "preserved_tracks": {"post_gatx_successor_pr_185":"unfinished","ds_008":"blocked_non_owner","ordinary_stage_a":"preserved"}
+  "item_adoption_dependency": {
+    "state": "not_ready_for_enablement",
+    "required": [
+      "apply cross-axis correction overlay in a new adoption candidate",
+      "recover exact or versionedly reproject IAX-06/IAX-07/IAX-08 row-level evidence",
+      "rerun complete ten-axis adoption validation",
+      "owner approval before canonical enablement"
+    ]
+  },
+  "preserved_tracks": {
+    "post_gatx_successor_pr_185": "unfinished",
+    "ds_008": "blocked_non_owner",
+    "ordinary_stage_a": "preserved"
+  }
 }
