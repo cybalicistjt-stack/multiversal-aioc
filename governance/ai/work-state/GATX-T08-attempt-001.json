@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 5,
+  "revision": 6,
   "work_item_id": "GATX-T08",
   "attempt_id": "GATX-T08-attempt-001",
   "track": "guided-alpha-testing-experience",
@@ -8,11 +8,11 @@
   "branch": "internal-alpha/gatx-t07-remote-t08-cross-location",
   "governance_repository": "cybalicistjt-stack/multiversal-aioc",
   "governance_branch": "governance/gatx-t07-t08-live-completion",
-  "status": "ready_for_review",
+  "status": "completed_verified",
   "owner_selected": false,
   "started_at": "2026-08-16T22:46:00Z",
-  "updated_at": "2026-08-17T11:12:00Z",
-  "completed_at": null,
+  "updated_at": "2026-08-17T11:15:00Z",
+  "completed_at": "2026-08-17T11:15:00Z",
   "base_commit": "f489a5c791580f695cd5e5f60600f567145c93cb",
   "construction_complete": true,
   "construction_head": "28c03c5572ae849cadaf6cbfd50be415401319c7",
@@ -23,17 +23,17 @@
   "application_merge_commit": "bff19db1d24205c0886df48f04f2febe09e05b65",
   "validation_started": true,
   "objective": "Complete cross-location Guided Alpha and establish the permanent remote-session regression loop using the access-gated T07 remote runtime, including adverse authorization, reconnect, ordering, hidden-information and latency cases.",
-  "last_verified_action": "The live repaired Render runtime completed the owner-observed cross-location session. Session p906023-ec4296e5 showed distinct GM/Player device IDs, automatic proposal visibility, GM-only approval, GM-only marker presence on GM and explicit absence on Player, approved revision 3/sequence 3 on both roles, and Player reconnect #2. Earlier same-service physical evidence recorded the 350 ms latency charter; repaired-head validation preserved the unchanged endpoint.",
+  "last_verified_action": "Ready-state governance continuity run 32023786174 passed after all ten deterministic T08 charters, verified live Render operation, and genuine geographic evidence for R01/R02/R03/R06/R09. GATX-T08 completion gate is satisfied; physical R10 was not required by the governed geographic gate.",
   "dependency": {
     "GATX-T07-REMOTE": {
-      "status": "ready_for_review",
+      "status": "completed_verified",
       "software_implementation_merged": true,
       "render_free_path_validated": true,
       "deployed_runtime_verified": true,
       "checkpoint": "governance/ai/work-state/GATX-T07-REMOTE-attempt-001.json"
     }
   },
-  "active_substep": "governance-continuity-closure",
+  "active_substep": null,
   "completed_substeps": [
     "permanent-regression-contract",
     "ten-blocking-charters",
@@ -55,7 +55,7 @@
     "live-public-probe",
     "application-evidence-closure"
   ],
-  "next_action": "Run governance continuity on this ready-for-review projection; if it passes, promote GATX-T07-REMOTE and GATX-T08 together to completed_verified. Do not require a physical R10 reset because the governed geographic final gate names only R01/R02/R03/R06/R09 and R10 already passes deterministic repaired-head regression.",
+  "next_action": "GATX-T07-REMOTE and GATX-T08 are completed_verified. Stop this GATX operation and recover the canonical roadmap before any later work; do not automatically start another tranche.",
   "regression_contract": {
     "charter_id": "GATX-T08-CROSS-LOCATION-REGRESSION-001",
     "path": "apps/client-ui/public/gatx-transport/v0.2.0/T08_CROSS_LOCATION_REGRESSION_v0.2.0.json",
@@ -107,12 +107,12 @@
   "validation": [
     {
       "command": "all ten T08 deterministic regression charters",
-      "status": "pass",
+      "status": "passed",
       "evidence": "repaired exact-head run 32021864363 remote-contract-regression"
     },
     {
       "command": "client regression typecheck accessibility and build",
-      "status": "pass",
+      "status": "passed",
       "evidence": "repaired exact-head run 32021864363 client-preservation"
     },
     {
@@ -122,23 +122,23 @@
     },
     {
       "command": "deployed remote T08 regression",
-      "status": "pass",
+      "status": "passed",
       "evidence": "live Render deployment dep-da1eepu417fc73ac4fpg; public probe 32023337155; artifacts/gatx-t08/GATX_T07_T08_LIVE_CROSS_LOCATION_EVIDENCE_20260817.json"
     },
     {
       "command": "actual geographically separated GM/Player evidence for R01 R02 R03 R06 R09",
-      "status": "pass",
+      "status": "passed",
       "evidence": "artifacts/gatx-t08/GATX_T07_T08_LIVE_CROSS_LOCATION_EVIDENCE_20260817.json"
     },
     {
       "command": "governance continuity validation",
-      "status": "not_run",
-      "evidence": null
+      "status": "passed",
+      "evidence": "ready-state continuity run 32023786174 PASS all continuity checks"
     }
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "evidence": [
     {
       "kind": "commit",
@@ -207,6 +207,26 @@
     {
       "kind": "merge",
       "value": "GATX live evidence application squash merge bff19db1d24205c0886df48f04f2febe09e05b65"
+    },
+    {
+      "kind": "commit",
+      "value": "GATX-T08 repaired validated candidate b204fb91797e226d297c75884056bde085e17c0e"
+    },
+    {
+      "kind": "pull_request",
+      "value": "GATX-T08 live repair/evidence PRs #182 and #183"
+    },
+    {
+      "kind": "ci_run",
+      "value": "GATX-T08 ready-state continuity run 32023786174 PASS"
+    },
+    {
+      "kind": "artifact",
+      "value": "GATX-T08 owner cross-location evidence artifacts/gatx-t08/GATX_T07_T08_LIVE_CROSS_LOCATION_EVIDENCE_20260817.json"
+    },
+    {
+      "kind": "merge",
+      "value": "GATX-T08 canonical application evidence merge bff19db1d24205c0886df48f04f2febe09e05b65"
     }
   ],
   "notes": [

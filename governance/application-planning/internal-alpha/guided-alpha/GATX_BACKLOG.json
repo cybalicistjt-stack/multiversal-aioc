@@ -24,12 +24,12 @@
     "satisfied": true
   },
   "current_position": {
-    "highest_completed": "GATX-T07-ARCH",
-    "active_item": "GATX-T07-REMOTE",
-    "active_item_title": "Remote Test Session activation",
-    "next_tranche_after_active_item": "GATX-T08",
-    "next_tranche_title": "Cross-location Guided Alpha and permanent regression loop",
-    "next_tranche_state": "ready_for_review",
+    "highest_completed": "GATX-T08",
+    "active_item": null,
+    "active_item_title": null,
+    "next_tranche_after_active_item": null,
+    "next_tranche_title": null,
+    "next_tranche_state": null,
     "t06_completed": true,
     "t07_arch_started": true,
     "t07_arch_construction_complete": true,
@@ -42,7 +42,9 @@
     "t08_started": true,
     "stop_before_t07_remote": false,
     "t07_remote_live_verified": true,
-    "t08_geographic_evidence_verified": true
+    "t08_geographic_evidence_verified": true,
+    "t07_remote_completed": true,
+    "t08_completed": true
   },
   "items": [
     {
@@ -405,12 +407,12 @@
     {
       "id": "GATX-T07-REMOTE",
       "title": "Remote Test Session activation",
-      "status": "ready_for_review",
+      "status": "completed_verified",
       "dependencies": [
         "GATX-T07-ARCH",
         "P9 authoritative online/session prerequisites"
       ],
-      "acceptance_summary": "The governed access-gated Render Free runtime is live and verified; server-derived GM/Player roles, authority, hidden-information filtering, reconnect, latency and credential denial are evidenced. Governance continuity is the only remaining completion gate.",
+      "acceptance_summary": "Completed verified: the no-cost access-gated Render Free synthetic Internal Alpha runtime is live; GM/Player authority, privacy, reconnect, latency, health, credential denial, and repaired live-state UX are evidenced.",
       "attempt_id": "GATX-T07-REMOTE-attempt-001",
       "application_pull_request": 183,
       "validated_candidate_sha": "b204fb91797e226d297c75884056bde085e17c0e",
@@ -418,16 +420,17 @@
       "deployed_runtime_commit": "d41a245d72f10d6027c4606cd429abba7028bfab",
       "live_service_url": "https://multiversal-gatx-remote.onrender.com",
       "live_deployment_id": "dep-da1eepu417fc73ac4fpg",
-      "live_public_probe_run": 32023337155
+      "live_public_probe_run": 32023337155,
+      "completed_at": "2026-08-17T11:15:00Z"
     },
     {
       "id": "GATX-T08",
       "title": "Cross-location Guided Alpha and permanent regression loop",
-      "status": "ready_for_review",
+      "status": "completed_verified",
       "dependencies": [
         "GATX-T07-REMOTE"
       ],
-      "acceptance_summary": "The permanent ten-charter remote regression loop passes deterministically; live Render operation and genuine geographically separated GM/Player evidence satisfy R01/R02/R03/R06/R09. Governance continuity is the only remaining completion gate.",
+      "acceptance_summary": "Completed verified: all ten remote regression charters pass; owner-observed geographically separated GM/Player clients satisfy the designated physical charters R01/R02/R03/R06/R09.",
       "attempt_id": "GATX-T08-attempt-001",
       "application_pull_request": 183,
       "validated_candidate_sha": "b204fb91797e226d297c75884056bde085e17c0e",
@@ -440,7 +443,8 @@
         "T08-R03",
         "T08-R06",
         "T08-R09"
-      ]
+      ],
+      "completed_at": "2026-08-17T11:15:00Z"
     }
   ],
   "preserved_boundaries": {

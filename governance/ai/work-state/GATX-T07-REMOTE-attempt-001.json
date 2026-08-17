@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 9,
+  "revision": 10,
   "work_item_id": "GATX-T07-REMOTE",
   "attempt_id": "GATX-T07-REMOTE-attempt-001",
   "track": "guided-alpha-testing-experience",
@@ -8,11 +8,11 @@
   "branch": "internal-alpha/gatx-t07-remote-t08-cross-location",
   "governance_repository": "cybalicistjt-stack/multiversal-aioc",
   "governance_branch": "governance/gatx-t07-t08-live-completion",
-  "status": "ready_for_review",
+  "status": "completed_verified",
   "owner_selected": true,
   "started_at": "2026-08-16T22:46:00Z",
-  "updated_at": "2026-08-17T11:12:00Z",
-  "completed_at": null,
+  "updated_at": "2026-08-17T11:15:00Z",
+  "completed_at": "2026-08-17T11:15:00Z",
   "base_commit": "f489a5c791580f695cd5e5f60600f567145c93cb",
   "construction_complete": true,
   "construction_head": "28c03c5572ae849cadaf6cbfd50be415401319c7",
@@ -23,7 +23,7 @@
   "application_merge_commit": "bff19db1d24205c0886df48f04f2febe09e05b65",
   "validation_started": true,
   "objective": "Activate the transport-neutral Guided Alpha over a dedicated access-gated no-cost remote Internal Alpha runtime reusing the canonical P9 authoritative-session foundations, then complete the permanent GATX-T08 cross-location regression program.",
-  "last_verified_action": "The free Render service was created through the connected Render integration, deployed from canonical app commit d41a245d72f10d6027c4606cd429abba7028bfab, and redeployed after the validated live-refresh repair. Deployment dep-da1eepu417fc73ac4fpg reached live status. Owner-observed geographically separated GM/Player execution satisfied T08-R01/R02/R03/R06, with prior same-service 350 ms physical latency evidence satisfying R09; repaired-head CI revalidated unchanged latency semantics. App PR #183 merged the durable evidence receipt as bff19db1d24205c0886df48f04f2febe09e05b65, and live public run 32023337155 passed /health, unauthenticated denial, and deployed repaired-UI checks.",
+  "last_verified_action": "Ready-state governance continuity run 32023786174 passed after verified live Render deployment, repaired-head CI, live public probe 32023337155, and owner cross-location evidence. GATX-T07-REMOTE completion gate is satisfied.",
   "owner_authorization": {
     "source": "Owner instruction 2026-08-16: finish the rest of 07 and 08 and make it ready to use; owner subsequently rejected Railway because it requires a paid upgrade and directed finding another way.",
     "internal_alpha_remote_test_deployment_authorized": true,
@@ -63,7 +63,7 @@
       "decision_id": "P9-06-024-OWNER-DECISION-001"
     }
   },
-  "active_substep": "governance-continuity-closure",
+  "active_substep": null,
   "completed_substeps": [
     "dependency-recovery",
     "owner-scope-recovery",
@@ -96,7 +96,7 @@
     "owner-cross-location-run",
     "application-evidence-closure"
   ],
-  "next_action": "Run governance continuity on this ready-for-review projection; if it passes, promote GATX-T07-REMOTE and GATX-T08 together to completed_verified without starting another tranche.",
+  "next_action": "GATX-T07-REMOTE and GATX-T08 are completed_verified. Stop this GATX operation and recover the canonical roadmap before any later work; do not automatically start another tranche.",
   "scope_boundaries": {
     "must_reuse": [
       "GATX-T07-ARCH transport contract",
@@ -185,12 +185,12 @@
   "validation": [
     {
       "command": "T07 remote access/auth/privacy and authoritative-session reuse verifier",
-      "status": "pass",
+      "status": "passed",
       "evidence": "repaired exact-head run 32021864363 remote-contract-regression"
     },
     {
       "command": "T07-ARCH T06 T05 T04 T03 DIAG-F01 preservation",
-      "status": "pass",
+      "status": "passed",
       "evidence": "repaired exact-head run 32021864363 remote-contract-regression"
     },
     {
@@ -200,33 +200,33 @@
     },
     {
       "command": "client regression typecheck accessibility and build",
-      "status": "pass",
+      "status": "passed",
       "evidence": "repaired exact-head run 32021864363 client-preservation"
     },
     {
       "command": "Render free Blueprint and exact container smoke",
-      "status": "pass",
+      "status": "passed",
       "evidence": "repaired exact-head Render run 32021864270"
     },
     {
       "command": "deployed remote health and unauthorized-access denial",
-      "status": "pass",
+      "status": "passed",
       "evidence": "live public deployment run 32023337155"
     },
     {
       "command": "deployed GM/player same-session authority hidden-information and reconnect smoke",
-      "status": "pass",
+      "status": "passed",
       "evidence": "artifacts/gatx-t08/GATX_T07_T08_LIVE_CROSS_LOCATION_EVIDENCE_20260817.json at application merge bff19db1d24205c0886df48f04f2febe09e05b65"
     },
     {
       "command": "governance continuity validation",
-      "status": "not_run",
-      "evidence": null
+      "status": "passed",
+      "evidence": "ready-state continuity run 32023786174 PASS all continuity checks"
     }
   ],
   "unresolved_failures": [],
   "owner_decision_required": false,
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "evidence": [
     {
       "kind": "commit",
@@ -315,6 +315,26 @@
     {
       "kind": "merge",
       "value": "GATX live evidence application squash merge bff19db1d24205c0886df48f04f2febe09e05b65"
+    },
+    {
+      "kind": "commit",
+      "value": "GATX-T07-REMOTE repaired validated candidate b204fb91797e226d297c75884056bde085e17c0e"
+    },
+    {
+      "kind": "pull_request",
+      "value": "GATX-T07-REMOTE live repair/evidence PRs #182 and #183"
+    },
+    {
+      "kind": "ci_run",
+      "value": "GATX-T07-REMOTE ready-state continuity run 32023786174 PASS"
+    },
+    {
+      "kind": "artifact",
+      "value": "GATX-T07-REMOTE live Render deployment dep-da1eepu417fc73ac4fpg and evidence artifacts/gatx-t08/GATX_T07_T08_LIVE_CROSS_LOCATION_EVIDENCE_20260817.json"
+    },
+    {
+      "kind": "merge",
+      "value": "GATX-T07-REMOTE canonical application evidence merge bff19db1d24205c0886df48f04f2febe09e05b65"
     }
   ],
   "notes": [
