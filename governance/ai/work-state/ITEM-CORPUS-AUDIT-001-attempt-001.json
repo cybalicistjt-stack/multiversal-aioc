@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "ITEM-CORPUS-AUDIT-001",
+  "attempt_id": "ITEM-CORPUS-AUDIT-001-attempt-001",
+  "track": "game-content-preparation",
+  "status": "started",
+  "owner": "John Brandon Turner",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "branch": "governance/item-corpus-taxonomy-coverage-audit",
+  "objective": "Audit whether the later Item Taxonomy Preparation v0.12.0 systems were actually applied across the full governed 5,389-record Item CSV corpus, establish exact source-safe row accounting and current application integration state, and produce the governed execution backlog needed to finish projection/adoption without mutating original source CSVs or inventing unsupported facts.",
+  "active_substep": "Current application integration survey plus exact source-corpus row-accounting baseline.",
+  "next_action": "Inspect current Multiversal-app Item/entity-catalog contracts, schemas, persistence/migrations, seeds, fixtures and catalog data for evidence of IA-I2 through IA-I11 implementation; reconcile that evidence with the exact 5,389-row source baseline and v0.12.0 migration contract.",
+  "known_evidence": {
+    "item_taxonomy_preparation_version": "0.12.0",
+    "item_taxonomy_package_sha256": "d12feab1375930e1ef5c121d485aee8622f2abfc34c05f23babb26a293ee47ca",
+    "governed_direct_item_csv_datasets": 9,
+    "governed_direct_item_rows": 5389,
+    "universal_item_taxonomy_axes": 10,
+    "universal_item_taxonomy_values": 171,
+    "content_context_facets": 9,
+    "content_context_values": 241,
+    "coverage_domains": 35,
+    "coverage_profiles": 28,
+    "prepared_enrichment_work_items": 5443,
+    "prepared_missing_armor_material_concepts": 54,
+    "preparation_status": "complete-for-shelving-not-production-integrated"
+  },
+  "guardrails": [
+    "Current GitHub repository evidence outranks preparation snapshots and uploaded archives for implementation status.",
+    "Original CSV/PDF source content is provenance evidence and must not be destructively rewritten.",
+    "Do not auto-merge duplicate or similar names; preserve explicit conflict/variant review including the Taser guardrail.",
+    "Do not invent source-unspecified capacities, compatibility requirements, creators, product identities, taxonomy values or mechanics.",
+    "Genre/source labels may seed review candidates but are not automatic intrinsic taxonomy or final compatibility determinations.",
+    "Cross-domain Item-like records remain routed to their owning domains where required.",
+    "Do not publish the full proprietary 5,389-row source corpus into the public AIOC repository; publish aggregate/source-safe evidence only.",
+    "This side mission does not supersede or complete the retained post-GATX successor, DS-008, Apple, tester, release, deployment, paid-service or production tracks."
+  ],
+  "completion_gate": {
+    "required": [
+      "source-safe audit identifies all nine authoritative Item datasets and accounts for all 5,389 rows",
+      "current application survey distinguishes dormant contracts/seams from actual row-level projection/adoption",
+      "audit states which v0.12.0 migration phases have evidence of implementation and which remain unimplemented or unverified",
+      "duplicate/variant/cross-domain/supporting-record and unresolved handling rules are explicit",
+      "execution backlog defines a deterministic 100-percent-accounting path without source mutation or unsupported promotion",
+      "targeted deterministic validation of the audit package passes"
+    ],
+    "completed_verified_requires": "Required evidence exists, is inspected, and the bounded audit package is merged or otherwise reaches its declared repository completion boundary."
+  },
+  "started_at": "2026-08-17T11:29:00-05:00"
+}
