@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0.0",
+  "date": "2026-08-17",
+  "status": "PLATFORM_V011_CANDIDATE_PROJECTION_COMPLETE_NOT_ENABLED",
+  "exact_preparation": {
+    "version": "v0.11.0",
+    "zip_sha256": "621b498b6d0fa1b99c86a96eac7446f682c715cb576cf0803d233ec2ffe0bdb6",
+    "universal_taxonomy_values": 99
+  },
+  "corpus": {
+    "rows": 5628,
+    "by_source": {"Spacecraft.csv": 2311, "Mecha.csv": 2117, "Vehicles.csv": 1200},
+    "platform_model_or_asset_or_archetype_rows": 2984,
+    "non_model_component_module_rules_support_service_rows": 2644
+  },
+  "routing_by_source": {
+    "Spacecraft.csv": {"platform_model_or_asset_or_archetype":1101,"non_model_component_module_rules_support_service":1210},
+    "Mecha.csv": {"platform_model_or_asset_or_archetype":930,"non_model_component_module_rules_support_service":1187},
+    "Vehicles.csv": {"platform_model_or_asset_or_archetype":953,"non_model_component_module_rules_support_service":247}
+  },
+  "record_scope_counts": {
+    "MV-PLAT-SCOPE-COMPONENT":2253,
+    "MV-PLAT-SCOPE-CONSUMABLE":3,
+    "MV-PLAT-SCOPE-MODULE":350,
+    "MV-PLAT-SCOPE-NAMED-ASSET":111,
+    "MV-PLAT-SCOPE-PLATFORM-ARCHETYPE":60,
+    "MV-PLAT-SCOPE-PLATFORM-MODEL":2813,
+    "MV-PLAT-SCOPE-RULES-FRAMEWORK":33,
+    "MV-PLAT-SCOPE-SERVICE-FACILITY":1,
+    "MV-PLAT-SCOPE-SERVICE-PACKAGE":1,
+    "MV-PLAT-SCOPE-SUPPORT-EQUIPMENT":3
+  },
+  "candidate_state_counts": {"PROPOSED_CROSSWALK_ONLY":2677,"REVIEW_REQUIRED":2951},
+  "row_specific_review_queue_rows":2951,
+  "prepared_crosswalk_status_counts": {
+    "record_scope_status":{"EXACT_CONTROLLED":5628},
+    "platform_family_status":{"EXACT_DOMAIN":5387,"HOST_OR_RECORD_DEPENDENT":241},
+    "native_class_status":{"HOST_OR_COMPATIBILITY_SENTINEL":2273,"PRESERVE_NATIVE_EXACT":2155,"PRESERVE_NATIVE_UNMAPPED":1200},
+    "native_scale_status":{"PRESERVE_NATIVE_EXACT":4194,"HOST_OR_NONPLATFORM_SENTINEL":1379,"UNRESOLVED_REVIEW":55},
+    "operating_medium_status":{"HOST_OR_RECORD_DEPENDENT":2364,"PROPOSED_SEMANTIC":2035,"EXACT_CONTROLLED":959,"UNRESOLVED_REVIEW":270},
+    "mobility_status":{"NOT_MAPPED_FROM_CURRENT_FIELD":2311,"PROPOSED_SEMANTIC":1485,"HOST_OR_RECORD_DEPENDENT":991,"UNRESOLVED_REVIEW":841},
+    "functional_role_status":{"PROPOSED_SEMANTIC":3719,"UNRESOLVED_REVIEW":1889,"NOT_APPLICABLE":20},
+    "creator_status":{"PROPOSED_CREATOR_SEED":3686,"NOT_PRESENT_IN_CATALOG":1200,"NOT_A_CREATOR_IDENTITY":457,"UNRESOLVED_REVIEW":278,"PROPOSED_PARENT_PLUS_UNIT_REVIEW":5,"SPLIT_CREATOR_FROM_LINEAGE_REQUIRED":1,"UNRESOLVED_PLACEHOLDER":1},
+    "acquisition_status":{"PROPOSED_SEMANTIC":5595,"UNRESOLVED_REVIEW":33},
+    "market_access_status":{"EXACT_OR_COMPOSITE_SEMANTIC":5595,"EXACT_SEMANTIC":33},
+    "genre_status":{"DEFER_CONTENT_TAXONOMY":5628},
+    "technology_status":{"DEFER_CONTENT_TAXONOMY_OR_RULES":5628},
+    "physical_form_status":{"GAP_CONTROLLED_PHYSICAL_FORM_REGISTRY":5628},
+    "production_lifecycle_status":{"UNRESOLVED_NO_CURRENT_SOURCE_FIELD":5628},
+    "market_availability_status":{"UNRESOLVED_REQUIRES_CONTEXT":5628},
+    "contentv2_identity_status":{"PRIMARY_ACTIVE":5628}
+  },
+  "creator_status_counts": {"PROPOSED_CREATOR_SEED":3686,"NOT_PRESENT_IN_CATALOG":1200,"NOT_A_CREATOR_IDENTITY":457,"UNRESOLVED_REVIEW":278,"PROPOSED_PARENT_PLUS_UNIT_REVIEW":5,"SPLIT_CREATOR_FROM_LINEAGE_REQUIRED":1,"UNRESOLVED_PLACEHOLDER":1},
+  "product_candidate_class_counts": {"complete_platform_product_candidate":2984,"component_or_module_product_candidate":2603,"framework_or_rules_not_product":33,"support_service_or_supply_candidate":8},
+  "product_identity_decision_counts": {"UNRESOLVED - preparation signal only":5628},
+  "provenance_counts": {"AUTHORED_EXPANSION|HIGH":4960,"SOURCE_DERIVED|HIGH":656,"MIXED_SOURCE_AND_COMPLETION|MEDIUM":12},
+  "systemic_deferred_or_open_fields": {
+    "genre_status":"DEFER_CONTENT_TAXONOMY for all 5,628",
+    "technology_status":"DEFER_CONTENT_TAXONOMY_OR_RULES for all 5,628",
+    "physical_form_status":"GAP_CONTROLLED_PHYSICAL_FORM_REGISTRY for all 5,628",
+    "production_lifecycle_status":"UNRESOLVED_NO_CURRENT_SOURCE_FIELD for all 5,628",
+    "market_availability_status":"UNRESOLVED_REQUIRES_CONTEXT for all 5,628"
+  },
+  "source_files": {
+    "Spacecraft.csv":{"member":"03_CSV_Sources/Spacecraft.csv","sha256":"00ce4a9d5730ac413d22813325ff3ace7e0c7b0445e9bcd0af45aa2911962c6f","rows":2311,"columns":72,"id_field":"Catalog_ID","name_field":"Item_Name","id_name_mismatches":0},
+    "Mecha.csv":{"member":"03_CSV_Sources/Mecha.csv","sha256":"60ff6a730f5a1d50dd4622da5d199be4f753b1933acfe9d087d5bf21b4a8bf0f","rows":2117,"columns":88,"id_field":"Catalog_ID","name_field":"Item_Name","id_name_mismatches":0},
+    "Vehicles.csv":{"member":"03_CSV_Sources/Vehicles.csv","sha256":"2edd4f50d18d7d629c1a268122d1d4846e3df364da9b9c45f666359ba0dd791c","rows":1200,"columns":61,"id_field":"Vehicle_ID","name_field":"Item_Name","id_name_mismatches":0}
+  },
+  "private_artifacts": {
+    "candidate_projection_sha256":"9f100be1e7fb08a35d73a62df634b0a34d7db9cdfdf795d0e5b980500adb8e9e",
+    "review_queue_sha256":"906ccb3b28e94521adcd8cf6df4237f170194c5e0968ddbf0b56094e4fd17c1a",
+    "routing_summary_sha256":"aeffbfd072cd7e998727b39f588ebc61221fccf7db47e4368129a836f3b53ac7",
+    "package_sha256":"24b7eb1a780008826abae382f73654a7cd600e1c5a6bc047a1a194117568fd08"
+  },
+  "validation": {
+    "source_rows_accounted":true,
+    "unique_source_file_record_ids":true,
+    "source_id_name_alignment":true,
+    "contentv2_primary_active_rows":5628,
+    "universal_or_domain_registry_invalid_ids":0,
+    "platform_model_non_model_split_verified":true,
+    "source_master_csv_mutated":false,
+    "canonical_candidate_enabled":false,
+    "mechanics_reauthored":false,
+    "runtime_assets_created":false,
+    "game_ready_claimed":false
+  },
+  "adoption_state":"NOT_READY_FOR_CANONICAL_ENABLEMENT",
+  "next_operation":"Review and resolve Platform v0.11.0 row-specific/systemic gaps in bounded governed tranches, beginning with record-scope/model-vs-nonmodel acceptance plus creator/product identity and physical-form gap handling; preserve content-context deferral to the shared 241-value registry."
+}
