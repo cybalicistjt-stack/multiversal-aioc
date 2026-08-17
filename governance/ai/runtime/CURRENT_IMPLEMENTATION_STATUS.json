@@ -1,28 +1,22 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-16T23:44:00Z",
+  "generated_at": "2026-08-17T11:15:01+00:00",
   "source_pointer": "governance/ai/runtime/CURRENT_WORK_POINTER.json",
   "primary": {
-    "work_item_id": "GATX-T07-REMOTE",
-    "attempt_id": "GATX-T07-REMOTE-attempt-001",
+    "work_item_id": "GATX-T08",
+    "attempt_id": "GATX-T08-attempt-001",
     "track": "guided-alpha-testing-experience",
     "repository": "cybalicistjt-stack/Multiversal-app",
     "branch": "internal-alpha/gatx-t07-remote-t08-cross-location",
-    "status": "in_progress",
-    "active_substep": "render-free-owner-setup-required",
-    "next_action": "Owner performs the one-time no-cost Render setup: authorize Render's GitHub App for private repository cybalicistjt-stack/Multiversal-app, create a Blueprint from branch main, use deploy/gatx-remote/RENDER_SETUP_HELPER.html to generate the two role keys requested by render.yaml, and allow the first free web-service deploy. Then verify the live onrender.com service with tools/verify_gatx_render_free.py before marking GATX-T07-REMOTE completed_verified.",
-    "latest_pushed_commit": "0179edf6c42080523965e68ab72d3ae461b86f64",
-    "pull_request": 180,
+    "status": "completed_verified",
+    "active_substep": null,
+    "next_action": "GATX-T07-REMOTE and GATX-T08 are completed_verified. Stop this GATX operation and recover the canonical roadmap before any later work; do not automatically start another tranche.",
+    "latest_pushed_commit": "bff19db1d24205c0886df48f04f2febe09e05b65",
+    "pull_request": 183,
     "owner_decision_required": false,
-    "unresolved_failures": [
-      {
-        "id": "GATX-T07-REMOTE-DEPLOY-002",
-        "class": "external-owner-configuration",
-        "summary": "The no-cost Render deployment path is validated and merged, but Render must be authorized once to read the private Multiversal-app repository and the initial Blueprint deployment must be created in the owner's Render account."
-      }
-    ],
-    "roadmap_projection_pending": true
+    "unresolved_failures": [],
+    "roadmap_projection_pending": false
   },
-  "active_attempt_count": 3,
+  "active_attempt_count": 1,
   "deferred_track_count": 0
 }

@@ -1,29 +1,29 @@
 {
   "schema_version": "1.0.0",
-  "revision": 8,
+  "revision": 10,
   "work_item_id": "GATX-T07-REMOTE",
   "attempt_id": "GATX-T07-REMOTE-attempt-001",
   "track": "guided-alpha-testing-experience",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "branch": "internal-alpha/gatx-t07-remote-t08-cross-location",
   "governance_repository": "cybalicistjt-stack/multiversal-aioc",
-  "governance_branch": "governance/gatx-t07-railway-repo-access-blocker",
-  "status": "in_progress",
+  "governance_branch": "governance/gatx-t07-t08-live-completion",
+  "status": "completed_verified",
   "owner_selected": true,
   "started_at": "2026-08-16T22:46:00Z",
-  "updated_at": "2026-08-16T23:44:00Z",
-  "completed_at": null,
+  "updated_at": "2026-08-17T11:15:00Z",
+  "completed_at": "2026-08-17T11:15:00Z",
   "base_commit": "f489a5c791580f695cd5e5f60600f567145c93cb",
   "construction_complete": true,
   "construction_head": "28c03c5572ae849cadaf6cbfd50be415401319c7",
-  "validated_candidate_sha": "489acc1dca0ebd8b1495b26bc72ad043f59b5a4c",
-  "latest_pushed_commit": "0179edf6c42080523965e68ab72d3ae461b86f64",
-  "expected_remote_head": "0179edf6c42080523965e68ab72d3ae461b86f64",
-  "pull_request": 180,
-  "application_merge_commit": "0179edf6c42080523965e68ab72d3ae461b86f64",
+  "validated_candidate_sha": "b204fb91797e226d297c75884056bde085e17c0e",
+  "latest_pushed_commit": "bff19db1d24205c0886df48f04f2febe09e05b65",
+  "expected_remote_head": "d41a245d72f10d6027c4606cd429abba7028bfab",
+  "pull_request": 183,
+  "application_merge_commit": "bff19db1d24205c0886df48f04f2febe09e05b65",
   "validation_started": true,
   "objective": "Activate the transport-neutral Guided Alpha over a dedicated access-gated no-cost remote Internal Alpha runtime reusing the canonical P9 authoritative-session foundations, then complete the permanent GATX-T08 cross-location regression program.",
-  "last_verified_action": "Railway was rejected as the hosting target after the owner showed the expired-trial upgrade requirement and Railway also could not access the private application repository. A no-cost Render Free deployment path was then constructed from the unchanged validated runtime. Exact Render branch head 4a17c9a52192699ae8d314704a7bf07236897441 passed dedicated Render container run 31979824360 and broader T07/T08 preservation run 31979824415. App PR #180 squash-merged as 0179edf6c42080523965e68ab72d3ae461b86f64.",
+  "last_verified_action": "Ready-state governance continuity run 32023786174 passed after verified live Render deployment, repaired-head CI, live public probe 32023337155, and owner cross-location evidence. GATX-T07-REMOTE completion gate is satisfied.",
   "owner_authorization": {
     "source": "Owner instruction 2026-08-16: finish the rest of 07 and 08 and make it ready to use; owner subsequently rejected Railway because it requires a paid upgrade and directed finding another way.",
     "internal_alpha_remote_test_deployment_authorized": true,
@@ -32,23 +32,115 @@
     "real_user_data_authorized": false
   },
   "dependency_recovery": {
-    "GATX-T07-ARCH": {"status": "completed_verified", "application_merge_commit": "43dea893d7e0ec0202cf123f8697d9db9ad8201d", "governance_merge_commit": "9500feb9d9ca164452c3315b0e817e314db98f19"},
-    "P9-06-016": {"status": "canonical_foundation_present", "path": "packages/contracts/src/session/authoritative-session-command-handler.ts"},
-    "P9-06-017": {"status": "canonical_foundation_present", "path": "packages/contracts/src/session/ordered-realtime-event-delivery.ts"},
-    "P9-06-018": {"status": "canonical_foundation_present", "path": "packages/contracts/src/session/hidden-information-response-filter.ts"},
-    "P9-06-019": {"status": "canonical_foundation_present", "path": "packages/contracts/src/session/checkpoint-reconnect-restoration.ts"},
-    "P9-06-023": {"status": "closed", "application_merge_commit": "fb22295948745347913bcbfebf56ecca26bf39fb", "acceptance_gate": "AG-07"},
-    "P9-06-024": {"status": "approved-active", "decision_id": "P9-06-024-OWNER-DECISION-001"}
+    "GATX-T07-ARCH": {
+      "status": "completed_verified",
+      "application_merge_commit": "43dea893d7e0ec0202cf123f8697d9db9ad8201d",
+      "governance_merge_commit": "9500feb9d9ca164452c3315b0e817e314db98f19"
+    },
+    "P9-06-016": {
+      "status": "canonical_foundation_present",
+      "path": "packages/contracts/src/session/authoritative-session-command-handler.ts"
+    },
+    "P9-06-017": {
+      "status": "canonical_foundation_present",
+      "path": "packages/contracts/src/session/ordered-realtime-event-delivery.ts"
+    },
+    "P9-06-018": {
+      "status": "canonical_foundation_present",
+      "path": "packages/contracts/src/session/hidden-information-response-filter.ts"
+    },
+    "P9-06-019": {
+      "status": "canonical_foundation_present",
+      "path": "packages/contracts/src/session/checkpoint-reconnect-restoration.ts"
+    },
+    "P9-06-023": {
+      "status": "closed",
+      "application_merge_commit": "fb22295948745347913bcbfebf56ecca26bf39fb",
+      "acceptance_gate": "AG-07"
+    },
+    "P9-06-024": {
+      "status": "approved-active",
+      "decision_id": "P9-06-024-OWNER-DECISION-001"
+    }
   },
-  "active_substep": "render-free-owner-setup-required",
-  "completed_substeps": ["dependency-recovery","owner-scope-recovery","application-branch","governance-branch","access-gated-remote-runner","remote-activation-contract","t08-permanent-regression-contract","deterministic-http-verifier","preservation-workflow","minimal-deployment-image","application-work-order-and-handoff","construction-seal","application-pr","validation-start","deployment-config-repair","final-exact-head-application-validation","application-merge","blocked-state-continuity","blocked-state-governance-merge","railway-root-cause-diagnosis","render-free-blueprint","render-live-smoke-verifier","render-local-key-link-helper","render-exact-head-validation","render-application-merge"],
-  "next_action": "Owner performs the one-time no-cost Render setup: authorize Render's GitHub App for private repository cybalicistjt-stack/Multiversal-app, create a Blueprint from branch main, use deploy/gatx-remote/RENDER_SETUP_HELPER.html to generate the two role keys requested by render.yaml, and allow the first free web-service deploy. Then verify the live onrender.com service with tools/verify_gatx_render_free.py before marking GATX-T07-REMOTE completed_verified.",
+  "active_substep": null,
+  "completed_substeps": [
+    "dependency-recovery",
+    "owner-scope-recovery",
+    "application-branch",
+    "governance-branch",
+    "access-gated-remote-runner",
+    "remote-activation-contract",
+    "t08-permanent-regression-contract",
+    "deterministic-http-verifier",
+    "preservation-workflow",
+    "minimal-deployment-image",
+    "application-work-order-and-handoff",
+    "construction-seal",
+    "application-pr",
+    "validation-start",
+    "deployment-config-repair",
+    "final-exact-head-application-validation",
+    "application-merge",
+    "blocked-state-continuity",
+    "blocked-state-governance-merge",
+    "railway-root-cause-diagnosis",
+    "render-free-blueprint",
+    "render-live-smoke-verifier",
+    "render-local-key-link-helper",
+    "render-exact-head-validation",
+    "render-application-merge",
+    "render-live-deployment",
+    "live-refresh-repair",
+    "live-public-probe",
+    "owner-cross-location-run",
+    "application-evidence-closure"
+  ],
+  "next_action": "GATX-T07-REMOTE and GATX-T08 are completed_verified. Stop this GATX operation and recover the canonical roadmap before any later work; do not automatically start another tranche.",
   "scope_boundaries": {
-    "must_reuse": ["GATX-T07-ARCH transport contract", "P9-06-016 authoritative command semantics", "P9-06-017 ordered delivery", "P9-06-018 hidden-information projection", "P9-06-019 reconnect restoration", "P9-06-023 accepted thin-adapter session runner", "GATX T03/T04/T05/T06/DIAG-F01 testing systems"],
-    "authorized": ["dedicated access-gated Internal Alpha remote test service", "Render Free public HTTPS service URL for the dedicated synthetic test service", "synthetic Glass Harbor testing only", "T08 remote regression charters and evidence"],
-    "not_authorized": ["production release", "paid provider commitment", "real-user data", "production credentials", "make Multiversal-app public", "publish private source to an unauthenticated registry", "expose the existing local runner to the public Internet", "port forwarding", "public tunnel", "native Android APK release", "automatic A13"]
+    "must_reuse": [
+      "GATX-T07-ARCH transport contract",
+      "P9-06-016 authoritative command semantics",
+      "P9-06-017 ordered delivery",
+      "P9-06-018 hidden-information projection",
+      "P9-06-019 reconnect restoration",
+      "P9-06-023 accepted thin-adapter session runner",
+      "GATX T03/T04/T05/T06/DIAG-F01 testing systems"
+    ],
+    "authorized": [
+      "dedicated access-gated Internal Alpha remote test service",
+      "Render Free public HTTPS service URL for the dedicated synthetic test service",
+      "synthetic Glass Harbor testing only",
+      "T08 remote regression charters and evidence"
+    ],
+    "not_authorized": [
+      "production release",
+      "paid provider commitment",
+      "real-user data",
+      "production credentials",
+      "make Multiversal-app public",
+      "publish private source to an unauthenticated registry",
+      "expose the existing local runner to the public Internet",
+      "port forwarding",
+      "public tunnel",
+      "native Android APK release",
+      "automatic A13"
+    ]
   },
-  "construction_contract": {"remote_contract_id":"GATX-T07-REMOTE-CONTRACT-001","remote_marker":"GATX-T07-REMOTE-1","t08_charter_id":"GATX-T08-CROSS-LOCATION-REGRESSION-001","t08_charter_count":10,"separate_role_keys":true,"server_derived_roles":true,"raw_client_ip_stored":false,"synthetic_only":true,"startup_self_test":true,"minimal_docker_image":"deploy/gatx-remote/Dockerfile","render_blueprint":"render.yaml","render_live_verifier":"tools/verify_gatx_render_free.py"},
+  "construction_contract": {
+    "remote_contract_id": "GATX-T07-REMOTE-CONTRACT-001",
+    "remote_marker": "GATX-T07-REMOTE-1",
+    "t08_charter_id": "GATX-T08-CROSS-LOCATION-REGRESSION-001",
+    "t08_charter_count": 10,
+    "separate_role_keys": true,
+    "server_derived_roles": true,
+    "raw_client_ip_stored": false,
+    "synthetic_only": true,
+    "startup_self_test": true,
+    "minimal_docker_image": "deploy/gatx-remote/Dockerfile",
+    "render_blueprint": "render.yaml",
+    "render_live_verifier": "tools/verify_gatx_render_free.py"
+  },
   "remote_deployment": {
     "provider": "Render",
     "plan": "free",
@@ -60,42 +152,194 @@
     "auto_deploy": false,
     "role_secrets_configured_outside_repository": true,
     "private_repository_supported": true,
-    "first_deployment_receipt_present": false,
-    "health_verified": false,
+    "first_deployment_receipt_present": true,
+    "health_verified": true,
     "free_tier_limitations": "Service may spin down after 15 minutes idle and local process state is ephemeral; acceptable only for synthetic Internal Alpha test rounds.",
-    "railway_status": "superseded_no_cost_requirement"
+    "railway_status": "superseded_no_cost_requirement",
+    "service_id": "srv-da1730jl550s73f065j0",
+    "url": "https://multiversal-gatx-remote.onrender.com",
+    "deployed_runtime_commit": "d41a245d72f10d6027c4606cd429abba7028bfab",
+    "deployment_id": "dep-da1eepu417fc73ac4fpg",
+    "deployment_status": "live",
+    "unauthenticated_api_denial_verified": true
   },
   "completion_gate": {
-    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "artifact", "merge"],
-    "required_validation_commands": ["T07 remote access/auth/privacy and authoritative-session reuse verifier","T07-ARCH T06 T05 T04 T03 DIAG-F01 preservation","client regression typecheck accessibility and build","Render free Blueprint and exact container smoke","deployed remote health and unauthorized-access denial","deployed GM/player same-session authority hidden-information and reconnect smoke","governance continuity validation"],
+    "required_evidence_kinds": [
+      "commit",
+      "pull_request",
+      "ci_run",
+      "artifact",
+      "merge"
+    ],
+    "required_validation_commands": [
+      "T07 remote access/auth/privacy and authoritative-session reuse verifier",
+      "T07-ARCH T06 T05 T04 T03 DIAG-F01 preservation",
+      "client regression typecheck accessibility and build",
+      "Render free Blueprint and exact container smoke",
+      "deployed remote health and unauthorized-access denial",
+      "deployed GM/player same-session authority hidden-information and reconnect smoke",
+      "governance continuity validation"
+    ],
     "owner_approval_required": false
   },
   "validation": [
-    {"command":"T07 remote access/auth/privacy and authoritative-session reuse verifier","status":"pass","evidence":"exact-head run 31979824415 remote-contract-regression"},
-    {"command":"T07-ARCH T06 T05 T04 T03 DIAG-F01 preservation","status":"pass","evidence":"exact-head run 31979824415 remote-contract-regression"},
-    {"command":"P9-06-016 017 018 019 023 preservation","status":"pass","evidence":"exact-head run 31979824415 remote-contract-regression"},
-    {"command":"client regression typecheck accessibility and build","status":"pass","evidence":"exact-head run 31979824415 client-preservation"},
-    {"command":"Render free Blueprint and exact container smoke","status":"pass","evidence":"exact-head Render run 31979824360"},
-    {"command":"deployed remote health and unauthorized-access denial","status":"not_run","evidence":"requires owner's one-time Render private-repo authorization and initial Blueprint deployment"},
-    {"command":"deployed GM/player same-session authority hidden-information and reconnect smoke","status":"not_run","evidence":"blocked until the free Render service has a live URL"},
-    {"command":"governance continuity validation","status":"not_run","evidence":null}
+    {
+      "command": "T07 remote access/auth/privacy and authoritative-session reuse verifier",
+      "status": "passed",
+      "evidence": "repaired exact-head run 32021864363 remote-contract-regression"
+    },
+    {
+      "command": "T07-ARCH T06 T05 T04 T03 DIAG-F01 preservation",
+      "status": "passed",
+      "evidence": "repaired exact-head run 32021864363 remote-contract-regression"
+    },
+    {
+      "command": "P9-06-016 017 018 019 023 preservation",
+      "status": "pass",
+      "evidence": "exact-head run 31979824415 remote-contract-regression"
+    },
+    {
+      "command": "client regression typecheck accessibility and build",
+      "status": "passed",
+      "evidence": "repaired exact-head run 32021864363 client-preservation"
+    },
+    {
+      "command": "Render free Blueprint and exact container smoke",
+      "status": "passed",
+      "evidence": "repaired exact-head Render run 32021864270"
+    },
+    {
+      "command": "deployed remote health and unauthorized-access denial",
+      "status": "passed",
+      "evidence": "live public deployment run 32023337155"
+    },
+    {
+      "command": "deployed GM/player same-session authority hidden-information and reconnect smoke",
+      "status": "passed",
+      "evidence": "artifacts/gatx-t08/GATX_T07_T08_LIVE_CROSS_LOCATION_EVIDENCE_20260817.json at application merge bff19db1d24205c0886df48f04f2febe09e05b65"
+    },
+    {
+      "command": "governance continuity validation",
+      "status": "passed",
+      "evidence": "ready-state continuity run 32023786174 PASS all continuity checks"
+    }
   ],
-  "unresolved_failures": [{"id":"GATX-T07-REMOTE-DEPLOY-002","class":"external-owner-configuration","summary":"The no-cost Render deployment path is validated and merged, but Render must be authorized once to read the private Multiversal-app repository and the initial Blueprint deployment must be created in the owner's Render account."}],
+  "unresolved_failures": [],
   "owner_decision_required": false,
-  "roadmap_projection_pending": true,
+  "roadmap_projection_pending": false,
   "evidence": [
-    {"kind":"commit","value":"GATX-T07-REMOTE validated software candidate 489acc1dca0ebd8b1495b26bc72ad043f59b5a4c"},
-    {"kind":"pull_request","value":"GATX-T07-REMOTE/T08 application PR #179"},
-    {"kind":"ci_run","value":"GATX-T07-REMOTE/T08 exact-head validation run 31977976497 PASS both declared jobs"},
-    {"kind":"merge","value":"GATX-T07-REMOTE/T08 application squash merge 5e4f446518701cd9271ebc493f30dcac0a2b5166"},
-    {"kind":"ci_run","value":"GATX-T07-REMOTE blocked-state governance continuity run 31979176786 PASS"},
-    {"kind":"merge","value":"GATX-T07-REMOTE blocked-state governance merge b2b68b7dfffd3b00cffc7a08353b793a17126284"},
-    {"kind":"commit","value":"GATX-T07-REMOTE Render exact deployment head 4a17c9a52192699ae8d314704a7bf07236897441"},
-    {"kind":"pull_request","value":"GATX-T07-REMOTE free Render application PR #180"},
-    {"kind":"ci_run","value":"GATX-T07-REMOTE Render container validation run 31979824360 PASS"},
-    {"kind":"ci_run","value":"GATX-T07-REMOTE Render preservation run 31979824415 PASS both jobs"},
-    {"kind":"merge","value":"GATX-T07-REMOTE Render application squash merge 0179edf6c42080523965e68ab72d3ae461b86f64"},
-    {"kind":"file","value":"GATX-T07-REMOTE Render Blueprint render.yaml and operator handoff deploy/gatx-remote/RENDER_FREE_HANDOFF.md"}
+    {
+      "kind": "commit",
+      "value": "GATX-T07-REMOTE validated software candidate 489acc1dca0ebd8b1495b26bc72ad043f59b5a4c"
+    },
+    {
+      "kind": "pull_request",
+      "value": "GATX-T07-REMOTE/T08 application PR #179"
+    },
+    {
+      "kind": "ci_run",
+      "value": "GATX-T07-REMOTE/T08 exact-head validation run 31977976497 PASS both declared jobs"
+    },
+    {
+      "kind": "merge",
+      "value": "GATX-T07-REMOTE/T08 application squash merge 5e4f446518701cd9271ebc493f30dcac0a2b5166"
+    },
+    {
+      "kind": "ci_run",
+      "value": "GATX-T07-REMOTE blocked-state governance continuity run 31979176786 PASS"
+    },
+    {
+      "kind": "merge",
+      "value": "GATX-T07-REMOTE blocked-state governance merge b2b68b7dfffd3b00cffc7a08353b793a17126284"
+    },
+    {
+      "kind": "commit",
+      "value": "GATX-T07-REMOTE Render exact deployment head 4a17c9a52192699ae8d314704a7bf07236897441"
+    },
+    {
+      "kind": "pull_request",
+      "value": "GATX-T07-REMOTE free Render application PR #180"
+    },
+    {
+      "kind": "ci_run",
+      "value": "GATX-T07-REMOTE Render container validation run 31979824360 PASS"
+    },
+    {
+      "kind": "ci_run",
+      "value": "GATX-T07-REMOTE Render preservation run 31979824415 PASS both jobs"
+    },
+    {
+      "kind": "merge",
+      "value": "GATX-T07-REMOTE Render application squash merge 0179edf6c42080523965e68ab72d3ae461b86f64"
+    },
+    {
+      "kind": "file",
+      "value": "GATX-T07-REMOTE Render Blueprint render.yaml and operator handoff deploy/gatx-remote/RENDER_FREE_HANDOFF.md"
+    },
+    {
+      "kind": "commit",
+      "value": "GATX live-refresh validated candidate b204fb91797e226d297c75884056bde085e17c0e"
+    },
+    {
+      "kind": "pull_request",
+      "value": "GATX live-refresh application PR #182"
+    },
+    {
+      "kind": "ci_run",
+      "value": "GATX repaired Render validation run 32021864270 PASS"
+    },
+    {
+      "kind": "ci_run",
+      "value": "GATX repaired remote/client validation run 32021864363 PASS"
+    },
+    {
+      "kind": "merge",
+      "value": "GATX live-refresh application squash merge d41a245d72f10d6027c4606cd429abba7028bfab"
+    },
+    {
+      "kind": "artifact",
+      "value": "Render live deployment dep-da1eepu417fc73ac4fpg service srv-da1730jl550s73f065j0 at https://multiversal-gatx-remote.onrender.com"
+    },
+    {
+      "kind": "artifact",
+      "value": "Owner cross-location evidence artifacts/gatx-t08/GATX_T07_T08_LIVE_CROSS_LOCATION_EVIDENCE_20260817.json"
+    },
+    {
+      "kind": "ci_run",
+      "value": "Live public deployment probe 32023337155 PASS"
+    },
+    {
+      "kind": "pull_request",
+      "value": "GATX live evidence application PR #183"
+    },
+    {
+      "kind": "merge",
+      "value": "GATX live evidence application squash merge bff19db1d24205c0886df48f04f2febe09e05b65"
+    },
+    {
+      "kind": "commit",
+      "value": "GATX-T07-REMOTE repaired validated candidate b204fb91797e226d297c75884056bde085e17c0e"
+    },
+    {
+      "kind": "pull_request",
+      "value": "GATX-T07-REMOTE live repair/evidence PRs #182 and #183"
+    },
+    {
+      "kind": "ci_run",
+      "value": "GATX-T07-REMOTE ready-state continuity run 32023786174 PASS"
+    },
+    {
+      "kind": "artifact",
+      "value": "GATX-T07-REMOTE live Render deployment dep-da1eepu417fc73ac4fpg and evidence artifacts/gatx-t08/GATX_T07_T08_LIVE_CROSS_LOCATION_EVIDENCE_20260817.json"
+    },
+    {
+      "kind": "merge",
+      "value": "GATX-T07-REMOTE canonical application evidence merge bff19db1d24205c0886df48f04f2febe09e05b65"
+    }
   ],
-  "notes": ["Render Free is the selected no-cost Internal Alpha host. It supports private Git repositories and Docker web services but requires one owner-side Git provider authorization before the first deploy.","Render free services may sleep/reset after inactivity; keep guided test rounds active and treat sessions as synthetic disposable state.","Hotfix2 remains the owner-approved general tester distribution unless separately replaced."]
+  "notes": [
+    "Render Free is the selected no-cost Internal Alpha host. It supports private Git repositories and Docker web services but requires one owner-side Git provider authorization before the first deploy.",
+    "Render free services may sleep/reset after inactivity; keep guided test rounds active and treat sessions as synthetic disposable state.",
+    "Hotfix2 remains the owner-approved general tester distribution unless separately replaced."
+  ]
 }
