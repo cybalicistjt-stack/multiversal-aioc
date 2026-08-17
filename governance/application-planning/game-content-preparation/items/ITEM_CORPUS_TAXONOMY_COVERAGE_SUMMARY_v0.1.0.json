@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "ITEM-CORPUS-AUDIT-001",
+  "audit_state": "construction_evidence_complete_validation_pending",
+  "authority": {
+    "canonical_repositories": ["cybalicistjt-stack/multiversal-aioc", "cybalicistjt-stack/Multiversal-app"],
+    "portable_source_snapshot": "MV_Master_01_Core.zip",
+    "portable_source_snapshot_sha256": "c5732c5b4c3cdf5eca1d19eef7354289d1f92a87397b56aa7623b3f0a24177ec",
+    "item_taxonomy_preparation_version": "0.12.0",
+    "item_taxonomy_preparation_sha256": "d12feab1375930e1ef5c121d485aee8622f2abfc34c05f23babb26a293ee47ca"
+  },
+  "corpus": {
+    "total_rows": 5389,
+    "dataset_count": 9,
+    "genre_all_genres": 63,
+    "genre_specific": 5060,
+    "genre_blank": 266,
+    "rows_with_explicit_id": 2501,
+    "rows_with_category": 5353,
+    "rows_with_subcategory": 4796,
+    "rows_with_tech": 5353,
+    "rows_with_rarity": 4796,
+    "rows_with_origin": 5361,
+    "unique_normalized_names": 5325,
+    "names_repeated_across_corpus": 55,
+    "rows_participating_in_repeated_names": 119,
+    "extra_rows_beyond_unique_name": 64,
+    "cross_dataset_duplicate_name_pairs": [
+      {"dataset_a":"expanded_ranged_weapons_catalog.csv","dataset_b":"weapons_and_ammo.csv","shared_normalized_names":34},
+      {"dataset_a":"expanded_items_all_genres.csv","dataset_b":"expanded_ranged_weapons_catalog.csv","shared_normalized_names":15},
+      {"dataset_a":"expanded_items_all_genres.csv","dataset_b":"weapons_and_ammo.csv","shared_normalized_names":8},
+      {"dataset_a":"expanded_items_all_genres.csv","dataset_b":"expanded_melee_weapons_all_genres.csv","shared_normalized_names":7},
+      {"dataset_a":"expanded_melee_weapons_all_genres.csv","dataset_b":"expanded_ranged_weapons_catalog.csv","shared_normalized_names":2},
+      {"dataset_a":"expanded_items_all_genres.csv","dataset_b":"expanded_symbiotes_and_cybernetics_all_genres.csv","shared_normalized_names":2},
+      {"dataset_a":"expanded_items_all_genres.csv","dataset_b":"expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv","shared_normalized_names":2},
+      {"dataset_a":"expanded_melee_weapons_all_genres.csv","dataset_b":"expanded_symbiotes_and_cybernetics_all_genres.csv","shared_normalized_names":1}
+    ]
+  },
+  "datasets": [
+    {"governed_dataset":"expanded_melee_weapons_all_genres.csv","source_file":"Melee_Weapons.csv","rows":327,"sha256":"9c6de3cba7254fd0c4928cc644d127a23993bced533b64bc40b414016ab109ed","columns":15,"name_column":"Weapon","duplicate_name_extra_rows_within_dataset":0,"genre_all_genres":5,"genre_specific":322,"genre_blank":0,"tech_nonblank":327,"rarity_nonblank":0,"category_nonblank":327,"subcategory_nonblank":0,"origin_nonblank":327,"id_nonblank":0},
+    {"governed_dataset":"expanded_ranged_weapons_catalog.csv","source_file":"Ranged_Weapons.csv","rows":230,"sha256":"ecafc340c204847555db0e8a4f87fe8bf3980c87c739c1c8491f8e80f8934846","columns":15,"name_column":"Weapon","duplicate_name_extra_rows_within_dataset":0,"genre_all_genres":0,"genre_specific":0,"genre_blank":230,"tech_nonblank":230,"rarity_nonblank":0,"category_nonblank":230,"subcategory_nonblank":0,"origin_nonblank":230,"id_nonblank":0},
+    {"governed_dataset":"weapons_and_ammo.csv","source_file":"Weapons_Ammo.csv","rows":36,"sha256":"d6d3d80b208ad40dd812a22d8234b0e3a5395526da90d8f4da7e944ea180d719","columns":10,"name_column":"Weapon","duplicate_name_extra_rows_within_dataset":1,"genre_all_genres":0,"genre_specific":0,"genre_blank":36,"tech_nonblank":0,"rarity_nonblank":0,"category_nonblank":0,"subcategory_nonblank":0,"origin_nonblank":8,"id_nonblank":0},
+    {"governed_dataset":"expanded_items_all_genres.csv","source_file":"Items.csv","rows":761,"sha256":"f67a02a7d36e39f4837dbca4c2b75e3773fe6a0a8de58c278b2703c2b45d5cee","columns":16,"name_column":"Item","duplicate_name_extra_rows_within_dataset":0,"genre_all_genres":38,"genre_specific":723,"genre_blank":0,"tech_nonblank":761,"rarity_nonblank":761,"category_nonblank":761,"subcategory_nonblank":761,"origin_nonblank":761,"id_nonblank":0},
+    {"governed_dataset":"expanded_magitech_items_all_genres.csv","source_file":"Magitech_Items.csv","rows":532,"sha256":"9835233c515f90917d022e540cce221df724320775a8c6fbbc8e0f27c8cd3a55","columns":23,"name_column":"Item","duplicate_name_extra_rows_within_dataset":0,"genre_all_genres":0,"genre_specific":532,"genre_blank":0,"tech_nonblank":532,"rarity_nonblank":532,"category_nonblank":532,"subcategory_nonblank":532,"origin_nonblank":532,"id_nonblank":0},
+    {"governed_dataset":"expanded_eva_suits_and_modules_all_genres.csv","source_file":"EVA_Suits.csv","rows":430,"sha256":"e81d19f521d956a4955e418a9701db761a781911fd697c5b92fcde3ad61512b1","columns":29,"name_column":"Item","duplicate_name_extra_rows_within_dataset":0,"genre_all_genres":10,"genre_specific":420,"genre_blank":0,"tech_nonblank":430,"rarity_nonblank":430,"category_nonblank":430,"subcategory_nonblank":430,"origin_nonblank":430,"id_nonblank":0},
+    {"governed_dataset":"expanded_computers_all_genres.csv","source_file":"Computers.csv","rows":1000,"sha256":"ec20b7ba6967a8c0533f6ca2ccf6f46b9bb72151ba3d3723432c4b6cdbfeee9d","columns":47,"name_column":"Item_Name","duplicate_name_extra_rows_within_dataset":0,"genre_all_genres":0,"genre_specific":1000,"genre_blank":0,"tech_nonblank":1000,"rarity_nonblank":1000,"category_nonblank":1000,"subcategory_nonblank":1000,"origin_nonblank":1000,"id_nonblank":1000},
+    {"governed_dataset":"expanded_living_spellbooks_and_magic_charge_holders_all_genres.csv","source_file":"Living_Spellbooks.csv","rows":1501,"sha256":"9330cb953171667374e7233c9dbf70fcc2261c163006c7832d33a8976d7e353d","columns":60,"name_column":"Item_Name","duplicate_name_extra_rows_within_dataset":0,"genre_all_genres":0,"genre_specific":1501,"genre_blank":0,"tech_nonblank":1501,"rarity_nonblank":1501,"category_nonblank":1501,"subcategory_nonblank":1501,"origin_nonblank":1501,"id_nonblank":1501},
+    {"governed_dataset":"expanded_symbiotes_and_cybernetics_all_genres.csv","source_file":"Symbiotes_Cybernetics.csv","rows":572,"sha256":"37af1a950d1f7642c65c00475a96545b70225622c8b2c86f9f399b585e57d8a2","columns":36,"name_column":"Item","duplicate_name_extra_rows_within_dataset":0,"genre_all_genres":10,"genre_specific":562,"genre_blank":0,"tech_nonblank":572,"rarity_nonblank":572,"category_nonblank":572,"subcategory_nonblank":572,"origin_nonblank":572,"id_nonblank":0}
+  ],
+  "prepared_item_system": {
+    "taxonomy_axes": 10,
+    "taxonomy_controlled_values": 171,
+    "content_context_facets": 9,
+    "content_context_controlled_values": 241,
+    "coverage_domains": 35,
+    "coverage_profiles": 28,
+    "coverage_expectation_rows": 980,
+    "source_linked_provenance_occurrences": 1050,
+    "recovered_armor_material_concepts": 55,
+    "missing_armor_material_concepts": 54,
+    "enrichment_remechanization_work_items": 5443
+  },
+  "canonical_application_evidence": {
+    "a8_status": "completed_verified",
+    "a8_merge": "e9aaa858b345e6a29e27369c01468551752a2483",
+    "a8_migration": "database/migrations/0006_a8_asset_foundations.json",
+    "a8_migration_kind": "logical_provider_neutral_runtime_and_reference_seams",
+    "content_context_registry_values_embedded": false,
+    "item_v0_12_registry_reconstructed": false,
+    "full_5389_shadow_projection_evidence_found": false,
+    "governed_row_level_taxonomy_adoption_evidence_found": false,
+    "full_product_creator_origin_row_adoption_evidence_found": false,
+    "coverage_profile_application_evidence_found": false,
+    "5443_work_item_enrichment_execution_evidence_found": false
+  },
+  "phase_assessment": [
+    {"phase":"IA-I0","assessment":"partial_reconciled_authority","evidence":"A8-R0 owner-approved supplemental authority and A8 implementation adopted bounded seams; this is not evidence that the full Item migration series was authorized/executed end-to-end."},
+    {"phase":"IA-I1","assessment":"not_verified","evidence":"No immutable 5,389-row pre-migration snapshot/audit receipt located in current application repository evidence."},
+    {"phase":"IA-I2","assessment":"partial_bounded_seams_only","evidence":"A8 migration 0006 adds catalog/provenance reference seams but not the complete dormant Item metadata structures described by IA-I2."},
+    {"phase":"IA-I3","assessment":"not_implemented_as_prepared","evidence":"A8 explicitly does not embed/reconstruct the checksum-bound 241-value Content Context registry; no full 171-value Item registry seed evidence located."},
+    {"phase":"IA-I4","assessment":"not_verified","evidence":"No canonical artifact located that projects all 5,389 current records into future metadata structures."},
+    {"phase":"IA-I5","assessment":"not_verified","evidence":"No application artifact located importing the prepared 1,050 provenance occurrences / 55 recovered concepts / 54 missing build seeds as the declared review queues."},
+    {"phase":"IA-I6","assessment":"partial_contract_validation_only","evidence":"A8 validators test seams and boundaries, not a full corpus projection/behavior-diff report over all 5,389 rows."},
+    {"phase":"IA-I7","assessment":"not_verified","evidence":"No governed row-level taxonomy/facet adoption ledger located."},
+    {"phase":"IA-I8","assessment":"ports_exist_no_corpus_adoption_evidence","evidence":"Product identity and creator/origin contracts exist, but no 5,389-row governed adoption evidence was located."},
+    {"phase":"IA-I9","assessment":"generic_evaluator_exists_no_corpus_activation","evidence":"Compatibility evaluator contract exists, while v0.12.0 preparation explicitly says no row received a final compatibility determination."},
+    {"phase":"IA-I10","assessment":"not_verified","evidence":"No 28-profile / 980-expectation Item coverage application artifact located in the application repository."},
+    {"phase":"IA-I11","assessment":"not_verified","evidence":"No evidence that all 5,443 enrichment/re-mechanization work items were processed."},
+    {"phase":"IA-I12","assessment":"bounded_a8_runtime_seam_only","evidence":"A8 supports definition/model references and live instances, but the prepared sequence requires IA-I11 stability before full definition-link integration; that prerequisite is not verified."}
+  ],
+  "audit_verdict": {
+    "source_rows_accounted": 5389,
+    "source_rows_accounting_percent": 100.0,
+    "rows_touched_by_preparation_read_only_genre_preview": 5389,
+    "rows_with_verified_full_v0_12_governed_adoption": 0,
+    "interpretation": "Canonical evidence proves preparation and bounded A8 seams, not corpus-wide v0.12.0 adoption. Zero is an evidence-backed verified-adoption count, not a claim that no off-repository exploratory work ever occurred.",
+    "next_required_operation": "Recover exact v0.12.0 controlled registries/crosswalks, then execute IA-I4 shadow projection over all 5,389 rows before any governed adoption."
+  },
+  "private_working_ledger": {
+    "filename": "ITEM_CORPUS_ROW_ACCOUNTING_LEDGER_v0.1.0.csv",
+    "rows": 5389,
+    "sha256": "5db3c2f3cfd1ff4f0b46aae1853588d7acf0b2dbbbd921a4d7c1bf58dc80cfc0",
+    "repository_publication": "not_published",
+    "reason": "Source-safe governance repository should not publish the detailed proprietary row-level source corpus or reversible name/content mappings."
+  }
+}
