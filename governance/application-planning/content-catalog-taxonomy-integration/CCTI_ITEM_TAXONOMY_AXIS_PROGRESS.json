@@ -1,21 +1,99 @@
 {
-  "schema_version":"1.0.0",
-  "updated_at":"2026-08-17T19:38:00Z",
-  "item_corpus_rows":5389,
-  "current_definition_rows":5353,
-  "legacy_reference_rows":36,
-  "axes":[
-    {"axis_id":"IAX-01","axis":"record_scope","cardinality":"single","state":"candidate_disposition_complete_not_enabled","current_candidate_rows":5353,"explicit_unresolved_rows":0,"reference_only_not_applicable":36,"active_unassigned_rows":0,"artifact_sha256":"c586a01d3d542c0230d09de600995df42408532a5f604dfa02d112a724112a9f"},
-    {"axis_id":"IAX-02","axis":"object_nature","cardinality":"multi","state":"candidate_disposition_complete_not_enabled","rows_with_candidate_assertions":5243,"explicit_unresolved_rows":110,"reference_only_not_applicable":36,"active_unaccounted_rows":0,"candidate_assertions":9101,"artifact_sha256":"5ff36546966e0a438e0c946cf3730ac330522fd9ee5ab383bbdb8afe73ecd5c1"},
-    {"axis_id":"IAX-03","axis":"form_factor","cardinality":"multi","state":"candidate_disposition_complete_not_enabled","rows_with_candidate_assertions":5135,"explicit_unresolved_rows":218,"reference_only_not_applicable":36,"active_unaccounted_rows":0,"candidate_assertions":7642,"artifact_sha256":"312fe4f8f442279d06c6299271ce134d4f60a7c0b8fb61a3da6994e3fef31202"},
-    {"axis_id":"IAX-04","axis":"use_relation","cardinality":"multi","state":"candidate_disposition_complete_not_enabled","rows_with_candidate_assertions":5258,"explicit_unresolved_rows":95,"reference_only_not_applicable":36,"active_unaccounted_rows":0,"candidate_assertions":9429,"artifact_sha256":"d431451325832d6560ae66903f0a561c96607d5eb9d1f08fea78dfba149f1421"},
-    {"axis_id":"IAX-05","axis":"portability_scale","state":"next"},
-    {"axis_id":"IAX-06","axis":"consumption_lifecycle","state":"pending"},
-    {"axis_id":"IAX-07","axis":"operational_complexity","state":"pending"},
-    {"axis_id":"IAX-08","axis":"agency_level","state":"pending"},
-    {"axis_id":"IAX-09","axis":"functional_domain","state":"pending"},
-    {"axis_id":"IAX-10","axis":"integration_target","state":"pending"}
+  "schema_version": "1.0.0",
+  "updated_at": "2026-08-17T20:05:00Z",
+  "item_corpus_rows": 5389,
+  "current_definition_rows": 5353,
+  "legacy_reference_rows": 36,
+  "axes": [
+    {
+      "axis_id": "IAX-01",
+      "axis": "record_scope",
+      "cardinality": "single",
+      "state": "candidate_disposition_complete_not_enabled",
+      "current_candidate_rows": 5353,
+      "explicit_unresolved_rows": 0,
+      "reference_only_not_applicable": 36,
+      "active_unassigned_rows": 0,
+      "artifact_sha256": "c586a01d3d542c0230d09de600995df42408532a5f604dfa02d112a724112a9f"
+    },
+    {
+      "axis_id": "IAX-02",
+      "axis": "object_nature",
+      "cardinality": "multi",
+      "state": "candidate_disposition_complete_not_enabled",
+      "rows_with_candidate_assertions": 5243,
+      "explicit_unresolved_rows": 110,
+      "reference_only_not_applicable": 36,
+      "active_unaccounted_rows": 0,
+      "candidate_assertions": 9101,
+      "artifact_sha256": "5ff36546966e0a438e0c946cf3730ac330522fd9ee5ab383bbdb8afe73ecd5c1"
+    },
+    {
+      "axis_id": "IAX-03",
+      "axis": "form_factor",
+      "cardinality": "multi",
+      "state": "candidate_disposition_complete_not_enabled",
+      "rows_with_candidate_assertions": 5135,
+      "explicit_unresolved_rows": 218,
+      "reference_only_not_applicable": 36,
+      "active_unaccounted_rows": 0,
+      "candidate_assertions": 7642,
+      "artifact_sha256": "312fe4f8f442279d06c6299271ce134d4f60a7c0b8fb61a3da6994e3fef31202"
+    },
+    {
+      "axis_id": "IAX-04",
+      "axis": "use_relation",
+      "cardinality": "multi",
+      "state": "candidate_disposition_complete_not_enabled",
+      "rows_with_candidate_assertions": 5258,
+      "explicit_unresolved_rows": 95,
+      "reference_only_not_applicable": 36,
+      "active_unaccounted_rows": 0,
+      "candidate_assertions": 9429,
+      "artifact_sha256": "d431451325832d6560ae66903f0a561c96607d5eb9d1f08fea78dfba149f1421"
+    },
+    {
+      "axis_id": "IAX-05",
+      "axis": "portability_scale",
+      "cardinality": "single",
+      "state": "candidate_disposition_complete_not_enabled",
+      "current_candidate_rows": 5343,
+      "explicit_unresolved_rows": 10,
+      "reference_only_not_applicable": 36,
+      "active_unaccounted_rows": 0,
+      "artifact_sha256": "943d553bc9e794b500f178e01f5f92a3259cb1aff789d660e833d058dbbe0ad1"
+    },
+    {
+      "axis_id": "IAX-06",
+      "axis": "consumption_lifecycle",
+      "state": "next"
+    },
+    {
+      "axis_id": "IAX-07",
+      "axis": "operational_complexity",
+      "state": "pending"
+    },
+    {
+      "axis_id": "IAX-08",
+      "axis": "agency_level",
+      "state": "pending"
+    },
+    {
+      "axis_id": "IAX-09",
+      "axis": "functional_domain",
+      "state": "pending"
+    },
+    {
+      "axis_id": "IAX-10",
+      "axis": "integration_target",
+      "state": "pending"
+    }
   ],
-  "boundaries":{"source_master_csv_mutated":false,"candidate_taxonomy_enabled":false,"mechanics_reauthored":false,"runtime_activation":false},
-  "exact_next_action":"Execute IAX-05 portability_scale as the next bounded single-select candidate tranche using the exact v0.12.0 controlled registry; preserve unresolved states from independent prior axes."
+  "boundaries": {
+    "source_master_csv_mutated": false,
+    "candidate_taxonomy_enabled": false,
+    "mechanics_reauthored": false,
+    "runtime_activation": false
+  },
+  "exact_next_action": "Execute IAX-06 consumption_lifecycle as the next bounded multi-select candidate tranche using the exact v0.12.0 controlled registry; preserve unresolved states from independent prior axes."
 }
