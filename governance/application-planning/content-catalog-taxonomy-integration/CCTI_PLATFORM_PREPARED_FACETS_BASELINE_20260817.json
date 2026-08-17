@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0.0",
+  "date": "2026-08-17",
+  "status": "PLATFORM_PREPARED_FACETS_CANDIDATE_DISPOSITION_COMPLETE_NOT_ENABLED",
+  "corpus_rows": 5628,
+  "facets": {
+    "operating_medium": {
+      "cardinality": "multi",
+      "states": {"host_or_record_dependent_not_assigned":2364,"candidate_review_required":2035,"explicit_unresolved":270,"candidate_exact":959},
+      "candidate_rows": 2994,
+      "candidate_assertions": 4664,
+      "rows_accounted": 5628
+    },
+    "mobility_method": {
+      "cardinality": "multi",
+      "states": {"preparation_gap_not_projected":2311,"host_or_record_dependent_not_assigned":991,"candidate_review_required":1485,"explicit_unresolved":841},
+      "candidate_rows": 1485,
+      "candidate_assertions": 2640,
+      "rows_accounted": 5628
+    },
+    "functional_role": {
+      "cardinality": "multi",
+      "states": {"explicit_unresolved":1889,"candidate_review_required":3719,"not_applicable":20},
+      "candidate_rows": 3719,
+      "candidate_assertions": 5643,
+      "rows_accounted": 5628
+    }
+  },
+  "boundaries": {"source_master_csv_mutated":false,"prepared_crosswalk_rewritten":false,"canonical_candidate_enabled":false,"mechanics_reauthored":false,"runtime_assets_created":false,"game_ready_claimed":false},
+  "next_operation": "Project the remaining universal Platform facets control_mode and platform_nature, then perform cross-facet review before any canonical adoption."
+}
