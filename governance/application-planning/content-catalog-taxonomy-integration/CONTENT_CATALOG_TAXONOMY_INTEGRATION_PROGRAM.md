@@ -1,7 +1,7 @@
 # Multiversal Content Catalog Taxonomy Integration Program
 
 **Program ID:** CCTI  
-**Status:** OWNER-APPROVED PARALLEL PROGRAM — READ-ONLY TRANCHE ACTIVE  
+**Status:** OWNER-APPROVED PARALLEL PROGRAM — READ-ONLY AUDIT COMPLETED_VERIFIED / ADDITIVE CANDIDATE PHASE ACTIVE  
 **Owner:** John Brandon Turner  
 **Started:** 2026-08-17
 
@@ -21,10 +21,12 @@ CCTI is a parallel content mission. It does not supersede post-GATX PR #185, ord
 
 The owner-supplied `Content Consolidation.zip` was inspected read-only at session SHA-256 `cf82636489b6a5616766e0631646591bf2e558c90ef8d4529ff04aaa153969b8`; it contains fifteen nested consolidation packages.
 
-Prepared-source identities:
+Prepared-source identities are now recovered and checksum-verified from the owner-supplied `Adding.zip`:
 - Item v0.12.0: `d12feab1375930e1ef5c121d485aee8622f2abfc34c05f23babb26a293ee47ca`
 - Platform v0.11.0: `621b498b6d0fa1b99c86a96eac7446f682c715cb576cf0803d233ec2ffe0bdb6`
 - Reality v0.14.0 shared seams only: `928aaacbd84082d88ea9e64fc6c3506a321f26633bce718cfb46199b5364f4d6`
+
+Exact-source receipt: `CCTI02_EXACT_SOURCE_RECOVERY_RECEIPT_20260817.json`.
 
 ## Corpus scope
 
@@ -49,7 +51,7 @@ The platform catalogs contain exactly **2,984 platform/model rows**: 953 Vehicle
 
 ## Boundaries
 
-- Preserve original/master CSV rows; no in-place rewriting during the read-only tranche.
+- Preserve original/master CSV rows; current write work is additive sidecar/projection work, not in-place rewriting.
 - Existing stable IDs, identity decisions, aliases, supersession, provenance, normalization, relationships, and unresolved queues are authoritative inputs.
 - Same-name does not imply same identity.
 - Item Definition != live A8 Asset Instance.
@@ -58,35 +60,53 @@ The platform catalogs contain exactly **2,984 platform/model rows**: 953 Vehicle
 - Economy retains dynamic price authority.
 - Legacy/source mechanics remain provenance unless rebuilt through current governed rules.
 - Unknown remains unknown/review-required; do not invent completeness.
+- Candidate taxonomy sidecars are not automatically enabled canonical content.
 - No release, deployment, spend, production credential, public exposure, APK, shared-live expansion, or A13 authority is created.
 
 ## Program sequence
 
-1. **CCTI-01 — Reconstruct existing corpus.** Read master rows plus identity/provenance/normalization/relationship/supersession/completeness/review sidecars.
-2. **CCTI-02 — Recover exact taxonomy authority.** Recover and checksum-verify complete Item v0.12.0 and Platform v0.11.0 artifacts plus applicable shared context vocabulary; never reconstruct checksum-bound registries from memory.
-3. **CCTI-03 — Establish shared integration model.** Define Items/Platforms/components/rules/creator/product-lineage/compatibility/A8/Economy boundaries.
-4. **CCTI-04 — Build deterministic crosswalks.** Source row -> stable/canonical identity -> consolidation evidence -> intended taxonomy/lineage projection -> provenance/review state.
-5. **CCTI-05 — Shadow-project 5,389 Items.** Use exact Item registries read-only; preserve mechanics/source fields and explicit unresolved values.
-6. **CCTI-06 — Shadow-project 5,628 platform-catalog rows.** Apply Platform taxonomy to valid model rows and route 2,644 non-model rows to component/module/rules/support structures.
-7. **CCTI-07 — Reconcile cross-domain relationships.** Modules, weapons, ammunition/charges, power, cargo/support, EVA, repair, upgrades, configurations, creators/manufacturers, and lineage; never create runtime installation state.
-8. **CCTI-08 — Shared context/compatibility audit.** Evaluate intrinsic requirements, affinity, compatibility, and governed exceptions; produce owner decision packet.
+1. **CCTI-01 — Reconstruct existing corpus.** COMPLETED_VERIFIED.
+2. **CCTI-02 — Recover exact taxonomy authority.** COMPLETED_VERIFIED; exact Item/Platform/Reality source packages checksum-match canonical identities.
+3. **CCTI-03 — Establish shared integration model.** COMPLETED_VERIFIED for read-only audit.
+4. **CCTI-04 — Build deterministic crosswalks.** COMPLETED_VERIFIED for read-only audit.
+5. **CCTI-05 — Item taxonomy projection.** ACTIVE ADDITIVE CANDIDATE WORK. IAX-01 `record_scope` tranche produced 5,353 current candidate assignments, 36 reference-only holds and zero active unassigned rows; IAX-02 through IAX-10 remain unfinished.
+6. **CCTI-06 — Platform projection.** Read-only exact Platform v0.11.0 alignment complete; prepared crosswalk review/adoption work remains additive candidate work.
+7. **CCTI-07 — Reconcile cross-domain relationships.** Read-only signal inventory complete; governed candidate-edge resolution/adoption remains unfinished.
+8. **CCTI-08 — Shared context/compatibility audit.** Read-only audit completed; reviewed candidate adoption remains unfinished.
+9. **CCTI-09 — Resolve review queues/taxonomy gaps.** ACTIVE inside the additive candidate phase, beginning with Item IAX axis review states and Platform prepared crosswalk review queues.
+10. **CCTI-10 — Produce governed derived catalogs.** ACTIVE only as additive candidate sidecars/projections; no source/master CSV rewrite or automatic enablement.
+11. **CCTI-11 — Full corpus validation.** PLANNED; prove 11,017/11,017 accounting and all identity/provenance/boundary invariants on the finished candidate package.
+12. **CCTI-12 — App-facing content integration.** OWNER-GATED / NOT STARTED; taxonomy-aware discovery/inspection/authoring through existing application authorities.
 
-**OWNER DECISION GATE:** CCTI-01 through CCTI-08 are approved as read-only discovery/reconciliation. No persistent corpus/taxonomy/catalog adoption begins until the owner reviews the audit and explicitly approves the proposed write package.
+## Read-only audit closure
 
-9. **CCTI-09 — Resolve review queues/taxonomy gaps.** Owner-gated.
-10. **CCTI-10 — Produce governed derived catalogs.** Owner-gated; additive sidecars/projections only unless separately approved.
-11. **CCTI-11 — Full corpus validation.** Owner-gated; prove 11,017/11,017 accounting and all identity/provenance/boundary invariants.
-12. **CCTI-12 — App-facing content integration.** Owner-gated; taxonomy-aware discovery/inspection/authoring through existing application authorities.
+`CCTI-READONLY-01-attempt-001` is completed_verified. Its exact completion receipt is `CCTI_READ_ONLY_COMPLETION_RECEIPT_20260817.json`. The private audit artifact is `CCTI_ReadOnly_Integration_Audit_20260817.zip`, SHA-256 `54685f8aff2a81541dc0201285ecab5a9ae5f1bd794432e80159fd664eeee55f`.
+
+## Active additive tranche
+
+`CCTI-WRITE-01-attempt-001` is the active recovery state.
+
+The first write-sidecar tranche produced:
+- exact-source recovery receipt;
+- Item IAX-01 candidate projection: 5,353 current rows, 36 reference-only rows, zero active unassigned;
+- Object Game-Readiness program/schema and a private 11,017-row readiness ledger;
+- no source/master CSV mutation, no mechanics rewrite, no runtime asset creation and no `GAME_READY` certification.
+
+Private tranche artifact: `CCTI_Game_Readiness_Tranche1_20260817.zip`, SHA-256 `c586a01d3d542c0230d09de600995df42408532a5f604dfa02d112a724112a9f`.
+
+## Object Game-Readiness dependency
+
+Downstream game-readiness is governed by `OBJECT_GAME_READINESS_PROGRAM.md`. Taxonomy completeness is a prerequisite, not a substitute, for descriptive-content, mechanics, relationship, runtime, validation and playtest readiness. Before OGR-05 mechanics mutation begins, present the failing mechanics cohorts and repair policy to the owner. Runtime/app enablement retains existing Stage A gates.
 
 ## Current execution authorization
 
-Permitted now: read-only inspection/comparison, hashing, aggregate metrics, crosswalk-envelope construction, non-destructive governance/audit artifacts, and roadmap/bootstrap recovery updates.
+Permitted now: exact-registry-derived additive candidate taxonomy/catalog sidecars, confidence/review queues, readiness measurement artifacts, bounded governance/recovery updates, and deterministic candidate validation.
 
-Not permitted yet: source/master CSV mutation, canonical row-level taxonomy adoption, identity/supersession changes, runtime asset creation, or CCTI-09 through CCTI-12.
+Not permitted now: source/master CSV mutation, automatic canonical enablement of candidate assignments, destructive identity/supersession changes, mechanics reauthoring, runtime asset creation/activation, release/deployment, or public publication.
 
-## Exact-registry prerequisite
+## Exact next action
 
-The repository currently preserves checksum identities and implementation-relevant extracts for Item v0.12.0 and Platform v0.11.0, but their complete exact archives were not found on the active session source surface during the initial audit. Deterministic row-level assignment against the complete controlled registries therefore waits for exact-byte recovery and checksum verification. CCTI-01, cross-corpus accounting, platform/model routing, sidecar reconstruction, and crosswalk-envelope work can continue meanwhile.
+Continue the Item taxonomy with **IAX-02 — object_nature** as a bounded candidate sidecar using exact v0.12.0 controlled values and existing source/provenance evidence. Preserve confidence/review state and the 36 legacy-reference holds. Do not begin mechanics reauthoring in the taxonomy tranche.
 
 ## Parallel-track preservation
 
