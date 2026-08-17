@@ -4,20 +4,15 @@
   "attempt_id": "CCTI-WRITE-01-attempt-001",
   "track": "content-catalog-taxonomy-integration",
   "repository": "cybalicistjt-stack/multiversal-aioc",
-  "branch": "governance/ccti-item-iax06-consumption-lifecycle",
+  "branch": "governance/ccti-item-iax07-operational-complexity",
   "status": "in_progress",
   "owner_selected": true,
   "started_at": "2026-08-17T18:46:00Z",
-  "updated_at": "2026-08-17T19:44:00Z",
+  "updated_at": "2026-08-17T19:56:00Z",
   "objective": "Produce additive governed taxonomy/catalog sidecar candidates for the 11,017-row CCTI corpus and establish the route-specific Object Game-Readiness measurement system without rewriting source/master CSVs or enabling unreviewed content.",
-  "active_substep": "CCTI-09-item-taxonomy-IAX-06-consumption-lifecycle",
-  "next_action": "Execute IAX-06 consumption_lifecycle as the next bounded multi-select candidate tranche across the 5,389 Item-corpus rows using the exact v0.12.0 registry. Preserve confidence/review state, prior-axis unresolved dispositions and the 36 legacy-reference holds; do not mutate source/master CSVs or begin mechanics reauthoring.",
-  "dependency": {
-    "CCTI-READONLY-01-attempt-001": "completed_verified",
-    "exact_item_registry": "verified",
-    "exact_platform_registry": "verified",
-    "exact_shared_context_registry": "verified"
-  },
+  "active_substep": "CCTI-09-item-taxonomy-IAX-07-operational-complexity",
+  "next_action": "Execute IAX-07 operational_complexity as the next bounded single-select candidate tranche across the 5,389 Item-corpus rows using the exact v0.12.0 registry. Preserve confidence/review state, prior-axis unresolved/not-applicable dispositions and the 36 legacy-reference holds; do not mutate source/master CSVs or begin mechanics reauthoring.",
+  "dependency": {"CCTI-READONLY-01-attempt-001":"completed_verified","exact_item_registry":"verified","exact_platform_registry":"verified","exact_shared_context_registry":"verified"},
   "completed_substeps": [
     "CCTI-02 exact source recovery and checksum receipt",
     "OGR-01 route-specific readiness program/schema/baseline",
@@ -26,40 +21,20 @@
     "CCTI-05 IAX-03 form_factor candidate disposition complete: 5,135 current rows with candidates + 218 explicit unresolved + 36 reference-only",
     "CCTI-05 IAX-04 use_relation candidate disposition complete: 5,258 current rows with candidates + 95 explicit unresolved + 36 reference-only",
     "CCTI-05 IAX-05 portability_scale candidate disposition complete: 5,343 current rows with candidates + 10 explicit unresolved + 36 reference-only",
+    "CCTI-05 IAX-06 consumption_lifecycle candidate disposition complete: 5,346 lifecycle-applicable current rows with candidates + 7 non-item support N/A + 36 reference-only N/A + 0 applicable unresolved",
     "private 11,017-row game-readiness baseline ledger",
-    "tranche-1 through tranche-5 deterministic aggregate validation"
+    "tranche-1 through tranche-6 deterministic aggregate validation"
   ],
   "taxonomy_axis_evidence": {
-    "IAX-01": {"artifact_sha256":"c586a01d3d542c0230d09de600995df42408532a5f604dfa02d112a724112a9f","merge":"79ec7bfa697474660ce529abf478f7489288e525"},
-    "IAX-02": {"artifact_sha256":"5ff36546966e0a438e0c946cf3730ac330522fd9ee5ab383bbdb8afe73ecd5c1","merge":"25e12e6a5ede0877c0508a80d572a0785a3047ae"},
-    "IAX-03": {"artifact_sha256":"312fe4f8f442279d06c6299271ce134d4f60a7c0b8fb61a3da6994e3fef31202","merge":"a254b697ea8117f1ce2f06f8f4d9edc700ee7755"},
-    "IAX-04": {"artifact_sha256":"d431451325832d6560ae66903f0a561c96607d5eb9d1f08fea78dfba149f1421","merge":"9ac8174425f2a9637820076374e5e62e5d57ee42"},
-    "IAX-05": {"artifact_sha256":"4aefcd7697c011342b7c50be206af3d964f46efe9d7153999cdd3262f80335f1","merge":"dafdc374c7e720b68f7bc2e72d7bd43b29915d11"}
+    "IAX-01":{"artifact_sha256":"c586a01d3d542c0230d09de600995df42408532a5f604dfa02d112a724112a9f","merge":"79ec7bfa697474660ce529abf478f7489288e525"},
+    "IAX-02":{"artifact_sha256":"5ff36546966e0a438e0c946cf3730ac330522fd9ee5ab383bbdb8afe73ecd5c1","merge":"25e12e6a5ede0877c0508a80d572a0785a3047ae"},
+    "IAX-03":{"artifact_sha256":"312fe4f8f442279d06c6299271ce134d4f60a7c0b8fb61a3da6994e3fef31202","merge":"a254b697ea8117f1ce2f06f8f4d9edc700ee7755"},
+    "IAX-04":{"artifact_sha256":"d431451325832d6560ae66903f0a561c96607d5eb9d1f08fea78dfba149f1421","merge":"9ac8174425f2a9637820076374e5e62e5d57ee42"},
+    "IAX-05":{"artifact_sha256":"4aefcd7697c011342b7c50be206af3d964f46efe9d7153999cdd3262f80335f1","merge":"dafdc374c7e720b68f7bc2e72d7bd43b29915d11"},
+    "IAX-06":{"artifact_sha256":"6c7636af3500ffa8a0263b888f6b08de10bd687363a81ebc7b957c376a49ea8f","merge":"a32b9d81387bc0b7676976f712727144b39c0257"}
   },
-  "owner_authorization": {
-    "additive_candidate_taxonomy_sidecars": true,
-    "readiness_schema_and_ledger": true,
-    "roadmap_bootstrap_recovery_updates": true,
-    "source_master_csv_mutation": false,
-    "automatic_canonical_enablement": false,
-    "identity_or_supersession_rewrite": false,
-    "mechanics_reauthoring": false,
-    "runtime_asset_creation_or_activation": false,
-    "release_or_deployment": false
-  },
-  "future_owner_gates": [
-    "Before OGR-05 mechanics mutation: present failing mechanics cohorts and repair policy.",
-    "Before OGR-07 runtime mutation or OGR-08 app-facing enablement: preserve existing Stage A owner gates."
-  ],
-  "parallel_tracks_preserved": [
-    "Multiversal-app PR #185 remains unfinished and not superseded",
-    "DS-008-working-series-attempt-002 remains blocked_non_owner",
-    "ordinary Stage A roadmap remains preserved"
-  ],
-  "completion_gate": {
-    "candidate_sidecars_must_preserve_source_ids_and_provenance": true,
-    "all_active_rows_must_be_assigned_or_explicitly_review_required": true,
-    "no_source_master_mutation": true,
-    "no_false_game_ready_claim": true
-  }
+  "owner_authorization": {"additive_candidate_taxonomy_sidecars":true,"readiness_schema_and_ledger":true,"roadmap_bootstrap_recovery_updates":true,"source_master_csv_mutation":false,"automatic_canonical_enablement":false,"identity_or_supersession_rewrite":false,"mechanics_reauthoring":false,"runtime_asset_creation_or_activation":false,"release_or_deployment":false},
+  "future_owner_gates": ["Before OGR-05 mechanics mutation: present failing mechanics cohorts and repair policy.","Before OGR-07 runtime mutation or OGR-08 app-facing enablement: preserve existing Stage A owner gates."],
+  "parallel_tracks_preserved": ["Multiversal-app PR #185 remains unfinished and not superseded","DS-008-working-series-attempt-002 remains blocked_non_owner","ordinary Stage A roadmap remains preserved"],
+  "completion_gate": {"candidate_sidecars_must_preserve_source_ids_and_provenance":true,"all_active_rows_must_be_assigned_or_explicitly_review_required":true,"no_source_master_mutation":true,"no_false_game_ready_claim":true}
 }
