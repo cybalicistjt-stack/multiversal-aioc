@@ -1,16 +1,20 @@
 from __future__ import annotations
+import csv
 import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "governance/application-planning/game-content-preparation/items"
 SUMMARY = BASE / "ITEM_CORPUS_TAXONOMY_COVERAGE_SUMMARY_v0.1.0.json"
+CROSSWALK_SUMMARY = BASE / "ITEM_CORPUS_CURRENT_DEFINITION_CROSSWALK_SUMMARY_v0.1.0.json"
+WEAPONS_CROSSWALK = BASE / "WEAPONS_AMMO_SOURCE_AND_IDENTITY_CROSSWALK_v0.1.0.csv"
 AUDIT = BASE / "ITEM_CORPUS_TAXONOMY_COVERAGE_AUDIT.md"
 PLAN = BASE / "ITEM_CORPUS_TAXONOMY_EXECUTION_PLAN.md"
 CHECKPOINT = ROOT / "governance/ai/work-state/ITEM-CORPUS-AUDIT-001-attempt-001.json"
+GENERATOR = ROOT / "tools/build_item_corpus_row_accounting.py"
 
 errors: list[str] = []
-for p in (SUMMARY, AUDIT, PLAN, CHECKPOINT):
+for p in (SUMMARY, CROSSWALK_SUMMARY, WEAPONS_CROSSWALK, AUDIT, PLAN, CHECKPOINT, GENERATOR):
     if not p.is_file():
         errors.append(f"missing {p.relative_to(ROOT)}")
 
@@ -60,7 +64,44 @@ if not errors:
     if phases["IA-I11"] != "not_verified":
         errors.append("IA-I11 must remain not_verified until the 5443-work-item queue has execution evidence")
 
+    cross = json.loads(CROSSWALK_SUMMARY.read_text(encoding="utf-8"))
+    results = cross["results"]
+    if results["one_exact_anchor_definition_candidate_rows"] != 466:
+        errors.append("exact-one definition candidate row count must remain 466")
+    if results["multiple_exact_anchor_definition_candidate_rows"] != 13:
+        errors.append("multiple-definition candidate row count must remain 13")
+    if results["no_exact_anchor_definition_evidence_rows"] != 4910:
+        errors.append("no-exact-definition-evidence row count must remain 4910")
+    if results["rows_with_any_exact_anchor_definition_candidate"] != 479:
+        errors.append("rows with exact occurrence candidates must remain 479")
+    repeated = cross["repeated_name_review"]
+    if repeated["normalized_name_groups"] != 55 or repeated["participating_rows"] != 119:
+        errors.append("repeated-name review must remain 55 groups / 119 rows")
+    if len(cross["multiple_candidate_conflicts"]) != 13:
+        errors.append("multiple-candidate conflict list must contain 13 entries")
+
+    with WEAPONS_CROSSWALK.open(encoding="utf-8", newline="") as handle:
+        weapon_rows = list(csv.DictReader(handle))
+    if len(weapon_rows) != 36:
+        errors.append("Weapons_Ammo crosswalk must contain 36 source rows")
+    recovered = sum(row["source_note_state"] == "recovered_from_8E008G" for row in weapon_rows)
+    reference_only = sum(row["current_definition_relation"] == "source_reference_only_no_current_definition" for row in weapon_rows)
+    linked_or_mode = [row for row in weapon_rows if row["current_definition_id"]]
+    unique_definition_ids = {row["current_definition_id"] for row in linked_or_mode}
+    if recovered != 28:
+        errors.append(f"Weapons_Ammo recovered provenance count must be 28, got {recovered}")
+    if len(linked_or_mode) != 33:
+        errors.append(f"Weapons_Ammo definition-linked/mode-reference rows must be 33, got {len(linked_or_mode)}")
+    if len(unique_definition_ids) != 31:
+        errors.append(f"Weapons_Ammo unique current Definition IDs must be 31, got {len(unique_definition_ids)}")
+    if reference_only != 3:
+        errors.append(f"Weapons_Ammo source-reference-only rows must be 3, got {reference_only}")
+    if any(row["v0_12_taxonomy_status"] != "not_projected" for row in weapon_rows):
+        errors.append("Weapons_Ammo crosswalk must not claim v0.12 taxonomy projection")
+
 if errors:
     raise SystemExit("ITEM-CORPUS-AUDIT-001: FAIL\n- " + "\n- ".join(errors))
 print("ITEM-CORPUS-AUDIT-001: PASS")
-print("datasets=9 source_rows=5389 verified_v0_12_adopted=0 prepared_work_items=5443")
+print("datasets=9 source_rows=5389 exact_definition_candidates=479 repeated_name_groups=55")
+print("weapons_ammo=36 provenance_recovered=28 linked_rows=33 reference_only=3")
+print("verified_v0_12_adopted=0 prepared_work_items=5443")
