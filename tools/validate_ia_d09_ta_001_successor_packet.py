@@ -24,8 +24,6 @@ def main() -> int:
     base_receipt = load(BASE / "IA_D09_TA_001_SUCCESSOR_VALIDATION_RECEIPT.json")
     decision = load(BASE / "IA_D09_TA_001_HOTFIX2_OWNER_DISTRIBUTION_DECISION_20260816.json")
     work = load(ROOT / "governance/ai/work-state/IA-D09-TA-001-attempt-001.json")
-    pointer = load(ROOT / "governance/ai/runtime/CURRENT_WORK_POINTER.json")
-    status = load(ROOT / "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json")
     roadmap = load(ROOT / "governance/ai/runtime/ROADMAP_INDEX_STAGE_A_A12_SUPPLEMENT.json")
 
     accounts = roster.get("accounts", [])
@@ -64,6 +62,7 @@ def main() -> int:
     req(routing.get("accounts_tested") == 20 and routing.get("gm_correct") == 10 and routing.get("player_correct") == 10 and routing.get("incorrect_role_routing") == 0 and routing.get("result") == "PASS", "Hotfix 2 physical role-routing evidence mismatch", errors)
     req(decision.get("supersedes_distribution_approval_for_package", {}).get("sha256") == BASE_PACKAGE_SHA, "withdrawn package decision mismatch", errors)
 
+    req(work.get("status") == "completed_verified", "checkpoint lifecycle mismatch", errors)
     req(work.get("successor_candidate_sha") == CANDIDATE and work.get("package_zip_sha256") == HOTFIX_PACKAGE_SHA, "checkpoint exact replacement identity mismatch", errors)
     req(work.get("replacement_application_merge") == REPAIR_APP_MERGE, "checkpoint repair merge mismatch", errors)
     req(work.get("successor_distribution_approved") is True and work.get("owner_decision_required") is False, "checkpoint approval mismatch", errors)
@@ -72,11 +71,12 @@ def main() -> int:
     for field in ("shared_live_campaign_session_authority", "real_user_data_authorized", "production_credentials_authorized", "paid_provider_authorized", "public_release_or_deployment_authorized", "broader_ai_automation_authority_authorized", "working_design_standards_promoted"):
         req(work.get(field) is False, f"closed authority opened: {field}", errors)
 
-    req(pointer.get("primary_attempt_id") == "IA-D09-TA-001-attempt-001", "pointer primary mismatch", errors)
-    req(status.get("primary", {}).get("work_item_id") == "IA-D09-TA-001", "compact status work item mismatch", errors)
+    # IA-D09 is historical completed evidence. Later governed work may legitimately
+    # become the live primary pointer/status without invalidating this packet.
     entry = next((x for x in roadmap.get("entries", []) if x.get("work_item_id") == "IA-D09-TA-001"), None)
     req(bool(entry), "roadmap missing IA-D09-TA-001", errors)
     if entry:
+        req(entry.get("state") == "completed_verified", "roadmap IA-D09 lifecycle mismatch", errors)
         req(entry.get("successor_candidate_sha") == CANDIDATE, "roadmap candidate mismatch", errors)
         req(entry.get("repair_application_merge") == REPAIR_APP_MERGE, "roadmap repair merge mismatch", errors)
         req(entry.get("approved_package_sha256") == HOTFIX_PACKAGE_SHA, "roadmap Hotfix 2 SHA mismatch", errors)
