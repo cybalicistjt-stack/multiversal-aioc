@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "date": "2026-08-17",
+  "work_item_id": "CCTI-05 / CCTI-09",
+  "axis_id": "IAX-06",
+  "axis": "consumption_lifecycle",
+  "status": "candidate_disposition_complete_not_enabled",
+  "artifact": {
+    "filename": "CCTI_Item_Taxonomy_Tranche6_IAX06_20260817.zip",
+    "sha256": "6c7636af3500ffa8a0263b888f6b08de10bd687363a81ebc7b957c376a49ea8f",
+    "storage": "owner/session private artifact; full row-level candidates remain private and are checksum-referenced"
+  },
+  "contained_evidence": [
+    {"filename": "CCTI_IAX06_CONSUMPTION_LIFECYCLE_CANDIDATE_ASSERTIONS.csv", "rows": 13899, "sha256": "6a30a3074fa5f22b9cdea908b4d0c5547165b3a8b0f51430f6ed664b96ae7633"},
+    {"filename": "CCTI_IAX06_CONSUMPTION_LIFECYCLE_ROW_SUMMARY.csv", "rows": 5389, "sha256": "8da19718063f9f57f55df1debc776c66882ef336d70c4e5ce502839fda17b84b"},
+    {"filename": "CCTI_IAX06_CONSUMPTION_LIFECYCLE_RULE_USAGE.csv", "sha256": "669378410ce2f36b1c9c6b6c44c4046ce6070b99932b6a91bf63d5f63cfb7ae9"},
+    {"filename": "CCTI_IAX06_CONSUMPTION_LIFECYCLE_BASELINE.json", "sha256": "fb24404ff543d1bc1a3f8afb8909d8585aadeb999d3437971b2f0ce046c02081"},
+    {"filename": "CCTI_WRITE_TRANCHE6_REPORT.md", "sha256": "1ab0c386161777f8d744092326cb998682e32ca8622e28c002e3bf40c7814467"}
+  ],
+  "validation": {
+    "result": "PASS",
+    "source_rows": 5389,
+    "current_definition_rows": 5353,
+    "lifecycle_applicable_current_rows": 5346,
+    "rows_with_candidate_assertions": 5346,
+    "non_item_support_not_applicable": 7,
+    "reference_only_not_applicable": 36,
+    "rows_explicitly_unresolved": 0,
+    "rows_silently_unaccounted": 0,
+    "candidate_assertions": 13899,
+    "high_confidence_assertions": 2748,
+    "medium_confidence_assertions": 11151,
+    "duplicate_same_value_assertions_per_source_row": 0,
+    "foreign_controlled_values": 0,
+    "source_master_sha256_manifest_match": true
+  },
+  "boundaries": {"source_master_csv_mutated":false,"canonical_taxonomy_enabled":false,"identity_or_supersession_changed":false,"mechanics_reauthored":false,"runtime_asset_created":false,"game_ready_claimed":false},
+  "next_axis": "IAX-07 operational_complexity"
+}
