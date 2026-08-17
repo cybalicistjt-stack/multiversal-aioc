@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "date": "2026-08-17",
+  "status": "CROSS_AXIS_REVIEW_COMPLETE_ADOPTION_NOT_READY",
+  "corpus": {
+    "item_rows": 5389,
+    "current_definition_rows": 5353,
+    "legacy_reference_rows": 36,
+    "non_item_support_rows": 7
+  },
+  "exact_taxonomy": {
+    "version": "v0.12.0",
+    "axes": 10,
+    "controlled_values": 171
+  },
+  "source_integrity": {
+    "nine_item_source_master_sha256_manifest_match": true,
+    "source_master_csv_mutated": false
+  },
+  "evidence_availability": {
+    "row_level_exact_axes_present": ["IAX-01", "IAX-02", "IAX-03", "IAX-04", "IAX-05", "IAX-09", "IAX-10"],
+    "sealed_hash_only_axes_in_active_workspace": ["IAX-06", "IAX-07", "IAX-08"],
+    "policy": "No candidate enablement until IAX-06/07/08 row-level evidence is recovered at sealed hashes or replaced by a governed versioned superseding reprojection."
+  },
+  "candidate_review_state": {
+    "explicit_unresolved_rows_by_axis": {"IAX-02": 110, "IAX-03": 218, "IAX-04": 95, "IAX-05": 10},
+    "IAX-07_exact_unknown_rows": 225,
+    "available_exact_axes_rows_with_any_review_required_candidate": 4940,
+    "available_exact_axes_rows_with_any_explicit_unresolved": 338,
+    "available_exact_axes_rows_without_review_or_unresolved_excluding_support_and_reference": 413,
+    "IAX-06_rows_with_review_required_candidates": 4550,
+    "IAX-07_rows_with_review_required_candidates": 1541,
+    "IAX-08_rows_with_review_required_candidates": 2248
+  },
+  "cross_axis_invariants": {
+    "none_general_exclusivity_violations": 0,
+    "integrated_internal_without_specific_target": 0,
+    "implant_form_without_implanted_relation": 0,
+    "implanted_relation_without_body_or_biological_target": 0,
+    "non_item_support_rows_requiring_early_axis_adoption_suppression": 7,
+    "structural_review_rows_union_high_medium": 91,
+    "structural_flag_occurrences": 101,
+    "informational_hybrid_flags": 30
+  },
+  "correction_proposals": {
+    "total_proposals": 85,
+    "blocking_high_confidence_proposals": 35,
+    "medium_host_semantic_review_proposals": 48,
+    "sealed_historical_candidate_rows_modified": 0
+  },
+  "adoption_decision": "NOT_READY_FOR_CANONICAL_ENABLEMENT",
+  "blocking_reasons": [
+    "IAX-06/IAX-07/IAX-08 sealed row-level private bytes are not present in the active evidence workspace; only canonical hashes/aggregate receipts are currently available.",
+    "Seven non_item_support_record rows need cross-axis adoption suppression for earlier IAX-02 through IAX-05 candidate evidence.",
+    "Source-backed mount/host semantic collisions require correction overlay before adoption.",
+    "Explicit unresolved and exact-unknown states must remain governed review states rather than being forced."
+  ],
+  "next_safe_operation": "Proceed with Platform v0.11.0 additive candidate projection/review across 5,628 platform-catalog rows while Item canonical adoption remains gated; separately recover or versionedly reproject IAX-06/07/08 row-level evidence."
+}
