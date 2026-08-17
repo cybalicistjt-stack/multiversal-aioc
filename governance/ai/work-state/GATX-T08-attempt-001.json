@@ -1,71 +1,237 @@
 {
   "schema_version": "1.0.0",
-  "revision": 4,
+  "revision": 5,
   "work_item_id": "GATX-T08",
   "attempt_id": "GATX-T08-attempt-001",
   "track": "guided-alpha-testing-experience",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "branch": "internal-alpha/gatx-t07-remote-t08-cross-location",
   "governance_repository": "cybalicistjt-stack/multiversal-aioc",
-  "governance_branch": "governance/gatx-t07-railway-repo-access-blocker",
-  "status": "in_progress",
+  "governance_branch": "governance/gatx-t07-t08-live-completion",
+  "status": "ready_for_review",
   "owner_selected": false,
   "started_at": "2026-08-16T22:46:00Z",
-  "updated_at": "2026-08-16T23:44:00Z",
+  "updated_at": "2026-08-17T11:12:00Z",
   "completed_at": null,
   "base_commit": "f489a5c791580f695cd5e5f60600f567145c93cb",
   "construction_complete": true,
   "construction_head": "28c03c5572ae849cadaf6cbfd50be415401319c7",
-  "validated_candidate_sha": "489acc1dca0ebd8b1495b26bc72ad043f59b5a4c",
-  "latest_pushed_commit": "0179edf6c42080523965e68ab72d3ae461b86f64",
-  "expected_remote_head": "0179edf6c42080523965e68ab72d3ae461b86f64",
-  "pull_request": 180,
-  "application_merge_commit": "0179edf6c42080523965e68ab72d3ae461b86f64",
+  "validated_candidate_sha": "b204fb91797e226d297c75884056bde085e17c0e",
+  "latest_pushed_commit": "bff19db1d24205c0886df48f04f2febe09e05b65",
+  "expected_remote_head": "d41a245d72f10d6027c4606cd429abba7028bfab",
+  "pull_request": 183,
+  "application_merge_commit": "bff19db1d24205c0886df48f04f2febe09e05b65",
   "validation_started": true,
   "objective": "Complete cross-location Guided Alpha and establish the permanent remote-session regression loop using the access-gated T07 remote runtime, including adverse authorization, reconnect, ordering, hidden-information and latency cases.",
-  "last_verified_action": "All ten deterministic T08 charters remain passed. The no-cost Render Free deployment path for the unchanged remote runtime passed exact Render run 31979824360 plus broader preservation run 31979824415 and squash-merged in app PR #180 as 0179edf6c42080523965e68ab72d3ae461b86f64. Final T08 completion remains withheld until the live Render service is verified and genuine geographically separated GM/Player evidence exists for R01/R02/R03/R06/R09.",
+  "last_verified_action": "The live repaired Render runtime completed the owner-observed cross-location session. Session p906023-ec4296e5 showed distinct GM/Player device IDs, automatic proposal visibility, GM-only approval, GM-only marker presence on GM and explicit absence on Player, approved revision 3/sequence 3 on both roles, and Player reconnect #2. Earlier same-service physical evidence recorded the 350 ms latency charter; repaired-head validation preserved the unchanged endpoint.",
   "dependency": {
-    "GATX-T07-REMOTE": {"status":"in_progress","software_implementation_merged":true,"render_free_path_validated":true,"deployed_runtime_verified":false,"checkpoint":"governance/ai/work-state/GATX-T07-REMOTE-attempt-001.json"}
+    "GATX-T07-REMOTE": {
+      "status": "ready_for_review",
+      "software_implementation_merged": true,
+      "render_free_path_validated": true,
+      "deployed_runtime_verified": true,
+      "checkpoint": "governance/ai/work-state/GATX-T07-REMOTE-attempt-001.json"
+    }
   },
-  "active_substep": "awaiting-render-live-runtime-and-geographic-evidence",
-  "completed_substeps": ["permanent-regression-contract","ten-blocking-charters","deterministic-http-regression-harness","authority-and-permission-tests","hidden-information-tests","ordered-delivery-tests","duplicate-suppression-tests","reconnect-restoration-tests","bounded-latency-tests","synthetic-reset-tests","exact-head-ci-validation","application-merge","render-free-container-validation","render-deployment-path-merge"],
-  "next_action": "After the owner completes the one-time free Render Blueprint deployment and GATX-T07-REMOTE passes live verification, run the deployed T08 regression. Final completion additionally requires genuine geographically separated GM and Player clients for T08-R01, T08-R02, T08-R03, T08-R06 and T08-R09. Do not substitute CI, tabs, browser contexts, or same-LAN devices for geographic evidence.",
+  "active_substep": "governance-continuity-closure",
+  "completed_substeps": [
+    "permanent-regression-contract",
+    "ten-blocking-charters",
+    "deterministic-http-regression-harness",
+    "authority-and-permission-tests",
+    "hidden-information-tests",
+    "ordered-delivery-tests",
+    "duplicate-suppression-tests",
+    "reconnect-restoration-tests",
+    "bounded-latency-tests",
+    "synthetic-reset-tests",
+    "exact-head-ci-validation",
+    "application-merge",
+    "render-free-container-validation",
+    "render-deployment-path-merge",
+    "render-live-deployment",
+    "owner-geographic-r01-r02-r03-r06-r09",
+    "live-refresh-repair",
+    "live-public-probe",
+    "application-evidence-closure"
+  ],
+  "next_action": "Run governance continuity on this ready-for-review projection; if it passes, promote GATX-T07-REMOTE and GATX-T08 together to completed_verified. Do not require a physical R10 reset because the governed geographic final gate names only R01/R02/R03/R06/R09 and R10 already passes deterministic repaired-head regression.",
   "regression_contract": {
     "charter_id": "GATX-T08-CROSS-LOCATION-REGRESSION-001",
     "path": "apps/client-ui/public/gatx-transport/v0.2.0/T08_CROSS_LOCATION_REGRESSION_v0.2.0.json",
     "scenario_count": 10,
-    "outcomes": ["pass", "fail", "blocked", "skipped"],
+    "outcomes": [
+      "pass",
+      "fail",
+      "blocked",
+      "skipped"
+    ],
     "permanent_regression": true,
-    "scenarios": ["T08-R01 remote join and same-session identity","T08-R02 Player proposal and GM authoritative approval","T08-R03 hidden-information boundary","T08-R04 ordered delivery","T08-R05 duplicate suppression","T08-R06 reconnect restoration","T08-R07 permission denial","T08-R08 credential denial","T08-R09 bounded adverse latency","T08-R10 synthetic session reset"],
-    "actual_geographic_final_gate": ["T08-R01", "T08-R02", "T08-R03", "T08-R06", "T08-R09"]
+    "scenarios": [
+      "T08-R01 remote join and same-session identity",
+      "T08-R02 Player proposal and GM authoritative approval",
+      "T08-R03 hidden-information boundary",
+      "T08-R04 ordered delivery",
+      "T08-R05 duplicate suppression",
+      "T08-R06 reconnect restoration",
+      "T08-R07 permission denial",
+      "T08-R08 credential denial",
+      "T08-R09 bounded adverse latency",
+      "T08-R10 synthetic session reset"
+    ],
+    "actual_geographic_final_gate": [
+      "T08-R01",
+      "T08-R02",
+      "T08-R03",
+      "T08-R06",
+      "T08-R09"
+    ]
   },
   "completion_gate": {
-    "required_evidence_kinds": ["commit", "pull_request", "ci_run", "artifact", "merge"],
-    "required_validation_commands": ["all ten T08 deterministic regression charters","client regression typecheck accessibility and build","deployed remote T08 regression","actual geographically separated GM/Player evidence for R01 R02 R03 R06 R09","governance continuity validation"],
+    "required_evidence_kinds": [
+      "commit",
+      "pull_request",
+      "ci_run",
+      "artifact",
+      "merge"
+    ],
+    "required_validation_commands": [
+      "all ten T08 deterministic regression charters",
+      "client regression typecheck accessibility and build",
+      "deployed remote T08 regression",
+      "actual geographically separated GM/Player evidence for R01 R02 R03 R06 R09",
+      "governance continuity validation"
+    ],
     "owner_approval_required": false
   },
   "validation": [
-    {"command":"all ten T08 deterministic regression charters","status":"pass","evidence":"exact-head run 31979824415 remote-contract-regression"},
-    {"command":"client regression typecheck accessibility and build","status":"pass","evidence":"exact-head run 31979824415 client-preservation"},
-    {"command":"Render free Blueprint and exact container smoke","status":"pass","evidence":"exact-head Render run 31979824360"},
-    {"command":"deployed remote T08 regression","status":"not_run","evidence":"blocked until owner completes initial free Render Blueprint deployment"},
-    {"command":"actual geographically separated GM/Player evidence for R01 R02 R03 R06 R09","status":"not_run","evidence":"requires genuine cross-location clients; simulation is forbidden"},
-    {"command":"governance continuity validation","status":"not_run","evidence":null}
+    {
+      "command": "all ten T08 deterministic regression charters",
+      "status": "pass",
+      "evidence": "repaired exact-head run 32021864363 remote-contract-regression"
+    },
+    {
+      "command": "client regression typecheck accessibility and build",
+      "status": "pass",
+      "evidence": "repaired exact-head run 32021864363 client-preservation"
+    },
+    {
+      "command": "Render free Blueprint and exact container smoke",
+      "status": "pass",
+      "evidence": "repaired exact-head Render run 32021864270"
+    },
+    {
+      "command": "deployed remote T08 regression",
+      "status": "pass",
+      "evidence": "live Render deployment dep-da1eepu417fc73ac4fpg; public probe 32023337155; artifacts/gatx-t08/GATX_T07_T08_LIVE_CROSS_LOCATION_EVIDENCE_20260817.json"
+    },
+    {
+      "command": "actual geographically separated GM/Player evidence for R01 R02 R03 R06 R09",
+      "status": "pass",
+      "evidence": "artifacts/gatx-t08/GATX_T07_T08_LIVE_CROSS_LOCATION_EVIDENCE_20260817.json"
+    },
+    {
+      "command": "governance continuity validation",
+      "status": "not_run",
+      "evidence": null
+    }
   ],
-  "unresolved_failures": [
-    {"id":"GATX-T08-DEP-002","class":"dependency","summary":"GATX-T07-REMOTE has a validated no-cost Render path but the owner-side initial Render deployment has not yet produced a live URL/receipt."},
-    {"id":"GATX-T08-GEO-001","class":"physical-cross-location-evidence","summary":"No genuine geographically separated GM/Player execution has been observed for the five required physical charters."}
-  ],
+  "unresolved_failures": [],
   "owner_decision_required": false,
   "roadmap_projection_pending": true,
   "evidence": [
-    {"kind":"commit","value":"GATX-T08 validated software candidate 489acc1dca0ebd8b1495b26bc72ad043f59b5a4c"},
-    {"kind":"pull_request","value":"GATX-T07-REMOTE/T08 application PR #179"},
-    {"kind":"ci_run","value":"GATX-T08 deterministic exact-head validation run 31977976497 PASS"},
-    {"kind":"merge","value":"GATX-T07-REMOTE/T08 application squash merge 5e4f446518701cd9271ebc493f30dcac0a2b5166"},
-    {"kind":"ci_run","value":"GATX-T08 Render preservation run 31979824415 PASS"},
-    {"kind":"ci_run","value":"GATX-T08 Render container smoke run 31979824360 PASS"},
-    {"kind":"merge","value":"GATX-T08 Render deployment-path application squash merge 0179edf6c42080523965e68ab72d3ae461b86f64"}
+    {
+      "kind": "commit",
+      "value": "GATX-T08 validated software candidate 489acc1dca0ebd8b1495b26bc72ad043f59b5a4c"
+    },
+    {
+      "kind": "pull_request",
+      "value": "GATX-T07-REMOTE/T08 application PR #179"
+    },
+    {
+      "kind": "ci_run",
+      "value": "GATX-T08 deterministic exact-head validation run 31977976497 PASS"
+    },
+    {
+      "kind": "merge",
+      "value": "GATX-T07-REMOTE/T08 application squash merge 5e4f446518701cd9271ebc493f30dcac0a2b5166"
+    },
+    {
+      "kind": "ci_run",
+      "value": "GATX-T08 Render preservation run 31979824415 PASS"
+    },
+    {
+      "kind": "ci_run",
+      "value": "GATX-T08 Render container smoke run 31979824360 PASS"
+    },
+    {
+      "kind": "merge",
+      "value": "GATX-T08 Render deployment-path application squash merge 0179edf6c42080523965e68ab72d3ae461b86f64"
+    },
+    {
+      "kind": "commit",
+      "value": "GATX live-refresh validated candidate b204fb91797e226d297c75884056bde085e17c0e"
+    },
+    {
+      "kind": "pull_request",
+      "value": "GATX live-refresh application PR #182"
+    },
+    {
+      "kind": "ci_run",
+      "value": "GATX repaired Render validation run 32021864270 PASS"
+    },
+    {
+      "kind": "ci_run",
+      "value": "GATX repaired remote/client validation run 32021864363 PASS"
+    },
+    {
+      "kind": "merge",
+      "value": "GATX live-refresh application squash merge d41a245d72f10d6027c4606cd429abba7028bfab"
+    },
+    {
+      "kind": "artifact",
+      "value": "Owner cross-location evidence artifacts/gatx-t08/GATX_T07_T08_LIVE_CROSS_LOCATION_EVIDENCE_20260817.json"
+    },
+    {
+      "kind": "artifact",
+      "value": "Render live deployment dep-da1eepu417fc73ac4fpg service srv-da1730jl550s73f065j0"
+    },
+    {
+      "kind": "ci_run",
+      "value": "Live public deployment probe 32023337155 PASS"
+    },
+    {
+      "kind": "pull_request",
+      "value": "GATX live evidence application PR #183"
+    },
+    {
+      "kind": "merge",
+      "value": "GATX live evidence application squash merge bff19db1d24205c0886df48f04f2febe09e05b65"
+    }
   ],
-  "notes": ["Software construction and deterministic regression are complete and merged; no-cost hosting preparation is also complete. Completion is withheld for required live deployment and geographic evidence.","Two tabs, two browser contexts, CI runners, or devices on one LAN are not geographically separated evidence."]
+  "notes": [
+    "Software construction and deterministic regression are complete and merged; no-cost hosting preparation is also complete. Completion is withheld for required live deployment and geographic evidence.",
+    "Two tabs, two browser contexts, CI runners, or devices on one LAN are not geographically separated evidence."
+  ],
+  "physical_cross_location_evidence": {
+    "artifact": "artifacts/gatx-t08/GATX_T07_T08_LIVE_CROSS_LOCATION_EVIDENCE_20260817.json",
+    "application_merge_commit": "bff19db1d24205c0886df48f04f2febe09e05b65",
+    "current_repaired_session": "p906023-ec4296e5",
+    "required_charters": [
+      "T08-R01",
+      "T08-R02",
+      "T08-R03",
+      "T08-R06",
+      "T08-R09"
+    ],
+    "status": "pass",
+    "owner_location_strings": {
+      "player": "jasper Alabama",
+      "gm": "carbon bill Alabama"
+    },
+    "network_strings": {
+      "player": "Verizon data",
+      "gm": "home wifi"
+    }
+  }
 }

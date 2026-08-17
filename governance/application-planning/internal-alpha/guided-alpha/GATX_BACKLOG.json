@@ -7,17 +7,29 @@
   "activated_at": "2026-08-16T16:20:00Z",
   "execution_rule": "Complete all construction within a tranche or bounded prerequisite before running its validation checks; batch validation repairs and rerun only the smallest applicable final gate.",
   "current_stage_completion_boundary": {
-    "required_before_ordinary_roadmap_progression": ["GATX-T01", "GATX-DIAG-F01", "GATX-T02", "GATX-T03", "GATX-T04", "GATX-T05", "GATX-T06", "GATX-T07-ARCH"],
-    "dependency_gated_later": ["GATX-T07-REMOTE", "GATX-T08"],
+    "required_before_ordinary_roadmap_progression": [
+      "GATX-T01",
+      "GATX-DIAG-F01",
+      "GATX-T02",
+      "GATX-T03",
+      "GATX-T04",
+      "GATX-T05",
+      "GATX-T06",
+      "GATX-T07-ARCH"
+    ],
+    "dependency_gated_later": [
+      "GATX-T07-REMOTE",
+      "GATX-T08"
+    ],
     "satisfied": true
   },
   "current_position": {
     "highest_completed": "GATX-T07-ARCH",
-    "active_item": null,
-    "active_item_title": null,
-    "next_tranche_after_active_item": "GATX-T07-REMOTE",
-    "next_tranche_title": "Remote Test Session activation",
-    "next_tranche_state": "dependency_gated",
+    "active_item": "GATX-T07-REMOTE",
+    "active_item_title": "Remote Test Session activation",
+    "next_tranche_after_active_item": "GATX-T08",
+    "next_tranche_title": "Cross-location Guided Alpha and permanent regression loop",
+    "next_tranche_state": "ready_for_review",
     "t06_completed": true,
     "t07_arch_started": true,
     "t07_arch_construction_complete": true,
@@ -25,10 +37,12 @@
     "t07_arch_application_merged": true,
     "t07_arch_completed": true,
     "required_architecture_boundary_satisfied": true,
-    "t07_remote_dependency_gated": true,
-    "t07_remote_started": false,
-    "t08_started": false,
-    "stop_before_t07_remote": true
+    "t07_remote_dependency_gated": false,
+    "t07_remote_started": true,
+    "t08_started": true,
+    "stop_before_t07_remote": false,
+    "t07_remote_live_verified": true,
+    "t08_geographic_evidence_verified": true
   },
   "items": [
     {
@@ -42,7 +56,11 @@
       "application_merge_commit": "503b793dbc3579e41da78d89722118df10889ed4",
       "application_pull_request": 160,
       "completed_at": "2026-08-16T17:03:00Z",
-      "validation_runs": [31960148617, 31960148623, 31960148611],
+      "validation_runs": [
+        31960148617,
+        31960148623,
+        31960148611
+      ],
       "validated_package": "Multiversal-Internal-Alpha-Windows-ba3ad9b13f09-GATX-T01.zip",
       "validated_package_sha256": "7d29f847e0436b90b5430b7a062ada36305ace8f981fb1bc79c14f9833beafae",
       "distribution_approved": false,
@@ -52,14 +70,20 @@
       "id": "GATX-DIAG-F01",
       "title": "Automatic diagnostics foundation",
       "status": "completed_verified",
-      "dependencies": ["GATX-T01"],
+      "dependencies": [
+        "GATX-T01"
+      ],
       "attempt_id": "GATX-DIAG-F01-attempt-001",
       "application_branch": "internal-alpha/gatx-diagnostics-foundation",
       "application_pull_request": 162,
       "validated_candidate_sha": "f16a08c7df520751be041df992c2217d71a3f332",
       "application_merge_commit": "a6c2bd17962f8ed54dabd0d4d4446fdb58aa5754",
       "completed_at": "2026-08-16T17:47:00Z",
-      "validation_runs": [31962299517, 31962299464, 31962299523],
+      "validation_runs": [
+        31962299517,
+        31962299464,
+        31962299523
+      ],
       "validated_package": "Multiversal-Internal-Alpha-Windows-f16a08c7df52-GATX-T01.zip",
       "validated_package_sha256": "725294665326fa89bf8d58567e6112f99c91b24db8cb758694e2608e3aa90bfb",
       "kind": "prerequisite_foundation",
@@ -70,14 +94,18 @@
       "id": "GATX-T02",
       "title": "Glass Harbor reference Campaign integration",
       "status": "completed_verified",
-      "dependencies": ["GATX-DIAG-F01"],
+      "dependencies": [
+        "GATX-DIAG-F01"
+      ],
       "attempt_id": "GATX-T02-attempt-001",
       "application_branch": "internal-alpha/gatx-t02-glass-harbor-integration",
       "application_pull_request": 163,
       "validated_candidate_sha": "9b3be55c2b7aebc7620bf26429f55d3de1dfd84d",
       "application_merge_commit": "773e24bbb0d3b7b5c484eceb3f37c69c8f6c416b",
       "completed_at": "2026-08-16T18:26:30Z",
-      "validation_runs": [31964399451],
+      "validation_runs": [
+        31964399451
+      ],
       "validated_package": "Multiversal-Internal-Alpha-Windows-9b3be55c2b7a-GATX-T02.zip",
       "validated_package_sha256": "74c03e034b9e719c7c89f9dff5d81a33a6eeae6b4878a3ba912e427f4172e0dc",
       "source_authority": "governance/application-planning/stage-a-reference-campaign/STAGE_A_TESTER_REFERENCE_CAMPAIGN_KIT_HANDOFF_v0.1.0.md",
@@ -88,7 +116,9 @@
       "id": "GATX-T03",
       "title": "Guided scenario and test-journey engine",
       "status": "completed_verified",
-      "dependencies": ["GATX-T02"],
+      "dependencies": [
+        "GATX-T02"
+      ],
       "attempt_id": "GATX-T03-attempt-001",
       "application_branch": "internal-alpha/gatx-t03-scenario-engine",
       "application_pull_request": 164,
@@ -96,15 +126,28 @@
       "validated_candidate_sha": "85bd490a0805186071a148768bae661e12dc30b6",
       "application_merge_commit": "fd643355a6cf10db51190d15037711ee04515637",
       "completed_at": "2026-08-16T19:01:00Z",
-      "validation_runs": [31965938394, 31966227328, 31966327261],
+      "validation_runs": [
+        31965938394,
+        31966227328,
+        31966327261
+      ],
       "validated_package": "Multiversal-Internal-Alpha-Windows-85bd490a0805-GATX-T03.zip",
       "validated_package_sha256": "29091a2c3ad2c415e98ada0a7591cea6c685c5f728dd928b5ffaf346d4c013bc",
       "workflow_artifact_id": 9268507845,
       "source_package_sha256": "bea56f266449f8b89d855bca9e36973c20c3dd95dfb79897fe1132c94df457f6",
       "runtime_scenarios": 24,
       "derived_charters": 8,
-      "execution_modes": {"single-role":15,"coordinated-multi-role":5,"operator-or-future-role-required":4},
-      "outcomes": ["pass","fail","blocked","skipped"],
+      "execution_modes": {
+        "single-role": 15,
+        "coordinated-multi-role": 5,
+        "operator-or-future-role-required": 4
+      },
+      "outcomes": [
+        "pass",
+        "fail",
+        "blocked",
+        "skipped"
+      ],
       "public_player_orientation_records": 3,
       "protected_full_records": 27,
       "protected_full_projection_host_game_master_only": true,
@@ -116,7 +159,9 @@
       "id": "GATX-T04",
       "title": "Frictionless evidence and defect capture",
       "status": "completed_verified",
-      "dependencies": ["GATX-T03"],
+      "dependencies": [
+        "GATX-T03"
+      ],
       "foundation_dependency": "GATX-DIAG-F01",
       "attempt_id": "GATX-T04-attempt-001",
       "application_branch": "internal-alpha/gatx-t04-evidence-defect-capture",
@@ -127,7 +172,10 @@
       "application_merge_commit": "8aa81e12a4e17f23aa98fd8461e635ad35145797",
       "started_at": "2026-08-16T19:03:00Z",
       "completed_at": "2026-08-16T19:49:00Z",
-      "validation_runs": [31968282129, 31968647769],
+      "validation_runs": [
+        31968282129,
+        31968647769
+      ],
       "validated_package": "Multiversal-Internal-Alpha-Windows-38eb5bcf8e6c-GATX-T04.zip",
       "validated_package_sha256": "e37ce2e9f4c44fa1af460d54881fcfe5873b0b52ce1651088957ac9cf900602d",
       "workflow_artifact_id": 9269106399,
@@ -135,14 +183,31 @@
       "distribution_approved": false,
       "evidence_contract_id": "GATX-T04-EVIDENCE-CONTRACT-001",
       "bundle_marker": "GATX-T04-EVIDENCE-BUNDLE-1",
-      "tester_text_fields": ["observed", "expected"],
+      "tester_text_fields": [
+        "observed",
+        "expected"
+      ],
       "tester_text_max_length": 512,
       "explicit_consent_required": true,
       "defect_classes": 7,
-      "severity": ["info", "warning", "error"],
-      "reproducibility": ["not-retried", "once", "intermittent", "every-time"],
+      "severity": [
+        "info",
+        "warning",
+        "error"
+      ],
+      "reproducibility": [
+        "not-retried",
+        "once",
+        "intermittent",
+        "every-time"
+      ],
       "application_area_mappings": 24,
-      "bundle_contents": ["defect.json", "diagnostics.json", "README.txt", "SHA256SUMS.txt"],
+      "bundle_contents": [
+        "defect.json",
+        "diagnostics.json",
+        "README.txt",
+        "SHA256SUMS.txt"
+      ],
       "diagnostics_foundation_reused": true,
       "scenario_engine_reused": true,
       "remote_upload": false,
@@ -153,7 +218,9 @@
       "id": "GATX-T05",
       "title": "Device and trusted-LAN connection center",
       "status": "completed_verified",
-      "dependencies": ["GATX-T04"],
+      "dependencies": [
+        "GATX-T04"
+      ],
       "attempt_id": "GATX-T05-attempt-001",
       "application_branch": "internal-alpha/gatx-t05-connection-center",
       "governance_branch": "governance/gatx-t05-connection-center",
@@ -165,7 +232,13 @@
       "started_at": "2026-08-16T20:17:00Z",
       "completed_at": "2026-08-16T20:52:00Z",
       "validation_started": true,
-      "validation_runs": [31970883113,31970979407,31971201277,31971361588,31971748067],
+      "validation_runs": [
+        31970883113,
+        31970979407,
+        31971201277,
+        31971361588,
+        31971748067
+      ],
       "validated_package": "Multiversal-Internal-Alpha-Windows-affc3d1259f4-GATX-T05.zip",
       "validated_package_sha256": "05db3bd47671ece673d1495dce21ab6c7b54fd5f564a830c5f9aceaeafda9d10",
       "linux_workflow_artifact_id": 9269900651,
@@ -179,11 +252,29 @@
       "connection_contract_id": "GATX-T05-CONNECTION-CONTRACT-001",
       "connection_marker": "GATX-T05-CONNECTION-CENTER-1",
       "round_id": "GATX-TRUSTED-LAN-CONNECTION-001",
-      "layers": ["browser","same-lan","host-address","listener","network-profile","firewall","request","application"],
+      "layers": [
+        "browser",
+        "same-lan",
+        "host-address",
+        "listener",
+        "network-profile",
+        "firewall",
+        "request",
+        "application"
+      ],
       "listener_bind": "0.0.0.0",
       "copyable_account_url": true,
       "copyable_access_url": true,
-      "windows_firewall": {"direction":"Inbound","action":"Allow","protocol":"TCP","remote_address":"LocalSubnet","profile":"Any","explicit_admin_approval":true,"temporary":true,"cleanup_required":true},
+      "windows_firewall": {
+        "direction": "Inbound",
+        "action": "Allow",
+        "protocol": "TCP",
+        "remote_address": "LocalSubnet",
+        "profile": "Any",
+        "explicit_admin_approval": true,
+        "temporary": true,
+        "cleanup_required": true
+      },
       "enable_helper": "ENABLE_ANDROID_LAN.cmd",
       "disable_helper": "DISABLE_ANDROID_LAN.cmd",
       "remote_device_ip_stored": false,
@@ -201,7 +292,9 @@
       "id": "GATX-T06",
       "title": "Testing operations and control layer",
       "status": "completed_verified",
-      "dependencies": ["GATX-T05"],
+      "dependencies": [
+        "GATX-T05"
+      ],
       "attempt_id": "GATX-T06-attempt-001",
       "application_branch": "internal-alpha/gatx-t06-testing-operations",
       "governance_branch": "governance/gatx-t06-testing-operations",
@@ -213,7 +306,12 @@
       "started_at": "2026-08-16T20:59:00Z",
       "completed_at": "2026-08-16T21:31:00Z",
       "validation_started": true,
-      "validation_runs": [31973105847,31973247727,31973731871,31973819421],
+      "validation_runs": [
+        31973105847,
+        31973247727,
+        31973731871,
+        31973819421
+      ],
       "validated_package": "Multiversal-Internal-Alpha-Windows-a82719a13048-GATX-T06.zip",
       "validated_package_sha256": "97563b90e222b8961482f9d8ec3e7f4a02ab2cbb7a3bfced7ba724aaa5aa9afb",
       "linux_workflow_artifact_id": 9270388528,
@@ -226,8 +324,21 @@
       "assignment_count": 20,
       "required_scenario_count": 20,
       "dependency_queue_count": 4,
-      "coverage_states": ["not-run","passed","failed","blocked","skipped"],
-      "retest_states": ["not-required","required","ready","passed","failed","blocked"],
+      "coverage_states": [
+        "not-run",
+        "passed",
+        "failed",
+        "blocked",
+        "skipped"
+      ],
+      "retest_states": [
+        "not-required",
+        "required",
+        "ready",
+        "passed",
+        "failed",
+        "blocked"
+      ],
       "operator_surface": "/alpha-ops",
       "operator_surface_loopback_only": true,
       "tester_view_own_assignment_only": true,
@@ -246,7 +357,9 @@
       "id": "GATX-T07-ARCH",
       "title": "Remote-online-ready Guided Alpha architecture",
       "status": "completed_verified",
-      "dependencies": ["GATX-T06"],
+      "dependencies": [
+        "GATX-T06"
+      ],
       "attempt_id": "GATX-T07-ARCH-attempt-001",
       "application_branch": "internal-alpha/gatx-t07-transport-neutral-architecture",
       "governance_branch": "governance/gatx-t07-transport-neutral-architecture",
@@ -257,7 +370,12 @@
       "application_merge_commit": "43dea893d7e0ec0202cf123f8697d9db9ad8201d",
       "completed_at": "2026-08-16T22:13:00Z",
       "validation_started": true,
-      "validation_runs": [31974945337,31975077917,31975234543,31975650158],
+      "validation_runs": [
+        31974945337,
+        31975077917,
+        31975234543,
+        31975650158
+      ],
       "validated_package": "Multiversal-Internal-Alpha-Windows-2918e7772587-GATX-T07-ARCH.zip",
       "validated_package_sha256": "eeefe27e9005f846a882ea621b0f672c6d1ec3ee7bc4a83e232a5a25d0500dd0",
       "linux_workflow_artifact_id": 9270885103,
@@ -267,7 +385,10 @@
       "transport_contract_id": "GATX-T07-TRANSPORT-CONTRACT-001",
       "transport_marker": "GATX-T07-TRANSPORT-ARCH-1",
       "round_id": "GATX-TRANSPORT-ARCH-001",
-      "active_modes": ["local-host","trusted-lan"],
+      "active_modes": [
+        "local-host",
+        "trusted-lan"
+      ],
       "future_mode": "remote-test-session",
       "logical_service_count": 17,
       "remote_binding_configured": false,
@@ -284,16 +405,42 @@
     {
       "id": "GATX-T07-REMOTE",
       "title": "Remote Test Session activation",
-      "status": "dependency_gated",
-      "dependencies": ["GATX-T07-ARCH", "P9 authoritative online/session prerequisites"],
-      "acceptance_summary": "Remote joining/reconnect/latency/session visibility uses the governed authoritative runtime; no public exposure workaround substitutes for missing dependencies."
+      "status": "ready_for_review",
+      "dependencies": [
+        "GATX-T07-ARCH",
+        "P9 authoritative online/session prerequisites"
+      ],
+      "acceptance_summary": "The governed access-gated Render Free runtime is live and verified; server-derived GM/Player roles, authority, hidden-information filtering, reconnect, latency and credential denial are evidenced. Governance continuity is the only remaining completion gate.",
+      "attempt_id": "GATX-T07-REMOTE-attempt-001",
+      "application_pull_request": 183,
+      "validated_candidate_sha": "b204fb91797e226d297c75884056bde085e17c0e",
+      "application_merge_commit": "bff19db1d24205c0886df48f04f2febe09e05b65",
+      "deployed_runtime_commit": "d41a245d72f10d6027c4606cd429abba7028bfab",
+      "live_service_url": "https://multiversal-gatx-remote.onrender.com",
+      "live_deployment_id": "dep-da1eepu417fc73ac4fpg",
+      "live_public_probe_run": 32023337155
     },
     {
       "id": "GATX-T08",
       "title": "Cross-location Guided Alpha and permanent regression loop",
-      "status": "dependency_gated",
-      "dependencies": ["GATX-T07-REMOTE"],
-      "acceptance_summary": "Geographically separated GM/Player guided session plus adverse reconnect/permission/concurrency cases completes and becomes durable regression coverage."
+      "status": "ready_for_review",
+      "dependencies": [
+        "GATX-T07-REMOTE"
+      ],
+      "acceptance_summary": "The permanent ten-charter remote regression loop passes deterministically; live Render operation and genuine geographically separated GM/Player evidence satisfy R01/R02/R03/R06/R09. Governance continuity is the only remaining completion gate.",
+      "attempt_id": "GATX-T08-attempt-001",
+      "application_pull_request": 183,
+      "validated_candidate_sha": "b204fb91797e226d297c75884056bde085e17c0e",
+      "application_merge_commit": "bff19db1d24205c0886df48f04f2febe09e05b65",
+      "geographic_evidence_verified": true,
+      "geographic_evidence_artifact": "artifacts/gatx-t08/GATX_T07_T08_LIVE_CROSS_LOCATION_EVIDENCE_20260817.json",
+      "required_geographic_charters": [
+        "T08-R01",
+        "T08-R02",
+        "T08-R03",
+        "T08-R06",
+        "T08-R09"
+      ]
     }
   ],
   "preserved_boundaries": {
