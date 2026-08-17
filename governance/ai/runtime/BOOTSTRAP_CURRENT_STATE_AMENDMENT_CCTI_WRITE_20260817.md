@@ -23,8 +23,8 @@ Do not resume the historical source blocker. Exact Item v0.12.0, Platform v0.11.
 
 - CCTI read-only CCTI-01 through CCTI-08: `completed_verified`.
 - 11,017/11,017 source rows accounted; source/master CSVs remain unchanged.
-- Item IAX-01 through IAX-06 candidate dispositions are completed and merged; candidate taxonomy remains disabled/noncanonical.
-- Explicit prior review states remain: IAX-02 110 unresolved; IAX-03 218 unresolved; IAX-04 95 unresolved; IAX-05 10 unresolved. IAX-06 has 5,346 applicable rows with candidates, seven IAX-01 non-item support records explicitly N/A, 36 legacy/reference rows N/A, and zero applicable unresolved rows.
+- Item IAX-01 through IAX-08 candidate dispositions are completed and merged; candidate taxonomy remains disabled/noncanonical.
+- Explicit prior review states remain: IAX-02 110 unresolved; IAX-03 218 unresolved; IAX-04 95 unresolved; IAX-05 10 unresolved; IAX-07 uses exact controlled `unknown` for 225 rows. IAX-06 has zero applicable unresolved rows; IAX-08 has zero exact-unknown rows.
 - Object Game-Readiness baseline covers 11,017 rows and certifies zero rows `GAME_READY` at this stage.
 
 Verified taxonomy merges:
@@ -34,18 +34,20 @@ Verified taxonomy merges:
 - IAX-04 use_relation: `9ac8174425f2a9637820076374e5e62e5d57ee42`.
 - IAX-05 portability_scale: `dafdc374c7e720b68f7bc2e72d7bd43b29915d11`.
 - IAX-06 consumption_lifecycle: `a32b9d81387bc0b7676976f712727144b39c0257`.
+- IAX-07 operational_complexity: `12d9ac1ca6d7b23f9b60c94d5186b11f0abd392b`.
+- IAX-08 agency_level: `7a1f45b7552983af8d49a44eb54a082e4f500b05`.
 
-Current private evidence:
-- IAX-05 corrected artifact SHA-256 `4aefcd7697c011342b7c50be206af3d964f46efe9d7153999cdd3262f80335f1`.
-- IAX-06 artifact SHA-256 `6c7636af3500ffa8a0263b888f6b08de10bd687363a81ebc7b957c376a49ea8f`.
+Latest private evidence:
+- IAX-07 artifact SHA-256 `bb4818ca1927076a9702349425f8748fb4c1895a0105f09f3410fba1e96da2b9`.
+- IAX-08 artifact SHA-256 `5fcf56957d3f26a23189f5c541a3365b95b82aa4b9754b034db5cd4eba2f2ce9`.
 
 ## Exact active substep
 
-**CCTI-09 / CCTI-05 — Item IAX-07 `operational_complexity` candidate projection.**
+**CCTI-09 / CCTI-05 — Item IAX-09 `functional_domain` candidate projection.**
 
-Branch: `governance/ccti-item-iax07-operational-complexity`.
+Branch: `governance/ccti-item-iax09-functional-domain`.
 
-Execute the bounded single-select IAX-07 tranche across the 5,389 Item-corpus rows using the exact v0.12.0 registry. Preserve confidence/review state, independent prior-axis unresolved/not-applicable dispositions and the 36 `Weapons_Ammo.csv` reference-only rows.
+Execute the bounded multi-select IAX-09 tranche across the 5,389 Item-corpus rows using the exact v0.12.0 registry. Preserve confidence/review state, independent prior-axis unresolved/unknown/not-applicable dispositions and the 36 `Weapons_Ammo.csv` reference-only rows.
 
 ## Mandatory boundaries
 
