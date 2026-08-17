@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "ITEM-CORPUS-AUDIT-001",
+  "status": "source_only_preprojection_ready_taxonomy_registry_blocked",
+  "purpose": "Prepare one safe deterministic projection envelope for every direct Item source row before loading the unavailable exact v0.12.0 controlled registry/crosswalk package.",
+  "private_envelope": {
+    "filename": "ITEM_CORPUS_PREPROJECTION_ENVELOPE_v0.1.0.csv",
+    "rows": 5389,
+    "sha256": "a6b377f9fe7af4eedff65fb82c85076fd53e9c0949cb3380f33cd323cc4636fc",
+    "repository_publication": "not_published"
+  },
+  "envelope_fields": [
+    "source_file",
+    "governed_dataset",
+    "source_row_number",
+    "source_row_fingerprint_sha256",
+    "explicit_source_id",
+    "source_record_kind_raw",
+    "normalized_name_occurrence_count",
+    "identity_review_required",
+    "current_definition_candidate_state",
+    "current_definition_candidate_ids",
+    "provenance_transformation_signals",
+    "taxonomy_registry_state",
+    "v0_12_projection_status",
+    "v0_12_taxonomy_assertions",
+    "v0_12_content_context_assertions",
+    "v0_12_product_identity_assertions",
+    "v0_12_creator_origin_assertions",
+    "required_next_step"
+  ],
+  "invariants": {
+    "source_rows": 5389,
+    "taxonomy_assignments": 0,
+    "content_context_assignments": 0,
+    "product_identity_assignments": 0,
+    "creator_origin_assignments": 0,
+    "source_mutation": false,
+    "current_mechanics_mutation": false,
+    "registry_state": "exact_v0_12_registry_unavailable",
+    "row_projection_state": "blocked_before_taxonomy_assignment"
+  },
+  "reproducible_builder": "tools/build_item_corpus_preprojection.py",
+  "required_inputs": {
+    "source_snapshot_sha256": "c5732c5b4c3cdf5eca1d19eef7354289d1f92a87397b56aa7623b3f0a24177ec",
+    "source_coverage_audit_sha256": "4a98058b03d3ced252f01dac3026997de2dfd0b064be6a691debb93a0c485fff"
+  },
+  "next_transition": "Replace only the blank v0.12.0 assertion fields using the checksum-verified prepared registry/crosswalk rules. Unknown and review-required values remain explicit. The source coordinate, row fingerprint, explicit source ID, identity review state and provenance transformation signals remain immutable audit inputs."
+}
