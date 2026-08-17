@@ -12,42 +12,42 @@ When CCTI is the newest internally consistent owner-selected evidence, recover:
 
 - program: `governance/application-planning/content-catalog-taxonomy-integration/CONTENT_CATALOG_TAXONOMY_INTEGRATION_PROGRAM.md`;
 - roadmap supplement: `governance/application-planning/content-catalog-taxonomy-integration/CONTENT_CATALOG_TAXONOMY_INTEGRATION_ROADMAP_SUPPLEMENT.md`;
-- read-only completion receipt: `governance/application-planning/content-catalog-taxonomy-integration/CCTI_READ_ONLY_COMPLETION_RECEIPT_20260817.json`;
-- exact-source receipt: `governance/application-planning/content-catalog-taxonomy-integration/CCTI02_EXACT_SOURCE_RECOVERY_RECEIPT_20260817.json`;
 - active checkpoint: `governance/ai/work-state/CCTI-WRITE-01-attempt-001.json`;
+- axis progress: `governance/application-planning/content-catalog-taxonomy-integration/CCTI_ITEM_TAXONOMY_AXIS_PROGRESS.json`;
 - Object Game-Readiness program: `governance/application-planning/content-catalog-taxonomy-integration/OBJECT_GAME_READINESS_PROGRAM.md`;
-- Item IAX-01 report: `governance/application-planning/content-catalog-taxonomy-integration/CCTI05_IAX01_RECORD_SCOPE_TRANCHE1_REPORT.md`;
-- readiness baseline: `governance/application-planning/content-catalog-taxonomy-integration/OBJECT_GAME_READINESS_BASELINE_20260817.json`.
+- exact-source receipt: `governance/application-planning/content-catalog-taxonomy-integration/CCTI02_EXACT_SOURCE_RECOVERY_RECEIPT_20260817.json`.
 
-Do not resume the historical exact-source blocker. The exact Item v0.12.0, Platform v0.11.0 and Reality v0.14.0 preparation packages were recovered from owner-supplied `Adding.zip` and checksum-match canonical identities.
+Do not resume the historical source blocker. Exact Item v0.12.0, Platform v0.11.0 and Reality v0.14.0 preparation packages were recovered from owner-supplied `Adding.zip` and checksum-match canonical identities.
 
 ## Current verified position
 
 - CCTI read-only CCTI-01 through CCTI-08: `completed_verified`.
-- 11,017/11,017 source rows accounted.
-- 11,011 current Definition targets + six reference-only holds.
-- platform-domain routing: 2,984 model rows / 2,644 non-model rows.
-- Item IAX-01 candidate projection: 5,353 current candidates + 36 reference-only not-applicable + 0 active unassigned.
-- Object Game-Readiness baseline: 11,017 rows measured; zero rows certified `GAME_READY`.
-- source/master CSVs unchanged.
-- candidate taxonomy is not automatically enabled.
+- 11,017/11,017 source rows accounted; source/master CSVs remain unchanged.
+- Item IAX-01 through IAX-04 candidate dispositions are completed and merged; candidate taxonomy remains disabled/noncanonical.
+- IAX-02 retains 110 explicit unresolved rows; IAX-03 retains 218; IAX-04 retains 95. These are review states, not hidden gaps.
+- Object Game-Readiness baseline covers 11,017 rows and certifies zero rows `GAME_READY` at this stage.
 
-Private tranche artifact: `CCTI_Game_Readiness_Tranche1_20260817.zip`, SHA-256 `c586a01d3d542c0230d09de600995df42408532a5f604dfa02d112a724112a9f`.
+Verified taxonomy merges:
+- IAX-01 / OGR foundation: `79ec7bfa697474660ce529abf478f7489288e525`.
+- IAX-02 object_nature: `25e12e6a5ede0877c0508a80d572a0785a3047ae`.
+- IAX-03 form_factor: `a254b697ea8117f1ce2f06f8f4d9edc700ee7755`.
+- IAX-04 use_relation: `9ac8174425f2a9637820076374e5e62e5d57ee42`.
 
 ## Exact active substep
 
-**CCTI-09 / CCTI-05 — Item IAX-02 `object_nature` candidate projection.**
+**CCTI-09 / CCTI-05 — Item IAX-05 `portability_scale` candidate projection.**
 
-Generate a bounded candidate sidecar across the 5,389 Item-corpus rows using the exact Item v0.12.0 controlled registry and existing source/provenance evidence. Preserve confidence and explicit review-required state. The 36 `Weapons_Ammo.csv` reference-only rows remain not-applicable unless a separately governed identity decision changes them.
+Branch: `governance/ccti-item-iax05-portability-scale`.
+
+Execute the bounded single-select IAX-05 tranche across the 5,389 Item-corpus rows using the exact v0.12.0 registry. Preserve confidence/review state, independent prior-axis unresolved dispositions and the 36 `Weapons_Ammo.csv` reference-only rows.
 
 ## Mandatory boundaries
 
 - Do not rewrite source/master CSVs.
 - Do not silently change stable identities, aliases or supersession decisions.
-- Do not infer same identity or parentage from display-name similarity.
-- Do not force a taxonomy value solely to eliminate an unresolved state.
+- Do not force taxonomy values solely to eliminate unresolved states.
 - Preserve Item Definition vs A8 Asset Instance and Platform Model vs individual asset boundaries.
-- Candidate taxonomy sidecars remain disabled/noncanonical until their governed adoption gate.
+- Candidate taxonomy sidecars remain disabled/noncanonical until governed adoption.
 - Do not begin OGR-05 mechanics reauthoring without first presenting failing mechanics cohorts and repair policy to the owner.
 - Do not begin runtime/app enablement without existing Stage A gates.
 
