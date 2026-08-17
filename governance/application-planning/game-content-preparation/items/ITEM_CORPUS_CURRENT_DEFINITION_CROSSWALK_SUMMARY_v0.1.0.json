@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "ITEM-CORPUS-AUDIT-001",
+  "purpose": "Source-safe aggregate summary of exact-name provenance/canonical-definition candidate matching between the 5,389 governed Item CSV rows and the 8E-008G item-definition occurrence map. This is a preprojection identity/provenance aid, not v0.12.0 taxonomy adoption.",
+  "method": {
+    "source_rows": 5389,
+    "source_dataset_count": 9,
+    "occurrence_evidence": "Multiversal_8E-008G_Source_Reference_Occurrence_Map.csv",
+    "record_types_considered": ["mv.object.item-definition", "item"],
+    "match_rule": "exact normalized source display-name equals normalized item-definition occurrence anchor label after removing row/page locator prefixes",
+    "automatic_identity_merge": false,
+    "taxonomy_assignment": false
+  },
+  "results": {
+    "one_exact_anchor_definition_candidate_rows": 466,
+    "multiple_exact_anchor_definition_candidate_rows": 13,
+    "no_exact_anchor_definition_evidence_rows": 4910,
+    "rows_with_any_exact_anchor_definition_candidate": 479,
+    "rows_with_any_exact_anchor_definition_candidate_percent": 8.888476525329376,
+    "rows_still_requiring_nonexact_crosswalk_or_unresolved_handling": 4910
+  },
+  "multiple_candidate_conflicts": [
+    {"candidate_ids":["mv.core.item.consumable.rations-one-day","mv.core.item.general_supply.rations-1-day"]},
+    {"candidate_ids":["mv.core.item.consumable.acid-flask","mv.core.item.general_supply.acid-flask"]},
+    {"candidate_ids":["mv.core.item.consumable.elixir-of-health","mv.core.item.medicine_toxin.elixir-of-health"]},
+    {"candidate_ids":["mv.core.item.consumable.elixir-of-fire-breath","mv.core.item.medicine_toxin.elixir-of-fire-breath"]},
+    {"candidate_ids":["mv.core.item.consumable.elixir-of-water-walking","mv.core.item.medicine_toxin.elixir-of-water-walking"]},
+    {"candidate_ids":["mv.core.item.consumable.potion-of-healing","mv.core.item.medicine_toxin.potion-of-healing"]},
+    {"candidate_ids":["mv.core.item.consumable.potion-of-greater-healing","mv.core.item.medicine_toxin.potion-of-greater-healing"]},
+    {"candidate_ids":["mv.core.item.consumable.potion-of-invisibility","mv.core.item.medicine_toxin.potion-of-invisibility"]},
+    {"candidate_ids":["mv.core.item.consumable.potion-of-flying","mv.core.item.medicine_toxin.potion-of-flying"]},
+    {"candidate_ids":["mv.core.item.consumable.potion-of-resistance","mv.core.item.medicine_toxin.potion-of-resistance"]},
+    {"candidate_ids":["mv.core.item.consumable.potion-of-speed","mv.core.item.medicine_toxin.potion-of-speed"]},
+    {"candidate_ids":["mv.core.item.consumable.poison-vial","mv.core.item.medicine_toxin.poison-vial"]},
+    {"candidate_ids":["mv.core.item.consumable.antitoxin-vial","mv.core.item.medicine_toxin.antitoxin-vial"]}
+  ],
+  "repeated_name_review": {
+    "normalized_name_groups": 55,
+    "participating_rows": 119,
+    "groups_with_one_exact_occurrence_definition_candidate": 46,
+    "groups_with_one_mode_reference_definition_candidate": 2,
+    "groups_without_exact_current_definition_evidence": 7,
+    "interpretation": "These are review queues only. Same source name never proves same identity; exact occurrence candidate links also remain candidates until governed identity review."
+  },
+  "private_working_crosswalk": {
+    "filename": "ITEM_CORPUS_CURRENT_DEFINITION_CANDIDATE_CROSSWALK_v0.1.0.csv",
+    "rows": 5389,
+    "sha256": "45d091c42a5493157de641246f3e2ab258a790df4b517ca3638e937835963332",
+    "repository_publication": "not_published",
+    "reason": "Keep detailed proprietary row names/source coordinates out of the public governance repository while retaining reproducible aggregate evidence."
+  },
+  "private_collision_review_queue": {
+    "filename": "ITEM_CORPUS_IDENTITY_COLLISION_REVIEW_QUEUE_v0.1.0.csv",
+    "rows": 119,
+    "groups": 55,
+    "sha256": "522ebd2b23d3adcddf4f865a2af30df9e1de91e0b273d1e486d39c9686599f65",
+    "repository_publication": "not_published"
+  },
+  "guardrails": [
+    "No v0.12.0 taxonomy value is assigned by this crosswalk.",
+    "No exact-name match is treated as an automatic identity merge.",
+    "Multiple candidate IDs remain explicit conflicts until governed resolution.",
+    "No-match rows remain unresolved for later exact prepared crosswalk or governed review; absence of an exact occurrence anchor is not proof that the source row is invalid.",
+    "Original source CSV bytes and current mechanics are unchanged."
+  ]
+}
