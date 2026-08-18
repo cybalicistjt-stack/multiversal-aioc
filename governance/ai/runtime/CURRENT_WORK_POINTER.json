@@ -1,6 +1,6 @@
 {
   "schema_version": "1.7.0",
-  "updated_at": "2026-08-18T09:56:00Z",
+  "updated_at": "2026-08-18T10:15:00Z",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "bootstrap_current_state_amendment": "governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_CCTI_WRITE_20260817.md",
   "static_restart_prompt": "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
@@ -8,15 +8,28 @@
   "final_validation_policy": "governance/ai/MULTIVERSAL_SELF_HOSTED_FINAL_VALIDATION_POLICY.md",
   "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
   "roadmap_index_supplement": "governance/ai/runtime/ROADMAP_INDEX_CCTI_SUPPLEMENT.json",
-  "primary_attempt_id": "CCTI-12-attempt-003",
-  "selection_reason": "The owner-approved bounded CCTI-12 integration-first mission remains selected. T01, T02, and T03 are completed_verified. CCTI-12-T04 Local Review Worksets & Proposal Disposition is selected_not_started so the next bounded tranche is deterministic without prematurely activating implementation.",
+  "primary_attempt_id": "CCTI-12-attempt-004",
+  "selection_reason": "The owner explicitly resumed CCTI-12-T04. T01-T03 remain completed_verified; T04 Local Review Worksets & Proposal Disposition is now the active bounded tranche under the existing noncanonical GM/owner integration authority.",
   "active_attempts": [
+    {
+      "work_item_id": "CCTI-12",
+      "attempt_id": "CCTI-12-attempt-004",
+      "track": "content-catalog-taxonomy-integration",
+      "priority": 1,
+      "owner_selected": true,
+      "repository": "cybalicistjt-stack/Multiversal-app",
+      "branch": "internal-alpha/ccti12-t04-local-review-worksets",
+      "checkpoint_path": "governance/ai/work-state/CCTI-12-attempt-004.json",
+      "status": "started",
+      "updated_at": "2026-08-18T10:15:00Z",
+      "roadmap_projection_pending": true
+    },
     {
       "work_item_id": "CCTI-12",
       "attempt_id": "CCTI-12-attempt-003",
       "track": "content-catalog-taxonomy-integration",
-      "priority": 1,
-      "owner_selected": true,
+      "priority": 2,
+      "owner_selected": false,
       "repository": "cybalicistjt-stack/Multiversal-app",
       "branch": "internal-alpha/ccti12-t03-local-amendment-drafts",
       "checkpoint_path": "governance/ai/work-state/CCTI-12-attempt-003.json",
@@ -34,7 +47,7 @@
       "work_item_id": "CCTI-12",
       "attempt_id": "CCTI-12-attempt-002",
       "track": "content-catalog-taxonomy-integration",
-      "priority": 2,
+      "priority": 3,
       "owner_selected": false,
       "repository": "cybalicistjt-stack/Multiversal-app",
       "status": "completed_verified",
@@ -48,7 +61,7 @@
       "work_item_id": "CCTI-12",
       "attempt_id": "CCTI-12-attempt-001",
       "track": "content-catalog-taxonomy-integration",
-      "priority": 3,
+      "priority": 4,
       "owner_selected": false,
       "repository": "cybalicistjt-stack/Multiversal-app",
       "status": "completed_verified",
@@ -62,7 +75,7 @@
       "work_item_id": "DS-008-working-series",
       "attempt_id": "DS-008-working-series-attempt-002",
       "track": "design-standards-completion",
-      "priority": 4,
+      "priority": 5,
       "owner_selected": false,
       "repository": "cybalicistjt-stack/multiversal-aioc",
       "branch": "governance/design-standards-publication-ingestion",
@@ -70,26 +83,6 @@
       "roadmap_projection_pending": true
     }
   ],
-  "next_selected_work": {
-    "work_item_id": "CCTI-12-T04",
-    "state": "selected_not_started",
-    "title": "Local Review Worksets & Proposal Disposition",
-    "selection_record": "governance/application-planning/content-catalog-taxonomy-integration/CCTI12_T04_SELECTION_20260818.md",
-    "future_attempt_id": "CCTI-12-attempt-004",
-    "repository": "cybalicistjt-stack/Multiversal-app",
-    "activation_rule": "Do not create the attempt checkpoint or app branch until T04 implementation is intentionally begun; selection alone is not activation.",
-    "retained_gates": [
-      "Item taxonomy adoption",
-      "Platform taxonomy adoption",
-      "relationship promotion",
-      "compatibility finalization",
-      "runtime Asset mutation",
-      "mechanics reauthoring",
-      "Player canonical exposure",
-      "release/deployment",
-      "tester distribution replacement"
-    ]
-  },
   "deferred_tracks": [
     {
       "track": "post-gatx-internal-alpha-successor",
@@ -107,6 +100,9 @@
     "gm_owner_local_review_queue": true,
     "gm_owner_read_only_candidate_compare": true,
     "gm_owner_local_structured_amendment_proposals": true,
+    "gm_owner_local_review_worksets": true,
+    "gm_owner_local_noncanonical_dispositions": true,
+    "gm_owner_local_review_packet_ingestion": true,
     "proposal_application_to_loaded_projection": false,
     "player_canonical_exposure": false,
     "taxonomy_enablement": false,
@@ -116,5 +112,5 @@
     "mechanics_reauthoring": false,
     "release_or_deployment": false
   },
-  "exact_next_action": "T04 is selected but not started. Do not implement it in this governance-selection operation. When execution resumes, create CCTI-12-attempt-004 and a dedicated app branch from then-current main, then build Local Review Worksets & Proposal Disposition without crossing retained gates."
+  "exact_next_action": "Construct the complete CCTI-12-T04 application tranche on internal-alpha/ccti12-t04-local-review-worksets from app main 59fd30d3ad38d688c18b1abe0adfb7c9a8eaffa5, then run the finished-step validation gate under MV-AI-VALIDATION-003."
 }
