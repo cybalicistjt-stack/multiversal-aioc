@@ -1,40 +1,34 @@
 {
-  "schema_version": "1.4.0",
+  "schema_version": "1.5.0",
   "work_item_id": "CRS",
   "attempt_id": "CRS-attempt-001",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_approved": true,
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "governance/crs06-machine-enforcement-final-audit",
-  "active_substep": "CRS-06",
+  "active_substep": null,
   "completed_substeps": [
     {"id":"CRS-01","status":"completed_verified","evidence":"AIOC PR #402 / merge cab80a5500efda428b0d76a6722d49c04ad0c08f"},
     {"id":"CRS-02","status":"completed_verified","evidence":"Open-PR authority reduced to preserved App PRs #201, #191 and #61 only."},
-    {"id":"CRS-03","status":"completed_verified","evidence":"Historical workflow namespaces retired; AIOC had zero live workflows before CRS-06 and App retained only Validation Core plus manual Windows smoke."},
-    {"id":"CRS-04","status":"completed_verified","evidence":"AIOC PR #403 / merge 7ada0ea0099f637d3be8c2e56898be207ad38536; validator lifecycle made historical validators inert by default."},
-    {"id":"CRS-05","status":"completed_verified","evidence":"App main 41e313a979f24a63e7847ffbab5bddfa38cd911e and AIOC PR #404 / merge c2c6670183a5ac132300d82ea792a4160722f01c removed competing operational selectors, work-order queues, amendments and duplicate runtime status."}
+    {"id":"CRS-03","status":"completed_verified","evidence":"Historical workflow namespaces retired from live Actions surfaces while Git history was preserved."},
+    {"id":"CRS-04","status":"completed_verified","evidence":"AIOC PR #403 / merge 7ada0ea0099f637d3be8c2e56898be207ad38536; validators are deny-by-default unless registered."},
+    {"id":"CRS-05","status":"completed_verified","evidence":"App main 41e313a979f24a63e7847ffbab5bddfa38cd911e and AIOC PR #404 / merge c2c6670183a5ac132300d82ea792a4160722f01c removed competing selectors, active/ready queues, amendments and duplicate runtime projections."},
+    {"id":"CRS-06","status":"completed_verified","evidence":"App PR #202 passed self-hosted run 32178841607 and merged ec4ad52910fd8728134df4bdbad31476f44602e9. AIOC exact head 88accb4e8b97e5b88519f7e97e8f98914387132a passed run 32179296631 and PR #405 merged 9a74d10988ca41201c8155956a09564c7d1289a9. Audit result zero_known_conflicting_authority."}
   ],
-  "next_action": "Run the single registered CRS-06 repository-health workflow against the exact candidate head. If it passes, merge CRS-06, record CRS completed_verified, and select the cleaned next production operation without reviving historical workflow/validator authority.",
-  "stop_the_line": true,
-  "crs06_candidate": {
-    "audit": "governance/repository-health/CANONICAL_STATE_AUDIT.json",
-    "validator": "scripts/validate_repository_health.py",
-    "workflow": ".github/workflows/validate-repository-health.yml",
-    "expected_result": "zero_known_conflicting_authority",
-    "cross_repository": true,
-    "self_hosted": true,
-    "production_resume_authorized_before_merge": false
-  },
-  "preserved_application_work": {
-    "post_gatx_successor": {"status":"paused_for_repository_health","repository":"cybalicistjt-stack/Multiversal-app","current_refresh_pr":201,"head":"3a80eae066650a312707cfae5adb70a2770e8918"},
-    "ccti12_t04": {"status":"validation_quarantined_and_paused_for_repository_health","repository":"cybalicistjt-stack/Multiversal-app","pr":191,"head":"3d32ee9317bc924a6a8206121402c68bdf8a061b"},
-    "wp011": {"status":"preserved_special_environment","repository":"cybalicistjt-stack/Multiversal-app","pr":61,"head":"67b17a482a69fdae7495e7f6299240940e00fa20"},
-    "ds008": {"status":"blocked_non_owner"}
-  },
+  "next_action": "Resume POST-GATX-SUCCESSOR from governance/ai/work-state/POST-GATX-SUCCESSOR-attempt-001.json. Reconcile App PR #201 to cleaned current main and do not revive unregistered historical workflow or validator authority.",
+  "stop_the_line": false,
   "completion_gate": {
     "required_program_items": ["CRS-01","CRS-02","CRS-03","CRS-04","CRS-05","CRS-06"],
     "final_audit": "governance/repository-health/CANONICAL_STATE_AUDIT.json",
     "required_result": "zero_known_conflicting_authority",
-    "machine_gate": "Validate Repository Health"
+    "application_machine_gate": {"run":32178841607,"status":"PASS","merge":"ec4ad52910fd8728134df4bdbad31476f44602e9"},
+    "aioc_machine_gate": {"run":32179296631,"status":"PASS","merge":"9a74d10988ca41201c8155956a09564c7d1289a9"},
+    "satisfied": true
+  },
+  "preserved_application_work": {
+    "post_gatx_successor": {"status":"reactivated_current","repository":"cybalicistjt-stack/Multiversal-app","pr":201,"head":"3a80eae066650a312707cfae5adb70a2770e8918"},
+    "ccti12_t04": {"status":"validation_quarantined","repository":"cybalicistjt-stack/Multiversal-app","pr":191,"head":"3d32ee9317bc924a6a8206121402c68bdf8a061b"},
+    "wp011": {"status":"preserved_special_environment","repository":"cybalicistjt-stack/Multiversal-app","pr":61,"head":"67b17a482a69fdae7495e7f6299240940e00fa20"},
+    "ds008": {"status":"blocked_non_owner"}
   }
 }
