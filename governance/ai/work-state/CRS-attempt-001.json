@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "CRS",
+  "attempt_id": "CRS-attempt-001",
+  "status": "in_progress",
+  "owner_approved": true,
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "branch": "governance/canonicalization-retirement-sweep",
+  "active_substep": "CRS-01",
+  "next_action": "Canonicalize bootstrap/pointer authority, retire ambiguous PR state, then sweep active workflows and validators before production resumes.",
+  "stop_the_line": true,
+  "preserved_application_work": {
+    "post_gatx_successor": {"status":"paused_for_repository_health","repository":"cybalicistjt-stack/Multiversal-app","current_refresh_pr":201,"historical_pr":185},
+    "ccti12_t04": {"status":"validation_quarantined_and_paused_for_repository_health","repository":"cybalicistjt-stack/Multiversal-app","pr":191},
+    "wp011": {"status":"preserved_special_environment","repository":"cybalicistjt-stack/Multiversal-app","pr":61},
+    "ds008": {"status":"blocked_non_owner"}
+  },
+  "completion_gate": {
+    "required_program_items": ["CRS-01","CRS-02","CRS-03","CRS-04","CRS-05","CRS-06"],
+    "final_audit": "governance/repository-health/CANONICAL_STATE_AUDIT.json",
+    "required_result": "zero_known_conflicting_authority"
+  }
+}
