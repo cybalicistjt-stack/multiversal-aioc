@@ -1,15 +1,16 @@
 {
-  "schema_version": "2.0.0",
-  "updated_at": "2026-08-18T21:13:00Z",
+  "schema_version": "2.1.0",
+  "updated_at": "2026-08-18T23:20:00Z",
   "rule": "This index contains current or preserved unfinished tracks only. Completed historical work remains in Git history and receipts and cannot select current work.",
   "current": {
     "work_item_id": "POST-GATX-SUCCESSOR",
     "track": "post-gatx-internal-alpha-successor",
     "checkpoint": "governance/ai/work-state/POST-GATX-SUCCESSOR-attempt-001.json",
     "repository": "cybalicistjt-stack/Multiversal-app",
-    "pull_request": 201,
-    "branch": "internal-alpha/post-gatx-successor-refresh",
-    "next_gate": "reconcile_to_clean_main_then_exact_head_self_hosted_linux_windows_deterministic_comparison"
+    "pull_request": 203,
+    "branch": "internal-alpha/post-gatx-successor-clean",
+    "head": "91626e3663efb1a75bf35f530057eba0302053c7",
+    "next_gate": "registered_app_health_plus_exact_head_self_hosted_linux_windows_deterministic_package_comparison"
   },
   "preserved_unfinished": [
     {"work_item_id":"CCTI-12-T04","track":"content-catalog-taxonomy-integration","repository":"cybalicistjt-stack/Multiversal-app","pull_request":191,"status":"validation_quarantined"},
@@ -23,10 +24,6 @@
     {"program_id":"VCH","status":"completed_verified","closure_application_pr":200,"closure_merge":"aa286a481fc53fdb969cc10be0388974bdbd3c9e"},
     {"program_id":"CRS","status":"completed_verified","application_health_pr":202,"application_health_merge":"ec4ad52910fd8728134df4bdbad31476f44602e9","aioc_health_pr":405,"aioc_health_merge":"9a74d10988ca41201c8155956a09564c7d1289a9","audit_result":"zero_known_conflicting_authority"}
   ],
-  "historical_completion_sources": [
-    "Git history",
-    "completion receipts",
-    "program backlogs",
-    "closed pull requests"
-  ]
+  "superseded_current-track_prs": [185, 201],
+  "historical_completion_sources": ["Git history", "completion receipts", "program backlogs", "closed pull requests"]
 }
