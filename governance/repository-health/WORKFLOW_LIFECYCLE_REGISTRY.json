@@ -1,40 +1,30 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.3.0",
   "program_id": "CRS",
-  "substep": "CRS-03",
-  "status": "ready_for_merge_verification",
+  "status": "CURRENT",
   "policy": "governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md",
   "default_rule": "A workflow not explicitly listed as CURRENT or CURRENT_COMPATIBLE is not permitted in the live .github/workflows namespace.",
   "repositories": {
     "cybalicistjt-stack/multiversal-aioc": {
-      "baseline_commit": "cab80a5500efda428b0d76a6722d49c04ad0c08f",
-      "baseline_workflow_tree": "a7ab961ab6046312b398cbce1756990675244fd3",
-      "crs_branch": "governance/crs03-workflow-retirement",
-      "quarantine_commit": "73173cbb8db51af584835fa39023c410ac574dac",
-      "live_workflows_during_crs03": [],
-      "automatic_workflows_during_crs03": [],
-      "disposition": "All pre-CRS AIOC workflows are HISTORICAL_INERT for the duration of the stop-the-line and are removed from the live Actions namespace. Git history is the preservation mechanism. CRS-06 will introduce a new narrowly scoped registered repository-health gate; any operational/content workflow later restored must be explicitly reclassified and reviewed rather than grandfathered.",
-      "trigger_proof": {
-        "source_pr": 402,
-        "source_head": "c817edbac4f89936590da9f2f9861e1328225f1e",
-        "observed_pull_request_runs": 26,
-        "verified_historical_offenders_removed_first": 20,
-        "general_or_cross_cutting_runs_observed": [
-          "Validate Correction to Regression",
-          "Validate Interaction Enforcement",
-          "Validate Conversation Continuity",
-          "Validate Completion Claim Integrity",
-          "Validate Design Standards Canonicalization",
-          "Validate Operational AIOC Baseline"
-        ],
-        "reason_for_full_quarantine": "Even general workflows were broad, GitHub-hosted, lifecycle-coupled, or not Validation-Core governed; retaining them by default would preserve the same stale-execution risk CRS exists to remove."
-      }
+      "historical_workflow_baseline": "cab80a5500efda428b0d76a6722d49c04ad0c08f",
+      "historical_quarantine_commit": "73173cbb8db51af584835fa39023c410ac574dac",
+      "live_workflows": [
+        {
+          "path": ".github/workflows/validate-repository-health.yml",
+          "lifecycle": "CURRENT",
+          "execution": "github_hosted_linux_governance_exception",
+          "validation_core": "documented_repository_health_exception",
+          "automatic_repository_event_trigger": true,
+          "runner": "ubuntu-latest",
+          "timeout_minutes": 5,
+          "purpose": "One small stdlib-Python AIOC authority/registry/runtime health check. It validates AIOC only and does not require cross-repository token access."
+        }
+      ],
+      "retired_workflow_policy": "All pre-CRS AIOC workflows remain HISTORICAL_INERT in Git history. None may be restored without explicit lifecycle registration and current-assumption review.",
+      "hosted_exception_boundary": "The AIOC health workflow may use stock GitHub-hosted Linux only for bounded governance health validation. It cannot satisfy or replace an application, package, release, or feature completion gate."
     },
     "cybalicistjt-stack/Multiversal-app": {
-      "baseline_commit": "1ff5cf7f966df8fae5840c45d94919dd9aea1925",
-      "baseline_workflow_tree": "d0e4971343a2cace90f7d6cda825ccbdd126cb56",
-      "crs_branch": "repository-health/crs03-workflow-retirement",
-      "current_head": "1ed5cd1205a850b60d34ad061e3e7f0060c9d872",
+      "current_main": "ec4ad52910fd8728134df4bdbad31476f44602e9",
       "live_workflows": [
         {
           "path": ".github/workflows/_validation-core-profile.yml",
@@ -42,43 +32,36 @@
           "execution": "workflow_call_only",
           "validation_core": "native",
           "automatic_repository_event_trigger": false,
-          "purpose": "Shared self-hosted Linux/Windows exact-head validation, diagnostics, deterministic receipts and comparator for future thin profiles."
+          "purpose": "Shared self-hosted Linux/Windows exact-head validation, compact diagnostics, deterministic receipts and comparator for thin production profiles."
         },
         {
           "path": ".github/workflows/self-hosted-windows-runner-smoke.yml",
           "lifecycle": "CURRENT_COMPATIBLE",
           "execution": "workflow_dispatch_only",
-          "validation_core": "diagnostic_exception",
+          "validation_core": "manual_runner_diagnostic_exception",
           "automatic_repository_event_trigger": false,
-          "purpose": "Manual runner availability/toolchain smoke; it is not a feature completion gate."
+          "purpose": "Manual Windows runner availability/toolchain smoke; never a feature completion gate."
+        },
+        {
+          "path": ".github/workflows/validate-repository-health.yml",
+          "lifecycle": "CURRENT",
+          "execution": "self_hosted_application_health_gate",
+          "validation_core": "repository_health_companion",
+          "automatic_repository_event_trigger": true,
+          "runner": "self-hosted linux x64 multiversal-validation-linux",
+          "purpose": "Machine-enforce the App workflow namespace, Validation Core boundary, inert local selector redirects, and absence of completed-era active/ready work-order namespaces."
         }
       ],
-      "automatic_workflows_during_crs03": [],
-      "retired_from_live_namespace": {
-        "lifecycle": "HISTORICAL_INERT",
-        "classes": [
-          "A2 activation/private-export workflows",
-          "DT-001 through DT-010 tranche proof workflows",
-          "GATX tranche proof workflows",
-          "IA-D09 and Internal Alpha setup/successor proof workflows",
-          "P9-06 tranche and physical-proof workflows",
-          "Repository Solidity completion workflows",
-          "Salvage tranche workflows",
-          "Stage-A A1 through A12 proof workflows",
-          "VCH-01 through VCH-06 program proof workflows",
-          "paused CCTI-12 and post-GATX feature-specific workflows until those branches are reconciled"
-        ],
-        "preservation": "All removed workflow definitions remain recoverable from Git history at baseline commit 1ff5cf7f966df8fae5840c45d94919dd9aea1925."
-      },
-      "paused_feature_rule": "PR #191 and PR #201 remain preserved but cannot merge under their historical workflow plumbing. On CRS completion/resumption they must reconcile with cleaned main and use a thin Validation Core profile or a new documented capability exception before completion."
+      "retired_workflow_policy": "A2, DT proof, GATX, IA, P9-06, Repository Solidity, Salvage, Stage-A, VCH proof and paused feature-specific workflows remain HISTORICAL_INERT in Git history. Resumed feature work must use a new thin Validation Core profile or a documented current capability exception."
     }
   },
-  "crs03_acceptance": {
-    "aioc_historical_auto_triggers_removed": true,
-    "application_historical_auto_triggers_removed_on_candidate_branch": true,
-    "application_current_live_workflows_registered": true,
-    "current_application_default_is_validation_core": true,
-    "paused_features_cannot_claim_completion_from_retired_workflows": true,
-    "remaining_gate": "Fast-forward both repository cleanup candidates and verify post-merge workflow namespaces before marking CRS-03 completed_verified."
+  "machine_enforcement": {
+    "aioc_validator": "scripts/validate_repository_health.py",
+    "application_validator": "tools/validation_core/validate_repository_health_app.py",
+    "audit": "governance/repository-health/CANONICAL_STATE_AUDIT.json",
+    "assert_exact_live_namespace": true,
+    "deny_unregistered_workflow": true,
+    "application_completion_requires_governed_self_hosted_core": true,
+    "cross_repository_token_dependency": false
   }
 }

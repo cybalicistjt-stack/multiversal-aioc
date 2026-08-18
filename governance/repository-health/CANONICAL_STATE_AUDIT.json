@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.2.0",
+  "audit_id": "CRS-06-CANONICAL-STATE-AUDIT-2026-08-18",
+  "status": "completion_candidate",
+  "result": "zero_known_conflicting_authority",
+  "known_conflicts": [],
+  "production_resume_authorized": false,
+  "resume_condition": "The App self-hosted repository-health gate must pass and merge; then the exact AIOC CRS-06 candidate must pass its separate AIOC health gate and merge; only the post-merge completed_verified projection may resume production.",
+  "repositories": {
+    "cybalicistjt-stack/multiversal-aioc": {
+      "baseline_main_head": "c2c6670183a5ac132300d82ea792a4160722f01c",
+      "candidate_branch": "governance/crs06-machine-enforcement-final-audit",
+      "live_workflows_expected": [".github/workflows/validate-repository-health.yml"],
+      "runtime_files_expected": [
+        "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
+        "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+        "governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json",
+        "governance/ai/runtime/ROADMAP_INDEX.json"
+      ]
+    },
+    "cybalicistjt-stack/Multiversal-app": {
+      "main_head": "ec4ad52910fd8728134df4bdbad31476f44602e9",
+      "repository_health_pr": 202,
+      "repository_health_candidate_head": "4f35ada09d524047102657fb1ee7e7d2309d7e13",
+      "repository_health_merge": "ec4ad52910fd8728134df4bdbad31476f44602e9",
+      "repository_health_run": 32178841607,
+      "repository_health_artifact": 9340017199,
+      "repository_health_artifact_digest": "sha256:6ffc3b43248de57ba86fbfc57fa54c04c57d8aaf4c90da2877c93495acd4120c",
+      "live_workflows_expected": [
+        ".github/workflows/_validation-core-profile.yml",
+        ".github/workflows/self-hosted-windows-runner-smoke.yml",
+        ".github/workflows/validate-repository-health.yml"
+      ],
+      "preserved_open_prs": [
+        {"number": 61, "work_item": "WP-011", "state": "open", "draft": true, "head": "67b17a482a69fdae7495e7f6299240940e00fa20", "branch": "wo/WP011-hosted-macos-evidence", "merge_authority": false, "activation": "special_environment_owner_gate"},
+        {"number": 191, "work_item": "CCTI-12-T04", "state": "open", "draft": true, "head": "3d32ee9317bc924a6a8206121402c68bdf8a061b", "branch": "internal-alpha/ccti12-t04-local-review-worksets", "merge_authority": false, "activation": "resume_after_CRS_and_reconcile_to_clean_main"},
+        {"number": 201, "work_item": "POST-GATX-SUCCESSOR", "state": "open", "draft": true, "head": "3a80eae066650a312707cfae5adb70a2770e8918", "branch": "internal-alpha/post-gatx-successor-refresh", "merge_authority": false, "activation": "resume_after_CRS_and_reconcile_to_clean_main"}
+      ]
+    }
+  },
+  "authority_checks": [
+    {"id":"bootstrap-stable","status":"PASS","evidence":"Bootstrap v6 is status-agnostic and requires authority registry -> current pointer -> selected checkpoint -> live GitHub reconciliation."},
+    {"id":"single-selector","status":"PASS","evidence":"CURRENT_WORK_POINTER.json is the only current-work selector; RUNTIME_STATE_LIFECYCLE_REGISTRY.json makes all other work-state files inert unless explicitly selected."},
+    {"id":"application-selector-retirement","status":"PASS","evidence":"App main converts legacy local current/next/queue/handoff paths to AIOC redirects and removes completed-era active/ready work-order namespaces."},
+    {"id":"dated-amendment-retirement","status":"PASS","evidence":"CRS-05 removed dated bootstrap-state amendments, stale CURRENT_IMPLEMENTATION_STATUS.json, and completed-era runtime roadmap supplements from AIOC operational runtime."},
+    {"id":"workflow-deny-by-default","status":"PASS","evidence":"AIOC has one registered health workflow. App has shared Validation Core, manual Windows smoke, and one self-hosted App health workflow. All other historical workflows remain inert in Git history."},
+    {"id":"validator-deny-by-default","status":"PASS","evidence":"Validator registry explicitly names current AIOC/App health validators and Validation Core; historical validators remain non-authoritative by existence."},
+    {"id":"application-health-machine-proof","status":"PASS","evidence":"App PR #202 exact head 4f35ada09d524047102657fb1ee7e7d2309d7e13 passed self-hosted Linux run 32178841607 and compact artifact upload before merge ec4ad52910fd8728134df4bdbad31476f44602e9."},
+    {"id":"cross-repository-token-isolation","status":"PASS","evidence":"AIOC and App health gates validate their own repositories independently; no AIOC GITHUB_TOKEN cross-repository checkout is required."},
+    {"id":"hosted-runner-policy","status":"PASS","evidence":"Application/package final validation remains self-hosted. AIOC's sole five-minute stock-Python health job is an explicitly registered governance-only hosted exception because AIOC has no attached self-hosted runner."},
+    {"id":"open-pr-authority","status":"PASS","evidence":"Preserved production PRs #61, #191 and #201 remain draft/non-authoritative with explicit reactivation conditions."},
+    {"id":"history-preservation","status":"PASS","evidence":"CRS removes stale material only from operational namespaces; historical workflow/work-order/runtime definitions remain recoverable from Git history."}
+  ],
+  "machine_gate": {
+    "aioc_validator": "scripts/validate_repository_health.py",
+    "aioc_workflow": ".github/workflows/validate-repository-health.yml",
+    "aioc_runner": "ubuntu-latest documented governance-only exception",
+    "application_validator": "tools/validation_core/validate_repository_health_app.py",
+    "application_workflow": ".github/workflows/validate-repository-health.yml",
+    "application_runner": "self-hosted linux x64 multiversal-validation-linux",
+    "cross_repository_token_dependency": false,
+    "compact_artifacts": true,
+    "application_product_gate_unchanged": true
+  },
+  "remaining_before_crs_completion": [
+    "Run the AIOC machine health gate on the exact final CRS-06 candidate head.",
+    "Merge CRS-06 only if that AIOC gate passes; App machine proof is already merged.",
+    "Record CRS completed_verified and select the cleaned next production operation."
+  ]
+}

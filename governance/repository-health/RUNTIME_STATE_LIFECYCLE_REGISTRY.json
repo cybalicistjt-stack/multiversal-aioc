@@ -1,8 +1,7 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "program_id": "CRS",
-  "substep": "CRS-05",
-  "status": "active_candidate",
+  "status": "CURRENT",
   "canonical_selector": {
     "repository": "cybalicistjt-stack/multiversal-aioc",
     "path": "governance/ai/runtime/CURRENT_WORK_POINTER.json",
@@ -14,9 +13,7 @@
       "governance/ai/runtime/CURRENT_WORK_POINTER.json",
       "governance/ai/runtime/ROADMAP_INDEX.json"
     ],
-    "current_compatible": [
-      "governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json"
-    ],
+    "current_compatible": ["governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json"],
     "removed_from_operational_runtime_namespace": [
       "BOOTSTRAP_CURRENT_STATE_AMENDMENT_*.md",
       "CURRENT_IMPLEMENTATION_STATUS.json",
@@ -25,13 +22,13 @@
       "ROADMAP_INDEX_STAGE_A_A11_SUPPLEMENT.json",
       "ROADMAP_INDEX_STAGE_A_A12_SUPPLEMENT.json"
     ],
-    "removal_evidence": "CRS-05 runtime cleanup commit 925202dbdbc37c697ed5049daa416135adb4a22e",
+    "removal_merge": "c2c6670183a5ac132300d82ea792a4160722f01c",
     "history_preserved": true
   },
   "work_state": {
     "directory": "governance/ai/work-state",
     "selected_checkpoint": "governance/ai/work-state/CRS-attempt-001.json",
-    "rule": "Only the checkpoint named by CURRENT_WORK_POINTER.json is CURRENT. Every other checkpoint in governance/ai/work-state is HISTORICAL_INERT or CURRENT_COMPATIBLE only when the pointer explicitly names it as preserved parallel evidence; directory presence never selects work.",
+    "rule": "Only the checkpoint named by CURRENT_WORK_POINTER.json is CURRENT. Every other checkpoint is HISTORICAL_INERT unless the current pointer explicitly references it as preserved parallel evidence; directory presence never selects work.",
     "historical_files_deleted": false
   },
   "application_repository": {
@@ -48,10 +45,7 @@
     ],
     "local_selector_lifecycle": "HISTORICAL_INERT_COMPATIBILITY_REDIRECT",
     "local_selector_rule": "These paths defer to canonical AIOC and cannot independently select work.",
-    "removed_operational_namespaces": [
-      ".agent/active-work-orders",
-      ".ai/ready-work-orders"
-    ],
+    "removed_operational_namespaces": [".agent/active-work-orders", ".ai/ready-work-orders"],
     "history_preserved": true
   },
   "preserved_unfinished_tracks": [
@@ -69,16 +63,18 @@
     "A work-state file does not select current work by existence.",
     "An application .ai or .agent file does not override AIOC current-work selection.",
     "A dated bootstrap amendment cannot govern current state.",
-    "A roadmap supplement must be explicitly named by the current pointer/checkpoint to participate in current recovery."
+    "A roadmap supplement participates in recovery only when explicitly named by the current pointer/checkpoint."
   ],
   "crs05_acceptance": {
+    "status": "completed_verified",
+    "aioc_merge": "c2c6670183a5ac132300d82ea792a4160722f01c",
+    "application_main": "41e313a979f24a63e7847ffbab5bddfa38cd911e",
     "single_current_selector": true,
     "single_current_checkpoint": true,
     "application_local_selectors_inert": true,
     "application_active_ready_namespaces_removed": true,
     "aioc_dated_runtime_amendments_removed": true,
     "aioc_duplicate_current_implementation_projection_removed": true,
-    "history_preserved": true,
-    "remaining_gate": "Verify branch diff and canonical runtime namespace, then merge CRS-05 and advance to CRS-06."
+    "history_preserved": true
   }
 }

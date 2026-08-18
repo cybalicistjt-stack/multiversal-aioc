@@ -1,0 +1,71 @@
+name: Validate Repository Health
+
+on:
+  pull_request:
+    paths:
+      - 'governance/ai/**'
+      - 'governance/repository-health/**'
+      - 'governance/application-planning/**'
+      - 'scripts/validate_repository_health.py'
+      - '.github/workflows/validate-repository-health.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'governance/ai/**'
+      - 'governance/repository-health/**'
+      - 'governance/application-planning/**'
+      - 'scripts/validate_repository_health.py'
+      - '.github/workflows/validate-repository-health.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: repository-health-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  canonical-state:
+    name: Canonical AIOC authority and repository-health audit
+    # AIOC has no repository-attached self-hosted runner. This one small
+    # governance-only check is an explicit exception; application/package
+    # completion gates remain on the governed self-hosted Validation Core.
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - name: Checkout exact AIOC candidate
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.CANDIDATE_HEAD }}
+          fetch-depth: 1
+          persist-credentials: false
+          clean: true
+
+      - name: Verify exact AIOC head and stock toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$CANDIDATE_HEAD"
+          test "${RUNNER_OS}" = "Linux"
+          python3 --version
+          git --version
+
+      - name: Validate canonical AIOC state
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/validate_repository_health.py \
+            --root . \
+            --output "${RUNNER_TEMP}/canonical-state-audit-generated.json"
+
+      - name: Upload compact repository-health evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: repository-health-${{ env.CANDIDATE_HEAD }}
+          path: '${{ runner.temp }}/canonical-state-audit-generated.json'
+          if-no-files-found: warn
+          retention-days: 14
