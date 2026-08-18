@@ -1,7 +1,7 @@
 # Multiversal Content Catalog Taxonomy Integration Program
 
 **Program ID:** CCTI  
-**Status:** OWNER-APPROVED PARALLEL PROGRAM — CCTI-12 BOUNDED INTEGRATION ACTIVE / T01 COMPLETED_VERIFIED  
+**Status:** OWNER-APPROVED PARALLEL PROGRAM — CCTI-12 BOUNDED INTEGRATION ACTIVE / T01-T03 COMPLETED_VERIFIED  
 **Owner:** John Brandon Turner  
 **Started:** 2026-08-17  
 **Updated:** 2026-08-18
@@ -79,13 +79,13 @@ The Platform catalogs contain exactly **2,984 platform/model/named-asset/archety
 9. **CCTI-09 — Resolve review queues/taxonomy gaps.** Candidate review stage complete: Item cross-axis review has 91 structural-review rows and 85 additive correction proposals; Platform cross-facet review retains 4,326 review-required rows. Item and Platform adoption remain not ready.
 10. **CCTI-10 — Produce governed derived catalogs.** Completed at additive candidate-sidecar/projection level; no source/master rewrite or automatic enablement.
 11. **CCTI-11 — Full corpus validation.** `COMPLETED_VERIFIED` through AIOC PR #379 / merge `0ab03915b88e1c297e974855388728eaf9ed98ff`. Candidate-package accounting, identity/provenance, controlled-registry integrity, Platform routing, candidate-relationship endpoints, shared-context integrity, and Definition/Model-versus-runtime-Asset boundaries validated across 11,017 rows.
-12. **CCTI-12 — App-facing content integration.** **OWNER-APPROVED BOUNDED INTEGRATION / T01 COMPLETED_VERIFIED.** The first GM/owner-only Candidate Content Workspace was validated on exact app head `8539daececaded611d54df1430e5ab14b7c7be5d` in run `32120405242` / job `95659311435` and merged through app PR #188 as `2d2eb4c3cf9f10fe4a32029045d688b3301362e3`.
+12. **CCTI-12 — App-facing content integration.** **OWNER-APPROVED BOUNDED INTEGRATION / T01-T03 COMPLETED_VERIFIED.** T01 Candidate Content Workspace merged through app PR #188; T02 Local Review Queue & Candidate Compare through PR #189; T03 Local Proposed Amendments through PR #190. All three were validated on exact heads before merge.
 
 ## CCTI-12 bounded integration authority
 
 The owner approved an integration-first scope: application plumbing and GM/owner-facing discovery, inspection, review and authoring surfaces may advance while candidate data remains visibly noncanonical and excluded from normal Player/runtime behavior.
 
-### Completed CCTI-12-T01
+### Completed CCTI-12-T01 — Candidate Content Workspace
 
 The Candidate Content Workspace provides:
 
@@ -99,7 +99,39 @@ The Candidate Content Workspace provides:
 - hard rejection of canonical enablement/runtime mutation authority in the candidate projection contract;
 - strict Definition/Platform Model versus A8 runtime Asset Instance separation.
 
-Exact-head validation passed builder compile, DT-008 changed-line compliance, focused CCTI/GM authorization tests, full client regression, typecheck, accessibility baseline, build and Player/default-route runtime-separation proof before merge.
+Exact head `8539daececaded611d54df1430e5ab14b7c7be5d` passed dedicated run `32120405242` / job `95659311435`; app PR #188 merged as `2d2eb4c3cf9f10fe4a32029045d688b3301362e3`.
+
+### Completed CCTI-12-T02 — Local Review Queue & Candidate Compare
+
+T02 adds:
+
+- browser-memory review queue keyed only by candidate IDs;
+- review-state filtering and return-to-inspection workflow;
+- explicit compare side A/B selection;
+- read-only comparison of stable identity, optional Definition identity, domain, source evidence, review state, facets/dispositions and review reasons;
+- reference-only comparison without invented Definition targets;
+- local queue export with canonical/relationship/compatibility/runtime mutation requests false;
+- projection-change reset of queue and comparison intent.
+
+Comparison does not infer identity from display names, determine compatibility, resolve supersession, promote relationships, establish runtime state, or mutate either candidate.
+
+Exact head `995f35ef522b2c486d5a416eec8b5e0386e08754` passed dedicated run `32121742212` / job `95663468882`; app PR #189 merged as `96acc3b34114cad7c6b75abab11e8a862a04509c`.
+
+### Completed CCTI-12-T03 — Local Proposed Amendments
+
+T03 adds structured local authoring intent:
+
+- facet-correction proposals bound to an exposed facet ID and proposed value(s);
+- review-clarification proposals without facet targets;
+- source-evidence questions without facet targets;
+- reference-only identities remain valid proposal subjects without invented Definition IDs;
+- proposed values remain explicitly unvalidated for canonical use;
+- proposals never replace or mutate the loaded candidate projection;
+- local amendment packet export preserves candidate/stable identity, optional current Definition identity, proposal type, optional facet target, proposed values, rationale and evidence note;
+- stale proposals that no longer bind to the active projection identity/facet exposure are omitted;
+- projection identity changes clear local proposal state.
+
+The first validation attempt exposed only an obsolete test assumption after T03 intentionally added another `Runtime mutation: OFF` boundary badge. The assertion was corrected; no product-boundary repair was required. Exact head `ba4b49db48f0458d2d1518b87f40c8375dc09f8b` then passed dedicated run `32122685229` / job `95666380417` across focused tests, full regression, typecheck, accessibility, build, DT-008 and Player/runtime separation. App PR #190 merged as `59fd30d3ad38d688c18b1abe0adfb7c9a8eaffa5`.
 
 ### CCTI-12 retained gates
 
@@ -173,7 +205,7 @@ Current authorization covers the already-approved bounded CCTI-12 integration-fi
 
 ## Exact next action
 
-Select and execute the next bounded CCTI-12 application-integration substep that materially improves GM/owner review or authoring utility while preserving every retained gate above. Do not interpret T01 completion as taxonomy adoption, relationship promotion, compatibility finalization, runtime mutation, mechanics authority, release authority or deployment authority.
+Recover/select the next bounded CCTI-12 application-integration substep from the current program/roadmap before opening a new attempt. Completion of T01-T03 does not itself authorize taxonomy adoption, relationship promotion, compatibility finalization, runtime mutation, mechanics, release, deployment, or public publication.
 
 ## Parallel-track preservation
 

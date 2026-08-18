@@ -3,7 +3,7 @@
 **Supplement ID:** MV-APP-ROADMAP-CCTI-001  
 **Owner-approved:** 2026-08-17  
 **Updated:** 2026-08-18  
-**Status:** CCTI-12 BOUNDED INTEGRATION ACTIVE / T01 COMPLETED_VERIFIED  
+**Status:** CCTI-12 BOUNDED INTEGRATION ACTIVE / T01-T03 COMPLETED_VERIFIED  
 **Governing program:** `CONTENT_CATALOG_TAXONOMY_INTEGRATION_PROGRAM.md`
 
 This supplement adds an owner-selected parallel content mission without replacing the ordered Stage A roadmap or any retained Internal Alpha/Design Standards track.
@@ -17,6 +17,8 @@ This supplement adds an owner-selected parallel content mission without replacin
 - CCTI-11 full candidate-package validation is `completed_verified` through AIOC PR #379 / merge `0ab03915b88e1c297e974855388728eaf9ed98ff`.
 - The owner approved the bounded CCTI-12 integration-first scope.
 - **CCTI-12-T01 Candidate Content Workspace is `completed_verified`.** App PR #188 was validated on exact head `8539daececaded611d54df1430e5ab14b7c7be5d` in dedicated run `32120405242` / job `95659311435`, then squash-merged as `2d2eb4c3cf9f10fe4a32029045d688b3301362e3`.
+- **CCTI-12-T02 Local Review Queue & Candidate Compare is `completed_verified`.** App PR #189 was validated on exact head `995f35ef522b2c486d5a416eec8b5e0386e08754` in dedicated run `32121742212` / job `95663468882`, then squash-merged as `96acc3b34114cad7c6b75abab11e8a862a04509c`.
+- **CCTI-12-T03 Local Proposed Amendments is `completed_verified`.** App PR #190 was validated on exact head `ba4b49db48f0458d2d1518b87f40c8375dc09f8b` in dedicated run `32122685229` / job `95666380417`, then squash-merged as `59fd30d3ad38d688c18b1abe0adfb7c9a8eaffa5`.
 - CCTI-12 remains bounded to GM/owner candidate discovery, inspection, review and noncanonical authoring integration. Taxonomy adoption, relationship promotion, compatibility finalization, runtime mutation, mechanics, release and deployment remain separately gated.
 - OGR-01 Object Game-Readiness measurement remains downstream; zero rows are currently certified `GAME_READY`.
 
@@ -47,6 +49,8 @@ The Platform-domain corpus remains exactly **2,984 platform/model/named-asset/ar
 14. **CCTI-08 / CCTI-10 shared context/compatibility candidate tranche** — complete; exact 9-facet/241-value authority used across 11,017 rows; all compatibility outcomes remain `NOT_EVALUATED`; nothing enabled.
 15. **CCTI-11 full candidate-package validation** — `completed_verified`; 11,017/11,017 accounting, identity/provenance, controlled-registry integrity, Platform routing, candidate-relationship endpoints, shared-context integrity and Definition/Model-vs-runtime-Asset boundaries validated.
 16. **CCTI-12-T01 Candidate Content Workspace** — `completed_verified`; GM/owner-only local candidate discovery, filtering, inspection, review reasons, local draft/review intent, governed local projection loading and local review-packet export are integrated without Player exposure or canonical/runtime mutation.
+17. **CCTI-12-T02 Local Review Queue & Candidate Compare** — `completed_verified`; GM/owner can maintain a browser-memory review queue, return queued identities to inspection, and compare two explicitly selected candidate IDs read-only across stable identity, optional Definition identity, source evidence, review state, facets/dispositions and review reasons. Compatibility stays `NOT_EVALUATED`; comparison and queue state never mutate governed data.
+18. **CCTI-12-T03 Local Proposed Amendments** — `completed_verified`; GM/owner can draft facet-correction, review-clarification and source-evidence-question proposals against explicit candidate identities, including reference-only identities, then export them locally. Proposed values are explicitly unvalidated for canonical use and proposals cannot apply to the loaded projection.
 
 ## Item canonical-adoption dependency retained in parallel
 
@@ -87,7 +91,7 @@ AIOC PR #379 / `0ab03915b88e1c297e974855388728eaf9ed98ff`.
 
 ## CCTI-12 — App-facing integration
 
-**State: OWNER-APPROVED BOUNDED INTEGRATION / T01 COMPLETED_VERIFIED.**
+**State: OWNER-APPROVED BOUNDED INTEGRATION / T01-T03 COMPLETED_VERIFIED.**
 
 The approved scope is integration-first: provide GM/owner-facing application plumbing and candidate discovery, inspection, review and authoring surfaces while candidate content remains visibly noncanonical and excluded from normal Player/runtime behavior.
 
@@ -100,7 +104,31 @@ The approved scope is integration-first: provide GM/owner-facing application plu
 - all declared builder, DT-008, focused authorization/CCTI, full regression, typecheck, accessibility, build and Player/runtime-separation gates passed;
 - app merge: `2d2eb4c3cf9f10fe4a32029045d688b3301362e3`.
 
-Candidate data did not become canonical or runtime-active. The private 11,017-row candidate corpus was not copied into application source.
+### CCTI-12-T02 — Local Review Queue & Candidate Compare
+
+`completed_verified` through Multiversal-app PR #189.
+
+- exact validated head: `995f35ef522b2c486d5a416eec8b5e0386e08754`;
+- dedicated validation run: `32121742212` / job `95663468882`;
+- local queue membership remains review intent only;
+- comparison is keyed only by explicit candidate IDs and never establishes identity/equivalence from display names;
+- reference-only identities remain valid comparison subjects without invented Definition IDs;
+- app merge: `96acc3b34114cad7c6b75abab11e8a862a04509c`.
+
+### CCTI-12-T03 — Local Proposed Amendments
+
+`completed_verified` through Multiversal-app PR #190.
+
+- exact validated head: `ba4b49db48f0458d2d1518b87f40c8375dc09f8b`;
+- dedicated validation run: `32122685229` / job `95666380417`;
+- facet proposals require an exposed facet ID and proposed value(s);
+- proposed values are free-text proposal data and explicitly not validated for canonical use;
+- review clarification/source evidence questions can target reference-only identities without inventing Definition IDs;
+- proposal packets request no proposal application, canonical mutation, relationship promotion, compatibility finalization, runtime mutation or mechanics mutation;
+- projection identity changes clear local proposals;
+- app merge: `59fd30d3ad38d688c18b1abe0adfb7c9a8eaffa5`.
+
+Candidate data did not become canonical or runtime-active in T01-T03. The private 11,017-row candidate corpus was not copied into application source.
 
 ### Retained CCTI-12 boundaries
 
@@ -114,4 +142,4 @@ Before OGR-05 mechanics reauthoring, present failing mechanics cohorts and the p
 
 ## Exact next action
 
-Select and execute the next **bounded CCTI-12 app-facing integration substep** that improves GM/owner review/authoring utility without enabling candidate taxonomy, promoting relationships, finalizing compatibility, mutating runtime Assets, reauthoring mechanics, releasing or deploying. Preserve PR #185 and ordinary Stage A as separate tracks.
+Recover/select the next **bounded CCTI-12 app-facing integration substep** from current program authority before activating a new attempt. Do not infer authority to enable taxonomy, promote relationships, finalize compatibility, mutate runtime Assets, reauthor mechanics, release, deploy, or supersede PR #185/ordinary Stage A from completion of T01-T03.
