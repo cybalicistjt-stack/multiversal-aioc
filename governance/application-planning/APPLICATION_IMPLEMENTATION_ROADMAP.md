@@ -1,11 +1,11 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 2.15.0  
-**Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED; STAGE-A-A9 COMPLETED_VERIFIED; A10 REVALIDATION COMPLETED / ACTIVATION NEXT; PPIA/CAPP COMPLETED_VERIFIED  
+**Version:** 2.16.0  
+**Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED; STAGE-A-A9 COMPLETED_VERIFIED; A10 REVALIDATION COMPLETED / ACTIVATION NEXT; PPIA/CAPP COMPLETED_VERIFIED; APW PARALLEL PLANNING TRACK ADDED  
 **Owner and final authority:** John Brandon Turner  
 **Originally approved:** 2026-08-03  
-**Last updated:** 2026-08-15
+**Last updated:** 2026-08-18
 
 ## Purpose
 
@@ -29,6 +29,7 @@ The authoritative ordered Phase 9 backlog remains `governance/phase9/P9-06_IMPLE
 - **STAGE-A-A9 — Investigation and Social Workspaces is `COMPLETED_VERIFIED`.** All 48 source slices were constructed before checks; 144 source fixtures and 168 published blocking acceptance IDs were preserved; the final A1–A9 + DT-008 + P9 wrapper matrix passed; headed Chromium passed 8/8; application PR #145 squash-merged as GitHub-verified `c2030febf860a4fc9bcac9c65fa44a6b22418dd4`; closure is recorded in `Multiversal-app/receipts/STAGE-A-A9-CLOSURE.json`. Release/deployment remained false.
 - **STAGE-A-A10 — World Content Authoring has completed current-repository revalidation and is the current next application target for bounded activation.** AIOC PR #327 squash-merged as GitHub-verified `9124860691ea208bded3800008a2d92b4b2c2139` with verdict `PASS — READY FOR BOUNDED A10 ACTIVATION`. The revalidation preserves the 32 WSM/AM/CC/AI source slices, 120 deterministic fixtures, 140 published blocking criteria, split D06/D07/D18/D28/D29/D05/D13 ownership, owner-only canonical promotion, privacy-before-derived-output, declarative creator sandboxing and additive migration `0008_a10_world_content_authoring.json`. A10 implementation is not activated by the governance merge itself.
 - **Internal Alpha feature design is complete through IA-D09.** Prepared tester/reference/support assets do not activate tester access or release.
+- **APW — Asynchronous Play & Persistent Workspace is an owner-approved parallel planning track, planned but not implementation-active.** Its governing plan and backlog define universal-user/contextual-role authority, asynchronous Campaign Actions, between-session activity, Personal workspaces, creator/sandbox capability, hybrid recovery/acceptance, and an additive implementation handoff. APW does not change the selected runtime pointer or reopen completed Stage A closure evidence.
 - **Design Standards exact-byte ingestion remains unfinished.** `DS-008-working-series-attempt-002` remains blocked on a capable exact-byte transfer/validation surface. Verified preparation remains PR #207 / merge `bd3071f6f855b66b740ba4bf1f1ba0208636548c`, PR #208 / merge `0cfd8128786e4cdd055e3e3be26bdd1854efdfa7`, PR #209 / merge `708e0ea72a6dce6f5d46ddacd042c1ddb80eee0a`, and prepared handoff commit `f0d9295215a057e0f42603a0777c276a7437aad4`.
 - **PPIA is `COMPLETED_VERIFIED`.** All sixteen tranches are complete/completed_verified. Final substantive PPIA-16 exact head `eede4bfb530056963a4a595faac54515ff151c3b` passed 70/70 applicable hosted workflows; final-state recovery merged through PR #295 as `8357cc812436e8bbe40c214ac0ca6e44363cc1a5`.
 - **CAPP — Character Appearance Production Preparation is `COMPLETED_VERIFIED`.** `CAPP_PROGRAM_BACKLOG.json` records CAPP-01 through CAPP-12 completed_verified. CAPP is direct implementation input for Character appearance/presentation and related diagnostics, while PPIA-05 remains Species/Form biology authority and PPIA-03 remains Asset/equipment authority.
@@ -46,6 +47,7 @@ This section is a recovery summary, not an autosave ledger. More recent verified
 - **Phase 10 / Stage A:** current core application implementation program.
 - **PPIA:** completed parallel pre-implementation advancement program retained as implementation input and historical evidence.
 - **CAPP:** completed Character Appearance production-preparation program retained as direct implementation input for appearance/presentation domains.
+- **APW:** owner-approved parallel planning subproject for asynchronous play, Personal workspaces, campaign-independent creation, and hybrid Campaign continuity; implementation remains separately gated.
 
 ## Completed Phase 8 milestones
 
@@ -161,6 +163,36 @@ Completed execution order:
 
 CAPP is direct implementation input to Character appearance/presentation and related diagnostics. It does not become Character mechanical truth, Species/Form biology truth, or Asset/equipment ownership/mechanics truth. CAPP completion does not independently activate a Stage A item or authorize release/deployment/tester access/paid services/production credentials.
 
+## APW — Asynchronous Play & Persistent Workspace — parallel planning subproject
+
+Governing documents:
+- `governance/application-planning/asynchronous-persistent-workspace/APW_ASYNCHRONOUS_PLAY_AND_PERSISTENT_WORKSPACE_PROGRAM.md`
+- `governance/application-planning/asynchronous-persistent-workspace/APW_PROGRAM_BACKLOG.json`
+
+**Status:** OWNER-APPROVED PARALLEL PLANNING TRACK — PLANNED / NOT IMPLEMENTATION-ACTIVE.
+
+APW makes live, asynchronous and hybrid use cadences of the same governed Campaign while establishing useful Personal workspaces and campaign-independent creation. It preserves universal subscribed-user capability outside Campaign context and scopes GM authority to governed Campaign/resources rather than a global account caste. Campaign-private truth remains permission-protected; optional spoiler shielding is not a security boundary.
+
+### Approved planning tranches
+
+1. **APW-01 — Authority, Account, Context and Terminology Canonicalization**
+2. **APW-02 — Asynchronous Action, Proposal and GM Inbox Contract**
+3. **APW-03 — Between-Session Campaign Activity and Bounded Downtime**
+4. **APW-04 — Personal Workspace and No-Campaign Home**
+5. **APW-05 — Creator Workshop, Reusable Assets and Sandbox/Lab**
+6. **APW-06 — Shell, Navigation, Notifications, Visibility and Spoiler UX**
+7. **APW-07 — Persistence, Recovery, Security and Hybrid Acceptance Architecture**
+8. **APW-08 — Implementation Handoff and Stage/Alpha Integration**
+
+Execution order:
+`APW-01 → APW-02 → APW-03 → APW-04 → APW-05 → APW-06 → APW-07 → APW-08`.
+
+Each tranche completes its bounded substantive package before its final tranche gate. APW-08 must produce additive application implementation slices rather than reopening completed A3/A5/A6/A8/A9/A10 closure evidence.
+
+Provisional downstream implementation handles are APW-I01 through APW-I07 for contextual account/role extensions, Personal Home/workspace switching, asynchronous Action + GM inbox, bounded Campaign Activity/downtime, Creator Workshop/Sandbox, hybrid notification/recovery integration, and end-to-end live → async → live acceptance. These handles remain nonactive until APW-08 finalizes the implementation handoff and the governing application roadmap explicitly activates them.
+
+APW planning does not change the selected runtime pointer and does not interrupt or supersede CCTI-12, ordinary Stage A work, DS-008, WP-011/Apple, or other preserved tracks. It does not authorize implementation, migration execution, release, deployment, tester access, paid services, production credentials, autonomous AI mutation, a public creator marketplace, or unrestricted offline multi-writer synchronization.
+
 ## Design Standards Completion subproject — unfinished parallel track
 
 The audited/canonicalization tranche is complete, but exact repository ingestion is not. The unfinished gate still requires T1–T4 exact-byte transfer, source/target checksum receipts, publication/full-ingestion validators, focused exact-head CI, PR/merge, and completion evidence. Do not reconstruct checksum-bound publications from excerpts, OCR, screenshots, regenerated prose, or memory.
@@ -169,7 +201,7 @@ The audited/canonicalization tranche is complete, but exact repository ingestion
 
 Primary programs remain application shell/design system; universal objects; identity/workspaces/permissions; character workspace; campaign/scene builder; live session; combat; inventory/equipment/crafting/vehicles; investigation/social; world builder; contextual AI; and internal-alpha hardening.
 
-### Completed Stage A implementation — A0 through A8
+### Completed Stage A implementation — A0 through A9
 
 - **STAGE-A-A0 — UI Baseline Audit:** COMPLETE.
 - **STAGE-A-A1 — Application Shell and Design System:** COMPLETE.
@@ -180,37 +212,19 @@ Primary programs remain application shell/design system; universal objects; iden
 - **STAGE-A-A6 — First Playable Action and Approval Loop:** COMPLETED_VERIFIED through application PR #141 / verified squash merge `79425943f25cce347abcfd2c0abb721005d7a772`; frozen product candidate `d320d1cd770d9b650a48de523ead5c561740d7ed`; closure receipt `Multiversal-app/receipts/STAGE-A-A6-CLOSURE.json`.
 - **STAGE-A-A7 — Full Combat Interface:** COMPLETED_VERIFIED through application PR #143 / verified squash merge `2821fd41c06a61983c0cfb96d374c298dcb3fc48`; repaired frozen product candidate `f3e8d2d1e74b7bdeeb93a1d92ec36dfc83ae277e`; closure receipt `Multiversal-app/receipts/STAGE-A-A7-CLOSURE.json`.
 - **STAGE-A-A8 — Inventory, Equipment, Crafting, and Vehicles:** COMPLETED_VERIFIED through application PR #144 / verified squash merge `e9aaa858b345e6a29e27369c01468551752a2483`; frozen product candidate `cb5abdfb7515943c59995991410ca7f705e03f0b`; headed Chromium 8/8 PASS; closure receipt `Multiversal-app/receipts/STAGE-A-A8-CLOSURE.json`.
+- **STAGE-A-A9 — Investigation and Social Workspaces:** COMPLETED_VERIFIED through application PR #145 / verified squash merge `c2030febf860a4fc9bcac9c65fa44a6b22418dd4`; closure receipt `Multiversal-app/receipts/STAGE-A-A9-CLOSURE.json`.
 
 A3 established a provider-neutral local-alpha identity/session path, authorization-first dashboard projection, separate workspace discovery and entry, nonauthoritative selected-context receipts, role/delegation/support boundaries, inference-safe invitation/recent-work/notification behavior, context revocation isolation, recovery states, accessibility/responsive/offline gates, and a real local-alpha vertical flow into a protected workspace. Its final exact-head A3/A1/A2/DT-008 checks passed, and headed-Chromium evidence passed for keyboard entry/dashboard, fresh workspace entry, axe audits, desktop/mobile reflow, touch targets and offline denial. Release/deployment remain false.
 
 A4 added provider-neutral Character persistence, governed A2 Picker-based creation selections, authoritative calculation and exact 18-class validation, separate Character control, seven-class role-safe projection, Character workspace, append-only advancement/correction and migration history, permission-filtered export, offline/recovery/accessibility boundaries, and a bounded Character-to-Scene reference. Its final exact-head A4/A1/A2/A3/DT-008 checks and focused headed-Chromium Character-entry/workspace evidence passed. Release/deployment remain false.
 
-### Current next application item — STAGE-A-A9 Investigation and Social Workspaces
+### Current next ordinary Stage A application item — STAGE-A-A10 World Content Authoring
 
-`Multiversal-app/.ai/current-work-order.md` names **STAGE-A-A9 — Investigation and Social Workspaces** as `CURRENT NEXT FOR REVALIDATION / NOT ACTIVATED`.
+STAGE-A-A10 current-repository revalidation is `COMPLETED_VERIFIED` through AIOC PR #327 / verified squash `9124860691ea208bded3800008a2d92b4b2c2139`. Its verdict is `PASS — READY FOR BOUNDED A10 ACTIVATION`; implementation is authorized but not activated by that governance merge.
 
-Recovered preparation authority:
+Before A10 construction, read `governance/application-planning/stage-a-a10/current-revalidation/STAGE_A_A10_CURRENT_REPOSITORY_REVALIDATION.md` and preserve its D06/D07/D18/D28/D29/D05/D13 ownership, privacy, sandbox, migration `0008_a10_world_content_authoring.json`, owner-only canonical-promotion boundary, and A9-runtime separation.
 
-- AIOC branch `governance/stage-a-a9-preimplementation`;
-- historical branch tip `9c39c53cdb02122eae9952fb726f4b22938e8985`;
-- compatibility artifact `STAGE_A_A9_REPOSITORY_COMPATIBILITY_AND_IMPLEMENTATION_CONTRACTS_v0.2.0.zip`, SHA-256 `2a9a3b41aba8cf4ecf252fc1676b0420c229ac9fab28057c827d15c0251f37a8`;
-- historical preparation includes 70 exact future path actions and must be refreshed against the now-implemented A2–A8 repository.
-
-The recovered A9 package is provenance/input only. Retain separate D24 investigation and D25 social-relations truth with D05 projection; relationship, faction, standing, influence and control concepts remain distinct; clues and hypotheses are not objective truth; hidden graph/node/edge data is filtered before aggregation, layout or search; persistent consequences use owning-domain atomic/compensating boundaries; and AI remains nonauthoritative. Reconcile PPIA-09 Investigation & Mystery Authoring, PPIA-10 Relationship/Social/Faction authority, PPIA-14 permission/recovery microcopy, PPIA-15 awkward/scale/accessibility regression inputs, and current A2–A8 implementation before activation.
-
-### Exact next A9 operation
-
-1. reverify the current post-A8 `Multiversal-app` baseline, verified merge `e9aaa858b345e6a29e27369c01468551752a2483`, and `receipts/STAGE-A-A8-CLOSURE.json`;
-2. inspect `governance/stage-a-a9-preimplementation` without wholesale-merging it;
-3. compare historical predecessor assumptions and 70 path actions to current A2–A8 implementation;
-4. preserve A2 lookup, A3 subject/delegation/context, A4 Character lifecycle/control, A5 Campaign/Scene/Session authority, A6 Action authority, A7 combat authority and A8 Asset/Vehicle authority;
-5. revalidate separate D24 investigation and D25 social-relations truth, D05 projection, clue/hypothesis non-truth, hidden graph/node/edge filtering, persistent-consequence ownership, physical storage, additive migration numbering and the A9/A10 faction split against current repository reality and PPIA-09/PPIA-10/PPIA-14/PPIA-15 overlays;
-6. refresh exact A9 path authority, migration numbering, validators, focused CI lanes and bounded activation contracts against current `main`;
-7. produce a bounded current-repository A9 revalidation/activation record;
-8. only if that gate passes, create/activate the A9 implementation branch/work order and begin construction;
-9. keep release/deployment/provider/vendor/paid-service authority false.
-
-Do not activate A10–A12 merely because their historical design/support packages are prepared.
+The exact ordinary Stage A action is to activate bounded A10 implementation from the verified current repository baseline under the revalidation contract, without treating APW planning, CCTI-12 selection, Design Standards, Apple work, or prepared later-stage packages as automatic completion or supersession of A10.
 
 ## Validation and CI efficiency rule
 
