@@ -1,12 +1,12 @@
 {
-  "schema_version": "1.2.0",
-  "updated_at": "2026-08-18T01:20:00Z",
+  "schema_version": "1.3.0",
+  "updated_at": "2026-08-18T09:15:00Z",
   "supplement_id": "ROADMAP-CCTI-001",
   "owner": "John Brandon Turner",
   "program": "governance/application-planning/content-catalog-taxonomy-integration/CONTENT_CATALOG_TAXONOMY_INTEGRATION_PROGRAM.md",
   "roadmap_supplement": "governance/application-planning/content-catalog-taxonomy-integration/CONTENT_CATALOG_TAXONOMY_INTEGRATION_ROADMAP_SUPPLEMENT.md",
   "bootstrap_current_state_amendment": "governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_CCTI_WRITE_20260817.md",
-  "primary_attempt_id": "CCTI-WRITE-01-attempt-001",
+  "primary_attempt_id": "CCTI-12-attempt-001",
   "entries": [
     {
       "work_item_id": "CCTI-READONLY-01",
@@ -40,12 +40,27 @@
     },
     {
       "work_item_id": "CCTI-12",
+      "attempt_id": "CCTI-12-attempt-001",
       "track": "content-catalog-taxonomy-integration",
-      "state": "owner_gated_not_started",
+      "state": "t01_completed_verified_bounded_scope_active",
       "dependency": "CCTI-11 completed_verified",
-      "description": "App-facing content integration",
+      "description": "Bounded app-facing content integration",
+      "owner_approval": "approved_bounded_integration_first_scope",
+      "completed_substep": "CCTI-12-T01-candidate-content-workspace",
+      "application_pr": 188,
+      "validated_head": "8539daececaded611d54df1430e5ab14b7c7be5d",
+      "application_merge_sha": "2d2eb4c3cf9f10fe4a32029045d688b3301362e3",
+      "exact_head_validation_run": 32120405242,
       "automatic_activation": false,
-      "owner_approval_required": true
+      "retained_owner_gates": [
+        "Item taxonomy adoption",
+        "Platform taxonomy adoption",
+        "relationship promotion",
+        "compatibility finalization",
+        "runtime Asset mutation",
+        "mechanics reauthoring",
+        "release/deployment"
+      ]
     },
     {
       "work_item_id": "OGR-01",
@@ -83,5 +98,6 @@
     "post_gatx_successor_pr_185": "unfinished_validation_failed",
     "ds_008": "blocked_non_owner",
     "ordinary_stage_a": "preserved"
-  }
+  },
+  "exact_next_action": "Select the next bounded CCTI-12 app-facing integration substep without crossing retained adoption/runtime/mechanics/release gates."
 }
