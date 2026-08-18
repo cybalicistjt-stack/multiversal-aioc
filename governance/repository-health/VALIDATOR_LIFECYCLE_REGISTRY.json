@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "program_id": "CRS",
+  "substep": "CRS-04",
+  "status": "active_candidate",
+  "default_rule": "A validator or validation-like script is not a current gate merely because it exists. Current execution authority requires explicit registration here or a later machine-enforced successor registry.",
+  "repositories": {
+    "cybalicistjt-stack/multiversal-aioc": {
+      "automatic_validator_callers": [],
+      "current_validators": [],
+      "historical_inert_patterns": [
+        "scripts/validate-*.py",
+        "scripts/validate_*.py",
+        "tools/*validate*.py"
+      ],
+      "disposition": "AIOC retains historical validators as provenance and diagnostic reference, but CRS-03 removed every live Actions caller. CRS-06 will introduce a new repository-health validator rather than reactivating legacy validators by default."
+    },
+    "cybalicistjt-stack/Multiversal-app": {
+      "current_validation_core": [
+        {"path":"tools/validation_core/profile_runner.py","lifecycle":"CURRENT","purpose":"Execute explicitly declared governed validation profiles with runner preflight and compact diagnostics."},
+        {"path":"tools/validation_core/runner_preflight.py","lifecycle":"CURRENT","purpose":"Verify runner, toolchain, checkout and workspace contract without mutating persistent host state."},
+        {"path":"tools/validation_core/evidence.py","lifecycle":"CURRENT","purpose":"Generate deterministic receipts and lane-specific evidence."},
+        {"path":"tools/validation_core/compare_receipts.py","lifecycle":"CURRENT","purpose":"Compare deterministic Linux/Windows receipts on the exact candidate head."}
+      ],
+      "current_compatible_manual_checks": [
+        {"path":"tests/tools/test_mv_dev_repository_intelligence.py","lifecycle":"CURRENT_COMPATIBLE","caller":".github/workflows/self-hosted-windows-runner-smoke.yml","purpose":"Manual lightweight runner smoke only; not a feature completion gate."}
+      ],
+      "historical_inert_patterns": [
+        "tools/validation_core/validate_*.py",
+        "tools/validate_vch*.py",
+        "scripts/validate_*.py",
+        "scripts/validate-*.py",
+        "historical tranche-specific tests invoked only by workflows removed in CRS-03"
+      ],
+      "execution_rule": "A new or resumed production tranche may call a feature-specific validator only through a newly reviewed thin Validation Core profile or a documented capability exception. Historical validator existence never grants gate authority."
+    }
+  },
+  "lifecycle_assumption_findings": [
+    {
+      "pattern":"READY_TO_EXECUTE / PREPARED",
+      "finding":"These strings remain in historical A2/PPIA documentation and in task-capsule vocabulary. They are not current project-state prerequisites. Historical A2 validators/tests that require A2 to remain in those states are HISTORICAL_INERT.",
+      "current_safe_case":"tools/mv_dev/task_capsule.py may retain the vocabulary because it reports lifecycle states dynamically; callers may not assert an obsolete historical state as a universal current condition."
+    },
+    {
+      "pattern":"ubuntu-latest / GitHub-hosted runner",
+      "finding":"Occurrences remain in historical workflow definitions in Git history, historical VCH migration proof, and governance text discussing audits or prior policy. CRS-03 leaves no AIOC automatic workflow and no App automatic GitHub-hosted completion workflow live.",
+      "current_rule":"Self-hosted Windows plus self-hosted Linux plus deterministic comparison is the normal final gate where cross-platform proof is relevant; GitHub-hosted execution is optional independent audit unless a new explicit capability requirement says otherwise."
+    },
+    {
+      "pattern":"fixed historical branch, PR, tranche or stage state",
+      "finding":"Such assertions may remain inside sealed historical evidence validators, but they cannot be selected by CURRENT_WORK_POINTER.json, a live workflow, or a current completion gate unless explicitly reclassified during the relevant resumed work."
+    }
+  ],
+  "retirement_effect": {
+    "historical_files_deleted": false,
+    "history_preserved": true,
+    "automatic_current_paths_to_historical_validators": 0,
+    "future_reactivation_requires_explicit_registration": true
+  },
+  "crs04_acceptance": {
+    "validator_inventory_policy_defined": true,
+    "current_validation_core_explicitly_registered": true,
+    "historical_validator_patterns_inert_by_default": true,
+    "fixed_historical_state_assertions_barred_from_current_gate_authority": true,
+    "obsolete_generic_hosted_runner_requirement_not_current": true,
+    "remaining_gate":"Verify the current live workflow callers against this registry, update CRS checkpoint/backlog, and merge the CRS-04 governance branch before CRS-05."
+  }
+}
