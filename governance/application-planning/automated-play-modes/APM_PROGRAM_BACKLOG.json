@@ -1,0 +1,36 @@
+{
+  "program_id": "APM",
+  "version": "0.1.0",
+  "status": "owner_approved_planned_not_implementation_active",
+  "owner": "John Brandon Turner",
+  "approved": "2026-08-18",
+  "active_item": null,
+  "sequence": [
+    {"id": "APM-01", "name": "Automated-Play Authority and Mode Contract", "status": "planned", "depends_on": ["APW-01"]},
+    {"id": "APM-02", "name": "CozyMode Core Loop", "status": "planned", "depends_on": ["APM-01", "APW-03", "APW-04"]},
+    {"id": "APM-03", "name": "AutoGM Single-Encounter Runner", "status": "planned", "depends_on": ["APM-01", "CSW-05"]},
+    {"id": "APM-04", "name": "AutoGM Mini-Campaign Director", "status": "planned", "depends_on": ["APM-03", "CSW-06"]},
+    {"id": "APM-05", "name": "Connected Cozy and Shared Automated Play", "status": "planned", "depends_on": ["APM-02", "APW-06"]},
+    {"id": "APM-06", "name": "Recovery, Safety, Acceptance and Implementation Handoff", "status": "planned", "depends_on": ["APM-04", "APM-05", "APW-07"]}
+  ],
+  "implementation_ladder": [
+    "Cozy Solo",
+    "Single-Encounter AutoGM",
+    "Connected Cozy",
+    "AutoGM Mini-Campaign",
+    "broader/multiplayer AutoGM later"
+  ],
+  "authority_rules": [
+    "AutoGM and CozyMode are play experiences, not permanent account roles.",
+    "AutoGM automation receives only explicitly delegated governed operations; optional AI does not inherit unrestricted GM authority.",
+    "Mechanical legality and canonical mutation remain owned by deterministic/domain-governed rules and authority checks.",
+    "Automated play reuses ordinary Campaign/Action/Event/persistence/provenance/recovery architecture rather than forking state.",
+    "Connected Cozy begins with invited/known participants; public matchmaking is outside initial scope."
+  ],
+  "non_goals": [
+    "No unlimited open-ended autonomous campaign requirement for initial APM.",
+    "No autonomous AI canonical authority.",
+    "No public stranger matchmaking in initial APM.",
+    "No release, deployment, paid-provider, production-credential, public-marketplace or canonical-promotion authority."
+  ]
+}
