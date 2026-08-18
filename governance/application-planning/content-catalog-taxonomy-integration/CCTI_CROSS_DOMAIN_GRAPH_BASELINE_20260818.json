@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "date": "2026-08-18",
+  "status": "CANDIDATE_GRAPH_TRANCHE_COMPLETE_NOT_ADOPTED",
+  "ccti_corpus_rows": 11017,
+  "catalogs": 12,
+  "existing_resolved_relationships_preserved": 216,
+  "existing_resolved_relationship_types": {
+    "PRIMARY_ATTACK_USES": 189,
+    "CARRIES_EQUIPMENT": 27
+  },
+  "new_structured_field_candidate_edges": 260,
+  "candidate_edges_by_evidence_method": {
+    "EXACT_SPLIT_TOKEN_UNIQUE_NAME": 246,
+    "EXACT_FULL_FIELD_UNIQUE_NAME": 14
+  },
+  "candidate_edges_by_confidence": {
+    "MEDIUM": 246,
+    "HIGH": 14
+  },
+  "candidate_edges_by_semantic_posture": {
+    "DEFINITION_SYSTEM_REFERENCE": 218,
+    "RESOURCE_OR_POWER_REFERENCE": 42
+  },
+  "candidate_edges_by_source_catalog": {
+    "Spacecraft.csv": 154,
+    "Mecha.csv": 90,
+    "EVA_Suits.csv": 15,
+    "Ranged_Weapons.csv": 1
+  },
+  "candidate_edges_by_target_catalog": {
+    "Items.csv": 120,
+    "Ranged_Weapons.csv": 92,
+    "Mecha.csv": 32,
+    "Vehicles.csv": 15,
+    "Computers.csv": 1
+  },
+  "distinct_candidate_source_definitions": 260,
+  "distinct_candidate_target_definitions": 8,
+  "withheld_exact_name_signals": 96,
+  "withheld_reasons": {
+    "COMMON_TERM_EXACT_NAME_NOT_SUFFICIENT_FOR_CROSS_DOMAIN_IDENTITY": 95,
+    "AMBIGUOUS_OR_SELF_COLLIDING_EXACT_NAME": 1
+  },
+  "promotion_state": "CANDIDATE_ONLY_NOT_ADOPTED",
+  "validation": {
+    "candidate_edge_ids_unique": true,
+    "candidate_source_ids_in_ccti": true,
+    "candidate_target_ids_in_ccti": true,
+    "candidate_self_edges": 0,
+    "existing_relationship_ids_unique": true,
+    "existing_relationship_targets_touch_ccti": true,
+    "automatic_runtime_instance_relationships_created": 0
+  },
+  "governance": {
+    "exact_full_field_unique_name_candidates_are_reviewable_not_promoted": true,
+    "split_multiword_unique_name_candidates_are_reviewable_not_promoted": true,
+    "common_single_word_exact_name_matches_are_withheld": true,
+    "ambiguous_or_self_colliding_exact_names_are_withheld": true,
+    "same_name_does_not_establish_identity": true,
+    "compatibility_does_not_establish_runtime_installation_equipment_carriage_ownership_or_attachment": true,
+    "source_master_csv_mutated": false,
+    "canonical_relationship_registry_mutated": false
+  },
+  "exact_next_action": "Proceed to CCTI shared context/compatibility candidate adoption using the exact shared 241-value context authority while retaining these candidate edges as reviewable and leaving the existing 216 resolved relationships unchanged."
+}
