@@ -1,17 +1,18 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "work_item_id": "CCTI-12",
   "attempt_id": "CCTI-12-attempt-004",
   "track": "content-catalog-taxonomy-integration",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "branch": "internal-alpha/ccti12-t04-local-review-worksets",
-  "status": "started",
+  "status": "in_progress",
   "owner_selected": true,
   "started_at": "2026-08-18T10:15:00Z",
-  "updated_at": "2026-08-18T10:15:00Z",
+  "updated_at": "2026-08-18T10:27:00Z",
   "objective": "Implement CCTI-12-T04 Local Review Worksets & Proposal Disposition inside the existing owner-approved bounded GM/owner noncanonical review/authoring authority.",
-  "active_substep": "Construct the complete T04 application tranche from canonical Multiversal-app main without crossing retained canonical/runtime/release gates.",
-  "next_action": "Create the dedicated Multiversal-app branch at current main and implement local review worksets, local packet ingestion, noncanonical dispositions, navigation, and governed-review export; validate only after the bounded tranche is complete.",
+  "construction_complete": true,
+  "active_substep": "Run the exact-head dual self-hosted final gate and deterministic Windows/Linux comparison for app PR #191.",
+  "next_action": "Reconnect existing Windows self-hosted runner multiversal-win-01; the queued T04 final gate will then execute Windows and the existing Linux validation runner path can resume. Inspect/fix any genuine validation failures, rerun exact head, and merge only after both lanes plus deterministic receipt comparison pass.",
   "predecessor": {
     "attempt_id": "CCTI-12-attempt-003",
     "state": "completed_verified",
@@ -20,6 +21,21 @@
   },
   "application_base_sha": "59fd30d3ad38d688c18b1abe0adfb7c9a8eaffa5",
   "selection_record": "governance/application-planning/content-catalog-taxonomy-integration/CCTI12_T04_SELECTION_20260818.md",
+  "application_pull_request": 191,
+  "application_head": "87ce8c5f4bd4e16e4a8d4db27b0777a3fcfffdb1",
+  "delivered_outcomes_pending_validation": [
+    "named browser-memory local review worksets from explicit active-projection candidate IDs",
+    "explicit inspected-candidate add-to-workset path without display-name identity inference",
+    "validated local review-queue packet restoration bound to projection/digest/stable identity/review/source evidence and hard-false authority",
+    "validated proposed-amendment packet restoration bound to projection/digest/stable identity/facet exposure and unvalidated-for-canonical posture",
+    "reference-only identity preservation without invented Definition IDs",
+    "noncanonical local dispositions: unresolved, needs-evidence, retain-for-later-governed-review, reject-proposal",
+    "workset summary counts by domain, review state, proposal references and disposition",
+    "workset navigation into existing inspection and comparison surfaces",
+    "local governed-review workset export with every proposal/canonical/taxonomy/relationship/compatibility/runtime/mechanics/Player/release/deployment request false",
+    "projection identity reset clears worksets and local/imported amendment state",
+    "dual self-hosted Windows/Linux final-gate workflow with deterministic normalized receipt comparison"
+  ],
   "acceptance_boundary": [
     "GM/owner authorization and Player/default-route isolation",
     "deterministic validation of imported local packets and projection binding",
@@ -29,11 +45,22 @@
     "loaded candidate projection remains immutable",
     "exported review evidence hard-negates canonical, relationship, compatibility, runtime, mechanics, release and deployment authority",
     "full client regression, typecheck, accessibility, build and DT-008 compliance",
-    "final exact-head validation under MV-AI-VALIDATION-003 on applicable self-hosted lane(s)"
+    "final exact-head Windows/Linux validation and deterministic receipt comparison under MV-AI-VALIDATION-003"
   ],
   "validation": {
-    "state": "not_run",
-    "policy": "governance/ai/MULTIVERSAL_SELF_HOSTED_FINAL_VALIDATION_POLICY.md"
+    "state": "blocked_external_runner_availability",
+    "policy": "governance/ai/MULTIVERSAL_SELF_HOSTED_FINAL_VALIDATION_POLICY.md",
+    "workflow": "Validate CCTI-12 Candidate Content",
+    "run_id": 32126653586,
+    "head": "87ce8c5f4bd4e16e4a8d4db27b0777a3fcfffdb1",
+    "windows_job_id": 95678594101,
+    "windows_runner": "multiversal-win-01",
+    "windows_state": "queued_no_steps",
+    "linux_job_id": 95678594186,
+    "linux_runner": "multiversal-linux-02",
+    "linux_state": "queued_no_steps",
+    "comparison_state": "waiting_on_both_platform_lanes",
+    "required_owner_action": "start_or_reconnect_existing_windows_runner_multiversal-win-01"
   },
   "boundaries": {
     "proposal_application_to_loaded_projection": false,
