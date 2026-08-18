@@ -1,16 +1,16 @@
 # Multiversal Application Implementation Roadmap — Cross-Cutting Product TODO Supplement
 
 **Document ID:** MV-APP-ROADMAP-XCUT-001  
-**Status:** OWNER-APPROVED TODO SUPPLEMENT — NOT IMPLEMENTATION-ACTIVE  
+**Status:** OWNER-APPROVED TODO SUPPLEMENT — INTEGRATED INTO CANONICAL ROADMAP v2.18.0; RETAINED FOR PROVENANCE  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-08-18  
-**Roadmap integration target:** next canonical `APPLICATION_IMPLEMENTATION_ROADMAP.md` reconciliation
+**Integrated:** 2026-08-18 into `APPLICATION_IMPLEMENTATION_ROADMAP.md` v2.18.0
 
 ## Purpose
 
-This supplement preserves owner-approved product requirements that must remain visible in the application roadmap while the main roadmap is awaiting a broader canonical-state reconciliation. These requirements are cross-cutting and must not be lost merely because their detailed design/implementation tranche has not yet been activated.
+This supplement preserves the original owner-approved product requirements and their provenance. Its requirements are now folded into the canonical application roadmap and this file no longer serves as a pending integration queue.
 
-This supplement does **not** change the current runtime pointer, supersede active CCTI work, authorize release/deployment, or activate either requirement for implementation. The next roadmap reconciliation must fold these TODOs into the main application roadmap and preserve their cross-cutting nature.
+This supplement does **not** change the runtime pointer, authorize release/deployment, or mark either requirement implemented.
 
 ## TODO-UX-VOICE — Multiversal Product Personality and Assistance Standard
 
@@ -83,12 +83,8 @@ This future framework should integrate with APW account/context authority, CSW p
 
 A bounded future track may use the provisional handle **FSF — Family Safety Framework**. Naming, tranche structure, legal/compliance review requirements, implementation sequencing, and release gates remain to be formally designed and owner-approved.
 
-## Roadmap reconciliation requirements
+## Integration record
 
-At the next canonical `APPLICATION_IMPLEMENTATION_ROADMAP.md` reconciliation:
+Canonical roadmap v2.18.0 now carries both TODO-UX-VOICE and TODO-FSF directly, preserves their cross-cutting nature, and places the APW-01 account/authority seam ahead of dependent public/community systems so Family Safety architecture remains retrofit-safe.
 
-1. Add the Multiversal personality/voice standard as an explicit product-wide TODO and cross-cutting acceptance concern.
-2. Add Family Safety / Parental Controls as an explicit future bounded TODO/track and preserve the human-participant enforcement boundary.
-3. Place both in dependency order without interrupting the currently approved CCTI → roadmap reconciliation → tester-successor → APW/CSW sequence unless new repository evidence requires otherwise.
-4. Preserve these requirements in future handoff/bootstrap/recovery projections once their execution windows become relevant.
-5. Do not treat this supplement or roadmap notation as implementation completion.
+This supplement remains in-repository as the owner-decision provenance source. It must not be treated as implementation completion.
