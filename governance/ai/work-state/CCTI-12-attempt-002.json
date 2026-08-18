@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "CCTI-12",
+  "attempt_id": "CCTI-12-attempt-002",
+  "track": "content-catalog-taxonomy-integration",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "planned_branch": "internal-alpha/ccti12-t02-review-queue-compare",
+  "status": "in_progress",
+  "owner_selected": true,
+  "started_at": "2026-08-18T09:19:00Z",
+  "objective": "Build the next bounded GM/owner candidate-review slice: a local review queue and read-only candidate comparison workflow that improves review throughput without canonical, relationship, compatibility or runtime mutation authority.",
+  "active_substep": "CCTI-12-T02-review-queue-and-candidate-compare",
+  "predecessor": {
+    "attempt_id": "CCTI-12-attempt-001",
+    "state": "completed_verified",
+    "application_pr": 188,
+    "application_merge_sha": "2d2eb4c3cf9f10fe4a32029045d688b3301362e3"
+  },
+  "authorized_outcomes": [
+    "GM/owner can add/remove candidate records from a browser-memory review queue",
+    "GM/owner can compare two authorized candidate records side by side using stable identity, candidate facets, review reasons and source references",
+    "comparison is explicitly read-only and does not resolve governed truth",
+    "review queue can be filtered/inspected and exported as noncanonical local review intent",
+    "large locally loaded projections remain bounded in rendered UI",
+    "Player/default application remains isolated from CCTI-12"
+  ],
+  "acceptance_criteria": [
+    "review queue state is local-only and cannot promote or enable candidate content",
+    "comparison requires two records from the currently loaded governed projection and never infers identity from display name",
+    "comparison exposes differences without finalizing compatibility or changing canonical values",
+    "reference-only identities remain valid comparison subjects without invented Definition IDs",
+    "keyboard/assistive semantics and DT-008 shared-component rules remain satisfied",
+    "focused tests plus full regression, typecheck, accessibility, build and Player/runtime separation pass on exact head"
+  ],
+  "boundaries": {
+    "candidate_or_taxonomy_enablement": false,
+    "relationship_promotion": false,
+    "compatibility_finalization": false,
+    "runtime_asset_mutation": false,
+    "mechanics_reauthoring": false,
+    "release_or_deployment": false,
+    "private_candidate_corpus_committed_to_app_repo": false
+  },
+  "execution_rule": "Complete T02 construction before running its validation phase. Fix failures against the exact constructed candidate; merge only after every declared gate passes.",
+  "next_action": "Create the dedicated app branch from canonical main and implement the bounded local review-queue and candidate-compare slice without crossing retained gates."
+}
