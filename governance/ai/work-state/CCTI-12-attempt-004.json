@@ -1,18 +1,18 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "work_item_id": "CCTI-12",
   "attempt_id": "CCTI-12-attempt-004",
   "track": "content-catalog-taxonomy-integration",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "branch": "internal-alpha/ccti12-t04-local-review-worksets",
-  "status": "in_progress",
-  "owner_selected": true,
+  "status": "validation_quarantined",
+  "owner_selected": false,
   "started_at": "2026-08-18T10:15:00Z",
-  "updated_at": "2026-08-18T10:27:00Z",
+  "updated_at": "2026-08-18T14:36:00Z",
   "objective": "Implement CCTI-12-T04 Local Review Worksets & Proposal Disposition inside the existing owner-approved bounded GM/owner noncanonical review/authoring authority.",
   "construction_complete": true,
-  "active_substep": "Run the exact-head dual self-hosted final gate and deterministic Windows/Linux comparison for app PR #191.",
-  "next_action": "Reconnect existing Windows self-hosted runner multiversal-win-01; the queued T04 final gate will then execute Windows and the existing Linux validation runner path can resume. Inspect/fix any genuine validation failures, rerun exact head, and merge only after both lanes plus deterministic receipt comparison pass.",
+  "active_substep": "Validation quarantined after exact-head self-hosted execution reached focused test validation but the available conversational GitHub evidence surface did not reliably expose the exact failing assertion for a safe patch.",
+  "next_action": "Resume T04 through a self-exporting compact failure artifact or direct local reproduction, bind any patch to exact failing evidence, then require exact-final-head Windows + Linux + deterministic receipt comparison before merge. Do not treat quarantine as completion.",
   "predecessor": {
     "attempt_id": "CCTI-12-attempt-003",
     "state": "completed_verified",
@@ -22,7 +22,7 @@
   "application_base_sha": "59fd30d3ad38d688c18b1abe0adfb7c9a8eaffa5",
   "selection_record": "governance/application-planning/content-catalog-taxonomy-integration/CCTI12_T04_SELECTION_20260818.md",
   "application_pull_request": 191,
-  "application_head": "87ce8c5f4bd4e16e4a8d4db27b0777a3fcfffdb1",
+  "application_head": "3d32ee9317bc924a6a8206121402c68bdf8a061b",
   "delivered_outcomes_pending_validation": [
     "named browser-memory local review worksets from explicit active-projection candidate IDs",
     "explicit inspected-candidate add-to-workset path without display-name identity inference",
@@ -48,19 +48,20 @@
     "final exact-head Windows/Linux validation and deterministic receipt comparison under MV-AI-VALIDATION-003"
   ],
   "validation": {
-    "state": "blocked_external_runner_availability",
+    "state": "quarantined_evidence_transport_after_test_failure",
     "policy": "governance/ai/MULTIVERSAL_SELF_HOSTED_FINAL_VALIDATION_POLICY.md",
     "workflow": "Validate CCTI-12 Candidate Content",
-    "run_id": 32126653586,
-    "head": "87ce8c5f4bd4e16e4a8d4db27b0777a3fcfffdb1",
-    "windows_job_id": 95678594101,
-    "windows_runner": "multiversal-win-01",
-    "windows_state": "queued_no_steps",
-    "linux_job_id": 95678594186,
-    "linux_runner": "multiversal-linux-02",
-    "linux_state": "queued_no_steps",
-    "comparison_state": "waiting_on_both_platform_lanes",
-    "required_owner_action": "start_or_reconnect_existing_windows_runner_multiversal-win-01"
+    "initial_queued_run_id": 32126653586,
+    "latest_run_id": 32138241708,
+    "head": "3d32ee9317bc924a6a8206121402c68bdf8a061b",
+    "known_progress": [
+      "Windows persistent-runner bootstrap was repaired to use the satisfied system Python contract instead of hosted-style setup-python provisioning.",
+      "Both required self-hosted platform lanes subsequently reached focused T04/UI test execution.",
+      "The remaining known class is a test-contract failure around repeated Canonical taxonomy: OFF boundary presentation; no product/safety UI removal is authorized merely to satisfy global uniqueness."
+    ],
+    "completion_gate_remaining": "exact-final-head Windows success + Linux success + deterministic normalized receipt comparison success",
+    "quarantine_reason": "Repeated attempts to retrieve exact failing test-line evidence through the conversational GitHub log surface did not provide a reliable patch basis. The validation interface may block this merge, but it must not freeze unrelated production work.",
+    "owner_action_required": false
   },
   "boundaries": {
     "proposal_application_to_loaded_projection": false,
@@ -77,6 +78,7 @@
   "parallel_tracks_preserved": [
     "Multiversal-app PR #185 remains unfinished and not superseded",
     "DS-008-working-series-attempt-002 remains blocked_non_owner",
-    "ordinary Stage A remains preserved"
+    "ordinary Stage A remains preserved",
+    "roadmap reconciliation and Validation Core Hardening may proceed without claiming CCTI-12-T04 complete"
   ]
 }
