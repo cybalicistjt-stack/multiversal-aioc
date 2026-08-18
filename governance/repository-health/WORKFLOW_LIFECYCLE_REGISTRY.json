@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "program_id": "CRS",
   "status": "CURRENT",
   "policy": "governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md",
@@ -17,14 +17,14 @@
           "automatic_repository_event_trigger": true,
           "runner": "ubuntu-latest",
           "timeout_minutes": 5,
-          "purpose": "One small stdlib-Python cross-repository authority/registry/runtime health check. AIOC has no repository-attached self-hosted runner; this exception is not an application, package, release, or feature completion gate."
+          "purpose": "One small stdlib-Python AIOC authority/registry/runtime health check. It validates AIOC only and does not require cross-repository token access."
         }
       ],
       "retired_workflow_policy": "All pre-CRS AIOC workflows remain HISTORICAL_INERT in Git history. None may be restored without explicit lifecycle registration and current-assumption review.",
-      "hosted_exception_boundary": "The AIOC health workflow may use stock GitHub-hosted Linux only for bounded governance health validation. It must not become a substitute for the self-hosted application/package final-validation policy."
+      "hosted_exception_boundary": "The AIOC health workflow may use stock GitHub-hosted Linux only for bounded governance health validation. It cannot satisfy or replace an application, package, release, or feature completion gate."
     },
     "cybalicistjt-stack/Multiversal-app": {
-      "current_main": "41e313a979f24a63e7847ffbab5bddfa38cd911e",
+      "current_main": "ec4ad52910fd8728134df4bdbad31476f44602e9",
       "live_workflows": [
         {
           "path": ".github/workflows/_validation-core-profile.yml",
@@ -41,16 +41,27 @@
           "validation_core": "manual_runner_diagnostic_exception",
           "automatic_repository_event_trigger": false,
           "purpose": "Manual Windows runner availability/toolchain smoke; never a feature completion gate."
+        },
+        {
+          "path": ".github/workflows/validate-repository-health.yml",
+          "lifecycle": "CURRENT",
+          "execution": "self_hosted_application_health_gate",
+          "validation_core": "repository_health_companion",
+          "automatic_repository_event_trigger": true,
+          "runner": "self-hosted linux x64 multiversal-validation-linux",
+          "purpose": "Machine-enforce the App workflow namespace, Validation Core boundary, inert local selector redirects, and absence of completed-era active/ready work-order namespaces."
         }
       ],
       "retired_workflow_policy": "A2, DT proof, GATX, IA, P9-06, Repository Solidity, Salvage, Stage-A, VCH proof and paused feature-specific workflows remain HISTORICAL_INERT in Git history. Resumed feature work must use a new thin Validation Core profile or a documented current capability exception."
     }
   },
   "machine_enforcement": {
-    "validator": "scripts/validate_repository_health.py",
+    "aioc_validator": "scripts/validate_repository_health.py",
+    "application_validator": "tools/validation_core/validate_repository_health_app.py",
     "audit": "governance/repository-health/CANONICAL_STATE_AUDIT.json",
     "assert_exact_live_namespace": true,
     "deny_unregistered_workflow": true,
-    "application_completion_requires_governed_self_hosted_core": true
+    "application_completion_requires_governed_self_hosted_core": true,
+    "cross_repository_token_dependency": false
   }
 }

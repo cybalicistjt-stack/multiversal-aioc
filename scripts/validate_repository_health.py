@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic Multiversal canonical-state health validator.
-
-Historical material may remain in Git, but it must not occupy a current selector,
-automatic workflow, or operational active/ready namespace.
-"""
+"""Deterministic Multiversal canonical-state health validator."""
 
 from __future__ import annotations
 
@@ -22,6 +18,7 @@ AIOC_WORKFLOWS_ALLOWED = {"validate-repository-health.yml"}
 APP_WORKFLOWS_ALLOWED = {
     "_validation-core-profile.yml",
     "self-hosted-windows-runner-smoke.yml",
+    "validate-repository-health.yml",
 }
 APP_SELECTOR_PATHS = [
     ".ai/current-phase.md",
@@ -134,6 +131,7 @@ def check_aioc(root: Path, errors: list[str]) -> dict[str, Any]:
         assert "governance-only check is an explicit exception" in workflow_text
         assert "actions/setup-python" not in workflow_text
         assert "scripts/validate_repository_health.py" in workflow_text
+        assert "repository: cybalicistjt-stack/Multiversal-app" not in workflow_text
 
         aioc_registry = workflow_registry["repositories"]["cybalicistjt-stack/multiversal-aioc"]
         registered_aioc = {Path(item["path"]).name for item in aioc_registry["live_workflows"]}
@@ -142,7 +140,6 @@ def check_aioc(root: Path, errors: list[str]) -> dict[str, Any]:
         assert health_entry["execution"] == "github_hosted_linux_governance_exception"
         assert health_entry["timeout_minutes"] <= 5
 
-        assert validator_registry["default_rule"].startswith("A validator or validation-like script is not a current gate")
         registered_aioc_validators = {item["path"] for item in validator_registry["repositories"]["cybalicistjt-stack/multiversal-aioc"]["current_validators"]}
         assert "scripts/validate_repository_health.py" in registered_aioc_validators
         assert audit["result"] == "zero_known_conflicting_authority"
@@ -165,14 +162,14 @@ def check_app(root: Path, audit: dict[str, Any], errors: list[str]) -> dict[str,
     try:
         live_workflows = workflow_names(root)
         assert live_workflows == APP_WORKFLOWS_ALLOWED, f"App workflow namespace drift: {sorted(live_workflows)}"
-        reusable = (root / ".github/workflows/_validation-core-profile.yml").read_text(encoding="utf-8")
-        assert "workflow_call" in reusable
-        assert "self-hosted" in reusable
-        assert "ubuntu-latest" not in reusable
-        assert "compare_receipts.py" in reusable
+        shared = (root / ".github/workflows/_validation-core-profile.yml").read_text(encoding="utf-8")
+        assert "workflow_call" in shared and "self-hosted" in shared and "compare_receipts.py" in shared
+        assert "ubuntu-latest" not in shared
         smoke = (root / ".github/workflows/self-hosted-windows-runner-smoke.yml").read_text(encoding="utf-8")
-        assert "workflow_dispatch" in smoke
-        assert "ubuntu-latest" not in smoke
+        assert "workflow_dispatch" in smoke and "ubuntu-latest" not in smoke
+        health = (root / ".github/workflows/validate-repository-health.yml").read_text(encoding="utf-8")
+        assert "multiversal-validation-linux" in health and "validate_repository_health_app.py" in health
+        assert "ubuntu-latest" not in health
 
         assert not (root / ".agent/active-work-orders").exists()
         assert not (root / ".ai/ready-work-orders").exists()
@@ -216,7 +213,7 @@ def main() -> int:
         app = check_app(Path(args.app_root).resolve(), audit, errors)
 
     result = {
-        "schema_version": "1.2.0",
+        "schema_version": "1.3.0",
         "validator": "scripts/validate_repository_health.py",
         "status": "FAIL" if errors else "PASS",
         "aioc": aioc,

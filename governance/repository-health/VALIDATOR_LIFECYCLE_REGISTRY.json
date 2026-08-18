@@ -1,12 +1,12 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "program_id": "CRS",
   "status": "CURRENT",
   "default_rule": "A validator or validation-like script is not a current gate merely because it exists. Current execution authority requires explicit registration here.",
   "repositories": {
     "cybalicistjt-stack/multiversal-aioc": {
       "current_validators": [
-        {"path":"scripts/validate_repository_health.py","lifecycle":"CURRENT","caller":".github/workflows/validate-repository-health.yml","purpose":"Cross-repository canonical authority, workflow, validator, runtime-state and stale-selector health enforcement."}
+        {"path":"scripts/validate_repository_health.py","lifecycle":"CURRENT","caller":".github/workflows/validate-repository-health.yml","purpose":"AIOC canonical authority, workflow, validator, runtime-state and stale-selector health enforcement."}
       ],
       "historical_inert_patterns": ["scripts/validate-*.py","scripts/validate_*.py","tools/*validate*.py"],
       "exception_rule": "Only scripts explicitly listed in current_validators have current gate authority; filename pattern matches do not grant authority."
@@ -16,24 +16,25 @@
         {"path":"tools/validation_core/profile_runner.py","lifecycle":"CURRENT","purpose":"Execute governed validation profiles with preflight and compact diagnostics."},
         {"path":"tools/validation_core/runner_preflight.py","lifecycle":"CURRENT","purpose":"Verify runner, toolchain, checkout and workspace contract without persistent host mutation."},
         {"path":"tools/validation_core/evidence.py","lifecycle":"CURRENT","purpose":"Generate deterministic receipts and lane-specific evidence."},
-        {"path":"tools/validation_core/compare_receipts.py","lifecycle":"CURRENT","purpose":"Compare deterministic Linux/Windows receipts on the exact candidate head."}
+        {"path":"tools/validation_core/compare_receipts.py","lifecycle":"CURRENT","purpose":"Compare deterministic Linux/Windows receipts on the exact candidate head."},
+        {"path":"tools/validation_core/validate_repository_health_app.py","lifecycle":"CURRENT","caller":".github/workflows/validate-repository-health.yml","purpose":"Machine-enforce application workflow/selector/work-order repository-health invariants on the repository-attached self-hosted Linux runner."}
       ],
       "current_compatible_manual_checks": [
         {"path":"tests/tools/test_mv_dev_repository_intelligence.py","lifecycle":"CURRENT_COMPATIBLE","caller":".github/workflows/self-hosted-windows-runner-smoke.yml","purpose":"Manual lightweight runner smoke only; not a feature completion gate."}
       ],
-      "historical_inert_patterns": ["tools/validation_core/validate_*.py","tools/validate_vch*.py","scripts/validate_*.py","scripts/validate-*.py","historical tranche-specific tests invoked only by CRS-retired workflows"],
-      "execution_rule": "New or resumed production work uses a reviewed thin Validation Core profile by default. A feature-specific historical validator may participate only after explicit current-lifecycle review and registration or a documented capability exception."
+      "historical_inert_patterns": ["tools/validation_core/validate_*.py except explicitly registered current validators","tools/validate_vch*.py","scripts/validate_*.py","scripts/validate-*.py","historical tranche-specific tests invoked only by CRS-retired workflows"],
+      "execution_rule": "New or resumed production work uses a reviewed thin Validation Core profile by default. A historical feature validator may participate only after explicit current-lifecycle review and registration or a documented capability exception."
     }
   },
   "lifecycle_assumption_findings": [
     {"pattern":"READY_TO_EXECUTE / PREPARED","finding":"Historical A2/PPIA assertions using these states are not current project-state prerequisites. Dynamic task-capsule vocabulary may remain, but later lifecycle work cannot be blocked by a sealed earlier-stage expectation."},
-    {"pattern":"ubuntu-latest / GitHub-hosted runner","finding":"No live generic completion gate uses GitHub-hosted compute. Self-hosted Windows/Linux plus deterministic comparison remains the normal cross-platform final gate; independent hosted audit is optional unless a new explicit capability requires it."},
+    {"pattern":"ubuntu-latest / GitHub-hosted runner","finding":"Application/package final validation remains self-hosted and Validation-Core governed. The only registered generic hosted execution is the bounded AIOC governance-health exception because AIOC has no repository-attached self-hosted runner."},
     {"pattern":"fixed historical branch, PR, tranche or stage state","finding":"Such assertions remain provenance only unless explicitly reclassified into a current gate."}
   ],
   "retirement_effect": {
     "historical_files_deleted": false,
     "history_preserved": true,
-    "automatic_current_paths_to_historical_validators": 0,
+    "automatic_current_paths_to_unregistered_historical_validators": 0,
     "future_reactivation_requires_explicit_registration": true
   }
 }
