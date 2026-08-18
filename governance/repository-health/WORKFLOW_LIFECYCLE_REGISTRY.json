@@ -1,79 +1,26 @@
 {
-  "schema_version": "1.4.0",
+  "schema_version": "1.5.0",
   "program_id": "CRS",
   "status": "CURRENT",
   "policy": "governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md",
   "default_rule": "A workflow not explicitly listed as CURRENT or CURRENT_COMPATIBLE is not permitted in the live .github/workflows namespace.",
   "repositories": {
     "cybalicistjt-stack/multiversal-aioc": {
-      "historical_workflow_baseline": "cab80a5500efda428b0d76a6722d49c04ad0c08f",
-      "historical_quarantine_commit": "73173cbb8db51af584835fa39023c410ac574dac",
-      "live_workflows": [
-        {
-          "path": ".github/workflows/validate-repository-health.yml",
-          "lifecycle": "CURRENT",
-          "execution": "github_hosted_linux_governance_exception",
-          "validation_core": "documented_repository_health_exception",
-          "automatic_repository_event_trigger": true,
-          "runner": "ubuntu-latest",
-          "timeout_minutes": 5,
-          "purpose": "One small stdlib-Python AIOC authority/registry/runtime health check. It validates AIOC only and does not require cross-repository token access."
-        }
-      ],
-      "retired_workflow_policy": "All pre-CRS AIOC workflows remain HISTORICAL_INERT in Git history. None may be restored without explicit lifecycle registration and current-assumption review.",
-      "hosted_exception_boundary": "The AIOC health workflow may use stock GitHub-hosted Linux only for bounded governance health validation. It cannot satisfy or replace an application, package, release, or feature completion gate."
+      "live_workflows": [{"path":".github/workflows/validate-repository-health.yml","lifecycle":"CURRENT","execution":"github_hosted_linux_governance_exception","automatic_repository_event_trigger":true,"runner":"ubuntu-latest","timeout_minutes":5,"purpose":"Bounded AIOC authority/repository-health validation only."}],
+      "retired_workflow_policy": "All other historical AIOC workflows remain HISTORICAL_INERT in Git history."
     },
     "cybalicistjt-stack/Multiversal-app": {
-      "current_main": "ec4ad52910fd8728134df4bdbad31476f44602e9",
+      "current_main": "bf61c64c89e7ea997842ea7442797fba619d0e28",
       "live_workflows": [
-        {
-          "path": ".github/workflows/_validation-core-profile.yml",
-          "lifecycle": "CURRENT",
-          "execution": "workflow_call_only",
-          "validation_core": "native",
-          "automatic_repository_event_trigger": false,
-          "purpose": "Shared self-hosted Linux/Windows exact-head validation, compact diagnostics, deterministic receipts and comparator for thin production profiles."
-        },
-        {
-          "path": ".github/workflows/self-hosted-windows-runner-smoke.yml",
-          "lifecycle": "CURRENT_COMPATIBLE",
-          "execution": "workflow_dispatch_only",
-          "validation_core": "manual_runner_diagnostic_exception",
-          "automatic_repository_event_trigger": false,
-          "purpose": "Manual Windows runner availability/toolchain smoke; never a feature completion gate."
-        },
-        {
-          "path": ".github/workflows/validate-repository-health.yml",
-          "lifecycle": "CURRENT",
-          "execution": "self_hosted_application_health_gate",
-          "validation_core": "repository_health_companion",
-          "automatic_repository_event_trigger": true,
-          "runner": "self-hosted linux x64 multiversal-validation-linux",
-          "purpose": "Machine-enforce the App workflow namespace, Validation Core boundary, inert local selector redirects, and absence of completed-era active/ready work-order namespaces."
-        },
-        {
-          "path": ".github/workflows/validate-post-gatx-self-hosted-exact-head.yml",
-          "lifecycle": "CURRENT_COMPATIBLE",
-          "execution": "bounded_self_hosted_package_capability_exception",
-          "validation_core": "documented_capability_exception",
-          "automatic_repository_event_trigger": true,
-          "runner": "self-hosted linux + self-hosted windows + deterministic package comparator",
-          "scope": "POST-GATX-SUCCESSOR only",
-          "retire_after": "POST-GATX-SUCCESSOR completion or explicit supersession",
-          "purpose": "Exact-head package/browser/PowerShell proof for the preserved post-GATX Internal Alpha successor. This exception exists because the gate requires Node/pnpm, headed Chromium, packaged PowerShell execution, and byte-identical ZIP comparison; it may not be reused as generic feature validation."
-        }
+        {"path":".github/workflows/_validation-core-profile.yml","lifecycle":"CURRENT","execution":"workflow_call_only","validation_core":"native","automatic_repository_event_trigger":false,"purpose":"Shared self-hosted exact-head validation core."},
+        {"path":".github/workflows/self-hosted-windows-runner-smoke.yml","lifecycle":"CURRENT_COMPATIBLE","execution":"workflow_dispatch_only","validation_core":"manual_runner_diagnostic_exception","automatic_repository_event_trigger":false,"purpose":"Manual Windows runner smoke only."},
+        {"path":".github/workflows/validate-repository-health.yml","lifecycle":"CURRENT","execution":"self_hosted_application_health_gate","validation_core":"repository_health_companion","automatic_repository_event_trigger":true,"purpose":"Machine-enforce App execution-surface health."}
       ],
-      "retired_workflow_policy": "A2, DT proof, GATX, IA, P9-06, Repository Solidity, Salvage, Stage-A, VCH proof and unregistered feature-specific workflows remain HISTORICAL_INERT in Git history. Resumed feature work must use a new thin Validation Core profile or a documented current capability exception.",
-      "bounded_active_exceptions": [".github/workflows/validate-post-gatx-self-hosted-exact-head.yml"]
+      "completed_bounded_exceptions": [
+        {"path":".github/workflows/validate-post-gatx-self-hosted-exact-head.yml","scope":"POST-GATX-SUCCESSOR","validated_head":"3b9e33cb22b8d4e3f2558135ba0fc36a8c8ad223","validation_run":32197192589,"completion_merge":"8685165318b1f3782903bfe137ba8257539af017","retirement_pr":204,"retirement_merge":"bf61c64c89e7ea997842ea7442797fba619d0e28","lifecycle":"HISTORICAL_INERT"}
+      ],
+      "retired_workflow_policy": "A2, DT proof, GATX, IA, P9-06, Repository Solidity, Salvage, Stage-A, VCH proof, completed post-GATX proof, and unregistered feature-specific workflows remain HISTORICAL_INERT. Resumed feature work uses a reviewed thin Validation Core profile by default."
     }
   },
-  "machine_enforcement": {
-    "aioc_validator": "scripts/validate_repository_health.py",
-    "application_validator": "tools/validation_core/validate_repository_health_app.py",
-    "audit": "governance/repository-health/CANONICAL_STATE_AUDIT.json",
-    "assert_exact_live_namespace": true,
-    "deny_unregistered_workflow": true,
-    "application_completion_requires_governed_self_hosted_core_or_registered_capability_exception": true,
-    "cross_repository_token_dependency": false
-  }
+  "machine_enforcement": {"assert_exact_live_namespace":true,"deny_unregistered_workflow":true,"application_completion_requires_governed_self_hosted_core_or_registered_capability_exception":true,"cross_repository_token_dependency":false}
 }

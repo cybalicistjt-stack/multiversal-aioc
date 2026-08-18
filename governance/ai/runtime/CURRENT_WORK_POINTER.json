@@ -1,6 +1,6 @@
 {
-  "schema_version": "2.5.0",
-  "updated_at": "2026-08-18T23:20:00Z",
+  "schema_version": "2.6.0",
+  "updated_at": "2026-08-18T23:32:00Z",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "authority_registry": "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
   "static_restart_prompt": "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
@@ -13,44 +13,56 @@
   "canonical_application_roadmap": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
   "roadmap_supplements": ["governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_APM_SUPPLEMENT.md"],
   "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
-  "primary_attempt_id": "POST-GATX-SUCCESSOR-attempt-001",
-  "selection_reason": "CRS is completed_verified. The pre-CRS refresh PR #201 has been closed as superseded; the successor is rebuilt from cleaned App main as PR #203 with its bounded validation surface explicitly registered under the deny-by-default lifecycle model.",
+  "primary_attempt_id": "CCTI-12-attempt-004",
+  "selection_reason": "POST-GATX-SUCCESSOR completed_verified on cleaned main. Its bounded validation exception was immediately retired. The next canonical operation is CCTI-12-T04, still unfinished, now selected for clean-main reconstruction and hardened validation.",
   "active_attempt": {
-    "work_item_id": "POST-GATX-SUCCESSOR",
-    "attempt_id": "POST-GATX-SUCCESSOR-attempt-001",
-    "track": "post-gatx-internal-alpha-successor",
+    "work_item_id": "CCTI-12",
+    "attempt_id": "CCTI-12-attempt-004",
+    "track": "content-catalog-taxonomy-integration",
     "priority": 1,
     "owner_selected": true,
     "repository": "cybalicistjt-stack/Multiversal-app",
-    "branch": "internal-alpha/post-gatx-successor-clean",
-    "pull_request": 203,
-    "checkpoint_path": "governance/ai/work-state/POST-GATX-SUCCESSOR-attempt-001.json",
+    "branch": "internal-alpha/ccti12-t04-local-review-worksets",
+    "pull_request": 191,
+    "checkpoint_path": "governance/ai/work-state/CCTI-12-attempt-004.json",
     "status": "in_progress",
-    "active_item": "POST-GATX-SUCCESSOR"
+    "active_item": "CCTI-12-T04"
   },
   "paused_or_preserved_tracks": [
-    {"track":"content-catalog-taxonomy-integration","work_item":"CCTI-12-T04","status":"validation_quarantined","repository":"cybalicistjt-stack/Multiversal-app","pr":191,"branch":"internal-alpha/ccti12-t04-local-review-worksets"},
     {"track":"wp-011-apple","status":"preserved_special_environment_dormant","repository":"cybalicistjt-stack/Multiversal-app","pr":61,"branch":"wo/WP011-hosted-macos-evidence"},
     {"track":"design-standards-completion","work_item":"DS-008-working-series","status":"blocked_non_owner"},
     {"track":"apw","status":"owner_approved_planned_not_active","next_item":"APW-01"},
     {"track":"csw","status":"owner_approved_planned_not_active","next_item":"CSW-01"},
     {"track":"apm","status":"owner_approved_planned_not_active","next_item":"APM-01"}
   ],
+  "recently_completed_work": {
+    "work_item":"POST-GATX-SUCCESSOR",
+    "status":"completed_verified",
+    "application_pr":203,
+    "validated_head":"3b9e33cb22b8d4e3f2558135ba0fc36a8c8ad223",
+    "application_merge":"8685165318b1f3782903bfe137ba8257539af017",
+    "validation_run":32197192589,
+    "application_health_run":32197192592,
+    "package":"Multiversal-Internal-Alpha-Windows-3b9e33cb22b8-POST-GATX.zip",
+    "package_sha256":"f07bfc00bb2708e48d0d85118fd1861e017b720d4d85ba1d912ede7b6b5bc694",
+    "validation_retirement_pr":204,
+    "validation_retirement_merge":"bf61c64c89e7ea997842ea7442797fba619d0e28",
+    "tester_distribution_approved":false
+  },
   "completed_support_programs": [
-    {"program_id":"VCH","status":"completed_verified","final_item":"VCH-06","closure_application_pr":200,"final_validated_head":"70e0480030c39ecd67c3c137eb2e3ba666e92bf8","closure_merge_sha":"aa286a481fc53fdb969cc10be0388974bdbd3c9e","deterministic_sha256":"c1412de2e335af1df984af3ba61c9f55e94f493497d59f1ea48038faf16b50e6"},
-    {"program_id":"CRS","status":"completed_verified","final_item":"CRS-06","application_health_pr":202,"application_health_merge":"ec4ad52910fd8728134df4bdbad31476f44602e9","application_health_run":32178841607,"aioc_health_pr":405,"aioc_health_run":32179296631,"aioc_health_merge":"9a74d10988ca41201c8155956a09564c7d1289a9","audit_result":"zero_known_conflicting_authority"}
+    {"program_id":"VCH","status":"completed_verified","closure_application_pr":200,"final_validated_head":"70e0480030c39ecd67c3c137eb2e3ba666e92bf8","closure_merge_sha":"aa286a481fc53fdb969cc10be0388974bdbd3c9e"},
+    {"program_id":"CRS","status":"completed_verified","application_health_merge":"ec4ad52910fd8728134df4bdbad31476f44602e9","aioc_health_merge":"9a74d10988ca41201c8155956a09564c7d1289a9","audit_result":"zero_known_conflicting_authority"}
   ],
   "bounded_authority": {
     "repository_health_maintenance": true,
-    "post_gatx_successor_reconciliation_and_validation": true,
-    "post_gatx_successor_merge": false,
-    "tester_distribution": false,
+    "ccti_t04_reconciliation_and_validation": true,
     "ccti_t04_merge_or_completion": false,
+    "tester_distribution": false,
     "wp011_run_authorization": false,
     "apw_implementation": false,
     "csw_implementation": false,
     "apm_implementation": false,
     "release_or_deployment": false
   },
-  "exact_next_action": "Freeze App PR #203 head 91626e3663efb1a75bf35f530057eba0302053c7 and require the registered App repository-health gate plus the bounded post-GATX self-hosted Linux/headed, Windows/PowerShell and deterministic byte-identical package comparator. Merge only if all required exact-head jobs pass and artifacts bind this head. Merge creates a validated successor candidate only; tester distribution remains a separate owner decision."
+  "exact_next_action": "Rebuild CCTI-12-T04 from cleaned App main bf61c64c89e7ea997842ea7442797fba619d0e28. Treat PR #191/head 3d32ee9317bc924a6a8206121402c68bdf8a061b as source/provenance only: port the substantive T04 product/test/doc changes, do not restore .ai/current-work-order.md or retired validate-ccti12-candidate-content.yml, review the old receipt builder rather than granting it authority by existence, register a new thin Validation Core T04 surface, repair only evidence-proven failures, and require exact-final-head Windows + Linux + deterministic comparator success before merge."
 }
