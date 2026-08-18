@@ -1,12 +1,12 @@
 {
-  "schema_version": "1.3.0",
-  "updated_at": "2026-08-18T09:15:00Z",
+  "schema_version": "1.4.0",
+  "updated_at": "2026-08-18T09:29:00Z",
   "supplement_id": "ROADMAP-CCTI-001",
   "owner": "John Brandon Turner",
   "program": "governance/application-planning/content-catalog-taxonomy-integration/CONTENT_CATALOG_TAXONOMY_INTEGRATION_PROGRAM.md",
   "roadmap_supplement": "governance/application-planning/content-catalog-taxonomy-integration/CONTENT_CATALOG_TAXONOMY_INTEGRATION_ROADMAP_SUPPLEMENT.md",
   "bootstrap_current_state_amendment": "governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_CCTI_WRITE_20260817.md",
-  "primary_attempt_id": "CCTI-12-attempt-001",
+  "primary_attempt_id": "CCTI-12-attempt-003",
   "entries": [
     {
       "work_item_id": "CCTI-READONLY-01",
@@ -23,35 +23,47 @@
       "attempt_id": "CCTI-WRITE-01-attempt-001",
       "track": "content-catalog-taxonomy-integration",
       "state": "completed_verified",
-      "owner_selected": true,
-      "checkpoint": "governance/ai/work-state/CCTI-WRITE-01-attempt-001.json",
-      "completed_item_axes": ["IAX-01", "IAX-02", "IAX-03", "IAX-04", "IAX-05", "IAX-06", "IAX-07", "IAX-08", "IAX-09", "IAX-10"],
+      "ccti11": "completed_verified",
+      "ccti11_merge": "0ab03915b88e1c297e974855388728eaf9ed98ff",
       "item_cross_axis_review": "completed_adoption_not_ready",
-      "platform_universal_facets_complete": 7,
       "platform_cross_facet_review": "completed_adoption_not_ready",
       "cross_domain_graph": "candidate_tranche_complete_not_promoted",
       "shared_context_compatibility": "candidate_tranche_complete_not_enabled",
-      "ccti11": "completed_verified",
-      "ccti11_merge": "0ab03915b88e1c297e974855388728eaf9ed98ff",
       "source_master_csv_mutation_authorized": false,
       "automatic_canonical_enablement_authorized": false,
       "mechanics_reauthoring_authorized": false,
       "runtime_activation_authorized": false
     },
     {
-      "work_item_id": "CCTI-12",
+      "work_item_id": "CCTI-12-T01",
       "attempt_id": "CCTI-12-attempt-001",
       "track": "content-catalog-taxonomy-integration",
-      "state": "t01_completed_verified_bounded_scope_active",
-      "dependency": "CCTI-11 completed_verified",
-      "description": "Bounded app-facing content integration",
-      "owner_approval": "approved_bounded_integration_first_scope",
-      "completed_substep": "CCTI-12-T01-candidate-content-workspace",
+      "state": "completed_verified",
+      "description": "GM/owner Candidate Content Workspace",
       "application_pr": 188,
       "validated_head": "8539daececaded611d54df1430e5ab14b7c7be5d",
       "application_merge_sha": "2d2eb4c3cf9f10fe4a32029045d688b3301362e3",
-      "exact_head_validation_run": 32120405242,
+      "exact_head_validation_run": 32120405242
+    },
+    {
+      "work_item_id": "CCTI-12-T02",
+      "attempt_id": "CCTI-12-attempt-002",
+      "track": "content-catalog-taxonomy-integration",
+      "state": "completed_verified",
+      "description": "Local review queue and read-only candidate comparison",
+      "application_pr": 189,
+      "validated_head": "995f35ef522b2c486d5a416eec8b5e0386e08754",
+      "application_merge_sha": "96acc3b34114cad7c6b75abab11e8a862a04509c",
+      "exact_head_validation_run": 32121742212
+    },
+    {
+      "work_item_id": "CCTI-12-T03",
+      "attempt_id": "CCTI-12-attempt-003",
+      "track": "content-catalog-taxonomy-integration",
+      "state": "in_progress",
+      "description": "Local structured proposed-amendment drafting and export",
       "automatic_activation": false,
+      "proposal_application_to_loaded_projection": false,
       "retained_owner_gates": [
         "Item taxonomy adoption",
         "Platform taxonomy adoption",
@@ -99,5 +111,5 @@
     "ds_008": "blocked_non_owner",
     "ordinary_stage_a": "preserved"
   },
-  "exact_next_action": "Select the next bounded CCTI-12 app-facing integration substep without crossing retained adoption/runtime/mechanics/release gates."
+  "exact_next_action": "Execute CCTI-12-T03 local structured proposed-amendment drafting without applying proposals to loaded candidate data or crossing retained gates."
 }
