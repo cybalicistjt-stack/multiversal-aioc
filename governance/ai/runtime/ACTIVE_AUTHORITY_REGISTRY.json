@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.1.0",
-  "updated_at": "2026-08-18T19:18:00Z",
+  "schema_version": "1.3.0",
+  "updated_at": "2026-08-18",
   "policy": "governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md",
   "current": [
     {"kind":"bootstrap","path":"governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md","lifecycle":"CURRENT"},
@@ -8,36 +8,35 @@
     {"kind":"checkpoint","path":"governance/ai/work-state/CRS-attempt-001.json","lifecycle":"CURRENT"},
     {"kind":"program","path":"governance/repository-health/CANONICALIZATION_RETIREMENT_SWEEP.md","lifecycle":"CURRENT"},
     {"kind":"backlog","path":"governance/repository-health/CRS_BACKLOG.json","lifecycle":"CURRENT"},
-    {"kind":"workflow_registry","path":"governance/repository-health/WORKFLOW_LIFECYCLE_REGISTRY.json","lifecycle":"CURRENT"},
     {"kind":"roadmap","path":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md","lifecycle":"CURRENT"},
     {"kind":"roadmap_supplement","path":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_APM_SUPPLEMENT.md","lifecycle":"CURRENT"},
+    {"kind":"workflow_registry","path":"governance/repository-health/WORKFLOW_LIFECYCLE_REGISTRY.json","lifecycle":"CURRENT"},
+    {"kind":"validator_registry","path":"governance/repository-health/VALIDATOR_LIFECYCLE_REGISTRY.json","lifecycle":"CURRENT"},
+    {"kind":"runtime_state_registry","path":"governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json","lifecycle":"CURRENT"},
+    {"kind":"canonical_state_audit","path":"governance/repository-health/CANONICAL_STATE_AUDIT.json","lifecycle":"CURRENT"},
     {"kind":"policy","path":"governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md","lifecycle":"CURRENT"},
     {"kind":"policy","path":"governance/ai/MULTIVERSAL_COMPLETION_CLAIM_INTEGRITY_POLICY.md","lifecycle":"CURRENT"},
     {"kind":"policy","path":"governance/ai/MULTIVERSAL_SELF_HOSTED_FINAL_VALIDATION_POLICY.md","lifecycle":"CURRENT"},
     {"kind":"policy","path":"governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md","lifecycle":"CURRENT"}
   ],
   "historical_inert_patterns": [
-    "governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_*.md",
-    "completed attempt checkpoints not named by CURRENT_WORK_POINTER.json",
-    "superseded roadmap projections",
+    "completed or superseded attempt checkpoints not selected by CURRENT_WORK_POINTER.json",
     "closed PR descriptions and historical branch checkpoints",
-    "workflow definitions removed from .github/workflows by CRS-03 and preserved only in Git history"
+    "workflow definitions removed from .github/workflows and preserved in Git history",
+    "validators not explicitly registered by VALIDATOR_LIFECYCLE_REGISTRY.json",
+    "application .ai compatibility paths and historical .agent/.ai work-order records preserved in Git history"
   ],
   "preserved_non_authoritative_application_work": [
     {"work_item":"POST-GATX-SUCCESSOR","pr":201,"branch":"internal-alpha/post-gatx-successor-refresh","lifecycle":"CURRENT_COMPATIBLE","state":"paused_for_CRS","merge_authority":false},
     {"work_item":"CCTI-12-T04","pr":191,"branch":"internal-alpha/ccti12-t04-local-review-worksets","lifecycle":"CURRENT_COMPATIBLE","state":"validation_quarantined_paused_for_CRS","merge_authority":false},
     {"work_item":"WP-011","pr":61,"branch":"wo/WP011-hosted-macos-evidence","lifecycle":"CURRENT_COMPATIBLE","state":"special_environment_dormant","merge_authority":false}
   ],
-  "crs02_pr_retirement": {
-    "status":"completed_verified",
-    "retired_candidates":{"Multiversal-app":[147],"multiversal-aioc":[1,34,48,326]},
-    "remaining_open_prs":{"Multiversal-app":[201,191,61],"multiversal-aioc":[]},
-    "rule":"Remaining open PRs are preserved work only and have no merge/completion authority while CRS is active."
-  },
-  "workflow_authority": {
-    "registry":"governance/repository-health/WORKFLOW_LIFECYCLE_REGISTRY.json",
-    "aioc_live_workflows_during_crs03":[],
-    "application_candidate_live_workflows":[".github/workflows/_validation-core-profile.yml",".github/workflows/self-hosted-windows-runner-smoke.yml"]
+  "repository_health": {
+    "program":"CRS",
+    "active_item":"CRS-06",
+    "machine_validator":"scripts/validate_repository_health.py",
+    "machine_workflow":".github/workflows/validate-repository-health.yml",
+    "required_audit_result":"zero_known_conflicting_authority"
   },
   "rule": "Anything not explicitly CURRENT or CURRENT_COMPATIBLE here cannot govern current work merely because it exists."
 }
