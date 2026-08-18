@@ -5,10 +5,10 @@
   "track": "asynchronous-play-persistent-workspace",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "governance/apw-asynchronous-persistent-workspace-plan",
-  "status": "ready_for_review",
+  "status": "completed_verified",
   "objective": "Create the owner-approved Asynchronous Play & Persistent Workspace subproject plan, define bounded design tranches and downstream implementation dependencies, and add the track to the canonical application roadmap without changing the selected CCTI-12 runtime pointer.",
-  "active_operation": "Planning package constructed and directly inspected on the branch; awaiting pull-request review/check evidence and merge boundary.",
-  "next_action": "Open the bounded AIOC pull request, inspect the exact diff and applicable checks, repair any genuine failures, and merge only when the planning package is verified.",
+  "completed_operation": "APW program plan, tranche backlog, and canonical application-roadmap integration merged to main. The stale lower A9-next roadmap block was reconciled to the already-verified A10 revalidation state. No application implementation was activated.",
+  "next_action": "When the owner selects APW execution, start APW-01 — Authority, Account, Context and Terminology Canonicalization under a new governed attempt; do not treat this planning closure as APW-01 completion.",
   "known_blockers": [],
   "preserved_parallel_tracks": [
     "CCTI-12-attempt-004",
@@ -17,39 +17,50 @@
     "ordinary-stage-a",
     "WP-011-Apple"
   ],
-  "constructed_files": [
+  "merged_files": [
     "governance/application-planning/asynchronous-persistent-workspace/APW_ASYNCHRONOUS_PLAY_AND_PERSISTENT_WORKSPACE_PROGRAM.md",
     "governance/application-planning/asynchronous-persistent-workspace/APW_PROGRAM_BACKLOG.json",
     "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md"
   ],
-  "inspection_evidence": {
-    "branch_compare": "main..governance/apw-asynchronous-persistent-workspace-plan ahead with only APW checkpoint/program/backlog and roadmap changes",
-    "program_inspected": true,
-    "backlog_inspected": true,
-    "roadmap_apw_section_inspected": true,
-    "roadmap_a10_stale_section_reconciled": true,
+  "evidence": {
+    "planning_pull_request": 390,
+    "planning_head_sha": "931ca9b4eb9501e2bfe0ea315018f41db4f450fe",
+    "planning_merge_sha": "e6d021d1cd8febb9f4e30c545a0ebbbd7d50a3f5",
+    "operational_baseline_run": 32134596753,
+    "operational_baseline_conclusion": "success",
+    "main_backlog_inspected_after_merge": true,
     "current_work_pointer_modified": false
   },
+  "nonblocking_ci_observations": [
+    {
+      "workflow": "Validate Stage A A10 Projection",
+      "run": 32134596678,
+      "classification": "pre-existing stale validator assumption outside APW package",
+      "evidence": "validator asserts bootstrap Version 5.6.3 while canonical bootstrap is 5.7.0"
+    },
+    {
+      "workflow": "Validate Conversation Continuity",
+      "run": 32134596840,
+      "classification": "pre-existing stale continuity validator outside APW package",
+      "evidence": "continuity_state.py rejects the existing CURRENT_WORK_POINTER schema; APW branch did not modify the pointer"
+    },
+    {
+      "workflow": "Validate STAGE-A-A8 Supplemental Authority",
+      "run": 32134596713,
+      "classification": "historical validator version enumeration outside APW authority",
+      "evidence": "validator enumerates roadmap versions only through 2.15.0 and bootstrap versions only through 5.6.3 rather than accepting later governed projections"
+    }
+  ],
   "completion_gate": {
-    "required_files": [
-      "governance/application-planning/asynchronous-persistent-workspace/APW_ASYNCHRONOUS_PLAY_AND_PERSISTENT_WORKSPACE_PROGRAM.md",
-      "governance/application-planning/asynchronous-persistent-workspace/APW_PROGRAM_BACKLOG.json",
-      "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md"
-    ],
-    "requirements": [
-      "owner-approved product principles are preserved",
-      "tranches are dependency ordered and bounded",
-      "existing proposal/approval, permissions, recovery, downtime, creator, and Stage A architecture are reused rather than bypassed",
-      "current CCTI-12 runtime pointer remains unchanged",
-      "roadmap addition does not itself activate application implementation or release"
-    ],
-    "final_evidence": [
-      "branch commit evidence",
-      "pull request evidence",
-      "relevant validation/check evidence",
-      "merge evidence"
-    ]
+    "required_files_present_and_inspected": true,
+    "owner_approved_product_principles_preserved": true,
+    "tranches_dependency_ordered_and_bounded": true,
+    "existing_architecture_reused_not_bypassed": true,
+    "current_ccti_pointer_unchanged": true,
+    "planning_does_not_activate_implementation_or_release": true,
+    "pull_request_merged": true
   },
   "started_at": "2026-08-18T11:53:00Z",
-  "ready_for_review_at": "2026-08-18T12:05:00Z"
+  "ready_for_review_at": "2026-08-18T12:05:00Z",
+  "completed_verified_at": "2026-08-18T12:12:00Z"
 }
