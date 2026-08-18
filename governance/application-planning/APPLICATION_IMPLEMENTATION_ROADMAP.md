@@ -1,7 +1,7 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 3.0.0  
+**Version:** 3.1.0  
 **Status:** ACTIVE — CLEANED CURRENT ROADMAP  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-18
@@ -38,13 +38,15 @@ Repository evidence is mandatory. A historical workflow, validator, work order, 
 
 **POST-GATX-SUCCESSOR — current selected operation.**
 
-- App PR: #201
-- Branch: `internal-alpha/post-gatx-successor-refresh`
-- Observed pre-reconciliation head: `3a80eae066650a312707cfae5adb70a2770e8918`
+- App PR: #203
+- Branch: `internal-alpha/post-gatx-successor-clean`
+- Exact candidate head: `91626e3663efb1a75bf35f530057eba0302053c7`
 - Clean App main baseline after CRS: `ec4ad52910fd8728134df4bdbad31476f44602e9`
-- State: `IN_PROGRESS`; draft/non-merge-authorized until its exact completion gate passes.
-- Scope: deterministic successor package builder/verifier and the minimum current validation surface only. Historical PR #185 is superseded and is not an integration path.
-- Required next action: reconcile PR #201 to cleaned main without restoring retired workflows/validators; explicitly register any active successor-specific validation surface; run one frozen exact-head self-hosted Linux/headed + Windows/PowerShell + deterministic comparison gate with bound artifacts.
+- State: `IN_PROGRESS`; non-merge-authorized until its exact completion gate passes.
+- Historical PR #185 and pre-CRS refresh PR #201 are closed/superseded and inert.
+- Scope: deterministic successor package builder/verifier plus one explicitly registered bounded self-hosted package/browser/PowerShell validation workflow and App repository-health enforcement for that exception.
+- Validation registration: AIOC PR #407 merged as `adffe16367ff69cf9d3facde2f60f6bac3238bbf`.
+- Required next action: hold PR #203 head frozen and require App repository health plus self-hosted Linux/headed browser, self-hosted Windows/PowerShell, deterministic byte-identical ZIP comparison and bound artifacts.
 - Merge creates a validated successor candidate only. Tester distribution remains a separate owner decision for the exact package/SHA-256.
 
 ### Preserved unfinished work
@@ -81,7 +83,7 @@ The approved combined design order is:
 
 Unless newer owner direction or repository evidence changes dependencies:
 
-1. **Finish POST-GATX-SUCCESSOR** from App PR #201 on cleaned current main and the deny-by-default validation lifecycle.
+1. **Finish POST-GATX-SUCCESSOR** from App PR #203 on cleaned current main using its registered bounded validation surface and exact-head self-hosted Linux/Windows/package comparator gate.
 2. **Return to CCTI-12-T04** through the hardened Validation Core, reconcile it to cleaned main, repair only evidence-proven failures, and satisfy its original exact-final-head Windows/Linux/comparator gate.
 3. **Begin the approved APW/CSW/APM interleaved design sequence** beginning APW-01 → APM-01 → CSW-01.
 4. **Give WP-011 temporary priority whenever the borrowed Mac becomes available.**
@@ -94,6 +96,7 @@ Unless newer owner direction or repository evidence changes dependencies:
 - AIOC's single bounded GitHub-hosted repository-health workflow is a governance-only exception because no AIOC self-hosted runner is attached. It cannot satisfy an application/package completion gate.
 - App `main` permits only registered live workflows. Historical workflows removed by CRS remain available in Git history but have no automatic authority.
 - Historical validators are deny-by-default. Active work may use only registered current validators or explicitly bounded/current-compatible validation surfaces.
+- The post-GATX workflow/package verifier is a temporary registered capability exception for POST-GATX-SUCCESSOR only and must retire when that item completes or is superseded.
 - A validation-interface failure may quarantine the affected feature after bounded diagnosis; it never converts unfinished work into complete and should not freeze independent work indefinitely.
 
 ## Product-wide approved concerns
