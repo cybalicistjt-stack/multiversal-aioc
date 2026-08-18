@@ -2,12 +2,12 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 5.6.3  
+**Version:** 5.7.0  
 **Status:** ACTIVE  
 **Owner and final authority:** John Brandon Turner  
 **Governance repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Application repository:** `cybalicistjt-stack/Multiversal-app`  
-**Last updated:** 2026-08-15
+**Last updated:** 2026-08-18
 
 ## Permanent owner entry point
 
@@ -27,9 +27,15 @@ and:
 
 `governance/ai/MULTIVERSAL_COMPLETION_CLAIM_INTEGRITY_POLICY.md`
 
+and for final application/package validation routing:
+
+`governance/ai/MULTIVERSAL_SELF_HOSTED_FINAL_VALIDATION_POLICY.md`
+
 The checkpoint/validation policy controls checkpoint cadence, validation cadence, workflow isolation, and owner-facing reporting wherever it conflicts with older per-batch checkpoint language. Checkpoints are recovery boundaries, not activity logs.
 
 The completion-claim integrity policy controls execution/completion reporting. Evidence must exist and be inspected before any material success claim. Artifact existence is not artifact completion. A failed required validation leaves the operation unfinished. When the owner says `Continue`, execute first; do not substitute an acknowledgement, plan, promise, or explanation.
+
+The self-hosted final-validation policy controls compute/routing where older policy or work-item language treated generic GitHub-hosted compute as the default project-wide final gate. GitHub remains the control/evidence plane. Normal application/package final validation uses exact-head self-hosted Windows/Linux lanes and deterministic cross-platform comparison as applicable; GitHub-hosted runners are reserved for specifically justified independent audits.
 
 ## Access and permissions
 
@@ -43,8 +49,8 @@ Perform this sequence before explaining, planning, or claiming work:
 
 1. Verify connected read/write access and the authenticated GitHub identity against `governance/access/AIOC_CONTRIBUTOR_REGISTRY.json`.
 2. Read this bootstrap from `main`.
-3. Read both mandatory operating policies named above.
-4. Read `governance/ai/runtime/CURRENT_WORK_POINTER.json` from `main` and its `mandatory_operating_policy` when present.
+3. Read all three mandatory operating policies named above.
+4. Read `governance/ai/runtime/CURRENT_WORK_POINTER.json` from `main` and its `mandatory_operating_policy` and `final_validation_policy` when present.
 5. Read the checkpoint named by `primary_attempt_id` from `main`, then inspect that attempt's exact recorded branch and pull-request evidence. If the checkpoint exists on the recorded attempt branch, compare it with the `main` copy. A newer internally consistent branch checkpoint or substantive branch commit controls recovery until it is merged or explicitly superseded; do not discard newer branch state merely because `main` has an older projection.
 6. Read `governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json`. Treat it as the compact control-health projection; follow its source scorecard only when a pilot result, limitation, or regression needs inspection.
 7. Inspect the latest commits, pull requests, reviews, and CI relevant to the checkpoint in both repositories, including repository evidence newer than the pointer's timestamp.
@@ -80,7 +86,7 @@ For any exact-byte, checksum-bound, binary, archive, or evidence-ingestion task,
 - **source bytes unavailable:** the required owner/source artifact is not present in the current accessible sources;
 - **source bytes available, transfer unavailable:** the exact source exists, but the active repository tool cannot ingest/copy it byte-for-byte;
 - **repository checkout unavailable:** file-system operations or validators require a checkout not exposed on the current surface;
-- **validation failed:** the bytes/work exist but a required deterministic or hosted gate failed;
+- **validation failed:** the bytes/work exist but a required deterministic or final gate failed;
 - **owner gate required:** a genuine owner-only approval, spending, release, credential, production, or irreversible decision is required.
 
 Never reconstruct exact-byte artifacts from truncated excerpts, paraphrase, regenerated prose, OCR, screenshots, or memory when checksum identity is part of the acceptance gate. Never invent missing checksums. If the required source becomes available on a later surface, re-evaluate the blocker instead of repeating an obsolete tool-limitation claim.
@@ -114,7 +120,7 @@ For every governed operation:
 4. Update the checkpoint only for a material handoff, a real blocker or changed recovery path, `ready_for_review`, or `completed_verified`.
 5. Record failures as `validation_failed` or a typed blocked state only when the failure changes the recovery path or work must stop.
 6. Record `ready_for_review` once after the complete package and declared local validation are finished.
-7. Run the full declared hosted validation suite at the final package gate, not after every small mutation.
+7. Run the full declared exact-head final validation suite at the final package gate, not after every small mutation. Route application/package validation under `MV-AI-VALIDATION-003` unless a specific independent-risk reason requires another environment.
 8. Record `completed_verified` only after required commit, pull request, review, CI, merge, artifact, checksum, file, or owner-decision evidence is present as declared.
 9. A post-merge completion projection may be bundled with the next work item's start checkpoint; do not create a standalone completion-only pull request unless work is stopping or repository state would otherwise be contradictory.
 10. Regenerate `governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json` only when the checkpoint or pointer changes at one of these milestone boundaries.
@@ -195,7 +201,7 @@ For ordinary reversible ambiguity, use the best evidence-backed recommendation a
 
 ### CI and verification
 
-Use targeted checks during construction. Inspect failed final-gate jobs and logs, batch related repairs, and rerun the smallest applicable hosted set. Merge only when declared required checks pass and the pull request is mergeable. Use the repository-permitted merge method; `Multiversal-app` is squash-only.
+Use targeted checks during construction. Inspect failed final-gate jobs and logs, batch related repairs, and rerun the smallest applicable final set. For application/package work, prefer the exact-head self-hosted Windows/Linux architecture and deterministic cross-platform comparison required by `MV-AI-VALIDATION-003`; do not make routine completion depend on GitHub-hosted compute. Merge only when declared required checks pass and the pull request is mergeable. Use the repository-permitted merge method; `Multiversal-app` is squash-only.
 
 ## Reporting after a bounded step
 

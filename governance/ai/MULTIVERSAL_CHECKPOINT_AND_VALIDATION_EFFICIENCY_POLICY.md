@@ -1,18 +1,25 @@
 # Multiversal Checkpoint and Validation Efficiency Policy
 
 **Document ID:** MV-AI-EFFICIENCY-001  
-**Version:** 1.0.0  
+**Version:** 1.1.0  
 **Status:** ACTIVE — OWNER APPROVED  
 **Owner and final authority:** John Brandon Turner  
 **Effective:** 2026-08-06  
+**Updated:** 2026-08-18
 
 ## 1. Purpose
 
-This policy preserves reliable conversation recovery without allowing checkpoint bookkeeping or broad hosted validation to dominate the actual Multiversal work.
+This policy preserves reliable conversation recovery without allowing checkpoint bookkeeping or broad final validation to dominate the actual Multiversal work.
 
 The continuity system exists to make restarts faster and safer. It must not require a repository checkpoint, status projection, scorecard regeneration, or full CI cycle after every small mutation.
 
 This policy controls where it conflicts with earlier instructions requiring checkpoint updates after each atomic batch.
+
+Final validation compute/routing is governed by:
+
+`governance/ai/MULTIVERSAL_SELF_HOSTED_FINAL_VALIDATION_POLICY.md`
+
+GitHub remains the orchestration/evidence control plane; GitHub-hosted compute is not the default final gate.
 
 ## 2. Milestone-only checkpoint rule
 
@@ -21,7 +28,7 @@ A governed work attempt receives a durable checkpoint only at these boundaries:
 1. **Start:** once, before substantive work, recording the work item, branch, objective, exact active operation, and exact next action.
 2. **Material handoff or blockage:** only when work must stop, the conversation may end before the package is finished, an owner decision is required, or a real failure changes the recovery path.
 3. **Ready for review:** once, after the complete deliverable package and its targeted local validation are finished.
-4. **Completed verified:** once, after required hosted validation and merge evidence exist.
+4. **Completed verified:** once, after required exact-head final validation and merge evidence exist.
 
 Do not update checkpoints after ordinary file creation, edits, local checks, commits, validator repairs, or other uninterrupted substeps.
 
@@ -45,13 +52,14 @@ A completed package must still have verified final-head CI and merge evidence. T
 During uninterrupted work:
 
 - run the smallest relevant local or deterministic checks;
-- finish the complete bounded package before opening or refreshing hosted review;
+- finish the complete bounded package before opening or refreshing final review;
 - batch compatibility and validator repairs together;
-- trigger the full declared hosted suite once on the finished package;
-- when hosted validation finds multiple related issues, repair them as one batch and rerun once;
+- trigger the full declared final suite once on the finished package;
+- route application/package final validation through the self-hosted Windows/Linux architecture defined by `MV-AI-VALIDATION-003` unless the work item explicitly requires another environment for a specific reason;
+- when final validation finds multiple related issues, repair them as one batch and rerun once;
 - do not create one commit and one full CI cycle per assertion.
 
-Full hosted validation remains mandatory at the final merge gate where declared by the work item.
+The final declared acceptance gate remains mandatory. GitHub-hosted compute is optional unless explicitly justified as a blocking independent audit under the controlling self-hosted final-validation policy.
 
 ## 5. Workflow isolation
 
@@ -62,6 +70,7 @@ Workflows must be scoped to the artifacts they validate.
 - The interaction operational pilot may run when its pilot scenarios, scorecards, pilot tool, tests, bootstrap integration, or operating amendment change.
 - Routine work-pointer or implementation-status changes must not force regeneration of the historical interaction pilot scorecard.
 - Historical scorecards are evidence of their recorded run. They are not live mirrors of every later work-item selection.
+- Runner wake/recovery plumbing is infrastructure and should not be allowed to broaden a feature workflow's acceptance scope.
 
 ## 6. Roadmap and pointer writes
 
@@ -112,18 +121,11 @@ This policy does not authorize:
 - skipping the final declared acceptance gate;
 - hiding failed validation;
 - deleting failed attempts;
-- weakening permission, privacy, provenance, security, migration, checksum, or release controls;
+- weakening permission, privacy, provenance, security, migration, checksum, deterministic cross-platform comparison, or release controls;
 - paid services, production credentials, deployment, internal-alpha release, or public release without the existing owner gates.
 
 ## 10. Immediate application
 
-Apply this policy immediately to IA-D03-004 completion bookkeeping and IA-D03-005.
+Apply this policy immediately to active and future governed work.
 
-IA-D03-005 should use:
-
-- one start checkpoint;
-- uninterrupted package construction with targeted checks;
-- one ready-for-review update;
-- one final hosted validation gate;
-- one merge;
-- completion projection bundled with the next selected work item unless work stops.
+For application/package final gates after 2026-08-18, use the self-hosted validation policy as the normal routing authority. Historical work whose only blocker was the former generic requirement for GitHub-hosted compute must be re-evaluated rather than automatically completed.

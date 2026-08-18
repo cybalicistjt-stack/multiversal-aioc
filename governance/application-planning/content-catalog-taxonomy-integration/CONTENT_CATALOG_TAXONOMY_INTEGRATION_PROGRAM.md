@@ -1,7 +1,7 @@
 # Multiversal Content Catalog Taxonomy Integration Program
 
 **Program ID:** CCTI  
-**Status:** OWNER-APPROVED PARALLEL PROGRAM — CCTI-12 BOUNDED INTEGRATION ACTIVE / T01-T03 COMPLETED_VERIFIED  
+**Status:** OWNER-APPROVED PARALLEL PROGRAM — CCTI-12 BOUNDED INTEGRATION ACTIVE / T01-T03 COMPLETED_VERIFIED / T04 SELECTED_NOT_STARTED  
 **Owner:** John Brandon Turner  
 **Started:** 2026-08-17  
 **Updated:** 2026-08-18
@@ -16,7 +16,7 @@ CCTI is a parallel content mission. It does not supersede post-GATX PR #185, ord
 
 1. Current canonical repositories and A8 domain/runtime boundaries.
 2. Governed Content V2 consolidation artifacts and sidecars.
-3. Item Taxonomy Preparation v0.12.0 and Platform/Vehicle Catalog Preparation v0.11.0, checksum-bound through completed A8-R0.
+3. Item Taxonomy Preparation v0.12.0 and Platform/Vehicle Catalog v0.11.0, checksum-bound through completed A8-R0.
 4. Shared Reality content-context/compatibility seams adopted by A8-R0.
 5. Conversation/export evidence only for provenance/recovery.
 
@@ -79,7 +79,7 @@ The Platform catalogs contain exactly **2,984 platform/model/named-asset/archety
 9. **CCTI-09 — Resolve review queues/taxonomy gaps.** Candidate review stage complete: Item cross-axis review has 91 structural-review rows and 85 additive correction proposals; Platform cross-facet review retains 4,326 review-required rows. Item and Platform adoption remain not ready.
 10. **CCTI-10 — Produce governed derived catalogs.** Completed at additive candidate-sidecar/projection level; no source/master rewrite or automatic enablement.
 11. **CCTI-11 — Full corpus validation.** `COMPLETED_VERIFIED` through AIOC PR #379 / merge `0ab03915b88e1c297e974855388728eaf9ed98ff`. Candidate-package accounting, identity/provenance, controlled-registry integrity, Platform routing, candidate-relationship endpoints, shared-context integrity, and Definition/Model-versus-runtime-Asset boundaries validated across 11,017 rows.
-12. **CCTI-12 — App-facing content integration.** **OWNER-APPROVED BOUNDED INTEGRATION / T01-T03 COMPLETED_VERIFIED.** T01 Candidate Content Workspace merged through app PR #188; T02 Local Review Queue & Candidate Compare through PR #189; T03 Local Proposed Amendments through PR #190. All three were validated on exact heads before merge.
+12. **CCTI-12 — App-facing content integration.** **OWNER-APPROVED BOUNDED INTEGRATION.** T01 Candidate Content Workspace merged through app PR #188; T02 Local Review Queue & Candidate Compare through PR #189; T03 Local Proposed Amendments through PR #190. T04 Local Review Worksets & Proposal Disposition is now `selected_not_started` and has not been activated.
 
 ## CCTI-12 bounded integration authority
 
@@ -133,6 +133,27 @@ T03 adds structured local authoring intent:
 
 The first validation attempt exposed only an obsolete test assumption after T03 intentionally added another `Runtime mutation: OFF` boundary badge. The assertion was corrected; no product-boundary repair was required. Exact head `ba4b49db48f0458d2d1518b87f40c8375dc09f8b` then passed dedicated run `32122685229` / job `95666380417` across focused tests, full regression, typecheck, accessibility, build, DT-008 and Player/runtime separation. App PR #190 merged as `59fd30d3ad38d688c18b1abe0adfb7c9a8eaffa5`.
 
+### Selected CCTI-12-T04 — Local Review Worksets & Proposal Disposition
+
+**State:** `selected_not_started`.
+
+Selection record:
+`CCTI12_T04_SELECTION_20260818.md`.
+
+T04 is the next bounded app-facing tranche because the current UI can inspect, compare, queue, and draft amendments but cannot yet organize those review objects into coherent local worksets with explicit noncanonical dispositions. This matters directly to the unresolved 85 Item correction proposals and 4,326 Platform review-required rows without crossing into adoption.
+
+A future T04 implementation may provide:
+
+- local worksets keyed by explicit candidate IDs and projection identity;
+- validated local ingestion of previously exported CCTI queue/amendment packets;
+- noncanonical dispositions such as unresolved, needs evidence, retain for later governed review, and reject proposal;
+- navigation from worksets into existing inspect/compare/amendment surfaces;
+- local governed-review export with all mutation/enablement/promotion/finalization/runtime/mechanics/release requests false.
+
+T04 must not apply a proposal, mutate the loaded projection, convert a local disposition into canonical approval, or create a runtime/public path.
+
+Selection does not create `CCTI-12-attempt-004`, an application branch, or implementation authority beyond the already-approved bounded CCTI-12 scope.
+
 ### CCTI-12 retained gates
 
 The bounded CCTI-12 approval still does **not** authorize:
@@ -147,6 +168,14 @@ The bounded CCTI-12 approval still does **not** authorize:
 - runtime Asset creation/activation/mutation;
 - Player-facing canonical exposure;
 - release/deployment/public publication.
+
+## Final validation routing
+
+Application/package final validation is controlled by `governance/ai/MULTIVERSAL_SELF_HOSTED_FINAL_VALIDATION_POLICY.md`.
+
+GitHub remains the canonical control/evidence plane. The normal final gate uses exact-head self-hosted Windows `multiversal-win-01` and self-hosted Linux `multiversal-linux-02` as applicable, plus deterministic cross-platform comparison when both lanes should produce equivalent governed artifacts. GitHub-hosted runners are reserved for specifically justified independent audits rather than routine tranche completion.
+
+Historical work whose only blocker was the former generic GitHub-hosted-compute requirement must be re-evaluated under that policy rather than automatically completed.
 
 ## Item taxonomy adoption dependency
 
@@ -205,11 +234,11 @@ Current authorization covers the already-approved bounded CCTI-12 integration-fi
 
 ## Exact next action
 
-Recover/select the next bounded CCTI-12 application-integration substep from the current program/roadmap before opening a new attempt. Completion of T01-T03 does not itself authorize taxonomy adoption, relationship promotion, compatibility finalization, runtime mutation, mechanics, release, deployment, or public publication.
+**T04 is selected but not started.** Do not begin implementation as part of this governance-selection operation. When CCTI-12 execution resumes, create `CCTI-12-attempt-004` and a dedicated Multiversal-app branch from then-current `main`, then construct the complete Local Review Worksets & Proposal Disposition tranche before running its finished-step final gate.
 
 ## Parallel-track preservation
 
-- Multiversal-app PR #185 remains unfinished/validation-failed and held at its declared successor-distribution boundary.
+- Multiversal-app PR #185 remains unfinished and preserved; when selected, its former generic hosted-compute hold must be re-evaluated under `MV-AI-VALIDATION-003`, without automatically merging or approving distribution.
 - The currently approved tester distribution remains unchanged.
 - DS-008 remains separately `blocked_non_owner`.
 - Ordinary Stage A roadmap work remains preserved while CCTI is selected.
