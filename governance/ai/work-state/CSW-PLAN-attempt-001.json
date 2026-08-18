@@ -5,10 +5,10 @@
   "track": "creator-storycraft-workspace",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "governance/csw-creator-storycraft-plan",
-  "status": "ready_for_review",
+  "status": "completed_verified",
   "objective": "Create the owner-approved Creator Storycraft Workspace subproject plan, define bounded creative-workflow tranches and downstream implementation dependencies, and add the track to the canonical application roadmap without changing the selected runtime pointer.",
-  "active_operation": "Planning package constructed and directly inspected on the branch; awaiting pull-request review/check evidence and merge boundary.",
-  "next_action": "Open the bounded AIOC pull request, inspect the exact diff and applicable checks, repair any genuine CSW package failures, and merge only when the planning package is verified.",
+  "completed_operation": "CSW program plan, ten-tranche backlog, and canonical application-roadmap integration merged to main. The roadmap is v2.17.0 and records CSW as a planned/not-implementation-active parallel track with explicit A10 and APW boundaries. No application implementation was activated.",
+  "next_action": "When the owner selects CSW execution, start CSW-01 — Storycraft Vocabulary, Creative Object Model and Authority under a new governed attempt; do not treat this planning closure as CSW-01 completion.",
   "known_blockers": [],
   "preserved_parallel_tracks": [
     "APW",
@@ -17,43 +17,67 @@
     "ordinary-stage-a",
     "WP-011-Apple"
   ],
-  "constructed_files": [
+  "merged_files": [
     "governance/application-planning/creator-storycraft-workspace/CSW_CREATOR_STORYCRAFT_WORKSPACE_PROGRAM.md",
     "governance/application-planning/creator-storycraft-workspace/CSW_PROGRAM_BACKLOG.json",
     "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md"
   ],
-  "inspection_evidence": {
-    "branch_compare": "main..governance/csw-creator-storycraft-plan contains only CSW checkpoint/program/backlog and roadmap changes",
-    "program_inspected": true,
-    "backlog_inspected": true,
-    "roadmap_summary_inspected": true,
-    "roadmap_csw_section_inspected": true,
-    "A10_APW_boundaries_present": true,
+  "evidence": {
+    "planning_pull_request": 392,
+    "planning_head_sha": "8db38bc0490ae76718fb1146db0e3c1746876f86",
+    "planning_merge_sha": "d77a9767944109c2057205f8e1fb6bef4c8cdf8f",
+    "operational_baseline_run": 32136443683,
+    "operational_baseline_conclusion": "success",
+    "main_roadmap_inspected_after_merge": true,
+    "main_backlog_inspected_after_merge": true,
     "current_work_pointer_modified": false
   },
+  "nonblocking_ci_observations": [
+    {
+      "workflow": "Validate Stage A A10 Projection",
+      "run": 32136443706,
+      "classification": "pre-existing stale validator assumption outside CSW package",
+      "evidence": "validate_stage_a_a10_projection.py asserts bootstrap Version 5.6.3 while the canonical bootstrap has advanced beyond that hard-coded projection"
+    },
+    {
+      "workflow": "Validate Conversation Continuity",
+      "run": 32136443695,
+      "classification": "pre-existing stale continuity validator outside CSW package",
+      "evidence": "continuity_state.py rejects the existing CURRENT_WORK_POINTER schema with 'bad pointer schema'; CSW did not modify the pointer"
+    },
+    {
+      "workflow": "Validate STAGE-A-A8 Supplemental Authority",
+      "run": 32136443711,
+      "classification": "historical validator version enumeration outside CSW authority",
+      "evidence": "validator rejects roadmap v2.17.0 because its governed-version enumeration stops at earlier roadmap/bootstrap projections"
+    },
+    {
+      "workflow": "Validate PPIA Program",
+      "run": 32136443694,
+      "classification": "pre-existing historical continuity assumption outside CSW package",
+      "evidence": "validate_ppia_program_state.py raises KeyError for legacy field owner_decision_required in existing checkpoint state"
+    },
+    {
+      "workflow": "Validate PPIA-14 to PPIA-15 Transition",
+      "run": 32136443763,
+      "classification": "historical PPIA transition validation triggered by roadmap change; no CSW-owned files or contracts are within the PPIA transition authority",
+      "evidence": "preserved as nonblocking historical validation observation; Operational AIOC Baseline passed on the same exact CSW head"
+    }
+  ],
   "completion_gate": {
-    "required_files": [
-      "governance/application-planning/creator-storycraft-workspace/CSW_CREATOR_STORYCRAFT_WORKSPACE_PROGRAM.md",
-      "governance/application-planning/creator-storycraft-workspace/CSW_PROGRAM_BACKLOG.json",
-      "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md"
-    ],
-    "requirements": [
-      "owner-approved creator-assistance direction is preserved",
-      "tranches are dependency ordered and bounded",
-      "A10 World Adventure Creator and authoring-provenance architecture is reused rather than duplicated",
-      "APW Personal Workspace and Creator Workshop remain complementary rather than superseded",
-      "creative scratch material remains distinct from authoritative Campaign and canonical content until explicit incorporation or promotion",
-      "AI remains optional suggestion assistance rather than autonomous author or publisher",
-      "current runtime pointer remains unchanged",
-      "roadmap addition does not itself activate application implementation or release"
-    ],
-    "final_evidence": [
-      "branch commit evidence",
-      "pull request evidence",
-      "relevant validation/check evidence",
-      "merge evidence"
-    ]
+    "required_files_present_and_inspected": true,
+    "owner_approved_creator_direction_preserved": true,
+    "tranches_dependency_ordered_and_bounded": true,
+    "A10_authority_reused_not_duplicated": true,
+    "APW_boundary_explicit": true,
+    "creative_material_authority_boundary_explicit": true,
+    "core_no_AI_parity_preserved": true,
+    "optional_AI_nonauthoritative": true,
+    "current_runtime_pointer_unchanged": true,
+    "planning_does_not_activate_implementation_or_release": true,
+    "pull_request_merged": true
   },
   "started_at": "2026-08-18T12:13:00Z",
-  "ready_for_review_at": "2026-08-18T12:22:00Z"
+  "ready_for_review_at": "2026-08-18T12:22:00Z",
+  "completed_verified_at": "2026-08-18T12:28:00Z"
 }
