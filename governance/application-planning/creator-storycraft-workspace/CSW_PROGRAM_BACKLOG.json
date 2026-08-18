@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0.0",
+  "program_id": "CSW",
+  "program_name": "Creator Storycraft Workspace",
+  "status": "planned_not_implementation_active",
+  "owner": "John Brandon Turner",
+  "approved_planning_direction": "2026-08-18",
+  "execution_rule": "dependency_ordered_complete_substantive_tranche_before_final_gate",
+  "current_execution_pointer_unchanged": true,
+  "tranches": [
+    {
+      "id": "CSW-01",
+      "name": "Storycraft Vocabulary Creative Object Model and Authority",
+      "status": "planned",
+      "depends_on": [],
+      "completion_gate": "Creative fragments have explicit identity lifecycle provenance and authority boundaries and cannot masquerade as Campaign truth published content canonical content or another domain's authoritative object."
+    },
+    {
+      "id": "CSW-02",
+      "name": "Creative Library Story Bible and Project Memory",
+      "status": "planned",
+      "depends_on": ["CSW-01"],
+      "completion_gate": "Creators can reliably find understand relate version and recover what they made where it is used what derives from it and what remains unfinished."
+    },
+    {
+      "id": "CSW-03",
+      "name": "Idea Inbox and Inspiration Engine",
+      "status": "planned",
+      "depends_on": ["CSW-01", "CSW-02"],
+      "completion_gate": "A minimal idea can be captured and developed into attributable alternatives with deterministic non-AI tools and optional suggestion assistance without automatically creating authoritative content."
+    },
+    {
+      "id": "CSW-04",
+      "name": "Guided Creation Workflows",
+      "status": "planned",
+      "depends_on": ["CSW-01", "CSW-02", "CSW-03"],
+      "completion_gate": "Optional guided workflows can take a novice to a coherent draft while experts can bypass customize or directly author without losing capabilities."
+    },
+    {
+      "id": "CSW-05",
+      "name": "Plot Adventure and Narrative Design Lab",
+      "status": "planned",
+      "depends_on": ["CSW-01", "CSW-02", "CSW-04"],
+      "completion_gate": "Creators can plan nonlinear hooks beats threads branches revelations choices consequences and payoffs while speculative structures remain distinct from incorporated D28 Adventure truth."
+    },
+    {
+      "id": "CSW-06",
+      "name": "Continuity Consistency and Open-Thread Tracker",
+      "status": "planned",
+      "depends_on": ["CSW-02", "CSW-05"],
+      "completion_gate": "Evidence-backed contradiction continuity orphan unresolved-thread unused-material and missing-payoff candidates are surfaced without silent correction or protected-information leakage."
+    },
+    {
+      "id": "CSW-07",
+      "name": "Writing Studio and Revision Workspace",
+      "status": "planned",
+      "depends_on": ["CSW-02", "CSW-04", "CSW-06"],
+      "completion_gate": "Creators can draft revise compare branch recover and fact-check creative prose while explicitly choosing every applied change and retaining source/reference links."
+    },
+    {
+      "id": "CSW-08",
+      "name": "Reuse Remix and Transformation",
+      "status": "planned",
+      "depends_on": ["CSW-02", "CSW-05", "CSW-07"],
+      "completion_gate": "Creative material can be cloned adapted templated remixed or transformed across projects with explicit provenance independent versions and no unintended source or Campaign mutation."
+    },
+    {
+      "id": "CSW-09",
+      "name": "Creator Command Center and Assistance Integration",
+      "status": "planned",
+      "depends_on": ["CSW-03", "CSW-04", "CSW-05", "CSW-06", "CSW-07", "CSW-08"],
+      "completion_gate": "A returning creator can immediately see what to continue develop resolve reuse or review through an accessible Personal/Campaign-aware command center with core no-AI parity."
+    },
+    {
+      "id": "CSW-10",
+      "name": "Integration Acceptance and Implementation Handoff",
+      "status": "planned",
+      "depends_on": ["CSW-09"],
+      "completion_gate": "Implementation-ready additive slices persistence boundaries migrations validators fixtures screens dependencies acceptance IDs and A10/APW integration destinations are complete and the haunted-lighthouse proof covers Capture Develop Connect Structure Write Check Use and Reuse."
+    }
+  ],
+  "planning_order": [
+    "CSW-01",
+    "CSW-02",
+    "CSW-03",
+    "CSW-04",
+    "CSW-05",
+    "CSW-06",
+    "CSW-07",
+    "CSW-08",
+    "CSW-09",
+    "CSW-10"
+  ],
+  "provisional_implementation_handoff": [
+    "CSW-I01 creative-fragment identity lifecycle provenance and authority foundation",
+    "CSW-I02 Creative Library Story Bible links search and project memory",
+    "CSW-I03 Idea Inbox deterministic inspiration tools and optional suggestion seam",
+    "CSW-I04 guided creator workflows and templates",
+    "CSW-I05 Plot Adventure Design Lab and continuity open-thread analysis",
+    "CSW-I06 Writing Studio revisions and factual-reference support",
+    "CSW-I07 reuse remix transformation and creator provenance flows",
+    "CSW-I08 Creator Command Center APW integration and end-to-end creator acceptance"
+  ],
+  "implementation_boundary": "Planning only. CSW-I identifiers are nonactive planning handles until CSW-10 publishes a final implementation handoff and the governing application roadmap explicitly activates implementation.",
+  "integration_boundaries": {
+    "A10": "A10 remains authority for governed World Adventure creator-content and authoring-provenance persistence; CSW orchestrates creative workflow and memory above those domains.",
+    "APW": "APW remains authority for the broader Personal Workspace Creator Workshop and asynchronous/persistent-use direction; CSW supplies deeper storycraft memory writing continuity and creative-development behavior.",
+    "AI": "Core CSW capability must function without an external AI provider; optional AI is suggestion-only and nonauthoritative."
+  },
+  "nonauthorization": [
+    "application implementation",
+    "migration execution",
+    "release",
+    "deployment",
+    "tester access",
+    "paid services",
+    "production credentials",
+    "autonomous AI authorship or publication",
+    "canonical promotion",
+    "public creator marketplace",
+    "training on private user creative material"
+  ]
+}
