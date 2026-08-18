@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.9.0",
-  "updated_at": "2026-08-18T14:58:00Z",
+  "schema_version": "1.10.0",
+  "updated_at": "2026-08-18T15:09:00Z",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "bootstrap_current_state_amendment": "governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_ROADMAP_RECONCILIATION_20260818.md",
   "static_restart_prompt": "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
@@ -12,7 +12,7 @@
   "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
   "roadmap_index_supplement": "governance/ai/runtime/ROADMAP_INDEX_CCTI_SUPPLEMENT.json",
   "primary_attempt_id": "VCH-PLAN-attempt-001",
-  "selection_reason": "Roadmap reconciliation is merged and VCH-01 completed_verified on exact self-hosted Windows/Linux evidence. Continue the owner-approved bounded Validation Core Hardening sequence at VCH-02 while CCTI-12-T04 remains explicitly validation_quarantined and unfinished.",
+  "selection_reason": "VCH-01 and VCH-02 are completed_verified on exact owner-controlled self-hosted Windows/Linux evidence. Continue the bounded Validation Core Hardening sequence at VCH-03 while CCTI-12-T04 remains explicitly validation_quarantined and unfinished.",
   "active_attempts": [
     {
       "work_item_id": "VCH",
@@ -23,15 +23,12 @@
       "repository": "cybalicistjt-stack/Multiversal-app",
       "checkpoint_path": "governance/ai/work-state/VCH-PLAN-attempt-001.json",
       "status": "in_progress",
-      "completed_item": {
-        "id": "VCH-01",
-        "application_pr": 192,
-        "validated_head": "49954acd08b65d90d89f83b399136388084110aa",
-        "application_merge_sha": "86f9f182ace149f584974b6c91d3ae5ba5b8a512",
-        "validation_run": 32151301657
-      },
-      "active_item": "VCH-02",
-      "active_item_name": "Runner Contract and Preflight",
+      "completed_items": [
+        {"id": "VCH-01", "application_pr": 192, "application_merge_sha": "86f9f182ace149f584974b6c91d3ae5ba5b8a512", "validation_run": 32151301657},
+        {"id": "VCH-02", "application_pr": 194, "application_merge_sha": "1eceb200d07ad69847e48da7401948d0d7795038", "validation_run": 32152388822}
+      ],
+      "active_item": "VCH-03",
+      "active_item_name": "Shared Execution Core and Thin Profiles",
       "roadmap_projection_pending": false
     },
     {
@@ -95,5 +92,5 @@
     "mechanics_reauthoring": false,
     "release_or_deployment": false
   },
-  "exact_next_action": "Implement VCH-02 — Runner Contract and Preflight from Multiversal-app main at or after VCH-01 merge 86f9f182ace149f584974b6c91d3ae5ba5b8a512. Detect runner/toolchain/git capability violations without silently altering host-level state; emit machine-readable evidence using the VCH-01 diagnostic contract."
+  "exact_next_action": "Implement VCH-03 — Shared Execution Core and Thin Profiles from Multiversal-app main at or after VCH-02 merge 1eceb200d07ad69847e48da7401948d0d7795038. Extract repeated setup/execution/cleanup mechanics behind thin feature profiles, reuse VCH-02 preflight, preserve raw/compact failure evidence, and migrate only a small representative workflow set before broader adoption."
 }
