@@ -1,38 +1,76 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "work_item_id": "CCTI-12",
   "attempt_id": "CCTI-12-attempt-003",
   "track": "content-catalog-taxonomy-integration",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "planned_branch": "internal-alpha/ccti12-t03-local-amendment-drafts",
-  "status": "in_progress",
+  "branch": "internal-alpha/ccti12-t03-local-amendment-drafts",
+  "status": "completed_verified",
   "owner_selected": true,
   "started_at": "2026-08-18T09:29:00Z",
+  "updated_at": "2026-08-18T09:43:00Z",
   "objective": "Add a structured local-only candidate amendment-drafting workflow so GM/owner review can propose corrections and evidence clarifications without applying changes to governed candidate data.",
-  "active_substep": "CCTI-12-T03-local-proposed-amendments",
+  "completed_substep": "CCTI-12-T03-local-proposed-amendments",
   "predecessor": {
     "attempt_id": "CCTI-12-attempt-002",
     "state": "completed_verified",
     "application_pr": 189,
     "application_merge_sha": "96acc3b34114cad7c6b75abab11e8a862a04509c"
   },
-  "authorized_outcomes": [
+  "application_pull_request": 190,
+  "validated_application_head": "ba4b49db48f0458d2d1518b87f40c8375dc09f8b",
+  "application_merge_sha": "59fd30d3ad38d688c18b1abe0adfb7c9a8eaffa5",
+  "delivered_outcomes": [
     "GM/owner can draft structured proposed amendments against the currently inspected candidate identity",
-    "proposals may target a candidate facet, review-reason clarification, or source-evidence question while remaining explicitly noncanonical",
-    "facet proposals may capture proposed values and rationale but do not validate or apply those values to the candidate projection",
-    "proposal identity remains tied to candidateId and optional facetId rather than display-name matching",
-    "local proposal bundles can be exported for later governed review without requesting canonical, relationship, compatibility, runtime or mechanics mutation",
-    "projection identity changes clear local amendment drafts so proposals cannot silently cross source-package boundaries",
-    "Player/default application remains isolated"
+    "facet-correction proposals require an exposed facet ID and at least one proposed value",
+    "review-clarification and source-evidence-question proposals remain non-facet proposals",
+    "proposed values are explicitly unvalidated for canonical use and never replace the loaded candidate projection",
+    "proposal identity is tied to candidateId, stableSubjectId, optional current Definition identity and optional exposed facetId rather than display-name matching",
+    "reference-only identities can carry evidence/review proposals without invented Definition IDs",
+    "local proposal packets preserve proposal details while every application/canonical/relationship/compatibility/runtime/mechanics mutation request remains false",
+    "proposal export drops stale proposals that no longer bind to the active projection identity or exposed facet",
+    "projection identity changes clear local amendment drafts so proposals cannot silently cross governed source-package boundaries",
+    "Player/default application remains isolated from CCTI-12"
   ],
-  "acceptance_criteria": [
-    "structured amendment drafting is browser-memory/local-export only",
-    "current candidate projection is never mutated by proposal creation/edit/removal",
-    "reference-only identities may receive evidence/review proposals without invented Definition IDs",
-    "facet proposals must target an exposed facet ID when a facet target is selected; free-text proposed values remain explicitly unvalidated",
-    "export preserves stable candidate identity, proposal type, optional facet target, proposed values, rationale and evidence note with every mutation request false",
-    "focused tests plus full regression, typecheck, accessibility, build, DT-008 and Player/runtime separation pass on exact head"
-  ],
+  "validation": {
+    "state": "passed_exact_head",
+    "dedicated_workflow": "Validate CCTI-12 Candidate Content",
+    "final_run_id": 32122685229,
+    "final_run_number": 123,
+    "final_job_id": 95666380417,
+    "validated_head": "ba4b49db48f0458d2d1518b87f40c8375dc09f8b",
+    "runner": "multiversal-linux-02",
+    "repair_history": [
+      {
+        "run_id": 32122563306,
+        "job_id": 95665998134,
+        "head": "203f97b89a01fafc1de87c8ad2407c2395a9166e",
+        "result": "failed_test_assertion_only",
+        "finding": "T03 intentionally added a second Runtime mutation: OFF badge; legacy test asserted exactly one matching element.",
+        "repair_commit": "ba4b49db48f0458d2d1518b87f40c8375dc09f8b"
+      }
+    ],
+    "gates": {
+      "checkout": "pass",
+      "workspace_install": "pass",
+      "private_projection_builder_compile": "pass",
+      "dt008_changed_line_design_system_ratchet": "pass",
+      "focused_ccti12_t03_t02_t01_and_gm_authorization_tests": "pass",
+      "full_client_regression": "pass",
+      "client_typecheck": "pass",
+      "accessibility_baseline": "pass",
+      "client_build": "pass",
+      "player_default_route_runtime_boundary_proof": "pass"
+    }
+  },
+  "completion": {
+    "state": "completed_verified",
+    "application_pr": 190,
+    "application_merge_sha": "59fd30d3ad38d688c18b1abe0adfb7c9a8eaffa5",
+    "exact_head_validation_run": 32122685229,
+    "exact_head_validation_job": 95666380417,
+    "completion_claim_basis": "Every declared T03 acceptance gate passed on the exact application head before PR #190 was squash-merged."
+  },
   "boundaries": {
     "candidate_or_taxonomy_enablement": false,
     "relationship_promotion": false,
@@ -43,6 +81,10 @@
     "private_candidate_corpus_committed_to_app_repo": false,
     "proposal_application_to_loaded_projection": false
   },
-  "execution_rule": "Complete T03 construction before validation. Fix only evidenced failures and merge only after every declared exact-head gate passes.",
-  "next_action": "Create the dedicated app branch from canonical main and implement local-only structured proposed amendments inside the existing GM/owner Candidate Content Lab."
+  "parallel_tracks_preserved": [
+    "Multiversal-app PR #185 remains unfinished and not superseded",
+    "DS-008-working-series-attempt-002 remains blocked_non_owner",
+    "ordinary Stage A remains preserved"
+  ],
+  "next_action": "T03 is closed. Recover/select the next bounded CCTI-12 integration substep from current roadmap authority before opening a new attempt; do not cross retained adoption/runtime/mechanics/release gates."
 }
