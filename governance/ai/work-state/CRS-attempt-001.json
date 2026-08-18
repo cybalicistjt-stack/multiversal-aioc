@@ -1,14 +1,25 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "work_item_id": "CRS",
   "attempt_id": "CRS-attempt-001",
   "status": "in_progress",
   "owner_approved": true,
   "repository": "cybalicistjt-stack/multiversal-aioc",
-  "branch": "governance/canonicalization-retirement-sweep",
-  "active_substep": "CRS-01",
-  "next_action": "Canonicalize bootstrap/pointer authority, retire ambiguous PR state, then sweep active workflows and validators before production resumes.",
+  "branch": "governance/crs03-workflow-retirement",
+  "active_substep": "CRS-03",
+  "completed_substeps": [
+    {"id":"CRS-01","status":"completed_verified","evidence":"AIOC PR #402 / merge cab80a5500efda428b0d76a6722d49c04ad0c08f"},
+    {"id":"CRS-02","status":"completed_verified","evidence":"Open-PR authority reduced to preserved App PRs #201, #191 and #61 only."}
+  ],
+  "next_action": "Finish CRS-03 by recording the workflow lifecycle inventory, merge the AIOC and App workflow-retirement changes, and verify that historical workflow swarms cannot trigger; then activate CRS-04 validator/lifecycle-assumption sweep.",
   "stop_the_line": true,
+  "workflow_retirement": {
+    "aioc_branch":"governance/crs03-workflow-retirement",
+    "aioc_quarantine_commit":"73173cbb8db51af584835fa39023c410ac574dac",
+    "application_branch":"repository-health/crs03-workflow-retirement",
+    "application_retirement_commit":"1ed5cd1205a850b60d34ad061e3e7f0060c9d872",
+    "application_live_workflows":[".github/workflows/_validation-core-profile.yml",".github/workflows/self-hosted-windows-runner-smoke.yml"]
+  },
   "preserved_application_work": {
     "post_gatx_successor": {"status":"paused_for_repository_health","repository":"cybalicistjt-stack/Multiversal-app","current_refresh_pr":201,"historical_pr":185},
     "ccti12_t04": {"status":"validation_quarantined_and_paused_for_repository_health","repository":"cybalicistjt-stack/Multiversal-app","pr":191},
