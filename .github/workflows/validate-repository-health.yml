@@ -1,0 +1,80 @@
+name: Validate Repository Health
+
+on:
+  pull_request:
+    paths:
+      - 'governance/ai/**'
+      - 'governance/repository-health/**'
+      - 'governance/application-planning/**'
+      - 'scripts/validate_repository_health.py'
+      - '.github/workflows/validate-repository-health.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'governance/ai/**'
+      - 'governance/repository-health/**'
+      - 'governance/application-planning/**'
+      - 'scripts/validate_repository_health.py'
+      - '.github/workflows/validate-repository-health.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: repository-health-${{ github.event.pull_request.head.sha || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  canonical-state:
+    name: Canonical authority and repository-health audit
+    runs-on: [self-hosted, linux, x64, multiversal-validation-linux]
+    timeout-minutes: 10
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - name: Checkout exact AIOC candidate
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.CANDIDATE_HEAD }}
+          fetch-depth: 0
+          persist-credentials: false
+          clean: true
+
+      - name: Checkout canonical application main
+        uses: actions/checkout@v4
+        with:
+          repository: cybalicistjt-stack/Multiversal-app
+          ref: main
+          path: application
+          fetch-depth: 1
+          persist-credentials: false
+          clean: true
+
+      - name: Verify runner and exact AIOC head
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$CANDIDATE_HEAD"
+          test "${RUNNER_OS}" = "Linux"
+          python3 --version
+          git --version
+          test -w "${RUNNER_TEMP}"
+
+      - name: Validate canonical state across both repositories
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/validate_repository_health.py \
+            --root . \
+            --app-root application \
+            --output "${RUNNER_TEMP}/canonical-state-audit-generated.json"
+
+      - name: Upload compact repository-health evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: repository-health-${{ env.CANDIDATE_HEAD }}
+          path: '${{ runner.temp }}/canonical-state-audit-generated.json'
+          if-no-files-found: warn
+          retention-days: 14
