@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "program_id": "CRS",
   "substep": "CRS-03",
-  "status": "active_candidate_pending_merge_verification",
+  "status": "ready_for_merge_verification",
   "policy": "governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md",
   "default_rule": "A workflow not explicitly listed as CURRENT or CURRENT_COMPATIBLE is not permitted in the live .github/workflows namespace.",
   "repositories": {
@@ -34,7 +34,7 @@
       "baseline_commit": "1ff5cf7f966df8fae5840c45d94919dd9aea1925",
       "baseline_workflow_tree": "d0e4971343a2cace90f7d6cda825ccbdd126cb56",
       "crs_branch": "repository-health/crs03-workflow-retirement",
-      "current_head": "a598cc5b6b1ba79496ca2fec45815d8717f441e7",
+      "current_head": "1ed5cd1205a850b60d34ad061e3e7f0060c9d872",
       "live_workflows": [
         {
           "path": ".github/workflows/_validation-core-profile.yml",
@@ -79,6 +79,6 @@
     "application_current_live_workflows_registered": true,
     "current_application_default_is_validation_core": true,
     "paused_features_cannot_claim_completion_from_retired_workflows": true,
-    "remaining_gate": "Merge both repository cleanup candidates and verify post-merge workflow namespaces and PR-trigger behavior before marking CRS-03 completed_verified."
+    "remaining_gate": "Fast-forward both repository cleanup candidates and verify post-merge workflow namespaces before marking CRS-03 completed_verified."
   }
 }
