@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "CCTI-12",
+  "attempt_id": "CCTI-12-attempt-004",
+  "track": "content-catalog-taxonomy-integration",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "branch": "internal-alpha/ccti12-t04-local-review-worksets",
+  "status": "started",
+  "owner_selected": true,
+  "started_at": "2026-08-18T10:15:00Z",
+  "updated_at": "2026-08-18T10:15:00Z",
+  "objective": "Implement CCTI-12-T04 Local Review Worksets & Proposal Disposition inside the existing owner-approved bounded GM/owner noncanonical review/authoring authority.",
+  "active_substep": "Construct the complete T04 application tranche from canonical Multiversal-app main without crossing retained canonical/runtime/release gates.",
+  "next_action": "Create the dedicated Multiversal-app branch at current main and implement local review worksets, local packet ingestion, noncanonical dispositions, navigation, and governed-review export; validate only after the bounded tranche is complete.",
+  "predecessor": {
+    "attempt_id": "CCTI-12-attempt-003",
+    "state": "completed_verified",
+    "application_pr": 190,
+    "application_merge_sha": "59fd30d3ad38d688c18b1abe0adfb7c9a8eaffa5"
+  },
+  "application_base_sha": "59fd30d3ad38d688c18b1abe0adfb7c9a8eaffa5",
+  "selection_record": "governance/application-planning/content-catalog-taxonomy-integration/CCTI12_T04_SELECTION_20260818.md",
+  "acceptance_boundary": [
+    "GM/owner authorization and Player/default-route isolation",
+    "deterministic validation of imported local packets and projection binding",
+    "workset membership keyed by explicit candidate IDs",
+    "reference-only identity preservation",
+    "local disposition semantics cannot represent canonical approval",
+    "loaded candidate projection remains immutable",
+    "exported review evidence hard-negates canonical, relationship, compatibility, runtime, mechanics, release and deployment authority",
+    "full client regression, typecheck, accessibility, build and DT-008 compliance",
+    "final exact-head validation under MV-AI-VALIDATION-003 on applicable self-hosted lane(s)"
+  ],
+  "validation": {
+    "state": "not_run",
+    "policy": "governance/ai/MULTIVERSAL_SELF_HOSTED_FINAL_VALIDATION_POLICY.md"
+  },
+  "boundaries": {
+    "proposal_application_to_loaded_projection": false,
+    "candidate_or_taxonomy_enablement": false,
+    "relationship_promotion": false,
+    "compatibility_finalization": false,
+    "runtime_asset_mutation": false,
+    "mechanics_reauthoring": false,
+    "player_canonical_exposure": false,
+    "release_or_deployment": false,
+    "tester_distribution_replacement": false,
+    "private_candidate_corpus_committed_to_app_repo": false
+  },
+  "parallel_tracks_preserved": [
+    "Multiversal-app PR #185 remains unfinished and not superseded",
+    "DS-008-working-series-attempt-002 remains blocked_non_owner",
+    "ordinary Stage A remains preserved"
+  ]
+}
