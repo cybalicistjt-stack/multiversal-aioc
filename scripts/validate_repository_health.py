@@ -130,14 +130,17 @@ def check_aioc(root: Path, errors: list[str]) -> dict[str, Any]:
         aioc_workflows = workflow_names(root)
         assert aioc_workflows == AIOC_WORKFLOWS_ALLOWED, f"unexpected AIOC workflows: {sorted(aioc_workflows)}"
         workflow_text = (root / ".github/workflows/validate-repository-health.yml").read_text(encoding="utf-8")
-        assert "self-hosted" in workflow_text
-        assert "ubuntu-latest" not in workflow_text
+        assert "runs-on: ubuntu-latest" in workflow_text
+        assert "governance-only check is an explicit exception" in workflow_text
         assert "actions/setup-python" not in workflow_text
         assert "scripts/validate_repository_health.py" in workflow_text
 
         aioc_registry = workflow_registry["repositories"]["cybalicistjt-stack/multiversal-aioc"]
         registered_aioc = {Path(item["path"]).name for item in aioc_registry["live_workflows"]}
         assert registered_aioc == aioc_workflows
+        health_entry = aioc_registry["live_workflows"][0]
+        assert health_entry["execution"] == "github_hosted_linux_governance_exception"
+        assert health_entry["timeout_minutes"] <= 5
 
         assert validator_registry["default_rule"].startswith("A validator or validation-like script is not a current gate")
         registered_aioc_validators = {item["path"] for item in validator_registry["repositories"]["cybalicistjt-stack/multiversal-aioc"]["current_validators"]}
@@ -213,7 +216,7 @@ def main() -> int:
         app = check_app(Path(args.app_root).resolve(), audit, errors)
 
     result = {
-        "schema_version": "1.1.0",
+        "schema_version": "1.2.0",
         "validator": "scripts/validate_repository_health.py",
         "status": "FAIL" if errors else "PASS",
         "aioc": aioc,
