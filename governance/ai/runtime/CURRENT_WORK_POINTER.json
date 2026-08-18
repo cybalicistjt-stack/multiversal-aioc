@@ -1,14 +1,15 @@
 {
-  "schema_version": "1.6.0",
-  "updated_at": "2026-08-18T09:43:00Z",
+  "schema_version": "1.7.0",
+  "updated_at": "2026-08-18T09:56:00Z",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "bootstrap_current_state_amendment": "governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_CCTI_WRITE_20260817.md",
   "static_restart_prompt": "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
   "mandatory_operating_policy": "governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md",
+  "final_validation_policy": "governance/ai/MULTIVERSAL_SELF_HOSTED_FINAL_VALIDATION_POLICY.md",
   "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
   "roadmap_index_supplement": "governance/ai/runtime/ROADMAP_INDEX_CCTI_SUPPLEMENT.json",
   "primary_attempt_id": "CCTI-12-attempt-003",
-  "selection_reason": "The owner-approved bounded CCTI-12 integration-first mission remains selected. T01, T02, and T03 are now completed_verified; no new CCTI-12 attempt is activated until the next bounded substep is recovered/selected from current roadmap authority.",
+  "selection_reason": "The owner-approved bounded CCTI-12 integration-first mission remains selected. T01, T02, and T03 are completed_verified. CCTI-12-T04 Local Review Worksets & Proposal Disposition is selected_not_started so the next bounded tranche is deterministic without prematurely activating implementation.",
   "active_attempts": [
     {
       "work_item_id": "CCTI-12",
@@ -69,6 +70,26 @@
       "roadmap_projection_pending": true
     }
   ],
+  "next_selected_work": {
+    "work_item_id": "CCTI-12-T04",
+    "state": "selected_not_started",
+    "title": "Local Review Worksets & Proposal Disposition",
+    "selection_record": "governance/application-planning/content-catalog-taxonomy-integration/CCTI12_T04_SELECTION_20260818.md",
+    "future_attempt_id": "CCTI-12-attempt-004",
+    "repository": "cybalicistjt-stack/Multiversal-app",
+    "activation_rule": "Do not create the attempt checkpoint or app branch until T04 implementation is intentionally begun; selection alone is not activation.",
+    "retained_gates": [
+      "Item taxonomy adoption",
+      "Platform taxonomy adoption",
+      "relationship promotion",
+      "compatibility finalization",
+      "runtime Asset mutation",
+      "mechanics reauthoring",
+      "Player canonical exposure",
+      "release/deployment",
+      "tester distribution replacement"
+    ]
+  },
   "deferred_tracks": [
     {
       "track": "post-gatx-internal-alpha-successor",
@@ -77,7 +98,7 @@
       "branch": "internal-alpha/post-gatx-successor-distribution",
       "head_sha": "5028a5d2bbdc73adeae6fa31ce719cd66e512969",
       "status": "unfinished_validation_failed",
-      "note": "Preserved and not superseded by CCTI-12."
+      "note": "Preserved and not superseded by CCTI-12. Its former generic GitHub-hosted-compute hold must be re-evaluated under MV-AI-VALIDATION-003 when this track is selected; no automatic completion or merge is created."
     },
     {"track":"ordinary-stage-a","status":"preserved_not_selected"}
   ],
@@ -95,5 +116,5 @@
     "mechanics_reauthoring": false,
     "release_or_deployment": false
   },
-  "exact_next_action": "Recover/select the next bounded CCTI-12 app-facing integration substep from current roadmap/program authority. Do not activate or execute a new tranche until that bounded substep is identified, and do not cross retained adoption, relationship, compatibility, runtime, mechanics, release, deployment, PR #185, DS-008, or ordinary Stage A boundaries."
+  "exact_next_action": "T04 is selected but not started. Do not implement it in this governance-selection operation. When execution resumes, create CCTI-12-attempt-004 and a dedicated app branch from then-current main, then build Local Review Worksets & Proposal Disposition without crossing retained gates."
 }
