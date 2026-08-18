@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-08-18T00:58:00Z",
+  "facet": "platform_nature",
+  "state": "candidate_disposition_complete_not_enabled",
+  "cardinality": "multi",
+  "platform_domain_rows": 5628,
+  "platform_model_asset_archetype_rows": 2984,
+  "non_model_rows": 2644,
+  "dispositions": {
+    "candidate_rows": 2659,
+    "candidate_assertions": 3267,
+    "host_or_record_dependent_rows": 2603,
+    "not_applicable_rows": 41,
+    "explicit_unresolved_rows": 325,
+    "active_unaccounted_rows": 0
+  },
+  "candidate_assertion_counts": {
+    "MV-PLAT-NATURE-ARTIFACT": 62,
+    "MV-PLAT-NATURE-BIOENGINEERED": 154,
+    "MV-PLAT-NATURE-BOUND-ANIMATED": 183,
+    "MV-PLAT-NATURE-CONVERTED": 18,
+    "MV-PLAT-NATURE-IMPROVISED": 91,
+    "MV-PLAT-NATURE-LIVING": 69,
+    "MV-PLAT-NATURE-MAGICAL-CONSTRUCT": 121,
+    "MV-PLAT-NATURE-MANUFACTURED": 2569
+  },
+  "zero_count_registry_values": [
+    "MV-PLAT-NATURE-HYBRID"
+  ],
+  "by_source": {
+    "Vehicles.csv": {
+      "rows": 1200,
+      "candidate_rows": 928,
+      "host_or_record_dependent_rows": 239,
+      "not_applicable_rows": 8,
+      "unresolved_review_rows": 25
+    },
+    "Mecha.csv": {
+      "rows": 2117,
+      "candidate_rows": 690,
+      "host_or_record_dependent_rows": 1167,
+      "not_applicable_rows": 20,
+      "unresolved_review_rows": 240
+    },
+    "Spacecraft.csv": {
+      "rows": 2311,
+      "candidate_rows": 1041,
+      "host_or_record_dependent_rows": 1197,
+      "not_applicable_rows": 13,
+      "unresolved_review_rows": 60
+    }
+  },
+  "source_sha256": {
+    "Vehicles.csv": "2edd4f50d18d7d629c1a268122d1d4846e3df364da9b9c45f666359ba0dd791c",
+    "Mecha.csv": "60ff6a730f5a1d50dd4622da5d199be4f753b1933acfe9d087d5bf21b4a8bf0f",
+    "Spacecraft.csv": "00ce4a9d5730ac413d22813325ff3ace7e0c7b0445e9bcd0af45aa2911962c6f"
+  },
+  "safety_rules": {
+    "genre_style_alone_never_assigns_nature": true,
+    "power_source_alone_never_assigns_nature": true,
+    "generic_hybrid_role_or_class_does_not_assign_hybrid_nature": true,
+    "support_or_salvage_fields_do_not_assign_improvised_nature": true,
+    "special_nature_requires_foundational_construction_or_origin_evidence": true
+  },
+  "boundaries": {
+    "source_master_csv_mutated": false,
+    "prepared_crosswalk_rewritten": false,
+    "canonical_candidate_enabled": false,
+    "mechanics_reauthored": false,
+    "runtime_assets_created": false,
+    "game_ready_claimed": false
+  },
+  "exact_next_action": "Run Platform cross-facet review/consolidation across all seven universal facets, preserving unresolved/host-dependent/preparation-gap states and producing correction proposals as a new overlay rather than rewriting sealed facet evidence."
+}
