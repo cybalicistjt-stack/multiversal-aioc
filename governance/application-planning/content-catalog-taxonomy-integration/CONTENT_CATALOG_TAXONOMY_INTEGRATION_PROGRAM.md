@@ -1,7 +1,7 @@
 # Multiversal Content Catalog Taxonomy Integration Program
 
 **Program ID:** CCTI  
-**Status:** OWNER-APPROVED PARALLEL PROGRAM — CANDIDATE PACKAGE VALIDATED / CCTI-12 OWNER GATE  
+**Status:** OWNER-APPROVED PARALLEL PROGRAM — CCTI-12 BOUNDED INTEGRATION ACTIVE / T01 COMPLETED_VERIFIED  
 **Owner:** John Brandon Turner  
 **Started:** 2026-08-17  
 **Updated:** 2026-08-18
@@ -79,7 +79,42 @@ The Platform catalogs contain exactly **2,984 platform/model/named-asset/archety
 9. **CCTI-09 — Resolve review queues/taxonomy gaps.** Candidate review stage complete: Item cross-axis review has 91 structural-review rows and 85 additive correction proposals; Platform cross-facet review retains 4,326 review-required rows. Item and Platform adoption remain not ready.
 10. **CCTI-10 — Produce governed derived catalogs.** Completed at additive candidate-sidecar/projection level; no source/master rewrite or automatic enablement.
 11. **CCTI-11 — Full corpus validation.** `COMPLETED_VERIFIED` through AIOC PR #379 / merge `0ab03915b88e1c297e974855388728eaf9ed98ff`. Candidate-package accounting, identity/provenance, controlled-registry integrity, Platform routing, candidate-relationship endpoints, shared-context integrity, and Definition/Model-versus-runtime-Asset boundaries validated across 11,017 rows.
-12. **CCTI-12 — App-facing content integration.** **OWNER-GATED / NOT STARTED**. Taxonomy-aware discovery/inspection/authoring through existing application authorities must not begin without explicit owner approval and a bounded activation scope.
+12. **CCTI-12 — App-facing content integration.** **OWNER-APPROVED BOUNDED INTEGRATION / T01 COMPLETED_VERIFIED.** The first GM/owner-only Candidate Content Workspace was validated on exact app head `8539daececaded611d54df1430e5ab14b7c7be5d` in run `32120405242` / job `95659311435` and merged through app PR #188 as `2d2eb4c3cf9f10fe4a32029045d688b3301362e3`.
+
+## CCTI-12 bounded integration authority
+
+The owner approved an integration-first scope: application plumbing and GM/owner-facing discovery, inspection, review and authoring surfaces may advance while candidate data remains visibly noncanonical and excluded from normal Player/runtime behavior.
+
+### Completed CCTI-12-T01
+
+The Candidate Content Workspace provides:
+
+- authorized GM/owner entry through the existing Internal Alpha GM authorization path;
+- Player denial before candidate content renders;
+- candidate aggregate posture, text/domain/review-state discovery and a bounded 100-card render window;
+- candidate inspection with stable subject identity, optional current Definition identity, facets, dispositions, provenance and review reasons;
+- browser-memory review notes and ready-for-owner-review marks;
+- local-only noncanonical review-packet export;
+- governed local projection loading with no upload or persistence path;
+- hard rejection of canonical enablement/runtime mutation authority in the candidate projection contract;
+- strict Definition/Platform Model versus A8 runtime Asset Instance separation.
+
+Exact-head validation passed builder compile, DT-008 changed-line compliance, focused CCTI/GM authorization tests, full client regression, typecheck, accessibility baseline, build and Player/default-route runtime-separation proof before merge.
+
+### CCTI-12 retained gates
+
+The bounded CCTI-12 approval still does **not** authorize:
+
+- source/master CSV mutation;
+- canonical Item taxonomy adoption;
+- canonical Platform taxonomy adoption;
+- promotion of the 260 relationship candidates;
+- final compatibility determination;
+- destructive identity/supersession changes;
+- mechanics reauthoring;
+- runtime Asset creation/activation/mutation;
+- Player-facing canonical exposure;
+- release/deployment/public publication.
 
 ## Item taxonomy adoption dependency
 
@@ -134,23 +169,11 @@ Before OGR-05 mechanics mutation begins, present the failing mechanics cohorts a
 
 ## Current execution authorization
 
-Completed authorization covered exact-registry-derived additive candidate taxonomy/catalog sidecars, confidence/review queues, readiness measurement artifacts, governed candidate relationship/context layers, bounded governance/recovery updates, and deterministic candidate validation.
-
-Still **not permitted without a new owner gate**:
-
-- CCTI-12 app-facing integration;
-- source/master CSV mutation;
-- automatic canonical enablement of Item or Platform candidate assignments;
-- promotion of relationship candidates;
-- final compatibility determination;
-- destructive identity/supersession changes;
-- mechanics reauthoring;
-- runtime Asset creation/activation;
-- release/deployment/public publication.
+Current authorization covers the already-approved bounded CCTI-12 integration-first scope: GM/owner-facing candidate discovery, inspection, review and noncanonical authoring integration that does not cross retained adoption/runtime/release gates.
 
 ## Exact next action
 
-**STOP at CCTI-12 owner gate.** Do not activate app-facing integration until John explicitly approves the bounded CCTI-12 scope.
+Select and execute the next bounded CCTI-12 application-integration substep that materially improves GM/owner review or authoring utility while preserving every retained gate above. Do not interpret T01 completion as taxonomy adoption, relationship promotion, compatibility finalization, runtime mutation, mechanics authority, release authority or deployment authority.
 
 ## Parallel-track preservation
 

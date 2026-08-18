@@ -1,75 +1,63 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "work_item_id": "CCTI-12",
   "attempt_id": "CCTI-12-attempt-001",
   "track": "content-catalog-taxonomy-integration",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "branch": "internal-alpha/ccti12-candidate-content-workspace",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
   "started_at": "2026-08-18T01:26:00Z",
-  "updated_at": "2026-08-18T02:09:31Z",
+  "updated_at": "2026-08-18T09:15:00Z",
   "objective": "Build the first bounded GM/owner-facing application slice for discovering, inspecting, reviewing and drafting against CCTI candidate content while preserving noncanonical and runtime boundaries.",
-  "active_substep": "CCTI-12-T01-exact-head-validation",
+  "completed_substep": "CCTI-12-T01-candidate-content-workspace",
   "construction_complete": true,
   "application_pull_request": 188,
-  "latest_construction_head": "e594e0b61fabeb932a5d060391b99486630ccc1c",
+  "validated_application_head": "8539daececaded611d54df1430e5ab14b7c7be5d",
+  "application_merge_sha": "2d2eb4c3cf9f10fe4a32029045d688b3301362e3",
   "construction_summary": [
-    "GM/owner-only Content Lab routed through the existing Internal Alpha GM entry and existing game-master authorization path; Player accounts are denied before candidate content is rendered",
+    "GM/owner-only Content Lab is routed through the existing Internal Alpha GM entry and existing game-master authorization path; Player accounts are denied before candidate content is rendered",
     "public entity-catalog candidate projection contract carries explicit canonicalEnabled=false and runtimeAssetMutationAllowed=false capabilities",
-    "stable governed subject identity is separate from optional current Definition identity so legacy/reference-only records are not invented into Definitions",
+    "stable governed subject identity remains separate from optional current Definition identity so legacy/reference-only records are not invented into Definitions",
     "candidate discovery supports text, domain and review-state filtering; large projections render a bounded 100-card result window",
     "inspection exposes candidate facets, dispositions, source evidence and review reasons while preserving Definition/Platform Model versus A8 Asset Instance boundaries",
     "review notes and ready-for-owner-review marks remain browser memory only and may be exported only as a noncanonical local JSON review packet requesting no canonical, relationship or runtime mutation",
-    "governed private projection JSON may be loaded from the local device with no upload or persistence path; digest-bound private projections are rejected unless they preserve the exact validated CCTI-11/T01 review shape",
+    "governed private projection JSON may be loaded from the local device with no upload or persistence path",
     "private projection builder consumes governed private shared-context, Platform cross-facet, relationship-candidate and withheld-signal ledgers without modifying inputs or committing the private 11,017-row candidate corpus",
-    "shared controls and DT-008 changed-line ratchet are included in the dedicated validation lane"
+    "shared controls and the DT-008 changed-line ratchet are enforced in the dedicated validation lane"
   ],
   "private_projection_receipt": "governance/application-planning/content-catalog-taxonomy-integration/CCTI12_T01_PRIVATE_PROJECTION_RECEIPT_20260818.json",
   "private_projection_sha256": "c98520b0916d7ec66c472b0753163b31fa840bfb51edef4a7da1c2376903a3ee",
   "private_projection_zip_sha256": "895f8754428ccaf06672e75943141f37431588e3d845d1439960fa11c1bb0104",
-  "acceptance_criteria": [
-    "GM-only Internal Alpha surface exposes candidate-content discovery and inspection",
-    "candidate/noncanonical state is visually and semantically explicit",
-    "review and authoring actions remain local draft/review intent only and cannot enable canonical content",
-    "no Player-facing route is added",
-    "no Item/Platform taxonomy enablement or relationship promotion occurs",
-    "no A8 Asset Instance, mechanics, deployment or release behavior is changed",
-    "focused tests cover access/surface/boundary behavior and repository validation is green"
-  ],
   "validation": {
-    "state": "blocked_self_hosted_runners_offline",
+    "state": "passed_exact_head",
     "dedicated_workflow": "Validate CCTI-12 Candidate Content",
-    "latest_runner_recovery_run": 32090716086,
-    "latest_runner_recovery_head": "29b1774d00cc5b3b0bd27aafc092334708cb0d05",
-    "queued_jobs": [
-      {
-        "job_id": 95572177721,
-        "name": "wake-existing-linux-runner",
-        "required_labels": ["self-hosted", "windows", "x64", "multiversal-validation"],
-        "state": "queued"
-      },
-      {
-        "job_id": 95572177683,
-        "name": "validate",
-        "required_labels": ["self-hosted", "linux", "x64", "multiversal-validation-linux"],
-        "state": "queued"
-      }
-    ],
-    "blocker_evidence": "Both the Windows wake job and Linux validation job remain queued with no executable steps, proving that neither governed self-hosted lane is currently available to execute the exact-head validation. GitHub-hosted jobs on the same heads separately terminate infrastructure-side before executable steps and are not accepted as code-failure evidence.",
-    "owner_action_required": "Start or reconnect the existing repository-scoped Windows runner multiversal-win-01. The already-queued Windows wake job is wired to launch the existing WSL multiversal-linux-02 runner automatically; no separate Linux manual action should be required once Windows is online.",
-    "required_before_merge": [
-      "remove temporary runner-wake dependency after Linux lane is restored",
-      "run dedicated CCTI-12 workflow on the final exact application head",
-      "private projection builder compiles",
-      "DT-008 changed-line design-system ratchet passes against exact branch base 6a68e81b5024cba614aa276249855153f3ccd905",
-      "focused CCTI-12 plus GM authorization and semantic accessibility tests pass",
-      "full client regression passes",
-      "client typecheck passes",
-      "accessibility baseline passes",
-      "client build passes",
-      "Player/default-route and runtime-boundary source proof passes"
-    ]
+    "run_id": 32120405242,
+    "run_number": 115,
+    "job_id": 95659311435,
+    "validated_head": "8539daececaded611d54df1430e5ab14b7c7be5d",
+    "runner": "multiversal-linux-02",
+    "runner_labels": ["self-hosted", "linux", "x64", "multiversal-validation-linux"],
+    "gates": {
+      "checkout": "pass",
+      "workspace_install": "pass",
+      "private_projection_builder_compile": "pass",
+      "dt008_changed_line_design_system_ratchet": "pass",
+      "focused_ccti12_and_gm_authorization_tests": "pass",
+      "full_client_regression": "pass",
+      "client_typecheck": "pass",
+      "accessibility_baseline": "pass",
+      "client_build": "pass",
+      "player_default_route_runtime_boundary_proof": "pass"
+    }
+  },
+  "completion": {
+    "state": "completed_verified",
+    "application_pr": 188,
+    "application_merge_sha": "2d2eb4c3cf9f10fe4a32029045d688b3301362e3",
+    "exact_head_validation_run": 32120405242,
+    "exact_head_validation_job": 95659311435,
+    "completion_claim_basis": "Every declared T01 acceptance gate passed on the exact application head before PR #188 was squash-merged."
   },
   "dependencies": {
     "CCTI-WRITE-01-attempt-001": "completed_verified",
@@ -90,5 +78,5 @@
     "DS-008-working-series-attempt-002 remains blocked_non_owner",
     "ordinary Stage A remains preserved"
   ],
-  "next_action": "Owner starts or reconnects multiversal-win-01. Then continue automatically: let the queued wake job launch multiversal-linux-02, restore a clean Linux-only validation workflow, obtain fresh final exact-head evidence, fix any implementation failures, and merge PR #188 only after every required validation passes."
+  "next_action": "CCTI-12-T01 is closed. Continue only inside the owner's already approved bounded CCTI-12 integration-first scope; any taxonomy adoption, relationship promotion, compatibility finalization, runtime Asset mutation, mechanics reauthoring, release or deployment remains separately gated."
 }
