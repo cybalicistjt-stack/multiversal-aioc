@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "program_id": "CRS",
   "status": "CURRENT",
   "policy": "governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md",
@@ -12,14 +12,16 @@
         {
           "path": ".github/workflows/validate-repository-health.yml",
           "lifecycle": "CURRENT",
-          "execution": "self_hosted_cross_repository_health_gate",
+          "execution": "github_hosted_linux_governance_exception",
           "validation_core": "documented_repository_health_exception",
           "automatic_repository_event_trigger": true,
-          "runner": "self-hosted linux x64 multiversal-validation-linux",
-          "purpose": "Validate canonical authority, selector, workflow, validator, runtime-state and application-compatibility invariants across both repositories with one compact machine gate."
+          "runner": "ubuntu-latest",
+          "timeout_minutes": 5,
+          "purpose": "One small stdlib-Python cross-repository authority/registry/runtime health check. AIOC has no repository-attached self-hosted runner; this exception is not an application, package, release, or feature completion gate."
         }
       ],
-      "retired_workflow_policy": "All pre-CRS AIOC workflows remain HISTORICAL_INERT in Git history. None may be restored to .github/workflows without explicit lifecycle registration and current-assumption review."
+      "retired_workflow_policy": "All pre-CRS AIOC workflows remain HISTORICAL_INERT in Git history. None may be restored without explicit lifecycle registration and current-assumption review.",
+      "hosted_exception_boundary": "The AIOC health workflow may use stock GitHub-hosted Linux only for bounded governance health validation. It must not become a substitute for the self-hosted application/package final-validation policy."
     },
     "cybalicistjt-stack/Multiversal-app": {
       "current_main": "41e313a979f24a63e7847ffbab5bddfa38cd911e",
@@ -49,6 +51,6 @@
     "audit": "governance/repository-health/CANONICAL_STATE_AUDIT.json",
     "assert_exact_live_namespace": true,
     "deny_unregistered_workflow": true,
-    "reject_generic_github_hosted_current_gate": true
+    "application_completion_requires_governed_self_hosted_core": true
   }
 }
