@@ -1,102 +1,57 @@
 {
-  "schema_version": "1.13.1",
-  "updated_at": "2026-08-18T17:45:00Z",
+  "schema_version": "2.0.0",
+  "updated_at": "2026-08-18T18:16:00Z",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
-  "bootstrap_current_state_amendment": "governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_VCH06_APM_POST_GATX_20260818.md",
+  "authority_registry": "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
   "static_restart_prompt": "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
-  "mandatory_operating_policy": "governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md",
-  "completion_claim_policy": "governance/ai/MULTIVERSAL_COMPLETION_CLAIM_INTEGRITY_POLICY.md",
-  "final_validation_policy": "governance/ai/MULTIVERSAL_SELF_HOSTED_FINAL_VALIDATION_POLICY.md",
-  "canonical_application_roadmap": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
-  "canonical_application_roadmap_version": "2.18.0",
-  "roadmap_supplements": [
-    "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_APM_SUPPLEMENT.md"
+  "mandatory_operating_policies": [
+    "governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md",
+    "governance/ai/MULTIVERSAL_COMPLETION_CLAIM_INTEGRITY_POLICY.md",
+    "governance/ai/MULTIVERSAL_SELF_HOSTED_FINAL_VALIDATION_POLICY.md",
+    "governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md"
   ],
+  "canonical_application_roadmap": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
+  "roadmap_supplements": ["governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_APM_SUPPLEMENT.md"],
   "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
-  "roadmap_index_supplement": "governance/ai/runtime/ROADMAP_INDEX_CCTI_SUPPLEMENT.json",
-  "primary_attempt_id": "POST-GATX-SUCCESSOR-attempt-001",
-  "selection_reason": "VCH-01 through VCH-06 are completed_verified, with VCH-06 receipt-bearing closure completed through corrective App PR #200 after substantive PR #199. The next approved independent production operation remains the preserved post-GATX Internal Alpha successor PR #185 against current main and MV-AI-VALIDATION-003 before APW/CSW/APM design execution becomes primary.",
-  "active_attempts": [
-    {
-      "work_item_id": "POST-GATX-SUCCESSOR",
-      "attempt_id": "POST-GATX-SUCCESSOR-attempt-001",
-      "track": "post-gatx-internal-alpha-successor",
-      "priority": 1,
-      "owner_selected": true,
-      "repository": "cybalicistjt-stack/Multiversal-app",
-      "branch": "internal-alpha/post-gatx-successor-distribution",
-      "checkpoint_path": "governance/ai/work-state/POST-GATX-SUCCESSOR-attempt-001.json",
-      "status": "in_progress",
-      "application_pull_request": 185,
-      "observed_head": "5028a5d2bbdc73adeae6fa31ce719cd66e512969",
-      "observed_mergeable": false
-    },
-    {
-      "work_item_id": "CCTI-12",
-      "attempt_id": "CCTI-12-attempt-004",
-      "track": "content-catalog-taxonomy-integration",
-      "priority": 2,
-      "owner_selected": false,
-      "repository": "cybalicistjt-stack/Multiversal-app",
-      "branch": "internal-alpha/ccti12-t04-local-review-worksets",
-      "checkpoint_path": "governance/ai/work-state/CCTI-12-attempt-004.json",
-      "status": "validation_quarantined",
-      "construction_complete": true,
-      "application_pull_request": 191,
-      "application_head": "3d32ee9317bc924a6a8206121402c68bdf8a061b",
-      "completion_gate_unchanged": true
-    },
-    {
-      "work_item_id": "DS-008-working-series",
-      "attempt_id": "DS-008-working-series-attempt-002",
-      "track": "design-standards-completion",
-      "priority": 3,
-      "owner_selected": false,
-      "repository": "cybalicistjt-stack/multiversal-aioc",
-      "branch": "governance/design-standards-publication-ingestion",
-      "status": "blocked_non_owner"
-    }
+  "primary_attempt_id": "CRS-attempt-001",
+  "selection_reason": "Owner-approved stop-the-line repository canonicalization after repeated stale governance, workflow, validator, PR and lifecycle assumptions consumed development time and compute. Production integration is paused until historical material is provably inert and current authority is singular and machine-checkable.",
+  "active_attempt": {
+    "work_item_id": "CRS",
+    "attempt_id": "CRS-attempt-001",
+    "track": "repository-health-canonicalization",
+    "priority": 1,
+    "owner_selected": true,
+    "repository": "cybalicistjt-stack/multiversal-aioc",
+    "branch": "governance/canonicalization-retirement-sweep",
+    "checkpoint_path": "governance/ai/work-state/CRS-attempt-001.json",
+    "program_path": "governance/repository-health/CANONICALIZATION_RETIREMENT_SWEEP.md",
+    "backlog_path": "governance/repository-health/CRS_BACKLOG.json",
+    "status": "in_progress",
+    "active_item": "CRS-01"
+  },
+  "paused_or_preserved_tracks": [
+    {"track":"post-gatx-internal-alpha-successor","work_item":"POST-GATX-SUCCESSOR","status":"paused_for_repository_health","repository":"cybalicistjt-stack/Multiversal-app","current_pr":201,"branch":"internal-alpha/post-gatx-successor-refresh","historical_pr":185},
+    {"track":"content-catalog-taxonomy-integration","work_item":"CCTI-12-T04","status":"validation_quarantined_paused_for_repository_health","repository":"cybalicistjt-stack/Multiversal-app","pr":191,"branch":"internal-alpha/ccti12-t04-local-review-worksets"},
+    {"track":"wp-011-apple","status":"preserved_special_environment_dormant","repository":"cybalicistjt-stack/Multiversal-app","pr":61,"branch":"wo/WP011-hosted-macos-evidence"},
+    {"track":"design-standards-completion","work_item":"DS-008-working-series","status":"blocked_non_owner"},
+    {"track":"stage-a-a0-a12","status":"completed_verified"},
+    {"track":"apw","status":"owner_approved_planned_not_active","next_item":"APW-01"},
+    {"track":"csw","status":"owner_approved_planned_not_active","next_item":"CSW-01"},
+    {"track":"apm","status":"owner_approved_planned_not_active","next_item":"APM-01"}
   ],
   "completed_support_programs": [
-    {
-      "program_id": "VCH",
-      "status": "completed_verified",
-      "final_item": "VCH-06",
-      "substantive_application_pr": 199,
-      "substantive_merge_sha": "b815906c2bd68aab7421c86684d613b733533e34",
-      "closure_application_pr": 200,
-      "final_validated_head": "70e0480030c39ecd67c3c137eb2e3ba666e92bf8",
-      "closure_merge_sha": "aa286a481fc53fdb969cc10be0388974bdbd3c9e",
-      "validation_runs": [32166962863, 32166962815, 32166962770],
-      "deterministic_sha256": "c1412de2e335af1df984af3ba61c9f55e94f493497d59f1ea48038faf16b50e6",
-      "historical_a2_restored_blob_sha": "706833234e664ed0e759b46bc302897338ec2ce9",
-      "closure_receipt": "Multiversal-app/receipts/VCH-06-CLOSURE.json"
-    }
-  ],
-  "deferred_tracks": [
-    {"track": "stage-a-a0-a12", "status": "completed_verified"},
-    {"track": "apw", "status": "owner_approved_planned_not_active", "next_item": "APW-01"},
-    {"track": "csw", "status": "owner_approved_planned_not_active", "next_item": "CSW-01"},
-    {"track": "apm", "status": "owner_approved_planned_not_active", "next_item": "APM-01", "roadmap_supplement": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_APM_SUPPLEMENT.md"},
-    {"track": "wp-011-apple", "status": "preserved_mac_dependent_priority_when_hardware_available"}
+    {"program_id":"VCH","status":"completed_verified","final_item":"VCH-06","substantive_application_pr":199,"closure_application_pr":200,"final_validated_head":"70e0480030c39ecd67c3c137eb2e3ba666e92bf8","closure_merge_sha":"aa286a481fc53fdb969cc10be0388974bdbd3c9e","deterministic_sha256":"c1412de2e335af1df984af3ba61c9f55e94f493497d59f1ea48038faf16b50e6"}
   ],
   "bounded_authority": {
-    "vch_program_completed_verified": true,
-    "shared_self_hosted_validation_core_default": true,
+    "repository_health_mutation": true,
+    "production_feature_merge": false,
     "ccti_t04_merge_or_completion": false,
-    "post_gatx_successor_reconciliation": true,
-    "post_gatx_tester_distribution_approval": false,
-    "proposal_application_to_loaded_projection": false,
-    "player_canonical_exposure": false,
-    "taxonomy_enablement": false,
-    "relationship_promotion": false,
-    "compatibility_finalization": false,
-    "runtime_asset_mutation": false,
-    "mechanics_reauthoring": false,
+    "post_gatx_successor_merge_or_distribution": false,
+    "wp011_run_authorization": false,
     "apw_implementation": false,
     "csw_implementation": false,
     "apm_implementation": false,
     "release_or_deployment": false
   },
-  "exact_next_action": "Reconcile Multiversal-app PR #185 / internal-alpha/post-gatx-successor-distribution with current main including the completed VCH baseline and its receipt-bearing closure, preserve its package and remote-exclusion boundaries, replace obsolete generic GitHub-hosted completion dependence with MV-AI-VALIDATION-003, use the hardened Windows/Linux deterministic evidence path, and merge only after the refreshed exact final candidate passes. The resulting candidate still requires separate owner approval before tester distribution."
+  "exact_next_action": "Complete CRS-01 authority canonicalization, then execute CRS-02 PR/branch retirement, CRS-03 workflow retirement/VCH adoption, CRS-04 validator lifecycle sweep, CRS-05 work-order/runtime cleanup, and CRS-06 machine enforcement/final audit. Resume production only after CRS completed_verified."
 }
