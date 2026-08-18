@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "date": "2026-08-18",
+  "status": "PLATFORM_CROSS_FACET_REVIEW_COMPLETE_ADOPTION_NOT_READY",
+  "platform_domain_rows": 5628,
+  "platform_rows": 2984,
+  "non_model_rows": 2644,
+  "universal_facets": 7,
+  "candidate_coherent_rows": 1302,
+  "review_required_rows": 4326,
+  "review_issue_count_distribution": {
+    "0": 1302,
+    "1": 3013,
+    "2": 1281,
+    "3": 32
+  },
+  "review_rows_by_source": {
+    "Mecha.csv": 1136,
+    "Spacecraft.csv": 2311,
+    "Vehicles.csv": 879
+  },
+  "review_rows_by_route": {
+    "NON_MODEL": 2148,
+    "PLATFORM": 2178
+  },
+  "facet_dispositions": {
+    "platform_family": {"CANDIDATE":5352,"HOST_OR_RECORD_DEPENDENT":241,"UNRESOLVED_REVIEW":35},
+    "operating_medium": {"CANDIDATE":2994,"HOST_OR_RECORD_DEPENDENT":2364,"UNRESOLVED_REVIEW":270},
+    "mobility_method": {"PREPARATION_GAP":2311,"CANDIDATE":1485,"HOST_OR_RECORD_DEPENDENT":991,"UNRESOLVED_REVIEW":841},
+    "functional_role": {"CANDIDATE":3719,"UNRESOLVED_REVIEW":1889,"NOT_APPLICABLE":20},
+    "control_mode": {"CANDIDATE":2984,"HOST_OR_RECORD_DEPENDENT":2603,"NOT_APPLICABLE":41},
+    "platform_nature": {"CANDIDATE":2659,"HOST_OR_RECORD_DEPENDENT":2603,"UNRESOLVED_REVIEW":325,"NOT_APPLICABLE":41}
+  },
+  "validation": {
+    "record_scope_invalid_candidate_ids": 0,
+    "platform_family_invalid_candidate_ids": 0,
+    "operating_medium_invalid_candidate_ids": 0,
+    "mobility_method_invalid_candidate_ids": 0,
+    "functional_role_invalid_candidate_ids": 0,
+    "control_mode_invalid_candidate_ids": 0,
+    "platform_nature_invalid_candidate_ids": 0,
+    "nonmodel_control_candidate_violations": 0,
+    "nonmodel_nature_candidate_violations": 0,
+    "platform_control_missing_candidate_violations": 0,
+    "platform_nature_host_or_na_violations": 0,
+    "source_rows_accounted": true,
+    "record_ids_unique": true,
+    "automatic_cross_facet_correction_proposals": 0
+  },
+  "adoption_state": "NOT_READY_FOR_CANONICAL_ENABLEMENT",
+  "adoption_blockers": [
+    "2311 mobility_method preparation-gap rows remain NOT_MAPPED_FROM_CURRENT_FIELD, primarily the Spacecraft corpus",
+    "1889 functional_role rows remain explicit unresolved review",
+    "841 mobility_method rows remain explicit unresolved review",
+    "325 platform_nature rows remain explicit unresolved review",
+    "270 operating_medium rows remain explicit unresolved review",
+    "35 platform_family rows remain explicit single-select review",
+    "Genre, Technology, Physical Form, Production Lifecycle, Market Availability and resolved Product Identity remain governed systemic open/deferred fields"
+  ],
+  "boundaries": {
+    "source_master_csv_mutated": false,
+    "sealed_facet_evidence_rewritten": false,
+    "canonical_candidate_enabled": false,
+    "mechanics_reauthored": false,
+    "runtime_assets_created": false,
+    "game_ready_claimed": false
+  },
+  "exact_next_action": "Proceed to CCTI cross-domain graph evidence resolution without enabling Platform taxonomy; preserve Definition/Model versus runtime Asset Instance boundaries and treat compatibility as relationship evidence rather than current installation, equipment, carriage, ownership or attachment state."
+}
