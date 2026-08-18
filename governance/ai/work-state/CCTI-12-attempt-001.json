@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "work_item_id": "CCTI-12",
   "attempt_id": "CCTI-12-attempt-001",
   "track": "content-catalog-taxonomy-integration",
@@ -8,8 +8,26 @@
   "status": "in_progress",
   "owner_selected": true,
   "started_at": "2026-08-18T01:26:00Z",
+  "updated_at": "2026-08-18T02:05:00Z",
   "objective": "Build the first bounded GM/owner-facing application slice for discovering, inspecting, reviewing and drafting against CCTI candidate content while preserving noncanonical and runtime boundaries.",
   "active_substep": "CCTI-12-T01-candidate-content-workspace",
+  "construction_complete": true,
+  "application_pull_request": 188,
+  "latest_construction_head": "d6c96f2e4adb98fdd83952114fd657bbfd8d92bd",
+  "construction_summary": [
+    "GM/owner-only Content Lab routed through the existing Internal Alpha GM entry and existing game-master authorization path; Player accounts are denied before candidate content is rendered",
+    "public entity-catalog candidate projection contract carries explicit canonicalEnabled=false and runtimeAssetMutationAllowed=false capabilities",
+    "stable governed subject identity is separate from optional current Definition identity so legacy/reference-only records are not invented into Definitions",
+    "candidate discovery supports text, domain and review-state filtering; large projections render a bounded 100-card result window",
+    "inspection exposes candidate facets, dispositions, source evidence and review reasons while preserving Definition/Platform Model versus A8 Asset Instance boundaries",
+    "review notes and ready-for-owner-review marks remain browser memory only and may be exported only as a noncanonical local JSON review packet requesting no canonical, relationship or runtime mutation",
+    "governed private projection JSON may be loaded from the local device with no upload or persistence path; digest-bound private projections are rejected unless they preserve the exact validated CCTI-11/T01 review shape",
+    "private projection builder consumes governed private shared-context, Platform cross-facet, relationship-candidate and withheld-signal ledgers without modifying inputs or committing the private 11,017-row candidate corpus",
+    "shared controls and DT-008 changed-line ratchet are included in the dedicated validation lane"
+  ],
+  "private_projection_receipt": "governance/application-planning/content-catalog-taxonomy-integration/CCTI12_T01_PRIVATE_PROJECTION_RECEIPT_20260818.json",
+  "private_projection_sha256": "c98520b0916d7ec66c472b0753163b31fa840bfb51edef4a7da1c2376903a3ee",
+  "private_projection_zip_sha256": "895f8754428ccaf06672e75943141f37431588e3d845d1439960fa11c1bb0104",
   "acceptance_criteria": [
     "GM-only Internal Alpha surface exposes candidate-content discovery and inspection",
     "candidate/noncanonical state is visually and semantically explicit",
@@ -19,14 +37,42 @@
     "no A8 Asset Instance, mechanics, deployment or release behavior is changed",
     "focused tests cover access/surface/boundary behavior and repository validation is green"
   ],
+  "validation": {
+    "state": "required_exact_head_not_yet_executed",
+    "dedicated_workflow": "Validate CCTI-12 Candidate Content",
+    "required_runner_labels": ["self-hosted", "linux", "x64", "multiversal-validation-linux"],
+    "latest_observed_dedicated_run": 32090370375,
+    "latest_observed_state": "queued",
+    "hosted_workflow_posture": "GitHub-hosted jobs on the same heads terminate infrastructure-side before executable job steps and do not constitute code-failure evidence",
+    "required_before_merge": [
+      "private projection builder compiles",
+      "DT-008 changed-line design-system ratchet passes against exact branch base 6a68e81b5024cba614aa276249855153f3ccd905",
+      "focused CCTI-12 plus GM authorization and semantic accessibility tests pass",
+      "full client regression passes",
+      "client typecheck passes",
+      "accessibility baseline passes",
+      "client build passes",
+      "Player/default-route and runtime-boundary source proof passes"
+    ]
+  },
   "dependencies": {
     "CCTI-WRITE-01-attempt-001": "completed_verified",
     "CCTI-11": "completed_verified",
     "owner_approval": "CCTI12_OWNER_APPROVAL_20260817.json"
   },
+  "boundaries": {
+    "candidate_or_taxonomy_enablement": false,
+    "relationship_promotion": false,
+    "compatibility_finalization": false,
+    "runtime_asset_mutation": false,
+    "mechanics_reauthoring": false,
+    "release_or_deployment": false,
+    "private_candidate_corpus_committed_to_app_repo": false
+  },
   "parallel_tracks_preserved": [
     "Multiversal-app PR #185 remains unfinished and not superseded",
     "DS-008-working-series-attempt-002 remains blocked_non_owner",
     "ordinary Stage A remains preserved"
-  ]
+  ],
+  "next_action": "Obtain fresh exact-head execution of the dedicated CCTI-12 validation workflow on the governed Linux self-hosted validation runner. Do not merge PR #188 or mark T01 complete before that evidence passes."
 }
