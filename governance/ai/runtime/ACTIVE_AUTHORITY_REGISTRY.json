@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.4.0",
-  "updated_at": "2026-08-18T21:13:00Z",
+  "schema_version": "1.5.0",
+  "updated_at": "2026-08-18T23:20:00Z",
   "policy": "governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md",
   "current": [
     {"kind":"bootstrap","path":"governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md","lifecycle":"CURRENT"},
@@ -27,7 +27,11 @@
     "application .ai compatibility paths and historical .agent/.ai work-order records preserved in Git history",
     "pre-CRS roadmap/index revisions preserved in Git history"
   ],
-  "active_application_work": {"work_item":"POST-GATX-SUCCESSOR","pr":201,"branch":"internal-alpha/post-gatx-successor-refresh","lifecycle":"CURRENT","state":"reconcile_to_clean_main","merge_authority":false},
+  "active_application_work": {"work_item":"POST-GATX-SUCCESSOR","pr":203,"branch":"internal-alpha/post-gatx-successor-clean","head":"91626e3663efb1a75bf35f530057eba0302053c7","lifecycle":"CURRENT","state":"exact_head_validation","merge_authority":false},
+  "superseded_application_work": [
+    {"work_item":"POST-GATX-SUCCESSOR","pr":201,"branch":"internal-alpha/post-gatx-successor-refresh","lifecycle":"HISTORICAL_INERT","state":"closed_superseded","merge_authority":false},
+    {"work_item":"POST-GATX-SUCCESSOR","pr":185,"branch":"internal-alpha/post-gatx-successor-distribution","lifecycle":"HISTORICAL_INERT","state":"closed_superseded","merge_authority":false}
+  ],
   "preserved_non_authoritative_application_work": [
     {"work_item":"CCTI-12-T04","pr":191,"branch":"internal-alpha/ccti12-t04-local-review-worksets","lifecycle":"CURRENT_COMPATIBLE","state":"validation_quarantined","merge_authority":false},
     {"work_item":"WP-011","pr":61,"branch":"wo/WP011-hosted-macos-evidence","lifecycle":"CURRENT_COMPATIBLE","state":"special_environment_dormant","merge_authority":false}
