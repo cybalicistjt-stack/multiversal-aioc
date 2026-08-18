@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-08-18T18:16:00Z",
+  "policy": "governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md",
+  "current": [
+    {"kind":"bootstrap","path":"governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md","lifecycle":"CURRENT"},
+    {"kind":"work_pointer","path":"governance/ai/runtime/CURRENT_WORK_POINTER.json","lifecycle":"CURRENT"},
+    {"kind":"checkpoint","path":"governance/ai/work-state/CRS-attempt-001.json","lifecycle":"CURRENT"},
+    {"kind":"program","path":"governance/repository-health/CANONICALIZATION_RETIREMENT_SWEEP.md","lifecycle":"CURRENT"},
+    {"kind":"backlog","path":"governance/repository-health/CRS_BACKLOG.json","lifecycle":"CURRENT"},
+    {"kind":"roadmap","path":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md","lifecycle":"CURRENT"},
+    {"kind":"roadmap_supplement","path":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_APM_SUPPLEMENT.md","lifecycle":"CURRENT"},
+    {"kind":"policy","path":"governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md","lifecycle":"CURRENT"},
+    {"kind":"policy","path":"governance/ai/MULTIVERSAL_COMPLETION_CLAIM_INTEGRITY_POLICY.md","lifecycle":"CURRENT"},
+    {"kind":"policy","path":"governance/ai/MULTIVERSAL_SELF_HOSTED_FINAL_VALIDATION_POLICY.md","lifecycle":"CURRENT"},
+    {"kind":"policy","path":"governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md","lifecycle":"CURRENT"}
+  ],
+  "historical_inert_patterns": [
+    "governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_*.md",
+    "completed attempt checkpoints not named by CURRENT_WORK_POINTER.json",
+    "superseded roadmap projections",
+    "closed PR descriptions and historical branch checkpoints"
+  ],
+  "preserved_non_authoritative_application_work": [
+    {"work_item":"POST-GATX-SUCCESSOR","pr":201,"branch":"internal-alpha/post-gatx-successor-refresh","lifecycle":"CURRENT_COMPATIBLE","state":"paused_for_CRS","merge_authority":false},
+    {"work_item":"CCTI-12-T04","pr":191,"branch":"internal-alpha/ccti12-t04-local-review-worksets","lifecycle":"CURRENT_COMPATIBLE","state":"validation_quarantined_paused_for_CRS","merge_authority":false},
+    {"work_item":"WP-011","pr":61,"branch":"wo/WP011-hosted-macos-evidence","lifecycle":"CURRENT_COMPATIBLE","state":"special_environment_dormant","merge_authority":false}
+  ],
+  "pr_retirement_candidates": {
+    "Multiversal-app": [147],
+    "multiversal-aioc": [1,34,48,326]
+  },
+  "rule": "Anything not explicitly CURRENT or CURRENT_COMPATIBLE here cannot govern current work merely because it exists."
+}
