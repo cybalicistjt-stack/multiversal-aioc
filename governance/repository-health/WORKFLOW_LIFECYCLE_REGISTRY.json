@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.3.0",
+  "schema_version": "1.4.0",
   "program_id": "CRS",
   "status": "CURRENT",
   "policy": "governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md",
@@ -50,9 +50,21 @@
           "automatic_repository_event_trigger": true,
           "runner": "self-hosted linux x64 multiversal-validation-linux",
           "purpose": "Machine-enforce the App workflow namespace, Validation Core boundary, inert local selector redirects, and absence of completed-era active/ready work-order namespaces."
+        },
+        {
+          "path": ".github/workflows/validate-post-gatx-self-hosted-exact-head.yml",
+          "lifecycle": "CURRENT_COMPATIBLE",
+          "execution": "bounded_self_hosted_package_capability_exception",
+          "validation_core": "documented_capability_exception",
+          "automatic_repository_event_trigger": true,
+          "runner": "self-hosted linux + self-hosted windows + deterministic package comparator",
+          "scope": "POST-GATX-SUCCESSOR only",
+          "retire_after": "POST-GATX-SUCCESSOR completion or explicit supersession",
+          "purpose": "Exact-head package/browser/PowerShell proof for the preserved post-GATX Internal Alpha successor. This exception exists because the gate requires Node/pnpm, headed Chromium, packaged PowerShell execution, and byte-identical ZIP comparison; it may not be reused as generic feature validation."
         }
       ],
-      "retired_workflow_policy": "A2, DT proof, GATX, IA, P9-06, Repository Solidity, Salvage, Stage-A, VCH proof and paused feature-specific workflows remain HISTORICAL_INERT in Git history. Resumed feature work must use a new thin Validation Core profile or a documented current capability exception."
+      "retired_workflow_policy": "A2, DT proof, GATX, IA, P9-06, Repository Solidity, Salvage, Stage-A, VCH proof and unregistered feature-specific workflows remain HISTORICAL_INERT in Git history. Resumed feature work must use a new thin Validation Core profile or a documented current capability exception.",
+      "bounded_active_exceptions": [".github/workflows/validate-post-gatx-self-hosted-exact-head.yml"]
     }
   },
   "machine_enforcement": {
@@ -61,7 +73,7 @@
     "audit": "governance/repository-health/CANONICAL_STATE_AUDIT.json",
     "assert_exact_live_namespace": true,
     "deny_unregistered_workflow": true,
-    "application_completion_requires_governed_self_hosted_core": true,
+    "application_completion_requires_governed_self_hosted_core_or_registered_capability_exception": true,
     "cross_repository_token_dependency": false
   }
 }
