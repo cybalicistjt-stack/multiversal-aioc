@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "work_item_id": "CCTI-12",
   "attempt_id": "CCTI-12-attempt-001",
   "track": "content-catalog-taxonomy-integration",
@@ -8,12 +8,12 @@
   "status": "in_progress",
   "owner_selected": true,
   "started_at": "2026-08-18T01:26:00Z",
-  "updated_at": "2026-08-18T02:05:00Z",
+  "updated_at": "2026-08-18T02:09:31Z",
   "objective": "Build the first bounded GM/owner-facing application slice for discovering, inspecting, reviewing and drafting against CCTI candidate content while preserving noncanonical and runtime boundaries.",
-  "active_substep": "CCTI-12-T01-candidate-content-workspace",
+  "active_substep": "CCTI-12-T01-exact-head-validation",
   "construction_complete": true,
   "application_pull_request": 188,
-  "latest_construction_head": "d6c96f2e4adb98fdd83952114fd657bbfd8d92bd",
+  "latest_construction_head": "e594e0b61fabeb932a5d060391b99486630ccc1c",
   "construction_summary": [
     "GM/owner-only Content Lab routed through the existing Internal Alpha GM entry and existing game-master authorization path; Player accounts are denied before candidate content is rendered",
     "public entity-catalog candidate projection contract carries explicit canonicalEnabled=false and runtimeAssetMutationAllowed=false capabilities",
@@ -38,13 +38,29 @@
     "focused tests cover access/surface/boundary behavior and repository validation is green"
   ],
   "validation": {
-    "state": "required_exact_head_not_yet_executed",
+    "state": "blocked_self_hosted_runners_offline",
     "dedicated_workflow": "Validate CCTI-12 Candidate Content",
-    "required_runner_labels": ["self-hosted", "linux", "x64", "multiversal-validation-linux"],
-    "latest_observed_dedicated_run": 32090370375,
-    "latest_observed_state": "queued",
-    "hosted_workflow_posture": "GitHub-hosted jobs on the same heads terminate infrastructure-side before executable job steps and do not constitute code-failure evidence",
+    "latest_runner_recovery_run": 32090716086,
+    "latest_runner_recovery_head": "29b1774d00cc5b3b0bd27aafc092334708cb0d05",
+    "queued_jobs": [
+      {
+        "job_id": 95572177721,
+        "name": "wake-existing-linux-runner",
+        "required_labels": ["self-hosted", "windows", "x64", "multiversal-validation"],
+        "state": "queued"
+      },
+      {
+        "job_id": 95572177683,
+        "name": "validate",
+        "required_labels": ["self-hosted", "linux", "x64", "multiversal-validation-linux"],
+        "state": "queued"
+      }
+    ],
+    "blocker_evidence": "Both the Windows wake job and Linux validation job remain queued with no executable steps, proving that neither governed self-hosted lane is currently available to execute the exact-head validation. GitHub-hosted jobs on the same heads separately terminate infrastructure-side before executable steps and are not accepted as code-failure evidence.",
+    "owner_action_required": "Start or reconnect the existing repository-scoped Windows runner multiversal-win-01. The already-queued Windows wake job is wired to launch the existing WSL multiversal-linux-02 runner automatically; no separate Linux manual action should be required once Windows is online.",
     "required_before_merge": [
+      "remove temporary runner-wake dependency after Linux lane is restored",
+      "run dedicated CCTI-12 workflow on the final exact application head",
       "private projection builder compiles",
       "DT-008 changed-line design-system ratchet passes against exact branch base 6a68e81b5024cba614aa276249855153f3ccd905",
       "focused CCTI-12 plus GM authorization and semantic accessibility tests pass",
@@ -74,5 +90,5 @@
     "DS-008-working-series-attempt-002 remains blocked_non_owner",
     "ordinary Stage A remains preserved"
   ],
-  "next_action": "Obtain fresh exact-head execution of the dedicated CCTI-12 validation workflow on the governed Linux self-hosted validation runner. Do not merge PR #188 or mark T01 complete before that evidence passes."
+  "next_action": "Owner starts or reconnects multiversal-win-01. Then continue automatically: let the queued wake job launch multiversal-linux-02, restore a clean Linux-only validation workflow, obtain fresh final exact-head evidence, fix any implementation failures, and merge PR #188 only after every required validation passes."
 }
