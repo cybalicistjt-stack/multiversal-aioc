@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "audit_id": "CRS-06-CANONICAL-STATE-AUDIT-2026-08-18",
   "status": "completion_candidate",
   "result": "zero_known_conflicting_authority",
@@ -38,18 +38,20 @@
     {"id": "application-selector-retirement", "status": "PASS", "evidence": "App main 41e313a979f24a63e7847ffbab5bddfa38cd911e converts legacy local current/next/queue/handoff paths to AIOC redirects and removes active/ready work-order namespaces."},
     {"id": "dated-amendment-retirement", "status": "PASS", "evidence": "CRS-05 removed all BOOTSTRAP_CURRENT_STATE_AMENDMENT_* files, stale CURRENT_IMPLEMENTATION_STATUS.json, and completed-era runtime roadmap supplements from AIOC operational runtime."},
     {"id": "workflow-deny-by-default", "status": "PASS", "evidence": "CRS-03 removed historical workflow namespaces; CRS-06 restores only one registered cross-repository health gate in AIOC. App retains only shared Validation Core plus manual Windows smoke."},
-    {"id": "validator-deny-by-default", "status": "PASS", "evidence": "VALIDATOR_LIFECYCLE_REGISTRY.json registers current Validation Core and makes historical validators non-authoritative by existence."},
-    {"id": "hosted-runner-policy", "status": "PASS", "evidence": "No live generic completion workflow uses ubuntu-latest; the CRS-06 health gate is self-hosted Linux and App cross-platform final gates use the shared self-hosted Validation Core where applicable."},
+    {"id": "validator-deny-by-default", "status": "PASS", "evidence": "VALIDATOR_LIFECYCLE_REGISTRY.json registers the AIOC health validator and current App Validation Core while historical validators remain non-authoritative by existence."},
+    {"id": "hosted-runner-policy", "status": "PASS", "evidence": "Application/package final validation remains self-hosted and Validation-Core governed. Because AIOC has no attached self-hosted runner, its sole five-minute stdlib-Python repository-health workflow is an explicitly registered governance-only GitHub-hosted exception, not a product completion gate."},
     {"id": "open-pr-authority", "status": "PASS", "evidence": "The only preserved App PRs are #61, #191 and #201; all are draft/non-authoritative during CRS and each has an explicit reactivation condition."},
     {"id": "history-preservation", "status": "PASS", "evidence": "CRS removes stale material only from operational namespaces; prior workflow/work-order/runtime definitions remain recoverable from Git history."}
   ],
   "machine_gate": {
     "validator": "scripts/validate_repository_health.py",
     "workflow": ".github/workflows/validate-repository-health.yml",
-    "runner": "self-hosted linux x64 multiversal-validation-linux",
+    "runner": "ubuntu-latest documented AIOC governance-only exception",
+    "timeout_minutes": 5,
     "checks_both_repositories": true,
     "exact_aioc_candidate_head_required": true,
-    "compact_artifact": true
+    "compact_artifact": true,
+    "application_product_gate_unchanged": true
   },
   "remaining_before_crs_completion": [
     "Run the machine health gate on the exact CRS-06 candidate head.",
