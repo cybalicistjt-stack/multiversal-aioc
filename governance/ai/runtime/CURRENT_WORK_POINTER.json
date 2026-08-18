@@ -1,6 +1,6 @@
 {
-  "schema_version": "2.4.0",
-  "updated_at": "2026-08-18T21:13:00Z",
+  "schema_version": "2.5.0",
+  "updated_at": "2026-08-18T23:20:00Z",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "authority_registry": "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
   "static_restart_prompt": "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
@@ -14,7 +14,7 @@
   "roadmap_supplements": ["governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_APM_SUPPLEMENT.md"],
   "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
   "primary_attempt_id": "POST-GATX-SUCCESSOR-attempt-001",
-  "selection_reason": "CRS is completed_verified. Production resumes from the preserved post-GATX successor refresh because it was the selected production operation before the repository-health stop-the-line and remains independent of validation-quarantined CCTI-12-T04.",
+  "selection_reason": "CRS is completed_verified. The pre-CRS refresh PR #201 has been closed as superseded; the successor is rebuilt from cleaned App main as PR #203 with its bounded validation surface explicitly registered under the deny-by-default lifecycle model.",
   "active_attempt": {
     "work_item_id": "POST-GATX-SUCCESSOR",
     "attempt_id": "POST-GATX-SUCCESSOR-attempt-001",
@@ -22,8 +22,8 @@
     "priority": 1,
     "owner_selected": true,
     "repository": "cybalicistjt-stack/Multiversal-app",
-    "branch": "internal-alpha/post-gatx-successor-refresh",
-    "pull_request": 201,
+    "branch": "internal-alpha/post-gatx-successor-clean",
+    "pull_request": 203,
     "checkpoint_path": "governance/ai/work-state/POST-GATX-SUCCESSOR-attempt-001.json",
     "status": "in_progress",
     "active_item": "POST-GATX-SUCCESSOR"
@@ -38,7 +38,7 @@
   ],
   "completed_support_programs": [
     {"program_id":"VCH","status":"completed_verified","final_item":"VCH-06","closure_application_pr":200,"final_validated_head":"70e0480030c39ecd67c3c137eb2e3ba666e92bf8","closure_merge_sha":"aa286a481fc53fdb969cc10be0388974bdbd3c9e","deterministic_sha256":"c1412de2e335af1df984af3ba61c9f55e94f493497d59f1ea48038faf16b50e6"},
-    {"program_id":"CRS","status":"completed_verified","final_item":"CRS-06","application_health_pr":202,"application_health_merge":"ec4ad52910fd8728134df4bdbad31476f44602e9","application_health_run":32178841607,"aioc_health_pr":405,"aioc_health_candidate":"88accb4e8b97e5b88519f7e97e8f98914387132a","aioc_health_run":32179296631,"aioc_health_merge":"9a74d10988ca41201c8155956a09564c7d1289a9","audit_result":"zero_known_conflicting_authority"}
+    {"program_id":"CRS","status":"completed_verified","final_item":"CRS-06","application_health_pr":202,"application_health_merge":"ec4ad52910fd8728134df4bdbad31476f44602e9","application_health_run":32178841607,"aioc_health_pr":405,"aioc_health_run":32179296631,"aioc_health_merge":"9a74d10988ca41201c8155956a09564c7d1289a9","audit_result":"zero_known_conflicting_authority"}
   ],
   "bounded_authority": {
     "repository_health_maintenance": true,
@@ -52,5 +52,5 @@
     "apm_implementation": false,
     "release_or_deployment": false
   },
-  "exact_next_action": "Reconcile App PR #201 onto cleaned current main ec4ad52910fd8728134df4bdbad31476f44602e9 without reviving retired workflows or historical validators. Any active validation surface must be explicitly registered under the deny-by-default lifecycle model. Then require exact-head self-hosted Linux/headed, Windows/PowerShell, deterministic comparison, and bound artifacts before merge. Merge creates a validated successor candidate only; tester distribution remains a separate owner decision."
+  "exact_next_action": "Freeze App PR #203 head 91626e3663efb1a75bf35f530057eba0302053c7 and require the registered App repository-health gate plus the bounded post-GATX self-hosted Linux/headed, Windows/PowerShell and deterministic byte-identical package comparator. Merge only if all required exact-head jobs pass and artifacts bind this head. Merge creates a validated successor candidate only; tester distribution remains a separate owner decision."
 }
