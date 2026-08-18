@@ -1,11 +1,13 @@
 # Multiversal Finished-Step Validation Amendment
 
 **Document ID:** MV-AI-EFFICIENCY-002  
-**Version:** 1.0.0  
+**Version:** 1.1.0  
 **Status:** ACTIVE — OWNER APPROVED  
 **Owner and final authority:** John Brandon Turner  
 **Effective:** 2026-08-06  
-**Amends:** MV-AI-EFFICIENCY-001 where this document is more restrictive
+**Updated:** 2026-08-18  
+**Amends:** MV-AI-EFFICIENCY-001 where this document is more restrictive  
+**Final validation routing:** `governance/ai/MULTIVERSAL_SELF_HOSTED_FINAL_VALIDATION_POLICY.md`
 
 ## 1. Controlling decision
 
@@ -13,7 +15,7 @@ Stop intra-step validation and administrative repository maintenance. Build the 
 
 ## 2. During a step
 
-Do not run validators, hosted CI, checkpoint rewrites, pointer/status projections, roadmap rewrites, temporary marker files, or administrative commits while constructing the package.
+Do not run validators, full CI, checkpoint rewrites, pointer/status projections, roadmap rewrites, temporary marker files, or administrative commits while constructing the package.
 
 Stop only for a genuine owner-only decision, release/security gate, destructive ambiguity, or material blocker.
 
@@ -24,10 +26,12 @@ After the complete package exists:
 1. run one targeted deterministic validator;
 2. batch any defects into one correction batch;
 3. open one pull request;
-4. inspect the hosted gate once;
+4. inspect the declared final GitHub-recorded gate once;
 5. inspect logs only for failed checks;
-6. batch genuine hosted defects before rerunning;
+6. batch genuine final-gate defects before rerunning;
 7. merge when the exact final head is green.
+
+For normal application/package work, the declared final gate should use the self-hosted Windows/Linux architecture and deterministic cross-platform comparison defined by `MV-AI-VALIDATION-003` as applicable. GitHub-hosted compute is reserved for specifically justified independent audits, not routine tranche completion.
 
 Do not validate individual files, sections, commits, or substeps.
 
@@ -43,8 +47,8 @@ Report only a genuine blocker or owner decision, a finished bounded step, a mate
 
 ## 6. Gates preserved
 
-This amendment does not authorize false completion or weaken permission, privacy, provenance, security, migration, checksum, paid-service, credential, deployment, release, or canonical-promotion gates.
+This amendment does not authorize false completion or weaken permission, privacy, provenance, security, migration, checksum, deterministic comparison, paid-service, credential, deployment, release, or canonical-promotion gates.
 
 ## 7. Default pattern
 
-`verify source once → build full step → one boundary validator → one PR → inspect failures only → merge → update between finished steps`
+`verify source once → build full step → one boundary validator → one PR → self-hosted exact-head final gate as applicable → deterministic cross-platform comparison where applicable → inspect failures only → merge → update between finished steps`
