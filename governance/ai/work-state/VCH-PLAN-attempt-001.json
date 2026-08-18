@@ -1,17 +1,33 @@
 {
   "attempt_id": "VCH-PLAN-attempt-001",
   "program_id": "VCH",
-  "status": "owner_selected_next",
+  "status": "in_progress",
   "owner": "John Brandon Turner",
   "decision": "owner_approved_with_2026_08_18_sequence_amendment",
   "activation_dependency": "canonical roadmap/recovery reconciliation merged",
-  "next_item_on_activation": "VCH-01",
-  "current_work_pointer_changed": true,
-  "ccti_t04_dependency": "CCTI-12-T04 may remain validation_quarantined while VCH proceeds; VCH cannot be used to claim T04 complete and T04 retains its exact-final-head Windows/Linux/comparator gate.",
+  "active_item": "VCH-02",
+  "completed_items": [
+    {
+      "id": "VCH-01",
+      "name": "Failure Taxonomy and Diagnostic Contract",
+      "status": "completed_verified",
+      "application_pr": 192,
+      "validated_head": "49954acd08b65d90d89f83b399136388084110aa",
+      "application_merge_sha": "86f9f182ace149f584974b6c91d3ae5ba5b8a512",
+      "validation_run": 32151301657,
+      "linux_job": 95757570878,
+      "windows_job": 95757571140,
+      "linux_artifact": {"id": 9329833991, "name": "vch01-linux-result", "sha256": "a2edbabc96068329696f22f2eb7ffb48bb8f1b040b51377bc6a14a06b87b2a86"},
+      "windows_artifact": {"id": 9329846576, "name": "vch01-windows-result", "sha256": "e39ec3bc86a7b0aa32546a3e8090f5e68bae525f85ef333fb7b559dcf78c0cfc"},
+      "evidence": "Exact PR head passed the dependency-free VCH-01 diagnostic contract validator on both owner-controlled self-hosted Linux and Windows lanes; both lanes successfully uploaded compact result artifacts."
+    }
+  ],
+  "next_item": "VCH-02",
+  "next_item_name": "Runner Contract and Preflight",
+  "ccti_t04_dependency": "CCTI-12-T04 remains validation_quarantined; VCH cannot be used to claim T04 complete and T04 retains its exact-final-head Windows/Linux/comparator gate.",
   "notes": [
-    "Owner approved moving productive work around the T04 evidence-retrieval blockage rather than allowing one validation interface to freeze the project.",
-    "VCH is the next bounded support tranche after roadmap reconciliation.",
-    "VCH must remain bounded to shared validation diagnostics/evidence/runner-contract hardening and must not expand into a general infrastructure rewrite.",
-    "The preserved post-GATX successor distribution is re-evaluated after the VCH foundation under MV-AI-VALIDATION-003, followed by the approved APW/CSW interleaved sequence."
+    "VCH-01 proved the self-hosted Windows/Linux path can validate productive work without GitHub-hosted credit and can expose compact artifact evidence without full-log scraping.",
+    "VCH remains bounded to shared validation diagnostics/evidence/runner-contract hardening and must not expand into a general infrastructure rewrite.",
+    "The preserved post-GATX successor distribution is re-evaluated after the bounded VCH foundation under MV-AI-VALIDATION-003, followed by the approved APW/CSW interleaved sequence."
   ]
 }
