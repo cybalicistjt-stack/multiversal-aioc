@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.13.0",
-  "updated_at": "2026-08-18T17:27:00Z",
+  "schema_version": "1.13.1",
+  "updated_at": "2026-08-18T17:45:00Z",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "bootstrap_current_state_amendment": "governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_VCH06_APM_POST_GATX_20260818.md",
   "static_restart_prompt": "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
@@ -15,7 +15,7 @@
   "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
   "roadmap_index_supplement": "governance/ai/runtime/ROADMAP_INDEX_CCTI_SUPPLEMENT.json",
   "primary_attempt_id": "POST-GATX-SUCCESSOR-attempt-001",
-  "selection_reason": "VCH-01 through VCH-06 are completed_verified through App PR #199. The next approved independent production operation is to refresh and finalize the preserved post-GATX Internal Alpha successor PR #185 against current main and MV-AI-VALIDATION-003 before APW/CSW/APM design execution becomes primary.",
+  "selection_reason": "VCH-01 through VCH-06 are completed_verified, with VCH-06 receipt-bearing closure completed through corrective App PR #200 after substantive PR #199. The next approved independent production operation remains the preserved post-GATX Internal Alpha successor PR #185 against current main and MV-AI-VALIDATION-003 before APW/CSW/APM design execution becomes primary.",
   "active_attempts": [
     {
       "work_item_id": "POST-GATX-SUCCESSOR",
@@ -62,11 +62,15 @@
       "program_id": "VCH",
       "status": "completed_verified",
       "final_item": "VCH-06",
-      "application_pr": 199,
-      "validated_head": "9ab9a3ee2a3a804810d1f3964fdccf0e019b6a39",
-      "merge_sha": "b815906c2bd68aab7421c86684d613b733533e34",
-      "validation_runs": [32163086235, 32163086172, 32163086154],
-      "deterministic_sha256": "db530554d6515d9ac50fc6e63a97cffe98596d8608c345fa370ab265ccc85646"
+      "substantive_application_pr": 199,
+      "substantive_merge_sha": "b815906c2bd68aab7421c86684d613b733533e34",
+      "closure_application_pr": 200,
+      "final_validated_head": "70e0480030c39ecd67c3c137eb2e3ba666e92bf8",
+      "closure_merge_sha": "aa286a481fc53fdb969cc10be0388974bdbd3c9e",
+      "validation_runs": [32166962863, 32166962815, 32166962770],
+      "deterministic_sha256": "c1412de2e335af1df984af3ba61c9f55e94f493497d59f1ea48038faf16b50e6",
+      "historical_a2_restored_blob_sha": "706833234e664ed0e759b46bc302897338ec2ce9",
+      "closure_receipt": "Multiversal-app/receipts/VCH-06-CLOSURE.json"
     }
   ],
   "deferred_tracks": [
@@ -94,5 +98,5 @@
     "apm_implementation": false,
     "release_or_deployment": false
   },
-  "exact_next_action": "Reconcile Multiversal-app PR #185 / internal-alpha/post-gatx-successor-distribution with current main including VCH, preserve its package and remote-exclusion boundaries, replace obsolete generic GitHub-hosted completion dependence with MV-AI-VALIDATION-003, use the hardened Windows/Linux deterministic evidence path, and merge only after the refreshed exact final candidate passes. The resulting candidate still requires separate owner approval before tester distribution."
+  "exact_next_action": "Reconcile Multiversal-app PR #185 / internal-alpha/post-gatx-successor-distribution with current main including the completed VCH baseline and its receipt-bearing closure, preserve its package and remote-exclusion boundaries, replace obsolete generic GitHub-hosted completion dependence with MV-AI-VALIDATION-003, use the hardened Windows/Linux deterministic evidence path, and merge only after the refreshed exact final candidate passes. The resulting candidate still requires separate owner approval before tester distribution."
 }
