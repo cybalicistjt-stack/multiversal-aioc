@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 2.16.0  
-**Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED; STAGE-A-A9 COMPLETED_VERIFIED; A10 REVALIDATION COMPLETED / ACTIVATION NEXT; PPIA/CAPP COMPLETED_VERIFIED; APW PARALLEL PLANNING TRACK ADDED  
+**Version:** 2.17.0  
+**Status:** ACTIVE — BOUNDED IMPLEMENTATION AUTHORIZED; STAGE-A-A9 COMPLETED_VERIFIED; A10 REVALIDATION COMPLETED / ACTIVATION NEXT; PPIA/CAPP COMPLETED_VERIFIED; APW/CSW PARALLEL PLANNING TRACKS ADDED  
 **Owner and final authority:** John Brandon Turner  
 **Originally approved:** 2026-08-03  
 **Last updated:** 2026-08-18
@@ -30,6 +30,7 @@ The authoritative ordered Phase 9 backlog remains `governance/phase9/P9-06_IMPLE
 - **STAGE-A-A10 — World Content Authoring has completed current-repository revalidation and is the current next application target for bounded activation.** AIOC PR #327 squash-merged as GitHub-verified `9124860691ea208bded3800008a2d92b4b2c2139` with verdict `PASS — READY FOR BOUNDED A10 ACTIVATION`. The revalidation preserves the 32 WSM/AM/CC/AI source slices, 120 deterministic fixtures, 140 published blocking criteria, split D06/D07/D18/D28/D29/D05/D13 ownership, owner-only canonical promotion, privacy-before-derived-output, declarative creator sandboxing and additive migration `0008_a10_world_content_authoring.json`. A10 implementation is not activated by the governance merge itself.
 - **Internal Alpha feature design is complete through IA-D09.** Prepared tester/reference/support assets do not activate tester access or release.
 - **APW — Asynchronous Play & Persistent Workspace is an owner-approved parallel planning track, planned but not implementation-active.** Its governing plan and backlog define universal-user/contextual-role authority, asynchronous Campaign Actions, between-session activity, Personal workspaces, creator/sandbox capability, hybrid recovery/acceptance, and an additive implementation handoff. APW does not change the selected runtime pointer or reopen completed Stage A closure evidence.
+- **CSW — Creator Storycraft Workspace is an owner-approved parallel planning track, planned but not implementation-active.** Its plan and backlog define creative fragments, Story Bible/project memory, inspiration, guided creation, plot/adventure design, continuity/open-thread analysis, writing/revision, reuse/remix, and an additive A10/APW implementation handoff. CSW does not change the selected runtime pointer or replace A10 World/Adventure/authoring authority.
 - **Design Standards exact-byte ingestion remains unfinished.** `DS-008-working-series-attempt-002` remains blocked on a capable exact-byte transfer/validation surface. Verified preparation remains PR #207 / merge `bd3071f6f855b66b740ba4bf1f1ba0208636548c`, PR #208 / merge `0cfd8128786e4cdd055e3e3be26bdd1854efdfa7`, PR #209 / merge `708e0ea72a6dce6f5d46ddacd042c1ddb80eee0a`, and prepared handoff commit `f0d9295215a057e0f42603a0777c276a7437aad4`.
 - **PPIA is `COMPLETED_VERIFIED`.** All sixteen tranches are complete/completed_verified. Final substantive PPIA-16 exact head `eede4bfb530056963a4a595faac54515ff151c3b` passed 70/70 applicable hosted workflows; final-state recovery merged through PR #295 as `8357cc812436e8bbe40c214ac0ca6e44363cc1a5`.
 - **CAPP — Character Appearance Production Preparation is `COMPLETED_VERIFIED`.** `CAPP_PROGRAM_BACKLOG.json` records CAPP-01 through CAPP-12 completed_verified. CAPP is direct implementation input for Character appearance/presentation and related diagnostics, while PPIA-05 remains Species/Form biology authority and PPIA-03 remains Asset/equipment authority.
@@ -48,6 +49,7 @@ This section is a recovery summary, not an autosave ledger. More recent verified
 - **PPIA:** completed parallel pre-implementation advancement program retained as implementation input and historical evidence.
 - **CAPP:** completed Character Appearance production-preparation program retained as direct implementation input for appearance/presentation domains.
 - **APW:** owner-approved parallel planning subproject for asynchronous play, Personal workspaces, campaign-independent creation, and hybrid Campaign continuity; implementation remains separately gated.
+- **CSW:** owner-approved parallel planning subproject for creator storycraft, project memory, creative development, writing, continuity, and reuse; implementation remains separately gated.
 
 ## Completed Phase 8 milestones
 
@@ -193,6 +195,40 @@ Provisional downstream implementation handles are APW-I01 through APW-I07 for co
 
 APW planning does not change the selected runtime pointer and does not interrupt or supersede CCTI-12, ordinary Stage A work, DS-008, WP-011/Apple, or other preserved tracks. It does not authorize implementation, migration execution, release, deployment, tester access, paid services, production credentials, autonomous AI mutation, a public creator marketplace, or unrestricted offline multi-writer synchronization.
 
+## CSW — Creator Storycraft Workspace — parallel planning subproject
+
+Governing documents:
+- `governance/application-planning/creator-storycraft-workspace/CSW_CREATOR_STORYCRAFT_WORKSPACE_PROGRAM.md`
+- `governance/application-planning/creator-storycraft-workspace/CSW_PROGRAM_BACKLOG.json`
+
+**Status:** OWNER-APPROVED PARALLEL PLANNING TRACK — PLANNED / NOT IMPLEMENTATION-ACTIVE.
+
+CSW is the creative-thinking, project-memory, story-development, writing, continuity, and reuse layer above existing governed World, Adventure and creator-content systems. It targets `Capture → Develop → Connect → Structure → Write → Check → Use → Reuse`. Scratch ideas and speculative structures remain distinct from Campaign truth or published/canonical content until an explicit owning-domain transition occurs.
+
+### Approved planning tranches
+
+1. **CSW-01 — Storycraft Vocabulary, Creative Object Model and Authority**
+2. **CSW-02 — Creative Library, Story Bible and Project Memory**
+3. **CSW-03 — Idea Inbox and Inspiration Engine**
+4. **CSW-04 — Guided Creation Workflows**
+5. **CSW-05 — Plot, Adventure and Narrative Design Lab**
+6. **CSW-06 — Continuity, Consistency and Open-Thread Tracker**
+7. **CSW-07 — Writing Studio and Revision Workspace**
+8. **CSW-08 — Reuse, Remix and Transformation**
+9. **CSW-09 — Creator Command Center and Assistance Integration**
+10. **CSW-10 — Integration, Acceptance and Implementation Handoff**
+
+Execution order:
+`CSW-01 → CSW-02 → CSW-03 → CSW-04 → CSW-05 → CSW-06 → CSW-07 → CSW-08 → CSW-09 → CSW-10`.
+
+CSW must reuse A10's D18 World, D28 Adventure, D29 authoring-provenance, D05 visibility and D07 reusable-definition boundaries rather than create a competing content store. APW remains the broader Personal Workspace/Creator Workshop track; CSW supplies the deeper storycraft vocabulary, memory, inspiration, writing, continuity and reuse workflows. Neither track completes the other.
+
+Provisional downstream implementation handles are CSW-I01 through CSW-I08 for creative-fragment identity/provenance, Creative Library/Story Bible memory, Idea Inbox/inspiration, guided workflows, Plot/Adventure plus continuity tools, Writing Studio, reuse/remix, and Creator Command Center/APW integration. These handles remain nonactive until CSW-10 finalizes the implementation handoff and the governing application roadmap explicitly activates them.
+
+Core CSW capability must remain useful without an external AI provider. Optional AI may suggest, expand, transform, critique or draft from creator-authorized context, but cannot silently overwrite creator work, publish, canonize, reveal hidden material, or mutate live Campaign state.
+
+CSW planning does not change the selected runtime pointer and does not interrupt or supersede APW, CCTI-12, ordinary Stage A work, DS-008, WP-011/Apple, or other preserved tracks. It does not authorize implementation, migration execution, release, deployment, tester access, paid services, production credentials, autonomous publication, canonical promotion, or a public creator marketplace.
+
 ## Design Standards Completion subproject — unfinished parallel track
 
 The audited/canonicalization tranche is complete, but exact repository ingestion is not. The unfinished gate still requires T1–T4 exact-byte transfer, source/target checksum receipts, publication/full-ingestion validators, focused exact-head CI, PR/merge, and completion evidence. Do not reconstruct checksum-bound publications from excerpts, OCR, screenshots, regenerated prose, or memory.
@@ -224,7 +260,7 @@ STAGE-A-A10 current-repository revalidation is `COMPLETED_VERIFIED` through AIOC
 
 Before A10 construction, read `governance/application-planning/stage-a-a10/current-revalidation/STAGE_A_A10_CURRENT_REPOSITORY_REVALIDATION.md` and preserve its D06/D07/D18/D28/D29/D05/D13 ownership, privacy, sandbox, migration `0008_a10_world_content_authoring.json`, owner-only canonical-promotion boundary, and A9-runtime separation.
 
-The exact ordinary Stage A action is to activate bounded A10 implementation from the verified current repository baseline under the revalidation contract, without treating APW planning, CCTI-12 selection, Design Standards, Apple work, or prepared later-stage packages as automatic completion or supersession of A10.
+The exact ordinary Stage A action is to activate bounded A10 implementation from the verified current repository baseline under the revalidation contract, without treating APW/CSW planning, CCTI-12 selection, Design Standards, Apple work, or prepared later-stage packages as automatic completion or supersession of A10.
 
 ## Validation and CI efficiency rule
 
@@ -250,7 +286,7 @@ Complete major workflows, authorized service integration, approved content popul
 
 - “Continue” means perform the next verified unfinished operation.
 - Read the authoritative backlog/work order before starting each item.
-- Preserve parallel tracks; completing PPIA/CAPP or one Stage A item does not complete or supersede Design Standards, Apple work, or unrelated retained tracks.
+- Preserve parallel tracks; completing PPIA/CAPP or one Stage A item does not complete or supersede APW, CSW, Design Standards, Apple work, or unrelated retained tracks.
 - Distinguish missing source bytes, transfer-tool limits, unavailable checkout, validation failure, and owner-only gates.
 - Never claim completion, files, commits, PRs, merges, tests, artifacts, deployments, or exact-byte ingestion without matching evidence.
 - Preserve source truth, provenance, variants, conflicts, stable IDs, exact-byte requirements, permissions, hidden-information boundaries, and reversibility.
