@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "CCTI-12",
+  "attempt_id": "CCTI-12-attempt-003",
+  "track": "content-catalog-taxonomy-integration",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "planned_branch": "internal-alpha/ccti12-t03-local-amendment-drafts",
+  "status": "in_progress",
+  "owner_selected": true,
+  "started_at": "2026-08-18T09:29:00Z",
+  "objective": "Add a structured local-only candidate amendment-drafting workflow so GM/owner review can propose corrections and evidence clarifications without applying changes to governed candidate data.",
+  "active_substep": "CCTI-12-T03-local-proposed-amendments",
+  "predecessor": {
+    "attempt_id": "CCTI-12-attempt-002",
+    "state": "completed_verified",
+    "application_pr": 189,
+    "application_merge_sha": "96acc3b34114cad7c6b75abab11e8a862a04509c"
+  },
+  "authorized_outcomes": [
+    "GM/owner can draft structured proposed amendments against the currently inspected candidate identity",
+    "proposals may target a candidate facet, review-reason clarification, or source-evidence question while remaining explicitly noncanonical",
+    "facet proposals may capture proposed values and rationale but do not validate or apply those values to the candidate projection",
+    "proposal identity remains tied to candidateId and optional facetId rather than display-name matching",
+    "local proposal bundles can be exported for later governed review without requesting canonical, relationship, compatibility, runtime or mechanics mutation",
+    "projection identity changes clear local amendment drafts so proposals cannot silently cross source-package boundaries",
+    "Player/default application remains isolated"
+  ],
+  "acceptance_criteria": [
+    "structured amendment drafting is browser-memory/local-export only",
+    "current candidate projection is never mutated by proposal creation/edit/removal",
+    "reference-only identities may receive evidence/review proposals without invented Definition IDs",
+    "facet proposals must target an exposed facet ID when a facet target is selected; free-text proposed values remain explicitly unvalidated",
+    "export preserves stable candidate identity, proposal type, optional facet target, proposed values, rationale and evidence note with every mutation request false",
+    "focused tests plus full regression, typecheck, accessibility, build, DT-008 and Player/runtime separation pass on exact head"
+  ],
+  "boundaries": {
+    "candidate_or_taxonomy_enablement": false,
+    "relationship_promotion": false,
+    "compatibility_finalization": false,
+    "runtime_asset_mutation": false,
+    "mechanics_reauthoring": false,
+    "release_or_deployment": false,
+    "private_candidate_corpus_committed_to_app_repo": false,
+    "proposal_application_to_loaded_projection": false
+  },
+  "execution_rule": "Complete T03 construction before validation. Fix only evidenced failures and merge only after every declared exact-head gate passes.",
+  "next_action": "Create the dedicated app branch from canonical main and implement local-only structured proposed amendments inside the existing GM/owner Candidate Content Lab."
+}
