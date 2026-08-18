@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "audit_id": "CRS-06-CANONICAL-STATE-AUDIT-2026-08-18",
+  "status": "completion_candidate",
+  "result": "zero_known_conflicting_authority",
+  "known_conflicts": [],
+  "production_resume_authorized": false,
+  "resume_condition": "CRS-06 exact candidate passes the registered repository-health gate, merges, and the post-merge CRS projection is recorded completed_verified before production work resumes.",
+  "repositories": {
+    "cybalicistjt-stack/multiversal-aioc": {
+      "baseline_main_head": "c2c6670183a5ac132300d82ea792a4160722f01c",
+      "candidate_branch": "governance/crs06-machine-enforcement-final-audit",
+      "open_prs_before_crs06_pr": [],
+      "live_workflows_expected": [".github/workflows/validate-repository-health.yml"],
+      "runtime_files_expected": [
+        "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
+        "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+        "governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json",
+        "governance/ai/runtime/ROADMAP_INDEX.json"
+      ]
+    },
+    "cybalicistjt-stack/Multiversal-app": {
+      "main_head": "41e313a979f24a63e7847ffbab5bddfa38cd911e",
+      "live_workflows_expected": [
+        ".github/workflows/_validation-core-profile.yml",
+        ".github/workflows/self-hosted-windows-runner-smoke.yml"
+      ],
+      "preserved_open_prs": [
+        {"number": 61, "work_item": "WP-011", "state": "open", "draft": true, "head": "67b17a482a69fdae7495e7f6299240940e00fa20", "branch": "wo/WP011-hosted-macos-evidence", "merge_authority": false, "activation": "special_environment_owner_gate"},
+        {"number": 191, "work_item": "CCTI-12-T04", "state": "open", "draft": true, "head": "3d32ee9317bc924a6a8206121402c68bdf8a061b", "branch": "internal-alpha/ccti12-t04-local-review-worksets", "merge_authority": false, "activation": "resume_after_CRS_and_reconcile_to_clean_main"},
+        {"number": 201, "work_item": "POST-GATX-SUCCESSOR", "state": "open", "draft": true, "head": "3a80eae066650a312707cfae5adb70a2770e8918", "branch": "internal-alpha/post-gatx-successor-refresh", "merge_authority": false, "activation": "resume_after_CRS_and_reconcile_to_clean_main"}
+      ]
+    }
+  },
+  "authority_checks": [
+    {"id": "bootstrap-stable", "status": "PASS", "evidence": "Bootstrap v6 is status-agnostic and requires authority registry -> current pointer -> selected checkpoint -> live GitHub reconciliation."},
+    {"id": "single-selector", "status": "PASS", "evidence": "CURRENT_WORK_POINTER.json is the only current-work selector; RUNTIME_STATE_LIFECYCLE_REGISTRY.json makes all other work-state files inert unless explicitly selected."},
+    {"id": "application-selector-retirement", "status": "PASS", "evidence": "App main 41e313a979f24a63e7847ffbab5bddfa38cd911e converts legacy local current/next/queue/handoff paths to AIOC redirects and removes active/ready work-order namespaces."},
+    {"id": "dated-amendment-retirement", "status": "PASS", "evidence": "CRS-05 removed all BOOTSTRAP_CURRENT_STATE_AMENDMENT_* files, stale CURRENT_IMPLEMENTATION_STATUS.json, and completed-era runtime roadmap supplements from AIOC operational runtime."},
+    {"id": "workflow-deny-by-default", "status": "PASS", "evidence": "CRS-03 removed historical workflow namespaces; CRS-06 restores only one registered cross-repository health gate in AIOC. App retains only shared Validation Core plus manual Windows smoke."},
+    {"id": "validator-deny-by-default", "status": "PASS", "evidence": "VALIDATOR_LIFECYCLE_REGISTRY.json registers current Validation Core and makes historical validators non-authoritative by existence."},
+    {"id": "hosted-runner-policy", "status": "PASS", "evidence": "No live generic completion workflow uses ubuntu-latest; the CRS-06 health gate is self-hosted Linux and App cross-platform final gates use the shared self-hosted Validation Core where applicable."},
+    {"id": "open-pr-authority", "status": "PASS", "evidence": "The only preserved App PRs are #61, #191 and #201; all are draft/non-authoritative during CRS and each has an explicit reactivation condition."},
+    {"id": "history-preservation", "status": "PASS", "evidence": "CRS removes stale material only from operational namespaces; prior workflow/work-order/runtime definitions remain recoverable from Git history."}
+  ],
+  "machine_gate": {
+    "validator": "scripts/validate_repository_health.py",
+    "workflow": ".github/workflows/validate-repository-health.yml",
+    "runner": "self-hosted linux x64 multiversal-validation-linux",
+    "checks_both_repositories": true,
+    "exact_aioc_candidate_head_required": true,
+    "compact_artifact": true
+  },
+  "remaining_before_crs_completion": [
+    "Run the machine health gate on the exact CRS-06 candidate head.",
+    "Merge CRS-06 only if the machine health gate passes.",
+    "Record the merged CRS program as completed_verified and select the next preserved production operation from cleaned canonical state."
+  ]
+}
