@@ -1,6 +1,6 @@
 {
-  "schema_version": "2.1.0",
-  "updated_at": "2026-08-18T19:30:00Z",
+  "schema_version": "2.2.0",
+  "updated_at": "2026-08-18T19:45:00Z",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "authority_registry": "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
   "static_restart_prompt": "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
@@ -22,12 +22,12 @@
     "priority": 1,
     "owner_selected": true,
     "repository": "cybalicistjt-stack/multiversal-aioc",
-    "branch": "governance/crs04-validator-lifecycle-sweep",
+    "branch": "governance/crs05-runtime-state-cleanup",
     "checkpoint_path": "governance/ai/work-state/CRS-attempt-001.json",
     "program_path": "governance/repository-health/CANONICALIZATION_RETIREMENT_SWEEP.md",
     "backlog_path": "governance/repository-health/CRS_BACKLOG.json",
     "status": "in_progress",
-    "active_item": "CRS-04"
+    "active_item": "CRS-05"
   },
   "paused_or_preserved_tracks": [
     {"track":"post-gatx-internal-alpha-successor","work_item":"POST-GATX-SUCCESSOR","status":"paused_for_repository_health","repository":"cybalicistjt-stack/Multiversal-app","current_pr":201,"branch":"internal-alpha/post-gatx-successor-refresh","historical_pr":185},
@@ -41,7 +41,8 @@
   ],
   "completed_support_programs": [
     {"program_id":"VCH","status":"completed_verified","final_item":"VCH-06","substantive_application_pr":199,"closure_application_pr":200,"final_validated_head":"70e0480030c39ecd67c3c137eb2e3ba666e92bf8","closure_merge_sha":"aa286a481fc53fdb969cc10be0388974bdbd3c9e","deterministic_sha256":"c1412de2e335af1df984af3ba61c9f55e94f493497d59f1ea48038faf16b50e6"},
-    {"program_id":"CRS-03","status":"completed_verified","aioc_main":"d3cc866388450cace373ca6f2108a710d98c96a1","application_main":"1ed5cd1205a850b60d34ad061e3e7f0060c9d872"}
+    {"program_id":"CRS-03","status":"completed_verified","aioc_main":"d3cc866388450cace373ca6f2108a710d98c96a1","application_main":"1ed5cd1205a850b60d34ad061e3e7f0060c9d872"},
+    {"program_id":"CRS-04","status":"completed_verified","aioc_pr":403,"merge_sha":"7ada0ea0099f637d3be8c2e56898be207ad38536"}
   ],
   "bounded_authority": {
     "repository_health_mutation": true,
@@ -54,5 +55,5 @@
     "apm_implementation": false,
     "release_or_deployment": false
   },
-  "exact_next_action": "Execute CRS-04 validator and lifecycle-assumption sweep across both canonical repositories; retire fixed historical-state assumptions from current execution paths and register any retained current validators."
+  "exact_next_action": "Complete CRS-05 by removing competing application/AIOC runtime selectors from operational namespaces, preserving their Git history, and establishing one pointer-selected checkpoint as the only current work projection; then activate CRS-06 final machine enforcement and health audit."
 }
