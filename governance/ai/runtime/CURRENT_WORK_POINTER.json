@@ -1,6 +1,6 @@
 {
   "schema_version": "1.7.0",
-  "updated_at": "2026-08-18T10:15:00Z",
+  "updated_at": "2026-08-18T10:27:00Z",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "bootstrap_current_state_amendment": "governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_CCTI_WRITE_20260817.md",
   "static_restart_prompt": "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
@@ -9,7 +9,7 @@
   "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
   "roadmap_index_supplement": "governance/ai/runtime/ROADMAP_INDEX_CCTI_SUPPLEMENT.json",
   "primary_attempt_id": "CCTI-12-attempt-004",
-  "selection_reason": "The owner explicitly resumed CCTI-12-T04. T01-T03 remain completed_verified; T04 Local Review Worksets & Proposal Disposition is now the active bounded tranche under the existing noncanonical GM/owner integration authority.",
+  "selection_reason": "The owner explicitly resumed CCTI-12-T04. Construction is complete on app PR #191; final completion is waiting on the required dual self-hosted exact-head gate under MV-AI-VALIDATION-003.",
   "active_attempts": [
     {
       "work_item_id": "CCTI-12",
@@ -20,8 +20,12 @@
       "repository": "cybalicistjt-stack/Multiversal-app",
       "branch": "internal-alpha/ccti12-t04-local-review-worksets",
       "checkpoint_path": "governance/ai/work-state/CCTI-12-attempt-004.json",
-      "status": "started",
-      "updated_at": "2026-08-18T10:15:00Z",
+      "status": "in_progress",
+      "application_pull_request": 191,
+      "application_head": "87ce8c5f4bd4e16e4a8d4db27b0777a3fcfffdb1",
+      "validation_state": "blocked_external_runner_availability",
+      "validation_run": 32126653586,
+      "updated_at": "2026-08-18T10:27:00Z",
       "roadmap_projection_pending": true
     },
     {
@@ -112,5 +116,5 @@
     "mechanics_reauthoring": false,
     "release_or_deployment": false
   },
-  "exact_next_action": "Construct the complete CCTI-12-T04 application tranche on internal-alpha/ccti12-t04-local-review-worksets from app main 59fd30d3ad38d688c18b1abe0adfb7c9a8eaffa5, then run the finished-step validation gate under MV-AI-VALIDATION-003."
+  "exact_next_action": "Reconnect existing Windows self-hosted runner multiversal-win-01. Then allow PR #191 run 32126653586 to execute both self-hosted lanes, inspect/fix any genuine failures, require deterministic receipt comparison, and merge only after the exact final head is green."
 }
