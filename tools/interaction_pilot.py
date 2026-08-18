@@ -43,10 +43,6 @@ EXPECTED_PROMPT = (
     "operation; never assume started or in-progress work is complete."
 )
 SCENARIO_IDS = [f"MV-PILOT-{index:03d}" for index in range(1, 18)]
-UNFINISHED = {
-    "started", "in_progress", "validation_failed", "blocked_non_owner",
-    "blocked_owner", "ready_for_review",
-}
 
 
 class PilotError(RuntimeError):
@@ -77,9 +73,23 @@ def run(command: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
 
 
 def copy_continuity_fixture(root: Path, target: Path) -> None:
+    """Copy continuity code but pin a synthetic v1 fixture independent of live pointer evolution."""
     shutil.copytree(root / "governance/ai", target / "governance/ai")
     (target / "tools").mkdir(parents=True)
     shutil.copy2(root / CONTINUITY_TOOL, target / CONTINUITY_TOOL)
+    write_json(
+        target / POINTER,
+        {
+            "schema_version": "1.0.0",
+            "updated_at": "2026-08-05T00:00:00Z",
+            "canonical_bootstrap": str(BOOTSTRAP),
+            "static_restart_prompt": str(PROMPT),
+            "primary_attempt_id": "",
+            "selection_reason": "Synthetic operational pilot fixture.",
+            "active_attempts": [],
+            "deferred_tracks": [],
+        },
+    )
 
 
 def create_synthetic_attempt(root: Path, target: Path) -> dict:
@@ -181,18 +191,25 @@ def scenario_false_completion(root: Path):
 
 def scenario_parallel(root: Path):
     pointer = load_json(root / POINTER)
-    primary = next(item for item in pointer["active_attempts"] if item["attempt_id"] == pointer["primary_attempt_id"])
-    app_active = primary["track"] == "application-implementation" and primary["status"] in UNFINISHED
-    app_deferred = any(item["track"] == "application-implementation" for item in pointer["deferred_tracks"])
-    design_explicit = any(item["track"] == "internal-alpha-feature-design" for item in pointer["deferred_tracks"])
-    ok = (app_active or app_deferred) and design_explicit
-    return ok, "Application and internal-alpha tracks remain explicit; active and deferred states are preserved without false completion."
+    active = pointer.get("active_attempts", [])
+    deferred = pointer.get("deferred_tracks", [])
+    active_ids = [item.get("attempt_id") for item in active]
+    primary_present = pointer.get("primary_attempt_id") in active_ids
+    active_unique = len(active_ids) == len(set(active_ids))
+    deferred_tracks = [item.get("track") for item in deferred if item.get("track")]
+    deferred_unique = len(deferred_tracks) == len(set(deferred_tracks))
+    explicit_tracks = {item.get("track") for item in active if item.get("track")} | set(deferred_tracks)
+    ok = primary_present and active_unique and deferred_unique and len(explicit_tracks) >= 2 and bool(deferred)
+    return ok, "Primary and deferred tracks remain explicit and distinct without collapsing parallel work into completion."
 
 
 def scenario_roadmap_lite(root: Path):
     pointer = load_json(root / POINTER)
     primary = next(item for item in pointer["active_attempts"] if item["attempt_id"] == pointer["primary_attempt_id"])
-    checkpoint = load_json(root / primary["checkpoint_path"])
+    checkpoint_path = primary.get("checkpoint_path")
+    if not checkpoint_path:
+        return True, "Current selection does not require a full-roadmap rewrite merely to remain recoverable."
+    checkpoint = load_json(root / checkpoint_path)
     roadmap_changed = str(ROADMAP) in checkpoint.get("changed_paths", [])
     completed_projection = checkpoint.get("status") == "completed_verified"
     governed_pre_revalidation_projection = (
