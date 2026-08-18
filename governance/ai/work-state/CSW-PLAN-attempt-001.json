@@ -5,10 +5,10 @@
   "track": "creator-storycraft-workspace",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "governance/csw-creator-storycraft-plan",
-  "status": "started",
+  "status": "ready_for_review",
   "objective": "Create the owner-approved Creator Storycraft Workspace subproject plan, define bounded creative-workflow tranches and downstream implementation dependencies, and add the track to the canonical application roadmap without changing the selected runtime pointer.",
-  "active_operation": "Canonical planning and roadmap integration only; no application implementation, migration execution, release, deployment, paid-service activation, or current-work-pointer selection.",
-  "next_action": "Create the CSW program plan and machine-readable tranche backlog, then update the canonical application roadmap with the new parallel planning track and its boundaries with A10 and APW.",
+  "active_operation": "Planning package constructed and directly inspected on the branch; awaiting pull-request review/check evidence and merge boundary.",
+  "next_action": "Open the bounded AIOC pull request, inspect the exact diff and applicable checks, repair any genuine CSW package failures, and merge only when the planning package is verified.",
   "known_blockers": [],
   "preserved_parallel_tracks": [
     "APW",
@@ -17,6 +17,20 @@
     "ordinary-stage-a",
     "WP-011-Apple"
   ],
+  "constructed_files": [
+    "governance/application-planning/creator-storycraft-workspace/CSW_CREATOR_STORYCRAFT_WORKSPACE_PROGRAM.md",
+    "governance/application-planning/creator-storycraft-workspace/CSW_PROGRAM_BACKLOG.json",
+    "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md"
+  ],
+  "inspection_evidence": {
+    "branch_compare": "main..governance/csw-creator-storycraft-plan contains only CSW checkpoint/program/backlog and roadmap changes",
+    "program_inspected": true,
+    "backlog_inspected": true,
+    "roadmap_summary_inspected": true,
+    "roadmap_csw_section_inspected": true,
+    "A10_APW_boundaries_present": true,
+    "current_work_pointer_modified": false
+  },
   "completion_gate": {
     "required_files": [
       "governance/application-planning/creator-storycraft-workspace/CSW_CREATOR_STORYCRAFT_WORKSPACE_PROGRAM.md",
@@ -40,5 +54,6 @@
       "merge evidence"
     ]
   },
-  "started_at": "2026-08-18T12:13:00Z"
+  "started_at": "2026-08-18T12:13:00Z",
+  "ready_for_review_at": "2026-08-18T12:22:00Z"
 }
