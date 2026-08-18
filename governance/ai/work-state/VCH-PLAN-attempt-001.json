@@ -5,7 +5,7 @@
   "owner": "John Brandon Turner",
   "decision": "owner_approved_with_2026_08_18_sequence_amendment",
   "activation_dependency": "canonical roadmap/recovery reconciliation merged",
-  "active_item": "VCH-02",
+  "active_item": "VCH-03",
   "completed_items": [
     {
       "id": "VCH-01",
@@ -18,16 +18,34 @@
       "linux_job": 95757570878,
       "windows_job": 95757571140,
       "linux_artifact": {"id": 9329833991, "name": "vch01-linux-result", "sha256": "a2edbabc96068329696f22f2eb7ffb48bb8f1b040b51377bc6a14a06b87b2a86"},
-      "windows_artifact": {"id": 9329846576, "name": "vch01-windows-result", "sha256": "e39ec3bc86a7b0aa32546a3e8090f5e68bae525f85ef333fb7b559dcf78c0cfc"},
-      "evidence": "Exact PR head passed the dependency-free VCH-01 diagnostic contract validator on both owner-controlled self-hosted Linux and Windows lanes; both lanes successfully uploaded compact result artifacts."
+      "windows_artifact": {"id": 9329846576, "name": "vch01-windows-result", "sha256": "e39ec3bc86a7b0aa32546a3e8090f5e68bae525f85ef333fb7b559dcf78c0cfc"}
+    },
+    {
+      "id": "VCH-02",
+      "name": "Runner Contract and Preflight",
+      "status": "completed_verified",
+      "application_pr": 194,
+      "validated_head": "6125657395ba13f5659e30bf5d9061fc4674819e",
+      "application_merge_sha": "1eceb200d07ad69847e48da7401948d0d7795038",
+      "validation_run": 32152388822,
+      "linux_job": 95761195106,
+      "windows_job": 95761195176,
+      "linux_artifact": {"id": 9330250451, "name": "vch02-linux-preflight", "sha256": "90e0af0d2c542d5c984b05f55ecfee7fa98f44ad11b34296a0474d38e83a19bc"},
+      "windows_artifact": {"id": 9330257792, "name": "vch02-windows-preflight", "sha256": "818f2737d48cf66f5ac29bf9799d2fc439c713a4fadf01d7af7e7686ed709bad"},
+      "observed_contract": {
+        "linux": {"runner": "multiversal-linux-02", "os": "Linux", "arch": "X64", "node": "24.18.0", "npm": "11.16.0", "python": "3.14.4", "python_bitness": 64, "git": "2.53.0"},
+        "windows": {"runner": "multiversal-win-01", "os": "Windows 11 / 10.0.26200", "arch": "X64", "node": "24.18.0", "npm": "11.16.0", "python": "3.13.14", "python_bitness": 64, "git": "2.55.0.windows.3"}
+      },
+      "evidence": "Exact PR head passed detect-only preflight on both owner-controlled persistent lanes. Both receipts recorded clean exact-head checkout, writable workspace/temp, disk capacity, actual executable identity/version, and prohibited host mutations as not performed; both artifacts uploaded successfully."
     }
   ],
-  "next_item": "VCH-02",
-  "next_item_name": "Runner Contract and Preflight",
+  "next_item": "VCH-03",
+  "next_item_name": "Shared Execution Core and Thin Profiles",
   "ccti_t04_dependency": "CCTI-12-T04 remains validation_quarantined; VCH cannot be used to claim T04 complete and T04 retains its exact-final-head Windows/Linux/comparator gate.",
   "notes": [
-    "VCH-01 proved the self-hosted Windows/Linux path can validate productive work without GitHub-hosted credit and can expose compact artifact evidence without full-log scraping.",
-    "VCH remains bounded to shared validation diagnostics/evidence/runner-contract hardening and must not expand into a general infrastructure rewrite.",
-    "The preserved post-GATX successor distribution is re-evaluated after the bounded VCH foundation under MV-AI-VALIDATION-003, followed by the approved APW/CSW interleaved sequence."
+    "VCH-01 established cause-based diagnostics and self-exporting compact evidence.",
+    "VCH-02 established the actual persistent-runner capability contract without hosted-style reprovisioning or host mutation.",
+    "VCH-03 may now extract repeated validation mechanics into a shared execution core and migrate only a small representative workflow set before broader adoption.",
+    "VCH remains bounded and must not expand into a general infrastructure rewrite."
   ]
 }
