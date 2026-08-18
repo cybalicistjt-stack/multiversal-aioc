@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Deterministic Multiversal canonical-state health validator.
 
-This validator intentionally checks authority/executability, not historical prose.
 Historical material may remain in Git, but it must not occupy a current selector,
 automatic workflow, or operational active/ready namespace.
 """
@@ -71,7 +70,8 @@ def check_aioc(root: Path, errors: list[str]) -> dict[str, Any]:
             require(path)
 
         bootstrap_text = bootstrap.read_text(encoding="utf-8")
-        assert "stable recovery protocol, not a current-status document" in bootstrap_text
+        assert "stable recovery protocol" in bootstrap_text
+        assert "not a current-status document" in bootstrap_text
         assert "CURRENT_WORK_POINTER.json" in bootstrap_text
         assert "ACTIVE_AUTHORITY_REGISTRY.json" in bootstrap_text
 
@@ -90,8 +90,16 @@ def check_aioc(root: Path, errors: list[str]) -> dict[str, Any]:
         assert pointer["primary_attempt_id"] == checkpoint["attempt_id"]
         assert pointer["active_attempt"]["attempt_id"] == checkpoint["attempt_id"]
         assert pointer["active_attempt"]["work_item_id"] == checkpoint["work_item_id"]
-        assert pointer["active_attempt"]["active_item"] == checkpoint["active_substep"]
-        assert backlog["active_item"] == pointer["active_attempt"]["active_item"]
+
+        if backlog["status"] == "in_progress":
+            assert pointer["active_attempt"]["active_item"] == checkpoint["active_substep"]
+            assert backlog["active_item"] == pointer["active_attempt"]["active_item"]
+            assert audit["production_resume_authorized"] is False
+        elif backlog["status"] == "completed_verified":
+            assert backlog["active_item"] is None
+            assert audit["production_resume_authorized"] is True
+        else:
+            raise AssertionError(f"unexpected CRS backlog status: {backlog['status']}")
 
         for rel in [pointer["canonical_bootstrap"], pointer["authority_registry"], pointer["roadmap_index"], pointer["canonical_application_roadmap"]]:
             require(root / rel)
@@ -111,6 +119,8 @@ def check_aioc(root: Path, errors: list[str]) -> dict[str, Any]:
         kinds = [entry.get("kind") for entry in current_entries]
         for singular in ["bootstrap", "work_pointer", "checkpoint", "program", "backlog", "roadmap"]:
             assert kinds.count(singular) == 1, f"authority registry must contain exactly one CURRENT {singular}"
+        current_checkpoint = next(entry for entry in current_entries if entry.get("kind") == "checkpoint")
+        assert current_checkpoint["path"] == checkpoint_rel
         assert authority.get("rule", "").startswith("Anything not explicitly CURRENT")
 
         assert runtime_registry["canonical_selector"]["path"] == "governance/ai/runtime/CURRENT_WORK_POINTER.json"
@@ -130,13 +140,15 @@ def check_aioc(root: Path, errors: list[str]) -> dict[str, Any]:
         assert registered_aioc == aioc_workflows
 
         assert validator_registry["default_rule"].startswith("A validator or validation-like script is not a current gate")
+        registered_aioc_validators = {item["path"] for item in validator_registry["repositories"]["cybalicistjt-stack/multiversal-aioc"]["current_validators"]}
+        assert "scripts/validate_repository_health.py" in registered_aioc_validators
         assert audit["result"] == "zero_known_conflicting_authority"
         assert audit["known_conflicts"] == []
-        assert audit["production_resume_authorized"] is False
 
         result.update({
             "pointer_attempt": checkpoint["attempt_id"],
-            "active_item": pointer["active_attempt"]["active_item"],
+            "active_item": pointer["active_attempt"].get("active_item"),
+            "crs_status": backlog["status"],
             "runtime_files": sorted(live_runtime),
             "workflow_files": sorted(aioc_workflows),
         })
@@ -148,7 +160,8 @@ def check_aioc(root: Path, errors: list[str]) -> dict[str, Any]:
 def check_app(root: Path, audit: dict[str, Any], errors: list[str]) -> dict[str, Any]:
     result: dict[str, Any] = {}
     try:
-        assert workflow_names(root) == APP_WORKFLOWS_ALLOWED, f"App workflow namespace drift: {sorted(workflow_names(root))}"
+        live_workflows = workflow_names(root)
+        assert live_workflows == APP_WORKFLOWS_ALLOWED, f"App workflow namespace drift: {sorted(live_workflows)}"
         reusable = (root / ".github/workflows/_validation-core-profile.yml").read_text(encoding="utf-8")
         assert "workflow_call" in reusable
         assert "self-hosted" in reusable
@@ -168,15 +181,14 @@ def check_app(root: Path, audit: dict[str, Any], errors: list[str]) -> dict[str,
             assert "CURRENT_WORK_POINTER.json" in text, f"selector does not redirect to AIOC: {rel}"
 
         evidence = audit["repositories"]["cybalicistjt-stack/Multiversal-app"]
-        expected_main = evidence["main_head"]
-        assert len(expected_main) == 40
+        assert len(evidence["main_head"]) == 40
         preserved = evidence["preserved_open_prs"]
         numbers = [item["number"] for item in preserved]
         assert sorted(numbers) == [61, 191, 201]
         assert all(item["state"] == "open" and item["draft"] is True and item["merge_authority"] is False for item in preserved)
 
         result.update({
-            "workflow_files": sorted(APP_WORKFLOWS_ALLOWED),
+            "workflow_files": sorted(live_workflows),
             "compatibility_selectors": len(APP_SELECTOR_PATHS),
             "preserved_open_prs": numbers,
         })
@@ -201,7 +213,7 @@ def main() -> int:
         app = check_app(Path(args.app_root).resolve(), audit, errors)
 
     result = {
-        "schema_version": "1.0.0",
+        "schema_version": "1.1.0",
         "validator": "scripts/validate_repository_health.py",
         "status": "FAIL" if errors else "PASS",
         "aioc": aioc,
