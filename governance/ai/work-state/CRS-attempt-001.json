@@ -1,23 +1,23 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "work_item_id": "CRS",
   "attempt_id": "CRS-attempt-001",
   "status": "in_progress",
   "owner_approved": true,
   "repository": "cybalicistjt-stack/multiversal-aioc",
-  "branch": "governance/crs03-workflow-retirement",
-  "active_substep": "CRS-03",
+  "branch": "governance/crs04-validator-lifecycle-sweep",
+  "active_substep": "CRS-04",
   "completed_substeps": [
     {"id":"CRS-01","status":"completed_verified","evidence":"AIOC PR #402 / merge cab80a5500efda428b0d76a6722d49c04ad0c08f"},
-    {"id":"CRS-02","status":"completed_verified","evidence":"Open-PR authority reduced to preserved App PRs #201, #191 and #61 only."}
+    {"id":"CRS-02","status":"completed_verified","evidence":"Open-PR authority reduced to preserved App PRs #201, #191 and #61 only."},
+    {"id":"CRS-03","status":"completed_verified","evidence":"AIOC main d3cc866388450cace373ca6f2108a710d98c96a1 has no live .github/workflows directory; App main 1ed5cd1205a850b60d34ad061e3e7f0060c9d872 has only registered Validation Core reusable workflow and manual Windows smoke. Historical workflows remain in Git history but are inert."}
   ],
-  "next_action": "Finish CRS-03 by recording the workflow lifecycle inventory, merge the AIOC and App workflow-retirement changes, and verify that historical workflow swarms cannot trigger; then activate CRS-04 validator/lifecycle-assumption sweep.",
+  "next_action": "Inventory validators and lifecycle assumptions across both repositories; classify current-safe versus historical-only validators, remove retired validators from current execution paths, and record obsolete hosted-runner/state/branch assumptions before CRS-05.",
   "stop_the_line": true,
   "workflow_retirement": {
-    "aioc_branch":"governance/crs03-workflow-retirement",
-    "aioc_quarantine_commit":"73173cbb8db51af584835fa39023c410ac574dac",
-    "application_branch":"repository-health/crs03-workflow-retirement",
-    "application_retirement_commit":"1ed5cd1205a850b60d34ad061e3e7f0060c9d872",
+    "aioc_main":"d3cc866388450cace373ca6f2108a710d98c96a1",
+    "aioc_live_workflows":[],
+    "application_main":"1ed5cd1205a850b60d34ad061e3e7f0060c9d872",
     "application_live_workflows":[".github/workflows/_validation-core-profile.yml",".github/workflows/self-hosted-windows-runner-smoke.yml"]
   },
   "preserved_application_work": {
