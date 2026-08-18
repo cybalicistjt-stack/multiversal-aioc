@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.11.0",
-  "updated_at": "2026-08-18T16:04:00Z",
+  "schema_version": "1.12.0",
+  "updated_at": "2026-08-18T16:23:00Z",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "bootstrap_current_state_amendment": "governance/ai/runtime/BOOTSTRAP_CURRENT_STATE_AMENDMENT_ROADMAP_RECONCILIATION_20260818.md",
   "static_restart_prompt": "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
@@ -12,7 +12,7 @@
   "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
   "roadmap_index_supplement": "governance/ai/runtime/ROADMAP_INDEX_CCTI_SUPPLEMENT.json",
   "primary_attempt_id": "VCH-PLAN-attempt-001",
-  "selection_reason": "VCH-01 through VCH-04 are completed_verified. The shared core now has cause-based diagnostics, persistent-runner preflight, thin profiles, self-exporting exact-head deterministic receipts, and a canonical Windows/Linux comparator. Continue the bounded Validation Core Hardening sequence at VCH-05 while CCTI-12-T04 remains explicitly validation_quarantined and unfinished.",
+  "selection_reason": "VCH-01 through VCH-05 are completed_verified. The Validation Core now has cause-based diagnostics, persistent-runner preflight, shared thin-profile execution, deterministic receipts/comparison, and an 11-case synthetic proof that failures are attributed to the correct layer without false feature blame. Continue at the final bounded VCH-06 Migration and Adoption Gate while CCTI-12-T04 remains validation_quarantined and unfinished.",
   "active_attempts": [
     {
       "work_item_id": "VCH",
@@ -26,11 +26,12 @@
       "completed_items": [
         {"id": "VCH-01", "application_pr": 192, "application_merge_sha": "86f9f182ace149f584974b6c91d3ae5ba5b8a512", "validation_run": 32151301657},
         {"id": "VCH-02", "application_pr": 194, "application_merge_sha": "1eceb200d07ad69847e48da7401948d0d7795038", "validation_run": 32152388822},
-        {"id": "VCH-03", "application_pr": 196, "application_merge_sha": "7374c6df3792897900d84bb3bf52264134c88f79", "final_validated_head": "687eac915e0ac0208fa90d55d937176513b4c1b9", "final_validation_runs": [32154715776, 32154715817, 32154715777]},
-        {"id": "VCH-04", "application_pr": 197, "application_merge_sha": "6322e37df7542907ea3c00e7437addf02aa0ccd8", "final_validated_head": "ebbc884dc1dfe7788abf63be7e5a6782ed6bc6df", "final_validation_run": 32157692423, "deterministic_sha256": "169450a8c65c941247f48147a0bf0bf82767d9cf154421312f86cd7165f12f3d"}
+        {"id": "VCH-03", "application_pr": 196, "application_merge_sha": "7374c6df3792897900d84bb3bf52264134c88f79", "final_validated_head": "687eac915e0ac0208fa90d55d937176513b4c1b9"},
+        {"id": "VCH-04", "application_pr": 197, "application_merge_sha": "6322e37df7542907ea3c00e7437addf02aa0ccd8", "final_validated_head": "ebbc884dc1dfe7788abf63be7e5a6782ed6bc6df", "final_validation_run": 32157692423},
+        {"id": "VCH-05", "application_pr": 198, "application_merge_sha": "88941151c816641470a42e5e79c483fab7010e73", "final_validated_head": "ac7fa20e72a7c234d052b6e0caff049f0a689da7", "final_validation_run": 32159583122, "deterministic_sha256": "f7b3272cd69b7728c8ce6440e3f09351253fc4721a568dbe5ae738cacc3b8f95"}
       ],
-      "active_item": "VCH-05",
-      "active_item_name": "Harness Self-Tests and Fault Injection",
+      "active_item": "VCH-06",
+      "active_item_name": "Migration and Adoption Gate",
       "roadmap_projection_pending": false
     },
     {
@@ -64,15 +65,7 @@
     }
   ],
   "deferred_tracks": [
-    {
-      "track": "post-gatx-internal-alpha-successor",
-      "repository": "cybalicistjt-stack/Multiversal-app",
-      "pull_request": 185,
-      "branch": "internal-alpha/post-gatx-successor-distribution",
-      "head_sha": "5028a5d2bbdc73adeae6fa31ce719cd66e512969",
-      "status": "unfinished_revalidation_required",
-      "note": "Preserved and not superseded. Re-evaluate under MV-AI-VALIDATION-003 after the bounded VCH foundation; no generic GitHub-hosted-runner requirement may be inferred as the normal final gate."
-    },
+    {"track": "post-gatx-internal-alpha-successor", "repository": "cybalicistjt-stack/Multiversal-app", "pull_request": 185, "branch": "internal-alpha/post-gatx-successor-distribution", "head_sha": "5028a5d2bbdc73adeae6fa31ce719cd66e512969", "status": "unfinished_revalidation_required", "note": "Preserved and not superseded. Re-evaluate under MV-AI-VALIDATION-003 after VCH-06 adoption closes."},
     {"track": "stage-a-a0-a12", "status": "completed_verified"},
     {"track": "apw", "status": "owner_approved_planned_not_active", "next_item": "APW-01"},
     {"track": "csw", "status": "owner_approved_planned_not_active", "next_item": "CSW-01"},
@@ -84,6 +77,7 @@
     "vch_shared_validation_mechanics": true,
     "vch_self_exporting_deterministic_evidence": true,
     "vch_fault_injection_harness_proof": true,
+    "vch_bounded_workflow_migration": true,
     "ccti_t04_merge_or_completion": false,
     "proposal_application_to_loaded_projection": false,
     "player_canonical_exposure": false,
@@ -94,5 +88,5 @@
     "mechanics_reauthoring": false,
     "release_or_deployment": false
   },
-  "exact_next_action": "Implement VCH-05 — Harness Self-Tests and Fault Injection from Multiversal-app main at or after VCH-04 merge 6322e37df7542907ea3c00e7437addf02aa0ccd8. Prove representative injected failures are classified at the correct diagnostic layer without false feature blame or loss of raw evidence; keep fault injection synthetic and bounded, and do not migrate product workflows before VCH-06."
+  "exact_next_action": "Implement VCH-06 — Migration and Adoption Gate from Multiversal-app main at or after VCH-05 merge 88941151c816641470a42e5e79c483fab7010e73. Inventory duplicated validation workflows, migrate only bounded representative production validation profiles with old/new equivalence evidence, document retained exceptions, and close VCH only after the adoption gate passes without deleting necessary legacy evidence or changing product completion state."
 }
