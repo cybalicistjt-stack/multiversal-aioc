@@ -1,24 +1,29 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "work_item_id": "CCTI-WRITE-01",
   "attempt_id": "CCTI-WRITE-01-attempt-001",
   "track": "content-catalog-taxonomy-integration",
   "repository": "cybalicistjt-stack/multiversal-aioc",
-  "branch": "governance/ccti-platform-v011-candidate-review",
-  "status": "in_progress",
+  "branch": "governance/ccti11-full-candidate-validation",
+  "status": "completed_verified",
   "owner_selected": true,
   "started_at": "2026-08-17T18:46:00Z",
-  "updated_at": "2026-08-17T22:00:00Z",
+  "updated_at": "2026-08-18T01:20:00Z",
+  "completed_at": "2026-08-18T01:20:00Z",
   "objective": "Produce additive governed taxonomy/catalog sidecar candidates for the 11,017-row CCTI corpus and establish the route-specific Object Game-Readiness measurement system without rewriting source/master CSVs or enabling unreviewed content.",
-  "active_substep": "CCTI-09-platform-v0.11.0-candidate-review",
-  "next_action": "Execute the exact Platform v0.11.0 additive candidate projection/review across the 5,628 Vehicles/Mecha/Spacecraft-domain rows. Preserve the established 2,984 platform/model versus 2,644 non-model routing, stable identity/provenance, confidence/review state and shared-context deferral. Do not mutate source/master CSVs, enable Item taxonomy, or begin mechanics reauthoring.",
+  "active_substep": null,
+  "next_action": "CCTI-WRITE-01 and CCTI-11 are completed_verified at candidate-package integrity level. Stop before CCTI-12. App-facing content integration is an explicit owner gate and is not activated. Item/Platform canonical adoption, relationship promotion, compatibility evaluation, OGR mechanics reauthoring, runtime enablement, release and deployment remain separately gated.",
   "dependency": {
     "CCTI-READONLY-01-attempt-001": "completed_verified",
     "exact_item_registry": "verified",
     "exact_platform_registry": "verified",
     "exact_shared_context_registry": "verified",
     "universal_item_taxonomy_candidate_pass": "complete_all_10_axes_not_enabled",
-    "item_cross_axis_review": "completed_adoption_not_ready"
+    "item_cross_axis_review": "completed_adoption_not_ready",
+    "platform_universal_facet_pass": "complete_all_7_facets_not_enabled",
+    "platform_cross_facet_review": "completed_adoption_not_ready",
+    "cross_domain_graph_candidate_tranche": "complete_not_promoted",
+    "shared_context_compatibility_candidate_tranche": "complete_not_enabled"
   },
   "completed_substeps": [
     "CCTI-02 exact source recovery and checksum receipt",
@@ -27,7 +32,13 @@
     "all ten exact-registry Item-axis tranches independently validated before merge",
     "CCTI-09 Item cross-axis review/consolidation complete: 5,389 rows accounted; 91 structural review rows; 85 additive correction proposals; adoption not ready",
     "governed Item taxonomy adoption proposal prepared but not enabled",
-    "private 11,017-row game-readiness baseline ledger"
+    "Platform v0.11.0 candidate projection complete across all 5,628 rows while preserving 2,984 platform/model and 2,644 non-model routing",
+    "Platform record_scope, platform_family, operating_medium, mobility_method, functional_role, control_mode and platform_nature candidate/disposition facets complete and not enabled",
+    "Platform cross-facet review complete: 1,302 candidate-coherent rows, 4,326 review-required rows, zero automatic correction proposals, adoption not ready",
+    "cross-domain graph candidate tranche complete: 216 canonical relationships preserved, 260 candidate edges, 96 withheld signals, no runtime instance-state claims",
+    "shared context/compatibility candidate tranche complete: exact 9-facet/241-value authority, 11,017-row ledger, all compatibility outcomes NOT_EVALUATED",
+    "CCTI-11 full candidate-package integrity validation complete across 11,017 rows",
+    "private 11,017-row game-readiness baseline retained with zero GAME_READY certification"
   ],
   "item_taxonomy_state": {
     "candidate_pass": "complete_all_10_axes_not_enabled",
@@ -36,15 +47,39 @@
     "canonical_adoption": "not_ready_for_enablement",
     "structural_review_rows": 91,
     "correction_proposals": 85,
-    "row_level_evidence_present": ["IAX-01","IAX-02","IAX-03","IAX-04","IAX-05","IAX-09","IAX-10"],
-    "row_level_evidence_recovery_or_versioned_reprojection_required": ["IAX-06","IAX-07","IAX-08"]
+    "row_level_evidence_present": ["IAX-01", "IAX-02", "IAX-03", "IAX-04", "IAX-05", "IAX-09", "IAX-10"],
+    "row_level_evidence_recovery_or_versioned_reprojection_required": ["IAX-06", "IAX-07", "IAX-08"]
   },
   "platform_state": {
     "catalog_rows": 5628,
     "platform_model_rows": 2984,
     "non_model_rows": 2644,
     "exact_preparation_version": "v0.11.0",
-    "state": "next_additive_candidate_review"
+    "universal_facets_complete": 7,
+    "cross_facet_candidate_coherent_rows": 1302,
+    "cross_facet_review_required_rows": 4326,
+    "canonical_adoption": "not_ready_for_enablement"
+  },
+  "relationship_state": {
+    "canonical_resolved_relationships_preserved": 216,
+    "new_candidate_edges": 260,
+    "withheld_signals": 96,
+    "candidate_promotion": "not_authorized"
+  },
+  "shared_context_state": {
+    "facets": 9,
+    "controlled_values": 241,
+    "candidate_ledger_rows": 11017,
+    "compatibility_outcomes_evaluated": 0,
+    "canonical_enablement": false
+  },
+  "ccti11": {
+    "status": "completed_verified",
+    "application_planning_report": "governance/application-planning/content-catalog-taxonomy-integration/CCTI11_FULL_CANDIDATE_VALIDATION_REPORT_20260818.md",
+    "private_artifact": "CCTI11_Full_Candidate_Validation_20260818.zip",
+    "artifact_sha256": "f30ca0e3b0927c6909dbb0da82c66186dadbfc5de6df5128b279719459b70595",
+    "pull_request": 379,
+    "merge_commit": "0ab03915b88e1c297e974855388728eaf9ed98ff"
   },
   "owner_authorization": {
     "additive_candidate_taxonomy_sidecars": true,
@@ -55,10 +90,14 @@
     "identity_or_supersession_rewrite": false,
     "mechanics_reauthoring": false,
     "runtime_asset_creation_or_activation": false,
+    "ccti12_app_facing_integration": false,
     "release_or_deployment": false
   },
   "future_owner_gates": [
-    "Before Item canonical adoption/enablement: recover or versionedly reproject IAX-06/IAX-07/IAX-08 row-level evidence, apply cross-axis correction overlay, rerun full ten-axis adoption validation, and present remaining review queues.",
+    "CCTI-12 app-facing content integration requires explicit owner approval before activation.",
+    "Before Item canonical adoption/enablement: recover or versionedly reproject IAX-06/IAX-07/IAX-08 row-level evidence, apply the cross-axis correction overlay, rerun full ten-axis adoption validation, and present remaining review queues.",
+    "Before Platform canonical adoption/enablement: resolve or explicitly accept the retained cross-facet review/preparation-gap cohorts and obtain governed approval.",
+    "Before relationship candidate promotion: review/approve the 260 candidate edges and preserve withheld ambiguous/common-term signals.",
     "Before OGR-05 mechanics mutation: present failing mechanics cohorts and repair policy.",
     "Before OGR-07 runtime mutation or OGR-08 app-facing enablement: preserve existing Stage A owner gates."
   ],
@@ -68,9 +107,11 @@
     "ordinary Stage A roadmap remains preserved"
   ],
   "completion_gate": {
-    "candidate_sidecars_must_preserve_source_ids_and_provenance": true,
-    "all_active_rows_must_be_assigned_or_explicitly_review_required": true,
+    "candidate_sidecars_preserve_source_ids_and_provenance": true,
+    "all_active_rows_assigned_or_explicitly_review_required": true,
+    "full_candidate_package_validation": true,
     "no_source_master_mutation": true,
-    "no_false_game_ready_claim": true
+    "no_false_game_ready_claim": true,
+    "merge_evidence": "AIOC PR #379 merge 0ab03915b88e1c297e974855388728eaf9ed98ff"
   }
 }
