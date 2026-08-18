@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "CCTI-12",
+  "attempt_id": "CCTI-12-attempt-001",
+  "track": "content-catalog-taxonomy-integration",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "branch": "internal-alpha/ccti12-candidate-content-workspace",
+  "status": "in_progress",
+  "owner_selected": true,
+  "started_at": "2026-08-18T01:26:00Z",
+  "objective": "Build the first bounded GM/owner-facing application slice for discovering, inspecting, reviewing and drafting against CCTI candidate content while preserving noncanonical and runtime boundaries.",
+  "active_substep": "CCTI-12-T01-candidate-content-workspace",
+  "acceptance_criteria": [
+    "GM-only Internal Alpha surface exposes candidate-content discovery and inspection",
+    "candidate/noncanonical state is visually and semantically explicit",
+    "review and authoring actions remain local draft/review intent only and cannot enable canonical content",
+    "no Player-facing route is added",
+    "no Item/Platform taxonomy enablement or relationship promotion occurs",
+    "no A8 Asset Instance, mechanics, deployment or release behavior is changed",
+    "focused tests cover access/surface/boundary behavior and repository validation is green"
+  ],
+  "dependencies": {
+    "CCTI-WRITE-01-attempt-001": "completed_verified",
+    "CCTI-11": "completed_verified",
+    "owner_approval": "CCTI12_OWNER_APPROVAL_20260817.json"
+  },
+  "parallel_tracks_preserved": [
+    "Multiversal-app PR #185 remains unfinished and not superseded",
+    "DS-008-working-series-attempt-002 remains blocked_non_owner",
+    "ordinary Stage A remains preserved"
+  ]
+}
