@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "program_id": "CRS",
-  "status": "CURRENT",
+  "status": "CURRENT_GUARDRAIL",
   "canonical_selector": {
     "repository": "cybalicistjt-stack/multiversal-aioc",
     "path": "governance/ai/runtime/CURRENT_WORK_POINTER.json",
@@ -11,9 +11,9 @@
     "current": [
       "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
       "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+      "governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json",
       "governance/ai/runtime/ROADMAP_INDEX.json"
     ],
-    "current_compatible": ["governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json"],
     "removed_from_operational_runtime_namespace": [
       "BOOTSTRAP_CURRENT_STATE_AMENDMENT_*.md",
       "CURRENT_IMPLEMENTATION_STATUS.json",
@@ -22,17 +22,16 @@
       "ROADMAP_INDEX_STAGE_A_A11_SUPPLEMENT.json",
       "ROADMAP_INDEX_STAGE_A_A12_SUPPLEMENT.json"
     ],
-    "removal_merge": "c2c6670183a5ac132300d82ea792a4160722f01c",
     "history_preserved": true
   },
   "work_state": {
     "directory": "governance/ai/work-state",
-    "selected_checkpoint": "governance/ai/work-state/CRS-attempt-001.json",
-    "rule": "Only the checkpoint named by CURRENT_WORK_POINTER.json is CURRENT. Every other checkpoint is HISTORICAL_INERT unless the current pointer explicitly references it as preserved parallel evidence; directory presence never selects work.",
+    "selected_checkpoint": "governance/ai/work-state/POST-GATX-SUCCESSOR-attempt-001.json",
+    "rule": "Only the checkpoint named by CURRENT_WORK_POINTER.json is CURRENT. Every other checkpoint is HISTORICAL_INERT unless the pointer explicitly references it as preserved parallel evidence; directory presence never selects work.",
     "historical_files_deleted": false
   },
   "application_repository": {
-    "canonical_main": "41e313a979f24a63e7847ffbab5bddfa38cd911e",
+    "canonical_main": "ec4ad52910fd8728134df4bdbad31476f44602e9",
     "local_selector_paths": [
       ".ai/current-phase.md",
       ".ai/current-work-order.md",
@@ -48,9 +47,9 @@
     "removed_operational_namespaces": [".agent/active-work-orders", ".ai/ready-work-orders"],
     "history_preserved": true
   },
+  "active_work": {"work_item":"POST-GATX-SUCCESSOR","application_pr":201,"state":"in_progress_reconcile_to_clean_main"},
   "preserved_unfinished_tracks": [
-    {"work_item":"POST-GATX-SUCCESSOR","application_pr":201,"state":"paused_for_CRS"},
-    {"work_item":"CCTI-12-T04","application_pr":191,"state":"validation_quarantined_paused_for_CRS"},
+    {"work_item":"CCTI-12-T04","application_pr":191,"state":"validation_quarantined"},
     {"work_item":"WP-011","application_pr":61,"state":"special_environment_dormant"},
     {"work_item":"DS-008","state":"blocked_non_owner"},
     {"work_item":"APW","state":"planned_not_active"},
@@ -63,18 +62,19 @@
     "A work-state file does not select current work by existence.",
     "An application .ai or .agent file does not override AIOC current-work selection.",
     "A dated bootstrap amendment cannot govern current state.",
-    "A roadmap supplement participates in recovery only when explicitly named by the current pointer/checkpoint."
+    "A roadmap supplement participates in recovery only when explicitly named by the current pointer/checkpoint.",
+    "A historical workflow or validator cannot regain authority by being copied from an old branch; it must be explicitly registered."
   ],
-  "crs05_acceptance": {
+  "crs_completion": {
     "status": "completed_verified",
-    "aioc_merge": "c2c6670183a5ac132300d82ea792a4160722f01c",
-    "application_main": "41e313a979f24a63e7847ffbab5bddfa38cd911e",
-    "single_current_selector": true,
-    "single_current_checkpoint": true,
-    "application_local_selectors_inert": true,
-    "application_active_ready_namespaces_removed": true,
-    "aioc_dated_runtime_amendments_removed": true,
-    "aioc_duplicate_current_implementation_projection_removed": true,
+    "aioc_health_pr": 405,
+    "aioc_health_candidate": "88accb4e8b97e5b88519f7e97e8f98914387132a",
+    "aioc_health_run": 32179296631,
+    "aioc_health_merge": "9a74d10988ca41201c8155956a09564c7d1289a9",
+    "application_health_pr": 202,
+    "application_health_run": 32178841607,
+    "application_health_merge": "ec4ad52910fd8728134df4bdbad31476f44602e9",
+    "zero_known_conflicting_authority": true,
     "history_preserved": true
   }
 }

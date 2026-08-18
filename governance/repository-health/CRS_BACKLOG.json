@@ -1,17 +1,19 @@
 {
-  "schema_version": "1.4.0",
+  "schema_version": "1.5.0",
   "program_id": "CRS",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_approved": true,
-  "active_item": "CRS-06",
+  "active_item": null,
   "items": [
     {"id":"CRS-01","title":"Authority Canonicalization","status":"completed_verified","evidence":"AIOC PR #402 merged at cab80a5500efda428b0d76a6722d49c04ad0c08f"},
     {"id":"CRS-02","title":"PR / Branch Retirement","status":"completed_verified","evidence":"Only deliberately preserved App PRs #201, #191 and #61 remain open; ambiguous completed-era AIOC/App PRs were closed with provenance preserved."},
-    {"id":"CRS-03","title":"Workflow Retirement & VCH Adoption","status":"completed_verified","evidence":"AIOC main d3cc866388450cace373ca6f2108a710d98c96a1 has no historical live workflow namespace; App main 1ed5cd1205a850b60d34ad061e3e7f0060c9d872 retained only the registered shared Validation Core and manual Windows smoke."},
-    {"id":"CRS-04","title":"Validator & Lifecycle-Assumption Sweep","status":"completed_verified","evidence":"AIOC PR #403 merged at 7ada0ea0099f637d3be8c2e56898be207ad38536; validator lifecycle registry makes historical validators inert by default and registers the current Validation Core."},
-    {"id":"CRS-05","title":"Work-Order / Runtime-State Cleanup","status":"completed_verified","evidence":"App main 41e313a979f24a63e7847ffbab5bddfa38cd911e removed completed-era active/ready work-order namespaces and converted local selectors to AIOC redirects. AIOC PR #404 merged at c2c6670183a5ac132300d82ea792a4160722f01c, removing dated bootstrap-state amendments, stale CURRENT_IMPLEMENTATION_STATUS, completed-era runtime roadmap supplements, and registering one current selector/checkpoint model."},
-    {"id":"CRS-06","title":"Machine Enforcement & Final Health Audit","status":"in_progress","evidence":"Candidate adds one self-hosted cross-repository health gate, deterministic validator, registered workflow/validator lifecycle, and CANONICAL_STATE_AUDIT.json."}
+    {"id":"CRS-03","title":"Workflow Retirement & VCH Adoption","status":"completed_verified","evidence":"AIOC historical live workflow namespace retired; App reduced to registered Validation Core/manual smoke and later added one registered repository-health gate."},
+    {"id":"CRS-04","title":"Validator & Lifecycle-Assumption Sweep","status":"completed_verified","evidence":"AIOC PR #403 merged at 7ada0ea0099f637d3be8c2e56898be207ad38536; historical validators are inert by default."},
+    {"id":"CRS-05","title":"Work-Order / Runtime-State Cleanup","status":"completed_verified","evidence":"App main 41e313a979f24a63e7847ffbab5bddfa38cd911e removed stale active/ready namespaces and local selectors; AIOC PR #404 merged at c2c6670183a5ac132300d82ea792a4160722f01c removing duplicate runtime projections."},
+    {"id":"CRS-06","title":"Machine Enforcement & Final Health Audit","status":"completed_verified","evidence":"App PR #202 exact head 4f35ada09d524047102657fb1ee7e7d2309d7e13 passed self-hosted repository-health run 32178841607 and merged at ec4ad52910fd8728134df4bdbad31476f44602e9. AIOC exact head 88accb4e8b97e5b88519f7e97e8f98914387132a passed repository-health run 32179296631; PR #405 merged at 9a74d10988ca41201c8155956a09564c7d1289a9. Final audit result: zero_known_conflicting_authority."}
   ],
-  "resume_production_only_after": "CRS completed_verified",
-  "preserved_tracks": ["POST-GATX-SUCCESSOR","CCTI-12-T04","WP-011","DS-008","APW","CSW","APM"]
+  "production_resume_authorized": true,
+  "resumed_work_item": "POST-GATX-SUCCESSOR",
+  "preserved_tracks": ["CCTI-12-T04","WP-011","DS-008","APW","CSW","APM"],
+  "maintenance_rule": "CRS is closed as a support program. Its lifecycle registries and repository-health gates remain current guardrails; no new CRS tranche is implied."
 }

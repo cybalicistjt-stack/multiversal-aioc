@@ -1,42 +1,47 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "attempt_id": "POST-GATX-SUCCESSOR-attempt-001",
   "work_item_id": "POST-GATX-SUCCESSOR",
   "track": "post-gatx-internal-alpha-successor",
   "status": "in_progress",
   "owner_selected": true,
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "branch": "internal-alpha/post-gatx-successor-distribution",
-  "application_pull_request": 185,
-  "observed_head": "5028a5d2bbdc73adeae6fa31ce719cd66e512969",
+  "branch": "internal-alpha/post-gatx-successor-refresh",
+  "application_pull_request": 201,
+  "historical_pull_request": 185,
+  "observed_head": "3a80eae066650a312707cfae5adb70a2770e8918",
   "observed_mergeable": false,
-  "objective": "Refresh and finalize the post-GATX Internal Alpha successor candidate against current main and the owner-approved self-hosted Windows/Linux deterministic final-validation policy, without granting tester distribution automatically.",
+  "clean_application_main": "ec4ad52910fd8728134df4bdbad31476f44602e9",
+  "objective": "Refresh and finalize the post-GATX Internal Alpha successor candidate against cleaned current main and the owner-approved self-hosted Windows/Linux deterministic final-validation policy, without granting tester distribution automatically.",
   "activation_basis": {
     "vch_program": "completed_verified",
-    "vch06_application_pr": 199,
-    "vch06_validated_head": "9ab9a3ee2a3a804810d1f3964fdccf0e019b6a39",
-    "vch06_merge_sha": "b815906c2bd68aab7421c86684d613b733533e34",
-    "vch06_validation_runs": {
-      "DT-004": 32163086235,
-      "DT-005": 32163086172,
-      "VCH-06": 32163086154
-    },
-    "vch06_deterministic_sha256": "db530554d6515d9ac50fc6e63a97cffe98596d8608c345fa370ab265ccc85646"
+    "vch06_closure_application_pr": 200,
+    "vch06_validated_head": "70e0480030c39ecd67c3c137eb2e3ba666e92bf8",
+    "vch06_merge_sha": "aa286a481fc53fdb969cc10be0388974bdbd3c9e",
+    "crs_program": "completed_verified",
+    "crs_application_health_pr": 202,
+    "crs_application_health_merge": "ec4ad52910fd8728134df4bdbad31476f44602e9",
+    "crs_aioc_health_pr": 405,
+    "crs_aioc_health_merge": "9a74d10988ca41201c8155956a09564c7d1289a9",
+    "crs_audit_result": "zero_known_conflicting_authority"
   },
   "known_state": [
-    "PR #185 is preserved but diverged from current main and is not mergeable in its observed state.",
-    "Its prior hold text still treats GitHub-hosted validation as mandatory; that is superseded by MV-AI-VALIDATION-003 and must be reconciled, not automatically waived into completion.",
-    "Previous self-hosted Linux and Windows package jobs passed and produced matching package SHA-256 56d8f8a200964f81895c2aa21d2558be86405ca3b9e22b808d70888580fd5789, but its old comparator harness had an artifact-locator defect.",
-    "VCH now supplies the normal shared self-hosted runner/preflight/evidence/comparison architecture for the refreshed candidate."
+    "Historical PR #185 is superseded by the bounded three-file refresh PR #201 and is not an integration path.",
+    "PR #201 is deliberately draft and currently non-mergeable because its pre-CRS base predates cleaned App main.",
+    "PR #201 preserves only the deterministic successor package builder, verifier and candidate validation surface; historical Stage-A/A2/GATX workflow rewrites were intentionally excluded.",
+    "CRS established deny-by-default workflow and validator lifecycles. Reconciliation must not restore retired workflows merely because they existed on the pre-CRS branch.",
+    "VCH remains the normal shared self-hosted runner/preflight/evidence/comparison foundation. A narrowly bespoke package gate is allowed only when explicitly registered and bounded to this active work item.",
+    "Tester distribution remains separately owner-gated even after a validated successor candidate merges."
   ],
-  "next_action": "Reconcile PR #185 with current main, preserve its product/package boundaries, replace obsolete hosted-runner completion language with the controlling self-hosted policy, adapt its final validation to the hardened shared evidence/comparison path where appropriate, and validate the resulting exact final candidate before any merge or distribution decision.",
+  "next_action": "Reconcile PR #201 onto cleaned App main ec4ad52910fd8728134df4bdbad31476f44602e9. Preserve only its current package boundaries and deterministic builder/verifier. Explicitly register any temporarily active successor validation workflow or migrate its mechanics to the shared Validation Core; do not revive historical validators. Then validate one frozen exact head on self-hosted Linux/headed and Windows/PowerShell with deterministic comparison and bound artifacts.",
   "completion_gate": [
-    "Current-main reconciliation is complete with no unintended loss of post-GATX package boundaries.",
+    "Current-main reconciliation is complete with no revival of retired workflow/validator authority.",
+    "Any active successor-specific workflow/validator is explicitly registered for this work item and cannot become permanent by existence alone.",
     "Exact final candidate passes required self-hosted Windows validation.",
     "Exact final candidate passes required self-hosted Linux/headed validation.",
     "Deterministic cross-platform package/evidence comparison passes.",
     "GitHub-bound artifacts/evidence bind the exact final candidate.",
-    "Merge records a validated successor candidate only; tester distribution still requires its separate owner approval for the exact package/SHA256."
+    "Merge records a validated successor candidate only; tester distribution still requires separate owner approval for the exact package/SHA-256."
   ],
   "preserved_parallel_tracks": [
     "CCTI-12-T04 remains validation_quarantined and unfinished.",
