@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.1.0",
-  "updated_at": "2026-08-17T22:00:00Z",
+  "schema_version": "1.2.0",
+  "updated_at": "2026-08-18T01:20:00Z",
   "supplement_id": "ROADMAP-CCTI-001",
   "owner": "John Brandon Turner",
   "program": "governance/application-planning/content-catalog-taxonomy-integration/CONTENT_CATALOG_TAXONOMY_INTEGRATION_PROGRAM.md",
@@ -22,27 +22,36 @@
       "work_item_id": "CCTI-WRITE-01",
       "attempt_id": "CCTI-WRITE-01-attempt-001",
       "track": "content-catalog-taxonomy-integration",
-      "state": "in_progress",
+      "state": "completed_verified",
       "owner_selected": true,
       "checkpoint": "governance/ai/work-state/CCTI-WRITE-01-attempt-001.json",
-      "branch": "governance/ccti-platform-v011-candidate-review",
-      "active_substep": "CCTI-09-platform-v0.11.0-candidate-review",
-      "completed_item_axes": ["IAX-01","IAX-02","IAX-03","IAX-04","IAX-05","IAX-06","IAX-07","IAX-08","IAX-09","IAX-10"],
+      "completed_item_axes": ["IAX-01", "IAX-02", "IAX-03", "IAX-04", "IAX-05", "IAX-06", "IAX-07", "IAX-08", "IAX-09", "IAX-10"],
       "item_cross_axis_review": "completed_adoption_not_ready",
-      "item_review_artifact_sha256": "42a544b5231a721f909a2e4257a2ebcf5971bfda40411d1a052f079ace43f867",
-      "platform_catalog_rows": 5628,
-      "platform_model_rows": 2984,
-      "platform_non_model_rows": 2644,
+      "platform_universal_facets_complete": 7,
+      "platform_cross_facet_review": "completed_adoption_not_ready",
+      "cross_domain_graph": "candidate_tranche_complete_not_promoted",
+      "shared_context_compatibility": "candidate_tranche_complete_not_enabled",
+      "ccti11": "completed_verified",
+      "ccti11_merge": "0ab03915b88e1c297e974855388728eaf9ed98ff",
       "source_master_csv_mutation_authorized": false,
       "automatic_canonical_enablement_authorized": false,
       "mechanics_reauthoring_authorized": false,
       "runtime_activation_authorized": false
     },
     {
+      "work_item_id": "CCTI-12",
+      "track": "content-catalog-taxonomy-integration",
+      "state": "owner_gated_not_started",
+      "dependency": "CCTI-11 completed_verified",
+      "description": "App-facing content integration",
+      "automatic_activation": false,
+      "owner_approval_required": true
+    },
+    {
       "work_item_id": "OGR-01",
       "track": "object-game-readiness",
-      "state": "in_progress",
-      "dependency": "CCTI-WRITE-01",
+      "state": "in_progress_measurement_only",
+      "dependency": "CCTI candidate package",
       "current_evidence": "11,017-row readiness baseline; zero GAME_READY certifications",
       "mechanics_mutation_gate": "Owner review required before OGR-05"
     }
@@ -56,8 +65,22 @@
       "owner approval before canonical enablement"
     ]
   },
+  "platform_adoption_dependency": {
+    "state": "not_ready_for_enablement",
+    "review_required_rows": 4326,
+    "required": [
+      "preserve explicit unresolved/host-dependent/preparation-gap states",
+      "resolve or explicitly accept retained review cohorts through governed adoption",
+      "owner approval before canonical enablement"
+    ]
+  },
+  "relationship_candidate_dependency": {
+    "state": "not_promoted",
+    "candidate_edges": 260,
+    "withheld_signals": 96
+  },
   "preserved_tracks": {
-    "post_gatx_successor_pr_185": "unfinished",
+    "post_gatx_successor_pr_185": "unfinished_validation_failed",
     "ds_008": "blocked_non_owner",
     "ordinary_stage_a": "preserved"
   }
