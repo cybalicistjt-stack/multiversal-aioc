@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "attempt_id": "POST-GATX-SUCCESSOR-attempt-001",
+  "work_item_id": "POST-GATX-SUCCESSOR",
+  "track": "post-gatx-internal-alpha-successor",
+  "status": "in_progress",
+  "owner_selected": true,
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "branch": "internal-alpha/post-gatx-successor-distribution",
+  "application_pull_request": 185,
+  "observed_head": "5028a5d2bbdc73adeae6fa31ce719cd66e512969",
+  "observed_mergeable": false,
+  "objective": "Refresh and finalize the post-GATX Internal Alpha successor candidate against current main and the owner-approved self-hosted Windows/Linux deterministic final-validation policy, without granting tester distribution automatically.",
+  "activation_basis": {
+    "vch_program": "completed_verified",
+    "vch06_application_pr": 199,
+    "vch06_validated_head": "9ab9a3ee2a3a804810d1f3964fdccf0e019b6a39",
+    "vch06_merge_sha": "b815906c2bd68aab7421c86684d613b733533e34",
+    "vch06_validation_runs": {
+      "DT-004": 32163086235,
+      "DT-005": 32163086172,
+      "VCH-06": 32163086154
+    },
+    "vch06_deterministic_sha256": "db530554d6515d9ac50fc6e63a97cffe98596d8608c345fa370ab265ccc85646"
+  },
+  "known_state": [
+    "PR #185 is preserved but diverged from current main and is not mergeable in its observed state.",
+    "Its prior hold text still treats GitHub-hosted validation as mandatory; that is superseded by MV-AI-VALIDATION-003 and must be reconciled, not automatically waived into completion.",
+    "Previous self-hosted Linux and Windows package jobs passed and produced matching package SHA-256 56d8f8a200964f81895c2aa21d2558be86405ca3b9e22b808d70888580fd5789, but its old comparator harness had an artifact-locator defect.",
+    "VCH now supplies the normal shared self-hosted runner/preflight/evidence/comparison architecture for the refreshed candidate."
+  ],
+  "next_action": "Reconcile PR #185 with current main, preserve its product/package boundaries, replace obsolete hosted-runner completion language with the controlling self-hosted policy, adapt its final validation to the hardened shared evidence/comparison path where appropriate, and validate the resulting exact final candidate before any merge or distribution decision.",
+  "completion_gate": [
+    "Current-main reconciliation is complete with no unintended loss of post-GATX package boundaries.",
+    "Exact final candidate passes required self-hosted Windows validation.",
+    "Exact final candidate passes required self-hosted Linux/headed validation.",
+    "Deterministic cross-platform package/evidence comparison passes.",
+    "GitHub-bound artifacts/evidence bind the exact final candidate.",
+    "Merge records a validated successor candidate only; tester distribution still requires its separate owner approval for the exact package/SHA256."
+  ],
+  "preserved_parallel_tracks": [
+    "CCTI-12-T04 remains validation_quarantined and unfinished.",
+    "DS-008-working-series-attempt-002 remains blocked_non_owner.",
+    "WP-011 remains Mac-dependent priority when hardware is available.",
+    "APW, CSW and APM remain owner-approved planning tracks, not implementation-active."
+  ]
+}
