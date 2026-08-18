@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "CCTI-12-T01",
+  "date": "2026-08-18",
+  "status": "construction_evidence_generated_not_canonical",
+  "purpose": "Bind the bounded app-facing integration slice to a deterministic private projection derived from already-governed CCTI candidate ledgers without publishing the private 11,017-row source corpus into the application repository.",
+  "input_evidence": {
+    "shared_context_candidate_ledger_sha256": "450af6e8975a5a96249fe075044b7e9d4d4cfd6ee4eda0307af91c9a84170c42",
+    "platform_cross_facet_ledger_sha256": "a55540f9ba035b7ff9fc6eb3ddc12fa098dc583a5a632d8d7dde6d14b46aeb24",
+    "cross_domain_candidate_edges_sha256": "351bbcabcfaddc068ce03474ac5d3b0c50b7300a8b2717814f884a6c0cc4b719",
+    "cross_domain_withheld_signals_sha256": "5587eeba429b1b08003007abda9be59b44630569c7569e46abcd5f62c6fe0e6b"
+  },
+  "projection": {
+    "records": 11373,
+    "item_definition_records": 5353,
+    "legacy_reference_records": 36,
+    "platform_domain_records": 5628,
+    "relationship_candidate_records": 260,
+    "withheld_relationship_records": 96,
+    "platform_candidate_coherent_records": 1302,
+    "reference_identities_without_current_definition": 6,
+    "source_package_digest": "eb43b1cb61c25a186374ba01df8ff0145e0045fae3202c28fd4e0920c77ede19",
+    "json_sha256": "c98520b0916d7ec66c472b0753163b31fa840bfb51edef4a7da1c2376903a3ee",
+    "private_zip_sha256": "895f8754428ccaf06672e75943141f37431588e3d845d1439960fa11c1bb0104",
+    "receipt_sha256": "20a44295136824547e31ec64d05bcccfef981a59683ea44a969fa3488a0ff2a7"
+  },
+  "invariants": {
+    "canonical_enabled": false,
+    "runtime_asset_mutation_allowed": false,
+    "relationship_promotion": false,
+    "compatibility_outcomes_evaluated": 0,
+    "game_ready_certifications": 0,
+    "private_candidate_rows_committed_to_application_repository": false,
+    "source_master_mutation": false
+  },
+  "application_candidate": {
+    "repository": "cybalicistjt-stack/Multiversal-app",
+    "pull_request": 188,
+    "branch": "internal-alpha/ccti12-candidate-content-workspace",
+    "latest_construction_head_at_receipt": "d6c96f2e4adb98fdd83952114fd657bbfd8d92bd"
+  },
+  "validation_state": "Fresh exact-head application validation remains required before T01 completion or merge."
+}
