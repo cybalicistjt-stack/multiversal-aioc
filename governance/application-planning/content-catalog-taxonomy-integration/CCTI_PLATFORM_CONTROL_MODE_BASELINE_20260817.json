@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-08-17T23:45:00Z",
+  "facet": "control_mode",
+  "state": "candidate_disposition_complete_not_enabled",
+  "cardinality": "multi",
+  "platform_domain_rows": 5628,
+  "platform_model_asset_archetype_rows": 2984,
+  "non_model_rows": 2644,
+  "dispositions": {
+    "candidate_rows": 2984,
+    "candidate_assertions": 3106,
+    "host_or_record_dependent_rows": 2603,
+    "not_applicable_rows": 41,
+    "explicit_unresolved_rows": 0,
+    "active_unaccounted_rows": 0
+  },
+  "candidate_assertion_counts": {
+    "MV-PLAT-CONTROL-ASSISTED": 43,
+    "MV-PLAT-CONTROL-AUTONOMOUS": 25,
+    "MV-PLAT-CONTROL-BONDED": 31,
+    "MV-PLAT-CONTROL-BOUND": 29,
+    "MV-PLAT-CONTROL-CREWED": 1652,
+    "MV-PLAT-CONTROL-SINGLE": 1325,
+    "MV-PLAT-CONTROL-SWARM": 1
+  },
+  "zero_count_registry_values": [
+    "MV-PLAT-CONTROL-REMOTE",
+    "MV-PLAT-CONTROL-SEMI-AUTO",
+    "MV-PLAT-CONTROL-MIXED"
+  ],
+  "by_source": {
+    "Vehicles.csv": {
+      "rows": 1200,
+      "candidate_rows": 953,
+      "host_or_record_dependent_rows": 239,
+      "not_applicable_rows": 8
+    },
+    "Mecha.csv": {
+      "rows": 2117,
+      "candidate_rows": 930,
+      "host_or_record_dependent_rows": 1167,
+      "not_applicable_rows": 20
+    },
+    "Spacecraft.csv": {
+      "rows": 2311,
+      "candidate_rows": 1101,
+      "host_or_record_dependent_rows": 1197,
+      "not_applicable_rows": 13
+    }
+  },
+  "source_sha256": {
+    "Vehicles.csv": "2edd4f50d18d7d629c1a268122d1d4846e3df364da9b9c45f666359ba0dd791c",
+    "Mecha.csv": "60ff6a730f5a1d50dd4622da5d199be4f753b1933acfe9d087d5bf21b4a8bf0f",
+    "Spacecraft.csv": "00ce4a9d5730ac413d22813325ff3ace7e0c7b0445e9bcd0af45aa2911962c6f"
+  },
+  "safety_rules": {
+    "no_zero_crew_autonomy_inference": true,
+    "exclude_autonomous_subsystems_from_host_control": true,
+    "exclude_carried_drone_or_carrier_role_from_host_control": true,
+    "generic_neural_interface_does_not_imply_bonded": true,
+    "special_modes_require_explicit_primary_control_evidence": true
+  },
+  "boundaries": {
+    "source_master_csv_mutated": false,
+    "prepared_crosswalk_rewritten": false,
+    "canonical_candidate_enabled": false,
+    "mechanics_reauthored": false,
+    "runtime_assets_created": false,
+    "game_ready_claimed": false
+  },
+  "exact_next_action": "Project platform_nature conservatively from explicit record construction/origin evidence; preserve non-model host/N-A routing and do not infer nature solely from genre, technology style, power source, creator identity, rarity, or narrative flavor."
+}
