@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "program_id": "CRS",
   "status": "CURRENT",
   "default_rule": "A validator or validation-like script is not a current gate merely because it exists. Current execution authority requires explicit registration here.",
@@ -19,11 +19,16 @@
         {"path":"tools/validation_core/compare_receipts.py","lifecycle":"CURRENT","purpose":"Compare deterministic Linux/Windows receipts on the exact candidate head."},
         {"path":"tools/validation_core/validate_repository_health_app.py","lifecycle":"CURRENT","caller":".github/workflows/validate-repository-health.yml","purpose":"Machine-enforce application workflow/selector/work-order repository-health invariants on the repository-attached self-hosted Linux runner."}
       ],
+      "current_capability_exceptions": [
+        {"path":"tools/build_post_gatx_internal_alpha_package.py","lifecycle":"CURRENT_COMPATIBLE","caller":".github/workflows/validate-post-gatx-self-hosted-exact-head.yml","scope":"POST-GATX-SUCCESSOR","purpose":"Deterministically construct the exact Internal Alpha successor ZIP on both self-hosted platforms."},
+        {"path":"tools/verify_post_gatx_internal_alpha_package.py","lifecycle":"CURRENT_COMPATIBLE","caller":".github/workflows/validate-post-gatx-self-hosted-exact-head.yml","scope":"POST-GATX-SUCCESSOR","purpose":"Verify exact package identity, boundaries and owner-approval state for the successor ZIP."}
+      ],
       "current_compatible_manual_checks": [
         {"path":"tests/tools/test_mv_dev_repository_intelligence.py","lifecycle":"CURRENT_COMPATIBLE","caller":".github/workflows/self-hosted-windows-runner-smoke.yml","purpose":"Manual lightweight runner smoke only; not a feature completion gate."}
       ],
       "historical_inert_patterns": ["tools/validation_core/validate_*.py except explicitly registered current validators","tools/validate_vch*.py","scripts/validate_*.py","scripts/validate-*.py","historical tranche-specific tests invoked only by CRS-retired workflows"],
-      "execution_rule": "New or resumed production work uses a reviewed thin Validation Core profile by default. A historical feature validator may participate only after explicit current-lifecycle review and registration or a documented capability exception."
+      "execution_rule": "New or resumed production work uses a reviewed thin Validation Core profile by default. A historical feature validator may participate only after explicit current-lifecycle review and registration or a documented capability exception.",
+      "capability_exception_rule": "A registered capability exception is bounded to its named work item and must be retired when that work item completes or is superseded. It does not become generic validation authority."
     }
   },
   "lifecycle_assumption_findings": [
