@@ -1,11 +1,11 @@
 {
-  "schema_version": "1.4.0",
-  "updated_at": "2026-08-18T21:13:00Z",
+  "schema_version": "1.6.0",
+  "updated_at": "2026-08-18T23:32:00Z",
   "policy": "governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md",
   "current": [
     {"kind":"bootstrap","path":"governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md","lifecycle":"CURRENT"},
     {"kind":"work_pointer","path":"governance/ai/runtime/CURRENT_WORK_POINTER.json","lifecycle":"CURRENT"},
-    {"kind":"checkpoint","path":"governance/ai/work-state/POST-GATX-SUCCESSOR-attempt-001.json","lifecycle":"CURRENT"},
+    {"kind":"checkpoint","path":"governance/ai/work-state/CCTI-12-attempt-004.json","lifecycle":"CURRENT"},
     {"kind":"program","path":"governance/repository-health/CANONICALIZATION_RETIREMENT_SWEEP.md","lifecycle":"CURRENT_GUARDRAIL"},
     {"kind":"backlog","path":"governance/repository-health/CRS_BACKLOG.json","lifecycle":"CURRENT_GUARDRAIL"},
     {"kind":"roadmap","path":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md","lifecycle":"CURRENT"},
@@ -27,20 +27,15 @@
     "application .ai compatibility paths and historical .agent/.ai work-order records preserved in Git history",
     "pre-CRS roadmap/index revisions preserved in Git history"
   ],
-  "active_application_work": {"work_item":"POST-GATX-SUCCESSOR","pr":201,"branch":"internal-alpha/post-gatx-successor-refresh","lifecycle":"CURRENT","state":"reconcile_to_clean_main","merge_authority":false},
+  "active_application_work": {"work_item":"CCTI-12-T04","pr":191,"branch":"internal-alpha/ccti12-t04-local-review-worksets","source_head":"3d32ee9317bc924a6a8206121402c68bdf8a061b","lifecycle":"CURRENT","state":"clean_main_reconstruction","merge_authority":false},
+  "recently_completed_application_work": {"work_item":"POST-GATX-SUCCESSOR","pr":203,"validated_head":"3b9e33cb22b8d4e3f2558135ba0fc36a8c8ad223","merge":"8685165318b1f3782903bfe137ba8257539af017","validation_retirement_pr":204,"validation_retirement_merge":"bf61c64c89e7ea997842ea7442797fba619d0e28","tester_distribution_approved":false},
+  "superseded_application_work": [
+    {"work_item":"POST-GATX-SUCCESSOR","pr":201,"lifecycle":"HISTORICAL_INERT","merge_authority":false},
+    {"work_item":"POST-GATX-SUCCESSOR","pr":185,"lifecycle":"HISTORICAL_INERT","merge_authority":false}
+  ],
   "preserved_non_authoritative_application_work": [
-    {"work_item":"CCTI-12-T04","pr":191,"branch":"internal-alpha/ccti12-t04-local-review-worksets","lifecycle":"CURRENT_COMPATIBLE","state":"validation_quarantined","merge_authority":false},
     {"work_item":"WP-011","pr":61,"branch":"wo/WP011-hosted-macos-evidence","lifecycle":"CURRENT_COMPATIBLE","state":"special_environment_dormant","merge_authority":false}
   ],
-  "repository_health": {
-    "program":"CRS",
-    "status":"completed_verified",
-    "active_item":null,
-    "machine_validator":"scripts/validate_repository_health.py",
-    "machine_workflow":".github/workflows/validate-repository-health.yml",
-    "audit_result":"zero_known_conflicting_authority",
-    "aioc_health_merge":"9a74d10988ca41201c8155956a09564c7d1289a9",
-    "application_health_merge":"ec4ad52910fd8728134df4bdbad31476f44602e9"
-  },
+  "repository_health": {"program":"CRS","status":"completed_verified","audit_result":"zero_known_conflicting_authority","application_main":"bf61c64c89e7ea997842ea7442797fba619d0e28"},
   "rule": "Anything not explicitly CURRENT or CURRENT_COMPATIBLE here cannot govern current work merely because it exists."
 }

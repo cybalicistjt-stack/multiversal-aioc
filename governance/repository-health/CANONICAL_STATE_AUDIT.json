@@ -1,69 +1,28 @@
 {
-  "schema_version": "1.3.0",
-  "audit_id": "CRS-06-CANONICAL-STATE-AUDIT-2026-08-18",
+  "schema_version": "1.4.0",
+  "audit_id": "CRS-CANONICAL-STATE-AUDIT-CURRENT",
   "status": "completed_verified",
   "result": "zero_known_conflicting_authority",
   "known_conflicts": [],
   "production_resume_authorized": true,
-  "resume_condition": "SATISFIED — App and AIOC repository-health gates passed on exact candidates and merged; CRS is completed_verified and current-work selection has moved to POST-GATX-SUCCESSOR.",
   "repositories": {
-    "cybalicistjt-stack/multiversal-aioc": {
-      "health_pr": 405,
-      "health_candidate_head": "88accb4e8b97e5b88519f7e97e8f98914387132a",
-      "health_run": 32179296631,
-      "health_merge": "9a74d10988ca41201c8155956a09564c7d1289a9",
-      "live_workflows_expected": [".github/workflows/validate-repository-health.yml"],
-      "runtime_files_expected": [
-        "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
-        "governance/ai/runtime/CURRENT_WORK_POINTER.json",
-        "governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json",
-        "governance/ai/runtime/ROADMAP_INDEX.json"
-      ]
-    },
+    "cybalicistjt-stack/multiversal-aioc": {"live_workflows_expected":[".github/workflows/validate-repository-health.yml"]},
     "cybalicistjt-stack/Multiversal-app": {
-      "main_head": "ec4ad52910fd8728134df4bdbad31476f44602e9",
-      "repository_health_pr": 202,
-      "repository_health_candidate_head": "4f35ada09d524047102657fb1ee7e7d2309d7e13",
-      "repository_health_run": 32178841607,
-      "repository_health_artifact": 9340017199,
-      "repository_health_artifact_digest": "sha256:6ffc3b43248de57ba86fbfc57fa54c04c57d8aaf4c90da2877c93495acd4120c",
-      "repository_health_merge": "ec4ad52910fd8728134df4bdbad31476f44602e9",
-      "live_workflows_expected": [
-        ".github/workflows/_validation-core-profile.yml",
-        ".github/workflows/self-hosted-windows-runner-smoke.yml",
-        ".github/workflows/validate-repository-health.yml"
+      "main_head": "bf61c64c89e7ea997842ea7442797fba619d0e28",
+      "live_workflows_expected": [".github/workflows/_validation-core-profile.yml",".github/workflows/self-hosted-windows-runner-smoke.yml",".github/workflows/validate-repository-health.yml"],
+      "open_governed_prs": [
+        {"number":61,"work_item":"WP-011","merge_authority":false,"activation":"special_environment_owner_gate"},
+        {"number":191,"work_item":"CCTI-12-T04","merge_authority":false,"activation":"CURRENT — clean-main reconstruction and hardened validation"}
       ],
-      "preserved_open_prs": [
-        {"number":61,"work_item":"WP-011","state":"open","draft":true,"head":"67b17a482a69fdae7495e7f6299240940e00fa20","branch":"wo/WP011-hosted-macos-evidence","merge_authority":false,"activation":"special_environment_owner_gate"},
-        {"number":191,"work_item":"CCTI-12-T04","state":"open","draft":true,"head":"3d32ee9317bc924a6a8206121402c68bdf8a061b","branch":"internal-alpha/ccti12-t04-local-review-worksets","merge_authority":false,"activation":"reconcile_after_current_selected_work_or explicit owner reprioritization"},
-        {"number":201,"work_item":"POST-GATX-SUCCESSOR","state":"open","draft":true,"head":"3a80eae066650a312707cfae5adb70a2770e8918","branch":"internal-alpha/post-gatx-successor-refresh","merge_authority":false,"activation":"CURRENT — reconcile to cleaned main, explicitly register validation surface, satisfy exact-head gate"}
-      ]
+      "recently_completed": {"work_item":"POST-GATX-SUCCESSOR","pr":203,"validated_head":"3b9e33cb22b8d4e3f2558135ba0fc36a8c8ad223","merge":"8685165318b1f3782903bfe137ba8257539af017","validation_run":32197192589,"health_run":32197192592,"package_sha256":"f07bfc00bb2708e48d0d85118fd1861e017b720d4d85ba1d912ede7b6b5bc694","validation_retirement_pr":204,"validation_retirement_merge":"bf61c64c89e7ea997842ea7442797fba619d0e28","tester_distribution_approved":false}
     }
   },
   "authority_checks": [
-    {"id":"bootstrap-stable","status":"PASS","evidence":"Bootstrap is status-agnostic and resolves authority registry -> current pointer -> selected checkpoint -> live GitHub."},
-    {"id":"single-selector","status":"PASS","evidence":"CURRENT_WORK_POINTER.json is the only current-work selector; selected checkpoint is POST-GATX-SUCCESSOR-attempt-001.json."},
-    {"id":"application-selector-retirement","status":"PASS","evidence":"App local current/next/queue/handoff files are inert AIOC redirects and completed-era active/ready work-order namespaces are absent."},
-    {"id":"dated-amendment-retirement","status":"PASS","evidence":"Dated bootstrap-state amendments, stale CURRENT_IMPLEMENTATION_STATUS.json and completed-era runtime roadmap supplements were removed from operational runtime."},
-    {"id":"workflow-deny-by-default","status":"PASS","evidence":"AIOC has one registered health workflow. App main has only shared Validation Core, manual Windows smoke and repository-health gate. Historical workflows remain inert in Git history."},
-    {"id":"validator-deny-by-default","status":"PASS","evidence":"Only registered current validators can govern; historical validators remain non-authoritative by existence."},
-    {"id":"application-health-machine-proof","status":"PASS","evidence":"App PR #202 exact head passed self-hosted Linux run 32178841607 and compact artifact upload before merge ec4ad52910fd8728134df4bdbad31476f44602e9."},
-    {"id":"aioc-health-machine-proof","status":"PASS","evidence":"AIOC exact head 88accb4e8b97e5b88519f7e97e8f98914387132a passed run 32179296631 before PR #405 merged at 9a74d10988ca41201c8155956a09564c7d1289a9."},
-    {"id":"cross-repository-token-isolation","status":"PASS","evidence":"AIOC and App health gates validate their own repositories independently; no cross-repository GITHUB_TOKEN checkout is required."},
-    {"id":"open-pr-authority","status":"PASS","evidence":"Open App PRs #61, #191 and #201 are explicitly governed. #201 is selected current work but has no merge authority until its own completion gate passes."},
-    {"id":"history-preservation","status":"PASS","evidence":"Stale material was removed from operational namespaces only; Git history preserves prior workflows, selectors, work orders and roadmap revisions."}
+    {"id":"single-selector","status":"PASS","evidence":"CURRENT_WORK_POINTER selects CCTI-12-attempt-004 only."},
+    {"id":"workflow-deny-by-default","status":"PASS","evidence":"App returned to the permanent three-workflow namespace after post-GATX validation retirement."},
+    {"id":"validator-deny-by-default","status":"PASS","evidence":"Post-GATX builder/verifier are no longer current validation authority after completion."},
+    {"id":"open-pr-authority","status":"PASS","evidence":"Only T04 is selected; WP-011 remains dormant and no open PR can merge by existence."},
+    {"id":"history-preservation","status":"PASS","evidence":"Retired workflows and superseded PRs remain recoverable as provenance without current authority."}
   ],
-  "machine_gate": {
-    "aioc_validator": "scripts/validate_repository_health.py",
-    "aioc_workflow": ".github/workflows/validate-repository-health.yml",
-    "aioc_runner": "ubuntu-latest documented governance-only exception",
-    "application_validator": "tools/validation_core/validate_repository_health_app.py",
-    "application_workflow": ".github/workflows/validate-repository-health.yml",
-    "application_runner": "self-hosted linux x64 multiversal-validation-linux",
-    "cross_repository_token_dependency": false,
-    "compact_artifacts": true,
-    "application_product_gate_unchanged": true
-  },
-  "remaining_before_crs_completion": [],
-  "resumed_work_item": "POST-GATX-SUCCESSOR"
+  "resumed_work_item": "CCTI-12-T04"
 }

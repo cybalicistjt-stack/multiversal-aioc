@@ -1,32 +1,28 @@
 {
-  "schema_version": "2.0.0",
-  "updated_at": "2026-08-18T21:13:00Z",
+  "schema_version": "2.2.0",
+  "updated_at": "2026-08-18T23:32:00Z",
   "rule": "This index contains current or preserved unfinished tracks only. Completed historical work remains in Git history and receipts and cannot select current work.",
   "current": {
-    "work_item_id": "POST-GATX-SUCCESSOR",
-    "track": "post-gatx-internal-alpha-successor",
-    "checkpoint": "governance/ai/work-state/POST-GATX-SUCCESSOR-attempt-001.json",
+    "work_item_id": "CCTI-12-T04",
+    "track": "content-catalog-taxonomy-integration",
+    "checkpoint": "governance/ai/work-state/CCTI-12-attempt-004.json",
     "repository": "cybalicistjt-stack/Multiversal-app",
-    "pull_request": 201,
-    "branch": "internal-alpha/post-gatx-successor-refresh",
-    "next_gate": "reconcile_to_clean_main_then_exact_head_self_hosted_linux_windows_deterministic_comparison"
+    "source_pull_request": 191,
+    "source_branch": "internal-alpha/ccti12-t04-local-review-worksets",
+    "clean_main": "bf61c64c89e7ea997842ea7442797fba619d0e28",
+    "status": "in_progress_clean_main_reconstruction",
+    "next_gate": "new_registered_thin_validation_core_surface_then_exact_head_windows_linux_deterministic_comparison"
   },
   "preserved_unfinished": [
-    {"work_item_id":"CCTI-12-T04","track":"content-catalog-taxonomy-integration","repository":"cybalicistjt-stack/Multiversal-app","pull_request":191,"status":"validation_quarantined"},
     {"work_item_id":"WP-011","track":"apple-special-environment","repository":"cybalicistjt-stack/Multiversal-app","pull_request":61,"status":"special_environment_dormant"},
     {"work_item_id":"DS-008","track":"design-standards-completion","status":"blocked_non_owner"},
     {"work_item_id":"APW","track":"asynchronous-persistent-workspace","status":"owner_approved_planned_not_active","next_item":"APW-01"},
     {"work_item_id":"CSW","track":"creator-storycraft-workspace","status":"owner_approved_planned_not_active","next_item":"CSW-01"},
     {"work_item_id":"APM","track":"automated-play-modes","status":"owner_approved_planned_not_active","next_item":"APM-01","supplement":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_APM_SUPPLEMENT.md"}
   ],
+  "recently_completed": {"work_item_id":"POST-GATX-SUCCESSOR","application_pr":203,"merge":"8685165318b1f3782903bfe137ba8257539af017","validated_head":"3b9e33cb22b8d4e3f2558135ba0fc36a8c8ad223","package_sha256":"f07bfc00bb2708e48d0d85118fd1861e017b720d4d85ba1d912ede7b6b5bc694","temporary_validation_retired":true},
   "completed_support": [
     {"program_id":"VCH","status":"completed_verified","closure_application_pr":200,"closure_merge":"aa286a481fc53fdb969cc10be0388974bdbd3c9e"},
-    {"program_id":"CRS","status":"completed_verified","application_health_pr":202,"application_health_merge":"ec4ad52910fd8728134df4bdbad31476f44602e9","aioc_health_pr":405,"aioc_health_merge":"9a74d10988ca41201c8155956a09564c7d1289a9","audit_result":"zero_known_conflicting_authority"}
-  ],
-  "historical_completion_sources": [
-    "Git history",
-    "completion receipts",
-    "program backlogs",
-    "closed pull requests"
+    {"program_id":"CRS","status":"completed_verified","audit_result":"zero_known_conflicting_authority"}
   ]
 }

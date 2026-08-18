@@ -1,45 +1,28 @@
 {
-  "schema_version": "1.3.0",
+  "schema_version": "1.4.0",
   "program_id": "CRS",
   "status": "CURRENT",
   "default_rule": "A validator or validation-like script is not a current gate merely because it exists. Current execution authority requires explicit registration here.",
   "repositories": {
     "cybalicistjt-stack/multiversal-aioc": {
-      "current_validators": [
-        {"path":"scripts/validate_repository_health.py","lifecycle":"CURRENT","caller":".github/workflows/validate-repository-health.yml","purpose":"AIOC canonical authority, workflow, validator, runtime-state and stale-selector health enforcement."}
-      ],
-      "historical_inert_patterns": ["scripts/validate-*.py","scripts/validate_*.py","tools/*validate*.py"],
-      "exception_rule": "Only scripts explicitly listed in current_validators have current gate authority; filename pattern matches do not grant authority."
+      "current_validators": [{"path":"scripts/validate_repository_health.py","lifecycle":"CURRENT","caller":".github/workflows/validate-repository-health.yml","purpose":"AIOC canonical authority and repository-health enforcement."}],
+      "historical_inert_patterns": ["scripts/validate-*.py","scripts/validate_*.py","tools/*validate*.py"]
     },
     "cybalicistjt-stack/Multiversal-app": {
       "current_validation_core": [
-        {"path":"tools/validation_core/profile_runner.py","lifecycle":"CURRENT","purpose":"Execute governed validation profiles with preflight and compact diagnostics."},
-        {"path":"tools/validation_core/runner_preflight.py","lifecycle":"CURRENT","purpose":"Verify runner, toolchain, checkout and workspace contract without persistent host mutation."},
-        {"path":"tools/validation_core/evidence.py","lifecycle":"CURRENT","purpose":"Generate deterministic receipts and lane-specific evidence."},
-        {"path":"tools/validation_core/compare_receipts.py","lifecycle":"CURRENT","purpose":"Compare deterministic Linux/Windows receipts on the exact candidate head."},
-        {"path":"tools/validation_core/validate_repository_health_app.py","lifecycle":"CURRENT","caller":".github/workflows/validate-repository-health.yml","purpose":"Machine-enforce application workflow/selector/work-order repository-health invariants on the repository-attached self-hosted Linux runner."}
+        {"path":"tools/validation_core/profile_runner.py","lifecycle":"CURRENT"},
+        {"path":"tools/validation_core/runner_preflight.py","lifecycle":"CURRENT"},
+        {"path":"tools/validation_core/evidence.py","lifecycle":"CURRENT"},
+        {"path":"tools/validation_core/compare_receipts.py","lifecycle":"CURRENT"},
+        {"path":"tools/validation_core/validate_repository_health_app.py","lifecycle":"CURRENT","caller":".github/workflows/validate-repository-health.yml"}
       ],
-      "current_capability_exceptions": [
-        {"path":"tools/build_post_gatx_internal_alpha_package.py","lifecycle":"CURRENT_COMPATIBLE","caller":".github/workflows/validate-post-gatx-self-hosted-exact-head.yml","scope":"POST-GATX-SUCCESSOR","purpose":"Deterministically construct the exact Internal Alpha successor ZIP on both self-hosted platforms."},
-        {"path":"tools/verify_post_gatx_internal_alpha_package.py","lifecycle":"CURRENT_COMPATIBLE","caller":".github/workflows/validate-post-gatx-self-hosted-exact-head.yml","scope":"POST-GATX-SUCCESSOR","purpose":"Verify exact package identity, boundaries and owner-approval state for the successor ZIP."}
+      "current_compatible_manual_checks": [{"path":"tests/tools/test_mv_dev_repository_intelligence.py","lifecycle":"CURRENT_COMPATIBLE","caller":".github/workflows/self-hosted-windows-runner-smoke.yml"}],
+      "completed_bounded_capability_exceptions": [
+        {"path":"tools/build_post_gatx_internal_alpha_package.py","scope":"POST-GATX-SUCCESSOR","lifecycle":"HISTORICAL_INERT","validated_head":"3b9e33cb22b8d4e3f2558135ba0fc36a8c8ad223","completion_merge":"8685165318b1f3782903bfe137ba8257539af017"},
+        {"path":"tools/verify_post_gatx_internal_alpha_package.py","scope":"POST-GATX-SUCCESSOR","lifecycle":"HISTORICAL_INERT","validated_head":"3b9e33cb22b8d4e3f2558135ba0fc36a8c8ad223","completion_merge":"8685165318b1f3782903bfe137ba8257539af017"}
       ],
-      "current_compatible_manual_checks": [
-        {"path":"tests/tools/test_mv_dev_repository_intelligence.py","lifecycle":"CURRENT_COMPATIBLE","caller":".github/workflows/self-hosted-windows-runner-smoke.yml","purpose":"Manual lightweight runner smoke only; not a feature completion gate."}
-      ],
-      "historical_inert_patterns": ["tools/validation_core/validate_*.py except explicitly registered current validators","tools/validate_vch*.py","scripts/validate_*.py","scripts/validate-*.py","historical tranche-specific tests invoked only by CRS-retired workflows"],
-      "execution_rule": "New or resumed production work uses a reviewed thin Validation Core profile by default. A historical feature validator may participate only after explicit current-lifecycle review and registration or a documented capability exception.",
-      "capability_exception_rule": "A registered capability exception is bounded to its named work item and must be retired when that work item completes or is superseded. It does not become generic validation authority."
+      "execution_rule": "New or resumed production work uses a reviewed thin Validation Core profile by default. Historical validation-like files cannot govern by existence."
     }
   },
-  "lifecycle_assumption_findings": [
-    {"pattern":"READY_TO_EXECUTE / PREPARED","finding":"Historical A2/PPIA assertions using these states are not current project-state prerequisites. Dynamic task-capsule vocabulary may remain, but later lifecycle work cannot be blocked by a sealed earlier-stage expectation."},
-    {"pattern":"ubuntu-latest / GitHub-hosted runner","finding":"Application/package final validation remains self-hosted and Validation-Core governed. The only registered generic hosted execution is the bounded AIOC governance-health exception because AIOC has no repository-attached self-hosted runner."},
-    {"pattern":"fixed historical branch, PR, tranche or stage state","finding":"Such assertions remain provenance only unless explicitly reclassified into a current gate."}
-  ],
-  "retirement_effect": {
-    "historical_files_deleted": false,
-    "history_preserved": true,
-    "automatic_current_paths_to_unregistered_historical_validators": 0,
-    "future_reactivation_requires_explicit_registration": true
-  }
+  "retirement_effect": {"historical_files_deleted":false,"history_preserved":true,"future_reactivation_requires_explicit_registration":true}
 }
