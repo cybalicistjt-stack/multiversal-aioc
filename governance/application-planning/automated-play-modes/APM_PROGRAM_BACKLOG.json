@@ -1,13 +1,25 @@
 {
   "program_id": "APM",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "status": "design_active",
   "owner": "John Brandon Turner",
   "approved": "2026-08-18",
   "active_item": "APM-01",
   "active_attempt": "APM-01-attempt-001",
   "sequence": [
-    {"id": "APM-01", "name": "Automated-Play Authority and Mode Contract", "status": "selected_not_started", "depends_on": ["APW-01"], "dependency_satisfied": true},
+    {
+      "id": "APM-01",
+      "name": "Automated-Play Authority and Mode Contract",
+      "status": "design_complete_pending_validation",
+      "depends_on": ["APW-01"],
+      "dependency_satisfied": true,
+      "deliverables": [
+        "APM-01_AUTOMATED_PLAY_AUTHORITY_AND_MODE_CONTRACT.md",
+        "APM-01_AUTHORITY_MODE_MATRIX.json",
+        "APM-01_TRACEABILITY_AND_ADDITIVE_TOUCHPOINTS.json",
+        "APM-01_REVIEW_RECEIPT.md"
+      ]
+    },
     {"id": "APM-02", "name": "CozyMode Core Loop", "status": "planned", "depends_on": ["APM-01", "APW-03", "APW-04"]},
     {"id": "APM-03", "name": "AutoGM Single-Encounter Runner", "status": "planned", "depends_on": ["APM-01", "CSW-05"]},
     {"id": "APM-04", "name": "AutoGM Mini-Campaign Director", "status": "planned", "depends_on": ["APM-03", "CSW-06"]},
@@ -24,10 +36,19 @@
   "authority_rules": [
     "AutoGM and CozyMode are play experiences, not permanent account roles.",
     "APW-01 universal-user and Personal/Campaign/Session context authority is controlling for APM.",
-    "AutoGM automation receives only explicitly delegated governed operations; optional AI does not inherit unrestricted GM authority.",
+    "Solo is participation topology, not authority.",
+    "Automation controllers are nonhuman service actors and never acquire global GM role authority.",
+    "State-affecting automation requires explicit versioned delegation plus fresh owning-domain authorization.",
+    "Every automated operation is classified automatic, bounded automatic, proposal-required, human-required, or prohibited.",
     "Mechanical legality and canonical mutation remain owned by deterministic/domain-governed rules and authority checks.",
+    "Optional AI remains presentation/proposal assistance and does not inherit mechanical, permission, decision, hidden-state, delegation, or commit authority.",
+    "AutoGM scenario-private truth is held by governed scenario/controller projections and is not automatically exposed to optional AI.",
+    "Exit/disconnect never creates background-play permission; background Cozy behavior is explicit and bounded.",
     "Automated play reuses ordinary Campaign/Action/Event/persistence/provenance/recovery architecture rather than forking state.",
     "Connected Cozy begins with invited/known participants; public matchmaking is outside initial scope."
+  ],
+  "combined_owner_approved_sequence_after_apm01": [
+    "CSW-01", "CSW-02", "APW-02", "APW-03", "APW-04", "APM-02", "CSW-03", "CSW-04", "CSW-05", "APM-03", "CSW-06", "APM-04", "CSW-07", "CSW-08", "APW-05", "CSW-09", "APW-06", "APM-05", "CSW-10", "APW-07", "APM-06", "APW-08"
   ],
   "non_goals": [
     "No unlimited open-ended autonomous campaign requirement for initial APM.",
