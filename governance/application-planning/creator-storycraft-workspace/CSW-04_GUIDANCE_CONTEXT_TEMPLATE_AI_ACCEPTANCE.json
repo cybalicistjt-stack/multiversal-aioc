@@ -1,0 +1,117 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"CSW-04",
+  "status":"design_ready_for_review",
+  "dependencies":[
+    {"id":"CSW-01","uses":["pre-authoritative Creative Fragment identity","lifecycle","version/provenance","branch/alternate","explicit incorporation boundary"]},
+    {"id":"CSW-02","uses":["Creator Project","Creative Library","Story Bible","Project Memory","authorization-before-search/similarity","governed references"]},
+    {"id":"CSW-03","uses":["deterministic Inspiration primitives","ephemeral candidates","explicit save/apply/branch","AI candidate boundary","bounded develop loops"]}
+  ],
+  "guidance_invariants":[
+    "guidance never becomes owning-domain truth",
+    "workflow completion means creator-complete only",
+    "freeform equivalent capability remains available",
+    "workflow progress state is orchestration metadata, not content truth",
+    "durable creative answers reuse CSW content forms",
+    "governed material remains referenced rather than copied",
+    "skipping is allowed without penalty",
+    "intentionally unresolved is a valid creator choice",
+    "one correct creative path is never asserted"
+  ],
+  "context_rules":[
+    "resolve subject and Personal/Campaign context before context lookup",
+    "authorization precedes search/count/ranking/autocomplete/summarization/generation",
+    "creator explicitly selects or accepts referenced material",
+    "creator notes and governed facts remain distinguishable",
+    "hidden material cannot influence hints/counts/readiness/recommendations",
+    "revoked protected references do not leave copied payload fallback",
+    "resume reauthorizes protected references"
+  ],
+  "template_rules":[
+    "creator presets may change presentation/order/default choices only within declared constraints",
+    "creator templates use bounded approved step primitives",
+    "definitions/templates/runs are versioned independently",
+    "existing runs pin source definition/template version",
+    "template updates never rewrite prior runs",
+    "templates cannot contain executable code or hidden privilege",
+    "templates cannot auto-publish/incorporate or make external calls outside separate governance",
+    "sharing/marketplace publication remains future separate authority"
+  ],
+  "ai_input_rules":[
+    "AI is optional per step and per governing consent policy",
+    "only task-relevant selected authorized context is supplied",
+    "Personal/Campaign separation is preserved",
+    "provider/cost/retention rules remain separately governing",
+    "AI never receives inaccessible references because a workflow can see their metadata"
+  ],
+  "ai_output_rules":[
+    "candidate-only by default",
+    "no automatic answer selection",
+    "no automatic step completion",
+    "no automatic save/apply/reorder",
+    "saved output remains pre-authoritative and attributable",
+    "no direct incorporation/publication/canonical promotion",
+    "manual/deterministic workflow remains complete when AI unavailable"
+  ],
+  "readiness_rules":[
+    "readiness is advisory and task-relative",
+    "no universal story quality score",
+    "distinguish missing from skipped/not-applicable/intentionally-unresolved",
+    "potential inconsistency remains candidate-only",
+    "owning-domain validation status is never implied"
+  ],
+  "voice_behavior":[
+    "warm and welcoming",
+    "encouraging without excessive praise",
+    "curious rather than prescriptive",
+    "respects skip/unknown/none-of-these",
+    "examples are possibilities rather than directives",
+    "unusual creator choices are not treated as errors solely for differing from template"
+  ],
+  "acceptance_scenarios":[
+    {"id":"CSW04-A01","scenario":"novice starts NPC workflow with no seed","expected":"plain-language optional steps lead toward a usable pre-authoritative NPC draft without requiring domain expertise"},
+    {"id":"CSW04-A02","scenario":"expert opens NPC workflow then skips directly to relationships","expected":"independent steps can be skipped/reordered and equivalent capability is retained"},
+    {"id":"CSW04-A03","scenario":"creator exits guidance after saving two answers","expected":"saved Creative Fragments remain; workflow can be abandoned without content loss"},
+    {"id":"CSW04-A04","scenario":"creator chooses freeform escape midway","expected":"underlying project/fragments open without conversion loss or special advanced-mode authority"},
+    {"id":"CSW04-A05","scenario":"creator revisits a saved motive after external edit","expected":"optimistic-concurrency conflict is surfaced; no silent overwrite"},
+    {"id":"CSW04-A06","scenario":"creator branches campaign premise at one section","expected":"alternate run has independent future edits and source-run provenance"},
+    {"id":"CSW04-A07","scenario":"creator marks a mystery question intentionally unresolved","expected":"workflow can still complete and summary preserves unresolved state"},
+    {"id":"CSW04-A08","scenario":"workflow uses existing Story Bible faction","expected":"authorized reference is linked; governed payload is not copied into editable truth"},
+    {"id":"CSW04-A09","scenario":"hidden Campaign NPC would be semantically relevant","expected":"no search result, count, readiness hint, relation suggestion or AI leakage"},
+    {"id":"CSW04-A10","scenario":"Campaign reference access revoked before resume","expected":"resume reauthorizes; protected content becomes unavailable rather than cached truth"},
+    {"id":"CSW04-A11","scenario":"step invokes deterministic three-motive inspiration","expected":"three ephemeral CSW-03 candidates; none auto-saves or completes step"},
+    {"id":"CSW04-A12","scenario":"creator saves two Inspiration alternatives","expected":"independent attributable fragments/branches preserve seed"},
+    {"id":"CSW04-A13","scenario":"AI offers follow-up questions","expected":"only authorized selected context is used; suggestions remain optional candidates"},
+    {"id":"CSW04-A14","scenario":"AI provider unavailable","expected":"workflow remains fully usable through manual and deterministic paths"},
+    {"id":"CSW04-A15","scenario":"creator completes backstory workflow","expected":"completion means creator-complete draft only; no Character facts mutate automatically"},
+    {"id":"CSW04-A16","scenario":"creator completes mystery workflow","expected":"no creator possibility becomes A9 clue/hypothesis/objective truth automatically"},
+    {"id":"CSW04-A17","scenario":"creator completes encounter workflow","expected":"no authoritative mechanics/balance/reward values are claimed without owning-domain handoff"},
+    {"id":"CSW04-A18","scenario":"creator completes Adventure workflow","expected":"material is suitable for later CSW-05/D28 handoff but workflow order is not treated as Adventure graph/canon"},
+    {"id":"CSW04-A19","scenario":"creator saves a personal NPC workflow preset","expected":"preset can hide/reorder allowed optional steps without changing authority or definition source"},
+    {"id":"CSW04-A20","scenario":"creator forks core workflow template","expected":"new creator-owned version uses bounded primitives/provenance and cannot execute arbitrary code"},
+    {"id":"CSW04-A21","scenario":"core definition updates after run started","expected":"existing run remains pinned; migration/restart requires explicit creator action"},
+    {"id":"CSW04-A22","scenario":"offline Personal workflow answers then reconnect","expected":"draft reauthorizes/reconciles idempotently without duplicate fragments"},
+    {"id":"CSW04-A23","scenario":"offline Campaign workflow opened from cached state","expected":"no new Campaign authority or hidden fetch is assumed; reconnect is required for protected operations"},
+    {"id":"CSW04-A24","scenario":"screen-reader user navigates a branching workflow","expected":"linear semantic outline exposes branch choices, return paths, optionality, progress and actions"},
+    {"id":"CSW04-A25","scenario":"keyboard user reorders independent steps","expected":"non-drag controls provide full reorder capability"},
+    {"id":"CSW04-A26","scenario":"mobile user answers one prompt at a time","expected":"same save/skip/revisit/reference/inspiration/summary capabilities plus accessible overview"},
+    {"id":"CSW04-A27","scenario":"creator skips half the workflow","expected":"no penalty/streak/failure language and completion remains available"},
+    {"id":"CSW04-A28","scenario":"creator selects handoff to World/Adventure/Character tool","expected":"authority transition is explicit and target-domain permission/validation path controls mutation"}
+  ],
+  "future_touchpoints":[
+    "workflow definition registry",
+    "workflow run/progress projection",
+    "step primitive renderer",
+    "task-family blueprint library",
+    "CSW fragment answer binding",
+    "Story Bible/reference picker",
+    "CSW-03 Inspiration adapter",
+    "creator preset/template storage",
+    "bounded optional AI step adapter",
+    "completion/readiness summary",
+    "offline recovery/reconciliation",
+    "linear/nonvisual branch representation",
+    "owning-domain handoff preview"
+  ],
+  "nonauthorization":{"implementation":false,"migration":false,"mandatory_wizard":false,"automatic_authoritative_content":false,"autonomous_ai_authorship":false,"arbitrary_template_code":false,"marketplace_sharing":false,"canonical_promotion":false,"release_deployment":false,"t04_before_september":false}
+}
