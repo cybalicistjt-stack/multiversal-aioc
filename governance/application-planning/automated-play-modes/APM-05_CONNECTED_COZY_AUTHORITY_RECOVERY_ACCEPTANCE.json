@@ -1,0 +1,31 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"APM-05",
+  "attempt_id":"APM-05-attempt-001",
+  "acceptance":[
+    {"id":"invited-only","result":"PASS","requirement":"Initial Connected Cozy participation is invitation-only with no public stranger matchmaking."},
+    {"id":"independent-authority","result":"PASS","requirement":"Every participant retains independent identity, authorization, visibility and delegation; group authority is never pooled."},
+    {"id":"host-limits","result":"PASS","requirement":"Host/admin cannot spend, consent, choose or speak canonically for another human participant."},
+    {"id":"solo-share-boundary","result":"PASS","requirement":"Solo Cozy sharing creates/binds an explicit governed shared orchestration identity without silently converting Personal source state into shared ownership."},
+    {"id":"membership-lifecycle","result":"PASS","requirement":"Invite/accept/decline/leave/revoke/rejoin have explicit versioned membership states and fresh authorization on rejoin."},
+    {"id":"shared-activity-bounds","result":"PASS","requirement":"Shared activity families are bounded to owning-domain-safe operations; GM/human-required and unsupported operations stop."},
+    {"id":"resource-two-phase","result":"PASS","requirement":"Scarce resource contribution uses owning-domain reserve/commit/release semantics and prevents double spend."},
+    {"id":"attributable-contribution","result":"PASS","requirement":"Every contribution has stable identity/idempotency, participant/controller attribution, expected versions and durable outcome state."},
+    {"id":"async-live-same-engine","result":"PASS","requirement":"Async contributions and live co-op windows use the same authoritative state/version/order contracts."},
+    {"id":"stale-race-recovery","result":"PASS","requirement":"Concurrent/racing contributions produce explicit stale/re-evaluate behavior, never silent last-write-wins."},
+    {"id":"consent-barrier","result":"PASS","requirement":"Human-required social, advancement, sharing and delegation choices cannot be filled by host, AI, majority vote or inactivity."},
+    {"id":"controller-bounds","result":"PASS","requirement":"Shared controller operations remain APM-01 bounded and require current per-operation authorization/delegation."},
+    {"id":"visibility-before-projection","result":"PASS","requirement":"APW-06 authorization/visibility filtering precedes participant counts, badges, notifications, deep links and optional-AI context."},
+    {"id":"no-private-context-union","result":"PASS","requirement":"Group AI/presentation context cannot combine participant-private material unless every source is explicitly shared/authorized."},
+    {"id":"leave-revoke-history","result":"PASS","requirement":"Leave/revoke removes future authority and releases uncommitted reservations without erasing committed attributable history."},
+    {"id":"host-disconnect","result":"PASS","requirement":"Host disconnect/inactivity never transfers host authority automatically."},
+    {"id":"personal-return","result":"PASS","requirement":"Leaving Connected Cozy preserves independent Personal work and never copies protected shared/Campaign truth implicitly."},
+    {"id":"no-ai-core","result":"PASS","requirement":"Connected Cozy remains fully usable with deterministic rules/prompts/summaries and no AI provider."},
+    {"id":"multiplayer-autogm-seam-only","result":"PASS","requirement":"APM-05 preserves reusable multi-participant infrastructure but does not authorize multiplayer AutoGM direction."},
+    {"id":"mobile-accessibility","result":"PASS","requirement":"Invitation, contribution, waiting, leave and recovery flows have mobile, keyboard, screen-reader/nonvisual and reduced-motion parity."},
+    {"id":"product-voice","result":"PASS","requirement":"Shared-play language is welcoming and low-pressure without social guilt, streak pressure or fake urgency."},
+    {"id":"implementation-boundary","result":"PASS","requirement":"No implementation, migration, public matchmaking, AI mechanical/canonical authority, release/deployment or T04 authority is granted."}
+  ],
+  "deterministic_scenarios":["solo_to_invited_shared_without_source_mutation","accept_invitation_bounded_membership","revoked_or_expired_invitation_rejected","host_cannot_spend_participant_resource","two_party_resource_reservation_no_double_spend","reservation_stale_before_commit","async_submit_disconnect_exactly_once_result","live_race_stale_recovery","human_required_choice_stops_controller","host_disconnect_no_authority_transfer","leave_releases_uncommitted_preserves_history","rejoin_fresh_auth_old_delegation_not_revived","hidden_campaign_state_no_count_or_ai_leak","ai_unavailable_no_ai_loop","ai_cannot_spend_consent_or_resolve","social_activity_human_consent","stale_deep_link_after_revocation","notification_counts_authorized_only","personal_derivative_without_protected_copy","offline_completion_status_lookup","screen_reader_membership_project_contribution_state","mobile_invite_contribute_wait_leave_recover","duplicate_idempotency_one_result","public_matchmaking_absent"],
+  "final_repository_validation_pending":true
+}
