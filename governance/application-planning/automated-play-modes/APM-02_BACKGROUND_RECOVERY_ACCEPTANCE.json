@@ -1,0 +1,36 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"APM-02",
+  "status":"design_ready_for_review",
+  "dependencies":[
+    {"id":"APM-01","uses":["explicit automation delegation","operation classification","run lifecycle","status/recovery","AI nonauthority"]},
+    {"id":"APW-03","uses":["Activity/Project families","time profiles","resource reservation","human/GM choice classes","owning-domain progress"]},
+    {"id":"APW-04","uses":["Personal host context","sandbox separation","Personal resource authority","context switching"]}
+  ],
+  "background_eligibility":["task automatic or automatic-with-bounds","explicit background grant","fixed step/time/resource budgets","no real-money spend","no pending human/GM choice","deterministic retry/status behavior","registered stop conditions","summary/notification policy"],
+  "mandatory_stop_conditions":["human choice","GM/adjudication or approval","delegation expiry/revocation/change","permission/entitlement/ownership change","expected-version/stale conflict","step/time/resource budget reached","new unapproved resource class/cost","irreversible/destructive operation","consent/social boundary","rules/profile incompatibility","unresolved ambiguous operation status","activity completion/cancellation/fail-safe","profile-specific stop"],
+  "recovery":["reauthorize Personal context","validate delegation/profile version","validate resource ownership/custody","validate entitlement/rules/profile","recover Activity/Project state","lookup outstanding operation status","reconcile pending choices","recompute remaining budgets from receipts","never blind retry","never duplicate spend/progress/output/Event","stale/ambiguity causes review stop"],
+  "no_ai_fallback":["authored activity labels","deterministic templates","owning-domain result summaries","structured changed-spent-waiting-next cards","authorized seeded flavor tables","manual journal","explicit choice menus"],
+  "acceptance_scenarios":[
+    {"id":"APM02-A01","scenario":"zero-Campaign user starts Cozy Solo","expected":"Personal scope only; explicit controller/delegation"},
+    {"id":"APM02-A02","scenario":"until-next-choice","expected":"routine steps progress; stops before meaningful choice"},
+    {"id":"APM02-A03","scenario":"material budget five units","expected":"sixth unit cannot be consumed automatically"},
+    {"id":"APM02-A04","scenario":"background enabled for one crafting Project","expected":"unrelated Projects never start implicitly"},
+    {"id":"APM02-A05","scenario":"recipe substitution needed","expected":"stop before substitution/new cost"},
+    {"id":"APM02-A06","scenario":"app closes without background permission","expected":"safe pause; exit itself grants no progress"},
+    {"id":"APM02-A07","scenario":"one wall-clock day passes","expected":"no game-time progress without explicit authored mapping"},
+    {"id":"APM02-A08","scenario":"resource ownership changes","expected":"next operation reauthorization stops/denies"},
+    {"id":"APM02-A09","scenario":"research reaches hidden reveal boundary","expected":"no clue leakage; stop/wait owning authority"},
+    {"id":"APM02-A10","scenario":"human consent boundary","expected":"human-required; no automated acceptance"},
+    {"id":"APM02-A11","scenario":"NPC response requires GM","expected":"Personal Cozy cannot become GM; stop or sandbox-only flavor"},
+    {"id":"APM02-A12","scenario":"training completes","expected":"advancement remains human-required"},
+    {"id":"APM02-A13","scenario":"ambiguous network progress response","expected":"status lookup; no duplicate progress/spend"},
+    {"id":"APM02-A14","scenario":"AI narrates result","expected":"wording cannot change mechanical output"},
+    {"id":"APM02-A15","scenario":"AI unavailable","expected":"core loop works via structured/manual fallback"},
+    {"id":"APM02-A16","scenario":"summary after batch","expected":"committed state separate from generated journal/flavor"},
+    {"id":"APM02-A17","scenario":"user increases budget","expected":"explicit new profile/delegation version required"},
+    {"id":"APM02-A18","scenario":"stop Cozy then enter Campaign","expected":"Personal automation grant gives no Campaign authority"}
+  ],
+  "future_touchpoints":["Cozy preference profile","delegation specialization","eligible-operation enumeration","Personal host adapter","budget/stop evaluator","bounded background coordinator","summary/provenance projection","sparse notification adapter","no-AI renderer","optional AI narration","crafting/research/upkeep/training/creative adapters","status/reconnect/revocation fixtures"],
+  "nonauthorization":{"implementation":false,"migration":false,"unbounded_background":false,"real_money_auto_spend":false,"automatic_irreversible_advancement":false,"human_consent_automation":false,"npc_global_story_authority":false,"ai_gm_mechanical_authority":false,"campaign_authority_transfer":false,"t04_before_september":false}
+}
