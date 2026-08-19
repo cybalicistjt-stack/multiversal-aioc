@@ -1,0 +1,21 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"APW-04",
+  "attempt_id":"APW-04-attempt-001",
+  "track":"asynchronous-persistent-workspace",
+  "repository":"cybalicistjt-stack/multiversal-aioc",
+  "status":"selected_not_started",
+  "owner_selected":true,
+  "selected_at":"2026-08-19T01:48:00Z",
+  "selection_reason":"APW-03 completed_verified in PR #419. The owner-approved interleave selects APW-04 immediately before APM-02.",
+  "objective":"Define the Personal Workspace and No-Campaign Home so a subscribed/authorized user with zero Campaign memberships still has a useful governed Multiversal environment for owned Characters, creative work, references, practice/sandbox preparation, notifications and account resources while Personal and Campaign contexts remain explicitly separated and no Personal route implies GM/Player/Campaign authority.",
+  "program_plan":"governance/application-planning/asynchronous-persistent-workspace/APW_ASYNCHRONOUS_PLAY_AND_PERSISTENT_WORKSPACE_PROGRAM.md",
+  "program_backlog":"governance/application-planning/asynchronous-persistent-workspace/APW_PROGRAM_BACKLOG.json",
+  "depends_on":["APW-01"],
+  "dependency_evidence":{"APW-01":{"status":"completed_verified","pull_request":409},"APW-03":{"status":"completed_verified","pull_request":419,"validated_head":"60b53fd2c97c81cc96f825f84fd0fe7a9e573c90","repository_health_run":32205351861,"merge_sha":"470957df2158bff8fbd5a6d32b4471430c227d78"}},
+  "completion_gate":"A subscribed user with zero Campaign memberships has a useful governed Personal workspace and can move between Personal and Campaign contexts without authority bleed.",
+  "required_design_questions":["What belongs in Personal Home versus a Campaign Home/Session/Creator Project?","Which resources can be truly Personal-owned and which may only be referenced from Campaign or published/canonical sources?","How are Characters outside Campaigns represented and later proposed/added to Campaigns without ownership/authority confusion?","What practice/sandbox operations are safe in Personal context and how are their outputs kept non-Campaign/noncanonical?","How do CSW Creative Library/Story Bible projects appear in Personal Home?","How are notifications, recent work, drafts, pending invitations and account/entitlement information projected without revealing inaccessible Campaign content?","How does context switching reauthorize navigation, search, caches, recent-item links and AI context?","What happens when a user has zero Campaigns, leaves their last Campaign or loses access?","How are Personal exports/imports/backups/recovery separated from Campaign-private data?","How does APW-04 hand off to APM-02 Cozy Solo without granting Campaign or automation authority?"],
+  "preserved_parallel_tracks":["APM-02 follows APW-04","CSW-03 follows APM-02","CCTI-12-T04 deferred until September 2026","WP-011 dormant","DS-008 blocked non-owner"],
+  "nonauthorization":["application implementation","migration execution","Personal route as global GM/Player authority","copying Campaign-private truth into Personal ownership","canonical promotion","public marketplace","release/deployment","CCTI-12-T04 before September 2026"],
+  "next_action":"Execute APW-04 as a bounded design/governance tranche defining Personal Home resources, context switching/reauthorization, zero-Campaign usability, Character/creative/sandbox boundaries, notifications/recent work and privacy/recovery behavior."
+}
