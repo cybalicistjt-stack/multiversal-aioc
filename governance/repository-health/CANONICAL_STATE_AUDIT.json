@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.4.0",
+  "schema_version": "1.5.0",
   "audit_id": "CRS-CANONICAL-STATE-AUDIT-CURRENT",
-  "status": "completed_verified",
+  "status": "completed_verified_with_owner_routing_update",
   "result": "zero_known_conflicting_authority",
   "known_conflicts": [],
   "production_resume_authorized": true,
@@ -12,17 +12,21 @@
       "live_workflows_expected": [".github/workflows/_validation-core-profile.yml",".github/workflows/self-hosted-windows-runner-smoke.yml",".github/workflows/validate-repository-health.yml"],
       "open_governed_prs": [
         {"number":61,"work_item":"WP-011","merge_authority":false,"activation":"special_environment_owner_gate"},
-        {"number":191,"work_item":"CCTI-12-T04","merge_authority":false,"activation":"CURRENT — clean-main reconstruction and hardened validation"}
+        {"number":191,"work_item":"CCTI-12-T04","merge_authority":false,"activation":"DEFERRED OWNER UNTIL SEPTEMBER 2026"}
       ],
       "recently_completed": {"work_item":"POST-GATX-SUCCESSOR","pr":203,"validated_head":"3b9e33cb22b8d4e3f2558135ba0fc36a8c8ad223","merge":"8685165318b1f3782903bfe137ba8257539af017","validation_run":32197192589,"health_run":32197192592,"package_sha256":"f07bfc00bb2708e48d0d85118fd1861e017b720d4d85ba1d912ede7b6b5bc694","validation_retirement_pr":204,"validation_retirement_merge":"bf61c64c89e7ea997842ea7442797fba619d0e28","tester_distribution_approved":false}
     }
   },
   "authority_checks": [
-    {"id":"single-selector","status":"PASS","evidence":"CURRENT_WORK_POINTER selects CCTI-12-attempt-004 only."},
-    {"id":"workflow-deny-by-default","status":"PASS","evidence":"App returned to the permanent three-workflow namespace after post-GATX validation retirement."},
-    {"id":"validator-deny-by-default","status":"PASS","evidence":"Post-GATX builder/verifier are no longer current validation authority after completion."},
-    {"id":"open-pr-authority","status":"PASS","evidence":"Only T04 is selected; WP-011 remains dormant and no open PR can merge by existence."},
-    {"id":"history-preservation","status":"PASS","evidence":"Retired workflows and superseded PRs remain recoverable as provenance without current authority."}
+    {"id":"single-selector","status":"PASS","evidence":"CURRENT_WORK_POINTER selects APW-01-attempt-001 only."},
+    {"id":"workflow-deny-by-default","status":"PASS","evidence":"App remains on the permanent workflow namespace after post-GATX validation retirement; the September T04 GitHub-hosted path must be explicitly approved/registered before use."},
+    {"id":"validator-deny-by-default","status":"PASS","evidence":"No historical T04 workflow or validator regains authority from preserved branches by existence."},
+    {"id":"open-pr-authority","status":"PASS","evidence":"No open application PR is selected current work; T04 and WP-011 have merge_authority false."},
+    {"id":"route-around-authority","status":"PASS","evidence":"Owner decision defers T04 until September 2026 and selects APW-01 as the next governed design operation."},
+    {"id":"history-preservation","status":"PASS","evidence":"T04 source and partial clean-reconstruction branches remain recoverable as unfinished provenance without current authority."}
   ],
-  "resumed_work_item": "CCTI-12-T04"
+  "resumed_work_item": "APW-01",
+  "deferred_work_item": "CCTI-12-T04",
+  "deferred_until": "2026-09-01",
+  "owner_decision": "governance/ai/runtime/OWNER_DECISION_2026-08-18_DEFER_CCTI12_T04_TO_SEPTEMBER.md"
 }
