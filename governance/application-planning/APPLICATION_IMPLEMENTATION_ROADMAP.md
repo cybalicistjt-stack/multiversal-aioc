@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 5.11.0  
-**Status:** ACTIVE — FINAL COMBINED WORKSPACE ACCEPTANCE  
+**Version:** 5.12.0  
+**Status:** COMBINED WORKSPACE IMPLEMENTATION — COMPLETED_VERIFIED  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-19
 
@@ -10,7 +10,7 @@
 
 Current work is selected only by bootstrap → authority registry → current pointer → selected checkpoint → live GitHub evidence. Historical detail remains in Git history and completed checkpoints rather than being recopied into every roadmap revision.
 
-Implementation transitions use one bounded state synchronization after a verified application merge, one AIOC repository-health gate, and one final selector verification. Ordinary implementation operations do not trigger repeated roadmap/pointer rewrites.
+The strict combined APW/CSW/APM implementation sequence is now **COMPLETED_VERIFIED**. `APW-I07-attempt-001` is retained only as the completed continuity anchor and grants no further application implementation authority. No deferred, dormant, blocked, distribution, release or provider track becomes active merely because the sequence completed.
 
 ## Completed verified foundations
 
@@ -42,56 +42,44 @@ The APW/APM/CSW design series is **COMPLETED_VERIFIED** through APW-08, APM-06 a
 | APM-I04 | completed_verified | PR #223 / merge `4276d50c…` | `0020_apm_connected_cozy_shared_play.json` |
 | APM-I05 | completed_verified | PR #224 / merge `eff6a3b5…` | `0021_apm_autogm_mini_campaign_director.json` |
 | APM-I06 | completed_verified | PR #225 / merge `3f30cc2b…` | none |
-| APW-I07 | **selected_not_started** | `APW-I07-attempt-001` | inspect live head first |
+| APW-I07 | **completed_verified** | PR #226 / `eb9e7379…` / merge `ecbca572…` | none |
 
-### APM-I06 completion evidence
+### APW-I07 final completion evidence
 
-Application PR #225 completed from exact validated head `b9726b15e5b32fa66610769f011fd7a8379b7e9c`. Repository-health run `32296415327` passed. Product run `32296415533` passed self-hosted Linux, self-hosted Windows and deterministic cross-platform comparison on the first attempt. All 24 focused APM-I06 recovery/safety tests passed before squash merge `3f30cc2ba1ace9a73fdb101b536a9e55bf140a92`.
+Application PR #226 completed from exact validated head `eb9e7379d459e11617844706c2fba4ba85b25331`. Repository-health run `32297933654` passed. Product run `32297933813` passed self-hosted Windows, self-hosted Linux and deterministic cross-platform comparison; deterministic comparison job `96214004792` passed. All 25 focused APW-I07 whole-program acceptance tests passed before squash merge `ecbca5720f4ec2d9dc518a2d3ece8752b7dc9a9e`.
 
-Live inspection proved no durable APM-I06 schema gap, so no migration `0022` was created. Shared APM-I01 run/delegation/operation/lifecycle/recovery checkpoints plus APM-I03/I04/I05 mode-specific recovery evidence were sufficient. The implementation added a status-first cross-mode recovery coordinator, role-safe projection, non-mutating replay evidence, mode-transition authority isolation, optional-AI rejection and accessible no-AI/zero-paid-service recovery acceptance without creating a second canonical ledger.
+The first candidate `f4e0f673783f178c9bb16834ac892cde7013a5f8` exposed a real TypeScript exact-literal timestamp inference defect in two replay helper parameters. Only those parameter types were widened to `string`; no Action/Event authority, visibility rule, idempotency rule, test expectation or validation threshold was weakened. The repaired exact head passed all required gates without an A2 retry.
 
-## Current work — APW-I07
+Live seam inspection proved no durable APW-I07 schema gap. No migration `0022` was added or reserved. Existing APW-I03 Action/decision/Event persistence, APW-I06 notification/deep-link recovery, CSW-I08 creator projection and APM-I06 recovery evidence were sufficient for the final whole-program proof.
 
-**APW-I07 — End-to-end hybrid acceptance: live → async → GM resolution → Player return → live continuation** is the sole selected application implementation slice and the final item in the strict combined implementation sequence.
+APW-I07 proves one continuous authoritative journey: live Session → stable asynchronous Player Action → disconnect → delayed GM resolution → reauthorized Player return → live continuation from the exact committed `ActionResultCommitted` Event and resulting Session version. Duplicate submission and GM decision identities return prior evidence rather than duplicating accepted effects. Stale Session state or revoked authority fails closed. Notifications/deep links are reauthorized navigation hints rather than permission tokens. Creator Personal/Workshop material remains independent from Campaign authority; Sandbox remains noncanonical. Automated-play recovery remains non-mutating, no-AI and manual-fallback capable against the same ordinary history.
 
-Repository: `cybalicistjt-stack/Multiversal-app`  
-Attempt: `APW-I07-attempt-001`  
-State: `selected_not_started`
+## Current state — combined sequence complete
 
-APW-I07 is a whole-program acceptance/integration slice. It proves that completed APW, CSW and APM work shares one authoritative account/context/Campaign/Session/Action/Event history. It does not create a new state engine or feature family.
+There is **no active application implementation slice** after APW-I07.
 
-Required boundaries:
-- one deterministic journey begins in live Session state, submits one stable asynchronous Player Action, survives disconnect, resolves later through existing GM/Action authority, returns one accepted result to the reauthorized Player and resumes live play after the exact resulting Event cursor;
-- duplicate submit/status/reconnect paths return prior evidence and never duplicate the accepted Action/Event outcome;
-- stale Action versions, stale context membership, revoked permission or stale notification/deep-link cache cannot silently overwrite or restore protected authority;
-- authorization and D05 visibility filtering happen before return notifications, badges/counts, deep-link previews, result cards, search, replay or support evidence;
-- delayed GM resolution stays in the existing Action/adjudication owner; APW coordinates cadence/status only;
-- creator Personal/Workshop material remains independent from Campaign authority and incorporation remains explicit/receipt-bound;
-- automated-play pause/recovery remains compatible with the same ordinary history and cannot fork Campaign/Event state;
-- desktop/mobile/keyboard/screen-reader/nonvisual paths expose equivalent cadence, pending/result/recovery and continuation state;
-- optional AI can be fully disabled and blocking acceptance uses zero paid services;
-- cross-platform deterministic receipts agree on authoritative identities, versions and Event cursors while presentation text may differ.
+Completion anchor: `APW-I07-attempt-001`  
+Application main: `ecbca5720f4ec2d9dc518a2d3ece8752b7dc9a9e`  
+Migration head: `0021_apm_autogm_mini_campaign_director.json`  
+Implementation authority: **none**
 
-First operation: re-fetch App main and migration head once, inspect completed APW-I03 async Action/GM inbox/result-return seams, APW-I06 notification/deep-link recovery, CSW-I08 creator compatibility and APM-I06 recovery compatibility, decide whether any genuine durable APW-I07 delta requires migration `0022`, then implement the smallest deterministic whole-program hybrid acceptance journey.
+The APW-I07 checkpoint remains selected only as a completed continuity anchor so restart/bootstrap logic has an exact verified terminal state. It does not authorize additional product work.
 
-Canonical App baseline after APM-I06: `3f30cc2ba1ace9a73fdb101b536a9e55bf140a92`. Migration head remains `0021_apm_autogm_mini_campaign_director.json`.
-
-## Default strict implementation sequence
+## Default strict implementation sequence — complete
 
 `APW-I01 → CSW-I01 → APM-I01 → APW-I02 → APW-I03 → APW-I04 → CSW-I02 → APM-I02 → APM-I03 → APW-I05 → CSW-I03 → CSW-I04 → CSW-I05 → CSW-I06 → CSW-I07 → APW-I06 → CSW-I08 → APM-I04 → APM-I05 → APM-I06 → APW-I07`
 
-Everything through APM-I06 is completed_verified. APW-I07 is selected_not_started.
+**All 21 slices are completed_verified.**
 
 ## Migration and ownership policy
 
 - migrations `0001` through `0021` are immutable predecessors;
-- every tranche rechecks current App main/migration head once before mutation;
-- no next migration number is reserved in advance;
-- APW-I07 uses migration `0022` only if live inspection proves a genuine durable schema delta; an end-to-end acceptance fixture alone is not a schema reason;
-- APW-I07 cannot absorb Campaign, Session, Action, Event, Character, creator, automated-play or visibility truth into a new hybrid ledger;
-- one stable operation ID and owner-domain accepted Event evidence remain the basis of async retries and return recovery;
-- deep links/notifications are navigation/recovery hints, never permission tokens;
-- broad offline authoritative mutation remains out of scope;
+- migration `0022` does not exist and is not reserved;
+- future migrations require a newly authorized work item plus a demonstrated durable schema delta;
+- no future acceptance or integration work may absorb Campaign, Session, Action, Event, Character, creator, automated-play or visibility truth into a parallel ledger;
+- one stable operation ID, expected-version checks and owner-domain accepted Event/status evidence remain the basis of retries and recovery;
+- deep links and notifications remain navigation/recovery hints, never permission tokens;
+- broad offline authoritative mutation remains out of scope unless separately designed and authorized;
 - optional AI has no mechanical, canonical, permission, consent or adjudication authority.
 
 ## Internal Alpha milestones
@@ -100,16 +88,16 @@ Everything through APM-I06 is completed_verified. APW-I07 is selected_not_starte
 2. Between-session and creator foundation — **complete**.
 3. First creator and automated experiences — **complete**.
 4. Deep creator workspace — **complete**.
-5. Integrated shell and connected automation — **complete** through APM-I06.
-6. Whole-system hybrid proof — **APW-I07 current**.
+5. Integrated shell and connected automation — **complete**.
+6. Whole-system hybrid proof — **complete**.
 
-Tester distribution remains separately owner-gated.
+Tester distribution remains separately owner-gated and is not activated by this completion.
 
 ## Preserved/deferred work
 
-- **CCTI-12-T04:** owner-deferred until September 2026; preserve App PR #191 and its branches. On/after 2026-09-01 establish the owner-approved validation route before reevaluation.
+- **CCTI-12-T04:** owner-deferred until September 2026; preserve App PR #191 and its branches. On or after 2026-09-01, establish the owner-approved validation route before reevaluation. It is not selected now.
 - **WP-011:** dormant until the required special Mac environment is available.
-- **DS-008:** blocked non-owner exact-byte transfer/validation; never reconstruct checksum-bound bytes from excerpts/OCR/memory.
+- **DS-008:** blocked non-owner exact-byte transfer/validation; never reconstruct checksum-bound bytes from excerpts, OCR or memory.
 
 ## Permanent validation rules
 
@@ -122,6 +110,8 @@ Only evidence-backed `completed_verified` is complete. A failed required gate le
 
 ## Nonauthorization
 
-Current selection authorizes only APW-I07. It does not authorize migration `0022` without a proven durable delta, new product feature families, public matchmaking, multiplayer AutoGM expansion, broad offline authoritative mutation, AI mechanical/canonical/permission/consent authority, T04 before September, tester distribution, release/deployment or paid-provider activation.
+Completion of the strict sequence does not authorize migration `0022`, new product feature families, CCTI-12-T04 before September 2026, WP-011 without its required environment, reconstruction of DS-008 blocked bytes, tester distribution, public release/deployment, paid-provider activation, public matchmaking, multiplayer AutoGM expansion, broad offline authoritative mutation, or AI mechanical/canonical/permission/consent authority.
 
-“Continue” means execute the next verified unfinished operation.
+A new product implementation slice requires a new explicit owner routing decision and canonical selector transition.
+
+“Continue” from this completed state means preserve the verified terminal state and execute only the next separately authorized routing or maintenance operation; it does not implicitly invent or activate new product work.
