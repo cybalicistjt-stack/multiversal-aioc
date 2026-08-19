@@ -1,5 +1,5 @@
 {
-  "schema_version":"1.8.0",
+  "schema_version":"1.9.0",
   "program_id":"CSW",
   "program_name":"Creator Storycraft Workspace",
   "status":"design_active",
@@ -10,7 +10,7 @@
     {"id":"CSW-01","name":"Storycraft Vocabulary Creative Object Model and Authority","status":"completed_verified","pull_request":413,"repository_health_run":32203942744,"merge_sha":"0627188ce143625565912fc81a7ebc2b9dd436a8"},
     {"id":"CSW-02","name":"Creative Library Story Bible and Project Memory","status":"completed_verified","pull_request":415,"repository_health_run":32204385272,"merge_sha":"99d4a963d442a0602de9935e69f4a18e7acc5b0c"},
     {"id":"CSW-03","name":"Idea Inbox and Inspiration Engine","status":"completed_verified","depends_on":["CSW-01","CSW-02"],"pull_request":425,"validated_head":"f7c318b6d0b100699a8d3c99706c2e9a437c2949","repository_health_run":32223163209,"merge_sha":"f6d3c892d9df70083f7c44d82f3c0d6165a67c74"},
-    {"id":"CSW-04","name":"Guided Creation Workflows","status":"selected_not_started","depends_on":["CSW-01","CSW-02","CSW-03"],"dependencies_satisfied":true,"completion_gate":"Novice users can reach a coherent usable pre-authoritative draft through optional guidance, while expert users can bypass, reorder or customize guidance without losing capability; all outputs remain attributable, visibility-safe and subject to explicit owning-domain incorporation."},
+    {"id":"CSW-04","name":"Guided Creation Workflows","status":"design_complete_pending_validation","depends_on":["CSW-01","CSW-02","CSW-03"],"dependencies_satisfied":true,"deliverables":["CSW-04_GUIDED_CREATION_WORKFLOWS.md","CSW-04_WORKFLOW_PRIMITIVE_AND_TASK_FAMILY_MATRIX.json","CSW-04_GUIDANCE_CONTEXT_TEMPLATE_AI_ACCEPTANCE.json","CSW-04_REVIEW_RECEIPT.md"],"completion_gate":"Novice users can reach a coherent usable pre-authoritative draft through optional guidance, while expert users can bypass, reorder or customize guidance without losing capability; all outputs remain attributable, visibility-safe and subject to explicit owning-domain incorporation."},
     {"id":"CSW-05","name":"Plot Adventure and Narrative Design Lab","status":"planned","depends_on":["CSW-01","CSW-02","CSW-04"]},
     {"id":"CSW-06","name":"Continuity Consistency and Open-Thread Tracker","status":"planned","depends_on":["CSW-02","CSW-05"]},
     {"id":"CSW-07","name":"Writing Studio and Revision Workspace","status":"planned","depends_on":["CSW-02","CSW-04","CSW-06"]},
@@ -19,6 +19,7 @@
     {"id":"CSW-10","name":"Integration Acceptance and Implementation Handoff","status":"planned","depends_on":["CSW-09"]}
   ],
   "combined_owner_approved_sequence_after_csw04":["CSW-05","APM-03","CSW-06","APM-04","CSW-07","CSW-08","APW-05","CSW-09","APW-06","APM-05","CSW-10","APW-07","APM-06","APW-08"],
+  "design_rules":["Guidance is optional scaffolding, not authority.","Workflow runs store progress/orchestration while durable creative answers remain CSW content.","Freeform and guided creation are peer interaction modes.","Skip/revisit/reorder/pause/branch/abandon are first-class.","Story Bible context is authorization-filtered and reference-based.","CSW-03 Inspiration remains candidate-only.","Creator templates are versioned, provenance-preserving and non-executable.","Optional AI never controls completion or auto-saves answers.","Workflow completion remains pre-authoritative."],
   "implementation_boundary":"Planning only; application implementation/persistence migrations remain unauthorized.",
-  "nonauthorization":["application implementation","migration execution","mandatory wizard-only creation","automatic authoritative content","AI publication authority","canonical promotion","release/deployment","CCTI-12-T04 before September 2026"]
+  "nonauthorization":["application implementation","migration execution","mandatory wizard-only creation","automatic authoritative content","AI publication authority","arbitrary executable workflow templates","canonical promotion","release/deployment","CCTI-12-T04 before September 2026"]
 }
