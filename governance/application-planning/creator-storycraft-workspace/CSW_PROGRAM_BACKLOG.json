@@ -1,16 +1,15 @@
 {
-  "schema_version":"1.2.0",
+  "schema_version":"1.3.0",
   "program_id":"CSW",
   "program_name":"Creator Storycraft Workspace",
   "status":"design_active",
   "owner":"John Brandon Turner",
   "approved_planning_direction":"2026-08-18",
-  "execution_rule":"dependency_ordered_complete_substantive_tranche_before_final_gate",
-  "current_item":"CSW-01",
-  "current_attempt":"CSW-01-attempt-001",
+  "current_item":"CSW-02",
+  "current_attempt":"CSW-02-attempt-001",
   "tranches":[
-    {"id":"CSW-01","name":"Storycraft Vocabulary Creative Object Model and Authority","status":"design_complete_pending_validation","depends_on":[],"sequence_prerequisites_satisfied":["APW-01","APM-01"],"deliverables":["CSW-01_STORYCRAFT_VOCABULARY_CREATIVE_OBJECT_MODEL_AND_AUTHORITY.md","CSW-01_CREATIVE_FRAGMENT_AUTHORITY_MATRIX.json","CSW-01_INCORPORATION_AND_TRACEABILITY_MAP.json","CSW-01_REVIEW_RECEIPT.md"],"completion_gate":"Creative fragments have explicit identity lifecycle provenance and authority boundaries and cannot masquerade as Campaign truth published content canonical content or another domain's authoritative object."},
-    {"id":"CSW-02","name":"Creative Library Story Bible and Project Memory","status":"planned","depends_on":["CSW-01"],"completion_gate":"Creators can reliably find understand relate version and recover what they made where it is used what derives from it and what remains unfinished."},
+    {"id":"CSW-01","name":"Storycraft Vocabulary Creative Object Model and Authority","status":"completed_verified","pull_request":413,"validated_head":"f9ee73b106951d037e4db34b7e876d5229bb13b3","repository_health_run":32203942744,"merge_sha":"0627188ce143625565912fc81a7ebc2b9dd436a8"},
+    {"id":"CSW-02","name":"Creative Library Story Bible and Project Memory","status":"selected_not_started","depends_on":["CSW-01"],"dependency_satisfied":true,"completion_gate":"Creators can reliably find understand relate version and recover what they made where it is used what derives from it and what remains unfinished."},
     {"id":"CSW-03","name":"Idea Inbox and Inspiration Engine","status":"planned","depends_on":["CSW-01","CSW-02"]},
     {"id":"CSW-04","name":"Guided Creation Workflows","status":"planned","depends_on":["CSW-01","CSW-02","CSW-03"]},
     {"id":"CSW-05","name":"Plot Adventure and Narrative Design Lab","status":"planned","depends_on":["CSW-01","CSW-02","CSW-04"]},
@@ -21,11 +20,7 @@
     {"id":"CSW-10","name":"Integration Acceptance and Implementation Handoff","status":"planned","depends_on":["CSW-09"]}
   ],
   "planning_order":["CSW-01","CSW-02","CSW-03","CSW-04","CSW-05","CSW-06","CSW-07","CSW-08","CSW-09","CSW-10"],
-  "combined_owner_approved_sequence_after_csw01":["CSW-02","APW-02","APW-03","APW-04","APM-02","CSW-03","CSW-04","CSW-05","APM-03","CSW-06","APM-04","CSW-07","CSW-08","APW-05","CSW-09","APW-06","APM-05","CSW-10","APW-07","APM-06","APW-08"],
-  "activation_evidence":{"APW-01":{"status":"completed_verified","pull_request":409,"repository_health_run":32202132346},"APM-01":{"status":"completed_verified","pull_request":411,"repository_health_run":32203278338}},
-  "design_rules":["CreativeFragment is pre-authoritative by definition.","Ready/incorporated never means authoritative.","Campaign-bound creative material remains preparation until owning-domain incorporation.","Incorporation pins source version and never silently synchronizes source/target.","A10 D18/D28/D29/D05 and A9 runtime authority remain intact.","No direct CSW canonical promotion path.","AI/automation cannot promote fragments into truth."],
-  "provisional_implementation_handoff":["CSW-I01 creative-fragment identity lifecycle provenance and authority foundation","CSW-I02 Creative Library Story Bible links search and project memory","CSW-I03 Idea Inbox deterministic inspiration tools and optional suggestion seam","CSW-I04 guided creator workflows and templates","CSW-I05 Plot Adventure Design Lab and continuity open-thread analysis","CSW-I06 Writing Studio revisions and factual-reference support","CSW-I07 reuse remix transformation and creator provenance flows","CSW-I08 Creator Command Center APW integration and end-to-end creator acceptance"],
-  "implementation_boundary":"Planning only. No new persistence root or migration is authorized by CSW-01.",
-  "integration_boundaries":{"A10":"A10 remains authority for governed World Adventure creator-content and authoring-provenance persistence.","APW":"APW remains authority for broader Personal Workspace and Creator Workshop.","APM":"APM-01 constrains automation/AI authority.","AI":"Core CSW works without external AI; optional AI is suggestion-only."},
-  "nonauthorization":["application implementation","migration execution","new persistence root","release","deployment","tester access","paid services","production credentials","autonomous AI authorship/publication","canonical promotion","public creator marketplace","training on private user creative material","CCTI-12-T04 before September 2026"]
+  "combined_owner_approved_sequence_after_csw02":["APW-02","APW-03","APW-04","APM-02","CSW-03","CSW-04","CSW-05","APM-03","CSW-06","APM-04","CSW-07","CSW-08","APW-05","CSW-09","APW-06","APM-05","CSW-10","APW-07","APM-06","APW-08"],
+  "implementation_boundary":"Planning only; application implementation and persistence migrations remain unauthorized.",
+  "nonauthorization":["application implementation","migration execution","new persistence root","canonical promotion","autonomous AI publication","release/deployment","CCTI-12-T04 before September 2026"]
 }
