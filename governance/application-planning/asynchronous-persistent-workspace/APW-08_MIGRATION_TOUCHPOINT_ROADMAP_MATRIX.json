@@ -1,0 +1,31 @@
+{
+  "schema_version":"1.0.0",
+  "work_item":"APW-08",
+  "baseline":{"application_repository":"cybalicistjt-stack/Multiversal-app","main_sha":"bf61c64c89e7ea997842ea7442797fba619d0e28","current_migration_head":"0008_a10_world_content_authoring.json","next_slot_if_baseline_unchanged":"0009"},
+  "migration_policy":[
+    "0001 through 0008 are immutable predecessors.",
+    "Inspect application main immediately before each implementation branch; use the next unused additive number.",
+    "0009 is not permanently reserved by planning.",
+    "Do not create a migration for a slice with no schema delta.",
+    "Do not combine unrelated ownership merely for migration convenience.",
+    "Never create a monolithic APW/CSW/APM state store."
+  ],
+  "expected_change_families":[
+    {"family":"APW persistent workspace and async orchestration","likely_slices":["APW-I01","APW-I02","APW-I03","APW-I04","APW-I06"],"owners":["authority-control","campaign-membership","actions-adjudication","downtime-projects","audit-export-recovery","visibility-projection"],"schema_expectation":"additive fields/records only where current Stage A contracts lack durable Personal/async/activity/recovery metadata","candidate_migration_name":"<next>_apw_persistent_workspace.json","reservation":false},
+    {"family":"CSW creator support","likely_slices":["CSW-I01","CSW-I02","CSW-I03","CSW-I04","CSW-I05","CSW-I06","CSW-I07"],"owners":["authoring-provenance"],"schema_expectation":"D29 creative-support records, references, revisions, lineage, workflow and incorporation receipts; governed payloads remain external references","candidate_migration_name":"<next>_csw_creator_support.json","reservation":false},
+    {"family":"APM automated play","likely_slices":["APM-I01","APM-I02","APM-I03","APM-I04","APM-I05"],"owners":["authority-control","audit-export-recovery","campaign-membership","owning activity/adventure domains"],"schema_expectation":"run/delegation/profile/package linkage, contribution and parent-child completion bookkeeping only; ordinary game state stays in owner domains","candidate_migration_name":"<next>_apm_automated_play.json","reservation":false},
+    {"family":"cross-program integration","likely_slices":["CSW-I08","APM-I06","APW-I07"],"owners":["projection/recovery/integration only"],"schema_expectation":"prefer no migration; add only minimal evidence/resume/version fields proven missing during implementation","candidate_migration_name":"<next>_workspace_integration.json if genuinely required","reservation":false}
+  ],
+  "touchpoints":[
+    {"area":"application shell and routing","paths":["apps/client-ui/src/App.tsx","apps/client-ui/src/**"],"slices":["APW-I01","APW-I02","APW-I06","CSW-I08"],"rule":"context and navigation projection only; UI never becomes authority"},
+    {"area":"Campaign Scene Session","paths":["domains/campaign-membership/**","existing Stage A Campaign/Scene/Session roots","packages/contracts/src/**","schemas/domains/**"],"slices":["APW-I01","APW-I03","APW-I04","APM-I04"],"rule":"reuse stable Campaign/Scene/Session identities and contextual permissions"},
+    {"area":"Action approval","paths":["domains/actions-adjudication/**","database/migrations/0004_a6_action_approval.json","packages/contracts/src/**","fixtures/domains/**","tests/golden/domains/**"],"slices":["APW-I03","APM-I03"],"rule":"extend A6 additively; one operation/proposal has one authoritative result"},
+    {"area":"recovery diagnostics export","paths":["domains/audit-export-recovery/**","domains/diagnostics-support/**","fixtures/domains/**","tests/golden/domains/**"],"slices":["APW-I03","APW-I06","APM-I01","APM-I06"],"rule":"status/Event recovery and privacy-safe evidence; no blind retry"},
+    {"area":"downtime projects resources","paths":["domains/downtime-projects/**","A8-owned resource roots","A9 investigation/social roots"],"slices":["APW-I04","APM-I02","APM-I04"],"rule":"orchestration cannot bypass owning-domain reservation/consent/visibility"},
+    {"area":"creator authoring","paths":["domains/authoring-provenance/**","database/migrations/0008_a10_world_content_authoring.json","domains/entity-catalog/**","domains/adventure-travel/**","D18 World/location root","visibility-projection root"],"slices":["APW-I05","CSW-I01","CSW-I02","CSW-I03","CSW-I04","CSW-I05","CSW-I06","CSW-I07","CSW-I08"],"rule":"D29 creative support plus explicit incorporation; no duplicate governed truth"},
+    {"area":"combat and Adventure automation","paths":["domains/combat-initiative/**","domains/adventure-travel/**","domains/actions-adjudication/**"],"slices":["APM-I03","APM-I05"],"rule":"controller selects only delegated operations; owning domains resolve mechanics"},
+    {"area":"visibility and hidden information","paths":["visibility-projection domain/root","client projections","fixtures/domains/**","tests/golden/domains/**"],"slices":["APW-I06","CSW-I02","CSW-I05","CSW-I08","APM-I03","APM-I04","APM-I05","APM-I06"],"rule":"filter before count/search/topology/notification/export/diagnostic/AI aggregation"},
+    {"area":"verification and packaging","paths":["tools/verify_*.py","tests/**","fixtures/**",".github/workflows/**","internal-alpha runner/package tooling"],"slices":["all"],"rule":"focused construction checks plus declared exact-head final gate; product/package gate follows self-hosted Windows+Linux+deterministic comparison policy"}
+  ],
+  "roadmap_activation":{"after_apw08_verified":"select APW-I01-attempt-001","repository":"cybalicistjt-stack/Multiversal-app","status":"selected_not_started","implementation_authority_scope":"APW-I01 only","t04":"remains owner-deferred until 2026-09-01","wp011":"may preempt only when special Mac environment is available","ds008":"remains blocked_non_owner","release_deployment_tester_distribution":false}
+}
