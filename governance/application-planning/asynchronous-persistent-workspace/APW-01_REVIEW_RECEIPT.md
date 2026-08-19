@@ -2,8 +2,8 @@
 
 **Work item:** APW-01 — Authority, Account, Context and Terminology Canonicalization  
 **Attempt:** APW-01-attempt-001  
-**Branch:** `governance/apw-01-authority-context-canonicalization`  
-**Review state:** substantive design complete; repository/PR validation pending
+**Design branch:** `governance/apw-01-authority-context-canonicalization`  
+**Review state:** **COMPLETED_VERIFIED**
 
 ## Reviewed source contracts
 
@@ -45,4 +45,17 @@
 - Application implementation authorized: **NO**
 - CCTI-12-T04 resumed: **NO**
 
-Repository-health/PR merge evidence remains to be attached before `completed_verified` is claimed.
+## Exact validation and merge evidence
+
+- AIOC pull request: **#409**
+- Exact validated head: `f0b6b3d9b64d3b8f7b1fd9d81f6079b14097ef32`
+- Repository-health workflow: **Validate Repository Health**
+- Successful exact-head run: **32202132346**
+- Merge SHA: `2f99a03612dab525eaffd5c0141f84cf8c1b5654`
+
+Two preceding repository-health failures were diagnosed as stale validator assumptions introduced/exposed by the owner-approved T04 route-around, not APW-01 design defects. The bounded repairs were included in the exact validated head:
+
+1. the current September T04 owner-decision file is recognized in the governed runtime namespace; and
+2. singular selected authority is counted by lifecycle `CURRENT`, so CRS `CURRENT_GUARDRAIL` entries remain protective without competing with selected program/backlog authority.
+
+APW-01 is therefore `completed_verified`. The owner-approved interleave advances next to **APM-01 — Automated-Play Authority and Mode Contract**. APW remains unfinished as a program and returns at APW-02 after APM-01, CSW-01 and CSW-02. CCTI-12-T04 remains deferred until September 2026.

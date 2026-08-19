@@ -1,14 +1,14 @@
 {
-  "schema_version": "1.7.0",
-  "updated_at": "2026-08-19T00:16:00Z",
+  "schema_version": "1.8.0",
+  "updated_at": "2026-08-19T00:42:00Z",
   "policy": "governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md",
   "current": [
     {"kind":"bootstrap","path":"governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md","lifecycle":"CURRENT"},
     {"kind":"owner_decision","path":"governance/ai/runtime/OWNER_DECISION_2026-08-18_DEFER_CCTI12_T04_TO_SEPTEMBER.md","lifecycle":"CURRENT"},
     {"kind":"work_pointer","path":"governance/ai/runtime/CURRENT_WORK_POINTER.json","lifecycle":"CURRENT"},
-    {"kind":"checkpoint","path":"governance/ai/work-state/APW-01-attempt-001.json","lifecycle":"CURRENT"},
-    {"kind":"program","path":"governance/application-planning/asynchronous-persistent-workspace/APW_ASYNCHRONOUS_PLAY_AND_PERSISTENT_WORKSPACE_PROGRAM.md","lifecycle":"CURRENT"},
-    {"kind":"backlog","path":"governance/application-planning/asynchronous-persistent-workspace/APW_PROGRAM_BACKLOG.json","lifecycle":"CURRENT"},
+    {"kind":"checkpoint","path":"governance/ai/work-state/APM-01-attempt-001.json","lifecycle":"CURRENT"},
+    {"kind":"program","path":"governance/application-planning/automated-play-modes/APM_AUTOMATED_PLAY_MODES_PROGRAM.md","lifecycle":"CURRENT"},
+    {"kind":"backlog","path":"governance/application-planning/automated-play-modes/APM_PROGRAM_BACKLOG.json","lifecycle":"CURRENT"},
     {"kind":"program","path":"governance/repository-health/CANONICALIZATION_RETIREMENT_SWEEP.md","lifecycle":"CURRENT_GUARDRAIL"},
     {"kind":"backlog","path":"governance/repository-health/CRS_BACKLOG.json","lifecycle":"CURRENT_GUARDRAIL"},
     {"kind":"roadmap","path":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md","lifecycle":"CURRENT"},
@@ -30,7 +30,12 @@
     "application .ai compatibility paths and historical .agent/.ai work-order records preserved in Git history",
     "pre-CRS roadmap/index revisions preserved in Git history"
   ],
-  "active_planning_work": {"work_item":"APW-01","attempt_id":"APW-01-attempt-001","repository":"cybalicistjt-stack/multiversal-aioc","lifecycle":"CURRENT","state":"selected_not_started","implementation_authority":false},
+  "active_planning_work": {"work_item":"APM-01","attempt_id":"APM-01-attempt-001","repository":"cybalicistjt-stack/multiversal-aioc","lifecycle":"CURRENT","state":"selected_not_started","implementation_authority":false},
+  "preserved_planning_tracks": [
+    {"program":"APW","lifecycle":"CURRENT_COMPATIBLE","state":"interleaved_waiting","completed_item":"APW-01","next_item":"APW-02","resume_after":["APM-01","CSW-01","CSW-02"],"implementation_authority":false},
+    {"program":"CSW","lifecycle":"CURRENT_COMPATIBLE","state":"owner_approved_planned_not_active","next_item":"CSW-01","activation_after":"APM-01","implementation_authority":false}
+  ],
+  "recently_completed_design_work": {"work_item":"APW-01","attempt_id":"APW-01-attempt-001","status":"completed_verified","pull_request":409,"validated_head":"f0b6b3d9b64d3b8f7b1fd9d81f6079b14097ef32","repository_health_run":32202132346,"merge_sha":"2f99a03612dab525eaffd5c0141f84cf8c1b5654"},
   "deferred_application_work": [
     {"work_item":"CCTI-12-T04","attempt_id":"CCTI-12-attempt-004","pr":191,"source_branch":"internal-alpha/ccti12-t04-local-review-worksets","source_head":"3d32ee9317bc924a6a8206121402c68bdf8a061b","clean_branch":"internal-alpha/ccti12-t04-clean","clean_head_at_recovery":"f8a3e600131366b3fff9e8c0bb3ca24d48ae0d15","lifecycle":"CURRENT_COMPATIBLE","state":"deferred_owner_until_2026-09","merge_authority":false}
   ],
@@ -43,5 +48,5 @@
     {"work_item":"WP-011","pr":61,"branch":"wo/WP011-hosted-macos-evidence","lifecycle":"CURRENT_COMPATIBLE","state":"special_environment_dormant","merge_authority":false}
   ],
   "repository_health": {"program":"CRS","status":"completed_verified","audit_result":"zero_known_conflicting_authority","application_main":"bf61c64c89e7ea997842ea7442797fba619d0e28"},
-  "rule": "Anything not explicitly CURRENT or CURRENT_COMPATIBLE here cannot govern current work merely because it exists. Deferred CURRENT_COMPATIBLE work remains preserved but cannot preempt the selected CURRENT work without owner override or its resume condition being reached."
+  "rule": "Anything not explicitly CURRENT or CURRENT_COMPATIBLE here cannot govern current work merely because it exists. Deferred or interleaved CURRENT_COMPATIBLE work remains preserved but cannot preempt the selected CURRENT work without owner override or the recorded sequence/resume condition."
 }
