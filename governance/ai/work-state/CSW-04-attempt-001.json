@@ -1,21 +1,20 @@
 {
-  "schema_version":"1.2.0",
+  "schema_version":"1.3.0",
   "work_item_id":"CSW-04",
   "attempt_id":"CSW-04-attempt-001",
   "track":"creator-storycraft-workspace",
   "repository":"cybalicistjt-stack/multiversal-aioc",
   "branch":"governance/csw-04-guided-creation-workflows",
-  "status":"ready_for_validation",
+  "status":"completed_verified",
   "owner_selected":true,
   "selected_at":"2026-08-19T06:27:00Z",
   "started_at":"2026-08-19T06:34:00Z",
   "design_ready_at":"2026-08-19T06:41:00Z",
-  "selection_reason":"CSW-03 completed_verified in PR #425. CSW-01, CSW-02 and CSW-03 satisfy CSW-04 dependencies; the owner-approved interleave selects CSW-04 before CSW-05 and APM-03.",
+  "completed_at":"2026-08-19T06:42:00Z",
   "objective":"Define optional Guided Creation Workflows that help novice creators reach coherent usable drafts for common storycraft tasks while expert creators can bypass, reorder or customize guidance without losing capability, authority separation, provenance, Personal/Campaign visibility safety or freeform creative control.",
-  "depends_on":["CSW-01","CSW-02","CSW-03"],
   "deliverables":["governance/application-planning/creator-storycraft-workspace/CSW-04_GUIDED_CREATION_WORKFLOWS.md","governance/application-planning/creator-storycraft-workspace/CSW-04_WORKFLOW_PRIMITIVE_AND_TASK_FAMILY_MATRIX.json","governance/application-planning/creator-storycraft-workspace/CSW-04_GUIDANCE_CONTEXT_TEMPLATE_AI_ACCEPTANCE.json","governance/application-planning/creator-storycraft-workspace/CSW-04_REVIEW_RECEIPT.md"],
-  "design_findings":["Guided creation is optional scaffolding over existing CSW material, never a mandatory wizard or truth store.","Workflow definition/run objects contain guidance/progress/provenance while durable creative answers remain Creative Fragments/project notes/references.","A reusable primitive library supports prompt, answer, choice, reference, Inspiration, relationship, checklist, review, branch, freeform and handoff steps.","Skip/revisit/dependency-safe reorder/pause/branch/abandon/freeform escape are first-class and preserve explicitly saved work.","Nine initial task families are bounded: backstory, NPC/antagonist, faction, settlement/location, World/culture, mystery, Adventure/quest, encounter, Campaign premise/arc.","Story Bible context is authorization-filtered before search/count/rank/generation and is referenced rather than copied.","CSW-03 Inspiration remains deterministic-first, candidate-only and explicit-save.","Creator templates/presets are versioned, provenance-preserving, pinned per run and non-executable.","Optional AI is step-scoped, never auto-answers/saves/completes/reorders and has full manual/deterministic fallback.","Readiness is advisory and distinguishes missing from skipped/not-applicable/intentionally-unresolved.","Offline Personal drafts reconcile idempotently; Campaign authority is rechecked on reconnect.","Accessibility/mobile parity includes linear semantic outline, textual branches/progress and non-drag reordering.","Workflow completion remains pre-authoritative and owning-domain incorporation is always explicit.","CSW-05 receives seed/branch/unresolved/provenance inputs without treating workflow order as narrative canon."],
-  "completion_gate":{"reusable_primitives":true,"nine_task_families":true,"optional_guidance_freeform_parity":true,"nonlinear_creator_controls":true,"csw_content_reuse":true,"story_bible_visibility_safe":true,"csw03_candidate_boundary":true,"versioned_safe_templates":true,"optional_ai_no_ai_fallback":true,"completion_pre_authoritative":true,"offline_recovery":true,"accessibility_mobile_nonvisual":true,"csw05_handoff":true,"application_implementation_not_activated":true,"final_repository_validation_pending":true,"pull_request_merge_pending":true},
+  "completion_evidence":{"pull_request":427,"validated_head":"a9b17f875a8d2f7da092cb1b68fe8889040112a7","repository_health_run":32224302162,"repository_health_conclusion":"success","merge_sha":"e00d166719cec078ae427f01a376795183683902"},
+  "completion_gate":{"reusable_primitives":true,"nine_task_families":true,"optional_guidance_freeform_parity":true,"nonlinear_creator_controls":true,"csw_content_reuse":true,"story_bible_visibility_safe":true,"csw03_candidate_boundary":true,"versioned_safe_templates":true,"optional_ai_no_ai_fallback":true,"completion_pre_authoritative":true,"offline_recovery":true,"accessibility_mobile_nonvisual":true,"csw05_handoff":true,"application_implementation_not_activated":true,"final_repository_validation_passed":true,"pull_request_merged":true},
   "nonauthorization":["application implementation","migration execution","mandatory wizard-only creation","automatic authoritative content","autonomous AI authorship/publication","arbitrary executable workflow templates","canonical promotion","release/deployment","CCTI-12-T04 before September 2026"],
-  "next_action":"Open bounded CSW-04 governance PR, run exact-head AIOC repository-health, merge after PASS, then record completed_verified evidence and select CSW-05."
+  "next_action":"Historical completion record only. CURRENT_WORK_POINTER selects CSW-05-attempt-001."
 }
