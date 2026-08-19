@@ -1,30 +1,18 @@
 {
-  "schema_version": "2.5.0",
-  "updated_at": "2026-08-19T01:02:00Z",
-  "rule": "This index contains current or preserved unfinished tracks only. Completed historical work remains in Git history and receipts and cannot select current work.",
-  "current": {
-    "work_item_id": "CSW-01",
-    "attempt_id": "CSW-01-attempt-001",
-    "track": "creator-storycraft-workspace",
-    "checkpoint": "governance/ai/work-state/CSW-01-attempt-001.json",
-    "repository": "cybalicistjt-stack/multiversal-aioc",
-    "status": "selected_not_started",
-    "next_gate": "complete_storycraft_vocabulary_creative_object_model_and_authority_without_authoritative_truth_bleed"
-  },
-  "preserved_unfinished": [
-    {"work_item_id":"APW","track":"asynchronous-persistent-workspace","status":"interleaved_waiting","completed_item":"APW-01","next_item":"APW-02","resume_after":["CSW-01","CSW-02"]},
-    {"work_item_id":"APM","track":"automated-play-modes","status":"interleaved_waiting","completed_item":"APM-01","next_item":"APM-02","resume_after":["CSW-01","CSW-02","APW-02","APW-03","APW-04"]},
-    {"work_item_id":"CCTI-12-T04","attempt_id":"CCTI-12-attempt-004","track":"content-catalog-taxonomy-integration","repository":"cybalicistjt-stack/Multiversal-app","source_pull_request":191,"source_branch":"internal-alpha/ccti12-t04-local-review-worksets","clean_branch":"internal-alpha/ccti12-t04-clean","status":"deferred_owner_until_2026-09","resume_rule":"on_or_after_2026-09-01_establish_owner_approved_github_hosted_validation_path_first"},
+  "schema_version":"2.6.0",
+  "updated_at":"2026-08-19T01:12:00Z",
+  "rule":"This index contains current or preserved unfinished tracks only. Completed historical work remains in Git history and receipts and cannot select current work.",
+  "current":{"work_item_id":"CSW-02","attempt_id":"CSW-02-attempt-001","track":"creator-storycraft-workspace","checkpoint":"governance/ai/work-state/CSW-02-attempt-001.json","repository":"cybalicistjt-stack/multiversal-aioc","status":"selected_not_started","next_gate":"complete_creative_library_story_bible_and_project_memory_without_truth_duplication_or_visibility_leakage"},
+  "preserved_unfinished":[
+    {"work_item_id":"APW","track":"asynchronous-persistent-workspace","status":"interleaved_waiting","completed_item":"APW-01","next_item":"APW-02","resume_after":["CSW-02"]},
+    {"work_item_id":"APM","track":"automated-play-modes","status":"interleaved_waiting","completed_item":"APM-01","next_item":"APM-02","resume_after":["CSW-02","APW-02","APW-03","APW-04"]},
+    {"work_item_id":"CCTI-12-T04","attempt_id":"CCTI-12-attempt-004","track":"content-catalog-taxonomy-integration","repository":"cybalicistjt-stack/Multiversal-app","source_pull_request":191,"status":"deferred_owner_until_2026-09","resume_rule":"on_or_after_2026-09-01_establish_owner_approved_github_hosted_validation_path_first"},
     {"work_item_id":"WP-011","track":"apple-special-environment","repository":"cybalicistjt-stack/Multiversal-app","pull_request":61,"status":"special_environment_dormant"},
     {"work_item_id":"DS-008","track":"design-standards-completion","status":"blocked_non_owner"}
   ],
-  "recently_completed_design": [
+  "recently_completed_design":[
+    {"work_item_id":"CSW-01","attempt_id":"CSW-01-attempt-001","status":"completed_verified","governance_pr":413,"validated_head":"f9ee73b106951d037e4db34b7e876d5229bb13b3","repository_health_run":32203942744,"merge":"0627188ce143625565912fc81a7ebc2b9dd436a8"},
     {"work_item_id":"APM-01","attempt_id":"APM-01-attempt-001","status":"completed_verified","governance_pr":411,"validated_head":"b9516a78e3425b09e79efde120fe1ebb1c655fcb","repository_health_run":32203278338,"merge":"4150cbd38f7fcae325aa03b83fcf3c4b3a990765"},
     {"work_item_id":"APW-01","attempt_id":"APW-01-attempt-001","status":"completed_verified","governance_pr":409,"validated_head":"f0b6b3d9b64d3b8f7b1fd9d81f6079b14097ef32","repository_health_run":32202132346,"merge":"2f99a03612dab525eaffd5c0141f84cf8c1b5654"}
-  ],
-  "recently_completed": {"work_item_id":"POST-GATX-SUCCESSOR","application_pr":203,"merge":"8685165318b1f3782903bfe137ba8257539af017","validated_head":"3b9e33cb22b8d4e3f2558135ba0fc36a8c8ad223","package_sha256":"f07bfc00bb2708e48d0d85118fd1861e017b720d4d85ba1d912ede7b6b5bc694","temporary_validation_retired":true},
-  "completed_support": [
-    {"program_id":"VCH","status":"completed_verified","closure_application_pr":200,"closure_merge":"aa286a481fc53fdb969cc10be0388974bdbd3c9e"},
-    {"program_id":"CRS","status":"completed_verified","audit_result":"zero_known_conflicting_authority"}
   ]
 }
