@@ -114,10 +114,11 @@ def check_aioc(root: Path, errors: list[str]) -> dict[str, Any]:
         assert not list(runtime_dir.glob("ROADMAP_INDEX_*_SUPPLEMENT.json"))
 
         current_entries = authority.get("current", [])
-        kinds = [entry.get("kind") for entry in current_entries]
+        selected_entries = [entry for entry in current_entries if entry.get("lifecycle") == "CURRENT"]
+        kinds = [entry.get("kind") for entry in selected_entries]
         for singular in ["bootstrap", "work_pointer", "checkpoint", "program", "backlog", "roadmap"]:
             assert kinds.count(singular) == 1, f"authority registry must contain exactly one CURRENT {singular}"
-        current_checkpoint = next(entry for entry in current_entries if entry.get("kind") == "checkpoint")
+        current_checkpoint = next(entry for entry in selected_entries if entry.get("kind") == "checkpoint")
         assert current_checkpoint["path"] == checkpoint_rel
         assert authority.get("rule", "").startswith("Anything not explicitly CURRENT")
 
