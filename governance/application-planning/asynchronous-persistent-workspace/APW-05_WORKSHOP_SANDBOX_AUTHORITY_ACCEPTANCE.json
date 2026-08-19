@@ -1,0 +1,26 @@
+{
+  "schema_version":"1.0.0",
+  "work_item":"APW-05",
+  "acceptance_cases":[
+    {"id":"personal-workshop","expect":"Workshop remains Personal context; opening it grants no Campaign/global creator authority"},
+    {"id":"reusable-vs-variant","expect":"Personal reusable definition and Campaign variant have independent identity/version and authority"},
+    {"id":"source-update","expect":"Personal source change does not silently mutate any Campaign variant/instance"},
+    {"id":"campaign-edit","expect":"Campaign variant edit does not mutate another user's Personal source"},
+    {"id":"campaign-proposal","expect":"Personal asset enters Campaign through explicit proposal/incorporation flow with decision receipt"},
+    {"id":"instantiate","expect":"runtime instantiation rechecks current authority, dependencies, validation and expected versions in owning domain"},
+    {"id":"sandbox-isolation","expect":"experiment cannot mutate live Character/Campaign/World/investigation/relationship state or award progression"},
+    {"id":"sandbox-save","expect":"keeping an experiment creates explicit new draft/template/proposal identity with provenance rather than converting live-like state"},
+    {"id":"mechanical-comparison","expect":"comparison uses owning-domain deterministic rules and exact rules/schema/dependency evidence"},
+    {"id":"missing-dependency","expect":"asset is not silently rewritten; target use fails safely or offers explicit permitted adaptation"},
+    {"id":"delete-source","expect":"independent derivatives/Campaign variants are not silently deleted; reference integrity/tombstones apply as owning domains require"},
+    {"id":"csw08-derivative","expect":"Workshop preserves exact derivative relationship/source-version and source-change evidence without adding sync"},
+    {"id":"publication","expect":"Workshop can open a governed promotion/review flow but cannot self-publish or self-promote canonical status"},
+    {"id":"ai-assist","expect":"AI can propose creator material only; cannot own mechanics, validation, Campaign mutation or publication"},
+    {"id":"offline","expect":"offline state does not broaden authority and Sandbox cannot use offline status to commit Campaign mutations"},
+    {"id":"privacy-search","expect":"search/count/usage/similarity filters authorization before aggregation and cannot reveal protected Campaign existence/cardinality"},
+    {"id":"nonvisual","expect":"create, compare, propose, sandbox, save and lifecycle review all work through keyboard/screen-reader/list/text UI"}
+  ],
+  "classification_invariants":["draft","reusable_definition","template","campaign_variant","live_instance","published_or_canonical","sandbox_experiment"],
+  "transfer_verbs":["link","copy_or_clone","instantiate","import","propose","adopt_or_incorporate"],
+  "hard_boundaries":["no_sandbox_live_mutation","no_silent_source_propagation","no_campaign_authority_over_personal_library","no_personal_force_into_campaign","no_apw05_publication_authority"]
+}
