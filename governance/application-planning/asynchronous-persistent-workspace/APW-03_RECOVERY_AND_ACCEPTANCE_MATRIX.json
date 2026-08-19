@@ -1,0 +1,36 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"APW-03",
+  "status":"design_ready_for_review",
+  "source_contracts":[
+    {"id":"downtime-projects","repository":"cybalicistjt-stack/Multiversal-app","path":"DevelopmentBible/02-game-framework/downtime-and-projects.md","uses":["durable project aggregate","time/availability","reservation","progress events","pause/transfer/abandon/complete"]},
+    {"id":"characters-progression","repository":"cybalicistjt-stack/Multiversal-app","path":"DevelopmentBible/02-game-framework/characters-and-progression.md","uses":["event-based advancement","before/selected/cost/grant/prerequisite/source/result evidence","no duplicate grants"]},
+    {"id":"crafting-economy","repository":"cybalicistjt-stack/Multiversal-app","path":"DevelopmentBible/02-game-framework/crafting-and-economy.md","uses":["explicit recipes","ownership/custody separation","no duplicate transactions","context-specific economy"]},
+    {"id":"investigation","repository":"cybalicistjt-stack/Multiversal-app","path":"DevelopmentBible/02-game-framework/investigation.md","uses":["clue provenance","fact vs hypothesis","hidden-data filtering","Action-based research"]},
+    {"id":"social-play","repository":"cybalicistjt-stack/Multiversal-app","path":"DevelopmentBible/02-game-framework/social-play.md","uses":["typed relationships/factions","attributable consequences","GM adjudication","hidden motive filtering"]},
+    {"id":"APW-02","path":"governance/application-planning/asynchronous-persistent-workspace/APW-02_ASYNCHRONOUS_ACTION_PROPOSAL_AND_GM_INBOX_CONTRACT.md","uses":["proposal/approval","notifications","status lookup","stale/reconnect"]},
+    {"id":"APM-01","path":"governance/application-planning/automated-play-modes/APM-01_AUTOMATED_PLAY_AUTHORITY_AND_MODE_CONTRACT.md","uses":["automatic/human/proposal classifications","bounded background","AI nonauthority"]}
+  ],
+  "recovery_rules":["stable activity/task operation IDs","expected versions","status lookup after ambiguous failure","owning-domain Event/result reconciliation","permission/entitlement/rules profile revalidation","resource reservation reconciliation","no blind duplicate progress or spending","stale state instead of guessed migration","committed effects remain unless owning-domain compensation explicitly applies"],
+  "acceptance_scenarios":[
+    {"id":"APW03-A01","scenario":"research Project created","expected":"no clue/truth mutation until governed A9/Action result"},
+    {"id":"APW03-A02","scenario":"crafting Project reserves materials then retry","expected":"single reservation/consumption/output according to owning-domain status"},
+    {"id":"APW03-A03","scenario":"crafting cancelled halfway","expected":"committed costs persist per rule; unconsumed reservations release explicitly"},
+    {"id":"APW03-A04","scenario":"training prerequisite completes","expected":"no automatic Character advancement"},
+    {"id":"APW03-A05","scenario":"advancement plan becomes stale after entitlement/rules change","expected":"final advancement revalidates and may block"},
+    {"id":"APW03-A06","scenario":"private Campaign journal","expected":"unauthorized GM/player search/count cannot discover content where policy denies"},
+    {"id":"APW03-A07","scenario":"relationship maintenance needs NPC GM response","expected":"awaiting-gm-adjudication; no automatic attitude increase"},
+    {"id":"APW03-A08","scenario":"activity requires another human consent","expected":"awaiting-human-choice; controller/system cannot accept"},
+    {"id":"APW03-A09","scenario":"investigation threshold reached but clue needs reveal","expected":"no hidden clue leakage; owning path decides reveal"},
+    {"id":"APW03-A10","scenario":"same Character or facility reserved by overlapping exclusive Projects","expected":"conflicting reservation denied unless rules explicitly allow concurrency"},
+    {"id":"APW03-A11","scenario":"Campaign uses abstract downtime blocks","expected":"no universal calendar assumption"},
+    {"id":"APW03-A12","scenario":"client offline overnight","expected":"no wall-clock Campaign progress without explicit mapping profile"},
+    {"id":"APW03-A13","scenario":"progress command response lost","expected":"status lookup returns prior outcome; no duplicate progress/cost"},
+    {"id":"APW03-A14","scenario":"resume after rules/profile change","expected":"stale dependencies revalidate before progress"},
+    {"id":"APW03-A15","scenario":"AI unavailable","expected":"manual Project/proposal/progress path remains available"}
+  ],
+  "apm02_handoff":["activity/task resolution class","time/profile bounds","resource budget/reservation refs","mandatory human/GM choice states","owning-domain progress commands","background stop conditions","provenance and status evidence"],
+  "apm02_invariants":["APW-03 itself grants no automation authority","owning domain still commits effects","background progression must be separately explicit and bounded","advancement/consent remain human-required unless a future owner/domain rule safely says otherwise","AI is not mechanical authority"],
+  "future_touchpoints":["Campaign Activity/Project aggregate","task resolution profile","Campaign time abstraction","Asset/economy reservation adapter","Action/APW-02 links","progression adapter","investigation adapter","social/faction adapter","crafting/repair adapter","journal safe storage/projection","notifications/waiting work","recovery fixtures","APM-02 classification seam"],
+  "nonauthorization":{"implementation":false,"migration":false,"universal_downtime_formula":false,"automatic_advancement":false,"automatic_social_consent":false,"parallel_asset_economy":false,"unrestricted_real_time_background":false,"autonomous_ai_project_management":false,"t04_before_september":false}
+}
