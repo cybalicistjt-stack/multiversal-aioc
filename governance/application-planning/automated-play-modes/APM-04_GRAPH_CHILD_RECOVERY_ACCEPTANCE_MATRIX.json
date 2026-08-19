@@ -1,0 +1,31 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"APM-04",
+  "status":"design_ready_for_review",
+  "package":{"finite":true,"required_bounds":["max-scene-transitions","max-child-encounters","max-automatic-steps-events","explicit-endpoints-or-failsafe"],"source_boundary":"governed Adventure/version or explicit incorporation only","runtime_ai_graph_extension":false},
+  "parent_run":{"tracks":["current-node","visited-completed-skipped-failed-node-receipts","route-choice-receipts","eligible-route-set-version","parent-seed-stream","child-run-refs-status","package-hidden-revealed-state","pending-human-choice","authoritative-event-sequence","budget-counters","end-state"]},
+  "route_eligibility":{"uses_committed_state_only":true,"human_choice_when_meaningfully_distinct":true,"invent_edge":false,"recompute_after_state_change":true,"ai_eligibility_authority":false},
+  "node_classes":["apm03-encounter-child","choice-presentation","bounded-transition-event","proposal-human-required","unsupported-failsafe"],
+  "child_exactly_once":{"durable_parent_child_correlation":true,"status_lookup_before_retry":true,"completion_advances_parent_once":true,"duplicate_completion_returns_existing_status":true,"aborted_failed_child_not_coerced_success":true},
+  "continuity":{"csw06_advisory_only":true,"runtime_package_open_state_separate":true,"auto_rewrite_package_from_candidate":false,"material_package_defect":"pause_or_failed_safe"},
+  "hidden_information":{"private_to_player_projection_filter":true,"player_to_ai_projection_filter":true,"hidden_node_cardinality_leak":false,"ai_raw_private_graph":false},
+  "determinism":{"fixed_inputs":["starting-authoritative-state-versions","package-route-policy-versions","controller-delegation-rules-versions","ordered-human-route-choices","ordered-child-player-actions","parent-child-seed-streams","deterministic-domain-inputs"],"reproduces":["route-eligibility","package-declared-automatic-transitions","owning-domain-mechanical-events"],"excludes":["narration","dialogue-wording","ui-layout"]},
+  "end_states":["completed-success","completed-failure","completed-open","retreated","abandoned","failed-safe"],
+  "recovery":{"foreground_only":true,"disconnect_background_progress":false,"resolve_ambiguous_child_before_new_work":true,"duplicate_parent_transition_idempotent":true,"version_drift":"pause_for_explicit_recovery_or_abort"},
+  "ai":{"optional":true,"presentation_only":true,"route_authority":false,"mechanical_authority":false,"new_executable_content":false,"completion_authority":false,"no_ai_path":true},
+  "acceptance_scenarios":[
+    {"id":"APM04-A01","scenario":"same state/package/choices/child actions/seeds","expected":"same eligible routes and governed mechanical event sequence where determinism is promised"},
+    {"id":"APM04-A02","scenario":"two meaningful eligible branches","expected":"director waits for human route choice"},
+    {"id":"APM04-A03","scenario":"AI proposes unavailable edge","expected":"edge cannot execute or enter eligible set"},
+    {"id":"APM04-A04","scenario":"hidden revelation branch not earned","expected":"no player/AI/cardinality leak"},
+    {"id":"APM04-A05","scenario":"APM-03 child completes","expected":"exactly one parent completion/transition receipt"},
+    {"id":"APM04-A06","scenario":"duplicate child completion after reconnect","expected":"no duplicate parent advance or reward"},
+    {"id":"APM04-A07","scenario":"CSW-06 flags setup/payoff gap","expected":"creator advisory only; live package is not rewritten"},
+    {"id":"APM04-A08","scenario":"route prerequisite changes after committed state event","expected":"eligible routes recomputed before transition"},
+    {"id":"APM04-A09","scenario":"package/graph version incompatible on resume","expected":"pause for explicit recovery; no silent reinterpretation"},
+    {"id":"APM04-A10","scenario":"hard scene/step bound reached without endpoint","expected":"package-defined open/fail-safe ending; no endless generation"},
+    {"id":"APM04-A11","scenario":"AI unavailable","expected":"deterministic/manual presentation supports completion"},
+    {"id":"APM04-A12","scenario":"defeat/retreat/open ending","expected":"committed state retained and player-safe open-thread summary produced"}
+  ],
+  "nonauthorization":{"implementation":false,"migration":false,"unlimited_campaign":false,"ai_gm_mechanical_canonical_authority":false,"automatic_canonical_content":false,"release":false,"t04_before_september":false}
+}
