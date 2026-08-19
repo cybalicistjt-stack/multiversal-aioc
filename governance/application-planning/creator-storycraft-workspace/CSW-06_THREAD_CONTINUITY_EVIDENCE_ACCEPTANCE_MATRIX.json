@@ -1,0 +1,28 @@
+{
+  "schema_version":"1.0.0","work_item_id":"CSW-06","status":"design_ready_for_review",
+  "open_thread":{"kinds":["hook","open-question","secret","foreshadow","setup-payoff","unresolved-choice-consequence","mystery-revelation","character-npc-faction-arc","relationship-development","location-world-lore","promised-follow-up","creator-defined"],"states":["open","needs-attention","dormant","snoozed","resolved","intentionally-unresolved","archived"]},
+  "continuity_candidate":{"states":["new","reviewed","accepted-as-issue","dismissed","snoozed","intentionally-acceptable","resolved","stale"],"evidence_required":true,"automatic_source_mutation":false},
+  "deterministic_checks":["dangling-reference","orphan-structure","setup-without-payoff","payoff-without-setup","foreshadow-without-resolution","unreachable-required-node","orphan-branch-endpoint","revelation-route-bypass","unsatisfiable-prerequisite","explicit-timeline-order-conflict","structured-date-arithmetic-mismatch","name-term-variant","unused-dormant-material","possible-contradiction","version-drift"],
+  "contradiction_classes":["confirmed-by-creator","possible","version-drift","context-dependent","intentional","insufficient-evidence"],
+  "dispositions":["accept-as-issue","resolve","dismiss","snooze","intentionally-acceptable","intentionally-unresolved","link-existing-thread","create-thread","add-note","reopen"],
+  "anti_nagging":{"same_evidence_rule_resurface":false,"material_source_or_rule_change_may_reevaluate":true,"explain_reappearance":true},
+  "stale_triggers":["evidence-version-change","authorization-change","tombstone-unavailable","detector-version-change","analysis-scope-change"],
+  "privacy":{"authorization_before_graph":true,"authorization_before_counts":true,"authorization_before_similarity":true,"authorization_before_ai":true,"hidden_candidate_cardinality_leak":false,"retained_revoked_payload":false},
+  "mystery":{"design_coverage_only":true,"runtime_clue_discovery_mutation":false,"hypothesis_truth_resolution":false},
+  "ai":{"optional":true,"compare_explain_summarize_propose_only":true,"automatic_edits":false,"objective_canon_authority":false,"automatic_disposition":false,"no_ai_path":true},
+  "acceptance_scenarios":[
+    {"id":"CSW06-A01","scenario":"setup has no payoff","expected":"evidence-backed advisory candidate; creator can mark intentional"},
+    {"id":"CSW06-A02","scenario":"candidate dismissed with unchanged evidence","expected":"does not repeatedly resurface"},
+    {"id":"CSW06-A03","scenario":"dismissed candidate source materially changes","expected":"reevaluation may surface with changed-basis explanation"},
+    {"id":"CSW06-A04","scenario":"two pre-authoritative alternatives disagree","expected":"possible/context-dependent candidate, never automatic canon selection"},
+    {"id":"CSW06-A05","scenario":"hidden Campaign evidence would conflict","expected":"no count/hint/candidate/AI leakage to unauthorized viewer"},
+    {"id":"CSW06-A06","scenario":"planned revelation has only optional clue route","expected":"design coverage warning only; no A9 runtime mutation"},
+    {"id":"CSW06-A07","scenario":"explicit timeline dates contradict","expected":"traceable candidate cites exact structured evidence"},
+    {"id":"CSW06-A08","scenario":"name variant may be an alias","expected":"advisory review, no auto-replace"},
+    {"id":"CSW06-A09","scenario":"unused fragment rediscovered","expected":"suggest reuse/archive/review without deletion pressure"},
+    {"id":"CSW06-A10","scenario":"source authorization revoked","expected":"candidate becomes stale/unavailable; protected payload not retained"},
+    {"id":"CSW06-A11","scenario":"screen-reader reviews candidate","expected":"full evidence/disposition flow without graph/color dependence"},
+    {"id":"CSW06-A12","scenario":"AI unavailable","expected":"deterministic/manual continuity workflow remains usable"}
+  ],
+  "nonauthorization":{"implementation":false,"migration":false,"automatic_truth_correction":false,"ai_canonical_authority":false,"release":false,"t04_before_september":false}
+}
