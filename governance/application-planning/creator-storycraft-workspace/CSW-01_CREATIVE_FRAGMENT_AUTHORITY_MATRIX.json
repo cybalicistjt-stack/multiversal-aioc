@@ -1,0 +1,134 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "CSW-01",
+  "status": "design_ready_for_review",
+  "authority_class": "pre-authoritative",
+  "fragment_kinds": [
+    "idea","premise","hook","theme","question","open-question","constraint","reference","scratch-note",
+    "conflict","secret","twist","foreshadow","payoff","beat","arc","thread","alternate",
+    "rumor","lore-fragment","character-motivation","backstory-element",
+    "scene-seed","encounter-seed","mystery-seed","location-seed","faction-seed","npc-seed","world-seed"
+  ],
+  "excluded_authoritative_kinds": [
+    "world","location","adventure","campaign","scene","session","character-fact","clue","investigation-conclusion","relationship-state","reputation-state","faction-runtime-state","event","published-release","canonical-object"
+  ],
+  "lifecycle": ["inbox","scratch","developing","ready","incorporated","superseded","archived","tombstoned"],
+  "lifecycle_rules": {
+    "ready": "creator readiness only; no target-domain approval or truth implied",
+    "incorporated": "one or more explicit incorporation receipts exist; source fragment remains pre-authoritative",
+    "superseded": "working replacement recorded; descendants and incorporated targets are not rewritten",
+    "archived": "removed from active work but retained subject to visibility and retention policy",
+    "tombstoned": "content withdrawn/deleted while stable identity and required reference/provenance evidence remain"
+  },
+  "minimum_identity": [
+    "fragmentId","fragmentVersion","kind","authorityClass","ownerSubjectId","authorSubjectIds","contextBinding","lifecycleState","contentRef","visibilityPolicyId","provenanceId","createdAt","updatedAt"
+  ],
+  "optional_identity": [
+    "campaignId","projectId","title","sourceRefs","inspirationRefs","relationshipRefs","incorporationReceiptRefs","tombstoneMetadata"
+  ],
+  "context_bindings": {
+    "personal": {
+      "default_visibility": "private",
+      "campaign_gm_implied_authority": false,
+      "campaign_membership_required": false
+    },
+    "campaign_creative": {
+      "campaign_authorization_required": true,
+      "becomes_campaign_truth": false,
+      "runtime_visibility_implied": false,
+      "campaign_private_source_allowed_when_authorized": true
+    }
+  },
+  "authority_dimensions": [
+    "own","author-contribute","view","edit","link","branch-clone","share","bind-to-campaign","propose-incorporate","archive","tombstone-delete-content","restore","export"
+  ],
+  "authority_nonimplication": [
+    "ownership does not imply authorship",
+    "authorship does not imply ownership",
+    "ownership does not imply publish or canonical promotion",
+    "edit does not imply incorporate",
+    "view does not imply link or clone",
+    "campaign GM does not imply Personal fragment authority",
+    "campaign binding does not imply Campaign truth",
+    "creator status does not imply target-domain mutation",
+    "incorporation receipt does not imply future synchronization",
+    "AI generation does not imply acceptance or authorship transfer"
+  ],
+  "relationship_types": [
+    "related-to","inspired-by","derived-from","branch-of","alternate-of","supports","contrasts-with","foreshadows","pays-off","supersedes","references","used-in"
+  ],
+  "relationship_rules": [
+    "relationships are pre-authoritative creative semantics unless an owning domain explicitly consumes them",
+    "stable IDs are required; titles are not identity",
+    "version pinning is required when reproducibility matters",
+    "supports is not an A9 evidence connection and does not imply objective truth",
+    "used-in is derived from an explicit target reference or incorporation receipt, never guessed from text similarity"
+  ],
+  "incorporation": {
+    "mode": "copy_propose_or_reference_never_in_place_type_conversion",
+    "required_receipt_fields": [
+      "incorporationId","sourceFragmentId","sourceFragmentVersion","targetDomain","targetIntent","targetOperationOrProposalId","actorSubjectId","contextScope","provenanceId","timestamp","status"
+    ],
+    "optional_receipt_fields": ["resultingTargetObjectId","resultingTargetVersionId","decisionReceiptRef","publicationReceiptRef"],
+    "statuses": ["proposed","accepted","rejected","withdrawn","superseded"],
+    "later_source_edits_propagate": false,
+    "later_target_edits_rewrite_source": false
+  },
+  "tombstone_rules": {
+    "hard_delete_when_referenced": false,
+    "minimum_fields": ["fragmentId","lastKnownVersion","lifecycleState","tombstonedAt","reasonCategory","retainedReferenceIds","provenanceId"],
+    "optional_fields": ["replacementFragmentId","userSafeRemediation"],
+    "visibility_filtered": true,
+    "deleting_source_deletes_targets": false,
+    "deleting_target_deletes_source": false,
+    "silent_retarget_by_title_similarity": false
+  },
+  "role_examples": [
+    {
+      "actor": "personal_owner",
+      "default_scope": "own Personal fragments",
+      "can_incorporate": "only through separately authorized target-domain operation"
+    },
+    {
+      "actor": "campaign_gm",
+      "default_scope": "authorized Campaign-bound preparation fragments",
+      "personal_fragment_blanket_access": false
+    },
+    {
+      "actor": "assistant_gm_or_collaborator",
+      "default_scope": "explicit delegation/share only",
+      "authority_expands_from_role_label": false
+    },
+    {
+      "actor": "optional_ai",
+      "default_scope": "authorized filtered context only",
+      "can_edit_or_incorporate_without_human_acceptance": false
+    },
+    {
+      "actor": "automation_controller",
+      "default_scope": "APM-01 delegated operations only",
+      "story_truth_authority_from_mode": false
+    }
+  ],
+  "truth_invariants": [
+    "fragment authorityClass is always pre-authoritative",
+    "rumor kind never implies truth value",
+    "secret kind never implies Campaign-hidden truth until owning-domain incorporation",
+    "ready lifecycle never implies approval",
+    "incorporated lifecycle never turns source fragment into target object",
+    "A9 runtime hypothesis remains objectiveTruth=false until its own authorized conclusion path",
+    "AI or automation cannot promote fragment to fact by repetition or confidence"
+  ],
+  "authorizations": {
+    "application_implementation": false,
+    "new_database_or_domain_root": false,
+    "direct_cross_domain_persistence": false,
+    "autonomous_ai_publication": false,
+    "canonical_promotion": false,
+    "public_marketplace": false,
+    "paid_ai": false,
+    "production_credentials": false,
+    "release_or_deployment": false,
+    "ccti12_t04_before_2026_09": false
+  }
+}

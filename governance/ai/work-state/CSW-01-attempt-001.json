@@ -1,64 +1,55 @@
 {
-  "schema_version": "1.0.0",
-  "work_item_id": "CSW-01",
-  "attempt_id": "CSW-01-attempt-001",
-  "track": "creator-storycraft-workspace",
-  "repository": "cybalicistjt-stack/multiversal-aioc",
-  "status": "selected_not_started",
-  "owner_selected": true,
-  "selected_at": "2026-08-19T01:02:00Z",
-  "selection_reason": "APM-01 completed_verified in PR #411. The owner-approved APW/APM/CSW interleave selects CSW-01 immediately after APM-01, with CSW-02 following before the return to APW-02.",
-  "objective": "Define the canonical pre-authoritative storycraft vocabulary, creative-fragment object model, lifecycle, authority, Personal/Campaign binding, stable identity/version/provenance, deletion/reference integrity, and explicit incorporation/conversion boundaries into World, Adventure, Character, Campaign, investigation, relationship and other owning domains so creative possibilities cannot masquerade as authoritative truth.",
-  "program_plan": "governance/application-planning/creator-storycraft-workspace/CSW_CREATOR_STORYCRAFT_WORKSPACE_PROGRAM.md",
-  "program_backlog": "governance/application-planning/creator-storycraft-workspace/CSW_PROGRAM_BACKLOG.json",
-  "sequence_prerequisites": {
-    "APW-01": {
-      "status": "completed_verified",
-      "pull_request": 409,
-      "validated_head": "f0b6b3d9b64d3b8f7b1fd9d81f6079b14097ef32",
-      "repository_health_run": 32202132346,
-      "merge_sha": "2f99a03612dab525eaffd5c0141f84cf8c1b5654"
-    },
-    "APM-01": {
-      "status": "completed_verified",
-      "pull_request": 411,
-      "validated_head": "b9516a78e3425b09e79efde120fe1ebb1c655fcb",
-      "repository_health_run": 32203278338,
-      "merge_sha": "4150cbd38f7fcae325aa03b83fcf3c4b3a990765"
-    }
+  "schema_version":"1.1.0",
+  "work_item_id":"CSW-01",
+  "attempt_id":"CSW-01-attempt-001",
+  "track":"creator-storycraft-workspace",
+  "repository":"cybalicistjt-stack/multiversal-aioc",
+  "branch":"governance/csw-01-creative-object-authority",
+  "status":"ready_for_validation",
+  "owner_selected":true,
+  "selected_at":"2026-08-19T01:02:00Z",
+  "design_ready_at":"2026-08-19T01:10:00Z",
+  "objective":"Define the canonical pre-authoritative storycraft vocabulary, creative-fragment object model, lifecycle, authority, Personal/Campaign binding, stable identity/version/provenance, deletion/reference integrity, and explicit incorporation/conversion boundaries into owning domains so creative possibilities cannot masquerade as authoritative truth.",
+  "program_plan":"governance/application-planning/creator-storycraft-workspace/CSW_CREATOR_STORYCRAFT_WORKSPACE_PROGRAM.md",
+  "program_backlog":"governance/application-planning/creator-storycraft-workspace/CSW_PROGRAM_BACKLOG.json",
+  "deliverables":[
+    "governance/application-planning/creator-storycraft-workspace/CSW-01_STORYCRAFT_VOCABULARY_CREATIVE_OBJECT_MODEL_AND_AUTHORITY.md",
+    "governance/application-planning/creator-storycraft-workspace/CSW-01_CREATIVE_FRAGMENT_AUTHORITY_MATRIX.json",
+    "governance/application-planning/creator-storycraft-workspace/CSW-01_INCORPORATION_AND_TRACEABILITY_MAP.json",
+    "governance/application-planning/creator-storycraft-workspace/CSW-01_REVIEW_RECEIPT.md"
+  ],
+  "source_evidence":["APW-01","APM-01","Stage A10 current revalidation","D29 authoring draft/proposal/review/authority contracts","A10 creator/campaign-local schemas and migration","A9 hypothesis/conclusion contract"],
+  "design_findings":[
+    "Creative Fragments are fixed pre-authoritative objects and never become target-domain truth by lifecycle or linking alone.",
+    "Normalized fragment vocabulary excludes authoritative object kinds and deliberately avoids duplicating A9 runtime hypothesis identity.",
+    "Lifecycle is inbox, scratch, developing, ready, incorporated, superseded, archived, tombstoned; ready/incorporated do not imply approval or truth.",
+    "Personal and Campaign-bound creative contexts are separate and Campaign binding remains preparation rather than runtime truth.",
+    "Ownership, authorship, view, edit, link, branch, share, bind, incorporate, archive, tombstone, restore and export are independent authorities.",
+    "Incorporation always pins a source fragment version and delegates target creation/change to the owning domain; source and target never silently synchronize.",
+    "A10 D18/D28/D29/D05 split remains controlling and CSW-01 authorizes no new persistence root.",
+    "A9 runtime hypotheses remain objectiveTruth=false until their own authorized conclusion path; creative relationships do not become runtime evidence by analogy.",
+    "Tombstones preserve reference/provenance integrity while remaining visibility-filtered.",
+    "Optional AI and APM automation remain nonauthoritative and cannot publish, incorporate or promote by themselves."
+  ],
+  "completion_gate":{
+    "normalized_vocabulary_defined":true,
+    "authoritative_kinds_not_duplicated":true,
+    "pre_authoritative_identity_version_provenance_defined":true,
+    "lifecycle_defined":true,
+    "personal_campaign_binding_defined":true,
+    "authority_dimensions_separated":true,
+    "fact_truth_bleed_prevented":true,
+    "explicit_pinned_incorporation_defined":true,
+    "a10_split_authority_preserved":true,
+    "a9_runtime_boundary_preserved":true,
+    "tombstone_reference_integrity_defined":true,
+    "ai_automation_nonauthoritative":true,
+    "application_implementation_not_activated":true,
+    "final_repository_validation_pending":true,
+    "pull_request_merge_pending":true
   },
-  "completion_gate": "Creative fragments have explicit identity, lifecycle, provenance and authority boundaries and cannot masquerade as Campaign truth, published content, canonical content, Character fact, World/Adventure truth, investigation result, relationship state, runtime Event or another owning domain's authoritative object; every incorporation/conversion path is explicit and attributable.",
-  "required_design_questions": [
-    "What normalized creative-fragment kinds are useful without duplicating authoritative domain object types?",
-    "What lifecycle states distinguish inbox/scratch/developing/ready/incorporated/superseded/archived/deleted material?",
-    "How are ownership, authorship, visibility, edit, link, branch, reuse, incorporate, archive and delete authority separated?",
-    "How do Personal creative fragments differ from Campaign-bound private/preparatory fragments?",
-    "How is idea, possibility, hypothesis, draft, alternate and speculative continuity distinguished from authoritative fact?",
-    "What explicit incorporation/conversion receipts move material into D18 World, D28 Adventure, Character, Campaign, investigation, relationship/faction and other owning domains?",
-    "What stable identity, version, provenance, backlink, tombstone and dangling-reference rules preserve long-term project memory?",
-    "How does CSW reuse A10 authoring provenance and APW Personal/creator authority without becoming an alternate persistence authority?"
-  ],
-  "preserved_parallel_tracks": [
-    "CSW-02 follows CSW-01 before return to APW-02.",
-    "APW remains interleaved waiting; next item APW-02 after CSW-01 and CSW-02.",
-    "APM remains interleaved waiting; next item APM-02 after later APW dependencies.",
-    "CCTI-12-T04 deferred until September 2026.",
-    "WP-011 special environment dormant until owner/Mac availability.",
-    "DS-008 blocked exact-byte transfer/validation."
-  ],
-  "nonauthorization": [
-    "application implementation",
-    "migration execution",
-    "release",
-    "deployment",
-    "tester access",
-    "paid AI services",
-    "production credentials",
-    "autonomous AI authorship or publication",
-    "canonical promotion",
-    "public creator marketplace",
-    "training on private user creative material",
-    "CCTI-12-T04 resumption before September 2026"
-  ],
-  "next_action": "Execute CSW-01 as a bounded design/governance tranche. Reconcile the pre-authoritative creative layer against A10 World/Adventure/authoring-provenance, APW-01 authority, investigation/relationship domains and existing object identity/provenance contracts; produce the vocabulary, object/lifecycle/authority model, incorporation boundaries, traceability and review evidence without activating application implementation."
+  "sequence_prerequisites":{"APW-01":{"status":"completed_verified","pull_request":409},"APM-01":{"status":"completed_verified","pull_request":411}},
+  "preserved_parallel_tracks":["CSW-02 follows CSW-01","APW-02 waits until after CSW-02","APM-02 waits on later APW dependencies","CCTI-12-T04 deferred until September 2026","WP-011 dormant","DS-008 blocked non-owner"],
+  "nonauthorization":["application implementation","migration execution","new persistence root","release","deployment","tester access","paid AI services","production credentials","autonomous AI publication","canonical promotion","public creator marketplace","training on private user creative material","CCTI-12-T04 before September 2026"],
+  "next_action":"Open bounded CSW-01 governance PR, run exact-head AIOC repository-health, repair only evidence-proven governance defects, merge after PASS, then close CSW-01 and select CSW-02."
 }
