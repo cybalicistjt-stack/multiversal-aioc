@@ -1,0 +1,128 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"CSW-04",
+  "status":"design_ready_for_review",
+  "workflow_model":{
+    "definition_fields":["workflowDefinitionId","workflowDefinitionVersion","sourceOwner","taskFamily","name","purpose","supportedContexts","baselineSections","stepDefinitions","dependencyGraph","branchRules","suggestedOutputRoles","completionSummaryRules","handoffHints","accessibilityMetadata","provenance","timestamps"],
+    "run_fields":["workflowRunId","definitionIdAndVersion","subjectId","context","projectId","seedFragmentRefs","lifecycle","visitedSkippedCurrentSteps","orderingOverrides","branchRelationships","savedAnswerRefs","storyBibleReferenceRefs","inspirationDispositionRefs","recoveryMetadata","version","timestamps"],
+    "run_lifecycle":["not-started","in-progress","paused","branched","completed-by-creator","abandoned","archived","tombstoned"],
+    "authority":"orchestration_only",
+    "creative_content_store":"CSW-01 Creative Fragments / CSW-02 project notes and annotations",
+    "workflow_completion_authoritative":false
+  },
+  "step_primitives":[
+    {"id":"prompt","answer_required":false,"purpose":"framing/help/examples"},
+    {"id":"short-answer","answer_required":false,"durable_content_requires_explicit_save":true},
+    {"id":"long-answer","answer_required":false,"durable_content_requires_explicit_save":true},
+    {"id":"single-choice","supports_creator_other":true,"choice_is_truth":false},
+    {"id":"multi-choice","supports_zero_choices":true,"supports_creator_other":true},
+    {"id":"reference-picker","authorization_before_search":true,"copies_governed_payload":false},
+    {"id":"inspiration-action","uses":"CSW-03","candidate_only":true},
+    {"id":"relationship-builder","creates":"CSW creative relationship only","owning_domain_mutation":false},
+    {"id":"checklist","supports_not_applicable":true,"supports_intentionally_unresolved":true,"authority_gate":false},
+    {"id":"review-summary","quality_score":false,"shows_unresolved":true},
+    {"id":"branch-choice","default_escape_option":true,"changes_truth":false},
+    {"id":"freeform-section","first_class":true},
+    {"id":"handoff-preview","automatic_incorporation":false}
+  ],
+  "creator_controls":{
+    "skip":{"allowed":true,"penalty":false},
+    "revisit":{"allowed":true,"source_overwrite_silent":false},
+    "reorder":{"allowed_when_dependencies_permit":true,"drag_only":false},
+    "pause_resume":{"allowed":true,"reauthorize_on_resume":true},
+    "branch":{"allowed":true,"independent_future_edits":true},
+    "abandon":{"saved_fragments_survive":true},
+    "freeform_escape":{"always_available":true,"guided_mode_required_for_equivalent_creation":false}
+  },
+  "universal_phases":["intent-seed","core-anchors","development","connections","pressure-questions","review","next-use"],
+  "task_families":[
+    {
+      "id":"backstory",
+      "suggested_areas":["present identity/context","formative events","relationships","wants/fears/obligations","unresolved history","secrets/rumors","why past matters now","future hooks"],
+      "suggested_outputs":["backstory-element","character-motivation","hook","question","scratch-note"],
+      "authority_boundary":"Character facts require owning-domain incorporation"
+    },
+    {
+      "id":"npc-antagonist",
+      "suggested_areas":["role/function","memorable surface trait","desire/need","method/resources","fear/vulnerability","relationships/faction ties","secret/complication","reaction under pressure","introduction/use"],
+      "suggested_outputs":["npc-seed","character-motivation","secret","conflict","hook"],
+      "authority_boundary":"No automatic NPC/Character/runtime truth or mechanics"
+    },
+    {
+      "id":"faction",
+      "suggested_areas":["purpose/identity","members","goals","methods","descriptive assets/influence","internal tensions","allies/rivals","public face/private concern","current pressure","hooks/consequences"],
+      "suggested_outputs":["faction-seed","conflict","relationship candidate","hook","lore-fragment"],
+      "authority_boundary":"Runtime faction/reputation state remains owning-domain authority"
+    },
+    {
+      "id":"settlement-location",
+      "suggested_areas":["function/first impression","physical/social character","important places/actors","resources/opportunities","danger/tension","history/lore","connections/routes","secrets/rumors","reasons to arrive/stay/leave/return"],
+      "suggested_outputs":["location-seed","lore-fragment","secret","rumor","hook"],
+      "authority_boundary":"World/Location truth remains owning-domain authority"
+    },
+    {
+      "id":"world-culture",
+      "suggested_areas":["premise/distinguishing idea","environment/material conditions","values/norms","institutions/power","livelihood","belief/myth","conflict/change","terminology/style","internal diversity/exceptions","external relationships","playable hooks"],
+      "suggested_outputs":["world-seed","lore-fragment","theme","constraint","conflict","hook"],
+      "authority_boundary":"No automatic World/canonical truth; workflow encourages variation rather than monolithic treatment"
+    },
+    {
+      "id":"mystery",
+      "suggested_areas":["motivating question","underlying truth candidates","affected actors","clue/evidence candidates","misleading interpretations","revelation options","consequences","alternative explanations","coverage questions"],
+      "suggested_outputs":["mystery-seed","question","secret","alternate","foreshadow","payoff","hook"],
+      "authority_boundary":"Creator possibilities are not A9 runtime clues/hypotheses/objective truth"
+    },
+    {
+      "id":"adventure-quest",
+      "suggested_areas":["premise/hook","stakes","actors/factions","locations","obstacles/conflicts","discoveries/revelations","choices","consequences","optional content","alternate approaches/failure states","climax/resolution candidates","future hooks"],
+      "suggested_outputs":["premise","hook","conflict","scene-seed","thread","alternate","payoff"],
+      "authority_boundary":"CSW-05 owns richer nonlinear narrative design; D28/owning domain owns authoritative Adventure structure"
+    },
+    {
+      "id":"encounter",
+      "suggested_areas":["purpose in play","context/location","participants","pressure/tone","objectives","environment/social/tactical features","escalation/de-escalation","consequences/exits","complexity/accessibility notes","noncombat alternatives"],
+      "suggested_outputs":["encounter-seed","conflict","constraint","scene-seed","alternate"],
+      "authority_boundary":"No authoritative balance/statistics/rewards/mechanics without future owning-domain handoff"
+    },
+    {
+      "id":"campaign-premise-arc",
+      "suggested_areas":["campaign promise/premise","player-facing appeal","themes/tone","setting anchors","pressures/actors","campaign questions","possible arcs","recurring elements","escalation possibilities","player-driven change space","boundaries/constraints","first-session hooks"],
+      "suggested_outputs":["premise","theme","arc","thread","world-seed","faction-seed","hook","question"],
+      "authority_boundary":"Planning fragments are not Campaign runtime truth or participant consent"
+    }
+  ],
+  "story_bible_integration":{
+    "authorization_before_search_count_rank":true,
+    "explicit_reference_insertion":true,
+    "governed_payload_copy":false,
+    "creator_note_vs_governed_fact_distinct":true,
+    "hidden_material_affects_suggestions":false,
+    "revoked_reference_behavior":"becomes unavailable; no copied fallback truth"
+  },
+  "inspiration_integration":{
+    "uses_csw03":true,
+    "deterministic_tools_first_class":true,
+    "candidate_ephemeral_by_default":true,
+    "explicit_save_apply_branch_required":true,
+    "source_overwrite_silent":false,
+    "ai_required":false
+  },
+  "templates_presets":{
+    "creator_owned_default_private":true,
+    "versioned":true,
+    "derived_source_provenance":true,
+    "existing_runs_pin_version":true,
+    "arbitrary_code":false,
+    "unrestricted_queries":false,
+    "automatic_publish_or_incorporate":false,
+    "external_network_calls_without_separate_governance":false
+  },
+  "progress_rules":["informative not coercive","no universal quality percentage","finish action not gated on every prompt","skips not penalized","intentionally unresolved preserved","no streak or urgency pressure"],
+  "offline_recovery":{
+    "personal_local_draft_allowed":true,
+    "campaign_authority_assumed_offline":false,
+    "reconnect":["authenticate","reauthorize context","resolve definition/template version","reauthorize references","reconcile saves idempotently","surface fragment conflicts","preserve unresolved local drafts","avoid duplicate fragments"]
+  },
+  "accessibility":["linear semantic outline","text branch labels and return paths","textual progress","keyboard skip/revisit/reorder","non-drag reorder controls","screen-reader optionality/save state/validation","mobile one-prompt view plus overview","reduced motion","outline alternative to branch graph","non-color recovery state"],
+  "authorizations":{"implementation":false,"migration":false,"mandatory_wizard_only_creation":false,"automatic_authoritative_content":false,"autonomous_ai_authorship_publication":false,"arbitrary_template_code":false,"canonical_promotion":false,"release_deployment":false,"ccti12_t04_before_2026_09":false}
+}
