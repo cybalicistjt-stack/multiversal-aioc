@@ -1,24 +1,62 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "work_item_id": "APW-01",
   "attempt_id": "APW-01-attempt-001",
   "track": "asynchronous-play-persistent-workspace",
   "repository": "cybalicistjt-stack/multiversal-aioc",
-  "status": "selected_not_started",
+  "branch": "governance/apw-01-authority-context-canonicalization",
+  "status": "ready_for_validation",
   "owner_selected": true,
   "selected_at": "2026-08-19T00:16:00Z",
+  "design_ready_at": "2026-08-19T00:32:00Z",
   "selection_reason": "Owner deferred CCTI-12-T04 until September 2026 and restored the previously approved productive route-around. VCH and POST-GATX-SUCCESSOR are completed, so the next dependency-ordered design operation is APW-01.",
   "objective": "Canonicalize universal-user, account, context, contextual-role, GM/Campaign authority, Personal-context authority, and related terminology so later asynchronous play, persistent workspace, APM, and CSW designs cannot inherit ambiguous global GM/Player assumptions.",
   "program_plan": "governance/application-planning/asynchronous-persistent-workspace/APW_ASYNCHRONOUS_PLAY_AND_PERSISTENT_WORKSPACE_PROGRAM.md",
   "program_backlog": "governance/application-planning/asynchronous-persistent-workspace/APW_PROGRAM_BACKLOG.json",
+  "deliverables": [
+    "governance/application-planning/asynchronous-persistent-workspace/APW-01_AUTHORITY_ACCOUNT_CONTEXT_CANONICALIZATION.md",
+    "governance/application-planning/asynchronous-persistent-workspace/APW-01_AUTHORITY_CONTEXT_MATRIX.json",
+    "governance/application-planning/asynchronous-persistent-workspace/APW-01_TRACEABILITY_AND_ADDITIVE_TOUCHPOINTS.json"
+  ],
+  "source_evidence": [
+    "MV-IA-F003 Identity Dashboard and Workspace Selection",
+    "MV-IA-F003 Identity Workspace Matrix",
+    "MV-IA-F020 Permissions and Hidden Information",
+    "MV-IA-F005 Campaign Scene and Session Builder",
+    "App A3 selected-context receipt contract",
+    "App A3 authorization projection contract",
+    "App Campaign authorization policy",
+    "App A3 WorkspaceSwitcher"
+  ],
+  "design_findings": [
+    "Existing Stage A architecture already separates stable subject identity from current role and separates membership, role, Character control, ownership and entitlement.",
+    "Existing Campaign authorization is Campaign-scoped and does not require a global GM/Player account model.",
+    "Existing owner-admin separation is preserved: application operational authority does not become Campaign-private authority.",
+    "Current A3 activeRole and player/gm dashboard types are classified as valid bounded Stage-A projections, not permanent account identity.",
+    "Personal context is defined as independent user workspace authority and Campaign roles have no authority over another user's Personal resources.",
+    "Live/asynchronous/hybrid cadence and connected/offline/recovering connectivity are orthogonal to authority context.",
+    "Ten additive implementation touch points are identified without authorizing implementation or reopening Stage A closures."
+  ],
   "depends_on": [],
-  "completion_gate": "Universal-user and contextual-role authority is unambiguous, older global GM/Player assumptions are reconciled, and additive implementation touch points are identified without reopening completed Stage A closure evidence.",
+  "completion_gate": {
+    "universal_user_contract_unambiguous": true,
+    "contextual_role_authority_unambiguous": true,
+    "personal_campaign_session_contexts_defined": true,
+    "cadence_and_connectivity_orthogonalized": true,
+    "entitlement_and_campaign_visibility_boundary_defined": true,
+    "legacy_global_gm_player_assumptions_reconciled": true,
+    "stage_a_contracts_preserved": true,
+    "additive_implementation_touchpoints_identified": true,
+    "application_implementation_not_activated": true,
+    "final_repository_validation_pending": true,
+    "pull_request_merge_pending": true
+  },
   "preserved_deferred_work": [
     "CCTI-12-T04 deferred until September 2026",
     "WP-011 special environment",
     "DS-008 blocked exact-byte transfer/validation"
   ],
-  "next_action": "Execute APW-01 as a bounded design/governance tranche. Reconcile authority/account/context terminology across current canonical architecture, identify conflicts and additive implementation touch points, produce the APW-01 design contract and evidence, then update the combined APW/APM/CSW sequence without activating application implementation or release authority.",
+  "next_action": "Run the bounded APW-01 repository/structure review, open and validate the governance PR, merge only after the declared gate is satisfied, then mark APW-01 completed_verified and select APM-01 per the combined owner-approved APW/APM/CSW sequence.",
   "nonauthorization": [
     "application implementation",
     "release",
@@ -26,6 +64,7 @@
     "tester distribution",
     "paid services",
     "production credentials",
-    "autonomous canonical mutation"
+    "autonomous canonical mutation",
+    "CCTI-12-T04 resumption before September 2026"
   ]
 }
