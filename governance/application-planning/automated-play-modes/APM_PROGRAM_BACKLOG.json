@@ -1,12 +1,13 @@
 {
   "program_id": "APM",
-  "version": "0.1.0",
-  "status": "owner_approved_planned_not_implementation_active",
+  "version": "0.2.0",
+  "status": "design_active",
   "owner": "John Brandon Turner",
   "approved": "2026-08-18",
-  "active_item": null,
+  "active_item": "APM-01",
+  "active_attempt": "APM-01-attempt-001",
   "sequence": [
-    {"id": "APM-01", "name": "Automated-Play Authority and Mode Contract", "status": "planned", "depends_on": ["APW-01"]},
+    {"id": "APM-01", "name": "Automated-Play Authority and Mode Contract", "status": "selected_not_started", "depends_on": ["APW-01"], "dependency_satisfied": true},
     {"id": "APM-02", "name": "CozyMode Core Loop", "status": "planned", "depends_on": ["APM-01", "APW-03", "APW-04"]},
     {"id": "APM-03", "name": "AutoGM Single-Encounter Runner", "status": "planned", "depends_on": ["APM-01", "CSW-05"]},
     {"id": "APM-04", "name": "AutoGM Mini-Campaign Director", "status": "planned", "depends_on": ["APM-03", "CSW-06"]},
@@ -22,6 +23,7 @@
   ],
   "authority_rules": [
     "AutoGM and CozyMode are play experiences, not permanent account roles.",
+    "APW-01 universal-user and Personal/Campaign/Session context authority is controlling for APM.",
     "AutoGM automation receives only explicitly delegated governed operations; optional AI does not inherit unrestricted GM authority.",
     "Mechanical legality and canonical mutation remain owned by deterministic/domain-governed rules and authority checks.",
     "Automated play reuses ordinary Campaign/Action/Event/persistence/provenance/recovery architecture rather than forking state.",
@@ -31,6 +33,15 @@
     "No unlimited open-ended autonomous campaign requirement for initial APM.",
     "No autonomous AI canonical authority.",
     "No public stranger matchmaking in initial APM.",
-    "No release, deployment, paid-provider, production-credential, public-marketplace or canonical-promotion authority."
-  ]
+    "No release, deployment, paid-provider, production-credential, public-marketplace or canonical-promotion authority.",
+    "No CCTI-12-T04 resumption before September 2026 without explicit owner override."
+  ],
+  "activation_evidence": {
+    "dependency": "APW-01",
+    "dependency_status": "completed_verified",
+    "dependency_pull_request": 409,
+    "dependency_validated_head": "f0b6b3d9b64d3b8f7b1fd9d81f6079b14097ef32",
+    "dependency_repository_health_run": 32202132346,
+    "dependency_merge_sha": "2f99a03612dab525eaffd5c0141f84cf8c1b5654"
+  }
 }
