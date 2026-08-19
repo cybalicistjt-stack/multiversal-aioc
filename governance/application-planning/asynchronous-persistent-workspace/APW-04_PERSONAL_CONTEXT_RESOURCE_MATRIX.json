@@ -1,0 +1,23 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"APW-04",
+  "status":"design_ready_for_review",
+  "context":"personal",
+  "resource_classes":[
+    {"id":"personal-owned","examples":["CSW Creative Fragments","Creator Projects","Personal notes/collections/favorites","reusable creator assets/templates","future Personal Character drafts/Characters","Personal sandbox/lab state","Personal import/export/recovery metadata"],"campaign_gm_implied_access":false},
+    {"id":"personal-accessible-reference","examples":["entitled canonical/general reference content","authorized creator releases","Campaign recent-work references","controlled Campaign Character reference","Campaign invitation"],"ownership_transferred":false},
+    {"id":"campaign-private","examples":["Campaign overlays","hidden clues","GM notes","Campaign run state","private social state","Session Events/private projections"],"copy_into_personal_for_index_or_cache":false,"personal_home_payload":false,"safe_link_only_when_currently_authorized":true}
+  ],
+  "personal_home_areas":["continue","characters","creative-library","practice-sandbox","reference-library","invitations","notifications-waiting","campaigns","imports-exports-backups","account-entitlements"],
+  "character_reconciliation":{"current_stage_a":"authoritative Character drafts require campaignId in A4 CharacterPolicyBindings","apw04_rewrites_stage_a":false,"future_requirement":"additive Personal/Campaign Character context-policy successor with backward compatibility","personal_character_implies_campaign_membership":false,"campaign_binding_requires_explicit_operation":true,"campaign_exit_copies_runtime_state_personally":false},
+  "sandbox":{"source_class":"personal-sandbox","campaign_authority":false,"canonical_authority":false,"mutates_campaign":false,"may_produce":["draft","proposal","note","sandbox snapshot"],"campaign_import_requires_governed_operation":true,"hidden_campaign_truth_copy_allowed":false},
+  "context_transition":{"fresh_authorization":true,"partition_or_clear":["protected caches","realtime subscriptions","search projections","recent-work deep links","unsaved draft scope","notifications/counts","optional AI context"],"route_or_cached_card_is_authority":false},
+  "recent_work":{"reauthorize_each_candidate":true,"select_requires_fresh_entry_authorization":true,"unauthorized_campaign_candidate_omitted_without_existence_leak":true,"unrelated_personal_candidates_survive_campaign_revocation":true},
+  "invitations":{"membership_before_accept":false,"entry_authority_before_accept":false,"accept_uses_owning_domain_operation":true,"external_projection_minimal":true},
+  "zero_campaign_baseline":["creative projects/fragments","Personal Character support after additive successor","entitled reference browsing","Personal sandbox/practice","Personal import/export","account/entitlement management","invitations","future Cozy Solo host"],
+  "leaving_last_campaign":["Personal Home remains","Personal resources remain","Campaign cards/routes removed after projection refresh","protected Campaign caches/subscriptions cleared","Campaign state not silently copied","new invitations remain possible"],
+  "search_privacy":["authorize before result inclusion","authorize before counts/facets/snippets/similarity","context/source label on result","Campaign selection reauthorizes","no hidden Campaign existence through counts/autocomplete/graph"],
+  "ai":{"context_partitioned":true,"campaign_private_carryover_to_personal":false,"core_personal_home_requires_ai":false,"can_join_campaign":false,"can_bind_character":false,"can_promote_sandbox_to_campaign":false,"can_canonical_promote":false},
+  "apm02_handoff":{"personal_host_context":true,"automation_authority_granted":false,"candidate_resources":["Personal Character/reference","Personal projects/tasks","Creative Library/journal","time/resource budget profiles"],"controlling_automation_contract":"APM-01/APM-02 explicit delegation"},
+  "authorizations":{"implementation":false,"migration":false,"personal_monolith":false,"global_gm_player":false,"campaign_private_copy":false,"canonical_promotion":false,"public_marketplace":false,"release_deployment":false,"ccti12_t04_before_2026_09":false}
+}
