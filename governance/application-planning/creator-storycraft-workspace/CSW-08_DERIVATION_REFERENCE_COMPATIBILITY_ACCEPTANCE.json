@@ -1,0 +1,33 @@
+{
+  "schema_version":"1.0.0",
+  "work_item":"CSW-08",
+  "acceptance_cases":[
+    {"id":"clone-independent-id","expect":"clone receives new ID/version and exact source provenance; later source edit does not change clone"},
+    {"id":"multi-source-remix","expect":"each exact source/version is separately attributed and remix has one independent identity"},
+    {"id":"campaign-to-personal-safe","expect":"reuse is reauthorized and privacy-filtered; protected participant/GM-only material is excluded; no backward Campaign sync exists"},
+    {"id":"campaign-cross-context","expect":"source and destination authorization are independently required; authority does not transfer between Campaigns"},
+    {"id":"reference-inaccessible","expect":"destination cannot infer protected target details; reference is marked unavailable/unresolved without leakage"},
+    {"id":"reference-remap","expect":"creator can explicitly map an inherited source reference to an authorized destination object with provenance"},
+    {"id":"source-changed","expect":"derivative remains unchanged and receives advisory compare/manual-adapt options only"},
+    {"id":"explicit-rebase-candidate","expect":"new candidate is generated from exact newer source plus recorded transform decisions and requires compare/apply"},
+    {"id":"template-update","expect":"existing instances do not change; future instances record new exact template version"},
+    {"id":"cross-setting-warning","expect":"compatibility warning is evidence-backed and advisory unless an owning-domain incorporation operation requires compatibility"},
+    {"id":"writing-span-transform","expect":"exact CSW-07 document/branch/revision/span provenance is retained; source revision is not mutated"},
+    {"id":"adventure-structure-transform","expect":"CSW semantic structure remains pre-authoritative and must use CSW-05/D28 handoff before becoming governed Adventure truth"},
+    {"id":"duplicate-create","expect":"same idempotency key yields the same derivative receipt rather than a second derivative"},
+    {"id":"stale-source-during-transform","expect":"candidate is flagged stale/review-required rather than silently recomputed/applied"},
+    {"id":"ai-assist","expect":"AI sees only authorized source projection and returns candidate material; cannot publish/promote/mutate"},
+    {"id":"no-ai","expect":"clone/template/mapping/diff/compatibility/reuse workflows remain useful without AI"},
+    {"id":"nonvisual","expect":"all lineage, mapping, compare and resolution operations are available through ordered/list/text UI without graph/drag/color dependence"}
+  ],
+  "invariants":[
+    "new identity for every derivative",
+    "exact source snapshot provenance",
+    "no silent propagation",
+    "no authority inheritance",
+    "privacy before derivation/search/AI",
+    "explicit inherited-reference handling",
+    "candidate-only assisted transforms",
+    "recoverable idempotent commands"
+  ]
+}
