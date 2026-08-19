@@ -1,0 +1,221 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "APM-01",
+  "status": "design_ready_for_review",
+  "source_contracts": [
+    {
+      "id": "APW-01",
+      "path": "governance/application-planning/asynchronous-persistent-workspace/APW-01_AUTHORITY_ACCOUNT_CONTEXT_CANONICALIZATION.md",
+      "consumed_rules": [
+        "universal user is not permanently Player or GM",
+        "Personal Campaign Session contexts",
+        "contextual scoped authority",
+        "cadence and connectivity orthogonal to context",
+        "deny-by-default authorization",
+        "Owner/Admin separation",
+        "service and AI actors have no independent human authority"
+      ]
+    },
+    {
+      "id": "MV-IA-F006",
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md",
+      "consumed_rules": [
+        "proposal and decision authority remain separate",
+        "operation IDs and expected versions",
+        "atomic authoritative Event commit",
+        "AI has no decision modification approval denial or commit authority",
+        "local drafts and calculations are nonauthoritative"
+      ]
+    },
+    {
+      "id": "MV-IA-F021",
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F021_AUTOSAVE_RECONNECT_RECOVERY_AND_BOUNDED_OFFLINE_USE.md",
+      "consumed_rules": [
+        "local draft versus authoritative state distinction",
+        "idempotency",
+        "status lookup after ambiguous failure",
+        "Event-sequence recovery",
+        "reauthorization after reconnect",
+        "no broad offline authoritative mutation",
+        "revocation invalidates cached authority"
+      ]
+    },
+    {
+      "id": "IA-D08-001",
+      "path": "governance/application-planning/internal-alpha/IA-D08-001_OPTIONAL_AI_ASSISTANT_SPEC.md",
+      "consumed_rules": [
+        "AI opt-in and nonauthoritative",
+        "authorized projection only",
+        "AI cannot bypass permissions proposal approval version checks idempotency provenance or owner gates",
+        "AI may prepare drafts and proposals",
+        "AI failure has deterministic manual fallback"
+      ]
+    },
+    {
+      "id": "IA-D08-002",
+      "path": "governance/application-planning/internal-alpha/IA-D08-002_AI_PERMISSION_PROVENANCE_COST_FALLBACK_MATRIX.md",
+      "consumed_rules": [
+        "separate AI feature context tool provider cost and retention permissions",
+        "request response provenance",
+        "hard cost bounds",
+        "provider portability and fallback",
+        "no hidden unauthorized prompt context"
+      ]
+    },
+    {
+      "id": "MV-IA-F020",
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F020_PERMISSIONS_AND_HIDDEN_INFORMATION.md",
+      "consumed_rules": [
+        "default deny server authorization",
+        "field relationship count history and projection filtering",
+        "service actors least privilege",
+        "AI does not inherit initiating user authority beyond filtered task context",
+        "UI state is not authority"
+      ]
+    },
+    {
+      "id": "MV-IA-F005",
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F005_CAMPAIGN_SCENE_AND_SESSION_BUILDER.md",
+      "consumed_rules": [
+        "Campaign and Session are governed ordinary state",
+        "Session uses immutable launch snapshot and Event history",
+        "Campaign roles are scoped",
+        "service actors cannot create independent role ownership entitlement or launch authority"
+      ]
+    }
+  ],
+  "reconciliation_findings": [
+    {
+      "issue": "AutoGM name could be misread as a human GM role",
+      "resolution": "AutoGM is a mode/profile; the controller is a nonhuman service actor authorized by explicit delegated capabilities, never assigned global GM role."
+    },
+    {
+      "issue": "Optional AI contract forbids privileged hidden GM data, but AutoGM orchestration may require hidden scenario truth",
+      "resolution": "Machine-private scenario truth is consumed by the governed deterministic scenario package/controller projection; optional AI receives only a task-filtered presentation projection and does not automatically receive raw scenario-private state."
+    },
+    {
+      "issue": "Automation could be mistaken for authority to choose for a Player",
+      "resolution": "Every operation is classified automatic, bounded automatic, proposal required, human required, or prohibited; explicit Player intent remains human-required unless a narrow repeat/routine preference is itself explicitly granted."
+    },
+    {
+      "issue": "Closing the app could accidentally become permission for unattended play",
+      "resolution": "Exit/disconnect is not authority. Runs explicitly declare foreground-only or bounded-background behavior; initial AutoGM defaults to foreground-only."
+    },
+    {
+      "issue": "Automated play could fork ordinary Campaign state into separate saves",
+      "resolution": "Domain Events and ordinary persistence remain the sole authoritative game/workspace state; run records contain execution/provenance only."
+    },
+    {
+      "issue": "Connected Cozy could let one controller inherit all participant authority",
+      "resolution": "Each participant keeps independent subject/context authority; no participant may delegate another participant's Personal authority and shared resources remain domain-governed."
+    }
+  ],
+  "additive_touchpoints": [
+    {
+      "id": "APM-T01",
+      "area": "identity_authorization",
+      "future_change": "Introduce explicit automation controller/service-principal and delegation contracts without broadening human role unions.",
+      "reopens_completed_stage_a": false
+    },
+    {
+      "id": "APM-T02",
+      "area": "apw_context",
+      "future_change": "Bind automation runs to explicit Personal Campaign Session context under APW successor contracts.",
+      "reopens_completed_stage_a": false
+    },
+    {
+      "id": "APM-T03",
+      "area": "campaign_session_authorization",
+      "future_change": "Evaluate delegated controller capabilities directly rather than mapping controller identity to GM role.",
+      "reopens_completed_stage_a": false
+    },
+    {
+      "id": "APM-T04",
+      "area": "action_proposal_event",
+      "future_change": "Reuse operation IDs expected versions proposals decisions Event commits status receipts and role-safe projections for automated commands.",
+      "reopens_completed_stage_a": false
+    },
+    {
+      "id": "APM-T05",
+      "area": "recovery",
+      "future_change": "Extend status lookup sequence recovery stale conflict revocation and reconnect fixtures to automation runs.",
+      "reopens_completed_stage_a": false
+    },
+    {
+      "id": "APM-T06",
+      "area": "optional_ai",
+      "future_change": "Reuse consent redaction provenance cost provider abstraction and fallback while keeping AI outside mechanical authority.",
+      "reopens_completed_stage_a": false
+    },
+    {
+      "id": "APM-T07",
+      "area": "scenario_adventure",
+      "future_change": "Define AutoGM-enabled scenario package, machine-private scenario projection, deterministic branch/response rules and fail-safe out-of-model behavior.",
+      "reopens_completed_stage_a": false
+    },
+    {
+      "id": "APM-T08",
+      "area": "cozy_owning_domains",
+      "future_change": "Expose automatic-resolution classification, routine preference, budget and stop-condition seams in downtime project relationship crafting research travel and other owning domains.",
+      "reopens_completed_stage_a": false
+    },
+    {
+      "id": "APM-T09",
+      "area": "notifications_work_queues",
+      "future_change": "Add pending human choice, bounded-background summary, revoke/failure and return-to-context notifications with hidden-information-safe projections.",
+      "reopens_completed_stage_a": false
+    },
+    {
+      "id": "APM-T10",
+      "area": "diagnostics_provenance",
+      "future_change": "Expose controller/run/delegation/command/Event/seed/AI provenance without secrets or hidden-state leakage.",
+      "reopens_completed_stage_a": false
+    },
+    {
+      "id": "APM-T11",
+      "area": "acceptance_fixtures",
+      "future_change": "Add mode-flag-no-authority, over-delegation denial, AI fallback, same-seed deterministic result, human-choice pause, revoke-in-flight and ordinary-live-resume fixtures.",
+      "reopens_completed_stage_a": false
+    }
+  ],
+  "downstream_constraints": {
+    "APM-02": [
+      "must use explicit routine preferences and operation classification",
+      "must stop at human-required choices",
+      "must bound background progression",
+      "must preserve no-AI fallback where domain supports it"
+    ],
+    "APM-03": [
+      "must use governed AutoGM scenario package",
+      "must preserve deterministic mechanics",
+      "must retain Player intent choice",
+      "must default initial encounter runner to foreground-only"
+    ],
+    "APM-04": [
+      "must consume CSW Adventure/continuity structure rather than invent parallel narrative state",
+      "must preserve hidden scenario truth boundary and ordinary Event history"
+    ],
+    "APM-05": [
+      "must preserve participant-independent authority",
+      "must use invited/known participants initially",
+      "must not make controller blanket authority over shared Personal resources"
+    ],
+    "APM-06": [
+      "must turn these touchpoints into explicit implementation slices fixtures and recovery/safety acceptance"
+    ],
+    "CSW": [
+      "creative AI remains proposal/draft oriented unless separately governed",
+      "AutoGM scenario content must distinguish reusable definitions machine-private scenario truth campaign state and presentation artifacts"
+    ]
+  },
+  "nonauthorization": {
+    "application_implementation": false,
+    "release_deployment": false,
+    "paid_ai": false,
+    "production_credentials": false,
+    "public_matchmaking": false,
+    "global_ai_gm": false,
+    "canonical_promotion": false,
+    "ccti12_t04_before_2026_09": false
+  }
+}
