@@ -1,0 +1,30 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"CSW-03",
+  "status":"design_ready_for_review",
+  "capture":{"minimum_required":["subject identity","authorized Personal or Campaign creative context","content payload","capture timestamp","durable operation/fragment identity","visibility policy","capture provenance"],"default_lifecycle":"inbox","forced_before_save":[],"explicitly_optional_before_save":["title","project","collection","tags","genre","world","adventure","character","campaign target","final fragment kind beyond safe fallback"]},
+  "capture_channels":["full-composer","quick-add","mobile-quick-capture","keyboard-command","explicit-share-import","offline-local-draft","optional-authorized-voice-transcription"],
+  "triage_actions":["edit","choose-kind","tag","add-to-project","add-to-collection","set-scratch","set-developing","leave-inbox","archive","tombstone","relate","branch-clone","alternate","attach-authorized-reference","open-inspiration","inspect-related-duplicate","later-incorporate"],
+  "triage_invariant":"all triage remains authorityClass=pre-authoritative",
+  "deterministic_generators":[
+    {"id":"question-ladder","output":"bounded development questions","mutates_source":false},
+    {"id":"constraint-flip","output":"inverted/removed/exaggerated/scarce/common/conditional/control/cost transform candidates","mutates_source":false},
+    {"id":"contrast-pair","output":"contrast-axis candidates","mutates_source":false},
+    {"id":"connection-bridge","output":"relationship candidates between authorized fragments","records_relationship_automatically":false},
+    {"id":"role-lens","output":"hook/conflict/secret/twist/foreshadow/payoff/beat/seed reframes","changes_kind_automatically":false},
+    {"id":"stakes-consequence-ladder","output":"multi-scale consequence candidates","authoritative":false},
+    {"id":"variation-matrix","output":"bounded cross-axis combinations","must_cap_combinations":true},
+    {"id":"seeded-table-draw","output":"table/version/seed reproducible candidates","records_seed_when_reproducibility_matters":true},
+    {"id":"combine-remix","output":"derived combination candidates","preserves_source_refs":true},
+    {"id":"negative-space","output":"missing-question/setup/opposition/cost/stake/assumption candidates","correctness_judgment":false}
+  ],
+  "generator_request":{"fields":["requestId","subjectId","context","sourceFragmentIdsAndVersions","authorizedGovernedReferenceIdsAndVersions","generatorIdAndVersion","parametersAxesCount","seedEntropyRefWhenUsed","optionalAiProvenance","visibilityProjectionVersion","createdAt","correlationId"],"authoritative":false},
+  "candidate":{"default_saved":false,"ephemeral":true,"fields":["candidateId","requestId","contentOrStructuredPayload","transformationReason","presentationRankOrder"]},
+  "candidate_dispositions":["dismiss","save-new","branch-source","save-as-alternate","append-to-source-explicit","replace-source-content-explicit","relate-only","copy-to-project-note","discard-all"],
+  "save_rules":["no candidate auto-saves","saved alternatives get stable independent IDs","source version/provenance retained","explicit source edits preserve prior version","no direct owning-domain incorporation from generator result"],
+  "duplicate_related":{"advisory_only":true,"authorization_before_similarity":true,"silent_merge":false,"candidate_basis":["exact content","normalized label","tags-kind-project overlap","explicit shared references","deterministic similarity","optional authorized AI similarity"],"dispositions":["ignore","not-duplicate","relate","branch-from-existing","manual-merge","supersede","dismiss"]},
+  "bounded_development":{"candidate_count_limit_required":true,"chain_step_limit_required":true,"selected_scope_required":true,"development_lens_optional":true,"novelty_duplicate_threshold_optional":true,"ai_cost_budget_existing_policy_only":true,"returns_control_after_bound":true},
+  "offline":{"allowed":"local draft capture/edit under existing cache policy","not_authorized":["durable Campaign save without current auth","hidden-reference fetch","incorporation","publication","network AI without valid connectivity/authorization"],"reconnect":["reauthenticate","reauthorize context","validate project/visibility","assign durable operation/fragment identity","reconcile idempotency/duplicates","save once or surface conflict","retain failed local draft until explicit resolution"]},
+  "accessibility":["keyboard quick-add","screen-reader save/recovery announcements","no drag-only triage","mobile one-primary-field capture","non-color-only offline state","semantic candidate headings/actions","plain-language branch/alternate behavior","touch/keyboard/screen-reader generator controls","reduced motion","visible generation bounds","destructive actions separated"],
+  "authorizations":{"implementation":false,"migration":false,"automatic_authoritative_content":false,"automatic_candidate_save":false,"silent_merge":false,"protected_source_copy":false,"canonical_promotion":false,"release_deployment":false,"ccti12_t04_before_2026_09":false}
+}

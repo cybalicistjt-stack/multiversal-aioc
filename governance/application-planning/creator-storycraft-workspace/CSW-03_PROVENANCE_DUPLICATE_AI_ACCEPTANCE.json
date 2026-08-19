@@ -1,0 +1,33 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"CSW-03",
+  "status":"design_ready_for_review",
+  "dependencies":[{"id":"CSW-01","uses":["stable pre-authoritative fragment identity","branch/alternate/provenance","lifecycle","incorporation boundary"]},{"id":"CSW-02","uses":["Library/Project placement","duplicate/related advisory discovery","visibility-before-similarity","Project Memory/backlinks"]},{"id":"IA-D08","uses":["optional AI consent/context filtering/provenance/cost/fallback"]}],
+  "source_provenance":{"may_record":["authorized URL/document/object reference","safe title/creator metadata","creator inspiration note","allowed user-supplied excerpt/payload","added/access timestamp","source version/checksum when relevant","inspired-by/references relation"],"source_claim_becomes_authoritative":false,"protected_campaign_payload_copied_personally":false,"governed_reference_rule":"use visibility-safe reference rather than payload copy"},
+  "ai_input_rules":["resolve exact context","authorize every selected fragment/reference/source","respect Personal/Campaign separation","exclude inaccessible/tombstoned payload","apply AI consent/provider/cost/retention policy","use only task-relevant selected scope"],
+  "ai_output_rules":["ephemeral by default","explicit save required","saved output remains pre-authoritative","request/provider/model/task provenance retained per policy","no silent source application","no direct incorporation/publication/canonical promotion","no inaccessible-source fact assertion","deterministic/manual fallback remains available"],
+  "duplicate_privacy":["authorization before exact/semantic/similarity matching","hidden candidates do not affect counts","hidden candidates do not trigger already-have-something-like-this hints","hidden candidates do not affect autocomplete/ranking/embeddings exposed to subject","no silent merge/delete"],
+  "voice_behavior":["curious and encouraging","clear that suggestions are suggestions","respects rejection","never implies endless generation obligation","never presents one correct story","no automatic excessive praise","supports intentionally unresolved work"],
+  "acceptance_scenarios":[
+    {"id":"CSW03-A01","scenario":"one-sentence capture with no metadata","expected":"durable inbox fragment with stable identity/provenance"},
+    {"id":"CSW03-A02","scenario":"offline quick capture then reconnect","expected":"local draft reconciles into at most one durable fragment"},
+    {"id":"CSW03-A03","scenario":"triage idea to location-seed and project","expected":"same fragment identity; remains pre-authoritative"},
+    {"id":"CSW03-A04","scenario":"question ladder generates four prompts","expected":"all remain ephemeral until explicit save"},
+    {"id":"CSW03-A05","scenario":"same deterministic generator version/seed/inputs","expected":"same output where generator promises reproducibility"},
+    {"id":"CSW03-A06","scenario":"save three motive alternatives","expected":"three stable derived/alternate fragments; seed unchanged"},
+    {"id":"CSW03-A07","scenario":"explicit apply candidate to source","expected":"visible revision/diff and prior version retained"},
+    {"id":"CSW03-A08","scenario":"authorized older duplicate candidate exists","expected":"advisory relate/branch/supersede/dismiss; no silent merge"},
+    {"id":"CSW03-A09","scenario":"hidden Campaign duplicate exists","expected":"no hint/count/ranking/similarity leakage"},
+    {"id":"CSW03-A10","scenario":"Personal fragment references Campaign object then access revoked","expected":"protected payload unavailable; no retained copied truth"},
+    {"id":"CSW03-A11","scenario":"AI request with two selected fragments","expected":"only selected authorized context sent"},
+    {"id":"CSW03-A12","scenario":"AI returns candidate hooks","expected":"ephemeral; explicit save creates attributable pre-authoritative fragments"},
+    {"id":"CSW03-A13","scenario":"AI unavailable","expected":"deterministic/manual inspiration remains fully usable"},
+    {"id":"CSW03-A14","scenario":"develop-this reaches configured bound","expected":"stops and returns control with summary"},
+    {"id":"CSW03-A15","scenario":"all suggestions dismissed","expected":"source unchanged; no hidden mutations"},
+    {"id":"CSW03-A16","scenario":"screen-reader mobile capture/triage","expected":"full operation without drag or visual-only semantics"},
+    {"id":"CSW03-A17","scenario":"save generated item to Campaign-bound project","expected":"fresh Campaign authoring/visibility authorization"},
+    {"id":"CSW03-A18","scenario":"generated twist/secret","expected":"never World/Campaign truth until explicit owning-domain incorporation"}
+  ],
+  "future_touchpoints":["quick capture/local draft save","Inbox triage","deterministic generator registry","seeded random helper","ephemeral InspirationRequest/Candidate model","candidate disposition APIs","CSW-02 duplicate adapter","source/governed-reference provenance","optional AI suggestion adapter","bounded develop-session coordinator","offline reconciliation","mobile/accessibility surfaces"],
+  "nonauthorization":{"implementation":false,"migration":false,"autonomous_ai_authorship":false,"automatic_authoritative_content":false,"silent_duplicate_merge":false,"protected_source_copy":false,"canonical_promotion":false,"training_on_private_creative_material":false,"t04_before_september":false}
+}
