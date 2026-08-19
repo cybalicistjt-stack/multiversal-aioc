@@ -1,31 +1,40 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "program_id": "APW",
   "program_name": "Asynchronous Play & Persistent Workspace",
-  "status": "design_active",
+  "status": "design_active_interleaved",
   "owner": "John Brandon Turner",
   "approved_planning_direction": "2026-08-18",
   "execution_rule": "dependency_ordered_complete_substantive_tranche_before_final_gate",
   "current_execution_pointer_unchanged": false,
-  "current_item": "APW-01",
-  "current_attempt": "APW-01-attempt-001",
+  "current_item": null,
+  "current_attempt": null,
+  "next_apw_item": "APW-02",
+  "interleave_before_next_apw": ["APM-01", "CSW-01", "CSW-02"],
   "tranches": [
     {
       "id": "APW-01",
       "name": "Authority Account Context and Terminology Canonicalization",
-      "status": "design_complete_pending_validation",
+      "status": "completed_verified",
       "depends_on": [],
       "deliverables": [
         "APW-01_AUTHORITY_ACCOUNT_CONTEXT_CANONICALIZATION.md",
         "APW-01_AUTHORITY_CONTEXT_MATRIX.json",
-        "APW-01_TRACEABILITY_AND_ADDITIVE_TOUCHPOINTS.json"
+        "APW-01_TRACEABILITY_AND_ADDITIVE_TOUCHPOINTS.json",
+        "APW-01_REVIEW_RECEIPT.md"
       ],
+      "evidence": {
+        "pull_request": 409,
+        "validated_head": "f0b6b3d9b64d3b8f7b1fd9d81f6079b14097ef32",
+        "repository_health_run": 32202132346,
+        "merge_sha": "2f99a03612dab525eaffd5c0141f84cf8c1b5654"
+      },
       "completion_gate": "Universal-user and contextual-role authority is unambiguous, older global GM/Player assumptions are reconciled, and additive implementation touch points are identified without reopening completed Stage A closure evidence."
     },
     {
       "id": "APW-02",
       "name": "Asynchronous Action Proposal and GM Inbox Contract",
-      "status": "planned",
+      "status": "planned_waiting_interleave",
       "depends_on": ["APW-01"],
       "completion_gate": "One durable delayed proposal produces at most one attributable authoritative outcome through the existing proposal/approval architecture with safe stale conflict clarification reconnect and notification behavior."
     },
