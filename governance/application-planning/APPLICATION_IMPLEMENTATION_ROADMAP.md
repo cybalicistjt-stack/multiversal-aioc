@@ -1,7 +1,7 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 5.5.0  
+**Version:** 5.6.0  
 **Status:** ACTIVE — COMBINED WORKSPACE IMPLEMENTATION  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-19
@@ -35,76 +35,80 @@ The APW/APM/CSW design series is **COMPLETED_VERIFIED** through APW-08, APM-06 a
 | CSW-I03 | completed_verified | PR #215 / merge `0c49376a…` | none |
 | CSW-I04 | completed_verified | PR #216 / merge `de028a41…` | `0015_csw_guided_creation_workflow.json` |
 | CSW-I05 | completed_verified | PR #217 / merge `dc9c0f75…` | `0016_csw_narrative_lab_continuity.json` |
-| CSW-I06 | completed_verified | PR #218 / `8bbecee4…` / merge `c7aac6ff…` | `0017_csw_writing_studio_revision_workspace.json` |
-| CSW-I07 | **selected_not_started** | `CSW-I07-attempt-001` | inspect live head first |
+| CSW-I06 | completed_verified | PR #218 / merge `c7aac6ff…` | `0017_csw_writing_studio_revision_workspace.json` |
+| CSW-I07 | completed_verified | PR #219 / `245b90df…` / merge `5d349777…` | `0018_csw_reuse_remix_transformation.json` |
+| APW-I06 | **selected_not_started** | `APW-I06-attempt-001` | inspect live head first |
 
-### CSW-I06 completion evidence
+### CSW-I07 completion evidence
 
-Application PR #218 completed from exact validated head `8bbecee4ee3adcf068b07b73159361263d78cf50`. Repository-health run `32282219761` passed. Product run `32282219562` ended with self-hosted Linux PASS, self-hosted Windows PASS and deterministic comparison PASS before squash merge `c7aac6ffc91a8f7d4117f6a862a14cf5030692b3`.
+Application PR #219 completed from exact validated head `245b90dfc6b9728df5a9d1954bf7c1176c5b0d2e`. Repository-health run `32285069748` passed. Product run `32285069972` ended with self-hosted Windows PASS, self-hosted Linux PASS and deterministic comparison PASS before squash merge `5d34977710ae1229e32de06e7e7b28610b90ae84`.
 
-CSW-I06 added migration `0017_csw_writing_studio_revision_workspace.json` only after live inspection proved a genuine D29 gap. The implementation separates stable WritingDocument identity, independent DocumentBranch lineage, high-frequency recoverable WorkingDraft generations and immutable append-only DocumentRevision/checkpoint evidence. Autosave does not create revision-history noise; stale writes fail without overwriting current authored text; deterministic revision compare and explicit candidate apply remain creator-controlled; reference context is authorization-filtered; exact revision export pins the revision and audience projection but never creates publication/canonical authority.
+CSW-I07 added migration `0018_csw_reuse_remix_transformation.json` only after live inspection proved a genuine D29 gap. It stores independent derivative identity, exact one-or-many source snapshots, deterministic recipe provenance, inherited-reference dispositions, idempotent operation evidence and advisory source-drift reviews without copying source/result payload truth or source authority. Source changes never silently propagate; explicit rebase candidates remain creator-controlled and source mutation is prohibited.
 
-Validation history is preserved in `CSW-I06-attempt-001`: initial candidate `bbae8e332bb031fa163393bf9a16d88b176998f4` stopped at the same client TypeScript error on both lanes because the UI passed `description` to `EmptyState`, whose contract requires `body`. The repair was UI typing-only and did not weaken any persistence, privacy, history, export, no-AI or authority boundary. The repaired exact head passed every required gate.
+Validation history is preserved in `CSW-I07-attempt-001`: candidate `7a0d96f…` exposed an over-specific validator formatting check; candidate `39d5bde…` exposed a focused fixture TS2783 typing defect. On final head `245b90df…`, the first Linux regression execution failed only the pre-existing A2 performance budget at p95 `455.828575 ms` versus `250 ms`; all 11 CSW-I07 focused tests passed and Windows passed the full profile. The exact unchanged Linux job retry passed and deterministic comparison then passed. No source, test, threshold, privacy or authority rule was changed for the retry.
 
-## Current work — CSW-I07
+## Current work — APW-I06
 
-**CSW-I07 — Reuse, Remix and Transformation** is the sole selected application implementation slice.
+**APW-I06 — Notification, Visibility, Recovery and Hybrid Cross-Device Integration** is the sole selected application implementation slice.
 
 Repository: `cybalicistjt-stack/Multiversal-app`  
-Attempt: `CSW-I07-attempt-001`  
+Attempt: `APW-I06-attempt-001`  
 State: `selected_not_started`
 
-The governing source rule is:
+The governing shell rule is:
 
-`Exact authorized source snapshot → explicit derivative operation → new independent identity/version → independent editing → optional later compare/manual adaptation`
+`authorize candidate set → visibility project → aggregate/count/rank → render`
 
 Never:
 
-`Source changes → silent derivative mutation`.
+`aggregate all → redact individual rows`.
 
 Required boundaries:
-- clone/adapt/fork/remix/template/transform always creates a new derivative identity/version and never reuses source identity;
-- exact source object/version/revision/span evidence and transform provenance are retained;
-- multi-source remix preserves each source/version independently;
-- origin and destination Personal/Project/Campaign context classification is explicit and does not transfer authority;
-- inherited references are classified as retained-compatible, destination-incompatible, inaccessible, detached, remapped or unresolved without leaking protected identity/cardinality;
-- Campaign/runtime → reusable extraction reauthorizes before extraction and excludes material the creator cannot reuse; proposal/review-required or denied paths remain possible;
-- source and derivative evolve independently; later source change produces only an advisory review state;
-- compare/manual-adapt/explicit rebase-candidate flows never auto-merge source updates;
-- compatibility findings remain evidence-backed/advisory unless an owning-domain operation genuinely requires compatibility;
-- exact CSW-I06 WritingDocument/revision/span and CSW-I05 narrative structure sources may participate through stable refs without copying governed truth;
-- deterministic transform recipes and no-AI reuse remain first-class; optional AI output stays candidate-only and must be explicitly applied;
-- derivative creation/apply is idempotent and stale-source/concurrent edits fail without source/derivative overwrite;
-- APW Workshop/Sandbox can consume derivative candidates without changing their authority class.
+- Personal, Campaign and Session context remain explicit; role/capability presentation is contextual rather than an account caste;
+- navigation, badges, attention counts, search, notifications, recents and deep-link previews are authorization-filtered before aggregation or presentation;
+- the shell is orchestration/projection only and cannot become a second Campaign, Action, creator or notification workflow authority;
+- attention center may compose decision-required, result-ready, waiting, recovery-required, informational and creator-advisory projections while owning domains retain state/disposition authority;
+- notifications are durable or reconstructable projections of owning-domain outcomes; quieting reduces pressure and never grants automation/consent;
+- deep links carry context/target hints, not permission; open always reauthorizes and re-resolves current target/version;
+- Spoiler Shield applies only to already-authorized content and never substitutes for D05 authorization, parental controls or child-safety security;
+- context switching must invalidate/re-evaluate prior-context protected search, counts, previews, recents, assistance scope and cached Campaign-private cards;
+- offline/cached state is explicitly labeled and cannot invent write authority; reconnect revalidates authorization/version before protected data is rendered;
+- ambiguous prior mutations recover through owning-domain status/idempotency rather than blind duplicate retry;
+- mobile, keyboard, screen-reader/nonvisual and reduced-motion paths carry equivalent context, visibility and recovery meaning;
+- shell language remains warm, calm, concise and non-obsequious;
+- deterministic no-AI operation remains first-class and no external push/email provider is required for acceptance.
 
-First operation: re-fetch App main and migration head **once**, inspect current D29 CreativeFragment source/relationship refs, Project Memory lineage, APW Workshop reuse/save-out receipts, CSW-I05/I06 exact-source seams and Campaign extraction/reference authorization boundaries, determine whether the smallest derivative model genuinely requires migration `0018`, then implement the first deterministic exact-snapshot derivative + source-drift review path.
+First operation: re-fetch App main and migration head **once**, inspect current shell/context switching, D05 visibility projections, APW-I03/I04 attention sources, notification/recovery/deep-link/cache seams and cross-device reconnect behavior, determine whether the smallest durable APW-I06 model genuinely requires migration `0019`, then implement the first deterministic context-switch + authorization-safe attention/recovery path.
 
-Canonical App baseline after CSW-I06: `c7aac6ffc91a8f7d4117f6a862a14cf5030692b3`. Migration head: `0017_csw_writing_studio_revision_workspace.json`.
+Canonical App baseline after CSW-I07: `5d34977710ae1229e32de06e7e7b28610b90ae84`. Migration head: `0018_csw_reuse_remix_transformation.json`.
 
 ## Default strict implementation sequence
 
 `APW-I01 → CSW-I01 → APM-I01 → APW-I02 → APW-I03 → APW-I04 → CSW-I02 → APM-I02 → APM-I03 → APW-I05 → CSW-I03 → CSW-I04 → CSW-I05 → CSW-I06 → CSW-I07 → APW-I06 → CSW-I08 → APM-I04 → APM-I05 → APM-I06 → APW-I07`
 
-Everything through CSW-I06 is completed_verified. CSW-I07 is selected_not_started. Later slices remain inactive.
+Everything through CSW-I07 is completed_verified. APW-I06 is selected_not_started. CSW-I08 and all later slices remain inactive.
+
+A later slice may move earlier only when its declared dependencies remain satisfied **and the owner approves the reorder**. No such reorder is active.
 
 ## Migration and ownership policy
 
-- migrations `0001` through `0017` are immutable predecessors;
+- migrations `0001` through `0018` are immutable predecessors;
 - every tranche rechecks current App main/migration head once before mutation;
 - no next migration number is reserved in advance;
 - no migration is added without a genuine durable schema delta;
-- D29 CSW records may hold pre-authoritative creative support, writing history, derivative lineage, source-version observations, reference dispositions and provenance but never duplicate D18/D28/A9/Campaign authoritative payload truth;
-- D05 authorization precedes source preview, search, lineage topology/counts, Campaign extraction, compatibility analysis, mapping, export and optional-AI context;
-- derivative identity, prose, advisory findings and generated candidates never gain authority through source ancestry, polish, export, repetition or AI fluency;
-- D18/D28/A9/Character/Campaign transitions remain explicit owning-domain operations.
+- APW-I06 composes visibility-projection, audit/export/recovery, diagnostics/support and shell surfaces; notification/attention/recovery metadata, if durable storage is genuinely needed, remains bounded to the correct owning domain rather than one generic APW truth store;
+- D05 authorization precedes counts, badges, search, notifications, deep-link previews, recents, context caches, exports and optional assistance;
+- Spoiler Shield is presentation preference for authorized content only;
+- broad offline authoritative mutation remains out of scope;
+- D18/D28/A9/Character/Campaign/Action transitions remain explicit owning-domain operations.
 
 ## Internal Alpha milestones
 
 1. Persistent Personal/async foundation — APW-I01, APW-I02, APW-I03 — **complete**.
 2. Between-session and creator foundation — APW-I04, CSW-I01, CSW-I02, APW-I05 — **complete**.
 3. First creator and automated experiences — CSW-I03, CSW-I04, APM-I01, APM-I02, APM-I03 — **complete**.
-4. Deep creator workspace — CSW-I05, CSW-I06, CSW-I07 — **CSW-I05/I06 complete; CSW-I07 current**.
-5. Integrated shell and connected automation — APW-I06, CSW-I08, APM-I04, APM-I05, APM-I06.
+4. Deep creator workspace — CSW-I05, CSW-I06, CSW-I07 — **complete**.
+5. Integrated shell and connected automation — APW-I06, CSW-I08, APM-I04, APM-I05, APM-I06 — **APW-I06 current**.
 6. Whole-system hybrid proof — APW-I07.
 
 Tester distribution remains separately owner-gated.
@@ -126,6 +130,6 @@ Only evidence-backed `completed_verified` is complete. A failed required gate le
 
 ## Nonauthorization
 
-Current selection authorizes only CSW-I07. It does not authorize CSW-I08+, APW-I06+, APM-I04+, migration `0018` without a proven durable delta, silent source/derivative synchronization, Campaign/runtime extraction without explicit authority, permission/ownership/visibility/publication inheritance, automatic source-update merge, AI auto-apply, hidden lineage/reference leakage, T04 before September, tester distribution, release/deployment or paid-provider activation.
+Current selection authorizes only APW-I06. It does not authorize CSW-I08+, APM-I04+, APW-I07, migration `0019` without a proven durable delta, a new shell authority/workflow engine, hidden count/search/notification leakage, permission-bearing deep links, Spoiler Shield as security/parental control, broad offline authoritative mutation, external notification-provider activation, T04 before September, tester distribution, release/deployment or paid-provider activation.
 
 “Continue” means execute the next verified unfinished operation.
