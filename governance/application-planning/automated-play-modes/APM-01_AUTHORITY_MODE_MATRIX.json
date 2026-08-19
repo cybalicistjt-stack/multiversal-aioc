@@ -1,0 +1,241 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "APM-01",
+  "status": "design_ready_for_review",
+  "owner": "John Brandon Turner",
+  "controlling_dependency": "APW-01",
+  "dimensions": {
+    "context": ["personal", "campaign", "session"],
+    "cadence": ["live", "asynchronous", "hybrid"],
+    "connectivity": ["connected", "temporarily_offline_cached", "recovering_reconnecting"],
+    "participation_topology": ["solo", "invited_connected"],
+    "automated_play_profile": ["autogm", "cozy", "connected_cozy"]
+  },
+  "terminology_rules": [
+    "Solo is participation topology, not a role or authority grant.",
+    "AutoGM is bounded automated orchestration, not a global Game Master role.",
+    "CozyMode is a setting-independent automated-play experience, not a genre or separate state engine.",
+    "Connected Cozy is CozyMode with invited authorized participants, not a new authority model.",
+    "No context, cadence, connectivity state, topology, profile flag, route, tool, or AI availability implies authority."
+  ],
+  "controller_identity": {
+    "actor_class": "nonhuman_service_actor",
+    "required_ids": [
+      "automationControllerId",
+      "automationRunId",
+      "initiatingSubjectId",
+      "modeProfileId",
+      "delegationGrantId",
+      "contextKind",
+      "contextIdWhenApplicable",
+      "correlationId"
+    ],
+    "never_human_roles": [
+      "player",
+      "game_master",
+      "campaign_owner",
+      "assistant_gm",
+      "observer",
+      "owner_admin",
+      "creator"
+    ],
+    "authority_source": "explicit_versioned_delegation_plus_fresh_owning_domain_authorization"
+  },
+  "delegation_grant_required_fields": [
+    "grantId",
+    "grantVersion",
+    "grantingSubjectId",
+    "grantingAuthorityEvidence",
+    "automationControllerId",
+    "modeProfileId",
+    "contextKind",
+    "contextId",
+    "allowedCapabilities",
+    "prohibitedCapabilities",
+    "allowedObjectScopes",
+    "automaticResolutionClasses",
+    "mandatoryHumanChoiceClasses",
+    "scenarioOrActivityPackageVersions",
+    "runDurationLimit",
+    "stepOrEventLimit",
+    "backgroundWindowLimit",
+    "resourceOrCostLimits",
+    "hiddenInformationProjectionPolicy",
+    "optionalAiPolicy",
+    "effectiveAt",
+    "expiresAt",
+    "revokedAt",
+    "policyVersions",
+    "auditReference"
+  ],
+  "operation_classes": [
+    {
+      "id": "automatic_permitted",
+      "controller_may_execute": true,
+      "requires_fresh_domain_authorization": true
+    },
+    {
+      "id": "automatic_with_bounds",
+      "controller_may_execute": true,
+      "requires_fresh_domain_authorization": true,
+      "requires_declared_limits": true
+    },
+    {
+      "id": "proposal_required",
+      "controller_may_execute": false,
+      "controller_may_prepare_or_submit_proposal": true,
+      "authorized_human_or_domain_decision_required": true
+    },
+    {
+      "id": "human_required",
+      "controller_may_execute": false,
+      "explicit_human_choice_required": true
+    },
+    {
+      "id": "prohibited",
+      "controller_may_execute": false,
+      "controller_may_propose": false
+    }
+  ],
+  "mandatory_human_baseline": [
+    "non-preauthorized player intent choices",
+    "material stale/conflict plan changes",
+    "consent privacy safety social-boundary and participation decisions",
+    "campaign join/leave and material role/control/ownership transfers",
+    "irreversible or high-impact character advancement/build choices",
+    "real-money or paid-credit spending",
+    "canonical promotion publication public sharing release deployment",
+    "destructive deletion or irreversible migration",
+    "automation grant widening transfer renewal",
+    "any owning-domain human_required operation",
+    "ambiguous or out-of-model situations without a proven permitted path"
+  ],
+  "responsibility_partition": {
+    "deterministic_domain_owned": [
+      "authorization",
+      "hidden_information_filtering",
+      "entitlement",
+      "pack_and_schema_compatibility",
+      "mechanical_legality",
+      "costs_requirements_targets_rolls_modifiers_effects",
+      "domain_state_transitions",
+      "event_acceptance_and_ordering",
+      "idempotency_and_expected_versions",
+      "proposal_approval_requirements",
+      "reward_and_resource_mutation",
+      "run_delegation_revocation_expiry",
+      "owner_reserved_gates"
+    ],
+    "automation_controller": [
+      "select_next_permitted_operation_from_eligible_set",
+      "invoke_authorized_domain_commands",
+      "bounded_timer_or_progress_advancement",
+      "scenario_owned_npc_world_response_within_package",
+      "governed_seeded_opportunity_selection",
+      "pause_at_human_choice",
+      "safe_out_of_scope_fallback",
+      "run_bookkeeping_and_provenance"
+    ],
+    "optional_ai": [
+      "narrate_determined_result",
+      "filtered_dialogue_or_description",
+      "summarize_authorized_state",
+      "propose_flavor_names_hooks_choices_or_drafts",
+      "presentation_transformation",
+      "candidate_suggestion_subject_to_domain_validation",
+      "explain_rules_provenance_choices_consequences"
+    ]
+  },
+  "optional_ai_prohibitions": [
+    "authoritative mechanical legality",
+    "bypass proposal approval",
+    "silent human choice",
+    "permission delegation entitlement ownership or visibility mutation",
+    "silent canonical or campaign-truth publication",
+    "unrestricted hidden state access",
+    "self-granting tools or authority",
+    "inventing authoritative state to resolve ambiguity"
+  ],
+  "scenario_private_truth": {
+    "holder": "governed_autogm_scenario_package_and_deterministic_controller_projection",
+    "optional_ai_default_access": false,
+    "ai_input_rule": "task_filtered_presentation_projection_only",
+    "player_projection_rule": "authorization_and_reveal_state_filtered"
+  },
+  "run_states": [
+    "draft",
+    "validating",
+    "ready",
+    "running",
+    "awaiting_human_choice",
+    "awaiting_governed_approval",
+    "pausing",
+    "paused",
+    "background_bounded",
+    "stopping",
+    "stopped",
+    "expired",
+    "revoked",
+    "stale",
+    "recovery_required",
+    "review_required",
+    "completed",
+    "failed_safe"
+  ],
+  "background_policies": {
+    "foreground_only": {
+      "initial_autogm_default": true,
+      "disconnect_behavior": "pause_or_recovery_required"
+    },
+    "bounded_background": {
+      "explicit_opt_in_required": true,
+      "required_limits": ["duration", "steps_or_events", "resource_budget", "stop_conditions"],
+      "must_stop_on": [
+        "human_choice",
+        "governed_approval_required",
+        "limit_exhaustion",
+        "stale_or_conflict",
+        "permission_or_entitlement_change",
+        "revocation_or_expiry",
+        "profile_stop_condition"
+      ]
+    }
+  },
+  "lifecycle_semantics": {
+    "start": "reauthorize context, validate profile/package, establish grant, record exact versions and limits, create run receipt",
+    "pause": "execution barrier; no new state-changing automated commands after barrier; committed events persist",
+    "exit": "does not imply background authority",
+    "resume": "reauthorize all authority/state/version inputs and restore from proven event sequence/pending choice",
+    "stop": "ends automation only; does not rollback ordinary committed state",
+    "revoke_or_expire": "blocks new operations immediately; status lookup resolves ambiguous in-flight operations; committed events remain history"
+  },
+  "single_state_model": {
+    "authoritative_game_workspace_state": "ordinary_domain_state_and_accepted_events",
+    "automation_run_record": "execution_and_provenance_control_only",
+    "separate_autogm_or_cozy_universe": false,
+    "replay_reapplies_events": false
+  },
+  "denied_cases": [
+    "client_mode_flag_cannot_create_authority",
+    "player_cannot_delegate_gm_only_operations",
+    "controller_cannot_widen_own_grant",
+    "controller_out_of_scope_operation_denied",
+    "ai_illegal_suggestion_cannot_mutate",
+    "human_required_choice_cannot_be_silently_selected",
+    "disconnect_cannot_create_background_permission",
+    "revoked_grant_cannot_resume_from_cache",
+    "owner_admin_or_tool_access_cannot_create_campaign_private_authority",
+    "connected_cozy_controller_cannot_claim_all_participant_personal_authority"
+  ],
+  "authorizations": {
+    "application_implementation": false,
+    "global_ai_gm_authority": false,
+    "public_matchmaking": false,
+    "paid_ai_services": false,
+    "production_credentials": false,
+    "canonical_promotion": false,
+    "release_or_deployment": false,
+    "broad_offline_authoritative_play": false,
+    "ccti12_t04_before_2026_09": false
+  }
+}
