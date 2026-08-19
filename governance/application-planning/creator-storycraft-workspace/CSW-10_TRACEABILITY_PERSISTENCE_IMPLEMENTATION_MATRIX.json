@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0.0",
+  "work_item": "CSW-10",
+  "purpose": "Map CSW-01 through CSW-09 into additive implementation slices, owning domains, persistence boundaries, acceptance gates and rollback/compatibility behavior.",
+  "persistence_decision": {
+    "initial_owner": "D29 authoring-provenance",
+    "new_top_level_creative_domain_authorized": false,
+    "rule": "Creative-support records may be added under bounded D29 authoring workflow/provenance ownership; governed World/Adventure/Character/Campaign/A9/Asset payloads remain references to their owning domains.",
+    "new_seam_rule": "A new persistence seam requires later evidence that D29 cannot support the need without ownership violation or unacceptable coupling, plus separate governance/migration authority."
+  },
+  "authority_dependencies": [
+    {"domain":"D29 authoring-provenance","owns":"creative-support durable records, authoring provenance, incorporation/proposal receipts"},
+    {"domain":"D05 visibility-projection","owns":"authorization-safe projection before counts/search/topology/notifications/AI context"},
+    {"domain":"D18 world-location-map","owns":"World, Location, semantic geography"},
+    {"domain":"D28 adventure-travel","owns":"Adventure/Module definitions and Campaign run-local Adventure progression"},
+    {"domain":"D07 entity-catalog","owns":"governed reusable definition/version/variant/dependency identity"},
+    {"domain":"D06 pack-registry","owns":"pack lifecycle"},
+    {"domain":"D13 media-attachments","owns":"media payloads"},
+    {"domain":"APW-05","owns":"Creator Workshop/Sandbox orchestration boundary"},
+    {"domain":"APW-06","owns":"shell/context/visibility/attention/deep-link UX contract"}
+  ],
+  "implementation_slices": [
+    {
+      "id":"CSW-I01",
+      "source_tranches":["CSW-01"],
+      "name":"Creative identity lifecycle provenance foundation",
+      "depends_on":["D29","APW-01"],
+      "persistence":"D29 additive creative-support records",
+      "application_touchpoints":["authoring-provenance contracts/schemas/persistence","creator project/library foundation"],
+      "acceptance":"Stable creative identity, lifecycle, ownership and provenance survive reload/recovery; no creative record is governed truth.",
+      "rollback":"Feature may be disabled without deleting compatible creative records."
+    },
+    {
+      "id":"CSW-I02",
+      "source_tranches":["CSW-02"],
+      "name":"Creative Library Story Bible Project Memory",
+      "depends_on":["CSW-I01","D05"],
+      "persistence":"D29 project/library/reference metadata; governed payloads referenced only",
+      "application_touchpoints":["library/search/index projections","Story Bible","project-memory graph"],
+      "acceptance":"Authorization precedes search/count/topology and hidden/revoked references do not leak.",
+      "rollback":"Library organization remains stored; unavailable projections fail closed."
+    },
+    {
+      "id":"CSW-I03",
+      "source_tranches":["CSW-03"],
+      "name":"Idea Inbox Inspiration Engine",
+      "depends_on":["CSW-I01","CSW-I02"],
+      "persistence":"D29 saved ideas only; unsaved InspirationCandidate is ephemeral",
+      "application_touchpoints":["Idea Inbox","deterministic generators","optional assistance seam"],
+      "acceptance":"Candidate generation never mutates seed automatically and no-AI path is complete.",
+      "rollback":"Saved ideas remain; optional generator/AI entry points may be disabled independently."
+    },
+    {
+      "id":"CSW-I04",
+      "source_tranches":["CSW-04"],
+      "name":"Guided Creation Workflows Templates",
+      "depends_on":["CSW-I01","CSW-I02","CSW-I03"],
+      "persistence":"D29 workflow run state and creator answers; durable creative content remains CreativeFragment/project data",
+      "application_touchpoints":["guided workflow runner","template/version pinning","freeform escape/re-entry"],
+      "acceptance":"Skip/revisit/reorder/branch/freeform paths preserve creator control and workflow completion is pre-authoritative.",
+      "rollback":"Runs remain readable; creator content survives abandoned/disabled guidance."
+    },
+    {
+      "id":"CSW-I05",
+      "source_tranches":["CSW-05","CSW-06"],
+      "name":"Narrative Design Lab Continuity Open Threads",
+      "depends_on":["CSW-I02","CSW-I04","D28","D05","A9 authorized projections"],
+      "persistence":"D29 narrative-plan/open-thread/candidate/disposition records; D28/A9 truth referenced only",
+      "application_touchpoints":["outline","board","timeline","graph","semantic outline","continuity review"],
+      "acceptance":"All views share stable semantics; nonvisual topology parity; advisory analysis cannot rewrite truth; D28/A9 handoff explicit.",
+      "rollback":"Planning structures remain stored; analysis can be disabled without changing source material."
+    },
+    {
+      "id":"CSW-I06",
+      "source_tranches":["CSW-07"],
+      "name":"Writing Studio Revision Workspace",
+      "depends_on":["CSW-I02","CSW-I05"],
+      "persistence":"D29 documents/revisions/branches/checkpoints; governed facts referenced",
+      "application_touchpoints":["writing editor","revision compare/apply","reference panel","export/handout"],
+      "acceptance":"Autosave/recovery is deterministic, revisions are creator-controlled and exact revision export is reproducible.",
+      "rollback":"Documents/revisions remain durable and exportable even if advanced editing assistance is disabled."
+    },
+    {
+      "id":"CSW-I07",
+      "source_tranches":["CSW-08"],
+      "name":"Reuse Remix Transformation",
+      "depends_on":["CSW-I01","CSW-I02","CSW-I05","CSW-I06","APW-05"],
+      "persistence":"D29 derivative lineage/source-version observations/transformation receipts",
+      "application_touchpoints":["clone/adapt/fork/remix","source drift review","safe Campaign extraction","template instantiation"],
+      "acceptance":"Derivatives have independent identity/version, exact lineage and no silent source propagation or protected-context copy.",
+      "rollback":"Descendants remain independently editable; lineage remains inspectable."
+    },
+    {
+      "id":"CSW-I08",
+      "source_tranches":["CSW-09","CSW-01","CSW-02","CSW-03","CSW-04","CSW-05","CSW-06","CSW-07","CSW-08"],
+      "name":"Creator Command Center APW Integration End-to-End Acceptance",
+      "depends_on":["CSW-I01","CSW-I02","CSW-I03","CSW-I04","CSW-I05","CSW-I06","CSW-I07","APW-05","APW-06"],
+      "persistence":"Mostly projections/resume metadata; no duplicate source truth",
+      "application_touchpoints":["Creator Command Center","creator search/commands","resume/deep links","Workshop/Sandbox integration","visible assistance scope"],
+      "acceptance":"Returning creator resumes exact authorized work with authorization-before-aggregation, no hidden-count leakage and no coercive ranking.",
+      "rollback":"Source work remains accessible from owning screens even if Command Center is disabled."
+    }
+  ],
+  "incorporation_routes": [
+    {"creative_source":"location/world material","governed_target":"D18","operation":"explicit propose/incorporate with D29 receipt","silent_propagation":false},
+    {"creative_source":"narrative/adventure structure","governed_target":"D28","operation":"explicit propose/incorporate with source/target version receipt","silent_propagation":false},
+    {"creative_source":"governed reusable definition candidate","governed_target":"D07/D06 as applicable","operation":"owning-domain validation/publication/install path","silent_propagation":false},
+    {"creative_source":"Character-related prose/ideas","governed_target":"Character owning domain","operation":"explicit selected-field/domain operation","silent_propagation":false},
+    {"creative_source":"Campaign-derived reusable material","governed_target":"Personal/reusable creative record","operation":"authorization-filtered explicit clone/propose/extract","silent_propagation":false},
+    {"creative_source":"mystery/clue plan","governed_target":"A9 investigation runtime","operation":"explicit owning-domain transition","silent_propagation":false}
+  ],
+  "stage_a_non_reopening": {
+    "rule":"CSW is additive successor implementation. A CSW defect does not invalidate predecessor completion evidence unless independent evidence demonstrates a predecessor regression.",
+    "migration_rule":"Never rewrite completed Stage A migrations; inspect current migration head and add only new additive migrations when implementation is activated.",
+    "direct_cross_domain_persistence":false
+  },
+  "internal_alpha_placement": {
+    "recommendation":"Activate CSW application slices only after remaining APW/APM planning handoffs resolve overlapping persistence/recovery/stage-integration decisions and governing application roadmap explicitly activates the implementation work.",
+    "slice_order":["CSW-I01","CSW-I02","CSW-I03","CSW-I04","CSW-I05","CSW-I06","CSW-I07","CSW-I08"]
+  }
+}
