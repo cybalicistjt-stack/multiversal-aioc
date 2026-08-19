@@ -1,7 +1,7 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 5.6.0  
+**Version:** 5.7.0  
 **Status:** ACTIVE — COMBINED WORKSPACE IMPLEMENTATION  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-19
@@ -35,65 +35,73 @@ The APW/APM/CSW design series is **COMPLETED_VERIFIED** through APW-08, APM-06 a
 | CSW-I03 | completed_verified | PR #215 / merge `0c49376a…` | none |
 | CSW-I04 | completed_verified | PR #216 / merge `de028a41…` | `0015_csw_guided_creation_workflow.json` |
 | CSW-I05 | completed_verified | PR #217 / merge `dc9c0f75…` | `0016_csw_narrative_lab_continuity.json` |
-| CSW-I06 | completed_verified | PR #218 / `8bbecee4…` / merge `c7aac6ff…` | `0017_csw_writing_studio_revision_workspace.json` |
-| CSW-I07 | completed_verified | PR #219 / `245b90df…` / merge `5d349777…` | `0018_csw_reuse_remix_transformation.json` |
-| APW-I06 | **selected_not_started** | `APW-I06-attempt-001` | inspect live head first |
+| CSW-I06 | completed_verified | PR #218 / merge `c7aac6ff…` | `0017_csw_writing_studio_revision_workspace.json` |
+| CSW-I07 | completed_verified | PR #219 / merge `5d349777…` | `0018_csw_reuse_remix_transformation.json` |
+| APW-I06 | completed_verified | PR #220 / `caed3960…` / merge `10e6bd05…` | `0019_apw_shell_notification_recovery.json` |
+| CSW-I08 | **selected_not_started** | `CSW-I08-attempt-001` | inspect live head first |
 
-### CSW-I07 completion evidence
+### APW-I06 completion evidence
 
-Application PR #219 completed from exact validated head `245b90dfc6b9728df5a9d1954bf7c1176c5b0d2e`. Repository-health run `32285069748` passed. Product run `32285069972` ended with self-hosted Windows PASS, self-hosted Linux PASS after the policy-permitted unchanged retry, and deterministic comparison PASS before squash merge `5d34977710ae1229e32de06e7e7b28610b90ae84`.
+Application PR #220 completed from exact validated head `caed396040edf9fd3b64224f962a5536c855303e`. Repository-health run `32287504862` passed. Product run `32287505491` ended with self-hosted Windows PASS, self-hosted Linux PASS and deterministic comparison PASS before merge `10e6bd051aa51dfb8f93014b46473074d19bb6c5`.
 
-CSW-I07 added migration `0018_csw_reuse_remix_transformation.json` only after live inspection proved a genuine D29 gap. The implementation stores derivative identity/lineage, exact source snapshots, deterministic transform recipe evidence, inherited-reference dispositions, idempotent derivative/rebase operations and advisory source-drift review without copying source/result payload truth. Clone/adapt/fork/remix/template/transform creates independent identity, Campaign/runtime extraction requires current explicit reuse authority, hidden references are filtered before lineage/count processing, and source changes never silently propagate.
+APW-I06 added migration `0019_apw_shell_notification_recovery.json` only after live inspection proved a genuine `notifications-work` persistence gap. The implementation stores recipient-safe notification projection lifecycle, safe target/context/version recovery descriptors and presentation preferences while Campaign, Action, Session, creator and other workflow truth stays in its owner domains. Authorization/current-context filtering occurs before attention counts or search matching; deep links reauthorize/re-resolve; Spoiler Shield applies only after authorization; offline safe caches remain read-only; context changes clear/reproject shell state; Sandbox content is explicitly noncanonical; core operation needs no AI or external notification provider.
 
-Validation history is preserved in `CSW-I07-attempt-001`: candidate `7a0d96f…` stopped at an over-specific validator formatting check; `39d5bde…` passed invariants but stopped at a focused test-fixture TS2783 typing defect; final head `245b90df…` passed CSW-I07 invariants, typecheck and all 11 focused tests. Its first Linux full-suite attempt had only the pre-existing A2 p95 timing fluctuation; the unchanged permitted retry passed. No A2 threshold/test or CSW-I07 acceptance boundary was weakened.
+Validation history remains in `APW-I06-attempt-001`: initial candidates exposed only bounded local fixture/asynchronous UI-test synchronization defects. Final head passed all 19 focused APW-I06 tests. Its first Linux full-suite execution failed only the pre-existing A2 p95 timing budget at `469.7934699999996 ms` versus `250 ms` while 393 other tests passed; the exact unchanged permitted Linux retry passed, followed by deterministic comparison. No source, test, threshold, privacy or authority boundary was weakened for the retry.
 
-## Current work — APW-I06
+## Current work — CSW-I08
 
-**APW-I06 — Shell, Navigation, Notifications, Visibility and Spoiler UX** is the sole selected application implementation slice.
+**CSW-I08 — Creator Command Center, Workshop/shell integration and end-to-end acceptance** is the sole selected application implementation slice.
 
 Repository: `cybalicistjt-stack/Multiversal-app`  
-Attempt: `APW-I06-attempt-001`  
+Attempt: `CSW-I08-attempt-001`  
 State: `selected_not_started`
 
-The shell is an orchestration/projection layer over existing authority. It must answer where the user is, which contextual role/capabilities apply, what authorized work needs attention, what visibility class an item has, and whether it is safe to continue.
+The governing flow is:
+
+`authorized owning-domain projections → context-safe ranking/grouping → creator-facing resume/attention surfaces → exact deep link or bounded command → owning-domain action`
 
 Required boundaries:
-- Personal, Campaign and Session context anchors remain explicit; context switching re-evaluates protected projections;
-- roles such as GM/Player/Assistant GM/Observer remain contextual, never permanent account types;
-- authorization and visibility filtering occur before attention counts, badges, search, autocomplete, ranking, recents, notification previews or related-work aggregation;
-- primary navigation is capability/context aware but never exposes hidden destinations merely as disabled controls;
-- attention groups decision-required, result-ready, waiting, recovery-required, informational and creator-advisory projections without becoming a second queue;
-- notification records are projections of owning-domain state/events and read/dismiss state does not become workflow authority;
-- deep links/return targets are navigation hints only and reauthorize/re-resolve target/version on open;
-- stale, moved, deleted, archived, offline or permission-revoked targets recover safely without protected metadata leakage;
-- Personal, Reusable, Campaign-local and Sandbox visibility classes are explicit; unauthorized material is absent rather than visually hidden;
-- Sandbox/Lab material is always explicitly noncanonical and cannot be confused with Campaign/reusable truth;
-- Spoiler Shield may obscure already-authorized previews but never grants/revokes access, reveals hidden cardinality or substitutes for D05/parental-control security;
-- connected/offline-cached/recovering state is explicit and cannot invent offline write authority;
-- mobile, keyboard, screen-reader/nonvisual and reduced-motion paths carry equivalent context/role/visibility/notification semantics;
-- shell language is warm, calm and noncoercive; no streaks, punitive urgency or pressure to enable AI;
-- core context/navigation/attention/search/deep-link/spoiler behavior remains deterministic and useful without AI.
+- the Command Center is a projection/navigation layer, not a new creator truth, task authority, notification authority, social-engagement feed or hidden AI workspace;
+- authorization precedes cards, counts, ranking, search, related-work analysis, Campaign-usage projections and optional-assistance source collection;
+- Continue Writing, Ideas to Develop, Open Threads, Needs Attention, Recent, Unused Material, Drafts, Story Bible, Campaigns Using My Work and Workshop/Sandbox project existing owning-domain state rather than duplicating it;
+- Personal/Project/Campaign/Sandbox context is explicit; Sandbox remains visibly Experiment/noncanonical;
+- exact resume/return targets reauthorize and re-resolve before rendering or actioning protected content and reuse APW-I06 safe deep-link/recovery semantics where possible;
+- stale/moved/deleted/archived/lost-access/offline targets fail or recover safely without protected metadata leakage;
+- Unused Material and Campaign-usage wording describes only the authorized visible subset and never implies absence of hidden/protected usage;
+- transparent ranking may use creator pins, resume state, unresolved creator action, meaningful recency, user priority, creator-configured reminder metadata, recovery/conflict need and saved-view relevance;
+- ranking must not use streaks, hidden engagement scores, FOMO, arbitrary inactivity urgency or creator productivity scoring;
+- dismissed/snoozed advisory items do not repeatedly nag unless evidence materially changes;
+- creator search/command palette is a router only; every command returns to an owning domain for current authorization, validation and confirmation;
+- Needs Attention represents creator-actionable or advisory workflow state, never objective creative quality;
+- optional assistance exposes exact Scope, Sources, Task, Capabilities, candidate/draft/advisory output status and privacy boundary before invocation; user can narrow sources where the flow permits;
+- AI is optional/candidate-only and may not publish, incorporate, accept revisions, resolve OpenThreads, widen permissions, execute arbitrary commands or schedule reminders;
+- no-AI organization, resume, search, guided development, writing, continuity, reuse/remix and Workshop flows remain useful;
+- mobile, keyboard, screen-reader/nonvisual and reduced-motion paths preserve equivalent context, resume, reason/status and command meaning;
+- product voice remains warm, calm, encouraging and non-obsequious.
 
-First operation: re-fetch App main and migration head **once**, inspect existing shell/context/navigation, notification/attention, visibility/search and deep-link/recovery seams plus Personal/Campaign/Session projections, determine whether any genuine durable APW-I06 delta requires migration `0019`, then implement the smallest deterministic shell context + authorization-safe attention/deep-link recovery path.
+First operation: re-fetch App main and migration head **once**, inspect current CSW-I02 Library/Project Memory, CSW-I03 Idea Inbox, CSW-I05 OpenThread/continuity, CSW-I06 Writing resume/revision, CSW-I07 derivative lineage, APW-I05 Workshop/Sandbox and APW-I06 attention/search/safe-destination/recovery seams plus existing pin/saved-view state. Determine whether any genuine durable CSW-I08 delta requires migration `0020`; prefer a reconstructable projection and reuse existing persistence when it is sufficient.
 
-Canonical App baseline after CSW-I07: `5d34977710ae1229e32de06e7e7b28610b90ae84`. Migration head: `0018_csw_reuse_remix_transformation.json`.
+Canonical App baseline after APW-I06: `10e6bd051aa51dfb8f93014b46473074d19bb6c5`. Migration head: `0019_apw_shell_notification_recovery.json`.
 
 ## Default strict implementation sequence
 
 `APW-I01 → CSW-I01 → APM-I01 → APW-I02 → APW-I03 → APW-I04 → CSW-I02 → APM-I02 → APM-I03 → APW-I05 → CSW-I03 → CSW-I04 → CSW-I05 → CSW-I06 → CSW-I07 → APW-I06 → CSW-I08 → APM-I04 → APM-I05 → APM-I06 → APW-I07`
 
-Everything through CSW-I07 is completed_verified. APW-I06 is selected_not_started. CSW-I08 and later slices remain inactive.
+Everything through APW-I06 is completed_verified. CSW-I08 is selected_not_started. APM-I04 and later slices remain inactive.
+
+A later slice may move earlier only when its declared dependencies remain satisfied **and the owner approves the reorder**. No such reorder is active.
 
 ## Migration and ownership policy
 
-- migrations `0001` through `0018` are immutable predecessors;
+- migrations `0001` through `0019` are immutable predecessors;
 - every tranche rechecks current App main/migration head once before mutation;
 - no next migration number is reserved in advance;
 - no migration is added without a genuine durable schema delta;
-- APW-I06 shell records, if any genuine durable delta exists, may hold projection/navigation/notification preference or recovery metadata only and never replace owning-domain Campaign/Personal/CSW/APM truth;
-- D05 authorization precedes shell counts, badges, search, recents, notification previews, deep-link previews and optional-AI context;
-- notification/read state, deep-link descriptors, visibility labels and Spoiler Shield never create permissions or owning-domain workflow authority;
-- D18/D28/A9/Character/Campaign and creator transitions remain explicit owning-domain operations.
+- CSW-I08 should prefer reconstructable projections from existing D29/APW records and APW-I06 safe destination/notification lifecycle rather than duplicating creator truth;
+- if durable creator pin/snooze/saved-view/return-target state is missing, storage must remain bounded to its correct existing owner and cannot become a generic Command Center truth store;
+- D05 authorization precedes Command Center cards/counts/ranking/search/related/usage and optional-assistance context;
+- APW-I06 remains global shell/attention/deep-link orchestration authority; CSW-I08 does not create a parallel shell or notification engine;
+- D18/D28/A9/Character/Campaign and creator incorporation transitions remain explicit owning-domain operations.
 
 ## Internal Alpha milestones
 
@@ -101,7 +109,7 @@ Everything through CSW-I07 is completed_verified. APW-I06 is selected_not_starte
 2. Between-session and creator foundation — APW-I04, CSW-I01, CSW-I02, APW-I05 — **complete**.
 3. First creator and automated experiences — CSW-I03, CSW-I04, APM-I01, APM-I02, APM-I03 — **complete**.
 4. Deep creator workspace — CSW-I05, CSW-I06, CSW-I07 — **complete**.
-5. Integrated shell and connected automation — APW-I06, CSW-I08, APM-I04, APM-I05, APM-I06 — **APW-I06 current**.
+5. Integrated shell and connected automation — APW-I06, CSW-I08, APM-I04, APM-I05, APM-I06 — **APW-I06 complete; CSW-I08 current**.
 6. Whole-system hybrid proof — APW-I07.
 
 Tester distribution remains separately owner-gated.
@@ -123,6 +131,6 @@ Only evidence-backed `completed_verified` is complete. A failed required gate le
 
 ## Nonauthorization
 
-Current selection authorizes only APW-I06. It does not authorize CSW-I08+, APM-I04+, APW-I07+, migration `0019` without a proven durable delta, new permission/Campaign truth authority, notification-as-workflow authority, Spoiler Shield as authorization/parental-control security, hidden result/count/cardinality leakage, automatic cross-context protected-cache retention, AI-required shell/navigation, T04 before September, tester distribution, release/deployment or paid-provider activation.
+Current selection authorizes only CSW-I08. It does not authorize APM-I04+, APW-I07, migration `0020` without a proven durable delta, a new creator truth/task/notification authority, hidden Campaign usage/count/cardinality leakage, engagement/productivity scoring, command-palette authority bypass, AI auto-apply/publish/incorporate/schedule, unauthorized assistance context, external provider activation, T04 before September, tester distribution, release/deployment or paid-provider activation.
 
 “Continue” means execute the next verified unfinished operation.
