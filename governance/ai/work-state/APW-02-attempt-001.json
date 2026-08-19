@@ -1,23 +1,8 @@
 {
-  "schema_version":"1.1.0",
-  "work_item_id":"APW-02",
-  "attempt_id":"APW-02-attempt-001",
-  "track":"asynchronous-persistent-workspace",
-  "repository":"cybalicistjt-stack/multiversal-aioc",
-  "branch":"governance/apw-02-async-proposal-inbox",
-  "status":"ready_for_validation",
-  "owner_selected":true,
-  "selected_at":"2026-08-19T01:24:00Z",
-  "design_ready_at":"2026-08-19T01:34:00Z",
-  "objective":"Define the asynchronous Action, proposal, delayed GM decision and durable inbox contract so one submitted proposal produces at most one attributable authoritative outcome through existing A6 Action/proposal/Event architecture.",
-  "program_plan":"governance/application-planning/asynchronous-persistent-workspace/APW_ASYNCHRONOUS_PLAY_AND_PERSISTENT_WORKSPACE_PROGRAM.md",
-  "program_backlog":"governance/application-planning/asynchronous-persistent-workspace/APW_PROGRAM_BACKLOG.json",
-  "depends_on":["APW-01"],
+  "schema_version":"1.2.0","work_item_id":"APW-02","attempt_id":"APW-02-attempt-001","track":"asynchronous-persistent-workspace","repository":"cybalicistjt-stack/multiversal-aioc","branch":"governance/apw-02-async-proposal-inbox","status":"completed_verified","owner_selected":true,"selected_at":"2026-08-19T01:24:00Z","design_ready_at":"2026-08-19T01:34:00Z","completed_at":"2026-08-19T01:36:00Z",
   "deliverables":["governance/application-planning/asynchronous-persistent-workspace/APW-02_ASYNCHRONOUS_ACTION_PROPOSAL_AND_GM_INBOX_CONTRACT.md","governance/application-planning/asynchronous-persistent-workspace/APW-02_ASYNC_STATE_AUTHORITY_MATRIX.json","governance/application-planning/asynchronous-persistent-workspace/APW-02_RECOVERY_NOTIFICATION_ACCEPTANCE.json","governance/application-planning/asynchronous-persistent-workspace/APW-02_REVIEW_RECEIPT.md"],
-  "source_evidence":["A6 action-proposal-port","A6 action-decision-port","A6 action-status-port","A6 action-reconnect-port","MV-IA-F006","MV-IA-F021","APW-01","APM-01"],
-  "design_findings":["Async play reuses A6; no second rules engine.","One proposalId produces at most one final authoritative outcome.","Revisions keep proposalId, increment version, use new operation identity and preserve prior provenance.","Semantic stale changes require explicit proposer refresh/revision; no silent recomputation.","Withdrawal/revocation/expiry are attributable non-gameplay dispositions resolved safely against racing final decisions.","Clarification is nonfinal and cannot rewrite Player intent.","GM inbox ordering/assignment/review leases are coordination only.","Final decisions reauthorize current delegation, versions, permissions, entitlements and legality.","Notifications are minimal attention signals and deep links reauthorize.","Reconnect uses status lookup/event recovery before retry; no blind state-changing resend.","AI/automation cannot decide, revise intent, expand delegation or commit."],
-  "completion_gate":{"draft_proposal_decision_event_distinctions":true,"revision_provenance_defined":true,"withdraw_revoke_expiry_race_defined":true,"clarification_preserves_player_intent":true,"inbox_lease_order_nonauthoritative":true,"decision_time_reauthorization_defined":true,"stale_state_recovery_defined":true,"notification_nonauthority_nonleakage":true,"reconnect_idempotency_at_most_one":true,"ai_automation_nonauthority":true,"application_implementation_not_activated":true,"final_repository_validation_pending":true,"pull_request_merge_pending":true},
-  "preserved_parallel_tracks":["APW-03 follows APW-02","APW-04 follows APW-03","APM-02 follows APW-04","CSW-03 follows APM-02","CCTI-12-T04 deferred until September 2026","WP-011 dormant","DS-008 blocked non-owner"],
+  "completion_gate":{"draft_proposal_decision_event_distinctions":true,"revision_provenance_defined":true,"withdraw_revoke_expiry_race_defined":true,"clarification_preserves_player_intent":true,"inbox_lease_order_nonauthoritative":true,"decision_time_reauthorization_defined":true,"stale_state_recovery_defined":true,"notification_nonauthority_nonleakage":true,"reconnect_idempotency_at_most_one":true,"ai_automation_nonauthority":true,"application_implementation_not_activated":true,"final_repository_validation_passed":true,"pull_request_merged":true},
+  "validation_evidence":{"pull_request":417,"validated_head":"5126c008afa3453fea0dbed1941a1bfec4eb4b8e","repository_health_run":32204881011,"repository_health_conclusion":"success","merge_sha":"32e821c65689d2bb4ec11aa9fc3c8bf8031bac08"},
   "nonauthorization":["application implementation","migration execution","alternate async rules engine","notification authority","review-lease authority","unrestricted offline multi-writer mutation","release/deployment","CCTI-12-T04 before September 2026"],
-  "next_action":"Open bounded APW-02 governance PR, run exact-head AIOC repository-health, merge after PASS, then close APW-02 and select APW-03."
+  "next_action":"Historical completion checkpoint. Current work advances through CURRENT_WORK_POINTER.json to APW-03-attempt-001."
 }
