@@ -1,0 +1,62 @@
+{
+  "schema_version":"1.0.0",
+  "work_item":"APW-07",
+  "purpose":"Define persistence/recovery/security semantics across APW without creating a second state engine.",
+  "core_invariants":[
+    "one user intent uses one stable operation identity across retries",
+    "accepted business effects occur at most once",
+    "authoritative mutations carry expected-version or equivalent owning-domain preconditions",
+    "stale state never silently overwrites newer state",
+    "ambiguous failure is resolved by status lookup before retry",
+    "live asynchronous and hybrid cadence share one Campaign identity and authoritative history",
+    "client/offline cache never grants authority",
+    "authorization/visibility filtering precedes counts search history notifications diagnostics exports and optional-assistance context",
+    "permission entitlement lifecycle pack and schema are revalidated on reconnect or protected restore",
+    "local drafts are never represented as accepted state"
+  ],
+  "operation_families":[
+    {"family":"async_action_submit","stable_id":"proposal/operation ID","expected_version":true,"duplicate_behavior":"return existing status/result","authoritative_owner":"existing Action/proposal and Campaign owning domains"},
+    {"family":"gm_decision","stable_id":"decision operation ID bound to proposal ID","expected_version":true,"duplicate_behavior":"one attributable final decision/result","authoritative_owner":"existing approval/result owning domain"},
+    {"family":"campaign_activity","stable_id":"activity operation ID","expected_version":true,"duplicate_behavior":"do not duplicate progress/resource effect","authoritative_owner":"activity plus owning resource/domain contracts"},
+    {"family":"resource_reservation","stable_id":"reservation/operation ID","expected_version":true,"duplicate_behavior":"reserve/commit/release idempotently","authoritative_owner":"resource/economy owning domain"},
+    {"family":"creator_save_out_import_instantiate","stable_id":"creator operation ID","expected_version":true,"duplicate_behavior":"one target asset/result per intent","authoritative_owner":"APW-05 plus owning authoring/content domain"},
+    {"family":"notification_preference_ack","stable_id":"preference/ack operation ID when persisted","expected_version":false,"duplicate_behavior":"idempotent preference/ack state","authoritative_owner":"notification/attention service"}
+  ],
+  "status_semantics":["local-draft","queued/submitting","submitted/received","validating","pending-review","accepted/committed","modified-and-accepted","rejected/denied","withdrawn/cancelled-before-acceptance","stale/conflict","forbidden/revoked","entitlement-restricted","status-unknown","recovery-required","reconciled"],
+  "recovery_rules":[
+    {"condition":"network drops after submit before response","required":"preserve same operation ID; show status-unknown; query authoritative status; never create new intent automatically"},
+    {"condition":"Event committed but realtime delivery missed","required":"recover from last acknowledged Event cursor or verified projection/checkpoint; apply authorized Events once"},
+    {"condition":"permission revoked while offline","required":"reauthorize before restore; reduce/deny projection; lock or purge protected cache per policy; no old label/count/preview leak"},
+    {"condition":"entitlement changes","required":"preserve committed history; re-evaluate future access/use; offline snapshot cannot extend entitlement indefinitely"},
+    {"condition":"second device has conflicting draft","required":"preserve both drafts; compare against current version; no silent last-write-wins"},
+    {"condition":"live state changes while async proposal pending","required":"pending evidence remains; decision rechecks current version/authority; incompatible work becomes stale/review-required"},
+    {"condition":"service restart","required":"durable commands/Events/status/checkpoints survive; clients recover from cursor/status; accepted history is not erased"},
+    {"condition":"offline draft reconnect","required":"reauthorize and version-check; reconcile/branch/conflict; offline copy never overwrites authoritative state"}
+  ],
+  "notification_rules":{
+    "categories":["decision-required","result-ready","waiting/pending","stale/recovery-required","informational","creator-advisory"],
+    "authority":"notification is projection/discovery, never business-state authority",
+    "durability":"underlying operation/outcome is durable; notification may be reconstructed",
+    "delivery_failure":"cannot roll back or re-execute underlying operation",
+    "privacy":"recipient-safe metadata only; no unauthorized payload or hidden cardinality"
+  },
+  "history_ordering":{
+    "authority":"owning-domain transaction/Event sequence",
+    "not_authority":["client clock","notification delivery time","draft timestamp","device arrival order","UI list position"],
+    "cadence_rule":"live async and hybrid use one Campaign history rather than cadence-specific ledgers"
+  },
+  "offline_boundary":{
+    "read_only_authorized_snapshot":true,
+    "approved_local_drafts":true,
+    "offline_authoritative_mutation":false,
+    "peer_to_peer_authority":false,
+    "automatic_last_write_wins":false,
+    "reconnect_revalidation":["identity","selected context","permissions/delegation","entitlement","pack/schema","object lifecycle","expected versions","snapshot expiry"]
+  },
+  "security_projection_order":["authenticate subject","resolve selected context","evaluate authority/delegation/entitlement/lifecycle","apply D05/APW-06 visibility filtering","only then compute counts/search/history/notifications/diagnostics/export/assistant context"],
+  "diagnostic_boundary":{
+    "allowed":["operation/recovery ID","safe context ID/type","app/schema version","last acknowledged sequence","status class","safe version IDs","timestamps","correlation IDs","integrity/result digest","lookup/retry history","privacy-safe error class"],
+    "forbidden":["unauthorized game payload","hidden labels/content","private notes without support authority","credentials","secrets/tokens"]
+  },
+  "apw08_handoff":["persistence data delta map","stable operation/idempotency rules","expected-version/conflict rules","Event/history ordering","durable notification reconstruction","permission/entitlement change behavior","cross-device/long-delay/offline rules","security nonleakage invariants","live-async-live proof","deterministic fixture inventory"]
+}
