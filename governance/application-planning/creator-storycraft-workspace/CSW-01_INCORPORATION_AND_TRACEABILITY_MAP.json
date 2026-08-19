@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "CSW-01",
+  "status": "design_ready_for_review",
+  "source_contracts": [
+    {
+      "id": "APW-01",
+      "path": "governance/application-planning/asynchronous-persistent-workspace/APW-01_AUTHORITY_ACCOUNT_CONTEXT_CANONICALIZATION.md",
+      "consumed_rules": ["universal user", "Personal/Campaign/Session contexts", "contextual authority", "Personal resources are not Campaign-GM property"]
+    },
+    {
+      "id": "A10-current-revalidation",
+      "path": "governance/application-planning/stage-a-a10/current-revalidation/STAGE_A_A10_CURRENT_REPOSITORY_REVALIDATION.md",
+      "consumed_rules": ["D18 World/Location ownership", "D28 Adventure/run ownership", "D29 authoring provenance ownership", "D05 projection-before-search", "no monolithic authoring persistence", "canonical promotion owner-only"]
+    },
+    {
+      "id": "D29-authoring-draft",
+      "repository": "cybalicistjt-stack/Multiversal-app",
+      "path": "packages/contracts/src/authoring-provenance/authoring-draft-port.ts",
+      "consumed_rules": ["creator target-domain draft identity/lifecycle", "Campaign-local object separation", "operation ID/idempotency/expected version"]
+    },
+    {
+      "id": "D29-proposal-review",
+      "repository": "cybalicistjt-stack/Multiversal-app",
+      "path": "packages/contracts/src/authoring-provenance/authoring-proposal-review-port.ts",
+      "consumed_rules": ["proposal/review/publication separation", "publication receipt", "no canonical promotion"]
+    },
+    {
+      "id": "D29-authority",
+      "repository": "cybalicistjt-stack/Multiversal-app",
+      "path": "packages/contracts/src/authoring-provenance/authoring-authority-port.ts",
+      "consumed_rules": ["independent authoring authority dimensions", "source classes", "no authority dimension inherited"]
+    },
+    {
+      "id": "A9-hypothesis",
+      "repository": "cybalicistjt-stack/Multiversal-app",
+      "path": "packages/contracts/src/investigation/hypothesis-conclusion-port.ts",
+      "consumed_rules": ["runtime hypothesis objectiveTruth=false", "support does not auto-promote to fact", "authorized conclusion/Event required"]
+    },
+    {
+      "id": "APM-01",
+      "path": "governance/application-planning/automated-play-modes/APM-01_AUTOMATED_PLAY_AUTHORITY_AND_MODE_CONTRACT.md",
+      "consumed_rules": ["AI/automation nonauthoritative", "owning domain commands required", "no mode flag creates story authority"]
+    }
+  ],
+  "incorporation_routes": [
+    {
+      "target": "D18-world-location-map",
+      "candidate_fragment_kinds": ["world-seed","location-seed","lore-fragment","rumor","idea","premise","reference"],
+      "bridge": "create/propose D18/D29 governed draft or object operation with pinned source fragment version",
+      "target_authority": "D18 plus D29 authoring provenance",
+      "direct_csw_write": false
+    },
+    {
+      "target": "D28-adventure-travel",
+      "candidate_fragment_kinds": ["hook","beat","arc","thread","secret","twist","foreshadow","payoff","scene-seed","encounter-seed","mystery-seed","alternate"],
+      "bridge": "create/propose D28/D29 Adventure draft/node/edge structure with pinned source fragment version",
+      "target_authority": "D28 plus D29 authoring provenance",
+      "direct_csw_write": false
+    },
+    {
+      "target": "Character-or-NPC-owning-domain",
+      "candidate_fragment_kinds": ["character-motivation","backstory-element","npc-seed","secret","idea"],
+      "bridge": "authorized target-domain draft/proposal/character operation",
+      "target_authority": "Character/NPC owning domain",
+      "direct_csw_write": false
+    },
+    {
+      "target": "A5-Campaign-Scene-Session",
+      "candidate_fragment_kinds": ["premise","hook","scene-seed","secret","rumor","lore-fragment","encounter-seed"],
+      "bridge": "authorized Campaign preparation/Scene/D29 incorporation; runtime change only through A5/Event path",
+      "target_authority": "A5 Campaign/Scene/Session plus D29 where authoring provenance applies",
+      "direct_csw_write": false
+    },
+    {
+      "target": "A9-investigation",
+      "candidate_fragment_kinds": ["mystery-seed","question","open-question","secret","rumor","thread","idea"],
+      "bridge": "authorized investigation authoring/runtime operation; runtime A9 hypothesis/clue remains a distinct A9 identity",
+      "target_authority": "A9 investigation",
+      "direct_csw_write": false,
+      "special_rule": "A9 support never auto-promotes hypothesis to objective fact"
+    },
+    {
+      "target": "A9-social-relationship-faction",
+      "candidate_fragment_kinds": ["faction-seed","conflict","character-motivation","secret","rumor","thread","idea"],
+      "bridge": "authorized owning-domain definition/proposal/runtime operation",
+      "target_authority": "A9 social/relationship/faction runtime or applicable reusable-definition domain",
+      "direct_csw_write": false
+    },
+    {
+      "target": "creator-content-mechanical-domains",
+      "candidate_fragment_kinds": ["idea","constraint","reference","encounter-seed","npc-seed"],
+      "bridge": "D29 creator draft/proposal referencing the source fragment; mechanics validated by owning domain",
+      "target_authority": "D29 plus relevant rules/Asset/creature/vehicle/other owning domain",
+      "direct_csw_write": false
+    },
+    {
+      "target": "canonical-content",
+      "candidate_fragment_kinds": ["all"],
+      "bridge": "none directly; fragment may first become a governed creator draft/release/proposal, after which canonical promotion is a separate owner-only operation",
+      "target_authority": "existing owner-only canonical promotion governance",
+      "direct_csw_write": false
+    }
+  ],
+  "reverse_clone_routes": [
+    {
+      "source": "A9-runtime-hypothesis-clue-or-social-state",
+      "result": "new CSW fragment with new stable ID and filtered provenance",
+      "source_mutated": false,
+      "runtime_history_mutated": false
+    },
+    {
+      "source": "A10-world-adventure-campaign-local-or-creator-content",
+      "result": "new CSW fragment or reference with source version/provenance when the subject is authorized",
+      "source_mutated": false,
+      "published_version_mutated": false
+    },
+    {
+      "source": "Campaign-runtime-material",
+      "result": "new Personal or Campaign-bound creative fragment only through explicit clone/propose/export-authoring flow",
+      "source_mutated": false,
+      "hidden_information_filter_required": true
+    }
+  ],
+  "incorporation_receipt": {
+    "required": true,
+    "source_version_pinned": true,
+    "fields": ["incorporationId","sourceFragmentId","sourceFragmentVersion","targetDomain","targetIntent","targetOperationOrProposalId","actorSubjectId","contextScope","provenanceId","timestamp","status"],
+    "status_values": ["proposed","accepted","rejected","withdrawn","superseded"],
+    "future_sync_authority": false
+  },
+  "persistence_boundary": {
+    "current_a10_d29_remains_authority": true,
+    "csw01_authorizes_new_storage": false,
+    "preferred_future_evaluation": [
+      "bounded D29 creative-fragment extension if domain cohesion remains valid",
+      "new narrow creative-support persistence seam only if CSW-10 proves D29 cannot own it cleanly"
+    ],
+    "forbidden": ["direct writes into D18 persistence", "direct writes into D28 persistence", "direct writes into A9 runtime persistence", "parallel Character/Campaign truth tables", "monolithic replacement for D29"]
+  },
+  "traceability_invariants": [
+    "incorporation pins exact source fragment version",
+    "source and target keep distinct stable IDs",
+    "later source edits do not silently mutate target",
+    "later target edits do not silently mutate source",
+    "source tombstone does not delete target",
+    "target deletion does not delete source",
+    "used-in backlinks come from explicit references/receipts rather than guessed text similarity",
+    "private/hidden source existence is filtered before graph/count/search/AI projection"
+  ],
+  "downstream_constraints": {
+    "CSW-02": ["Story Bible and Creative Library must index stable fragment IDs, versions, links and incorporation receipts", "used-in/derived-from/backlinks are permission-filtered", "project memory must retain tombstones and provenance safely"],
+    "CSW-03": ["generated ideas/alternatives become fragments only after explicit save/accept", "no inspiration tool creates authoritative target content automatically"],
+    "CSW-05": ["plot/adventure structures remain speculative until explicit D28 incorporation"],
+    "CSW-06": ["continuity analysis distinguishes fragment assertions from authoritative facts and cites evidence"],
+    "CSW-08": ["reuse/remix always creates independent version/identity with provenance rather than silent source mutation"],
+    "CSW-10": ["final persistence placement must preserve A10 split authority and identify migrations only if truly necessary"]
+  },
+  "nonauthorization": {
+    "application_implementation": false,
+    "migration_execution": false,
+    "new_persistence_domain": false,
+    "canonical_promotion": false,
+    "autonomous_ai_publication": false,
+    "release_or_deployment": false,
+    "ccti12_t04_before_2026_09": false
+  }
+}
