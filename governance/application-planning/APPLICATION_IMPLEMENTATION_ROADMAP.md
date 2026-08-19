@@ -1,7 +1,7 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 4.8.0  
+**Version:** 4.9.0  
 **Status:** ACTIVE — COMBINED WORKSPACE IMPLEMENTATION  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-19
@@ -29,52 +29,55 @@ The APW/APM/CSW design series is **COMPLETED_VERIFIED** through APW-08, APM-06 a
 | APW-I03 | completed_verified | PR #209 / `9b6da923…` / merge `06c0d4ff…` | none |
 | APW-I04 | completed_verified | PR #210 / `67029683…` / merge `a907fec7…` | `0011_apw_campaign_activity_foundation.json` |
 | CSW-I02 | completed_verified | PR #211 / `8a067465…` / merge `72eb9a6b…` | `0012_csw_creator_library_memory.json` |
-| APM-I02 | **selected_not_started** | `APM-I02-attempt-001` | inspect live head first |
+| APM-I02 | completed_verified | PR #212 / `9e3719fc…` / merge `8d3684ed…` | none |
+| APM-I03 | **selected_not_started** | `APM-I03-attempt-001` | inspect live head first |
 
-### CSW-I02 completion evidence
+### APM-I02 completion evidence
 
-Application PR #211 completed from exact validated head `8a0674650e003381083a8adc39c20721c73239d6` with repository-health run `32264579233` PASS and product run `32264579547` PASS after the unchanged Linux retry. Self-hosted Windows, self-hosted Linux and deterministic comparison all passed before squash merge `72eb9a6b23a3f90c58a2db0d5535f3e07cfe97a5`.
+Application PR #212 passed on its first implementation head `9e3719fc3e08856226c9ece1866626d07cb7af31`: repository-health run `32266678738` PASS and product run `32266679050` PASS with self-hosted Windows, self-hosted Linux and deterministic comparison. It squash merged as `8d3684ed5ae8058518a8684d9f2d68f21f893723`.
 
-CSW-I02 delivered D29 Creator Project/library organization/Story Bible/Project Memory/saved-view metadata; six distinct Story Bible evidence classes; authorization-before-aggregation through D05; evidence-backed backlinks; saved-view reauthorization; revoked/hidden Campaign nonleakage; and a no-AI Creative Library + Story Bible + Project Memory surface. Migration `0012_csw_creator_library_memory.json` contains D29 creator-support metadata only; governed payloads remain with their owning domains.
+APM-I02 delivered a Personal-context Cozy Solo core loop over APM-I01 delegation/run authority: delegated focus discovery, explicit bound confirmation, one-step and bounded-batch routine progress, fresh owning-domain authorization before every state-affecting step, proposal/human/GM/prohibited/budget/authorization stop barriers, operation-status lost-response recovery, zero real-money automation, no mechanical AI authority, manual/no-AI fallback and a guided Orient → Confirm bounds → Progress → Summary/Return-to-ordinary-play surface.
 
-Validation provenance is preserved in `CSW-I02-attempt-001`: the first profile lacked the standard `migrated_from` field, the second reached a test-only TypeScript cast error, and the final head passed all CSW-I02 tests/typecheck. Linux then encountered only the existing A2 p95 fluctuation (`296.612474ms` vs `250ms`); an unchanged rerun passed. No product assertion, performance threshold or scope was weakened.
+No migration `0013` was needed because APM-I01 already persists the governing profile/grant/run/bounds/recovery references. Migration head remains `0012_csw_creator_library_memory.json`.
 
-## Current work — APM-I02
+## Current work — APM-I03
 
-**APM-I02 — Cozy Solo core loop** is the sole selected application implementation slice.
+**APM-I03 — AutoGM Single-Encounter runner** is the sole selected application implementation slice.
 
 Repository: `cybalicistjt-stack/Multiversal-app`  
-Attempt: `APM-I02-attempt-001`  
+Attempt: `APM-I03-attempt-001`  
 State: `selected_not_started`
 
-Initial scope is **Cozy Solo in Personal context**. Cozy describes low-pressure pacing/presentation and bounded automation; it is setting-independent and does not create a separate rules engine or guarantee success.
+Initial scope is one **foreground-only solo encounter** over ordinary Multiversal authority. AutoGM orchestrates a versioned encounter package and eligible NPC/world responses; it does not become GM authority, a second rules engine or a second game-state ledger.
 
-Core loop:
+Target loop:
 
-**Orient → choose a focus → set/confirm bounds → progress routine work → stop at meaningful decisions → reflect/summarize → continue/change focus/pause/return to ordinary play.**
+**Select Character + Encounter Package → validate setup/delegation → start → player Action → deterministic owner-domain resolution → eligible bounded NPC/world response → deterministic resolution → reaction/human-choice barrier as needed → repeat → package-valid end/abort/fail-safe → governed reward/summary → stop.**
 
 Required boundaries:
-- explicit APM-I01 controller/run/delegation authority;
-- eligible activities discovered from current Personal/APW/owning-domain profiles rather than invented by Cozy;
-- every step revalidates owning-domain operation class and current authorization;
-- automatic work is limited to `automatic_permitted` or `automatic_with_bounds` operations inside explicit budgets;
-- proposal-required work remains proposal-driven;
-- irreversible advancement, materially new direction, new costs outside budget, ownership/custody transfer, destructive deletion, Campaign binding, human consent, publication, ambiguity with material consequence, GM-only adjudication, real-money spending and widened automation bounds remain human-required hard stops;
-- Cozy cannot convert GM/adjudication-required work into “AI decides as GM”;
-- wall-clock time is not gameplay-progress authority;
-- real-money/paid-credit automation budget is always zero;
-- no-AI/manual ordinary Personal/Campaign workflows remain complete fallbacks;
-- pause/revoke/stale/recovery boundaries must stop new automation and recover through stable operation/status/Event evidence without duplicate effects.
+- explicit package ID/version, rules/pack compatibility, controlled actor set, response policy, hidden-state reference, end conditions and deterministic seed/entropy evidence;
+- APM-I01 delegation/run authority remains necessary but every state-affecting operation still requires fresh owning-domain authorization;
+- A6 remains player Action/proposal/result authority and A7/rules remain encounter/combat/initiative/reaction authority;
+- player Character choices remain human-controlled unless a separately explicit narrow delegation exists;
+- NPC/world responses may execute only when the owning-domain operation class is `automatic_permitted` or `automatic_with_bounds` and current grant/authorization permits it;
+- proposal-required, human-required, prohibited, undefined/out-of-scope, revoked/stale/conflict and unsupported reaction states are barriers;
+- D05 filters hidden scenario truth before player-visible action enumeration, labels, counts, errors, summaries, accessibility output and optional AI context;
+- initial AutoGM is foreground-only; disconnect creates safe pause/recovery rather than background rounds;
+- deterministic replay pins starting authoritative state/version, package/rules/controller/delegation versions, ordered player Actions, seed/entropy stream and owner-domain Event sequence;
+- defeat/retreat/abort/fail-safe preserve already-committed Events without pretending completion;
+- rewards/resources/advancement route through their owning domains; irreversible advancement remains human-required;
+- AI may narrate resolved player-safe state only and is never mechanical, GM or hidden-information authority;
+- no-AI deterministic text/templates/manual presentation must complete the encounter.
 
-First operation: re-fetch App main and migration head **once**, inspect APM-I01 delegation/run plus Personal/APW-I04 activity seams, determine whether Cozy preference/run metadata genuinely requires another additive migration, then implement the smallest useful no-AI loop.
+First operation: re-fetch App main and migration head **once**, inspect current A6 Action, A7 combat/runtime, Adventure/encounter, D05 visibility, APM-I01 delegation/run and D12 recovery seams, determine whether encounter-run state genuinely requires a new additive migration, then implement the smallest complete deterministic single-encounter loop.
 
-Canonical App baseline after CSW-I02: `72eb9a6b23a3f90c58a2db0d5535f3e07cfe97a5`. Migration head: `0012_csw_creator_library_memory.json`.
+Canonical App baseline after APM-I02: `8d3684ed5ae8058518a8684d9f2d68f21f893723`. Migration head remains `0012_csw_creator_library_memory.json`.
 
 ## Default strict implementation sequence
 
 `APW-I01 → CSW-I01 → APM-I01 → APW-I02 → APW-I03 → APW-I04 → CSW-I02 → APM-I02 → APM-I03 → APW-I05 → CSW-I03 → CSW-I04 → CSW-I05 → CSW-I06 → CSW-I07 → APW-I06 → CSW-I08 → APM-I04 → APM-I05 → APM-I06 → APW-I07`
 
-Everything through CSW-I02 is completed_verified. APM-I02 is selected_not_started. Later slices remain inactive.
+Everything through APM-I02 is completed_verified. APM-I03 is selected_not_started. Later slices remain inactive.
 
 ## Migration and ownership policy
 
@@ -84,9 +87,9 @@ Everything through CSW-I02 is completed_verified. APM-I02 is selected_not_starte
 - no migration is added without a genuine durable schema delta;
 - no monolithic APW/CSW/APM state store is authorized;
 - owning domains remain authoritative for gameplay state and Events;
-- D29 creative support remains metadata/provenance/reference oriented;
-- D05 authorization precedes derived aggregation;
-- APM delegation never replaces fresh owning-domain authorization.
+- D05 authorization precedes derived aggregation/presentation;
+- APM delegation never replaces fresh owning-domain authorization;
+- AutoGM package/controller state cannot duplicate Character, Campaign, Adventure, combat/rules or reward truth.
 
 ## Internal Alpha milestones
 
@@ -116,6 +119,6 @@ Only evidence-backed `completed_verified` is complete. A failed required gate le
 
 ## Nonauthorization
 
-Current selection authorizes only APM-I02. It does not authorize APM-I03+, Connected Cozy/multiplayer automation, AI-as-GM authority, unbounded background play, automatic irreversible advancement or consent, real-money automated spending, APW-I05+, CSW-I03+, T04 before September, tester distribution, release/deployment or paid-provider activation.
+Current selection authorizes only APM-I03. It does not authorize APM-I04+, mini-campaign direction, Connected Cozy/multiplayer AutoGM, AI-as-GM authority, background encounter rounds, unbounded autonomous play, automatic irreversible Character choices, hidden scenario leakage, APW-I05+, CSW-I03+, T04 before September, tester distribution, release/deployment or paid-provider activation.
 
 “Continue” means execute the next verified unfinished operation.
