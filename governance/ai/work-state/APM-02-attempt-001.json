@@ -1,0 +1,21 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"APM-02",
+  "attempt_id":"APM-02-attempt-001",
+  "track":"automated-play-modes",
+  "repository":"cybalicistjt-stack/multiversal-aioc",
+  "status":"selected_not_started",
+  "owner_selected":true,
+  "selected_at":"2026-08-19T02:00:00Z",
+  "selection_reason":"APW-04 completed_verified in PR #421, satisfying APM-02 dependencies APM-01, APW-03 and APW-04. The owner-approved interleave now selects APM-02 before CSW-03.",
+  "objective":"Define CozyMode Core Loop as a setting-independent low-pressure automated-play experience hosted primarily in Personal context at first, using APW-03 bounded Activity/Project primitives and APM-01 explicit delegation to automate only routine bounded operations while stopping at human/GM choices, resource/time limits, stale state, consent boundaries and uncertainty.",
+  "program_plan":"governance/application-planning/automated-play-modes/APM_AUTOMATED_PLAY_MODES_PROGRAM.md",
+  "program_backlog":"governance/application-planning/automated-play-modes/APM_PROGRAM_BACKLOG.json",
+  "depends_on":["APM-01","APW-03","APW-04"],
+  "dependency_evidence":{"APM-01":{"status":"completed_verified","pull_request":411,"repository_health_run":32203278338,"merge_sha":"4150cbd38f7fcae325aa03b83fcf3c4b3a990765"},"APW-03":{"status":"completed_verified","pull_request":419,"repository_health_run":32205351861,"merge_sha":"470957df2158bff8fbd5a6d32b4471430c227d78"},"APW-04":{"status":"completed_verified","pull_request":421,"validated_head":"67a7252a402b9c78c50a51e806340b737e95387a","repository_health_run":32205891554,"merge_sha":"ce249810a544c78d770f7c5e1f27ce2eef60894e"}},
+  "completion_gate":"Cozy Solo has a complete bounded low-pressure loop with explicit user preferences/delegation, activity selection, deterministic/domain-owned progress, human-choice/consent stop points, bounded background behavior, summaries/notifications, no-AI fallback, safe save/exit/resume and no setting-specific or unrestricted autonomy assumptions.",
+  "required_design_questions":["What makes CozyMode low-pressure without making it a genre or removing meaningful choices?","What is the smallest useful Cozy Solo loop over APW-03 Activities/Projects?","Which routine operations may be preauthorized automatically and which always stop for the user/GM?","How are time, step/event, resource, Asset, cost and notification budgets configured?","How does background progression work when the app closes, and what stops it?","How are relationship/social activities handled without automated consent or guaranteed NPC response?","How are advancement, investigation and crafting safety boundaries inherited?","What are the manual/deterministic no-AI presentation and choice paths?","How are summaries, journals and project memory written without turning generated narrative into truth?","How does Cozy Solo transition to/from ordinary Personal or Campaign play and later Connected Cozy?"],
+  "preserved_parallel_tracks":["CSW-03 follows APM-02","CCTI-12-T04 deferred until September 2026","WP-011 dormant","DS-008 blocked non-owner"],
+  "nonauthorization":["application implementation","migration execution","setting-specific farming/life-sim requirement","unrestricted background simulation","automatic advancement/consent","AI mechanical authority","public matchmaking","release/deployment","CCTI-12-T04 before September 2026"],
+  "next_action":"Execute APM-02 as a bounded design/governance tranche using APM-01 delegation, APW-03 Campaign Activity primitives and APW-04 Personal host context to define Cozy Solo loop, preference/budget profiles, bounded-background stop conditions, summaries/recovery and no-AI fallback."
+}
