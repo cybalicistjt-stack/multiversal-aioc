@@ -1,9 +1,10 @@
 {
-  "schema_version": "2.6.0",
-  "updated_at": "2026-08-18T23:32:00Z",
+  "schema_version": "2.7.0",
+  "updated_at": "2026-08-19T00:16:00Z",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "authority_registry": "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
   "static_restart_prompt": "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
+  "owner_routing_decision": "governance/ai/runtime/OWNER_DECISION_2026-08-18_DEFER_CCTI12_T04_TO_SEPTEMBER.md",
   "mandatory_operating_policies": [
     "governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md",
     "governance/ai/MULTIVERSAL_COMPLETION_CLAIM_INTEGRITY_POLICY.md",
@@ -13,27 +14,25 @@
   "canonical_application_roadmap": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
   "roadmap_supplements": ["governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_APM_SUPPLEMENT.md"],
   "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
-  "primary_attempt_id": "CCTI-12-attempt-004",
-  "selection_reason": "POST-GATX-SUCCESSOR completed_verified on cleaned main. Its bounded validation exception was immediately retired. The next canonical operation is CCTI-12-T04, still unfinished, now selected for clean-main reconstruction and hardened validation.",
+  "primary_attempt_id": "APW-01-attempt-001",
+  "selection_reason": "Owner deferred CCTI-12-T04 until September 2026. The previously approved quarantine route-around applies: VCH and POST-GATX-SUCCESSOR are completed, so the next dependency-ordered productive design operation is APW-01.",
   "active_attempt": {
-    "work_item_id": "CCTI-12",
-    "attempt_id": "CCTI-12-attempt-004",
-    "track": "content-catalog-taxonomy-integration",
+    "work_item_id": "APW-01",
+    "attempt_id": "APW-01-attempt-001",
+    "track": "asynchronous-play-persistent-workspace",
     "priority": 1,
     "owner_selected": true,
-    "repository": "cybalicistjt-stack/Multiversal-app",
-    "branch": "internal-alpha/ccti12-t04-local-review-worksets",
-    "pull_request": 191,
-    "checkpoint_path": "governance/ai/work-state/CCTI-12-attempt-004.json",
-    "status": "in_progress",
-    "active_item": "CCTI-12-T04"
+    "repository": "cybalicistjt-stack/multiversal-aioc",
+    "checkpoint_path": "governance/ai/work-state/APW-01-attempt-001.json",
+    "status": "selected_not_started",
+    "active_item": "APW-01 — Authority, Account, Context and Terminology Canonicalization"
   },
   "paused_or_preserved_tracks": [
+    {"track":"content-catalog-taxonomy-integration","work_item":"CCTI-12-T04","attempt_id":"CCTI-12-attempt-004","status":"deferred_owner_until_2026-09","repository":"cybalicistjt-stack/Multiversal-app","source_pr":191,"source_branch":"internal-alpha/ccti12-t04-local-review-worksets","clean_branch":"internal-alpha/ccti12-t04-clean","merge_authority":false},
     {"track":"wp-011-apple","status":"preserved_special_environment_dormant","repository":"cybalicistjt-stack/Multiversal-app","pr":61,"branch":"wo/WP011-hosted-macos-evidence"},
     {"track":"design-standards-completion","work_item":"DS-008-working-series","status":"blocked_non_owner"},
-    {"track":"apw","status":"owner_approved_planned_not_active","next_item":"APW-01"},
-    {"track":"csw","status":"owner_approved_planned_not_active","next_item":"CSW-01"},
-    {"track":"apm","status":"owner_approved_planned_not_active","next_item":"APM-01"}
+    {"track":"apm","status":"owner_approved_planned_not_active","next_item":"APM-01"},
+    {"track":"csw","status":"owner_approved_planned_not_active","next_item":"CSW-01"}
   ],
   "recently_completed_work": {
     "work_item":"POST-GATX-SUCCESSOR",
@@ -55,14 +54,15 @@
   ],
   "bounded_authority": {
     "repository_health_maintenance": true,
-    "ccti_t04_reconciliation_and_validation": true,
+    "apw_design_governance": true,
+    "apw_implementation": false,
+    "apm_design_governance": false,
+    "csw_design_governance": false,
+    "ccti_t04_reconciliation_and_validation": false,
     "ccti_t04_merge_or_completion": false,
     "tester_distribution": false,
     "wp011_run_authorization": false,
-    "apw_implementation": false,
-    "csw_implementation": false,
-    "apm_implementation": false,
     "release_or_deployment": false
   },
-  "exact_next_action": "Rebuild CCTI-12-T04 from cleaned App main bf61c64c89e7ea997842ea7442797fba619d0e28. Treat PR #191/head 3d32ee9317bc924a6a8206121402c68bdf8a061b as source/provenance only: port the substantive T04 product/test/doc changes, do not restore .ai/current-work-order.md or retired validate-ccti12-candidate-content.yml, review the old receipt builder rather than granting it authority by existence, register a new thin Validation Core T04 surface, repair only evidence-proven failures, and require exact-final-head Windows + Linux + deterministic comparator success before merge."
+  "exact_next_action": "Execute APW-01 as a bounded design/governance tranche: canonicalize universal-user, account, Personal/Campaign context, contextual roles, GM/Campaign authority, and terminology; reconcile older global GM/Player assumptions; identify additive implementation touch points; produce the APW-01 design contract/evidence; do not activate application implementation or release authority. CCTI-12-T04 is deferred until September 2026 and must not be advanced in August without explicit owner override."
 }
