@@ -1,0 +1,27 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"APW-03",
+  "status":"design_ready_for_review",
+  "core_rule":"Campaign Activity orchestrates; owning domains commit authoritative effects.",
+  "resolution_classes":["informational","immediate-domain-command","proposal-required","timed-project-progress","human-choice-required","gm-adjudication-required","prohibited"],
+  "activity_families":[
+    {"id":"preparation-logistics","examples":["gear prep","loadout selection","gather supplies","travel preparation","facility/asset assignment"],"owning_domains":["Asset/economy/inventory","Character/progression","adventure-travel where travel advances"],"automatic_authority_from_apw":false},
+    {"id":"training-advancement-preparation","examples":["advancement plan","training prerequisite","trainer/time progress"],"owning_domains":["progression-abilities","Character"],"final_advancement_human_required":true,"activity_completion_auto_advances":false},
+    {"id":"research-investigation","examples":["research","analyze","decode","compare","interview proposal","surveil","reconstruct"],"owning_domains":["A6 Action","A9 investigation"],"activity_progress_reveals_hidden_truth":false,"hypothesis_auto_fact":false},
+    {"id":"journal-notes-reflection","examples":["campaign journal","reflection","recap","private note"],"owning_domains":["author note/projection seam","D29 only on explicit incorporation"],"authoritative_gameplay_by_default":false},
+    {"id":"relationship-social-maintenance","examples":["contact maintenance","repay favor","NPC correspondence","faction cultivation","reconciliation"],"owning_domains":["A6 Action","A9 social-relations/faction"],"human_consent_automatic":false,"npc_canonical_response_automatic":false},
+    {"id":"crafting-repair-maintenance","examples":["recipe crafting","item repair","vehicle/asset repair","maintenance","bounded construction"],"owning_domains":["A8 Asset/economy/inventory","rules/Action as applicable"],"infer_recipe_from_name":false,"parallel_economy_truth":false},
+    {"id":"recovery-upkeep","examples":["rest/recovery","treatment follow-up","condition recovery","resource refresh","maintenance interval"],"owning_domains":["Character/resource/condition","Asset as applicable"],"universal_rest_rule":false}
+  ],
+  "deferred_breadth":["universal business/economy simulation","estate/kingdom/settlement management","mass production scheduling","public markets/auctions","autonomous NPC life simulation","unrestricted real-time background simulation","universal travel/calendar rules","universal training/XP formulas","generic offline mutation","autonomous AI project management","public stranger collaboration","automatic romance/consent","universal crafting/economy table"],
+  "lifecycle":["draft","proposed","ready","active","awaiting-human-choice","awaiting-gm-adjudication","awaiting-domain-result","paused","stale","blocked","cancelling","cancelled","completed","expired","recovery-required","failed-safe"],
+  "time_profiles":["untimed-ordering","abstract-blocks","campaign-calendar","task-specific-duration"],
+  "time_rules":["wall-clock and Campaign time are separate","no Campaign progress from elapsed real time unless explicit profile maps it","exclusive participant/facility/asset time cannot be double-spent unless rules permit concurrency"],
+  "resource_reservation":{"owner":"Asset/economy domain","minimum_evidence":["activity/subject","resource/asset ID+version","quantity/unit","custody/access/ownership decision","scope/time","consume/release semantics","operation/idempotency/provenance"],"failed_retry_duplicates_resources":false},
+  "progress_evidence":["completed tasks/phases","authored progress units","Action/result refs","Campaign time spent","resource reservation/consumption refs","complications","participant/facility changes","GM adjustment provenance","owning-domain output Event refs"],
+  "advancement_boundary":["plan/browse allowed","training progress may be tracked only if rules support","eligibility notification advisory","final advancement explicit validated operation/Event","irreversible choice not automated","entitlement/prerequisite/source version revalidated"],
+  "investigation_boundary":["clue provenance preserved","visibility before projection","notes/hypotheses not objective truth","auto-links advisory unless defined","progress bar cannot reveal hidden clue","GM/Action/A9 path supplies results"],
+  "social_boundary":["no universal relationship meter","human consent not automated","NPC response requiring GM adjudication pauses","private motives/thresholds not exposed via progress","relationship changes require owning-domain Effects/Events"],
+  "crafting_boundary":["explicit recipe/rule required","inputs/tools/facilities/knowledge/time/checks/output/failure authored","short crafting may be Action; long crafting Project","A8 owns quantity/condition/ownership/output","no duplicate reserve/consume/output on retry"],
+  "authorizations":{"implementation":false,"migration":false,"generic_mutation_engine":false,"automatic_advancement":false,"automatic_consent":false,"parallel_economy":false,"unrestricted_background":false,"ccti12_t04_before_2026_09":false}
+}
