@@ -1,0 +1,21 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"APW-05",
+  "attempt_id":"APW-05-attempt-001",
+  "track":"asynchronous-persistent-workspace",
+  "repository":"cybalicistjt-stack/multiversal-aioc",
+  "status":"selected_not_started",
+  "owner_selected":true,
+  "selected_at":"2026-08-19T08:41:00Z",
+  "selection_reason":"CSW-08 completed_verified in PR #439. APW-01 and APW-04 satisfy APW-05 dependencies; the owner-approved interleave selects APW-05 before CSW-09.",
+  "objective":"Define Creator Workshop, reusable asset/library behavior and a Personal Sandbox/Lab that exposes creation as a general account capability while keeping reusable definitions, templates, Campaign variants, live instances, disposable experiments and canonical promotion strictly distinct.",
+  "program_plan":"governance/application-planning/asynchronous-persistent-workspace/APW_ASYNCHRONOUS_PLAY_AND_PERSISTENT_WORKSPACE_PROGRAM.md",
+  "program_backlog":"governance/application-planning/asynchronous-persistent-workspace/APW_PROGRAM_BACKLOG.json",
+  "depends_on":["APW-01","APW-04"],
+  "dependency_evidence":{"APW-01":{"status":"completed_verified","pull_request":409,"repository_health_run":32202132346,"merge_sha":"2f99a03612dab525eaffd5c0141f84cf8c1b5654"},"APW-04":{"status":"completed_verified","pull_request":421,"validated_head":"67a7252a402b9c78c50a51e806340b737e95387a","repository_health_run":32205891554,"merge_sha":"ce249810a544c78d770f7c5e1f27ce2eef60894e"},"CSW-08":{"status":"completed_verified","pull_request":439,"validated_head":"101fa704e95ac801031026e34a055186421fc2f1","repository_health_run":32233285028,"merge_sha":"9a237412f46d22e478bc29e7429ec129ce334239"}},
+  "completion_gate":"Personal creation and experimentation can use reusable assets and disposable Sandbox/Lab state without silently mutating Campaign truth or global canonical content, while Campaign authority never controls another user's independent reusable library.",
+  "required_design_questions":["What is the Creator Workshop navigation/context model and how does it relate to Personal Home without creating a new authority context?","Which reusable asset families can be created or organized here while owning domains retain truth/validation authority?","How are draft, reusable definition, template, Campaign variant and live instance identities/lifecycles separated?","How do link/copy/clone/instantiate/propose/import operations into Campaigns differ and which require Campaign review?","What exactly is Sandbox/Lab state, what may it reference, and how is it prevented from becoming Campaign/canonical truth or a reward source?","How are rule/build/loadout/encounter/configuration comparisons represented without creating a parallel rules engine?","How do CSW-08 derivatives/templates enter the Workshop and how do Workshop assets retain provenance/version/source-change evidence?","What save-as-template/publish/promotion paths exist and where must APW stop at proposal/handoff rather than promotion authority?","How are content origin, dependencies, compatibility, validation and entitlement/pack requirements shown?","How do deletion/archive/reference integrity work for reusable assets used by Campaign variants or templates?","How do optional AI and deterministic generators assist creation without owning mechanics or canonical state?","What recovery, offline, accessibility, mobile and nonvisual acceptance proves disposable experiments and reusable assets stay separated?"],
+  "preserved_parallel_tracks":["CSW-09 follows APW-05","APW-06 follows CSW-09","APM-05 remains later after APW-06","CCTI-12-T04 deferred until September 2026","WP-011 dormant","DS-008 blocked non-owner"],
+  "nonauthorization":["application implementation","migration execution","canonical promotion","public marketplace","AI/automation authority","release/deployment","CCTI-12-T04 before September 2026"],
+  "next_action":"Execute APW-05 as a bounded design/governance tranche defining Creator Workshop navigation/authority, reusable asset lifecycles, draft/template/variant/live-instance boundaries, Campaign import/instantiate/propose operations, disposable Sandbox/Lab isolation, comparison/provenance/validation seams and recovery/accessibility acceptance."
+}
