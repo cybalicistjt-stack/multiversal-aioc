@@ -1,19 +1,20 @@
 {
-  "schema_version":"1.1.0",
+  "schema_version":"1.2.0",
   "work_item_id":"APW-07",
   "attempt_id":"APW-07-attempt-001",
   "track":"asynchronous-persistent-workspace",
   "repository":"cybalicistjt-stack/multiversal-aioc",
   "branch":"governance/apw-07-persistence-recovery-hybrid",
-  "status":"ready_for_validation",
+  "status":"completed_verified",
   "owner_selected":true,
   "selected_at":"2026-08-19T09:23:00Z",
   "design_ready_at":"2026-08-19T09:30:00Z",
+  "completed_at":"2026-08-19T09:32:00Z",
   "objective":"Define Persistence, Recovery, Security and Hybrid Acceptance Architecture proving deterministic safe behavior across delayed asynchronous use, live/asynchronous cadence changes, cross-device return, permission or entitlement changes, notification durability, ambiguous failures and protected-information boundaries without creating a second state engine or weakening owning-domain authority.",
   "deliverables":["governance/application-planning/asynchronous-persistent-workspace/APW-07_PERSISTENCE_RECOVERY_SECURITY_AND_HYBRID_ACCEPTANCE_ARCHITECTURE.md","governance/application-planning/asynchronous-persistent-workspace/APW-07_PERSISTENCE_RECOVERY_SECURITY_MATRIX.json","governance/application-planning/asynchronous-persistent-workspace/APW-07_HYBRID_CROSS_DEVICE_ACCEPTANCE.json","governance/application-planning/asynchronous-persistent-workspace/APW-07_REVIEW_RECEIPT.md"],
-  "completion_gate":{"single_authoritative_history":true,"stable_operation_idempotency":true,"at_most_once_accepted_effect":true,"expected_version_conflict_rules":true,"event_cursor_gap_recovery":true,"ambiguous_failure_status_lookup":true,"durable_notification_reconstruction":true,"permission_delegation_revalidation":true,"entitlement_change_handling":true,"authorization_before_aggregation":true,"cross_device_cache_isolation":true,"long_delay_revalidation":true,"bounded_offline_no_authoritative_mutation":true,"live_async_live_continuity":true,"privacy_safe_diagnostics_export":true,"zero_paid_service_core":true,"accessibility_mobile_recovery_parity":true,"deterministic_fixture_inventory":true,"final_repository_validation_pending":true,"pull_request_merge_pending":true},
+  "completion_evidence":{"pull_request":451,"validated_head":"e6640f2fef5a2fc5ca22cafa28af262871c26c08","repository_health_run":32237975517,"repository_health_conclusion":"success","merge_sha":"e9592399eaca07d0cdf28b79320fc6bf59bde5ef"},
+  "completion_gate":{"single_authoritative_history":true,"stable_operation_idempotency":true,"at_most_once_accepted_effect":true,"expected_version_conflict_rules":true,"event_cursor_gap_recovery":true,"ambiguous_failure_status_lookup":true,"durable_notification_reconstruction":true,"permission_delegation_revalidation":true,"entitlement_change_handling":true,"authorization_before_aggregation":true,"cross_device_cache_isolation":true,"long_delay_revalidation":true,"bounded_offline_no_authoritative_mutation":true,"live_async_live_continuity":true,"privacy_safe_diagnostics_export":true,"zero_paid_service_core":true,"accessibility_mobile_recovery_parity":true,"deterministic_fixture_inventory":true,"final_repository_validation_passed":true,"pull_request_merged":true},
   "foundational_reuse":"Extends MV-IA-F021 LocalDraftEnvelope/stable operation ID/expected-version/status/EventCursor/conflict/offline snapshot recovery semantics rather than creating a second synchronization engine.",
-  "preserved_parallel_tracks":["APM-06 follows APW-07","APW-08 follows APM-06","CCTI-12-T04 deferred until September 2026","WP-011 dormant","DS-008 blocked non-owner"],
   "nonauthorization":["application implementation","migration execution","new state engine","broad offline authoritative play","blind retry of ambiguous authoritative mutation","automatic last-write-wins governed state","release/deployment","CCTI-12-T04 before September 2026"],
-  "next_action":"Open bounded APW-07 governance PR, run exact-head AIOC repository-health, merge only after PASS, then record completed_verified evidence and select APM-06 without beginning APM-06 substantive work until selector validation completes."
+  "next_action":"Select APM-06 as the next owner-approved interleaved design/governance tranche; do not begin APM-06 substantive work in this handoff."
 }
