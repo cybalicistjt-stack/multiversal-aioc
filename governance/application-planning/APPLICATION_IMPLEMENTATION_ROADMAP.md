@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 5.14.0  
-**Status:** MIB ACTIVE — SMB + MCB OWNER-APPROVED PLANNED  
+**Version:** 5.15.0  
+**Status:** MIB ACTIVE AT MIB-02 — SMB + MCB OWNER-APPROVED PLANNED  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-19
 
@@ -16,7 +16,7 @@ The strict APW/CSW/APM 21-slice combined implementation sequence is **COMPLETED_
 2. **SMB — System Maturation & Buildout** — planned post-MIB product-completion successor; turn the MIB engine room into a complete networked, content-rich, production-grade game/app.
 3. **MCB — Market Capture & Brand Backbone** — planned commercial-preparation program; build market truth, brand, acquisition, growth and launch machinery. Evidence-independent MCB tranches may later be selected in bounded parallel only through explicit owner routing.
 
-Roadmap presence does **not** auto-select SMB or MCB. MIB-01 remains the sole current selected work item.
+Roadmap presence does **not** auto-select SMB or MCB. **MIB-02 is the sole current selected implementation item.**
 
 ## Completed verified baseline
 
@@ -26,13 +26,12 @@ The prior combined implementation sequence is also **COMPLETED_VERIFIED**:
 
 `APW-I01 → CSW-I01 → APM-I01 → APW-I02 → APW-I03 → APW-I04 → CSW-I02 → APM-I02 → APM-I03 → APW-I05 → CSW-I03 → CSW-I04 → CSW-I05 → CSW-I06 → CSW-I07 → APW-I06 → CSW-I08 → APM-I04 → APM-I05 → APM-I06 → APW-I07`
 
-Final predecessor application evidence:
+Final predecessor application evidence before MIB:
 - App main: `ecbca5720f4ec2d9dc518a2d3ece8752b7dc9a9e`;
 - migration head: `0021_apm_autogm_mini_campaign_director.json`;
 - APW-I07 PR #226 exact validated head `eb9e7379d459e11617844706c2fba4ba85b25331`;
 - repository-health run `32297933654` PASS;
-- product run `32297933813` PASS on self-hosted Windows, self-hosted Linux and deterministic comparison;
-- 25 focused APW-I07 tests PASS.
+- product run `32297933813` PASS on self-hosted Windows, self-hosted Linux and deterministic comparison.
 
 ## Approved program horizon
 
@@ -41,7 +40,8 @@ Final predecessor application evidence:
 Program: `governance/application-planning/multiversal-implementation-backbone/MIB_MULTIVERSAL_IMPLEMENTATION_BACKBONE_PROGRAM.md`  
 Backlog: `governance/application-planning/multiversal-implementation-backbone/MIB_PROGRAM_BACKLOG.json`  
 Lifecycle: **ACTIVE**  
-Current tranche: **MIB-01**
+Completed through: **MIB-01**  
+Current tranche: **MIB-02**
 
 ### SMB — finished product/game machine
 
@@ -57,20 +57,38 @@ Backlog: `governance/application-planning/market-capture-brand-backbone/MCB_PROG
 Lifecycle: **OWNER-APPROVED / PLANNED COMMERCIAL PREPARATION**  
 Parallel rule: evidence-independent early tranches may later be selected in bounded parallel by explicit owner routing; product-dependent claims/pricing/acquisition/launch work must wait for current evidence.
 
-## Active next subproject — MIB
+## Active subproject — MIB
 
-**MIB — Multiversal Implementation Backbone** is the sole active product implementation program.
+### MIB-01 completion evidence
 
-Current tranche: **MIB-01**  
-Attempt: `MIB-01-attempt-001`  
-State: `selected_not_started`
+**MIB-01 — Canonical Registry, Data Dictionary and Stable Identity Foundation** is **COMPLETED_VERIFIED**.
+
+- App PR #227 exact validated head: `15ac2f4ebf4b43967d689f30e9dab1636ec45db2`;
+- repository-health run `32307639280`: PASS;
+- product run `32307639514`: PASS;
+- self-hosted Windows job `96243767363`: PASS;
+- self-hosted Linux job `96243767526`: PASS;
+- deterministic comparison job `96244131477`: PASS;
+- squash merge: `8adff394bda40ca72dfd15bd459f98dae43a08c2`;
+- migration head remains `0021_apm_autogm_mini_campaign_director.json`;
+- migration `0022` was not created or reserved.
+
+Live seam inspection showed that A2/D07, D17/D27, D18, D28, D29, D24, D25 and D04/D12 already carry the durable identity/version/provenance/reference data needed by the registry. MIB-01 therefore implemented a provider-neutral deterministic identity/reference facade rather than a second persistence ledger. Reusable definitions/templates/variants are registerable; live instances, snapshots and projections are explicitly not registry truth. Runtime Campaign/install context is not promoted into reusable identity.
+
+### Current MIB operation
+
+**MIB-02 — Query, Index, Dependency and Search Projection Manifest**  
+Attempt: `MIB-02-attempt-001`  
+State: **selected_not_started**
+
+MIB-02 must consume MIB-01 stable registry identity and define one provider-neutral logical retrieval/index/search vocabulary before any production database or search-provider choice. Its completion gate requires every common query to have an owning domain, deterministic contract, visibility rule, expected complexity class and reference implementation test, with authorization filtering before aggregation/counts/search projection.
 
 ### MIB tranche roadmap
 
 | Tranche | Purpose | State |
 |---|---|---|
-| **MIB-01 — Canonical Registry, Data Dictionary and Stable Identity Foundation** | Establish one provider-neutral registration/data vocabulary for reusable definitions, versions, lifecycle, provenance, dependencies, tags and visibility. | **selected_not_started** |
-| MIB-02 — Query, Index, Dependency and Search Projection Manifest | Define one logical retrieval/index/search vocabulary, reverse-reference model and visibility-safe query projection before physical provider selection. | planned |
+| MIB-01 — Canonical Registry, Data Dictionary and Stable Identity Foundation | Establish one provider-neutral registration/data vocabulary for reusable definitions, versions, lifecycle, provenance, dependencies, tags and visibility. | **completed_verified** |
+| **MIB-02 — Query, Index, Dependency and Search Projection Manifest** | Define one logical retrieval/index/search vocabulary, reverse-reference model and visibility-safe query projection before physical provider selection. | **selected_not_started** |
 | MIB-03 — Deterministic Runtime Primitives Library | Consolidate stable operations, expected versions, idempotency, reservations, receipts, deterministic hashing/serialization, recovery and replay primitives. | planned |
 | MIB-04 — Adapter Compliance Kit and Reference Persistence Layer | Create storage/query interfaces, common compliance tests and deterministic reference adapters so future providers plug in without domain rewrites. | planned |
 | MIB-05 — Content Pack Compiler, Linter, Importer and Starter Libraries | Make content data-driven with deterministic pack builds, validation and governed starter libraries. | planned |
@@ -88,7 +106,7 @@ State: `selected_not_started`
 | MIB-17 — Family Safety Capability and Policy Foundation | Prepare deterministic product-controlled parental/family capability policies while keeping guardian authority distinct from Campaign/GM/private creator authority. | planned |
 | MIB-18 — Backbone Integration, Portability and Gated-Work Readiness Handoff | Integrate MIB and package portable contracts, fixtures, validation evidence and readiness checklists for currently unavailable environments/providers/distribution work. | planned |
 
-### Strict MIB execution order
+Strict MIB order:
 
 `MIB-01 → MIB-02 → MIB-03 → MIB-04 → MIB-05 → MIB-06 → MIB-07 → MIB-08 → MIB-09 → MIB-10 → MIB-11 → MIB-12 → MIB-13 → MIB-14 → MIB-15 → MIB-16 → MIB-17 → MIB-18`
 
@@ -119,7 +137,7 @@ The first eight tranches deliberately maximize leverage for everything after the
 | SMB-17 — External Beta & Community Foundations | Support controlled external beta, private groups, moderation foundations, creator sharing and feedback/support systems. | planned |
 | SMB-18 — Release Engineering & Commercial Productization | Packaging, approved billing/entitlements, operations, backups, observability, support, release channels, rollback, stores/distribution and launch readiness. | planned |
 
-Default sequence:
+Default SMB sequence:
 
 `SMB-01 → SMB-02 → SMB-03 → SMB-04 → SMB-05 → SMB-06 → SMB-07 → SMB-08 → SMB-09 → SMB-10 → SMB-11 → SMB-12 → SMB-13 → SMB-14 → SMB-15 → SMB-16 → SMB-17 → SMB-18`
 
@@ -179,27 +197,13 @@ Central SMB product proof: four ordinary users on separate devices/locations can
 | MCB-24 — Launch Simulation & Commercial Readiness | Run synthetic end-to-end commercial cohorts before real-scale acquisition/launch. | planned |
 | MCB-25 — Market-Capture & Expansion Playbook | Convert validated evidence into deliberate beachhead→adjacency expansion strategy. | planned |
 
-Default sequence:
+Default MCB sequence:
 
 `MCB-01 → MCB-02 → MCB-03 → MCB-04 → MCB-05 → MCB-06 → MCB-07 → MCB-08 → MCB-09 → MCB-10 → MCB-11 → MCB-12 → MCB-13 → MCB-14 → MCB-15 → MCB-16 → MCB-17 → MCB-18 → MCB-19 → MCB-20 → MCB-21 → MCB-22 → MCB-23 → MCB-24 → MCB-25`
 
 MCB must distinguish hypothesis from evidence. It may prepare research/brand/acquisition systems before the product is finished, but it may not fabricate customers/testimonials/performance, make unsupported capability claims, lock final pricing, scale paid acquisition or launch publicly without the necessary evidence and owner routing.
 
-## MIB-01 current operation
-
-MIB-01 must begin by re-fetching App main and migration head and inventorying live reusable-definition/reference seams across existing domains. It then implements the smallest canonical Registry/Data Dictionary foundation supported by those seams.
-
-Required MIB-01 boundaries:
-- reusable definitions remain distinct from live instances, templates, Campaign variants and projections;
-- stable IDs, versions, lifecycle, source, provenance, dependencies, tags and visibility metadata have one common contract;
-- registry resolution may reference owner-domain objects but may not copy their live truth into a new ledger;
-- deterministic serialization/checksum behavior is cross-platform;
-- migration `0022` is added only if live inspection proves a genuine durable schema delta; it is not reserved by the MIB program;
-- no production database/search/AI provider is selected;
-- no AI is required for blocking acceptance;
-- normal exact-head repository health and self-hosted Windows/Linux/deterministic validation remain required before merge.
-
-## MIB shared implementation rules
+## Shared implementation and evidence rules
 
 - Prefer registrations, composition and adapters over foundational rewrites.
 - Every common primitive must have a named owner, contract tests and explicit authority boundaries.
@@ -210,6 +214,7 @@ Required MIB-01 boundaries:
 - UI Workbench components must expose equivalent keyboard/touch/screen-reader/nonvisual state.
 - Optional AI remains candidate/advisory only and all blocking paths must pass with AI disabled.
 - Cross-platform deterministic evidence remains the default final product gate where outputs should agree.
+- Commercial hypotheses, research findings, product claims, pricing assumptions and growth conclusions must retain their evidence status rather than being promoted by repetition.
 
 ## Migration and ownership policy
 
@@ -235,8 +240,6 @@ MIB-18 specifically prepares portable contracts, fixtures, evidence packages and
 
 Only evidence-backed `completed_verified` is complete. A failed required gate leaves work unfinished. Normal App/package acceptance is self-hosted Windows + self-hosted Linux + deterministic comparison where outputs should agree, plus exact-head repository health. AIOC repository health validates governance state; it does not substitute for product validation.
 
-Commercial evidence follows the same integrity principle: hypotheses, research findings, product claims, pricing assumptions and growth conclusions must preserve their evidence status rather than being promoted by repetition.
-
 ## Product-wide approved concerns
 
 - **TODO-UX-VOICE:** knowledgeable, creative companion; warm, welcoming, encouraging, clear, confident and restrained; never obsequious. MIB-07 incorporates this into reusable shared UI/copy primitives; MCB-05 through MCB-07 extend the same identity into public brand and messaging.
@@ -246,4 +249,4 @@ Commercial evidence follows the same integrity principle: hypotheses, research f
 
 Roadmap approval of MIB/SMB/MCB does not authorize CCTI-12-T04 before September 2026, WP-011 without its environment, DS-008 byte reconstruction, tester distribution, release/deployment, paid-provider activation, public matchmaking/community publishing, broad offline authoritative mutation, real-money integration, unsupported marketing claims, binding final pricing or AI mechanical/canonical/permission/consent/adjudication authority.
 
-“Continue” from this state means execute the next verified unfinished MIB operation, beginning with MIB-01, and continue through its bounded completion gate before advancing according to the canonical selector. SMB and MCB remain roadmap-planned until separately selected by owner routing.
+“Continue” from this state means execute the next verified unfinished MIB operation, beginning with MIB-02, and continue through its bounded completion gate before advancing according to the canonical selector. SMB and MCB remain roadmap-planned until separately selected by owner routing.
