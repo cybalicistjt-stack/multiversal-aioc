@@ -1,0 +1,65 @@
+{
+  "schema_version":"1.0.0",
+  "work_item":"CSW-07",
+  "document_model":{
+    "WritingDocument":"stable prose container; never an owning-domain truth object",
+    "DocumentBranch":"independent prose lineage within one document",
+    "WorkingDraft":"recoverable editable state; autosave is not automatically a named revision",
+    "DocumentRevision":"immutable historical snapshot/receipt",
+    "TransformReceipt":"provenance for accepted/rejected bounded assistance"
+  },
+  "document_kinds":["freeform-prose","character-backstory","lore-entry","location-description","npc-description","scene-text","encounter-description","adventure-pitch","campaign-pitch","rumor-or-legend","letter-or-message","journal-or-diary","player-handout","gm-note","session-or-story-summary","dialogue-or-monologue","reference-article","other"],
+  "history_rules":[
+    {"operation":"autosave","result":"recoverable working state","immutable_revision":false,"human_required":false},
+    {"operation":"named-checkpoint","result":"immutable DocumentRevision","immutable_revision":true,"human_required":true},
+    {"operation":"branch-create","result":"new branch from exact revision","immutable_revision":true,"human_required":true},
+    {"operation":"apply-large-transform","result":"candidate diff then accepted revision","immutable_revision":true,"human_required":true},
+    {"operation":"conflict-resolution","result":"preserve variants then human-composed revision","immutable_revision":true,"human_required":true},
+    {"operation":"handout-export","result":"exact revision/export receipt","immutable_revision":true,"human_required":true}
+  ],
+  "source_classes":[
+    {"class":"governed-current-reference","authority":"owning-domain","may_constrain_factual_transform":true},
+    {"class":"governed-pinned-reference","authority":"owning-domain-version-evidence","may_constrain_factual_transform":true},
+    {"class":"campaign-private-governed-reference","authority":"owning-domain/current-authorization","may_constrain_factual_transform":true},
+    {"class":"creative-possibility","authority":"pre-authoritative","may_constrain_factual_transform":false},
+    {"class":"creator-note","authority":"pre-authoritative-commentary","may_constrain_factual_transform":false},
+    {"class":"open-thread","authority":"creator-managed-advisory","may_constrain_factual_transform":false},
+    {"class":"continuity-candidate","authority":"advisory-evidence","may_constrain_factual_transform":false}
+  ],
+  "assistance":{
+    "candidate_only":true,
+    "auto_apply":false,
+    "operations":[
+      {"id":"rephrase","ai_optional":true,"requires_compare":true},
+      {"id":"shorten","ai_optional":true,"requires_compare":true},
+      {"id":"expand","ai_optional":true,"requires_compare":true},
+      {"id":"clarify","ai_optional":true,"requires_compare":true},
+      {"id":"simplify","ai_optional":true,"requires_compare":true},
+      {"id":"tone-adjust","ai_optional":true,"requires_compare":true},
+      {"id":"pov-tense-adjust","ai_optional":true,"requires_compare":true},
+      {"id":"alternatives","ai_optional":true,"requires_compare":true},
+      {"id":"transition-flow","ai_optional":true,"requires_compare":true},
+      {"id":"summarize","ai_optional":true,"requires_compare":true},
+      {"id":"outline-to-prose-candidate","ai_optional":true,"requires_compare":true},
+      {"id":"prose-to-outline-candidate","ai_optional":true,"requires_compare":false},
+      {"id":"terminology-check","ai_optional":false,"requires_compare":false},
+      {"id":"reference-constraint-check","ai_optional":false,"requires_compare":false},
+      {"id":"heading-title-options","ai_optional":true,"requires_compare":true}
+    ],
+    "prohibitions":["automatic prose acceptance","automatic truth promotion","AI continuity disposition","AI branch winner selection","AI publication","AI visibility/ownership change","history overwrite"]
+  },
+  "conflict_policy":{
+    "silent_last_writer_wins":false,
+    "preserve_unique_variants":true,
+    "human_resolution_when_ambiguous":true,
+    "campaign_authority_recheck_on_reconnect":true
+  },
+  "export_policy":{
+    "publication_equivalent":false,
+    "requires_current_authorization":true,
+    "requires_target_audience_visibility_filter":true,
+    "handout_uses_exact_revision_snapshot":true,
+    "creator_view_permission_does_not_imply_recipient_visibility":true
+  },
+  "no_ai_core":["write/edit","autosave/history","named checkpoints","branching","diff/compare","source/provenance links","Story Bible/reference browsing","terminology checks","CSW-06 evidence display","export","conflict recovery","accessibility/mobile workflows"]
+}
