@@ -1,7 +1,7 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 5.9.0  
+**Version:** 5.10.0  
 **Status:** ACTIVE — COMBINED WORKSPACE IMPLEMENTATION  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-19
@@ -40,66 +40,68 @@ The APW/APM/CSW design series is **COMPLETED_VERIFIED** through APW-08, APM-06 a
 | APW-I06 | completed_verified | PR #220 / merge `10e6bd05…` | `0019_apw_shell_notification_recovery.json` |
 | CSW-I08 | completed_verified | PR #222 / merge `43788e22…` | none |
 | APM-I04 | completed_verified | PR #223 / `d465adc4…` / merge `4276d50c…` | `0020_apm_connected_cozy_shared_play.json` |
-| APM-I05 | **selected_not_started** | `APM-I05-attempt-001` | inspect live head first |
+| APM-I05 | completed_verified | PR #224 / `5a7e685e…` / merge `eff6a3b5…` | `0021_apm_autogm_mini_campaign_director.json` |
+| APM-I06 | **selected_not_started** | `APM-I06-attempt-001` | inspect live head first |
 
-### APM-I04 completion evidence
+### APM-I05 completion evidence
 
-Application PR #223 completed from exact validated head `d465adc4184592aff52639a1b9f9a50fd51ce09a`. Repository-health run `32292150819` passed. Product run `32292154603` ended with self-hosted Linux PASS, self-hosted Windows PASS and deterministic comparison PASS after policy-permitted unchanged retries of the only remaining pre-existing A2 p95 timing fluctuations. All 19 focused APM-I04 tests passed on the final head before squash merge `4276d50cf8a090c807a6ffa24238cef2cad34ee1`.
+Application PR #224 completed from exact validated head `5a7e685eccc94b746c5116f3973c0992f20c65f1`. Repository-health run `32294799511` passed. Product run `32294800000` ended with self-hosted Windows PASS, self-hosted Linux PASS and deterministic comparison PASS after the policy-permitted unchanged retry of the only remaining pre-existing A2 p95 timing fluctuation. All 19 focused APM-I05 tests passed on the final head before squash merge `eff6a3b5c5ee0f7a5068bdc9badf6eb36ef932b1`.
 
-Migration `0020_apm_connected_cozy_shared_play.json` was added only after live inspection proved a genuine orchestration gap. It stores Connected Cozy shared-space, participant membership/invitation, attributable contribution and operation/recovery metadata only. Character, resource, inventory, relationship and Campaign truth remain in their owning domains. Participant authority never pools through host/space identity; invitation acceptance revalidates current binding/version/authority; visibility filtering precedes participant counts; resource claims use owner reservation receipts; ambiguous owner commit keeps reservations/evidence and enters recovery instead of assuming failure or blindly retrying; leave/revoke removes future authority while preserving committed history; rejoin requires fresh authorization; and core operation requires no AI.
+Migration `0021_apm_autogm_mini_campaign_director.json` was added only after live inspection proved a genuine parent-orchestration gap. It stores finite exact-version Mini-Campaign package binding, parent run position/budgets, route receipts, APM-I03 child correlations, exact-once parent advancement and recovery cursors only. D28 Adventure/run truth, APM-I03 child encounter truth, APM-I01 controller/delegation/operation authority and ordinary Character/resource/inventory/relationship/investigation/World/Campaign state remain in their owning systems.
 
-Validation history is preserved in `APM-I04-attempt-001`: candidate `f4b16674…` exposed one accessible UI-state defect where projection refresh overwrote successful contribution feedback. Final head `d465adc4…` repaired the ordering without weakening behavior. Its first exact-head Linux/Windows full-suite attempts then had only the existing A2 p95 fluctuations (`262.589018ms` and `268.5609ms` > unchanged `250ms`); unchanged retries passed. No A2 threshold/test or APM-I04 privacy/authority/recovery boundary was weakened.
+Validation history is preserved in `APM-I05-attempt-001`: initial PR head `6c618efd…` failed the contract-invariant lane because the validator required the literal words “Runtime AI” inside a deterministic service that exposed no AI execution seam. The validator was strengthened to structural forbidden-AI authority checks rather than weakening the product. Final head `5a7e685e…` then passed repository health and Windows; Linux's first full-suite attempt had only the existing A2 p95 fluctuation (`338.7460209999999ms` > unchanged `250ms`) while all APM-I05 focused tests passed. The Linux lane was retried unchanged and passed, followed by deterministic comparison PASS. No A2 threshold/test or APM-I05 authority/privacy/recovery boundary was weakened.
 
-## Current work — APM-I05
+## Current work — APM-I06
 
-**APM-I05 — AutoGM Mini-Campaign Director** is the sole selected application implementation slice.
+**APM-I06 — Automated-play recovery, safety and end-to-end acceptance** is the sole selected application implementation slice.
 
 Repository: `cybalicistjt-stack/Multiversal-app`  
-Attempt: `APM-I05-attempt-001`  
+Attempt: `APM-I06-attempt-001`  
 State: `selected_not_started`
 
-APM-I05 extends the verified APM-I03 single-encounter runner across a finite, exact-version, governed Adventure scenario graph. It is a bounded director, not an unlimited autonomous Campaign generator and not a second game engine.
+APM-I06 integrates recovery and safety across the already-completed APM-I01 through APM-I05 modes. It does not create a new play mode, new canonical state engine, global GM authority or broad offline synchronization system.
 
 Required boundaries:
-- `MiniCampaignPackage` is derived only from a governed Adventure definition or explicitly incorporated governed source; unincorporated CSW planning material is not executable;
-- package ID/version, graph nodes/edges, entry/endpoints, route predicates, hidden/reveal state, allowed APM-I03 child encounter packages, deterministic policy/seeds, rewards/results and hard run budgets are finite and inspectable;
-- parent run lifecycle records current graph node, visited/terminal/route receipts, current eligible route-set version, child-run correlations, package-local reveal/objective state, owner-state evidence refs, budget counters and recovery/end state without copying ordinary game truth;
-- route eligibility is computed only from committed current owner state and exact package/policy versions;
-- when two or more meaningfully distinct player-facing eligible routes exist, selection is human-required unless the package explicitly declares a non-choice automatic transition;
-- hidden routes/nodes/future revelations and their cardinality are absent from player projections, summaries, accessibility text, logs, notifications and optional-AI context until revealed;
-- encounter nodes launch APM-I03 child runs with a durable parent→child correlation before child effects can advance parent progression;
-- retry/recovery resolves an existing child before starting another, and one child terminal receipt advances the parent at most once;
-- child abort/fail-safe follows package-declared failure/retreat/recovery semantics rather than being coerced into success;
-- between scenes the director re-reads authoritative Character/resource/inventory/investigation/relationship/World/Campaign state and stores references/evidence rather than parallel state;
-- CSW continuity/open-thread material remains advisory and cannot rewrite runtime routes or package state;
-- hard maximum node transitions, child encounters, automatic steps/Events and explicit endpoints/fail-safe rules prevent endless generation;
-- ambiguous operations recover status before retry and deterministic route/mechanical replay uses exact versions, human choices and governed seed streams;
-- optional AI receives only the player-safe resolved projection and may narrate/summarize/phrase, never own route legality, mechanics, reveals or completion;
-- core route/run/recovery behavior remains useful without AI.
+- recovery binds exact authenticated subject, Context, mode/profile, automation run, delegation, package/activity versions, stable operation ID, expected owner versions, deterministic inputs, Event/status receipts, pending human barriers and provenance;
+- reconnect/status recovery checks authenticated subject, Context membership/control/role, delegation expiry/revocation, permission/visibility, entitlement/pack compatibility, exact package/activity/schema/rules/policy versions, Event cursor, operation status, reservations/leases and pending human decisions before restoring automation;
+- lack of a response is never proof of failure; ambiguous operations query status/Event history before any retry and reuse the same stable operation identity;
+- duplicate operations return prior results without duplicating costs, rewards, progress, resource movement, encounter effects, route progress or other accepted effects;
+- stale expected versions, revoked authority or materially changed eligibility enter review/revoked/expired/fail-safe behavior instead of last-write-wins or silent substitution;
+- Cozy Solo resumes only from proven accepted progress/Event sequence and preserves mandatory human choices;
+- Connected Cozy recovery preserves independent participant authority, contribution/resource receipts and leave/revoke/rejoin history; stale cache cannot restore removed permissions or hidden data;
+- AutoGM Single-Encounter recovery resumes exact package/turn/reaction/seed/Event barriers without rerolls, duplicate effects, skipped reactions or hidden-state exposure;
+- AutoGM Mini-Campaign recovery preserves exact current node/route state, child run IDs/terminal receipts, one parent advancement per child terminal result, route eligibility inputs, pending human route choices, hidden projection version and hard run budgets;
+- mode transitions preserve one ordinary authoritative history and never silently carry automation delegation into a different mode/context;
+- optional AI remains replaceable presentation/proposal only; unavailable, malformed, unauthorized, illegal or over-budget output cannot widen authority, alter committed mechanics, undo owner-domain commits or become canonical state;
+- D05/visibility filtering precedes player, AI, notification, count, log, replay, diagnostics and support projections, including recovery paths;
+- deterministic replay is non-mutating and reproduces mechanical outcomes from exact authoritative starting state, versions, deterministic inputs and human decisions without reapplying Events;
+- keyboard, screen-reader, touch/mobile, reduced-motion, warning and manual-fallback parity covers start/pause/resume/stop/recovery across modes;
+- zero-paid-service and no-AI recovery/acceptance remain mandatory.
 
-First operation: re-fetch App main and migration head **once**, inspect APM-I01 parent automation-run/delegation/operation recovery, APM-I03 encounter package/run/terminal receipt, D28 Adventure graph/incorporation, committed owner-state references, hidden-state projection and recovery/idempotency seams, decide whether a genuine durable APM-I05 delta requires migration `0021`, then implement the smallest finite MiniCampaignPackage + parent route-choice/child-run correlation path.
+First operation: re-fetch App main and migration head **once**, inspect APM-I01..I05 recovery/serialization/status seams, APW-07 recovery helpers, visibility/notification/replay projections and mode-transition boundaries, decide whether a genuine durable APM-I06 delta requires migration `0022`, then implement the smallest cross-mode recovery/safety/end-to-end acceptance slice.
 
-Canonical App baseline after APM-I04: `4276d50cf8a090c807a6ffa24238cef2cad34ee1`. Migration head: `0020_apm_connected_cozy_shared_play.json`.
+Canonical App baseline after APM-I05: `eff6a3b5c5ee0f7a5068bdc9badf6eb36ef932b1`. Migration head: `0021_apm_autogm_mini_campaign_director.json`.
 
 ## Default strict implementation sequence
 
 `APW-I01 → CSW-I01 → APM-I01 → APW-I02 → APW-I03 → APW-I04 → CSW-I02 → APM-I02 → APM-I03 → APW-I05 → CSW-I03 → CSW-I04 → CSW-I05 → CSW-I06 → CSW-I07 → APW-I06 → CSW-I08 → APM-I04 → APM-I05 → APM-I06 → APW-I07`
 
-Everything through APM-I04 is completed_verified. APM-I05 is selected_not_started. APM-I06 and APW-I07 remain inactive.
+Everything through APM-I05 is completed_verified. APM-I06 is selected_not_started. APW-I07 remains inactive.
 
 ## Migration and ownership policy
 
-- migrations `0001` through `0020` are immutable predecessors;
+- migrations `0001` through `0021` are immutable predecessors;
 - every tranche rechecks current App main/migration head once before mutation;
 - no next migration number is reserved in advance;
 - no migration is added without a genuine durable schema delta;
-- APM-I05 may use migration `0021` only if live inspection proves existing APM-I01/APM-I03/D28 records cannot represent required parent package/run/route/child-correlation/recovery metadata;
-- any APM-I05 persistence stores package/director orchestration, bounded hidden package-local state, route receipts, child correlations, budgets and recovery evidence only; Character, resource, inventory, relationship, investigation, World and Campaign truth remains in owner domains;
-- meaningful player-facing route choices remain human-required;
-- APM-I03 child terminal receipts advance the parent exactly once;
-- D05 authorization/reveal filtering precedes player route counts, summaries, logs, notifications, search and optional-AI context;
-- AI never owns route legality, mechanics, reveal state, completion or package mutation;
-- D18/D28/A9/Character/Campaign and creator incorporation/publication transitions remain explicit owning-domain operations.
+- APM-I06 may use migration `0022` only if live inspection proves existing APM-I01..I05 and APW-07 records cannot represent required shared recovery/safety evidence;
+- any APM-I06 persistence stores recovery orchestration/evidence references only and cannot become a parallel automated-play ledger or duplicate Character, resource, inventory, relationship, investigation, World, Campaign, Adventure, encounter or Connected Cozy truth;
+- stable operation identity, expected-version checks and owner status/Event evidence remain the basis of retries and recovery;
+- pending human choices/reactions/consent/approval remain human-required after reconnect;
+- D05 authorization/reveal filtering precedes all player/AI/count/notification/log/replay/support projections;
+- deterministic replay never reapplies accepted Events;
+- AI never owns mechanical, canonical, permission, consent, reveal, route or completion authority;
+- participating owning-domain mutations remain explicit owner operations.
 
 ## Internal Alpha milestones
 
@@ -107,7 +109,7 @@ Everything through APM-I04 is completed_verified. APM-I05 is selected_not_starte
 2. Between-session and creator foundation — APW-I04, CSW-I01, CSW-I02, APW-I05 — **complete**.
 3. First creator and automated experiences — CSW-I03, CSW-I04, APM-I01, APM-I02, APM-I03 — **complete**.
 4. Deep creator workspace — CSW-I05, CSW-I06, CSW-I07 — **complete**.
-5. Integrated shell and connected automation — APW-I06, CSW-I08, APM-I04, APM-I05, APM-I06 — **APM-I05 current**.
+5. Integrated shell and connected automation — APW-I06, CSW-I08, APM-I04, APM-I05, APM-I06 — **APM-I06 current**.
 6. Whole-system hybrid proof — APW-I07.
 
 Tester distribution remains separately owner-gated.
@@ -129,6 +131,6 @@ Only evidence-backed `completed_verified` is complete. A failed required gate le
 
 ## Nonauthorization
 
-Current selection authorizes only APM-I05. It does not authorize APM-I06+, APW-I07+, migration `0021` without a proven durable delta, unlimited autonomous Campaign generation, runtime AI-authored authoritative nodes/edges, direct execution of unincorporated CSW planning material, AI route/mechanical/reveal/completion authority, hidden route/cardinality leakage, parallel ordinary-domain state engines, broad offline authoritative Mini-Campaign mutation, T04 before September, tester distribution, release/deployment or paid-provider activation.
+Current selection authorizes only APM-I06. It does not authorize APW-I07+, migration `0022` without a proven durable delta, new automated-play mode semantics beyond recovery/safety/acceptance integration, public matchmaking, multiplayer AutoGM authority, unbounded autonomous campaigns, AI mechanical/canonical/permission/consent authority, broad offline authoritative automated play, a second canonical ledger, autonomous publication/canonical promotion, T04 before September, tester distribution, release/deployment or paid-provider activation.
 
 “Continue” means execute the next verified unfinished operation.
