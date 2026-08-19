@@ -1,0 +1,43 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"APW-02",
+  "status":"design_ready_for_review",
+  "core_invariant":"one proposalId produces at most one final authoritative outcome",
+  "state_classes":{
+    "local_draft":{"authoritative":false,"durable_server_required":false,"free_edit":true},
+    "submitted_proposal":{"authoritative_gameplay":false,"durable":true,"versioned":true,"inbox_visible_when_authorized":true},
+    "clarification":{"authoritative_gameplay":false,"coordination":true,"can_change_player_intent":false},
+    "review_lease":{"authoritative_gameplay":false,"coordination":true,"grants_decision_authority":false},
+    "final_decision":{"authoritative_proposal_disposition":true,"gameplay_effects_only_if_approved_commit":true},
+    "event_commit":{"authoritative_gameplay":true,"owned_by_existing_a6_commit_path":true},
+    "notification":{"authoritative":false,"attention_signal_only":true}
+  },
+  "proposal_revision":{
+    "same_proposal_id":true,
+    "proposal_version_increments":true,
+    "new_operation_identity_required":true,
+    "prior_versions_retained":true,
+    "final_decision_blocks_revision":true,
+    "semantic_stale_refresh_requires_proposer_acceptance":true,
+    "presentation_refresh_requires_revision":false
+  },
+  "final_decision_types":["approve","deny","modify-and-approve"],
+  "nonfinal_coordination":["clarification-requested","clarification-answered","review-open","review-returned","reminder","snooze","assignment-lease"],
+  "withdrawal":{"before_final_only":true,"maps_to_revocation_or_cancellation":true,"erases_history":false,"rolls_back_committed_event":false,"status_lookup_on_race":true},
+  "expiry":{"server_governed":true,"client_clock_authority":false,"prevents_future_approval":true,"creates_gameplay_event":false},
+  "review_lease":{"purpose":"reduce duplicate reviewer effort","authority_source":false,"fresh_decider_authorization_still_required":true,"revocation_invalidates":true,"final_uniqueness_depends_on_lease":false},
+  "decision_time_revalidation":["decider subject","campaign role/delegation","proposal nonfinal/nonrevoked/nonexpired","exact proposal version","session/character/target versions","action definition and pack/schema compatibility","permissions","entitlements","costs/requirements/resources","visibility policy","modification diff/final confirmation","operation/idempotency and prior final decision status"],
+  "stale_classes":{
+    "semantic_state_change":"return/revise required before approval",
+    "rules_or_pack_incompatible":"revise or deny; no silent substitution",
+    "permission_or_delegation_change":"reauthorize and revoke/deny as needed",
+    "entitlement_change":"reauthorize; prior legality does not guarantee commit",
+    "presentation_only":"refresh projection without proposal revision"
+  },
+  "inbox_projection":{"permission_filtered_before_counts":true,"safe_fields":["safe summary","safe proposer/actor projection","campaign/session safe label","submitted/updated timestamp","proposal version","coordination state","deadline/age safe indicator","stale/clarification/changed badge","review assignment safe indicator"],"forbidden_by_default":["hidden target details","secret effects","gm-only reasons exposed to player","other-player private details","unauthorized counts"]},
+  "notification":{"delivery":"best-effort or at-least-once attention","duplicates_change_state":false,"missing_delivery_changes_state":false,"deep_link_reauthorizes":true,"external_payload_minimal":true},
+  "offline":{"local_draft_allowed_subject_to_existing_policy":true,"durable_submission_requires_connectivity":true,"durable_revision_requires_connectivity":true,"withdraw_requires_connectivity":true,"final_decision_requires_connectivity":true,"blind_queued_multiwriter_commands":false},
+  "reconnect":["reauthenticate","reauthorize context","lookup outstanding proposal/decision/operation status","recover missed events","revalidate permission/entitlement/pack/schema","invalidate protected cache","show current final/stale/revoked status","never blindly resend state-changing command before status lookup"],
+  "ai_automation":{"ai_can_decide":false,"ai_can_rewrite_player_intent":false,"ai_can_expand_delegation":false,"automation_mode_grants_gm_inbox_authority":false,"allowed_advisory":["summarize authorized proposal","explain rules/evidence","draft clarification wording","suggest review questions"]},
+  "authorizations":{"application_implementation":false,"migration_execution":false,"alternate_async_rules_engine":false,"unrestricted_offline_multiwriter":false,"release_deployment":false,"ccti12_t04_before_2026_09":false}
+}

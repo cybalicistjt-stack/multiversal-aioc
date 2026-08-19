@@ -1,0 +1,48 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"APW-02",
+  "status":"design_ready_for_review",
+  "source_contracts":[
+    {"id":"A6-action-proposal","repository":"cybalicistjt-stack/Multiversal-app","path":"packages/contracts/src/a6/action-proposal-port.ts","uses":["stable proposal/operation identity","proposal versions","expected Session version","status receipt","local draft nonauthority"]},
+    {"id":"A6-action-decision","repository":"cybalicistjt-stack/Multiversal-app","path":"packages/contracts/src/a6/action-decision-port.ts","uses":["approve/deny/modify-and-approve","existing-final rejection","stale validation","delegation","exact reviewed proposal/session version"]},
+    {"id":"A6-action-status","repository":"cybalicistjt-stack/Multiversal-app","path":"packages/contracts/src/a6/action-status-port.ts","uses":["operation status lookup","payload fingerprint","return-prior-status versus retry-same-identity","conflicting reuse rejection"]},
+    {"id":"A6-action-reconnect","repository":"cybalicistjt-stack/Multiversal-app","path":"packages/contracts/src/a6/action-reconnect-port.ts","uses":["outstanding proposal/decision/operation lookup","event gap recovery","permission/entitlement/cache invalidation","revoked proposal projection"]},
+    {"id":"MV-IA-F006","path":"governance/application-planning/internal-alpha/feature-packets/MV-IA-F006_FIRST_PLAYABLE_ACTION_AND_GM_APPROVAL_LOOP.md","uses":["proposal/decision separation","atomic commit","GM modification provenance"]},
+    {"id":"MV-IA-F021","path":"governance/application-planning/internal-alpha/feature-packets/MV-IA-F021_AUTOSAVE_RECONNECT_RECOVERY_AND_BOUNDED_OFFLINE_USE.md","uses":["draft versus authoritative distinction","idempotency","status lookup","sequence recovery","no broad offline mutation"]}
+  ],
+  "notification_classes":["proposal-submitted","proposal-revised","clarification-requested","clarification-answered","review-update","proposal-stale","proposal-nearing-expiry","proposal-withdrawn-revoked-expired","final-decision-available","approved-result-committed","recovery-required"],
+  "notification_rules":["attention only","minimal external payload","no hidden target/effect/private count leakage","deep link reauthenticates and reauthorizes","duplicate delivery cannot duplicate state","missing delivery cannot erase state","read/unread is presentation metadata"],
+  "race_cases":[
+    {"id":"APW02-R01","case":"two authorized GMs decide concurrently","required":"one decision succeeds; other returns already-final/current status; at most one Event"},
+    {"id":"APW02-R02","case":"withdraw races final decision","required":"status lookup determines winning barrier; no automatic contradictory rollback/second Event"},
+    {"id":"APW02-R03","case":"revision races open review","required":"review of superseded version cannot finalize as current; reviewer refreshes exact version"},
+    {"id":"APW02-R04","case":"delegation revoked during review","required":"fresh decision authorization denies final action even if review lease exists"},
+    {"id":"APW02-R05","case":"decision succeeds but response lost","required":"same identity lookup/retry returns prior result; no duplicate Event"},
+    {"id":"APW02-R06","case":"submission succeeds but response lost","required":"proposal/operation status returns durable submitted record; no duplicate proposal"}
+  ],
+  "stale_cases":[
+    {"id":"APW02-S01","change":"session/target/character version","required":"block approval when semantic; proposer revises from current state"},
+    {"id":"APW02-S02","change":"action definition/pack/schema incompatible","required":"block silent substitution; revise or deny"},
+    {"id":"APW02-S03","change":"permission/delegation","required":"reauthorize, revoke/deny and clear protected cache as required"},
+    {"id":"APW02-S04","change":"entitlement","required":"reauthorize; submission-time entitlement is not commit-time authority"},
+    {"id":"APW02-S05","change":"presentation/localization only","required":"refresh projection without semantic revision"}
+  ],
+  "acceptance_scenarios":[
+    {"id":"APW02-A01","scenario":"submit today approve tomorrow","expected":"one durable proposal, one final decision, at most one Event"},
+    {"id":"APW02-A02","scenario":"submission timeout retry","expected":"status lookup/replay; no duplicate"},
+    {"id":"APW02-A03","scenario":"two GM devices","expected":"concurrent safe viewing possible, single final decision"},
+    {"id":"APW02-A04","scenario":"assistant GM lease then delegation revoked","expected":"decision denied; lease nonauthoritative"},
+    {"id":"APW02-A05","scenario":"proposer revision","expected":"same proposalId, incremented version, new operation identity, prior revision preserved"},
+    {"id":"APW02-A06","scenario":"clarification no semantic change","expected":"nonfinal response, same proposal version may remain current"},
+    {"id":"APW02-A07","scenario":"clarification changes target","expected":"explicit new proposal revision required"},
+    {"id":"APW02-A08","scenario":"semantic stale state","expected":"review-required, no silent recomputation or commit"},
+    {"id":"APW02-A09","scenario":"withdraw-versus-decision race","expected":"one proven terminal barrier; status lookup resolves ambiguity"},
+    {"id":"APW02-A10","scenario":"server expiry while clients offline","expected":"later approval rejected regardless of stale client clock"},
+    {"id":"APW02-A11","scenario":"external notification","expected":"safe generic payload and fresh authorization before detail"},
+    {"id":"APW02-A12","scenario":"Campaign access revoked","expected":"queue/deep link/cache reveal no protected proposal data or counts"},
+    {"id":"APW02-A13","scenario":"approval response lost","expected":"prior committed result returned on lookup; no duplicate Event"},
+    {"id":"APW02-A14","scenario":"AI unavailable","expected":"manual submit/review/decision loop unaffected"}
+  ],
+  "future_touchpoints":["A6 proposal revision metadata","A6 clarification coordination","permission-safe GM inbox port","review lease coordination","notification projection/deep links","APW waiting-work shell views","reconnect delayed-status extension","race/stale/nonleakage fixtures"],
+  "nonauthorization":{"implementation":false,"migration":false,"notification_authority":false,"review_lease_authority":false,"ai_decision_authority":false,"t04_before_september":false}
+}
