@@ -1,0 +1,26 @@
+{
+  "schema_version":"1.0.0",
+  "work_item":"CSW-07",
+  "acceptance_cases":[
+    {"id":"autosave-recovery","expected":"interrupted working text is recoverable with truthful local/remote durability status"},
+    {"id":"checkpoint-immutability","expected":"later edits never mutate a named historical revision"},
+    {"id":"branch-isolation","expected":"editing one branch leaves sibling branch and linked source objects unchanged"},
+    {"id":"partial-transform-apply","expected":"only explicitly accepted candidate spans enter resulting revision"},
+    {"id":"crash-before-accept","expected":"generated but unaccepted assistance remains unaccepted after recovery"},
+    {"id":"source-provenance","expected":"outline/fragment-derived prose retains exact source IDs/versions without reverse silent propagation"},
+    {"id":"current-reference-update","expected":"source update produces stale-reference evidence while prose remains untouched"},
+    {"id":"pinned-reference","expected":"pinned source version remains attributable while newer evidence is separately indicated"},
+    {"id":"continuity-advisory","expected":"CSW-06 evidence can be reviewed without auto-edit or auto-resolution"},
+    {"id":"hidden-reference-isolation","expected":"unauthorized content is absent from search/counts/snippets/similarity/AI/export"},
+    {"id":"handout-redaction","expected":"GM-private referenced material is excluded from player projection unless separately safe"},
+    {"id":"concurrent-conflict","expected":"incompatible unique edits are both preserved for human resolution; no silent last-writer loss"},
+    {"id":"campaign-revocation","expected":"offline reconnect after revoked Campaign authority cannot upload protected edits or transfer protected ownership"},
+    {"id":"no-ai-parity","expected":"core edit/history/branch/compare/reference/export/recovery succeeds with AI disabled"},
+    {"id":"nonvisual-compare","expected":"screen-reader/keyboard user can inspect old/new text and accept/reject every proposal"},
+    {"id":"mobile-parity","expected":"mobile user can edit, checkpoint, branch, compare, inspect references/candidates, recover and export"},
+    {"id":"export-snapshot","expected":"handout/export receipt identifies exact document revision and remains historically stable"}
+  ],
+  "recovery_invariants":["never claim synced when only local durability exists","unaccepted assistance cannot become accepted due to crash/reconnect","ambiguous conflicts preserve both variants","Campaign authorization is revalidated before reconciliation","reference refresh failure cannot destroy authored prose"],
+  "accessibility_invariants":["no drag-only operation","no color-only diff meaning","semantic ordered change list available","save/sync/conflict status programmatically exposed","branch/revision navigation available as named semantic structures","keyboard commands have menu equivalents"],
+  "export_invariants":["export is projection not publication","recipient visibility is evaluated separately from creator visibility","hidden information filtered before output","export is bound to exact revision","no automatic canonical promotion"]
+}
