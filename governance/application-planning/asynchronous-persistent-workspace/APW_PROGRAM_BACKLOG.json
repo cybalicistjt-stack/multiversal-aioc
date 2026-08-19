@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "program_id": "APW",
   "program_name": "Asynchronous Play & Persistent Workspace",
   "status": "design_active",
@@ -13,8 +13,13 @@
     {
       "id": "APW-01",
       "name": "Authority Account Context and Terminology Canonicalization",
-      "status": "selected_not_started",
+      "status": "design_complete_pending_validation",
       "depends_on": [],
+      "deliverables": [
+        "APW-01_AUTHORITY_ACCOUNT_CONTEXT_CANONICALIZATION.md",
+        "APW-01_AUTHORITY_CONTEXT_MATRIX.json",
+        "APW-01_TRACEABILITY_AND_ADDITIVE_TOUCHPOINTS.json"
+      ],
       "completion_gate": "Universal-user and contextual-role authority is unambiguous, older global GM/Player assumptions are reconciled, and additive implementation touch points are identified without reopening completed Stage A closure evidence."
     },
     {
@@ -68,6 +73,7 @@
     }
   ],
   "planning_order": ["APW-01", "APW-02", "APW-03", "APW-04", "APW-05", "APW-06", "APW-07", "APW-08"],
+  "combined_owner_approved_sequence_after_apw01": ["APM-01", "CSW-01", "CSW-02", "APW-02", "APW-03", "APW-04", "APM-02", "CSW-03", "CSW-04", "CSW-05", "APM-03", "CSW-06", "APM-04", "CSW-07", "CSW-08", "APW-05", "CSW-09", "APW-06", "APM-05", "CSW-10", "APW-07", "APM-06", "APW-08"],
   "provisional_implementation_handoff": [
     "APW-I01 contextual account role and personal-context authority extensions",
     "APW-I02 Personal Home and workspace switching",
@@ -86,6 +92,7 @@
     "production credentials",
     "autonomous AI mutation",
     "public creator marketplace",
-    "unrestricted offline multi-writer synchronization"
+    "unrestricted offline multi-writer synchronization",
+    "CCTI-12-T04 resumption before September 2026"
   ]
 }

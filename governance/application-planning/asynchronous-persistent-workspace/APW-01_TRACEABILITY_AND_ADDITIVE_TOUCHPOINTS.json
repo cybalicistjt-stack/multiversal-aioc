@@ -1,0 +1,167 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "APW-01",
+  "status": "ready_for_governed_review",
+  "source_authorities": [
+    {
+      "path": "governance/application-planning/asynchronous-persistent-workspace/APW_ASYNCHRONOUS_PLAY_AND_PERSISTENT_WORKSPACE_PROGRAM.md",
+      "use": "owner-approved APW principles, three-axis model, tranche gate"
+    },
+    {
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F003_IDENTITY_DASHBOARD_AND_WORKSPACE_SELECTION.md",
+      "use": "stable subject, membership/role/control/entitlement separation, authorized workspace entry"
+    },
+    {
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F003_IDENTITY_WORKSPACE_MATRIX.json",
+      "use": "deny-by-default discovery, contextual dashboard/workspace roles, selected-context receipt"
+    },
+    {
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F020_PERMISSIONS_AND_HIDDEN_INFORMATION.md",
+      "use": "deny-by-default authorization, visibility classifications, Owner/Admin and service-actor boundaries"
+    },
+    {
+      "path": "governance/application-planning/internal-alpha/feature-packets/MV-IA-F005_CAMPAIGN_SCENE_AND_SESSION_BUILDER.md",
+      "use": "Campaign-scoped membership/role/control, Session authority, launch snapshot and hidden-information boundaries"
+    }
+  ],
+  "application_evidence": [
+    {
+      "path": "packages/contracts/src/a3/selected-context-receipt.ts",
+      "finding": "Current Stage-A receipt carries one activeRole and existing workspace types. It explicitly remains navigation/recovery evidence rather than permission authority.",
+      "classification": "valid_stage_a_projection_additive_successor_needed"
+    },
+    {
+      "path": "packages/contracts/src/a3/a3-authorization-projection.ts",
+      "finding": "Current contract deliberately separates applicationRole from CampaignRole and prevents owner-admin from becoming Campaign owner implicitly.",
+      "classification": "preserve_and_extend"
+    },
+    {
+      "path": "packages/contracts/src/authorization/campaign-authorization-policy.ts",
+      "finding": "CampaignRole and authorization are scoped by campaignId; Campaign ownership and membership are evaluated inside one Campaign resource context.",
+      "classification": "preserve_campaign_scope"
+    },
+    {
+      "path": "apps/client-ui/src/a3/context/WorkspaceSwitcher.tsx",
+      "finding": "Switcher renders only authorized workspace projections and requests reauthorization on selection, but currently presents role-oriented Player/GM workspace labels.",
+      "classification": "future_context_ui_extension"
+    },
+    {
+      "path": "apps/client-ui/src/App.tsx",
+      "finding": "Current alpha shell and fixtures are intentionally local/synthetic and contain role-specific guided surfaces; these are test/development conveniences rather than account authority.",
+      "classification": "do_not_promote_fixture_shortcuts_to_account_model"
+    }
+  ],
+  "reconciliations": [
+    {
+      "legacy_or_simplified_term": "Player account",
+      "canonical_apw01_term": "Multiversal user with Player role in a specific Campaign context",
+      "existing_stage_a_valid": true
+    },
+    {
+      "legacy_or_simplified_term": "GM account",
+      "canonical_apw01_term": "Multiversal user with GM authority in one or more explicitly governed Campaign contexts",
+      "existing_stage_a_valid": true
+    },
+    {
+      "legacy_or_simplified_term": "Content Creator role",
+      "canonical_apw01_term": "creator/reviewer authority in an owned or assigned Personal/reusable/canonical-review resource scope",
+      "existing_stage_a_valid": true
+    },
+    {
+      "legacy_or_simplified_term": "player-dashboard / gm-dashboard",
+      "canonical_apw01_term": "bounded specialized workspace projections under a universal-user/context model",
+      "existing_stage_a_valid": true
+    },
+    {
+      "legacy_or_simplified_term": "activeRole",
+      "canonical_apw01_term": "current contextual role projection; not permanent account identity",
+      "existing_stage_a_valid": true
+    },
+    {
+      "legacy_or_simplified_term": "Owner/Admin",
+      "canonical_apw01_term": "application/program operational authority separate from Campaign/private-play authority",
+      "existing_stage_a_valid": true
+    }
+  ],
+  "future_additive_touchpoints": [
+    {
+      "id": "APW01-TP-001",
+      "area": "A3 selected context",
+      "paths": ["packages/contracts/src/a3/selected-context-receipt.ts"],
+      "change_direction": "versioned successor with explicit Personal/Campaign/Session context descriptor and scoped role/grant references",
+      "reopens_stage_a": false
+    },
+    {
+      "id": "APW01-TP-002",
+      "area": "A3 authorization composition",
+      "paths": ["packages/contracts/src/a3/a3-authorization-projection.ts"],
+      "change_direction": "preserve independent authority inputs and add Personal/multi-role context support without global role Boolean",
+      "reopens_stage_a": false
+    },
+    {
+      "id": "APW01-TP-003",
+      "area": "Campaign authorization",
+      "paths": ["packages/contracts/src/authorization/campaign-authorization-policy.ts"],
+      "change_direction": "retain campaign scoping; later enrich delegation/capability evaluation only inside governed scope",
+      "reopens_stage_a": false
+    },
+    {
+      "id": "APW01-TP-004",
+      "area": "dashboard and workspace discovery",
+      "paths": ["packages/contracts/src/a3/dashboard-projection-port.ts", "apps/client-ui/src/a3/dashboard/DashboardPage.tsx"],
+      "change_direction": "add Personal Home and contextual Campaign metadata while preserving permission-safe discovery",
+      "reopens_stage_a": false
+    },
+    {
+      "id": "APW01-TP-005",
+      "area": "workspace/context switching",
+      "paths": ["apps/client-ui/src/a3/context/WorkspaceSwitcher.tsx", "apps/client-ui/src/a3/context/a3LocationState.ts"],
+      "change_direction": "evolve UI from role-centric alternatives to explicit context switching with role metadata",
+      "reopens_stage_a": false
+    },
+    {
+      "id": "APW01-TP-006",
+      "area": "shell navigation",
+      "paths": ["apps/client-ui/src/App.tsx"],
+      "change_direction": "future account-level Personal entry and context-aware navigation; retain guided-alpha role shortcuts only as bounded fixtures",
+      "reopens_stage_a": false
+    },
+    {
+      "id": "APW01-TP-007",
+      "area": "fixtures and acceptance",
+      "paths": ["apps/client-ui/src/a3/a3.fixtures.ts", "tools/verify_stage_a_a3.py"],
+      "change_direction": "future APW acceptance adds zero-Campaign, multi-Campaign/multi-role, cross-context revocation and Personal isolation cases without rewriting historical A3 closure fixtures",
+      "reopens_stage_a": false
+    },
+    {
+      "id": "APW01-TP-008",
+      "area": "Campaign and Session consumers",
+      "paths": ["packages/contracts/src/a5", "packages/contracts/src/a6", "apps/client-ui/src/a5", "apps/client-ui/src/a6"],
+      "change_direction": "continue consuming explicit Campaign/Session authority and never infer it from account-global role state",
+      "reopens_stage_a": false
+    },
+    {
+      "id": "APW01-TP-009",
+      "area": "creator and content surfaces",
+      "paths": ["apps/client-ui/src/a10", "apps/client-ui/src/ccti12"],
+      "change_direction": "future APW/CSW implementation distinguishes Personal/reusable ownership, Campaign-local instances/variants and canonical promotion",
+      "reopens_stage_a": false
+    },
+    {
+      "id": "APW01-TP-010",
+      "area": "cross-cutting projections",
+      "paths": ["notifications", "search", "recent-work", "diagnostics", "AI-context", "recovery"],
+      "change_direction": "partition by explicit context and prevent hidden-context leakage through counts, previews, caches and history",
+      "reopens_stage_a": false
+    }
+  ],
+  "downstream_consumers": {
+    "APW-02": "asynchronous proposal workflow must be Campaign-context and use shared proposal/approval authority",
+    "APW-04": "Personal Home is the universal-user independent workspace",
+    "APW-05": "Creator Workshop is general-user capability bounded by resource ownership/assignment",
+    "APM": "automated play cannot create a global AI GM role or second authority model",
+    "CSW": "storycraft/creator work begins in Personal/reusable creation context unless explicitly instantiated or promoted"
+  },
+  "stage_a_reopen_authorized": false,
+  "application_implementation_authorized": false
+}
