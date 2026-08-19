@@ -1,0 +1,165 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "APW-01",
+  "status": "ready_for_governed_review",
+  "owner": "John Brandon Turner",
+  "account_model": {
+    "canonical_principal": "stable-multiversal-subject",
+    "account_is_permanent_role": false,
+    "provider_identity_is_domain_identity": false,
+    "global_player_account": false,
+    "global_gm_account": false,
+    "global_creator_account": false
+  },
+  "contexts": [
+    {
+      "id": "personal",
+      "scope_key": "subjectId",
+      "requires_campaign_membership": false,
+      "examples": ["personal-home", "personal-character", "personal-draft", "reusable-asset", "saved-reference", "sandbox-lab"],
+      "campaign_role_grants_authority": false
+    },
+    {
+      "id": "campaign",
+      "scope_key": "campaignId",
+      "requires_campaign_membership": "normally yes except separately authorized support/operational flows",
+      "examples": ["campaign-home", "campaign-character", "scene", "campaign-activity", "gm-inbox"],
+      "campaign_role_grants_authority": "only within the identified Campaign and allowed resource/action scope"
+    },
+    {
+      "id": "session",
+      "scope_key": "sessionId + campaignId",
+      "requires_campaign_membership": "or another explicit authorized participant/observer grant",
+      "examples": ["live-session", "active-encounter", "session-history"],
+      "campaign_role_grants_authority": "only through the governing Campaign/Session policy"
+    }
+  ],
+  "orthogonal_axes": {
+    "cadence": ["live", "asynchronous", "hybrid"],
+    "connectivity": ["connected", "temporarily-offline-cached", "recovering-reconnecting"],
+    "rule": "Neither cadence nor connectivity changes subject identity or independently grants authority."
+  },
+  "authority_inputs": [
+    "subject-identity",
+    "authentication-session",
+    "context",
+    "membership",
+    "contextual-role",
+    "ownership",
+    "control-or-custody",
+    "delegation",
+    "entitlement",
+    "visibility-classification",
+    "lifecycle-state",
+    "policy-and-version",
+    "support-or-operational-access"
+  ],
+  "contextual_roles": [
+    {
+      "id": "campaign-owner",
+      "scope": "one Campaign",
+      "does_not_imply": ["application-owner-admin", "other-campaign-authority", "personal-resource-authority-over-another-user", "canonical-promotion"]
+    },
+    {
+      "id": "game-master",
+      "scope": "one Campaign unless separately granted in additional Campaigns",
+      "does_not_imply": ["global-gm", "other-campaign-authority", "other-user-personal-authority", "blanket-player-private-access"]
+    },
+    {
+      "id": "assistant-gm",
+      "scope": "explicit delegation scope and expiry",
+      "does_not_imply": ["full-gm-authority", "delegation-authority", "other-campaign-authority"]
+    },
+    {
+      "id": "player",
+      "scope": "one Campaign membership/role",
+      "does_not_imply": ["character-control", "ownership", "entitlement", "permanent-player-account"]
+    },
+    {
+      "id": "observer",
+      "scope": "explicit read-only grant",
+      "does_not_imply": ["character-control", "mutation-authority", "gm-truth-access"]
+    },
+    {
+      "id": "character-controller",
+      "scope": "identified Character and governed Campaign/context",
+      "does_not_imply": ["character-ownership", "campaign-gm", "other-character-control"]
+    },
+    {
+      "id": "creator-reviewer",
+      "scope": "owned or assigned resource/workspace",
+      "does_not_imply": ["campaign-access", "canonical-promotion", "global-creator-authority"]
+    },
+    {
+      "id": "personal-resource-owner",
+      "scope": "owned Personal resource",
+      "does_not_imply": ["campaign-authority", "canonical-promotion"]
+    },
+    {
+      "id": "owner-admin",
+      "scope": "application/program operations",
+      "does_not_imply": ["campaign-membership", "campaign-owner", "gm", "player-private-access", "campaign-private-access"]
+    },
+    {
+      "id": "service-or-ai-actor",
+      "scope": "narrow registered operation and initiating-authority projection where applicable",
+      "does_not_imply": ["independent-human-authority", "silent-role-elevation", "autonomous-canonical-mutation"]
+    }
+  ],
+  "information_classes": [
+    "entitlement-available-general-reference",
+    "personal-private",
+    "campaign-shared",
+    "campaign-hidden-gm-truth",
+    "player-private",
+    "creator-private-assigned-draft",
+    "operational-security-sensitive"
+  ],
+  "invariants": [
+    "Authentication does not imply authorization.",
+    "Entitlement does not imply Campaign membership.",
+    "Campaign membership does not imply every field or action.",
+    "Campaign role does not imply Character control, ownership or entitlement.",
+    "Campaign GM authority does not extend to another Campaign or another user's Personal workspace.",
+    "Campaign membership does not remove unrelated Personal or entitled reference capabilities.",
+    "Application Owner/Admin is not Campaign owner or GM by implication.",
+    "A selected-context receipt, route, UI state, cache, query parameter or prior access is not authority.",
+    "Spoiler filtering is UX and never substitutes for hidden-information authorization.",
+    "Live, asynchronous and hybrid are cadences of the same Campaign authority model.",
+    "Offline or recovering state never broadens authority.",
+    "Every protected context transition reauthorizes the destination."
+  ],
+  "acceptance_scenarios": [
+    "multi-role-user-across-two-campaigns",
+    "gm-cannot-access-another-users-personal-resources",
+    "zero-campaign-user-retains-personal-value",
+    "campaign-membership-does-not-remove-general-reference-entitlement",
+    "role-revocation-is-context-local",
+    "owner-admin-private-play-separation",
+    "live-async-live-preserves-one-authority-and-history-model"
+  ],
+  "prohibited_global_assumptions": [
+    "account.isGM grants Campaign authority",
+    "account.isPlayer determines general product capability",
+    "registration chooses permanent GM or Player caste",
+    "GM in Campaign A is GM in Campaign B",
+    "Campaign membership suppresses Personal creator/reference capability",
+    "creator status grants Campaign-private access",
+    "Owner/Admin grants blanket private-play access",
+    "Session presence grants Campaign membership",
+    "role query parameter or route family grants authority",
+    "asynchronous play requires a second Campaign or rules engine"
+  ],
+  "nonauthorization": {
+    "application_implementation": false,
+    "migration": false,
+    "release": false,
+    "deployment": false,
+    "tester_distribution": false,
+    "paid_services": false,
+    "production_credentials": false,
+    "autonomous_mutation": false,
+    "canonical_promotion": false,
+    "ccti12_t04_resume_before_september_2026": false
+  }
+}
