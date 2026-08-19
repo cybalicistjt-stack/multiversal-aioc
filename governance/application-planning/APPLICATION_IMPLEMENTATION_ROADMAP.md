@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 5.15.0  
-**Status:** MIB ACTIVE AT MIB-02 — SMB + MCB OWNER-APPROVED PLANNED  
+**Version:** 5.16.0  
+**Status:** MIB ACTIVE AT MIB-03 — SMB + MCB OWNER-APPROVED PLANNED  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-19
 
@@ -16,7 +16,7 @@ The strict APW/CSW/APM 21-slice combined implementation sequence is **COMPLETED_
 2. **SMB — System Maturation & Buildout** — planned post-MIB product-completion successor; turn the MIB engine room into a complete networked, content-rich, production-grade game/app.
 3. **MCB — Market Capture & Brand Backbone** — planned commercial-preparation program; build market truth, brand, acquisition, growth and launch machinery. Evidence-independent MCB tranches may later be selected in bounded parallel only through explicit owner routing.
 
-Roadmap presence does **not** auto-select SMB or MCB. **MIB-02 is the sole current selected implementation item.**
+Roadmap presence does **not** auto-select SMB or MCB. **MIB-03 is the sole current selected implementation item.**
 
 ## Completed verified baseline
 
@@ -40,8 +40,8 @@ Final predecessor application evidence before MIB:
 Program: `governance/application-planning/multiversal-implementation-backbone/MIB_MULTIVERSAL_IMPLEMENTATION_BACKBONE_PROGRAM.md`  
 Backlog: `governance/application-planning/multiversal-implementation-backbone/MIB_PROGRAM_BACKLOG.json`  
 Lifecycle: **ACTIVE**  
-Completed through: **MIB-01**  
-Current tranche: **MIB-02**
+Completed through: **MIB-02**  
+Current tranche: **MIB-03**
 
 ### SMB — finished product/game machine
 
@@ -73,23 +73,39 @@ Parallel rule: evidence-independent early tranches may later be selected in boun
 - migration head remains `0021_apm_autogm_mini_campaign_director.json`;
 - migration `0022` was not created or reserved.
 
-Live seam inspection showed that A2/D07, D17/D27, D18, D28, D29, D24, D25 and D04/D12 already carry the durable identity/version/provenance/reference data needed by the registry. MIB-01 therefore implemented a provider-neutral deterministic identity/reference facade rather than a second persistence ledger. Reusable definitions/templates/variants are registerable; live instances, snapshots and projections are explicitly not registry truth. Runtime Campaign/install context is not promoted into reusable identity.
+MIB-01 implemented a provider-neutral deterministic identity/reference facade rather than a second persistence ledger. Reusable definitions/templates/variants are registerable; live instances, snapshots and projections are explicitly not registry truth. Runtime Campaign/install context is not promoted into reusable identity.
+
+### MIB-02 completion evidence
+
+**MIB-02 — Query, Index, Dependency and Search Projection Manifest** is **COMPLETED_VERIFIED**.
+
+- App PR #228 exact validated head: `7423759b228456dc8f17f8aa1526e788719aa432`;
+- repository-health run `32309548444`: PASS;
+- product run `32309548641`: PASS;
+- self-hosted Windows job `96249530958`: PASS;
+- self-hosted Linux job `96249530833`: PASS;
+- deterministic comparison job `96249747913`: PASS;
+- squash merge: `8173a4b589b2256dbac6ef5d8a485ea4b317eca0`;
+- migration head remains `0021_apm_autogm_mini_campaign_director.json`;
+- migration `0022` was not created or reserved.
+
+MIB-02 established ten common logical query families over existing owner-domain records/index evidence: stable ID/version, reverse dependency, tag/category/text search, asset owner/control/location, relationship adjacency, investigation adjacency, World hierarchy/semantic location, Adventure graph/dependency, operation/status/Event cursor and source/provenance. Authorization/visibility filtering is performed before search-document construction, counts, facets, graph topology and cursor page sizing; hidden/global corpus cardinality is not exposed. The shared facade consumes MIB-01 identity and does not mutate or replay owner-domain truth.
 
 ### Current MIB operation
 
-**MIB-02 — Query, Index, Dependency and Search Projection Manifest**  
-Attempt: `MIB-02-attempt-001`  
+**MIB-03 — Deterministic Runtime Primitives Library**  
+Attempt: `MIB-03-attempt-001`  
 State: **selected_not_started**
 
-MIB-02 must consume MIB-01 stable registry identity and define one provider-neutral logical retrieval/index/search vocabulary before any production database or search-provider choice. Its completion gate requires every common query to have an owning domain, deterministic contract, visibility rule, expected complexity class and reference implementation test, with authorization filtering before aggregation/counts/search projection.
+MIB-03 must inventory the repeated deterministic runtime seams already present across A6/A7/A8/A9/A10/APW/APM/CSW and consolidate the smallest stable reusable library for operation identity, expected-version conflicts, idempotent replay, reservations, state transitions, Events/receipts, projections, authorization rechecks, provenance, recovery cursors, canonical serialization/hashing, dependency resolution, safe retry and replay verification. It must preserve owner-domain legality/mutation authority and may not force completed domains through incompatible rewrites merely to claim abstraction reuse.
 
 ### MIB tranche roadmap
 
 | Tranche | Purpose | State |
 |---|---|---|
 | MIB-01 — Canonical Registry, Data Dictionary and Stable Identity Foundation | Establish one provider-neutral registration/data vocabulary for reusable definitions, versions, lifecycle, provenance, dependencies, tags and visibility. | **completed_verified** |
-| **MIB-02 — Query, Index, Dependency and Search Projection Manifest** | Define one logical retrieval/index/search vocabulary, reverse-reference model and visibility-safe query projection before physical provider selection. | **selected_not_started** |
-| MIB-03 — Deterministic Runtime Primitives Library | Consolidate stable operations, expected versions, idempotency, reservations, receipts, deterministic hashing/serialization, recovery and replay primitives. | planned |
+| MIB-02 — Query, Index, Dependency and Search Projection Manifest | Define one logical retrieval/index/search vocabulary, reverse-reference model and visibility-safe query projection before physical provider selection. | **completed_verified** |
+| **MIB-03 — Deterministic Runtime Primitives Library** | Consolidate stable operations, expected versions, idempotency, reservations, receipts, deterministic hashing/serialization, recovery and replay primitives. | **selected_not_started** |
 | MIB-04 — Adapter Compliance Kit and Reference Persistence Layer | Create storage/query interfaces, common compliance tests and deterministic reference adapters so future providers plug in without domain rewrites. | planned |
 | MIB-05 — Content Pack Compiler, Linter, Importer and Starter Libraries | Make content data-driven with deterministic pack builds, validation and governed starter libraries. | planned |
 | MIB-06 — Fixture Factory, Golden Campaign and Performance Corpus | Build reusable small/medium/large fixtures and the permanent Haunted Lighthouse whole-system golden Campaign. | planned |
@@ -249,4 +265,4 @@ Only evidence-backed `completed_verified` is complete. A failed required gate le
 
 Roadmap approval of MIB/SMB/MCB does not authorize CCTI-12-T04 before September 2026, WP-011 without its environment, DS-008 byte reconstruction, tester distribution, release/deployment, paid-provider activation, public matchmaking/community publishing, broad offline authoritative mutation, real-money integration, unsupported marketing claims, binding final pricing or AI mechanical/canonical/permission/consent/adjudication authority.
 
-“Continue” from this state means execute the next verified unfinished MIB operation, beginning with MIB-02, and continue through its bounded completion gate before advancing according to the canonical selector. SMB and MCB remain roadmap-planned until separately selected by owner routing.
+“Continue” from this state means execute the next verified unfinished MIB operation, beginning with MIB-03, and continue through its bounded completion gate before advancing according to the canonical selector. SMB and MCB remain roadmap-planned until separately selected by owner routing.
