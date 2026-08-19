@@ -1,7 +1,7 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 4.5.0  
+**Version:** 4.6.0  
 **Status:** ACTIVE — COMBINED WORKSPACE IMPLEMENTATION  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-19
@@ -38,57 +38,72 @@ Delivered D04 nonhuman automation controller/delegation/run authority, D12 recov
 
 ### APW-I02 — COMPLETED_VERIFIED
 
-**APW-I02 — Personal Home and workspace switching** is complete.
+Application PR #208; exact validated head `d5463609176916f146e6f8de2eea2e3d17dadffb`; repository-health `32255424927`; product validation `32255425519` with self-hosted Windows PASS, self-hosted Linux PASS after an unchanged retry of an unrelated A2 timing fluctuation and deterministic comparison PASS; squash merge `c5c4e8962c388c462b5da00b7a8ec788d0932d08`; no new migration.
+
+Delivered first-class zero-Campaign Personal Home, ten baseline Home areas, Personal-owned versus Personal-accessible resource classification, fresh protected workspace entry, Campaign/Character/Session → Personal protected-state destruction, stale/revoked reference omission, feature-disable dashboard fallback and distinct nonvisual route-area naming without creating a Personal truth super-domain.
+
+Its failed→repaired history remains preserved: duplicate Home/dashboard composition, changed stable `Open` control and Home/destination heading ambiguity were repaired before final validation. The final Linux run initially encountered the existing A2 performance fluctuation and passed on an unchanged rerun; no threshold, assertion or validation scope was weakened.
+
+### APW-I03 — COMPLETED_VERIFIED
+
+**APW-I03 — Asynchronous Action submission, durable GM inbox and delayed resolution** is complete.
 
 Evidence:
-- Application PR #208;
-- exact validated head `d5463609176916f146e6f8de2eea2e3d17dadffb`;
-- application repository-health run `32255424927`: PASS;
-- product validation run `32255425519`: self-hosted Windows PASS, self-hosted Linux PASS after an unchanged retry of an unrelated A2 timing fluctuation, deterministic cross-platform comparison PASS;
-- squash merge `c5c4e8962c388c462b5da00b7a8ec788d0932d08`;
-- migration head remains `database/migrations/0010_apm_automated_run_foundation.json`; APW-I02 added no migration.
+- Application PR #209;
+- exact validated head `9b6da9236e9f01003ef4dddccd5edced8359fda1`;
+- application repository-health run `32258970144`: PASS;
+- product validation run `32258970575`: self-hosted Windows PASS, self-hosted Linux PASS after an unchanged retry of the unrelated A2 p95 fluctuation, deterministic cross-platform comparison PASS;
+- squash merge `06c0d4ff5f0742cbf5f7f65ff4c2adfd167bf81b`;
+- migration head remains `database/migrations/0010_apm_automated_run_foundation.json`; APW-I03 added no migration.
+
+Live A6 inspection before implementation proved migration `0004_a6_action_approval.json` already owns `action_proposals`, `action_review_claims`, `action_decisions`, `action_results`, `action_history`, `action_notifications` and `a6_operations`, including proposal-operation uniqueness and one-final-decision-per-proposal. APW-I03 therefore did not claim migration `0011` or create a parallel asynchronous truth store.
 
 Delivered foundation:
-- first-class useful Personal Home for a valid zero-Campaign subject;
-- ten baseline Home areas covering Continue, Characters, Creative Library, Practice/Sandbox, Reference, Invitations, Waiting, Campaigns, portability and account/entitlement entry;
-- Personal Home as a projection over already-authorized A3/APW-I01 data, never a Personal truth super-domain;
-- explicit Personal-owned versus Personal-accessible resource classification retaining owner-domain identity;
-- Campaign-bound Character, Campaign and Session references never become Personal-owned by appearing on Home;
-- client Personal Home state omits stable subject/session IDs and permission/entitlement evidence identifiers;
-- Campaign/Character/Session → Personal return remounts the current alpha shell, destroying protected in-memory state and requiring fresh Personal authorization;
-- protected workspace entry still uses the existing A3 fresh authorization path;
-- stale/revoked Campaign references disappear from a newly authorized Personal Home without leaking labels, counts or protected-existence errors;
-- feature-disable fallback restores the predecessor A3 dashboard without deleting or moving owner-domain data;
-- route-colliding Home headings use distinct nonvisual accessible names while retaining familiar visible labels.
+- an APW-I03 orchestration port over the existing A6 proposal/decision/Event model rather than a second asynchronous rules engine;
+- a deterministic local-alpha/CI transactional harness reusing A6 validation, decision projection, notification projection and atomic accepted-result commit boundaries, explicitly not production client authority;
+- durable pending proposal submission with one stable operation identity across timeout/retry/status recovery;
+- same operation plus same payload returns prior submission status while conflicting reuse is rejected;
+- permission/visibility filtering before GM inbox rows, count and topology projection;
+- advisory review claims that coordinate work without granting decision authority;
+- fresh GM authority and exact proposal/Session version checks at delayed decision time;
+- stale delayed intent fails closed instead of being silently recalculated or applied;
+- approved delayed resolution passes the existing A6 atomic commit boundary and produces one `ActionResultCommitted` Event while advancing Session version once;
+- denial produces no gameplay result Event and does not advance Session version;
+- decision retry identity is bound to decision intent, not retry observation time, so a lost response can be recovered later without changing the command identity;
+- Player submit/status recovery and GM durable-inbox UI proving Player submit → later GM review → Player recovery without AI or a second Action engine;
+- nine focused APW-I03 acceptance tests plus the full client regression suite on the final exact head.
 
-APW-I02 preserved its failed→repaired validation history: duplicate Home/dashboard composition, a changed stable `Open` control and Home/destination heading ambiguity were repaired before final validation. The final Linux run initially encountered the existing A2 performance timing fluctuation (`330.24ms` versus `250ms`) while APW-I02 behavior and Windows passed; an unchanged rerun passed. No performance threshold, assertion or validation scope was weakened.
+APW-I03 preserves its complete failed→repaired validation history:
+1. the initial deterministic checker searched for prose `review claim`; it was corrected to assert the actual `ActionReviewClaim` + `advisoryOnly` contract rather than adding meaningless production prose;
+2. the first compile reached a test-helper timestamp literal-type defect; the helper was widened to `string` with no product behavior change;
+3. the first full client gate found two real defects: decision retry fingerprinting included retry timestamp, and GM inbox refresh overwrote the user-visible review/final outcome; both were repaired at the source;
+4. on final exact head, all nine APW-I03 tests and TypeScript passed on Linux while the known A2 p95 check measured `323.772308ms` against `250ms`; an unchanged Linux rerun passed. No APW-I03 code, assertion, performance threshold or validation scope was weakened.
 
-## Current work — APW-I03
+## Current work — APW-I04
 
-**APW-I03 — Asynchronous Action submission, durable GM inbox and delayed resolution** is the selected next application implementation slice.
+**APW-I04 — Bounded Campaign Activity and downtime integration** is the selected next application implementation slice.
 
 Repository: `cybalicistjt-stack/Multiversal-app`  
-Attempt: `APW-I03-attempt-001`  
+Attempt: `APW-I04-attempt-001`  
 State: `selected_not_started`
 
-APW-I03 implements APW-02/APW-07 by extending the existing Stage A A6 proposal/decision/Event architecture:
+APW-I04 implements APW-03/APW-07 as a governed Campaign-scoped orchestration layer over existing owning domains. It does not create a generic game-state mutation engine, second Campaign ledger or universal downtime simulator.
 
-- submitted Action proposals remain durably pending across disconnect, time and device boundaries;
-- one stable `proposalId` is one intent thread and may produce at most one final authoritative outcome;
-- proposal revisions remain versioned/provenance-preserving and use fresh state-changing operation identities;
-- withdrawal, revocation, server-governed expiry, clarification and stale/review-required states are explicit barriers rather than silent rewrites;
-- GM inbox rows, counts and ordering are permission/visibility-filtered before aggregation;
-- inbox position or an optional review lease never grants decision authority;
-- final decision reauthorizes current reviewer, exact proposal version, Session/Character/target versions, rules/pack/schema, entitlement, resource and hidden-information state;
-- authoritative persistence, not disabled UI controls, enforces at-most-one final decision and at-most-one resulting gameplay Event;
-- submission/decision ambiguity uses operation/proposal/decision status lookup before retry;
-- reconnect recovers current proposal/final status plus missed Events without blindly resending state-changing commands;
-- notifications/deep links are safe attention signals only and require fresh authorization before protected detail;
-- normal manual submit/review/decision behavior remains usable without AI.
+The bounded initial implementation must preserve these design rules:
+- Campaign Activity may coordinate participants, prerequisites, time profile, resources, proposals, progress, waiting states, notifications and provenance, but authoritative effects remain in Character/progression, A6 Action/result, A8 Asset/economy/inventory, A9 investigation/social, World/Adventure, Campaign/Session or another registered owner;
+- activity/task resolution is explicit: informational, immediate-domain-command, proposal-required, timed-project-progress, human-choice-required, GM-adjudication-required or prohibited;
+- initial alpha-useful families may include bounded preparation/logistics, training preparation, research/investigation, journal/reflection, social maintenance, crafting/repair and recovery/upkeep without attempting universal business, estate, travel, training, crafting or economy simulation;
+- Campaign time and wall-clock time remain distinct; elapsed real time does not advance an Activity unless a separately governed profile explicitly authorizes that mapping;
+- long-running crafting/repair and other resource work may reference reservations, but A8/owning domains must validate exact resource/facility versions, custody/access, quantity, consumption and release; APW cannot double-reserve or create economy truth;
+- Activity lifecycle/progress never silently applies irreversible Character advancement, reveals hidden clues, changes social state, supplies another participant’s consent or invents an NPC/GM response;
+- stable activity/task operation IDs, expected versions, status lookup and Event/result references govern recovery so retry cannot duplicate progress, cost or result;
+- stale rules/profile/entitlement/permission/resource/participant state blocks or pauses resume until current state is revalidated;
+- private journals, hidden investigation/social information and participant-private content are filtered before list/count/progress/notification/diagnostic projection;
+- no-AI/manual owning-domain behavior remains available if Campaign Activity orchestration is disabled or unavailable.
 
-The first APW-I03 operation is to re-fetch current application main and migration head, inspect live A6 proposal/decision persistence, operation/status/idempotency, reconnect/Event-cursor, D05 filtering and safe-notification seams, then decide whether the verified `0010` baseline actually requires an additive `0011` migration.
+The first APW-I04 operation is to re-fetch current application main and migration head, inspect live `downtime-projects`/Project, Campaign/Scene, A8 reservation/resource, A9 investigation/social and APW-I03/A6 proposal seams, then decide whether the verified `0010` baseline actually requires an additive next migration before implementing the smallest useful Campaign Activity path.
 
-Current canonical application main is `c5c4e8962c388c462b5da00b7a8ec788d0932d08`; current migration head is `database/migrations/0010_apm_automated_run_foundation.json`.
+Current canonical application main is `06c0d4ff5f0742cbf5f7f65ff4c2adfd167bf81b`; current migration head is `database/migrations/0010_apm_automated_run_foundation.json`.
 
 ## Design handoff evidence
 
@@ -115,19 +130,20 @@ APM-I01 through APM-I06, with bounded automation over ordinary owning-domain/Eve
 
 `APW-I01 → CSW-I01 → APM-I01 → APW-I02 → APW-I03 → APW-I04 → CSW-I02 → APM-I02 → APM-I03 → APW-I05 → CSW-I03 → CSW-I04 → CSW-I05 → CSW-I06 → CSW-I07 → APW-I06 → CSW-I08 → APM-I04 → APM-I05 → APM-I06 → APW-I07`
 
-`APW-I01`, `CSW-I01`, `APM-I01` and `APW-I02` are completed_verified. `APW-I03` is selected_not_started. Every later item remains inactive until its own canonical selector transition.
+`APW-I01`, `CSW-I01`, `APM-I01`, `APW-I02` and `APW-I03` are completed_verified. `APW-I04` is selected_not_started. Every later item remains inactive until its own canonical selector transition.
 
 ## Migration and ownership policy
 
 - migrations `0001` through `0010` are immutable predecessors once merged;
 - each implementation tranche rechecks current migration head before mutation;
-- `0011` is not reserved and may be used by APW-I03 only if live A6 persistence inspection proves an additive schema delta is required;
+- `0011` is not reserved; APW-I04 may use the actual next unused migration only if live inspection proves an additive Campaign Activity or owner-domain reservation schema delta is required;
 - no migration is required when a slice has no schema delta;
 - no monolithic APW/CSW/APM state store is authorized;
 - Personal Home remains projection/orchestration over established owners;
 - D29 owns CSW creative-support durable records/provenance while governed payloads remain in owning domains;
 - D04 owns APM controller/delegation/run authority and D12 owns automation recovery/evidence; neither replaces ordinary owning-domain state/Event history;
-- APW-I03 must extend the existing A6/D21 proposal/decision/Event persistence rather than create a parallel asynchronous truth store;
+- APW-I03 extends existing A6 proposal/decision/Event persistence and does not create parallel asynchronous truth;
+- APW-I04 Campaign Activity is orchestration only; Character, Action, Asset/economy, investigation/social, World/Adventure and Campaign effects remain with their registered owners;
 - authorization/visibility filtering precedes count/search/topology/notification/export/diagnostic/AI aggregation.
 
 ## Internal Alpha implementation milestones
@@ -167,7 +183,7 @@ CCTI-12-T04 remains unfinished and owner-deferred until September 2026 under `go
 
 ## Nonauthorization
 
-Current selection authorizes only the bounded APW-I03 application implementation tranche. It does not authorize APW-I04 or later slices, APM-I02, CSW-I02, an alternate asynchronous rules/state engine, queue-position or review-lease authority, AI/automation GM authority, unrestricted offline multi-writer mutation, broad notification-provider implementation, T04 before September, tester distribution, public release/deployment, paid-provider activation, canonical publication or broad Stage A redesign.
+Current selection authorizes only the bounded APW-I04 application implementation tranche. It does not authorize APW-I05 or later slices, CSW-I02, APM-I02, a generic game-state mutation engine or second Campaign ledger, universal calendar/travel/training/crafting/economy simulation, automatic irreversible advancement, automatic human consent, unrestricted offline/background authoritative mutation, Cozy/APM automation activation, T04 before September, tester distribution, public release/deployment, paid-provider activation, canonical publication or broad Stage A redesign.
 
 ## Mandatory execution behavior
 
