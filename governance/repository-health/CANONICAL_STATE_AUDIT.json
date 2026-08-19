@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "audit_id": "CRS-CANONICAL-STATE-AUDIT-CURRENT",
-  "status": "completed_verified_with_owner_routing_update",
+  "status": "completed_verified_with_design_transition",
   "result": "zero_known_conflicting_authority",
   "known_conflicts": [],
   "production_resume_authorized": true,
@@ -17,15 +17,21 @@
       "recently_completed": {"work_item":"POST-GATX-SUCCESSOR","pr":203,"validated_head":"3b9e33cb22b8d4e3f2558135ba0fc36a8c8ad223","merge":"8685165318b1f3782903bfe137ba8257539af017","validation_run":32197192589,"health_run":32197192592,"package_sha256":"f07bfc00bb2708e48d0d85118fd1861e017b720d4d85ba1d912ede7b6b5bc694","validation_retirement_pr":204,"validation_retirement_merge":"bf61c64c89e7ea997842ea7442797fba619d0e28","tester_distribution_approved":false}
     }
   },
+  "design_transition": {
+    "completed": {"work_item":"APW-01","attempt_id":"APW-01-attempt-001","status":"completed_verified","pull_request":409,"validated_head":"f0b6b3d9b64d3b8f7b1fd9d81f6079b14097ef32","repository_health_run":32202132346,"merge_sha":"2f99a03612dab525eaffd5c0141f84cf8c1b5654"},
+    "selected": {"work_item":"APM-01","attempt_id":"APM-01-attempt-001","status":"selected_not_started","dependency":"APW-01"}
+  },
   "authority_checks": [
-    {"id":"single-selector","status":"PASS","evidence":"CURRENT_WORK_POINTER selects APW-01-attempt-001 only."},
+    {"id":"single-selector","status":"PASS","evidence":"CURRENT_WORK_POINTER selects APM-01-attempt-001 only."},
+    {"id":"design-sequence","status":"PASS","evidence":"APW-01 is completed_verified and the owner-approved interleave selects APM-01 before CSW-01/CSW-02 and the later return to APW-02."},
+    {"id":"apw-preservation","status":"PASS","evidence":"APW remains an unfinished interleaved design program; APW-02 is preserved and is not selected prematurely."},
     {"id":"workflow-deny-by-default","status":"PASS","evidence":"App remains on the permanent workflow namespace after post-GATX validation retirement; the September T04 GitHub-hosted path must be explicitly approved/registered before use."},
     {"id":"validator-deny-by-default","status":"PASS","evidence":"No historical T04 workflow or validator regains authority from preserved branches by existence."},
     {"id":"open-pr-authority","status":"PASS","evidence":"No open application PR is selected current work; T04 and WP-011 have merge_authority false."},
-    {"id":"route-around-authority","status":"PASS","evidence":"Owner decision defers T04 until September 2026 and selects APW-01 as the next governed design operation."},
+    {"id":"route-around-authority","status":"PASS","evidence":"Owner decision continues to defer T04 until September 2026 while unrelated APW/APM/CSW design work proceeds."},
     {"id":"history-preservation","status":"PASS","evidence":"T04 source and partial clean-reconstruction branches remain recoverable as unfinished provenance without current authority."}
   ],
-  "resumed_work_item": "APW-01",
+  "resumed_work_item": "APM-01",
   "deferred_work_item": "CCTI-12-T04",
   "deferred_until": "2026-09-01",
   "owner_decision": "governance/ai/runtime/OWNER_DECISION_2026-08-18_DEFER_CCTI12_T04_TO_SEPTEMBER.md"
