@@ -1,14 +1,16 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 4.7.0  
+**Version:** 4.8.0  
 **Status:** ACTIVE — COMBINED WORKSPACE IMPLEMENTATION  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-19
 
-## Authority and purpose
+## Authority and operating rule
 
-This is the concise current application roadmap. Historical revisions remain in Git history and receipts; they are not current-work selectors. Current work is selected only by bootstrap → authority registry → current pointer → selected checkpoint → live GitHub evidence.
+Current work is selected only by bootstrap → authority registry → current pointer → selected checkpoint → live GitHub evidence. Historical detail remains in Git history and completed checkpoints rather than being recopied into every roadmap revision.
+
+Implementation transitions use one bounded state synchronization after a verified application merge, one AIOC repository-health gate, and one final selector verification. Ordinary implementation operations do not trigger repeated roadmap/pointer rewrites.
 
 ## Completed verified foundations
 
@@ -18,166 +20,94 @@ The APW/APM/CSW design series is **COMPLETED_VERIFIED** through APW-08, APM-06 a
 
 ## Combined implementation progress
 
-### APW-I01 — COMPLETED_VERIFIED
+| Slice | State | Application evidence | Migration |
+|---|---|---|---|
+| APW-I01 | completed_verified | PR #205 / `2814de3c…` / merge `e1f074bb…` | none |
+| CSW-I01 | completed_verified | PR #206 / `2836c170…` / merge `bebf833d…` | `0009_csw_creative_fragment_foundation.json` |
+| APM-I01 | completed_verified | PR #207 / `cdf80bd3…` / merge `3941a066…` | `0010_apm_automated_run_foundation.json` |
+| APW-I02 | completed_verified | PR #208 / `d5463609…` / merge `c5c4e896…` | none |
+| APW-I03 | completed_verified | PR #209 / `9b6da923…` / merge `06c0d4ff…` | none |
+| APW-I04 | completed_verified | PR #210 / `67029683…` / merge `a907fec7…` | `0011_apw_campaign_activity_foundation.json` |
+| CSW-I02 | completed_verified | PR #211 / `8a067465…` / merge `72eb9a6b…` | `0012_csw_creator_library_memory.json` |
+| APM-I02 | **selected_not_started** | `APM-I02-attempt-001` | inspect live head first |
 
-Application PR #205; exact validated head `2814de3c08e62f8fc6b857f5f43800f3106615dd`; repository-health `32248201457`; product validation `32248201728` with self-hosted Linux, self-hosted Windows and deterministic comparison PASS; squash merge `e1f074bb44b89ade0ab27da205043e2681d2a1be`.
+### CSW-I02 completion evidence
 
-Delivered stable Personal/Campaign/Session contextual authority without permanent Player/GM account caste, zero-Campaign Personal authority, fresh context authorization and sanitized client context projection.
+Application PR #211 completed from exact validated head `8a0674650e003381083a8adc39c20721c73239d6` with repository-health run `32264579233` PASS and product run `32264579547` PASS after the unchanged Linux retry. Self-hosted Windows, self-hosted Linux and deterministic comparison all passed before squash merge `72eb9a6b23a3f90c58a2db0d5535f3e07cfe97a5`.
 
-### CSW-I01 — COMPLETED_VERIFIED
+CSW-I02 delivered D29 Creator Project/library organization/Story Bible/Project Memory/saved-view metadata; six distinct Story Bible evidence classes; authorization-before-aggregation through D05; evidence-backed backlinks; saved-view reauthorization; revoked/hidden Campaign nonleakage; and a no-AI Creative Library + Story Bible + Project Memory surface. Migration `0012_csw_creator_library_memory.json` contains D29 creator-support metadata only; governed payloads remain with their owning domains.
 
-Application PR #206; exact validated head `2836c17042bb11d52755d2589814e6b1e542867c`; repository-health `32250405319`; product validation `32250405607` with self-hosted Linux, self-hosted Windows and deterministic comparison PASS; squash merge `bebf833d59923fbfc78ba593219c727a635fc7b7`; migration `0009_csw_creative_fragment_foundation.json`.
+Validation provenance is preserved in `CSW-I02-attempt-001`: the first profile lacked the standard `migrated_from` field, the second reached a test-only TypeScript cast error, and the final head passed all CSW-I02 tests/typecheck. Linux then encountered only the existing A2 p95 fluctuation (`296.612474ms` vs `250ms`); an unchanged rerun passed. No product assertion, performance threshold or scope was weakened.
 
-Delivered D29 pre-authoritative CreativeFragment identity/version/lifecycle/ownership/provenance, Personal/Campaign creative context binding, exact-version incorporation receipts and recovery/idempotency without moving governed target-domain authority into CSW.
+## Current work — APM-I02
 
-### APM-I01 — COMPLETED_VERIFIED
-
-Application PR #207; exact validated head `cdf80bd30bc38a85b847b86a521dc862b654c8af`; repository-health `32252196140`; product validation `32252196432` with self-hosted Linux, self-hosted Windows and deterministic comparison PASS; squash merge `3941a06600dc1c3477d67ef2aa6ef74b0447ff28`; migration `0010_apm_automated_run_foundation.json`.
-
-Delivered D04 nonhuman automation controller/delegation/run authority, D12 recovery/evidence, owning-domain operation classification, fresh execution-time authorization, deterministic lifecycle barriers, idempotent recovery and manual/no-AI fallback without a second state engine.
-
-### APW-I02 — COMPLETED_VERIFIED
-
-Application PR #208; exact validated head `d5463609176916f146e6f8de2eea2e3d17dadffb`; repository-health `32255424927`; product validation `32255425519` with self-hosted Windows PASS, self-hosted Linux PASS after an unchanged retry of an unrelated A2 timing fluctuation and deterministic comparison PASS; squash merge `c5c4e8962c388c462b5da00b7a8ec788d0932d08`; no new migration.
-
-Delivered first-class zero-Campaign Personal Home, Personal-owned versus Personal-accessible resource classification, fresh protected workspace entry, Campaign/Character/Session → Personal protected-state destruction, stale/revoked reference omission, feature-disable fallback and distinct nonvisual route-area naming without creating a Personal truth super-domain.
-
-### APW-I03 — COMPLETED_VERIFIED
-
-Application PR #209; exact validated head `9b6da9236e9f01003ef4dddccd5edced8359fda1`; repository-health `32258970144`; product validation `32258970575` with self-hosted Windows PASS, self-hosted Linux PASS after unchanged retry of the unrelated A2 p95 fluctuation and deterministic comparison PASS; squash merge `06c0d4ff5f0742cbf5f7f65ff4c2adfd167bf81b`; no migration, so head remained `0010_apm_automated_run_foundation.json`.
-
-Delivered asynchronous A6 Action orchestration with durable pending proposal submission, permission-filtered GM inbox, advisory review claims, fresh delayed-decision authorization, stale failure, one accepted atomic `ActionResultCommitted` outcome, denial without gameplay-result Event, idempotent submission/decision retry and Player → later GM → Player recovery without a second Action engine or AI dependency.
-
-Its failed→repaired history remains preserved: validator semantics, a test timestamp typing defect, decision retry identity including observation time and GM outcome messages overwritten by inbox refresh were repaired. Final Linux A2 timing fluctuation passed on unchanged rerun; no threshold/assertion/scope was weakened.
-
-### APW-I04 — COMPLETED_VERIFIED
-
-**APW-I04 — Bounded Campaign Activity and downtime integration** is complete.
-
-Evidence:
-- Application PR #210;
-- exact validated head `6702968394192d074d3945ce54f76e77ac5090bc`;
-- application repository-health run `32261809233`: PASS;
-- product validation run `32261809426`: self-hosted Linux PASS, self-hosted Windows PASS after an unchanged retry of the unrelated A2 p95 fluctuation, deterministic cross-platform comparison PASS;
-- squash merge `a907fec750fafe812530d0350eaf3ef3a0875204`;
-- migration head advances to `database/migrations/0011_apw_campaign_activity_foundation.json`.
-
-Live inspection before implementation established a genuine D26 persistence gap: `domains/downtime-projects` and its public contract/schema roots contained only ownership placeholders, while immutable Stage A migration `0006_a8_asset_foundations.json` explicitly recorded that long-running D26 Project timing/research was not implemented. APW-I04 therefore legitimately claimed the next unused additive migration `0011` rather than forcing Campaign Activity into another domain's storage.
-
-Delivered foundation:
-- provider-neutral D26 Campaign Activity, task, operation and external-reference records only;
-- all seven APW-03 resolution classes: informational, immediate-domain-command, proposal-required, timed-project-progress, human-choice-required, GM-adjudication-required and prohibited;
-- explicit Campaign-time evidence with wall-clock elapsed time denied Campaign-time authority;
-- explicit owner-domain completion evidence rather than D26 gameplay mutation;
-- A8 reservation acquisition/release through the existing `AssetReservationPort`, with D26 storing references only;
-- A6 Action, A8 Asset/economy, A9 investigation/social, Character/progression, Campaign, World and Adventure authority left with their existing owners;
-- human choice, irreversible advancement and GM-only adjudication/reveal as hard stops;
-- privacy filtering before Campaign Activity list cardinality;
-- stable operation identity excluding retry observation time, stale expected-version failure and recovery without duplicate work;
-- deterministic local-alpha/CI orchestration harness and bounded Activity UI, explicitly not production client authority;
-- ten focused acceptance tests covering D26-only orchestration, private nonleakage, A9 research evidence, A8 reservation/retry/cancel, training without auto-advance, current GM adjudication, wall-clock nonauthority, stale/idempotent recovery and safe UI guidance;
-- complete manual/no-AI path.
-
-APW-I04 preserves its validation history: Linux passed the exact-head profile on the first product attempt. Windows invariant checks, TypeScript and all ten focused APW-I04 tests also passed, while the pre-existing A2 p95 timing check measured `251.76089999999976ms` against `250ms`. The failed jobs were rerun unchanged and Windows passed; no APW-I04 source, threshold, assertion or validation scope was weakened.
-
-## Current work — CSW-I02
-
-**CSW-I02 — Creative Library, Story Bible and Project Memory** is the selected next application implementation slice.
+**APM-I02 — Cozy Solo core loop** is the sole selected application implementation slice.
 
 Repository: `cybalicistjt-stack/Multiversal-app`  
-Attempt: `CSW-I02-attempt-001`  
+Attempt: `APM-I02-attempt-001`  
 State: `selected_not_started`
 
-CSW-I02 implements CSW-02 over the completed CSW-I01 D29 CreativeFragment foundation and current authorized governed references. Its persistence boundary is D29 project/library/reference metadata; governed payloads remain references only.
+Initial scope is **Cozy Solo in Personal context**. Cozy describes low-pressure pacing/presentation and bounded automation; it is setting-independent and does not create a separate rules engine or guarantee success.
 
-The bounded implementation must preserve these rules:
-- **Creative Library** is an authorization-safe organizational/search projection over Creative Fragments, projects, collections, tags, references, incorporation/derivation relationships and history; it is not a truth store;
-- **Creator Project** is an organizational/context object, not a World, Adventure or Campaign and does not transfer ownership merely by containing a reference;
-- **Story Bible** is a curated project-memory projection and must distinguish `creative-possibility`, `creator-note`, `governed-current-reference`, `governed-pinned-reference`, `campaign-private-reference` and `historical-unavailable-reference` rather than flattening them into undifferentiated facts;
-- governed current references remain current authorized owner-domain projections; pinned references retain exact version/provenance evidence without becoming copied CSW truth;
-- **Project Memory** is a stable-ID graph over explicit relationships, receipts, history and references; backlinks come from stored relations/provenance, not text-similarity guesses;
-- similarity may produce candidate relationships only and cannot create authoritative backlinks until explicitly accepted/recorded;
-- D05 authorization/visibility filtering occurs before search counts, facets, rankings, snippets, similarity, graph expansion, degree calculations, topology and pagination;
-- hidden/revoked material must not leak labels, counts, facets, snippets, relationships or existence through graph shape;
-- saved views store query/filter/sort/layout preferences, not a bypassable result set or authorization grant, and re-evaluate current authority whenever opened;
-- tombstoned/unavailable references may preserve authorized history/provenance while inaccessible content remains undiscoverable;
-- list/table/outline/graph presentations share stable semantics and nonvisual topology parity;
-- feature disable must preserve durable D29 organization and direct owning-screen access;
-- the complete core experience remains usable without AI or paid providers.
+Core loop:
 
-The first CSW-I02 operation is to re-fetch current application main and migration head, inspect live CSW-I01 D29 CreativeFragment/project/reference persistence, D05 visibility/search projection seams and current creator UI surfaces, then decide whether the `0011` baseline genuinely requires a new additive migration before creating the bounded application branch.
+**Orient → choose a focus → set/confirm bounds → progress routine work → stop at meaningful decisions → reflect/summarize → continue/change focus/pause/return to ordinary play.**
 
-Current canonical application main is `a907fec750fafe812530d0350eaf3ef3a0875204`; current migration head is `database/migrations/0011_apw_campaign_activity_foundation.json`.
+Required boundaries:
+- explicit APM-I01 controller/run/delegation authority;
+- eligible activities discovered from current Personal/APW/owning-domain profiles rather than invented by Cozy;
+- every step revalidates owning-domain operation class and current authorization;
+- automatic work is limited to `automatic_permitted` or `automatic_with_bounds` operations inside explicit budgets;
+- proposal-required work remains proposal-driven;
+- irreversible advancement, materially new direction, new costs outside budget, ownership/custody transfer, destructive deletion, Campaign binding, human consent, publication, ambiguity with material consequence, GM-only adjudication, real-money spending and widened automation bounds remain human-required hard stops;
+- Cozy cannot convert GM/adjudication-required work into “AI decides as GM”;
+- wall-clock time is not gameplay-progress authority;
+- real-money/paid-credit automation budget is always zero;
+- no-AI/manual ordinary Personal/Campaign workflows remain complete fallbacks;
+- pause/revoke/stale/recovery boundaries must stop new automation and recover through stable operation/status/Event evidence without duplicate effects.
 
-## Design handoff evidence
+First operation: re-fetch App main and migration head **once**, inspect APM-I01 delegation/run plus Personal/APW-I04 activity seams, determine whether Cozy preference/run metadata genuinely requires another additive migration, then implement the smallest useful no-AI loop.
 
-Final design handoff evidence remains:
-- CSW-10: PR #449 / repo-health `32237196497` / merge `d27a6774470261450f41e1591580c7feba174cee`;
-- APW-07: PR #451 / repo-health `32237975517` / merge `e9592399eaca07d0cdf28b79320fc6bf59bde5ef`;
-- APM-06: PR #453 / repo-health `32244745957` / merge `9396ce2ec6094982d292eb4a630036c641094904`;
-- APW-08: PR #455 / exact head `f6263185682ec04c948ef865d8f5f3b674b6e825` / repo-health `32245783537` / merge `608e3ddde4b634a1d545856cfd6cb3b2c273fbc7`.
-
-## Combined implementation handles
-
-### APW
-APW-I01 through APW-I07.
-
-### CSW
-CSW-I01 through CSW-I08, with D29 `authoring-provenance` as the initial creative-support persistence owner and explicit receipt-bound governed incorporation.
-
-### APM
-APM-I01 through APM-I06, with bounded automation over ordinary owning-domain/Event authority and complete no-AI recovery paths.
+Canonical App baseline after CSW-I02: `72eb9a6b23a3f90c58a2db0d5535f3e07cfe97a5`. Migration head: `0012_csw_creator_library_memory.json`.
 
 ## Default strict implementation sequence
 
 `APW-I01 → CSW-I01 → APM-I01 → APW-I02 → APW-I03 → APW-I04 → CSW-I02 → APM-I02 → APM-I03 → APW-I05 → CSW-I03 → CSW-I04 → CSW-I05 → CSW-I06 → CSW-I07 → APW-I06 → CSW-I08 → APM-I04 → APM-I05 → APM-I06 → APW-I07`
 
-`APW-I01`, `CSW-I01`, `APM-I01`, `APW-I02`, `APW-I03` and `APW-I04` are `completed_verified`. `CSW-I02` is `selected_not_started`. Every later item remains inactive until its own canonical selector transition.
+Everything through CSW-I02 is completed_verified. APM-I02 is selected_not_started. Later slices remain inactive.
 
 ## Migration and ownership policy
 
-- migrations `0001` through `0011` are immutable predecessors once merged;
-- each implementation tranche rechecks current migration head before mutation;
-- `0012` is not reserved; CSW-I02 may use the actual next unused migration only if live D29/D05 inspection proves an additive project/library/reference schema delta is required;
-- no migration is required when a slice has no schema delta;
+- migrations `0001` through `0012` are immutable predecessors;
+- every tranche rechecks current App main/migration head once before mutation;
+- no next migration number is reserved in advance;
+- no migration is added without a genuine durable schema delta;
 - no monolithic APW/CSW/APM state store is authorized;
-- D29 owns CSW creative-support durable records/provenance while governed payloads remain references to owning domains;
-- D05 filtering precedes count/search/topology/notification/export/diagnostic/AI aggregation;
-- Story Bible/project memory organization cannot become governed World/Adventure/Character/Campaign/A9/Asset truth;
-- Personal Home remains projection/orchestration over established owners;
-- D04 owns APM controller/delegation/run authority and D12 owns automation recovery/evidence;
-- APW-I03 extends existing A6 proposal/decision/Event persistence without a parallel async truth store;
-- APW-I04 D26 Campaign Activity is orchestration only; owner-domain gameplay effects remain external.
+- owning domains remain authoritative for gameplay state and Events;
+- D29 creative support remains metadata/provenance/reference oriented;
+- D05 authorization precedes derived aggregation;
+- APM delegation never replaces fresh owning-domain authorization.
 
-## Internal Alpha implementation milestones
+## Internal Alpha milestones
 
-1. Persistent Personal/async foundation — APW-I01, APW-I02, APW-I03.
-2. Between-session and creator foundation — APW-I04, CSW-I01, CSW-I02, APW-I05.
-3. First creator and automated experiences — CSW-I03, CSW-I04, APM-I01, APM-I02, APM-I03.
+1. Persistent Personal/async foundation — APW-I01, APW-I02, APW-I03 — **complete**.
+2. Between-session and creator foundation — APW-I04, CSW-I01, CSW-I02, APW-I05 — **APW-I05 remains**.
+3. First creator and automated experiences — CSW-I03, CSW-I04, APM-I01, APM-I02, APM-I03 — **in progress**.
 4. Deep creator workspace — CSW-I05, CSW-I06, CSW-I07.
 5. Integrated shell and connected automation — APW-I06, CSW-I08, APM-I04, APM-I05, APM-I06.
 6. Whole-system hybrid proof — APW-I07.
 
 Tester distribution remains separately owner-gated.
 
-## Deferred work — CCTI-12-T04
+## Preserved/deferred work
 
-CCTI-12-T04 remains unfinished and owner-deferred until September 2026 under `governance/ai/runtime/OWNER_DECISION_2026-08-18_DEFER_CCTI12_T04_TO_SEPTEMBER.md`. Preserve App PR #191 and its clean reconstruction branch as provenance only. On/after 2026-09-01 first establish the owner-approved GitHub-hosted validation route or explicit bounded exception before reevaluation.
+- **CCTI-12-T04:** owner-deferred until September 2026; preserve App PR #191 and its branches. On/after 2026-09-01 establish the owner-approved validation route before reevaluation.
+- **WP-011:** dormant until the required special Mac environment is available.
+- **DS-008:** blocked non-owner exact-byte transfer/validation; never reconstruct checksum-bound bytes from excerpts/OCR/memory.
 
-## Other preserved unfinished work
+## Permanent validation rules
 
-- **WP-011:** special Mac-environment work; may temporarily preempt when the required borrowed Mac is available.
-- **DS-008:** blocked non-owner exact-byte transfer/validation; checksum-bound content must never be reconstructed from excerpts/OCR/memory.
-
-## Permanent completion and validation rules
-
-- Only evidence-backed `completed_verified` is complete.
-- Artifact existence or partial tests never establishes completion.
-- A failed required validation leaves the slice unfinished.
-- Normal application/package final acceptance uses owner-controlled self-hosted Windows + Linux plus deterministic comparison where outputs should agree, unless a bounded owner-approved exception explicitly applies.
-- Exact-head AIOC repository health is governance evidence, not a substitute for product/platform gates.
-- One stable operation ID represents one authoritative intent across retries; accepted effects are at-most-once.
-- Successor work does not reopen completed Stage A evidence unless fresh independent evidence proves a predecessor regression.
+Only evidence-backed `completed_verified` is complete. A failed required gate leaves work unfinished. Normal App/package acceptance is self-hosted Windows + self-hosted Linux + deterministic comparison where outputs should agree, plus exact-head repository health. AIOC repository health validates governance state; it does not substitute for product validation.
 
 ## Product-wide approved concerns
 
@@ -186,8 +116,6 @@ CCTI-12-T04 remains unfinished and owner-deferred until September 2026 under `go
 
 ## Nonauthorization
 
-Current selection authorizes only the bounded CSW-I02 application implementation tranche. It does not authorize CSW-I03 or later slices, APM-I02 or later slices, APW-I05 or later slices, a new top-level creative truth domain, copying governed payloads into Story Bible authority, similarity/AI relations as authoritative backlinks, saved result sets as authorization grants, hidden-count/facet/topology leakage, silent governed-reference incorporation/propagation, T04 before September, tester distribution, public release/deployment, paid-provider activation, canonical publication or broad Stage A redesign.
+Current selection authorizes only APM-I02. It does not authorize APM-I03+, Connected Cozy/multiplayer automation, AI-as-GM authority, unbounded background play, automatic irreversible advancement or consent, real-money automated spending, APW-I05+, CSW-I03+, T04 before September, tester distribution, release/deployment or paid-provider activation.
 
-## Mandatory execution behavior
-
-“Continue” means execute the next verified unfinished operation. Preserve provenance, hidden-information boundaries, permissions, reversibility and owner gates.
+“Continue” means execute the next verified unfinished operation.
