@@ -1,66 +1,9 @@
 {
-  "program_id": "APM",
-  "version": "0.4.0",
-  "status": "interleaved_waiting",
-  "owner": "John Brandon Turner",
-  "approved": "2026-08-18",
-  "active_item": null,
-  "active_attempt": null,
-  "sequence": [
-    {
-      "id": "APM-01",
-      "name": "Automated-Play Authority and Mode Contract",
-      "status": "completed_verified",
-      "depends_on": ["APW-01"],
-      "dependency_satisfied": true,
-      "pull_request": 411,
-      "validated_head": "b9516a78e3425b09e79efde120fe1ebb1c655fcb",
-      "repository_health_run": 32203278338,
-      "merge_sha": "4150cbd38f7fcae325aa03b83fcf3c4b3a990765",
-      "deliverables": [
-        "APM-01_AUTOMATED_PLAY_AUTHORITY_AND_MODE_CONTRACT.md",
-        "APM-01_AUTHORITY_MODE_MATRIX.json",
-        "APM-01_TRACEABILITY_AND_ADDITIVE_TOUCHPOINTS.json",
-        "APM-01_REVIEW_RECEIPT.md"
-      ]
-    },
-    {"id": "APM-02", "name": "CozyMode Core Loop", "status": "planned", "depends_on": ["APM-01", "APW-03", "APW-04"]},
-    {"id": "APM-03", "name": "AutoGM Single-Encounter Runner", "status": "planned", "depends_on": ["APM-01", "CSW-05"]},
-    {"id": "APM-04", "name": "AutoGM Mini-Campaign Director", "status": "planned", "depends_on": ["APM-03", "CSW-06"]},
-    {"id": "APM-05", "name": "Connected Cozy and Shared Automated Play", "status": "planned", "depends_on": ["APM-02", "APW-06"]},
-    {"id": "APM-06", "name": "Recovery, Safety, Acceptance and Implementation Handoff", "status": "planned", "depends_on": ["APM-04", "APM-05", "APW-07"]}
-  ],
-  "next_item": "APM-02",
-  "resume_after": ["CSW-01", "CSW-02", "APW-02", "APW-03", "APW-04"],
-  "implementation_ladder": [
-    "Cozy Solo",
-    "Single-Encounter AutoGM",
-    "Connected Cozy",
-    "AutoGM Mini-Campaign",
-    "broader/multiplayer AutoGM later"
-  ],
-  "authority_rules": [
-    "AutoGM and CozyMode are play experiences, not permanent account roles.",
-    "APW-01 universal-user and Personal/Campaign/Session context authority is controlling for APM.",
-    "Solo is participation topology, not authority.",
-    "Automation controllers are nonhuman service actors and never acquire global GM role authority.",
-    "State-affecting automation requires explicit versioned delegation plus fresh owning-domain authorization.",
-    "Every automated operation is classified automatic, bounded automatic, proposal-required, human-required, or prohibited.",
-    "Mechanical legality and canonical mutation remain owned by deterministic/domain-governed rules and authority checks.",
-    "Optional AI remains presentation/proposal assistance and does not inherit mechanical, permission, decision, hidden-state, delegation, or commit authority.",
-    "AutoGM scenario-private truth is held by governed scenario/controller projections and is not automatically exposed to optional AI.",
-    "Exit/disconnect never creates background-play permission; background Cozy behavior is explicit and bounded.",
-    "Automated play reuses ordinary Campaign/Action/Event/persistence/provenance/recovery architecture rather than forking state.",
-    "Connected Cozy begins with invited/known participants; public matchmaking is outside initial scope."
-  ],
-  "combined_owner_approved_sequence_after_apm01": [
-    "CSW-01", "CSW-02", "APW-02", "APW-03", "APW-04", "APM-02", "CSW-03", "CSW-04", "CSW-05", "APM-03", "CSW-06", "APM-04", "CSW-07", "CSW-08", "APW-05", "CSW-09", "APW-06", "APM-05", "CSW-10", "APW-07", "APM-06", "APW-08"
-  ],
-  "non_goals": [
-    "No unlimited open-ended autonomous campaign requirement for initial APM.",
-    "No autonomous AI canonical authority.",
-    "No public stranger matchmaking in initial APM.",
-    "No release, deployment, paid-provider, production-credential, public-marketplace or canonical-promotion authority.",
-    "No CCTI-12-T04 resumption before September 2026 without explicit owner override."
-  ]
+  "program_id":"APM","version":"0.5.0","status":"design_active","owner":"John Brandon Turner","approved":"2026-08-18","active_item":"APM-02","active_attempt":"APM-02-attempt-001",
+  "sequence":[{"id":"APM-01","name":"Automated-Play Authority and Mode Contract","status":"completed_verified","depends_on":["APW-01"],"pull_request":411,"validated_head":"b9516a78e3425b09e79efde120fe1ebb1c655fcb","repository_health_run":32203278338,"merge_sha":"4150cbd38f7fcae325aa03b83fcf3c4b3a990765"},{"id":"APM-02","name":"CozyMode Core Loop","status":"selected_not_started","depends_on":["APM-01","APW-03","APW-04"],"dependencies_satisfied":true,"completion_gate":"Cozy Solo has a complete bounded low-pressure loop with explicit user preferences/delegation, activity selection, deterministic/domain-owned progress, human-choice/consent stop points, bounded background behavior, summaries/notifications, no-AI fallback, safe save/exit/resume and no setting-specific or unrestricted autonomy assumptions."},{"id":"APM-03","name":"AutoGM Single-Encounter Runner","status":"planned","depends_on":["APM-01","CSW-05"]},{"id":"APM-04","name":"AutoGM Mini-Campaign Director","status":"planned","depends_on":["APM-03","CSW-06"]},{"id":"APM-05","name":"Connected Cozy and Shared Automated Play","status":"planned","depends_on":["APM-02","APW-06"]},{"id":"APM-06","name":"Recovery, Safety, Acceptance and Implementation Handoff","status":"planned","depends_on":["APM-04","APM-05","APW-07"]}],
+  "implementation_ladder":["Cozy Solo","Single-Encounter AutoGM","Connected Cozy","AutoGM Mini-Campaign","broader/multiplayer AutoGM later"],
+  "activation_evidence":{"APM-01":{"pull_request":411,"repository_health_run":32203278338},"APW-03":{"pull_request":419,"repository_health_run":32205351861},"APW-04":{"pull_request":421,"validated_head":"67a7252a402b9c78c50a51e806340b737e95387a","repository_health_run":32205891554,"merge_sha":"ce249810a544c78d770f7c5e1f27ce2eef60894e"}},
+  "combined_owner_approved_sequence_after_apm02":["CSW-03","CSW-04","CSW-05","APM-03","CSW-06","APM-04","CSW-07","CSW-08","APW-05","CSW-09","APW-06","APM-05","CSW-10","APW-07","APM-06","APW-08"],
+  "authority_rules":["CozyMode is a setting-independent experience, not a genre or permanent role.","Personal context is the initial Cozy Solo host.","APW-03 Activities/Projects supply bounded work primitives while owning domains commit effects.","APM-01 explicit delegation and operation classification remain controlling.","Background progression is opt-in and bounded and stops at human/GM choice, stale state, limits, consent or uncertainty.","AI is optional presentation/proposal assistance, not mechanical authority."],
+  "non_goals":["No universal farming/life-sim setting assumption.","No unrestricted background simulation.","No automatic human consent or irreversible advancement.","No autonomous AI canonical authority.","No public matchmaking.","No release/deployment/paid-provider/canonical-promotion authority.","No CCTI-12-T04 before September 2026 without owner override."]
 }
