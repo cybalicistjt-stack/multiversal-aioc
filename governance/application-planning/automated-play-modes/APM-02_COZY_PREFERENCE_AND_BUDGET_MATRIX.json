@@ -1,0 +1,32 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"APM-02",
+  "status":"design_ready_for_review",
+  "host":{"initial_context":"personal","topology":"solo","campaign_required":false,"gm_role_created":false},
+  "core_loop":["orient","choose-focus","confirm-bounds","execute-bounded-operation","evaluate-stop-continue","meaningful-decision","reflect-summarize","continue-change-focus-pause-exit"],
+  "low_pressure_rules":["self-directed goals","small understandable next actions","cost/time/stop preview","routine repetition only when preauthorized","graceful pause","sparse notifications","no coercive streaks","warm respectful presentation","no hidden difficulty changes","no automatic success","no free resources by mode"],
+  "preference_dimensions":{
+    "focus":["selected activities/projects","enabled families","excluded families","pinned goals","ask-before-focus-switch"],
+    "pace":["one-step-at-a-time","until-next-choice","bounded-batch","bounded-background"],
+    "interrupts":["human-required","gm-adjudication","new-cost-above-threshold","new-resource-class","ownership-custody-change","selected failure/complication class","stale/conflict/recovery","irreversible/destructive","new-unapproved-activity"],
+    "budgets":["operation-step count","authored progress units","game/activity-time units","background wall-clock window","resource quantity","resource class denylist","in-game currency/material","real-money always zero"],
+    "presentation":["summary frequency","detail level","notifications","narrative tone","accessibility/pacing"],
+    "ai":["disabled/enabled per feature","narration","summarization","suggestions","dialogue styling","existing provider/cost policy only"]
+  },
+  "operation_classes":["automatic_permitted","automatic_with_bounds","proposal_required","human_required","gm_adjudication_required","prohibited"],
+  "mandatory_human":["irreversible advancement/build choice","material project-direction change","new cost outside budget","ownership/custody/control transfer","destructive deletion","Campaign join/leave/binding","human consent/invitation","material ambiguity","meaningful failure/complication choice","publication/canonical promotion","real-money spending","automation-bound widening"],
+  "gm_required_personal_behavior":"stop_or_ineligible_or_explicitly_nonauthoritative_sandbox_flavor; never promote AI/controller to GM",
+  "budget_invariants":["controller cannot self-widen","every repeated operation revalidates state and budget","resource spend through owning domain","real money/paid credits auto budget zero","background only with explicit separate grant","new resource class causes stop unless already allowed"],
+  "time_invariants":["wall-clock is not game time by default","background scheduling time is distinct from in-world progress","authored APW-03 time profile owns progress amount","Personal may use abstract activity units"],
+  "domain_safety":{
+    "advancement":"preparation/training progress may be routine; final irreversible selection human-required",
+    "investigation":"routine research may progress; hidden reveal/fact conclusion remains owning-domain/GM boundary",
+    "social":"human consent never automatic; NPC response automatic only when authored deterministic owning-domain rule permits",
+    "crafting":"explicit recipe, exact reservation, tools/facilities/time/check/failure/output; stop before substitutions/new costs",
+    "creative":"journal/Story Bible/CSW work remains nonauthoritative until explicit incorporation"
+  },
+  "summary_sections":["authoritative changes","spent-earned owning-domain receipts","completed tasks","waiting choices","stop reason","next advisory options","separate nonauthoritative journal/flavor"],
+  "notifications":{"default":"sparse","classes":["meaningful-choice","background-complete","budget-limit","blocked-stale-recovery","project-complete","user-reminder"],"streak_penalty":false},
+  "ai":{"required_for_core":false,"can_change_mechanical_result":false,"can_expand_authority":false,"can_convert_flavor_to_truth":false},
+  "authorizations":{"implementation":false,"migration":false,"setting_specific_requirement":false,"unbounded_background":false,"automatic_advancement":false,"automatic_human_consent":false,"ai_mechanical_authority":false,"public_matchmaking":false,"release_deployment":false,"ccti12_t04_before_2026_09":false}
+}
