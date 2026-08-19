@@ -1,0 +1,21 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"CSW-03",
+  "attempt_id":"CSW-03-attempt-001",
+  "track":"creator-storycraft-workspace",
+  "repository":"cybalicistjt-stack/multiversal-aioc",
+  "status":"selected_not_started",
+  "owner_selected":true,
+  "selected_at":"2026-08-19T02:14:00Z",
+  "selection_reason":"APM-02 completed_verified in PR #423. CSW-01 and CSW-02 are already completed_verified, satisfying CSW-03 dependencies; the owner-approved interleave selects CSW-03 next.",
+  "objective":"Define Idea Inbox and Inspiration Engine so a minimal thought can be captured with near-zero friction, triaged into CSW-01 Creative Fragments/Projects, and developed through deterministic prompts/tables/combinators plus optional AI suggestions, while every suggestion remains attributable pre-authoritative material and the system avoids duplicate/truth/visibility bleed.",
+  "program_plan":"governance/application-planning/creator-storycraft-workspace/CSW_CREATOR_STORYCRAFT_WORKSPACE_PROGRAM.md",
+  "program_backlog":"governance/application-planning/creator-storycraft-workspace/CSW_PROGRAM_BACKLOG.json",
+  "depends_on":["CSW-01","CSW-02"],
+  "dependency_evidence":{"CSW-01":{"status":"completed_verified","pull_request":413,"repository_health_run":32203942744},"CSW-02":{"status":"completed_verified","pull_request":415,"validated_head":"fa2c6d959d0cfb4419dbc0b337275b7a79da64bf","repository_health_run":32204385272,"merge_sha":"99d4a963d442a0602de9935e69f4a18e7acc5b0c"},"APM-02":{"status":"completed_verified","pull_request":423,"validated_head":"1c3413642792e59523f8fda7e3d4e9b0153cdd88","repository_health_run":32206426684,"merge_sha":"d9bc440fe85f0f98def1b61b4196b858f6b91426"}},
+  "completion_gate":"A minimal idea can be captured and developed into attributable alternatives with deterministic non-AI tools and optional suggestion assistance without automatically creating authoritative content, duplicating existing work or leaking protected source material.",
+  "required_design_questions":["What is the lowest-friction capture path and minimum required metadata?","How does Inbox triage map into CSW-01 fragment kind/lifecycle/project/collection without forcing early structure?","Which deterministic inspiration tools are broadly useful across genres/settings?","How are random/seeded prompt results reproducible when desired without making them authoritative?","How are multiple alternatives/branches saved without overwriting the seed idea?","How are duplicate/related-material candidates surfaced using CSW-02 without silent merge?","How are references/source inspiration/provenance recorded without copying protected content?","How does optional AI receive authorized context and produce candidates with provenance and no automatic save/apply?","How are ‘develop this’ loops bounded so they do not endlessly generate noise or overwrite creator intent?","How do accessibility, mobile quick capture, offline draft capture and recovery behave?"],
+  "preserved_parallel_tracks":["CSW-04 follows CSW-03","CSW-05 follows CSW-04","APM-03 follows CSW-05","CCTI-12-T04 deferred until September 2026","WP-011 dormant","DS-008 blocked non-owner"],
+  "nonauthorization":["application implementation","migration execution","automatic authoritative content","autonomous AI authorship/publication","silent duplicate merge","protected-source copying","canonical promotion","release/deployment","CCTI-12-T04 before September 2026"],
+  "next_action":"Execute CSW-03 as a bounded design/governance tranche defining frictionless capture, Inbox triage, deterministic inspiration primitives, optional AI suggestion/provenance, branching/alternatives, duplicate/related checks, accessibility/offline draft recovery and explicit save/apply boundaries."
+}
