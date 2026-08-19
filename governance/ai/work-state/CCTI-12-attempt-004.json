@@ -1,18 +1,26 @@
 {
-  "schema_version": "1.3.0",
+  "schema_version": "1.4.0",
   "work_item_id": "CCTI-12",
   "attempt_id": "CCTI-12-attempt-004",
   "track": "content-catalog-taxonomy-integration",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
-  "owner_selected": true,
+  "status": "deferred_owner_until_2026-09",
+  "owner_selected": false,
   "construction_complete_on_source_branch": true,
   "source_pull_request": 191,
   "source_branch": "internal-alpha/ccti12-t04-local-review-worksets",
   "source_head": "3d32ee9317bc924a6a8206121402c68bdf8a061b",
+  "clean_reconstruction_branch": "internal-alpha/ccti12-t04-clean",
+  "clean_reconstruction_head_at_recovery": "f8a3e600131366b3fff9e8c0bb3ca24d48ae0d15",
   "clean_application_main": "bf61c64c89e7ea997842ea7442797fba619d0e28",
-  "active_substep": "Clean-main reconstruction and hardened validation migration after CRS retired the historical T04 workflow.",
-  "next_action": "Create a clean T04 integration branch from App main bf61c64c89e7ea997842ea7442797fba619d0e28. Port the substantive T04 product/tests/docs from PR #191 without restoring .ai/current-work-order.md or .github/workflows/validate-ccti12-candidate-content.yml. Review tools/build_ccti12_t04_validation_receipt.py as historical validation logic rather than current authority. Register a new thin Validation Core T04 profile/workflow, reproduce and repair the repeated Canonical taxonomy: OFF assertion with scoped semantics, then freeze one exact head for Windows/Linux/comparator proof.",
+  "owner_deferral": {
+    "effective": "2026-08-18",
+    "resume_not_before": "2026-09-01",
+    "decision_path": "governance/ai/runtime/OWNER_DECISION_2026-08-18_DEFER_CCTI12_T04_TO_SEPTEMBER.md",
+    "reason": "Defer further T04 effort until September so the tranche can resume with the intended GitHub validation capability rather than continuing the current workaround/reconstruction path."
+  },
+  "active_substep": "Deferred. Preserve both T04 branches and PR #191 as unfinished provenance; do not advance reconstruction or validation in August without explicit owner override.",
+  "next_action": "On or after the owner-approved September resumption, first establish the owner-approved GitHub-hosted T04 validation path or explicit bounded policy exception. Then re-evaluate the preserved source and clean-reconstruction branches, port only substantive product/test/doc work onto the then-current clean main, reproduce and repair evidence-proven failures, and complete T04 without restoring retired authority surfaces.",
   "predecessor": {"attempt_id":"CCTI-12-attempt-003","state":"completed_verified","application_pr":190,"application_merge_sha":"59fd30d3ad38d688c18b1abe0adfb7c9a8eaffa5"},
   "source_files": [
     "apps/client-ui/src/ccti12/CandidateAmendmentDrafts.tsx",
@@ -29,14 +37,14 @@
   "known_failure_to_reproduce": "Brittle repeated-boundary UI assertion around Canonical taxonomy: OFF; fix query scope or intended multiplicity, not the safety/status UI.",
   "completion_gate": [
     "Clean-main T04 reconstruction contains no retired authority surface.",
-    "New T04 validation surface is explicitly registered and uses the shared Validation Core by default.",
+    "T04 validation path is explicitly owner-approved and registered before use.",
     "Focused T04 model/integration/a11y tests pass.",
     "Full client regression, typecheck, accessibility, build and required design-system/player-boundary checks pass.",
-    "Exact final candidate passes self-hosted Windows.",
-    "Exact final candidate passes self-hosted Linux.",
-    "Deterministic T04 receipt comparator passes on the same exact head.",
+    "Required final validation for the September T04 path passes on one exact final head.",
+    "Deterministic T04 receipt comparison passes where the selected validation path requires cross-environment output agreement.",
     "T04 remains noncanonical/local review tooling with all proposal/canonical/taxonomy/relationship/compatibility/runtime/mechanics/Player/release/deployment authority false."
   ],
-  "validation_history": {"prior_state":"validation_quarantined","prior_run":32138241708,"quarantine_resolved_for_reconciliation":true,"feature_completed":false},
-  "parallel_tracks_preserved": ["WP-011 special environment", "DS-008 blocked_non_owner", "APW planned", "CSW planned", "APM planned"]
+  "validation_history": {"prior_state":"validation_quarantined","prior_run":32138241708,"feature_completed":false,"august_reconstruction_deferred":true},
+  "parallel_tracks_preserved": ["WP-011 special environment", "DS-008 blocked_non_owner"],
+  "route_around_selected": "APW-01-attempt-001"
 }
