@@ -1,75 +1,29 @@
 {
-  "schema_version": "2.9.0",
-  "updated_at": "2026-08-19T01:02:00Z",
-  "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
-  "authority_registry": "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
-  "static_restart_prompt": "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
-  "owner_routing_decision": "governance/ai/runtime/OWNER_DECISION_2026-08-18_DEFER_CCTI12_T04_TO_SEPTEMBER.md",
-  "mandatory_operating_policies": [
-    "governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md",
-    "governance/ai/MULTIVERSAL_COMPLETION_CLAIM_INTEGRITY_POLICY.md",
-    "governance/ai/MULTIVERSAL_SELF_HOSTED_FINAL_VALIDATION_POLICY.md",
-    "governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md"
-  ],
-  "canonical_application_roadmap": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
-  "roadmap_supplements": ["governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_APM_SUPPLEMENT.md"],
-  "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
-  "primary_attempt_id": "CSW-01-attempt-001",
-  "selection_reason": "APM-01 completed_verified in AIOC PR #411 with exact-head repository-health success. The owner-approved combined APW/APM/CSW interleave selects CSW-01 immediately after APM-01 while CCTI-12-T04 remains deferred until September 2026.",
-  "active_attempt": {
-    "work_item_id": "CSW-01",
-    "attempt_id": "CSW-01-attempt-001",
-    "track": "creator-storycraft-workspace",
-    "priority": 1,
-    "owner_selected": true,
-    "repository": "cybalicistjt-stack/multiversal-aioc",
-    "checkpoint_path": "governance/ai/work-state/CSW-01-attempt-001.json",
-    "status": "selected_not_started",
-    "active_item": "CSW-01 — Storycraft Vocabulary, Creative Object Model and Authority"
-  },
-  "paused_or_preserved_tracks": [
-    {"track":"creator-storycraft-workspace","work_item":"CSW","status":"active_interleaved","current_item":"CSW-01","next_item_after_completion":"CSW-02"},
-    {"track":"asynchronous-play-persistent-workspace","work_item":"APW","status":"interleaved_waiting","next_item":"APW-02","resume_after":["CSW-01","CSW-02"]},
-    {"track":"automated-play-modes","work_item":"APM","status":"interleaved_waiting","completed_item":"APM-01","next_item":"APM-02","resume_after":["CSW-01","CSW-02","APW-02","APW-03","APW-04"]},
+  "schema_version":"3.0.0",
+  "updated_at":"2026-08-19T01:12:00Z",
+  "canonical_bootstrap":"governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
+  "authority_registry":"governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
+  "static_restart_prompt":"governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
+  "owner_routing_decision":"governance/ai/runtime/OWNER_DECISION_2026-08-18_DEFER_CCTI12_T04_TO_SEPTEMBER.md",
+  "mandatory_operating_policies":["governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md","governance/ai/MULTIVERSAL_COMPLETION_CLAIM_INTEGRITY_POLICY.md","governance/ai/MULTIVERSAL_SELF_HOSTED_FINAL_VALIDATION_POLICY.md","governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md"],
+  "canonical_application_roadmap":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
+  "roadmap_supplements":["governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_APM_SUPPLEMENT.md"],
+  "roadmap_index":"governance/ai/runtime/ROADMAP_INDEX.json",
+  "primary_attempt_id":"CSW-02-attempt-001",
+  "selection_reason":"CSW-01 completed_verified in PR #413 with exact-head repository-health success. The owner-approved interleave selects CSW-02 before returning to APW-02. CCTI-12-T04 remains deferred until September 2026.",
+  "active_attempt":{"work_item_id":"CSW-02","attempt_id":"CSW-02-attempt-001","track":"creator-storycraft-workspace","priority":1,"owner_selected":true,"repository":"cybalicistjt-stack/multiversal-aioc","checkpoint_path":"governance/ai/work-state/CSW-02-attempt-001.json","status":"selected_not_started","active_item":"CSW-02 — Creative Library, Story Bible and Project Memory"},
+  "paused_or_preserved_tracks":[
+    {"track":"asynchronous-play-persistent-workspace","work_item":"APW","status":"interleaved_waiting","next_item":"APW-02","resume_after":["CSW-02"]},
+    {"track":"automated-play-modes","work_item":"APM","status":"interleaved_waiting","completed_item":"APM-01","next_item":"APM-02","resume_after":["CSW-02","APW-02","APW-03","APW-04"]},
     {"track":"content-catalog-taxonomy-integration","work_item":"CCTI-12-T04","attempt_id":"CCTI-12-attempt-004","status":"deferred_owner_until_2026-09","repository":"cybalicistjt-stack/Multiversal-app","source_pr":191,"source_branch":"internal-alpha/ccti12-t04-local-review-worksets","clean_branch":"internal-alpha/ccti12-t04-clean","merge_authority":false},
     {"track":"wp-011-apple","status":"preserved_special_environment_dormant","repository":"cybalicistjt-stack/Multiversal-app","pr":61,"branch":"wo/WP011-hosted-macos-evidence"},
     {"track":"design-standards-completion","work_item":"DS-008-working-series","status":"blocked_non_owner"}
   ],
-  "recently_completed_design_work": [
+  "recently_completed_design_work":[
+    {"work_item":"CSW-01","status":"completed_verified","governance_pr":413,"validated_head":"f9ee73b106951d037e4db34b7e876d5229bb13b3","repository_health_run":32203942744,"merge_sha":"0627188ce143625565912fc81a7ebc2b9dd436a8"},
     {"work_item":"APM-01","status":"completed_verified","governance_pr":411,"validated_head":"b9516a78e3425b09e79efde120fe1ebb1c655fcb","repository_health_run":32203278338,"merge_sha":"4150cbd38f7fcae325aa03b83fcf3c4b3a990765"},
     {"work_item":"APW-01","status":"completed_verified","governance_pr":409,"validated_head":"f0b6b3d9b64d3b8f7b1fd9d81f6079b14097ef32","repository_health_run":32202132346,"merge_sha":"2f99a03612dab525eaffd5c0141f84cf8c1b5654"}
   ],
-  "recently_completed_work": {
-    "work_item":"POST-GATX-SUCCESSOR",
-    "status":"completed_verified",
-    "application_pr":203,
-    "validated_head":"3b9e33cb22b8d4e3f2558135ba0fc36a8c8ad223",
-    "application_merge":"8685165318b1f3782903bfe137ba8257539af017",
-    "validation_run":32197192589,
-    "application_health_run":32197192592,
-    "package":"Multiversal-Internal-Alpha-Windows-3b9e33cb22b8-POST-GATX.zip",
-    "package_sha256":"f07bfc00bb2708e48d0d85118fd1861e017b720d4d85ba1d912ede7b6b5bc694",
-    "validation_retirement_pr":204,
-    "validation_retirement_merge":"bf61c64c89e7ea997842ea7442797fba619d0e28",
-    "tester_distribution_approved":false
-  },
-  "completed_support_programs": [
-    {"program_id":"VCH","status":"completed_verified","closure_application_pr":200,"final_validated_head":"70e0480030c39ecd67c3c137eb2e3ba666e92bf8","closure_merge_sha":"aa286a481fc53fdb969cc10be0388974bdbd3c9e"},
-    {"program_id":"CRS","status":"completed_verified","application_health_merge":"ec4ad52910fd8728134df4bdbad31476f44602e9","aioc_health_merge":"9a74d10988ca41201c8155956a09564c7d1289a9","audit_result":"zero_known_conflicting_authority"}
-  ],
-  "bounded_authority": {
-    "repository_health_maintenance": true,
-    "csw_design_governance": true,
-    "apw_design_governance": false,
-    "apm_design_governance": false,
-    "apw_implementation": false,
-    "apm_implementation": false,
-    "csw_implementation": false,
-    "ccti_t04_reconciliation_and_validation": false,
-    "ccti_t04_merge_or_completion": false,
-    "tester_distribution": false,
-    "wp011_run_authorization": false,
-    "release_or_deployment": false
-  },
-  "exact_next_action": "Execute CSW-01 as a bounded design/governance tranche. Define normalized pre-authoritative creative-fragment vocabulary, lifecycle, authority, Personal/Campaign binding, identity/version/provenance and deletion/reference rules; define explicit incorporation/conversion boundaries into A10/D18 World, D28 Adventure, Character, Campaign, investigation, relationship/faction and other owning domains; preserve the distinction between idea/hypothesis/possibility and authoritative fact; do not activate application implementation, AI authorship authority, publication, canonical promotion or CCTI-12-T04 before September 2026."
+  "bounded_authority":{"repository_health_maintenance":true,"csw_design_governance":true,"apw_design_governance":false,"apm_design_governance":false,"apw_implementation":false,"apm_implementation":false,"csw_implementation":false,"ccti_t04_reconciliation_and_validation":false,"ccti_t04_merge_or_completion":false,"tester_distribution":false,"release_or_deployment":false},
+  "exact_next_action":"Execute CSW-02 as a bounded design/governance tranche. Define Creative Library, Story Bible and Project Memory information architecture, stable links/backlinks/history, governed-object references, search/filter/saved-view/graph projections, duplicate suggestions, archive/rediscovery/import/export/recovery and open/unused-material projections using CSW-01 pre-authoritative identity and visibility-before-topology rules. Do not activate application implementation or CCTI-12-T04 before September 2026."
 }

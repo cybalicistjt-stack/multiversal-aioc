@@ -1,39 +1,22 @@
 {
-  "schema_version": "1.7.0",
-  "audit_id": "CRS-CANONICAL-STATE-AUDIT-CURRENT",
-  "status": "completed_verified_with_design_transition",
-  "result": "zero_known_conflicting_authority",
-  "known_conflicts": [],
-  "production_resume_authorized": true,
-  "repositories": {
-    "cybalicistjt-stack/multiversal-aioc": {"live_workflows_expected":[".github/workflows/validate-repository-health.yml"]},
-    "cybalicistjt-stack/Multiversal-app": {
-      "main_head": "bf61c64c89e7ea997842ea7442797fba619d0e28",
-      "live_workflows_expected": [".github/workflows/_validation-core-profile.yml",".github/workflows/self-hosted-windows-runner-smoke.yml",".github/workflows/validate-repository-health.yml"],
-      "open_governed_prs": [
-        {"number":61,"work_item":"WP-011","merge_authority":false,"activation":"special_environment_owner_gate"},
-        {"number":191,"work_item":"CCTI-12-T04","merge_authority":false,"activation":"DEFERRED OWNER UNTIL SEPTEMBER 2026"}
-      ],
-      "recently_completed": {"work_item":"POST-GATX-SUCCESSOR","pr":203,"validated_head":"3b9e33cb22b8d4e3f2558135ba0fc36a8c8ad223","merge":"8685165318b1f3782903bfe137ba8257539af017","validation_run":32197192589,"health_run":32197192592,"package_sha256":"f07bfc00bb2708e48d0d85118fd1861e017b720d4d85ba1d912ede7b6b5bc694","validation_retirement_pr":204,"validation_retirement_merge":"bf61c64c89e7ea997842ea7442797fba619d0e28","tester_distribution_approved":false}
-    }
-  },
-  "design_transition": {
-    "completed": {"work_item":"APM-01","attempt_id":"APM-01-attempt-001","status":"completed_verified","pull_request":411,"validated_head":"b9516a78e3425b09e79efde120fe1ebb1c655fcb","repository_health_run":32203278338,"merge_sha":"4150cbd38f7fcae325aa03b83fcf3c4b3a990765"},
-    "selected": {"work_item":"CSW-01","attempt_id":"CSW-01-attempt-001","status":"selected_not_started","sequence_predecessor":"APM-01"}
-  },
-  "authority_checks": [
-    {"id":"single-selector","status":"PASS","evidence":"CURRENT_WORK_POINTER selects CSW-01-attempt-001 only."},
-    {"id":"design-sequence","status":"PASS","evidence":"APW-01 and APM-01 are completed_verified and the owner-approved interleave selects CSW-01, then CSW-02, before the later return to APW-02."},
-    {"id":"apw-preservation","status":"PASS","evidence":"APW remains an unfinished interleaved design program; APW-02 is preserved and is not selected prematurely."},
-    {"id":"apm-preservation","status":"PASS","evidence":"APM remains unfinished after APM-01; APM-02 is preserved until APW-02/APW-03/APW-04 dependencies are completed."},
-    {"id":"workflow-deny-by-default","status":"PASS","evidence":"App remains on the permanent workflow namespace after post-GATX validation retirement; the September T04 GitHub-hosted path must be explicitly approved/registered before use."},
-    {"id":"validator-deny-by-default","status":"PASS","evidence":"No historical T04 workflow or validator regains authority from preserved branches by existence."},
-    {"id":"open-pr-authority","status":"PASS","evidence":"No open application PR is selected current work; T04 and WP-011 have merge_authority false."},
-    {"id":"route-around-authority","status":"PASS","evidence":"Owner decision continues to defer T04 until September 2026 while unrelated APW/APM/CSW design work proceeds."},
-    {"id":"history-preservation","status":"PASS","evidence":"T04 source and partial clean-reconstruction branches remain recoverable as unfinished provenance without current authority."}
+  "schema_version":"1.8.0",
+  "audit_id":"CRS-CANONICAL-STATE-AUDIT-CURRENT",
+  "status":"completed_verified_with_design_transition",
+  "result":"zero_known_conflicting_authority",
+  "known_conflicts":[],
+  "production_resume_authorized":true,
+  "repositories":{"cybalicistjt-stack/multiversal-aioc":{"live_workflows_expected":[".github/workflows/validate-repository-health.yml"]},"cybalicistjt-stack/Multiversal-app":{"main_head":"bf61c64c89e7ea997842ea7442797fba619d0e28","live_workflows_expected":[".github/workflows/_validation-core-profile.yml",".github/workflows/self-hosted-windows-runner-smoke.yml",".github/workflows/validate-repository-health.yml"],"open_governed_prs":[{"number":61,"work_item":"WP-011","merge_authority":false},{"number":191,"work_item":"CCTI-12-T04","merge_authority":false,"activation":"DEFERRED OWNER UNTIL SEPTEMBER 2026"}]}},
+  "design_transition":{"completed":{"work_item":"CSW-01","attempt_id":"CSW-01-attempt-001","status":"completed_verified","pull_request":413,"validated_head":"f9ee73b106951d037e4db34b7e876d5229bb13b3","repository_health_run":32203942744,"merge_sha":"0627188ce143625565912fc81a7ebc2b9dd436a8"},"selected":{"work_item":"CSW-02","attempt_id":"CSW-02-attempt-001","status":"selected_not_started","dependency":"CSW-01"}},
+  "authority_checks":[
+    {"id":"single-selector","status":"PASS","evidence":"CURRENT_WORK_POINTER selects CSW-02-attempt-001 only."},
+    {"id":"design-sequence","status":"PASS","evidence":"CSW-01 is completed_verified and the owner-approved interleave selects CSW-02 before APW-02."},
+    {"id":"apw-preservation","status":"PASS","evidence":"APW-02 remains preserved until CSW-02 completes."},
+    {"id":"apm-preservation","status":"PASS","evidence":"APM-02 remains preserved until later APW dependencies are complete."},
+    {"id":"route-around-authority","status":"PASS","evidence":"T04 remains deferred until September 2026 while unrelated design work proceeds."},
+    {"id":"open-pr-authority","status":"PASS","evidence":"T04 and WP-011 have no current merge authority."}
   ],
-  "resumed_work_item": "CSW-01",
-  "deferred_work_item": "CCTI-12-T04",
-  "deferred_until": "2026-09-01",
-  "owner_decision": "governance/ai/runtime/OWNER_DECISION_2026-08-18_DEFER_CCTI12_T04_TO_SEPTEMBER.md"
+  "resumed_work_item":"CSW-02",
+  "deferred_work_item":"CCTI-12-T04",
+  "deferred_until":"2026-09-01",
+  "owner_decision":"governance/ai/runtime/OWNER_DECISION_2026-08-18_DEFER_CCTI12_T04_TO_SEPTEMBER.md"
 }
