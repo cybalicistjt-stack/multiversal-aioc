@@ -1,15 +1,14 @@
 {
-  "schema_version":"1.3.0",
+  "schema_version":"1.4.0",
   "program_id":"CSW",
   "program_name":"Creator Storycraft Workspace",
   "status":"design_active",
   "owner":"John Brandon Turner",
-  "approved_planning_direction":"2026-08-18",
   "current_item":"CSW-02",
   "current_attempt":"CSW-02-attempt-001",
   "tranches":[
-    {"id":"CSW-01","name":"Storycraft Vocabulary Creative Object Model and Authority","status":"completed_verified","pull_request":413,"validated_head":"f9ee73b106951d037e4db34b7e876d5229bb13b3","repository_health_run":32203942744,"merge_sha":"0627188ce143625565912fc81a7ebc2b9dd436a8"},
-    {"id":"CSW-02","name":"Creative Library Story Bible and Project Memory","status":"selected_not_started","depends_on":["CSW-01"],"dependency_satisfied":true,"completion_gate":"Creators can reliably find understand relate version and recover what they made where it is used what derives from it and what remains unfinished."},
+    {"id":"CSW-01","name":"Storycraft Vocabulary Creative Object Model and Authority","status":"completed_verified","pull_request":413,"repository_health_run":32203942744,"merge_sha":"0627188ce143625565912fc81a7ebc2b9dd436a8"},
+    {"id":"CSW-02","name":"Creative Library Story Bible and Project Memory","status":"design_complete_pending_validation","depends_on":["CSW-01"],"dependency_satisfied":true,"deliverables":["CSW-02_CREATIVE_LIBRARY_STORY_BIBLE_AND_PROJECT_MEMORY.md","CSW-02_LIBRARY_STORY_BIBLE_MATRIX.json","CSW-02_PROJECT_MEMORY_GRAPH_AND_TRACEABILITY.json","CSW-02_REVIEW_RECEIPT.md"],"completion_gate":"Creators can reliably find understand relate version and recover what they made where it is used what derives from it and what remains unfinished."},
     {"id":"CSW-03","name":"Idea Inbox and Inspiration Engine","status":"planned","depends_on":["CSW-01","CSW-02"]},
     {"id":"CSW-04","name":"Guided Creation Workflows","status":"planned","depends_on":["CSW-01","CSW-02","CSW-03"]},
     {"id":"CSW-05","name":"Plot Adventure and Narrative Design Lab","status":"planned","depends_on":["CSW-01","CSW-02","CSW-04"]},
@@ -19,8 +18,8 @@
     {"id":"CSW-09","name":"Creator Command Center and Assistance Integration","status":"planned","depends_on":["CSW-03","CSW-04","CSW-05","CSW-06","CSW-07","CSW-08"]},
     {"id":"CSW-10","name":"Integration Acceptance and Implementation Handoff","status":"planned","depends_on":["CSW-09"]}
   ],
-  "planning_order":["CSW-01","CSW-02","CSW-03","CSW-04","CSW-05","CSW-06","CSW-07","CSW-08","CSW-09","CSW-10"],
   "combined_owner_approved_sequence_after_csw02":["APW-02","APW-03","APW-04","APM-02","CSW-03","CSW-04","CSW-05","APM-03","CSW-06","APM-04","CSW-07","CSW-08","APW-05","CSW-09","APW-06","APM-05","CSW-10","APW-07","APM-06","APW-08"],
+  "design_rules":["Library/Story Bible/Project Memory are projections not truth stores.","Story Bible preserves evidence classes.","Governed truth remains referenced from owning domains.","Visibility filtering precedes search/counts/topology/similarity/AI.","Duplicate discovery never silently merges.","Project memory derives from explicit stable relations/receipts.","Core organization works without AI."],
   "implementation_boundary":"Planning only; application implementation and persistence migrations remain unauthorized.",
-  "nonauthorization":["application implementation","migration execution","new persistence root","canonical promotion","autonomous AI publication","release/deployment","CCTI-12-T04 before September 2026"]
+  "nonauthorization":["application implementation","migration execution","new persistence root","truth duplication","canonical promotion","AI publication","release/deployment","CCTI-12-T04 before September 2026"]
 }
