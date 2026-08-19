@@ -1,17 +1,6 @@
 {
-  "schema_version":"2.2.0","program_id":"CSW","program_name":"Creator Storycraft Workspace","status":"interleaved_waiting","owner":"John Brandon Turner","current_item":null,"current_attempt":null,
-  "tranches":[
-    {"id":"CSW-01","name":"Storycraft Vocabulary Creative Object Model and Authority","status":"completed_verified","pull_request":413,"repository_health_run":32203942744,"merge_sha":"0627188ce143625565912fc81a7ebc2b9dd436a8"},
-    {"id":"CSW-02","name":"Creative Library Story Bible and Project Memory","status":"completed_verified","pull_request":415,"repository_health_run":32204385272,"merge_sha":"99d4a963d442a0602de9935e69f4a18e7acc5b0c"},
-    {"id":"CSW-03","name":"Idea Inbox and Inspiration Engine","status":"completed_verified","pull_request":425,"repository_health_run":32223163209,"merge_sha":"f6d3c892d9df70083f7c44d82f3c0d6165a67c74"},
-    {"id":"CSW-04","name":"Guided Creation Workflows","status":"completed_verified","pull_request":427,"repository_health_run":32224302162,"merge_sha":"e00d166719cec078ae427f01a376795183683902"},
-    {"id":"CSW-05","name":"Plot Adventure and Narrative Design Lab","status":"completed_verified","pull_request":429,"validated_head":"f435408042a45e21f651bdac45060818496e4f74","repository_health_run":32225211976,"merge_sha":"95a6faa5f50ed5bfe821d6fc45246cc6a771934c"},
-    {"id":"CSW-06","name":"Continuity Consistency and Open-Thread Tracker","status":"planned","depends_on":["CSW-02","CSW-05"]},
-    {"id":"CSW-07","name":"Writing Studio and Revision Workspace","status":"planned","depends_on":["CSW-02","CSW-04","CSW-06"]},
-    {"id":"CSW-08","name":"Reuse Remix and Transformation","status":"planned","depends_on":["CSW-02","CSW-05","CSW-07"]},
-    {"id":"CSW-09","name":"Creator Command Center and Assistance Integration","status":"planned","depends_on":["CSW-03","CSW-04","CSW-05","CSW-06","CSW-07","CSW-08"]},
-    {"id":"CSW-10","name":"Integration Acceptance and Implementation Handoff","status":"planned","depends_on":["CSW-09"]}
-  ],
-  "next_item":"CSW-06","resume_after":["APM-03"],
+  "schema_version":"2.3.0","program_id":"CSW","program_name":"Creator Storycraft Workspace","status":"design_active","owner":"John Brandon Turner","current_item":"CSW-06","current_attempt":"CSW-06-attempt-001",
+  "tranches":[{"id":"CSW-01","name":"Storycraft Vocabulary Creative Object Model and Authority","status":"completed_verified","pull_request":413},{"id":"CSW-02","name":"Creative Library Story Bible and Project Memory","status":"completed_verified","pull_request":415},{"id":"CSW-03","name":"Idea Inbox and Inspiration Engine","status":"completed_verified","pull_request":425},{"id":"CSW-04","name":"Guided Creation Workflows","status":"completed_verified","pull_request":427},{"id":"CSW-05","name":"Plot Adventure and Narrative Design Lab","status":"completed_verified","pull_request":429,"repository_health_run":32225211976,"merge_sha":"95a6faa5f50ed5bfe821d6fc45246cc6a771934c"},{"id":"CSW-06","name":"Continuity Consistency and Open-Thread Tracker","status":"selected_not_started","depends_on":["CSW-02","CSW-05"],"dependencies_satisfied":true},{"id":"CSW-07","name":"Writing Studio and Revision Workspace","status":"planned","depends_on":["CSW-02","CSW-04","CSW-06"]},{"id":"CSW-08","name":"Reuse Remix and Transformation","status":"planned","depends_on":["CSW-02","CSW-05","CSW-07"]},{"id":"CSW-09","name":"Creator Command Center and Assistance Integration","status":"planned","depends_on":["CSW-03","CSW-04","CSW-05","CSW-06","CSW-07","CSW-08"]},{"id":"CSW-10","name":"Integration Acceptance and Implementation Handoff","status":"planned","depends_on":["CSW-09"]}],
+  "combined_owner_approved_sequence_after_csw06":["APM-04","CSW-07","CSW-08","APW-05","CSW-09","APW-06","APM-05","CSW-10","APW-07","APM-06","APW-08"],
   "implementation_boundary":"Planning only; application implementation/persistence migrations remain unauthorized."
 }
