@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "work_item": "APM-06",
+  "status": "handoff_planning_only",
+  "implementation_authority": false,
+  "slices": [
+    {"id":"APM-I01","name":"Automated-run authority and lifecycle foundation","depends_on":["APM-01","APW-01","APW-07"],"primary_owners":["identity/context","permissions/delegation","Action/Event/recovery"],"delivers":["automationControllerId/runId","AutomationDelegationGrant","operation classification","pause/resume/stop/revoke","provenance","feature flags"],"fallback":"manual ordinary play remains available","activation":"future roadmap only"},
+    {"id":"APM-I02","name":"Cozy Solo core loop","depends_on":["APM-I01","APM-02","APW-03","APW-04"],"primary_owners":["owning activity domains","Campaign/Personal workspace"],"delivers":["activity discovery","bounded progress","projects/resources/relationships/research/journaling","mandatory choice barriers","bounded background option","no-AI presentation"],"fallback":"ordinary Personal/Campaign workflows","activation":"future roadmap only"},
+    {"id":"APM-I03","name":"AutoGM Single-Encounter runner","depends_on":["APM-I01","APM-03"],"primary_owners":["Action","combat/rules","Adventure/encounter","visibility projection"],"delivers":["package validation","turn/reaction barriers","bounded controller NPC/world operations","player-required Actions","deterministic replay","encounter completion"],"fallback":"human-GM/manual encounter","activation":"future roadmap only"},
+    {"id":"APM-I04","name":"Connected Cozy shared play","depends_on":["APM-I02","APM-05","APW-06","APW-07"],"primary_owners":["Campaign/context membership","activity domains","notifications/visibility","resource ownership"],"delivers":["invitation-only shared spaces","participant authority","attributable contributions","reserve/commit/release","async/live coordination","consent","leave/rejoin"],"fallback":"Solo Cozy or ordinary Campaign","activation":"future roadmap only"},
+    {"id":"APM-I05","name":"AutoGM Mini-Campaign director","depends_on":["APM-I03","APM-04","CSW-05","CSW-06"],"primary_owners":["Adventure","encounter runner","visibility projection"],"delivers":["bounded graph progression","child run binding","exact-once child completion","route eligibility","human route choices","hidden package state","finite endings"],"fallback":"standalone AutoGM encounter or human-GM Adventure","activation":"future roadmap only"},
+    {"id":"APM-I06","name":"Automated-play recovery safety and end-to-end acceptance","depends_on":["APM-I01","APM-I02","APM-I03","APM-I04","APM-I05","APW-07"],"primary_owners":["recovery","visibility projection","all participating owning domains"],"delivers":["cross-mode recovery","stale/duplicate/ambiguous safety","optional-AI/out-of-scope rejection","deterministic replay evidence","accessibility/mobile/no-AI acceptance","zero-paid-service gate"],"fallback":"safe pause/manual continuation","activation":"future roadmap only"}
+  ],
+  "recommended_order": ["APM-I01","APM-I02","APM-I03","APM-I04","APM-I05","APM-I06"],
+  "integration_into_apw08": [
+    "APW-08 must preserve these IDs as additive implementation destinations rather than activating them implicitly.",
+    "APW-08 must schedule shared APW foundations before dependent APM slices.",
+    "APW-08 must keep APM implementation feature-flagged and no-AI capable.",
+    "APW-08 must not reinterpret APM as a second state engine or global GM authority."
+  ],
+  "deferred": ["public matchmaking","multiplayer AutoGM authority","unbounded autonomous campaigns","paid-AI dependency","broad offline authoritative automated play"]
+}
