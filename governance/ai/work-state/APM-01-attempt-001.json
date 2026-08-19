@@ -1,15 +1,15 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "work_item_id": "APM-01",
   "attempt_id": "APM-01-attempt-001",
   "track": "automated-play-modes",
   "repository": "cybalicistjt-stack/multiversal-aioc",
   "branch": "governance/apm-01-automated-play-authority",
-  "status": "ready_for_validation",
+  "status": "completed_verified",
   "owner_selected": true,
   "selected_at": "2026-08-19T00:42:00Z",
   "design_ready_at": "2026-08-19T00:54:00Z",
-  "selection_reason": "APW-01 completed_verified in PR #409 and established the universal-user/contextual-authority model required by automated play. The owner-approved combined APW/APM/CSW sequence selects APM-01 immediately after APW-01.",
+  "completed_at": "2026-08-19T01:01:00Z",
   "objective": "Define the canonical Automated-Play Authority and Mode Contract: Solo, AutoGM, CozyMode and Connected Cozy terminology; their relationship to Personal/Campaign/Session Context, Live/Asynchronous/Hybrid Cadence and Connected/Offline/Recovering Connectivity; automation-controller identity and delegated authority; start/stop/revoke semantics; auto-resolvable versus mandatory player-choice boundaries; deterministic/domain-owned responsibilities versus optional-AI presentation/proposal responsibilities; provenance; and save/exit/resume behavior.",
   "program_plan": "governance/application-planning/automated-play-modes/APM_AUTOMATED_PLAY_MODES_PROGRAM.md",
   "program_backlog": "governance/application-planning/automated-play-modes/APM_PROGRAM_BACKLOG.json",
@@ -19,27 +19,6 @@
     "governance/application-planning/automated-play-modes/APM-01_AUTHORITY_MODE_MATRIX.json",
     "governance/application-planning/automated-play-modes/APM-01_TRACEABILITY_AND_ADDITIVE_TOUCHPOINTS.json",
     "governance/application-planning/automated-play-modes/APM-01_REVIEW_RECEIPT.md"
-  ],
-  "source_evidence": [
-    "APW-01 Authority Account Context and Terminology Canonicalization",
-    "MV-IA-F005 Campaign Scene and Session Builder",
-    "MV-IA-F006 First Playable Action and GM Approval Loop",
-    "MV-IA-F020 Permissions and Hidden Information",
-    "MV-IA-F021 Autosave Reconnect Recovery and Bounded Offline Use",
-    "IA-D08-001 Optional AI Assistant Boundaries and Interaction Contract",
-    "IA-D08-002 AI Permission Provenance Cost and Fallback Matrix"
-  ],
-  "design_findings": [
-    "AutoGM and CozyMode are mode/profile experiences, not human account roles or alternate state engines.",
-    "Solo is participation topology; Connected Cozy is CozyMode with invited participants and ordinary independent subject authority.",
-    "Automation controllers are nonhuman service actors and never receive global GM role authority.",
-    "State-affecting automation requires explicit versioned delegation plus fresh owning-domain authorization on every command.",
-    "Every automated operation is classified automatic, bounded automatic, proposal-required, human-required, or prohibited.",
-    "Optional AI remains presentation/proposal assistance and cannot own mechanical legality, hidden-state authority, human choices, permissions, delegation, approval, or Event commit.",
-    "AutoGM scenario-private truth is available only through a governed deterministic scenario/controller projection; optional AI does not receive raw scenario-private truth by default.",
-    "Exit/disconnect never implies background authority; initial AutoGM is foreground-only and Cozy background progress is explicit and bounded.",
-    "Automation run records govern execution/provenance only; ordinary domain state and accepted Events remain the single authoritative history.",
-    "Eleven additive successor touch points are identified without reopening completed Stage A milestones."
   ],
   "depends_on": ["APW-01"],
   "dependency_evidence": {
@@ -63,12 +42,19 @@
     "single_event_persistence_state_model_preserved": true,
     "additive_touchpoints_identified": true,
     "application_implementation_not_activated": true,
-    "final_repository_validation_pending": true,
-    "pull_request_merge_pending": true
+    "final_repository_validation_passed": true,
+    "pull_request_merged": true
+  },
+  "validation_evidence": {
+    "pull_request": 411,
+    "validated_head": "b9516a78e3425b09e79efde120fe1ebb1c655fcb",
+    "repository_health_run": 32203278338,
+    "repository_health_conclusion": "success",
+    "merge_sha": "4150cbd38f7fcae325aa03b83fcf3c4b3a990765"
   },
   "preserved_parallel_tracks": [
-    "APW remains active as an interleaved design program; next APW item is APW-02 after APM-01, CSW-01 and CSW-02.",
-    "CSW owner-approved planned track; next item CSW-01 after APM-01.",
+    "APW remains an interleaved unfinished design program; next item APW-02 after CSW-01 and CSW-02.",
+    "CSW-01 is the next owner-approved design item.",
     "CCTI-12-T04 deferred until September 2026.",
     "WP-011 special environment dormant until owner/Mac availability.",
     "DS-008 blocked exact-byte transfer/validation."
@@ -86,5 +72,5 @@
     "global AI GM authority",
     "CCTI-12-T04 resumption before September 2026"
   ],
-  "next_action": "Open the bounded APM-01 governance PR, run the exact-head AIOC repository-health gate, repair only evidence-proven governance defects if any, merge after PASS, then mark APM-01 completed_verified and select CSW-01 per the owner-approved interleave."
+  "next_action": "Historical completion checkpoint. Current work advances through CURRENT_WORK_POINTER.json to CSW-01-attempt-001."
 }
