@@ -3,7 +3,7 @@
 **Work item:** APM-01 — Automated-Play Authority and Mode Contract  
 **Attempt:** APM-01-attempt-001  
 **Design branch:** `governance/apm-01-automated-play-authority`  
-**Review state:** substantive design complete; repository/PR validation pending
+**Review state:** **COMPLETED_VERIFIED**
 
 ## Reviewed source contracts
 
@@ -19,7 +19,7 @@
 ## Findings
 
 1. Automated play can be additive over the existing Campaign/Action/Event architecture; no second state engine is required.
-2. AutoGM must be a bounded mode/profile, not a Game Master role. The automation controller is a nonhuman service actor using explicit delegated capabilities and fresh owning-domain authorization.
+2. AutoGM is a bounded mode/profile, not a Game Master role. The automation controller is a nonhuman service actor using explicit delegated capabilities and fresh owning-domain authorization.
 3. Solo is participation topology, not role or authority. Connected Cozy is CozyMode with invited participants, not a new authority model.
 4. Context, Cadence, Connectivity, participation topology and automated-play profile remain orthogonal.
 5. A versioned `AutomationDelegationGrant` is required for state-affecting automation and cannot be widened by the controller itself.
@@ -51,4 +51,12 @@
 - Paid AI/provider use authorized: **NO**
 - CCTI-12-T04 resumed: **NO**
 
-Repository-health/PR merge evidence remains to be attached before `completed_verified` is claimed.
+## Exact validation and merge evidence
+
+- AIOC pull request: **#411**
+- Exact validated head: `b9516a78e3425b09e79efde120fe1ebb1c655fcb`
+- Repository-health workflow: **Validate Repository Health**
+- Successful exact-head run: **32203278338**
+- Merge SHA: `4150cbd38f7fcae325aa03b83fcf3c4b3a990765`
+
+APM-01 is therefore `completed_verified`. The owner-approved interleave advances next to **CSW-01 — Storycraft Vocabulary, Creative Object Model and Authority**. APM remains unfinished as a program and returns at APM-02 after APW-02, APW-03 and APW-04. CCTI-12-T04 remains deferred until September 2026.

@@ -1,17 +1,20 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "program_id": "CRS",
   "status": "CURRENT_GUARDRAIL",
   "canonical_selector": {"repository":"cybalicistjt-stack/multiversal-aioc","path":"governance/ai/runtime/CURRENT_WORK_POINTER.json","rule":"This is the only current-work selector. The checkpoint named by this pointer is the only current work-state projection."},
   "aioc_runtime": {"current":["governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json","governance/ai/runtime/CURRENT_WORK_POINTER.json","governance/ai/runtime/INTERACTION_OPERATIONAL_SCORECARD.json","governance/ai/runtime/ROADMAP_INDEX.json","governance/ai/runtime/OWNER_DECISION_2026-08-18_DEFER_CCTI12_T04_TO_SEPTEMBER.md"],"history_preserved":true},
-  "work_state": {"directory":"governance/ai/work-state","selected_checkpoint":"governance/ai/work-state/APM-01-attempt-001.json","rule":"Only the checkpoint named by CURRENT_WORK_POINTER.json is CURRENT. Directory presence never selects work.","historical_files_deleted":false},
+  "work_state": {"directory":"governance/ai/work-state","selected_checkpoint":"governance/ai/work-state/CSW-01-attempt-001.json","rule":"Only the checkpoint named by CURRENT_WORK_POINTER.json is CURRENT. Directory presence never selects work.","historical_files_deleted":false},
   "application_repository": {"canonical_main":"bf61c64c89e7ea997842ea7442797fba619d0e28","local_selector_lifecycle":"HISTORICAL_INERT_COMPATIBILITY_REDIRECT","removed_operational_namespaces":[".agent/active-work-orders",".ai/ready-work-orders"],"history_preserved":true},
-  "active_work": {"work_item":"APM-01","attempt_id":"APM-01-attempt-001","repository":"cybalicistjt-stack/multiversal-aioc","state":"selected_not_started","implementation_authority":false},
-  "recently_completed_design_work": {"work_item":"APW-01","attempt_id":"APW-01-attempt-001","state":"completed_verified","governance_pr":409,"validated_head":"f0b6b3d9b64d3b8f7b1fd9d81f6079b14097ef32","repository_health_run":32202132346,"merge":"2f99a03612dab525eaffd5c0141f84cf8c1b5654"},
+  "active_work": {"work_item":"CSW-01","attempt_id":"CSW-01-attempt-001","repository":"cybalicistjt-stack/multiversal-aioc","state":"selected_not_started","implementation_authority":false},
+  "recently_completed_design_work": [
+    {"work_item":"APM-01","attempt_id":"APM-01-attempt-001","state":"completed_verified","governance_pr":411,"validated_head":"b9516a78e3425b09e79efde120fe1ebb1c655fcb","repository_health_run":32203278338,"merge":"4150cbd38f7fcae325aa03b83fcf3c4b3a990765"},
+    {"work_item":"APW-01","attempt_id":"APW-01-attempt-001","state":"completed_verified","governance_pr":409,"validated_head":"f0b6b3d9b64d3b8f7b1fd9d81f6079b14097ef32","repository_health_run":32202132346,"merge":"2f99a03612dab525eaffd5c0141f84cf8c1b5654"}
+  ],
   "recently_completed": {"work_item":"POST-GATX-SUCCESSOR","application_pr":203,"application_merge":"8685165318b1f3782903bfe137ba8257539af017","temporary_validation_retired":true},
   "preserved_unfinished_tracks": [
-    {"work_item":"APW","state":"interleaved_waiting","completed_item":"APW-01","next_item":"APW-02","resume_after":["APM-01","CSW-01","CSW-02"]},
-    {"work_item":"CSW","state":"planned_not_active","next_item":"CSW-01","activation_after":"APM-01"},
+    {"work_item":"APW","state":"interleaved_waiting","completed_item":"APW-01","next_item":"APW-02","resume_after":["CSW-01","CSW-02"]},
+    {"work_item":"APM","state":"interleaved_waiting","completed_item":"APM-01","next_item":"APM-02","resume_after":["CSW-01","CSW-02","APW-02","APW-03","APW-04"]},
     {"work_item":"CCTI-12-T04","attempt_id":"CCTI-12-attempt-004","application_pr":191,"state":"deferred_owner_until_2026-09","merge_authority":false},
     {"work_item":"WP-011","application_pr":61,"state":"special_environment_dormant"},
     {"work_item":"DS-008","state":"blocked_non_owner"}

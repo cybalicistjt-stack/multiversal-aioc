@@ -1,6 +1,6 @@
 {
-  "schema_version": "2.8.0",
-  "updated_at": "2026-08-19T00:42:00Z",
+  "schema_version": "2.9.0",
+  "updated_at": "2026-08-19T01:02:00Z",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "authority_registry": "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
   "static_restart_prompt": "governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
@@ -14,34 +14,31 @@
   "canonical_application_roadmap": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
   "roadmap_supplements": ["governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_APM_SUPPLEMENT.md"],
   "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
-  "primary_attempt_id": "APM-01-attempt-001",
-  "selection_reason": "APW-01 completed_verified in AIOC PR #409 with exact candidate repository-health success. The owner-approved combined APW/APM/CSW interleave selects APM-01 immediately after APW-01 while CCTI-12-T04 remains deferred until September 2026.",
+  "primary_attempt_id": "CSW-01-attempt-001",
+  "selection_reason": "APM-01 completed_verified in AIOC PR #411 with exact-head repository-health success. The owner-approved combined APW/APM/CSW interleave selects CSW-01 immediately after APM-01 while CCTI-12-T04 remains deferred until September 2026.",
   "active_attempt": {
-    "work_item_id": "APM-01",
-    "attempt_id": "APM-01-attempt-001",
-    "track": "automated-play-modes",
+    "work_item_id": "CSW-01",
+    "attempt_id": "CSW-01-attempt-001",
+    "track": "creator-storycraft-workspace",
     "priority": 1,
     "owner_selected": true,
     "repository": "cybalicistjt-stack/multiversal-aioc",
-    "checkpoint_path": "governance/ai/work-state/APM-01-attempt-001.json",
+    "checkpoint_path": "governance/ai/work-state/CSW-01-attempt-001.json",
     "status": "selected_not_started",
-    "active_item": "APM-01 — Automated-Play Authority and Mode Contract"
+    "active_item": "CSW-01 — Storycraft Vocabulary, Creative Object Model and Authority"
   },
   "paused_or_preserved_tracks": [
-    {"track":"asynchronous-play-persistent-workspace","work_item":"APW","status":"interleaved_waiting","next_item":"APW-02","resume_after":["APM-01","CSW-01","CSW-02"]},
-    {"track":"creator-storycraft-workspace","work_item":"CSW","status":"owner_approved_planned_not_active","next_item":"CSW-01","activation_after":"APM-01"},
+    {"track":"creator-storycraft-workspace","work_item":"CSW","status":"active_interleaved","current_item":"CSW-01","next_item_after_completion":"CSW-02"},
+    {"track":"asynchronous-play-persistent-workspace","work_item":"APW","status":"interleaved_waiting","next_item":"APW-02","resume_after":["CSW-01","CSW-02"]},
+    {"track":"automated-play-modes","work_item":"APM","status":"interleaved_waiting","completed_item":"APM-01","next_item":"APM-02","resume_after":["CSW-01","CSW-02","APW-02","APW-03","APW-04"]},
     {"track":"content-catalog-taxonomy-integration","work_item":"CCTI-12-T04","attempt_id":"CCTI-12-attempt-004","status":"deferred_owner_until_2026-09","repository":"cybalicistjt-stack/Multiversal-app","source_pr":191,"source_branch":"internal-alpha/ccti12-t04-local-review-worksets","clean_branch":"internal-alpha/ccti12-t04-clean","merge_authority":false},
     {"track":"wp-011-apple","status":"preserved_special_environment_dormant","repository":"cybalicistjt-stack/Multiversal-app","pr":61,"branch":"wo/WP011-hosted-macos-evidence"},
     {"track":"design-standards-completion","work_item":"DS-008-working-series","status":"blocked_non_owner"}
   ],
-  "recently_completed_design_work": {
-    "work_item":"APW-01",
-    "status":"completed_verified",
-    "governance_pr":409,
-    "validated_head":"f0b6b3d9b64d3b8f7b1fd9d81f6079b14097ef32",
-    "repository_health_run":32202132346,
-    "merge_sha":"2f99a03612dab525eaffd5c0141f84cf8c1b5654"
-  },
+  "recently_completed_design_work": [
+    {"work_item":"APM-01","status":"completed_verified","governance_pr":411,"validated_head":"b9516a78e3425b09e79efde120fe1ebb1c655fcb","repository_health_run":32203278338,"merge_sha":"4150cbd38f7fcae325aa03b83fcf3c4b3a990765"},
+    {"work_item":"APW-01","status":"completed_verified","governance_pr":409,"validated_head":"f0b6b3d9b64d3b8f7b1fd9d81f6079b14097ef32","repository_health_run":32202132346,"merge_sha":"2f99a03612dab525eaffd5c0141f84cf8c1b5654"}
+  ],
   "recently_completed_work": {
     "work_item":"POST-GATX-SUCCESSOR",
     "status":"completed_verified",
@@ -62,9 +59,9 @@
   ],
   "bounded_authority": {
     "repository_health_maintenance": true,
-    "apm_design_governance": true,
+    "csw_design_governance": true,
     "apw_design_governance": false,
-    "csw_design_governance": false,
+    "apm_design_governance": false,
     "apw_implementation": false,
     "apm_implementation": false,
     "csw_implementation": false,
@@ -74,5 +71,5 @@
     "wp011_run_authorization": false,
     "release_or_deployment": false
   },
-  "exact_next_action": "Execute APM-01 as a bounded design/governance tranche. Define Solo, AutoGM, CozyMode and Connected Cozy as play modes under the APW-01 universal-user/contextual-authority model; specify automation-controller identity and explicit delegation, start/pause/stop/revoke semantics, auto-resolvable versus mandatory human-choice boundaries, deterministic/domain-owned versus optional-AI responsibility, provenance and save/exit/resume rules. No mode flag or automation controller may imply global GM authority or bypass an owning domain. CCTI-12-T04 remains deferred until September 2026."
+  "exact_next_action": "Execute CSW-01 as a bounded design/governance tranche. Define normalized pre-authoritative creative-fragment vocabulary, lifecycle, authority, Personal/Campaign binding, identity/version/provenance and deletion/reference rules; define explicit incorporation/conversion boundaries into A10/D18 World, D28 Adventure, Character, Campaign, investigation, relationship/faction and other owning domains; preserve the distinction between idea/hypothesis/possibility and authoritative fact; do not activate application implementation, AI authorship authority, publication, canonical promotion or CCTI-12-T04 before September 2026."
 }

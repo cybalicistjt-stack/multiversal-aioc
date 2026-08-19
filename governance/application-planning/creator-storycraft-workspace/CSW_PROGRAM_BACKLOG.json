@@ -1,18 +1,21 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "program_id": "CSW",
   "program_name": "Creator Storycraft Workspace",
-  "status": "planned_not_implementation_active",
+  "status": "design_active",
   "owner": "John Brandon Turner",
   "approved_planning_direction": "2026-08-18",
   "execution_rule": "dependency_ordered_complete_substantive_tranche_before_final_gate",
-  "current_execution_pointer_unchanged": true,
+  "current_execution_pointer_unchanged": false,
+  "current_item": "CSW-01",
+  "current_attempt": "CSW-01-attempt-001",
   "tranches": [
     {
       "id": "CSW-01",
       "name": "Storycraft Vocabulary Creative Object Model and Authority",
-      "status": "planned",
+      "status": "selected_not_started",
       "depends_on": [],
+      "sequence_prerequisites_satisfied": ["APW-01", "APM-01"],
       "completion_gate": "Creative fragments have explicit identity lifecycle provenance and authority boundaries and cannot masquerade as Campaign truth published content canonical content or another domain's authoritative object."
     },
     {
@@ -79,18 +82,12 @@
       "completion_gate": "Implementation-ready additive slices persistence boundaries migrations validators fixtures screens dependencies acceptance IDs and A10/APW integration destinations are complete and the haunted-lighthouse proof covers Capture Develop Connect Structure Write Check Use and Reuse."
     }
   ],
-  "planning_order": [
-    "CSW-01",
-    "CSW-02",
-    "CSW-03",
-    "CSW-04",
-    "CSW-05",
-    "CSW-06",
-    "CSW-07",
-    "CSW-08",
-    "CSW-09",
-    "CSW-10"
-  ],
+  "planning_order": ["CSW-01", "CSW-02", "CSW-03", "CSW-04", "CSW-05", "CSW-06", "CSW-07", "CSW-08", "CSW-09", "CSW-10"],
+  "combined_owner_approved_sequence_after_csw01": ["CSW-02", "APW-02", "APW-03", "APW-04", "APM-02", "CSW-03", "CSW-04", "CSW-05", "APM-03", "CSW-06", "APM-04", "CSW-07", "CSW-08", "APW-05", "CSW-09", "APW-06", "APM-05", "CSW-10", "APW-07", "APM-06", "APW-08"],
+  "activation_evidence": {
+    "APW-01": {"status":"completed_verified","pull_request":409,"validated_head":"f0b6b3d9b64d3b8f7b1fd9d81f6079b14097ef32","repository_health_run":32202132346,"merge_sha":"2f99a03612dab525eaffd5c0141f84cf8c1b5654"},
+    "APM-01": {"status":"completed_verified","pull_request":411,"validated_head":"b9516a78e3425b09e79efde120fe1ebb1c655fcb","repository_health_run":32203278338,"merge_sha":"4150cbd38f7fcae325aa03b83fcf3c4b3a990765"}
+  },
   "provisional_implementation_handoff": [
     "CSW-I01 creative-fragment identity lifecycle provenance and authority foundation",
     "CSW-I02 Creative Library Story Bible links search and project memory",
@@ -105,6 +102,7 @@
   "integration_boundaries": {
     "A10": "A10 remains authority for governed World Adventure creator-content and authoring-provenance persistence; CSW orchestrates creative workflow and memory above those domains.",
     "APW": "APW remains authority for the broader Personal Workspace Creator Workshop and asynchronous/persistent-use direction; CSW supplies deeper storycraft memory writing continuity and creative-development behavior.",
+    "APM": "APM-01 automated-play authority is completed and constrains any later storycraft content consumed by AutoGM; CSW does not grant automation or AI story authority.",
     "AI": "Core CSW capability must function without an external AI provider; optional AI is suggestion-only and nonauthoritative."
   },
   "nonauthorization": [
@@ -118,6 +116,7 @@
     "autonomous AI authorship or publication",
     "canonical promotion",
     "public creator marketplace",
-    "training on private user creative material"
+    "training on private user creative material",
+    "CCTI-12-T04 resumption before September 2026"
   ]
 }

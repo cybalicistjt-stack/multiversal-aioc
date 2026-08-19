@@ -1,18 +1,22 @@
 {
   "program_id": "APM",
-  "version": "0.3.0",
-  "status": "design_active",
+  "version": "0.4.0",
+  "status": "interleaved_waiting",
   "owner": "John Brandon Turner",
   "approved": "2026-08-18",
-  "active_item": "APM-01",
-  "active_attempt": "APM-01-attempt-001",
+  "active_item": null,
+  "active_attempt": null,
   "sequence": [
     {
       "id": "APM-01",
       "name": "Automated-Play Authority and Mode Contract",
-      "status": "design_complete_pending_validation",
+      "status": "completed_verified",
       "depends_on": ["APW-01"],
       "dependency_satisfied": true,
+      "pull_request": 411,
+      "validated_head": "b9516a78e3425b09e79efde120fe1ebb1c655fcb",
+      "repository_health_run": 32203278338,
+      "merge_sha": "4150cbd38f7fcae325aa03b83fcf3c4b3a990765",
       "deliverables": [
         "APM-01_AUTOMATED_PLAY_AUTHORITY_AND_MODE_CONTRACT.md",
         "APM-01_AUTHORITY_MODE_MATRIX.json",
@@ -26,6 +30,8 @@
     {"id": "APM-05", "name": "Connected Cozy and Shared Automated Play", "status": "planned", "depends_on": ["APM-02", "APW-06"]},
     {"id": "APM-06", "name": "Recovery, Safety, Acceptance and Implementation Handoff", "status": "planned", "depends_on": ["APM-04", "APM-05", "APW-07"]}
   ],
+  "next_item": "APM-02",
+  "resume_after": ["CSW-01", "CSW-02", "APW-02", "APW-03", "APW-04"],
   "implementation_ladder": [
     "Cozy Solo",
     "Single-Encounter AutoGM",
@@ -56,13 +62,5 @@
     "No public stranger matchmaking in initial APM.",
     "No release, deployment, paid-provider, production-credential, public-marketplace or canonical-promotion authority.",
     "No CCTI-12-T04 resumption before September 2026 without explicit owner override."
-  ],
-  "activation_evidence": {
-    "dependency": "APW-01",
-    "dependency_status": "completed_verified",
-    "dependency_pull_request": 409,
-    "dependency_validated_head": "f0b6b3d9b64d3b8f7b1fd9d81f6079b14097ef32",
-    "dependency_repository_health_run": 32202132346,
-    "dependency_merge_sha": "2f99a03612dab525eaffd5c0141f84cf8c1b5654"
-  }
+  ]
 }
