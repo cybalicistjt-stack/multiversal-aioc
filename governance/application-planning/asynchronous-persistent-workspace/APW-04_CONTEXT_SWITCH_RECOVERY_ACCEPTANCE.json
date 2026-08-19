@@ -1,0 +1,36 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"APW-04",
+  "status":"design_ready_for_review",
+  "source_contracts":[
+    {"id":"APW-01","path":"governance/application-planning/asynchronous-persistent-workspace/APW-01_AUTHORITY_ACCOUNT_CONTEXT_CANONICALIZATION.md","uses":["Personal/Campaign/Session contexts","universal user","contextual authority","context transitions","Personal resource independence"]},
+    {"id":"A3-recent-work","repository":"cybalicistjt-stack/Multiversal-app","path":"packages/contracts/src/a3/recent-work-port.ts","uses":["reauthorize each historical candidate","omit revoked candidate safely","fresh entry authorization"]},
+    {"id":"A3-workspace-entry","repository":"cybalicistjt-stack/Multiversal-app","path":"packages/contracts/src/a3/workspace-entry-port.ts","uses":["fresh entry authorization","route/card/receipt nonauthority","offline cannot authorize protected entry"]},
+    {"id":"A4-character-draft","repository":"cybalicistjt-stack/Multiversal-app","path":"packages/contracts/src/a4/character-draft-port.ts","uses":["current authoritative Character draft is Campaign-bound","future Personal successor must be additive"]},
+    {"id":"A4-character-records","repository":"cybalicistjt-stack/Multiversal-app","path":"packages/contracts/src/a4/character-persistence-records.ts","uses":["current CharacterPolicyBindings campaignId","control grants","event/snapshot/operation provenance"]},
+    {"id":"CSW-01/02","uses":["Personal pre-authoritative creative resources","Creator Projects/Story Bible/Project Memory","visibility-safe governed references"]},
+    {"id":"APM-01","uses":["Personal automated-play context possible only with explicit delegation","AI/controller nonauthority"]}
+  ],
+  "transition_checks":{"personal_to_campaign":["membership","contextual role/delegation","Campaign lifecycle","Character control","entitlement/pack policy","visibility","destination existence"],"campaign_to_personal":["account authentication","Personal resource ownership/assignment","Personal entitlement","Personal lifecycle/visibility"],"always_partition":["protected cache","realtime subscriptions","search projection","recent links","draft scope","notification counts","AI context"]},
+  "recovery_rules":["Personal durable state recovered from owning Personal domains","Campaign state recovered from Campaign owning domains after current authorization","Personal backup never becomes fallback Campaign truth","revoked Campaign references become safe unavailable/omitted projections","Personal resources survive unrelated Campaign role loss","no stale selected-context receipt authorizes re-entry"],
+  "acceptance_scenarios":[
+    {"id":"APW04-A01","scenario":"valid zero-Campaign user","expected":"meaningful Personal Home with creative/reference/practice/account actions and no fake role"},
+    {"id":"APW04-A02","scenario":"unrelated GM tries Personal resource discovery","expected":"deny/omit without existence leakage"},
+    {"id":"APW04-A03","scenario":"same user GM in A and Player in B","expected":"Personal Home remains role-neutral; Campaign cards show scoped roles"},
+    {"id":"APW04-A04","scenario":"Personal→Campaign A","expected":"fresh authorization; only A authority activated"},
+    {"id":"APW04-A05","scenario":"Campaign→Personal","expected":"Campaign role/hidden cache/AI context does not carry over"},
+    {"id":"APW04-A06","scenario":"recent Campaign item authorization revoked","expected":"item omitted safely; Personal recent items remain"},
+    {"id":"APW04-A07","scenario":"Personal Character proposed to Campaign","expected":"explicit Campaign policy/control/entitlement/provenance validation; no implicit binding"},
+    {"id":"APW04-A08","scenario":"leave Campaign with Campaign Character","expected":"runtime/Campaign state not automatically copied to Personal ownership"},
+    {"id":"APW04-A09","scenario":"Personal sandbox changes state","expected":"sandbox-only state; Campaign/base Character unaffected"},
+    {"id":"APW04-A10","scenario":"sandbox reward dragged toward Campaign","expected":"deny direct transfer; governed import/proposal required"},
+    {"id":"APW04-A11","scenario":"Personal note references later-revoked Campaign object","expected":"note survives; protected reference payload disappears/becomes safe unavailable if allowed"},
+    {"id":"APW04-A12","scenario":"account-level Campaign notification opened","expected":"fresh workspace entry authorization before detail"},
+    {"id":"APW04-A13","scenario":"leave last Campaign","expected":"Personal Home remains usable and Campaign protected caches clear"},
+    {"id":"APW04-A14","scenario":"Personal export with Campaign reference","expected":"no Campaign-private referenced payload exported"},
+    {"id":"APW04-A15","scenario":"Campaign→Personal AI use","expected":"no stale Campaign-private prompt context"},
+    {"id":"APW04-A16","scenario":"AI unavailable","expected":"core Personal Home and manual creative/reference/practice flows remain usable"}
+  ],
+  "future_touchpoints":["A3 explicit Personal selected context","Personal workspace discovery/entry","Personal recent-work types","Personal Home shell","A4 Personal Character policy/context successor","Campaign Character bind/clone/adopt operation","CSW adapters","Personal sandbox state isolation","reference library","invitations","safe cross-context notifications","partitioned search/cache/realtime/AI","Personal import/export/recovery","APM-02 Personal host"],
+  "nonauthorization":{"implementation":false,"migration":false,"global_role":false,"campaign_private_personal_copy":false,"sandbox_to_campaign_direct_mutation":false,"canonical_promotion":false,"automation_authority":false,"t04_before_september":false}
+}
