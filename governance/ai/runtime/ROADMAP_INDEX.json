@@ -1,23 +1,24 @@
 {
-  "schema_version": "2.3.0",
-  "updated_at": "2026-08-19T00:16:00Z",
+  "schema_version": "2.4.0",
+  "updated_at": "2026-08-19T00:42:00Z",
   "rule": "This index contains current or preserved unfinished tracks only. Completed historical work remains in Git history and receipts and cannot select current work.",
   "current": {
-    "work_item_id": "APW-01",
-    "attempt_id": "APW-01-attempt-001",
-    "track": "asynchronous-play-persistent-workspace",
-    "checkpoint": "governance/ai/work-state/APW-01-attempt-001.json",
+    "work_item_id": "APM-01",
+    "attempt_id": "APM-01-attempt-001",
+    "track": "automated-play-modes",
+    "checkpoint": "governance/ai/work-state/APM-01-attempt-001.json",
     "repository": "cybalicistjt-stack/multiversal-aioc",
     "status": "selected_not_started",
-    "next_gate": "complete_bounded_authority_account_context_and_terminology_design_contract"
+    "next_gate": "complete_automated_play_authority_and_mode_contract_without_global_gm_or_domain_bypass"
   },
   "preserved_unfinished": [
+    {"work_item_id":"APW","track":"asynchronous-persistent-workspace","status":"interleaved_waiting","completed_item":"APW-01","next_item":"APW-02","resume_after":["APM-01","CSW-01","CSW-02"]},
+    {"work_item_id":"CSW","track":"creator-storycraft-workspace","status":"owner_approved_planned_not_active","next_item":"CSW-01","activation_after":"APM-01"},
     {"work_item_id":"CCTI-12-T04","attempt_id":"CCTI-12-attempt-004","track":"content-catalog-taxonomy-integration","repository":"cybalicistjt-stack/Multiversal-app","source_pull_request":191,"source_branch":"internal-alpha/ccti12-t04-local-review-worksets","clean_branch":"internal-alpha/ccti12-t04-clean","status":"deferred_owner_until_2026-09","resume_rule":"on_or_after_2026-09-01_establish_owner_approved_github_hosted_validation_path_first"},
     {"work_item_id":"WP-011","track":"apple-special-environment","repository":"cybalicistjt-stack/Multiversal-app","pull_request":61,"status":"special_environment_dormant"},
-    {"work_item_id":"DS-008","track":"design-standards-completion","status":"blocked_non_owner"},
-    {"work_item_id":"CSW","track":"creator-storycraft-workspace","status":"owner_approved_planned_not_active","next_item":"CSW-01"},
-    {"work_item_id":"APM","track":"automated-play-modes","status":"owner_approved_planned_not_active","next_item":"APM-01","supplement":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_APM_SUPPLEMENT.md"}
+    {"work_item_id":"DS-008","track":"design-standards-completion","status":"blocked_non_owner"}
   ],
+  "recently_completed_design": {"work_item_id":"APW-01","attempt_id":"APW-01-attempt-001","status":"completed_verified","governance_pr":409,"validated_head":"f0b6b3d9b64d3b8f7b1fd9d81f6079b14097ef32","repository_health_run":32202132346,"merge":"2f99a03612dab525eaffd5c0141f84cf8c1b5654"},
   "recently_completed": {"work_item_id":"POST-GATX-SUCCESSOR","application_pr":203,"merge":"8685165318b1f3782903bfe137ba8257539af017","validated_head":"3b9e33cb22b8d4e3f2558135ba0fc36a8c8ad223","package_sha256":"f07bfc00bb2708e48d0d85118fd1861e017b720d4d85ba1d912ede7b6b5bc694","temporary_validation_retired":true},
   "completed_support": [
     {"program_id":"VCH","status":"completed_verified","closure_application_pr":200,"closure_merge":"aa286a481fc53fdb969cc10be0388974bdbd3c9e"},
