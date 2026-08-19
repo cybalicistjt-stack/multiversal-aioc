@@ -1,8 +1,25 @@
 {
-  "schema_version":"1.6.0","program_id":"CSW","program_name":"Creator Storycraft Workspace","status":"design_active","owner":"John Brandon Turner","current_item":"CSW-03","current_attempt":"CSW-03-attempt-001",
-  "tranches":[{"id":"CSW-01","name":"Storycraft Vocabulary Creative Object Model and Authority","status":"completed_verified","pull_request":413,"repository_health_run":32203942744,"merge_sha":"0627188ce143625565912fc81a7ebc2b9dd436a8"},{"id":"CSW-02","name":"Creative Library Story Bible and Project Memory","status":"completed_verified","pull_request":415,"repository_health_run":32204385272,"merge_sha":"99d4a963d442a0602de9935e69f4a18e7acc5b0c"},{"id":"CSW-03","name":"Idea Inbox and Inspiration Engine","status":"selected_not_started","depends_on":["CSW-01","CSW-02"],"dependencies_satisfied":true,"completion_gate":"A minimal idea can be captured and developed into attributable alternatives with deterministic non-AI tools and optional suggestion assistance without automatically creating authoritative content."},{"id":"CSW-04","name":"Guided Creation Workflows","status":"planned","depends_on":["CSW-01","CSW-02","CSW-03"]},{"id":"CSW-05","name":"Plot Adventure and Narrative Design Lab","status":"planned","depends_on":["CSW-01","CSW-02","CSW-04"]},{"id":"CSW-06","name":"Continuity Consistency and Open-Thread Tracker","status":"planned","depends_on":["CSW-02","CSW-05"]},{"id":"CSW-07","name":"Writing Studio and Revision Workspace","status":"planned","depends_on":["CSW-02","CSW-04","CSW-06"]},{"id":"CSW-08","name":"Reuse Remix and Transformation","status":"planned","depends_on":["CSW-02","CSW-05","CSW-07"]},{"id":"CSW-09","name":"Creator Command Center and Assistance Integration","status":"planned","depends_on":["CSW-03","CSW-04","CSW-05","CSW-06","CSW-07","CSW-08"]},{"id":"CSW-10","name":"Integration Acceptance and Implementation Handoff","status":"planned","depends_on":["CSW-09"]}],
+  "schema_version":"1.7.0",
+  "program_id":"CSW",
+  "program_name":"Creator Storycraft Workspace",
+  "status":"design_active",
+  "owner":"John Brandon Turner",
+  "current_item":"CSW-03",
+  "current_attempt":"CSW-03-attempt-001",
+  "tranches":[
+    {"id":"CSW-01","name":"Storycraft Vocabulary Creative Object Model and Authority","status":"completed_verified","pull_request":413,"repository_health_run":32203942744,"merge_sha":"0627188ce143625565912fc81a7ebc2b9dd436a8"},
+    {"id":"CSW-02","name":"Creative Library Story Bible and Project Memory","status":"completed_verified","pull_request":415,"repository_health_run":32204385272,"merge_sha":"99d4a963d442a0602de9935e69f4a18e7acc5b0c"},
+    {"id":"CSW-03","name":"Idea Inbox and Inspiration Engine","status":"design_complete_pending_validation","depends_on":["CSW-01","CSW-02"],"dependencies_satisfied":true,"deliverables":["CSW-03_IDEA_INBOX_AND_INSPIRATION_ENGINE.md","CSW-03_CAPTURE_TRIAGE_AND_GENERATOR_MATRIX.json","CSW-03_PROVENANCE_DUPLICATE_AI_ACCEPTANCE.json","CSW-03_REVIEW_RECEIPT.md"],"completion_gate":"A minimal idea can be captured and developed into attributable alternatives with deterministic non-AI tools and optional suggestion assistance without automatically creating authoritative content, duplicating existing work or leaking protected source material."},
+    {"id":"CSW-04","name":"Guided Creation Workflows","status":"planned","depends_on":["CSW-01","CSW-02","CSW-03"]},
+    {"id":"CSW-05","name":"Plot Adventure and Narrative Design Lab","status":"planned","depends_on":["CSW-01","CSW-02","CSW-04"]},
+    {"id":"CSW-06","name":"Continuity Consistency and Open-Thread Tracker","status":"planned","depends_on":["CSW-02","CSW-05"]},
+    {"id":"CSW-07","name":"Writing Studio and Revision Workspace","status":"planned","depends_on":["CSW-02","CSW-04","CSW-06"]},
+    {"id":"CSW-08","name":"Reuse Remix and Transformation","status":"planned","depends_on":["CSW-02","CSW-05","CSW-07"]},
+    {"id":"CSW-09","name":"Creator Command Center and Assistance Integration","status":"planned","depends_on":["CSW-03","CSW-04","CSW-05","CSW-06","CSW-07","CSW-08"]},
+    {"id":"CSW-10","name":"Integration Acceptance and Implementation Handoff","status":"planned","depends_on":["CSW-09"]}
+  ],
   "combined_owner_approved_sequence_after_csw03":["CSW-04","CSW-05","APM-03","CSW-06","APM-04","CSW-07","CSW-08","APW-05","CSW-09","APW-06","APM-05","CSW-10","APW-07","APM-06","APW-08"],
-  "activation_evidence":{"CSW-01":{"pull_request":413,"repository_health_run":32203942744},"CSW-02":{"pull_request":415,"repository_health_run":32204385272},"APM-02":{"pull_request":423,"validated_head":"1c3413642792e59523f8fda7e3d4e9b0153cdd88","repository_health_run":32206426684,"merge_sha":"d9bc440fe85f0f98def1b61b4196b858f6b91426"}},
+  "design_rules":["Capture first; structure later.","Inspiration produces candidates, never truth.","CSW-01 fragment identity/lifecycle and CSW-02 Library/Project Memory remain controlling.","Deterministic non-AI generators are first-class.","Generated alternatives never silently overwrite the seed.","Duplicate/related discovery is authorization-filtered and advisory.","Optional AI is context-filtered, attributable and candidate-only.","Offline capture remains local draft until reauthorization/reconciliation."],
   "implementation_boundary":"Planning only; application implementation/persistence migrations remain unauthorized.",
   "nonauthorization":["application implementation","migration execution","automatic authoritative content","AI publication authority","silent duplicate merge","protected-source copying","canonical promotion","release/deployment","CCTI-12-T04 before September 2026"]
 }
