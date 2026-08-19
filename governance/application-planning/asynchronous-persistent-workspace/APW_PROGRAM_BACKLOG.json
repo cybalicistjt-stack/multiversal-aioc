@@ -1,107 +1,27 @@
 {
-  "schema_version": "1.3.0",
-  "program_id": "APW",
-  "program_name": "Asynchronous Play & Persistent Workspace",
-  "status": "design_active_interleaved",
-  "owner": "John Brandon Turner",
-  "approved_planning_direction": "2026-08-18",
-  "execution_rule": "dependency_ordered_complete_substantive_tranche_before_final_gate",
-  "current_execution_pointer_unchanged": false,
-  "current_item": null,
-  "current_attempt": null,
-  "next_apw_item": "APW-02",
-  "interleave_before_next_apw": ["APM-01", "CSW-01", "CSW-02"],
-  "tranches": [
-    {
-      "id": "APW-01",
-      "name": "Authority Account Context and Terminology Canonicalization",
-      "status": "completed_verified",
-      "depends_on": [],
-      "deliverables": [
-        "APW-01_AUTHORITY_ACCOUNT_CONTEXT_CANONICALIZATION.md",
-        "APW-01_AUTHORITY_CONTEXT_MATRIX.json",
-        "APW-01_TRACEABILITY_AND_ADDITIVE_TOUCHPOINTS.json",
-        "APW-01_REVIEW_RECEIPT.md"
-      ],
-      "evidence": {
-        "pull_request": 409,
-        "validated_head": "f0b6b3d9b64d3b8f7b1fd9d81f6079b14097ef32",
-        "repository_health_run": 32202132346,
-        "merge_sha": "2f99a03612dab525eaffd5c0141f84cf8c1b5654"
-      },
-      "completion_gate": "Universal-user and contextual-role authority is unambiguous, older global GM/Player assumptions are reconciled, and additive implementation touch points are identified without reopening completed Stage A closure evidence."
-    },
-    {
-      "id": "APW-02",
-      "name": "Asynchronous Action Proposal and GM Inbox Contract",
-      "status": "planned_waiting_interleave",
-      "depends_on": ["APW-01"],
-      "completion_gate": "One durable delayed proposal produces at most one attributable authoritative outcome through the existing proposal/approval architecture with safe stale conflict clarification reconnect and notification behavior."
-    },
-    {
-      "id": "APW-03",
-      "name": "Between-Session Campaign Activity and Bounded Downtime",
-      "status": "planned",
-      "depends_on": ["APW-01", "APW-02"],
-      "completion_gate": "A bounded alpha-useful activity layer is specified across governed downtime preparation advancement research investigation journal relationship crafting/repair and related owning domains without committing the project to full future breadth."
-    },
-    {
-      "id": "APW-04",
-      "name": "Personal Workspace and No-Campaign Home",
-      "status": "planned",
-      "depends_on": ["APW-01"],
-      "completion_gate": "A subscribed user with zero Campaign memberships has a useful governed Personal workspace and can move between Personal and Campaign contexts without authority bleed."
-    },
-    {
-      "id": "APW-05",
-      "name": "Creator Workshop Reusable Assets and Sandbox Lab",
-      "status": "planned",
-      "depends_on": ["APW-01", "APW-04"],
-      "completion_gate": "Reusable creation experimentation templates Campaign variants live instances and canonical promotion are distinct and permission/provenance safe."
-    },
-    {
-      "id": "APW-06",
-      "name": "Shell Navigation Notifications Visibility and Spoiler UX",
-      "status": "planned",
-      "depends_on": ["APW-02", "APW-03", "APW-04", "APW-05"],
-      "completion_gate": "Desktop mobile keyboard touch and screen-reader workflows make context role waiting work and information classification understandable without treating spoiler filtering as a security boundary."
-    },
-    {
-      "id": "APW-07",
-      "name": "Persistence Recovery Security and Hybrid Acceptance Architecture",
-      "status": "planned",
-      "depends_on": ["APW-02", "APW-03", "APW-04", "APW-05", "APW-06"],
-      "completion_gate": "Deterministic fixtures and acceptance contracts cover long-delay mixed-cadence cross-device revocation entitlement stale-version reconnect nonleakage and no-duplicate-mutation cases."
-    },
-    {
-      "id": "APW-08",
-      "name": "Implementation Handoff and Stage Alpha Integration",
-      "status": "planned",
-      "depends_on": ["APW-07"],
-      "completion_gate": "Implementation-ready additive slices migrations flags validators fixtures acceptance IDs dependencies and roadmap destinations are complete and merged without retroactively invalidating completed Stage A milestones."
-    }
+  "schema_version":"1.4.0",
+  "program_id":"APW",
+  "program_name":"Asynchronous Play & Persistent Workspace",
+  "status":"design_active_interleaved",
+  "owner":"John Brandon Turner",
+  "approved_planning_direction":"2026-08-18",
+  "execution_rule":"dependency_ordered_complete_substantive_tranche_before_final_gate",
+  "current_item":"APW-02",
+  "current_attempt":"APW-02-attempt-001",
+  "next_apw_item":"APW-02",
+  "interleave_before_next_apw_completed":["APM-01","CSW-01","CSW-02"],
+  "tranches":[
+    {"id":"APW-01","name":"Authority Account Context and Terminology Canonicalization","status":"completed_verified","evidence":{"pull_request":409,"validated_head":"f0b6b3d9b64d3b8f7b1fd9d81f6079b14097ef32","repository_health_run":32202132346,"merge_sha":"2f99a03612dab525eaffd5c0141f84cf8c1b5654"}},
+    {"id":"APW-02","name":"Asynchronous Action Proposal and GM Inbox Contract","status":"selected_not_started","depends_on":["APW-01"],"dependency_satisfied":true,"sequence_prerequisites_satisfied":["APM-01","CSW-01","CSW-02"],"completion_gate":"One durable delayed proposal produces at most one attributable authoritative outcome through the existing proposal/approval architecture with safe stale conflict clarification reconnect and notification behavior."},
+    {"id":"APW-03","name":"Between-Session Campaign Activity and Bounded Downtime","status":"planned","depends_on":["APW-01","APW-02"]},
+    {"id":"APW-04","name":"Personal Workspace and No-Campaign Home","status":"planned","depends_on":["APW-01"]},
+    {"id":"APW-05","name":"Creator Workshop Reusable Assets and Sandbox Lab","status":"planned","depends_on":["APW-01","APW-04"]},
+    {"id":"APW-06","name":"Shell Navigation Notifications Visibility and Spoiler UX","status":"planned","depends_on":["APW-02","APW-03","APW-04","APW-05"]},
+    {"id":"APW-07","name":"Persistence Recovery Security and Hybrid Acceptance Architecture","status":"planned","depends_on":["APW-02","APW-03","APW-04","APW-05","APW-06"]},
+    {"id":"APW-08","name":"Implementation Handoff and Stage Alpha Integration","status":"planned","depends_on":["APW-07"]}
   ],
-  "planning_order": ["APW-01", "APW-02", "APW-03", "APW-04", "APW-05", "APW-06", "APW-07", "APW-08"],
-  "combined_owner_approved_sequence_after_apw01": ["APM-01", "CSW-01", "CSW-02", "APW-02", "APW-03", "APW-04", "APM-02", "CSW-03", "CSW-04", "CSW-05", "APM-03", "CSW-06", "APM-04", "CSW-07", "CSW-08", "APW-05", "CSW-09", "APW-06", "APM-05", "CSW-10", "APW-07", "APM-06", "APW-08"],
-  "provisional_implementation_handoff": [
-    "APW-I01 contextual account role and personal-context authority extensions",
-    "APW-I02 Personal Home and workspace switching",
-    "APW-I03 asynchronous Action submission durable GM inbox and delayed resolution",
-    "APW-I04 bounded Campaign Activity and downtime integration",
-    "APW-I05 Creator Workshop reusable library and Sandbox Lab integration",
-    "APW-I06 notification visibility recovery and hybrid cross-device integration",
-    "APW-I07 end-to-end hybrid acceptance"
-  ],
-  "implementation_boundary": "Design/planning only. APW-I identifiers are nonactive planning handles until APW-08 publishes a final handoff and the governing application roadmap explicitly activates implementation.",
-  "nonauthorization": [
-    "release",
-    "deployment",
-    "tester access",
-    "paid services",
-    "production credentials",
-    "autonomous AI mutation",
-    "public creator marketplace",
-    "unrestricted offline multi-writer synchronization",
-    "CCTI-12-T04 resumption before September 2026"
-  ]
+  "planning_order":["APW-01","APW-02","APW-03","APW-04","APW-05","APW-06","APW-07","APW-08"],
+  "combined_owner_approved_sequence_after_apw02":["APW-03","APW-04","APM-02","CSW-03","CSW-04","CSW-05","APM-03","CSW-06","APM-04","CSW-07","CSW-08","APW-05","CSW-09","APW-06","APM-05","CSW-10","APW-07","APM-06","APW-08"],
+  "implementation_boundary":"Design/planning only. APW-I identifiers remain nonactive until APW-08 final handoff and roadmap activation.",
+  "nonauthorization":["release","deployment","tester access","paid services","production credentials","autonomous AI mutation","public creator marketplace","unrestricted offline multi-writer synchronization","CCTI-12-T04 resumption before September 2026"]
 }

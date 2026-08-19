@@ -1,0 +1,33 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"APW-02",
+  "attempt_id":"APW-02-attempt-001",
+  "track":"asynchronous-persistent-workspace",
+  "repository":"cybalicistjt-stack/multiversal-aioc",
+  "status":"selected_not_started",
+  "owner_selected":true,
+  "selected_at":"2026-08-19T01:24:00Z",
+  "selection_reason":"CSW-02 completed_verified in PR #415. The owner-approved APW/APM/CSW interleave now returns to APW-02, followed by APW-03 and APW-04 before APM-02.",
+  "objective":"Define the asynchronous Action, proposal, delayed GM decision and durable inbox contract so one submitted proposal produces at most one attributable authoritative outcome through the existing Action/proposal/Event architecture, with explicit deadlines/expiration, edit/withdraw rules, stale-state handling, clarification loops, delegation, notification, reconnect and hidden-information-safe projections.",
+  "program_plan":"governance/application-planning/asynchronous-persistent-workspace/APW_ASYNCHRONOUS_PLAY_AND_PERSISTENT_WORKSPACE_PROGRAM.md",
+  "program_backlog":"governance/application-planning/asynchronous-persistent-workspace/APW_PROGRAM_BACKLOG.json",
+  "depends_on":["APW-01"],
+  "dependency_evidence":{"APW-01":{"status":"completed_verified","pull_request":409,"validated_head":"f0b6b3d9b64d3b8f7b1fd9d81f6079b14097ef32","repository_health_run":32202132346,"merge_sha":"2f99a03612dab525eaffd5c0141f84cf8c1b5654"}},
+  "sequence_prerequisite_evidence":{"APM-01":{"status":"completed_verified","pull_request":411},"CSW-01":{"status":"completed_verified","pull_request":413},"CSW-02":{"status":"completed_verified","pull_request":415,"validated_head":"fa2c6d959d0cfb4419dbc0b337275b7a79da64bf","repository_health_run":32204385272,"merge_sha":"99d4a963d442a0602de9935e69f4a18e7acc5b0c"}},
+  "completion_gate":"One durable delayed proposal produces at most one attributable authoritative outcome through the existing proposal/approval architecture with safe stale conflict clarification reconnect and notification behavior.",
+  "required_design_questions":[
+    "How does an asynchronous proposal differ from a local draft, live Action intent and authoritative Event?",
+    "What stable IDs, expected versions, submitted snapshots and provenance must be frozen for delayed decisions?",
+    "What can a proposer edit or withdraw before decision, and what creates a new revision versus a new proposal?",
+    "How do deadlines, expiry, supersession and GM inbox ordering work without creating gameplay authority from queue position?",
+    "How does an authorized GM request clarification without modifying the Player's intent?",
+    "How are approve, modify-and-return, reject, expire and cancel outcomes represented through existing proposal/decision semantics?",
+    "What happens when Campaign/Character/target/rules state changes while the proposal waits?",
+    "How are permission revocation, role changes, Campaign lifecycle changes and delegation revalidated at decision/commit time?",
+    "How do notifications expose enough context to act without leaking hidden information?",
+    "How do reconnect/status lookup/idempotency guarantee at-most-one authoritative outcome after retries or ambiguous failures?"
+  ],
+  "preserved_parallel_tracks":["APW-03 follows APW-02","APW-04 follows APW-03","APM-02 follows APW-04","CSW-03 follows APM-02","CCTI-12-T04 deferred until September 2026","WP-011 dormant","DS-008 blocked non-owner"],
+  "nonauthorization":["application implementation","migration execution","release","deployment","tester access","paid services","production credentials","autonomous AI mutation","unrestricted offline multi-writer synchronization","CCTI-12-T04 before September 2026"],
+  "next_action":"Execute APW-02 as a bounded design/governance tranche by reconciling A5/A6 Action-proposal authority, F006 approval loop, F021 recovery/idempotency and notification/visibility constraints into one durable delayed-proposal and GM-inbox contract."
+}
