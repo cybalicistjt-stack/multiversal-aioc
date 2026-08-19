@@ -1,21 +1,21 @@
 {
-  "schema_version":"1.2.0",
+  "schema_version":"1.3.0",
   "work_item_id":"CSW-07",
   "attempt_id":"CSW-07-attempt-001",
   "track":"creator-storycraft-workspace",
   "repository":"cybalicistjt-stack/multiversal-aioc",
   "branch":"governance/csw-07-writing-studio-revision",
-  "status":"ready_for_validation",
+  "status":"completed_verified",
   "owner_selected":true,
   "selected_at":"2026-08-19T07:31:00Z",
   "started_at":"2026-08-19T08:01:00Z",
   "design_ready_at":"2026-08-19T08:08:00Z",
-  "selection_reason":"APM-04 completed_verified in PR #435. CSW-02, CSW-04 and CSW-06 satisfy CSW-07 dependencies; the owner-approved interleave selects CSW-07 before CSW-08.",
+  "completed_at":"2026-08-19T08:13:00Z",
   "objective":"Define a Writing Studio and Revision Workspace for longform and shortform creator prose with recoverable autosave/history, branches and comparison, Story Bible fact/reference support, outline/fragment-to-draft flows, governed-object links, export/handout boundaries and explicit optional-assistance apply/reject behavior while keeping writer-authored prose, creative possibility and governed facts semantically distinct.",
   "depends_on":["CSW-02","CSW-04","CSW-06"],
   "deliverables":["governance/application-planning/creator-storycraft-workspace/CSW-07_WRITING_STUDIO_AND_REVISION_WORKSPACE.md","governance/application-planning/creator-storycraft-workspace/CSW-07_DOCUMENT_REVISION_ASSISTANCE_MATRIX.json","governance/application-planning/creator-storycraft-workspace/CSW-07_RECOVERY_EXPORT_ACCESSIBILITY_ACCEPTANCE.json","governance/application-planning/creator-storycraft-workspace/CSW-07_REVIEW_RECEIPT.md"],
-  "design_findings":["WritingDocument is an editable prose container rather than an owning-domain truth object.","DocumentBranch isolates alternate prose history without branching linked Campaign/World/Adventure state.","WorkingDraft/autosave provides recoverability while immutable DocumentRevision records meaningful historical boundaries.","Autosave frequency is intentionally separate from user-facing revision granularity.","Outline/fragment/workflow-to-draft creates independent prose with exact source provenance and no silent reverse propagation.","Story Bible/reference context retains governed/current/pinned/private/creative/note/open-thread distinctions rather than flattening everything into facts.","Linked governed-reference changes produce stale evidence while prose remains untouched.","CSW-06 candidates are advisory side evidence and cannot auto-edit or auto-resolve.","Creator style/voice/terminology profiles are preferences, not objective quality rules.","Writing assistance is candidate-only with explicit compare/apply/reject or partial apply and attribution.","Optional AI cannot auto-apply, publish, promote truth, resolve continuity or broaden access; no-AI core editing remains complete.","Ambiguous collaborative conflicts preserve both authored variants instead of silent last-writer-wins.","Campaign reconnect revalidates authority and cannot transfer protected Campaign-private content into Personal ownership.","Export/handout projections apply recipient visibility separately and bind to exact document revisions.","Accessibility/mobile parity covers edit, history, branching, comparison, references, recovery, conflict resolution and export without drag/color/canvas dependence.","CSW-08 receives exact revisions/spans/provenance as immutable source evidence for derivative/remix operations."],
-  "completion_gate":{"stable_document_branch_revision_identity":true,"recoverable_autosave_immutable_history":true,"branch_compare_partial_apply":true,"source_preserving_draft_flows":true,"story_bible_reference_class_separation":true,"stale_reference_behavior":true,"csw06_advisory_only":true,"creator_controlled_assistance":true,"optional_ai_no_ai_core":true,"collaboration_offline_recovery":true,"export_handout_visibility_snapshot":true,"accessibility_mobile_nonvisual":true,"csw08_handoff":true,"application_implementation_not_activated":true,"final_repository_validation_pending":true,"pull_request_merge_pending":true},
+  "validation_evidence":{"pull_request":437,"validated_head":"d9a103859ca046af9bc05c307f6ec6e278d50119","repository_health_run":32230974707,"repository_health_conclusion":"success","merge_sha":"d272e5337381c62023c7ec0e14928b71259bd634"},
+  "completion_gate":{"stable_document_branch_revision_identity":true,"recoverable_autosave_immutable_history":true,"branch_compare_partial_apply":true,"source_preserving_draft_flows":true,"story_bible_reference_class_separation":true,"stale_reference_behavior":true,"csw06_advisory_only":true,"creator_controlled_assistance":true,"optional_ai_no_ai_core":true,"collaboration_offline_recovery":true,"export_handout_visibility_snapshot":true,"accessibility_mobile_nonvisual":true,"csw08_handoff":true,"application_implementation_not_activated":true,"final_repository_validation":true,"pull_request_merged":true},
   "nonauthorization":["application implementation","migration execution","automatic prose acceptance","automatic governed truth mutation","AI publication/canonical authority","release/deployment","CCTI-12-T04 before September 2026"],
-  "next_action":"Open bounded CSW-07 governance PR, run exact-head AIOC repository-health, merge after PASS, then record completed_verified evidence and select CSW-08."
+  "next_action":"Historical completed checkpoint. Current work is selected only through CURRENT_WORK_POINTER.json."
 }
