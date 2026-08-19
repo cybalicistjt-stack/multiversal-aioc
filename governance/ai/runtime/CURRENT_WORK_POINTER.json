@@ -1,6 +1,6 @@
 {
-  "schema_version":"3.0.0",
-  "updated_at":"2026-08-19T01:12:00Z",
+  "schema_version":"3.1.0",
+  "updated_at":"2026-08-19T01:24:00Z",
   "canonical_bootstrap":"governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "authority_registry":"governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
   "static_restart_prompt":"governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt",
@@ -9,21 +9,22 @@
   "canonical_application_roadmap":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
   "roadmap_supplements":["governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_APM_SUPPLEMENT.md"],
   "roadmap_index":"governance/ai/runtime/ROADMAP_INDEX.json",
-  "primary_attempt_id":"CSW-02-attempt-001",
-  "selection_reason":"CSW-01 completed_verified in PR #413 with exact-head repository-health success. The owner-approved interleave selects CSW-02 before returning to APW-02. CCTI-12-T04 remains deferred until September 2026.",
-  "active_attempt":{"work_item_id":"CSW-02","attempt_id":"CSW-02-attempt-001","track":"creator-storycraft-workspace","priority":1,"owner_selected":true,"repository":"cybalicistjt-stack/multiversal-aioc","checkpoint_path":"governance/ai/work-state/CSW-02-attempt-001.json","status":"selected_not_started","active_item":"CSW-02 — Creative Library, Story Bible and Project Memory"},
+  "primary_attempt_id":"APW-02-attempt-001",
+  "selection_reason":"CSW-02 completed_verified in AIOC PR #415 with exact-head repository-health success. The owner-approved interleave now returns to APW-02. CCTI-12-T04 remains deferred until September 2026.",
+  "active_attempt":{"work_item_id":"APW-02","attempt_id":"APW-02-attempt-001","track":"asynchronous-persistent-workspace","priority":1,"owner_selected":true,"repository":"cybalicistjt-stack/multiversal-aioc","checkpoint_path":"governance/ai/work-state/APW-02-attempt-001.json","status":"selected_not_started","active_item":"APW-02 — Asynchronous Action, Proposal and GM Inbox Contract"},
   "paused_or_preserved_tracks":[
-    {"track":"asynchronous-play-persistent-workspace","work_item":"APW","status":"interleaved_waiting","next_item":"APW-02","resume_after":["CSW-02"]},
-    {"track":"automated-play-modes","work_item":"APM","status":"interleaved_waiting","completed_item":"APM-01","next_item":"APM-02","resume_after":["CSW-02","APW-02","APW-03","APW-04"]},
-    {"track":"content-catalog-taxonomy-integration","work_item":"CCTI-12-T04","attempt_id":"CCTI-12-attempt-004","status":"deferred_owner_until_2026-09","repository":"cybalicistjt-stack/Multiversal-app","source_pr":191,"source_branch":"internal-alpha/ccti12-t04-local-review-worksets","clean_branch":"internal-alpha/ccti12-t04-clean","merge_authority":false},
+    {"track":"creator-storycraft-workspace","work_item":"CSW","status":"interleaved_waiting","completed_item":"CSW-02","next_item":"CSW-03","resume_after":["APW-02","APW-03","APW-04","APM-02"]},
+    {"track":"automated-play-modes","work_item":"APM","status":"interleaved_waiting","completed_item":"APM-01","next_item":"APM-02","resume_after":["APW-02","APW-03","APW-04"]},
+    {"track":"content-catalog-taxonomy-integration","work_item":"CCTI-12-T04","attempt_id":"CCTI-12-attempt-004","status":"deferred_owner_until_2026-09","repository":"cybalicistjt-stack/Multiversal-app","source_pr":191,"clean_branch":"internal-alpha/ccti12-t04-clean","merge_authority":false},
     {"track":"wp-011-apple","status":"preserved_special_environment_dormant","repository":"cybalicistjt-stack/Multiversal-app","pr":61,"branch":"wo/WP011-hosted-macos-evidence"},
     {"track":"design-standards-completion","work_item":"DS-008-working-series","status":"blocked_non_owner"}
   ],
   "recently_completed_design_work":[
-    {"work_item":"CSW-01","status":"completed_verified","governance_pr":413,"validated_head":"f9ee73b106951d037e4db34b7e876d5229bb13b3","repository_health_run":32203942744,"merge_sha":"0627188ce143625565912fc81a7ebc2b9dd436a8"},
-    {"work_item":"APM-01","status":"completed_verified","governance_pr":411,"validated_head":"b9516a78e3425b09e79efde120fe1ebb1c655fcb","repository_health_run":32203278338,"merge_sha":"4150cbd38f7fcae325aa03b83fcf3c4b3a990765"},
-    {"work_item":"APW-01","status":"completed_verified","governance_pr":409,"validated_head":"f0b6b3d9b64d3b8f7b1fd9d81f6079b14097ef32","repository_health_run":32202132346,"merge_sha":"2f99a03612dab525eaffd5c0141f84cf8c1b5654"}
+    {"work_item":"CSW-02","status":"completed_verified","governance_pr":415,"validated_head":"fa2c6d959d0cfb4419dbc0b337275b7a79da64bf","repository_health_run":32204385272,"merge_sha":"99d4a963d442a0602de9935e69f4a18e7acc5b0c"},
+    {"work_item":"CSW-01","status":"completed_verified","governance_pr":413,"repository_health_run":32203942744,"merge_sha":"0627188ce143625565912fc81a7ebc2b9dd436a8"},
+    {"work_item":"APM-01","status":"completed_verified","governance_pr":411,"repository_health_run":32203278338,"merge_sha":"4150cbd38f7fcae325aa03b83fcf3c4b3a990765"},
+    {"work_item":"APW-01","status":"completed_verified","governance_pr":409,"repository_health_run":32202132346,"merge_sha":"2f99a03612dab525eaffd5c0141f84cf8c1b5654"}
   ],
-  "bounded_authority":{"repository_health_maintenance":true,"csw_design_governance":true,"apw_design_governance":false,"apm_design_governance":false,"apw_implementation":false,"apm_implementation":false,"csw_implementation":false,"ccti_t04_reconciliation_and_validation":false,"ccti_t04_merge_or_completion":false,"tester_distribution":false,"release_or_deployment":false},
-  "exact_next_action":"Execute CSW-02 as a bounded design/governance tranche. Define Creative Library, Story Bible and Project Memory information architecture, stable links/backlinks/history, governed-object references, search/filter/saved-view/graph projections, duplicate suggestions, archive/rediscovery/import/export/recovery and open/unused-material projections using CSW-01 pre-authoritative identity and visibility-before-topology rules. Do not activate application implementation or CCTI-12-T04 before September 2026."
+  "bounded_authority":{"repository_health_maintenance":true,"apw_design_governance":true,"apm_design_governance":false,"csw_design_governance":false,"apw_implementation":false,"apm_implementation":false,"csw_implementation":false,"ccti_t04_reconciliation_and_validation":false,"ccti_t04_merge_or_completion":false,"tester_distribution":false,"release_or_deployment":false},
+  "exact_next_action":"Execute APW-02 as a bounded design/governance tranche. Define durable asynchronous proposal identity/revision, delayed GM inbox and decision state, edit/withdraw/clarification/deadline/expiry/supersession, stale-state revalidation, notifications, delegation and reconnect/idempotency so one proposal produces at most one authoritative outcome through existing Action/proposal/Event architecture."
 }
