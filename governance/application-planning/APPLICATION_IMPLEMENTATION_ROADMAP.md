@@ -1,7 +1,7 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 4.2.0  
+**Version:** 4.3.0  
 **Status:** ACTIVE — COMBINED WORKSPACE IMPLEMENTATION  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-19
@@ -30,40 +30,62 @@ Evidence:
 - squash merge `e1f074bb44b89ade0ab27da205043e2681d2a1be`.
 
 Delivered foundation:
-- one stable subject can be represented across Personal, Campaign and Session contexts without permanent Player/GM account caste;
+- one stable subject across Personal, Campaign and Session contexts without permanent Player/GM account caste;
 - contextual roles remain scoped descriptors rather than global account identity;
-- an authorized zero-Campaign user receives a useful Personal-context projection;
-- protected context partitions require fresh authorization when the authority partition changes;
-- Owner/Admin operations do not imply Campaign authority;
-- unrelated Campaign-role changes do not erase Personal or other Campaign context projections;
-- Live/Async cadence does not fork Campaign authority identity;
-- client context summaries do not serialize stable subject/authentication-session identifiers;
-- the Stage A selected-context receipt v0.1 contract and migrations `0001` through `0008` were not rewritten;
-- APW-I01 required no migration on its selected baseline.
+- authorized zero-Campaign Personal context;
+- protected context partitioning and fresh authorization on authority transitions;
+- Owner/Admin separation from Campaign authority;
+- cadence independence and sanitized client context projection;
+- unchanged Stage A selected-context receipt v0.1 and migrations `0001` through `0008`.
 
-Failed intermediate validation attempts remain preserved in the APW-I01 checkpoint; only the final exact-head green evidence establishes completion.
+### CSW-I01 — COMPLETED_VERIFIED
 
-## Current work — CSW-I01
+**CSW-I01 — Creative identity lifecycle provenance foundation** is complete.
 
-**CSW-I01 — Creative identity lifecycle provenance foundation** is the selected next application implementation slice.
+Evidence:
+- Application PR #206;
+- exact validated head `2836c17042bb11d52755d2589814e6b1e542867c`;
+- application repository-health run `32250405319`: PASS;
+- product validation run `32250405607`: self-hosted Linux PASS, self-hosted Windows PASS, deterministic cross-platform comparison PASS;
+- squash merge `bebf833d59923fbfc78ba593219c727a635fc7b7`;
+- resulting migration head `database/migrations/0009_csw_creative_fragment_foundation.json`.
+
+Delivered foundation:
+- stable D29 `CreativeFragment` identity and monotonic versioning;
+- fixed `pre-authoritative` creator-support authority class;
+- creator ownership/authorship plus Personal/Campaign context binding;
+- deterministic lifecycle states: inbox, scratch, developing, ready, incorporated, superseded, archived and tombstoned;
+- durable source/provenance and semantic relationship references;
+- exact-version incorporation receipts that bridge to owning-domain operations without moving governed payload authority into CSW;
+- reload/recovery, stale-version rejection, tombstone retention and idempotent operation bookkeeping;
+- additive provider-neutral migration `0009` with all new records owned by D29 authoring-provenance;
+- full client regression/typecheck evidence on both owner-controlled platforms.
+
+Failed intermediate validation attempts remain preserved in the CSW-I01 checkpoint. The final Linux lane initially encountered one unrelated A2 performance timing fluctuation while all CSW-I01 cases and Windows passed; an unchanged retry passed the full suite. No A2 budget or validation scope was weakened.
+
+## Current work — APM-I01
+
+**APM-I01 — Automated-run authority and lifecycle foundation** is the selected next application implementation slice.
 
 Repository: `cybalicistjt-stack/Multiversal-app`  
-Attempt: `CSW-I01-attempt-001`  
+Attempt: `APM-I01-attempt-001`  
 State: `selected_not_started`
 
-CSW-I01 implements the first creator/storycraft persistence foundation from CSW-01 and CSW-10:
+APM-I01 implements the first automated-play application foundation from APM-01/APM-06 and the shared APW authority/recovery architecture:
 
-- stable creative-support identity;
-- lifecycle state and creator ownership;
-- durable provenance and source relationships;
-- D29 `authoring-provenance` as the initial persistence owner;
-- pre-authoritative CreativeFragment-style records that do not become governed truth merely by being saved or organized;
-- explicit incorporation/proposal receipts for later governed-domain handoff rather than silent propagation;
-- reload/recovery and rollback compatibility.
+- stable `automationControllerId` and bounded `automationRunId` identity;
+- explicit versioned `AutomationDelegationGrant` scoped to one current Personal, Campaign or Session context;
+- controller as a nonhuman service actor, never Player, GM, Campaign Owner, Owner/Admin or other human role;
+- owning-domain operation classification: `automatic_permitted`, `automatic_with_bounds`, `proposal_required`, `human_required`, or `prohibited`;
+- execution-time reauthorization so delegation is necessary but never sufficient authority;
+- deterministic run lifecycle and pause/resume/stop/revoke/expiry barriers;
+- operation IDs, expected versions, status lookup and Event-sequence evidence for safe retry/recovery;
+- ordinary owning-domain Events remain authoritative game/workspace state rather than an automation ledger;
+- feature-flag/no-AI/manual fallback so disabling automation leaves ordinary play available.
 
-The first CSW-I01 operation is to re-fetch current App main and migration head, inspect the live D29 authoring-provenance contracts/schemas/persistence and exact creator-foundation touchpoints, then create a bounded application branch from verified current main.
+The first APM-I01 operation is to re-fetch current App main and migration head, inspect identity/context, permission/delegation, Action/Event, operation-status/idempotency, recovery and feature-flag seams, then create a bounded application branch from verified current main.
 
-Current canonical application main is `e1f074bb44b89ade0ab27da205043e2681d2a1be`. APW-I01 observed migration head `database/migrations/0008_a10_world_content_authoring.json` and added no migration, but CSW-I01 must independently re-fetch the migration directory before claiming any next slot.
+Current canonical application main is `bebf833d59923fbfc78ba593219c727a635fc7b7`; current observed migration head is `database/migrations/0009_csw_creative_fragment_foundation.json`. APM-I01 must independently re-fetch both before deciding whether another migration is required.
 
 ## Design handoff evidence
 
@@ -90,16 +112,17 @@ APM-I01 through APM-I06, with bounded automation over ordinary owning-domain/Eve
 
 `APW-I01 → CSW-I01 → APM-I01 → APW-I02 → APW-I03 → APW-I04 → CSW-I02 → APM-I02 → APM-I03 → APW-I05 → CSW-I03 → CSW-I04 → CSW-I05 → CSW-I06 → CSW-I07 → APW-I06 → CSW-I08 → APM-I04 → APM-I05 → APM-I06 → APW-I07`
 
-`APW-I01` is completed_verified. `CSW-I01` is selected_not_started. Every later item remains inactive until its own canonical selector transition.
+`APW-I01` and `CSW-I01` are completed_verified. `APM-I01` is selected_not_started. Every later item remains inactive until its own canonical selector transition.
 
 ## Migration and ownership policy
 
-- migrations `0001` through `0008` are immutable predecessors;
+- migrations `0001` through `0009` are immutable predecessors once merged;
 - each implementation tranche rechecks current migration head before mutation;
 - no migration is required when a slice has no schema delta;
 - no monolithic APW/CSW/APM state store is authorized;
-- D29 `authoring-provenance` initially owns CSW creative-support durable records and provenance, while governed World/Adventure/Character/Campaign/A9/Asset payloads remain references to their owning domains;
-- a new creative persistence seam requires separate evidence/governance rather than convenience;
+- D29 `authoring-provenance` owns CSW creative-support durable records and provenance, while governed World/Adventure/Character/Campaign/A9/Asset payloads remain references to their owning domains;
+- APM run/delegation bookkeeping must use an established owning seam selected from live architecture and must not become a parallel game-state ledger;
+- ordinary accepted owning-domain Events remain authoritative state;
 - authorization/visibility filtering precedes count/search/topology/notification/export/diagnostic/AI aggregation.
 
 ## Internal Alpha implementation milestones
@@ -141,7 +164,7 @@ Preserve App PR #191 and the clean reconstruction branch as provenance only. Nei
 
 ## Nonauthorization
 
-Current selection authorizes only the bounded CSW-I01 application implementation tranche. It does not authorize CSW-I02 or later slices, APM-I01, APW-I02, T04 before September, tester distribution, public release/deployment, paid-provider activation, canonical publication or broad Stage A redesign.
+Current selection authorizes only the bounded APM-I01 application implementation tranche. It does not authorize APM-I02 or later slices, APW-I02, CSW-I02, Cozy/AutoGM scenario execution beyond the authority/lifecycle foundation, global GM/controller authority, unbounded background autonomy, T04 before September, tester distribution, public release/deployment, paid-provider activation, canonical publication or broad Stage A redesign.
 
 ## Mandatory execution behavior
 
