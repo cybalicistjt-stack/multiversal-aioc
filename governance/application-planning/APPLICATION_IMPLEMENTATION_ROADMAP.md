@@ -1,7 +1,7 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 4.1.0  
+**Version:** 4.2.0  
 **Status:** ACTIVE — COMBINED WORKSPACE IMPLEMENTATION  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-19
@@ -14,44 +14,66 @@ This is the concise current application roadmap. Historical revisions remain in 
 
 Phase 9 through P9-06-023, DT-001–DT-010, Stage A A0–A12, Internal Alpha tester/GATX T01–T08, PPIA-01–16, CAPP-01–12, CCTI-01–11 plus CCTI-12 T01–T03, VCH-01–06, CRS-01–06 and POST-GATX-SUCCESSOR are **COMPLETED_VERIFIED**.
 
-Current application main at implementation activation is `bf61c64c89e7ea997842ea7442797fba619d0e28`; current migration head is `database/migrations/0008_a10_world_content_authoring.json`. These values must be re-fetched before the first implementation branch is created.
+The APW/APM/CSW design series is **COMPLETED_VERIFIED** through APW-08, APM-06 and CSW-10.
 
-## APW / APM / CSW design series — COMPLETED_VERIFIED
+## Combined implementation progress
 
-The full owner-approved APW/APM/CSW design sequence is complete through:
+### APW-I01 — COMPLETED_VERIFIED
 
-- APW-01 through APW-08;
-- APM-01 through APM-06;
-- CSW-01 through CSW-10.
+**APW-I01 — Contextual account/role projection and Personal-context authority extensions** is complete.
 
-Final handoff evidence:
+Evidence:
+- Application PR #205;
+- exact validated head `2814de3c08e62f8fc6b857f5f43800f3106615dd`;
+- application repository-health run `32248201457`: PASS;
+- product validation run `32248201728`: self-hosted Linux PASS, self-hosted Windows PASS, deterministic cross-platform comparison PASS;
+- squash merge `e1f074bb44b89ade0ab27da205043e2681d2a1be`.
+
+Delivered foundation:
+- one stable subject can be represented across Personal, Campaign and Session contexts without permanent Player/GM account caste;
+- contextual roles remain scoped descriptors rather than global account identity;
+- an authorized zero-Campaign user receives a useful Personal-context projection;
+- protected context partitions require fresh authorization when the authority partition changes;
+- Owner/Admin operations do not imply Campaign authority;
+- unrelated Campaign-role changes do not erase Personal or other Campaign context projections;
+- Live/Async cadence does not fork Campaign authority identity;
+- client context summaries do not serialize stable subject/authentication-session identifiers;
+- the Stage A selected-context receipt v0.1 contract and migrations `0001` through `0008` were not rewritten;
+- APW-I01 required no migration on its selected baseline.
+
+Failed intermediate validation attempts remain preserved in the APW-I01 checkpoint; only the final exact-head green evidence establishes completion.
+
+## Current work — CSW-I01
+
+**CSW-I01 — Creative identity lifecycle provenance foundation** is the selected next application implementation slice.
+
+Repository: `cybalicistjt-stack/Multiversal-app`  
+Attempt: `CSW-I01-attempt-001`  
+State: `selected_not_started`
+
+CSW-I01 implements the first creator/storycraft persistence foundation from CSW-01 and CSW-10:
+
+- stable creative-support identity;
+- lifecycle state and creator ownership;
+- durable provenance and source relationships;
+- D29 `authoring-provenance` as the initial persistence owner;
+- pre-authoritative CreativeFragment-style records that do not become governed truth merely by being saved or organized;
+- explicit incorporation/proposal receipts for later governed-domain handoff rather than silent propagation;
+- reload/recovery and rollback compatibility.
+
+The first CSW-I01 operation is to re-fetch current App main and migration head, inspect the live D29 authoring-provenance contracts/schemas/persistence and exact creator-foundation touchpoints, then create a bounded application branch from verified current main.
+
+Current canonical application main is `e1f074bb44b89ade0ab27da205043e2681d2a1be`. APW-I01 observed migration head `database/migrations/0008_a10_world_content_authoring.json` and added no migration, but CSW-I01 must independently re-fetch the migration directory before claiming any next slot.
+
+## Design handoff evidence
+
+Final design handoff evidence remains:
 - CSW-10: PR #449 / repo-health `32237196497` / merge `d27a6774470261450f41e1591580c7feba174cee`;
 - APW-07: PR #451 / repo-health `32237975517` / merge `e9592399eaca07d0cdf28b79320fc6bf59bde5ef`;
 - APM-06: PR #453 / repo-health `32244745957` / merge `9396ce2ec6094982d292eb4a630036c641094904`;
 - APW-08: PR #455 / exact head `f6263185682ec04c948ef865d8f5f3b674b6e825` / repo-health `32245783537` / merge `608e3ddde4b634a1d545856cfd6cb3b2c273fbc7`.
 
 The design series produced a 21-slice additive implementation program, migration/touch-point inventory, six incremental Internal Alpha milestones, 36 cross-program blocking acceptance cases, feature/fallback/no-AI requirements and explicit Stage A non-reopening rules.
-
-## Current work — APW-I01
-
-**APW-I01 — Contextual account/role projection and Personal-context authority extensions** is the selected first application implementation slice.
-
-Repository: `cybalicistjt-stack/Multiversal-app`  
-Attempt: `APW-I01-attempt-001`  
-State: `selected_not_started`
-
-APW-I01 implements the highest-leverage shared foundation:
-
-- one stable user subject rather than permanent Player/GM account castes;
-- explicit Personal, Campaign and Session contexts;
-- Campaign-scoped role/control/delegation projections;
-- additive compatibility with current Stage A A3 contracts;
-- safe context switching, cache partitioning and reauthorization;
-- useful Personal context for a user with zero Campaign memberships;
-- entitlement/resource independence from unrelated Campaign role changes;
-- no UI/route/query parameter treated as authority.
-
-The first implementation operation is to re-fetch App main and migration head, inspect the exact APW-I01 touchpoints and current validator/regression surface, then create a bounded application branch from the verified current main.
 
 ## Combined implementation handles
 
@@ -68,16 +90,16 @@ APM-I01 through APM-I06, with bounded automation over ordinary owning-domain/Eve
 
 `APW-I01 → CSW-I01 → APM-I01 → APW-I02 → APW-I03 → APW-I04 → CSW-I02 → APM-I02 → APM-I03 → APW-I05 → CSW-I03 → CSW-I04 → CSW-I05 → CSW-I06 → CSW-I07 → APW-I06 → CSW-I08 → APM-I04 → APM-I05 → APM-I06 → APW-I07`
 
-Each item becomes active only through its own canonical selector transition. Completing APW-I01 does not automatically activate later slices.
+`APW-I01` is completed_verified. `CSW-I01` is selected_not_started. Every later item remains inactive until its own canonical selector transition.
 
 ## Migration and ownership policy
 
 - migrations `0001` through `0008` are immutable predecessors;
-- `0009` is merely the current next slot while App main remains unchanged, not a permanent reservation;
 - each implementation tranche rechecks current migration head before mutation;
 - no migration is required when a slice has no schema delta;
 - no monolithic APW/CSW/APM state store is authorized;
-- APW orchestration, CSW creator support and APM run bookkeeping remain additive to established owning domains;
+- D29 `authoring-provenance` initially owns CSW creative-support durable records and provenance, while governed World/Adventure/Character/Campaign/A9/Asset payloads remain references to their owning domains;
+- a new creative persistence seam requires separate evidence/governance rather than convenience;
 - authorization/visibility filtering precedes count/search/topology/notification/export/diagnostic/AI aggregation.
 
 ## Internal Alpha implementation milestones
@@ -119,7 +141,7 @@ Preserve App PR #191 and the clean reconstruction branch as provenance only. Nei
 
 ## Nonauthorization
 
-Current selection authorizes only the bounded APW-I01 application implementation tranche. It does not authorize APW-I02 or later slices, T04 before September, tester distribution, public release/deployment, paid-provider activation, canonical publication, or broad Stage A redesign.
+Current selection authorizes only the bounded CSW-I01 application implementation tranche. It does not authorize CSW-I02 or later slices, APM-I01, APW-I02, T04 before September, tester distribution, public release/deployment, paid-provider activation, canonical publication or broad Stage A redesign.
 
 ## Mandatory execution behavior
 
