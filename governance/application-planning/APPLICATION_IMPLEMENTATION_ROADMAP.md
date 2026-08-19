@@ -1,7 +1,7 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 5.8.0  
+**Version:** 5.9.0  
 **Status:** ACTIVE — COMBINED WORKSPACE IMPLEMENTATION  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-19
@@ -38,67 +38,67 @@ The APW/APM/CSW design series is **COMPLETED_VERIFIED** through APW-08, APM-06 a
 | CSW-I06 | completed_verified | PR #218 / merge `c7aac6ff…` | `0017_csw_writing_studio_revision_workspace.json` |
 | CSW-I07 | completed_verified | PR #219 / merge `5d349777…` | `0018_csw_reuse_remix_transformation.json` |
 | APW-I06 | completed_verified | PR #220 / merge `10e6bd05…` | `0019_apw_shell_notification_recovery.json` |
-| CSW-I08 | completed_verified | PR #222 / `6537ebf7…` / merge `43788e22…` | none |
-| APM-I04 | **selected_not_started** | `APM-I04-attempt-001` | inspect live head first |
+| CSW-I08 | completed_verified | PR #222 / merge `43788e22…` | none |
+| APM-I04 | completed_verified | PR #223 / `d465adc4…` / merge `4276d50c…` | `0020_apm_connected_cozy_shared_play.json` |
+| APM-I05 | **selected_not_started** | `APM-I05-attempt-001` | inspect live head first |
 
-### CSW-I08 completion evidence
+### APM-I04 completion evidence
 
-Application PR #222 completed from exact validated head `6537ebf724f96badc79639b0acf60ab1820e9d6b`. Repository-health run `32289550905` passed. Product run `32289551216` ended with self-hosted Windows PASS, self-hosted Linux PASS after the policy-permitted unchanged retry, and deterministic comparison PASS before squash merge `43788e22d58a4976bd87abd90aec69b2c1c0e8bc`.
+Application PR #223 completed from exact validated head `d465adc4184592aff52639a1b9f9a50fd51ce09a`. Repository-health run `32292150819` passed. Product run `32292154603` ended with self-hosted Linux PASS, self-hosted Windows PASS and deterministic comparison PASS after policy-permitted unchanged retries of the only remaining pre-existing A2 p95 timing fluctuations. All 19 focused APM-I04 tests passed on the final head before squash merge `4276d50cf8a090c807a6ffa24238cef2cad34ee1`.
 
-CSW-I08 added **no migration `0020`**. Live inspection proved that CSW-I01–I07 already own the required creator identities/versions and APW-I06 already owns authorization-safe shell/deep-link recovery. The implementation therefore kept Creator Command Center state projection-only: Continue Writing, Ideas to Develop, Open Threads, Needs Attention, Recent, Unused, Drafts, Story Bible, authorized Campaign usage, Workshop and Sandbox are owner-derived projections; exact return targets reauthorize/re-resolve current state; commands route to owning domains without executing authority; Sandbox remains **Experiment / noncanonical**; visible usage remains visible-subset-only; optional assistance is candidate-only; and core use remains no-AI.
+Migration `0020_apm_connected_cozy_shared_play.json` was added only after live inspection proved a genuine orchestration gap. It stores Connected Cozy shared-space, participant membership/invitation, attributable contribution and operation/recovery metadata only. Character, resource, inventory, relationship and Campaign truth remain in their owning domains. Participant authority never pools through host/space identity; invitation acceptance revalidates current binding/version/authority; visibility filtering precedes participant counts; resource claims use owner reservation receipts; ambiguous owner commit keeps reservations/evidence and enters recovery instead of assuming failure or blindly retrying; leave/revoke removes future authority while preserving committed history; rejoin requires fresh authorization; and core operation requires no AI.
 
-Validation history is preserved in `CSW-I08-attempt-001`: candidate `2facc116…` stopped at shared TypeScript typing/assertion defects before behavioral validation. Final head `6537ebf7…` repaired only those defects and passed all 15 focused CSW-I08 tests. Its first Linux full-suite attempt had only the pre-existing A2 p95 timing fluctuation (`379.370941ms > 250ms`); the unchanged permitted retry passed, followed by deterministic comparison PASS. No A2 threshold/test or CSW-I08 authority/privacy boundary was weakened.
+Validation history is preserved in `APM-I04-attempt-001`: candidate `f4b16674…` exposed one accessible UI-state defect where projection refresh overwrote successful contribution feedback. Final head `d465adc4…` repaired the ordering without weakening behavior. Its first exact-head Linux/Windows full-suite attempts then had only the existing A2 p95 fluctuations (`262.589018ms` and `268.5609ms` > unchanged `250ms`); unchanged retries passed. No A2 threshold/test or APM-I04 privacy/authority/recovery boundary was weakened.
 
-The final haunted-lighthouse acceptance proved the no-AI creator loop `Capture → Develop → Connect → Structure → Write → Check → Use → Reuse` without automatic incorporation/publication or hidden-cardinality leakage.
+## Current work — APM-I05
 
-## Current work — APM-I04
-
-**APM-I04 — Connected Cozy shared play** is the sole selected application implementation slice.
+**APM-I05 — AutoGM Mini-Campaign Director** is the sole selected application implementation slice.
 
 Repository: `cybalicistjt-stack/Multiversal-app`  
-Attempt: `APM-I04-attempt-001`  
+Attempt: `APM-I05-attempt-001`  
 State: `selected_not_started`
 
-Connected Cozy is invitation-only shared orchestration over ordinary Multiversal state. It does not create pooled participant authority, a second rules engine, public matchmaking, or an AI-operated social simulation.
+APM-I05 extends the verified APM-I03 single-encounter runner across a finite, exact-version, governed Adventure scenario graph. It is a bounded director, not an unlimited autonomous Campaign generator and not a second game engine.
 
 Required boundaries:
-- a shared Cozy space has explicit stable identity/lifecycle and references ordinary owner-domain state rather than copying Character/resource/Campaign truth;
-- Solo Cozy → Connected Cozy creates/binds a new shared orchestration identity and never silently converts a Personal workspace into shared authority;
-- every participant has independent identity, authorization, visibility, capability and automation-delegation bounds;
-- the host can administer the space but cannot spend, consent, choose, speak canonically or widen delegation for another participant;
-- invitations disclose only safe join information and are revalidated against current space/version/entitlement/context before acceptance;
-- participant counts, badges, notifications, search, waiting state, deep links and optional-AI context are authorization-filtered before aggregation;
-- contributions are attributable to the acting participant and revalidate current authority/resources/expected versions;
-- shared resource contribution uses explicit reserve/commit/release/refund semantics and cannot double-spend Personal or Campaign resources;
-- live and asynchronous coordination share one governed history and do not create separate state forks;
-- human-required choices and relationship/social consent remain human-required;
-- leave/revoke removes future authority without erasing already-committed attributable history;
-- rejoin creates a fresh authorized projection; stale cached shared state cannot restore removed permissions or hidden data;
-- hidden information is filtered per participant before presentation or optional-AI context;
-- core Connected Cozy operation and recovery require no AI provider;
-- public stranger matchmaking, multiplayer AutoGM authority and broad offline authoritative shared play remain out of scope.
+- `MiniCampaignPackage` is derived only from a governed Adventure definition or explicitly incorporated governed source; unincorporated CSW planning material is not executable;
+- package ID/version, graph nodes/edges, entry/endpoints, route predicates, hidden/reveal state, allowed APM-I03 child encounter packages, deterministic policy/seeds, rewards/results and hard run budgets are finite and inspectable;
+- parent run lifecycle records current graph node, visited/terminal/route receipts, current eligible route-set version, child-run correlations, package-local reveal/objective state, owner-state evidence refs, budget counters and recovery/end state without copying ordinary game truth;
+- route eligibility is computed only from committed current owner state and exact package/policy versions;
+- when two or more meaningfully distinct player-facing eligible routes exist, selection is human-required unless the package explicitly declares a non-choice automatic transition;
+- hidden routes/nodes/future revelations and their cardinality are absent from player projections, summaries, accessibility text, logs, notifications and optional-AI context until revealed;
+- encounter nodes launch APM-I03 child runs with a durable parent→child correlation before child effects can advance parent progression;
+- retry/recovery resolves an existing child before starting another, and one child terminal receipt advances the parent at most once;
+- child abort/fail-safe follows package-declared failure/retreat/recovery semantics rather than being coerced into success;
+- between scenes the director re-reads authoritative Character/resource/inventory/investigation/relationship/World/Campaign state and stores references/evidence rather than parallel state;
+- CSW continuity/open-thread material remains advisory and cannot rewrite runtime routes or package state;
+- hard maximum node transitions, child encounters, automatic steps/Events and explicit endpoints/fail-safe rules prevent endless generation;
+- ambiguous operations recover status before retry and deterministic route/mechanical replay uses exact versions, human choices and governed seed streams;
+- optional AI receives only the player-safe resolved projection and may narrate/summarize/phrase, never own route legality, mechanics, reveals or completion;
+- core route/run/recovery behavior remains useful without AI.
 
-First operation: re-fetch App main and migration head **once**, inspect APM-I01 run/delegation authority, APM-I02 Cozy Solo, APW-I03 asynchronous action/recovery, APW-I04 Campaign activity and existing invitation/membership/resource/idempotency seams, decide whether a genuine durable APM-I04 delta requires migration `0020`, then implement the smallest invitation-only Connected Cozy space + independent participant contribution path.
+First operation: re-fetch App main and migration head **once**, inspect APM-I01 parent automation-run/delegation/operation recovery, APM-I03 encounter package/run/terminal receipt, D28 Adventure graph/incorporation, committed owner-state references, hidden-state projection and recovery/idempotency seams, decide whether a genuine durable APM-I05 delta requires migration `0021`, then implement the smallest finite MiniCampaignPackage + parent route-choice/child-run correlation path.
 
-Canonical App baseline after CSW-I08: `43788e22d58a4976bd87abd90aec69b2c1c0e8bc`. Migration head: `0019_apw_shell_notification_recovery.json`.
+Canonical App baseline after APM-I04: `4276d50cf8a090c807a6ffa24238cef2cad34ee1`. Migration head: `0020_apm_connected_cozy_shared_play.json`.
 
 ## Default strict implementation sequence
 
 `APW-I01 → CSW-I01 → APM-I01 → APW-I02 → APW-I03 → APW-I04 → CSW-I02 → APM-I02 → APM-I03 → APW-I05 → CSW-I03 → CSW-I04 → CSW-I05 → CSW-I06 → CSW-I07 → APW-I06 → CSW-I08 → APM-I04 → APM-I05 → APM-I06 → APW-I07`
 
-Everything through CSW-I08 is completed_verified. APM-I04 is selected_not_started. APM-I05 and later slices remain inactive.
+Everything through APM-I04 is completed_verified. APM-I05 is selected_not_started. APM-I06 and APW-I07 remain inactive.
 
 ## Migration and ownership policy
 
-- migrations `0001` through `0019` are immutable predecessors;
+- migrations `0001` through `0020` are immutable predecessors;
 - every tranche rechecks current App main/migration head once before mutation;
 - no next migration number is reserved in advance;
 - no migration is added without a genuine durable schema delta;
-- APM-I04 may use migration `0020` only if live inspection proves existing automation/activity/membership/resource records cannot represent required Connected Cozy orchestration metadata;
-- any Connected Cozy persistence must store orchestration/membership/contribution/recovery metadata only and never copy Character, resource, inventory, relationship or Campaign truth;
-- stable operation IDs and expected versions must prevent duplicate accepted effects and double-spend;
-- D05/APW-I06 authorization precedes shared counts, notifications, search, waiting state, deep links and optional-AI context;
-- participant authority never pools, and host/automation/AI cannot substitute for another human's consent or required choice;
+- APM-I05 may use migration `0021` only if live inspection proves existing APM-I01/APM-I03/D28 records cannot represent required parent package/run/route/child-correlation/recovery metadata;
+- any APM-I05 persistence stores package/director orchestration, bounded hidden package-local state, route receipts, child correlations, budgets and recovery evidence only; Character, resource, inventory, relationship, investigation, World and Campaign truth remains in owner domains;
+- meaningful player-facing route choices remain human-required;
+- APM-I03 child terminal receipts advance the parent exactly once;
+- D05 authorization/reveal filtering precedes player route counts, summaries, logs, notifications, search and optional-AI context;
+- AI never owns route legality, mechanics, reveal state, completion or package mutation;
 - D18/D28/A9/Character/Campaign and creator incorporation/publication transitions remain explicit owning-domain operations.
 
 ## Internal Alpha milestones
@@ -107,7 +107,7 @@ Everything through CSW-I08 is completed_verified. APM-I04 is selected_not_starte
 2. Between-session and creator foundation — APW-I04, CSW-I01, CSW-I02, APW-I05 — **complete**.
 3. First creator and automated experiences — CSW-I03, CSW-I04, APM-I01, APM-I02, APM-I03 — **complete**.
 4. Deep creator workspace — CSW-I05, CSW-I06, CSW-I07 — **complete**.
-5. Integrated shell and connected automation — APW-I06, CSW-I08, APM-I04, APM-I05, APM-I06 — **APM-I04 current**.
+5. Integrated shell and connected automation — APW-I06, CSW-I08, APM-I04, APM-I05, APM-I06 — **APM-I05 current**.
 6. Whole-system hybrid proof — APW-I07.
 
 Tester distribution remains separately owner-gated.
@@ -129,6 +129,6 @@ Only evidence-backed `completed_verified` is complete. A failed required gate le
 
 ## Nonauthorization
 
-Current selection authorizes only APM-I04. It does not authorize APM-I05+, APW-I07+, migration `0020` without a proven durable delta, public stranger matchmaking, multiplayer AutoGM authority, pooled participant authority, host/AI action or consent on behalf of another human, AI mechanical/canonical/permission/consent authority, hidden participant/Campaign/resource leakage, broad offline authoritative shared play, T04 before September, tester distribution, release/deployment or paid-provider activation.
+Current selection authorizes only APM-I05. It does not authorize APM-I06+, APW-I07+, migration `0021` without a proven durable delta, unlimited autonomous Campaign generation, runtime AI-authored authoritative nodes/edges, direct execution of unincorporated CSW planning material, AI route/mechanical/reveal/completion authority, hidden route/cardinality leakage, parallel ordinary-domain state engines, broad offline authoritative Mini-Campaign mutation, T04 before September, tester distribution, release/deployment or paid-provider activation.
 
 “Continue” means execute the next verified unfinished operation.
