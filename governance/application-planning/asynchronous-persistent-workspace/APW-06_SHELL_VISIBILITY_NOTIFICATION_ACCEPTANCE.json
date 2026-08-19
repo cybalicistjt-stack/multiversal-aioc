@@ -1,0 +1,27 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"APW-06",
+  "attempt_id":"APW-06-attempt-001",
+  "acceptance":[
+    {"id":"context-anchor","result":"PASS","requirement":"Personal, Campaign and Session contexts remain explicit, with parent context/connectivity/cadence shown when relevant."},
+    {"id":"contextual-role","result":"PASS","requirement":"Role/capability labels are contextual and never imply global GM/Player account identity."},
+    {"id":"attention-orchestration","result":"PASS","requirement":"Decision, result, waiting, recovery, informational and creator-advisory items are projected from owning domains rather than duplicated into a second workflow engine."},
+    {"id":"notification-taxonomy","result":"PASS","requirement":"Notification classes are defined with durable source/context/deep-link and current-authorization requirements."},
+    {"id":"noncoercive-quieting","result":"PASS","requirement":"Creator and waiting notifications can be quieted/batched without streaks, punitive overdue states or repeated nagging."},
+    {"id":"deep-link-recovery","result":"PASS","requirement":"Deep links reauthorize and re-resolve current target/version, with safe recovery for permission, version, deletion and connectivity changes."},
+    {"id":"visibility-classes","result":"PASS","requirement":"Personal, reusable, Campaign-local, Sandbox and spoiler-filtered material have explicit accessible semantics; unauthorized hidden material is absent, not styled."},
+    {"id":"spoiler-shield-boundary","result":"PASS","requirement":"Spoiler Shield changes presentation of already-authorized material only and cannot grant/revoke access or reveal hidden cardinality."},
+    {"id":"authorization-before-aggregation","result":"PASS","requirement":"Search, counts, badges, recents, related-work and notification summaries filter by authorization/visibility before aggregate/rank/render."},
+    {"id":"context-switch-cache-isolation","result":"PASS","requirement":"Protected search/results/counts/assistance scope are invalidated or re-evaluated on context switch."},
+    {"id":"offline-reconnect","result":"PASS","requirement":"Cached content is labeled and bounded by owning policy; reconnect revalidates authorization/version before protected projection."},
+    {"id":"ambiguous-mutation-recovery","result":"PASS","requirement":"Ambiguous prior mutations route to owning-domain status/idempotency recovery rather than blind retry."},
+    {"id":"mobile-parity","result":"PASS","requirement":"Context, attention, search and safe recovery remain usable on mobile."},
+    {"id":"keyboard-nonvisual-parity","result":"PASS","requirement":"Keyboard and screen-reader paths convey context, role, information class, notification state and recovery without relying on color or layout."},
+    {"id":"reduced-motion","result":"PASS","requirement":"No essential state depends on animation."},
+    {"id":"voice","result":"PASS","requirement":"Shell copy is warm, calm and concise without blame, fake urgency or obsequiousness."},
+    {"id":"no-ai-core","result":"PASS","requirement":"All APW-06 core behavior is deterministic and useful with no AI provider."},
+    {"id":"implementation-boundary","result":"PASS","requirement":"Design grants no application implementation, migration, notification delivery, security-by-spoiler-shield, release or deployment authority."}
+  ],
+  "deterministic_scenarios":["personal_campaign_session_context_switch","same_subject_gm_and_player_different_campaigns","player_waiting_safe_projection","gm_badge_excludes_inaccessible_item","hidden_search_cardinality_nonleakage","spoiler_shield_reveal_is_ux_only","spoiler_shield_off_unauthorized_still_hidden","stale_deep_link_permission_revoked","stale_deep_link_version_changed","offline_cached_read_only_boundary","reconnect_reauthorization_before_projection","creator_advisory_muting_preserves_state","sandbox_noncanonical_recent_item","screen_reader_context_visibility_equivalence","mobile_context_attention_recovery","ambiguous_mutation_status_lookup"],
+  "final_repository_validation_pending":true
+}
