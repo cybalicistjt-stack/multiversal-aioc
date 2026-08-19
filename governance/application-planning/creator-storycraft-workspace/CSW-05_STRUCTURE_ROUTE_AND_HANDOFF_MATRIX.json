@@ -1,0 +1,16 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"CSW-05",
+  "status":"design_ready_for_review",
+  "structural_roles":["hook","thread","beat","scene-seed","encounter-seed","revelation","choice","consequence","setup","payoff","prerequisite","optional-content","failure-state","endpoint","open-question","note"],
+  "edges":["may-follow","requires","unlocks","choice-leads-to","failure-leads-to","reveals","sets-up","pays-off","supports-thread","contrasts-with","optional-after","converges-with","branches-from","alternate-route-to","references","incorporated-as"],
+  "route_capabilities":{"divergence":true,"convergence":true,"optional_routes":true,"gated_routes":true,"multiple_endpoints":true,"intentional_loops":true,"fail_forward":true,"hard_failure":true,"mutual_exclusion":true,"unresolved_branches":true,"golden_path_required":false},
+  "view_parity":{"outline":"semantic ordered/grouped projection","board":"spatial presentation only unless explicit relation changed","timeline":"creator-provided chronology/relative order","graph":"semantic nodes and labeled edges","nonvisual":"complete node/edge/prerequisite/branch/warning/action outline","drag_required":false},
+  "advisory_checks":["unreachable-required-node","orphan-endpoint","trivial-reconvergence","payoff-without-setup","setup-without-payoff","single-fragile-revelation-source","optional-marked-required","branch-explosion","long-choice-free-route","required-revelation-bypass","missing-reference"],
+  "warning_dispositions":["intentional","dismissed","deferred","resolved"],
+  "mystery_boundary":{"runtime_clue_created":false,"objective_truth_asserted":false,"hypothesis_resolved":false,"design_revelation_links_only":true},
+  "reusable_campaign_boundary":{"reusable_to_campaign":"explicit clone/bind/propose with provenance","campaign_to_reusable":"explicit safe clone/adapt with private/run-specific dependency review","automatic_propagation":false,"revoked_payload_retained":false},
+  "d28_handoff":{"explicit":true,"fields":["sourcePlanIdVersion","selectedSourceNodeEdgeIdsVersions","targetAdventureContext","requestedMapping","excludedUnresolvedItems","sourceReferences","initiatorAuthorization","provenanceCorrelation","previewDiff"],"target_identity_created_by":"D28 owning domain","csw_receipt_after_success":true,"silent_later_propagation":false},
+  "recovery":{"stable_ids":true,"optimistic_versions":true,"idempotent_operations":true,"branch_preserves_source":true,"delete_edge_impact_preview":true},
+  "authority":{"pre_authoritative_until_handoff":true,"automatic_adventure_truth":false,"automatic_campaign_truth":false,"implementation":false,"migration":false,"release":false,"t04_before_september":false}
+}
