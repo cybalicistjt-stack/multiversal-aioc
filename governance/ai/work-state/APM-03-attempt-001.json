@@ -1,21 +1,8 @@
 {
-  "schema_version":"1.0.0",
-  "work_item_id":"APM-03",
-  "attempt_id":"APM-03-attempt-001",
-  "track":"automated-play-modes",
-  "repository":"cybalicistjt-stack/multiversal-aioc",
-  "status":"selected_not_started",
-  "owner_selected":true,
-  "selected_at":"2026-08-19T06:53:00Z",
-  "selection_reason":"CSW-05 completed_verified in PR #429. APM-01 and CSW-05 satisfy APM-03 dependencies; owner-approved interleave selects APM-03 before CSW-06.",
-  "objective":"Define a bounded AutoGM Single-Encounter Runner that can select/setup one governed encounter, accept player Actions, orchestrate NPC/world responses through explicit delegation, resolve mechanics in owning domains, stop at clear end conditions, persist/resume safely and reproduce governed mechanical outcomes for the same deterministic inputs without granting optional AI GM/canonical authority.",
-  "program_plan":"governance/application-planning/automated-play-modes/APM_AUTOMATED_PLAY_MODES_PROGRAM.md",
-  "program_backlog":"governance/application-planning/automated-play-modes/APM_PROGRAM_BACKLOG.json",
-  "depends_on":["APM-01","CSW-05"],
-  "dependency_evidence":{"APM-01":{"status":"completed_verified","pull_request":411,"repository_health_run":32203278338,"merge_sha":"4150cbd38f7fcae325aa03b83fcf3c4b3a990765"},"CSW-05":{"status":"completed_verified","pull_request":429,"validated_head":"f435408042a45e21f651bdac45060818496e4f74","repository_health_run":32225211976,"merge_sha":"95a6faa5f50ed5bfe821d6fc45246cc6a771934c"}},
-  "completion_gate":"One bounded solo encounter can start, execute governed player/NPC turns, pause/resume and end with attributable summary/rewards while the same deterministic mechanical inputs produce the same governed outcome and optional narrative assistance cannot alter legality or canonical state.",
-  "required_design_questions":["What is the encounter package/session model and what must be fixed before start?","How are Character eligibility, encounter package compatibility and difficulty/preferences validated without hidden rule changes?","How does AutoGM choose among only explicitly delegated NPC/world actions while owning domains resolve legality/mechanics?","How are initiative/turn windows, player Actions, reactions/interrupts and mandatory human choices represented?","How are deterministic random inputs/seeds recorded for replay without requiring presentation text to be identical?","How are hidden NPC/world facts filtered before player presentation and AI context?","What hard stop conditions prevent the controller from improvising beyond encounter scope?","How do defeat, retreat, surrender, objective completion, timeout/abort and unresolved endings behave?","How are rewards/loot/advancement proposals separated from automatic irreversible Character mutation?","What state is persisted for pause/resume/reconnect/idempotent duplicate Action handling?","How does optional AI narration/dialogue consume authorized resolved state without owning NPC mechanics or truth?","What deterministic fixtures prove same-input mechanical replay and no authority bleed?"],
-  "preserved_parallel_tracks":["CSW-06 follows APM-03","APM-04 follows CSW-06","APW-05 remains later in approved sequence","CCTI-12-T04 deferred until September 2026","WP-011 dormant","DS-008 blocked non-owner"],
+  "schema_version":"1.1.0","work_item_id":"APM-03","attempt_id":"APM-03-attempt-001","track":"automated-play-modes","repository":"cybalicistjt-stack/multiversal-aioc","branch":"governance/apm-03-single-encounter-runner","status":"ready_for_validation","owner_selected":true,"selected_at":"2026-08-19T06:53:00Z","design_ready_at":"2026-08-19T07:03:00Z",
+  "objective":"Define a bounded AutoGM Single-Encounter Runner with explicit encounter package/session state, delegated controller operations, governed player/NPC resolution, deterministic mechanical replay, hidden-information safety, clear stop/end/reward semantics and resumable foreground persistence.",
+  "deliverables":["governance/application-planning/automated-play-modes/APM-03_AUTOGM_SINGLE_ENCOUNTER_RUNNER.md","governance/application-planning/automated-play-modes/APM-03_ENCOUNTER_AUTHORITY_REPLAY_ACCEPTANCE_MATRIX.json","governance/application-planning/automated-play-modes/APM-03_REVIEW_RECEIPT.md"],
+  "completion_gate":{"bounded_single_encounter":true,"delegated_controller":true,"governed_player_npc_loop":true,"reaction_human_barriers":true,"deterministic_mechanical_replay":true,"hidden_info_ai_separation":true,"end_reward_semantics":true,"foreground_recovery_idempotency":true,"no_ai_path":true,"final_repository_validation_pending":true,"pull_request_merge_pending":true},
   "nonauthorization":["application implementation","migration execution","unbounded AutoGM","AI mechanical/canonical/GM authority","automatic irreversible advancement","release/deployment","CCTI-12-T04 before September 2026"],
-  "next_action":"Execute APM-03 as a bounded design/governance tranche defining encounter package/session state, delegated controller loop, deterministic resolution/replay, hidden-information boundaries, stop/end/reward semantics, persistence/recovery and optional-AI presentation limits."
+  "next_action":"Open bounded APM-03 governance PR, run exact-head AIOC repository-health, merge after PASS, then record completed_verified evidence and select CSW-06."
 }

@@ -1,0 +1,31 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"APM-03",
+  "status":"design_ready_for_review",
+  "run_statuses":["draft","validating","ready","running","awaiting-player-action","resolving","awaiting-reaction","paused","recovery-required","ending","completed","aborted","failed-safe"],
+  "setup_checks":["subject-context-authorization","character-eligibility","package-rules-pack-schema-compatibility","encounter-prerequisites","delegation-scope-expiry","hidden-information-policy","difficulty-presentation-profile","starting-resource-condition-state","deterministic-seed-stream","end-reward-rules","foreground-only-mode"],
+  "controller_permissions":{"eligible_operations":["automatic_permitted","automatic_with_bounds"],"barriers":["proposal_required","human_required","prohibited"],"undefined_response":"pause_or_failed_safe"},
+  "human_barriers":["intentional-player-action","reaction-interrupt-choice","irreversible-advancement","consent-privacy-safety","delegation-change","ambiguous-out-of-model-recovery"],
+  "mechanical_replay_inputs":["starting-authoritative-state-version","encounter-package-version","rules-pack-schema-versions","delegation-mode-profile-versions","ordered-player-actions","seed-entropy-stream","controller-policy-version","deterministic-domain-inputs"],
+  "mechanical_replay_excludes":["narration-wording","optional-ai-dialogue","animation-timing","ui-layout"],
+  "hidden_information":{"filter_before_player_projection":true,"filter_before_ai_context":true,"raw_private_package_to_ai":false,"leak_channels_prohibited":["action-enumeration","failure-text","counts","logs","summaries","accessibility-text","autocomplete","retry-hints"]},
+  "end_reasons":["objective-complete","endpoint-reached","defeat-incapacitation","retreat-escape","surrender","package-bound","player-abort","delegation-revoked","authorization-invalid","human-choice","undefined-out-of-scope","persistence-conflict","safety-privacy"],
+  "recovery":{"foreground_only":true,"disconnect_background_progress":false,"persist":["run-package-controller-delegation-versions","last-event-sequence","phase-round-turn-window","seed-stream-position","pending-human-operation","accepted-operation-status","hidden-scenario-state-version","visible-projection-version"],"duplicate_action":"idempotent_reject_or_status_return","incompatible_resume":"pause_for_explicit_recovery"},
+  "rewards":{"automatic_only_if_owning_domain_permits":true,"inventory_validation":true,"advancement_eligibility_allowed":true,"irreversible_build_choice_automatic":false},
+  "ai":{"optional":true,"presentation_only":true,"mechanical_authority":false,"hidden_state_authority":false,"completion_authority":false,"no_ai_path_required":true},
+  "acceptance_scenarios":[
+    {"id":"APM03-A01","scenario":"same starting fixture/actions/seed/controller policy","expected":"same governed mechanical event sequence"},
+    {"id":"APM03-A02","scenario":"AI narration varies","expected":"mechanical replay identity unaffected"},
+    {"id":"APM03-A03","scenario":"player submits illegal action","expected":"no state mutation; explain and return control"},
+    {"id":"APM03-A04","scenario":"human reaction window exists","expected":"runner waits; no silent decline"},
+    {"id":"APM03-A05","scenario":"NPC eligible response set empty","expected":"pause or fail-safe; no invented mechanical operation"},
+    {"id":"APM03-A06","scenario":"hidden trigger exists","expected":"controller may use authorized private state; player/AI projection does not leak it"},
+    {"id":"APM03-A07","scenario":"disconnect mid-player turn","expected":"foreground run pauses and resumes at proven boundary"},
+    {"id":"APM03-A08","scenario":"duplicate action after reconnect","expected":"idempotent status/result; no duplicate event"},
+    {"id":"APM03-A09","scenario":"package/rules version incompatible on resume","expected":"explicit recovery required; no silent reinterpretation"},
+    {"id":"APM03-A10","scenario":"encounter completion grants advancement eligibility","expected":"eligibility/proposal only; irreversible choice remains human"},
+    {"id":"APM03-A11","scenario":"delegation revoked before NPC response","expected":"no new controller command accepted"},
+    {"id":"APM03-A12","scenario":"AI unavailable","expected":"encounter remains completable through deterministic/manual presentation"}
+  ],
+  "nonauthorization":{"implementation":false,"migration":false,"unbounded_autogm":false,"ai_mechanical_authority":false,"automatic_irreversible_advancement":false,"release":false,"t04_before_september":false}
+}
