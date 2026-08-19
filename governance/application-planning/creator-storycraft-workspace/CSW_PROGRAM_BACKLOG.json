@@ -1,20 +1,17 @@
 {
-  "schema_version":"2.1.0",
-  "program_id":"CSW","program_name":"Creator Storycraft Workspace","status":"design_active","owner":"John Brandon Turner","current_item":"CSW-05","current_attempt":"CSW-05-attempt-001",
+  "schema_version":"2.2.0","program_id":"CSW","program_name":"Creator Storycraft Workspace","status":"interleaved_waiting","owner":"John Brandon Turner","current_item":null,"current_attempt":null,
   "tranches":[
     {"id":"CSW-01","name":"Storycraft Vocabulary Creative Object Model and Authority","status":"completed_verified","pull_request":413,"repository_health_run":32203942744,"merge_sha":"0627188ce143625565912fc81a7ebc2b9dd436a8"},
     {"id":"CSW-02","name":"Creative Library Story Bible and Project Memory","status":"completed_verified","pull_request":415,"repository_health_run":32204385272,"merge_sha":"99d4a963d442a0602de9935e69f4a18e7acc5b0c"},
-    {"id":"CSW-03","name":"Idea Inbox and Inspiration Engine","status":"completed_verified","pull_request":425,"validated_head":"f7c318b6d0b100699a8d3c99706c2e9a437c2949","repository_health_run":32223163209,"merge_sha":"f6d3c892d9df70083f7c44d82f3c0d6165a67c74"},
-    {"id":"CSW-04","name":"Guided Creation Workflows","status":"completed_verified","pull_request":427,"validated_head":"a9b17f875a8d2f7da092cb1b68fe8889040112a7","repository_health_run":32224302162,"merge_sha":"e00d166719cec078ae427f01a376795183683902"},
-    {"id":"CSW-05","name":"Plot Adventure and Narrative Design Lab","status":"design_complete_pending_validation","depends_on":["CSW-01","CSW-02","CSW-04"],"dependencies_satisfied":true,"deliverables":["CSW-05_PLOT_ADVENTURE_AND_NARRATIVE_DESIGN_LAB.md","CSW-05_STRUCTURE_ROUTE_AND_HANDOFF_MATRIX.json","CSW-05_ACCEPTANCE_AND_REVIEW_RECEIPT.md"],"completion_gate":"Creators can plan a branching tabletop adventure from hooks through outcomes with usable outline/board/timeline/graph and semantic nonvisual projections while speculative structure remains clearly separate from incorporated Adventure/Campaign truth and agency/continuity analysis remains advisory."},
+    {"id":"CSW-03","name":"Idea Inbox and Inspiration Engine","status":"completed_verified","pull_request":425,"repository_health_run":32223163209,"merge_sha":"f6d3c892d9df70083f7c44d82f3c0d6165a67c74"},
+    {"id":"CSW-04","name":"Guided Creation Workflows","status":"completed_verified","pull_request":427,"repository_health_run":32224302162,"merge_sha":"e00d166719cec078ae427f01a376795183683902"},
+    {"id":"CSW-05","name":"Plot Adventure and Narrative Design Lab","status":"completed_verified","pull_request":429,"validated_head":"f435408042a45e21f651bdac45060818496e4f74","repository_health_run":32225211976,"merge_sha":"95a6faa5f50ed5bfe821d6fc45246cc6a771934c"},
     {"id":"CSW-06","name":"Continuity Consistency and Open-Thread Tracker","status":"planned","depends_on":["CSW-02","CSW-05"]},
     {"id":"CSW-07","name":"Writing Studio and Revision Workspace","status":"planned","depends_on":["CSW-02","CSW-04","CSW-06"]},
     {"id":"CSW-08","name":"Reuse Remix and Transformation","status":"planned","depends_on":["CSW-02","CSW-05","CSW-07"]},
     {"id":"CSW-09","name":"Creator Command Center and Assistance Integration","status":"planned","depends_on":["CSW-03","CSW-04","CSW-05","CSW-06","CSW-07","CSW-08"]},
     {"id":"CSW-10","name":"Integration Acceptance and Implementation Handoff","status":"planned","depends_on":["CSW-09"]}
   ],
-  "combined_owner_approved_sequence_after_csw05":["APM-03","CSW-06","APM-04","CSW-07","CSW-08","APW-05","CSW-09","APW-06","APM-05","CSW-10","APW-07","APM-06","APW-08"],
-  "design_rules":["Plan richly, branch freely, keep structure pre-authoritative until explicit handoff.","All views share semantic identities/edges and have nonvisual parity.","Agency/pacing/mystery checks are advisory.","D28 owns incorporated Adventure identities and later propagation is never silent."],
-  "implementation_boundary":"Planning only; application implementation/persistence migrations remain unauthorized.",
-  "nonauthorization":["application implementation","migration execution","automatic authoritative Adventure/Campaign content","forced linear narrative structure","AI publication authority","canonical promotion","release/deployment","CCTI-12-T04 before September 2026"]
+  "next_item":"CSW-06","resume_after":["APM-03"],
+  "implementation_boundary":"Planning only; application implementation/persistence migrations remain unauthorized."
 }
