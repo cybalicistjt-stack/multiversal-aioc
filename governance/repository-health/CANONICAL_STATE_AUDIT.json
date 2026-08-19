@@ -1,7 +1,15 @@
 {
-  "schema_version":"2.3.0","audit_id":"CRS-CANONICAL-STATE-AUDIT-CURRENT","status":"completed_verified_with_design_transition","result":"zero_known_conflicting_authority","known_conflicts":[],"production_resume_authorized":true,
+  "schema_version":"2.4.0",
+  "audit_id":"CRS-CANONICAL-STATE-AUDIT-CURRENT",
+  "status":"completed_verified_with_design_transition",
+  "result":"zero_known_conflicting_authority",
+  "known_conflicts":[],
+  "production_resume_authorized":true,
   "repositories":{"cybalicistjt-stack/multiversal-aioc":{"live_workflows_expected":[".github/workflows/validate-repository-health.yml"]},"cybalicistjt-stack/Multiversal-app":{"main_head":"bf61c64c89e7ea997842ea7442797fba619d0e28","live_workflows_expected":[".github/workflows/_validation-core-profile.yml",".github/workflows/self-hosted-windows-runner-smoke.yml",".github/workflows/validate-repository-health.yml"],"open_governed_prs":[{"number":61,"work_item":"WP-011","merge_authority":false},{"number":191,"work_item":"CCTI-12-T04","merge_authority":false,"activation":"DEFERRED OWNER UNTIL SEPTEMBER 2026"}]}},
-  "design_transition":{"completed":{"work_item":"APM-02","attempt_id":"APM-02-attempt-001","status":"completed_verified","pull_request":423,"validated_head":"1c3413642792e59523f8fda7e3d4e9b0153cdd88","repository_health_run":32206426684,"merge_sha":"d9bc440fe85f0f98def1b61b4196b858f6b91426"},"selected":{"work_item":"CSW-03","attempt_id":"CSW-03-attempt-001","status":"selected_not_started","dependencies":["CSW-01","CSW-02"]}},
-  "authority_checks":[{"id":"single-selector","status":"PASS","evidence":"CURRENT_WORK_POINTER selects CSW-03-attempt-001 only."},{"id":"design-sequence","status":"PASS","evidence":"APM-02, CSW-01 and CSW-02 are completed_verified; owner-approved interleave selects CSW-03."},{"id":"apm-preservation","status":"PASS","evidence":"APM-03 remains preserved until CSW-03/04/05 complete."},{"id":"apw-preservation","status":"PASS","evidence":"APW-05 remains preserved for later sequence position."},{"id":"route-around-authority","status":"PASS","evidence":"T04 remains deferred until September 2026."},{"id":"open-pr-authority","status":"PASS","evidence":"T04 and WP-011 have no current merge authority."}],
-  "resumed_work_item":"CSW-03","deferred_work_item":"CCTI-12-T04","deferred_until":"2026-09-01","owner_decision":"governance/ai/runtime/OWNER_DECISION_2026-08-18_DEFER_CCTI12_T04_TO_SEPTEMBER.md"
+  "design_transition":{"completed":{"work_item":"CSW-03","attempt_id":"CSW-03-attempt-001","status":"completed_verified","pull_request":425,"validated_head":"f7c318b6d0b100699a8d3c99706c2e9a437c2949","repository_health_run":32223163209,"merge_sha":"f6d3c892d9df70083f7c44d82f3c0d6165a67c74"},"selected":{"work_item":"CSW-04","attempt_id":"CSW-04-attempt-001","status":"selected_not_started","dependencies":["CSW-01","CSW-02","CSW-03"]}},
+  "authority_checks":[{"id":"single-selector","status":"PASS","evidence":"CURRENT_WORK_POINTER selects CSW-04-attempt-001 only."},{"id":"design-sequence","status":"PASS","evidence":"CSW-01, CSW-02 and CSW-03 are completed_verified; owner-approved sequence selects CSW-04 before CSW-05/APM-03."},{"id":"apm-preservation","status":"PASS","evidence":"APM-03 remains preserved until CSW-04/05 complete."},{"id":"apw-preservation","status":"PASS","evidence":"APW-05 remains preserved for later sequence position."},{"id":"route-around-authority","status":"PASS","evidence":"T04 remains deferred until September 2026."},{"id":"open-pr-authority","status":"PASS","evidence":"T04 and WP-011 have no current merge authority."}],
+  "resumed_work_item":"CSW-04",
+  "deferred_work_item":"CCTI-12-T04",
+  "deferred_until":"2026-09-01",
+  "owner_decision":"governance/ai/runtime/OWNER_DECISION_2026-08-18_DEFER_CCTI12_T04_TO_SEPTEMBER.md"
 }
