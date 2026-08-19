@@ -1,21 +1,23 @@
 {
-  "schema_version":"1.0.0",
+  "schema_version":"1.1.0",
   "work_item_id":"CSW-04",
   "attempt_id":"CSW-04-attempt-001",
   "track":"creator-storycraft-workspace",
   "repository":"cybalicistjt-stack/multiversal-aioc",
-  "status":"selected_not_started",
+  "branch":"governance/csw-04-guided-creation-workflows",
+  "status":"in_progress",
   "owner_selected":true,
   "selected_at":"2026-08-19T06:27:00Z",
-  "selection_reason":"CSW-03 completed_verified in PR #425. CSW-01, CSW-02 and CSW-03 now satisfy CSW-04 dependencies; the owner-approved interleave selects CSW-04 before CSW-05 and APM-03.",
+  "started_at":"2026-08-19T06:34:00Z",
+  "selection_reason":"CSW-03 completed_verified in PR #425. CSW-01, CSW-02 and CSW-03 satisfy CSW-04 dependencies; the owner-approved interleave selects CSW-04 before CSW-05 and APM-03.",
   "objective":"Define optional Guided Creation Workflows that help novice creators reach coherent usable drafts for common storycraft tasks while expert creators can bypass, reorder or customize guidance without losing capability, authority separation, provenance, Personal/Campaign visibility safety or freeform creative control.",
   "program_plan":"governance/application-planning/creator-storycraft-workspace/CSW_CREATOR_STORYCRAFT_WORKSPACE_PROGRAM.md",
   "program_backlog":"governance/application-planning/creator-storycraft-workspace/CSW_PROGRAM_BACKLOG.json",
   "depends_on":["CSW-01","CSW-02","CSW-03"],
   "dependency_evidence":{"CSW-01":{"status":"completed_verified","pull_request":413,"repository_health_run":32203942744},"CSW-02":{"status":"completed_verified","pull_request":415,"repository_health_run":32204385272,"merge_sha":"99d4a963d442a0602de9935e69f4a18e7acc5b0c"},"CSW-03":{"status":"completed_verified","pull_request":425,"validated_head":"f7c318b6d0b100699a8d3c99706c2e9a437c2949","repository_health_run":32223163209,"merge_sha":"f6d3c892d9df70083f7c44d82f3c0d6165a67c74"}},
   "completion_gate":"Novice users can reach a coherent usable pre-authoritative draft through optional guidance, while expert users can bypass, reorder or customize guidance without losing capability; all outputs remain attributable, visibility-safe and subject to explicit owning-domain incorporation.",
-  "required_design_questions":["What reusable workflow/step/question primitives can serve many creator tasks without hard-coding one creative method?","How can creators skip, revisit, reorder, pause, branch or abandon guidance without losing work?","How do guided workflows coexist with direct freeform editing and CSW-03 Inspiration tools?","What common workflow families are in the initial bounded set: backstory, NPC/antagonist, faction, settlement/location, World/culture, mystery, adventure/quest, encounter, Campaign premise/arc?","Which fields/questions are universal versus task-specific and optional?","How are answers stored as Creative Fragments/Project Memory rather than prematurely becoming governed truth?","How does existing Story Bible context inform suggestions without creating circular truth or hidden-information leakage?","How do creator-owned reusable templates/presets work without granting publication/canonical authority?","How are optional AI suggestions inserted at individual steps without controlling the workflow or auto-applying output?","What accessibility/mobile/nonvisual behavior is required for progress, branching, reordering and validation?"],
+  "active_operation":"Design the reusable workflow/step/question model, task-family blueprints, freeform/branching/resume semantics, Story Bible/Inspiration integration, creator-owned presets, AI boundaries and accessibility/mobile parity.",
   "preserved_parallel_tracks":["CSW-05 follows CSW-04","APM-03 follows CSW-05","APW-05 remains later in the approved sequence","CCTI-12-T04 deferred until September 2026","WP-011 dormant","DS-008 blocked non-owner"],
   "nonauthorization":["application implementation","migration execution","mandatory wizard-only creation","automatic authoritative content","autonomous AI authorship/publication","canonical promotion","release/deployment","CCTI-12-T04 before September 2026"],
-  "next_action":"Execute CSW-04 as a bounded design/governance tranche defining the reusable guided-workflow framework, initial task families, optional/skippable/revisitable steps, freeform escape and branching, Story Bible/Inspiration integration, reusable templates, optional AI step assistance and accessibility/mobile parity."
+  "next_action":"Complete the bounded CSW-04 design package and exact acceptance matrix, then run repository-health on the final head."
 }
