@@ -1,0 +1,26 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"CSW-02",
+  "status":"design_ready_for_review",
+  "dependencies":[
+    {"id":"CSW-01","role":"stable CreativeFragment identity/version/lifecycle/relationships/incorporation receipts/tombstones"},
+    {"id":"APW-01","role":"Personal/Campaign context and authority"},
+    {"id":"A10-D18-D28-D29-D05","role":"governed World/Adventure/authoring/projection authority"},
+    {"id":"A9","role":"runtime investigation/social/faction authority"}
+  ],
+  "node_classes":["creative-fragment","creator-project","collection-tag-saved-view","incorporation-receipt","governed-object-reference","publication-review-provenance-reference","tombstone-unavailable-reference","creator-history-event-projection"],
+  "relationship_classes":["related-to","inspired-by","derived-from","branch-of","alternate-of","supports","contrasts-with","foreshadows","pays-off","supersedes","references","used-in","member-of-project","member-of-collection","tagged-with","pinned-in-story-bible","annotated-by","incorporated-via","created-from-governed-source","replaced-by","archived-with"],
+  "explicit_edge_rule":"Backlinks and used-in relations derive from stored stable relationships, governed references or incorporation receipts. Similarity may propose a candidate edge but cannot create project-memory structure silently.",
+  "history_families":["fragment-created","fragment-revised","fragment-reclassified","branch-clone-alternate-created","relationship-added-removed","project-collection-tag-membership-changed","story-bible-pin-annotation-changed","incorporation-proposed-accepted-rejected-withdrawn","governed-reference-pinned-unpinned","fragment-superseded-archived-restored-tombstoned","collaboration-visibility-changed","import-export-recovery","optional-ai-suggestion-disposition"],
+  "history_rule":"For governed objects CSW history references target-domain provenance/version/Event evidence rather than restating the governed event as CSW truth.",
+  "governed_reference":{"minimum":["referenceId","targetDomain","targetObjectId","referenceMode","visibilityPolicyOrDecisionRef","provenanceRef"],"reference_modes":["current-authorized","pinned-version","campaign-private","historical-unavailable"],"optional":["targetVersionId","safeLabel","safeType","campaignId","fieldOrEvidenceRef"],"copies_authoritative_payload":false},
+  "creator_annotation":{"authority_class":"pre-authoritative","cannot_override_governed_reference":true,"separate_identity_or_fragment_required":true},
+  "version_rules":["fragment version remains owned by CSW-01 seam","project organization changes are attributable/versioned","incorporation backlinks pin source version","governed pinned reference pins target version/evidence","current reference re-resolves current authorized projection","saved view is query preference not result snapshot"],
+  "privacy_rules":["filter authorization before graph construction","filter before node/edge counts","filter before similarity candidate generation","filter before timeline aggregation","filter before project summary","no anonymous hidden-node placeholders","no hidden-cardinality leakage","historical unavailable reference shown only if viewer may know reference exists"],
+  "open_work_derivation":{"sources":["fragment-kind/lifecycle","explicit thread/question state","relationships","incorporation receipts","authorized target availability","creator-selected dormant window"],"authoritative_judgment":false,"supports_future_disposition":["dismiss","snooze","mark-intentionally-unresolved","resolve-by-explicit-link-or-state"]},
+  "cross_project_rules":["one fragment may be referenced by multiple authorized projects","project membership does not fork identity","independent adaptation requires branch/clone","governed object references may appear in multiple Story Bibles without copying truth","project annotations are separate from governed object"],
+  "portable_memory":{"export_preserves":["stable creative IDs","versions","project organization","relationships","story-bible structure","incorporation/provenance refs","permitted governed-reference metadata","tombstone placeholders where permitted"],"import_requires":["operation ID/idempotency","source manifest/version when available","incoming ID mapping","collision disposition","ownership/visibility assignment","unresolved references","provenance"]},
+  "recovery_rule":"Search/graph/story-bible projections are rebuildable from durable fragment/reference/provenance state; projections themselves are not authoritative persistence.",
+  "downstream_constraints":{"CSW-03":["Idea Inbox maps directly to Library inbox view and project placement"],"CSW-05":["plot structures remain evidence-classed creative material until D28 incorporation"],"CSW-06":["continuity checks must cite evidence class and source links"],"CSW-09":["Continue/Open/Unused/Recent surfaces consume these safe projections"],"CSW-10":["final persistence decision must preserve target-domain reference rather than copied truth"]},
+  "nonauthorization":{"implementation":false,"migration":false,"truth_duplication":false,"silent_merge":false,"ai_authority":false,"canonical_promotion":false,"t04_before_september":false}
+}
