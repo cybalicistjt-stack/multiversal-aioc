@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 5.13.0  
-**Status:** MIB — MULTIVERSAL IMPLEMENTATION BACKBONE ACTIVE  
+**Version:** 5.14.0  
+**Status:** MIB ACTIVE — SMB + MCB OWNER-APPROVED PLANNED  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-19
 
@@ -10,7 +10,13 @@
 
 Current work is selected only by bootstrap → authority registry → current pointer → selected checkpoint → live GitHub evidence. Historical detail remains in Git history and completed checkpoints rather than being recopied into every roadmap revision.
 
-The strict APW/CSW/APM 21-slice combined implementation sequence is **COMPLETED_VERIFIED** through APW-I07. The owner has now explicitly approved **MIB — Multiversal Implementation Backbone** as the active next subproject. MIB is an implementation-accelerator series over the completed architecture: shared registries, indexes, runtime primitives, adapters, content tooling, fixtures, UI components, engineering tools and bounded domain engines that reduce future feature work to registration, composition and adapter-specific implementation wherever possible.
+The strict APW/CSW/APM 21-slice combined implementation sequence is **COMPLETED_VERIFIED** through APW-I07. The owner has explicitly approved three major forward programs:
+
+1. **MIB — Multiversal Implementation Backbone** — active now; build reusable registries, indexes, runtime primitives, adapters, content tooling, fixtures, UI components, engineering tools and bounded engines.
+2. **SMB — System Maturation & Buildout** — planned post-MIB product-completion successor; turn the MIB engine room into a complete networked, content-rich, production-grade game/app.
+3. **MCB — Market Capture & Brand Backbone** — planned commercial-preparation program; build market truth, brand, acquisition, growth and launch machinery. Evidence-independent MCB tranches may later be selected in bounded parallel only through explicit owner routing.
+
+Roadmap presence does **not** auto-select SMB or MCB. MIB-01 remains the sole current selected work item.
 
 ## Completed verified baseline
 
@@ -28,12 +34,33 @@ Final predecessor application evidence:
 - product run `32297933813` PASS on self-hosted Windows, self-hosted Linux and deterministic comparison;
 - 25 focused APW-I07 tests PASS.
 
+## Approved program horizon
+
+### MIB — technology/reusable implementation machine
+
+Program: `governance/application-planning/multiversal-implementation-backbone/MIB_MULTIVERSAL_IMPLEMENTATION_BACKBONE_PROGRAM.md`  
+Backlog: `governance/application-planning/multiversal-implementation-backbone/MIB_PROGRAM_BACKLOG.json`  
+Lifecycle: **ACTIVE**  
+Current tranche: **MIB-01**
+
+### SMB — finished product/game machine
+
+Program: `governance/application-planning/system-maturation-buildout/SMB_SYSTEM_MATURATION_AND_BUILDOUT_PROGRAM.md`  
+Backlog: `governance/application-planning/system-maturation-buildout/SMB_PROGRAM_BACKLOG.json`  
+Lifecycle: **OWNER-APPROVED / PLANNED POST-MIB SUCCESSOR**  
+Default activation: after MIB-18 handoff unless separately rerouted by owner.
+
+### MCB — market/brand/growth machine
+
+Program: `governance/application-planning/market-capture-brand-backbone/MCB_MARKET_CAPTURE_AND_BRAND_BACKBONE_PROGRAM.md`  
+Backlog: `governance/application-planning/market-capture-brand-backbone/MCB_PROGRAM_BACKLOG.json`  
+Lifecycle: **OWNER-APPROVED / PLANNED COMMERCIAL PREPARATION**  
+Parallel rule: evidence-independent early tranches may later be selected in bounded parallel by explicit owner routing; product-dependent claims/pricing/acquisition/launch work must wait for current evidence.
+
 ## Active next subproject — MIB
 
 **MIB — Multiversal Implementation Backbone** is the sole active product implementation program.
 
-Program: `governance/application-planning/multiversal-implementation-backbone/MIB_MULTIVERSAL_IMPLEMENTATION_BACKBONE_PROGRAM.md`  
-Backlog: `governance/application-planning/multiversal-implementation-backbone/MIB_PROGRAM_BACKLOG.json`  
 Current tranche: **MIB-01**  
 Attempt: `MIB-01-attempt-001`  
 State: `selected_not_started`
@@ -67,6 +94,97 @@ State: `selected_not_started`
 
 The first eight tranches deliberately maximize leverage for everything after them. Later MIB tranches must consume the common registry/index/runtime/adapter/content/fixture/UI/tooling foundations rather than inventing competing one-off equivalents.
 
+## Planned successor — SMB
+
+**SMB — System Maturation & Buildout** is the owner-approved product-completion successor to MIB.
+
+| Tranche | Purpose | State |
+|---|---|---|
+| SMB-01 — Production Platform Realization | Select and implement production persistence/search/identity/hosting/synchronization adapters through MIB contracts. | planned |
+| SMB-02 — Remote Live Multiplayer & Presence | Reliable geographically separated live/async/hybrid play, invitations, presence, reconnect and cross-device continuity. | planned |
+| SMB-03 — Organizations, Factions, Settlements & Kingdoms | Complete large social/political simulation using relationship/reputation/event foundations. | planned |
+| SMB-04 — Exploration, Travel & Survival | Complete travel, discovery, environments, navigation, survival, fog-of-war and encounter workflows. | planned |
+| SMB-05 — Full Base & Housing System | Finish construction, ownership, facilities, storage, workforce, production, defense, utilities and upgrades. | planned |
+| SMB-06 — Full Vehicle System | Finish travel, crew stations, cargo, resources, damage, maintenance, repair, upgrades and combat-support vehicle workflows. | planned |
+| SMB-07 — Deep Cross-System Simulation | Connect domains so relationships, factions, economies, travel, crafting, investigation, bases, Adventures and Worlds produce governed consequences. | planned |
+| SMB-08 — Core Content Production | Create substantial first-party governed game libraries, Worlds and Adventures using MIB content tooling. | planned |
+| SMB-09 — Complete First-Party Campaign | Produce a polished real campaign exercising Multiversal end to end rather than merely a QA fixture. | planned |
+| SMB-10 — Full Player / GM / Creator Product UX | Complete production-facing screens/workflows across major Player, GM, Personal and creator activities. | planned |
+| SMB-11 — Content Creation & Sharing Pipeline | Complete private/controlled export, import, dependencies, versions, forks/remixes, provenance and sharing. | planned |
+| SMB-12 — Real Optional AI Integrations | Connect approved live AI providers through MIB-15 while preserving no-AI and non-authoritative operation. | planned |
+| SMB-13 — Remote Internal Alpha Productization | Make non-developer remote installation, onboarding, guided testing, evidence capture, diagnostics and updating frictionless. | planned |
+| SMB-14 — Security, Privacy & Family Safety Hardening | Connect policy foundations to real account/platform infrastructure and audit security/privacy/family boundaries. | planned |
+| SMB-15 — Stabilization & Scale | Stress large/long-lived Campaigns, Worlds, histories, content packs, network degradation, storage/search and migration performance. | planned |
+| SMB-16 — Accessibility, Localization & Device Completion | Complete accessibility, localization, screen classes and Apple/Mac/device support where environments exist. | planned |
+| SMB-17 — External Beta & Community Foundations | Support controlled external beta, private groups, moderation foundations, creator sharing and feedback/support systems. | planned |
+| SMB-18 — Release Engineering & Commercial Productization | Packaging, approved billing/entitlements, operations, backups, observability, support, release channels, rollback, stores/distribution and launch readiness. | planned |
+
+Default sequence:
+
+`SMB-01 → SMB-02 → SMB-03 → SMB-04 → SMB-05 → SMB-06 → SMB-07 → SMB-08 → SMB-09 → SMB-10 → SMB-11 → SMB-12 → SMB-13 → SMB-14 → SMB-15 → SMB-16 → SMB-17 → SMB-18`
+
+Central SMB product proof: four ordinary users on separate devices/locations can create/sign into accounts, join a Campaign, build/use Characters, play a complete live session, continue asynchronously, exercise major game systems, recover from disconnects, return later and resume from the same authoritative history without developer intervention.
+
+## Planned commercial preparation — MCB
+
+**MCB — Market Capture & Brand Backbone** is the owner-approved commercial-preparation series. No MCB tranche is active now.
+
+### Market truth
+
+| Tranche | Purpose | State |
+|---|---|---|
+| MCB-01 — Market Definition, Category & Strategic Positioning | Define beachhead category, substitutes, differentiation, expansion path and defensibility. | planned |
+| MCB-02 — Customer Segment, Persona & Jobs-to-be-Done Registry | Build structured segment/job/pain/trigger/outcome/objection/alternative/value/acquisition models. | planned |
+| MCB-03 — Customer Research System | Build reusable interview, survey, concept, pricing and churn research with evidence scoring/repository. | planned |
+| MCB-04 — Competitive Intelligence & Market Observatory | Maintain structured competitor/substitute positioning, pricing, channel, product and strategic-change intelligence. | planned |
+
+### Brand
+
+| Tranche | Purpose | State |
+|---|---|---|
+| MCB-05 — Multiversal Brand Strategy | Define promise, personality, emotional territory, vocabulary and trust/AI/family/creator language. | planned |
+| MCB-06 — Brand Identity System | Define reusable logo, typography, color, imagery, iconography, media, social, press and presentation rules. | planned |
+| MCB-07 — Messaging Architecture | Build canonical audience × problem × capability × benefit × emotional payoff × proof × CTA messaging. | planned |
+| MCB-08 — Claims, Proof & Evidence Registry | Tie public claims to approved wording, evidence, limitations, proof strength and verification dates. | planned |
+| MCB-09 — Product Demonstration & Media Capture System | Produce deterministic demo states and repeatable screenshot/video capture workflows. | planned |
+
+### Acquisition infrastructure
+
+| Tranche | Purpose | State |
+|---|---|---|
+| MCB-10 — Website & Landing-Page Architecture | Build reusable marketing-site/landing-page structures before final launch copy. | planned |
+| MCB-11 — Search, SEO & Evergreen Content Knowledge Graph | Map search intent, audience, topics, content, product capabilities and calls to action. | planned |
+| MCB-12 — Content Production Engine | Build reusable article/video/short/newsletter/guide/social production and repurposing workflows. | planned |
+| MCB-13 — Acquisition Channel Strategy & Experiment Library | Define channel hypotheses, creative/landing tests, metrics and success/kill thresholds before significant spend. | planned |
+| MCB-14 — Creator, GM, Influencer & Partner Network | Build a relationship registry for creators, reviewers, educators, publishers, conventions and advocates. | planned |
+| MCB-15 — Community Architecture | Design community spaces, moderation, support/social separation, spoilers, ownership, family boundaries and recognition. | planned |
+| MCB-16 — Waitlist, Alpha Recruitment & Audience Seeding | Prepare segmented recruitment/waitlist systems that support testing and market learning. | planned |
+
+### Growth economics
+
+| Tranche | Purpose | State |
+|---|---|---|
+| MCB-17 — CRM, Lifecycle & Customer Communication Model | Define visitor→interest→waitlist→invite→activation→Campaign→retention→advocate lifecycle and communications. | planned |
+| MCB-18 — Analytics, Attribution & Experiment Registry | Define canonical funnels, events, attribution/UTM standards and evidence-backed experiment records. | planned |
+| MCB-19 — Pricing, Packaging & Value Architecture | Research product value boundaries and pricing/packaging hypotheses without prematurely locking final prices. | planned |
+| MCB-20 — Acquisition Economics & Market-Capture Model | Model CAC, activation, conversion, churn, retention, ARPU, referrals, creator acquisition and GM→Player invitation economics. | planned |
+| MCB-21 — Referral, Virality & Growth-Loop Design | Design value-first Campaign invitation and creator-sharing loops without spam/dark patterns. | planned |
+
+### Launch / market capture
+
+| Tranche | Purpose | State |
+|---|---|---|
+| MCB-22 — Launch Narrative, PR & Press Kit | Prepare founder/launch narrative, press FAQ, fact sheet, media kit, review guide and announcement materials. | planned |
+| MCB-23 — Trust, Privacy, AI & Family Communication | Turn privacy, ownership, AI boundaries, Campaign privacy and family safety into clear customer communication. | planned |
+| MCB-24 — Launch Simulation & Commercial Readiness | Run synthetic end-to-end commercial cohorts before real-scale acquisition/launch. | planned |
+| MCB-25 — Market-Capture & Expansion Playbook | Convert validated evidence into deliberate beachhead→adjacency expansion strategy. | planned |
+
+Default sequence:
+
+`MCB-01 → MCB-02 → MCB-03 → MCB-04 → MCB-05 → MCB-06 → MCB-07 → MCB-08 → MCB-09 → MCB-10 → MCB-11 → MCB-12 → MCB-13 → MCB-14 → MCB-15 → MCB-16 → MCB-17 → MCB-18 → MCB-19 → MCB-20 → MCB-21 → MCB-22 → MCB-23 → MCB-24 → MCB-25`
+
+MCB must distinguish hypothesis from evidence. It may prepare research/brand/acquisition systems before the product is finished, but it may not fabricate customers/testimonials/performance, make unsupported capability claims, lock final pricing, scale paid acquisition or launch publicly without the necessary evidence and owner routing.
+
 ## MIB-01 current operation
 
 MIB-01 must begin by re-fetching App main and migration head and inventorying live reusable-definition/reference seams across existing domains. It then implements the smallest canonical Registry/Data Dictionary foundation supported by those seams.
@@ -97,9 +215,9 @@ Required MIB-01 boundaries:
 
 - migrations `0001` through `0021` are immutable predecessors;
 - migration `0022` does not exist and is not reserved;
-- each MIB tranche rechecks current App main/migration head once before mutation;
+- each selected implementation tranche rechecks current App main/migration head once before mutation;
 - a future migration requires a demonstrated durable schema delta, not merely a new library, query manifest, fixture, UI component or reference adapter;
-- MIB may not absorb Campaign, Session, Action, Event, Character, asset, relationship, investigation, World, Adventure, creator or automated-play truth into a parallel ledger;
+- no future program may absorb Campaign, Session, Action, Event, Character, asset, relationship, investigation, World, Adventure, creator or automated-play truth into a parallel ledger;
 - provider-neutral logical contracts remain authoritative until a later separately authorized production-provider decision.
 
 ## Preserved/deferred work
@@ -111,19 +229,21 @@ Required MIB-01 boundaries:
 - **Release/deployment:** remains unauthorized absent separate owner routing.
 - **Paid-provider activation:** remains separately owner-gated.
 
-MIB-18 specifically prepares portable contracts, fixtures, evidence packages and readiness checklists for these constraints where that preparation is safe, but it does not bypass them.
+MIB-18 specifically prepares portable contracts, fixtures, evidence packages and readiness checklists for these constraints where that preparation is safe, but it does not bypass them. SMB/MCB roadmap planning likewise does not bypass them.
 
 ## Permanent validation rules
 
 Only evidence-backed `completed_verified` is complete. A failed required gate leaves work unfinished. Normal App/package acceptance is self-hosted Windows + self-hosted Linux + deterministic comparison where outputs should agree, plus exact-head repository health. AIOC repository health validates governance state; it does not substitute for product validation.
 
+Commercial evidence follows the same integrity principle: hypotheses, research findings, product claims, pricing assumptions and growth conclusions must preserve their evidence status rather than being promoted by repetition.
+
 ## Product-wide approved concerns
 
-- **TODO-UX-VOICE:** knowledgeable, creative companion; warm, welcoming, encouraging, clear, confident and restrained; never obsequious. MIB-07 incorporates this into reusable shared UI/copy primitives.
-- **TODO-FSF:** parental controls govern Multiversal-controlled capability/exposure; guardian authority remains distinct from GM/Campaign authority and does not imply access to private creative work. MIB-17 is the implementation foundation for this concern.
+- **TODO-UX-VOICE:** knowledgeable, creative companion; warm, welcoming, encouraging, clear, confident and restrained; never obsequious. MIB-07 incorporates this into reusable shared UI/copy primitives; MCB-05 through MCB-07 extend the same identity into public brand and messaging.
+- **TODO-FSF:** parental controls govern Multiversal-controlled capability/exposure; guardian authority remains distinct from GM/Campaign authority and does not imply access to private creative work. MIB-17 creates the implementation foundation; SMB-14 hardens it against production infrastructure; MCB-23 makes the customer-facing trust model understandable.
 
 ## Nonauthorization
 
-MIB activation does not authorize CCTI-12-T04 before September 2026, WP-011 without its environment, DS-008 byte reconstruction, tester distribution, release/deployment, paid-provider activation, public matchmaking/community publishing, broad offline authoritative mutation, real-money integration, production provider selection, or AI mechanical/canonical/permission/consent/adjudication authority.
+Roadmap approval of MIB/SMB/MCB does not authorize CCTI-12-T04 before September 2026, WP-011 without its environment, DS-008 byte reconstruction, tester distribution, release/deployment, paid-provider activation, public matchmaking/community publishing, broad offline authoritative mutation, real-money integration, unsupported marketing claims, binding final pricing or AI mechanical/canonical/permission/consent/adjudication authority.
 
-“Continue” from this state means execute the next verified unfinished MIB operation, beginning with MIB-01, and continue through its bounded completion gate before advancing to MIB-02.
+“Continue” from this state means execute the next verified unfinished MIB operation, beginning with MIB-01, and continue through its bounded completion gate before advancing according to the canonical selector. SMB and MCB remain roadmap-planned until separately selected by owner routing.
