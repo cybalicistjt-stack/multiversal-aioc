@@ -1,21 +1,18 @@
 {
-  "schema_version":"1.0.0",
+  "schema_version":"1.1.0",
   "work_item_id":"CSW-05",
   "attempt_id":"CSW-05-attempt-001",
   "track":"creator-storycraft-workspace",
   "repository":"cybalicistjt-stack/multiversal-aioc",
-  "status":"selected_not_started",
+  "branch":"governance/csw-05-plot-adventure-lab",
+  "status":"ready_for_validation",
   "owner_selected":true,
   "selected_at":"2026-08-19T06:42:00Z",
-  "selection_reason":"CSW-04 completed_verified in PR #427. CSW-01, CSW-02 and CSW-04 satisfy CSW-05 dependencies; the owner-approved interleave selects CSW-05 before APM-03.",
+  "design_ready_at":"2026-08-19T06:50:00Z",
   "objective":"Define a Plot, Adventure and Narrative Design Lab that helps creators structure nonlinear tabletop stories across hooks, threads, beats, scenes, revelations, choices, consequences, payoffs, optional content and alternate routes while preserving the distinction between speculative CSW structure and incorporated Adventure/Campaign truth.",
-  "program_plan":"governance/application-planning/creator-storycraft-workspace/CSW_CREATOR_STORYCRAFT_WORKSPACE_PROGRAM.md",
-  "program_backlog":"governance/application-planning/creator-storycraft-workspace/CSW_PROGRAM_BACKLOG.json",
   "depends_on":["CSW-01","CSW-02","CSW-04"],
-  "dependency_evidence":{"CSW-01":{"status":"completed_verified","pull_request":413,"repository_health_run":32203942744},"CSW-02":{"status":"completed_verified","pull_request":415,"repository_health_run":32204385272,"merge_sha":"99d4a963d442a0602de9935e69f4a18e7acc5b0c"},"CSW-04":{"status":"completed_verified","pull_request":427,"validated_head":"a9b17f875a8d2f7da092cb1b68fe8889040112a7","repository_health_run":32224302162,"merge_sha":"e00d166719cec078ae427f01a376795183683902"}},
-  "completion_gate":"Creators can plan a branching tabletop adventure from hooks through outcomes with usable outline/board/timeline/graph and semantic nonvisual projections while speculative structure remains clearly separate from incorporated Adventure/Campaign truth and agency/continuity analysis remains advisory.",
-  "required_design_questions":["What CSW structural objects/projections represent threads, beats, scenes, hooks, revelations, choices, consequences and payoffs without duplicating D28 authoritative Adventure nodes/edges?","How do outline, board, timeline and graph views share one semantic structure and preserve full nonvisual parity?","How are prerequisites, optional content, alternate routes, failure states and convergence/divergence modeled without forcing linearity?","How are clue/revelation and mystery-planning links represented without converting creator possibilities into A9 runtime evidence/truth?","How are player choices and consequences represented so the tool can warn about overly single-path structures without enforcing one narrative doctrine?","How should pacing, pressure and spotlight notes work as creator annotations rather than mechanics or objective quality scores?","How do Campaign-specific plans differ from reusable Adventure plans and how can one be cloned/proposed into the other with provenance?","How does CSW-04 guided Adventure material enter the Lab without treating workflow order as chronology/canon?","How do Story Bible references, CSW-03 Inspiration alternatives and branches remain authorization-safe inside structural views?","What explicit handoff creates/proposes governed D28 Adventure definitions while preserving source IDs/versions/provenance and preventing silent propagation?","How do accessibility, mobile, keyboard and screen-reader users create/edit the same branching structure without depending on canvas drag-and-drop?","What deterministic acceptance scenarios prove alternate routes, missing prerequisite/payoff candidates, visibility filtering, branching recovery and no automatic authority escalation?"],
-  "preserved_parallel_tracks":["APM-03 follows CSW-05","CSW-06 follows APM-03 in the owner-approved interleave","APW-05 remains later in the approved sequence","CCTI-12-T04 deferred until September 2026","WP-011 dormant","DS-008 blocked non-owner"],
+  "deliverables":["governance/application-planning/creator-storycraft-workspace/CSW-05_PLOT_ADVENTURE_AND_NARRATIVE_DESIGN_LAB.md","governance/application-planning/creator-storycraft-workspace/CSW-05_STRUCTURE_ROUTE_AND_HANDOFF_MATRIX.json","governance/application-planning/creator-storycraft-workspace/CSW-05_ACCEPTANCE_AND_REVIEW_RECEIPT.md"],
+  "completion_gate":{"nonlinear_structure":true,"choice_consequence_revelation_semantics":true,"multimodal_views":true,"semantic_nonvisual_parity":true,"advisory_analysis":true,"reusable_campaign_boundary":true,"d28_explicit_handoff":true,"recovery_provenance":true,"no_authority_escalation":true,"final_repository_validation_pending":true,"pull_request_merge_pending":true},
   "nonauthorization":["application implementation","migration execution","automatic authoritative Adventure/Campaign content","forced linear narrative structure","autonomous AI authorship/publication","canonical promotion","release/deployment","CCTI-12-T04 before September 2026"],
-  "next_action":"Execute CSW-05 as a bounded design/governance tranche defining the structural narrative model, nonlinear branching/choice/consequence semantics, multimodal/nonvisual projections, advisory pacing/agency/mystery analysis, reusable-versus-Campaign boundary, D28 handoff and acceptance contract."
+  "next_action":"Open bounded CSW-05 governance PR, run exact-head AIOC repository-health, merge after PASS, then record completed_verified evidence and select APM-03."
 }
