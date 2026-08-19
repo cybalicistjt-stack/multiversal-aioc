@@ -1,18 +1,19 @@
 {
-  "schema_version":"2.6.0",
-  "updated_at":"2026-08-19T01:12:00Z",
+  "schema_version":"2.7.0",
+  "updated_at":"2026-08-19T01:24:00Z",
   "rule":"This index contains current or preserved unfinished tracks only. Completed historical work remains in Git history and receipts and cannot select current work.",
-  "current":{"work_item_id":"CSW-02","attempt_id":"CSW-02-attempt-001","track":"creator-storycraft-workspace","checkpoint":"governance/ai/work-state/CSW-02-attempt-001.json","repository":"cybalicistjt-stack/multiversal-aioc","status":"selected_not_started","next_gate":"complete_creative_library_story_bible_and_project_memory_without_truth_duplication_or_visibility_leakage"},
+  "current":{"work_item_id":"APW-02","attempt_id":"APW-02-attempt-001","track":"asynchronous-persistent-workspace","checkpoint":"governance/ai/work-state/APW-02-attempt-001.json","repository":"cybalicistjt-stack/multiversal-aioc","status":"selected_not_started","next_gate":"complete_durable_async_action_proposal_and_gm_inbox_contract_with_at_most_one_authoritative_outcome"},
   "preserved_unfinished":[
-    {"work_item_id":"APW","track":"asynchronous-persistent-workspace","status":"interleaved_waiting","completed_item":"APW-01","next_item":"APW-02","resume_after":["CSW-02"]},
-    {"work_item_id":"APM","track":"automated-play-modes","status":"interleaved_waiting","completed_item":"APM-01","next_item":"APM-02","resume_after":["CSW-02","APW-02","APW-03","APW-04"]},
+    {"work_item_id":"CSW","track":"creator-storycraft-workspace","status":"interleaved_waiting","completed_item":"CSW-02","next_item":"CSW-03","resume_after":["APW-02","APW-03","APW-04","APM-02"]},
+    {"work_item_id":"APM","track":"automated-play-modes","status":"interleaved_waiting","completed_item":"APM-01","next_item":"APM-02","resume_after":["APW-02","APW-03","APW-04"]},
     {"work_item_id":"CCTI-12-T04","attempt_id":"CCTI-12-attempt-004","track":"content-catalog-taxonomy-integration","repository":"cybalicistjt-stack/Multiversal-app","source_pull_request":191,"status":"deferred_owner_until_2026-09","resume_rule":"on_or_after_2026-09-01_establish_owner_approved_github_hosted_validation_path_first"},
     {"work_item_id":"WP-011","track":"apple-special-environment","repository":"cybalicistjt-stack/Multiversal-app","pull_request":61,"status":"special_environment_dormant"},
     {"work_item_id":"DS-008","track":"design-standards-completion","status":"blocked_non_owner"}
   ],
   "recently_completed_design":[
-    {"work_item_id":"CSW-01","attempt_id":"CSW-01-attempt-001","status":"completed_verified","governance_pr":413,"validated_head":"f9ee73b106951d037e4db34b7e876d5229bb13b3","repository_health_run":32203942744,"merge":"0627188ce143625565912fc81a7ebc2b9dd436a8"},
-    {"work_item_id":"APM-01","attempt_id":"APM-01-attempt-001","status":"completed_verified","governance_pr":411,"validated_head":"b9516a78e3425b09e79efde120fe1ebb1c655fcb","repository_health_run":32203278338,"merge":"4150cbd38f7fcae325aa03b83fcf3c4b3a990765"},
-    {"work_item_id":"APW-01","attempt_id":"APW-01-attempt-001","status":"completed_verified","governance_pr":409,"validated_head":"f0b6b3d9b64d3b8f7b1fd9d81f6079b14097ef32","repository_health_run":32202132346,"merge":"2f99a03612dab525eaffd5c0141f84cf8c1b5654"}
+    {"work_item_id":"CSW-02","attempt_id":"CSW-02-attempt-001","status":"completed_verified","governance_pr":415,"validated_head":"fa2c6d959d0cfb4419dbc0b337275b7a79da64bf","repository_health_run":32204385272,"merge":"99d4a963d442a0602de9935e69f4a18e7acc5b0c"},
+    {"work_item_id":"CSW-01","attempt_id":"CSW-01-attempt-001","status":"completed_verified","governance_pr":413,"repository_health_run":32203942744,"merge":"0627188ce143625565912fc81a7ebc2b9dd436a8"},
+    {"work_item_id":"APM-01","attempt_id":"APM-01-attempt-001","status":"completed_verified","governance_pr":411,"repository_health_run":32203278338,"merge":"4150cbd38f7fcae325aa03b83fcf3c4b3a990765"},
+    {"work_item_id":"APW-01","attempt_id":"APW-01-attempt-001","status":"completed_verified","governance_pr":409,"repository_health_run":32202132346,"merge":"2f99a03612dab525eaffd5c0141f84cf8c1b5654"}
   ]
 }
