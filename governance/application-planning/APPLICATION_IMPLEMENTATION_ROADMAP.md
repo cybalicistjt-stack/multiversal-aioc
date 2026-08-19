@@ -1,7 +1,7 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 5.1.0  
+**Version:** 5.2.0  
 **Status:** ACTIVE — COMBINED WORKSPACE IMPLEMENTATION  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-19
@@ -32,48 +32,48 @@ The APW/APM/CSW design series is **COMPLETED_VERIFIED** through APW-08, APM-06 a
 | APM-I02 | completed_verified | PR #212 / `9e3719fc…` / merge `8d3684ed…` | none |
 | APM-I03 | completed_verified | PR #213 / `f94f6815…` / merge `ffe354ca…` | `0013_apm_autogm_encounter_foundation.json` |
 | APW-I05 | completed_verified | PR #214 / `b3eee7cc…` / merge `c043c6b9…` | `0014_apw_creator_workshop_sandbox.json` |
-| CSW-I03 | **selected_not_started** | `CSW-I03-attempt-001` | inspect live head first |
+| CSW-I03 | completed_verified | PR #215 / `22963399…` / merge `0c49376a…` | none |
+| CSW-I04 | **selected_not_started** | `CSW-I04-attempt-001` | inspect live head first |
 
-### APW-I05 completion evidence
+### CSW-I03 completion evidence
 
-Application PR #214 completed from exact validated head `b3eee7cceb95619eb597a72385c16c46c0657316`. Repository-health run `32273365779` passed. Product run `32273366146` ended with self-hosted Windows PASS, self-hosted Linux PASS after an unchanged retry of the existing A2 p95 fluctuation, and deterministic comparison PASS before squash merge `c043c6b90b53a1d203e1b92ebcdc4df891bbc9e3`.
+Application PR #215 completed from exact validated head `22963399944c999eaa44c295fec9feb9b08ddad0`. Repository-health run `32275445166` passed. Product run `32275445385` ended with self-hosted Windows PASS, self-hosted Linux PASS and deterministic comparison PASS before squash merge `0c49376ab74e27b15db6678d34c8c200e3caf210`.
 
-APW-I05 delivered a Personal Creator Workshop and isolated Sandbox/Lab over existing CSW-I01/I02 D29 identity/library records rather than creating a new truth domain. Migration `0014_apw_creator_workshop_sandbox.json` stores D29 reusable-reference receipts, Sandbox session/operation/recovery metadata and explicit save-out receipts only. Reference versus copy/fork/derive semantics remain provenance-bearing; source ownership/authority is never transferred; D05 authorization precedes Workshop search/count/source selection; Sandbox sessions are Personal/noncanonical and hard-false live Campaign mutation, canonical promotion and authoritative Event emission; Campaign use requires a separate owning-domain proposal/incorporation operation.
+CSW-I03 reused existing CSW-I01/I02 D29 persistence instead of claiming migration `0015`: migration `0009` already supplies CreativeFragment Inbox identity/lifecycle/provenance/relationships/idempotent operation recovery and CSW-I02 already supplies D05 authorization-before-search/count/topology. Inspiration requests/candidates remain intentionally ephemeral until explicit creator disposition. The tranche delivered minimal capture, later triage, five deterministic no-AI inspiration primitives, bounded count/depth, exact source/generator/seed provenance, explicit dismiss/save-new/branch/alternate/source-revision operations, authorization-safe related discovery and the Idea Inbox UI.
 
-Validation provenance is preserved in `APW-I05-attempt-001`: the initial head exposed a real TypeScript narrowing defect and the next head exposed one incorrect test fixture, both repaired without weakening authority semantics. On the final exact head all 12 focused APW-I05 tests, invariant validation and typecheck passed. Linux alone then hit the pre-existing A2 p95 fluctuation (`327.48463400000037ms` and `265.60725ms` vs `250ms`) while Windows passed; an unchanged Linux rerun passed and deterministic comparison passed. No APW source, test, A2 threshold or validation scope was weakened.
+Validation history is preserved in `CSW-I03-attempt-001`: initial candidate `fa2580766d85faea9ff513b695aa88d1b969a943` passed invariants/typecheck and 320/321 client tests but exposed one real focused defect—related discovery selected the first usable seed token rather than the strongest token, missing an authorized related item. The deterministic query selection was repaired without weakening privacy, tests or scope. The repaired exact head passed every required gate.
 
-## Current work — CSW-I03
+## Current work — CSW-I04
 
-**CSW-I03 — Idea Inbox and Inspiration Engine** is the sole selected application implementation slice.
+**CSW-I04 — Guided Creation Workflows and templates** is the sole selected application implementation slice.
 
 Repository: `cybalicistjt-stack/Multiversal-app`  
-Attempt: `CSW-I03-attempt-001`  
+Attempt: `CSW-I04-attempt-001`  
 State: `selected_not_started`
 
-CSW-I03 turns the existing CreativeFragment and Creative Library foundations into a low-friction capture/development loop without creating a second creative object or truth store.
+CSW-I04 implements optional creative scaffolding over the same CSW material. Guidance is orchestration, never truth, and freeform authoring remains an equal path.
 
 Required boundaries:
-- quick capture uses CSW-I01 stable pre-authoritative CreativeFragment identity and must not force title/project/tags/genre/canonical status before save;
-- Inbox triage changes organization/lifecycle/kind through existing D29 operations without changing authority class;
-- deterministic question/contrast/constraint/role/variation/seeded tools remain complete without AI;
-- generator requests return bounded ephemeral candidates; no candidate is saved or applied until explicit creator disposition;
-- original seed/version remains unchanged unless the creator explicitly chooses a revision operation; saved alternatives get their own identity/relationship provenance;
-- D05 authorization precedes duplicate/related hints, counts, rankings, generator inputs, Campaign references and optional AI context;
-- hidden/revoked Campaign material cannot influence Personal suggestions or be copied into Personal storage;
-- repeated deterministic generation records exact generator/version/input/parameter/seed evidence where applicable;
-- develop-this loops are bounded and return control rather than recursively generating;
-- reconnect/idempotency must create at most one durable capture and preserve recoverable local drafts under existing offline policy;
-- the core Internal Alpha path remains deterministic and usable without AI or paid providers.
+- reusable workflow definitions/versions describe guidance only and contain no hidden authority or arbitrary executable behavior;
+- workflow runs may remember progress, visited/skipped steps, branch choices and references, but durable creative answers remain ordinary CSW-I01/02 material rather than a second content store;
+- run definition version is pinned; definition/template updates never silently rewrite existing runs;
+- creators may skip, revisit, reorder independent steps, pause/resume, branch, abandon, finish with unresolved items, or leave guided mode for equivalent freeform editing;
+- prerequisites constrain only genuinely dependent steps; suggested order is not mandatory creative chronology;
+- CSW-I02/D05 authorization precedes reference search/count/ranking/autocomplete and protected references are reauthorized on resume;
+- CSW-I03 Inspiration remains bounded and candidate-only; workflow state may remember a disposition but cannot convert a candidate into truth;
+- workflow completion means creator progress only, never publication, canon, mechanical validity, Campaign approval or owning-domain incorporation;
+- progress is informative and noncoercive: skips are not failures, completion is not a quality percentage and finish cannot be hidden behind forced answers;
+- accessibility/nonvisual parity must cover progress, branching and reordering; the core path remains deterministic and no-AI.
 
-First operation: re-fetch App main and migration head **once**, inspect current D29 CreativeFragment capture/revision/operation-recovery capability, CSW-I02 library/related-discovery adapters and deterministic utility seams, determine whether any durable Idea Inbox/Inspiration requirement genuinely needs the next additive migration, then implement the smallest useful capture + deterministic inspiration path.
+First operation: re-fetch App main and migration head **once**, inspect existing D29 workflow/run/recovery records plus CSW-I01 answer/version operations, CSW-I02 reference projection and CSW-I03 Inspiration seams, determine whether durable guided-run orchestration genuinely requires migration `0015`, then implement the smallest reusable guided workflow with an explicit freeform escape.
 
-Canonical App baseline after APW-I05: `c043c6b90b53a1d203e1b92ebcdc4df891bbc9e3`. Migration head: `0014_apw_creator_workshop_sandbox.json`.
+Canonical App baseline after CSW-I03: `0c49376ab74e27b15db6678d34c8c200e3caf210`. Migration head remains `0014_apw_creator_workshop_sandbox.json`.
 
 ## Default strict implementation sequence
 
 `APW-I01 → CSW-I01 → APM-I01 → APW-I02 → APW-I03 → APW-I04 → CSW-I02 → APM-I02 → APM-I03 → APW-I05 → CSW-I03 → CSW-I04 → CSW-I05 → CSW-I06 → CSW-I07 → APW-I06 → CSW-I08 → APM-I04 → APM-I05 → APM-I06 → APW-I07`
 
-Everything through APW-I05 is completed_verified. CSW-I03 is selected_not_started. Later slices remain inactive.
+Everything through CSW-I03 is completed_verified. CSW-I04 is selected_not_started. Later slices remain inactive.
 
 ## Migration and ownership policy
 
@@ -82,15 +82,16 @@ Everything through APW-I05 is completed_verified. CSW-I03 is selected_not_starte
 - no next migration number is reserved in advance;
 - no migration is added without a genuine durable schema delta;
 - no monolithic APW/CSW/APM state store is authorized;
-- D29 remains creative-support metadata/provenance/reference oriented, not governed World/Adventure/Campaign truth;
-- D05 authorization precedes derived aggregation/presentation/generator context;
-- generated candidates are ephemeral until explicit save/apply/branch and never gain authority through ranking, repetition or AI fluency.
+- D29 remains creative-support metadata/provenance/reference/workflow oriented, not governed World/Adventure/Campaign truth;
+- guided-run state cannot become a parallel creative answer store;
+- D05 authorization precedes derived aggregation/presentation/generator/reference context;
+- generated candidates and workflow completion never gain authority through ranking, progress, repetition or AI fluency.
 
 ## Internal Alpha milestones
 
 1. Persistent Personal/async foundation — APW-I01, APW-I02, APW-I03 — **complete**.
 2. Between-session and creator foundation — APW-I04, CSW-I01, CSW-I02, APW-I05 — **complete**.
-3. First creator and automated experiences — CSW-I03, CSW-I04, APM-I01, APM-I02, APM-I03 — **CSW-I03/I04 remain**.
+3. First creator and automated experiences — CSW-I03, CSW-I04, APM-I01, APM-I02, APM-I03 — **CSW-I04 remains**.
 4. Deep creator workspace — CSW-I05, CSW-I06, CSW-I07.
 5. Integrated shell and connected automation — APW-I06, CSW-I08, APM-I04, APM-I05, APM-I06.
 6. Whole-system hybrid proof — APW-I07.
@@ -114,6 +115,6 @@ Only evidence-backed `completed_verified` is complete. A failed required gate le
 
 ## Nonauthorization
 
-Current selection authorizes only CSW-I03. It does not authorize CSW-I04+, APW-I06+, APM-I04+, a new authoritative creative truth domain, automatic candidate application/incorporation/publication, silent duplicate merge, hidden/private source leakage, T04 before September, tester distribution, release/deployment or paid-provider activation.
+Current selection authorizes only CSW-I04. It does not authorize CSW-I05+, APW-I06+, APM-I04+, a parallel creative answer truth store, mandatory wizard-only authoring, workflow-completion authority, automatic candidate application/incorporation/publication, arbitrary executable templates, hidden/private source leakage, T04 before September, tester distribution, release/deployment or paid-provider activation.
 
 “Continue” means execute the next verified unfinished operation.
