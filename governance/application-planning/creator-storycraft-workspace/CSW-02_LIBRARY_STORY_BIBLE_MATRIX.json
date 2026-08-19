@@ -1,0 +1,35 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"CSW-02",
+  "status":"design_ready_for_review",
+  "surfaces":{
+    "creative_library":{"purpose":"find and organize authorized Creative Fragments and governed references","authoritative_truth_store":false,"default_views":["all","inbox","developing","ready-to-use","incorporated","open-unresolved","recently-changed","archived","projects","collections","tags","references"]},
+    "story_bible":{"purpose":"project-scoped curated knowledge projection with explicit evidence classes","authoritative_truth_store":false,"sections":["characters-npcs","locations","factions-organizations","lore-setting","terminology-names","themes-motifs","timeline-chronology","mysteries-questions-secrets","plot-threads-arcs-hooks","relationships","rules-constraints-conventions","references-inspiration","creator-notes"]},
+    "project_memory":{"purpose":"durable provenance/history/backlink/open-work projection","authoritative_truth_store":false}
+  },
+  "creator_project":{"authority_class":"organizational-context","is_world":false,"is_adventure":false,"is_campaign":false,"minimum_fields":["projectId","ownerSubjectId","name","contextBinding","visibilityPolicyId","status","createdAt","updatedAt"],"optional_fields":["campaignId","collaborators","description","storyBibleConfig","collectionRefs","tagRefs","savedViewRefs","historyRefs"],"statuses":["active","paused","completed-by-creator","archived","tombstoned"]},
+  "organization_objects":["project","collection","folder-like-grouping","tag","saved-view","pin-favorite","ordered-outline-projection"],
+  "organization_invariants":["organization never changes ownership","organization never changes visibility by itself","organization never grants Campaign membership","organization never changes truth status","folder or tag labels cannot create canonical/published status","saved views reauthorize results on open"],
+  "story_bible_entry_classes":[
+    {"id":"creative-possibility","source":"CSW-01 fragment","authoritative":false},
+    {"id":"creator-note","source":"creator annotation","authoritative":false},
+    {"id":"governed-current-reference","source":"owning-domain current authorized projection","authoritative":"by-owning-domain-only"},
+    {"id":"governed-pinned-reference","source":"owning-domain version/evidence reference","authoritative":"by-owning-domain-only"},
+    {"id":"campaign-private-reference","source":"Campaign-authorized governed projection","authoritative":"by-owning-domain-only","visibility_sensitive":true},
+    {"id":"historical-unavailable-reference","source":"retained/tombstoned reference","authoritative":false,"content_may_be_unavailable":true}
+  ],
+  "search_filters":["project","context-binding","fragment-kind","lifecycle","tag","collection","incorporated-status","open-unresolved","author-owner-safe-projection","recently-changed","archived","target-domain-type","has-backlinks","has-derivatives","has-potential-duplicates"],
+  "saved_view_rule":"stores query/filter/sort/layout preferences only; never stores an authorization grant or bypassable result set",
+  "visibility_before_computation":["search candidates","counts","facets","rankings","snippets","pagination","similarity","graph node selection","graph edge selection","degree/cardinality","timeline projection","used-in backlink counts","duplicate candidate counts","AI context"],
+  "graph_requirements":{"hidden_gap_leakage":false,"counts_from_permitted_projection_only":true,"nonvisual_equivalent_required":true,"layout_is_authority":false,"tombstone_visible_only_when_reference_existence_is_authorized":true},
+  "timeline_evidence_classes":["creative-possibility","creator-note","governed-world-adventure-character-campaign-reference","campaign-runtime-event-reference","uncertain-range-relative-chronology"],
+  "duplicate_candidate":{"advisory_only":true,"silent_merge":false,"comparison_basis":["exact-content-digest","normalized-label","metadata-overlap","deterministic-similarity","optional-authorized-ai-similarity"],"dispositions":["unreviewed","not-duplicate","related","merge-manually","supersedes","dismissed"],"governed_objects_mergeable_by_csw":false},
+  "attention_projections":["open-questions","unresolved-threads","foreshadow-without-payoff","payoff-without-visible-setup","ready-not-incorporated","unplaced-fragments","target-unavailable-or-retired","dormant-material","isolated-fragments","superseded-still-referenced"],
+  "attention_invariants":["advisory not correctness judgment","authorized graph only","no hidden target existence leak","later dismissal-snooze-intentionally-unresolved supported by downstream design"],
+  "archive_rediscovery":{"archive_breaks_references":false,"rediscovery_subject_to_current_authorization":true,"revoked_campaign_material_cannot_resurface_personally":true},
+  "import":{"silent_overwrite":false,"requires_operation_id":true,"requires_provenance":true,"requires_collision_mapping":true,"conflictful_mapping_requires_creator_review":true,"imported_fragment_authority":"pre-authoritative","governed_import_uses_owning_domain":true},
+  "export":{"authority_transfer":false,"visibility_filtered":true,"preserves_ids_and_provenance":true,"hidden_referenced_content_embedded":false},
+  "recovery":["optimistic-version","idempotency","operation-status-lookup","permission-revalidation","explicit-import-export-receipts","tombstone-integrity","no-blind-overwrite","local-draft-vs-durable-memory-separation"],
+  "ai":{"optional":true,"core_library_requires_ai":false,"allowed":["project-summary","tag-suggestions","relationship-candidates","duplicate-candidates","forgotten-related-material","draft-story-bible-summary","evidence-backed-usage-explanation"],"prohibited":["hidden-backlink-inference","silent-merge","promote-note-to-fact","rewrite-governed-truth","override-visibility","use-private-context-outside-authorized-scope"]},
+  "authorizations":{"application_implementation":false,"migration_execution":false,"new_persistence_root":false,"canonical_promotion":false,"ai_publication":false,"release_deployment":false,"ccti12_t04_before_2026_09":false}
+}
