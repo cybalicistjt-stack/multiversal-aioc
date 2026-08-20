@@ -32,6 +32,8 @@ Source rarity composition templates are preserved: Common potions use 2-3 Common
 
 Those finished-potion effects do **not** become effects of the example ingredients.
 
+Redleaf, Soothewort, Fire Salamander Tongue, Giant's Toenail, Ogre's Blood, and Rockroot already have canonical ICF ingredient definitions and are bound here without assigning raw effects. **Sulfur** and **Charcoal Dust** are explicit Alchemy source examples but are not present in the verified ICF-04/06 canonical ingredient sets; they remain source-term coverage gaps with no invented `ingredient:*` IDs. The Potion of Fire Breath rarity-count rule remains usable without pretending those terms are canonically bound.
+
 ## Substitution and quality
 
 Adaptive Alchemy is an ability-gated override, not a default formula rule. It can replace up to two Common ingredients with explicitly similar/substitution-group members at no penalty and can substitute Uncommon ingredients with +2 Mixing DC. Similarity must be governed; names, folklore, creature type, or ICF-08 tendencies do not prove it. Rare/Exotic substitution is not authorized by this perk.
