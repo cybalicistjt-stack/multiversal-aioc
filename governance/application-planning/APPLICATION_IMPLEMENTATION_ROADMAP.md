@@ -1,39 +1,40 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 5.27.0  
-**Status:** MIB ACTIVE AT MIB-13 — ICF OWNER-APPROVED INTERSTITIAL — CEL OWNER-DIRECTED INTERSTITIAL — SMB + MCB OWNER-APPROVED PLANNED  
+**Version:** 5.28.0  
+**Status:** ICF ACTIVE AT ICF-09 — MIB PAUSED AFTER MIB-13 — CEL OWNER-DIRECTED INTERSTITIAL — SMB + MCB OWNER-APPROVED PLANNED  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-20
 
 ## Authority and operating rule
 
-Current work is selected only by bootstrap → authority registry → current pointer → selected checkpoint → live GitHub evidence. The strict APW/CSW/APM predecessor sequence remains **COMPLETED_VERIFIED**.
+Current work is selected only by bootstrap → authority registry → current pointer → selected checkpoint → live GitHub evidence. This roadmap owns milestone order and dependency intent; it does not override the runtime selector when status prose ages.
+
+The strict APW/CSW/APM predecessor sequence remains **COMPLETED_VERIFIED**.
 
 Approved/directed forward programs:
-1. **MIB — Multiversal Implementation Backbone** — active.
-2. **ICF — Ingredient, Cultivation & Foodcraft Foundation** — owner-approved planned interstitial subproject after MIB-13 and before MIB-14.
+1. **MIB — Multiversal Implementation Backbone** — completed verified through MIB-13; paused for ICF.
+2. **ICF — Ingredient, Cultivation & Foodcraft Foundation** — active interstitial subproject after MIB-13 and before MIB-14.
 3. **CEL — Cozy Economy & Life Loop** — owner-directed planned interstitial subproject after MIB-14 and before MIB-15.
 4. **SMB — System Maturation & Buildout** — owner-approved planned post-MIB successor.
 5. **MCB — Market Capture & Brand Backbone** — owner-approved planned commercial-preparation program; bounded early parallel work requires separate owner routing.
 
-Roadmap presence does not auto-select ICF, CEL, SMB or MCB. **MIB-13 is the sole current implementation item.**
+The runtime selector currently identifies **ICF-09 — Creature Catalog Harvest Crosswalk & Signature Ingredient Library** as the sole implementation item, state `selected_not_started`.
 
 ## MIB current state
 
-Completed verified through MIB-12. Most recent completion:
-- **MIB-12 — Crafting Deterministic Engine** — App PR #238; exact validated head `20d607a39d73085567bb44c7f5a6c4fb26ef33ec`; repository health `32349057025` PASS; Windows `96363989252` PASS; Linux `96363989039` PASS; deterministic comparison `96364257006` PASS; no timing retry; squash merge `9325cf5b1595853c77e07cd209ac1e08b6c4db90`; migration head remains `0021_apm_autogm_mini_campaign_director.json`; migration `0022` was neither created nor reserved.
+MIB is **completed_verified through MIB-13**.
 
-Current:
-- **MIB-13 — Economy and Trade Deterministic Engine**
-- Attempt: `MIB-13-attempt-001`
-- State: **selected_not_started**
+Most recent MIB completion:
+- **MIB-13 — Economy and Trade Deterministic Engine** — App PR #239; squash merge `3d484d186a7589bbbf1c9585541bcbc42e04fd51`.
+- The Application repository later advanced through owner-source intake PR #240 to main `f66f550c246d77ea84237511330cac36674b6e25`; that intake has no runtime implementation authority.
+- Migration head remains `0021_apm_autogm_mini_campaign_director.json`; migration `0022` is not reserved.
 
-MIB-13 covers currency definitions/conversion contracts, deterministic price/modifier pipelines, merchant/service availability, buy/sell/barter/trade validation, reservation/contract/settlement receipts, inventory/economy authority boundaries and deterministic local-market fixtures. It must expose safe owner-domain price/availability/cost/settlement/status seams that existing Downtime/APW and Cozy/APM orchestration can consume later without granting those layers economy or automation authority. Real-money/payment integration remains outside scope.
+MIB resumes at **MIB-14 — Vehicle, Platform and Base Engine Foundations** only after ICF-15 is completed unless the owner explicitly re-routes the roadmap.
 
 ## Effective implementation order
 
-MIB numbering remains stable, but the owner-approved ICF and owner-directed CEL subprojects are mandatory roadmap insertions unless the owner explicitly re-routes them:
+MIB numbering remains stable, with the owner-approved ICF and owner-directed CEL subprojects inserted as mandatory roadmap sequences unless the owner explicitly re-routes them:
 
 `MIB-13 → ICF-01 → ICF-02 → ICF-03 → ICF-04 → ICF-05 → ICF-06 → ICF-07 → ICF-08 → ICF-09 → ICF-10 → ICF-11 → ICF-12 → ICF-13 → ICF-14 → ICF-15 → MIB-14 → CEL-01 → CEL-02 → CEL-03 → CEL-04 → CEL-05 → CEL-06 → MIB-15 → MIB-16 → MIB-17 → MIB-18`
 
@@ -43,8 +44,8 @@ MIB-14 does not begin until ICF is completed. CEL does not begin until MIB-14 is
 
 **Program:** `governance/application-planning/ingredient-cultivation-foodcraft/ICF_INGREDIENT_CULTIVATION_FOODCRAFT_PROGRAM.md`  
 **Backlog:** `governance/application-planning/ingredient-cultivation-foodcraft/ICF_PROGRAM_BACKLOG.json`  
-**State:** owner-approved planned; not yet selected  
-**Activation:** after MIB-13 completion  
+**State:** in progress  
+**Activation:** after completed MIB-13  
 **Resume MIB:** MIB-14 after ICF completion
 
 ICF creates one canonical ingredient ecology shared by agriculture, foraging, livestock, creature harvesting/butchery, cooking, magical cooking, alchemy, medicine, ritual, crafting, trade and later base/settlement production. It consolidates the approved Cooking, Agriculture and Alchemy source packages, existing CSV/material/facility content, governed starter packs and creature harvest/loot references.
@@ -53,15 +54,15 @@ ICF creates one canonical ingredient ecology shared by agriculture, foraging, li
 
 | Tranche | State |
 |---|---|
-| ICF-01 — Source Inventory & Reconciliation | planned |
-| ICF-02 — Canonical Ingredient Schema & Taxonomy | planned |
-| ICF-03 — Mundane Crop & Staple Plant Library | planned |
-| ICF-04 — Herbs, Spices, Fungi & Wild Forage | planned |
-| ICF-05 — Livestock, Animal & Aquatic Ingredient Library | planned |
-| **ICF-06 — Magical, Exotic & Multiversal Ingredients** | **planned — protected original tranche** |
-| **ICF-07 — Creature Harvest, Butchery & Biological Ingredient System** | **planned — protected approved tranche** |
-| **ICF-08 — Creature Part Effect Taxonomy & Affinity Grammar** | **planned — added owner-approved tranche** |
-| **ICF-09 — Creature Catalog Harvest Crosswalk & Signature Ingredient Library** | **planned — added owner-approved tranche** |
+| ICF-01 — Source Inventory & Reconciliation | completed_verified |
+| ICF-02 — Canonical Ingredient Schema & Taxonomy | completed_verified |
+| ICF-03 — Mundane Crop & Staple Plant Library | completed_verified |
+| ICF-04 — Herbs, Spices, Fungi & Wild Forage | completed_verified |
+| ICF-05 — Livestock, Animal & Aquatic Ingredient Library | completed_verified |
+| **ICF-06 — Magical, Exotic & Multiversal Ingredients** | **completed_verified — protected original tranche** |
+| **ICF-07 — Creature Harvest, Butchery & Biological Ingredient System** | **completed_verified — protected approved tranche** |
+| **ICF-08 — Creature Part Effect Taxonomy & Affinity Grammar** | **completed_verified** |
+| **ICF-09 — Creature Catalog Harvest Crosswalk & Signature Ingredient Library** | **selected_not_started — current** |
 | ICF-10 — Preparation, Processing & Derived Ingredients | planned |
 | ICF-11 — Alchemical Ingredient Rules & Formula Grammar | planned |
 | ICF-12 — Culinary & Magical Culinary Rules | planned |
@@ -69,7 +70,18 @@ ICF creates one canonical ingredient ecology shared by agriculture, foraging, li
 | ICF-14 — Recipe Corpus & Recipe-Generation Foundation | planned |
 | ICF-15 — Content Packs, Validation, Search & Workbench | planned |
 
-**Protected numbering rule:** the originally approved **ICF-06 remains Magical, Exotic & Multiversal Ingredients** and **ICF-07 remains Creature Harvest, Butchery & Biological Ingredient System**. The new creature-part grammar and catalog crosswalk are ICF-08 and ICF-09; the former ICF-08 through ICF-13 shift to ICF-10 through ICF-15.
+**Protected numbering rule:** the originally approved **ICF-06 remains Magical, Exotic & Multiversal Ingredients** and **ICF-07 remains Creature Harvest, Butchery & Biological Ingredient System**. Creature-part grammar and catalog crosswalk remain ICF-08 and ICF-09; later preparation/rules/integration/content-pack work remains ICF-10 through ICF-15.
+
+### ICF current implementation boundary
+
+ICF-09 walks the governed creature catalog and binds authored creatures and variants to:
+- ICF-07 harvest profiles and deterministic harvest/butchery boundaries;
+- ICF-08 part baselines, body-plan/type profiles and trait/affinity tendencies;
+- canonical ingredient/material definitions and stable IDs;
+- exact-creature signature ingredients where authored evidence supports them;
+- explicit coverage-gap records where anatomy, effects, edibility, legality, harvest procedure or lore is not supported by governed evidence.
+
+ICF-09 must not infer anatomy or exact effects from broad creature types, folklore, genre tropes or same-named organs. Harvestability never silently grants edibility, safety, legality or cultural acceptability.
 
 ### ICF creature/effect architecture
 
@@ -77,7 +89,7 @@ Creature ingredients use the governed inheritance pattern:
 
 `part baseline → body-plan/creature-type profile → creature affinity/trait profile → explicit species/variant override → harvested-instance quality/condition`
 
-Broad part classes may define reusable culinary/alchemical/magical/crafting tendencies, but they do not authorize fabricated creature anatomy or lore. ICF-09 walks the actual governed creature catalog, produces explicit signature ingredients and substitutions where supported, and records coverage gaps where source evidence is insufficient.
+Broad part classes define reusable culinary/alchemical/magical/crafting tendencies only. They do not authorize fabricated creature anatomy, exact effects or lore.
 
 ### ICF Downtime/Cozy integration
 
@@ -88,6 +100,8 @@ Long-running or repeated cultivation, husbandry, gathering, harvesting, butchery
 One canonical ingredient definition can carry physical, ecological/agricultural, economic, culinary, magical-culinary and alchemical profiles. Source-derived terminology/provenance stays traceable. Live inventory/Asset Instances remain owned by the existing inventory authority.
 
 The first-party foundation targets approximately **700–1,000 primary ingredients** plus **300–500 derived preparations**, spanning mundane crops/plants, herbs/spices/fungi/forage, livestock/animal/aquatic outputs, basic reagents and magical/exotic/multiversal ingredients.
+
+ICF-03 through ICF-06 currently establish **964 primary ingredient definitions** before the ICF-09 creature-catalog crosswalk adds or binds supported signature creature ingredients.
 
 ## MIB-14 dependency bridge
 
@@ -130,9 +144,7 @@ A complete CEL experience must always expose a meaningful current goal, legal ne
 
 | Tranche | State |
 |---|---|
-| MIB-01 through MIB-11 | completed_verified |
-| **MIB-12 — Crafting Deterministic Engine** | **completed_verified** |
-| **MIB-13 — Economy and Trade Deterministic Engine** | **selected_not_started** |
+| MIB-01 through MIB-13 | completed_verified |
 | MIB-14 — Vehicle, Platform and Base Engine Foundations | planned_after_icf |
 | MIB-15 — AI Provider Abstraction, Fake Provider and Context/Proposal Pipeline | planned_after_cel |
 | MIB-16 — Diagnostics, Provenance, Dependency and Search Engineering Surfaces | planned |
@@ -145,7 +157,7 @@ SMB remains owner-approved post-MIB. **SMB-07 — Deep Cross-System Simulation**
 
 ## Planned commercial preparation — MCB
 
-MCB remains owner-approved planned commercial-preparation work and is not selected by this roadmap change.
+MCB remains owner-approved planned commercial-preparation work and is not selected by this roadmap.
 
 ## Shared rules and preserved work
 
@@ -160,18 +172,18 @@ MCB remains owner-approved planned commercial-preparation work and is not select
 - Generic creature-part/type affinities are tendencies/proposal inputs, not authority to invent unsupported anatomy/lore.
 - ICF harvestability does not imply edibility, legality, cultural acceptability, sapience treatment or safety.
 - ICF preserves source provenance/terminology and explicitly reconciles conflicts/aliases rather than silently overwriting source data.
-- **ICF-06 and ICF-07 remain protected; new creature effect/crosswalk work is ICF-08 and ICF-09.**
+- **ICF-06 and ICF-07 remain protected; creature effect/crosswalk work is ICF-08 and ICF-09.**
 - ICF long-running/repeated work reuses Downtime/Project semantics and can publish Cozy eligibility metadata without granting automation authority.
 - CEL reuses APW Downtime/Projects, APM Cozy, MIB-13 economy, ICF, MIB-14 and other owning domains rather than creating parallel truth.
 - CEL wall-clock time is not game progress by default; routine automation is bounded, deterministic and stops at meaningful authority/choice boundaries.
 - CEL must create consequential goals/resource/economy/improvement feedback loops and avoid coercive or aimless engagement patterns.
 - Optional AI remains non-authoritative; blocking paths and CEL core play pass without AI.
-- Normal product acceptance is exact-head repository health + self-hosted Windows + self-hosted Linux + deterministic comparison where applicable.
-- **CCTI-12-T04:** deferred until September 2026; PR #191 preserved.
-- **WP-011:** dormant pending required Apple/Mac environment; PR #61 preserved.
+- Normal product acceptance is exact-head repository health + self-hosted Windows + self-hosted Linux + deterministic comparison where applicable. Governance/document-only AIOC work uses the registered repository-health exception rather than artificial product lanes.
+- **CCTI-12-T04:** deferred until September 2026; PR #191 preserved and non-authoritative.
+- **WP-011:** dormant pending required Apple/Mac environment; PR #61 preserved and non-authoritative.
 - **DS-008:** blocked non-owner exact-byte transfer/validation.
 - Tester distribution, release/deployment and paid-provider activation remain separately owner-gated.
 - Product voice remains warm, knowledgeable, encouraging and restrained; never obsequious.
 - Future family controls keep guardian authority distinct from GM/Campaign/private creative authority.
 
-“Continue” from this state means execute **MIB-13** through its bounded completion gate. After MIB-13 is `completed_verified`, select and execute **ICF-01**; finish ICF-01 through ICF-15, then MIB-14, then CEL-01 through CEL-06 before MIB-15 unless the owner explicitly changes the sequence.
+“Continue” from this state means execute **ICF-09** through its bounded completion gate. After ICF-09 is `completed_verified`, select **ICF-10** as `selected_not_started` without beginning it unless the owner continues further.
