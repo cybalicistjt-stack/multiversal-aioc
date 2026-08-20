@@ -1,0 +1,18 @@
+{
+  "$id": "https://multiversal.local/schemas/icf-14-recipe.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "authorship": {"enum": ["governed-first-party","source-derived","hybrid"]},
+    "family": {"minLength": 1,"type": "string"},
+    "inputs": {"items": {"properties": {"definitionRef": {"pattern": "^(ingredient|preparation):[a-z0-9]+(?:-[a-z0-9]+)*$","type": "string"},"optional": {"type": "boolean"},"quantity": {"properties": {"amount": {"exclusiveMinimum": 0,"type": "number"},"unit": {"pattern": "^unit:[a-z0-9]+(?:-[a-z0-9]+)*$","type": "string"}},"required": ["amount","unit"],"type": "object"},"role": {"minLength": 1,"type": "string"}},"required": ["definitionRef","role","quantity","optional"],"type": "object"},"type": "array"},
+    "name": {"minLength": 1,"type": "string"},
+    "outcome": {"required": ["authorityRef"],"type": "object"},
+    "recipeId": {"pattern": "^(recipe|source-recipe|recipe-template|alchemy-formula|formula-template):[a-z0-9]+(?:-[a-z0-9]+)*$","type": "string"},
+    "recordKind": {"enum": ["concrete","template","source-backed"]},
+    "tags": {"items": {"minLength": 1,"type": "string"},"type": "array","uniqueItems": true}
+  },
+  "required": ["recipeId","name","family","recordKind","authorship","outcome","tags"],
+  "title": "ICF-14 Recipe / Recipe Template",
+  "type": "object"
+}
