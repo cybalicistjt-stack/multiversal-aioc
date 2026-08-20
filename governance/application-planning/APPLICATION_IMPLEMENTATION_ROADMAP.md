@@ -1,10 +1,10 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 5.22.0  
-**Status:** MIB ACTIVE AT MIB-09 — SMB + MCB OWNER-APPROVED PLANNED  
+**Version:** 5.23.0  
+**Status:** MIB ACTIVE AT MIB-10 — SMB + MCB OWNER-APPROVED PLANNED  
 **Owner and final authority:** John Brandon Turner  
-**Last updated:** 2026-08-19
+**Last updated:** 2026-08-20
 
 ## Authority and operating rule
 
@@ -15,7 +15,7 @@ Approved forward programs:
 2. **SMB — System Maturation & Buildout** — owner-approved planned post-MIB successor.
 3. **MCB — Market Capture & Brand Backbone** — owner-approved planned commercial-preparation program; bounded early parallel work requires separate owner routing.
 
-Roadmap presence does not auto-select SMB or MCB. **MIB-09 is the sole current implementation item.**
+Roadmap presence does not auto-select SMB or MCB. **MIB-10 is the sole current implementation item.**
 
 ## MIB current state
 
@@ -27,16 +27,17 @@ Completed verified:
 - **MIB-05 — Content Pack Compiler, Linter, Importer and Starter Libraries** — App PR #231, merge `8ee884b6f23dadaab77756efac9aa0cc074db59a`.
 - **MIB-06 — Fixture Factory, Golden Campaign and Performance Corpus** — App PR #232, merge `4d34ffad6ff53e173b5cbeaaa3fcfcc43e05e82f`.
 - **MIB-07 — Multiversal UI Workbench and Shared Interaction Components** — App PR #233, merge `d70ffb8ff04343422c33165feae6211d7bc18b62`.
-- **MIB-08 — Integrity, Schema Compatibility and Migration Engineering Toolkit** — App PR #234 exact validated head `f37d1c16b266f96d5a41a638356683e8142ecae8`; repository health `32323170833` PASS; product run `32323171062` PASS; Windows `96289132850` PASS; Linux `96289133021` PASS; deterministic comparison `96289570608` PASS; no A2 retry; squash merge `046b7d2d9cfa41fdc82df8762533c0c81a4139db`; migration head remains `0021_apm_autogm_mini_campaign_director.json`; migration `0022` was neither created nor reserved.
+- **MIB-08 — Integrity, Schema Compatibility and Migration Engineering Toolkit** — App PR #234, merge `046b7d2d9cfa41fdc82df8762533c0c81a4139db`.
+- **MIB-09 — Relationship and Reputation Engine** — App PR #235 exact validated head `2ab22ae767c9d94532eacef8750fd2ccc0754a53`; repository health `32325160566` PASS; final Windows `96295717472` PASS; final Linux `96295717246` PASS after one policy-permitted unchanged A2 timing retry; deterministic comparison `96295893108` PASS; squash merge `d6cd08d01fce5dbee1fd1f8029c56dbf963e1cd2`; migration head remains `0021_apm_autogm_mini_campaign_director.json`; migration `0022` was neither created nor reserved.
 
-MIB-08 delivered an exact Git-blob fingerprint baseline for migrations `0001`–`0021`, fail-closed immutable-chain auditing, provider-neutral additive/breaking compatibility classification, deterministic non-authoritative migration rehearsal receipts, forward-only recovery guidance, Haunted Lighthouse fixture/visibility replay, a machine-readable compatibility-report schema, and permanent validation routing for governed profiles/shared developer tooling. Historical migration `0001` retains its older metadata representation; compatibility tooling tolerates that legacy shape only under its exact immutable blob fingerprint rather than rewriting history.
+MIB-09 delivered deterministic D25 relationship/reputation mechanics with attributable expected-version event receipts, replay/reversal, authorization-first projection/cardinality controls, derived reputation projections, MIB-02 query integration, MIB-05 starter content, MIB-07 workbench fixtures, and preserved the source-frozen A9 relationship registry while supporting definition-driven Influence extension data over the existing D25 JSON value seam.
 
 Current:
-- **MIB-09 — Relationship and Reputation Engine**
-- Attempt: `MIB-09-attempt-001`
+- **MIB-10 — Investigation and Clue Graph Engine**
+- Attempt: `MIB-10-attempt-001`
 - State: **selected_not_started**
 
-MIB-09 must turn the governed D25 relationship structures into a reusable deterministic gameplay engine: relationship dimensions/types/scales, directional edge calculations, governed Trust/Loyalty/Respect/Affection/Fear/Rivalry/Familiarity/Influence-style profiles, deterministic modifier/event recalculation, reputation projections, attributable trend/history receipts, visibility-safe Player/GM projections, MIB-02 query integration, MIB-07 inspector fixtures and starter relationship/reputation pack content. It must reuse existing owner-domain authority and cannot leak hidden edges/cardinality through counts, summaries, search, rankings, diagnostics or UI.
+MIB-10 must make the governed D24 investigation structures mechanically operable before final graphical polish: node/connection registry, clue/evidence/hypothesis/question/confidence semantics, deterministic connection predicates, reveal/discovery progression, role-safe projection and hidden-cardinality protection, graph traversal/search/filtering, accessible nonvisual clue-board representation, provenance/history receipts and Haunted Lighthouse evidence fixtures. Graphical and nonvisual projections must expose identical authorized state, D24 remains sole investigation truth authority, and hidden nodes/edges/cardinality cannot leak through traversal counts summaries search rankings diagnostics or UI.
 
 ## MIB tranche roadmap
 
@@ -50,8 +51,8 @@ MIB-09 must turn the governed D25 relationship structures into a reusable determ
 | MIB-06 — Fixture Factory, Golden Campaign and Performance Corpus | completed_verified |
 | MIB-07 — Multiversal UI Workbench and Shared Interaction Components | completed_verified |
 | MIB-08 — Integrity, Schema Compatibility and Migration Engineering Toolkit | completed_verified |
-| **MIB-09 — Relationship and Reputation Engine** | **selected_not_started** |
-| MIB-10 — Investigation and Clue Graph Engine | planned |
+| MIB-09 — Relationship and Reputation Engine | completed_verified |
+| **MIB-10 — Investigation and Clue Graph Engine** | **selected_not_started** |
 | MIB-11 — World, Reality and Multiverse Taxonomy Engine | planned |
 | MIB-12 — Crafting Deterministic Engine | planned |
 | MIB-13 — Economy and Trade Deterministic Engine | planned |
@@ -80,8 +81,9 @@ Strict MIB order:
 - Shared UI components may project owner-domain truth but may not become an alternate authority layer.
 - Migrations `0001`–`0021` are immutable; `0022` is not reserved and requires a demonstrated durable schema delta.
 - Migration compatibility/rehearsal tooling may inspect and simulate but may not rewrite immutable migration history or authorize a future migration merely because it is additive-compatible.
-- Relationship/reputation mechanics must reuse governed owner-domain relationship authority; no second relationship ledger is permitted.
-- Hidden relationship edges/cardinality must be filtered before counts, summaries, search, ranking, diagnostics and UI projection.
+- Relationship/reputation mechanics reuse governed D25 owner-domain relationship authority; no second relationship ledger is permitted.
+- Investigation/clue mechanics reuse governed D24 owner-domain authority; no second investigation/evidence/graph ledger is permitted.
+- Hidden relationship and investigation edges/cardinality are filtered before counts, summaries, search, ranking, diagnostics and UI projection.
 - Optional AI remains non-authoritative; blocking paths pass without AI.
 - Normal product acceptance is exact-head repository health + self-hosted Windows + self-hosted Linux + deterministic comparison where applicable.
 - No parallel Campaign, Session, Action, Event, Character, asset, relationship, investigation, World, Adventure, creator or automation truth ledger.
@@ -92,4 +94,4 @@ Strict MIB order:
 - Product voice remains warm, knowledgeable, encouraging and restrained; never obsequious.
 - Future family controls keep guardian authority distinct from GM/Campaign/private creative authority.
 
-“Continue” from this state means execute MIB-09 through its bounded completion gate before advancing to MIB-10. SMB and MCB remain planned until separately selected.
+“Continue” from this state means execute MIB-10 through its bounded completion gate before advancing to MIB-11. SMB and MCB remain planned until separately selected.
