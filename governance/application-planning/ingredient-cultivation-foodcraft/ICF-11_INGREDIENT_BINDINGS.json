@@ -35,7 +35,9 @@
       "sourceRarity": "uncommon"
     },
     {
-      "definitionRef": "ingredient:sulfur",
+      "bindingStatus": "unresolved-canonical-definition-gap",
+      "definitionRef": null,
+      "gapReason": "Alchemy source authors the example term, but ICF-04/06 validation evidence does not establish a canonical definition.",
       "rawEffectAttribution": "not-authored",
       "roleRefs": [
         "alchemy-role:formula-ingredient"
@@ -43,10 +45,13 @@
       "sourceFormulaRefs": [
         "alchemy-formula:potion-of-fire-breath"
       ],
-      "sourceRarity": "common"
+      "sourceRarity": "common",
+      "sourceTerm": "Sulfur"
     },
     {
-      "definitionRef": "ingredient:charcoal-dust",
+      "bindingStatus": "unresolved-canonical-definition-gap",
+      "definitionRef": null,
+      "gapReason": "Alchemy source authors the example term, but ICF-04/06 validation evidence does not establish a canonical definition.",
       "rawEffectAttribution": "not-authored",
       "roleRefs": [
         "alchemy-role:formula-ingredient"
@@ -54,7 +59,8 @@
       "sourceFormulaRefs": [
         "alchemy-formula:potion-of-fire-breath"
       ],
-      "sourceRarity": "common"
+      "sourceRarity": "common",
+      "sourceTerm": "Charcoal Dust"
     },
     {
       "creatureBindingRule": "ICF-09/ICF-07 remain authoritative",
@@ -90,6 +96,20 @@
         "alchemy-formula:elixir-of-giant-strength"
       ],
       "sourceRarity": "uncommon"
+    }
+  ],
+  "coverageGaps": [
+    {
+      "gapId": "gap:icf11:sulfur-canonical-definition",
+      "requiredFor": "canonical exact binding only; formula rarity-count rule remains usable",
+      "sourceTerm": "Sulfur",
+      "status": "open"
+    },
+    {
+      "gapId": "gap:icf11:charcoal-dust-canonical-definition",
+      "requiredFor": "canonical exact binding only; formula rarity-count rule remains usable",
+      "sourceTerm": "Charcoal Dust",
+      "status": "open"
     }
   ],
   "firstPartyAffinityPolicy": {
