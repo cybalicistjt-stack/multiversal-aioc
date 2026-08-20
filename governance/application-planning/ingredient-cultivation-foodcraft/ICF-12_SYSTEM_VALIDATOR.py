@@ -35,9 +35,7 @@ need(R["boundaries"]["currentPriceAuthority"]=="MIB-13" and R["boundaries"]["mar
 need(R["boundaries"]["alchemyAuthority"]=="ICF-11","ICF11")
 need(R["boundaries"]["processingLineageAuthority"]=="ICF-10","ICF10")
 need(R["boundaries"]["migration0022Required"] is False,"migration")
-if E:
- print("ICF-12 VALIDATION FAIL")
- for e in E: print(" -",e)
- raise SystemExit(1)
-S={"schemaVersion":"1.0.0","workItem":"ICF-12","status":"PASS","qualityBandCount":4,"effectCategoryCount":6,"sourceRecipeExampleCount":8,"enchantmentDefinitionCount":12,"canonicalIngredientBindingCount":8,"enchantmentSicknessOutcomeCount":12,"chaosEnchantmentOutcomeCount":20,"chaosOverloadOutcomeCount":10,"sourceConflictCount":2,"sourceAssertionCount":11,"fixtureScenarioCount":16,"checks":{"sourcePinned":True,"ordinaryQualityLadderExact":True,"cookingOutcomeBandsEncoded":True,"preservationSourceRulesEncoded":True,"scopedEnchantmentDLsPreserved":True,"rawIngredientEffectsNotInferred":True,"canonicalSourceIngredientBindingsPresent":True,"alchemicalCookingDoesNotReassignICF11":True,"ICF08TendenciesDoNotAutoCreateFoodEffects":True,"enchantmentSicknessEncoded":True,"chaosOverloadConflictFailsClosed":True,"D17LiveStatePreserved":True,"MIB13EconomyPreserved":True,"migration0022NotRequired":True}}
+S={"schemaVersion":"1.0.0","workItem":"ICF-12","status":"PASS" if not E else "FAIL","qualityBandCount":4,"effectCategoryCount":6,"sourceRecipeExampleCount":8,"enchantmentDefinitionCount":12,"canonicalIngredientBindingCount":8,"enchantmentSicknessOutcomeCount":12,"chaosEnchantmentOutcomeCount":20,"chaosOverloadOutcomeCount":10,"sourceConflictCount":2,"sourceAssertionCount":11,"fixtureScenarioCount":16,"checks":{"sourcePinned":True,"ordinaryQualityLadderExact":True,"cookingOutcomeBandsEncoded":True,"preservationSourceRulesEncoded":True,"scopedEnchantmentDLsPreserved":True,"rawIngredientEffectsNotInferred":True,"canonicalSourceIngredientBindingsPresent":True,"alchemicalCookingDoesNotReassignICF11":True,"ICF08TendenciesDoNotAutoCreateFoodEffects":True,"enchantmentSicknessEncoded":True,"chaosOverloadConflictFailsClosed":True,"D17LiveStatePreserved":True,"MIB13EconomyPreserved":True,"migration0022NotRequired":True},"errors":E}
+(H/"ICF-12_VALIDATION_SUMMARY.json").write_text(json.dumps(S,indent=2,sort_keys=True)+"\n")
 print(json.dumps(S,indent=2,sort_keys=True))
+sys.exit(1 if E else 0)
