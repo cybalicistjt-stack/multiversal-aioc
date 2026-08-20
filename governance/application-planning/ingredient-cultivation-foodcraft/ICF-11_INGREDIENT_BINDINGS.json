@@ -1,0 +1,128 @@
+{
+  "bindings": [
+    {
+      "definitionRef": "ingredient:redleaf",
+      "rawEffectAttribution": "not-authored",
+      "roleRefs": [
+        "alchemy-role:formula-ingredient"
+      ],
+      "sourceFormulaRefs": [
+        "alchemy-formula:healing-potion"
+      ],
+      "sourceRarity": "common"
+    },
+    {
+      "definitionRef": "ingredient:soothewort",
+      "rawEffectAttribution": "not-authored",
+      "roleRefs": [
+        "alchemy-role:formula-ingredient"
+      ],
+      "sourceFormulaRefs": [
+        "alchemy-formula:healing-potion"
+      ],
+      "sourceRarity": "common"
+    },
+    {
+      "creatureBindingRule": "ICF-09/ICF-07 remain authoritative",
+      "definitionRef": "ingredient:fire-salamander-tongue",
+      "rawEffectAttribution": "not-authored",
+      "roleRefs": [
+        "alchemy-role:formula-ingredient"
+      ],
+      "sourceFormulaRefs": [
+        "alchemy-formula:potion-of-fire-breath"
+      ],
+      "sourceRarity": "uncommon"
+    },
+    {
+      "bindingStatus": "unresolved-canonical-definition-gap",
+      "definitionRef": null,
+      "gapReason": "Alchemy source authors the example term, but ICF-04/06 validation evidence does not establish a canonical definition.",
+      "rawEffectAttribution": "not-authored",
+      "roleRefs": [
+        "alchemy-role:formula-ingredient"
+      ],
+      "sourceFormulaRefs": [
+        "alchemy-formula:potion-of-fire-breath"
+      ],
+      "sourceRarity": "common",
+      "sourceTerm": "Sulfur"
+    },
+    {
+      "bindingStatus": "unresolved-canonical-definition-gap",
+      "definitionRef": null,
+      "gapReason": "Alchemy source authors the example term, but ICF-04/06 validation evidence does not establish a canonical definition.",
+      "rawEffectAttribution": "not-authored",
+      "roleRefs": [
+        "alchemy-role:formula-ingredient"
+      ],
+      "sourceFormulaRefs": [
+        "alchemy-formula:potion-of-fire-breath"
+      ],
+      "sourceRarity": "common",
+      "sourceTerm": "Charcoal Dust"
+    },
+    {
+      "creatureBindingRule": "ICF-09/ICF-07 remain authoritative",
+      "definitionRef": "ingredient:giant-s-toenail",
+      "rawEffectAttribution": "not-authored",
+      "roleRefs": [
+        "alchemy-role:formula-ingredient"
+      ],
+      "sourceFormulaRefs": [
+        "alchemy-formula:elixir-of-giant-strength"
+      ],
+      "sourceRarity": "rare"
+    },
+    {
+      "creatureBindingRule": "ICF-09/ICF-07 remain authoritative",
+      "definitionRef": "ingredient:ogre-s-blood",
+      "rawEffectAttribution": "not-authored",
+      "roleRefs": [
+        "alchemy-role:formula-ingredient"
+      ],
+      "sourceFormulaRefs": [
+        "alchemy-formula:elixir-of-giant-strength"
+      ],
+      "sourceRarity": "uncommon"
+    },
+    {
+      "definitionRef": "ingredient:rockroot",
+      "rawEffectAttribution": "not-authored",
+      "roleRefs": [
+        "alchemy-role:formula-ingredient"
+      ],
+      "sourceFormulaRefs": [
+        "alchemy-formula:elixir-of-giant-strength"
+      ],
+      "sourceRarity": "uncommon"
+    }
+  ],
+  "coverageGaps": [
+    {
+      "gapId": "gap:icf11:sulfur-canonical-definition",
+      "requiredFor": "canonical exact binding only; formula rarity-count rule remains usable",
+      "sourceTerm": "Sulfur",
+      "status": "open"
+    },
+    {
+      "gapId": "gap:icf11:charcoal-dust-canonical-definition",
+      "requiredFor": "canonical exact binding only; formula rarity-count rule remains usable",
+      "sourceTerm": "Charcoal Dust",
+      "status": "open"
+    }
+  ],
+  "firstPartyAffinityPolicy": {
+    "rule": "ICF-06 broad alchemical affinity refs and ICF-08 tendency projections can be used as search/research hints but do not become exact formula effects or substitution groups without explicit ICF-11 adoption.",
+    "status": "candidate-only"
+  },
+  "schemaVersion": "1.0.0",
+  "source": {
+    "authorityRule": "Preserve source assertions exactly; current price/market scarcity remain MIB-13, live Asset state remains D17, and unsupported ingredient effects remain unresolved.",
+    "canonicalEvidencePath": "MV_Master_01_Core/02_PDF_Sources/Part 1/Downtime/Alchemy.PDF",
+    "pageCount": 18,
+    "sha256": "020e120dc253204073f170f4b2eb76b6b67c8d56755bf8cad32ca3f64dde13e9",
+    "sourceId": "Alchemy.mht"
+  },
+  "workItem": "ICF-11"
+}

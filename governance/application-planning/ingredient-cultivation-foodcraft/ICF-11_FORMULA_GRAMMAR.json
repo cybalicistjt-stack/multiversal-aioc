@@ -1,0 +1,189 @@
+{
+  "advancedRules": {
+    "experimentalAlchemy": {
+      "activation": "requires perk:experimental-alchemy",
+      "rule": "Combine two potion recipes; Mixing DC +3; failure becomes unstable and uses Potion Interaction Table."
+    },
+    "masterBrewer": {
+      "activation": "requires perk:master-brewer",
+      "rule": "Catalyzing and Stabilizing checks automatically succeed; source market-sale bonus remains provenance only and does not override MIB-13."
+    },
+    "multiPotionBrewing": {
+      "activation": "requires perk:multi-potion-brewing",
+      "tier3": "two identical potions simultaneously; ingredients consumed normally",
+      "tier5MassProduction": "up to five identical potions simultaneously; ingredients consumed normally"
+    },
+    "rareIngredientMastery": {
+      "activation": "requires perk:rare-ingredient-mastery",
+      "rule": "Reduce rare ingredient requirement by 1 where a potion requires rare components; source additionally says Exotic potions reduce rare component requirements by 1. Never reduce below zero."
+    }
+  },
+  "compositionByRarity": {
+    "common": [
+      {
+        "max": 3,
+        "min": 2,
+        "rarity": "common"
+      }
+    ],
+    "exotic": [
+      {
+        "max": 1,
+        "min": 1,
+        "rarity": "uncommon"
+      },
+      {
+        "max": 2,
+        "min": 2,
+        "rarity": "rare"
+      },
+      {
+        "max": 1,
+        "min": 1,
+        "rarity": "exotic"
+      }
+    ],
+    "rare": [
+      {
+        "max": 1,
+        "min": 1,
+        "rarity": "common"
+      },
+      {
+        "max": 2,
+        "min": 2,
+        "rarity": "uncommon"
+      },
+      {
+        "max": 1,
+        "min": 1,
+        "rarity": "rare"
+      }
+    ],
+    "uncommon": [
+      {
+        "max": 2,
+        "min": 2,
+        "rarity": "common"
+      },
+      {
+        "max": 2,
+        "min": 1,
+        "rarity": "uncommon"
+      }
+    ]
+  },
+  "exactDefinitionRule": "Exact ingredient identity is mandatory only when explicitly authored. Source uses e.g. examples in all three sample formulas, so those examples are preferred/source-backed candidates, not exact signature locks.",
+  "formulaIdPattern": "^alchemy-formula:[a-z0-9]+(?:-[a-z0-9]+)*$",
+  "ingredientRequirementKinds": [
+    "exact-definition",
+    "rarity-count",
+    "property-threshold",
+    "substitution-group"
+  ],
+  "propertyThresholdRule": "A property/effect threshold may be used only when the property/effect is explicitly governed on the ingredient or preparation. ICF-08 candidate tendencies do not qualify until adopted.",
+  "roleSlots": [
+    "base-or-solvent",
+    "active",
+    "modifier",
+    "catalyst-ingredient",
+    "stabilizer",
+    "enhancer",
+    "formula-ingredient"
+  ],
+  "sampleFormulas": [
+    {
+      "effect": {
+        "kind": "source-formula-effect",
+        "text": "Restores 2d4 + 2 HP."
+      },
+      "formulaId": "alchemy-formula:healing-potion",
+      "mixingDc": 10,
+      "name": "Healing Potion",
+      "rarity": "common",
+      "requirements": [
+        {
+          "classHint": "herb",
+          "count": 2,
+          "examplesAreExactRequirements": false,
+          "kind": "rarity-count",
+          "rarity": "common",
+          "role": "formula-ingredient",
+          "sourceExamples": [
+            "ingredient:redleaf",
+            "ingredient:soothewort"
+          ]
+        }
+      ]
+    },
+    {
+      "effect": {
+        "kind": "source-formula-effect",
+        "text": "Exhale fire: 15 ft cone, 4d6 fire damage, DC 13 Dexterity save for half."
+      },
+      "formulaId": "alchemy-formula:potion-of-fire-breath",
+      "mixingDc": 12,
+      "name": "Potion of Fire Breath",
+      "rarity": "uncommon",
+      "requirements": [
+        {
+          "count": 1,
+          "examplesAreExactRequirements": false,
+          "kind": "rarity-count",
+          "rarity": "uncommon",
+          "role": "formula-ingredient",
+          "sourceExamples": [
+            "ingredient:fire-salamander-tongue"
+          ]
+        },
+        {
+          "count": 2,
+          "coverageGap": "Sulfur and Charcoal Dust are explicit Alchemy source examples but have no canonical ICF-04/06 ingredient definitions at ICF-11 authoring time.",
+          "examplesAreExactRequirements": false,
+          "kind": "rarity-count",
+          "rarity": "common",
+          "role": "formula-ingredient",
+          "sourceExamples": [
+            "source-term:sulfur",
+            "source-term:charcoal-dust"
+          ]
+        }
+      ]
+    },
+    {
+      "effect": {
+        "kind": "source-formula-effect",
+        "text": "Strength score becomes 21 for 1 hour."
+      },
+      "formulaId": "alchemy-formula:elixir-of-giant-strength",
+      "mixingDc": 15,
+      "name": "Elixir of Giant Strength",
+      "rarity": "rare",
+      "requirements": [
+        {
+          "count": 1,
+          "examplesAreExactRequirements": false,
+          "kind": "rarity-count",
+          "rarity": "rare",
+          "role": "formula-ingredient",
+          "sourceExamples": [
+            "ingredient:giant-s-toenail"
+          ]
+        },
+        {
+          "count": 2,
+          "examplesAreExactRequirements": false,
+          "kind": "rarity-count",
+          "rarity": "uncommon",
+          "role": "formula-ingredient",
+          "sourceExamples": [
+            "ingredient:ogre-s-blood",
+            "ingredient:rockroot"
+          ]
+        }
+      ]
+    }
+  ],
+  "schemaVersion": "1.0.0",
+  "workItem": "ICF-11"
+}

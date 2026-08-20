@@ -1,0 +1,104 @@
+{
+  "scenarios": [
+    {
+      "assertions": [
+        "healing formula has common rarity, mixing DC 10, two common-herb requirement, Redleaf/Soothewort are examples not exact locks"
+      ],
+      "expect": "PASS",
+      "id": "source-healing-examples-accepted"
+    },
+    {
+      "assertions": [
+        "uncommon mixing DC 12",
+        "one uncommon plus two common source requirements",
+        "raw Fire Salamander Tongue effect remains unassigned"
+      ],
+      "expect": "PASS",
+      "id": "source-fire-breath-examples-accepted"
+    },
+    {
+      "assertions": [
+        "rare mixing DC 15",
+        "one rare plus two uncommon source requirements",
+        "raw Giant Toenail/Ogre Blood/Rockroot effects remain unassigned"
+      ],
+      "expect": "PASS",
+      "id": "source-giant-strength-examples-accepted"
+    },
+    {
+      "assertions": [
+        "e.g. examples do not create exact-definition requirements"
+      ],
+      "expect": "PASS",
+      "id": "exact-lock-from-eg-example-rejected"
+    },
+    {
+      "assertions": [
+        "ICF-08 candidate tendency requires explicit adoption before exact alchemical effect or role"
+      ],
+      "expect": "PASS",
+      "id": "icf08-direct-effect-projection-rejected"
+    },
+    {
+      "assertions": [
+        "requires perk",
+        "requires explicit similarity/substitution evidence",
+        "up to two common replacements",
+        "no Mixing DC penalty"
+      ],
+      "expect": "PASS",
+      "id": "adaptive-common-substitution"
+    },
+    {
+      "assertions": [
+        "requires perk",
+        "requires explicit similarity/substitution evidence",
+        "Mixing DC +2"
+      ],
+      "expect": "PASS",
+      "id": "adaptive-uncommon-substitution"
+    },
+    {
+      "assertions": [
+        "name resemblance or folklore alone cannot authorize substitution"
+      ],
+      "expect": "PASS",
+      "id": "unsupported-substitution-fails-closed"
+    },
+    {
+      "assertions": [
+        "base +1 and perk usual +2 contradiction remains explicit unresolved conflict"
+      ],
+      "expect": "PASS",
+      "id": "preparation-failure-source-conflict-preserved"
+    },
+    {
+      "assertions": [
+        "rare/exotic +25% only when perk active; no raw ingredient effect is created"
+      ],
+      "expect": "PASS",
+      "id": "enhanced-quality-perk-is-overlay"
+    },
+    {
+      "assertions": [
+        "4 days",
+        "DC 20",
+        "50 CR/day retained as source cost assertion only"
+      ],
+      "expect": "PASS",
+      "id": "exotic-research"
+    },
+    {
+      "assertions": [
+        "D17 live state",
+        "MIB-13 current price/scarcity",
+        "ICF-12 culinary outcomes",
+        "no migration 0022"
+      ],
+      "expect": "PASS",
+      "id": "authority-boundaries"
+    }
+  ],
+  "schemaVersion": "1.0.0",
+  "workItem": "ICF-11"
+}
