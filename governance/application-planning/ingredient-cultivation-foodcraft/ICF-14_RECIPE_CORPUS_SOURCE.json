@@ -1,0 +1,131 @@
+{
+  "alchemyOutputForms": [
+    "potion",
+    "tonic",
+    "elixir",
+    "poison",
+    "oil",
+    "salve",
+    "powder",
+    "reagent"
+  ],
+  "alchemyRarityBands": [
+    "common",
+    "uncommon",
+    "rare",
+    "exotic"
+  ],
+  "authoringRules": [
+    "First-party concrete culinary recipes intentionally author exact canonical ingredient/preparation choices; their mechanical outcome remains ICF-12-owned.",
+    "Regional/cultural templates create no setting or culture facts and require separately governed context at instantiation.",
+    "Enchanted templates bind an ICF-12 food-enchantment independently from the enchantment ingredient; raw ingredient effect projection is forbidden.",
+    "Alchemical formulation templates cover form and rarity composition only; they require a governed ICF-11 effect/formula before executable use.",
+    "Source recipe/formula effects are retained at source scope; missing ingredient lists are not reconstructed."
+  ],
+  "boundaries": {
+    "alchemyOutcomeAuthority": "ICF-11",
+    "culinaryOutcomeAuthority": "ICF-12",
+    "currentPriceAuthority": "MIB-13",
+    "liveStateAuthority": "D17 Asset Instance",
+    "marketScarcityAuthority": "MIB-13",
+    "migration0022Required": false,
+    "preparationLineageAuthority": "ICF-10",
+    "realMoneyBehavior": false,
+    "worldCultureAuthority": "owning setting/world authoring domain"
+  },
+  "concreteFamilyCounts": {
+    "bakedGood": 32,
+    "beverage": 24,
+    "freshSide": 24,
+    "ordinaryMeal": 72,
+    "preservation": 24,
+    "stockSauce": 16,
+    "survivalFood": 24
+  },
+  "corpusVersion": "1.0.0",
+  "enchantmentIngredientSourceExamples": [
+    "ingredient:mana-salt",
+    "ingredient:phoenix-feather",
+    "ingredient:elemental-fruit"
+  ],
+  "icf11FormulaRefs": [
+    "alchemy-formula:healing-potion",
+    "alchemy-formula:potion-of-fire-breath",
+    "alchemy-formula:elixir-of-giant-strength"
+  ],
+  "icf12EnchantmentRefs": [
+    "food-enchantment:healing-touch",
+    "food-enchantment:elemental-flavor",
+    "food-enchantment:quickened-digestion",
+    "food-enchantment:mana-infusion",
+    "food-enchantment:resilient-bite",
+    "food-enchantment:shadow-essence",
+    "food-enchantment:ethereal-phase",
+    "food-enchantment:gravitys-favor",
+    "food-enchantment:cosmic-insight",
+    "food-enchantment:phoenix-flame",
+    "food-enchantment:reality-shift",
+    "food-enchantment:times-favor"
+  ],
+  "pools": {
+    "eggs": ["chicken-egg","duck-egg"],
+    "fish": ["cod","haddock","atlantic-salmon","rainbow-trout","tuna","sea-bass"],
+    "fruits": ["apple","pear","peach","plum","strawberry","blueberry","orange","lemon","lime","grape","pomegranate","banana","mango","papaya","pineapple"],
+    "grains": ["wheat","barley","rice","maize","oats","rye"],
+    "herbs": ["basil","parsley","dill","rosemary","sage","thyme","oregano","mint","cilantro"],
+    "juiceFruits": ["apple","pear","peach","plum","strawberry","blueberry","grape","orange","lemon","lime"],
+    "leafy": ["lettuce","spinach","kale","arugula","watercress","chard"],
+    "legumes": ["chickpea","lentil","common-bean","field-pea","soybean","fava-bean"],
+    "milks": ["cow-milk","goat-milk"],
+    "nutsSeeds": ["almond","walnut","hazelnut","sesame-seed","sunflower-seed","pumpkin-seed"],
+    "proteins": ["beef","pork","lamb","chicken-meat","turkey-meat","rabbit-meat"],
+    "roots": ["potato","sweet-potato","carrot","parsnip","turnip","beetroot"],
+    "vegetables": ["onion","garlic","leek","cabbage","tomato","sweet-pepper","cucumber","zucchini","pumpkin","cauliflower"]
+  },
+  "preservationMappings": [
+    {"input":"ingredient:apple","output":"preparation:apple-dried","rule":"processing:dehydration"},
+    {"input":"ingredient:pear","output":"preparation:pear-dried","rule":"processing:dehydration"},
+    {"input":"ingredient:peach","output":"preparation:peach-dried","rule":"processing:dehydration"},
+    {"input":"ingredient:plum","output":"preparation:plum-dried","rule":"processing:dehydration"},
+    {"input":"ingredient:strawberry","output":"preparation:strawberry-dried","rule":"processing:dehydration"},
+    {"input":"ingredient:grape","output":"preparation:grape-dried","rule":"processing:dehydration"},
+    {"input":"ingredient:cucumber","output":"preparation:cucumber-pickled","rule":"processing:pickling"},
+    {"input":"ingredient:cabbage","output":"preparation:cabbage-pickled","rule":"processing:pickling"},
+    {"input":"ingredient:onion","output":"preparation:onion-pickled","rule":"processing:pickling"},
+    {"input":"ingredient:garlic","output":"preparation:garlic-pickled","rule":"processing:pickling"},
+    {"input":"ingredient:carrot","output":"preparation:carrot-pickled","rule":"processing:pickling"},
+    {"input":"ingredient:turnip","output":"preparation:turnip-pickled","rule":"processing:pickling"},
+    {"input":"ingredient:beef","output":"preparation:beef-cured","rule":"processing:curing"},
+    {"input":"ingredient:pork","output":"preparation:pork-cured","rule":"processing:curing"},
+    {"input":"ingredient:lamb","output":"preparation:lamb-cured","rule":"processing:curing"},
+    {"input":"ingredient:chicken-meat","output":"preparation:chicken-meat-cured","rule":"processing:curing"},
+    {"input":"ingredient:turkey-meat","output":"preparation:turkey-meat-cured","rule":"processing:curing"},
+    {"input":"ingredient:rabbit-meat","output":"preparation:rabbit-meat-cured","rule":"processing:curing"},
+    {"input":"ingredient:cod","output":"preparation:cod-smoked","rule":"processing:smoking"},
+    {"input":"ingredient:haddock","output":"preparation:haddock-smoked","rule":"processing:smoking"},
+    {"input":"ingredient:atlantic-salmon","output":"preparation:atlantic-salmon-smoked","rule":"processing:smoking"},
+    {"input":"ingredient:rainbow-trout","output":"preparation:rainbow-trout-smoked","rule":"processing:smoking"},
+    {"input":"ingredient:tuna","output":"preparation:tuna-smoked","rule":"processing:smoking"},
+    {"input":"ingredient:sea-bass","output":"preparation:sea-bass-smoked","rule":"processing:smoking"}
+  ],
+  "representation": {"canonical":"compact-source-plus-deterministic-materializer","expandedPacksCheckedIn":false},
+  "schemaVersion": "1.0.0",
+  "sourceAlchemyFormulas": [
+    {"effectText":"Restores 2d4 + 2 HP.","mixingDC":10,"name":"Healing Potion","outputForm":"potion","rarity":"common","slug":"healing-potion"},
+    {"effectText":"Exhale fire: 15 ft cone, 4d6 fire damage, DC 13 Dexterity save for half.","mixingDC":12,"name":"Potion of Fire Breath","outputForm":"potion","rarity":"uncommon","slug":"potion-of-fire-breath"},
+    {"effectText":"Strength score becomes 21 for 1 hour.","mixingDC":15,"name":"Elixir of Giant Strength","outputForm":"elixir","rarity":"rare","slug":"elixir-of-giant-strength"}
+  ],
+  "sourceBackedCounts": {"alchemy":3,"culinary":8},
+  "sourceCulinaryRecipes": [
+    {"cookingDL":null,"effectText":"restore 5 HP","kind":"ordinary","name":"Simple Bread","quality":"poor","slug":"simple-bread"},
+    {"cookingDL":null,"effectText":"restore 20 stamina","kind":"ordinary","name":"Hearty Stew","quality":"average","slug":"hearty-stew"},
+    {"cookingDL":null,"effectText":"restore 30 HP and +1 Constitution for 1 hour","kind":"ordinary","name":"Spiced Roast Boar","quality":"high","slug":"spiced-roast-boar"},
+    {"cookingDL":null,"effectText":"+10 HP, +2 Dexterity, cure poison","kind":"ordinary","name":"Golden Dragon Fruit Salad","quality":"gourmet","slug":"golden-dragon-fruit-salad"},
+    {"cookingDL":20,"effectText":"revive fallen ally to 50% HP if consumed within 1 minute of death","kind":"enchanted","name":"Phoenix Egg Omelet","quality":null,"slug":"phoenix-egg-omelet"},
+    {"cookingDL":18,"effectText":"+3 spell attack rolls for 1 hour","kind":"enchanted","name":"Arcane Berry Tart","quality":null,"slug":"arcane-berry-tart"},
+    {"cookingDL":17,"effectText":"attacks deal +1d4 fire damage for 1 hour","kind":"enchanted","name":"Inferno Chili","quality":null,"slug":"inferno-chili"},
+    {"cookingDL":25,"effectText":"phase through walls for 10 minutes","kind":"enchanted","name":"Ethereal Jelly","quality":null,"slug":"ethereal-jelly"}
+  ],
+  "templateFamilyCounts": {"alchemicalFood":12,"alchemicalFormulation":32,"culturalRegional":24,"enchantedElemental":24},
+  "workItem": "ICF-14"
+}
