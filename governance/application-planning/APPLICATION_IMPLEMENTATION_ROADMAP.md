@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 5.20.0  
-**Status:** MIB ACTIVE AT MIB-07 — SMB + MCB OWNER-APPROVED PLANNED  
+**Version:** 5.21.0  
+**Status:** MIB ACTIVE AT MIB-08 — SMB + MCB OWNER-APPROVED PLANNED  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-19
 
@@ -15,7 +15,7 @@ Approved forward programs:
 2. **SMB — System Maturation & Buildout** — owner-approved planned post-MIB successor.
 3. **MCB — Market Capture & Brand Backbone** — owner-approved planned commercial-preparation program; bounded early parallel work requires separate owner routing.
 
-Roadmap presence does not auto-select SMB or MCB. **MIB-07 is the sole current implementation item.**
+Roadmap presence does not auto-select SMB or MCB. **MIB-08 is the sole current implementation item.**
 
 ## MIB current state
 
@@ -25,16 +25,17 @@ Completed verified:
 - **MIB-03 — Deterministic Runtime Primitives Library** — App PR #229, merge `618809b6fdbd7e2211ec37f65789ae9b3a601f65`.
 - **MIB-04 — Adapter Compliance Kit and Reference Persistence Layer** — App PR #230, merge `72521c8a5e7244f6c59eff8a0d80d837fc292f26`.
 - **MIB-05 — Content Pack Compiler, Linter, Importer and Starter Libraries** — App PR #231, merge `8ee884b6f23dadaab77756efac9aa0cc074db59a`.
-- **MIB-06 — Fixture Factory, Golden Campaign and Performance Corpus** — App PR #232 exact validated head `0ba22a827d84c31bd4b8043dd5b94f62368442ed`; repository health `32316190162` PASS; product run `32316190249` PASS; final Windows `96269667110` PASS; final Linux `96269668713` PASS after the standing-policy unchanged A2 timing retry on each affected lane; deterministic comparison `96269869226` PASS; squash merge `4d34ffad6ff53e173b5cbeaaa3fcfcc43e05e82f`; migration head remains `0021_apm_autogm_mini_campaign_director.json`; migration `0022` was not created or reserved.
+- **MIB-06 — Fixture Factory, Golden Campaign and Performance Corpus** — App PR #232, merge `4d34ffad6ff53e173b5cbeaaa3fcfcc43e05e82f`.
+- **MIB-07 — Multiversal UI Workbench and Shared Interaction Components** — App PR #233 exact validated head `a796416d342804c81f2ed5891bfb82c1d8c227f7`; repository health `32320182782` PASS; product run `32320182883` PASS; final Windows `96281014426` PASS; final Linux `96280994977` PASS after the single standing-policy unchanged A2 timing retry; deterministic comparison `96281072363` PASS; squash merge `d70ffb8ff04343422c33165feae6211d7bc18b62`; migration head remains `0021_apm_autogm_mini_campaign_director.json`; migration `0022` was not created or reserved.
 
-MIB-06 produced deterministic 32/512/4096-record fixture corpora, stable seed/version/manifest/checksum contracts, the permanent **Haunted Lighthouse** whole-system Golden Campaign, permission/hidden-truth projection cases, stale/idempotent/recovery/authorization-recheck cases, MIB-04 adapter-conformance fixtures, and deterministic non-timing performance/stress workload descriptors. Fixtures remain reference/test evidence only and do not mutate owner-domain truth.
+MIB-07 extended the existing `@multiversal/ui-system` rather than creating another UI framework. It now supplies responsive list-first workbench/master-detail composition, shared inspectors, comfortable/dense spacing, explicit loading/empty/error/offline/permission/stale/recovery states, breadcrumbs, command palette, nonvisual summaries, improved form help/error semantics, 44px touch/focus invariants, and a visibility-safe Haunted Lighthouse reference workbench. Shared UI remains a presentation layer over authorized owner-domain projections.
 
 Current:
-- **MIB-07 — Multiversal UI Workbench and Shared Interaction Components**
-- Attempt: `MIB-07-attempt-001`
+- **MIB-08 — Integrity, Schema Compatibility and Migration Engineering Toolkit**
+- Attempt: `MIB-08-attempt-001`
 - State: **selected_not_started**
 
-MIB-07 must build reusable accessible UI primitives rather than screen-local reinventions: buttons/inputs/forms; searchable/sortable tables; lists/cards; inspectors/detail panes; trees/outliners; graphical and nonvisual graph views; timelines/history; breadcrumbs/tabs/accordions; command palette; filters/chips; validation, provenance, permission, version/diff and operation/recovery states; loading/empty/error/offline states; notifications; responsive master/detail; and keyboard/touch/screen-reader/nonvisual parity.
+MIB-08 must provide deterministic migration-chain integrity, schema/migration compatibility classification, additive/breaking diagnostics, migration rehearsal/receipts, forward/recovery guidance, fixture-corpus compatibility replay and machine-readable compatibility evidence without rewriting migrations `0001`–`0021` or selecting a production provider.
 
 ## MIB tranche roadmap
 
@@ -46,8 +47,8 @@ MIB-07 must build reusable accessible UI primitives rather than screen-local rei
 | MIB-04 — Adapter Compliance Kit and Reference Persistence Layer | completed_verified |
 | MIB-05 — Content Pack Compiler, Linter, Importer and Starter Libraries | completed_verified |
 | MIB-06 — Fixture Factory, Golden Campaign and Performance Corpus | completed_verified |
-| **MIB-07 — Multiversal UI Workbench and Shared Interaction Components** | **selected_not_started** |
-| MIB-08 — Integrity, Schema Compatibility and Migration Engineering Toolkit | planned |
+| MIB-07 — Multiversal UI Workbench and Shared Interaction Components | completed_verified |
+| **MIB-08 — Integrity, Schema Compatibility and Migration Engineering Toolkit** | **selected_not_started** |
 | MIB-09 — Relationship and Reputation Engine | planned |
 | MIB-10 — Investigation and Clue Graph Engine | planned |
 | MIB-11 — World, Reality and Multiverse Taxonomy Engine | planned |
@@ -76,9 +77,10 @@ Strict MIB order:
 - Reference adapters are explicitly non-production and do not select providers.
 - Fixture/golden Campaign data are deterministic reference/test evidence and may not become a second Campaign/Event/domain truth ledger.
 - Shared UI components may project owner-domain truth but may not become an alternate authority layer.
+- Migrations `0001`–`0021` are immutable; `0022` is not reserved and requires a demonstrated durable schema delta.
+- Migration compatibility/rehearsal tooling may inspect and simulate but may not rewrite immutable migration history.
 - Optional AI remains non-authoritative; blocking paths pass without AI.
 - Normal product acceptance is exact-head repository health + self-hosted Windows + self-hosted Linux + deterministic comparison where applicable.
-- Migrations `0001`–`0021` are immutable; `0022` is not reserved and requires a demonstrated durable schema delta.
 - No parallel Campaign, Session, Action, Event, Character, asset, relationship, investigation, World, Adventure, creator or automation truth ledger.
 - **CCTI-12-T04:** deferred until September 2026; PR #191 preserved.
 - **WP-011:** dormant pending required Apple/Mac environment; PR #61 preserved.
@@ -87,4 +89,4 @@ Strict MIB order:
 - Product voice remains warm, knowledgeable, encouraging and restrained; never obsequious.
 - Future family controls keep guardian authority distinct from GM/Campaign/private creative authority.
 
-“Continue” from this state means execute MIB-07 through its bounded completion gate before advancing to MIB-08. SMB and MCB remain planned until separately selected.
+“Continue” from this state means execute MIB-08 through its bounded completion gate before advancing to MIB-09. SMB and MCB remain planned until separately selected.
