@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 5.18.0  
-**Status:** MIB ACTIVE AT MIB-05 — SMB + MCB OWNER-APPROVED PLANNED  
+**Version:** 5.19.0  
+**Status:** MIB ACTIVE AT MIB-06 — SMB + MCB OWNER-APPROVED PLANNED  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-19
 
@@ -15,7 +15,7 @@ Approved forward programs:
 2. **SMB — System Maturation & Buildout** — owner-approved planned post-MIB successor.
 3. **MCB — Market Capture & Brand Backbone** — owner-approved planned commercial-preparation program; bounded early parallel work requires separate owner routing.
 
-Roadmap presence does not auto-select SMB or MCB. **MIB-05 is the sole current implementation item.**
+Roadmap presence does not auto-select SMB or MCB. **MIB-06 is the sole current implementation item.**
 
 ## MIB current state
 
@@ -23,14 +23,17 @@ Completed verified:
 - **MIB-01 — Canonical Registry, Data Dictionary and Stable Identity Foundation** — App PR #227, merge `8adff394bda40ca72dfd15bd459f98dae43a08c2`.
 - **MIB-02 — Query, Index, Dependency and Search Projection Manifest** — App PR #228, merge `8173a4b589b2256dbac6ef5d8a485ea4b317eca0`.
 - **MIB-03 — Deterministic Runtime Primitives Library** — App PR #229, merge `618809b6fdbd7e2211ec37f65789ae9b3a601f65`.
-- **MIB-04 — Adapter Compliance Kit and Reference Persistence Layer** — App PR #230 exact validated head `cf4b8d4c67e730254a0003f817e71cc35069cfa1`; repository health `32312028345` PASS; product run `32312028465` PASS; final Windows `96257272433` PASS; final Linux `96257270810` PASS after the single standing-policy unchanged A2 timing retry; deterministic comparison `96257366161` PASS; squash merge `72521c8a5e7244f6c59eff8a0d80d837fc292f26`; migration head remains `0021_apm_autogm_mini_campaign_director.json`; migration `0022` was not created or reserved.
+- **MIB-04 — Adapter Compliance Kit and Reference Persistence Layer** — App PR #230, merge `72521c8a5e7244f6c59eff8a0d80d837fc292f26`.
+- **MIB-05 — Content Pack Compiler, Linter, Importer and Starter Libraries** — App PR #231 exact validated head `5ceacdab39e7008c8e4a376391e73b5e324cdb9c`; repository health `32315136263` PASS; product run `32315136407` PASS; final Windows `96266033760` PASS; final Linux `96266033015` PASS after the single standing-policy unchanged A2 timing retry; deterministic comparison `96266124410` PASS; squash merge `8ee884b6f23dadaab77756efac9aa0cc074db59a`; migration head remains `0021_apm_autogm_mini_campaign_director.json`; migration `0022` was not created or reserved.
 
-MIB-04 produced a provider-neutral adapter contract, explicit non-production deterministic in-memory reference adapter and reusable conformance suite covering MIB-01 stable identity, MIB-02 authorization-before-count/query, MIB-03 compare-and-swap/idempotency/reservation/recovery, deterministic snapshot import/export and deterministic conformance receipts. No SQLite or production provider was selected.
+MIB-05 produced a deterministic compiler/linter, manifest/checksum schema, dependency/cycle checks, non-authoritative dry-run/import/update/rollback reference importer and a governed 16-family starter library. Starter content remains data; no production provider was selected and no owner-domain runtime truth was duplicated.
 
 Current:
-- **MIB-05 — Content Pack Compiler, Linter, Importer and Starter Libraries**
-- Attempt: `MIB-05-attempt-001`
+- **MIB-06 — Fixture Factory, Golden Campaign and Performance Corpus**
+- Attempt: `MIB-06-attempt-001`
 - State: **selected_not_started**
+
+MIB-06 must provide reproducible small/medium/large fixtures, the permanent **Haunted Lighthouse** whole-system Golden Campaign, role/hidden-truth cases, stale/conflict/retry/recovery cases, cross-platform snapshots, adapter conformance fixtures and a deterministic performance/stress corpus.
 
 ## MIB tranche roadmap
 
@@ -40,8 +43,8 @@ Current:
 | MIB-02 — Query, Index, Dependency and Search Projection Manifest | completed_verified |
 | MIB-03 — Deterministic Runtime Primitives Library | completed_verified |
 | MIB-04 — Adapter Compliance Kit and Reference Persistence Layer | completed_verified |
-| **MIB-05 — Content Pack Compiler, Linter, Importer and Starter Libraries** | **selected_not_started** |
-| MIB-06 — Fixture Factory, Golden Campaign and Performance Corpus | planned |
+| MIB-05 — Content Pack Compiler, Linter, Importer and Starter Libraries | completed_verified |
+| **MIB-06 — Fixture Factory, Golden Campaign and Performance Corpus** | **selected_not_started** |
 | MIB-07 — Multiversal UI Workbench and Shared Interaction Components | planned |
 | MIB-08 — Integrity, Schema Compatibility and Migration Engineering Toolkit | planned |
 | MIB-09 — Relationship and Reputation Engine | planned |
@@ -70,6 +73,7 @@ Strict MIB order:
 
 - Visibility filtering precedes aggregation/counts/search/AI/diagnostics.
 - Reference adapters are explicitly non-production and do not select providers.
+- Fixture/golden Campaign data are deterministic reference/test evidence and may not become a second Campaign/Event/domain truth ledger.
 - Optional AI remains non-authoritative; blocking paths pass without AI.
 - Normal product acceptance is exact-head repository health + self-hosted Windows + self-hosted Linux + deterministic comparison where applicable.
 - Migrations `0001`–`0021` are immutable; `0022` is not reserved and requires a demonstrated durable schema delta.
@@ -81,4 +85,4 @@ Strict MIB order:
 - Product voice remains warm, knowledgeable, encouraging and restrained; never obsequious.
 - Future family controls keep guardian authority distinct from GM/Campaign/private creative authority.
 
-“Continue” from this state means execute MIB-05 through its bounded completion gate before advancing to MIB-06. SMB and MCB remain planned until separately selected.
+“Continue” from this state means execute MIB-06 through its bounded completion gate before advancing to MIB-07. SMB and MCB remain planned until separately selected.
