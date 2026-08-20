@@ -1,0 +1,46 @@
+{
+  "alchemyFormulationForms": ["potion","tonic","elixir","poison","oil","salve","powder","reagent"],
+  "alchemyRarityProfiles": {
+    "common":{"compositionProfileRef":"ICF-11_FORMULA_GRAMMAR.compositionByRarity.common"},
+    "exotic":{"compositionProfileRef":"ICF-11_FORMULA_GRAMMAR.compositionByRarity.exotic"},
+    "rare":{"compositionProfileRef":"ICF-11_FORMULA_GRAMMAR.compositionByRarity.rare"},
+    "uncommon":{"compositionProfileRef":"ICF-11_FORMULA_GRAMMAR.compositionByRarity.uncommon"}
+  },
+  "boundaries": {
+    "alchemyOutcomeAuthority":"ICF-11","culinaryOutcomeAuthority":"ICF-12","currentPriceAuthority":"MIB-13","liveStateAuthority":"D17 Asset Instance","marketScarcityAuthority":"MIB-13","migration0022Required":false,"preparationLineageAuthority":"ICF-10","realMoneyBehavior":false,"worldCultureAuthority":"owning setting/world authoring domain"
+  },
+  "familyRules": {
+    "alchemical-food":{"formulaAuthority":"ICF-11","interactionEffectMayBeInvented":false,"outcomeAuthority":"ICF-12:specializedCooking.alchemicalCooking"},
+    "alchemical-formulation-template":{"outcomeAuthority":"ICF-11","requiresGovernedEffectBeforeExecutable":true},
+    "baked-good":{"fixedEffectAllowed":false,"outcomeAuthority":"ICF-12:ordinaryFood","qualityResolvedAtCookTime":true},
+    "beverage":{"fixedEffectAllowed":false,"outcomeAuthority":"ICF-12:ordinaryFood","qualityResolvedAtCookTime":true},
+    "cultural-regional-template":{"createsWorldOrCultureFacts":false,"requiresExternalContextBinding":true},
+    "enchanted-elemental-food":{"effectMustBeICF12EnchantmentRef":true,"outcomeAuthority":"ICF-12:enchantedFood","rawIngredientEffectProjection":false},
+    "fresh-side":{"fixedEffectAllowed":false,"outcomeAuthority":"ICF-12:ordinaryFood","qualityResolvedAtCookTime":true},
+    "ordinary-meal":{"fixedEffectAllowed":false,"outcomeAuthority":"ICF-12:ordinaryFood","qualityResolvedAtCookTime":true},
+    "preservation":{"mustOutputCanonicalPreparation":true,"outcomeAuthority":"ICF-10 + ICF-12 preservation"},
+    "source-alchemy":{"sourceAuthority":"ICF-11","sourceOutcomeMayBeRetained":true},
+    "source-culinary":{"sourceAuthority":"ICF-12","sourceOutcomeMayBeRetained":true},
+    "stock-sauce":{"fixedEffectAllowed":false,"outcomeAuthority":"ICF-12:ordinaryFood","qualityResolvedAtCookTime":true},
+    "survival-food":{"fixedEffectAllowed":false,"outcomeAuthority":"ICF-12:ordinaryFood"}
+  },
+  "generationPhases": [
+    {"name":"choose-family","phase":1,"rule":"Select a concrete recipe family or governed template; selection creates no world/culture facts."},
+    {"name":"resolve-slots","phase":2,"rule":"Every ingredient/preparation slot must resolve to a stable canonical ICF definition ref before executable use."},
+    {"name":"validate-quantity-unit","phase":3,"rule":"Each retained input uses an authored quantity and an allowed canonical unit; no source-generic unit conversion is inferred."},
+    {"name":"validate-role-and-substitution","phase":4,"rule":"Role/selector/substitution compatibility must be explicitly governed; names, folklore, affinities, or co-occurrence do not authorize substitution."},
+    {"name":"bind-outcome-authority","phase":5,"rule":"Ordinary/magical food outcomes reference ICF-12; alchemical outcomes/formulas reference ICF-11; ICF-14 does not create a second effect engine."},
+    {"name":"bind-context","phase":6,"rule":"Optional setting/culture/region scope must point to separately authored governed context; generic regional templates never create canon."},
+    {"name":"runtime-prerequisite-check","phase":7,"rule":"At execution, owning domains revalidate tools/facilities/knowledge/availability/resources and applicable ICF-11/12 checks."},
+    {"name":"owner-domain-commit","phase":8,"rule":"Inputs/outputs become live changes only through D17/Asset/inventory or the relevant owning result path with provenance/idempotency."}
+  ],
+  "schemaVersion":"1.0.0",
+  "templateResolution": {
+    "exactIngredientLockRule":"permitted only when source-authored or intentionally first-party-authored as an exact recipe; broad examples never auto-lock",
+    "externalContextRequiredForCulturalLabel":true,
+    "propertyThresholdRule":"only explicitly governed properties/effects qualify; ICF-08 tendencies alone do not",
+    "slotResult":"canonical definition ref",
+    "unresolvedTemplateExecutable":false
+  },
+  "workItem":"ICF-14"
+}
