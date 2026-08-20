@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 5.21.0  
-**Status:** MIB ACTIVE AT MIB-08 — SMB + MCB OWNER-APPROVED PLANNED  
+**Version:** 5.22.0  
+**Status:** MIB ACTIVE AT MIB-09 — SMB + MCB OWNER-APPROVED PLANNED  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-19
 
@@ -15,7 +15,7 @@ Approved forward programs:
 2. **SMB — System Maturation & Buildout** — owner-approved planned post-MIB successor.
 3. **MCB — Market Capture & Brand Backbone** — owner-approved planned commercial-preparation program; bounded early parallel work requires separate owner routing.
 
-Roadmap presence does not auto-select SMB or MCB. **MIB-08 is the sole current implementation item.**
+Roadmap presence does not auto-select SMB or MCB. **MIB-09 is the sole current implementation item.**
 
 ## MIB current state
 
@@ -26,16 +26,17 @@ Completed verified:
 - **MIB-04 — Adapter Compliance Kit and Reference Persistence Layer** — App PR #230, merge `72521c8a5e7244f6c59eff8a0d80d837fc292f26`.
 - **MIB-05 — Content Pack Compiler, Linter, Importer and Starter Libraries** — App PR #231, merge `8ee884b6f23dadaab77756efac9aa0cc074db59a`.
 - **MIB-06 — Fixture Factory, Golden Campaign and Performance Corpus** — App PR #232, merge `4d34ffad6ff53e173b5cbeaaa3fcfcc43e05e82f`.
-- **MIB-07 — Multiversal UI Workbench and Shared Interaction Components** — App PR #233 exact validated head `a796416d342804c81f2ed5891bfb82c1d8c227f7`; repository health `32320182782` PASS; product run `32320182883` PASS; final Windows `96281014426` PASS; final Linux `96280994977` PASS after the single standing-policy unchanged A2 timing retry; deterministic comparison `96281072363` PASS; squash merge `d70ffb8ff04343422c33165feae6211d7bc18b62`; migration head remains `0021_apm_autogm_mini_campaign_director.json`; migration `0022` was not created or reserved.
+- **MIB-07 — Multiversal UI Workbench and Shared Interaction Components** — App PR #233, merge `d70ffb8ff04343422c33165feae6211d7bc18b62`.
+- **MIB-08 — Integrity, Schema Compatibility and Migration Engineering Toolkit** — App PR #234 exact validated head `f37d1c16b266f96d5a41a638356683e8142ecae8`; repository health `32323170833` PASS; product run `32323171062` PASS; Windows `96289132850` PASS; Linux `96289133021` PASS; deterministic comparison `96289570608` PASS; no A2 retry; squash merge `046b7d2d9cfa41fdc82df8762533c0c81a4139db`; migration head remains `0021_apm_autogm_mini_campaign_director.json`; migration `0022` was neither created nor reserved.
 
-MIB-07 extended the existing `@multiversal/ui-system` rather than creating another UI framework. It now supplies responsive list-first workbench/master-detail composition, shared inspectors, comfortable/dense spacing, explicit loading/empty/error/offline/permission/stale/recovery states, breadcrumbs, command palette, nonvisual summaries, improved form help/error semantics, 44px touch/focus invariants, and a visibility-safe Haunted Lighthouse reference workbench. Shared UI remains a presentation layer over authorized owner-domain projections.
+MIB-08 delivered an exact Git-blob fingerprint baseline for migrations `0001`–`0021`, fail-closed immutable-chain auditing, provider-neutral additive/breaking compatibility classification, deterministic non-authoritative migration rehearsal receipts, forward-only recovery guidance, Haunted Lighthouse fixture/visibility replay, a machine-readable compatibility-report schema, and permanent validation routing for governed profiles/shared developer tooling. Historical migration `0001` retains its older metadata representation; compatibility tooling tolerates that legacy shape only under its exact immutable blob fingerprint rather than rewriting history.
 
 Current:
-- **MIB-08 — Integrity, Schema Compatibility and Migration Engineering Toolkit**
-- Attempt: `MIB-08-attempt-001`
+- **MIB-09 — Relationship and Reputation Engine**
+- Attempt: `MIB-09-attempt-001`
 - State: **selected_not_started**
 
-MIB-08 must provide deterministic migration-chain integrity, schema/migration compatibility classification, additive/breaking diagnostics, migration rehearsal/receipts, forward/recovery guidance, fixture-corpus compatibility replay and machine-readable compatibility evidence without rewriting migrations `0001`–`0021` or selecting a production provider.
+MIB-09 must turn the governed D25 relationship structures into a reusable deterministic gameplay engine: relationship dimensions/types/scales, directional edge calculations, governed Trust/Loyalty/Respect/Affection/Fear/Rivalry/Familiarity/Influence-style profiles, deterministic modifier/event recalculation, reputation projections, attributable trend/history receipts, visibility-safe Player/GM projections, MIB-02 query integration, MIB-07 inspector fixtures and starter relationship/reputation pack content. It must reuse existing owner-domain authority and cannot leak hidden edges/cardinality through counts, summaries, search, rankings, diagnostics or UI.
 
 ## MIB tranche roadmap
 
@@ -48,8 +49,8 @@ MIB-08 must provide deterministic migration-chain integrity, schema/migration co
 | MIB-05 — Content Pack Compiler, Linter, Importer and Starter Libraries | completed_verified |
 | MIB-06 — Fixture Factory, Golden Campaign and Performance Corpus | completed_verified |
 | MIB-07 — Multiversal UI Workbench and Shared Interaction Components | completed_verified |
-| **MIB-08 — Integrity, Schema Compatibility and Migration Engineering Toolkit** | **selected_not_started** |
-| MIB-09 — Relationship and Reputation Engine | planned |
+| MIB-08 — Integrity, Schema Compatibility and Migration Engineering Toolkit | completed_verified |
+| **MIB-09 — Relationship and Reputation Engine** | **selected_not_started** |
 | MIB-10 — Investigation and Clue Graph Engine | planned |
 | MIB-11 — World, Reality and Multiverse Taxonomy Engine | planned |
 | MIB-12 — Crafting Deterministic Engine | planned |
@@ -78,7 +79,9 @@ Strict MIB order:
 - Fixture/golden Campaign data are deterministic reference/test evidence and may not become a second Campaign/Event/domain truth ledger.
 - Shared UI components may project owner-domain truth but may not become an alternate authority layer.
 - Migrations `0001`–`0021` are immutable; `0022` is not reserved and requires a demonstrated durable schema delta.
-- Migration compatibility/rehearsal tooling may inspect and simulate but may not rewrite immutable migration history.
+- Migration compatibility/rehearsal tooling may inspect and simulate but may not rewrite immutable migration history or authorize a future migration merely because it is additive-compatible.
+- Relationship/reputation mechanics must reuse governed owner-domain relationship authority; no second relationship ledger is permitted.
+- Hidden relationship edges/cardinality must be filtered before counts, summaries, search, ranking, diagnostics and UI projection.
 - Optional AI remains non-authoritative; blocking paths pass without AI.
 - Normal product acceptance is exact-head repository health + self-hosted Windows + self-hosted Linux + deterministic comparison where applicable.
 - No parallel Campaign, Session, Action, Event, Character, asset, relationship, investigation, World, Adventure, creator or automation truth ledger.
@@ -89,4 +92,4 @@ Strict MIB order:
 - Product voice remains warm, knowledgeable, encouraging and restrained; never obsequious.
 - Future family controls keep guardian authority distinct from GM/Campaign/private creative authority.
 
-“Continue” from this state means execute MIB-08 through its bounded completion gate before advancing to MIB-09. SMB and MCB remain planned until separately selected.
+“Continue” from this state means execute MIB-09 through its bounded completion gate before advancing to MIB-10. SMB and MCB remain planned until separately selected.
