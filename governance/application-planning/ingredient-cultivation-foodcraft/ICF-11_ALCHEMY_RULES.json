@@ -1,0 +1,375 @@
+{
+  "authorityBoundaries": {
+    "creatureCatalogCrosswalkAuthority": "ICF-09",
+    "creatureHarvestAuthority": "ICF-07",
+    "culinaryOutcomeAuthority": "ICF-12",
+    "currentPriceAuthority": "MIB-13",
+    "liveStateAuthority": "D17 Asset Instance",
+    "marketScarcityAuthority": "MIB-13",
+    "migration0022Required": false,
+    "processingLineageAuthority": "ICF-10",
+    "realMoneyIntegration": false,
+    "worldRealityAuthority": "MIB-11"
+  },
+  "brewingPhases": [
+    {
+      "check": "Intelligence (Alchemy)",
+      "dc": 10,
+      "failure": "source base section says Mixing DC +1",
+      "phase": "preparation",
+      "success": "prepared"
+    },
+    {
+      "check": "Intelligence (Alchemy)",
+      "dcByRarity": {
+        "common": 10,
+        "exotic": 18,
+        "rare": 15,
+        "uncommon": 12
+      },
+      "failure": "potion spoiled; ingredients wasted",
+      "phase": "mixing",
+      "success": "proceed to catalysis"
+    },
+    {
+      "catalystModes": [
+        "heat",
+        "magic",
+        "time"
+      ],
+      "checkByRarity": {
+        "common": {
+          "ability": "Intelligence",
+          "dc": 10,
+          "skill": "Alchemy"
+        },
+        "exotic": {
+          "ability": "Intelligence",
+          "dc": 15,
+          "skill": "Arcana"
+        },
+        "rare": {
+          "ability": "Intelligence",
+          "dc": 15,
+          "skill": "Arcana"
+        },
+        "uncommon": {
+          "ability": "Intelligence",
+          "dc": 10,
+          "skill": "Alchemy"
+        }
+      },
+      "failure": {
+        "potencyMultiplier": 0.75
+      },
+      "phase": "catalysis",
+      "success": "mixture activated"
+    },
+    {
+      "check": "Wisdom (Alchemy)",
+      "dc": 12,
+      "enhancedSuccess": {
+        "potencyOrDurationMultiplier": 1.25
+      },
+      "failure": "unstable; reduced shelf life or side effects",
+      "phase": "stabilization",
+      "success": "stable and ready"
+    }
+  ],
+  "effectProjection": {
+    "adoptionRequired": true,
+    "icf08": "candidate-only",
+    "rule": "ICF-08 part/body/trait affinities may propose candidate alchemical properties for review but never create an exact effect, formula role, or substitution membership automatically."
+  },
+  "failureRules": {
+    "criticalFailure": {
+      "damage": "1d6 to alchemist and anyone within 5 feet",
+      "toolRepairSourceCost": {
+        "amount": 25,
+        "currency": "CR",
+        "notCurrentPrice": true
+      },
+      "trigger": "natural 1"
+    },
+    "majorFailure": {
+      "mildPoisonDamage": "1d4",
+      "toxic": true
+    },
+    "minorFailure": {
+      "potencyMultiplier": 0.5
+    },
+    "salvage": {
+      "check": "Intelligence (Alchemy)",
+      "dc": 15,
+      "failure": "ingredients lost",
+      "success": "recover 50% of ingredients"
+    }
+  },
+  "formulaRoleVocabulary": [
+    {
+      "roleId": "alchemy-role:base-or-solvent",
+      "semantics": "carrier/process medium; required only when a formula explicitly declares the slot"
+    },
+    {
+      "roleId": "alchemy-role:active",
+      "semantics": "formula-active contribution; exact effect must be explicitly governed"
+    },
+    {
+      "roleId": "alchemy-role:modifier",
+      "semantics": "changes an explicitly governed formula property"
+    },
+    {
+      "roleId": "alchemy-role:catalyst-ingredient",
+      "semantics": "ingredient catalyst only when formula explicitly requires one; source also permits process catalysts heat/magic/time"
+    },
+    {
+      "roleId": "alchemy-role:stabilizer",
+      "semantics": "ingredient stabilizer only when explicitly authored"
+    },
+    {
+      "roleId": "alchemy-role:enhancer",
+      "semantics": "optional governed enhancer"
+    },
+    {
+      "roleId": "alchemy-role:formula-ingredient",
+      "semantics": "source proves formula participation but not a narrower ingredient role or raw effect"
+    }
+  ],
+  "gathering": {
+    "authorityBoundary": "ICF-07 governs creature harvest profiles; this source rule does not override authored creature anatomy/tool/yield requirements.",
+    "checkAbilityAnyOf": [
+      "Dexterity",
+      "Survival"
+    ],
+    "enhancedSuccess": {
+      "additionalUnits": "up to 1d4",
+      "thresholdOverDc": 5
+    },
+    "failure": "ingredient damaged or lost",
+    "success": "ingredient harvested"
+  },
+  "ingredientIdentification": {
+    "failurePolicy": "not identified; source does not authorize automatic gathering resolution",
+    "requiredBeforeSourceGathering": true
+  },
+  "qualityOverlays": {
+    "enhancedIngredientQuality": {
+      "activation": "requires perk:enhanced-ingredient-quality",
+      "effectMultiplier": 1.25,
+      "eligibleRarities": [
+        "rare",
+        "exotic"
+      ],
+      "rule": "This is a character/perk overlay, not an inherent effect assigned to every rare/exotic ingredient."
+    },
+    "stabilizationEnhancedSuccess": {
+      "activation": "enhanced stabilization success",
+      "potencyOrDurationMultiplier": 1.25
+    }
+  },
+  "rarityRules": {
+    "common": {
+      "brewTime": "4 hours",
+      "catalyzing": {
+        "ability": "Intelligence",
+        "dc": 10,
+        "skill": "Alchemy"
+      },
+      "gatheringDc": 10,
+      "identification": {
+        "dc": 10,
+        "skillAnyOf": [
+          "Nature",
+          "Survival"
+        ]
+      },
+      "mixingDc": 10,
+      "recipeResearch": {
+        "days": 1,
+        "dc": 12,
+        "sourceCostPerDay": {
+          "amount": 50,
+          "currency": "CR",
+          "notCurrentPrice": true
+        }
+      },
+      "stableShelfLife": "1 year"
+    },
+    "exotic": {
+      "brewTime": "1-3 days",
+      "catalyzing": {
+        "ability": "Intelligence",
+        "dc": 15,
+        "skill": "Arcana"
+      },
+      "gatheringDc": 18,
+      "identification": {
+        "dc": 18,
+        "skillAnyOf": [
+          "Nature",
+          "Survival"
+        ]
+      },
+      "mixingDc": 18,
+      "recipeResearch": {
+        "days": 4,
+        "dc": 20,
+        "sourceCostPerDay": {
+          "amount": 50,
+          "currency": "CR",
+          "notCurrentPrice": true
+        }
+      },
+      "stableShelfLife": "6 months"
+    },
+    "rare": {
+      "brewTime": "8 hours",
+      "catalyzing": {
+        "ability": "Intelligence",
+        "dc": 15,
+        "skill": "Arcana"
+      },
+      "gatheringDc": 15,
+      "identification": {
+        "dc": 15,
+        "skillAnyOf": [
+          "Nature",
+          "Survival"
+        ]
+      },
+      "mixingDc": 15,
+      "recipeResearch": {
+        "days": 3,
+        "dc": 18,
+        "sourceCostPerDay": {
+          "amount": 50,
+          "currency": "CR",
+          "notCurrentPrice": true
+        }
+      },
+      "stableShelfLife": "6 months"
+    },
+    "uncommon": {
+      "brewTime": "4 hours",
+      "catalyzing": {
+        "ability": "Intelligence",
+        "dc": 10,
+        "skill": "Alchemy"
+      },
+      "gatheringDc": 10,
+      "identification": {
+        "dc": 12,
+        "skillAnyOf": [
+          "Nature",
+          "Survival"
+        ]
+      },
+      "mixingDc": 12,
+      "recipeResearch": {
+        "days": 2,
+        "dc": 15,
+        "sourceCostPerDay": {
+          "amount": 50,
+          "currency": "CR",
+          "notCurrentPrice": true
+        }
+      },
+      "stableShelfLife": "1 year"
+    }
+  },
+  "research": {
+    "failure": "no progress; retry after additional research time",
+    "recipeAcquisitionModes": [
+      "research",
+      "purchase",
+      "experimentation"
+    ],
+    "rulesByRarity": {
+      "common": {
+        "days": 1,
+        "dc": 12,
+        "sourceCostPerDay": {
+          "amount": 50,
+          "currency": "CR",
+          "notCurrentPrice": true
+        }
+      },
+      "exotic": {
+        "days": 4,
+        "dc": 20,
+        "sourceCostPerDay": {
+          "amount": 50,
+          "currency": "CR",
+          "notCurrentPrice": true
+        }
+      },
+      "rare": {
+        "days": 3,
+        "dc": 18,
+        "sourceCostPerDay": {
+          "amount": 50,
+          "currency": "CR",
+          "notCurrentPrice": true
+        }
+      },
+      "uncommon": {
+        "days": 2,
+        "dc": 15,
+        "sourceCostPerDay": {
+          "amount": 50,
+          "currency": "CR",
+          "notCurrentPrice": true
+        }
+      }
+    }
+  },
+  "schemaVersion": "1.0.0",
+  "shelfLife": {
+    "stable": {
+      "common": "1 year",
+      "exotic": "6 months",
+      "rare": "6 months",
+      "uncommon": "1 year"
+    },
+    "unstable": {
+      "degradedEffect": "-50% effectiveness or source-authored side effects",
+      "degradesAfter": "1d4 weeks"
+    }
+  },
+  "source": {
+    "authorityRule": "Preserve source assertions exactly; current price/market scarcity remain MIB-13, live Asset state remains D17, and unsupported ingredient effects remain unresolved.",
+    "canonicalEvidencePath": "MV_Master_01_Core/02_PDF_Sources/Part 1/Downtime/Alchemy.PDF",
+    "pageCount": 18,
+    "sha256": "020e120dc253204073f170f4b2eb76b6b67c8d56755bf8cad32ca3f64dde13e9",
+    "sourceId": "Alchemy.mht"
+  },
+  "sourceConflicts": [
+    {
+      "baseAssertion": "Preparation Step failure increases Mixing DC by +1.",
+      "conflictId": "icf11:prep-failure-dc-conflict",
+      "governedResolution": "Do not silently choose +1 or +2 as universal pre-perk behavior. Preserve both assertions; a later explicit correction/owner decision may resolve the contradiction.",
+      "perkAssertion": "Precise Preparation says failure increases Mixing DC by only +1 instead of the usual +2.",
+      "status": "unresolved-fail-closed"
+    }
+  ],
+  "substitution": {
+    "adaptiveAlchemy": {
+      "activation": "requires perk:adaptive-alchemy",
+      "common": {
+        "maxReplacements": 2,
+        "mixingDcPenalty": 0,
+        "similarityEvidenceRequired": true
+      },
+      "exotic": "not authorized",
+      "rare": "not authorized",
+      "uncommon": {
+        "maxReplacements": null,
+        "mixingDcPenalty": 2,
+        "similarityEvidenceRequired": true
+      }
+    },
+    "default": "no substitution unless formula or explicit substitution group authorizes it",
+    "similarityRule": "Similarity must come from an explicit ICF substitution/property group. Name resemblance, folklore, ICF-08 tendency, creature type, or model inference is insufficient."
+  },
+  "workItem": "ICF-11"
+}
