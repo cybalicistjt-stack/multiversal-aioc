@@ -4,9 +4,15 @@ import json, pathlib, re, sys
 ROOT=pathlib.Path(__file__).resolve().parent
 
 def load(n): return json.loads((ROOT/n).read_text())
-X=load('ICF-09_CANONICAL_CREATURE_CROSSWALK.json')
-S=load('ICF-09_SIGNATURE_INGREDIENT_LIBRARY.json')
+XI=load('ICF-09_CANONICAL_CREATURE_CROSSWALK.json')
+SI=load('ICF-09_SIGNATURE_INGREDIENT_LIBRARY.json')
 C=load('ICF-09_SOURCE_COVERAGE.json')
+X=dict(XI); X['records']=[]
+for p in XI['packs']:
+    X['records'].extend(load(p['path'])['records'])
+S=dict(SI); S['records']=[]
+for p in SI['packs']:
+    S['records'].extend(load(p['path'])['records'])
 errors=[]
 def need(ok,msg):
     if not ok: errors.append(msg)
