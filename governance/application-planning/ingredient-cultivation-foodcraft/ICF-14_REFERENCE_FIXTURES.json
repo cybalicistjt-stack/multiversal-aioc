@@ -1,0 +1,25 @@
+{
+  "fixtureCount": 18,
+  "fixtures": [
+    {"assertion":"first-party ordinary recipe has no fixed mechanical effect; ICF-12 quality outcome resolves at cooking time","expect":"pass","id":"fixture:icf14:ordinary-quality"},
+    {"assertion":"preservation recipe output is an existing ICF-10 preparation ref","expect":"pass","id":"fixture:icf14:preservation-output"},
+    {"assertion":"enchanted template points to ICF-12 food-enchantment ref and does not project effect onto enchantment ingredient","expect":"pass","id":"fixture:icf14:enchanted-ref"},
+    {"assertion":"source alchemy formula may retain its source-authored mechanical effect","expect":"pass","id":"fixture:icf14:alchemy-source-effect"},
+    {"assertion":"first-party alchemical form template remains non-executable until a governed formula/effect is bound","expect":"fail-closed","id":"fixture:icf14:alchemy-template-effect"},
+    {"assertion":"regional template cannot create culture/world facts; requires external governed scope binding","expect":"fail-closed","id":"fixture:icf14:cultural-context"},
+    {"assertion":"source-generic or incompatible units are not converted by recipe generation","expect":"fail-closed","id":"fixture:icf14:unknown-unit-conversion"},
+    {"assertion":"template with unresolved slot is not executable","expect":"fail-closed","id":"fixture:icf14:unresolved-slot"},
+    {"assertion":"ICF-08 affinity tendency alone cannot satisfy an effect/property threshold","expect":"fail-closed","id":"fixture:icf14:icf08-tendency"},
+    {"assertion":"recipe cannot author current market price or scarcity","expect":"fail-closed","id":"fixture:icf14:current-price"},
+    {"assertion":"recipe cannot create live ownership/quantity/condition outside D17/Asset path","expect":"fail-closed","id":"fixture:icf14:live-state"},
+    {"assertion":"recipe/template generation does not convert wall-clock time into game progress","expect":"fail-closed","id":"fixture:icf14:wall-clock"},
+    {"assertion":"provider or AI output cannot become executable recipe authority without governed resolution","expect":"fail-closed","id":"fixture:icf14:ai-authority"},
+    {"assertion":"Simple Bread retains poor/+5 HP source outcome without invented input list","expect":"pass","id":"fixture:icf14:source-simple-bread"},
+    {"assertion":"Potion of Fire Breath retains ICF-11 rarity/count grammar and source effect; examples are not exact locks","expect":"pass","id":"fixture:icf14:source-fire-breath"},
+    {"assertion":"Elixir of Giant Strength remains rare source formula under ICF-11","expect":"pass","id":"fixture:icf14:source-giant-strength"},
+    {"assertion":"alchemical food references both ICF-12 specialized cooking and an ICF-11 formula without inventing interaction effect","expect":"pass","id":"fixture:icf14:alchemical-food"},
+    {"assertion":"no durable application schema delta is required","expect":"pass","id":"fixture:icf14:no-migration0022"}
+  ],
+  "schemaVersion":"1.0.0",
+  "workItem":"ICF-14"
+}
