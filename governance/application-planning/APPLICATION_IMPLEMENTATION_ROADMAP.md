@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 5.23.0  
-**Status:** MIB ACTIVE AT MIB-10 — SMB + MCB OWNER-APPROVED PLANNED  
+**Version:** 5.24.0  
+**Status:** MIB ACTIVE AT MIB-11 — SMB + MCB OWNER-APPROVED PLANNED  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-20
 
@@ -15,7 +15,7 @@ Approved forward programs:
 2. **SMB — System Maturation & Buildout** — owner-approved planned post-MIB successor.
 3. **MCB — Market Capture & Brand Backbone** — owner-approved planned commercial-preparation program; bounded early parallel work requires separate owner routing.
 
-Roadmap presence does not auto-select SMB or MCB. **MIB-10 is the sole current implementation item.**
+Roadmap presence does not auto-select SMB or MCB. **MIB-11 is the sole current implementation item.**
 
 ## MIB current state
 
@@ -28,16 +28,17 @@ Completed verified:
 - **MIB-06 — Fixture Factory, Golden Campaign and Performance Corpus** — App PR #232, merge `4d34ffad6ff53e173b5cbeaaa3fcfcc43e05e82f`.
 - **MIB-07 — Multiversal UI Workbench and Shared Interaction Components** — App PR #233, merge `d70ffb8ff04343422c33165feae6211d7bc18b62`.
 - **MIB-08 — Integrity, Schema Compatibility and Migration Engineering Toolkit** — App PR #234, merge `046b7d2d9cfa41fdc82df8762533c0c81a4139db`.
-- **MIB-09 — Relationship and Reputation Engine** — App PR #235 exact validated head `2ab22ae767c9d94532eacef8750fd2ccc0754a53`; repository health `32325160566` PASS; final Windows `96295717472` PASS; final Linux `96295717246` PASS after one policy-permitted unchanged A2 timing retry; deterministic comparison `96295893108` PASS; squash merge `d6cd08d01fce5dbee1fd1f8029c56dbf963e1cd2`; migration head remains `0021_apm_autogm_mini_campaign_director.json`; migration `0022` was neither created nor reserved.
+- **MIB-09 — Relationship and Reputation Engine** — App PR #235, merge `d6cd08d01fce5dbee1fd1f8029c56dbf963e1cd2`.
+- **MIB-10 — Investigation and Clue Graph Engine** — App PR #236 exact validated head `3bfb1c81b0fc2923e32c75bd11584345629ff7f0`; repository health `32342723478` PASS; final Windows `96345379493` PASS; final Linux `96345378107` PASS after one policy-permitted unchanged A2 timing retry; deterministic comparison `96345479811` PASS; squash merge `b13e2d2ab82b1a2dadc46864ad34258676229885`; migration head remains `0021_apm_autogm_mini_campaign_director.json`; migration `0022` was neither created nor reserved.
 
-MIB-09 delivered deterministic D25 relationship/reputation mechanics with attributable expected-version event receipts, replay/reversal, authorization-first projection/cardinality controls, derived reputation projections, MIB-02 query integration, MIB-05 starter content, MIB-07 workbench fixtures, and preserved the source-frozen A9 relationship registry while supporting definition-driven Influence extension data over the existing D25 JSON value seam.
+MIB-10 delivered deterministic D24 investigation/clue graph semantics, connection predicate validation, expected-version reveal receipts/replay, authorization-first topology/traversal/search, equivalent graph/nonvisual navigation, MIB-05 starter investigation content, Haunted Lighthouse hidden-information fixtures, MIB-02 query reuse and MIB-07 Workbench/nonvisual integration while preserving D24 as sole owner-domain truth.
 
 Current:
-- **MIB-10 — Investigation and Clue Graph Engine**
-- Attempt: `MIB-10-attempt-001`
+- **MIB-11 — World, Reality and Multiverse Taxonomy Engine**
+- Attempt: `MIB-11-attempt-001`
 - State: **selected_not_started**
 
-MIB-10 must make the governed D24 investigation structures mechanically operable before final graphical polish: node/connection registry, clue/evidence/hypothesis/question/confidence semantics, deterministic connection predicates, reveal/discovery progression, role-safe projection and hidden-cardinality protection, graph traversal/search/filtering, accessible nonvisual clue-board representation, provenance/history receipts and Haunted Lighthouse evidence fixtures. Graphical and nonvisual projections must expose identical authorized state, D24 remains sole investigation truth authority, and hidden nodes/edges/cardinality cannot leak through traversal counts summaries search rankings diagnostics or UI.
+MIB-11 turns the approved PPIA-12 World/Setting taxonomy and existing D18/A10 World hierarchy into usable deterministic classification/navigation mechanics. It covers Multiverse → Branch → Reality → Timeline → Era/Segment → Event profile identity, Branch-layer and Reality-law profiles, explicit-evidence compatibility evaluation, World hierarchy and semantic-location navigation, typed tags/relations/adjacency/dependency queries, non-AI-authoritative classification assistance, visibility-safe search/comparison/navigation, starter Reality/Branch classification content and creator/GM browsing fixtures. Explicit source or governed authoring evidence is required for hierarchy, membership, route, chronology and compatibility claims; setting-local mechanics remain scoped absent separate promotion authority.
 
 ## MIB tranche roadmap
 
@@ -52,8 +53,8 @@ MIB-10 must make the governed D24 investigation structures mechanically operable
 | MIB-07 — Multiversal UI Workbench and Shared Interaction Components | completed_verified |
 | MIB-08 — Integrity, Schema Compatibility and Migration Engineering Toolkit | completed_verified |
 | MIB-09 — Relationship and Reputation Engine | completed_verified |
-| **MIB-10 — Investigation and Clue Graph Engine** | **selected_not_started** |
-| MIB-11 — World, Reality and Multiverse Taxonomy Engine | planned |
+| MIB-10 — Investigation and Clue Graph Engine | completed_verified |
+| **MIB-11 — World, Reality and Multiverse Taxonomy Engine** | **selected_not_started** |
 | MIB-12 — Crafting Deterministic Engine | planned |
 | MIB-13 — Economy and Trade Deterministic Engine | planned |
 | MIB-14 — Vehicle, Platform and Base Engine Foundations | planned |
@@ -80,10 +81,12 @@ Strict MIB order:
 - Fixture/golden Campaign data are deterministic reference/test evidence and may not become a second Campaign/Event/domain truth ledger.
 - Shared UI components may project owner-domain truth but may not become an alternate authority layer.
 - Migrations `0001`–`0021` are immutable; `0022` is not reserved and requires a demonstrated durable schema delta.
-- Migration compatibility/rehearsal tooling may inspect and simulate but may not rewrite immutable migration history or authorize a future migration merely because it is additive-compatible.
-- Relationship/reputation mechanics reuse governed D25 owner-domain relationship authority; no second relationship ledger is permitted.
-- Investigation/clue mechanics reuse governed D24 owner-domain authority; no second investigation/evidence/graph ledger is permitted.
-- Hidden relationship and investigation edges/cardinality are filtered before counts, summaries, search, ranking, diagnostics and UI projection.
+- Relationship/reputation mechanics reuse governed D25 authority; no second relationship ledger.
+- Investigation/clue mechanics reuse governed D24 authority; no second investigation/evidence graph ledger.
+- World/reality taxonomy mechanics reuse governed D18/A10 World authority and canonical PPIA-12 taxonomy/reference evidence; no second World or taxonomy truth ledger.
+- Hierarchy, membership, routes, chronology and compatibility require explicit source or governed authoring evidence; co-occurrence, name similarity, thematic similarity, geographic plausibility, random generation or AI inference are insufficient.
+- Setting-local mechanics remain scoped to their setting/branch/plane/reality/location absent separate explicit promotion authority.
+- Hidden World relations/routes/history/cardinality are filtered before counts, facets, hierarchy, maps, pathfinding, summaries, warnings, diagnostics, exports and UI projection.
 - Optional AI remains non-authoritative; blocking paths pass without AI.
 - Normal product acceptance is exact-head repository health + self-hosted Windows + self-hosted Linux + deterministic comparison where applicable.
 - No parallel Campaign, Session, Action, Event, Character, asset, relationship, investigation, World, Adventure, creator or automation truth ledger.
@@ -94,4 +97,4 @@ Strict MIB order:
 - Product voice remains warm, knowledgeable, encouraging and restrained; never obsequious.
 - Future family controls keep guardian authority distinct from GM/Campaign/private creative authority.
 
-“Continue” from this state means execute MIB-10 through its bounded completion gate before advancing to MIB-11. SMB and MCB remain planned until separately selected.
+“Continue” from this state means execute MIB-11 through its bounded completion gate before advancing to MIB-12. SMB and MCB remain planned until separately selected.
