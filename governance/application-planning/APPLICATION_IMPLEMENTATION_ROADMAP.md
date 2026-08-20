@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 5.24.0  
-**Status:** MIB ACTIVE AT MIB-11 — SMB + MCB OWNER-APPROVED PLANNED  
+**Version:** 5.25.0  
+**Status:** MIB ACTIVE AT MIB-12 — SMB + MCB OWNER-APPROVED PLANNED  
 **Owner and final authority:** John Brandon Turner  
 **Last updated:** 2026-08-20
 
@@ -15,7 +15,7 @@ Approved forward programs:
 2. **SMB — System Maturation & Buildout** — owner-approved planned post-MIB successor.
 3. **MCB — Market Capture & Brand Backbone** — owner-approved planned commercial-preparation program; bounded early parallel work requires separate owner routing.
 
-Roadmap presence does not auto-select SMB or MCB. **MIB-11 is the sole current implementation item.**
+Roadmap presence does not auto-select SMB or MCB. **MIB-12 is the sole current implementation item.**
 
 ## MIB current state
 
@@ -29,16 +29,17 @@ Completed verified:
 - **MIB-07 — Multiversal UI Workbench and Shared Interaction Components** — App PR #233, merge `d70ffb8ff04343422c33165feae6211d7bc18b62`.
 - **MIB-08 — Integrity, Schema Compatibility and Migration Engineering Toolkit** — App PR #234, merge `046b7d2d9cfa41fdc82df8762533c0c81a4139db`.
 - **MIB-09 — Relationship and Reputation Engine** — App PR #235, merge `d6cd08d01fce5dbee1fd1f8029c56dbf963e1cd2`.
-- **MIB-10 — Investigation and Clue Graph Engine** — App PR #236 exact validated head `3bfb1c81b0fc2923e32c75bd11584345629ff7f0`; repository health `32342723478` PASS; final Windows `96345379493` PASS; final Linux `96345378107` PASS after one policy-permitted unchanged A2 timing retry; deterministic comparison `96345479811` PASS; squash merge `b13e2d2ab82b1a2dadc46864ad34258676229885`; migration head remains `0021_apm_autogm_mini_campaign_director.json`; migration `0022` was neither created nor reserved.
+- **MIB-10 — Investigation and Clue Graph Engine** — App PR #236, merge `b13e2d2ab82b1a2dadc46864ad34258676229885`.
+- **MIB-11 — World, Reality and Multiverse Taxonomy Engine** — App PR #237 exact validated head `539d1c9e60a8587b66c7c2b0be62609ab75ea03f`; repository health `32346546154` PASS; Windows `96356403509` PASS; Linux `96356403765` PASS; deterministic comparison `96356762729` PASS; no timing retry; squash merge `b04ce8f2ddb04ab27ea38902041023e761e30eaa`; migration head remains `0021_apm_autogm_mini_campaign_director.json`; migration `0022` was neither created nor reserved.
 
-MIB-10 delivered deterministic D24 investigation/clue graph semantics, connection predicate validation, expected-version reveal receipts/replay, authorization-first topology/traversal/search, equivalent graph/nonvisual navigation, MIB-05 starter investigation content, Haunted Lighthouse hidden-information fixtures, MIB-02 query reuse and MIB-07 Workbench/nonvisual integration while preserving D24 as sole owner-domain truth.
+MIB-11 delivered deterministic D18/A10 World/Reality/Multiverse taxonomy profiles, explicit-evidence-only compatibility and classification assistance, authorization-first search/comparison/navigation, nonplanetary and cross-reality route fixtures, MIB-05 starter classification content and MIB-07 creator/GM browsing integration while preserving PPIA-12 evidence/scope guardrails and D18/A10 as sole World/setting authority.
 
 Current:
-- **MIB-11 — World, Reality and Multiverse Taxonomy Engine**
-- Attempt: `MIB-11-attempt-001`
+- **MIB-12 — Crafting Deterministic Engine**
+- Attempt: `MIB-12-attempt-001`
 - State: **selected_not_started**
 
-MIB-11 turns the approved PPIA-12 World/Setting taxonomy and existing D18/A10 World hierarchy into usable deterministic classification/navigation mechanics. It covers Multiverse → Branch → Reality → Timeline → Era/Segment → Event profile identity, Branch-layer and Reality-law profiles, explicit-evidence compatibility evaluation, World hierarchy and semantic-location navigation, typed tags/relations/adjacency/dependency queries, non-AI-authoritative classification assistance, visibility-safe search/comparison/navigation, starter Reality/Branch classification content and creator/GM browsing fixtures. Explicit source or governed authoring evidence is required for hierarchy, membership, route, chronology and compatibility claims; setting-local mechanics remain scoped absent separate promotion authority.
+MIB-12 implements the shared crafting rules core ahead of final production persistence/UI breadth. It covers Recipe/Material/Workstation/Item-Modification/Crafting-Job definitions, deterministic requirements and compatibility checks, reservations/consumption/output receipts, quality/outcome resolution where governed rules define one, modification/repair/upgrade seams, stale/retry/recovery handling, starter materials/recipes/workstations, and fixture/UI Workbench integration. One crafting job must be attributable, idempotent and version-safe and must never duplicate reservations, consumption or output across retry/recovery. Owning inventory/item/action/World authority remains authoritative.
 
 ## MIB tranche roadmap
 
@@ -54,8 +55,8 @@ MIB-11 turns the approved PPIA-12 World/Setting taxonomy and existing D18/A10 Wo
 | MIB-08 — Integrity, Schema Compatibility and Migration Engineering Toolkit | completed_verified |
 | MIB-09 — Relationship and Reputation Engine | completed_verified |
 | MIB-10 — Investigation and Clue Graph Engine | completed_verified |
-| **MIB-11 — World, Reality and Multiverse Taxonomy Engine** | **selected_not_started** |
-| MIB-12 — Crafting Deterministic Engine | planned |
+| MIB-11 — World, Reality and Multiverse Taxonomy Engine | completed_verified |
+| **MIB-12 — Crafting Deterministic Engine** | **selected_not_started** |
 | MIB-13 — Economy and Trade Deterministic Engine | planned |
 | MIB-14 — Vehicle, Platform and Base Engine Foundations | planned |
 | MIB-15 — AI Provider Abstraction, Fake Provider and Context/Proposal Pipeline | planned |
@@ -86,6 +87,9 @@ Strict MIB order:
 - World/reality taxonomy mechanics reuse governed D18/A10 World authority and canonical PPIA-12 taxonomy/reference evidence; no second World or taxonomy truth ledger.
 - Hierarchy, membership, routes, chronology and compatibility require explicit source or governed authoring evidence; co-occurrence, name similarity, thematic similarity, geographic plausibility, random generation or AI inference are insufficient.
 - Setting-local mechanics remain scoped to their setting/branch/plane/reality/location absent separate explicit promotion authority.
+- Crafting mechanics must reuse owning inventory/item/action/World authority; no second inventory, item or crafting truth ledger is permitted.
+- Crafting reservation, consumption and output operations must be deterministic, attributable, version-safe and idempotent; retry/recovery cannot duplicate consumption or output.
+- Real-money/payment integration is outside MIB-12 and remains absent.
 - Hidden World relations/routes/history/cardinality are filtered before counts, facets, hierarchy, maps, pathfinding, summaries, warnings, diagnostics, exports and UI projection.
 - Optional AI remains non-authoritative; blocking paths pass without AI.
 - Normal product acceptance is exact-head repository health + self-hosted Windows + self-hosted Linux + deterministic comparison where applicable.
@@ -97,4 +101,4 @@ Strict MIB order:
 - Product voice remains warm, knowledgeable, encouraging and restrained; never obsequious.
 - Future family controls keep guardian authority distinct from GM/Campaign/private creative authority.
 
-“Continue” from this state means execute MIB-11 through its bounded completion gate before advancing to MIB-12. SMB and MCB remain planned until separately selected.
+“Continue” from this state means execute MIB-12 through its bounded completion gate before advancing to MIB-13. SMB and MCB remain planned until separately selected.
