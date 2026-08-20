@@ -1,1 +1,94 @@
-{"schema_version":"0.2.0","work_item_id":"MIB-13","attempt_id":"MIB-13-attempt-001","track":"multiversal-implementation-backbone","source_program":"MIB","repository":"cybalicistjt-stack/Multiversal-app","status":"selected_not_started","owner_selected":true,"selected_at":"2026-08-20T08:56:00Z","selection_reason":"MIB-12 completed_verified in App PR #238 at exact validated head 20d607a39d73085567bb44c7f5a6c4fb26ef33ec. Repository health run 32349057025, Windows job 96363989252, Linux job 96363989039 and deterministic comparison job 96364257006 all passed with no timing retry; squash merge 9325cf5b1595853c77e07cd209ac1e08b6c4db90. Migration head remains 0021 and no 0022 was created or reserved.","objective":"Implement MIB-13 Economy and Trade Deterministic Engine: currencies, price/modifier pipeline, merchant/service availability, buy/sell/barter/trade validation, reservation/contract/settlement receipts and deterministic market fixtures while preserving inventory/economy authority and excluding real-money commerce. The engine must expose safe owner-domain economy operations that existing Downtime/APW and Cozy/APM orchestration can consume later without granting those layers new authority.","application_baseline":{"expected_main_sha":"9325cf5b1595853c77e07cd209ac1e08b6c4db90","previous_migration_head_observed":"0021_apm_autogm_mini_campaign_director.json","rule":"Reuse MIB-03 deterministic runtime, MIB-05 governed currencies/content, MIB-06 fixtures, MIB-07 Workbench, MIB-08 integrity tooling and MIB-12 crafting outputs/owner receipts. Reuse existing APW Downtime/Project and APM Cozy contracts as integration consumers only; do not move economy authority into those orchestration layers. Do not reserve migration 0022 without a demonstrated durable economy-state delta."},"integration_requirements":["Provide authorization-safe price/value and merchant/service availability projections suitable for Downtime/Cozy previews.","Provide version-safe in-game currency/material budget and cost summaries without granting APM automation authority.","Expose buy sell barter trade and service-contract operations through stable owner-domain command/receipt seams that APW/APM can call when separately authorized.","Provide deterministic status/recovery lookup so bounded Cozy/Downtime execution cannot duplicate settlements after retries or ambiguous responses.","Preserve a no-AI deterministic path and keep real-money/payment integration absent.","Do not implement the later CEL life-loop, market cadence or automation controller inside MIB-13; only provide the economy primitives/interfaces CEL will consume."],"planned_consumers":[{"program":"ICF","position":"after MIB-13 before MIB-14","use":"ingredient crop livestock creature-harvest prepared-food alchemical and production valuation/trade metadata"},{"program":"CEL","position":"after MIB-14 before MIB-15","use":"Cozy/Downtime goals budgets orders demand trade reinvestment and bounded life-loop orchestration"}],"completion_gate":"Deterministic in-game economic transactions are version-safe, replay-safe, attributable and cannot duplicate settlement; inventory/economy authority boundaries remain explicit; safe APW/APM consumer seams exist for price/availability/cost/settlement/status without shifting authority into Cozy or Downtime; no real-money/payment integration or production provider dependency is introduced; exact-head repository health plus self-hosted Windows/Linux and deterministic comparison pass before merge.","nonauthorization":["ICF implementation before MIB-13 completion","MIB-14 or later before ICF completion unless separately owner-routed","CEL implementation before MIB-14 completion","migration 0022 without proven durable delta","real-money commerce/payment integration","production database/search/AI provider selection","Cozy/Downtime economy authority or an alternate economy ledger","autonomous market/life simulation beyond the selected MIB-13 primitives","CCTI-12-T04 before September 2026","WP-011 without required environment","DS-008 byte reconstruction","tester distribution","release/deployment","paid-provider activation"],"next_action":"Re-fetch App main 9325cf5b1595853c77e07cd209ac1e08b6c4db90; inventory currency/price/merchant/service/trade contracts and MIB-03/05/06/07/08/12 plus APW/APM consumer seams; then implement MIB-13 only."}
+{
+  "schema_version": "0.3.0",
+  "work_item_id": "MIB-13",
+  "attempt_id": "MIB-13-attempt-001",
+  "track": "multiversal-implementation-backbone",
+  "source_program": "MIB",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "selected_at": "2026-08-20T08:56:00Z",
+  "selection_reason": "MIB-12 completed_verified in App PR #238 at exact validated head 20d607a39d73085567bb44c7f5a6c4fb26ef33ec. Repository health run 32349057025, Windows job 96363989252, Linux job 96363989039 and deterministic comparison job 96364257006 all passed with no timing retry; squash merge 9325cf5b1595853c77e07cd209ac1e08b6c4db90. Migration head remains 0021 and no 0022 was created or reserved.",
+  "objective": "Implement MIB-13 Economy and Trade Deterministic Engine: currencies, multiscale economic scopes, price/modifier pipeline, merchant/service availability, buy/sell/barter/trade validation, cross-scope trade routing, reservation/contract/settlement receipts and deterministic market fixtures while preserving inventory/economy authority and excluding real-money commerce. The same engine must support local, regional, continental, world/planetary, multi-world and cross-reality economies through governed data rather than separate engine modes. It must expose safe owner-domain economy operations that existing Downtime/APW and Cozy/APM orchestration can consume later without granting those layers new authority.",
+  "application_baseline": {
+    "expected_main_sha": "9325cf5b1595853c77e07cd209ac1e08b6c4db90",
+    "previous_migration_head_observed": "0021_apm_autogm_mini_campaign_director.json",
+    "rule": "Reuse MIB-03 deterministic runtime, MIB-05 governed currencies/content, MIB-06 fixtures, MIB-07 Workbench, MIB-08 integrity tooling, MIB-11 World/Reality taxonomy references and MIB-12 crafting outputs/owner receipts. Reuse existing APW Downtime/Project and APM Cozy contracts as integration consumers only; do not move economy authority into those orchestration layers. Economic scope must reference MIB-11 geography/reality identity rather than duplicating World/Reality truth. Do not reserve migration 0022 without a demonstrated durable economy-state delta."
+  },
+  "scope_requirement": {
+    "decision_doc": "governance/application-planning/multiversal-implementation-backbone/MIB-13_MULTISCALE_ECONOMY_SCOPE.md",
+    "rule": "Economic scale is a data property, not an engine mode. One engine must compose nested and linked markets from settlement/local scale through continental, planetary, multi-world and multiversal/cross-reality trade networks.",
+    "minimum_scope_classes": [
+      "local_or_settlement",
+      "regional_or_national",
+      "continental",
+      "world_or_planetary",
+      "multi_world_or_interplanetary",
+      "reality_or_branch_local",
+      "cross_reality_or_multiversal"
+    ],
+    "required_behaviors": [
+      "stable versioned EconomicScope identities with optional parent inheritance",
+      "explicit trade links/routes instead of assuming all scopes are connected",
+      "scope-specific currencies conversion policies prices scarcity availability legality taxes tariffs and fees where governed by definitions",
+      "local overrides of parent or wider-scope defaults",
+      "cross-scope price and settlement calculation bound to exact scope and policy versions",
+      "cross-reality exchange only through explicitly allowed route/policy chains",
+      "fail-closed behavior for disconnected embargoed unauthorized or stale routes/scopes",
+      "replay-safe and idempotent settlement regardless of economic scale"
+    ]
+  },
+  "integration_requirements": [
+    "Provide authorization-safe price/value and merchant/service availability projections suitable for Downtime/Cozy previews.",
+    "Provide version-safe in-game currency/material budget and cost summaries without granting APM automation authority.",
+    "Expose buy sell barter trade and service-contract operations through stable owner-domain command/receipt seams that APW/APM can call when separately authorized.",
+    "Provide deterministic status/recovery lookup so bounded Cozy/Downtime execution cannot duplicate settlements after retries or ambiguous responses.",
+    "Support nested and linked economic scopes from local markets through continents worlds multiple worlds and multiple realities without introducing parallel economy engines.",
+    "Bind quotes and settlements to explicit EconomicScope IDs/versions and MIB-11 World/Reality references, with deterministic inheritance/override and cross-scope route resolution.",
+    "Provide deterministic cross-scope currency conversion price availability tariff/fee/restriction and route-policy hooks when those rules are defined.",
+    "Provide a no-AI deterministic path and keep real-money/payment integration absent.",
+    "Do not implement the later CEL life-loop, market cadence or automation controller inside MIB-13; only provide the economy primitives/interfaces CEL will consume."
+  ],
+  "planned_consumers": [
+    {
+      "program": "ICF",
+      "position": "after MIB-13 before MIB-14",
+      "use": "ingredient crop livestock creature-harvest prepared-food alchemical and production valuation/trade metadata"
+    },
+    {
+      "program": "CEL",
+      "position": "after MIB-14 before MIB-15",
+      "use": "Cozy/Downtime goals budgets orders demand trade reinvestment and bounded life-loop orchestration"
+    }
+  ],
+  "required_acceptance_fixtures": [
+    "local market transaction within one settlement or region",
+    "continental or world-scope inheritance with a local market override",
+    "trade between distinct world or planetary scopes",
+    "cross-reality transaction through an explicitly permitted route",
+    "disconnected or embargoed cross-scope trade rejected fail-closed",
+    "currency conversion across economic scopes",
+    "stale economic-scope or route-policy version rejection",
+    "lost-response/retry recovery with no duplicate cross-scope settlement"
+  ],
+  "completion_gate": "Deterministic in-game economic transactions are version-safe, replay-safe, attributable and cannot duplicate settlement at local, continental, world, multi-world or cross-reality scale; economic scope is data-driven rather than a separate engine mode; inventory/economy and MIB-11 World/Reality authority boundaries remain explicit; disconnected or stale cross-scope trades fail closed; safe APW/APM consumer seams exist for price/availability/cost/settlement/status without shifting authority into Cozy or Downtime; no real-money/payment integration or production provider dependency is introduced; exact-head repository health plus self-hosted Windows/Linux and deterministic comparison pass before merge.",
+  "nonauthorization": [
+    "ICF implementation before MIB-13 completion",
+    "MIB-14 or later before ICF completion unless separately owner-routed",
+    "CEL implementation before MIB-14 completion",
+    "migration 0022 without proven durable delta",
+    "real-money commerce/payment integration",
+    "production database/search/AI provider selection",
+    "Cozy/Downtime economy authority or an alternate economy ledger",
+    "autonomous market/life simulation beyond the selected MIB-13 primitives",
+    "a separate continent planetary interplanetary or multiversal economy engine",
+    "duplication of MIB-11 World Reality Branch or semantic-location truth inside the economy engine",
+    "CCTI-12-T04 before September 2026",
+    "WP-011 without required environment",
+    "DS-008 byte reconstruction",
+    "tester distribution",
+    "release/deployment",
+    "paid-provider activation"
+  ],
+  "next_action": "Re-fetch App main 9325cf5b1595853c77e07cd209ac1e08b6c4db90; inventory currency/price/merchant/service/trade contracts and MIB-03/05/06/07/08/11/12 plus APW/APM consumer seams; then implement MIB-13 with EconomicScope and explicit cross-scope trade coverage."
+}
