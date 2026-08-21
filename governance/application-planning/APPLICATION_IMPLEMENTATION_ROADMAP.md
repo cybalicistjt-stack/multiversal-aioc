@@ -1,16 +1,16 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 6.22.0  
-**Status:** RSR-01 SELECTED — MSS-05 COMPLETED_VERIFIED — MSS PAUSED FOR RECOVERED SOURCE RECONCILIATION — LNG PROGRAM COMPLETED_VERIFIED — LSS PROGRAM COMPLETED_VERIFIED — AAI OWNER-APPROVED PLANNED — BRP OWNER-APPROVED PLANNED  
+**Version:** 6.23.0  
+**Status:** RSR-02 SELECTED — RSR-01 COMPLETED_VERIFIED — MSS-05 COMPLETED_VERIFIED — MSS PAUSED FOR RECOVERED SOURCE RECONCILIATION — LNG PROGRAM COMPLETED_VERIFIED — LSS PROGRAM COMPLETED_VERIFIED — AAI OWNER-APPROVED PLANNED — BRP OWNER-APPROVED PLANNED  
 **Owner and final authority:** John Brandon Turner  
 **Updated:** 2026-08-21
 
 ## Authority rule
 
-Runtime authority remains bootstrap → authority registry → current-work pointer → selected checkpoint → live GitHub evidence. This roadmap owns dependency intent only. Current work is **RSR-01 — Archive Preservation, Extraction, Provenance & Disposition Registry**, state `selected_not_started`; it has no implementation branch or implementation authority until the next owner `Continue` governed-starts it.
+Runtime authority remains bootstrap → authority registry → current-work pointer → selected checkpoint → live GitHub evidence. This roadmap owns dependency intent only. Current work is **RSR-02 — MIB-11 World/Reality/Timeline Reconciliation**, state `selected_not_started`; it has no implementation branch or implementation authority until the next owner `Continue` governed-starts it.
 
-MSS is completed_verified through MSS-05 and is intentionally paused before MSS-06 while RSR-01..07 reconcile the newly recovered legacy source corpus against completed foundations.
+MSS is completed_verified through MSS-05 and is intentionally paused before MSS-06 while RSR-02..07 reconcile the newly recovered legacy source corpus against completed foundations. RSR-01 is `completed_verified`.
 
 The owner execution rule remains tranche-complete: `Continue` executes the selected tranche through governed start, implementation/extraction/reconciliation as applicable, focused repair, declared validation, `completed_verified` closeout and strict-successor selection unless a genuine blocker survives.
 
@@ -27,6 +27,7 @@ The owner execution rule remains tranche-complete: `Continue` executes the selec
 - MSS-03: `completed_verified`; app merge `d908074d3ade55e47bab3d12f66620de1260fc05`.
 - MSS-04: `completed_verified`; app merge `3e835eab5c004f3d663d9ef4a4d7c06713d26ed5`.
 - MSS-05: `completed_verified`; app merge `f36dff5753045bbde1c4059800721c5c35ff97c2`.
+- RSR-01: `completed_verified`; AIOC merge `17613c8de1fab250db4539adbb30ebecbb49eccb`.
 
 Completion evidence remains valid when a later source-reconciliation tranche is added. Reconciliation supplements completed work; it does not retroactively erase or rewrite valid completion evidence.
 
@@ -46,6 +47,19 @@ Completion evidence remains valid when a later source-reconciliation tranche is 
 
 MSS-05 delivered proposal-only spell/power/Rune-variant authoring with stable identity, version lineage, source/profile scope and provenance; MSS-04 Rune grammar validation for Rune variants; research/discovery records with supported/inconclusive/contradicted outcomes and explicit unresolved mechanics; reusable Scripts/Macros whose invocation steps remain routed through MSS-03 and may not mutate owner state directly; noncanonical testing/simulation records bound to real MSS-03 plans and, for Rune variants, exact MSS-04 evaluations; explicit human/owner review with evidence and no silence-as-approval; and owner-facing publication proposals requiring publishing authority, target owner, expected version and operation identity. It introduced no automatic canon promotion, publication, owner mutation, universal supernatural formula or migration 0022.
 
+### RSR-01 exact evidence
+
+- AIOC PR #598
+- validated head `835bd7e2b2b3253420ec86ca30aeec8c341d3a3a`
+- repository-health run `32511365334`; job `96863004135`
+- AIOC merge `17613c8de1fab250db4539adbb30ebecbb49eccb`
+- exact retained archive SHA-256 `2a5eae712f483d1fb33ff9fb0087e96c4eb8b71b287cc707c196a4c17a2f78f4`
+- 24 constituent MHT checksums verified
+- 102 visible turns indexed: 47 owner/user, 55 assistant
+- 12 unique non-avatar embedded media objects inventoried; 11 substantive
+- 14 sources classified `existing-needs-reconciliation`; 10 `new-candidate`
+- all 24 sources have explicit downstream routes and `automatic_canon_promotion=false`
+
 ## Recovered legacy source intake
 
 The Project Source archive `Now this.zip` is a governed retained input. Exact archive SHA-256: `2a5eae712f483d1fb33ff9fb0087e96c4eb8b71b287cc707c196a4c17a2f78f4`. It contains 24 MHT conversation exports spanning worlds/realities, species/cultures, magic/supernatural material, economy/life-simulation ideas, campaign/gameplay frameworks, history/timelines and visual references.
@@ -63,7 +77,7 @@ Hard rules:
 
 ## Effective forward order
 
-`RSR-01..07 → MSS-06..12 → CCP-01..11 → DPL-01..14 → MAI-01..10 → AAI-01..10 → WCI-01..05 → SCL-01..11 → VTI-01..12 → SGC-01..08 → MIB-16 → MIB-17 → MIB-18 → SMB-01..16 → BRP-01..11 → SMB-17 → SMB-18`
+`RSR-02..07 → MSS-06..12 → CCP-01..11 → DPL-01..14 → MAI-01..10 → AAI-01..10 → WCI-01..05 → SCL-01..11 → VTI-01..12 → SGC-01..08 → MIB-16 → MIB-17 → MIB-18 → SMB-01..16 → BRP-01..11 → SMB-17 → SMB-18`
 
 MCB remains owner-approved commercial preparation outside the automatic critical path; evidence-dependent public claims, final pricing/packaging and launch activation require current product evidence.
 
@@ -108,19 +122,20 @@ Backlog: `governance/application-planning/recovered-source-reconciliation/RSR_PR
 
 Activation: after MSS-05. Successor: MSS-06.
 
-**Current:** RSR-01 — Archive Preservation, Extraction, Provenance & Disposition Registry — `selected_not_started`.
+**Completed:** RSR-01 — Archive Preservation, Extraction, Provenance & Disposition Registry — `completed_verified`.  
+**Current:** RSR-02 — MIB-11 World/Reality/Timeline Reconciliation — `selected_not_started`.
 
 Tranches:
 
-- RSR-01 archive preservation, extraction, provenance, attribution and disposition registry.
-- RSR-02 completed MIB-11 World/Reality/Timeline reconciliation.
+- RSR-01 archive preservation, extraction, provenance, attribution and disposition registry — `completed_verified`.
+- RSR-02 completed MIB-11 World/Reality/Timeline reconciliation — `selected_not_started`.
 - RSR-03 completed ICF content/crafting/food/alchemy reconciliation.
 - RSR-04 completed CEL cozy/economy/life-loop reconciliation.
 - RSR-05 completed LSS loot/scavenge/salvage reconciliation.
 - RSR-06 completed LNG language/culture/script reconciliation.
 - RSR-07 completed MSS-01..04 supernatural-foundation reconciliation and downstream routing, including provenance implications for later MSS work.
 
-RSR is not permission to promote old assistant-generated content. It is the governed bridge from newly recovered source evidence into existing completed foundations and future owners. RSR-01 gains no implementation authority before the next owner `Continue` governed-starts it.
+RSR is not permission to promote old assistant-generated content. It is the governed bridge from newly recovered source evidence into existing completed foundations and future owners. RSR-02 gains no implementation authority before the next owner `Continue` governed-starts it.
 
 ## CCP — Companion & Creature Partnership
 
