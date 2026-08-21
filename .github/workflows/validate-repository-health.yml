@@ -12,6 +12,7 @@ on:
       - 'scripts/validate_rsr_02.py'
       - 'scripts/validate_rsr_03.py'
       - 'scripts/validate_rsr_04.py'
+      - 'scripts/validate_rsr_05.py'
       - '.github/workflows/validate-repository-health.yml'
   push:
     branches: [main]
@@ -25,6 +26,7 @@ on:
       - 'scripts/validate_rsr_02.py'
       - 'scripts/validate_rsr_03.py'
       - 'scripts/validate_rsr_04.py'
+      - 'scripts/validate_rsr_05.py'
       - '.github/workflows/validate-repository-health.yml'
   workflow_dispatch:
 
@@ -86,6 +88,12 @@ jobs:
         run: |
           set -euo pipefail
           python3 scripts/validate_rsr_04.py
+
+      - name: Validate RSR-05 LSS reconciliation integrity
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/validate_rsr_05.py
 
       - name: Validate canonical AIOC state
         shell: bash
