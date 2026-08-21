@@ -3,7 +3,7 @@
 **Program ID:** LNG  
 **Status:** OWNER-APPROVED — PLANNED INTERSTITIAL  
 **Activation:** after LSS-10  
-**Successor:** MAI-01  
+**Successor:** MSS-01  
 **Owner and final authority:** John Brandon Turner
 
 ## Purpose
