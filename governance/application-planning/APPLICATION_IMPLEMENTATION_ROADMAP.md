@@ -1,16 +1,16 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 6.4.0  
-**Status:** LSS-03 SELECTED — LSS-02 COMPLETED_VERIFIED — EXPANDED INTERSTITIAL SEQUENCE ACTIVE BEFORE MIB-16  
+**Version:** 6.5.0  
+**Status:** LSS-06 SELECTED — LSS-05 COMPLETED_VERIFIED — EXPANDED INTERSTITIAL SEQUENCE ACTIVE BEFORE MIB-16  
 **Owner and final authority:** John Brandon Turner  
-**Updated:** 2026-08-20
+**Updated:** 2026-08-21
 
 ## Authority rule
 
 The runtime selector remains bootstrap → authority registry → current-work pointer → selected checkpoint → live GitHub evidence. This roadmap owns milestone/dependency intent but does not start planned work by itself.
 
-Current implementation authority is **LSS-03 only**, state `selected_not_started`. LSS-01, LSS-02 and MIB-15 are `completed_verified`.
+Current implementation authority is **LSS-06 only**, state `selected_not_started`. LSS-01 through LSS-05 and MIB-15 are `completed_verified`.
 
 ## Completed foundation
 
@@ -18,11 +18,14 @@ Current implementation authority is **LSS-03 only**, state `selected_not_started
 - MIB-01 through MIB-15: `completed_verified`.
 - ICF-01 through ICF-15: `completed_verified`.
 - CEL-01 through CEL-06: `completed_verified`.
-- LSS-01 through LSS-02: `completed_verified`.
-- Current application main after LSS-02: `3603f75bd101544e4ffe615c234187da4d1524c6`.
-- LSS-02 exact-head evidence: application PR #250; validated head `8f6f396232645d073e8c6f333743a4b5ee8893e7`; repository-health run `32447566125`; product-validation run `32447566187`; Windows job `96669883915`; Linux job `96669884094`; deterministic comparison job `96671420957`.
-- LSS-02 delivered explicit-evidence recoverable object/component/subassembly profiles, zero/one/many slots, partial selection, definition-only assembly graphs, and lineage/depletion references while D17 remains live Asset truth and ICF-07 remains biological-harvest authority.
-- LSS-01 application merge remains `8fcc70ad6b136d4b4d3698ada65c915d5bc872e0`.
+- LSS-01 through LSS-05: `completed_verified`.
+- Current application main after LSS-05: `17752cf95bff8e4ba33e6a34db7cf455c60bdab5`.
+- LSS-05 exact-head evidence: application PR #253; validated head `613f773acc467e2e41ae1ba31f057d44afe200e8`; repository-health run `32467665683`; product-validation run `32467665988`; Windows job `96727628408`; Linux job `96727628252`; deterministic comparison job `96728193023`; matching receipt `2481dedd2ba5e97a1a70dc58fe15f6bc4b84d9bd9fcaeed7a818823e7349a25f`.
+- LSS-05 delivered visibility-first World-linked scavenging opportunities, explicit access/tool/capability/hazard/concentration/depletion evidence, authored outcomes, D17 output intents, versioned opportunity depletion, and MIB-03 retry/replay safety without inferred find-rate/loot/DC rules.
+- LSS-04 application merge: `f98f48fa53df219df1f8b93e1f05e015e0f33214`.
+- LSS-03 application merge: `e4d77ed65b183fbc975f482e98e90c04cd2210c9`.
+- LSS-02 application merge: `3603f75bd101544e4ffe615c234187da4d1524c6`.
+- LSS-01 application merge: `8fcc70ad6b136d4b4d3698ada65c915d5bc872e0`.
 - MIB-15 application merge remains `b251037991be3a1dbc318855ef4cb209a6fa166b`.
 - Migration head remains `0021_apm_autogm_mini_campaign_director.json`; `0022` is not reserved.
 
@@ -30,7 +33,7 @@ Current implementation authority is **LSS-03 only**, state `selected_not_started
 
 MIB numbering remains stable. The owner-approved interstitial programs execute after completed MIB-15 and before MIB-16 in this dependency order:
 
-`LSS-03 … LSS-10` (LSS-01..02 completed)
+`LSS-06 … LSS-10` (LSS-01..05 completed)
 → `LNG-01 … LNG-06`
 → `MSS-01 … MSS-12`
 → `CCP-01 … CCP-11`
@@ -63,7 +66,7 @@ Reason for placement:
 - MIB-17 applies family-safety capability policy across the expanded surface.
 - MIB-18 performs final integrated backbone portability/readiness proof.
 
-LSS-03 is selected but not started. The standing owner continuation authorizes the governed start transition. Later tranches/programs are not implementation-authorized until their predecessor is completed and the canonical selector advances.
+LSS-06 is selected but not started. The standing owner continuation authorizes the governed start transition. Later tranches/programs are not implementation-authorized until their predecessor is completed and the canonical selector advances.
 
 ## LSS — Loot, Scavenge & Salvage
 
@@ -76,9 +79,15 @@ Purpose: make objects/Assets/wrecks inspectable, partially dismantlable, compone
 
 **Completed:** LSS-02 — Recoverable Object, Component, Assembly & Provenance Schema — `completed_verified`; application merge `3603f75bd101544e4ffe615c234187da4d1524c6`.
 
-**Current:** LSS-03 — Condition, Quality, Grade, Rarity & Compatibility Grammar — `selected_not_started`.
+**Completed:** LSS-03 — Condition, Quality, Grade, Rarity & Compatibility Grammar — `completed_verified`; application merge `e4d77ed65b183fbc975f482e98e90c04cd2210c9`.
 
-LSS-03 must keep instance condition/history, quality, grade, rarity and compatibility as independent explicit-evidence facets. D17 remains live instance condition/history authority. MIB-14 remains vehicle/platform/base/module/facility compatibility authority. Rarity does not imply quality, power or find-rate; quality does not repair condition; grade does not imply compatibility; damaged components do not automatically combine into pristine ones; legendary inputs do not automatically create mythical outputs.
+**Completed:** LSS-04 — Loot Acquisition & Transfer Foundation — `completed_verified`; application merge `f98f48fa53df219df1f8b93e1f05e015e0f33214`.
+
+**Completed:** LSS-05 — Scavenge Zones, Search, Concentration & Opportunity Engine — `completed_verified`; application merge `17752cf95bff8e4ba33e6a34db7cf455c60bdab5`.
+
+**Current:** LSS-06 — Salvage, Disassembly & Component Extraction Engine — `selected_not_started`.
+
+LSS-06 must implement deterministic inspect → select target → validate explicit requirements → reserve/version-bind D17 source → resolve authored extraction → create D17 outputs → update/finalize source. Partial stripping must preserve unrecovered slots/remnants; damaged extraction, failed extraction and total teardown require explicit governed rules/evidence. D17 remains live source/output truth, MIB-03 remains operation/reservation/retry authority, LSS-02 profiles and LSS-03 condition grammar remain inputs, and ICF-07 retains biological harvesting. No anatomy, quantity, yield, condition, rarity or compatibility behavior may be inferred.
 
 Tranches: LSS-01 source/authority crosswalk; LSS-02 component/assembly schema; LSS-03 condition/quality/rarity grammar; LSS-04 loot transfer; LSS-05 scavenge opportunities; LSS-06 disassembly/extraction; LSS-07 decomposition libraries; LSS-08 repair/cannibalization/reassembly; LSS-09 economy/projects/cozy/hazards; LSS-10 search/workbench/golden proof.
 
