@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 6.15.0  
-**Status:** LNG-06 SELECTED — AAI AUDIO INTEROPERABILITY OWNER-APPROVED PLANNED — LNG-05 COMPLETED_VERIFIED — LSS PROGRAM COMPLETED_VERIFIED — BRP BETA-READINESS GATE OWNER-APPROVED  
+**Version:** 6.16.0  
+**Status:** MSS-01 SELECTED — LNG PROGRAM COMPLETED_VERIFIED — AAI AUDIO INTEROPERABILITY OWNER-APPROVED PLANNED — LSS PROGRAM COMPLETED_VERIFIED — BRP BETA-READINESS GATE OWNER-APPROVED  
 **Owner and final authority:** John Brandon Turner  
 **Updated:** 2026-08-21
 
@@ -10,7 +10,7 @@
 
 The runtime selector remains bootstrap → authority registry → current-work pointer → selected checkpoint → live GitHub evidence. This roadmap owns milestone/dependency intent but does not start planned work by itself.
 
-Current implementation authority is **LNG-06 only**, state `selected_not_started`. LNG-01 through LNG-05, LSS-01 through LSS-10 and MIB-15 are `completed_verified`. AAI is owner-approved planned after MAI-10 and before WCI-01 but carries no implementation authority until explicitly selected.
+Current implementation authority is **MSS-01 only**, state `selected_not_started`. LNG-01 through LNG-06, LSS-01 through LSS-10 and MIB-15 are `completed_verified`. AAI is owner-approved planned after MAI-10 and before WCI-01 but carries no implementation authority until explicitly selected.
 
 The owner operating rule is tranche-complete by default: `Continue` means execute the entire selected implementation tranche through governed start if needed, implementation, exact-head validation, merge, `completed_verified` closeout and strict-successor selection unless a genuine owner/environment/source blocker prevents completion. Validation queueing, an open PR, pending closeout or merely staging the next step is not a normal stopping boundary.
 
@@ -26,7 +26,11 @@ The owner operating rule is tranche-complete by default: `Continue` means execut
 - LNG-03 — Guided Language Construction Toolkit: `completed_verified`.
 - LNG-04 — Families, Dialects, Registers & Historical Evolution: `completed_verified`.
 - LNG-05 — Character Knowledge, Translation & Gameplay Integration: `completed_verified`.
-- Current application main after LNG-05: `7b7ad31a9e7239ac08b30733d48e0454dcce43a5`.
+- LNG-06 — Generation, Consistency Tools & Golden Language Proof: `completed_verified`; the LNG program is complete.
+- Current application main after LNG-06: `23b01927677ae4541ccc1c9430f837b8efce8ded`.
+- LNG-06 exact-head evidence: application PR #264; validated head `b4c8285b253296deeb546a7d5a4d9d06ef1e88d9`; repository-health run `32496794783`; product-validation run `32496795472`; Windows job `96817000780`; Linux job `96817000405`; deterministic comparison job `96817764483`; matching receipt `304484a39f012835dd9e80e15501bd3f037d9753291d4baa57e68a9d64b5f35e`; comparison artifact `9452004773`.
+- LNG-06 delivered deterministic proposal-only word/name generation from explicit LNG-03 rules, derivation and historical-evolution assistance, permission-safe translation from LNG-05 projections, evidence-backed consistency/contradiction reporting and an ordered multi-era golden proof. Missing recipes/vocabulary/grammar remain unresolved rather than receiving fallback language rules; generated results remain noncanonical proposals; earlier eras, predecessor checksums, Character permissions and future-stage Dominix quarantine remain preserved.
+- LNG-05 application merge: `7b7ad31a9e7239ac08b30733d48e0454dcce43a5`.
 - LNG-05 exact-head evidence: application PR #263; validated head `cef68f8dba61319dd2ebf1dda9df694e8f3c89dc`; repository-health run `32492992813`; product-validation run `32492993286`; Windows job `96804781676`; Linux job `96804781921`; deterministic comparison job `96805466733`; matching receipt `2f3dd6ef37dd9b233b344f1093329225d21e192785d174f33b8c4850d424346c`.
 - LNG-05 delivered permission-safe Character language gameplay with fluency, literacy and explicit intelligibility kept distinct; external Character/culture/species/faction/World owner projection references instead of parallel ledgers; authorized spoken/written/inscription comprehension with failed/fragmentary/partial/full outcomes; permission-scoped linguistic clues and links; no automatic intelligibility from family/evolution; future-stage Dominix quarantine; predecessor non-mutation; and retained-source-safe unknown vocabulary/knowledge rather than fabricated translation.
 - LNG-04 application merge: `6d6899d7615102eed9b6b1b1df567d24075d57db`.
@@ -58,8 +62,7 @@ The owner operating rule is tranche-complete by default: `Continue` means execut
 
 MIB numbering remains stable. The owner-approved interstitial programs execute after completed MIB-15 and before MIB-16 in this dependency order:
 
-`LNG-06`
-→ `MSS-01 … MSS-12`
+`MSS-01 … MSS-12`
 → `CCP-01 … CCP-11`
 → `DPL-01 … DPL-14`
 → `MAI-01 … MAI-10`
@@ -98,7 +101,7 @@ Reason for placement:
 - BRP-01..11 converts that product into a supportable, recoverable, observable, updateable beta candidate with explicit `BETA_READY` proof before strangers/external cohorts become the normal test surface.
 - SMB-17 then owns real external beta/community foundations over a beta-ready product; SMB-18 hardens operations to commercial/release grade and owns stores/distribution, billing/entitlements when approved and launch operations.
 
-The LSS program is fully `completed_verified`. LNG-01 through LNG-05 are `completed_verified`. LNG-06 is selected but not started. AAI is owner-approved planned but non-authoritative until selected. Later programs are not implementation-authorized until their predecessor is completed and the canonical selector advances.
+The LSS and LNG programs are fully `completed_verified`. MSS-01 is selected but not started. AAI is owner-approved planned but non-authoritative until selected. Later programs are not implementation-authorized until their predecessor is completed and the canonical selector advances.
 
 ## LSS — Loot, Scavenge & Salvage
 
@@ -158,9 +161,11 @@ LNG-04 adds deterministic provenance-bearing language-family membership, separat
 
 LNG-05 adds deterministic permission-safe Character language gameplay. Fluency, literacy and explicit intelligibility remain separate; family or historical proximity does not imply comprehension. Character identity and culture/species/faction/World ownership remain external projections. Spoken, written and inscription comprehension expose only accepted LNG-02 lexical/script facts the Character is authorized to know, producing failed/fragmentary/partial/full outcomes without generating missing translations. Linguistic clues and external-owner links are permission-scoped, GM-hidden references are withheld, all surfaces inherit LNG-01 temporal/visibility filtering, and LNG-02/LNG-03/LNG-04 predecessor truth remains read-only.
 
-**Current:** LNG-06 — Generation, Consistency Tools & Golden Language Proof — `selected_not_started`.
+**Completed:** LNG-06 — Generation, Consistency Tools & Golden Language Proof — `completed_verified`; application merge `23b01927677ae4541ccc1c9430f837b8efce8ded`.
 
-LNG-06 will add deterministic rule-guided word/name candidate generation, derivation/evolution assistance, contradiction and consistency checks, proposal-only translation assistance, and multi-era golden language fixtures. Generated or inferred content remains explicitly noncanonical until governed acceptance; unresolved source facts remain unresolved. LNG-06 must preserve LNG-01 temporal/visibility, LNG-02 lexical/script/provenance, LNG-03 construction/proposal, LNG-04 non-retroactive evolution and LNG-05 Character permission/gameplay boundaries. MSS-01 is the strict successor only after LNG-06 reaches `completed_verified`.
+LNG-06 adds deterministic rule-guided word/name candidate generation, derivation and historical-evolution assistance, contradiction/consistency checks, proposal-only translation assistance and multi-era golden language proof. Generation requires explicit authorized LNG-03 recipe inputs rather than hidden fallback phonology/grammar; derivation/evolution require explicit source/rule/change evidence; Character translation consumes only LNG-05-authorized lexical fragments and leaves inaccessible or unresolved fragments unknown. All generated results remain noncanonical proposals, predecessor truth remains read-only, future-stage Dominix remains quarantined and no retroactive history rewrite occurs.
+
+LNG is complete at `completed_verified` through LNG-06. MSS-01 is its strict successor and is selected_not_started only.
 
 ## MSS — Magic & Supernatural Systems
 
@@ -168,6 +173,10 @@ Program: `governance/application-planning/magic-supernatural-systems/MSS_MAGIC_S
 Backlog: `governance/application-planning/magic-supernatural-systems/MSS_PROGRAM_BACKLOG.json`
 
 Purpose: make retained magic, Rune Construction, spell/power runtime, traditions, rituals, counterplay, spirits/divine relationships, portals and temporal/causal play mechanically real while preserving existing Action/Event/Character/World/Crafting authority.
+
+**Current:** MSS-01 — Source Inventory, Authority Crosswalk & Supernatural Taxonomy — `selected_not_started`.
+
+MSS-01 will reconcile PPIA-07, retained spell/ability catalogs, Rune Construction, arcane/elemental/innate/shamanic/voodoo/divine/chaos/psychic/supernatural sources, rituals, scripts/macros, portals and temporal material against current MIB/ICF/LNG/World/Action/Crafting authorities. It must produce explicit coverage and no-invention boundaries before later runtime work. PPIA-07 semantics remain implementation input; no universal mana/damage/healing/duration/failure/backlash formula may be inferred where source/current owner rules do not support it.
 
 Tranches: MSS-01 source/taxonomy; MSS-02 resources/costs/strain; MSS-03 spell/power runtime; MSS-04 Rune runtime/blind GM; MSS-05 spell research/authoring/scripts; MSS-06 traditions/schools/sources; MSS-07 rituals/cooperative casting; MSS-08 countermagic/resistance/backlash; MSS-09 spirits/worship/pacts/favor; MSS-10 portals/gates; MSS-11 temporal/causal play; MSS-12 content/workbench/golden proof.
 
