@@ -1,8 +1,10 @@
 # MSS — Magic & Supernatural Systems
 
 **Program ID:** MSS  
-**Status:** OWNER-APPROVED — IN PROGRESS  
+**Status:** PAUSED FOR OWNER-APPROVED RECOVERED SOURCE RECONCILIATION  
 **Activation:** after LNG-06  
+**Completed through:** MSS-05  
+**Resume at:** MSS-06 after RSR-07  
 **Successor after program:** CCP-01  
 **Owner and final authority:** John Brandon Turner  
 **Planned:** 2026-08-20  
@@ -18,11 +20,13 @@ PPIA-07 is an implementation input, not runtime completion. Its 34-rune vocabula
 
 The owner approved `RSR — Recovered Source Reconciliation` on 2026-08-21 after a 24-file legacy source archive was recovered. MSS internal tranche order remains MSS-01 through MSS-12, but the effective cross-program sequence is:
 
-`MSS-05 → RSR-01..07 → MSS-06..12`
+`MSS-05 completed_verified → RSR-01..07 → MSS-06..12`
 
-This preserves MSS-05 as the current bounded tranche while ensuring newly recovered supernatural, world/timeline, language, item/crafting, economy/cozy and loot material is reconciled against completed foundations before MSS-06 and later source/content-heavy tranches proceed.
+MSS-05 is completed_verified at application PR #269 / merge `f36dff5753045bbde1c4059800721c5c35ff97c2`. RSR-01 is now the selected unfinished work item. MSS-06 remains unauthorized until RSR-07 is completed_verified.
 
-RSR-07 specifically reconciles recovered magic/mana/spell/ritual/portal/temporal material against completed MSS-01..04. Recovered assistant-generated mechanics remain proposals unless independently supported or owner-approved.
+This ensures newly recovered supernatural, world/timeline, language, item/crafting, economy/cozy and loot material is reconciled against completed foundations before MSS-06 and later source/content-heavy tranches proceed.
+
+RSR-07 specifically reconciles recovered magic/mana/spell/ritual/portal/temporal material against completed MSS-01..04 and routes any MSS-05-relevant provenance without retroactively weakening MSS-05 completion. Recovered assistant-generated mechanics remain proposals unless independently supported or owner-approved.
 
 ## Tranches
 
@@ -38,10 +42,10 @@ RSR-07 specifically reconciles recovered magic/mana/spell/ritual/portal/temporal
 4. **MSS-04 — Rune Construction Runtime & Blind GM Adjudication** — `completed_verified`  
    Move completed PPIA-07 Rune grammar/SCI/CSL/workflows into application runtime, including standard preview and blind-GM profiles, immutable original submissions, modify-and-approve semantic diffs, hidden-effect suppression and atomic commit.
 
-5. **MSS-05 — Spell Design, Research, Scripts, Macros & Supernatural Authoring** — `selected_not_started`  
-   Provide governed spell/power/rune authoring, variant design, research/discovery, reusable scripts/macros, testing/simulation proposals, provenance and approval/publishing boundaries. Created mechanics remain proposals until accepted through their owning rules.
+5. **MSS-05 — Spell Design, Research, Scripts, Macros & Supernatural Authoring** — `completed_verified`  
+   Delivered governed proposal-only spell/power/Rune-variant authoring, variant lineage, research/discovery records, reusable Scripts/Macros, noncanonical testing/simulation proposals, provenance and explicit review/publishing boundaries. Rune variants route through MSS-04; Scripts/Macros and simulations route through MSS-03; no authored/generated/researched mechanic is automatically canonical or published. Exact-head repository health plus Windows/Linux deterministic validation passed at head `eb04f5be7b4b7d53278bdd18cc6c2cefbcc1fe59`, and PR #269 merged as `f36dff5753045bbde1c4059800721c5c35ff97c2`.
 
-**Effective interstitial:** after MSS-05 reaches `completed_verified`, execute RSR-01..07. MSS-06 remains unauthorized until RSR-07 reaches `completed_verified`.
+**Effective interstitial:** execute RSR-01..07. MSS-06 remains unauthorized until RSR-07 reaches `completed_verified`.
 
 6. **MSS-06 — Traditions, Schools, Sources & Casting Profiles**  
    Model arcane schools, elemental paths, innate powers, shamanic/voodoo traditions, divine sources, chaos magic, psychic/mental powers, technological or setting-specific supernatural sources and mixed traditions through composable definitions rather than hard-coded mutually exclusive classes.
@@ -70,6 +74,7 @@ RSR-07 specifically reconciles recovered magic/mana/spell/ritual/portal/temporal
 - PPIA-07 semantics are preserved unless later owner-approved evidence explicitly supersedes them.
 - No universal mana, power, damage, healing, duration, failure or backlash formula is inferred from incomplete sources.
 - AI may propose/explain but never casts, approves, adjudicates, reveals hidden effects or mutates canon by authority.
+- MSS-05 authored/generated/researched mechanics remain proposals until accepted through owning authority; Scripts/Macros never bypass MSS-03 and publication remains owner-facing.
 - Recovered legacy assistant output is proposal material, not automatic source authority.
 - Temporal operations never silently rewrite earlier history; causal changes require explicit governed branch/reconciliation behavior.
 - Portals and temporal paths preserve visibility, provenance and setting-law compatibility.
