@@ -2,8 +2,8 @@
 
 **Program ID:** VTI  
 **Status:** OWNER-APPROVED — PLANNED INTERSTITIAL  
-**Activation:** after WCI-05  
-**Successor:** MIB-16  
+**Activation:** after SCL-11  
+**Successor:** SGC-01  
 **Owner and final authority:** John Brandon Turner
 
 ## Purpose

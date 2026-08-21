@@ -2,7 +2,7 @@
 
 **Program ID:** MAI  
 **Status:** OWNER-APPROVED — PLANNED INTERSTITIAL  
-**Activation:** after LNG-06  
+**Activation:** after DPL-14  
 **Successor:** WCI-01  
 **Owner and final authority:** John Brandon Turner
 
