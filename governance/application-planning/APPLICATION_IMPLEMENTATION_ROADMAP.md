@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 6.8.0  
-**Status:** LSS-10 SELECTED — LSS-09 COMPLETED_VERIFIED — BRP BETA-READINESS GATE OWNER-APPROVED  
+**Version:** 6.9.0  
+**Status:** LNG-01 SELECTED — LSS PROGRAM COMPLETED_VERIFIED — BRP BETA-READINESS GATE OWNER-APPROVED  
 **Owner and final authority:** John Brandon Turner  
 **Updated:** 2026-08-21
 
@@ -10,7 +10,7 @@
 
 The runtime selector remains bootstrap → authority registry → current-work pointer → selected checkpoint → live GitHub evidence. This roadmap owns milestone/dependency intent but does not start planned work by itself.
 
-Current implementation authority is **LSS-10 only**, state `selected_not_started`. LSS-01 through LSS-09 and MIB-15 are `completed_verified`.
+Current implementation authority is **LNG-01 only**, state `selected_not_started`. LSS-01 through LSS-10 and MIB-15 are `completed_verified`.
 
 The owner operating rule is tranche-complete by default: `Continue` means execute the entire selected implementation tranche through governed start if needed, implementation, exact-head validation, merge, `completed_verified` closeout and strict-successor selection unless a genuine owner/environment/source blocker prevents completion. Validation queueing, an open PR, pending closeout or merely staging the next step is not a normal stopping boundary.
 
@@ -20,10 +20,11 @@ The owner operating rule is tranche-complete by default: `Continue` means execut
 - MIB-01 through MIB-15: `completed_verified`.
 - ICF-01 through ICF-15: `completed_verified`.
 - CEL-01 through CEL-06: `completed_verified`.
-- LSS-01 through LSS-09: `completed_verified`.
-- Current application main after LSS-09: `2cf5c53f69c1030bacf605e9fc32d55f3d8b05e6`.
-- LSS-09 exact-head evidence: application PR #257; validated head `5fb5f5bc8c87f9dcee2a5affeb6639eb113c72ed`; repository-health run `32477561989`; product-validation run `32477562400`; Windows job `96756967700`; Linux job `96756967953`; deterministic comparison job `96757492578`; matching receipt `2d5d55d6e6032351bb72991e1c6897b77b83fc02e63623afd86d500291ac4135`.
-- LSS-09 delivered evidence-bound MIB-13 valuation/availability requests without local prices or settlement, APW/D26 timed Project escalation without wall-clock progression, explicit MIB-14/D17 workshop capability inspection, hazard and restriction owner handoffs, CEL/APM-compatible human stops and bounded Cozy eligibility, and MIB-03 retry/replay safety without duplicate economic or Asset settlement.
+- LSS-01 through LSS-10: `completed_verified`; the LSS program is complete.
+- Current application main after LSS-10: `6d7c26278980cb27ab3eb06e3654b4852e6e0859`.
+- LSS-10 exact-head evidence: application PR #258; validated head `201fd3b15b4810fe0ce9fbd2dce820a5e816afeb`; repository-health run `32480020147`; product-validation run `32480020367`; Windows job `96764145979`; Linux job `96764145941`; deterministic comparison job `96765379206`; matching receipt `fa1f426fe610bf3947bd28cf6f9e2e80f9b9c86033f273941f06cdc13e8ece09`.
+- LSS-10 delivered provenance-bearing LSS content/reference packs, visibility-first bounded local search/reverse lookup, read-only Workbench projections, authored-or-unresolved balance metadata, and an evidence-bound LSS-01..09 golden proof with conservation and human/GM stops while preserving future MIB-16 global-search authority.
+- LSS-09 application merge: `2cf5c53f69c1030bacf605e9fc32d55f3d8b05e6`.
 - LSS-08 application merge: `1eee23b4f43fc01f47d757be3bf0174c9e0ef968`.
 - LSS-07 application merge: `24bfe85df9f8b5437edf5b7d48d3e929814f4e65`.
 - LSS-06 application merge: `56be1913157b0c32c5bb665308cf85d2b4fc52b2`.
@@ -39,8 +40,7 @@ The owner operating rule is tranche-complete by default: `Continue` means execut
 
 MIB numbering remains stable. The owner-approved interstitial programs execute after completed MIB-15 and before MIB-16 in this dependency order:
 
-`LSS-10` (LSS-01..09 completed)
-→ `LNG-01 … LNG-06`
+`LNG-01 … LNG-06`
 → `MSS-01 … MSS-12`
 → `CCP-01 … CCP-11`
 → `DPL-01 … DPL-14`
@@ -78,7 +78,7 @@ Reason for placement:
 - BRP-01..11 converts that product into a supportable, recoverable, observable, updateable beta candidate with explicit `BETA_READY` proof before strangers/external cohorts become the normal test surface.
 - SMB-17 then owns real external beta/community foundations over a beta-ready product; SMB-18 hardens operations to commercial/release grade and owns stores/distribution, billing/entitlements when approved and launch operations.
 
-LSS-10 is selected but not started. The standing owner continuation authorizes the governed start transition on the next owner `Continue`. Later programs are not implementation-authorized until LSS-10 is completed and the canonical selector advances to LNG-01.
+The LSS program is fully `completed_verified`. LNG-01 is selected but not started. The standing owner continuation authorizes its governed start transition on the next owner `Continue`. Later LNG tranches/programs are not implementation-authorized until their predecessor is completed and the canonical selector advances.
 
 ## LSS — Loot, Scavenge & Salvage
 
@@ -105,9 +105,9 @@ Purpose: make objects/Assets/wrecks inspectable, partially dismantlable, compone
 
 **Completed:** LSS-09 — Economy, Projects, Hazards, Legality & Cozy Integration — `completed_verified`; application merge `2cf5c53f69c1030bacf605e9fc32d55f3d8b05e6`.
 
-**Current:** LSS-10 — Content Packs, Search, Workbench, Balance & Golden Proof — `selected_not_started`.
+**Completed:** LSS-10 — Content Packs, Search, Workbench, Balance & Golden Proof — `completed_verified`; application merge `6d7c26278980cb27ab3eb06e3654b4852e6e0859`.
 
-LSS-10 closes the LSS program with provenance-bearing representative content packs, bounded LSS-local search/filter/reverse lookup and GM/creator Workbench projections, explicit source-authored or unresolved balance metadata, and an integrated golden proof across LSS-01..09. It must preserve visibility and provenance, avoid universal loot/find/yield/value/legality formulas, and remain distinct from future MIB-16 global diagnostics/provenance/dependency/search engineering.
+LSS is complete. Its final tranche preserves provenance-bearing representative content, visibility-first LSS-local search/filter/reverse lookup, read-only Workbench/balance projections and the ordered LSS-01..09 golden proof. Global diagnostics/provenance/dependency/search remains future MIB-16 authority; no universal loot/find/yield/value/legality formula was introduced.
 
 Tranches: LSS-01 source/authority crosswalk; LSS-02 component/assembly schema; LSS-03 condition/quality/rarity grammar; LSS-04 loot transfer; LSS-05 scavenge opportunities; LSS-06 disassembly/extraction; LSS-07 decomposition libraries; LSS-08 repair/cannibalization/reassembly; LSS-09 economy/projects/cozy/hazards; LSS-10 search/workbench/golden proof.
 
@@ -118,7 +118,9 @@ Backlog: `governance/application-planning/language-linguistics/LNG_PROGRAM_BACKL
 
 Purpose: track/build/use languages with lexicons, scripts, grammar, families, dialects, historical evolution and gameplay knowledge while keeping generation proposal-only.
 
-The supplied Dominix Arcan/Western/Eastern/Lower Common material is future-stage reference relative to the current Dominix setting and must not leak backward into present-era campaigns.
+**Current:** LNG-01 — Source Intake, Language Registry & Timeline Authority — `selected_not_started`.
+
+LNG-01 catalogs retained languages/dialects/scripts with source/provenance and binds language-stage availability to World/Reality/Timeline/Era. The supplied Dominix Arcan, Western Common, Eastern Common and Lower Common material is future-stage reference relative to the current Dominix setting and must not silently populate present-era speech, NPC/Character knowledge, naming, translation, AI context or search outside an authorized temporal/multiversal knowledge path. Missing vocabulary, grammar, chronology or language relationships remain unknown rather than fabricated.
 
 ## MSS — Magic & Supernatural Systems
 
