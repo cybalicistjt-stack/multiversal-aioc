@@ -1,0 +1,62 @@
+# VTI — Virtual Tabletop Interoperability
+
+**Program ID:** VTI  
+**Status:** OWNER-APPROVED — PLANNED INTERSTITIAL  
+**Activation:** after WCI-05  
+**Successor:** MIB-16  
+**Owner and final authority:** John Brandon Turner
+
+## Purpose
+
+VTI lets compatible external VTTs present and interact with Multiversal campaigns at the deepest level each platform safely permits, while Multiversal remains the canonical rules/campaign authority.
+
+Integration levels are capability-driven:
+- Level 1: export/content pack;
+- Level 2: synchronized companion;
+- Level 3: native Multiversal VTT system/rules package where the platform supports it.
+
+## Tranches
+
+1. **VTI-01 — VTT Ecosystem, Licensing & Capability Matrix**  
+   Survey target platforms and classify system/rules packages, modules/plugins, sheets, compendiums, maps/scenes, automation, APIs, live communication, import/export and distribution constraints.
+
+2. **VTI-02 — Multiversal External Game Projection Contract**  
+   Provider-neutral Character, Creature, Item, Action, Condition, Encounter, Scene, Vehicle and Rule-reference projections for adapters.
+
+3. **VTI-03 — Stable Identity, Versioning & Synchronization**  
+   External-object mappings, fingerprints, stale/conflict handling, reconnect, deduplication, tombstones and MIB-03-based retry/recovery.
+
+4. **VTI-04 — Rules Action & Roll Bridge**  
+   VTT request → Multiversal validation/resolution → owner receipts/result → VTT presentation for rolls, attacks, checks, powers, resources, conditions, initiative, reactions and GM adjudication.
+
+5. **VTI-05 — Character Sheet, Item & Compendium Projection**  
+   Present Characters, NPCs, creatures, equipment, powers, conditions, rules references, roll tables and vehicles in platform-native forms where supported.
+
+6. **VTI-06 — Scene, Map, Token & MAI Bridge**  
+   Translate Multiversal Scene + MAI projections to maps, tokens, walls, doors, lighting, grid/elevation/notes and GM-only material supported by the target VTT.
+
+7. **VTI-07 — Permissions, Hidden Information & GM Authority**  
+   Preserve ownership, consent, GM adjudication and hidden-information filtering across external clients; prevent hidden counts/content leakage.
+
+8. **VTI-08 — Adapter SDK, Capability Manifest & Deterministic Reference VTT**  
+   Define the adapter SDK and a fake/reference VTT so the entire integration contract can be tested without a commercial platform.
+
+9. **VTI-09 — First Full Platform Integration**  
+   Select the best supported platform at implementation time based on current APIs/licensing; deliver the first deep playable integration without precommitting the roadmap to a vendor.
+
+10. **VTI-10 — Additional VTT Adapters & Compatibility Matrix**  
+    Add feasible platforms at the maximum safe level each supports and publish a precise capability matrix rather than vague “VTT compatible” claims.
+
+11. **VTI-11 — Adventure / Campaign Package Export**  
+    Export maps, encounters, creatures, NPCs, tokens, journals/handouts, treasure, tables, environments and other permitted content into platform package formats.
+
+12. **VTI-12 — Integrated Cross-VTT Golden Proof**  
+    Prove one governed adventure resolves the same authoritative events natively and through an external VTT projection, including reconnect, stale/duplicate requests, GM adjudication and hidden information.
+
+## Invariants
+
+- External VTTs are clients/projections, not replacement rules authorities.
+- External mutations become governed proposals/operations where authoritative Multiversal state is affected.
+- Capability manifests control feature exposure; unsupported fidelity is explicit.
+- No VTT adapter may bypass visibility, ownership, consent or GM authority.
+- No vendor is selected by roadmap text; platform selection is evidence-driven at VTI-09.
