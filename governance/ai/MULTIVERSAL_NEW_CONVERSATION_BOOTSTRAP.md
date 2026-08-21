@@ -2,12 +2,12 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 6.0.0  
+**Version:** 6.1.0  
 **Status:** ACTIVE CANDIDATE — CRS COMPLETION PENDING  
 **Owner and final authority:** John Brandon Turner  
 **Governance repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Application repository:** `cybalicistjt-stack/Multiversal-app`  
-**Last updated:** 2026-08-18
+**Last updated:** 2026-08-21
 
 ## Purpose
 
@@ -143,9 +143,11 @@ Checkpoints are recovery boundaries, not activity logs.
 
 ## Owner operating rule
 
-When John says `Continue`, execute the next verified unfinished operation. Do not substitute an acknowledgement, plan, promise, recap, or unnecessary clarification.
+When John says `Continue`, execute the next verified unfinished **implementation tranche as a whole**. Do not substitute an acknowledgement, plan, promise, recap, or unnecessary clarification.
 
-Perform work in the current response. If work remains incomplete, say so truthfully and preserve the exact recovery point in repository evidence.
+Unless a genuine owner-only, unavailable-environment, unavailable-source, safety, or irrecoverable external blocker prevents completion, `Continue` means carry that tranche through its governed start (if needed), implementation, focused repair, exact-head validation, required merge, `completed_verified` closeout, and canonical selection of its strict successor. Do **not** stop merely because validation is queued/in progress, a PR is open/ready, a closeout is pending, or the successor could be queued as an interstitial step. Poll/work around normal validation latency and finish the bounded tranche before reporting.
+
+Perform work in the current response. If work remains incomplete because a genuine blocker survives reasonable recovery attempts, say so truthfully and preserve the exact recovery point in repository evidence.
 
 ## Completion-claim integrity
 

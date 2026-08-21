@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 6.5.0  
-**Status:** LSS-06 SELECTED — LSS-05 COMPLETED_VERIFIED — EXPANDED INTERSTITIAL SEQUENCE ACTIVE BEFORE MIB-16  
+**Version:** 6.6.0  
+**Status:** LSS-07 SELECTED — LSS-06 COMPLETED_VERIFIED — BRP BETA-READINESS GATE OWNER-APPROVED  
 **Owner and final authority:** John Brandon Turner  
 **Updated:** 2026-08-21
 
@@ -10,7 +10,9 @@
 
 The runtime selector remains bootstrap → authority registry → current-work pointer → selected checkpoint → live GitHub evidence. This roadmap owns milestone/dependency intent but does not start planned work by itself.
 
-Current implementation authority is **LSS-06 only**, state `selected_not_started`. LSS-01 through LSS-05 and MIB-15 are `completed_verified`.
+Current implementation authority is **LSS-07 only**, state `selected_not_started`. LSS-01 through LSS-06 and MIB-15 are `completed_verified`.
+
+The owner operating rule is tranche-complete by default: `Continue` means execute the entire selected implementation tranche through governed start if needed, implementation, exact-head validation, merge, `completed_verified` closeout and strict-successor selection unless a genuine owner/environment/source blocker prevents completion. Validation queueing, an open PR, pending closeout or merely staging the next step is not a normal stopping boundary.
 
 ## Completed foundation
 
@@ -18,10 +20,11 @@ Current implementation authority is **LSS-06 only**, state `selected_not_started
 - MIB-01 through MIB-15: `completed_verified`.
 - ICF-01 through ICF-15: `completed_verified`.
 - CEL-01 through CEL-06: `completed_verified`.
-- LSS-01 through LSS-05: `completed_verified`.
-- Current application main after LSS-05: `17752cf95bff8e4ba33e6a34db7cf455c60bdab5`.
-- LSS-05 exact-head evidence: application PR #253; validated head `613f773acc467e2e41ae1ba31f057d44afe200e8`; repository-health run `32467665683`; product-validation run `32467665988`; Windows job `96727628408`; Linux job `96727628252`; deterministic comparison job `96728193023`; matching receipt `2481dedd2ba5e97a1a70dc58fe15f6bc4b84d9bd9fcaeed7a818823e7349a25f`.
-- LSS-05 delivered visibility-first World-linked scavenging opportunities, explicit access/tool/capability/hazard/concentration/depletion evidence, authored outcomes, D17 output intents, versioned opportunity depletion, and MIB-03 retry/replay safety without inferred find-rate/loot/DC rules.
+- LSS-01 through LSS-06: `completed_verified`.
+- Current application main after LSS-06: `56be1913157b0c32c5bb665308cf85d2b4fc52b2`.
+- LSS-06 exact-head evidence: application PR #254; validated head `db13d5e991ff8bd6a25192ae77826f29ac886b0f`; repository-health run `32469294355`; product-validation run `32469294706`; Windows job `96732520579`; Linux job `96732521181`; deterministic comparison job `96733066671`; matching receipt `c3120c2b9e13b1f34ad45241f4e532a5c3ab8bccda78dc79a7298af2dbc27244`.
+- LSS-06 delivered read-only zero/partial/full extraction inspection, explicit requirement and D17 condition evidence, exact source reservation, post-reservation owner-version binding, clean/damaged/failed extraction, preserved unselected components/remnants, governed total teardown, atomic D17 source/output finalization and MIB-03 retry/replay safety without inferred anatomy/yields/condition/rarity/compatibility.
+- LSS-05 application merge: `17752cf95bff8e4ba33e6a34db7cf455c60bdab5`.
 - LSS-04 application merge: `f98f48fa53df219df1f8b93e1f05e015e0f33214`.
 - LSS-03 application merge: `e4d77ed65b183fbc975f482e98e90c04cd2210c9`.
 - LSS-02 application merge: `3603f75bd101544e4ffe615c234187da4d1524c6`.
@@ -33,7 +36,7 @@ Current implementation authority is **LSS-06 only**, state `selected_not_started
 
 MIB numbering remains stable. The owner-approved interstitial programs execute after completed MIB-15 and before MIB-16 in this dependency order:
 
-`LSS-06 … LSS-10` (LSS-01..05 completed)
+`LSS-07 … LSS-10` (LSS-01..06 completed)
 → `LNG-01 … LNG-06`
 → `MSS-01 … MSS-12`
 → `CCP-01 … CCP-11`
@@ -46,9 +49,12 @@ MIB numbering remains stable. The owner-approved interstitial programs execute a
 → `MIB-16`
 → `MIB-17`
 → `MIB-18`
-→ `SMB-01 … SMB-18` as the default post-MIB product-completion successor.
+→ `SMB-01 … SMB-16`
+→ `BRP-01 … BRP-11`
+→ `SMB-17`
+→ `SMB-18`.
 
-MCB remains an owner-approved commercial-preparation program whose evidence-independent tranches may later be selected in bounded parallel; it is not automatically inserted into the implementation critical path.
+MCB remains an owner-approved commercial-preparation program whose evidence-independent tranches may later be selected in bounded parallel; it is not automatically inserted into the implementation critical path. Product-dependent public claims, final pricing/packaging, major acquisition activation, review/press demonstration and launch marketing require current evidence. BRP-11 is the formal beta product-evidence handoff, not an automatic marketing or public-release authorization.
 
 Reason for placement:
 - Completed MIB-15 now provides provider-neutral proposal/context/fake-provider infrastructure without making later programs AI-dependent.
@@ -65,8 +71,11 @@ Reason for placement:
 - MIB-16 then builds diagnostics/provenance/dependency/search across all of these surfaces once.
 - MIB-17 applies family-safety capability policy across the expanded surface.
 - MIB-18 performs final integrated backbone portability/readiness proof.
+- SMB-01..16 turns the backbone into a production-shaped, remote, content-rich, accessible product and completes remote internal-alpha productization, security/privacy hardening, stabilization and supported-device readiness.
+- BRP-01..11 converts that product into a supportable, recoverable, observable, updateable beta candidate with explicit `BETA_READY` proof before strangers/external cohorts become the normal test surface.
+- SMB-17 then owns real external beta/community foundations over a beta-ready product; SMB-18 hardens operations to commercial/release grade and owns stores/distribution, billing/entitlements when approved and launch operations.
 
-LSS-06 is selected but not started. The standing owner continuation authorizes the governed start transition. Later tranches/programs are not implementation-authorized until their predecessor is completed and the canonical selector advances.
+LSS-07 is selected but not started. The standing owner continuation authorizes the governed start transition. Later tranches/programs are not implementation-authorized until their predecessor is completed and the canonical selector advances.
 
 ## LSS — Loot, Scavenge & Salvage
 
@@ -85,9 +94,11 @@ Purpose: make objects/Assets/wrecks inspectable, partially dismantlable, compone
 
 **Completed:** LSS-05 — Scavenge Zones, Search, Concentration & Opportunity Engine — `completed_verified`; application merge `17752cf95bff8e4ba33e6a34db7cf455c60bdab5`.
 
-**Current:** LSS-06 — Salvage, Disassembly & Component Extraction Engine — `selected_not_started`.
+**Completed:** LSS-06 — Salvage, Disassembly & Component Extraction Engine — `completed_verified`; application merge `56be1913157b0c32c5bb665308cf85d2b4fc52b2`.
 
-LSS-06 must implement deterministic inspect → select target → validate explicit requirements → reserve/version-bind D17 source → resolve authored extraction → create D17 outputs → update/finalize source. Partial stripping must preserve unrecovered slots/remnants; damaged extraction, failed extraction and total teardown require explicit governed rules/evidence. D17 remains live source/output truth, MIB-03 remains operation/reservation/retry authority, LSS-02 profiles and LSS-03 condition grammar remain inputs, and ICF-07 retains biological harvesting. No anatomy, quantity, yield, condition, rarity or compatibility behavior may be inferred.
+**Current:** LSS-07 — Component Family Taxonomy & Decomposition Profile Library — `selected_not_started`.
+
+LSS-07 builds reusable governed family/taxonomy and decomposition-profile reference content over explicit retained catalog/source evidence and LSS-02/LSS-03/LSS-06. Family classification is organizational/search metadata, not universal anatomy. Same-family members may have different slots, quantities and decomposition behavior; unknowns remain unknown. MIB-14 retains compatibility authority, MIB-12 retains repair/crafting authority, D17 remains live Asset truth, ICF-07 retains biological harvesting and DPL retains geological extraction.
 
 Tranches: LSS-01 source/authority crosswalk; LSS-02 component/assembly schema; LSS-03 condition/quality/rarity grammar; LSS-04 loot transfer; LSS-05 scavenge opportunities; LSS-06 disassembly/extraction; LSS-07 decomposition libraries; LSS-08 repair/cannibalization/reassembly; LSS-09 economy/projects/cozy/hazards; LSS-10 search/workbench/golden proof.
 
@@ -179,15 +190,26 @@ Tranches: SGC-01 corpus/disposition taxonomy; SGC-02 mechanics/runtime coverage;
 
 Program: `governance/application-planning/system-maturation-buildout/SMB_SYSTEM_MATURATION_AND_BUILDOUT_PROGRAM.md`
 
-SMB-01 through SMB-18 remain the default post-MIB product-completion sequence: production platform realization; remote multiplayer; organizations/factions/settlements/kingdoms; exploration/travel/survival; full bases/housing; full vehicles; deep cross-system simulation; core content production; first-party campaign; full Player/GM/Creator UX; content sharing; real optional AI; remote alpha productization; security/privacy/family hardening; stabilization/scale; accessibility/localization/device completion; external beta/community foundations; release/commercial productization.
+SMB-01 through SMB-16 execute after MIB-18: production platform realization; remote multiplayer; organizations/factions/settlements/kingdoms; exploration/travel/survival; full bases/housing; full vehicles; deep cross-system simulation; core content production; first-party campaign; full Player/GM/Creator UX; content sharing; real optional AI; remote alpha productization; security/privacy/family hardening; stabilization/scale; accessibility/localization/device completion.
 
 SMB-10 explicitly owns finished Character appearance/avatar construction and asset assembly as part of complete Character product UX; SGC-06 must verify that the retained appearance/avatar requirements have an explicit implementation path.
+
+After SMB-16, BRP is the normal beta gate. SMB-17 External Beta & Community Foundations follows completed BRP-11; SMB-18 Release Engineering & Commercial Productization follows SMB-17. Beta-grade backup/observability/crash-reporting/rollback capabilities are proven in BRP and hardened to commercial/release grade in SMB-18.
+
+## Beta readiness & product operations — BRP
+
+Program: `governance/application-planning/beta-readiness-product-operations/BRP_BETA_READINESS_PRODUCT_OPERATIONS_PROGRAM.md`  
+Backlog: `governance/application-planning/beta-readiness-product-operations/BRP_PROGRAM_BACKLOG.json`
+
+BRP-01 through BRP-11 are owner-approved and planned after SMB-16 and before SMB-17: beta definition/supported matrix; account lifecycle/consent/recovery/data rights; guided onboarding/help/product voice; beta distribution/install/update/version compatibility; observability/telemetry/crash reporting/privacy-safe evidence; backup/restore/migration/rollback; feature flags/cohorts/kill switches; security/abuse/moderation/incident operations; tester support/feedback/triage; real-play content/balance sweep; golden beta proof and marketing evidence handoff.
+
+Completion of BRP-11 publishes a versioned `BETA_READY` evidence package. It is a prerequisite for normal SMB-17 external-beta activation, not public-release or paid-marketing authority.
 
 ## Commercial preparation — MCB
 
 Program: `governance/application-planning/market-capture-brand-backbone/MCB_MARKET_CAPTURE_AND_BRAND_BACKBONE_PROGRAM.md`
 
-MCB-01 through MCB-25 remain owner-approved commercial preparation from market/category/customer research through brand/messaging, acquisition/content/community/lifecycle/analytics/pricing/growth, launch simulation and market expansion. Evidence-independent tranches may later be explicitly selected in bounded parallel; product-dependent claims/pricing/launch work waits for current evidence.
+MCB-01 through MCB-25 remain owner-approved commercial preparation from market/category/customer research through brand/messaging, acquisition/content/community/lifecycle/analytics/pricing/growth, launch simulation and market expansion. Evidence-independent tranches may later be explicitly selected in bounded parallel. Product-dependent public claims, final pricing/packaging, major acquisition activation, review/press demonstration and launch marketing require current evidence; BRP-11 provides the formal beta product-evidence handoff and SMB-17 provides real external-cohort evidence.
 
 ## Preserved/gated work
 
@@ -203,4 +225,5 @@ MCB-01 through MCB-25 remain owner-approved commercial preparation from market/c
 - AI may assist/propose but never gains mechanical, canonical, permission, consent, ownership, hidden-information, GM-adjudication or irreversible-advancement authority.
 - Migrations are evidence-driven; `0022` is not pre-reserved.
 - Exact-head repository health and appropriate self-hosted cross-platform validation remain required for implementation tranches.
-- Product voice remains warm, knowledgeable, encouraging and restrained.
+- Product voice remains warm, knowledgeable, encouraging and restrained; BRP-03 owns final product-wide voice/onboarding/help acceptance before beta.
+- `BETA_READY` is an evidence state, not a marketing slogan, public-release authorization or permission to bypass MCB claim/evidence governance.

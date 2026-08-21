@@ -2,10 +2,11 @@
 
 **Program ID:** SMB  
 **Program name:** System Maturation & Buildout  
-**Version:** 0.1.0  
+**Version:** 0.2.0  
 **Status:** OWNER-APPROVED — PLANNED POST-MIB SUCCESSOR  
 **Owner and final authority:** John Brandon Turner  
-**Approved:** 2026-08-19
+**Approved:** 2026-08-19  
+**Beta-gate integration:** 2026-08-21
 
 ## 1. Purpose
 
@@ -18,6 +19,8 @@ SMB is deliberately not another abstraction program. Its job is to turn the stro
 SMB is owner-approved and roadmap-planned, but it is not selected while MIB remains active. MIB-18 must publish its integration/portability/gated-work handoff before SMB activation unless the owner separately authorizes a bounded exception.
 
 SMB does not by itself activate tester distribution, public release, paid providers, production infrastructure, public community features or commerce. Each tranche must still satisfy the authority and validation rules that apply when it is selected.
+
+**Owner-approved beta gate:** SMB-01 through SMB-16 execute before BRP — Beta Readiness & Product Operations. BRP-01 through BRP-11 then prove the product safe/supportable enough for normal external-beta activation. SMB-17 follows completed BRP-11; SMB-18 follows SMB-17. This interposition preserves SMB tranche numbering.
 
 ## 3. Tranche plan
 
@@ -141,32 +144,32 @@ SMB does not by itself activate tester distribution, public release, paid provid
 
 **Scope:** screen readers, keyboard/touch parity, reduced motion, high contrast, font scaling, localization infrastructure, screen classes and Apple/Mac completion when its environment exists.
 
-**Completion gate:** supported primary journeys pass the declared accessibility/localization/device matrix.
+**Completion gate:** supported primary journeys pass the declared accessibility/localization/device matrix. Normal next program is BRP-01, not SMB-17 directly.
 
 ### SMB-17 — External Beta & Community Foundations
 
-**Purpose:** support a controlled external cohort and the minimum safe community foundations required for broader use.
+**Purpose:** support a controlled external cohort and the minimum safe community foundations required for broader use **after BRP-11 has published valid `BETA_READY` evidence**.
 
 **Scope:** invites, private groups, controlled creator sharing, moderation foundations, discovery only if separately approved, feedback and support flows.
 
-**Completion gate:** an external beta cohort can operate safely with measurable support/moderation/feedback processes and without unapproved public-marketplace scope.
+**Completion gate:** BRP-11 remains valid for the candidate entering the cohort, and an external beta cohort can operate safely with measurable support/moderation/feedback processes and without unapproved public-marketplace scope.
 
 ### SMB-18 — Release Engineering & Commercial Productization
 
-**Purpose:** prepare Multiversal for an actual supported release after product, validation and owner gates permit it.
+**Purpose:** prepare Multiversal for an actual supported release after product, validation and owner gates permit it, hardening BRP's beta-grade operational systems to commercial/release grade rather than duplicating them.
 
-**Scope:** packaging, subscriptions/entitlements if approved, billing integration, production operations, backups, observability, support tooling, release channels, crash/error reporting, rollback, privacy/legal readiness, stores/distribution and launch operations.
+**Scope:** packaging, subscriptions/entitlements if approved, billing integration, production operations, hardened backups/observability/support tooling, release channels, crash/error reporting, rollback, privacy/legal readiness, stores/distribution and launch operations.
 
 **Completion gate:** a release candidate can be deployed, observed, supported, rolled back and recovered through documented production procedures with owner-approved commercial/legal dependencies satisfied.
 
 ## 4. Strict default order
 
-`SMB-01 → SMB-02 → SMB-03 → SMB-04 → SMB-05 → SMB-06 → SMB-07 → SMB-08 → SMB-09 → SMB-10 → SMB-11 → SMB-12 → SMB-13 → SMB-14 → SMB-15 → SMB-16 → SMB-17 → SMB-18`
+`SMB-01 → SMB-02 → SMB-03 → SMB-04 → SMB-05 → SMB-06 → SMB-07 → SMB-08 → SMB-09 → SMB-10 → SMB-11 → SMB-12 → SMB-13 → SMB-14 → SMB-15 → SMB-16 → BRP-01 → BRP-02 → BRP-03 → BRP-04 → BRP-05 → BRP-06 → BRP-07 → BRP-08 → BRP-09 → BRP-10 → BRP-11 → SMB-17 → SMB-18`
 
 The owner may later re-order tranches when MIB-18 exposes real dependency/environment conditions, but any change must be canonicalized before execution.
 
 ## 5. Whole-program product proof
 
-A central SMB milestone is that four ordinary users on separate devices/locations can create/sign into accounts, join a Campaign, build/use Characters, play a complete live session, continue asynchronously, exercise major game systems, recover from disconnects, return later and resume from the same authoritative history without developer intervention.
+A central SMB/BRP milestone is that four ordinary users on separate devices/locations can create/sign into accounts, join a Campaign, build/use Characters, play a complete live session, continue asynchronously, exercise major game systems, recover from disconnects, update safely, return later and resume from the same authoritative history without developer intervention.
 
-SMB is completed only when its declared release-oriented acceptance package proves a genuinely usable product rather than merely complete architecture.
+SMB is completed only when its declared release-oriented acceptance package proves a genuinely usable product rather than merely complete architecture. BRP-11 provides the earlier bounded `BETA_READY` proof required before normal SMB-17 external beta.
