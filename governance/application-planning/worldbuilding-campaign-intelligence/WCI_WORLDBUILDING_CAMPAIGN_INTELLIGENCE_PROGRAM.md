@@ -3,7 +3,7 @@
 **Program ID:** WCI  
 **Status:** OWNER-APPROVED — PLANNED INTERSTITIAL  
 **Activation:** after MAI-10  
-**Successor:** VTI-01  
+**Successor:** SCL-01  
 **Owner and final authority:** John Brandon Turner
 
 ## Purpose
