@@ -1,10 +1,10 @@
 # RSR — Recovered Source Reconciliation
 
 **Program ID:** RSR  
-**Status:** IN PROGRESS — RSR-01..02 COMPLETED_VERIFIED — RSR-03 IN_PROGRESS  
+**Status:** IN PROGRESS — RSR-01..03 COMPLETED_VERIFIED — RSR-04 SELECTED_NOT_STARTED  
 **Activation:** after MSS-05 `completed_verified`  
-**Completed through:** RSR-02  
-**Current:** RSR-03  
+**Completed through:** RSR-03  
+**Current:** RSR-04  
 **Successor:** MSS-06 after RSR-07  
 **Owner and final authority:** John Brandon Turner  
 **Planned:** 2026-08-21  
@@ -12,32 +12,34 @@
 
 ## Purpose
 
-RSR preserves and reconciles the recovered legacy Multiversal source bundle `Now this.zip` without allowing old conversations or assistant-generated expansions to become current authority by existence alone.
-
-The retained bundle contains 24 MHT conversation exports spanning worlds/realities, species/cultures, magic and supernatural systems, economy/social structures, campaign/gameplay frameworks, maps/visual references, history/timelines, food/cooking/loot references and other cross-system content. RSR gives every recovered source a governed disposition and creates explicit reconciliation work where already-completed families may have been built before these recovered sources were available.
-
-RSR is a reconciliation program, not a replacement architecture. Completed work remains `completed_verified`; reconciliation tranches may add coverage, provenance mappings, candidate content, tests or narrowly justified compatibility changes without rewriting valid prior evidence.
+RSR preserves and reconciles the recovered legacy Multiversal source bundle `Now this.zip` without allowing old conversations or assistant-generated expansions to become current authority by existence alone. Completed work remains `completed_verified`; reconciliation supplements coverage, provenance, candidate content, tests and later-owner routing without rewriting valid prior evidence or creating parallel truth ledgers.
 
 ## Source authority and attribution rules
 
 - Current GitHub repository evidence remains authoritative for implementation state.
 - The recovered archive is retained source/provenance material, not a current-work selector.
-- Owner-authored statements and explicit owner corrections in recovered conversations outrank surrounding assistant-generated prose.
-- Assistant-generated lore, mechanics, formulas, names, factions, perks, maps or extrapolations remain proposals unless independently supported or later owner-approved.
-- Existing canonical entities and stable IDs are reused when a recovered source is another version or provenance line for the same subject.
-- Conflicts are recorded; they are not silently harmonized.
+- Owner-authored statements and explicit owner corrections outrank surrounding assistant-generated prose.
+- Assistant-generated lore, mechanics, formulas, names, effects, recipes, prices, yields or extrapolations remain proposals unless independently supported or later owner-approved.
+- Existing canonical entities and stable IDs are reused when a recovered source is another version/provenance line for the same subject.
+- Conflicts are recorded rather than silently harmonized.
 - Embedded visual assets remain source/archive-checksum bound.
-- No recovered source may bypass visibility, provenance, permission, owner-domain, approval or no-invention boundaries.
+- No recovered source may bypass visibility, provenance, permission, owner-domain, approval, consent, delegation or no-invention boundaries.
 
 ## Completed reconciliation evidence
 
-### RSR-01 — completed_verified
+### RSR-01 — `completed_verified`
 
-RSR-01 verified archive SHA-256 `2a5eae712f483d1fb33ff9fb0087e96c4eb8b71b287cc707c196a4c17a2f78f4` and all 24 constituent MHT checksums; indexed 102 saved turns as 47 owner/user and 55 assistant turns; inventoried 12 unique embedded media objects excluding auth avatars, 11 substantive; and assigned every source a non-promoting disposition and downstream route. AIOC PR #598 merged at `17613c8de1fab250db4539adbb30ebecbb49eccb` after exact-head validation.
+Verified archive SHA-256 `2a5eae712f483d1fb33ff9fb0087e96c4eb8b71b287cc707c196a4c17a2f78f4` and all 24 MHT checksums; indexed 102 saved turns; inventoried substantive media; assigned every source a non-promoting disposition and downstream route. PR #598 merged at `17613c8de1fab250db4539adbb30ebecbb49eccb`.
 
-### RSR-02 — completed_verified
+### RSR-02 — `completed_verified`
 
-RSR-02 reconciled all 21 RSR-01 sources routed to World/Reality/Timeline work against completed MIB-11. It reused explicit stable identities including `world:black-vegas`, `branch:chronica`, `setting:vertigon`, `world:havalaea` and `world:antiquaria`; registered 16 `rsr02:*` noncanonical bookkeeping candidates where no live identity was justified; retained a 13-entry chronology/type/hierarchy queue; and recorded complete downstream routing. It made no canonical D18/A10 mutation. Exact-head RSR-01 integrity, RSR-02 reconciliation integrity and canonical AIOC health passed on run `32513321394`, job `96869221489`; PR #601 merged at `f059d24423280918659802621951aa21bcfa8819`.
+Reconciled all 21 World/Reality/Timeline-routed sources against completed MIB-11, reused established stable identities, retained 16 noncanonical reconciliation candidates and 13 chronology/type/hierarchy issues, and made no D18/A10 canonical World mutation. Exact-head validation passed on run `32513321394`; PR #601 merged at `f059d24423280918659802621951aa21bcfa8819`.
+
+### RSR-03 — `completed_verified`
+
+Reviewed all 24 retained MHTs rather than treating RSR-01 route tags as an exhaustive ICF filter. The original two explicit RSR-03 routes were preserved and fifteen additional ICF-adjacent signals were recorded; seven files had no material ICF signal. Nine `rsr03:*` source-bound proposal candidates and eleven uncertainty/ownership boundaries remain noncanonical. Completed ICF-01..15 remains authoritative and no canonical ingredient, recipe, harvest, creature, formula, facility, Asset, market or production-state mutation occurred. Exact-head RSR-01, RSR-02, RSR-03 and canonical AIOC validation passed on run `32515925497`, job `96877433248`; PR #604 merged at `a6dea89c358e29ec86dce57e8ac67bba3db44e56`.
+
+Important preserved RSR-03 boundaries include the Kola-Ha Formcraft/Warform source mismatch and no-ingredient inference; owner evidence that Warforms cost more and are more straining while generated values remain proposals; Blood Tree source linkage while recovered sap/resin/Bloodcrystal DC/yield/effect claims remain proposals; Magen mana remaining supernatural-resource authority rather than automatically becoming an ingredient; and Isekai/cultural/profession/economy material routed to its actual later owners.
 
 ## Tranches
 
@@ -45,13 +47,13 @@ RSR-02 reconciled all 21 RSR-01 sources routed to World/Reality/Timeline work ag
    Exact archive/constituent checksums, message attribution/hash, media provenance and source-disposition indexes; all 24 sources routed without automatic canon promotion.
 
 2. **RSR-02 — MIB-11 World/Reality/Timeline Reconciliation** — `completed_verified`  
-   All 21 routed sources reconciled to completed MIB-11; existing stable identities reused, noncanonical candidates/chronology conflicts preserved, and downstream routes recorded without a parallel World ledger.
+   All routed world/reality/timeline sources reconciled to completed MIB-11; existing identities reused, conflicts/candidates preserved and downstream routes recorded without a parallel World ledger.
 
-3. **RSR-03 — ICF Content/Crafting/Food/Alchemy Reconciliation** — `in_progress`  
-   Reconcile every recovered source already routed to RSR-03 plus any additional source found during the governed pass to contain material ICF evidence. Map supported content to completed ICF-01..15 identities/owners, register source-bound noncanonical candidates only where justified, preserve setting scope and attribution, and reroute profession/game-reality/economy/species implications to their actual owners. No assistant-generated recipe, effect, formula, biological property or item statistic becomes canonical by archive existence.
+3. **RSR-03 — ICF Content/Crafting/Food/Alchemy Reconciliation** — `completed_verified`  
+   All 24 sources received an ICF relevance decision; newly detected ICF-adjacent material was recovered, source-bound candidates/boundaries were preserved, and completed ICF-01..15 remained authoritative with zero canonical ICF/live-state mutation.
 
-4. **RSR-04 — CEL Cozy/Economy/Life-Loop Reconciliation**  
-   Reconcile recovered post-scarcity society, trade, social/economic life, food, culture, household or downtime implications against completed CEL-01..06 and current Economy owners.
+4. **RSR-04 — CEL Cozy/Economy/Life-Loop Reconciliation** — `selected_not_started`  
+   Reconcile recovered post-scarcity society, trade/distribution, prosperity/scarcity, food/culture, household, downtime and routine-production implications against completed CEL-01..06, current MIB-13 economy ownership, and existing Downtime/Project/Cozy delegation seams. Preserve meaningful economy/state consequences while preventing an autonomous second simulation or silent automation authority.
 
 5. **RSR-05 — LSS Loot/Scavenge/Salvage Reconciliation**  
    Reconcile recovered loot, item acquisition, salvage, equipment, creature/material recovery and related gameplay hooks against completed LSS-01..10.
@@ -60,7 +62,7 @@ RSR-02 reconciled all 21 RSR-01 sources routed to World/Reality/Timeline work ag
    Reconcile recovered languages, naming systems, dialect/cultural language material, scripts and language-history implications against completed LNG-01..06.
 
 7. **RSR-07 — MSS-01..04 Supernatural Foundation Reconciliation & Downstream Routing**  
-   Reconcile recovered magic, mana/resource models, spells/powers, rituals, supernatural species abilities, portals, timelines/causal material and setting-local supernatural rules against completed MSS-01..04, and record provenance implications for completed MSS-05. Confirm inputs to MSS-06..12, DPL, CCP, WCI, SCL, MAI, SGC or another future owner. No recovered assistant formula becomes canonical automatically.
+   Reconcile recovered magic, mana/resource models, spells/powers, rituals, supernatural species abilities, portals and temporal/causal material against completed MSS-01..04; record provenance implications for MSS-05 and inputs to MSS-06..12/DPL/CCP/WCI/SCL/MAI/SGC. No recovered assistant formula becomes canonical automatically.
 
 ## Completion gate
 
@@ -68,4 +70,4 @@ RSR is complete only when every recovered MHT has a disposition; substantive vis
 
 ## Forward-order rule
 
-RSR-01 and RSR-02 are `completed_verified`. RSR-03 is `in_progress` on `governance/rsr-03-icf-reconciliation`. RSR-04..07 remain unauthorized and follow in strict order. MSS-06 remains gated until RSR-07 reaches `completed_verified`.
+RSR-01 through RSR-03 are `completed_verified`. RSR-04 is `selected_not_started` with no implementation branch or authority until a subsequent owner `Continue` governed-starts it. RSR-05..07 follow in strict order. MSS-06 remains gated until RSR-07 reaches `completed_verified`.
