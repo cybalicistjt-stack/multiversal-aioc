@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 6.1.0  
-**Status:** MIB-15 SELECTED — EXPANDED OWNER-APPROVED INTERSTITIAL PROGRAMS PLANNED BEFORE MIB-16  
+**Version:** 6.2.0  
+**Status:** LSS-01 SELECTED — MIB-15 COMPLETED_VERIFIED — EXPANDED INTERSTITIAL SEQUENCE ACTIVE BEFORE MIB-16  
 **Owner and final authority:** John Brandon Turner  
 **Updated:** 2026-08-20
 
@@ -10,23 +10,23 @@
 
 The runtime selector remains bootstrap → authority registry → current-work pointer → selected checkpoint → live GitHub evidence. This roadmap owns milestone/dependency intent but does not start planned work by itself.
 
-Current implementation authority remains **MIB-15 only**, state `selected_not_started`.
+Current implementation authority is **LSS-01 only**, state `selected_not_started`. MIB-15 is `completed_verified`.
 
 ## Completed foundation
 
 - APW / CSW / APM predecessor sequence: `completed_verified`.
-- MIB-01 through MIB-14: `completed_verified`.
+- MIB-01 through MIB-15: `completed_verified`.
 - ICF-01 through ICF-15: `completed_verified`.
 - CEL-01 through CEL-06: `completed_verified`.
-- Current application main after CEL-06: `633e4c4225e72752ea00debab4902431066586bd`.
+- Current application main after MIB-15: `b251037991be3a1dbc318855ef4cb209a6fa166b`.
+- MIB-15 exact-head evidence: application PR #248; validated head `63da6291dcb3f588cc2fbcd5f2395cad40f49bd7`; repository-health run `32442833781`; product-validation run `32442833817`; Windows job `96656757528`; Linux job `96656757703`; deterministic comparison job `96657152158`.
 - Migration head remains `0021_apm_autogm_mini_campaign_director.json`; `0022` is not reserved.
 
 ## Effective forward order
 
-MIB numbering remains stable. Owner-approved interstitial programs now execute after MIB-15 and before MIB-16 in this dependency order:
+MIB numbering remains stable. The owner-approved interstitial programs execute after completed MIB-15 and before MIB-16 in this dependency order:
 
-`MIB-15`
-→ `LSS-01 … LSS-10`
+`LSS-01 … LSS-10`
 → `LNG-01 … LNG-06`
 → `MSS-01 … MSS-12`
 → `CCP-01 … CCP-11`
@@ -44,7 +44,7 @@ MIB numbering remains stable. Owner-approved interstitial programs now execute a
 MCB remains an owner-approved commercial-preparation program whose evidence-independent tranches may later be selected in bounded parallel; it is not automatically inserted into the implementation critical path.
 
 Reason for placement:
-- MIB-15 provides provider-neutral proposal/context/fake-provider infrastructure without making later programs AI-dependent.
+- Completed MIB-15 now provides provider-neutral proposal/context/fake-provider infrastructure without making later programs AI-dependent.
 - LSS establishes physical decomposition/recovery.
 - LNG establishes language, script and timeline-aware knowledge needed by supernatural/world systems.
 - MSS turns retained magic/Rune/supernatural/portal/temporal design into runtime before world/campaign/VTT surfaces are finalized.
@@ -59,7 +59,7 @@ Reason for placement:
 - MIB-17 applies family-safety capability policy across the expanded surface.
 - MIB-18 performs final integrated backbone portability/readiness proof.
 
-No planned program is implementation-authorized until its predecessor is completed and the canonical selector advances.
+LSS-01 is selected but not started. Later tranches/programs are not implementation-authorized until their predecessor is completed and the canonical selector advances.
 
 ## LSS — Loot, Scavenge & Salvage
 
@@ -67,6 +67,8 @@ Program: `governance/application-planning/loot-scavenge-salvage/LSS_LOOT_SCAVENG
 Backlog: `governance/application-planning/loot-scavenge-salvage/LSS_PROGRAM_BACKLOG.json`
 
 Purpose: make objects/Assets/wrecks inspectable, partially dismantlable, component-bearing, repairable and reusable while preserving D17/MIB-12/MIB-14/MIB-13/APW/ICF authority.
+
+**Current:** LSS-01 — Source Inventory, Existing-System Crosswalk & Authority Map — `selected_not_started`.
 
 Tranches: LSS-01 source/authority crosswalk; LSS-02 component/assembly schema; LSS-03 condition/quality/rarity grammar; LSS-04 loot transfer; LSS-05 scavenge opportunities; LSS-06 disassembly/extraction; LSS-07 decomposition libraries; LSS-08 repair/cannibalization/reassembly; LSS-09 economy/projects/cozy/hazards; LSS-10 search/workbench/golden proof.
 
@@ -149,7 +151,7 @@ Tranches: SGC-01 corpus/disposition taxonomy; SGC-02 mechanics/runtime coverage;
 
 ## MIB continuation
 
-- **MIB-15 — AI Provider Abstraction, Fake Provider and Context/Proposal Pipeline** — `selected_not_started`, current.
+- **MIB-15 — AI Provider Abstraction, Fake Provider and Context/Proposal Pipeline** — `completed_verified`; application merge `b251037991be3a1dbc318855ef4cb209a6fa166b`.
 - **MIB-16 — Diagnostics, Provenance, Dependency and Search Engineering Surfaces** — follows SGC-08 under the effective order.
 - **MIB-17 — Family Safety Capability and Policy Foundation** — follows MIB-16.
 - **MIB-18 — Backbone Integration, Portability and Gated-Work Readiness Handoff** — follows MIB-17.
