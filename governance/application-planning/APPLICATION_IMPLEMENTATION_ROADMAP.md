@@ -1,16 +1,16 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 6.24.0  
-**Status:** RSR-03 SELECTED — RSR-01..02 COMPLETED_VERIFIED — MSS-05 COMPLETED_VERIFIED — MSS PAUSED FOR RECOVERED SOURCE RECONCILIATION — LNG PROGRAM COMPLETED_VERIFIED — LSS PROGRAM COMPLETED_VERIFIED — AAI OWNER-APPROVED PLANNED — BRP OWNER-APPROVED PLANNED  
+**Version:** 6.25.0  
+**Status:** RSR-04 SELECTED — RSR-01..03 COMPLETED_VERIFIED — MSS-05 COMPLETED_VERIFIED — MSS PAUSED FOR RECOVERED SOURCE RECONCILIATION — LNG PROGRAM COMPLETED_VERIFIED — LSS PROGRAM COMPLETED_VERIFIED — AAI OWNER-APPROVED PLANNED — BRP OWNER-APPROVED PLANNED  
 **Owner and final authority:** John Brandon Turner  
 **Updated:** 2026-08-21
 
 ## Authority rule
 
-Runtime authority remains bootstrap → authority registry → current-work pointer → selected checkpoint → live GitHub evidence. This roadmap owns dependency intent only. Current work is **RSR-03 — ICF Content/Crafting/Food/Alchemy Reconciliation**, state `selected_not_started`; it has no implementation branch or implementation authority until the next owner `Continue` governed-starts it.
+Runtime authority remains bootstrap → authority registry → current-work pointer → selected checkpoint → live GitHub evidence. This roadmap owns dependency intent only. Current work is **RSR-04 — CEL Cozy/Economy/Life-Loop Reconciliation**, state `selected_not_started`; it has no implementation branch or implementation authority until the next owner `Continue` governed-starts it.
 
-MSS is completed_verified through MSS-05 and is intentionally paused before MSS-06 while RSR-03..07 reconcile the recovered legacy source corpus against completed foundations. RSR-01 and RSR-02 are `completed_verified`.
+MSS is completed_verified through MSS-05 and is intentionally paused before MSS-06 while RSR-04..07 reconcile the recovered legacy source corpus against completed foundations. RSR-01 through RSR-03 are `completed_verified`.
 
 The owner execution rule remains tranche-complete: `Continue` executes the selected tranche through governed start, implementation/extraction/reconciliation as applicable, focused repair, declared validation, `completed_verified` closeout and strict-successor selection unless a genuine blocker survives.
 
@@ -29,6 +29,7 @@ The owner execution rule remains tranche-complete: `Continue` executes the selec
 - MSS-05: `completed_verified`; app merge `f36dff5753045bbde1c4059800721c5c35ff97c2`.
 - RSR-01: `completed_verified`; AIOC merge `17613c8de1fab250db4539adbb30ebecbb49eccb`.
 - RSR-02: `completed_verified`; AIOC merge `f059d24423280918659802621951aa21bcfa8819`.
+- RSR-03: `completed_verified`; AIOC merge `a6dea89c358e29ec86dce57e8ac67bba3db44e56`.
 
 Completion evidence remains valid when a later source-reconciliation tranche is added. Reconciliation supplements completed work; it does not retroactively erase or rewrite valid completion evidence.
 
@@ -74,6 +75,24 @@ MSS-05 delivered proposal-only spell/power/Rune-variant authoring with stable id
 - canonical D18/A10 World/setting mutation performed: false
 - RSR-01 integrity, RSR-02 reconciliation integrity and canonical AIOC health all passed on the exact PR head
 
+### RSR-03 exact evidence
+
+- AIOC PR #604
+- validated head `d54cbf06e21edf53e4bd9b92e155f797a69578a3`
+- repository-health run `32515925497`; job `96877433248`
+- AIOC merge `a6dea89c358e29ec86dce57e8ac67bba3db44e56`
+- 24 / 24 retained sources received an ICF relevance decision
+- original explicit RSR-01→RSR-03 route count: 2
+- additional ICF-adjacent source signals recovered: 15
+- no-material-ICF decisions: 7
+- 9 source-bound `rsr03:*` proposal candidates retained as noncanonical bookkeeping only
+- 11 explicit uncertainty/ownership-boundary records preserved
+- canonical ICF/live-state mutation performed: false
+- completed ICF-01..15 remains authoritative
+- RSR-01, RSR-02, RSR-03 and canonical AIOC health all passed on the exact PR head
+
+RSR-03 also corrected the initial intake assumption that only the two explicitly routed files mattered for ICF. Its governed all-source review recovered additional ICF-adjacent context without silently promoting it. Kola-Ha Forms/Warforms remain biotech/supernatural/character-system material rather than inferred ingredients; owner evidence that Warforms cost more and are more straining is preserved while generated values remain proposals. Blood Tree is linked to pre-existing source evidence, while recovered sap/resin/Bloodcrystal DCs, yields and effects remain source-bound proposals. Magen mana remains supernatural-resource authority rather than automatically becoming an ICF ingredient, and Isekai/profession/economy/world material is routed to its owning future systems.
+
 ## Recovered legacy source intake
 
 The Project Source archive `Now this.zip` is a governed retained input. Exact archive SHA-256: `2a5eae712f483d1fb33ff9fb0087e96c4eb8b71b287cc707c196a4c17a2f78f4`. It contains 24 MHT conversation exports spanning worlds/realities, species/cultures, magic/supernatural material, economy/life-simulation ideas, campaign/gameplay frameworks, history/timelines and visual references.
@@ -91,13 +110,13 @@ Hard rules:
 
 ## Effective forward order
 
-`RSR-03..07 → MSS-06..12 → CCP-01..11 → DPL-01..14 → MAI-01..10 → AAI-01..10 → WCI-01..05 → SCL-01..11 → VTI-01..12 → SGC-01..08 → MIB-16 → MIB-17 → MIB-18 → SMB-01..16 → BRP-01..11 → SMB-17 → SMB-18`
+`RSR-04..07 → MSS-06..12 → CCP-01..11 → DPL-01..14 → MAI-01..10 → AAI-01..10 → WCI-01..05 → SCL-01..11 → VTI-01..12 → SGC-01..08 → MIB-16 → MIB-17 → MIB-18 → SMB-01..16 → BRP-01..11 → SMB-17 → SMB-18`
 
 MCB remains owner-approved commercial preparation outside the automatic critical path; evidence-dependent public claims, final pricing/packaging and launch activation require current product evidence.
 
 ## ICF / CEL / LSS / LNG completed-family reconciliation rule
 
-The newly recovered source bundle arrived after ICF-01..15, CEL-01..06, LSS-01..10 and LNG-01..06 reached `completed_verified`. Their completion remains valid, but recovered evidence that belongs to those families must not be ignored. RSR therefore contains dedicated reconciliation tranches for ICF, CEL, LSS and LNG. Completed MIB-11 World/Reality taxonomy and MSS-01..04 receive the same treatment because the recovered corpus directly contains world/reality/timeline and supernatural material. RSR also records any additional provenance relevant to MSS-05 without weakening its verified completion.
+The recovered source bundle arrived after ICF-01..15, CEL-01..06, LSS-01..10 and LNG-01..06 reached `completed_verified`. Their completion remains valid, but recovered evidence that belongs to those families must not be ignored. RSR therefore contains dedicated reconciliation tranches for ICF, CEL, LSS and LNG. Completed MIB-11 World/Reality taxonomy and MSS-01..04 receive the same treatment because the recovered corpus directly contains world/reality/timeline and supernatural material. RSR also records any additional provenance relevant to MSS-05 without weakening its verified completion. RSR-03 has now completed the ICF reconciliation without changing canonical ICF authority.
 
 ## LSS — Loot, Scavenge & Salvage
 
@@ -136,20 +155,20 @@ Backlog: `governance/application-planning/recovered-source-reconciliation/RSR_PR
 
 Activation: after MSS-05. Successor: MSS-06.
 
-**Completed:** RSR-01 archive preservation/provenance and RSR-02 MIB-11 World/Reality/Timeline reconciliation — `completed_verified`.  
-**Current:** RSR-03 — ICF Content/Crafting/Food/Alchemy Reconciliation — `selected_not_started`.
+**Completed:** RSR-01 archive/provenance, RSR-02 MIB-11 World/Reality/Timeline reconciliation, and RSR-03 ICF Content/Crafting/Food/Alchemy reconciliation — `completed_verified`.  
+**Current:** RSR-04 — CEL Cozy/Economy/Life-Loop Reconciliation — `selected_not_started`.
 
 Tranches:
 
 - RSR-01 archive preservation, extraction, provenance, attribution and disposition registry — `completed_verified`.
 - RSR-02 completed MIB-11 World/Reality/Timeline reconciliation — `completed_verified`.
-- RSR-03 completed ICF content/crafting/food/alchemy reconciliation — `selected_not_started`.
-- RSR-04 completed CEL cozy/economy/life-loop reconciliation.
+- RSR-03 completed ICF content/crafting/food/alchemy reconciliation — `completed_verified`.
+- RSR-04 completed CEL cozy/economy/life-loop reconciliation — `selected_not_started`.
 - RSR-05 completed LSS loot/scavenge/salvage reconciliation.
 - RSR-06 completed LNG language/culture/script reconciliation.
 - RSR-07 completed MSS-01..04 supernatural-foundation reconciliation and downstream routing, including provenance implications for later MSS work.
 
-RSR is not permission to promote old assistant-generated content. It is the governed bridge from newly recovered source evidence into existing completed foundations and future owners. RSR-03 gains no implementation authority before the next owner `Continue` governed-starts it.
+RSR is not permission to promote old assistant-generated content. It is the governed bridge from recovered source evidence into existing completed foundations and future owners. RSR-04 gains no implementation authority before the next owner `Continue` governed-starts it.
 
 ## CCP — Companion & Creature Partnership
 
@@ -209,7 +228,7 @@ Tranches: SGC-01 corpus/disposition taxonomy; SGC-02 mechanics/runtime coverage;
 
 ## MIB continuation
 
-MIB-15 is `completed_verified`. RSR-02 has reconciled newly recovered world/reality/timeline material against completed MIB-11 without replacing D18/A10 authority. MIB-16 diagnostics/provenance/dependency/search still follows SGC-08; MIB-17 family safety follows MIB-16; MIB-18 backbone integration/portability/readiness follows MIB-17.
+MIB-15 is `completed_verified`. RSR-02 has reconciled recovered world/reality/timeline material against completed MIB-11, and RSR-03 has reconciled ICF-related recovered material against completed ICF-01..15 without replacing their authorities. MIB-16 diagnostics/provenance/dependency/search still follows SGC-08; MIB-17 family safety follows MIB-16; MIB-18 backbone integration/portability/readiness follows MIB-17.
 
 ## SMB / BRP / MCB
 
