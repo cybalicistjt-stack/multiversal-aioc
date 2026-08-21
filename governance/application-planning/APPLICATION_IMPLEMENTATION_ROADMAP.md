@@ -184,3 +184,52 @@ Backlog: `governance/application-planning/source-gameplay-coverage-closure/SGC_P
 Purpose: require every retained source mechanic/content/design requirement to receive an explicit implementation/planning/content/superseded/unsupported/unresolved/provenance disposition. Completion requires zero unclassified retained concepts; missing source values are not invented.
 
 Tranches: SGC-01 corpus/disposition taxonomy; SGC-02 mechanics/runtime coverage; SGC-03 abilities/powers/progression coverage; SGC-04 content-entity coverage; SGC-05 specialized/edge-case gameplay closure; SGC-06 UX/Creator/avatar/accessibility coverage; SGC-07 owner-decision/supersession queue; SGC-08 final source-to-product closure proof.
+
+## MIB continuation
+
+- **MIB-15 — AI Provider Abstraction, Fake Provider and Context/Proposal Pipeline** — `completed_verified`; application merge `b251037991be3a1dbc318855ef4cb209a6fa166b`.
+- **MIB-16 — Diagnostics, Provenance, Dependency and Search Engineering Surfaces** — follows SGC-08 under the effective order.
+- **MIB-17 — Family Safety Capability and Policy Foundation** — follows MIB-16.
+- **MIB-18 — Backbone Integration, Portability and Gated-Work Readiness Handoff** — follows MIB-17.
+
+## Post-MIB product completion — SMB
+
+Program: `governance/application-planning/system-maturation-buildout/SMB_SYSTEM_MATURATION_AND_BUILDOUT_PROGRAM.md`
+
+SMB-01 through SMB-16 execute after MIB-18: production platform realization; remote multiplayer; organizations/factions/settlements/kingdoms; exploration/travel/survival; full bases/housing; full vehicles; deep cross-system simulation; core content production; first-party campaign; full Player/GM/Creator UX; content sharing; real optional AI; remote alpha productization; security/privacy/family hardening; stabilization/scale; accessibility/localization/device completion.
+
+SMB-10 explicitly owns finished Character appearance/avatar construction and asset assembly as part of complete Character product UX; SGC-06 must verify that the retained appearance/avatar requirements have an explicit implementation path.
+
+After SMB-16, BRP is the normal beta gate. SMB-17 External Beta & Community Foundations follows completed BRP-11; SMB-18 Release Engineering & Commercial Productization follows SMB-17. Beta-grade backup/observability/crash-reporting/rollback capabilities are proven in BRP and hardened to commercial/release grade in SMB-18.
+
+## Beta readiness & product operations — BRP
+
+Program: `governance/application-planning/beta-readiness-product-operations/BRP_BETA_READINESS_PRODUCT_OPERATIONS_PROGRAM.md`  
+Backlog: `governance/application-planning/beta-readiness-product-operations/BRP_PROGRAM_BACKLOG.json`
+
+BRP-01 through BRP-11 are owner-approved and planned after SMB-16 and before SMB-17: beta definition/supported matrix; account lifecycle/consent/recovery/data rights; guided onboarding/help/product voice; beta distribution/install/update/version compatibility; observability/telemetry/crash reporting/privacy-safe evidence; backup/restore/migration/rollback; feature flags/cohorts/kill switches; security/abuse/moderation/incident operations; tester support/feedback/triage; real-play content/balance sweep; golden beta proof and marketing evidence handoff.
+
+Completion of BRP-11 publishes a versioned `BETA_READY` evidence package. It is a prerequisite for normal SMB-17 external-beta activation, not public-release or paid-marketing authority.
+
+## Commercial preparation — MCB
+
+Program: `governance/application-planning/market-capture-brand-backbone/MCB_MARKET_CAPTURE_AND_BRAND_BACKBONE_PROGRAM.md`
+
+MCB-01 through MCB-25 remain owner-approved commercial preparation from market/category/customer research through brand/messaging, acquisition/content/community/lifecycle/analytics/pricing/growth, launch simulation and market expansion. Evidence-independent tranches may later be explicitly selected in bounded parallel. Product-dependent public claims, final pricing/packaging, major acquisition activation, review/press demonstration and launch marketing require current evidence; BRP-11 provides the formal beta product-evidence handoff and SMB-17 provides real external-cohort evidence.
+
+## Preserved/gated work
+
+- **CCTI-12-T04** remains deferred until the owner’s September 2026 condition; PR #191 preserved and non-authoritative.
+- **WP-011** remains dormant pending required Apple/Mac environment; PR #61 preserved.
+- **DS-008** remains blocked non-owner exact-byte transfer/validation.
+- Tester distribution, release/deployment, paid-provider activation and production-provider selection remain separately governed.
+
+## Shared rules
+
+- One canonical owner per live state; new programs orchestrate/projection-map rather than duplicate ledgers.
+- Visibility filtering precedes search/counts/summaries/AI/diagnostics/export.
+- AI may assist/propose but never gains mechanical, canonical, permission, consent, ownership, hidden-information, GM-adjudication or irreversible-advancement authority.
+- Migrations are evidence-driven; `0022` is not pre-reserved.
+- Exact-head repository health and appropriate self-hosted cross-platform validation remain required for implementation tranches.
+- Product voice remains warm, knowledgeable, encouraging and restrained; BRP-03 owns final product-wide voice/onboarding/help acceptance before beta.
+- `BETA_READY` is an evidence state, not a marketing slogan, public-release authorization or permission to bypass MCB claim/evidence governance.
