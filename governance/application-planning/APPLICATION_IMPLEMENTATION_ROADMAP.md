@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 6.7.0  
-**Status:** LSS-09 SELECTED — LSS-08 COMPLETED_VERIFIED — BRP BETA-READINESS GATE OWNER-APPROVED  
+**Version:** 6.8.0  
+**Status:** LSS-10 SELECTED — LSS-09 COMPLETED_VERIFIED — BRP BETA-READINESS GATE OWNER-APPROVED  
 **Owner and final authority:** John Brandon Turner  
 **Updated:** 2026-08-21
 
@@ -10,7 +10,7 @@
 
 The runtime selector remains bootstrap → authority registry → current-work pointer → selected checkpoint → live GitHub evidence. This roadmap owns milestone/dependency intent but does not start planned work by itself.
 
-Current implementation authority is **LSS-09 only**, state `selected_not_started`. LSS-01 through LSS-08 and MIB-15 are `completed_verified`.
+Current implementation authority is **LSS-10 only**, state `selected_not_started`. LSS-01 through LSS-09 and MIB-15 are `completed_verified`.
 
 The owner operating rule is tranche-complete by default: `Continue` means execute the entire selected implementation tranche through governed start if needed, implementation, exact-head validation, merge, `completed_verified` closeout and strict-successor selection unless a genuine owner/environment/source blocker prevents completion. Validation queueing, an open PR, pending closeout or merely staging the next step is not a normal stopping boundary.
 
@@ -20,10 +20,11 @@ The owner operating rule is tranche-complete by default: `Continue` means execut
 - MIB-01 through MIB-15: `completed_verified`.
 - ICF-01 through ICF-15: `completed_verified`.
 - CEL-01 through CEL-06: `completed_verified`.
-- LSS-01 through LSS-08: `completed_verified`.
-- Current application main after LSS-08: `1eee23b4f43fc01f47d757be3bf0174c9e0ef968`.
-- LSS-08 exact-head evidence: application PR #256; validated head `63429b044eee1a60f0eacb2021502c501e899cd0`; repository-health run `32475531725`; product-validation run `32475531776`; Windows job `96750950513`; Linux job `96750950604`; deterministic comparison job `96751479222`; matching receipt `48b5e7c75a2b0b616dd888befbcb23bbd867eb2d054385f486a15eab7ee47147`.
-- LSS-08 delivered explicit MIB-12 donor repair/refurbishment/cannibalization/substitution/reassembly orchestration, exact MIB-14 compatibility evidence, D17 target/donor reservation and post-reservation version binding, conservation-safe leftovers, authored-condition-only refurbishment/reassembly, one atomic target/donor/output commit and MIB-03 retry/replay safety without inferred pristine conversion, substitution equivalence or compatibility.
+- LSS-01 through LSS-09: `completed_verified`.
+- Current application main after LSS-09: `2cf5c53f69c1030bacf605e9fc32d55f3d8b05e6`.
+- LSS-09 exact-head evidence: application PR #257; validated head `5fb5f5bc8c87f9dcee2a5affeb6639eb113c72ed`; repository-health run `32477561989`; product-validation run `32477562400`; Windows job `96756967700`; Linux job `96756967953`; deterministic comparison job `96757492578`; matching receipt `2d5d55d6e6032351bb72991e1c6897b77b83fc02e63623afd86d500291ac4135`.
+- LSS-09 delivered evidence-bound MIB-13 valuation/availability requests without local prices or settlement, APW/D26 timed Project escalation without wall-clock progression, explicit MIB-14/D17 workshop capability inspection, hazard and restriction owner handoffs, CEL/APM-compatible human stops and bounded Cozy eligibility, and MIB-03 retry/replay safety without duplicate economic or Asset settlement.
+- LSS-08 application merge: `1eee23b4f43fc01f47d757be3bf0174c9e0ef968`.
 - LSS-07 application merge: `24bfe85df9f8b5437edf5b7d48d3e929814f4e65`.
 - LSS-06 application merge: `56be1913157b0c32c5bb665308cf85d2b4fc52b2`.
 - LSS-05 application merge: `17752cf95bff8e4ba33e6a34db7cf455c60bdab5`.
@@ -38,7 +39,7 @@ The owner operating rule is tranche-complete by default: `Continue` means execut
 
 MIB numbering remains stable. The owner-approved interstitial programs execute after completed MIB-15 and before MIB-16 in this dependency order:
 
-`LSS-09 … LSS-10` (LSS-01..08 completed)
+`LSS-10` (LSS-01..09 completed)
 → `LNG-01 … LNG-06`
 → `MSS-01 … MSS-12`
 → `CCP-01 … CCP-11`
@@ -77,7 +78,7 @@ Reason for placement:
 - BRP-01..11 converts that product into a supportable, recoverable, observable, updateable beta candidate with explicit `BETA_READY` proof before strangers/external cohorts become the normal test surface.
 - SMB-17 then owns real external beta/community foundations over a beta-ready product; SMB-18 hardens operations to commercial/release grade and owns stores/distribution, billing/entitlements when approved and launch operations.
 
-LSS-09 is selected but not started. The standing owner continuation authorizes the governed start transition on the next owner `Continue`. Later tranches/programs are not implementation-authorized until their predecessor is completed and the canonical selector advances.
+LSS-10 is selected but not started. The standing owner continuation authorizes the governed start transition on the next owner `Continue`. Later programs are not implementation-authorized until LSS-10 is completed and the canonical selector advances to LNG-01.
 
 ## LSS — Loot, Scavenge & Salvage
 
@@ -102,9 +103,11 @@ Purpose: make objects/Assets/wrecks inspectable, partially dismantlable, compone
 
 **Completed:** LSS-08 — Repair, Refurbishment, Cannibalization, Substitution & Reassembly — `completed_verified`; application merge `1eee23b4f43fc01f47d757be3bf0174c9e0ef968`.
 
-**Current:** LSS-09 — Economy, Projects, Hazards, Legality & Cozy Integration — `selected_not_started`.
+**Completed:** LSS-09 — Economy, Projects, Hazards, Legality & Cozy Integration — `completed_verified`; application merge `2cf5c53f69c1030bacf605e9fc32d55f3d8b05e6`.
 
-LSS-09 connects completed loot/scavenge/salvage receipts to MIB-13 economy/market truth, APW/D26 durable Projects and campaign time, MIB-14 workshop/storage capability, existing Hazard/Action/World/GM adjudication, explicit legality/restriction evidence, and CEL/APM bounded Cozy restoration/business loops. It must not create parallel economy, Project, scheduler, hazard, legality, workshop/storage or Cozy authority, and autonomous actions remain bounded by owner receipts and required human stops.
+**Current:** LSS-10 — Content Packs, Search, Workbench, Balance & Golden Proof — `selected_not_started`.
+
+LSS-10 closes the LSS program with provenance-bearing representative content packs, bounded LSS-local search/filter/reverse lookup and GM/creator Workbench projections, explicit source-authored or unresolved balance metadata, and an integrated golden proof across LSS-01..09. It must preserve visibility and provenance, avoid universal loot/find/yield/value/legality formulas, and remain distinct from future MIB-16 global diagnostics/provenance/dependency/search engineering.
 
 Tranches: LSS-01 source/authority crosswalk; LSS-02 component/assembly schema; LSS-03 condition/quality/rarity grammar; LSS-04 loot transfer; LSS-05 scavenge opportunities; LSS-06 disassembly/extraction; LSS-07 decomposition libraries; LSS-08 repair/cannibalization/reassembly; LSS-09 economy/projects/cozy/hazards; LSS-10 search/workbench/golden proof.
 
