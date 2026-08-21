@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 6.17.0  
-**Status:** MSS-02 SELECTED — MSS-01 COMPLETED_VERIFIED — LNG PROGRAM COMPLETED_VERIFIED — AAI AUDIO INTEROPERABILITY OWNER-APPROVED PLANNED — LSS PROGRAM COMPLETED_VERIFIED — BRP BETA-READINESS GATE OWNER-APPROVED  
+**Version:** 6.18.0  
+**Status:** MSS-03 SELECTED — MSS-02 COMPLETED_VERIFIED — MSS-01 COMPLETED_VERIFIED — LNG PROGRAM COMPLETED_VERIFIED — AAI AUDIO INTEROPERABILITY OWNER-APPROVED PLANNED — LSS PROGRAM COMPLETED_VERIFIED — BRP BETA-READINESS GATE OWNER-APPROVED  
 **Owner and final authority:** John Brandon Turner  
 **Updated:** 2026-08-21
 
@@ -10,7 +10,7 @@
 
 The runtime selector remains bootstrap → authority registry → current-work pointer → selected checkpoint → live GitHub evidence. This roadmap owns milestone/dependency intent but does not start planned work by itself.
 
-Current implementation authority is **MSS-02 only after governed start**, state `selected_not_started`. MSS-01, LNG-01 through LNG-06, LSS-01 through LSS-10 and MIB-15 are `completed_verified`. AAI is owner-approved planned after MAI-10 and before WCI-01 but carries no implementation authority until explicitly selected.
+Current implementation authority is **MSS-03 only after governed start**, state `selected_not_started`. MSS-01, MSS-02, LNG-01 through LNG-06, LSS-01 through LSS-10 and MIB-15 are `completed_verified`. AAI is owner-approved planned after MAI-10 and before WCI-01 but carries no implementation authority until explicitly selected.
 
 The owner operating rule is tranche-complete by default: `Continue` means execute the entire selected implementation tranche through governed start if needed, implementation, exact-head validation, merge, `completed_verified` closeout and strict-successor selection unless a genuine owner/environment/source blocker prevents completion. Validation queueing, an open PR, pending closeout or merely staging the next step is not a normal stopping boundary.
 
@@ -28,7 +28,11 @@ The owner operating rule is tranche-complete by default: `Continue` means execut
 - LNG-05 — Character Knowledge, Translation & Gameplay Integration: `completed_verified`.
 - LNG-06 — Generation, Consistency Tools & Golden Language Proof: `completed_verified`; the LNG program is complete.
 - MSS-01 — Source Inventory, Authority Crosswalk & Supernatural Taxonomy: `completed_verified`.
-- Current application main after MSS-01: `1179e972b879b18a8b90a4ca0cbcaa5e6ebdd323`.
+- MSS-02 — Magic Resource, Capacity, Cost, Strain & Overreach Contracts: `completed_verified`.
+- Current application main after MSS-02: `3736f0614fae30eb906cd0c6799fe95a8d3d9c2d`.
+- MSS-02 exact-head evidence: application PR #266; validated head `73da1770f377983c677a3ff816aadfcae1b1a9d7`; repository-health run `32501506296`; product-validation run `32501505998`; Windows job `96832006711`; Linux job `96832006956`; deterministic comparison job `96832724375`; matching receipt `2db5f8b0df11a916ccb0e704732d861a6196fc542b913778190b7f82c54012e1`; comparison artifact `9453737291`.
+- MSS-02 delivered provider-neutral resource kinds for mana, energy, charge, focus, material, life-force, favor, strain and authored alternatives; explicit resolved/unresolved/not-applicable evidence values with units and provenance; external owner projections carrying current/capacity/reserved values and expected versions; authored cost and recovery/refresh contracts; strain/Overreach/backlash/Resonance evidence hooks without automatic failure or damage formulas; deterministic cost plans grouped by resource kind plus exact unit with no cross-resource conversion; unresolved required adapters that block authoritative readiness; and versioned reservation/commit/release proposals that never mutate canonical owner ledgers. Retained generic arcane, charge-holder, ritual/Resonance and Chaos profiles preserve unknown numeric values rather than inventing defaults. PPIA-07 remains controlling that SCI is not power and CSL is not failure probability.
+- MSS-01 application merge: `1179e972b879b18a8b90a4ca0cbcaa5e6ebdd323`.
 - MSS-01 exact-head evidence: application PR #265; validated head `2930df58a11f174d62efa7fd00f86330f76f6bdf`; repository-health run `32499533395`; product-validation run `32499533512`; Windows job `96825769468`; Linux job `96825769251`; deterministic comparison job `96826468439`; matching receipt `694f7554c1c3ca7fbd1e2eb5110857d0e08332ac875ee0b839dbab495f7d21a8`; comparison artifact `9453015122`.
 - MSS-01 delivered a provenance-bearing retained supernatural source inventory grounded in the exact `MV_Master_01_Core.zip` and PPIA-07 source hashes/counts; preserved the completed PPIA-07 34-rune/four-connector/385-spell/10-school/7-role/14-effect-family/22-subtype-family routing truth; classified spell, power, rune, script/macro, tradition, ritual, counterplay, spirit, portal, temporal, enchanting and resource-context coverage while keeping tradition/source, effect/subtype, runtime concept and owner-domain axes distinct; crosswalked existing Action/Event, Character, Item/Asset, Crafting/Project, MIB-11 World/Reality/Timeline/Era, Campaign/Session/GM, visibility/permission and version/idempotency owners without parallel ledgers; and left universal mana/energy, damage, healing, duration/range/save, failure, backlash/Overreach/Resonance and setting-law formulas explicitly un-invented.
 - LNG-06 application merge: `23b01927677ae4541ccc1c9430f837b8efce8ded`.
@@ -66,7 +70,7 @@ The owner operating rule is tranche-complete by default: `Continue` means execut
 
 MIB numbering remains stable. The owner-approved interstitial programs execute after completed MIB-15 and before MIB-16 in this dependency order:
 
-`MSS-02 … MSS-12`
+`MSS-03 … MSS-12`
 → `CCP-01 … CCP-11`
 → `DPL-01 … DPL-14`
 → `MAI-01 … MAI-10`
@@ -105,7 +109,7 @@ Reason for placement:
 - BRP-01..11 converts that product into a supportable, recoverable, observable, updateable beta candidate with explicit `BETA_READY` proof before strangers/external cohorts become the normal test surface.
 - SMB-17 then owns real external beta/community foundations over a beta-ready product; SMB-18 hardens operations to commercial/release grade and owns stores/distribution, billing/entitlements when approved and launch operations.
 
-The LSS and LNG programs are fully `completed_verified`. MSS-01 is `completed_verified`; MSS-02 is the sole selected successor and is `selected_not_started`. AAI is owner-approved planned but non-authoritative until selected. Later programs are not implementation-authorized until their predecessor is completed and the canonical selector advances.
+The LSS and LNG programs are fully `completed_verified`. MSS-01 and MSS-02 are `completed_verified`; MSS-03 is the sole selected successor and is `selected_not_started`. AAI is owner-approved planned but non-authoritative until selected. Later programs are not implementation-authorized until their predecessor is completed and the canonical selector advances.
 
 ## LSS — Loot, Scavenge & Salvage
 
@@ -169,7 +173,7 @@ LNG-05 adds deterministic permission-safe Character language gameplay. Fluency, 
 
 LNG-06 adds deterministic rule-guided word/name candidate generation, derivation and historical-evolution assistance, contradiction/consistency checks, proposal-only translation assistance and multi-era golden language proof. Generation requires explicit authorized LNG-03 recipe inputs rather than hidden fallback phonology/grammar; derivation/evolution require explicit source/rule/change evidence; Character translation consumes only LNG-05-authorized lexical fragments and leaves inaccessible or unresolved fragments unknown. All generated results remain noncanonical proposals, predecessor truth remains read-only, future-stage Dominix remains quarantined and no retroactive history rewrite occurs.
 
-LNG is complete at `completed_verified` through LNG-06. MSS-01 followed it and is now also `completed_verified`; MSS-02 is current.
+LNG is complete at `completed_verified` through LNG-06. MSS-01 and MSS-02 followed it and are now `completed_verified`; MSS-03 is current.
 
 ## MSS — Magic & Supernatural Systems
 
@@ -182,9 +186,13 @@ Purpose: make retained magic, Rune Construction, spell/power runtime, traditions
 
 MSS-01 establishes the provenance-bearing supernatural source inventory and authority crosswalk over PPIA-07 and the retained spell/ability/rune/tradition/ritual/spirit/portal/temporal corpus. It preserves the exact completed Rune Construction vocabulary/routing facts, keeps mixed-domain source catalogs explicit, separates source/tradition/effect/runtime/owner taxonomy axes, and maps supernatural concepts to existing Action/Event, Character, Item/Asset, Crafting/Projects, World/Reality/Timeline/Era, Campaign/GM, permission and recovery owners without parallel ledgers. Universal supernatural formulas remain unresolved rather than invented.
 
-**Current:** MSS-02 — Magic Resource, Capacity, Cost, Strain & Overreach Contracts — `selected_not_started`.
+**Completed:** MSS-02 — Magic Resource, Capacity, Cost, Strain & Overreach Contracts — `completed_verified`; application merge `3736f0614fae30eb906cd0c6799fe95a8d3d9c2d`.
 
-MSS-02 will define provider-neutral resource/capacity adapters for mana, energy, charge, focus, material, life-force, favor, strain and other authored costs; recovery/refresh rules; reservations; overload/overreach/backlash hooks; and setting-local profiles. It must preserve source/profile-specific values and existing owner ledgers rather than impose a universal resource model. MSS-03 is the strict successor only after MSS-02 reaches `completed_verified`.
+MSS-02 defines provider-neutral resource/capacity/cost contracts for mana, energy, charge, focus, material, life-force, favor, strain and authored alternatives without imposing a universal resource model. Resolved values carry explicit units/evidence; unresolved values contain no numeric defaults. External Character/Item/Action/Event/Crafting/World/Campaign projections retain current/capacity/reserved ownership. Required unresolved adapters block authoritative readiness. Recovery and risk hooks remain source/profile-specific. Reservation, commit and release are deterministic expected-version/operation-id proposals; MSS-02 performs no owner mutation. SCI remains not power and CSL remains not failure probability.
+
+**Current:** MSS-03 — Unified Spell, Power & Supernatural Resolution Runtime — `selected_not_started`.
+
+MSS-03 will implement governed cast/use → validate → target → reserve → resolve → resist/counter → commit → downstream-effect flow over existing Actions/Events, effect/condition primitives, MSS-02 resource proposals and canonical owner-domain receipts. It must support deterministic, authorized GM-adjudicated and explicitly unresolved outcomes without introducing universal spell/power formulas or parallel owner ledgers. MSS-04 is the strict successor only after MSS-03 reaches `completed_verified`.
 
 Tranches: MSS-01 source/taxonomy; MSS-02 resources/costs/strain; MSS-03 spell/power runtime; MSS-04 Rune runtime/blind GM; MSS-05 spell research/authoring/scripts; MSS-06 traditions/schools/sources; MSS-07 rituals/cooperative casting; MSS-08 countermagic/resistance/backlash; MSS-09 spirits/worship/pacts/favor; MSS-10 portals/gates; MSS-11 temporal/causal play; MSS-12 content/workbench/golden proof.
 
