@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 6.14.0  
-**Status:** LNG-06 SELECTED — LNG-05 COMPLETED_VERIFIED — LSS PROGRAM COMPLETED_VERIFIED — BRP BETA-READINESS GATE OWNER-APPROVED  
+**Version:** 6.15.0  
+**Status:** LNG-06 SELECTED — AAI AUDIO INTEROPERABILITY OWNER-APPROVED PLANNED — LNG-05 COMPLETED_VERIFIED — LSS PROGRAM COMPLETED_VERIFIED — BRP BETA-READINESS GATE OWNER-APPROVED  
 **Owner and final authority:** John Brandon Turner  
 **Updated:** 2026-08-21
 
@@ -10,7 +10,7 @@
 
 The runtime selector remains bootstrap → authority registry → current-work pointer → selected checkpoint → live GitHub evidence. This roadmap owns milestone/dependency intent but does not start planned work by itself.
 
-Current implementation authority is **LNG-06 only**, state `selected_not_started`. LNG-01 through LNG-05, LSS-01 through LSS-10 and MIB-15 are `completed_verified`.
+Current implementation authority is **LNG-06 only**, state `selected_not_started`. LNG-01 through LNG-05, LSS-01 through LSS-10 and MIB-15 are `completed_verified`. AAI is owner-approved planned after MAI-10 and before WCI-01 but carries no implementation authority until explicitly selected.
 
 The owner operating rule is tranche-complete by default: `Continue` means execute the entire selected implementation tranche through governed start if needed, implementation, exact-head validation, merge, `completed_verified` closeout and strict-successor selection unless a genuine owner/environment/source blocker prevents completion. Validation queueing, an open PR, pending closeout or merely staging the next step is not a normal stopping boundary.
 
@@ -63,6 +63,7 @@ MIB numbering remains stable. The owner-approved interstitial programs execute a
 → `CCP-01 … CCP-11`
 → `DPL-01 … DPL-14`
 → `MAI-01 … MAI-10`
+→ `AAI-01 … AAI-10`
 → `WCI-01 … WCI-05`
 → `SCL-01 … SCL-11`
 → `VTI-01 … VTI-12`
@@ -85,9 +86,10 @@ Reason for placement:
 - CCP consumes ICF/MSS/relationship/vehicle foundations for companions, mounts, familiars, breeding and creature ecology.
 - DPL consumes ICF/CEL/LSS/CCP/MSS plus economy/base/crafting foundations for deep profession/life loops.
 - MAI then establishes vendor-neutral map/visual ingestion for the broader mature gameplay surface.
-- WCI composes World/relationship/history/campaign/creator views over the expanded systems.
-- SCL consumes WCI/MAI/vehicle/faction foundations for squad/fleet/army command and cross-scale consequences.
-- VTI consumes the mature rules/map/campaign/strategic-command projections rather than immediately needing retrofits.
+- AAI follows MAI so it can reuse provider-neutral adapter/provenance/resolver patterns while keeping audio ownership, entitlement, playback and licensing separate from visual/spatial assets.
+- WCI composes World/relationship/history/campaign/creator views over the expanded systems and can bind prepared semantic audio cues without inventing a parallel audio ledger.
+- SCL consumes WCI/MAI/AAI/vehicle/faction foundations for squad/fleet/army command and cross-scale consequences.
+- VTI consumes the mature rules/map/audio/campaign/strategic-command projections rather than immediately needing retrofits.
 - SGC performs final retained-source/gameplay coverage closure so no discussed/source-backed system silently disappears into a generic future bucket.
 - MIB-16 then builds diagnostics/provenance/dependency/search across all of these surfaces once.
 - MIB-17 applies family-safety capability policy across the expanded surface.
@@ -96,7 +98,7 @@ Reason for placement:
 - BRP-01..11 converts that product into a supportable, recoverable, observable, updateable beta candidate with explicit `BETA_READY` proof before strangers/external cohorts become the normal test surface.
 - SMB-17 then owns real external beta/community foundations over a beta-ready product; SMB-18 hardens operations to commercial/release grade and owns stores/distribution, billing/entitlements when approved and launch operations.
 
-The LSS program is fully `completed_verified`. LNG-01 through LNG-05 are `completed_verified`. LNG-06 is selected but not started. Later programs are not implementation-authorized until their predecessor is completed and the canonical selector advances.
+The LSS program is fully `completed_verified`. LNG-01 through LNG-05 are `completed_verified`. LNG-06 is selected but not started. AAI is owner-approved planned but non-authoritative until selected. Later programs are not implementation-authorized until their predecessor is completed and the canonical selector advances.
 
 ## LSS — Loot, Scavenge & Salvage
 
@@ -195,6 +197,17 @@ Backlog: `governance/application-planning/map-asset-interoperability/MAI_PROGRAM
 Purpose: natively and intuitively ingest practical tilesets, maps, props, modular pieces, autotiles, animated/spatial assets and structured editor/VTT exports into one vendor-neutral model.
 
 **Hard requirement:** no tileset is assumed to contain every Multiversal semantic object. Scene semantics and art selection are separate. The resolver uses available compatible assets, can cross approved packs, offers GM/user choice and manual override, can use explicit placeholders, and preserves unresolved needs rather than inventing art or semantics.
+
+## AAI — Audio Asset & Soundscape Interoperability
+
+Program: `governance/application-planning/audio-asset-interoperability/AAI_AUDIO_ASSET_INTEROPERABILITY_PROGRAM.md`  
+Backlog: `governance/application-planning/audio-asset-interoperability/AAI_PROGRAM_BACKLOG.json`
+
+Purpose: make music, ambience, one-shots, adaptive soundscapes and cue automation usable from user-owned local audio and compatible external providers through one capability-driven model while preserving provider entitlement, license, provenance and permission boundaries.
+
+**Hard requirement:** Multiversal does not need to own the audio in order to use it. Semantic audio intent remains separate from the chosen provider/local asset. Commercial provider audio is controlled or referenced under the user's legitimate entitlement rather than copied or redistributed unless explicit license permits ingestion. Unsupported provider capabilities remain explicitly unsupported; no scraping/prohibited copying workaround is authorized. Missing or disabled audio never blocks play.
+
+Tranches: AAI-01 ecosystem/API/license/authority survey; AAI-02 canonical source/asset/cue/soundscape schema; AAI-03 provider adapter/capability negotiation; AAI-04 playback/layering/mixer; AAI-05 semantic taxonomy/resolver; AAI-06 local/Syrinscape/TableTone/generic provider adapters at verified supported depth; AAI-07 Scene/Event/gameplay cue bindings; AAI-08 GM audio Workbench/presets; AAI-09 multiplayer/permissions/remote-sync/recording-streaming boundaries; AAI-10 multi-provider golden proof.
 
 ## WCI — Worldbuilding & Campaign Intelligence
 
