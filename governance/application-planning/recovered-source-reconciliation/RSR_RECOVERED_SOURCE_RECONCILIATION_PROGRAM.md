@@ -1,7 +1,7 @@
 # RSR — Recovered Source Reconciliation
 
 **Program ID:** RSR  
-**Status:** IN PROGRESS — RSR-01 COMPLETED_VERIFIED — RSR-02 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — RSR-01 COMPLETED_VERIFIED — RSR-02 IN_PROGRESS  
 **Activation:** after MSS-05 `completed_verified`  
 **Completed through:** RSR-01  
 **Current:** RSR-02  
@@ -18,7 +18,7 @@ The retained bundle contains 24 MHT conversation exports spanning worlds/realiti
 
 RSR is a reconciliation program, not a replacement architecture. Completed work remains `completed_verified`; reconciliation tranches may add coverage, provenance mappings, candidate content, tests or narrowly justified compatibility changes without rewriting valid prior evidence.
 
-MSS-05 completed_verified at application PR #269 / merge `f36dff5753045bbde1c4059800721c5c35ff97c2`. RSR-01 subsequently completed_verified at AIOC PR #598 / merge `17613c8de1fab250db4539adbb30ebecbb49eccb` after exact archive/provenance/disposition validation. RSR-02 is selected but has no implementation authority until the next owner `Continue` governed-starts it.
+MSS-05 completed_verified at application PR #269 / merge `f36dff5753045bbde1c4059800721c5c35ff97c2`. RSR-01 subsequently completed_verified at AIOC PR #598 / merge `17613c8de1fab250db4539adbb30ebecbb49eccb` after exact archive/provenance/disposition validation. Owner `Continue` governed-started RSR-02 at 2026-08-21T18:12:00Z with implementation authority limited to `governance/rsr-02-world-reality-reconciliation`.
 
 ## Source authority and attribution rules
 
@@ -40,7 +40,7 @@ RSR-01 verified the exact retained archive SHA-256 `2a5eae712f483d1fb33ff9fb0087
 1. **RSR-01 — Archive Preservation, Extraction, Provenance & Disposition Registry** — `completed_verified`  
    Exact archive and constituent checksums verified; message attribution/hash, media provenance and source-disposition indexes created; all 24 sources routed without automatic canon promotion. Evidence is under `governance/source-material/recovered-legacy/now-this-2026-08-21/` and validated by `scripts/validate_rsr_01.py`.
 
-2. **RSR-02 — MIB-11 World/Reality/Timeline Reconciliation** — `selected_not_started`  
+2. **RSR-02 — MIB-11 World/Reality/Timeline Reconciliation** — `in_progress`  
    Reconcile recovered worlds, realities, timelines, locations and cross-reality relationships against completed MIB-11 World/Reality taxonomy and existing stable IDs. Includes, as source candidates where supported: Black Vegas, Dionasia, Carnival, City of Millennial, Pencrona, Magen Galaxy, Sherazzalla, Vertigon, Skoaltarra/Umbraxis material, Nestor Ra, Consortium/30 Winds, Empire settings and related recovered world/history material. Do not duplicate already-known worlds merely because a second conversation version exists.
 
 3. **RSR-03 — ICF Content/Crafting/Food/Alchemy Reconciliation**  
@@ -73,4 +73,4 @@ RSR is complete only when:
 
 ## Forward-order rule
 
-RSR-01 is completed_verified. RSR-02..07 execute in strict order. MSS-06 remains the next MSS tranche, but its effective activation is after RSR-07 so recovered supernatural source coverage is reconciled before deeper tradition/content work proceeds.
+RSR-01 is completed_verified. RSR-02 is in progress. RSR-03..07 execute in strict order after RSR-02 reaches `completed_verified`. MSS-06 remains the next MSS tranche, but its effective activation is after RSR-07 so recovered supernatural source coverage is reconciled before deeper tradition/content work proceeds.
