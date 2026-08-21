@@ -1,10 +1,10 @@
 # RSR — Recovered Source Reconciliation
 
 **Program ID:** RSR  
-**Status:** IN PROGRESS — RSR-01..03 COMPLETED_VERIFIED — RSR-04 IN_PROGRESS  
+**Status:** IN PROGRESS — RSR-01..04 COMPLETED_VERIFIED — RSR-05 SELECTED_NOT_STARTED  
 **Activation:** after MSS-05 `completed_verified`  
-**Completed through:** RSR-03  
-**Current:** RSR-04  
+**Completed through:** RSR-04  
+**Current:** RSR-05  
 **Successor:** MSS-06 after RSR-07  
 **Owner and final authority:** John Brandon Turner  
 **Planned:** 2026-08-21  
@@ -19,7 +19,7 @@ RSR preserves and reconciles the recovered legacy Multiversal source bundle `Now
 - Current GitHub repository evidence remains authoritative for implementation state.
 - The recovered archive is retained source/provenance material, not a current-work selector.
 - Owner-authored statements and explicit owner corrections outrank surrounding assistant-generated prose.
-- Assistant-generated lore, mechanics, formulas, names, effects, recipes, prices, yields or extrapolations remain proposals unless independently supported or later owner-approved.
+- Assistant-generated lore, mechanics, formulas, names, effects, recipes, prices, yields, loot tables or extrapolations remain proposals unless independently supported or later owner-approved.
 - Existing canonical entities and stable IDs are reused when a recovered source is another version/provenance line for the same subject.
 - Conflicts are recorded rather than silently harmonized.
 - Embedded visual assets remain source/archive-checksum bound.
@@ -33,13 +33,15 @@ Verified archive SHA-256 `2a5eae712f483d1fb33ff9fb0087e96c4eb8b71b287cc707c196a4
 
 ### RSR-02 — `completed_verified`
 
-Reconciled all 21 World/Reality/Timeline-routed sources against completed MIB-11, reused established stable identities, retained 16 noncanonical reconciliation candidates and 13 chronology/type/hierarchy issues, and made no D18/A10 canonical World mutation. Exact-head validation passed on run `32513321394`; PR #601 merged at `f059d24423280918659802621951aa21bcfa8819`.
+Reconciled all 21 World/Reality/Timeline-routed sources against completed MIB-11, retained noncanonical candidate/conflict records, and made no D18/A10 canonical World mutation. PR #601 merged at `f059d24423280918659802621951aa21bcfa8819` after exact-head validation.
 
 ### RSR-03 — `completed_verified`
 
-Reviewed all 24 retained MHTs rather than treating RSR-01 route tags as an exhaustive ICF filter. The original two explicit RSR-03 routes were preserved and fifteen additional ICF-adjacent signals were recorded; seven files had no material ICF signal. Nine `rsr03:*` source-bound proposal candidates and eleven uncertainty/ownership boundaries remain noncanonical. Completed ICF-01..15 remains authoritative and no canonical ingredient, recipe, harvest, creature, formula, facility, Asset, market or production-state mutation occurred. Exact-head RSR-01, RSR-02, RSR-03 and canonical AIOC validation passed on run `32515925497`, job `96877433248`; PR #604 merged at `a6dea89c358e29ec86dce57e8ac67bba3db44e56`.
+Reviewed all 24 retained MHTs for ICF relevance, recovered 15 additional ICF-adjacent signals beyond the two original route tags, retained 9 noncanonical candidates and 11 ownership/uncertainty boundaries, and made no canonical ICF/live-state mutation. PR #604 merged at `a6dea89c358e29ec86dce57e8ac67bba3db44e56` after exact-head validation.
 
-Important preserved RSR-03 boundaries include the Kola-Ha Formcraft/Warform source mismatch and no-ingredient inference; owner evidence that Warforms cost more and are more straining while generated values remain proposals; Blood Tree source linkage while recovered sap/resin/Bloodcrystal DC/yield/effect claims remain proposals; Magen mana remaining supernatural-resource authority rather than automatically becoming an ingredient; and Isekai/cultural/profession/economy material routed to its actual later owners.
+### RSR-04 — `completed_verified`
+
+Reviewed all 24 retained MHTs for CEL/economy/life-loop relevance rather than treating route tags as exhaustive. Four sources were already routed to RSR-04; twelve supplemental material signals were recovered; eight sources had no material CEL signal. Thirteen noncanonical source-bound candidates and twelve authority/uncertainty guardrails were retained. The complete 79-model post-scarcity design exploration is preserved as a proposal library, not a selected social/economic model. Owner-grounded Vertigon prosperity/subsidization, fictional manufactured-scarcity context, and Pencrona 32-hour-day/320-day-year inputs remain distinguished from assistant proposals. Completed CEL-01..06, MIB-13, APW, APM, ICF and MIB-14 remain authoritative. No canonical CEL/economy/Downtime/Project/Cozy/market/currency/facility/live-state mutation or wall-clock progress authority was introduced. Exact-head RSR-01..04 and canonical AIOC validation passed on run `32517804498`, job `96883245830`; PR #607 merged at `8b83b0b32894d36cf88a5cfb2675714d38791adf`.
 
 ## Tranches
 
@@ -47,16 +49,16 @@ Important preserved RSR-03 boundaries include the Kola-Ha Formcraft/Warform sour
    Exact archive/constituent checksums, message attribution/hash, media provenance and source-disposition indexes; all 24 sources routed without automatic canon promotion.
 
 2. **RSR-02 — MIB-11 World/Reality/Timeline Reconciliation** — `completed_verified`  
-   All routed world/reality/timeline sources reconciled to completed MIB-11; existing identities reused, conflicts/candidates preserved and downstream routes recorded without a parallel World ledger.
+   Recovered world/reality/timeline material reconciled to completed MIB-11 without a parallel World ledger.
 
 3. **RSR-03 — ICF Content/Crafting/Food/Alchemy Reconciliation** — `completed_verified`  
-   All 24 sources received an ICF relevance decision; newly detected ICF-adjacent material was recovered, source-bound candidates/boundaries were preserved, and completed ICF-01..15 remained authoritative with zero canonical ICF/live-state mutation.
+   All 24 sources received an ICF relevance decision; completed ICF-01..15 remained authoritative with zero canonical ICF/live-state mutation.
 
-4. **RSR-04 — CEL Cozy/Economy/Life-Loop Reconciliation** — `in_progress`  
-   Reconcile all 24 retained sources for post-scarcity society, trade/distribution, prosperity/scarcity, food/culture, household, downtime and routine-production implications against completed CEL-01..06, current MIB-13 economy ownership, and existing Downtime/Project/Cozy delegation seams. Preserve meaningful economy/state consequences while preventing an autonomous second simulation or silent automation authority. Implementation is bounded to `governance/rsr-04-cel-reconciliation`.
+4. **RSR-04 — CEL Cozy/Economy/Life-Loop Reconciliation** — `completed_verified`  
+   All 24 sources received a CEL/economy/life-loop decision; recovered social/economic proposals and owner facts were separated and routed without replacing CEL/economy/Downtime/Cozy authority.
 
-5. **RSR-05 — LSS Loot/Scavenge/Salvage Reconciliation**  
-   Reconcile recovered loot, item acquisition, salvage, equipment, creature/material recovery and related gameplay hooks against completed LSS-01..10.
+5. **RSR-05 — LSS Loot/Scavenge/Salvage Reconciliation** — `selected_not_started`  
+   Audit all 24 retained sources for loot, rewards, item acquisition, scavenging, salvage, equipment recovery, creature/material recovery, decomposition/repair/cannibalization and related hooks. Reconcile against completed LSS-01..10 plus current Inventory/Asset/ICF/economy owners; no invented loot tables, drop rates, yields, prices or parallel inventory ledger.
 
 6. **RSR-06 — LNG Language/Culture/Script Reconciliation**  
    Reconcile recovered languages, naming systems, dialect/cultural language material, scripts and language-history implications against completed LNG-01..06.
@@ -64,9 +66,9 @@ Important preserved RSR-03 boundaries include the Kola-Ha Formcraft/Warform sour
 7. **RSR-07 — MSS-01..04 Supernatural Foundation Reconciliation & Downstream Routing**  
    Reconcile recovered magic, mana/resource models, spells/powers, rituals, supernatural species abilities, portals and temporal/causal material against completed MSS-01..04; record provenance implications for MSS-05 and inputs to MSS-06..12/DPL/CCP/WCI/SCL/MAI/SGC. No recovered assistant formula becomes canonical automatically.
 
-## RSR-04 authority fence
+## Authority fences
 
-RSR-04 is a reconciliation tranche, not permission to redesign CEL. Completed CEL-01..06 remains the sole Cozy Economy & Life Loop foundation. MIB-13 remains authoritative for currencies, prices, markets, merchants, trade and settlements; APW remains authoritative for Downtime/Projects; APM remains authoritative for Cozy delegation/automation; ICF and MIB-14 continue to own production and facility definitions. RSR-04 may preserve source facts, proposals, conflicts and downstream routes, but it may not invent a second economy, household, routine scheduler or autonomous game loop. Wall-clock elapsed time remains non-progress by default and human/GM choices remain human/GM choices.
+Completed-family reconciliation never creates duplicate truth ledgers. CEL-01..06 remains the Cozy Economy & Life Loop foundation; MIB-13 remains economy authority; APW remains Downtime/Project authority; APM remains Cozy delegation authority; ICF/MIB-14 own production/facility definitions. For RSR-05, completed LSS-01..10 remains Loot/Scavenge/Salvage authority and live inventory/Asset ownership remains with its existing owner. Recovered reward/loot/salvage material may be preserved, linked, queued or routed, but it cannot invent canonical drops, values, yields or item state.
 
 ## Completion gate
 
@@ -74,4 +76,4 @@ RSR is complete only when every recovered MHT has a disposition; substantive vis
 
 ## Forward-order rule
 
-RSR-01 through RSR-03 are `completed_verified`. RSR-04 is `in_progress` with implementation authority bounded to `governance/rsr-04-cel-reconciliation`. RSR-05..07 remain unauthorized until predecessor closeout. MSS-06 remains gated until RSR-07 reaches `completed_verified`.
+RSR-01 through RSR-04 are `completed_verified`. RSR-05 is `selected_not_started` with no implementation branch or authority until a subsequent owner `Continue` governed-starts it. RSR-06..07 remain unauthorized until predecessor closeout. MSS-06 remains gated until RSR-07 reaches `completed_verified`.
