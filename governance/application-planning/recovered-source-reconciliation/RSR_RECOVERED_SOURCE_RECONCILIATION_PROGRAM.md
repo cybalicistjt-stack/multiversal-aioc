@@ -1,7 +1,7 @@
 # RSR — Recovered Source Reconciliation
 
 **Program ID:** RSR  
-**Status:** IN PROGRESS — RSR-01..02 COMPLETED_VERIFIED — RSR-03 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — RSR-01..02 COMPLETED_VERIFIED — RSR-03 IN_PROGRESS  
 **Activation:** after MSS-05 `completed_verified`  
 **Completed through:** RSR-02  
 **Current:** RSR-03  
@@ -47,8 +47,8 @@ RSR-02 reconciled all 21 RSR-01 sources routed to World/Reality/Timeline work ag
 2. **RSR-02 — MIB-11 World/Reality/Timeline Reconciliation** — `completed_verified`  
    All 21 routed sources reconciled to completed MIB-11; existing stable identities reused, noncanonical candidates/chronology conflicts preserved, and downstream routes recorded without a parallel World ledger.
 
-3. **RSR-03 — ICF Content/Crafting/Food/Alchemy Reconciliation** — `selected_not_started`  
-   Reconcile recovered items, equipment, materials, cooking/food, alchemical or biological ingredients, crafting hooks and source-specific content against completed ICF-01..15. Add candidate content or provenance only where the recovered source supports it; no invented universal formulas or replacement ledgers.
+3. **RSR-03 — ICF Content/Crafting/Food/Alchemy Reconciliation** — `in_progress`  
+   Reconcile every recovered source already routed to RSR-03 plus any additional source found during the governed pass to contain material ICF evidence. Map supported content to completed ICF-01..15 identities/owners, register source-bound noncanonical candidates only where justified, preserve setting scope and attribution, and reroute profession/game-reality/economy/species implications to their actual owners. No assistant-generated recipe, effect, formula, biological property or item statistic becomes canonical by archive existence.
 
 4. **RSR-04 — CEL Cozy/Economy/Life-Loop Reconciliation**  
    Reconcile recovered post-scarcity society, trade, social/economic life, food, culture, household or downtime implications against completed CEL-01..06 and current Economy owners.
@@ -68,4 +68,4 @@ RSR is complete only when every recovered MHT has a disposition; substantive vis
 
 ## Forward-order rule
 
-RSR-01 and RSR-02 are `completed_verified`. RSR-03 is selected but has no implementation authority until a subsequent owner `Continue` governed-starts it. RSR-04..07 follow in strict order. MSS-06 remains gated until RSR-07 reaches `completed_verified`.
+RSR-01 and RSR-02 are `completed_verified`. RSR-03 is `in_progress` on `governance/rsr-03-icf-reconciliation`. RSR-04..07 remain unauthorized and follow in strict order. MSS-06 remains gated until RSR-07 reaches `completed_verified`.
