@@ -9,6 +9,7 @@ on:
       - 'governance/source-material/recovered-legacy/**'
       - 'scripts/validate_repository_health.py'
       - 'scripts/validate_rsr_01.py'
+      - 'scripts/validate_rsr_02.py'
       - '.github/workflows/validate-repository-health.yml'
   push:
     branches: [main]
@@ -19,6 +20,7 @@ on:
       - 'governance/source-material/recovered-legacy/**'
       - 'scripts/validate_repository_health.py'
       - 'scripts/validate_rsr_01.py'
+      - 'scripts/validate_rsr_02.py'
       - '.github/workflows/validate-repository-health.yml'
   workflow_dispatch:
 
@@ -62,6 +64,12 @@ jobs:
         run: |
           set -euo pipefail
           python3 scripts/validate_rsr_01.py
+
+      - name: Validate RSR-02 MIB-11 reconciliation integrity
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/validate_rsr_02.py
 
       - name: Validate canonical AIOC state
         shell: bash
