@@ -1,7 +1,7 @@
 # RSR — Recovered Source Reconciliation
 
 **Program ID:** RSR  
-**Status:** IN PROGRESS — RSR-01..04 COMPLETED_VERIFIED — RSR-05 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — RSR-01..04 COMPLETED_VERIFIED — RSR-05 IN_PROGRESS  
 **Activation:** after MSS-05 `completed_verified`  
 **Completed through:** RSR-04  
 **Current:** RSR-05  
@@ -57,8 +57,8 @@ Reviewed all 24 retained MHTs for CEL/economy/life-loop relevance rather than tr
 4. **RSR-04 — CEL Cozy/Economy/Life-Loop Reconciliation** — `completed_verified`  
    All 24 sources received a CEL/economy/life-loop decision; recovered social/economic proposals and owner facts were separated and routed without replacing CEL/economy/Downtime/Cozy authority.
 
-5. **RSR-05 — LSS Loot/Scavenge/Salvage Reconciliation** — `selected_not_started`  
-   Audit all 24 retained sources for loot, rewards, item acquisition, scavenging, salvage, equipment recovery, creature/material recovery, decomposition/repair/cannibalization and related hooks. Reconcile against completed LSS-01..10 plus current Inventory/Asset/ICF/economy owners; no invented loot tables, drop rates, yields, prices or parallel inventory ledger.
+5. **RSR-05 — LSS Loot/Scavenge/Salvage Reconciliation** — `in_progress`  
+   Audit all 24 retained sources for loot, rewards, item acquisition, scavenging, salvage, equipment recovery, creature/material recovery, decomposition/repair/cannibalization and related hooks. Reconcile against completed LSS-01..10 plus current Inventory/Asset/ICF/economy owners; no invented loot tables, drop rates, yields, prices or parallel inventory ledger. Implementation is bounded to `governance/rsr-05-lss-reconciliation`.
 
 6. **RSR-06 — LNG Language/Culture/Script Reconciliation**  
    Reconcile recovered languages, naming systems, dialect/cultural language material, scripts and language-history implications against completed LNG-01..06.
@@ -68,7 +68,7 @@ Reviewed all 24 retained MHTs for CEL/economy/life-loop relevance rather than tr
 
 ## Authority fences
 
-Completed-family reconciliation never creates duplicate truth ledgers. CEL-01..06 remains the Cozy Economy & Life Loop foundation; MIB-13 remains economy authority; APW remains Downtime/Project authority; APM remains Cozy delegation authority; ICF/MIB-14 own production/facility definitions. For RSR-05, completed LSS-01..10 remains Loot/Scavenge/Salvage authority and live inventory/Asset ownership remains with its existing owner. Recovered reward/loot/salvage material may be preserved, linked, queued or routed, but it cannot invent canonical drops, values, yields or item state.
+Completed-family reconciliation never creates duplicate truth ledgers. CEL-01..06 remains the Cozy Economy & Life Loop foundation; MIB-13 remains economy authority; APW remains Downtime/Project authority; APM remains Cozy delegation authority; ICF/MIB-14 own production/facility definitions. For RSR-05, completed LSS-01..10 remains Loot/Scavenge/Salvage authority, D17 remains Asset/inventory truth, MIB-12 remains crafting/repair transformation authority, MIB-14 remains compatibility/workshop/storage authority, MIB-13 remains economy truth and ICF-07 remains biological creature-harvest authority. Recovered reward/loot/salvage material may be preserved, linked, queued or routed, but it cannot invent canonical drops, values, yields or item state.
 
 ## Completion gate
 
@@ -76,4 +76,4 @@ RSR is complete only when every recovered MHT has a disposition; substantive vis
 
 ## Forward-order rule
 
-RSR-01 through RSR-04 are `completed_verified`. RSR-05 is `selected_not_started` with no implementation branch or authority until a subsequent owner `Continue` governed-starts it. RSR-06..07 remain unauthorized until predecessor closeout. MSS-06 remains gated until RSR-07 reaches `completed_verified`.
+RSR-01 through RSR-04 are `completed_verified`. RSR-05 is `in_progress` with implementation authority bounded to `governance/rsr-05-lss-reconciliation`. RSR-06..07 remain unauthorized until predecessor closeout. MSS-06 remains gated until RSR-07 reaches `completed_verified`.
