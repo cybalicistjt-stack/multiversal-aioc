@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 6.9.0  
-**Status:** LNG-01 SELECTED — LSS PROGRAM COMPLETED_VERIFIED — BRP BETA-READINESS GATE OWNER-APPROVED  
+**Version:** 6.10.0  
+**Status:** LNG-02 SELECTED — LNG-01 COMPLETED_VERIFIED — LSS PROGRAM COMPLETED_VERIFIED — BRP BETA-READINESS GATE OWNER-APPROVED  
 **Owner and final authority:** John Brandon Turner  
 **Updated:** 2026-08-21
 
@@ -10,7 +10,7 @@
 
 The runtime selector remains bootstrap → authority registry → current-work pointer → selected checkpoint → live GitHub evidence. This roadmap owns milestone/dependency intent but does not start planned work by itself.
 
-Current implementation authority is **LNG-01 only**, state `selected_not_started`. LSS-01 through LSS-10 and MIB-15 are `completed_verified`.
+Current implementation authority is **LNG-02 only**, state `selected_not_started`. LNG-01, LSS-01 through LSS-10 and MIB-15 are `completed_verified`.
 
 The owner operating rule is tranche-complete by default: `Continue` means execute the entire selected implementation tranche through governed start if needed, implementation, exact-head validation, merge, `completed_verified` closeout and strict-successor selection unless a genuine owner/environment/source blocker prevents completion. Validation queueing, an open PR, pending closeout or merely staging the next step is not a normal stopping boundary.
 
@@ -21,9 +21,11 @@ The owner operating rule is tranche-complete by default: `Continue` means execut
 - ICF-01 through ICF-15: `completed_verified`.
 - CEL-01 through CEL-06: `completed_verified`.
 - LSS-01 through LSS-10: `completed_verified`; the LSS program is complete.
-- Current application main after LSS-10: `6d7c26278980cb27ab3eb06e3654b4852e6e0859`.
-- LSS-10 exact-head evidence: application PR #258; validated head `201fd3b15b4810fe0ce9fbd2dce820a5e816afeb`; repository-health run `32480020147`; product-validation run `32480020367`; Windows job `96764145979`; Linux job `96764145941`; deterministic comparison job `96765379206`; matching receipt `fa1f426fe610bf3947bd28cf6f9e2e80f9b9c86033f273941f06cdc13e8ece09`.
-- LSS-10 delivered provenance-bearing LSS content/reference packs, visibility-first bounded local search/reverse lookup, read-only Workbench projections, authored-or-unresolved balance metadata, and an evidence-bound LSS-01..09 golden proof with conservation and human/GM stops while preserving future MIB-16 global-search authority.
+- LNG-01 — Source Intake, Language Registry & Timeline Authority: `completed_verified`.
+- Current application main after LNG-01: `714dbf400269714be38271517e39f8b7832fcd05`.
+- LNG-01 exact-head evidence: application PR #259; validated head `8132500284c5bb5f4df5d43d64207d1d695ca8dc`; repository-health run `32481904777`; product-validation run `32481905245`; Windows job `96769891936`; Linux job `96769892094`; deterministic comparison job `96770502710`; matching receipt `8540aa557727912b0da98874e424b7ea2d763fdebc7048eb00b627ccb9837feb`.
+- LNG-01 delivered an exact six-source provenance registry, distinct language/historical-stage identities, explicit unresolved catalog gaps rather than invented scripts/dialects/chronology, MIB-11 timeline/era binding enforcement, visibility-first runtime projection/search/AI context, and future-stage Dominix quarantine with explicit temporal-access evidence required for any runtime exposure.
+- LSS-10 application merge: `6d7c26278980cb27ab3eb06e3654b4852e6e0859`.
 - LSS-09 application merge: `2cf5c53f69c1030bacf605e9fc32d55f3d8b05e6`.
 - LSS-08 application merge: `1eee23b4f43fc01f47d757be3bf0174c9e0ef968`.
 - LSS-07 application merge: `24bfe85df9f8b5437edf5b7d48d3e929814f4e65`.
@@ -40,7 +42,7 @@ The owner operating rule is tranche-complete by default: `Continue` means execut
 
 MIB numbering remains stable. The owner-approved interstitial programs execute after completed MIB-15 and before MIB-16 in this dependency order:
 
-`LNG-01 … LNG-06`
+`LNG-02 … LNG-06`
 → `MSS-01 … MSS-12`
 → `CCP-01 … CCP-11`
 → `DPL-01 … DPL-14`
@@ -78,7 +80,7 @@ Reason for placement:
 - BRP-01..11 converts that product into a supportable, recoverable, observable, updateable beta candidate with explicit `BETA_READY` proof before strangers/external cohorts become the normal test surface.
 - SMB-17 then owns real external beta/community foundations over a beta-ready product; SMB-18 hardens operations to commercial/release grade and owns stores/distribution, billing/entitlements when approved and launch operations.
 
-The LSS program is fully `completed_verified`. LNG-01 is selected but not started. The standing owner continuation authorizes its governed start transition on the next owner `Continue`. Later LNG tranches/programs are not implementation-authorized until their predecessor is completed and the canonical selector advances.
+The LSS program is fully `completed_verified`. LNG-01 is `completed_verified`. LNG-02 is selected but not started. Later LNG tranches/programs are not implementation-authorized until their predecessor is completed and the canonical selector advances.
 
 ## LSS — Loot, Scavenge & Salvage
 
@@ -118,9 +120,13 @@ Backlog: `governance/application-planning/language-linguistics/LNG_PROGRAM_BACKL
 
 Purpose: track/build/use languages with lexicons, scripts, grammar, families, dialects, historical evolution and gameplay knowledge while keeping generation proposal-only.
 
-**Current:** LNG-01 — Source Intake, Language Registry & Timeline Authority — `selected_not_started`.
+**Completed:** LNG-01 — Source Intake, Language Registry & Timeline Authority — `completed_verified`; application merge `714dbf400269714be38271517e39f8b7832fcd05`.
 
-LNG-01 catalogs retained languages/dialects/scripts with source/provenance and binds language-stage availability to World/Reality/Timeline/Era. The supplied Dominix Arcan, Western Common, Eastern Common and Lower Common material is future-stage reference relative to the current Dominix setting and must not silently populate present-era speech, NPC/Character knowledge, naming, translation, AI context or search outside an authorized temporal/multiversal knowledge path. Missing vocabulary, grammar, chronology or language relationships remain unknown rather than fabricated.
+LNG-01 preserves the exact six governed source records and four retained Dominix language identities without inventing unsupported linguistic detail. Language and historical stage are distinct; named scripts/dialects/registers and exact chronology remain unresolved where the governed intake does not support them. The supplied Dominix Arcan, Western Common, Eastern Common and Lower Common material remains future-stage reference and is filtered from present-era campaign, Character/NPC knowledge, naming, translation, AI context and search until explicit MIB-11 temporal binding plus authorized temporal/multiversal access evidence permits the requested surface.
+
+**Current:** LNG-02 — Lexicon, Phrase, Script & Provenance Model — `selected_not_started`.
+
+LNG-02 defines provenance-bearing words, compounds, phrases, idioms, ritual expressions, slang, pronunciation, meanings, etymology, scripts, examples, terminology and accepted/deprecated/rejected design decisions. Script identity remains distinct from language identity; many-to-many language/script associations require explicit evidence. Missing source values remain unknown, and every projected content record inherits LNG-01 timeline/era and visibility/knowledge gating so future-stage Dominix material cannot leak into present-era runtime surfaces.
 
 ## MSS — Magic & Supernatural Systems
 
