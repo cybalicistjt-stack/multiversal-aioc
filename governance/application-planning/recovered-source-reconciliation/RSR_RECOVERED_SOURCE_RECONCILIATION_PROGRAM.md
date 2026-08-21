@@ -1,7 +1,7 @@
 # RSR — Recovered Source Reconciliation
 
 **Program ID:** RSR  
-**Status:** IN PROGRESS — RSR-01..03 COMPLETED_VERIFIED — RSR-04 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — RSR-01..03 COMPLETED_VERIFIED — RSR-04 IN_PROGRESS  
 **Activation:** after MSS-05 `completed_verified`  
 **Completed through:** RSR-03  
 **Current:** RSR-04  
@@ -52,8 +52,8 @@ Important preserved RSR-03 boundaries include the Kola-Ha Formcraft/Warform sour
 3. **RSR-03 — ICF Content/Crafting/Food/Alchemy Reconciliation** — `completed_verified`  
    All 24 sources received an ICF relevance decision; newly detected ICF-adjacent material was recovered, source-bound candidates/boundaries were preserved, and completed ICF-01..15 remained authoritative with zero canonical ICF/live-state mutation.
 
-4. **RSR-04 — CEL Cozy/Economy/Life-Loop Reconciliation** — `selected_not_started`  
-   Reconcile recovered post-scarcity society, trade/distribution, prosperity/scarcity, food/culture, household, downtime and routine-production implications against completed CEL-01..06, current MIB-13 economy ownership, and existing Downtime/Project/Cozy delegation seams. Preserve meaningful economy/state consequences while preventing an autonomous second simulation or silent automation authority.
+4. **RSR-04 — CEL Cozy/Economy/Life-Loop Reconciliation** — `in_progress`  
+   Reconcile all 24 retained sources for post-scarcity society, trade/distribution, prosperity/scarcity, food/culture, household, downtime and routine-production implications against completed CEL-01..06, current MIB-13 economy ownership, and existing Downtime/Project/Cozy delegation seams. Preserve meaningful economy/state consequences while preventing an autonomous second simulation or silent automation authority. Implementation is bounded to `governance/rsr-04-cel-reconciliation`.
 
 5. **RSR-05 — LSS Loot/Scavenge/Salvage Reconciliation**  
    Reconcile recovered loot, item acquisition, salvage, equipment, creature/material recovery and related gameplay hooks against completed LSS-01..10.
@@ -64,10 +64,14 @@ Important preserved RSR-03 boundaries include the Kola-Ha Formcraft/Warform sour
 7. **RSR-07 — MSS-01..04 Supernatural Foundation Reconciliation & Downstream Routing**  
    Reconcile recovered magic, mana/resource models, spells/powers, rituals, supernatural species abilities, portals and temporal/causal material against completed MSS-01..04; record provenance implications for MSS-05 and inputs to MSS-06..12/DPL/CCP/WCI/SCL/MAI/SGC. No recovered assistant formula becomes canonical automatically.
 
+## RSR-04 authority fence
+
+RSR-04 is a reconciliation tranche, not permission to redesign CEL. Completed CEL-01..06 remains the sole Cozy Economy & Life Loop foundation. MIB-13 remains authoritative for currencies, prices, markets, merchants, trade and settlements; APW remains authoritative for Downtime/Projects; APM remains authoritative for Cozy delegation/automation; ICF and MIB-14 continue to own production and facility definitions. RSR-04 may preserve source facts, proposals, conflicts and downstream routes, but it may not invent a second economy, household, routine scheduler or autonomous game loop. Wall-clock elapsed time remains non-progress by default and human/GM choices remain human/GM choices.
+
 ## Completion gate
 
 RSR is complete only when every recovered MHT has a disposition; substantive visuals are inventoried; owner statements/corrections remain distinguishable from assistant proposals; duplicate/variant lines are linked rather than multiplied; completed families touched by recovered evidence have explicit reconciliation results; new candidate content is routed correctly; conflicts remain visible; and final source coverage proves no retained recovered source was silently dropped.
 
 ## Forward-order rule
 
-RSR-01 through RSR-03 are `completed_verified`. RSR-04 is `selected_not_started` with no implementation branch or authority until a subsequent owner `Continue` governed-starts it. RSR-05..07 follow in strict order. MSS-06 remains gated until RSR-07 reaches `completed_verified`.
+RSR-01 through RSR-03 are `completed_verified`. RSR-04 is `in_progress` with implementation authority bounded to `governance/rsr-04-cel-reconciliation`. RSR-05..07 remain unauthorized until predecessor closeout. MSS-06 remains gated until RSR-07 reaches `completed_verified`.
