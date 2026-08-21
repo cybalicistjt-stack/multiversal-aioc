@@ -1,0 +1,68 @@
+# AAI — Audio Asset & Soundscape Interoperability
+
+**Program ID:** AAI  
+**Status:** OWNER-APPROVED — PLANNED INTERSTITIAL  
+**Activation:** after MAI-10  
+**Successor:** WCI-01  
+**Owner and final authority:** John Brandon Turner
+
+## Purpose
+
+AAI makes external and user-owned audio usable through one provider-neutral Multiversal layer without requiring Multiversal to own, copy or redistribute commercial audio. It covers music, ambience, environmental beds, one-shots, adaptive soundscapes, playlists, cue boards and future spatial audio while preserving source entitlement, provenance, licensing and provider capability boundaries.
+
+The core rule is that **audio intent is separate from the selected provider asset**. A Scene/Event/World state may request semantic audio such as `forest/night/rain`, `tavern/crowded`, `combat/desperate`, `portal/open` or `cozy/fireplace`; the resolver may satisfy that intent from any permitted connected source, offer GM choices, fall back to another source, use an explicit placeholder/silent state, or remain unresolved.
+
+Multiversal must not scrape, cache, export, redistribute or impersonate provider-owned audio unless the provider/license explicitly permits that operation. Provider connections control or reference the user's legitimate entitlement; raw commercial audio remains with its owner/provider unless separately licensed for local ingestion.
+
+## Provider posture
+
+AAI is capability-driven rather than vendor-hardcoded. Candidate sources include user-owned local files and folders, Syrinscape, TableTone, PocketBard, Tabletop Audio and future providers. AAI-01 must reverify current APIs, terms, account/entitlement rules and technical capabilities before implementation decisions.
+
+A provider may expose any subset of: catalog search, metadata, authenticated playback, embedded playback, external-app launch, session control, mood/soundset/preset control, one-shots, layered mixing, per-layer volume, remote synchronization, entitlement verification, local caching, export, attribution requirements and recording/streaming permissions. Unsupported capability must remain explicit rather than being emulated by prohibited scraping or copying.
+
+## Tranches
+
+1. **AAI-01 — Audio Ecosystem, API, License & Authority Survey**  
+   Survey local/user-owned audio and current external providers including Syrinscape and TableTone. Record APIs, SDKs, embedding, remote control, catalog/search, authentication, entitlement, caching, redistribution, attribution, recording/streaming and commercial-use constraints. Establish audio-vs-game-state authority boundaries.
+
+2. **AAI-02 — Canonical Audio Source, Asset, Cue & Soundscape Schema**  
+   Define provider-neutral `AudioProvider`, `AudioSource`, `AudioAsset`, `MusicTrack`, `Ambience`, `OneShot`, `Soundscape`, `AudioCue`, `MixPreset`, `Playlist`, `ProviderReference`, provenance/license metadata and semantic intent records. Provider asset identity remains separate from gameplay/event identity.
+
+3. **AAI-03 — Provider Adapter & Capability-Negotiation Framework**  
+   Define adapters that advertise only supported operations: native/embedded/external playback, catalog access, search, authentication, entitlement, sessions, mix/volume, one-shots, remote sync, local files, streaming, caching and export. Unsupported operations stay unavailable without hacks.
+
+4. **AAI-04 — Playback, Layering & Mixer Engine**  
+   Support music, ambience, environmental layers and one-shots with loops, fades, crossfades, ducking, intensity, volume groups, mute/solo, transition rules and interruption behavior. Preserve a path for later spatial/positional audio without making it a prerequisite.
+
+5. **AAI-05 — Semantic Audio Taxonomy & Availability Resolver**  
+   Describe requested mood/environment/action semantics separately from provider assets. Resolve against sources the GM/user is actually permitted to use; support source/style lock, ranked choices, cross-provider fallback, manual override, explicit silence/placeholders and unresolved needs.
+
+6. **AAI-06 — Import/Link Framework & Initial Provider Adapters**  
+   Implement user-owned local audio/folder adapters, common compatible audio formats, a Syrinscape capability adapter, a TableTone capability adapter and a generic external-provider/reference adapter. Integration depth follows verified provider capabilities; no provider-specific workaround may bypass terms or entitlement.
+
+7. **AAI-07 — Game Event, Scene & Automation Binding**  
+   Bind optional audio cues to existing canonical Scene/Event/World/Combat/Weather/Travel/Vehicle/Magic/Cozy states and transitions without moving gameplay authority into audio. Support enter/exit, combat start/end, spell/power, portal, vehicle, weather, stress/horror, downtime and GM-authored cues. GM manual override and disable remain first-class.
+
+8. **AAI-08 — GM Audio Workbench, Scene Presets & Campaign Preparation**  
+   Provide connected-source search, permission-aware preview, cue boards, scene soundscapes, intensity/mood controls, preset preparation, fallbacks, provenance/license display and manual assignment. The GM works from semantic intent rather than provider-specific catalog IDs whenever possible.
+
+9. **AAI-09 — Multiplayer, Permissions, Remote Sync & Recording/Streaming Boundaries**  
+   Define GM-device, player-device, provider-session and external-app playback modes; reconnect/rejoin behavior; player volume controls; GM-only/spoiler-safe cues; remote-alpha synchronization; attribution; and explicit recording/streaming restrictions. Hidden cue metadata must not leak to players.
+
+10. **AAI-10 — Multi-Provider Golden Audio Proof**  
+    Prove one campaign can mix local user-owned audio, provider-controlled ambience, one-shots, unavailable-provider fallbacks, unresolved cues, remote players and deterministic cue state while respecting entitlements and permissions. The game must remain fully usable with all audio disabled.
+
+## Invariants
+
+- Audio is presentation/support state, not canonical World/Event/Combat truth.
+- Audio intent and selected provider asset remain separable.
+- No provider or catalog becomes Multiversal's canonical audio model.
+- No provider is assumed to support every capability.
+- User entitlement/license/provenance is preserved and checked where technically available.
+- Commercial audio is controlled/referenced rather than copied unless explicit license allows ingestion.
+- Missing audio never blocks play.
+- GM/user manual control and silence are first-class.
+- Hidden/GM-only cues and metadata remain permission-scoped.
+- Recording/streaming/export permissions are explicit capability/license decisions, not inferred.
+- AAI consumes MAI's provider-neutral interoperability patterns but remains a separate audio program.
+- WCI, SCL and VTI consume AAI rather than creating parallel audio ownership or playback ledgers.
