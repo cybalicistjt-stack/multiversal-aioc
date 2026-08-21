@@ -1,11 +1,12 @@
 # MSS — Magic & Supernatural Systems
 
 **Program ID:** MSS  
-**Status:** OWNER-APPROVED — PLANNED INTERSTITIAL  
+**Status:** OWNER-APPROVED — IN PROGRESS  
 **Activation:** after LNG-06  
-**Successor:** CCP-01  
+**Successor after program:** CCP-01  
 **Owner and final authority:** John Brandon Turner  
-**Planned:** 2026-08-20
+**Planned:** 2026-08-20  
+**Updated:** 2026-08-21
 
 ## Purpose
 
@@ -13,22 +14,34 @@ MSS converts the substantial retained magic/supernatural source corpus and compl
 
 PPIA-07 is an implementation input, not runtime completion. Its 34-rune vocabulary, deterministic grammar, blind GM-adjudicated profile, Rune Builder workflows and normalized routing of the retained 385-spell catalog must be preserved. MSS must not fabricate universal mana, damage, healing, duration, failure, backlash or setting-law formulas where source/current owner rules do not support them; such behavior is expressed through governed profiles and explicit unresolved/GM-adjudicated boundaries.
 
+## Recovered-source interstitial after MSS-05
+
+The owner approved `RSR — Recovered Source Reconciliation` on 2026-08-21 after a 24-file legacy source archive was recovered. MSS internal tranche order remains MSS-01 through MSS-12, but the effective cross-program sequence is:
+
+`MSS-05 → RSR-01..07 → MSS-06..12`
+
+This preserves MSS-05 as the current bounded tranche while ensuring newly recovered supernatural, world/timeline, language, item/crafting, economy/cozy and loot material is reconciled against completed foundations before MSS-06 and later source/content-heavy tranches proceed.
+
+RSR-07 specifically reconciles recovered magic/mana/spell/ritual/portal/temporal material against completed MSS-01..04. Recovered assistant-generated mechanics remain proposals unless independently supported or owner-approved.
+
 ## Tranches
 
-1. **MSS-01 — Source Inventory, Authority Crosswalk & Supernatural Taxonomy**  
+1. **MSS-01 — Source Inventory, Authority Crosswalk & Supernatural Taxonomy** — `completed_verified`  
    Reconcile PPIA-07, retained spell/ability catalogs, arcane/elemental/innate/shamanic/voodoo/divine/chaos/psychic/supernatural sources, rituals, scripts/macros, portals and temporal material against current MIB/ICF/LNG/World/Action/Crafting authorities. Produce explicit coverage and no-invention boundaries.
 
-2. **MSS-02 — Magic Resource, Capacity, Cost, Strain & Overreach Contracts**  
+2. **MSS-02 — Magic Resource, Capacity, Cost, Strain & Overreach Contracts** — `completed_verified`  
    Define provider-neutral resource/capacity adapters for mana/energy/charge/focus/material/life-force/favor/strain and other authored costs; recovery/refresh rules; reservations; overload/overreach/backlash hooks; and setting-local profiles without imposing one universal resource model.
 
-3. **MSS-03 — Unified Spell, Power & Supernatural Resolution Runtime**  
+3. **MSS-03 — Unified Spell, Power & Supernatural Resolution Runtime** — `completed_verified`  
    Implement governed cast/use → validate → target → reserve → resolve → resist/counter → commit → downstream-effect flow over existing Actions/Events, effect/condition primitives and owner-domain receipts. Support deterministic, GM-adjudicated and explicitly unresolved outcomes.
 
-4. **MSS-04 — Rune Construction Runtime & Blind GM Adjudication**  
+4. **MSS-04 — Rune Construction Runtime & Blind GM Adjudication** — `completed_verified`  
    Move completed PPIA-07 Rune grammar/SCI/CSL/workflows into application runtime, including standard preview and blind-GM profiles, immutable original submissions, modify-and-approve semantic diffs, hidden-effect suppression and atomic commit.
 
-5. **MSS-05 — Spell Design, Research, Scripts, Macros & Supernatural Authoring**  
+5. **MSS-05 — Spell Design, Research, Scripts, Macros & Supernatural Authoring** — `selected_not_started`  
    Provide governed spell/power/rune authoring, variant design, research/discovery, reusable scripts/macros, testing/simulation proposals, provenance and approval/publishing boundaries. Created mechanics remain proposals until accepted through their owning rules.
+
+**Effective interstitial:** after MSS-05 reaches `completed_verified`, execute RSR-01..07. MSS-06 remains unauthorized until RSR-07 reaches `completed_verified`.
 
 6. **MSS-06 — Traditions, Schools, Sources & Casting Profiles**  
    Model arcane schools, elemental paths, innate powers, shamanic/voodoo traditions, divine sources, chaos magic, psychic/mental powers, technological or setting-specific supernatural sources and mixed traditions through composable definitions rather than hard-coded mutually exclusive classes.
@@ -57,5 +70,6 @@ PPIA-07 is an implementation input, not runtime completion. Its 34-rune vocabula
 - PPIA-07 semantics are preserved unless later owner-approved evidence explicitly supersedes them.
 - No universal mana, power, damage, healing, duration, failure or backlash formula is inferred from incomplete sources.
 - AI may propose/explain but never casts, approves, adjudicates, reveals hidden effects or mutates canon by authority.
+- Recovered legacy assistant output is proposal material, not automatic source authority.
 - Temporal operations never silently rewrite earlier history; causal changes require explicit governed branch/reconciliation behavior.
 - Portals and temporal paths preserve visibility, provenance and setting-law compatibility.
