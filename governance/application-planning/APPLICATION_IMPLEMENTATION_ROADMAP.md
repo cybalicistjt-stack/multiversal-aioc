@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 6.20.0  
-**Status:** MSS-05 SELECTED — MSS-04 COMPLETED_VERIFIED — MSS-03 COMPLETED_VERIFIED — MSS-02 COMPLETED_VERIFIED — MSS-01 COMPLETED_VERIFIED — LNG PROGRAM COMPLETED_VERIFIED — LSS PROGRAM COMPLETED_VERIFIED — AAI OWNER-APPROVED PLANNED — BRP OWNER-APPROVED PLANNED  
+**Version:** 6.21.0  
+**Status:** MSS-05 SELECTED — RSR OWNER-APPROVED PLANNED AFTER MSS-05 — MSS-04 COMPLETED_VERIFIED — LNG PROGRAM COMPLETED_VERIFIED — LSS PROGRAM COMPLETED_VERIFIED — AAI OWNER-APPROVED PLANNED — BRP OWNER-APPROVED PLANNED  
 **Owner and final authority:** John Brandon Turner  
 **Updated:** 2026-08-21
 
@@ -10,7 +10,7 @@
 
 Runtime authority remains bootstrap → authority registry → current-work pointer → selected checkpoint → live GitHub evidence. This roadmap owns dependency intent only. Current work is **MSS-05 — Spell Design, Research, Scripts, Macros & Supernatural Authoring**, state `selected_not_started`; it has no implementation branch or implementation authority until the next owner `Continue` governed-starts it.
 
-The owner execution rule remains tranche-complete: `Continue` executes the selected tranche through governed start, implementation, exact-head validation, merge, `completed_verified` closeout and strict-successor selection unless a genuine blocker survives.
+The owner execution rule remains tranche-complete: `Continue` executes the selected tranche through governed start, implementation, exact-head validation, merge, `completed_verified` closeout and effective-successor selection unless a genuine blocker survives.
 
 ## Completed foundation
 
@@ -25,6 +25,8 @@ The owner execution rule remains tranche-complete: `Continue` executes the selec
 - MSS-03: `completed_verified`; app merge `d908074d3ade55e47bab3d12f66620de1260fc05`.
 - MSS-04: `completed_verified`; app merge `3e835eab5c004f3d663d9ef4a4d7c06713d26ed5`.
 
+Completion evidence remains valid when a later source-reconciliation tranche is added. Reconciliation supplements completed work; it does not retroactively erase or rewrite valid completion evidence.
+
 ### MSS-04 exact evidence
 
 - application PR #268
@@ -37,27 +39,44 @@ The owner execution rule remains tranche-complete: `Continue` executes the selec
 - matching receipt `2a2edeab5bc3b6c6a0241eea66a354bf2faf2f5a90ea2f4038ec845077ca3d97`
 - migration added: false; migration head remains `0021_apm_autogm_mini_campaign_director.json`; `0022` is not reserved.
 
-MSS-04 delivered the exact completed PPIA-07 16 Operation + 18 Essence Rune vocabulary and four connectors; deterministic no-implicit-precedence parsing and canonical linear round-trip; the exact PPIA-07 SCI/CSL formulas and progression guidance without converting SCI to power or CSL to failure probability; standard-preview and blind-GM profiles over the same Rune/MSS-02/MSS-03 execution engine; immutable player submissions; explicit GM approve/deny/modify-and-approve records with authority, evidence, final confirmation and semantic diffs; server-side suppression of hidden interpretation/effect data from blind player projection; and atomic owner-facing commit proposals over existing version/idempotency seams. Open combinations remain governed-adjudication-required or unresolved when owning rules are absent. No universal Rune cost/power/success/failure/damage/healing/duration/backlash formula was invented.
+## Recovered legacy source intake
+
+The Project Source archive `Now this.zip` is now a governed retained input. Exact archive SHA-256: `2a5eae712f483d1fb33ff9fb0087e96c4eb8b71b287cc707c196a4c17a2f78f4`. It contains 24 MHT conversation exports spanning worlds/realities, species/cultures, magic/supernatural material, economy/life-simulation ideas, campaign/gameplay frameworks, history/timelines and visual references.
+
+Repository registration: `governance/source-material/recovered-legacy/now-this-2026-08-21/SOURCE_MANIFEST.md`.
+
+Hard rules:
+
+- Current GitHub evidence remains implementation authority.
+- Owner statements and explicit owner corrections in recovered conversations outrank surrounding assistant-generated prose.
+- Assistant-generated legacy expansions remain proposals until independently supported or later owner-approved.
+- Existing stable IDs/canonical owners are reused; recovered variants do not create duplicate canon by default.
+- Exact source/media bytes remain provenance-bound to the retained Project Source archive and checksums.
+- Every recovered file receives a disposition through RSR; nothing is silently dropped or silently promoted.
 
 ## Effective forward order
 
-`MSS-05..12 → CCP-01..11 → DPL-01..14 → MAI-01..10 → AAI-01..10 → WCI-01..05 → SCL-01..11 → VTI-01..12 → SGC-01..08 → MIB-16 → MIB-17 → MIB-18 → SMB-01..16 → BRP-01..11 → SMB-17 → SMB-18`
+`MSS-05 → RSR-01..07 → MSS-06..12 → CCP-01..11 → DPL-01..14 → MAI-01..10 → AAI-01..10 → WCI-01..05 → SCL-01..11 → VTI-01..12 → SGC-01..08 → MIB-16 → MIB-17 → MIB-18 → SMB-01..16 → BRP-01..11 → SMB-17 → SMB-18`
 
 MCB remains owner-approved commercial preparation outside the automatic critical path; evidence-dependent public claims, final pricing/packaging and launch activation require current product evidence.
+
+## ICF / CEL / LSS / LNG completed-family reconciliation rule
+
+The newly recovered source bundle arrived after ICF-01..15, CEL-01..06, LSS-01..10 and LNG-01..06 reached `completed_verified`. Their completion remains valid, but recovered evidence that belongs to those families must not be ignored. RSR therefore contains dedicated reconciliation tranches for ICF, CEL, LSS and LNG. Completed MIB-11 World/Reality taxonomy and MSS-01..04 receive the same treatment because the recovered corpus directly contains world/reality/timeline and supernatural material.
 
 ## LSS — Loot, Scavenge & Salvage
 
 Program: `governance/application-planning/loot-scavenge-salvage/LSS_LOOT_SCAVENGE_SALVAGE_PROGRAM.md`  
 Backlog: `governance/application-planning/loot-scavenge-salvage/LSS_PROGRAM_BACKLOG.json`
 
-Completed tranches: LSS-01 source/authority crosswalk; LSS-02 component/assembly schema; LSS-03 condition/quality/rarity grammar; LSS-04 loot transfer; LSS-05 scavenge opportunities; LSS-06 disassembly/extraction; LSS-07 decomposition libraries; LSS-08 repair/cannibalization/reassembly; LSS-09 economy/projects/cozy/hazards; LSS-10 search/workbench/golden proof.
+Completed tranches: LSS-01 source/authority crosswalk; LSS-02 component/assembly schema; LSS-03 condition/quality/rarity grammar; LSS-04 loot transfer; LSS-05 scavenge opportunities; LSS-06 disassembly/extraction; LSS-07 decomposition libraries; LSS-08 repair/cannibalization/reassembly; LSS-09 economy/projects/cozy/hazards; LSS-10 search/workbench/golden proof. Recovered legacy source reconciliation is owned by RSR-05 and does not invalidate LSS completion.
 
 ## LNG — Language & Linguistics Foundation
 
 Program: `governance/application-planning/language-linguistics/LNG_LANGUAGE_LINGUISTICS_PROGRAM.md`  
 Backlog: `governance/application-planning/language-linguistics/LNG_PROGRAM_BACKLOG.json`
 
-Completed tranches: LNG-01 intake/registry/timeline authority; LNG-02 lexicon/phrase/script/provenance; LNG-03 guided construction; LNG-04 families/dialects/registers/evolution; LNG-05 Character knowledge/translation/gameplay; LNG-06 generation/consistency/golden proof.
+Completed tranches: LNG-01 intake/registry/timeline authority; LNG-02 lexicon/phrase/script/provenance; LNG-03 guided construction; LNG-04 families/dialects/registers/evolution; LNG-05 Character knowledge/translation/gameplay; LNG-06 generation/consistency/golden proof. Recovered language/culture/script evidence is reconciled by RSR-06.
 
 ## MSS — Magic & Supernatural Systems
 
@@ -70,30 +89,51 @@ Completed: MSS-01 source inventory/authority crosswalk/taxonomy; MSS-02 resource
 
 **Current:** MSS-05 — Spell Design, Research, Scripts, Macros & Supernatural Authoring — `selected_not_started`.
 
-MSS-05 will provide governed spell/power/rune authoring, variant design, research/discovery, reusable Scripts/Macros, testing/simulation proposals, provenance and approval/publishing boundaries. Created mechanics remain proposals until explicitly accepted through their owning rules. It must preserve MSS-02 resource, MSS-03 resolution, MSS-04 Rune, permission/provenance and external-owner boundaries and must not fabricate missing formulas. MSS-06 remains unauthorized until MSS-05 reaches `completed_verified`.
+MSS-05 will provide governed spell/power/rune authoring, variant design, research/discovery, reusable Scripts/Macros, testing/simulation proposals, provenance and approval/publishing boundaries. Created mechanics remain proposals until explicitly accepted through their owning rules. It must preserve MSS-02 resource, MSS-03 resolution, MSS-04 Rune, permission/provenance and external-owner boundaries and must not fabricate missing formulas.
 
-Remaining tranches: MSS-06 traditions/schools/sources/casting profiles; MSS-07 rituals/circles/components/cooperative casting; MSS-08 countermagic/resistance/wards/suppression/backlash; MSS-09 spirits/patronage/worship/pacts/favor; MSS-10 portals/gates/multiversal transit; MSS-11 temporal/causal branching/paradox; MSS-12 content packs/workbench/balance/golden proof.
+**Effective successor after MSS-05:** RSR-01. MSS-06 remains the next MSS tranche but is intentionally gated until RSR-07 completes reconciliation of newly recovered supernatural source material against MSS-01..04.
+
+Remaining MSS tranches after RSR: MSS-06 traditions/schools/sources/casting profiles; MSS-07 rituals/circles/components/cooperative casting; MSS-08 countermagic/resistance/wards/suppression/backlash; MSS-09 spirits/patronage/worship/pacts/favor; MSS-10 portals/gates/multiversal transit; MSS-11 temporal/causal branching/paradox; MSS-12 content packs/workbench/balance/golden proof.
+
+## RSR — Recovered Source Reconciliation
+
+Program: `governance/application-planning/recovered-source-reconciliation/RSR_RECOVERED_SOURCE_RECONCILIATION_PROGRAM.md`  
+Backlog: `governance/application-planning/recovered-source-reconciliation/RSR_PROGRAM_BACKLOG.json`
+
+Activation: after MSS-05. Successor: MSS-06.
+
+Tranches:
+
+- RSR-01 archive preservation, extraction, provenance, attribution and disposition registry.
+- RSR-02 completed MIB-11 World/Reality/Timeline reconciliation.
+- RSR-03 completed ICF content/crafting/food/alchemy reconciliation.
+- RSR-04 completed CEL cozy/economy/life-loop reconciliation.
+- RSR-05 completed LSS loot/scavenge/salvage reconciliation.
+- RSR-06 completed LNG language/culture/script reconciliation.
+- RSR-07 completed MSS-01..04 supernatural-foundation reconciliation and downstream routing.
+
+RSR is not permission to promote old assistant-generated content. It is the governed bridge from newly recovered source evidence into existing completed foundations and future owners.
 
 ## CCP — Companion & Creature Partnership
 
 Program: `governance/application-planning/companion-creature-partnership/CCP_COMPANION_CREATURE_PARTNERSHIP_PROGRAM.md`  
 Backlog: `governance/application-planning/companion-creature-partnership/CCP_PROGRAM_BACKLOG.json`
 
-Tranches: CCP-01 source/catalog crosswalk; CCP-02 identity/bond/agency; CCP-03 taming/recruitment; CCP-04 training/commands; CCP-05 care/health/aging; CCP-06 mounts/work/travel; CCP-07 combat companions/familiars; CCP-08 breeding/lineage; CCP-09 habitats/facilities; CCP-10 ecology/lifecycle; CCP-11 content/workbench/golden proof.
+Tranches: CCP-01 source/catalog crosswalk; CCP-02 identity/bond/agency; CCP-03 taming/recruitment; CCP-04 training/commands; CCP-05 care/health/aging; CCP-06 mounts/work/travel; CCP-07 combat companions/familiars; CCP-08 breeding/lineage; CCP-09 habitats/facilities; CCP-10 ecology/lifecycle; CCP-11 content/workbench/golden proof. Recovered species/creature/companion material is routed here by RSR-01/07 as appropriate.
 
 ## DPL — Deep Professions & Life Simulation
 
 Program: `governance/application-planning/deep-professions-life-simulation/DPL_DEEP_PROFESSIONS_LIFE_SIMULATION_PROGRAM.md`  
 Backlog: `governance/application-planning/deep-professions-life-simulation/DPL_PROGRAM_BACKLOG.json`
 
-Tranches: DPL-01 source/profession taxonomy; DPL-02 profession/mastery/service profiles; DPL-03 research/discovery; DPL-04 chemistry/pharma/toxicology; DPL-05 medicine/disease/injury/poison; DPL-06 mining/extraction; DPL-07 refining/manufacturing/supply chains; DPL-08 business/enterprise; DPL-09 mentorship/teaching; DPL-10 arts/recreation/culture; DPL-11 household/family/legacy; DPL-12 fear/stress/sanity/trauma; DPL-13 cybernetics/symbiotes/cloning/biotech; DPL-14 integrated golden life proof.
+Tranches: DPL-01 source/profession taxonomy; DPL-02 profession/mastery/service profiles; DPL-03 research/discovery; DPL-04 chemistry/pharma/toxicology; DPL-05 medicine/disease/injury/poison; DPL-06 mining/extraction; DPL-07 refining/manufacturing/supply chains; DPL-08 business/enterprise; DPL-09 mentorship/teaching; DPL-10 arts/recreation/culture; DPL-11 household/family/legacy; DPL-12 fear/stress/sanity/trauma; DPL-13 cybernetics/symbiotes/cloning/biotech; DPL-14 integrated golden life proof. Recovered bioengineering, post-scarcity, profession, medicine and life-simulation material is routed here after reconciliation.
 
 ## MAI — Map & Visual Asset Interoperability
 
 Program: `governance/application-planning/map-asset-interoperability/MAI_MAP_ASSET_INTEROPERABILITY_PROGRAM.md`  
 Backlog: `governance/application-planning/map-asset-interoperability/MAI_PROGRAM_BACKLOG.json`
 
-Tranches: MAI-01 ecosystem/format/license survey; MAI-02 canonical map/placeable/package schema; MAI-03 grid/coordinates/scale/projection; MAI-04 terrain/autotile/connectivity; MAI-05 layers/objects/occlusion/geometry; MAI-06 universal import adapters; MAI-07 semantic taxonomy/resolver/substitution; MAI-08 intake/composer/workbench; MAI-09 World/Scene/Combat/Exploration/Creator integration; MAI-10 corpus/performance/interoperability proof.
+Tranches: MAI-01 ecosystem/format/license survey; MAI-02 canonical map/placeable/package schema; MAI-03 grid/coordinates/scale/projection; MAI-04 terrain/autotile/connectivity; MAI-05 layers/objects/occlusion/geometry; MAI-06 universal import adapters; MAI-07 semantic taxonomy/resolver/substitution; MAI-08 intake/composer/workbench; MAI-09 World/Scene/Combat/Exploration/Creator integration; MAI-10 corpus/performance/interoperability proof. Recovered embedded visual references are routed to MAI with their archive/media provenance intact.
 
 ## AAI — Audio Asset & Soundscape Interoperability
 
@@ -108,14 +148,14 @@ Tranches: AAI-01 ecosystem/API/license/authority survey; AAI-02 source/asset/cue
 
 Program: `governance/application-planning/worldbuilding-campaign-intelligence/WCI_WORLDBUILDING_CAMPAIGN_INTELLIGENCE_PROGRAM.md`  
 Backlog: `governance/application-planning/worldbuilding-campaign-intelligence/WCI_PROGRAM_BACKLOG.json`  
-Tranches: WCI-01..05 per canonical program/backlog.
+Tranches: WCI-01..05 per canonical program/backlog. RSR routes recovered world history, factions, campaign frameworks and creator-relevant lore here after completed-foundation reconciliation.
 
 ## SCL — Strategic Command & Large-Scale Conflict
 
 Program: `governance/application-planning/strategic-command-large-scale-conflict/SCL_STRATEGIC_COMMAND_LARGE_SCALE_CONFLICT_PROGRAM.md`  
 Backlog: `governance/application-planning/strategic-command-large-scale-conflict/SCL_PROGRAM_BACKLOG.json`
 
-Tranches: SCL-01 source/scale map; SCL-02 unit/formation model; SCL-03 command/roles/orders; SCL-04 phase/order resolution; SCL-05 morale/cohesion; SCL-06 logistics/supply/readiness; SCL-07 terrain/objectives/sieges; SCL-08 vehicle/mecha/ship/fleet integration; SCL-09 individual↔unit effects/casualties; SCL-10 faction/settlement/world consequences; SCL-11 Workbench/scenarios/golden proof.
+Tranches: SCL-01 source/scale map; SCL-02 unit/formation model; SCL-03 command/roles/orders; SCL-04 phase/order resolution; SCL-05 morale/cohesion; SCL-06 logistics/supply/readiness; SCL-07 terrain/objectives/sieges; SCL-08 vehicle/mecha/ship/fleet integration; SCL-09 individual↔unit effects/casualties; SCL-10 faction/settlement/world consequences; SCL-11 Workbench/scenarios/golden proof. Recovered empire, war, faction and strategic material is routed here after source disposition.
 
 ## VTI — Virtual Tabletop Interoperability
 
@@ -128,11 +168,11 @@ Tranches: VTI-01..12 per canonical program/backlog; VTI-09 platform selection re
 Program: `governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_GAMEPLAY_COVERAGE_CLOSURE_PROGRAM.md`  
 Backlog: `governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json`
 
-Tranches: SGC-01 corpus/disposition taxonomy; SGC-02 mechanics/runtime coverage; SGC-03 abilities/powers/progression coverage; SGC-04 content-entity coverage; SGC-05 specialized/edge-case gameplay closure; SGC-06 UX/Creator/avatar/accessibility coverage; SGC-07 owner-decision/supersession queue; SGC-08 final source-to-product closure proof.
+Tranches: SGC-01 corpus/disposition taxonomy; SGC-02 mechanics/runtime coverage; SGC-03 abilities/powers/progression coverage; SGC-04 content-entity coverage; SGC-05 specialized/edge-case gameplay closure; SGC-06 UX/Creator/avatar/accessibility coverage; SGC-07 owner-decision/supersession queue; SGC-08 final source-to-product closure proof. The RSR source bundle and every RSR disposition become mandatory SGC corpus inputs so final coverage closure cannot lose this recovered material.
 
 ## MIB continuation
 
-MIB-15 is `completed_verified`. MIB-16 diagnostics/provenance/dependency/search follows SGC-08; MIB-17 family safety follows MIB-16; MIB-18 backbone integration/portability/readiness follows MIB-17.
+MIB-15 is `completed_verified`. RSR-02 reconciles newly recovered world/reality/timeline material against completed MIB-11. MIB-16 diagnostics/provenance/dependency/search still follows SGC-08; MIB-17 family safety follows MIB-16; MIB-18 backbone integration/portability/readiness follows MIB-17.
 
 ## SMB / BRP / MCB
 
@@ -154,6 +194,7 @@ MCB remains owner-approved commercial preparation outside the automatic critical
 - One canonical owner per live state; new programs orchestrate/projection-map rather than duplicate ledgers.
 - Visibility filtering precedes search/counts/summaries/AI/diagnostics/export.
 - AI may assist/propose but never gains mechanical, canonical, permission, consent, ownership, hidden-information, GM-adjudication, publishing or irreversible-advancement authority.
+- Recovered historical assistant output is not canonical merely because it is archived.
 - Migrations are evidence-driven; `0022` is not pre-reserved.
 - Exact-head repository health and governed self-hosted Windows/Linux deterministic validation remain required for implementation tranches.
 - Product voice remains warm, knowledgeable, encouraging and restrained; BRP-03 owns final product-wide voice/onboarding/help acceptance before beta.
