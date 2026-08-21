@@ -6,7 +6,9 @@ on:
       - 'governance/ai/**'
       - 'governance/repository-health/**'
       - 'governance/application-planning/**'
+      - 'governance/source-material/recovered-legacy/**'
       - 'scripts/validate_repository_health.py'
+      - 'scripts/validate_rsr_01.py'
       - '.github/workflows/validate-repository-health.yml'
   push:
     branches: [main]
@@ -14,7 +16,9 @@ on:
       - 'governance/ai/**'
       - 'governance/repository-health/**'
       - 'governance/application-planning/**'
+      - 'governance/source-material/recovered-legacy/**'
       - 'scripts/validate_repository_health.py'
+      - 'scripts/validate_rsr_01.py'
       - '.github/workflows/validate-repository-health.yml'
   workflow_dispatch:
 
@@ -52,6 +56,12 @@ jobs:
           test "${RUNNER_OS}" = "Linux"
           python3 --version
           git --version
+
+      - name: Validate RSR-01 recovered-source integrity
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/validate_rsr_01.py
 
       - name: Validate canonical AIOC state
         shell: bash

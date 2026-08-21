@@ -61,3 +61,15 @@ Owner-authored statements and explicit owner corrections inside these conversati
 ## Known initial coverage observations
 
 Repository/source-recovery searches already contain evidence for some subjects including Black Vegas, Sharra, Dionasia and Vertigon; those are presumed variant/additional provenance until reconciliation proves otherwise. Initial searches did not locate Pencrona, Magen Galaxy or Isekai Honey, making them priority `new-candidate` checks rather than automatic canon.
+
+## RSR-01 extraction and disposition artifacts
+
+RSR-01 verified the retained archive and all 24 constituent checksums, indexed 102 visible saved turns (47 owner/user and 55 assistant), inventoried 12 unique embedded media objects excluding auth avatars (11 substantive), and assigned every source a durable disposition and downstream route. The original archive remains the exact-byte source; these derived artifacts do not replace it.
+
+- `RSR-01_EXTRACTION_RECEIPT.json` — archive and constituent checksum receipt plus extraction counts.
+- `RSR-01_MESSAGE_PROVENANCE_INDEX.json` — position-aligned owner/assistant role stream and exact normalized-text SHA-256 index for all 102 saved turns.
+- `RSR-01_MEDIA_PROVENANCE_INDEX.json` — embedded media checksums, sizes, MIME types, occurrences and substantive/UI classification.
+- `RSR-01_DISPOSITION_REGISTRY.json` — source-level dispositions, dedup evidence and downstream routes.
+- `RSR-01_COMPLETION_REPORT.md` — completion evidence and authority boundaries.
+
+RSR-01 disposition counts are 14 `existing-needs-reconciliation` and 10 `new-candidate`. Neither disposition promotes content to canon. RSR-02 owns the next World/Reality/Timeline reconciliation pass.
