@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 6.0.0  
-**Status:** MIB-15 SELECTED — OWNER-APPROVED INTERSTITIAL PROGRAMS PLANNED BEFORE MIB-16  
+**Version:** 6.1.0  
+**Status:** MIB-15 SELECTED — EXPANDED OWNER-APPROVED INTERSTITIAL PROGRAMS PLANNED BEFORE MIB-16  
 **Owner and final authority:** John Brandon Turner  
 **Updated:** 2026-08-20
 
@@ -23,31 +23,43 @@ Current implementation authority remains **MIB-15 only**, state `selected_not_st
 
 ## Effective forward order
 
-MIB numbering remains stable. The following owner-approved interstitial programs execute after MIB-15 and before MIB-16:
+MIB numbering remains stable. Owner-approved interstitial programs now execute after MIB-15 and before MIB-16 in this dependency order:
 
 `MIB-15`
 → `LSS-01 … LSS-10`
 → `LNG-01 … LNG-06`
+→ `MSS-01 … MSS-12`
+→ `CCP-01 … CCP-11`
+→ `DPL-01 … DPL-14`
 → `MAI-01 … MAI-10`
 → `WCI-01 … WCI-05`
+→ `SCL-01 … SCL-11`
 → `VTI-01 … VTI-12`
+→ `SGC-01 … SGC-08`
 → `MIB-16`
 → `MIB-17`
 → `MIB-18`
-→ planned successor programs.
+→ `SMB-01 … SMB-18` as the default post-MIB product-completion successor.
+
+MCB remains an owner-approved commercial-preparation program whose evidence-independent tranches may later be selected in bounded parallel; it is not automatically inserted into the implementation critical path.
 
 Reason for placement:
 - MIB-15 provides provider-neutral proposal/context/fake-provider infrastructure without making later programs AI-dependent.
-- LSS establishes physical decomposition/recovery before cross-system diagnostics.
-- LNG establishes timeline-aware language/world knowledge before creator/world intelligence.
-- MAI establishes vendor-neutral map/visual ingestion before world/campaign and VTT bridges.
-- WCI composes World/relationship/history/campaign/creator views before external VTT projection.
-- VTI consumes mature rules/map/campaign projections.
-- MIB-16 then builds diagnostics/provenance/dependency/search across **all** of these surfaces once, rather than being repeatedly retrofitted.
-- MIB-17 can account for external VTT, imported content and creator/world surfaces in family-safety capability policy.
+- LSS establishes physical decomposition/recovery.
+- LNG establishes language, script and timeline-aware knowledge needed by supernatural/world systems.
+- MSS turns retained magic/Rune/supernatural/portal/temporal design into runtime before world/campaign/VTT surfaces are finalized.
+- CCP consumes ICF/MSS/relationship/vehicle foundations for companions, mounts, familiars, breeding and creature ecology.
+- DPL consumes ICF/CEL/LSS/CCP/MSS plus economy/base/crafting foundations for deep profession/life loops.
+- MAI then establishes vendor-neutral map/visual ingestion for the broader mature gameplay surface.
+- WCI composes World/relationship/history/campaign/creator views over the expanded systems.
+- SCL consumes WCI/MAI/vehicle/faction foundations for squad/fleet/army command and cross-scale consequences.
+- VTI consumes the mature rules/map/campaign/strategic-command projections rather than immediately needing retrofits.
+- SGC performs final retained-source/gameplay coverage closure so no discussed/source-backed system silently disappears into a generic future bucket.
+- MIB-16 then builds diagnostics/provenance/dependency/search across all of these surfaces once.
+- MIB-17 applies family-safety capability policy across the expanded surface.
 - MIB-18 performs final integrated backbone portability/readiness proof.
 
-No new interstitial program is implementation-authorized until its predecessor is completed and the canonical selector advances.
+No planned program is implementation-authorized until its predecessor is completed and the canonical selector advances.
 
 ## LSS — Loot, Scavenge & Salvage
 
@@ -56,7 +68,7 @@ Backlog: `governance/application-planning/loot-scavenge-salvage/LSS_PROGRAM_BACK
 
 Purpose: make objects/Assets/wrecks inspectable, partially dismantlable, component-bearing, repairable and reusable while preserving D17/MIB-12/MIB-14/MIB-13/APW/ICF authority.
 
-Tranches: LSS-01 source/authority crosswalk; LSS-02 recoverable component/assembly schema; LSS-03 condition/quality/rarity grammar; LSS-04 loot transfers; LSS-05 scavenge opportunities; LSS-06 disassembly/extraction; LSS-07 decomposition libraries; LSS-08 repair/cannibalization/reassembly; LSS-09 economy/projects/cozy/hazards; LSS-10 search/workbench/golden proof.
+Tranches: LSS-01 source/authority crosswalk; LSS-02 component/assembly schema; LSS-03 condition/quality/rarity grammar; LSS-04 loot transfer; LSS-05 scavenge opportunities; LSS-06 disassembly/extraction; LSS-07 decomposition libraries; LSS-08 repair/cannibalization/reassembly; LSS-09 economy/projects/cozy/hazards; LSS-10 search/workbench/golden proof.
 
 ## LNG — Language & Linguistics Foundation
 
@@ -66,6 +78,33 @@ Backlog: `governance/application-planning/language-linguistics/LNG_PROGRAM_BACKL
 Purpose: track/build/use languages with lexicons, scripts, grammar, families, dialects, historical evolution and gameplay knowledge while keeping generation proposal-only.
 
 The supplied Dominix Arcan/Western/Eastern/Lower Common material is future-stage reference relative to the current Dominix setting and must not leak backward into present-era campaigns.
+
+## MSS — Magic & Supernatural Systems
+
+Program: `governance/application-planning/magic-supernatural-systems/MSS_MAGIC_SUPERNATURAL_SYSTEMS_PROGRAM.md`  
+Backlog: `governance/application-planning/magic-supernatural-systems/MSS_PROGRAM_BACKLOG.json`
+
+Purpose: make retained magic, Rune Construction, spell/power runtime, traditions, rituals, counterplay, spirits/divine relationships, portals and temporal/causal play mechanically real while preserving existing Action/Event/Character/World/Crafting authority.
+
+Tranches: MSS-01 source/taxonomy; MSS-02 resources/costs/strain; MSS-03 spell/power runtime; MSS-04 Rune runtime/blind GM; MSS-05 spell research/authoring/scripts; MSS-06 traditions/schools/sources; MSS-07 rituals/cooperative casting; MSS-08 countermagic/resistance/backlash; MSS-09 spirits/worship/pacts/favor; MSS-10 portals/gates; MSS-11 temporal/causal play; MSS-12 content/workbench/golden proof.
+
+## CCP — Companion & Creature Partnership
+
+Program: `governance/application-planning/companion-creature-partnership/CCP_COMPANION_CREATURE_PARTNERSHIP_PROGRAM.md`  
+Backlog: `governance/application-planning/companion-creature-partnership/CCP_PROGRAM_BACKLOG.json`
+
+Purpose: complete pets, familiars, mounts, trained/service/work/combat companions, care, breeding, habitats and creature ecology without replacing ICF harvest/husbandry, creature identity, relationships or combat authority.
+
+Tranches: CCP-01 source/catalog crosswalk; CCP-02 identity/bond/agency; CCP-03 taming/recruitment; CCP-04 training/commands; CCP-05 care/health/aging; CCP-06 mounts/work/travel; CCP-07 combat companions/familiars; CCP-08 breeding/lineage; CCP-09 habitats/facilities; CCP-10 ecology/lifecycle; CCP-11 content/workbench/golden proof.
+
+## DPL — Deep Professions & Life Simulation
+
+Program: `governance/application-planning/deep-professions-life-simulation/DPL_DEEP_PROFESSIONS_LIFE_SIMULATION_PROGRAM.md`  
+Backlog: `governance/application-planning/deep-professions-life-simulation/DPL_PROGRAM_BACKLOG.json`
+
+Purpose: provide substantial profession/life loops that generic Crafting or content production cannot safely absorb: research, chemistry/pharma, medicine/afflictions, mining/industry, business, mentorship, arts, household/legacy, psychological stress/recovery and augmentation.
+
+Tranches: DPL-01 source/profession taxonomy; DPL-02 profession/mastery/service profiles; DPL-03 research/discovery; DPL-04 chemistry/pharma/toxicology; DPL-05 medicine/disease/injury/poison; DPL-06 mining/extraction; DPL-07 refining/manufacturing/supply chains; DPL-08 business/enterprise; DPL-09 mentorship/teaching; DPL-10 arts/recreation/culture; DPL-11 household/family/legacy; DPL-12 fear/stress/sanity/trauma; DPL-13 cybernetics/symbiotes/cloning/biotech; DPL-14 integrated golden life proof.
 
 ## MAI — Map & Visual Asset Interoperability
 
@@ -81,25 +120,53 @@ Purpose: natively and intuitively ingest practical tilesets, maps, props, modula
 Program: `governance/application-planning/worldbuilding-campaign-intelligence/WCI_WORLDBUILDING_CAMPAIGN_INTELLIGENCE_PROGRAM.md`  
 Backlog: `governance/application-planning/worldbuilding-campaign-intelligence/WCI_PROGRAM_BACKLOG.json`
 
-Purpose: solve wiki/chronicle/family/diplomacy/campaign/manuscript/continuity problems through projections over canonical Multiversal entities. It is not a clone of a specific worldbuilding vendor and creates no parallel World/campaign ledger.
+Purpose: solve wiki/chronicle/family/diplomacy/campaign/manuscript/continuity problems through projections over canonical Multiversal entities. It creates no parallel World/campaign ledger.
 
-Tranches: WCI-01 knowledge workspace; WCI-02 history/calendars/timelines/Reality explorer; WCI-03 relationship/genealogy/organization/diplomacy explorer; WCI-04 living campaign/GM/session workspace; WCI-05 creator writing/continuity/consequence analysis and golden proof.
+## SCL — Strategic Command & Large-Scale Conflict
+
+Program: `governance/application-planning/strategic-command-large-scale-conflict/SCL_STRATEGIC_COMMAND_LARGE_SCALE_CONFLICT_PROGRAM.md`  
+Backlog: `governance/application-planning/strategic-command-large-scale-conflict/SCL_PROGRAM_BACKLOG.json`
+
+Purpose: support squads, units, formations, armies, fleets and organized forces with command hierarchy, orders, morale, logistics, strategic position and cross-scale consequences while ordinary Combat/Action/Event remains canonical.
+
+Tranches: SCL-01 source/scale map; SCL-02 unit/formation model; SCL-03 command/roles/orders; SCL-04 phase/order resolution; SCL-05 morale/cohesion; SCL-06 logistics/supply/readiness; SCL-07 terrain/objectives/sieges; SCL-08 vehicle/mecha/ship/fleet integration; SCL-09 individual↔unit effects/casualties; SCL-10 faction/settlement/world consequences; SCL-11 Workbench/scenarios/golden proof.
 
 ## VTI — Virtual Tabletop Interoperability
 
 Program: `governance/application-planning/virtual-tabletop-interoperability/VTI_VIRTUAL_TABLETOP_INTEROPERABILITY_PROGRAM.md`  
 Backlog: `governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json`
 
-Purpose: make Multiversal usable through compatible external VTTs at export, synchronized-companion or native-system depth while Multiversal remains rules/campaign authority.
+Purpose: make Multiversal usable through compatible external VTTs at export, synchronized-companion or native-system depth while Multiversal remains rules/campaign authority. VTI is platform-neutral through VTI-08; VTI-09 selects from current evidence.
 
-VTI is platform-neutral through VTI-08. VTI-09 chooses the first deep platform integration only from then-current API/licensing/capability evidence; no vendor is preselected by this roadmap.
+## SGC — Source & Gameplay Coverage Closure
+
+Program: `governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_GAMEPLAY_COVERAGE_CLOSURE_PROGRAM.md`  
+Backlog: `governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json`
+
+Purpose: require every retained source mechanic/content/design requirement to receive an explicit implementation/planning/content/superseded/unsupported/unresolved/provenance disposition. Completion requires zero unclassified retained concepts; missing source values are not invented.
+
+Tranches: SGC-01 corpus/disposition taxonomy; SGC-02 mechanics/runtime coverage; SGC-03 abilities/powers/progression coverage; SGC-04 content-entity coverage; SGC-05 specialized/edge-case gameplay closure; SGC-06 UX/Creator/avatar/accessibility coverage; SGC-07 owner-decision/supersession queue; SGC-08 final source-to-product closure proof.
 
 ## MIB continuation
 
 - **MIB-15 — AI Provider Abstraction, Fake Provider and Context/Proposal Pipeline** — `selected_not_started`, current.
-- **MIB-16 — Diagnostics, Provenance, Dependency and Search Engineering Surfaces** — follows VTI-12 under the effective order.
+- **MIB-16 — Diagnostics, Provenance, Dependency and Search Engineering Surfaces** — follows SGC-08 under the effective order.
 - **MIB-17 — Family Safety Capability and Policy Foundation** — follows MIB-16.
 - **MIB-18 — Backbone Integration, Portability and Gated-Work Readiness Handoff** — follows MIB-17.
+
+## Post-MIB product completion — SMB
+
+Program: `governance/application-planning/system-maturation-buildout/SMB_SYSTEM_MATURATION_AND_BUILDOUT_PROGRAM.md`
+
+SMB-01 through SMB-18 remain the default post-MIB product-completion sequence: production platform realization; remote multiplayer; organizations/factions/settlements/kingdoms; exploration/travel/survival; full bases/housing; full vehicles; deep cross-system simulation; core content production; first-party campaign; full Player/GM/Creator UX; content sharing; real optional AI; remote alpha productization; security/privacy/family hardening; stabilization/scale; accessibility/localization/device completion; external beta/community foundations; release/commercial productization.
+
+SMB-10 explicitly owns finished Character appearance/avatar construction and asset assembly as part of complete Character product UX; SGC-06 must verify that the retained appearance/avatar requirements have an explicit implementation path.
+
+## Commercial preparation — MCB
+
+Program: `governance/application-planning/market-capture-brand-backbone/MCB_MARKET_CAPTURE_AND_BRAND_BACKBONE_PROGRAM.md`
+
+MCB-01 through MCB-25 remain owner-approved commercial preparation from market/category/customer research through brand/messaging, acquisition/content/community/lifecycle/analytics/pricing/growth, launch simulation and market expansion. Evidence-independent tranches may later be explicitly selected in bounded parallel; product-dependent claims/pricing/launch work waits for current evidence.
 
 ## Preserved/gated work
 
