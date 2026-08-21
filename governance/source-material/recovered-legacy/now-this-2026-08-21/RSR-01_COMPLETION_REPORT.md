@@ -22,7 +22,7 @@ RSR-01 preserves the exact archive identity and creates durable extraction, attr
 ## Durable artifacts
 
 - `RSR-01_EXTRACTION_RECEIPT.json` — exact archive/constituent checksums and extraction counts.
-- `RSR-01_MESSAGE_PROVENANCE_INDEX.json` — all 102 visible turns with role/attribution flags and exact normalized-text hashes; owner text is retained in full while assistant proposal text is represented by a bounded excerpt plus exact hash/length, with full proposal text recoverable from the checksum-bound MHT.
+- `RSR-01_MESSAGE_PROVENANCE_INDEX.json` — all 102 visible turns are position-indexed per source through role codes and exact normalized-text SHA-256 values; significant owner correction/source/visual flags are recorded by turn position. Exact conversation text remains in the checksum-bound retained MHT and is not duplicated into a parallel repository corpus.
 - `RSR-01_MEDIA_PROVENANCE_INDEX.json` — unique embedded media checksums, sizes, MIME types, source occurrences and substantive/UI classification.
 - `RSR-01_DISPOSITION_REGISTRY.json` — one explicit disposition and route per source, with representative pre-existing evidence paths where found.
 
