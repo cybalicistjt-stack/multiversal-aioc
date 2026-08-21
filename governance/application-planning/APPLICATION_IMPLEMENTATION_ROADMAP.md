@@ -1,8 +1,8 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 6.11.0  
-**Status:** LNG-03 SELECTED — LNG-02 COMPLETED_VERIFIED — LSS PROGRAM COMPLETED_VERIFIED — BRP BETA-READINESS GATE OWNER-APPROVED  
+**Version:** 6.12.0  
+**Status:** LNG-04 SELECTED — LNG-03 COMPLETED_VERIFIED — LSS PROGRAM COMPLETED_VERIFIED — BRP BETA-READINESS GATE OWNER-APPROVED  
 **Owner and final authority:** John Brandon Turner  
 **Updated:** 2026-08-21
 
@@ -10,7 +10,7 @@
 
 The runtime selector remains bootstrap → authority registry → current-work pointer → selected checkpoint → live GitHub evidence. This roadmap owns milestone/dependency intent but does not start planned work by itself.
 
-Current implementation authority is **LNG-03 only**, state `selected_not_started`. LNG-01 through LNG-02, LSS-01 through LSS-10 and MIB-15 are `completed_verified`.
+Current implementation authority is **LNG-04 only**, state `selected_not_started`. LNG-01 through LNG-03, LSS-01 through LSS-10 and MIB-15 are `completed_verified`.
 
 The owner operating rule is tranche-complete by default: `Continue` means execute the entire selected implementation tranche through governed start if needed, implementation, exact-head validation, merge, `completed_verified` closeout and strict-successor selection unless a genuine owner/environment/source blocker prevents completion. Validation queueing, an open PR, pending closeout or merely staging the next step is not a normal stopping boundary.
 
@@ -23,7 +23,11 @@ The owner operating rule is tranche-complete by default: `Continue` means execut
 - LSS-01 through LSS-10: `completed_verified`; the LSS program is complete.
 - LNG-01 — Source Intake, Language Registry & Timeline Authority: `completed_verified`.
 - LNG-02 — Lexicon, Phrase, Script & Provenance Model: `completed_verified`.
-- Current application main after LNG-02: `08c95b7443c7fe7c456c0ef5a60355ef980068b7`.
+- LNG-03 — Guided Language Construction Toolkit: `completed_verified`.
+- Current application main after LNG-03: `eb395560db3ddb8170c38b9ef51f7547aabc6307`.
+- LNG-03 exact-head evidence: application PR #261; validated head `e7c7f61314276b39efee1582122121647fe16991`; repository-health run `32487186243`; product-validation run `32487186581`; Windows job `96786256038`; Linux job `96786256125`; deterministic comparison job `96786935412`; matching receipt `f6ffd4cb6a6273a8bdfdcf34148dc7159d4b6427d83c7425d49d9d00b706e93b`.
+- LNG-03 delivered provenance-bearing construction rules across phonology, phonotactics, morphology, syntax, grammar, numerals, pronouns, tense/aspect, comparison and word formation; approachable basic and advanced creator workflows with authored/partial/unresolved state; explicit acceptance evidence before accepted canon projection; retained-source-safe unresolved fields rather than fabricated linguistic rules; LNG-02 decision contradiction reporting without mutation; and inherited LNG-01 temporal/visibility quarantine.
+- LNG-02 application merge: `08c95b7443c7fe7c456c0ef5a60355ef980068b7`.
 - LNG-02 exact-head evidence: application PR #260; validated head `4bef31e03f177c6cd37bef1ebcc038e93d99cc4a`; repository-health run `32483980384`; product-validation run `32483980530`; Windows job `96776276194`; Linux job `96776275913`; deterministic comparison job `96776876428`; matching receipt `740b8228d32e84b20925ffbe2c5c951e196917a65eb830f0e8b26f359961adc5`.
 - LNG-02 delivered explicit-vs-unresolved provenance-bearing language content, separate script identities and evidence-backed many-to-many language/script associations, accepted/candidate/reference/deprecated/rejected content and accepted/deprecated/rejected design-decision history, projection-first search/AI context, and inherited LNG-01 temporal/visibility quarantine. The retained-source starter model deliberately contains no invented lexicon, scripts, associations or exact design decisions because the governed intake does not provide an exact extracted payload.
 - LNG-01 application merge: `714dbf400269714be38271517e39f8b7832fcd05`.
@@ -46,7 +50,7 @@ The owner operating rule is tranche-complete by default: `Continue` means execut
 
 MIB numbering remains stable. The owner-approved interstitial programs execute after completed MIB-15 and before MIB-16 in this dependency order:
 
-`LNG-03 … LNG-06`
+`LNG-04 … LNG-06`
 → `MSS-01 … MSS-12`
 → `CCP-01 … CCP-11`
 → `DPL-01 … DPL-14`
@@ -84,7 +88,7 @@ Reason for placement:
 - BRP-01..11 converts that product into a supportable, recoverable, observable, updateable beta candidate with explicit `BETA_READY` proof before strangers/external cohorts become the normal test surface.
 - SMB-17 then owns real external beta/community foundations over a beta-ready product; SMB-18 hardens operations to commercial/release grade and owns stores/distribution, billing/entitlements when approved and launch operations.
 
-The LSS program is fully `completed_verified`. LNG-01 and LNG-02 are `completed_verified`. LNG-03 is selected but not started. Later LNG tranches/programs are not implementation-authorized until their predecessor is completed and the canonical selector advances.
+The LSS program is fully `completed_verified`. LNG-01 through LNG-03 are `completed_verified`. LNG-04 is selected but not started. Later LNG tranches/programs are not implementation-authorized until their predecessor is completed and the canonical selector advances.
 
 ## LSS — Loot, Scavenge & Salvage
 
@@ -132,9 +136,13 @@ LNG-01 preserves the exact six governed source records and four retained Dominix
 
 LNG-02 defines provenance-bearing words, compounds, phrases, idioms, ritual expressions, slang, pronunciation, meanings, etymology, scripts, examples, terminology and accepted/deprecated/rejected design decisions. Language and script identities remain distinct, and many-to-many language/script associations require explicit evidence. Missing facts remain explicitly unresolved instead of receiving inferred values. Ordinary runtime projections expose accepted records only; source-audit/GM views can retain candidate/reference/deprecated/rejected history. All LNG-02 content inherits LNG-01 timeline/visibility filtering before projection, search, counts or AI context. The retained-source starter deliberately leaves exact lexicon/script content empty until governed extraction supports it.
 
-**Current:** LNG-03 — Guided Language Construction Toolkit — `selected_not_started`.
+**Completed:** LNG-03 — Guided Language Construction Toolkit — `completed_verified`; application merge `eb395560db3ddb8170c38b9ef51f7547aabc6307`.
 
-LNG-03 builds approachable basic and advanced creator workflows for phonology, phonotactics, morphology, syntax, grammar, numerals, pronouns, tense/aspect, comparison and word formation. Construction output remains provenance-bearing proposal/authoring state distinct from accepted LNG-02 truth; unresolved fields remain unresolved, and existing accepted/deprecated/rejected decisions may be checked for contradiction without being overwritten. LNG-03 does not implement historical evolution, gameplay translation/knowledge or canonical generation, and all language/stage availability continues to inherit LNG-01 temporal/visibility authority.
+LNG-03 provides deterministic provenance-bearing construction rules for phonology, phonotactics, morphology, syntax, grammar, numerals, pronouns, tense/aspect, comparison and word formation. Its five-step basic and ten-domain advanced workflows preserve authored/partial/unresolved state rather than inventing missing facts. Accepted construction rules require explicit acceptance evidence; ordinary runtime projections expose accepted rules only while governed authoring/audit surfaces preserve proposals and history. LNG-03 can report explicit consistency or contradiction relationships to LNG-02 decisions without overwriting them, and all projection/search continues to inherit LNG-01 temporal/visibility filtering and future-stage Dominix quarantine.
+
+**Current:** LNG-04 — Families, Dialects, Registers & Historical Evolution — `selected_not_started`.
+
+LNG-04 will add provenance-bearing parent/descendant language stages, dialect and register distinctions, borrowing, semantic drift, sound/grammar changes and timeline-aware evolution. It must preserve earlier-era facts rather than retroactively rewriting them, leave unsupported chronology/family/evolution relationships unresolved, and inherit LNG-01 temporal authority plus LNG-02/LNG-03 accepted truth. LNG-04 does not implement LNG-05 Character knowledge/translation/gameplay integration or LNG-06 generation.
 
 ## MSS — Magic & Supernatural Systems
 
