@@ -1,16 +1,16 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 6.26.0  
-**Status:** RSR-05 SELECTED — RSR-01..04 COMPLETED_VERIFIED — MSS-05 COMPLETED_VERIFIED — MSS PAUSED FOR RECOVERED SOURCE RECONCILIATION — LNG PROGRAM COMPLETED_VERIFIED — LSS PROGRAM COMPLETED_VERIFIED — AAI OWNER-APPROVED PLANNED — BRP OWNER-APPROVED PLANNED  
+**Version:** 6.27.0  
+**Status:** RSR-06 SELECTED — RSR-01..05 COMPLETED_VERIFIED — MSS-05 COMPLETED_VERIFIED — MSS PAUSED FOR RECOVERED SOURCE RECONCILIATION — LNG PROGRAM COMPLETED_VERIFIED — LSS PROGRAM COMPLETED_VERIFIED — AAI OWNER-APPROVED PLANNED — BRP OWNER-APPROVED PLANNED  
 **Owner and final authority:** John Brandon Turner  
 **Updated:** 2026-08-21
 
 ## Authority rule
 
-Runtime authority remains bootstrap → authority registry → current-work pointer → selected checkpoint → live GitHub evidence. This roadmap owns dependency intent only. Current work is **RSR-05 — LSS Loot/Scavenge/Salvage Reconciliation**, state `selected_not_started`; it has no implementation branch or implementation authority until the next owner `Continue` governed-starts it.
+Runtime authority remains bootstrap → authority registry → current-work pointer → selected checkpoint → live GitHub evidence. This roadmap owns dependency intent only. Current work is **RSR-06 — LNG Language/Culture/Script Reconciliation**, state `selected_not_started`; it has no implementation branch or implementation authority until the next owner `Continue` governed-starts it.
 
-MSS is completed_verified through MSS-05 and is intentionally paused before MSS-06 while RSR-05..07 reconcile the recovered legacy source corpus against completed foundations. RSR-01 through RSR-04 are `completed_verified`.
+MSS is completed_verified through MSS-05 and is intentionally paused before MSS-06 while RSR-06..07 reconcile the recovered legacy source corpus against completed foundations. RSR-01 through RSR-05 are `completed_verified`.
 
 The owner execution rule remains tranche-complete: `Continue` executes the selected tranche through governed start, implementation/extraction/reconciliation as applicable, focused repair, declared validation, `completed_verified` closeout and strict-successor selection unless a genuine blocker survives.
 
@@ -31,6 +31,7 @@ The owner execution rule remains tranche-complete: `Continue` executes the selec
 - RSR-02: `completed_verified`; AIOC merge `f059d24423280918659802621951aa21bcfa8819`.
 - RSR-03: `completed_verified`; AIOC merge `a6dea89c358e29ec86dce57e8ac67bba3db44e56`.
 - RSR-04: `completed_verified`; AIOC merge `8b83b0b32894d36cf88a5cfb2675714d38791adf`.
+- RSR-05: `completed_verified`; AIOC merge `83241056ecb2fe962fa05ed0c43eeb9abdee77e2`.
 
 Completion evidence remains valid when a later source-reconciliation tranche is added. Reconciliation supplements completed work; it does not retroactively erase or rewrite valid completion evidence.
 
@@ -113,6 +114,24 @@ RSR-03 corrected the initial intake assumption that only the two explicitly rout
 
 RSR-04 preserves owner-grounded Vertigon prosperity/subsidization separately from generated immigration/resource-tier details; preserves the alternate Earth manufactured-scarcity premise as fictional setting context rather than a universal economic claim; requires Pencrona CEL profiles to consume the owner-established 32-hour-day/320-day-year World/calendar data without creating wall-clock progress; and retains Sherazzalla mite routines/subsidies, Black Vegas wagers/services, Carnival concept wagers, Goblin integration economies, Magen resource economies and Isekai game-economy hooks as source-bound proposals subject to their owning systems and consent/authority boundaries.
 
+### RSR-05 exact evidence
+
+- AIOC PR #610
+- validated head `d050cfcf33e633bf502165e4d425e6ca7440ef2e`
+- repository-health run `32521537482`; job `96894560287`
+- AIOC merge `83241056ecb2fe962fa05ed0c43eeb9abdee77e2`
+- 24 / 24 retained sources received an LSS relevance decision
+- previous RSR-05 route count: 4
+- supplemental material LSS signals recovered: 5
+- total material LSS signals: 9; no-material decisions: 15
+- 8 source-bound `rsr05:*` noncanonical candidate records preserved
+- 12 explicit ownership/uncertainty guardrails preserved
+- canonical LSS/Asset/inventory/economy/ICF mutation performed: false
+- LSS-01..10 remains authoritative; D17, MIB-12, MIB-13, MIB-14 and ICF-07 retain their owner domains
+- RSR-01 through RSR-05 and canonical AIOC health all passed on the exact PR head
+
+RSR-05 preserves the owner-authored Helldiving requirement that faction progression include weapons/equipment/trans-portal assistance while leaving specific gear, ranks and `Relic Salvage Rights` as proposals. It keeps Isekai loot/drop/inventory/corpse-recovery, Goblin Multiverse salvage professions, Dionasia scavenge/relic hooks, Carnival rare loot, Black Vegas special gear, Sherazzalla recovery/recycling ideas and Vertigon scrap-hive cues source-bound rather than turning them into universal loot rules. Biological harvesting remains ICF-07; artifact or relic mention alone does not imply lootability or salvageability; no universal drop table, loot rate, scavenge yield, salvage yield, rarity conversion or value formula was created.
+
 ## Recovered legacy source intake
 
 The Project Source archive `Now this.zip` is a governed retained input. Exact archive SHA-256: `2a5eae712f483d1fb33ff9fb0087e96c4eb8b71b287cc707c196a4c17a2f78f4`. It contains 24 MHT conversation exports spanning worlds/realities, species/cultures, magic/supernatural material, economy/life-simulation ideas, campaign/gameplay frameworks, history/timelines and visual references.
@@ -130,27 +149,27 @@ Hard rules:
 
 ## Effective forward order
 
-`RSR-05..07 → MSS-06..12 → CCP-01..11 → DPL-01..14 → MAI-01..10 → AAI-01..10 → WCI-01..05 → SCL-01..11 → VTI-01..12 → SGC-01..08 → MIB-16 → MIB-17 → MIB-18 → SMB-01..16 → BRP-01..11 → SMB-17 → SMB-18`
+`RSR-06..07 → MSS-06..12 → CCP-01..11 → DPL-01..14 → MAI-01..10 → AAI-01..10 → WCI-01..05 → SCL-01..11 → VTI-01..12 → SGC-01..08 → MIB-16 → MIB-17 → MIB-18 → SMB-01..16 → BRP-01..11 → SMB-17 → SMB-18`
 
 MCB remains owner-approved commercial preparation outside the automatic critical path; evidence-dependent public claims, final pricing/packaging and launch activation require current product evidence.
 
 ## ICF / CEL / LSS / LNG completed-family reconciliation rule
 
-The recovered source bundle arrived after ICF-01..15, CEL-01..06, LSS-01..10 and LNG-01..06 reached `completed_verified`. Their completion remains valid, but recovered evidence that belongs to those families must not be ignored. RSR therefore contains dedicated reconciliation tranches for ICF, CEL, LSS and LNG. Completed MIB-11 World/Reality taxonomy and MSS-01..04 receive the same treatment because the recovered corpus directly contains world/reality/timeline and supernatural material. RSR also records any additional provenance relevant to MSS-05 without weakening its verified completion. RSR-03 has completed the ICF reconciliation and RSR-04 has completed the CEL/economy/life-loop reconciliation without changing their canonical owners.
+The recovered source bundle arrived after ICF-01..15, CEL-01..06, LSS-01..10 and LNG-01..06 reached `completed_verified`. Their completion remains valid, but recovered evidence that belongs to those families must not be ignored. RSR therefore contains dedicated reconciliation tranches for ICF, CEL, LSS and LNG. Completed MIB-11 World/Reality taxonomy and MSS-01..04 receive the same treatment because the recovered corpus directly contains world/reality/timeline and supernatural material. RSR also records any additional provenance relevant to MSS-05 without weakening its verified completion. RSR-03 has completed the ICF reconciliation, RSR-04 has completed CEL/economy/life-loop reconciliation, and RSR-05 has completed LSS reconciliation without changing their canonical owners.
 
 ## LSS — Loot, Scavenge & Salvage
 
 Program: `governance/application-planning/loot-scavenge-salvage/LSS_LOOT_SCAVENGE_SALVAGE_PROGRAM.md`  
 Backlog: `governance/application-planning/loot-scavenge-salvage/LSS_PROGRAM_BACKLOG.json`
 
-Completed tranches: LSS-01 source/authority crosswalk; LSS-02 component/assembly schema; LSS-03 condition/quality/rarity grammar; LSS-04 loot transfer; LSS-05 scavenge opportunities; LSS-06 disassembly/extraction; LSS-07 decomposition libraries; LSS-08 repair/cannibalization/reassembly; LSS-09 economy/projects/cozy/hazards; LSS-10 search/workbench/golden proof. Recovered legacy source reconciliation is now selected as RSR-05 and does not invalidate LSS completion.
+Completed tranches: LSS-01 source/authority crosswalk; LSS-02 component/assembly schema; LSS-03 condition/quality/rarity grammar; LSS-04 loot transfer; LSS-05 scavenge opportunities; LSS-06 disassembly/extraction; LSS-07 decomposition libraries; LSS-08 repair/cannibalization/reassembly; LSS-09 economy/projects/cozy/hazards; LSS-10 search/workbench/golden proof. Recovered legacy source reconciliation completed_verified in RSR-05 and does not invalidate or replace LSS completion.
 
 ## LNG — Language & Linguistics Foundation
 
 Program: `governance/application-planning/language-linguistics/LNG_LANGUAGE_LINGUISTICS_PROGRAM.md`  
 Backlog: `governance/application-planning/language-linguistics/LNG_PROGRAM_BACKLOG.json`
 
-Completed tranches: LNG-01 intake/registry/timeline authority; LNG-02 lexicon/phrase/script/provenance; LNG-03 guided construction; LNG-04 families/dialects/registers/evolution; LNG-05 Character knowledge/translation/gameplay; LNG-06 generation/consistency/golden proof. Recovered language/culture/script evidence is reconciled by RSR-06.
+Completed tranches: LNG-01 intake/registry/timeline authority; LNG-02 lexicon/phrase/script/provenance; LNG-03 guided construction; LNG-04 families/dialects/registers/evolution; LNG-05 Character knowledge/translation/gameplay; LNG-06 generation/consistency/golden proof. Recovered language/culture/script evidence is the selected RSR-06 reconciliation target. LNG temporal/visibility rules remain authoritative: future/historical stages do not silently populate present-era knowledge, and generated words/translations remain proposals.
 
 ## MSS — Magic & Supernatural Systems
 
@@ -175,8 +194,8 @@ Backlog: `governance/application-planning/recovered-source-reconciliation/RSR_PR
 
 Activation: after MSS-05. Successor: MSS-06.
 
-**Completed:** RSR-01 archive/provenance, RSR-02 MIB-11 World/Reality/Timeline reconciliation, RSR-03 ICF Content/Crafting/Food/Alchemy reconciliation, and RSR-04 CEL Cozy/Economy/Life-Loop reconciliation — `completed_verified`.  
-**Current:** RSR-05 — LSS Loot/Scavenge/Salvage Reconciliation — `selected_not_started`.
+**Completed:** RSR-01 archive/provenance, RSR-02 MIB-11 World/Reality/Timeline reconciliation, RSR-03 ICF Content/Crafting/Food/Alchemy reconciliation, RSR-04 CEL Cozy/Economy/Life-Loop reconciliation, and RSR-05 LSS Loot/Scavenge/Salvage reconciliation — `completed_verified`.  
+**Current:** RSR-06 — LNG Language/Culture/Script Reconciliation — `selected_not_started`.
 
 Tranches:
 
@@ -184,11 +203,11 @@ Tranches:
 - RSR-02 completed MIB-11 World/Reality/Timeline reconciliation — `completed_verified`.
 - RSR-03 completed ICF content/crafting/food/alchemy reconciliation — `completed_verified`.
 - RSR-04 completed CEL cozy/economy/life-loop reconciliation — `completed_verified`.
-- RSR-05 completed LSS loot/scavenge/salvage reconciliation — `selected_not_started`.
-- RSR-06 completed LNG language/culture/script reconciliation.
-- RSR-07 completed MSS-01..04 supernatural-foundation reconciliation and downstream routing, including provenance implications for later MSS work.
+- RSR-05 completed LSS loot/scavenge/salvage reconciliation — `completed_verified`.
+- RSR-06 LNG language/culture/script reconciliation — `selected_not_started`.
+- RSR-07 MSS-01..04 supernatural-foundation reconciliation and downstream routing, including provenance implications for later MSS work.
 
-RSR is not permission to promote old assistant-generated content. It is the governed bridge from recovered source evidence into existing completed foundations and future owners. RSR-05 gains no implementation authority before the next owner `Continue` governed-starts it.
+RSR is not permission to promote old assistant-generated content. It is the governed bridge from recovered source evidence into existing completed foundations and future owners. RSR-06 gains no implementation authority before the next owner `Continue` governed-starts it.
 
 ## CCP — Companion & Creature Partnership
 
@@ -248,7 +267,7 @@ Tranches: SGC-01 corpus/disposition taxonomy; SGC-02 mechanics/runtime coverage;
 
 ## MIB continuation
 
-MIB-15 is `completed_verified`. RSR-02 reconciled recovered world/reality/timeline material against completed MIB-11; RSR-03 reconciled ICF-related recovered material against completed ICF-01..15; and RSR-04 reconciled CEL/economy/life-loop material against completed CEL-01..06 and existing Economy/Downtime/Cozy owners without replacing their authorities. MIB-16 diagnostics/provenance/dependency/search still follows SGC-08; MIB-17 family safety follows MIB-16; MIB-18 backbone integration/portability/readiness follows MIB-17.
+MIB-15 is `completed_verified`. RSR-02 reconciled recovered world/reality/timeline material against completed MIB-11; RSR-03 reconciled ICF-related recovered material against completed ICF-01..15; RSR-04 reconciled CEL/economy/life-loop material against completed CEL-01..06 and existing Economy/Downtime/Cozy owners; and RSR-05 reconciled loot/scavenge/salvage material against completed LSS-01..10 and D17/ICF/economy owners without replacing their authorities. MIB-16 diagnostics/provenance/dependency/search still follows SGC-08; MIB-17 family safety follows MIB-16; MIB-18 backbone integration/portability/readiness follows MIB-17.
 
 ## SMB / BRP / MCB
 
