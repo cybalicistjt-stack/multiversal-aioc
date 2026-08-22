@@ -1,0 +1,52 @@
+{
+  "schema_version": "0.1.0",
+  "program_id": "PAPT",
+  "title": "Pixel Asset Production Toolkit",
+  "status": "owner_approved_planned",
+  "approved_at": "2026-08-22T07:57:00-05:00",
+  "owner": "John Brandon Turner",
+  "governing_document": "governance/application-planning/pixel-asset-production-toolkit/PAPT_PIXEL_ASSET_PRODUCTION_TOOLKIT_PROGRAM.md",
+  "upstream_authorities": {
+    "character_appearance": "CAPP completed_verified",
+    "appearance_architecture": "PPIA-06",
+    "species_form_biology": "PPIA-05",
+    "asset_equipment_state": "PPIA-03",
+    "application_visual_language": "Multiversal-app DevelopmentBible/04-user-experience/themes-and-visual-language.md",
+    "corporate_rights_provenance": "NCG corporate controls"
+  },
+  "execution_model": {
+    "foundation_spine": ["PAPT-01", "PAPT-02", "PAPT-03"],
+    "fan_out_after_foundation": ["PAPT-04", "PAPT-05", "PAPT-06", "PAPT-07", "PAPT-08", "PAPT-09"],
+    "downstream": ["PAPT-10", "PAPT-11", "PAPT-12", "PAPT-13", "PAPT-14", "PAPT-15", "PAPT-16"],
+    "parallel_rule": "After PAPT-01 closes, PAPT-02 and PAPT-03 may run in parallel. After the shared-foundation gate, PAPT-04..09 may run in parallel where their domain source registries are available. PAPT-13 may evolve continuously alongside asset-family work."
+  },
+  "work_items": [
+    {"id":"PAPT-01","title":"Multiversal Pixel Style Authority","status":"planned","dependencies":[]},
+    {"id":"PAPT-02","title":"Palette, Shading & Outline Compiler","status":"planned","dependencies":["PAPT-01"]},
+    {"id":"PAPT-03","title":"Shared Asset Metadata, Rights & Provenance Schema","status":"planned","dependencies":["PAPT-01"]},
+    {"id":"PAPT-04","title":"Character Asset Forge","status":"planned","dependencies":["PAPT-01","PAPT-02","PAPT-03","CAPP"]},
+    {"id":"PAPT-05","title":"Creature Pixel Forge","status":"planned","dependencies":["PAPT-01","PAPT-02","PAPT-03","canonical creature/species source registry"]},
+    {"id":"PAPT-06","title":"Item, Equipment, Ingredient & Material Forge","status":"planned","dependencies":["PAPT-01","PAPT-02","PAPT-03","owning item/material source registries"]},
+    {"id":"PAPT-07","title":"Pixel Icon Forge","status":"planned","dependencies":["PAPT-01","PAPT-02","PAPT-03","UI semantic/state authority"]},
+    {"id":"PAPT-08","title":"Environment, Prop & Cozy Asset Forge","status":"planned","dependencies":["PAPT-01","PAPT-02","PAPT-03","world/facility/cozy source registries"]},
+    {"id":"PAPT-09","title":"Tile, Map & Marker Asset Forge","status":"planned","dependencies":["PAPT-01","PAPT-02","PAPT-03","map/world source authority"]},
+    {"id":"PAPT-10","title":"Sprite & Animation Assembler","status":"planned","dependencies":["PAPT-04 or PAPT-05","PAPT-02","PAPT-03"]},
+    {"id":"PAPT-11","title":"Equipment-Fit, Layer, Anchor & Occlusion QA Tool","status":"planned","dependencies":["PAPT-04","PAPT-06","CAPP-06"]},
+    {"id":"PAPT-12","title":"Portrait, Token & Derivative Export Factory","status":"planned","dependencies":["PAPT-03","PAPT-04 or PAPT-05","CAPP-08"]},
+    {"id":"PAPT-13","title":"Batch QA, Contact Sheet & Style-Lint System","status":"planned","dependencies":["PAPT-01","PAPT-02","PAPT-03"]},
+    {"id":"PAPT-14","title":"Production Queue, Regeneration & Dependency Graph","status":"planned","dependencies":["PAPT-03","PAPT-13","at least one working forge"]},
+    {"id":"PAPT-15","title":"Human Review, Correction & Canon/Commercial Promotion Workflow","status":"planned","dependencies":["PAPT-03","PAPT-13","NCG rights/provenance controls"]},
+    {"id":"PAPT-16","title":"Integrated Studio Pixel Asset Factory","status":"planned","dependencies":["PAPT-04","PAPT-05","PAPT-06","PAPT-07","PAPT-08","PAPT-09","PAPT-10","PAPT-11","PAPT-12","PAPT-13","PAPT-14","PAPT-15"]}
+  ],
+  "boundaries": {
+    "application_runtime_activation": false,
+    "public_release_authorized": false,
+    "marketing_publication_authorized": false,
+    "external_generation_spend_authorized": false,
+    "production_credentials_authorized": false,
+    "automatic_canon_promotion_authorized": false,
+    "merchandising_or_licensing_authorized": false
+  },
+  "active_work_item_id": null,
+  "next_planned_work_item_id": "PAPT-01"
+}
