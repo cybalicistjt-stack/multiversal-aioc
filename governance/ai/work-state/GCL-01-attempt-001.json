@@ -1,14 +1,15 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "work_item_id": "GCL-01",
   "attempt_id": "GCL-01-attempt-001",
   "track": "gm-construction-library",
   "source_program": "GCL",
   "repository": "cybalicistjt-stack/multiversal-aioc",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
   "selected_at": "2026-08-23T22:54:00Z",
   "started_at": "2026-08-23T22:54:00Z",
+  "completed_at": "2026-08-23T23:05:00Z",
   "governance_branch": "governance/gcl-01-construction-taxonomy-template-grammar",
   "base_sha": "8e33e92424acb0858d33e123fcc9a36439e06dde",
   "objective": "Execute GCL-01 — Construction Taxonomy & Reusable Template Grammar. Define the reusable template-family taxonomy, stable identity/version metadata, typed slot semantics, compatibility constraints, provenance classes, dual ready-to-use/construction-material projections, composition contracts, and versioned import/export shape that later GCL library families can share.",
@@ -23,23 +24,32 @@
     "difficulty_boundary": "Preserves F012/PPIA-11 independent pressure dimensions and uncertainty; no universal Challenge Rating, balance scalar or guarantee is introduced.",
     "validation": "Exact candidate passes AIOC repository-health validation and artifact cross-reference review before completed_verified closeout."
   },
-  "required_inputs": [
-    "GCL_GM_CONSTRUCTION_LIBRARY_PROGRAM.md",
-    "GCL_PROGRAM_BACKLOG.json",
-    "MV-IA-F005_CAMPAIGN_SCENE_AND_SESSION_BUILDER.md",
-    "MV-IA-F012_ENCOUNTER_BUILDER_AND_BALANCE_LAB.md",
-    "PPIA-11_ENCOUNTER_BALANCE_TAXONOMY_v0.1.0.json",
-    "current AIOC authority/retirement and completion-integrity policies"
+  "evidence": {
+    "aioc_pull_request": 632,
+    "validated_head": "2524eabe5713755ac3aab50b068e3057e15d7677",
+    "repository_health_run": 32672417641,
+    "repository_health_conclusion": "success",
+    "merge_sha": "82884a4d0bb0391288171629335552cf458ddbd7"
+  },
+  "governed_outputs": [
+    "governance/application-planning/gm-construction-library/GCL-01_SOURCE_AND_AUTHORITY_INVENTORY.md",
+    "governance/application-planning/gm-construction-library/GCL-01_CONSTRUCTION_TAXONOMY_v0.1.0.json",
+    "governance/application-planning/gm-construction-library/GCL-01_TEMPLATE_GRAMMAR_SCHEMA_v0.1.0.json",
+    "governance/application-planning/gm-construction-library/GCL-01_COMPOSITION_AND_INTERCHANGE_CONTRACT_v0.1.0.json",
+    "governance/application-planning/gm-construction-library/GCL-01_PROJECTION_AND_AUTHORITY_CONTRACT_v0.1.0.json",
+    "governance/application-planning/gm-construction-library/GCL-01_SYNTHETIC_GRAMMAR_FIXTURES_v0.1.0.json"
   ],
   "known_blockers": [],
   "nonauthorization": [
     "application runtime implementation",
     "MSS-10 or later MSS mutation",
-    "GCL-02 or later content-library production beyond synthetic grammar fixtures",
+    "automatic start of GCL-02 or another successor merely by GCL-01 completion",
     "universal difficulty or balance scoring",
     "automatic canon promotion",
     "permission or entitlement bypass",
     "AI authority or autonomous publication"
   ],
-  "next_action": "Create and cross-check the bounded GCL-01 foundation artifacts on the governed branch, validate the exact candidate, merge, mark GCL-01 completed_verified and make the dependency-safe GCL fan-out ready for explicit selection."
+  "next_ready_items": ["GCL-02", "GCL-03", "GCL-04", "GCL-05", "GCL-06", "GCL-13"],
+  "next_recommended": "GCL-02",
+  "next_action": "On the next explicit Continue GCL with no narrower successor selection, start GCL-02 — Hook, Premise & Inciting-Situation Library. GCL-03, GCL-04, GCL-05, GCL-06 and GCL-13 are also dependency-ready parallel successors."
 }
