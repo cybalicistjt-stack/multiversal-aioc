@@ -3,7 +3,7 @@
 **Program ID:** AAI  
 **Status:** OWNER-APPROVED — PLANNED INTERSTITIAL  
 **Activation:** after MAI-10  
-**Successor:** WCI-01  
+**Successor:** ISE-01  
 **Owner and final authority:** John Brandon Turner
 
 ## Purpose
@@ -44,13 +44,17 @@ A provider may expose any subset of: catalog search, metadata, authenticated pla
    Bind optional audio cues to existing canonical Scene/Event/World/Combat/Weather/Travel/Vehicle/Magic/Cozy states and transitions without moving gameplay authority into audio. Support enter/exit, combat start/end, spell/power, portal, vehicle, weather, stress/horror, downtime and GM-authored cues. GM manual override and disable remain first-class.
 
 8. **AAI-08 — GM Audio Workbench, Scene Presets & Campaign Preparation**  
-   Provide connected-source search, permission-aware preview, cue boards, scene soundscapes, intensity/mood controls, preset preparation, fallbacks, provenance/license display and manual assignment. The GM works from semantic intent rather than provider-specific catalog IDs whenever possible.
+   Provide connected-source search, permission-aware preview, cue boards, scene soundscapes, intensity/mood controls, preset preparation, fallbacks, provenance/license display and manual assignment. The GM works from semantic intent rather than provider-specific catalog IDs whenever possible. Preserve a compact controller/deck projection suitable for later ISE native Scene use.
 
 9. **AAI-09 — Multiplayer, Permissions, Remote Sync & Recording/Streaming Boundaries**  
    Define GM-device, player-device, provider-session and external-app playback modes; reconnect/rejoin behavior; player volume controls; GM-only/spoiler-safe cues; remote-alpha synchronization; attribution; and explicit recording/streaming restrictions. Hidden cue metadata must not leak to players.
 
 10. **AAI-10 — Multi-Provider Golden Audio Proof**  
     Prove one campaign can mix local user-owned audio, provider-controlled ambience, one-shots, unavailable-provider fallbacks, unresolved cues, remote players and deterministic cue state while respecting entitlements and permissions. The game must remain fully usable with all audio disabled.
+
+## Downstream relationship
+
+ISE follows AAI and consumes its provider-neutral cues, soundscapes, playback controls and entitlement-safe references in the native Scene/tabletop experience. ISE may present a simpler Scene Audio Deck and bind audio intent to regions/events, but AAI remains the canonical audio interoperability/playback owner.
 
 ## Invariants
 
@@ -65,4 +69,4 @@ A provider may expose any subset of: catalog search, metadata, authenticated pla
 - Hidden/GM-only cues and metadata remain permission-scoped.
 - Recording/streaming/export permissions are explicit capability/license decisions, not inferred.
 - AAI consumes MAI's provider-neutral interoperability patterns but remains a separate audio program.
-- WCI, SCL and VTI consume AAI rather than creating parallel audio ownership or playback ledgers.
+- ISE, WCI, SCL and VTI consume AAI rather than creating parallel audio ownership or playback ledgers.
