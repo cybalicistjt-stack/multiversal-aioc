@@ -1,10 +1,10 @@
 # MSS — Magic & Supernatural Systems
 
 **Program ID:** MSS  
-**Status:** IN PROGRESS — MSS-01..09 COMPLETED_VERIFIED — MSS-10 IN_PROGRESS  
+**Status:** IN PROGRESS — MSS-01..10 COMPLETED_VERIFIED — MSS-11 SELECTED_NOT_STARTED  
 **Activation:** after LNG-06  
-**Completed through:** MSS-09  
-**Current:** MSS-10  
+**Completed through:** MSS-10  
+**Current:** MSS-11  
 **Successor after program:** CCP-01  
 **Owner and final authority:** John Brandon Turner  
 **Planned:** 2026-08-20  
@@ -30,10 +30,10 @@ The owner-approved `RSR — Recovered Source Reconciliation` interstitial is `co
 6. **MSS-06 — Traditions, Schools, Sources & Casting Profiles** — `completed_verified`
 7. **MSS-07 — Rituals, Circles, Components & Cooperative Casting** — `completed_verified`
 8. **MSS-08 — Countermagic, Resistance, Wards, Suppression & Backlash** — `completed_verified`
-9. **MSS-09 — Spirits, Patronage, Worship, Pacts & Divine Favor** — `completed_verified`  
-   Added deterministic source/profile-bound spirit references anchored to existing owner-domain identities plus patronage, worship, pact and divine-favor relationship contracts with explicit source-authorized, GM-adjudicated and unresolved states. It created no spirit/entity/soul ledger or universal favor, devotion, pact-enforcement or divine-intervention formula. Completed at application PR #273 after exact-head repository health, self-hosted Linux/Windows validation and deterministic comparison; merge SHA `2bb1244709efbec3eecff17216c40f9aae318d68`.
-10. **MSS-10 — Portals, Gates & Multiversal Transit** — `in_progress`
-11. **MSS-11 — Temporal/Causal Play, Branching & Paradox Governance** — `planned`
+9. **MSS-09 — Spirits, Patronage, Worship, Pacts & Divine Favor** — `completed_verified`
+10. **MSS-10 — Portals, Gates & Multiversal Transit** — `completed_verified`  
+   Added deterministic owner-anchored portal endpoint, gate, transit-subject and transit-plan contracts plus non-mutating transit resolution proposals. World/Reality/Timeline/era/branch identities remain MIB-11/D18-owned, hidden routes remain visibility/GM-owned, supernatural execution remains MSS-03-routed and resources remain MSS-02-owned. No universal portal cost/range/stability/duration/capacity/geometry formula or automatic success/failure rule was introduced. Completed at application PR #274 after exact-head repository health, self-hosted Linux/Windows validation and deterministic comparison; validated head `d73a69c4110e2ced6bc9c793e748799a9e7c1f3f`, deterministic receipt `9b7ddedd616b24cf293c1876e32f5732fe9e59230f14fdf460a913573473fac7`, merge SHA `edb9731754a03ab57c52f9879968530cf5c186e6`.
+11. **MSS-11 — Temporal/Causal Play, Branching & Paradox Governance** — `selected_not_started`
 12. **MSS-12 — Supernatural Content Packs, Workbench, Balance & Golden Proof** — `planned`
 
 ## MSS-06 completed boundary
@@ -52,11 +52,13 @@ MSS-08 reuses MSS-01 `Countermagic` and `Defense/Warding` classifications and ad
 
 MSS-09 defines source/profile-bound spirit references and relationship contracts for patronage, worship, pacts and divine favor over completed MSS-01..08. Spirit references must anchor to existing World/Reality, Character, Item/Asset or Campaign/GM owner identities; MSS-09 creates no duplicate entity or soul ledger. Patronage and divine favor define no universal favor currency, intervention probability or reward schedule. Worship defines no universal devotion score or offering-value formula. Pacts require explicit distinct parties and do not transfer soul ownership or define universal enforcement/breach formulas. Source-authorized relationships require explicit evidence; ambiguous relationships remain GM-adjudicated or unresolved. Supernatural actions remain MSS-03-routed, resource mutation remains MSS-02-owned, rituals remain MSS-07-owned and counterplay remains MSS-08-owned.
 
-## MSS-10 active boundary
+## MSS-10 completed boundary
 
-MSS-10 may define deterministic source/profile-bound portal endpoints, gate definitions, access/activation contracts and multiversal-transit plans over completed MSS-01..09. Every origin/destination must reference existing World/Reality/Timeline, Scene/location or source-owned identities; MSS-10 creates no duplicate World/Reality/Timeline, era or branch ledger. Gate anchors may reference existing World/Scene, Item/Asset, Rune, ritual or source rules without defining universal range, radius, stability, duration, capacity or geometry. Transit actions remain MSS-03-routed and resource mutation remains MSS-02-owned. Hidden destinations, undiscovered routes and GM-only facts remain visibility/GM-owned. Temporal destination references may point at already-owned eras/timelines, but branch creation, paradox, retroactive history mutation and causal governance remain MSS-11-owned.
+MSS-10 defines deterministic source/profile-bound portal endpoints, gate definitions, access/activation contracts, owner-anchored transit subjects and multiversal-transit plans over completed MSS-01..09. Every origin/destination references existing World/Reality/Timeline, Scene/location or source-owned identities; MSS-10 creates no duplicate World/Reality/Timeline, era or branch ledger. Gate anchors may reference existing World/Scene, Item/Asset, Rune, ritual or source rules without defining universal range, radius, stability, duration, capacity or geometry. Transit actions remain MSS-03-routed and resource mutation remains MSS-02-owned. Hidden destinations, undiscovered routes and GM-only facts remain visibility/GM-owned. Temporal destination references may point at already-owned eras/timelines, but branch creation, paradox, retroactive history mutation and causal governance remain MSS-11-owned.
 
-RSR material remains provenance input. Pencrona's owner-established natural portals between eras and Helldiving's owner-required trans-portal assistance may be retained only as scoped source requirements through their owning authorities. Recovered assistant-generated portal markets, infernal portals, soul anchors, portal costs, stabilization rules, gate collapse, travel ranges and other portal mechanics remain proposal-only until separately accepted.
+The first exact-head MSS-10 candidate was not merged because focused regression validation exposed duplicate endpoint references being deduplicated before distinctness validation. The correction validates raw normalized endpoint and transit-subject references before deterministic sorting/deduplication; the corrected candidate then passed all required gates.
+
+RSR material remains provenance input. Pencrona's owner-established natural portals between eras, 30 Winds official/hidden portal travel and Helldiving trans-portal assistance are retained only as scoped source requirements through their owning authorities. Recovered assistant-generated portal markets, infernal portals, soul anchors, portal costs, stabilization rules, gate collapse, travel ranges and other portal mechanics remain proposal-only until separately accepted.
 
 ## Invariants
 
@@ -70,4 +72,4 @@ RSR material remains provenance input. Pencrona's owner-established natural port
 
 ## Current-work rule
 
-`MSS-09-attempt-001` is `completed_verified` with application PR #273 validated on exact candidate head `b87e6db00fed54d0b5020dd7e56a09f220055ac6` and squash-merged as `2bb1244709efbec3eecff17216c40f9aae318d68`. `MSS-10-attempt-001` is the sole current unfinished checkpoint and is `in_progress` on `integration/mss-10-portals-gates-multiversal-transit`; implementation authority is bounded to MSS-10 only. MSS-11 and later remain unauthorized until MSS-10 completed_verified closeout.
+`MSS-10-attempt-001` is `completed_verified` with application PR #274 validated on exact candidate head `d73a69c4110e2ced6bc9c793e748799a9e7c1f3f` and squash-merged as `edb9731754a03ab57c52f9879968530cf5c186e6`. `MSS-11-attempt-001` is the sole current successor checkpoint and is `selected_not_started`. MSS-11 receives no implementation authority until the next owner `Continue` governed-starts it; MSS-12 remains unauthorized.
