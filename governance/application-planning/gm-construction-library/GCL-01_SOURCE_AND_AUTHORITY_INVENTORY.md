@@ -57,7 +57,7 @@ A GCL template has three independent concepts that must never be conflated:
 
 1. **Library authority** — whether the reusable record itself is an approved GCL library record, draft, retired variant or synthetic fixture.
 2. **Content provenance** — whether individual material is source-backed fact, authored reusable template material, GM-authored customization, AI-generated candidate, Campaign-local adaptation, canonical/promoted content from an external owning domain, or synthetic fixture data.
-3. **Runtime/canon authority** — remains external to GCL and requires explicit incorporation/promotion by the owning domain.
+3. **runtime/canon authority** — remains external to GCL and requires explicit incorporation/promotion by the owning domain.
 
 An approved GCL library record therefore still has no automatic Campaign, Scene, Encounter, Session or canon authority.
 
