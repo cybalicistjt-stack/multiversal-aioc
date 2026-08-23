@@ -1,0 +1,81 @@
+{
+  "work_item": "GCL-01",
+  "version": "0.1.0",
+  "classification": "authored_governed_design",
+  "rule": "This taxonomy defines reusable construction families and shared classification dimensions. It does not itself create production library entries, runtime state, canon or universal balance authority.",
+  "template_families": [
+    {"id":"GCL-FAM-HOOK","name":"hook_premise_inciting_situation","owning_tranche":"GCL-02","role":"Creates reasons to engage, discover, respond, choose or become obligated without hard-coding one solution."},
+    {"id":"GCL-FAM-SITUATION","name":"situation_scene","owning_tranche":"GCL-03","role":"Creates playable social, environmental, logistical, ceremonial, emergency, exploratory or mixed situations."},
+    {"id":"GCL-FAM-ENCOUNTER","name":"encounter_archetype","owning_tranche":"GCL-04","role":"Creates structural encounter patterns across combat, social, investigation, exploration, stealth, chase, survival, hazard, puzzle/problem, travel, political and hybrid play."},
+    {"id":"GCL-FAM-OBJECTIVE","name":"objective_stakes_outcome","owning_tranche":"GCL-05","role":"Defines objectives, stakes, partial success, fail-forward, competing goals, time conditions and non-defeat outcomes."},
+    {"id":"GCL-FAM-COMPLICATION","name":"complication_escalation_reversal_twist","owning_tranche":"GCL-06","role":"Defines compatible pressure changes, reversals, complications and derailment-recovery material."},
+    {"id":"GCL-FAM-DIFFICULTY","name":"encounter_pressure_difficulty_shaping","owning_tranche":"GCL-07","role":"Defines advisory changes to independent encounter pressure dimensions while preserving uncertainty and no-guarantee rules."},
+    {"id":"GCL-FAM-ADVERSARY","name":"adversary_scaling_role_kit","owning_tranche":"GCL-08","role":"Defines source-respecting adversary role/capability transformations without universal stat multipliers."},
+    {"id":"GCL-FAM-MYSTERY","name":"mystery_investigation_clue_kit","owning_tranche":"GCL-09","role":"Defines revelation, clue redundancy, clue-source alternatives, information gates and failure-resistant investigation structures."},
+    {"id":"GCL-FAM-ADVENTURE","name":"adventure_structure","owning_tranche":"GCL-10","role":"Defines modular adventure skeletons and branching structures."},
+    {"id":"GCL-FAM-SESSION","name":"session_construction_kit","owning_tranche":"GCL-11","role":"Defines bounded session structures, pacing shapes and continuity/recovery arrangements."},
+    {"id":"GCL-FAM-CAMPAIGN","name":"campaign_architecture","owning_tranche":"GCL-12","role":"Defines reusable long-form campaign architectures without creating Campaign runtime truth."},
+    {"id":"GCL-FAM-NPC","name":"npc_dramatic_role_relationship_situation","owning_tranche":"GCL-13","role":"Defines reusable dramatic roles, motives, debts, secrets, obligations, rivalries and relationship pressures."},
+    {"id":"GCL-FAM-CONSEQUENCE","name":"reward_aftermath_consequence","owning_tranche":"GCL-14","role":"Defines information, access, favor, reputation, relationship, sanctuary, obligation and world-state consequence patterns."},
+    {"id":"GCL-FAM-TRANSFORM","name":"genre_tone_reskinning_transformation","owning_tranche":"GCL-15","role":"Defines expression-layer transformations that preserve governing mechanics and authority boundaries."},
+    {"id":"GCL-FAM-DISCOVERY","name":"discovery_recommendation_profile","owning_tranche":"GCL-16","role":"Defines intent-first discovery metadata and explanation requirements; not a normal GM-facing giant-list catalog."},
+    {"id":"GCL-FAM-COMPOSITION","name":"composition_recipe","owning_tranche":"GCL-17","role":"Defines compatibility-aware composition recipes and replace/remix operations over mature construction families."}
+  ],
+  "shared_classification_dimensions": {
+    "construction_need": ["start","continue","fill_missing_piece","complicate","escalate","make_easier","make_harder","recover_from_unexpected_choice","generate_alternatives","create_complete_bounded_structure","remix_existing_structure"],
+    "play_emphasis": ["combat","social","investigation","exploration","travel","stealth","chase","survival","hazard","puzzle_problem","political","economic","downtime","crafting","relationship","mixed","other_explicit"],
+    "scope": ["moment","beat","scene","encounter","sequence","session","adventure","arc","campaign","cross_campaign","other_explicit"],
+    "duration_band": ["very_short","short","standard","extended","multi_session","open_ended","not_applicable","explicit_custom"],
+    "prep_depth": ["instant","light","moderate","deep","tool_assisted","explicit_custom"],
+    "tone_axis": ["light","serious","tense","dangerous","mysterious","hopeful","tragic","comic","horror","cozy","heroic","grim","romantic","surreal","other_explicit"],
+    "genre_axis": ["fantasy","science_fiction","horror","western","superhero","cyberpunk","historical","modern","cozy","multiversal","other_explicit"],
+    "visibility_class": ["public_template_metadata","gm_only_template_detail","delegated_gm_detail","consumer_filtered","source_restricted"],
+    "library_lifecycle": ["draft","reviewed","approved_library","deprecated","retired","synthetic_fixture"],
+    "uncertainty_band": ["low","moderate","high","indeterminate","not_applicable"]
+  },
+  "provenance_origin_types": [
+    {"id":"source_backed_fact","meaning":"A claim or field backed by an identified governed source and exact version."},
+    {"id":"authored_reusable_template","meaning":"Original GCL reusable design material authored for the library; not external canon or runtime truth."},
+    {"id":"gm_authored_customization","meaning":"A human GM customization derived from a reusable template."},
+    {"id":"ai_generated_candidate","meaning":"Optional AI-proposed material requiring human review and owning-domain acceptance before mutation."},
+    {"id":"campaign_local_adaptation","meaning":"A local adaptation scoped to a Campaign/Scene/Encounter or other owning context."},
+    {"id":"canonical_promoted_content","meaning":"Content whose canonical status is established by an external owning domain; GCL only references that status and its evidence."},
+    {"id":"synthetic_fixture","meaning":"Nonproduction material used only to prove grammar or validation behavior."}
+  ],
+  "slot_value_kinds": ["text","enum","number","boolean","stable_object_ref","template_ref","source_rule_ref","tag_set","structured_object","ordered_list","unordered_set","expression_ref","opaque_extension"],
+  "slot_cardinality": ["exactly_one","zero_or_one","one_or_more","zero_or_more"],
+  "slot_fill_states": ["unresolved","explicit_value","source_bound","derived_by_declared_rule","gm_filled","ai_candidate","intentionally_open","not_applicable"],
+  "allowed_slot_origins": ["template_literal","authorized_source_ref","gm_input","compatible_template_output","campaign_context_projection","ai_candidate"],
+  "authority_behaviors": ["reference_only","proposal_only","requires_owning_domain_acceptance","requires_source_authority","forbidden_to_auto_fill"],
+  "compatibility_constraint_types": ["requires_family","allows_family","forbids_family","requires_object_category","requires_rules_profile_capability","requires_source_rule","requires_scale_interaction_rule","requires_visibility_scope","requires_entitlement","forbids_tag","requires_tag","requires_explicit_gm_adjudication","requires_external_authority_acceptance"],
+  "composition_operations": ["bind_slot","replace_slot","append_slot_item","remove_optional_slot_item","select_variant","apply_declared_transformation","compose_template_output","leave_intentionally_open"],
+  "projection_types": [
+    {"id":"ready_to_use","purpose":"Expose enough bounded, authorized detail for rapid GM use while retaining unresolved requirements and warnings."},
+    {"id":"construction_material","purpose":"Expose replaceable slots, dependencies, substitutions, transformation points and lineage for remixing."}
+  ],
+  "pressure_dimension_references": [
+    "P11-F-004 output_pressure",
+    "P11-F-005 survivability_recovery",
+    "P11-F-006 action_economy",
+    "P11-F-007 resource_pressure",
+    "P11-F-008 range_mobility_access",
+    "P11-F-009 environment_terrain",
+    "P11-F-010 objectives_time_failure",
+    "P11-F-011 hazards_traps_external_pressure",
+    "P11-F-012 mixed_composition_scale",
+    "P11-F-013 boss_elite_solo_structure",
+    "P11-F-014 waves_reinforcements_escalation",
+    "P11-F-015 retreat_disengagement_alternatives",
+    "P11-F-016 information_uncertainty",
+    "P11-F-019 uncertainty_band_calibration",
+    "P11-F-020 provenance_recommendation_history"
+  ],
+  "reserved_rules": [
+    "Later GCL tranches may extend family-specific vocabularies but may not silently redefine shared GCL-01 semantics.",
+    "Unknown and unresolved are valid explicit states and may not be replaced with invented defaults.",
+    "Discovery tags help retrieval and do not create mechanics, canon, permission or entitlement.",
+    "Genre/tone classification describes expression and intent; it does not authorize mechanical reskinning that changes governing rules.",
+    "Pressure dimensions remain independent advisory factors and are never collapsed into a universal scalar by this taxonomy.",
+    "A template family classification never implies runtime or canonical authority."
+  ]
+}
