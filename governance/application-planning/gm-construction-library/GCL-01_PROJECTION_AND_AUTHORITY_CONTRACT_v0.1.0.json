@@ -1,0 +1,100 @@
+{
+  "work_item": "GCL-01",
+  "version": "0.1.0",
+  "classification": "authored_governed_design",
+  "single_record_rule": "Ready-to-use and construction-material views are projections of one versioned reusable template record. They are not independently authoritative copies.",
+  "projection_contracts": [
+    {
+      "id": "ready_to_use",
+      "purpose": "Give an authorized GM enough bounded material to use the template quickly without hiding requirements, warnings, uncertainty or provenance.",
+      "must_include": [
+        "template stable identity and version",
+        "family and lifecycle",
+        "purpose/intended experience",
+        "authorized bounded structure needed for use",
+        "unresolved required slots",
+        "blocking compatibility findings",
+        "material warnings and uncertainty",
+        "authority label",
+        "source/provenance references permitted for the initiating subject"
+      ],
+      "may_suppress": [
+        "expert-only construction metadata not needed for rapid use",
+        "replaceability details for nonexposed slots",
+        "protected source details the initiating subject is not authorized/entitled to view"
+      ],
+      "must_not_do": [
+        "present unresolved required material as resolved",
+        "hide a blocking compatibility problem to make the template look ready",
+        "claim runtime/canon acceptance",
+        "expose hidden or restricted source material through summaries, counts, tags or warnings"
+      ]
+    },
+    {
+      "id": "construction_material",
+      "purpose": "Expose authorized replaceable parts, slots, dependencies, transformations and lineage so a GM can remix the same reusable template safely.",
+      "must_include": [
+        "template stable identity and version",
+        "family and lifecycle",
+        "slot IDs and semantic roles",
+        "required/optional and cardinality semantics",
+        "replaceability and allowed origins",
+        "current fill state including unresolved/intentionally-open states",
+        "compatibility constraints",
+        "composition hooks and allowed operations",
+        "lineage/provenance",
+        "uncertainty",
+        "authority label"
+      ],
+      "must_not_do": [
+        "expose a source-restricted slot value merely because the slot exists",
+        "convert a replaceable part into a permission to alter external canon",
+        "offer forbidden auto-fill for a slot whose authority behavior forbids it",
+        "erase prior lineage when replacing or transforming a slot"
+      ]
+    }
+  ],
+  "authority_labels": {
+    "approved_library_record": "Approved for reusable GCL library use; not runtime or canon authority.",
+    "proposal_requires_owning_domain_acceptance": "A derived or customized result remains a proposal until the owning domain accepts it.",
+    "external_canon_reference": "Canonical status is asserted only by referenced external owning-domain evidence; GCL does not grant it.",
+    "synthetic_fixture": "Validation-only material; never production library or canon content."
+  },
+  "authorization_and_entitlement": {
+    "rule": "Projection happens after applicable authorization, visibility and entitlement evaluation. GCL metadata cannot be used to infer protected existence, counts, source details or hidden relationships.",
+    "safe_behaviors": [
+      "omit unauthorized field detail",
+      "preserve a safe unresolved dependency marker when appropriate",
+      "return a nonenumerating unavailable result",
+      "retain authorized historical provenance without widening current access"
+    ],
+    "unsafe_behaviors": [
+      "filter after serialization",
+      "include hidden counts in facets/badges",
+      "explain a restriction using protected names or IDs",
+      "let AI retrieval see a broader projection than the initiating subject"
+    ]
+  },
+  "projection_consistency": {
+    "same_source_record_required": true,
+    "same_template_version_required": true,
+    "authority_label_preserved": true,
+    "provenance_preserved": true,
+    "uncertainty_preserved": true,
+    "unresolved_required_slots_preserved": true,
+    "checksum_relationship": "A projection receipt references the source template digest/version plus the projection policy version; the projection does not become a new source template unless explicitly saved as a derived record with new stable identity and lineage."
+  },
+  "save_as_derived_record": {
+    "rule": "When a GM intentionally saves a remix/customization as a reusable or local derived object, create a new stable identity/version appropriate to the owning scope and preserve lineage to the source GCL template.",
+    "default_origin": "gm_authored_customization",
+    "campaign_local_origin": "campaign_local_adaptation",
+    "ai_origin": "ai_generated_candidate",
+    "automatic_promotion": false
+  },
+  "ai_projection_boundary": {
+    "allowed_input": "Only the initiating subject's authorization-filtered projection plus separately authorized governed sources.",
+    "proposal_only": true,
+    "must_preserve": ["source refs", "lineage", "uncertainty", "unresolved requirements", "authority label"],
+    "may_not": ["widen hidden context", "invent source facts", "approve runtime mutation", "promote canon", "claim guaranteed quality or balance"]
+  }
+}

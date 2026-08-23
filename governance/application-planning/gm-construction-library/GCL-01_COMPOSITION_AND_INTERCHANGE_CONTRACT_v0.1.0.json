@@ -1,0 +1,138 @@
+{
+  "work_item": "GCL-01",
+  "version": "0.1.0",
+  "classification": "authored_governed_design",
+  "purpose": "Define deterministic/manual composition, derivation lineage and versioned import/export behavior for GCL reusable construction records without granting runtime or canon authority.",
+  "composition_contract": {
+    "input_requirements": [
+      "Every input template is identified by stable template_id plus exact template_version.",
+      "Every source-bound slot preserves source identity/version and current authorization/entitlement context.",
+      "Required compatibility constraints are evaluated before a composition result is considered ready-to-use.",
+      "Unknown or unresolved required inputs remain explicit and are never invented to make composition succeed."
+    ],
+    "operation_model": {
+      "operations": [
+        {"id":"bind_slot","meaning":"Bind an explicit compatible value to an unresolved or intentionally open slot."},
+        {"id":"replace_slot","meaning":"Replace a replaceable slot value while retaining prior-value lineage."},
+        {"id":"append_slot_item","meaning":"Append a compatible item to a repeatable slot without changing unrelated items."},
+        {"id":"remove_optional_slot_item","meaning":"Remove one optional repeatable value while preserving an operation receipt."},
+        {"id":"select_variant","meaning":"Choose an explicit declared variant; absence of a compatible variant remains unresolved."},
+        {"id":"apply_declared_transformation","meaning":"Apply a versioned transformation whose authority and compatibility requirements are explicitly declared."},
+        {"id":"compose_template_output","meaning":"Use an authorized output of one compatible reusable template as an input to another declared slot."},
+        {"id":"leave_intentionally_open","meaning":"Preserve GM choice by marking an optional/open slot without fabricating a value."}
+      ],
+      "forbidden_implicit_operations": [
+        "silent source correction",
+        "silent conflict reconciliation",
+        "automatic canon promotion",
+        "automatic runtime mutation",
+        "permission or entitlement widening",
+        "hidden-information retrieval outside the initiating subject's authorized projection",
+        "mechanical reskinning without governing-rule authority",
+        "collapse of independent encounter pressure dimensions into a universal scalar"
+      ]
+    },
+    "deterministic_manual_path": {
+      "required": true,
+      "rule": "Given the same exact template versions, explicit slot values, compatibility context and ordered operation list, the structural composition result before freeform text elaboration must be reproducible.",
+      "freeform_boundary": "Human-authored or optional AI prose elaboration may vary, but it must remain separately attributable and may not alter the deterministic structural receipt without a new explicit operation."
+    },
+    "compatibility_result": {
+      "states": ["compatible", "compatible_with_warnings", "requires_human_adjudication", "blocked", "indeterminate"],
+      "required_output": ["state", "evaluated_constraints", "blocking_constraints", "warnings", "unknowns", "authority_refs", "source_refs"]
+    },
+    "composition_receipt": {
+      "required_fields": [
+        "receipt_id",
+        "created_at",
+        "actor_or_service_ref",
+        "input_template_refs",
+        "ordered_operations",
+        "compatibility_result",
+        "unresolved_required_slots",
+        "result_template_id",
+        "result_template_version",
+        "lineage",
+        "authority_label",
+        "uncertainty",
+        "digest"
+      ],
+      "authority_label": "proposal_requires_owning_domain_acceptance",
+      "digest_rule": "Digest proves the recorded composition package/receipt identity only; it does not prove balance, fairness, canon or runtime acceptance."
+    },
+    "ai_boundary": {
+      "core_requires_ai": false,
+      "allowed": ["recommend compatible templates", "fill explicitly AI-eligible open slots as candidates", "generate variants", "reskin expression", "summarize alternatives", "explain compatibility warnings"],
+      "forbidden": ["authoritative mutation", "hidden-data widening", "source-fact invention", "automatic approval", "automatic publication", "objective balance guarantee"],
+      "candidate_origin": "ai_generated_candidate",
+      "human_or_owning_domain_acceptance_required": true
+    }
+  },
+  "interchange_contract": {
+    "package_type": "gcl_interchange_package",
+    "package_version": "0.1.0",
+    "required_manifest_fields": [
+      "package_type",
+      "package_version",
+      "package_id",
+      "created_at",
+      "producer",
+      "template_schema_ref",
+      "taxonomy_ref",
+      "records",
+      "declared_dependencies",
+      "source_and_provenance_refs",
+      "authority_declaration",
+      "conflict_policy",
+      "digest"
+    ],
+    "record_reference_shape": {
+      "required": ["template_id", "template_version", "family_id", "record_path", "record_digest"]
+    },
+    "dependency_shape": {
+      "required": ["dependency_id", "dependency_type", "exact_or_range", "required", "authority_ref"],
+      "dependency_types": ["gcl_template", "gcl_schema", "rules_profile", "source_pack", "governed_object", "external_authority", "visibility_policy", "entitlement_policy"]
+    },
+    "authority_declaration": {
+      "default_import_authority": "proposal_only",
+      "rule": "Importing a package never turns a GCL record into Campaign, Scene, Encounter, Session or canon truth. External canon status is only referenced when supported by external owning-domain evidence."
+    },
+    "conflict_policy": {
+      "default": "preserve_and_surface",
+      "rules": [
+        "Same stable ID plus same version plus same digest is idempotent.",
+        "Same stable ID plus same version plus different digest is a blocking integrity conflict; neither record silently wins.",
+        "Different versions may coexist when lifecycle/lineage permits and must remain distinguishable.",
+        "Unknown dependencies remain unresolved; the importer may preserve a disabled/proposal record but may not fabricate the dependency.",
+        "Restricted or unauthorized source references are omitted or retained as safe unresolved references according to the importing authority; hidden details are never leaked through error text, counts or facets."
+      ]
+    },
+    "digest": {
+      "algorithm": "sha256",
+      "canonicalization": "gcl-json-v1",
+      "gcl_json_v1": [
+        "UTF-8 encoding",
+        "object keys sorted lexicographically",
+        "array order preserved where semantic order exists",
+        "set-like arrays sorted by stable identifier before hashing",
+        "no insignificant whitespace",
+        "digest field excluded from its own digest input"
+      ],
+      "boundary": "The digest is an integrity identifier, not an authority or quality certificate."
+    },
+    "export_views": [
+      {"id":"full_authorized_library_record","rule":"Contains only fields the exporting subject is authorized and entitled to export."},
+      {"id":"ready_to_use_projection","rule":"Carries the authorized rapid-use projection plus required warnings, unresolved requirements, provenance and authority label."},
+      {"id":"construction_material_projection","rule":"Carries replaceable slots, dependencies, transformation/composition points, provenance and authority label."},
+      {"id":"metadata_only","rule":"Carries safe discovery metadata without protected template details or hidden source content."}
+    ],
+    "import_states": ["accepted_proposal", "accepted_disabled_missing_dependency", "accepted_with_warnings", "blocked_integrity_conflict", "blocked_authorization", "blocked_schema_incompatibility", "indeterminate_requires_review"]
+  },
+  "downstream_adapter_rules": [
+    "Consumers must use explicit adapters/contracts; a GCL record is never silently reinterpreted as a consumer's live aggregate.",
+    "F005-style consumers create local placements/bindings with their own stable IDs and provenance rather than mutating GCL source records.",
+    "F012-style consumers may use GCL encounter material as composition inputs but retain their own validation, analysis, approval, snapshot and Scene-attachment authority.",
+    "Consumers may narrow projections for permissions/entitlements but may not broaden source authority through GCL.",
+    "Adapters must preserve unresolved requirements, warnings, uncertainty and lineage material needed for responsible human review."
+  ]
+}
