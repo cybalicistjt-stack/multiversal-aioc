@@ -1,7 +1,7 @@
 # MSS — Magic & Supernatural Systems
 
 **Program ID:** MSS  
-**Status:** IN PROGRESS — MSS-01..07 COMPLETED_VERIFIED — MSS-08 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — MSS-01..07 COMPLETED_VERIFIED — MSS-08 IN_PROGRESS  
 **Activation:** after LNG-06  
 **Completed through:** MSS-07  
 **Current:** MSS-08  
@@ -31,7 +31,7 @@ The owner-approved `RSR — Recovered Source Reconciliation` interstitial is `co
    Model arcane schools, elemental paths, innate powers, shamanic/voodoo traditions, divine sources, chaos magic, psychic/mental powers, technological or setting-specific supernatural sources and mixed traditions through composable definitions rather than hard-coded mutually exclusive classes. Completed at application PR #270 after exact-head repository-health, Linux, Windows and deterministic cross-platform validation; merge SHA `74b3b9a4e98945dfba1e23f8e9124dc855b5f075`.
 7. **MSS-07 — Rituals, Circles, Components & Cooperative Casting** — `completed_verified`  
    Added deterministic source/profile-bound ritual plans and ordered phases, circle/site/arrangement references, Item/Asset-backed component requirements, cooperative participant/contribution contracts and non-mutating execution proposals. All authoritative execution remains MSS-03-routed and MSS-02 resource-owned; external Character/Item/World/Campaign owners remain canonical. Completed at application PR #271 after exact-head repository health, self-hosted Linux/Windows validation and deterministic comparison; merge SHA `2c3107dcd64c3cee968639c98e84a09fa2fed9d1`.
-8. **MSS-08 — Countermagic, Resistance, Wards, Suppression & Backlash** — `selected_not_started`
+8. **MSS-08 — Countermagic, Resistance, Wards, Suppression & Backlash** — `in_progress`
 9. **MSS-09 — Spirits, Patronage, Worship, Pacts & Divine Favor** — `planned`
 10. **MSS-10 — Portals, Gates & Multiversal Transit** — `planned`
 11. **MSS-11 — Temporal/Causal Play, Branching & Paradox Governance** — `planned`
@@ -49,6 +49,10 @@ RSR material remains provenance input. Owner-supported facts may be linked as so
 
 MSS-07 binds rituals to explicit MSS-06 casting profiles, MSS-03 resolution profiles and MSS-02 resource profiles. Ritual phases are deterministically ordered and source/provenance-bound; GM-adjudicated and unresolved rituals remain non-ready. Circle/site/arrangement definitions reference existing World/Scene/Asset authority and define no universal geometry effects. Component requirements reference existing Item/Asset ids or source-defined tags and own no inventory, price or rarity. Cooperative casting references Character identities/eligibility, contribution windows and owning MSS-02/MSS-03 profiles while defining no universal contribution, pooling or failure formula. Execution proposals are non-mutating preparation metadata and cannot directly change Action/Event, Character, Item/Asset, World/Timeline or canon.
 
+## MSS-08 active boundary
+
+MSS-08 may define source/profile-bound counterplay, resistance, ward, suppression and backlash contracts over completed MSS-01..07. Counter-actions remain MSS-03 Action/Event proposals; resource costs/strain/overreach remain MSS-02-owned; wards reference existing World/Scene/Item authorities; Character resistance remains referenced rather than owned; backlash remains source/profile-bound and cannot invent a universal damage, corruption, failure or recovery formula. MSS-08 may expose explicit unresolved and GM-adjudication states but may not silently decide hidden outcomes or mutate canon.
+
 ## Invariants
 
 - Existing Action/Event, Character, Item/Asset, Crafting, World/Reality and Campaign/GM authorities remain canonical.
@@ -61,4 +65,4 @@ MSS-07 binds rituals to explicit MSS-06 casting profiles, MSS-03 resolution prof
 
 ## Current-work rule
 
-`MSS-07-attempt-001` is `completed_verified` with application PR #271 validated on exact candidate head `e3e071d1f059adc7b34f1fabcfa0d03862671daa` and squash-merged as `2c3107dcd64c3cee968639c98e84a09fa2fed9d1`. `MSS-08-attempt-001` is the sole current successor checkpoint and is `selected_not_started`. MSS-08 receives no implementation authority until the next owner `Continue` governed-starts it; MSS-09 and later remain unauthorized.
+`MSS-07-attempt-001` is `completed_verified` with application PR #271 validated on exact candidate head `e3e071d1f059adc7b34f1fabcfa0d03862671daa` and squash-merged as `2c3107dcd64c3cee968639c98e84a09fa2fed9d1`. `MSS-08-attempt-001` is the sole current unfinished checkpoint and is `in_progress` on `integration/mss-08-counterplay-wards-suppression-backlash`; implementation authority is bounded to MSS-08 only. MSS-09 and later remain unauthorized until MSS-08 completed_verified closeout.
