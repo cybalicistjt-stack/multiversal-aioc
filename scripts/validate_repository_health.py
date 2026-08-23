@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -76,13 +77,11 @@ def check_gcl_foundation(root: Path) -> dict[str, Any]:
     checkpoint = read_json(checkpoint_path)
 
     assert backlog["program_id"] == "GCL"
-    assert backlog["current_item"] == "GCL-01"
-    assert backlog["current_item_status"] in {"in_progress", "completed_verified"}
     gcl01 = next(item for item in backlog["tranches"] if item["id"] == "GCL-01")
-    assert gcl01["status"] in {"in_progress", "completed_verified"}
+    assert gcl01["status"] == "completed_verified", "GCL-01 must remain completed_verified after successor activation"
     assert checkpoint["work_item_id"] == "GCL-01"
     assert checkpoint["attempt_id"] == "GCL-01-attempt-001"
-    assert checkpoint["status"] in {"in_progress", "completed_verified"}
+    assert checkpoint["status"] == "completed_verified"
     assert checkpoint["repository"] == "cybalicistjt-stack/multiversal-aioc"
     assert checkpoint["nonauthorization"], "GCL-01 must preserve explicit nonauthorization"
 
@@ -189,6 +188,155 @@ def check_gcl_foundation(root: Path) -> dict[str, Any]:
     }
 
 
+def load_gcl02_records(gcl_dir: Path, manifest: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, int]]:
+    records: list[dict[str, Any]] = []
+    family_counts: dict[str, int] = {}
+    for pack_meta in manifest["storage"]["packs"]:
+        pack = read_json(gcl_dir / pack_meta["path"])
+        assert pack["family_id"] == "GCL-FAM-HOOK"
+        assert pack["record_count"] == pack_meta["record_count"]
+        if pack_meta["encoding"] == "explicit-record":
+            pack_records = pack["records"]
+        elif pack_meta["encoding"] == "gcl02-columnar-v1":
+            columns = pack["columns"]
+            assert len(columns) == len(set(columns)), f"duplicate GCL-02 column in {pack_meta['path']}"
+            pack_records = []
+            for row in pack["rows"]:
+                assert len(row) == len(columns), f"columnar row width drift in {pack_meta['path']}"
+                pack_records.append(dict(zip(columns, row)))
+        else:
+            raise AssertionError(f"unsupported GCL-02 storage encoding: {pack_meta['encoding']}")
+        assert len(pack_records) == pack_meta["record_count"]
+        records.extend(pack_records)
+        for family in pack_meta["driver_families"]:
+            family_counts[family] = family_counts.get(family, 0) + sum(
+                1 for record in pack_records if record["hook_id"].startswith(f"gcl:hook.{family.split('_')[0]}.")
+            )
+    return records, family_counts
+
+
+def check_gcl_hook_library(root: Path) -> dict[str, Any]:
+    gcl_dir = root / "governance/application-planning/gm-construction-library"
+    backlog_path = gcl_dir / "GCL_PROGRAM_BACKLOG.json"
+    contract_path = gcl_dir / "GCL-02_HOOK_LIBRARY_CONTRACT_v0.1.0.json"
+    profile_path = gcl_dir / "GCL-02_HOOK_MATERIALIZATION_PROFILE_v0.1.0.json"
+    manifest_path = gcl_dir / "GCL-02_HOOK_LIBRARY_MANIFEST_v0.1.0.json"
+    checkpoint_path = root / "governance/ai/work-state/GCL-02-attempt-001.json"
+    for path in [backlog_path, contract_path, profile_path, manifest_path, checkpoint_path]:
+        require(path)
+
+    backlog = read_json(backlog_path)
+    contract = read_json(contract_path)
+    profile = read_json(profile_path)
+    manifest = read_json(manifest_path)
+    checkpoint = read_json(checkpoint_path)
+
+    assert backlog["program_id"] == "GCL"
+    assert backlog["current_item"] == "GCL-02"
+    assert backlog["current_item_status"] in {"in_progress", "completed_verified"}
+    gcl02 = next(item for item in backlog["tranches"] if item["id"] == "GCL-02")
+    assert gcl02["status"] in {"in_progress", "completed_verified"}
+    assert checkpoint["work_item_id"] == "GCL-02"
+    assert checkpoint["attempt_id"] == "GCL-02-attempt-001"
+    assert checkpoint["status"] in {"in_progress", "completed_verified"}
+    assert checkpoint["repository"] == "cybalicistjt-stack/multiversal-aioc"
+    assert checkpoint["nonauthorization"], "GCL-02 must preserve explicit nonauthorization"
+
+    assert contract["family_id"] == "GCL-FAM-HOOK"
+    expected_driver_families = set(contract["driver_families"])
+    assert len(expected_driver_families) == 12
+    slot_vocabulary = {slot["slot_id"] for slot in contract["slot_vocabulary"]}
+    assert len(slot_vocabulary) == len(contract["slot_vocabulary"])
+    assert profile["deterministic"] is True
+    assert profile["hidden_defaults"] is False
+    assert profile["target_family_id"] == "GCL-FAM-HOOK"
+    assert profile["authority_projection"]["runtime_authority"] == "none"
+    assert profile["authority_projection"]["requires_owning_domain_acceptance"] is True
+    assert profile["composition_profile"]["deterministic_manual_path"] is True
+    assert profile["composition_profile"]["result_authority"] == "proposal_requires_owning_domain_acceptance"
+    assert "adding a mandatory solution or player choice" in profile["forbidden_materialization_behavior"]
+
+    manifest_driver_families = {item["id"] for item in manifest["driver_families"]}
+    assert manifest_driver_families == expected_driver_families
+    assert manifest["driver_family_count"] == len(expected_driver_families)
+    assert manifest["record_count"] >= 100
+    assert manifest["quality_rules"]["solution_open"] is True
+    assert manifest["quality_rules"]["runtime_authority"] == "none"
+    assert manifest["quality_rules"]["owning_domain_acceptance_required"] is True
+    assert manifest["quality_rules"]["ai_required"] is False
+
+    records, _ = load_gcl02_records(gcl_dir, manifest)
+    assert len(records) == manifest["record_count"] == 120
+    required_fields = set(contract["compact_record_required_fields"])
+    forbidden_fields = set(contract["solution_openness"]["forbidden_compact_fields"])
+    seen_ids: set[str] = set()
+    family_prefix_counts = {family: 0 for family in expected_driver_families}
+    all_play: set[str] = set()
+    all_scopes: set[str] = set()
+    all_needs: set[str] = set()
+    placeholder_re = re.compile(r"\{([a-z][a-z0-9_]*)\}")
+
+    prefix_map = {
+        "disruption_anomaly": "gcl:hook.disruption.",
+        "obligation_debt": "gcl:hook.obligation.",
+        "loss_disappearance": "gcl:hook.loss.",
+        "opportunity_discovery": "gcl:hook.opportunity.",
+        "threat_deadline": "gcl:hook.threat.",
+        "request_patronage": "gcl:hook.request.",
+        "accusation_status": "gcl:hook.accusation.",
+        "relationship_loyalty": "gcl:hook.relationship.",
+        "secret_revelation": "gcl:hook.secret.",
+        "rivalry_race": "gcl:hook.rivalry.",
+        "arrival_transition": "gcl:hook.arrival.",
+        "fallout_legacy": "gcl:hook.fallout.",
+    }
+
+    for record in records:
+        hook_id = record.get("hook_id")
+        assert required_fields.issubset(record), f"GCL-02 record missing compact fields: {hook_id}"
+        assert not forbidden_fields.intersection(record), f"GCL-02 record contains prescribed-solution field: {hook_id}"
+        assert isinstance(hook_id, str) and hook_id.startswith("gcl:hook.")
+        assert hook_id not in seen_ids, f"duplicate GCL-02 stable ID: {hook_id}"
+        seen_ids.add(hook_id)
+        assert record["no_prescribed_solution"] is True, f"hook must remain solution-open: {hook_id}"
+        assert len(record["open_questions"]) >= manifest["quality_rules"]["minimum_open_questions_per_record"]
+        assert len(record["escalation_prompts"]) >= manifest["quality_rules"]["minimum_escalation_prompts_per_record"]
+        assert len(record["stakes_prompts"]) >= manifest["quality_rules"]["minimum_stakes_prompts_per_record"]
+        assert record["genre_affinity"] == ["genre_neutral"], f"GCL-02 v0.1.0 should remain structurally genre-neutral: {hook_id}"
+        assert record["slot_ids"], f"parameterized hook must expose at least one slot: {hook_id}"
+        assert set(record["slot_ids"]).issubset(slot_vocabulary), f"unknown GCL-02 slot vocabulary: {hook_id}"
+        placeholders = set(placeholder_re.findall(record["premise_pattern"] + " " + record["trigger_pattern"]))
+        assert placeholders.issubset(set(record["slot_ids"])), f"undeclared placeholder in {hook_id}: {sorted(placeholders - set(record['slot_ids']))}"
+        assert record["composition_targets"], f"hook needs downstream composition target: {hook_id}"
+        all_play.update(record["play_emphasis"])
+        all_scopes.update(record["scopes"])
+        all_needs.update(record["construction_needs"])
+        matched = [family for family, prefix in prefix_map.items() if hook_id.startswith(prefix)]
+        assert len(matched) == 1, f"hook must map to exactly one driver-family prefix: {hook_id}"
+        family_prefix_counts[matched[0]] += 1
+
+    assert set(family_prefix_counts) == expected_driver_families
+    assert all(count == 10 for count in family_prefix_counts.values()), f"GCL-02 driver family breadth drift: {family_prefix_counts}"
+    assert {"social", "investigation", "exploration", "travel", "survival", "political"}.issubset(all_play)
+    assert {"scene", "adventure", "campaign"}.issubset(all_scopes)
+    assert {"start", "continue", "complicate", "generate_alternatives", "create_complete_bounded_structure"}.issubset(all_needs)
+
+    return {
+        "gcl02_status": gcl02["status"],
+        "records": len(records),
+        "driver_families": len(family_prefix_counts),
+        "records_per_driver_family": sorted(set(family_prefix_counts.values())),
+        "unique_ids": len(seen_ids),
+        "solution_open": True,
+        "deterministic_materialization": True,
+        "hidden_defaults": False,
+        "runtime_authority": "none",
+        "genre_strategy": "genre_neutral_structure",
+        "play_emphasis_count": len(all_play),
+        "scopes": sorted(all_scopes),
+    }
+
+
 def check_aioc(root: Path, errors: list[str]) -> dict[str, Any]:
     result: dict[str, Any] = {}
     try:
@@ -283,14 +431,16 @@ def check_aioc(root: Path, errors: list[str]) -> dict[str, Any]:
         assert audit["result"] == "zero_known_conflicting_authority"
         assert audit["known_conflicts"] == []
 
-        gcl = check_gcl_foundation(root)
+        gcl_foundation = check_gcl_foundation(root)
+        gcl_hook_library = check_gcl_hook_library(root)
         result.update({
             "pointer_attempt": checkpoint["attempt_id"],
             "active_item": pointer["active_attempt"].get("active_item"),
             "crs_status": backlog["status"],
             "runtime_files": sorted(live_runtime),
             "workflow_files": sorted(aioc_workflows),
-            "gcl": gcl,
+            "gcl_foundation": gcl_foundation,
+            "gcl_hook_library": gcl_hook_library,
         })
     except Exception as exc:
         errors.append(f"AIOC: {exc}")
@@ -353,7 +503,7 @@ def main() -> int:
         app = check_app(Path(args.app_root).resolve(), audit, errors)
 
     result = {
-        "schema_version": "1.4.0",
+        "schema_version": "1.5.0",
         "validator": "scripts/validate_repository_health.py",
         "status": "FAIL" if errors else "PASS",
         "aioc": aioc,

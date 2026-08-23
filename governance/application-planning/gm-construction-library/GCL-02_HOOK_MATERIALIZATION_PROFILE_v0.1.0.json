@@ -1,0 +1,123 @@
+{
+  "work_item": "GCL-02",
+  "version": "0.1.0",
+  "classification": "deterministic_materialization_profile",
+  "source_contract": "GCL-02_HOOK_LIBRARY_CONTRACT_v0.1.0.json",
+  "target_schema": "GCL-01_TEMPLATE_GRAMMAR_SCHEMA_v0.1.0.json",
+  "target_family_id": "GCL-FAM-HOOK",
+  "deterministic": true,
+  "hidden_defaults": false,
+  "rule": "A compact GCL-02 record plus this explicit profile materializes one full GCL-01 template record. Profile values are inherited data, not implicit defaults, and remain attributable in provenance.",
+  "stable_field_mapping": {
+    "schema_version": "0.1.0",
+    "template_id": "hook_id",
+    "template_version": "0.1.0",
+    "family_id": "GCL-FAM-HOOK",
+    "lifecycle": "approved_library",
+    "title": "title",
+    "summary": "premise_pattern"
+  },
+  "authority_projection": {
+    "library_authority": "approved_library",
+    "runtime_authority": "none",
+    "canon_authority": "none_unless_external_evidence_ref",
+    "requires_owning_domain_acceptance": true,
+    "owning_domain_refs": ["GCL-02", "CSW-05", "MV-IA-F005"],
+    "nonauthorization": ["not runtime truth", "not canon", "not a required player choice", "not an Adventure/Campaign/Scene/Encounter/Session"]
+  },
+  "discovery_mapping": {
+    "construction_needs": "construction_needs",
+    "play_emphasis": "play_emphasis",
+    "scope": "scopes",
+    "duration_band": "duration_bands",
+    "prep_depth": "prep_depth",
+    "genres": "genre_affinity",
+    "tones": "tones",
+    "intent_keywords": "tags",
+    "expert_tags": ["gcl-02-hook", "driver_family", "tags"]
+  },
+  "compatibility_projection": {
+    "required_authority_refs": ["GCL-01", "CSW-05", "MV-IA-F005"],
+    "required_object_categories": "derived from slot_ids that are bound to governed objects",
+    "required_rules_capabilities": [],
+    "required_source_rules": [],
+    "required_visibility_scope": ["gm"],
+    "required_entitlements": [],
+    "constraints": [
+      {
+        "constraint_id": "gcl02-owning-domain-acceptance",
+        "type": "requires_external_authority_acceptance",
+        "severity": "blocking",
+        "statement": "Using a hook as incorporated Adventure/Campaign/Scene material requires an explicit owning-domain action.",
+        "failure_behavior": "require_human_review"
+      }
+    ],
+    "unknowns": "unbound slot_ids remain explicit unresolved template slots"
+  },
+  "provenance_projection": {
+    "record_origin": "authored_reusable_template",
+    "created_by": "GCL-02-attempt-001",
+    "created_at": "2026-08-23T23:10:00Z",
+    "source_refs": [
+      {"source_id":"GCL-01","source_version":"0.1.0","authority_class":"governed_source","reference":"governance/application-planning/gm-construction-library/GCL-01_TEMPLATE_GRAMMAR_SCHEMA_v0.1.0.json","field_scope":["shared template grammar","authority","slots","projections","composition"]},
+      {"source_id":"CSW-05","source_version":"0.1.0","authority_class":"governed_source","reference":"governance/application-planning/creator-storycraft-workspace/CSW-05_PLOT_ADVENTURE_AND_NARRATIVE_DESIGN_LAB.md","field_scope":["hook as reason to engage","pre-authoritative narrative structure","explicit handoff"]},
+      {"source_id":"MV-IA-F005","source_version":"0.1.0","authority_class":"external_owning_domain","reference":"governance/application-planning/internal-alpha/feature-packets/MV-IA-F005_CAMPAIGN_SCENE_AND_SESSION_BUILDER.md","field_scope":["reusable definition versus Campaign-local placement","Scene/Session authority"]}
+    ],
+    "lineage": [],
+    "uncertainty": {"band":"not_applicable","known_unknowns":["campaign-specific slot bindings are intentionally absent"],"assumptions":[],"review_trigger":["semantic template revision","owning-domain incorporation"]},
+    "external_canon_evidence_ref": null
+  },
+  "slot_materialization": {
+    "source": "slot_ids",
+    "vocabulary_source": "GCL-02_HOOK_LIBRARY_CONTRACT_v0.1.0.json#slot_vocabulary",
+    "slot_shape": {
+      "value_kind": "stable_object_ref_or_text_by_consumer_binding",
+      "cardinality": "zero_or_one unless a later version explicitly marks required",
+      "required": false,
+      "replaceable": true,
+      "fill_state": "unresolved",
+      "allowed_origins": ["authorized_source_ref", "gm_input", "campaign_context_projection", "compatible_template_output", "ai_candidate"],
+      "visibility_class": "consumer_filtered",
+      "authority_behavior": "requires_owning_domain_acceptance",
+      "unresolved_reason": "GCL-02 reusable hooks intentionally leave world/campaign-specific bindings open."
+    },
+    "ai_rule": "AI may propose a slot value only from the initiating subject's authorized projection; the result remains ai_candidate until explicit human/owning-domain acceptance."
+  },
+  "structure_mapping": {
+    "purpose_intended_experience": ["premise_pattern"],
+    "setup_trigger": ["trigger_pattern"],
+    "objectives": [],
+    "stakes": "stakes_prompts",
+    "opposition_pressure": [],
+    "information_state": "open_questions",
+    "escalation_structure": "escalation_prompts",
+    "complications": [],
+    "resolutions": [],
+    "partial_success_fail_forward": [],
+    "rewards_consequences_aftermath": [],
+    "difficulty_pressure_levers": [],
+    "composition_hooks": "composition_targets"
+  },
+  "projection_profile": {
+    "ready_to_use": {"enabled":true,"include_authority_label":true,"include_provenance":true,"include_uncertainty":true,"include_unresolved_required_slots":true,"authorization_filtered":true,"exposed_fields":["title","premise_pattern","trigger_pattern","stakes_prompts","open_questions","slot_ids"],"notes":["A ready-to-use hook still requires GM/context binding for any open slots."]},
+    "construction_material": {"enabled":true,"include_authority_label":true,"include_provenance":true,"include_uncertainty":true,"include_unresolved_required_slots":true,"authorization_filtered":true,"exposed_fields":["all compact record fields","slot vocabulary","composition targets"],"notes":["Every hook remains remixable and solution-open."]}
+  },
+  "composition_profile": {
+    "allowed_operations": ["bind_slot", "replace_slot", "leave_intentionally_open", "compose_template_output", "derive_variant", "reskin_expression"],
+    "deterministic_manual_path": true,
+    "preserve_lineage": true,
+    "preserve_conflicts": true,
+    "required_compatibility_check": true,
+    "ai_optional": true,
+    "result_authority": "proposal_requires_owning_domain_acceptance",
+    "family_specific_rules_ref": "GCL-02_HOOK_LIBRARY_CONTRACT_v0.1.0.json"
+  },
+  "forbidden_materialization_behavior": [
+    "silently choosing values for unbound slots",
+    "converting hook text into runtime or canon truth",
+    "adding a mandatory solution or player choice",
+    "inferring hidden Campaign facts",
+    "dropping provenance or authority labels",
+    "overwriting conflicting imported records by display name"
+  ]
+}

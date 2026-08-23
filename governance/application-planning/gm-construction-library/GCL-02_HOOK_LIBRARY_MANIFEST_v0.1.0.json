@@ -1,0 +1,60 @@
+{
+  "work_item": "GCL-02",
+  "version": "0.1.0",
+  "classification": "approved_library_manifest",
+  "family_id": "GCL-FAM-HOOK",
+  "record_count": 120,
+  "driver_family_count": 12,
+  "contract": "GCL-02_HOOK_LIBRARY_CONTRACT_v0.1.0.json",
+  "materialization_profile": "GCL-02_HOOK_MATERIALIZATION_PROFILE_v0.1.0.json",
+  "target_shared_schema": "GCL-01_TEMPLATE_GRAMMAR_SCHEMA_v0.1.0.json",
+  "storage": {
+    "rule": "Library files may use explicit-record or gcl02-columnar-v1 storage. Columnar rows reconstruct named compact fields strictly by the versioned columns array before deterministic GCL-01 materialization; no semantic defaults are inferred from position beyond that declared mapping.",
+    "packs": [
+      {"path":"GCL-02_HOOKS_disruption_anomaly_v0.1.0.json","encoding":"explicit-record","record_count":10,"driver_families":["disruption_anomaly"]},
+      {"path":"GCL-02_HOOKS_obligation_loss_v0.1.0.json","encoding":"gcl02-columnar-v1","record_count":20,"driver_families":["obligation_debt","loss_disappearance"]},
+      {"path":"GCL-02_HOOKS_opportunity_threat_v0.1.0.json","encoding":"gcl02-columnar-v1","record_count":20,"driver_families":["opportunity_discovery","threat_deadline"]},
+      {"path":"GCL-02_HOOKS_request_accusation_v0.1.0.json","encoding":"gcl02-columnar-v1","record_count":20,"driver_families":["request_patronage","accusation_status"]},
+      {"path":"GCL-02_HOOKS_relationship_secret_v0.1.0.json","encoding":"gcl02-columnar-v1","record_count":20,"driver_families":["relationship_loyalty","secret_revelation"]},
+      {"path":"GCL-02_HOOKS_rivalry_arrival_v0.1.0.json","encoding":"gcl02-columnar-v1","record_count":20,"driver_families":["rivalry_race","arrival_transition"]},
+      {"path":"GCL-02_HOOKS_fallout_legacy_v0.1.0.json","encoding":"gcl02-columnar-v1","record_count":10,"driver_families":["fallout_legacy"]}
+    ]
+  },
+  "driver_families": [
+    {"id":"disruption_anomaly","count":10,"intent":"Something familiar changes, fails, contradicts itself or behaves impossibly."},
+    {"id":"obligation_debt","count":10,"intent":"A promise, duty, debt, oath, guardianship or reciprocal expectation creates engagement."},
+    {"id":"loss_disappearance","count":10,"intent":"A person, object, route, memory, resource, place or expected future is missing."},
+    {"id":"opportunity_discovery","count":10,"intent":"Access, knowledge, shelter, resources, alliances or openings create reasons to act."},
+    {"id":"threat_deadline","count":10,"intent":"A clock, shortage, approaching force, spread, coercion or irreversible decision creates pressure."},
+    {"id":"request_patronage","count":10,"intent":"A request, contract, rescue, delivery, mediation, expertise need or sponsor relationship draws the party in."},
+    {"id":"accusation_status","count":10,"intent":"Blame, legitimacy, identity, status, possession, betrayal or public narrative is contested."},
+    {"id":"relationship_loyalty","count":10,"intent":"Friendship, rivalry, mentorship, loyalty, autonomy, reconciliation or trust becomes actionable."},
+    {"id":"secret_revelation","count":10,"intent":"A clue, confession, hidden space, false history, intercepted message, witness or concealed link opens a question."},
+    {"id":"rivalry_race","count":10,"intent":"Another actor wants the same target, window, status, route, resource or public narrative."},
+    {"id":"arrival_transition","count":10,"intent":"A stranger, authority, technology, migration, delegation, heir or returning actor changes the local state."},
+    {"id":"fallout_legacy","count":10,"intent":"Prior victories, crises, defeated powers, rescues, revelations or world changes create new unfinished business."}
+  ],
+  "intent_first_facets": {
+    "construction_needs": ["start","continue","fill_missing_piece","complicate","escalate","make_harder","recover_from_unexpected_choice","generate_alternatives","create_complete_bounded_structure"],
+    "common_play_emphasis": ["social","investigation","exploration","travel","survival","political","economic","stealth","downtime","technical","combat","competition","cultural","moral","mixed"],
+    "scopes": ["scene","session","adventure","campaign"],
+    "duration_bands": ["short","standard","long"],
+    "prep_depth": ["instant","light"],
+    "genre_strategy": "All GCL-02 v0.1.0 records are structural genre_neutral hooks. GCL-15 owns mature genre/tone reskinning grammar; a consumer may bind setting expression without changing hook identity or authority.",
+    "normal_access_rule": "Recommend by current GM need and playable intent first. Driver-family and expert tags are secondary browse dimensions, not the default giant-list UI."
+  },
+  "quality_rules": {
+    "unique_stable_ids": true,
+    "declared_slots_only": true,
+    "solution_open": true,
+    "runtime_authority": "none",
+    "owning_domain_acceptance_required": true,
+    "ai_required": false,
+    "minimum_open_questions_per_record": 2,
+    "minimum_escalation_prompts_per_record": 1,
+    "minimum_stakes_prompts_per_record": 1,
+    "preserve_provenance_on_materialization": true
+  },
+  "downstream_targets": ["GCL-03","GCL-05","GCL-06","GCL-09","GCL-10","GCL-12","GCL-13","GCL-14","GCL-15","CSW-05","MV-IA-F005"],
+  "completion_note": "This 120-record corpus exceeds the GCL-18 starter proof target of 100 hooks/premises while remaining parameterized. GCL-18 may curate subsets or proof packs from it later; GCL-02 completion does not imply GCL-18 completion."
+}
