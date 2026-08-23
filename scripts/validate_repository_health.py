@@ -53,6 +53,142 @@ def workflow_names(root: Path) -> set[str]:
     return {p.name for p in path.iterdir() if p.is_file() and p.suffix in {".yml", ".yaml"}}
 
 
+def check_gcl_foundation(root: Path) -> dict[str, Any]:
+    gcl_dir = root / "governance/application-planning/gm-construction-library"
+    backlog_path = gcl_dir / "GCL_PROGRAM_BACKLOG.json"
+    taxonomy_path = gcl_dir / "GCL-01_CONSTRUCTION_TAXONOMY_v0.1.0.json"
+    schema_path = gcl_dir / "GCL-01_TEMPLATE_GRAMMAR_SCHEMA_v0.1.0.json"
+    composition_path = gcl_dir / "GCL-01_COMPOSITION_AND_INTERCHANGE_CONTRACT_v0.1.0.json"
+    projection_path = gcl_dir / "GCL-01_PROJECTION_AND_AUTHORITY_CONTRACT_v0.1.0.json"
+    fixtures_path = gcl_dir / "GCL-01_SYNTHETIC_GRAMMAR_FIXTURES_v0.1.0.json"
+    inventory_path = gcl_dir / "GCL-01_SOURCE_AND_AUTHORITY_INVENTORY.md"
+    checkpoint_path = root / "governance/ai/work-state/GCL-01-attempt-001.json"
+
+    for path in [backlog_path, taxonomy_path, schema_path, composition_path, projection_path, fixtures_path, inventory_path, checkpoint_path]:
+        require(path)
+
+    backlog = read_json(backlog_path)
+    taxonomy = read_json(taxonomy_path)
+    schema = read_json(schema_path)
+    composition = read_json(composition_path)
+    projection = read_json(projection_path)
+    fixtures = read_json(fixtures_path)
+    checkpoint = read_json(checkpoint_path)
+
+    assert backlog["program_id"] == "GCL"
+    assert backlog["current_item"] == "GCL-01"
+    assert backlog["current_item_status"] in {"in_progress", "completed_verified"}
+    gcl01 = next(item for item in backlog["tranches"] if item["id"] == "GCL-01")
+    assert gcl01["status"] in {"in_progress", "completed_verified"}
+    assert checkpoint["work_item_id"] == "GCL-01"
+    assert checkpoint["attempt_id"] == "GCL-01-attempt-001"
+    assert checkpoint["status"] in {"in_progress", "completed_verified"}
+    assert checkpoint["repository"] == "cybalicistjt-stack/multiversal-aioc"
+    assert checkpoint["nonauthorization"], "GCL-01 must preserve explicit nonauthorization"
+
+    expected_families = {
+        "GCL-FAM-HOOK",
+        "GCL-FAM-SITUATION",
+        "GCL-FAM-ENCOUNTER",
+        "GCL-FAM-OBJECTIVE",
+        "GCL-FAM-COMPLICATION",
+        "GCL-FAM-DIFFICULTY",
+        "GCL-FAM-ADVERSARY",
+        "GCL-FAM-MYSTERY",
+        "GCL-FAM-ADVENTURE",
+        "GCL-FAM-SESSION",
+        "GCL-FAM-CAMPAIGN",
+        "GCL-FAM-NPC",
+        "GCL-FAM-CONSEQUENCE",
+        "GCL-FAM-TRANSFORM",
+        "GCL-FAM-DISCOVERY",
+        "GCL-FAM-COMPOSITION",
+    }
+    family_ids = [item["id"] for item in taxonomy["template_families"]]
+    assert len(family_ids) == len(set(family_ids)), "GCL family IDs must be unique"
+    assert set(family_ids) == expected_families, "GCL taxonomy family coverage drift"
+    assert set(schema["properties"]["family_id"]["enum"]) == expected_families
+
+    required_template_fields = {
+        "schema_version",
+        "template_id",
+        "template_version",
+        "family_id",
+        "lifecycle",
+        "title",
+        "summary",
+        "authority",
+        "discovery",
+        "compatibility",
+        "provenance",
+        "slots",
+        "structure",
+        "projections",
+        "composition",
+    }
+    assert required_template_fields.issubset(set(schema["required"]))
+    authority_schema = schema["$defs"]["authority"]["properties"]
+    assert authority_schema["runtime_authority"]["const"] == "none"
+    assert authority_schema["requires_owning_domain_acceptance"]["const"] is True
+    pressure_schema = schema["$defs"]["pressureLever"]["properties"]
+    assert pressure_schema["guarantee"]["const"] is False
+
+    manual_path = composition["composition_contract"]["deterministic_manual_path"]
+    assert manual_path["required"] is True
+    assert composition["composition_contract"]["ai_boundary"]["core_requires_ai"] is False
+    interchange = composition["interchange_contract"]
+    assert interchange["authority_declaration"]["default_import_authority"] == "proposal_only"
+    assert interchange["conflict_policy"]["default"] == "preserve_and_surface"
+    assert interchange["digest"]["algorithm"] == "sha256"
+    assert "automatic canon promotion" in composition["composition_contract"]["operation_model"]["forbidden_implicit_operations"]
+
+    projection_ids = {item["id"] for item in projection["projection_contracts"]}
+    assert projection_ids == {"ready_to_use", "construction_material"}
+    assert projection["single_record_rule"].startswith("Ready-to-use and construction-material views are projections of one versioned reusable template record")
+    assert projection["projection_consistency"]["same_source_record_required"] is True
+    assert projection["projection_consistency"]["authority_label_preserved"] is True
+    assert projection["save_as_derived_record"]["automatic_promotion"] is False
+    assert projection["ai_projection_boundary"]["proposal_only"] is True
+
+    fixture_records = fixtures["fixtures"]
+    assert fixtures["production_library_content"] is False
+    assert len(fixture_records) >= 3
+    fixture_ids: set[str] = set()
+    fixture_families: set[str] = set()
+    for fixture in fixture_records:
+        assert required_template_fields.issubset(set(fixture)), f"fixture missing shared grammar fields: {fixture.get('template_id')}"
+        assert fixture["lifecycle"] == "synthetic_fixture"
+        assert fixture["provenance"]["record_origin"] == "synthetic_fixture"
+        assert fixture["authority"]["runtime_authority"] == "none"
+        assert fixture["authority"]["requires_owning_domain_acceptance"] is True
+        assert fixture["family_id"] in expected_families
+        assert fixture["template_id"] not in fixture_ids
+        fixture_ids.add(fixture["template_id"])
+        fixture_families.add(fixture["family_id"])
+        assert fixture["projections"]["ready_to_use"]["include_unresolved_required_slots"] is True
+        assert fixture["projections"]["construction_material"]["include_unresolved_required_slots"] is True
+        assert fixture["composition"]["deterministic_manual_path"] is True
+        assert fixture["composition"]["result_authority"] == "proposal_requires_owning_domain_acceptance"
+        for lever in fixture["structure"]["difficulty_pressure_levers"]:
+            assert lever["guarantee"] is False
+            assert lever["factor_ref"].startswith("P11-F-")
+
+    assert {"GCL-FAM-HOOK", "GCL-FAM-ENCOUNTER", "GCL-FAM-NPC"}.issubset(fixture_families)
+    inventory_text = inventory_path.read_text(encoding="utf-8")
+    for required_text in ["MV-IA-F005", "MV-IA-F012", "PPIA-11", "runtime/canon authority", "GCL-01 nonauthorization"]:
+        assert required_text in inventory_text
+
+    return {
+        "gcl01_status": gcl01["status"],
+        "families": len(family_ids),
+        "fixture_records": len(fixture_records),
+        "fixture_families": sorted(fixture_families),
+        "manual_composition": True,
+        "runtime_authority": "none",
+        "universal_balance_guarantee": False,
+    }
+
+
 def check_aioc(root: Path, errors: list[str]) -> dict[str, Any]:
     result: dict[str, Any] = {}
     try:
@@ -147,12 +283,14 @@ def check_aioc(root: Path, errors: list[str]) -> dict[str, Any]:
         assert audit["result"] == "zero_known_conflicting_authority"
         assert audit["known_conflicts"] == []
 
+        gcl = check_gcl_foundation(root)
         result.update({
             "pointer_attempt": checkpoint["attempt_id"],
             "active_item": pointer["active_attempt"].get("active_item"),
             "crs_status": backlog["status"],
             "runtime_files": sorted(live_runtime),
             "workflow_files": sorted(aioc_workflows),
+            "gcl": gcl,
         })
     except Exception as exc:
         errors.append(f"AIOC: {exc}")
@@ -215,7 +353,7 @@ def main() -> int:
         app = check_app(Path(args.app_root).resolve(), audit, errors)
 
     result = {
-        "schema_version": "1.3.0",
+        "schema_version": "1.4.0",
         "validator": "scripts/validate_repository_health.py",
         "status": "FAIL" if errors else "PASS",
         "aioc": aioc,
