@@ -3,7 +3,7 @@
 **Program ID:** MAI  
 **Status:** OWNER-APPROVED — PLANNED INTERSTITIAL  
 **Activation:** after DPL-14  
-**Successor:** WCI-01  
+**Successor:** AAI-01  
 **Owner and final authority:** John Brandon Turner
 
 ## Purpose
@@ -34,7 +34,7 @@ Multiversal must never silently invent a missing asset or pretend an incompatibl
    Define MapAsset, Tile, TerrainSet, ObjectAsset, Module, Battlemap, Layer, Placeable, anchors, dimensions, transforms, grid metadata, elevation, variants, animation, dependencies and source provenance.
 
 3. **MAI-03 — Grid, Coordinates, Scale & Projection Engine**  
-   Square, gridless, flat/point hex, isometric, staggered and free-position layouts; snapping, native resolution, game distance, rotation/scaling and coordinate conversion.
+   Square, gridless, flat/point hex, isometric, staggered and free-position layouts; snapping, native resolution, game distance, rotation/scaling and coordinate conversion. Preserve a path for assisted grid detection plus bounded affine/perspective registration so imperfect scans, photographs or exported maps can be aligned through user-confirmed control points without making camera/view state authoritative.
 
 4. **MAI-04 — Terrain, Autotile & Connectivity Grammar**  
    Normalize center/edge/corner/transition/connectivity semantics for terrain, roads, rivers, walls and coastlines; adapt source-specific autotile conventions into one deterministic terrain grammar.
@@ -43,7 +43,7 @@ Multiversal must never silently invent a missing asset or pretend an incompatibl
    Background/ground/object/token-relative/foreground/roof/GM layers plus walls, doors, windows, portals, collision, elevation, light/vision boundaries and permission-safe projections.
 
 6. **MAI-06 — Universal Import Adapter Framework**  
-   Provider-neutral importer contract plus adapters for common raw and structured formats. Partial imports must report unsupported metadata instead of silently discarding it.
+   Provider-neutral importer contract plus adapters for common raw and structured formats. Partial imports must report unsupported metadata instead of silently discarding it. Structured scene formats such as UVTT-class packages may supply supported grid/geometry/door/light metadata rather than being flattened to pixels.
 
 7. **MAI-07 — Semantic Asset Taxonomy, Availability Resolver & Cross-Pack Substitution**  
    Tag terrain/objects/structures/environment/style/scale; resolve semantic needs against actually available assets; support GM/user choice, style-lock, cross-pack compatible substitution, explicit placeholders and unresolved states.
@@ -56,6 +56,10 @@ Multiversal must never silently invent a missing asset or pretend an incompatibl
 
 10. **MAI-10 — Diverse Corpus, Performance & Interoperability Proof**  
     Validate deliberately different sources: pixel sheet, autotiles, loose props, modular rooms, full battlemap, structured VTT scene, hex, isometric and animated assets; prove deterministic import metadata, deduplication, provenance, fallback behavior and cross-platform compatibility.
+
+## Downstream relationship
+
+AAI follows MAI so the same provider-neutral asset/provenance patterns can be reused for audio without merging visual and audio ownership. ISE then consumes completed MAI + AAI to deliver the native playable tabletop/canvas experience; MAI itself remains the visual/map interoperability owner.
 
 ## Invariants
 
