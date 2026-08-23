@@ -1,0 +1,121 @@
+{
+  "work_item": "GCL-03",
+  "version": "0.1.0",
+  "classification": "deterministic_materialization_profile",
+  "source_contract": "GCL-03_SITUATION_SCENE_LIBRARY_CONTRACT_v0.1.0.json",
+  "target_schema": "GCL-01_TEMPLATE_GRAMMAR_SCHEMA_v0.1.0.json",
+  "target_family_id": "GCL-FAM-SITUATION",
+  "deterministic": true,
+  "hidden_defaults": false,
+  "rule": "A compact GCL-03 record plus this explicit profile materializes one full GCL-01 template record. Profile values are inherited attributable data, never silent defaults, and do not create a real Scene aggregate.",
+  "stable_field_mapping": {
+    "schema_version": "0.1.0",
+    "template_id": "scene_template_id",
+    "template_version": "0.1.0",
+    "family_id": "GCL-FAM-SITUATION",
+    "lifecycle": "approved_library",
+    "title": "title",
+    "summary": "situation_pattern"
+  },
+  "authority_projection": {
+    "library_authority": "approved_library",
+    "runtime_authority": "none",
+    "canon_authority": "none_unless_external_evidence_ref",
+    "requires_owning_domain_acceptance": true,
+    "owning_domain_refs": ["GCL-03", "MV-IA-F005", "PPIA-08", "CSW-05"],
+    "nonauthorization": ["not a Scene aggregate", "not Campaign-local placement", "not hidden/reveal truth", "not launch or Session state", "not canon", "not a required player choice or resolved outcome"]
+  },
+  "discovery_mapping": {
+    "construction_needs": "construction_needs",
+    "play_emphasis": "play_emphasis",
+    "scope": "scopes",
+    "duration_band": "duration_bands",
+    "prep_depth": "prep_depth",
+    "genres": "genre_affinity",
+    "tones": "tones",
+    "intent_keywords": "tags",
+    "expert_tags": ["gcl-03-situation", "scene_family", "tags"]
+  },
+  "compatibility_projection": {
+    "required_authority_refs": ["GCL-01", "MV-IA-F005", "PPIA-08"],
+    "required_object_categories": "derived only from slot_ids later bound by an authorized consumer",
+    "required_rules_capabilities": [],
+    "required_source_rules": [],
+    "required_visibility_scope": ["gm"],
+    "required_entitlements": [],
+    "constraints": [
+      {"constraint_id":"gcl03-scene-acceptance","type":"requires_external_authority_acceptance","severity":"blocking","statement":"Materializing a situation template does not create a real Scene; incorporation requires an authorized F005/PPIA-08 owning-domain action.","failure_behavior":"require_human_review"},
+      {"constraint_id":"gcl03-no-live-state","type":"requires_explicit_gm_adjudication","severity":"blocking","statement":"Campaign-local placements, visibility/reveal state, launch state and Session state must remain unresolved outside GCL-03.","failure_behavior":"preserve_unresolved"}
+    ],
+    "unknowns": "all world/campaign-specific slot bindings and live-state facts remain explicit unknowns until an owning consumer supplies them"
+  },
+  "provenance_projection": {
+    "record_origin": "authored_reusable_template",
+    "created_by": "GCL-03-attempt-001",
+    "created_at": "2026-08-23T23:44:00Z",
+    "source_refs": [
+      {"source_id":"GCL-01","source_version":"0.1.0","authority_class":"governed_source","reference":"governance/application-planning/gm-construction-library/GCL-01_TEMPLATE_GRAMMAR_SCHEMA_v0.1.0.json","field_scope":["shared template grammar","authority","slots","projections","composition"]},
+      {"source_id":"MV-IA-F005","source_version":"0.1.0","authority_class":"external_owning_domain","reference":"governance/application-planning/internal-alpha/feature-packets/MV-IA-F005_CAMPAIGN_SCENE_AND_SESSION_BUILDER.md","field_scope":["Scene templates as reusable Definitions","Scene aggregate authority","source-versus-placement","launch snapshot separation"]},
+      {"source_id":"PPIA-08","source_version":"1.0.0","authority_class":"external_owning_domain","reference":"governance/application-planning/parallel-preimplementation/PPIA-08_CAMPAIGN_SCENE_SESSION_AUTHORING_EXPERIENCE_SPEC_v1.0.0.md","field_scope":["Scene templates and branching","Campaign-local composition","map/placement/reveal boundaries","launch/live-history boundaries"]},
+      {"source_id":"CSW-05","source_version":"0.1.0","authority_class":"governed_source","reference":"governance/application-planning/creator-storycraft-workspace/CSW-05_PLOT_ADVENTURE_AND_NARRATIVE_DESIGN_LAB.md","field_scope":["scene-seed pre-authority","nonlinear routes","choice/consequence planning"]}
+    ],
+    "lineage": [],
+    "uncertainty": {"band":"not_applicable","known_unknowns":["Campaign-specific participants, placements, facts and outcomes are intentionally absent"],"assumptions":[],"review_trigger":["semantic template revision","owning-domain incorporation"]},
+    "external_canon_evidence_ref": null
+  },
+  "slot_materialization": {
+    "source": "slot_ids",
+    "vocabulary_source": "GCL-03_SITUATION_SCENE_LIBRARY_CONTRACT_v0.1.0.json#slot_vocabulary",
+    "slot_shape": {
+      "value_kind": "stable_object_ref_or_text_by_consumer_binding",
+      "cardinality": "zero_or_one unless a later version explicitly marks required",
+      "required": false,
+      "replaceable": true,
+      "fill_state": "unresolved",
+      "allowed_origins": ["authorized_source_ref", "gm_input", "campaign_context_projection", "compatible_template_output", "ai_candidate"],
+      "visibility_class": "consumer_filtered",
+      "authority_behavior": "requires_owning_domain_acceptance",
+      "unresolved_reason": "GCL-03 reusable situations intentionally leave Campaign/world-specific bindings and live-state facts open."
+    },
+    "ai_rule": "AI may propose bindings only from the initiating subject's authorized projection; no proposed binding becomes Campaign/Scene truth without an explicit owning-domain action."
+  },
+  "structure_mapping": {
+    "purpose_intended_experience": ["situation_pattern"],
+    "setup_trigger": ["opening_state_pattern"],
+    "objectives": [],
+    "stakes": "pressure_prompts",
+    "opposition_pressure": "pressure_prompts",
+    "information_state": "open_questions",
+    "escalation_structure": "turning_point_prompts",
+    "complications": [],
+    "resolutions": "exit_vectors",
+    "partial_success_fail_forward": "exit_vectors",
+    "rewards_consequences_aftermath": [],
+    "difficulty_pressure_levers": [],
+    "composition_hooks": "composition_targets"
+  },
+  "exit_vector_semantics": "exit_vectors are possible handoffs/continuations only; they are not guaranteed resolutions, outcome truth or required branches.",
+  "projection_profile": {
+    "ready_to_use": {"enabled":true,"include_authority_label":true,"include_provenance":true,"include_uncertainty":true,"include_unresolved_required_slots":true,"authorization_filtered":true,"exposed_fields":["title","situation_pattern","opening_state_pattern","open_questions","pressure_prompts","turning_point_prompts","exit_vectors","slot_ids"],"notes":["Ready-to-use means GM-usable construction material after contextual binding, not a launched Scene."]},
+    "construction_material": {"enabled":true,"include_authority_label":true,"include_provenance":true,"include_uncertainty":true,"include_unresolved_required_slots":true,"authorization_filtered":true,"exposed_fields":["all compact record fields","slot vocabulary","composition targets"],"notes":["All bindings, questions, pressure and exits remain replaceable/remixable."]}
+  },
+  "composition_profile": {
+    "allowed_operations": ["bind_slot", "replace_slot", "leave_intentionally_open", "compose_template_output", "derive_variant", "reskin_expression"],
+    "deterministic_manual_path": true,
+    "preserve_lineage": true,
+    "preserve_conflicts": true,
+    "required_compatibility_check": true,
+    "ai_optional": true,
+    "result_authority": "proposal_requires_owning_domain_acceptance",
+    "family_specific_rules_ref": "GCL-03_SITUATION_SCENE_LIBRARY_CONTRACT_v0.1.0.json"
+  },
+  "forbidden_materialization_behavior": [
+    "silently choosing values for unbound slots",
+    "creating a Campaign-local placement or override",
+    "establishing hidden/reveal or knowledge-state truth",
+    "creating launch readiness, launch snapshots, live Session state or Events",
+    "converting possible exit vectors into resolved outcomes",
+    "inferring Encounter balance or objective truth",
+    "dropping provenance or authority labels"
+  ]
+}
