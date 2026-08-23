@@ -1,7 +1,7 @@
 # MSS — Magic & Supernatural Systems
 
 **Program ID:** MSS  
-**Status:** IN PROGRESS — MSS-01..10 COMPLETED_VERIFIED — MSS-11 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — MSS-01..10 COMPLETED_VERIFIED — MSS-11 IN_PROGRESS  
 **Activation:** after LNG-06  
 **Completed through:** MSS-10  
 **Current:** MSS-11  
@@ -33,7 +33,7 @@ The owner-approved `RSR — Recovered Source Reconciliation` interstitial is `co
 9. **MSS-09 — Spirits, Patronage, Worship, Pacts & Divine Favor** — `completed_verified`
 10. **MSS-10 — Portals, Gates & Multiversal Transit** — `completed_verified`  
    Added deterministic owner-anchored portal endpoint, gate, transit-subject and transit-plan contracts plus non-mutating transit resolution proposals. World/Reality/Timeline/era/branch identities remain MIB-11/D18-owned, hidden routes remain visibility/GM-owned, supernatural execution remains MSS-03-routed and resources remain MSS-02-owned. No universal portal cost/range/stability/duration/capacity/geometry formula or automatic success/failure rule was introduced. Completed at application PR #274 after exact-head repository health, self-hosted Linux/Windows validation and deterministic comparison; validated head `d73a69c4110e2ced6bc9c793e748799a9e7c1f3f`, deterministic receipt `9b7ddedd616b24cf293c1876e32f5732fe9e59230f14fdf460a913573473fac7`, merge SHA `edb9731754a03ab57c52f9879968530cf5c186e6`.
-11. **MSS-11 — Temporal/Causal Play, Branching & Paradox Governance** — `selected_not_started`
+11. **MSS-11 — Temporal/Causal Play, Branching & Paradox Governance** — `in_progress`
 12. **MSS-12 — Supernatural Content Packs, Workbench, Balance & Golden Proof** — `planned`
 
 ## MSS-06 completed boundary
@@ -60,16 +60,24 @@ The first exact-head MSS-10 candidate was not merged because focused regression 
 
 RSR material remains provenance input. Pencrona's owner-established natural portals between eras, 30 Winds official/hidden portal travel and Helldiving trans-portal assistance are retained only as scoped source requirements through their owning authorities. Recovered assistant-generated portal markets, infernal portals, soul anchors, portal costs, stabilization rules, gate collapse, travel ranges and other portal mechanics remain proposal-only until separately accepted.
 
+## MSS-11 active boundary
+
+MSS-11 may define deterministic source/profile-bound temporal references, causal relations, branch-operation proposals, paradox profiles and history-safety metadata over completed MSS-01..10. Every timeline, era, event, branch and destination reference must point to identities owned by MIB-11/D18 or another existing owner domain; MSS-11 creates no duplicate World/Timeline/era/branch/Event ledger. Branch requests are proposals/adjudication inputs only: canonical branch creation or mutation remains with the owning World/Timeline authority and cannot be performed directly by MSS-11.
+
+Causal relations must identify explicit source/rule evidence, affected owner references and disposition. MSS-11 defines no universal causality equation, predestination rule, butterfly-effect multiplier or automatic causal inference. Paradox behavior is source/profile-bound, GM-adjudicated or unresolved, with explicit affected references and consequence rules; MSS-11 defines no universal paradox severity, damage, instability, collapse, repair or erasure formula. No operation may silently rewrite committed earlier history. Intended history impact must be explicit, provenance-preserving and accepted by the owning authority before canonical mutation.
+
+Temporal transit continues to use MSS-10 portal/gate/transit orchestration whenever actual transit is involved. Supernatural execution remains MSS-03-routed and resource mutation remains MSS-02-owned. Hidden timelines, branches, causal facts, alternate-history outcomes and GM-only paradox consequences remain visibility/GM-owned. AI may propose or explain temporal options but cannot reveal hidden facts, decide paradox outcomes, create branches or mutate canon by authority. MSS-12 remains outside MSS-11 scope.
+
 ## Invariants
 
 - Existing Action/Event, Character, Item/Asset, Crafting, World/Reality and Campaign/GM authorities remain canonical.
-- MSS-01 taxonomy axes remain distinct; MSS-02 owns resource/cost/strain/overreach; MSS-03 owns resolution; MSS-04 owns Rune Construction/blind GM adjudication; MSS-05 proposal-authoring/research outputs remain noncanonical until accepted by owning authority; MSS-06 owns casting-profile composition semantics; MSS-07 owns ritual/cooperative orchestration contracts; MSS-08 owns counterplay contract semantics; MSS-09 owns only spirit/relationship orchestration contracts; MSS-10 owns only portal/gate/transit orchestration contracts.
+- MSS-01 taxonomy axes remain distinct; MSS-02 owns resource/cost/strain/overreach; MSS-03 owns resolution; MSS-04 owns Rune Construction/blind GM adjudication; MSS-05 proposal-authoring/research outputs remain noncanonical until accepted by owning authority; MSS-06 owns casting-profile composition semantics; MSS-07 owns ritual/cooperative orchestration contracts; MSS-08 owns counterplay contract semantics; MSS-09 owns only spirit/relationship orchestration contracts; MSS-10 owns only portal/gate/transit orchestration contracts; MSS-11 owns only temporal/causal/paradox orchestration contracts and proposal metadata, never canonical World/Timeline state.
 - RSR owner evidence is provenance input, not automatic runtime state; recovered assistant output remains proposal-only.
-- No universal mana, power, damage, healing, duration, failure, resistance, counterspell, ward, suppression, backlash, ritual, component, cooperative-casting, favor, pact, soul, spirit, portal cost, portal range, gate stability, transit duration or divine-intervention formula is inferred from incomplete sources.
-- AI may propose/explain but never casts, approves, adjudicates, reveals hidden destinations/effects or mutates canon by authority.
+- No universal mana, power, damage, healing, duration, failure, resistance, counterspell, ward, suppression, backlash, ritual, component, cooperative-casting, favor, pact, soul, spirit, portal cost, portal range, gate stability, transit duration, causality, paradox, branch-cost or divine-intervention formula is inferred from incomplete sources.
+- AI may propose/explain but never casts, approves, adjudicates, reveals hidden destinations/effects/timelines or mutates canon by authority.
 - Temporal operations never silently rewrite earlier history; portals and temporal paths preserve visibility, provenance and World/Timeline authority.
 - Migration `0022` remains unreserved without a durable schema delta.
 
 ## Current-work rule
 
-`MSS-10-attempt-001` is `completed_verified` with application PR #274 validated on exact candidate head `d73a69c4110e2ced6bc9c793e748799a9e7c1f3f` and squash-merged as `edb9731754a03ab57c52f9879968530cf5c186e6`. `MSS-11-attempt-001` is the sole current successor checkpoint and is `selected_not_started`. MSS-11 receives no implementation authority until the next owner `Continue` governed-starts it; MSS-12 remains unauthorized.
+`MSS-10-attempt-001` is `completed_verified` with application PR #274 validated on exact candidate head `d73a69c4110e2ced6bc9c793e748799a9e7c1f3f` and squash-merged as `edb9731754a03ab57c52f9879968530cf5c186e6`. `MSS-11-attempt-001` is the sole current unfinished MSS checkpoint and is `in_progress` on `integration/mss-11-temporal-causal-paradox-governance`; implementation authority is bounded to MSS-11 only. MSS-12 remains unauthorized until MSS-11 completed_verified closeout.
