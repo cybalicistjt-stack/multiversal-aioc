@@ -1,0 +1,232 @@
+{
+  "work_item": "GCL-01",
+  "version": "0.1.0",
+  "classification": "synthetic_fixture_pack",
+  "production_library_content": false,
+  "rule": "These records exist only to prove shared grammar behavior across multiple families. They are not GCL-02+ production content, Campaign content or canon.",
+  "fixtures": [
+    {
+      "schema_version": "0.1.0",
+      "template_id": "gcl:fixture.hook.unresolved-choice",
+      "template_version": "0.1.0",
+      "family_id": "GCL-FAM-HOOK",
+      "lifecycle": "synthetic_fixture",
+      "title": "Synthetic Hook Fixture",
+      "summary": "Validation-only hook with one explicit premise and one intentionally unresolved actor slot.",
+      "authority": {
+        "library_authority": "synthetic_fixture",
+        "runtime_authority": "none",
+        "canon_authority": "none_unless_external_evidence_ref",
+        "requires_owning_domain_acceptance": true,
+        "owning_domain_refs": ["GCL-02", "MV-IA-F005"],
+        "nonauthorization": ["not production library content", "not Campaign or Scene truth", "not canon"]
+      },
+      "discovery": {
+        "construction_needs": ["start", "generate_alternatives"],
+        "play_emphasis": ["mixed"],
+        "scope": ["scene"],
+        "duration_band": ["short"],
+        "prep_depth": ["instant"],
+        "genres": ["other_explicit"],
+        "tones": ["mysterious"],
+        "intent_keywords": ["synthetic", "choice"],
+        "expert_tags": ["fixture"]
+      },
+      "compatibility": {
+        "required_authority_refs": ["MV-IA-F005"],
+        "required_object_categories": ["actor"],
+        "required_rules_capabilities": [],
+        "required_source_rules": [],
+        "required_visibility_scope": ["gm"],
+        "required_entitlements": [],
+        "constraints": [
+          {"constraint_id":"fixture-hook-actor","type":"requires_object_category","severity":"blocking","statement":"A usable derived hook needs an authorized actor binding.","failure_behavior":"preserve_unresolved"}
+        ],
+        "unknowns": ["actor remains deliberately unresolved in this fixture"]
+      },
+      "provenance": {
+        "record_origin": "synthetic_fixture",
+        "created_by": "GCL-01-attempt-001",
+        "created_at": "2026-08-23T22:56:00Z",
+        "source_refs": [],
+        "lineage": [],
+        "uncertainty": {"band":"not_applicable","known_unknowns":["synthetic actor"],"assumptions":[],"review_trigger":["fixture grammar changes"]},
+        "external_canon_evidence_ref": null
+      },
+      "slots": [
+        {"slot_id":"premise","semantic_role":"bounded premise","value_kind":"text","cardinality":"exactly_one","required":true,"replaceable":true,"fill_state":"explicit_value","allowed_origins":["template_literal","gm_input"],"visibility_class":"gm_only_template_detail","authority_behavior":"proposal_only","compatibility_constraints":[],"value":"A synthetic disruption creates a choice."},
+        {"slot_id":"actor","semantic_role":"initiating actor","value_kind":"stable_object_ref","cardinality":"exactly_one","required":true,"replaceable":true,"fill_state":"unresolved","allowed_origins":["authorized_source_ref","gm_input","campaign_context_projection"],"visibility_class":"source_restricted","authority_behavior":"requires_source_authority","compatibility_constraints":[],"unresolved_reason":"Fixture intentionally leaves the governed actor unbound."}
+      ],
+      "structure": {
+        "purpose_intended_experience": ["prove unresolved required-slot behavior"],
+        "setup_trigger": ["synthetic disruption"],
+        "objectives": [],
+        "stakes": [],
+        "opposition_pressure": [],
+        "information_state": ["actor unresolved"],
+        "escalation_structure": [],
+        "complications": [],
+        "resolutions": [],
+        "partial_success_fail_forward": [],
+        "rewards_consequences_aftermath": [],
+        "difficulty_pressure_levers": [],
+        "composition_hooks": ["actor slot can be bound by an authorized consumer"]
+      },
+      "projections": {
+        "ready_to_use": {"enabled":true,"include_authority_label":true,"include_provenance":true,"include_uncertainty":true,"include_unresolved_required_slots":true,"authorization_filtered":true,"exposed_slot_ids":["premise","actor"],"notes":["not ready until actor is bound"]},
+        "construction_material": {"enabled":true,"include_authority_label":true,"include_provenance":true,"include_uncertainty":true,"include_unresolved_required_slots":true,"authorization_filtered":true,"exposed_slot_ids":["premise","actor"],"notes":["both slots are replaceable"]}
+      },
+      "composition": {"allowed_operations":["bind_slot","replace_slot","leave_intentionally_open"],"deterministic_manual_path":true,"preserve_lineage":true,"preserve_conflicts":true,"required_compatibility_check":true,"ai_optional":true,"result_authority":"proposal_requires_owning_domain_acceptance","family_specific_rules_ref":null}
+    },
+    {
+      "schema_version": "0.1.0",
+      "template_id": "gcl:fixture.encounter.pressure-shape",
+      "template_version": "0.1.0",
+      "family_id": "GCL-FAM-ENCOUNTER",
+      "lifecycle": "synthetic_fixture",
+      "title": "Synthetic Encounter Fixture",
+      "summary": "Validation-only encounter structure demonstrating independent pressure-factor references without a balance score.",
+      "authority": {
+        "library_authority": "synthetic_fixture",
+        "runtime_authority": "none",
+        "canon_authority": "none_unless_external_evidence_ref",
+        "requires_owning_domain_acceptance": true,
+        "owning_domain_refs": ["GCL-04", "MV-IA-F012", "PPIA-11"],
+        "nonauthorization": ["not an approved Encounter snapshot", "not a balance guarantee", "not runtime state"]
+      },
+      "discovery": {
+        "construction_needs": ["create_complete_bounded_structure", "make_easier", "make_harder"],
+        "play_emphasis": ["combat", "mixed"],
+        "scope": ["encounter"],
+        "duration_band": ["standard"],
+        "prep_depth": ["light"],
+        "genres": ["other_explicit"],
+        "tones": ["tense"],
+        "intent_keywords": ["synthetic", "pressure"],
+        "expert_tags": ["fixture", "no-cr"]
+      },
+      "compatibility": {
+        "required_authority_refs": ["MV-IA-F012", "PPIA-11"],
+        "required_object_categories": ["participant", "objective"],
+        "required_rules_capabilities": [],
+        "required_source_rules": [],
+        "required_visibility_scope": ["gm"],
+        "required_entitlements": [],
+        "constraints": [
+          {"constraint_id":"fixture-encounter-f012","type":"requires_external_authority_acceptance","severity":"blocking","statement":"Use as a real Encounter requires F012-owned composition/validation and human approval.","failure_behavior":"require_human_review"}
+        ],
+        "unknowns": ["no real participants are bound"]
+      },
+      "provenance": {
+        "record_origin": "synthetic_fixture",
+        "created_by": "GCL-01-attempt-001",
+        "created_at": "2026-08-23T22:56:00Z",
+        "source_refs": [
+          {"source_id":"PPIA-11","source_version":"0.1.0","authority_class":"governed_source","reference":"governance/application-planning/parallel-preimplementation/PPIA-11_ENCOUNTER_BALANCE_TAXONOMY_v0.1.0.json","field_scope":["pressure factors","uncertainty"]}
+        ],
+        "lineage": [],
+        "uncertainty": {"band":"indeterminate","known_unknowns":["participants","governing rules context"],"assumptions":[],"review_trigger":["real encounter composition"]},
+        "external_canon_evidence_ref": null
+      },
+      "slots": [
+        {"slot_id":"objective","semantic_role":"encounter objective","value_kind":"template_ref","cardinality":"exactly_one","required":true,"replaceable":true,"fill_state":"unresolved","allowed_origins":["compatible_template_output","gm_input"],"visibility_class":"gm_only_template_detail","authority_behavior":"proposal_only","compatibility_constraints":[],"unresolved_reason":"Synthetic fixture has no GCL-05 production objective."}
+      ],
+      "structure": {
+        "purpose_intended_experience": ["prove pressure levers remain independent"],
+        "setup_trigger": [],
+        "objectives": ["objective slot unresolved"],
+        "stakes": [],
+        "opposition_pressure": [],
+        "information_state": [],
+        "escalation_structure": [],
+        "complications": [],
+        "resolutions": [],
+        "partial_success_fail_forward": [],
+        "rewards_consequences_aftermath": [],
+        "difficulty_pressure_levers": [
+          {"factor_ref":"P11-F-006 action_economy","direction":"change_shape","proposal":"Synthetic example: alter meaningful action opportunities rather than assign a scalar.","uncertainty_band":"indeterminate","guarantee":false,"source_refs":[]},
+          {"factor_ref":"P11-F-010 objectives_time_failure","direction":"change_shape","proposal":"Synthetic example: alter objective/time pressure independently of participant durability.","uncertainty_band":"indeterminate","guarantee":false,"source_refs":[]}
+        ],
+        "composition_hooks": ["accept a compatible GCL-05 objective output later"]
+      },
+      "projections": {
+        "ready_to_use": {"enabled":true,"include_authority_label":true,"include_provenance":true,"include_uncertainty":true,"include_unresolved_required_slots":true,"authorization_filtered":true,"exposed_slot_ids":["objective"],"notes":["synthetic and indeterminate"]},
+        "construction_material": {"enabled":true,"include_authority_label":true,"include_provenance":true,"include_uncertainty":true,"include_unresolved_required_slots":true,"authorization_filtered":true,"exposed_slot_ids":["objective"],"notes":["pressure levers are separate factors"]}
+      },
+      "composition": {"allowed_operations":["bind_slot","replace_slot","compose_template_output"],"deterministic_manual_path":true,"preserve_lineage":true,"preserve_conflicts":true,"required_compatibility_check":true,"ai_optional":true,"result_authority":"proposal_requires_owning_domain_acceptance","family_specific_rules_ref":null}
+    },
+    {
+      "schema_version": "0.1.0",
+      "template_id": "gcl:fixture.npc.relationship-pressure",
+      "template_version": "0.1.0",
+      "family_id": "GCL-FAM-NPC",
+      "lifecycle": "synthetic_fixture",
+      "title": "Synthetic NPC Role Fixture",
+      "summary": "Validation-only dramatic-role record demonstrating replaceable relationship pressure without creating an NPC or relationship fact.",
+      "authority": {
+        "library_authority": "synthetic_fixture",
+        "runtime_authority": "none",
+        "canon_authority": "none_unless_external_evidence_ref",
+        "requires_owning_domain_acceptance": true,
+        "owning_domain_refs": ["GCL-13"],
+        "nonauthorization": ["does not create an NPC", "does not create a relationship", "does not reveal hidden campaign facts"]
+      },
+      "discovery": {
+        "construction_needs": ["fill_missing_piece", "complicate", "remix_existing_structure"],
+        "play_emphasis": ["social", "relationship"],
+        "scope": ["scene"],
+        "duration_band": ["short"],
+        "prep_depth": ["instant"],
+        "genres": ["other_explicit"],
+        "tones": ["serious"],
+        "intent_keywords": ["synthetic", "relationship"],
+        "expert_tags": ["fixture"]
+      },
+      "compatibility": {
+        "required_authority_refs": ["GCL-13"],
+        "required_object_categories": ["npc_or_actor"],
+        "required_rules_capabilities": [],
+        "required_source_rules": [],
+        "required_visibility_scope": ["gm"],
+        "required_entitlements": [],
+        "constraints": [
+          {"constraint_id":"fixture-npc-no-fact","type":"requires_explicit_gm_adjudication","severity":"warning","statement":"Applying relationship pressure to a real actor requires GM/owning-domain acceptance; the fixture creates no relationship fact.","failure_behavior":"require_human_review"}
+        ],
+        "unknowns": ["real actor and relationship state are intentionally absent"]
+      },
+      "provenance": {
+        "record_origin": "synthetic_fixture",
+        "created_by": "GCL-01-attempt-001",
+        "created_at": "2026-08-23T22:56:00Z",
+        "source_refs": [],
+        "lineage": [],
+        "uncertainty": {"band":"not_applicable","known_unknowns":["real actor"],"assumptions":[],"review_trigger":["fixture grammar changes"]},
+        "external_canon_evidence_ref": null
+      },
+      "slots": [
+        {"slot_id":"dramatic_role","semantic_role":"dramatic role label","value_kind":"enum","cardinality":"exactly_one","required":true,"replaceable":true,"fill_state":"explicit_value","allowed_origins":["template_literal","gm_input"],"visibility_class":"gm_only_template_detail","authority_behavior":"proposal_only","compatibility_constraints":[],"value":"synthetic_gatekeeper"},
+        {"slot_id":"relationship_pressure","semantic_role":"relationship pressure","value_kind":"text","cardinality":"zero_or_one","required":false,"replaceable":true,"fill_state":"intentionally_open","allowed_origins":["gm_input","compatible_template_output","ai_candidate"],"visibility_class":"gm_only_template_detail","authority_behavior":"requires_owning_domain_acceptance","compatibility_constraints":[]}
+      ],
+      "structure": {
+        "purpose_intended_experience": ["prove dramatic-role material is distinct from actor truth"],
+        "setup_trigger": [],
+        "objectives": [],
+        "stakes": [],
+        "opposition_pressure": [],
+        "information_state": ["real relationship state absent"],
+        "escalation_structure": [],
+        "complications": [],
+        "resolutions": [],
+        "partial_success_fail_forward": [],
+        "rewards_consequences_aftermath": [],
+        "difficulty_pressure_levers": [],
+        "composition_hooks": ["relationship pressure can remain open or be explicitly filled"]
+      },
+      "projections": {
+        "ready_to_use": {"enabled":true,"include_authority_label":true,"include_provenance":true,"include_uncertainty":true,"include_unresolved_required_slots":true,"authorization_filtered":true,"exposed_slot_ids":["dramatic_role","relationship_pressure"],"notes":["role is construction material, not actor fact"]},
+        "construction_material": {"enabled":true,"include_authority_label":true,"include_provenance":true,"include_uncertainty":true,"include_unresolved_required_slots":true,"authorization_filtered":true,"exposed_slot_ids":["dramatic_role","relationship_pressure"],"notes":["relationship pressure remains replaceable"]}
+      },
+      "composition": {"allowed_operations":["replace_slot","bind_slot","leave_intentionally_open"],"deterministic_manual_path":true,"preserve_lineage":true,"preserve_conflicts":true,"required_compatibility_check":true,"ai_optional":true,"result_authority":"proposal_requires_owning_domain_acceptance","family_specific_rules_ref":null}
+    }
+  ]
+}
