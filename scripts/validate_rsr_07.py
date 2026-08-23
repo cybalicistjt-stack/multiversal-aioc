@@ -131,10 +131,18 @@ for route in routing["routes"]:
 tranches = {t["id"]: t for t in mss["tranches"]}
 for ident in ["MSS-01", "MSS-02", "MSS-03", "MSS-04", "MSS-05"]:
     assert tranches[ident]["status"] == "completed_verified"
-assert tranches["MSS-06"]["status"] == "planned"
 assert tranches["MSS-06"]["activation_after"] == "RSR-07"
 assert mss["completed_through"] == "MSS-05"
-assert mss["status"] == "paused_for_recovered_source_reconciliation"
+# This validator must remain valid on the implementation head and after the
+# RSR closeout. Both permitted states keep MSS-06 unimplemented.
+if mss["status"] == "paused_for_recovered_source_reconciliation":
+    assert tranches["MSS-06"]["status"] == "planned"
+elif mss["status"] == "in_progress":
+    assert tranches["MSS-06"]["status"] == "selected_not_started"
+    assert mss["current_item"] == "MSS-06"
+    assert mss["current_attempt"] == "MSS-06-attempt-001"
+else:
+    raise AssertionError(f"unexpected MSS program status: {mss['status']}")
 
 required_report_phrases = [
     "24 / 24",
