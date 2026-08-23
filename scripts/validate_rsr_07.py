@@ -132,18 +132,11 @@ tranches = {t["id"]: t for t in mss["tranches"]}
 for ident in ["MSS-01", "MSS-02", "MSS-03", "MSS-04", "MSS-05"]:
     assert tranches[ident]["status"] == "completed_verified"
 assert tranches["MSS-06"]["activation_after"] == "RSR-07"
-assert mss["completed_through"] == "MSS-05"
-# RSR-07 remains valid after its successor is selected or actively executing.
-# The archived RSR routing itself must continue to show that RSR-07 did not
-# start MSS-06; current MSS execution is governed by the later MSS checkpoint.
-if mss["status"] == "paused_for_recovered_source_reconciliation":
-    assert tranches["MSS-06"]["status"] == "planned"
-elif mss["status"] == "in_progress":
-    assert tranches["MSS-06"]["status"] in {"selected_not_started", "in_progress"}
-    assert mss["current_item"] == "MSS-06"
-    assert mss["current_attempt"] == "MSS-06-attempt-001"
-else:
-    raise AssertionError(f"unexpected MSS program status: {mss['status']}")
+# RSR-07 is sealed historical evidence. The archived routing assertions above
+# prove that RSR-07 itself did not start MSS-06. Current MSS lifecycle progress
+# is governed by CURRENT_WORK_POINTER/checkpoints and must not make this
+# permanent reconciliation validator fail as MSS-06 and later tranches advance.
+assert mss["strict_order"][5] == "MSS-06"
 
 required_report_phrases = [
     "24 / 24",
