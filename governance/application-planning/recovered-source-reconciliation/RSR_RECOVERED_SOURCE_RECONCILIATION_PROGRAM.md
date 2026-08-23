@@ -1,7 +1,7 @@
 # RSR — Recovered Source Reconciliation
 
 **Program ID:** RSR  
-**Status:** IN PROGRESS — RSR-01..06 COMPLETED_VERIFIED — RSR-07 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — RSR-01..06 COMPLETED_VERIFIED — RSR-07 IN_PROGRESS  
 **Activation:** after MSS-05 `completed_verified`  
 **Completed through:** RSR-06  
 **Current:** RSR-07  
@@ -27,11 +27,7 @@ RSR preserves and reconciles the recovered legacy Multiversal source bundle `Now
 
 ## Completed reconciliation evidence
 
-RSR-01 through RSR-05 retain their existing `completed_verified` evidence.
-
-### RSR-06 — `completed_verified`
-
-Reviewed all 24 retained MHTs for language, dialect/register, naming-system, script/glyph, lexicon/phrase, pronunciation/etymology, translation, cultural-language-use and language-history relevance rather than relying on the two prior route tags. Twelve supplemental material signals were recovered; fourteen sources contained material LNG-adjacent evidence and ten received explicit no-material decisions. Twelve noncanonical source-bound linguistic candidates and fourteen authority/uncertainty boundaries were retained. Owner-authored Apogine proper-name forms were preserved as name provenance only, and owner-authored Serpent negative-emotion telepathy was preserved as communication-mode evidence only. No new language/script/dialect/register stable IDs, accepted lexicon/grammar/translations, Character language knowledge or World/Timeline mutation was introduced. Completed LNG-01..06 remains authoritative, including Dominix future-stage quarantine and proposal-only generated language. Exact-head RSR-01..06 and canonical AIOC validation passed on run `32661763502`, job `97248907454`; PR #614 merged at `604283d6e0924abfd1eff4872ce6aff8e9eb8580`.
+RSR-01 through RSR-06 retain their existing `completed_verified` evidence. RSR-06 merged through PR #614 at `604283d6e0924abfd1eff4872ce6aff8e9eb8580` after exact-head RSR-01..06 and canonical AIOC validation.
 
 ## Tranches
 
@@ -41,13 +37,14 @@ Reviewed all 24 retained MHTs for language, dialect/register, naming-system, scr
 4. **RSR-04 — CEL Cozy/Economy/Life-Loop Reconciliation** — `completed_verified`  
 5. **RSR-05 — LSS Loot/Scavenge/Salvage Reconciliation** — `completed_verified`  
 6. **RSR-06 — LNG Language/Culture/Script Reconciliation** — `completed_verified`  
-   All 24 retained sources received an LNG relevance decision; recovered language/script/translation/name evidence was source-bound and routed while completed LNG/World/Timeline/Character-knowledge authorities remained unchanged.
-7. **RSR-07 — MSS-01..04 Supernatural Foundation Reconciliation & Downstream Routing** — `selected_not_started`  
-   Reconcile recovered magic, mana/resource models, spells/powers, rituals, supernatural species abilities, spirit/divine/psychic/chaos/setting-local traditions, supernatural communication, portals and temporal/causal material against completed MSS-01..04; record provenance implications for MSS-05 and inputs to MSS-06..12/DPL/CCP/WCI/SCL/MAI/SGC. No recovered assistant formula becomes canonical automatically.
+7. **RSR-07 — MSS-01..04 Supernatural Foundation Reconciliation & Downstream Routing** — `in_progress`  
+   Audit all 24 retained sources for magic, mana/resource models, spells/powers, rituals, supernatural species abilities, spirit/divine/psychic/chaos/setting-local traditions, supernatural communication, portals/gates, temporal/causal effects and related evidence. Reconcile against completed MSS-01..04 and current owner domains; record implications relevant to MSS-05 without weakening it; preserve owner facts separately from assistant-generated proposals; and route future implications to MSS-06..12, DPL, CCP, WCI, SCL, MAI and SGC.
 
 ## RSR-07 authority fences
 
 Completed MSS-01..05 remains authoritative. RSR-07 may preserve, classify, link and route recovered supernatural evidence; it may not invent universal mana/resource, damage, healing, duration, failure, backlash, portal or temporal formulas; create duplicate supernatural, Action/Event, Character, Item/Asset or World/Timeline ledgers; silently create stable IDs; or retroactively weaken MSS-05 completion. Owner-supported supernatural facts remain source evidence while surrounding assistant-generated systems/effects/names/formulas remain proposal-only unless separately accepted.
+
+MSS-01 taxonomy keeps source artifact, tradition/source family, effect/subtype family, runtime concept and canonical owner domain distinct. MSS-02 retains resource/capacity/cost/strain/overreach ownership, MSS-03 retains unified supernatural resolution, MSS-04 retains Rune Construction and blind GM adjudication, and MSS-05 retains proposal-only authoring/research/Scripts/Macros/simulation/review-publication authority. RSR-07 does not replace those owners.
 
 MSS-06 remains unauthorized until RSR-07 reaches `completed_verified`.
 
@@ -57,4 +54,4 @@ RSR is complete only after RSR-07 audits all retained sources for supernatural r
 
 ## Forward-order rule
 
-RSR-01 through RSR-06 are `completed_verified`. RSR-07 is `selected_not_started` with no implementation branch or authority until the next owner `Continue` governed-starts it. MSS-06 remains gated until RSR-07 reaches `completed_verified`.
+RSR-01 through RSR-06 are `completed_verified`. RSR-07 is `in_progress` on `governance/rsr-07-mss-reconciliation` with authority bounded to RSR-07 only. MSS-06 remains gated until RSR-07 reaches `completed_verified`.
