@@ -1,10 +1,10 @@
 # MSS — Magic & Supernatural Systems
 
 **Program ID:** MSS  
-**Status:** IN PROGRESS — MSS-01..08 COMPLETED_VERIFIED — MSS-09 IN_PROGRESS  
+**Status:** IN PROGRESS — MSS-01..09 COMPLETED_VERIFIED — MSS-10 SELECTED_NOT_STARTED  
 **Activation:** after LNG-06  
-**Completed through:** MSS-08  
-**Current:** MSS-09  
+**Completed through:** MSS-09  
+**Current:** MSS-10  
 **Successor after program:** CCP-01  
 **Owner and final authority:** John Brandon Turner  
 **Planned:** 2026-08-20  
@@ -29,10 +29,10 @@ The owner-approved `RSR — Recovered Source Reconciliation` interstitial is `co
 5. **MSS-05 — Spell Design, Research, Scripts, Macros & Supernatural Authoring** — `completed_verified`
 6. **MSS-06 — Traditions, Schools, Sources & Casting Profiles** — `completed_verified`
 7. **MSS-07 — Rituals, Circles, Components & Cooperative Casting** — `completed_verified`
-8. **MSS-08 — Countermagic, Resistance, Wards, Suppression & Backlash** — `completed_verified`  
-   Added source/profile-bound resistance profiles, owner-anchored wards, suppression definitions, countermeasure profiles, source-bound backlash profiles and deterministic non-mutating counterplay resolution proposals. Authoritative resolution remains MSS-03-owned and resource mutation remains MSS-02-owned. Completed at application PR #272 after exact-head repository health, self-hosted Linux/Windows validation and deterministic comparison; merge SHA `5dc62cedebb57fbd27dfc7406e039f0f83115b98`.
-9. **MSS-09 — Spirits, Patronage, Worship, Pacts & Divine Favor** — `in_progress`
-10. **MSS-10 — Portals, Gates & Multiversal Transit** — `planned`
+8. **MSS-08 — Countermagic, Resistance, Wards, Suppression & Backlash** — `completed_verified`
+9. **MSS-09 — Spirits, Patronage, Worship, Pacts & Divine Favor** — `completed_verified`  
+   Added deterministic source/profile-bound spirit references anchored to existing owner-domain identities plus patronage, worship, pact and divine-favor relationship contracts with explicit source-authorized, GM-adjudicated and unresolved states. It created no spirit/entity/soul ledger or universal favor, devotion, pact-enforcement or divine-intervention formula. Completed at application PR #273 after exact-head repository health, self-hosted Linux/Windows validation and deterministic comparison; merge SHA `2bb1244709efbec3eecff17216c40f9aae318d68`.
+10. **MSS-10 — Portals, Gates & Multiversal Transit** — `selected_not_started`
 11. **MSS-11 — Temporal/Causal Play, Branching & Paradox Governance** — `planned`
 12. **MSS-12 — Supernatural Content Packs, Workbench, Balance & Golden Proof** — `planned`
 
@@ -48,22 +48,22 @@ MSS-07 binds rituals to explicit MSS-06 casting profiles, MSS-03 resolution prof
 
 MSS-08 reuses MSS-01 `Countermagic` and `Defense/Warding` classifications and adds source/profile-bound resistance, ward, suppression, countermeasure and backlash contracts. Resistance references Character rules but owns no Character state or universal threshold. Wards reference existing Character, Item/Asset, World/Scene or ritual anchors and define no universal strength, radius or duration. Suppression targets explicit MSS-06 casting profiles, MSS-07 rituals or source rules without direct mutation or universal strength/duration logic. Countermeasures never imply automatic success/failure and must resolve through MSS-03; resource mutation remains MSS-02-owned. Backlash is source/profile-bound and defines no universal damage, corruption, failure or recovery formula. AI cannot approve counterplay, reveal hidden outcomes or mutate canon.
 
-## MSS-09 active boundary
+## MSS-09 completed boundary
 
-MSS-09 may define source/profile-bound spirit references and relationship contracts for patronage, worship, pacts and divine favor over completed MSS-01..08. Spirit identity and manifestation may reference existing World/Reality, Character, Item/Asset or Campaign/GM owners but MSS-09 does not create a duplicate entity or soul ledger. Patronage, worship, pact obligations and favor states remain explicit source/profile references or proposals; no universal favor currency, devotion score, pact enforcement, soul ownership, intervention probability, blessing formula or divine reward schedule may be invented. Any supernatural action still resolves through MSS-03, resource effects remain MSS-02-owned, rituals remain MSS-07-owned, counterplay remains MSS-08-owned and canon mutation remains with existing owner/GM authority.
+MSS-09 defines source/profile-bound spirit references and relationship contracts for patronage, worship, pacts and divine favor over completed MSS-01..08. Spirit references must anchor to existing World/Reality, Character, Item/Asset or Campaign/GM owner identities; MSS-09 creates no duplicate entity or soul ledger. Patronage and divine favor define no universal favor currency, intervention probability or reward schedule. Worship defines no universal devotion score or offering-value formula. Pacts require explicit distinct parties and do not transfer soul ownership or define universal enforcement/breach formulas. Source-authorized relationships require explicit evidence; ambiguous relationships remain GM-adjudicated or unresolved. Supernatural actions remain MSS-03-routed, resource mutation remains MSS-02-owned, rituals remain MSS-07-owned and counterplay remains MSS-08-owned.
 
-RSR material remains provenance input. Recovered assistant-generated resistance values, counterspell costs, ward strengths, suppression durations, backlash formulas, soul/pact systems and other recovered expansions remain proposal-only until separately accepted by their owning systems.
+RSR material remains provenance input. Black Vegas soul fragments/pacts, Dionasia divine resonance, Eldritch Hollow spirit/soul material, Traigan Spirit Communion, Goblin casual-god mechanics, Carnival god-fragment explanations and Helldiving demonic-pact/soul-anchor mechanics remain assistant-generated proposals rather than automatic canon. Consortium owner evidence that abilities were interpreted as gods/myth and that humanity is disconnected from innate spiritual/psychic powers is preserved without inferring a universal deity or patron system.
 
 ## Invariants
 
 - Existing Action/Event, Character, Item/Asset, Crafting, World/Reality and Campaign/GM authorities remain canonical.
-- MSS-01 taxonomy axes remain distinct; MSS-02 owns resource/cost/strain/overreach; MSS-03 owns resolution; MSS-04 owns Rune Construction/blind GM adjudication; MSS-05 proposal-authoring/research outputs remain noncanonical until accepted by owning authority; MSS-06 owns casting-profile composition semantics; MSS-07 owns ritual/cooperative orchestration contracts; MSS-08 owns counterplay contract semantics only.
+- MSS-01 taxonomy axes remain distinct; MSS-02 owns resource/cost/strain/overreach; MSS-03 owns resolution; MSS-04 owns Rune Construction/blind GM adjudication; MSS-05 proposal-authoring/research outputs remain noncanonical until accepted by owning authority; MSS-06 owns casting-profile composition semantics; MSS-07 owns ritual/cooperative orchestration contracts; MSS-08 owns counterplay contract semantics; MSS-09 owns only spirit/relationship orchestration contracts.
 - RSR owner evidence is provenance input, not automatic runtime state; recovered assistant output remains proposal-only.
-- No universal mana, power, damage, healing, duration, failure, resistance, counterspell, ward, suppression, backlash, ritual, component, cooperative-casting, favor, pact, soul, spirit or divine-intervention formula is inferred from incomplete sources.
+- No universal mana, power, damage, healing, duration, failure, resistance, counterspell, ward, suppression, backlash, ritual, component, cooperative-casting, favor, pact, soul, spirit, portal or divine-intervention formula is inferred from incomplete sources.
 - AI may propose/explain but never casts, approves, adjudicates, reveals hidden effects or mutates canon by authority.
 - Temporal operations never silently rewrite earlier history; portals and temporal paths preserve visibility, provenance and World/Timeline authority.
 - Migration `0022` remains unreserved without a durable schema delta.
 
 ## Current-work rule
 
-`MSS-08-attempt-001` is `completed_verified` with application PR #272 validated on exact candidate head `f10bc4e3e5ca769373f2946d8a4695530714f8da` and squash-merged as `5dc62cedebb57fbd27dfc7406e039f0f83115b98`. `MSS-09-attempt-001` is the sole current unfinished checkpoint and is `in_progress` on `integration/mss-09-spirit-patronage-pacts-divine-favor`; implementation authority is bounded to MSS-09 only. MSS-10 and later remain unauthorized until MSS-09 completed_verified closeout.
+`MSS-09-attempt-001` is `completed_verified` with application PR #273 validated on exact candidate head `b87e6db00fed54d0b5020dd7e56a09f220055ac6` and squash-merged as `2bb1244709efbec3eecff17216c40f9aae318d68`. `MSS-10-attempt-001` is the sole current successor checkpoint and is `selected_not_started`. MSS-10 receives no implementation authority until the next owner `Continue` governed-starts it; MSS-11 and later remain unauthorized.
