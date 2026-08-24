@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.1.0",
+  "work_item": "GCL-08",
+  "family_id": "GCL-FAM-ADVERSARY-ROLE",
+  "name": "Creature & Adversary Scaling/Role Kit Contract",
+  "classification": "authored_reusable_advisory_library",
+  "purpose": "Provide reusable source-bounded adversary role and scaling kits that shape encounter expression without inventing unsupported creature mechanics or canon.",
+  "depends_on": ["GCL-04", "GCL-07"],
+  "role_families": ["frontliner","defender","skirmisher","artillery","controller","support","ambusher","pursuer","harrier","sniper","disruptor","reinforcer","leader","bodyguard","objective_guardian","hazard_operator","scout","infiltrator","solo_anchor","partner_pair"],
+  "transformation_intents": ["emphasize_existing_strength","expose_counterplay","shift_positioning","shift_timing_cadence","redistribute_composition","soften_failure_exit"],
+  "pressure_dimension_vocabulary": ["durability-recovery","sustained-output","burst-spike","action-economy","control-denial","mobility-position","environment-hazard","objective-time","information-surprise","attrition-resource","reinforcement-escalation","failure-path"],
+  "required_record_fields": ["role_kit_id","role_family","transformation_intent","title","role_goal","source_capability_requirements","transformation_pattern","allowed_adjustment_surfaces","pressure_dimensions","verification_questions","counterplay_prompts","not_applicable_rule","provenance_rule","scopes","genre_affinity","composition_targets","source_mechanics_unchanged","no_invented_mechanics","no_stat_fabrication","source_authorized_numeric_adjustment_only","proposal_only","no_live_state_mutation","no_balance_guarantee","ai_required"],
+  "authority": {"runtime_authority":"none","canon_authority":"none","f012_composition_approval_attachment_authority":"preserved","gcl07_pressure_methodology":"consumed_not_replaced","source_creature_mechanics":"unchanged_unless_owning_source_explicitly_authorizes_numeric_parameter","ai":"optional_proposal_only"},
+  "blocking_invariants": [
+    "No unsupported powers, actions, reactions, resistances, immunities, weaknesses, phases, resources, tags, statistics, lore, relationships or canon may be invented.",
+    "Scaling is role/composition/presentation guidance first; numeric adjustment is permitted only when an owning source explicitly authorizes the exact parameter and range.",
+    "If source capability requirements are absent, the kit is not_applicable rather than repaired by invention.",
+    "Every kit identifies material GCL-07 pressure dimensions and preserves provenance/uncertainty.",
+    "No universal Challenge Rating, threat scalar, balance guarantee, or forced outcome.",
+    "Encounter composition, approval, comparison, simulation and Scene attachment remain MV-IA-F012/PPIA-11 authorities."
+  ]
+}
