@@ -1,20 +1,64 @@
 {
-  "schema_version":"0.1.0",
-  "work_item_id":"GCL-05",
-  "attempt_id":"GCL-05-attempt-001",
-  "track":"gm-construction-library",
-  "source_program":"GCL",
-  "repository":"cybalicistjt-stack/multiversal-aioc",
-  "status":"in_progress",
-  "owner_selected":true,
-  "selected_at":"2026-08-24T01:49:00Z",
-  "started_at":"2026-08-24T01:49:00Z",
-  "governance_branch":"governance/gcl-05-objectives-stakes-outcomes",
-  "base_sha":"1195ffa8e9139195be04afc00289e883e72e09eb",
-  "objective":"Execute GCL-05 — Objectives, Stakes, Outcomes & Victory Conditions. Build reusable objective structures with explicit success definitions, partial success, fail-forward, stakes, clocks, competing priorities and non-defeat outcomes without creating live objective truth or guaranteed results.",
-  "active_substep":"build_validate_merge_and_close_gcl05",
-  "acceptance_profile":{"breadth":"240 approved-library objective templates across 12 objective families, 20 each.","success_states":"Every record exposes at least two success-definition prompts.","partial_success":"Every record exposes at least two bounded partial-success states.","fail_forward":"Every record exposes at least two failure/fail-forward states that continue play without guaranteeing recovery.","stakes":"Every record exposes at least two stakes prompts.","time_conditions":"Every record exposes at least one explicit time-condition prompt rather than relying on hidden urgency.","non_defeat":"Every record exposes at least two non-defeat outcomes so victory is not synonymous with eliminating opponents.","competing_priorities":"Every record exposes at least one competing-priority prompt.","authority":"runtime and canon authority remain none; F012/F005 owning domains must accept any live objective binding or outcome.","gcl07_boundary":"Objective/time pressure is descriptive only; GCL-07 owns later difficulty-shaping advice.","gcl14_boundary":"Rewards, aftermath and world-state consequences remain GCL-14 authority.","validation":"Repository health verifies count/family breadth, stable IDs, slots/placeholders, outcome openness, deterministic archive integrity/materialization, minimum success/partial/fail-forward/stakes/time/non-defeat/competing surfaces and authority boundaries."},
-  "known_blockers":[],
-  "nonauthorization":["application runtime implementation","Campaign/Scene/Encounter-local objective mutation","canonical or predicted outcome","guaranteed success/failure/recovery","automatic reward or consequence mutation","difficulty score or pressure tuning","application critical-path mutation"],
-  "next_action":"Build, validate, merge and close GCL-05; then select GCL-06 as default next explicit Continue GCL."
+  "schema_version": "0.2.0",
+  "work_item_id": "GCL-05",
+  "attempt_id": "GCL-05-attempt-001",
+  "track": "gm-construction-library",
+  "source_program": "GCL",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_at": "2026-08-24T01:49:00Z",
+  "started_at": "2026-08-24T01:49:00Z",
+  "completed_at": "2026-08-24T02:08:00Z",
+  "governance_branch": "governance/gcl-05-objectives-stakes-outcomes",
+  "base_sha": "1195ffa8e9139195be04afc00289e883e72e09eb",
+  "objective": "Execute GCL-05 — Objectives, Stakes, Outcomes & Victory Conditions. Build reusable objective structures with explicit success definitions, partial success, fail-forward, stakes, clocks, competing priorities and non-defeat outcomes without creating live objective truth or guaranteed results.",
+  "result": {
+    "records": 240,
+    "objective_families": 12,
+    "records_per_family": 20,
+    "archive_sha256": "eefae3edde710ad2cf978bd146d5ed1b2fb15ee5f9cf365f81f686c59363de57",
+    "partial_success_first_class": true,
+    "fail_forward_first_class": true,
+    "non_defeat_outcomes_first_class": true,
+    "runtime_authority": "none",
+    "canon_authority": "none",
+    "live_objective_authority": false,
+    "difficulty_shaping_authority": false,
+    "reward_or_aftermath_authority": false
+  },
+  "validation_history": [
+    {
+      "candidate_head": "ceccd8e624512146506210280f95fea2418bc942",
+      "repository_health_run": 32681933355,
+      "repository_health_job": 97299996503,
+      "conclusion": "failure",
+      "finding": "reach_traverse records used the governed obstacle placeholder but obstacle was omitted from the controlled GCL-05 slot vocabulary; candidate was not accepted or merged"
+    },
+    {
+      "candidate_head": "835b81d720e999404e0d3d04388b1d7118be8fc6",
+      "repository_health_run": 32682004251,
+      "repository_health_job": 97300178278,
+      "conclusion": "success",
+      "repair": "added obstacle to the controlled slot vocabulary without weakening any validation rule"
+    }
+  ],
+  "merge_evidence": {
+    "aioc_pr": 648,
+    "validated_head": "835b81d720e999404e0d3d04388b1d7118be8fc6",
+    "repository_health_run": 32682004251,
+    "repository_health_job": 97300178278,
+    "merge_sha": "f3a00c2b8bbaf8ec83a4e39177602c379aa7b993"
+  },
+  "known_blockers": [],
+  "nonauthorization": [
+    "application runtime implementation",
+    "Campaign/Scene/Encounter-local objective mutation",
+    "canonical or predicted outcome",
+    "guaranteed success/failure/recovery",
+    "automatic reward or consequence mutation",
+    "difficulty score or pressure tuning",
+    "application critical-path mutation"
+  ],
+  "next_action": "GCL-05 is completed_verified. GCL-06 is the default next explicit Continue GCL tranche; application critical-path selection remains governed independently by CURRENT_WORK_POINTER.json."
 }
