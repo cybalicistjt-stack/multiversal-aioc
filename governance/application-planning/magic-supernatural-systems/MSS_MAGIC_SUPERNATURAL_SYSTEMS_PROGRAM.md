@@ -2,16 +2,16 @@
 
 **Program ID:** MSS  
 **Historical implementation status:** COMPLETED_VERIFIED — MSS-01..12  
-**Current coverage-finality status:** MSS-12 POST-SEC RE-PROOF SELECTED_NOT_STARTED  
+**Current coverage-finality status:** MSS-12 POST-SEC RE-PROOF IN_PROGRESS  
 **Owner and final authority:** John Brandon Turner
 
 ## Corrective dependency status
 
-All original MSS-01..12 implementation and validation evidence remains valid. The restored dependency **MSS-11 → SEC-01..09 → MSS-12 post-SEC re-proof** has now advanced through SEC-09: SEC is `completed_verified` with all 22 governed capability areas covered, zero demonstrated residual capability gaps, eight explicit mechanism-axis dispositions, and one intentionally open/extensible other-supernatural-mechanism seam.
+All original MSS-01..12 implementation and validation evidence remains valid. The restored dependency **MSS-11 → SEC-01..09 → MSS-12 post-SEC re-proof** has advanced through SEC-09: SEC is `completed_verified` with all 22 governed capability areas covered, zero demonstrated residual capability gaps, eight explicit mechanism-axis dispositions, and one intentionally open/extensible other-supernatural-mechanism seam.
 
-The remaining gate is a **separate MSS-12 post-SEC re-proof**. It does not erase, reopen, or replace historical MSS-12 completion. It exists only to demonstrate that the historical MSS-12 content-pack/workbench/contextual-balance/golden-proof surfaces remain correct against final SEC-01..09 evidence.
+The remaining gate is a **separate MSS-12 post-SEC re-proof**. It does not erase, reopen, or replace historical MSS-12 completion. Owner **Continue** governed-started the re-proof on `integration/mss-12-post-sec-reproof` from exact AIOC `6590a88f88bba9bb9a49f49bfc2a5c16099f3e50` and application `690a8aff7cb2f8600f61b811626e9705dadca48a`.
 
-If SEC-final evidence requires MSS-12 code changes, the changed exact head must receive full validation. If the existing generic MSS-12 contracts accept the SEC-final corpus unchanged, a bounded evidence-only re-proof may close the gate.
+The re-proof must first determine whether final SEC evidence demonstrates any incompatibility with the historical MSS-12 contracts. If the existing generic content-pack/workbench/contextual-balance/golden-proof surfaces accept the SEC-final corpus unchanged, the gate should close through bounded evidence-only proof rather than unnecessary MSS-12 rewrites. If a demonstrated incompatibility requires code changes, only that bounded defect may be repaired and the changed exact head must receive full validation.
 
 ## Completed implementation tranches
 
@@ -38,7 +38,7 @@ SEC-09 application PR #286; exact validated head `b985f03b484b517987311c8bf5d8e9
 
 ## Current gate
 
-`MSS-12-POST-SEC-REPROOF-attempt-001` is `selected_not_started`. It has no implementation branch or implementation authority until the next owner **Continue** governed-starts it.
+`MSS-12-POST-SEC-REPROOF-attempt-001` is `in_progress`. Implementation authority is limited to `integration/mss-12-post-sec-reproof` and to the re-proof itself.
 
 The re-proof must preserve SEC-05/MSS-06 profile-scoped compatibility, MSS-04/07/09/10/11 and MIB-11 specialized ownership, all source/provenance and visibility boundaries, and the historical MSS-12 non-mutation/content-pack/workbench/balance/golden-proof contracts. It cannot treat SEC capability coverage as universal availability or an exhaustive supernatural universe.
 
