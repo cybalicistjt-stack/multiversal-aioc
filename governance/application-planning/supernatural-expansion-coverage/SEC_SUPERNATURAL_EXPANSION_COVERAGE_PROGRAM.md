@@ -1,7 +1,7 @@
 # SEC — Supernatural Expansion & Coverage
 
 **Program ID:** SEC  
-**Status:** IN PROGRESS — SEC-01..06 COMPLETED_VERIFIED — SEC-07 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — SEC-01..06 COMPLETED_VERIFIED — SEC-07 IN_PROGRESS  
 **Current corrective execution:** SEC-07..09 → MSS-12 post-SEC re-proof → resume CCP-02
 
 ## Purpose
@@ -17,11 +17,11 @@ Every new member remains profile-required and unresolved by default under SEC-05
 
 Exact evidence: application PR #283; validated head `1ccf73ccb93256e8a8898cf754055a59a717fdc4`; repository health `32744173292` / `97485584051`; Validation Core `32744172519`; Linux `97485582186`; Windows `97485581884`; comparison `97486587474`; deterministic SHA-256 `69782dc0b51080b6e333dab8ebd34569872e84d497fcd1e5b162494bc701bf76`; app merge `fb849bf32297befacb38b1524915a1745f51870e`.
 
-## Selected next
-### SEC-07 — Exotic & Reality-Scale Spell Expansion — `selected_not_started`
+## Current
+### SEC-07 — Exotic & Reality-Scale Spell Expansion — `in_progress`
 SEC-07 owns the exotic and reality-scale expansion deliberately excluded from SEC-06 core breadth. It may address justified cross-reality, world-scale, rare, interstitial, portal-adjacent, temporal-adjacent and other exotic supernatural gaps while preserving explicit mechanism ownership and SEC-05 compatibility.
 
-SEC-07 must consume SEC-01..06 evidence, cannot auto-scale ordinary family members into world/reality mechanics, cannot convert other supernatural mechanisms into spells merely to fill a matrix cell, and cannot finalize balance or completeness. It has no implementation branch or implementation authority until a future owner `Continue` governed-starts it.
+SEC-07 consumes SEC-01..06 evidence, cannot auto-scale ordinary family members into world/reality mechanics, cannot convert other supernatural mechanisms into spells merely to fill a matrix cell, and cannot finalize balance or completeness. Unsupported tradition/reality combinations remain unresolved or GM-adjudicated under SEC-05. Implementation is bounded to `integration/sec-07-exotic-reality-scale-expansion`.
 
 ## Remaining tranches
 8. **SEC-08 — Redundancy, Balance, Progression & Usability Pass** — planned
@@ -39,4 +39,4 @@ SEC-07 must consume SEC-01..06 evidence, cannot auto-scale ordinary family membe
 - Migration `0022` remains unreserved; no release/deployment/tester/provider/payment activation occurs.
 
 ## Current-work rule
-`SEC-07-attempt-001` is the sole CURRENT application checkpoint and is `selected_not_started`. It has no implementation branch or implementation authority. SEC-08+ remain unauthorized.
+`SEC-07-attempt-001` is the sole CURRENT application checkpoint and is `in_progress` on `integration/sec-07-exotic-reality-scale-expansion`. SEC-08+ remain unauthorized.
