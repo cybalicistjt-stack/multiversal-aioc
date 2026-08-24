@@ -1,27 +1,22 @@
 # SEC — Supernatural Expansion & Coverage
 
 **Program ID:** SEC  
-**Status:** IN PROGRESS — SEC-01/02/03/04 COMPLETED_VERIFIED — SEC-05 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — SEC-01/02/03/04 COMPLETED_VERIFIED — SEC-05 IN_PROGRESS  
 **Current corrective execution:** SEC-05..09 → MSS-12 post-SEC re-proof → resume CCP-02
 
 ## Purpose
 SEC defines and proves supernatural/spell corpus completeness while preserving source evidence and mechanism boundaries.
 
 ## Completed through SEC-04
-SEC-01 audited the retained 385-spell corpus. SEC-02 established the 22-area capability/purpose taxonomy. SEC-03 audited effect-family expansion candidates. SEC-04 now establishes the bounded Spell-Family & Variant Grammar.
+SEC-01 audited the retained 385-spell corpus. SEC-02 established the 22-area capability/purpose taxonomy. SEC-03 audited effect-family expansion candidates. SEC-04 established bounded spell-family and variant grammar while preserving all player-facing spell records.
 
-### SEC-04 — Spell-Family & Variant Grammar — `completed_verified`
-SEC-04 defines six bounded variant dimensions and explicit shared-structure inheritance while preserving all 385 player-facing spell rows. It permits governed family membership and shared structural facts without imposing a universal mathematical scaling formula, automatic balance equivalence, mechanic inference, or automatic spell merge/delete/rename.
+## Current
+### SEC-05 — Tradition, Reality & Magic-Law Coverage Matrix — `in_progress`
+SEC-05 builds explicit compatibility evidence across supernatural traditions, realities and magic-law environments. Existence in the retained corpus is not universal availability. Unsupported combinations remain unresolved, restricted or GM-adjudicated rather than invented.
 
-Exact evidence: application PR #281; validated head `009985ffbac0be0e342d7cc61c1472d5bc699410`; repository health `32695612637` / `97337011156`; Validation Core `32695612700`; Windows `97337011180`; Linux `97337011377`; comparison `97337822934`; deterministic SHA-256 `5714fe371870119371d6e0f7573133e6808d5c2146f80e4ebc02346e12700cb1`; app merge `df32ba507ce3f477be7a8d119d98594ae4eed699`.
+SEC-05 consumes existing MSS-06 tradition/casting authority, including arcane, elemental, innate, shamanic, voodoo, divine, chaos, psychic-psionic, spirit, technological and setting-local tradition families. Mixed traditions require explicit compatibility evidence or an unresolved/GM-adjudicated disposition. SEC-05 may project coverage and compatibility observations but may not replace MSS-06 composition semantics, rewrite source mechanics, create new spells, or define a universal magic-law formula.
 
-SEC-04 preserves later authority: SEC-05 owns tradition/reality/magic-law compatibility; SEC-06/07 own expansion; SEC-08 owns balance/progression/usability; SEC-09 owns final completeness proof.
-
-## Selected next
-### SEC-05 — Tradition, Reality & Magic-Law Coverage Matrix — `selected_not_started`
-SEC-05 will build explicit compatibility evidence across supernatural traditions, realities and magic-law environments. Existence in the retained corpus must not be treated as universal availability. Unsupported compatibility remains unresolved rather than invented.
-
-SEC-05 has no implementation branch or implementation authority until a future owner `Continue` governed-starts it.
+Implementation branch: `integration/sec-05-tradition-reality-magic-law-matrix`.
 
 ## Remaining tranches
 6. **SEC-06 — Core Multiversal Spell-Family Expansion** — planned
@@ -32,11 +27,11 @@ SEC-05 has no implementation branch or implementation authority until a future o
 ## Invariants
 - 385 retained spells are evidence, never completeness proof by count alone.
 - SEC never silently deletes, merges, renames or converts supernatural mechanisms.
-- SEC-04 does not create universal numeric variant formulas or infer mechanics.
-- SEC-05 retains tradition/reality/magic-law compatibility authority.
-- SEC-09 retains final completeness proof.
+- MSS-06 remains authoritative for tradition and casting-profile composition semantics.
+- SEC-05 may record supported, restricted, GM-adjudicated and unresolved compatibility; it may not infer universal availability.
+- SEC-06/07 retain corpus expansion authority; SEC-08 retains balance/progression/usability; SEC-09 retains final completeness proof.
 - MSS-12 post-SEC re-proof remains mandatory; CCP-02 remains parked and unauthorized.
 - Migration `0022` remains unreserved; no release/deployment/tester/provider/payment activation occurs.
 
 ## Current-work rule
-`SEC-05-attempt-001` is the sole CURRENT application checkpoint and is `selected_not_started`. It has no implementation branch or implementation authority. SEC-06+ remain unauthorized.
+`SEC-05-attempt-001` is the sole CURRENT application checkpoint and is `in_progress` on `integration/sec-05-tradition-reality-magic-law-matrix`. SEC-06+ remain unauthorized.
