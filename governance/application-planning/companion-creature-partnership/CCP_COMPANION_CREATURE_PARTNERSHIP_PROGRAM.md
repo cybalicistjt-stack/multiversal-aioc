@@ -1,23 +1,23 @@
 # CCP — Companion & Creature Partnership
 
 **Program ID:** CCP  
-**Status:** IN PROGRESS — CCP-01 COMPLETED_VERIFIED — CCP-02 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — CCP-01 COMPLETED_VERIFIED — CCP-02 IN_PROGRESS  
 **Completed through:** CCP-01  
 **Current item:** CCP-02  
 **Owner and final authority:** John Brandon Turner
 
-## SEC repair satisfied
+## Current governed tranche
 
-CCP-01 remains genuinely `completed_verified` at application merge `687d29d363714d85e074c23f75e6b09f4aa58958`. CCP-02 had been selected but not started when the owner identified the omitted **SEC-01..09 between MSS-11 and MSS-12** dependency.
+CCP-01 remains genuinely `completed_verified` at application merge `687d29d363714d85e074c23f75e6b09f4aa58958`. The omitted SEC dependency and mandatory MSS-12 post-SEC re-proof are also completed_verified; the latter closed as an evidence-only re-proof on application merge `872f8692d6ac2cf57584443c225bd4e5dc5758d0` without rewriting historical MSS-12 runtime/starter behavior.
 
-That corrective dependency is now fully satisfied. SEC-01..09 is `completed_verified`, and `MSS-12-POST-SEC-REPROOF` is `completed_verified` as an evidence-only re-proof on application merge `872f8692d6ac2cf57584443c225bd4e5dc5758d0`. The re-proof required no rewrite of historical MSS-12 runtime/starter behavior.
+Owner **Continue** on 2026-08-24 governed-started **CCP-02 — Companion Identity, Bond, Intelligence, Agency & Role Model** from exact AIOC `58da8a1c0989a13ee46af0c4b735157676c6ab51` and application `872f8692d6ac2cf57584443c225bd4e5dc5758d0`. Its sole authorized application branch is `integration/ccp-02-companion-identity-bond-agency-role-model`.
 
-The existing `CCP-02-attempt-001` checkpoint therefore resumes as `selected_not_started`. Its SEC-repair suspension is cleared, but **selection still grants no implementation authority**. A future owner **Continue** must governed-start CCP-02 from the then-current canonical AIOC/application heads before any implementation begins.
+CCP-02 must define companion identity/profile references, sapience/intelligence, temperament, bond/trust, handler/partner relationships, association/control semantics, permitted roles, needs references and provenance while **projecting over existing owning systems rather than creating duplicate creature, Character or relationship ledgers**. Sapient companions must never default to property or automatic obedience. MIB-09 remains relationship authority; canonical creature/Character identity remains with its existing owners.
 
 ## Tranches
 
 1. **CCP-01 — Source Inventory, Creature Catalog Crosswalk & Authority Map** — `completed_verified`
-2. **CCP-02 — Companion Identity, Bond, Intelligence, Agency & Role Model** — `selected_not_started`
+2. **CCP-02 — Companion Identity, Bond, Intelligence, Agency & Role Model** — `in_progress`
 3. **CCP-03 — Taming, Recruitment, Rescue & Bond Formation** — `planned`
 4. **CCP-04 — Training, Commands, Tasks, Tricks & Behavior** — `planned`
 5. **CCP-05 — Care, Needs, Health, Recovery, Aging & Welfare** — `planned`
@@ -38,8 +38,10 @@ SEC-09 application merge: `690a8aff7cb2f8600f61b811626e9705dadca48a`.
 
 MSS-12 post-SEC re-proof: application PR #287; exact validated head `15ce9e7aa956b9e41331af28c0289e6cc1165649`; repository-health `32755086697` / `97520651812`; Validation Core `32755087271`; Linux `97520653561`; Windows `97520653950`; comparison `97521583367`; deterministic receipt `05031e96188c5f2caf7e4944d17a6c745b4281dafc7325fbead83647af041e29`; squash merge `872f8692d6ac2cf57584443c225bd4e5dc5758d0`.
 
-## Invariants
+## CCP-02 boundaries
 
-All CCP-01 owner-routing, sapient-agency, non-property, no-duplicate-ledger, ICF, MIB-09, MIB-14, Combat, World, Economy, APW, MSS and Campaign/GM/visibility boundaries remain in force. Final SEC/MSS supernatural coverage is an input seam only: it does not authorize CCP to invent supernatural companion mechanics, automatic obedience, ownership of sapient beings, duplicate Character/creature/relationship ledgers, or unsupported biology/training/combat/economy rules.
+CCP-01 owner-routing, sapient-agency, non-property, no-duplicate-ledger, ICF, MIB-09, MIB-14, Combat, World, Economy, APW, MSS and Campaign/GM/visibility boundaries remain in force. Final SEC/MSS supernatural coverage is an input seam only: it does not authorize CCP to invent supernatural companion mechanics.
+
+CCP-02 does **not** authorize CCP-03 recruitment/taming/rescue mechanics, CCP-04 training/commands, CCP-05 care/health/welfare, CCP-06 work/travel/mount integration, CCP-07 combat/familiar/supernatural bonds, CCP-08 breeding/genetics, CCP-09 facilities, CCP-10 ecology/world simulation or CCP-11 packaging/workbench final proof.
 
 Migration `0022` remains unreserved. No release/deployment/tester/provider/payment activation is authorized.
