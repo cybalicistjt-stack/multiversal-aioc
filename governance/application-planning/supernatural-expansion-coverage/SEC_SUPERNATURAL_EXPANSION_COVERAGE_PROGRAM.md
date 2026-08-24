@@ -1,7 +1,7 @@
 # SEC — Supernatural Expansion & Coverage
 
 **Program ID:** SEC  
-**Status:** IN PROGRESS — SEC-01..08 COMPLETED_VERIFIED — SEC-09 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — SEC-01..08 COMPLETED_VERIFIED — SEC-09 IN_PROGRESS  
 **Current corrective execution:** SEC-09 → MSS-12 post-SEC re-proof → resume CCP-02
 
 ## Purpose
@@ -17,13 +17,13 @@ All 33 SEC-06/07 expansion families and all 120 authored members are covered by 
 
 Exact evidence: application PR #285; validated head `f1e9d3b677485902a387681bbfa3454b04f9dce4`; repository health `32748994284` / `97501189521`; Validation Core `32748994601`; Linux `97501190243`; Windows `97501189914`; comparison `97502142732`; deterministic SHA-256 `8bc92187dc69a3a74827aece3ccfcfd11be26ba315e16e1cc798ced7886158aa`; app merge `ccf7304bd97e9224177d6b0c4e56997ffc78c0d8`.
 
-## Selected next
-### SEC-09 — Multiversal Spell Coverage Proof — `selected_not_started`
-SEC-09 owns the final evidence-backed spell/supernatural coverage proof and disposition. It must consume SEC-01..08 evidence, evaluate the 22 SEC-02 capability areas and relevant specialized mechanism seams, distinguish true spell coverage from intentionally externally-owned mechanisms, and record explicit final dispositions without treating raw spell count as proof.
+## Current tranche
+### SEC-09 — Multiversal Spell Coverage Proof — `in_progress`
+SEC-09 owns the final evidence-backed spell/supernatural coverage proof and disposition. Owner Continue governed-started it from AIOC `861232f559d98943f9b01aa8c9953ec2c5ed83fd` and application `ccf7304bd97e9224177d6b0c4e56997ffc78c0d8` on `integration/sec-09-multiversal-spell-coverage-proof`.
+
+SEC-09 must consume SEC-01..08 evidence, evaluate all 22 SEC-02 capability areas and relevant supernatural mechanism seams, distinguish true spell coverage from intentionally externally-owned mechanisms, profile-dependent coverage, intentionally open/extensible seams and any demonstrated residual gaps, and record explicit final dispositions without treating raw spell count as proof.
 
 SEC-09 cannot imply universal tradition/reality compatibility, cannot convert specialized MSS/MIB mechanisms into spells merely to fill a matrix cell, and cannot mutate retained source evidence. Successful SEC-09 completion must hand off to the mandatory MSS-12 post-SEC re-proof; CCP-02 remains parked until that re-proof completes.
-
-SEC-09 has no implementation branch or implementation authority until a future owner `Continue` governed-starts it.
 
 ## Invariants
 - Retained source spells are evidence, never completeness proof by count alone.
@@ -33,9 +33,9 @@ SEC-09 has no implementation branch or implementation authority until a future o
 - SEC-06, SEC-07 and SEC-08 are completed_verified and preserve all prior evidence.
 - MSS-09/10/11 and MIB-11 specialized ownership remains intact.
 - SEC-08 review relationships are metadata only and do not consolidate source/player-facing records.
-- SEC-09 retains final completeness proof and is selected_not_started only.
-- MSS-12 post-SEC re-proof remains mandatory; CCP-02 remains parked and unauthorized.
+- SEC-09 may issue final coverage dispositions but only from explicit evidence and without universal compatibility claims.
+- MSS-12 post-SEC re-proof remains mandatory and unauthorized until SEC-09 completes; CCP-02 remains parked and unauthorized.
 - Migration `0022` remains unreserved; no release/deployment/tester/provider/payment activation occurs.
 
 ## Current-work rule
-`SEC-09-attempt-001` is the sole CURRENT application checkpoint and is `selected_not_started`. It has no implementation branch or implementation authority. A future owner `Continue` may governed-start SEC-09 only.
+`SEC-09-attempt-001` is the sole CURRENT application checkpoint and is `in_progress`. Implementation authority is limited to `integration/sec-09-multiversal-spell-coverage-proof`; no MSS-12 re-proof, CCP-02, migration `0022`, release, deployment, tester distribution or provider/payment activation is authorized.
