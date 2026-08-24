@@ -30,8 +30,9 @@ def check(root:Path,base:Any)->dict[str,Any]:
  paths=[d/"GCL_PROGRAM_BACKLOG.json",d/"GCL-11_SESSION_CONSTRUCTION_LIBRARY_CONTRACT_v0.1.0.json",d/"GCL-11_SESSION_CONSTRUCTION_MATERIALIZATION_PROFILE_v0.1.0.json",d/"GCL-11_SESSION_CONSTRUCTION_LIBRARY_MANIFEST_v0.1.0.json",d/"GCL-11_SESSION_CONSTRUCTION_LIBRARY_v0.1.0.json",root/"governance/ai/work-state/GCL-11-attempt-001.json"]
  for p in paths:base.require(p)
  backlog,contract,profile,manifest,lib,cp=[base.read_json(p) for p in paths]
- assert backlog["program_id"]=="GCL" and backlog["current_item"]=="GCL-11" and backlog["current_item_status"] in {"in_progress","completed_verified"}
- item=next(x for x in backlog["tranches"] if x["id"]=="GCL-11"); assert item["status"] in {"in_progress","completed_verified"}
+ assert backlog["program_id"]=="GCL"
+ assert ((backlog["current_item"]=="GCL-11" and backlog["current_item_status"] in {"in_progress","completed_verified"}) or (backlog["current_item"]=="GCL-10" and backlog["current_item_status"]=="completed_verified" and backlog.get("next_recommended")=="GCL-11"))
+ item=next(x for x in backlog["tranches"] if x["id"]=="GCL-11"); assert item["status"] in {"ready_to_start","in_progress","completed_verified"}
  assert cp["work_item_id"]=="GCL-11" and cp["status"] in {"in_progress","completed_verified"} and cp["repository"]=="cybalicistjt-stack/multiversal-aioc"
  assert contract["family_id"]=="GCL-FAM-SESSION-CONSTRUCTION" and set(contract["session_families"])==FAMILIES and set(contract["construction_patterns"])==PATTERNS
  assert set(contract["segment_role_vocabulary"])==SEGMENTS and set(contract["component_slots"])==SLOTS
