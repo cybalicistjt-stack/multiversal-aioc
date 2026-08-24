@@ -1,30 +1,66 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "work_item_id": "GCL-06",
   "attempt_id": "GCL-06-attempt-001",
   "track": "gm-construction-library",
   "source_program": "GCL",
   "repository": "cybalicistjt-stack/multiversal-aioc",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
   "selected_at": "2026-08-24T02:12:00Z",
   "started_at": "2026-08-24T02:12:00Z",
+  "completed_at": "2026-08-24T03:01:00Z",
   "governance_branch": "governance/gcl-06-complication-escalation-reversal-twist",
   "base_sha": "9cdaba0dc04453fc89488825eae416cb5c7a182c",
   "objective": "Execute GCL-06 — Complication, Escalation, Reversal & Twist Library. Build controlled complication families from color/inconvenience through crisis, with compatibility, opportunity-bearing alternatives and derailment-recovery structures that preserve player agency.",
-  "active_substep": "build_validate_merge_and_close_gcl06",
-  "acceptance_profile": {
-    "breadth": "At least 100 approved-library complications/escalations; target 340 across 17 controlled families, 20 each.",
-    "severity": "Cover color, inconvenience, pressure, setback and crisis without treating severity as a universal difficulty score.",
-    "agency": "Every record preserves multiple responses and continuations and forbids mandatory choices or forced outcomes.",
-    "recovery": "Every record includes derailment-recovery prompts; dedicated recovery family treats unexpected player choices as valid input.",
-    "opportunity": "Every record includes at least one opportunity opening so complications are not purely punitive.",
-    "information": "Reveals/reversals use authorized evidence or explicitly unresolved unknowns only.",
-    "difficulty": "Pressure references are descriptive only; GCL-07 owns difficulty shaping.",
-    "authority": "No runtime/canon/live-state/reward/aftermath authority.",
-    "validation": "Repository health checks exact count/family/severity/form breadth, archive digest, stable IDs, slots/placeholders, minimum trigger/escalation/reversal/response/continuation/recovery/opportunity surfaces, pressure vocabulary, proof target, discovery coverage and authority boundaries."
+  "completion": {
+    "records": 340,
+    "complication_families": 17,
+    "records_per_family": 20,
+    "severity_bands": 5,
+    "complication_forms": 5,
+    "derailment_recovery_records": 20,
+    "gcl18_complication_proof_target_met": true,
+    "deterministic_transport": "base64-chunks-v1",
+    "reconstructed_archive_bytes": 25904,
+    "reconstructed_archive_sha256": "0448f8c1d5f9def4a4e252cb3d777f9541d274b35dc6c3fc73738392ff0c13d0"
   },
-  "known_blockers": [],
+  "accepted_evidence": {
+    "aioc_pr": 650,
+    "standalone_validated_head": "e924a93626ac4a2e427e9f1d7d5c7e56efd6ee0c",
+    "standalone_repository_health_run": 32684704725,
+    "standalone_repository_health_job": 97307544737,
+    "reconciled_validated_head": "0c01f44e3ac13a084f7334392a217ed60d0d28c4",
+    "reconciled_repository_health_run": 32684886869,
+    "reconciled_repository_health_job": 97308061262,
+    "merge_sha": "ba302cdfce14f44d21e5dc74d1b5336aa4fd4886"
+  },
+  "rejected_candidates": [
+    {
+      "run": 32682936619,
+      "job": 97302631306,
+      "reason": "Direct binary connector transport stored a truncated 10333-byte archive, so repository SHA-256 did not match the canonical 25904-byte archive. Candidate was not merged."
+    },
+    {
+      "run": 32684321505,
+      "job": 97306472699,
+      "reason": "First text-chunk transport isolated digest drift in part02. Candidate was not merged."
+    },
+    {
+      "run": 32684401173,
+      "job": 97306670063,
+      "reason": "After part02 repair, the remaining monolithic tail part06 still had digest drift. It was replaced by six independently verified tail chunks. Candidate was not merged."
+    }
+  ],
+  "authority_preserved": {
+    "application_selector_untouched": true,
+    "application_current_during_final_reconciliation": "SEC-02",
+    "application_implementation_authority_granted": false,
+    "runtime_authority": "none",
+    "canon_authority": "none",
+    "difficulty_shaping_authority": false,
+    "reward_or_aftermath_authority": false
+  },
   "nonauthorization": [
     "application runtime implementation",
     "Campaign/Scene/Encounter live-state mutation",
@@ -35,5 +71,5 @@
     "automatic reward or aftermath mutation",
     "application critical-path mutation"
   ],
-  "next_action": "Build, validate, merge and close GCL-06; then make GCL-07 ready_to_start because GCL-04/05/06 dependencies are satisfied while GCL-13 remains independently ready."
+  "next_action": "GCL-07 is the default next explicit Continue GCL tranche. GCL-09, GCL-10, GCL-13, GCL-14 and GCL-16 are also dependency/maturity ready; bare application Continue remains governed by CURRENT_WORK_POINTER.json."
 }
