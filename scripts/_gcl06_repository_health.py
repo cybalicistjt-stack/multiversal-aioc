@@ -1,5 +1,5 @@
 from __future__ import annotations
-import hashlib,json,re,tarfile
+import base64,hashlib,io,json,re,tarfile
 from pathlib import Path
 from typing import Any
 
@@ -10,9 +10,14 @@ PRESSURE={"durability-recovery","sustained-output","burst-spike","action-economy
 
 def load(root:Path,manifest:dict[str,Any])->list[dict[str,Any]]:
  d=root/"governance/application-planning/gm-construction-library"; s=manifest["storage"]; assert s["encoding"]=="tar.gz+gcl06-dictionary-columnar-v1" and s["hidden_defaults"] is False
- a=d/s["archive"]["path"]; assert a.exists(); assert hashlib.sha256(a.read_bytes()).hexdigest()==s["archive_sha256"],"GCL-06 archive digest drift"
+ t=s["transport"]; assert t["encoding"]=="base64-chunks-v1" and t["chunk_count"]==len(t["chunk_paths"])==len(t["chunk_sha256"])
+ parts=[]
+ for path,digest in zip(t["chunk_paths"],t["chunk_sha256"]):
+  p=d/path; assert p.exists(),f"GCL-06 transport chunk missing: {path}"; text=p.read_text(encoding="utf-8").strip(); assert hashlib.sha256(text.encode()).hexdigest()==digest,f"GCL-06 transport chunk digest drift: {path}"; parts.append(text)
+ encoded="".join(parts); assert len(encoded)==t["base64_length"],"GCL-06 base64 length drift"
+ archive=base64.b64decode(encoded,validate=True); assert len(archive)==t["decoded_byte_length"],"GCL-06 decoded archive length drift"; assert hashlib.sha256(archive).hexdigest()==s["archive_sha256"],"GCL-06 reconstructed archive digest drift"
  expected={x["path"]:x for x in s["archive"]["members"]}; out=[]
- with tarfile.open(a,"r:gz") as tf:
+ with tarfile.open(fileobj=io.BytesIO(archive),mode="r:gz") as tf:
   actual={m.name for m in tf.getmembers() if m.isfile()}; assert actual==set(expected),f"GCL-06 archive member drift: {sorted(actual ^ set(expected))}"
   for name,meta in expected.items():
    h=tf.extractfile(name); assert h is not None; p=json.loads(h.read().decode()); assert p["work_item"]=="GCL-06" and p["encoding"]=="gcl06-dictionary-columnar-v1" and p["production_library_content"] is True
