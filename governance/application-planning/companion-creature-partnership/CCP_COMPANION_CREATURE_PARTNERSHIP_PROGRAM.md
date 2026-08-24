@@ -1,22 +1,22 @@
 # CCP — Companion & Creature Partnership
 
 **Program ID:** CCP  
-**Status:** IN PROGRESS — CCP-01..09 COMPLETED_VERIFIED — CCP-10 IN_PROGRESS  
-**Completed through:** CCP-09  
-**Current item:** CCP-10  
+**Status:** IN PROGRESS — CCP-01..10 COMPLETED_VERIFIED — CCP-11 SELECTED_NOT_STARTED  
+**Completed through:** CCP-10  
+**Current item:** CCP-11  
 **Owner and final authority:** John Brandon Turner
 
 ## Current state
 
-CCP-01 through CCP-09 remain `completed_verified`, with exact evidence preserved.
+CCP-01 through CCP-10 are `completed_verified`, with exact evidence preserved.
 
-**CCP-09 — Habitats, Herds, Stables, Kennels & Facility Operations** remains `completed_verified`. Application PR #295 merged as `5b4d56433144d7b50d9c456127882362b31e981e` from exact validated head `9e724f5e9f2502f04736809cdac765a20fca2685`; deterministic receipt `54055ad5b0df2421e867980cbc79cd1a86c404c97e670ce161fc0c07397e7968`.
+**CCP-10 — Creature Ecology, Social Behavior, Lifecycle & World Integration** is `completed_verified`. Application PR #296 merged as `84e8778115ceb3a7341ec17e91b979df76246793` from exact validated head `0b6259c1e0f346aea8587a193dfda5faa2f9020a`. Repository health, governed Linux, governed Windows and deterministic comparison all passed on that exact head; deterministic receipt `72a4f575fa1b84a3c570bfa0cc96e4cc2558814c18d01f3dd231ae8269073df6`.
 
-Owner **Continue** on 2026-08-24 governed-started **CCP-10 — Creature Ecology, Social Behavior, Lifecycle & World Integration** from exact AIOC `85429cd618e02ab5904c66040c102591f586f617` and application `5b4d56433144d7b50d9c456127882362b31e981e`, binding implementation branch `integration/ccp-10-creature-ecology-social-lifecycle-world`.
+CCP-10 implemented a deterministic source/profile-aware reference and handoff layer spanning ecology role, social behavior, lifecycle context and World/environment integration. Five synthetic declarations cover all four seam kinds, including an explicit unresolved sapient boundary proving that unsupported ecology, social-behavior and lifecycle facts remain unresolved rather than inferred. Canonical creature/species/source-profile owners retain biology and lifecycle facts; source/profile social-behavior owners plus MIB-09 retain social/relationship authority; World/reality/environment plus Campaign/GM/visibility owners retain placement, biome/environment state, population/world consequences and visibility.
 
-CCP-10 authority is limited to source/profile-aware ecology roles, social/group behavior references, lifecycle context and World/environment integration handoffs. Canonical creature/species/source-profile owners retain biology, lifecycle, aging, reproduction and environmental tolerances. Source/profile social behavior and MIB-09 relationship state remain authoritative. World/reality/environment and Campaign/GM/visibility owners retain placement, biome/environment state, population/world consequences and visibility.
+CCP-10 defines no universal population-growth, carrying-capacity, migration, territory, predation, social-hierarchy, aggression, compatibility, lifecycle or environmental-response formula. It fabricates no species ecology or social behavior, automatically mutates no relationship state, creates no second creature/ecology/relationship/World ledger and does not implement CCP-11. The first application candidate passed every required validation gate without a repair cycle.
 
-No universal ecology, population-growth, carrying-capacity, migration, territory, predation, social-hierarchy, lifecycle or environmental-response formula is authorized. No fabricated species social/ecological behavior, automatic relationship mutation, duplicate creature/relationship/ecology/World ledger, or CCP-11 implementation is authorized.
+Strict program order now selects **CCP-11 — Content Packs, Search, Workbench & Golden Partnership Proof** as `selected_not_started`. CCP-11 has no implementation branch or implementation authority until a future owner **Continue** governed-starts it. Because CCP-11 is the final CCP tranche, DPL-01 remains outside authority until CCP-11 itself becomes `completed_verified` and a later closeout explicitly selects DPL-01.
 
 ## Tranches
 
@@ -29,17 +29,19 @@ No universal ecology, population-growth, carrying-capacity, migration, territory
 7. **CCP-07 — Combat Companions, Familiars & Supernatural Bond Seam** — `completed_verified`
 8. **CCP-08 — Breeding, Reproduction, Lineage & Inheritance** — `completed_verified`
 9. **CCP-09 — Habitats, Herds, Stables, Kennels & Facility Operations** — `completed_verified`
-10. **CCP-10 — Creature Ecology, Social Behavior, Lifecycle & World Integration** — `in_progress`
-11. **CCP-11 — Content Packs, Search, Workbench & Golden Partnership Proof** — `planned`
+10. **CCP-10 — Creature Ecology, Social Behavior, Lifecycle & World Integration** — `completed_verified`
+11. **CCP-11 — Content Packs, Search, Workbench & Golden Partnership Proof** — `selected_not_started`
 
-## CCP-09 exact evidence
+## CCP-10 exact evidence
 
-Application PR #295; exact validated head `9e724f5e9f2502f04736809cdac765a20fca2685`; repository-health run/job `32775933979` / `97586877567`; Validation Core run `32775934033`; Linux `97586877622`; Windows `97586877300`; deterministic comparison `97587797235`; receipt `54055ad5b0df2421e867980cbc79cd1a86c404c97e670ce161fc0c07397e7968`; squash merge `5b4d56433144d7b50d9c456127882362b31e981e`.
+Application PR #296; exact validated head `0b6259c1e0f346aea8587a193dfda5faa2f9020a`; repository-health run/job `32779055043` / `97596776717`; Validation Core run `32779055605`; Linux `97596778435`; Windows `97596778134`; deterministic comparison `97597783085`; receipt `72a4f575fa1b84a3c570bfa0cc96e4cc2558814c18d01f3dd231ae8269073df6`; squash merge `84e8778115ceb3a7341ec17e91b979df76246793`.
+
+Reference proof covered five declarations and all four CCP-10 seam kinds. `unresolved_facts_preserved=true`, `fabricated_ecology_allowed=false`, `fabricated_social_behavior_allowed=false`, `automatic_relationship_mutation_allowed=false`, `universal_ecology_formula_defined=false`, `owner_ledgers_owned_by_ccp10=false`, `ccp11_mechanics_implemented=false`, `migration_0022_reserved=false`, and no historical owner ledger was mutated.
 
 ## Preserved boundaries
 
-CCP-01 owner-routing, canonical creature/Character identity, MIB-09 relationship identity/state, CCP-02 sapient agency/non-property/explicit-consent/no-automatic-obedience semantics, CCP-03 pathway boundaries, CCP-04 training/behavior boundaries, CCP-05 biology/health/welfare boundaries, CCP-06 capability/equipment/travel/economy boundaries, CCP-07 Combat/MSS handoffs, CCP-08 reproduction/inheritance boundaries and CCP-09 habitat/facility/economy/World handoffs remain in force.
+CCP-01 owner-routing, canonical creature/Character identity, MIB-09 relationship identity/state, CCP-02 sapient agency/non-property/explicit-consent/no-automatic-obedience semantics, CCP-03 pathway boundaries, CCP-04 training/behavior boundaries, CCP-05 biology/health/welfare boundaries, CCP-06 capability/equipment/travel/economy boundaries, CCP-07 Combat/MSS handoffs, CCP-08 reproduction/inheritance boundaries, CCP-09 habitat/facility/economy/World handoffs and CCP-10 ecology/social/lifecycle/World handoffs remain in force.
 
-CCP-10 may define ecology, social behavior, lifecycle and World-integration **reference seams only**. Missing facts remain unresolved rather than inferred. CCP-11 remains unauthorized until selected and governed-started in strict order.
+CCP-11 may package and expose these completed capabilities through source/provenance-aware content packs, deterministic search/filter/index surfaces, browse/inspect/compare/validate/proposal workbench seams and representative golden partnership proof. It must not add new companion mechanics, rewrite provenance/source authority, universalize unresolved or profile-scoped facts, grant AI canonical authority, or directly mutate owner state. DPL-01 remains unauthorized until a later post-CCP-11 closeout.
 
 Migration `0022` remains unreserved. No release/deployment/tester/provider/payment activation is authorized.
