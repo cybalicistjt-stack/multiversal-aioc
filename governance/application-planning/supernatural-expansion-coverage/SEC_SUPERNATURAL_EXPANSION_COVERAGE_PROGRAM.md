@@ -1,9 +1,9 @@
 # SEC — Supernatural Expansion & Coverage
 
 **Program ID:** SEC  
-**Status:** IN PROGRESS — SEC-01/02 COMPLETED_VERIFIED — SEC-03 IN_PROGRESS  
+**Status:** IN PROGRESS — SEC-01/02/03 COMPLETED_VERIFIED — SEC-04 SELECTED_NOT_STARTED  
 **Corrective placement:** intended between MSS-11 and MSS-12  
-**Current corrective execution:** SEC-03..09 → MSS-12 post-SEC re-proof → resume CCP-02  
+**Current corrective execution:** SEC-04..09 → MSS-12 post-SEC re-proof → resume CCP-02  
 **Owner and final authority:** John Brandon Turner
 
 ## Purpose
@@ -11,27 +11,29 @@ SEC defines and proves supernatural/spell corpus completeness. The corrective se
 
 ## Completed
 ### SEC-01 — Full Supernatural Corpus & Spell Coverage Audit — `completed_verified`
-SEC-01 audited all 385 retained Spell_ID rows against Living Spellbooks, faction/core/prestige/species abilities, PPIA-07 Rune coverage, RSR routing and completed MSS authorities. It preserved the 354 source-concept/mechanics-completed versus 31 source-mechanics/partial-fields-completed distinction; recorded 32 multi-source listings, 20 mechanical-identity groups covering 46 spells, 2 conservative modifier-family groups, 31 exact cross-mechanism spell-name overlaps covering 36 non-spell records and 26 exact Living Spellbook suite references; and performed zero automatic merges/conversions or invented mechanics.
+SEC-01 audited all 385 retained Spell_ID rows and preserved source/completion distinctions, review-only duplicate/variant findings, cross-mechanism overlaps and Living Spellbook references without automatic merges, conversions or invented mechanics.
 
-Exact evidence: application PR #278; validated head `d6b08b2d7de8580ca2ffc6f855735a7f7bba71fd`; repository health `32682661877` / `97301907063`; Validation Core `32682662086`; Linux `97301907505`; Windows `97301907551`; comparison `97302308701`; deterministic SHA-256 `679bba10843a3ac4abc12230d90ccc05b58010c510bbc4b56336e222b819a4ec`; app merge `d3946ec8da75c44b3d7815bce212032d6137d9ce`.
+Exact evidence: application PR #278; validated head `d6b08b2d7de8580ca2ffc6f855735a7f7bba71fd`; deterministic SHA-256 `679bba10843a3ac4abc12230d90ccc05b58010c510bbc4b56336e222b819a4ec`; app merge `d3946ec8da75c44b3d7815bce212032d6137d9ce`.
 
 ### SEC-02 — Multiversal Capability & Purpose Taxonomy — `completed_verified`
-SEC-02 established the owner-defined 22-area capability/purpose taxonomy across all 385 retained spells, with one primary discoverability purpose and multi-capability tagging. Spell school remains descriptive metadata rather than the definition of completeness. The matrix also declares mechanism, use-horizon, target-scale and tradition/reality-compatibility axes while preserving SEC-05 authority over compatibility decisions. Observed spell counts are evidence density only; SEC-09 retains final completeness dispositions.
+SEC-02 established the owner-defined 22-area capability/purpose taxonomy across all 385 retained spells. Spell school remains descriptive metadata rather than completeness authority; SEC-09 retains final completeness dispositions.
 
-SEC-02 performed no spell merge/delete/rename/mechanical mutation or cross-mechanism conversion, did not accept SEC-03 effect families, did not implement SEC-04 variant grammar or SEC-05 compatibility, and left migration 0022 unreserved.
+Exact evidence: application PR #279; validated head `46ea13c29b098a1721e5ab64fb0d29c604274897`; deterministic SHA-256 `da10f40003ce23a93e9e2447898f4343bfee80480805edb96e98f70604e74fdb`; app merge `c161d008896ae8f8c3059e98bfe30ed507a288e9`.
 
-Exact evidence: application PR #279; validated head `46ea13c29b098a1721e5ab64fb0d29c604274897`; repository health `32685162170` / `97308819471`; Validation Core `32685162277`; Linux `97308819523`; Windows `97308819645`; comparison `97309354631`; deterministic SHA-256 `da10f40003ce23a93e9e2447898f4343bfee80480805edb96e98f70604e74fdb`; app merge `c161d008896ae8f8c3059e98bfe30ed507a288e9`.
+### SEC-03 — Effect-Family Expansion Audit — `completed_verified`
+SEC-03 audited exactly the retained 14 effect families and all 13 owner-listed candidate concepts against SEC-01 source evidence and SEC-02 capability observations. It accepted nine direct source-supported first-class concepts: Adaptation/Resistance, Communication, Binding/Banishment, Resource Transfer, Environment/Weather, Purification/Corruption, Construction/Repair, Identity/Soul and Spatial Containment. It deferred Probability/Luck, Technology Interface, Causality and Translation for insufficient direct retained spell-corpus evidence.
 
-## Current
-### SEC-03 — Effect-Family Expansion Audit — `in_progress`
-SEC-03 re-evaluates the existing 14 retained effect families—Damage, Divination/Perception, Creation/Summoning, Defense/Warding, Control/Restraint, Emotion/Mind Control, Debuff/Resource Control, Movement/Planar Travel, Healing/Restoration, Illusion/Concealment, Transformation, Countermagic, Utility and Support—against SEC-01 corpus evidence and SEC-02 capability/purpose observations.
+The audit recommends future splitting of Creation/Summoning, Debuff/Resource Control and Movement/Planar Travel, and future concrete reclassification of Utility and Support. SEC-03 changed zero historical spell-family tags or spell mechanics and did not implement SEC-04 grammar.
 
-Candidate first-class concepts include Adaptation/Resistance, Communication, Binding/Banishment, Resource Transfer, Environment/Weather, Purification/Corruption, Construction/Repair, Probability/Luck, Identity/Soul, Technology Interface, Spatial Containment, Causality and Translation. These remain investigative candidates until the tranche produces evidence-backed dispositions; none is pre-approved by planning text.
+Exact evidence: application PR #280; validated head `d42038af4ffc6069d310aade05fcfab707dc7bc9`; repository health `32689401335` / `97320237790`; Validation Core `32689401584`; Windows `97320238229`; Linux `97320238325`; comparison `97320750675`; deterministic SHA-256 `859eb7812cf496e7ac1522c57609d91a62a3680ddb6c9e35027bce49e542c4fb`; app merge `f3c6c9bc50a0090ed7f5cb131066301c26049c85`.
 
-SEC-03 may recommend retaining, clarifying, splitting, merging, accepting, deferring, or keeping a concept as a secondary facet. It must keep effect families distinct from the SEC-02 capability/purpose discoverability taxonomy and cannot silently rewrite source spells or take SEC-04 family/variant-grammar authority.
+## Selected next
+### SEC-04 — Spell-Family & Variant Grammar — `selected_not_started`
+SEC-04 determines when separate player-facing spells belong to one governed family and which dimensions define variants. It covers elemental/material variants, bolt/burst/wall/aura/weapon/ward forms, single/group/area scale, lesser/greater progression labels, detect/locate/analyze relationships and summon/create/control relationships. Shared structure may be inherited, but no universal mathematical scaling formula or automatic mechanical equivalence is authorized.
+
+SEC-04 has no implementation branch or implementation authority until the next owner `Continue` governed-starts it.
 
 ## Remaining tranches
-4. **SEC-04 — Spell-Family & Variant Grammar** — planned
 5. **SEC-05 — Tradition, Reality & Magic-Law Coverage Matrix** — planned
 6. **SEC-06 — Core Multiversal Spell-Family Expansion** — planned
 7. **SEC-07 — Exotic & Reality-Scale Spell Expansion** — planned
@@ -42,14 +44,13 @@ SEC-03 may recommend retaining, clarifying, splitting, merging, accepting, defer
 - 385 retained spells are evidence, never completeness proof by count alone.
 - Source-stated and mechanically completed/inferred fields remain distinguishable.
 - SEC never silently deletes, merges, renames or converts supernatural mechanisms.
-- SEC-02 capability/purpose taxonomy remains a separate completeness/discoverability lens from SEC-03 effect-family classification.
-- SEC-03 candidate effect families are not accepted merely because they appear in planning text.
-- SEC-04 retains spell-family/variant grammar; SEC-05 retains tradition/reality compatibility; SEC-09 retains final completeness proof.
-- Existing MSS-01..11 runtime authority remains controlling; MSS-12 post-SEC re-proof remains mandatory.
-- Recovered assistant-generated RSR material remains proposal-only unless independently supported or owner-approved.
-- CCP-01 remains completed_verified; CCP-02 remains parked and unauthorized.
-- AI may classify/compare/propose but may not canonize, approve or invent missing mechanics.
+- SEC-02 capability/purpose taxonomy remains distinct from effect-family and spell-family classification.
+- SEC-03 dispositions do not themselves rewrite the historical source taxonomy.
+- SEC-04 retains spell-family/variant grammar and may not impose universal numeric formulas.
+- SEC-05 retains tradition/reality compatibility; SEC-09 retains final completeness proof.
+- MSS-12 post-SEC re-proof remains mandatory; CCP-02 remains parked and unauthorized.
+- AI may classify/compare/propose but may not canonize missing mechanics.
 - Migration `0022` remains unreserved; no release/deployment/tester/provider/payment activation occurs.
 
 ## Current-work rule
-`SEC-03-attempt-001` is the sole CURRENT application checkpoint and is `in_progress` on `integration/sec-03-effect-family-expansion-audit`. SEC-04+ remain unauthorized.
+`SEC-04-attempt-001` is the sole CURRENT application checkpoint and is `selected_not_started`. It has no implementation branch or implementation authority. SEC-05+ remain unauthorized.
