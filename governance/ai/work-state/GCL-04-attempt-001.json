@@ -1,49 +1,51 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "work_item_id": "GCL-04",
   "attempt_id": "GCL-04-attempt-001",
   "track": "gm-construction-library",
   "source_program": "GCL",
   "repository": "cybalicistjt-stack/multiversal-aioc",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
   "selected_at": "2026-08-24T00:46:00Z",
   "started_at": "2026-08-24T00:46:00Z",
+  "completed_at": "2026-08-24T01:47:00Z",
   "governance_branch": "governance/gcl-04-encounter-archetype-library",
-  "base_sha": "f27b82d1237b9ddb67cf3e00c827c46db9c6b225",
-  "objective": "Execute GCL-04 — Encounter Archetype Library. Build a broad parameterized library of reusable encounter structures that deterministically materialize into the GCL-01 grammar while preserving MV-IA-F012/PPIA-11 encounter, analysis, uncertainty and no-universal-scalar boundaries.",
-  "active_substep": "build_validate_merge_and_close_gcl04",
-  "acceptance_profile": {
-    "breadth": "At least 360 approved-library encounter archetypes across combat, social, investigation, exploration, travel, stealth, chase, survival, hazard, puzzle/problem, political, hybrid and boss/solo structural families, meeting all current GCL-18 encounter quantity targets.",
-    "parameterization": "Templates expose replaceable governed-object slots instead of hard-coded Campaign facts.",
-    "encounter_shape": "Every template exposes objective prompts, independent PPIA-11 pressure-dimension references, escalation prompts, at least two exit vectors and at least two alternative approaches.",
-    "materialization": "Compact entries expand through an explicit versioned profile into the GCL-01 shared grammar with no hidden defaults or authority promotion.",
-    "authority": "All records retain runtime_authority none, canon_authority none and require owning-domain acceptance before becoming a real Encounter.",
-    "f012_boundary": "No reusable template creates Encounter drafts, placements, quantities, waves, analysis snapshots, simulations, approvals or Scene attachments.",
-    "ppia11_boundary": "No universal challenge scalar, weighted difficulty score, guaranteed balance/fairness/safety/winnability/optimality claim or fabricated precision.",
-    "gcl07_boundary": "Pressure dimensions are descriptive structural references only; GCL-07 retains difficulty-shaping authority.",
-    "gcl08_boundary": "Boss/solo records organize encounter structure only and do not create adversary transformations or unsupported mechanics.",
-    "validation": "The current AIOC repository-health validator checks exact count/family coverage, stable IDs, slots/placeholders, proof-target coverage, objective/pressure/escalation/exit/alternative minimums, pressure vocabulary, deterministic materialization, runtime/canon nonauthority and F012/PPIA-11/GCL-07/GCL-08 boundaries before closeout."
+  "objective": "Execute GCL-04 — Encounter Archetype Library.",
+  "active_substep": null,
+  "evidence": {
+    "aioc_pr": 646,
+    "validated_head": "2556c0b2e112eaa63a4e3edfbc36e00129762494",
+    "repository_health_run": 32680839609,
+    "repository_health_job": 97297141771,
+    "repository_health_conclusion": "success",
+    "candidate_merge_sha": "171a083af7e6f707c3c8f7a1a6c046b3783b7606",
+    "record_count": 360,
+    "encounter_family_count": 13,
+    "pressure_dimensions_covered": 12,
+    "gcl18_encounter_proof_targets_met": true,
+    "archive_sha256": "c47e932d2afe21a772f71f8229f6a3425547a32a8aee0ddd2b308b8d5405e87d"
   },
-  "required_inputs": [
-    "GCL-01 completed_verified foundation",
-    "GCL-02 completed_verified hook library",
-    "GCL-03 completed_verified situation/scene library",
-    "MV-IA-F012 Encounter Builder and Balance Lab",
-    "PPIA-11 Encounter Methodology Contract"
-  ],
-  "known_blockers": [],
+  "verification": {
+    "deterministic_materialization": true,
+    "hidden_defaults": false,
+    "runtime_authority": "none",
+    "canon_authority": "none",
+    "universal_balance_claim": false,
+    "difficulty_shaping_authority": false,
+    "adversary_transformation_authority": false,
+    "application_selector_mutated": false
+  },
   "nonauthorization": [
     "application runtime implementation",
     "Campaign-local Encounter draft or placement mutation",
     "Encounter analysis, simulation, approval or Scene attachment",
     "universal Challenge Rating, encounter level, difficulty score, threat number or power scalar",
     "guaranteed balance, fairness, safety, winnability, optimality or outcome",
-    "GCL-05+ production content except composition references",
     "adversary mechanics or source-canon invention",
     "automatic AI generation, approval or publication",
     "permission, entitlement, pack, scale or rules-profile bypass",
     "application critical-path mutation"
   ],
-  "next_action": "Build, validate and merge GCL-04 only; then record completed_verified evidence and select GCL-05 as the default next explicit Continue GCL item unless the owner explicitly chooses another ready GCL successor."
+  "next_action": "GCL-05 is the default next explicit Continue GCL tranche."
 }
