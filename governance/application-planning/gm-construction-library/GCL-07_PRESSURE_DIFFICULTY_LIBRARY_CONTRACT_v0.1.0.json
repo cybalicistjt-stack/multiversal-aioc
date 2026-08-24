@@ -1,0 +1,94 @@
+{
+  "schema_version": "0.1.0",
+  "work_item": "GCL-07",
+  "family_id": "GCL-FAM-PRESSURE",
+  "name": "Encounter Pressure & Difficulty-Shaping Library Contract",
+  "classification": "authored_reusable_advisory_library",
+  "purpose": "Translate PPIA-11/F012 encounter factors into explicit, uncertainty-aware GM-facing pressure-shaping proposals without a universal difficulty scalar or balance guarantee.",
+  "depends_on": [
+    "GCL-04",
+    "GCL-05",
+    "GCL-06"
+  ],
+  "consumes": [
+    "PPIA-11",
+    "MV-IA-F012"
+  ],
+  "pressure_dimensions": [
+    "durability-recovery",
+    "sustained-output",
+    "burst-spike",
+    "action-economy",
+    "control-denial",
+    "mobility-position",
+    "environment-hazard",
+    "objective-time",
+    "information-surprise",
+    "attrition-resource",
+    "reinforcement-escalation",
+    "failure-path"
+  ],
+  "transformation_intents": [
+    "ease_pressure",
+    "increase_pressure",
+    "make_failure_tolerant",
+    "reshape_pressure"
+  ],
+  "recommendation_types": [
+    "composition_delta",
+    "timing_wave_delta",
+    "environment_hazard_delta",
+    "objective_failure_path_delta",
+    "resource_constraint_delta",
+    "information_visibility_delta"
+  ],
+  "uncertainty_bands": [
+    "low",
+    "moderate",
+    "high",
+    "indeterminate"
+  ],
+  "required_record_fields": [
+    "pressure_template_id",
+    "pressure_dimension",
+    "transformation_intent",
+    "pattern_id",
+    "title",
+    "advisory_pattern",
+    "recommendation_type",
+    "governed_sources",
+    "preconditions",
+    "proposed_deltas",
+    "verification_questions",
+    "tradeoff_prompts",
+    "uncertainty_rule",
+    "scopes",
+    "play_emphasis",
+    "construction_needs",
+    "genre_affinity",
+    "composition_targets",
+    "no_universal_score",
+    "no_balance_guarantee",
+    "proposal_only",
+    "no_live_state_mutation",
+    "source_truth_unchanged",
+    "ai_required"
+  ],
+  "authority": {
+    "runtime_authority": "none",
+    "canon_authority": "none",
+    "f012_composition_approval_attachment_authority": "preserved",
+    "ppia11_methodology_authority": "preserved",
+    "gcl08_adversary_transformation_authority": "not_granted",
+    "ai": "optional_proposal_only"
+  },
+  "blocking_invariants": [
+    "No universal CR, encounter level, difficulty score, threat number, weighted sum or cross-domain power scalar.",
+    "No balanced, fair, safe, winnable, optimal or guaranteed label.",
+    "Unknown/source-unspecified values remain unknown; indeterminate is valid.",
+    "Every recommendation names the specific pressure dimension and explicit proposed delta.",
+    "Recommendations may shape existing governed participants, timing, environment, objectives, resources, information and waves but may not invent source mechanics.",
+    "Difficulty changes must expose material tradeoffs into other pressure dimensions.",
+    "Approval, simulation, comparison and Scene attachment remain F012/PPIA-11 operations."
+  ]
+}

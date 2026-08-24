@@ -1,0 +1,37 @@
+{
+  "schema_version": "0.1.0",
+  "work_item": "GCL-07",
+  "record_count": 144,
+  "pressure_dimension_count": 12,
+  "records_per_pressure_dimension": 12,
+  "transformation_intents": [
+    "ease_pressure",
+    "increase_pressure",
+    "make_failure_tolerant",
+    "reshape_pressure"
+  ],
+  "records_per_intent": 36,
+  "library_path": "governance/application-planning/gm-construction-library/GCL-07_PRESSURE_DIFFICULTY_LIBRARY_v0.1.0.json",
+  "library_sha256": "7e669b6477263537fc5072673c43557e61fd05258694c933a7d23757183448e3",
+  "coverage": {
+    "all_ppia11_pressure_dimensions": true,
+    "easier_patterns_per_dimension": 3,
+    "harder_patterns_per_dimension": 3,
+    "failure_tolerant_patterns_per_dimension": 3,
+    "alternative_shape_patterns_per_dimension": 3,
+    "uncertainty_bands": [
+      "low",
+      "moderate",
+      "high",
+      "indeterminate"
+    ],
+    "no_universal_score": true,
+    "no_balance_guarantee": true
+  },
+  "downstream": {
+    "gcl08_ready_after_completion": true,
+    "f012_integration": "advisory_only"
+  },
+  "storage_encoding": "gcl07-parametric-matrix-v1",
+  "hidden_defaults": false
+}
