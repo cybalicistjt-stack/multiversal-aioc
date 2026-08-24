@@ -1,7 +1,7 @@
 # SEC — Supernatural Expansion & Coverage
 
 **Program ID:** SEC  
-**Status:** IN PROGRESS — SEC-01..05 COMPLETED_VERIFIED — SEC-06 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — SEC-01..05 COMPLETED_VERIFIED — SEC-06 IN_PROGRESS  
 **Current corrective execution:** SEC-06..09 → MSS-12 post-SEC re-proof → resume CCP-02
 
 ## Purpose
@@ -15,11 +15,13 @@ SEC-05 preserves all 22 SEC-02 capability areas across 13 tradition lanes (all M
 
 Exact evidence: application PR #282; validated head `9559240377f95900eb3014d95a4ed5a6a16b464a`; repository health `32708000841` / `97373139031`; Validation Core `32708000991`; Linux `97373139491`; Windows `97373139654`; comparison `97373902132`; deterministic SHA-256 `9cbe960b9b48f9217fe338f72818b96159e3ea10f8c056fcfdc3de17bbb15415`; app merge `0835272ccdd1b761da10c16f5e3bead0df0b00d3`.
 
-## Selected next
-### SEC-06 — Core Multiversal Spell-Family Expansion — `selected_not_started`
-SEC-06 will fill demonstrated broad reusable gaps in defense, mobility, sensory magic, communication, restoration, utility, environmental manipulation, object interaction, crafting assistance, containment, concealment, rescue, logistics and information. The goal is practical supernatural breadth for ordinary adventurers, explorers, investigators, healers, craftspeople, diplomats, travelers and builders rather than damage-centric catalog growth.
+## Current
+### SEC-06 — Core Multiversal Spell-Family Expansion — `in_progress`
+SEC-06 fills demonstrated broad reusable gaps in defense, mobility, sensory magic, communication, restoration, utility, environmental manipulation, object interaction, crafting assistance, containment, concealment, rescue, logistics and information. The goal is practical supernatural breadth for ordinary adventurers, explorers, investigators, healers, craftspeople, diplomats, travelers and builders rather than damage-centric catalog growth.
 
-SEC-06 must consume SEC-01..05 evidence, preserve source/profile compatibility and SEC-04 family grammar, and may not invent universal mathematical scaling. It has no implementation branch or implementation authority until a future owner `Continue` governed-starts it.
+SEC-06 consumes SEC-01..05 evidence, preserves source/profile compatibility and SEC-04 family grammar, and may not invent universal mathematical scaling. Expansion is gap-driven: new family members require explicit purpose/capability justification, family identity, provenance, mechanism ownership and compatibility disposition. Unsupported tradition/reality combinations remain unresolved or GM-adjudicated under SEC-05 rather than becoming universally available.
+
+Implementation branch: `integration/sec-06-core-spell-family-expansion`.
 
 ## Remaining tranches
 7. **SEC-07 — Exotic & Reality-Scale Spell Expansion** — planned
@@ -37,4 +39,4 @@ SEC-06 must consume SEC-01..05 evidence, preserve source/profile compatibility a
 - Migration `0022` remains unreserved; no release/deployment/tester/provider/payment activation occurs.
 
 ## Current-work rule
-`SEC-06-attempt-001` is the sole CURRENT application checkpoint and is `selected_not_started`. It has no implementation branch or implementation authority. SEC-07+ remain unauthorized.
+`SEC-06-attempt-001` is the sole CURRENT application checkpoint and is `in_progress` on `integration/sec-06-core-spell-family-expansion`. SEC-07+ remain unauthorized.
