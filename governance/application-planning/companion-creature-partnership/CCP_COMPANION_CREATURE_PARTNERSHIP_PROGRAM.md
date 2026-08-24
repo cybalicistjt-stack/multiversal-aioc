@@ -1,22 +1,20 @@
 # CCP — Companion & Creature Partnership
 
 **Program ID:** CCP  
-**Status:** IN PROGRESS — CCP-01..06 COMPLETED_VERIFIED — CCP-07 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — CCP-01..06 COMPLETED_VERIFIED — CCP-07 IN_PROGRESS  
 **Completed through:** CCP-06  
 **Current item:** CCP-07  
 **Owner and final authority:** John Brandon Turner
 
 ## Current state
 
-CCP-01 through CCP-05 remain `completed_verified`, with their exact evidence preserved.
+CCP-01 through CCP-06 remain `completed_verified`, with their exact evidence preserved.
 
-**CCP-06 — Mounts, Pack, Service, Work & Travel Integration** is now `completed_verified`. Application PR #292 merged as `faf61dfba2e46013170a98a31842db1d6c523f04` from exact validated head `69021617808f9cb6ccc8e84d89b14f9ffeb9be1e`. Repository health, Linux, Windows and deterministic comparison all passed; deterministic receipt `bec3899c3b628b72024a03266b46be9fa9b21e78b3f3fa71ec4dcc695b60b0d8`.
+**CCP-06 — Mounts, Pack, Service, Work & Travel Integration** remains `completed_verified`. Application PR #292 merged as `faf61dfba2e46013170a98a31842db1d6c523f04` from exact validated head `69021617808f9cb6ccc8e84d89b14f9ffeb9be1e`; deterministic receipt `bec3899c3b628b72024a03266b46be9fa9b21e78b3f3fa71ec4dcc695b60b0d8`.
 
-CCP-06 implemented a deterministic source/profile-aware role/integration reference layer covering `mount`, `pack`, `service`, `work`, and `travel-support`. It preserves creature/species capability, movement, endurance and carrying owners; requires explicit voluntary participation for source-confirmed sapient partners; keeps Items/tack/harness/packs/vehicles with Item/equipment owners; leaves adventure-travel, action resolution, economy and logistics state with their existing owners; and keeps MIB-09 as relationship authority. It defines no universal carrying-capacity, speed, endurance, fatigue, work-output, service-reliability or travel-distance formula and creates no forced labor, automatic obedience or owner-ledger takeover.
+Owner **Continue** on 2026-08-24 governed-started **CCP-07 — Combat Companions, Familiars & Supernatural Bond Seam** from exact AIOC `fcb39f06f0160d4be1d7932e7bd7da2dab721cb0` and application `faf61dfba2e46013170a98a31842db1d6c523f04`, binding implementation branch `integration/ccp-07-combat-companions-familiars-supernatural-bond`.
 
-The first application candidate failed only the focused governance-proof verifier because grouped nonclaim wording did not contain the independently required phrase `no universal speed formula`. The proof record was repaired without changing contract/runtime semantics, and the repaired exact head passed all final gates.
-
-Strict program order now selects **CCP-07 — Combat Companions, Familiars & Supernatural Bond Seam** as `selected_not_started`. It has no implementation branch or implementation authority until a future owner **Continue** governed-starts it.
+CCP-07 authority is limited to source/profile-aware combat-companion participation, familiar references and supernatural-bond handoffs over CCP-01..06 plus existing Combat/action/effect, MSS and MIB-09 seams. Combat stats, initiative, action economy, damage, targeting and encounter resolution remain with Combat/action/effect owners. Familiar, pact, summoning, spirit and supernatural-bond powers/effects remain MSS/source-owner governed. Source-confirmed sapient combat participation remains explicit-voluntary. No forced combat, automatic obedience, universal combat-control formula, fabricated familiar power, duplicate relationship/combat/supernatural ledger, CCP-08+ implementation or migration `0022` is authorized.
 
 ## Tranches
 
@@ -26,7 +24,7 @@ Strict program order now selects **CCP-07 — Combat Companions, Familiars & Sup
 4. **CCP-04 — Training, Commands, Tasks, Tricks & Behavior** — `completed_verified`
 5. **CCP-05 — Care, Needs, Health, Recovery, Aging & Welfare** — `completed_verified`
 6. **CCP-06 — Mounts, Pack, Service, Work & Travel Integration** — `completed_verified`
-7. **CCP-07 — Combat Companions, Familiars & Supernatural Bond Seam** — `selected_not_started`
+7. **CCP-07 — Combat Companions, Familiars & Supernatural Bond Seam** — `in_progress`
 8. **CCP-08 — Breeding, Reproduction, Lineage & Inheritance** — `planned`
 9. **CCP-09 — Habitats, Herds, Stables, Kennels & Facility Operations** — `planned`
 10. **CCP-10 — Creature Ecology, Social Behavior, Lifecycle & World Integration** — `planned`
@@ -42,6 +40,6 @@ Reference proof covered five declarations and all five role kinds. `forced_sapie
 
 CCP-01 owner-routing, canonical creature/Character identity, MIB-09 relationship identity/state, CCP-02 sapient agency/non-property/explicit-consent/no-automatic-obedience semantics, CCP-03 source-scoped pathway eligibility/rescue separation, CCP-04 source/profile trainability and behavior-owner boundaries, CCP-05 source/profile biology/health/recovery/aging/welfare boundaries, CCP-06 source/profile capability/equipment/travel/economy boundaries, ICF, MIB-14, Combat, World, Economy, APW, MSS and Campaign/GM/visibility boundaries remain in force.
 
-CCP-07 may later define combat-companion, familiar and supernatural-bond seams, but it must not invent universal companion combat control, initiative/action/damage formulas, force sapient combat, fabricate familiar powers, or take over Combat/MSS/MIB-09 owner state. CCP-08+ remain unauthorized until selected and governed-started in strict order.
+CCP-07 may define combat-companion, familiar and supernatural-bond **reference seams only**. It must not invent universal companion combat control, initiative/action/damage formulas, force sapient combat, fabricate familiar powers, or take over Combat/MSS/MIB-09 owner state. CCP-08+ remain unauthorized until selected and governed-started in strict order.
 
 Migration `0022` remains unreserved. No release/deployment/tester/provider/payment activation is authorized.
