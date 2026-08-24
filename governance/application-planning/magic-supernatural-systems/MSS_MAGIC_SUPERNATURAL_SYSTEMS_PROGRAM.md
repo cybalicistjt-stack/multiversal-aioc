@@ -1,10 +1,10 @@
 # MSS — Magic & Supernatural Systems
 
 **Program ID:** MSS  
-**Status:** IN PROGRESS — MSS-01..10 COMPLETED_VERIFIED — MSS-11 IN_PROGRESS  
+**Status:** IN PROGRESS — MSS-01..11 COMPLETED_VERIFIED — MSS-12 SELECTED_NOT_STARTED  
 **Activation:** after LNG-06  
-**Completed through:** MSS-10  
-**Current:** MSS-11  
+**Completed through:** MSS-11  
+**Current:** MSS-12  
 **Successor after program:** CCP-01  
 **Owner and final authority:** John Brandon Turner  
 **Planned:** 2026-08-20  
@@ -33,8 +33,9 @@ The owner-approved `RSR — Recovered Source Reconciliation` interstitial is `co
 9. **MSS-09 — Spirits, Patronage, Worship, Pacts & Divine Favor** — `completed_verified`
 10. **MSS-10 — Portals, Gates & Multiversal Transit** — `completed_verified`  
    Added deterministic owner-anchored portal endpoint, gate, transit-subject and transit-plan contracts plus non-mutating transit resolution proposals. World/Reality/Timeline/era/branch identities remain MIB-11/D18-owned, hidden routes remain visibility/GM-owned, supernatural execution remains MSS-03-routed and resources remain MSS-02-owned. No universal portal cost/range/stability/duration/capacity/geometry formula or automatic success/failure rule was introduced. Completed at application PR #274 after exact-head repository health, self-hosted Linux/Windows validation and deterministic comparison; validated head `d73a69c4110e2ced6bc9c793e748799a9e7c1f3f`, deterministic receipt `9b7ddedd616b24cf293c1876e32f5732fe9e59230f14fdf460a913573473fac7`, merge SHA `edb9731754a03ab57c52f9879968530cf5c186e6`.
-11. **MSS-11 — Temporal/Causal Play, Branching & Paradox Governance** — `in_progress`
-12. **MSS-12 — Supernatural Content Packs, Workbench, Balance & Golden Proof** — `planned`
+11. **MSS-11 — Temporal/Causal Play, Branching & Paradox Governance** — `completed_verified`  
+   Added deterministic owner-anchored temporal references, explicit source/profile-bound causal relations, owner-reviewed non-mutating branch proposals, paradox profiles and temporal-operation proposals. MIB-11/D18 remains World/Reality/Timeline/era/branch/Event authority, MSS-10 remains portal/transit authority, MSS-03 remains supernatural resolution authority and MSS-02 remains resource authority. No automatic causal inference, direct branch/history mutation, silent retroactive rewrite, universal causality formula, universal paradox severity/damage/instability/repair formula or universal branch-cost formula was introduced. Completed at application PR #275 after exact-head repository health, self-hosted Linux/Windows validation and deterministic comparison; validated head `14bd3464fddb046a96fac99c7dbb5c5ab660a9f2`, deterministic receipt `eaaa4601fa6f24e0777aa9bf2adb396c7f6989e303c3533d927b81f970f931ee`, merge SHA `68f083f873253ab543d4e239f3a13749be3b94c1`.
+12. **MSS-12 — Supernatural Content Packs, Workbench, Balance & Golden Proof** — `selected_not_started`
 
 ## MSS-06 completed boundary
 
@@ -60,13 +61,19 @@ The first exact-head MSS-10 candidate was not merged because focused regression 
 
 RSR material remains provenance input. Pencrona's owner-established natural portals between eras, 30 Winds official/hidden portal travel and Helldiving trans-portal assistance are retained only as scoped source requirements through their owning authorities. Recovered assistant-generated portal markets, infernal portals, soul anchors, portal costs, stabilization rules, gate collapse, travel ranges and other portal mechanics remain proposal-only until separately accepted.
 
-## MSS-11 active boundary
+## MSS-11 completed boundary
 
-MSS-11 may define deterministic source/profile-bound temporal references, causal relations, branch-operation proposals, paradox profiles and history-safety metadata over completed MSS-01..10. Every timeline, era, event, branch and destination reference must point to identities owned by MIB-11/D18 or another existing owner domain; MSS-11 creates no duplicate World/Timeline/era/branch/Event ledger. Branch requests are proposals/adjudication inputs only: canonical branch creation or mutation remains with the owning World/Timeline authority and cannot be performed directly by MSS-11.
+MSS-11 defines deterministic source/profile-bound temporal references, causal relations, branch-operation proposals, paradox profiles and history-safety metadata over completed MSS-01..10. Every timeline, era, event, branch and destination reference points to identities owned by MIB-11/D18 or another existing owner domain; MSS-11 creates no duplicate World/Timeline/era/branch/Event ledger. Branch requests are proposals/adjudication inputs only: canonical branch creation or mutation remains with the owning World/Timeline authority and cannot be performed directly by MSS-11.
 
-Causal relations must identify explicit source/rule evidence, affected owner references and disposition. MSS-11 defines no universal causality equation, predestination rule, butterfly-effect multiplier or automatic causal inference. Paradox behavior is source/profile-bound, GM-adjudicated or unresolved, with explicit affected references and consequence rules; MSS-11 defines no universal paradox severity, damage, instability, collapse, repair or erasure formula. No operation may silently rewrite committed earlier history. Intended history impact must be explicit, provenance-preserving and accepted by the owning authority before canonical mutation.
+Causal relations identify explicit source/rule evidence, affected owner references and disposition. MSS-11 defines no universal causality equation, predestination rule, butterfly-effect multiplier or automatic causal inference. Paradox behavior is source/profile-bound, GM-adjudicated or unresolved with explicit affected references and consequence rules; MSS-11 defines no universal paradox severity, damage, instability, collapse, repair or erasure formula. No operation silently rewrites committed earlier history. Intended history impact is explicit, provenance-preserving and requires owning-authority acceptance before canonical mutation.
 
-Temporal transit continues to use MSS-10 portal/gate/transit orchestration whenever actual transit is involved. Supernatural execution remains MSS-03-routed and resource mutation remains MSS-02-owned. Hidden timelines, branches, causal facts, alternate-history outcomes and GM-only paradox consequences remain visibility/GM-owned. AI may propose or explain temporal options but cannot reveal hidden facts, decide paradox outcomes, create branches or mutate canon by authority. MSS-12 remains outside MSS-11 scope.
+Temporal transit continues to use MSS-10 portal/gate/transit orchestration whenever actual transit is involved. Supernatural execution remains MSS-03-routed and resource mutation remains MSS-02-owned. Hidden timelines, branches, causal facts, alternate-history outcomes and GM-only paradox consequences remain visibility/GM-owned. AI may propose or explain temporal options but cannot reveal hidden facts, decide paradox outcomes, create branches or mutate canon by authority.
+
+Owner evidence retained includes Pencrona's early-iteration/dual-awareness chronology and natural portals between eras, with 30 Winds hidden-history constraints remaining visibility protected. Recovered Serpentine time-sealing/reality-editing, Vertigon temporal duplication, Carnival spacetime-wound and Pencrona stabilization mechanics remain proposal-only.
+
+## MSS-12 selected boundary
+
+MSS-12 is the final internal MSS tranche and is selected but not started. Its intended scope is supernatural content packs, governed workbench surfaces, balance/evidence review and golden-proof coverage over completed MSS-01..11. It must reuse existing runtime and owner authorities rather than creating parallel Character, Action/Event, Item/Asset, World/Timeline, resource or approval ledgers. Recovered assistant-generated material remains proposal-only unless independently supported or owner-approved. No MSS-12 implementation authority exists until the next owner `Continue` governed-starts it.
 
 ## Invariants
 
@@ -80,4 +87,4 @@ Temporal transit continues to use MSS-10 portal/gate/transit orchestration whene
 
 ## Current-work rule
 
-`MSS-10-attempt-001` is `completed_verified` with application PR #274 validated on exact candidate head `d73a69c4110e2ced6bc9c793e748799a9e7c1f3f` and squash-merged as `edb9731754a03ab57c52f9879968530cf5c186e6`. `MSS-11-attempt-001` is the sole current unfinished MSS checkpoint and is `in_progress` on `integration/mss-11-temporal-causal-paradox-governance`; implementation authority is bounded to MSS-11 only. MSS-12 remains unauthorized until MSS-11 completed_verified closeout.
+`MSS-11-attempt-001` is `completed_verified` with application PR #275 validated on exact candidate head `14bd3464fddb046a96fac99c7dbb5c5ab660a9f2` and squash-merged as `68f083f873253ab543d4e239f3a13749be3b94c1`. `MSS-12-attempt-001` is the sole current MSS successor checkpoint and is `selected_not_started`. MSS-12 receives no implementation authority until the next owner `Continue` governed-starts it; CCP-01 remains unauthorized until MSS-12 completed_verified MSS-program closeout.
