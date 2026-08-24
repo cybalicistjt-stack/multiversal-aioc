@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1.0",
+  "work_item": "GCL-08",
+  "target_family_id": "GCL-FAM-ADVERSARY-ROLE",
+  "deterministic": true,
+  "hidden_defaults": false,
+  "record_count": 120,
+  "role_family_count": 20,
+  "records_per_role_family": 6,
+  "transformation_intent_count": 6,
+  "materialization": {
+    "roles": ["frontliner","defender","skirmisher","artillery","controller","support","ambusher","pursuer","harrier","sniper","disruptor","reinforcer","leader","bodyguard","objective_guardian","hazard_operator","scout","infiltrator","solo_anchor","partner_pair"],
+    "intents": ["emphasize_existing_strength","expose_counterplay","shift_positioning","shift_timing_cadence","redistribute_composition","soften_failure_exit"],
+    "rule": "20 role families × 6 transformation intents = 120 role-kit records."
+  },
+  "manual_path": "Choose a source actor, verify exact source capabilities, select a role and transformation intent, bind only authorized encounter surfaces, review GCL-07 pressure changes/counterplay, and return not_applicable when source support is absent.",
+  "authority_projection": {"runtime_authority":"none","canon_authority":"none","stat_fabrication":false,"mechanics_invention":false,"ai_required":false}
+}
