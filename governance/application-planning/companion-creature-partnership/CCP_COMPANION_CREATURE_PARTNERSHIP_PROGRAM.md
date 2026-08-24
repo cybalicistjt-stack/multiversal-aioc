@@ -1,7 +1,7 @@
 # CCP — Companion & Creature Partnership
 
 **Program ID:** CCP  
-**Status:** IN PROGRESS — CCP-01..02 COMPLETED_VERIFIED — CCP-03 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — CCP-01..02 COMPLETED_VERIFIED — CCP-03 IN_PROGRESS  
 **Completed through:** CCP-02  
 **Current item:** CCP-03  
 **Owner and final authority:** John Brandon Turner
@@ -10,17 +10,19 @@
 
 CCP-01 remains `completed_verified` at application merge `687d29d363714d85e074c23f75e6b09f4aa58958`. The SEC corrective dependency and MSS-12 post-SEC re-proof are also completed_verified.
 
-**CCP-02 — Companion Identity, Bond, Intelligence, Agency & Role Model** is now `completed_verified`. Application PR #288 merged as `341e8d7f41c8bcc9b40e94c7eda3a986eb9c386c` from exact validated head `9758f9cbc3ed363f640cc971afda3b758649e1bf`. Repository health, Linux, Windows and deterministic comparison all passed; deterministic receipt `ea405505c11c7b6d27b5a60829998ac11c6964a54eab56e3ae464a815f965187`.
+**CCP-02 — Companion Identity, Bond, Intelligence, Agency & Role Model** is `completed_verified`. Application PR #288 merged as `341e8d7f41c8bcc9b40e94c7eda3a986eb9c386c` from exact validated head `9758f9cbc3ed363f640cc971afda3b758649e1bf`. Repository health, Linux, Windows and deterministic comparison all passed; deterministic receipt `ea405505c11c7b6d27b5a60829998ac11c6964a54eab56e3ae464a815f965187`.
 
 CCP-02 implemented a deterministic projection/reference layer for companion identity/profile references, sapience/intelligence, temperament, agency, association, MIB-09 bond-dimension references, role declarations, needs references and provenance. It created no second creature/Character/relationship ledger, no numeric bond owner state, no automatic property classification or obedience, and no CCP-03+ mechanics. Source-confirmed sapient voluntary partnership requires explicit consent evidence.
 
-Strict program order now selects **CCP-03 — Taming, Recruitment, Rescue & Bond Formation** as `selected_not_started`. It has no implementation branch or implementation authority until a future owner **Continue** governed-starts it.
+Owner **Continue** on 2026-08-24 governed-started **CCP-03 — Taming, Recruitment, Rescue & Bond Formation** from exact canonical AIOC `bb718c76bc5acc0d2b08c57550ef32b53ff06671` and application `341e8d7f41c8bcc9b40e94c7eda3a986eb9c386c` on `integration/ccp-03-taming-recruitment-rescue-bond-formation`.
+
+CCP-03 is limited to source- and agency-aware entry pathways into companion relationships. It may distinguish rescue, recruitment, taming and authored bond-formation contexts and may emit governed relationship proposals/references, but MIB-09 remains relationship-state authority. CCP-03 must not infer universal eligibility or success, create ownership/obedience by default, coerce source-confirmed sapient beings, invent biology/training/combat/economy/supernatural mechanics, or consume CCP-04+ scope.
 
 ## Tranches
 
 1. **CCP-01 — Source Inventory, Creature Catalog Crosswalk & Authority Map** — `completed_verified`
 2. **CCP-02 — Companion Identity, Bond, Intelligence, Agency & Role Model** — `completed_verified`
-3. **CCP-03 — Taming, Recruitment, Rescue & Bond Formation** — `selected_not_started`
+3. **CCP-03 — Taming, Recruitment, Rescue & Bond Formation** — `in_progress`
 4. **CCP-04 — Training, Commands, Tasks, Tricks & Behavior** — `planned`
 5. **CCP-05 — Care, Needs, Health, Recovery, Aging & Welfare** — `planned`
 6. **CCP-06 — Mounts, Pack, Service, Work & Travel Integration** — `planned`
@@ -36,8 +38,8 @@ Application PR #288; exact validated head `9758f9cbc3ed363f640cc971afda3b758649e
 
 ## Preserved boundaries
 
-CCP-01 owner-routing, canonical creature/Character identity, MIB-09 relationship identity/state, sapient agency, non-property, explicit consent, ICF, MIB-14, Combat, World, Economy, APW, MSS and Campaign/GM/visibility boundaries remain in force.
+CCP-01 owner-routing, canonical creature/Character identity, MIB-09 relationship identity/state, CCP-02 sapient agency/non-property/explicit-consent/no-automatic-obedience semantics, ICF, MIB-14, Combat, World, Economy, APW, MSS and Campaign/GM/visibility boundaries remain in force.
 
-CCP-03 must not assume every creature is tameable/recruitable/bond-eligible, must not coerce source-confirmed sapient beings into property or automatic obedience, and must not invent a universal taming/recruitment/bond-success formula. CCP-04+ remain unauthorized until selected and governed-started in strict order.
+CCP-03 must not assume every creature is tameable/recruitable/rescuable/bond-eligible and must not define a universal taming/recruitment/bond-success formula. It may model pathway eligibility, proposals, source/profile/GM review and outcome disposition only. CCP-04+ remain unauthorized until selected and governed-started in strict order.
 
 Migration `0022` remains unreserved. No release/deployment/tester/provider/payment activation is authorized.
