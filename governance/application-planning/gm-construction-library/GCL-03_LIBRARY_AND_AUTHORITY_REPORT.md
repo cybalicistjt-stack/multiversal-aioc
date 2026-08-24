@@ -57,7 +57,7 @@ The confrontation/standoff family is intentionally combat-adjacent rather than E
 
 ## Storage and materialization
 
-The corpus uses five columnar JSON shards. Every shard declares the same compact field columns and every row supplies every field explicitly. `GCL-03_SITUATION_SCENE_MATERIALIZATION_PROFILE_v0.1.0.json` maps those compact records deterministically into the completed GCL-01 shared template grammar.
+The corpus uses five columnar JSON shards. Every shard declares the same compact field columns. Row-specific values are supplied directly; the only permitted compressed field is the library-wide `genre_affinity=["genre-neutral"]` constant, which is explicitly declared in the manifest and deterministically inserted at its named column when omitted. Rows that spell out `genre_affinity` must exactly match the same manifest constant. No other column may be inherited or omitted. `GCL-03_SITUATION_SCENE_MATERIALIZATION_PROFILE_v0.1.0.json` then maps reconstructed compact records deterministically into the completed GCL-01 shared template grammar.
 
 There are no hidden defaults. Materialization preserves:
 
@@ -92,7 +92,8 @@ The current AIOC repository-health validator now verifies GCL-03 by checking:
 - exactly 100 production records;
 - exactly ten scene families with ten records each;
 - unique stable IDs and family-prefix agreement;
-- required compact fields;
+- required reconstructed compact fields;
+- explicit manifest inheritance for the sole compressible `genre_affinity` column and rejection of every other omission/default;
 - controlled slot vocabulary and declared placeholders;
 - at least two open questions and at least two exit vectors per record;
 - pressure and turning-point coverage;
