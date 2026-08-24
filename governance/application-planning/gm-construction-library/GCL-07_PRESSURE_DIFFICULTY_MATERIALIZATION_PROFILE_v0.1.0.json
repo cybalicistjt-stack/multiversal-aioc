@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1.0",
+  "work_item": "GCL-07",
+  "target_family_id": "GCL-FAM-PRESSURE",
+  "deterministic": true,
+  "hidden_defaults": false,
+  "record_count": 144,
+  "records_per_pressure_dimension": 12,
+  "materialization": {
+    "dimensions": [
+      "durability-recovery",
+      "sustained-output",
+      "burst-spike",
+      "action-economy",
+      "control-denial",
+      "mobility-position",
+      "environment-hazard",
+      "objective-time",
+      "information-surprise",
+      "attrition-resource",
+      "reinforcement-escalation",
+      "failure-path"
+    ],
+    "intents": [
+      "ease_pressure",
+      "increase_pressure",
+      "make_failure_tolerant",
+      "reshape_pressure"
+    ],
+    "patterns_per_intent": 3,
+    "rule": "Cartesian expansion: 12 pressure dimensions × 4 transformation intents × 3 pattern families."
+  },
+  "manual_path": "Select a pressure dimension, state intent, choose a pattern, bind exact source-backed inputs, review tradeoffs and uncertainty, then present the explicit delta for human review.",
+  "authority_projection": {
+    "runtime_authority": "none",
+    "canon_authority": "none",
+    "approval_authority": "none",
+    "attachment_authority": "none",
+    "ai_required": false
+  }
+}
