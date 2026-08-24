@@ -1,30 +1,27 @@
 # SEC — Supernatural Expansion & Coverage
 
 **Program ID:** SEC  
-**Status:** IN PROGRESS — SEC-01..06 COMPLETED_VERIFIED — SEC-07 IN_PROGRESS  
-**Current corrective execution:** SEC-07..09 → MSS-12 post-SEC re-proof → resume CCP-02
+**Status:** IN PROGRESS — SEC-01..07 COMPLETED_VERIFIED — SEC-08 SELECTED_NOT_STARTED  
+**Current corrective execution:** SEC-08..09 → MSS-12 post-SEC re-proof → resume CCP-02
 
 ## Purpose
 SEC defines and proves supernatural/spell corpus completeness while preserving source evidence and mechanism boundaries.
 
-## Completed through SEC-06
-SEC-01 audited the retained 385-spell corpus. SEC-02 established the 22-area capability/purpose taxonomy. SEC-03 audited effect-family expansion candidates. SEC-04 established bounded spell-family and variant grammar. SEC-05 established explicit tradition/reality/magic-law coverage semantics without universalizing supernatural availability. SEC-06 then filled demonstrated practical core gaps without mutating the retained source corpus.
+## Completed through SEC-07
+SEC-01 audited the retained 385-spell corpus. SEC-02 established the 22-area capability/purpose taxonomy. SEC-03 audited effect-family expansion candidates. SEC-04 established bounded spell-family and variant grammar. SEC-05 established explicit tradition/reality/magic-law coverage semantics. SEC-06 filled demonstrated practical core gaps with 21 family seams / 84 authored members. SEC-07 added bounded exotic/reality-scale breadth with 12 family seams / 36 authored members while preserving specialized mechanism ownership.
 
-### SEC-06 — Core Multiversal Spell-Family Expansion — `completed_verified`
-SEC-06 delivered a gap-driven, non-damage-centric reference expansion layer with 21 core family seams and 84 individually authored member blueprints. The expansion deliberately strengthens defense, mobility, exploration, survival, communication, information gathering, stealth, restoration, crafting and repair, infrastructure, logistics, environmental manipulation, journey support and mundane quality-of-life utility.
+### SEC-07 — Exotic & Reality-Scale Spell Expansion — `completed_verified`
+SEC-07 added portal-adjacent sensing/warding, temporal perception/anchoring, reality attunement/continuity, interstitial signaling, spirit-boundary defense, exotic manifestation containment, foreign-reality adaptation, supernatural-law diagnostics and authorized reality-scale observation. World/reality targets are observation-only. MSS-10 retains portal traversal/topology; MSS-11 temporal-causal/history mutation; MSS-09 spirit relationship state; MIB-11 canonical world/reality/timeline state.
 
-Every new member remains profile-required and unresolved by default under SEC-05 compatibility. SEC-06 does not universalize tradition/reality access, infer a universal numeric scaling formula, auto-publish setting canon, or mutate/rename/merge any of the retained 385 spell rows. SEC-03 effect-family seams and SEC-04 explicit shared-structure grammar are reused without reviving generic Utility/Support catch-all families.
+Every SEC-07 member remains profile-required, unresolved by default under SEC-05 compatibility, non-universal, non-canonical by automation and forbidden from direct specialized-owner mutation. All 385 retained source rows and SEC-06's 21 families/84 members remain preserved.
 
-Exact evidence: application PR #283; validated head `1ccf73ccb93256e8a8898cf754055a59a717fdc4`; repository health `32744173292` / `97485584051`; Validation Core `32744172519`; Linux `97485582186`; Windows `97485581884`; comparison `97486587474`; deterministic SHA-256 `69782dc0b51080b6e333dab8ebd34569872e84d497fcd1e5b162494bc701bf76`; app merge `fb849bf32297befacb38b1524915a1745f51870e`.
+Exact evidence: application PR #284; validated head `fbad9334923d2bfad4a92ce7165beaa7c8b5b1f0`; repository health `32746568591` / `97493416145`; Validation Core `32746568941`; Linux `97493416297`; Windows `97493416620`; comparison `97494402090`; deterministic SHA-256 `d9631963ae0084c7917ce2ec460448b2e0e148cfd9fbec3569e59dd75c00ac87`; app merge `facce7adc8e053eea1107de1ee8ddcaca35b1085`.
 
-## Current
-### SEC-07 — Exotic & Reality-Scale Spell Expansion — `in_progress`
-SEC-07 owns the exotic and reality-scale expansion deliberately excluded from SEC-06 core breadth. It may address justified cross-reality, world-scale, rare, interstitial, portal-adjacent, temporal-adjacent and other exotic supernatural gaps while preserving explicit mechanism ownership and SEC-05 compatibility.
+## Selected next
+### SEC-08 — Redundancy, Balance, Progression & Usability Pass — `selected_not_started`
+SEC-08 is selected by strict SEC order but has no implementation branch or implementation authority until the next owner **Continue**. Its bounded purpose is to review SEC-01..07 evidence for redundancy, family/progression clarity, profile-scoped balance relationships, discoverability and usability without deleting source evidence or imposing universal numeric formulas.
 
-SEC-07 consumes SEC-01..06 evidence, cannot auto-scale ordinary family members into world/reality mechanics, cannot convert other supernatural mechanisms into spells merely to fill a matrix cell, and cannot finalize balance or completeness. Unsupported tradition/reality combinations remain unresolved or GM-adjudicated under SEC-05. Implementation is bounded to `integration/sec-07-exotic-reality-scale-expansion`.
-
-## Remaining tranches
-8. **SEC-08 — Redundancy, Balance, Progression & Usability Pass** — planned
+## Remaining tranche
 9. **SEC-09 — Multiversal Spell Coverage Proof** — planned
 
 ## Invariants
@@ -32,11 +29,11 @@ SEC-07 consumes SEC-01..06 evidence, cannot auto-scale ordinary family members i
 - SEC never silently deletes, merges, renames or converts supernatural mechanisms.
 - MSS-06 remains authoritative for tradition and casting-profile composition semantics.
 - SEC-05 compatibility remains source/profile scoped and unresolved by default.
-- SEC-06 core expansion is completed_verified and preserves all 385 retained source rows.
-- SEC-07 owns exotic/reality-scale expansion and cannot impose universal numeric scaling or universal availability.
+- SEC-06 and SEC-07 are completed_verified and preserve all prior evidence.
+- MSS-09/10/11 and MIB-11 specialized ownership remains intact.
 - SEC-08 retains balance/progression/usability; SEC-09 retains final completeness proof.
 - MSS-12 post-SEC re-proof remains mandatory; CCP-02 remains parked and unauthorized.
 - Migration `0022` remains unreserved; no release/deployment/tester/provider/payment activation occurs.
 
 ## Current-work rule
-`SEC-07-attempt-001` is the sole CURRENT application checkpoint and is `in_progress` on `integration/sec-07-exotic-reality-scale-expansion`. SEC-08+ remain unauthorized.
+`SEC-08-attempt-001` is the sole CURRENT application checkpoint and is `selected_not_started` with no implementation authority. The next owner Continue may governed-start SEC-08 only. SEC-09 remains unauthorized.
