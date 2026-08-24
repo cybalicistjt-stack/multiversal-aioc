@@ -337,16 +337,28 @@ def check_gcl_hook_library(root: Path) -> dict[str, Any]:
 
 def load_gcl03_records(gcl_dir: Path, manifest: dict[str, Any]) -> list[dict[str, Any]]:
     records: list[dict[str, Any]] = []
-    for pack_meta in manifest["storage"]["packs"]:
+    storage = manifest["storage"]
+    inherited = storage["explicit_inherited_record_fields"]
+    assert inherited == {"genre_affinity": ["genre-neutral"]}
+    assert storage["hidden_defaults"] is False
+    for pack_meta in storage["packs"]:
         pack = read_json(gcl_dir / pack_meta["path"])
         assert pack["work_item"] == "GCL-03"
         assert pack["encoding"] == "columnar_v1"
         assert pack["production_library_content"] is True
         columns = pack["columns"]
         assert len(columns) == len(set(columns)), f"duplicate GCL-03 column in {pack_meta['path']}"
+        genre_index = columns.index("genre_affinity")
         pack_records: list[dict[str, Any]] = []
-        for row in pack["records"]:
-            assert len(row) == len(columns), f"columnar row width drift in {pack_meta['path']}"
+        for row_index, original_row in enumerate(pack["records"]):
+            row = list(original_row)
+            assert row and row[-1] is True, f"GCL-03 row must end in no_resolved_outcome=true: {pack_meta['path']} row {row_index}"
+            if len(row) == len(columns) - 1:
+                assert row[genre_index] != inherited["genre_affinity"], f"ambiguous GCL-03 inherited-column shape: {pack_meta['path']} row {row_index}"
+                row.insert(genre_index, inherited["genre_affinity"])
+            else:
+                assert len(row) == len(columns), f"columnar row width drift in {pack_meta['path']} row {row_index}: got {len(row)}, expected {len(columns)} or {len(columns)-1} with explicit genre inheritance"
+                assert row[genre_index] == inherited["genre_affinity"], f"explicit GCL-03 genre value must match manifest inheritance: {pack_meta['path']} row {row_index}"
             pack_records.append(dict(zip(columns, row)))
         assert len(pack_records) == pack_meta["record_count"]
         records.extend(pack_records)
@@ -410,6 +422,8 @@ def check_gcl_scene_library(root: Path) -> dict[str, Any]:
     assert manifest["scene_family_count"] == len(expected_scene_families) == 10
     assert manifest["record_count"] == 100
     assert manifest["records_per_scene_family"] == 10
+    assert manifest["storage"]["hidden_defaults"] is False
+    assert manifest["storage"]["explicit_inherited_record_fields"] == {"genre_affinity": ["genre-neutral"]}
     quality = manifest["quality_rules"]
     assert quality["multiple_continuations"] is True
     assert quality["no_resolved_outcome"] is True
