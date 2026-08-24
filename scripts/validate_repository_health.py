@@ -232,13 +232,11 @@ def check_gcl_hook_library(root: Path) -> dict[str, Any]:
     checkpoint = read_json(checkpoint_path)
 
     assert backlog["program_id"] == "GCL"
-    assert backlog["current_item"] == "GCL-02"
-    assert backlog["current_item_status"] in {"in_progress", "completed_verified"}
     gcl02 = next(item for item in backlog["tranches"] if item["id"] == "GCL-02")
-    assert gcl02["status"] in {"in_progress", "completed_verified"}
+    assert gcl02["status"] == "completed_verified", "GCL-02 must remain completed_verified after successor activation"
     assert checkpoint["work_item_id"] == "GCL-02"
     assert checkpoint["attempt_id"] == "GCL-02-attempt-001"
-    assert checkpoint["status"] in {"in_progress", "completed_verified"}
+    assert checkpoint["status"] == "completed_verified"
     assert checkpoint["repository"] == "cybalicistjt-stack/multiversal-aioc"
     assert checkpoint["nonauthorization"], "GCL-02 must preserve explicit nonauthorization"
 
@@ -334,6 +332,165 @@ def check_gcl_hook_library(root: Path) -> dict[str, Any]:
         "genre_strategy": "genre_neutral_structure",
         "play_emphasis_count": len(all_play),
         "scopes": sorted(all_scopes),
+    }
+
+
+def load_gcl03_records(gcl_dir: Path, manifest: dict[str, Any]) -> list[dict[str, Any]]:
+    records: list[dict[str, Any]] = []
+    storage = manifest["storage"]
+    inherited = storage["explicit_inherited_record_fields"]
+    assert inherited == {"genre_affinity": ["genre-neutral"]}
+    assert storage["hidden_defaults"] is False
+    for pack_meta in storage["packs"]:
+        pack = read_json(gcl_dir / pack_meta["path"])
+        assert pack["work_item"] == "GCL-03"
+        assert pack["encoding"] == "columnar_v1"
+        assert pack["production_library_content"] is True
+        columns = pack["columns"]
+        assert len(columns) == len(set(columns)), f"duplicate GCL-03 column in {pack_meta['path']}"
+        genre_index = columns.index("genre_affinity")
+        pack_records: list[dict[str, Any]] = []
+        for row_index, original_row in enumerate(pack["records"]):
+            row = list(original_row)
+            assert row and row[-1] is True, f"GCL-03 row must end in no_resolved_outcome=true: {pack_meta['path']} row {row_index}"
+            if len(row) == len(columns) - 1:
+                assert row[genre_index] != inherited["genre_affinity"], f"ambiguous GCL-03 inherited-column shape: {pack_meta['path']} row {row_index}"
+                row.insert(genre_index, inherited["genre_affinity"])
+            else:
+                assert len(row) == len(columns), f"columnar row width drift in {pack_meta['path']} row {row_index}: got {len(row)}, expected {len(columns)} or {len(columns)-1} with explicit genre inheritance"
+                assert row[genre_index] == inherited["genre_affinity"], f"explicit GCL-03 genre value must match manifest inheritance: {pack_meta['path']} row {row_index}"
+            pack_records.append(dict(zip(columns, row)))
+        assert len(pack_records) == pack_meta["record_count"]
+        records.extend(pack_records)
+    return records
+
+
+def check_gcl_scene_library(root: Path) -> dict[str, Any]:
+    gcl_dir = root / "governance/application-planning/gm-construction-library"
+    backlog_path = gcl_dir / "GCL_PROGRAM_BACKLOG.json"
+    contract_path = gcl_dir / "GCL-03_SITUATION_SCENE_LIBRARY_CONTRACT_v0.1.0.json"
+    profile_path = gcl_dir / "GCL-03_SITUATION_SCENE_MATERIALIZATION_PROFILE_v0.1.0.json"
+    manifest_path = gcl_dir / "GCL-03_SITUATION_SCENE_LIBRARY_MANIFEST_v0.1.0.json"
+    checkpoint_path = root / "governance/ai/work-state/GCL-03-attempt-001.json"
+    for path in [backlog_path, contract_path, profile_path, manifest_path, checkpoint_path]:
+        require(path)
+
+    backlog = read_json(backlog_path)
+    contract = read_json(contract_path)
+    profile = read_json(profile_path)
+    manifest = read_json(manifest_path)
+    checkpoint = read_json(checkpoint_path)
+
+    assert backlog["program_id"] == "GCL"
+    assert backlog["current_item"] == "GCL-03"
+    assert backlog["current_item_status"] in {"in_progress", "completed_verified"}
+    gcl03 = next(item for item in backlog["tranches"] if item["id"] == "GCL-03")
+    assert gcl03["status"] in {"in_progress", "completed_verified"}
+    assert checkpoint["work_item_id"] == "GCL-03"
+    assert checkpoint["attempt_id"] == "GCL-03-attempt-001"
+    assert checkpoint["status"] in {"in_progress", "completed_verified"}
+    assert checkpoint["repository"] == "cybalicistjt-stack/multiversal-aioc"
+    assert checkpoint["nonauthorization"], "GCL-03 must preserve explicit nonauthorization"
+
+    assert contract["family_id"] == "GCL-FAM-SITUATION"
+    expected_scene_families = set(contract["scene_families"])
+    assert len(expected_scene_families) == 10
+    slot_vocabulary = {slot["slot_id"] for slot in contract["slot_vocabulary"]}
+    assert len(slot_vocabulary) == len(contract["slot_vocabulary"])
+    assert contract["f005_boundary"]["campaign_local_placement_owned_here"] is False
+    assert contract["f005_boundary"]["live_session_state_owned_here"] is False
+    assert contract["f005_boundary"]["hidden_reveal_state_owned_here"] is False
+    assert contract["f005_boundary"]["launch_snapshot_owned_here"] is False
+
+    assert profile["deterministic"] is True
+    assert profile["hidden_defaults"] is False
+    assert profile["target_family_id"] == "GCL-FAM-SITUATION"
+    assert profile["authority_projection"]["runtime_authority"] == "none"
+    assert profile["authority_projection"]["requires_owning_domain_acceptance"] is True
+    assert profile["composition_profile"]["deterministic_manual_path"] is True
+    assert profile["composition_profile"]["result_authority"] == "proposal_requires_owning_domain_acceptance"
+    for forbidden in [
+        "creating a Campaign-local placement or override",
+        "establishing hidden/reveal or knowledge-state truth",
+        "creating launch readiness, launch snapshots, live Session state or Events",
+        "converting possible exit vectors into resolved outcomes",
+    ]:
+        assert forbidden in profile["forbidden_materialization_behavior"]
+
+    manifest_scene_families = {item["id"] for item in manifest["scene_families"]}
+    assert manifest_scene_families == expected_scene_families
+    assert manifest["scene_family_count"] == len(expected_scene_families) == 10
+    assert manifest["record_count"] == 100
+    assert manifest["records_per_scene_family"] == 10
+    assert manifest["storage"]["hidden_defaults"] is False
+    assert manifest["storage"]["explicit_inherited_record_fields"] == {"genre_affinity": ["genre-neutral"]}
+    quality = manifest["quality_rules"]
+    assert quality["multiple_continuations"] is True
+    assert quality["no_resolved_outcome"] is True
+    assert quality["runtime_authority"] == "none"
+    assert quality["canon_authority"] == "none"
+    assert quality["owning_domain_acceptance_required"] is True
+    assert quality["campaign_local_placement_authority"] is False
+    assert quality["hidden_reveal_authority"] is False
+    assert quality["launch_or_session_authority"] is False
+    assert quality["ai_required"] is False
+
+    records = load_gcl03_records(gcl_dir, manifest)
+    assert len(records) == 100
+    required_fields = set(contract["compact_record_required_fields"])
+    forbidden_fields = set(contract["nonlinear_scene_shape"]["forbidden_compact_fields"])
+    seen_ids: set[str] = set()
+    family_counts = {family: 0 for family in expected_scene_families}
+    all_play: set[str] = set()
+    all_needs: set[str] = set()
+    placeholder_re = re.compile(r"\{([a-z][a-z0-9_]*)\}")
+    prefix_map = {item["id"]: item["prefix"] for item in manifest["scene_families"]}
+
+    for record in records:
+        scene_id = record.get("scene_template_id")
+        assert required_fields.issubset(record), f"GCL-03 record missing compact fields: {scene_id}"
+        assert not forbidden_fields.intersection(record), f"GCL-03 record contains forbidden live/resolution field: {scene_id}"
+        assert isinstance(scene_id, str) and scene_id.startswith("gcl:situation.")
+        assert scene_id not in seen_ids, f"duplicate GCL-03 stable ID: {scene_id}"
+        seen_ids.add(scene_id)
+        assert record["scene_family"] in expected_scene_families
+        assert scene_id.startswith(prefix_map[record["scene_family"]]), f"GCL-03 ID/family prefix drift: {scene_id}"
+        family_counts[record["scene_family"]] += 1
+        assert record["no_resolved_outcome"] is True, f"scene must remain outcome-open: {scene_id}"
+        assert len(record["open_questions"]) >= quality["minimum_open_questions_per_record"]
+        assert len(record["pressure_prompts"]) >= quality["minimum_pressure_prompts_per_record"]
+        assert len(record["turning_point_prompts"]) >= quality["minimum_turning_point_prompts_per_record"]
+        assert len(record["exit_vectors"]) >= quality["minimum_exit_vectors_per_record"]
+        assert record["genre_affinity"] == ["genre-neutral"], f"GCL-03 v0.1.0 should remain structurally genre-neutral: {scene_id}"
+        assert record["scopes"] == ["scene"], f"GCL-03 production scope must remain scene: {scene_id}"
+        assert record["slot_ids"], f"parameterized scene must expose at least one slot: {scene_id}"
+        assert set(record["slot_ids"]).issubset(slot_vocabulary), f"unknown GCL-03 slot vocabulary: {scene_id}"
+        placeholders = set(placeholder_re.findall(record["situation_pattern"] + " " + record["opening_state_pattern"]))
+        assert placeholders.issubset(set(record["slot_ids"])), f"undeclared placeholder in {scene_id}: {sorted(placeholders - set(record['slot_ids']))}"
+        assert record["composition_targets"], f"scene needs downstream composition target: {scene_id}"
+        all_play.update(record["play_emphasis"])
+        all_needs.update(record["construction_needs"])
+
+    assert all(count == 10 for count in family_counts.values()), f"GCL-03 scene family breadth drift: {family_counts}"
+    expected_play = set(manifest["discovery_coverage"]["play_emphasis_expected"])
+    assert expected_play.issubset(all_play), f"GCL-03 play-emphasis coverage drift: {sorted(expected_play - all_play)}"
+    expected_needs = set(manifest["discovery_coverage"]["construction_needs_expected"])
+    assert expected_needs.issubset(all_needs), f"GCL-03 construction-need coverage drift: {sorted(expected_needs - all_needs)}"
+
+    return {
+        "gcl03_status": gcl03["status"],
+        "records": len(records),
+        "scene_families": len(family_counts),
+        "records_per_scene_family": sorted(set(family_counts.values())),
+        "unique_ids": len(seen_ids),
+        "multiple_continuations": True,
+        "deterministic_materialization": True,
+        "hidden_defaults": False,
+        "runtime_authority": "none",
+        "campaign_local_placement_authority": False,
+        "hidden_reveal_authority": False,
+        "launch_or_session_authority": False,
+        "play_emphasis_count": len(all_play),
     }
 
 
@@ -433,6 +590,7 @@ def check_aioc(root: Path, errors: list[str]) -> dict[str, Any]:
 
         gcl_foundation = check_gcl_foundation(root)
         gcl_hook_library = check_gcl_hook_library(root)
+        gcl_scene_library = check_gcl_scene_library(root)
         result.update({
             "pointer_attempt": checkpoint["attempt_id"],
             "active_item": pointer["active_attempt"].get("active_item"),
@@ -441,6 +599,7 @@ def check_aioc(root: Path, errors: list[str]) -> dict[str, Any]:
             "workflow_files": sorted(aioc_workflows),
             "gcl_foundation": gcl_foundation,
             "gcl_hook_library": gcl_hook_library,
+            "gcl_scene_library": gcl_scene_library,
         })
     except Exception as exc:
         errors.append(f"AIOC: {exc}")
@@ -451,7 +610,7 @@ def check_app(root: Path, audit: dict[str, Any], errors: list[str]) -> dict[str,
     result: dict[str, Any] = {}
     try:
         live_workflows = workflow_names(root)
-        assert live_workflows == APP_WORKFLOWS_ALLOWED, f"App workflow namespace drift: {sorted(live_workflows)}"
+        assert live_workflows == APP_WORKFLOWS_ALLOWED, f"unexpected app workflow namespace: {sorted(live_workflows)}"
         shared = (root / ".github/workflows/_validation-core-profile.yml").read_text(encoding="utf-8")
         assert "workflow_call" in shared and "self-hosted" in shared and "compare_receipts.py" in shared
         assert "ubuntu-latest" not in shared
@@ -503,7 +662,7 @@ def main() -> int:
         app = check_app(Path(args.app_root).resolve(), audit, errors)
 
     result = {
-        "schema_version": "1.5.0",
+        "schema_version": "1.6.0",
         "validator": "scripts/validate_repository_health.py",
         "status": "FAIL" if errors else "PASS",
         "aioc": aioc,
