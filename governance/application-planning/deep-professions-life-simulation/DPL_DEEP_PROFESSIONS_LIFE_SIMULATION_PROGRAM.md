@@ -1,23 +1,37 @@
 # DPL — Deep Professions & Life Simulation
 
 **Program ID:** DPL  
-**Status:** IN PROGRESS — completed_verified through DPL-13; DPL-14 IN_PROGRESS  
+**Status:** COMPLETED_VERIFIED — DPL-01..14  
 **Activation:** CCP-11 completed_verified  
-**Completed through:** DPL-13 — Cybernetics, Symbiotes, Cloning & Biotech Augmentation  
-**Current item:** DPL-14 — Economy, Cozy, Base, Project Integration, Balance & Golden Life Proof  
-**Implementation branch:** `integration/dpl-14-economy-cozy-base-project-integration-balance-golden-life-proof`  
-**Successor:** MAI-01  
+**Completed through:** DPL-14 — Economy, Cozy, Base, Project Integration, Balance & Golden Life Proof  
+**Current item:** none — program complete  
+**Implementation branch:** none — no DPL implementation authority remains  
+**Successor:** MAI-01 — Ecosystem, Format, License & Authority Survey — `selected_not_started`  
 **Owner and final authority:** John Brandon Turner
 
-## Current state
+## Completed state
 
-DPL-01 through DPL-13 are `completed_verified` with exact evidence preserved. Owner **Continue** on 2026-08-25 freshly verified canonical AIOC `ec61cd0ec8042caa5989082331a155bf483440c0` and application `a8c1d86804f7b3f70a879bc3626fc37c2374e285`, re-read the DPL-01 authority crosswalk and completed DPL boundaries, and governed-started **DPL-14** as the final DPL tranche.
+DPL-01 through DPL-14 are `completed_verified`. DPL-14 completed the program as a deterministic read-only integration/proof layer over the twelve implemented DPL verticals and fourteen established owner seams. It did not create a new owner ledger or reopen completed DPL mechanics.
 
-DPL-14 is an **integration/proof** tranche, not a new owner ledger. It must compose existing DPL profession/life surfaces over established economy, cozy/life-routine, base/facility and Project owners; perform balance/redundancy review; and produce a deterministic golden-life proof without reopening completed DPL mechanics.
+### DPL-14 exact application evidence
 
-## DPL-14 governed integration contract
+- Application PR: **#311**
+- Exact validated head: `cce98380ab28fecd9224efd0942754beaeb15a51`
+- Exact-head Repository Health: run `32910846769`, job `98004557363` — PASS
+- Validation Core run: `32910846887`
+- DPL-14 Linux job: `98004558251` — PASS
+- DPL-14 Windows job: `98004558349` — PASS
+- DPL-14 deterministic comparison job: `98006810872` — PASS
+- Comparison artifact: `9586715912`
+- Matching deterministic receipt: `e427e8cdf066b78be3a5466d554a22cd5d05194ac5215d43c8e2c4207510feb8`
+- Squash merge: `8f4c4aca8e264233284dc631ada807476937176a`
+- Repair cycles: **2**
 
-DPL-14 must carry explicit read-only integration references for all twelve completed implementation verticals:
+Both repair cycles were focused-verifier literal-evidence corrections. The first aligned the verifier to canonical DPL-01 Project/economy/inventory/Condition/Relationship/progression-ledger wording; the second aligned the report assertion casing for migration `0022`. Neither changed product behavior, owner authority, integration scope or acceptance strength. The final exact head was revalidated through Repository Health, Linux, Windows and deterministic comparison before merge.
+
+## DPL-14 verified integration proof
+
+The final tranche proves deterministic read-only composition across exactly twelve completed implementation verticals:
 
 1. DPL-02 profession/activity/mastery/credentials/services;
 2. DPL-03 research/study/discovery/experimentation;
@@ -32,67 +46,33 @@ DPL-14 must carry explicit read-only integration references for all twelve compl
 11. DPL-12 fear/stress/sanity/trauma/psychological recovery;
 12. DPL-13 cybernetics/symbiotes/cloning/biotech augmentation.
 
-Those verticals remain governed by their completed contracts. DPL-14 may reference them but may not silently replace, widen, or reopen their mechanics.
+The proof composes those verticals over fourteen controlling owner seams: **MIB-13, CEL/APM, MIB-14, APW/D26, Character-Actors, Progression-Abilities, D17-Asset, Condition, Social-Relations, ICF, MIB-12, World-Hazard-Action, MSS and CCP**.
 
-## Required owner seams
+The deterministic golden-life scenario uses exactly eight ordered phases:
 
-DPL-14 composes over fourteen controlling owner seams:
+1. `plan-and-authorize`
+2. `research-and-prepare`
+3. `resource-and-production`
+4. `enterprise-and-service`
+5. `teaching-culture-and-household`
+6. `health-stress-and-recovery`
+7. `optional-augmentation`
+8. `settle-cozy-base-project-review`
 
-- **MIB-13** — in-game economy, price, scarcity, market availability, trade and settlement;
-- **CEL/APM** — bounded cozy/life routines, fresh authorization and human-stop semantics;
-- **MIB-14** — bases, facilities, vehicles/platforms and compatibility;
-- **APW/D26** — Projects, tasks, durable activities and campaign time;
-- **Character-Actors** — identity, body and agency;
-- **Progression-Abilities** — skills, abilities, proficiency and advancement;
-- **D17-Asset** — item/Asset identity, ownership, quantity, state and lineage;
-- **Condition** — live disease, injury, poison, stress/sanity and effect state;
-- **Social-Relations** — relationship, household and social truth;
-- **ICF** — food, agriculture, biological ingredient and creature-processing boundaries;
-- **MIB-12** — authored transformations, crafting, repair and modification execution;
-- **World-Hazard-Action** — locations, resources, hazards and action adjudication;
-- **MSS** — magical/supernatural execution and science/magic crossover authority;
-- **CCP** — companion/symbiote entity, bond and agency.
+## Verified program boundaries
 
-DPL-14 must not create parallel stores for any of those owners.
-
-## Deterministic golden-life proof
-
-The bounded golden-life proof uses exactly eight ordered phases:
-
-1. **plan-and-authorize** — establish actor intent, Project references, facility context and human authorization;
-2. **research-and-prepare** — compose profession, study/research, science and preparation references without mutating owner state;
-3. **resource-and-production** — reference extraction, industrial processing, Assets, facilities and transformations;
-4. **enterprise-and-service** — reference business/staffing/service profiles and MIB-13 market/settlement previews;
-5. **teaching-culture-and-household** — reference mentorship, culture/recreation and household/social surfaces;
-6. **health-stress-and-recovery** — reference medical and psychological profiles while Condition/Character owners retain live truth;
-7. **optional-augmentation** — reference DPL-13 augmentation under consent/provenance/owner boundaries, preserving 67 direct vs 505 derivative catalog rows;
-8. **settle-cozy-base-project-review** — produce a read-only summary over economy, cozy, base and Project owners, requiring a human stop before any new cost and advancing no wall-clock campaign time.
-
-The proof must be deterministic and read-only. It may calculate/check references and readiness, but it may not execute a purchase, transformation, condition change, relationship change, progression change, Project advance, facility mutation, Character mutation or companion/symbiote agency change.
-
-## Balance and redundancy acceptance
-
-DPL-14 must prove:
+DPL completion preserves all of the following:
 
 - no duplicate Project, economy, inventory/Asset, Condition, Relationship, progression, Character, base/facility or cozy ledger;
-- no global price flattening and no universal profit formula; MIB-13 market context remains authoritative;
-- no universal mining yield, science DC, recovery schedule, household advancement, performance XP or augmentation formula is introduced;
-- no autonomous spending and no bypass of CEL/APM human stops before new costs;
+- no automatic owner mutation;
+- human authorization and a human stop remain required before any new cost;
 - no wall-clock campaign progress or unattended real-time advancement;
+- no global price flattening and no universal profit formula;
+- no universal mining-yield, science-DC, recovery-schedule, household-advancement, performance-XP or augmentation formula;
 - DPL-01 science/magic separation remains intact;
-- DPL-13 direct-source versus derivative-source provenance remains intact;
-- no automatic owner mutation is performed by the proof.
-
-## Validation target
-
-DPL-14 is complete only when the candidate exact head passes:
-
-1. a focused `tools/verify_dpl_14.py` invariant validator;
-2. client TypeScript compilation;
-3. a DPL-14 client integration regression proving the twelve vertical references, fourteen owner seams, eight ordered phases and balance boundaries;
-4. predecessor/owner regressions including DPL-13, DPL-08/MIB-13, APW/D26 and DPL-01;
-5. exact-head Repository Health;
-6. governed self-hosted Linux + Windows Validation Core and deterministic cross-platform comparison.
+- DPL-13 provenance remains **67 direct catalog rows versus 505 derivative/inspired rows**, with derivative rows not promoted to direct-source canon;
+- migration `0022` remains unreserved;
+- no real-money commerce, tester distribution, release/deployment or provider/payment activation was introduced.
 
 ## Tranches
 
@@ -109,15 +89,10 @@ DPL-14 is complete only when the candidate exact head passes:
 11. DPL-11 — Household, Family, Dependents, Legacy & Inheritance — `completed_verified`
 12. DPL-12 — Fear, Stress, Sanity, Trauma & Psychological Recovery — `completed_verified`
 13. DPL-13 — Cybernetics, Symbiotes, Cloning & Biotech Augmentation — `completed_verified`
-14. DPL-14 — Economy, Cozy, Base, Project Integration, Balance & Golden Life Proof — `in_progress`
+14. DPL-14 — Economy, Cozy, Base, Project Integration, Balance & Golden Life Proof — `completed_verified`
 
-## Invariants
+## Strict successor
 
-- DPL-01 through DPL-13 have no further implementation authority.
-- DPL-14 authority is tranche- and branch-bounded.
-- Existing owner domains remain authoritative; DPL-14 is orchestration/reference/proof only.
-- Human stop remains mandatory before new cost; no wall-clock campaign advancement is introduced.
-- DPL-13's 67 direct catalog rows and 505 derivative rows remain provenance-distinguished.
-- No real-money commerce is introduced.
-- Migration `0022` remains unreserved absent a demonstrated durable schema delta.
-- MAI-01 remains unauthorized until DPL-14 is completed_verified and separately closed out.
+The DPL program is closed and has no further implementation authority. Strict application-roadmap order selects **MAI-01 — Ecosystem, Format, License & Authority Survey** as `selected_not_started` only.
+
+MAI-01 has no implementation branch and no implementation authority. A future owner **Continue** must freshly verify then-current canonical AIOC/application heads, re-read the MAI program/backlog and relevant visual/map source evidence, resolve the exact ecosystem/format/license/authority survey scope, and only then governed-start MAI-01. MAI-02+ remain unauthorized.
