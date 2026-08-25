@@ -1,10 +1,11 @@
 # DPL — Deep Professions & Life Simulation
 
 **Program ID:** DPL  
-**Status:** IN PROGRESS — DPL-01 IN_PROGRESS  
+**Status:** IN PROGRESS — completed_verified through DPL-01; DPL-02 SELECTED_NOT_STARTED  
 **Activation:** CCP-11 completed_verified  
-**Current item:** DPL-01 — Source Inventory, Profession Taxonomy & Authority Crosswalk  
-**Implementation branch:** `integration/dpl-01-source-inventory-profession-taxonomy-authority-crosswalk`  
+**Completed through:** DPL-01 — Source Inventory, Profession Taxonomy & Authority Crosswalk  
+**Current item:** DPL-02 — Profession Activity Profiles, Mastery, Credentials & Service Contracts  
+**Implementation branch:** none; DPL-02 selection grants no implementation authority  
 **Successor:** MAI-01  
 **Owner and final authority:** John Brandon Turner  
 **Planned:** 2026-08-20
@@ -15,19 +16,19 @@ DPL converts retained profession, science, industry, business, medicine, augment
 
 ## Current state
 
-CCP completed `completed_verified` through CCP-11 on application merge `5345c9bb2b21dc71da9591b2ad1c2c5df2a8d0bd`, satisfying DPL's activation condition.
+DPL-01 is `completed_verified` on application PR #298. Exact validated head `f579dc5d70694c60cb3ef479f12cd27cf0db0beb` passed Repository Health `32805418340/97674484510`, Validation Core `32805418516`, Linux `97674484888`, Windows `97674485105` and deterministic comparison `97674543238`, with deterministic receipt `8d33869b0a095e290a150130d7667015cc0317971865a171d5aa7689041e5d75`. It squash-merged as `e6a4eebfb5c7efe603424b20155a9a52af04c240` after three bounded verifier-evidence repair cycles.
 
-Owner **Continue** on 2026-08-24 governed-started **DPL-01 — Source Inventory, Profession Taxonomy & Authority Crosswalk** from exact AIOC `49c7fce4da281db91fdea2142523b0739a773af5` and application `5345c9bb2b21dc71da9591b2ad1c2c5df2a8d0bd`. DPL-01 is `in_progress` on `integration/dpl-01-source-inventory-profession-taxonomy-authority-crosswalk` with DPL-01-only implementation authority.
+DPL-01 inventoried 27 PDFs / 567 pages, 7 structured catalogs / 6,809 rows, all 11 retained profession source-tree families and 58 retained concept dispositions. It preserved APW/D26, CEL/APM, MIB-12/13/14, D17 Asset, Character-Actors, Progression-Abilities, Condition, Social-Relations, ICF, World/Hazard/Action, MSS and CCP authority and proved that scientific chemistry/pharmaceuticals remain distinct from magical alchemy/enchanting.
 
-DPL-01 reconciles profession/science/medicine/business/mining/arts/augmentation/life sources with current owner domains and classifies profession profiles, Projects, recipes/processes, services, conditions and content. APW, CEL, MIB-12/13/14, ICF, Character, Condition and Relationship domains retain owning truth.
+Strict order now selects **DPL-02 — Profession Activity Profiles, Mastery, Credentials & Service Contracts** as `selected_not_started`. No DPL-02 implementation branch exists and selection alone grants no implementation authority. The next owner `Continue` must governed-start DPL-02 from the then-current canonical AIOC/application heads.
 
 ## Tranches
 
-1. **DPL-01 — Source Inventory, Profession Taxonomy & Authority Crosswalk** — `in_progress`  
-   Reconcile profession/science/medicine/business/mining/arts/augmentation/life sources with current owner domains and classify profession profiles, Projects, recipes/processes, services, conditions and content.
+1. **DPL-01 — Source Inventory, Profession Taxonomy & Authority Crosswalk** — `completed_verified`  
+   Reconciled profession/science/medicine/business/mining/arts/augmentation/life sources with current owner domains and classified profession profiles, Projects, recipes/processes, services, conditions and content.
 
-2. **DPL-02 — Profession Activity Profiles, Mastery, Credentials & Service Contracts** — `planned`  
-   Reusable profession profiles with skills/knowledge, tools, facilities, authored credentials, services, quality/risk/time, Project templates and progression/economy hooks.
+2. **DPL-02 — Profession Activity Profiles, Mastery, Credentials & Service Contracts** — `selected_not_started`  
+   Reusable profession profiles with skills/knowledge, tools, facilities, authored credentials, services, quality/risk/time, Project templates and progression/economy hooks. Must reference existing owners rather than create duplicate truth.
 
 3. **DPL-03 — Research, Study, Discovery & Experimentation Loop** — `planned`  
    Question/hypothesis → plan → research/experiment → evidence/result → contradiction/failure/partial success → discovery → application/publication, usable by science, magic, archaeology and engineering with provenance and hidden-knowledge controls.
@@ -65,13 +66,26 @@ DPL-01 reconciles profession/science/medicine/business/mining/arts/augmentation/
 14. **DPL-14 — Economy, Cozy, Base, Project Integration, Balance & Golden Life Proof** — `planned`  
     Prove cross-profession loops spanning research, production, health, extraction, business, training, culture, household and augmentation with bounded APW/CEL automation, Workbench surfaces and no-AI operation.
 
+## DPL-02 handoff from DPL-01
+
+DPL-02 must:
+
+1. reference canonical Character/Progression abilities rather than copying them;
+2. reference APW Projects/tasks for durable work rather than creating a scheduler;
+3. reference MIB-12 transformations, MIB-13 economy and MIB-14 facilities rather than duplicating them;
+4. carry explicit source/provenance references and setting/profile scope;
+5. allow profession profiles to point toward later science, health, extraction, industry, business, teaching, culture, household and augmentation verticals without implementing those later mechanics;
+6. preserve science/alchemy separation;
+7. introduce no real-money commerce and reserve no migration `0022`.
+
 ## Invariants
 
-- APW, CEL, MIB-12/13/14, ICF, Character, Condition and Relationship domains retain owning truth.
+- APW, CEL, MIB-12/13/14, D17 Asset, ICF, Character, Progression-Abilities, Condition and Social-Relations retain owning truth.
 - Science/chemistry remains distinct from magical alchemy except explicit crossover definitions.
 - Disease, psychological and household mechanics are setting/content-sensitive and never globally forced.
 - Augmentation cannot silently change Character identity, consent or agency.
 - No real-money commerce is introduced.
-- DPL-01 implementation authority is bounded to the registered branch and this tranche only.
-- DPL-02 and later DPL tranches remain unauthorized until selected and governed-started in strict order.
+- DPL-01 is completed_verified and has no further implementation authority.
+- DPL-02 is selected_not_started and has no implementation authority until a later owner Continue governed-starts it.
+- DPL-03 and later DPL tranches remain unauthorized until selected and governed-started in strict order.
 - Migration `0022` remains unreserved.
