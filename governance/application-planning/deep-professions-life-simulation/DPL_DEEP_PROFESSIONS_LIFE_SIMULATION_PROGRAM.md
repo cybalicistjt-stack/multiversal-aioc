@@ -1,21 +1,21 @@
 # DPL — Deep Professions & Life Simulation
 
 **Program ID:** DPL  
-**Status:** IN PROGRESS — completed_verified through DPL-07; DPL-08 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — completed_verified through DPL-07; DPL-08 IN_PROGRESS  
 **Activation:** CCP-11 completed_verified  
 **Completed through:** DPL-07 — Refining, Industrial Processing, Manufacturing & Supply Chains  
 **Current item:** DPL-08 — Business, Enterprise, Staffing, Operations & Growth  
-**Implementation branch:** none; DPL-08 selection grants no implementation authority  
+**Implementation branch:** `integration/dpl-08-business-enterprise-staffing-operations-growth`  
 **Successor:** MAI-01  
 **Owner and final authority:** John Brandon Turner
 
 ## Current state
 
-DPL-01 through DPL-07 are `completed_verified` with exact evidence preserved. DPL-07 completed on application PR #304, exact validated head `bb2016a5e90545ffd553f9665b0d29a48b1b0e47`, Repository Health `32870679734/97876651865`, Validation Core `32870679729`, Linux `97876648344`, Windows `97876648478`, comparison `97878656568`, deterministic receipt `5b15d5473e9b0c48c314020ad730b14849cc5b9f9c4a1142df4cf75c50221dac`, and squash merge `4f1946b8efc369b3927cc7bb6aa7da01cd69d49b`. There was one bounded verifier-evidence case-match repair; product behavior and owner boundaries did not change.
+DPL-01 through DPL-07 are `completed_verified` with exact evidence preserved. DPL-07 completed on application PR #304, exact validated head `bb2016a5e90545ffd553f9665b0d29a48b1b0e47`, Repository Health `32870679734/97876651865`, Validation Core `32870679729`, Linux `97876648344`, Windows `97876648478`, comparison `97878656568`, deterministic receipt `5b15d5473e9b0c48c314020ad730b14849cc5b9f9c4a1142df4cf75c50221dac`, and squash merge `4f1946b8efc369b3927cc7bb6aa7da01cd69d49b`.
 
-DPL-07 delivered 21 source/profile-scoped industrial definitions: 4 quality grades, 4 facility requirements, 7 refining profiles, 3 manufacturing profiles and 3 supply-chain profiles. MIB-12 remained the only transformation execution path, D17 retained Asset/material truth, MIB-14 retained facility compatibility, APW/D26 retained Project/time, MIB-13 retained economy/trade/settlement, World-Hazard-Action retained industrial hazard/environment truth, and unsupported industrial formulas remained unresolved. DPL-08 business/staffing mechanics were not implemented.
+Owner **Continue** on 2026-08-25 governed-started **DPL-08 — Business, Enterprise, Staffing, Operations & Growth** from exact AIOC `8f6a80a267ad5ea96a52380d8b00f4ba062ec365` and application `4f1946b8efc369b3927cc7bb6aa7da01cd69d49b`. DPL-08 is `in_progress` on `integration/dpl-08-business-enterprise-staffing-operations-growth` with DPL-08-only implementation authority.
 
-Strict order now selects **DPL-08 — Business, Enterprise, Staffing, Operations & Growth** as `selected_not_started`. No DPL-08 application branch exists and selection alone grants no implementation authority. The next owner `Continue` must governed-start DPL-08 from then-current canonical AIOC/application heads.
+DPL-08 must consume DPL-01 business/staffing source classifications, DPL-02 profession/service contracts and DPL-07 industrial/supply-chain references while composing over MIB-13, APW/D26, Character-Actors, Social-Relations, Progression-Abilities, D17 and MIB-14. Unsupported profitability, productivity, wage, staffing-ratio, growth-rate, capacity and efficiency formulas remain unresolved rather than invented. DPL-09 retains apprenticeship/mentorship/teaching/workforce-development mechanics.
 
 ## Tranches
 
@@ -26,7 +26,7 @@ Strict order now selects **DPL-08 — Business, Enterprise, Staffing, Operations
 5. DPL-05 — Medicine, Disease, Injury, Poison & Long-Term Recovery — `completed_verified`
 6. DPL-06 — Mining, Prospecting, Quarrying, Drilling & Resource Extraction — `completed_verified`
 7. DPL-07 — Refining, Industrial Processing, Manufacturing & Supply Chains — `completed_verified`
-8. DPL-08 — Business, Enterprise, Staffing, Operations & Growth — `selected_not_started`
+8. DPL-08 — Business, Enterprise, Staffing, Operations & Growth — `in_progress`
 9. DPL-09 — Apprenticeship, Mentorship, Teaching & Workforce Development — `planned`
 10. DPL-10 — Arts, Performance, Recreation, Festivals & Cultural Practice — `planned`
 11. DPL-11 — Household, Family, Dependents, Legacy & Inheritance — `planned`
@@ -34,9 +34,7 @@ Strict order now selects **DPL-08 — Business, Enterprise, Staffing, Operations
 13. DPL-13 — Cybernetics, Symbiotes, Cloning & Biotech Augmentation — `planned`
 14. DPL-14 — Economy, Cozy, Base, Project Integration, Balance & Golden Life Proof — `planned`
 
-## DPL-08 handoff
-
-DPL-08 must consume DPL-01 business/staffing source classifications, DPL-02 profession/service contracts and DPL-07 industrial/supply-chain references while composing over existing owners rather than creating new ledgers.
+## DPL-08 governed scope
 
 DPL-08 must:
 
@@ -53,7 +51,7 @@ DPL-08 must:
 ## Invariants
 
 - DPL-01 through DPL-07 have no further implementation authority.
-- DPL-08 is selected_not_started and has no authority until the next owner Continue.
+- DPL-08 authority is tranche- and branch-bounded.
 - MIB-13 retains economy/trade/scarcity/market/settlement truth.
 - APW/D26 retains Project/task/campaign-time truth.
 - Character-Actors, Social-Relations and Progression-Abilities retain worker/relationship/progression truth.
