@@ -1,11 +1,11 @@
 # DPL — Deep Professions & Life Simulation
 
 **Program ID:** DPL  
-**Status:** IN PROGRESS — completed_verified through DPL-02; DPL-03 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — completed_verified through DPL-02; DPL-03 IN_PROGRESS  
 **Activation:** CCP-11 completed_verified  
 **Completed through:** DPL-02 — Profession Activity Profiles, Mastery, Credentials & Service Contracts  
 **Current item:** DPL-03 — Research, Study, Discovery & Experimentation Loop  
-**Implementation branch:** none; next owner `Continue` required before governed start  
+**Implementation branch:** `integration/dpl-03-research-study-discovery-experimentation-loop`  
 **Successor:** MAI-01  
 **Owner and final authority:** John Brandon Turner  
 **Planned:** 2026-08-20
@@ -20,9 +20,9 @@ DPL-01 is `completed_verified` on application PR #298 and application merge `e6a
 
 DPL-02 is `completed_verified` on application PR #299. Exact validated head `2f04a85a92696c51786d8163041cade611a72ec9` passed Repository Health `32807048203/97679083461`, Validation Core `32807048284`, Linux `97679083889`, Windows `97679083915` and deterministic comparison `97679219595`, with deterministic receipt `61ad37be651f41adf2036f80d14cb872cc224f994b1f396a3e91f9ba94c5be72`. It squash-merged as `fd197f6b98a55e0835fbad08a55b28d57f3a127e` after one bounded validation-profile metadata repair cycle.
 
-DPL-02 delivered reusable profession/activity definition contracts, mastery and authored credential definitions, and professional service contracts while preserving Character/Progression, APW/D26, MIB-12/13/14, D17 Asset, CEL/APM and Social-Relations authority. Its governed starter proof contains 3 profession profiles, 4 activity profiles, 3 mastery definitions, 2 credential definitions and 3 service profiles. It performs no owner mutation, campaign-time advancement or service settlement and keeps scientific chemistry distinct from magical alchemy.
+Owner **Continue** on 2026-08-25 governed-started **DPL-03 — Research, Study, Discovery & Experimentation Loop** from exact AIOC `19eba96921cabf57a18d2925e73a013b4706fd90` and application `fd197f6b98a55e0835fbad08a55b28d57f3a127e`. DPL-03 is `in_progress` on `integration/dpl-03-research-study-discovery-experimentation-loop` with DPL-03-only implementation authority.
 
-Strict DPL order now selects **DPL-03 — Research, Study, Discovery & Experimentation Loop** as `selected_not_started`. It has no implementation branch or implementation authority. The next owner `Continue` must separately governed-start DPL-03 from then-current canonical AIOC/application heads.
+DPL-03 defines one reusable question/hypothesis → plan → research/experiment → evidence/result → contradiction/failure/partial success → discovery → application/publication loop. It must preserve explicit source/provenance and setting/profile scope, apply visibility/reveal authorization before projection/publication, and consume DPL-02/APW/Character/Progression/MIB/MSS/World/GM owners by reference rather than creating duplicate truth.
 
 ## Tranches
 
@@ -32,7 +32,7 @@ Strict DPL order now selects **DPL-03 — Research, Study, Discovery & Experimen
 2. **DPL-02 — Profession Activity Profiles, Mastery, Credentials & Service Contracts** — `completed_verified`  
    Reusable profession/activity profiles, owner-backed mastery/credential definitions and professional service contracts composed by reference to existing owners.
 
-3. **DPL-03 — Research, Study, Discovery & Experimentation Loop** — `selected_not_started`  
+3. **DPL-03 — Research, Study, Discovery & Experimentation Loop** — `in_progress`  
    Question/hypothesis → plan → research/experiment → evidence/result → contradiction/failure/partial success → discovery → application/publication, usable by science, magic, archaeology and engineering with provenance and hidden-knowledge controls.
 
 4. **DPL-04 — Chemistry, Pharmaceuticals, Toxicology & Laboratory Science** — `planned`  
@@ -68,11 +68,20 @@ Strict DPL order now selects **DPL-03 — Research, Study, Discovery & Experimen
 14. **DPL-14 — Economy, Cozy, Base, Project Integration, Balance & Golden Life Proof** — `planned`  
     Prove cross-profession loops spanning research, production, health, extraction, business, training, culture, household and augmentation with bounded APW/CEL automation, Workbench surfaces and no-AI operation.
 
-## DPL-03 selected scope
+## DPL-03 governed scope
 
-When separately governed-started, DPL-03 must define one reusable research/study/discovery/experimentation loop across scientific, magical, archaeological and engineering contexts. It must preserve source/provenance and setting/profile scope; retain contradiction, failure and partial-success evidence rather than silently resolving it; and apply visibility/reveal authorization before discovery projection or publication.
+DPL-03 must:
 
-DPL-03 must consume DPL-02 profession/activity references and existing APW/D26, Character/Progression, MIB-12/14, MSS, World/GM and visibility owners by reference. It must not create duplicate Project, Character, progression or knowledge truth, must not collapse scientific research into magic, and must not implement DPL-04+ vertical mechanics.
+1. define reusable question/hypothesis, plan, research/experiment activity, evidence/result, discovery and application/publication contracts;
+2. retain contradiction, failure, inconclusive and partial-success outcomes rather than silently resolving them;
+3. carry explicit source/provenance and setting/profile scope on evidence, results and discoveries;
+4. apply visibility/reveal authorization before search, projection or publication so hidden knowledge cannot leak;
+5. reference DPL-02 profession/activity profiles rather than duplicating profession capability truth;
+6. reference APW/D26 Projects/tasks/campaign-time rather than create a scheduler or wall-clock progress;
+7. reference Character/Progression, MIB-12 transformations, MIB-14 facilities, MSS and World/GM visibility owners rather than replacing them;
+8. support scientific, magical, archaeological and engineering contexts through one contract without collapsing science into magic or inventing universal formulas;
+9. avoid automatic discovery/publication and require explicit authored/owner authorization for reveal or publication handoffs;
+10. implement no DPL-04+ vertical mechanics, no real-money commerce and no migration `0022` reservation.
 
 ## Invariants
 
@@ -81,10 +90,11 @@ DPL-03 must consume DPL-02 profession/activity references and existing APW/D26, 
 - Mastery and credentials cannot silently grant progression, identity, authority or setting status.
 - Service contracts do not own prices, balances, settlement, reputation or relationship truth.
 - Research/discovery must preserve provenance, unresolved/contradictory evidence and hidden-knowledge controls.
+- Discovery and publication cannot bypass visibility, GM, setting or source-profile authority.
 - Disease, psychological and household mechanics are setting/content-sensitive and never globally forced.
 - Augmentation cannot silently change Character identity, consent or agency.
 - No real-money commerce is introduced.
 - DPL-01 and DPL-02 are completed_verified and have no further implementation authority.
-- DPL-03 is selected_not_started and has no implementation authority until next owner Continue.
+- DPL-03 implementation authority is bounded to the registered branch and this tranche only.
 - DPL-04 and later DPL tranches remain unauthorized until selected and governed-started in strict order.
 - Migration `0022` remains unreserved.
