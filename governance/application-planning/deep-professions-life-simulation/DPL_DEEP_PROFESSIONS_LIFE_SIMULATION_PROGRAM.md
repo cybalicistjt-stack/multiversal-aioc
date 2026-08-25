@@ -1,11 +1,11 @@
 # DPL — Deep Professions & Life Simulation
 
 **Program ID:** DPL  
-**Status:** IN PROGRESS — completed_verified through DPL-06; DPL-07 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — completed_verified through DPL-06; DPL-07 IN_PROGRESS  
 **Activation:** CCP-11 completed_verified  
 **Completed through:** DPL-06 — Mining, Prospecting, Quarrying, Drilling & Resource Extraction  
 **Current item:** DPL-07 — Refining, Industrial Processing, Manufacturing & Supply Chains  
-**Implementation branch:** none; DPL-07 selection grants no implementation authority  
+**Implementation branch:** `integration/dpl-07-refining-industrial-processing-manufacturing-supply-chains`  
 **Successor:** MAI-01  
 **Owner and final authority:** John Brandon Turner
 
@@ -13,9 +13,9 @@
 
 DPL-01 through DPL-06 are `completed_verified` with exact evidence preserved. DPL-06 completed on application PR #303, exact validated head `a547bf2881b93d3d2e1bce94a93edd72689c3498`, Repository Health `32839647785/97776091078`, Validation Core `32839647966`, Linux `97776092357`, Windows `97776092266`, comparison `97776874967`, deterministic receipt `f4511a5438110e338f162b75bfb4a0941f85c3173c627ffcaf5788a678874af6`, and squash merge `b09f6f9d7c276e57c83d5bc4d2613ba12a3f178b`. The first exact-head candidate passed with zero CI repair cycles.
 
-DPL-06 delivered 32 source-backed/profile-scoped extraction definitions: 4 prospecting modifiers, 3 density profiles, 6 resource-site profiles, 3 prospecting profiles, 3 extraction methods and 13 hazards/challenges. `DC 18+` remains a minimum, not an invented exact universal DC. No general deposit-depletion rate was invented, no separate quarrying formula was manufactured from incomplete source vocabulary, and no universal space/exotic extraction DC/time/yield was inferred. APW/D26, World-Hazard-Action, D17, MIB-14 and DPL-02/Progression retain their owner truth, and raw extraction stops at a D17 material-output handoff.
+Owner **Continue** on 2026-08-25 governed-started **DPL-07 — Refining, Industrial Processing, Manufacturing & Supply Chains** from exact AIOC `f0c3852240e7c0aac591b67b4c25bafc380efcf1` and application `b09f6f9d7c276e57c83d5bc4d2613ba12a3f178b`. DPL-07 is `in_progress` on `integration/dpl-07-refining-industrial-processing-manufacturing-supply-chains` with DPL-07-only implementation authority.
 
-Strict order now selects **DPL-07 — Refining, Industrial Processing, Manufacturing & Supply Chains** as `selected_not_started`. No DPL-07 application branch exists and selection alone grants no implementation authority. The next owner `Continue` must governed-start DPL-07 from then-current canonical AIOC/application heads.
+DPL-07 must consume DPL-06 raw-material handoffs and DPL-01 source classifications while composing over existing MIB-12, D17, MIB-14, APW/D26, MIB-13 and World-Hazard-Action owner seams. Unsupported conversion ratios, efficiencies, yields, losses, byproducts and waste behavior remain unresolved rather than invented. Enterprise, staffing, payroll, business operations and growth remain DPL-08.
 
 ## Tranches
 
@@ -25,7 +25,7 @@ Strict order now selects **DPL-07 — Refining, Industrial Processing, Manufactu
 4. DPL-04 — Chemistry, Pharmaceuticals, Toxicology & Laboratory Science — `completed_verified`
 5. DPL-05 — Medicine, Disease, Injury, Poison & Long-Term Recovery — `completed_verified`
 6. DPL-06 — Mining, Prospecting, Quarrying, Drilling & Resource Extraction — `completed_verified`
-7. DPL-07 — Refining, Industrial Processing, Manufacturing & Supply Chains — `selected_not_started`
+7. DPL-07 — Refining, Industrial Processing, Manufacturing & Supply Chains — `in_progress`
 8. DPL-08 — Business, Enterprise, Staffing, Operations & Growth — `planned`
 9. DPL-09 — Apprenticeship, Mentorship, Teaching & Workforce Development — `planned`
 10. DPL-10 — Arts, Performance, Recreation, Festivals & Cultural Practice — `planned`
@@ -34,9 +34,7 @@ Strict order now selects **DPL-07 — Refining, Industrial Processing, Manufactu
 13. DPL-13 — Cybernetics, Symbiotes, Cloning & Biotech Augmentation — `planned`
 14. DPL-14 — Economy, Cozy, Base, Project Integration, Balance & Golden Life Proof — `planned`
 
-## DPL-07 handoff
-
-DPL-07 must consume the DPL-06 raw-material D17 handoff and DPL-01 refining/processing source classifications while composing with existing owners rather than creating new ledgers.
+## DPL-07 governed scope
 
 DPL-07 must:
 
@@ -54,7 +52,7 @@ DPL-07 must:
 ## Invariants
 
 - DPL-01 through DPL-06 have no further implementation authority.
-- DPL-07 is selected_not_started and has no authority until the next owner Continue.
+- DPL-07 authority is tranche- and branch-bounded.
 - MIB-12 retains transformation/crafting/process execution truth.
 - D17 retains raw/intermediate/byproduct/waste/finished material and Asset truth.
 - MIB-14 retains refinery/mill/factory/workshop/platform compatibility truth.
