@@ -1,69 +1,55 @@
 # DPL — Deep Professions & Life Simulation
 
 **Program ID:** DPL  
-**Status:** IN PROGRESS — completed_verified through DPL-04; DPL-05 IN_PROGRESS  
+**Status:** IN PROGRESS — completed_verified through DPL-05; DPL-06 SELECTED_NOT_STARTED  
 **Activation:** CCP-11 completed_verified  
-**Completed through:** DPL-04 — Chemistry, Pharmaceuticals, Toxicology & Laboratory Science  
-**Current item:** DPL-05 — Medicine, Disease, Injury, Poison & Long-Term Recovery  
-**Implementation branch:** `integration/dpl-05-medicine-disease-injury-poison-long-term-recovery`  
+**Completed through:** DPL-05 — Medicine, Disease, Injury, Poison & Long-Term Recovery  
+**Current item:** DPL-06 — Mining, Prospecting, Quarrying, Drilling & Resource Extraction  
+**Implementation branch:** none; DPL-06 selection grants no implementation authority  
 **Successor:** MAI-01  
 **Owner and final authority:** John Brandon Turner
 
-## Purpose
-
-DPL converts retained profession, science, industry, business, medicine, augmentation, arts and household material into deep gameplay loops over APW Projects, CEL, Economy, Crafting, ICF, Bases, Relationships and Character progression while preserving each existing owner domain.
-
 ## Current state
 
-DPL-01 through DPL-04 are `completed_verified` with exact evidence preserved. DPL-04 completed on application PR #301, exact validated head `188d7ce85dcdacd560e0d763daf18ecd28bf1502`, deterministic receipt `f92b1b51150f9447d4b13a0357f998824603e00dfdb666bb1b60826220045f05`, and squash merge `0ebd5c59f25369b41ab25c4840c346655fc8ef04` with zero CI repair cycles.
+DPL-01 through DPL-05 are `completed_verified` with exact evidence preserved. DPL-05 completed on application PR #302, exact validated head `43e03b0d38dd8a50727caf5fee283421ba1f1bec`, Repository Health `32817104041/97707507231`, Validation Core `32817104139`, Linux `97707505865`, Windows `97707506107`, comparison `97708026764`, deterministic receipt `49b987c43cb40b66e8ff4b940acaf4d332c41cdae32f60efce1adf4a4da0b629`, and squash merge `86588ac5d95486a0c662d8c841b73c64f2567a4d`. The first exact-head candidate passed with zero CI repair cycles.
 
-Owner **Continue** on 2026-08-25 governed-started **DPL-05 — Medicine, Disease, Injury, Poison & Long-Term Recovery** from exact AIOC `5aa3d21d1369068118be660578b7653792b39fed` and application `0ebd5c59f25369b41ab25c4840c346655fc8ef04`. DPL-05 is `in_progress` on `integration/dpl-05-medicine-disease-injury-poison-long-term-recovery` with DPL-05-only implementation authority.
+DPL-05 delivered 19 source-backed/profile-scoped health definitions: 5 treatments, 4 diseases, 5 poison progressions, 2 injury definitions and 3 recovery plans. Sensitive projections are visibility-filtered, invasive treatment is consent-gated, missing source values remain unresolved, and Character/Condition/ICF/APW/D17/World owners retain live truth. Game-source health numbers were not promoted to universal real-world medicine, disease or toxicology rules.
 
-DPL-05 must build source-backed diagnosis, treatment, disease, poison, injury and recovery definitions/orchestration over Character-Actors, Condition, ICF, APW/D26, D17 and World-Hazard-Action owners. It consumes DPL-04 pharmaceutical/toxicology handoffs by reference and must preserve consent, privacy/visibility and setting/profile scope. It may not infer universal real-world medical or toxicology truth from game sources.
+Strict order now selects **DPL-06 — Mining, Prospecting, Quarrying, Drilling & Resource Extraction** as `selected_not_started`. No DPL-06 application branch exists and selection alone grants no implementation authority. The next owner `Continue` must governed-start DPL-06 from then-current canonical AIOC/application heads.
 
 ## Tranches
 
-1. **DPL-01 — Source Inventory, Profession Taxonomy & Authority Crosswalk** — `completed_verified`
-2. **DPL-02 — Profession Activity Profiles, Mastery, Credentials & Service Contracts** — `completed_verified`
-3. **DPL-03 — Research, Study, Discovery & Experimentation Loop** — `completed_verified`
-4. **DPL-04 — Chemistry, Pharmaceuticals, Toxicology & Laboratory Science** — `completed_verified`
-5. **DPL-05 — Medicine, Disease, Injury, Poison & Long-Term Recovery** — `in_progress`
-6. **DPL-06 — Mining, Prospecting, Quarrying, Drilling & Resource Extraction** — `planned`
-7. **DPL-07 — Refining, Industrial Processing, Manufacturing & Supply Chains** — `planned`
-8. **DPL-08 — Business, Enterprise, Staffing, Operations & Growth** — `planned`
-9. **DPL-09 — Apprenticeship, Mentorship, Teaching & Workforce Development** — `planned`
-10. **DPL-10 — Arts, Performance, Recreation, Festivals & Cultural Practice** — `planned`
-11. **DPL-11 — Household, Family, Dependents, Legacy & Inheritance** — `planned`
-12. **DPL-12 — Fear, Stress, Sanity, Trauma & Psychological Recovery** — `planned`
-13. **DPL-13 — Cybernetics, Symbiotes, Cloning & Biotech Augmentation** — `planned`
-14. **DPL-14 — Economy, Cozy, Base, Project Integration, Balance & Golden Life Proof** — `planned`
+1. DPL-01 — Source Inventory, Profession Taxonomy & Authority Crosswalk — `completed_verified`
+2. DPL-02 — Profession Activity Profiles, Mastery, Credentials & Service Contracts — `completed_verified`
+3. DPL-03 — Research, Study, Discovery & Experimentation Loop — `completed_verified`
+4. DPL-04 — Chemistry, Pharmaceuticals, Toxicology & Laboratory Science — `completed_verified`
+5. DPL-05 — Medicine, Disease, Injury, Poison & Long-Term Recovery — `completed_verified`
+6. DPL-06 — Mining, Prospecting, Quarrying, Drilling & Resource Extraction — `selected_not_started`
+7. DPL-07 — Refining, Industrial Processing, Manufacturing & Supply Chains — `planned`
+8. DPL-08 — Business, Enterprise, Staffing, Operations & Growth — `planned`
+9. DPL-09 — Apprenticeship, Mentorship, Teaching & Workforce Development — `planned`
+10. DPL-10 — Arts, Performance, Recreation, Festivals & Cultural Practice — `planned`
+11. DPL-11 — Household, Family, Dependents, Legacy & Inheritance — `planned`
+12. DPL-12 — Fear, Stress, Sanity, Trauma & Psychological Recovery — `planned`
+13. DPL-13 — Cybernetics, Symbiotes, Cloning & Biotech Augmentation — `planned`
+14. DPL-14 — Economy, Cozy, Base, Project Integration, Balance & Golden Life Proof — `planned`
 
-## DPL-05 governed scope
+## DPL-06 handoff
 
-DPL-05 must:
+DPL-06 must use the retained `Mining Rules.PDF` and mining profession vocabulary with DPL-01 provenance; preserve DPL-02/Progression profession references; route survey/access/extraction time through APW/D26; route geology, depletion, environmental consequences and extraction hazards through World-Hazard-Action; keep tools and extracted material/ore outputs in D17 Asset ownership; use MIB-14 facility/platform capability references where authored; and keep refining, smelting, milling, industrial processing, manufacturing and supply chains in DPL-07.
 
-1. consume DPL-01 disease/healing/poison/status-condition source/provenance classifications rather than general medical assumptions;
-2. consume DPL-04 pharmaceutical/toxicology effect/delivery handoffs without rewriting scientific chemistry;
-3. preserve Character-Actors, Condition and ICF as live identity/body/condition/biological owners rather than create a universal health ledger;
-4. route treatment, recovery and rehabilitation time through APW/D26 rather than wall-clock progress;
-5. keep medicines, tools, consumables and assistive equipment in D17 Asset ownership;
-6. preserve World-Hazard-Action ownership for exposure, injury and environmental hazards;
-7. make diagnosis, treatment, procedure, disease, poison, injury and recovery rules explicitly source/provenance and setting/profile scoped;
-8. preserve consent and privacy/visibility for invasive procedures and sensitive health projections;
-9. avoid inferred universal real-world disease, medical, pharmacokinetic or toxicology formulas;
-10. implement no DPL-06+ mechanics, real-money commerce, provider activation or migration `0022` without a genuine durable schema delta.
+The retained mining yield/depletion tables are source/profile rules, not universal canonical formulas. Unsupported deposits, yields, grades, depletion rates, hazards and facility compatibility remain unresolved until governed source/profile definitions supply them.
 
 ## Invariants
 
-- Character-Actors, Condition and ICF retain live health/body/biological truth.
-- APW/D26 retains Project/task/campaign-time authority.
-- D17 retains medicines, tools, consumables and assistive equipment as Assets/Items.
-- World-Hazard-Action retains exposure, injury and environmental-hazard truth.
-- DPL-04 remains scientific chemistry/pharmaceutical/toxicology definition authority and remains distinct from MSS magical alchemy.
-- Disease, injury, poison and medical mechanics are setting/content-sensitive and are never silently promoted to universal real-world truth.
-- Invasive treatment and irreversible body/identity changes cannot bypass consent or privacy/visibility owners.
+- DPL-01 through DPL-05 have no further implementation authority.
+- DPL-06 is selected_not_started and has no authority until the next owner Continue.
+- APW/D26 retains Project/task/campaign-time truth.
+- World-Hazard-Action retains geology/location/depletion/environment/hazard truth.
+- D17 retains tools/equipment and extracted material/Asset truth.
+- MIB-14 retains facility/platform compatibility truth.
+- DPL-07 retains refining/processing/manufacturing successor mechanics.
+- Source mining yield/depletion tables are not silently universalized.
 - No real-money commerce is introduced.
-- DPL-01 through DPL-04 have no further implementation authority.
-- DPL-05 authority is branch- and tranche-bounded.
-- DPL-06 and later DPL tranches remain unauthorized until selected and governed-started in strict order.
+- DPL-07 and later DPL tranches remain unauthorized.
 - Migration `0022` remains unreserved.
