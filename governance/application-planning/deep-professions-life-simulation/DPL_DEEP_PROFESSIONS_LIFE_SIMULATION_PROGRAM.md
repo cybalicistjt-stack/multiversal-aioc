@@ -1,21 +1,21 @@
 # DPL — Deep Professions & Life Simulation
 
 **Program ID:** DPL  
-**Status:** IN PROGRESS — completed_verified through DPL-10; DPL-11 IN_PROGRESS  
+**Status:** IN PROGRESS — completed_verified through DPL-11; DPL-12 SELECTED_NOT_STARTED  
 **Activation:** CCP-11 completed_verified  
-**Completed through:** DPL-10 — Arts, Performance, Recreation, Festivals & Cultural Practice  
-**Current item:** DPL-11 — Household, Family, Dependents, Legacy & Inheritance  
-**Implementation branch:** `integration/dpl-11-household-family-dependents-legacy-inheritance`  
+**Completed through:** DPL-11 — Household, Family, Dependents, Legacy & Inheritance  
+**Current item:** DPL-12 — Fear, Stress, Sanity, Trauma & Psychological Recovery  
+**Implementation branch:** none — selection only  
 **Successor:** MAI-01  
 **Owner and final authority:** John Brandon Turner
 
 ## Current state
 
-DPL-01 through DPL-10 are `completed_verified` with exact evidence preserved. DPL-10 completed on application PR #307, exact validated head `1fc55d5e7979a9416ef7932a3486d11094ba4c4c`, Repository Health `32888232482/97933662829`, Validation Core `32888232995` final success, Linux `97933667265`, Windows `97933665955`, deterministic comparison `97961494159`, deterministic receipt `1386ffca81503761f02922c7183be80ba49086dda7aebe1c4cbe5e5d6dea7388`, and squash merge `61ad81775d933a9c463f2595e6826650efe6a05d`.
+DPL-01 through DPL-11 are `completed_verified` with exact evidence preserved. DPL-11 completed on application PR #308, exact validated head `ccd3e8d36e8024ec58f31e19bc502eaf523129f6`, Repository Health `32903056198/97980969557`, Validation Core `32903056408`, Linux `97980971634`, Windows `97980971624`, deterministic comparison `97982860194`, deterministic receipt `fca994c4c61fe0b788878de74f10114b863488b739573704bff1a457cf05d2f6`, and squash merge `5e219f0625a439ec8708be8b0aaa011371eb06b4`.
 
-Owner **Continue** on 2026-08-25 governed-started **DPL-11 — Household, Family, Dependents, Legacy & Inheritance** from exact AIOC `15f1a85ef62a2eba908323607e4f601391bcea06` and application `61ad81775d933a9c463f2595e6826650efe6a05d`. DPL-11 is `in_progress` on `integration/dpl-11-household-family-dependents-legacy-inheritance` with DPL-11-only implementation authority.
+The DPL-11 proof contains 16 bounded definitions/references: 13 direct retained-source references and 3 explicit unresolved source-gap records. Two repair cycles were verifier-evidence wording/case alignment only; product mechanics and authority boundaries did not change. No dependent status, inheritance transfer, owner-domain state, campaign time, DPL-12 psychological mechanics, real-money commerce, or migration `0022` was activated.
 
-DPL-01 disposition identifies the bounded DPL-11 source pair as `Arts Rec & Family.PDF` + `Bonds.PDF` for household/family/dependent concepts, with `Arts Rec & Family.PDF` also classified for inheritance/legacy. Those sources provide family/social activity and bond evidence, but unsupported dependent, succession, transfer and inheritance mechanics must remain unresolved rather than be inferred.
+Strict DPL order now selects **DPL-12 — Fear, Stress, Sanity, Trauma & Psychological Recovery** as `selected_not_started` only. DPL-12 has no implementation branch and no implementation authority. The next owner **Continue** must governed-start it from then-current exact AIOC/application heads and must re-read DPL-01 source disposition before any source-backed psychological mechanic or formula is implemented.
 
 ## Tranches
 
@@ -29,31 +29,14 @@ DPL-01 disposition identifies the bounded DPL-11 source pair as `Arts Rec & Fami
 8. DPL-08 — Business, Enterprise, Staffing, Operations & Growth — `completed_verified`
 9. DPL-09 — Apprenticeship, Mentorship, Teaching & Workforce Development — `completed_verified`
 10. DPL-10 — Arts, Performance, Recreation, Festivals & Cultural Practice — `completed_verified`
-11. DPL-11 — Household, Family, Dependents, Legacy & Inheritance — `in_progress`
-12. DPL-12 — Fear, Stress, Sanity, Trauma & Psychological Recovery — `planned`
+11. DPL-11 — Household, Family, Dependents, Legacy & Inheritance — `completed_verified`
+12. DPL-12 — Fear, Stress, Sanity, Trauma & Psychological Recovery — `selected_not_started`
 13. DPL-13 — Cybernetics, Symbiotes, Cloning & Biotech Augmentation — `planned`
 14. DPL-14 — Economy, Cozy, Base, Project Integration, Balance & Golden Life Proof — `planned`
 
-## DPL-11 governed scope
+## DPL-11 closeout invariants
 
-DPL-11 must consume DPL-01 source disposition plus DPL-10's mixed-source handoff without replacing established owners.
-
-DPL-11 must:
-
-1. define source/profile-scoped household, family, family-activity, dependent/caregiver-context, legacy-intent and inheritance-reference definitions with explicit provenance;
-2. keep participant identity and agency in **Character-Actors** and relationship/bond/social truth in **Social-Relations**;
-3. treat authored family/social-bond bonuses, XP, morale, reputation, support and relationship effects as source/profile metadata/read-only preview material unless the owning domain executes them;
-4. preserve dependent/caregiver visibility, consent and agency boundaries and keep incomplete age/dependency rules unresolved rather than universalizing them;
-5. compose bounded life routines through **CEL/APM** and durable household/family activities through **APW/D26**, with no duplicate scheduler or wall-clock campaign progress;
-6. keep value/trade/settlement truth in **MIB-13** and Asset ownership/state/transfer execution in **D17-Asset**; DPL-11 may describe inheritance intent/reference only and must not settle or transfer Assets;
-7. represent source gaps explicitly: where retained source material does not specify succession order, dependent eligibility, estate valuation, inheritance shares, transfer timing or universal legacy effects, those fields remain unresolved;
-8. stop before DPL-12 fear/stress/sanity/trauma mechanics and all later tranches;
-9. introduce no real-money commerce and reserve no migration `0022` without a demonstrated durable schema delta.
-
-## Invariants
-
-- DPL-01 through DPL-10 have no further implementation authority.
-- DPL-11 authority is tranche- and branch-bounded.
+- DPL-11 has no further implementation authority.
 - Character-Actors retains identity and agency truth.
 - Social-Relations retains relationship/bond/social truth.
 - CEL/APM retains bounded life routines and human-stop semantics.
@@ -61,7 +44,18 @@ DPL-11 must:
 - MIB-13 retains economy/trade/settlement truth.
 - D17-Asset retains Asset ownership/state/transfer truth.
 - `Arts Rec & Family.PDF` and `Bonds.PDF` remain source/profile evidence, not automatic owner-domain execution authority.
-- Unsupported household/family/dependency/legacy/inheritance formulas remain unresolved rather than invented.
-- No real-money commerce is introduced.
-- DPL-12 and later DPL tranches remain unauthorized.
+- Dependent eligibility, caregiver status, succession order, estate valuation, inheritance shares/timing and universal legacy effects that lacked retained-source support remain unresolved.
+- DPL-12 psychological mechanics were not implemented inside DPL-11.
+- No real-money commerce was introduced.
 - Migration `0022` remains unreserved.
+
+## DPL-12 selection boundary
+
+DPL-12 is selected only. Before it may become `in_progress`, the next owner Continue must re-read DPL-01 source disposition and retained provenance, establish the exact DPL-12 source set, create a governed implementation branch, and grant DPL-12-only authority. Until then:
+
+- no fear/stress/sanity/trauma/recovery mechanic or formula may be added;
+- no Character identity, personality, agency or consent state may be rewritten;
+- no Social-Relations, medical, Project/time, economy or Asset owner state may be duplicated or mutated;
+- no unsupported universal psychological formula may be inferred;
+- DPL-13 and later DPL tranches remain unauthorized;
+- no real-money commerce, release/deployment/provider activation or migration `0022` is authorized.
