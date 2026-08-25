@@ -1,9 +1,10 @@
 # DPL — Deep Professions & Life Simulation
 
 **Program ID:** DPL  
-**Status:** IN PROGRESS — DPL-01 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — DPL-01 IN_PROGRESS  
 **Activation:** CCP-11 completed_verified  
 **Current item:** DPL-01 — Source Inventory, Profession Taxonomy & Authority Crosswalk  
+**Implementation branch:** `integration/dpl-01-source-inventory-profession-taxonomy-authority-crosswalk`  
 **Successor:** MAI-01  
 **Owner and final authority:** John Brandon Turner  
 **Planned:** 2026-08-20
@@ -16,13 +17,13 @@ DPL converts retained profession, science, industry, business, medicine, augment
 
 CCP completed `completed_verified` through CCP-11 on application merge `5345c9bb2b21dc71da9591b2ad1c2c5df2a8d0bd`, satisfying DPL's activation condition.
 
-Strict forward order selects **DPL-01 — Source Inventory, Profession Taxonomy & Authority Crosswalk** as `selected_not_started`. No implementation branch or implementation authority exists until a future owner **Continue** governed-starts DPL-01.
+Owner **Continue** on 2026-08-24 governed-started **DPL-01 — Source Inventory, Profession Taxonomy & Authority Crosswalk** from exact AIOC `49c7fce4da281db91fdea2142523b0739a773af5` and application `5345c9bb2b21dc71da9591b2ad1c2c5df2a8d0bd`. DPL-01 is `in_progress` on `integration/dpl-01-source-inventory-profession-taxonomy-authority-crosswalk` with DPL-01-only implementation authority.
 
-DPL-01 will reconcile profession/science/medicine/business/mining/arts/augmentation/life sources with current owner domains and classify profession profiles, Projects, recipes/processes, services, conditions and content. APW, CEL, MIB-12/13/14, ICF, Character, Condition and Relationship domains retain owning truth.
+DPL-01 reconciles profession/science/medicine/business/mining/arts/augmentation/life sources with current owner domains and classifies profession profiles, Projects, recipes/processes, services, conditions and content. APW, CEL, MIB-12/13/14, ICF, Character, Condition and Relationship domains retain owning truth.
 
 ## Tranches
 
-1. **DPL-01 — Source Inventory, Profession Taxonomy & Authority Crosswalk** — `selected_not_started`  
+1. **DPL-01 — Source Inventory, Profession Taxonomy & Authority Crosswalk** — `in_progress`  
    Reconcile profession/science/medicine/business/mining/arts/augmentation/life sources with current owner domains and classify profession profiles, Projects, recipes/processes, services, conditions and content.
 
 2. **DPL-02 — Profession Activity Profiles, Mastery, Credentials & Service Contracts** — `planned`  
@@ -71,6 +72,6 @@ DPL-01 will reconcile profession/science/medicine/business/mining/arts/augmentat
 - Disease, psychological and household mechanics are setting/content-sensitive and never globally forced.
 - Augmentation cannot silently change Character identity, consent or agency.
 - No real-money commerce is introduced.
-- DPL-01 selection alone grants no implementation authority.
+- DPL-01 implementation authority is bounded to the registered branch and this tranche only.
 - DPL-02 and later DPL tranches remain unauthorized until selected and governed-started in strict order.
 - Migration `0022` remains unreserved.
