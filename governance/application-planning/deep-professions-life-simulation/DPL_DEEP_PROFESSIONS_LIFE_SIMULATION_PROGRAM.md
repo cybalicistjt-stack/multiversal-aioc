@@ -1,19 +1,19 @@
 # DPL — Deep Professions & Life Simulation
 
 **Program ID:** DPL  
-**Status:** IN PROGRESS — completed_verified through DPL-09; DPL-10 IN_PROGRESS  
+**Status:** IN PROGRESS — completed_verified through DPL-10; DPL-11 SELECTED_NOT_STARTED  
 **Activation:** CCP-11 completed_verified  
-**Completed through:** DPL-09 — Apprenticeship, Mentorship, Teaching & Workforce Development  
-**Current item:** DPL-10 — Arts, Performance, Recreation, Festivals & Cultural Practice  
-**Implementation branch:** `integration/dpl-10-arts-performance-recreation-festivals-cultural-practice`  
+**Completed through:** DPL-10 — Arts, Performance, Recreation, Festivals & Cultural Practice  
+**Current item:** DPL-11 — Household, Family, Dependents, Legacy & Inheritance  
+**Implementation branch:** none — selection only  
 **Successor:** MAI-01  
 **Owner and final authority:** John Brandon Turner
 
 ## Current state
 
-DPL-01 through DPL-09 are `completed_verified` with exact evidence preserved. DPL-09 completed on application PR #306, exact validated head `8f7b30f17810f40f1cb352681b4be52c0b0bfdc6`, Repository Health `32884126021/97920416722`, Validation Core `32884126412`, Linux `97920418449`, Windows `97920418342`, comparison `97922073737`, deterministic receipt `2184d9c35dbab5eb2b179eb4c2d057b7d7ee8e888ded021dc6a39dd6b0d04f0d`, and squash merge `9c27f7ce5e2be18fc23c8015adbf35a5b0a4f823`. There was one bounded verifier-evidence crosswalk wording/case repair; product behavior and owner boundaries did not change.
+DPL-01 through DPL-10 are `completed_verified` with exact evidence preserved. DPL-10 completed on application PR #307, exact validated head `1fc55d5e7979a9416ef7932a3486d11094ba4c4c`, Repository Health `32888232482/97933662829`, Validation Core `32888232995` with final conclusion `success`, Linux `97933667265`, Windows `97933665955`, deterministic comparison `97961494159`, deterministic receipt `1386ffca81503761f02922c7183be80ba49086dda7aebe1c4cbe5e5d6dea7388`, and squash merge `61ad81775d933a9c463f2595e6826650efe6a05d`. There was one bounded verifier-evidence source-label wording repair; product behavior and owner boundaries did not change. A self-hosted runner outage terminated two inherited regression lanes; those jobs were rerun on the same exact candidate, after which the complete Validation Core run concluded success.
 
-Owner **Continue** on 2026-08-25 governed-started **DPL-10 — Arts, Performance, Recreation, Festivals & Cultural Practice** from exact AIOC `d60e648c44b01319265fbfa11684db15213c71ce` and application `9c27f7ce5e2be18fc23c8015adbf35a5b0a4f823`. DPL-10 is `in_progress` on `integration/dpl-10-arts-performance-recreation-festivals-cultural-practice` with DPL-10-only implementation authority.
+Strict DPL order now selects **DPL-11 — Household, Family, Dependents, Legacy & Inheritance** as `selected_not_started`. Selection creates no implementation branch and grants no implementation authority. The next owner **Continue** is required to governed-start DPL-11 from the then-current canonical AIOC/application heads.
 
 ## Tranches
 
@@ -26,42 +26,43 @@ Owner **Continue** on 2026-08-25 governed-started **DPL-10 — Arts, Performance
 7. DPL-07 — Refining, Industrial Processing, Manufacturing & Supply Chains — `completed_verified`
 8. DPL-08 — Business, Enterprise, Staffing, Operations & Growth — `completed_verified`
 9. DPL-09 — Apprenticeship, Mentorship, Teaching & Workforce Development — `completed_verified`
-10. DPL-10 — Arts, Performance, Recreation, Festivals & Cultural Practice — `in_progress`
-11. DPL-11 — Household, Family, Dependents, Legacy & Inheritance — `planned`
+10. DPL-10 — Arts, Performance, Recreation, Festivals & Cultural Practice — `completed_verified`
+11. DPL-11 — Household, Family, Dependents, Legacy & Inheritance — `selected_not_started`
 12. DPL-12 — Fear, Stress, Sanity, Trauma & Psychological Recovery — `planned`
 13. DPL-13 — Cybernetics, Symbiotes, Cloning & Biotech Augmentation — `planned`
 14. DPL-14 — Economy, Cozy, Base, Project Integration, Balance & Golden Life Proof — `planned`
 
-## DPL-10 governed scope
+## DPL-10 closeout
 
-DPL-10 must consume DPL-01 arts/performance/recreation source classifications, DPL-02 profession/mastery/credential/service references and DPL-09 training/practice handoffs while composing over existing owners rather than creating new ledgers.
+DPL-10 delivered 20 source-backed definitions: 5 performance disciplines, 3 art practices, 3 recreation profiles, 3 cultural-event references, 5 performer social-status references and 1 setting-specific Musical Reality profile. Source XP/DC/reputation/economy/stress/morale/EE statements remained source/profile metadata only. Progression-Abilities/DPL-02, Character-Actors, Social-Relations, CEL/APM, APW/D26, MIB-13, D17-Asset and MIB-14 retained their owning truth. DPL-10 performed no automatic owner-domain mutation, campaign-time advancement, real-money commerce or migration `0022`, and it did not implement DPL-11 mechanics.
 
-DPL-10 must:
+DPL-10 now has no further implementation authority.
 
-1. define source/profile-scoped arts, performance, practice, rehearsal, production, recreation, festival and cultural-practice references without promoting source-specific performance XP/DC tables into universal rules;
-2. keep skill, mastery, XP/advancement, credentials and unlock truth in **Progression-Abilities/DPL-02** rather than award progression locally;
-3. keep performer/participant identity and agency in **Character-Actors**, and audience/community relationship/social truth in **Social-Relations**;
-4. compose bounded cozy/life routines through **CEL/APM** and rehearsals, productions, festivals, events and durable cultural work through **APW/D26**, with no wall-clock campaign progress;
-5. keep tickets, prizes, paid performance/service value, trade and settlement in **MIB-13**; no local economy or real-money commerce;
-6. keep instruments, costumes, props and equipment in **D17-Asset** and venue/facility/platform compatibility in **MIB-14**;
-7. treat `Arts Rec & Family.PDF` as mixed source evidence: only explicitly scoped arts/recreation material may enter DPL-10; household, family, dependent, legacy and inheritance mechanics remain **DPL-11**;
-8. preserve source/provenance, setting/profile, visibility, consent and agency boundaries, including setting-specific `Musical Reality Gameplay.PDF` material only where explicitly applicable;
-9. keep unsupported audience/reputation, recreation-benefit, festival-outcome, cultural-effect and performance-productivity formulas unresolved rather than invented;
-10. stop before DPL-11+ mechanics, introduce no real-money commerce and reserve no migration `0022` without a demonstrated durable schema delta.
+## DPL-11 selected scope
+
+DPL-11 must consume the DPL-01 source inventory plus the DPL-10 mixed-source handoff from `Arts Rec & Family.PDF`, where household, family, dependent, legacy and inheritance material was explicitly reserved for this tranche.
+
+When separately governed-started, DPL-11 must:
+
+1. define source/profile-scoped household, family, dependent, legacy and inheritance references without creating a duplicate Character, relationship, household, economy, Asset or inheritance ledger;
+2. keep participant identity and agency in **Character-Actors** and relationship/social truth in **Social-Relations**;
+3. preserve dependent/caregiver visibility, consent and agency boundaries and avoid universalizing incomplete source age/dependency rules;
+4. compose bounded life routines through **CEL/APM** and durable household/family work through **APW/D26**, with no wall-clock campaign progress;
+5. keep value/trade/settlement truth in **MIB-13** and Asset ownership/state/transfer execution in **D17-Asset** rather than settling inheritance locally;
+6. keep unsupported household/family/dependency/legacy/inheritance formulas unresolved rather than invented;
+7. stop before DPL-12+ mechanics, introduce no real-money commerce and reserve no migration `0022` without a demonstrated durable schema delta.
 
 ## Invariants
 
-- DPL-01 through DPL-09 have no further implementation authority.
-- DPL-10 authority is tranche- and branch-bounded.
-- Progression-Abilities retains performance skill/mastery/XP/advancement truth.
-- Character-Actors retains performer/participant identity and agency.
-- Social-Relations retains audience/community relationship and social truth.
-- CEL/APM retains bounded cozy/life routines and human-stop semantics.
+- DPL-01 through DPL-10 have no further implementation authority.
+- DPL-11 is selection-only until the next owner Continue.
+- Character-Actors retains identity and agency truth.
+- Social-Relations retains relationship and social truth.
+- CEL/APM retains bounded life routines and human-stop semantics.
 - APW/D26 retains Project/task/campaign-time truth.
 - MIB-13 retains economy/trade/settlement truth.
-- D17-Asset and MIB-14 retain Asset and venue/facility truth.
-- Mixed Arts Rec & Family household/family/dependent mechanics remain DPL-11.
-- Unsupported performance, audience, recreation, festival and cultural formulas are not silently universalized.
+- D17-Asset retains Asset ownership/state truth.
+- Unsupported household/family/dependency/legacy/inheritance formulas are not silently universalized.
 - No real-money commerce is introduced.
-- DPL-11 and later DPL tranches remain unauthorized.
+- DPL-12 and later DPL tranches remain unauthorized.
 - Migration `0022` remains unreserved.
