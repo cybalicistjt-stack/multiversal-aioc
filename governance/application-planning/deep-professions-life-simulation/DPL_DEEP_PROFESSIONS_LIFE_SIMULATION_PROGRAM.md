@@ -1,11 +1,11 @@
 # DPL — Deep Professions & Life Simulation
 
 **Program ID:** DPL  
-**Status:** IN PROGRESS — completed_verified through DPL-03; DPL-04 IN_PROGRESS  
+**Status:** IN PROGRESS — completed_verified through DPL-04; DPL-05 SELECTED_NOT_STARTED  
 **Activation:** CCP-11 completed_verified  
-**Completed through:** DPL-03 — Research, Study, Discovery & Experimentation Loop  
-**Current item:** DPL-04 — Chemistry, Pharmaceuticals, Toxicology & Laboratory Science  
-**Implementation branch:** `integration/dpl-04-chemistry-pharmaceuticals-toxicology-laboratory-science`  
+**Completed through:** DPL-04 — Chemistry, Pharmaceuticals, Toxicology & Laboratory Science  
+**Current item:** DPL-05 — Medicine, Disease, Injury, Poison & Long-Term Recovery  
+**Implementation branch:** none — next owner Continue required  
 **Successor:** MAI-01  
 **Owner and final authority:** John Brandon Turner  
 **Planned:** 2026-08-20
@@ -16,20 +16,23 @@ DPL converts retained profession, science, industry, business, medicine, augment
 
 ## Current state
 
-DPL-01 through DPL-03 are `completed_verified` with exact evidence preserved. DPL-03 completed on application PR #300, exact validated head `4a09540d6d83eace26ff4de84c556c5917f46c1f`, squash merge `8ff3403698fcaef8fed6c40bd46e802240b3c9ef`, deterministic receipt `c281ee62af2f1c665a0f3d669ce689aa20113da9b658119813b75aab845073c4`.
+DPL-01 through DPL-04 are `completed_verified` with exact evidence preserved.
 
-Owner **Continue** on 2026-08-25 governed-started **DPL-04 — Chemistry, Pharmaceuticals, Toxicology & Laboratory Science** from exact AIOC `0b46334e506bf2b69f2cefcfec45945c74de292a` and application `8ff3403698fcaef8fed6c40bd46e802240b3c9ef`. DPL-04 is `in_progress` on `integration/dpl-04-chemistry-pharmaceuticals-toxicology-laboratory-science` with DPL-04-only implementation authority.
+DPL-04 completed on application PR #301. Exact validated head `188d7ce85dcdacd560e0d763daf18ecd28bf1502` passed Repository Health `32815232747/97702049958`, Validation Core `32815232802`, Linux `97702050265`, Windows `97702050329` and deterministic comparison `97702612853`, with deterministic receipt `f92b1b51150f9447d4b13a0357f998824603e00dfdb666bb1b60826220045f05`. The first exact-head candidate passed without a CI repair cycle and squash-merged as `0ebd5c59f25369b41ab25c4840c346655fc8ef04`.
 
-DPL-04 defines game-facing scientific chemistry/laboratory contracts for authored formulas, reagents, synthesis/process references, purity/concentration, stability, contamination, hazardous failure, pharmaceuticals, toxins and experimental compounds while composing over DPL-03 research and existing owner domains. Scientific chemistry remains distinct from MSS magical alchemy, and DPL-05 retains disease/injury/poison progression and long-term treatment/recovery.
+DPL-04 delivered source-backed scientific chemistry definitions rather than real-world procedures: 4 formula definitions, 4 toxicology delivery profiles and 4 laboratory environments; source-authored DC/time and failure-margin metadata; unresolved unsupported purity/concentration/contamination values; DPL-03/MIB-12/MIB-14/D17/Character/Condition/ICF/World/MSS owner handoffs; no owner mutation, transformation, effect application or health progression. Scientific chemistry remains distinct from MSS magical alchemy.
+
+Strict DPL order now selects **DPL-05 — Medicine, Disease, Injury, Poison & Long-Term Recovery** as `selected_not_started`. Selection grants no implementation authority and no application branch exists. The next owner **Continue** is required to governed-start DPL-05 from then-current canonical AIOC/application main.
 
 ## Tranches
 
 1. **DPL-01 — Source Inventory, Profession Taxonomy & Authority Crosswalk** — `completed_verified`
 2. **DPL-02 — Profession Activity Profiles, Mastery, Credentials & Service Contracts** — `completed_verified`
 3. **DPL-03 — Research, Study, Discovery & Experimentation Loop** — `completed_verified`
-4. **DPL-04 — Chemistry, Pharmaceuticals, Toxicology & Laboratory Science** — `in_progress`  
-   Laboratory formulas, reagents, synthesis, purity/concentration, stability, contamination, hazardous failure, pharmaceuticals, toxins and experimental compounds without collapsing science into magical alchemy.
-5. **DPL-05 — Medicine, Disease, Injury, Poison & Long-Term Recovery** — `planned`
+4. **DPL-04 — Chemistry, Pharmaceuticals, Toxicology & Laboratory Science** — `completed_verified`  
+   Source-backed scientific chemistry, pharmaceutical/toxicology definition and laboratory-reference layer; no real-world synthesis procedures and no live health progression.
+5. **DPL-05 — Medicine, Disease, Injury, Poison & Long-Term Recovery** — `selected_not_started`  
+   Diagnosis, treatment, procedures, disease incubation/progression, exposure, poison dose/decay, lasting injury, rehabilitation, immunity/resistance and care Projects over existing Character/Condition/ICF systems. No implementation before the next owner Continue.
 6. **DPL-06 — Mining, Prospecting, Quarrying, Drilling & Resource Extraction** — `planned`
 7. **DPL-07 — Refining, Industrial Processing, Manufacturing & Supply Chains** — `planned`
 8. **DPL-08 — Business, Enterprise, Staffing, Operations & Growth** — `planned`
@@ -40,31 +43,32 @@ DPL-04 defines game-facing scientific chemistry/laboratory contracts for authore
 13. **DPL-13 — Cybernetics, Symbiotes, Cloning & Biotech Augmentation** — `planned`
 14. **DPL-14 — Economy, Cozy, Base, Project Integration, Balance & Golden Life Proof** — `planned`
 
-## DPL-04 governed scope
+## DPL-05 selection boundary
 
-DPL-04 must:
+If governed-started, DPL-05 must:
 
-1. use DPL-03 research/evidence/discovery references for experimental chemistry rather than create a separate research ledger;
-2. define scientific chemistry/process records with explicit source/provenance and setting/profile scope;
-3. reference DPL-02 profession/activity profiles and APW/D26 Projects/tasks for laboratory work rather than create duplicate progression or scheduling truth;
-4. reference MIB-12 for transformations/synthesis and MIB-14 for laboratory/facility capability rather than creating parallel process/facility state;
-5. reference D17 Asset/Item/material ownership for reagents, samples, equipment and products;
-6. represent authored purity, concentration, stability and contamination without silently inventing universal formulas or owner-state changes;
-7. represent pharmaceutical/toxin effect handoffs while Character/Condition/ICF retain live biological/health state and DPL-05 retains disease/injury/poison progression and long-term treatment/recovery mechanics;
-8. preserve World-Hazard-Action/Condition ownership for authored laboratory hazards and failures;
-9. keep scientific chemistry distinct from MSS magical alchemy/enchanting except explicit authored crossovers;
-10. introduce no real-money commerce and reserve no migration `0022` without demonstrated durable schema delta.
+1. consume DPL-01 disease/healing/poison/status-condition source/provenance classifications rather than general medical assumptions;
+2. consume DPL-04 pharmaceutical/toxicology effect/delivery handoffs without rewriting scientific chemistry;
+3. preserve Character-Actors, Condition and ICF as live identity/body/condition/biological owners rather than create a universal health ledger;
+4. route treatment/recovery/rehabilitation time through APW/D26 rather than wall-clock progress;
+5. keep medicines, tools, consumables and assistive equipment in D17 Asset ownership;
+6. preserve World-Hazard-Action ownership for exposure/injury/environmental hazards;
+7. make diagnosis/treatment/procedure/disease/poison/injury/recovery rules explicitly source/provenance and setting/profile scoped;
+8. preserve consent and privacy/visibility for invasive procedures and sensitive health projections;
+9. avoid inferred universal real-world disease, medical, pharmacokinetic or toxicology formulas;
+10. implement no DPL-06+ mechanics, real-money commerce, provider activation or migration `0022` without a genuine durable schema delta.
 
 ## Invariants
 
 - APW, CEL, MIB-12/13/14, D17 Asset, ICF, Character, Progression-Abilities, Condition and Social-Relations retain owning truth.
 - Science/chemistry remains distinct from magical alchemy except explicit crossover definitions.
 - Research/discovery preserves provenance, unresolved/contradictory evidence and hidden-knowledge controls.
-- DPL-05 retains disease/injury/poison progression and long-term recovery/treatment ownership.
-- Disease, psychological and household mechanics are setting/content-sensitive and never globally forced.
+- Disease, injury, poison and medical mechanics remain setting/content-sensitive; no game-source rule is silently promoted to universal real-world truth.
+- Invasive treatment and irreversible body/identity changes cannot bypass consent, player/GM/setting authority or privacy/visibility owners.
+- Disease, psychological and household mechanics are never globally forced.
 - Augmentation cannot silently change Character identity, consent or agency.
 - No real-money commerce is introduced.
-- DPL-01 through DPL-03 are completed_verified and have no further implementation authority.
-- DPL-04 implementation authority is bounded to the registered branch and this tranche only.
-- DPL-05 and later DPL tranches remain unauthorized until selected and governed-started in strict order.
+- DPL-01 through DPL-04 are completed_verified and have no further implementation authority.
+- DPL-05 is selected_not_started and has no implementation authority until the next owner Continue.
+- DPL-06 and later DPL tranches remain unauthorized until selected and governed-started in strict order.
 - Migration `0022` remains unreserved.
