@@ -1,21 +1,29 @@
 # DPL — Deep Professions & Life Simulation
 
 **Program ID:** DPL  
-**Status:** IN PROGRESS — completed_verified through DPL-11; DPL-12 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — completed_verified through DPL-11; DPL-12 IN_PROGRESS  
 **Activation:** CCP-11 completed_verified  
 **Completed through:** DPL-11 — Household, Family, Dependents, Legacy & Inheritance  
 **Current item:** DPL-12 — Fear, Stress, Sanity, Trauma & Psychological Recovery  
-**Implementation branch:** none — selection only  
+**Implementation branch:** `integration/dpl-12-fear-stress-sanity-trauma-psychological-recovery`  
 **Successor:** MAI-01  
 **Owner and final authority:** John Brandon Turner
 
 ## Current state
 
-DPL-01 through DPL-11 are `completed_verified` with exact evidence preserved. DPL-11 completed on application PR #308, exact validated head `ccd3e8d36e8024ec58f31e19bc502eaf523129f6`, Repository Health `32903056198/97980969557`, Validation Core `32903056408`, Linux `97980971634`, Windows `97980971624`, deterministic comparison `97982860194`, deterministic receipt `fca994c4c61fe0b788878de74f10114b863488b739573704bff1a457cf05d2f6`, and squash merge `5e219f0625a439ec8708be8b0aaa011371eb06b4`.
+DPL-01 through DPL-11 are `completed_verified` with exact evidence preserved. DPL-11 completed on application PR #308, exact validated head `ccd3e8d36e8024ec58f31e19bc502eaf523129f6`, deterministic receipt `fca994c4c61fe0b788878de74f10114b863488b739573704bff1a457cf05d2f6`, and squash merge `5e219f0625a439ec8708be8b0aaa011371eb06b4`.
 
-The DPL-11 proof contains 16 bounded definitions/references: 13 direct retained-source references and 3 explicit unresolved source-gap records. Two repair cycles were verifier-evidence wording/case alignment only; product mechanics and authority boundaries did not change. No dependent status, inheritance transfer, owner-domain state, campaign time, DPL-12 psychological mechanics, real-money commerce, or migration `0022` was activated.
+Owner **Continue** on 2026-08-25 governed-started **DPL-12 — Fear, Stress, Sanity, Trauma & Psychological Recovery** from exact AIOC `f7b463120b233a9a9942ff5ea80f174e7aba6c77` and application `5e219f0625a439ec8708be8b0aaa011371eb06b4` after re-reading DPL-01 source disposition and directly inspecting the retained DPL-12 sources.
 
-Strict DPL order now selects **DPL-12 — Fear, Stress, Sanity, Trauma & Psychological Recovery** as `selected_not_started` only. DPL-12 has no implementation branch and no implementation authority. The next owner **Continue** must governed-start it from then-current exact AIOC/application heads and must re-read DPL-01 source disposition before any source-backed psychological mechanic or formula is implemented.
+DPL-01 routes `sanity-horror` to DPL-12 over **DPL + Condition + Character-Actors** and explicitly keeps `status-condition-source` under existing **Condition** authority. DPL-01 also explicitly rejects globally mandatory Sanity Point mechanics. Therefore source formulas are retained only as source/profile-scoped references unless the owning domain executes them.
+
+## Resolved DPL-12 source set
+
+- `Sanity and Horror 11-13-24.PDF` — 6 pages, SHA-256 `a843d06c11f5e69a1482f42e184c05de9864b43bc7bad99bc4f35ca50203ff97`; authored Sanity Point, fear/horror, fear-effect, madness, trigger and recovery vocabulary.
+- `Hazards_Traps.csv` — 1,901 rows, SHA-256 `391854834b50bdf175fe0bdd949280adbff67918889daae662fb40c40c418417`; ten retained `Psychological Hazards` rows `HTR-0067` through `HTR-0076` are DPL-12 references while **World-Hazard-Action** retains hazard adjudication.
+- `Status Conditions 11-13-24.PDF` — 7 pages, SHA-256 `a070e11649a46dd8dd83da6cc67396573618280263683e89da546788ced30f32`; existing **Condition** authority, including `Frightened`, is referenced rather than copied.
+
+The retained Sanity/Horror source explicitly says its madness terminology is not intended to mimic real mental illness and should be handled sensitively. DPL-12 preserves that boundary and does not infer real-world diagnosis, pathology or clinical claims from source terminology.
 
 ## Tranches
 
@@ -30,32 +38,36 @@ Strict DPL order now selects **DPL-12 — Fear, Stress, Sanity, Trauma & Psychol
 9. DPL-09 — Apprenticeship, Mentorship, Teaching & Workforce Development — `completed_verified`
 10. DPL-10 — Arts, Performance, Recreation, Festivals & Cultural Practice — `completed_verified`
 11. DPL-11 — Household, Family, Dependents, Legacy & Inheritance — `completed_verified`
-12. DPL-12 — Fear, Stress, Sanity, Trauma & Psychological Recovery — `selected_not_started`
+12. DPL-12 — Fear, Stress, Sanity, Trauma & Psychological Recovery — `in_progress`
 13. DPL-13 — Cybernetics, Symbiotes, Cloning & Biotech Augmentation — `planned`
 14. DPL-14 — Economy, Cozy, Base, Project Integration, Balance & Golden Life Proof — `planned`
 
-## DPL-11 closeout invariants
+## DPL-12 governed scope
 
-- DPL-11 has no further implementation authority.
-- Character-Actors retains identity and agency truth.
-- Social-Relations retains relationship/bond/social truth.
-- CEL/APM retains bounded life routines and human-stop semantics.
-- APW/D26 retains Project/task/campaign-time truth.
-- MIB-13 retains economy/trade/settlement truth.
-- D17-Asset retains Asset ownership/state/transfer truth.
-- `Arts Rec & Family.PDF` and `Bonds.PDF` remain source/profile evidence, not automatic owner-domain execution authority.
-- Dependent eligibility, caregiver status, succession order, estate valuation, inheritance shares/timing and universal legacy effects that lacked retained-source support remain unresolved.
-- DPL-12 psychological mechanics were not implemented inside DPL-11.
-- No real-money commerce was introduced.
+DPL-12 must:
+
+1. preserve exact retained-source provenance and keep authored Sanity/Fear/Horror/Madness/Trigger/Recovery rules profile-scoped rather than universal;
+2. expose the ten retained psychological hazard records as read-only references while **World-Hazard-Action** retains trigger/save/DC/damage/environment execution;
+3. reference **Condition** for `Frightened`, confusion/exhaustion-like effects and all live psychological condition state rather than creating a DPL condition ledger;
+4. keep **Character-Actors** as identity, personality, consent and agency truth; source effects may not silently rewrite a Character;
+5. compose support context through **Social-Relations**, bounded routines through **CEL/APM**, and durable recovery activities through **APW/D26** without duplicate ledgers or wall-clock progression;
+6. treat therapy, narrative healing, restoration spells, special rituals/items and other recovery statements as source/profile metadata only; medical truth remains with DPL-05/medical owners, magical execution remains with MSS where applicable, and no real-world clinical efficacy is claimed;
+7. represent absent universal stress/trauma/clinical semantics as unresolved source gaps rather than inventing formulas;
+8. stop before DPL-13 augmentation mechanics and all later tranches;
+9. introduce no real-money commerce and reserve no migration `0022` without demonstrated durable schema need.
+
+## Invariants
+
+- DPL-01 through DPL-11 have no further implementation authority.
+- DPL-12 authority is tranche- and branch-bounded.
+- Globally mandatory Sanity Points remain noncanonical.
+- Character-Actors retains identity/personality/agency truth.
+- Condition retains live condition state and effect execution.
+- World-Hazard-Action retains psychological hazard adjudication.
+- Social-Relations retains relationship/support truth.
+- DPL-05/medical owners retain medical truth.
+- CEL/APM retains bounded routines/human stops; APW/D26 retains Projects/tasks/campaign time.
+- Source madness terminology remains supernatural/narrative strain and is not a real-world mental-illness model.
+- DPL-13+ remain unauthorized.
+- No real-money commerce is introduced.
 - Migration `0022` remains unreserved.
-
-## DPL-12 selection boundary
-
-DPL-12 is selected only. Before it may become `in_progress`, the next owner Continue must re-read DPL-01 source disposition and retained provenance, establish the exact DPL-12 source set, create a governed implementation branch, and grant DPL-12-only authority. Until then:
-
-- no fear/stress/sanity/trauma/recovery mechanic or formula may be added;
-- no Character identity, personality, agency or consent state may be rewritten;
-- no Social-Relations, medical, Project/time, economy or Asset owner state may be duplicated or mutated;
-- no unsupported universal psychological formula may be inferred;
-- DPL-13 and later DPL tranches remain unauthorized;
-- no real-money commerce, release/deployment/provider activation or migration `0022` is authorized.
