@@ -1,92 +1,57 @@
 # MAI — Map & Visual Asset Interoperability
 
 **Program ID:** MAI  
-**Status:** IN PROGRESS — MAI-01..08 COMPLETED_VERIFIED; MAI-09 IN_PROGRESS  
+**Status:** IN PROGRESS — MAI-01..09 COMPLETED_VERIFIED; MAI-10 SELECTED_NOT_STARTED  
 **Activation:** DPL-14 completed_verified  
-**Completed through:** MAI-08 — Asset Intake Wizard, Map Composer, Palette & Workbench  
-**Current item:** MAI-09 — World, Scene, Combat, Exploration & Creator Integration  
-**Implementation branch:** `integration/mai-09-world-scene-combat-exploration-creator-integration`  
-**Implementation authority:** bounded MAI-09 only  
+**Completed through:** MAI-09 — World, Scene, Combat, Exploration & Creator Integration  
+**Current item:** MAI-10 — Diverse Corpus, Performance & Interoperability Proof  
+**Implementation branch:** none  
+**Implementation authority:** none — MAI-10 selection only  
 **Successor after MAI:** AAI-01  
 **Owner and final authority:** John Brandon Turner
 
 ## Current state
 
-MAI-01 through MAI-08 are `completed_verified` with no further implementation authority. MAI-08 exact application head `7792f765a7eb662372c32f59d237998f0bb85392` passed Repository Health, the complete self-hosted Linux/Windows Validation Core workflow and deterministic cross-platform comparison with zero repair cycles, then squash-merged as `7d073bd3c9487d665751c76d2b5a69d3991ab305`.
+MAI-01 through MAI-09 are `completed_verified` with no further implementation authority. MAI-09 exact head `4d481c0b43903184abed7153044fca4116d72642` passed exact-head Repository Health, the complete self-hosted Linux/Windows Validation Core workflow and deterministic cross-platform comparison after one bounded TypeScript repair, then squash-merged as `3f7c893939779337ca01510ec24ff2c346d200f0`.
 
-Owner `Continue` on 2026-08-26 freshly verified AIOC main `b166659b44ffa0799415bd391a30442a9f08ea72` and application main `7d073bd3c9487d665751c76d2b5a69d3991ab305`, re-read MAI-08 and the current MIB-11/D18 World, A5 Scene, visibility-projection and D29 authoring-provenance seams, and governed-started MAI-09. MAI-10 remains unauthorized.
+Strict MAI order now selects MAI-10 as `selected_not_started` only. It has no implementation branch and no implementation authority. A future owner `Continue` must freshly verify canonical heads, re-read completed MAI-01..09 evidence and resolve the exact diverse-corpus, performance-measurement and interoperability-proof acceptance contract before implementation. AAI-01 remains the strict successor after MAI-10.
 
-## MAI-08 completion evidence
+## MAI-09 completion evidence
 
-- Application PR: **#319**
-- Exact validated head: `7792f765a7eb662372c32f59d237998f0bb85392`
-- Repository Health: run `32939863908`, job `98088448674` — PASS
-- Validation Core: run `32939863798` — PASS
-- MAI-08 Linux job: `98088448621` — PASS
-- Linux artifact: `9596253071`, digest `sha256:93de084e486f8a43c0252a63ae9cdc1dcd6da9b24a3b296e7e687536ae9f2ab4`
-- MAI-08 Windows job: `98088448655` — PASS
-- Windows artifact: `9596319934`, digest `sha256:f7ec56194ffc00ec5dc713c9bd7384208ad3bb3254d8a1651226aa18e393bbf7`
-- MAI-08 deterministic comparison job: `98090202095` — PASS
-- Comparison artifact: `9596387530`, digest `sha256:84cfda40da61ebc728cdbebd1f8198e83460980f7dd438096bd9b7ed98263b28`
-- Deterministic receipt: `86a925a25ffaf35cd43ce0233b2cc461a714b5441ba774c49b06160482d6a4e3`
-- Application squash merge: `7d073bd3c9487d665751c76d2b5a69d3991ab305`
-- Repair cycles: **0**
+- Application PR: **#320**
+- Exact validated head: `4d481c0b43903184abed7153044fca4116d72642`
+- Repository Health: run `32980300000`, job `98215020731` — PASS
+- Validation Core: run `32980300294` — PASS
+- MAI-09 Linux job: `98215022700` — PASS
+- Linux artifact: `9611611373`, digest `sha256:7a180a0e6fb6328b5ee206b52f4bfb7fcebcf22d7e979bde19c3853eef0e9d4f`
+- MAI-09 Windows job: `98215022693` — PASS
+- Windows artifact: `9611774541`, digest `sha256:6718affda6dde4ecbb2cd674aebbc80aedf9f4bfe183c0a24069b5a1f5ee9d87`
+- MAI-09 deterministic comparison job: `98220424459` — PASS
+- Comparison artifact: `9612002717`, digest `sha256:cf000ebc3cd55c5091ccda6eb214fa43567f02856c411ca81f36a4aaaca2b36a`
+- Deterministic receipt: `c0bf289a86d5c5a18697c928e4aba99d9dfdca289dab4a2a705c29f73cabc5cc`
+- Application squash merge: `3f7c893939779337ca01510ec24ff2c346d200f0`
+- Repair cycles: **1**
 
-## Binding MAI-01..08 foundation
+## Binding MAI-01..09 foundation
 
-The completed foundation establishes provider-neutral source/license/authority evidence, canonical visual asset/package/provenance records, deterministic presentation coordinates/projections, visual-only terrain/connectivity, descriptive geometry, deterministic source-specific import translation with raw-source preservation, permission/provenance-aware semantic resolution, explicit manual/placeholder/unresolved outcomes, and deterministic reversible `presentation-authoring-draft` snapshots/receipts.
+The completed foundation establishes provider-neutral source/license/authority evidence, canonical visual asset/package/provenance records, deterministic presentation coordinates/projections, visual-only terrain/connectivity, descriptive geometry, deterministic source-specific import translation with raw-source preservation, permission/provenance-aware semantic resolution, explicit manual/placeholder/unresolved outcomes, deterministic reversible presentation drafts and deterministic owner-neutral World/Scene/Visibility/Gameplay/D29 integration orchestration.
 
-No provider schema, artwork, visual construct, resolver choice, draft or draft receipt becomes World/gameplay/runtime/publication truth by implication.
+No provider schema, artwork, visual construct, resolver choice, draft, owner request or MAI receipt becomes World/gameplay/runtime/publication truth by implication.
 
-## MAI-09 governed integration contract
+## MAI-10 selection boundary
 
-MAI-09 owns **integration orchestration evidence**, not the truths it integrates. The bounded implementation may validate a MAI-08 draft and produce deterministic owner requests, expected-version references, operation identities, acknowledgements and reconciliation records. It may not independently mutate owner domains.
+MAI-10 is selected but not started. Its future governed start must resolve, from current completed evidence rather than assumption:
 
-### Input and preflight
+- representative diverse corpus membership and provenance/permission constraints;
+- performance dimensions, environments, budgets and measurement methodology;
+- interoperability matrix across MAI schemas, imports, resolver, workbench and integration outputs;
+- unsupported, degraded and negative proof cases and fail-closed acceptance;
+- cross-platform deterministic evidence requirements in addition to the existing Validation Core gate;
+- owner-boundary proof ensuring corpus/performance tests do not invent World, Scene, Visibility, gameplay or D29 truth;
+- whether any actual durable schema delta exists before migration `0022` can be considered;
+- evidence required to close the MAI program and hand off to AAI-01.
 
-MAI-09 consumes a MAI-08 deterministic draft snapshot and receipt plus preserved MAI-01..08 evidence. Before producing any owner request it must fail closed when:
-
-- the draft/receipt is invalid or stale;
-- blocking source/import/provenance evidence remains;
-- an assignment intended for activation is `visibly-unresolved`;
-- permission is denied, unknown or revoked;
-- an owner reference/version is stale or unavailable.
-
-A draft is authoring intent/evidence only. Save/export never creates live state.
-
-### World — MIB-11 / D18
-
-Current owner seams include `world-reality-taxonomy-engine.ts` and `world-structure.ts`. MAI-09 may carry explicit stable World/location/taxonomy references and source evidence. Presentation layers, pixel/projection coordinates, visual connectivity and visual geometry may not create World identity, hierarchy, topology, routes, chronology, compatibility or navigation truth.
-
-### Scene/Tabletop — A5
-
-Current owner seams include `scene-placement-port.ts` and `scene-repository-port.ts`. MAI-09 may construct explicit Scene/map-version/placement **proposals** carrying source-definition references, semantic locations, visibility-policy references, expected owner versions and operation IDs. Draft coordinates alone are never sufficient semantic location. Only an A5 owner result creates or mutates runtime Scene state.
-
-### Visibility / Permissions
-
-MAI-09 may carry visibility-policy references and MAI occlusion hints as evidence only. Audience visibility, hidden/reveal state, occlusion authorization and line-of-sight remain owned by authorization/visibility-projection systems. A visual occlusion hint never becomes permission truth.
-
-### Combat / Exploration
-
-MAI-09 may carry explicit governed object/action/interaction references for owner review. MAI-04 visual connectivity and MAI-05 geometry/collision/cover/movement/interaction/portal hints remain descriptive until the owning gameplay domain accepts an explicit binding. A drawn wall, doorway, terrain feature, portal or interactable cannot automatically block movement, grant cover, trigger an Action or cause a consequence.
-
-### Creator / D29 authoring-provenance
-
-Current owner seams include `authoring-proposal-review-port.ts`, authoring draft/recovery/status ports and their authority controls. MAI-09 may create or reference an authoring proposal and attach MAI draft/provenance evidence. Review, approval and publication remain D29 operations. A MAI-09 integration receipt is never a `PublicationReceipt`, and canonical promotion remains separately gated.
-
-### Reconciliation and recovery
-
-- Owner acknowledgements are recorded explicitly per requested binding.
-- Partial acceptance remains partial; MAI does not erase accepted history or pretend the whole integration committed atomically when owner domains did not.
-- Stale/rejected owner requests leave the draft and current owner truth unchanged.
-- Ambiguous outcomes require owner operation-status lookup using the original operation/idempotency identity before retry.
-- Permission/provenance revocation before owner commit fails closed; later revocation is handled by the owning domain and surfaced as reconciliation-required.
-
-### Deterministic receipt and persistence
-
-Canonical ordering of draft receipt, owner requests, expected versions, decisions and diagnostics produces a platform-neutral MAI-09 integration-plan/reconciliation receipt. The receipt proves deterministic orchestration evidence only.
-
-The resolved contract demonstrates **no new MAI-owned durable owner-state or integration ledger**. Existing owner version/operation/provenance records remain authoritative. Migration `0022` therefore remains unreserved unless implementation later demonstrates a separate durable delta and governance explicitly approves it.
+Selection does **not** authorize an implementation branch, benchmarks, performance thresholds, corpus fixtures, MAI-10 claims, migration `0022`, provider acquisition, tester/release/deployment activation or real-money activity.
 
 ## Persistent owner boundaries
 
@@ -106,15 +71,9 @@ The resolved contract demonstrates **no new MAI-owned durable owner-state or int
 6. **MAI-06 — Universal Import Adapter Framework** — `completed_verified`
 7. **MAI-07 — Semantic Asset Taxonomy, Availability Resolver & Cross-Pack Substitution** — `completed_verified`
 8. **MAI-08 — Asset Intake Wizard, Map Composer, Palette & Workbench** — `completed_verified`
-9. **MAI-09 — World, Scene, Combat, Exploration & Creator Integration** — `in_progress`
-10. **MAI-10 — Diverse Corpus, Performance & Interoperability Proof** — `planned`
-
-## Current governed gate
-
-Implement the bounded MAI-09 candidate on `integration/mai-09-world-scene-combat-exploration-creator-integration` from application baseline `7d073bd3c9487d665751c76d2b5a69d3991ab305`. The candidate must provide deterministic draft preflight, explicit owner request/acknowledgement plans, fail-closed stale/permission/unresolved handling, D29 creator handoff, reconciliation/recovery evidence and deterministic receipts while preserving MAI-01..08 and owner regressions.
-
-Its exact candidate head must pass Repository Health, self-hosted Linux and Windows Validation Core, deterministic cross-platform comparison and applicable focused/predecessor/owner regressions before merge. MAI-10 may not start under this authority.
+9. **MAI-09 — World, Scene, Combat, Exploration & Creator Integration** — `completed_verified`
+10. **MAI-10 — Diverse Corpus, Performance & Interoperability Proof** — `selected_not_started`
 
 ## Invariants
 
-MAI-01..08 have no further implementation authority. MAI-09 is bounded to explicit integration orchestration on its governed branch. No vendor/editor/provider is canonical. No asset pack is assumed complete. Semantic requirements and selected art remain separable. Permissions are evidence-driven and unknown/denied/revoked stays unresolved/ineligible. Visibly-unresolved assignments cannot activate. MAI cannot infer World, Scene, visibility, gameplay or publication truth. No automatic provider acquisition exists. Migration `0022` remains unreserved absent a demonstrated durable schema delta.
+MAI-01..09 have no further implementation authority. MAI-10 is selection only. No vendor/editor/provider is canonical. No asset pack is assumed complete. Semantic requirements and selected art remain separable. Permissions remain evidence-driven and unknown/denied/revoked stays unresolved/ineligible. Visibly-unresolved assignments cannot activate. MAI receipts remain evidence rather than owner truth. Migration `0022` remains unreserved absent a demonstrated durable schema delta.
