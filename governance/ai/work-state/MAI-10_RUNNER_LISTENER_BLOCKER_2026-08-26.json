@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "MAI-10",
+  "attempt_id": "MAI-10-attempt-001",
+  "status": "in_progress",
+  "observed_at": "2026-08-26T17:42:00Z",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "application_pr": 321,
+  "implementation_branch": "integration/mai-10-diverse-corpus-performance-interoperability-proof",
+  "exact_candidate_head": "17f3f05e352d8ce8a56a31a5ea4532ed92e75c64",
+  "candidate_tree_equivalent_to_repair_head": "59806fc8c90d3fb789a507bd1e0061591c9312db",
+  "implementation_repairs": [
+    "aligned the governed report to the exact MAI-06 adapter IDs without weakening verify_mai_10.py",
+    "bound partial-import evidence to a real MAI-06 multi-level LDtk partial import preserving raw source and ldtk-multi-level-partial diagnostics",
+    "repaired the MAI-10 corpus search TypeScript syntax defect exposed by exact-head Linux/Windows client-typecheck on the prior recovery candidate"
+  ],
+  "required_gate_state": {
+    "repository_health": {
+      "run_id": 32995105677,
+      "state": "completed_success",
+      "head": "17f3f05e352d8ce8a56a31a5ea4532ed92e75c64"
+    },
+    "validation_core": {
+      "run_id": 32995107717,
+      "state": "queued_runner_listener_unavailable",
+      "head": "17f3f05e352d8ce8a56a31a5ea4532ed92e75c64",
+      "mai10_linux_job": 98262142271,
+      "mai10_linux_state": "queued",
+      "mai10_windows_job": 98262142122,
+      "mai10_windows_state": "queued",
+      "mai10_comparison_state": "waiting_for_platform_lanes"
+    }
+  },
+  "runner_recovery_diagnostics": {
+    "repository_in_progress_runs_at_check": 0,
+    "linux_wake_probe_run": 32980300000,
+    "linux_wake_probe_attempt": 3,
+    "linux_wake_probe_state": "queued",
+    "windows_wake_probe_run": 32980300294,
+    "windows_wake_probe_attempt": 3,
+    "windows_wake_probe_state": "queued",
+    "repository_wake_script_found": false,
+    "aioc_wake_script_found": false,
+    "policy_note": "Owner-approved self-hosted validation policy permits wake/recovery plumbing but the repository contains no remotely invokable listener-start script. Windows multiversal-win-01 and Linux multiversal-linux-02 are owner-controlled listener processes."
+  },
+  "completion_integrity": {
+    "merge_allowed": false,
+    "completion_claim_allowed": false,
+    "aai01_authorized": false,
+    "rule": "Do not merge PR #321 or close MAI-10 until the exact candidate passes self-hosted Linux and Windows MAI-10 Validation Core plus deterministic cross-platform comparison. Repository Health alone is insufficient."
+  },
+  "exact_next_action": "Restore the owner-controlled self-hosted listeners for multiversal-win-01 and multiversal-linux-02. Do not change the MAI-10 candidate. Once the existing canonical run 32995107717 begins draining, inspect MAI-10 Linux job 98262142271 and Windows job 98262142122 on exact head 17f3f05e352d8ce8a56a31a5ea4532ed92e75c64, repair only evidence-backed failures, require the MAI-10 deterministic comparison to pass, then merge PR #321 and complete governed MAI closeout before separately selecting AAI-01."
+}
