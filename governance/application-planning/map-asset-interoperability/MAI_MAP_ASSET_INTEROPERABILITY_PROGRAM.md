@@ -1,24 +1,42 @@
 # MAI — Map & Visual Asset Interoperability
 
 **Program ID:** MAI  
-**Status:** IN PROGRESS — MAI-01..06 COMPLETED_VERIFIED; MAI-07 IN_PROGRESS  
+**Status:** IN PROGRESS — MAI-01..07 COMPLETED_VERIFIED; MAI-08 SELECTED_NOT_STARTED  
 **Activation:** DPL-14 completed_verified  
-**Completed through:** MAI-06 — Universal Import Adapter Framework  
-**Current item:** MAI-07 — Semantic Asset Taxonomy, Availability Resolver & Cross-Pack Substitution  
-**Implementation branch:** `integration/mai-07-semantic-asset-taxonomy-availability-resolver-cross-pack-substitution`  
-**Implementation authority:** MAI-07 only  
+**Completed through:** MAI-07 — Semantic Asset Taxonomy, Availability Resolver & Cross-Pack Substitution  
+**Current item:** MAI-08 — Asset Intake Wizard, Map Composer, Palette & Workbench  
+**Implementation branch:** none  
+**Implementation authority:** none — MAI-08 selection only  
 **Successor after MAI:** AAI-01  
 **Owner and final authority:** John Brandon Turner
 
 ## Current state
 
-MAI-01 through MAI-06 are `completed_verified` with no further implementation authority. Owner `Continue` freshly verified canonical AIOC `759855bbeb44f38075a9a8ecf314f6c0c0c16370` and application `bc217bab20e166799b76526f6ef5d9537191b79f`, confirmed no competing MAI-07 branch or PR, re-read the completed MAI foundation, and governed-started MAI-07.
+MAI-01 through MAI-07 are `completed_verified` with no further implementation authority. MAI-07 exact application head `06e291c68ee79f58b7115d62b878f35e300d700a` passed Repository Health, self-hosted Linux and Windows Validation Core, and deterministic cross-platform comparison, then squash-merged as `c7aeff6470199366ba033cce892e6816f9253d8a`.
 
-Strict MAI order authorizes MAI-07 only on the registered integration branch. MAI-08 and later remain unauthorized.
+Strict MAI order now selects MAI-08 as `selected_not_started` only. MAI-08 has no implementation branch and no implementation authority. A future owner `Continue` must freshly verify canonical AIOC/application heads, re-read completed MAI-01..07 evidence, resolve the exact intake-wizard/composer/palette/workbench contract and ownership boundaries, and governed-start MAI-08 before implementation. MAI-09 and later remain unauthorized.
+
+## MAI-07 completion evidence
+
+- Application PR: **#318**
+- Exact validated head: `06e291c68ee79f58b7115d62b878f35e300d700a`
+- Repository Health: run `32935412459`, job `98075587069` — PASS
+- Validation Core: run `32935412701`
+- MAI-07 Linux job: `98075588684` — PASS
+- Linux artifact: `9594801142`, digest `sha256:b9a6b14dda47ddc9540e95260e280a17b1558d6e692ba36d1efb3156fc634ba0`
+- MAI-07 Windows job: `98075588678` — PASS
+- Windows artifact: `9594818885`, digest `sha256:75fe6b4e10a3edaf6583d69312e258d66917c1f1a0ae019383a7d5fa54a19df9`
+- MAI-07 deterministic comparison job: `98077001992` — PASS
+- Comparison artifact: `9594892255`, digest `sha256:3474e105218d8dd3774505043e348416ae744c824ed0edefadad5fe966448e9c`
+- Deterministic receipt: `f94ab58d2e7000910afaf8eceec3e59b13ce58b468bb0e5325d85c25e7723266`
+- Application squash merge: `c7aeff6470199366ba033cce892e6816f9253d8a`
+- Repair cycles: **1**
 
 ## Binding completed foundation
 
-MAI-01..06 establish provider-neutral source/license/authority truth, canonical visual asset/package/provenance records, deterministic coordinates/projections, visual-only terrain connectivity, descriptive geometry, and deterministic source-specific adapter translation with full raw-source preservation. No provider schema or presentation construct becomes World/gameplay truth.
+MAI-01..07 establish provider-neutral source/license/authority truth, canonical visual asset/package/provenance records, deterministic coordinates/projections, visual-only terrain connectivity, descriptive geometry, deterministic source-specific adapter translation with full raw-source preservation, and a catalog-only semantic availability resolver with explicit permission/provenance evidence, deterministic cross-pack substitution, manual control, and explicit placeholder/unresolved outcomes.
+
+No provider schema, presentation construct or resolver choice becomes World/gameplay truth.
 
 ## Persistent owner boundaries
 
@@ -27,60 +45,31 @@ MAI-01..06 establish provider-neutral source/license/authority truth, canonical 
 - **Scene/Tabletop** retains runtime scene/layer/object placement and mutation.
 - **Visibility/Permissions** retains audience visibility, occlusion authorization and line-of-sight.
 - **Combat/Exploration** retains collision, cover, movement, interaction and gameplay consequences.
-- Visual requirements, availability and substitutions may only choose presentation assets and cannot mutate these owners.
+- Visual intake, authoring, requirements, availability and substitutions may only stage or choose presentation assets and cannot mutate these owners by implication.
 
-## MAI-07 resolved contract
+## Completed MAI-07 contract
 
-MAI-07 implements a provider-neutral semantic asset taxonomy and a catalog-only deterministic resolver.
+MAI-07 completed a provider-neutral semantic asset taxonomy and catalog-only deterministic resolver.
 
-### Semantic requirements
+- Availability distinguishes permitted-compatible, denied, unknown-permission, incompatible, missing and unknown/unverified evidence.
+- A candidate is eligible only when supplied/catalogued evidence establishes compatibility and explicit granted use permission.
+- Cross-pack substitution additionally requires explicit compatibility plus granted substitute permission.
+- Manual assignment and override remain first-class; an ineligible manual pin returns an explained unresolved result rather than silent fallback.
+- Approved placeholder is an explicit caller policy outcome, never a silent substitution.
+- Resolver receipts and rejection diagnostics are deterministic and platform-identical.
+- Resolution performs no provider acquisition, download, purchase, authentication, scraping, provider API ingestion or payment.
 
-A requirement descriptor remains independent from any provider or asset pack. It can constrain acceptable MAI-02 asset kinds, semantic role, required tags and explicit compatibility tokens. Requirement identity never becomes World, Scene, Visibility or Combat truth.
+## MAI-08 selection boundary
 
-### Availability evidence
+MAI-08 is selected but not started. Its future governed start must resolve, at minimum:
 
-Resolution distinguishes at least these states:
+- intake-wizard staging and validation over user-supplied/catalogued assets;
+- the exact boundary between map-composer/palette/workbench authoring state and canonical World/Scene/runtime owner state;
+- visible handling of MAI-01..07 license, provenance, import, compatibility, permission, unresolved and placeholder evidence;
+- first-class manual and reversible authoring controls without silent permission/resolver bypass;
+- whether a durable schema delta is actually demonstrated before migration `0022` can be reserved.
 
-- `present-permitted-compatible`
-- `present-denied`
-- `present-unknown-permission`
-- `present-incompatible`
-- `missing`
-- `unknown-unverified`
-
-A candidate is eligible only when supplied/catalogued evidence establishes semantic compatibility and `useInExperience` permission is explicitly `granted`. Unknown permission remains unresolved. Denied permission is ineligible.
-
-### Cross-pack substitution
-
-Cross-pack substitution additionally requires explicit semantic compatibility evidence and `substitute: granted`; it never infers equivalence from filenames, provider identity, visual similarity or missing metadata. Same-pack exact-compatible candidates rank ahead of permitted cross-pack candidates when policy and requirement evidence otherwise tie.
-
-### Deterministic ranking and manual control
-
-Eligible candidates are filtered before ranking. Ranking uses explicit compatibility/specificity evidence plus stable package/asset/source identifiers so registry order cannot change the result. Manual assignment and override remain first-class. If a manually pinned candidate is ineligible, the resolver returns an explained unresolved/manual-rejected result rather than silently selecting another asset.
-
-### Outcomes
-
-The resolver preserves the established incomplete-pack outcomes:
-
-- `exact-compatible`
-- `cross-pack-permitted`
-- `manual-selection`
-- `approved-placeholder`
-- `visibly-unresolved`
-
-An approved placeholder is an explicit caller policy choice, never a silent fallback. Missing, incompatible, denied or unknown evidence remains visible when no authorized outcome exists.
-
-### Receipts and diagnostics
-
-Resolver receipts are deterministic and include requirement identity, policy, ordered candidate evidence, selected asset when any, final outcome and ordered rejection diagnostics. Rejection reasons are explainable and preserve relevant source/package/asset/provenance references.
-
-### Acquisition boundary
-
-Resolution operates only over supplied/catalogued evidence. It may not download, buy, authenticate to, scrape, call provider acquisition APIs, activate payment, or otherwise obtain assets.
-
-## Explicit non-authorization
-
-MAI-07 does not authorize MAI-08 workbench UI, MAI-09 runtime owner integration or MAI-10 corpus/performance proof. It does not authorize automatic provider acquisition/download/authentication/scraping, permission inference, unsupported-metadata discard, owner-domain mutation, migration `0022`, tester distribution, release/deployment, provider/payment activation or real-money activity.
+Selection does **not** authorize creation of an implementation branch, workbench implementation, MAI-09 runtime integration, provider acquisition, migration `0022`, tester/release/deployment activation, provider/payment activation or real-money activity.
 
 ## Tranches
 
@@ -90,15 +79,15 @@ MAI-07 does not authorize MAI-08 workbench UI, MAI-09 runtime owner integration 
 4. **MAI-04 — Terrain, Autotile & Connectivity Grammar** — `completed_verified`
 5. **MAI-05 — Layers, Objects, Overhead, Occlusion & Interactive Geometry** — `completed_verified`
 6. **MAI-06 — Universal Import Adapter Framework** — `completed_verified`
-7. **MAI-07 — Semantic Asset Taxonomy, Availability Resolver & Cross-Pack Substitution** — `in_progress`
-8. **MAI-08 — Asset Intake Wizard, Map Composer, Palette & Workbench** — `planned`
+7. **MAI-07 — Semantic Asset Taxonomy, Availability Resolver & Cross-Pack Substitution** — `completed_verified`
+8. **MAI-08 — Asset Intake Wizard, Map Composer, Palette & Workbench** — `selected_not_started`
 9. **MAI-09 — World, Scene, Combat, Exploration & Creator Integration** — `planned`
 10. **MAI-10 — Diverse Corpus, Performance & Interoperability Proof** — `planned`
 
-## Validation gate
+## Next governed gate
 
-The exact MAI-07 application candidate must pass the focused verifier, client typecheck and integration regression; MAI-06/05/04/03/02/01 and MIB-11 owner regressions; exact-head Repository Health; self-hosted Linux and Windows Validation Core; and deterministic cross-platform comparison before merge.
+No MAI-08 candidate exists yet. The next owner `Continue` must freshly verify canonical heads and resolve the bounded MAI-08 contract before a governed-start may create an implementation branch or authorize code. Once started, its exact candidate must use the project’s governed exact-head Repository Health, self-hosted Linux/Windows Validation Core, deterministic comparison and applicable predecessor/owner regressions before merge.
 
 ## Invariants
 
-MAI-01..06 have no further implementation authority. MAI-07 authority is restricted to the registered branch. No vendor/editor/provider is canonical. No asset pack is assumed complete. Semantic requirements and selected art remain separable. Permissions are evidence-driven and unknown remains unresolved. Manual selection, approved-placeholder and visibly-unresolved outcomes remain first-class. No automatic provider acquisition exists. Owner-domain truth cannot be inferred from resolver choices. Migration `0022` remains unreserved absent a demonstrated durable schema delta.
+MAI-01..07 have no further implementation authority. MAI-08 is selection only. No vendor/editor/provider is canonical. No asset pack is assumed complete. Semantic requirements and selected art remain separable. Permissions are evidence-driven and unknown remains unresolved. Manual selection, approved-placeholder and visibly-unresolved outcomes remain first-class. No automatic provider acquisition exists. Owner-domain truth cannot be inferred from authoring or resolver choices. Migration `0022` remains unreserved absent a demonstrated durable schema delta.
