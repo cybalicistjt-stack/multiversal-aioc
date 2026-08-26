@@ -1,22 +1,22 @@
 # AAI — Audio Asset & Soundscape Interoperability
 
 **Program ID:** AAI  
-**Status:** IN PROGRESS — AAI-03  
+**Status:** SELECTED_NOT_STARTED — AAI-04  
 **Activation:** MAI-10 completed_verified  
-**Completed through:** AAI-02  
-**Current item:** AAI-03 — Provider Adapter & Capability-Negotiation Framework  
-**Implementation branch:** `integration/aai-03-provider-adapter-capability-negotiation-framework`  
-**Implementation authority:** bounded AAI-03 provider-neutral adapter/capability-negotiation framework only  
+**Completed through:** AAI-03  
+**Current item:** AAI-04 — Playback, Layering & Mixer Engine  
+**Implementation branch:** none  
+**Implementation authority:** none; AAI-04 selection/planning only  
 **Successor:** ISE-01  
 **Owner and final authority:** John Brandon Turner
 
 ## Current state
 
-AAI-01 and AAI-02 are `completed_verified`. AAI-02 application PR #326 exact head `4be81b04e60a85fbcd79edeb544f3cf6abfb2bb1` passed Repository Health run `33007345783` / job `98304422388`, self-hosted Linux AAI-02 Validation Core job `98304425118`, self-hosted Windows job `98304425046`, AAI-01 and MIB-11/D18 regressions, and deterministic comparison job `98309792352` with receipt `3859de8ca241498df77bafec3d37aaddcca0995dff603ed421d526f963e6f041`, then squash-merged as `c7e763f4e9a7cf64c3936a4d67203a1cd6c6ef22`. Repair cycles: **1**.
+AAI-01, AAI-02 and AAI-03 are `completed_verified`. AAI-03 application PR #327 exact head `b2f5db563150e9320d58efe7ff9d277b4473bb02` passed Repository Health run `33012808198` / job `98323189866`, self-hosted Linux AAI-03 Validation Core job `98323193137`, self-hosted Windows job `98323193537`, AAI-02, AAI-01 and MIB-11/D18 regressions, and deterministic comparison job `98326093325` with receipt `cd3d7801dbc8fa9050e5cf418298de9e900aa4a20219d5333b1f0fb532dafbd8`, then squash-merged as `d6b6f4c9316e01f55611e256924b67eaf5f4b3da`. Application repair cycles: **0**.
 
-Owner `Continue` on 2026-08-26 freshly verified AIOC main `ba935731e3db086ae27d99cb08135eddd580f7c0` and application main `c7e763f4e9a7cf64c3936a4d67203a1cd6c6ef22`, re-read the AAI program/backlog, the AAI-03 selection checkpoint, the completed AAI-02 checkpoint and the AAI-01 provider/API/license registry in the application repository, and resolved the bounded AAI-03 adapter/capability-negotiation/persistence/validation contract before governed start.
+AAI-03 delivered only provider-neutral static adapter descriptors and deterministic capability negotiation. It stores no credentials, makes no provider calls, acquires no provider content, performs no playback or semantic resolution, mutates no gameplay owner, and required no durable runtime ledger. Migration `0022` remains unreserved.
 
-AAI-03 may implement only provider-neutral **static adapter descriptors**, deterministic **capability negotiation**, governed documentation, focused integration/verifier evidence and Validation Core/workflow wiring. It may not implement live provider-specific adapters, credentials/authentication, live catalog/search, provider calls, content acquisition/download/copying, playback/layering/mixing, semantic availability resolution, payment, tester distribution, release or deployment. No durable runtime ledger is required; migration `0022` remains unreserved.
+Strict forward order now selects **AAI-04 — Playback, Layering & Mixer Engine** as `selected_not_started`. AAI-04 has no implementation branch and no implementation authority. A future owner `Continue` must freshly verify then-current AIOC/application heads, re-read completed AAI-01/02/03 evidence and this program/backlog, resolve the exact playback/layering/mixer, rights/capability gating, persistence and validation contract, and only then governed-start AAI-04.
 
 ## Purpose
 
@@ -30,58 +30,41 @@ AAI-01 established the governed provider/API/license/authority vocabulary. Capab
 
 AAI-02 established canonical provider-neutral `AudioProvider`, `AudioSource`, `AudioAsset`, `MusicTrack`, `Ambience`, `OneShot`, `Soundscape`, `AudioCue`, `MixPreset`, `Playlist`, `ProviderReference` and `AudioIntent` contracts. Provider-native IDs remain separate from Multiversal identity and semantic intent. Rights for `reference`, `ingest`, `play`, `embed`, `cache`, `export`, `record`, `stream`, `redistribute` and `transform` remain explicit `allowed`, `denied`, `unknown` or `not-applicable` evidence. `unknown` is never allowed. Cue states `unresolved`, `silent` and `manual-reference` remain first-class. Owner references are non-mutating. No runtime ledger or migration `0022` was required.
 
-## AAI-03 governed framework contract
+## Completed AAI-03 foundation
 
-### Adapter descriptors
+AAI-03 established static provider-neutral adapter descriptors with adapter kinds `documented-api`, `user-controlled-app`, `external-reference`, `browser-local-companion` and `local-file`. It covers capability keys for `authentication`, `entitlement`, `catalog-search`, `playback-control`, `session-control`, `mix-volume-control`, `one-shot-control`, `remote-sync`, `local-file-access`, `streaming`, `caching` and `export`.
 
-AAI-03 defines static provider-neutral adapter descriptors with stable `adapterId`, optional `providerId`, adapter kind, evidence reference and capability map. Adapter kinds are `documented-api`, `user-controlled-app`, `external-reference`, `browser-local-companion` and `local-file`.
+Every capability reuses an AAI-01 evidence state verbatim. Only `supported-documented` and `supported-user-controlled` are usable evidence. `provider-contact-required`, `planned-not-current`, `unsupported-by-terms`, `not-publicly-documented`, `unknown-unverified` and `not-applicable` remain explicit fail-closed outcomes. Negotiation respects authored candidate order or stable adapter-ID order, provider/source filters, explicit manual/external-reference outcomes and deterministic receipts.
 
-Descriptors are **evidence**, not live sessions. They store no credentials and perform no provider calls. Adapter/session/authentication/entitlement capability remains separate from AAI-02 provider/source/reference identity and semantic `AudioIntent`.
+Capability evidence never overrides AAI-02 rights matrices. Negotiation cannot create or rewrite AAI-02 provider/source/asset/reference/intent/cue/soundscape identity. MIB-11/D18 World, Scene/Tabletop, Event, Combat/Exploration, Action, Visibility/Permissions and D29 authoring-provenance remain canonical owners.
 
-### Capability vocabulary
+### AAI-03 exact completion evidence
 
-AAI-03 covers descriptor keys for `authentication`, `entitlement`, `catalog-search`, `playback-control`, `session-control`, `mix-volume-control`, `one-shot-control`, `remote-sync`, `local-file-access`, `streaming`, `caching` and `export`.
+- Application PR: `327`
+- Exact validated head: `b2f5db563150e9320d58efe7ff9d277b4473bb02`
+- Repository Health: run `33012808198`, job `98323189866`
+- Validation Core run: `33012808538`
+- Linux job/artifact: `98323193137` / `9623279540`
+- Windows job/artifact: `98323193537` / `9623551591`
+- Comparison job/artifact: `98326093325` / `9623652538`
+- Deterministic receipt: `cd3d7801dbc8fa9050e5cf418298de9e900aa4a20219d5333b1f0fb532dafbd8`
+- Application squash merge: `d6b6f4c9316e01f55611e256924b67eaf5f4b3da`
+- Application repair cycles: `0`
 
-Every capability reuses an AAI-01 evidence state verbatim. Only `supported-documented` and `supported-user-controlled` are usable evidence. `provider-contact-required`, `planned-not-current`, `unsupported-by-terms`, `not-publicly-documented`, `unknown-unverified` and `not-applicable` remain explicit fail-closed outcomes.
+## AAI-04 selection contract
 
-### Deterministic negotiation
+Selection authorizes planning resolution only. Before governed start, AAI-04 must resolve a provider-neutral playback, layering and mixer execution contract over completed AAI-02 identities and AAI-03 capability negotiation. AAI-02 rights evidence and AAI-03 capability evidence must remain independent gates; capability support cannot grant a denied or unknown right.
 
-Negotiation requests name a capability plus optional authored adapter candidates, provider filter and source-kind filter. Authored candidates are evaluated in authored order; otherwise registered adapters are evaluated in stable `adapterId` order. The framework may return `available-documented`, `available-user-controlled`, `manual-external-reference`, explicit unavailable states, `not-applicable` or `no-compatible-adapter`.
+The future start must define explicit silent, unavailable and degraded behavior so missing or unsupported audio never blocks gameplay; deterministic layer ordering and mix behavior; separation from AAI-05 semantic availability resolution and AAI-06 provider-specific live adapters; preservation of World/Event/Scene/Combat/Action/Visibility/D29 owners; and whether any durable persistence is actually required. Migration `0022` remains unreserved unless a separately demonstrated durable schema delta requires it.
 
-`user-controlled-app` and `external-reference` descriptors may produce `manual-external-reference`; AAI-03 does not automate provider applications. A provider filter cannot be silently crossed. Unsupported or unknown capability can never fall back to scraping, reverse engineering or prohibited copying.
-
-Negotiation receipts record request/capability, evaluated adapter IDs and evidence/outcome, selected adapter or null, filters and fixed authority flags. Platform paths, clocks, credentials, provider responses and network state are excluded from deterministic receipts.
-
-### Rights and owner boundaries
-
-Capability evidence never overrides AAI-02 rights matrices. A technically advertised operation still requires separately granted rights evidence under later execution authority. Negotiation cannot create or rewrite AAI-02 provider/source/asset/reference/intent/cue/soundscape identity.
-
-MIB-11/D18 World, Scene/Tabletop, Event, Combat/Exploration, Action, Visibility/Permissions and D29 authoring-provenance remain canonical owners. AAI-03 references are non-mutating and cannot create gameplay truth.
-
-### Persistence
-
-AAI-03 needs no durable runtime persistence. Static adapter descriptors and deterministic negotiation are repository/runtime-pure contracts; credentials and live sessions are explicitly excluded. Migration `0022` remains unreserved.
-
-## AAI-03 completion gate
-
-The application candidate must add:
-
-- `governance/application-planning/audio-asset-interoperability/AAI-03_PROVIDER_ADAPTER_CAPABILITY_NEGOTIATION_FRAMEWORK.md`
-- `packages/contracts/src/audio-asset-interoperability/provider-adapter-capability-negotiation-contracts.ts`
-- `packages/contracts/src/audio-asset-interoperability/aai-03-starter-adapter-registry.ts`
-- `apps/client-ui/src/aai/aai-03.provider-adapter-capability-negotiation-framework.integration.test.ts`
-- `tools/verify_aai_03.py`
-- `governance/application-planning/validation-core/profiles/AAI-03.json`
-- canonical Repository Health/self-hosted workflow registration.
-
-The exact candidate head must pass the focused AAI-03 verifier, AAI-02 and AAI-01 predecessor verifiers, MIB-11/D18 World-owner regression, client typecheck/integration regression, Repository Health, self-hosted Linux and Windows AAI-03 Validation Core and deterministic cross-platform comparison before merge.
+Until governed start, no playback/layer/mixer implementation, provider authentication/live catalog/provider call, provider-specific adapter, semantic resolver, acquisition/download/copying, scraping, payment, tester distribution, release or deployment is authorized.
 
 ## Tranches
 
 1. **AAI-01 — Audio Ecosystem, API, License & Authority Survey** — `completed_verified`  
 2. **AAI-02 — Canonical Audio Source, Asset, Cue & Soundscape Schema** — `completed_verified`  
-3. **AAI-03 — Provider Adapter & Capability-Negotiation Framework** — `in_progress`  
-4. **AAI-04 — Playback, Layering & Mixer Engine** — `planned`  
+3. **AAI-03 — Provider Adapter & Capability-Negotiation Framework** — `completed_verified`  
+4. **AAI-04 — Playback, Layering & Mixer Engine** — `selected_not_started`  
 5. **AAI-05 — Semantic Audio Taxonomy & Availability Resolver** — `planned`  
 6. **AAI-06 — Import/Link Framework & Initial Provider Adapters** — `planned`  
 7. **AAI-07 — Game Event, Scene & Automation Binding** — `planned`  
@@ -91,13 +74,13 @@ The exact candidate head must pass the focused AAI-03 verifier, AAI-02 and AAI-0
 
 ## Invariants
 
-- AAI-01 and AAI-02 are `completed_verified` with no further implementation authority.
-- AAI-03 authority is limited to static provider-neutral adapter/capability-negotiation contracts and deterministic evidence.
+- AAI-01, AAI-02 and AAI-03 are `completed_verified` with no further implementation authority.
+- AAI-04 is `selected_not_started` with no implementation branch or implementation authority.
 - No provider/catalog is canonical and unsupported/unknown capability remains explicit and fail closed.
-- AAI-02 rights evidence remains binding and cannot be upgraded by capability negotiation.
+- AAI-02 rights evidence remains binding and cannot be upgraded by AAI-03 capability negotiation or future playback planning.
 - Commercial provider audio remains controlled/referenced rather than copied absent explicit later license and authority.
 - Pocket Bard scraping/reverse engineering restrictions and Tabletop Audio SoundPad site-bound restrictions remain binding.
 - Audio remains presentation/support state, not canonical World/Event/Scene/Combat/Action/Visibility truth.
-- AAI-04 playback/layering/mixing and AAI-05 semantic resolution remain unauthorized.
+- AAI-05 semantic resolution and AAI-06 provider-specific live adapters remain unauthorized.
 - Migration `0022` remains unreserved.
 - No provider authentication/live catalog/provider calls/acquisition/download/copying/scraping/payment, tester distribution, release/deployment or real-money activation is authorized.
