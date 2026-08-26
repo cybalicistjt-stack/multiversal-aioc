@@ -1,89 +1,69 @@
 # MAI — Map & Visual Asset Interoperability
 
 **Program ID:** MAI  
-**Status:** IN PROGRESS — MAI-01 COMPLETED_VERIFIED; MAI-02 IN_PROGRESS  
+**Status:** IN PROGRESS — MAI-01..02 COMPLETED_VERIFIED; MAI-03 SELECTED_NOT_STARTED  
 **Activation:** DPL-14 completed_verified  
-**Completed through:** MAI-01 — Ecosystem, Format, License & Authority Survey  
-**Current item:** MAI-02 — Canonical Map Asset, Placeable & Package Schema  
-**Implementation branch:** `integration/mai-02-canonical-map-asset-placeable-package-schema`  
-**Implementation authority:** MAI-02 only  
+**Completed through:** MAI-02 — Canonical Map Asset, Placeable & Package Schema  
+**Current item:** MAI-03 — Grid, Coordinates, Scale & Projection Engine  
+**Implementation branch:** none  
+**Implementation authority:** none until future owner Continue governed-starts MAI-03  
 **Successor after MAI:** AAI-01  
 **Owner and final authority:** John Brandon Turner
 
 ## Current state
 
-**MAI-01** remains `completed_verified` on application PR **#312**, merged as `82dc4c8838876e66361b942f0243a63f3b1f20d8` after exact-head Repository Health and governed self-hosted Linux/Windows deterministic validation.
+**MAI-01** remains `completed_verified` on application PR **#312**, merged as `82dc4c8838876e66361b942f0243a63f3b1f20d8`.
 
-Owner **Continue** on 2026-08-25 America/Chicago freshly verified exact AIOC `bfcea52308b53d5f328fe350042f6a78fdc00b59` and application `82dc4c8838876e66361b942f0243a63f3b1f20d8`, re-read the completed MAI-01 survey and this program/backlog, resolved the MAI-02 schema/authority evidence set, and governed-started **MAI-02**.
+**MAI-02** is `completed_verified` on application PR **#313**. Repaired exact head `994bf0f5551e5d04239978d3728360f94bcb20a1` passed application Repository Health plus governed self-hosted Linux/Windows Validation Core and deterministic comparison, then squash-merged as `78c07e2102fdf6a7939a00a47b58e25150e66018`. The matching deterministic receipt was `83c5404498405dcce6efcfe9b75e8c5c1b9428f0b1e922328857b3426d0b5e07`. Repair cycles: **1**, limited to Validation Core failure-blame metadata.
 
-MAI-02 alone may implement on `integration/mai-02-canonical-map-asset-placeable-package-schema`. MAI-03 and later tranches remain unauthorized.
+Strict MAI order now selects **MAI-03** only. MAI-03 has no implementation branch and no implementation authority until a future owner **Continue** freshly verifies canonical AIOC/application heads, re-reads the completed MAI-01 survey and MAI-02 schema/evidence plus owner boundaries, resolves the exact grid/coordinate/scale/projection contract, and governed-starts MAI-03.
 
-## MAI-01 binding predecessor contract
+## Binding completed foundation
 
-MAI-02 consumes, but may not weaken, the MAI-01 survey foundation:
+MAI-01 and MAI-02 together establish the provider-neutral source, license, authority and canonical schema foundation:
 
 - 14 provider-neutral visual/map source classes;
 - 10 explicit license-evidence classes;
 - 6 authority-crosswalk concerns;
 - 5 explicit incomplete-pack outcomes;
 - canonical vendor/editor: none;
-- license permission inference: forbidden;
-- silent unsupported-metadata discard: forbidden;
-- silent missing-asset invention: forbidden;
-- artwork/maps/coordinates becoming World/combat truth: forbidden.
+- vendor-neutral records for `MapAsset`, `Tile`, `TerrainSet`, `ObjectAsset`, `Module`, `Battlemap`, `Layer`, `Placeable` and package/source/provenance;
+- source/checksum/license/evidence/import lineage and unresolved permission state are explicit;
+- unsupported source metadata is preserved/reported rather than silently discarded;
+- semantic requirements remain separate from selected visual assets;
+- no tileset or asset package is assumed complete.
 
-## MAI-02 resolved owner evidence
+MAI-02 deterministic proof covers 2 source records, all 6 canonical asset kinds, 3 layers, 4 placeables and all 5 incomplete-pack outcomes.
 
-Three owner surfaces bound the schema before implementation:
+## Persistent owner boundaries
 
-1. **MAI-01 survey registry** — source classes, permission evidence, incomplete-pack outcomes and unsupported-metadata requirements remain provider-neutral and explicit.
-2. **MIB-11 / D18 World** — canonical World/location identity, hierarchy, topology, navigation/transfer edges, availability/discovery and canonical World state remain outside MAI. MAI geometry and artwork are projection/presentation metadata only.
-3. **D29 authoring-provenance** — governed payloads remain in established owning domains and are referenced by stable IDs/versions/provenance. MAI-02 may carry asset/source/checksum/license/evidence/import lineage but may not promote non-owner records to canonical World truth.
+- **MIB-11 / D18 World** retains canonical World/location identity, hierarchy, topology, navigation/transfer edges and canonical World state. MAI artwork, geometry, coordinate, scale and projection records do not become World truth.
+- **D29 authoring-provenance** retains governed publication/provenance workflow. MAI references stable owner IDs/versions/provenance and does not mutate owner-domain truth.
+- Existing Scene/tabletop and Combat/Exploration owners retain runtime gameplay truth.
+- Hidden/GM-only layers remain permission-scoped.
+- License permissions remain evidence-driven; silence is not permission.
+- Manual GM/user asset assignment remains first-class.
+- Missing art never blocks theater-of-the-mind/non-map play.
+- Migration `0022` remains unreserved absent a demonstrated durable schema delta.
 
-No durable persistence delta is required by the bounded contract/schema tranche, so migration `0022` remains unreserved.
+## MAI-03 selection contract
 
-## MAI-02 implementation contract
+MAI-03 may eventually implement the grid, coordinate, scale and projection engine over the completed MAI-02 schema. A future governed start must resolve the exact contract before mechanics are written.
 
-MAI-02 may define stable vendor-neutral contract records and relationships for:
+Selection-time requirements:
 
-- `MapAsset`;
-- `Tile`;
-- `TerrainSet`;
-- `ObjectAsset`;
-- `Module`;
-- `Battlemap`;
-- `Layer`;
-- `Placeable`;
-- package/source/provenance records.
-
-The schema may express identity, dimensions, transforms, anchors, grid descriptors, elevation metadata, variants, animation descriptors, dependencies, source/checksum/license/evidence/import lineage and explicit unsupported-source metadata.
-
-### Required boundaries
-
-- Geometry descriptors are data, not the MAI-03 coordinate/projection engine.
-- Terrain relationships are data, not MAI-04 autotile/connectivity mechanics.
-- Layer/placeable records are data, not MAI-05 occlusion or interactive-geometry runtime ownership.
-- Source/import lineage is data, not the MAI-06 adapter framework.
-- Dependency and semantic-requirement references are data, not MAI-07 availability/substitution resolution.
-- No MAI-08 workbench UI, MAI-09 runtime owner integration or MAI-10 corpus/performance work is authorized.
-- World, Scene/tabletop, Combat/Exploration, visibility/permissions and authoring-provenance owners are referenced by stable external IDs; MAI-02 does not mutate their truth.
-- License permissions remain evidence-driven. Unknown/unverified rights remain unresolved.
-- Unsupported source metadata is preserved/reported explicitly rather than silently discarded.
-- Semantic requirements remain separable from the visual asset chosen to satisfy them.
-
-## Critical incomplete-pack rule
-
-No tileset or asset package is assumed complete. Schema records must be able to represent a semantic requirement separately from any selected art and preserve the five MAI-01 outcomes: exact compatible asset, compatible permitted cross-pack asset, manual GM/user selection, explicitly approved placeholder, or visibly unresolved. MAI-02 records these states/references only; automatic resolution remains MAI-07 work.
-
-## Validation contract
-
-MAI-02 requires focused schema/contract validation plus predecessor/owner regression coverage for MAI-01 and MIB-11/D18 World. The exact candidate head must then pass application Repository Health, self-hosted Linux and Windows Validation Core, and deterministic cross-platform comparison before merge.
+- consume MAI-02 dimensions, transforms, anchors and grid descriptors rather than redefining asset identity;
+- support provider-neutral grid/coordinate/scale/projection concepts without making Tiled, LDtk, Foundry or another ecosystem canonical;
+- preserve World/combat authority separation: a map coordinate or projection never creates canonical World/location or combat identity;
+- preserve MAI-01/02 license, provenance, unsupported-metadata and incomplete-pack rules;
+- keep semantic requirements separate from selected visual assets;
+- do not implement MAI-04 autotile/connectivity grammar, MAI-05 runtime geometry, MAI-06 adapters, MAI-07 resolver automation, MAI-08 workbench, MAI-09 runtime integration or MAI-10 corpus/performance work from selection state.
 
 ## Tranches
 
 1. **MAI-01 — Ecosystem, Format, License & Authority Survey** — `completed_verified`
-2. **MAI-02 — Canonical Map Asset, Placeable & Package Schema** — `in_progress`
-3. **MAI-03 — Grid, Coordinates, Scale & Projection Engine** — `planned`
+2. **MAI-02 — Canonical Map Asset, Placeable & Package Schema** — `completed_verified`
+3. **MAI-03 — Grid, Coordinates, Scale & Projection Engine** — `selected_not_started`
 4. **MAI-04 — Terrain, Autotile & Connectivity Grammar** — `planned`
 5. **MAI-05 — Layers, Objects, Overhead, Occlusion & Interactive Geometry** — `planned`
 6. **MAI-06 — Universal Import Adapter Framework** — `planned`
@@ -98,12 +78,11 @@ AAI follows MAI so provider-neutral asset/provenance patterns can be reused for 
 
 ## Invariants
 
-- MAI-01 has no further implementation authority.
-- MAI-02 authority is tranche- and branch-bounded.
-- MAI-03+ have no implementation authority.
-- Missing art never blocks theater-of-the-mind/non-map play.
-- No pack is assumed complete.
-- Semantic requirement and chosen visual asset remain separable.
-- MIB-11/D18 World and D29 authoring-provenance owner truth is not mutated by MAI-02.
+- MAI-01 and MAI-02 have no further implementation authority.
+- MAI-03 is selection-only until a future owner Continue governed-starts it.
+- MAI-04+ have no implementation authority.
+- No vendor/editor or source format is canonical Multiversal map truth.
+- No pack is assumed complete; semantic requirement and chosen visual asset remain separable.
+- MIB-11/D18 World and D29 authoring-provenance owner truth is not mutated by MAI.
 - No real-money commerce, tester distribution, release/deployment or provider/payment activation is authorized.
 - Migration `0022` remains unreserved absent a demonstrated durable schema delta.
