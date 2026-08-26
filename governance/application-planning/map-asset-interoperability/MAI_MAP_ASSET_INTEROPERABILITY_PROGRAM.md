@@ -1,123 +1,139 @@
 # MAI — Map & Visual Asset Interoperability
 
 **Program ID:** MAI  
-**Status:** IN PROGRESS — MAI-01..03 COMPLETED_VERIFIED; MAI-04 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — MAI-01..03 COMPLETED_VERIFIED; MAI-04 IN_PROGRESS  
 **Activation:** DPL-14 completed_verified  
 **Completed through:** MAI-03 — Grid, Coordinates, Scale & Projection Engine  
 **Current item:** MAI-04 — Terrain, Autotile & Connectivity Grammar  
-**Implementation branch:** none  
-**Implementation authority:** none until a future governed start of MAI-04  
+**Implementation branch:** `integration/mai-04-terrain-autotile-connectivity-grammar`  
+**Implementation authority:** MAI-04 only  
 **Successor after MAI:** AAI-01  
 **Owner and final authority:** John Brandon Turner
 
 ## Current state
 
-MAI-01 remains `completed_verified` on application PR #312, merged as `82dc4c8838876e66361b942f0243a63f3b1f20d8`.
+MAI-01 remains `completed_verified` on application PR #312, MAI-02 on PR #313, and MAI-03 on PR #314. MAI-03 exact repaired head `223cd0d64ae3c38f3edb2e16dddfbbbf6294ce1a` passed Repository Health, self-hosted Linux/Windows Validation Core and deterministic comparison with receipt `1f8c80bd7f3a252fdd43097abb1e1355e34cae0ae81a39d386676d38a232d19c`, then squash-merged as `16a4e2c8422be4a8a1677ea98247a6eb62c05f72` after one bounded TypeScript typing repair.
 
-MAI-02 remains `completed_verified` on application PR #313, merged as `78c07e2102fdf6a7939a00a47b58e25150e66018` with deterministic receipt `83c5404498405dcce6efcfe9b75e8c5c1b9428f0b1e922328857b3426d0b5e07`.
+Owner Continue freshly verified exact AIOC `0008c22af2d1b7942a5f08ff6f9bb6443f32fe22` and application `16a4e2c8422be4a8a1677ea98247a6eb62c05f72`, re-read completed MAI-01..03 evidence, resolved the bounded MAI-04 terrain/autotile/connectivity grammar, and governed-started MAI-04.
 
-MAI-03 is `completed_verified` on application PR #314. Initial candidate `f601900b85bc6cd1ddd74b59308eefe344b05b44` failed TypeScript client typecheck because the generic failure helper inferred `Mai03ProjectionResult<null>`. One bounded repair cycle changed only the generic result typing. Repaired exact head `223cd0d64ae3c38f3edb2e16dddfbbbf6294ce1a` then passed Repository Health, self-hosted Linux and Windows Validation Core, and deterministic cross-platform comparison with receipt `1f8c80bd7f3a252fdd43097abb1e1355e34cae0ae81a39d386676d38a232d19c`, and squash-merged as `16a4e2c8422be4a8a1677ea98247a6eb62c05f72`.
-
-Strict MAI order now selects **MAI-04 — Terrain, Autotile & Connectivity Grammar** as `selected_not_started`. No MAI-04 branch or implementation authority exists. MAI-05 and later tranches remain unauthorized.
+MAI-04 alone may implement on `integration/mai-04-terrain-autotile-connectivity-grammar`. MAI-05 and later tranches remain unauthorized.
 
 ## Binding completed foundation
 
-MAI-01 through MAI-03 establish provider-neutral source/license/authority/schema/projection truth:
+MAI-01..03 establish provider-neutral source/license/authority/schema/projection truth:
 
-- no canonical vendor/editor;
-- explicit source/license/provenance evidence and unresolved permission state;
-- unsupported metadata preservation and explicit incomplete-pack outcomes;
-- semantic requirements separated from selected visual art;
-- canonical MapAsset/Tile/TerrainSet/ObjectAsset/Module/Battlemap/Layer/Placeable/package/source records;
-- provider-neutral asset-local pixel, map-pixel, grid-coordinate and normalized-map spaces;
-- deterministic square, gridless, flat/point hex, isometric and staggered projection descriptors;
-- reversible grid projection and MAI-02 asset transforms;
-- explicit presentation-only pixels-per-unit scale conversion;
-- no art, coordinate, projection, scale or transform becomes canonical World/combat identity.
+- no canonical vendor/editor or source format;
+- source permissions remain evidence-driven, with unknown/unverified state explicit;
+- unsupported structured metadata is preserved rather than silently discarded;
+- no pack is assumed complete; semantic requirements remain separate from selected art;
+- canonical MAI-02 asset/package/source/provenance records remain authoritative for visual identity and lineage;
+- MAI-03 coordinate/projection/scale mechanics are deterministic presentation transforms only;
+- MIB-11/D18 retains canonical World/location/topology/navigation truth;
+- D29 authoring-provenance retains governed publication/provenance workflow ownership;
+- Scene/tabletop, Combat/Exploration and Visibility/Permissions retain their runtime truth.
 
-## Persistent owner boundaries
+MAI-01 specifically recognizes provider-neutral source class `autotile-tileset` with examples `autotile`, `wang-set`, and `terrain-set`, and metadata `tile-grid` plus `connectivity-or-transition-metadata-when-present`. That source evidence is not itself canonical mechanics.
 
-- **MIB-11 / D18 World** retains canonical World/location identity, hierarchy, topology, navigation/transfer edges and World state.
-- **D29 authoring-provenance** retains governed publication/provenance workflow; MAI references stable owner IDs/versions/provenance.
-- Existing Scene/tabletop, Combat/Exploration and Visibility/Permissions owners retain runtime gameplay and visibility truth.
-- License permission is evidence-driven and never inferred.
-- Missing art does not block theater-of-the-mind/non-map play.
-- Migration `0022` remains unreserved absent a demonstrated durable schema delta.
+## MAI-04 resolved implementation contract
 
-## MAI-03 completed implementation contract
+### Terrain descriptors
 
-MAI-03 completed a pure deterministic projection layer over MAI-02 records.
+MAI-04 may define stable provider-neutral terrain descriptors with:
 
-### Coordinate spaces
+- stable terrain ID and label;
+- optional semantic owner reference;
+- explicit visual connection channels/compatibility sets;
+- source/provenance references inherited from MAI-02;
+- optional visual variant grouping and priority metadata.
 
-- `asset-local-pixel`;
-- `map-pixel`;
-- `grid-coordinate`;
-- `normalized-map`.
+Terrain descriptors describe visual composition semantics. A terrain ID does not create World region identity, location identity, movement cost, hazard truth or gameplay traversability.
 
-### Supported projection families
+### Connection grammar
 
-- square;
-- gridless;
-- hex with explicit flat/point axis orientation;
-- isometric;
-- staggered.
+The normalized grammar uses local visual ports rather than a vendor-specific bitmask.
 
-Unknown or invalid projection metadata remains explicit failure state. Gridless projections do not invent grid coordinates. No vendor/editor coordinate convention becomes canonical.
+For square-like projected layouts, primary edge ports are `north`, `east`, `south`, `west`; optional visual-corner ports are `north-east`, `south-east`, `south-west`, `north-west`.
 
-### Completed mechanics
+For hex projections, ports are `east`, `north-east`, `north-west`, `west`, `south-west`, `south-east`.
 
-MAI-03 provides deterministic:
+Gridless projection has no canonical autotile adjacency ports. Attempts to derive an autotile neighbor signature from gridless projection must return an explicit unsupported finding rather than inventing a grid.
 
-- grid-coordinate → map-pixel projection;
-- map-pixel → grid-coordinate inverse projection;
-- asset-local → map-pixel transform using MAI-02 transform descriptors;
-- map-pixel → asset-local inverse transform;
-- map-pixel ↔ normalized-map conversion;
-- finite positive pixels-per-unit scale conversion with explicit unit labels/references;
-- round-trip validation within explicit numeric tolerance.
+Two visual ports connect only when explicit connection channels and compatibility declarations agree. Physical proximity or MAI-03 grid adjacency alone never implies semantic compatibility.
 
-Scale remains presentation metadata only and never establishes canonical World distance, World location, topology or combat identity.
+### Deterministic neighbor signatures
 
-## MAI-03 completion evidence
+MAI-04 may compute a normalized signature from explicit local neighbor observations. The signature records, in canonical port order, whether each neighbor is:
 
-- Application PR: **#314**
-- Exact validated head: `223cd0d64ae3c38f3edb2e16dddfbbbf6294ce1a`
-- Repository Health: run `32919674724`, job `98030594099` — PASS
-- Validation Core run: `32919675012`
-- MAI-03 Linux job: `98030595667` — PASS
-- MAI-03 Windows job: `98030595750` — PASS
-- MAI-03 deterministic comparison job: `98031978726` — PASS
-- Linux evidence artifact: `9589464335`, digest `sha256:85b393a8491d4b79dd20c7f68190dd93132d150ae686ace30f1262861ef61055`
-- Windows evidence artifact: `9589544628`, digest `sha256:251d8ce4d3c9201c338f14a6618b53914813d73e8578f4a61f6f748cab293aba`
-- Comparison artifact: `9589611554`, digest `sha256:87ffd288da8b69d54bb08f5bb0e018d5ec50f0dcbe29b355a925234802b629bd`
-- Deterministic receipt: `1f8c80bd7f3a252fdd43097abb1e1355e34cae0ae81a39d386676d38a232d19c`
-- Application squash merge: `16a4e2c8422be4a8a1677ea98247a6eb62c05f72`
-- Repair cycles: **1**
+- compatible on an explicit channel;
+- explicitly incompatible;
+- absent;
+- unknown/unresolved.
 
-The single repair corrected TypeScript generic null-result inference. It did not change projection formulas, owner boundaries or acceptance requirements.
+Unknown source semantics remain unknown; they may not be coerced into compatible/incompatible state merely to select art.
 
-## MAI-04 selection contract
+### Autotile selection
 
-MAI-04 is selection-only. A future owner **Continue** must freshly verify then-current AIOC/application heads and re-read completed MAI-01..03 evidence before any branch is created.
+Given a terrain descriptor, normalized neighbor signature and eligible visual variants, MAI-04 may deterministically select a visual candidate by:
 
-The governed start must resolve the exact terrain/autotile/connectivity grammar and owner crosswalk, including at minimum:
+1. rejecting candidates whose explicit required/forbidden port conditions do not match;
+2. rejecting assets that fail source/license/permission constraints supplied by predecessor truth;
+3. sorting remaining candidates by explicit priority, then stable asset/tile ID;
+4. returning the first eligible candidate without mutating any owner state.
 
-- source terrain semantics versus normalized terrain descriptors;
-- adjacency/connectivity grammar and deterministic matching rules;
-- autotile selection behavior and explicit unresolved/missing-asset outcomes;
-- how MAI-03 projection coordinates are consumed without becoming canonical World topology;
-- how World, Scene/tabletop, Combat/Exploration and provenance owners remain authoritative;
-- whether any durable persistence delta actually exists before migration `0022` can be considered.
+If no compatible permitted visual exists, MAI-04 must return an explicit MAI-01 incomplete-pack outcome (`manual-selection`, `approved-placeholder`, or `visibly-unresolved` as appropriate) rather than inventing or silently substituting art. Automated cross-pack search/substitution remains MAI-07.
 
-No source/vendor-specific autotile model may become canonical merely because it exists in a retained format.
+### Source-specific metadata
+
+Tiled Wang sets, terrain sets, LDtk terrain/rule metadata, or any future provider-specific representation may later be mapped by MAI-06 adapters into this normalized grammar. MAI-04 itself does not implement import adapters and does not promote any source model to canonical status. Unsupported source fields remain in MAI-02 envelopes.
+
+## Owner boundaries
+
+- **MIB-11 / D18 World** remains sole canonical owner of World/location identity, hierarchy, topology, navigation/transfer edges and canonical World state.
+- Visual terrain connectivity cannot create World adjacency, route existence, movement permission or traversability.
+- **Scene/tabletop** owners retain scene/runtime placement and mutation truth.
+- **Combat/Exploration** owners retain movement, collision, cover, hazard, encounter and combat truth.
+- **Visibility/Permissions** owners retain player/GM visibility truth.
+- **D29 authoring-provenance** retains governed publication/provenance workflow.
+- MAI-04 is a pure deterministic visual-composition grammar and performs no owner-domain mutation.
+
+## Explicit non-authorization
+
+MAI-04 does **not** implement:
+
+- MAI-05 walls, overhead/occlusion or interactive runtime geometry;
+- MAI-06 universal import adapters;
+- MAI-07 semantic availability/substitution resolver automation;
+- MAI-08 asset intake/composer/workbench UI;
+- MAI-09 World/Scene/Combat/Exploration runtime integration;
+- MAI-10 diverse-corpus/performance proof;
+- vendor/editor-specific canonical autotile semantics;
+- World topology/navigation/traversability or gameplay state inferred from visual connectivity;
+- license permission inference or unsupported-metadata discard;
+- migration `0022`;
+- tester distribution, release/deployment, real-money commerce or provider/payment activation.
+
+## Validation contract
+
+The MAI-04 exact candidate must pass:
+
+1. focused MAI-04 terrain/autotile/connectivity invariant verifier;
+2. workspace dependency preparation;
+3. client TypeScript typecheck;
+4. focused MAI-04 integration regression;
+5. MAI-03 predecessor regression;
+6. MAI-02 schema regression;
+7. MAI-01 survey regression;
+8. MIB-11/D18 World-owner regression;
+9. exact-head application Repository Health;
+10. self-hosted Linux and Windows Validation Core;
+11. deterministic cross-platform comparison.
 
 ## Tranches
 
 1. **MAI-01 — Ecosystem, Format, License & Authority Survey** — `completed_verified`
 2. **MAI-02 — Canonical Map Asset, Placeable & Package Schema** — `completed_verified`
 3. **MAI-03 — Grid, Coordinates, Scale & Projection Engine** — `completed_verified`
-4. **MAI-04 — Terrain, Autotile & Connectivity Grammar** — `selected_not_started`
+4. **MAI-04 — Terrain, Autotile & Connectivity Grammar** — `in_progress`
 5. **MAI-05 — Layers, Objects, Overhead, Occlusion & Interactive Geometry** — `planned`
 6. **MAI-06 — Universal Import Adapter Framework** — `planned`
 7. **MAI-07 — Semantic Asset Taxonomy, Availability Resolver & Cross-Pack Substitution** — `planned`
@@ -125,19 +141,14 @@ No source/vendor-specific autotile model may become canonical merely because it 
 9. **MAI-09 — World, Scene, Combat, Exploration & Creator Integration** — `planned`
 10. **MAI-10 — Diverse Corpus, Performance & Interoperability Proof** — `planned`
 
-## Downstream relationship
-
-AAI follows MAI so provider-neutral asset/provenance patterns can be reused for audio without merging visual and audio ownership. ISE later consumes completed MAI + AAI for native tabletop/canvas experience.
-
 ## Invariants
 
 - MAI-01..03 have no further implementation authority.
-- MAI-04 is `selected_not_started` with no implementation branch or authority.
+- MAI-04 authority is tranche- and branch-bounded.
 - MAI-05+ have no implementation authority.
 - No vendor/editor or source format is canonical Multiversal map truth.
 - No pack is assumed complete; semantic requirement and chosen visual asset remain separable.
-- MIB-11/D18 World and D29 authoring-provenance owner truth is not mutated by MAI.
-- Coordinates/transforms/scale/projections are presentation data, not World/combat identity truth.
-- Terrain/autotile/connectivity semantics cannot silently create canonical World topology, navigation or gameplay truth.
+- Visual terrain/autotile/connectivity never creates World topology, navigation or gameplay truth.
+- Missing/incompatible/unpermitted art remains explicit.
 - No real-money commerce, tester distribution, release/deployment or provider/payment activation is authorized.
 - Migration `0022` remains unreserved absent a demonstrated durable schema delta.
