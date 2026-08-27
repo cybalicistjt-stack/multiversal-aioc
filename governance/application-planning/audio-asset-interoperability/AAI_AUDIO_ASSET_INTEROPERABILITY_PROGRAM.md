@@ -1,30 +1,30 @@
 # AAI — Audio Asset & Soundscape Interoperability
 
 **Program ID:** AAI  
-**Status:** IN PROGRESS — AAI-08  
+**Status:** IN PROGRESS — AAI-09 SELECTED  
 **Activation:** MAI-10 completed_verified  
-**Completed through:** AAI-07  
-**Current item:** AAI-08 — GM Audio Workbench, Scene Presets & Campaign Preparation  
-**Implementation branch:** `integration/aai-08-gm-audio-workbench-scene-presets-campaign-preparation`  
-**Implementation authority:** bounded AAI-08 only  
+**Completed through:** AAI-08  
+**Current item:** AAI-09 — Multiplayer, Permissions, Remote Sync & Recording/Streaming Boundaries  
+**Implementation branch:** none — selected_not_started  
+**Implementation authority:** none until governed start  
 **Successor:** ISE-01  
 **Owner and final authority:** John Brandon Turner
 
 ## Current state
 
-AAI-01 through AAI-07 are `completed_verified`. AAI-08 is governed-started `in_progress` after fresh verification of AIOC `598907b1d33774aa8a32cfc0aae5adf7e034b287` and application `da0841d64f43d33aa254a0868d7d393158b4e6e4`, including the bounded current-tranche CI correction.
+AAI-01 through AAI-08 are `completed_verified`. AAI-08 merged through application PR #334 after exact-head Repository Health run `33101340845` and bounded current-tranche Validation Core run `33101341339` passed on candidate `4ee13f8c08e095673b3150a9ff5527b306fa2242`; live application `main` is `45752a7c1bad03b68b275638f4603ca33b8c2ea9`.
 
-## AAI-08 governed contract
+AAI-09 is selected as `selected_not_started`. Selection authorizes planning resolution only; there is no implementation branch or implementation authority until a later owner `Continue` governed-starts it after fresh canonical verification.
 
-AAI-08 implements GM-facing workbench drafts, scene presets and campaign-preparation payloads over existing AAI-02 cue/soundscape identities and completed AAI-07 binding definitions. All AAI-08 state is presentation/preparation support and may not create, rewrite, advance, cancel or otherwise mutate World, Scene, Event, Combat, Action, Visibility or automation truth.
+## AAI-08 completed result
 
-Scene presets carry stable preset identity plus an explicit existing owner reference. Entries are deterministically ordered by authored order and stable entry ID. Targets must resolve to existing AAI cue/soundscape identities or completed binding definitions; provider-native identity never becomes gameplay truth.
+AAI-08 delivered deterministic GM-authored workbench drafts, scene presets and campaign-preparation payloads over existing AAI identities and bindings. Preview/application remained presentation-only, unavailable audio remained explicit and nonblocking, and no gameplay/scene-lifecycle mutation, provider transport execution, provider-right expansion, durable runtime persistence or migration `0022` was introduced.
 
-Preview produces deterministic non-authoritative preview intents only. Applying a preset materializes preparation output, not scene lifecycle. Actual playback still requires completed AAI-04/05/06/07 evidence; caller/workbench ready flags cannot bypass independent rights, capability, terms/entitlement, semantic/runtime, provider or completed-evidence gates.
+## AAI-09 selection boundary
 
-Campaign preparation groups ordered scene presets and optional GM notes/tags. Missing, unavailable, silent, degraded or manual audio remains explicit and nonblocking and never blocks gameplay.
+AAI-09 must resolve multiplayer audio authority, per-user/per-role permissions, remote-sync semantics and conflict/degradation behavior, and recording/streaming capture boundaries including consent, rights/provenance, provider terms/entitlement, privacy and security constraints. Audio availability, synchronization or capture state cannot become canonical gameplay truth. Recording/streaming and remote-provider execution are not authorized merely by selection.
 
-No new canonical runtime persistence is required. AAI-08 outputs are deterministic caller/repository-owned declarative preparation payloads. Migration `0022` remains unreserved.
+Before implementation begins, governed start must freshly verify AIOC/application heads, re-read AAI-01..08 completion evidence, resolve persistence/migration requirements, define exact deliverables and regressions, and establish exactly one bounded AAI-09 Validation Core profile.
 
 ## Tranches
 
@@ -35,20 +35,17 @@ No new canonical runtime persistence is required. AAI-08 outputs are determinist
 5. **AAI-05 — Semantic Audio Taxonomy & Availability Resolver** — `completed_verified`  
 6. **AAI-06 — Import/Link Framework & Initial Provider Adapters** — `completed_verified`  
 7. **AAI-07 — Game Event, Scene & Automation Binding** — `completed_verified`  
-8. **AAI-08 — GM Audio Workbench, Scene Presets & Campaign Preparation** — `in_progress`  
-9. **AAI-09 — Multiplayer, Permissions, Remote Sync & Recording/Streaming Boundaries** — `planned`  
+8. **AAI-08 — GM Audio Workbench, Scene Presets & Campaign Preparation** — `completed_verified`  
+9. **AAI-09 — Multiplayer, Permissions, Remote Sync & Recording/Streaming Boundaries** — `selected_not_started`  
 10. **AAI-10 — Multi-Provider Golden Audio Proof** — `planned`
-
-## Acceptance
-
-AAI-08 completion requires the exact candidate head to pass focused AAI-08 invariant verification, client TypeScript typecheck, focused AAI-08 integration regression, AAI-07/06/05/04/03/02/01 predecessor verifiers, MIB-11/D18 World-owner regression, application Repository Health, bounded self-hosted Linux and Windows AAI-08 Validation Core, and deterministic cross-platform comparison. The bounded current-tranche selector must resolve exactly one changed `AAI-08` profile; no historical all-profile PR fanout is authorized.
 
 ## Invariants
 
-- AAI-01 through AAI-07 are `completed_verified` with no further implementation authority.
-- AAI-08 is `in_progress` only on `integration/aai-08-gm-audio-workbench-scene-presets-campaign-preparation`.
-- Workbench/preset/campaign preparation may consume canonical gameplay truth but cannot create or mutate it or scene lifecycle.
+- AAI-01 through AAI-08 are `completed_verified` with no further implementation authority.
+- AAI-09 is `selected_not_started` with no implementation branch or implementation authority.
+- Audio may consume but cannot create or mutate gameplay truth.
 - Rights/provenance, capability, terms/entitlement, semantic compatibility, runtime availability, provider restrictions and completed audio evidence remain independently fail closed.
+- Multiplayer/remote-sync/recording/streaming authority, consent and privacy/security boundaries must be resolved before implementation.
 - Unavailable audio remains nonblocking.
-- Migration `0022` remains unreserved.
+- Migration `0022` remains unreserved until a separately demonstrated durable schema delta requires it.
 - No payment/subscription activation, tester distribution, release/deployment or real-money provider activation is authorized.
