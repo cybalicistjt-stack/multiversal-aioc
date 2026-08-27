@@ -1,32 +1,28 @@
 # AAI — Audio Asset & Soundscape Interoperability
 
 **Program ID:** AAI  
-**Status:** IN PROGRESS — AAI-07  
+**Status:** IN PROGRESS — AAI-08 SELECTED  
 **Activation:** MAI-10 completed_verified  
-**Completed through:** AAI-06  
-**Current item:** AAI-07 — Game Event, Scene & Automation Binding  
-**Implementation branch:** `integration/aai-07-game-event-scene-automation-binding`  
-**Implementation authority:** bounded AAI-07 only  
+**Completed through:** AAI-07  
+**Current item:** AAI-08 — GM Audio Workbench, Scene Presets & Campaign Preparation  
+**Implementation branch:** none — selected_not_started  
+**Implementation authority:** none until governed AAI-08 start  
 **Successor:** ISE-01  
 **Owner and final authority:** John Brandon Turner
 
 ## Current state
 
-AAI-01 through AAI-06 are `completed_verified`. AAI-07 is governed-started `in_progress` after fresh verification of AIOC `ca9d9b71ccc6456b4ec7d269a8f3992ac928eb63` and application `fb8cae52fd5bf9eaf0cf826bd9f19dd65a9e4884`, the required predecessor reread, and resolution of the bounded deterministic gameplay-signal-to-audio binding contract.
+AAI-01 through AAI-07 are `completed_verified`. AAI-07 application PR #331 was validated at `839cf64a241a1dde966791f054c5b3549792cd90` and merged to application `main` as `016bd57181cccf8b9446dd1b6f9fd793618d9f40`. Repository Health run `33070840112` and self-hosted validation run `33070840352` completed successfully.
 
-## AAI-07 governed contract
+AAI-08 is the strict successor and is now `selected_not_started`. Selection grants planning-resolution authority only. A governed start must freshly verify canonical heads, resolve the exact workbench/preset/campaign-preparation contract, decide persistence/migration need, and declare the exact acceptance gate before an implementation branch is created.
 
-AAI-07 may consume immutable existing gameplay signals from canonical World, Scene/Tabletop, Event, Combat/Exploration, Action, Visibility/Permissions and D29 authoring-provenance owners. Supported signal classes are `event`, `scene-enter`, `scene-exit`, and `automation-output`. Every signal carries a stable caller `signalId` and an existing AAI-02 owner reference. Audio remains presentation/support state and never creates, rewrites, advances, cancels or persists gameplay truth.
+## AAI-07 completed contract
 
-Bindings match explicit canonical owner authority/stable ID plus signal class and target only existing AAI-02 `cueId` or `soundscapeId`. Matched bindings execute in ascending authored `order` with stable `bindingId` tie-break. Provider-native identities never become gameplay binding keys.
+AAI-07 consumes immutable existing gameplay signals from canonical owners and binds them deterministically to existing AAI cue/soundscape behavior. Audio remains presentation/support state and never creates, rewrites, advances, cancels or persists gameplay truth. Rights/provenance, capability, provider terms/entitlement, semantic compatibility, runtime availability and adapter restrictions remain independent fail-closed gates. Unavailable audio remains nonblocking. Migration `0022` remains unreserved.
 
-Idempotency is deterministic and caller-fed: `signalId + bindingId`. Previously applied keys produce explicit duplicate-suppressed nonblocking receipts. AAI-07 owns no durable idempotency ledger.
+## AAI-08 selection boundary
 
-Scene-enter may start scene-lifetime presentation behavior. Scene-exit may generate presentation-only stop requests only for caller-supplied active audio handles associated with the same canonical Scene/Tabletop owner reference. Missing, unknown or mismatched handles fail closed to nonblocking no-op receipts and cannot mutate scene state.
-
-AAI-05 semantic resolution and AAI-04 playback/layer/mixer outcomes remain binding. Unresolved, silent, manual, unavailable and degraded audio remain nonblocking. AAI-02 rights/provenance, AAI-03 capability, current provider terms/entitlement, AAI-05 semantic/runtime evidence and AAI-06 adapter/provider restrictions remain independent and fail closed.
-
-No durable AAI-07 canonical runtime persistence is required. Authored binding definitions are repository/caller-owned declarative configuration; applied idempotency keys and active audio handles are ephemeral/caller-owned runtime inputs. Migration `0022` remains unreserved.
+AAI-08 covers GM-facing audio workbench behavior, scene presets and campaign preparation over completed AAI-01..07 foundations. Selection does not yet decide durable persistence and does not authorize implementation. Any eventual authored preparation state must preserve canonical gameplay owners and all prior rights/provider boundaries.
 
 ## Tranches
 
@@ -36,21 +32,21 @@ No durable AAI-07 canonical runtime persistence is required. Authored binding de
 4. **AAI-04 — Playback, Layering & Mixer Engine** — `completed_verified`  
 5. **AAI-05 — Semantic Audio Taxonomy & Availability Resolver** — `completed_verified`  
 6. **AAI-06 — Import/Link Framework & Initial Provider Adapters** — `completed_verified`  
-7. **AAI-07 — Game Event, Scene & Automation Binding** — `in_progress`  
-8. **AAI-08 — GM Audio Workbench, Scene Presets & Campaign Preparation** — `planned`  
+7. **AAI-07 — Game Event, Scene & Automation Binding** — `completed_verified`  
+8. **AAI-08 — GM Audio Workbench, Scene Presets & Campaign Preparation** — `selected_not_started`  
 9. **AAI-09 — Multiplayer, Permissions, Remote Sync & Recording/Streaming Boundaries** — `planned`  
 10. **AAI-10 — Multi-Provider Golden Audio Proof** — `planned`
 
 ## Acceptance
 
-AAI-07 completion requires the exact candidate head to pass focused AAI-07 invariant verification, client TypeScript typecheck, focused AAI-07 integration regression, AAI-06/05/04/03/02/01 predecessor verifiers, MIB-11/D18 World-owner regression, application Repository Health, self-hosted Linux and Windows AAI-07 Validation Core, and deterministic cross-platform comparison.
+AAI-08 acceptance must be resolved at governed start. The normal final active-code gate remains self-hosted Windows + self-hosted Linux + deterministic cross-platform comparison, together with focused AAI-08 and declared predecessor regressions. Historical/full-profile validation may be retained for periodic/manual independent audit rather than unnecessary ordinary-PR fanout where governance maintenance proves that narrowing is safe.
 
 ## Invariants
 
-- AAI-01 through AAI-06 are `completed_verified` with no further implementation authority.
-- AAI-07 is `in_progress` only on `integration/aai-07-game-event-scene-automation-binding`.
-- Audio may react to canonical gameplay truth but cannot create or mutate it.
-- Rights/provenance, capability, terms/entitlement, semantic compatibility, runtime availability and AAI-06 provider restrictions remain independently fail closed.
+- AAI-01 through AAI-07 are `completed_verified` with no further implementation authority.
+- AAI-08 is `selected_not_started`; no implementation branch or implementation authority exists yet.
+- Audio/workbench preparation may consume canonical gameplay truth but cannot create or mutate it.
+- Rights/provenance, capability, terms/entitlement, semantic compatibility, runtime availability and provider restrictions remain independently fail closed.
 - Unavailable audio remains nonblocking.
-- Migration `0022` remains unreserved.
+- Migration `0022` remains unreserved unless a separately demonstrated durable canonical schema delta requires it.
 - No payment/subscription activation, tester distribution, release/deployment or real-money provider activation is authorized.
