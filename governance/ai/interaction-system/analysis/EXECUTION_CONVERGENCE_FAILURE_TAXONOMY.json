@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "MV-CONT-006",
+  "generated_at": "2026-08-27T17:45:00Z",
+  "privacy": "Minimized recurrence classes only; no raw private transcript text, titles, or attachment content.",
+  "failure_classes": [
+    {
+      "id": "MV-CONV-RETRY-001",
+      "name": "Repeated execution without changed evidence",
+      "severity": "high",
+      "detection": "A work item receives another execution/rerun cycle while source, validation contract, repository state, runner state, evidence and diagnostic hypothesis are materially unchanged.",
+      "required_control": "Forbid retry until retry_basis names a material change or a genuine blocker is recorded."
+    },
+    {
+      "id": "MV-CONV-DIAG-001",
+      "name": "Repair loop without diagnostic escalation",
+      "severity": "critical",
+      "detection": "A second materially related repair occurs without diagnostic_mode, failure classification and falsifiable root-cause hypotheses.",
+      "required_control": "Second repair requires diagnostic mode and batched root-cause analysis before another final rerun."
+    },
+    {
+      "id": "MV-CONV-CI-001",
+      "name": "Unrelated historical validation fan-out",
+      "severity": "critical",
+      "detection": "An ordinary current-tranche PR automatically invokes completed historical profiles not required by the tranche acceptance/dependency contract.",
+      "required_control": "Exactly one changed governed current profile selects the shared Linux/Windows/comparator core by default."
+    },
+    {
+      "id": "MV-CONV-STATE-001",
+      "name": "Post-merge canonical pointer drift",
+      "severity": "critical",
+      "detection": "Application merge succeeds while AIOC still selects the merged/deleted implementation branch as in_progress.",
+      "required_control": "Treat cross-repository mismatch as repository_state stop-the-line and reconcile before selecting further feature work."
+    },
+    {
+      "id": "MV-CONV-INTERRUPT-001",
+      "name": "Execution interruption becomes owner retry burden",
+      "severity": "high",
+      "detection": "A conversation/runtime interruption ends an execution cycle and the recovery path requires a bare owner Continue merely to rediscover unchanged state.",
+      "required_control": "Persist exact active operation and convergence counters; recovery must inspect and continue from repository evidence without resetting the cycle."
+    },
+    {
+      "id": "MV-CONV-NOPROGRESS-001",
+      "name": "Repeated no-progress cycles",
+      "severity": "critical",
+      "detection": "Two execution cycles produce no substantive artifact, narrowed diagnosis, changed blocker, passed required gate, or merge/closeout evidence.",
+      "required_control": "Escalate to blocked_control_plane, blocked_environment or blocked_owner instead of another generic retry."
+    }
+  ]
+}
