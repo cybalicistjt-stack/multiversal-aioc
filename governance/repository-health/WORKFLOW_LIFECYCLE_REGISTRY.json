@@ -1,26 +1,23 @@
 {
-  "schema_version": "1.5.0",
-  "program_id": "CRS",
-  "status": "CURRENT",
-  "policy": "governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md",
-  "default_rule": "A workflow not explicitly listed as CURRENT or CURRENT_COMPATIBLE is not permitted in the live .github/workflows namespace.",
-  "repositories": {
-    "cybalicistjt-stack/multiversal-aioc": {
-      "live_workflows": [{"path":".github/workflows/validate-repository-health.yml","lifecycle":"CURRENT","execution":"github_hosted_linux_governance_exception","automatic_repository_event_trigger":true,"runner":"ubuntu-latest","timeout_minutes":5,"purpose":"Bounded AIOC authority/repository-health validation only."}],
-      "retired_workflow_policy": "All other historical AIOC workflows remain HISTORICAL_INERT in Git history."
-    },
-    "cybalicistjt-stack/Multiversal-app": {
-      "current_main": "bf61c64c89e7ea997842ea7442797fba619d0e28",
-      "live_workflows": [
-        {"path":".github/workflows/_validation-core-profile.yml","lifecycle":"CURRENT","execution":"workflow_call_only","validation_core":"native","automatic_repository_event_trigger":false,"purpose":"Shared self-hosted exact-head validation core."},
-        {"path":".github/workflows/self-hosted-windows-runner-smoke.yml","lifecycle":"CURRENT_COMPATIBLE","execution":"workflow_dispatch_only","validation_core":"manual_runner_diagnostic_exception","automatic_repository_event_trigger":false,"purpose":"Manual Windows runner smoke only."},
-        {"path":".github/workflows/validate-repository-health.yml","lifecycle":"CURRENT","execution":"self_hosted_application_health_gate","validation_core":"repository_health_companion","automatic_repository_event_trigger":true,"purpose":"Machine-enforce App execution-surface health."}
+  "schema_version":"1.6.0",
+  "program_id":"CRS",
+  "status":"CURRENT",
+  "policy":"governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md",
+  "execution_convergence_policy":"governance/ai/MULTIVERSAL_EXECUTION_CONVERGENCE_POLICY.md",
+  "default_rule":"A workflow not explicitly listed as CURRENT or CURRENT_COMPATIBLE is not permitted in the live .github/workflows namespace.",
+  "repositories":{
+    "cybalicistjt-stack/multiversal-aioc":{"live_workflows":[{"path":".github/workflows/validate-repository-health.yml","lifecycle":"CURRENT","execution":"github_hosted_linux_governance_exception","automatic_repository_event_trigger":true,"runner":"ubuntu-latest","timeout_minutes":5,"purpose":"Bounded AIOC authority/repository-health validation only."}],"retired_workflow_policy":"All other historical AIOC workflows remain HISTORICAL_INERT in Git history."},
+    "cybalicistjt-stack/Multiversal-app":{
+      "current_main":"da0841d64f43d33aa254a0868d7d393158b4e6e4",
+      "live_workflows":[
+        {"path":".github/workflows/_validation-core-profile.yml","lifecycle":"CURRENT_COMPATIBLE","execution":"workflow_call_only","validation_core":"native","automatic_repository_event_trigger":false,"purpose":"Shared self-hosted exact-head Linux/Windows validation and deterministic comparison core."},
+        {"path":".github/workflows/validate-current-tranche.yml","lifecycle":"CURRENT","execution":"pull_request_or_workflow_dispatch","validation_core":"bounded_profile_selector","validation_scope":"single_governed_profile","automatic_repository_event_trigger":true,"purpose":"Select exactly one governed current-tranche Validation Core profile for substantive application/package PRs, then invoke the shared Linux/Windows/comparator core once."},
+        {"path":".github/workflows/validate-repository-health.yml","lifecycle":"CURRENT","execution":"self_hosted_application_health_gate","validation_core":"repository_health_companion","automatic_repository_event_trigger":true,"purpose":"Machine-enforce App execution-surface health, including rejection of legacy all-profile fan-out."}
       ],
-      "completed_bounded_exceptions": [
-        {"path":".github/workflows/validate-post-gatx-self-hosted-exact-head.yml","scope":"POST-GATX-SUCCESSOR","validated_head":"3b9e33cb22b8d4e3f2558135ba0fc36a8c8ad223","validation_run":32197192589,"completion_merge":"8685165318b1f3782903bfe137ba8257539af017","retirement_pr":204,"retirement_merge":"bf61c64c89e7ea997842ea7442797fba619d0e28","lifecycle":"HISTORICAL_INERT"}
-      ],
-      "retired_workflow_policy": "A2, DT proof, GATX, IA, P9-06, Repository Solidity, Salvage, Stage-A, VCH proof, completed post-GATX proof, and unregistered feature-specific workflows remain HISTORICAL_INERT. Resumed feature work uses a reviewed thin Validation Core profile by default."
+      "retired_workflows":[{"path":".github/workflows/self-hosted-windows-runner-smoke.yml","lifecycle":"HISTORICAL_INERT","retired_by_application_pr":332,"retirement_main":"da0841d64f43d33aa254a0868d7d393158b4e6e4","reason":"Legacy workflow had accumulated automatic DPL/MAI/AAI all-profile pull-request fan-out. Manual runner diagnostics must use a deliberately bounded current diagnostic path rather than reviving historical profile fan-out."}],
+      "completed_bounded_exceptions":[{"path":".github/workflows/validate-post-gatx-self-hosted-exact-head.yml","scope":"POST-GATX-SUCCESSOR","validated_head":"3b9e33cb22b8d4e3f2558135ba0fc36a8c8ad223","validation_run":32197192589,"completion_merge":"8685165318b1f3782903bfe137ba8257539af017","retirement_pr":204,"retirement_merge":"bf61c64c89e7ea997842ea7442797fba619d0e28","lifecycle":"HISTORICAL_INERT"}],
+      "retired_workflow_policy":"A2, DT proof, GATX, IA, P9-06, Repository Solidity, Salvage, Stage-A, VCH proof, completed post-GATX proof, legacy self-hosted all-profile fan-out, and unregistered feature-specific workflows remain HISTORICAL_INERT. Resumed feature work uses exactly one reviewed current-tranche Validation Core profile by default."
     }
   },
-  "machine_enforcement": {"assert_exact_live_namespace":true,"deny_unregistered_workflow":true,"application_completion_requires_governed_self_hosted_core_or_registered_capability_exception":true,"cross_repository_token_dependency":false}
+  "machine_enforcement":{"assert_exact_live_namespace":true,"deny_unregistered_workflow":true,"deny_legacy_all_profile_fanout":true,"application_completion_requires_governed_self_hosted_core_or_registered_capability_exception":true,"ordinary_substantive_pr_profile_limit":1,"cross_repository_token_dependency":false}
 }
