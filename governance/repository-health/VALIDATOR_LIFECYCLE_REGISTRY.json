@@ -1,28 +1,26 @@
 {
-  "schema_version": "1.4.0",
-  "program_id": "CRS",
-  "status": "CURRENT",
-  "default_rule": "A validator or validation-like script is not a current gate merely because it exists. Current execution authority requires explicit registration here.",
-  "repositories": {
-    "cybalicistjt-stack/multiversal-aioc": {
-      "current_validators": [{"path":"scripts/validate_repository_health.py","lifecycle":"CURRENT","caller":".github/workflows/validate-repository-health.yml","purpose":"AIOC canonical authority and repository-health enforcement."}],
-      "historical_inert_patterns": ["scripts/validate-*.py","scripts/validate_*.py","tools/*validate*.py"]
+  "schema_version":"2.0.0",
+  "program_id":"CRS",
+  "status":"CURRENT",
+  "default_rule":"A validator is a current gate only when explicitly registered here and called by a current workflow. Historical validators are provenance, not automatic work.",
+  "repositories":{
+    "cybalicistjt-stack/multiversal-aioc":{
+      "current_validators":[{"path":"scripts/validate_repository_health.py","lifecycle":"CURRENT","caller":".github/workflows/validate-repository-health.yml","implementation":"flat_current_state","purpose":"Validate only current authority, pointer/checkpoint, lifecycle, execution-convergence and workflow/validator surface invariants."}],
+      "historical_inert_patterns":["scripts/_validate_repository_health_v*.py","scripts/_gcl*_repository_health.py","scripts/validate_rsr_*.py","scripts/validate-*.py","scripts/validate_*.py"],
+      "historical_direct_calls_allowed":false
     },
-    "cybalicistjt-stack/Multiversal-app": {
-      "current_validation_core": [
+    "cybalicistjt-stack/Multiversal-app":{
+      "current_validation_core":[
         {"path":"tools/validation_core/profile_runner.py","lifecycle":"CURRENT"},
         {"path":"tools/validation_core/runner_preflight.py","lifecycle":"CURRENT"},
         {"path":"tools/validation_core/evidence.py","lifecycle":"CURRENT"},
         {"path":"tools/validation_core/compare_receipts.py","lifecycle":"CURRENT"},
-        {"path":"tools/validation_core/validate_repository_health_app.py","lifecycle":"CURRENT","caller":".github/workflows/validate-repository-health.yml"}
+        {"path":"tools/validation_core/validate_repository_health_app.py","lifecycle":"CURRENT","caller":".github/workflows/validate-current-family.yml"},
+        {"path":"tools/validation_core/validate_family_contract.py","lifecycle":"CURRENT","caller":".github/workflows/validate-current-family.yml"}
       ],
-      "current_compatible_manual_checks": [{"path":"tests/tools/test_mv_dev_repository_intelligence.py","lifecycle":"CURRENT_COMPATIBLE","caller":".github/workflows/self-hosted-windows-runner-smoke.yml"}],
-      "completed_bounded_capability_exceptions": [
-        {"path":"tools/build_post_gatx_internal_alpha_package.py","scope":"POST-GATX-SUCCESSOR","lifecycle":"HISTORICAL_INERT","validated_head":"3b9e33cb22b8d4e3f2558135ba0fc36a8c8ad223","completion_merge":"8685165318b1f3782903bfe137ba8257539af017"},
-        {"path":"tools/verify_post_gatx_internal_alpha_package.py","scope":"POST-GATX-SUCCESSOR","lifecycle":"HISTORICAL_INERT","validated_head":"3b9e33cb22b8d4e3f2558135ba0fc36a8c8ad223","completion_merge":"8685165318b1f3782903bfe137ba8257539af017"}
-      ],
-      "execution_rule": "New or resumed production work uses a reviewed thin Validation Core profile by default. Historical validation-like files cannot govern by existence."
+      "current_compatible_manual_checks":[],
+      "execution_rule":"One active-family contract is established at family entry. Ordinary tranches run one thin current profile only; sealed predecessor proof is not rerun unless the family contract names an explicit invalidated dependency."
     }
   },
-  "retirement_effect": {"historical_files_deleted":false,"history_preserved":true,"future_reactivation_requires_explicit_registration":true}
+  "retirement_effect":{"historical_files_may_be_deleted_from_live_tree":true,"git_history_preserved":true,"future_reactivation_requires_explicit_registration":true}
 }
