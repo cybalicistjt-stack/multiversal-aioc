@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "MV-CONT-006",
+  "generated_at": "2026-08-27T17:46:00Z",
+  "measurement_scope": "minimized live project-conversation aggregate plus repository validation evidence",
+  "privacy": {
+    "raw_private_transcript_text_published": false,
+    "private_conversation_titles_published": false,
+    "attachment_content_published": false,
+    "aggregation_only": true
+  },
+  "baseline": {
+    "sampled_project_conversations": 8,
+    "visible_project_turns": 64,
+    "owner_continue_turns": 16,
+    "continue_turns_completed_bounded_result_same_cycle": 10,
+    "continue_turns_not_completed_same_cycle": 6,
+    "same_cycle_completion_percent": 62.5,
+    "completion_within_two_cycles_percent": null,
+    "assistant_execution_interruptions_observed": 2,
+    "literal_stopped_thinking_occurrences": 2,
+    "recent_aai_06_repair_cycles": 4,
+    "aai_07_exact_candidate_check_runs_observed": 95,
+    "legacy_aai_07_profiles_invoked": 31,
+    "legacy_aai_07_unrelated_historical_profiles_invoked": 30,
+    "legacy_unrelated_linux_windows_compare_jobs_implied": 90,
+    "live_longitudinal_owner_intervention_reduction_previously_measured": false
+  },
+  "targets": {
+    "ordinary_tranche_single_continue_completion_percent_min": 80,
+    "ordinary_tranche_completion_within_two_continues_percent_min": 95,
+    "unrelated_historical_validation_jobs": 0,
+    "reruns_without_changed_evidence": 0,
+    "post_merge_stale_pointer_incidents": 0,
+    "third_patch_rerun_without_new_diagnostic_evidence": 0
+  },
+  "remediation_evidence": {
+    "application_pr": 332,
+    "application_main_after_merge": "da0841d64f43d33aa254a0868d7d393158b4e6e4",
+    "legacy_workflow_removed": ".github/workflows/self-hosted-windows-runner-smoke.yml",
+    "replacement_workflow": ".github/workflows/validate-current-tranche.yml",
+    "replacement_topology": "one bounded profile selector -> shared Linux/Windows/comparator core",
+    "infrastructure_only_pr_historical_profile_fanout_observed": 0
+  },
+  "interpretation": "The prior deterministic interaction pilot remains valid for the controls it tested, but it did not measure live owner-intervention reduction. This scorecard establishes the live throughput baseline and must not infer improvement until future completed tranches provide measurements."
+}
