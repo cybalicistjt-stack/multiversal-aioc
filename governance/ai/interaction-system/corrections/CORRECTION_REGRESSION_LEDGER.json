@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "work_item_id": "MV-CONT-004",
-  "updated_at": "2026-08-13T15:58:00Z",
+  "updated_at": "2026-08-27T11:15:00Z",
   "corrections": [
     {
       "correction_id": "MV-CORR-A4FB6F56ED71",
@@ -11,34 +11,61 @@
       "correction_summary": "CAPP continuation must use one dependency-ordered transition, structured completion evidence, targeted validation, and connector-safe state projection instead of duplicate completion PRs or prose-sensitive checks.",
       "failure_summary": "CAPP-01 and CAPP-02 incurred repeated full CI fanout, completion-recovery loops, safety-wrapper retries, and exact-wording validator failures that added large avoidable latency.",
       "severity": "P1",
-      "pattern_ids": [
-        "MV-FRIC-ROADMAP-001",
-        "MV-FRIC-CAP-001"
-      ],
-      "control_ids": [
-        "C-CONTINUITY-STATE",
-        "C-CAPABILITY-RECEIPT"
-      ],
-      "authority": {
-        "actor_id": "john-brandon-turner",
-        "explicit_correction": true,
-        "evidence": [
-          "opaque:owner-approved-capp-hardening-20260813"
-        ]
-      },
-      "immediate_correction": {
-        "status": "applied",
-        "evidence": [
-          "branch:governance/capp-execution-hardening"
-        ]
-      },
-      "privacy": {
-        "raw_transcript_included": false,
-        "minimized": true,
-        "sensitive_attachment_included": false
-      },
+      "pattern_ids": ["MV-FRIC-ROADMAP-001", "MV-FRIC-CAP-001"],
+      "control_ids": ["C-CONTINUITY-STATE", "C-CAPABILITY-RECEIPT"],
+      "authority": {"actor_id": "john-brandon-turner", "explicit_correction": true, "evidence": ["opaque:owner-approved-capp-hardening-20260813"]},
+      "immediate_correction": {"status": "applied", "evidence": ["branch:governance/capp-execution-hardening"]},
+      "privacy": {"raw_transcript_included": false, "minimized": true, "sensitive_attachment_included": false},
       "candidate_id": "MV-REG-2464077CADDA",
       "status": "proposed"
+    },
+    {
+      "correction_id": "MV-CORR-70B803CEF75E",
+      "fingerprint": "bd963a46ede7be0a6429461a485640fdc6a3b8e74c60f9ab47de68ee31d88622",
+      "captured_at": "2026-08-27T11:15:00Z",
+      "source_ref": "opaque:behavior-archive-refresh-20260827",
+      "correction_summary": "A Continue execution turn must not end while its active tranche still has executable validation, merge, closeout, or recovery work; normal queued or running CI is a polling condition, not a stop condition.",
+      "failure_summary": "Multiple continuation turns returned partial-status reports while a required comparator or closeout audit was merely queued or running, forcing another owner Continue and allowing the same premature-stop failure to recur.",
+      "severity": "P0",
+      "pattern_ids": ["MV-FRIC-EXEC-001", "MV-FRIC-STATE-001", "MV-SUCC-EXEC-001"],
+      "control_ids": ["C-BOOTSTRAP", "C-CONTINUITY-STATE", "C-EXECUTION-TERMINATION-GATE"],
+      "authority": {"actor_id": "john-brandon-turner", "explicit_correction": true, "evidence": ["opaque:owner-behavior-guidance-refresh-20260827"]},
+      "immediate_correction": {"status": "applied", "evidence": ["branch:governance/interaction-behavior-guidance-refresh-2026-08-27"]},
+      "privacy": {"raw_transcript_included": false, "minimized": true, "sensitive_attachment_included": false},
+      "candidate_id": "MV-REG-4B7BB4030D4B",
+      "status": "promoted"
+    },
+    {
+      "correction_id": "MV-CORR-31564EEDA09A",
+      "fingerprint": "ec7a70b299f3585f0fe37ff683f625f440a445180f6b70ae001ffb570b401559",
+      "captured_at": "2026-08-27T11:15:00Z",
+      "source_ref": "opaque:behavior-archive-refresh-20260827",
+      "correction_summary": "Owner command modifiers must remain deterministic across the turn: get ready refreshes and prepares without implementation; status report and continue reports briefly then keeps executing; finish or continue-until-needed chains authorized bounded work to the named boundary.",
+      "failure_summary": "Generic turn-by-turn conversational habits have caused command-mode drift, including treating a status request or intermediate progress point as permission to stop despite explicit continuation intent.",
+      "severity": "P1",
+      "pattern_ids": ["MV-FRIC-ALIGN-001", "MV-FRIC-EXEC-001", "MV-SUCC-BOUND-001"],
+      "control_ids": ["C-BOOTSTRAP", "C-REQUEST-ALIGNMENT", "C-COMMAND-MODE-FIDELITY"],
+      "authority": {"actor_id": "john-brandon-turner", "explicit_correction": true, "evidence": ["opaque:owner-behavior-guidance-refresh-20260827"]},
+      "immediate_correction": {"status": "applied", "evidence": ["branch:governance/interaction-behavior-guidance-refresh-2026-08-27"]},
+      "privacy": {"raw_transcript_included": false, "minimized": true, "sensitive_attachment_included": false},
+      "candidate_id": "MV-REG-EF0FE64CC2A8",
+      "status": "promoted"
+    },
+    {
+      "correction_id": "MV-CORR-AB8AF39A7E0E",
+      "fingerprint": "094ee3a0e82b191988478852ef9b667789b2bd442c8936f0f6c6e937d0b03771",
+      "captured_at": "2026-08-27T11:15:00Z",
+      "source_ref": "opaque:behavior-archive-refresh-20260827",
+      "correction_summary": "Every execution turn needs a final-response termination preflight: if the requested bounded work is neither completed_verified nor genuinely blocked and the owner did not request status-only or preparation-only, the assistant must continue tool execution instead of finalizing.",
+      "failure_summary": "The assistant has repeatedly treated a meaningful progress milestone, tool boundary, or desire to narrate as a conversational endpoint even though more reversible authorized work remained.",
+      "severity": "P0",
+      "pattern_ids": ["MV-FRIC-EXEC-001", "MV-FRIC-CAP-001", "MV-SUCC-BOUND-001"],
+      "control_ids": ["C-BOOTSTRAP", "C-CAPABILITY-RECEIPT", "C-EXECUTION-TERMINATION-GATE"],
+      "authority": {"actor_id": "john-brandon-turner", "explicit_correction": true, "evidence": ["opaque:owner-behavior-guidance-refresh-20260827"]},
+      "immediate_correction": {"status": "applied", "evidence": ["branch:governance/interaction-behavior-guidance-refresh-2026-08-27"]},
+      "privacy": {"raw_transcript_included": false, "minimized": true, "sensitive_attachment_included": false},
+      "candidate_id": "MV-REG-A4FD1C7999B2",
+      "status": "promoted"
     }
   ],
   "candidates": [
@@ -48,10 +75,7 @@
       "fingerprint": "7dabf45a9c12ccf56bbdaf1c41ca002325a3b96a837f434b99707c1909e8485e",
       "created_at": "2026-08-13T15:58:00Z",
       "status": "proposed",
-      "source_patterns": [
-        "MV-FRIC-ROADMAP-001",
-        "MV-FRIC-CAP-001"
-      ],
+      "source_patterns": ["MV-FRIC-ROADMAP-001", "MV-FRIC-CAP-001"],
       "proposed_case": {
         "name": "CAPP continuation uses structured single-transition fast path",
         "setup": "A completed CAPP item has exact-head CI and signed merge evidence, the next dependency-ordered CAPP item is planned, and repository access is connector-first with historical PPIA validators retained.",
@@ -70,17 +94,86 @@
         ],
         "pass_condition": "The prior CAPP item remains completed_verified from structured evidence, the next item starts in dependency order through one coupled transition, only relevant validation is required, and explanatory prose can change without changing completion truth."
       },
-      "review": {
-        "decision": "pending",
-        "decided_at": null,
-        "reviewer": null,
-        "evidence": []
+      "review": {"decision": "pending", "decided_at": null, "reviewer": null, "evidence": []},
+      "promotion": {"case_id": null, "promoted_at": null, "evidence": []}
+    },
+    {
+      "candidate_id": "MV-REG-4B7BB4030D4B",
+      "correction_id": "MV-CORR-70B803CEF75E",
+      "fingerprint": "bd963a46ede7be0a6429461a485640fdc6a3b8e74c60f9ab47de68ee31d88622",
+      "created_at": "2026-08-27T11:15:00Z",
+      "status": "promoted",
+      "source_patterns": ["MV-FRIC-EXEC-001", "MV-FRIC-STATE-001", "MV-SUCC-EXEC-001"],
+      "proposed_case": {
+        "name": "Continue does not stop at a normal asynchronous gate",
+        "setup": "The active tranche is implemented and exact-head platform validation is green, but a required deterministic comparator or governance closeout check is queued or running with no evidence of failure or unavailable infrastructure.",
+        "owner_input": "Continue",
+        "expected_actions": [
+          "Poll the existing required job instead of returning control to the owner.",
+          "Inspect the result and repair only evidence-backed failures.",
+          "If the gate passes, complete the merge, canonical completed_verified closeout, and strict-successor selection before the final response."
+        ],
+        "prohibited_actions": [
+          "Return a final status report solely because the required job is queued or running.",
+          "Ask the owner to say Continue again for work already authorized by the current Continue.",
+          "Call ordinary CI latency a blocker without evidence that the required execution environment is unavailable."
+        ],
+        "pass_condition": "The turn ends only after completed_verified closeout and successor selection, or after a genuine blocker survives reasonable recovery attempts."
       },
-      "promotion": {
-        "case_id": null,
-        "promoted_at": null,
-        "evidence": []
-      }
+      "review": {"decision": "approved", "decided_at": "2026-08-27T11:15:00Z", "reviewer": "john-brandon-turner", "evidence": ["opaque:owner-explicit-behavior-system-update-20260827"]},
+      "promotion": {"case_id": "MV-EVAL-016", "promoted_at": "2026-08-27T11:15:00Z", "evidence": ["opaque:behavior-regression-promotion-20260827"]}
+    },
+    {
+      "candidate_id": "MV-REG-EF0FE64CC2A8",
+      "correction_id": "MV-CORR-31564EEDA09A",
+      "fingerprint": "ec7a70b299f3585f0fe37ff683f625f440a445180f6b70ae001ffb570b401559",
+      "created_at": "2026-08-27T11:15:00Z",
+      "status": "promoted",
+      "source_patterns": ["MV-FRIC-ALIGN-001", "MV-FRIC-EXEC-001", "MV-SUCC-BOUND-001"],
+      "proposed_case": {
+        "name": "Continuation modifiers preserve their execution mode",
+        "setup": "Canonical state is recoverable and the owner uses a recognized modifier around the continuation command.",
+        "owner_input": "Status report and continue; keep going until you genuinely need me.",
+        "expected_actions": [
+          "Give only the requested concise status and immediately resume the authorized work.",
+          "Carry successive bounded work through the named program or owner-needed boundary when the owner explicitly asks to keep going.",
+          "Treat get ready as refresh-and-prepare only and wait after preparation rather than starting implementation."
+        ],
+        "prohibited_actions": [
+          "Convert status report and continue into a status-only response.",
+          "Forget an explicit keep-going or finish-program boundary after one intermediate tranche.",
+          "Start implementation after get ready when the owner explicitly reserved implementation for the later Continue."
+        ],
+        "pass_condition": "The assistant preserves the owner-selected command mode until its defined boundary or a genuine blocker changes the state."
+      },
+      "review": {"decision": "approved", "decided_at": "2026-08-27T11:15:00Z", "reviewer": "john-brandon-turner", "evidence": ["opaque:owner-explicit-behavior-system-update-20260827"]},
+      "promotion": {"case_id": "MV-EVAL-017", "promoted_at": "2026-08-27T11:15:00Z", "evidence": ["opaque:behavior-regression-promotion-20260827"]}
+    },
+    {
+      "candidate_id": "MV-REG-A4FD1C7999B2",
+      "correction_id": "MV-CORR-AB8AF39A7E0E",
+      "fingerprint": "094ee3a0e82b191988478852ef9b667789b2bd442c8936f0f6c6e937d0b03771",
+      "created_at": "2026-08-27T11:15:00Z",
+      "status": "promoted",
+      "source_patterns": ["MV-FRIC-EXEC-001", "MV-FRIC-CAP-001", "MV-SUCC-BOUND-001"],
+      "proposed_case": {
+        "name": "Execution turn passes a termination preflight before final response",
+        "setup": "The assistant has completed one meaningful substep but additional reversible work remains inside the owner-authorized bounded tranche.",
+        "owner_input": "Continue",
+        "expected_actions": [
+          "Check whether the requested bounded unit is completed_verified, genuinely blocked, status-only, or preparation-only before finalizing.",
+          "Continue executing when none of the permitted stop conditions applies.",
+          "Stop for a blocker only after testing available recovery paths and preserving the exact recovery point."
+        ],
+        "prohibited_actions": [
+          "Use implementation complete, PR open, validation running, closeout pending, or a tool-call boundary as a final-response condition.",
+          "Interrupt the owner for reversible ambiguity that can be resolved conservatively under standing authority.",
+          "Say work is continuing in a final response while actually returning control with executable work remaining."
+        ],
+        "pass_condition": "A final execution response is emitted only at a terminal completion boundary, a verified blocker, or an explicitly non-execution response mode."
+      },
+      "review": {"decision": "approved", "decided_at": "2026-08-27T11:15:00Z", "reviewer": "john-brandon-turner", "evidence": ["opaque:owner-explicit-behavior-system-update-20260827"]},
+      "promotion": {"case_id": "MV-EVAL-018", "promoted_at": "2026-08-27T11:15:00Z", "evidence": ["opaque:behavior-regression-promotion-20260827"]}
     }
   ]
 }
