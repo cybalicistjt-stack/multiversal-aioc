@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "work_item_id": "MV-CONT-004",
-  "generated_at": "2026-08-05T23:22:00Z",
+  "generated_at": "2026-08-27T11:15:00Z",
   "control_catalog": {
     "C-CORRECTION-REGRESSION-INTAKE": {
       "status": "implemented_in_mv_cont_004",
@@ -20,6 +20,27 @@
         "tools/correction_regression_lib/__init__.py",
         ".github/workflows/validate-correction-regression.yml"
       ]
+    },
+    "C-EXECUTION-TERMINATION-GATE": {
+      "status": "implemented_2026_08_27_behavior_refresh",
+      "artifacts": [
+        "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
+        "governance/ai/interaction-system/OWNER_AI_INTERACTION_CONTRACT.md",
+        "governance/ai/interaction-system/CONTINUITY_ACCEPTANCE_TESTS.md",
+        "governance/ai/interaction-system/evaluation/PROMOTED_EVALUATION_CASES.json",
+        "scripts/validate_interaction_behavior_guidance.py",
+        "scripts/validate_repository_health.py"
+      ]
+    },
+    "C-COMMAND-MODE-FIDELITY": {
+      "status": "implemented_2026_08_27_behavior_refresh",
+      "artifacts": [
+        "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
+        "governance/ai/interaction-system/OWNER_AI_INTERACTION_CONTRACT.md",
+        "governance/ai/interaction-system/CONTINUITY_ACCEPTANCE_TESTS.md",
+        "governance/ai/interaction-system/evaluation/PROMOTED_EVALUATION_CASES.json",
+        "scripts/validate_interaction_behavior_guidance.py"
+      ]
     }
   },
   "pattern_coverage": [
@@ -33,6 +54,37 @@
         "tools/correction_regression.py",
         ".github/workflows/validate-correction-regression.yml"
       ]
+    },
+    {
+      "pattern_id": "MV-FRIC-EXEC-001",
+      "prior_coverage_status": "enforced",
+      "coverage_status": "hardened",
+      "added_control_ids": ["C-EXECUTION-TERMINATION-GATE", "C-COMMAND-MODE-FIDELITY"],
+      "evidence": [
+        "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
+        "governance/ai/interaction-system/evaluation/PROMOTED_EVALUATION_CASES.json",
+        "scripts/validate_interaction_behavior_guidance.py"
+      ]
+    },
+    {
+      "pattern_id": "MV-FRIC-STATE-001",
+      "prior_coverage_status": "enforced",
+      "coverage_status": "hardened",
+      "added_control_ids": ["C-EXECUTION-TERMINATION-GATE"],
+      "evidence": [
+        "governance/ai/interaction-system/CONTINUITY_ACCEPTANCE_TESTS.md",
+        "scripts/validate_interaction_behavior_guidance.py"
+      ]
+    },
+    {
+      "pattern_id": "MV-FRIC-ALIGN-001",
+      "prior_coverage_status": "target_enforced",
+      "coverage_status": "hardened",
+      "added_control_ids": ["C-COMMAND-MODE-FIDELITY"],
+      "evidence": [
+        "governance/ai/interaction-system/OWNER_AI_INTERACTION_CONTRACT.md",
+        "governance/ai/interaction-system/evaluation/PROMOTED_EVALUATION_CASES.json"
+      ]
     }
   ],
   "gap_closures": [
@@ -42,7 +94,7 @@
       "control_id": "C-CORRECTION-REGRESSION-INTAKE",
       "closed_by_work_item": "MV-CONT-004",
       "residual_risk": "Structured capture still depends on the active agent recognizing that a correction is explicit and materially reusable.",
-      "next_hardening": "Integrate capture hooks into supported conversation runtimes and surface uncaptured corrections in periodic audits."
+      "next_hardening": "The 2026-08-27 behavior refresh adds a mandatory termination preflight and command-mode regression checks to reduce recurrence before another owner correction is needed."
     }
   ]
 }
