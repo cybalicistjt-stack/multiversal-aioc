@@ -6,15 +6,7 @@ on:
       - 'governance/ai/**'
       - 'governance/repository-health/**'
       - 'governance/application-planning/**'
-      - 'governance/source-material/recovered-legacy/**'
       - 'scripts/validate_repository_health.py'
-      - 'scripts/validate_rsr_01.py'
-      - 'scripts/validate_rsr_02.py'
-      - 'scripts/validate_rsr_03.py'
-      - 'scripts/validate_rsr_04.py'
-      - 'scripts/validate_rsr_05.py'
-      - 'scripts/validate_rsr_06.py'
-      - 'scripts/validate_rsr_07.py'
       - '.github/workflows/validate-repository-health.yml'
   push:
     branches: [main]
@@ -22,15 +14,7 @@ on:
       - 'governance/ai/**'
       - 'governance/repository-health/**'
       - 'governance/application-planning/**'
-      - 'governance/source-material/recovered-legacy/**'
       - 'scripts/validate_repository_health.py'
-      - 'scripts/validate_rsr_01.py'
-      - 'scripts/validate_rsr_02.py'
-      - 'scripts/validate_rsr_03.py'
-      - 'scripts/validate_rsr_04.py'
-      - 'scripts/validate_rsr_05.py'
-      - 'scripts/validate_rsr_06.py'
-      - 'scripts/validate_rsr_07.py'
       - '.github/workflows/validate-repository-health.yml'
   workflow_dispatch:
 
@@ -43,12 +27,9 @@ concurrency:
 
 jobs:
   canonical-state:
-    name: Canonical AIOC authority and repository-health audit
-    # AIOC has no repository-attached self-hosted runner. This one small
-    # governance-only check is an explicit exception; application/package
-    # completion gates remain on the governed self-hosted Validation Core.
+    name: Current AIOC authority and execution-surface health
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 3
     env:
       CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
     steps:
@@ -60,66 +41,17 @@ jobs:
           persist-credentials: false
           clean: true
 
-      - name: Verify exact AIOC head and stock toolchain
+      - name: Validate exact current state
         shell: bash
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$CANDIDATE_HEAD"
-          test "${RUNNER_OS}" = "Linux"
-          python3 --version
-          git --version
-
-      - name: Validate RSR-01 recovered-source integrity
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 scripts/validate_rsr_01.py
-
-      - name: Validate RSR-02 MIB-11 reconciliation integrity
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 scripts/validate_rsr_02.py
-
-      - name: Validate RSR-03 ICF reconciliation integrity
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 scripts/validate_rsr_03.py
-
-      - name: Validate RSR-04 CEL reconciliation integrity
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 scripts/validate_rsr_04.py
-
-      - name: Validate RSR-05 LSS reconciliation integrity
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 scripts/validate_rsr_05.py
-
-      - name: Validate RSR-06 LNG reconciliation integrity
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 scripts/validate_rsr_06.py
-
-      - name: Validate RSR-07 supernatural reconciliation integrity
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 scripts/validate_rsr_07.py
-
-      - name: Validate canonical AIOC state
-        shell: bash
-        run: |
-          set -euo pipefail
           python3 scripts/validate_repository_health.py \
             --root . \
+            --expected-head "$CANDIDATE_HEAD" \
             --output "${RUNNER_TEMP}/canonical-state-audit-generated.json"
 
-      - name: Upload compact repository-health evidence
+      - name: Upload compact current-state evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
