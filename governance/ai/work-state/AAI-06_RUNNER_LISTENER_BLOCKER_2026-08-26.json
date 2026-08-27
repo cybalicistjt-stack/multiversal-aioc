@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "AAI-06",
+  "attempt_id": "AAI-06-attempt-001",
+  "status": "in_progress",
+  "observed_at": "2026-08-27T03:31:00Z",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "application_pr": 330,
+  "implementation_branch": "integration/aai-06-import-link-initial-provider-adapters",
+  "exact_candidate_head": "bfc93393c0a50becbf67e3eebd552c630c24ab7d",
+  "application_baseline": "511f9566af10f0defa703350ac4ffa6db0c0c4e7",
+  "implementation_state": {
+    "pr_open": true,
+    "pr_mergeable": true,
+    "changed_files": 7,
+    "commits": 15,
+    "migration_0022_reserved": false,
+    "live_provider_calls_performed": false,
+    "credential_material_persisted": false,
+    "provider_content_acquired": false
+  },
+  "required_gate_state": {
+    "repository_health": {
+      "run_id": 33036286511,
+      "job_id": 98399569590,
+      "state": "queued_runner_listener_unavailable",
+      "head": "bfc93393c0a50becbf67e3eebd552c630c24ab7d"
+    },
+    "validation_core": {
+      "run_id": 33036286683,
+      "state": "queued_runner_listener_unavailable",
+      "head": "bfc93393c0a50becbf67e3eebd552c630c24ab7d",
+      "aai06_linux_job": 98399569917,
+      "aai06_linux_state": "queued",
+      "aai06_windows_job": 98399569882,
+      "aai06_windows_state": "queued",
+      "aai06_comparison_state": "waiting_for_platform_lanes"
+    }
+  },
+  "runner_recovery_diagnostics": {
+    "repository_in_progress_runs_at_check": 0,
+    "linux_runner": "multiversal-linux-02",
+    "windows_runner": "multiversal-win-01",
+    "repository_wake_script_found": false,
+    "aioc_wake_script_found": false,
+    "precedent": "governance/ai/work-state/MAI-10_RUNNER_LISTENER_BLOCKER_2026-08-26.json",
+    "policy_note": "Owner-approved self-hosted validation policy permits wake/recovery plumbing, but current repository evidence contains no remotely invokable listener-start script. The self-hosted Windows and Linux listener processes are owner-controlled execution surfaces."
+  },
+  "completion_integrity": {
+    "merge_allowed": false,
+    "completion_claim_allowed": false,
+    "aai07_authorized": false,
+    "rule": "Do not merge PR #330 or close AAI-06 until exact head bfc93393c0a50becbf67e3eebd552c630c24ab7d passes Repository Health, self-hosted Linux and Windows AAI-06 Validation Core, and deterministic cross-platform comparison."
+  },
+  "exact_next_action": "Restore or verify the owner-controlled self-hosted listeners multiversal-win-01 and multiversal-linux-02. Do not change the AAI-06 candidate and do not rerun the workflows. Once existing runs 33036286511 and 33036286683 begin draining, inspect exact-head Repository Health job 98399569590, AAI-06 Linux job 98399569917 and Windows job 98399569882; repair only evidence-backed failures, require deterministic comparison to pass, then squash-merge PR #330 and perform governed AAI-06 completed_verified closeout before selecting AAI-07 as selected_not_started."
+}
