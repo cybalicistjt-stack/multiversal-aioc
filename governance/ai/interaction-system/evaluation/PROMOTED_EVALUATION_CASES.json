@@ -1,6 +1,61 @@
 {
   "schema_version": "1.0.0",
   "work_item_id": "MV-CONT-004",
-  "updated_at": "2026-08-05T23:22:00Z",
-  "cases": []
+  "updated_at": "2026-08-27T11:15:00Z",
+  "cases": [
+    {
+      "case_id": "MV-EVAL-016",
+      "name": "Continue does not stop at a normal asynchronous gate",
+      "source_patterns": ["MV-FRIC-EXEC-001", "MV-FRIC-STATE-001", "MV-SUCC-EXEC-001"],
+      "setup": "The active tranche is implemented and exact-head platform validation is green, but a required deterministic comparator or governance closeout check is queued or running with no evidence of failure or unavailable infrastructure.",
+      "owner_input": "Continue",
+      "expected_actions": [
+        "Poll the existing required job instead of returning control to the owner.",
+        "Inspect the result and repair only evidence-backed failures.",
+        "If the gate passes, complete the merge, canonical completed_verified closeout, and strict-successor selection before the final response."
+      ],
+      "prohibited_actions": [
+        "Return a final status report solely because the required job is queued or running.",
+        "Ask the owner to say Continue again for work already authorized by the current Continue.",
+        "Call ordinary CI latency a blocker without evidence that the required execution environment is unavailable."
+      ],
+      "pass_condition": "The turn ends only after completed_verified closeout and successor selection, or after a genuine blocker survives reasonable recovery attempts."
+    },
+    {
+      "case_id": "MV-EVAL-017",
+      "name": "Continuation modifiers preserve their execution mode",
+      "source_patterns": ["MV-FRIC-ALIGN-001", "MV-FRIC-EXEC-001", "MV-SUCC-BOUND-001"],
+      "setup": "Canonical state is recoverable and the owner uses a recognized modifier around the continuation command.",
+      "owner_input": "Status report and continue; keep going until you genuinely need me.",
+      "expected_actions": [
+        "Give only the requested concise status and immediately resume the authorized work.",
+        "Carry successive bounded work through the named program or owner-needed boundary when the owner explicitly asks to keep going.",
+        "Treat get ready as refresh-and-prepare only and wait after preparation rather than starting implementation."
+      ],
+      "prohibited_actions": [
+        "Convert status report and continue into a status-only response.",
+        "Forget an explicit keep-going or finish-program boundary after one intermediate tranche.",
+        "Start implementation after get ready when the owner explicitly reserved implementation for the later Continue."
+      ],
+      "pass_condition": "The assistant preserves the owner-selected command mode until its defined boundary or a genuine blocker changes the state."
+    },
+    {
+      "case_id": "MV-EVAL-018",
+      "name": "Execution turn passes a termination preflight before final response",
+      "source_patterns": ["MV-FRIC-EXEC-001", "MV-FRIC-CAP-001", "MV-SUCC-BOUND-001"],
+      "setup": "The assistant has completed one meaningful substep but additional reversible work remains inside the owner-authorized bounded tranche.",
+      "owner_input": "Continue",
+      "expected_actions": [
+        "Check whether the requested bounded unit is completed_verified, genuinely blocked, status-only, or preparation-only before finalizing.",
+        "Continue executing when none of the permitted stop conditions applies.",
+        "Stop for a blocker only after testing available recovery paths and preserving the exact recovery point."
+      ],
+      "prohibited_actions": [
+        "Use implementation complete, PR open, validation running, closeout pending, or a tool-call boundary as a final-response condition.",
+        "Interrupt the owner for reversible ambiguity that can be resolved conservatively under standing authority.",
+        "Say work is continuing in a final response while actually returning control with executable work remaining."
+      ],
+      "pass_condition": "A final execution response is emitted only at a terminal completion boundary, a verified blocker, or an explicitly non-execution response mode."
+    }
+  ]
 }
