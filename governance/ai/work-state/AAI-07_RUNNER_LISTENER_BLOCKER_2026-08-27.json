@@ -1,9 +1,9 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "work_item_id": "AAI-07",
   "attempt_id": "AAI-07-attempt-001",
   "status": "in_progress",
-  "observed_at": "2026-08-27T12:24:05Z",
+  "observed_at": "2026-08-27T12:29:10Z",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "application_pr": 331,
   "implementation_branch": "integration/aai-07-game-event-scene-automation-binding",
@@ -27,23 +27,26 @@
     },
     "validation_core": {
       "run_id": 33070840352,
-      "state": "queued_runner_listener_unavailable",
       "head": "839cf64a241a1dde966791f054c5b3549792cd90",
       "aai07_linux_job": 98512370534,
-      "aai07_linux_state": "queued_runner_id_0",
+      "aai07_linux_state": "passed",
+      "aai07_linux_runner": "multiversal-linux-02",
+      "aai07_linux_artifact": 9646195967,
+      "aai07_linux_artifact_digest": "sha256:2a588315f9b3cebe5ae76e6bec45e83b67504fad361f5823752deabd54153e71",
+      "aai07_linux_deterministic_receipt": "3f38b595c4a01b9a7acfa00ff88b021c5dbcb059278eda9c60ac562db394df3d",
       "aai07_windows_job": 98512370841,
       "aai07_windows_state": "queued_runner_id_0",
-      "aai07_comparison_state": "waiting_for_platform_lanes"
+      "aai07_comparison_state": "waiting_for_windows_lane"
     }
   },
   "runner_recovery_diagnostics": {
-    "repository_in_progress_runs_at_check": 0,
-    "queued_validation_jobs_at_check": 63,
     "linux_runner": "multiversal-linux-02",
+    "linux_listener_state": "restored_and_processing",
     "windows_runner": "multiversal-win-01",
+    "windows_listener_state": "unavailable",
     "linux_required_labels": ["self-hosted", "linux", "x64", "multiversal-validation-linux"],
     "windows_required_labels": ["self-hosted", "windows", "x64", "multiversal-validation"],
-    "aai07_linux_runner_id": 0,
+    "aai07_linux_runner_id": 24,
     "aai07_windows_runner_id": 0,
     "repository_wake_script_found": false,
     "aioc_wake_script_found": false,
@@ -51,13 +54,13 @@
       "governance/ai/work-state/AAI-06_RUNNER_LISTENER_BLOCKER_2026-08-26.json",
       "governance/ai/work-state/MAI-10_RUNNER_LISTENER_BLOCKER_2026-08-26.json"
     ],
-    "policy_note": "The current exact-head Repository Health gate passed. The self-hosted Linux and Windows Validation Core jobs are queued with runner_id 0 and the repository reports zero in-progress workflow runs, which matches the established owner-controlled listener-unavailable condition. No repository or AIOC wake script exists, so the listener processes cannot be restored remotely from GitHub."
+    "policy_note": "The exact-head Repository Health and AAI-07 Linux gates are satisfied. multiversal-linux-02 claimed and passed job 98512370534 on exact head 839cf64a241a1dde966791f054c5b3549792cd90. The required AAI-07 Windows job 98512370841 remains queued with runner_id 0 while Windows-labelled jobs remain unclaimed. No repository or AIOC wake script exists, so multiversal-win-01 cannot be restored remotely from GitHub."
   },
   "completion_integrity": {
     "merge_allowed": false,
     "completion_claim_allowed": false,
     "aai08_authorized": false,
-    "rule": "Do not merge PR #331 or close AAI-07 until exact head 839cf64a241a1dde966791f054c5b3549792cd90 passes self-hosted Linux and Windows AAI-07 Validation Core and deterministic cross-platform comparison. Repository Health is already satisfied on this exact head."
+    "rule": "Do not merge PR #331 or close AAI-07 until exact head 839cf64a241a1dde966791f054c5b3549792cd90 also passes self-hosted Windows AAI-07 Validation Core and deterministic cross-platform comparison. Repository Health and Linux are already satisfied on this exact head."
   },
-  "exact_next_action": "Restore or verify the owner-controlled self-hosted listeners multiversal-win-01 and multiversal-linux-02. Do not change the AAI-07 candidate and do not rerun the workflows. Once existing run 33070840352 begins draining, inspect exact-head AAI-07 Linux job 98512370534 and Windows job 98512370841, repair only evidence-backed failures, require deterministic comparison to pass, then squash-merge PR #331 and perform governed AAI-07 completed_verified closeout selecting AAI-08 as selected_not_started."
+  "exact_next_action": "Restore or verify the owner-controlled Windows listener multiversal-win-01 only. Leave multiversal-linux-02 running, do not change the AAI-07 candidate and do not rerun workflow 33070840352. Once existing Windows job 98512370841 is claimed, inspect its exact-head result, require the deterministic comparison to pass against Linux receipt 3f38b595c4a01b9a7acfa00ff88b021c5dbcb059278eda9c60ac562db394df3d, then squash-merge PR #331 and perform governed AAI-07 completed_verified closeout selecting AAI-08 as selected_not_started."
 }
