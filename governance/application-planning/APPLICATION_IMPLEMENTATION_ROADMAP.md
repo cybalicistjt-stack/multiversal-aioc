@@ -1,20 +1,20 @@
 # Multiversal Application Implementation Roadmap
 
 **Document ID:** MV-APP-ROADMAP-001  
-**Version:** 6.27.0  
-**Status:** RSR-06 SELECTED — RSR-01..05 COMPLETED_VERIFIED — MSS-05 COMPLETED_VERIFIED — MSS PAUSED FOR RECOVERED SOURCE RECONCILIATION — LNG PROGRAM COMPLETED_VERIFIED — LSS PROGRAM COMPLETED_VERIFIED — AAI OWNER-APPROVED PLANNED — BRP OWNER-APPROVED PLANNED  
+**Version:** 6.28.0  
+**Status:** DEPENDENCY ROADMAP — RUNTIME SELECTION LIVES IN POINTER/INDEX — RECOVERED MINE-NOTE FAMILIES OWNER-APPROVED PLANNED  
 **Owner and final authority:** John Brandon Turner  
-**Updated:** 2026-08-21
+**Updated:** 2026-08-27
 
 ## Authority rule
 
-Runtime authority remains bootstrap → authority registry → current-work pointer → selected checkpoint → live GitHub evidence. This roadmap owns dependency intent only. Current work is **RSR-06 — LNG Language/Culture/Script Reconciliation**, state `selected_not_started`; it has no implementation branch or implementation authority until the next owner `Continue` governed-starts it.
+Runtime authority remains bootstrap → authority registry → current-work pointer → selected checkpoint → live GitHub evidence. **This roadmap owns dependency intent only and does not select current work.** Current work item, branch, PR, checkpoint, implementation authority and exact successor state must be read from the runtime pointer/index/checkpoint and live repository evidence.
 
-MSS is completed_verified through MSS-05 and is intentionally paused before MSS-06 while RSR-06..07 reconcile the recovered legacy source corpus against completed foundations. RSR-01 through RSR-05 are `completed_verified`.
+Historical completion/evidence sections below preserve the state recorded when their source work was closed; they do not override newer runtime evidence merely because they remain in this roadmap.
 
-The owner execution rule remains tranche-complete: `Continue` executes the selected tranche through governed start, implementation/extraction/reconciliation as applicable, focused repair, declared validation, `completed_verified` closeout and strict-successor selection unless a genuine blocker survives.
+The owner execution rule remains tranche-complete: `Continue` executes the runtime-selected tranche through governed start, implementation/extraction/reconciliation as applicable, focused repair, declared validation, `completed_verified` closeout and strict-successor selection unless a genuine blocker survives.
 
-## Completed foundation
+## Completed foundation — historical evidence snapshot
 
 - APW / CSW / APM predecessor sequence: `completed_verified`.
 - MIB-01..15: `completed_verified`; MIB resumes at MIB-16 only after the interstitial sequence.
@@ -147,9 +147,34 @@ Hard rules:
 - Exact source/media bytes remain provenance-bound to the retained Project Source archive and checksums.
 - Every recovered file receives a disposition through RSR; nothing is silently dropped or silently promoted.
 
+## Recovered mine-note roadmap amendment — 2026-08-27
+
+Program-level planning is defined in `APPLICATION_IMPLEMENTATION_ROADMAP_MINES_RECOVERY_AMENDMENT_2026-08-27.md`.
+
+Five recovered design families are large/coherent enough for dedicated future programs:
+
+- **SSA — Semantic Spatial Authoring:** RDC-06/RDC-07; semantic construction, caves/irregular topology, functional ecology zones and research-site infrastructure.
+- **KFR — Knowledge & Familiarity Relations:** RDC-02; broad→specific/adjacent familiarity and partial transfer without inventing permission/proficiency.
+- **ODL — Organizational Dynamics & Leadership:** RDC-04; coordination/load, loyalty/factionalism, delegation/succession and organizational crisis/recovery.
+- **MAL — Microgames & Ambient Loops:** RDC-01; original microgame primitives, Aniloops and optional travel/repair/downtime/transition/spacewalk interactions.
+- **ALP — Achievements, Learning & Practice:** RDC-08A/B; owner-confirmed campaign achievements plus onboarding/mastery and diegetic practice/training.
+
+Recovered concepts deliberately **not** given duplicate programs:
+
+- RDC-03 scale transition → SCL-01/02/08/09/11, with explicit identity-preserving aggregation/projection requirements.
+- RDC-05 story identity vs telling/adaptation → CSW-08/WCI-05 and SGC audit if an explicit identity relation is missing.
+- RDC-09 user notes/tags → WCI-01/current annotation-owner audit.
+- RDC-10 Character motivation → Character/CSW owner, audited by SGC-03/06 if absent.
+- RDC-11 cross-domain semantic doctrine → shared invariant, no feature program.
+- RDC-12 Toon/UZ conceptuality → setting-specific hold / SGC-05 when relevant.
+- location-aware inventory; semantic vehicles/machines/repair/factories → existing Inventory/Asset/Vehicle/Base/Crafting/DPL/LSS owners.
+- mining-station scenario → GCL/DPL/ISE proof/content candidate.
+
 ## Effective forward order
 
-`RSR-06..07 → MSS-06..12 → CCP-01..11 → DPL-01..14 → MAI-01..10 → AAI-01..10 → WCI-01..05 → SCL-01..11 → VTI-01..12 → SGC-01..08 → MIB-16 → MIB-17 → MIB-18 → SMB-01..16 → BRP-01..11 → SMB-17 → SMB-18`
+`AAI-10 → ISE-01..08 → SSA-01..10 → WCI-01..05 → KFR-01..08 → ODL-01..09 → SCL-01..11 → MAL-01..10 → ALP-01..08 → VTI-01..12 → SGC-01..08 → MIB-16 → MIB-17 → MIB-18 → SMB-01..16 → BRP-01..11 → SMB-17 → SMB-18`
+
+This dependency order is future planning only. It does not override the runtime selector or implicitly start any newly planned family.
 
 MCB remains owner-approved commercial preparation outside the automatic critical path; evidence-dependent public claims, final pricing/packaging and launch activation require current product evidence.
 
@@ -169,7 +194,7 @@ Completed tranches: LSS-01 source/authority crosswalk; LSS-02 component/assembly
 Program: `governance/application-planning/language-linguistics/LNG_LANGUAGE_LINGUISTICS_PROGRAM.md`  
 Backlog: `governance/application-planning/language-linguistics/LNG_PROGRAM_BACKLOG.json`
 
-Completed tranches: LNG-01 intake/registry/timeline authority; LNG-02 lexicon/phrase/script/provenance; LNG-03 guided construction; LNG-04 families/dialects/registers/evolution; LNG-05 Character knowledge/translation/gameplay; LNG-06 generation/consistency/golden proof. Recovered language/culture/script evidence is the selected RSR-06 reconciliation target. LNG temporal/visibility rules remain authoritative: future/historical stages do not silently populate present-era knowledge, and generated words/translations remain proposals.
+Completed tranches: LNG-01 intake/registry/timeline authority; LNG-02 lexicon/phrase/script/provenance; LNG-03 guided construction; LNG-04 families/dialects/registers/evolution; LNG-05 Character knowledge/translation/gameplay; LNG-06 generation/consistency/golden proof. Recovered language/culture/script evidence is reconciled through the governed RSR lineage; generated words/translations remain proposals unless authoritative evidence promotes them.
 
 ## MSS — Magic & Supernatural Systems
 
@@ -178,36 +203,14 @@ Backlog: `governance/application-planning/magic-supernatural-systems/MSS_PROGRAM
 
 Purpose: turn retained magic, Rune Construction, supernatural resources, spell/power resolution, traditions, rituals, counterplay, spirits/divine relationships, portals and temporal/causal play into governed runtime without creating parallel owner ledgers or unsupported universal formulas.
 
-Completed: MSS-01 source inventory/authority crosswalk/taxonomy; MSS-02 resources/capacity/cost/strain/Overreach; MSS-03 unified spell/power/supernatural resolution; MSS-04 Rune Construction runtime/blind GM adjudication; MSS-05 spell/power/Rune authoring, research, Scripts/Macros, simulation and review/publication proposal boundaries.
-
-**Program state:** paused for RSR reconciliation.  
-**Resume at:** MSS-06 after RSR-07 `completed_verified`.
-
-MSS-05 remains governed by its proposal-only and no-invention boundaries. Created mechanics remain proposals until explicitly accepted through their owning rules. Rune variants preserve MSS-04 authority, Scripts/Macros and simulations preserve MSS-03 authority, resource/cost behavior preserves MSS-02 authority, and recovered legacy assistant-generated material is not canonical by archive existence.
-
-Remaining MSS tranches after RSR: MSS-06 traditions/schools/sources/casting profiles; MSS-07 rituals/circles/components/cooperative casting; MSS-08 countermagic/resistance/wards/suppression/backlash; MSS-09 spirits/patronage/worship/pacts/favor; MSS-10 portals/gates/multiversal transit; MSS-11 temporal/causal branching/paradox; MSS-12 content packs/workbench/balance/golden proof.
+Historical source-reconciliation descriptions in this file are evidence snapshots only; current MSS/RSR status is determined by runtime state and current program/backlog evidence.
 
 ## RSR — Recovered Source Reconciliation
 
 Program: `governance/application-planning/recovered-source-reconciliation/RSR_RECOVERED_SOURCE_RECONCILIATION_PROGRAM.md`  
 Backlog: `governance/application-planning/recovered-source-reconciliation/RSR_PROGRAM_BACKLOG.json`
 
-Activation: after MSS-05. Successor: MSS-06.
-
-**Completed:** RSR-01 archive/provenance, RSR-02 MIB-11 World/Reality/Timeline reconciliation, RSR-03 ICF Content/Crafting/Food/Alchemy reconciliation, RSR-04 CEL Cozy/Economy/Life-Loop reconciliation, and RSR-05 LSS Loot/Scavenge/Salvage reconciliation — `completed_verified`.  
-**Current:** RSR-06 — LNG Language/Culture/Script Reconciliation — `selected_not_started`.
-
-Tranches:
-
-- RSR-01 archive preservation, extraction, provenance, attribution and disposition registry — `completed_verified`.
-- RSR-02 completed MIB-11 World/Reality/Timeline reconciliation — `completed_verified`.
-- RSR-03 completed ICF content/crafting/food/alchemy reconciliation — `completed_verified`.
-- RSR-04 completed CEL cozy/economy/life-loop reconciliation — `completed_verified`.
-- RSR-05 completed LSS loot/scavenge/salvage reconciliation — `completed_verified`.
-- RSR-06 LNG language/culture/script reconciliation — `selected_not_started`.
-- RSR-07 MSS-01..04 supernatural-foundation reconciliation and downstream routing, including provenance implications for later MSS work.
-
-RSR is not permission to promote old assistant-generated content. It is the governed bridge from recovered source evidence into existing completed foundations and future owners. RSR-06 gains no implementation authority before the next owner `Continue` governed-starts it.
+RSR is the governed bridge from recovered source evidence into existing completed foundations and future owners. Historical current-state language from the 2026-08-21 roadmap revision is retired here; exact RSR completion/current state comes from current program/backlog/runtime evidence.
 
 ## CCP — Companion & Creature Partnership
 
@@ -239,35 +242,79 @@ Hard rule: Multiversal need not own audio to use it. Semantic audio intent stays
 
 Tranches: AAI-01 ecosystem/API/license/authority survey; AAI-02 source/asset/cue/soundscape schema; AAI-03 provider adapter/capability negotiation; AAI-04 playback/layering/mixer; AAI-05 semantic taxonomy/resolver; AAI-06 local/Syrinscape/TableTone/generic provider adapters at verified supported depth; AAI-07 Scene/Event/gameplay cue bindings; AAI-08 GM audio Workbench/presets; AAI-09 multiplayer/permissions/remote sync/recording-streaming boundaries; AAI-10 multi-provider golden proof.
 
+## ISE — Interactive Scene Experience
+
+Program: `governance/application-planning/interactive-scene-experience/ISE_INTERACTIVE_SCENE_EXPERIENCE_PROGRAM.md`  
+Backlog: `governance/application-planning/interactive-scene-experience/ISE_PROGRAM_BACKLOG.json`
+
+Tranches: ISE-01 native canvas/camera/registration; ISE-02 tokens/measurement/tactical movement/templates; ISE-03 fog/vision/sensors/walls/doors; ISE-04 semantic regions/interactables/triggers; ISE-05 levels/elevation/reality layers/map-state families; ISE-06 environment/effects/audiovisual orchestration; ISE-07 GM cockpit/instant prep/Scene Recipes; ISE-08 multiplayer/accessibility/performance/golden native-tabletop proof. Successor is SSA-01.
+
+## SSA — Semantic Spatial Authoring
+
+Program: `governance/application-planning/semantic-spatial-authoring/SSA_SEMANTIC_SPATIAL_AUTHORING_PROGRAM.md`  
+Backlog: `governance/application-planning/semantic-spatial-authoring/SSA_PROGRAM_BACKLOG.json`
+
+Tranches: SSA-01 authority/taxonomy; SSA-02 structural primitives/attachments; SSA-03 caves/irregular/non-Euclidean topology; SSA-04 functional ecology/use zones; SSA-05 research/institutional infrastructure; SSA-06 MAI/ISE asset mapping; SSA-07 low-friction GM construction assistance; SSA-08 spatial history/era/event state; SSA-09 accessibility/performance/recovery; SSA-10 cross-scale golden proof.
+
 ## WCI — Worldbuilding & Campaign Intelligence
 
 Program: `governance/application-planning/worldbuilding-campaign-intelligence/WCI_WORLDBUILDING_CAMPAIGN_INTELLIGENCE_PROGRAM.md`  
-Backlog: `governance/application-planning/worldbuilding-campaign-intelligence/WCI_PROGRAM_BACKLOG.json`  
-Tranches: WCI-01..05 per canonical program/backlog. RSR routes recovered world history, factions, campaign frameworks and creator-relevant lore here after completed-foundation reconciliation.
+Backlog: `governance/application-planning/worldbuilding-campaign-intelligence/WCI_PROGRAM_BACKLOG.json`
+
+Tranches: WCI-01..05 per canonical program/backlog. WCI follows SSA-10 and routes into KFR-01. Recovered story/telling identity and user annotation requirements are audited through existing WCI/CSW owners rather than spawning duplicate programs.
+
+## KFR — Knowledge & Familiarity Relations
+
+Program: `governance/application-planning/knowledge-familiarity-relations/KFR_KNOWLEDGE_FAMILIARITY_RELATIONS_PROGRAM.md`  
+Backlog: `governance/application-planning/knowledge-familiarity-relations/KFR_PROGRAM_BACKLOG.json`
+
+Tranches: KFR-01 authority/vocabulary; KFR-02 hierarchical familiarity graph; KFR-03 Character knowledge/experience records; KFR-04 transfer/adjacency/confidence/unknown states; KFR-05 operator/equipment integration; KFR-06 profession/research/mentorship/learning; KFR-07 authoring/search/provenance UX; KFR-08 cross-domain golden proof.
+
+## ODL — Organizational Dynamics & Leadership
+
+Program: `governance/application-planning/organizational-dynamics-leadership/ODL_ORGANIZATIONAL_DYNAMICS_LEADERSHIP_PROGRAM.md`  
+Backlog: `governance/application-planning/organizational-dynamics-leadership/ODL_PROGRAM_BACKLOG.json`
+
+Tranches: ODL-01 authority/taxonomy; ODL-02 coordination/load dimensions; ODL-03 loyalty/cohesion/factionalism; ODL-04 delegation/authority/succession; ODL-05 resources/administrative burden; ODL-06 crisis/coup/fragmentation/recovery; ODL-07 cross-owner/SCL integration; ODL-08 GM control/simulation depth; ODL-09 organizational-life golden proof.
 
 ## SCL — Strategic Command & Large-Scale Conflict
 
 Program: `governance/application-planning/strategic-command-large-scale-conflict/SCL_STRATEGIC_COMMAND_LARGE_SCALE_CONFLICT_PROGRAM.md`  
 Backlog: `governance/application-planning/strategic-command-large-scale-conflict/SCL_PROGRAM_BACKLOG.json`
 
-Tranches: SCL-01 source/scale map; SCL-02 unit/formation model; SCL-03 command/roles/orders; SCL-04 phase/order resolution; SCL-05 morale/cohesion; SCL-06 logistics/supply/readiness; SCL-07 terrain/objectives/sieges; SCL-08 vehicle/mecha/ship/fleet integration; SCL-09 individual↔unit effects/casualties; SCL-10 faction/settlement/world consequences; SCL-11 Workbench/scenarios/golden proof. Recovered empire, war, faction and strategic material is routed here after source disposition.
+Tranches: SCL-01 source/scale map; SCL-02 unit/formation model; SCL-03 command/roles/orders; SCL-04 phase/order resolution; SCL-05 morale/cohesion; SCL-06 logistics/supply/readiness; SCL-07 terrain/objectives/sieges; SCL-08 vehicle/mecha/ship/fleet integration; SCL-09 individual↔unit effects/casualties; SCL-10 faction/settlement/world consequences; SCL-11 Workbench/scenarios/golden proof. RDC-03 recovered individual→squad→fleet intent is explicitly routed here with identity-preserving aggregation/projection and no duplicate state/effects.
+
+## MAL — Microgames & Ambient Loops
+
+Program: `governance/application-planning/microgames-ambient-loops/MAL_MICROGAMES_AMBIENT_LOOPS_PROGRAM.md`  
+Backlog: `governance/application-planning/microgames-ambient-loops/MAL_PROGRAM_BACKLOG.json`
+
+Tranches: MAL-01 source/authority/originality; MAL-02 primitive input/timing/state/goal contract; MAL-03 movement/navigation/traversal; MAL-04 interaction/conflict/hazard/objective primitives; MAL-05 tiny behavior state machines; MAL-06 Aniloops/travel/repair/downtime/transition/spacewalk; MAL-07 GM composition/GCL; MAL-08 owner-domain integration/reward boundaries; MAL-09 accessibility/mobile/performance/fallbacks; MAL-10 starter library/golden proof.
+
+## ALP — Achievements, Learning & Practice
+
+Program: `governance/application-planning/achievements-learning-practice/ALP_ACHIEVEMENTS_LEARNING_PRACTICE_PROGRAM.md`  
+Backlog: `governance/application-planning/achievements-learning-practice/ALP_PROGRAM_BACKLOG.json`
+
+Tranches: ALP-01 authority/taxonomy; ALP-02 criteria/evidence/scope/provenance; ALP-03 platform onboarding/mastery; ALP-04 GM campaign achievements/reward links; ALP-05 diegetic practice spaces; ALP-06 rehearsal/retry/safe failure; ALP-07 UX/accessibility/recognition history; ALP-08 integrated learning/recognition proof. Achievements do not become universal permission gates.
 
 ## VTI — Virtual Tabletop Interoperability
 
 Program: `governance/application-planning/virtual-tabletop-interoperability/VTI_VIRTUAL_TABLETOP_INTEROPERABILITY_PROGRAM.md`  
-Backlog: `governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json`  
-Tranches: VTI-01..12 per canonical program/backlog; VTI-09 platform selection remains evidence-driven.
+Backlog: `governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json`
+
+Tranches: VTI-01..12 per canonical program/backlog; VTI-09 platform selection remains evidence-driven. VTI follows ALP-08 so external adapters project the native semantics rather than becoming their first implementation.
 
 ## SGC — Source & Gameplay Coverage Closure
 
 Program: `governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_GAMEPLAY_COVERAGE_CLOSURE_PROGRAM.md`  
 Backlog: `governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json`
 
-Tranches: SGC-01 corpus/disposition taxonomy; SGC-02 mechanics/runtime coverage; SGC-03 abilities/powers/progression coverage; SGC-04 content-entity coverage; SGC-05 specialized/edge-case gameplay closure; SGC-06 UX/Creator/avatar/accessibility coverage; SGC-07 owner-decision/supersession queue; SGC-08 final source-to-product closure proof. The RSR source bundle and every RSR disposition become mandatory SGC corpus inputs so final coverage closure cannot lose this recovered material.
+Tranches: SGC-01 corpus/disposition taxonomy; SGC-02 mechanics/runtime coverage; SGC-03 abilities/powers/progression coverage; SGC-04 content-entity coverage; SGC-05 specialized/edge-case gameplay closure; SGC-06 UX/Creator/avatar/accessibility coverage; SGC-07 owner-decision/supersession queue; SGC-08 final source-to-product closure proof. The RSR source bundle, recovered mine-note disposition/amendment, routed existing-owner decisions and all SSA/KFR/ODL/MAL/ALP outputs are mandatory SGC inputs.
 
 ## MIB continuation
 
-MIB-15 is `completed_verified`. RSR-02 reconciled recovered world/reality/timeline material against completed MIB-11; RSR-03 reconciled ICF-related recovered material against completed ICF-01..15; RSR-04 reconciled CEL/economy/life-loop material against completed CEL-01..06 and existing Economy/Downtime/Cozy owners; and RSR-05 reconciled loot/scavenge/salvage material against completed LSS-01..10 and D17/ICF/economy owners without replacing their authorities. MIB-16 diagnostics/provenance/dependency/search still follows SGC-08; MIB-17 family safety follows MIB-16; MIB-18 backbone integration/portability/readiness follows MIB-17.
+MIB-15 is `completed_verified` in its historical closure record. MIB-16 diagnostics/provenance/dependency/search follows SGC-08; MIB-17 family safety follows MIB-16; MIB-18 backbone integration/portability/readiness follows MIB-17. Runtime status of any MIB item must be read from current pointer/index evidence.
 
 ## SMB / BRP / MCB
 
@@ -279,18 +326,20 @@ MCB remains owner-approved commercial preparation outside the automatic critical
 
 ## Preserved/gated work
 
-- CCTI-12-T04 remains deferred until the owner's September 2026 condition; PR #191 preserved and non-authoritative.
-- WP-011 remains dormant pending required Apple/Mac environment; PR #61 preserved.
-- DS-008 remains blocked non-owner exact-byte transfer/validation.
+- CCTI-12-T04 remains deferred until the owner's September 2026 condition; PR #191 preserved and non-authoritative unless newer runtime evidence changes that disposition.
+- WP-011 remains dormant pending required Apple/Mac environment unless newer runtime evidence changes that disposition.
+- DS-008 remains blocked non-owner exact-byte transfer/validation unless newer runtime evidence changes that disposition.
 - Tester distribution, release/deployment, paid-provider activation and production-provider selection remain separately governed.
 
 ## Shared rules
 
 - One canonical owner per live state; new programs orchestrate/projection-map rather than duplicate ledgers.
+- **Things preserve semantic meaning across systems:** spatial geometry, knowledge, organization state, microgame presentation, achievements and external projections must reference their owning governed objects instead of creating shadow truth.
 - Visibility filtering precedes search/counts/summaries/AI/diagnostics/export.
+- Unknown remains unknown; generated/inferred historical material does not become current authority without governed confirmation.
 - AI may assist/propose but never gains mechanical, canonical, permission, consent, ownership, hidden-information, GM-adjudication, publishing or irreversible-advancement authority.
 - Recovered historical assistant output is not canonical merely because it is archived.
-- Migrations are evidence-driven; `0022` is not pre-reserved.
+- Migrations are evidence-driven; no migration number is reserved merely by roadmap planning.
 - Exact-head repository health and governed self-hosted Windows/Linux deterministic validation remain required for implementation tranches where the declared application/package gate applies.
 - Product voice remains warm, knowledgeable, encouraging and restrained; BRP-03 owns final product-wide voice/onboarding/help acceptance before beta.
 - `BETA_READY` is an evidence state, not public-release authorization.

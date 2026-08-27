@@ -2,7 +2,7 @@
 
 **Program ID:** VTI  
 **Status:** OWNER-APPROVED — PLANNED INTERSTITIAL  
-**Activation:** after SCL-11  
+**Activation:** after ALP-08  
 **Successor:** SGC-01  
 **Owner and final authority:** John Brandon Turner
 
@@ -14,6 +14,8 @@ Integration levels are capability-driven:
 - Level 1: export/content pack;
 - Level 2: synchronized companion;
 - Level 3: native Multiversal VTT system/rules package where the platform supports it.
+
+VTI follows the native mine-note-derived semantic families so adapters project mature native state rather than becoming the first implementation of spatial semantics, knowledge/familiarity, organization dynamics, microgames or learning/achievement behavior.
 
 ## Tranches
 
@@ -33,7 +35,7 @@ Integration levels are capability-driven:
    Present Characters, NPCs, creatures, equipment, powers, conditions, rules references, roll tables and vehicles in platform-native forms where supported.
 
 6. **VTI-06 — Scene, Map, Token & MAI Bridge**  
-   Translate Multiversal Scene + MAI projections to maps, tokens, walls, doors, lighting, grid/elevation/notes and GM-only material supported by the target VTT.
+   Translate Multiversal Scene + MAI/ISE/SSA projections to maps, tokens, walls, doors, lighting, grid/elevation/notes and GM-only material supported by the target VTT.
 
 7. **VTI-07 — Permissions, Hidden Information & GM Authority**  
    Preserve ownership, consent, GM adjudication and hidden-information filtering across external clients; prevent hidden counts/content leakage.
@@ -60,3 +62,4 @@ Integration levels are capability-driven:
 - Capability manifests control feature exposure; unsupported fidelity is explicit.
 - No VTT adapter may bypass visibility, ownership, consent or GM authority.
 - No vendor is selected by roadmap text; platform selection is evidence-driven at VTI-09.
+- Native SSA/KFR/ODL/MAL/ALP state is projected only where a platform supports it; VTI does not recreate those systems externally.
