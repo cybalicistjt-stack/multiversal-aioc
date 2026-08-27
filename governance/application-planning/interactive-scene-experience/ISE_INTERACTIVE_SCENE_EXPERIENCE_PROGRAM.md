@@ -3,7 +3,7 @@
 **Program ID:** ISE  
 **Status:** OWNER-APPROVED — PLANNED INTERSTITIAL  
 **Activation:** after AAI-10  
-**Successor:** WCI-01  
+**Successor:** SSA-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-08-23
 
@@ -12,6 +12,8 @@
 ISE turns Multiversal's existing governed Scene semantics plus completed MAI visual interoperability and AAI audio interoperability into the native, polished tabletop experience. The target is Foundry-level spatial capability with substantially lower preparation friction: users should be able to import or assemble legitimate map/audio assets, make them playable quickly, and interact with them through Multiversal's actual Character, Creature, Item, Encounter, Hazard, Vehicle, World/Reality, Action/Event and permission authorities rather than through a parallel VTT rules ledger.
 
 ISE consumes the existing A5 Scene foundation, including versioned map references, square-grid calibration, cell/cell-area/named-zone/gridless semantic locations, dungeon primitives and Campaign-local placements. It expands the interaction/presentation layer; it does not replace Scene, World, Combat, Character, Item/Asset, permission, MAI or AAI ownership.
+
+SSA follows ISE-08 to deepen the recovered mine-note semantic-spatial authoring layer—structural attachment/topology, caves/irregular spaces, functional ecology zones and research infrastructure—without expanding ISE into a second World or authoring ledger.
 
 ## Experience goals
 
@@ -53,6 +55,7 @@ ISE consumes the existing A5 Scene foundation, including versioned map reference
 - MAI owns map/tileset/image/geometry import, semantic asset resolution and provider/source provenance.
 - AAI owns local/provider audio, capability negotiation, playback, semantic audio intent and entitlement/license constraints.
 - ISE consumes MAI + AAI to create the native playable Scene experience.
+- SSA consumes confirmed ISE/MAI spatial semantics for deeper authoring relationships after ISE-08.
 - VTI later projects the same governed Scene/MAI/AAI state into external VTTs where their APIs and licenses permit it; external VTTs do not replace ISE or Multiversal rules authority.
 - Structured imports should consume supported metadata rather than flattening everything to pixels. Unsupported metadata remains explicit.
 - Commercial third-party assets are referenced/controlled under legitimate entitlement and license; ISE/Scene Recipes must not become a redistribution path.
