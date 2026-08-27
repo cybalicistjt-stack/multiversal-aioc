@@ -2,12 +2,12 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 6.1.0  
+**Version:** 6.2.0  
 **Status:** ACTIVE CANDIDATE — CRS COMPLETION PENDING  
 **Owner and final authority:** John Brandon Turner  
 **Governance repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Application repository:** `cybalicistjt-stack/Multiversal-app`  
-**Last updated:** 2026-08-21
+**Last updated:** 2026-08-27
 
 ## Purpose
 
@@ -35,12 +35,13 @@ Repository evidence always outranks stale prose.
 
 ## Mandatory operating policies
 
-Read all policies named by `CURRENT_WORK_POINTER.json`. At minimum the current policy set includes:
+Read all policies named by `CURRENT_WORK_POINTER.json` and all `CURRENT` operating policies in the authority registry. At minimum the stable operating-policy set includes:
 
 - `governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md`
 - `governance/ai/MULTIVERSAL_COMPLETION_CLAIM_INTEGRITY_POLICY.md`
 - `governance/ai/MULTIVERSAL_SELF_HOSTED_FINAL_VALIDATION_POLICY.md`
 - `governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md`
+- `governance/ai/MULTIVERSAL_EXECUTION_CONVERGENCE_POLICY.md`
 
 Do not infer current status from examples embedded in older policies or historical work packages.
 
@@ -52,14 +53,16 @@ Perform this sequence before explaining, planning, or claiming current project s
 2. Read this bootstrap from AIOC `main`.
 3. Read `governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json`.
 4. Read `governance/ai/runtime/CURRENT_WORK_POINTER.json`.
-5. Read the policies named by the pointer.
+5. Read the policies named by the pointer and the `CURRENT` operating policies in the authority registry.
 6. Read the checkpoint named by `primary_attempt_id` and inspect its exact branch/PR/commit evidence.
-7. Compare the pointer/checkpoint with **live GitHub state**. A pointer that names a closed PR, missing branch, superseded attempt, or contradictory head is a repository-health defect; do not continue unrelated feature work until it is reconciled.
-8. Read `governance/ai/runtime/ROADMAP_INDEX.json` and only the roadmap/program/supplement paths named by the pointer/checkpoint for the active work. Do not load unrelated historical roadmap sections by default.
-9. Inspect current blocking CI/failure evidence only when it is bound to the active attempt or its required gate. Historical failure records are not automatically current blockers.
-10. If exact bytes, archives, screenshots, physical devices, generated packages, external credentials, or special hardware are required, inspect the actually available source/execution surface before declaring a blocker.
-11. When a checkout is available, run the repository continuity/health validation named by current canonical governance. When only connector access is available, verify the same pointer → checkpoint → branch/PR → evidence invariants directly.
-12. Resume the exact unfinished operation. Do not recreate completed work or revive historical authority.
+7. If the active attempt has implementation authority, recover its `convergence_control` counters, failure classification, diagnostic hypotheses and retry basis. These values are repository state and do not reset because the conversation changed.
+8. Compare the pointer/checkpoint with **live GitHub state**. A pointer that names a closed PR, missing branch, superseded attempt, or contradictory head is a repository-health defect; do not continue unrelated feature work until it is reconciled.
+9. Read `governance/ai/runtime/ROADMAP_INDEX.json` and only the roadmap/program/supplement paths named by the pointer/checkpoint for the active work. Do not load unrelated historical roadmap sections by default.
+10. Inspect current blocking CI/failure evidence only when it is bound to the active attempt or its required gate. Historical failure records are not automatically current blockers.
+11. Inspect the live execution-convergence scorecard when evaluating repeated owner continuations, repair loops, retry behavior, or validation-scope performance. Do not substitute the historical deterministic interaction pilot for live throughput evidence.
+12. If exact bytes, archives, screenshots, physical devices, generated packages, external credentials, or special hardware are required, inspect the actually available source/execution surface before declaring a blocker.
+13. When a checkout is available, run the repository continuity/health validation named by current canonical governance. When only connector access is available, verify the same pointer → checkpoint → branch/PR → evidence invariants directly.
+14. Resume the exact unfinished operation. Do not recreate completed work, reset convergence counters, or revive historical authority.
 
 ## Current-state prohibition
 
@@ -114,7 +117,8 @@ Before relying on an old workflow or validator:
 2. verify its lifecycle assumptions still match current repository state;
 3. verify it uses the current validation policy/core or a registered exception;
 4. do not weaken a correct historical validator simply to make it pass against a later lifecycle state—retire it from current paths instead;
-5. historical workflows must not auto-trigger.
+5. historical workflows must not auto-trigger;
+6. ordinary substantive application/package work must select the one governed current-tranche Validation Core profile rather than automatically invoking completed historical profiles.
 
 For application/package final validation, use exact-head self-hosted Windows/Linux lanes and deterministic cross-platform evidence when applicable. GitHub-hosted compute is not a generic project-wide final requirement.
 
@@ -126,7 +130,10 @@ Distinguish precisely among:
 - source bytes available but transfer unavailable;
 - repository checkout unavailable;
 - validation failure;
+- validation-contract failure;
+- validation-infrastructure failure;
 - runner/environment failure;
+- repository-state failure;
 - owner-only gate.
 
 Never reconstruct checksum-bound exact artifacts from excerpts, memory, OCR, or paraphrase.
@@ -140,12 +147,18 @@ Checkpoints are recovery boundaries, not activity logs.
 - Run focused checks during construction and the declared exact-head gate at the final package boundary.
 - Never rewrite a failed/interrupted attempt to make it appear complete.
 - A post-merge projection may be bundled with the next work start; avoid gratuitous closure-only churn unless state would otherwise be contradictory.
+- Implementation attempts must preserve monotonic convergence counters across conversations.
+- A retry after failure must record what materially changed; an identical rerun is not progress.
+- A second related repair requires diagnostic mode, failure classification and falsifiable root-cause hypotheses before another final rerun.
+- Two no-progress cycles require an explicit control-plane, environment or owner blocker, or a diagnostic change to the retry basis.
 
 ## Owner operating rule
 
 When John says `Continue`, execute the next verified unfinished **implementation tranche as a whole**. Do not substitute an acknowledgement, plan, promise, recap, or unnecessary clarification.
 
 Unless a genuine owner-only, unavailable-environment, unavailable-source, safety, or irrecoverable external blocker prevents completion, `Continue` means carry that tranche through its governed start (if needed), implementation, focused repair, exact-head validation, required merge, `completed_verified` closeout, and canonical selection of its strict successor. Do **not** stop merely because validation is queued/in progress, a PR is open/ready, a closeout is pending, or the successor could be queued as an interstitial step. Poll/work around normal validation latency and finish the bounded tranche before reporting.
+
+A repeated `Continue` on the same ordinary tranche is an execution-cost signal. Do not consume another owner turn merely to rediscover the same state or repeat an unchanged validation attempt. Follow the execution-convergence policy: classify the failure, diagnose by the second related repair, and block explicitly rather than entering an unbounded retry loop.
 
 Perform work in the current response. If work remains incomplete because a genuine blocker survives reasonable recovery attempts, say so truthfully and preserve the exact recovery point in repository evidence.
 
@@ -159,7 +172,7 @@ Perform work in the current response. If work remains incomplete because a genui
 
 ## Stop-the-line repository-health rule
 
-If stale governance, a retired validator, an unregistered workflow, a superseded PR, or contradictory runtime state can materially alter work selection or validation outcome, treat that as a repository-health defect. Repair or explicitly quarantine the common defect before continuing unrelated feature completion.
+If stale governance, a retired validator, an unregistered workflow, a superseded PR, contradictory runtime state, repeated no-progress cycle, or validation-scope fan-out can materially alter work selection or validation outcome, treat that as a repository-health defect. Repair or explicitly quarantine the common defect before continuing unrelated feature completion.
 
 Do not repeatedly patch the same class of stale infrastructure inside individual feature tranches.
 
