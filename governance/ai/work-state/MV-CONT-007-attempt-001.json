@@ -1,0 +1,34 @@
+{
+  "schema_version":"0.1.0",
+  "work_item_id":"MV-CONT-007",
+  "attempt_id":"MV-CONT-007-attempt-001",
+  "track":"execution-surface-simplification",
+  "repository":"cybalicistjt-stack/multiversal-aioc",
+  "title":"Family-Scoped Validation Simplification & Zombie Retirement",
+  "status":"in_progress",
+  "owner_selected":true,
+  "started_at":"2026-08-27T19:37:00Z",
+  "implementation_branch":"ops/family-scoped-validation-simplification",
+  "implementation_authority":true,
+  "exclusive_control_plane_maintenance":true,
+  "objective":"Reduce the live development execution surface to one family-scoped application CI path and one flattened AIOC health path; retire historical validators from automatic execution; replace repeated predecessor revalidation with sealed proof ancestry; prevent concurrent feature starts during control-plane maintenance; and make future family transitions explicitly establish their allowed validation surface once per family rather than once per tranche.",
+  "preserved_product_state":{"selected_work_item":"AAI-10","selected_attempt":"AAI-10-attempt-001","selected_status":"selected_not_started","application_main":"b670368ca91778802867a1a4b8d963c3a3ea8875","implementation_authority":false},
+  "known_defects":[
+    "AIOC live Repository Health executes RSR-01..07 validators even though validator lifecycle registry classifies historical validate_*.py scripts inert.",
+    "AIOC repository-health entrypoint inherits a long version chain rather than a flat current validator surface.",
+    "Application Repository Health and current-tranche validation are separate automatic workflows despite overlapping exact-head/execution-surface checks.",
+    "AAI profiles rerun all historical AAI predecessor verifiers on both lanes even when completed proof has not been invalidated.",
+    "No canonical exclusive maintenance lease prevents another conversation from governed-starting selected feature work while control-plane remediation is active."
+  ],
+  "completion_gate":[
+    "AAI-10 remains selected_not_started throughout remediation.",
+    "Application ordinary PR validation has one automatic family-scoped workflow path.",
+    "Historical predecessor proof is sealed and checked by ancestry/integrity rather than rerun by default.",
+    "AIOC live workflow no longer directly runs RSR-01..07 historical validators.",
+    "Current AIOC repository health is flattened to one current validator implementation surface without version-chain runtime imports.",
+    "Family contract switches allowed validation scope only at family boundaries or explicit exceptional integration tranches.",
+    "Repository health machine-enforces active-family scope and retired-validator nonexecution.",
+    "Exact-head validation passes in both repositories and remediation merges before AAI-10 governed start."
+  ],
+  "next_action":"Simplify application and AIOC execution surfaces, validate the exact remediation heads, merge both changes, clear the exclusive maintenance lock, and return canonical selection to AAI-10 selected_not_started."
+}
