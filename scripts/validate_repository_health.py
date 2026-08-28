@@ -288,7 +288,7 @@ def _validate_authority_and_pointer(
         checkpoint_path = Path(str(maintenance.get("checkpoint_path", "")))
         checkpoint = audit.read_json(checkpoint_path)
         audit.require(
-            maintenance.get("attempt_id") == checkpoint.get("attempt_id") == "MV-CONT-007-attempt-001",
+            maintenance.get("attempt_id") == checkpoint.get("attempt_id") == "MV-CONT-008-attempt-001",
             "MVHEALTH-MAINTENANCE-IDENTITY",
             "maintenance pointer/checkpoint identity mismatch",
             checkpoint_path,
@@ -307,7 +307,7 @@ def _validate_authority_and_pointer(
             audit,
             checkpoint.get("convergence_control", {}),
             str(checkpoint.get("status")),
-            "MV-CONT-007-attempt-001",
+            "MV-CONT-008-attempt-001",
         )
         audit.require(
             checkpoint_path.as_posix() in paths,

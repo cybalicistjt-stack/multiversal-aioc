@@ -1,8 +1,8 @@
 {
-  "schema_version":"11.1.0",
+  "schema_version":"11.2.0",
   "program_id":"CRS",
   "status":"CURRENT_GUARDRAIL",
-  "updated_at":"2026-08-28T11:22:35Z",
+  "updated_at":"2026-08-28T15:53:40Z",
   "canonical_selector":{
     "repository":"cybalicistjt-stack/multiversal-aioc",
     "path":"governance/ai/runtime/CURRENT_WORK_POINTER.json",
@@ -23,6 +23,7 @@
     "migration_head":"0021_apm_autogm_mini_campaign_director.json"
   },
   "recently_completed_control_plane_maintenance":{"work_item":"MV-CONT-007","state":"completed_verified","application_merge":"e34d43d669c48d484dbdb9e82b72a00c5d91f00c","aioc_merge":"c94baa78f0f135681ecaab3e6dc36d5c11b1afa2","aioc_main_health_run":33166847490,"superseded_prs_closed":[763,770]},
+  "exclusive_control_plane_maintenance":{"work_item":"MV-CONT-008","attempt_id":"MV-CONT-008-attempt-001","state":"in_progress","implementation_branch":"codex/mv-cont-008-process-repair","implementation_authority":true,"feature_starts_blocked":true},
   "active_work":{
     "work_item":"AAI-10",
     "attempt_id":"AAI-10-attempt-001",
@@ -64,7 +65,7 @@
   "selection_invariants":[
     "AAI-01..09 completed_verified",
     "AAI-10 selected_not_started with no implementation branch or authority",
-    "MV-CONT-007 completed_verified and maintenance lease cleared",
+    "MV-CONT-007 completed_verified; MV-CONT-008 holds the exclusive maintenance lease",
     "paid provider activation, live credentials, scraping, content-byte acquisition, migration 0022, tester distribution and deployment remain unauthorized"
   ]
 }

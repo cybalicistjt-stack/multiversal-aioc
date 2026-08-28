@@ -1,0 +1,43 @@
+{
+  "schema_version":"0.1.0",
+  "work_item_id":"MV-CONT-008",
+  "attempt_id":"MV-CONT-008-attempt-001",
+  "track":"process-architecture-and-state-driven-validation",
+  "repository":"cybalicistjt-stack/multiversal-aioc",
+  "title":"Phase 1-to-Present Process Review & State-Driven Validation",
+  "status":"in_progress",
+  "owner_selected":true,
+  "started_at":"2026-08-28T15:53:40Z",
+  "implementation_branch":"codex/mv-cont-008-process-repair",
+  "implementation_authority":true,
+  "exclusive_control_plane_maintenance":true,
+  "objective":"Review Multiversal planning, implementation and agent behavior from Phase 1 through the current AAI boundary; preserve the product architecture that is working; remove current-state constants from executable validation; close application and AIOC CI trigger gaps; and establish a bounded recovery/evidence-lease operating rule that prevents repeated reconnaissance and owner-driven continuation loops.",
+  "preserved_product_state":{"selected_work_item":"AAI-10","selected_attempt":"AAI-10-attempt-001","selected_status":"selected_not_started","feature_baseline":"b670368ca91778802867a1a4b8d963c3a3ea8875","application_main":"e34d43d669c48d484dbdb9e82b72a00c5d91f00c","implementation_authority":false},
+  "convergence_control":{
+    "owner_continue_count":1,
+    "execution_cycles":1,
+    "repair_cycles":0,
+    "no_progress_cycles":0,
+    "diagnostic_mode":true,
+    "last_failure_signature":"The prior triage correctly diagnosed CI and behavioral-control accretion but then repeatedly stopped at self-declared execution boundaries; the replacement flat validator also embedded current work-item IDs, SHAs and run IDs, while current CI omitted control-plane tests and root dependency changes.",
+    "last_failure_class":"validation_contract",
+    "diagnostic_hypotheses":[
+      "Mutable repository state was encoded in executable validator constants instead of being derived from canonical registries and sealed proof data.",
+      "Recovery and authority checks had no freshness lease, so workers could restart reconnaissance without a concrete invalidating event.",
+      "Workflow path filters covered implementation directories but omitted root dependency/toolchain surfaces and AIOC control-plane regression tests."
+    ],
+    "retry_basis":{"changed_since_previous":["MV-CONT-007 is completed_verified on live main.","The owner explicitly authorized the Phase 1-to-present review and related process/control improvements.","Repository, GitHub, Drive, Airtable and saved conversation evidence were inspected together and produced bounded implementation defects rather than another open-ended audit."]},
+    "service_objective":{"ordinary_tranche_single_continue_target_percent":80,"ordinary_tranche_two_continue_target_percent":95,"max_execution_cycles_without_genuine_blocker":2,"unrelated_historical_validation_jobs_target":0,"reruns_without_changed_evidence_target":0,"post_merge_stale_pointer_target":0}
+  },
+  "completion_gate":[
+    "AAI-10 remains selected_not_started without implementation authority.",
+    "A durable Phase 1-to-present review identifies retained patterns, failure modes, chat-worker errors and the improved operating model.",
+    "The current AIOC validator derives active/completed work identity and proof values from canonical state rather than work-item-specific constants.",
+    "AIOC control-plane tests trigger and run in the one repository-health workflow.",
+    "Application root dependency, lockfile, toolchain, test and validation-tool changes trigger current-family health and substantive profile selection as appropriate.",
+    "The convergence policy establishes one recovery pass and an evidence-freshness lease with concrete invalidation triggers.",
+    "Focused regressions, exact-head repository health and live GitHub checks pass in both repositories before closeout."
+  ],
+  "active_operation":{"kind":"governed_process_repair","phase":"start_lease","state":"in_progress"},
+  "next_action":"Merge the exclusive maintenance start lease, then implement the bounded review and state-driven validation repairs without starting AAI-10."
+}
