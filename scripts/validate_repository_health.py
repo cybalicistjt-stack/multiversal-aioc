@@ -294,12 +294,13 @@ def _validate_authority_and_pointer(
             checkpoint_path,
         )
         audit.require(
-            maintenance.get("status") == checkpoint.get("status") == "in_progress"
+            maintenance.get("status") == checkpoint.get("status")
+            and checkpoint.get("status") in {"in_progress", "ready_for_review"}
             and maintenance.get("branch") == checkpoint.get("implementation_branch")
             and checkpoint.get("implementation_authority") is True
             and maintenance.get("feature_starts_blocked") is True,
             "MVHEALTH-MAINTENANCE-STATE",
-            "active maintenance must be in_progress, branch-consistent, authorized and feature-blocking",
+            "active maintenance must be in_progress/ready_for_review, branch-consistent, authorized and feature-blocking",
             checkpoint_path,
         )
         _validate_convergence_control(

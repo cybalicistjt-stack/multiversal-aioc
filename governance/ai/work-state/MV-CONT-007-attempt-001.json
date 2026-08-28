@@ -5,7 +5,7 @@
   "track":"execution-surface-simplification",
   "repository":"cybalicistjt-stack/multiversal-aioc",
   "title":"Family-Scoped Validation Simplification & Zombie Retirement",
-  "status":"in_progress",
+  "status":"ready_for_review",
   "owner_selected":true,
   "started_at":"2026-08-27T19:37:00Z",
   "implementation_branch":"codex/mv-cont-007-recovery",
@@ -49,6 +49,18 @@
       "post_merge_stale_pointer_target":0
     }
   },
+  "ready_for_review_evidence":{
+    "recorded_at":"2026-08-28T11:18:34Z",
+    "implementation_content_head":"2a62cca251d99fcbcabdccc59304659daebc34ee",
+    "flat_aioc_health":"PASS",
+    "cross_repository_app_health":{"head":"e34d43d669c48d484dbdb9e82b72a00c5d91f00c","status":"PASS"},
+    "termination_preflight_self_test":{"cases":10,"status":"PASS"},
+    "control_plane_unit_tests":{"tests":5,"status":"PASS"},
+    "windows_crlf_checkout_health":"PASS",
+    "historical_validator_execution_count":0,
+    "historical_validator_runtime_import_count":0,
+    "retired_legacy_control_suite_count":5
+  },
   "known_defects":[
     "AIOC live Repository Health executes RSR-01..07 validators even though validator lifecycle registry classifies historical validate_*.py scripts inert.",
     "AIOC repository-health entrypoint inherits a long version chain rather than a flat current validator surface.",
@@ -67,5 +79,5 @@
     "Exact-head validation passes in both repositories and remediation merges before AAI-10 governed start."
   ],
   "active_operation":"Flatten the current AIOC health path, enforce lifecycle and termination contracts, reconcile live registries to the completed app half, retire superseded PR paths, and complete exact-head closeout.",
-  "next_action":"Implement and validate the bounded AIOC recovery on codex/mv-cont-007-recovery; merge after exact-head health passes, close superseded PRs, clear the maintenance lease, and return canonical selection to AAI-10 selected_not_started."
+  "next_action":"Push and open the AIOC recovery PR, inspect exact-head repository-health evidence, merge when green, close superseded PRs 763 and 770, then record completed_verified closeout and clear the maintenance lease."
 }
