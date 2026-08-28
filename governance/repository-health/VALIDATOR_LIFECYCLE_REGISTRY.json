@@ -24,6 +24,14 @@
           "purpose":"Evaluate ephemeral turn state against the executable termination contract."
         }
       ],
+      "current_regression_suites":[
+        {
+          "path":"tests/control_plane/test_control_plane_health.py",
+          "lifecycle":"CURRENT_COMPATIBLE",
+          "caller":".github/workflows/validate-repository-health.yml",
+          "purpose":"Focused negative regressions for termination decisions, workflow lifecycle enforcement and state-driven validator behavior; this suite is not a separate validator."
+        }
+      ],
       "historical_inert_exact_paths":[
         "scripts/_validate_repository_health_v1_6.py",
         "scripts/_validate_repository_health_v1_7.py",

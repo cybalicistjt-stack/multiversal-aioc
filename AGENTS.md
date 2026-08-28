@@ -47,3 +47,7 @@ Before emitting a final response from an execution turn:
 4. Finalize only when the decision is `ALLOW_FINAL_RESPONSE`, then report evidence matching that reason.
 
 The ephemeral preflight file is execution evidence, not a checkpoint or repository artifact. Do not commit it. A missing or failed preflight is nonterminal while safe authorized work remains.
+
+## Recovery evidence lease
+
+Run the repository-first recovery sequence once per execution cycle. Treat the resolved pointer/checkpoint, relevant exact heads and current gate as fresh until a concrete invalidation occurs: an authority/head/branch change, merge or rebase, conflicting writer, materially new check result, or explicit stale/contradictory tool evidence. Refresh only affected facts. A tool batch ending, elapsed time, context compaction, a status request, or discovering another historical file does not justify restarting recovery.

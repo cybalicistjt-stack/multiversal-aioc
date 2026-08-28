@@ -31,6 +31,7 @@ SCORECARD_PATH = Path(
 CURRENT_WORKFLOW = Path(".github/workflows/validate-repository-health.yml")
 CURRENT_VALIDATOR = Path("scripts/validate_repository_health.py")
 CURRENT_PREFLIGHT = Path("scripts/execution_termination_preflight.py")
+CURRENT_CONTROL_TESTS = Path("tests/control_plane/test_control_plane_health.py")
 EXPECTED_AIOC_WORKFLOWS = {"validate-repository-health.yml"}
 EXPECTED_APP_WORKFLOWS = {
     "_validation-core-profile.yml",
@@ -227,29 +228,45 @@ def _validate_authority_and_pointer(
     runtime: dict[str, Any],
 ) -> dict[str, Any]:
     active = pointer.get("active_attempt", {})
+    attempt_id = active.get("attempt_id")
     audit.require(
-        pointer.get("primary_attempt_id") == active.get("attempt_id") == "AAI-10-attempt-001",
+        isinstance(attempt_id, str)
+        and bool(attempt_id)
+        and pointer.get("primary_attempt_id") == attempt_id,
         "MVHEALTH-SELECTOR-IDENTITY",
-        "pointer primary and selected attempt must remain AAI-10-attempt-001",
-        POINTER_PATH,
-    )
-    audit.require(
-        active.get("status") == "selected_not_started"
-        and active.get("implementation_branch") is None,
-        "MVHEALTH-FEATURE-START",
-        "AAI-10 must remain selected_not_started without an implementation branch",
+        "pointer primary attempt must identify the selected active attempt",
         POINTER_PATH,
     )
     selected_path = Path(str(active.get("checkpoint_path", "")))
     selected = audit.read_json(selected_path)
+    selected_status = active.get("status")
     audit.require(
-        selected.get("attempt_id") == active.get("attempt_id")
-        and selected.get("status") == active.get("status")
-        and selected.get("implementation_authority") is False,
+        selected.get("work_item_id") == active.get("work_item_id")
+        and selected.get("attempt_id") == attempt_id
+        and selected.get("status") == selected_status
+        and selected.get("implementation_branch")
+        == active.get("implementation_branch"),
         "MVHEALTH-SELECTED-CHECKPOINT",
-        "selected AAI-10 checkpoint disagrees with pointer or gained authority",
+        "selected checkpoint identity, status or branch disagrees with the pointer",
         selected_path,
     )
+    if selected_status == "selected_not_started":
+        audit.require(
+            active.get("implementation_branch") is None
+            and selected.get("implementation_authority") is False,
+            "MVHEALTH-UNAUTHORIZED-FEATURE-START",
+            "selected_not_started work must not have a branch or implementation authority",
+            selected_path,
+        )
+    else:
+        audit.require(
+            selected_status in {"in_progress", "ready_for_review"}
+            and isinstance(active.get("implementation_branch"), str)
+            and selected.get("implementation_authority") is True,
+            "MVHEALTH-ACTIVE-FEATURE-STATE",
+            "started product work must be authorized, branch-bound and nonterminal",
+            selected_path,
+        )
 
     current_entries = authority.get("current", [])
     paths = [item.get("path") for item in current_entries if isinstance(item, dict)]
@@ -283,12 +300,42 @@ def _validate_authority_and_pointer(
         AUTHORITY_PATH,
     )
 
+    authority_active = authority.get("active_planning_work", {})
+    runtime_active = runtime.get("active_work", {})
+    audit.require(
+        authority_active.get("work_item") == active.get("work_item_id")
+        and authority_active.get("attempt_id") == attempt_id
+        and authority_active.get("state") == selected_status
+        and authority_active.get("implementation_branch")
+        == active.get("implementation_branch")
+        and authority_active.get("implementation_authority")
+        == selected.get("implementation_authority"),
+        "MVHEALTH-AUTHORITY-SELECTOR-DRIFT",
+        "authority registry active planning work disagrees with the pointer/checkpoint",
+        AUTHORITY_PATH,
+    )
+    audit.require(
+        runtime_active.get("work_item") == active.get("work_item_id")
+        and runtime_active.get("attempt_id") == attempt_id
+        and runtime_active.get("state") == selected_status
+        and runtime_active.get("implementation_branch")
+        == active.get("implementation_branch")
+        and runtime_active.get("implementation_authority")
+        == selected.get("implementation_authority"),
+        "MVHEALTH-RUNTIME-SELECTOR-DRIFT",
+        "runtime registry active work disagrees with the pointer/checkpoint",
+        RUNTIME_REGISTRY_PATH,
+    )
+
     maintenance = pointer.get("exclusive_control_plane_maintenance")
     if isinstance(maintenance, dict):
         checkpoint_path = Path(str(maintenance.get("checkpoint_path", "")))
         checkpoint = audit.read_json(checkpoint_path)
         audit.require(
-            maintenance.get("attempt_id") == checkpoint.get("attempt_id") == "MV-CONT-008-attempt-001",
+            isinstance(maintenance.get("attempt_id"), str)
+            and bool(maintenance.get("attempt_id"))
+            and maintenance.get("attempt_id") == checkpoint.get("attempt_id")
+            and maintenance.get("work_item_id") == checkpoint.get("work_item_id"),
             "MVHEALTH-MAINTENANCE-IDENTITY",
             "maintenance pointer/checkpoint identity mismatch",
             checkpoint_path,
@@ -307,7 +354,7 @@ def _validate_authority_and_pointer(
             audit,
             checkpoint.get("convergence_control", {}),
             str(checkpoint.get("status")),
-            "MV-CONT-008-attempt-001",
+            str(checkpoint.get("attempt_id")),
         )
         audit.require(
             checkpoint_path.as_posix() in paths,
@@ -318,18 +365,24 @@ def _validate_authority_and_pointer(
         authority_maintenance = authority.get("exclusive_control_plane_maintenance", {})
         runtime_maintenance = runtime.get("exclusive_control_plane_maintenance", {})
         audit.require(
-            authority_maintenance.get("attempt_id") == checkpoint.get("attempt_id")
+            authority_maintenance.get("work_item") == checkpoint.get("work_item_id")
+            and authority_maintenance.get("attempt_id") == checkpoint.get("attempt_id")
+            and authority_maintenance.get("state") == checkpoint.get("status")
             and authority_maintenance.get("implementation_branch")
             == checkpoint.get("implementation_branch")
+            and authority_maintenance.get("implementation_authority") is True
             and authority_maintenance.get("feature_starts_blocked") is True,
             "MVHEALTH-AUTHORITY-MAINTENANCE-DRIFT",
             "authority registry maintenance lease drift",
             AUTHORITY_PATH,
         )
         audit.require(
-            runtime_maintenance.get("attempt_id") == checkpoint.get("attempt_id")
+            runtime_maintenance.get("work_item") == checkpoint.get("work_item_id")
+            and runtime_maintenance.get("attempt_id") == checkpoint.get("attempt_id")
+            and runtime_maintenance.get("state") == checkpoint.get("status")
             and runtime_maintenance.get("implementation_branch")
             == checkpoint.get("implementation_branch")
+            and runtime_maintenance.get("implementation_authority") is True
             and runtime_maintenance.get("feature_starts_blocked") is True,
             "MVHEALTH-RUNTIME-MAINTENANCE-DRIFT",
             "runtime registry maintenance lease drift",
@@ -345,20 +398,28 @@ def _validate_authority_and_pointer(
         completed_records = pointer.get(
             "recently_completed_repository_health_maintenance", []
         )
-        completed = next(
-            (
-                row
-                for row in completed_records
-                if isinstance(row, dict) and row.get("work_item_id") == "MV-CONT-007"
-            ),
-            None,
+        audit.require(
+            isinstance(completed_records, list),
+            "MVHEALTH-MAINTENANCE-HISTORY-TYPE",
+            "completed repository-health maintenance must be an array",
+            POINTER_PATH,
         )
-        if isinstance(completed, dict):
+        for completed in (
+            completed_records if isinstance(completed_records, list) else []
+        ):
+            if not isinstance(completed, dict):
+                audit.fail(
+                    "MVHEALTH-MAINTENANCE-HISTORY-ROW",
+                    "completed maintenance record must be an object",
+                    POINTER_PATH,
+                )
+                continue
             checkpoint_path = Path(str(completed.get("checkpoint_path", "")))
             checkpoint = audit.read_json(checkpoint_path)
             completion = checkpoint.get("completion_evidence", {})
             audit.require(
-                checkpoint.get("status") == completed.get("status") == "completed_verified"
+                checkpoint.get("work_item_id") == completed.get("work_item_id")
+                and checkpoint.get("status") == completed.get("status") == "completed_verified"
                 and completion.get("application", {}).get("merge_sha")
                 == completed.get("application_merge")
                 and completion.get("aioc", {}).get("merge_sha")
@@ -368,7 +429,7 @@ def _validate_authority_and_pointer(
                 and completion.get("zombie_retirement", {}).get("closed_prs")
                 == completed.get("superseded_prs_closed"),
                 "MVHEALTH-MAINTENANCE-CLOSEOUT-DRIFT",
-                "MV-CONT-007 pointer/checkpoint completion evidence drift",
+                f"{completed.get('work_item_id')} pointer/checkpoint completion evidence drift",
                 checkpoint_path,
             )
             authority_completed = next(
@@ -377,12 +438,10 @@ def _validate_authority_and_pointer(
                     for row in authority.get(
                         "recently_completed_repository_health_remediation", []
                     )
-                    if isinstance(row, dict) and row.get("work_item") == "MV-CONT-007"
+                    if isinstance(row, dict)
+                    and row.get("work_item") == completed.get("work_item_id")
                 ),
                 None,
-            )
-            runtime_completed = runtime.get(
-                "recently_completed_control_plane_maintenance", {}
             )
             audit.require(
                 isinstance(authority_completed, dict)
@@ -390,17 +449,22 @@ def _validate_authority_and_pointer(
                 and authority_completed.get("superseded_prs_closed")
                 == completed.get("superseded_prs_closed"),
                 "MVHEALTH-AUTHORITY-CLOSEOUT-DRIFT",
-                "authority registry MV-CONT-007 completion evidence drift",
+                f"authority registry {completed.get('work_item_id')} completion evidence drift",
                 AUTHORITY_PATH,
             )
+        runtime_completed = runtime.get(
+            "recently_completed_control_plane_maintenance", {}
+        )
+        latest = completed_records[0] if completed_records else None
+        if isinstance(latest, dict):
             audit.require(
-                runtime_completed.get("work_item") == "MV-CONT-007"
+                runtime_completed.get("work_item") == latest.get("work_item_id")
                 and runtime_completed.get("state") == "completed_verified"
-                and runtime_completed.get("aioc_merge") == completed.get("aioc_merge")
+                and runtime_completed.get("aioc_merge") == latest.get("aioc_merge")
                 and runtime_completed.get("superseded_prs_closed")
-                == completed.get("superseded_prs_closed"),
+                == latest.get("superseded_prs_closed"),
                 "MVHEALTH-RUNTIME-CLOSEOUT-DRIFT",
-                "runtime registry MV-CONT-007 completion evidence drift",
+                "runtime registry latest maintenance completion evidence drift",
                 RUNTIME_REGISTRY_PATH,
             )
     return {
@@ -446,6 +510,13 @@ def _validate_workflows(
         CURRENT_WORKFLOW,
     )
     audit.require(
+        "tests/control_plane/**" in source
+        and "python3 -m unittest discover -s tests/control_plane" in source,
+        "MVHEALTH-CONTROL-PLANE-TEST-EXECUTION",
+        "the one AIOC health workflow must trigger and run current control-plane regressions",
+        CURRENT_WORKFLOW,
+    )
+    audit.require(
         "fetch-depth: 0" in source and "--expected-head" in source,
         "MVHEALTH-WORKFLOW-EXACT-HEAD",
         "AIOC workflow must fetch ancestry and bind the exact candidate head",
@@ -476,10 +547,9 @@ def _validate_workflows(
         WORKFLOW_REGISTRY_PATH,
     )
     audit.require(
-        app_registry.get("current_main")
-        == "e34d43d669c48d484dbdb9e82b72a00c5d91f00c",
+        _is_sha(app_registry.get("current_main")),
         "MVHEALTH-APP-MAIN-REGISTRY",
-        "workflow registry application main does not match merged family-scope PR 336",
+        "workflow registry application main must be a canonical commit SHA",
         WORKFLOW_REGISTRY_PATH,
     )
     return {
@@ -525,11 +595,22 @@ def _validate_validators(
         "executable termination preflight must be the sole current-compatible AIOC utility",
         VALIDATOR_REGISTRY_PATH,
     )
+    regression_suites = aioc.get("current_regression_suites", [])
+    audit.require(
+        len(regression_suites) == 1
+        and regression_suites[0].get("path")
+        == str(CURRENT_CONTROL_TESTS).replace("\\", "/")
+        and regression_suites[0].get("caller")
+        == str(CURRENT_WORKFLOW).replace("\\", "/"),
+        "MVHEALTH-REGRESSION-REGISTRY",
+        "the focused control-plane regression suite must be registered to the one health workflow",
+        VALIDATOR_REGISTRY_PATH,
+    )
     retired_suites = aioc.get("retired_legacy_control_suites", [])
     audit.require(
-        isinstance(retired_suites, list) and len(retired_suites) == 5,
+        isinstance(retired_suites, list) and bool(retired_suites),
         "MVHEALTH-LEGACY-CONTROL-REGISTRY",
-        "five superseded continuity/interaction control suites must be explicitly historical inert",
+        "superseded continuity/interaction control suites must remain explicitly historical inert",
         VALIDATOR_REGISTRY_PATH,
     )
     current_execution_text = source + audit.read_text(CURRENT_WORKFLOW)
@@ -556,6 +637,7 @@ def _validate_validators(
     return {
         "current_validator": str(CURRENT_VALIDATOR).replace("\\", "/"),
         "current_compatible_utility": str(CURRENT_PREFLIGHT).replace("\\", "/"),
+        "current_regression_suite": str(CURRENT_CONTROL_TESTS).replace("\\", "/"),
         "historical_runtime_imports": 0,
         "retired_legacy_control_suites": len(retired_suites)
         if isinstance(retired_suites, list)
@@ -564,7 +646,11 @@ def _validate_validators(
 
 
 def _validate_sealed_proofs(
-    audit: Audit, sealed: dict[str, Any], validator_registry: dict[str, Any]
+    audit: Audit,
+    sealed: dict[str, Any],
+    validator_registry: dict[str, Any],
+    workflow_registry: dict[str, Any],
+    pointer: dict[str, Any],
 ) -> dict[str, Any]:
     baseline = sealed.get("aioc_baseline", {})
     commit = baseline.get("commit")
@@ -647,44 +733,137 @@ def _validate_sealed_proofs(
         .get("historical_inert_exact_paths", [])
     )
     audit.require(
-        manifest_paths == registered and len(manifest_paths) == 16,
+        bool(manifest_paths) and manifest_paths == registered,
         "MVHEALTH-SEALED-REGISTRY-COVERAGE",
         "sealed validator manifest and historical-inert registry differ",
         SEALED_PROOFS_PATH,
     )
     app_proof = sealed.get("application_family_proof", {})
+    app_registry = (
+        workflow_registry.get("repositories", {})
+        .get("cybalicistjt-stack/Multiversal-app", {})
+    )
+    proof_workflows = set(app_proof.get("live_workflows", []))
+    registered_workflows = {
+        row.get("path")
+        for row in app_registry.get("live_workflows", [])
+        if isinstance(row, dict)
+    }
     audit.require(
-        app_proof.get("family_scope_merge")
-        == "e34d43d669c48d484dbdb9e82b72a00c5d91f00c"
-        and app_proof.get("sealed_baseline")
-        == "b670368ca91778802867a1a4b8d963c3a3ea8875"
+        app_proof.get("repository") == "cybalicistjt-stack/Multiversal-app"
+        and isinstance(app_proof.get("active_family"), str)
+        and bool(app_proof.get("active_family"))
+        and isinstance(app_proof.get("sealed_through"), str)
+        and _is_sha(app_proof.get("sealed_baseline"))
+        and _is_sha(app_proof.get("family_scope_merge"))
+        and app_proof.get("family_scope_merge") == app_registry.get("current_main")
+        and proof_workflows == registered_workflows
         and app_proof.get("historical_predecessor_reruns_default") is False,
         "MVHEALTH-APP-SEALED-PROOF",
-        "application active-family sealed proof drift",
+        "application family proof must agree with the workflow registry and retain sealed predecessor behavior",
         SEALED_PROOFS_PATH,
     )
-    recovery = sealed.get("control_plane_recovery_proof", {})
+    maintenance_proofs = sealed.get("control_plane_maintenance_proofs", [])
     audit.require(
-        recovery.get("work_item") == "MV-CONT-007"
-        and recovery.get("status") == "completed_verified"
-        and recovery.get("application_merge")
-        == "e34d43d669c48d484dbdb9e82b72a00c5d91f00c"
-        and recovery.get("aioc_merge")
-        == "c94baa78f0f135681ecaab3e6dc36d5c11b1afa2"
-        and recovery.get("aioc_repository_health_run") == 33166810683
-        and recovery.get("aioc_main_health_run") == 33166847490
-        and recovery.get("superseded_prs_closed") == [763, 770],
-        "MVHEALTH-CONTROL-PLANE-PROOF",
-        "durable MV-CONT-007 completion proof drift",
+        isinstance(maintenance_proofs, list) and bool(maintenance_proofs),
+        "MVHEALTH-CONTROL-PLANE-PROOF-TYPE",
+        "sealed control-plane maintenance proofs must be a non-empty array",
         SEALED_PROOFS_PATH,
     )
+    pointer_records = {
+        row.get("work_item_id"): row
+        for row in pointer.get("recently_completed_repository_health_maintenance", [])
+        if isinstance(row, dict) and isinstance(row.get("work_item_id"), str)
+    }
+    seen_work_items: set[str] = set()
+    for proof in maintenance_proofs if isinstance(maintenance_proofs, list) else []:
+        if not isinstance(proof, dict):
+            audit.fail(
+                "MVHEALTH-CONTROL-PLANE-PROOF-ROW",
+                "sealed control-plane maintenance proof must be an object",
+                SEALED_PROOFS_PATH,
+            )
+            continue
+        work_item = proof.get("work_item")
+        superseded = proof.get("superseded_prs_closed")
+        valid = (
+            isinstance(work_item, str)
+            and bool(work_item)
+            and work_item not in seen_work_items
+            and proof.get("status") == "completed_verified"
+            and isinstance(proof.get("application_pr"), int)
+            and proof.get("application_pr") > 0
+            and _is_sha(proof.get("application_merge"))
+            and isinstance(proof.get("aioc_pr"), int)
+            and proof.get("aioc_pr") > 0
+            and _is_sha(proof.get("aioc_validated_head"))
+            and isinstance(proof.get("aioc_repository_health_run"), int)
+            and proof.get("aioc_repository_health_run") > 0
+            and _is_sha(proof.get("aioc_merge"))
+            and isinstance(proof.get("aioc_main_health_run"), int)
+            and proof.get("aioc_main_health_run") > 0
+            and isinstance(superseded, list)
+            and all(isinstance(number, int) and number > 0 for number in superseded)
+        )
+        audit.require(
+            valid,
+            "MVHEALTH-CONTROL-PLANE-PROOF",
+            f"invalid or duplicate sealed maintenance proof: {work_item!r}",
+            SEALED_PROOFS_PATH,
+        )
+        if not isinstance(work_item, str):
+            continue
+        seen_work_items.add(work_item)
+        pointer_record = pointer_records.get(work_item)
+        audit.require(
+            isinstance(pointer_record, dict)
+            and pointer_record.get("status") == proof.get("status")
+            and pointer_record.get("application_pr") == proof.get("application_pr")
+            and pointer_record.get("application_merge")
+            == proof.get("application_merge")
+            and pointer_record.get("aioc_pr") == proof.get("aioc_pr")
+            and pointer_record.get("aioc_validated_head")
+            == proof.get("aioc_validated_head")
+            and pointer_record.get("aioc_repository_health_run")
+            == proof.get("aioc_repository_health_run")
+            and pointer_record.get("aioc_merge") == proof.get("aioc_merge")
+            and pointer_record.get("aioc_main_health_run")
+            == proof.get("aioc_main_health_run")
+            and pointer_record.get("superseded_prs_closed") == superseded,
+            "MVHEALTH-CONTROL-PLANE-POINTER-PROOF",
+            f"sealed maintenance proof disagrees with the pointer: {work_item}",
+            SEALED_PROOFS_PATH,
+        )
+        if _is_sha(proof.get("aioc_merge")):
+            process = subprocess.run(
+                ["git", "merge-base", "--is-ancestor", proof["aioc_merge"], "HEAD"],
+                cwd=audit.root,
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                check=False,
+            )
+            audit.require(
+                process.returncode == 0,
+                "MVHEALTH-CONTROL-PLANE-ANCESTRY",
+                f"maintenance merge is not an ancestor of HEAD: {work_item}",
+                SEALED_PROOFS_PATH,
+            )
+    audit.require(
+        seen_work_items == set(pointer_records),
+        "MVHEALTH-CONTROL-PLANE-PROOF-COVERAGE",
+        "sealed maintenance proof identities and pointer completion history differ",
+        SEALED_PROOFS_PATH,
+    )
+    latest_proof = maintenance_proofs[0] if maintenance_proofs else {}
     return {
         "aioc_baseline": commit,
         "aioc_tree": tree,
         "historical_validator_digests": len(manifest_paths),
         "application_sealed_through": app_proof.get("sealed_through"),
         "application_family_scope_merge": app_proof.get("family_scope_merge"),
-        "control_plane_recovery_merge": recovery.get("aioc_merge"),
+        "latest_control_plane_maintenance": latest_proof.get("work_item"),
+        "latest_control_plane_maintenance_merge": latest_proof.get("aioc_merge"),
     }
 
 
@@ -833,7 +1012,9 @@ def run_audit(
     )
     workflow_summary = _validate_workflows(audit, workflow_registry)
     validator_summary = _validate_validators(audit, validator_registry)
-    sealed_summary = _validate_sealed_proofs(audit, sealed, validator_registry)
+    sealed_summary = _validate_sealed_proofs(
+        audit, sealed, validator_registry, workflow_registry, pointer
+    )
     behavior_summary = _validate_behavior_and_scorecard(audit)
     app_summary = _validate_cross_repository_app(audit, app_root, workflow_registry)
 

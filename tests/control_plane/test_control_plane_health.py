@@ -3,6 +3,7 @@ from __future__ import annotations
 import sys
 import tempfile
 import unittest
+import re
 from pathlib import Path
 
 
@@ -70,6 +71,12 @@ def _validator_registry() -> dict[str, object]:
                 "current_compatible_utilities": [
                     {"path": "scripts/execution_termination_preflight.py"}
                 ],
+                "current_regression_suites": [
+                    {
+                        "path": "tests/control_plane/test_control_plane_health.py",
+                        "caller": ".github/workflows/validate-repository-health.yml",
+                    }
+                ],
             }
         }
     }
@@ -112,6 +119,21 @@ class TerminationPreflightTests(unittest.TestCase):
 
 
 class FlatHealthRegressionTests(unittest.TestCase):
+    def test_current_workflow_requires_control_plane_regressions(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            workflow_dir = root / ".github/workflows"
+            workflow_dir.mkdir(parents=True)
+            (workflow_dir / "validate-repository-health.yml").write_text(
+                "fetch-depth: 0\n"
+                "python3 scripts/validate_repository_health.py --expected-head abc\n",
+                encoding="utf-8",
+            )
+            audit = Audit(root)
+            _validate_workflows(audit, _workflow_registry())
+            codes = {error["code"] for error in audit.errors}
+            self.assertIn("MVHEALTH-CONTROL-PLANE-TEST-EXECUTION", codes)
+
     def test_current_workflow_rejects_historical_validator_execution(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -142,6 +164,15 @@ class FlatHealthRegressionTests(unittest.TestCase):
             _validate_validators(audit, _validator_registry())
             codes = {error["code"] for error in audit.errors}
             self.assertIn("MVHEALTH-HISTORICAL-RUNTIME-IMPORT", codes)
+
+    def test_current_validator_contains_no_mutable_state_constants(self) -> None:
+        source = (ROOT / "scripts/validate_repository_health.py").read_text(
+            encoding="utf-8"
+        )
+        self.assertIsNone(
+            re.search(r"\b(?:AAI|MV-CONT)-\d+(?:-attempt-\d+)?\b", source)
+        )
+        self.assertIsNone(re.search(r"['\"][0-9a-f]{40}['\"]", source))
 
 
 if __name__ == "__main__":

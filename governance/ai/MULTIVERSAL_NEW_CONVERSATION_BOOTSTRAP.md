@@ -2,7 +2,7 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 6.3.0
+**Version:** 6.4.0
 **Status:** ACTIVE CANDIDATE — CRS COMPLETION PENDING  
 **Owner and final authority:** John Brandon Turner  
 **Governance repository:** `cybalicistjt-stack/multiversal-aioc`  
@@ -84,6 +84,8 @@ Distinguish precisely among source bytes unavailable, transfer unavailable, chec
 ## Checkpoint and convergence discipline
 
 Checkpoints are recovery boundaries, not activity logs. Create one start checkpoint before substantive mutation; update only on material handoff, blocker/recovery-path change, ready-for-review, or completed_verified; run focused checks during construction and the declared exact-head gate at final package boundary; never rewrite an interrupted attempt to appear complete; and avoid gratuitous closure-only churn where state is already consistent.
+
+The initialization sequence is one bounded recovery pass. Its pointer/checkpoint, relevant exact-head and current-gate facts remain under an evidence-freshness lease until an authority/head/branch change, merge/rebase, conflicting writer, materially new check result, or explicit stale/contradictory tool response invalidates them. Refresh only affected facts. Do not restart full reconnaissance because a tool batch ended, time elapsed, context compacted, status was requested, or another historical file exists.
 
 For implementation attempts:
 
