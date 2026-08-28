@@ -1,8 +1,8 @@
 {
-  "schema_version":"11.0.0",
+  "schema_version":"11.1.0",
   "program_id":"CRS",
   "status":"CURRENT_GUARDRAIL",
-  "updated_at":"2026-08-28T11:18:34Z",
+  "updated_at":"2026-08-28T11:22:35Z",
   "canonical_selector":{
     "repository":"cybalicistjt-stack/multiversal-aioc",
     "path":"governance/ai/runtime/CURRENT_WORK_POINTER.json",
@@ -12,8 +12,6 @@
     "directory":"governance/ai/work-state",
     "selected_checkpoint":"governance/ai/work-state/AAI-10-attempt-001.json",
     "selected_checkpoint_role":"selected_not_started",
-    "exclusive_maintenance_checkpoint":"governance/ai/work-state/MV-CONT-007-attempt-001.json",
-    "exclusive_maintenance_role":"feature_start_blocking_repository_health",
     "historical_files_deleted":false
   },
   "application_repository":{
@@ -24,15 +22,7 @@
     "history_preserved":true,
     "migration_head":"0021_apm_autogm_mini_campaign_director.json"
   },
-  "exclusive_control_plane_maintenance":{
-    "work_item":"MV-CONT-007",
-    "attempt_id":"MV-CONT-007-attempt-001",
-    "state":"ready_for_review",
-    "implementation_branch":"codex/mv-cont-007-recovery",
-    "implementation_authority":true,
-    "feature_starts_blocked":true,
-    "completion_requires":"flat AIOC health, sealed predecessor proof, executable termination preflight, reconciled registries, exact-head validation, merged remediation and superseded-PR retirement"
-  },
+  "recently_completed_control_plane_maintenance":{"work_item":"MV-CONT-007","state":"completed_verified","application_merge":"e34d43d669c48d484dbdb9e82b72a00c5d91f00c","aioc_merge":"c94baa78f0f135681ecaab3e6dc36d5c11b1afa2","aioc_main_health_run":33166847490,"superseded_prs_closed":[763,770]},
   "active_work":{
     "work_item":"AAI-10",
     "attempt_id":"AAI-10-attempt-001",
@@ -41,7 +31,7 @@
     "role":"multi_provider_golden_audio_proof",
     "implementation_branch":null,
     "implementation_authority":false,
-    "feature_start_blocked_by":"MV-CONT-007"
+    "future_start_rule":"A subsequent owner execution command must complete governed planning resolution and start before implementation."
   },
   "completed_programs":[
     {"program_id":"DPL","state":"completed_verified","completed_through":"DPL-14","application_merge":"8f4c4aca8e264233284dc631ada807476937176a"},
@@ -74,7 +64,7 @@
   "selection_invariants":[
     "AAI-01..09 completed_verified",
     "AAI-10 selected_not_started with no implementation branch or authority",
-    "MV-CONT-007 blocks feature starts until completed_verified",
+    "MV-CONT-007 completed_verified and maintenance lease cleared",
     "paid provider activation, live credentials, scraping, content-byte acquisition, migration 0022, tester distribution and deployment remain unauthorized"
   ]
 }
