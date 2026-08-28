@@ -184,7 +184,7 @@ def evaluate(state: dict[str, Any]) -> dict[str, Any]:
 def self_test(root: Path) -> dict[str, Any]:
     contract = _load_json(root / CONTRACT_PATH)
     _require(
-        contract.get("schema_version") == "1.0.0",
+        contract.get("schema_version") == "1.1.0",
         "MVTERM-CONTRACT-SCHEMA",
         "termination contract schema mismatch",
     )

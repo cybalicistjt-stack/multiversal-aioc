@@ -1,7 +1,7 @@
 # Multiversal Execution Convergence Policy
 
 **Document ID:** MV-AI-CONVERGENCE-001  
-**Version:** 1.1.0
+**Version:** 1.2.0
 **Status:** ACTIVE — OWNER APPROVED  
 **Owner and final authority:** John Brandon Turner  
 **Effective:** 2026-08-27  
@@ -71,7 +71,23 @@ If a second repair is required for the same work item or materially related fail
 
 A third patch-and-rerun cycle is forbidden unless the repository records why the prior diagnosis was falsified or what materially new evidence changes the hypothesis.
 
-## 6. No identical reruns
+## 6. One recovery pass and evidence-freshness lease
+
+At the start of an execution cycle, perform one bounded recovery pass: resolve the authority registry and current pointer/checkpoint, establish the exact relevant repository head/branch/PR, and inspect the required current gate. Those facts form an evidence-freshness lease for the cycle.
+
+Do not restart the recovery sequence, reread the same authorities, or re-prove unchanged facts unless a concrete invalidating event occurs. Validating events are limited to:
+
+- an authoritative file, selected checkpoint, branch, base, or live main head changes;
+- a merge, rebase, force-push, or conflicting active writer changes repository state;
+- a required check reports a materially new result or failure signature;
+- a tool reports stale, missing, contradictory, or inaccessible evidence; or
+- the work crosses its declared final validation or closeout boundary, where live main is reread once.
+
+A completed tool batch, elapsed time, context compaction, commentary/status request, uncertainty without contradictory evidence, or the existence of additional historical files is not an invalidating event. Local mutation on the already-established active branch requires focused candidate validation, not a full authority-recovery restart.
+
+If an invalidating event occurs, record the event and refresh only the affected facts. A second full recovery pass in the same cycle without a named invalidation is a no-progress control failure.
+
+## 7. No identical reruns
 
 A failed or queued operation may not simply be rerun to create activity.
 
@@ -86,7 +102,7 @@ Before a retry, `retry_basis` must identify at least one material change in:
 
 If none changed, wait on the genuine blocker or enter control-plane incident status. Repeating the same command against the same state is not progress.
 
-## 7. No-progress escalation
+## 8. No-progress escalation
 
 `no_progress_cycles` increments when an execution cycle ends without any of:
 
@@ -105,7 +121,7 @@ Two no-progress cycles require one of:
 
 The owner must not be asked to supply another bare `Continue` merely to make the assistant inspect the same state again.
 
-## 8. Validation-scope rule
+## 9. Validation-scope rule
 
 Final validation is dependency-aware and tranche-bounded.
 
@@ -117,7 +133,7 @@ Final validation is dependency-aware and tranche-bounded.
 
 The application workflow `validate-current-family.yml` is the one automatic selector and repository-health path. It invokes `_validation-core-profile.yml` at most once for a substantive current-family tranche. `ACTIVE_FAMILY_CONTRACT.json` seals predecessor proof and changes only at a family boundary or an explicitly reviewed integration exception.
 
-## 9. Cross-repository closeout convergence
+## 10. Cross-repository closeout convergence
 
 Application merge evidence and AIOC state projection form one governed closeout transaction.
 
@@ -127,7 +143,7 @@ Application merge evidence and AIOC state projection form one governed closeout 
 - Closeout should select the strict successor in the same governed reconciliation when no separate owner gate intervenes.
 - A merge API response is not canonical application-main evidence until live `main` is re-read.
 
-## 10. Live throughput scorecard
+## 11. Live throughput scorecard
 
 Synthetic interaction-pilot results and live operational throughput are separate evidence classes.
 
@@ -135,16 +151,16 @@ The live scorecard records minimized aggregate measurements including owner `Con
 
 Raw private conversation text, titles, and attachment content are not published in the scorecard.
 
-## 11. CI retirement rule
+## 12. CI retirement rule
 
 The former all-profile self-hosted workflow `self-hosted-windows-runner-smoke.yml` is retired from the application live workflow namespace. It may remain in Git history only.
 
 Repository health must reject reintroduction of that workflow, automatic invocation of all completed DPL/MAI/AAI profiles on ordinary current-tranche PRs, a substantive current-tranche PR that changes no governed profile, and more than one changed governed profile without an explicitly reviewed integration-tranche exception.
 
-## 12. Executable termination gate
+## 13. Executable termination gate
 
 Before a final response from an execution turn, the runtime must evaluate an ephemeral state through `scripts/execution_termination_preflight.py`. Queued/running validation, open PRs, partial green results, pending merge/closeout and a completed tool-call batch are nonterminal. Repository checks validate the contract and regression cases; longitudinal live scorecard evidence, not synthetic cases alone, determines whether owner-intervention objectives are actually being achieved.
 
-## 13. Completion standard
+## 14. Completion standard
 
 This convergence remediation is complete only when legacy CI fan-out is absent from live application workflows; the family-scoped selector is live and repository-health enforced; AIOC workflow lifecycle registration matches the live application namespace; convergence state, diagnostic escalation and termination preflight cases are machine-validated; the minimized live throughput scorecard exists; exact-head AIOC repository health passes; the remediation merges; and the active product tranche remains preserved rather than reset by the remediation.
