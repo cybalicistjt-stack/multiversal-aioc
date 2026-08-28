@@ -65,7 +65,7 @@ AAI-10 must deliver exactly this bounded proof surface:
 - `tools/verify_aai_10.py`
 - `governance/application-planning/validation-core/profiles/AAI-10.json`
 
-Exactly one governed `AAI-10` Validation Core profile must prove deterministic provider-neutral intent preservation across all five source/provider paths; authorized positive local/link/local-companion/manual-reference outcomes; explicit rights/capability/terms/entitlement/runtime fail-closed outcomes; zero live provider/network/content execution; nonblocking unavailable audio; deterministic input-order-independent receipts; AAI-09 through AAI-01 predecessor compatibility; and MIB-11/D18 World-owner compatibility.
+The current AAI family contract seals AAI-01..09 at application baseline `b670368ca91778802867a1a4b8d963c3a3ea8875`. Exactly one governed `AAI-10` current-family profile must prove deterministic provider-neutral intent preservation across all five source/provider paths; authorized positive local/link/local-companion/manual-reference outcomes; explicit rights/capability/terms/entitlement/runtime fail-closed outcomes; zero live provider/network/content execution; nonblocking unavailable audio; and deterministic input-order-independent receipts. It contains only the AAI-10 invariant verifier, workspace install, client typecheck and focused AAI-10 regression. Historical AAI-01..09 and MIB-11 verifier reruns remain retired at zero; the selector proves sealed-baseline ancestry instead.
 
 The exact candidate head must pass current application Repository Health, self-hosted Linux, self-hosted Windows and deterministic cross-platform comparison before merge.
 
