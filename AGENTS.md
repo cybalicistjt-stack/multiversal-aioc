@@ -34,3 +34,16 @@ A successful GitHub Actions or Railway status is not sufficient evidence that th
 ## Security state
 
 The production MCP bridge is currently read-only. Do not claim that repository or shared-state writes are available unless the bridge reports `writesEnabled: true`.
+
+## Execution termination contract
+
+An implementation command remains active through its governed completion boundary. A commit, open PR, queued/running check, partial green result, merge awaiting canonical closeout, or one completed tool batch is not a stopping condition.
+
+Before emitting a final response from an execution turn:
+
+1. Build an ephemeral state object conforming to `governance/ai/interaction-system/EXECUTION_TERMINATION_STATE.schema.json` from current tool/repository evidence.
+2. Run `python scripts/execution_termination_preflight.py --state <temporary-state.json>`.
+3. Continue using tools when the decision is `CONTINUE_EXECUTION`.
+4. Finalize only when the decision is `ALLOW_FINAL_RESPONSE`, then report evidence matching that reason.
+
+The ephemeral preflight file is execution evidence, not a checkpoint or repository artifact. Do not commit it. A missing or failed preflight is nonterminal while safe authorized work remains.

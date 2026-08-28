@@ -1,0 +1,35 @@
+{
+  "schema_version":"1.0.0",
+  "control_id":"C-EXECUTION-TERMINATION-GATE",
+  "lifecycle":"CURRENT",
+  "owner_approved_at":"2026-08-28T10:53:56Z",
+  "purpose":"Prevent an execution turn from returning control at an intermediate milestone while reversible authorized work remains.",
+  "command_modes":{
+    "execution":{"aliases":["Continue","fix this","implement this"],"persists_until":"bounded unit completed_verified, genuine blocker, or newer owner command"},
+    "status_and_continue":{"aliases":["status report and continue"],"persists_until":"same boundary as execution after the concise status"},
+    "keep_going":{"aliases":["keep going","continue until you need me","finish the tranche"],"persists_until":"owner-named boundary, genuine blocker, or newer owner command"},
+    "get_ready":{"aliases":["get ready"],"persists_until":"preparation is complete; substantive implementation remains reserved"},
+    "status_only":{"aliases":["status","report only"],"persists_until":"requested report is delivered"},
+    "analysis_only":{"aliases":["triage","diagnose","review"],"persists_until":"requested analysis is delivered"}
+  },
+  "permitted_final_response_reasons":[
+    "bounded unit is completed_verified and required successor selection is complete",
+    "a classified genuine blocker with current evidence survived reasonable recovery and blocks all authorized progress",
+    "the owner explicitly selected get_ready, status_only, or analysis_only"
+  ],
+  "nonterminal_conditions":[
+    "implementation exists but required validation has not passed",
+    "required CI or another asynchronous operation is queued or running",
+    "a pull request is open, ready, or awaiting merge",
+    "merge succeeded but canonical closeout or successor selection is pending",
+    "one meaningful substep or tool-call batch ended",
+    "a status summary could be written while execution authority remains"
+  ],
+  "runtime_enforcement":{
+    "preflight":"scripts/execution_termination_preflight.py",
+    "instruction_surfaces":["AGENTS.md","governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md"],
+    "regression_cases":"governance/ai/interaction-system/evaluation/EXECUTION_TERMINATION_CASES.json",
+    "repository_health_gate":"scripts/validate_repository_health.py",
+    "ephemeral_state_rule":"Turn-state inputs are temporary execution evidence and are not committed as activity logs. Durable checkpoint updates remain milestone-only."
+  }
+}

@@ -1,7 +1,7 @@
 # Multiversal Execution Convergence Policy
 
 **Document ID:** MV-AI-CONVERGENCE-001  
-**Version:** 1.0.0  
+**Version:** 1.1.0
 **Status:** ACTIVE — OWNER APPROVED  
 **Owner and final authority:** John Brandon Turner  
 **Effective:** 2026-08-27  
@@ -115,7 +115,7 @@ Final validation is dependency-aware and tranche-bounded.
 - Historical proof remains sealed evidence unless the current change touches a dependency the proof protects or the acceptance contract explicitly calls for revalidation.
 - An unrelated historical profile job count greater than zero is a validation-scope defect.
 
-The application workflow `validate-current-tranche.yml` is the normal selector. The reusable `_validation-core-profile.yml` remains the shared Linux/Windows/comparator core.
+The application workflow `validate-current-family.yml` is the one automatic selector and repository-health path. It invokes `_validation-core-profile.yml` at most once for a substantive current-family tranche. `ACTIVE_FAMILY_CONTRACT.json` seals predecessor proof and changes only at a family boundary or an explicitly reviewed integration exception.
 
 ## 9. Cross-repository closeout convergence
 
@@ -141,6 +141,10 @@ The former all-profile self-hosted workflow `self-hosted-windows-runner-smoke.ym
 
 Repository health must reject reintroduction of that workflow, automatic invocation of all completed DPL/MAI/AAI profiles on ordinary current-tranche PRs, a substantive current-tranche PR that changes no governed profile, and more than one changed governed profile without an explicitly reviewed integration-tranche exception.
 
-## 12. Completion standard
+## 12. Executable termination gate
 
-This convergence remediation is complete only when legacy CI fan-out is absent from live application workflows; the bounded current-tranche selector is live and repository-health enforced; AIOC workflow lifecycle registration matches the live application namespace; convergence state and diagnostic escalation are machine-validated; the minimized live throughput scorecard exists; exact-head AIOC repository health passes; the remediation merges; and the active product tranche remains preserved rather than reset by the remediation.
+Before a final response from an execution turn, the runtime must evaluate an ephemeral state through `scripts/execution_termination_preflight.py`. Queued/running validation, open PRs, partial green results, pending merge/closeout and a completed tool-call batch are nonterminal. Repository checks validate the contract and regression cases; longitudinal live scorecard evidence, not synthetic cases alone, determines whether owner-intervention objectives are actually being achieved.
+
+## 13. Completion standard
+
+This convergence remediation is complete only when legacy CI fan-out is absent from live application workflows; the family-scoped selector is live and repository-health enforced; AIOC workflow lifecycle registration matches the live application namespace; convergence state, diagnostic escalation and termination preflight cases are machine-validated; the minimized live throughput scorecard exists; exact-head AIOC repository health passes; the remediation merges; and the active product tranche remains preserved rather than reset by the remediation.

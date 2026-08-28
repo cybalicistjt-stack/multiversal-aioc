@@ -1,1 +1,76 @@
-{"schema_version":"13.95.0","updated_at":"2026-08-27T18:57:00Z","policy":"governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md","current":[{"kind":"bootstrap","lifecycle":"CURRENT","path":"governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md"},{"kind":"work_pointer","lifecycle":"CURRENT","path":"governance/ai/runtime/CURRENT_WORK_POINTER.json"},{"kind":"checkpoint","lifecycle":"CURRENT","path":"governance/ai/work-state/AAI-10-attempt-001.json"},{"kind":"program","lifecycle":"CURRENT","path":"governance/application-planning/audio-asset-interoperability/AAI_AUDIO_ASSET_INTEROPERABILITY_PROGRAM.md"},{"kind":"backlog","lifecycle":"CURRENT","path":"governance/application-planning/audio-asset-interoperability/AAI_PROGRAM_BACKLOG.json"},{"kind":"roadmap","lifecycle":"CURRENT","path":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md"},{"kind":"runtime_state_registry","lifecycle":"CURRENT","path":"governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json"},{"kind":"execution_convergence_policy","lifecycle":"CURRENT","path":"governance/ai/MULTIVERSAL_EXECUTION_CONVERGENCE_POLICY.md"},{"kind":"execution_convergence_scorecard","lifecycle":"CURRENT_COMPATIBLE","path":"governance/ai/interaction-system/live/EXECUTION_CONVERGENCE_SCORECARD.json"}],"active_planning_work":{"work_item":"AAI-10","attempt_id":"AAI-10-attempt-001","repository":"cybalicistjt-stack/Multiversal-app","state":"selected_not_started","implementation_branch":null,"implementation_authority":false,"implementation_scope":"Selection-only planning for AAI-10 Multi-Provider Golden Audio Proof. Resolve the exact provider/source proof matrix, fixture-vs-live authority, provider rights/terms/capabilities, persistence decision and one bounded validation profile before governed start. Selection does not authorize live provider calls, paid activation, credential/token use, content acquisition, scraping, reverse engineering, gameplay-owner mutation or migration 0022."},"recently_completed_repository_health_remediation":[{"work_item":"MV-CONT-006","status":"completed_verified","application_pr":332,"aioc_pr":771,"aioc_validated_head":"cfd70d493c696ec666c0e012545919afc670fae7","repository_health_run":33101497747,"aioc_merge":"5bb428c9d596da7bb9462d4caea88e30930d90cc"}],"recently_completed_implementation_work":[{"work_item":"AAI-09","status":"completed_verified","application_pr":335,"validated_head":"d68ce494e6b97a6bc6b7b6d60f58d2985f3bfac2","repository_health_run":33105829485,"validation_core_run":33105829803,"linux_job":98635420855,"windows_job":98635420917,"deterministic_compare_job":98635585515,"merge_sha":"b670368ca91778802867a1a4b8d963c3a3ea8875"},{"work_item":"AAI-08","status":"completed_verified","application_pr":334,"validated_head":"4ee13f8c08e095673b3150a9ff5527b306fa2242","repository_health_run":33101340845,"validation_core_run":33101341339,"merge_sha":"45752a7c1bad03b68b275638f4603ca33b8c2ea9"}],"completed_programs":[{"program":"DPL","name":"Deep Professions & Life Simulation","state":"completed_verified","completed_through":"DPL-14","application_merge":"8f4c4aca8e264233284dc631ada807476937176a"},{"program":"MAI","name":"Map & Visual Asset Interoperability","state":"completed_verified","completed_through":"MAI-10","application_merge":"da9314298c104723ff3b04e12b1df1e264d55300"}],"planned_programs":[{"program":"AAI","name":"Audio Asset & Soundscape Interoperability","state":"in_progress","completed_through":"AAI-09","current":"AAI-10","current_state":"selected_not_started","implementation_authority":false},{"program":"GCL","name":"GM Construction Library","state":"in_progress","completed_through":"GCL-12","ready_items":["GCL-13","GCL-14","GCL-16"],"next_recommended":"GCL-13","implementation_authority":false}],"deferred_application_work":[{"work_item":"CCTI-12-T04","pr":191,"state":"deferred_owner_until_2026-09","merge_authority":false}],"preserved_non_authoritative_application_work":[{"work_item":"WP-011","pr":61,"state":"special_environment_dormant","merge_authority":false},{"work_item":"DS-008","state":"blocked_non_owner","merge_authority":false}],"rule":"Anything not explicitly CURRENT or CURRENT_COMPATIBLE cannot govern current work. AAI-01..09 are completed_verified. AAI-10 is selected_not_started with no implementation branch or implementation authority. Completed AAI-09 permission, remote-sync and capture boundaries remain binding: audio cannot grant/mutate gameplay, identity, session or permission truth; remote sync is presentation-only; recording remains capability-unmodeled/fail-closed; streaming intent requires independent rights/capability/permission/consent. AAI-10 multi-provider proof may not infer provider rights, terms, entitlement or capability from playback success. Paid provider activation, live credential use, scraping/reverse engineering, content-byte acquisition, migration 0022, payment, tester distribution and release/deployment remain unauthorized. Repository-health maintenance authority remains active."}
+{
+  "schema_version":"14.0.0",
+  "updated_at":"2026-08-28T10:53:56Z",
+  "policy":"governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md",
+  "current":[
+    {"kind":"bootstrap","lifecycle":"CURRENT","path":"governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md"},
+    {"kind":"work_pointer","lifecycle":"CURRENT","path":"governance/ai/runtime/CURRENT_WORK_POINTER.json"},
+    {"kind":"selected_product_checkpoint","lifecycle":"CURRENT","path":"governance/ai/work-state/AAI-10-attempt-001.json"},
+    {"kind":"exclusive_maintenance_checkpoint","lifecycle":"CURRENT","path":"governance/ai/work-state/MV-CONT-007-attempt-001.json"},
+    {"kind":"program","lifecycle":"CURRENT","path":"governance/application-planning/audio-asset-interoperability/AAI_AUDIO_ASSET_INTEROPERABILITY_PROGRAM.md"},
+    {"kind":"backlog","lifecycle":"CURRENT","path":"governance/application-planning/audio-asset-interoperability/AAI_PROGRAM_BACKLOG.json"},
+    {"kind":"roadmap","lifecycle":"CURRENT","path":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md"},
+    {"kind":"runtime_state_registry","lifecycle":"CURRENT","path":"governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json"},
+    {"kind":"workflow_lifecycle_registry","lifecycle":"CURRENT","path":"governance/repository-health/WORKFLOW_LIFECYCLE_REGISTRY.json"},
+    {"kind":"validator_lifecycle_registry","lifecycle":"CURRENT","path":"governance/repository-health/VALIDATOR_LIFECYCLE_REGISTRY.json"},
+    {"kind":"sealed_validation_proofs","lifecycle":"CURRENT","path":"governance/repository-health/SEALED_VALIDATION_PROOFS.json"},
+    {"kind":"owner_ai_interaction_contract","lifecycle":"CURRENT","path":"governance/ai/interaction-system/OWNER_AI_INTERACTION_CONTRACT.md"},
+    {"kind":"execution_termination_contract","lifecycle":"CURRENT","path":"governance/ai/interaction-system/EXECUTION_TERMINATION_CONTRACT.json"},
+    {"kind":"checkpoint_validation_efficiency_policy","lifecycle":"CURRENT","path":"governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md"},
+    {"kind":"completion_claim_integrity_policy","lifecycle":"CURRENT","path":"governance/ai/MULTIVERSAL_COMPLETION_CLAIM_INTEGRITY_POLICY.md"},
+    {"kind":"self_hosted_final_validation_policy","lifecycle":"CURRENT","path":"governance/ai/MULTIVERSAL_SELF_HOSTED_FINAL_VALIDATION_POLICY.md"},
+    {"kind":"authority_retirement_policy","lifecycle":"CURRENT","path":"governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md"},
+    {"kind":"execution_convergence_policy","lifecycle":"CURRENT","path":"governance/ai/MULTIVERSAL_EXECUTION_CONVERGENCE_POLICY.md"},
+    {"kind":"execution_convergence_scorecard","lifecycle":"CURRENT_COMPATIBLE","path":"governance/ai/interaction-system/live/EXECUTION_CONVERGENCE_SCORECARD.json"}
+  ],
+  "active_planning_work":{
+    "work_item":"AAI-10",
+    "attempt_id":"AAI-10-attempt-001",
+    "repository":"cybalicistjt-stack/Multiversal-app",
+    "state":"selected_not_started",
+    "implementation_branch":null,
+    "implementation_authority":false,
+    "implementation_scope":"Selection-only multi-provider golden-proof planning. No provider network calls, paid activation, credentials, content acquisition, scraping, gameplay-owner mutation or migration 0022."
+  },
+  "exclusive_control_plane_maintenance":{
+    "work_item":"MV-CONT-007",
+    "attempt_id":"MV-CONT-007-attempt-001",
+    "repository":"cybalicistjt-stack/multiversal-aioc",
+    "state":"in_progress",
+    "implementation_branch":"codex/mv-cont-007-recovery",
+    "implementation_authority":true,
+    "feature_starts_blocked":true
+  },
+  "current_repository_health_remediation":{
+    "work_item":"MV-CONT-007",
+    "status":"in_progress",
+    "application_pr":336,
+    "application_merge":"e34d43d669c48d484dbdb9e82b72a00c5d91f00c",
+    "aioc_start_pr":777,
+    "aioc_start_merge":"cd8f5391780aa3d7e5a81672d6bef286bd0d353e",
+    "remaining":"AIOC flattening, runtime enforcement, exact-head merge, superseded-PR retirement and lease clear"
+  },
+  "recently_completed_repository_health_remediation":[
+    {"work_item":"MV-CONT-006","status":"completed_verified","application_pr":332,"aioc_pr":771,"aioc_validated_head":"cfd70d493c696ec666c0e012545919afc670fae7","repository_health_run":33101497747,"aioc_merge":"5bb428c9d596da7bb9462d4caea88e30930d90cc"}
+  ],
+  "recently_completed_implementation_work":[
+    {"work_item":"AAI-09","status":"completed_verified","application_pr":335,"validated_head":"d68ce494e6b97a6bc6b7b6d60f58d2985f3bfac2","repository_health_run":33105829485,"validation_core_run":33105829803,"application_merge":"b670368ca91778802867a1a4b8d963c3a3ea8875"},
+    {"work_item":"AAI-08","status":"completed_verified","application_pr":334,"validated_head":"4ee13f8c08e095673b3150a9ff5527b306fa2242","application_merge":"45752a7c1bad03b68b275638f4603ca33b8c2ea9"}
+  ],
+  "completed_programs":[
+    {"program":"DPL","state":"completed_verified","completed_through":"DPL-14","application_merge":"8f4c4aca8e264233284dc631ada807476937176a"},
+    {"program":"MAI","state":"completed_verified","completed_through":"MAI-10","application_merge":"da9314298c104723ff3b04e12b1df1e264d55300"}
+  ],
+  "planned_programs":[
+    {"program":"AAI","state":"in_progress","completed_through":"AAI-09","current":"AAI-10","current_state":"selected_not_started","implementation_authority":false},
+    {"program":"GCL","state":"in_progress","completed_through":"GCL-12","ready_items":["GCL-13","GCL-14","GCL-16"],"next_recommended":"GCL-13","implementation_authority":false}
+  ],
+  "deferred_application_work":[
+    {"work_item":"CCTI-12-T04","pr":191,"state":"deferred_owner_until_2026-09","merge_authority":false}
+  ],
+  "preserved_non_authoritative_application_work":[
+    {"work_item":"WP-011","pr":61,"state":"special_environment_dormant","merge_authority":false},
+    {"work_item":"DS-008","state":"blocked_non_owner","merge_authority":false}
+  ],
+  "rule":"Only registered CURRENT or CURRENT_COMPATIBLE surfaces may govern. AAI-10 remains selected_not_started and feature starts remain blocked by MV-CONT-007. Paid provider activation, credentials, content acquisition, migration 0022, tester distribution and deployment remain unauthorized."
+}
