@@ -12,13 +12,31 @@
 
 ## Current state
 
-AAI-01 through AAI-09 are `completed_verified`. AAI-10 is now `in_progress` after the owner `Continue` command completed its required planning/start resolution against fresh application main `d007dc980c63a7beab4ab9a4ddbc67525f8d7003` and AIOC main `a1af60bf66399654091de1cf3cdc0a9eb2084459`.
+AAI-01 through AAI-09 are `completed_verified`.
 
-AAI-09 merged through application PR #335 after exact-head Repository Health run `33105829485` and bounded current-tranche Validation Core run `33105829803` passed on candidate `d68ce494e6b97a6bc6b7b6d60f58d2985f3bfac2`. Its permission, remote-sync, recording/streaming and nonblocking-audio boundaries remain binding.
+AAI-09 merged through application PR #335 after exact-head Repository Health run `33105829485` and bounded current-tranche Validation Core run `33105829803` passed on candidate `d68ce494e6b97a6bc6b7b6d60f58d2985f3bfac2`. Linux job `98635420855`, Windows job `98635420917`, and deterministic cross-platform comparison job `98635585515` all succeeded, with zero unrelated historical profile fanout. Its application merge is `b670368ca91778802867a1a4b8d963c3a3ea8875`.
 
-## AAI-10 governed proof matrix
+Subsequent repository-health maintenance advanced live application `main` to `d007dc980c63a7beab4ab9a4ddbc67525f8d7003` without changing AAI-09 completion. AIOC `main` at governed start is `a1af60bf66399654091de1cf3cdc0a9eb2084459`.
 
-AAI-10 proves interoperability across five independently governed source/provider paths, all through repository fixtures/test doubles only:
+AAI-10 is now `in_progress` after the owner `Continue` command completed its required matrix, fixture-vs-live, persistence and bounded validation resolution. Implementation authority exists only on `integration/aai-10-multi-provider-golden-audio-proof`.
+
+## Completed AAI-09 boundary
+
+AAI-09 established deterministic, non-authoritative multiplayer audio permission, presentation-only remote-synchronization, and recording/streaming boundary decisions over completed AAI-01..08 and canonical A5/Visibility permission evidence.
+
+- Audio cannot grant, revoke, infer, or mutate gameplay, identity, session, or permission truth.
+- Remote sync remains deterministic presentation intent only, with duplicate/stale suppression and no peer, network, or provider transport.
+- Recording remains capability-unmodeled and fail closed because AAI-03 defines no recording capability key.
+- Streaming may become intent-ready only with independent AAI-02 stream rights, selectable AAI-03 capability, canonical permission, and explicit participant consent. Intent-ready is not media-capture or transmission authority.
+- Export and redistribution remain independent rights and are not implied by record/stream permission.
+- Raw consent text, credentials, tokens, recordings, and media bytes remain outside deterministic receipts.
+- No new durable AAI-09 canonical persistence was required; migration `0022` remains unreserved.
+
+AAI-09 required two concrete evidence-driven repairs before final validation: deterministic receipt ordering was made total by adding `requestId` as the final tie-break, then the focused regression was corrected to prohibit an actual serialized `rawConsentText` field without rejecting the explicit safe marker `rawConsentTextStored:false`. The final exact head passed all governed gates before merge.
+
+## AAI-10 governed start contract
+
+AAI-10 proves interoperability across independently governed audio source/provider paths without weakening any completed AAI boundary. Its exact provider/source matrix is frozen as follows, with **all paths proven through repository fixtures/test doubles only**:
 
 1. **User-owned local audio** — positive local import/reference semantics with explicit rights and a supported runtime probe; unknown runtime or downstream rights fail closed. No user media bytes are committed.
 2. **Syrinscape documented API path** — positive provider link/reference request semantics using documented capability evidence, but no token or network execution. Existing canonical AAI-02 playback rights remain unknown and cannot be upgraded by capability evidence.
@@ -26,31 +44,19 @@ AAI-10 proves interoperability across five independently governed source/provide
 4. **TableTone** — manual external-reference/app-handoff only. No public programmatic API, external playback, extraction or content acquisition is inferred.
 5. **Pocket Bard** — manual external-reference/app-handoff only. Current tabletop recording/streaming license evidence does not create programmatic API authority; ripping, scraping, reverse engineering and redistribution remain prohibited/fail closed.
 
-Fresh public provider evidence was reviewed on 2026-08-28. That review may confirm or narrow governed evidence, but cannot promote canonical rights by inference.
+Fresh public provider evidence was reviewed on 2026-08-28. That review may confirm or narrow governed evidence but cannot promote canonical rights by inference.
 
-## Canonical golden scenario rule
+The canonical multi-provider scenario set carries existing provider-neutral semantic intents — including `intent:cozy-fireplace`, `intent:forest-night-rain` and `intent:combat-desperate` — through distinct governed source/adapter paths. It compares canonical intent preservation, source/provenance identity, adapter identity, operation rights, capability/terms/entitlement/runtime evidence and the resulting controlled/manual/fail-closed outcome. It does not compare provider media bytes or audible waveform identity.
 
-Each golden scenario carries an existing provider-neutral AAI semantic intent plus one governed source/adapter path. The proof compares canonical intent preservation, source/provenance identity, adapter identity, operation rights, capability/terms/entitlement/runtime evidence and the resulting controlled/manual/fail-closed outcome. It does **not** compare provider media bytes or audible waveform identity.
+Credentials, tokens, provider responses, machine-local paths, raw media/content bytes, recordings and raw consent text remain outside committed deterministic evidence. Provider references never imply entitlement, ownership or broader rights.
 
-The governed semantic intent set includes `intent:cozy-fireplace`, `intent:forest-night-rain` and `intent:combat-desperate`. Missing or unavailable audio remains nonblocking.
+No new durable canonical AAI-10 persistence is required. Golden scenarios and receipts are deterministic derived proof/evidence over completed AAI contracts and fixtures. Migration `0022` remains unreserved.
 
-## Live-versus-fixture authority
+AAI-10 does **not** authorize paid provider activation, live credentials, provider network execution, provider content acquisition/copy/extraction/cache/rehosting, scraping/ripping/reverse engineering, rights/capability promotion, gameplay-owner mutation, actual recording/streaming/export/redistribution execution, migration `0022`, tester distribution, release or deployment.
 
-AAI-10 completion requires no live provider account. All provider/source proofs use repository fixtures/test doubles. Live credentials, subscriptions, provider network requests, authenticated catalog calls, playback calls and provider content-byte transfers are not authorized and are excluded from deterministic evidence.
+## AAI-10 acceptance state
 
-## Persistence
-
-AAI-10 introduces no new durable canonical persistence. Golden scenarios and receipts are deterministic derived proof/evidence over completed AAI contracts and fixtures. Migration `0022` remains unreserved.
-
-## Security, rights and owner boundaries
-
-Credentials, tokens, provider responses, machine-local paths, raw media/content bytes, recordings and raw consent text remain outside committed deterministic evidence. Provider references never imply entitlement, ownership or broader rights. Rights, capability, terms, entitlement, semantic/runtime availability, canonical permission and capture boundaries remain independent and fail closed. Audio cannot create or mutate World, Event, Scene, Combat, Action, identity, session, permission or other gameplay truth.
-
-AAI-10 does not authorize provider authentication/network execution, paid provider activation, provider content acquisition/copy/extraction/cache/rehosting, scraping/ripping/reverse engineering, rights/capability promotion, actual recording/streaming/export/redistribution, migration `0022`, tester distribution, release or deployment.
-
-## AAI-10 acceptance contract
-
-AAI-10 must deliver exactly the bounded proof surface declared in its checkpoint:
+AAI-10 must deliver exactly this bounded proof surface:
 
 - `governance/application-planning/audio-asset-interoperability/AAI-10_MULTI_PROVIDER_GOLDEN_AUDIO_PROOF.md`
 - `packages/contracts/src/audio-asset-interoperability/multi-provider-golden-audio-proof.ts`
@@ -59,7 +65,9 @@ AAI-10 must deliver exactly the bounded proof surface declared in its checkpoint
 - `tools/verify_aai_10.py`
 - `governance/application-planning/validation-core/profiles/AAI-10.json`
 
-Exactly one governed `AAI-10` Validation Core profile must run the focused regression plus AAI-09 through AAI-01 predecessor verifiers and MIB-11/D18 World-owner regression. The exact candidate head must pass current application Repository Health, self-hosted Linux, self-hosted Windows and deterministic cross-platform comparison before merge.
+Exactly one governed `AAI-10` Validation Core profile must prove deterministic provider-neutral intent preservation across all five source/provider paths; authorized positive local/link/local-companion/manual-reference outcomes; explicit rights/capability/terms/entitlement/runtime fail-closed outcomes; zero live provider/network/content execution; nonblocking unavailable audio; deterministic input-order-independent receipts; AAI-09 through AAI-01 predecessor compatibility; and MIB-11/D18 World-owner compatibility.
+
+The exact candidate head must pass current application Repository Health, self-hosted Linux, self-hosted Windows and deterministic cross-platform comparison before merge.
 
 ## Tranches
 
@@ -78,8 +86,9 @@ Exactly one governed `AAI-10` Validation Core profile must run the focused regre
 
 - AAI-01 through AAI-09 remain `completed_verified` with no further implementation authority.
 - AAI-10 implementation authority exists only on `integration/aai-10-multi-provider-golden-audio-proof`.
+- Completed AAI permission, rights, capability, availability, provider, binding, preparation, multiplayer, sync, consent and capture boundaries remain independently authoritative and fail closed.
 - User-owned local audio and provider-backed audio converge only through canonical AAI contracts and explicit provenance/right/capability evidence.
-- Provider success cannot imply broader rights, terms, entitlement, remote-sync, recording, streaming, export, redistribution or payment authority.
+- Provider playback, reference or control success cannot imply broader rights, terms, entitlement, remote-sync, recording, streaming, export, redistribution or payment authority.
 - Unavailable audio remains nonblocking.
 - Paid provider activation, live credential use, provider network execution, scraping/reverse engineering and unauthorized content-byte acquisition remain forbidden.
 - Migration `0022` remains unreserved.
