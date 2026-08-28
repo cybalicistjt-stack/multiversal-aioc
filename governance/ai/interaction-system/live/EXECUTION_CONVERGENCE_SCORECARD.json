@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "scorecard_id": "MV-EXECUTION-CONVERGENCE-LIVE",
-  "generated_at": "2026-08-28T11:18:34Z",
+  "generated_at": "2026-08-28T11:22:35Z",
   "measurement_scope": "minimized live project-conversation aggregate plus repository validation evidence",
   "privacy": {
     "raw_private_transcript_text_published": false,
@@ -48,7 +48,7 @@
   },
   "current_control_plane_recovery": {
     "work_item": "MV-CONT-007",
-    "status": "ready_for_review",
+    "status": "completed_verified",
     "owner_continue_count": 1,
     "execution_cycles": 2,
     "repair_cycles": 1,
@@ -60,8 +60,15 @@
     "application_family_scope_merge": "e34d43d669c48d484dbdb9e82b72a00c5d91f00c",
     "aioc_recovery_branch": "codex/mv-cont-007-recovery",
     "historical_validator_jobs_target": 0,
+    "historical_validator_jobs_observed": 0,
     "termination_preflight_regression_cases": 10,
-    "live_completion_measurement":"local exact-head construction evidence passed; GitHub exact-head merge and completed_verified closeout pending"
+    "aioc_pr":778,
+    "aioc_validated_head":"cceeceb5e3a2952c94581bd5efef55c99e87a10c",
+    "aioc_repository_health_run":33166810683,
+    "aioc_merge":"c94baa78f0f135681ecaab3e6dc36d5c11b1afa2",
+    "aioc_main_health_run":33166847490,
+    "superseded_prs_closed":[763,770],
+    "live_completion_measurement":"The inherited partial attempt required two execution cycles; the owner-approved recovery completed implementation, exact-head CI, merge, zombie retirement and canonical closeout in the current execution turn."
   },
   "post_policy_observations": [
     {
@@ -110,7 +117,24 @@
         "all_success": true
       },
       "application_merge": "b670368ca91778802867a1a4b8d963c3a3ea8875"
+    },
+    {
+      "work_item":"MV-CONT-007",
+      "owner_continue_count":1,
+      "execution_cycles":2,
+      "repair_cycles":1,
+      "no_progress_cycles":0,
+      "same_cycle_completed_from_original_start":false,
+      "recovery_completed_in_current_owner_execution_turn":true,
+      "completed_within_two_execution_cycles":true,
+      "unrelated_historical_validation_jobs":0,
+      "reruns_without_changed_evidence":0,
+      "post_merge_stale_pointer_incidents":0,
+      "diagnostic_mode_entered":true,
+      "failure_class":"repository_state",
+      "validation":{"application_family_scope_merge":"e34d43d669c48d484dbdb9e82b72a00c5d91f00c","aioc_repository_health_run":33166810683,"aioc_main_health_run":33166847490,"all_success":true},
+      "aioc_merge":"c94baa78f0f135681ecaab3e6dc36d5c11b1afa2"
     }
   ],
-  "interpretation": "The historical baseline remains frozen. AAI-08 and AAI-09 both preserved the bounded selector target of zero unrelated historical validation jobs and no reruns without changed evidence. AAI-09 also avoided a post-merge stale-pointer incident, but required two concrete related repairs and diagnostic evidence before its final successful gate. Two post-policy observations are insufficient for a longitudinal target-achievement claim; continue measuring future governed tranches."
+  "interpretation": "The historical baseline remains frozen. AAI-08, AAI-09 and MV-CONT-007 preserved zero unrelated historical validation jobs and zero reruns without changed evidence. MV-CONT-007 closed the inherited partial attempt in the current owner execution turn, but the attempt still required two total execution cycles. Three post-policy observations remain insufficient for a longitudinal target-achievement claim; continue measuring ordinary future tranches."
 }

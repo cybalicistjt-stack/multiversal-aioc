@@ -342,6 +342,67 @@ def _validate_authority_and_pointer(
             "MVHEALTH-CLEARED-LEASE-DRIFT",
             "cleared pointer lease remains active in a lifecycle registry",
         )
+        completed_records = pointer.get(
+            "recently_completed_repository_health_maintenance", []
+        )
+        completed = next(
+            (
+                row
+                for row in completed_records
+                if isinstance(row, dict) and row.get("work_item_id") == "MV-CONT-007"
+            ),
+            None,
+        )
+        if isinstance(completed, dict):
+            checkpoint_path = Path(str(completed.get("checkpoint_path", "")))
+            checkpoint = audit.read_json(checkpoint_path)
+            completion = checkpoint.get("completion_evidence", {})
+            audit.require(
+                checkpoint.get("status") == completed.get("status") == "completed_verified"
+                and completion.get("application", {}).get("merge_sha")
+                == completed.get("application_merge")
+                and completion.get("aioc", {}).get("merge_sha")
+                == completed.get("aioc_merge")
+                and completion.get("aioc", {}).get("repository_health_run")
+                == completed.get("aioc_repository_health_run")
+                and completion.get("zombie_retirement", {}).get("closed_prs")
+                == completed.get("superseded_prs_closed"),
+                "MVHEALTH-MAINTENANCE-CLOSEOUT-DRIFT",
+                "MV-CONT-007 pointer/checkpoint completion evidence drift",
+                checkpoint_path,
+            )
+            authority_completed = next(
+                (
+                    row
+                    for row in authority.get(
+                        "recently_completed_repository_health_remediation", []
+                    )
+                    if isinstance(row, dict) and row.get("work_item") == "MV-CONT-007"
+                ),
+                None,
+            )
+            runtime_completed = runtime.get(
+                "recently_completed_control_plane_maintenance", {}
+            )
+            audit.require(
+                isinstance(authority_completed, dict)
+                and authority_completed.get("aioc_merge") == completed.get("aioc_merge")
+                and authority_completed.get("superseded_prs_closed")
+                == completed.get("superseded_prs_closed"),
+                "MVHEALTH-AUTHORITY-CLOSEOUT-DRIFT",
+                "authority registry MV-CONT-007 completion evidence drift",
+                AUTHORITY_PATH,
+            )
+            audit.require(
+                runtime_completed.get("work_item") == "MV-CONT-007"
+                and runtime_completed.get("state") == "completed_verified"
+                and runtime_completed.get("aioc_merge") == completed.get("aioc_merge")
+                and runtime_completed.get("superseded_prs_closed")
+                == completed.get("superseded_prs_closed"),
+                "MVHEALTH-RUNTIME-CLOSEOUT-DRIFT",
+                "runtime registry MV-CONT-007 completion evidence drift",
+                RUNTIME_REGISTRY_PATH,
+            )
     return {
         "selected_attempt": active.get("attempt_id"),
         "selected_status": active.get("status"),
@@ -602,12 +663,28 @@ def _validate_sealed_proofs(
         "application active-family sealed proof drift",
         SEALED_PROOFS_PATH,
     )
+    recovery = sealed.get("control_plane_recovery_proof", {})
+    audit.require(
+        recovery.get("work_item") == "MV-CONT-007"
+        and recovery.get("status") == "completed_verified"
+        and recovery.get("application_merge")
+        == "e34d43d669c48d484dbdb9e82b72a00c5d91f00c"
+        and recovery.get("aioc_merge")
+        == "c94baa78f0f135681ecaab3e6dc36d5c11b1afa2"
+        and recovery.get("aioc_repository_health_run") == 33166810683
+        and recovery.get("aioc_main_health_run") == 33166847490
+        and recovery.get("superseded_prs_closed") == [763, 770],
+        "MVHEALTH-CONTROL-PLANE-PROOF",
+        "durable MV-CONT-007 completion proof drift",
+        SEALED_PROOFS_PATH,
+    )
     return {
         "aioc_baseline": commit,
         "aioc_tree": tree,
         "historical_validator_digests": len(manifest_paths),
         "application_sealed_through": app_proof.get("sealed_through"),
         "application_family_scope_merge": app_proof.get("family_scope_merge"),
+        "control_plane_recovery_merge": recovery.get("aioc_merge"),
     }
 
 
