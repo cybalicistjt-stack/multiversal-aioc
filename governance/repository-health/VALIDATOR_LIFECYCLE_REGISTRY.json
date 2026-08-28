@@ -1,28 +1,73 @@
 {
-  "schema_version": "1.4.0",
-  "program_id": "CRS",
-  "status": "CURRENT",
-  "default_rule": "A validator or validation-like script is not a current gate merely because it exists. Current execution authority requires explicit registration here.",
-  "repositories": {
-    "cybalicistjt-stack/multiversal-aioc": {
-      "current_validators": [{"path":"scripts/validate_repository_health.py","lifecycle":"CURRENT","caller":".github/workflows/validate-repository-health.yml","purpose":"AIOC canonical authority and repository-health enforcement."}],
-      "historical_inert_patterns": ["scripts/validate-*.py","scripts/validate_*.py","tools/*validate*.py"]
+  "schema_version":"2.0.0",
+  "program_id":"CRS",
+  "status":"CURRENT",
+  "updated_at":"2026-08-28T10:53:56Z",
+  "default_rule":"A validator or validation-like script has no current execution authority merely because it exists. Current execution requires an explicit registry entry and one declared caller.",
+  "repositories":{
+    "cybalicistjt-stack/multiversal-aioc":{
+      "current_validators":[
+        {
+          "path":"scripts/validate_repository_health.py",
+          "lifecycle":"CURRENT",
+          "caller":".github/workflows/validate-repository-health.yml",
+          "purpose":"Flat AIOC authority, lifecycle, sealed-proof and behavioral-control enforcement.",
+          "runtime_imports_historical_validators":false
+        }
+      ],
+      "current_compatible_utilities":[
+        {
+          "path":"scripts/execution_termination_preflight.py",
+          "lifecycle":"CURRENT_COMPATIBLE",
+          "caller":"owner-AI execution runtime immediately before final response",
+          "purpose":"Evaluate ephemeral turn state against the executable termination contract."
+        }
+      ],
+      "historical_inert_exact_paths":[
+        "scripts/_validate_repository_health_v1_6.py",
+        "scripts/_validate_repository_health_v1_7.py",
+        "scripts/_validate_repository_health_v1_8.py",
+        "scripts/_validate_repository_health_v1_9.py",
+        "scripts/_validate_repository_health_v1_10.py",
+        "scripts/_validate_repository_health_v1_11.py",
+        "scripts/_validate_repository_health_v1_12.py",
+        "scripts/_validate_repository_health_v1_13.py",
+        "scripts/_validate_repository_health_v1_14.py",
+        "scripts/validate_rsr_01.py",
+        "scripts/validate_rsr_02.py",
+        "scripts/validate_rsr_03.py",
+        "scripts/validate_rsr_04.py",
+        "scripts/validate_rsr_05.py",
+        "scripts/validate_rsr_06.py",
+        "scripts/validate_rsr_07.py"
+      ],
+      "historical_inert_patterns":["scripts/_validate_repository_health_v*.py","scripts/validate_rsr_*.py","scripts/validate-*.py","tools/*validate*.py"],
+      "retired_legacy_control_suites":[
+        {"tool":"tools/continuity_state.py","test":"tests/continuity/test_continuity_state.py","lifecycle":"HISTORICAL_INERT","observed_baseline":"FAIL: expects retired active_attempts pointer schema","replacement":"flat authority/pointer checks in scripts/validate_repository_health.py"},
+        {"tool":"tools/correction_regression.py","test":"tests/correction_regression/test_correction_regression.py","lifecycle":"HISTORICAL_INERT","observed_baseline":"FAIL: requires retired correction control artifacts","replacement":"EXECUTION_TERMINATION_CONTRACT plus privacy-minimized regression cases"},
+        {"tool":"tools/interaction_enforcement.py","test":"tests/interaction_enforcement/test_interaction_enforcement.py","lifecycle":"HISTORICAL_INERT","observed_baseline":"FAIL: requires deleted validate-conversation-continuity workflow","replacement":"automatic AGENTS/bootstrap preflight instruction plus flat repository health"},
+        {"tool":"tools/interaction_pilot.py","test":"tests/interaction_pilot/test_interaction_pilot.py","lifecycle":"HISTORICAL_INERT","observed_baseline":"FAIL: 13/17 against retired pointer/control artifacts","replacement":"execution termination regression cases plus live convergence scorecard"},
+        {"tool":"tools/interaction_audit.py","test":"tests/interaction_audit/test_interaction_audit.py","lifecycle":"HISTORICAL_INERT","observed_baseline":"PASS but synthetic historical evidence only","replacement":"live convergence scorecard for operational claims"}
+      ],
+      "historical_execution_target":0,
+      "historical_runtime_import_target":0
     },
-    "cybalicistjt-stack/Multiversal-app": {
-      "current_validation_core": [
-        {"path":"tools/validation_core/profile_runner.py","lifecycle":"CURRENT"},
-        {"path":"tools/validation_core/runner_preflight.py","lifecycle":"CURRENT"},
-        {"path":"tools/validation_core/evidence.py","lifecycle":"CURRENT"},
-        {"path":"tools/validation_core/compare_receipts.py","lifecycle":"CURRENT"},
-        {"path":"tools/validation_core/validate_repository_health_app.py","lifecycle":"CURRENT","caller":".github/workflows/validate-repository-health.yml"}
+    "cybalicistjt-stack/Multiversal-app":{
+      "current_validation_core":[
+        {"path":"tools/validation_core/profile_runner.py","lifecycle":"CURRENT_COMPATIBLE","caller":".github/workflows/_validation-core-profile.yml"},
+        {"path":"tools/validation_core/runner_preflight.py","lifecycle":"CURRENT_COMPATIBLE","caller":".github/workflows/_validation-core-profile.yml"},
+        {"path":"tools/validation_core/evidence.py","lifecycle":"CURRENT_COMPATIBLE","caller":".github/workflows/_validation-core-profile.yml"},
+        {"path":"tools/validation_core/compare_receipts.py","lifecycle":"CURRENT_COMPATIBLE","caller":".github/workflows/_validation-core-profile.yml"},
+        {"path":"tools/validation_core/validate_repository_health_app.py","lifecycle":"CURRENT","caller":".github/workflows/validate-current-family.yml"},
+        {"path":"tools/validation_core/validate_family_contract.py","lifecycle":"CURRENT","caller":".github/workflows/validate-current-family.yml"}
       ],
-      "current_compatible_manual_checks": [{"path":"tests/tools/test_mv_dev_repository_intelligence.py","lifecycle":"CURRENT_COMPATIBLE","caller":".github/workflows/self-hosted-windows-runner-smoke.yml"}],
-      "completed_bounded_capability_exceptions": [
-        {"path":"tools/build_post_gatx_internal_alpha_package.py","scope":"POST-GATX-SUCCESSOR","lifecycle":"HISTORICAL_INERT","validated_head":"3b9e33cb22b8d4e3f2558135ba0fc36a8c8ad223","completion_merge":"8685165318b1f3782903bfe137ba8257539af017"},
-        {"path":"tools/verify_post_gatx_internal_alpha_package.py","scope":"POST-GATX-SUCCESSOR","lifecycle":"HISTORICAL_INERT","validated_head":"3b9e33cb22b8d4e3f2558135ba0fc36a8c8ad223","completion_merge":"8685165318b1f3782903bfe137ba8257539af017"}
-      ],
-      "execution_rule": "New or resumed production work uses a reviewed thin Validation Core profile by default. Historical validation-like files cannot govern by existence."
+      "execution_rule":"One automatic current-family selector invokes app health and at most one active-family profile. Completed predecessor evidence remains sealed."
     }
   },
-  "retirement_effect": {"historical_files_deleted":false,"history_preserved":true,"future_reactivation_requires_explicit_registration":true}
+  "retirement_effect":{
+    "historical_files_deleted":false,
+    "history_preserved":true,
+    "current_workflow_historical_execution_count":0,
+    "future_reactivation_requires_explicit_owner_approved_registration":true
+  }
 }

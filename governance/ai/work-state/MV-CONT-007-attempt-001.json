@@ -5,14 +5,62 @@
   "track":"execution-surface-simplification",
   "repository":"cybalicistjt-stack/multiversal-aioc",
   "title":"Family-Scoped Validation Simplification & Zombie Retirement",
-  "status":"in_progress",
+  "status":"ready_for_review",
   "owner_selected":true,
   "started_at":"2026-08-27T19:37:00Z",
-  "implementation_branch":"ops/family-scoped-validation-simplification",
+  "implementation_branch":"codex/mv-cont-007-recovery",
   "implementation_authority":true,
   "exclusive_control_plane_maintenance":true,
   "objective":"Reduce the live development execution surface to one family-scoped application CI path and one flattened AIOC health path; retire historical validators from automatic execution; replace repeated predecessor revalidation with sealed proof ancestry; prevent concurrent feature starts during control-plane maintenance; and make future family transitions explicitly establish their allowed validation surface once per family rather than once per tranche.",
-  "preserved_product_state":{"selected_work_item":"AAI-10","selected_attempt":"AAI-10-attempt-001","selected_status":"selected_not_started","application_main":"b670368ca91778802867a1a4b8d963c3a3ea8875","implementation_authority":false},
+  "preserved_product_state":{"selected_work_item":"AAI-10","selected_attempt":"AAI-10-attempt-001","selected_status":"selected_not_started","feature_baseline":"b670368ca91778802867a1a4b8d963c3a3ea8875","application_main_after_control_plane_change":"e34d43d669c48d484dbdb9e82b72a00c5d91f00c","implementation_authority":false},
+  "recovery_evidence":{
+    "application_half":{"pr":336,"merge_sha":"e34d43d669c48d484dbdb9e82b72a00c5d91f00c","status":"merged_verified"},
+    "maintenance_start":{"aioc_pr":777,"merge_sha":"cd8f5391780aa3d7e5a81672d6bef286bd0d353e","status":"merged_start_only"},
+    "recovered_at":"2026-08-28T10:53:56Z",
+    "recovery_branch":"codex/mv-cont-007-recovery"
+  },
+  "convergence_control":{
+    "owner_continue_count":1,
+    "execution_cycles":2,
+    "repair_cycles":1,
+    "no_progress_cycles":0,
+    "diagnostic_mode":true,
+    "last_failure_signature":"MV-CONT-007 stopped after app PR 336 and the AIOC start/lock PR 777 merged; AIOC still executed RSR-01..07 and the historical repository-health version chain while lifecycle/runtime registries remained stale.",
+    "last_failure_class":"repository_state",
+    "diagnostic_hypotheses":[
+      "Cross-repository maintenance was modeled as separate merges without a machine-enforced atomic closeout transaction.",
+      "The lifecycle registry declared historical validators inert but the current workflow and current validator did not enforce that declaration against their own execution paths.",
+      "Textual continuation guidance lacked an executable final-response termination preflight, allowing an intermediate merge to become a conversation stopping point."
+    ],
+    "retry_basis":{
+      "changed_since_previous":[
+        "Owner explicitly approved completing MV-CONT-007 and preventive hardening.",
+        "Both repositories were refreshed from exact live main heads and the completed app half was verified at e34d43d669c48d484dbdb9e82b72a00c5d91f00c.",
+        "A fresh AIOC recovery branch was created from cd8f5391780aa3d7e5a81672d6bef286bd0d353e instead of reusing the merged start branch.",
+        "The repair now treats flat validation, registry reconciliation, zombie retirement and behavioral termination enforcement as one bounded closeout."
+      ]
+    },
+    "service_objective":{
+      "ordinary_tranche_single_continue_target_percent":80,
+      "ordinary_tranche_two_continue_target_percent":95,
+      "max_execution_cycles_without_genuine_blocker":2,
+      "unrelated_historical_validation_jobs_target":0,
+      "reruns_without_changed_evidence_target":0,
+      "post_merge_stale_pointer_target":0
+    }
+  },
+  "ready_for_review_evidence":{
+    "recorded_at":"2026-08-28T11:18:34Z",
+    "implementation_content_head":"2a62cca251d99fcbcabdccc59304659daebc34ee",
+    "flat_aioc_health":"PASS",
+    "cross_repository_app_health":{"head":"e34d43d669c48d484dbdb9e82b72a00c5d91f00c","status":"PASS"},
+    "termination_preflight_self_test":{"cases":10,"status":"PASS"},
+    "control_plane_unit_tests":{"tests":5,"status":"PASS"},
+    "windows_crlf_checkout_health":"PASS",
+    "historical_validator_execution_count":0,
+    "historical_validator_runtime_import_count":0,
+    "retired_legacy_control_suite_count":5
+  },
   "known_defects":[
     "AIOC live Repository Health executes RSR-01..07 validators even though validator lifecycle registry classifies historical validate_*.py scripts inert.",
     "AIOC repository-health entrypoint inherits a long version chain rather than a flat current validator surface.",
@@ -30,5 +78,6 @@
     "Repository health machine-enforces active-family scope and retired-validator nonexecution.",
     "Exact-head validation passes in both repositories and remediation merges before AAI-10 governed start."
   ],
-  "next_action":"Simplify application and AIOC execution surfaces, validate the exact remediation heads, merge both changes, clear the exclusive maintenance lock, and return canonical selection to AAI-10 selected_not_started."
+  "active_operation":"Flatten the current AIOC health path, enforce lifecycle and termination contracts, reconcile live registries to the completed app half, retire superseded PR paths, and complete exact-head closeout.",
+  "next_action":"Push and open the AIOC recovery PR, inspect exact-head repository-health evidence, merge when green, close superseded PRs 763 and 770, then record completed_verified closeout and clear the maintenance lease."
 }

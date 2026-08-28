@@ -2,12 +2,12 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 6.2.0  
+**Version:** 6.3.0
 **Status:** ACTIVE CANDIDATE — CRS COMPLETION PENDING  
 **Owner and final authority:** John Brandon Turner  
 **Governance repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Application repository:** `cybalicistjt-stack/Multiversal-app`  
-**Last updated:** 2026-08-27
+**Last updated:** 2026-08-28
 
 ## Purpose
 
@@ -103,6 +103,23 @@ Unless a genuine owner-only, unavailable-environment, unavailable-source, safety
 A repeated `Continue` on the same ordinary tranche is an execution-cost signal. Do not consume another owner turn merely to rediscover the same state or repeat unchanged validation. Classify failure, diagnose by the second related repair, and block explicitly rather than entering an unbounded retry loop.
 
 If a genuine blocker survives reasonable recovery, preserve the exact recovery point and report it truthfully.
+
+## Executable final-response preflight
+
+Owner command mode is stateful for the execution turn:
+
+- `Continue`, `fix this`, and `implement this` select execution mode for the bounded unit;
+- `status report and continue` supplies a concise status without cancelling execution mode;
+- `keep going`, `continue until you need me`, and a named finish boundary remain active through that boundary;
+- `get ready`, status-only, and analysis-only are explicit non-execution modes.
+
+Before a final response from an execution turn, create an ephemeral state object conforming to `governance/ai/interaction-system/EXECUTION_TERMINATION_STATE.schema.json` and run:
+
+`python scripts/execution_termination_preflight.py --state <temporary-state.json>`
+
+The state must reflect current evidence for work status, required successor selection, the owner-requested boundary, active asynchronous operations, pending authorized steps, and any genuine blocker. Continue using tools when the result is `CONTINUE_EXECUTION`. Finalize only when it returns `ALLOW_FINAL_RESPONSE` for `completed_verified`, a sufficiently evidenced all-progress blocker, or an explicit non-execution mode.
+
+The temporary state is not committed. The checkpoint remains milestone-only. Missing, failed, or stale preflight evidence never grants permission to stop.
 
 ## Completion-claim integrity
 

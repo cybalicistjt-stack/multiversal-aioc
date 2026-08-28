@@ -1,0 +1,78 @@
+{
+  "schema_version":"1.0.0",
+  "control_id":"C-EXECUTION-TERMINATION-GATE",
+  "source":"Owner-approved MV-CONT-007 recovery incorporating the useful behavioral findings preserved in superseded PR 763.",
+  "privacy":{"raw_conversation_text_published":false,"aggregate_behavior_only":true},
+  "cases":[
+    {
+      "case_id":"MV-EVAL-016",
+      "name":"Continue does not stop at a required asynchronous gate",
+      "state":{"command_mode":"execution","work_item_status":"in_progress","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":1,"pending_authorized_steps":["inspect exact-head CI","merge","close out"],"genuine_blocker":null},
+      "expected_decision":"CONTINUE_EXECUTION",
+      "expected_reason_code":"MVTERM-ASYNC-ACTIVE"
+    },
+    {
+      "case_id":"MV-EVAL-017",
+      "name":"Status and continue retains execution authority",
+      "state":{"command_mode":"status_and_continue","work_item_status":"in_progress","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":["finish bounded implementation"],"genuine_blocker":null},
+      "expected_decision":"CONTINUE_EXECUTION",
+      "expected_reason_code":"MVTERM-AUTHORIZED-WORK-PENDING"
+    },
+    {
+      "case_id":"MV-EVAL-018",
+      "name":"Open integration path is not a stopping boundary",
+      "state":{"command_mode":"execution","work_item_status":"ready_for_review","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":["merge pull request","record completed_verified evidence"],"genuine_blocker":null},
+      "expected_decision":"CONTINUE_EXECUTION",
+      "expected_reason_code":"MVTERM-AUTHORIZED-WORK-PENDING"
+    },
+    {
+      "case_id":"MV-EVAL-019",
+      "name":"Completed work still selects its strict successor",
+      "state":{"command_mode":"execution","work_item_status":"completed_verified","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":true,"active_async_operations":0,"pending_authorized_steps":[],"genuine_blocker":null},
+      "expected_decision":"CONTINUE_EXECUTION",
+      "expected_reason_code":"MVTERM-SUCCESSOR-PENDING"
+    },
+    {
+      "case_id":"MV-EVAL-020",
+      "name":"Keep-going mode survives an intermediate completed tranche",
+      "state":{"command_mode":"keep_going","work_item_status":"completed_verified","successor_selection_required":false,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":[],"genuine_blocker":null},
+      "expected_decision":"CONTINUE_EXECUTION",
+      "expected_reason_code":"MVTERM-BOUNDARY-PENDING"
+    },
+    {
+      "case_id":"MV-EVAL-021",
+      "name":"Completed verified boundary permits final response",
+      "state":{"command_mode":"execution","work_item_status":"completed_verified","successor_selection_required":true,"successor_selected":true,"requested_boundary_completed":true,"active_async_operations":0,"pending_authorized_steps":[],"genuine_blocker":null},
+      "expected_decision":"ALLOW_FINAL_RESPONSE",
+      "expected_reason_code":"MVTERM-COMPLETED-VERIFIED"
+    },
+    {
+      "case_id":"MV-EVAL-022",
+      "name":"Verified all-progress blocker permits truthful handoff",
+      "state":{"command_mode":"execution","work_item_status":"blocked_environment","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":[],"genuine_blocker":{"class":"environment_unavailable","evidence":["required physical execution surface is unavailable"],"recovery_attempted":true,"blocks_all_authorized_progress":true}},
+      "expected_decision":"ALLOW_FINAL_RESPONSE",
+      "expected_reason_code":"MVTERM-GENUINE-BLOCKER"
+    },
+    {
+      "case_id":"MV-EVAL-023",
+      "name":"Unproven blocker does not terminate execution",
+      "state":{"command_mode":"execution","work_item_status":"blocked_environment","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":["inspect runner state"],"genuine_blocker":{"class":"environment_unavailable","evidence":[],"recovery_attempted":false,"blocks_all_authorized_progress":false}},
+      "expected_decision":"CONTINUE_EXECUTION",
+      "expected_reason_code":"MVTERM-BLOCKER-EVIDENCE-INSUFFICIENT"
+    },
+    {
+      "case_id":"MV-EVAL-024",
+      "name":"Get-ready preparation ends without starting implementation",
+      "state":{"command_mode":"get_ready","work_item_status":"selected_not_started","successor_selection_required":false,"successor_selected":false,"requested_boundary_completed":true,"active_async_operations":0,"pending_authorized_steps":[],"genuine_blocker":null},
+      "expected_decision":"ALLOW_FINAL_RESPONSE",
+      "expected_reason_code":"MVTERM-EXPLICIT-NONEXECUTION"
+    },
+    {
+      "case_id":"MV-EVAL-025",
+      "name":"Explicit analysis-only triage may return findings",
+      "state":{"command_mode":"analysis_only","work_item_status":"in_progress","successor_selection_required":false,"successor_selected":false,"requested_boundary_completed":true,"active_async_operations":0,"pending_authorized_steps":[],"genuine_blocker":null},
+      "expected_decision":"ALLOW_FINAL_RESPONSE",
+      "expected_reason_code":"MVTERM-EXPLICIT-NONEXECUTION"
+    }
+  ]
+}
