@@ -61,6 +61,16 @@ jobs:
           python3 --version
           git --version
 
+      - name: Checkout canonical application main for cross-repository convergence
+        uses: actions/checkout@v4
+        with:
+          repository: cybalicistjt-stack/Multiversal-app
+          ref: main
+          path: _cross_repo/Multiversal-app
+          fetch-depth: 0
+          persist-credentials: false
+          clean: true
+
       - name: Validate current AIOC authority, lifecycle and sealed proof
         shell: bash
         run: |
@@ -68,6 +78,7 @@ jobs:
           python3 scripts/validate_repository_health.py \
             --root . \
             --expected-head "$CANDIDATE_HEAD" \
+            --app-root "$GITHUB_WORKSPACE/_cross_repo/Multiversal-app" \
             --output "${RUNNER_TEMP}/canonical-state-audit-generated.json"
 
       - name: Run current control-plane regressions

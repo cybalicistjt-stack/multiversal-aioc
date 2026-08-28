@@ -154,12 +154,11 @@ def evaluate(state: dict[str, Any]) -> dict[str, Any]:
             and any(isinstance(item, str) and item.strip() for item in evidence)
             and recovery_attempted is True
             and blocks_all is True
-            and not pending
         ):
             return _decision(
                 "ALLOW_FINAL_RESPONSE",
                 "MVTERM-GENUINE-BLOCKER",
-                f"verified {blocker_class} blocker prevents all further authorized progress",
+                f"verified {blocker_class} blocker prevents all further authorized progress; {len(pending)} authorized step(s) remain durably resumable",
             )
         return _decision(
             "CONTINUE_EXECUTION",
@@ -184,7 +183,7 @@ def evaluate(state: dict[str, Any]) -> dict[str, Any]:
 def self_test(root: Path) -> dict[str, Any]:
     contract = _load_json(root / CONTRACT_PATH)
     _require(
-        contract.get("schema_version") == "1.1.0",
+        contract.get("schema_version") == "1.2.0",
         "MVTERM-CONTRACT-SCHEMA",
         "termination contract schema mismatch",
     )

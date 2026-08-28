@@ -81,6 +81,8 @@ Application/package final validation uses exact-head self-hosted Windows/Linux l
 
 Distinguish precisely among source bytes unavailable, transfer unavailable, checkout unavailable, feature validation failure, validation-contract failure, validation-infrastructure failure, runner/environment failure, repository-state failure, and owner-only gate. Never reconstruct checksum-bound exact artifacts from excerpts, memory, OCR, or paraphrase.
 
+Also distinguish the execution layers explicitly: host/filesystem access, shell/network access, repository authentication, per-task plugin or MCP availability, sandbox/approval policy, and external model/session quota. Never summarize a missing optional plugin or MCP method as “this environment is unavailable” when the Windows host, repositories and authenticated GitHub fallback remain usable. Name the exact unavailable interface, whether it is required, the fallback used, and any material cost or scope impact.
+
 ## Checkpoint and convergence discipline
 
 Checkpoints are recovery boundaries, not activity logs. Create one start checkpoint before substantive mutation; update only on material handoff, blocker/recovery-path change, ready-for-review, or completed_verified; run focused checks during construction and the declared exact-head gate at final package boundary; never rewrite an interrupted attempt to appear complete; and avoid gratuitous closure-only churn where state is already consistent.
@@ -105,6 +107,8 @@ Unless a genuine owner-only, unavailable-environment, unavailable-source, safety
 A repeated `Continue` on the same ordinary tranche is an execution-cost signal. Do not consume another owner turn merely to rediscover the same state or repeat unchanged validation. Classify failure, diagnose by the second related repair, and block explicitly rather than entering an unbounded retry loop.
 
 If a genuine blocker survives reasonable recovery, preserve the exact recovery point and report it truthfully.
+
+Before an application merge, stage the corresponding AIOC closeout mutation and retain an execution-budget reserve for merge verification, canonical closeout and successor selection. If an observable platform usage ceiling makes that reserve unavailable, keep the validated application pull request open. If the ceiling interrupts execution anyway, record a privacy-minimized `environment_unavailable` handoff with all pending authorized steps and resume them before unrelated work.
 
 ## Executable final-response preflight
 

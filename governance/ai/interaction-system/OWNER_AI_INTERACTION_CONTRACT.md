@@ -133,6 +133,8 @@ If canonical persistence fails, say that the progress is not durably saved. Conv
 
 Stop only for a genuine owner-only decision, spending, paid-plan enrollment, production credential, irreversible provider commitment, production deployment, internal-alpha/public release approval, or another explicitly reserved gate. Ordinary reversible ambiguities use the approved recommendation process.
 
+When a tool action is unavailable, report the exact failed capability layer: host/filesystem, shell/network, repository authentication, plugin/MCP surface, sandbox/approval policy, or external model/session quota. State whether the capability was required, which fallback was used, and whether the failure consumed time or changed the completion boundary. Do not use vague “environment” language that can be mistaken for loss of the owner-authorized Windows host or repository access.
+
 ## 13. Executable termination gate
 
 Before a final response from an execution turn, build an ephemeral state object conforming to `EXECUTION_TERMINATION_STATE.schema.json` and run:

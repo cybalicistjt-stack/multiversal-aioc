@@ -143,6 +143,10 @@ Application merge evidence and AIOC state projection form one governed closeout 
 - Closeout should select the strict successor in the same governed reconciliation when no separate owner gate intervenes.
 - A merge API response is not canonical application-main evidence until live `main` is re-read.
 
+Before crossing an application merge boundary, prepare the exact AIOC closeout mutation and preserve enough execution reserve to validate and merge it. When the runtime exposes a usage warning or another bounded execution ceiling and that reserve is not credible, leave the validated application pull request unmerged. A validated open pull request is a recoverable boundary; a merged application with stale canonical governance is not.
+
+If an external usage ceiling interrupts execution despite that reserve, classify it as `environment_unavailable`, preserve every pending authorized closeout step in the blocker handoff, and resume from repository evidence. The interruption may explain the incomplete cycle but cannot convert pending closeout into completion or erase it from the scorecard.
+
 ## 11. Live throughput scorecard
 
 Synthetic interaction-pilot results and live operational throughput are separate evidence classes.

@@ -1,8 +1,8 @@
 {
-  "schema_version":"2.0.0",
+  "schema_version":"2.1.0",
   "program_id":"CRS",
   "status":"CURRENT",
-  "updated_at":"2026-08-28T16:10:35Z",
+  "updated_at":"2026-08-28T23:51:18Z",
   "policy":"governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md",
   "execution_convergence_policy":"governance/ai/MULTIVERSAL_EXECUTION_CONVERGENCE_POLICY.md",
   "default_rule":"A workflow not explicitly listed as CURRENT or CURRENT_COMPATIBLE is forbidden from the live .github/workflows namespace.",
@@ -23,13 +23,14 @@
           "timeout_minutes":5,
           "validation_entrypoint":"scripts/validate_repository_health.py",
           "historical_validator_execution_count":0,
-          "purpose":"One state-driven AIOC authority, lifecycle, sealed-proof and behavioral-control audit plus its focused current regression suite."
+          "purpose":"One state-driven AIOC authority, lifecycle, sealed-proof, behavioral-control and canonical application-main convergence audit plus its focused current regression suite."
         }
       ],
       "retired_workflow_policy":"All other historical AIOC workflows remain HISTORICAL_INERT in Git history."
     },
     "cybalicistjt-stack/Multiversal-app":{
-      "current_main":"d007dc980c63a7beab4ab9a4ddbc67525f8d7003",
+      "current_main":"58fabcf29e164fd4e3eb278334d385dd9970159d",
+      "family_scope_merge":"d007dc980c63a7beab4ab9a4ddbc67525f8d7003",
       "family_scope_pr":337,
       "live_workflows":[
         {
@@ -66,6 +67,7 @@
     "application_automatic_workflow_limit":1,
     "ordinary_substantive_pr_profile_limit":1,
     "unrelated_historical_validation_jobs_target":0,
-    "cross_repository_token_dependency":false
+    "cross_repository_token_dependency":false,
+    "cross_repository_application_main":true
   }
 }

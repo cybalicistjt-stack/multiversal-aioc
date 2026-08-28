@@ -1,8 +1,8 @@
 {
-  "schema_version":"1.1.0",
+  "schema_version":"1.2.0",
   "control_id":"C-EXECUTION-TERMINATION-GATE",
   "lifecycle":"CURRENT",
-  "owner_approved_at":"2026-08-28T10:53:56Z",
+  "owner_approved_at":"2026-08-28T23:51:18Z",
   "purpose":"Prevent an execution turn from returning control at an intermediate milestone while reversible authorized work remains.",
   "command_modes":{
     "execution":{"aliases":["Continue","fix this","implement this"],"persists_until":"bounded unit completed_verified, genuine blocker, or newer owner command"},
@@ -30,7 +30,9 @@
     "instruction_surfaces":["AGENTS.md","governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md"],
     "regression_cases":"governance/ai/interaction-system/evaluation/EXECUTION_TERMINATION_CASES.json",
     "repository_health_gate":"scripts/validate_repository_health.py",
+    "merge_reserve_rule":"Before an application merge, stage the cross-repository closeout and retain enough observable execution reserve to verify the merge, reconcile canonical state and select the strict successor. If a platform usage warning makes that reserve unavailable, leave the validated pull request open.",
+    "environment_interruption_handoff":"A verified platform usage ceiling may permit a truthful blocked handoff while pending authorized steps remain, but those steps must be preserved explicitly and resume before unrelated work.",
     "evidence_freshness_lease":{"recovery_passes_per_execution_cycle_without_invalidation":1,"refresh_scope":"affected facts only","invalidating_events":["authority_or_selected_checkpoint_changed","relevant_head_branch_or_base_changed","merge_rebase_force_push_or_conflicting_writer","materially_new_required_check_result","tool_reports_stale_missing_contradictory_or_inaccessible_evidence","declared_final_validation_or_closeout_boundary"],"non_invalidating_events":["tool_batch_ended","elapsed_time","context_compaction","commentary_or_status_request","additional_historical_file_exists"]},
-    "ephemeral_state_rule":"Turn-state inputs are temporary execution evidence and are not committed as activity logs. Durable checkpoint updates remain milestone-only."
+    "ephemeral_state_rule":"Turn-state inputs are temporary execution evidence and are not committed as activity logs. Durable checkpoint updates remain milestone-only; an unexpected environment interruption after a merge requires a material handoff checkpoint."
   }
 }
