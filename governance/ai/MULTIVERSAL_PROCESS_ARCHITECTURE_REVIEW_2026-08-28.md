@@ -1,8 +1,8 @@
 # Multiversal Phase 1-to-Present Process Architecture Review
 
-**Document ID:** MV-PROCESS-REVIEW-2026-08-28  
-**Status:** GOVERNED REVIEW — MV-CONT-008  
-**Owner and final authority:** John Brandon Turner  
+**Document ID:** MV-PROCESS-REVIEW-2026-08-28
+**Status:** GOVERNED REVIEW — MV-CONT-008
+**Owner and final authority:** John Brandon Turner
 **Scope:** planning, implementation, validation, repository topology and owner/AI operating behavior from the early foundation through the AAI-09 boundary
 
 ## Executive decision

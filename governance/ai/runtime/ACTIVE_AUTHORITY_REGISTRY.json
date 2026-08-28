@@ -1,12 +1,11 @@
 {
   "schema_version":"14.2.0",
-  "updated_at":"2026-08-28T16:07:48Z",
+  "updated_at":"2026-08-28T16:10:35Z",
   "policy":"governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md",
   "current":[
     {"kind":"bootstrap","lifecycle":"CURRENT","path":"governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md"},
     {"kind":"work_pointer","lifecycle":"CURRENT","path":"governance/ai/runtime/CURRENT_WORK_POINTER.json"},
     {"kind":"selected_product_checkpoint","lifecycle":"CURRENT","path":"governance/ai/work-state/AAI-10-attempt-001.json"},
-    {"kind":"exclusive_control_plane_maintenance_checkpoint","lifecycle":"CURRENT","path":"governance/ai/work-state/MV-CONT-008-attempt-001.json"},
     {"kind":"program","lifecycle":"CURRENT","path":"governance/application-planning/audio-asset-interoperability/AAI_AUDIO_ASSET_INTEROPERABILITY_PROGRAM.md"},
     {"kind":"backlog","lifecycle":"CURRENT","path":"governance/application-planning/audio-asset-interoperability/AAI_PROGRAM_BACKLOG.json"},
     {"kind":"roadmap","lifecycle":"CURRENT","path":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md"},
@@ -33,15 +32,8 @@
     "implementation_authority":false,
     "implementation_scope":"Selection-only multi-provider golden-proof planning. No provider network calls, paid activation, credentials, content acquisition, scraping, gameplay-owner mutation or migration 0022."
   },
-  "exclusive_control_plane_maintenance":{
-    "work_item":"MV-CONT-008",
-    "attempt_id":"MV-CONT-008-attempt-001",
-    "state":"ready_for_review",
-    "implementation_branch":"codex/mv-cont-008-implementation",
-    "implementation_authority":true,
-    "feature_starts_blocked":true
-  },
   "recently_completed_repository_health_remediation":[
+    {"work_item":"MV-CONT-008","status":"completed_verified","application_pr":337,"application_merge":"d007dc980c63a7beab4ab9a4ddbc67525f8d7003","aioc_pr":781,"aioc_validated_head":"d2e0d975039af7fa6f547f65c02844001c62ea78","repository_health_run":33188605756,"aioc_merge":"bf12f46126782a523623507262661f273cab5669","main_health_run":33188650058,"superseded_prs_closed":[]},
     {"work_item":"MV-CONT-007","status":"completed_verified","application_pr":336,"application_merge":"e34d43d669c48d484dbdb9e82b72a00c5d91f00c","aioc_pr":778,"aioc_validated_head":"cceeceb5e3a2952c94581bd5efef55c99e87a10c","repository_health_run":33166810683,"aioc_merge":"c94baa78f0f135681ecaab3e6dc36d5c11b1afa2","main_health_run":33166847490,"superseded_prs_closed":[763,770]},
     {"work_item":"MV-CONT-006","status":"completed_verified","application_pr":332,"aioc_pr":771,"aioc_validated_head":"cfd70d493c696ec666c0e012545919afc670fae7","repository_health_run":33101497747,"aioc_merge":"5bb428c9d596da7bb9462d4caea88e30930d90cc"}
   ],
@@ -64,5 +56,5 @@
     {"work_item":"WP-011","pr":61,"state":"special_environment_dormant","merge_authority":false},
     {"work_item":"DS-008","state":"blocked_non_owner","merge_authority":false}
   ],
-  "rule":"Only registered CURRENT or CURRENT_COMPATIBLE surfaces may govern. MV-CONT-008 holds the exclusive process/validation maintenance lease; AAI-10 remains selected_not_started without implementation authority. Paid provider activation, credentials, content acquisition, migration 0022, tester distribution and deployment remain unauthorized."
+  "rule":"Only registered CURRENT or CURRENT_COMPATIBLE surfaces may govern. MV-CONT-008 is completed_verified and no maintenance lease remains; AAI-10 remains selected_not_started without implementation authority. Paid provider activation, credentials, content acquisition, migration 0022, tester distribution and deployment remain unauthorized."
 }

@@ -1,6 +1,6 @@
 {
-    "schema_version": "14.10.0",
-    "updated_at": "2026-08-28T16:07:48Z",
+    "schema_version": "14.11.0",
+    "updated_at": "2026-08-28T16:10:35Z",
     "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
     "authority_registry": "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
     "canonical_application_roadmap": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
@@ -11,7 +11,7 @@
         "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_AAI09_CLOSEOUT_2026-08-27.md"
     ],
     "primary_attempt_id": "AAI-10-attempt-001",
-    "selection_reason": "AAI-09 and MV-CONT-007 remain completed_verified. MV-CONT-008 is ready_for_review after application PR 337 merged at d007dc980c63a7beab4ab9a4ddbc67525f8d7003; its exclusive maintenance lease remains active through AIOC implementation and closeout. AAI-10 remains selected_not_started without implementation authority.",
+    "selection_reason": "AAI-09, MV-CONT-007 and MV-CONT-008 are completed_verified. Application PR 337 merged at d007dc980c63a7beab4ab9a4ddbc67525f8d7003 and AIOC PR 781 merged at bf12f46126782a523623507262661f273cab5669 with exact-main health run 33188650058 passing. The maintenance lease is cleared; AAI-10 remains selected_not_started without implementation authority.",
     "active_attempt": {
         "work_item_id": "AAI-10",
         "attempt_id": "AAI-10-attempt-001",
@@ -36,14 +36,6 @@
         "program_path": "governance/application-planning/audio-asset-interoperability/AAI_AUDIO_ASSET_INTEROPERABILITY_PROGRAM.md",
         "backlog_path": "governance/application-planning/audio-asset-interoperability/AAI_PROGRAM_BACKLOG.json"
     },
-    "exclusive_control_plane_maintenance": {
-        "work_item_id": "MV-CONT-008",
-        "attempt_id": "MV-CONT-008-attempt-001",
-        "checkpoint_path": "governance/ai/work-state/MV-CONT-008-attempt-001.json",
-        "status": "ready_for_review",
-        "branch": "codex/mv-cont-008-implementation",
-        "feature_starts_blocked": true
-    },
     "recently_completed_implementation_work": [
         {
             "work_item_id": "AAI-09",
@@ -65,6 +57,19 @@
         }
     ],
     "recently_completed_repository_health_maintenance": [
+        {
+            "work_item_id": "MV-CONT-008",
+            "status": "completed_verified",
+            "checkpoint_path": "governance/ai/work-state/MV-CONT-008-attempt-001.json",
+            "application_pr": 337,
+            "application_merge": "d007dc980c63a7beab4ab9a4ddbc67525f8d7003",
+            "aioc_pr": 781,
+            "aioc_validated_head": "d2e0d975039af7fa6f547f65c02844001c62ea78",
+            "aioc_repository_health_run": 33188605756,
+            "aioc_merge": "bf12f46126782a523623507262661f273cab5669",
+            "aioc_main_health_run": 33188650058,
+            "superseded_prs_closed": []
+        },
         {
             "work_item_id": "MV-CONT-007",
             "status": "completed_verified",
@@ -105,11 +110,11 @@
         "application_implementation_authority": false
     },
     "bounded_authority": {
-        "repository_health_maintenance": true,
+        "repository_health_maintenance": false,
         "dpl_implementation": false,
         "mai_implementation": false,
         "aai_implementation": false,
-        "aai_scope": "AAI-10 remains selected_not_started. MV-CONT-008 exclusively authorizes process and validation repairs; it does not authorize feature implementation.",
+        "aai_scope": "AAI-10 remains selected_not_started. MV-CONT-008 is completed and does not authorize feature implementation.",
         "mib_16_implementation": false,
         "ccti_t04_merge_or_completion": false,
         "tester_distribution": false,
@@ -119,10 +124,10 @@
     "selection_invariants": [
         "AAI-01..09 are completed_verified with no further implementation authority",
         "AAI-10 remains selected_not_started with no implementation branch",
-        "MV-CONT-007 is completed_verified; MV-CONT-008 holds the exclusive maintenance lease",
+        "MV-CONT-007 and MV-CONT-008 are completed_verified and the maintenance lease is cleared",
         "AAI-09 permission, remote-sync and recording/streaming boundaries remain binding",
         "paid provider activation, live credentials, scraping/reverse engineering and content-byte acquisition remain unauthorized",
         "migration 0022 remains unreserved unless separately demonstrated canonical schema delta requires it"
     ],
-    "exact_next_action": "Complete MV-CONT-008 process review and state-driven validation repairs, merge exact-head evidence, clear the maintenance lease, and leave AAI-10 selected_not_started."
+    "exact_next_action": "AAI-10 remains selected_not_started. On a future owner execution command, resolve its provider/source matrix, live-versus-fixture authority, persistence decision and bounded profile before governed implementation start."
 }
