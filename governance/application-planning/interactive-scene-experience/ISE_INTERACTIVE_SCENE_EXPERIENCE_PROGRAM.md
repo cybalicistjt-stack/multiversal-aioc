@@ -1,11 +1,15 @@
 # ISE — Interactive Scene Experience
 
 **Program ID:** ISE  
-**Status:** OWNER-APPROVED — PLANNED INTERSTITIAL  
+**Status:** OWNER-APPROVED — ISE-01 SELECTED_NOT_STARTED
 **Activation:** after AAI-10  
 **Successor:** SSA-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-08-23
+
+## Current selection
+
+AAI-10 completed_verified through application PR #339 and merge `28fb49b174095abf4b1093af362c0a1191672091`. ISE-01 is now the canonical selected work item, but it is `selected_not_started`: no implementation branch exists and no implementation authority is active. A future owner execution command must perform the governed-start transition before source mutation.
 
 ## Purpose
 
