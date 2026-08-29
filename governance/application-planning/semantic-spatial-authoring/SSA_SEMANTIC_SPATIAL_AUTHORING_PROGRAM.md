@@ -1,7 +1,7 @@
 # SSA — Semantic Spatial Authoring
 
 **Program ID:** SSA  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH SSA-02; SSA-03 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH SSA-03; SSA-04 SELECTED_NOT_STARTED  
 **Activation:** after ISE-08  
 **Successor:** WCI-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,15 +9,11 @@
 
 ## Current selection
 
-SSA-02 — Structural Primitives, Attachments & Construction Relationships — is `completed_verified` through application PR #349 and application merge `5aeb8ee6900e5989507eaddd26e06c8ec972b367`. Exact validated head `0d8953928be25e246e5c85881878dbfb3464e322` passed current-family run `33278840925`: selector/Repository Health `99170403307`, self-hosted Linux `99170417391`, self-hosted Windows `99170417347`, and deterministic comparison `99170485650`. Linux and Windows produced matching deterministic receipt SHA-256 `ceaf5ae051feb0fb359b8623074ca0487f4b5475d90b3ad5a019e00a280182d0`, with zero historical predecessor fanout.
+SSA-03 — Caves, Irregular Geometry & Non-Euclidean Topology — is `completed_verified` through application PR #350 and application merge `f20531956ff7f0596f98ada6426344f692823cf9`. Exact validated head `dd9c4f677dcd8eebbb83cbca16ce0786127ec841` passed current-family run `33280365901`: selector/Repository Health `99174398932`, self-hosted Linux `99174411867`, self-hosted Windows `99174411950`, and deterministic comparison `99174479460`. Linux and Windows produced matching deterministic receipt SHA-256 `d4be54dc2ee45821a531192c081e7e4173f9df57242cf8e82ff052968cf0814e`, with zero historical predecessor fanout.
 
-SSA-03 — Caves, Irregular Geometry & Non-Euclidean Topology — is bounded `in_progress` under the owner Continue at 2026-08-29T18:03:00-05:00 on registered application branch `integration/ssa-03-caves-irregular-geometry-non-euclidean-topology`, based exactly on application `5aeb8ee6900e5989507eaddd26e06c8ec972b367`. Product mutation remains blocked until this governed-start candidate passes Repository Health.
+SSA-03 delivered authorized cave, irregular-space and non-Euclidean topology projections over SSA-01 stable references and SSA-02 structural semantics. It composes shaft-space from an existing SSA-02 shaft primitive, keeps geometry distinct from topology, keeps inferred topology assistance-only until confirmation, permits authored non-Euclidean connectivity without requiring Euclidean adjacency, and requires Transition/Portal/Reality/Permission/movement or owner validation before consequential traversal. Hidden topology and protected cardinality remain filtered, accessible nonvisual route/topology semantics remain required, and no parallel navigation/Reality ledger, durable persistence or migration `0022` was introduced.
 
-The bounded SSA-03 contract defines chamber, passage, tunnel, cavern, shaft-space, vertical-space, nested-space, stacked-space and portal-anchor topology projections plus connectivity, vertical-connectivity, containment, nesting, stacking, portal-link and non-Euclidean-link relationships over authorized SSA-01 references and completed SSA-02 structural semantics. Imported governed semantic metadata and confirmed authoring may establish topology; generated or inferred topology remains assistance-only until confirmed where certainty is insufficient. Pixels, Euclidean distance, proximity, overlap and artwork alone never establish topological truth.
-
-Non-Euclidean topology may describe authored connectivity that is not Euclidean-adjacent, but it cannot create movement, portal travel, reality changes or permission grants. Non-Euclidean, vertical and portal links require Transition/Portal/Reality/Permission/movement or owner validation. Hidden/GM-only topology and protected cardinality remain filtered before projection, and consequential route/topology meaning retains accessible nonvisual descriptions.
-
-SSA-03 creates no parallel Scene/World/Reality/navigation ledger and performs no canonical mutation. No new canonical persistence is required; migration `0022` remains unreserved. Exactly one `SSA-03` current-family Validation Core profile is authorized with zero historical predecessor fanout. SSA-04+ remains unauthorized.
+SSA-04 — Functional Spatial Zones, Ecology & Recurring Use — is now selected `selected_not_started` only. It has no implementation branch or implementation authority. A future governed tranche must represent migration corridors, seasonal paths, sanctuaries, nesting/gathering/hunting/use zones, protected areas, hazard fields, trade/use corridors and other persistent spatial behaviors as typed world relationships rather than spawn-table prose, while preserving canonical World/Reality, Scene, Exploration, Creature ecology, Research and Permission ownership. Generated or inferred zone/use semantics remain assistance until confirmed where certainty is insufficient. No persistence or migration is reserved at selection.
 
 ## Purpose
 
@@ -64,8 +60,9 @@ Recovered basis: RDC-06 / RD-07 / RD-08 and RDC-07 / RD-14 from the recovered mi
 - World/Reality and Scene owners remain authoritative for their state.
 - MAI owns visual/map asset interoperability; completed ISE owns the native playable Scene surface.
 - Spatial semantics do not become a second Research, Creature, Project, Exploration, construction, navigation or Reality ledger.
-- Generated/inferred structure or topology remains assistance until confirmed where source confidence is insufficient.
+- Generated/inferred structure, topology or functional-use semantics remain assistance until confirmed where source confidence is insufficient.
 - Geometry, semantic structure, topology and live state remain distinct.
 - Visual adjacency, distance, proximity and pixels are never structural or topological truth by themselves.
 - Non-Euclidean or vertical support cannot bypass permission, Transition, Portal, Reality, movement or owner authority.
+- Functional zones cannot silently replace Creature ecology, World/Reality, Exploration or Research authority.
 - Accessible nonvisual representations must exist for consequential spatial state.
