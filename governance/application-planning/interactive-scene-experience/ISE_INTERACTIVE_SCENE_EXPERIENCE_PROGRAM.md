@@ -1,7 +1,7 @@
 # ISE — Interactive Scene Experience
 
 **Program ID:** ISE  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH ISE-05; ISE-06 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH ISE-05; ISE-06 IN_PROGRESS  
 **Activation:** after AAI-10  
 **Successor:** SSA-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,11 +9,9 @@
 
 ## Current selection
 
-ISE-05 — Levels, Elevation, Reality Layers & Map-State Families — is `completed_verified` through application PR #344. Its first and only candidate `22dc0c943e42b937ef88df5d4d066410a818db68` passed current-family run `33259228290`: selector/Repository Health job `99118184402`, self-hosted Linux `99118198137`, self-hosted Windows `99118198164`, and deterministic comparison `99118268054`. Linux and Windows produced matching deterministic receipt SHA-256 `d03c5cd373dce2796ab1e0703fbf48baf33dba0d56c7036b3a5d6a67959086b2`, with zero historical predecessor fanout and zero repair reruns. PR #344 merged to application `main` as `1d2f754446965a3a756e3105476895e0df7e94b3`.
+ISE-05 — Levels, Elevation, Reality Layers & Map-State Families — remains `completed_verified` through application PR #344. Its first and only candidate `22dc0c943e42b937ef88df5d4d066410a818db68` passed current-family run `33259228290`: selector/Repository Health job `99118184402`, self-hosted Linux `99118198137`, self-hosted Windows `99118198164`, and deterministic comparison `99118268054`. Linux and Windows produced matching deterministic receipt SHA-256 `d03c5cd373dce2796ab1e0703fbf48baf33dba0d56c7036b3a5d6a67959086b2`, with zero historical predecessor fanout and zero repair reruns. PR #344 merged to application `main` as `1d2f754446965a3a756e3105476895e0df7e94b3`.
 
-ISE-05 preserved authorization-before-projection, canonical Scene semantic position, World/Reality/Timeline/Plane/phase ownership, expected-version/idempotency and Transition/Portal/owner validation. Elevation and level ordering remained profile-authored presentation; aligned map variants never made artwork canonical; spatial alignment never merged realities; consequential vertical/map-state/reality-layer changes remained existing-owner-proposal handoffs; migration `0022` remained unreserved.
-
-Strict successor ISE-06 — Environment, Effects, Scene State & Audiovisual Orchestration — is selected as `selected_not_started` in `governance/ai/work-state/ISE-06-attempt-001.json`. Selection grants no implementation branch or implementation authority. A future owner `Continue` must perform a bounded governed-start transition before any ISE-06 product mutation.
+ISE-06 — Environment, Effects, Scene State & Audiovisual Orchestration — is now bounded `in_progress` under the owner Continue on registered application branch `integration/ise-06-environment-effects-scene-state-audiovisual-orchestration`, based exactly on application `1d2f754446965a3a756e3105476895e0df7e94b3`. It composes already-authorized Scene/World/Event/Combat/Weather/Travel/Vehicle/Magic state with MAI visual references and AAI cue/soundscape references. Manual mode remains local presentation; Suggest emits governed proposals; authorized Automatic requires an explicit authorization reference and still cannot create gameplay truth, bypass GM override/consent, or call providers directly. No parallel gameplay/media/orchestration ledger is authorized and migration `0022` remains unreserved.
 
 ## Purpose
 
