@@ -1,7 +1,7 @@
 # SSA — Semantic Spatial Authoring
 
 **Program ID:** SSA  
-**Status:** OWNER-APPROVED — IN_PROGRESS; SSA-01 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH SSA-01; SSA-02 SELECTED_NOT_STARTED  
 **Activation:** after ISE-08  
 **Successor:** WCI-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,13 +9,13 @@
 
 ## Current selection
 
-The predecessor Interactive Scene Experience program is `completed_verified` through ISE-08. Final application PR #347 validated exact head `34cf71ac1c2bb87f2929b120725ef8dfe9c4fe3e` on run `33268128450` with selector `99141729535`, Linux `99141743166`, Windows `99141743344`, comparator `99141876476`, deterministic receipt `65268f3566c4f00c4be6d6a00672992c2a65a0e47848ef1b35dfb140df1e696f`, zero historical predecessor fanout, and application merge `1381a97573b6b36d31a72ddd37ed0c3177674ef3`.
+SSA-01 — Authority Crosswalk & Spatial Semantic Taxonomy — is `completed_verified` through application PR #348 and application merge `a04749b381f08aaf8fc23290e7b3f1d3dd48050a`. Exact validated head `f5e7d1cca6c1cdb6a06268bba4c4bb900e73c7ff` passed current-family run `33274022700`: selector/Repository Health `99157467357`, self-hosted Linux `99157481187`, self-hosted Windows `99157481147`, and deterministic comparison `99157550121`. Linux and Windows produced matching deterministic receipt SHA-256 `2297ee65a51d418839fb9e80f49c29a7e37db28c3d34832153750131ecb0eed2`, with zero historical predecessor fanout.
 
-SSA-01 — Authority Crosswalk & Spatial Semantic Taxonomy — is bounded `in_progress` under the owner Continue at 2026-08-29T15:25:00-05:00 on registered application branch `integration/ssa-01-authority-crosswalk-spatial-semantic-taxonomy`, based exactly on application `1381a97573b6b36d31a72ddd37ed0c3177674ef3`. Product mutation remains blocked until this governed-start candidate passes Repository Health.
+SSA-01 delivered an authorization-first owner crosswalk across World/Reality, Scene, Exploration, Research, Creature ecology, Asset, Permission, MAI and completed ISE identities; stable semantic references; high-level entity/relation taxonomies; explicit geometry/semantic-structure/live-state separation; assistance-only uncertain inference; accessible nonvisual consequential meaning; and deterministic projection receipts. It created no parallel owner ledger, canonical mutation or durable persistence, and migration `0022` remains unreserved.
 
-SSA-01 reconciles recovered structural/world-space concepts with MAI, completed ISE, World/Reality, Scene, Exploration, Research, Creature ecology, Asset and permission authorities. Its bounded contract defines canonical owner crosswalks, stable semantic references, high-level entity/relation families, confirmation state for uncertain inference, accessible nonvisual semantics and the explicit separation of geometry, semantic structure and live state. It does not implement SSA-02 construction primitives or create a parallel domain ledger.
+The first program-boundary validation attempt correctly exposed that the application Validation Core family contract still sealed ISE; the family-transition rule was applied to activate SSA while sealing ISE-08 at `1381a97573b6b36d31a72ddd37ed0c3177674ef3`, without changing workflow code or rerunning historical profiles. A later source-governance failure was verifier-only whitespace normalization after raw artifact inspection. Both application repairs changed evidence; no unchanged-evidence rerun or historical predecessor job occurred.
 
-No new canonical persistence is required for SSA-01. The tranche is additive contract/projection work over existing owner identities; migration `0022` remains unreserved. Exactly one `SSA-01` current-family Validation Core profile is authorized, with zero historical predecessor fanout.
+SSA-02 — Structural Primitives, Attachments & Construction Relationships — is now selected `selected_not_started` only. It has no implementation branch or implementation authority. A future governed tranche must define walls, openings, doors, windows, floors, ceilings/roofs, stairs, ramps, rooms, entrances, shafts and related attachment/connectivity semantics while preserving existing Scene/World/Reality/Transition/Portal/permission/MAI/ISE owners. Visual adjacency or pixels never become structural truth until confirmed or imported from governed semantic metadata. No persistence or migration is reserved at selection.
 
 ## Purpose
 
