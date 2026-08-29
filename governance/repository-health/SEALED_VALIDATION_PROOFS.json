@@ -1,51 +1,11 @@
 {
-  "schema_version":"2.0.0",
+  "schema_version":"2.1.0",
   "lifecycle":"CURRENT",
   "policy":"Historical validation proof is immutable Git ancestry and digest evidence. Historical validators remain source provenance and never execute from a current workflow or validator.",
-  "aioc_baseline":{
-    "repository":"cybalicistjt-stack/multiversal-aioc",
-    "commit":"cd8f5391780aa3d7e5a81672d6bef286bd0d353e",
-    "tree":"ba4143f00e69b960992691dda61b17856c6c89fc",
-    "meaning":"Last canonical AIOC main before the MV-CONT-007 flattening implementation. Git object identity seals all predecessor evidence at this boundary."
-  },
-  "application_family_proof":{
-    "repository":"cybalicistjt-stack/Multiversal-app",
-    "active_family":"AAI",
-    "sealed_through":"AAI-09",
-    "sealed_baseline":"b670368ca91778802867a1a4b8d963c3a3ea8875",
-    "family_scope_merge":"d007dc980c63a7beab4ab9a4ddbc67525f8d7003",
-    "family_scope_pr":337,
-    "live_workflows":[".github/workflows/_validation-core-profile.yml",".github/workflows/validate-current-family.yml"],
-    "historical_predecessor_reruns_default":false
-  },
-  "control_plane_maintenance_proofs":[
-    {
-      "work_item":"MV-CONT-008",
-      "status":"completed_verified",
-      "application_pr":337,
-      "application_merge":"d007dc980c63a7beab4ab9a4ddbc67525f8d7003",
-      "aioc_pr":781,
-      "aioc_validated_head":"d2e0d975039af7fa6f547f65c02844001c62ea78",
-      "aioc_repository_health_run":33188605756,
-      "aioc_merge":"bf12f46126782a523623507262661f273cab5669",
-      "aioc_main_health_run":33188650058,
-      "superseded_prs_closed":[],
-      "meaning":"Durable closure proof for the Phase 1-to-present process review, state-driven validator, current regression execution, dependency-aware application coverage and bounded recovery evidence lease."
-    },
-    {
-      "work_item":"MV-CONT-007",
-      "status":"completed_verified",
-      "application_pr":336,
-      "application_merge":"e34d43d669c48d484dbdb9e82b72a00c5d91f00c",
-      "aioc_pr":778,
-      "aioc_validated_head":"cceeceb5e3a2952c94581bd5efef55c99e87a10c",
-      "aioc_repository_health_run":33166810683,
-      "aioc_merge":"c94baa78f0f135681ecaab3e6dc36d5c11b1afa2",
-      "aioc_main_health_run":33166847490,
-      "superseded_prs_closed":[763,770],
-      "meaning":"Durable closure proof for the family-scoped application workflow, flat AIOC health path, executable termination contract and zombie retirement."
-    }
-  ],
+  "aioc_baseline":{"repository":"cybalicistjt-stack/multiversal-aioc","commit":"cd8f5391780aa3d7e5a81672d6bef286bd0d353e","tree":"ba4143f00e69b960992691dda61b17856c6c89fc","meaning":"Last canonical AIOC main before the MV-CONT-007 flattening implementation. Git object identity seals all predecessor evidence at this boundary."},
+  "application_family_proof":{"repository":"cybalicistjt-stack/Multiversal-app","active_family":"ISE","sealed_through":"AAI-10","sealed_baseline":"28fb49b174095abf4b1093af362c0a1191672091","family_scope_merge":"05c1df53692e8f9e00d7b00f0650af9934c70913","family_scope_pr":340,"current_family_completed_through":"ISE-01","live_workflows":[".github/workflows/_validation-core-profile.yml",".github/workflows/validate-current-family.yml"],"historical_predecessor_reruns_default":false,"meaning":"AAI-01..10 are sealed historical ancestry at 28fb49b174095abf4b1093af362c0a1191672091. PR #340 transitioned the current Validation Core family to ISE, validated exactly ISE-01 with zero historical predecessor fanout, and merged the first completed ISE tranche."},
+  "current_family_validation_proofs":[{"work_item":"ISE-01","status":"completed_verified","application_pr":340,"validated_head":"66aa039589dda137ccad72e2b070ee70037b0e2f","validation_run":33251505097,"repository_health_job":99097862025,"linux_job":99097876326,"windows_job":99097876305,"deterministic_compare_job":99097935320,"deterministic_receipt_sha256":"e4729bffdb39562b7ae7cf0ee8e7053645571841892ba7fae6ce0e2cf89937a0","historical_predecessor_jobs_observed":0,"application_merge":"05c1df53692e8f9e00d7b00f0650af9934c70913","meaning":"Exact-head proof for the first ISE tranche: one ISE-01 profile on self-hosted Linux and Windows plus deterministic comparison, with AAI predecessor validation sealed rather than rerun."}],
+  "control_plane_maintenance_proofs":[{"work_item":"MV-CONT-008","status":"completed_verified","application_pr":337,"application_merge":"d007dc980c63a7beab4ab9a4ddbc67525f8d7003","aioc_pr":781,"aioc_validated_head":"d2e0d975039af7fa6f547f65c02844001c62ea78","aioc_repository_health_run":33188605756,"aioc_merge":"bf12f46126782a523623507262661f273cab5669","aioc_main_health_run":33188650058,"superseded_prs_closed":[],"meaning":"Durable closure proof for the Phase 1-to-present process review, state-driven validator, current regression execution, dependency-aware application coverage and bounded recovery evidence lease."},{"work_item":"MV-CONT-007","status":"completed_verified","application_pr":336,"application_merge":"e34d43d669c48d484dbdb9e82b72a00c5d91f00c","aioc_pr":778,"aioc_validated_head":"cceeceb5e3a2952c94581bd5efef55c99e87a10c","aioc_repository_health_run":33166810683,"aioc_merge":"c94baa78f0f135681ecaab3e6dc36d5c11b1afa2","aioc_main_health_run":33166847490,"superseded_prs_closed":[763,770],"meaning":"Durable closure proof for the family-scoped application workflow, flat AIOC health path, executable termination contract and zombie retirement."}],
   "archived_validator_digests":[
     {"path":"scripts/_validate_repository_health_v1_6.py","sha256":"31a85fd1b811b72ee98b90a58125ae101a7ad5bc5db85660db8b16593599ad59"},
     {"path":"scripts/_validate_repository_health_v1_7.py","sha256":"cb485e0930d1352ebb96bd9fd529f8f2ca4134dd3c3a59ce6144f18f659c17c1"},
@@ -64,10 +24,5 @@
     {"path":"scripts/validate_rsr_06.py","sha256":"a65840bc73f844cf2d23428b8d1182dd065520d2c4d30f77305c58fee5ef38f0"},
     {"path":"scripts/validate_rsr_07.py","sha256":"f36d17489c05b3609c3b4cb105caed637cc17a3acb4e84ea509d2b1180118910"}
   ],
-  "retirement_invariants":{
-    "historical_validator_execution_count":0,
-    "historical_validator_runtime_import_count":0,
-    "reactivation_requires_owner_approved_registry_change":true,
-    "digest_or_ancestry_failure_class":"repository_state"
-  }
+  "retirement_invariants":{"historical_validator_execution_count":0,"historical_validator_runtime_import_count":0,"reactivation_requires_owner_approved_registry_change":true,"digest_or_ancestry_failure_class":"repository_state"}
 }
