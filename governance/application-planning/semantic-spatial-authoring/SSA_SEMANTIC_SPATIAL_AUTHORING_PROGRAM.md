@@ -1,15 +1,23 @@
 # SSA — Semantic Spatial Authoring
 
 **Program ID:** SSA  
-**Status:** OWNER-APPROVED — PLANNED INTERSTITIAL  
+**Status:** OWNER-APPROVED — IN_PROGRESS; SSA-01 SELECTED_NOT_STARTED  
 **Activation:** after ISE-08  
 **Successor:** WCI-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-08-27
 
+## Current selection
+
+The predecessor Interactive Scene Experience program is `completed_verified` through ISE-08. Final application PR #347 validated exact head `34cf71ac1c2bb87f2929b120725ef8dfe9c4fe3e` on run `33268128450` with selector `99141729535`, Linux `99141743166`, Windows `99141743344`, comparator `99141876476`, deterministic receipt `65268f3566c4f00c4be6d6a00672992c2a65a0e47848ef1b35dfb140df1e696f`, zero historical predecessor fanout, and application merge `1381a97573b6b36d31a72ddd37ed0c3177674ef3`.
+
+SSA-01 — Authority Crosswalk & Spatial Semantic Taxonomy — is selected as `selected_not_started` in `governance/ai/work-state/SSA-01-attempt-001.json`. Selection grants no implementation branch or implementation authority. A future owner `Continue` must perform a bounded governed-start transition before any SSA product mutation.
+
+SSA-01 will reconcile recovered structural/world-space concepts with MAI, completed ISE, World/Reality, Scene, Exploration, Research, Creature ecology, Asset and permission authorities. Its first responsibility is to define typed spatial entity/relation families, ownership boundaries, stable references and the explicit distinction between geometry, semantic structure and live state without creating a second World, Scene or domain ledger.
+
 ## Purpose
 
-SSA turns the recovered mine-note requirement that spatial things should know what they mean into a governed authoring layer over completed MAI and planned ISE foundations. It covers structural relationships such as wall↔wall, door/window↔wall, room/floor/entrance relationships, caves and irregular/non-Euclidean spaces, plus world-scale functional spatial semantics such as migration corridors, sanctuaries, gathering/hunting/use zones and specialized research infrastructure.
+SSA turns the recovered mine-note requirement that spatial things should know what they mean into a governed authoring layer over completed MAI and ISE foundations. It covers structural relationships such as wall↔wall, door/window↔wall, room/floor/entrance relationships, caves and irregular/non-Euclidean spaces, plus world-scale functional spatial semantics such as migration corridors, sanctuaries, gathering/hunting/use zones and specialized research infrastructure.
 
 SSA does not replace World, Scene, MAI, ISE, Exploration, Research, Creature ecology, Asset or permission authority. It supplies typed spatial relationships, authoring assistance and projections that those owners can consume.
 
@@ -50,8 +58,9 @@ Recovered basis: RDC-06 / RD-07 / RD-08 and RDC-07 / RD-14 from the recovered mi
 ## Invariants
 
 - World/Reality and Scene owners remain authoritative for their state.
-- MAI owns visual/map asset interoperability; ISE owns the native playable Scene surface.
+- MAI owns visual/map asset interoperability; completed ISE owns the native playable Scene surface.
 - Spatial semantics do not become a second Research, Creature, Project or Exploration ledger.
 - Generated/inferred structure remains assistance until confirmed where source confidence is insufficient.
+- Geometry, semantic structure and live state remain distinct.
 - Non-Euclidean support may change topology but cannot bypass permission, transition, portal or reality authority.
 - Accessible nonvisual representations must exist for consequential spatial state.
