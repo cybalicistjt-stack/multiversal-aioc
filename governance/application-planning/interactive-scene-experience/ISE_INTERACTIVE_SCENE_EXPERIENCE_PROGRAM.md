@@ -1,7 +1,7 @@
 # ISE — Interactive Scene Experience
 
 **Program ID:** ISE  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH ISE-06; ISE-07 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH ISE-07; ISE-08 SELECTED_NOT_STARTED  
 **Activation:** after AAI-10  
 **Successor:** SSA-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,11 +9,11 @@
 
 ## Current selection
 
-ISE-06 — Environment, Effects, Scene State & Audiovisual Orchestration — remains `completed_verified` through application PR #345 and application merge `1e957436bdc479d2a292866ea5032962ee0ba2bc`. Its exact validated head `1c9feddd14b8525c251c9f635df23f9a9c77090c` passed current-family run `33262509022` with selector/Repository Health `99126759619`, Linux `99126773957`, Windows `99126773968`, comparator `99126842996`, deterministic receipt `c37779049b6a60e0573af46a3a5ce644c7fc88fb77a9eceece6de835d4be94ec`, and zero historical predecessor fanout.
+ISE-07 — GM Cockpit, Instant Prep, Scene Recipes & Preview-as-Player — is `completed_verified` through application PR #346 and application merge `3e77365c9e4eef8d76fe9c9358a6de6d2bf82b24`. Exact validated head `7f442924fec2313ec9bd6386c2aa9325bc659f98` passed current-family run `33265743160`: selector/Repository Health `99135382006`, self-hosted Linux `99135394407`, self-hosted Windows `99135394389`, and deterministic comparison `99135461636`. Linux and Windows produced matching deterministic receipt SHA-256 `e863f47ad73efbbbfeb7968b349b445ee67cd2149950c499239e135287cb04b2`, with zero historical predecessor fanout. The only repair was evidence-driven `validation_contract`: initial run `33265662992` artifact `9718564911` showed a focused Testing Library query ambiguously matching multiple intentional theater-of-the-mind/silence fallback surfaces; the test queries were disambiguated without product or authority changes.
 
-ISE-07 — GM Cockpit, Instant Prep, Scene Recipes & Preview-as-Player — is now bounded `in_progress` under the owner Continue on registered application branch `integration/ise-07-gm-cockpit-instant-prep-scene-recipes-preview-as-player`, based exactly on application `1e957436bdc479d2a292866ea5032962ee0ba2bc`. The bounded tranche composes existing Scene/owner, MAI, AAI, permission and entitlement evidence into deterministic preparation plans, smart suggestions, Scene Audio Deck intent, permission-filtered player preview, and portable Scene Recipe projections. Make Playable emits governed owner-operation proposals rather than silent canonical mutation. Smart suggestions remain assistance until confirmed. Scene Recipes carry semantic mappings/provider references/fallback intent only and cannot contain third-party media bytes, credentials, hidden state or entitlement claims. No durable ISE-07 preparation ledger is required and migration `0022` remains unreserved.
+ISE-07 delivered deterministic GM preparation plans, confirmation-gated smart suggestions, proposal-only Make Playable handoffs, a provider-neutral Scene Audio Deck, actual permission-filtered Preview-as-Player, and reference-only Scene Recipes. Canonical Scene/owner/MAI/AAI/permission/entitlement ownership remains unchanged; ISE-07 performs no provider calls, rights inference, content acquisition, media redistribution or parallel preparation persistence. Migration `0022` remains unreserved.
 
-Preview-as-player must consume the actual permission-filtered projection and cannot reconstruct or expose GM-only inventory, notes, unrevealed regions, protected cardinality or provider secrets. AAI capability/entitlement evidence remains evidence only: ISE-07 cannot infer rights, call providers, store credentials or acquire content bytes. Missing visual/audio assets, silence, placeholders and theater-of-the-mind remain valid nonblocking states. ISE-08 remains unauthorized.
+ISE-08 — Multiplayer, Accessibility, Performance & Golden Native-Tabletop Proof — is now selected `selected_not_started` only. It has no implementation branch and no implementation authority. Its future bounded tranche must prove remote token/Scene synchronization, reconnect/rejoin, stale/conflict handling, GM adjudication, hidden-information protection, mobile/tablet operation, keyboard/nonvisual equivalents, large-map and animated-asset performance, audio-disabled operation and deterministic authoritative results. The golden proof must traverse legitimate asset/prepared Scene → live encounter → interactive object/region → audiovisual transition → post-Scene state without replacing any canonical owner authority. SSA-01 remains the strict successor only after ISE-08 completion and is not started by this selection.
 
 ## Purpose
 
