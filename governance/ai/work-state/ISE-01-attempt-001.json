@@ -1,5 +1,5 @@
 {
-  "schema_version":"0.2.0",
+  "schema_version":"0.2.1",
   "work_item_id":"ISE-01",
   "attempt_id":"ISE-01-attempt-001",
   "track":"interactive-scene-experience",
@@ -15,95 +15,17 @@
   "governance_start_base_sha":"8eecf5baee5f44a662af2925a0c652b41447e54e",
   "application_baseline_sha":"28fb49b174095abf4b1093af362c0a1191672091",
   "start_authority":"Owner Continue on 2026-08-29 America/Chicago after re-reading the current ISE-01 checkpoint, ISE program/backlog, ISE roadmap amendment, A5 Scene boundaries, completed AAI/MAI status, application main 28fb49b174095abf4b1093af362c0a1191672091, AIOC main 8eecf5baee5f44a662af2925a0c652b41447e54e and the active-family validation contract.",
-  "predecessor":{
-    "work_item_id":"AAI-10",
-    "status":"completed_verified",
-    "application_pr":339,
-    "validated_head":"d5980da97cf4c64a2fdfe4e69ce98722f0a9e591",
-    "validation_run":33223249963,
-    "repository_health_job":99021612028,
-    "linux_job":99021637493,
-    "windows_job":99021637523,
-    "deterministic_compare_job":99021797455,
-    "historical_profile_fanout":0,
-    "application_merge_sha":"28fb49b174095abf4b1093af362c0a1191672091"
-  },
+  "predecessor":{"work_item_id":"AAI-10","status":"completed_verified","application_pr":339,"validated_head":"d5980da97cf4c64a2fdfe4e69ce98722f0a9e591","validation_run":33223249963,"repository_health_job":99021612028,"linux_job":99021637493,"windows_job":99021637523,"deterministic_compare_job":99021797455,"historical_profile_fanout":0,"application_merge_sha":"28fb49b174095abf4b1093af362c0a1191672091"},
   "objective":"Deliver the accelerated native Scene canvas with presentation-only camera controls, selection and interaction, keyboard-accessible equivalents, GM/player projection modes, undo/redo and assisted user-correctable image registration while preserving canonical Scene, permission and owner-domain meaning.",
   "resolved_contract":{
-    "canvas_surface":{
-      "render_authority":"Consumes authorized SceneRecord and SceneMapVersion projections only; the canvas does not create a parallel Scene ledger.",
-      "input_modes":["mouse","touch","pen","keyboard"],
-      "camera_operations":["pan","zoom","fit","focus","bookmark-save","bookmark-restore"],
-      "interaction_operations":["select","clear-selection","drag-proposal","undo","redo","gm-player-view-switch"],
-      "camera_state_authoritative":false,
-      "pixel_state_authoritative":false
-    },
-    "registration":{
-      "purpose":"Represent user-correctable image-to-Scene registration proposals without replacing A5 Scene calibration authority.",
-      "models":["translation-scale","rotation","affine","perspective"],
-      "control_points":"Explicit source-image to registered-canvas control points with stable IDs.",
-      "assistance":"Grid/geometry suggestions carry confidence and remain provisional until user confirmation.",
-      "confirmation_rule":"No generated registration becomes authoritative merely because confidence is high; the surface emits a confirmed proposal for the owning Scene layer to validate/persist.",
-      "persistence_change_required":false,
-      "migration_reserved":false
-    },
-    "permissions_accessibility":{
-      "projection_rule":"Hidden or GM-only state must already be filtered before rendering and must never be revealed by camera, selection, search, counts, diagnostics or keyboard alternatives.",
-      "gm_player_modes":"Presentation projection modes only; switching view mode cannot mutate canonical permissions.",
-      "keyboard_equivalents_required":true,
-      "nonvisual_status_required":true,
-      "mapless_scene_supported":true
-    },
-    "history":{
-      "scope":"Undo/redo applies only to local ISE-01 presentation/registration draft actions in this tranche.",
-      "canonical_rollback_authorized":false
-    },
-    "nonauthorization":[
-      "token/tactical movement ownership reserved for ISE-02",
-      "fog/vision/sensor/wall/door ownership reserved for ISE-03",
-      "semantic region triggers reserved for ISE-04",
-      "levels/reality layers reserved for ISE-05",
-      "audiovisual orchestration reserved for ISE-06",
-      "GM recipes/cockpit reserved for ISE-07",
-      "multiplayer golden proof reserved for ISE-08",
-      "third-party media redistribution, provider activation, tester distribution, release or deployment"
-    ],
-    "validation_contract":{
-      "family_transition":"Switch ACTIVE_FAMILY_CONTRACT from AAI to ISE, seal completed AAI-01..10 at application baseline 28fb49b174095abf4b1093af362c0a1191672091, and retire prior-family automatic profile authority.",
-      "deliverables":[
-        "governance/application-planning/interactive-scene-experience/ISE-01_NATIVE_CANVAS_CAMERA_REGISTRATION_INTERACTION_SURFACE.md",
-        "packages/contracts/src/interactive-scene-experience/native-canvas-camera-registration-interaction.ts",
-        "apps/client-ui/src/ise/NativeSceneCanvas.tsx",
-        "apps/client-ui/src/ise/ise-01.native-canvas-camera-registration-interaction.integration.test.tsx",
-        "tools/verify_ise_01.py",
-        "governance/application-planning/validation-core/profiles/ISE-01.json",
-        "governance/application-planning/validation-core/ACTIVE_FAMILY_CONTRACT.json"
-      ],
-      "single_profile":"ISE-01",
-      "profile_steps":["ISE-01 invariant verifier","workspace install","client typecheck","focused ISE-01 integration regression"],
-      "historical_predecessor_reruns_allowed":false,
-      "historical_predecessor_reruns_target":0,
-      "final_gate":"Exact candidate head must pass current Repository Health, bounded ISE-01 self-hosted Linux and Windows Validation Core, and deterministic cross-platform comparison before merge."
-    }
+    "canvas_surface":{"render_authority":"Consumes authorized SceneRecord and SceneMapVersion projections only; the canvas does not create a parallel Scene ledger.","input_modes":["mouse","touch","pen","keyboard"],"camera_operations":["pan","zoom","fit","focus","bookmark-save","bookmark-restore"],"interaction_operations":["select","clear-selection","drag-proposal","undo","redo","gm-player-view-switch"],"camera_state_authoritative":false,"pixel_state_authoritative":false},
+    "registration":{"purpose":"Represent user-correctable image-to-Scene registration proposals without replacing A5 Scene calibration authority.","models":["translation-scale","rotation","affine","perspective"],"control_points":"Explicit source-image to registered-canvas control points with stable IDs.","assistance":"Grid/geometry suggestions carry confidence and remain provisional until user confirmation.","confirmation_rule":"No generated registration becomes authoritative merely because confidence is high; the surface emits a confirmed proposal for the owning Scene layer to validate/persist.","persistence_change_required":false,"migration_reserved":false},
+    "permissions_accessibility":{"projection_rule":"Hidden or GM-only state must already be filtered before rendering and must never be revealed by camera, selection, search, counts, diagnostics or keyboard alternatives.","gm_player_modes":"Presentation projection modes only; switching view mode cannot mutate canonical permissions.","keyboard_equivalents_required":true,"nonvisual_status_required":true,"mapless_scene_supported":true},
+    "history":{"scope":"Undo/redo applies only to local ISE-01 presentation/registration draft actions in this tranche.","canonical_rollback_authorized":false},
+    "nonauthorization":["token/tactical movement ownership reserved for ISE-02","fog/vision/sensor/wall/door ownership reserved for ISE-03","semantic region triggers reserved for ISE-04","levels/reality layers reserved for ISE-05","audiovisual orchestration reserved for ISE-06","GM recipes/cockpit reserved for ISE-07","multiplayer golden proof reserved for ISE-08","third-party media redistribution, provider activation, tester distribution, release or deployment"],
+    "validation_contract":{"family_transition":"Switch ACTIVE_FAMILY_CONTRACT from AAI to ISE, seal completed AAI-01..10 at application baseline 28fb49b174095abf4b1093af362c0a1191672091, and retire prior-family automatic profile authority.","deliverables":["governance/application-planning/interactive-scene-experience/ISE-01_NATIVE_CANVAS_CAMERA_REGISTRATION_INTERACTION_SURFACE.md","packages/contracts/src/interactive-scene-experience/native-canvas-camera-registration-interaction.ts","apps/client-ui/src/ise/NativeSceneCanvas.tsx","apps/client-ui/src/ise/ise-01.native-canvas-camera-registration-interaction.integration.test.tsx","tools/verify_ise_01.py","governance/application-planning/validation-core/profiles/ISE-01.json","governance/application-planning/validation-core/ACTIVE_FAMILY_CONTRACT.json"],"single_profile":"ISE-01","profile_steps":["ISE-01 invariant verifier","workspace install","client typecheck","focused ISE-01 integration regression"],"historical_predecessor_reruns_allowed":false,"historical_predecessor_reruns_target":0,"final_gate":"Exact candidate head must pass current Repository Health, bounded ISE-01 self-hosted Linux and Windows Validation Core, and deterministic cross-platform comparison before merge."}
   },
-  "preserved_boundaries":[
-    "AAI-01..10 and MAI-01..10 remain completed_verified with no further implementation authority.",
-    "Existing Scene, World/Reality, Action/Event, Combat, Character, Creature, Item/Asset, Vehicle and permission authorities remain canonical.",
-    "Camera/view/bookmark/selection state is presentation state and cannot redefine canonical Scene meaning.",
-    "Generated grid/geometry registration assistance is user-correctable and cannot silently become authoritative.",
-    "Hidden and GM-only state must be permission-filtered before projection.",
-    "Missing map/audio assets remain nonblocking; placeholders, silence and theater-of-the-mind remain valid.",
-    "No third-party media redistribution, paid provider activation, tester distribution, release or deployment is authorized."
-  ],
-  "convergence_control":{
-    "owner_continue_count":1,
-    "execution_cycles":1,
-    "repair_cycles":0,
-    "no_progress_cycles":0,
-    "diagnostic_mode":false,
-    "unrelated_historical_validation_jobs_target":0,
-    "reruns_without_changed_evidence_target":0,
-    "max_execution_cycles_without_genuine_blocker":2
-  },
-  "next_action":"Governed-start transition in progress. Merge the AIOC start authority, create the registered application branch from exact baseline 28fb49b174095abf4b1093af362c0a1191672091, implement the seven bounded deliverables, run only the ISE-01 current-family gate, then close completed_verified and select ISE-02 without starting it."
+  "preserved_boundaries":["AAI-01..10 and MAI-01..10 remain completed_verified with no further implementation authority.","Existing Scene, World/Reality, Action/Event, Combat, Character, Creature, Item/Asset, Vehicle and permission authorities remain canonical.","Camera/view/bookmark/selection state is presentation state and cannot redefine canonical Scene meaning.","Generated grid/geometry registration assistance is user-correctable and cannot silently become authoritative.","Hidden and GM-only state must be permission-filtered before projection.","Missing map/audio assets remain nonblocking; placeholders, silence and theater-of-the-mind remain valid.","No third-party media redistribution, paid provider activation, tester distribution, release or deployment is authorized."],
+  "convergence_control":{"owner_continue_count":1,"execution_cycles":1,"repair_cycles":1,"no_progress_cycles":0,"diagnostic_mode":false,"last_failure_signature":"AIOC Repository Health run 33251087079 rejected the first ISE-01 governed-start head because convergence_control omitted the required diagnostic/retry/service-objective fields and RUNTIME_STATE_LIFECYCLE_REGISTRY.json still projected ISE-01 as selected_not_started.","last_failure_class":"repository_state","diagnostic_hypotheses":["The new ISE-01 checkpoint must carry the complete execution-convergence schema required of every in-progress attempt.","RUNTIME_STATE_LIFECYCLE_REGISTRY.json remains on the prior selected_not_started projection and must advance atomically with pointer/checkpoint/authority."],"retry_basis":{"changed_since_previous":["Repository Health run 33251087079 provided exact MVHEALTH convergence-field and runtime-selector-drift errors.","The retry adds the required convergence fields/service objective and reconciles the runtime lifecycle registry; no application source has been mutated."]},"service_objective":{"ordinary_tranche_single_continue_target_percent":80,"ordinary_tranche_two_continue_target_percent":95,"max_execution_cycles_without_genuine_blocker":2,"unrelated_historical_validation_jobs_target":0,"reruns_without_changed_evidence_target":0,"post_merge_stale_pointer_target":0}},
+  "next_action":"Governed-start transition in progress. Merge the AIOC start authority after the changed-evidence Repository Health retry passes, create the registered application branch from exact baseline 28fb49b174095abf4b1093af362c0a1191672091, implement the seven bounded deliverables, run only the ISE-01 current-family gate, then close completed_verified and select ISE-02 without starting it."
 }
