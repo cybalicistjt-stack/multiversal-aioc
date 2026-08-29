@@ -1,7 +1,7 @@
 # ISE — Interactive Scene Experience
 
 **Program ID:** ISE  
-**Status:** OWNER-APPROVED — ISE-01 SELECTED_NOT_STARTED
+**Status:** OWNER-APPROVED — ISE-01 IN_PROGRESS  
 **Activation:** after AAI-10  
 **Successor:** SSA-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,7 +9,7 @@
 
 ## Current selection
 
-AAI-10 completed_verified through application PR #339 and merge `28fb49b174095abf4b1093af362c0a1191672091`. ISE-01 is now the canonical selected work item, but it is `selected_not_started`: no implementation branch exists and no implementation authority is active. A future owner execution command must perform the governed-start transition before source mutation.
+AAI-10 is `completed_verified` through application PR #339 and merge `28fb49b174095abf4b1093af362c0a1191672091`. Owner `Continue` on 2026-08-29 governed-started ISE-01. Implementation authority is active only on `integration/ise-01-native-canvas-camera-registration-interaction`; the bounded contract is recorded in `governance/ai/work-state/ISE-01-attempt-001.json`. ISE-02 remains planned and unauthorized until ISE-01 reaches `completed_verified` and the strict successor is selected.
 
 ## Purpose
 
