@@ -1,7 +1,7 @@
 # SSA — Semantic Spatial Authoring
 
 **Program ID:** SSA  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH SSA-01; SSA-02 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH SSA-02; SSA-03 SELECTED_NOT_STARTED  
 **Activation:** after ISE-08  
 **Successor:** WCI-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,13 +9,13 @@
 
 ## Current selection
 
-SSA-01 — Authority Crosswalk & Spatial Semantic Taxonomy — is `completed_verified` through application PR #348 and application merge `a04749b381f08aaf8fc23290e7b3f1d3dd48050a`. Exact validated head `f5e7d1cca6c1cdb6a06268bba4c4bb900e73c7ff` passed current-family run `33274022700`: selector/Repository Health `99157467357`, self-hosted Linux `99157481187`, self-hosted Windows `99157481147`, and deterministic comparison `99157550121`. Linux and Windows produced matching deterministic receipt SHA-256 `2297ee65a51d418839fb9e80f49c29a7e37db28c3d34832153750131ecb0eed2`, with zero historical predecessor fanout.
+SSA-02 — Structural Primitives, Attachments & Construction Relationships — is `completed_verified` through application PR #349 and application merge `5aeb8ee6900e5989507eaddd26e06c8ec972b367`. Exact validated head `0d8953928be25e246e5c85881878dbfb3464e322` passed current-family run `33278840925`: selector/Repository Health `99170403307`, self-hosted Linux `99170417391`, self-hosted Windows `99170417347`, and deterministic comparison `99170485650`. Linux and Windows produced matching deterministic receipt SHA-256 `ceaf5ae051feb0fb359b8623074ca0487f4b5475d90b3ad5a019e00a280182d0`, with zero historical predecessor fanout.
 
-SSA-02 — Structural Primitives, Attachments & Construction Relationships — is bounded `in_progress` under the owner Continue at 2026-08-29T17:23:00-05:00 on registered application branch `integration/ssa-02-structural-primitives-attachments-construction-relationships`, based exactly on application `a04749b381f08aaf8fc23290e7b3f1d3dd48050a`. Product mutation remains blocked until this governed-start candidate passes Repository Health.
+SSA-02 delivered authorization-first structural primitive and construction-relationship projections over SSA-01 stable semantic references. It defined wall, opening, door, window, floor, ceiling/roof, stair, ramp, room, entrance and shaft roles; governed host-opening/attachment/connectivity relationships; imported-governed-metadata and confirmed-authoring structural truth sources; assistance-only uncertain recognition; Transition/Portal/Reality/Permission validation for vertical relationships; accessible nonvisual structure; owner-version/idempotency-preserving confirmation proposals; and deterministic receipts. It created no parallel construction ledger, performed no canonical mutation, introduced no durable persistence, and left migration `0022` unreserved.
 
-The bounded SSA-02 contract defines wall, opening, door, window, floor, ceiling/roof, stair, ramp, room, entrance and shaft semantic projections plus host-opening, attachment, containment, connectivity, vertical-connectivity, boundary and entrance relationships over authorized SSA-01 stable semantic references. Imported governed semantic metadata and confirmed authoring may establish structural semantics; uncertain recognition remains assistance-only. Visual adjacency, pixel overlap or artwork alone never establish structural truth. Openings require governed host semantics, and vertical relationships cannot bypass Transition, Portal, Reality or Permission validation.
+SSA-02 is a clean first-candidate convergence observation. Governed-start AIOC PR #805 passed Repository Health run `33278700903`, job `99170017699`, without repair and merged as `ac2ced359523fe7c2323a33cf7240b51147bace9`. The first application candidate also passed every current-family gate with no repair, no diagnostic escalation, no unchanged-evidence rerun, no historical predecessor job and no post-merge stale-pointer incident.
 
-SSA-02 creates no parallel Scene/World/construction ledger and performs no canonical mutation. Existing ISE wall/door/room/floor/roof/transition projections remain presentation/interaction surfaces, not new structural authority. Accessible nonvisual structural/topological summaries remain required. No new canonical persistence is required; migration `0022` remains unreserved. Exactly one `SSA-02` current-family Validation Core profile is authorized with zero historical predecessor fanout. SSA-03+ remains unauthorized.
+SSA-03 — Caves, Irregular Geometry & Non-Euclidean Topology — is now selected `selected_not_started` only. It has no implementation branch or implementation authority. A future governed tranche may add chambers, passages, tunnels, shafts, vertical spaces, caverns, nested/stacked spaces, portals and authored non-Euclidean relationships without requiring CAD-style modeling, while preserving accessible nonvisual topology and canonical Scene/World/Reality/Transition/Portal/Permission/MAI/ISE ownership. Geometry and topology remain distinct; visual proximity or pixels cannot silently define non-Euclidean connectivity. No persistence or migration is reserved at selection.
 
 ## Purpose
 
@@ -62,8 +62,8 @@ Recovered basis: RDC-06 / RD-07 / RD-08 and RDC-07 / RD-14 from the recovered mi
 - World/Reality and Scene owners remain authoritative for their state.
 - MAI owns visual/map asset interoperability; completed ISE owns the native playable Scene surface.
 - Spatial semantics do not become a second Research, Creature, Project, Exploration or construction ledger.
-- Generated/inferred structure remains assistance until confirmed where source confidence is insufficient.
-- Geometry, semantic structure and live state remain distinct.
-- Visual adjacency and pixels are never structural truth by themselves.
-- Non-Euclidean or vertical support cannot bypass permission, Transition, Portal or Reality authority.
+- Generated/inferred structure or topology remains assistance until confirmed where source confidence is insufficient.
+- Geometry, semantic structure, topology and live state remain distinct.
+- Visual adjacency, proximity and pixels are never structural or topological truth by themselves.
+- Non-Euclidean or vertical support cannot bypass permission, Transition, Portal, Reality or movement authority.
 - Accessible nonvisual representations must exist for consequential spatial state.
