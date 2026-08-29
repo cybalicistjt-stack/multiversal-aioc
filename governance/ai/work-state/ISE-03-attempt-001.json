@@ -1,67 +1,33 @@
 {
-  "schema_version":"0.2.2",
+  "schema_version":"0.3.0",
   "work_item_id":"ISE-03",
   "attempt_id":"ISE-03-attempt-001",
   "track":"interactive-scene-experience",
   "source_program":"ISE",
   "repository":"cybalicistjt-stack/Multiversal-app",
   "title":"Fog, Vision, Sensors, Walls, Doors & Exploration Memory",
-  "status":"in_progress",
+  "status":"completed_verified",
   "owner_selected":true,
   "selected_at":"2026-08-29T07:31:22-05:00",
   "started_at":"2026-08-29T08:34:00-05:00",
+  "completed_at":"2026-08-29T08:50:10-05:00",
   "implementation_branch":"integration/ise-03-fog-vision-sensors-walls-doors-exploration-memory",
-  "implementation_authority":true,
+  "implementation_authority":false,
   "application_baseline_sha":"c2ae5bdf3b0eb9ff518410af23cb52670882e093",
+  "application_pr":342,
+  "validated_head":"f2a6a5aa7fa970e4f3addef875e3fc244dae259c",
+  "validation_run":33255965679,
+  "repository_health_job":99109606047,
+  "linux_job":99109618796,
+  "windows_job":99109618840,
+  "deterministic_compare_job":99109687893,
+  "deterministic_receipt_sha256":"5f5510c3e6ee2f025cb5980d60aeca28565198661d70491f1be6aabb0440d7d2",
+  "historical_profile_fanout":0,
+  "application_merge_sha":"81b1c640330ea80c9f9715d5c43130eb0f144fbe",
   "objective":"Extend the completed ISE-01/02 native tactical Scene with player-safe fog, explored-memory, owner-authored perception channels, wall/window/door projections, collision/occlusion previews and explicit GM reveal/door proposals while preserving canonical Scene, Visibility/Permissions, semantic-position, movement and Action/Event ownership.",
-  "bounded_contract":{
-    "authorization":{"authorization_before_projection_required":true,"authority":"A5/Visibility-Permissions","hidden_records_filtered_before_input":true,"hidden_cardinality_fields_allowed":false,"permission_grant_authority":false},
-    "fog":{"modes":["static","dynamic"],"projection_only":true,"states":["concealed","explored","visible"],"gm_reveal_proposal_only":true,"canonical_reveal_mutation_performed":false},
-    "exploration_memory":{"scopes":["subject","shared-party"],"authorized_region_ids_only":true,"expected_visibility_version_required":true,"durable_persistence_owned_by_existing_visibility_scene_authority":true,"ise03_persists_itself":false},
-    "geometry":{"families":["wall","window","door","light-boundary","vision-boundary"],"source":"scene-or-owner-profile","pixel_geometry_authoritative":false,"semantic_scene_reference_required":true},
-    "doors":{"owner_state_projection_only":true,"door_state_change_proposal_only":true,"expected_owner_version_required":true,"action_proposal_required":true,"canonical_mutation_performed":false},
-    "collision_occlusion":{"profile_authored":true,"universal_collision_rules_invented":false,"universal_occlusion_rules_invented":false,"movement_mutation_performed":false},
-    "sensors":{"profile_authored_channels_only":true,"ordinary_vision_not_universalized":true,"thermal_not_universalized":true,"radar_lidar_not_universalized":true,"sonar_not_universalized":true,"supernatural_not_universalized":true},
-    "accessibility":{"nonvisual_visibility_status_required":true,"keyboard_gm_controls_required":true,"mapless_scene_supported":true},
-    "persistence":{"change_required":false,"migration_reserved":false,"migration_head":"0021_apm_autogm_mini_campaign_director.json","reason":"ISE-03 consumes existing authorized Scene/Visibility owner state and emits versioned reveal/door proposals; no parallel fog, exploration or door ledger is created."},
-    "validation":{"profile":"ISE-03","max_current_family_profiles":1,"historical_predecessor_fanout_target":0,"cross_platform_final_gate":true}
-  },
-  "preserved_boundaries":[
-    "ISE-01 and ISE-02 remain completed_verified and their implementation authority is not reopened.",
-    "A5 authorization-before-projection remains mandatory; hidden/GM-only objects are removed before lookup, aggregation, counts, diagnostics, export or AI context.",
-    "A5 Scene and existing Visibility/Permissions ownership remain canonical for map primitives, reveal authority and durable exploration/visibility state.",
-    "A7 semantic position and owning movement rules remain canonical; collision/occlusion presentation cannot silently move objects.",
-    "A6 Action/Event or the owning object domain remains required for consequential door/reveal state changes; ISE-03 emits proposals only.",
-    "Perception/sensor behavior is profile-authored and setting-local; ISE-03 does not create universal sight, darkness, range, sensor or door rules.",
-    "ISE-04+ feature scope, paid provider activation, unauthorized media redistribution, tester distribution, release and deployment remain unauthorized."
-  ],
-  "convergence_control":{
-    "owner_continue_count":1,
-    "execution_cycles":1,
-    "repair_cycles":2,
-    "no_progress_cycles":0,
-    "diagnostic_mode":true,
-    "last_failure_class":"repository_state",
-    "last_failure_signature":"AIOC Repository Health run 33255680257 / job 99108832080 rejected retry_basis because the current validator requires a structured object with a non-empty changed_since_previous array; the prior repair used free-form text.",
-    "diagnostic_hypotheses":[
-      "The first governed-start checkpoint omitted the current convergence fields entirely.",
-      "After adding those fields, the second exact-head run showed retry_basis has a stricter structured schema than the prior checkpoint examples: it must contain changed_since_previous as a non-empty string array."
-    ],
-    "retry_basis":{
-      "changed_since_previous":[
-        "governance/ai/work-state/ISE-03-attempt-001.json now sets repair_cycles=2 and diagnostic_mode=true after the second related repair.",
-        "retry_basis is now a structured object with a non-empty changed_since_previous array, matching scripts/validate_repository_health.py.",
-        "last_failure_signature and diagnostic_hypotheses now record the exact 33255680257 / 99108832080 diagnostic evidence."
-      ],
-      "evidence_run":33255680257,
-      "evidence_job":99108832080
-    },
-    "unrelated_historical_validation_jobs_observed":0,
-    "reruns_without_changed_evidence":0,
-    "post_merge_stale_pointer_incidents":0,
-    "same_cycle_completed":false,
-    "completed_within_two_cycles":false,
-    "service_objective":{"ordinary_tranche_single_continue_target_percent":80,"ordinary_tranche_two_continue_target_percent":95,"max_execution_cycles_without_genuine_blocker":2,"unrelated_historical_validation_jobs_target":0,"reruns_without_changed_evidence_target":0,"post_merge_stale_pointer_target":0}
-  },
-  "next_action":"Re-run Repository Health only on this changed diagnostic checkpoint. If green, merge governed-start PR #791, create the registered application branch at c2ae5bdf3b0eb9ff518410af23cb52670882e093, implement one bounded ISE-03 profile, and execute exact-head cross-platform validation."
+  "completion_evidence":{"governed_start_aioc_pr":791,"governed_start_validated_head":"d1096b4bad49176389770c6c3742e3ed5f63ea63","governed_start_health_run":33255720666,"governed_start_aioc_merge":"5b0e2da2ff179ec1b7db8cf3fed56777952cb872","application_pr":342,"validated_head":"f2a6a5aa7fa970e4f3addef875e3fc244dae259c","validation_run":33255965679,"repository_health_job":99109606047,"linux_job":99109618796,"windows_job":99109618840,"deterministic_compare_job":99109687893,"deterministic_receipt_sha256":"5f5510c3e6ee2f025cb5980d60aeca28565198661d70491f1be6aabb0440d7d2","historical_profile_fanout":0,"application_merge_sha":"81b1c640330ea80c9f9715d5c43130eb0f144fbe"},
+  "preserved_boundaries":["A5 authorization-before-projection filtered hidden/GM-only objects and protected cardinality before ISE-03 input.","Scene/Visibility and owner-domain persistence remain canonical; migration 0022 was not reserved.","A7 semantic position and owning movement remain authoritative; ISE-03 did not commit movement.","Reveal and door changes remain versioned proposals requiring existing Visibility/Scene or Action/owner validation.","Perception channels remain profile-authored and setting-local; no universal sight, darkness, sensor, collision or door rules were invented.","ISE-04+ feature scope, paid provider activation, unauthorized media redistribution, tester distribution, release and deployment were not authorized."],
+  "convergence_control":{"owner_continue_count":1,"execution_cycles":1,"repair_cycles":3,"no_progress_cycles":0,"diagnostic_mode":true,"last_failure_class":"validation_contract","last_failure_signature":"After two AIOC governed-start schema repairs established the current convergence-control shape, initial application run 33255909450 failed only because the case-sensitive ISE-03 verifier searched for a lowercase heading marker while the authored UI used the same heading with an uppercase initial. Raw evidence artifact 9715787660 was inspected before changing only that verifier marker; product behavior did not change.","diagnostic_hypotheses":["The governed-start checkpoint initially lacked required convergence fields.","The next exact-head AIOC run showed retry_basis must use the validator's structured changed_since_previous array shape.","The first application candidate then exposed a case-sensitive source-marker mismatch in the invariant verifier, not a product behavior defect."],"retry_basis":{"changed_since_previous":["AIOC repair 1 added the required convergence-control fields after run 33255606742 / job 99108633575.","AIOC repair 2 entered diagnostic mode and encoded structured retry evidence after run 33255680257 / job 99108832080 and validator-source inspection.","Application repair 1 changed only tools/verify_ise_03.py heading case after raw artifact 9715787660 identified the exact marker mismatch; final head f2a6a5aa7fa970e4f3addef875e3fc244dae259c then passed run 33255965679."],"evidence_run":33255965679,"evidence_job":99109606047},"unrelated_historical_validation_jobs_observed":0,"reruns_without_changed_evidence":0,"post_merge_stale_pointer_incidents":0,"same_cycle_completed":true,"completed_within_two_cycles":true,"service_objective":{"ordinary_tranche_single_continue_target_percent":80,"ordinary_tranche_two_continue_target_percent":95,"max_execution_cycles_without_genuine_blocker":2,"unrelated_historical_validation_jobs_target":0,"reruns_without_changed_evidence_target":0,"post_merge_stale_pointer_target":0}},
+  "successor":{"work_item_id":"ISE-04","attempt_id":"ISE-04-attempt-001","status":"selected_not_started","implementation_branch":null,"implementation_authority":false},
+  "next_action":"ISE-03 is completed_verified and its implementation authority is retired. ISE-04 is selected_not_started only; a future owner Continue is required before governed start or product mutation."
 }
