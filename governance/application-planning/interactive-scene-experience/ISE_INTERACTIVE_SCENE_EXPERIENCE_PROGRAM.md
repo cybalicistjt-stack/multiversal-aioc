@@ -1,19 +1,21 @@
 # ISE — Interactive Scene Experience
 
 **Program ID:** ISE  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH ISE-07; ISE-08 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH ISE-08  
 **Activation:** after AAI-10  
 **Successor:** SSA-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-08-23
 
-## Current selection
+## Completion
 
-ISE-07 — GM Cockpit, Instant Prep, Scene Recipes & Preview-as-Player — remains `completed_verified` through application PR #346 and application merge `3e77365c9e4eef8d76fe9c9358a6de6d2bf82b24`. Exact validated head `7f442924fec2313ec9bd6386c2aa9325bc659f98` passed current-family run `33265743160`: selector/Repository Health `99135382006`, self-hosted Linux `99135394407`, self-hosted Windows `99135394389`, and deterministic comparison `99135461636`. Linux and Windows produced matching deterministic receipt SHA-256 `e863f47ad73efbbbfeb7968b349b445ee67cd2149950c499239e135287cb04b2`, with zero historical predecessor fanout. The only repair was evidence-driven `validation_contract`; product and authority behavior were unchanged.
+ISE-08 — Multiplayer, Accessibility, Performance & Golden Native-Tabletop Proof — is `completed_verified` through application PR #347 and application merge `1381a97573b6b36d31a72ddd37ed0c3177674ef3`. Exact validated head `34cf71ac1c2bb87f2929b120725ef8dfe9c4fe3e` passed current-family run `33268128450`: selector/Repository Health `99141729535`, self-hosted Linux `99141743166`, self-hosted Windows `99141743344`, and deterministic comparison `99141876476`. Linux and Windows produced matching deterministic receipt SHA-256 `65268f3566c4f00c4be6d6a00672992c2a65a0e47848ef1b35dfb140df1e696f`, with zero historical predecessor fanout.
 
-ISE-08 — Multiplayer, Accessibility, Performance & Golden Native-Tabletop Proof — is bounded `in_progress` under the owner execution instruction on registered application branch `integration/ise-08-multiplayer-accessibility-performance-golden-native-tabletop-proof`, based exactly on application `3e77365c9e4eef8d76fe9c9358a6de6d2bf82b24`. The tranche proves permission-filtered remote Scene/token projection, reconnect/rejoin, stale/duplicate/conflict rejection or GM adjudication, mobile/tablet and keyboard/nonvisual equivalents, bounded large-map/animated-asset performance, audio-disabled operation, and deterministic golden proof without creating parallel authoritative Scene/gameplay state.
+The final tranche proved permission-filtered remote synchronization, reconnect/rejoin, duplicate suppression, stale rejection and GM-adjudicated owner-version conflict behavior without last-write-wins or a replacement network/state ledger. Mobile/tablet, keyboard and nonvisual equivalents preserved consequential semantics. Large-map, animated-asset, degraded-media and audio-disabled probes preserved the same authoritative result. The deterministic five-stage golden proof covered prepared Scene → live encounter → interactive object/region → audiovisual transition → post-Scene state while preserving permission, expected-version/idempotency and owner-domain validation.
 
-The ISE-08 golden proof is ordered: legitimate prepared Scene → live encounter → interactive object/region → audiovisual transition → post-Scene state. Each consequential stage must preserve permission decisions, expected owner versions, deterministic idempotency and owner-domain validation. Local camera/presentation/accessibility state cannot become canonical truth. Hidden/GM-only state, protected cardinality and provider secrets are filtered before network/player/accessibility/diagnostic/export/AI projection. Missing/degraded media and audio-disabled operation remain nonblocking. No durable ISE-08 proof/session ledger is required; migration `0022` remains unreserved. SSA-01 remains the strict successor only after ISE-08 completion and has no implementation authority yet.
+ISE-08 required two evidence-driven application repair cycles in one owner execution cycle: the first corrected a missing inherited `tokens` fixture prop exposed by client typecheck; the second corrected duplicate accessible names in two authorized synchronization fixtures after raw regression artifact inspection. Diagnostic mode was entered before the second repair. Product authority and runtime behavior were unchanged by both repairs. No unchanged-evidence rerun, historical predecessor job or post-merge stale-pointer incident occurred.
+
+The ISE program is now complete. All ISE implementation authority is retired. SSA-01 — Authority Crosswalk & Spatial Semantic Taxonomy — is selected separately as `selected_not_started`; it receives no implementation branch or product-mutation authority from this closeout.
 
 ## Purpose
 
