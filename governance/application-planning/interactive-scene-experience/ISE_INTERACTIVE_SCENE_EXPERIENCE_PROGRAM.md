@@ -1,7 +1,7 @@
 # ISE — Interactive Scene Experience
 
 **Program ID:** ISE  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH ISE-06; ISE-07 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH ISE-06; ISE-07 IN_PROGRESS  
 **Activation:** after AAI-10  
 **Successor:** SSA-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,13 +9,11 @@
 
 ## Current selection
 
-ISE-06 — Environment, Effects, Scene State & Audiovisual Orchestration — is `completed_verified` through application PR #345. Final candidate `1c9feddd14b8525c251c9f635df23f9a9c77090c` passed current-family run `33262509022`: selector/Repository Health job `99126759619`, self-hosted Linux `99126773957`, self-hosted Windows `99126773968`, and deterministic comparison `99126842996`. Linux and Windows produced matching deterministic receipt SHA-256 `c37779049b6a60e0573af46a3a5ce644c7fc88fb77a9eceece6de835d4be94ec`, with zero historical predecessor fanout. PR #345 merged to application `main` as `1e957436bdc479d2a292866ea5032962ee0ba2bc`.
+ISE-06 — Environment, Effects, Scene State & Audiovisual Orchestration — remains `completed_verified` through application PR #345 and application merge `1e957436bdc479d2a292866ea5032962ee0ba2bc`. Its exact validated head `1c9feddd14b8525c251c9f635df23f9a9c77090c` passed current-family run `33262509022` with selector/Repository Health `99126759619`, Linux `99126773957`, Windows `99126773968`, comparator `99126842996`, deterministic receipt `c37779049b6a60e0573af46a3a5ce644c7fc88fb77a9eceece6de835d4be94ec`, and zero historical predecessor fanout.
 
-ISE-06 preserved canonical Scene/World/Event/Combat/Weather/Travel/Vehicle/Magic plus MAI/AAI authority. Manual remained local presentation only; Suggest required an existing owner-operation proposal; authorized Automatic required explicit authorization and emitted provider-neutral presentation actions only. Silence/no-effects/missing assets/mapless play remained valid. No provider call, entitlement inference, gameplay truth, canonical mutation, parallel orchestration ledger or migration `0022` was introduced.
+ISE-07 — GM Cockpit, Instant Prep, Scene Recipes & Preview-as-Player — is now bounded `in_progress` under the owner Continue on registered application branch `integration/ise-07-gm-cockpit-instant-prep-scene-recipes-preview-as-player`, based exactly on application `1e957436bdc479d2a292866ea5032962ee0ba2bc`. The bounded tranche composes existing Scene/owner, MAI, AAI, permission and entitlement evidence into deterministic preparation plans, smart suggestions, Scene Audio Deck intent, permission-filtered player preview, and portable Scene Recipe projections. Make Playable emits governed owner-operation proposals rather than silent canonical mutation. Smart suggestions remain assistance until confirmed. Scene Recipes carry semantic mappings/provider references/fallback intent only and cannot contain third-party media bytes, credentials, hidden state or entitlement claims. No durable ISE-07 preparation ledger is required and migration `0022` remains unreserved.
 
-The tranche required four evidence-driven repair cycles in one owner execution cycle: two governed-start `repository_state` repairs restored still-sealed MV-CONT-007 maintenance projections on live AIOC surfaces; one `validation_contract` repair normalized Markdown emphasis in ISE-06 invariant prose checks; and one `feature_implementation` repair preserved the inherited ISE-04 owner-proposal callback while adding ISE-06 proposal support. Diagnostic mode was entered before later repairs, every rerun changed evidence, and final Linux/Windows/comparator proof passed.
-
-Strict successor ISE-07 — GM Cockpit, Instant Prep, Scene Recipes & Preview-as-Player — is selected as `selected_not_started` in `governance/ai/work-state/ISE-07-attempt-001.json`. Selection grants no implementation branch or implementation authority. A future owner `Continue` must perform a bounded governed-start transition before any ISE-07 product mutation.
+Preview-as-player must consume the actual permission-filtered projection and cannot reconstruct or expose GM-only inventory, notes, unrevealed regions, protected cardinality or provider secrets. AAI capability/entitlement evidence remains evidence only: ISE-07 cannot infer rights, call providers, store credentials or acquire content bytes. Missing visual/audio assets, silence, placeholders and theater-of-the-mind remain valid nonblocking states. ISE-08 remains unauthorized.
 
 ## Purpose
 
