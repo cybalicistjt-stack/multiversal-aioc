@@ -1,7 +1,7 @@
 # ISE — Interactive Scene Experience
 
 **Program ID:** ISE  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH ISE-05; ISE-06 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH ISE-06; ISE-07 SELECTED_NOT_STARTED  
 **Activation:** after AAI-10  
 **Successor:** SSA-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,9 +9,13 @@
 
 ## Current selection
 
-ISE-05 — Levels, Elevation, Reality Layers & Map-State Families — remains `completed_verified` through application PR #344. Its first and only candidate `22dc0c943e42b937ef88df5d4d066410a818db68` passed current-family run `33259228290`: selector/Repository Health job `99118184402`, self-hosted Linux `99118198137`, self-hosted Windows `99118198164`, and deterministic comparison `99118268054`. Linux and Windows produced matching deterministic receipt SHA-256 `d03c5cd373dce2796ab1e0703fbf48baf33dba0d56c7036b3a5d6a67959086b2`, with zero historical predecessor fanout and zero repair reruns. PR #344 merged to application `main` as `1d2f754446965a3a756e3105476895e0df7e94b3`.
+ISE-06 — Environment, Effects, Scene State & Audiovisual Orchestration — is `completed_verified` through application PR #345. Final candidate `1c9feddd14b8525c251c9f635df23f9a9c77090c` passed current-family run `33262509022`: selector/Repository Health job `99126759619`, self-hosted Linux `99126773957`, self-hosted Windows `99126773968`, and deterministic comparison `99126842996`. Linux and Windows produced matching deterministic receipt SHA-256 `c37779049b6a60e0573af46a3a5ce644c7fc88fb77a9eceece6de835d4be94ec`, with zero historical predecessor fanout. PR #345 merged to application `main` as `1e957436bdc479d2a292866ea5032962ee0ba2bc`.
 
-ISE-06 — Environment, Effects, Scene State & Audiovisual Orchestration — is now bounded `in_progress` under the owner Continue on registered application branch `integration/ise-06-environment-effects-scene-state-audiovisual-orchestration`, based exactly on application `1d2f754446965a3a756e3105476895e0df7e94b3`. It composes already-authorized Scene/World/Event/Combat/Weather/Travel/Vehicle/Magic state with MAI visual references and AAI cue/soundscape references. Manual mode remains local presentation; Suggest emits governed proposals; authorized Automatic requires an explicit authorization reference and still cannot create gameplay truth, bypass GM override/consent, or call providers directly. No parallel gameplay/media/orchestration ledger is authorized and migration `0022` remains unreserved.
+ISE-06 preserved canonical Scene/World/Event/Combat/Weather/Travel/Vehicle/Magic plus MAI/AAI authority. Manual remained local presentation only; Suggest required an existing owner-operation proposal; authorized Automatic required explicit authorization and emitted provider-neutral presentation actions only. Silence/no-effects/missing assets/mapless play remained valid. No provider call, entitlement inference, gameplay truth, canonical mutation, parallel orchestration ledger or migration `0022` was introduced.
+
+The tranche required four evidence-driven repair cycles in one owner execution cycle: two governed-start `repository_state` repairs restored still-sealed MV-CONT-007 maintenance projections on live AIOC surfaces; one `validation_contract` repair normalized Markdown emphasis in ISE-06 invariant prose checks; and one `feature_implementation` repair preserved the inherited ISE-04 owner-proposal callback while adding ISE-06 proposal support. Diagnostic mode was entered before later repairs, every rerun changed evidence, and final Linux/Windows/comparator proof passed.
+
+Strict successor ISE-07 — GM Cockpit, Instant Prep, Scene Recipes & Preview-as-Player — is selected as `selected_not_started` in `governance/ai/work-state/ISE-07-attempt-001.json`. Selection grants no implementation branch or implementation authority. A future owner `Continue` must perform a bounded governed-start transition before any ISE-07 product mutation.
 
 ## Purpose
 
