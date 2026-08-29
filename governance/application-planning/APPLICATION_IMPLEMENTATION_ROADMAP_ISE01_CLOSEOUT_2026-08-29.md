@@ -61,7 +61,13 @@ The next changed-evidence gate again passed the invariant/install/typecheck surf
 
 Repair commit / final validated head: `66aa039589dda137ccad72e2b070ee70037b0e2f`.
 
-Every retry had materially changed evidence. No unchanged validation was rerun. The final current-family selector executed exactly one ISE-01 profile; historical AAI validation remained sealed ancestry rather than active jobs.
+### Repair 4 — closeout sealed-proof / scorecard registry reconciliation
+
+Post-merge AIOC closeout PR #788 first ran Repository Health as run `33251775501`, job `99098570824`. It identified exactly two repository-state issues: `SEALED_VALIDATION_PROOFS.json` had used the ISE-01 feature merge for `family_scope_merge`, but the validator requires that field to remain equal to the stable MV-CONT-008 workflow-family infrastructure merge registered in `WORKFLOW_LIFECYCLE_REGISTRY.json`; and the ISE-01 scorecard observation used a non-enum aggregate failure class.
+
+The validator source and workflow lifecycle registry were inspected before repair. The sealed proof was corrected to workflow-family PR #337 / merge `d007dc980c63a7beab4ab9a4ddbc67525f8d7003`, while the exact ISE-01 feature proof remains separately recorded under current-family validation evidence. The scorecard aggregate failure class was normalized to the allowed `repository_state` enum. No product code, application validation result, successor selection or implementation authority changed.
+
+Every retry in the tranche had materially changed evidence. No unchanged validation was rerun. The final application selector executed exactly one ISE-01 profile; historical AAI validation remained sealed ancestry rather than active jobs.
 
 ## Completed authority boundary
 
@@ -81,7 +87,7 @@ ISE-01 proved the following without widening application authority:
 
 ## Validation-family transition
 
-Application PR #340 transitioned Validation Core from AAI to ISE. Completed AAI-01..10 proof is sealed at application baseline `28fb49b174095abf4b1093af362c0a1191672091`; current-family profile prefix is `ISE-`; ISE-01 is the first completed current-family tranche. Historical predecessor validators remain inert unless separately reauthorized.
+Application PR #340 transitioned Validation Core from AAI to ISE. Completed AAI-01..10 proof is sealed at application baseline `28fb49b174095abf4b1093af362c0a1191672091`; current-family profile prefix is `ISE-`; ISE-01 is the first completed current-family tranche. Historical predecessor validators remain inert unless separately reauthorized. The stable workflow-family infrastructure proof remains MV-CONT-008 application PR #337 / merge `d007dc980c63a7beab4ab9a4ddbc67525f8d7003`.
 
 ## Successor selection
 
