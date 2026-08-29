@@ -1,7 +1,7 @@
 # ISE — Interactive Scene Experience
 
 **Program ID:** ISE  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH ISE-02; ISE-03 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH ISE-03; ISE-04 SELECTED_NOT_STARTED  
 **Activation:** after AAI-10  
 **Successor:** SSA-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,11 +9,11 @@
 
 ## Current selection
 
-ISE-02 — Tokens, Measurement, Tactical Movement & Area Templates — is `completed_verified` through application PR #341. Its first and only candidate `47dfa4b9daef73daffdeb0fe7a51773b1fba5956` passed current-family run `33252605235`: selector/Repository Health job `99100772533`, self-hosted Linux `99100784325`, self-hosted Windows `99100784331`, and deterministic comparison `99100849186`. Linux and Windows produced matching deterministic receipt SHA-256 `a6f3b2d5c1dd7d69cb6a0fcd69f8e990c79339bbdca41de646ae2ab96aaf0af2`, with zero historical predecessor fanout and zero repair reruns. PR #341 merged to application `main` as `c2ae5bdf3b0eb9ff518410af23cb52670882e093`.
+ISE-03 — Fog, Vision, Sensors, Walls, Doors & Exploration Memory — is `completed_verified` through application PR #342. Its exact validated head `f2a6a5aa7fa970e4f3addef875e3fc244dae259c` passed current-family run `33255965679`: selector/Repository Health job `99109606047`, self-hosted Linux `99109618796`, self-hosted Windows `99109618840`, and deterministic comparison `99109687893`. Linux and Windows produced matching deterministic receipt SHA-256 `5f5510c3e6ee2f025cb5980d60aeca28565198661d70491f1be6aabb0440d7d2`, with zero historical predecessor fanout. PR #342 merged to application `main` as `81b1c640330ea80c9f9715d5c43130eb0f144fbe`.
 
-Strict successor ISE-03 — Fog, Vision, Sensors, Walls, Doors & Exploration Memory — is now `in_progress` under owner `Continue` authority. Its registered implementation branch is `integration/ise-03-fog-vision-sensors-walls-doors-exploration-memory` at application baseline `c2ae5bdf3b0eb9ff518410af23cb52670882e093`.
+ISE-03 preserved A5 authorization-before-projection, canonical Scene/Visibility persistence, A7 semantic-position/movement ownership and A6 Action/Event/owner validation. Hidden inventory/cardinality never entered the perception surface; reveal and door changes remained versioned proposals; sensor/collision semantics remained profile-authored; migration `0022` remained unreserved.
 
-The bounded ISE-03 contract consumes A5 authorization-before-projection plus completed ISE-01/02 canvas/token/movement seams. Static/dynamic fog, explored-memory, wall/window/door geometry, light/vision boundaries and sensor channels are already-authorized Scene/Visibility/profile projections. Hidden objects and protected cardinality are filtered before ISE-03 receives them. GM reveal and consequential door-state changes remain versioned proposals requiring existing Scene/Visibility or Action/Event/owner validation; ISE-03 does not persist a parallel fog, exploration or door ledger. Migration `0022` remains unreserved. Sensor semantics remain profile/setting-authored rather than universalized.
+Strict successor ISE-04 — Semantic Regions, Interactables & Governed Triggers — is selected as `selected_not_started` in `governance/ai/work-state/ISE-04-attempt-001.json`. Selection grants no implementation branch or implementation authority. A future owner `Continue` must perform a bounded governed-start transition before any ISE-04 product mutation.
 
 ## Purpose
 
