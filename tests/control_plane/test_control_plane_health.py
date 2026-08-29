@@ -4,6 +4,7 @@ import sys
 import tempfile
 import unittest
 import re
+import subprocess
 from pathlib import Path
 
 
@@ -15,6 +16,9 @@ if str(SCRIPTS) not in sys.path:
 from execution_termination_preflight import evaluate  # noqa: E402
 from validate_repository_health import (  # noqa: E402
     Audit,
+    _validate_authority_and_pointer,
+    _validate_behavior_scorecard_observations,
+    _validate_cross_repository_app,
     _validate_validators,
     _validate_workflows,
 )
@@ -43,6 +47,7 @@ def _workflow_registry() -> dict[str, object]:
             },
             "cybalicistjt-stack/Multiversal-app": {
                 "current_main": "e34d43d669c48d484dbdb9e82b72a00c5d91f00c",
+                "family_scope_merge": "e34d43d669c48d484dbdb9e82b72a00c5d91f00c",
                 "live_workflows": [
                     {
                         "path": ".github/workflows/_validation-core-profile.yml",
@@ -117,8 +122,107 @@ class TerminationPreflightTests(unittest.TestCase):
             "MVTERM-BLOCKER-EVIDENCE-INSUFFICIENT", result["reason_code"]
         )
 
+    def test_verified_usage_ceiling_preserves_pending_closeout_in_handoff(self) -> None:
+        state = _base_state()
+        state.update(
+            {
+                "work_item_status": "blocked_environment",
+                "pending_authorized_steps": [
+                    "record completed_verified evidence",
+                    "select the strict successor",
+                ],
+                "genuine_blocker": {
+                    "class": "environment_unavailable",
+                    "evidence": [
+                        "the execution platform reported that its usage ceiling was reached"
+                    ],
+                    "recovery_attempted": True,
+                    "blocks_all_authorized_progress": True,
+                },
+            }
+        )
+        result = evaluate(state)
+        self.assertEqual("ALLOW_FINAL_RESPONSE", result["decision"])
+        self.assertEqual("MVTERM-GENUINE-BLOCKER", result["reason_code"])
+
 
 class FlatHealthRegressionTests(unittest.TestCase):
+    def test_active_product_convergence_control_is_machine_validated(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            checkpoint_path = root / "checkpoint.json"
+            checkpoint_path.write_text(
+                """{
+                  "work_item_id":"AAI-10",
+                  "attempt_id":"AAI-10-attempt-001",
+                  "status":"in_progress",
+                  "implementation_branch":"codex/aai-10-proof-integrity-repair",
+                  "implementation_authority":true,
+                  "convergence_control":{
+                    "owner_continue_count":2,
+                    "execution_cycles":2,
+                    "repair_cycles":4,
+                    "no_progress_cycles":0,
+                    "diagnostic_mode":true,
+                    "last_failure_signature":"post-merge state remained stale",
+                    "last_failure_class":"test_contract",
+                    "diagnostic_hypotheses":["active product convergence was not checked"],
+                    "retry_basis":"new repository evidence",
+                    "service_objective":{
+                      "ordinary_tranche_single_continue_target_percent":80,
+                      "ordinary_tranche_two_continue_target_percent":95,
+                      "max_execution_cycles_without_genuine_blocker":2,
+                      "unrelated_historical_validation_jobs_target":0,
+                      "reruns_without_changed_evidence_target":0,
+                      "post_merge_stale_pointer_target":0
+                    }
+                  }
+                }""",
+                encoding="utf-8",
+            )
+            pointer = {
+                "primary_attempt_id": "AAI-10-attempt-001",
+                "active_attempt": {
+                    "work_item_id": "AAI-10",
+                    "attempt_id": "AAI-10-attempt-001",
+                    "checkpoint_path": "checkpoint.json",
+                    "status": "in_progress",
+                    "implementation_branch": "codex/aai-10-proof-integrity-repair",
+                },
+            }
+            active = {
+                "work_item": "AAI-10",
+                "attempt_id": "AAI-10-attempt-001",
+                "state": "in_progress",
+                "implementation_branch": "codex/aai-10-proof-integrity-repair",
+                "implementation_authority": True,
+            }
+            audit = Audit(root)
+            _validate_authority_and_pointer(
+                audit,
+                pointer,
+                {"current": [], "active_planning_work": active},
+                {"active_work": active},
+            )
+            codes = {error["code"] for error in audit.errors}
+            self.assertIn("MVHEALTH-CONVERGENCE-CLASS", codes)
+
+    def test_scorecard_observation_rejects_noncanonical_failure_class(self) -> None:
+        audit = Audit(ROOT)
+        _validate_behavior_scorecard_observations(
+            audit,
+            {
+                "post_policy_observations": [
+                    {
+                        "work_item": "AAI-09",
+                        "failure_class": "test_contract",
+                    }
+                ]
+            },
+        )
+        codes = {error["code"] for error in audit.errors}
+        self.assertIn("MVHEALTH-SCORECARD-FAILURE-CLASS", codes)
+
     def test_current_workflow_requires_control_plane_regressions(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -133,6 +237,31 @@ class FlatHealthRegressionTests(unittest.TestCase):
             _validate_workflows(audit, _workflow_registry())
             codes = {error["code"] for error in audit.errors}
             self.assertIn("MVHEALTH-CONTROL-PLANE-TEST-EXECUTION", codes)
+
+    def test_local_cross_repository_gate_rejects_wrong_application_head(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            app_root = Path(directory)
+            workflow_dir = app_root / ".github/workflows"
+            workflow_dir.mkdir(parents=True)
+            for name in ("_validation-core-profile.yml", "validate-current-family.yml"):
+                (workflow_dir / name).write_text("name: fixture\n", encoding="utf-8")
+            validator = app_root / "tools/validation_core/validate_repository_health_app.py"
+            validator.parent.mkdir(parents=True)
+            validator.write_text(
+                "import sys\nprint('fixture app health')\nsys.exit(0)\n",
+                encoding="utf-8",
+            )
+            subprocess.run(["git", "init"], cwd=app_root, check=True, capture_output=True)
+            subprocess.run(["git", "config", "user.email", "fixture@example.invalid"], cwd=app_root, check=True)
+            subprocess.run(["git", "config", "user.name", "Fixture"], cwd=app_root, check=True)
+            subprocess.run(["git", "add", "."], cwd=app_root, check=True)
+            subprocess.run(["git", "commit", "-m", "fixture"], cwd=app_root, check=True, capture_output=True)
+            registry = _workflow_registry()
+            registry["repositories"]["cybalicistjt-stack/Multiversal-app"]["current_main"] = "0" * 40
+            audit = Audit(ROOT)
+            _validate_cross_repository_app(audit, app_root, registry)
+            codes = {error["code"] for error in audit.errors}
+            self.assertIn("MVHEALTH-APP-EXACT-HEAD", codes)
 
     def test_current_workflow_rejects_historical_validator_execution(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

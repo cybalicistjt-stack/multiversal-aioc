@@ -44,6 +44,8 @@ Every governed implementation attempt with implementation authority must carry a
 
 Counts are monotonic within an attempt. A new conversation resumes these counters from repository state; it does not reset them.
 
+Cross-repository convergence has two distinct gates. Repository-scoped AIOC CI validates AIOC state consistency without access to the private sibling application repository. Before an AIOC recovery or closeout merge, an authenticated operator must additionally run `scripts/validate_repository_health.py --app-root <canonical-app-checkout>` against the registered application main. A personal authentication token must not be copied into an Actions secret merely to collapse these gates; a future CI-native cross-repository gate requires a separately approved repository-managed read credential.
+
 ## 4. Failure classes
 
 A material failed cycle is classified as exactly one primary class before another repair or rerun:
@@ -142,6 +144,10 @@ Application merge evidence and AIOC state projection form one governed closeout 
 - A successful application merge with stale AIOC `in_progress` state is `repository_state` failure and stop-the-line until reconciled.
 - Closeout should select the strict successor in the same governed reconciliation when no separate owner gate intervenes.
 - A merge API response is not canonical application-main evidence until live `main` is re-read.
+
+Before crossing an application merge boundary, prepare the exact AIOC closeout mutation and preserve enough execution reserve to validate and merge it. When the runtime exposes a usage warning or another bounded execution ceiling and that reserve is not credible, leave the validated application pull request unmerged. A validated open pull request is a recoverable boundary; a merged application with stale canonical governance is not.
+
+If an external usage ceiling interrupts execution despite that reserve, classify it as `environment_unavailable`, preserve every pending authorized closeout step in the blocker handoff, and resume from repository evidence. The interruption may explain the incomplete cycle but cannot convert pending closeout into completion or erase it from the scorecard.
 
 ## 11. Live throughput scorecard
 

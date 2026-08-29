@@ -73,6 +73,13 @@
       "state":{"command_mode":"analysis_only","work_item_status":"in_progress","successor_selection_required":false,"successor_selected":false,"requested_boundary_completed":true,"active_async_operations":0,"pending_authorized_steps":[],"genuine_blocker":null},
       "expected_decision":"ALLOW_FINAL_RESPONSE",
       "expected_reason_code":"MVTERM-EXPLICIT-NONEXECUTION"
+    },
+    {
+      "case_id":"MV-EVAL-026",
+      "name":"Verified platform usage ceiling preserves pending closeout in a truthful handoff",
+      "state":{"command_mode":"execution","work_item_status":"blocked_environment","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":["record completed_verified evidence","select the strict successor"],"genuine_blocker":{"class":"environment_unavailable","evidence":["execution platform reported that its usage ceiling was reached"],"recovery_attempted":true,"blocks_all_authorized_progress":true}},
+      "expected_decision":"ALLOW_FINAL_RESPONSE",
+      "expected_reason_code":"MVTERM-GENUINE-BLOCKER"
     }
   ]
 }

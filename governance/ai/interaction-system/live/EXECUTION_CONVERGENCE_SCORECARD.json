@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "scorecard_id": "MV-EXECUTION-CONVERGENCE-LIVE",
-  "generated_at": "2026-08-28T11:22:35Z",
+  "generated_at": "2026-08-28T23:51:18Z",
   "measurement_scope": "minimized live project-conversation aggregate plus repository validation evidence",
   "privacy": {
     "raw_private_transcript_text_published": false,
@@ -70,6 +70,23 @@
     "superseded_prs_closed":[763,770],
     "live_completion_measurement":"The inherited partial attempt required two execution cycles; the owner-approved recovery completed implementation, exact-head CI, merge, zombie retirement and canonical closeout in the current execution turn."
   },
+  "active_interruption_recovery": {
+    "work_item": "AAI-10",
+    "status": "in_progress",
+    "owner_continue_count": 2,
+    "execution_cycles": 2,
+    "repair_cycles": 4,
+    "no_progress_cycles": 0,
+    "interruption_class": "environment_unavailable",
+    "owner_reported_platform_usage_ceiling": true,
+    "optional_aioc_mcp_status_method_available": false,
+    "repository_github_fallback_available": true,
+    "tool_surface_gap_blocked_progress": false,
+    "post_merge_stale_pointer_incidents": 1,
+    "application_merge": "58fabcf29e164fd4e3eb278334d385dd9970159d",
+    "application_recovery_branch": "codex/aai-10-proof-integrity-repair",
+    "feature_starts_blocked_until_closeout": true
+  },
   "post_policy_observations": [
     {
       "work_item": "AAI-08",
@@ -106,7 +123,7 @@
       "reruns_without_changed_evidence": 0,
       "post_merge_stale_pointer_incidents": 0,
       "diagnostic_mode_entered": true,
-      "failure_class": "test_contract",
+      "failure_class": "validation_contract",
       "failure_signature": "Initial deterministic projection ordering was not total; after an evidence-changing comparator repair, the focused regression still failed because a substring assertion conflated prohibited rawConsentText content with the explicit safe marker rawConsentTextStored:false. Artifact/log evidence was inspected before the second repair.",
       "validation": {
         "repository_health_run": 33105829485,

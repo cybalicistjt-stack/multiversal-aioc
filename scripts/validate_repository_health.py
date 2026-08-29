@@ -267,6 +267,13 @@ def _validate_authority_and_pointer(
             "started product work must be authorized, branch-bound and nonterminal",
             selected_path,
         )
+    if selected.get("implementation_authority") is True:
+        _validate_convergence_control(
+            audit,
+            selected.get("convergence_control", {}),
+            str(selected.get("status")),
+            str(selected.get("attempt_id")),
+        )
 
     current_entries = authority.get("current", [])
     paths = [item.get("path") for item in current_entries if isinstance(item, dict)]
@@ -522,7 +529,6 @@ def _validate_workflows(
         "AIOC workflow must fetch ancestry and bind the exact candidate head",
         CURRENT_WORKFLOW,
     )
-
     repositories = workflow_registry.get("repositories", {})
     aioc_live = repositories.get("cybalicistjt-stack/multiversal-aioc", {}).get(
         "live_workflows", []
@@ -547,9 +553,10 @@ def _validate_workflows(
         WORKFLOW_REGISTRY_PATH,
     )
     audit.require(
-        _is_sha(app_registry.get("current_main")),
+        _is_sha(app_registry.get("current_main"))
+        and _is_sha(app_registry.get("family_scope_merge")),
         "MVHEALTH-APP-MAIN-REGISTRY",
-        "workflow registry application main must be a canonical commit SHA",
+        "workflow registry application main and family-scope merge must be canonical commit SHAs",
         WORKFLOW_REGISTRY_PATH,
     )
     return {
@@ -756,7 +763,8 @@ def _validate_sealed_proofs(
         and isinstance(app_proof.get("sealed_through"), str)
         and _is_sha(app_proof.get("sealed_baseline"))
         and _is_sha(app_proof.get("family_scope_merge"))
-        and app_proof.get("family_scope_merge") == app_registry.get("current_main")
+        and app_proof.get("family_scope_merge")
+        == app_registry.get("family_scope_merge")
         and proof_workflows == registered_workflows
         and app_proof.get("historical_predecessor_reruns_default") is False,
         "MVHEALTH-APP-SEALED-PROOF",
@@ -867,6 +875,52 @@ def _validate_sealed_proofs(
     }
 
 
+def _validate_behavior_scorecard_observations(
+    audit: Audit, scorecard: dict[str, Any]
+) -> None:
+    observations = scorecard.get("post_policy_observations", [])
+    audit.require(
+        isinstance(observations, list),
+        "MVHEALTH-SCORECARD-OBSERVATIONS",
+        "live scorecard post_policy_observations must be an array",
+        SCORECARD_PATH,
+    )
+    seen: set[str] = set()
+    for row in observations if isinstance(observations, list) else []:
+        work_item = row.get("work_item") if isinstance(row, dict) else None
+        audit.require(
+            isinstance(work_item, str) and bool(work_item) and work_item not in seen,
+            "MVHEALTH-SCORECARD-WORK-ITEM",
+            f"invalid or duplicate scorecard work item {work_item!r}",
+            SCORECARD_PATH,
+        )
+        if isinstance(work_item, str):
+            seen.add(work_item)
+        failure_class = row.get("failure_class") if isinstance(row, dict) else None
+        audit.require(
+            failure_class is None or failure_class in FAILURE_CLASSES,
+            "MVHEALTH-SCORECARD-FAILURE-CLASS",
+            f"scorecard work item {work_item!r} has invalid failure class {failure_class!r}",
+            SCORECARD_PATH,
+        )
+        for key in (
+            "owner_continue_count",
+            "execution_cycles",
+            "repair_cycles",
+            "no_progress_cycles",
+            "unrelated_historical_validation_jobs",
+            "reruns_without_changed_evidence",
+            "post_merge_stale_pointer_incidents",
+        ):
+            value = row.get(key) if isinstance(row, dict) else None
+            audit.require(
+                isinstance(value, int) and value >= 0,
+                "MVHEALTH-SCORECARD-COUNT",
+                f"scorecard work item {work_item!r} has invalid {key}",
+                SCORECARD_PATH,
+            )
+
+
 def _validate_behavior_and_scorecard(audit: Audit) -> dict[str, Any]:
     try:
         termination = termination_self_test(audit.root)
@@ -889,6 +943,7 @@ def _validate_behavior_and_scorecard(audit: Audit) -> dict[str, Any]:
                 relative,
             )
     scorecard = audit.read_json(SCORECARD_PATH)
+    _validate_behavior_scorecard_observations(audit, scorecard)
     targets = scorecard.get("targets", {})
     expected_targets = {
         "ordinary_tranche_single_continue_completion_percent_min": 80,
