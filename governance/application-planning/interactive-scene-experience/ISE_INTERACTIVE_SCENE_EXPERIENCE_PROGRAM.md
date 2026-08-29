@@ -1,7 +1,7 @@
 # ISE — Interactive Scene Experience
 
 **Program ID:** ISE  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH ISE-04; ISE-05 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH ISE-05; ISE-06 SELECTED_NOT_STARTED  
 **Activation:** after AAI-10  
 **Successor:** SSA-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,9 +9,11 @@
 
 ## Current selection
 
-ISE-04 — Semantic Regions, Interactables & Governed Triggers — remains `completed_verified` through application PR #343. Its first and only candidate `76f79d8ffa380dd5fdc416f0a6c28fa07e1994ad` passed current-family run `33257953536`: selector/Repository Health job `99114837592`, self-hosted Linux `99114852094`, self-hosted Windows `99114852124`, and deterministic comparison `99114923803`. Linux and Windows produced matching deterministic receipt SHA-256 `07588327c7c38d82db454945a536129380123fe3ddd3a54934caa2bc493be3c8`, with zero historical predecessor fanout and zero repair reruns. PR #343 merged to application `main` as `7e3f92bcb0c6c3238b40f0822ff0a5b9015e8ac6`.
+ISE-05 — Levels, Elevation, Reality Layers & Map-State Families — is `completed_verified` through application PR #344. Its first and only candidate `22dc0c943e42b937ef88df5d4d066410a818db68` passed current-family run `33259228290`: selector/Repository Health job `99118184402`, self-hosted Linux `99118198137`, self-hosted Windows `99118198164`, and deterministic comparison `99118268054`. Linux and Windows produced matching deterministic receipt SHA-256 `d03c5cd373dce2796ab1e0703fbf48baf33dba0d56c7036b3a5d6a67959086b2`, with zero historical predecessor fanout and zero repair reruns. PR #344 merged to application `main` as `1d2f754446965a3a756e3105476895e0df7e94b3`.
 
-ISE-05 — Levels, Elevation, Reality Layers & Map-State Families — is now bounded `in_progress` under owner Continue on registered application branch `integration/ise-05-levels-elevation-reality-layers-map-state-families`, based exactly on application `7e3f92bcb0c6c3238b40f0822ff0a5b9015e8ac6`. The tranche projects owner-authored level/elevation, aligned map-state and Reality/Timeline/Plane/phase state; vertical transitions or state/layer changes remain expected-version, idempotent owner-operation proposals. No parallel Scene, World, Reality, movement or state ledger is authorized and migration `0022` remains unreserved.
+ISE-05 preserved authorization-before-projection, canonical Scene semantic position, World/Reality/Timeline/Plane/phase ownership, expected-version/idempotency and Transition/Portal/owner validation. Elevation and level ordering remained profile-authored presentation; aligned map variants never made artwork canonical; spatial alignment never merged realities; consequential vertical/map-state/reality-layer changes remained existing-owner-proposal handoffs; migration `0022` remained unreserved.
+
+Strict successor ISE-06 — Environment, Effects, Scene State & Audiovisual Orchestration — is selected as `selected_not_started` in `governance/ai/work-state/ISE-06-attempt-001.json`. Selection grants no implementation branch or implementation authority. A future owner `Continue` must perform a bounded governed-start transition before any ISE-06 product mutation.
 
 ## Purpose
 
