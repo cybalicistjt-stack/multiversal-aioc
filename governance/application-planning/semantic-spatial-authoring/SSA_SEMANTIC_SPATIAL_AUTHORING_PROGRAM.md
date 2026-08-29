@@ -1,7 +1,7 @@
 # SSA — Semantic Spatial Authoring
 
 **Program ID:** SSA  
-**Status:** OWNER-APPROVED — IN_PROGRESS; SSA-01 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — IN_PROGRESS; SSA-01 IN_PROGRESS  
 **Activation:** after ISE-08  
 **Successor:** WCI-01  
 **Owner and final authority:** John Brandon Turner  
@@ -11,9 +11,11 @@
 
 The predecessor Interactive Scene Experience program is `completed_verified` through ISE-08. Final application PR #347 validated exact head `34cf71ac1c2bb87f2929b120725ef8dfe9c4fe3e` on run `33268128450` with selector `99141729535`, Linux `99141743166`, Windows `99141743344`, comparator `99141876476`, deterministic receipt `65268f3566c4f00c4be6d6a00672992c2a65a0e47848ef1b35dfb140df1e696f`, zero historical predecessor fanout, and application merge `1381a97573b6b36d31a72ddd37ed0c3177674ef3`.
 
-SSA-01 — Authority Crosswalk & Spatial Semantic Taxonomy — is selected as `selected_not_started` in `governance/ai/work-state/SSA-01-attempt-001.json`. Selection grants no implementation branch or implementation authority. A future owner `Continue` must perform a bounded governed-start transition before any SSA product mutation.
+SSA-01 — Authority Crosswalk & Spatial Semantic Taxonomy — is bounded `in_progress` under the owner Continue at 2026-08-29T15:25:00-05:00 on registered application branch `integration/ssa-01-authority-crosswalk-spatial-semantic-taxonomy`, based exactly on application `1381a97573b6b36d31a72ddd37ed0c3177674ef3`. Product mutation remains blocked until this governed-start candidate passes Repository Health.
 
-SSA-01 will reconcile recovered structural/world-space concepts with MAI, completed ISE, World/Reality, Scene, Exploration, Research, Creature ecology, Asset and permission authorities. Its first responsibility is to define typed spatial entity/relation families, ownership boundaries, stable references and the explicit distinction between geometry, semantic structure and live state without creating a second World, Scene or domain ledger.
+SSA-01 reconciles recovered structural/world-space concepts with MAI, completed ISE, World/Reality, Scene, Exploration, Research, Creature ecology, Asset and permission authorities. Its bounded contract defines canonical owner crosswalks, stable semantic references, high-level entity/relation families, confirmation state for uncertain inference, accessible nonvisual semantics and the explicit separation of geometry, semantic structure and live state. It does not implement SSA-02 construction primitives or create a parallel domain ledger.
+
+No new canonical persistence is required for SSA-01. The tranche is additive contract/projection work over existing owner identities; migration `0022` remains unreserved. Exactly one `SSA-01` current-family Validation Core profile is authorized, with zero historical predecessor fanout.
 
 ## Purpose
 
