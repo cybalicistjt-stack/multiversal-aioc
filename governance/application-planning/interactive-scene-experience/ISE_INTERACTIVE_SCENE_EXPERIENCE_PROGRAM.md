@@ -1,7 +1,7 @@
 # ISE — Interactive Scene Experience
 
 **Program ID:** ISE  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH ISE-01; ISE-02 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH ISE-02; ISE-03 SELECTED_NOT_STARTED  
 **Activation:** after AAI-10  
 **Successor:** SSA-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,11 +9,11 @@
 
 ## Current selection
 
-ISE-01 — Native Canvas, Camera, Registration & Interaction Surface — is `completed_verified` through application PR #340. Its exact validated head `66aa039589dda137ccad72e2b070ee70037b0e2f` passed current-family run `33251505097` on self-hosted Linux and Windows plus deterministic comparison, with zero historical predecessor fanout, and merged to application `main` as `05c1df53692e8f9e00d7b00f0650af9934c70913`.
+ISE-02 — Tokens, Measurement, Tactical Movement & Area Templates — is `completed_verified` through application PR #341. Its first and only candidate `47dfa4b9daef73daffdeb0fe7a51773b1fba5956` passed current-family run `33252605235`: selector/Repository Health job `99100772533`, self-hosted Linux `99100784325`, self-hosted Windows `99100784331`, and deterministic comparison `99100849186`. Linux and Windows produced matching deterministic receipt SHA-256 `a6f3b2d5c1dd7d69cb6a0fcd69f8e990c79339bbdca41de646ae2ab96aaf0af2`, with zero historical predecessor fanout and zero repair reruns. PR #341 merged to application `main` as `c2ae5bdf3b0eb9ff518410af23cb52670882e093`.
 
-Owner `Continue` on 2026-08-29 governed-started strict successor ISE-02 — Tokens, Measurement, Tactical Movement & Area Templates. Implementation authority is active only on `integration/ise-02-tokens-measurement-tactical-movement-area-templates` and only for the bounded contract recorded in `governance/ai/work-state/ISE-02-attempt-001.json`. ISE-03 remains planned and unauthorized until ISE-02 reaches `completed_verified` and the strict successor is selected.
+Strict successor ISE-03 — Fog, Vision, Sensors, Walls, Doors & Exploration Memory — is selected as `selected_not_started` in `governance/ai/work-state/ISE-03-attempt-001.json`. Selection grants no implementation branch or implementation authority. A future owner `Continue` must perform a bounded governed-start transition before any ISE-03 product mutation.
 
-ISE-02 consumes the completed ISE-01 native Scene canvas as its presentation host. Tokens remain projections of already-authorized Character, Creature/NPC and Vehicle identity; movement is proposal-only until owning movement/Action authority validates it; measurement and area-template geometry are previews rather than universal rules truth. No new durable persistence or migration is required for this tranche.
+ISE-01 and ISE-02 remain completed foundations. ISE-03 must consume their native canvas, token projection, movement-proposal and semantic-position boundaries without replacing canonical Scene, permission, movement, Action/Event or owner-domain authority.
 
 ## Purpose
 
