@@ -1,7 +1,7 @@
 # ISE — Interactive Scene Experience
 
 **Program ID:** ISE  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH ISE-04; ISE-05 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH ISE-04; ISE-05 IN_PROGRESS  
 **Activation:** after AAI-10  
 **Successor:** SSA-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,11 +9,9 @@
 
 ## Current selection
 
-ISE-04 — Semantic Regions, Interactables & Governed Triggers — is `completed_verified` through application PR #343. Its first and only candidate `76f79d8ffa380dd5fdc416f0a6c28fa07e1994ad` passed current-family run `33257953536`: selector/Repository Health job `99114837592`, self-hosted Linux `99114852094`, self-hosted Windows `99114852124`, and deterministic comparison `99114923803`. Linux and Windows produced matching deterministic receipt SHA-256 `07588327c7c38d82db454945a536129380123fe3ddd3a54934caa2bc493be3c8`, with zero historical predecessor fanout and zero repair reruns. PR #343 merged to application `main` as `7e3f92bcb0c6c3238b40f0822ff0a5b9015e8ac6`.
+ISE-04 — Semantic Regions, Interactables & Governed Triggers — remains `completed_verified` through application PR #343. Its first and only candidate `76f79d8ffa380dd5fdc416f0a6c28fa07e1994ad` passed current-family run `33257953536`: selector/Repository Health job `99114837592`, self-hosted Linux `99114852094`, self-hosted Windows `99114852124`, and deterministic comparison `99114923803`. Linux and Windows produced matching deterministic receipt SHA-256 `07588327c7c38d82db454945a536129380123fe3ddd3a54934caa2bc493be3c8`, with zero historical predecessor fanout and zero repair reruns. PR #343 merged to application `main` as `7e3f92bcb0c6c3238b40f0822ff0a5b9015e8ac6`.
 
-ISE-04 preserved authorization-before-projection, canonical Scene/owner-domain identity, expected-version/idempotency, consent/GM adjudication and Action/Event or owner validation. Hidden region/interactable/trigger state never entered the surface; trigger signals remained owner/profile-authored; missing owner-operation proposals failed closed; no parallel trigger/rules/runtime ledger or canonical mutation was introduced; migration `0022` remained unreserved.
-
-Strict successor ISE-05 — Levels, Elevation, Reality Layers & Map-State Families — is selected as `selected_not_started` in `governance/ai/work-state/ISE-05-attempt-001.json`. Selection grants no implementation branch or implementation authority. A future owner `Continue` must perform a bounded governed-start transition before any ISE-05 product mutation.
+ISE-05 — Levels, Elevation, Reality Layers & Map-State Families — is now bounded `in_progress` under owner Continue on registered application branch `integration/ise-05-levels-elevation-reality-layers-map-state-families`, based exactly on application `7e3f92bcb0c6c3238b40f0822ff0a5b9015e8ac6`. The tranche projects owner-authored level/elevation, aligned map-state and Reality/Timeline/Plane/phase state; vertical transitions or state/layer changes remain expected-version, idempotent owner-operation proposals. No parallel Scene, World, Reality, movement or state ledger is authorized and migration `0022` remains unreserved.
 
 ## Purpose
 
