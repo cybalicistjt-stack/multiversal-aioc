@@ -1,18 +1,18 @@
 # AAI — Audio Asset & Soundscape Interoperability
 
 **Program ID:** AAI  
-**Status:** IN PROGRESS — AAI-10 proof-integrity recovery
+**Status:** COMPLETED_VERIFIED
 **Activation:** MAI-10 completed_verified  
-**Completed through:** AAI-09  
-**Current item:** AAI-10 — Multi-Provider Golden Audio Proof  
-**Implementation branch:** `codex/aai-10-proof-integrity-repair`
-**Implementation authority:** bounded AAI-10 only  
-**Successor:** ISE-01  
+**Completed through:** AAI-10
+**Current item:** none — ISE-01 is selected_not_started
+**Implementation branch:** none
+**Implementation authority:** none
+**Successor:** ISE-01 selected_not_started
 **Owner and final authority:** John Brandon Turner
 
 ## Current state
 
-AAI-01 through AAI-09 are `completed_verified`.
+AAI-01 through AAI-10 are `completed_verified` with no further AAI implementation authority.
 
 AAI-09 merged through application PR #335 after exact-head Repository Health run `33105829485` and bounded current-tranche Validation Core run `33105829803` passed on candidate `d68ce494e6b97a6bc6b7b6d60f58d2985f3bfac2`. Linux job `98635420855`, Windows job `98635420917`, and deterministic cross-platform comparison job `98635585515` all succeeded, with zero unrelated historical profile fanout. Its application merge is `b670368ca91778802867a1a4b8d963c3a3ea8875`.
 
@@ -20,7 +20,9 @@ Subsequent repository-health maintenance advanced live application `main` to `d0
 
 Application PR #338 merged its first AAI-10 candidate as `58fabcf29e164fd4e3eb278334d385dd9970159d`, but an owner-reported platform usage-ceiling interruption ended the prior execution before AIOC closeout. The original implementation branch was deleted while AIOC still selected it as `in_progress`, creating a stop-the-line `repository_state` defect.
 
-Independent review then found three bounded proof-integrity gaps: `pathId` was not bound to its governed source/adapter pair; duplicate scenario IDs could make receipt order input-dependent; and the starter proof omitted capability/entitlement fail-closed outcomes plus explicit negative evidence for every path family. AAI-10 therefore remains `in_progress` with recovery authority only on `codex/aai-10-proof-integrity-repair`. Unrelated feature starts remain blocked until the repaired exact head passes the one AAI-10 profile, merges, and AIOC records `completed_verified` plus ISE-01 `selected_not_started`.
+Independent review then found three bounded proof-integrity gaps: `pathId` was not bound to its governed source/adapter pair; duplicate scenario IDs could make receipt order input-dependent; and the starter proof omitted capability/entitlement fail-closed outcomes plus explicit negative evidence for every path family.
+
+The recovery repaired those gaps on application PR #339. Exact head `d5980da97cf4c64a2fdfe4e69ce98722f0a9e591` passed current-family run `33223249963`: repository-health selector job `99021612028`, Linux job `99021637493`, Windows job `99021637523`, and deterministic comparison job `99021797455`, with zero historical profile fanout. PR #339 merged as `28fb49b174095abf4b1093af362c0a1191672091`. AAI-10 and the AAI program are therefore `completed_verified`; ISE-01 is selected_not_started without a branch or implementation authority.
 
 ## Completed AAI-09 boundary
 
@@ -56,9 +58,9 @@ No new durable canonical AAI-10 persistence is required. Golden scenarios and re
 
 AAI-10 does **not** authorize paid provider activation, live credentials, provider network execution, provider content acquisition/copy/extraction/cache/rehosting, scraping/ripping/reverse engineering, rights/capability promotion, gameplay-owner mutation, actual recording/streaming/export/redistribution execution, migration `0022`, tester distribution, release or deployment.
 
-## AAI-10 acceptance state
+## AAI-10 completed acceptance state
 
-AAI-10 must deliver exactly this bounded proof surface:
+AAI-10 delivered exactly this bounded proof surface:
 
 - `governance/application-planning/audio-asset-interoperability/AAI-10_MULTI_PROVIDER_GOLDEN_AUDIO_PROOF.md`
 - `packages/contracts/src/audio-asset-interoperability/multi-provider-golden-audio-proof.ts`
@@ -69,7 +71,7 @@ AAI-10 must deliver exactly this bounded proof surface:
 
 The current AAI family contract seals AAI-01..09 at application baseline `b670368ca91778802867a1a4b8d963c3a3ea8875`. Exactly one governed `AAI-10` current-family profile must prove deterministic provider-neutral intent preservation across all five source/provider paths; authorized positive local/link/local-companion/manual-reference outcomes; explicit rights/capability/terms/entitlement/runtime fail-closed outcomes; zero live provider/network/content execution; nonblocking unavailable audio; and deterministic input-order-independent receipts. It contains only the AAI-10 invariant verifier, workspace install, client typecheck and focused AAI-10 regression. Historical AAI-01..09 and MIB-11 verifier reruns remain retired at zero; the selector proves sealed-baseline ancestry instead.
 
-The exact candidate head must pass current application Repository Health, self-hosted Linux, self-hosted Windows and deterministic cross-platform comparison before merge.
+The exact candidate head passed current application Repository Health, self-hosted Linux, self-hosted Windows and deterministic cross-platform comparison before merge.
 
 ## Tranches
 
@@ -82,12 +84,12 @@ The exact candidate head must pass current application Repository Health, self-h
 7. **AAI-07 — Game Event, Scene & Automation Binding** — `completed_verified`  
 8. **AAI-08 — GM Audio Workbench, Scene Presets & Campaign Preparation** — `completed_verified`  
 9. **AAI-09 — Multiplayer, Permissions, Remote Sync & Recording/Streaming Boundaries** — `completed_verified`  
-10. **AAI-10 — Multi-Provider Golden Audio Proof** — `in_progress_recovery`
+10. **AAI-10 — Multi-Provider Golden Audio Proof** — `completed_verified`
 
 ## Invariants
 
-- AAI-01 through AAI-09 remain `completed_verified` with no further implementation authority.
-- AAI-10 recovery implementation authority exists only on `codex/aai-10-proof-integrity-repair`.
+- AAI-01 through AAI-10 are `completed_verified` with no further implementation authority.
+- ISE-01 is `selected_not_started`; selection does not grant a branch or implementation authority.
 - Completed AAI permission, rights, capability, availability, provider, binding, preparation, multiplayer, sync, consent and capture boundaries remain independently authoritative and fail closed.
 - User-owned local audio and provider-backed audio converge only through canonical AAI contracts and explicit provenance/right/capability evidence.
 - Provider playback, reference or control success cannot imply broader rights, terms, entitlement, remote-sync, recording, streaming, export, redistribution or payment authority.

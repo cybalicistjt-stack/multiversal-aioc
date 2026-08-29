@@ -1,7 +1,7 @@
 {
-  "schema_version": "2.0.0",
+  "schema_version": "2.1.0",
   "scorecard_id": "MV-EXECUTION-CONVERGENCE-LIVE",
-  "generated_at": "2026-08-28T23:51:18Z",
+  "generated_at": "2026-08-29T00:24:09.971Z",
   "measurement_scope": "minimized live project-conversation aggregate plus repository validation evidence",
   "privacy": {
     "raw_private_transcript_text_published": false,
@@ -70,12 +70,12 @@
     "superseded_prs_closed":[763,770],
     "live_completion_measurement":"The inherited partial attempt required two execution cycles; the owner-approved recovery completed implementation, exact-head CI, merge, zombie retirement and canonical closeout in the current execution turn."
   },
-  "active_interruption_recovery": {
+  "completed_interruption_recovery": {
     "work_item": "AAI-10",
-    "status": "in_progress",
+    "status": "completed_verified",
     "owner_continue_count": 2,
-    "execution_cycles": 2,
-    "repair_cycles": 4,
+    "execution_cycles": 3,
+    "repair_cycles": 7,
     "no_progress_cycles": 0,
     "interruption_class": "environment_unavailable",
     "owner_reported_platform_usage_ceiling": true,
@@ -83,9 +83,12 @@
     "repository_github_fallback_available": true,
     "tool_surface_gap_blocked_progress": false,
     "post_merge_stale_pointer_incidents": 1,
-    "application_merge": "58fabcf29e164fd4e3eb278334d385dd9970159d",
-    "application_recovery_branch": "codex/aai-10-proof-integrity-repair",
-    "feature_starts_blocked_until_closeout": true
+    "prior_application_merge": "58fabcf29e164fd4e3eb278334d385dd9970159d",
+    "repair_application_pr": 339,
+    "repair_application_merge": "28fb49b174095abf4b1093af362c0a1191672091",
+    "recovery_aioc_pr": 785,
+    "recovery_aioc_merge": "7a7dcc0ae9283a620c335ce999cb268a4a1243ef",
+    "feature_starts_blocked_until_closeout": false
   },
   "post_policy_observations": [
     {
@@ -151,7 +154,26 @@
       "failure_class":"repository_state",
       "validation":{"application_family_scope_merge":"e34d43d669c48d484dbdb9e82b72a00c5d91f00c","aioc_repository_health_run":33166810683,"aioc_main_health_run":33166847490,"all_success":true},
       "aioc_merge":"c94baa78f0f135681ecaab3e6dc36d5c11b1afa2"
+    },
+    {
+      "work_item":"AAI-10",
+      "owner_continue_count":2,
+      "execution_cycles":3,
+      "repair_cycles":7,
+      "no_progress_cycles":0,
+      "same_cycle_completed":false,
+      "completed_within_two_cycles":false,
+      "recovery_completed_in_current_owner_execution_turn":true,
+      "unrelated_historical_validation_jobs":0,
+      "reruns_without_changed_evidence":0,
+      "post_merge_stale_pointer_incidents":1,
+      "diagnostic_mode_entered":true,
+      "failure_class":"repository_state",
+      "failure_signature":"The prior operation merged application PR 338 but a platform usage ceiling interrupted AIOC closeout, leaving a deleted branch selected. Recovery then found three product proof gaps. The repair required one selector-contract correction and one fixed-profile-schema correction, each based on newly inspected exact failure evidence; the real local Windows profile runner passed before the final push.",
+      "validation":{"application_pr":339,"validated_head":"d5980da97cf4c64a2fdfe4e69ce98722f0a9e591","validation_run":33223249963,"repository_health_job":99021612028,"linux_job":99021637493,"windows_job":99021637523,"compare_job":99021797455,"historical_profile_fanout":0,"all_success":true},
+      "application_merge":"28fb49b174095abf4b1093af362c0a1191672091",
+      "recovery_aioc_pr":785
     }
   ],
-  "interpretation": "The historical baseline remains frozen. AAI-08, AAI-09 and MV-CONT-007 preserved zero unrelated historical validation jobs and zero reruns without changed evidence. MV-CONT-007 closed the inherited partial attempt in the current owner execution turn, but the attempt still required two total execution cycles. Three post-policy observations remain insufficient for a longitudinal target-achievement claim; continue measuring ordinary future tranches."
+  "interpretation": "The historical baseline remains frozen. AAI-08, AAI-09, MV-CONT-007 and AAI-10 preserved zero unrelated historical validation jobs and zero reruns without changed evidence. AAI-10 demonstrates that the new bounded pipeline prevents legacy fanout, but it missed both completion-speed targets because a post-merge quota interruption left cross-repository state stale and two repair-profile contract mistakes consumed additional cycles. The durable merge-reserve rule, resumable interruption checkpoint, exact capability-layer reporting and real-profile local preflight are now the corrective operating pattern. Four post-policy observations remain insufficient for a longitudinal target-achievement claim; continue measuring ordinary future tranches."
 }
