@@ -4,6 +4,7 @@ import sys
 import tempfile
 import unittest
 import re
+import subprocess
 from pathlib import Path
 
 
@@ -17,6 +18,7 @@ from validate_repository_health import (  # noqa: E402
     Audit,
     _validate_authority_and_pointer,
     _validate_behavior_scorecard_observations,
+    _validate_cross_repository_app,
     _validate_validators,
     _validate_workflows,
 )
@@ -45,6 +47,7 @@ def _workflow_registry() -> dict[str, object]:
             },
             "cybalicistjt-stack/Multiversal-app": {
                 "current_main": "e34d43d669c48d484dbdb9e82b72a00c5d91f00c",
+                "family_scope_merge": "e34d43d669c48d484dbdb9e82b72a00c5d91f00c",
                 "live_workflows": [
                     {
                         "path": ".github/workflows/_validation-core-profile.yml",
@@ -235,22 +238,30 @@ class FlatHealthRegressionTests(unittest.TestCase):
             codes = {error["code"] for error in audit.errors}
             self.assertIn("MVHEALTH-CONTROL-PLANE-TEST-EXECUTION", codes)
 
-    def test_current_workflow_requires_cross_repository_application_checkout(self) -> None:
+    def test_local_cross_repository_gate_rejects_wrong_application_head(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
-            workflow_dir = root / ".github/workflows"
+            app_root = Path(directory)
+            workflow_dir = app_root / ".github/workflows"
             workflow_dir.mkdir(parents=True)
-            (workflow_dir / "validate-repository-health.yml").write_text(
-                "fetch-depth: 0\n"
-                "python3 scripts/validate_repository_health.py --expected-head abc\n"
-                "python3 -m unittest discover -s tests/control_plane -p 'test_*.py'\n"
-                "tests/control_plane/**\n",
+            for name in ("_validation-core-profile.yml", "validate-current-family.yml"):
+                (workflow_dir / name).write_text("name: fixture\n", encoding="utf-8")
+            validator = app_root / "tools/validation_core/validate_repository_health_app.py"
+            validator.parent.mkdir(parents=True)
+            validator.write_text(
+                "import sys\nprint('fixture app health')\nsys.exit(0)\n",
                 encoding="utf-8",
             )
-            audit = Audit(root)
-            _validate_workflows(audit, _workflow_registry())
+            subprocess.run(["git", "init"], cwd=app_root, check=True, capture_output=True)
+            subprocess.run(["git", "config", "user.email", "fixture@example.invalid"], cwd=app_root, check=True)
+            subprocess.run(["git", "config", "user.name", "Fixture"], cwd=app_root, check=True)
+            subprocess.run(["git", "add", "."], cwd=app_root, check=True)
+            subprocess.run(["git", "commit", "-m", "fixture"], cwd=app_root, check=True, capture_output=True)
+            registry = _workflow_registry()
+            registry["repositories"]["cybalicistjt-stack/Multiversal-app"]["current_main"] = "0" * 40
+            audit = Audit(ROOT)
+            _validate_cross_repository_app(audit, app_root, registry)
             codes = {error["code"] for error in audit.errors}
-            self.assertIn("MVHEALTH-CROSS-REPOSITORY-APP-CHECKOUT", codes)
+            self.assertIn("MVHEALTH-APP-EXACT-HEAD", codes)
 
     def test_current_workflow_rejects_historical_validator_execution(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

@@ -23,7 +23,7 @@
           "timeout_minutes":5,
           "validation_entrypoint":"scripts/validate_repository_health.py",
           "historical_validator_execution_count":0,
-          "purpose":"One state-driven AIOC authority, lifecycle, sealed-proof, behavioral-control and canonical application-main convergence audit plus its focused current regression suite."
+          "purpose":"One state-driven AIOC authority, lifecycle, sealed-proof and behavioral-control audit plus its focused current regression suite; exact private application-main convergence is the separate authenticated closeout gate."
         }
       ],
       "retired_workflow_policy":"All other historical AIOC workflows remain HISTORICAL_INERT in Git history."
@@ -68,6 +68,6 @@
     "ordinary_substantive_pr_profile_limit":1,
     "unrelated_historical_validation_jobs_target":0,
     "cross_repository_token_dependency":false,
-    "cross_repository_application_main":true
+    "cross_repository_application_main":{"ci":"not_available_without_repository_managed_read_credential","required_closeout_gate":"authenticated_local_app_root","personal_token_secret_forbidden":true}
   }
 }

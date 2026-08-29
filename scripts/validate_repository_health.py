@@ -529,14 +529,6 @@ def _validate_workflows(
         "AIOC workflow must fetch ancestry and bind the exact candidate head",
         CURRENT_WORKFLOW,
     )
-    audit.require(
-        "repository: cybalicistjt-stack/Multiversal-app" in source
-        and "--app-root" in source,
-        "MVHEALTH-CROSS-REPOSITORY-APP-CHECKOUT",
-        "AIOC health must inspect canonical application main through the cross-repository app check",
-        CURRENT_WORKFLOW,
-    )
-
     repositories = workflow_registry.get("repositories", {})
     aioc_live = repositories.get("cybalicistjt-stack/multiversal-aioc", {}).get(
         "live_workflows", []

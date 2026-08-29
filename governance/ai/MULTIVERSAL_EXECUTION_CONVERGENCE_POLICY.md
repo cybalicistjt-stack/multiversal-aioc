@@ -44,6 +44,8 @@ Every governed implementation attempt with implementation authority must carry a
 
 Counts are monotonic within an attempt. A new conversation resumes these counters from repository state; it does not reset them.
 
+Cross-repository convergence has two distinct gates. Repository-scoped AIOC CI validates AIOC state consistency without access to the private sibling application repository. Before an AIOC recovery or closeout merge, an authenticated operator must additionally run `scripts/validate_repository_health.py --app-root <canonical-app-checkout>` against the registered application main. A personal authentication token must not be copied into an Actions secret merely to collapse these gates; a future CI-native cross-repository gate requires a separately approved repository-managed read credential.
+
 ## 4. Failure classes
 
 A material failed cycle is classified as exactly one primary class before another repair or rerun:
