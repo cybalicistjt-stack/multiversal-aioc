@@ -1,7 +1,7 @@
 # ISE — Interactive Scene Experience
 
 **Program ID:** ISE  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH ISE-03; ISE-04 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH ISE-03; ISE-04 IN_PROGRESS  
 **Activation:** after AAI-10  
 **Successor:** SSA-01  
 **Owner and final authority:** John Brandon Turner  
@@ -11,9 +11,9 @@
 
 ISE-03 — Fog, Vision, Sensors, Walls, Doors & Exploration Memory — is `completed_verified` through application PR #342. Its exact validated head `f2a6a5aa7fa970e4f3addef875e3fc244dae259c` passed current-family run `33255965679`: selector/Repository Health job `99109606047`, self-hosted Linux `99109618796`, self-hosted Windows `99109618840`, and deterministic comparison `99109687893`. Linux and Windows produced matching deterministic receipt SHA-256 `5f5510c3e6ee2f025cb5980d60aeca28565198661d70491f1be6aabb0440d7d2`, with zero historical predecessor fanout. PR #342 merged to application `main` as `81b1c640330ea80c9f9715d5c43130eb0f144fbe`.
 
-ISE-03 preserved A5 authorization-before-projection, canonical Scene/Visibility persistence, A7 semantic-position/movement ownership and A6 Action/Event/owner validation. Hidden inventory/cardinality never entered the perception surface; reveal and door changes remained versioned proposals; sensor/collision semantics remained profile-authored; migration `0022` remained unreserved.
+Strict successor ISE-04 — Semantic Regions, Interactables & Governed Triggers — is now `in_progress` under owner `Continue` authority. Its registered implementation branch is `integration/ise-04-semantic-regions-interactables-governed-triggers` at application baseline `81b1c640330ea80c9f9715d5c43130eb0f144fbe`.
 
-Strict successor ISE-04 — Semantic Regions, Interactables & Governed Triggers — is selected as `selected_not_started` in `governance/ai/work-state/ISE-04-attempt-001.json`. Selection grants no implementation branch or implementation authority. A future owner `Continue` must perform a bounded governed-start transition before any ISE-04 product mutation.
+The bounded ISE-04 contract makes already-governed Scene cells, cell areas, rooms, named zones and gridless regions first-class interaction surfaces while keeping Scene and owner-domain records canonical. Authorized interactables reference existing Encounter, Hazard, Item, Objective, Door, Transition, Portal or other owner objects with expected versions. Entry/exit/presence/interact/state-change signals can emit versioned, idempotent owner-operation proposals only; permissions, consent, GM adjudication and Action/Event or owner-domain validation remain mandatory. Hidden regions, interactables, trigger metadata and protected cardinality are filtered before ISE-04 receives them. No parallel trigger/rules/runtime ledger is created, and migration `0022` remains unreserved.
 
 ## Purpose
 
