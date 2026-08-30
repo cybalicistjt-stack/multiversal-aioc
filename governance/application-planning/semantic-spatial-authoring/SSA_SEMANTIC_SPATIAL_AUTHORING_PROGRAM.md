@@ -1,7 +1,7 @@
 # SSA — Semantic Spatial Authoring
 
 **Program ID:** SSA  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH SSA-06; SSA-07 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH SSA-06; SSA-07 IN_PROGRESS  
 **Activation:** after ISE-08  
 **Successor:** WCI-01  
 **Owner and final authority:** John Brandon Turner  
@@ -13,7 +13,7 @@ SSA-06 — MAI/ISE Asset Mapping, Snapping & Semantic Construction Roles — is 
 
 SSA-06 delivered permission-filtered mappings from permitted tilesets, images, structured map imports and placeables into semantic construction-role projections plus snapping, attachment, replacement and imported-structure-metadata suggestions. Governed imported metadata and confirmed authoring may establish mappings; generated role/snapping/attachment/replacement output remains assistance until confirmation where uncertain. Pixels, visual adjacency and recognition output remain non-authoritative. MAI, completed ISE, Scene, Asset, Permission/entitlement and provider/media-rights owners remain canonical. Hidden/GM-only construction semantics and protected cardinality are filtered before projection, consequential mappings/suggestions require accessible nonvisual summaries, and consequential confirmation remains versioned/idempotent proposal-only. No durable persistence, provider/media storage, entitlement inference, redistribution or migration `0022` was introduced.
 
-SSA-07 — GM Construction Assistance & Low-Friction Spatial Authoring — is now selected `selected_not_started` only. It has no implementation branch or implementation authority. A future governed tranche may provide recognize/suggest/confirm workflows for rooms, boundaries, openings, paths and structural roles; fast manual correction; reusable construction kits; and unusual-space authoring while keeping uncertain recognition and generated assistance proposal-first until confirmed. No persistence or migration is reserved at selection.
+SSA-07 — GM Construction Assistance & Low-Friction Spatial Authoring — is now bounded `in_progress` from exact verified application baseline `5110a564d6541d3e81a321339fe5173bad52765b` on registered branch `integration/ssa-07-gm-construction-assistance-low-friction-spatial-authoring`. The bounded contract provides recognize/suggest/confirm workflows for rooms, boundaries, openings, paths and structural roles; fast manual correction; reusable construction kits; and unusual-space authoring. Governed semantic metadata and confirmed authoring may project, while image recognition, visual adjacency, uncertain inference and generated assistance remain proposal-first until confirmed. Consequential corrections/confirmations must use permission-filtered, versioned/idempotent owner-operation proposals and accessible nonvisual summaries. MAI, ISE, Scene, Asset, Permission/entitlement, provider/media-rights and completed SSA ownership remain canonical. No durable persistence change or migration `0022` is reserved.
 
 ## Purpose
 
