@@ -12,7 +12,7 @@
   "started_at": "2026-08-30T10:56:58-05:00",
   "implementation_branch": "integration/akwi-01-playable-species-core",
   "implementation_authority": true,
-  "application_baseline_sha": "88cb2b44f9aef71844ddf0ea6b06651f1f4d8b01",
+  "application_baseline_sha": "88cb2b44b216fcb661c3d8199bff7b06d7b1db50",
   "aioc_baseline_sha": "60f75d15eb7d197dde2abffccb7a071cbea321f5",
   "objective": "Integrate Akwi as a governed playable Species at the current A2/A4/content-contract boundary, preserving source truth, owner-approved sensory and Burst rulings, provenance and visibility while avoiding Akwi-specific UI or a fabricated rules engine.",
   "authorization_basis": "Owner explicitly approved hearing, magnetic orientation, pressure/airflow, Burst/recovery balance delegation and Spring-Leg jumping semantics and instructed: Continue with akwi01.",
@@ -27,16 +27,18 @@
     "Hidden, private, proposed, GM-only and unresolved biology remains filtered before player-facing projection or AI context."
   ],
   "convergence_control": {
-    "owner_continue_count": 1,
-    "execution_cycles": 1,
-    "repair_cycles": 0,
+    "owner_continue_count": 2,
+    "execution_cycles": 2,
+    "repair_cycles": 1,
     "no_progress_cycles": 0,
     "diagnostic_mode": false,
-    "last_failure_class": null,
-    "last_failure_signature": null,
-    "diagnostic_hypotheses": [],
+    "last_failure_class": "checkpoint-baseline-identity-mismatch",
+    "last_failure_signature": "AKWI-01 work-state application_baseline_sha did not equal isolated application branch head",
+    "diagnostic_hypotheses": [
+      "The original work-state recorded a mistyped expanded SHA after validating only the visible prefix."
+    ],
     "reruns_without_changed_evidence": 0,
     "unrelated_historical_validation_jobs_observed": 0
   },
-  "next_action": "Implement the smallest current-pipeline Akwi fixture/content and generic deterministic mechanics contracts on the isolated application branch, beginning with red acceptance tests/fixtures and preserving A2/A4 generic seams."
+  "next_action": "Add red AKWI-01 acceptance tests and generic supplemental A2 corpus/mechanics seams on the isolated application branch using exact baseline 88cb2b44b216fcb661c3d8199bff7b06d7b1db50."
 }
