@@ -47,43 +47,47 @@
     "application_pr": 356,
     "candidate_head": "41a5bee4726213ad8572ab194c9b36c63bee2edf",
     "validation_run": 33332830247,
-    "repository_health_job": 99314388395,
-    "linux_job": 99314405268,
-    "windows_job": 99314405321,
+    "validation_attempt": 2,
+    "repository_health_job": 99329132794,
+    "linux_job": 99329133213,
+    "windows_job": 99329132747,
+    "deterministic_compare_job": 99329216298,
     "repository_health_status": "success",
     "linux_status": "success",
-    "windows_status": "in_progress_zero_steps",
-    "deterministic_compare_status": "waiting_on_windows"
+    "windows_status": "success",
+    "windows_receipt_artifact": 9739726430,
+    "deterministic_compare_status": "queued_unassigned_runner"
   },
   "blocker": {
     "class": "runner_environment",
     "state": "blocked_environment",
-    "runner_id": 22,
-    "runner_name": "multiversal-win-01",
-    "job_id": 99314405321,
+    "runner_id": 0,
+    "runner_name": null,
+    "required_labels": ["self-hosted", "linux", "x64", "multiversal-validation-linux"],
+    "job_id": 99329216298,
     "validation_run": 33332830247,
     "candidate_head": "41a5bee4726213ad8572ab194c9b36c63bee2edf",
-    "observed_state": "GitHub assigned the Windows validation job to multiversal-win-01 and marked it in_progress, but the job has exposed zero workflow steps and no downloadable log; no AKWI validation command has started.",
-    "required_environment_change": "Restart or reconnect the existing multiversal-win-01 self-hosted GitHub Actions runner listener. Do not mutate the application candidate solely to retrigger the same stalled environment."
+    "observed_state": "After multiversal-win-01 was restored, fresh Windows job 99329132747 completed successfully and uploaded artifact 9739726430. Both Linux and Windows deterministic receipts are present for the exact candidate head. The dependent deterministic comparison job 99329216298 is queued with runner_id 0, empty runner name and no workflow steps, so no matching Linux self-hosted runner has accepted the comparator.",
+    "required_environment_change": "Restart or reconnect the existing multiversal-linux-02 self-hosted GitHub Actions runner listener carrying labels self-hosted/linux/x64/multiversal-validation-linux. Do not mutate or retrigger the application candidate while the comparator remains queued against the already-green platform receipts."
   },
   "convergence_control": {
     "owner_continue_count": 5,
-    "execution_cycles": 5,
+    "execution_cycles": 6,
     "repair_cycles": 4,
     "no_progress_cycles": 0,
     "diagnostic_mode": true,
     "last_failure_class": "runner_environment",
-    "last_failure_signature": "multiversal-win-01 accepted AKWI-03 exact-head validation job 99314405321 but exposed zero workflow steps after assignment; two earlier related Windows runs were cancelled as stale during AKWI-03 cleanup",
+    "last_failure_signature": "AKWI-03 deterministic comparison job 99329216298 is queued with runner_id 0 and no assigned runner after exact-head Windows and Linux receipts are both green and present",
     "diagnostic_hypotheses": [
-      "The self-hosted Windows runner accepted the job at the GitHub orchestration layer but its listener/worker is stalled before Set up job; this is falsifiable if workflow steps appear without repository mutation or if a later runner-health state change allows the same exact head to execute.",
-      "The AKWI-03 application candidate itself is not the current failure source because repository health and the complete Linux governed profile pass at the same exact head, while the Windows job has not begun any validation command."
+      "The remaining blocker is the Linux self-hosted runner listener rather than AKWI content or deterministic evidence; this is falsifiable if job 99329216298 acquires a nonzero runner_id and begins Set up job without repository mutation.",
+      "The AKWI-03 candidate itself is not the current failure source because source integrity, materialization, repository health, Linux validation and restored Windows validation all pass on exact head 41a5bee4726213ad8572ab194c9b36c63bee2edf."
     ],
     "retry_basis": {
-      "evidence": "Do not issue an identical rerun or churn the candidate head while job 99314405321 remains assigned with zero steps. A retry is permitted only after a material runner/environment state change, cancellation/failure terminal state, or newly observed diagnostic evidence.",
+      "evidence": "The owner-reported Windows runner restoration materially changed environment state, permitting one Windows retry. That retry succeeded and produced the previously missing Windows deterministic artifact. Do not issue another identical workflow retry while the dependent comparison job is merely unassigned; wait for or restore the required Linux runner environment.",
       "changed_since_previous": [
-        "All 20 staged source fragments and the reconstructed 1,894,257-byte CSV passed exact SHA-256 verification in run 33332294496.",
-        "Materialization run 33332324262 generated and precommit-verified 400 NPCs, 986 safe relationships and 400 provenance rows with zero private-field leaks, generated dependency promotions or invented numeric mechanics.",
-        "User-authored final validation candidate 41a5bee4726213ad8572ab194c9b36c63bee2edf passed repository health and Linux validation in run 33332830247; the only remaining gate is the assigned-but-zero-step Windows runner job."
+        "multiversal-win-01 was restored by the owner after the recorded zero-step blocker.",
+        "Fresh Windows validation job 99329132747 completed successfully on exact head 41a5bee4726213ad8572ab194c9b36c63bee2edf and uploaded deterministic artifact 9739726430.",
+        "The prior comparator missing-artifact failure is obsolete; the current comparator job 99329216298 now has both receipts available but no assigned Linux runner."
       ]
     },
     "unrelated_historical_validation_jobs_observed": 0,
@@ -100,5 +104,5 @@
       "post_merge_stale_pointer_target": 0
     }
   },
-  "next_action": "Restart or reconnect multiversal-win-01 so the already-assigned exact-head Windows validation can begin. After the runner environment changes, inspect job 99314405321 first. If it passes, require deterministic cross-platform comparison on exact head 41a5bee4726213ad8572ab194c9b36c63bee2edf, merge only that tested head, then reconcile AIOC completion. If the current job terminates non-successfully, retry only on the recorded runner-environment state change; do not churn application content."
+  "next_action": "Restore multiversal-linux-02 so queued comparison job 99329216298 can acquire the required Linux runner and compare the already-green Linux/Windows receipts. If comparison passes, merge PR #356 only at exact tested head 41a5bee4726213ad8572ab194c9b36c63bee2edf, re-read application main, then reconcile AIOC AKWI-03 to completed_verified."
 }
