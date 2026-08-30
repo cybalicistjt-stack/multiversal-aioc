@@ -6,7 +6,7 @@
   "source_program": "AKWI",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "title": "Akwi 400-NPC Library",
-  "status": "in_progress",
+  "status": "blocked_environment",
   "owner_selected": true,
   "selected_at": "2026-08-30T12:50:00-05:00",
   "started_at": "2026-08-30T12:50:00-05:00",
@@ -55,6 +55,17 @@
     "windows_status": "in_progress_zero_steps",
     "deterministic_compare_status": "waiting_on_windows"
   },
+  "blocker": {
+    "class": "runner_environment",
+    "state": "blocked_environment",
+    "runner_id": 22,
+    "runner_name": "multiversal-win-01",
+    "job_id": 99314405321,
+    "validation_run": 33332830247,
+    "candidate_head": "41a5bee4726213ad8572ab194c9b36c63bee2edf",
+    "observed_state": "GitHub assigned the Windows validation job to multiversal-win-01 and marked it in_progress, but the job has exposed zero workflow steps and no downloadable log; no AKWI validation command has started.",
+    "required_environment_change": "Restart or reconnect the existing multiversal-win-01 self-hosted GitHub Actions runner listener. Do not mutate the application candidate solely to retrigger the same stalled environment."
+  },
   "convergence_control": {
     "owner_continue_count": 5,
     "execution_cycles": 5,
@@ -89,5 +100,5 @@
       "post_merge_stale_pointer_target": 0
     }
   },
-  "next_action": "Wait on the genuine multiversal-win-01 runner-environment blocker without an identical rerun. If job 99314405321 begins and passes, require the deterministic cross-platform comparison on exact head 41a5bee4726213ad8572ab194c9b36c63bee2edf, merge only that tested head, then reconcile AIOC completion. If the job reaches a terminal non-success state or new runner evidence appears, diagnose that changed environment state before any retry."
+  "next_action": "Restart or reconnect multiversal-win-01 so the already-assigned exact-head Windows validation can begin. After the runner environment changes, inspect job 99314405321 first. If it passes, require deterministic cross-platform comparison on exact head 41a5bee4726213ad8572ab194c9b36c63bee2edf, merge only that tested head, then reconcile AIOC completion. If the current job terminates non-successfully, retry only on the recorded runner-environment state change; do not churn application content."
 }
