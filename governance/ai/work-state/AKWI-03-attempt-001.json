@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.3.0",
+  "work_item_id": "AKWI-03",
+  "attempt_id": "AKWI-03-attempt-001",
+  "track": "content-integration",
+  "source_program": "AKWI",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "title": "Akwi 400-NPC Library",
+  "status": "in_progress",
+  "owner_selected": true,
+  "selected_at": "2026-08-30T12:50:00-05:00",
+  "started_at": "2026-08-30T12:50:00-05:00",
+  "implementation_branch": "integration/akwi-03-npc-library",
+  "implementation_authority": true,
+  "application_baseline_sha": "0c12b20b96add5aa2a82583d7bd33cb86f08c8f8",
+  "aioc_baseline_sha": "29376e3472dd9c7eaba461760729df6c6a69a5c9",
+  "objective": "Publish exactly 400 owner-authorized Akwi NPC identities through the existing P-A2-NPC Universal Library path while preserving proposal/canon status, resolving only already-governed Species/homeworld/background references, excluding GM/private dossier content from the allow-all client corpus, and inventing no rules-profile mechanics or generated dependency objects.",
+  "authorization_basis": "Owner explicitly authorized the NPC library and then instructed Continue after verified AKWI-02 completion.",
+  "preserved_boundaries": [
+    "Import authorization does not convert proposed NPC content to source canon.",
+    "Exactly 400 source npc_id identities are in scope.",
+    "character_private_knowledge and gm_only_secret remain outside the A2 runtime until a role-aware projection exists.",
+    "No generated setting, faction, location, birthplace, or other dependency object is promoted merely because an NPC references it.",
+    "No invented HP, AC, speed, level, proficiency, initiative, resources, action math, or archetype math.",
+    "Species resolves to species.akwi and is not copied into NPC mechanics.",
+    "Background references remain candidate/proposed selections and do not mutate authoritative Character state.",
+    "SSA software-track authority remains unchanged."
+  ],
+  "source_evidence": {
+    "package": "akwi_game_integration_package_v0.1.zip",
+    "package_sha256": "f5f065d893369947dc4b62f4bb54fc760671bb68f08030eb578d7429bb83a2ca",
+    "npc_table": "akwi_npc_suite_400.csv",
+    "npc_table_sha256": "6beb67730a0c2a6051501dd1d78d5a1d420127f1ae281a2eac05e7fbccee7b34",
+    "row_count": 400
+  },
+  "convergence_control": {
+    "owner_continue_count": 1,
+    "execution_cycles": 1,
+    "repair_cycles": 0,
+    "no_progress_cycles": 0,
+    "diagnostic_mode": false,
+    "reruns_without_changed_evidence": 0,
+    "unrelated_historical_validation_jobs_observed": 0
+  },
+  "next_action": "Add failing AKWI-03 acceptance tests/profile first, verify the red failure is missing NPC runtime content, then generate and wire the bounded 400-NPC public-safe corpus, relationships and provenance."
+}
