@@ -1,7 +1,7 @@
 # SSA — Semantic Spatial Authoring
 
 **Program ID:** SSA  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH SSA-05; SSA-06 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH SSA-06; SSA-07 SELECTED_NOT_STARTED  
 **Activation:** after ISE-08  
 **Successor:** WCI-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,9 +9,11 @@
 
 ## Current selection
 
-SSA-05 — Research, Institutional & Restricted Site Infrastructure — is `completed_verified` through application PR #352 and application merge `f8dcf3262d1d83778855bc75c601fa7288012cac`. Exact validated head `8a97ff5c75f3e41f4cc316b8db61401a683b9e7d` passed current-family run `33306056317`: selector/Repository Health `99242715407`, self-hosted Linux `99242730452`, self-hosted Windows `99242730422`, and deterministic comparison `99242799034`. Linux and Windows produced matching deterministic receipt SHA-256 `d8cf5c3c905ea842cfe4efdc2e6797b4f8d4383400e30ff84da7370fc9dc8e04`, with zero historical predecessor fanout.
+SSA-06 — MAI/ISE Asset Mapping, Snapping & Semantic Construction Roles — is `completed_verified` through application PR #353 and application merge `88cb2b44b216fcb661c3d8199bff7b06d7b1db50`. Exact validated head `db13a705ea83e9edb27707c862bd9933995c0db9` passed current-family run `33312306572`: selector/Repository Health `99259457518`, self-hosted Linux `99259472471`, self-hosted Windows `99259472555`, and deterministic comparison `99259552705`. Linux and Windows produced matching deterministic receipt SHA-256 `c884ddd13871099784bfa08e426cc1f57cc0a6dd9d6998aac9bbd531d780beea`, with zero historical predecessor fanout.
 
-SSA-06 — MAI/ISE Asset Mapping, Snapping & Semantic Construction Roles — is `in_progress` under the current owner Continue on registered application branch `integration/ssa-06-mai-ise-asset-mapping-snapping-semantic-construction-roles`, exact baseline `f8dcf3262d1d83778855bc75c601fa7288012cac`. The tranche maps permitted tilesets, images, structured map imports and placeables into semantic construction-role projections; supports attachment/snapping, replacement-asset and imported wall/door/room metadata suggestions; preserves governed imported semantic metadata as evidence; and keeps pixels, visual adjacency and generated recognition/snapping output non-authoritative until confirmation. MAI, completed ISE, Asset, Permission/entitlement, Scene and provider/media-rights owners remain canonical. Provider credentials/secrets, commercial media bytes, entitlement inference and redistribution are excluded. Hidden/GM-only construction semantics and protected cardinality are filtered before projection; consequential role/suggestion information requires accessible nonvisual representation; consequential owner changes remain versioned/idempotent proposal-only. No durable SSA-06 persistence or migration `0022` is authorized.
+SSA-06 delivered permission-filtered mappings from permitted tilesets, images, structured map imports and placeables into semantic construction-role projections plus snapping, attachment, replacement and imported-structure-metadata suggestions. Governed imported metadata and confirmed authoring may establish mappings; generated role/snapping/attachment/replacement output remains assistance until confirmation where uncertain. Pixels, visual adjacency and recognition output remain non-authoritative. MAI, completed ISE, Scene, Asset, Permission/entitlement and provider/media-rights owners remain canonical. Hidden/GM-only construction semantics and protected cardinality are filtered before projection, consequential mappings/suggestions require accessible nonvisual summaries, and consequential confirmation remains versioned/idempotent proposal-only. No durable persistence, provider/media storage, entitlement inference, redistribution or migration `0022` was introduced.
+
+SSA-07 — GM Construction Assistance & Low-Friction Spatial Authoring — is now selected `selected_not_started` only. It has no implementation branch or implementation authority. A future governed tranche may provide recognize/suggest/confirm workflows for rooms, boundaries, openings, paths and structural roles; fast manual correction; reusable construction kits; and unusual-space authoring while keeping uncertain recognition and generated assistance proposal-first until confirmed. No persistence or migration is reserved at selection.
 
 ## Purpose
 
