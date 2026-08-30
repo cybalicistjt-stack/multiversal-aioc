@@ -1,0 +1,127 @@
+{
+  "schema_version": "0.3.0",
+  "work_item_id": "AKWI-03",
+  "attempt_id": "AKWI-03-attempt-001",
+  "track": "content-integration",
+  "source_program": "AKWI",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "title": "Akwi 400-NPC Library",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_at": "2026-08-30T12:50:00-05:00",
+  "started_at": "2026-08-30T12:50:00-05:00",
+  "completed_at": "2026-08-30T17:35:58-05:00",
+  "implementation_branch": "integration/akwi-03-npc-library",
+  "implementation_authority": false,
+  "application_baseline_sha": "0c12b20b96add5aa2a82583d7bd33cb86f08c8f8",
+  "tested_application_head_sha": "41a5bee4726213ad8572ab194c9b36c63bee2edf",
+  "application_pr": 356,
+  "application_merge_sha": "5110a564d6541d3e81a321339fe5173bad52765b",
+  "validation_run_id": 33332830247,
+  "repository_health_job": 99329132794,
+  "linux_job": 99329133213,
+  "windows_job": 99329132747,
+  "deterministic_compare_job": 99329216298,
+  "deterministic_receipt_sha256": "fdf43933d64ebc08bb9cb2e356b667c39a5717c27a217c8cceb991a89e2ba93c",
+  "comparison_artifact_id": 9739942238,
+  "comparison_artifact_digest": "sha256:fcc0e4921444f2a7f8238cfa26c46f6ece24004f148732aa387441557361b2a1",
+  "aioc_baseline_sha": "29376e3472dd9c7eaba461760729df6c6a69a5c9",
+  "objective": "Publish exactly 400 owner-authorized Akwi NPC identities through the existing P-A2-NPC Universal Library path while preserving proposal/canon status, resolving only already-governed Species/homeworld/background references, excluding GM/private dossier content from the allow-all client corpus, and inventing no rules-profile mechanics or generated dependency objects.",
+  "authorization_basis": "Owner explicitly authorized the NPC library and instructed continued execution through AKWI-03.",
+  "preserved_boundaries": [
+    "Import authorization did not convert proposed NPC content to source canon.",
+    "Exactly 400 source npc_id identities were imported.",
+    "character_private_knowledge and gm_only_secret remain outside the A2 runtime until a role-aware projection exists.",
+    "No generated setting, faction, location, birthplace, or other dependency object was promoted merely because an NPC referenced it.",
+    "No invented HP, AC, speed, level, proficiency, initiative, resources, action math, or archetype math was introduced.",
+    "Species resolves to species.akwi and is not copied into NPC mechanics.",
+    "Background references remain candidate/proposed selections and do not mutate authoritative Character state.",
+    "SSA software-track authority remained unchanged."
+  ],
+  "source_evidence": {
+    "package": "akwi_game_integration_package_v0.1.zip",
+    "package_sha256": "f5f065d893369947dc4b62f4bb54fc760671bb68f08030eb578d7429bb83a2ca",
+    "npc_table": "akwi_npc_suite_400.csv",
+    "npc_table_sha256": "6beb67730a0c2a6051501dd1d78d5a1d420127f1ae281a2eac05e7fbccee7b34",
+    "row_count": 400,
+    "source_integrity_run": 33332294496,
+    "materialization_run": 33332324262,
+    "materialization_result": {
+      "npc_count": 400,
+      "relationship_count": 986,
+      "provenance_count": 400,
+      "private_runtime_fields": 0,
+      "generated_dependency_objects_promoted": 0,
+      "invented_numeric_mechanics": 0
+    }
+  },
+  "verification": {
+    "repository_health": "pass",
+    "linux": "pass",
+    "windows": "pass",
+    "deterministic_cross_platform_comparison": "pass",
+    "historical_predecessor_fanout": 0,
+    "live_application_main_after_merge": "5110a564d6541d3e81a321339fe5173bad52765b"
+  },
+  "environment_incident_history": [
+    {
+      "class": "runner_environment",
+      "signature": "multiversal-win-01 accepted the original exact-head Windows validation job but exposed zero workflow steps; owner restored the existing Windows runner listener, after which a changed-evidence retry completed successfully.",
+      "resolved": true,
+      "resolution_evidence": "Windows job 99329132747 completed PASS and uploaded validation-core-AKWI-03-windows."
+    },
+    {
+      "class": "runner_environment",
+      "signature": "The deterministic comparison queued with runner_id 0 while multiversal-linux-02 was unavailable; owner restored the existing Linux runner listener.",
+      "resolved": true,
+      "resolution_evidence": "Comparator job 99329216298 completed PASS on exact candidate 41a5bee4726213ad8572ab194c9b36c63bee2edf."
+    }
+  ],
+  "convergence_control": {
+    "owner_continue_count": 6,
+    "execution_cycles": 6,
+    "repair_cycles": 4,
+    "no_progress_cycles": 0,
+    "diagnostic_mode": false,
+    "last_failure_class": "runner_environment",
+    "last_failure_signature": "Self-hosted Windows and later Linux listeners were unavailable during final validation; both environment blockers were resolved without mutating the tested application candidate.",
+    "diagnostic_hypotheses": [
+      "The self-hosted runner listener state, not AKWI-03 code, caused the zero-step Windows job; this was confirmed when the same exact candidate passed after the owner restored the runner.",
+      "The comparator queue with runner_id 0 was caused by Linux listener unavailability; this was confirmed when the same queued comparator ran and passed after the owner restored multiversal-linux-02."
+    ],
+    "retry_basis": {
+      "evidence": "Retries occurred only after material runner/environment state changes. The final exact application candidate was not churned after source/materialization convergence and passed all required final gates.",
+      "changed_since_previous": [
+        "The owner restored multiversal-win-01 before the successful Windows retry.",
+        "The owner restored multiversal-linux-02 before the deterministic comparison executed.",
+        "No application mutation occurred between the final exact-head Linux, Windows, and comparison evidence."
+      ]
+    },
+    "unrelated_historical_validation_jobs_observed": 0,
+    "reruns_without_changed_evidence": 0,
+    "post_merge_stale_pointer_incidents": 0,
+    "same_cycle_completed": false,
+    "completed_within_two_cycles": false,
+    "service_objective": {
+      "ordinary_tranche_single_continue_target_percent": 80,
+      "ordinary_tranche_two_continue_target_percent": 95,
+      "max_execution_cycles_without_genuine_blocker": 2,
+      "unrelated_historical_validation_jobs_target": 0,
+      "reruns_without_changed_evidence_target": 0,
+      "post_merge_stale_pointer_target": 0
+    }
+  },
+  "completion_evidence": {
+    "application_pr": 356,
+    "validated_head": "41a5bee4726213ad8572ab194c9b36c63bee2edf",
+    "validation_run": 33332830247,
+    "repository_health_job": 99329132794,
+    "linux_job": 99329133213,
+    "windows_job": 99329132747,
+    "deterministic_compare_job": 99329216298,
+    "deterministic_receipt_sha256": "fdf43933d64ebc08bb9cb2e356b667c39a5717c27a217c8cceb991a89e2ba93c",
+    "historical_profile_fanout": 0,
+    "application_merge_sha": "5110a564d6541d3e81a321339fe5173bad52765b"
+  },
+  "next_action": "AKWI-03 is completed_verified and implementation authority is retired. Any role-aware GM/private NPC projection, generated dependency promotion, or authoritative NPC rules-profile mechanics requires a separately governed work item. Continue the pre-existing active SSA software roadmap from canonical governance rather than selecting a new Akwi implementation tranche implicitly."
+}
