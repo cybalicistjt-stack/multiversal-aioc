@@ -6,33 +6,50 @@
   "source_program": "AKWI",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "title": "Akwi Lore & Culture Pack",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
   "selected_at": "2026-08-30T12:05:00-05:00",
   "started_at": "2026-08-30T12:05:00-05:00",
+  "completed_at": "2026-08-30T12:21:00-05:00",
   "implementation_branch": "integration/akwi-02-lore-culture-pack",
   "implementation_authority": true,
   "application_baseline_sha": "a69d12843a49d7903a81ea2dd942fd5e5cb719c2",
+  "tested_application_head_sha": "33e274b566054e9c6cf326f91f858bd615006ace",
+  "application_pr": 355,
+  "application_merge_sha": "0c12b20b96add5aa2a82583d7bd33cb86f08c8f8",
+  "validation_run_id": 33324968994,
   "aioc_baseline_sha": "884f0833a0f0a86b0329244328462918f1a5564c",
   "objective": "Publish the source-backed/accepted Akwi lore, culture, background, homeworld and bounded Twil layer through the existing A2 runtime without promoting proposed language or generated NPC scaffolding.",
   "authorization_basis": "Owner instructed Continue after verified AKWI-01 and separately authorized the NPC library.",
   "preserved_boundaries": [
-    "Only source-backed/accepted AKWI-02 rows enter governed runtime content.",
-    "Proposed/inferred Twil lexemes and phrasebook rows remain excluded.",
+    "Exactly 33 source-backed/accepted AKWI-02 records entered governed runtime content.",
+    "Proposed/inferred Twil lexemes and all phrasebook rows remain excluded.",
     "Twil is not an automatic inherited Species grant.",
     "Background mechanics remain unresolved until a rules profile maps them.",
-    "Inferred homeworld regions and proposed diaspora umbrella remain excluded.",
-    "AKWI-03 begins only from the verified AKWI-02 merge baseline.",
+    "Inferred homeworld regions and proposed diaspora umbrella remain excluded as objects and stable-ID references.",
+    "AKWI-03 begins only from application merge 0c12b20b96add5aa2a82583d7bd33cb86f08c8f8 and the verified AKWI-02 AIOC completion merge.",
     "SSA software-track authority remains unchanged."
   ],
+  "verification": {
+    "repository_health": "pass",
+    "linux": "pass",
+    "windows": "pass",
+    "deterministic_cross_platform_comparison": "pass",
+    "historical_predecessor_fanout": 0
+  },
   "convergence_control": {
     "owner_continue_count": 1,
-    "execution_cycles": 1,
-    "repair_cycles": 0,
+    "execution_cycles": 3,
+    "repair_cycles": 2,
     "no_progress_cycles": 0,
     "diagnostic_mode": false,
+    "last_failure_class": "focused-test-runtime-path",
+    "last_failure_signature": "AKWI-02 focused test resolved import.meta.url to /src instead of package cwd",
+    "diagnostic_hypotheses": [
+      "Vitest transforms import.meta.url for this A2-local test; package cwd is the deterministic fixture root."
+    ],
     "reruns_without_changed_evidence": 0,
     "unrelated_historical_validation_jobs_observed": 0
   },
-  "next_action": "Add red AKWI-02 source-scope tests, then publish the bounded lore corpus, relationships and provenance through the authorization-first A2 runtime path."
+  "next_action": "Begin Owner-authorized AKWI-03 NPC Library from the verified AKWI-02 application and AIOC merge baselines; import the 400 NPCs without promoting generated setting/faction/location dependencies or leaking private/GM-only fields into public A2 projection."
 }
