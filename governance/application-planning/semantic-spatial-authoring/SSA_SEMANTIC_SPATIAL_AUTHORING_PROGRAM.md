@@ -1,7 +1,7 @@
 # SSA — Semantic Spatial Authoring
 
 **Program ID:** SSA  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH SSA-04; SSA-05 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH SSA-05; SSA-06 SELECTED_NOT_STARTED  
 **Activation:** after ISE-08  
 **Successor:** WCI-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,11 +9,11 @@
 
 ## Current selection
 
-SSA-04 — Functional Spatial Zones, Ecology & Recurring Use — is `completed_verified` through application PR #351 and application merge `7f724c3c4fb36812793511509c639212440827b9`. Exact validated head `1054cb1f2c8cb02f60c52ea160c72faf900da223` passed current-family run `33304348024`: selector/Repository Health `99238106995`, self-hosted Linux `99238119099`, self-hosted Windows `99238119144`, and deterministic comparison `99238188868`. Linux and Windows produced matching deterministic receipt SHA-256 `f72e1cfee29279224a1889ea8e25a946f5a608091471976e27a773432f824b0f`, with zero historical predecessor fanout.
+SSA-05 — Research, Institutional & Restricted Site Infrastructure — is `completed_verified` through application PR #352 and application merge `f8dcf3262d1d83778855bc75c601fa7288012cac`. Exact validated head `8a97ff5c75f3e41f4cc316b8db61401a683b9e7d` passed current-family run `33306056317`: selector/Repository Health `99242715407`, self-hosted Linux `99242730452`, self-hosted Windows `99242730422`, and deterministic comparison `99242799034`. Linux and Windows produced matching deterministic receipt SHA-256 `d8cf5c3c905ea842cfe4efdc2e6797b4f8d4383400e30ff84da7370fc9dc8e04`, with zero historical predecessor fanout.
 
-SSA-04 delivered authorization-first functional spatial-zone and recurring-use projections over stable SSA semantic references, with optional governed alignment to completed SSA-03 topology. It supports migration corridors, seasonal paths, sanctuaries, nesting/gathering/hunting/use zones, protected areas, hazard fields, trade corridors and recurring-use zones. Imported governed metadata and confirmed authoring may establish projected semantics; generated/inferred semantics remain assistance-only. Recurring-use semantics describe spatial meaning without asserting population counts, spawn state, Research progression, Exploration state or World/Reality mutation. Canonical Creature ecology, World/Reality, Exploration, Research, Scene and Permission ownership remains intact; no duplicate owner ledger, durable persistence or migration `0022` was introduced.
+SSA-05 delivered typed research/institutional/restricted-site infrastructure projections over authorized SSA semantic references. It covers research hubs, field sites, remote stations, restricted facilities, observatories, laboratories and specialized infrastructure. Access/credential, hazard, ownership, Project and information relationships carry external owner evidence only; they do not make access decisions or mutate Research progression, Project, hazard, World/Reality, Scene or information state. Imported governed metadata and confirmed authoring may establish projected semantics; generated/inferred infrastructure remains assistance-only until confirmation. Restricted-site inventory/cardinality remains permission-filtered, consequential infrastructure retains accessible nonvisual semantics, confirmation remains versioned/idempotent proposal-only, and no durable persistence or migration `0022` was introduced.
 
-SSA-05 — Research, Institutional & Restricted Site Infrastructure — is `in_progress` under the current owner Continue on registered application branch `integration/ssa-05-research-institutional-restricted-site-infrastructure`, exact baseline `7f724c3c4fb36812793511509c639212440827b9`. The bounded tranche defines research hubs, field sites, remote stations, restricted facilities, observatories, laboratories and specialized infrastructure as spatial semantic projections over canonical owner identities. Access/credential, hazard, ownership, Project and information relationships carry external owner evidence only; they do not make access decisions or mutate Research progression, Project, hazard, World/Reality, Scene or information state. Imported governed metadata and confirmed authoring may establish projected semantics; generated or inferred site/infrastructure semantics remain assistance-only until confirmation. Authorization and hidden/restricted-site cardinality filtering precede projection, accessible nonvisual infrastructure semantics are required, consequential owner changes remain proposal-only, and no durable persistence or migration `0022` is authorized.
+SSA-06 — MAI/ISE Asset Mapping, Snapping & Semantic Construction Roles — is now selected `selected_not_started` only. It has no implementation branch or implementation authority. A future governed tranche must map permitted tilesets, images, structured map imports and placeables into semantic construction roles; support attachment/snapping suggestions, replacement assets and governed imported wall/door/room metadata without turning pixels into game truth; preserve MAI/ISE/Asset/Permission/provider-media authority; and keep generated construction-role suggestions assistance-only until confirmed. No persistence or migration is reserved at selection.
 
 ## Purpose
 
@@ -66,4 +66,6 @@ Recovered basis: RDC-06 / RD-07 / RD-08 and RDC-07 / RD-14 from the recovered mi
 - Non-Euclidean or vertical support cannot bypass permission, Transition, Portal, Reality, movement or owner authority.
 - Functional zones cannot silently replace Creature ecology, World/Reality, Exploration or Research authority.
 - Infrastructure semantics cannot replace Research progression, Project, credential/access-control, hazard or information ownership.
+- Asset mapping and snapping cannot turn pixels, image adjacency or visual recognition into game truth; governed semantic metadata or confirmation is required.
+- Provider credentials, secrets, commercial media bytes, entitlement inference and redistribution remain outside SSA authority unless explicitly governed by owning systems.
 - Accessible nonvisual representations must exist for consequential spatial state.
