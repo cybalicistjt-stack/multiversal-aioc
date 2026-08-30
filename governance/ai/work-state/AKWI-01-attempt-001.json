@@ -1,0 +1,84 @@
+{
+  "schema_version": "0.3.0",
+  "work_item_id": "AKWI-01",
+  "attempt_id": "AKWI-01-attempt-001",
+  "track": "content-integration",
+  "source_program": "AKWI",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "title": "Playable Akwi Species Core",
+  "status": "completed_verified",
+  "owner_selected": true,
+  "selected_at": "2026-08-30T10:56:58-05:00",
+  "started_at": "2026-08-30T10:56:58-05:00",
+  "completed_at": "2026-08-30T11:58:40-05:00",
+  "implementation_branch": "integration/akwi-01-playable-species-core",
+  "implementation_authority": true,
+  "application_baseline_sha": "88cb2b44b216fcb661c3d8199bff7b06d7b1db50",
+  "aioc_baseline_sha": "60f75d15eb7d197dde2abffccb7a071cbea321f5",
+  "implementation_head_sha": "148364c8d4a9ed6005cd8df3e913447de4c76e9c",
+  "application_pr": 354,
+  "application_merge_sha": "a69d12843a49d7903a81ea2dd942fd5e5cb719c2",
+  "objective": "Integrate Akwi as a governed playable Species at the current A2/A4/content-contract boundary, preserving source truth, owner-approved sensory and Burst rulings, provenance and visibility while avoiding Akwi-specific UI or a fabricated rules engine.",
+  "authorization_basis": "Owner explicitly approved hearing, magnetic orientation, pressure/airflow, Burst/recovery balance delegation and Spring-Leg jumping semantics and instructed: Continue with akwi01.",
+  "preserved_boundaries": [
+    "SSA-07 remains a separate software-track item; AKWI-01 did not modify its authority state.",
+    "Source-established facts, Owner-approved rulings, implementation policy and unresolved/proposed material remain distinct evidence classes.",
+    "No 400-NPC bulk import, generated dependency canonization, Twil/Twii bulk integration, invented lineage/Form material or broad lore import was included in AKWI-01.",
+    "No Akwi-specific Character Creation or Universal Object presentation path was created; existing generic A2/A4 seams are reused.",
+    "The placeholder rules runtime is not represented as executing live exhaustion or injury; deterministic contracts preserve the future runtime seam.",
+    "No universal die modifier was invented for the approximately 20% hearing advantage.",
+    "No exact jump multiplier or unsupported partial-recovery clock was invented.",
+    "Hidden, private, proposed, GM-only and unresolved biology remains subject to authorization-first projection boundaries."
+  ],
+  "implemented_scope": {
+    "governed_records": 16,
+    "species_records": 1,
+    "reusable_feature_records": 15,
+    "species_feature_relationships": 15,
+    "provenance_records": 16,
+    "stable_species_id": "species.akwi",
+    "generic_species_profile": "P-A2-SPECIES",
+    "generic_character_selection_category": "species-or-form",
+    "supplemental_corpus_integrity": "duplicate stable IDs block loading",
+    "magnetic_orientation": "stable field >= Earth strength + stopped + calm/focused + no meaningful interference; direction only",
+    "burst_policy": "uses 1-2 safe; 3-6 escalating strain; 7+ severe overload with injury-risk check; ideal full recovery approximately 48 hours; no partial-recovery formula",
+    "live_exhaustion_injury_runtime": false
+  },
+  "validation": {
+    "workflow": "Validate Current Family",
+    "workflow_run_id": 33323890646,
+    "candidate_head": "148364c8d4a9ed6005cd8df3e913447de4c76e9c",
+    "repository_health": "PASS",
+    "profile_selector": "PASS_EXPLICIT_INTEGRATION",
+    "linux_shared_validation": "PASS",
+    "windows_shared_validation": "PASS",
+    "deterministic_cross_platform_comparison": "PASS",
+    "unrelated_historical_validation_jobs_observed": 0
+  },
+  "repair_history": [
+    {
+      "failure_class": "checkpoint-baseline-identity-mismatch",
+      "failure_signature": "AKWI-01 work-state application_baseline_sha did not equal isolated application branch head",
+      "repair": "Corrected the full baseline SHA before application validation."
+    },
+    {
+      "failure_class": "focused-test-fixture-path-resolution",
+      "failure_signature": "Vitest resolved import.meta.url fixture reads to /src/a2/data/runtime and all five AKWI-01 tests failed ENOENT on Linux run 33323820735",
+      "repair": "Resolved fixture files from the client workspace process.cwd(); changed evidence produced fresh exact-head run 33323890646."
+    }
+  ],
+  "convergence_control": {
+    "owner_continue_count": 2,
+    "execution_cycles": 3,
+    "repair_cycles": 2,
+    "no_progress_cycles": 0,
+    "diagnostic_mode": false,
+    "last_failure_class": null,
+    "last_failure_signature": null,
+    "diagnostic_hypotheses": [],
+    "reruns_without_changed_evidence": 0,
+    "unrelated_historical_validation_jobs_observed": 0
+  },
+  "completion_claim": "AKWI-01 is complete and verified at application merge a69d12843a49d7903a81ea2dd942fd5e5cb719c2. This completion means governed playable Species content, generic A2 discovery/profile integration, generic A4 selection compatibility, provenance/relationships, and deterministic physiology policy contracts are implemented. It does not claim the placeholder rules runtime applies live exhaustion/injury, nor that AKWI-02 lore/culture or AKWI-03 NPC-library content is implemented.",
+  "next_action": "If the owner continues Akwi integration, bound AKWI-02 separately for approved Akwi lore/culture/Twil/background/homeworld objects; do not fold the 400-NPC library into that tranche unless explicitly authorized."
+}
