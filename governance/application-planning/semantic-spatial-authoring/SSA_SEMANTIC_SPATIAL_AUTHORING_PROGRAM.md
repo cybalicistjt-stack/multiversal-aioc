@@ -1,7 +1,7 @@
 # SSA — Semantic Spatial Authoring
 
 **Program ID:** SSA  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH SSA-07; SSA-08 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH SSA-07; SSA-08 IN_PROGRESS  
 **Activation:** after ISE-08  
 **Successor:** WCI-01  
 **Owner and final authority:** John Brandon Turner  
@@ -13,9 +13,7 @@ SSA-07 — GM Construction Assistance & Low-Friction Spatial Authoring — is `c
 
 SSA-07 delivered authorization-first recognize/suggest/confirm projections for rooms, boundaries, openings, paths and structural roles; fast manual correction through versioned/idempotent owner-operation proposals; permission-filtered reusable construction kits; and unusual-space authoring over completed topology semantics. Governed semantic metadata and confirmed authoring may project, while unconfirmed recognition, generated assistance, pixels, visual adjacency and image recognition remain non-authoritative until confirmation where uncertain. MAI, ISE, Scene, Asset, Permission/entitlement, provider/media-rights and completed SSA owners remain canonical. Hidden/GM-only construction semantics/cardinality are filtered before projection, consequential actions require nonvisual summaries, and no canonical mutation, durable SSA-07 persistence, provider-media authority, migration `0022` or successor ownership was introduced.
 
-The TDD acceptance was observed RED before production code at exact head `13913c3d158f73fcf4c6ceaf1bb00c5b0a1376f1` in run `33340313808`, where client typecheck failed because the SSA-07 contract and accessible panel did not exist. Three evidence-driven validation-contract repairs were required across governed-start/profile/verifier metadata, and diagnostic mode was entered. The connected ready-for-review mutation later failed due a GraphQL schema defect, so draft PR #357 was replaced administratively by non-draft PR #358 at the identical already-validated head. GitHub automatically emitted unchanged-head run `33340571100`; that convergence target miss is recorded rather than hidden.
-
-SSA-08 — Spatial State, History, Era & Event Change — is `selected_not_started` only from exact application main `61ff10cd825f925caf6f898e03f623c87be73ca7`. It will let governed Events alter routes, structures, access, migration, sanctuaries, research sites and spatial availability across eras while preserving history and avoiding duplicate World/Event ledgers. No implementation branch, source-mutation authority, durable persistence or migration is granted at selection. A future owner `Continue` and green governed start are required.
+SSA-08 — Spatial State, History, Era & Event Change — is now bounded `in_progress` from exact application baseline `61ff10cd825f925caf6f898e03f623c87be73ca7` on branch `integration/ssa-08-spatial-state-history-era-event-change`. The bounded contract projects governed Event-linked changes for routes, structures, access, migration, sanctuaries, research sites and spatial availability across eras while preserving historical state. World/Reality and Event owners remain authoritative; Scene, MAI, ISE, Exploration, Research, Creature ecology, Project, Permission/entitlement and provider/media-rights remain canonical. Geometry, semantic structure, topology, historical state and live owner state remain distinct. Hidden history/cardinality is filtered before projection and consequential state requires nonvisual summaries. No durable SSA-08 ledger, canonical owner mutation or migration `0022` is authorized.
 
 ## Purpose
 
@@ -60,14 +58,15 @@ Recovered basis: RDC-06 / RD-07 / RD-08 and RDC-07 / RD-14 from the recovered mi
 ## Invariants
 
 - World/Reality and Scene owners remain authoritative for their state.
+- Event owners remain authoritative for governed historical and live Event state.
 - MAI owns visual/map asset interoperability; completed ISE owns the native playable Scene surface.
-- Spatial semantics do not become a second Research, Creature, Project, Exploration, construction, navigation, Reality, spawn/population or credential ledger.
-- Generated/inferred structure, topology, functional-use or infrastructure semantics remain assistance until confirmed where source confidence is insufficient.
-- Geometry, semantic structure, topology and live state remain distinct.
+- Spatial semantics do not become a second Research, Creature, Project, Exploration, construction, navigation, Reality, Event, spawn/population or credential ledger.
+- Generated/inferred structure, topology, functional-use, infrastructure or historical change semantics remain assistance until confirmed where source confidence is insufficient.
+- Geometry, semantic structure, topology, historical state and live state remain distinct.
 - Visual adjacency, distance, proximity and pixels are never structural or topological truth by themselves.
 - Non-Euclidean or vertical support cannot bypass permission, Transition, Portal, Reality, movement or owner authority.
-- Functional zones cannot silently replace Creature ecology, World/Reality, Exploration or Research authority.
-- Infrastructure semantics cannot replace Research progression, Project, credential/access-control, hazard or information ownership.
-- Asset mapping and snapping cannot turn pixels, image adjacency or visual recognition into game truth; governed semantic metadata or confirmation is required.
+- Functional zones and historical route changes cannot silently replace Creature ecology, World/Reality, Exploration or Research authority.
+- Infrastructure and research-site semantics cannot replace Research progression, Project, credential/access-control, hazard or information ownership.
+- Event-linked spatial projections cannot silently mutate canonical owner state or erase preserved history.
 - Provider credentials, secrets, commercial media bytes, entitlement inference and redistribution remain outside SSA authority unless explicitly governed by owning systems.
 - Accessible nonvisual representations must exist for consequential spatial state.
