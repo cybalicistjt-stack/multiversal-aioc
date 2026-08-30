@@ -1,7 +1,7 @@
 # SSA — Semantic Spatial Authoring
 
 **Program ID:** SSA  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH SSA-03; SSA-04 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH SSA-03; SSA-04 IN_PROGRESS  
 **Activation:** after ISE-08  
 **Successor:** WCI-01  
 **Owner and final authority:** John Brandon Turner  
@@ -13,7 +13,7 @@ SSA-03 — Caves, Irregular Geometry & Non-Euclidean Topology — is `completed_
 
 SSA-03 delivered authorized cave, irregular-space and non-Euclidean topology projections over SSA-01 stable references and SSA-02 structural semantics. It composes shaft-space from an existing SSA-02 shaft primitive, keeps geometry distinct from topology, keeps inferred topology assistance-only until confirmation, permits authored non-Euclidean connectivity without requiring Euclidean adjacency, and requires Transition/Portal/Reality/Permission/movement or owner validation before consequential traversal. Hidden topology and protected cardinality remain filtered, accessible nonvisual route/topology semantics remain required, and no parallel navigation/Reality ledger, durable persistence or migration `0022` was introduced.
 
-SSA-04 — Functional Spatial Zones, Ecology & Recurring Use — is now selected `selected_not_started` only. It has no implementation branch or implementation authority. A future governed tranche must represent migration corridors, seasonal paths, sanctuaries, nesting/gathering/hunting/use zones, protected areas, hazard fields, trade/use corridors and other persistent spatial behaviors as typed world relationships rather than spawn-table prose, while preserving canonical World/Reality, Scene, Exploration, Creature ecology, Research and Permission ownership. Generated or inferred zone/use semantics remain assistance until confirmed where certainty is insufficient. No persistence or migration is reserved at selection.
+SSA-04 — Functional Spatial Zones, Ecology & Recurring Use — is `in_progress` under owner Continue `2026-08-30T04:23:00-05:00` on registered application branch `integration/ssa-04-functional-spatial-zones-ecology-recurring-use`, exact baseline `f20531956ff7f0596f98ada6426344f692823cf9`. The bounded tranche defines typed migration corridors, seasonal paths, sanctuaries, nesting/gathering/hunting/use zones, protected areas, hazard fields, trade corridors and recurring-use zones as spatial semantic projections over canonical owner identities. Imported governed metadata and confirmed authoring may establish projected semantics; generated or inferred zone/use semantics remain assistance-only until confirmation. SSA-04 may align with completed SSA-03 topology but cannot redefine topology or create Creature ecology, spawn/population, World/Reality, Exploration, Research or Scene ledgers. Consequential owner changes remain proposal-only, authorization and hidden-cardinality filtering precede projection, accessible nonvisual spatial-use semantics are required, and no durable persistence or migration `0022` is authorized.
 
 ## Purpose
 
