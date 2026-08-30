@@ -31,16 +31,63 @@
     "package_sha256": "f5f065d893369947dc4b62f4bb54fc760671bb68f08030eb578d7429bb83a2ca",
     "npc_table": "akwi_npc_suite_400.csv",
     "npc_table_sha256": "6beb67730a0c2a6051501dd1d78d5a1d420127f1ae281a2eac05e7fbccee7b34",
-    "row_count": 400
+    "row_count": 400,
+    "source_integrity_run": 33332294496,
+    "materialization_run": 33332324262,
+    "materialization_result": {
+      "npc_count": 400,
+      "relationship_count": 986,
+      "provenance_count": 400,
+      "private_runtime_fields": 0,
+      "generated_dependency_objects_promoted": 0,
+      "invented_numeric_mechanics": 0
+    }
+  },
+  "current_validation": {
+    "application_pr": 356,
+    "candidate_head": "41a5bee4726213ad8572ab194c9b36c63bee2edf",
+    "validation_run": 33332830247,
+    "repository_health_job": 99314388395,
+    "linux_job": 99314405268,
+    "windows_job": 99314405321,
+    "repository_health_status": "success",
+    "linux_status": "success",
+    "windows_status": "in_progress_zero_steps",
+    "deterministic_compare_status": "waiting_on_windows"
   },
   "convergence_control": {
-    "owner_continue_count": 1,
-    "execution_cycles": 1,
-    "repair_cycles": 0,
+    "owner_continue_count": 5,
+    "execution_cycles": 5,
+    "repair_cycles": 4,
     "no_progress_cycles": 0,
-    "diagnostic_mode": false,
+    "diagnostic_mode": true,
+    "last_failure_class": "runner_environment",
+    "last_failure_signature": "multiversal-win-01 accepted AKWI-03 exact-head validation job 99314405321 but exposed zero workflow steps after assignment; two earlier related Windows runs were cancelled as stale during AKWI-03 cleanup",
+    "diagnostic_hypotheses": [
+      "The self-hosted Windows runner accepted the job at the GitHub orchestration layer but its listener/worker is stalled before Set up job; this is falsifiable if workflow steps appear without repository mutation or if a later runner-health state change allows the same exact head to execute.",
+      "The AKWI-03 application candidate itself is not the current failure source because repository health and the complete Linux governed profile pass at the same exact head, while the Windows job has not begun any validation command."
+    ],
+    "retry_basis": {
+      "evidence": "Do not issue an identical rerun or churn the candidate head while job 99314405321 remains assigned with zero steps. A retry is permitted only after a material runner/environment state change, cancellation/failure terminal state, or newly observed diagnostic evidence.",
+      "changed_since_previous": [
+        "All 20 staged source fragments and the reconstructed 1,894,257-byte CSV passed exact SHA-256 verification in run 33332294496.",
+        "Materialization run 33332324262 generated and precommit-verified 400 NPCs, 986 safe relationships and 400 provenance rows with zero private-field leaks, generated dependency promotions or invented numeric mechanics.",
+        "User-authored final validation candidate 41a5bee4726213ad8572ab194c9b36c63bee2edf passed repository health and Linux validation in run 33332830247; the only remaining gate is the assigned-but-zero-step Windows runner job."
+      ]
+    },
+    "unrelated_historical_validation_jobs_observed": 0,
     "reruns_without_changed_evidence": 0,
-    "unrelated_historical_validation_jobs_observed": 0
+    "post_merge_stale_pointer_incidents": 0,
+    "same_cycle_completed": false,
+    "completed_within_two_cycles": false,
+    "service_objective": {
+      "ordinary_tranche_single_continue_target_percent": 80,
+      "ordinary_tranche_two_continue_target_percent": 95,
+      "max_execution_cycles_without_genuine_blocker": 2,
+      "unrelated_historical_validation_jobs_target": 0,
+      "reruns_without_changed_evidence_target": 0,
+      "post_merge_stale_pointer_target": 0
+    }
   },
-  "next_action": "Add failing AKWI-03 acceptance tests/profile first, verify the red failure is missing NPC runtime content, then generate and wire the bounded 400-NPC public-safe corpus, relationships and provenance."
+  "next_action": "Wait on the genuine multiversal-win-01 runner-environment blocker without an identical rerun. If job 99314405321 begins and passes, require the deterministic cross-platform comparison on exact head 41a5bee4726213ad8572ab194c9b36c63bee2edf, merge only that tested head, then reconcile AIOC completion. If the job reaches a terminal non-success state or new runner evidence appears, diagnose that changed environment state before any retry."
 }
