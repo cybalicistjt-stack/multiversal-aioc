@@ -15,7 +15,7 @@ KFR-02 — Hierarchical Familiarity Graph — remains `completed_verified`.
 
 KFR-03 — Character Knowledge, Experience & Explicit Familiarity Records — remains `completed_verified` on exact validated head `80d5dc21260de2d03d41712b29c0b3eca18e0ec0`, current-family run `33419444476`, and application merge `d6ffb4ec06bfb6da57cede5fd055a86e4e0076a8`. Its implementation authority is retired.
 
-KFR-04 — Transfer, Adjacency, Confidence & Unknown-State Rules — is `in_progress` from exact application baseline `d6ffb4ec06bfb6da57cede5fd055a86e4e0076a8` on `integration/kfr-04-transfer-adjacency-confidence-unknown-state-rules`.
+KFR-04 — Transfer, Adjacency, Confidence & Unknown-State Rules — is `in_progress` from exact application baseline `d6ffb4ec06bfb6da57cede5fd055a86e4e0076a8` on `integration/kfr-04-transfer-adjacency-confidence-unknown-state-rules`. Application PR #370 remains pre-production: acceptance and the RED profile exist, while KFR-04 production contract/UI surfaces have not been added. The original self-hosted RED selector remained queued, after which the owner authorized a KFR-04-only GitHub-hosted exception. Two changed-evidence private-repository hosted attempts (`ubuntu-24.04` run `33423795769` / job `99592334504`, then `ubuntu-latest` run `33424150827` / job `99593501486`) each failed before VM allocation with `runner_id=0`, empty runner name and zero steps. Product implementation therefore remains paused until a private-repository hosted runner actually allocates and genuine RED executes.
 
 ## Purpose
 
@@ -51,4 +51,5 @@ KFR-03 introduced no durable KFR persistence, duplicate Character knowledge ledg
 - No durable KFR-04 persistence or duplicate transfer ledger is introduced. Migration `0022` remains unreserved.
 - Exactly one current KFR-04 Validation Core profile may run, with zero historical predecessor fanout and deterministic Linux/Windows/comparator proof.
 - **KFR-04 runner override (owner-authorized 2026-08-31):** because the self-hosted Linux selector for RED run `33421330006` remained queued without executing, GitHub-hosted Linux, GitHub-hosted Windows and a GitHub-hosted comparator are accepted as final KFR-04 proof. This is a bounded KFR-04-only exception and does not change the project-wide default self-hosted final-gate policy for later tranches.
+- **Current runner blocker:** private `Multiversal-app` GitHub-hosted jobs currently fail before runner allocation. No unchanged retry is authorized. A subsequent attempt requires changed account/repository billing/access evidence or GitHub allocation-service recovery, and must first prove a nonzero hosted runner assignment before product work resumes.
 - KFR-05+, ODL-01+, provider activation, tester distribution, release and deployment remain unauthorized.
