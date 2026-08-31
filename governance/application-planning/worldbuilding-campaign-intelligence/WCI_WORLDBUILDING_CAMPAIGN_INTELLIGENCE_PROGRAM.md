@@ -1,7 +1,7 @@
 # WCI — Worldbuilding & Campaign Intelligence
 
 **Program ID:** WCI  
-**Status:** OWNER-APPROVED — WCI-01 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — WCI-01 IN_PROGRESS  
 **Activation:** after completed_verified SSA-10  
 **Successor:** KFR-01  
 **Owner and final authority:** John Brandon Turner
@@ -10,9 +10,13 @@
 
 SSA completed_verified through SSA-10 and application main `bce405890afdcaa0c76f5a7a01172695ed6be3cf`.
 
-WCI-01 — World Knowledge Workspace & Canonical Entity Views — is `selected_not_started` from that exact application main. It has no implementation branch and no implementation authority. A future owner Continue must establish a bounded governed start and pass AIOC Repository Health before application mutation.
+WCI-01 — World Knowledge Workspace & Canonical Entity Views — is `in_progress` from that exact application main on `integration/wci-01-world-knowledge-workspace-canonical-entity-views`, subject to this governed-start candidate passing AIOC Repository Health and merging before application mutation.
 
-WCI-01 targets a unified wiki-like authoring/search/reference experience over canonical entities plus attached notes, lore and source material, with backlinks, semantic relationships, templates, and visibility-safe reader/GM projections. These are workspaces/projections over canonical entities, not a parallel article database or second world/campaign ledger.
+The bounded tranche delivers a unified wiki-like authoring/search/reference workspace over canonical World, Character, relationship, Adventure/Project, Event and creator-content identities plus scoped notes, lore and source material; backlinks; semantic relationships; templates; and visibility-safe reader/GM projections. These remain projections/workspaces over canonical entities rather than a parallel article database, second world/campaign ledger or automatic canon source.
+
+Authorization and visibility filtering must precede search, counts, summaries, backlinks, reader/GM projections and AI context. Hidden/GM/private creator inventory and protected cardinality cannot leak through aggregates. User notes/tags and attached lore/source material remain scoped annotation/reference projections with provenance and do not silently become canonical source taxonomy or owner state. Templates shape presentation and authoring structure only; they cannot grant owner authority, permissions or canon promotion. Consequential workspace results require accessible nonvisual equivalents, and deterministic projection/receipt output cannot depend on wall-clock timing.
+
+No durable WCI-01 persistence or migration `0022` is required. The application `ACTIVE_FAMILY_CONTRACT` must transition once from completed SSA to WCI in the WCI-01 RED setup before the intended missing-feature failure is interpreted. WCI-02+, KFR-01+, public/community publishing, paid provider activation, tester distribution, release and deployment remain unauthorized.
 
 ## Purpose
 
@@ -24,7 +28,7 @@ WCI consumes SSA's typed structural/world-space relationships where relevant. KF
 
 ## Tranches
 
-1. **WCI-01 — World Knowledge Workspace & Canonical Entity Views** — selected_not_started.  
+1. **WCI-01 — World Knowledge Workspace & Canonical Entity Views** — in_progress.  
    Unified wiki-like authoring/search/reference experience over canonical entities plus attached notes/lore/source material; backlinks, semantic relationships, templates and visibility-safe reader/GM projections.
 
 2. **WCI-02 — History, Calendars, Timelines, Chronicles & Reality Explorer** — planned.  
@@ -46,6 +50,9 @@ WCI consumes SSA's typed structural/world-space relationships where relevant. KF
 - MAI owns map/asset interoperability; ISE owns the native interactive Scene/tabletop experience; completed SSA owns deeper semantic spatial-authoring relations; WCI consumes their projections.
 - AAI owns audio interoperability; WCI consumes audio/Scene references without creating playback authority.
 - LNG owns language construction/knowledge; WCI consumes language references.
-- User notes/tags remain scoped annotations/projections and do not silently become canonical source taxonomy.
-- Hidden/GM/private creator content is filtered before search, counts, summaries and AI context.
+- User notes/tags and attached lore/source material remain scoped annotations/projections and do not silently become canonical source taxonomy or owner state.
+- Hidden/GM/private creator content is filtered before search, counts, summaries, backlinks, reader/GM projections and AI context.
+- Templates cannot create owner authority, permission grants or automatic canon promotion.
+- Consequential workspace information must have accessible nonvisual representation; the visual workspace is not exclusive truth.
+- Equivalent authorized workspace inputs must produce deterministic ordering/projection receipts independent of view/platform; wall-clock timing is not semantic truth.
 - Public/community publishing remains separately governed and is not implicitly authorized here.
