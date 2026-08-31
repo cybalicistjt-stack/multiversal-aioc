@@ -15,7 +15,7 @@ KFR-02 — Hierarchical Familiarity Graph — remains `completed_verified`.
 
 KFR-03 — Character Knowledge, Experience & Explicit Familiarity Records — remains `completed_verified` on exact validated head `80d5dc21260de2d03d41712b29c0b3eca18e0ec0`, current-family run `33419444476`, and application merge `d6ffb4ec06bfb6da57cede5fd055a86e4e0076a8`. Its implementation authority is retired.
 
-KFR-04 — Transfer, Adjacency, Confidence & Unknown-State Rules — is `in_progress` from exact application baseline `d6ffb4ec06bfb6da57cede5fd055a86e4e0076a8` on `integration/kfr-04-transfer-adjacency-confidence-unknown-state-rules`, effective only after its exact governed-start AIOC candidate passes Repository Health and merges.
+KFR-04 — Transfer, Adjacency, Confidence & Unknown-State Rules — is `in_progress` from exact application baseline `d6ffb4ec06bfb6da57cede5fd055a86e4e0076a8` on `integration/kfr-04-transfer-adjacency-confidence-unknown-state-rules`.
 
 ## Purpose
 
@@ -49,5 +49,6 @@ KFR-03 introduced no durable KFR persistence, duplicate Character knowledge ledg
 - Canonical Character, Progression/Skill, domain-owner and Permission/visibility authority remains unchanged.
 - Operator qualification remains KFR-05 scope.
 - No durable KFR-04 persistence or duplicate transfer ledger is introduced. Migration `0022` remains unreserved.
-- Exactly one current KFR-04 Validation Core profile may run, with zero historical predecessor fanout and final self-hosted Linux/Windows/comparator proof.
+- Exactly one current KFR-04 Validation Core profile may run, with zero historical predecessor fanout and deterministic Linux/Windows/comparator proof.
+- **KFR-04 runner override (owner-authorized 2026-08-31):** because the self-hosted Linux selector for RED run `33421330006` remained queued without executing, GitHub-hosted Linux, GitHub-hosted Windows and a GitHub-hosted comparator are accepted as final KFR-04 proof. This is a bounded KFR-04-only exception and does not change the project-wide default self-hosted final-gate policy for later tranches.
 - KFR-05+, ODL-01+, provider activation, tester distribution, release and deployment remain unauthorized.
