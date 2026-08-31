@@ -1,11 +1,17 @@
 # KFR — Knowledge & Familiarity Relations
 
 **Program ID:** KFR  
-**Status:** OWNER-APPROVED — PLANNED INTERSTITIAL  
-**Activation:** after WCI-05  
+**Status:** OWNER-APPROVED — KFR-01 SELECTED_NOT_STARTED  
+**Activation:** after completed_verified WCI-05  
 **Successor:** ODL-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-08-27
+
+## Current state
+
+WCI-05 and the full WCI program are `completed_verified` on exact application main `08d747c4c0f96beb082b1a415fbabfd31198ee91`.
+
+KFR-01 — Source/Authority Crosswalk & Familiarity Vocabulary — is `selected_not_started` from that exact application main. It has no implementation branch and no implementation authority. A future owner `Continue` is required before governed start or application mutation.
 
 ## Purpose
 
@@ -17,34 +23,20 @@ Recovered basis: RDC-02 / RD-03. The owner has explicitly directed that suitable
 
 ## Tranches
 
-1. **KFR-01 — Source/Authority Crosswalk & Familiarity Vocabulary**  
-   Reconcile recovered familiarity concepts with Character knowledge, Skills, Professions, DPL, Research, Vehicles, Equipment, institutions and WCI. Define terms such as family, class, type, brand/manufacturer, model, unit, specialization, adjacency and explicit unknown.
+1. **KFR-01 — Source/Authority Crosswalk & Familiarity Vocabulary** — selected_not_started. Reconcile recovered familiarity concepts with Character knowledge, Skills, Professions, DPL, Research, Vehicles, Equipment, institutions and WCI. Define family, class, type, brand/manufacturer, model, unit, specialization, adjacency and explicit unknown.
+2. **KFR-02 — Hierarchical Familiarity Graph** — planned.
+3. **KFR-03 — Character Knowledge, Experience & Explicit Familiarity Records** — planned.
+4. **KFR-04 — Transfer, Adjacency, Confidence & Unknown-State Rules** — planned.
+5. **KFR-05 — Operator Qualification & Vehicle/Machine/Equipment Integration** — planned.
+6. **KFR-06 — Profession, Research, Mentorship & Learning Integration** — planned.
+7. **KFR-07 — Authoring, Inspection, Search & Provenance UX** — planned.
+8. **KFR-08 — Cross-Domain Golden Proof** — planned.
 
-2. **KFR-02 — Hierarchical Familiarity Graph**  
-   Define reusable parent/child/adjacent relationships across domains such as vehicle family→class→manufacturer→model, technology family→implementation, profession→specialty and institution→department/system, without forcing every domain into one rigid tree.
-
-3. **KFR-03 — Character Knowledge, Experience & Explicit Familiarity Records**  
-   Represent what a Character has learned, used, studied or been certified on with source, scope, recency/confidence and provenance. Physical ownership or observation alone never implies familiarity.
-
-4. **KFR-04 — Transfer, Adjacency, Confidence & Unknown-State Rules**  
-   Define bounded partial transfer between related subjects, confidence degradation, incompatibility, obsolete knowledge and explicit unknown states. No universal percentage or automatic competence is implied.
-
-5. **KFR-05 — Operator Qualification & Vehicle/Machine/Equipment Integration**  
-   Apply familiarity to governed operation, diagnostics and assistance for vehicles, machinery, tools, weapons, interfaces and other equipment while leaving action legality and qualification authority with their owning systems.
-
-6. **KFR-06 — Profession, Research, Mentorship & Learning Integration**  
-   Connect DPL professions, Research discoveries, training/mentorship and later ALP practice systems so learning can create or deepen familiarity without duplicating progression or XP ledgers.
-
-7. **KFR-07 — Authoring, Inspection, Search & Provenance UX**  
-   Provide readable familiarity graphs, explanation of transfer basis, source/provenance inspection, GM authoring and safe search/filtering without revealing hidden knowledge.
-
-8. **KFR-08 — Cross-Domain Golden Proof**  
-   Prove one familiarity model across at least vehicle operation, technical equipment, profession/institution knowledge and research/training, including unfamiliar and adjacent cases, deterministic receipts and owner-domain boundaries.
-
-## Invariants
+## Selection invariants
 
 - Familiarity is not permission, ownership, proficiency, certification or action authority by itself.
 - Unknown remains unknown; the system does not invent missing knowledge.
 - Transfer must be source/profile-driven and explainable rather than one universal percentage.
 - Domain owners retain canonical Character, Skill, Profession, Vehicle, Equipment, Research and Organization state.
 - Hidden/private knowledge is filtered before projection, search, AI context or explanation.
+- KFR-01 is selection-only until its own governed start; no persistence or migration `0022` is reserved at selection.
