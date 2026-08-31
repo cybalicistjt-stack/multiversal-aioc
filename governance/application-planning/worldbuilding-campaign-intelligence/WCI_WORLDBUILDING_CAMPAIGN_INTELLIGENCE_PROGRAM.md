@@ -1,18 +1,18 @@
 # WCI — Worldbuilding & Campaign Intelligence
 
 **Program ID:** WCI  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH WCI-01; WCI-02 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH WCI-02; WCI-03 SELECTED_NOT_STARTED  
 **Activation:** after completed_verified SSA-10  
 **Successor:** KFR-01  
 **Owner and final authority:** John Brandon Turner
 
-## Current tranche
+## Current state
 
-WCI-01 — World Knowledge Workspace & Canonical Entity Views — remains `completed_verified` through application PR #362 and application merge `1ef020cbfe7d7c2c8e8cca7aaa579f2fdd68fb2c`. Exact validated head `16279193c81af59666da4d186e30e8bec3a8cd40` passed current-family run `33385878545`: selector/Repository Health `99468261284`, self-hosted Linux `99468289710`, self-hosted Windows `99468289765`, and deterministic comparison `99468430690`. Linux and Windows produced matching deterministic receipt SHA-256 `281e77f44ac8aa99bb226e62b752fc5998a9ebc78b66562821a74ef265900577`, with zero historical predecessor fanout.
+WCI-01 — World Knowledge Workspace & Canonical Entity Views — remains `completed_verified` through application merge `1ef020cbfe7d7c2c8e8cca7aaa579f2fdd68fb2c`.
 
-WCI-02 — History, Calendars, Timelines, Chronicles & Reality Explorer — is `in_progress` on `integration/wci-02-history-calendars-timelines-chronicles-reality-explorer` from exact application baseline `1ef020cbfe7d7c2c8e8cca7aaa579f2fdd68fb2c` after owner Continue. Product mutation remains unauthorized until the exact AIOC governed-start candidate passes Repository Health and merges.
+WCI-02 — History, Calendars, Timelines, Chronicles & Reality Explorer — is `completed_verified` through application PR #363 and merge `fcb3e142b45de5c92b9308837573dc3389b8723c`. Exact validated head `562dc6d70617d914cb6f962ab285985b34e5fcef` passed current-family run `33390878031`: selector/Repository Health `99483960955`, self-hosted Linux `99483998127`, self-hosted Windows `99483997985`, and deterministic comparison `99484161140`. Linux and Windows produced matching deterministic receipt SHA-256 `ec17cf133509650c15ef9e3019538e692656efb543269cf76c58607734eb99b6`, with zero historical predecessor fanout.
 
-WCI-02 is bounded to visibility-safe multi-scale history, governed calendar projection, ordered timeline/chronicle views, divergence comparison and MAI/ISE/SSA map/Scene time views over canonical MIB-11 Multiverse/Branch/Reality/Timeline/Era/Event and calendar/time owners. It does not create a second World/Reality/Event/history/calendar ledger. Unsupported calendar conversion remains explicit rather than inferred. Hidden/GM/private historical material is filtered before counts, comparisons, summaries, reader/GM views and AI context. No durable WCI-02 persistence is required; migration `0022` remains unreserved.
+WCI-03 — Relationship, Genealogy, Organization & Diplomacy Explorer — is `selected_not_started` from exact application main `fcb3e142b45de5c92b9308837573dc3389b8723c`, with no implementation branch and no implementation authority. A future owner Continue is required before governed start or product mutation.
 
 ## Purpose
 
@@ -27,10 +27,10 @@ WCI consumes SSA's typed structural/world-space relationships where relevant. KF
 1. **WCI-01 — World Knowledge Workspace & Canonical Entity Views** — completed_verified.  
    Unified wiki-like authoring/search/reference experience over canonical entities plus attached notes/lore/source material; backlinks, semantic relationships, templates and visibility-safe reader/GM projections.
 
-2. **WCI-02 — History, Calendars, Timelines, Chronicles & Reality Explorer** — in_progress.  
+2. **WCI-02 — History, Calendars, Timelines, Chronicles & Reality Explorer** — completed_verified.  
    Multi-scale history over MIB-11 Multiverse/Branch/Reality/Timeline/Era/Event structures; custom calendars where governed; divergence comparison; map/scene time views through MAI/ISE/SSA without duplicating World truth.
 
-3. **WCI-03 — Relationship, Genealogy, Organization & Diplomacy Explorer** — planned.  
+3. **WCI-03 — Relationship, Genealogy, Organization & Diplomacy Explorer** — selected_not_started.  
    Family/dynasty, organization hierarchy, allegiance, faction diplomacy and social graph views over MIB-09 and canonical Character/organization relationships; no second relationship ledger.
 
 4. **WCI-04 — Living Campaign, GM Workspace & Session Intelligence** — planned.  
@@ -41,17 +41,12 @@ WCI consumes SSA's typed structural/world-space relationships where relevant. KF
 
 ## Invariants
 
-- Documentation/history views do not become a second canonical World/Character/relationship/Event/history/calendar ledger.
-- MIB-11 Multiverse/Branch/Reality/Timeline/Era/Event plus owning World/Reality, Event and calendar/time authorities remain canonical.
-- Custom calendar projection/translation requires governed references and provenance; unresolved conversion is explicit.
-- History/chronicle presentation preserves prior history and cannot silently rewrite canonical chronology.
-- Reality/timeline divergence comparison preserves stable identities and cannot silently merge or mutate canonical owners.
-- MAI owns map/asset interoperability; ISE owns the native interactive Scene/tabletop experience; completed SSA owns deeper semantic spatial-authoring relations; WCI consumes their projections.
-- Pixel position, camera/view state, map variant and visual alignment are presentation and never become canonical historical truth.
-- AAI owns audio interoperability; WCI consumes audio/Scene references without creating playback authority.
-- LNG owns language construction/knowledge; WCI consumes language references.
-- Hidden/GM/private creator content is filtered before search, counts, summaries, backlinks, comparisons, reader/GM projections and AI context.
-- Consequential workspace information must have accessible nonvisual representation; the visual workspace is not exclusive truth.
+- Documentation/history/relationship views do not become a second canonical World/Character/relationship/Event/history/calendar ledger.
+- MIB-09 Character/organization/relationship owners remain canonical for WCI-03.
+- Family, genealogy, hierarchy, allegiance, diplomacy and social-graph views must preserve stable owner identities rather than mint competing relationship truth.
+- KFR remains the future owner of explicit knowledge/familiarity semantics.
+- Hidden/GM/private content and protected cardinality are filtered before counts, graph summaries, diplomacy projections, reader/GM views and AI context.
+- Consequential workspace information must have accessible nonvisual representation; the visual graph is not exclusive truth.
 - Equivalent authorized workspace inputs must produce deterministic ordering/projection receipts independent of view/platform; wall-clock timing is not semantic truth.
-- No durable WCI-02 persistence or migration `0022` is authorized.
-- Public/community publishing, paid provider activation, tester distribution, release/deployment and WCI-03+ remain separately governed and unauthorized here.
+- No WCI-03 persistence or migration is authorized by selection.
+- Public/community publishing, paid provider activation, tester distribution, release/deployment and WCI-04+ remain separately governed and unauthorized here.
