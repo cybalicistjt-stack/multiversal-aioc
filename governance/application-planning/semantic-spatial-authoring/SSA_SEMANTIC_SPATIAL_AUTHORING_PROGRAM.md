@@ -1,23 +1,23 @@
 # SSA — Semantic Spatial Authoring
 
 **Program ID:** SSA  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH SSA-08; SSA-09 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH SSA-09; SSA-10 SELECTED_NOT_STARTED  
 **Activation:** after ISE-08  
 **Successor:** WCI-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-08-27
 
-## Current tranche
+## Current selection
 
-SSA-08 — Spatial State, History, Era & Event Change — is `completed_verified` through application PR #359 and application merge `df3f234a7a8d7375569573557bcd62f2534b9cb9`. Exact validated head `0d291eec3fc5502e8547deeff31cad130f33d03c` passed current-family run `33341834354`: selector/Repository Health `99338757768`, self-hosted Linux `99338770534`, self-hosted Windows `99338770551`, and deterministic comparison `99338834928`. Linux and Windows produced matching deterministic receipt SHA-256 `4a59dcdfb13218244d7cb1f97db8378089ec7e0ac3ffcacbfc6c4f5a777d025f`, with zero historical predecessor fanout.
+SSA-09 — Accessibility, Multiview Authoring, Performance & Recovery — is `completed_verified` through application PR #360 and application merge `7ceae377c5be3059741e858caef29a194a9f5161`. Exact validated head `4047eba28a31992bac53c41d12f3bc4f128493d0` passed current-family run `33350025522`: selector/Repository Health `99361419673`, self-hosted Linux `99361447396`, self-hosted Windows `99361447394`, and deterministic comparison `99361554343`. Linux and Windows produced matching deterministic receipt SHA-256 `ca4dc722628dcc7d80c268435f430269a29bb1c89046768b8209222873cd03c2`, with zero historical predecessor fanout.
 
-SSA-09 — Accessibility, Multiview Authoring, Performance & Recovery — is `in_progress` from exact application main `df3f234a7a8d7375569573557bcd62f2534b9cb9` on `integration/ssa-09-accessibility-multiview-authoring-performance-recovery`, subject to this governed-start candidate passing Repository Health and merging before application mutation.
+SSA-09 delivered equivalent governed operation identity across keyboard, touch, pen and nonvisual input; shared-semantic map/list/topology/history-state projections without per-view canonical truth; deterministic bounded large/deep processing; and explicit version-conflict plus idempotent undo/recovery proposals without silent canonical mutation or rollback. Hidden semantics/cardinality are filtered before projection, consequential work has nonvisual summaries, and no durable SSA-09 ledger, migration `0022`, provider activation or successor ownership was introduced.
 
-The bounded tranche proves keyboard, touch, pen and nonvisual authoring equivalence over shared semantic operation identities; multiple map/list/topology/history views over the same stable references without per-view truth; deterministic bounded processing for large maps and deep topology; and versioned/idempotent conflict, undo and recovery proposals without silent canonical rollback. Wall-clock timing is not semantic truth or an acceptance oracle. No durable SSA-09 ledger or migration `0022` is required.
+SSA-10 — Cross-Scale Spatial Golden Proof — is `selected_not_started` only from exact application main `7ceae377c5be3059741e858caef29a194a9f5161`. It will prove one deterministic end-to-end package from imported/assembled local structure through irregular room/topology semantics and an interactable ISE Scene to world-scale migration/sanctuary/research relationships and era/state change, with provenance, accessibility and canonical owner boundaries intact. No implementation branch, source-mutation authority, durable persistence or migration is granted at selection.
 
 ## Purpose
 
-SSA turns recovered spatial requirements into a governed semantic authoring layer over completed MAI and ISE foundations. It supplies typed spatial relationships, authoring assistance, historical projections and accessible authoring surfaces that canonical owner domains can consume without replacing them.
+SSA turns recovered spatial requirements into a governed semantic authoring layer over completed MAI and ISE foundations. It supplies typed spatial relationships, authoring assistance, historical projections, accessible authoring surfaces and cross-scale proof that canonical owner domains can consume without replacing them.
 
 ## Tranches
 
@@ -29,9 +29,8 @@ SSA turns recovered spatial requirements into a governed semantic authoring laye
 6. **SSA-06 — MAI/ISE Asset Mapping, Snapping & Semantic Construction Roles** — completed_verified.  
 7. **SSA-07 — GM Construction Assistance & Low-Friction Spatial Authoring** — completed_verified.  
 8. **SSA-08 — Spatial State, History, Era & Event Change** — completed_verified.  
-9. **SSA-09 — Accessibility, Multiview Authoring, Performance & Recovery** — in_progress.  
-   Prove keyboard/touch/pen and nonvisual authoring equivalents, shared-semantic multiview authoring, large/complex maps, deep topology, undo/recovery, conflict handling and deterministic semantic serialization.
-10. **SSA-10 — Cross-Scale Spatial Golden Proof** — planned.  
+9. **SSA-09 — Accessibility, Multiview Authoring, Performance & Recovery** — completed_verified.  
+10. **SSA-10 — Cross-Scale Spatial Golden Proof** — selected_not_started.  
    Prove one end-to-end package from imported/assembled local structure through cave/room semantics, an interactable ISE Scene, world-scale migration/sanctuary/research relationships and era/state change, with provenance and owner-domain boundaries intact.
 
 ## Invariants
@@ -41,10 +40,11 @@ SSA turns recovered spatial requirements into a governed semantic authoring laye
 - Spatial semantics do not become a second Research, Creature, Project, Exploration, construction, navigation, Reality, Event, spawn/population or credential ledger.
 - Geometry, semantic structure, topology, historical state and live state remain distinct.
 - Multiview authoring surfaces share stable semantic references and do not create competing per-view truth.
-- Keyboard, touch, pen and nonvisual authoring must preserve equivalent consequential semantics, operation identity and permissions.
+- Keyboard, touch, pen and nonvisual authoring preserve equivalent consequential semantics, operation identity and permissions.
 - Large/deep processing uses deterministic work bounds and stable ordering; timing does not define correctness.
 - Performance optimizations cannot alter semantic truth, ordering, authorization or deterministic serialization.
 - Undo/recovery and conflict handling cannot silently rewrite canonical owner state, owner history or bypass version checks.
+- Cross-scale golden proof must compose completed capabilities without duplicating owner ledgers or widening authority.
 - Hidden/GM-only semantics and protected cardinality are filtered before projection.
 - Provider credentials, secrets, commercial media bytes, entitlement inference and redistribution remain outside SSA authority unless explicitly governed by owning systems.
 - Accessible nonvisual representations must exist for consequential spatial state and authoring operations.
