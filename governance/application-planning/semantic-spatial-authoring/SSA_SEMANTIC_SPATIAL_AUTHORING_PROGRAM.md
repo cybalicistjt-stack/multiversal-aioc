@@ -1,19 +1,21 @@
 # SSA — Semantic Spatial Authoring
 
 **Program ID:** SSA  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH SSA-09; SSA-10 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH SSA-10  
 **Activation:** after ISE-08  
-**Successor:** WCI-01  
+**Successor:** WCI-01 — selected_not_started  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-08-27
 
-## Current tranche
+## Program completion
 
-SSA-09 — Accessibility, Multiview Authoring, Performance & Recovery — is `completed_verified` through application PR #360 and application merge `7ceae377c5be3059741e858caef29a194a9f5161`. Exact validated head `4047eba28a31992bac53c41d12f3bc4f128493d0` passed current-family run `33350025522`: selector/Repository Health `99361419673`, self-hosted Linux `99361447396`, self-hosted Windows `99361447394`, and deterministic comparison `99361554343`. Linux and Windows produced matching deterministic receipt SHA-256 `ca4dc722628dcc7d80c268435f430269a29bb1c89046768b8209222873cd03c2`, with zero historical predecessor fanout.
+SSA-10 — Cross-Scale Spatial Golden Proof — is `completed_verified` through application PR #361 and application merge `bce405890afdcaa0c76f5a7a01172695ed6be3cf`. Exact validated head `e5ca5c0150b61af122f5f597a85a994f5d7ecfef` passed current-family run `33372261333`: selector/Repository Health `99425804218`, self-hosted Linux `99425833993`, self-hosted Windows `99425833984`, and deterministic comparison `99425988021`. Linux and Windows produced matching deterministic receipt SHA-256 `6d4e3a586ad794f0f64ec9628fb342f8c59141d868ce066cab59351cd70f3ceb`, with zero historical predecessor fanout.
 
-SSA-10 — Cross-Scale Spatial Golden Proof — is `in_progress` from exact application main `7ceae377c5be3059741e858caef29a194a9f5161` on `integration/ssa-10-cross-scale-spatial-golden-proof`, subject to this governed-start candidate passing Repository Health and merging before application mutation.
+The TDD acceptance was observed RED first at exact head `8dc5399112951eaf1db61250c4a8f4332f149340` in run `33371985456`; selector `99424954932` passed and Linux `99424984684` failed at client typecheck because the bounded SSA-10 contract and accessible proof panel did not yet exist. The first production head passed all final gates without a repair.
 
-The bounded tranche proves one deterministic end-to-end package from imported or assembled local structure through irregular room/topology semantics and semantic construction roles, an interactable ISE Scene projection, world-scale migration/sanctuary/research relationships, and Event/era spatial state change. Stable semantic references and provenance must survive every scale. Canonical owner domains remain authoritative; geometry, semantic structure, topology, historical state and live owner state remain distinct; hidden semantics/cardinality are filtered before projection; consequential stages require accessible nonvisual equivalents. No durable SSA-10 ledger or migration `0022` is required, and WCI-01 remains unauthorized.
+SSA now provides governed authority crosswalks and spatial taxonomy; structural primitives and attachments; irregular/non-Euclidean topology; functional ecology/use zones; research/institutional infrastructure; MAI/ISE asset mapping and semantic construction roles; low-friction GM assistance; Event/era spatial history; accessible multiview authoring/performance/recovery; and a deterministic cross-scale golden proof. These capabilities compose canonical owner domains without replacing them.
+
+WCI-01 — World Knowledge Workspace & Canonical Entity Views — is selected_not_started from exact application main `bce405890afdcaa0c76f5a7a01172695ed6be3cf`. A future owner Continue and green governed start are required before WCI application mutation.
 
 ## Purpose
 
@@ -30,8 +32,7 @@ SSA turns recovered spatial requirements into a governed semantic authoring laye
 7. **SSA-07 — GM Construction Assistance & Low-Friction Spatial Authoring** — completed_verified.  
 8. **SSA-08 — Spatial State, History, Era & Event Change** — completed_verified.  
 9. **SSA-09 — Accessibility, Multiview Authoring, Performance & Recovery** — completed_verified.  
-10. **SSA-10 — Cross-Scale Spatial Golden Proof** — in_progress.  
-   Prove one end-to-end package from imported/assembled local structure through cave/room semantics, an interactable ISE Scene, world-scale migration/sanctuary/research relationships and era/state change, with provenance and owner-domain boundaries intact.
+10. **SSA-10 — Cross-Scale Spatial Golden Proof** — completed_verified.
 
 ## Invariants
 
@@ -42,10 +43,8 @@ SSA turns recovered spatial requirements into a governed semantic authoring laye
 - Multiview authoring surfaces share stable semantic references and do not create competing per-view truth.
 - Keyboard, touch, pen and nonvisual authoring preserve equivalent consequential semantics, operation identity and permissions.
 - Large/deep processing uses deterministic work bounds and stable ordering; timing does not define correctness.
-- Performance optimizations cannot alter semantic truth, ordering, authorization or deterministic serialization.
 - Undo/recovery and conflict handling cannot silently rewrite canonical owner state, owner history or bypass version checks.
-- Cross-scale golden proof must compose completed capabilities without duplicating owner ledgers or widening authority.
-- Cross-scale proof preserves stable semantic references and provenance from local structure through Scene, world relationships and historical state change.
+- Cross-scale proof composes completed capabilities without duplicating owner ledgers or widening authority.
 - Hidden/GM-only semantics and protected cardinality are filtered before projection.
 - Provider credentials, secrets, commercial media bytes, entitlement inference and redistribution remain outside SSA authority unless explicitly governed by owning systems.
-- Accessible nonvisual representations must exist for consequential spatial state and authoring operations.
+- Accessible nonvisual representations exist for consequential spatial state and authoring operations.
