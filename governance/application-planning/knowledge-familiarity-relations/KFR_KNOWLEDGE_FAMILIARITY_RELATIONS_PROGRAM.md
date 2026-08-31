@@ -1,7 +1,7 @@
 # KFR — Knowledge & Familiarity Relations
 
 **Program ID:** KFR  
-**Status:** OWNER-APPROVED — KFR-01 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH KFR-01; KFR-02 SELECTED_NOT_STARTED  
 **Activation:** after completed_verified WCI-05  
 **Successor:** ODL-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,20 +9,18 @@
 
 ## Current state
 
-WCI-05 and the full WCI program remain `completed_verified` on exact application main `08d747c4c0f96beb082b1a415fbabfd31198ee91`.
+KFR-01 — Source/Authority Crosswalk & Familiarity Vocabulary — is `completed_verified` on application merge `d24c9b16a4decf60c178a06d6422bfc267e730e2`.
 
-KFR-01 — Source/Authority Crosswalk & Familiarity Vocabulary — is `in_progress` from that exact application main on registered branch `integration/kfr-01-source-authority-crosswalk-familiarity-vocabulary`. Product mutation is effective only after the exact governed-start AIOC candidate passes Repository Health and merges.
+KFR-02 — Hierarchical Familiarity Graph — is `selected_not_started` from that exact application main. It has no implementation branch or implementation authority. A future owner Continue and green governed-start merge are required before application mutation.
 
 ## Purpose
 
-KFR turns the recovered broad-to-specific familiarity concept into a reusable governed relation without pretending all knowledge is identical or binary. It does not replace Character knowledge, Skills/Progression, Professions, Research, Vehicles/platforms, Equipment/Assets, Organizations/relations, WCI/World context or permissions.
-
-Recovered basis: RDC-02 / RD-03.
+KFR supplies governed familiarity relations that canonical Character, Skills/Progression, Professions, Research, Vehicle/platform, Equipment/Asset, Organization/relationship, World/WCI and permission systems may consume without replacing their state or authority.
 
 ## Tranches
 
-1. **KFR-01 — Source/Authority Crosswalk & Familiarity Vocabulary** — in_progress. Reconcile canonical owners and define family, class, type, brand/manufacturer, model, unit, specialization, adjacency and explicit unknown.
-2. **KFR-02 — Hierarchical Familiarity Graph** — planned.
+1. **KFR-01 — Source/Authority Crosswalk & Familiarity Vocabulary** — completed_verified.
+2. **KFR-02 — Hierarchical Familiarity Graph** — selected_not_started. Define reusable parent/child/adjacent familiarity relationships across domains without forcing one universal rigid tree or implying familiarity/competence from topology alone.
 3. **KFR-03 — Character Knowledge, Experience & Explicit Familiarity Records** — planned.
 4. **KFR-04 — Transfer, Adjacency, Confidence & Unknown-State Rules** — planned.
 5. **KFR-05 — Operator Qualification & Vehicle/Machine/Equipment Integration** — planned.
@@ -30,21 +28,20 @@ Recovered basis: RDC-02 / RD-03.
 7. **KFR-07 — Authoring, Inspection, Search & Provenance UX** — planned.
 8. **KFR-08 — Cross-Domain Golden Proof** — planned.
 
-## KFR-01 governed-start boundary
+## KFR-01 completion boundary
 
-- `Character-Actors` remains canonical Character identity/gameplay truth.
-- `Progression-Abilities` remains canonical Skill, ability, proficiency, progression and unlock ownership.
-- DPL remains Profession authority; DPL-03 remains governed Research/study/discovery evidence authority.
-- MIB-14 retains vehicle/platform/base/facility configuration and compatibility authority.
-- D17/Asset retains live equipment/item identity, ownership, quantity, state and lineage.
-- Social-Relations and canonical organization/institution owners retain relationship and organization truth.
-- WCI/World owners remain context authorities; visibility/permission filtering remains external and precedes KFR projection.
-- KFR-01 defines only a source/authority crosswalk and stable subject vocabulary: `family`, `class`, `type`, `brand-manufacturer`, `model`, `unit`, `specialization`, `adjacency`, `explicit-unknown`.
-- Familiarity is not permission, ownership, proficiency, certification or action authority.
-- Explicit unknown remains unknown. KFR-01 cannot infer missing familiarity.
-- KFR-01 introduces no hierarchical familiarity graph, transfer percentage, confidence degradation, automatic competence, character familiarity record or operator qualification.
-- Hidden/private knowledge is filtered before projection, counts, search, explanation and AI context.
-- Crosswalk/vocabulary explanations require accessible nonvisual equivalents; visual arrangement is never semantic truth.
-- No durable KFR-01 persistence is introduced. Migration `0022` remains unreserved.
-- Final validation uses exactly one KFR-01 Validation Core profile, zero predecessor fanout, a genuine RED after the one-time WCI→KFR family transition, and matching self-hosted Linux/Windows deterministic receipts.
-- KFR-02+, ODL-01+, public/provider activation, tester distribution, release and deployment remain unauthorized.
+KFR-01 delivered a visibility-safe, deterministic source/authority crosswalk and vocabulary for `family`, `class`, `type`, `brand-manufacturer`, `model`, `unit`, `specialization`, `adjacency` and `explicit-unknown`. Canonical owner taxonomies remain authoritative; explicit unknown remains unknown; familiarity does not imply permission, ownership, proficiency, certification or action authority. No familiarity record, hierarchy, transfer/confidence rule, automatic competence, durable persistence or migration `0022` was introduced.
+
+KFR-01 passed exactly one current KFR-01 Validation Core profile on self-hosted Linux and Windows plus deterministic comparison with zero historical predecessor fanout.
+
+## KFR-02 selection boundary
+
+- KFR-02 may define graph relationships over stable KFR-01 vocabulary and canonical owner references only after its own governed start.
+- Parent/child/adjacent edges do not themselves assert Character familiarity or competence.
+- Canonical domain taxonomies must not be replaced or mutated by the KFR graph.
+- Domain-specific graph shapes are allowed; one rigid universal tree is not required.
+- Explicit unknown remains unknown.
+- Transfer percentage, confidence degradation and incompatibility rules remain KFR-04 scope.
+- Hidden/private nodes and edges must be filtered before projection, counts, search, explanation and AI context.
+- Persistence/migration needs remain unresolved until governed start; migration `0022` is not reserved at selection.
+- KFR-03+, ODL-01+, provider activation, tester distribution, release and deployment remain unauthorized.
