@@ -1,7 +1,7 @@
 # WCI — Worldbuilding & Campaign Intelligence
 
 **Program ID:** WCI  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH WCI-02; WCI-03 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH WCI-02; WCI-03 IN_PROGRESS  
 **Activation:** after completed_verified SSA-10  
 **Successor:** KFR-01  
 **Owner and final authority:** John Brandon Turner
@@ -12,7 +12,7 @@ WCI-01 — World Knowledge Workspace & Canonical Entity Views — remains `compl
 
 WCI-02 — History, Calendars, Timelines, Chronicles & Reality Explorer — is `completed_verified` through application PR #363 and merge `fcb3e142b45de5c92b9308837573dc3389b8723c`. Exact validated head `562dc6d70617d914cb6f962ab285985b34e5fcef` passed current-family run `33390878031`: selector/Repository Health `99483960955`, self-hosted Linux `99483998127`, self-hosted Windows `99483997985`, and deterministic comparison `99484161140`. Linux and Windows produced matching deterministic receipt SHA-256 `ec17cf133509650c15ef9e3019538e692656efb543269cf76c58607734eb99b6`, with zero historical predecessor fanout.
 
-WCI-03 — Relationship, Genealogy, Organization & Diplomacy Explorer — is `selected_not_started` from exact application main `fcb3e142b45de5c92b9308837573dc3389b8723c`, with no implementation branch and no implementation authority. A future owner Continue is required before governed start or product mutation.
+WCI-03 — Relationship, Genealogy, Organization & Diplomacy Explorer — is bounded `in_progress` from exact application main `fcb3e142b45de5c92b9308837573dc3389b8723c` on `integration/wci-03-relationship-genealogy-organization-diplomacy-explorer`. Product mutation is permitted only after the exact governed-start AIOC candidate passes Repository Health and merges.
 
 ## Purpose
 
@@ -30,7 +30,7 @@ WCI consumes SSA's typed structural/world-space relationships where relevant. KF
 2. **WCI-02 — History, Calendars, Timelines, Chronicles & Reality Explorer** — completed_verified.  
    Multi-scale history over MIB-11 Multiverse/Branch/Reality/Timeline/Era/Event structures; custom calendars where governed; divergence comparison; map/scene time views through MAI/ISE/SSA without duplicating World truth.
 
-3. **WCI-03 — Relationship, Genealogy, Organization & Diplomacy Explorer** — selected_not_started.  
+3. **WCI-03 — Relationship, Genealogy, Organization & Diplomacy Explorer** — in_progress.  
    Family/dynasty, organization hierarchy, allegiance, faction diplomacy and social graph views over MIB-09 and canonical Character/organization relationships; no second relationship ledger.
 
 4. **WCI-04 — Living Campaign, GM Workspace & Session Intelligence** — planned.  
@@ -38,6 +38,19 @@ WCI consumes SSA's typed structural/world-space relationships where relevant. KF
 
 5. **WCI-05 — Creator Writing, Continuity, Consequence Analysis & Integrated Proof** — planned.  
    Connect manuscripts/stories/plots/hooks to world entities; show direct dependencies, potentially inconsistent material and consequences of proposed changes; support proposal-only assistance, continuity checks and a full worldbuilding→campaign golden proof. Recovered story-vs-telling/adaptation identity is audited here/through existing CSW reuse authority rather than creating a parallel story ledger.
+
+## WCI-03 bounded contract
+
+- MIB-09 and canonical Character, organization and relationship identities remain authoritative. WCI-03 projects stable relationship references; it cannot mint a second genealogy, organization, diplomacy or social-graph ledger or rewrite canonical relationship truth.
+- Family, parent/child, lineage, dynasty and household views preserve stable Character and relationship reference identity, provenance and directionality. Presentation ancestry cannot create or erase kinship.
+- Organization membership, role, hierarchy and allegiance views consume canonical organization/relationship references. Visual nesting, rank presentation and grouping cannot grant membership, office or authority.
+- Faction diplomacy views project authorized relationship state and provenance. Visual proximity, graph topology or labels cannot independently establish alliance, hostility, treaty or canonical political truth.
+- KFR remains the future owner of explicit knowledge/familiarity semantics. WCI-03 cannot infer familiarity, awareness, rumor knowledge or information access from graph adjacency or shared membership.
+- Authorization and visibility filtering precede counts, graph degree, genealogy summaries, organization hierarchy, diplomacy views, reader/GM projections and AI context. Hidden/GM/private relationship state and protected cardinality cannot leak through aggregate output.
+- Consequential relationship information requires accessible nonvisual summaries/equivalents; the visual graph is not exclusive truth.
+- Equivalent authorized inputs produce deterministic node/edge ordering, hierarchy/diplomacy projections and receipts independent of view/platform; wall-clock timing and canvas position are not semantic truth.
+- No durable WCI-03 persistence is required; migration `0022` remains unreserved.
+- Public/community publishing, paid provider activation, tester distribution, release/deployment, WCI-04+ and KFR-01+ remain separately governed and unauthorized here.
 
 ## Invariants
 
@@ -48,5 +61,5 @@ WCI consumes SSA's typed structural/world-space relationships where relevant. KF
 - Hidden/GM/private content and protected cardinality are filtered before counts, graph summaries, diplomacy projections, reader/GM views and AI context.
 - Consequential workspace information must have accessible nonvisual representation; the visual graph is not exclusive truth.
 - Equivalent authorized workspace inputs must produce deterministic ordering/projection receipts independent of view/platform; wall-clock timing is not semantic truth.
-- No WCI-03 persistence or migration is authorized by selection.
+- No durable WCI-03 persistence or migration `0022` is authorized.
 - Public/community publishing, paid provider activation, tester distribution, release/deployment and WCI-04+ remain separately governed and unauthorized here.
