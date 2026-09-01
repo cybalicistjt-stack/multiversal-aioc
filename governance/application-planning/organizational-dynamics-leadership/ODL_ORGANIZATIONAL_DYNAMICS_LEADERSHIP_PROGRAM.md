@@ -1,7 +1,7 @@
 # ODL — Organizational Dynamics & Leadership
 
 **Program ID:** ODL  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH ODL-05; ODL-06 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH ODL-06; ODL-07 SELECTED_NOT_STARTED  
 **Activation:** after completed_verified KFR-08  
 **Successor:** SCL-01  
 **Owner and final authority:** John Brandon Turner  
@@ -19,7 +19,9 @@ ODL-04 — Delegation, Roles, Authority, Communication & Succession — is `comp
 
 ODL-05 — Resources, Maintenance & Administrative Burden — is `completed_verified` on application merge `9c29ba560b2a36a1923d03bab0292adaae74ebbb`.
 
-ODL-06 — Crisis, Coup, Fragmentation, Recombination & Recovery — is `in_progress` from exact application baseline `9c29ba560b2a36a1923d03bab0292adaae74ebbb` on `integration/odl-06-crisis-coup-fragmentation-recombination-recovery` with bounded implementation authority.
+ODL-06 — Crisis, Coup, Fragmentation, Recombination & Recovery — is `completed_verified` on application merge `e64b5c9568428b2fe9d138ffc2dc33acfa5ea7dc`. Canonical application main is `ec4ac5efdaca2f495b51c0e5ea652b74ce601c47` after one bounded repository-state repair with zero net file differences from the ODL-06 merge.
+
+ODL-07 — Business, Base, Settlement, Faction, Crew, Family & SCL Integration — is `selected_not_started` from exact application baseline `ec4ac5efdaca2f495b51c0e5ea652b74ce601c47`, without an implementation branch or implementation authority.
 
 ## Purpose
 
@@ -36,35 +38,27 @@ Recovered basis: RDC-04 / RD-05.
 3. **ODL-03 — Loyalty, Cohesion, Factionalism & Internal Politics** — completed_verified.
 4. **ODL-04 — Delegation, Roles, Authority, Communication & Succession** — completed_verified.
 5. **ODL-05 — Resources, Maintenance & Administrative Burden** — completed_verified.
-6. **ODL-06 — Crisis, Coup, Fragmentation, Recombination & Recovery** — in_progress.
-7. **ODL-07 — Business, Base, Settlement, Faction, Crew, Family & SCL Integration** — planned.
+6. **ODL-06 — Crisis, Coup, Fragmentation, Recombination & Recovery** — completed_verified.
+7. **ODL-07 — Business, Base, Settlement, Faction, Crew, Family & SCL Integration** — selected_not_started.
 8. **ODL-08 — GM Control, Simulation Depth & Advisory AI** — planned.
 9. **ODL-09 — Organizational-Life Golden Proof** — planned.
 
-## ODL-01 through ODL-05 preserved boundary
+## ODL-01 through ODL-06 preserved boundary
 
-ODL-01 remains a read-only owner-reference taxonomy/crosswalk. ODL-02 remains a seven-dimension read-only qualitative pressure projection. ODL-03 remains a four-dimension read-only profile/context projection for loyalty, cohesion, factionalism and internal politics. ODL-04 remains a read-only leadership-structure projection over explicit visible `role`, `delegation`, `communication`, and `succession` owner records. ODL-05 remains a read-only profile/context projection over explicit visible `resource-position`, `maintenance-state`, and `administrative-burden` owner evidence.
+ODL-01 remains a read-only owner-reference taxonomy/crosswalk. ODL-02 remains a seven-dimension read-only qualitative pressure projection. ODL-03 remains a four-dimension read-only profile/context projection for loyalty, cohesion, factionalism and internal politics. ODL-04 remains a read-only leadership-structure projection over explicit visible `role`, `delegation`, `communication`, and `succession` owner records. ODL-05 remains a read-only profile/context projection over explicit visible `resource-position`, `maintenance-state`, and `administrative-burden` owner evidence. ODL-06 remains a read-only explicit-owner event projection for `crisis`, `coup`, `split`, `fragmentation`, `recombination`, and `recovery`.
 
-Their canonical owner, visibility, conservative unknown/conflict, no-permission, no-mutation, no-duplicate-ledger, no-persistence and no-migration boundaries remain unchanged. ODL-02 pressure and ODL-03 politics remain descriptive/advisory. ODL-04 role/delegation/authority-scope evidence remains descriptive only. ODL-05 does not compute balances, spend resources, execute maintenance, advance Project/time, adjudicate administrative outcomes or grant authority.
+Their canonical owner, visibility, conservative unknown/conflict, no-permission, no-mutation, no-duplicate-ledger, no-persistence and no-migration boundaries remain unchanged. ODL-02 pressure, ODL-03 politics, ODL-04 role/succession and ODL-05 resource/maintenance/admin outputs remain advisory/descriptive and do not automatically synthesize ODL-06 events.
 
-## ODL-06 governed-start contract
+ODL-06 completed after genuine self-hosted RED and the first complete production head passed self-hosted Linux and Windows plus deterministic comparison with zero application feature repairs and zero historical predecessor fanout. After application merge, an accidental empty root placeholder was written and immediately removed. Compare evidence from the ODL-06 merge to repaired main reports zero net changed files, so product bytes are unchanged; the repository-state repair is recorded transparently and ODL-07 is selected from the exact repaired main.
 
-ODL-06 may implement exactly one read-only projection over explicit visible canonical-owner event evidence. Its governed event kinds are `crisis`, `coup`, `split`, `fragmentation`, `recombination`, and `recovery`. Evidence states are `observed`, `explicit-unknown`, and `incompatible`; projection states are `resolved`, `unknown`, `conflict`, and `incompatible`.
+## ODL-07 selection boundary
 
-Every accepted event observation carries organization/subject identity, a canonical event reference, owner authority/reference, profile/context, provenance and visibility references. An observed row additionally carries an opaque canonical owner event-state reference. ODL-06 defines no universal crisis phase, coup threshold, fragmentation trigger, recombination rule or recovery formula.
+ODL-07 is selected only. Selection authorizes no business/base/settlement/faction/crew/family integration mechanics or owner mutation; no relationship/reputation/leadership/resource/Project/time mutation; no command, action or system permission; no SCL implementation; no duplicate ledger; no durable persistence; and no migration `0022`.
 
-Visibility filtering occurs before event/state projection. Observations are reconciled by canonical event reference only. A visible event resolves only when compatible observed evidence agrees on event kind, owner event-state reference and profile/context tuple. Missing/explicit-unknown remains unknown, incompatible-only remains incompatible, and divergent or mixed visible evidence remains conflict. Owner contradictions are never auto-resolved.
+A future governed start must resolve exact integration reference vocabulary, canonical owner seams, profile/context behavior, unknown/conflict semantics, SCL-facing projection behavior and persistence before any product mutation. Completed ODL-01..06 outputs remain read-only/descriptive/advisory and cannot create ODL-07 integration state or SCL outcomes by themselves.
 
-ODL-02 pressure, ODL-03 politics, ODL-04 role/succession and ODL-05 resource/maintenance/admin outputs may be surfaced only as separately labeled advisory context. They cannot synthesize an event, advance event state, trigger crisis/coup/split/fragmentation/recombination/recovery, or impose an action restriction. ODL-04 remains succession authority; ODL-06 never appoints, removes or replaces leadership.
-
-MIB-09 remains relationship/reputation/faction social-runtime authority, Character-Actors remains actor identity/agency authority, APW-D26 remains Project/time authority, and DPL/WCI plus Permission/visibility remain unchanged. ODL-06 performs no faction/member/relationship/reputation/leadership/resource/Project/time/owner mutation, command action, permission grant or canonical write.
-
-Hidden/private crisis, faction, relationship, leadership, resource, Project, advisory, profile/context, provenance and permission evidence must be filtered before events, states, counts, summaries, search, provenance, receipts or AI context. Hidden cardinality is never disclosed.
-
-No durable ODL-06 persistence or duplicate political-event/faction/relationship/succession/permission ledger is authorized. Migration `0022` remains unreserved.
-
-Validation must use acceptance first, genuine self-hosted RED while the production contract/panel are absent, exactly one ODL-06 current-family profile with zero historical predecessor fanout, then exact-head self-hosted Linux and Windows plus deterministic comparison.
+Hidden/private business, base, settlement, faction, crew, family, relationship, leadership, resource, Project, profile/context, provenance and permission evidence must be filtered before all derived surfaces and hidden cardinality must remain undisclosed.
 
 ## Successor boundary
 
-ODL-07+, SCL-01+, provider activation, tester distribution, release and deployment remain unauthorized until separately selected and governed.
+ODL-08+, SCL-01+ implementation, provider activation, tester distribution, release and deployment remain unauthorized until separately selected and governed.
