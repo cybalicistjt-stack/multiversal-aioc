@@ -294,6 +294,32 @@ class FlatHealthRegressionTests(unittest.TestCase):
             codes = {error["code"] for error in audit.errors}
             self.assertIn("MVHEALTH-HISTORICAL-RUNTIME-IMPORT", codes)
 
+    def test_runtime_pointer_preload_is_bounded_to_latest_closeout(self) -> None:
+        pointer = __import__("json").loads(
+            (ROOT / "governance/ai/runtime/CURRENT_WORK_POINTER.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        supplements = pointer.get("roadmap_supplements")
+        self.assertIsInstance(supplements, list)
+        self.assertLessEqual(
+            len(supplements),
+            1,
+            "runtime pointer must not fan out into completed historical closeout supplements",
+        )
+        if supplements:
+            recent = pointer.get("recently_completed_implementation_work", [])
+            self.assertIsInstance(recent, list)
+            self.assertTrue(recent, "a live closeout supplement requires a recent completion")
+            work_item = recent[0].get("work_item_id")
+            self.assertIsInstance(work_item, str)
+            supplement = supplements[0]
+            self.assertIsInstance(supplement, str)
+            self.assertTrue((ROOT / supplement).is_file())
+            filename = Path(supplement).name.upper()
+            self.assertIn("CLOSEOUT", filename)
+            self.assertIn(work_item.replace("-", "").upper(), filename)
+
     def test_current_validator_contains_no_mutable_state_constants(self) -> None:
         source = (ROOT / "scripts/validate_repository_health.py").read_text(
             encoding="utf-8"
