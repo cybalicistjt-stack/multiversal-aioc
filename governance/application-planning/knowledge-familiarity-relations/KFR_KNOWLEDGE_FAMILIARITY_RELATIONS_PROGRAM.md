@@ -1,7 +1,7 @@
 # KFR — Knowledge & Familiarity Relations
 
 **Program ID:** KFR  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH KFR-05; KFR-06 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH KFR-06; KFR-07 SELECTED_NOT_STARTED  
 **Activation:** after completed_verified WCI-05  
 **Successor:** ODL-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,11 +9,11 @@
 
 ## Current state
 
-KFR-01 through KFR-05 are `completed_verified`.
+KFR-01 through KFR-06 are `completed_verified`.
 
-KFR-05 — Operator Qualification & Vehicle/Machine/Equipment Integration — completed on exact validated application head `fdd8ab14bb6d078a3881018e6deccf4f83639e36`, current-family run `33484525780`, and application merge `25b37e11e6473c215c75b569a0dc91f0b7161eb7`. Its implementation authority is retired. Final proof used the governed self-hosted Windows and Linux lanes plus deterministic comparison; the deterministic receipt SHA-256 is `a72fd80e301024ae29b36e03583c42d4a326355a6a267e7e61146629df089943`.
+KFR-06 — Profession, Research, Mentorship & Learning Integration — completed on exact validated application head `8a52c98924a59e48d92edcae552cc79e2e576a4f`, current-family run `33487548247`, and application merge `ac01ececdeab93e03c2155d28759b9b2a477f63e`. Its implementation authority is retired. Final proof used the governed self-hosted Windows and Linux lanes plus deterministic comparison; the deterministic receipt SHA-256 is `8b69620843dc98a1dabe23adfa8d6bbf6d0be1f202c8fa5b813684248ac73cd7`. Genuine RED preceded production and the first production head passed without a feature repair commit.
 
-KFR-06 — Profession, Research, Mentorship & Learning Integration — is bounded `in_progress` from exact application main `25b37e11e6473c215c75b569a0dc91f0b7161eb7` on `integration/kfr-06-profession-research-mentorship-learning-integration` after the owner `Continue` governed start.
+KFR-07 — Authoring, Inspection, Search & Provenance UX — is `selected_not_started` only from exact application main `ac01ececdeab93e03c2155d28759b9b2a477f63e`. It has no implementation branch or implementation authority.
 
 ## Purpose
 
@@ -26,32 +26,20 @@ KFR supplies governed familiarity relations that canonical Character, Skills/Pro
 3. **KFR-03 — Character Knowledge, Experience & Explicit Familiarity Records** — completed_verified.
 4. **KFR-04 — Transfer, Adjacency, Confidence & Unknown-State Rules** — completed_verified.
 5. **KFR-05 — Operator Qualification & Vehicle/Machine/Equipment Integration** — completed_verified.
-6. **KFR-06 — Profession, Research, Mentorship & Learning Integration** — in_progress.
-7. **KFR-07 — Authoring, Inspection, Search & Provenance UX** — planned.
+6. **KFR-06 — Profession, Research, Mentorship & Learning Integration** — completed_verified.
+7. **KFR-07 — Authoring, Inspection, Search & Provenance UX** — selected_not_started.
 8. **KFR-08 — Cross-Domain Golden Proof** — planned.
 
-## KFR-05 completion boundary
+## KFR-06 completion boundary
 
-KFR-05 projects operator qualification only from explicit visible canonical-owner qualification evidence. `qualified`, `unqualified`, `unknown`, and `incompatible` remain explicit categorical states. Missing and explicit-unknown qualification evidence remain `unknown`; incompatible remains incompatible; conflicting qualified/unqualified evidence remains unresolved `unknown` for canonical owner resolution.
+KFR-06 delivers a visibility-safe read-only integration projection over explicit canonical-owner evidence for `profession`, `research`, `mentorship`, and `learning`. Missing and explicit-unknown evidence remain unknown; incompatible remains incompatible; conflicting confirmed/not-confirmed evidence remains unresolved for canonical owner resolution.
 
-KFR-03 familiarity and KFR-04 advisory transfer/confidence remain explanatory context only and cannot grant or upgrade qualification. Existing visible active `VehicleStationGrant` authority is projected separately from qualification; station authority does not prove qualification and KFR-05 creates or mutates no station grant.
+DPL-02 profession/mastery/credential, DPL-03 research/evidence/discovery, DPL-09 mentorship/training, Character, Progression-Abilities, Social-Relations, APW/D26 and Permission/visibility owners remain authoritative. KFR-03 records, KFR-04 transfer/confidence and KFR-05 qualification are separately labeled advisory context only and never advance owner state.
 
-## KFR-06 governed-start boundary
+KFR-06 awards no profession/mastery/credential/service readiness, resolves no research contradiction/discovery/reveal/publication, enrolls no mentorship, mutates no relationship or progression, executes no Project/time advancement, grants no permission/action authority, and performs no canonical mutation. Hidden/private evidence is filtered before counts, search, explanation, deterministic receipts and AI context. No durable KFR-06 persistence or migration `0022` was introduced.
 
-KFR-06 implements a visibility-safe, read-only integration projection over explicit canonical-owner evidence for four separately labeled kinds: `profession`, `research`, `mentorship`, and `learning`. Owner evidence states are categorical `confirmed`, `not-confirmed`, `explicit-unknown`, or `incompatible`. Missing or explicit-unknown evidence remains unknown, incompatible remains incompatible, and conflicting confirmed/not-confirmed evidence remains unresolved for canonical-owner resolution.
+## KFR-07 selection boundary
 
-DPL-02 profession/activity/mastery/credential definitions remain read-only. KFR familiarity, transfer or qualification cannot award profession membership, mastery, credentials or service readiness.
+KFR-07 will resolve governed authoring, inspection, search and provenance UX only after a future owner `Continue` establishes its governed-start contract. Selection alone authorizes no canonical write, permission escalation, provenance fabrication, hidden-data reveal, durable persistence or migration `0022`.
 
-DPL-03 research evidence/result/discovery truth remains canonical. Contradiction is preserved rather than silently resolved. KFR-06 cannot create a discovery, reveal hidden knowledge, publish research or replace the DPL-03 evidence chain.
-
-DPL-09 apprenticeship/mentorship/teaching/workforce definitions remain read-only. KFR-06 cannot enroll a learner, assign a mentor, mutate Social-Relations, execute an APW/D26 training Project or advance campaign time.
-
-Progression-Abilities remains sole advancement authority. KFR-06 cannot award skill points, mastery, credentials, XP, levels, knowledge points or any other learning advancement.
-
-KFR-03 records, KFR-04 advisory transfer/confidence and KFR-05 qualification may be carried only as separately labeled advisory context. They never upgrade canonical owner evidence.
-
-Hidden/private owner evidence, profession/research/mentorship/learning references and KFR context are filtered before counts, projection, search, explanation, deterministic receipts and AI context. Hidden cardinality is not exposed.
-
-KFR-06 introduces no durable persistence or duplicate profession/research/learning ledger; migration `0022` remains unreserved. Final validation requires exactly one KFR-06 Validation Core profile with zero historical predecessor fanout, genuine RED before production, and exact-head self-hosted Linux/Windows plus deterministic comparison.
-
-KFR-07+, ODL-01+, provider activation, tester distribution, release and deployment remain unauthorized.
+KFR-08, ODL-01+, provider activation, tester distribution, release and deployment remain unauthorized.
