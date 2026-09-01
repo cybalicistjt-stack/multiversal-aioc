@@ -1,7 +1,7 @@
 # ODL — Organizational Dynamics & Leadership
 
 **Program ID:** ODL  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH ODL-02; ODL-03 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH ODL-03; ODL-04 SELECTED_NOT_STARTED  
 **Activation:** after completed_verified KFR-08  
 **Successor:** SCL-01  
 **Owner and final authority:** John Brandon Turner  
@@ -11,9 +11,11 @@
 
 ODL-01 — Authority Crosswalk & Organization/Dependent Taxonomy — is `completed_verified` on application merge `3f93cfd075e9bf2b77b995d5e229b522049d114b`.
 
-ODL-02 — Capacity, Coordination & Load Dimensions — is `completed_verified` on validated head `df8db15522546bed69529faa28f261eef264fc66`, current-family run `33516434856`, deterministic receipt `0d11dafbabe5630fb672e0b35ed8d0d6ead2ce86146388bf6cb2df3671544242`, and application merge `51d971ab7eb17074a630dcf7c44415f06d0f65c7`.
+ODL-02 — Capacity, Coordination & Load Dimensions — is `completed_verified` on application merge `51d971ab7eb17074a630dcf7c44415f06d0f65c7`.
 
-ODL-03 — Loyalty, Cohesion, Factionalism & Internal Politics — is `in_progress` under bounded governed-start authority from exact application main `51d971ab7eb17074a630dcf7c44415f06d0f65c7` on branch `integration/odl-03-loyalty-cohesion-factionalism-internal-politics`.
+ODL-03 — Loyalty, Cohesion, Factionalism & Internal Politics — is `completed_verified` on exact validated application head `48c3fe94fb08b5098c183779e582f7c854e65e36`, current-family run `33521949516`, and application merge `91af0297adf625033d7fc65124a82d16db312114`. Final proof passed self-hosted Linux `99903196923`, self-hosted Windows `99903197111`, and deterministic comparison `99903409651`; matching deterministic receipt SHA-256 is `3991e91a727ab572e44afec2ec08fc03d7f5c7cc69bff1534332cb937e68b722`. Genuine RED preceded production at `45108ebf4ebb93fdd64e00e8dfa8ec94627f4800`. The first production head compiled and passed eight of nine focused tests; one bounded UI-only repair removed redundant provenance rendering without changing projection or authority semantics.
+
+ODL-04 — Delegation, Roles, Authority, Communication & Succession — is `selected_not_started` only from exact application main `91af0297adf625033d7fc65124a82d16db312114`. It has no implementation branch and no implementation authority.
 
 ## Purpose
 
@@ -21,51 +23,45 @@ ODL turns the recovered mine-note doctrine that social power has carrying cost i
 
 ODL consumes existing Organization/Faction/Relationship/Reputation, Economy, Base/Vehicle, Project, DPL and WCI authorities and prepares reusable leadership/load semantics for SCL command play.
 
-Recovered basis: RDC-04 / RD-05. The owner has explicitly directed that suitable recovered mine-note families be added to the roadmap.
+Recovered basis: RDC-04 / RD-05.
 
 ## Tranches
 
 1. **ODL-01 — Authority Crosswalk & Organization/Dependent Taxonomy** — completed_verified.
 2. **ODL-02 — Capacity, Coordination & Load Dimensions** — completed_verified.
-3. **ODL-03 — Loyalty, Cohesion, Factionalism & Internal Politics** — in_progress.
-4. **ODL-04 — Delegation, Roles, Authority, Communication & Succession** — planned.
+3. **ODL-03 — Loyalty, Cohesion, Factionalism & Internal Politics** — completed_verified.
+4. **ODL-04 — Delegation, Roles, Authority, Communication & Succession** — selected_not_started.
 5. **ODL-05 — Resources, Maintenance & Administrative Burden** — planned.
 6. **ODL-06 — Crisis, Coup, Fragmentation, Recombination & Recovery** — planned.
 7. **ODL-07 — Business, Base, Settlement, Faction, Crew, Family & SCL Integration** — planned.
 8. **ODL-08 — GM Control, Simulation Depth & Advisory AI** — planned.
 9. **ODL-09 — Organizational-Life Golden Proof** — planned.
 
-## ODL-01 completion boundary
+## ODL-01 and ODL-02 preserved boundary
 
-ODL-01 provides a read-only authority crosswalk over explicit owner references and creates no parallel organization/faction/relationship/resource truth. Missing owner evidence remains unknown, conflicting visible owner evidence remains conflict, and incompatible evidence remains incompatible. Title, rank, membership and hierarchy grant no system permission or command authority. Visibility filtering precedes counts, search, summaries, provenance, receipts and AI context.
+ODL-01 remains a read-only owner-reference taxonomy/crosswalk. ODL-02 remains a seven-dimension read-only qualitative pressure projection. Their canonical owner, visibility, unknown/conflict, no-permission, no-duplicate-ledger, no-persistence and no-migration boundaries remain unchanged. ODL-02 pressure is descriptive/advisory and does not itself create loyalty, faction or political outcomes.
 
-## ODL-02 completed boundary
+## ODL-03 completed boundary
 
-ODL-02 provides seven profile/context qualitative dimensions — coordination span, communication burden, administrative load, dependency, autonomy, geographic spread and organizational complexity — from explicit visible owner-referenced observations only. It does not infer bands from raw counts, title/rank, money, locations or elapsed time, and it computes no universal cap, single score, threshold or automatic growth failure. Missing/unknown/incompatible/conflicting evidence remains conservative. Pressure labels are descriptive only and never mutate owner state, permissions, command authority or campaign time.
+ODL-03 adds exactly four read-only profile/context qualitative dimensions over explicit visible canonical-owner observations:
 
-## ODL-03 governed contract
-
-ODL-03 adds exactly four read-only qualitative dimensions over explicit visible canonical-owner observations:
-
-- `loyalty` — profile/context bands `low`, `mixed`, `high`;
+- `loyalty` — `low`, `mixed`, `high`;
 - `cohesion` — `low`, `mixed`, `high`;
 - `factionalism` — `low`, `mixed`, `high`;
 - `internal-politics` — `quiet`, `contested`, `volatile`.
 
-These are profile/context labels, not universal numeric thresholds, relationship values or canonical political outcomes. Each accepted observation must carry an explicit subject reference, canonical owner authority/reference, profile, context, provenance and visibility reference. ODL-03 does not infer a band from ODL-02 pressure, member count, title/rank, hierarchy, faction label, money, location or elapsed time.
+ODL-03 never infers those states from ODL-02 pressure, member count, title/rank, hierarchy, faction label, money, location or elapsed time. After visibility filtering, compatible observed evidence resolves only when one band/profile/context tuple agrees. Missing or explicit-unknown evidence remains `unknown`; incompatible-only remains `incompatible`; divergent or mixed evidence remains `conflict`.
 
-After visibility filtering, a dimension resolves only when visible compatible observed evidence agrees on one governed band under one profile/context tuple. Missing or explicit-unknown evidence remains `unknown`; incompatible-only evidence remains `incompatible`; divergent visible bands, profiles, contexts or mixed observed/incompatible evidence remains `conflict`. ODL-03 does not auto-resolve canonical-owner contradictions.
+ODL-02 pressure is separately labeled advisory-only context. MIB-09 Relationship/Reputation remains canonical. ODL-03 creates no faction, derives no membership, mutates no relationship/reputation state, grants no command or system permission, adjudicates no coup/split/crisis/succession outcome, advances no campaign time, and creates no duplicate ledger. No durable ODL-03 persistence or migration `0022` was introduced.
 
-Visible ODL-02 capacity/coordination/load evidence may be supplied only as separately labeled advisory context. It never advances an ODL-03 dimension state and never automatically lowers loyalty/cohesion, raises factionalism, creates a faction or adjudicates internal politics.
+Authorization filtering occurs before states, counts, summaries, search, provenance, deterministic receipts and AI context. Hidden motives, relationships, factions, profile/context and advisory evidence never enter derived output and hidden cardinality remains undisclosed.
 
-MIB-09 remains authoritative for relationship dimensions/edges, Loyalty-style dimensions where governed by owner definitions, modifiers/events, reputation projection, history/provenance and visibility-safe relationship projections. ODL-03 reads explicit visible owner observations only. It does not mutate relationship/reputation state, create hidden-edge summaries, create factions, derive faction membership or add/remove members.
+## ODL-04 selection boundary
 
-No coup, split, mutiny, crisis, fragmentation, leadership replacement, succession, command restriction or other political outcome is adjudicated in ODL-03. Those outcomes remain for their later canonical owners/tranches. Organizational title, rank, membership, hierarchy, faction labels and ODL-03 bands grant no system permission, action authority or autonomous command authority.
+ODL-04 will resolve bounded delegation, roles, organizational authority, communication and succession semantics over existing canonical owner references during a separate governed start. Selection grants no implementation or write authority and chooses no role-assignment mutation, delegation mutation, leadership-replacement event, succession event, command authority, system permission, campaign-time mutation, persistence model or migration.
 
-Authorization filtering occurs before dimension state, counts, summaries, search, provenance, deterministic receipts and AI context. Hidden motives, relationships, reputation edges, faction references, loyalty/cohesion evidence, political evidence, profile/context references and ODL-02 advisory context are never exposed through derived output; hidden cardinality remains undisclosed.
-
-ODL-03 introduces no duplicate relationship/reputation/faction/politics ledger, no durable persistence and no migration `0022`. The UI is one read-only accessible nonvisual projection/explanation surface. Final validation uses exactly one ODL-03 current-family profile on self-hosted Linux and Windows plus deterministic comparison with zero historical predecessor fanout.
+Organizational title, rank, hierarchy, role, loyalty, cohesion and delegation labels do not imply system permission, action authority, canonical ownership or autonomous command authority. Hidden/private role, relationship, hierarchy, communication and succession evidence remains permission-filtered before derived output and hidden cardinality remains undisclosed. Migration `0022` remains unreserved.
 
 ## Successor boundary
 
-ODL-04+, SCL-01+, provider activation, tester distribution, release and deployment remain unauthorized until separately selected and governed.
+ODL-05+, SCL-01+, provider activation, tester distribution, release and deployment remain unauthorized until separately selected and governed.
