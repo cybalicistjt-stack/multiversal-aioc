@@ -1,7 +1,7 @@
 # KFR — Knowledge & Familiarity Relations
 
 **Program ID:** KFR  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH KFR-07; KFR-08 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH KFR-07; KFR-08 IN_PROGRESS  
 **Activation:** after completed_verified WCI-05  
 **Successor:** ODL-01  
 **Owner and final authority:** John Brandon Turner  
@@ -11,9 +11,9 @@
 
 KFR-01 through KFR-07 are `completed_verified`.
 
-KFR-07 — Authoring, Inspection, Search & Provenance UX — completed on exact validated application head `ba200bda8de5b7298c205d852213a621b5ef0b77`, current-family run `33495773941`, and application merge `9e4754a52026723c77af5830b92a453a867b4025`. Its implementation authority is retired. Final proof used the governed self-hosted Windows and Linux lanes plus deterministic comparison; the deterministic receipt SHA-256 is `77351208992d931f1380745ec50c3a49c618a710478aefc6dcfddf7c5f64c9b5`. Genuine RED preceded production and the first production head passed without a feature repair commit.
+KFR-07 — Authoring, Inspection, Search & Provenance UX — completed on exact validated application head `ba200bda8de5b7298c205d852213a621b5ef0b77`, current-family run `33495773941`, and application merge `9e4754a52026723c77af5830b92a453a867b4025`. Its implementation authority is retired. Final proof used the governed self-hosted Windows and Linux lanes plus deterministic comparison; the deterministic receipt SHA-256 is `77351208992d931f1380745ec50c3a49c618a710478aefc6dcfddf7c5f64c9b5`.
 
-KFR-08 — Cross-Domain Golden Proof — is `selected_not_started` only from exact application main `9e4754a52026723c77af5830b92a453a867b4025`. It has no implementation branch or implementation authority.
+KFR-08 — Cross-Domain Golden Proof — is `in_progress` on `integration/kfr-08-cross-domain-golden-proof` from exact application main `9e4754a52026723c77af5830b92a453a867b4025`.
 
 ## Purpose
 
@@ -28,20 +28,26 @@ KFR supplies governed familiarity relations that canonical Character, Skills/Pro
 5. **KFR-05 — Operator Qualification & Vehicle/Machine/Equipment Integration** — completed_verified.
 6. **KFR-06 — Profession, Research, Mentorship & Learning Integration** — completed_verified.
 7. **KFR-07 — Authoring, Inspection, Search & Provenance UX** — completed_verified.
-8. **KFR-08 — Cross-Domain Golden Proof** — selected_not_started.
+8. **KFR-08 — Cross-Domain Golden Proof** — in_progress.
 
 ## KFR-07 completion boundary
 
 KFR-07 delivers a visibility-safe read-only UX projection across separately labeled KFR-01 through KFR-06 inputs. Hidden/private KFR and owner-domain inputs are filtered before topology, cardinality, search, autocomplete, counts, previews, inspection, exports, diagnostics, notifications, receipts or optional-AI context. Hidden cardinality is never exposed.
 
-Search, count, preview/inspection and AI-context derived outputs require explicit visibility-projection authorization. Inspection remains read-only. Provenance UX displays only explicit existing provenance references attached to visible inputs; missing provenance remains absent/unknown and is never fabricated or inferred. Visible results, inspection collections, provenance references and deterministic receipts use stable ordering independent of input order.
+Search, count, preview/inspection and AI-context derived outputs require explicit visibility-projection authorization. Inspection remains read-only. Provenance UX displays only explicit existing provenance references attached to visible inputs; missing provenance remains absent/unknown and is never fabricated or inferred. Authoring remains intent/proposal UX only and existing AuthoringAuthority dimensions remain independent.
 
-Authoring remains intent/proposal UX only. Existing AuthoringAuthority dimensions remain independent; an allowed decision for one dimension does not imply another. KFR-07 composes authoring intent only after the relevant explicit allowed decision and does not execute AuthoringDraftPort or AuthoringProposalReviewPort writes, publish, reveal, or canonical-promote content.
+## KFR-08 governed-start boundary
 
-Canonical KFR/source-domain owners, AuthoringAuthority/AuthoringDraft/AuthoringProposalReview, and Permission/visibility systems remain authoritative. KFR-07 introduced no canonical write, permission escalation, hidden-data reveal, provenance fabrication, publication or promotion authority, no durable persistence, and no migration `0022`.
+KFR-08 is a composition/proof tranche only. It may add a thin cross-domain proof composer and accessible nonvisual proof panel that call completed KFR-01 through KFR-07 projection/receipt functions; it may not redefine their semantics.
 
-## KFR-08 selection boundary
+The bounded golden fixture crosses Character familiarity, MIB-14 vehicle/machine references, DPL profession, DPL-03 research, mentorship/learning owner evidence, advisory transfer/qualification context and KFR-07 search/inspection/provenance UX. Deliberately hidden counterpart inputs must be filtered by the completed owner projections before any KFR-08 aggregate, count, provenance chain, receipt or AI context. Hidden cardinality remains undisclosed.
 
-KFR-08 will resolve one cross-domain golden proof over completed KFR semantics only after a future owner `Continue` establishes its governed-start contract. Selection is proof/integration only and authorizes no new KFR algorithm, canonical write, permission escalation, provenance fabrication, hidden-data reveal, durable persistence or migration `0022`.
+The proof must preserve explicit unknown/conflict semantics: explicit-unknown familiarity cannot become competence through adjacency; conflicting KFR-05 qualified/unqualified canonical evidence remains unknown pending the qualification owner; conflicting KFR-06 research evidence remains unknown pending the research owner; explicit-unknown mentorship remains unknown. KFR-07 authoring uses a deliberately non-matching authority dimension so no authority inheritance or write occurs.
 
-ODL-01+, provider activation, tester distribution, release and deployment remain unauthorized.
+Provenance may be aggregated only from explicit provenance references already emitted by completed KFR projections. Missing provenance remains missing and KFR-08 may not fabricate provenance. Stable visible summaries and completed deterministic receipts form one stable KFR-08 receipt independent of fixture input ordering.
+
+Canonical KFR/source-domain owners, AuthoringAuthority and Permission/visibility remain authoritative. KFR-08 grants no permission/action authority, ownership/custody, proficiency/certification, profession advancement, research truth resolution, mentorship enrollment, authoring mutation or canonical write. No durable KFR-08 persistence is authorized and migration `0022` remains unreserved.
+
+Exactly one current KFR-08 Validation Core profile is authorized. Genuine RED must precede the thin proof composer/panel; final proof requires exact-head self-hosted Linux and Windows plus deterministic comparison with zero historical predecessor profile fanout.
+
+ODL-01+, provider activation, tester distribution, release and deployment remain unauthorized until KFR-08 is completed_verified and successor selection is recorded.
