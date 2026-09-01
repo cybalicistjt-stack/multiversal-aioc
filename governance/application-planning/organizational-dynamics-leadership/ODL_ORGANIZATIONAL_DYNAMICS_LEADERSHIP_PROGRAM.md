@@ -1,7 +1,7 @@
 # ODL — Organizational Dynamics & Leadership
 
 **Program ID:** ODL  
-**Status:** OWNER-APPROVED — ODL-01 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — ODL-01 IN_PROGRESS  
 **Activation:** after completed_verified KFR-08  
 **Successor:** SCL-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,9 +9,9 @@
 
 ## Current state
 
-KFR-08 and the KFR program are `completed_verified`. ODL is now the active sequential program.
+KFR-08 and the KFR program are `completed_verified`. ODL is the active sequential program.
 
-ODL-01 — Authority Crosswalk & Organization/Dependent Taxonomy — is `selected_not_started` only from exact application main `ee934162666fbdf3ef3c5dadd6e89762b2a0ec5e`. It has no implementation branch or implementation authority. A future owner `Continue` is required before governed start or product mutation.
+ODL-01 — Authority Crosswalk & Organization/Dependent Taxonomy — is `in_progress` on `integration/odl-01-authority-crosswalk-organization-dependent-taxonomy` from exact application main `ee934162666fbdf3ef3c5dadd6e89762b2a0ec5e`.
 
 ## Purpose
 
@@ -23,12 +23,9 @@ Recovered basis: RDC-04 / RD-05. The owner has explicitly directed that suitable
 
 ## Tranches
 
-1. **ODL-01 — Authority Crosswalk & Organization/Dependent Taxonomy** — selected_not_started.  
+1. **ODL-01 — Authority Crosswalk & Organization/Dependent Taxonomy** — in_progress.  
    Reconcile followers, staff, hirelings, dependents, crews, businesses, organizations, factions, settlements, households and command structures with their existing owners; define which concepts are projections/relations rather than new ledgers.
-
-2. **ODL-02 — Capacity, Coordination & Load Dimensions** — planned.  
-   Model profile-driven coordination span, communication burden, administrative load, dependency, autonomy, geographic spread and organizational complexity. No universal follower cap or single organization score is created.
-
+2. **ODL-02 — Capacity, Coordination & Load Dimensions** — planned.
 3. **ODL-03 — Loyalty, Cohesion, Factionalism & Internal Politics** — planned.
 4. **ODL-04 — Delegation, Roles, Authority, Communication & Succession** — planned.
 5. **ODL-05 — Resources, Maintenance & Administrative Burden** — planned.
@@ -37,11 +34,21 @@ Recovered basis: RDC-04 / RD-05. The owner has explicitly directed that suitable
 8. **ODL-08 — GM Control, Simulation Depth & Advisory AI** — planned.
 9. **ODL-09 — Organizational-Life Golden Proof** — planned.
 
-## ODL-01 selection boundary
+## ODL-01 governed-start boundary
 
-Selection alone authorizes no organization mutation, command authority, system permission, duplicate organization/resource ledger, universal follower cap, durable persistence or migration `0022`.
+The bounded taxonomy kinds are `follower`, `staff`, `hireling`, `dependent`, `crew`, `business`, `organization`, `faction`, `settlement`, `household`, and `command-structure`. ODL-01 is a read-only authority-crosswalk/taxonomy projection. Each visible entry must carry explicit owner reference(s), owner authority id(s), representation kind, provenance and visibility evidence. ODL-01 never creates canonical owner truth from a taxonomy label.
 
-A future governed start must re-read the minimum current Organization/Faction/Relationship/Reputation, Character, Economy, Base/Vehicle, Project, DPL, WCI and Permission/visibility authority required to resolve the exact ODL-01 crosswalk and taxonomy. Existing owner truth must remain distinct from ODL projection/relationship concepts. Organizational title never grants system permission by implication, and hidden motives/factions/dependent details remain permission-filtered before search, counts, projections, receipts or AI context.
+Current owner seams used by this tranche are `Character-Actors`, MIB-09 social relationship/organization-facing identity, MIB-13 Economy, MIB-14 Base/Vehicle, APW-D26 Project, completed DPL, completed WCI and Permission/visibility. These owners remain authoritative. Follower/staff/hireling/dependent/crew/household/command-structure concepts remain owner-backed relations or projections unless an existing canonical owner record is explicitly referenced. Business/organization/faction/settlement entries may reference existing owner records, but ODL-01 does not create or mutate them.
+
+Owner mapping state is explicit: resolved, unknown, conflict or incompatible. Missing evidence stays unknown. Conflicting explicit mappings stay conflict pending canonical-owner resolution. Labels, adjacency, title, rank, membership and inferred similarity cannot resolve ownership.
+
+Organizational title, rank, membership, hierarchy or command-structure position never implies system permission, action authority or autonomous command authority. ODL-01 has no permission-grant or command-execution surface.
+
+Authorization filtering occurs before taxonomy counts, owner counts, search text, projection summaries, provenance, deterministic receipts and AI context. Hidden cardinality is not exposed. Provenance is limited to explicit references supplied by visible owner-backed inputs and is never fabricated.
+
+ODL-01 defines no follower cap, organization-size cap, capacity score, coordination load or failure threshold. Those mechanics are outside this tranche; ODL-02 remains separately governed.
+
+No durable ODL-01 persistence or duplicate organization/resource/relationship ledger is authorized. Migration `0022` remains unreserved. Production scope is one read-only projection contract plus an accessible nonvisual panel. Exactly one current ODL-01 Validation Core profile is authorized; genuine RED must precede production, followed by exact-head self-hosted Linux/Windows and deterministic comparison with zero historical predecessor fanout.
 
 ## Invariants
 
