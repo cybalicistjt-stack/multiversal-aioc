@@ -1,7 +1,7 @@
 # ODL — Organizational Dynamics & Leadership
 
 **Program ID:** ODL  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH ODL-03; ODL-04 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH ODL-04; ODL-05 SELECTED_NOT_STARTED  
 **Activation:** after completed_verified KFR-08  
 **Successor:** SCL-01  
 **Owner and final authority:** John Brandon Turner  
@@ -13,9 +13,11 @@ ODL-01 — Authority Crosswalk & Organization/Dependent Taxonomy — is `complet
 
 ODL-02 — Capacity, Coordination & Load Dimensions — is `completed_verified` on application merge `51d971ab7eb17074a630dcf7c44415f06d0f65c7`.
 
-ODL-03 — Loyalty, Cohesion, Factionalism & Internal Politics — is `completed_verified` on exact validated application head `48c3fe94fb08b5098c183779e582f7c854e65e36`, current-family run `33521949516`, and application merge `91af0297adf625033d7fc65124a82d16db312114`. Final proof passed self-hosted Linux `99903196923`, self-hosted Windows `99903197111`, and deterministic comparison `99903409651`; matching deterministic receipt SHA-256 is `3991e91a727ab572e44afec2ec08fc03d7f5c7cc69bff1534332cb937e68b722`. Genuine RED preceded production at `45108ebf4ebb93fdd64e00e8dfa8ec94627f4800`. The first production head compiled and passed eight of nine focused tests; one bounded UI-only repair removed redundant provenance rendering without changing projection or authority semantics.
+ODL-03 — Loyalty, Cohesion, Factionalism & Internal Politics — is `completed_verified` on application merge `91af0297adf625033d7fc65124a82d16db312114`.
 
-ODL-04 — Delegation, Roles, Authority, Communication & Succession — is `in_progress` from exact application main `91af0297adf625033d7fc65124a82d16db312114` on `integration/odl-04-delegation-roles-authority-communication-succession` after owner Continue and governed-start contract resolution.
+ODL-04 — Delegation, Roles, Authority, Communication & Succession — is `completed_verified` on exact validated application head `59a84f30c3a1c699c0b81e746a837e99b0476448`, current-family run `33532453397`, and application merge `fcfd6499853a9df6bc8ca8b5ab0e07555c7b2351`. Final proof passed self-hosted Linux `99938696662`, self-hosted Windows `99938696632`, and deterministic comparison `99938917496`; matching deterministic receipt SHA-256 is `86001deeb8b7405f93a03933a240bcfe806591145e5e76f3253486566707eaf0`. Genuine RED preceded production at `603e15fda87eb9012d8c968339ef41d86e657bf1`. The first complete production head passed without a feature repair commit.
+
+ODL-05 — Resources, Maintenance & Administrative Burden — is `selected_not_started` only from exact application main `fcfd6499853a9df6bc8ca8b5ab0e07555c7b2351`. It has no implementation branch and no implementation authority.
 
 ## Purpose
 
@@ -30,48 +32,43 @@ Recovered basis: RDC-04 / RD-05.
 1. **ODL-01 — Authority Crosswalk & Organization/Dependent Taxonomy** — completed_verified.
 2. **ODL-02 — Capacity, Coordination & Load Dimensions** — completed_verified.
 3. **ODL-03 — Loyalty, Cohesion, Factionalism & Internal Politics** — completed_verified.
-4. **ODL-04 — Delegation, Roles, Authority, Communication & Succession** — in_progress.
-5. **ODL-05 — Resources, Maintenance & Administrative Burden** — planned.
+4. **ODL-04 — Delegation, Roles, Authority, Communication & Succession** — completed_verified.
+5. **ODL-05 — Resources, Maintenance & Administrative Burden** — selected_not_started.
 6. **ODL-06 — Crisis, Coup, Fragmentation, Recombination & Recovery** — planned.
 7. **ODL-07 — Business, Base, Settlement, Faction, Crew, Family & SCL Integration** — planned.
 8. **ODL-08 — GM Control, Simulation Depth & Advisory AI** — planned.
 9. **ODL-09 — Organizational-Life Golden Proof** — planned.
 
-## ODL-01 and ODL-02 preserved boundary
+## ODL-01 through ODL-03 preserved boundary
 
-ODL-01 remains a read-only owner-reference taxonomy/crosswalk. ODL-02 remains a seven-dimension read-only qualitative pressure projection. Their canonical owner, visibility, unknown/conflict, no-permission, no-duplicate-ledger, no-persistence and no-migration boundaries remain unchanged. ODL-02 pressure is descriptive/advisory and does not itself create loyalty, faction or political outcomes.
+ODL-01 remains a read-only owner-reference taxonomy/crosswalk. ODL-02 remains a seven-dimension read-only qualitative pressure projection. ODL-03 remains a four-dimension read-only profile/context projection for loyalty, cohesion, factionalism and internal politics. Their canonical owner, visibility, conservative unknown/conflict, no-permission, no-mutation, no-duplicate-ledger, no-persistence and no-migration boundaries remain unchanged. ODL-02 pressure is descriptive/advisory and ODL-03 does not itself create factions, relationships, political outcomes, command authority or succession.
 
-## ODL-03 completed boundary
+## ODL-04 completed boundary
 
-ODL-03 adds exactly four read-only profile/context qualitative dimensions over explicit visible canonical-owner observations:
+ODL-04 adds a read-only leadership-structure projection over exactly four explicit owner-record kinds: `role`, `delegation`, `communication`, and `succession`. Organizational-authority scope remains an explicit descriptive owner-backed reference carried by role/delegation evidence; it is not a fifth ownership system.
 
-- `loyalty` — `low`, `mixed`, `high`;
-- `cohesion` — `low`, `mixed`, `high`;
-- `factionalism` — `low`, `mixed`, `high`;
-- `internal-politics` — `quiet`, `contested`, `volatile`.
+Every accepted record carries explicit organization and subject references, record kind, evidence state, canonical owner authority/reference, profile/context, provenance, visibility reference and viewer authorization. Communication records may carry explicit source/destination/channel references. Succession records may carry explicit predecessor-role, successor-subject and owner-provided sequence references.
 
-ODL-03 never infers those states from ODL-02 pressure, member count, title/rank, hierarchy, faction label, money, location or elapsed time. After visibility filtering, compatible observed evidence resolves only when one band/profile/context tuple agrees. Missing or explicit-unknown evidence remains `unknown`; incompatible-only remains `incompatible`; divergent or mixed evidence remains `conflict`.
+ODL-04 does not synthesize records from title, rank, hierarchy, ODL-02 pressure, ODL-03 loyalty/cohesion/factionalism/internal-politics state, member count, money, location or elapsed time. Visible ODL-02/03 context remains separately labeled advisory-only and cannot create or advance ODL-04 state.
 
-ODL-02 pressure is separately labeled advisory-only context. MIB-09 Relationship/Reputation remains canonical. ODL-03 creates no faction, derives no membership, mutates no relationship/reputation state, grants no command or system permission, adjudicates no coup/split/crisis/succession outcome, advances no campaign time, and creates no duplicate ledger. No durable ODL-03 persistence or migration `0022` was introduced.
-
-Authorization filtering occurs before states, counts, summaries, search, provenance, deterministic receipts and AI context. Hidden motives, relationships, factions, profile/context and advisory evidence never enter derived output and hidden cardinality remains undisclosed.
-
-## ODL-04 governed-start boundary
-
-ODL-04 is a bounded read-only projection over exactly four explicit owner-record kinds: `role`, `delegation`, `communication`, and `succession`. Organizational-authority scope is not a fifth ownership system; it is an explicit descriptive owner-backed reference carried by role/delegation evidence.
-
-Every accepted record carries explicit organization/subject references, record kind, canonical owner authority/reference, profile/context, provenance, visibility reference, and viewer authorization. Communication evidence may carry explicit endpoint/channel references. Succession evidence may carry explicit predecessor-role, successor-subject and owner-provided sequence references. ODL-04 does not synthesize records from title, rank, hierarchy, ODL-02 pressure, ODL-03 loyalty/cohesion/politics, member count, money, location or elapsed time.
-
-After visibility filtering, a record kind resolves only when visible compatible observed records agree on one semantic tuple under one profile/context tuple. Missing or explicit-unknown evidence remains `unknown`; incompatible-only remains `incompatible`; divergent semantic tuples, profiles, contexts or mixed observed/incompatible evidence remains `conflict`. Canonical-owner contradictions are never auto-resolved.
+After visibility filtering, a record kind resolves only when compatible visible observed evidence agrees on one semantic tuple under one profile/context tuple. Missing or explicit-unknown evidence remains `unknown`; incompatible-only remains `incompatible`; divergent semantic/profile/context tuples or mixed observed/incompatible evidence remains `conflict`. Canonical-owner contradictions are never auto-resolved.
 
 Organizational role, title, rank, hierarchy, delegation or authority-scope references remain descriptive owner evidence only. They never grant system permission, executable action authority, canonical ownership, autonomous command authority or permission bypass.
 
-ODL-04 does not assign roles; create, revoke or execute delegations; send messages or create communication channels; mutate relationships/reputation; replace leadership; trigger succession; mutate faction membership; adjudicate crisis/coup/split outcomes; or advance campaign time. Canonical Organization/Faction/Relationship/Reputation, Character, Project/time/context and Permission/visibility owners remain authoritative.
+ODL-04 assigns no role; creates, revokes or executes no delegation; sends no message; creates or mutates no communication channel; mutates no relationship/reputation or faction membership; replaces no leadership; triggers no succession; adjudicates no coup/split/crisis; advances no campaign time; and performs no canonical owner mutation. Canonical Organization/Faction/Relationship/Reputation, Character, DPL, WCI, Project/time/context and Permission/visibility owners remain authoritative.
 
-Authorization filtering occurs before states, counts, summaries, search, provenance collections, deterministic receipts and AI context. Hidden/private roles, delegations, hierarchy/authority scopes, communication endpoints/routes, succession plans, relationship/reputation references, profile/context and provenance never enter derived output and hidden cardinality remains undisclosed.
+Authorization filtering occurs before states, counts, summaries, search, provenance collections, deterministic receipts and AI context. Hidden/private roles, delegations, hierarchy/authority-scope, communication endpoints/routes, succession plans, relationships, profile/context, provenance and advisory evidence never enter derived output and hidden cardinality remains undisclosed.
 
-No durable ODL-04 persistence or duplicate organization/relationship/permission/succession ledger is introduced. Migration `0022` remains unreserved. Exactly one ODL-04 current-family profile may run; genuine RED must precede production and final completion requires exact-head self-hosted Linux/Windows plus deterministic comparison with zero historical predecessor fanout.
+No durable ODL-04 persistence or duplicate organization/relationship/permission/succession ledger was introduced. Migration `0022` remains unreserved.
+
+## ODL-05 selection boundary
+
+ODL-05 will resolve bounded resources, maintenance and administrative-burden semantics over existing canonical owner references during a separate governed start. Selection itself grants no implementation authority and does not select an evidence vocabulary, resource formula, maintenance event model, owner mutation path, spending authority, Project/time behavior or persistence model.
+
+ODL-02 administrative/load pressure remains descriptive/advisory only. It never automatically consumes resources, creates maintenance failure, imposes action restrictions or adjudicates administrative outcomes. ODL-04 roles, delegations and organizational-authority scope remain read-only descriptive evidence and never imply spending, maintenance, Project or system-permission authority.
+
+Hidden/private resource, maintenance, administrative, organization, role/delegation, project and permission evidence remains filtered before counts, summaries, search, provenance, receipts and AI context; hidden cardinality remains undisclosed. Migration `0022` remains unreserved.
 
 ## Successor boundary
 
-ODL-05+, SCL-01+, provider activation, tester distribution, release and deployment remain unauthorized until separately selected and governed.
+ODL-06+, SCL-01+, provider activation, tester distribution, release and deployment remain unauthorized until separately selected and governed.
