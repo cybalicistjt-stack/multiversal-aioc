@@ -1,25 +1,25 @@
 # KFR — Knowledge & Familiarity Relations
 
 **Program ID:** KFR  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH KFR-07; KFR-08 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH KFR-08  
 **Activation:** after completed_verified WCI-05  
 **Successor:** ODL-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-08-27
 
-## Current state
+## Completion state
 
-KFR-01 through KFR-07 are `completed_verified`.
+KFR-01 through KFR-08 are `completed_verified`. All KFR implementation authority is retired.
 
-KFR-07 — Authoring, Inspection, Search & Provenance UX — completed on exact validated application head `ba200bda8de5b7298c205d852213a621b5ef0b77`, current-family run `33495773941`, and application merge `9e4754a52026723c77af5830b92a453a867b4025`. Its implementation authority is retired. Final proof used the governed self-hosted Windows and Linux lanes plus deterministic comparison; the deterministic receipt SHA-256 is `77351208992d931f1380745ec50c3a49c618a710478aefc6dcfddf7c5f64c9b5`.
+KFR-08 — Cross-Domain Golden Proof — completed on exact validated application head `64f96b923d902ce6d045314b8ec5e28a59405666`, current-family run `33506467051`, and application merge `ee934162666fbdf3ef3c5dadd6e89762b2a0ec5e`. Final proof passed self-hosted Linux job `99851701010`, self-hosted Windows job `99851701112`, and deterministic comparator `99851884426`; the matching deterministic receipt SHA-256 is `481531d374490673c426ace9399ab7eac7da00a312b021d16fbdd9032ba092ad`. Historical predecessor profile fanout was `0`. Genuine RED on `ebcef7d976e161fd50869e9f4d43cf57d45ad244` preceded production, and the first complete production head passed without a feature repair commit.
 
-KFR-08 — Cross-Domain Golden Proof — is `in_progress` on `integration/kfr-08-cross-domain-golden-proof` from exact application main `9e4754a52026723c77af5830b92a453a867b4025`.
+## Purpose delivered
 
-## Purpose
+KFR supplies governed familiarity relations that canonical Character, Skills/Progression, Professions, Research, Vehicle/platform, Equipment/Asset, Organization/relationship, World/WCI and Permission systems may consume without replacing their state or authority.
 
-KFR supplies governed familiarity relations that canonical Character, Skills/Progression, Professions, Research, Vehicle/platform, Equipment/Asset, Organization/relationship, World/WCI and permission systems may consume without replacing their state or authority.
+The completed sequence delivers source/authority vocabulary, hierarchical familiarity graph relations, explicit Character knowledge/experience/familiarity records, advisory transfer/confidence/unknown handling, operator qualification integration, profession/research/mentorship/learning owner-evidence integration, visibility-safe authoring/inspection/search/provenance UX, and one cross-domain golden proof.
 
-## Tranches
+## Completed tranches
 
 1. **KFR-01 — Source/Authority Crosswalk & Familiarity Vocabulary** — completed_verified.
 2. **KFR-02 — Hierarchical Familiarity Graph** — completed_verified.
@@ -28,26 +28,16 @@ KFR supplies governed familiarity relations that canonical Character, Skills/Pro
 5. **KFR-05 — Operator Qualification & Vehicle/Machine/Equipment Integration** — completed_verified.
 6. **KFR-06 — Profession, Research, Mentorship & Learning Integration** — completed_verified.
 7. **KFR-07 — Authoring, Inspection, Search & Provenance UX** — completed_verified.
-8. **KFR-08 — Cross-Domain Golden Proof** — in_progress.
+8. **KFR-08 — Cross-Domain Golden Proof** — completed_verified.
 
-## KFR-07 completion boundary
+## Final authority boundary
 
-KFR-07 delivers a visibility-safe read-only UX projection across separately labeled KFR-01 through KFR-06 inputs. Hidden/private KFR and owner-domain inputs are filtered before topology, cardinality, search, autocomplete, counts, previews, inspection, exports, diagnostics, notifications, receipts or optional-AI context. Hidden cardinality is never exposed.
+KFR-08 proves that completed KFR-01 through KFR-07 projections compose without redefining their semantics. Hidden/private inputs are filtered by owner projections before golden aggregates, provenance, receipts or AI context, and hidden cardinality is not exposed. Explicit-unknown familiarity remains unknown through advisory transfer; qualification and research conflicts remain unresolved for their canonical owners; explicit-unknown mentorship remains unknown.
 
-Search, count, preview/inspection and AI-context derived outputs require explicit visibility-projection authorization. Inspection remains read-only. Provenance UX displays only explicit existing provenance references attached to visible inputs; missing provenance remains absent/unknown and is never fabricated or inferred. Authoring remains intent/proposal UX only and existing AuthoringAuthority dimensions remain independent.
+Provenance remains explicit-only. Authoring authority dimensions do not inherit. Canonical Character, Progression/Skill, Profession, Research, MIB-14/D17, Organization/Relationship, World/WCI, Authoring and Permission/visibility owners remain authoritative. KFR grants no implicit permission/action authority, ownership/custody, competence, proficiency/certification, profession advancement, research truth resolution, mentorship enrollment, publication or canonical write.
 
-## KFR-08 governed-start boundary
+No durable KFR persistence, duplicate owner ledger, universal transfer percentage, provenance fabrication or migration `0022` was introduced.
 
-KFR-08 is a composition/proof tranche only. It may add a thin cross-domain proof composer and accessible nonvisual proof panel that call completed KFR-01 through KFR-07 projection/receipt functions; it may not redefine their semantics.
+## Successor
 
-The bounded golden fixture crosses Character familiarity, MIB-14 vehicle/machine references, DPL profession, DPL-03 research, mentorship/learning owner evidence, advisory transfer/qualification context and KFR-07 search/inspection/provenance UX. Deliberately hidden counterpart inputs must be filtered by the completed owner projections before any KFR-08 aggregate, count, provenance chain, receipt or AI context. Hidden cardinality remains undisclosed.
-
-The proof must preserve explicit unknown/conflict semantics: explicit-unknown familiarity cannot become competence through adjacency; conflicting KFR-05 qualified/unqualified canonical evidence remains unknown pending the qualification owner; conflicting KFR-06 research evidence remains unknown pending the research owner; explicit-unknown mentorship remains unknown. KFR-07 authoring uses a deliberately non-matching authority dimension so no authority inheritance or write occurs.
-
-Provenance may be aggregated only from explicit provenance references already emitted by completed KFR projections. Missing provenance remains missing and KFR-08 may not fabricate provenance. Stable visible summaries and completed deterministic receipts form one stable KFR-08 receipt independent of fixture input ordering.
-
-Canonical KFR/source-domain owners, AuthoringAuthority and Permission/visibility remain authoritative. KFR-08 grants no permission/action authority, ownership/custody, proficiency/certification, profession advancement, research truth resolution, mentorship enrollment, authoring mutation or canonical write. No durable KFR-08 persistence is authorized and migration `0022` remains unreserved.
-
-Exactly one current KFR-08 Validation Core profile is authorized. Genuine RED must precede the thin proof composer/panel; final proof requires exact-head self-hosted Linux and Windows plus deterministic comparison with zero historical predecessor profile fanout.
-
-ODL-01+, provider activation, tester distribution, release and deployment remain unauthorized until KFR-08 is completed_verified and successor selection is recorded.
+ODL-01 — Authority Crosswalk & Organization/Dependent Taxonomy — is `selected_not_started` only from exact application main `ee934162666fbdf3ef3c5dadd6e89762b2a0ec5e`. It has no implementation branch or implementation authority. A future owner `Continue` is required before governed start or product mutation. ODL-02+, SCL-01+, provider activation, tester distribution, release and deployment remain unauthorized.
