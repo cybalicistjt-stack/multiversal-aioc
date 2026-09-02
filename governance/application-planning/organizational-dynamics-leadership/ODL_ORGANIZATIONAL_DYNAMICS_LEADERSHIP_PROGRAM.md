@@ -1,7 +1,7 @@
 # ODL — Organizational Dynamics & Leadership
 
 **Program ID:** ODL  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH ODL-07; ODL-08 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — COMPLETED THROUGH ODL-07; ODL-08 IN_PROGRESS  
 **Activation:** after completed_verified KFR-08  
 **Successor:** SCL-01  
 **Owner and final authority:** John Brandon Turner  
@@ -13,7 +13,7 @@ ODL-01 through ODL-06 remain `completed_verified` under their sealed checkpoints
 
 ODL-07 — Business, Base, Settlement, Faction, Crew, Family & SCL Integration — is `completed_verified` on application PR `381`, validated head `d2d05b12ac87306394ed43e3150c39ba6bbe2ff1`, validation run `33622052377`, deterministic receipt `fba3b75ea4bee77a701d64a5e2ba5f01711b5b124cb7afcb4253e4b526ad935d`, and application merge `b6dbf5539ede1505ffaefc7b1f4e551e11c48a33`.
 
-ODL-08 — GM Control, Simulation Depth & Advisory AI — is `selected_not_started` from exact application baseline `b6dbf5539ede1505ffaefc7b1f4e551e11c48a33` with no implementation branch or implementation authority.
+ODL-08 — GM Control, Simulation Depth & Advisory AI — is `in_progress` from exact application baseline `b6dbf5539ede1505ffaefc7b1f4e551e11c48a33` on branch `integration/odl-08-gm-control-simulation-depth-advisory-ai` with bounded read-only projection authority only.
 
 ## Purpose
 
@@ -32,27 +32,31 @@ Recovered basis: RDC-04 / RD-05.
 5. **ODL-05 — Resources, Maintenance & Administrative Burden** — completed_verified.
 6. **ODL-06 — Crisis, Coup, Fragmentation, Recombination & Recovery** — completed_verified.
 7. **ODL-07 — Business, Base, Settlement, Faction, Crew, Family & SCL Integration** — completed_verified.
-8. **ODL-08 — GM Control, Simulation Depth & Advisory AI** — selected_not_started.
+8. **ODL-08 — GM Control, Simulation Depth & Advisory AI** — in_progress.
 9. **ODL-09 — Organizational-Life Golden Proof** — planned.
 
 ## ODL-01 through ODL-07 preserved boundary
 
 ODL-01 remains the owner-reference taxonomy/crosswalk. ODL-02 remains the seven-dimension qualitative pressure projection. ODL-03 remains the loyalty/cohesion/factionalism/internal-politics projection. ODL-04 remains the role/delegation/communication/succession projection. ODL-05 remains the resource-position/maintenance/admin-burden projection. ODL-06 remains the crisis/coup/split/fragmentation/recombination/recovery owner-event projection. ODL-07 remains the explicit-visible-owner integration projection for business, base, settlement, faction, crew and family, plus an identity-preserving read-only SCL-facing reference handoff.
 
-ODL-07 completed genuine RED on exact head `68fe0fd70323a907eab9d840d58a1399d12905cb`. The invariant verifier and workspace installation passed, then self-hosted Linux and Windows failed at client typecheck because the production contract and panel were intentionally absent. Deterministic comparison matched receipt `d4ec750344d7043d108473042af2a09a9b0534ea0da5777c1f454daa63cb73f8`.
+All canonical owner, visibility, conservative unresolved-state, no-permission, no-mutation, no-duplicate-ledger, no-persistence and no-migration boundaries from ODL-01..07 remain unchanged.
 
-The production contract and accessible panel were then added atomically. First complete production head `d2d05b12ac87306394ed43e3150c39ba6bbe2ff1` passed selector/repository health, self-hosted Linux, self-hosted Windows and deterministic comparison in run `33622052377`, with receipt `fba3b75ea4bee77a701d64a5e2ba5f01711b5b124cb7afcb4253e4b526ad935d`, zero historical predecessor fanout and zero application feature repair cycles. The acceptance blob remained unchanged at `bfaea1dbda4fa182a3e616668a4bfeeebd6bebd6` through GREEN.
+## ODL-08 governed contract
 
-Canonical business/economy, base/vehicle, settlement/World, faction/relationship/reputation, Character/crew/family, Project/time, DPL/WCI and Permission/visibility owners remain authoritative. ODL-07 introduced no owner mutation, SCL scale/unit/aggregation/command/resolution mechanics, campaign-time advancement, command/action/system permission, duplicate ledger, durable persistence or migration `0022`.
+ODL-08 has exactly three read-only record kinds: `gm-control`, `simulation-depth`, and `advisory-ai`.
 
-## ODL-08 selection boundary
+- `gm-control` accepts only explicit visible WCI GM-workspace or APM automated-play controller references. It does not grant GM role, system permission, action authority, autonomous command authority or direct owner mutation.
+- `simulation-depth` accepts only explicit visible owner-authored profile/policy reference identity from WCI or APM. ODL-08 defines no universal shallow/medium/deep scale, numeric depth score, automatic fidelity escalation, background simulation engine or wall-clock advancement.
+- `advisory-ai` accepts only explicit visible MIB-15 provider-neutral proposal/candidate-envelope and authorized-context/provenance references. ODL-08 performs no provider dispatch, live/paid provider selection, model execution, direct commit, GM adjudication, mechanical resolution, permission decision or irreversible advancement. No-AI operation remains valid.
 
-ODL-08 is selected only. Its exact GM-control inputs, simulation-depth vocabulary, advisory-AI outputs, provenance, visibility, conservative unresolved behavior and canonical-owner commit boundaries must be resolved at a future governed start from current authority before product mutation.
+Visible ODL-01..07 outputs may be surfaced only as separately labeled advisory context and never synthesize an ODL-08 record, alter simulation depth, authorize AI advice, issue commands, reveal hidden content or trigger owner-domain/SCL outcomes.
 
-Selection does not authorize a GM-control engine, simulation engine, autonomous or advisory AI implementation, AI-owned truth, owner mutation, commands, action authority, system permission, hidden-data disclosure, duplicate ledgers, durable persistence or migration `0022`.
+Visibility filtering occurs before records, states, counts, summaries, search, provenance, deterministic receipts, AI context and any SCL-facing output. Hidden cardinality remains undisclosed. Missing/explicit-unknown evidence remains unknown, incompatible-only or kind-owner mismatch remains incompatible, and divergent visible kind/owner/profile/context or mixed observed/incompatible evidence remains conflict. Canonical-owner contradictions are never auto-resolved.
 
-Completed ODL projections remain read-only/descriptive/advisory. They cannot automatically mutate owner domains, issue commands, grant permissions, reveal hidden evidence or create SCL state.
+APW-D26 Project/time references remain context only and never advance campaign time or mutate Projects. Permission/visibility remains authoritative. No owner-domain mutation, autonomous command/action/system permission, hidden-data reveal, duplicate GM-control/simulation/AI ledger, durable ODL-08 persistence or migration `0022` is authorized.
+
+Validation must use acceptance-first genuine RED before production, exactly one current-family ODL-08 profile, zero historical predecessor fanout, and final exact-head self-hosted Linux/Windows plus deterministic comparison.
 
 ## Successor boundary
 
-ODL-09, SCL-01+ implementation, provider activation, tester distribution, release and deployment remain unauthorized until separately selected and governed.
+ODL-09 is successor selection only until ODL-08 completes and closes out. SCL-01+ implementation, provider activation, tester distribution, release and deployment remain unauthorized.
