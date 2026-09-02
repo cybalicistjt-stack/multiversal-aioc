@@ -1,54 +1,58 @@
 # SCL — Strategic Command & Large-Scale Conflict
 
 **Program ID:** SCL  
-**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH SCL-03; SCL-04 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH SCL-03; SCL-04 IN PROGRESS  
 **Activation:** after completed_verified ODL-09  
 **Successor:** MAL-01  
 **Owner and final authority:** John Brandon Turner
 
 ## Current state
 
-SCL-01 through SCL-03 are `completed_verified`. SCL-03 completed on application PR `387`, exact validated head `d66d150107b7e27e3cd266d6da42c5ee686abc2a`, validation run `33678334569`, deterministic receipt `95314bbd572d973ad8856fa97031e78abc7278d6e863833cd418ba126fa3ff33`, zero historical predecessor fanout, zero application feature-repair cycles, and application merge `a4913b3cb162c0c05e4efaf7a98b856f7d57c92a`.
+SCL-01 through SCL-03 remain `completed_verified`. SCL-04 — Command Phases & Deterministic Order Resolution — is `in_progress` from exact application main `a4913b3cb162c0c05e4efaf7a98b856f7d57c92a` on `integration/scl-04-command-phases-deterministic-order-resolution` under a sealed bounded implementation authority.
 
-SCL-04 — Command Phases & Deterministic Order Resolution — is the strict successor and is `selected_not_started` from exact application main `a4913b3cb162c0c05e4efaf7a98b856f7d57c92a`. It has no implementation branch and no implementation authority.
+## Frozen predecessor contracts
 
-## Frozen SCL-01/SCL-02 contracts
+SCL-01 retains source/scale/owner-domain routing and identity-preserving visibility-first projection. SCL-02 retains reusable unit/formation profile projections and explicit canonical leaf identity. SCL-03 retains read-only command relationships, ODL-04-backed delegation, order intent/lifecycle and descriptive communication projections. SCL-03 order types are `directive`, `task`, `constraint`, `coordination`; lifecycle is `proposed`, `issued`, `acknowledged`, `received`, `superseded`, `cancelled`.
 
-SCL-01 remains authoritative for source/scale/owner-domain routing, visibility-first filtering, identity-preserving projection and the scale vocabulary `individual`, `squad`, `unit`, `formation`, `force`, `theater`.
+## SCL-04 governed contract
 
-SCL-02 remains authoritative for reusable `squad`, `unit`, `formation`, `fleet`, and `army` profile projections, explicit canonical leaf identity, visible composition/capability/readiness/equipment/platform references and conservative unresolved evidence. It creates no command or resolution authority.
+Phase vocabulary is exactly `intake`, `eligibility`, `precedence`, `resolution`, `handoff`, `closed`. Outcome vocabulary is exactly `ready`, `partial`, `blocked`, `invalid`, `conflict`.
 
-## Frozen SCL-03 contract
+Eligibility is conservative. Only visible SCL-03 orders with resolved evidence, lifecycle `received`, resolved command/delegation scope and non-interrupted communication may become handoff candidates. `proposed`, `issued`, and `acknowledged` remain blocked pending receipt. `superseded` and `cancelled` are inactive-invalid.
 
-SCL-03 defines read-only command relationship, explicit ODL-04-backed delegation, order intent/lifecycle and descriptive communication projections. Relationship roles are `commander`, `subordinate`, `staff`, `liaison`. Order types are `directive`, `task`, `constraint`, `coordination`; lifecycle is `proposed`, `issued`, `acknowledged`, `received`, `superseded`, `cancelled`. Communication range bands are `unknown`, `local`, `linked`, `remote`; delay bands are `unknown`, `none`, `delayed`, `extended`; states are `available`, `delayed`, `interrupted`, `unknown`.
+SCL-04 defines no implicit order-type priority table. Precedence comes only from explicit visible dependency, supersession and conflict references. Missing dependency references block. Dependency cycles and unresolved explicit conflicts remain `conflict`; they never auto-select a winner. Independent eligible orders use stable order-id ordering only for deterministic receipt/handoff ordering, never as command authority.
 
-Permission/visibility filtering precedes command/order/communication existence, counts, summaries, provenance, receipts or AI context. Missing, unknown, conflict and incompatible visible evidence remains unresolved. SCL-03 performs no order issuance mutation, delegated Action execution, mechanical resolution, owner mutation, AI command/adjudication, persistence or migration.
+SCL-04 resolves command-order coordination only. A result can be `ready`, `partial`, `blocked`, `invalid`, or `conflict`, and may emit zero or more explicit canonical owner-domain handoff requests. Handoff domains are exactly `action`, `combat`, and `event`. Downstream owner domains decide and commit canonical results. SCL-04 never executes an Action, applies Combat effects, creates an Event outcome, advances campaign time, or mutates canonical owner state; its receipt cannot be replayed as world-state truth or double-apply downstream effects.
 
-## SCL-04 selection boundary
+`partial` requires at least one visible resolved owner-domain handoff and at least one other visible handoff that remains unknown, conflict, incompatible, or blocked. Hidden evidence never affects visible status or cardinality.
 
-SCL-04 is selected only. This selection intentionally does **not** decide or implement the exact phase vocabulary, order eligibility/precedence, simultaneous/conflicting order treatment, deterministic resolution inputs/outputs, partial/blocked/invalid outcomes, canonical Action/Combat/Event handoffs or receipt contract. Those semantics must be resolved during the next bounded governed-start pass from the exact application baseline.
+Permission/visibility filtering occurs before order inclusion, dependency/precedence/conflict evaluation, outcomes, handoff counts, summary/search/provenance, deterministic receipts or AI context. Missing, unknown, conflict or incompatible visible evidence remains conservative and is never guessed or auto-reconciled.
 
-SCL-04 may later own command-phase and deterministic order-resolution coordination while ordinary Action/Combat/Event truth remains canonical and may not be duplicated or double-applied. SCL-05/SCL-06 retain morale/logistics mechanics, SCL-08 fleet/platform integration, SCL-09 casualty/damage reconciliation and SCL-10 strategic consequences.
+Stable order ids, explicit dependency/supersession/conflict ids and owner-domain handoff ids define deterministic receipt ordering. Presentation prose is excluded from canonical receipt truth.
 
-No autonomous AI command/adjudication, owner mutation, system permission, hidden-data reveal, persistence, migration `0022`, provider activation, tester distribution, release or deployment is authorized by SCL-04 selection.
+SCL-05/SCL-06 retain morale/logistics mechanics; SCL-07 retains terrain/objective strategic-position mechanics; SCL-08 fleet/platform integration; SCL-09 casualty/damage reconciliation; SCL-10 strategic consequences. AI remains advisory only where separately governed. No durable SCL-04 ledger is created and migration `0022` remains unreserved.
+
+## Validation
+
+SCL-04 must establish genuine acceptance-first RED before production contract/panel mutation. Final validation must run exactly one changed current-family SCL-04 profile on exact-head self-hosted Linux and Windows with deterministic comparison and zero historical predecessor fanout.
 
 ## Tranches
 
-1. **SCL-01 — Source Inventory, Scale Taxonomy & Authority Map** — completed_verified.
-2. **SCL-02 — Unit, Formation, Squad, Fleet & Army Definition Model** — completed_verified.
-3. **SCL-03 — Command Hierarchy, Roles, Orders & Communication** — completed_verified.
-4. **SCL-04 — Command Phases & Deterministic Order Resolution** — selected_not_started; future owner Continue required.
-5. **SCL-05 — Morale, Cohesion, Leadership & Discipline** — planned.
-6. **SCL-06 — Logistics, Supply, Fatigue, Reinforcement & Readiness** — planned.
-7. **SCL-07 — Terrain, Objectives, Zones, Sieges & Strategic Position** — planned.
-8. **SCL-08 — Vehicle, Mecha, Ship & Fleet Integration** — planned.
-9. **SCL-09 — Individual-to-Unit Effects, Casualties, Damage & Recovery** — planned.
-10. **SCL-10 — Faction, Settlement, World & Campaign Consequence Integration** — planned.
-11. **SCL-11 — Workbench, Scenario Packs, Balance & Cross-Scale Golden Proof** — planned.
+1. SCL-01 — completed_verified.
+2. SCL-02 — completed_verified.
+3. SCL-03 — completed_verified.
+4. SCL-04 — in_progress.
+5. SCL-05 — planned.
+6. SCL-06 — planned.
+7. SCL-07 — planned.
+8. SCL-08 — planned.
+9. SCL-09 — planned.
+10. SCL-10 — planned.
+11. SCL-11 — planned.
 
 ## Invariants
 
-- Ordinary Action/Combat/Event and canonical constituent/owner-domain truth remain authoritative.
+- Ordinary Action/Combat/Event and canonical owner-domain truth remain authoritative.
 - SCL-01 through SCL-03 remain frozen with retired implementation authority.
-- SCL-04 is selected without implementation authority or an implementation branch.
+- SCL-04 may classify and coordinate order handoffs but may not execute or double-apply canonical downstream results.
 - No AI autonomous command/adjudication, owner mutation, hidden-data reveal, duplicate ledger, persistence or migration `0022` is authorized.
