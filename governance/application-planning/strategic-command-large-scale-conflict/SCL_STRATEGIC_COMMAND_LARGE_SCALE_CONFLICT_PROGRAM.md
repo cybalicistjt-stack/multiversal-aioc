@@ -1,11 +1,19 @@
 # SCL — Strategic Command & Large-Scale Conflict
 
 **Program ID:** SCL  
-**Status:** OWNER-APPROVED — PLANNED INTERSTITIAL  
-**Activation:** after ODL-09  
+**Status:** OWNER-APPROVED — SCL-01 SELECTED_NOT_STARTED  
+**Activation:** after completed_verified ODL-09  
 **Successor:** MAL-01  
 **Owner and final authority:** John Brandon Turner  
 **Planned:** 2026-08-20
+
+## Current selection
+
+ODL completed_verified through ODL-09 on application main `f0fbab87d41e8962faf092da3599913d919ce6a5`.
+
+SCL-01 — Source Inventory, Scale Taxonomy & Authority Map — is `selected_not_started` from that exact application main. It has no implementation branch and no implementation authority. A future owner `Continue` must perform the bounded SCL-01 governed start before any product mutation or before the exact source inventory/scale taxonomy/authority map is treated as resolved.
+
+Selection preserves ordinary Combat/Action/Event truth as canonical, constituent identity across scale, identity-preserving aggregation/projection, owner-domain consequence authority, no duplicate authoritative state/effects, and no AI command/adjudication authority.
 
 ## Purpose
 
@@ -15,8 +23,8 @@ Recovered mine-note RDC-03 scale-transition intent is routed into SCL rather tha
 
 ## Tranches
 
-1. **SCL-01 — Source Inventory, Scale Taxonomy & Authority Map**  
-   Reconcile retained squad/fleet/command/mass-conflict and recovered individual→squad→fleet material with Combat, MIB-14, MIB-13, MIB-09, WCI, ODL and World authorities; define scale boundaries, identity-preserving aggregation/projection and cross-scale handoffs.
+1. **SCL-01 — Source Inventory, Scale Taxonomy & Authority Map** — selected_not_started.  
+   Reconcile retained squad/fleet/command/mass-conflict and recovered individual→squad→fleet material with Combat, MIB-14, MIB-13, MIB-09, WCI, completed ODL and World authorities; define scale boundaries, identity-preserving aggregation/projection and cross-scale handoffs.
 
 2. **SCL-02 — Unit, Formation, Squad, Fleet & Army Definition Model**  
    Define reusable unit/formation profiles, membership, composition, capabilities, readiness, equipment/vehicle references and derived projections without duplicating member truth. Explicitly define authoritative constituent state versus aggregate projection state.
@@ -56,3 +64,4 @@ Recovered mine-note RDC-03 scale-transition intent is routed into SCL rather tha
 - Aggregate resolution cannot create double damage, duplicate casualties or hidden authority shortcuts.
 - Organization/faction/settlement/economy/world consequences commit only through their owning domains.
 - AI may advise command decisions but never issues authoritative orders or adjudicates outcomes.
+- SCL-01 selection grants no scale taxonomy implementation, unit aggregate state, command/order mechanics, strategic resolution, owner mutation, persistence, migration `0022`, provider activation, tester distribution, release or deployment.

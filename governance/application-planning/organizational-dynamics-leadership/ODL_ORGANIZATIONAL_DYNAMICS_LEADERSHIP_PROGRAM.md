@@ -1,19 +1,19 @@
 # ODL — Organizational Dynamics & Leadership
 
 **Program ID:** ODL  
-**Status:** OWNER-APPROVED — COMPLETED THROUGH ODL-08; ODL-09 IN PROGRESS  
+**Status:** COMPLETED_VERIFIED THROUGH ODL-09  
 **Activation:** after completed_verified KFR-08  
 **Successor:** SCL-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-08-27
 
-## Current state
+## Completion state
 
-ODL-01 through ODL-08 are `completed_verified` under their sealed checkpoints and application merges.
+ODL-01 through ODL-09 are `completed_verified` with implementation authority retired.
 
-ODL-08 — GM Control, Simulation Depth & Advisory AI — completed on application PR `383`, validated head `1f8ebfbf8deef70b0a0c7e4c447dc1196c2be805`, validation run `33652175326`, deterministic receipt `29b98302170e459fac496d9d754c4a96c3798b91a538d7c98c9cfb5779447ff6`, and application merge `6a0cc4b3363167978088806146b4998f3b0d69ff`.
+ODL-09 — Organizational-Life Golden Proof — completed on application PR `384`, validated head `75b7c28c7fbf60b7aa68cc26100ecc97aa89f4f1`, validation run `33659091704`, selector/repository-health job `100344899001`, Linux job `100344944189`, Windows job `100344944149`, deterministic comparison job `100345137535`, deterministic receipt `410ff7a03a387ca3b314da8480a9a20da0d69e483d609648ccb414b47bdbb913`, zero historical predecessor fanout, two bounded application feature-repair cycles, and application merge `f0fbab87d41e8962faf092da3599913d919ce6a5`.
 
-ODL-09 — Organizational-Life Golden Proof — is `in_progress` from exact application main `6a0cc4b3363167978088806146b4998f3b0d69ff` on `integration/odl-09-organizational-life-golden-proof` with one bounded implementation authority.
+SCL-01 — Source Inventory, Scale Taxonomy & Authority Map — is the strict program successor and is `selected_not_started` from exact application main `f0fbab87d41e8962faf092da3599913d919ce6a5` without implementation authority.
 
 ## Purpose
 
@@ -33,30 +33,36 @@ Recovered basis: RDC-04 / RD-05.
 6. **ODL-06 — Crisis, Coup, Fragmentation, Recombination & Recovery** — completed_verified.
 7. **ODL-07 — Business, Base, Settlement, Faction, Crew, Family & SCL Integration** — completed_verified.
 8. **ODL-08 — GM Control, Simulation Depth & Advisory AI** — completed_verified.
-9. **ODL-09 — Organizational-Life Golden Proof** — in_progress.
+9. **ODL-09 — Organizational-Life Golden Proof** — completed_verified.
 
-## ODL-08 closeout
+## ODL-08 frozen contract
 
 ODL-08 froze `overview`, `standard`, and `deep` as presentation/advisory depth only. It froze optional advisory-AI modes `off`, `summary`, and `options`, with advisory kinds `summary`, `attention`, `question`, and `candidate-option` over visible ODL-01..07 evidence.
 
-Genuine RED head `1129d0820e0ae28a29e0da372bd3ca3da7f48848` passed selector/repository health, ODL-08 invariants and workspace installation on self-hosted Linux and Windows, then failed at client typecheck because the production contract and panel were intentionally absent. First complete production head `1f8ebfbf8deef70b0a0c7e4c447dc1196c2be805` passed selector/repository health, self-hosted Linux, self-hosted Windows and deterministic comparison in run `33652175326`, with deterministic receipt `29b98302170e459fac496d9d754c4a96c3798b91a538d7c98c9cfb5779447ff6`, zero historical predecessor fanout and zero application feature repair cycles.
-
 MV-IA-F006 human GM/Assistant-GM authority, MV-IA-F020 deny-by-default Permission/visibility, APW-D26 Project/time, canonical owner domains and future SCL authority remain unchanged. Simulation depth never changes canonical truth or mechanics. AI invokes no provider and has no role, decision, mutation, approval, commit, command, permission, mechanical-resolution, hidden-truth or completion authority.
 
-## ODL-09 governed contract
+## ODL-09 frozen contract
 
-ODL-09 is the final ODL tranche. Owner `Continue` governed-started it at `2026-09-02T11:50:00-05:00` from exact AIOC authority `d8452b74e3388148919a7a266bad4bfe0be58d94` and exact application main `6a0cc4b3363167978088806146b4998f3b0d69ff`.
+The Organizational-Life Golden Proof is a read-only composition over explicit visible predecessor proof summaries derived from completed ODL-01 through ODL-08.
 
-The golden proof composes read-only visible proof summaries derived from completed ODL-01..08 projections for one explicit organization/subject identity. It creates no new organization truth and does not reinterpret predecessor mechanics.
+The proof source order is fixed as `ODL-01` through `ODL-08`. Every accepted source proof preserves the same explicit organization/subject reference chain. Divergent visible organization or subject identity is incompatible and is never auto-reconciled.
 
-The proof source order is `ODL-01` through `ODL-08`. Every accepted source proof must preserve the same explicit organization/subject reference chain. Divergent identities are incompatible and are never auto-reconciled. A golden scenario is complete only when all eight predecessor source proofs are present, visible, identity-compatible and resolved. Missing, unknown, conflict or incompatible evidence remains explicitly incomplete rather than guessed into success.
+A golden scenario is complete only when all eight predecessor sources are present, visible, identity-compatible and `resolved`. Missing, `unknown`, `conflict` or `incompatible` predecessor evidence remains explicitly incomplete; ODL-09 never guesses or repairs unresolved predecessor truth merely to produce a passing proof.
 
-Authorization filtering occurs before source inclusion, step status, summaries, search text, provenance, deterministic receipts or AI context. Hidden source existence and hidden cardinality remain undisclosed. ODL-09 retains only explicit visible predecessor references/provenance and never fabricates owner evidence.
+Authorization filtering occurs before source inclusion, completeness, source status, summaries, search text, provenance, deterministic receipts or AI-facing context. Hidden source existence and hidden cardinality remain undisclosed. Only explicit visible predecessor provenance/reference ids are retained; provenance is never fabricated.
 
 ODL-08 remains human-GM-controlled presentation/advisory authority only. ODL-09 invokes no AI provider and grants AI no role, decision, mutation, command, permission, completion or hidden-truth authority. ODL-07 SCL-facing references remain identity-preserving read-only handoff evidence only; ODL-09 defines no SCL taxonomy, aggregate state, command hierarchy, order, phase, mechanical resolution, casualty/damage or strategic consequence.
 
-APW-D26 Project/time references remain context only. ODL-09 never mutates Projects or advances campaign time. It performs no owner, organization, relationship/reputation, faction, role/delegation, resource, maintenance, event, integration, permission or command mutation. No duplicate ledger, durable ODL-09 persistence or migration `0022` is authorized.
+APW-D26 Project/time references remain context only. ODL-09 never mutates Projects or advances campaign time. It performs no owner, organization, relationship/reputation, faction, role/delegation, resource, maintenance, event, integration, permission or command mutation. No duplicate ledger, durable ODL-09 persistence or migration `0022` was introduced.
 
-Production scope is one read-only organizational-life golden-proof composition contract plus accessible nonvisual panel and focused integration regression. Acceptance is written before production. Final validation uses exactly one ODL-09 current-family profile with zero historical predecessor fanout and exact-head self-hosted Linux/Windows plus deterministic comparison.
+## Validation closeout
 
-After ODL-09 becomes `completed_verified`, ODL is complete and SCL-01 is the strict program successor. SCL-01 selection does not itself authorize SCL implementation.
+Genuine RED head `714da7600583e995b5d1832d5e5a0faca44b86b7` passed the ODL-09 selector/repository health, invariants and workspace installation on self-hosted Linux and Windows, then failed at client typecheck because the production golden-proof contract and panel were intentionally absent. Linux and Windows agreed on deterministic RED receipt `56eab62c0959566ab6dd32f06f2bf4c9ab49b3bfdddff7cd145b17fa9f58b2c0`.
+
+The first production head exposed only an exact invariant-source marker issue in the panel; the next changed head exposed only a one-directory import-path defect. Both were bounded application repairs with changed evidence and no unchanged-evidence reruns. Final exact head `75b7c28c7fbf60b7aa68cc26100ecc97aa89f4f1` passed exactly one ODL-09 current-family profile on self-hosted Linux and Windows plus deterministic comparison in run `33659091704`, with receipt `410ff7a03a387ca3b314da8480a9a20da0d69e483d609648ccb414b47bdbb913` and zero historical predecessor fanout.
+
+## Handoff to SCL
+
+ODL is now complete. Its organization/load/delegation semantics remain completed authority and are not reopened by SCL selection.
+
+SCL-01 is selected only. Ordinary Combat/Action/Event truth remains canonical. Future units/formations must be governed identity-preserving projections/aggregates over canonical members/assets rather than duplicate state. Owner-domain consequences remain committed only by their owning domains, and AI has no command or adjudication authority.
