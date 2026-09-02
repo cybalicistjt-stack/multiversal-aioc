@@ -1,45 +1,43 @@
 # SCL — Strategic Command & Large-Scale Conflict
 
 **Program ID:** SCL  
-**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH SCL-02; SCL-03 IN PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH SCL-03; SCL-04 SELECTED_NOT_STARTED  
 **Activation:** after completed_verified ODL-09  
 **Successor:** MAL-01  
 **Owner and final authority:** John Brandon Turner
 
 ## Current state
 
-SCL-01 and SCL-02 remain `completed_verified`. SCL-02 application merge is `e7821465a60a9508b993e941ebe9f1c48144b90f`.
+SCL-01 through SCL-03 are `completed_verified`. SCL-03 completed on application PR `387`, exact validated head `d66d150107b7e27e3cd266d6da42c5ee686abc2a`, validation run `33678334569`, deterministic receipt `95314bbd572d973ad8856fa97031e78abc7278d6e863833cd418ba126fa3ff33`, zero historical predecessor fanout, zero application feature-repair cycles, and application merge `a4913b3cb162c0c05e4efaf7a98b856f7d57c92a`.
 
-SCL-03 — Command Hierarchy, Roles, Orders & Communication — is `in_progress` from exact application main `e7821465a60a9508b993e941ebe9f1c48144b90f` on `integration/scl-03-command-hierarchy-orders-communication` with one bounded implementation authority.
+SCL-04 — Command Phases & Deterministic Order Resolution — is the strict successor and is `selected_not_started` from exact application main `a4913b3cb162c0c05e4efaf7a98b856f7d57c92a`. It has no implementation branch and no implementation authority.
 
-## Frozen predecessor contracts
+## Frozen SCL-01/SCL-02 contracts
 
 SCL-01 remains authoritative for source/scale/owner-domain routing, visibility-first filtering, identity-preserving projection and the scale vocabulary `individual`, `squad`, `unit`, `formation`, `force`, `theater`.
 
-SCL-02 remains authoritative for reusable `squad`, `unit`, `formation`, `fleet`, and `army` profile projections, explicit canonical leaf identity, visible composition/capability/readiness/equipment/platform references and conservative unknown/conflict handling. It creates no command authority or mechanics.
+SCL-02 remains authoritative for reusable `squad`, `unit`, `formation`, `fleet`, and `army` profile projections, explicit canonical leaf identity, visible composition/capability/readiness/equipment/platform references and conservative unresolved evidence. It creates no command or resolution authority.
 
-ODL-04 remains authoritative for explicit organization role, delegation, authority-scope and communication owner evidence. Those records are descriptive owner evidence and do not themselves grant system permission, Action authority or SCL mechanical command resolution.
+## Frozen SCL-03 contract
 
-## SCL-03 governed contract
+SCL-03 defines read-only command relationship, explicit ODL-04-backed delegation, order intent/lifecycle and descriptive communication projections. Relationship roles are `commander`, `subordinate`, `staff`, `liaison`. Order types are `directive`, `task`, `constraint`, `coordination`; lifecycle is `proposed`, `issued`, `acknowledged`, `received`, `superseded`, `cancelled`. Communication range bands are `unknown`, `local`, `linked`, `remote`; delay bands are `unknown`, `none`, `delayed`, `extended`; states are `available`, `delayed`, `interrupted`, `unknown`.
 
-SCL-03 defines read-only command-relationship, order-lifecycle and communication projections over explicit visible predecessor evidence.
+Permission/visibility filtering precedes command/order/communication existence, counts, summaries, provenance, receipts or AI context. Missing, unknown, conflict and incompatible visible evidence remains unresolved. SCL-03 performs no order issuance mutation, delegated Action execution, mechanical resolution, owner mutation, AI command/adjudication, persistence or migration.
 
-Relationship roles are `commander`, `subordinate`, `staff`, and `liaison`. They are SCL projection roles only and do not assign canonical ODL roles, ownership, Permission or Action authority. Delegated command scope must cite explicit visible ODL-04 role/delegation/authority-scope owner evidence; missing or conflicting evidence remains unresolved.
+## SCL-04 selection boundary
 
-Order types are `directive`, `task`, `constraint`, and `coordination`. Lifecycle vocabulary is `proposed`, `issued`, `acknowledged`, `received`, `superseded`, `cancelled`. SCL-03 may represent existing visible intent/lifecycle evidence but performs no issuance mutation, delegated Action execution, Combat/Event resolution or outcome adjudication. SCL-04 retains mechanical/deterministic order resolution.
+SCL-04 is selected only. This selection intentionally does **not** decide or implement the exact phase vocabulary, order eligibility/precedence, simultaneous/conflicting order treatment, deterministic resolution inputs/outputs, partial/blocked/invalid outcomes, canonical Action/Combat/Event handoffs or receipt contract. Those semantics must be resolved during the next bounded governed-start pass from the exact application baseline.
 
-Communication range bands are `unknown`, `local`, `linked`, `remote`; delay bands are `unknown`, `none`, `delayed`, `extended`; communication states are `available`, `delayed`, `interrupted`, `unknown`. These are descriptive projections only and create no travel-time, action-cost, initiative, morale, logistics or resolution effect.
+SCL-04 may later own command-phase and deterministic order-resolution coordination while ordinary Action/Combat/Event truth remains canonical and may not be duplicated or double-applied. SCL-05/SCL-06 retain morale/logistics mechanics, SCL-08 fleet/platform integration, SCL-09 casualty/damage reconciliation and SCL-10 strategic consequences.
 
-Permission/visibility filtering occurs before command relationship, delegation scope, order existence/state, communication existence/state, counts, summaries, search text, provenance, deterministic receipts or AI context. Hidden existence and cardinality remain undisclosed. Missing, unknown, conflict or incompatible visible evidence is never guessed or auto-reconciled.
-
-Stable relationship-id, order-id, communication-id and canonical-reference ordering determines projection and receipt truth. AI may advise only where separately governed; SCL-03 grants no autonomous command, order issuance, adjudication, Permission, owner mutation or completion authority. No durable SCL-03 ledger or migration `0022` is authorized.
+No autonomous AI command/adjudication, owner mutation, system permission, hidden-data reveal, persistence, migration `0022`, provider activation, tester distribution, release or deployment is authorized by SCL-04 selection.
 
 ## Tranches
 
 1. **SCL-01 — Source Inventory, Scale Taxonomy & Authority Map** — completed_verified.
 2. **SCL-02 — Unit, Formation, Squad, Fleet & Army Definition Model** — completed_verified.
-3. **SCL-03 — Command Hierarchy, Roles, Orders & Communication** — in_progress.
-4. **SCL-04 — Command Phases & Deterministic Order Resolution** — planned.
+3. **SCL-03 — Command Hierarchy, Roles, Orders & Communication** — completed_verified.
+4. **SCL-04 — Command Phases & Deterministic Order Resolution** — selected_not_started; future owner Continue required.
 5. **SCL-05 — Morale, Cohesion, Leadership & Discipline** — planned.
 6. **SCL-06 — Logistics, Supply, Fatigue, Reinforcement & Readiness** — planned.
 7. **SCL-07 — Terrain, Objectives, Zones, Sieges & Strategic Position** — planned.
@@ -51,7 +49,6 @@ Stable relationship-id, order-id, communication-id and canonical-reference order
 ## Invariants
 
 - Ordinary Action/Combat/Event and canonical constituent/owner-domain truth remain authoritative.
-- SCL-01 and SCL-02 remain frozen with retired implementation authority.
-- ODL-04 and Permission/visibility remain authoritative for their own owner evidence.
-- SCL-03 is read-only command intent/relationship/communication projection; SCL-04 retains mechanical resolution.
+- SCL-01 through SCL-03 remain frozen with retired implementation authority.
+- SCL-04 is selected without implementation authority or an implementation branch.
 - No AI autonomous command/adjudication, owner mutation, hidden-data reveal, duplicate ledger, persistence or migration `0022` is authorized.
