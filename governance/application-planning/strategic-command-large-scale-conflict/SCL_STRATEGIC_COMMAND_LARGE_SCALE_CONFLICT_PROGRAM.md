@@ -1,108 +1,68 @@
 # SCL — Strategic Command & Large-Scale Conflict
 
 **Program ID:** SCL  
-**Status:** OWNER-APPROVED — SCL-01 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH SCL-01; SCL-02 SELECTED_NOT_STARTED  
 **Activation:** after completed_verified ODL-09  
 **Successor:** MAL-01  
 **Owner and final authority:** John Brandon Turner  
 **Planned:** 2026-08-20
 
-## Current governed tranche
+## Current state
 
-ODL completed_verified through ODL-09 on application main `f0fbab87d41e8962faf092da3599913d919ce6a5`.
+SCL-01 — Source Inventory, Scale Taxonomy & Authority Map — is `completed_verified` on application PR `385`, validated head `065d3a92429ee19431067b558f6181a7182f971b`, validation run `33664804272`, selector/repository-health job `100363793870`, Linux job `100363841608`, Windows job `100363841486`, deterministic comparison job `100364036387`, deterministic receipt `9d74f2ad2fddc9bef729938764acb6de775028fe26d0d02b198b6ca9e007555a`, zero historical predecessor fanout, zero application feature-repair cycles, and application merge `5c1188e5608e7d4c98de762dffece7ee37b6d9fe`.
 
-SCL-01 — Source Inventory, Scale Taxonomy & Authority Map — is `in_progress` from that exact application main on branch `integration/scl-01-source-inventory-scale-taxonomy-authority-map` with one bounded implementation authority.
-
-The governed-start context is sealed to the current SCL program/backlog; MIB-14, MIB-13, MIB-09, WCI-05; completed ODL authority; A6 Action, A7 Combat, D17 Asset and MIB-11/D18/A10 World authority; and the current validation-core surfaces. Unrelated history, connected business systems, providers, release/deployment and future SCL mechanics remain blocked unless changed evidence names a concrete dependency.
+SCL-02 — Unit, Formation, Squad, Fleet & Army Definition Model — is the strict successor and is `selected_not_started` from exact application main `5c1188e5608e7d4c98de762dffece7ee37b6d9fe` with no implementation branch and no implementation authority. A future owner `Continue` must perform bounded governed start before SCL-02 product mutation.
 
 ## Purpose
 
 SCL adds governed play above the individual encounter: squads, units, formations, armies, fleets and other organized forces. It reuses ordinary Combat, Character, Vehicle, Economy, Organization, World and Event authority, adding scale-aware command/order/resolution contracts rather than a second combat ledger.
 
-Recovered mine-note RDC-03 scale-transition intent is routed into SCL rather than creating another program. ODL supplies organization/load/delegation semantics before SCL; SCL must explicitly preserve identity when projecting individuals/assets into units and when reconciling aggregate results back down.
+Recovered mine-note RDC-03 scale-transition intent is routed into SCL rather than creating another program. ODL supplies organization/load/delegation semantics before SCL; SCL preserves identity when projecting individuals/assets into units and when later reconciling aggregate results back down.
 
-## SCL-01 frozen governed-start contract
+## Frozen SCL-01 contract
 
-### Source inventory and authority map
+SCL-01 freezes the governed source inventory as A6 Action; A7 Combat; D17 Asset plus MIB-14 operational platform/base; MIB-11/D18/A10 World; MIB-13 Economy; D25/MIB-09 social/reputation; completed ODL-01..09; WCI-05 continuity/consequence analysis; and RDC-03 recovered scale-transition intent as noncanonical routing input.
 
-- **A6 Action** remains sole Action proposal/review/decision/atomic accepted-result authority. SCL-01 may retain only read-only canonical Action/result references.
-- **A7 Combat** remains ordinary combat authority. SCL-01 creates no second combat or Event ledger.
-- **D17 Asset/inventory/state** remains canonical for Assets and their state. **MIB-14** retains reusable vehicle/platform/base operational definitions, capacity/crew/module/facility seams and governed transition routing. SCL-01 may reference canonical constituent/platform ids only.
-- **MIB-11/D18/A10 World** remains authoritative for World/Reality/Timeline/location identity and canonical world state. SCL-01 treats those references as strategic context only.
-- **MIB-13 Economy** retains versioned economic scopes, trade links, costs and settlement. SCL-01 may surface logistics/economic source references but cannot mutate economy.
-- **D25/MIB-09** retain relationship/social runtime truth and derived reputation semantics. SCL-01 may consume visible social/reputation references only.
-- **ODL-01..09** remain completed authority for organization, load, cohesion/loyalty, delegation, resources, crisis, integration, GM/advisory and organizational golden-proof semantics. SCL-01 does not reopen ODL mechanics.
-- **WCI-05** remains read-only continuity/dependency/consequence analysis over owner domains. Strategic consequences remain committed only by their owning domains.
-- **RDC-03 recovered scale-transition material** is noncanonical source intent routed into SCL; it can inform identity-preserving scale transitions but never becomes runtime truth by itself.
+It freezes `individual`, `squad`, `unit`, `formation`, `force`, and `theater` as scale/aggregation vocabulary. These labels are roles rather than universal numeric size caps. Only `individual` references canonical constituent truth; above-individual records are governed projections/context. Exact membership/composition/profile semantics belong to SCL-02.
 
-### Scale taxonomy
+Up-scale projection carries explicit canonical constituent ids, owner references and provenance and cannot copy or fork authoritative Character, Asset, inventory, Vehicle, damage, casualty, Event, Organization, Economy or World state. SCL-01 performs no down-scale mutation. Missing, hidden, conflicting or identity-incompatible evidence remains explicit unresolved/conflict/incompatible and is never auto-reconciled.
 
-SCL-01 freezes these scale labels as role/aggregation vocabulary, not universal numeric size caps:
+Permission/visibility filtering occurs before source/projection inclusion, counts, aggregation, summaries, search, provenance, deterministic receipts or AI context. Hidden source existence and hidden cardinality remain undisclosed.
 
-1. `individual` — one canonical Character/Creature/Vehicle/Asset actor resolved by existing owner systems;
-2. `squad` — a small coordinated command grouping of canonical constituents;
-3. `unit` — a reusable aggregate grouping of canonical constituents/assets;
-4. `formation` — a coordinated grouping of units under a strategic relationship;
-5. `force` — army/fleet-level grouping of formations, units and platforms;
-6. `theater` — multi-force strategic context over owner-authored World/Scene/Objective references.
+SCL-03/04 retain future command/order/resolution authority; SCL-08 retains future platform/fleet integration authority; SCL-09 is the primary future casualty/damage reconciliation point; SCL-10 retains future owner-domain strategic consequence integration. AI has no command/order/adjudication authority. No durable SCL-01 persistence or migration `0022` was introduced.
 
-Only `individual` owns constituent truth. `squad`, `unit`, `formation`, `force` and `theater` are governed projections/context. Exact membership/profile composition belongs to SCL-02.
+## SCL-01 validation closeout
 
-### Identity-preserving projection and handoff
+Acceptance-first application commit `40aca594c7e7c0f75debdf4bb189ac9a7ad838ee` initially exposed one current-family transition seam before product validation: `ACTIVE_FAMILY_CONTRACT.json` still named completed ODL. The changed head `0cb642a6a0a99998be6c59d29cab6ee23b037e65` transitioned only the validation family to SCL while sealing ODL-09 at application baseline `f0fbab87d41e8962faf092da3599913d919ce6a5` and keeping historical profiles inert.
 
-Up-scale projection carries explicit canonical constituent ids, visible state references and provenance. It does not copy or fork authoritative Character, Asset, inventory, Vehicle, damage, casualty, Event, Organization, Economy or World state.
+That exact changed head established genuine RED in run `33664542491`: selector/repository health passed and selected exactly one SCL-01 profile; self-hosted Linux and Windows both failed at the intended `client-typecheck` boundary while production contract/panel were absent; both generated matching deterministic receipt `8d7e62a6c34fe33e2f3264a9b07dd56c943e943201b5a86f4e1fa8f0efd397a0`; deterministic comparison passed. No historical predecessor profile ran.
 
-SCL-01 performs no down-scale mutation. Later aggregate outcomes must reconcile through explicit owner-domain proposals/commits. SCL-09 is the primary casualty/damage reconciliation tranche and may not double-apply effects.
+The production contract and accessible panel then landed atomically at head `065d3a92429ee19431067b558f6181a7182f971b`. The first complete production head passed the full SCL-01 profile on self-hosted Linux and Windows plus deterministic comparison in run `33664804272`, with receipt `9d74f2ad2fddc9bef729938764acb6de775028fe26d0d02b198b6ca9e007555a`. There were zero application feature-repair cycles and zero unchanged-evidence reruns.
 
-SCL-03/04 own future command/order/resolution mechanics; SCL-08 owns platform/fleet integration; SCL-09 owns individual-to-unit effects; SCL-10 owns owner-domain strategic consequence integration. SCL-01 supplies only the source/scale/authority map.
-
-Permission/visibility filtering occurs before source inclusion, counts, aggregation, projection, search text, provenance, deterministic receipts or AI context. Hidden source existence and hidden cardinality remain undisclosed. Missing, hidden, conflicting or identity-incompatible evidence remains explicit `unknown`, `conflict` or `incompatible` and is never auto-reconciled.
-
-AI may only advise where separately governed. SCL-01 invokes no provider and grants AI no command, order, adjudication, permission, mutation or completion authority.
-
-No durable SCL-01 ledger or migration is authorized. Migration `0022` remains unreserved.
+Application PR `385` was squash-merged as `5c1188e5608e7d4c98de762dffece7ee37b6d9fe`.
 
 ## Tranches
 
-1. **SCL-01 — Source Inventory, Scale Taxonomy & Authority Map** — in_progress.  
-   Implement the frozen read-only source inventory, nonnumeric scale taxonomy, authority map and identity-preserving projection/handoff contract under the exact governed-start boundaries above.
-
-2. **SCL-02 — Unit, Formation, Squad, Fleet & Army Definition Model**  
-   Define reusable unit/formation profiles, membership, composition, capabilities, readiness, equipment/vehicle references and derived projections without duplicating member truth. Explicitly define authoritative constituent state versus aggregate projection state.
-
-3. **SCL-03 — Command Hierarchy, Roles, Orders & Communication**  
-   Implement commanders, subordinate roles, command capacity, order types, communication/range/delay/interruption and delegated authority with explicit permission boundaries, consuming ODL semantics where applicable.
-
-4. **SCL-04 — Command Phases & Deterministic Order Resolution**  
-   Support command/movement/action/resolution-style phases where authored, simultaneous/ordered actions, conflicts, reactions and deterministic aggregate resolution with traceable receipts.
-
-5. **SCL-05 — Morale, Cohesion, Leadership & Discipline**  
-   Model morale/cohesion/readiness, leadership effects, panic/rout/rally, discipline and command disruption through profile-driven rules rather than universal assumptions, reusing ODL relationship/organization pressure where appropriate.
-
-6. **SCL-06 — Logistics, Supply, Fatigue, Reinforcement & Readiness**  
-   Connect ammunition/resources, supply, fuel, maintenance, fatigue, replacements, reinforcement, staging and readiness to Economy, Vehicles/Bases and Projects.
-
-7. **SCL-07 — Terrain, Objectives, Zones, Sieges & Strategic Position**  
-   Represent objectives, control, fronts/zones, fortifications, sieges, terrain/environment effects and strategic positioning over World/MAI/SSA semantic locations without making map art canonical.
-
-8. **SCL-08 — Vehicle, Mecha, Ship & Fleet Integration**  
-   Integrate crewed vehicles/platforms into units and fleet formations, including stations, cargo/fuel, damage, repair, formation roles and command interactions.
-
-9. **SCL-09 — Individual-to-Unit Effects, Casualties, Damage & Recovery**  
-   Define how individual actions/characters affect units and how aggregate results map back to members/assets, casualties, injuries, captured/missing states, damaged equipment and recovery without double-applying effects. This tranche is the primary recovered RDC-03 reconciliation point.
-
-10. **SCL-10 — Faction, Settlement, World & Campaign Consequence Integration**  
-    Connect strategic outcomes to organizations, territory, diplomacy, settlements, economy, reputation, Adventures and World Events through explicit owner-domain mutations.
-
-11. **SCL-11 — Workbench, Scenario Packs, Balance & Cross-Scale Golden Proof**  
-    Deliver command dashboards, accessible non-map views, unit/fleet packs and scenarios proving individual combat → squad → fleet/army → campaign consequences with recovery and deterministic evidence.
+1. **SCL-01 — Source Inventory, Scale Taxonomy & Authority Map** — completed_verified.
+2. **SCL-02 — Unit, Formation, Squad, Fleet & Army Definition Model** — selected_not_started.  
+   Define reusable unit/formation profiles, membership, composition, capabilities, readiness, equipment/vehicle references and derived projections without duplicating member truth. Explicitly distinguish canonical constituent state from aggregate projection state.
+3. **SCL-03 — Command Hierarchy, Roles, Orders & Communication** — planned.
+4. **SCL-04 — Command Phases & Deterministic Order Resolution** — planned.
+5. **SCL-05 — Morale, Cohesion, Leadership & Discipline** — planned.
+6. **SCL-06 — Logistics, Supply, Fatigue, Reinforcement & Readiness** — planned.
+7. **SCL-07 — Terrain, Objectives, Zones, Sieges & Strategic Position** — planned.
+8. **SCL-08 — Vehicle, Mecha, Ship & Fleet Integration** — planned.
+9. **SCL-09 — Individual-to-Unit Effects, Casualties, Damage & Recovery** — planned.
+10. **SCL-10 — Faction, Settlement, World & Campaign Consequence Integration** — planned.
+11. **SCL-11 — Workbench, Scenario Packs, Balance & Cross-Scale Golden Proof** — planned.
 
 ## Invariants
 
 - Ordinary Combat/Action/Event truth remains canonical.
-- Units/formations are governed projections/aggregates over canonical members/assets, not duplicate Characters or inventories.
+- SCL-01 source inventory, scale taxonomy and owner authority map remain frozen completed authority.
+- Units/formations are governed projections/aggregates over canonical members/assets, not duplicate Characters, inventories or owner-domain truth.
 - Constituent identity persists across scale; aggregation/projection cannot silently fork authoritative state.
 - Aggregate resolution cannot create double damage, duplicate casualties or hidden authority shortcuts.
 - Organization/faction/settlement/economy/world consequences commit only through their owning domains.
-- AI may advise command decisions but never issues authoritative orders or adjudicates outcomes.
-- SCL-01 implementation authority grants only the frozen source inventory/scale/authority-map surfaces; no unit aggregate truth, command/order mechanics, strategic resolution, owner mutation, persistence, migration `0022`, provider activation, tester distribution, release or deployment is authorized.
+- AI may advise future command decisions where separately governed but never issues authoritative orders or adjudicates outcomes.
+- SCL-02 selection grants no unit/profile implementation, command/order mechanics, strategic resolution, owner mutation, persistence, migration `0022`, provider activation, tester distribution, release or deployment.
