@@ -2,10 +2,10 @@
 
 **Program ID:** ENV  
 **Status:** in_progress_parallel_content_authoring  
-**Completed through:** ENV-06  
-**Current:** ENV-07 — Coastal & Marine Expansion  
-**Current governed preset count:** 46  
-**Current composed archetype count:** 16  
+**Completed through:** ENV-07  
+**Current:** ENV-08 — Grasslands, Open Country & Dry Landforms  
+**Current governed preset count:** 52  
+**Current composed archetype count:** 17  
 **Owner and final authority:** John Brandon Turner  
 **Application implementation authority:** none  
 **Parallel-track rule:** ENV may advance as governed content/design work while the application software roadmap continues. ENV must not mutate `Multiversal-app` runtime schemas, terrain mechanics, SCL behavior, migrations, encounter runtime, or environment UI until a separately governed application-integration tranche is authorized.
@@ -47,12 +47,12 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
    Represented all forty promoted environments as governed presets through archetype composition while preserving their source profiles and completed content as immutable provenance/reference.
 
 6. **ENV-06 — Freshwater & Wetland Expansion** — `completed_verified`  
-   Added River/Stream, Lake/Pond, Floodplain, River Delta/Estuary, Marsh/Bog/Fen and Flooded Forest coverage. Resolved the flowing-water gap with `ARCH-FLOWING-WATER`, taking the composed archetype count to sixteen and the current preset count to forty-six. Detailed coastal/tidal/marine refinement remains ENV-07.
+   Added River/Stream, Lake/Pond, Floodplain, River Delta/Estuary, Marsh/Bog/Fen and Flooded Forest coverage. Resolved the flowing-water gap with `ARCH-FLOWING-WATER`, taking the composed archetype count to sixteen and the preset count to forty-six.
 
-7. **ENV-07 — Coastal & Marine Expansion** — `selected_not_started`  
-   Add Coast/Shoreline/Beach, Tidal Flats, Coral Reef, Kelp Forest, Deep Ocean/Abyssal and Ocean Trench coverage while reusing existing Open Ocean and Underwater foundations.
+7. **ENV-07 — Coastal & Marine Expansion** — `completed_verified`  
+   Added Coast/Shoreline/Beach, Tidal Flats, Coral Reef, Kelp Forest, Deep Ocean/Abyssal and Ocean Trench. Resolved the reef/kelp structural gap with `ARCH-AQUATIC-STRUCTURE`, taking the composed archetype count to seventeen and the preset count to fifty-two. River Delta/Estuary remains a distinct ENV-06 river-mouth preset.
 
-8. **ENV-08 — Grasslands, Open Country & Dry Landforms**  
+8. **ENV-08 — Grasslands, Open Country & Dry Landforms** — `selected_not_started`  
    Add Grassland/Prairie, Savanna, Steppe, Scrubland/Chaparral, Hills/Uplands, Canyon/Badlands, Rocky Desert and Salt Flats.
 
 9. **ENV-09 — Cold, Alpine & Polar Expansion**  
@@ -79,7 +79,7 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
 16. **ENV-16 — Environment Creature-Discovery Contract & GM Preset Projection**  
     Define the content/API contract by which a composed environment returns eligible creatures as native/common, possible, migratory/seasonal, introduced, rare, overlay-enabled or excluded while respecting World/Reality distribution, visibility and GM-only information. Application UI/runtime implementation is explicitly deferred.
 
-## Locked model decisions through ENV-06
+## Locked model decisions through ENV-07
 
 - durable layers are Archetype, Preset, Overlay and Local Environment Instance;
 - Resolved Environment is derived/read-only and cannot become a fifth authoring truth;
@@ -92,9 +92,12 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
 - existing source profiles remain immutable provenance/evidence;
 - Character, Species, Creature, Ability, Item, Vehicle, World/Reality/Place, Encounter and runtime owners remain external;
 - `ARCH-FLOWING-WATER` is the sole ENV-06 archetype extension because channelized directional flow is not cleanly represented by Open Water Surface or Wetland;
+- `ARCH-AQUATIC-STRUCTURE` is the sole ENV-07 archetype extension because reef and kelp environments share reusable dense three-dimensional underwater structure not supplied by Submerged alone;
 - Floodplain geography is distinct from an active Flood overlay;
 - Flooded Forest baseline is distinct from temporarily flooding an ordinary forest;
-- River Delta/Estuary retains detailed tidal/coastal/marine refinement for ENV-07;
+- River Delta/Estuary remains distinct from Coast and Tidal Flats;
+- Tidal Flats terrain is distinct from a temporary high-tide/flood state;
+- Deep Ocean/Abyssal and Ocean Trench do not hard-code universal pressure, darkness or temperature mechanics; those remain later physical-condition authority;
 - Habitat Signature has a stable envelope but exact vocabulary remains deferred to ENV-15.
 
 ## Completion invariants
