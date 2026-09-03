@@ -1,7 +1,7 @@
 # MAL — Microgames & Ambient Loops
 
 **Program ID:** MAL  
-**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH MAL-02; MAL-03 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH MAL-03; MAL-04 SELECTED_NOT_STARTED  
 **Activation:** after completed_verified SCL-11  
 **Successor:** ALP-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,52 +9,34 @@
 
 ## Current state
 
-MAL-01 and MAL-02 are `completed_verified`. MAL-02 merged to exact application main `3b8b20916b6390a720fe49ee9685b7ca1ea00238`. Owner `Continue` governed-starts MAL-03 — Movement, Navigation, Rooms, Doors, Keys & Traversal Primitives — from that exact baseline on `integration/mal-03-movement-navigation-traversal` with bounded implementation authority.
+MAL-01, MAL-02 and MAL-03 are `completed_verified`. MAL-03 merged to exact application main `87d08c663606e0d0e1afc9955b069891367b8f83` after a clean governed start, genuine matching self-hosted RED, one bounded acceptance-proof marker repair, and first-production exact-head GREEN. MAL-04 — Interaction, Simple Conflict, Hazards, Pickups & Objective Primitives — is the strict successor and is `selected_not_started` with no branch or implementation authority.
 
-Parallel ENV/CEW content work and GCL execution remain outside MAL-03 work selection unless a named dependency proves insufficient.
+Parallel ENV/CEW content work and GCL execution remain outside MAL work selection unless a named dependency proves insufficient.
 
-## Frozen MAL-01 contract
+## Frozen contracts
 
-Recovered material is provenance/inspiration only; copying proprietary game/ROM logic, data, maps, scripts, audiovisual assets, names, rule tables or level layouts is not authorized. MAL classifications reference canonical owner domains and never create parallel truth. AI remains proposal-only.
+- **MAL-01:** provenance/source/originality classification; no proprietary copying or parallel owner truth.
+- **MAL-02:** device-neutral semantic inputs, deterministic logical timing, ephemeral MAL-local state/goals, pause/retry, accessibility-equivalent controls and deterministic receipts.
+- **MAL-03:** original MAL-local movement/navigation/room/connector/door/key-reference/traversal projections. Hidden or unauthorized passage state remains unresolved; key checks never mutate Inventory; traversal and `transition-ready` never move canonical Character, World/Scene or Travel truth.
 
-## Frozen MAL-02 contract
+## MAL-03 validation evidence
 
-MAL-02 established device-neutral semantic input intents, deterministic logical timing, ephemeral MAL-local session state/goals, pause/retry, accessibility-equivalent controls and deterministic receipts. Wall-clock/frame-rate/network/device identity are excluded from outcome truth. MAL-local success/failure never commits canonical owner-domain outcomes.
+Governed start AIOC PR `925` passed Repository Health run `33800696132`, job `100799201254`, and merged as `3ba13b0355f294e180c1e97cf9f8b91acafdd11b`. The initial RED package head `716910859bcccc003804f533708f06c4ab167d8a` exposed one case-sensitive proof-marker mismatch. After that bounded acceptance repair, genuine RED head `42ec393a02df29e848f48f8a001b907c41fb3542` failed on both self-hosted lanes at `client-typecheck`; run `33801011788`, Linux `100800283726`, Windows `100800283715`, comparator `100800471277`, receipt `d77aa1f7203c622ce953079b94d9b703c2e477bea40177afbf9bdd0cc2dff5c5`. Production contract and panel were then introduced atomically. First production head `222a378b802207b1f5abd01072a33f47abaf1dcc` passed selector/repository health `100800995351`, Linux `100801050111`, Windows `100801050365`, comparator `100801269326` in run `33801244250`, receipt `3c4f2b66c53ae0f4888a8fdef2bbd3fce7919114685d032a9bd63101c32114f3`. Application PR `398` merged as `87d08c663606e0d0e1afc9955b069891367b8f83`.
 
-## MAL-03 governed contract
+Historical predecessor fanout, unchanged-evidence reruns, no-progress cycles and post-merge stale-pointer incidents remained zero.
 
-MAL-03 defines original reusable traversal primitives only:
+## MAL-04 selection boundary
 
-- **Movement modes:** `stationary`, `step`, `continuous-local`, `transition`.
-- **Space primitives:** `position`, `room`, `connector`, `threshold`.
-- **Door states:** `open`, `closed`, `blocked`, `locked`, `unresolved`.
-- **Key-match states:** `not-required`, `authorized-match`, `authorized-mismatch`, `unresolved`.
-- **Traversal outcomes:** `remain`, `advance-local`, `transition-ready`, `blocked-local`, `unresolved`.
+MAL-04 is selection only. A future governed start may define original reusable interaction, simple-conflict, hazard, pickup-reference and objective primitives over frozen MAL-01..03.
 
-Movement consumes frozen MAL-02 semantic input intents and deterministic logical ticks. Device bindings, wall-clock time, animation frames, latency and refresh rate never become movement or traversal truth.
-
-Rooms, positions, connectors and thresholds are MAL-local authored interaction projections. When they correspond to canonical locations they bind stable World/Scene references rather than creating a second map, topology, coordinate system or Travel model.
-
-Navigation is an authored local graph of nodes and permitted edges. Source/reference arrays normalize deterministically while explicit traversal order remains authored data. Hidden or unauthorized nodes, connector state, door state and destination state remain unresolved; absence of visible evidence never implies passability.
-
-Doors and thresholds may observe authorized canonical state. Key checks consume authorized canonical item/key reference IDs only. MAL-03 does not create, duplicate, grant, consume, equip, transfer or delete Inventory ownership.
-
-Successful movement changes MAL-local session position/progress only. A boundary crossing may emit a deterministic `transition-ready` result reference for a later owning integration; it does not move a canonical Character, advance Travel, mutate World/Scene, commit an Event or alter Project/progression truth.
-
-Pause/retry and accessibility-equivalent behavior remain governed by MAL-02. AI may propose traversal definitions but cannot invent hidden topology, key possession, passability, destinations or owner-domain outcomes.
-
-MAL-03 does **not** implement conflict/combat, hazards, pickups/objectives/rewards, NPC behavior/state machines, Aniloops, canonical owner mutation, persistence, migration `0022`, tester distribution, release or deployment.
-
-## MAL-02 validation evidence
-
-Governed start AIOC PR `921` merged as `5da9cae5002229ba06a671813f56b1a0b4a564de`. Genuine matching RED used application head `dd3261d3632edb3569669653549bf95168c93588`, run `33794055025`, receipt `e4f8ab5c567c33b5fb3d4461de7b2ef76b4a4040f96efd3a7d6818e290ae12a2`. Exact production head `c337bfc98de15913a5af8f521caa67c57a177cb4` passed run `33794429491`, Linux `100778661705`, Windows `100778661735`, comparator `100778910190`, receipt `d73b9aedadc00018d0a0c8de3852f61ebaec9d3c7fd099155539e3d906567f90`. Application PR `397` merged as `3b8b20916b6390a720fe49ee9685b7ca1ea00238`.
+Selection does **not** authorize Combat/damage/condition mutation, Inventory creation/ownership/loot/reward mutation, Event/Project/progression outcome mutation, Character or World mutation, NPC behavior, Aniloops, reward integration, persistence, migration `0022`, tester distribution, release or deployment. Unknown and hidden state remains unresolved. AI remains proposal-only.
 
 ## Tranches
 
 1. **MAL-01 — Source/Authority/Originality Boundary & Microgame Taxonomy** — completed_verified.
 2. **MAL-02 — Primitive Input, Timing, State & Goal Contract** — completed_verified.
-3. **MAL-03 — Movement, Navigation, Rooms, Doors, Keys & Traversal Primitives** — in_progress with bounded implementation authority.
-4. **MAL-04 — Interaction, Simple Conflict, Hazards, Pickups & Objective Primitives** — planned.
+3. **MAL-03 — Movement, Navigation, Rooms, Doors, Keys & Traversal Primitives** — completed_verified.
+4. **MAL-04 — Interaction, Simple Conflict, Hazards, Pickups & Objective Primitives** — selected_not_started.
 5. **MAL-05 — NPC/Enemy Behavior & Tiny State Machines** — planned.
 6. **MAL-06 — Aniloops, Travel, Repair, Downtime, Transition & Spacewalk Loops** — planned.
 7. **MAL-07 — GM Composition Recipes & GCL Integration** — planned.
@@ -64,4 +46,4 @@ Governed start AIOC PR `921` merged as `5da9cae5002229ba06a671813f56b1a0b4a564de
 
 ## Current invariant
 
-MAL-01/02 remain frozen. MAL-03 must establish genuine matching self-hosted Linux/Windows acceptance RED before production mutation, then pass exact-head Linux/Windows GREEN plus deterministic comparison with exactly one MAL-03 Validation Core profile and zero historical predecessor fanout. MAL-04+, ALP-01+, provider activation, tester distribution, release and deployment remain unauthorized.
+MAL-01..03 remain frozen. MAL-04 has no implementation authority until a future owner `Continue` completes governed start from exact application main `87d08c663606e0d0e1afc9955b069891367b8f83`. MAL-05+, ALP-01+, provider activation, tester distribution, release and deployment remain unauthorized.
