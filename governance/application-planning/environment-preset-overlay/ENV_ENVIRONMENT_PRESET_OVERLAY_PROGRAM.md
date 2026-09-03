@@ -2,10 +2,10 @@
 
 **Program ID:** ENV  
 **Status:** in_progress_parallel_content_authoring  
-**Completed through:** ENV-08  
-**Current:** ENV-09 — Cold, Alpine & Polar Expansion  
-**Current governed preset count:** 60  
-**Current composed archetype count:** 17  
+**Completed through:** ENV-09  
+**Current:** ENV-10 — Settled, Industrial & Infrastructure Expansion  
+**Current governed preset count:** 66  
+**Current composed archetype count:** 18  
 **Owner and final authority:** John Brandon Turner  
 **Application implementation authority:** none  
 **Parallel-track rule:** ENV may advance as governed content/design work while the application software roadmap continues. ENV must not mutate `Multiversal-app` runtime schemas, terrain mechanics, SCL behavior, migrations, encounter runtime, or environment UI until a separately governed application-integration tranche is authorized.
@@ -53,13 +53,13 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
    Added Coast/Shoreline/Beach, Tidal Flats, Coral Reef, Kelp Forest, Deep Ocean/Abyssal and Ocean Trench. Resolved the reef/kelp structural gap with `ARCH-AQUATIC-STRUCTURE`, taking the composed archetype count to seventeen and the preset count to fifty-two. River Delta/Estuary remains a distinct ENV-06 river-mouth preset.
 
 8. **ENV-08 — Grasslands, Open Country & Dry Landforms** — `completed_verified`  
-   Added Grassland/Prairie, Savanna, Steppe, Scrubland/Chaparral, Hills/Uplands, Canyon/Badlands, Rocky Desert and Salt Flats. No new archetype was justified; Open Country and Highland cover the reusable structure while vegetation, substrate and aridity remain preset/overlay dimensions. The preset count is now sixty and the composed archetype count remains seventeen.
+   Added Grassland/Prairie, Savanna, Steppe, Scrubland/Chaparral, Hills/Uplands, Canyon/Badlands, Rocky Desert and Salt Flats. No new archetype was justified; Open Country and Highland cover the reusable structure while vegetation, substrate and aridity remain preset/overlay dimensions. The preset count became sixty and the composed archetype count remained seventeen.
 
-9. **ENV-09 — Cold, Alpine & Polar Expansion** — `selected_not_started`  
-   Separate Taiga/Boreal Forest, Tundra, Alpine/High Mountain, Glacier/Icefield, Polar Ice and Sea Ice where useful; move generic cold/altitude effects toward composable overlays/properties and resolve the ENV-03 ice/glacier archetype watch item.
+9. **ENV-09 — Cold, Alpine & Polar Expansion** — `completed_verified`  
+   Added Taiga/Boreal Forest, Tundra, Alpine/High Mountain, Glacier/Icefield, Polar Ice and Sea Ice while preserving the source-backed Arctic Tundra and Taiga preset. Resolved the ENV-03 ice/glacier watch item with `ARCH-ICE-MASS`, taking the governed preset count to sixty-six and the composed archetype count to eighteen. Generic cold, Blizzard/Whiteout, Active Avalanche and Low Oxygen remain later overlay authority.
 
-10. **ENV-10 — Settled, Industrial & Infrastructure Expansion**  
-    Add Farmland/Agricultural Countryside, Road/Wilderness Trail, Frontier Outpost, Mine/Quarry, Factory/Refinery, Fortress/Military Base, Transit Hub/rail-air-spaceport and related infrastructure presets.
+10. **ENV-10 — Settled, Industrial & Infrastructure Expansion** — `selected_not_started`  
+    Add Farmland/Agricultural Countryside, Road/Wilderness Trail, Frontier Outpost, Mine/Quarry, Factory/Refinery, Fortress/Military Base, Transit Hub/rail-air-spaceport and related infrastructure presets; resolve the ENV-03 road/trail corridor watch item.
 
 11. **ENV-11 — Weather, Climate & Disaster Overlays**  
     Author reusable Heavy Rain/Monsoon, Fog, Thunderstorm, Blizzard/Heavy Snow, Hurricane/Cyclone, Tornado, Sandstorm/Dust Storm, Flood, Drought, Wildfire, Volcanic Ash, Avalanche/Landslide and related natural-condition overlays.
@@ -79,7 +79,7 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
 16. **ENV-16 — Environment Creature-Discovery Contract & GM Preset Projection**  
     Define the content/API contract by which a composed environment returns eligible creatures as native/common, possible, migratory/seasonal, introduced, rare, overlay-enabled or excluded while respecting World/Reality distribution, visibility and GM-only information. Application UI/runtime implementation is explicitly deferred.
 
-## Locked model decisions through ENV-08
+## Locked model decisions through ENV-09
 
 - durable layers are Archetype, Preset, Overlay and Local Environment Instance;
 - Resolved Environment is derived/read-only and cannot become a fifth authoring truth;
@@ -94,6 +94,11 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
 - `ARCH-FLOWING-WATER` is the sole ENV-06 archetype extension because channelized directional flow is not cleanly represented by Open Water Surface or Wetland;
 - `ARCH-AQUATIC-STRUCTURE` is the sole ENV-07 archetype extension because reef and kelp environments share reusable dense three-dimensional underwater structure not supplied by Submerged alone;
 - ENV-08 adds no archetype: Grassland, Savanna, Steppe, Scrubland and Salt Flats reuse Open Country, while Hills, Canyon/Badlands and Rocky Desert compose Highland where relief matters;
+- `ARCH-ICE-MASS` is the sole ENV-09 archetype extension because persistent glacier, polar and sea-ice environments share fracture, crevasse/lead, melt-feature, unstable-edge and slow substrate-movement behavior that Open Country/Highland do not own;
+- Taiga reuses Forest, Tundra reuses Open Country and Alpine reuses Highland rather than becoming new archetypes;
+- the existing source-backed Arctic Tundra and Taiga preset remains immutable provenance even after the modular ENV-09 split;
+- Glacier/Icefield is distinct from temporarily frozen Highland; Sea Ice is distinct from temporarily frozen Open Water;
+- Extreme Cold, Blizzard/Whiteout, Active Avalanche, Low Oxygen and unusual pressure/light states remain ENV-11/12 conditions, not implicit universal mechanics of cold presets;
 - Floodplain geography is distinct from an active Flood overlay;
 - Flooded Forest baseline is distinct from temporarily flooding an ordinary forest;
 - River Delta/Estuary remains distinct from Coast and Tidal Flats;
