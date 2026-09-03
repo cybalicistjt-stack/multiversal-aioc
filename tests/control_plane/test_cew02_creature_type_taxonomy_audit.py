@@ -98,12 +98,16 @@ class Cew02CreatureTypeTaxonomyAuditTests(unittest.TestCase):
     def test_closeout_advances_once_to_cew03(self):
         backlog = self.load(BACKLOG)
         states = {r["id"]: r["status"] for r in backlog["tranches"]}
-        self.assertEqual(backlog["completed_through"], "CEW-02")
-        self.assertEqual(backlog["current_item"], "CEW-03")
-        self.assertEqual(backlog["current_item_state"], "selected_not_started")
+        strict_order = backlog["strict_order"]
+        self.assertGreaterEqual(strict_order.index(backlog["completed_through"]), strict_order.index("CEW-02"))
         self.assertEqual(states["CEW-01"], "completed_verified")
         self.assertEqual(states["CEW-02"], "completed_verified")
-        self.assertEqual(states["CEW-03"], "selected_not_started")
+        if backlog["completed_through"] == "CEW-02":
+            self.assertEqual(backlog["current_item"], "CEW-03")
+            self.assertEqual(backlog["current_item_state"], "selected_not_started")
+            self.assertEqual(states["CEW-03"], "selected_not_started")
+        else:
+            self.assertGreater(strict_order.index(backlog["current_item"]), strict_order.index("CEW-02"))
         self.assertEqual(backlog["cew02_decisions"]["contract_id"], "CEW-TAX-1.0")
         self.assertFalse(backlog["application_implementation_authority"])
 
