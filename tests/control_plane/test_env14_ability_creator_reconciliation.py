@@ -104,16 +104,16 @@ class Env14AbilityCreatorReconciliationTests(unittest.TestCase):
         ]:
             self.assertIn(phrase, text)
 
-    def test_backlog_closes_env14_and_selects_env15(self):
+    def test_env14_historical_closeout_remains_valid_after_later_progression(self):
         backlog = self.load_json(BACKLOG)
         order = backlog["strict_order"]
         statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
         completed = [item["id"] for item in backlog["tranches"] if item["status"] == "completed_verified"]
-        self.assertEqual(completed, order[:14])
-        self.assertEqual(backlog["completed_through"], "ENV-14")
-        self.assertEqual(backlog["current_item"], "ENV-15")
+        self.assertEqual(completed[:14], order[:14])
+        self.assertIn("ENV-14", completed)
         self.assertEqual(statuses["ENV-14"], "completed_verified")
-        self.assertEqual(statuses["ENV-15"], "selected_not_started")
+        self.assertIn(statuses["ENV-15"], {"selected_not_started", "completed_verified"})
+        self.assertGreaterEqual(order.index(backlog["completed_through"]), order.index("ENV-14"))
         decisions = backlog["env14_decisions"]
         self.assertEqual(decisions["current_preset_count"], 76)
         self.assertEqual(decisions["current_composed_archetype_count"], 19)

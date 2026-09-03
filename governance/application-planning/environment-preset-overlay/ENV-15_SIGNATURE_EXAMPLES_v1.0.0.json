@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "program": "ENV",
+  "tranche": "ENV-15",
+  "signature_id": "ENV-HS-1.0",
+  "examples": [
+    {
+      "example_id": "EX-HS-RIVER-FLOOD",
+      "illustrative_not_canonical": true,
+      "purpose": "Show an overlay modifying a resolved environment-side signature without mutating the source preset.",
+      "base_environment_ref": "ENVPRESET-FW-RIVER-STREAM",
+      "active_overlays": ["OVL-HYD-FLOOD"],
+      "illustrative_resolved_facts": [
+        {"dimension_id": "habitat_medium", "value": ["terrestrial", "aquatic", "aerial"], "state": "known"},
+        {"dimension_id": "water_salinity", "value": ["freshwater"], "state": "known"},
+        {"dimension_id": "water_flow", "value": ["flowing"], "state": "known"},
+        {"dimension_id": "moisture_band", "value": ["wet", "saturated"], "state": "known", "contribution": "OVL-HYD-FLOOD"}
+      ],
+      "rule_demonstrated": "Flood changes the resolved hydrology/moisture context only where governed deltas support it; it does not rewrite the River / Stream preset."
+    },
+    {
+      "example_id": "EX-HS-VACUUM-ZERO-G",
+      "illustrative_not_canonical": true,
+      "purpose": "Show independent atmosphere and gravity dimensions resolving together without one implying the other.",
+      "base_environment_ref": "illustrative_space_local_instance",
+      "active_overlays": ["OVL-ATM-VACUUM", "OVL-GRV-ZERO"],
+      "illustrative_resolved_facts": [
+        {"dimension_id": "habitat_medium", "value": ["space_exposed"], "state": "known"},
+        {"dimension_id": "atmosphere_regime", "value": ["vacuum"], "state": "known", "contribution": "OVL-ATM-VACUUM"},
+        {"dimension_id": "pressure_regime", "value": ["low"], "state": "known", "contribution": "OVL-ATM-VACUUM"},
+        {"dimension_id": "gravity_regime", "value": "zero", "state": "known", "contribution": "OVL-GRV-ZERO"}
+      ],
+      "rule_demonstrated": "Vacuum and Zero Gravity remain separate environmental facts even when both are active."
+    },
+    {
+      "example_id": "EX-HS-UNKNOWN-DIMENSION",
+      "illustrative_not_canonical": true,
+      "purpose": "Show that source silence on a material habitat fact remains unknown rather than being guessed.",
+      "base_environment_ref": "illustrative_unresolved_environment",
+      "active_overlays": [],
+      "illustrative_resolved_facts": [
+        {"dimension_id": "temperature_band", "value": null, "state": "unknown"},
+        {"dimension_id": "water_salinity", "value": ["freshwater"], "state": "known"}
+      ],
+      "illustrative_creature_predicate": {"dimension_id": "temperature_band", "class": "requires", "value": ["cold"]},
+      "expected_match_state": "indeterminate",
+      "rule_demonstrated": "A material unknown cannot be silently treated as satisfying or violating the creature requirement."
+    },
+    {
+      "example_id": "EX-HS-SUITABLE-BUT-NOT-DISTRIBUTED",
+      "illustrative_not_canonical": true,
+      "purpose": "Show that ecological compatibility and canonical geographic distribution are separate decisions.",
+      "base_environment_ref": "illustrative_compatible_environment",
+      "active_overlays": [],
+      "ecological_fit": "compatible",
+      "canonical_distribution": "absent_or_not_established",
+      "discovery_projection_result": "do_not_claim_presence_from_habitat_fit_alone",
+      "rule_demonstrated": "A creature can be environmentally suitable without being native, introduced, present, common, or canonically distributed there."
+    }
+  ]
+}
