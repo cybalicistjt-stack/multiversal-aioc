@@ -1,7 +1,7 @@
 # MAL — Microgames & Ambient Loops
 
 **Program ID:** MAL  
-**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH MAL-01; MAL-02 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH MAL-02; MAL-03 SELECTED_NOT_STARTED  
 **Activation:** after completed_verified SCL-11  
 **Successor:** ALP-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,50 +9,46 @@
 
 ## Current state
 
-MAL-01 — Source/Authority/Originality Boundary & Microgame Taxonomy — is `completed_verified` on exact application main `adf77329574666e1fde5d0f9b86c77d4fa924478`. Owner `Continue` governed-starts MAL-02 — Primitive Input, Timing, State & Goal Contract — from that exact baseline on `integration/mal-02-primitive-input-timing-state-goal` with bounded implementation authority.
+MAL-01 and MAL-02 are `completed_verified`. MAL-02 merged to exact application main `3b8b20916b6390a720fe49ee9685b7ca1ea00238`. MAL-03 — Movement, Navigation, Rooms, Doors, Keys & Traversal Primitives — is the strict successor and is `selected_not_started` from that exact baseline with `implementation_branch = null` and `implementation_authority = false`.
 
-Parallel ENV/CEW content work and parallel GCL execution remain outside MAL-02 work selection and do not widen MAL authority.
-
-## Purpose
-
-MAL turns recovered microgame/Aniloop ideas into an original, reusable, governed interaction library. It supports short experiential interactions without becoming a separate game engine and consumes canonical Action/Event, Character, Project, World/Scene, ISE, MAI, AAI, GCL, Permission/visibility and owner-domain state rather than duplicating it.
-
-Recovered basis remains provenance and inspiration only; MAL-01 originality and owner-authority boundaries are frozen.
+Parallel ENV/CEW content work and GCL execution remain outside MAL work selection unless a named dependency proves insufficient.
 
 ## Frozen MAL-01 contract
 
-MAL-01 provides source/authority/originality classification and boundary semantics only. Recovered examples must become original MAL designs with stable MAL IDs, explicit provenance and canonical owner references. Proposal classification never canonizes content or outcomes. AI remains proposal-only.
+Recovered material is provenance/inspiration only; copying proprietary game/ROM logic, data, maps, scripts, audiovisual assets, names, rule tables or level layouts is not authorized. MAL classifications reference canonical owner domains and never create parallel truth. AI remains proposal-only.
 
-## MAL-02 governed contract
+## Frozen MAL-02 contract
 
-MAL-02 creates reusable primitive interaction contracts only:
+MAL-02 established reusable primitive interaction semantics:
 
 - **Semantic input intents:** `directional-intent`, `primary-action`, `secondary-action`, `confirm`, `cancel`, `pause`, `retry`, `accessibility-equivalent`.
 - **Timing modes:** `untimed`, `countdown`, `elapsed-limit`, `cadence-window`.
 - **Session phases:** `ready`, `active`, `paused`, `succeeded`, `failed`, `cancelled`.
 - **Goal kinds:** `counter-target`, `timer-survive`, `progress-target`, `reference-collection`, `ordered-step`.
 
-Inputs are semantic, device-neutral intents. Keyboard, gamepad, touch, switch, assistive and other accessibility-equivalent mappings normalize to the same governed intent rather than becoming separate gameplay truth.
+Inputs remain device-neutral and accessibility-equivalent. Timing truth remains deterministic logical integer timing rather than wall-clock/frame-rate/latency truth. Session state and goals remain ephemeral MAL-local state. Pause/retry, success/failure and reference collection never mutate canonical owner domains. Deterministic receipts exclude raw device identity, wall-clock time, presentation prose and unauthorized hidden data.
 
-Timing is deterministic logical timing using authored integer ticks/durations/windows. Wall-clock timestamps, animation-frame timing, network latency and refresh rate are excluded from outcome truth and deterministic receipts.
+## MAL-02 validation evidence
 
-MAL session state is ephemeral/local only. Success, failure, cancellation, counters, timers, progress and reference collections do not mutate canonical Combat, Inventory, Project, Travel, progression, Event, Character or World truth. Later authorized integration must explicitly map a MAL result reference into the owning domain.
+Governed start AIOC PR `921` merged as `5da9cae5002229ba06a671813f56b1a0b4a564de` after one repository-state maintenance-history projection repair; passing Repository Health run `33793725017`, job `100776260435`.
 
-Pause freezes MAL logical progression without advancing campaign/world time. Retry creates a new deterministic attempt identity from the same authored definition and does not erase owner history.
+Genuine matching RED used application head `dd3261d3632edb3569669653549bf95168c93588`, run `33794055025`, Linux job `100777396723`, Windows job `100777396679`, comparator `100777629990`, receipt `e4f8ab5c567c33b5fb3d4461de7b2ef76b4a4040f96efd3a7d6818e290ae12a2`.
 
-Deterministic receipts preserve stable MAL definition/attempt IDs, normalized semantic inputs, logical tick progression, resulting local phase/goal/progress state, source/provenance and canonical owner references. Presentation prose, wall-clock time, raw device identity and unauthorized hidden data are excluded.
+The first production head exposed one case-sensitive governed panel-marker mismatch. The bounded presentation/source-governance repair produced exact head `c337bfc98de15913a5af8f521caa67c57a177cb4`, which passed run `33794429491`: selector/repository-health job `100778572122`, Linux `100778661705`, Windows `100778661735`, comparator `100778910190`, receipt `d73b9aedadc00018d0a0c8de3852f61ebaec9d3c7fd099155539e3d906567f90`. Application PR `397` merged by repository-allowed squash as `3b8b20916b6390a720fe49ee9685b7ca1ea00238`.
 
-MAL-02 does **not** implement movement/navigation/rooms/doors/keys/traversal recipes, conflict/hazards, NPC state machines, Aniloops, owner-domain rewards/outcome commits, persistence or migration `0022`.
+Historical predecessor profile fanout, unchanged-evidence reruns, no-progress cycles and post-merge stale-pointer incidents remained zero.
 
-## MAL-01 validation evidence
+## MAL-03 selection boundary
 
-Application PR `396` merged as `adf77329574666e1fde5d0f9b86c77d4fa924478`. Final exact head `559df151053e7af65abda72630384d8827338030` passed selector/repository health, self-hosted Linux, self-hosted Windows and deterministic comparison with receipt `a28dfe0c5b79a11a2e3d120d6343176eb85f0902016f83ff33cbb9dceec6fb15`.
+MAL-03 is selected only. A future owner `Continue` must governed-start it before product mutation. Its future scope is movement, navigation, rooms, doors, keys and traversal primitives over the frozen MAL-01/02 contracts.
+
+Canonical World/Scene, Action/Event, Character, Inventory, Travel, Project and Permission/visibility owners remain authoritative. MAL-03 may eventually reference them but may not create parallel owner truth. MAL-04+ conflict/hazards/pickups/objectives, NPC behavior, Aniloops, reward/integration mechanics, persistence, migration `0022`, tester distribution, release and deployment remain unauthorized.
 
 ## Tranches
 
 1. **MAL-01 — Source/Authority/Originality Boundary & Microgame Taxonomy** — completed_verified.
-2. **MAL-02 — Primitive Input, Timing, State & Goal Contract** — in_progress with bounded implementation authority.
-3. **MAL-03 — Movement, Navigation, Rooms, Doors, Keys & Traversal Primitives** — planned.
+2. **MAL-02 — Primitive Input, Timing, State & Goal Contract** — completed_verified.
+3. **MAL-03 — Movement, Navigation, Rooms, Doors, Keys & Traversal Primitives** — selected_not_started, no implementation authority.
 4. **MAL-04 — Interaction, Simple Conflict, Hazards, Pickups & Objective Primitives** — planned.
 5. **MAL-05 — NPC/Enemy Behavior & Tiny State Machines** — planned.
 6. **MAL-06 — Aniloops, Travel, Repair, Downtime, Transition & Spacewalk Loops** — planned.
@@ -63,4 +59,4 @@ Application PR `396` merged as `adf77329574666e1fde5d0f9b86c77d4fa924478`. Final
 
 ## Current invariant
 
-MAL-01 remains frozen. MAL-02 must establish genuine matching self-hosted Linux/Windows acceptance RED before production mutation, then pass exact-head Linux/Windows GREEN plus deterministic comparison with exactly one MAL-02 Validation Core profile and zero historical predecessor fanout. MAL-03+, ALP-01+, provider activation, tester distribution, release and deployment remain unauthorized.
+MAL-01/02 are frozen. MAL-03 has no implementation authority until a future governed start from exact application main `3b8b20916b6390a720fe49ee9685b7ca1ea00238`. No later MAL, ALP, provider, tester, release or deployment authority is implied by selection.
