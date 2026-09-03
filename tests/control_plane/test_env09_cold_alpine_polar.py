@@ -18,6 +18,7 @@ ENV05 = ENV_DIR / "ENV-05_PRESET_REGISTRY_v1.0.0.csv"
 ENV06 = ENV_DIR / "ENV-06_FRESHWATER_WETLAND_PRESET_REGISTRY_v1.0.0.csv"
 ENV07 = ENV_DIR / "ENV-07_COASTAL_MARINE_PRESET_REGISTRY_v1.0.0.csv"
 ENV08 = ENV_DIR / "ENV-08_OPEN_COUNTRY_DRY_LANDFORMS_PRESET_REGISTRY_v1.0.0.csv"
+BACKLOG = ENV_DIR / "ENV_PROGRAM_BACKLOG.json"
 
 
 class Env09ColdAlpinePolarTests(unittest.TestCase):
@@ -119,6 +120,26 @@ class Env09ColdAlpinePolarTests(unittest.TestCase):
         content = CONTENT.read_text(encoding="utf-8")
         self.assertIn("not recovered source text", content)
         self.assertIn("CEW owns those mappings", content)
+
+    def test_backlog_closes_env09_and_selects_env10(self):
+        backlog = self.load_json(BACKLOG)
+        order = backlog["strict_order"]
+        statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
+        completed = [item["id"] for item in backlog["tranches"] if item["status"] == "completed_verified"]
+        self.assertEqual(completed, order[:9])
+        self.assertEqual(backlog["completed_through"], "ENV-09")
+        self.assertEqual(backlog["current_item"], "ENV-10")
+        self.assertEqual(statuses["ENV-09"], "completed_verified")
+        self.assertEqual(statuses["ENV-10"], "selected_not_started")
+        decisions = backlog["env09_decisions"]
+        self.assertEqual(decisions["current_preset_count"], 66)
+        self.assertEqual(decisions["new_archetypes_added"], 1)
+        self.assertEqual(decisions["new_archetype_ids"], ["ARCH-ICE-MASS"])
+        self.assertEqual(decisions["current_composed_archetype_count"], 18)
+        self.assertTrue(decisions["legacy_arctic_tundra_taiga_source_preset_preserved"])
+        self.assertTrue(decisions["extreme_cold_blizzard_low_oxygen_deferred"])
+        self.assertFalse(decisions["application_runtime_mutation_authorized"])
+        self.assertFalse(backlog["application_implementation_authority"])
 
 
 if __name__ == "__main__":
