@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "CEW-ECO-1.0",
+  "work_item": "CEW-06",
+  "title": "Ecological Role & Encounter-Use Classification",
+  "identity_authority": "CEW-ID-1.0",
+  "taxonomy_authority": "CEW-TAX-1.0",
+  "classification_authority": "CEW-CLASS-1.0",
+  "habitat_authority": "CEW-HAB-1.0",
+  "distribution_authority": "CEW-DIST-1.0",
+  "presentation_authority": "PPIA-02 Creature & NPC Experience",
+  "application_implementation_authority": false,
+  "unknown_is_first_class": true,
+  "source_silence_means_absent": false,
+  "ecological_role_implies_distribution": false,
+  "encounter_use_changes_definition_identity": false,
+  "encounter_use_implies_campaign_placement": false,
+  "numeric_encounter_score_authorized": false,
+  "multi_value_facts_allowed": true,
+  "role_values_mutually_exclusive": false,
+  "role_dimensions": [
+    "trophic_resource_role",
+    "social_aggregation",
+    "ecosystem_interaction",
+    "encounter_use_facet"
+  ],
+  "controlled_vocabulary": {
+    "trophic_resource_role": [
+      "predator",
+      "scavenger",
+      "herbivore",
+      "sap_feeder",
+      "parasite",
+      "resource_feeder",
+      "unknown"
+    ],
+    "social_aggregation": [
+      "solitary",
+      "pair",
+      "pack",
+      "herd",
+      "swarm",
+      "colony",
+      "unknown"
+    ],
+    "ecosystem_interaction": [
+      "territorial_defender",
+      "guardian",
+      "ecosystem_engineer",
+      "symbiont",
+      "resource_source",
+      "unknown"
+    ],
+    "encounter_use_facet": [
+      "ambusher",
+      "lure_trapper",
+      "pack_pressure",
+      "swarm_pressure",
+      "lookout_alarm",
+      "sentinel_guardian",
+      "terrain_controller",
+      "area_denial",
+      "pursuit_stalker",
+      "hit_and_run",
+      "noncombat_or_negotiable",
+      "unknown"
+    ]
+  },
+  "fact_contract": {
+    "required_fields": ["dimension", "value", "state", "scope", "provenance"],
+    "state_values": ["asserted", "explicitly_absent", "unknown", "unresolved_conflict", "not_applicable"],
+    "asserted_value_requires_source_or_governed_authority": true,
+    "source_excerpt_or_locator_required": true,
+    "raw_source_qualifier_may_coexist_with_controlled_value": true,
+    "source_silence_default": "unknown",
+    "fact_creates_identity": false,
+    "fact_creates_habitat": false,
+    "fact_creates_distribution": false,
+    "fact_creates_relationship_state": false,
+    "fact_creates_runtime_state": false
+  },
+  "derivation_rules": {
+    "explicit_behavior_or_role_wording": "May project to a controlled value only when the source wording directly supports that value; retain source locator and raw qualifier where useful.",
+    "mechanic_alone": "An attack, resistance, movement mode, damage type, CR/threat value, size, game type or Ability does not by itself establish ecological role.",
+    "habitat_or_distribution_alone": "Habitat suitability and canonical range do not establish trophic, social, ecosystem or encounter-use role.",
+    "predator": "Requires source wording or behavior that directly establishes predation; does not identify a prey species unless separately sourced.",
+    "resource_feeder": "Use for explicitly sourced consumption of nonordinary physical, spatial, energetic or comparable resources; preserve the raw target instead of forcing Earth trophic vocabulary.",
+    "guardian": "Records a source-backed guarding/protective role only; does not imply owner, faction, personhood, domestication, loyalty or consent state.",
+    "community_use": "A statement that communities use a creature does not by itself establish domestication, ownership, training or partnership.",
+    "source_category_profile": "May provide scoped encounter-use facets only to records explicitly established as members of that source category; category membership never creates identity or distribution."
+  },
+  "unmapped_source_term_rule": "preserve_raw_source_term_as_unresolved; do_not_force_nearest_controlled_value",
+  "encounter_projection_rules": {
+    "facet_creates_participant_role": false,
+    "facet_creates_quantity": false,
+    "facet_creates_wave": false,
+    "facet_creates_starting_position": false,
+    "facet_creates_hidden_tactics": false,
+    "facet_guarantees_difficulty": false,
+    "permission_filter_before_faceting": true,
+    "source_provenance_required_in_gm_diagnostics": true,
+    "rule": "CEW-06 encounter-use facets support authorized discovery, filtering and preparation. PPIA-02 Campaign/Scene placement remains the authority for participant role, quantity, wave, starting assumptions and live runtime state."
+  },
+  "coverage_boundary": {
+    "direct_source_evidence_packet": "CEW-ECO-EVIDENCE-1.0",
+    "representative_source_recovery_only": true,
+    "bulk_corpus_role_population_authorized": false,
+    "existing_creature_coverage_audit_owner": "CEW-07",
+    "creature_type_coverage_audit_owner": "CEW-08"
+  },
+  "cew07_handoff": {
+    "strict_successor": "CEW-07",
+    "name": "Existing Creature Coverage Audit",
+    "rule": "CEW-07 measures which recovered/canonical creature records have source-backed facts across the CEW-01..06 identity, type, classification, habitat, distribution and ecological-role contracts without inventing missing facts."
+  }
+}
