@@ -20,6 +20,7 @@ ENV06 = ENV_DIR / "ENV-06_FRESHWATER_WETLAND_PRESET_REGISTRY_v1.0.0.csv"
 ENV07 = ENV_DIR / "ENV-07_COASTAL_MARINE_PRESET_REGISTRY_v1.0.0.csv"
 ENV08 = ENV_DIR / "ENV-08_OPEN_COUNTRY_DRY_LANDFORMS_PRESET_REGISTRY_v1.0.0.csv"
 ENV09 = ENV_DIR / "ENV-09_COLD_ALPINE_POLAR_PRESET_REGISTRY_v1.0.0.csv"
+BACKLOG = ENV_DIR / "ENV_PROGRAM_BACKLOG.json"
 
 
 class Env10SettledIndustrialInfrastructureTests(unittest.TestCase):
@@ -128,6 +129,26 @@ class Env10SettledIndustrialInfrastructureTests(unittest.TestCase):
         rows = self.load_csv(ENV05) + self.load_csv(ENV06) + self.load_csv(ENV07) + self.load_csv(ENV08) + self.load_csv(ENV09) + self.load_csv(REGISTRY)
         self.assertEqual(len(rows), 76)
         self.assertEqual(len({r["Preset_ID"] for r in rows}), 76)
+
+    def test_backlog_closes_env10_and_selects_env11(self):
+        backlog = self.load_json(BACKLOG)
+        order = backlog["strict_order"]
+        statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
+        completed = [item["id"] for item in backlog["tranches"] if item["status"] == "completed_verified"]
+        self.assertEqual(completed, order[:10])
+        self.assertEqual(backlog["completed_through"], "ENV-10")
+        self.assertEqual(backlog["current_item"], "ENV-11")
+        self.assertEqual(statuses["ENV-10"], "completed_verified")
+        self.assertEqual(statuses["ENV-11"], "selected_not_started")
+        decisions = backlog["env10_decisions"]
+        self.assertEqual(decisions["current_preset_count"], 76)
+        self.assertEqual(decisions["new_archetypes_added"], 1)
+        self.assertEqual(decisions["new_archetype_ids"], ["ARCH-TRANSPORT-CORRIDOR"])
+        self.assertEqual(decisions["current_composed_archetype_count"], 19)
+        self.assertTrue(decisions["road_trail_watch_item_resolved"])
+        self.assertIn("Port City", decisions["legacy_source_presets_preserved"])
+        self.assertFalse(decisions["application_runtime_mutation_authorized"])
+        self.assertFalse(backlog["application_implementation_authority"])
 
 
 if __name__ == "__main__":
