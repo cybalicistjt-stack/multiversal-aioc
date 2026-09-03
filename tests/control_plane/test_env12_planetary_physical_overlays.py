@@ -132,16 +132,12 @@ class Env12PlanetaryPhysicalOverlayTests(unittest.TestCase):
         self.assertEqual(boundary["habitat_signature_vocabulary_deferred_to"], "ENV-15")
         self.assertEqual(boundary["creature_distribution_owned_by"], "CEW")
 
-    def test_backlog_closes_env12_and_selects_env13(self):
+    def test_env12_remains_completed_after_later_env_progression(self):
         backlog = self.load_json(BACKLOG)
         order = backlog["strict_order"]
         statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
-        completed = [item["id"] for item in backlog["tranches"] if item["status"] == "completed_verified"]
-        self.assertEqual(completed, order[:12])
-        self.assertEqual(backlog["completed_through"], "ENV-12")
-        self.assertEqual(backlog["current_item"], "ENV-13")
         self.assertEqual(statuses["ENV-12"], "completed_verified")
-        self.assertEqual(statuses["ENV-13"], "selected_not_started")
+        self.assertGreaterEqual(order.index(backlog["current_item"]), order.index("ENV-13"))
         decisions = backlog["env12_decisions"]
         self.assertEqual(decisions["planetary_physical_overlays_added"], 15)
         self.assertEqual(len(decisions["overlay_ids"]), 15)
@@ -154,7 +150,6 @@ class Env12PlanetaryPhysicalOverlayTests(unittest.TestCase):
         self.assertTrue(decisions["gravity_regimes_share_single_resolution_seam"])
         self.assertFalse(decisions["universal_numeric_formulas_authored"])
         self.assertFalse(decisions["source_specific_gravity_shift_formula_promoted"])
-        self.assertEqual(decisions["supernatural_multiversal_overlays_deferred_to"], "ENV-13")
         self.assertEqual(decisions["ability_adaptation_reconciliation_deferred_to"], "ENV-14")
         self.assertEqual(decisions["habitat_vocabulary_deferred_to"], "ENV-15")
         self.assertEqual(decisions["creature_distribution_owned_by"], "CEW")
