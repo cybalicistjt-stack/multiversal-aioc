@@ -1,11 +1,17 @@
 # MAL — Microgames & Ambient Loops
 
 **Program ID:** MAL  
-**Status:** OWNER-APPROVED — PLANNED INTERSTITIAL  
-**Activation:** after SCL-11  
+**Status:** OWNER-APPROVED — MAL-01 SELECTED_NOT_STARTED  
+**Activation:** after completed_verified SCL-11  
 **Successor:** ALP-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-08-27
+
+## Current state
+
+SCL is `completed_verified` through SCL-11 on exact application main `07d9f798b3293e684074e82b431b6bfd0aca6faf`. MAL-01 — Source/Authority/Originality Boundary & Microgame Taxonomy — is the strict successor and is `selected_not_started` from that exact application baseline with no implementation branch and no implementation authority.
+
+A future owner `Continue` must perform one bounded MAL-01 governed start before any microgame or ambient-loop product mutation.
 
 ## Purpose
 
@@ -47,10 +53,6 @@ Recovered basis: RDC-01 / RD-01 / RD-02 plus recovered small-interaction and spa
 10. **MAL-10 — Starter Library & Golden Microgame/Aniloop Proof**  
     Deliver a representative original starter library and prove several contexts—such as travel, repair, exploration and spacewalk/transition—without changing owner-domain outcomes between microgame and non-microgame paths unless explicitly authored.
 
-## Invariants
+## Selection invariant
 
-- No copyrighted game/ROM cloning or imitation-by-copying is authorized.
-- Microgames do not create parallel Combat, Inventory, Project, Travel or progression truth.
-- A microgame is optional unless a campaign explicitly authors it as the chosen interaction surface and provides an accessible equivalent where required.
-- Missing visuals/audio/controllers never block ordinary governed resolution.
-- AI may propose or remix compatible primitives but cannot commit outcomes or invent governing mechanics.
+MAL-01 selection grants no implementation authority. No copyrighted game/ROM cloning or imitation-by-copying is authorized. Microgames may not create parallel Combat, Inventory, Project, Travel or progression truth. AI remains proposal-only. No owner mutation, hidden-data reveal, durable persistence or migration `0022` is authorized. MAL-02+, ALP-01+, provider activation, tester distribution, release and deployment remain unauthorized.
