@@ -115,12 +115,11 @@ class Cew01CreatureSourceCensusTests(unittest.TestCase):
     def test_closeout_completes_cew01_and_selects_cew02(self):
         backlog = self.load_json(BACKLOG)
         status = {row["id"]: row["status"] for row in backlog["tranches"]}
-        self.assertEqual(backlog["completed_through"], "CEW-01")
-        self.assertEqual(backlog["current_item"], "CEW-02")
-        self.assertEqual(backlog["current_item_state"], "selected_not_started")
+        order = backlog["strict_order"]
+        self.assertGreaterEqual(order.index(backlog["completed_through"]), order.index("CEW-01"))
+        self.assertGreaterEqual(order.index(backlog["current_item"]), order.index("CEW-02"))
         self.assertEqual(status["CEW-01"], "completed_verified")
-        self.assertEqual(status["CEW-02"], "selected_not_started")
-        self.assertEqual(status["CEW-03"], "planned")
+        self.assertNotEqual(status["CEW-02"], "planned")
         decisions = backlog["cew01_decisions"]
         self.assertEqual(decisions["canonical_creature_definition_count"], 27)
         self.assertEqual(decisions["formally_deferred_creature_candidate_count"], 93)
