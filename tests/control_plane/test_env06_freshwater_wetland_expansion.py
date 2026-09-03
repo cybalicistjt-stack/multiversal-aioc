@@ -114,16 +114,10 @@ class Env06FreshwaterWetlandExpansionTests(unittest.TestCase):
         self.assertIn("not recovered source text", text)
         self.assertIn("does not rewrite the forty retained source profiles", text)
 
-    def test_backlog_closes_env06_and_selects_env07(self):
+    def test_env06_completion_remains_locked_after_later_progression(self):
         backlog = self.load_json(BACKLOG)
-        order = backlog["strict_order"]
         statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
-        completed = [item["id"] for item in backlog["tranches"] if item["status"] == "completed_verified"]
-        self.assertEqual(completed, order[:6])
-        self.assertEqual(backlog["completed_through"], "ENV-06")
-        self.assertEqual(backlog["current_item"], "ENV-07")
         self.assertEqual(statuses["ENV-06"], "completed_verified")
-        self.assertEqual(statuses["ENV-07"], "selected_not_started")
         self.assertEqual(backlog["env06_decisions"]["current_preset_count"], 46)
         self.assertEqual(backlog["env06_decisions"]["current_composed_archetype_count"], 16)
         self.assertFalse(backlog["env06_decisions"]["application_runtime_mutation_authorized"])
