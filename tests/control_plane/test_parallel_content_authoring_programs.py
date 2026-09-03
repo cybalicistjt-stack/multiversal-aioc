@@ -39,14 +39,24 @@ class ParallelContentAuthoringProgramsTest(unittest.TestCase):
 
         statuses = {item["id"]: item.get("status") for item in backlog["tranches"]}
         selected = [item_id for item_id, status in statuses.items() if status == "selected_not_started"]
-        self.assertEqual(selected, [backlog["current_item"]])
-        current_index = strict_order.index(backlog["current_item"])
-        for item_id in strict_order[:current_index]:
-            self.assertEqual(statuses[item_id], "completed_verified")
-        for item_id in strict_order[current_index + 1 :]:
-            self.assertEqual(statuses[item_id], "planned")
-        expected_completed = strict_order[current_index - 1] if current_index else None
-        self.assertEqual(backlog.get("completed_through"), expected_completed)
+        current_item = backlog["current_item"]
+        current_index = strict_order.index(current_item)
+
+        if backlog["status"] == "completed_parallel_content_authoring":
+            self.assertEqual(current_item, strict_order[-1])
+            self.assertEqual(statuses[current_item], "completed_verified")
+            self.assertEqual(selected, [])
+            self.assertTrue(all(statuses[item_id] == "completed_verified" for item_id in strict_order))
+            self.assertEqual(backlog.get("completed_through"), strict_order[-1])
+            self.assertEqual(backlog.get("strict_successor_item"), "CEW-01")
+        else:
+            self.assertEqual(selected, [current_item])
+            for item_id in strict_order[:current_index]:
+                self.assertEqual(statuses[item_id], "completed_verified")
+            for item_id in strict_order[current_index + 1 :]:
+                self.assertEqual(statuses[item_id], "planned")
+            expected_completed = strict_order[current_index - 1] if current_index else None
+            self.assertEqual(backlog.get("completed_through"), expected_completed)
 
     def test_cew_order_havalaea_npc_and_partnership_invariants_are_stable(self):
         backlog = self.load_json(CEW_BACKLOG)
