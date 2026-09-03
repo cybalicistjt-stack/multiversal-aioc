@@ -158,17 +158,31 @@ class Env13SupernaturalMultiversalOverlayTests(unittest.TestCase):
         self.assertEqual(boundary["creature_distribution_owned_by"], "CEW")
         self.assertEqual(boundary["world_reality_branch_identity_owned_externally"], True)
 
-    def test_candidate_preserves_library_counts_and_env13_pointer(self):
+    def test_backlog_closes_env13_and_selects_env14(self):
         backlog = self.load_json(BACKLOG)
-        self.assertEqual(backlog["env10_decisions"]["current_preset_count"], 76)
-        self.assertEqual(backlog["env10_decisions"]["current_composed_archetype_count"], 19)
-        self.assertEqual(backlog["env11_decisions"]["weather_climate_disaster_overlays_added"], 22)
-        self.assertEqual(backlog["env12_decisions"]["planetary_physical_overlays_added"], 15)
-        self.assertEqual(backlog["env12_decisions"]["current_total_concrete_overlay_count"], 37)
-        self.assertEqual(backlog["completed_through"], "ENV-12")
-        self.assertEqual(backlog["current_item"], "ENV-13")
+        order = backlog["strict_order"]
         statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
-        self.assertEqual(statuses["ENV-13"], "selected_not_started")
+        completed = [item["id"] for item in backlog["tranches"] if item["status"] == "completed_verified"]
+        self.assertEqual(completed, order[:13])
+        self.assertEqual(backlog["completed_through"], "ENV-13")
+        self.assertEqual(backlog["current_item"], "ENV-14")
+        self.assertEqual(statuses["ENV-13"], "completed_verified")
+        self.assertEqual(statuses["ENV-14"], "selected_not_started")
+        decisions = backlog["env13_decisions"]
+        self.assertEqual(decisions["supernatural_multiversal_overlays_added"], 10)
+        self.assertEqual(len(decisions["overlay_ids"]), 10)
+        self.assertEqual(decisions["current_preset_count"], 76)
+        self.assertEqual(decisions["current_composed_archetype_count"], 19)
+        self.assertEqual(decisions["weather_climate_disaster_overlay_count"], 22)
+        self.assertEqual(decisions["planetary_physical_overlay_count"], 15)
+        self.assertEqual(decisions["current_total_concrete_overlay_count"], 47)
+        self.assertTrue(decisions["chaos_foam_source_backed_context_seam"])
+        self.assertFalse(decisions["gehenna_specific_overlay_promoted"])
+        self.assertFalse(decisions["universal_participant_or_magic_formulas_authored"])
+        self.assertEqual(decisions["ability_adaptation_reconciliation_deferred_to"], "ENV-14")
+        self.assertEqual(decisions["habitat_vocabulary_deferred_to"], "ENV-15")
+        self.assertEqual(decisions["creature_distribution_owned_by"], "CEW")
+        self.assertFalse(decisions["application_runtime_mutation_authorized"])
         self.assertFalse(backlog["application_implementation_authority"])
 
 
