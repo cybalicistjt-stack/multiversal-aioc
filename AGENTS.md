@@ -48,6 +48,8 @@ Before emitting a final response from an execution turn:
 
 The ephemeral preflight file is execution evidence, not a checkpoint or repository artifact. Do not commit it. A missing or failed preflight is nonterminal while safe authorized work remains.
 
+Anticipated response length, token/context pressure, tool-call count, a partially assembled closeout, or an executor statement such as “tool execution was cut off” is **not** `environment_unavailable` evidence while an authorized repository/tool fallback remains callable. Application merge plus pending AIOC closeout or strict-successor selection must remain in the same execution turn. Skipping the required preflight and emitting an intermediate final response is itself a control-plane incident; the next executable turn must reconcile the stale state before unrelated work and record the incident.
+
 ## Recovery evidence lease
 
 Run the repository-first recovery sequence once per execution cycle. Treat the resolved pointer/checkpoint, relevant exact heads and current gate as fresh until a concrete invalidation occurs: an authority/head/branch change, merge or rebase, conflicting writer, materially new check result, or explicit stale/contradictory tool evidence. Refresh only affected facts. A tool batch ending, elapsed time, context compaction, a status request, or discovering another historical file does not justify restarting recovery.

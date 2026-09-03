@@ -23,6 +23,16 @@ BLOCKER_CLASSES = {
     "safety",
     "irrecoverable_external",
 }
+SELF_IMPOSED_PRESSURE_MARKERS = {
+    "response budget",
+    "tool budget",
+    "token pressure",
+    "context pressure",
+    "partial closeout",
+    "too many tool calls",
+    "conversation length",
+    "tool execution cut off",
+}
 
 
 class PreflightError(RuntimeError):
@@ -61,6 +71,13 @@ def _decision(decision: str, reason_code: str, reason: str) -> dict[str, Any]:
         "reason_code": reason_code,
         "reason": reason,
     }
+
+
+def _contains_self_imposed_pressure(evidence: Any) -> bool:
+    if not isinstance(evidence, list):
+        return False
+    text = " ".join(item for item in evidence if isinstance(item, str)).lower()
+    return any(marker in text for marker in SELF_IMPOSED_PRESSURE_MARKERS)
 
 
 def evaluate(state: dict[str, Any]) -> dict[str, Any]:
@@ -148,6 +165,12 @@ def evaluate(state: dict[str, Any]) -> dict[str, Any]:
         evidence = blocker.get("evidence")
         recovery_attempted = blocker.get("recovery_attempted")
         blocks_all = blocker.get("blocks_all_authorized_progress")
+        if blocker_class == "environment_unavailable" and _contains_self_imposed_pressure(evidence):
+            return _decision(
+                "CONTINUE_EXECUTION",
+                "MVTERM-SELF-IMPOSED-PRESSURE",
+                "response/tool/token/context pressure or partial-closeout preference is not external blocker evidence; continue authorized work or obtain a concrete platform rejection",
+            )
         if (
             blocker_class in BLOCKER_CLASSES
             and isinstance(evidence, list)
@@ -183,7 +206,7 @@ def evaluate(state: dict[str, Any]) -> dict[str, Any]:
 def self_test(root: Path) -> dict[str, Any]:
     contract = _load_json(root / CONTRACT_PATH)
     _require(
-        contract.get("schema_version") == "1.2.0",
+        contract.get("schema_version") == "1.3.0",
         "MVTERM-CONTRACT-SCHEMA",
         "termination contract schema mismatch",
     )
@@ -195,9 +218,9 @@ def self_test(root: Path) -> dict[str, Any]:
     cases = _load_json(root / CASES_PATH)
     rows = cases.get("cases")
     _require(
-        isinstance(rows, list) and len(rows) >= 8,
+        isinstance(rows, list) and len(rows) >= 10,
         "MVTERM-CASES-MISSING",
-        "termination preflight requires at least eight regression cases",
+        "termination preflight requires at least ten regression cases",
     )
     seen: set[str] = set()
     for row in rows:
