@@ -135,7 +135,7 @@ class Env16CreatureDiscoveryProjectionTests(unittest.TestCase):
         backlog = self.load_json(BACKLOG)
         statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
         self.assertEqual(backlog["completed_through"], "ENV-16")
-        self.assertIsNone(backlog["current_item"])
+        self.assertEqual(backlog["current_item"], "ENV-16")
         self.assertEqual(statuses["ENV-16"], "completed_verified")
         decisions = backlog["env16_decisions"]
         self.assertEqual(decisions["contract_id"], "ENV-CD-1.0")
