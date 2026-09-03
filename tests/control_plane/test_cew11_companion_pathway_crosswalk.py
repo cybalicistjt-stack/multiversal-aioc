@@ -107,7 +107,8 @@ class Cew11CompanionPathwayCrosswalkTests(unittest.TestCase):
         self.assertEqual(docs["Mounts.PDF"]["sha256"], "90061aefaa7a0a1c8503be207099123948605f967987ac777847d19857eb6593")
         self.assertEqual(docs["Familiars and pets.PDF"]["sha256"], "02129e10f40a815480b47c14f26e14620777eb0370ef2b7fd3d998b3a1760b32")
         self.assertEqual(docs["Animal training.PDF"]["sha256"], "917e9e326e50b0f7db8d4ce5c03d191c595342950b54c86a904667392db03287")
-        self.assertEqual(evidence["mount_source_designation_count"], 55)
+        self.assertEqual(evidence["mount_source_designation_count"], 60)
+        self.assertEqual(len(evidence["mount_source_designations"]), 60)
         self.assertTrue(all(row["canonical_stable_id_binding"] is None for row in evidence["mount_source_designations"]))
         familiar = evidence["familiar_pet_source_semantics"]
         self.assertTrue(familiar["sentient_familiars_may_willingly_enter_bond_for_mutual_benefit"])
@@ -163,7 +164,7 @@ class Cew11CompanionPathwayCrosswalkTests(unittest.TestCase):
             self.assertGreater(strict_order.index(backlog["current_item"]), strict_order.index("CEW-11"))
         decisions = backlog["cew11_decisions"]
         self.assertEqual(decisions["contract_id"], "CEW-REL-PATH-1.0")
-        self.assertEqual(decisions["mount_source_designation_count"], 55)
+        self.assertEqual(decisions["mount_source_designation_count"], 60)
         self.assertEqual(decisions["canonical_creature_definition_count"], 27)
         self.assertEqual(decisions["explicit_relationship_pathway_binding_count"], 0)
         self.assertTrue(decisions["sapient_voluntary_consent_required"])
