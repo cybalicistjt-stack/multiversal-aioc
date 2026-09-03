@@ -2,7 +2,7 @@
 
 **Program:** ENV — Environment Preset & Overlay  
 **Tranche:** ENV-15 — Habitat Signature & Ecological Matching Contract  
-**State:** validation candidate; backlog advancement occurs only after exact-head repository-health success.
+**Governed closeout state:** ENV-15 `completed_verified`; ENV-16 `selected_not_started`. This closeout claim is valid only when the exact closed-state head passes canonical repository health and is merged without stale-authority conflict.
 
 ## Delivered contract
 
@@ -54,9 +54,10 @@ ENV-15 creates no creature records, ability links, runtime schemas, encounter be
 
 ## Validation sequence
 
-- Initial RED head `67f1ab24c66ef1a0ae4c85568b66ad31abe25e32` failed repository-health run **33772786988** because the ENV-15 model/contract/example/report artifacts were intentionally absent.
-- Candidate GREEN must pass with ENV-15 still selected and ENV-16 still planned.
-- Closed-state GREEN will then advance ENV-15 to `completed_verified` and ENV-16 to `selected_not_started` before merge.
+- Initial TDD RED head `67f1ab24c66ef1a0ae4c85568b66ad31abe25e32` failed repository-health run **33772786988** because the ENV-15 model/contract/example/report artifacts were intentionally absent.
+- Populated candidate head `7f7b19ec81241caa8aaa8d6522e6b68db9ae05a1` passed repository-health run **33773088254** while ENV-15 remained selected and ENV-16 remained planned.
+- Closeout RED head `7f6ca91b2eec4f0a337a2273befe0e634068a481` failed repository-health run **33773395461** because the acceptance contract now required ENV-15 `completed_verified` and ENV-16 `selected_not_started` while the backlog had not yet advanced.
+- Final closed-state repository-health evidence is recorded by the exact-head workflow run associated with the final branch head and by the post-merge push run on `main`.
 
 ## Artifacts
 
@@ -65,3 +66,7 @@ ENV-15 creates no creature records, ability links, runtime schemas, encounter be
 - `ENV-15_SIGNATURE_EXAMPLES_v1.0.0.json`
 - `ENV-15_COMPLETION_REPORT.md`
 - `tests/control_plane/test_env15_habitat_signature_contract.py`
+
+## Exact next tranche
+
+`ENV-16 — Environment Creature-Discovery Contract & GM Preset Projection`
