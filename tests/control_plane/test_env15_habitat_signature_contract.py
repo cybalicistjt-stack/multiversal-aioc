@@ -131,15 +131,17 @@ class Env15HabitatSignatureContractTests(unittest.TestCase):
         self.assertEqual(dist["ecological_fit"], "compatible")
         self.assertEqual(dist["canonical_distribution"], "absent_or_not_established")
 
-    def test_closeout_completes_env15_and_selects_env16(self):
+    def test_closeout_preserves_env15_after_env16_progression(self):
         backlog = self.load_json(BACKLOG)
         statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
         completed = [item["id"] for item in backlog["tranches"] if item["status"] == "completed_verified"]
-        self.assertEqual(completed, backlog["strict_order"][:15])
-        self.assertEqual(backlog["completed_through"], "ENV-15")
+        self.assertEqual(completed[:15], backlog["strict_order"][:15])
+        self.assertGreaterEqual(backlog["strict_order"].index(backlog["completed_through"]), backlog["strict_order"].index("ENV-15"))
         self.assertEqual(backlog["current_item"], "ENV-16")
         self.assertEqual(statuses["ENV-15"], "completed_verified")
-        self.assertEqual(statuses["ENV-16"], "selected_not_started")
+        self.assertIn(statuses["ENV-16"], {"selected_not_started", "completed_verified"})
+        if statuses["ENV-16"] == "completed_verified":
+            self.assertEqual(backlog["completed_through"], "ENV-16")
         decisions = backlog["env15_decisions"]
         self.assertEqual(decisions["signature_id"], "ENV-HS-1.0")
         self.assertEqual(decisions["habitat_dimension_count"], 18)

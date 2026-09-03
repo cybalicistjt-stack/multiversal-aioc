@@ -1,0 +1,209 @@
+{
+  "schema_version": "1.0.0",
+  "program": "ENV",
+  "tranche": "ENV-16",
+  "contract_id": "ENV-CD-1.0",
+  "title": "Environment Creature-Discovery Contract & GM Preset Projection",
+  "purpose": "Define a deterministic read-only projection by which a composed ENV environment can expose source-supported creature candidates to an authorized GM while preserving CEW ecology/distribution authority, World/Reality/Setting/Place authority, Campaign/GM visibility authority, provenance, unresolved facts and ENV-HS-1.0 ecological-fit semantics.",
+  "application_implementation_authority": false,
+  "runtime_schema_mutation_authorized": false,
+  "projection_is_read_only": true,
+  "projection_creates_canonical_creature_state": false,
+  "projection_creates_canonical_distribution_state": false,
+  "numeric_discovery_score_authorized": false,
+  "hidden_priority_numbers_authorized": false,
+  "authority_boundary": {
+    "environment_composition_and_habitat_signature_owner": "ENV",
+    "creature_habitat_profile_owner": "CEW",
+    "creature_distribution_owner": "CEW",
+    "creature_identity_owner": "existing governed creature identity",
+    "world_reality_setting_place_owner": "existing World/Reality/Setting/Place authorities",
+    "campaign_placement_visibility_owner": "existing Campaign/GM/visibility authorities",
+    "ecology_social_lifecycle_world_seam_reference": "CCP-10",
+    "npc_mount_pet_familiar_state_owned_externally": true,
+    "source_provenance_required": true
+  },
+  "required_inputs": {
+    "environment_context": {
+      "required": ["resolved_environment_ref", "habitat_signature", "scope", "active_overlay_refs", "environment_contribution_trace"],
+      "habitat_signature_version": "ENV-HS-1.0",
+      "rule": "The environment input is already resolved through ENV composition and overlay semantics before creature discovery projection."
+    },
+    "candidate_creature": {
+      "required": ["creature_ref", "identity_state", "ecological_fit", "distribution_state", "visibility_state", "provenance"],
+      "optional": ["frequency_state", "season_activity_state", "overlay_interactions", "ecological_roles", "encounter_facets", "npc_capable", "mount_pet_familiar_facets", "personhood_or_consent_facets"],
+      "rule": "ENV-16 consumes these facts; it does not author or normalize them into new canonical creature truth."
+    },
+    "authority_context": {
+      "required": ["world_reality_setting_place_context", "campaign_context", "viewer_role"],
+      "viewer_role_values": ["gm", "authorized_assistant"],
+      "rule": "The projection never expands visibility beyond the permissions supplied by the controlling campaign/GM authority."
+    }
+  },
+  "candidate_fact_states": ["known", "unknown", "not_applicable", "unresolved_conflict"],
+  "distribution_relation_values": [
+    "native",
+    "introduced",
+    "invasive",
+    "domesticated",
+    "resident",
+    "migratory",
+    "transient",
+    "generic_unrestricted",
+    "explicitly_absent",
+    "not_established",
+    "unknown"
+  ],
+  "frequency_values": ["common", "uncommon", "rare", "exceptional", "unique_or_named", "unknown", "not_established"],
+  "season_activity_values": ["resident", "seasonal", "migratory", "episodic", "time_windowed", "inactive_now", "unknown", "not_established"],
+  "overlay_interaction_values": ["unaffected", "enabled", "required", "excluded", "conditional", "unknown", "not_established"],
+  "visibility_values": ["gm_discoverable", "gm_only", "hidden_until_revealed", "campaign_suppressed", "unknown", "unresolved_conflict"],
+  "projection_outcomes": [
+    "discoverable",
+    "discoverable_with_warning",
+    "conditional",
+    "excluded",
+    "unresolved"
+  ],
+  "gm_projection_facets": [
+    "native_common",
+    "possible_tolerated",
+    "migratory_seasonal",
+    "introduced_invasive",
+    "rare_exceptional",
+    "overlay_enabled",
+    "canonical_presence_conflict",
+    "excluded_or_blocked",
+    "unresolved"
+  ],
+  "facet_semantics": {
+    "native_common": "Requires source-supported native/resident distribution plus common frequency or an equivalently explicit ordinary-occurrence assertion. Ecological fit alone never creates this facet.",
+    "possible_tolerated": "A GM-facing possibility facet for source-supported presence/allowance with compatible, preferred or conditional ecological fit where no stronger occurrence facet is established. It never means native or common.",
+    "migratory_seasonal": "Requires source-supported migration, season or time-window authority. Current-scope activity is evaluated separately from baseline distribution.",
+    "introduced_invasive": "Requires source-supported introduced, invasive or domesticated distribution state; environmental similarity cannot infer introduction history.",
+    "rare_exceptional": "Requires source-supported rare, exceptional, unique/named or comparable frequency/occurrence authority. No percentage or random-encounter rate is inferred.",
+    "overlay_enabled": "Requires an explicit CEW/source creature interaction with an active ENV overlay/context. Overlay presence alone does not invent creature affinity.",
+    "canonical_presence_conflict": "Preserves a source-backed canonical presence assertion when ecological-fit or local-condition evidence conflicts or remains unresolved. The projection surfaces the conflict rather than deleting the canonical occurrence or pretending the ecology matches.",
+    "excluded_or_blocked": "Used when an explicit controlling distribution, ecological, overlay, temporal or visibility gate blocks current discovery. Exclusion retains reasons/provenance for authorized GM diagnostics.",
+    "unresolved": "Used when material authority is unknown, not established or contradictory. Unresolved candidates cannot be promoted to native/common/present claims."
+  },
+  "gate_order": [
+    "identity_and_authority_gate",
+    "campaign_visibility_gate",
+    "canonical_distribution_gate",
+    "ecological_fit_gate",
+    "overlay_condition_gate",
+    "season_activity_gate",
+    "projection_facet_derivation",
+    "stable_grouping_and_trace"
+  ],
+  "gate_rules": {
+    "identity_and_authority_gate": {
+      "invalid_or_rejected_identity": "excluded",
+      "unknown_identity": "unresolved",
+      "rule": "Only governed creature identities/candidates enter discovery; ENV-16 creates no duplicate creature catalog."
+    },
+    "campaign_visibility_gate": {
+      "campaign_suppressed": "excluded",
+      "hidden_until_revealed": "excluded_unless_controlling_gm_authority_explicitly_allows_this_view",
+      "gm_only": "discoverable_to_authorized_gm_only",
+      "unknown_or_conflict": "unresolved",
+      "rule": "Discovery never leaks player-hidden or campaign-suppressed information through environment selection."
+    },
+    "canonical_distribution_gate": {
+      "explicitly_absent": "excluded_unless_a_separately_authoritative_campaign_or_local-placement_fact_explicitly_introduces_presence",
+      "not_established_or_unknown": "unresolved_not_present_by_default",
+      "explicit_presence": "continue",
+      "rule": "World/Reality/Setting/Place and CEW distribution authority can veto mere ecological suitability. Habitat fit cannot manufacture range."
+    },
+    "ecological_fit_gate": {
+      "preferred": "continue",
+      "compatible": "continue",
+      "conditional": "conditional_unless_named_dependency_is_satisfied",
+      "incompatible": "excluded_unless_explicit_canonical_or_local_presence_authority_requires_conflict_preservation",
+      "indeterminate": "unresolved_unless_explicit_canonical_or_local_presence_authority_requires_conflict_preservation",
+      "canonical_presence_conflict_rule": "When controlling source authority explicitly places a creature in the current range but ecological fit is incompatible or indeterminate, keep the creature discoverable_with_warning under canonical_presence_conflict and preserve both authorities for CEW/source repair."
+    },
+    "overlay_condition_gate": {
+      "enabled_or_required": "requires_matching_active_overlay_or_context",
+      "excluded": "blocks_current_scope_when_the_excluding_overlay_or_condition_is_active",
+      "unknown": "unresolved_when_material",
+      "interaction_is_not_causation": true,
+      "rule": "Active overlays may satisfy an already-authored creature predicate; they never create creature affinity, adaptation, ability, summon, bond or distribution authority."
+    },
+    "season_activity_gate": {
+      "inactive_now": "excluded_from_current_scope_but_baseline_distribution_may_remain_visible_to_authorized_gm",
+      "seasonal_or_migratory": "requires_matching_current_scope_when_current-presence is claimed",
+      "unknown": "unresolved_when_material",
+      "rule": "Season/activity changes current occurrence projection without rewriting canonical range."
+    }
+  },
+  "precedence_and_conflict_rules": [
+    "explicit campaign/visibility suppression blocks disclosure",
+    "explicit distribution absence blocks habitat-derived presence unless a separate authoritative local/campaign placement overrides it",
+    "explicit canonical presence is preserved even when ecological-fit evidence conflicts; the conflict is shown, not silently resolved",
+    "explicit current-scope overlay or temporal exclusion can suppress current occurrence without erasing baseline distribution",
+    "material unknowns remain unresolved",
+    "no hidden score, last-write-wins rule or source-order tie breaker may convert contradictory authority into certainty"
+  ],
+  "gm_result_contract": {
+    "required_per_result": [
+      "creature_ref",
+      "outcome",
+      "facets",
+      "ecological_fit",
+      "distribution_state",
+      "visibility_state",
+      "gate_trace",
+      "provenance"
+    ],
+    "optional_per_result": [
+      "frequency_state",
+      "season_activity_state",
+      "active_overlay_reasons",
+      "ecological_roles",
+      "encounter_facets",
+      "npc_capable",
+      "mount_pet_familiar_facets",
+      "personhood_or_consent_facets"
+    ],
+    "blocked_results_retained_for_authorized_gm_diagnostics": true,
+    "silent_drop_of_material_conflict_forbidden": true,
+    "stable_grouping_rule": "Group by explicit facets/outcome and stable creature identity; do not sort by an invented ecological/discovery score.",
+    "selection_is_not_acquisition": "Selecting an environment or seeing a candidate does not create ownership, taming, bond, familiar, mount, NPC, encounter or placement state."
+  },
+  "query_modes": {
+    "normal_discovery": "Return discoverable/conditional candidates and their reasons under current authoritative context.",
+    "include_blocked": "Authorized GM diagnostic view may also return excluded_or_blocked candidates with blocking reasons and provenance.",
+    "include_unresolved": "Authorized GM diagnostic view may also return unresolved candidates so source/CEW gaps are visible rather than guessed.",
+    "candidate_universe_rule": "The candidate universe comes from governed creature/CEW/distribution indexes or explicit caller-provided candidates; ENV-16 does not require a new duplicate all-creatures database."
+  },
+  "cew_handoff": {
+    "strict_successor": "CEW-01",
+    "env16_requires_cew_to_later_supply": [
+      "recovered creature identity ledger",
+      "creature-side habitat predicates",
+      "World/Reality/geographic distribution",
+      "frequency/rarity",
+      "season/activity",
+      "overlay interactions",
+      "ecological/encounter facets",
+      "personhood/NPC and partnership facets where source-supported"
+    ],
+    "contract_can_exist_before_full_cew_population": true,
+    "missing_cew_facts_fail_closed_as_unresolved": true
+  },
+  "non_authorities": [
+    "no Multiversal-app schema/UI/runtime/migration mutation",
+    "no creature identity creation",
+    "no distribution inference from habitat similarity",
+    "no rarity/frequency percentages or encounter rates",
+    "no universal migration/activity formulas",
+    "no ability/adaptation grant from environment or overlay",
+    "no mount/pet/familiar eligibility inference",
+    "no NPC/personhood inference",
+    "no taming/ownership/consent inference",
+    "no player-hidden information disclosure",
+    "no automatic encounter placement"
+  ]
+}

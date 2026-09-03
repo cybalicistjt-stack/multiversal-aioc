@@ -85,8 +85,16 @@ class Env01CompositionContractTests(unittest.TestCase):
         self.assertIn(completed_through, strict_order)
         completed_index = strict_order.index(completed_through)
         self.assertGreaterEqual(completed_index, 0)
-        self.assertLess(completed_index, current_index)
-        self.assertTrue(all(status[item_id] == "completed_verified" for item_id in strict_order[:current_index]))
+
+        if status[current_item] == "completed_verified":
+            self.assertEqual(backlog["status"], "completed_parallel_content_authoring")
+            self.assertEqual(current_item, strict_order[-1])
+            self.assertEqual(completed_through, current_item)
+            self.assertTrue(all(status[item_id] == "completed_verified" for item_id in strict_order))
+        else:
+            self.assertLess(completed_index, current_index)
+            self.assertTrue(all(status[item_id] == "completed_verified" for item_id in strict_order[:current_index]))
+
         self.assertFalse(backlog["application_implementation_authority"])
 
 
