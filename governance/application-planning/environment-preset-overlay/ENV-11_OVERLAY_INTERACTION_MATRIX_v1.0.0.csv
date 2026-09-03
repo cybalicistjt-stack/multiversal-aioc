@@ -1,0 +1,17 @@
+Source_Overlay_ID,Relation,Target_Overlay_ID,Scope_Rule,Automatic_Activation,Resolution_Note
+OVL-WTH-BLIZZARD,supersedes,OVL-WTH-HEAVY-SNOW,same materially overlapping active scope,NO,Blizzard subsumes duplicate active snowfall/visibility contributions while accumulated snow may persist as local/runtime state.
+OVL-WTH-HURRICANE,supersedes,OVL-WTH-WINDSTORM,same overlapping cyclone scope,NO,Cyclone high-wind contributions supersede generic gale contributions in the same scope.
+OVL-WTH-TORNADO,supersedes,OVL-WTH-WINDSTORM,same localized tornado path,NO,Tornado high-wind contribution supersedes generic gale effects inside its path.
+OVL-HYD-FLASH-FLOOD,transforms_with,OVL-HYD-FLOOD,same active inundated scope,NO,Shared inundation effects deduplicate while Flash Flood contributes high-velocity flow and debris/scour context.
+OVL-WTH-MONSOON,amplifies,OVL-WTH-HEAVY-RAIN,overlapping monsoon-season event scope,NO,Monsoon regime can increase duration/recurrence context of separately active Heavy Rain.
+OVL-WTH-HEAVY-RAIN,amplifies,OVL-HYD-FLOOD,overlapping drainage/catchment scope,NO,Rainfall can add water input to a separately active Flood without creating one.
+OVL-WTH-HEAVY-RAIN,amplifies,OVL-GEO-LANDSLIDE,overlapping susceptible slope scope,NO,Saturation can increase instability of a separately active Landslide/Mudslide.
+OVL-WTH-HEAVY-RAIN,dampens,OVL-ECO-WILDFIRE,overlapping exposed burning-fuel scope,NO,Rain can reduce exposed fire spread/persistence but never guarantees extinguishment or erases smoke/damage.
+OVL-WTH-HURRICANE,amplifies,OVL-HYD-STORM-SURGE,overlapping coast/open-water scope,NO,Cyclone wind/pressure can increase separately active Storm Surge severity.
+OVL-HYD-DROUGHT,amplifies,OVL-ECO-WILDFIRE,overlapping dry-fuel scope,NO,Drought-dried fuels can increase separately active Wildfire spread/persistence.
+OVL-GEO-VOLCANIC-ERUPTION,amplifies,OVL-GEO-VOLCANIC-ASH,overlapping ash-producing eruption scope,NO,Active eruption can increase separately represented Volcanic Ash intensity/production.
+OVL-GEO-EARTHQUAKE,amplifies,OVL-GEO-LANDSLIDE,overlapping unstable slope scope,NO,Seismic ground motion can increase a separately active slope failure.
+OVL-HYD-FLOOD,compatible,OVL-HYD-DROUGHT,overlap allowed when timescale or water-source context supports both,NO,A short flood can occur during a longer drought; shared water-state claims must remain scope/time-qualified.
+OVL-WTH-HURRICANE,compatible,OVL-WTH-TORNADO,disjoint or nested local scopes allowed,NO,A localized tornado may coexist within a larger cyclone context; effect keys deduplicate where scopes overlap.
+OVL-GEO-EARTHQUAKE,compatible,OVL-HYD-TSUNAMI-SEICHE,both must be separately active,NO,ENV-11 does not infer a tsunami from an earthquake even when both are physically plausible.
+OVL-WTH-BLIZZARD,compatible,OVL-GEO-AVALANCHE,both must be separately active,NO,Blizzard does not automatically trigger Avalanche; shared snow/visibility effects deduplicate normally.
