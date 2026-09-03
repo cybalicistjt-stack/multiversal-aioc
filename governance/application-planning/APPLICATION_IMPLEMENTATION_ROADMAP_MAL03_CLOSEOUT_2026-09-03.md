@@ -29,6 +29,9 @@
 - Final deterministic receipt: `3c4f2b66c53ae0f4888a8fdef2bbd3fce7919114685d032a9bd63101c32114f3`
 - Application PR: `398`
 - Application merge: `87d08c663606e0d0e1afc9955b069891367b8f83`
+- Initial AIOC closeout candidate: `0239c7fc74561e864f846275b22158956e86d284`
+- Initial AIOC closeout Repository Health: run `33802188927`, job `100804094897`
+- Initial closeout failure: `MVHEALTH-SCORECARD-COUNT`; older post-policy rows omitted required integer `no_progress_cycles`, `unrelated_historical_validation_jobs`, and `reruns_without_changed_evidence` fields
 - Historical predecessor profile fanout: `0`
 - Unchanged-evidence reruns: `0`
 - No-progress cycles: `0`
@@ -38,7 +41,7 @@ MAL-03 freezes original MAL-local movement/navigation/room/connector/door/key-re
 
 ## Convergence
 
-MAL-03 completed in one owner `Continue` and one execution cycle. The governed start required no repository-state repair. One validation-contract/acceptance-marker repair occurred before genuine RED. The first production head passed the complete declared final gate without feature repair. Diagnostic mode was not entered.
+MAL-03 completed product work in one owner `Continue` and one execution cycle. Governed start required no repository-state repair. One validation-contract/acceptance-marker repair occurred before genuine RED. The first production head passed the complete declared final gate without feature repair. The first AIOC closeout candidate then exposed one repository-state scorecard projection defect. Because this is the second MAL-03 repair, diagnostic mode records the exact `MVHEALTH-SCORECARD-COUNT` signature and two bounded hypotheses. The materially changed retry restores only the required historical scorecard counters and records this closeout repair; application validation is not rerun. Total MAL-03 repair cycles: `2` (`1` validation-contract, `1` repository-state). Historical fanout, unchanged-evidence reruns, no-progress cycles and stale-pointer incidents remain zero.
 
 ## Strict successor
 
