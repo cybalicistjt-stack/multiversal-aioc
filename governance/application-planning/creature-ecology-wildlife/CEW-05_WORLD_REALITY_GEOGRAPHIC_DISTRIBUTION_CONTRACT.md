@@ -111,4 +111,4 @@ CEW-05 does not:
 
 ## Handoff
 
-The strict successor is **CEW-06 — Ecological Role & Encounter-Use Classification**. CEW-06 owns ecological/trophic/resource/social roles and encounter-use/search facets while preserving both `CEW-HAB-1.0` habitat facts and `CEW-DIST-1.0` distribution facts as independent axes.
+The strict successor is **CEW-06 — Ecological Role & Encounter-Use Classification**. CEW-06 owns ecological role and encounter-use classification. This includes ecological/trophic/resource/social roles and encounter-use/search facets while preserving both `CEW-HAB-1.0` habitat facts and `CEW-DIST-1.0` distribution facts as independent axes.
