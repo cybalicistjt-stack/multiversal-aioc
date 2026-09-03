@@ -2,11 +2,12 @@
 
 **Program ID:** ENV  
 **Status:** in_progress_parallel_content_authoring  
-**Completed through:** ENV-14  
-**Current:** ENV-15 — Habitat Signature & Ecological Matching Contract  
+**Completed through:** ENV-15  
+**Current:** ENV-16 — Environment Creature-Discovery Contract & GM Preset Projection  
 **Current governed preset count:** 76  
 **Current composed archetype count:** 19  
 **Current concrete overlay count:** 47 (22 ENV-11 + 15 ENV-12 + 10 ENV-13)  
+**Habitat Signature:** `ENV-HS-1.0` with 18 governed environment-side dimensions  
 **Owner and final authority:** John Brandon Turner  
 **Application implementation authority:** none  
 **Parallel-track rule:** ENV may advance as governed content/design work while the application software roadmap continues. ENV must not mutate `Multiversal-app` runtime schemas, terrain mechanics, SCL behavior, migrations, encounter runtime, or environment UI until a separately governed application-integration tranche is authorized.
@@ -26,7 +27,9 @@ ENV-01 additionally establishes **Resolved Environment** as a derived read-only 
 
 ## Cross-program contract
 
-Every archetype, preset and overlay must expose a machine-readable **Habitat Signature** usable by CEW creature ecology matching. Creature discovery must primarily match environmental properties, while preserving explicit source/world distribution restrictions.
+Every composed environment exposes a machine-readable **Habitat Signature** usable by CEW creature ecology matching. `ENV-HS-1.0` describes environment-side conditions only; CEW owns creature-side requirements, preferences, tolerances, exclusions, dependencies and distribution.
+
+Ecological suitability and canonical World/Reality/geographic distribution are separate authorities. A habitat match never proves that a creature is native, common, present, visible to the GM, or canonically distributed there.
 
 ENV owns environment-side composition semantics. CEW owns creature-side habitat/distribution/ecology classification. Neither owns the other's canonical identity.
 
@@ -74,13 +77,13 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
 14. **ENV-14 — Ability, Adaptation, Creator & Full-Library Reconciliation** — `completed_verified`  
    Reconciled the complete 76-preset / 19-archetype / 47-overlay library against retained environment-ability authority. Preserved all 68 canonical Environment->Ability links unchanged; identified 177 additional environment-specific source member records as source-supported but not canonically promoted; mapped all 36 exact environment-specific source collections to the original source-backed presets; preserved the shared five-member multi-environment collection as ability-system-owned; preserved Chaos/Foam as a context seam rather than an ability bundle; and forbade ability auto-grant or canonical-link inference from archetype, overlay, Habitat Signature, property or creator similarity. The 36 post-ENV-05 expansion presets receive zero inferred ability links.
 
-15. **ENV-15 — Habitat Signature & Ecological Matching Contract** — `selected_not_started`  
-   Define environment-side habitat vocabulary including terrestrial/aquatic/aerial use, freshwater/salt/brackish water, temperature, moisture, vegetation density, substrate, elevation/depth, light, atmosphere, shelter, food/resource conditions, settlement intensity and special planar/magical properties.
+15. **ENV-15 — Habitat Signature & Ecological Matching Contract** — `completed_verified`  
+   Established `ENV-HS-1.0` with eighteen environment-side dimensions covering habitat medium; water salinity/permanence/flow; temperature; moisture; vegetation; substrate; elevation/depth; light; atmosphere; pressure; gravity; shelter; food/resource conditions; settlement intensity; and special environmental contexts. Unknown and unresolved facts remain explicit. Active overlays resolve before ecological comparison. Ecological matching is categorical and explainable (`preferred`, `compatible`, `conditional`, `incompatible`, `indeterminate`) with no universal numeric fit score. Ecological suitability remains separate from canonical distribution, rarity/frequency, World/Reality/Place authority, visibility and GM knowledge. CEW owns creature-side habitat predicates and distribution.
 
-16. **ENV-16 — Environment Creature-Discovery Contract & GM Preset Projection**  
+16. **ENV-16 — Environment Creature-Discovery Contract & GM Preset Projection** — `selected_not_started`  
    Define the content/API contract by which a composed environment returns eligible creatures as native/common, possible, migratory/seasonal, introduced, rare, overlay-enabled or excluded while respecting World/Reality distribution, visibility and GM-only information. Application UI/runtime implementation is explicitly deferred.
 
-## Locked model decisions through ENV-14
+## Locked model decisions through ENV-15
 
 - durable layers are Archetype, Preset, Overlay and Local Environment Instance;
 - Resolved Environment is derived/read-only and cannot become a fifth authoring truth;
@@ -91,7 +94,7 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
 - composition precedence does not supersede source/canonical authority;
 - existing source profiles remain immutable provenance/evidence;
 - Character, Species, Creature, Ability, Item, Vehicle, World/Reality/Place, Encounter and runtime owners remain external;
-- `ARCH-FLOWING-WATER`, `ARCH-AQUATIC-STRUCTURE`, `ARCH-ICE-MASS` and `ARCH-TRANSPORT-CORRIDOR` are the only post-ENV-03 archetype extensions through ENV-14;
+- `ARCH-FLOWING-WATER`, `ARCH-AQUATIC-STRUCTURE`, `ARCH-ICE-MASS` and `ARCH-TRANSPORT-CORRIDOR` are the only post-ENV-03 archetype extensions through ENV-15;
 - ENV-11 through ENV-13 preserve **interaction is not causation**;
 - atmosphere composition, oxygen availability, pressure, gravity and supernatural contexts remain modular rather than bundled hidden mechanics;
 - source-specific gravity, Chaos/Foam, exposure, time, perk and participant formulas remain source/owning-system authority rather than universal ENV rules;
@@ -100,13 +103,23 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
 - source-supported-but-unpromoted relationships may remain visible with provenance but may not be silently upgraded to canonical links;
 - `Special Perks (Applicable to Multiple Environments)` remain ability-system-owned and are not bulk-attached to similar presets;
 - selecting a preset, archetype, overlay or local environment never grants an ability;
-- archetype, overlay, property and future Habitat Signature similarity never manufacture canonical Environment->Ability authority;
+- archetype, overlay, property and Habitat Signature similarity never manufacture canonical Environment->Ability authority;
 - the 36 post-ENV-05 expansion presets inherit zero old ability-tree links absent explicit later source/owner authority;
 - `OVL-SUP-CHAOS-FOAM` may satisfy explicit Chaos/Foam environment context for separately owned source abilities but does not grant or duplicate those abilities;
 - the creator may expose canonical and source-supported relationship classes only with visible provenance and selection-is-not-acquisition semantics;
 - ability/property predicates may be evaluated by their owning systems against Resolved Environment only when their own source explicitly establishes the relevant context;
-- Habitat Signature exact vocabulary remains ENV-15;
-- creature ecology/distribution remains CEW authority.
+- `ENV-HS-1.0` is the governed Habitat Signature vocabulary for CEW consumption;
+- Habitat Signature facts carry state, scope and provenance/contribution trace; source silence remains unknown rather than becoming a default;
+- the eighteen Habitat Signature dimensions remain environment-side facts, never creature traits;
+- active overlays and scoped runtime environment state resolve before Habitat Signature projection and ecological comparison;
+- ENV-04 conflict visibility, scope, deduplication and input-order-independence remain controlling during Habitat Signature projection;
+- ecological matching result states are `preferred`, `compatible`, `conditional`, `incompatible` and `indeterminate`;
+- hard incompatibility requires an explicit conflict; mere absence of a preferred condition does not prove incompatibility;
+- no universal numeric ecological-fit score is authorized;
+- ecological suitability never implies native, common, present, canonically distributed or GM-visible status;
+- CEW owns creature-side habitat requirements/preferences/tolerances/exclusions/dependencies and creature distribution;
+- World/Reality/Setting/Place authority remains external and may veto a merely suitable ecological match;
+- ENV-16 must intersect Habitat Signature fit with CEW distribution, rarity/frequency, season/activity and visibility/GM-only authority before creature discovery projection.
 
 ## Completion invariants
 
@@ -115,7 +128,8 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
 - overlays compose deterministically and do not double-apply equivalent effects;
 - custom/local environments can begin from presets and alter overlays/parameters without rewriting a full profile;
 - ability relationship authority remains provenance-explicit and never inferred from similarity;
-- Habitat Signature is stable enough for CEW consumption by ENV-15;
+- Habitat Signature is stable and machine-readable for CEW consumption;
+- unknown and unresolved habitat facts remain explicit;
 - environment-to-creature discovery distinguishes ecological suitability from canonical geographic distribution;
 - no ENV tranche grants `Multiversal-app` implementation authority;
 - active software-roadmap work remains independent until explicit integration is authorized.
