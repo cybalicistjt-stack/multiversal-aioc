@@ -49,17 +49,9 @@ class Cew12EarthlikeWildlifeBaselineTests(unittest.TestCase):
         library = self.load(LIBRARY)
         rows = self.profiles(library)
         required = {
-            "mammal",
-            "bird",
-            "reptile",
-            "amphibian",
-            "bony_fish",
-            "cartilaginous_fish",
-            "insect",
-            "arachnid",
-            "crustacean",
-            "mollusk",
-            "other_invertebrate",
+            "mammal", "bird", "reptile", "amphibian", "bony_fish",
+            "cartilaginous_fish", "insect", "arachnid", "crustacean",
+            "mollusk", "other_invertebrate",
         }
         self.assertEqual(set(library["controlled_taxonomy_groups"]), required)
         counts = Counter(row["taxonomy_group"] for row in rows)
@@ -116,45 +108,31 @@ class Cew12EarthlikeWildlifeBaselineTests(unittest.TestCase):
         self.assertEqual(counts["source_recovered_seed"], 32)
         self.assertEqual(counts["governed_first_party_baseline"], 68)
         self.assertEqual(library["provenance_kind_counts"], dict(sorted(counts.items())))
+        self.assertEqual(library["provenance_scopes"]["source_seed"], "identity_label_and_ordinary_animal_profile_seed_only")
+        self.assertEqual(library["provenance_scopes"]["first_party"], "governed_first_party_ecological_baseline_authoring")
         for row in rows:
             if row["provenance_kind"] == "source_recovered_seed":
                 self.assertEqual(row["source_document"], "animals 11-16-24.PDF")
-                self.assertEqual(row["source_fact_scope"], "identity_label_and_ordinary_animal_profile_seed_only")
+                self.assertEqual(row["source_fact_scope"], "source_seed")
             else:
                 self.assertIsNone(row["source_document"])
-                self.assertEqual(row["source_fact_scope"], "governed_first_party_ecological_baseline_authoring")
+                self.assertEqual(row["source_fact_scope"], "first_party")
 
     def test_habitat_and_ecology_are_useful_without_becoming_distribution(self):
         model = self.load(MODEL)
-        library = self.load(LIBRARY)
-        rows = self.profiles(library)
+        rows = self.profiles(self.load(LIBRARY))
         habitat_counts = Counter(h for row in rows for h in row["habitat_families"])
         role_counts = Counter(r for row in rows for r in row["ecological_roles"])
         for required_habitat in [
-            "forest_woodland",
-            "grassland_open_country",
-            "desert_scrub",
-            "freshwater_river_lake",
-            "wetland_marsh",
-            "coastal_intertidal",
-            "marine_open_water",
-            "alpine_mountain",
-            "polar_tundra",
-            "subterranean_cave",
-            "settled_rural_urban",
+            "forest_woodland", "grassland_open_country", "desert_scrub",
+            "freshwater_river_lake", "wetland_marsh", "coastal_intertidal",
+            "marine_open_water", "alpine_mountain", "polar_tundra",
+            "subterranean_cave", "settled_rural_urban",
         ]:
             self.assertIn(required_habitat, habitat_counts)
         for required_role in [
-            "predator",
-            "prey",
-            "grazer",
-            "browser",
-            "scavenger",
-            "decomposer",
-            "pollinator",
-            "parasite",
-            "detritivore",
-            "filter_feeder",
+            "predator", "prey", "grazer", "browser", "scavenger",
+            "decomposer", "pollinator", "parasite", "detritivore", "filter_feeder",
         ]:
             self.assertIn(required_role, role_counts)
         self.assertFalse(model["non_inference_rules"]["earthlike_baseline_implies_earth_canonical_range"])
