@@ -1,7 +1,7 @@
 # MAL — Microgames & Ambient Loops
 
 **Program ID:** MAL  
-**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH MAL-03; MAL-04 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH MAL-04; MAL-05 SELECTED_NOT_STARTED  
 **Activation:** after completed_verified SCL-11  
 **Successor:** ALP-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,50 +9,34 @@
 
 ## Current state
 
-MAL-01, MAL-02 and MAL-03 are `completed_verified`. MAL-04 — Interaction, Simple Conflict, Hazards, Pickups & Objective Primitives — is `in_progress` from exact application main `87d08c663606e0d0e1afc9955b069891367b8f83` on `integration/mal-04-interaction-conflict-hazards-pickups-objectives` with bounded implementation authority.
+MAL-01 through MAL-04 are `completed_verified`. MAL-04 merged to exact application main `d0f246ea192ccaf964abb66756f06de454a02ecd`. MAL-05 — NPC/Enemy Behavior & Tiny State Machines — is the strict successor and is `selected_not_started` from that exact baseline with implementation branch `null` and implementation authority `false`.
 
-Parallel ENV/CEW content work and GCL execution remain outside MAL-04 work selection unless a named dependency proves insufficient.
+Parallel ENV/CEW content work and GCL execution remain outside MAL product selection unless a named dependency proves insufficient.
 
 ## Frozen contracts
 
 - **MAL-01:** provenance/source/originality classification; no proprietary copying or parallel owner truth.
 - **MAL-02:** device-neutral semantic inputs, deterministic logical timing, ephemeral MAL-local state/goals, pause/retry, accessibility-equivalent controls and deterministic receipts.
 - **MAL-03:** original MAL-local movement/navigation/room/connector/door/key-reference/traversal projections. Hidden or unauthorized passage state remains unresolved; key checks never mutate Inventory; traversal and `transition-ready` never move canonical Character, World/Scene or Travel truth.
+- **MAL-04:** original MAL-local interaction/simple-conflict/hazard/pickup-reference/objective projections. Hidden or unauthorized interaction state remains unresolved. Conflict never mutates canonical Combat, Character or World truth; hazards never apply canonical damage or conditions; pickup completion never mutates Inventory or rewards; objective completion never commits Event, Project, campaign, progression, reputation, advancement or reward truth.
 
-## MAL-04 governed contract
+## MAL-04 validation evidence
 
-MAL-04 defines original reusable MAL-local interaction primitives only:
+Governed-start AIOC PR `930` passed Repository Health run `33806212574`, job `100817186863`, and merged as `dd99bed7649e6b4453d05344dbf7f2b976db23a4`.
 
-- **Interaction modes:** `inspect`, `activate`, `operate`, `attempt`.
-- **Simple-conflict states:** `idle`, `engaged-local`, `advantage-local`, `setback-local`, `resolved-local`, `unresolved`.
-- **Hazard states:** `clear-authorized`, `present-authorized`, `triggered-local`, `avoided-local`, `unresolved`.
-- **Pickup states:** `not-applicable`, `available-reference`, `collected-local-reference`, `unresolved`.
-- **Objective states:** `inactive`, `active-local`, `progressed-local`, `satisfied-local`, `failed-local`, `unresolved`.
-- **Resolution outcomes:** `no-change`, `progress-local`, `setback-local`, `complete-local`, `blocked-local`, `unresolved`.
+The initial acceptance head `d780d2d7e4f9fb0f062bc5fac0853d1ddc04d224` exposed one case-sensitive governed proof-marker mismatch. After one bounded validation-contract repair, genuine matching RED used exact head `18959997549427c531a26f3b711c9340cb9d2458`, run `33806564900`, Linux `100818380409`, Windows `100818380596`, comparator `100818551107`, receipt `ec284051c9d7b79ae695a5baa027fc64271f249290c593d74cbabfddd4f4061d`.
 
-MAL-04 consumes frozen MAL-02 semantic inputs/deterministic logical ticks and MAL-03 local traversal context. Device identity, wall-clock time, animation frames, latency and refresh rate never become outcome truth.
+Production contract and panel were then introduced atomically. First production head `b5a6193dd50ae9831eec03b62240b477571e5021` passed run `33806823707`, selector/repository-health `100819175197`, Linux `100819212041`, Windows `100819212005`, comparator `100819391588`, receipt `e76f63502ca8485cc883cc30f34b2c2af25a8bdf85f69b42d10b35412ec0a81b`. Application PR `399` merged as `d0f246ea192ccaf964abb66756f06de454a02ecd`.
 
-Interaction primitives operate on MAL-local target references and authorized owner-domain references. Hidden, unknown or unauthorized target/conflict/hazard/pickup/objective state remains `unresolved`; absence of visible evidence never implies availability, safety, defeat, collection or completion.
-
-Simple conflict is a bounded MAL-local contest projection. It may track local engagement, advantage, setback and resolution, but it never creates or mutates canonical Combat initiative, hit points, damage, conditions, wounds, Character position, World state or encounter truth.
-
-Hazards may project authorized hazard references and MAL-local `triggered-local` / `avoided-local` progress only. Triggering a hazard never applies damage, conditions, Inventory loss, Character mutation or World/Scene mutation.
-
-Pickups may reference authorized canonical Inventory/Asset records. `collected-local-reference` records only completion of a MAL-local interaction step; it does not create, grant, transfer, equip, consume, destroy or reward an item.
-
-Objectives track MAL-local interaction progress only. `satisfied-local` or `failed-local` never commits Event, Project, campaign, progression, reputation, advancement or reward truth.
-
-Resolution may emit deterministic owner-reference result identifiers for later owning integrations, but MAL-04 never commits owner-domain outcomes. Pause/retry/accessibility remain governed by MAL-02, and traversal remains governed by MAL-03. AI may propose definitions but cannot invent hidden state, apply damage, grant Inventory, complete canonical objectives or commit outcomes.
-
-MAL-04 does **not** implement NPC behavior/state machines, Aniloops, canonical owner mutation, reward integration, persistence, migration `0022`, tester distribution, release or deployment.
+Historical predecessor profile fanout, unchanged-evidence reruns, no-progress cycles and post-merge stale-pointer incidents remained zero. No production feature repair or repository-state repair was required.
 
 ## Tranches
 
 1. **MAL-01 — Source/Authority/Originality Boundary & Microgame Taxonomy** — completed_verified.
 2. **MAL-02 — Primitive Input, Timing, State & Goal Contract** — completed_verified.
 3. **MAL-03 — Movement, Navigation, Rooms, Doors, Keys & Traversal Primitives** — completed_verified.
-4. **MAL-04 — Interaction, Simple Conflict, Hazards, Pickups & Objective Primitives** — in_progress with bounded implementation authority.
-5. **MAL-05 — NPC/Enemy Behavior & Tiny State Machines** — planned.
+4. **MAL-04 — Interaction, Simple Conflict, Hazards, Pickups & Objective Primitives** — completed_verified.
+5. **MAL-05 — NPC/Enemy Behavior & Tiny State Machines** — selected_not_started; no implementation authority.
 6. **MAL-06 — Aniloops, Travel, Repair, Downtime, Transition & Spacewalk Loops** — planned.
 7. **MAL-07 — GM Composition Recipes & GCL Integration** — planned.
 8. **MAL-08 — Character, World, Project & Event Integration / Reward Boundaries** — planned.
@@ -61,4 +45,4 @@ MAL-04 does **not** implement NPC behavior/state machines, Aniloops, canonical o
 
 ## Current invariant
 
-MAL-01..03 remain frozen. MAL-04 must establish genuine matching self-hosted Linux/Windows acceptance RED before production mutation, then pass exact-head Linux/Windows GREEN plus deterministic comparison with exactly one MAL-04 Validation Core profile and zero historical predecessor fanout. MAL-05+, ALP-01+, provider activation, tester distribution, release and deployment remain unauthorized.
+MAL-01..04 remain frozen with implementation authority retired. A future owner `Continue` must governed-start MAL-05 from exact application main `d0f246ea192ccaf964abb66756f06de454a02ecd` before any NPC/enemy behavior or tiny state-machine application mutation. Canonical NPC/Character, Combat, Inventory, Action/Event, World/Scene, Project/progression and Permission owners remain authoritative. MAL-06+, ALP-01+, provider activation, tester distribution, release and deployment remain unauthorized.
