@@ -2,7 +2,7 @@
 
 **Program:** ENV — Environment Preset & Overlay  
 **Tranche:** ENV-14 — Ability, Adaptation, Creator & Full-Library Reconciliation  
-**State:** validation candidate; backlog advancement occurs only after exact-head repository-health success.
+**Governed closeout state:** ENV-14 `completed_verified`; ENV-15 `selected_not_started`. This closeout claim is valid only when the exact closed-state head passes canonical repository health and is merged without stale-authority conflict.
 
 ## Reconciled library
 
@@ -51,6 +51,14 @@ The five members of `Special Perks (Applicable to Multiple Environments)` remain
 The environment creator may expose exact canonical links and separately labeled source-supported relationships, always with provenance. When an acquired ability explicitly names an environmental property or context, its owning system may evaluate that predicate against the derived Resolved Environment. The environment model does not rewrite the ability or invent a link.
 
 **No ability is granted by selecting a preset, archetype, overlay, or local environment**. Resolved Environment remains a read-only derived projection.
+
+## Validation sequence
+
+- Initial TDD RED head `e5e17f56ddbff49841f4bfb6485833e8168e6f12` failed repository-health run **33769502430** because ENV-14 reconciliation artifacts were intentionally absent.
+- The first populated candidate isolated one non-semantic case-sensitive contract wording mismatch in run **33769756927**; no source count, relationship state or policy changed.
+- Repaired candidate head `34258fc7828aa7df346f25608eeabc7a092d36d9` passed repository-health run **33770254907** while the ENV pointer remained parked at ENV-14.
+- Closeout acceptance then deliberately required ENV-14 completion and ENV-15 selection; pre-advance run **33770465187** failed as expected against the still-unadvanced backlog.
+- The canonical backlog/program are now advanced. The exact closed-state head must pass repository health before merge.
 
 ## Boundaries preserved
 
