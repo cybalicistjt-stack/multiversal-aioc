@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0.0",
+  "program": "ENV",
+  "tranche": "ENV-16",
+  "contract_id": "ENV-CD-1.0",
+  "examples": [
+    {
+      "example_id": "EX-CD-NATIVE-COMMON-RIVER",
+      "illustrative_not_canonical": true,
+      "environment_ref": "ENVPRESET-FW-RIVER-STREAM",
+      "ecological_fit": "preferred",
+      "distribution_state": {"relation": "native", "frequency": "common"},
+      "visibility_state": "gm_discoverable",
+      "expected_outcome": "discoverable",
+      "expected_facets": ["native_common"],
+      "rule_demonstrated": "Native/common requires distribution and frequency authority in addition to habitat fit."
+    },
+    {
+      "example_id": "EX-CD-SUITABLE-BUT-ABSENT",
+      "illustrative_not_canonical": true,
+      "environment_ref": "illustrative_compatible_environment",
+      "ecological_fit": "compatible",
+      "distribution_state": {"relation": "explicitly_absent"},
+      "visibility_state": "gm_discoverable",
+      "expected_outcome": "excluded",
+      "expected_facets": ["excluded_or_blocked"],
+      "rule_demonstrated": "Ecological compatibility cannot manufacture canonical presence."
+    },
+    {
+      "example_id": "EX-CD-SEASONAL-MIGRANT",
+      "illustrative_not_canonical": true,
+      "environment_ref": "illustrative_wetland_local_instance",
+      "ecological_fit": "preferred",
+      "distribution_state": {"relation": "migratory"},
+      "season_activity_state": "seasonal",
+      "current_scope_condition": "matching_season",
+      "visibility_state": "gm_discoverable",
+      "expected_outcome": "discoverable",
+      "expected_facets": ["migratory_seasonal"],
+      "rule_demonstrated": "Migration/season governs current occurrence without rewriting baseline range."
+    },
+    {
+      "example_id": "EX-CD-OVERLAY-ENABLED",
+      "illustrative_not_canonical": true,
+      "environment_ref": "illustrative_local_instance",
+      "active_overlays": ["OVL-SUP-REALITY-INSTABILITY"],
+      "ecological_fit": "conditional",
+      "creature_overlay_interaction": {"relation": "enabled", "required_overlay": "OVL-SUP-REALITY-INSTABILITY"},
+      "distribution_state": {"relation": "transient"},
+      "visibility_state": "gm_only",
+      "expected_outcome": "discoverable",
+      "expected_facets": ["overlay_enabled", "possible_tolerated"],
+      "rule_demonstrated": "An active overlay may satisfy an explicit creature predicate but does not invent creature affinity or permanent range."
+    },
+    {
+      "example_id": "EX-CD-CANONICAL-PRESENCE-CONFLICT",
+      "illustrative_not_canonical": true,
+      "environment_ref": "illustrative_harsh_local_instance",
+      "ecological_fit": "incompatible",
+      "distribution_state": {"relation": "resident", "explicit_presence": true},
+      "visibility_state": "gm_discoverable",
+      "expected_outcome": "discoverable_with_warning",
+      "expected_facets": ["canonical_presence_conflict"],
+      "rule_demonstrated": "Explicit canonical presence is preserved while contradictory ecological evidence remains visible for reconciliation."
+    },
+    {
+      "example_id": "EX-CD-UNKNOWN-DISTRIBUTION",
+      "illustrative_not_canonical": true,
+      "environment_ref": "illustrative_compatible_environment",
+      "ecological_fit": "preferred",
+      "distribution_state": {"relation": "not_established"},
+      "visibility_state": "gm_discoverable",
+      "expected_outcome": "unresolved",
+      "expected_facets": ["unresolved"],
+      "rule_demonstrated": "Preferred habitat does not turn missing distribution evidence into presence."
+    },
+    {
+      "example_id": "EX-CD-HIDDEN-CAMPAIGN-CREATURE",
+      "illustrative_not_canonical": true,
+      "environment_ref": "illustrative_environment",
+      "ecological_fit": "preferred",
+      "distribution_state": {"relation": "native", "frequency": "rare"},
+      "visibility_state": "hidden_until_revealed",
+      "expected_outcome": "excluded",
+      "expected_facets": ["excluded_or_blocked"],
+      "rule_demonstrated": "Environment selection cannot bypass campaign hidden-information authority."
+    }
+  ]
+}

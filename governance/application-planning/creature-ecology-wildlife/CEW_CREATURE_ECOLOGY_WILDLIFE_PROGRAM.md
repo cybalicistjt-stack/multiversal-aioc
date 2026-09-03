@@ -1,10 +1,11 @@
 # CEW — Creature Ecology & Wildlife Program
 
 **Program ID:** CEW  
-**Status:** planned_parallel_content_authoring  
+**Status:** in_progress_parallel_content_authoring  
+**Current:** CEW-01 — Creature Source Census & Identity Ledger (`selected_not_started`)  
 **Owner and final authority:** John Brandon Turner  
 **Application implementation authority:** none  
-**Environment dependency:** consumes ENV Habitat Signature and environment-composition contracts; CEW may begin source census/classification work before ENV completes, but CEW habitat matching must not freeze incompatible vocabulary ahead of ENV-15.  
+**Environment dependency:** consumes completed ENV composition, `ENV-HS-1.0` Habitat Signature and `ENV-CD-1.0` creature-discovery contracts.  
 **Parallel-track rule:** CEW may advance as governed content/recovery/design work while the application software roadmap continues. CEW must not mutate `Multiversal-app` runtime creature schemas, creature/NPC UI, encounter runtime, mount/familiar/pet runtime, SCL terrain behavior, or migrations until a separately governed application-integration tranche is authorized.
 
 ## Purpose
@@ -19,6 +20,15 @@ Recover, classify, audit and expand Multiversal creatures and wildlife so that:
 - source creature material is recovered before new content is invented;
 - mount, pet/companion and familiar pathways reuse completed CCP systems rather than becoming new creature types;
 - Havalaea native-born fauna descended from the Time of Troubles can preserve human-level intelligence/personhood and can project through the NPC system when appropriate.
+
+## ENV handoff consumed
+
+CEW begins from two completed environment-side contracts:
+
+- `ENV-HS-1.0` — eighteen-dimension read-only Habitat Signature plus explainable ecological-fit states;
+- `ENV-CD-1.0` — read-only GM creature-discovery projection contract that keeps ecological fit, canonical distribution, visibility, frequency, season/activity and overlay interactions independent.
+
+Missing creature-side facts fail closed as unresolved. CEW is responsible for progressively supplying the source-backed creature identity, ecology, distribution and facets consumed by `ENV-CD-1.0`; it must not backfill them from environment similarity.
 
 ## Existing authority consumed, not replaced
 
@@ -92,7 +102,7 @@ Required crosswalk states may include, where supported:
 
 ## Tranches
 
-1. **CEW-01 — Creature Source Census & Identity Ledger**  
+1. **CEW-01 — Creature Source Census & Identity Ledger** — `selected_not_started`  
    Inventory all retained creature material across dedicated Creature PDFs, Player Creatures, GPT/Evernote/source recovery, governed content objects and related setting sources. Reconcile exact duplicates/aliases only where supported. Produce canonical, recoverable, unresolved and rejected identity states.
 
 2. **CEW-02 — Creature Type System Recovery & Taxonomy Audit**  
@@ -161,7 +171,7 @@ Selecting a composed environment may eventually expose, subject to authorization
 - familiar-compatible creatures;
 - creatures enabled/excluded by active overlays.
 
-These facets do not bypass hidden-information, World-distribution, personhood, consent or campaign-visibility rules.
+These facets do not bypass hidden-information, World-distribution, personhood, consent or campaign-visibility rules. `ENV-CD-1.0` is the controlling environment-side projection contract for this handoff.
 
 ## Completion invariants
 
@@ -175,5 +185,6 @@ These facets do not bypass hidden-information, World-distribution, personhood, c
 - pets/companions consume completed CCP bond/training/care authorities rather than a new pet system;
 - sapient/person-level creatures preserve autonomy and explicit-consent boundaries;
 - CEW does not create a duplicate canonical creature catalog outside governed creature identity;
+- CEW consumes `ENV-HS-1.0`/`ENV-CD-1.0` without rewriting environment authority;
 - no CEW tranche grants `Multiversal-app` implementation authority;
 - ENV and CEW may run in parallel with software development only while respecting their read/content-authoring boundary.

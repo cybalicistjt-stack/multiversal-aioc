@@ -1,14 +1,16 @@
 {
-  "schema_version": "0.16.0",
+  "schema_version": "0.17.0",
   "program_id": "ENV",
   "program_name": "Environment Preset & Overlay",
-  "status": "in_progress_parallel_content_authoring",
+  "status": "completed_parallel_content_authoring",
   "owner": "John Brandon Turner",
   "application_implementation_authority": false,
   "parallel_with_software": true,
-  "completed_through": "ENV-15",
+  "completed_through": "ENV-16",
   "strict_order": ["ENV-01","ENV-02","ENV-03","ENV-04","ENV-05","ENV-06","ENV-07","ENV-08","ENV-09","ENV-10","ENV-11","ENV-12","ENV-13","ENV-14","ENV-15","ENV-16"],
-  "current_item": "ENV-16",
+  "current_item": null,
+  "strict_successor_program": "CEW",
+  "strict_successor_item": "CEW-01",
   "tranches": [
     {"id":"ENV-01","name":"Environment Model & Composition Contract","status":"completed_verified","artifacts":["governance/application-planning/environment-preset-overlay/ENV-01_ENVIRONMENT_MODEL_COMPOSITION_CONTRACT_v1.0.0.md","governance/application-planning/environment-preset-overlay/ENV-01_COMPOSITION_MODEL_v1.0.0.json","governance/application-planning/environment-preset-overlay/ENV-01_COMPLETION_REPORT.md","tests/control_plane/test_env01_composition_contract.py"]},
     {"id":"ENV-02","name":"Existing 40 Completeness Repair","status":"completed_verified","artifacts":["governance/application-planning/environment-preset-overlay/ENV-02_COMPLETION_PACKAGE_v1.0.0.md","governance/application-planning/environment-preset-overlay/ENV-02_EFFECTIVE_COMPLETENESS_MATRIX_v1.0.0.csv","tests/control_plane/test_env02_environment_completeness.py"]},
@@ -25,7 +27,7 @@
     {"id":"ENV-13","name":"Magical, Supernatural & Multiversal Overlays","status":"completed_verified","artifacts":["governance/application-planning/environment-preset-overlay/ENV-13_SUPERNATURAL_MULTIVERSAL_OVERLAY_LIBRARY_v1.0.0.json","governance/application-planning/environment-preset-overlay/ENV-13_SUPERNATURAL_OVERLAY_INTERACTION_MATRIX_v1.0.0.csv","governance/application-planning/environment-preset-overlay/ENV-13_SUPERNATURAL_MULTIVERSAL_OVERLAY_GUIDE.md","governance/application-planning/environment-preset-overlay/ENV-13_SUPERNATURAL_SOURCE_NOTES.md","governance/application-planning/environment-preset-overlay/ENV-13_COMPLETION_REPORT.md","tests/control_plane/test_env13_supernatural_multiversal_overlays.py"]},
     {"id":"ENV-14","name":"Ability, Adaptation, Creator & Full-Library Reconciliation","status":"completed_verified","artifacts":["governance/application-planning/environment-preset-overlay/ENV-14_ABILITY_CREATOR_RECONCILIATION_v1.0.0.json","governance/application-planning/environment-preset-overlay/ENV-14_SOURCE_COLLECTION_CROSSWALK_v1.0.0.csv","governance/application-planning/environment-preset-overlay/ENV-14_CREATOR_COMPOSITION_CONTRACT.md","governance/application-planning/environment-preset-overlay/ENV-14_FULL_LIBRARY_RECONCILIATION_REPORT.md","tests/control_plane/test_env14_ability_creator_reconciliation.py"]},
     {"id":"ENV-15","name":"Habitat Signature & Ecological Matching Contract","status":"completed_verified","artifacts":["governance/application-planning/environment-preset-overlay/ENV-15_HABITAT_SIGNATURE_MODEL_v1.0.0.json","governance/application-planning/environment-preset-overlay/ENV-15_ECOLOGICAL_MATCHING_CONTRACT.md","governance/application-planning/environment-preset-overlay/ENV-15_SIGNATURE_EXAMPLES_v1.0.0.json","governance/application-planning/environment-preset-overlay/ENV-15_COMPLETION_REPORT.md","tests/control_plane/test_env15_habitat_signature_contract.py"]},
-    {"id":"ENV-16","name":"Environment Creature-Discovery Contract & GM Preset Projection","status":"selected_not_started"}
+    {"id":"ENV-16","name":"Environment Creature-Discovery Contract & GM Preset Projection","status":"completed_verified","artifacts":["governance/application-planning/environment-preset-overlay/ENV-16_CREATURE_DISCOVERY_PROJECTION_MODEL_v1.0.0.json","governance/application-planning/environment-preset-overlay/ENV-16_ENVIRONMENT_CREATURE_DISCOVERY_CONTRACT.md","governance/application-planning/environment-preset-overlay/ENV-16_DISCOVERY_PROJECTION_EXAMPLES_v1.0.0.json","governance/application-planning/environment-preset-overlay/ENV-16_COMPLETION_REPORT.md","tests/control_plane/test_env16_creature_discovery_projection.py"]}
   ],
   "env01_decisions": {"durable_layers":["environment_archetype","environment_preset","environment_overlay","local_environment_instance"],"resolved_environment_is_derived":true,"preset_primary_archetype_required":true,"preset_secondary_archetypes_allowed":true,"overlay_is_delta_not_identity":true,"composition_order":["archetype_baselines","preset_parameterization","local_instance_configuration","active_overlays","current_runtime_scene_state","participant_evaluation"],"source_profiles_preserved":true,"unresolved_overlay_conflicts_deferred_to":"ENV-04","habitat_vocabulary_deferred_to":"ENV-15","application_runtime_mutation_authorized":false},
   "env02_decisions": {"minimum_profile_contract":["overview","environmental_features","movement_or_navigation","hazards","encounters_or_challenges","rest_or_shelter","random_encounter_table"],"promoted_profiles_checked":40,"promoted_profiles_complete_after_env02":40,"authored_random_tables":7,"authored_rest_shelter_sections":2,"source_false_negatives_corrected":2,"source_false_positives_corrected":1,"source_text_mutated":false,"environment_ability_links_added":0,"source_package_sha256":"9a93956b03866ad4b48927e14b09f5b8e3a17c1c7cfc0f68e8d7b7c5a3eb133d","application_runtime_mutation_authorized":false},
@@ -58,6 +60,25 @@
     "habitat_fit_implies_native": false,
     "habitat_fit_implies_common": false,
     "habitat_fit_implies_present": false,
+    "source_profiles_mutated": false,
+    "application_runtime_mutation_authorized": false
+  },
+  "env16_decisions": {
+    "contract_id": "ENV-CD-1.0",
+    "habitat_signature_version": "ENV-HS-1.0",
+    "ecological_suitability_separate_from_distribution": true,
+    "distribution_unknown_fails_closed": true,
+    "visibility_is_explicit_gate": true,
+    "blocked_and_unresolved_diagnostic_projection": true,
+    "canonical_presence_conflict_preserved": true,
+    "overlay_interaction_is_not_causation": true,
+    "current_scope_separate_from_baseline_range": true,
+    "numeric_discovery_score_authorized": false,
+    "hidden_priority_numbers_authorized": false,
+    "projection_creates_creature_identity": false,
+    "projection_creates_distribution": false,
+    "selection_creates_encounter_or_relationship_state": false,
+    "strict_successor": "CEW-01",
     "source_profiles_mutated": false,
     "application_runtime_mutation_authorized": false
   }
