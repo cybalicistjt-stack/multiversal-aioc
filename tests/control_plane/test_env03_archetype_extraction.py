@@ -60,13 +60,13 @@ class Env03ArchetypeExtractionTests(unittest.TestCase):
         self.assertEqual(rows["Port City"]["Secondary_Archetype_IDs"], "ARCH-COASTAL")
         self.assertIn("ENV-09", rows["Arctic Tundra and Taiga"]["Deferred_Preset_Or_Overlay_Traits"])
 
-    def test_backlog_closes_env03_and_selects_env04(self):
+    def test_backlog_preserves_env03_completion_after_progression(self):
         backlog = self.load_json(BACKLOG)
-        self.assertEqual(backlog["completed_through"], "ENV-03")
-        self.assertEqual(backlog["current_item"], "ENV-04")
+        order = backlog["strict_order"]
         statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
         self.assertEqual(statuses["ENV-03"], "completed_verified")
-        self.assertEqual(statuses["ENV-04"], "selected_not_started")
+        self.assertGreaterEqual(order.index(backlog["completed_through"]), order.index("ENV-03"))
+        self.assertGreater(order.index(backlog["current_item"]), order.index("ENV-03"))
         self.assertFalse(backlog["application_implementation_authority"])
 
 
