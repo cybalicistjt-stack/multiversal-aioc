@@ -1,0 +1,154 @@
+{
+  "schema_version": "0.1.0",
+  "authority_id": "CORE26-01",
+  "title": "Core 26 Player Species Authority",
+  "status": "owner_approved_reconciliation",
+  "effective_date": "2026-09-02",
+  "scope": "Current player-species roster authority overlay. Sealed historical PPIA/CAPP evidence remains immutable.",
+  "legacy_25": {
+    "count": 25,
+    "species": [
+      "Human",
+      "Elf",
+      "Dwarf",
+      "Goblin",
+      "Orc",
+      "Giantkin",
+      "Stygian",
+      "Sharr",
+      "Gray",
+      "The Free",
+      "Ratman",
+      "Furashin",
+      "Rog",
+      "Rohai",
+      "Moravi",
+      "Vespin",
+      "Rakuuta",
+      "Traiga",
+      "Kola-Ha",
+      "Toba-Madra",
+      "Arborae",
+      "Mythragara",
+      "Suula",
+      "Nekron",
+      "ManyToms"
+    ],
+    "historical_name_note": "Nekron is preserved only where required to reproduce sealed historical evidence."
+  },
+  "current_core_26": {
+    "count": 26,
+    "species": [
+      "Human",
+      "Elf",
+      "Dwarf",
+      "Goblin",
+      "Orc",
+      "Giantkin",
+      "Stygian",
+      "Sharr",
+      "Gray",
+      "The Free",
+      "Ratman",
+      "Furashin",
+      "Rog",
+      "Rohai",
+      "Moravi",
+      "Vespin",
+      "Rakuuta",
+      "Traiga",
+      "Kola-Ha",
+      "Toba-Madra",
+      "Arborae",
+      "Mythragara",
+      "Suula",
+      "Morganthyr",
+      "ManyToms",
+      "Akwi"
+    ]
+  },
+  "identity_migrations": [
+    {
+      "current": "Morganthyr",
+      "legacy": [
+        "Nekron",
+        "Nekrons"
+      ],
+      "singular_if_needed": "Morganth",
+      "rule": "Current-authority surfaces use Morganthyr; sealed historical evidence is not rewritten."
+    }
+  ],
+  "akwi": {
+    "canonical_name": "Akwi",
+    "current_status": "core_playable_species",
+    "stable_id": "species.akwi",
+    "governed_integration": "AKWI-01",
+    "source_repository": "cybalicistjt-stack/Multiversal-app",
+    "storage_note": "Akwi may remain physically stored in supplemental runtime files; supplemental storage does not make it non-core."
+  },
+  "ratman": {
+    "canonical_name": "Ratman",
+    "umbrella_status": "core_playable_species",
+    "lineage_count": 9,
+    "lineages": [
+      {
+        "name": "Rattori",
+        "status": "recovered_owner_species_material",
+        "classification": "ratman_lineage_or_subspecies_pending"
+      },
+      {
+        "name": "Nybra",
+        "status": "recovered_owner_species_material",
+        "classification": "ratman_lineage_or_subspecies_pending"
+      },
+      {
+        "name": "Rattakar",
+        "status": "recovered_owner_species_material",
+        "classification": "ratman_lineage_or_subspecies_pending"
+      },
+      {
+        "name": "Ratborn",
+        "status": "recovered_owner_species_material",
+        "classification": "ratman_lineage_or_subspecies_pending"
+      },
+      {
+        "name": "Chitta",
+        "status": "recovered_owner_species_material",
+        "classification": "ratman_lineage_or_subspecies_pending"
+      },
+      {
+        "name": "Taipanua",
+        "status": "recovered_owner_species_material",
+        "classification": "ratman_lineage_or_subspecies_pending"
+      },
+      {
+        "name": "Ska",
+        "status": "recovered_owner_species_material",
+        "classification": "ratman_lineage_or_subspecies_pending"
+      },
+      {
+        "name": "Muridian",
+        "status": "recovered_owner_species_material",
+        "classification": "ratman_lineage_or_subspecies_pending"
+      },
+      {
+        "name": "Raughtt",
+        "status": "owner_defined_seed",
+        "classification": "ratman_lineage_or_subspecies_pending",
+        "established_facts": [
+          "proper",
+          "aristocratic",
+          "Dominix"
+        ]
+      }
+    ],
+    "taxonomy_rule": "Treat these as Ratman lineages/subspecies under the player-facing Ratman umbrella. Exact biological rank remains unresolved unless owner-authored source establishes it."
+  },
+  "preservation_rules": [
+    "Do not rewrite sealed PPIA-05, PPIA-06, CAPP completion evidence merely to change historical 25-species wording.",
+    "Future current-authority roster, species picker, appearance, character-creation, migration and validation work must recognize 26 core playable species.",
+    "Current-authority display and canonical naming must resolve Nekron/Nekrons to Morganthyr.",
+    "Ratman remains one core player species; its recovered lineages are not peer core species.",
+    "No un-authored Raughtt biology, mechanics, history or culture may be synthesized."
+  ]
+}
