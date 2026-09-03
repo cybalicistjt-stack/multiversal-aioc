@@ -61,14 +61,16 @@ class Env02EnvironmentCompletenessTests(unittest.TestCase):
         self.assertIn("Nomadic Camp", text)
         self.assertIn("Metropolitan Encounters", text)
 
-    def test_backlog_closes_env02_and_selects_env03(self):
+    def test_env02_remains_completed_as_program_progresses(self):
         backlog = json.loads(BACKLOG.read_text(encoding="utf-8"))
-        self.assertEqual(backlog["completed_through"], "ENV-02")
-        self.assertEqual(backlog["current_item"], "ENV-03")
+        strict_order = backlog["strict_order"]
         status = {item["id"]: item["status"] for item in backlog["tranches"]}
         self.assertEqual(status["ENV-01"], "completed_verified")
         self.assertEqual(status["ENV-02"], "completed_verified")
-        self.assertEqual(status["ENV-03"], "selected_not_started")
+        self.assertIn(backlog["current_item"], strict_order)
+        self.assertGreater(strict_order.index(backlog["current_item"]), strict_order.index("ENV-02"))
+        self.assertIn(backlog["completed_through"], strict_order)
+        self.assertGreaterEqual(strict_order.index(backlog["completed_through"]), strict_order.index("ENV-02"))
         self.assertFalse(backlog["application_implementation_authority"])
 
 
