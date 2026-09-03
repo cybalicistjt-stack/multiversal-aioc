@@ -121,16 +121,15 @@ class Env07CoastalMarineExpansionTests(unittest.TestCase):
         self.assertIn("not recovered source text", text)
         self.assertIn("does not rewrite the forty retained source profiles", text)
 
-    def test_backlog_closes_env07_and_selects_env08(self):
+    def test_env07_remains_completed_after_later_progression(self):
         backlog = self.load_json(BACKLOG)
         order = backlog["strict_order"]
         statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
         completed = [item["id"] for item in backlog["tranches"] if item["status"] == "completed_verified"]
-        self.assertEqual(completed, order[:7])
-        self.assertEqual(backlog["completed_through"], "ENV-07")
-        self.assertEqual(backlog["current_item"], "ENV-08")
+        self.assertEqual(completed[:7], order[:7])
         self.assertEqual(statuses["ENV-07"], "completed_verified")
-        self.assertEqual(statuses["ENV-08"], "selected_not_started")
+        self.assertGreaterEqual(order.index(backlog["completed_through"]), order.index("ENV-07"))
+        self.assertGreaterEqual(order.index(backlog["current_item"]), order.index("ENV-08"))
         self.assertEqual(backlog["env07_decisions"]["current_preset_count"], 52)
         self.assertEqual(backlog["env07_decisions"]["current_composed_archetype_count"], 17)
         self.assertEqual(backlog["env07_decisions"]["new_archetype_ids"], ["ARCH-AQUATIC-STRUCTURE"])
