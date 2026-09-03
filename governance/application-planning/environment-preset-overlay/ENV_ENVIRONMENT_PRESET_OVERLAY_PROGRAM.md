@@ -2,10 +2,11 @@
 
 **Program ID:** ENV  
 **Status:** in_progress_parallel_content_authoring  
-**Completed through:** ENV-10  
-**Current:** ENV-11 — Weather, Climate & Disaster Overlays  
+**Completed through:** ENV-11  
+**Current:** ENV-12 — Planetary & Physical-Condition Overlays  
 **Current governed preset count:** 76  
 **Current composed archetype count:** 19  
+**Current concrete ENV-11 overlay count:** 22  
 **Owner and final authority:** John Brandon Turner  
 **Application implementation authority:** none  
 **Parallel-track rule:** ENV may advance as governed content/design work while the application software roadmap continues. ENV must not mutate `Multiversal-app` runtime schemas, terrain mechanics, SCL behavior, migrations, encounter runtime, or environment UI until a separately governed application-integration tranche is authorized.
@@ -16,7 +17,7 @@ Convert the environment library from isolated comprehensive profiles into a reus
 
 1. **Environment Archetype** — reusable environmental structure such as River, Forest, Cave, Wetland, Urban or Transport Corridor.
 2. **Environment Preset** — ready-to-use combinations such as Mangrove Swamp, Cyberpunk City, Arctic Tundra or Asteroid Field.
-3. **Environment Overlay** — composable conditions such as Flooded, Blizzard, Low Gravity, Radiation or Magical Saturation.
+3. **Environment Overlay** — composable conditions such as Flood, Blizzard, Low Gravity, Radiation or Magical Saturation.
 4. **Local Environment Instance** — setting/campaign-specific realization of an archetype/preset plus overlays and local content.
 
 Historical/source profiles remain preserved as source/provenance evidence. The modular representation must not erase source text or silently reinterpret source-authored mechanics.
@@ -61,10 +62,10 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
 10. **ENV-10 — Settled, Industrial & Infrastructure Expansion** — `completed_verified`  
    Added Farmland/Agricultural Countryside, Suburb/Residential District, Frontier Outpost, Road/Wilderness Trail, Mine/Quarry, Factory/Refinery, Power Plant/Utility Complex, Fortress/Military Base, Transit Hub/Terminal and Harbor/Dockyards. Resolved the final ENV-03 archetype watch item with `ARCH-TRANSPORT-CORRIDOR`, taking the library to seventy-six presets and nineteen archetypes. Existing source-backed Industrial Zones, Skeletons of Highways, Port City and Flooded Suburbs remain distinct immutable presets.
 
-11. **ENV-11 — Weather, Climate & Disaster Overlays** — `selected_not_started`  
-   Author reusable Heavy Rain/Monsoon, Fog, Thunderstorm, Blizzard/Heavy Snow, Hurricane/Cyclone, Tornado, Sandstorm/Dust Storm, Flood, Drought, Wildfire, Volcanic Ash, Avalanche/Landslide and related natural-condition overlays.
+11. **ENV-11 — Weather, Climate & Disaster Overlays** — `completed_verified`  
+   Authored twenty-two reusable ordinary weather, active climate-state and natural-disaster overlays: Heavy Rain, Monsoon Regime, Fog, Thunderstorm, Heavy Snow, Blizzard, Windstorm/Gale, Hurricane/Cyclone, Tornado, Sandstorm/Dust Storm, Hailstorm, Flood, Flash Flood, Drought, Storm Surge, Tsunami/Seiche, Wildfire, Volcanic Ash, Volcanic Eruption, Earthquake, Avalanche and Landslide/Mudslide. All definitions follow the ENV-04 required typed-delta/effect-key contract. Cross-overlay relations never activate another condition automatically; both overlays must already be active in overlapping scopes. No presets or archetypes were added, so the library remains seventy-six presets and nineteen archetypes.
 
-12. **ENV-12 — Planetary & Physical-Condition Overlays**  
+12. **ENV-12 — Planetary & Physical-Condition Overlays** — `selected_not_started`  
    Author Extreme Heat/Cold, Toxic or Corrosive Atmosphere, Low Oxygen, High/Low Pressure, Radiation, extreme illumination/darkness, Low/High/Zero Gravity, Vacuum and other planetary physical-condition overlays.
 
 13. **ENV-13 — Magical, Supernatural & Multiversal Overlays**  
@@ -79,7 +80,7 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
 16. **ENV-16 — Environment Creature-Discovery Contract & GM Preset Projection**  
    Define the content/API contract by which a composed environment returns eligible creatures as native/common, possible, migratory/seasonal, introduced, rare, overlay-enabled or excluded while respecting World/Reality distribution, visibility and GM-only information. Application UI/runtime implementation is explicitly deferred.
 
-## Locked model decisions through ENV-10
+## Locked model decisions through ENV-11
 
 - durable layers are Archetype, Preset, Overlay and Local Environment Instance;
 - Resolved Environment is derived/read-only and cannot become a fifth authoring truth;
@@ -102,7 +103,12 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
 - Harbor/Dockyards is a waterfront logistics facility distinct from the broader Port City settlement identity;
 - Fortress/Military Base does not imply an active siege;
 - Transit Hub/Terminal remains technology-neutral at the preset level and does not own vehicle mechanics;
-- weather, disaster, physical-condition and supernatural mechanics remain ENV-11/12/13 rather than being silently embedded in presets;
+- ENV-11 concrete overlays conform to the ENV-04 required definition and typed-delta contract and use stable effect keys for deduplication;
+- **interaction is not causation**: Heavy Rain does not auto-create Flood, Drought does not auto-create Wildfire, Earthquake does not auto-create Landslide/Tsunami, Hurricane does not auto-create Storm Surge/Tornado, Volcanic Eruption does not auto-create a separate Volcanic Ash activation, and Blizzard does not auto-create Avalanche;
+- explicit `amplifies`, `dampens`, `supersedes` and `transforms_with` relations apply only when the referenced conditions are already active in materially overlapping scopes;
+- ENV-11 authors no universal damage, movement, endurance, structural, exposure, weather-generation or disaster-simulation formulas;
+- Extreme Heat/Cold, Low Oxygen, pressure, toxic/corrosive atmosphere, Radiation, illumination extremes, altered Gravity and Vacuum remain ENV-12 authority;
+- magical, supernatural and Multiversal conditions remain ENV-13 authority;
 - Habitat Signature has a stable envelope but exact vocabulary remains deferred to ENV-15.
 
 ## Completion invariants

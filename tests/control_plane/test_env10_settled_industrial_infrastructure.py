@@ -130,16 +130,14 @@ class Env10SettledIndustrialInfrastructureTests(unittest.TestCase):
         self.assertEqual(len(rows), 76)
         self.assertEqual(len({r["Preset_ID"] for r in rows}), 76)
 
-    def test_backlog_closes_env10_and_selects_env11(self):
+    def test_env10_remains_completed_after_program_progresses(self):
         backlog = self.load_json(BACKLOG)
         order = backlog["strict_order"]
         statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
         completed = [item["id"] for item in backlog["tranches"] if item["status"] == "completed_verified"]
-        self.assertEqual(completed, order[:10])
-        self.assertEqual(backlog["completed_through"], "ENV-10")
-        self.assertEqual(backlog["current_item"], "ENV-11")
+        self.assertIn("ENV-10", completed)
+        self.assertGreaterEqual(order.index(backlog["completed_through"]), order.index("ENV-10"))
         self.assertEqual(statuses["ENV-10"], "completed_verified")
-        self.assertEqual(statuses["ENV-11"], "selected_not_started")
         decisions = backlog["env10_decisions"]
         self.assertEqual(decisions["current_preset_count"], 76)
         self.assertEqual(decisions["new_archetypes_added"], 1)
