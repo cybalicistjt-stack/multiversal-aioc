@@ -120,16 +120,13 @@ class Env08OpenCountryDryLandformsTests(unittest.TestCase):
         self.assertEqual(len(rows), 60)
         self.assertEqual(len({r["Preset_ID"] for r in rows}), 60)
 
-    def test_backlog_closes_env08_and_selects_env09(self):
+    def test_backlog_preserves_env08_completion_after_later_progression(self):
         backlog = self.load_json(BACKLOG)
         order = backlog["strict_order"]
         statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
-        completed = [item["id"] for item in backlog["tranches"] if item["status"] == "completed_verified"]
-        self.assertEqual(completed, order[:8])
-        self.assertEqual(backlog["completed_through"], "ENV-08")
-        self.assertEqual(backlog["current_item"], "ENV-09")
+        current_index = order.index(backlog["current_item"])
+        self.assertGreaterEqual(current_index, 8)
         self.assertEqual(statuses["ENV-08"], "completed_verified")
-        self.assertEqual(statuses["ENV-09"], "selected_not_started")
         decisions = backlog["env08_decisions"]
         self.assertEqual(decisions["current_preset_count"], 60)
         self.assertEqual(decisions["new_archetypes_added"], 0)
