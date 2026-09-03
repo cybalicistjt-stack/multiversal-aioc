@@ -69,13 +69,24 @@ class Env01CompositionContractTests(unittest.TestCase):
         for phrase in required:
             self.assertIn(phrase, text)
 
-    def test_backlog_advances_only_after_env01(self):
+    def test_backlog_preserves_env01_completion_after_later_progression(self):
         backlog = json.loads(BACKLOG.read_text(encoding="utf-8"))
-        self.assertEqual(backlog["completed_through"], "ENV-01")
-        self.assertEqual(backlog["current_item"], "ENV-02")
+        strict_order = backlog["strict_order"]
+        self.assertEqual(strict_order[0], "ENV-01")
         status = {item["id"]: item["status"] for item in backlog["tranches"]}
         self.assertEqual(status["ENV-01"], "completed_verified")
-        self.assertEqual(status["ENV-02"], "selected_not_started")
+
+        current_item = backlog["current_item"]
+        self.assertIn(current_item, strict_order[1:])
+        current_index = strict_order.index(current_item)
+        self.assertGreaterEqual(current_index, 1)
+
+        completed_through = backlog.get("completed_through")
+        self.assertIn(completed_through, strict_order)
+        completed_index = strict_order.index(completed_through)
+        self.assertGreaterEqual(completed_index, 0)
+        self.assertLess(completed_index, current_index)
+        self.assertTrue(all(status[item_id] == "completed_verified" for item_id in strict_order[:current_index]))
         self.assertFalse(backlog["application_implementation_authority"])
 
 
