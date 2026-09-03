@@ -1,0 +1,18 @@
+Source_Overlay_ID,Relation,Target_Overlay_ID,Scope_Rule,Automatic_Activation,Resolution_Note
+OVL-THR-EXTREME-HEAT,excludes,OVL-THR-EXTREME-COLD,same materially uniform active scope,NO,Opposed thermal extremes cannot both define one uniform scope; gradients or disjoint zones remain valid.
+OVL-THR-EXTREME-COLD,excludes,OVL-THR-EXTREME-HEAT,same materially uniform active scope,NO,Opposed thermal extremes cannot both define one uniform scope; gradients or disjoint zones remain valid.
+OVL-PRS-HIGH,excludes,OVL-PRS-LOW,same materially uniform active scope,NO,Opposed pressure regimes conflict in one uniform scope.
+OVL-PRS-LOW,excludes,OVL-PRS-HIGH,same materially uniform active scope,NO,Opposed pressure regimes conflict in one uniform scope.
+OVL-LGT-DARKNESS,excludes,OVL-LGT-GLARE,same materially uniform active scope,NO,Extreme darkness and extreme glare cannot both define one uniform illumination regime; local glare inside a dark environment must use narrower scopes.
+OVL-LGT-GLARE,excludes,OVL-LGT-DARKNESS,same materially uniform active scope,NO,Extreme glare and extreme darkness cannot both define one uniform illumination regime; local glare inside a dark environment must use narrower scopes.
+OVL-ATM-VACUUM,supersedes,OVL-PRS-LOW,same materially uniform active scope,NO,Vacuum directly supplies the pressure delta and suppresses duplicate Low Pressure contributions.
+OVL-ATM-VACUUM,supersedes,OVL-ATM-LOW-OXYGEN,same materially uniform active scope,NO,Vacuum directly supplies the no-breathable-atmosphere delta and suppresses duplicate Low Oxygen contributions.
+OVL-ATM-VACUUM,excludes,OVL-PRS-HIGH,same materially uniform active scope,NO,Vacuum and high pressure cannot define the same uniform scope.
+OVL-ATM-VACUUM,excludes,OVL-ATM-TOXIC,same materially uniform active scope,NO,Toxic Atmosphere requires a meaningful atmosphere; contamination without an atmosphere must be represented by another supported condition.
+OVL-ATM-VACUUM,excludes,OVL-ATM-CORROSIVE,same materially uniform active scope,NO,Corrosive Atmosphere requires a meaningful atmosphere; surface contamination remains separate.
+OVL-GRV-LOW,excludes,OVL-GRV-HIGH,same materially uniform gravity scope,NO,Only one uniform gravity regime may own the gravity.regime effect key in a given scope.
+OVL-GRV-LOW,excludes,OVL-GRV-ZERO,same materially uniform gravity scope,NO,Low Gravity and Zero Gravity are distinct regimes.
+OVL-GRV-LOW,excludes,OVL-GRV-VARIABLE,same materially uniform gravity scope,NO,Variable/Directional Gravity is the regime when magnitude or direction changes; Low Gravity may exist only in a narrower resolved phase or zone.
+OVL-GRV-HIGH,excludes,OVL-GRV-ZERO,same materially uniform gravity scope,NO,High Gravity and Zero Gravity are distinct regimes.
+OVL-GRV-HIGH,excludes,OVL-GRV-VARIABLE,same materially uniform gravity scope,NO,Variable/Directional Gravity owns the changing-regime context; High Gravity may exist only in a narrower resolved phase or zone.
+OVL-GRV-ZERO,excludes,OVL-GRV-VARIABLE,same materially uniform gravity scope,NO,Zero Gravity is a stable negligible-gravity regime; changing gravity uses Variable/Directional Gravity.

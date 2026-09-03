@@ -2,11 +2,11 @@
 
 **Program ID:** ENV  
 **Status:** in_progress_parallel_content_authoring  
-**Completed through:** ENV-11  
-**Current:** ENV-12 — Planetary & Physical-Condition Overlays  
+**Completed through:** ENV-12  
+**Current:** ENV-13 — Magical, Supernatural & Multiversal Overlays  
 **Current governed preset count:** 76  
 **Current composed archetype count:** 19  
-**Current concrete ENV-11 overlay count:** 22  
+**Current concrete overlay count:** 37 (22 ENV-11 + 15 ENV-12)  
 **Owner and final authority:** John Brandon Turner  
 **Application implementation authority:** none  
 **Parallel-track rule:** ENV may advance as governed content/design work while the application software roadmap continues. ENV must not mutate `Multiversal-app` runtime schemas, terrain mechanics, SCL behavior, migrations, encounter runtime, or environment UI until a separately governed application-integration tranche is authorized.
@@ -63,12 +63,12 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
    Added Farmland/Agricultural Countryside, Suburb/Residential District, Frontier Outpost, Road/Wilderness Trail, Mine/Quarry, Factory/Refinery, Power Plant/Utility Complex, Fortress/Military Base, Transit Hub/Terminal and Harbor/Dockyards. Resolved the final ENV-03 archetype watch item with `ARCH-TRANSPORT-CORRIDOR`, taking the library to seventy-six presets and nineteen archetypes. Existing source-backed Industrial Zones, Skeletons of Highways, Port City and Flooded Suburbs remain distinct immutable presets.
 
 11. **ENV-11 — Weather, Climate & Disaster Overlays** — `completed_verified`  
-   Authored twenty-two reusable ordinary weather, active climate-state and natural-disaster overlays: Heavy Rain, Monsoon Regime, Fog, Thunderstorm, Heavy Snow, Blizzard, Windstorm/Gale, Hurricane/Cyclone, Tornado, Sandstorm/Dust Storm, Hailstorm, Flood, Flash Flood, Drought, Storm Surge, Tsunami/Seiche, Wildfire, Volcanic Ash, Volcanic Eruption, Earthquake, Avalanche and Landslide/Mudslide. All definitions follow the ENV-04 required typed-delta/effect-key contract. Cross-overlay relations never activate another condition automatically; both overlays must already be active in overlapping scopes. No presets or archetypes were added, so the library remains seventy-six presets and nineteen archetypes.
+   Authored twenty-two reusable ordinary weather, active climate-state and natural-disaster overlays. All definitions follow the ENV-04 typed-delta/effect-key contract; cross-overlay relations never activate another condition automatically.
 
-12. **ENV-12 — Planetary & Physical-Condition Overlays** — `selected_not_started`  
-   Author Extreme Heat/Cold, Toxic or Corrosive Atmosphere, Low Oxygen, High/Low Pressure, Radiation, extreme illumination/darkness, Low/High/Zero Gravity, Vacuum and other planetary physical-condition overlays.
+12. **ENV-12 — Planetary & Physical-Condition Overlays** — `completed_verified`  
+   Authored fifteen reusable overlays: Extreme Heat, Extreme Cold, Toxic Atmosphere, Corrosive Atmosphere, Low Oxygen, High Pressure, Low Pressure, Radiation, Extreme Darkness, Extreme Illumination/Glare, Low Gravity, High Gravity, Zero Gravity, Variable/Directional Gravity and Vacuum. Atmosphere composition, oxygen availability, pressure, thermal state, light, radiation and gravity remain modular environment domains. Vacuum directly owns its atmosphere/pressure deltas instead of automatically activating Low Oxygen or Low Pressure. The four gravity conditions share one explicit gravity-regime resolution seam. No universal exposure, damage, pressure, radiation, gravity, equipment or adaptation formulas were invented. No presets or archetypes were added.
 
-13. **ENV-13 — Magical, Supernatural & Multiversal Overlays**  
+13. **ENV-13 — Magical, Supernatural & Multiversal Overlays** — `selected_not_started`  
    Author Magical Saturation, Magical Dead Zone, Reality Instability, Dimensional Bleed, Portal Activity, Psychic Influence, Corruption, Temporal Instability, Chaos/Foam Influence, Dream Influence and appropriate Gehenna-related conditions. Reconcile source-backed Chaos/Foam environment ability material without inventing unsupported facts.
 
 14. **ENV-14 — Ability, Adaptation, Creator & Full-Library Reconciliation**  
@@ -80,7 +80,7 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
 16. **ENV-16 — Environment Creature-Discovery Contract & GM Preset Projection**  
    Define the content/API contract by which a composed environment returns eligible creatures as native/common, possible, migratory/seasonal, introduced, rare, overlay-enabled or excluded while respecting World/Reality distribution, visibility and GM-only information. Application UI/runtime implementation is explicitly deferred.
 
-## Locked model decisions through ENV-11
+## Locked model decisions through ENV-12
 
 - durable layers are Archetype, Preset, Overlay and Local Environment Instance;
 - Resolved Environment is derived/read-only and cannot become a fifth authoring truth;
@@ -91,25 +91,20 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
 - composition precedence does not supersede source/canonical authority;
 - existing source profiles remain immutable provenance/evidence;
 - Character, Species, Creature, Ability, Item, Vehicle, World/Reality/Place, Encounter and runtime owners remain external;
-- `ARCH-FLOWING-WATER` is the sole ENV-06 archetype extension;
-- `ARCH-AQUATIC-STRUCTURE` is the sole ENV-07 archetype extension;
-- ENV-08 adds no archetype because Open Country and Highland already cover the reusable structure;
-- `ARCH-ICE-MASS` is the sole ENV-09 archetype extension;
-- `ARCH-TRANSPORT-CORRIDOR` is the sole ENV-10 archetype extension because generic roads/trails share linear continuity, junction, crossing, shoulder/clearance, route-condition and chokepoint behavior not cleanly owned by heavy Industrial & Infrastructure;
-- Farmland is distinct from unmanaged Grassland/Prairie;
-- ordinary Suburb/Residential District is distinct from the existing Flooded Suburbs source preset;
-- Road/Wilderness Trail is distinct from source-backed Skeletons of Highways;
-- Factory/Refinery and Power Plant/Utility Complex are narrower reusable site presets distinct from generic Industrial Zones;
-- Harbor/Dockyards is a waterfront logistics facility distinct from the broader Port City settlement identity;
-- Fortress/Military Base does not imply an active siege;
-- Transit Hub/Terminal remains technology-neutral at the preset level and does not own vehicle mechanics;
-- ENV-11 concrete overlays conform to the ENV-04 required definition and typed-delta contract and use stable effect keys for deduplication;
-- **interaction is not causation**: Heavy Rain does not auto-create Flood, Drought does not auto-create Wildfire, Earthquake does not auto-create Landslide/Tsunami, Hurricane does not auto-create Storm Surge/Tornado, Volcanic Eruption does not auto-create a separate Volcanic Ash activation, and Blizzard does not auto-create Avalanche;
-- explicit `amplifies`, `dampens`, `supersedes` and `transforms_with` relations apply only when the referenced conditions are already active in materially overlapping scopes;
-- ENV-11 authors no universal damage, movement, endurance, structural, exposure, weather-generation or disaster-simulation formulas;
-- Extreme Heat/Cold, Low Oxygen, pressure, toxic/corrosive atmosphere, Radiation, illumination extremes, altered Gravity and Vacuum remain ENV-12 authority;
+- `ARCH-FLOWING-WATER`, `ARCH-AQUATIC-STRUCTURE`, `ARCH-ICE-MASS` and `ARCH-TRANSPORT-CORRIDOR` are the only post-ENV-03 archetype extensions through ENV-12;
+- ENV-11 concrete overlays preserve **interaction is not causation**: relations only resolve conditions already active in materially overlapping scopes;
+- ENV-12 keeps atmosphere composition, oxygen availability and pressure as separate facts rather than collapsing them into a single hostile-atmosphere flag;
+- Vacuum directly supplies its atmosphere and pressure deltas and may supersede duplicate Low Oxygen/Low Pressure contributions without auto-activating them;
+- Low Gravity, High Gravity, Zero Gravity and Variable/Directional Gravity share `gravity.regime` and `movement.gravity_context`, preventing accidental numeric stacking of incompatible regimes;
+- Zero Gravity does not imply Vacuum and Vacuum does not imply Zero Gravity;
+- Extreme Heat/Cold do not automatically activate ENV-11 Wildfire, Snow or Blizzard conditions;
+- Radiation does not automatically generate mutations, abilities, creature variants or universal dose mechanics;
+- source-specific gravity-shift dice, timing, saves, multipliers and event tables remain source/local authority rather than universal ENV-12 rules;
+- ENV-12 authors no universal participant, equipment, damage, exposure, pressure, radiation, gravity or adaptation formulas;
 - magical, supernatural and Multiversal conditions remain ENV-13 authority;
-- Habitat Signature has a stable envelope but exact vocabulary remains deferred to ENV-15.
+- ability/adaptation reconciliation remains ENV-14;
+- Habitat Signature exact vocabulary remains ENV-15;
+- creature ecology/distribution remains CEW authority.
 
 ## Completion invariants
 
