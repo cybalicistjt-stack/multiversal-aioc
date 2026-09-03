@@ -86,16 +86,13 @@ class Env04OverlayStackingTests(unittest.TestCase):
         ]:
             self.assertIn(phrase, text)
 
-    def test_backlog_closes_env04_and_selects_env05(self):
+    def test_env04_remains_completed_after_later_env_progression(self):
         backlog = self.load_json(BACKLOG)
         order = backlog["strict_order"]
-        completed = [item["id"] for item in backlog["tranches"] if item["status"] == "completed_verified"]
-        self.assertEqual(completed, order[:4])
-        self.assertEqual(backlog["completed_through"], "ENV-04")
-        self.assertEqual(backlog["current_item"], "ENV-05")
         statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
         self.assertEqual(statuses["ENV-04"], "completed_verified")
-        self.assertEqual(statuses["ENV-05"], "selected_not_started")
+        self.assertGreaterEqual(order.index(backlog["completed_through"]), order.index("ENV-04"))
+        self.assertNotEqual(backlog["current_item"], "ENV-04")
         self.assertFalse(backlog["application_implementation_authority"])
 
 
