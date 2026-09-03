@@ -28,20 +28,33 @@ class ParallelContentAuthoringProgramsTest(unittest.TestCase):
         self.assertIn("eligible for existing NPC-system projection", joined)
         self.assertIn("Mount, pet/companion and familiar are pathway/relationship capabilities", joined)
 
-    def test_env_order_and_boundary_are_stable(self):
+    def test_env_order_boundary_and_progression_are_stable(self):
         backlog = self.load_json(ENV_BACKLOG)
-        self.assertEqual(backlog["strict_order"], [f"ENV-{i:02d}" for i in range(1, 17)])
+        strict_order = [f"ENV-{i:02d}" for i in range(1, 17)]
+        self.assertEqual(backlog["strict_order"], strict_order)
         self.assertFalse(backlog["application_implementation_authority"])
         self.assertTrue(backlog["parallel_with_software"])
-        self.assertEqual(backlog["current_item"], "ENV-01")
+        self.assertIn(backlog["current_item"], strict_order)
         self.assertTrue(any("must not mutate Multiversal-app" in item for item in backlog["boundaries"]))
+
+        statuses = {item["id"]: item.get("status") for item in backlog["tranches"]}
+        selected = [item_id for item_id, status in statuses.items() if status == "selected_not_started"]
+        self.assertEqual(selected, [backlog["current_item"]])
+        current_index = strict_order.index(backlog["current_item"])
+        for item_id in strict_order[:current_index]:
+            self.assertEqual(statuses[item_id], "completed_verified")
+        for item_id in strict_order[current_index + 1 :]:
+            self.assertEqual(statuses[item_id], "planned")
+        expected_completed = strict_order[current_index - 1] if current_index else None
+        self.assertEqual(backlog.get("completed_through"), expected_completed)
 
     def test_cew_order_havalaea_npc_and_partnership_invariants_are_stable(self):
         backlog = self.load_json(CEW_BACKLOG)
-        self.assertEqual(backlog["strict_order"], [f"CEW-{i:02d}" for i in range(1, 17)])
+        strict_order = [f"CEW-{i:02d}" for i in range(1, 17)]
+        self.assertEqual(backlog["strict_order"], strict_order)
         self.assertFalse(backlog["application_implementation_authority"])
         self.assertTrue(backlog["parallel_with_software"])
-        self.assertEqual(backlog["current_item"], "CEW-01")
+        self.assertIn(backlog["current_item"], strict_order)
         havalaea = "\n".join(backlog["havalaea_invariants"])
         self.assertIn("Time-of-Troubles", havalaea)
         self.assertIn("NPC-system projection", havalaea)
