@@ -1,30 +1,42 @@
 # SCL — Strategic Command & Large-Scale Conflict
 
 **Program ID:** SCL  
-**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH SCL-07; SCL-08 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH SCL-08; SCL-09 SELECTED_NOT_STARTED  
 **Activation:** after completed_verified ODL-09  
 **Successor:** MAL-01  
 **Owner and final authority:** John Brandon Turner
 
 ## Current state
 
-SCL-01 through SCL-07 are `completed_verified`. Owner `Continue` governed-started SCL-08 — Vehicle, Mecha, Ship & Fleet Integration — from exact application main `154a72bbcabfe6fe21a99e219ef1afe1863bb061`. Application implementation authority is limited to branch `integration/scl-08-vehicle-mecha-ship-fleet-integration` and the sealed read-only integration contract below.
+SCL-01 through SCL-08 are `completed_verified`. SCL-08 merged to application main as `1de481381d0d65d3a88d0e1cdc1af77ebe73dfb6` after genuine cross-platform acceptance RED and first-production exact-head self-hosted Linux/Windows GREEN with zero feature or validation-contract repairs. Strict successor SCL-09 — Individual-to-Unit Effects, Casualties, Damage & Recovery — is `selected_not_started` from that exact application baseline with no implementation branch and no implementation authority.
 
-## Governed SCL-08 contract
+## Frozen SCL-08 contract
 
-SCL-08 integrates explicit canonical references; it does not create a second vehicle runtime. Canonical F008 Asset identity/ownership/custody/control/access and F014 Vehicle Operation state remain authoritative. SCL-02 remains authoritative for squad/fleet profile and membership identity. SCL-03/04 retain command/order authority, SCL-06 retains logistics/readiness evidence, SCL-07/World retain semantic position/environment truth, SCL-09 retains casualty/damage/recovery reconciliation, and SCL-10 retains strategic consequences.
+SCL-08 is a visibility-first deterministic read-only integration projection. It links explicit SCL profile/membership identity to canonical F008 Asset Instances and F014 Vehicle Operations, optional operational class/state, explicit crew/station actor and authority references, optional explicit flagship/command reference, and visible command/resource/position/handoff/nested-Asset/owner/provenance references.
 
-Retained source `Vehicles & Operations.PDF` SHA-256 `8eac372414eb74efa19ebfdfd954762cdd82f01a71c7563335c0c0f4998ba219` provides vehicle/mecha/starship operational abilities and piloting/crew context. Retained `Squad & Fleet.PDF` SHA-256 `20d7a5bbeafb7fccf2213aee5470741cb35760270907ff56e075f86ee83ae8da` describes a source-specific squad as 1-5 ships and a fleet as multiple squads led by a flagship or command ship. That source-specific squad-size statement is preserved as evidence only; it does not replace the frozen SCL-01/SCL-02 scale taxonomy or become a universal numeric cap. A flagship/command-ship leader is projected only from an explicit canonical reference and is never inferred.
+Integration kinds are `vehicle`, `mecha`, `ship`. Evidence states are `resolved`, `unknown`, `conflict`, `incompatible`. F014 operational classes are `ground`, `water`, `air`, `space`, `submersible`, `walker`, `mecha`, `mount`, `hybrid`, `abstract`. Stations remain the canonical F014 station vocabulary.
 
-Canonical F014 operational classes are `ground`, `water`, `air`, `space`, `submersible`, `walker`, `mecha`, `mount`, `hybrid`, `abstract`. Canonical stations are `pilot`, `commander`, `navigator`, `gunner`, `engineer`, `sensor`, `communications`, `defense`, `medical`, `cargo`, `passenger`, `remote-operator`. Canonical vehicle states are `idle`, `crewed`, `active`, `docked`, `disabled`, `immobilized`, `uncontrolled`, `adrift`, `breached`, `destroyed`, `abandoned`, `captured`, `salvaged`.
+Ownership, custody, control, access and station authority remain distinct. Actor/crew identity remains separate from machine Asset identity. SCL-08 never merges actor and machine state or infers actor damage from vehicle/mecha damage.
 
-SCL-08 may project visible `vehicle`, `mecha`, and `ship` integration rows linking SCL-02 profile/membership IDs to explicit F008 Asset Instance and F014 Vehicle Operation references, plus explicit crew/station actor refs and command/resource/position/handoff references. Ownership or custody never implies station authority. Pilot/crew identity remains distinct from machine identity; SCL-08 never merges actor and machine state or infers pilot damage from machine damage.
+Retained `Squad & Fleet.PDF` source language describing a squad as 1–5 ships and a fleet led by a flagship/command ship is preserved as explicit source evidence only. It does not replace SCL-01/SCL-02 taxonomy, impose a universal numeric cap, or auto-select/infer a flagship.
 
-Carried craft, cargo, passengers and nested Assets remain separate identities. Carrier damage, fleet membership, boarding or docking references never implicitly mutate children. Unknown/source-unspecified evidence is not zero, absent, available, compatible, full or unlimited.
+Carried craft, cargo, passengers and nested Assets keep separate identity. Command/resource/position references are read-only handoffs. SCL-08 does not issue/resolve orders, move/place Assets, consume Resources, apply Action/Combat effects, transfer ownership/control, or mutate nested children.
 
-Visibility filters before platform rows, crew/station rosters, fleet bindings, counts, classes, states, source-rule references, summaries, search, provenance, handoffs, deterministic receipts or AI context. Hidden existence/cardinality is undisclosed. Stable integration-ID ordering exists only for deterministic output and never creates authority or priority.
+SCL-09 owns casualty/damage/recovery reconciliation. SCL-08 performs no cross-asset, crew, passenger, nested-craft, squad or fleet damage/casualty propagation. SCL-10 retains strategic consequences.
 
-No vehicle movement, Action/Combat result, Resource consumption, repair, damage/casualty propagation, ownership/control transfer, position mutation, command issuance/resolution, autonomous AI command/adjudication, duplicate ledger, durable persistence or migration `0022` is authorized by SCL-08.
+Visibility filters before integration rows, crew/station rosters, fleet bindings, counts, classes, states, source references, summaries, search, provenance, handoffs, deterministic receipts or AI context. Missing/source-unspecified/unknown/conflict/incompatible evidence remains conservative. Hidden existence/cardinality is undisclosed.
+
+No owner mutation, autonomous AI command/adjudication, duplicate vehicle/fleet ledger, durable persistence or migration `0022` was introduced.
+
+## SCL-08 validation evidence
+
+Governed start: AIOC PR `897`, exact head `46f6124ed8502067129b2c5b017fa7e034556389`, Repository Health run `33751788835`, job `100636762296`, merged as `84ba98673cfb3e853dd3789bf1fce0f753450157` with zero repairs.
+
+Genuine acceptance-first RED: head `3c988221d684094946d9fc73a77d8ab3ecd37e24`, run `33752103675`, selector `100637776879`, Linux `100637813669`, Windows `100637813587`, comparator `100637978759`, deterministic receipt `ced84fabe9a801e001ed09193bb9ac6a05858f926191b35003f3c8b7b305062a`.
+
+First production head `16f4b1eded3ae90c577184b2dc84cce9feff67bd` passed run `33752347595`: selector/repository health `100638564408`, Linux `100638603430`, Windows `100638603596`, comparator `100638773125`, receipt `d0defc9bfd6f544cd0b2e69d0d7ac1bd13d93d103977297223cf5a8f1460d7be`. Historical predecessor profile fanout was zero. Application feature repairs and validation-contract repairs were both zero.
+
+Application PR `392` merged as `1de481381d0d65d3a88d0e1cdc1af77ebe73dfb6`.
 
 ## Tranches
 
@@ -35,11 +47,11 @@ No vehicle movement, Action/Combat result, Resource consumption, repair, damage/
 5. SCL-05 — Morale, Cohesion, Leadership & Discipline — completed_verified.
 6. SCL-06 — Logistics, Supply, Fatigue, Reinforcement & Readiness — completed_verified.
 7. SCL-07 — Terrain, Objectives, Zones, Sieges & Strategic Position — completed_verified.
-8. SCL-08 — Vehicle, Mecha, Ship & Fleet Integration — in_progress.
-9. SCL-09 — Individual-to-Unit Effects, Casualties, Damage & Recovery — planned.
+8. SCL-08 — Vehicle, Mecha, Ship & Fleet Integration — completed_verified.
+9. SCL-09 — Individual-to-Unit Effects, Casualties, Damage & Recovery — selected_not_started; no branch or authority.
 10. SCL-10 — Faction, Settlement, World & Campaign Consequence Integration — planned.
 11. SCL-11 — Workbench, Scenario Packs, Balance & Cross-Scale Golden Proof — planned.
 
 ## Current invariant
 
-Acceptance-first application evidence must establish genuine matching self-hosted Linux/Windows RED before SCL-08 production contract/panel mutation. Final exact-head GREEN must run exactly one SCL-08 current-family profile with zero historical predecessor fanout and deterministic comparison.
+A future owner Continue must perform one bounded SCL-09 governed-start recovery pass from exact application main `1de481381d0d65d3a88d0e1cdc1af77ebe73dfb6` before any individual-to-unit effect, casualty, damage or recovery product mutation. SCL-10+, MAL-01+, provider activation, tester distribution, release and deployment remain unauthorized.
