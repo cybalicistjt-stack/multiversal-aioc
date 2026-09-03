@@ -14,7 +14,7 @@ The retained source pass recovered three directly relevant documents:
 - `Familiars and pets.PDF` — SHA-256 `02129e10f40a815480b47c14f26e14620777eb0370ef2b7fd3d998b3a1760b32`;
 - `Animal training.PDF` — SHA-256 `917e9e326e50b0f7db8d4ce5c03d191c595342950b54c86a904667392db03287`.
 
-`Mounts.PDF` contains **55 explicit source-designated mount examples** across general, small-character, large-character, underwater, horror, reality-travel, hardcore-warrior, and alien mount groups. These are retained as source-profile evidence only; every recovered designation has `canonical_stable_id_binding: null` because CEW-ID-1.0 forbids name-only promotion.
+`Mounts.PDF` contains **60 explicit source-designated mount examples**: 20 general examples plus 40 specialized examples across small-character, large-character, underwater, horror, reality-travel, hardcore-warrior, and alien mount groups. These are retained as source-profile evidence only; every recovered designation has `canonical_stable_id_binding: null` because CEW-ID-1.0 forbids name-only promotion.
 
 `Familiars and pets.PDF` explicitly distinguishes pets from familiars, describes sentient beings willingly entering familiar bonds for mutual benefit, and describes familiar bonding as involving mutual agreement. Those semantics support consent-aware familiar/pet pathway classification but do not create a live bond or canonical stable-ID binding.
 
