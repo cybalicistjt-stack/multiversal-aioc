@@ -104,12 +104,42 @@ class Env14AbilityCreatorReconciliationTests(unittest.TestCase):
         ]:
             self.assertIn(phrase, text)
 
-    def test_candidate_keeps_env14_selected_until_closeout(self):
+    def test_backlog_closes_env14_and_selects_env15(self):
         backlog = self.load_json(BACKLOG)
+        order = backlog["strict_order"]
         statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
-        self.assertEqual(backlog["completed_through"], "ENV-13")
-        self.assertEqual(backlog["current_item"], "ENV-14")
-        self.assertEqual(statuses["ENV-14"], "selected_not_started")
+        completed = [item["id"] for item in backlog["tranches"] if item["status"] == "completed_verified"]
+        self.assertEqual(completed, order[:14])
+        self.assertEqual(backlog["completed_through"], "ENV-14")
+        self.assertEqual(backlog["current_item"], "ENV-15")
+        self.assertEqual(statuses["ENV-14"], "completed_verified")
+        self.assertEqual(statuses["ENV-15"], "selected_not_started")
+        decisions = backlog["env14_decisions"]
+        self.assertEqual(decisions["current_preset_count"], 76)
+        self.assertEqual(decisions["current_composed_archetype_count"], 19)
+        self.assertEqual(decisions["current_total_concrete_overlay_count"], 47)
+        self.assertEqual(decisions["source_collection_count"], 38)
+        self.assertEqual(decisions["environment_specific_collection_count"], 36)
+        self.assertEqual(decisions["source_member_record_count"], 258)
+        self.assertEqual(decisions["environment_specific_member_record_count"], 245)
+        self.assertEqual(decisions["canonical_environment_ability_links"], 68)
+        self.assertEqual(decisions["canonical_linked_profiles"], 17)
+        self.assertEqual(decisions["source_supported_unpromoted_environment_member_records"], 177)
+        self.assertEqual(set(decisions["source_profiles_without_environment_ability_collection"]), {
+            "Industrial Zones", "Floating Megacity", "Wormhole Convergence", "Nebula"
+        })
+        self.assertEqual(decisions["post_env05_expansion_presets"], 36)
+        self.assertEqual(decisions["canonical_links_added_by_env14"], 0)
+        self.assertEqual(decisions["canonical_links_removed_by_env14"], 0)
+        self.assertEqual(decisions["canonical_links_modified_by_env14"], 0)
+        self.assertTrue(decisions["source_collection_crosswalk_complete"])
+        self.assertFalse(decisions["creator_auto_grant_authorized"])
+        self.assertFalse(decisions["similarity_based_link_inference_authorized"])
+        self.assertTrue(decisions["chaos_foam_context_seam_preserved"])
+        self.assertEqual(decisions["habitat_vocabulary_deferred_to"], "ENV-15")
+        self.assertEqual(decisions["creature_distribution_owned_by"], "CEW")
+        self.assertFalse(decisions["source_profiles_mutated"])
+        self.assertFalse(decisions["application_runtime_mutation_authorized"])
         self.assertFalse(backlog["application_implementation_authority"])
 
 
