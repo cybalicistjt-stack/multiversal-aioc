@@ -17,6 +17,11 @@ class Cew12EarthlikeWildlifeBaselineTests(unittest.TestCase):
     def load(self, path):
         return json.loads(path.read_text(encoding="utf-8"))
 
+    def profiles(self, library):
+        fields = library["profile_fields"]
+        self.assertEqual(len(fields), len(set(fields)))
+        return [dict(zip(fields, row)) for row in library["profiles"]]
+
     def test_contract_and_authority_boundaries(self):
         model = self.load(MODEL)
         self.assertEqual(model["contract_id"], "CEW-EARTHLIKE-BASE-1.0")
@@ -42,6 +47,7 @@ class Cew12EarthlikeWildlifeBaselineTests(unittest.TestCase):
 
     def test_required_ordinary_taxonomic_groups_are_represented(self):
         library = self.load(LIBRARY)
+        rows = self.profiles(library)
         required = {
             "mammal",
             "bird",
@@ -56,19 +62,20 @@ class Cew12EarthlikeWildlifeBaselineTests(unittest.TestCase):
             "other_invertebrate",
         }
         self.assertEqual(set(library["controlled_taxonomy_groups"]), required)
-        counts = Counter(row["taxonomy_group"] for row in library["profiles"])
+        counts = Counter(row["taxonomy_group"] for row in rows)
         self.assertEqual(set(counts), required)
         self.assertTrue(all(counts[group] >= 4 for group in required))
         self.assertEqual(library["taxonomy_group_counts"], dict(sorted(counts.items())))
 
     def test_profiles_are_noncanonical_content_profiles_with_no_statblock_promotion(self):
         library = self.load(LIBRARY)
-        ids = [row["baseline_profile_id"] for row in library["profiles"]]
-        names = [row["display_name"] for row in library["profiles"]]
+        rows = self.profiles(library)
+        ids = [row["baseline_profile_id"] for row in rows]
+        names = [row["display_name"] for row in rows]
         self.assertEqual(len(ids), len(set(ids)))
         self.assertEqual(len(names), len(set(names)))
         forbidden = {"ac", "hp", "damage", "speed", "cr", "attack_bonus", "saving_throw_dc"}
-        for row in library["profiles"]:
+        for row in rows:
             self.assertTrue(row["baseline_profile_id"].startswith("cew12.earthlike."))
             self.assertIsNone(row["canonical_stable_id_binding"])
             self.assertIsNone(row["canonical_distribution_binding"])
@@ -104,11 +111,12 @@ class Cew12EarthlikeWildlifeBaselineTests(unittest.TestCase):
 
     def test_source_and_first_party_authoring_are_explicitly_distinguished(self):
         library = self.load(LIBRARY)
-        counts = Counter(row["provenance_kind"] for row in library["profiles"])
+        rows = self.profiles(library)
+        counts = Counter(row["provenance_kind"] for row in rows)
         self.assertEqual(counts["source_recovered_seed"], 32)
         self.assertEqual(counts["governed_first_party_baseline"], 68)
         self.assertEqual(library["provenance_kind_counts"], dict(sorted(counts.items())))
-        for row in library["profiles"]:
+        for row in rows:
             if row["provenance_kind"] == "source_recovered_seed":
                 self.assertEqual(row["source_document"], "animals 11-16-24.PDF")
                 self.assertEqual(row["source_fact_scope"], "identity_label_and_ordinary_animal_profile_seed_only")
@@ -119,8 +127,9 @@ class Cew12EarthlikeWildlifeBaselineTests(unittest.TestCase):
     def test_habitat_and_ecology_are_useful_without_becoming_distribution(self):
         model = self.load(MODEL)
         library = self.load(LIBRARY)
-        habitat_counts = Counter(h for row in library["profiles"] for h in row["habitat_families"])
-        role_counts = Counter(r for row in library["profiles"] for r in row["ecological_roles"])
+        rows = self.profiles(library)
+        habitat_counts = Counter(h for row in rows for h in row["habitat_families"])
+        role_counts = Counter(r for row in rows for r in row["ecological_roles"])
         for required_habitat in [
             "forest_woodland",
             "grassland_open_country",
