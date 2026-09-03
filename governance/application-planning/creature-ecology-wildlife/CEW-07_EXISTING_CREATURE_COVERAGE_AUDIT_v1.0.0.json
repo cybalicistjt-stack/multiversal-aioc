@@ -1,0 +1,167 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "CEW-COV-1.0",
+  "work_item": "CEW-07",
+  "title": "Existing Creature Coverage Audit",
+  "identity_authority": "CEW-ID-1.0",
+  "taxonomy_authority": "CEW-TAX-1.0",
+  "classification_authority": "CEW-CLASS-1.0",
+  "habitat_authority": "CEW-HAB-1.0",
+  "distribution_authority": "CEW-DIST-1.0",
+  "ecological_role_authority": "CEW-ECO-1.0",
+  "application_implementation_authority": false,
+  "missing_fact_backfill_authorized": false,
+  "name_only_source_binding_authorized": false,
+  "gap_expansion_authorized": false,
+  "coverage_metric_rule": "Counts and ratios are descriptive evidence-accounting metrics only; they are not creature quality, ecology, encounter difficulty, completeness truth, or suitability scores.",
+  "source_recovery_coverage": {
+    "dedicated_source_document_count": 23,
+    "candidate_start_count": 878,
+    "safe_statblock_record_count": 826,
+    "unresolved_candidate_start_count": 52,
+    "fully_accounted_document_count": 14,
+    "partially_accounted_document_count": 6,
+    "no_safe_statblock_document_count": 3,
+    "fully_accounted_documents": [
+      "Aberrations.PDF",
+      "Beast Creatures 1.PDF",
+      "Constructs.PDF",
+      "Demonic Creatures.PDF",
+      "Digital Creatures(1).PDF",
+      "Divine Creatures.PDF",
+      "Elementals.PDF",
+      "Incorporeal Creatures.PDF",
+      "Plant Creatures.PDF",
+      "Skoaltarran Creatures.PDF",
+      "The Fell.PDF",
+      "The Fey.PDF",
+      "Toon Creatures.PDF",
+      "Undead Creatures.PDF"
+    ],
+    "partially_accounted_documents": [
+      {"source_document": "Beasts 2.PDF", "candidate_starts": 81, "safe_statblock_records": 80, "unresolved_starts": 1},
+      {"source_document": "Chaos Creatures.PDF", "candidate_starts": 31, "safe_statblock_records": 30, "unresolved_starts": 1},
+      {"source_document": "Dragons(1).PDF", "candidate_starts": 128, "safe_statblock_records": 123, "unresolved_starts": 5},
+      {"source_document": "Ghosts 11-16-24.PDF", "candidate_starts": 9, "safe_statblock_records": 1, "unresolved_starts": 8},
+      {"source_document": "Havalaea Creatures.PDF", "candidate_starts": 47, "safe_statblock_records": 46, "unresolved_starts": 1},
+      {"source_document": "Zombies 11-16-24.PDF", "candidate_starts": 23, "safe_statblock_records": 2, "unresolved_starts": 21}
+    ],
+    "no_safe_statblock_documents": [
+      "Creature types.PDF",
+      "Vampirism&Lycanthropy.PDF",
+      "animals 11-16-24.PDF"
+    ],
+    "no_safe_statblock_document_details": [
+      {"source_document": "Creature types.PDF", "candidate_starts": 0, "safe_statblock_records": 0, "audit_note": "taxonomy source; CEW-02 recovered type semantics separately"},
+      {"source_document": "Vampirism&Lycanthropy.PDF", "candidate_starts": 15, "safe_statblock_records": 0, "unresolved_starts": 15},
+      {"source_document": "animals 11-16-24.PDF", "candidate_starts": 0, "safe_statblock_records": 0, "audit_note": "source-family gap; absence of safe statblocks is not evidence absence"}
+    ],
+    "source_signature_candidate_count": 324,
+    "formally_deferred_source_candidate_count": 93,
+    "unresolved_review_candidate_count": 30,
+    "unresolved_review_breakdown": {
+      "semantic_direct_review": 18,
+      "semantic_validation_pending": 9,
+      "gpt_diagnostic_packets": 3
+    },
+    "source_record_is_canonical_definition": false,
+    "audit_promotes_source_records": false,
+    "provenance": [
+      "CEW-ID-1.0",
+      "governance/application-planning/ingredient-cultivation-foodcraft/ICF-09_SOURCE_COVERAGE.json"
+    ]
+  },
+  "canonical_stable_id_fact_coverage": {
+    "identity": {
+      "covered_count": 27,
+      "total_count": 27,
+      "coverage_basis": "CEW-ID-1.0 exact stable IDs"
+    },
+    "game_type_or_taxonomy": {
+      "covered_count": 0,
+      "total_count": 27,
+      "coverage_basis": "CEW-02 recovered source taxonomy but created no stable-ID creature bindings; CEW-08 owns the type-coverage audit"
+    },
+    "habitat_ecology": {
+      "covered_count": 0,
+      "total_count": 27,
+      "coverage_basis": "CEW-04 evidence is source-record/source-label scoped and no name-only binding is authorized"
+    },
+    "distribution_scope": {
+      "covered_count": 5,
+      "total_count": 27,
+      "covered_stable_ids": [
+        "mv.setting.havalaea.creature.rootstalker",
+        "mv.setting.havalaea.creature.hisscap-frog",
+        "mv.setting.havalaea.creature.mossling-glider",
+        "mv.setting.havalaea.creature.sapcrawl-varnet",
+        "mv.setting.havalaea.creature.jungle-slip-beetle"
+      ],
+      "coverage_basis": "CEW-DIST-1.0 canonical setting-membership records",
+      "covered_relation": "present_in_Havalaea_setting",
+      "native_status_for_covered_ids": "unknown"
+    },
+    "ecological_role_or_encounter_use": {
+      "covered_count": 0,
+      "total_count": 27,
+      "coverage_basis": "CEW-06 direct evidence remains source-label scoped and creates no stable-ID binding"
+    }
+  },
+  "source_label_overlap_queue": [
+    {
+      "source_subject_label": "Jungle-Slip Beetle",
+      "possible_canonical_target": "mv.setting.havalaea.creature.jungle-slip-beetle",
+      "source_fact_owner": "CEW-04",
+      "state": "unresolved_exact_name_overlap",
+      "canonical_binding_created": false,
+      "name_similarity_sufficient": false,
+      "reason": "Exact display-name overlap is not explicit alias/equivalence authority under CEW-ID-1.0."
+    },
+    {
+      "source_subject_label": "Rootstalker",
+      "possible_canonical_target": "mv.setting.havalaea.creature.rootstalker",
+      "source_fact_owner": "CEW-06",
+      "state": "unresolved_exact_name_overlap",
+      "canonical_binding_created": false,
+      "name_similarity_sufficient": false,
+      "reason": "Exact display-name overlap does not bind the source-label ecological-role packet to the stable ID without separate authority."
+    },
+    {
+      "source_subject_label": "Sapcrawl Varnet",
+      "possible_canonical_target": "mv.setting.havalaea.creature.sapcrawl-varnet",
+      "source_fact_owner": "CEW-06",
+      "state": "unresolved_exact_name_overlap",
+      "canonical_binding_created": false,
+      "name_similarity_sufficient": false,
+      "reason": "Exact display-name overlap does not bind the source-label ecological-role packet to the stable ID without separate authority."
+    },
+    {
+      "source_subject_label": "3. Rift-Touched Animals (Optional)",
+      "possible_canonical_target": "mv.adventure.lost-key.creature.rift-touched-animal",
+      "source_fact_owner": "CEW-01",
+      "state": "unresolved_near_name_no_supported_alias",
+      "canonical_binding_created": false,
+      "name_similarity_sufficient": false,
+      "reason": "Pluralization and heading similarity remain insufficient to establish identity equivalence or alias authority."
+    }
+  ],
+  "deferred_population_owners": {
+    "creature_type_coverage": "CEW-08",
+    "intelligence_personhood_domestication_partnership": "CEW-09",
+    "havalaea_native_lineage": "CEW-10",
+    "mount_pet_familiar_companion_crosswalk": "CEW-11",
+    "earthlike_wildlife_baseline": "CEW-12",
+    "environment_driven_gap_expansion": "CEW-13",
+    "multiversal_alien_expansion": "CEW-14",
+    "monster_extraordinary_type_gap_expansion": "CEW-15"
+  },
+  "audit_conclusions": [
+    "All 27 currently governed Creature Definitions are identity-covered by exact stable ID.",
+    "Canonical object presence does not establish recovered source detail, type, habitat, ecological role, native status, or relationship state.",
+    "The retained source corpus contains substantially more recoverable creature evidence than the current canonical Definition set; source-only evidence remains noncanonical until separately normalized.",
+    "Only five current stable IDs have an explicitly bound CEW-01..06 non-identity fact: Havalaea setting presence under CEW-DIST-1.0, with native status still unknown.",
+    "Exact or near name overlap is retained as an unresolved binding queue rather than used to inflate canonical fact coverage.",
+    "CEW-08 receives the measured type-coverage gap without CEW-07 inventing or binding missing type facts."
+  ],
+  "strict_successor": "CEW-08"
+}
