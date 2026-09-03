@@ -2,8 +2,10 @@
 
 **Program ID:** ENV  
 **Status:** in_progress_parallel_content_authoring  
-**Completed through:** ENV-01  
-**Current:** ENV-02 — Existing 40 Completeness Repair  
+**Completed through:** ENV-06  
+**Current:** ENV-07 — Coastal & Marine Expansion  
+**Current governed preset count:** 46  
+**Current composed archetype count:** 16  
 **Owner and final authority:** John Brandon Turner  
 **Application implementation authority:** none  
 **Parallel-track rule:** ENV may advance as governed content/design work while the application software roadmap continues. ENV must not mutate `Multiversal-app` runtime schemas, terrain mechanics, SCL behavior, migrations, encounter runtime, or environment UI until a separately governed application-integration tranche is authorized.
@@ -32,22 +34,22 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
 1. **ENV-01 — Environment Model & Composition Contract** — `completed_verified`  
    Defines archetype, preset, overlay, local-instance and resolved-environment responsibilities; field/domain ownership; immutable inheritance; provenance preservation; explicit delta semantics; compound-preset support; composition order; and non-interference boundaries. Detailed overlay conflict/stacking remains ENV-04 and Habitat Signature vocabulary remains ENV-15.
 
-2. **ENV-02 — Existing 40 Completeness Repair** — `selected_not_started`  
-   Complete missing content in the current forty promoted profiles before decomposition. Add missing random encounter tables to Swamps, Temperate Forest, Rainforest/Jungle, Post-Apocalyptic Overgrown City, Bustling Metropolis, Port City, Small Town/Hamlet and Nomadic Camp; add encounter/challenge material to Bustling Metropolis; add rest/shelter material to Post-Apocalyptic Overgrown City. Do not fabricate environment-ability links merely to fill absent links.
+2. **ENV-02 — Existing 40 Completeness Repair** — `completed_verified`  
+   Completed missing content in the current forty promoted profiles before decomposition. Source-backed ability links were not fabricated merely to fill absent links.
 
-3. **ENV-03 — Archetype Library Extraction**  
-   Extract reusable environmental behavior from the existing forty and identify the smallest useful archetype library without flattening meaningful differences.
+3. **ENV-03 — Archetype Library Extraction** — `completed_verified`  
+   Extracted fifteen reusable environmental archetypes from the existing forty and identified explicit later gap-watch items instead of pre-creating speculative archetypes.
 
-4. **ENV-04 — Overlay Taxonomy & Stacking Rules**  
-   Define overlay families, compatibility, exclusions, intensity/severity, stacking, temporary/persistent states, conflict precedence and double-application prevention.
+4. **ENV-04 — Overlay Taxonomy & Stacking Rules** — `completed_verified`  
+   Defined twelve overlay families, compatibility/relations, intensity, deterministic stacking, effect-key deduplication and visible conflict behavior without authoring later concrete overlay libraries.
 
-5. **ENV-05 — Existing 40 Preset Conversion**  
-   Represent all current promoted environments through archetype + preset + overlay composition while preserving their source profiles as provenance/reference.
+5. **ENV-05 — Existing 40 Preset Conversion** — `completed_verified`  
+   Represented all forty promoted environments as governed presets through archetype composition while preserving their source profiles and completed content as immutable provenance/reference.
 
-6. **ENV-06 — Freshwater & Wetland Expansion**  
-   Add River/Stream, Lake/Pond, Floodplain, River Delta/Estuary, Marsh/Bog/Fen and Flooded Forest coverage with reusable mechanics and overlay hooks.
+6. **ENV-06 — Freshwater & Wetland Expansion** — `completed_verified`  
+   Added River/Stream, Lake/Pond, Floodplain, River Delta/Estuary, Marsh/Bog/Fen and Flooded Forest coverage. Resolved the flowing-water gap with `ARCH-FLOWING-WATER`, taking the composed archetype count to sixteen and the current preset count to forty-six. Detailed coastal/tidal/marine refinement remains ENV-07.
 
-7. **ENV-07 — Coastal & Marine Expansion**  
+7. **ENV-07 — Coastal & Marine Expansion** — `selected_not_started`  
    Add Coast/Shoreline/Beach, Tidal Flats, Coral Reef, Kelp Forest, Deep Ocean/Abyssal and Ocean Trench coverage while reusing existing Open Ocean and Underwater foundations.
 
 8. **ENV-08 — Grasslands, Open Country & Dry Landforms**  
@@ -77,19 +79,23 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
 16. **ENV-16 — Environment Creature-Discovery Contract & GM Preset Projection**  
     Define the content/API contract by which a composed environment returns eligible creatures as native/common, possible, migratory/seasonal, introduced, rare, overlay-enabled or excluded while respecting World/Reality distribution, visibility and GM-only information. Application UI/runtime implementation is explicitly deferred.
 
-## ENV-01 locked model decisions
+## Locked model decisions through ENV-06
 
 - durable layers are Archetype, Preset, Overlay and Local Environment Instance;
 - Resolved Environment is derived/read-only and cannot become a fifth authoring truth;
 - presets use one primary archetype and may use secondary component archetypes for genuinely compound environments;
 - presets inherit rather than duplicate complete archetype rule bodies;
 - overlays are explicit deltas, not new base environment identities;
+- overlay resolution is deterministic, input-order-independent, effect-key deduplicated and never hidden last-write-wins;
 - composition order is archetype baseline(s) → preset parameterization → local instance configuration → active overlays → current runtime state → external participant evaluation;
 - composition precedence does not supersede source/canonical authority;
 - existing source profiles remain immutable provenance/evidence;
 - Character, Species, Creature, Ability, Item, Vehicle, World/Reality/Place, Encounter and runtime owners remain external;
-- unresolved overlay conflicts stay visible until ENV-04 rather than using implicit last-write-wins;
-- Habitat Signature has a stable envelope but exact vocabulary is deferred to ENV-15.
+- `ARCH-FLOWING-WATER` is the sole ENV-06 archetype extension because channelized directional flow is not cleanly represented by Open Water Surface or Wetland;
+- Floodplain geography is distinct from an active Flood overlay;
+- Flooded Forest baseline is distinct from temporarily flooding an ordinary forest;
+- River Delta/Estuary retains detailed tidal/coastal/marine refinement for ENV-07;
+- Habitat Signature has a stable envelope but exact vocabulary remains deferred to ENV-15.
 
 ## Completion invariants
 
@@ -98,7 +104,7 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
 - presets are compositions, not duplicated independent rulesets;
 - overlays compose deterministically and do not double-apply equivalent effects;
 - custom/local environments can begin from presets and alter overlays/parameters without rewriting a full profile;
-- Habitat Signature is stable enough for CEW consumption;
+- Habitat Signature is stable enough for CEW consumption by ENV-15;
 - environment-to-creature discovery distinguishes ecological suitability from canonical geographic distribution;
 - no ENV tranche grants `Multiversal-app` implementation authority;
 - active software-roadmap work, including SCL terrain/zone authority, remains independent until explicit integration is authorized.
