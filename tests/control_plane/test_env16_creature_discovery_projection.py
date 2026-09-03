@@ -129,7 +129,20 @@ class Env16CreatureDiscoveryProjectionTests(unittest.TestCase):
         self.assertTrue(model["cew_handoff"]["contract_can_exist_before_full_cew_population"])
         self.assertTrue(model["cew_handoff"]["missing_cew_facts_fail_closed_as_unresolved"])
         cew = self.load_json(CEW_BACKLOG)
-        self.assertEqual(cew["current_item"], "CEW-01")
+        order = cew["strict_order"]
+        statuses = {item["id"]: item["status"] for item in cew["tranches"]}
+        self.assertIn(cew["current_item"], order)
+        current_index = order.index(cew["current_item"])
+        self.assertGreaterEqual(current_index, order.index("CEW-01"))
+        if cew["current_item"] == "CEW-01":
+            self.assertEqual(statuses["CEW-01"], "selected_not_started")
+        else:
+            self.assertEqual(statuses["CEW-01"], "completed_verified")
+            self.assertIn(cew.get("completed_through"), order)
+            self.assertGreaterEqual(
+                order.index(cew["completed_through"]),
+                order.index("CEW-01"),
+            )
 
     def test_closeout_marks_env16_complete_and_cew01_selected(self):
         backlog = self.load_json(BACKLOG)
