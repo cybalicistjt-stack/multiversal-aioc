@@ -1,0 +1,231 @@
+{
+  "schema_version": "1.0.0",
+  "program": "ENV",
+  "tranche": "ENV-15",
+  "signature_id": "ENV-HS-1.0",
+  "title": "Habitat Signature & Ecological Matching Contract",
+  "purpose": "Provide a stable environment-side ecological description that CEW can compare against creature-side habitat preferences, tolerances, dependencies and exclusions without converting ecological fit into canonical distribution.",
+  "unknown_is_first_class": true,
+  "resolved_signature_is_read_only": true,
+  "contribution_trace_required": true,
+  "numeric_ecological_score_authorized": false,
+  "authority_boundary": {
+    "environment_signature_owner": "ENV",
+    "creature_habitat_profile_owner": "CEW",
+    "creature_distribution_owner": "CEW",
+    "creature_identity_owner": "existing governed creature identity",
+    "world_reality_place_identity_owner": "existing World/Reality/Setting/Place authorities",
+    "application_implementation_authority": false,
+    "runtime_schema_mutation_authorized": false,
+    "creature_records_authored_by_env15": false,
+    "ability_links_inferred_from_habitat": false,
+    "source_profiles_mutated": false
+  },
+  "dimensions": [
+    {
+      "id": "habitat_medium",
+      "label": "Habitat medium / locomotion space supported by the environment",
+      "value_kind": "multi_enum",
+      "controlled_values": ["terrestrial", "aquatic", "aerial", "subterranean", "artificial_interior", "space_exposed"],
+      "unknown_allowed": true,
+      "overlay_mutable": true,
+      "notes": "Describes environmental spaces that exist; it does not state what a creature can use."
+    },
+    {
+      "id": "water_salinity",
+      "label": "Water salinity regime",
+      "value_kind": "multi_enum",
+      "controlled_values": ["none", "freshwater", "brackish", "saltwater", "hypersaline", "mixed"],
+      "unknown_allowed": true,
+      "overlay_mutable": true
+    },
+    {
+      "id": "water_permanence",
+      "label": "Water permanence",
+      "value_kind": "enum",
+      "controlled_values": ["none", "ephemeral", "seasonal", "permanent", "variable"],
+      "unknown_allowed": true,
+      "overlay_mutable": true
+    },
+    {
+      "id": "water_flow",
+      "label": "Water movement regime",
+      "value_kind": "multi_enum",
+      "controlled_values": ["none", "still", "slow", "flowing", "rapid", "tidal", "wave_exposed", "variable"],
+      "unknown_allowed": true,
+      "overlay_mutable": true
+    },
+    {
+      "id": "temperature_band",
+      "label": "Thermal regime",
+      "value_kind": "multi_enum",
+      "controlled_values": ["extreme_cold", "cold", "cool", "temperate", "warm", "hot", "extreme_heat", "variable"],
+      "unknown_allowed": true,
+      "overlay_mutable": true,
+      "notes": "Qualitative bands avoid universal numeric thresholds that are not yet source-governed."
+    },
+    {
+      "id": "moisture_band",
+      "label": "Ambient moisture / saturation",
+      "value_kind": "multi_enum",
+      "controlled_values": ["hyperarid", "arid", "dry", "mesic", "moist", "wet", "saturated", "submerged", "variable"],
+      "unknown_allowed": true,
+      "overlay_mutable": true
+    },
+    {
+      "id": "vegetation_density",
+      "label": "Vegetation density / structural cover",
+      "value_kind": "multi_enum",
+      "controlled_values": ["none", "sparse", "open", "moderate", "dense", "closed", "variable"],
+      "unknown_allowed": true,
+      "overlay_mutable": true
+    },
+    {
+      "id": "substrates",
+      "label": "Dominant usable substrates",
+      "value_kind": "multi_enum",
+      "controlled_values": ["rock", "gravel", "sand", "silt", "mud", "soil", "peat", "organic_litter", "coral", "ice", "snow", "artificial_structure", "metal", "mixed_sediment", "variable"],
+      "unknown_allowed": true,
+      "overlay_mutable": true
+    },
+    {
+      "id": "elevation_band",
+      "label": "Elevation regime",
+      "value_kind": "multi_enum",
+      "controlled_values": ["below_sea_level", "lowland", "upland", "montane", "alpine", "extreme_altitude", "variable"],
+      "unknown_allowed": true,
+      "overlay_mutable": false
+    },
+    {
+      "id": "depth_band",
+      "label": "Water / below-surface depth regime",
+      "value_kind": "multi_enum",
+      "controlled_values": ["surface", "shallow", "intermediate", "deep", "abyssal", "subsurface", "variable"],
+      "unknown_allowed": true,
+      "overlay_mutable": true
+    },
+    {
+      "id": "light_regime",
+      "label": "Light regime",
+      "value_kind": "multi_enum",
+      "controlled_values": ["darkness", "dim", "normal", "bright", "glare", "variable"],
+      "unknown_allowed": true,
+      "overlay_mutable": true
+    },
+    {
+      "id": "atmosphere_regime",
+      "label": "Atmosphere / breathability regime",
+      "value_kind": "multi_enum",
+      "controlled_values": ["breathable", "low_oxygen", "toxic", "corrosive", "nonbreathable", "vacuum", "variable"],
+      "unknown_allowed": true,
+      "overlay_mutable": true
+    },
+    {
+      "id": "pressure_regime",
+      "label": "Ambient pressure regime",
+      "value_kind": "multi_enum",
+      "controlled_values": ["low", "standard", "high", "extreme", "variable"],
+      "unknown_allowed": true,
+      "overlay_mutable": true
+    },
+    {
+      "id": "gravity_regime",
+      "label": "Gravity regime",
+      "value_kind": "enum",
+      "controlled_values": ["zero", "low", "standard", "high", "variable_directional"],
+      "unknown_allowed": true,
+      "overlay_mutable": true
+    },
+    {
+      "id": "shelter_availability",
+      "label": "Shelter / refuge availability",
+      "value_kind": "multi_enum",
+      "controlled_values": ["none", "scarce", "limited", "moderate", "abundant", "structured", "variable"],
+      "unknown_allowed": true,
+      "overlay_mutable": true
+    },
+    {
+      "id": "food_resource_conditions",
+      "label": "Ecologically relevant food/resource conditions",
+      "value_kind": "multi_enum",
+      "controlled_values": ["scarce", "primary_production", "prey_base", "detritus", "cultivated_food", "waste_scavenging", "stored_supplies", "resource_rich", "variable"],
+      "unknown_allowed": true,
+      "overlay_mutable": true,
+      "notes": "Records environment-side resource conditions only; diets, trophic roles and creature dependencies belong to CEW."
+    },
+    {
+      "id": "settlement_intensity",
+      "label": "Settlement / infrastructure intensity",
+      "value_kind": "multi_enum",
+      "controlled_values": ["wilderness", "remote", "rural", "suburban", "urban", "industrial", "megacity", "variable"],
+      "unknown_allowed": true,
+      "overlay_mutable": true
+    },
+    {
+      "id": "special_environment_contexts",
+      "label": "Special planar, magical, contamination or otherwise nonordinary environmental contexts",
+      "value_kind": "typed_reference_set",
+      "allowed_reference_types": ["overlay_id", "environment_context_id", "source_context_ref"],
+      "unknown_allowed": true,
+      "overlay_mutable": true,
+      "notes": "Prefer governed overlay/context identifiers over free-text tags. World/Reality/Place distribution is intentionally not stored here."
+    }
+  ],
+  "signature_fact_contract": {
+    "required_fields": ["dimension_id", "value", "state", "scope", "provenance"],
+    "state_values": ["known", "unknown", "not_applicable", "unresolved_conflict"],
+    "scope_examples": ["whole_environment", "local_instance", "zone_or_volume", "runtime_scene_scope"],
+    "provenance_requirement": "Every known or unresolved fact retains the archetype, preset, local-instance, overlay or runtime contribution that produced it.",
+    "unknown_rule": "Unknown is stored explicitly; absence is not silently converted into a default climate, salinity, atmosphere, settlement or ecological fact.",
+    "not_applicable_rule": "Use not_applicable only when the dimension truly does not apply to the scoped environment, not when the source is silent."
+  },
+  "signature_resolution": {
+    "source_composition_order_reference": ["archetype_baselines", "preset_parameterization", "local_instance_configuration", "active_overlays", "current_runtime_scene_state", "participant_evaluation"],
+    "composition_order": ["archetype_baselines", "preset_parameterization", "local_instance_configuration", "active_overlays", "current_runtime_scene_state", "habitat_signature_projection"],
+    "overlay_resolution_precedes_ecological_matching": true,
+    "overlay_effect_key_deduplication_preserved": true,
+    "input_order_independent": true,
+    "local_instance_may_refine_signature_without_mutating_source_profile": true,
+    "provenance_and_contribution_trace_survive_projection": true,
+    "unresolved_overlay_conflict_remains_unresolved_signature_fact": true,
+    "resolved_signature_write_back_forbidden": true
+  },
+  "creature_side_comparison_seam": {
+    "owned_by": "CEW",
+    "predicate_classes": ["requires", "prefers", "tolerates", "excludes", "depends_on", "unknown"],
+    "rule": "ENV-15 defines how a resolved environment fact can be compared; CEW defines whether a creature requires, prefers, tolerates, excludes or depends on that fact.",
+    "creature_profile_mutation_by_env_forbidden": true
+  },
+  "matching_contract": {
+    "result_states": ["preferred", "compatible", "conditional", "incompatible", "indeterminate"],
+    "result_explainability_required": true,
+    "per_dimension_reasons_required": true,
+    "hard_incompatibility_requires_explicit_conflict": true,
+    "preferred_requires_explicit_preference_support": true,
+    "conditional_requires_explicit_dependency_or_scope_condition": true,
+    "canonical_distribution_is_separate": true,
+    "world_reality_place_constraints_can_veto_later": true,
+    "rarity_frequency_are_not_derived": true,
+    "unknown_environment_fact_yields_indeterminate_when_material": true,
+    "unknown_creature_fact_yields_indeterminate_when_material": true,
+    "habitat_fit_implies_native": false,
+    "habitat_fit_implies_common": false,
+    "habitat_fit_implies_present": false,
+    "habitat_fit_implies_visible_to_gm": false,
+    "numeric_fit_score": null,
+    "numeric_score_forbidden_without_later_governed_authority": true,
+    "precedence": [
+      "explicit_incompatibility",
+      "material_unknown_or_unresolved",
+      "explicit_conditional_dependency",
+      "explicit_preference_satisfied",
+      "compatible_without_preference",
+      "indeterminate_when_evidence_is_insufficient"
+    ]
+  },
+  "env16_handoff": {
+    "env16_may_consume": ["resolved_habitat_signature", "ecological_fit_state", "per_dimension_reasons", "contribution_trace"],
+    "env16_must_add_or_intersect_external_authority": ["canonical_world_reality_distribution", "rarity_frequency", "season_activity", "campaign_visibility", "gm_only_information", "cew_creature_facets"],
+    "ecological_fit_alone_is_never_sufficient_for_creature_discovery_claim": true
+  }
+}
