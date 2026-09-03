@@ -1,7 +1,7 @@
 {
-  "schema_version":"1.0.0",
+  "schema_version":"1.1.0",
   "control_id":"C-EXECUTION-TERMINATION-GATE",
-  "source":"Owner-approved MV-CONT-007 recovery incorporating the useful behavioral findings preserved in superseded PR 763.",
+  "source":"Owner-approved termination cases plus SCL-09 intermediate-return incident hardening.",
   "privacy":{"raw_conversation_text_published":false,"aggregate_behavior_only":true},
   "cases":[
     {
@@ -80,6 +80,20 @@
       "state":{"command_mode":"execution","work_item_status":"blocked_environment","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":["record completed_verified evidence","select the strict successor"],"genuine_blocker":{"class":"environment_unavailable","evidence":["execution platform reported that its usage ceiling was reached"],"recovery_attempted":true,"blocks_all_authorized_progress":true}},
       "expected_decision":"ALLOW_FINAL_RESPONSE",
       "expected_reason_code":"MVTERM-GENUINE-BLOCKER"
+    },
+    {
+      "case_id":"MV-EVAL-027",
+      "name":"Application merge with partially assembled closeout is still nonterminal",
+      "state":{"command_mode":"execution","work_item_status":"in_progress","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":["finish AIOC closeout assembly","validate closeout","merge closeout","select strict successor"],"genuine_blocker":null},
+      "expected_decision":"CONTINUE_EXECUTION",
+      "expected_reason_code":"MVTERM-AUTHORIZED-WORK-PENDING"
+    },
+    {
+      "case_id":"MV-EVAL-028",
+      "name":"Self-imposed response or tool budget pressure cannot masquerade as environment blocker",
+      "state":{"command_mode":"execution","work_item_status":"blocked_environment","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":["finish closeout","select strict successor"],"genuine_blocker":{"class":"environment_unavailable","evidence":["assistant response budget and tool execution cut off while repository tools remain callable"],"recovery_attempted":true,"blocks_all_authorized_progress":true}},
+      "expected_decision":"CONTINUE_EXECUTION",
+      "expected_reason_code":"MVTERM-SELF-IMPOSED-PRESSURE"
     }
   ]
 }

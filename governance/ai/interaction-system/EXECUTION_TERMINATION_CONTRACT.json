@@ -1,5 +1,5 @@
 {
-  "schema_version":"1.2.0",
+  "schema_version":"1.3.0",
   "control_id":"C-EXECUTION-TERMINATION-GATE",
   "lifecycle":"CURRENT",
   "owner_approved_at":"2026-08-28T23:51:18Z",
@@ -22,14 +22,25 @@
     "required CI or another asynchronous operation is queued or running",
     "a pull request is open, ready, or awaiting merge",
     "merge succeeded but canonical closeout or successor selection is pending",
+    "application merge succeeded and AIOC closeout is only partially assembled",
     "one meaningful substep or tool-call batch ended",
-    "a status summary could be written while execution authority remains"
+    "a status summary could be written while execution authority remains",
+    "anticipated response length, token pressure, context pressure, tool-call count, or self-imposed execution budget while authorized tools remain callable",
+    "the executor has enough capability to emit a final response but has not run and obeyed a fresh termination preflight"
   ],
+  "blocker_integrity":{
+    "rule":"A genuine blocker is an externally evidenced inability to make any remaining authorized progress, not an executor preference to stop.",
+    "forbidden_self_classifications":["response budget","tool budget","token pressure","context pressure","partial closeout","too many tool calls","conversation length","tool execution cut off without a concrete platform rejection"],
+    "platform_usage_ceiling_rule":"Only a concrete platform/tool rejection or explicit usage-ceiling signal that actually prevents all remaining authorized progress may be environment_unavailable.",
+    "callable_tool_rule":"If any pending authorized closeout/merge/verification/successor step remains callable through an available governed tool or fallback, execution must continue."
+  },
   "runtime_enforcement":{
     "preflight":"scripts/execution_termination_preflight.py",
     "instruction_surfaces":["AGENTS.md","governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md"],
     "regression_cases":"governance/ai/interaction-system/evaluation/EXECUTION_TERMINATION_CASES.json",
     "repository_health_gate":"scripts/validate_repository_health.py",
+    "mandatory_invocation_rule":"Every execution-mode final response requires a fresh preflight result. Skipping preflight is itself a control-plane incident and never creates a legitimate tranche boundary.",
+    "interrupted_closeout_rule":"If a prior response returned after application merge with canonical closeout/successor work pending and no externally verified all-progress blocker, the next execution turn must reconcile that stale state before unrelated work and record the incident in convergence evidence.",
     "merge_reserve_rule":"Before an application merge, stage the cross-repository closeout and retain enough observable execution reserve to verify the merge, reconcile canonical state and select the strict successor. If a platform usage warning makes that reserve unavailable, leave the validated pull request open.",
     "environment_interruption_handoff":"A verified platform usage ceiling may permit a truthful blocked handoff while pending authorized steps remain, but those steps must be preserved explicitly and resume before unrelated work.",
     "evidence_freshness_lease":{"recovery_passes_per_execution_cycle_without_invalidation":1,"refresh_scope":"affected facts only","invalidating_events":["authority_or_selected_checkpoint_changed","relevant_head_branch_or_base_changed","merge_rebase_force_push_or_conflicting_writer","materially_new_required_check_result","tool_reports_stale_missing_contradictory_or_inaccessible_evidence","declared_final_validation_or_closeout_boundary"],"non_invalidating_events":["tool_batch_ended","elapsed_time","context_compaction","commentary_or_status_request","additional_historical_file_exists"]},
