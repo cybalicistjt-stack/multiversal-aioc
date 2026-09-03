@@ -15,6 +15,7 @@ REPORT = ENV_DIR / "ENV-07_COASTAL_MARINE_EXPANSION_REPORT.md"
 OVERLAYS = ENV_DIR / "ENV-04_OVERLAY_MODEL_v1.0.0.json"
 ENV05 = ENV_DIR / "ENV-05_PRESET_REGISTRY_v1.0.0.csv"
 ENV06 = ENV_DIR / "ENV-06_FRESHWATER_WETLAND_PRESET_REGISTRY_v1.0.0.csv"
+BACKLOG = ENV_DIR / "ENV_PROGRAM_BACKLOG.json"
 
 
 class Env07CoastalMarineExpansionTests(unittest.TestCase):
@@ -119,6 +120,23 @@ class Env07CoastalMarineExpansionTests(unittest.TestCase):
         text = CONTENT.read_text(encoding="utf-8")
         self.assertIn("not recovered source text", text)
         self.assertIn("does not rewrite the forty retained source profiles", text)
+
+    def test_backlog_closes_env07_and_selects_env08(self):
+        backlog = self.load_json(BACKLOG)
+        order = backlog["strict_order"]
+        statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
+        completed = [item["id"] for item in backlog["tranches"] if item["status"] == "completed_verified"]
+        self.assertEqual(completed, order[:7])
+        self.assertEqual(backlog["completed_through"], "ENV-07")
+        self.assertEqual(backlog["current_item"], "ENV-08")
+        self.assertEqual(statuses["ENV-07"], "completed_verified")
+        self.assertEqual(statuses["ENV-08"], "selected_not_started")
+        self.assertEqual(backlog["env07_decisions"]["current_preset_count"], 52)
+        self.assertEqual(backlog["env07_decisions"]["current_composed_archetype_count"], 17)
+        self.assertEqual(backlog["env07_decisions"]["new_archetype_ids"], ["ARCH-AQUATIC-STRUCTURE"])
+        self.assertTrue(backlog["env07_decisions"]["river_delta_estuary_preserved"])
+        self.assertFalse(backlog["env07_decisions"]["application_runtime_mutation_authorized"])
+        self.assertFalse(backlog["application_implementation_authority"])
 
 
 if __name__ == "__main__":
