@@ -13,6 +13,7 @@ CONTENT = ENV_DIR / "ENV-06_FRESHWATER_WETLAND_CONTENT_v1.0.0.md"
 REPORT = ENV_DIR / "ENV-06_FRESHWATER_WETLAND_EXPANSION_REPORT.md"
 OVERLAY_MODEL = ENV_DIR / "ENV-04_OVERLAY_MODEL_v1.0.0.json"
 ENV05 = ENV_DIR / "ENV-05_PRESET_REGISTRY_v1.0.0.csv"
+BACKLOG = ENV_DIR / "ENV_PROGRAM_BACKLOG.json"
 
 
 class Env06FreshwaterWetlandExpansionTests(unittest.TestCase):
@@ -112,6 +113,21 @@ class Env06FreshwaterWetlandExpansionTests(unittest.TestCase):
         text = CONTENT.read_text(encoding="utf-8")
         self.assertIn("not recovered source text", text)
         self.assertIn("does not rewrite the forty retained source profiles", text)
+
+    def test_backlog_closes_env06_and_selects_env07(self):
+        backlog = self.load_json(BACKLOG)
+        order = backlog["strict_order"]
+        statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
+        completed = [item["id"] for item in backlog["tranches"] if item["status"] == "completed_verified"]
+        self.assertEqual(completed, order[:6])
+        self.assertEqual(backlog["completed_through"], "ENV-06")
+        self.assertEqual(backlog["current_item"], "ENV-07")
+        self.assertEqual(statuses["ENV-06"], "completed_verified")
+        self.assertEqual(statuses["ENV-07"], "selected_not_started")
+        self.assertEqual(backlog["env06_decisions"]["current_preset_count"], 46)
+        self.assertEqual(backlog["env06_decisions"]["current_composed_archetype_count"], 16)
+        self.assertFalse(backlog["env06_decisions"]["application_runtime_mutation_authorized"])
+        self.assertFalse(backlog["application_implementation_authority"])
 
 
 if __name__ == "__main__":
