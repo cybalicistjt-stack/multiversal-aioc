@@ -77,16 +77,13 @@ class Env05PresetConversionTests(unittest.TestCase):
         self.assertEqual(boundary["habitat_signature_vocabulary_deferred_to"], "ENV-15")
         self.assertEqual(boundary["creature_distribution_owned_by"], "CEW")
 
-    def test_backlog_closes_env05_and_selects_env06(self):
+    def test_env05_remains_completed_after_program_progresses(self):
         backlog = self.load_json(BACKLOG)
         order = backlog["strict_order"]
-        completed = [item["id"] for item in backlog["tranches"] if item["status"] == "completed_verified"]
-        self.assertEqual(completed, order[:5])
-        self.assertEqual(backlog["completed_through"], "ENV-05")
-        self.assertEqual(backlog["current_item"], "ENV-06")
         statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
+        self.assertEqual(order[:5], ["ENV-01", "ENV-02", "ENV-03", "ENV-04", "ENV-05"])
+        self.assertTrue(all(statuses[item] == "completed_verified" for item in order[:5]))
         self.assertEqual(statuses["ENV-05"], "completed_verified")
-        self.assertEqual(statuses["ENV-06"], "selected_not_started")
         self.assertFalse(backlog["application_implementation_authority"])
 
 
