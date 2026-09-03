@@ -1,7 +1,9 @@
 # ENV — Environment Preset & Overlay Program
 
 **Program ID:** ENV  
-**Status:** planned_parallel_content_authoring  
+**Status:** in_progress_parallel_content_authoring  
+**Completed through:** ENV-01  
+**Current:** ENV-02 — Existing 40 Completeness Repair  
 **Owner and final authority:** John Brandon Turner  
 **Application implementation authority:** none  
 **Parallel-track rule:** ENV may advance as governed content/design work while the application software roadmap continues. ENV must not mutate `Multiversal-app` runtime schemas, terrain mechanics, SCL behavior, migrations, encounter runtime, or environment UI until a separately governed application-integration tranche is authorized.
@@ -12,10 +14,12 @@ Convert the environment library from isolated comprehensive profiles into a reus
 
 1. **Environment Archetype** — reusable environmental structure such as River, Forest, Cave, Wetland, Urban, Grassland.
 2. **Environment Preset** — ready-to-use combinations such as Mangrove Swamp, Cyberpunk City, Arctic Tundra or Asteroid Field.
-3. **Overlay** — composable conditions such as Flooded, Blizzard, Low Gravity, Radiation or Magical Saturation.
+3. **Environment Overlay** — composable conditions such as Flooded, Blizzard, Low Gravity, Radiation or Magical Saturation.
 4. **Local Environment Instance** — setting/campaign-specific realization of an archetype/preset plus overlays and local content.
 
 Historical/source profiles remain preserved as source/provenance evidence. The modular representation must not erase source text or silently reinterpret source-authored mechanics.
+
+ENV-01 additionally establishes **Resolved Environment** as a derived read-only evaluation projection, not a fifth durable authored identity. The durable composition contract is defined in `ENV-01_ENVIRONMENT_MODEL_COMPOSITION_CONTRACT_v1.0.0.md` and `ENV-01_COMPOSITION_MODEL_v1.0.0.json`.
 
 ## Cross-program contract
 
@@ -25,10 +29,10 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
 
 ## Tranches
 
-1. **ENV-01 — Environment Model & Composition Contract**  
-   Define archetype, preset, overlay and local-instance responsibilities; field ownership; provenance preservation; and composition boundaries.
+1. **ENV-01 — Environment Model & Composition Contract** — `completed_verified`  
+   Defines archetype, preset, overlay, local-instance and resolved-environment responsibilities; field/domain ownership; immutable inheritance; provenance preservation; explicit delta semantics; compound-preset support; composition order; and non-interference boundaries. Detailed overlay conflict/stacking remains ENV-04 and Habitat Signature vocabulary remains ENV-15.
 
-2. **ENV-02 — Existing 40 Completeness Repair**  
+2. **ENV-02 — Existing 40 Completeness Repair** — `selected_not_started`  
    Complete missing content in the current forty promoted profiles before decomposition. Add missing random encounter tables to Swamps, Temperate Forest, Rainforest/Jungle, Post-Apocalyptic Overgrown City, Bustling Metropolis, Port City, Small Town/Hamlet and Nomadic Camp; add encounter/challenge material to Bustling Metropolis; add rest/shelter material to Post-Apocalyptic Overgrown City. Do not fabricate environment-ability links merely to fill absent links.
 
 3. **ENV-03 — Archetype Library Extraction**  
@@ -72,6 +76,20 @@ ENV owns environment-side composition semantics. CEW owns creature-side habitat/
 
 16. **ENV-16 — Environment Creature-Discovery Contract & GM Preset Projection**  
     Define the content/API contract by which a composed environment returns eligible creatures as native/common, possible, migratory/seasonal, introduced, rare, overlay-enabled or excluded while respecting World/Reality distribution, visibility and GM-only information. Application UI/runtime implementation is explicitly deferred.
+
+## ENV-01 locked model decisions
+
+- durable layers are Archetype, Preset, Overlay and Local Environment Instance;
+- Resolved Environment is derived/read-only and cannot become a fifth authoring truth;
+- presets use one primary archetype and may use secondary component archetypes for genuinely compound environments;
+- presets inherit rather than duplicate complete archetype rule bodies;
+- overlays are explicit deltas, not new base environment identities;
+- composition order is archetype baseline(s) → preset parameterization → local instance configuration → active overlays → current runtime state → external participant evaluation;
+- composition precedence does not supersede source/canonical authority;
+- existing source profiles remain immutable provenance/evidence;
+- Character, Species, Creature, Ability, Item, Vehicle, World/Reality/Place, Encounter and runtime owners remain external;
+- unresolved overlay conflicts stay visible until ENV-04 rather than using implicit last-write-wins;
+- Habitat Signature has a stable envelope but exact vocabulary is deferred to ENV-15.
 
 ## Completion invariants
 
