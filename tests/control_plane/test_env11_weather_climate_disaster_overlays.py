@@ -60,7 +60,6 @@ class Env11WeatherClimateDisasterOverlayTests(unittest.TestCase):
         required = set(contract["required_fields"])
         delta_required = set(contract["delta_requirements"])
         ids = {o["overlay_id"] for o in library["overlays"]}
-
         for overlay in library["overlays"]:
             self.assertTrue(required.issubset(overlay), overlay["overlay_id"])
             self.assertIn(overlay["family_id"], families)
@@ -77,7 +76,6 @@ class Env11WeatherClimateDisasterOverlayTests(unittest.TestCase):
             for relation in overlay.get("relations", []):
                 self.assertIn(relation["type"], relation_types)
                 self.assertIn(relation["target"], ids)
-
         for relation in library["authored_cross_overlay_relations"]:
             self.assertIn(relation["type"], relation_types)
             self.assertIn(relation["source"], ids)
@@ -151,6 +149,31 @@ class Env11WeatherClimateDisasterOverlayTests(unittest.TestCase):
         self.assertIn("movement.high_wind_complication", keys("OVL-WTH-WINDSTORM") & keys("OVL-WTH-HURRICANE") & keys("OVL-WTH-TORNADO") & keys("OVL-WTH-BLIZZARD"))
         self.assertIn("atmosphere.particulate_load", keys("OVL-WTH-SANDSTORM") & keys("OVL-GEO-VOLCANIC-ASH"))
         self.assertIn("hazard.mass_movement_burial", keys("OVL-GEO-AVALANCHE") & keys("OVL-GEO-LANDSLIDE"))
+
+    def test_backlog_closes_env11_and_selects_env12(self):
+        backlog = self.load_json(BACKLOG)
+        order = backlog["strict_order"]
+        statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
+        completed = [item["id"] for item in backlog["tranches"] if item["status"] == "completed_verified"]
+        self.assertEqual(completed, order[:11])
+        self.assertEqual(backlog["completed_through"], "ENV-11")
+        self.assertEqual(backlog["current_item"], "ENV-12")
+        self.assertEqual(statuses["ENV-11"], "completed_verified")
+        self.assertEqual(statuses["ENV-12"], "selected_not_started")
+        decisions = backlog["env11_decisions"]
+        self.assertEqual(decisions["weather_climate_disaster_overlays_added"], 22)
+        self.assertEqual(len(decisions["overlay_ids"]), 22)
+        self.assertEqual(decisions["current_preset_count"], 76)
+        self.assertEqual(decisions["current_composed_archetype_count"], 19)
+        self.assertEqual(decisions["new_presets_added"], 0)
+        self.assertEqual(decisions["new_archetypes_added"], 0)
+        self.assertFalse(decisions["automatic_event_causation_authorized"])
+        self.assertTrue(decisions["all_interaction_rows_require_both_active"])
+        self.assertTrue(decisions["effect_key_deduplication_preserved"])
+        self.assertFalse(decisions["universal_numeric_formulas_authored"])
+        self.assertEqual(decisions["planetary_physical_condition_overlays_deferred_to"], "ENV-12")
+        self.assertEqual(decisions["supernatural_multiversal_overlays_deferred_to"], "ENV-13")
+        self.assertFalse(decisions["application_runtime_mutation_authorized"])
 
 
 if __name__ == "__main__":
