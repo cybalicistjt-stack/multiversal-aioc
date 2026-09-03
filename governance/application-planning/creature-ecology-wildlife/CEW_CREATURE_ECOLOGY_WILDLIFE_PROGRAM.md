@@ -2,10 +2,12 @@
 
 **Program ID:** CEW  
 **Status:** in_progress_parallel_content_authoring  
-**Current:** CEW-01 — Creature Source Census & Identity Ledger (`selected_not_started`)  
+**Current:** CEW-04 — Habitat & Environment Crosswalk (`selected_not_started`)  
+**Completed through:** CEW-03  
 **Owner and final authority:** John Brandon Turner  
 **Application implementation authority:** none  
 **Environment dependency:** consumes completed ENV composition, `ENV-HS-1.0` Habitat Signature and `ENV-CD-1.0` creature-discovery contracts.  
+**Classification dependency:** consumes completed `CEW-ID-1.0`, `CEW-TAX-1.0` and `CEW-CLASS-1.0` contracts.  
 **Parallel-track rule:** CEW may advance as governed content/recovery/design work while the application software roadmap continues. CEW must not mutate `Multiversal-app` runtime creature schemas, creature/NPC UI, encounter runtime, mount/familiar/pet runtime, SCL terrain behavior, or migrations until a separately governed application-integration tranche is authorized.
 
 ## Purpose
@@ -29,6 +31,16 @@ CEW begins from two completed environment-side contracts:
 - `ENV-CD-1.0` — read-only GM creature-discovery projection contract that keeps ecological fit, canonical distribution, visibility, frequency, season/activity and overlay interactions independent.
 
 Missing creature-side facts fail closed as unresolved. CEW is responsible for progressively supplying the source-backed creature identity, ecology, distribution and facets consumed by `ENV-CD-1.0`; it must not backfill them from environment similarity.
+
+## CEW identity, taxonomy and classification handoff
+
+The first three CEW tranches now provide the common semantic envelope consumed by later work:
+
+- `CEW-ID-1.0` — conservative creature identity/source ledger; classification similarity never creates identity equivalence;
+- `CEW-TAX-1.0` — recovered multidimensional type vocabulary and unresolved source-disagreement queue;
+- `CEW-CLASS-1.0` — sixteen-axis open-world classification model keeping biology, game type, subtype, manifestation, affinity, template, state, cognition, personhood, ecology, distribution, ecological role, domestication/training, relationship pathways, NPC presentation and encounter/runtime role independent.
+
+`CEW-CLASS-1.0` is structural authority, not a bulk corpus-classification step. Source silence remains unknown. CEW-04 and later tranches populate their owned axes only from source/owner-supported evidence.
 
 ## Existing authority consumed, not replaced
 
@@ -102,16 +114,16 @@ Required crosswalk states may include, where supported:
 
 ## Tranches
 
-1. **CEW-01 — Creature Source Census & Identity Ledger** — `selected_not_started`  
+1. **CEW-01 — Creature Source Census & Identity Ledger** — `completed_verified`  
    Inventory all retained creature material across dedicated Creature PDFs, Player Creatures, GPT/Evernote/source recovery, governed content objects and related setting sources. Reconcile exact duplicates/aliases only where supported. Produce canonical, recoverable, unresolved and rejected identity states.
 
-2. **CEW-02 — Creature Type System Recovery & Taxonomy Audit**  
+2. **CEW-02 — Creature Type System Recovery & Taxonomy Audit** — `completed_verified`  
    Fully recover the existing creature-type material and usages. Distinguish base categories from body plans, origins, affinities, templates/modifiers, conditions and legacy organizational headings. Preserve source disagreements for owner resolution rather than flattening them.
 
-3. **CEW-03 — Creature Classification Model**  
+3. **CEW-03 — Creature Classification Model** — `completed_verified`  
    Establish the multidimensional classification model required above. Prevent single-axis type taxonomies from erasing ecology, personhood, template or origin distinctions.
 
-4. **CEW-04 — Habitat & Environment Crosswalk**  
+4. **CEW-04 — Habitat & Environment Crosswalk** — `selected_not_started`  
    Apply ENV Habitat Signature vocabulary to recovered creatures where source evidence supports habitat/ecology. Record preferred/native environmental properties, tolerated conditions, exclusions, dependencies, migration/seasonality and overlay interactions without fabricating missing ecology.
 
 5. **CEW-05 — World, Reality & Geographic Distribution**  
