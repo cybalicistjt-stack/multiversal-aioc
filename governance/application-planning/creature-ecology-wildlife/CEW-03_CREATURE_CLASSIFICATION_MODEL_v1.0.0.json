@@ -1,0 +1,294 @@
+{
+  "schema_version": "1.0.0",
+  "model_id": "CEW-CLASS-1.0",
+  "work_item": "CEW-03",
+  "title": "Creature Classification Model",
+  "identity_authority": "CEW-ID-1.0",
+  "taxonomy_authority": "CEW-TAX-1.0",
+  "presentation_authority": "PPIA-02 Creature & NPC Experience",
+  "environment_authority": "ENV-HS-1.0 / ENV-CD-1.0",
+  "partnership_authority": "CCP-03..10 with CEW-11 crosswalk",
+  "application_implementation_authority": false,
+  "open_world_semantics": {
+    "unknown_is_first_class": true,
+    "source_silence_means_false": false,
+    "single_axis_collapse_authorized": false,
+    "fact_states": ["asserted", "explicitly_absent", "unknown", "unresolved_conflict", "not_applicable"],
+    "unknown_may_be_replaced_only_by_new_authority_or_governed_resolution": true
+  },
+  "classification_fact_contract": {
+    "required_fields_for_asserted_fact": ["axis_id", "value", "state", "source_or_authority_ref", "scope", "provenance"],
+    "value_may_be_scalar_or_list": true,
+    "provenance_required": true,
+    "scope_required": true,
+    "conflict_may_coexist_with_asserted_source_claims": true,
+    "classification_fact_creates_identity": false,
+    "classification_fact_creates_placement": false,
+    "classification_fact_creates_runtime_state": false
+  },
+  "classification_axes": [
+    {
+      "axis_id": "biological_ecological_identity",
+      "label": "Biological / ecological identity",
+      "cardinality": "zero_or_many",
+      "default_state": "unknown",
+      "population_owner": "CEW-03 structure; source-backed CEW-09/10/12+ enrichment",
+      "provenance_required_for_assertion": true,
+      "meaning": "Biological or ecological identity such as Animal or Plant; independent of game type, cognition, personhood and relationship roles."
+    },
+    {
+      "axis_id": "game_creature_type",
+      "label": "Game creature type",
+      "cardinality": "zero_or_many",
+      "default_state": "unknown",
+      "population_owner": "CEW-02",
+      "provenance_required_for_assertion": true,
+      "meaning": "Source-backed game-facing creature type family or unresolved type usage. Multiple values are permitted only where source authority supports overlap or conflict."
+    },
+    {
+      "axis_id": "nested_subtype_category",
+      "label": "Nested subtype / category",
+      "cardinality": "zero_or_many",
+      "default_state": "unknown",
+      "population_owner": "CEW-02",
+      "provenance_required_for_assertion": true,
+      "meaning": "Named subdivision under a source-backed type family; does not automatically become a global base type."
+    },
+    {
+      "axis_id": "body_plan_manifestation",
+      "label": "Body plan / manifestation",
+      "cardinality": "zero_or_many",
+      "default_state": "unknown",
+      "population_owner": "CEW-02",
+      "provenance_required_for_assertion": true,
+      "meaning": "Physical, movement or manifestation classification such as Fey body type, Plant movement category or Incorporeal manifestation."
+    },
+    {
+      "axis_id": "origin_affinity",
+      "label": "Origin / affinity",
+      "cardinality": "zero_or_many",
+      "default_state": "unknown",
+      "population_owner": "CEW-02",
+      "provenance_required_for_assertion": true,
+      "meaning": "Source-backed origin, provenance, elemental, energy or comparable affinity without automatic type replacement."
+    },
+    {
+      "axis_id": "template_modifier_transformation",
+      "label": "Template / modifier / transformation",
+      "cardinality": "zero_or_many",
+      "default_state": "unknown",
+      "population_owner": "CEW-02 / PPIA-02",
+      "provenance_required_for_assertion": true,
+      "meaning": "Source-backed variant, stage, form, template, type modifier, curse or transformation relationship."
+    },
+    {
+      "axis_id": "condition_state",
+      "label": "Condition / state",
+      "cardinality": "zero_or_many",
+      "default_state": "unknown",
+      "population_owner": "PPIA-02 / governing runtime or source authority",
+      "provenance_required_for_assertion": true,
+      "meaning": "Persistent or temporary source/rules condition. Live-instance state remains runtime-owned and is not canonical Definition classification."
+    },
+    {
+      "axis_id": "intelligence_cognition",
+      "label": "Intelligence / cognition",
+      "cardinality": "zero_or_many",
+      "default_state": "unknown",
+      "population_owner": "CEW-09",
+      "provenance_required_for_assertion": true,
+      "meaning": "Source-backed cognition, intelligence or agency descriptors, independent of biology and game type."
+    },
+    {
+      "axis_id": "personhood_sapience",
+      "label": "Personhood / sapience",
+      "cardinality": "zero_or_many",
+      "default_state": "unknown",
+      "population_owner": "CEW-09",
+      "provenance_required_for_assertion": true,
+      "meaning": "Source/owner-backed personhood and sapience states. Personhood never follows automatically from type, biology or NPC presentation."
+    },
+    {
+      "axis_id": "habitat_ecology",
+      "label": "Habitat / ecology",
+      "cardinality": "zero_or_many",
+      "default_state": "unknown",
+      "population_owner": "CEW-04",
+      "provenance_required_for_assertion": true,
+      "meaning": "Creature-side requires, prefers, tolerates, excludes and depends-on predicates against ENV-HS-1.0; suitability is not distribution."
+    },
+    {
+      "axis_id": "distribution_scope",
+      "label": "World / Reality / geographic distribution",
+      "cardinality": "zero_or_many",
+      "default_state": "unknown",
+      "population_owner": "CEW-05",
+      "provenance_required_for_assertion": true,
+      "meaning": "Source-backed canonical native, introduced, domesticated, invasive, migratory or other distribution scope, kept separate from habitat suitability."
+    },
+    {
+      "axis_id": "ecological_role",
+      "label": "Ecological role",
+      "cardinality": "zero_or_many",
+      "default_state": "unknown",
+      "population_owner": "CEW-06",
+      "provenance_required_for_assertion": true,
+      "meaning": "GM-useful source-backed ecological and encounter-search roles without redefining creature type."
+    },
+    {
+      "axis_id": "domestication_training",
+      "label": "Domestication / training",
+      "cardinality": "zero_or_many",
+      "default_state": "unknown",
+      "population_owner": "CEW-09",
+      "provenance_required_for_assertion": true,
+      "meaning": "Domestication, trainability, autonomy and consent-relevant classification; capability never establishes ownership or an existing bond."
+    },
+    {
+      "axis_id": "relationship_pathways",
+      "label": "Relationship / pathway eligibility",
+      "cardinality": "zero_or_many",
+      "default_state": "unknown",
+      "population_owner": "CEW-11",
+      "provenance_required_for_assertion": true,
+      "meaning": "Mount, pack/work/service, pet/companion, familiar or supernatural-bond pathway eligibility using existing CCP authority; eligibility does not create relationship state."
+    },
+    {
+      "axis_id": "npc_presentation",
+      "label": "NPC-capable presentation",
+      "cardinality": "zero_or_many",
+      "default_state": "unknown",
+      "population_owner": "PPIA-02 / CEW-09/10",
+      "provenance_required_for_assertion": true,
+      "meaning": "Eligibility for Creature, NPC Persona or Sentient Creature/NPC Hybrid presentation; presentation is not identity, biology or personhood."
+    },
+    {
+      "axis_id": "encounter_runtime_role",
+      "label": "Encounter / runtime role",
+      "cardinality": "zero_or_many",
+      "default_state": "unknown",
+      "population_owner": "PPIA-02 / CEW-06",
+      "provenance_required_for_assertion": true,
+      "meaning": "Source-backed or placement-scoped encounter role. Campaign placement and live runtime state remain separate identities from the reusable Definition."
+    }
+  ],
+  "cross_axis_rules": {
+    "classification_does_not_change_identity": true,
+    "game_type_does_not_define_biological_identity": true,
+    "biological_identity_does_not_define_game_type": true,
+    "sapience_does_not_change_species_or_ecological_identity": true,
+    "npc_projection_does_not_define_personhood": true,
+    "relationship_eligibility_does_not_create_bond_or_ownership": true,
+    "habitat_suitability_does_not_create_distribution": true,
+    "template_does_not_replace_base_type_without_explicit_source_rule": true,
+    "source_conflicts_remain_visible": true,
+    "no_last_write_wins_conflict_resolution": true,
+    "definition_placement_live_instance_remain_distinct": true,
+    "permission_projection_does_not_change_classification_truth": true,
+    "animal_does_not_imply_beast_or_nonsapient": true,
+    "mount_pet_familiar_are_not_base_types": true
+  },
+  "future_population_rules": {
+    "cew03_bulk_classification_authorized": false,
+    "source_recovery_precedes_invention": true,
+    "habitat_predicate_vocabulary": "ENV-HS-1.0 / CEW-04",
+    "habitat_predicates": ["requires", "prefers", "tolerates", "excludes", "depends_on", "unknown"],
+    "distribution_population_owner": "CEW-05",
+    "ecological_role_population_owner": "CEW-06",
+    "personhood_and_partnership_population_owner": "CEW-09",
+    "havalaea_population_owner": "CEW-10",
+    "relationship_crosswalk_owner": "CEW-11",
+    "unknown_facts_must_not_be_backfilled_from_general_knowledge": true
+  },
+  "preserved_unresolved_queue": [
+    {"conflict_id": "CEW02-CONFLICT-005", "subject": "Vampire / Fell / Undead", "state": "unresolved_conflict", "auto_resolve": false, "reason": "Retained sources separately support Fell examples, vampirism transformation semantics and Undead type semantics without one universal collapse."},
+    {"conflict_id": "CEW02-CONFLICT-006", "subject": "Chaos Demons / Chaos / Demonic", "state": "unresolved_conflict", "auto_resolve": false, "reason": "Chaos Demons are a Demonic subtype while Chaos is independently source-backed as a base type family."},
+    {"conflict_id": "CEW02-CONFLICT-007", "subject": "Hardlight / Digital / Construct / Magitech", "state": "unresolved_conflict", "auto_resolve": false, "reason": "Hardlight is used inside Digital while cross-tag interactions with Construct and Magitech remain source-visible."},
+    {"conflict_id": "CEW02-CONFLICT-008", "subject": "Divinetech / Divine / Construct", "state": "unresolved_conflict", "auto_resolve": false, "reason": "Divinetech is a Divine subtype described with machine/construct language; no source rule authorizes forced Construct replacement or exclusivity."},
+    {"conflict_id": "CEW02-CONFLICT-009", "subject": "Beast / Animal / Beastfolk", "state": "unresolved_conflict", "auto_resolve": false, "reason": "Beast stat-block usage, biological Animal identity and playable conversion labels remain separate axes."},
+    {"conflict_id": "CEW02-CONFLICT-010", "subject": "Illusion orphan type usage", "state": "unresolved_conflict", "auto_resolve": false, "reason": "Incorporeal source stat blocks use Illusion as a Type value without a recovered retained Illusion family contract."},
+    {"conflict_id": "CEW02-CONFLICT-011", "subject": "Dragon category / type / stage normalization", "state": "unresolved_conflict", "auto_resolve": false, "reason": "Dragon category terminology, stat-block type fields and age-stage coverage remain uneven across the source family."}
+  ],
+  "reference_cases": [
+    {
+      "case_id": "fire_type_animal",
+      "source_basis": "Creature types.PDF",
+      "classification": {
+        "biological_ecological_identity": ["Animal"],
+        "game_creature_type": [],
+        "nested_subtype_category": [],
+        "body_plan_manifestation": [],
+        "origin_affinity": ["Fire"],
+        "template_modifier_transformation": ["Fire-Type Animal modifier"]
+      },
+      "effects": {"base_type_replacement": false},
+      "authority_note": "Illustrates axis placement only; it does not create a new canonical Creature Definition."
+    },
+    {
+      "case_id": "undead_type_animal",
+      "source_basis": "Creature types.PDF",
+      "classification": {
+        "biological_ecological_identity": ["Animal-origin ecological identity retained as source lineage/context where supported"],
+        "game_creature_type": ["Undead"],
+        "template_modifier_transformation": ["Undead-Type Animal modifier"]
+      },
+      "effects": {"explicit_source_type_replacement": true},
+      "authority_note": "Only the explicit source Type Change authorizes game-type replacement; no universal biological/personhood inference follows."
+    },
+    {
+      "case_id": "creeping_plant",
+      "source_basis": "Plant Creatures.PDF",
+      "classification": {
+        "biological_ecological_identity": ["Plant"],
+        "game_creature_type": [],
+        "body_plan_manifestation": ["Creeping movement category"]
+      },
+      "effects": {"global_base_type_created": false}
+    },
+    {
+      "case_id": "incorporeal_mirage",
+      "source_basis": "Incorporeal Creatures.PDF",
+      "classification": {
+        "game_creature_type": ["Illusion (source stat-block usage; unresolved family contract)"],
+        "body_plan_manifestation": ["Incorporeal", "Mirage"]
+      },
+      "effects": {"incorporeal_base_type_created": false, "illusion_family_auto_promoted": false}
+    },
+    {
+      "case_id": "divinetech_overlap",
+      "source_basis": "Divine Creatures.PDF / CEW-TAX-1.0",
+      "classification": {
+        "game_creature_type": ["Divine"],
+        "nested_subtype_category": ["Divinetech"]
+      },
+      "effects": {"construct_overlap_state": "unresolved_conflict", "construct_type_inferred": false}
+    },
+    {
+      "case_id": "vampire_conflict",
+      "source_basis": "The Fell.PDF + Vampirism&Lycanthropy.PDF + Undead Creatures.PDF",
+      "classification": {
+        "game_creature_type": ["unresolved between source-supported contexts"],
+        "template_modifier_transformation": ["Vampirism transformation"]
+      },
+      "effects": {"fell_undead_universal_collapse": false, "state": "unresolved_conflict"}
+    },
+    {
+      "case_id": "havalaea_sapient_animal",
+      "source_basis": "CEW program invariants + Player Creatures.PDF conversion labels",
+      "classification": {
+        "biological_ecological_identity": ["Animal"],
+        "intelligence_cognition": ["source/owner-supported human-level cognition when established"],
+        "personhood_sapience": ["independent source/owner-supported axis; unknown unless established"],
+        "npc_presentation": ["eligible_when source/owner-supported"],
+        "relationship_pathways": ["not inferred"]
+      },
+      "effects": {"humanoid_conversion": false, "ownership_inferred": false, "consent_bypassed": false}
+    }
+  ],
+  "boundaries": [
+    "CEW-03 defines classification structure and non-inference semantics; it does not bulk-populate the corpus.",
+    "Reusable Definition identity remains CEW-ID/PPIA-governed and distinct from classification, Campaign placement and live instance.",
+    "CEW-04 owns habitat/ecology population, CEW-05 distribution, CEW-06 ecological/encounter roles, CEW-09 cognition/personhood/domestication, CEW-10 Havalaea and CEW-11 relationship-pathway crosswalks.",
+    "No Multiversal-app schema, UI, runtime, migration, encounter, mount, pet or familiar implementation mutation is authorized."
+  ]
+}
