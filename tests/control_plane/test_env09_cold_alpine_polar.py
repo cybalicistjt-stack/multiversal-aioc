@@ -121,16 +121,15 @@ class Env09ColdAlpinePolarTests(unittest.TestCase):
         self.assertIn("not recovered source text", content)
         self.assertIn("CEW owns those mappings", content)
 
-    def test_backlog_closes_env09_and_selects_env10(self):
+    def test_env09_remains_completed_after_later_progression(self):
         backlog = self.load_json(BACKLOG)
         order = backlog["strict_order"]
         statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
         completed = [item["id"] for item in backlog["tranches"] if item["status"] == "completed_verified"]
-        self.assertEqual(completed, order[:9])
-        self.assertEqual(backlog["completed_through"], "ENV-09")
-        self.assertEqual(backlog["current_item"], "ENV-10")
+        self.assertGreaterEqual(len(completed), 9)
+        self.assertEqual(completed[:9], order[:9])
         self.assertEqual(statuses["ENV-09"], "completed_verified")
-        self.assertEqual(statuses["ENV-10"], "selected_not_started")
+        self.assertGreaterEqual(order.index(backlog["completed_through"]), order.index("ENV-09"))
         decisions = backlog["env09_decisions"]
         self.assertEqual(decisions["current_preset_count"], 66)
         self.assertEqual(decisions["new_archetypes_added"], 1)
