@@ -83,12 +83,12 @@ class Cew12EarthlikeWildlifeBaselineTests(unittest.TestCase):
         docs = {row["source_document"]: row for row in evidence["source_documents"]}
         self.assertEqual(docs["animals 11-16-24.PDF"]["sha256"], "6b9e8a4b1e30001f38bf2012933a7ec5704a02b6177dbc38b0707d6f44545f3e")
         self.assertEqual(docs["animals 11-16-24.PDF"]["page_count"], 3)
-        self.assertEqual(evidence["animals_source_label_count"], 32)
-        self.assertEqual(len(evidence["animals_source_labels"]), 32)
+        self.assertEqual(evidence["animals_source_label_count"], 33)
+        self.assertEqual(len(evidence["animals_source_labels"]), 33)
         self.assertEqual(evidence["animals_source_safe_statblock_record_count"], 0)
         self.assertTrue(evidence["animals_source_evidence_absence_is_not_inferred"])
         self.assertFalse(evidence["animals_table_mechanics_promoted_to_canonical_statblocks"])
-        self.assertEqual(evidence["ordinary_baseline_seed_count_from_animals_pdf"], 31)
+        self.assertEqual(evidence["ordinary_baseline_seed_count_from_animals_pdf"], 32)
         self.assertEqual(evidence["source_labels_excluded_from_ordinary_baseline"], ["Spider (Giant)"])
 
     def test_retained_beast_collections_are_context_not_ordinary_identity_conversion(self):
@@ -105,8 +105,8 @@ class Cew12EarthlikeWildlifeBaselineTests(unittest.TestCase):
     def test_source_and_first_party_authoring_are_explicitly_distinguished(self):
         library = self.load(LIBRARY)
         counts = Counter(row["provenance_kind"] for row in library["profiles"])
-        self.assertEqual(counts["source_recovered_seed"], 31)
-        self.assertEqual(counts["governed_first_party_baseline"], 69)
+        self.assertEqual(counts["source_recovered_seed"], 32)
+        self.assertEqual(counts["governed_first_party_baseline"], 68)
         self.assertEqual(library["provenance_kind_counts"], dict(sorted(counts.items())))
         for row in library["profiles"]:
             if row["provenance_kind"] == "source_recovered_seed":
@@ -194,8 +194,8 @@ class Cew12EarthlikeWildlifeBaselineTests(unittest.TestCase):
         self.assertEqual(decisions["contract_id"], "CEW-EARTHLIKE-BASE-1.0")
         self.assertEqual(decisions["baseline_profile_count"], 100)
         self.assertEqual(decisions["taxonomy_group_count"], 11)
-        self.assertEqual(decisions["animals_source_label_count"], 32)
-        self.assertEqual(decisions["ordinary_source_seed_count"], 31)
+        self.assertEqual(decisions["animals_source_label_count"], 33)
+        self.assertEqual(decisions["ordinary_source_seed_count"], 32)
         self.assertEqual(decisions["canonical_creature_definition_bindings_created"], 0)
         self.assertFalse(decisions["canonical_distribution_authored"])
         self.assertFalse(decisions["application_runtime_mutation_authorized"])
