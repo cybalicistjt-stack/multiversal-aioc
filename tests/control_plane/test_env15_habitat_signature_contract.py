@@ -131,13 +131,26 @@ class Env15HabitatSignatureContractTests(unittest.TestCase):
         self.assertEqual(dist["ecological_fit"], "compatible")
         self.assertEqual(dist["canonical_distribution"], "absent_or_not_established")
 
-    def test_candidate_keeps_env15_selected_until_closeout(self):
+    def test_closeout_completes_env15_and_selects_env16(self):
         backlog = self.load_json(BACKLOG)
         statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
-        self.assertEqual(backlog["completed_through"], "ENV-14")
-        self.assertEqual(backlog["current_item"], "ENV-15")
-        self.assertEqual(statuses["ENV-15"], "selected_not_started")
-        self.assertEqual(statuses["ENV-16"], "planned")
+        completed = [item["id"] for item in backlog["tranches"] if item["status"] == "completed_verified"]
+        self.assertEqual(completed, backlog["strict_order"][:15])
+        self.assertEqual(backlog["completed_through"], "ENV-15")
+        self.assertEqual(backlog["current_item"], "ENV-16")
+        self.assertEqual(statuses["ENV-15"], "completed_verified")
+        self.assertEqual(statuses["ENV-16"], "selected_not_started")
+        decisions = backlog["env15_decisions"]
+        self.assertEqual(decisions["signature_id"], "ENV-HS-1.0")
+        self.assertEqual(decisions["habitat_dimension_count"], 18)
+        self.assertEqual(decisions["matching_result_states"], ["preferred", "compatible", "conditional", "incompatible", "indeterminate"])
+        self.assertTrue(decisions["unknown_is_first_class"])
+        self.assertTrue(decisions["ecological_suitability_separate_from_distribution"])
+        self.assertTrue(decisions["overlay_resolution_precedes_matching"])
+        self.assertFalse(decisions["numeric_ecological_score_authorized"])
+        self.assertEqual(decisions["creature_habitat_profile_owner"], "CEW")
+        self.assertEqual(decisions["creature_distribution_owner"], "CEW")
+        self.assertFalse(decisions["application_runtime_mutation_authorized"])
         self.assertFalse(backlog["application_implementation_authority"])
 
 
