@@ -4,7 +4,7 @@
 
 ENV-11 is the first concrete overlay-content tranche. It turns the ENV-04 overlay resolver into a usable ordinary-weather/natural-disaster library without changing the ENV composition architecture or application runtime.
 
-The library contains **20 reusable overlays**:
+The library contains **22 reusable overlays**:
 
 1. Heavy Rain
 2. Monsoon Regime
@@ -29,11 +29,11 @@ The library contains **20 reusable overlays**:
 21. Avalanche
 22. Landslide / Mudslide
 
-> **Correction to the count:** the named list contains 22 ordinary natural-condition identities. The machine-readable library is authoritative and must report the same count before ENV-11 may close. If the library count and this list differ, the regression gate must fail rather than silently choosing one.
+The machine-readable library is authoritative for exact IDs, families, applicability, effect keys, and relations.
 
 ## Composition rule
 
-These are conditions applied to an existing archetype/preset/local instance. They are not replacement environment identities.
+These are conditions applied to an existing archetype, preset, or local environment instance. They are not replacement environment identities.
 
 Examples:
 
@@ -54,23 +54,21 @@ ENV-11 explicitly does **not** turn plausible physical causation into automatic 
 
 Heavy Rain does not automatically create Flood. Drought does not automatically create Wildfire. Earthquake does not automatically create Landslide or Tsunami. Hurricane does not automatically create Storm Surge or Tornado. Volcanic Eruption does not automatically create a separate Volcanic Ash activation. Blizzard does not automatically create Avalanche.
 
-This distinction is intentional. A GM, authored event, scenario, future runtime system, or separately governed simulation layer may establish that another condition becomes active. ENV-11 only specifies how already-active conditions compose.
+A GM, authored event, scenario, future runtime system, or separately governed simulation layer may establish that another condition becomes active. ENV-11 only specifies how already-active conditions compose.
 
 ## Effect keys and deduplication
 
-Overlays may overlap mechanically without duplicating effects. Stable effect keys from ENV-04 handle that.
+Overlays may overlap mechanically without duplicating equivalent effects. Stable effect keys from ENV-04 handle that.
 
-Examples:
-
-- Heavy Rain and Hurricane/Cyclone can both contribute `visibility.precipitation_obscuration`; the resolver uses the declared stack mode rather than applying the same obscuration twice.
-- Flood, Flash Flood, Storm Surge and Tsunami/Seiche may all contribute inundation-related movement effects, while each retains unique water-state behavior.
-- Windstorm/Gale, Hurricane/Cyclone, Tornado and Blizzard may all contribute high-wind movement complications; explicit supersession and strongest-value rules prevent arbitrary stacking.
-- Sandstorm/Dust Storm and Volcanic Ash can both contribute airborne particulate obscuration/load. The particulate effect keys deduplicate while sand abrasion and ash accumulation remain distinct.
-- Avalanche and Landslide/Mudslide share mass-movement burial/route-blockage concepts but remain distinct overlays because their applicability and material/context differ.
+- Heavy Rain and Hurricane/Cyclone can both contribute `visibility.precipitation_obscuration`; the resolver applies the declared stack behavior rather than the same obscuration twice.
+- Flood, Flash Flood, Storm Surge and Tsunami/Seiche may all contribute inundation-related movement effects while retaining their distinct water-state behavior.
+- Windstorm/Gale, Hurricane/Cyclone, Tornado and Blizzard may all contribute high-wind complications; explicit supersession and strongest-value resolution prevent arbitrary stacking.
+- Sandstorm/Dust Storm and Volcanic Ash can both contribute airborne particulate obscuration/load while sand abrasion and ash accumulation remain distinct.
+- Avalanche and Landslide/Mudslide share mass-movement effect keys but remain distinct overlays because their material and applicability differ.
 
 ## Monsoon boundary
 
-`Monsoon Regime` represents an **active seasonal condition**, not a permanent world climate taxonomy. A place where monsoon climate is intrinsic may carry that fact in preset/local climate parameterization. ENV-11 activation is appropriate for the active seasonal regime when its changing water/route/resource consequences matter.
+`Monsoon Regime` represents an **active seasonal condition**, not a permanent world climate taxonomy. A place where monsoon climate is intrinsic may carry that fact in preset/local climate parameterization. ENV-11 activation is appropriate for the active seasonal regime when its changing water, route, and resource consequences matter.
 
 ## Preset boundaries preserved
 
