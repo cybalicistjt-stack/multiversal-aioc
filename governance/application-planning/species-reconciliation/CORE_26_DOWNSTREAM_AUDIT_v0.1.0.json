@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1.0",
+  "audit_id": "CORE26-02",
+  "status": "reconciled",
+  "legacy_completion_artifacts": [
+    {"path":"governance/application-planning/parallel-preimplementation/PPIA-05_COMPLETION_REPORT.md","disposition":"preserve_immutable","reason":"verified historical Species/Forms/Biology completion"},
+    {"path":"governance/application-planning/parallel-preimplementation/PPIA-06_COMPLETION_REPORT.md","disposition":"preserve_immutable","reason":"verified historical 25-species appearance completion"},
+    {"path":"governance/application-planning/character-appearance-production/CAPP-01_COMPLETION_REPORT.md","disposition":"preserve_immutable","reason":"historical 25-profile production-preparation completion evidence"},
+    {"path":"scripts/validate-ppia06-completion-contracts.py","disposition":"preserve_historical_gate","reason":"reproduces sealed PPIA-06 completion contract"},
+    {"path":"scripts/validate-capp03-production-standard.py","disposition":"preserve_historical_gate","reason":"reproduces sealed CAPP production artifact contract"}
+  ],
+  "current_authority_changes": [
+    {"area":"core_roster","from":"25","to":"26","status":"closed_by_CORE26-01"},
+    {"area":"Akwi","from":"separately integrated playable species","to":"core playable species in roster semantics","status":"source integration already governed by AKWI-01"},
+    {"area":"Morganthyr","from":"legacy Nekron/Nekrons in old artifacts","to":"Morganthyr current canonical identity","status":"closed_by_alias_migration"},
+    {"area":"Ratman","from":"base species only in 25-profile appearance authority","to":"umbrella species with 9 recovered lineages/subspecies candidates","status":"closed_at_roster_taxonomy_level; detailed biology remains source-bounded"}
+  ],
+  "downstream_consumers": [
+    {"consumer":"PPIA-05 Species/Form/Biology","state":"historical_complete","action":"no_rewrite; future refresh consumes CORE26-01"},
+    {"consumer":"PPIA-06 Character Appearance Creator","state":"historical_complete_25","action":"no_rewrite; next current-authority regeneration must include Akwi and Morganthyr naming"},
+    {"consumer":"CAPP 25-profile production artifacts","state":"historical_complete_25","action":"no_rewrite; successor production regeneration must consume CORE26-01"},
+    {"consumer":"Multiversal-app A2 Akwi runtime","state":"already_governed","evidence":"AKWI-01 species.akwi supplemental object and A4 integration tests"},
+    {"consumer":"Ratman runtime lineage selection","state":"not_yet_currently_governed_as_9_lineages","action":"defer detailed lineage implementation until a Species/Form refresh; roster identity is now protected"},
+    {"consumer":"SCL active roadmap","state":"unaffected","action":"do_not_reorder; SCL-06 remains the next strategic-command work item"}
+  ],
+  "completion_boundary": [
+    "Core 26 authority is durable and machine-validatable.",
+    "Historical 25-species completion evidence is preserved.",
+    "Akwi is explicitly core in current roster semantics without duplicating its governed runtime object.",
+    "Morganthyr naming and Ratman lineage authority are recorded.",
+    "No claim is made that every future 26-species renderer/runtime production artifact has already been regenerated."
+  ]
+}

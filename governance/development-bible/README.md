@@ -24,13 +24,18 @@ validate_multiversal_project_bible.py
 
 ## Normative amendments pending consolidation
 
-The following change-controlled amendment is authoritative for its stated operating scope until the next consolidated Project Bible release incorporates it:
+The following change-controlled amendments are authoritative for their stated operating scopes until the next consolidated Project Bible release incorporates them:
 
 ```text
 governance/development-bible/amendments/MV-CONT-005_OWNER_AI_INTERACTION_OPERATING_AMENDMENT.md
+governance/development-bible/amendments/MV-SPECIES-001_CORE_26_PLAYER_SPECIES_AUTHORITY_AMENDMENT.md
 ```
 
-That amendment governs owner–AI continuity, evidence gating, interruption recovery, correction-to-regression intake, privacy, operational scorecard interpretation, parallel-track preservation, and roadmap-efficient progress saving. It does not replace unrelated Project Bible sections.
+`MV-CONT-005` governs owner–AI continuity, evidence gating, interruption recovery, correction-to-regression intake, privacy, operational scorecard interpretation, parallel-track preservation, and roadmap-efficient progress saving.
+
+`MV-SPECIES-001` governs the current Core 26 playable-species roster, Morganthyr identity migration, Akwi core status, Ratman lineage recovery, and preservation of sealed historical 25-species evidence.
+
+Neither amendment replaces unrelated Project Bible sections.
 
 Do not maintain a second editable Bible in another repository. Temporary mirrors must be marked noncanonical and read-only.
 
