@@ -158,16 +158,16 @@ class Env13SupernaturalMultiversalOverlayTests(unittest.TestCase):
         self.assertEqual(boundary["creature_distribution_owned_by"], "CEW")
         self.assertEqual(boundary["world_reality_branch_identity_owned_externally"], True)
 
-    def test_backlog_closes_env13_and_selects_env14(self):
+    def test_env13_remains_completed_after_later_progression(self):
         backlog = self.load_json(BACKLOG)
         order = backlog["strict_order"]
         statuses = {item["id"]: item["status"] for item in backlog["tranches"]}
         completed = [item["id"] for item in backlog["tranches"] if item["status"] == "completed_verified"]
-        self.assertEqual(completed, order[:13])
-        self.assertEqual(backlog["completed_through"], "ENV-13")
-        self.assertEqual(backlog["current_item"], "ENV-14")
+        self.assertGreaterEqual(len(completed), 13)
+        self.assertEqual(completed[:13], order[:13])
         self.assertEqual(statuses["ENV-13"], "completed_verified")
-        self.assertEqual(statuses["ENV-14"], "selected_not_started")
+        self.assertGreaterEqual(order.index(backlog["completed_through"]), order.index("ENV-13"))
+        self.assertGreaterEqual(order.index(backlog["current_item"]), order.index("ENV-14"))
         decisions = backlog["env13_decisions"]
         self.assertEqual(decisions["supernatural_multiversal_overlays_added"], 10)
         self.assertEqual(len(decisions["overlay_ids"]), 10)
@@ -179,7 +179,6 @@ class Env13SupernaturalMultiversalOverlayTests(unittest.TestCase):
         self.assertTrue(decisions["chaos_foam_source_backed_context_seam"])
         self.assertFalse(decisions["gehenna_specific_overlay_promoted"])
         self.assertFalse(decisions["universal_participant_or_magic_formulas_authored"])
-        self.assertEqual(decisions["ability_adaptation_reconciliation_deferred_to"], "ENV-14")
         self.assertEqual(decisions["habitat_vocabulary_deferred_to"], "ENV-15")
         self.assertEqual(decisions["creature_distribution_owned_by"], "CEW")
         self.assertFalse(decisions["application_runtime_mutation_authorized"])
