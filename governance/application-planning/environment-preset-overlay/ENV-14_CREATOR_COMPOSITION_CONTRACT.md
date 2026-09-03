@@ -15,7 +15,7 @@ The creator works with the already-governed 76 presets, 19 archetypes and 47 ove
 Environment-linked ability information must remain visibly separated into four classes:
 
 1. **Canonical source link** — one of the 68 exact `ENVIRONMENT_ABILITY_LINKS_v1.0.0.csv` relationships. These links remain unchanged.
-2. **Source-supported but not canonically promoted** — the ability source contains an exact environment-specific collection/member relationship, but the environment promotion package did not create a canonical Environment->Ability link. The relationship may be shown as source evidence or a reconciliation candidate, never relabeled as canonical by ENV-14.
+2. **source-supported but not canonically promoted** — the ability source contains an exact environment-specific collection/member relationship, but the environment promotion package did not create a canonical Environment->Ability link. The relationship may be shown as source evidence or a reconciliation candidate, never relabeled as canonical by ENV-14.
 3. **Shared multi-environment source collection** — `Special Perks (Applicable to Multiple Environments) remain ability-system-owned`. Their own source wording controls applicability; ENV does not attach the collection to every preset that looks relevant.
 4. **Context seam only** — `Chaos/Foam Influence is a context seam, not an ability bundle`. Activating `OVL-SUP-CHAOS-FOAM` may satisfy an environment-context predicate for a separately owned ability, but it neither grants nor copies that ability.
 
