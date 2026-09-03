@@ -1,0 +1,231 @@
+{
+  "schema_version": "1.0.0",
+  "program": "ENV",
+  "tranche": "ENV-12",
+  "title": "Planetary & Physical-Condition Overlay Library",
+  "overlay_count": 15,
+  "authority_boundary": {
+    "application_implementation_authority": false,
+    "runtime_schema_mutation_authorized": false,
+    "automatic_event_causation_authorized": false,
+    "supernatural_multiversal_overlays_deferred_to": "ENV-13",
+    "ability_adaptation_reconciliation_deferred_to": "ENV-14",
+    "habitat_signature_vocabulary_deferred_to": "ENV-15",
+    "creature_distribution_owned_by": "CEW"
+  },
+  "source_and_design_basis": [
+    "ENV_ENVIRONMENT_PRESET_OVERLAY_PROGRAM.md ENV-12 named scope",
+    "ENV-01_ENVIRONMENT_MODEL_COMPOSITION_CONTRACT_v1.0.0.md environment property domains and participant-evaluation boundary",
+    "ENV-04_OVERLAY_MODEL_v1.0.0.json overlay definition, intensity, relation, effect-key and deterministic-resolution contract",
+    "Retained DB-004 exploration/environment framework authority that environments may define gravity, atmosphere, pressure, light and radiation while participant adaptations remain externally owned"
+  ],
+  "library_rules": [
+    "Physical overlays are reusable environmental deltas, not planet identities or base environment identities.",
+    "No universal damage, fatigue, exposure, suffocation, decompression, radiation-dose, carrying-capacity, movement-speed or equipment formulas are invented here.",
+    "Species, creatures, characters, vehicles, equipment, powers and adaptations evaluate against the resolved environment through their owning systems.",
+    "Stable effect keys deduplicate equivalent contributions under ENV-04; input order never determines the result.",
+    "A condition may be intrinsic to a local environment instance or activated as an overlay; ENV-12 does not infer planet-wide scope from a local activation.",
+    "Vacuum directly defines its own atmosphere and pressure deltas rather than automatically activating Low Oxygen or Low Pressure as separate overlays.",
+    "All ENV-12 definitions are owner-authorized content design and do not claim recovered source text."
+  ],
+  "overlays": [
+    {
+      "overlay_id": "OVL-THR-EXTREME-HEAT", "name": "Extreme Heat", "family_id": "OVF-THERMAL", "aliases": ["Severe Heat"],
+      "target_domains": ["climate_temperature", "hazards", "shelter_rest", "resources_foraging"],
+      "applicability": "Environment or local scope whose thermal state is materially hotter than its ordinary baseline.",
+      "intensity": {"allowed": true, "bands": "ENV-04"}, "duration_class": ["episodic", "persistent"], "exclusive_groups": ["thermal_extreme_regime"],
+      "deltas": [
+        {"target_domain": "climate_temperature", "effect_key": "thermal.extreme_heat", "operation": "set", "value_or_reference": "extreme-heat thermal regime relative to local baseline", "stack_mode": "strongest"},
+        {"target_domain": "hazards", "effect_key": "hazard.thermal_heat_exposure", "operation": "add", "value_or_reference": "heat-exposure hazard context for participant systems to evaluate", "stack_mode": "strongest"},
+        {"target_domain": "shelter_rest", "effect_key": "shelter.thermal_protection_demand", "operation": "add", "value_or_reference": "shade, cooling, insulation or protected refuge becomes more consequential", "stack_mode": "strongest"},
+        {"target_domain": "resources_foraging", "effect_key": "resources.thermal_stress_context", "operation": "add", "value_or_reference": "water and heat-sensitive resources may become less reliable where locally supported", "stack_mode": "merge_unique"}
+      ],
+      "relations": [{"type": "excludes", "target": "OVL-THR-EXTREME-COLD", "scope": "same materially uniform active scope"}],
+      "provenance": {"classification": "owner_authored", "source_text_claimed": false}
+    },
+    {
+      "overlay_id": "OVL-THR-EXTREME-COLD", "name": "Extreme Cold", "family_id": "OVF-THERMAL", "aliases": ["Severe Cold"],
+      "target_domains": ["climate_temperature", "hazards", "shelter_rest", "water_hydrology"],
+      "applicability": "Environment or local scope whose thermal state is materially colder than its ordinary baseline.",
+      "intensity": {"allowed": true, "bands": "ENV-04"}, "duration_class": ["episodic", "persistent"], "exclusive_groups": ["thermal_extreme_regime"],
+      "deltas": [
+        {"target_domain": "climate_temperature", "effect_key": "thermal.extreme_cold", "operation": "set", "value_or_reference": "extreme-cold thermal regime relative to local baseline", "stack_mode": "strongest"},
+        {"target_domain": "hazards", "effect_key": "hazard.thermal_cold_exposure", "operation": "add", "value_or_reference": "cold-exposure hazard context for participant systems to evaluate", "stack_mode": "strongest"},
+        {"target_domain": "shelter_rest", "effect_key": "shelter.thermal_protection_demand", "operation": "add", "value_or_reference": "insulation, heating or protected refuge becomes more consequential", "stack_mode": "strongest"},
+        {"target_domain": "water_hydrology", "effect_key": "hydrology.freezing_context", "operation": "add", "value_or_reference": "freezing of exposed water may occur where local material conditions permit", "stack_mode": "merge_unique"}
+      ],
+      "relations": [{"type": "excludes", "target": "OVL-THR-EXTREME-HEAT", "scope": "same materially uniform active scope"}],
+      "provenance": {"classification": "owner_authored", "source_text_claimed": false}
+    },
+    {
+      "overlay_id": "OVL-ATM-TOXIC", "name": "Toxic Atmosphere", "family_id": "OVF-ATMOSPHERE", "aliases": ["Poisonous Atmosphere"],
+      "target_domains": ["atmosphere_air_quality", "hazards", "shelter_rest"],
+      "applicability": "A gaseous or aerosol atmosphere is present and contains biologically hazardous constituents at locally significant levels.",
+      "intensity": {"allowed": true, "bands": "ENV-04"}, "duration_class": ["episodic", "persistent"],
+      "deltas": [
+        {"target_domain": "atmosphere_air_quality", "effect_key": "atmosphere.toxic_constituents", "operation": "add", "value_or_reference": "toxic atmospheric constituents present", "stack_mode": "merge_unique"},
+        {"target_domain": "hazards", "effect_key": "hazard.toxic_atmosphere_exposure", "operation": "add", "value_or_reference": "toxic-atmosphere exposure context for participant systems to evaluate", "stack_mode": "strongest"},
+        {"target_domain": "shelter_rest", "effect_key": "shelter.atmosphere_isolation_demand", "operation": "add", "value_or_reference": "sealed, filtered or otherwise protected shelter becomes more consequential", "stack_mode": "strongest"}
+      ],
+      "relations": [{"type": "excludes", "target": "OVL-ATM-VACUUM", "scope": "same materially uniform active scope"}],
+      "provenance": {"classification": "owner_authored", "source_text_claimed": false}
+    },
+    {
+      "overlay_id": "OVL-ATM-CORROSIVE", "name": "Corrosive Atmosphere", "family_id": "OVF-ATMOSPHERE", "aliases": ["Caustic Atmosphere"],
+      "target_domains": ["atmosphere_air_quality", "hazards", "shelter_rest"],
+      "applicability": "A gaseous or aerosol atmosphere is present with constituents capable of chemically attacking exposed materials or organisms.",
+      "intensity": {"allowed": true, "bands": "ENV-04"}, "duration_class": ["episodic", "persistent"],
+      "deltas": [
+        {"target_domain": "atmosphere_air_quality", "effect_key": "atmosphere.corrosive_constituents", "operation": "add", "value_or_reference": "corrosive atmospheric constituents present", "stack_mode": "merge_unique"},
+        {"target_domain": "hazards", "effect_key": "hazard.corrosive_atmosphere_exposure", "operation": "add", "value_or_reference": "corrosive-exposure context for participant and equipment systems to evaluate", "stack_mode": "strongest"},
+        {"target_domain": "shelter_rest", "effect_key": "shelter.atmosphere_isolation_demand", "operation": "add", "value_or_reference": "sealed or resistant shelter becomes more consequential", "stack_mode": "strongest"}
+      ],
+      "relations": [{"type": "excludes", "target": "OVL-ATM-VACUUM", "scope": "same materially uniform active scope"}],
+      "provenance": {"classification": "owner_authored", "source_text_claimed": false}
+    },
+    {
+      "overlay_id": "OVL-ATM-LOW-OXYGEN", "name": "Low Oxygen", "family_id": "OVF-ATMOSPHERE", "aliases": ["Oxygen-Poor Atmosphere", "Hypoxic Atmosphere"],
+      "target_domains": ["atmosphere_air_quality", "hazards"],
+      "applicability": "An atmosphere or breathable medium is present but has materially reduced oxygen availability relative to an ordinary breathable baseline.",
+      "intensity": {"allowed": true, "bands": "ENV-04"}, "duration_class": ["episodic", "persistent"],
+      "deltas": [
+        {"target_domain": "atmosphere_air_quality", "effect_key": "atmosphere.oxygen_availability", "operation": "constrain", "value_or_reference": "reduced oxygen availability", "stack_mode": "strongest"},
+        {"target_domain": "hazards", "effect_key": "hazard.low_oxygen_exposure", "operation": "add", "value_or_reference": "low-oxygen exposure context for participant systems to evaluate", "stack_mode": "strongest"}
+      ],
+      "relations": [{"type": "supersedes", "target": "OVL-ATM-VACUUM", "scope": "never; reverse relation owned by Vacuum"}],
+      "provenance": {"classification": "owner_authored", "source_text_claimed": false}
+    },
+    {
+      "overlay_id": "OVL-PRS-HIGH", "name": "High Pressure", "family_id": "OVF-PRESSURE", "aliases": ["High Atmospheric Pressure", "High Hydrostatic Pressure"],
+      "target_domains": ["pressure", "hazards", "movement_navigation"],
+      "applicability": "Environment or medium has pressure materially above its ordinary local baseline; pressure kind remains locally qualified.",
+      "intensity": {"allowed": true, "bands": "ENV-04"}, "duration_class": ["persistent", "episodic"], "exclusive_groups": ["pressure_regime"],
+      "deltas": [
+        {"target_domain": "pressure", "effect_key": "pressure.high_regime", "operation": "set", "value_or_reference": "high-pressure regime relative to local baseline", "stack_mode": "strongest"},
+        {"target_domain": "hazards", "effect_key": "hazard.pressure_exposure", "operation": "add", "value_or_reference": "high-pressure exposure context for participant/equipment systems to evaluate", "stack_mode": "strongest"},
+        {"target_domain": "movement_navigation", "effect_key": "movement.pressure_medium_context", "operation": "add", "value_or_reference": "medium-density or pressure-related movement implications remain locally defined", "stack_mode": "merge_unique"}
+      ],
+      "relations": [{"type": "excludes", "target": "OVL-PRS-LOW", "scope": "same materially uniform active scope"}, {"type": "excludes", "target": "OVL-ATM-VACUUM", "scope": "same materially uniform active scope"}],
+      "provenance": {"classification": "owner_authored", "source_text_claimed": false}
+    },
+    {
+      "overlay_id": "OVL-PRS-LOW", "name": "Low Pressure", "family_id": "OVF-PRESSURE", "aliases": ["Thin-Pressure Environment"],
+      "target_domains": ["pressure", "hazards", "atmosphere_air_quality"],
+      "applicability": "Environment or medium has pressure materially below its ordinary local baseline while still not constituting vacuum.",
+      "intensity": {"allowed": true, "bands": "ENV-04"}, "duration_class": ["persistent", "episodic"], "exclusive_groups": ["pressure_regime"],
+      "deltas": [
+        {"target_domain": "pressure", "effect_key": "pressure.low_regime", "operation": "set", "value_or_reference": "low-pressure regime relative to local baseline", "stack_mode": "strongest"},
+        {"target_domain": "hazards", "effect_key": "hazard.pressure_exposure", "operation": "add", "value_or_reference": "low-pressure exposure context for participant/equipment systems to evaluate", "stack_mode": "strongest"},
+        {"target_domain": "atmosphere_air_quality", "effect_key": "atmosphere.pressure_context", "operation": "constrain", "value_or_reference": "available atmosphere is pressure-limited; composition remains separate", "stack_mode": "strongest"}
+      ],
+      "relations": [{"type": "excludes", "target": "OVL-PRS-HIGH", "scope": "same materially uniform active scope"}],
+      "provenance": {"classification": "owner_authored", "source_text_claimed": false}
+    },
+    {
+      "overlay_id": "OVL-CON-RADIATION", "name": "Radiation", "family_id": "OVF-CONTAMINATION", "aliases": ["Ionizing Radiation", "Radiation Field"],
+      "target_domains": ["radiation", "hazards", "shelter_rest"],
+      "applicability": "Environment or local scope contains materially elevated radiation exposure relative to its ordinary baseline.",
+      "intensity": {"allowed": true, "bands": "ENV-04", "numeric_dose_requires_source_or_local_authority": true}, "duration_class": ["episodic", "persistent"],
+      "deltas": [
+        {"target_domain": "radiation", "effect_key": "radiation.environmental_field", "operation": "set", "value_or_reference": "elevated environmental radiation field", "stack_mode": "strongest"},
+        {"target_domain": "hazards", "effect_key": "hazard.radiation_exposure", "operation": "add", "value_or_reference": "radiation-exposure context for participant/equipment systems to evaluate", "stack_mode": "strongest"},
+        {"target_domain": "shelter_rest", "effect_key": "shelter.radiation_shielding_demand", "operation": "add", "value_or_reference": "shielded refuge may become more consequential", "stack_mode": "strongest"}
+      ],
+      "provenance": {"classification": "owner_authored", "source_text_claimed": false}
+    },
+    {
+      "overlay_id": "OVL-LGT-DARKNESS", "name": "Extreme Darkness", "family_id": "OVF-LIGHT", "aliases": ["Near-Total Darkness"],
+      "target_domains": ["light_visibility", "movement_navigation", "encounter_discovery_context"],
+      "applicability": "Ambient illumination is materially below the local environment's ordinary baseline.",
+      "intensity": {"allowed": true, "bands": "ENV-04"}, "duration_class": ["episodic", "persistent"], "exclusive_groups": ["extreme_light_regime"],
+      "deltas": [
+        {"target_domain": "light_visibility", "effect_key": "light.extreme_darkness", "operation": "constrain", "value_or_reference": "ambient illumination severely reduced", "stack_mode": "strongest"},
+        {"target_domain": "movement_navigation", "effect_key": "navigation.light_reference_loss", "operation": "add", "value_or_reference": "navigation relying on ordinary visible reference points is complicated", "stack_mode": "nonstacking"},
+        {"target_domain": "encounter_discovery_context", "effect_key": "encounter.light_detection_context", "operation": "add", "value_or_reference": "ordinary visual detection context is altered", "stack_mode": "nonstacking"}
+      ],
+      "relations": [{"type": "excludes", "target": "OVL-LGT-GLARE", "scope": "same materially uniform active scope"}],
+      "provenance": {"classification": "owner_authored", "source_text_claimed": false}
+    },
+    {
+      "overlay_id": "OVL-LGT-GLARE", "name": "Extreme Illumination / Glare", "family_id": "OVF-LIGHT", "aliases": ["Blinding Glare", "Extreme Brightness"],
+      "target_domains": ["light_visibility", "movement_navigation", "encounter_discovery_context"],
+      "applicability": "Ambient or directional illumination is materially above ordinary local levels and causes glare or washout.",
+      "intensity": {"allowed": true, "bands": "ENV-04"}, "duration_class": ["episodic", "persistent"], "exclusive_groups": ["extreme_light_regime"],
+      "deltas": [
+        {"target_domain": "light_visibility", "effect_key": "light.extreme_glare", "operation": "constrain", "value_or_reference": "excessive illumination produces glare, washout or contrast loss", "stack_mode": "strongest"},
+        {"target_domain": "movement_navigation", "effect_key": "navigation.light_reference_loss", "operation": "add", "value_or_reference": "ordinary visual route references may become unreliable under glare", "stack_mode": "nonstacking"},
+        {"target_domain": "encounter_discovery_context", "effect_key": "encounter.light_detection_context", "operation": "add", "value_or_reference": "ordinary visual detection context is altered", "stack_mode": "nonstacking"}
+      ],
+      "relations": [{"type": "excludes", "target": "OVL-LGT-DARKNESS", "scope": "same materially uniform active scope"}],
+      "provenance": {"classification": "owner_authored", "source_text_claimed": false}
+    },
+    {
+      "overlay_id": "OVL-GRV-LOW", "name": "Low Gravity", "family_id": "OVF-GRAVITY", "aliases": ["Reduced Gravity"],
+      "target_domains": ["gravity", "movement_navigation", "hazards"],
+      "applicability": "Effective gravity magnitude is materially below the ordinary local baseline but remains nonzero and directionally stable.",
+      "intensity": {"allowed": true, "bands": "ENV-04", "numeric_acceleration_requires_source_or_local_authority": true}, "duration_class": ["persistent", "episodic"], "exclusive_groups": ["gravity_regime"],
+      "deltas": [
+        {"target_domain": "gravity", "effect_key": "gravity.regime", "operation": "set", "value_or_reference": "low-gravity regime", "stack_mode": "replace"},
+        {"target_domain": "movement_navigation", "effect_key": "movement.gravity_context", "operation": "add", "value_or_reference": "movement, jumping, traction and inertia are evaluated against reduced gravity by owning systems", "stack_mode": "replace"},
+        {"target_domain": "hazards", "effect_key": "hazard.gravity_transition_context", "operation": "add", "value_or_reference": "gravity-transition and control hazards may exist where local geometry/state supports them", "stack_mode": "merge_unique"}
+      ],
+      "provenance": {"classification": "owner_authored", "source_text_claimed": false}
+    },
+    {
+      "overlay_id": "OVL-GRV-HIGH", "name": "High Gravity", "family_id": "OVF-GRAVITY", "aliases": ["Increased Gravity"],
+      "target_domains": ["gravity", "movement_navigation", "hazards"],
+      "applicability": "Effective gravity magnitude is materially above the ordinary local baseline and directionally stable.",
+      "intensity": {"allowed": true, "bands": "ENV-04", "numeric_acceleration_requires_source_or_local_authority": true}, "duration_class": ["persistent", "episodic"], "exclusive_groups": ["gravity_regime"],
+      "deltas": [
+        {"target_domain": "gravity", "effect_key": "gravity.regime", "operation": "set", "value_or_reference": "high-gravity regime", "stack_mode": "replace"},
+        {"target_domain": "movement_navigation", "effect_key": "movement.gravity_context", "operation": "add", "value_or_reference": "movement, load, traction and effort are evaluated against increased gravity by owning systems", "stack_mode": "replace"},
+        {"target_domain": "hazards", "effect_key": "hazard.gravity_transition_context", "operation": "add", "value_or_reference": "gravity-transition and control hazards may exist where local geometry/state supports them", "stack_mode": "merge_unique"}
+      ],
+      "provenance": {"classification": "owner_authored", "source_text_claimed": false}
+    },
+    {
+      "overlay_id": "OVL-GRV-ZERO", "name": "Zero Gravity", "family_id": "OVF-GRAVITY", "aliases": ["Microgravity / Weightless Condition"],
+      "target_domains": ["gravity", "movement_navigation", "hazards"],
+      "applicability": "Effective local gravity is negligible for ordinary movement and support behavior.",
+      "intensity": {"allowed": false}, "duration_class": ["persistent", "episodic"], "exclusive_groups": ["gravity_regime"],
+      "deltas": [
+        {"target_domain": "gravity", "effect_key": "gravity.regime", "operation": "set", "value_or_reference": "zero-gravity / negligible-effective-gravity regime", "stack_mode": "replace"},
+        {"target_domain": "movement_navigation", "effect_key": "movement.gravity_context", "operation": "replace_reference", "value_or_reference": "ordinary weight-supported movement assumptions do not apply; owning movement/vehicle systems evaluate accordingly", "stack_mode": "replace"},
+        {"target_domain": "hazards", "effect_key": "hazard.unanchored_motion_context", "operation": "add", "value_or_reference": "unanchored motion and uncontrolled drift become relevant where local geometry permits", "stack_mode": "merge_unique"}
+      ],
+      "provenance": {"classification": "owner_authored", "source_text_claimed": false}
+    },
+    {
+      "overlay_id": "OVL-GRV-VARIABLE", "name": "Variable / Directional Gravity", "family_id": "OVF-GRAVITY", "aliases": ["Gravity Shift", "Directional Gravity"],
+      "target_domains": ["gravity", "movement_navigation", "hazards"],
+      "applicability": "Gravity magnitude or direction changes across time, zones or vectors in a manner established by source/local authority.",
+      "intensity": {"allowed": true, "bands": "ENV-04", "event_frequency_requires_source_or_local_authority": true}, "duration_class": ["episodic", "persistent"], "exclusive_groups": ["gravity_regime"],
+      "deltas": [
+        {"target_domain": "gravity", "effect_key": "gravity.regime", "operation": "set", "value_or_reference": "variable or directional gravity regime; exact pattern remains source/local data", "stack_mode": "replace"},
+        {"target_domain": "movement_navigation", "effect_key": "movement.gravity_context", "operation": "replace_reference", "value_or_reference": "movement evaluates against the active gravity vector/magnitude supplied by local authority", "stack_mode": "replace"},
+        {"target_domain": "hazards", "effect_key": "hazard.gravity_transition_context", "operation": "add", "value_or_reference": "abrupt or spatial gravity changes may create transition hazards where locally authored", "stack_mode": "merge_unique"}
+      ],
+      "provenance": {"classification": "owner_authored", "source_text_claimed": false}
+    },
+    {
+      "overlay_id": "OVL-ATM-VACUUM", "name": "Vacuum", "family_id": "OVF-ATMOSPHERE", "aliases": ["Hard Vacuum", "Near Vacuum"],
+      "target_domains": ["atmosphere_air_quality", "pressure", "hazards", "shelter_rest"],
+      "applicability": "Scope has no meaningful breathable atmosphere and pressure is vacuum-class relative to ordinary atmospheric environments.",
+      "intensity": {"allowed": true, "bands": "ENV-04", "numeric_pressure_requires_source_or_local_authority": true}, "duration_class": ["persistent", "episodic"], "exclusive_groups": ["pressure_regime"],
+      "deltas": [
+        {"target_domain": "atmosphere_air_quality", "effect_key": "atmosphere.medium_presence", "operation": "set", "value_or_reference": "no meaningful breathable atmosphere", "stack_mode": "replace"},
+        {"target_domain": "pressure", "effect_key": "pressure.low_regime", "operation": "set", "value_or_reference": "vacuum-class pressure regime", "stack_mode": "replace"},
+        {"target_domain": "hazards", "effect_key": "hazard.vacuum_exposure", "operation": "add", "value_or_reference": "vacuum-exposure context for participant/equipment systems to evaluate", "stack_mode": "strongest"},
+        {"target_domain": "shelter_rest", "effect_key": "shelter.atmosphere_isolation_demand", "operation": "add", "value_or_reference": "pressure-retaining, atmosphere-providing shelter becomes consequential", "stack_mode": "strongest"}
+      ],
+      "relations": [
+        {"type": "supersedes", "target": "OVL-PRS-LOW", "scope": "same materially uniform active scope"},
+        {"type": "supersedes", "target": "OVL-ATM-LOW-OXYGEN", "scope": "same materially uniform active scope"},
+        {"type": "excludes", "target": "OVL-PRS-HIGH", "scope": "same materially uniform active scope"},
+        {"type": "excludes", "target": "OVL-ATM-TOXIC", "scope": "same materially uniform active scope"},
+        {"type": "excludes", "target": "OVL-ATM-CORROSIVE", "scope": "same materially uniform active scope"}
+      ],
+      "provenance": {"classification": "owner_authored", "source_text_claimed": false}
+    }
+  ]
+}
