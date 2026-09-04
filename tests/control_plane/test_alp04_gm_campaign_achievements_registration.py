@@ -14,60 +14,92 @@ def load_text(path):
 
 
 class Alp04GmCampaignAchievementsRegistrationTests(unittest.TestCase):
-    def test_alp04_governed_lifecycle_is_consistent(self):
+    def test_alp04_closeout_and_alp05_selection_are_consistent(self):
         baseline = "025f653f65be5ea8ccae1d04f9591e146c3d8797"
-        branch = "integration/alp-04-gm-campaign-achievements-titles-reputation-reward-links"
+        merge = "788a8025caf8046edfeddcbf238cce972a4c5378"
         checkpoint = load_json("governance/ai/work-state/ALP-04-attempt-001.json")
+        successor = load_json("governance/ai/work-state/ALP-05-attempt-001.json")
         backlog = load_json("governance/application-planning/achievements-learning-practice/ALP_PROGRAM_BACKLOG.json")
         pointer = load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
         registry = load_json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
         index = load_json("governance/ai/runtime/ROADMAP_INDEX.json")
         runtime = load_json("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")
         program = load_text("governance/application-planning/achievements-learning-practice/ALP_ACHIEVEMENTS_LEARNING_PRACTICE_PROGRAM.md")
+        supplement = load_text("governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ALP04_CLOSEOUT_2026-09-04.md")
 
-        self.assertIn(checkpoint["status"], {"in_progress", "completed_verified"})
+        self.assertEqual(checkpoint["status"], "completed_verified")
         self.assertEqual(checkpoint["application_baseline_sha"], baseline)
-        self.assertEqual(checkpoint["predecessor"]["work_item_id"], "ALP-03")
-        self.assertEqual(checkpoint["predecessor"]["status"], "completed_verified")
-        self.assertEqual(checkpoint["predecessor"]["merge_sha"], baseline)
+        self.assertEqual(checkpoint["application_pr"], 410)
+        self.assertEqual(checkpoint["application_merge_sha"], merge)
+        self.assertFalse(checkpoint["implementation_authority"])
+        self.assertTrue(checkpoint["authority_retired"])
+        self.assertEqual(checkpoint["validation"]["acceptance_red"]["head_sha"], "183581811afa54725c0586225d9a23e733fa5978")
+        self.assertEqual(checkpoint["validation"]["acceptance_red"]["run_id"], 33891372974)
+        self.assertEqual(checkpoint["validation"]["acceptance_red"]["deterministic_receipt_sha256"], "c9496258fdde1436b23b3e75d4dbdd0668062cc6daa8aebd2a2fe68a93eb68e7")
+        self.assertEqual(checkpoint["validation"]["final_green"]["head_sha"], "763e9ef8fb925e9188cdc8975600b6c7047fae01")
+        self.assertEqual(checkpoint["validation"]["final_green"]["run_id"], 33892290907)
+        self.assertEqual(checkpoint["validation"]["final_green"]["deterministic_receipt_sha256"], "7c653ffae5b39d734aceacb933622441f6a99290adfc986b2d430c7d889c60b6")
+        self.assertEqual(checkpoint["convergence_control"]["application_feature_repair_cycles"], 0)
+        self.assertEqual(checkpoint["validation"]["final_green"]["historical_profile_fanout"], 0)
 
-        if checkpoint["status"] == "in_progress":
-            self.assertTrue(checkpoint["implementation_authority"])
-            self.assertEqual(checkpoint["implementation_branch"], branch)
-            gate = checkpoint["acceptance_gate"]
-            self.assertTrue(gate["acceptance_package_authorized"])
-            self.assertEqual(gate["production_mutation_authorized"], gate["red_observed"])
-            self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-04")
-            self.assertEqual(pointer["active_attempt"]["implementation_branch"], branch)
-            self.assertTrue(pointer["active_attempt"]["implementation_authority"])
-            self.assertEqual(index["current"]["work_item_id"], "ALP-04")
-            self.assertEqual(index["current"]["status"], "in_progress")
-            self.assertEqual(registry["active_planning_work"]["work_item"], "ALP-04")
-            self.assertEqual(registry["active_planning_work"]["state"], "in_progress")
-            self.assertEqual(runtime["active_work"]["work_item"], "ALP-04")
-            self.assertEqual(runtime["active_work"]["state"], "in_progress")
-        else:
-            self.assertFalse(checkpoint["implementation_authority"])
-            self.assertTrue(checkpoint["authority_retired"])
+        self.assertEqual(successor["status"], "selected_not_started")
+        self.assertEqual(successor["application_baseline_sha"], merge)
+        self.assertIsNone(successor["implementation_branch"])
+        self.assertFalse(successor["implementation_authority"])
+        self.assertFalse(successor["branch_creation_authorized"])
+        self.assertFalse(successor["acceptance_package_authorized"])
+        self.assertFalse(successor["production_mutation_authorized"])
 
         alp04 = next(item for item in backlog["tranches"] if item["id"] == "ALP-04")
-        self.assertEqual(alp04["status"], checkpoint["status"])
-        self.assertEqual(alp04["implementation_authority"], checkpoint["implementation_authority"])
-        self.assertEqual(backlog["completed_through"], "ALP-03" if checkpoint["status"] == "in_progress" else "ALP-04")
+        alp05 = next(item for item in backlog["tranches"] if item["id"] == "ALP-05")
+        self.assertEqual(alp04["status"], "completed_verified")
+        self.assertFalse(alp04["implementation_authority"])
+        self.assertEqual(alp04["application_merge_sha"], merge)
+        self.assertEqual(alp05["status"], "selected_not_started")
+        self.assertIsNone(alp05["implementation_branch"])
+        self.assertFalse(alp05["implementation_authority"])
+        self.assertEqual(backlog["completed_through"], "ALP-04")
+        self.assertEqual(backlog["current_item"], "ALP-05")
+
+        self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-05")
+        self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
+        self.assertIsNone(pointer["active_attempt"]["implementation_branch"])
+        self.assertFalse(pointer["active_attempt"]["implementation_authority"])
+        self.assertEqual(index["current"]["work_item_id"], "ALP-05")
+        self.assertEqual(index["current"]["status"], "selected_not_started")
+        self.assertEqual(registry["active_planning_work"]["work_item"], "ALP-05")
+        self.assertEqual(registry["active_planning_work"]["state"], "selected_not_started")
+        self.assertEqual(runtime["active_work"]["work_item"], "ALP-05")
+        self.assertEqual(runtime["active_work"]["state"], "selected_not_started")
 
         for phrase in (
             "ALP-04 — GM-Authored Campaign Achievements, Titles, Reputation & Reward Links",
+            "ALP-05 — Diegetic Practice Spaces, Training Scenes & Simulations",
             "GM-authored campaign achievement",
             "Reputation/Relationship/Faction",
             "mechanical reward",
             "Diegetic practice remains optional",
             "migration `0022`",
+            merge,
         ):
             self.assertIn(phrase, program)
+
+        for phrase in (
+            "COMPLETED_VERIFIED",
+            "33891372974",
+            "33892290907",
+            "c9496258fdde1436b23b3e75d4dbdd0668062cc6daa8aebd2a2fe68a93eb68e7",
+            "7c653ffae5b39d734aceacb933622441f6a99290adfc986b2d430c7d889c60b6",
+            merge,
+            "ALP-05",
+            "selected_not_started",
+        ):
+            self.assertIn(phrase, supplement)
 
     def test_alp04_scope_preserves_owner_system_boundaries(self):
         checkpoint = load_json("governance/ai/work-state/ALP-04-attempt-001.json")
         scope = checkpoint["implementation_scope"]
+        completed = checkpoint["completed_contract"]
         boundary = checkpoint["authority_boundary"]
         self.assertIn("GM-authored campaign achievement definitions over ALP-02 campaign_achievement definitions", scope["authorized"])
         self.assertIn("campaign title and recognition reference projection", scope["authorized"])
@@ -76,6 +108,11 @@ class Alp04GmCampaignAchievementsRegistrationTests(unittest.TestCase):
         self.assertIn("achievement awarding or completion mutation", scope["not_authorized"])
         self.assertIn("mechanical reward commit", scope["not_authorized"])
         self.assertIn("durable ALP persistence or migration 0022", scope["not_authorized"])
+        self.assertFalse(completed["achievement_award_performed"])
+        self.assertFalse(completed["owner_system_mutation_performed"])
+        self.assertFalse(completed["reward_commit_performed"])
+        self.assertFalse(completed["durable_alp_persistence_implemented"])
+        self.assertFalse(completed["migration_0022_reserved"])
         self.assertFalse(boundary["alp05_plus_authorized"])
         self.assertFalse(boundary["tester_distribution_authorized"])
         self.assertFalse(boundary["release_or_deployment_authorized"])
