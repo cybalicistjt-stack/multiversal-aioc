@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.5.0",
+  "schema_version": "0.5.1",
   "program_id": "CAB",
   "program_name": "Character Advancement & Balance",
   "owner": "John Brandon Turner",
@@ -9,13 +9,13 @@
   "status": "in_progress",
   "completed_through": "CAB-04",
   "current_work_item_id": "CAB-05",
-  "current_state": "selected_not_started_pending_owner_answers",
+  "current_state": "selected_not_started",
   "tranches": [
     {"id":"CAB-01","name":"Authority, Source Census & AP Retirement","status":"completed_verified","artifacts":["CAB-01_AUTHORITY_AND_AP_RETIREMENT_CONTRACT.md","CAB-01_SOURCE_CENSUS.md","CAB-01_COMPLETION_REPORT.md"]},
     {"id":"CAB-02","name":"Current XP Economy Reconstruction","status":"completed_verified","artifacts":["CAB-02_XP_ECONOMY_RECONSTRUCTION.md","CAB-02_XP_ECONOMY_LEDGER_v0.1.0.json","CAB-02_OWNER_QUESTIONNAIRE.md","CAB-02_OWNER_DECISIONS_2026-09-04.md","CAB-02_COMPLETION_REPORT.md"]},
     {"id":"CAB-03","name":"Character-Creation Baseline","status":"completed_verified","artifacts":["CAB-03_CHARACTER_CREATION_BASELINE.md","CAB-03_CREATION_BASELINE_LEDGER_v0.1.0.json","CAB-03_OWNER_QUESTIONNAIRE.md","CAB-03_OWNER_DECISIONS_2026-09-04.md","CAB-03_COMPLETION_REPORT.md"]},
-    {"id":"CAB-04","name":"Advancement Architecture","status":"completed_verified","artifacts":["CAB-04_ADVANCEMENT_ARCHITECTURE.md","CAB-04_ADVANCEMENT_STATE_MODEL_v0.1.0.json","CAB-04_OWNER_QUESTIONNAIRE.md","CAB-04_COMPLETION_REPORT.md"]},
-    {"id":"CAB-05","name":"Five-Tier Model","status":"selected_not_started_pending_owner_answers"},
+    {"id":"CAB-04","name":"Advancement Architecture","status":"completed_verified","artifacts":["CAB-04_ADVANCEMENT_ARCHITECTURE.md","CAB-04_ADVANCEMENT_STATE_MODEL_v0.1.0.json","CAB-04_OWNER_QUESTIONNAIRE.md","CAB-04_OWNER_DECISIONS_2026-09-04.md","CAB-04_COMPLETION_REPORT.md"]},
+    {"id":"CAB-05","name":"Five-Tier Model","status":"selected_not_started"},
     {"id":"CAB-06","name":"XP Cost Calibration Framework","status":"not_started"},
     {"id":"CAB-07","name":"Action Economy & Simultaneous Power","status":"not_started"},
     {"id":"CAB-08","name":"Stacking, Synergy & Power Multiplication","status":"not_started"},
@@ -36,7 +36,7 @@
     {"id":"CAB-23","name":"Completion Audit & Handoff","status":"not_started"}
   ],
   "strict_next": "CAB-05",
-  "selection_note": "CAB-04 completed the bounded advancement-architecture analysis. CAB-05 Five-Tier Model is selected_not_started but execution is held until the four CAB-04 owner policy questions are answered or explicitly deferred. No unanswered item may silently default.",
+  "selection_note": "CAB-04 is completed_verified and all four owner policy gates are resolved. CAB-05 Five-Tier Model is selected_not_started and may execute. It must inherit no universal prior-tier quantity gate, conditional learning projects with explicit GM/Campaign override authority, Intelligence/Wisdom learning acceleration attached to applicable learning progress/readiness, and controlled grant bypass semantics.",
   "cab03_supported_baseline": {
     "default_starting_advancement_xp": 1300,
     "default_starting_xp_status": "working_normal_start_default_recalibratable_after_cab_evidence",
@@ -57,18 +57,26 @@
   "cab04_architecture": {
     "separate_gates": ["authority","availability","eligibility","prerequisites","tier_depth_access","learning_acquisition_readiness","affordability_xp","conflicts_exclusions","approval","commit"],
     "xp_role": "affordability_and_permanent_advancement_commitment",
+    "universal_prior_tier_quantity_gate": false,
+    "tree_specific_mastery_counts_allowed": true,
     "tier_access": "distinct_state_final_semantics_CAB-05",
     "learning_project_supported": true,
-    "int_wis_learning_hook": "learning_progress_or_readiness_not_global_xp_multiplier",
+    "learning_project_default": "conditional_when_owning_rule_requires",
+    "gm_campaign_learning_override": "explicit_attributable_add_waive_shorten_extend_or_modify_without_implicit_price_or_other_gate_change",
+    "int_wis_learning_hook": "applicable_learning_progress_or_readiness_not_global_xp_multiplier_or_blanket_discount",
+    "grant_default": "free_cost_and_source_established_eligibility_only_other_bypasses_explicit",
     "special_acquisition": "eligibility_or_readiness_not_price",
     "advancement_commit": "authoritative_revalidation_then_exactly_once_append_only_history"
   },
   "owner_questionnaire": {
     "path": "governance/application-planning/character-advancement-balance/CAB-04_OWNER_QUESTIONNAIRE.md",
-    "status": "awaiting_owner_answers",
-    "required_before_execution": "CAB-05",
-    "questions": ["CAB-Q04-01","CAB-Q04-02","CAB-Q04-03","CAB-Q04-04"],
-    "recommendations": {"CAB-Q04-01":"A","CAB-Q04-02":"A","CAB-Q04-03":"A","CAB-Q04-04":"A"},
-    "unanswered_policy": "remain_unresolved_no_silent_default"
+    "status": "resolved_by_owner_2026-09-04",
+    "decision_artifact": "governance/application-planning/character-advancement-balance/CAB-04_OWNER_DECISIONS_2026-09-04.md",
+    "decisions": {
+      "CAB-Q04-01": "A",
+      "CAB-Q04-02": "A_with_gm_campaign_override",
+      "CAB-Q04-03": "A",
+      "CAB-Q04-04": "A"
+    }
   }
 }
