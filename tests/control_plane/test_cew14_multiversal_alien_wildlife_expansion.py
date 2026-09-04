@@ -107,10 +107,15 @@ class Cew14MultiversalAlienWildlifeExpansionTests(unittest.TestCase):
 
         strict_order = backlog["strict_order"]
         self.assertGreaterEqual(strict_order.index(backlog["completed_through"]), strict_order.index("CEW-14"))
-        cew14 = next(row for row in backlog["tranches"] if row["id"] == "CEW-14")
-        self.assertEqual(cew14["status"], "completed_verified")
-        self.assertEqual(backlog["current_item"], "CEW-15")
-        self.assertEqual(backlog["current_item_state"], "selected_not_started")
+        states = {row["id"]: row["status"] for row in backlog["tranches"]}
+        self.assertEqual(states["CEW-14"], "completed_verified")
+        self.assertGreaterEqual(strict_order.index(backlog["current_item"]), strict_order.index("CEW-15"))
+        if backlog["current_item"] == "CEW-15":
+            self.assertEqual(states["CEW-15"], "selected_not_started")
+            self.assertEqual(backlog["current_item_state"], "selected_not_started")
+        else:
+            self.assertEqual(states["CEW-15"], "completed_verified")
+            self.assertGreaterEqual(strict_order.index(backlog["completed_through"]), strict_order.index("CEW-15"))
 
         self.assertIn("source recovery precedes new invention", contract.lower())
         self.assertIn("setting-collection membership does not prove native status", contract.lower())
