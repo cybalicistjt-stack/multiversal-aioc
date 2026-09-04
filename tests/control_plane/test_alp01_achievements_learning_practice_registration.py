@@ -36,18 +36,21 @@ class Alp01AchievementsLearningPracticeRegistrationTests(unittest.TestCase):
         self.assertIn(successor["status"], {"selected_not_started", "in_progress", "completed_verified"})
         self.assertEqual(successor["application_baseline_sha"], merge)
 
-        self.assertEqual(backlog["completed_through"], "ALP-01")
+        completed_number = int(backlog["completed_through"].split("-")[1])
+        self.assertGreaterEqual(completed_number, 1)
         self.assertEqual(backlog["tranches"][0]["status"], "completed_verified")
         self.assertFalse(backlog["tranches"][0]["implementation_authority"])
         self.assertEqual(backlog["tranches"][1]["status"], successor["status"])
 
         if successor["status"] in {"selected_not_started", "in_progress"}:
+            self.assertEqual(backlog["completed_through"], "ALP-01")
             self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-02")
             self.assertEqual(pointer["active_attempt"]["status"], successor["status"])
             self.assertEqual(index["current"]["work_item_id"], "ALP-02")
             self.assertEqual(index["current"]["status"], successor["status"])
             self.assertEqual(runtime["active_work"]["work_item"], "ALP-02")
             self.assertEqual(runtime["active_work"]["state"], successor["status"])
+            self.assertEqual(runtime["application_repository"]["canonical_main"], merge)
 
             if successor["status"] == "selected_not_started":
                 self.assertFalse(successor["implementation_authority"])
@@ -65,14 +68,15 @@ class Alp01AchievementsLearningPracticeRegistrationTests(unittest.TestCase):
                 self.assertTrue(registry["alp_02_authority"]["implementation_authority"])
                 self.assertFalse(registry["alp_02_authority"]["selected_not_started"])
         else:
+            self.assertGreaterEqual(completed_number, 2)
             self.assertFalse(successor["implementation_authority"])
             self.assertTrue(successor.get("authority_retired", True))
             self.assertTrue(pointer["active_attempt"]["work_item_id"].startswith("ALP-"))
             self.assertTrue(index["current"]["work_item_id"].startswith("ALP-"))
+            self.assertEqual(runtime["application_repository"]["canonical_main"], successor["application_merge_sha"])
 
         self.assertFalse(registry["alp_01_authority"]["implementation_authority"])
         self.assertTrue(registry["alp_01_authority"]["retired"])
-        self.assertEqual(runtime["application_repository"]["canonical_main"], merge)
         self.assertEqual(runtime["application_repository"]["active_validation_family"], "ALP")
 
     def test_alp01_taxonomy_boundaries_and_validation_evidence_are_preserved(self):

@@ -1,7 +1,7 @@
 # ALP — Achievements, Learning & Practice
 
 **Program ID:** ALP  
-**Status:** OWNER-APPROVED — ALP-01 COMPLETED_VERIFIED; ALP-02 IN_PROGRESS  
+**Status:** OWNER-APPROVED — ALP-01/02 COMPLETED_VERIFIED; ALP-03 SELECTED_NOT_STARTED  
 **Activation:** after completed_verified ECI-01  
 **Successor:** VTI-01  
 **Owner and final authority:** John Brandon Turner  
@@ -11,7 +11,9 @@
 
 ALP-01 — Authority Crosswalk & Achievement/Learning/Practice Taxonomy — is `completed_verified` on application merge `c3ff8adb2311d1c59f3288a82593b358e3d47960` through PR #407. Its implementation authority is retired.
 
-ALP-02 — Achievement Definitions, Criteria, Evidence, Scope & Provenance — is `in_progress` from that exact application main on `integration/alp-02-achievement-definitions-criteria-evidence-scope-provenance`. Governed implementation authority is active only for the bounded ALP-02 contract. Production mutation remains locked until genuine matching Linux/Windows acceptance RED is observed.
+ALP-02 — Achievement Definitions, Criteria, Evidence, Scope & Provenance — is `completed_verified` on application merge `050356f7578856de5931917a60efe8af91def1bd` through PR #408. Its implementation authority is retired.
+
+ALP-03 — Platform Onboarding & Mastery Milestones — is `selected_not_started` from exact application main `050356f7578856de5931917a60efe8af91def1bd`. It has no implementation branch and no implementation or production authority. A future owner `Continue` must governed-start ALP-03 before any acceptance package or production mutation.
 
 ## Purpose
 
@@ -25,9 +27,9 @@ ALP-01 implemented a deterministic read-only crosswalk across six concept famili
 
 Diegetic practice remains optional. ALP-01 created no durable persistence, no migration 0022, no universal permission gate, and no hidden completion inference.
 
-## ALP-02 governed contract
+## ALP-02 completed contract
 
-ALP-02 may implement deterministic read-only contracts for:
+ALP-02 implemented deterministic read-only contracts for:
 
 1. stable achievement-definition identity tied to an ALP-01 taxonomy family and explicit authority owner;
 2. explicit criterion identity and criterion-to-evidence requirements;
@@ -38,11 +40,19 @@ ALP-02 may implement deterministic read-only contracts for:
 
 ALP-02 does **not** award achievements, infer hidden evidence, commit mechanical rewards, mutate Character Progression, Reputation/Relationship/Faction, World/Scene or Projects, create a universal permission gate, grant unrelated capability, create durable ALP persistence, reserve migration `0022`, or implement ALP-03 platform milestone content.
 
+### ALP-02 verification evidence
+
+Acceptance RED on exact head `f86c09aae3af19e7063bc6d0b41f45f6d95c1b45` used run `33880640379`: repository-health/selector `101048164195`, Linux `101048210194`, Windows `101048210090`, comparator `101048360266`, deterministic receipt `f4404793c098b1e382916fc414dcbc47a30f72a2c3922e78b6c9fccd0493015b`. Both self-hosted lanes failed the same `alp02-invariants` step while the production contract was absent.
+
+Final GREEN on exact production head `3e5d47edda7a28f25f6f282a0a4d770570d46280` used run `33880797279`: repository-health/selector `101048684651`, Linux `101048728855`, Windows `101048728763`, comparator `101048936025`, deterministic receipt `84d6bfd06ce885887e06bcae1b057ac2ee6dc0a4865941956a2fdf1c5bfac97c`. Production feature repair cycles were zero and historical predecessor profile fanout was zero.
+
+Application PR #408 merged the validated tree to `050356f7578856de5931917a60efe8af91def1bd`.
+
 ## Tranches
 
 1. **ALP-01 — Authority Crosswalk & Achievement/Learning/Practice Taxonomy** — **COMPLETED_VERIFIED**.
-2. **ALP-02 — Achievement Definitions, Criteria, Evidence, Scope & Provenance** — **IN_PROGRESS**.
-3. **ALP-03 — Platform Onboarding & Mastery Milestones**
+2. **ALP-02 — Achievement Definitions, Criteria, Evidence, Scope & Provenance** — **COMPLETED_VERIFIED**.
+3. **ALP-03 — Platform Onboarding & Mastery Milestones** — **SELECTED_NOT_STARTED**.
 4. **ALP-04 — GM-Authored Campaign Achievements, Titles, Reputation & Reward Links**
 5. **ALP-05 — Diegetic Practice Spaces, Training Scenes & Simulations**
 6. **ALP-06 — Rehearsal, Retry, Safe Failure & Training/Project Integration**
@@ -51,4 +61,4 @@ ALP-02 does **not** award achievements, infer hidden evidence, commit mechanical
 
 ## Active invariant
 
-Achievements remain optional recognition/learning structures, not universal permission gates. Achievement completion cannot grant unrelated capabilities by implication. Mechanically meaningful rewards commit only through owning Reward/Progression/Reputation/Faction systems. Platform learning badges and campaign achievements remain distinguishable in scope and authorship. AI may explain progress or propose criteria but may not silently award achievements or infer hidden completion evidence. ALP-03+, VTI-01+, provider activation, tester distribution, release and deployment remain unauthorized.
+Achievements remain optional recognition/learning structures, not universal permission gates. Achievement completion cannot grant unrelated capabilities by implication. Mechanically meaningful rewards commit only through owning Reward/Progression/Reputation/Faction systems. Platform learning badges and campaign achievements remain distinguishable in scope and authorship. AI may explain progress or propose criteria but may not silently award achievements or infer hidden completion evidence. ALP-03 has no implementation authority until separately governed-started. ALP-04+, VTI-01+, provider activation, tester distribution, release and deployment remain unauthorized.
