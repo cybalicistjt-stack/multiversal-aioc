@@ -17,7 +17,7 @@ class Eci01EnvCewRoadmapRegistrationTests(unittest.TestCase):
     def test_eci01_is_durable_required_successor_before_alp(self):
         program = load_text("governance/application-planning/environment-creature-integration/ECI_ENVIRONMENT_CREATURE_INTEGRATION_PROGRAM.md")
         backlog = load_json("governance/application-planning/environment-creature-integration/ECI_PROGRAM_BACKLOG.json")
-        amendment_path = "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ECI_INSERTION_2026-09-04.md"
+        amendment_path = "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ECI_INSERTION_CLOSEOUT_2026-09-04.md"
         amendment = load_text(amendment_path)
         index = load_json("governance/ai/runtime/ROADMAP_INDEX.json")
         pointer = load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
