@@ -73,7 +73,8 @@ class Alp01AchievementsLearningPracticeRegistrationTests(unittest.TestCase):
             self.assertTrue(successor.get("authority_retired", True))
             self.assertTrue(pointer["active_attempt"]["work_item_id"].startswith("ALP-"))
             self.assertTrue(index["current"]["work_item_id"].startswith("ALP-"))
-            self.assertEqual(runtime["application_repository"]["canonical_main"], successor["application_merge_sha"])
+            self.assertTrue(runtime["active_work"]["work_item"].startswith("ALP-"))
+            self.assertEqual(runtime["application_repository"]["canonical_main"], backlog["application_baseline_sha"])
 
         self.assertFalse(registry["alp_01_authority"]["implementation_authority"])
         self.assertTrue(registry["alp_01_authority"]["retired"])
