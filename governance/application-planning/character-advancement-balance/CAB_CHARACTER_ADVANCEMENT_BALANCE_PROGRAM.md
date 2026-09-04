@@ -1,7 +1,7 @@
 # CAB — Character Advancement & Balance
 
 **Program ID:** CAB  
-**Status:** IN PROGRESS — CAB-02 COMPLETED_VERIFIED; CAB-03 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — CAB-03 COMPLETED_VERIFIED; CAB-04 SELECTED_NOT_STARTED_PENDING_OWNER_ANSWERS  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-09-04  
 
@@ -21,7 +21,7 @@ CAB is a game-rules/content-governance program. It does not grant Multiversal-ap
 6. Character breadth is not inherently imbalance; CAB must evaluate effective simultaneous capability, stacking, action economy, resources, eligibility and challenge-bypass effects separately.
 7. CAB must not introduce a universal Character Level, CR, or one-dimensional power score.
 8. **Ordinary transferable assets do not use Character XP.** Equipment, vehicles, drones, refits and upkeep use their owning credits/resources/economy. XP may be used only for permanent Character-bound progression or an explicitly exceptional advancement sacrifice.
-9. **Starting money is governed by the GM/Campaign creation policy.** The prior creation-time XP-as-money exception may be removed; starting advancement XP and starting wealth/equipment are separate budgets.
+9. **Starting money is governed by the GM/Campaign creation policy.** Starting advancement XP and starting wealth/equipment are separate budgets.
 10. **Ordinary percentage XP-gain multipliers are not part of the default progression economy.** CAB must nevertheless support faster learning for high Intelligence and/or Wisdom through a later governed mechanic that does not silently become an unrestricted global XP multiplier.
 11. **Existing hazard/trap XP values are benchmark/reference evidence, not automatic universal payouts.** CAB-17 owns final award semantics and must support meaningful non-defeat resolution.
 12. **There is no ordinary XP-to-credits conversion at Character creation.** Advancement XP and starting wealth/equipment remain separate.
@@ -41,8 +41,8 @@ CAB is a game-rules/content-governance program. It does not grant Multiversal-ap
 
 1. **CAB-01 — Authority, Source Census & AP Retirement — completed_verified**
 2. **CAB-02 — Current XP Economy Reconstruction — completed_verified**
-3. **CAB-03 — Character-Creation Baseline — selected_not_started**
-4. **CAB-04 — Advancement Architecture**
+3. **CAB-03 — Character-Creation Baseline — completed_verified**
+4. **CAB-04 — Advancement Architecture — selected_not_started_pending_owner_answers**
 5. **CAB-05 — Five-Tier Model**
 6. **CAB-06 — XP Cost Calibration Framework**
 7. **CAB-07 — Action Economy & Simultaneous Power**
@@ -73,17 +73,33 @@ CAB-01 established the source/authority hierarchy, created the advancement sourc
 
 ## CAB-02 closeout
 
-CAB-02 reconstructed XP into distinct governed/recovered families rather than treating every `XP` label as the same rule. It established that direct Ability purchase, some tree/tier unlocks, upgrades and several special progression families are source-attested; that current Character architecture supports authoritative XP/progression awards without settling amounts; and that recovered sources also contain conflicting uses such as XP-priced asset acquisition/upkeep and percentage XP-gain modifiers.
+CAB-02 reconstructed XP into distinct governed/recovered families rather than treating every `XP` label as the same rule. The CAB-02 owner questionnaire is fully resolved in `CAB-02_OWNER_DECISIONS_2026-09-04.md`: ordinary assets use their owning economies; starting money is GM/Campaign-defined; creation XP and wealth are separate with no ordinary conversion; hazard/trap XP values remain benchmarks; ordinary percentage XP multipliers are rejected; and faster learning for high Intelligence/Wisdom is a required later mechanic routed to CAB-04, CAB-10 and CAB-16/17.
 
-CAB-02 preserved source hazard/reward XP values as reference signals rather than a universal award schedule; preserved structured magic's 0-XP direct spell-learning signal while flagging capacity/slot economics for later reconciliation; found no universal refund economics; and routed creation-budget conversion to CAB-03.
+## CAB-03 closeout
 
-The CAB-02 owner questionnaire is fully resolved in `CAB-02_OWNER_DECISIONS_2026-09-04.md`. Ordinary assets use their owning economies; starting money is GM/Campaign-defined; creation XP and wealth are separate with no ordinary conversion; hazard/trap XP values remain benchmarks; ordinary percentage XP multipliers are rejected; and faster learning for high Intelligence/Wisdom is a required later mechanic routed to CAB-04, CAB-10 and CAB-16/17.
+CAB-03 reconstructed the Character-creation baseline from current architecture, recovered owner-authored creation rules and specialized source PDFs.
+
+Supported creation rules now include:
+
+- normal starting advancement XP is source-supported at 1,300 XP;
+- starting wealth/equipment is a separate GM/Campaign-defined budget;
+- no XP-to-money conversion;
+- base Species is free;
+- Homeworld Type, Cultural Influence and Early Life Profession core benefits are free;
+- five starting Ability Trees are free;
+- Tier 1 access in those trees is free;
+- five eligible Tier 1 Abilities are free;
+- unspent creation XP may carry into play;
+- starting HP has source support for `max(10, Constitution)` plus Species modifiers;
+- Skills, Knowledges, proficiencies, additional Abilities and other permanent Character development remain valid XP-spend categories, while their conflicting legacy prices are deferred to owning CAB tranches.
+
+CAB-03 also proves that the recovered Regular/High/Hyper Attribute Modes are internally inconsistent and cannot be accepted as written. It identifies four owner gates in `CAB-03_OWNER_QUESTIONNAIRE.md`: starting-XP override scope, the Attribute Mode replacement, the background 1,800-XP cap, and creation-only permanent HP purchases.
 
 ## Current tranche
 
-**CAB-03 — Character-Creation Baseline** is selected_not_started.
+**CAB-04 — Advancement Architecture** is selected_not_started, but execution is held until the CAB-03 owner questionnaire is answered or a question is explicitly deferred.
 
-CAB-03 must establish one internally consistent creation baseline separating starting advancement XP, free/granted mechanical selections, XP-bought creation selections, species/form/background/environment/innate access, and historical example builds. Starting money/wealth is set by the GM/Campaign creation policy and is not derived from or convertible with advancement XP. CAB-03 must not use AP and must not treat recovered asset-upkeep XP or XP multipliers as baseline creation rules.
+CAB-04 must define the distinct jobs of XP, prerequisites, eligibility, training/practice, grants, advancement proposals, tier access, progression history and special acquisition without reviving AP or assuming the broken Attribute Mode economy.
 
 ## Boundaries
 
@@ -97,4 +113,5 @@ CAB does not:
 - equate acquisition eligibility with purchase price;
 - make wealth and permanent advancement freely interchangeable;
 - use ordinary percentage XP multipliers as the default way to model learning speed;
+- silently resolve owner-gated creation conflicts;
 - grant application runtime, schema, migration, release, tester, provider or deployment authority.
