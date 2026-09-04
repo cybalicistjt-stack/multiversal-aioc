@@ -1,7 +1,7 @@
 # MAL — Microgames & Ambient Loops
 
 **Program ID:** MAL  
-**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH MAL-05; MAL-06 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH MAL-06; MAL-07 SELECTED_NOT_STARTED  
 **Activation:** after completed_verified SCL-11  
 **Successor:** ALP-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,9 +9,9 @@
 
 ## Current state
 
-MAL-01 through MAL-05 are `completed_verified`. MAL-06 — Aniloops, Travel, Repair, Downtime, Transition & Spacewalk Loops — is `in_progress` from exact application main `e5ee04672a1dac4d28fa2e954d0201f384cb0482` on `integration/mal-06-aniloops-travel-repair-downtime-transition-spacewalk` with bounded implementation authority.
+MAL-01 through MAL-06 are `completed_verified`. MAL-07 — GM Composition Recipes & GCL Integration — is `selected_not_started` from exact application main `472f2ff95100ea6fd2c623f0c5b85b5100cefa59` with implementation branch `null` and implementation authority `false`.
 
-Parallel ENV/CEW content work and GCL execution remain outside MAL-06 work selection unless a named dependency proves insufficient.
+Parallel ENV/CEW content work and GCL execution remain outside MAL-07 product authority unless a future governed-start contract names a bounded dependency. CEW-12 is preserved on the inherited AIOC baseline and does not alter MAL authority.
 
 ## Frozen contracts
 
@@ -20,33 +20,27 @@ Parallel ENV/CEW content work and GCL execution remain outside MAL-06 work selec
 - **MAL-03:** original MAL-local movement/navigation/room/connector/door/key-reference/traversal projections. Hidden or unauthorized passage state remains unresolved; key checks never mutate Inventory; traversal and `transition-ready` never move canonical Character, World/Scene or Travel truth.
 - **MAL-04:** original MAL-local interaction/simple-conflict/hazard/pickup-reference/objective projections. Hidden interaction state remains unresolved; canonical Combat, Character, World, Inventory, Event, Project, progression and reward truth remain externally owned.
 - **MAL-05:** original MAL-local NPC/enemy behavior and tiny deterministic state machines. Hidden or unauthorized intent, awareness, targets, pathing and owner state remain unresolved; behavior never creates autonomous canonical NPC/Character agency or mutates canonical movement, Combat, Inventory, World/Scene, Travel, Event, Project, progression or reward truth.
+- **MAL-06:** original deterministic MAL-local Aniloop compositions for `travel-local`, `repair-local`, `downtime-local`, `transition-local` and `spacewalk-local` over frozen MAL-01..05 semantics. Authored loop order, local phases, owner-reference gates, pause/retry behavior and deterministic receipts are frozen. Loop completion never commits canonical Travel, Character/NPC, World/Scene, Action/Event, Project/progression, Inventory/Asset, Combat, reward or Permission truth.
 
-## MAL-06 governed contract
+## MAL-06 completion
 
-MAL-06 defines original reusable deterministic MAL-local Aniloop compositions only.
+MAL-06 established genuine matching self-hosted Linux/Windows RED at `client-typecheck` before production mutation, introduced the production contract and read-only panel atomically, and then passed the exact-head Linux/Windows/comparator final gate.
 
-- **Aniloop kinds:** `travel-local`, `repair-local`, `downtime-local`, `transition-local`, `spacewalk-local`.
-- **Loop phases:** `ready-local`, `active-local`, `checkpoint-local`, `paused-local`, `completed-local`, `failed-local`, `unresolved`.
-- **Composition step kinds:** `traversal`, `interaction`, `behavior`, `objective`, `timing-gate`, `authorized-owner-reference`.
-- **Loop outcomes:** `hold-local`, `progress-local`, `checkpoint-local`, `complete-local`, `blocked-local`, `setback-local`, `unresolved`.
+Two bounded repair cycles occurred: one `validation_contract` repair aligned a case-sensitive governed-proof marker before genuine RED; one `feature_implementation` repair aligned a case-sensitive read-only panel marker before final GREEN. The second repair crosses the diagnostic threshold, so diagnostic mode is recorded with explicit hypotheses and changed-evidence retry basis. There were zero unrelated historical validation jobs, zero unchanged-evidence reruns, zero no-progress cycles, zero repository-state repair cycles and zero post-merge stale-pointer incidents.
 
-Aniloops compose frozen MAL-02 timing/input/session semantics, MAL-03 traversal projections, MAL-04 interaction/objective projections and MAL-05 behavior/state-machine projections. They do not introduce replacement primitive systems or owner-domain mechanics.
+The application merged as `472f2ff95100ea6fd2c623f0c5b85b5100cefa59` through PR `401`. A platform tool cutoff occurred after the application merge while AIOC closeout was only partially materialized, requiring one continuation message; it did not create a product or repository-state failure.
 
-Definitions are authored, ordered and deterministic: the same definition, MAL-local state, logical tick and authorized owner references produce the same next step, phase, outcome and deterministic receipt.
+## MAL-07 selection boundary
 
-`travel-local` may sequence traversal, interaction, timing and objective steps, but never moves canonical Characters/NPCs, changes World/Scene or Travel truth, consumes fuel/resources or commits arrival/departure.
+MAL-07 is selection-only until a future owner `Continue` performs governed start.
 
-`repair-local` may sequence interaction, objective and timing steps, but never consumes Inventory/Asset truth, changes canonical asset condition, commits Project progress, spends currency/resources or grants rewards.
+- implementation branch: `null`
+- implementation authority: `false`
+- exact application baseline: `472f2ff95100ea6fd2c623f0c5b85b5100cefa59`
 
-`downtime-local` may sequence timing, interaction and objective steps, but never advances canonical campaign/world time, heals damage, restores conditions/resources, trains, crafts, progresses Projects or grants advancement/rewards.
+A future MAL-07 governed start may define original GM composition recipes and bounded GCL integration over frozen MAL-01..06 contracts. Existing GCL remains canonical for its own content and integration authority; MAL-07 may not flatten, replace, copy, or silently reinterpret GCL.
 
-`transition-local` may sequence traversal and interaction into a MAL-local transition-ready/completed state, but never changes canonical scenes, locations, travel legs, Events or campaign state.
-
-`spacewalk-local` may compose traversal, hazard, interaction and behavior projections, but never applies canonical damage/conditions, consumes oxygen/fuel, changes equipment/Inventory, moves canonical Characters or mutates World/Scene/Combat truth.
-
-Unknown, hidden or unauthorized owner-domain state remains `unresolved`. Pause/retry/accessibility-equivalent controls remain governed by MAL-02, and pausing never advances canonical time. AI may propose loop definitions but cannot invent hidden owner state or commit canonical outcomes.
-
-MAL-06 does **not** implement GM composition/GCL integration, canonical owner mutation, reward integration, persistence, migration `0022`, tester distribution, release or deployment.
+Unknown, hidden or unauthorized owner-domain or GCL state remains unresolved. AI remains proposal-only and may not invent hidden state or commit canonical outcomes. MAL-08+ Character/World/Project/Event integration and reward-boundary work, durable persistence, migration `0022`, ALP-01+, provider activation, tester distribution, release and deployment remain unauthorized.
 
 ## Tranches
 
@@ -55,12 +49,12 @@ MAL-06 does **not** implement GM composition/GCL integration, canonical owner mu
 3. **MAL-03 — Movement, Navigation, Rooms, Doors, Keys & Traversal Primitives** — completed_verified.
 4. **MAL-04 — Interaction, Simple Conflict, Hazards, Pickups & Objective Primitives** — completed_verified.
 5. **MAL-05 — NPC/Enemy Behavior & Tiny State Machines** — completed_verified.
-6. **MAL-06 — Aniloops, Travel, Repair, Downtime, Transition & Spacewalk Loops** — in_progress with bounded implementation authority.
-7. **MAL-07 — GM Composition Recipes & GCL Integration** — planned.
+6. **MAL-06 — Aniloops, Travel, Repair, Downtime, Transition & Spacewalk Loops** — completed_verified.
+7. **MAL-07 — GM Composition Recipes & GCL Integration** — selected_not_started; no implementation authority.
 8. **MAL-08 — Character, World, Project & Event Integration / Reward Boundaries** — planned.
 9. **MAL-09 — Accessibility, Mobile/Input, Performance & Nonblocking Fallbacks** — planned.
 10. **MAL-10 — Starter Library & Golden Microgame/Aniloop Proof** — planned.
 
 ## Current invariant
 
-MAL-01..05 remain frozen. MAL-06 must establish genuine matching self-hosted Linux/Windows acceptance RED before production mutation, then pass exact-head Linux/Windows GREEN plus deterministic comparison with exactly one MAL-06 Validation Core profile and zero historical predecessor fanout. MAL-07+, ALP-01+, provider activation, tester distribution, release and deployment remain unauthorized.
+MAL-01..06 remain frozen with retired implementation authority. MAL-07 is the sole selected MAL successor but has no application mutation authority until a future governed start. Existing GCL authority is preserved. MAL-08+, ALP-01+, provider activation, tester distribution, release and deployment remain unauthorized.
