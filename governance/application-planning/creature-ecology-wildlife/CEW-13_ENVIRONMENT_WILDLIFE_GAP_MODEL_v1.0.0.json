@@ -1,0 +1,781 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "CEW-ENV-GAP-1.0",
+  "work_item": "CEW-13",
+  "title": "Environment-Driven Wildlife Gap Expansion",
+  "identity_authority": "CEW-ID-1.0",
+  "classification_authority": "CEW-CLASS-1.0",
+  "habitat_authority": "CEW-HAB-1.0",
+  "distribution_authority": "CEW-DIST-1.0",
+  "ecological_role_authority": "CEW-ECO-1.0",
+  "earthlike_baseline_authority": "CEW-EARTHLIKE-BASE-1.0",
+  "habitat_signature_authority": "ENV-HS-1.0",
+  "creature_discovery_authority": "ENV-CD-1.0",
+  "application_implementation_authority": false,
+  "strict_successor": "CEW-14",
+  "environment_inputs": {
+    "preset_count": 76,
+    "archetype_count": 19,
+    "overlay_count": 47,
+    "habitat_signature_dimension_count": 18
+  },
+  "cew12_input": {
+    "baseline_profile_count": 100,
+    "habitat_family_count": 11,
+    "habitat_families": [
+      "forest_woodland",
+      "grassland_open_country",
+      "alpine_mountain",
+      "wetland_marsh",
+      "freshwater_river_lake",
+      "marine_open_water",
+      "coastal_intertidal",
+      "desert_scrub",
+      "settled_rural_urban",
+      "subterranean_cave",
+      "polar_tundra"
+    ]
+  },
+  "policy": {
+    "gap_definition": "A CEW-13 gap is missing ordinary ecological representation for a materially distinguishing governed ENV condition, not proof that a canonical creature population is absent.",
+    "species_quota_authorized": false,
+    "numeric_gap_score_authorized": false,
+    "habitat_fit_creates_distribution": false,
+    "environment_similarity_creates_canonical_identity": false,
+    "environment_selection_creates_encounter_placement": false,
+    "source_recovery_and_first_party_authoring_distinguished": true,
+    "ordinary_earthlike_scope_only": true,
+    "reuse_existing_baseline_before_new_authoring": true,
+    "unknown_or_distribution_dependent_state_remains_explicit": true
+  },
+  "gap_status_vocabulary": {
+    "cew13_gap_expansion_authored": "ordinary environment-specific ecological coverage gap repaired with governed noncanonical profiles",
+    "cew12_baseline_reuse_sufficient": "CEW-12 abstraction is sufficient; no new CEW-13 profile",
+    "deferred_nonordinary_cew14": "multiversal/alien/nonordinary wildlife expansion deferred to CEW-14",
+    "deferred_extraordinary_cew15": "monster/extraordinary/extreme-adaptation expansion deferred to CEW-15",
+    "distribution_dependent_no_auto_expansion": "built/contextual environment cannot create presence without independent distribution/local-placement authority"
+  },
+  "preset_audit": [
+    {
+      "preset_id": "ENVPRESET-BB71C8719980",
+      "preset_name": "Swamps",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew12_baseline_reuse_sufficient",
+      "gap_ids": [],
+      "rationale": "CEW-12 already provides adequate ordinary ecological breadth for this preset at the governed abstraction level; no quota-driven expansion is justified."
+    },
+    {
+      "preset_id": "ENVPRESET-3202B9AFFBB0",
+      "preset_name": "Mangrove Swamp",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-FW-ESTUARY"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-0B08D18F0134",
+      "preset_name": "Sunken City",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "distribution_dependent_no_auto_expansion",
+      "gap_ids": [],
+      "rationale": "The preset is primarily built/settled/contextual; environment selection alone cannot manufacture a canonical wildlife population. Existing or later profiles require independent distribution/local-placement authority."
+    },
+    {
+      "preset_id": "ENVPRESET-3ACFB0214F20",
+      "preset_name": "Island Chain",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew12_baseline_reuse_sufficient",
+      "gap_ids": [],
+      "rationale": "CEW-12 already provides adequate ordinary ecological breadth for this preset at the governed abstraction level; no quota-driven expansion is justified."
+    },
+    {
+      "preset_id": "ENVPRESET-839312524399",
+      "preset_name": "At Sea",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew12_baseline_reuse_sufficient",
+      "gap_ids": [],
+      "rationale": "CEW-12 already provides adequate ordinary ecological breadth for this preset at the governed abstraction level; no quota-driven expansion is justified."
+    },
+    {
+      "preset_id": "ENVPRESET-8732D6327E25",
+      "preset_name": "Underwater",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew12_baseline_reuse_sufficient",
+      "gap_ids": [],
+      "rationale": "CEW-12 already provides adequate ordinary ecological breadth for this preset at the governed abstraction level; no quota-driven expansion is justified."
+    },
+    {
+      "preset_id": "ENVPRESET-646E783454A9",
+      "preset_name": "Underwater Caves",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-SUBMERGED-CAVE"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-D9785C27BDE3",
+      "preset_name": "Industrial Zones",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "distribution_dependent_no_auto_expansion",
+      "gap_ids": [],
+      "rationale": "The preset is primarily built/settled/contextual; environment selection alone cannot manufacture a canonical wildlife population. Existing or later profiles require independent distribution/local-placement authority."
+    },
+    {
+      "preset_id": "ENVPRESET-0147CB5991C8",
+      "preset_name": "Temperate Forest",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew12_baseline_reuse_sufficient",
+      "gap_ids": [],
+      "rationale": "CEW-12 already provides adequate ordinary ecological breadth for this preset at the governed abstraction level; no quota-driven expansion is justified."
+    },
+    {
+      "preset_id": "ENVPRESET-19AC3BF47645",
+      "preset_name": "Rainforest or Jungle",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew12_baseline_reuse_sufficient",
+      "gap_ids": [],
+      "rationale": "CEW-12 already provides adequate ordinary ecological breadth for this preset at the governed abstraction level; no quota-driven expansion is justified."
+    },
+    {
+      "preset_id": "ENVPRESET-D339447208B4",
+      "preset_name": "Arctic Tundra and Taiga",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-CP-TAIGA",
+        "GAP-CP-TUNDRA"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-701FFC266DEC",
+      "preset_name": "Rocky Highlands and Mountains",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew12_baseline_reuse_sufficient",
+      "gap_ids": [],
+      "rationale": "CEW-12 already provides adequate ordinary ecological breadth for this preset at the governed abstraction level; no quota-driven expansion is justified."
+    },
+    {
+      "preset_id": "ENVPRESET-7C39E3F7B7B8",
+      "preset_name": "Sandy Desert",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew12_baseline_reuse_sufficient",
+      "gap_ids": [],
+      "rationale": "CEW-12 already provides adequate ordinary ecological breadth for this preset at the governed abstraction level; no quota-driven expansion is justified."
+    },
+    {
+      "preset_id": "ENVPRESET-06612C283234",
+      "preset_name": "Volcano",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "deferred_extraordinary_cew15",
+      "gap_ids": [],
+      "rationale": "The preset's distinguishing wildlife problem requires extraordinary adaptation, mutation, monster, supernatural, or extreme-condition creature work; CEW-15 owns expansion."
+    },
+    {
+      "preset_id": "ENVPRESET-5B1F4F1EAFE1",
+      "preset_name": "Post-Apocalyptic Radioactive Zone",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "deferred_extraordinary_cew15",
+      "gap_ids": [],
+      "rationale": "The preset's distinguishing wildlife problem requires extraordinary adaptation, mutation, monster, supernatural, or extreme-condition creature work; CEW-15 owns expansion."
+    },
+    {
+      "preset_id": "ENVPRESET-77BDAB9A5BF8",
+      "preset_name": "Post-Apocalyptic Overgrown City",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "distribution_dependent_no_auto_expansion",
+      "gap_ids": [],
+      "rationale": "The preset is primarily built/settled/contextual; environment selection alone cannot manufacture a canonical wildlife population. Existing or later profiles require independent distribution/local-placement authority."
+    },
+    {
+      "preset_id": "ENVPRESET-0D4B81978C1A",
+      "preset_name": "Flooded Suburbs",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "distribution_dependent_no_auto_expansion",
+      "gap_ids": [],
+      "rationale": "The preset is primarily built/settled/contextual; environment selection alone cannot manufacture a canonical wildlife population. Existing or later profiles require independent distribution/local-placement authority."
+    },
+    {
+      "preset_id": "ENVPRESET-FF8F0B4B4C46",
+      "preset_name": "Underground Bunker Network",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "distribution_dependent_no_auto_expansion",
+      "gap_ids": [],
+      "rationale": "The preset is primarily built/settled/contextual; environment selection alone cannot manufacture a canonical wildlife population. Existing or later profiles require independent distribution/local-placement authority."
+    },
+    {
+      "preset_id": "ENVPRESET-CE188D232B51",
+      "preset_name": "Skeletons of Highways",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "distribution_dependent_no_auto_expansion",
+      "gap_ids": [],
+      "rationale": "The preset is primarily built/settled/contextual; environment selection alone cannot manufacture a canonical wildlife population. Existing or later profiles require independent distribution/local-placement authority."
+    },
+    {
+      "preset_id": "ENVPRESET-7708CBB27247",
+      "preset_name": "Ashland",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "deferred_extraordinary_cew15",
+      "gap_ids": [],
+      "rationale": "The preset's distinguishing wildlife problem requires extraordinary adaptation, mutation, monster, supernatural, or extreme-condition creature work; CEW-15 owns expansion."
+    },
+    {
+      "preset_id": "ENVPRESET-9BC0823DF786",
+      "preset_name": "Sewers and Forgotten Catacombs",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "distribution_dependent_no_auto_expansion",
+      "gap_ids": [],
+      "rationale": "The preset is primarily built/settled/contextual; environment selection alone cannot manufacture a canonical wildlife population. Existing or later profiles require independent distribution/local-placement authority."
+    },
+    {
+      "preset_id": "ENVPRESET-64200FBCF92E",
+      "preset_name": "Ancient Temples",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "distribution_dependent_no_auto_expansion",
+      "gap_ids": [],
+      "rationale": "The preset is primarily built/settled/contextual; environment selection alone cannot manufacture a canonical wildlife population. Existing or later profiles require independent distribution/local-placement authority."
+    },
+    {
+      "preset_id": "ENVPRESET-536D4B0C5312",
+      "preset_name": "Caves and Caverns",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew12_baseline_reuse_sufficient",
+      "gap_ids": [],
+      "rationale": "CEW-12 already provides adequate ordinary ecological breadth for this preset at the governed abstraction level; no quota-driven expansion is justified."
+    },
+    {
+      "preset_id": "ENVPRESET-2B1911EAC380",
+      "preset_name": "Bustling Space Station",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "deferred_nonordinary_cew14",
+      "gap_ids": [],
+      "rationale": "The preset's distinguishing wildlife problem is nonordinary, spaceborne, alien, or otherwise outside the Earthlike ordinary scope of CEW-13; CEW-14 owns expansion."
+    },
+    {
+      "preset_id": "ENVPRESET-09A74188F0A7",
+      "preset_name": "Abandoned Space Station",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "deferred_nonordinary_cew14",
+      "gap_ids": [],
+      "rationale": "The preset's distinguishing wildlife problem is nonordinary, spaceborne, alien, or otherwise outside the Earthlike ordinary scope of CEW-13; CEW-14 owns expansion."
+    },
+    {
+      "preset_id": "ENVPRESET-29F129444A76",
+      "preset_name": "The Void",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "deferred_nonordinary_cew14",
+      "gap_ids": [],
+      "rationale": "The preset's distinguishing wildlife problem is nonordinary, spaceborne, alien, or otherwise outside the Earthlike ordinary scope of CEW-13; CEW-14 owns expansion."
+    },
+    {
+      "preset_id": "ENVPRESET-E39FBC0406F8",
+      "preset_name": "Asteroid Field",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "deferred_nonordinary_cew14",
+      "gap_ids": [],
+      "rationale": "The preset's distinguishing wildlife problem is nonordinary, spaceborne, alien, or otherwise outside the Earthlike ordinary scope of CEW-13; CEW-14 owns expansion."
+    },
+    {
+      "preset_id": "ENVPRESET-D69B988CD5E0",
+      "preset_name": "Gas Giant Upper Atmosphere",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "deferred_nonordinary_cew14",
+      "gap_ids": [],
+      "rationale": "The preset's distinguishing wildlife problem is nonordinary, spaceborne, alien, or otherwise outside the Earthlike ordinary scope of CEW-13; CEW-14 owns expansion."
+    },
+    {
+      "preset_id": "ENVPRESET-E8B22149DA3E",
+      "preset_name": "Space Graveyard and Starship Junkyard",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "deferred_nonordinary_cew14",
+      "gap_ids": [],
+      "rationale": "The preset's distinguishing wildlife problem is nonordinary, spaceborne, alien, or otherwise outside the Earthlike ordinary scope of CEW-13; CEW-14 owns expansion."
+    },
+    {
+      "preset_id": "ENVPRESET-6A8EE04CD9E9",
+      "preset_name": "Floating Megacity",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "deferred_nonordinary_cew14",
+      "gap_ids": [],
+      "rationale": "The preset's distinguishing wildlife problem is nonordinary, spaceborne, alien, or otherwise outside the Earthlike ordinary scope of CEW-13; CEW-14 owns expansion."
+    },
+    {
+      "preset_id": "ENVPRESET-49411B4A3073",
+      "preset_name": "Black Hole Proximity",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "deferred_nonordinary_cew14",
+      "gap_ids": [],
+      "rationale": "The preset's distinguishing wildlife problem is nonordinary, spaceborne, alien, or otherwise outside the Earthlike ordinary scope of CEW-13; CEW-14 owns expansion."
+    },
+    {
+      "preset_id": "ENVPRESET-753CCB6E6A9F",
+      "preset_name": "Wormhole Convergence",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "deferred_nonordinary_cew14",
+      "gap_ids": [],
+      "rationale": "The preset's distinguishing wildlife problem is nonordinary, spaceborne, alien, or otherwise outside the Earthlike ordinary scope of CEW-13; CEW-14 owns expansion."
+    },
+    {
+      "preset_id": "ENVPRESET-16D74232D666",
+      "preset_name": "Nebula",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "deferred_nonordinary_cew14",
+      "gap_ids": [],
+      "rationale": "The preset's distinguishing wildlife problem is nonordinary, spaceborne, alien, or otherwise outside the Earthlike ordinary scope of CEW-13; CEW-14 owns expansion."
+    },
+    {
+      "preset_id": "ENVPRESET-D685069FA781",
+      "preset_name": "Cyberpunk City",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "distribution_dependent_no_auto_expansion",
+      "gap_ids": [],
+      "rationale": "The preset is primarily built/settled/contextual; environment selection alone cannot manufacture a canonical wildlife population. Existing or later profiles require independent distribution/local-placement authority."
+    },
+    {
+      "preset_id": "ENVPRESET-07BE134638DA",
+      "preset_name": "Slums and Alleyways",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "distribution_dependent_no_auto_expansion",
+      "gap_ids": [],
+      "rationale": "The preset is primarily built/settled/contextual; environment selection alone cannot manufacture a canonical wildlife population. Existing or later profiles require independent distribution/local-placement authority."
+    },
+    {
+      "preset_id": "ENVPRESET-DFD76B3ECBEF",
+      "preset_name": "Marketplace",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "distribution_dependent_no_auto_expansion",
+      "gap_ids": [],
+      "rationale": "The preset is primarily built/settled/contextual; environment selection alone cannot manufacture a canonical wildlife population. Existing or later profiles require independent distribution/local-placement authority."
+    },
+    {
+      "preset_id": "ENVPRESET-BDCE065F24A7",
+      "preset_name": "Bustling Metropolis",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "distribution_dependent_no_auto_expansion",
+      "gap_ids": [],
+      "rationale": "The preset is primarily built/settled/contextual; environment selection alone cannot manufacture a canonical wildlife population. Existing or later profiles require independent distribution/local-placement authority."
+    },
+    {
+      "preset_id": "ENVPRESET-617F39174A2A",
+      "preset_name": "Port City",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-SI-HARBOR-DOCKS"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-49714607CDD6",
+      "preset_name": "Small Town or Hamlet",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew12_baseline_reuse_sufficient",
+      "gap_ids": [],
+      "rationale": "CEW-12 already provides adequate ordinary ecological breadth for this preset at the governed abstraction level; no quota-driven expansion is justified."
+    },
+    {
+      "preset_id": "ENVPRESET-DF973DEAEF4C",
+      "preset_name": "Nomadic Camp",
+      "environment_source_registry": "ENV-05_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "distribution_dependent_no_auto_expansion",
+      "gap_ids": [],
+      "rationale": "The preset is primarily built/settled/contextual; environment selection alone cannot manufacture a canonical wildlife population. Existing or later profiles require independent distribution/local-placement authority."
+    },
+    {
+      "preset_id": "ENVPRESET-FW-RIVER-STREAM",
+      "preset_name": "River / Stream",
+      "environment_source_registry": "ENV-06_FRESHWATER_WETLAND_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-FW-FLOWING"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-FW-LAKE-POND",
+      "preset_name": "Lake / Pond",
+      "environment_source_registry": "ENV-06_FRESHWATER_WETLAND_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew12_baseline_reuse_sufficient",
+      "gap_ids": [],
+      "rationale": "CEW-12 already provides adequate ordinary ecological breadth for this preset at the governed abstraction level; no quota-driven expansion is justified."
+    },
+    {
+      "preset_id": "ENVPRESET-FW-FLOODPLAIN",
+      "preset_name": "Floodplain",
+      "environment_source_registry": "ENV-06_FRESHWATER_WETLAND_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-FW-FLOODPLAIN"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-FW-DELTA-ESTUARY",
+      "preset_name": "River Delta / Estuary",
+      "environment_source_registry": "ENV-06_FRESHWATER_WETLAND_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-FW-ESTUARY"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-FW-MARSH-BOG-FEN",
+      "preset_name": "Marsh / Bog / Fen",
+      "environment_source_registry": "ENV-06_FRESHWATER_WETLAND_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-FW-PEAT-WETLAND"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-FW-FLOODED-FOREST",
+      "preset_name": "Flooded Forest",
+      "environment_source_registry": "ENV-06_FRESHWATER_WETLAND_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-FW-FLOODED-FOREST"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-MAR-COAST-SHORE",
+      "preset_name": "Coast / Shoreline / Beach",
+      "environment_source_registry": "ENV-07_COASTAL_MARINE_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew12_baseline_reuse_sufficient",
+      "gap_ids": [],
+      "rationale": "CEW-12 already provides adequate ordinary ecological breadth for this preset at the governed abstraction level; no quota-driven expansion is justified."
+    },
+    {
+      "preset_id": "ENVPRESET-MAR-TIDAL-FLATS",
+      "preset_name": "Tidal Flats",
+      "environment_source_registry": "ENV-07_COASTAL_MARINE_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-MAR-TIDAL-FLATS"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-MAR-CORAL-REEF",
+      "preset_name": "Coral Reef",
+      "environment_source_registry": "ENV-07_COASTAL_MARINE_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-MAR-CORAL-REEF"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-MAR-KELP-FOREST",
+      "preset_name": "Kelp Forest",
+      "environment_source_registry": "ENV-07_COASTAL_MARINE_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-MAR-KELP-FOREST"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-MAR-DEEP-OCEAN",
+      "preset_name": "Deep Ocean / Abyssal",
+      "environment_source_registry": "ENV-07_COASTAL_MARINE_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-MAR-DEEP-OCEAN"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-MAR-OCEAN-TRENCH",
+      "preset_name": "Ocean Trench",
+      "environment_source_registry": "ENV-07_COASTAL_MARINE_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-MAR-HADAL-TRENCH"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-OC-GRASSLAND",
+      "preset_name": "Grassland / Prairie",
+      "environment_source_registry": "ENV-08_OPEN_COUNTRY_DRY_LANDFORMS_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew12_baseline_reuse_sufficient",
+      "gap_ids": [],
+      "rationale": "CEW-12 already provides adequate ordinary ecological breadth for this preset at the governed abstraction level; no quota-driven expansion is justified."
+    },
+    {
+      "preset_id": "ENVPRESET-OC-SAVANNA",
+      "preset_name": "Savanna",
+      "environment_source_registry": "ENV-08_OPEN_COUNTRY_DRY_LANDFORMS_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-OC-SAVANNA"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-OC-STEPPE",
+      "preset_name": "Steppe",
+      "environment_source_registry": "ENV-08_OPEN_COUNTRY_DRY_LANDFORMS_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-OC-STEPPE"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-OC-SCRUB",
+      "preset_name": "Scrubland / Chaparral",
+      "environment_source_registry": "ENV-08_OPEN_COUNTRY_DRY_LANDFORMS_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-OC-SCRUB"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-DL-HILLS",
+      "preset_name": "Hills / Uplands",
+      "environment_source_registry": "ENV-08_OPEN_COUNTRY_DRY_LANDFORMS_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-DL-HILLS"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-DL-CANYON",
+      "preset_name": "Canyon / Badlands",
+      "environment_source_registry": "ENV-08_OPEN_COUNTRY_DRY_LANDFORMS_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-DL-CANYON"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-DL-ROCKY-DESERT",
+      "preset_name": "Rocky Desert",
+      "environment_source_registry": "ENV-08_OPEN_COUNTRY_DRY_LANDFORMS_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-DL-ROCKY-DESERT"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-DL-SALT-FLATS",
+      "preset_name": "Salt Flats",
+      "environment_source_registry": "ENV-08_OPEN_COUNTRY_DRY_LANDFORMS_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-DL-SALT-FLATS"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-CP-TAIGA",
+      "preset_name": "Taiga / Boreal Forest",
+      "environment_source_registry": "ENV-09_COLD_ALPINE_POLAR_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-CP-TAIGA"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-CP-TUNDRA",
+      "preset_name": "Tundra",
+      "environment_source_registry": "ENV-09_COLD_ALPINE_POLAR_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-CP-TUNDRA"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-CP-ALPINE",
+      "preset_name": "Alpine / High Mountain",
+      "environment_source_registry": "ENV-09_COLD_ALPINE_POLAR_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew12_baseline_reuse_sufficient",
+      "gap_ids": [],
+      "rationale": "CEW-12 already provides adequate ordinary ecological breadth for this preset at the governed abstraction level; no quota-driven expansion is justified."
+    },
+    {
+      "preset_id": "ENVPRESET-CP-GLACIER",
+      "preset_name": "Glacier / Icefield",
+      "environment_source_registry": "ENV-09_COLD_ALPINE_POLAR_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-CP-GLACIER"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-CP-POLAR-ICE",
+      "preset_name": "Polar Ice",
+      "environment_source_registry": "ENV-09_COLD_ALPINE_POLAR_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-CP-POLAR-ICE"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-CP-SEA-ICE",
+      "preset_name": "Sea Ice",
+      "environment_source_registry": "ENV-09_COLD_ALPINE_POLAR_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-CP-SEA-ICE"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-SI-FARMLAND",
+      "preset_name": "Farmland / Agricultural Countryside",
+      "environment_source_registry": "ENV-10_SETTLED_INDUSTRIAL_INFRASTRUCTURE_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-SI-FARMLAND"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-SI-SUBURB",
+      "preset_name": "Suburb / Residential District",
+      "environment_source_registry": "ENV-10_SETTLED_INDUSTRIAL_INFRASTRUCTURE_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-SI-SUBURB"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-SI-FRONTIER-OUTPOST",
+      "preset_name": "Frontier Outpost",
+      "environment_source_registry": "ENV-10_SETTLED_INDUSTRIAL_INFRASTRUCTURE_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "distribution_dependent_no_auto_expansion",
+      "gap_ids": [],
+      "rationale": "The preset is primarily built/settled/contextual; environment selection alone cannot manufacture a canonical wildlife population. Existing or later profiles require independent distribution/local-placement authority."
+    },
+    {
+      "preset_id": "ENVPRESET-SI-ROAD-TRAIL",
+      "preset_name": "Road / Wilderness Trail",
+      "environment_source_registry": "ENV-10_SETTLED_INDUSTRIAL_INFRASTRUCTURE_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-SI-ROAD-TRAIL"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-SI-MINE-QUARRY",
+      "preset_name": "Mine / Quarry",
+      "environment_source_registry": "ENV-10_SETTLED_INDUSTRIAL_INFRASTRUCTURE_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-SI-MINE-QUARRY"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-SI-FACTORY-REFINERY",
+      "preset_name": "Factory / Refinery",
+      "environment_source_registry": "ENV-10_SETTLED_INDUSTRIAL_INFRASTRUCTURE_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "distribution_dependent_no_auto_expansion",
+      "gap_ids": [],
+      "rationale": "The preset is primarily built/settled/contextual; environment selection alone cannot manufacture a canonical wildlife population. Existing or later profiles require independent distribution/local-placement authority."
+    },
+    {
+      "preset_id": "ENVPRESET-SI-POWER-UTILITY",
+      "preset_name": "Power Plant / Utility Complex",
+      "environment_source_registry": "ENV-10_SETTLED_INDUSTRIAL_INFRASTRUCTURE_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "distribution_dependent_no_auto_expansion",
+      "gap_ids": [],
+      "rationale": "The preset is primarily built/settled/contextual; environment selection alone cannot manufacture a canonical wildlife population. Existing or later profiles require independent distribution/local-placement authority."
+    },
+    {
+      "preset_id": "ENVPRESET-SI-FORTRESS-BASE",
+      "preset_name": "Fortress / Military Base",
+      "environment_source_registry": "ENV-10_SETTLED_INDUSTRIAL_INFRASTRUCTURE_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "distribution_dependent_no_auto_expansion",
+      "gap_ids": [],
+      "rationale": "The preset is primarily built/settled/contextual; environment selection alone cannot manufacture a canonical wildlife population. Existing or later profiles require independent distribution/local-placement authority."
+    },
+    {
+      "preset_id": "ENVPRESET-SI-TRANSIT-HUB",
+      "preset_name": "Transit Hub / Terminal",
+      "environment_source_registry": "ENV-10_SETTLED_INDUSTRIAL_INFRASTRUCTURE_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-SI-TRANSIT-HUB"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    },
+    {
+      "preset_id": "ENVPRESET-SI-HARBOR-DOCKS",
+      "preset_name": "Harbor / Dockyards",
+      "environment_source_registry": "ENV-10_SETTLED_INDUSTRIAL_INFRASTRUCTURE_PRESET_REGISTRY_v1.0.0.csv",
+      "coverage_status": "cew13_gap_expansion_authored",
+      "gap_ids": [
+        "GAP-SI-HARBOR-DOCKS"
+      ],
+      "rationale": "The preset exposes an ordinary ecological niche materially narrower than the CEW-12 broad habitat families; CEW-13 adds noncanonical ecological profiles only."
+    }
+  ],
+  "gap_anchors": [
+    {"gap_id":"GAP-FW-FLOWING","environment_preset_ids":["ENVPRESET-FW-RIVER-STREAM"],"coverage_issue":"flowing freshwater channel niche not distinguished by CEW-12 freshwater_river_lake umbrella","distinguishing_env_hs_facts":[{"dimension_id":"habitat_medium","value":"aquatic"},{"dimension_id":"water_salinity","value":"freshwater"},{"dimension_id":"water_flow","value":"flowing"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-FW-FLOODPLAIN","environment_preset_ids":["ENVPRESET-FW-FLOODPLAIN"],"coverage_issue":"recurring inundation mosaic not distinguished by CEW-12 wetland/open-country umbrella","distinguishing_env_hs_facts":[{"dimension_id":"water_permanence","value":"seasonal"},{"dimension_id":"moisture_band","value":"variable"},{"dimension_id":"substrates","value":"silt"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-FW-ESTUARY","environment_preset_ids":["ENVPRESET-FW-DELTA-ESTUARY","ENVPRESET-3202B9AFFBB0"],"coverage_issue":"freshwater-to-brackish/tidal transition not represented by CEW-12 coastal/freshwater umbrellas","distinguishing_env_hs_facts":[{"dimension_id":"water_salinity","value":"brackish"},{"dimension_id":"water_flow","value":"tidal"},{"dimension_id":"habitat_medium","value":"aquatic"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-FW-PEAT-WETLAND","environment_preset_ids":["ENVPRESET-FW-MARSH-BOG-FEN"],"coverage_issue":"peat wetland substrate and saturated niche not distinguished by CEW-12 wetland_marsh umbrella","distinguishing_env_hs_facts":[{"dimension_id":"substrates","value":"peat"},{"dimension_id":"moisture_band","value":"saturated"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-FW-FLOODED-FOREST","environment_preset_ids":["ENVPRESET-FW-FLOODED-FOREST"],"coverage_issue":"forest with persistent/recurrent shallow water not represented by separate CEW-12 habitat family","distinguishing_env_hs_facts":[{"dimension_id":"habitat_medium","value":"terrestrial"},{"dimension_id":"moisture_band","value":"saturated"},{"dimension_id":"vegetation_density","value":"dense"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-MAR-TIDAL-FLATS","environment_preset_ids":["ENVPRESET-MAR-TIDAL-FLATS"],"coverage_issue":"alternating exposed/submerged mud-sand flats need explicit tidal conditionality","distinguishing_env_hs_facts":[{"dimension_id":"water_flow","value":"tidal"},{"dimension_id":"substrates","value":"mud"},{"dimension_id":"depth_band","value":"surface"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-MAR-CORAL-REEF","environment_preset_ids":["ENVPRESET-MAR-CORAL-REEF"],"coverage_issue":"structured shallow coral habitat is absent from CEW-12 marine_open_water/coastal_intertidal umbrellas","distinguishing_env_hs_facts":[{"dimension_id":"substrates","value":"coral"},{"dimension_id":"depth_band","value":"shallow"},{"dimension_id":"habitat_medium","value":"aquatic"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-MAR-KELP-FOREST","environment_preset_ids":["ENVPRESET-MAR-KELP-FOREST"],"coverage_issue":"structured submerged vegetation is absent from CEW-12 broad marine families","distinguishing_env_hs_facts":[{"dimension_id":"habitat_medium","value":"aquatic"},{"dimension_id":"vegetation_density","value":"dense"},{"dimension_id":"depth_band","value":"shallow"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-MAR-DEEP-OCEAN","environment_preset_ids":["ENVPRESET-MAR-DEEP-OCEAN"],"coverage_issue":"deep/abyssal dark high-pressure water column is not distinguished by marine_open_water","distinguishing_env_hs_facts":[{"dimension_id":"depth_band","value":"abyssal"},{"dimension_id":"light_regime","value":"darkness"},{"dimension_id":"pressure_regime","value":"high"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-MAR-HADAL-TRENCH","environment_preset_ids":["ENVPRESET-MAR-OCEAN-TRENCH"],"coverage_issue":"trench/hadal extreme-depth niche is not represented in CEW-12","distinguishing_env_hs_facts":[{"dimension_id":"depth_band","value":"abyssal"},{"dimension_id":"light_regime","value":"darkness"},{"dimension_id":"pressure_regime","value":"extreme"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-OC-SAVANNA","environment_preset_ids":["ENVPRESET-OC-SAVANNA"],"coverage_issue":"grassland with scattered woody cover is coarser than CEW-12 grassland_open_country","distinguishing_env_hs_facts":[{"dimension_id":"vegetation_density","value":"open"},{"dimension_id":"moisture_band","value":"dry"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-OC-STEPPE","environment_preset_ids":["ENVPRESET-OC-STEPPE"],"coverage_issue":"semiarid open grass/shrub country is not distinguished by CEW-12 grassland umbrella","distinguishing_env_hs_facts":[{"dimension_id":"moisture_band","value":"dry"},{"dimension_id":"vegetation_density","value":"open"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-OC-SCRUB","environment_preset_ids":["ENVPRESET-OC-SCRUB"],"coverage_issue":"dense low-shrub open country is not distinguished by grassland/desert umbrellas","distinguishing_env_hs_facts":[{"dimension_id":"vegetation_density","value":"moderate"},{"dimension_id":"moisture_band","value":"dry"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-DL-HILLS","environment_preset_ids":["ENVPRESET-DL-HILLS"],"coverage_issue":"upland rolling open-country niche is not distinguished by CEW-12 alpine_mountain/open-country umbrellas","distinguishing_env_hs_facts":[{"dimension_id":"elevation_band","value":"upland"},{"dimension_id":"habitat_medium","value":"terrestrial"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-DL-CANYON","environment_preset_ids":["ENVPRESET-DL-CANYON"],"coverage_issue":"steep eroded rocky relief adds refuge/vertical niche specificity absent from CEW-12","distinguishing_env_hs_facts":[{"dimension_id":"substrates","value":"rock"},{"dimension_id":"shelter_availability","value":"structured"},{"dimension_id":"elevation_band","value":"upland"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-DL-ROCKY-DESERT","environment_preset_ids":["ENVPRESET-DL-ROCKY-DESERT"],"coverage_issue":"arid exposed rock/broken relief differs materially from CEW-12 generic desert_scrub","distinguishing_env_hs_facts":[{"dimension_id":"substrates","value":"rock"},{"dimension_id":"moisture_band","value":"arid"},{"dimension_id":"vegetation_density","value":"sparse"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-DL-SALT-FLATS","environment_preset_ids":["ENVPRESET-DL-SALT-FLATS"],"coverage_issue":"dry playa/hypersaline episodic-water niche is absent from CEW-12","distinguishing_env_hs_facts":[{"dimension_id":"water_salinity","value":"hypersaline"},{"dimension_id":"water_permanence","value":"ephemeral"},{"dimension_id":"vegetation_density","value":"none"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-CP-TAIGA","environment_preset_ids":["ENVPRESET-CP-TAIGA","ENVPRESET-D339447208B4"],"coverage_issue":"cold conifer forest is not distinguished by CEW-12 forest_woodland","distinguishing_env_hs_facts":[{"dimension_id":"temperature_band","value":"cold"},{"dimension_id":"vegetation_density","value":"dense"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-CP-TUNDRA","environment_preset_ids":["ENVPRESET-CP-TUNDRA","ENVPRESET-D339447208B4"],"coverage_issue":"treeless cold open country is only lightly represented by CEW-12 polar_tundra","distinguishing_env_hs_facts":[{"dimension_id":"temperature_band","value":"cold"},{"dimension_id":"vegetation_density","value":"sparse"},{"dimension_id":"settlement_intensity","value":"wilderness"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-CP-GLACIER","environment_preset_ids":["ENVPRESET-CP-GLACIER"],"coverage_issue":"moving land ice mass lacks CEW-12 glacier-specific profile coverage","distinguishing_env_hs_facts":[{"dimension_id":"substrates","value":"ice"},{"dimension_id":"temperature_band","value":"cold"},{"dimension_id":"shelter_availability","value":"scarce"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-CP-POLAR-ICE","environment_preset_ids":["ENVPRESET-CP-POLAR-ICE"],"coverage_issue":"persistent land ice differs from tundra and needs ice-substrate coverage","distinguishing_env_hs_facts":[{"dimension_id":"substrates","value":"ice"},{"dimension_id":"temperature_band","value":"extreme_cold"},{"dimension_id":"vegetation_density","value":"none"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-CP-SEA-ICE","environment_preset_ids":["ENVPRESET-CP-SEA-ICE"],"coverage_issue":"marine ice surface combines saltwater and ice substrate absent from CEW-12","distinguishing_env_hs_facts":[{"dimension_id":"substrates","value":"ice"},{"dimension_id":"water_salinity","value":"saltwater"},{"dimension_id":"temperature_band","value":"cold"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-SI-FARMLAND","environment_preset_ids":["ENVPRESET-SI-FARMLAND"],"coverage_issue":"cultivated-food rural mosaic is broader than CEW-12 settled_rural_urban profiles","distinguishing_env_hs_facts":[{"dimension_id":"settlement_intensity","value":"rural"},{"dimension_id":"food_resource_conditions","value":"cultivated_food"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-SI-SUBURB","environment_preset_ids":["ENVPRESET-SI-SUBURB"],"coverage_issue":"low-density residential habitat needs suburban structure/waste-scavenging specialization","distinguishing_env_hs_facts":[{"dimension_id":"settlement_intensity","value":"suburban"},{"dimension_id":"food_resource_conditions","value":"waste_scavenging"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-SI-ROAD-TRAIL","environment_preset_ids":["ENVPRESET-SI-ROAD-TRAIL"],"coverage_issue":"linear terrestrial corridor needs edge/corridor-tolerant wildlife profiles without implying range","distinguishing_env_hs_facts":[{"dimension_id":"habitat_medium","value":"terrestrial"},{"dimension_id":"shelter_availability","value":"limited"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-SI-MINE-QUARRY","environment_preset_ids":["ENVPRESET-SI-MINE-QUARRY"],"coverage_issue":"resource-extraction subterranean/artificial niche is absent from CEW-12 cave-only coverage","distinguishing_env_hs_facts":[{"dimension_id":"habitat_medium","value":"subterranean"},{"dimension_id":"substrates","value":"artificial_structure"},{"dimension_id":"settlement_intensity","value":"industrial"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-SI-TRANSIT-HUB","environment_preset_ids":["ENVPRESET-SI-TRANSIT-HUB"],"coverage_issue":"dense transport interchange/stored-supply niche is not distinguished by settled_rural_urban","distinguishing_env_hs_facts":[{"dimension_id":"settlement_intensity","value":"urban"},{"dimension_id":"food_resource_conditions","value":"stored_supplies"},{"dimension_id":"shelter_availability","value":"structured"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-SI-HARBOR-DOCKS","environment_preset_ids":["ENVPRESET-SI-HARBOR-DOCKS","ENVPRESET-617F39174A2A"],"coverage_issue":"waterfront logistics combines coastal water and built/waste resource conditions","distinguishing_env_hs_facts":[{"dimension_id":"settlement_intensity","value":"industrial"},{"dimension_id":"food_resource_conditions","value":"waste_scavenging"},{"dimension_id":"water_salinity","value":"saltwater"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false},
+    {"gap_id":"GAP-SUBMERGED-CAVE","environment_preset_ids":["ENVPRESET-646E783454A9"],"coverage_issue":"submerged subterranean habitat is not represented by either cave or freshwater/marine umbrella alone","distinguishing_env_hs_facts":[{"dimension_id":"habitat_medium","value":"subterranean"},{"dimension_id":"moisture_band","value":"submerged"},{"dimension_id":"light_regime","value":"darkness"}],"resolution":"cew13_profiles_authored","canonical_distribution_created":false,"canonical_identity_created":false}
+  ],
+  "audit_summary": {
+    "cew12_baseline_reuse_sufficient": 14,
+    "cew13_gap_expansion_authored": 32,
+    "distribution_dependent_no_auto_expansion": 17,
+    "deferred_extraordinary_cew15": 3,
+    "deferred_nonordinary_cew14": 10
+  },
+  "mutation_boundary": {
+    "canonical_creature_definitions_created": false,
+    "canonical_distribution_authored": false,
+    "encounter_placement_created": false,
+    "relationship_state_created": false,
+    "multiversal_app_runtime_mutation": false,
+    "schema_mutation": false,
+    "ui_mutation": false,
+    "migration_mutation": false
+  }
+}
