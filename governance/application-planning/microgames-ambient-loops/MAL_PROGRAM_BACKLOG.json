@@ -1,7 +1,7 @@
 # MAL — Microgames & Ambient Loops
 
 **Program ID:** MAL  
-**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH MAL-07; MAL-08 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH MAL-07; MAL-08 IN_PROGRESS  
 **Activation:** after completed_verified SCL-11  
 **Successor:** ALP-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,9 +9,9 @@
 
 ## Current state
 
-MAL-01 through MAL-07 are `completed_verified`. MAL-08 — Character, World, Project & Event Integration / Reward Boundaries — is `selected_not_started` from exact application main `038891af5c8617c32fde984fe33f6c68fe9df0c2` with implementation branch `null` and implementation authority `false`.
+MAL-01 through MAL-07 are `completed_verified`. MAL-08 — Character, World, Project & Event Integration / Reward Boundaries — is `in_progress` from exact application main `038891af5c8617c32fde984fe33f6c68fe9df0c2` on `integration/mal-08-owner-integration-reward-boundaries` with bounded implementation authority `true`.
 
-MAL-07 completed the bounded reference bridge between frozen MAL primitives/Aniloops and completed GCL-01..12 records. GCL remains canonical. No GCL discovery/recommendation, composition-engine authority, GCL record mutation, hidden-library search or unfinished GCL content was introduced.
+MAL-08 is limited to deterministic typed MAL-local references, proposals and handoffs toward canonical Character/NPC, World/Scene, Project/progression and Action/Event owners plus explicit reward-boundary requests. Canonical owner domains remain authoritative. MAL-local completion is never itself a canonical owner-domain mutation, acknowledgement, progression result or reward grant.
 
 ## Frozen contracts
 
@@ -21,34 +21,23 @@ MAL-07 completed the bounded reference bridge between frozen MAL primitives/Anil
 - **MAL-04:** original MAL-local interaction/simple-conflict/hazard/pickup-reference/objective projections. Hidden interaction state remains unresolved; canonical owner domains remain external.
 - **MAL-05:** original MAL-local NPC/enemy behavior and tiny deterministic state machines. Hidden intent, awareness, target and pathing state remains unresolved; no autonomous canonical NPC/Character agency is created.
 - **MAL-06:** original deterministic MAL-local Aniloop compositions for travel, repair, downtime, transition and spacewalk. Loop completion never commits canonical owner-domain truth.
-- **MAL-07:** original deterministic GM composition recipes and reference-only bindings to completed GCL-01..12. Missing, hidden, unauthorized or unfinished GCL references remain unresolved. GCL remains canonical and no GCL-16 discovery/recommendation or GCL-17 composition-engine authority is implemented.
+- **MAL-07:** original deterministic GM composition recipes and reference-only bindings to completed GCL-01..12. Missing, hidden, unauthorized or unfinished GCL references remain unresolved. GCL remains canonical and no GCL discovery/recommendation or composition-engine authority is implemented.
 
-## MAL-07 completed evidence
+## MAL-08 governed boundary
 
-- Governed-start AIOC PR: `944`
-- Governed-start exact head: `3df60d577b905fb0f13512721ae9a5af94294e75`
-- Governed-start Repository Health: run `33825825930`, job `100878150294`
-- Governed-start merge: `a0525f5aba973ce378c9f853cd088a4cc88dec89`
-- Genuine RED head: `232b1f30fb1112b40da7c685087b9d345201951a`
-- Genuine RED run: `33826235193`
-- RED deterministic receipt: `f38d0364fd802de8ccb47e938bc2abfed1bd0e761e0cd6cffdd2e17d06c67fff`
-- Final validated head: `34175d009fc33b8e36bfe353c6551c531aed8006`
-- Final run: `33826401813`
-- Final deterministic receipt: `ed6d3b48dceec38d018c90148aab441ca78e07c35fcf714745cf0a269d54fbcb`
-- Application PR: `402`
-- Application merge: `038891af5c8617c32fde984fe33f6c68fe9df0c2`
-- Repair cycles: `0`
-- Historical predecessor profile fanout: `0`
-- Unchanged-evidence reruns: `0`
-- Post-merge stale-pointer incidents: `0`
+Owner reference kinds: `character-npc`, `world-scene`, `project-progression`, `action-event`, `inventory-asset`, `combat`, `travel`, `reward`, `permission`.
 
-## MAL-08 selected boundary
+Handoff intents: `observe-owner-reference`, `propose-character-npc-effect`, `propose-world-scene-effect`, `propose-project-progression-effect`, `propose-action-event`, `propose-reward-request`.
 
-MAL-08 may be governed-started only by a future owner `Continue`. Until that start, no Character/NPC, World/Scene, Project/progression, Action/Event integration or reward-boundary application mutation is authorized.
+Handoff states: `reference-linked-local`, `proposal-prepared-local`, `owner-handoff-ready-local`, `blocked-local`, `unresolved`.
 
-Future MAL-08 work must preserve canonical owner authority and use explicit typed references/handoffs. MAL-local completion cannot itself become canonical Character, World, Project, Event, Inventory, Combat, Travel, progression, reward or Permission truth.
+Reward boundary states: `not-requested`, `proposal-only`, `owner-authorization-required`, `owner-acknowledged-reference`, `owner-rejected-reference`, `unresolved`.
 
-Unknown, hidden or unauthorized owner-domain state remains unresolved. AI remains proposal-only and may not invent hidden state, commit owner-domain outcomes or grant rewards.
+Unknown, hidden or unauthorized owner-domain state remains `unresolved`. MAL-08 never invents owner acknowledgements, commits owner outcomes, mutates canonical state or grants/transfers/creates/equips/consumes rewards. AI remains proposal-only.
+
+The same authorized references, MAL-local state and logical tick must produce the same local handoff state and deterministic receipt. Wall-clock time, frame timing, device identity, network timing and nondeterministic randomness are not outcome truth.
+
+MAL-07 GCL integration remains frozen. No unfinished GCL authority, GCL discovery/recommendation or GCL composition-engine behavior is added.
 
 No durable persistence, migration `0022`, MAL-09+, ALP-01+, provider activation, tester distribution, release or deployment is authorized.
 
@@ -61,10 +50,10 @@ No durable persistence, migration `0022`, MAL-09+, ALP-01+, provider activation,
 5. **MAL-05 — NPC/Enemy Behavior & Tiny State Machines** — completed_verified.
 6. **MAL-06 — Aniloops, Travel, Repair, Downtime, Transition & Spacewalk Loops** — completed_verified.
 7. **MAL-07 — GM Composition Recipes & GCL Integration** — completed_verified.
-8. **MAL-08 — Character, World, Project & Event Integration / Reward Boundaries** — selected_not_started without implementation authority.
+8. **MAL-08 — Character, World, Project & Event Integration / Reward Boundaries** — in_progress with bounded implementation authority.
 9. **MAL-09 — Accessibility, Mobile/Input, Performance & Nonblocking Fallbacks** — planned.
 10. **MAL-10 — Starter Library & Golden Microgame/Aniloop Proof** — planned.
 
 ## Current invariant
 
-MAL-01..07 remain frozen. MAL-08 has no implementation authority until a future governed start. MAL-09+, ALP-01+, provider activation, tester distribution, release and deployment remain unauthorized.
+MAL-01..07 remain frozen. MAL-08 authority is bounded to typed local owner references/proposals/handoffs and reward-boundary semantics from exact baseline `038891af5c8617c32fde984fe33f6c68fe9df0c2`. Canonical owner mutation, reward grant, hidden-state inference, persistence, migration `0022`, MAL-09+, ALP-01+, provider activation, tester distribution, release and deployment remain unauthorized.
