@@ -1,0 +1,126 @@
+{
+  "schema_version": "0.1.0",
+  "program_id": "CAB",
+  "tranche_id": "CAB-06",
+  "state": "completed_verified_analysis_pending_owner_calibration_answers",
+  "owner": "John Brandon Turner",
+  "source_audit": {
+    "ability_records_total": 4816,
+    "numeric_direct_ability_cost_records": 1712,
+    "numeric_or_source_expressed_tier_unlock_records": 1338,
+    "numeric_upgrade_cost_records": 402,
+    "direct_cost_percentiles_xp": {"p05":150,"p10":200,"p25":387.5,"p50":700,"p75":2500,"p90":5000,"p95":7500,"p99":20000},
+    "common_direct_ladders": [
+      {"values":[500,1000,2000,3500,5000],"groups":12},
+      {"values":[175,500,1250,2750,6250],"groups":10},
+      {"values":[50,75,150,200,300],"groups":8},
+      {"values":[3000,7500,15000,25000,40000],"groups":4}
+    ],
+    "dominant_recovered_unlock_ladder": [500,2000,5000,10000,20000],
+    "interpretation": "source prices are provenance and evidence but not one calibrated current economy"
+  },
+  "pricing_separation": {
+    "progression_open_xp": "access_to_new_ordinary_progression_graph",
+    "tier_access_xp": "developmental_depth_commitment",
+    "direct_ability_xp": "actual_permanent_effect_burden",
+    "upgrade_xp": "incremental_effect_burden",
+    "reference_advancement_value_xp": "audit_value_even_when_final_debit_is_zero",
+    "final_xp_debit": "actual_character_currency_spent"
+  },
+  "working_calibration_unit": {
+    "name": "CU",
+    "xp_per_cu": 250,
+    "spendable_currency": false,
+    "player_facing_currency": false,
+    "ability_points_replacement": false,
+    "purpose": "design_and_QA_relative_anchor_only",
+    "absolute_scale_owner": ["CAB-16","CAB-17","CAB-21"]
+  },
+  "direct_ability_reference_bands": [
+    {"band":"G","cu":0,"xp_anchor":0,"meaning":"explicit grant/included; preserve nonzero reference value when mechanics have value"},
+    {"band":"A","cu":1,"xp_anchor":250,"meaning":"minor narrow permanent capability"},
+    {"band":"B","cu":2,"xp_anchor":500,"meaning":"standard reliable single-purpose capability"},
+    {"band":"C","cu":4,"xp_anchor":1000,"meaning":"significant combat utility defense mobility or reliability capability"},
+    {"band":"D","cu":8,"xp_anchor":2000,"meaning":"major encounter or problem shaping capability"},
+    {"band":"E","cu":16,"xp_anchor":4000,"meaning":"exceptional broad persistent transformation immunity or high-flexibility capability"},
+    {"band":"F","cu":32,"xp_anchor":8000,"meaning":"extreme transformative starting anchor; manual review; may extend above 32 CU"}
+  ],
+  "burden_dimensions": [
+    "effect_magnitude_severity",
+    "breadth_flexibility",
+    "reliability_defense_interaction",
+    "action_economy",
+    "usage_frequency",
+    "duration_persistence",
+    "targets_area_range",
+    "resource_cost_regeneration",
+    "scaling",
+    "stacking_synergy_exposure",
+    "summons_minions_action_multiplication",
+    "immunity_negation",
+    "challenge_bypass_information_mobility_social_crafting",
+    "transformation_form_bundle"
+  ],
+  "not_automatic_price_factors": [
+    "tier_number_alone",
+    "mechanical_complexity_alone",
+    "narrative_rarity_alone",
+    "prerequisite_count_alone",
+    "training_time_alone",
+    "special_acquisition_alone"
+  ],
+  "manual_review_triggers": [
+    "extra_actions_or_reactions",
+    "persistent_summons_or_minions",
+    "broad_immunity_or_automatic_negation",
+    "multiplicative_stacking",
+    "self_sustaining_resource_loops",
+    "broad_permanent_transformation_bundle",
+    "duplicate_benefit_across_forms",
+    "remote_or_large_scale_information_or_control",
+    "permanent_asset_or_capability_creation",
+    "strong_growth_with_other_owned_options",
+    "recursive_or_unlimited_replication"
+  ],
+  "working_access_anchors": {
+    "additional_ordinary_progression_open": {"cu":4,"xp":1000},
+    "tier2": {"cu":2,"xp":500},
+    "tier3": {"cu":5,"xp":1250},
+    "tier4": {"cu":10,"xp":2500},
+    "tier5": {"cu":20,"xp":5000},
+    "tier1": "included_when_progression_legitimately_opened",
+    "absolute_values_provisional": true,
+    "ratios_more_stable_than_absolute_scale": true
+  },
+  "prestige_entry_candidate": {
+    "declared_start_tier": 3,
+    "explicit_requirements_required": true,
+    "phantom_tier1_tier2_backpay": false,
+    "automatic_extra_tree_open_charge_on_top_of_tier3": false,
+    "default_access_debit": {"cu":5,"xp":1250},
+    "first_ability_direct_cost_still_applies": true,
+    "owning_rule_may_override": true
+  },
+  "reference_advancement_value": {
+    "recommended": true,
+    "spendable_currency": false,
+    "free_grant_final_debit_can_be_zero": true,
+    "mechanical_reference_value_retained": true,
+    "uses": ["species_balance","grant_balance","equal_xp_benchmarking","migration_review","content_repricing"]
+  },
+  "upgrade_policy": "price_incremental_effect_burden_not_percentage_of_base",
+  "hp_working_test_schedule": [
+    {"block":"first_plus5","marginal_cu":2,"marginal_xp":500,"cumulative_hp":5,"cumulative_xp":500},
+    {"block":"second_plus5","marginal_cu":3,"marginal_xp":750,"cumulative_hp":10,"cumulative_xp":1250},
+    {"block":"third_plus5","marginal_cu":4,"marginal_xp":1000,"cumulative_hp":15,"cumulative_xp":2250},
+    {"block":"fourth_plus5","marginal_cu":6,"marginal_xp":1500,"cumulative_hp":20,"cumulative_xp":3750}
+  ],
+  "deferred_cost_families": {
+    "attributes_skills_knowledges_proficiencies": "CAB-10",
+    "survivability_validation": ["CAB-14","CAB-15"],
+    "absolute_pacing_scale": ["CAB-16","CAB-17"],
+    "veteran_stress": "CAB-18"
+  },
+  "owner_questions": ["CAB-Q06-01","CAB-Q06-02","CAB-Q06-03","CAB-Q06-04","CAB-Q06-05"],
+  "strict_successor": "CAB-07"
+}

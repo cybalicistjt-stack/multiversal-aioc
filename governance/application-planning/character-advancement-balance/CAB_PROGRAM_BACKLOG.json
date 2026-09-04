@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.6.1",
+  "schema_version": "0.7.0",
   "program_id": "CAB",
   "program_name": "Character Advancement & Balance",
   "owner": "John Brandon Turner",
@@ -7,17 +7,17 @@
   "governing_document": "governance/application-planning/character-advancement-balance/CAB_CHARACTER_ADVANCEMENT_BALANCE_PROGRAM.md",
   "execution_envelope": "Each tranche is bounded below the 25-minute tool cutoff; overflow becomes an explicit follow-on rather than expanding the active tranche.",
   "status": "in_progress",
-  "completed_through": "CAB-05",
-  "current_work_item_id": "CAB-06",
-  "current_state": "selected_not_started",
+  "completed_through": "CAB-06",
+  "current_work_item_id": "CAB-07",
+  "current_state": "selected_not_started_pending_owner_answers",
   "tranches": [
     {"id":"CAB-01","name":"Authority, Source Census & AP Retirement","status":"completed_verified"},
     {"id":"CAB-02","name":"Current XP Economy Reconstruction","status":"completed_verified"},
     {"id":"CAB-03","name":"Character-Creation Baseline","status":"completed_verified"},
     {"id":"CAB-04","name":"Advancement Architecture","status":"completed_verified"},
-    {"id":"CAB-05","name":"Five-Tier Model","status":"completed_verified","artifacts":["CAB-05_FIVE_TIER_MODEL.md","CAB-05_TIER_SEMANTICS_v0.1.0.json","CAB-05_OWNER_QUESTIONNAIRE.md","CAB-05_OWNER_DECISIONS_2026-09-04.md","CAB-05_COMPLETION_REPORT.md"]},
-    {"id":"CAB-06","name":"XP Cost Calibration Framework","status":"selected_not_started"},
-    {"id":"CAB-07","name":"Action Economy & Simultaneous Power","status":"not_started"},
+    {"id":"CAB-05","name":"Five-Tier Model","status":"completed_verified"},
+    {"id":"CAB-06","name":"XP Cost Calibration Framework","status":"completed_verified","artifacts":["CAB-06_XP_COST_CALIBRATION_FRAMEWORK.md","CAB-06_SOURCE_COST_AUDIT.md","CAB-06_COST_CALIBRATION_MODEL_v0.1.0.json","CAB-06_OWNER_QUESTIONNAIRE.md","CAB-06_COMPLETION_REPORT.md"]},
+    {"id":"CAB-07","name":"Action Economy & Simultaneous Power","status":"selected_not_started_pending_owner_answers"},
     {"id":"CAB-08","name":"Stacking, Synergy & Power Multiplication","status":"not_started"},
     {"id":"CAB-09","name":"Acquisition & Eligibility","status":"not_started"},
     {"id":"CAB-10","name":"Attributes, Skills & Proficiencies","status":"not_started"},
@@ -35,8 +35,8 @@
     {"id":"CAB-22","name":"Final Rules & Content Repair Map","status":"not_started"},
     {"id":"CAB-23","name":"Completion Audit & Handoff","status":"not_started"}
   ],
-  "strict_next": "CAB-06",
-  "selection_note": "CAB-05 is completed_verified and all owner tier-policy gates are resolved. CAB-06 XP Cost Calibration Framework is selected_not_started and may execute immediately.",
+  "strict_next": "CAB-07",
+  "selection_note": "CAB-06 completed the bounded XP Cost Calibration Framework. CAB-07 Action Economy & Simultaneous Power is selected_not_started but execution is held until the five CAB-06 owner calibration questions are answered or explicitly deferred. No unanswered item may silently default.",
   "cab03_supported_baseline": {
     "default_starting_advancement_xp": 1300,
     "default_starting_xp_status": "working_normal_start_default_recalibratable_after_cab_evidence",
@@ -46,49 +46,46 @@
     "base_attributes": 10,
     "species_modifiers_apply_before_free_pool": true,
     "normal_free_attribute_pool": 12,
-    "regular_high_hyper_status": "optional_future_campaign_packages_pending_full_rebalance_not_current_numeric_rules",
     "background_universal_1800_xp_cap": false,
     "creation_permanent_hp_buy_allowed": true,
-    "creation_hp_buy_prices": "provisional_pending_CAB-06",
     "starting_ability_trees_free": 5,
     "starting_tier1_abilities_free": 5,
     "unspent_xp_carries_forward": true
   },
   "cab04_architecture": {
-    "separate_gates": ["authority","availability","eligibility","prerequisites","tier_depth_access","learning_acquisition_readiness","affordability_xp","conflicts_exclusions","approval","commit"],
     "xp_role": "affordability_and_permanent_advancement_commitment",
     "universal_prior_tier_quantity_gate": false,
-    "tree_specific_mastery_counts_allowed": true,
     "learning_project_default": "conditional_when_owning_rule_requires",
-    "gm_campaign_learning_override": "explicit_attributable_add_waive_shorten_extend_or_modify_without_implicit_price_or_other_gate_change",
+    "gm_campaign_learning_override": "explicit_attributable",
     "int_wis_learning_hook": "applicable_learning_progress_or_readiness_not_global_xp_multiplier_or_blanket_discount",
-    "grant_default": "free_cost_and_source_established_eligibility_only_other_bypasses_explicit",
-    "special_acquisition": "eligibility_or_readiness_not_price"
+    "grant_default": "free_cost_and_source_established_eligibility_only_other_bypasses_explicit"
   },
   "cab05_tier_model": {
     "tier_count": 5,
-    "authoritative_identity": "numeric_tier_1_to_5",
     "shared_descriptors": {"1":"Foundation","2":"Developed","3":"Advanced","4":"Expert","5":"Apex"},
     "meaning": "relative_developmental_depth_within_owning_progression_scope",
-    "not_universal_power_or_price_scalar": true,
-    "tier_scope_requires_stable_identity": true,
-    "cross_scope_unlock_prohibited_by_default": true,
-    "universal_prior_tier_quantity_gate": false,
-    "ordinary_higher_tier_access": "one_time_xp_unlock_T2_to_T5_plus_individual_ability_costs_with_explicit_special_progression_modes_allowed",
-    "short_tree_policy": "early_cap_allowed_contiguous_from_declared_start_to_cap_internal_gaps_warn_no_synthetic_filler",
+    "ordinary_higher_tier_access": "one_time_xp_unlock_T2_to_T5_plus_individual_ability_costs",
     "prestige_progression_policy": "may_start_at_T3_with_explicit_entry_requirements_T1_T2_not_missing",
-    "tier5_semantics": "apex_within_owning_progression_not_universal_world_shaping_floor",
-    "numeric_price_calibration_owner": "CAB-06"
+    "tier5_semantics": "apex_within_owning_progression_not_universal_world_shaping_floor"
+  },
+  "cab06_calibration": {
+    "source_prices_wholesale_authoritative": false,
+    "pricing_components_separate": ["progression_open","tier_access","direct_ability_effect","upgrade_increment","reference_advancement_value","final_xp_debit"],
+    "candidate_calibration_unit": {"cu_xp":250,"spendable":false,"owner_question":"CAB-Q06-01"},
+    "candidate_direct_bands_xp": [250,500,1000,2000,4000,8000],
+    "candidate_access_anchors_xp": {"extra_progression":1000,"tier2":500,"tier3":1250,"tier4":2500,"tier5":5000},
+    "candidate_prestige_entry": "T3_access_only_after_requirements_no_T1_T2_backpay_no_automatic_extra_tree_charge",
+    "candidate_hp_cumulative_xp": {"plus5":500,"plus10":1250,"plus15":2250,"plus20":3750},
+    "candidate_reference_advancement_value": true,
+    "attributes_skills_knowledges_proficiencies_owner": "CAB-10",
+    "absolute_pacing_scale_owner": ["CAB-16","CAB-17"]
   },
   "owner_questionnaire": {
-    "path": "governance/application-planning/character-advancement-balance/CAB-05_OWNER_QUESTIONNAIRE.md",
-    "status": "resolved_by_owner_2026-09-04",
-    "decision_artifact": "governance/application-planning/character-advancement-balance/CAB-05_OWNER_DECISIONS_2026-09-04.md",
-    "decisions": {
-      "CAB-Q05-01": "A",
-      "CAB-Q05-02": "A",
-      "CAB-Q05-03": "A_with_prestige_T3_declared_start_and_explicit_requirements",
-      "CAB-Q05-04": "A"
-    }
+    "path": "governance/application-planning/character-advancement-balance/CAB-06_OWNER_QUESTIONNAIRE.md",
+    "status": "awaiting_owner_answers",
+    "required_before_execution": "CAB-07",
+    "questions": ["CAB-Q06-01","CAB-Q06-02","CAB-Q06-03","CAB-Q06-04","CAB-Q06-05"],
+    "recommendations": {"CAB-Q06-01":"A","CAB-Q06-02":"A","CAB-Q06-03":"A","CAB-Q06-04":"A","CAB-Q06-05":"A"},
+    "unanswered_policy": "remain_unresolved_no_silent_default"
   }
 }
