@@ -1,11 +1,17 @@
 # ALP — Achievements, Learning & Practice
 
 **Program ID:** ALP  
-**Status:** OWNER-APPROVED — PLANNED INTERSTITIAL  
-**Activation:** after MAL-10  
+**Status:** OWNER-APPROVED — ALP-01 SELECTED_NOT_STARTED  
+**Activation:** after completed_verified MAL-10  
 **Successor:** VTI-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-08-27
+
+## Current state
+
+MAL is `completed_verified` through MAL-10 on exact application main `5af518c1a88a5f07dbd4d1f328b18ef07f6e2ee2`. ALP-01 — Authority Crosswalk & Achievement/Learning/Practice Taxonomy — is the strict successor and is `selected_not_started` from that exact application baseline with no implementation branch and no implementation authority.
+
+A future owner `Continue` must perform one bounded ALP-01 governed start before any achievement, learning or practice product mutation.
 
 ## Purpose
 
@@ -41,11 +47,6 @@ Recovered basis: RDC-08A/RDC-08B, RD-13 and RD-16. The owner has explicitly dire
 8. **ALP-08 — MAL/ISE/WCI/GCL Integration & Golden Learning/Recognition Proof**  
    Prove one platform learning path, one GM-authored campaign achievement and one diegetic practice experience using ISE/MAL where useful, while demonstrating that users can learn and play without either microgames or achievement gating.
 
-## Invariants
+## Selection invariant
 
-- Achievements are optional recognition/learning structures, not universal permission gates.
-- Achievement completion cannot grant unrelated capabilities by implication.
-- Mechanically meaningful rewards commit only through their owning Reward/Progression/Reputation/Faction systems.
-- Platform learning badges and campaign achievements remain distinguishable in scope and authorship.
-- Diegetic practice is optional; tutorials may remain ordinary UI/help experiences.
-- AI may explain progress or propose criteria but may not silently award achievements or infer hidden completion evidence.
+ALP-01 selection grants no implementation authority. Achievements remain optional recognition/learning structures, not universal permission gates. Achievement completion cannot grant unrelated capabilities by implication. Mechanically meaningful rewards commit only through their owning Reward/Progression/Reputation/Faction systems. Platform learning badges and campaign achievements remain distinguishable in scope and authorship. Diegetic practice remains optional. AI may explain progress or propose criteria but may not silently award achievements or infer hidden completion evidence. ALP-02+, VTI-01+, provider activation, tester distribution, release and deployment remain unauthorized.
