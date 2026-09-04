@@ -1,92 +1,47 @@
 # CAB-04 — Owner Questionnaire
 
 **Program:** CAB — Character Advancement & Balance  
-**Purpose:** resolve the four advancement-architecture policy choices that remain after CAB-04 separates XP, prerequisites, eligibility, tier access, learning and grants. Unanswered questions remain unresolved and do not silently default.
+**Status:** `resolved_by_owner_2026-09-04`  
+**Decision artifact:** `CAB-04_OWNER_DECISIONS_2026-09-04.md`
 
-## CAB-Q04-01 — Should there be a universal prior-tier quantity requirement?
+This questionnaire is retained as provenance. All four questions are resolved and no longer block CAB-05.
 
-**Decision impact:** VERY HIGH  
-**CAB recommendation:** **A**.
+## CAB-Q04-01 — Universal prior-tier quantity requirement
 
-A. **Recommended:** no universal prior-tier quantity gate. Specific trees may require explicit prior nodes, a defined number of prior abilities, a situational perk, skill/Knowledge ranks or other mastery evidence where that tree genuinely needs it. Explicit node/path prerequisites are preferred over filler purchases.
+**Owner answer:** **A**.
 
-B. Use a universal rule requiring at least two abilities from the immediately prior tier before the next tier can be accessed.
+There is no universal prior-tier quantity gate. Individual trees/paths may use explicit prior nodes, counts, perks, Skills, Knowledges, attributes, milestones, or other mastery evidence where their owning rules require them. The old universal 5 / 4 / 3 / 2 ladder remains deprecated.
 
-C. Restore a universal 5 / 4 / 3 / 2 prior-tier quantity ladder.
+## CAB-Q04-02 — Breadth of training/practice requirement
 
-D. Defer the universal-gate question to CAB-05.
+**Owner answer:** **A, with GM override.**
 
-**Reasoning:** the corpus already contains many different prerequisite structures, small trees cannot all support the same count requirement, and universal quantity gates can force low-value filler purchases. A tree-specific prerequisite can still require breadth where breadth is thematically or mechanically meaningful.
+Learning/development projects apply only where the owning advancement rule requires study, practice, instruction, exposure, acclimation, attunement, research, or similar development. Other advancements may proceed immediately once all other gates are satisfied.
 
----
+A GM/Campaign policy may explicitly add, waive, shorten, extend, or otherwise modify a learning requirement. The override must be attributable and does not silently change XP price or unrelated eligibility/prerequisite/exclusion gates.
 
-## CAB-Q04-02 — How broadly should training/practice be required for post-creation advancement?
+## CAB-Q04-03 — Intelligence/Wisdom faster-learning attachment
 
-**Decision impact:** HIGH  
-**CAB recommendation:** **A**.
+**Owner answer:** **A**.
 
-A. **Recommended:** learning/development projects apply when the owning ability, skill, Knowledge, archetype or acquisition rule says the advancement requires study, practice, exposure, attunement, instruction or another learning process. Advancements with no such requirement may commit immediately once eligibility, prerequisites, tier access, XP and approvals are satisfied.
+Intelligence/Wisdom improve applicable learning-project rate or efficiency rather than automatically increasing XP awards or reducing every XP purchase cost. The owning learning mode determines which attribute applies. Exact formulas remain CAB-10 work, with pacing validation later in CAB-16/17/18.
 
-B. Every post-creation permanent advancement requires a learning/training project before it can be purchased.
+## CAB-Q04-04 — Free-grant bypass semantics
 
-C. Do not use learning/training projects as an advancement gate; if a Character has eligibility, prerequisites and XP, the advancement is immediate.
+**Owner answer:** **A**.
 
-D. Defer until CAB-10/CAB-16.
+A free grant waives XP cost. It satisfies eligibility when the grant source itself establishes eligibility. Prerequisites, tier/depth access, learning requirements, and exclusions are bypassed only when the granting rule explicitly establishes, substitutes for, or waives them.
 
-**Reasoning:** a universal training gate adds bookkeeping to every advancement and does not fit grants, innate changes, milestone unlocks or some experiential development. A tagged learning requirement preserves meaningful training where it matters and gives Intelligence/Wisdom a clean place to affect learning speed.
-
----
-
-## CAB-Q04-03 — Where should the high-Intelligence / high-Wisdom faster-learning benefit attach?
-
-**Decision impact:** HIGH  
-**CAB recommendation:** **A**.
-
-A. **Recommended:** Intelligence/Wisdom improve the rate or efficiency of applicable learning/development projects — for example less required training time or faster progress — but do not automatically increase XP awards or reduce every XP purchase cost. The owning learning mode determines whether Intelligence, Wisdom or a specific governed combination applies. Exact formulas are deferred to CAB-10 and pacing tests.
-
-B. High Intelligence/Wisdom reduce the XP cost of learned advancements.
-
-C. High Intelligence/Wisdom increase the amount of XP the Character earns.
-
-D. Use a mixture of learning-speed, XP-cost and/or XP-award effects depending on domain.
-
-E. Defer the mechanism to CAB-10.
-
-**Reasoning:** Option A directly models “learns faster” while avoiding permanent compounding divergence in the XP income stream and avoiding a broad-stat discount on nearly every permanent purchase.
-
----
-
-## CAB-Q04-04 — What does a free grant bypass by default?
-
-**Decision impact:** HIGH  
-**CAB recommendation:** **A**.
-
-A. **Recommended:** a grant waives the XP cost when it says the option is free. It satisfies eligibility only when the grant source itself establishes that eligibility, and it bypasses prerequisites/learning/exclusions only when the granting rule explicitly says it does so or explicitly substitutes for them.
-
-B. Any grant automatically bypasses XP cost, eligibility, prerequisites, tier access and learning requirements.
-
-C. A grant never bypasses any gate; even a granted ability requires normal XP and prerequisites.
-
-D. No default semantics; every grant must individually restate every gate it bypasses.
-
-**Reasoning:** a Species granting its own innate ability should work without buying that ability, while a Campaign giving one “free ability” should not accidentally let a human select a biology-locked Species power or ignore an explicit incompatible-state exclusion. Option A keeps grants powerful but controlled.
-
-## Already established and not being re-asked
+## Already established
 
 - AP is deprecated.
-- XP is the ordinary permanent Character-advancement currency.
-- XP is separate from ordinary money/assets.
+- XP is ordinary permanent Character-advancement currency and is separate from ordinary assets/wealth.
 - Enough XP does not itself establish eligibility.
-- Current advancement uses proposal, authoritative validation, optional approval, exactly-once commit and append-only history.
-- Tier remains a five-band working model, but CAB-05 owns final tier semantics.
-- Special acquisition is treated separately from price and will be detailed in CAB-09.
-- High Intelligence/Wisdom must provide a meaningful faster-learning benefit; ordinary global percentage XP multipliers are rejected.
-- Final numeric formulas and costs are not being decided in CAB-04.
+- Advancement uses authoritative validation, optional approval, exactly-once commit, and append-only history.
+- Five tiers remain the working model; CAB-05 owns final tier semantics.
+- Special acquisition remains distinct from price and is detailed later in CAB-09.
+- High Intelligence/Wisdom must provide meaningful faster learning without ordinary global XP multipliers.
 
-## Response format
+## Resolution
 
-You can answer compactly, for example:
-
-`Q1 A, Q2 A, Q3 A, Q4 A`
-
-You can qualify any answer in your own words. Unanswered items remain unresolved.
+All CAB-04 owner gates are resolved. CAB-05 — Five-Tier Model is cleared to execute.
