@@ -1,0 +1,132 @@
+{
+  "schema_version": "0.1.0",
+  "program_id": "CAB",
+  "tranche_id": "CAB-07",
+  "state": "completed_verified_analysis_pending_owner_policy_answers",
+  "owner": "John Brandon Turner",
+  "purpose": "govern_action_economy_and_effective_simultaneous_character_power_without_limiting_total_known_ability_breadth",
+  "source_audit": {
+    "ability_records_total": 4816,
+    "meaningful_field_coverage": {
+      "action_economy": 418,
+      "passive_or_active": 476,
+      "usage_frequency": 548,
+      "activation_trigger": 762,
+      "resource_cost": 337,
+      "duration": 829
+    },
+    "action_economy_values": {
+      "bonus_action": 107,
+      "reaction": 103,
+      "move_source_defined": 80,
+      "action": 69,
+      "passive": 56,
+      "free_action": 2,
+      "no_action_required": 1
+    },
+    "review_signal_counts_not_confirmed_playable_counts": {
+      "extra_or_additional_action": 118,
+      "extra_or_additional_reaction": 7,
+      "free_or_no_action_delivery": 17,
+      "extra_or_additional_attack": 22,
+      "summon_minion_familiar_companion_drone_construct": 286
+    },
+    "interpretation": "action vocabulary and multiplier mechanics are source-real, but corpus timing metadata is incomplete and must be classified before automated repricing"
+  },
+  "canonical_action_type_objects_present": [
+    "Action",
+    "Bonus Action",
+    "Reaction",
+    "Free Action",
+    "Passive",
+    "Downtime"
+  ],
+  "candidate_default_combat_envelope": {
+    "actions_on_own_turn": 1,
+    "bonus_actions_on_own_turn": 1,
+    "movement": "up_to_current_movement_allowance_separate_from_action_unless_rule_says_otherwise",
+    "reactions_per_round": 1,
+    "free_actions": "explicit_rule_only_and_anti_abuse_limited",
+    "passives": "no_activation_channel_but_other_duration_resource_stacking_and_state_rules_apply",
+    "owner_question": "CAB-Q07-01"
+  },
+  "delivery_channels": {
+    "action": {"ordinary_opportunity_cost":"high"},
+    "bonus_action": {"ordinary_opportunity_cost":"limited_but_preserves_main_action"},
+    "reaction": {"ordinary_opportunity_cost":"limited_triggered_out_of_turn_throughput"},
+    "free_or_no_action": {"ordinary_opportunity_cost":"low_or_none_manual_attention_when_consequential"},
+    "passive": {"ordinary_opportunity_cost":"none_at_activation_simultaneous_contribution_requires_review"},
+    "movement": {"ordinary_opportunity_cost":"separate_mobility_throughput_dimension"}
+  },
+  "multiplier_classes": [
+    "action_compression",
+    "additional_attack_within_existing_channel",
+    "full_extra_action",
+    "additional_or_refreshed_reaction",
+    "ally_action_grant",
+    "independent_summon_minion_companion_action_economy"
+  ],
+  "candidate_anti_recursion": {
+    "same_multiplier_class_recursive_generation_default": false,
+    "granted_action_may_activate_another_action_grant_default": false,
+    "reaction_refresh_loop_default": false,
+    "unbounded_summon_action_recursion_default": false,
+    "explicit_exception_requires": ["recursion_limit","frequency","resource_cost","allowed_action_subset","manual_balance_review"],
+    "owner_question": "CAB-Q07-02"
+  },
+  "simultaneous_power_profile_fields": [
+    "activation_channel",
+    "preserves_main_action",
+    "trigger_timing",
+    "usage_frequency",
+    "resource_cost",
+    "duration_persistence",
+    "targets_area",
+    "maintenance_or_exclusivity",
+    "passive_or_no_action_state",
+    "extra_action_reaction_attack_or_compression",
+    "ally_action_grant",
+    "independent_body_action_economy",
+    "recursive_trigger_potential",
+    "stacking_group",
+    "counterplay_interruption",
+    "source",
+    "uncertainty_status"
+  ],
+  "candidate_free_action_policy": {
+    "consequential_free_or_no_action_effect_requires_explicit_limiter": true,
+    "label_does_not_authorize_unlimited_repeat_same_effect": true,
+    "trivial_interactions_may_be_repeatable_if_owning_rules_allow": true,
+    "owner_question": "CAB-Q07-03"
+  },
+  "candidate_companion_policy": {
+    "companion_existence_itself_not_penalized": true,
+    "independent_meaningful_combat_actions_count_as_action_economy_multiplication": true,
+    "command_or_shared_action_cost_is_mitigation": true,
+    "persistent_autonomous_turns_manual_review": true,
+    "owner_question": "CAB-Q07-04"
+  },
+  "candidate_extra_action_authoring_standard": {
+    "action_compression": "allowed_when_bounded_and_priced",
+    "additional_attacks": "allowed_with_explicit_attack_effect_trigger_frequency",
+    "full_unrestricted_extra_actions": "uncommon_strongly_limited_or_major_extreme_price",
+    "additional_reactions": "uncommon_explicit_count_and_refresh_window",
+    "ally_action_grants": "uncommon_explicit_allowed_action_types_and_frequency",
+    "implicit_bonus_or_reaction_grant": false,
+    "owner_question": "CAB-Q07-05"
+  },
+  "missing_data_policy": {
+    "unknown_timing_is_not_assumed_free": true,
+    "unresolved_state": "balance_unresolved_action_economy",
+    "priority_audit_tranches": ["CAB-11","CAB-13"]
+  },
+  "pricing_integration": {
+    "framework": "CAB-06",
+    "action_economy_is_effect_burden_dimension": true,
+    "full_action_multiplier_manual_review": true,
+    "summon_independent_action_manual_review": true,
+    "no_single_simultaneous_power_score": true
+  },
+  "owner_questions": ["CAB-Q07-01","CAB-Q07-02","CAB-Q07-03","CAB-Q07-04","CAB-Q07-05"],
+  "strict_successor": "CAB-08"
+}
