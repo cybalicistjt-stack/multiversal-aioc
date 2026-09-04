@@ -23,7 +23,7 @@ ECI-01 — ENV/CEW GM Discovery Integration — is closed `completed_verified`.
 
 ## Convergence evidence
 
-Two governed-start repository-state repairs and two application validation-contract repairs were required. Diagnostic mode was entered before further retry. Production feature repairs: `0`. Historical predecessor fanout: `0`. Reruns without changed evidence: `0`. Stale pointer incidents: `0`.
+Three repository-state repairs were required in total: two during governed start and one during closeout to reduce runtime-pointer supplement preload to the single latest closeout. Two application validation-contract repairs were required. Diagnostic mode was entered before later retry, and every retry used changed evidence. Production feature repairs: `0`. Historical predecessor fanout: `0`. Reruns without changed evidence: `0`. Stale pointer incidents: `0`.
 
 ## Completed boundaries
 
