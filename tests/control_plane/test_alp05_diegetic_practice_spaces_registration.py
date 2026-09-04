@@ -55,7 +55,7 @@ class Alp05DiegeticPracticeSpacesRegistrationTests(unittest.TestCase):
 
         for phrase in (
             "ALP-05 — Diegetic Practice Spaces, Training Scenes & Simulations",
-            "optional diegetic practice spaces",
+            "optional practice-space contracts",
             "training scenes",
             "simulations",
             "Practice participation remains optional",
