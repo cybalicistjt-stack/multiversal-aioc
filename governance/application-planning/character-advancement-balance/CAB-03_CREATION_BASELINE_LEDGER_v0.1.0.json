@@ -1,0 +1,98 @@
+{
+  "schema_version": "0.1.0",
+  "program_id": "CAB",
+  "tranche_id": "CAB-03",
+  "state": "completed_verified_candidate_pending_owner_answers",
+  "owner": "John Brandon Turner",
+  "inherited_owner_decisions": {
+    "ability_points": "deprecated",
+    "ordinary_assets_use_xp": false,
+    "starting_wealth_owner": "gm_campaign_creation_policy",
+    "xp_to_money_conversion_at_creation": false,
+    "ordinary_percentage_xp_multipliers": false
+  },
+  "supported_baseline": {
+    "default_starting_advancement_xp": 1300,
+    "default_starting_advancement_xp_authority": "recovered_explicit_owner_rule",
+    "unspent_starting_xp_carries_forward": true,
+    "base_species_free": true,
+    "background_core_free": [
+      "homeworld_type",
+      "cultural_influence",
+      "early_life_profession"
+    ],
+    "starting_ability_trees_free": 5,
+    "starting_tree_tier_access": 1,
+    "starting_tier1_abilities_free": 5,
+    "starting_knowledge_grants": "source_defined_background_or_other_grant",
+    "starting_money": "separate_gm_campaign_policy",
+    "equipment_uses_advancement_xp": false,
+    "base_hp_formula": "max(10, Constitution) plus explicit Species modifiers",
+    "base_attributes": 10
+  },
+  "creation_ledger_classes": [
+    "granted_free",
+    "selected_free",
+    "xp_purchased",
+    "campaign_granted",
+    "wealth_purchased",
+    "deferred",
+    "unavailable"
+  ],
+  "xp_purchase_categories_supported_in_principle": [
+    "subspecies_or_optional_species_feature",
+    "background_upgrade",
+    "additional_attribute_increase",
+    "optional_permanent_starting_hp",
+    "additional_ability_or_tree_or_tier_access",
+    "skill",
+    "knowledge_advancement",
+    "proficiency_or_mastery",
+    "spellcasting_capacity_or_other_magic_progression",
+    "other_explicit_character_bound_progression"
+  ],
+  "deferred_numeric_economies": {
+    "attributes": "CAB-10 and CAB-06",
+    "skills_knowledge_proficiencies": "CAB-10",
+    "tree_tier_ability_access": "CAB-04 CAB-05 CAB-06",
+    "starting_hp_buy_prices": "CAB-06 if concept retained",
+    "spellcasting_progression": "CAB-04 CAB-06 plus owning magic rules"
+  },
+  "conflicts": [
+    {
+      "id": "C03-01",
+      "topic": "starting_xp_scope",
+      "evidence": "1300 XP is explicit owner rule; campaign creation policy exists",
+      "recommended_disposition": "1300 default normal-start; explicit campaign override allowed",
+      "owner_question": "CAB-Q03-01"
+    },
+    {
+      "id": "C03-02",
+      "topic": "attribute_modes",
+      "evidence": "stated point pools, templates, examples and 250 XP per +1 do not reconcile",
+      "recommended_disposition": "one free 12-point pool; extra increases use later calibrated XP price",
+      "owner_question": "CAB-Q03-02"
+    },
+    {
+      "id": "C03-03",
+      "topic": "background_spend_cap",
+      "evidence": "earlier owner draft says up to 1800 XP; later creation PDF omits cap",
+      "recommended_disposition": "no universal category cap; campaign may set one",
+      "owner_question": "CAB-Q03-03"
+    },
+    {
+      "id": "C03-04",
+      "topic": "creation_hp_buy",
+      "evidence": "later health source supports creation-only permanent HP purchases",
+      "recommended_disposition": "retain concept; calibrate exact prices later",
+      "owner_question": "CAB-Q03-04"
+    }
+  ],
+  "superseded_creation_rules": [
+    "ability_points",
+    "xp_to_credits_conversion",
+    "xp_purchased_ordinary_starting_equipment",
+    "assistant_generated_10000_xp_starting_claim"
+  ],
+  "strict_successor": "CAB-04"
+}
