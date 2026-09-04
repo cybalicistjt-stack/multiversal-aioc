@@ -16,6 +16,9 @@ def load_text(path):
 class Alp05DiegeticPracticeSpacesRegistrationTests(unittest.TestCase):
     def test_alp05_governed_start_or_closeout_is_consistent(self):
         baseline = "788a8025caf8046edfeddcbf238cce972a4c5378"
+        merge = "402aa6d91795d6e75be64c106aa122b0b79cb872"
+        validated_head = "359ee958759d4be86cc347e463c28a3ff565d150"
+        green_receipt = "fedc7e7a6a824acf582b64a095b64a42b7bae19d1a4590f3a4ee4e4b02c81288"
         checkpoint = load_json("governance/ai/work-state/ALP-05-attempt-001.json")
         backlog = load_json("governance/application-planning/achievements-learning-practice/ALP_PROGRAM_BACKLOG.json")
         pointer = load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
@@ -58,8 +61,24 @@ class Alp05DiegeticPracticeSpacesRegistrationTests(unittest.TestCase):
         else:
             self.assertFalse(checkpoint["implementation_authority"])
             self.assertTrue(checkpoint["authority_retired"])
+            self.assertEqual(checkpoint["application_pr"], 411)
+            self.assertEqual(checkpoint["application_merge_sha"], merge)
+            self.assertEqual(checkpoint["validation"]["final_green"]["head_sha"], validated_head)
+            self.assertEqual(checkpoint["validation"]["final_green"]["deterministic_receipt_sha256"], green_receipt)
             self.assertEqual(backlog["completed_through"], "ALP-05")
             self.assertEqual(backlog["current_item"], "ALP-06")
+            self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-06")
+            self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
+            self.assertIsNone(pointer["active_attempt"]["implementation_branch"])
+            self.assertFalse(pointer["active_attempt"]["implementation_authority"])
+            self.assertEqual(registry["active_planning_work"]["work_item"], "ALP-06")
+            self.assertEqual(registry["active_planning_work"]["state"], "selected_not_started")
+            self.assertIsNone(registry["active_planning_work"]["implementation_branch"])
+            self.assertFalse(registry["active_planning_work"]["implementation_authority"])
+            self.assertEqual(index["current"]["work_item_id"], "ALP-06")
+            self.assertEqual(index["current"]["status"], "selected_not_started")
+            self.assertEqual(runtime["active_work"]["work_item"], "ALP-06")
+            self.assertEqual(runtime["active_work"]["state"], "selected_not_started")
 
         for phrase in (
             "ALP-05 — Diegetic Practice Spaces, Training Scenes & Simulations",
@@ -90,6 +109,33 @@ class Alp05DiegeticPracticeSpacesRegistrationTests(unittest.TestCase):
         self.assertFalse(boundary["alp06_plus_authorized"])
         self.assertFalse(boundary["tester_distribution_authorized"])
         self.assertFalse(boundary["release_or_deployment_authorized"])
+
+    def test_alp05_closeout_evidence_and_successor_boundary_are_sealed(self):
+        checkpoint = load_json("governance/ai/work-state/ALP-05-attempt-001.json")
+        alp06 = load_json("governance/ai/work-state/ALP-06-attempt-001.json")
+        supplement = load_text("governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ALP05_CLOSEOUT_2026-09-04.md")
+
+        if checkpoint["status"] != "completed_verified":
+            self.skipTest("ALP-05 closeout assertions apply after verified application merge")
+
+        self.assertEqual(alp06["status"], "selected_not_started")
+        self.assertIsNone(alp06["implementation_branch"])
+        self.assertFalse(alp06["implementation_authority"])
+        self.assertFalse(alp06["branch_creation_authorized"])
+        self.assertFalse(alp06["acceptance_package_authorized"])
+        self.assertFalse(alp06["production_mutation_authorized"])
+        for token in (
+            "11cc4da854fe11f90cd95f8b6cc0b2f5eb91077c",
+            "33899883790",
+            "e6c47a4c749d8caa4b3a22dafec5e52acb2c6c66876ac8b94e7a1ad8fb291ba2",
+            "359ee958759d4be86cc347e463c28a3ff565d150",
+            "33900659543",
+            "fedc7e7a6a824acf582b64a095b64a42b7bae19d1a4590f3a4ee4e4b02c81288",
+            "402aa6d91795d6e75be64c106aa122b0b79cb872",
+            "ALP-06",
+            "selected_not_started",
+        ):
+            self.assertIn(token, supplement)
 
 
 if __name__ == "__main__":
