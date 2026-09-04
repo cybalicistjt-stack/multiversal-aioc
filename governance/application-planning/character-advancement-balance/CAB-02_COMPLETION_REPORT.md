@@ -2,7 +2,7 @@
 
 **Program:** CAB — Character Advancement & Balance  
 **Tranche:** CAB-02  
-**State:** `completed_verified` candidate pending merge  
+**State:** `completed_verified`  
 **Owner/final authority:** John Brandon Turner  
 
 ## Completed
