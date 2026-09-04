@@ -1,7 +1,7 @@
 # MAL — Microgames & Ambient Loops
 
 **Program ID:** MAL  
-**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH MAL-08; MAL-09 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH MAL-08; MAL-09 IN_PROGRESS  
 **Activation:** after completed_verified SCL-11  
 **Successor:** ALP-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,7 +9,7 @@
 
 ## Current state
 
-MAL-01 through MAL-08 are `completed_verified`. MAL-09 — Accessibility, Mobile/Input, Performance & Nonblocking Fallbacks — is `selected_not_started` from exact application main `0df7fb35b22ae6906e876a1c651a6f7e00787a20` with implementation branch `null` and implementation authority `false`.
+MAL-01 through MAL-08 are `completed_verified`. MAL-09 — Accessibility, Mobile/Input, Performance & Nonblocking Fallbacks — is `in_progress` from exact application main `0df7fb35b22ae6906e876a1c651a6f7e00787a20` on branch `integration/mal-09-accessibility-mobile-input-performance-fallbacks` with bounded implementation authority.
 
 ## MAL-08 completed evidence
 
@@ -17,10 +17,12 @@ MAL-01 through MAL-08 are `completed_verified`. MAL-09 — Accessibility, Mobile
 - Genuine RED head `a73867dcee547dcbf1d5e817e438df596376da12`, run `33829213197`, receipt `ffbe4fc35d21227cb37db47e165068e300a0faa7fa82b2a36c091d9b66f7c12e`.
 - Final validated head `b6300ebc1c118e974e22e70fc5bf7ea56ac1ed9e`, run `33829719399`, receipt `22301aefe11d7c5fd3673b2d243c3fe76e810818f9d0e970d0e149509f20f60e`.
 - Application PR `403` merged as `0df7fb35b22ae6906e876a1c651a6f7e00787a20`.
-- Repairs: validation-contract `1`; application-feature `0`; repository-state `0`; historical fanout `0`; unchanged-evidence reruns `0`; stale-pointer incidents `0`.
+- Repairs: validation-contract `1`; application-feature `0`; repository-state `2`; diagnostic mode entered before the third closeout validation; historical fanout `0`; unchanged-evidence reruns `0`; stale-pointer incidents `0`.
 
-## MAL-09 selected boundary
+## MAL-09 governed boundary
 
-Future MAL-09 work is bounded to accessibility-equivalent semantic controls, device/mobile input adaptation, performance behavior and explicit nonblocking fallbacks over frozen MAL-01..08. Accessibility alternatives may not alter semantic game truth. Raw device identity, frame timing, refresh rate, network timing and platform quirks are not deterministic outcome truth. Performance degradation may reduce presentation detail or defer nonessential work, but may not skip deterministic transitions, permission checks, owner handoffs or canonical obligations. Unknown or hidden state remains `unresolved`.
+MAL-09 may implement only accessibility-equivalent semantic controls, device/mobile input adaptation, performance presentation behavior and explicit deterministic nonblocking fallbacks over frozen MAL-01..08.
 
-No durable persistence, migration `0022`, MAL-10, ALP-01+, provider activation, tester distribution, release or deployment is authorized.
+Accessibility alternatives may not alter semantic game truth. Raw device identity, frame timing, refresh rate, network timing and platform quirks are not deterministic outcome truth. Performance degradation may reduce presentation detail or defer nonessential work, but may not skip deterministic transitions, permission checks, owner handoffs or canonical obligations. Missing nonessential presentation resources may degrade locally; unavailable essential semantic input, owner references or unresolved Permission state remain `blocked-local` or `unresolved` rather than guessed.
+
+No canonical owner mutation, reward grant, durable persistence, migration `0022`, MAL-10, ALP-01+, provider activation, tester distribution, release or deployment is authorized.
