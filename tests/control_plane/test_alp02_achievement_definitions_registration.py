@@ -14,7 +14,7 @@ def load_text(path):
 
 
 class Alp02AchievementDefinitionsRegistrationTests(unittest.TestCase):
-    def test_alp02_is_completed_and_alp03_is_selected_only(self):
+    def test_alp02_remains_completed_while_successor_may_advance(self):
         merge = "050356f7578856de5931917a60efe8af91def1bd"
         checkpoint = load_json("governance/ai/work-state/ALP-02-attempt-001.json")
         successor = load_json("governance/ai/work-state/ALP-03-attempt-001.json")
@@ -41,9 +41,7 @@ class Alp02AchievementDefinitionsRegistrationTests(unittest.TestCase):
         self.assertEqual(checkpoint["convergence_control"]["validation_contract_repair_cycles"], 2)
         self.assertEqual(checkpoint["validation"]["final_green"]["historical_profile_fanout"], 0)
 
-        self.assertEqual(successor["status"], "selected_not_started")
-        self.assertFalse(successor["implementation_authority"])
-        self.assertIsNone(successor["implementation_branch"])
+        self.assertIn(successor["status"], {"selected_not_started", "in_progress", "completed_verified"})
         self.assertEqual(successor["application_baseline_sha"], merge)
 
         self.assertEqual(backlog["completed_through"], "ALP-02")
@@ -52,26 +50,18 @@ class Alp02AchievementDefinitionsRegistrationTests(unittest.TestCase):
         alp03 = next(item for item in backlog["tranches"] if item["id"] == "ALP-03")
         self.assertEqual(alp02["status"], "completed_verified")
         self.assertFalse(alp02["implementation_authority"])
-        self.assertEqual(alp03["status"], "selected_not_started")
-        self.assertFalse(alp03["implementation_authority"])
-        self.assertIsNone(alp03["implementation_branch"])
+        self.assertEqual(alp03["status"], successor["status"])
+        self.assertEqual(alp03["implementation_authority"], successor["implementation_authority"])
 
         self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-03")
-        self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
-        self.assertFalse(pointer["active_attempt"]["implementation_authority"])
-        self.assertIsNone(pointer["active_attempt"]["implementation_branch"])
-        self.assertFalse(pointer["bounded_authority"]["alp_implementation"])
-
+        self.assertEqual(pointer["active_attempt"]["status"], successor["status"])
+        self.assertEqual(pointer["active_attempt"]["implementation_authority"], successor["implementation_authority"])
         self.assertEqual(index["current"]["work_item_id"], "ALP-03")
-        self.assertEqual(index["current"]["status"], "selected_not_started")
-        self.assertFalse(index["current"]["implementation_authority"])
-
+        self.assertEqual(index["current"]["status"], successor["status"])
         self.assertEqual(registry["active_planning_work"]["work_item"], "ALP-03")
-        self.assertEqual(registry["active_planning_work"]["state"], "selected_not_started")
+        self.assertEqual(registry["active_planning_work"]["state"], successor["status"])
         self.assertFalse(registry["alp_02_authority"]["implementation_authority"])
         self.assertTrue(registry["alp_02_authority"]["retired"])
-        self.assertTrue(registry["alp_03_authority"]["selected_not_started"])
-        self.assertFalse(registry["alp_03_authority"]["implementation_authority"])
         alp02_registry = next(item for item in registry["recently_completed_implementation_work"] if item["work_item_id"] == "ALP-02")
         self.assertEqual(alp02_registry["application_feature_repair_cycles"], 0)
         self.assertEqual(alp02_registry["repository_state_repair_cycles"], 3)
@@ -79,14 +69,12 @@ class Alp02AchievementDefinitionsRegistrationTests(unittest.TestCase):
 
         self.assertEqual(runtime["application_repository"]["canonical_main"], merge)
         self.assertEqual(runtime["active_work"]["work_item"], "ALP-03")
-        self.assertEqual(runtime["active_work"]["state"], "selected_not_started")
-        self.assertFalse(runtime["active_work"]["implementation_authority"])
+        self.assertEqual(runtime["active_work"]["state"], successor["status"])
 
         for phrase in (
             "ALP-02 — Achievement Definitions, Criteria, Evidence, Scope & Provenance",
             "ALP-03 — Platform Onboarding & Mastery Milestones",
             "**COMPLETED_VERIFIED**",
-            "**SELECTED_NOT_STARTED**",
             "unknown",
             "does **not** award achievements",
             "migration `0022`",
