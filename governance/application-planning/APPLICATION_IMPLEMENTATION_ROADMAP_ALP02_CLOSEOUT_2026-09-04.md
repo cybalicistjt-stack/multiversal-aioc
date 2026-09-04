@@ -38,7 +38,11 @@ Hidden, missing or unauthorized evidence is never inferred. ALP-02 performs no a
 
 ## Convergence
 
-This tranche completed under one owner `Continue` and one execution cycle. Four changed-evidence repairs occurred: two repository-state preservation repairs and two validation-contract/lifecycle regression repairs. The terminal closeout run `33882269208` passed canonical repository health but exposed two stale regression assertions: ALP-01 still froze `completed_through`/canonical main before a completed successor, and ALP-02 expected exact Markdown formatting. Those assertions were repaired without changing ALP-02 product behavior or ALP-03 authority. Application feature repairs were zero. Unchanged-evidence reruns, historical predecessor fanout, no-progress cycles and stale-pointer incidents were zero.
+ALP-02 required two owner `Continue` commands and two execution cycles. The first execution completed the application implementation/validation/merge but returned before the terminal AIOC closeout despite no genuine blocker. Under the execution-convergence operating requirement, the required second bare `Continue` is a **control-plane incident** and `same_cycle_completed` is false; completion remained within two cycles.
+
+Five changed-evidence repairs occurred: three repository-state/evidence-preservation repairs and two validation-contract/lifecycle regression repairs. The terminal closeout run `33882269208` passed canonical repository health but exposed two stale regression assertions: ALP-01 still froze `completed_through`/canonical main before a completed successor, and ALP-02 expected exact Markdown formatting. Those assertions were repaired without changing ALP-02 product behavior or ALP-03 authority. After the first closeout merge, merged-main verification exposed one stale historical repair-count field in `ACTIVE_AUTHORITY_REGISTRY`; that evidence count was reconciled and the convergence ledger was corrected to record the actual second Continue rather than incorrectly claiming same-cycle completion.
+
+Application feature repairs were zero. Unchanged-evidence reruns, historical predecessor fanout, no-progress cycles and stale-pointer incidents were zero.
 
 ## Successor boundary
 
