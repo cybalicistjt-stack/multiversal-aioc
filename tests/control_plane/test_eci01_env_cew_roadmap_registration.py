@@ -17,8 +17,8 @@ class Eci01EnvCewRoadmapRegistrationTests(unittest.TestCase):
     def test_eci01_is_durable_required_successor_before_alp(self):
         program = load_text("governance/application-planning/environment-creature-integration/ECI_ENVIRONMENT_CREATURE_INTEGRATION_PROGRAM.md")
         backlog = load_json("governance/application-planning/environment-creature-integration/ECI_PROGRAM_BACKLOG.json")
-        roadmap = load_text("governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md")
-        amendment = load_text("governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ECI_INSERTION_2026-09-04.md")
+        amendment_path = "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ECI_INSERTION_2026-09-04.md"
+        amendment = load_text(amendment_path)
         index = load_json("governance/ai/runtime/ROADMAP_INDEX.json")
         pointer = load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
         checkpoint = load_json("governance/ai/work-state/ECI-01-attempt-001.json")
@@ -35,10 +35,10 @@ class Eci01EnvCewRoadmapRegistrationTests(unittest.TestCase):
             backlog["required_contracts"],
             ["ENV-HS-1.0", "ENV-CD-1.0", "CEW-GM-DISC-1.0"],
         )
-        self.assertIn("MAL-01..10 → ECI-01 → ALP-01..08", roadmap)
-        self.assertIn("ECI-01", amendment)
+        self.assertIn("MAL-01..10 → ECI-01 → ALP-01..08", amendment)
         self.assertIn("ready_for_separately_governed_software_selection", amendment)
         self.assertIn("no later roadmap edit may silently drop", amendment)
+        self.assertIn(amendment_path, pointer["roadmap_supplements"])
 
         self.assertEqual(index["current"]["work_item_id"], "ECI-01")
         self.assertEqual(index["current"]["status"], "selected_not_started")
