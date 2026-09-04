@@ -1,0 +1,101 @@
+{
+  "schema_version": "0.1.0",
+  "program_id": "CAB",
+  "tranche_id": "CAB-05",
+  "state": "completed_verified_analysis_pending_owner_policy_answers",
+  "owner": "John Brandon Turner",
+  "tier_model": {
+    "tier_count": 5,
+    "authoritative_identity": "numeric_tier_1_to_5",
+    "meaning": "relative_developmental_depth_within_owning_progression_scope",
+    "not_meaning": [
+      "universal_power_score",
+      "universal_xp_price",
+      "universal_damage_band",
+      "universal_rarity_or_legendary_status",
+      "eligibility_substitute",
+      "prerequisite_substitute"
+    ],
+    "candidate_descriptors": {
+      "1": "Foundation",
+      "2": "Developed",
+      "3": "Advanced",
+      "4": "Expert",
+      "5": "Apex"
+    },
+    "source_local_display_labels_preserved": true,
+    "descriptor_policy_owner_question": "CAB-Q05-01"
+  },
+  "bounded_corpus_observations": {
+    "ability_records_total": 4816,
+    "records_with_numeric_tier_1_to_5": 3917,
+    "tiered_tree_groups": 179,
+    "groups_with_all_five_tiers": 158,
+    "partial_or_sparse_groups": 21,
+    "direct_xp_cost_stats": {
+      "1": {"records": 272, "median": 250, "min": 20, "max": 3000},
+      "2": {"records": 264, "median": 700, "min": 40, "max": 7500},
+      "3": {"records": 270, "median": 1500, "min": 60, "max": 15000},
+      "4": {"records": 226, "median": 3000, "min": 110, "max": 25000},
+      "5": {"records": 215, "median": 5000, "min": 200, "max": 40000}
+    },
+    "tier5_records_below_highest_tier1_direct_cost": 19,
+    "interpretation": "Tier correlates with depth and often cost, but the overlap is too large to treat tier as an exact price or power scalar."
+  },
+  "progression_scope": {
+    "required_field": "tier_scope_id",
+    "allowed_scope_examples": ["ability_tree", "branch", "path", "other_explicit_progression_graph"],
+    "default": "tree_unless_branch_or_path_explicitly_declares_independent_depth",
+    "cross_scope_unlock_prohibited_by_default": true
+  },
+  "tier_access_states": [
+    "not_applicable",
+    "inaccessible",
+    "eligible_to_unlock",
+    "unlocked_paid",
+    "unlocked_granted",
+    "temporarily_available",
+    "historically_owned_unavailable_for_new_selection"
+  ],
+  "universal_prior_tier_quantity_gate": false,
+  "tree_specific_mastery_counts_allowed": true,
+  "candidate_ordinary_purchasable_tree_access": {
+    "tier1": "established_when_progression_is_legitimately_opened",
+    "tier2_to_5": "one_time_xp_tier_access_purchase_after_non_cost_conditions_are_satisfied",
+    "ability_nodes_still_have_individual_costs": true,
+    "legacy_unlock_schedule_is_not_final": true,
+    "calibration_owner": "CAB-06",
+    "alternate_access_modes_allowed_when_explicit": [
+      "prerequisite_only",
+      "grant",
+      "special_acquisition",
+      "sequential_node",
+      "milestone",
+      "other_governed_mode"
+    ],
+    "policy_owner_question": "CAB-Q05-02"
+  },
+  "short_sparse_tree_candidate": {
+    "early_cap_allowed": true,
+    "contiguous_tiers_from_declared_start_to_cap_expected": true,
+    "internal_gap_is_warning_unless_explicit": true,
+    "synthetic_filler_prohibited": true,
+    "later_extension_allowed_through_governed_versioning": true,
+    "policy_owner_question": "CAB-Q05-03"
+  },
+  "tier5_candidate_semantics": {
+    "meaning": "apex_or_capstone_depth_relative_to_owning_progression",
+    "universal_world_shaping_power_floor": false,
+    "cross_tree_equal_power_assumption": false,
+    "policy_owner_question": "CAB-Q05-04"
+  },
+  "creation_inheritance": {
+    "starting_ability_trees_free": 5,
+    "starting_tier1_access_free_in_starting_trees": true,
+    "starting_tier1_abilities_free": 5,
+    "extra_tree_and_higher_tier_numeric_prices": "CAB-06"
+  },
+  "entitlement_boundary": "free_product_first_two_tiers_is_product_access_not_game_balance_semantics",
+  "owner_questions": ["CAB-Q05-01", "CAB-Q05-02", "CAB-Q05-03", "CAB-Q05-04"],
+  "strict_successor": "CAB-06"
+}
