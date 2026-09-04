@@ -17,6 +17,7 @@ class Alp03PlatformOnboardingMasteryRegistrationTests(unittest.TestCase):
     def test_alp03_remains_completed_while_successor_may_advance(self):
         merge = "025f653f65be5ea8ccae1d04f9591e146c3d8797"
         alp04_merge = "788a8025caf8046edfeddcbf238cce972a4c5378"
+        alp05_merge = "402aa6d91795d6e75be64c106aa122b0b79cb872"
         checkpoint = load_json("governance/ai/work-state/ALP-03-attempt-001.json")
         successor = load_json("governance/ai/work-state/ALP-04-attempt-001.json")
         backlog = load_json("governance/application-planning/achievements-learning-practice/ALP_PROGRAM_BACKLOG.json")
@@ -45,10 +46,6 @@ class Alp03PlatformOnboardingMasteryRegistrationTests(unittest.TestCase):
 
         self.assertIn(successor["status"], {"selected_not_started", "in_progress", "completed_verified"})
         self.assertEqual(successor["application_baseline_sha"], merge)
-        expected_completed_through = "ALP-04" if successor["status"] == "completed_verified" else "ALP-03"
-        expected_current = "ALP-05" if successor["status"] == "completed_verified" else "ALP-04"
-        self.assertEqual(backlog["completed_through"], expected_completed_through)
-        self.assertEqual(backlog["current_item"], expected_current)
         alp03 = next(item for item in backlog["tranches"] if item["id"] == "ALP-03")
         alp04 = next(item for item in backlog["tranches"] if item["id"] == "ALP-04")
         self.assertEqual(alp03["status"], "completed_verified")
@@ -56,21 +53,31 @@ class Alp03PlatformOnboardingMasteryRegistrationTests(unittest.TestCase):
         self.assertEqual(alp04["status"], successor["status"])
         self.assertEqual(alp04["implementation_authority"], successor["implementation_authority"])
 
-        if successor["status"] == "completed_verified":
+        if successor["status"] != "completed_verified":
+            self.assertEqual(backlog["completed_through"], "ALP-03")
+            self.assertEqual(backlog["current_item"], "ALP-04")
+            self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-04")
+            self.assertEqual(pointer["active_attempt"]["status"], successor["status"])
+            self.assertEqual(index["current"]["work_item_id"], "ALP-04")
+            self.assertEqual(registry["active_planning_work"]["work_item"], "ALP-04")
+            self.assertEqual(runtime["active_work"]["work_item"], "ALP-04")
+            self.assertEqual(pointer["roadmap_supplements"], ["governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ALP03_CLOSEOUT_2026-09-04.md"])
+        else:
             self.assertEqual(successor["application_merge_sha"], alp04_merge)
             self.assertFalse(successor["implementation_authority"])
             alp05 = load_json("governance/ai/work-state/ALP-05-attempt-001.json")
             self.assertIn(alp05["status"], {"selected_not_started", "in_progress", "completed_verified"})
             self.assertEqual(alp05["application_baseline_sha"], alp04_merge)
-            if alp05["status"] == "selected_not_started":
-                self.assertIsNone(alp05["implementation_branch"])
-                self.assertFalse(alp05["implementation_authority"])
-            elif alp05["status"] == "in_progress":
-                self.assertEqual(alp05["implementation_branch"], "integration/alp-05-diegetic-practice-spaces-training-scenes-simulations")
-                self.assertTrue(alp05["implementation_authority"])
-            else:
-                self.assertFalse(alp05["implementation_authority"])
+
             if alp05["status"] != "completed_verified":
+                self.assertEqual(backlog["completed_through"], "ALP-04")
+                self.assertEqual(backlog["current_item"], "ALP-05")
+                if alp05["status"] == "selected_not_started":
+                    self.assertIsNone(alp05["implementation_branch"])
+                    self.assertFalse(alp05["implementation_authority"])
+                else:
+                    self.assertEqual(alp05["implementation_branch"], "integration/alp-05-diegetic-practice-spaces-training-scenes-simulations")
+                    self.assertTrue(alp05["implementation_authority"])
                 self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-05")
                 self.assertEqual(pointer["active_attempt"]["status"], alp05["status"])
                 self.assertEqual(index["current"]["work_item_id"], "ALP-05")
@@ -80,14 +87,28 @@ class Alp03PlatformOnboardingMasteryRegistrationTests(unittest.TestCase):
                 self.assertEqual(runtime["application_repository"]["canonical_main"], alp04_merge)
                 self.assertEqual(runtime["active_work"]["work_item"], "ALP-05")
                 self.assertEqual(runtime["active_work"]["state"], alp05["status"])
-            self.assertEqual(pointer["roadmap_supplements"], ["governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ALP04_CLOSEOUT_2026-09-04.md"])
-        else:
-            self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-04")
-            self.assertEqual(pointer["active_attempt"]["status"], successor["status"])
-            self.assertEqual(index["current"]["work_item_id"], "ALP-04")
-            self.assertEqual(registry["active_planning_work"]["work_item"], "ALP-04")
-            self.assertEqual(runtime["active_work"]["work_item"], "ALP-04")
-            self.assertEqual(pointer["roadmap_supplements"], ["governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ALP03_CLOSEOUT_2026-09-04.md"])
+                self.assertEqual(pointer["roadmap_supplements"], ["governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ALP04_CLOSEOUT_2026-09-04.md"])
+            else:
+                self.assertEqual(alp05["application_merge_sha"], alp05_merge)
+                self.assertFalse(alp05["implementation_authority"])
+                alp06 = load_json("governance/ai/work-state/ALP-06-attempt-001.json")
+                self.assertIn(alp06["status"], {"selected_not_started", "in_progress", "completed_verified"})
+                self.assertEqual(alp06["application_baseline_sha"], alp05_merge)
+                self.assertEqual(backlog["completed_through"], "ALP-05")
+                self.assertEqual(backlog["current_item"], "ALP-06")
+                self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-06")
+                self.assertEqual(pointer["active_attempt"]["status"], alp06["status"])
+                self.assertEqual(index["current"]["work_item_id"], "ALP-06")
+                self.assertEqual(index["current"]["status"], alp06["status"])
+                self.assertEqual(registry["active_planning_work"]["work_item"], "ALP-06")
+                self.assertEqual(registry["active_planning_work"]["state"], alp06["status"])
+                self.assertEqual(runtime["application_repository"]["canonical_main"], alp05_merge)
+                self.assertEqual(runtime["active_work"]["work_item"], "ALP-06")
+                self.assertEqual(runtime["active_work"]["state"], alp06["status"])
+                self.assertEqual(pointer["roadmap_supplements"], ["governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ALP05_CLOSEOUT_2026-09-04.md"])
+                if alp06["status"] == "selected_not_started":
+                    self.assertIsNone(alp06["implementation_branch"])
+                    self.assertFalse(alp06["implementation_authority"])
 
         self.assertFalse(registry["alp_03_authority"]["implementation_authority"])
         self.assertTrue(registry["alp_03_authority"]["retired"])
