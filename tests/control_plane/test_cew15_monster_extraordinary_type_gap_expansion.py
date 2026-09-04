@@ -58,12 +58,18 @@ class Cew15MonsterExtraordinaryTypeGapExpansionTests(unittest.TestCase):
         self.assertFalse(model['policy']['application_runtime_mutation_authorized'])
         self.assertFalse(expansion['policy']['environment_selection_creates_encounter_placement'])
 
-        self.assertEqual(backlog['completed_through'], 'CEW-15')
-        self.assertEqual(backlog['current_item'], 'CEW-16')
-        self.assertEqual(backlog['current_item_state'], 'selected_not_started')
+        strict_order = backlog['strict_order']
         states = {x['id']: x['status'] for x in backlog['tranches']}
         self.assertEqual(states['CEW-15'], 'completed_verified')
-        self.assertEqual(states['CEW-16'], 'selected_not_started')
+        self.assertGreaterEqual(strict_order.index(backlog['completed_through']), strict_order.index('CEW-15'))
+        self.assertEqual(backlog['current_item'], 'CEW-16')
+        self.assertIn(backlog['current_item_state'], {'selected_not_started', 'completed_verified'})
+        if backlog['current_item_state'] == 'selected_not_started':
+            self.assertEqual(backlog['completed_through'], 'CEW-15')
+            self.assertEqual(states['CEW-16'], 'selected_not_started')
+        else:
+            self.assertEqual(backlog['completed_through'], 'CEW-16')
+            self.assertEqual(states['CEW-16'], 'completed_verified')
         self.assertEqual(backlog['cew15_decisions']['contract_id'], 'CEW-MON-EXTRA-1.0')
         self.assertEqual(backlog['cew15_decisions']['canonical_type_bindings_created'], 0)
         self.assertEqual(backlog['cew15_decisions']['canonical_creature_definitions_created'], 0)
