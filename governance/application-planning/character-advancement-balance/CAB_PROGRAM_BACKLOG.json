@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.3.0",
+  "schema_version": "0.3.1",
   "program_id": "CAB",
   "program_name": "Character Advancement & Balance",
   "owner": "John Brandon Turner",
@@ -12,7 +12,7 @@
   "current_state": "selected_not_started",
   "tranches": [
     {"id":"CAB-01","name":"Authority, Source Census & AP Retirement","status":"completed_verified","artifacts":["CAB-01_AUTHORITY_AND_AP_RETIREMENT_CONTRACT.md","CAB-01_SOURCE_CENSUS.md","CAB-01_COMPLETION_REPORT.md"]},
-    {"id":"CAB-02","name":"Current XP Economy Reconstruction","status":"completed_verified","artifacts":["CAB-02_XP_ECONOMY_RECONSTRUCTION.md","CAB-02_XP_ECONOMY_LEDGER_v0.1.0.json","CAB-02_OWNER_QUESTIONNAIRE.md","CAB-02_COMPLETION_REPORT.md"]},
+    {"id":"CAB-02","name":"Current XP Economy Reconstruction","status":"completed_verified","artifacts":["CAB-02_XP_ECONOMY_RECONSTRUCTION.md","CAB-02_XP_ECONOMY_LEDGER_v0.1.0.json","CAB-02_OWNER_QUESTIONNAIRE.md","CAB-02_OWNER_DECISIONS_2026-09-04.md","CAB-02_COMPLETION_REPORT.md"]},
     {"id":"CAB-03","name":"Character-Creation Baseline","status":"selected_not_started"},
     {"id":"CAB-04","name":"Advancement Architecture","status":"not_started"},
     {"id":"CAB-05","name":"Five-Tier Model","status":"not_started"},
@@ -36,10 +36,16 @@
     {"id":"CAB-23","name":"Completion Audit & Handoff","status":"not_started"}
   ],
   "strict_next": "CAB-03",
-  "selection_note": "CAB-02 reconstructed the current/recovered XP economy into distinct earn, spend, access, upgrade, convert and rate-modifier families; preserved AP retirement; and identified explicit conflicts without deciding final creation economics. CAB-03 is selected_not_started and owns the Character-creation baseline.",
+  "selection_note": "CAB-02 reconstructed the XP economy and its four owner questions are resolved. CAB-03 is selected_not_started and must use separate advancement-XP and GM/Campaign-defined starting-wealth budgets, with no AP and no ordinary XP-to-money conversion.",
   "owner_questionnaire": {
     "path": "governance/application-planning/character-advancement-balance/CAB-02_OWNER_QUESTIONNAIRE.md",
-    "status": "awaiting_optional_owner_answers",
-    "unanswered_policy": "remain_unresolved_no_silent_default"
+    "status": "resolved_by_owner_2026-09-04",
+    "decision_artifact": "governance/application-planning/character-advancement-balance/CAB-02_OWNER_DECISIONS_2026-09-04.md",
+    "decisions": {
+      "Q1": "C_with_creation_clarification",
+      "Q2": "A_with_intelligence_wisdom_learning_speed_requirement",
+      "Q3": "B",
+      "Q4": "A"
+    }
   }
 }
