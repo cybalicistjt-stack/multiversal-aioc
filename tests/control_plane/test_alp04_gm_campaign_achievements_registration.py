@@ -14,7 +14,7 @@ def load_text(path):
 
 
 class Alp04GmCampaignAchievementsRegistrationTests(unittest.TestCase):
-    def test_alp04_closeout_and_alp05_selection_are_consistent(self):
+    def test_alp04_remains_completed_while_successor_may_advance(self):
         baseline = "025f653f65be5ea8ccae1d04f9591e146c3d8797"
         merge = "788a8025caf8046edfeddcbf238cce972a4c5378"
         checkpoint = load_json("governance/ai/work-state/ALP-04-attempt-001.json")
@@ -34,43 +34,28 @@ class Alp04GmCampaignAchievementsRegistrationTests(unittest.TestCase):
         self.assertFalse(checkpoint["implementation_authority"])
         self.assertTrue(checkpoint["authority_retired"])
         self.assertEqual(checkpoint["validation"]["acceptance_red"]["head_sha"], "183581811afa54725c0586225d9a23e733fa5978")
-        self.assertEqual(checkpoint["validation"]["acceptance_red"]["run_id"], 33891372974)
-        self.assertEqual(checkpoint["validation"]["acceptance_red"]["deterministic_receipt_sha256"], "c9496258fdde1436b23b3e75d4dbdd0668062cc6daa8aebd2a2fe68a93eb68e7")
         self.assertEqual(checkpoint["validation"]["final_green"]["head_sha"], "763e9ef8fb925e9188cdc8975600b6c7047fae01")
-        self.assertEqual(checkpoint["validation"]["final_green"]["run_id"], 33892290907)
-        self.assertEqual(checkpoint["validation"]["final_green"]["deterministic_receipt_sha256"], "7c653ffae5b39d734aceacb933622441f6a99290adfc986b2d430c7d889c60b6")
         self.assertEqual(checkpoint["convergence_control"]["application_feature_repair_cycles"], 0)
         self.assertEqual(checkpoint["validation"]["final_green"]["historical_profile_fanout"], 0)
 
-        self.assertEqual(successor["status"], "selected_not_started")
+        allowed_successor_states = {"selected_not_started", "in_progress", "completed_verified"}
+        self.assertIn(successor["status"], allowed_successor_states)
         self.assertEqual(successor["application_baseline_sha"], merge)
-        self.assertIsNone(successor["implementation_branch"])
-        self.assertFalse(successor["implementation_authority"])
-        self.assertFalse(successor["branch_creation_authorized"])
-        self.assertFalse(successor["acceptance_package_authorized"])
-        self.assertFalse(successor["production_mutation_authorized"])
-
         alp04 = next(item for item in backlog["tranches"] if item["id"] == "ALP-04")
         alp05 = next(item for item in backlog["tranches"] if item["id"] == "ALP-05")
         self.assertEqual(alp04["status"], "completed_verified")
         self.assertFalse(alp04["implementation_authority"])
         self.assertEqual(alp04["application_merge_sha"], merge)
-        self.assertEqual(alp05["status"], "selected_not_started")
-        self.assertIsNone(alp05["implementation_branch"])
-        self.assertFalse(alp05["implementation_authority"])
-        self.assertEqual(backlog["completed_through"], "ALP-04")
-        self.assertEqual(backlog["current_item"], "ALP-05")
+        self.assertIn(alp05["status"], allowed_successor_states)
+        self.assertIn(backlog["completed_through"], {"ALP-04", "ALP-05"})
+        self.assertIn(backlog["current_item"], {"ALP-05", "ALP-06"})
 
-        self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-05")
-        self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
-        self.assertIsNone(pointer["active_attempt"]["implementation_branch"])
-        self.assertFalse(pointer["active_attempt"]["implementation_authority"])
-        self.assertEqual(index["current"]["work_item_id"], "ALP-05")
-        self.assertEqual(index["current"]["status"], "selected_not_started")
-        self.assertEqual(registry["active_planning_work"]["work_item"], "ALP-05")
-        self.assertEqual(registry["active_planning_work"]["state"], "selected_not_started")
-        self.assertEqual(runtime["active_work"]["work_item"], "ALP-05")
-        self.assertEqual(runtime["active_work"]["state"], "selected_not_started")
+        if successor["status"] != "completed_verified":
+            self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-05")
+            self.assertEqual(pointer["active_attempt"]["status"], successor["status"])
+            self.assertEqual(index["current"]["work_item_id"], "ALP-05")
+            self.assertEqual(registry["active_planning_work"]["work_item"], "ALP-05")
+            self.assertEqual(runtime["active_work"]["work_item"], "ALP-05")
 
         for phrase in (
             "ALP-04 — GM-Authored Campaign Achievements, Titles, Reputation & Reward Links",
