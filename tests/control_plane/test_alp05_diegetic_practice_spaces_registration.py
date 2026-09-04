@@ -32,18 +32,26 @@ class Alp05DiegeticPracticeSpacesRegistrationTests(unittest.TestCase):
 
         if checkpoint["status"] == "in_progress":
             branch = "integration/alp-05-diegetic-practice-spaces-training-scenes-simulations"
+            production_authorized = checkpoint["production_mutation_authorized"]
             self.assertTrue(checkpoint["implementation_authority"])
             self.assertEqual(checkpoint["implementation_branch"], branch)
             self.assertTrue(checkpoint["branch_creation_authorized"])
             self.assertTrue(checkpoint["acceptance_package_authorized"])
-            self.assertFalse(checkpoint["production_mutation_authorized"])
+            self.assertEqual(backlog["active_contract"]["production_mutation_authorized"], production_authorized)
+            self.assertEqual(pointer["bounded_authority"]["production_mutation_authorized"], production_authorized)
+            self.assertEqual(registry["alp_05_authority"]["production_mutation_authorized"], production_authorized)
+            if production_authorized:
+                self.assertIsNotNone(checkpoint["validation"]["acceptance_red"])
+                self.assertTrue(backlog["active_contract"]["matching_red_observed"])
+                self.assertEqual(backlog["active_contract"]["matching_red_receipt_sha256"], checkpoint["validation"]["acceptance_red"]["deterministic_receipt_sha256"])
+            else:
+                self.assertIsNone(checkpoint["validation"]["acceptance_red"])
             self.assertEqual(backlog["completed_through"], "ALP-04")
             self.assertEqual(backlog["current_item"], "ALP-05")
             self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-05")
             self.assertEqual(pointer["active_attempt"]["status"], "in_progress")
             self.assertEqual(pointer["active_attempt"]["implementation_branch"], branch)
             self.assertTrue(pointer["active_attempt"]["implementation_authority"])
-            self.assertFalse(pointer["bounded_authority"]["production_mutation_authorized"])
             self.assertEqual(registry["active_planning_work"]["state"], "in_progress")
             self.assertEqual(index["current"]["status"], "in_progress")
             self.assertEqual(runtime["active_work"]["state"], "in_progress")
