@@ -1,7 +1,7 @@
 # ALP — Achievements, Learning & Practice
 
 **Program ID:** ALP  
-**Status:** OWNER-APPROVED — ALP-01/02/03 COMPLETED_VERIFIED; ALP-04 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — ALP-01/02/03 COMPLETED_VERIFIED; ALP-04 IN_PROGRESS  
 **Activation:** after completed_verified ECI-01  
 **Successor:** VTI-01  
 **Owner and final authority:** John Brandon Turner  
@@ -15,7 +15,7 @@ ALP-02 — Achievement Definitions, Criteria, Evidence, Scope & Provenance — i
 
 ALP-03 — Platform Onboarding & Mastery Milestones — is `completed_verified` on application merge `025f653f65be5ea8ccae1d04f9591e146c3d8797` through PR #409. Its implementation authority is retired.
 
-ALP-04 — GM-Authored Campaign Achievements, Titles, Reputation & Reward Links — is `selected_not_started` from exact application main `025f653f65be5ea8ccae1d04f9591e146c3d8797`. It has no implementation branch, acceptance authority or production authority. A future owner Continue must governed-start it before mutation.
+ALP-04 — GM-Authored Campaign Achievements, Titles, Reputation & Reward Links — is `in_progress` from exact application main `025f653f65be5ea8ccae1d04f9591e146c3d8797` on branch `integration/alp-04-gm-campaign-achievements-titles-reputation-reward-links`. Governed-start authority permits the acceptance package. Production mutation remains locked until matching Linux/Windows RED and a deterministic RED receipt are observed.
 
 ## Purpose
 
@@ -57,16 +57,20 @@ Final GREEN on exact production head `a8243e69e5c3831b858e11a87e1dd270865261ab` 
 
 Application PR #409 squash-merged the unchanged validated head to verified main `025f653f65be5ea8ccae1d04f9591e146c3d8797`.
 
-## ALP-04 selected boundary
+## ALP-04 governed-start contract
 
-ALP-04 is selection only. A future governed start may bound GM-authored campaign achievements, titles, Reputation/Relationship/Faction references and mechanical reward references while preserving owner-system commit authority. Until that governed start, there is no ALP-04 branch, acceptance package or production mutation.
+ALP-04 may define deterministic read-only GM-authored campaign achievement projections over frozen ALP-02 `campaign_achievement` definitions, with explicit campaign scope and GM authorship, title/recognition references, Reputation/Relationship/Faction owner-system references, mechanical reward owner-system references, evidence-derived state, provenance and deterministic receipts.
+
+ALP-04 does **not** award achievements, mutate completion, infer hidden evidence, mutate Character Progression or Reputation/Relationship/Faction state, commit mechanical rewards, alter platform onboarding/mastery milestones, create a universal permission gate, grant unrelated capability, implement diegetic practice, create durable ALP persistence, reserve migration `0022`, or implement ALP-05 behavior.
+
+The acceptance package is authorized first. Production mutation remains locked until a genuine matching Linux/Windows RED and deterministic RED receipt prove the ALP-04 production contract is absent.
 
 ## Tranches
 
 1. **ALP-01 — Authority Crosswalk & Achievement/Learning/Practice Taxonomy** — **COMPLETED_VERIFIED**.
 2. **ALP-02 — Achievement Definitions, Criteria, Evidence, Scope & Provenance** — **COMPLETED_VERIFIED**.
 3. **ALP-03 — Platform Onboarding & Mastery Milestones** — **COMPLETED_VERIFIED**.
-4. **ALP-04 — GM-Authored Campaign Achievements, Titles, Reputation & Reward Links** — **SELECTED_NOT_STARTED**.
+4. **ALP-04 — GM-Authored Campaign Achievements, Titles, Reputation & Reward Links** — **IN_PROGRESS**.
 5. **ALP-05 — Diegetic Practice Spaces, Training Scenes & Simulations**
 6. **ALP-06 — Rehearsal, Retry, Safe Failure & Training/Project Integration**
 7. **ALP-07 — Player/GM UX, Accessibility, Notifications & Recognition History**
@@ -74,4 +78,4 @@ ALP-04 is selection only. A future governed start may bound GM-authored campaign
 
 ## Active invariant
 
-Achievements remain optional recognition/learning structures, not universal permission gates. Achievement completion cannot grant unrelated capabilities by implication. Mechanically meaningful rewards commit only through owning Reward/Progression/Reputation/Faction systems. Platform learning badges and campaign achievements remain distinguishable in scope and authorship. Diegetic practice remains optional. AI may explain progress or propose criteria but may not silently award achievements or infer hidden completion evidence. ALP-04 is selected only; no implementation authority exists until a future governed start. ALP-05+, VTI-01+, provider activation, tester distribution, release and deployment remain unauthorized.
+Achievements remain optional recognition/learning structures, not universal permission gates. Achievement completion cannot grant unrelated capabilities by implication. Mechanically meaningful rewards commit only through owning Reward/Progression/Reputation/Faction systems. Platform learning badges and campaign achievements remain distinguishable in scope and authorship. Diegetic practice remains optional. AI may explain progress or propose criteria but may not silently award achievements or infer hidden completion evidence. ALP-04 implementation is bounded to GM-authored campaign definitions and owner-system references; production mutation remains locked until genuine matching RED. ALP-05+, VTI-01+, provider activation, tester distribution, release and deployment remain unauthorized.
