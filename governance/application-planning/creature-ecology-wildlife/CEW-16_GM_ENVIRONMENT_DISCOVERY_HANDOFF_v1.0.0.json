@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "CEW-GM-DISC-1.0",
+  "work_item": "CEW-16",
+  "title": "GM Environment Discovery, Encounter Ecology & Full Integration Handoff",
+  "environment_projection_authority": "ENV-CD-1.0",
+  "habitat_signature_authority": "ENV-HS-1.0",
+  "application_implementation_authority": false,
+  "projection_is_read_only": true,
+  "projection_creates_canonical_identity": false,
+  "projection_creates_canonical_distribution": false,
+  "projection_creates_encounter_placement": false,
+  "projection_creates_relationship_state": false,
+  "numeric_discovery_score_authorized": false,
+  "hidden_priority_numbers_authorized": false,
+  "gate_order": [
+    "identity_and_authority_gate",
+    "campaign_visibility_gate",
+    "canonical_distribution_gate",
+    "ecological_fit_gate",
+    "overlay_condition_gate",
+    "season_activity_gate",
+    "projection_facet_derivation",
+    "stable_grouping_and_trace"
+  ],
+  "query_modes": ["normal_discovery", "include_blocked", "include_unresolved"],
+  "semantics": {
+    "can_occur_here_equals_normally_occurs_here": false,
+    "can_occur_here": "A bounded GM-facing possibility supported by controlling presence/allowance authority plus compatible or conditional ecology. It does not mean native, resident, common, or normally encountered.",
+    "normally_occurs_here": "Requires independently authoritative occurrence/distribution plus frequency, resident/native, seasonal, or equivalent ordinary-occurrence support. Ecological compatibility alone cannot establish it.",
+    "habitat_fit_creates_presence": false,
+    "ecological_role_creates_encounter_placement": false,
+    "relationship_eligibility_creates_bond": false,
+    "baseline_distribution_separate_from_current_occurrence": true,
+    "visibility_gate_precedes_projection": true,
+    "canonical_presence_conflict_preserved": true,
+    "material_unknowns_fail_closed": true,
+    "source_silence_means_absence": false
+  },
+  "authority_bindings": [
+    {"contract_id":"CEW-ID-1.0","owns":["creature identity state","source/recovery identity authority","canonical-vs-recoverable distinction"],"projection_rule":"Identity similarity never creates equivalence or a canonical creature."},
+    {"contract_id":"CEW-TAX-1.0","owns":["creature type","subtype","template/modifier/state distinctions"],"projection_rule":"Taxonomy labels are discovery facets only where source/governance supports them; they do not create identity or geography."},
+    {"contract_id":"CEW-CLASS-1.0","owns":["multidimensional classification axes","open-world fact states"],"projection_rule":"Independent axes remain independent and unknown remains first-class."},
+    {"contract_id":"CEW-HAB-1.0","owns":["creature habitat predicates","migration/season/activity ecology inputs"],"projection_rule":"Habitat predicates compare against ENV-HS-1.0 but never manufacture range."},
+    {"contract_id":"CEW-DIST-1.0","owns":["World/Reality/Setting/Region/Location distribution","native/introduced/invasive/domesticated/presence/absence relations"],"projection_rule":"Controlling distribution authority gates presence before ecological fit."},
+    {"contract_id":"CEW-ECO-1.0","owns":["trophic/resource roles","social aggregation","ecosystem interactions","encounter-use facets"],"projection_rule":"Encounter-use facets support search and preparation; they never place a participant or encounter."},
+    {"contract_id":"CEW-COG-PART-1.0","owns":["cognition/personhood classification","NPC presentation eligibility","definition-level domestication/trainability semantics"],"projection_rule":"Cognition, speech, NPC presentation, and personhood are not inferred from each other."},
+    {"contract_id":"CEW-HAV-LIN-1.0","owns":["Havalaea lineage/origin semantics","Time-of-Troubles native-lineage distinction"],"projection_rule":"Native-lineage and human-level/NPC facets require explicit authority; later imports remain distinguishable."},
+    {"contract_id":"CEW-REL-PATH-1.0","owns":["mount/pet/companion/familiar/work/service eligibility crosswalk"],"projection_rule":"Eligibility is read-only and creates no ownership, bond, taming, training, equipment, or consent state."},
+    {"contract_id":"CEW-EARTHLIKE-BASE-1.0","owns":["ordinary Earthlike baseline profiles"],"projection_rule":"Noncanonical ordinary profiles may support authoring/discovery diagnostics but do not have canonical presence without distribution authority."},
+    {"contract_id":"CEW-ENV-GAP-1.0","owns":["environment-driven wildlife gap profiles"],"projection_rule":"Noncanonical gap profiles remain unresolved for canonical presence until distribution authority exists."},
+    {"contract_id":"CEW-ALIEN-WILD-1.0","owns":["noncanonical alien wildlife profiles","setting-fauna source recovery carryforward"],"projection_rule":"Designed or recovered alien ecology does not auto-bind identity or distribution."},
+    {"contract_id":"CEW-MON-EXTRA-1.0","owns":["extraordinary noncanonical profiles","bounded Beast/Illusion/Dragon source-usage resolutions"],"projection_rule":"Extraordinary/type facets do not create canonical stable-ID bindings or placement."}
+  ],
+  "candidate_universe_partitions": [
+    {"corpus_id":"canonical-creature-definitions","record_count":27,"identity_class":"canonical_definition","canonical_distribution_prepopulated":false,"default_presence_without_distribution_authority":"unresolved","rule":"Use stable governed identity first; only five current Havalaea stable IDs have setting-presence facts and all other distribution fields remain authority-dependent."},
+    {"corpus_id":"cew12-earthlike-baseline","record_count":100,"identity_class":"noncanonical_ecological_content_profile","canonical_distribution_prepopulated":false,"default_presence_without_distribution_authority":"unresolved","rule":"Earthlike or ordinary resemblance never creates Earth or other world range."},
+    {"corpus_id":"cew13-environment-gap-profiles","record_count":29,"identity_class":"noncanonical_environment_gap_profile","canonical_distribution_prepopulated":false,"default_presence_without_distribution_authority":"unresolved","rule":"Environment-driven design coverage is not canonical occurrence."},
+    {"corpus_id":"cew14-alien-wildlife-profiles","record_count":10,"identity_class":"noncanonical_nonsapient_alien_wildlife_profile","canonical_distribution_prepopulated":false,"default_presence_without_distribution_authority":"unresolved","rule":"Explicitly nonsapient design status does not create identity or range."},
+    {"corpus_id":"cew15-extraordinary-profiles","record_count":6,"identity_class":"noncanonical_extraordinary_creature_profile","canonical_distribution_prepopulated":false,"default_presence_without_distribution_authority":"unresolved","rule":"Extraordinary environment fit remains separate from canonical presence."},
+    {"corpus_id":"havalaea-setting-source-profiles","record_count":46,"identity_class":"recoverable_source_profile","canonical_distribution_prepopulated":false,"default_presence_without_distribution_authority":"unresolved","rule":"Havalaea source-collection membership is association evidence, not automatic stable-ID binding or Time-of-Troubles native lineage."},
+    {"corpus_id":"skoaltarran-setting-source-records","record_count":39,"identity_class":"recoverable_source_record","canonical_distribution_prepopulated":false,"default_presence_without_distribution_authority":"unresolved","rule":"Skoaltarran source-collection membership is setting association, not automatic native status or canonical identity."}
+  ],
+  "gm_result_contract": {
+    "required_per_result": ["creature_ref","outcome","facets","ecological_fit","distribution_state","visibility_state","gate_trace","provenance"],
+    "optional_per_result": ["candidate_authority_class","frequency_state","season_activity_state","active_overlay_reasons","ecological_roles","encounter_facets","npc_capable","mount_pet_familiar_facets","personhood_or_consent_facets","can_occur_here_state","normally_occurs_here_state"],
+    "blocked_results_retained_for_authorized_gm_diagnostics": true,
+    "silent_drop_of_material_conflict_forbidden": true,
+    "stable_grouping_rule": "Group by explicit outcome/facets and stable candidate identity; do not rank by an invented ecology/discovery score.",
+    "candidate_universe_rule": "Use governed CEW/creature indexes and explicit candidate partitions; do not create a duplicate canonical creature catalog."
+  },
+  "reference_cases": [
+    {"case_id":"compatible-but-distribution-unknown","facts":{"identity":"governed_candidate","visibility":"gm_discoverable","distribution":"unknown","ecological_fit":"compatible"},"outcome":"unresolved","facets":["unresolved"],"can_occur_here_state":"unresolved","normally_occurs_here_state":"unresolved","reason":"Habitat compatibility cannot manufacture presence."},
+    {"case_id":"canonical-presence-ecology-conflict","facts":{"identity":"governed_candidate","visibility":"gm_discoverable","distribution":"explicit_presence","ecological_fit":"incompatible"},"outcome":"discoverable_with_warning","facets":["canonical_presence_conflict"],"can_occur_here_state":"asserted_by_presence_authority","normally_occurs_here_state":"authority_dependent","reason":"Preserve explicit presence and the ecological conflict instead of silently resolving either."},
+    {"case_id":"native-common-compatible","facts":{"distribution":"native_resident","frequency":"common","ecological_fit":"compatible","visibility":"gm_discoverable"},"outcome":"discoverable","facets":["native_common"],"can_occur_here_state":"asserted","normally_occurs_here_state":"asserted"},
+    {"case_id":"possible-tolerated-not-normal","facts":{"distribution":"source_supported_presence","frequency":"unknown","ecological_fit":"compatible","visibility":"gm_discoverable"},"outcome":"discoverable","facets":["possible_tolerated"],"can_occur_here_state":"asserted","normally_occurs_here_state":"unresolved"},
+    {"case_id":"explicit-overlay-predicate-satisfied","facts":{"distribution":"explicit_presence","ecological_fit":"conditional","overlay_requirement":"explicit_source_backed","matching_overlay_active":true},"outcome":"conditional","facets":["overlay_enabled"],"reason":"An active overlay may satisfy an authored creature predicate but never creates range or affinity."},
+    {"case_id":"sapient-voluntary-partnership","facts":{"native_lineage":"explicitly_asserted","personhood":"explicitly_asserted","npc_capable":"explicitly_asserted","relationship_eligibility":"source_supported"},"outcome":"discoverable","facets":["sapient_native_fauna","npc_capable"],"relationship_effect":"eligibility_only_no_bond","consent_required":true,"reason":"NPC projection and pathway eligibility preserve autonomy and never create ownership or relationship state."},
+    {"case_id":"campaign-suppressed","facts":{"visibility":"campaign_suppressed"},"outcome":"excluded","facets":["excluded_or_blocked"],"normal_discovery_visible":false,"include_blocked_diagnostic_visible":true},
+    {"case_id":"inactive-now-baseline-range-preserved","facts":{"distribution":"resident","season_activity":"inactive_now"},"outcome":"excluded","facets":["excluded_or_blocked"],"baseline_distribution_preserved":true,"current_occurrence":false}
+  ],
+  "software_handoff": {
+    "state": "ready_for_separately_governed_software_selection",
+    "application_integration_authorized": false,
+    "implementation_target": "future separately selected Multiversal-app application tranche",
+    "must_consume_without_reinterpretation": ["ENV-HS-1.0","ENV-CD-1.0","CEW-GM-DISC-1.0"],
+    "must_not_infer": ["canonical distribution from habitat similarity","encounter placement from discovery","relationship state from pathway eligibility","personhood from cognition/type","player visibility from GM discovery"]
+  },
+  "mutation_boundary": {
+    "multiversal_app_runtime_mutation": false,
+    "schema_mutation": false,
+    "ui_mutation": false,
+    "migration_mutation": false,
+    "canonical_creature_definition_mutation": false,
+    "canonical_distribution_mutation": false,
+    "live_relationship_state_mutation": false,
+    "campaign_or_encounter_placement_mutation": false
+  }
+}
