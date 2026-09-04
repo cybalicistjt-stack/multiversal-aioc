@@ -33,12 +33,13 @@ class Alp03PlatformOnboardingMasteryRegistrationTests(unittest.TestCase):
         self.assertEqual(checkpoint["application_merge_sha"], merge)
         self.assertEqual(checkpoint["convergence_control"]["owner_continue_count"], 2)
         self.assertEqual(checkpoint["convergence_control"]["execution_cycles"], 2)
+        self.assertEqual(checkpoint["convergence_control"]["repair_cycles"], 6)
         self.assertFalse(checkpoint["convergence_control"]["same_cycle_completed"])
         self.assertTrue(checkpoint["convergence_control"]["completed_within_two_cycles"])
         self.assertFalse(checkpoint["convergence_control"]["control_plane_incident"])
         self.assertEqual(checkpoint["convergence_control"]["application_feature_repair_cycles"], 0)
-        self.assertEqual(checkpoint["convergence_control"]["repository_state_repair_cycles"], 1)
-        self.assertEqual(checkpoint["convergence_control"]["validation_contract_repair_cycles"], 2)
+        self.assertEqual(checkpoint["convergence_control"]["repository_state_repair_cycles"], 2)
+        self.assertEqual(checkpoint["convergence_control"]["validation_contract_repair_cycles"], 4)
         self.assertEqual(checkpoint["validation"]["final_green"]["historical_profile_fanout"], 0)
 
         self.assertIn(successor["status"], {"selected_not_started", "in_progress", "completed_verified"})
@@ -64,12 +65,13 @@ class Alp03PlatformOnboardingMasteryRegistrationTests(unittest.TestCase):
         self.assertTrue(registry["alp_03_authority"]["retired"])
         alp03_registry = next(item for item in registry["recently_completed_implementation_work"] if item["work_item_id"] == "ALP-03")
         self.assertEqual(alp03_registry["application_feature_repair_cycles"], 0)
-        self.assertEqual(alp03_registry["repository_state_repair_cycles"], 1)
-        self.assertEqual(alp03_registry["validation_contract_repair_cycles"], 2)
+        self.assertEqual(alp03_registry["repository_state_repair_cycles"], 2)
+        self.assertEqual(alp03_registry["validation_contract_repair_cycles"], 4)
 
         self.assertEqual(runtime["application_repository"]["canonical_main"], merge)
         self.assertEqual(runtime["active_work"]["work_item"], "ALP-04")
         self.assertEqual(runtime["active_work"]["state"], successor["status"])
+        self.assertEqual(pointer["roadmap_supplements"], ["governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ALP03_CLOSEOUT_2026-09-04.md"])
 
         for phrase in (
             "ALP-03 — Platform Onboarding & Mastery Milestones",
