@@ -1,9 +1,10 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.1.1",
   "program_id": "CAB",
   "tranche_id": "CAB-04",
-  "state": "completed_verified_analysis_pending_owner_policy_answers",
+  "state": "completed_verified",
   "owner": "John Brandon Turner",
+  "owner_decision_artifact": "CAB-04_OWNER_DECISIONS_2026-09-04.md",
   "architecture": {
     "separate_gate_families": [
       "authority",
@@ -26,13 +27,29 @@
     ],
     "tier_access_role": "developmental_band_permission_when_owning_progression_uses_it",
     "tier_access_final_semantics_owner": "CAB-05",
+    "universal_prior_tier_quantity_gate": false,
+    "tree_specific_mastery_or_prerequisite_counts_allowed": true,
     "learning_project_supported": true,
-    "learning_project_default_universal": "owner_question_CAB-Q04-02",
+    "learning_project_default": "required_only_when_owning_rule_requires_learning_or_development",
+    "gm_campaign_learning_override": {
+      "allowed": true,
+      "scope": ["add", "waive", "shorten", "extend", "modify"],
+      "must_be_attributable": true,
+      "does_not_implicitly_change": ["xp_price", "eligibility", "prerequisites", "exclusions", "history"]
+    },
     "int_wis_learning_hook": {
-      "attachment": "learning_project_progress_or_readiness",
+      "attachment": "applicable_learning_project_progress_or_readiness",
       "not_attachment": ["global_xp_award_multiplier", "automatic_global_xp_cost_discount"],
+      "owning_learning_mode_selects_attribute": true,
+      "automatic_int_wis_stacking": false,
       "exact_formula_owner": "CAB-10",
       "pacing_validation": ["CAB-16", "CAB-17", "CAB-18"]
+    },
+    "grant_default_semantics": {
+      "free_grant_waives_xp_cost": true,
+      "source_grant_may_establish_eligibility": true,
+      "prerequisite_tier_learning_exclusion_bypass_requires_explicit_rule": true,
+      "temporary_grant_does_not_become_permanent_purchase": true
     },
     "special_acquisition_role": "eligibility_or_readiness_opportunity_not_price",
     "special_acquisition_owner": "CAB-09"
@@ -44,7 +61,7 @@
     "meaningful_attribute_requirement_records": 460,
     "meaningful_situational_perk_requirement_records": 470,
     "meaningful_environment_context_records": 657,
-    "interpretation": "The corpus already represents multiple independent restriction families; CAB-04 must not collapse them into XP or one universal count gate."
+    "interpretation": "The corpus represents multiple independent restriction families; CAB advancement must not collapse them into XP or one universal count gate."
   },
   "option_projection_states": [
     "hidden_or_unauthorized",
@@ -83,7 +100,8 @@
       "trainer_mentor_tool_location_requirements",
       "learning_attribute_hook",
       "completion_evidence",
-      "interruption_or_expiration_rule"
+      "interruption_or_expiration_rule",
+      "gm_campaign_override_evidence"
     ],
     "recommended_xp_debit_timing": "final_advancement_commit_unless_owning_rule_explicitly_consumes_xp_earlier"
   },
@@ -105,11 +123,11 @@
     "exactly_once_commit",
     "dependent_state_integrity_check"
   ],
-  "owner_questions": [
-    "CAB-Q04-01",
-    "CAB-Q04-02",
-    "CAB-Q04-03",
-    "CAB-Q04-04"
-  ],
+  "owner_questions": {
+    "CAB-Q04-01": "A",
+    "CAB-Q04-02": "A_with_gm_campaign_override",
+    "CAB-Q04-03": "A",
+    "CAB-Q04-04": "A"
+  },
   "strict_successor": "CAB-05"
 }
