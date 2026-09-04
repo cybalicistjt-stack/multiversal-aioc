@@ -14,64 +14,83 @@ def load_text(path):
 
 
 class Alp03PlatformOnboardingMasteryRegistrationTests(unittest.TestCase):
-    def test_alp03_governed_start_and_red_unlock_are_consistent(self):
-        baseline = "050356f7578856de5931917a60efe8af91def1bd"
-        branch = "integration/alp-03-platform-onboarding-mastery-milestones"
+    def test_alp03_remains_completed_while_successor_may_advance(self):
+        merge = "025f653f65be5ea8ccae1d04f9591e146c3d8797"
         checkpoint = load_json("governance/ai/work-state/ALP-03-attempt-001.json")
+        successor = load_json("governance/ai/work-state/ALP-04-attempt-001.json")
         backlog = load_json("governance/application-planning/achievements-learning-practice/ALP_PROGRAM_BACKLOG.json")
         pointer = load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
         registry = load_json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
         index = load_json("governance/ai/runtime/ROADMAP_INDEX.json")
         runtime = load_json("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")
         program = load_text("governance/application-planning/achievements-learning-practice/ALP_ACHIEVEMENTS_LEARNING_PRACTICE_PROGRAM.md")
+        closeout = load_text("governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ALP03_CLOSEOUT_2026-09-04.md")
 
-        self.assertEqual(checkpoint["status"], "in_progress")
-        self.assertTrue(checkpoint["implementation_authority"])
-        self.assertEqual(checkpoint["implementation_branch"], branch)
-        self.assertEqual(checkpoint["application_baseline_sha"], baseline)
-        gate = checkpoint["acceptance_gate"]
-        self.assertTrue(gate["acceptance_package_authorized"])
-        self.assertTrue(gate["matching_linux_windows_red_required"])
-        self.assertEqual(gate["production_mutation_authorized"], gate["red_observed"])
-        if gate["red_observed"]:
-            red = gate["acceptance_red"]
-            self.assertEqual(red["head_sha"], "a71cc81b6b815b39c90159d13ae43d4b33d5f359")
-            self.assertEqual(red["run_id"], 33885427744)
-            self.assertEqual(red["linux_job"], 101063942140)
-            self.assertEqual(red["windows_job"], 101063942161)
-            self.assertEqual(red["deterministic_compare_job"], 101064060265)
-            self.assertEqual(red["matching_failure_step"], "alp03-invariants")
-            self.assertEqual(red["deterministic_receipt_sha256"], "17f107d0fb2886f6805b57e32282d670046396e96a10f3576c19869162585303")
-            self.assertTrue(red["production_contract_absent"])
+        self.assertEqual(checkpoint["status"], "completed_verified")
+        self.assertFalse(checkpoint["implementation_authority"])
+        self.assertTrue(checkpoint["authority_retired"])
+        self.assertEqual(checkpoint["application_pr"], 409)
+        self.assertEqual(checkpoint["application_merge_sha"], merge)
+        self.assertEqual(checkpoint["convergence_control"]["owner_continue_count"], 2)
+        self.assertEqual(checkpoint["convergence_control"]["execution_cycles"], 2)
+        self.assertFalse(checkpoint["convergence_control"]["same_cycle_completed"])
+        self.assertTrue(checkpoint["convergence_control"]["completed_within_two_cycles"])
+        self.assertFalse(checkpoint["convergence_control"]["control_plane_incident"])
+        self.assertEqual(checkpoint["convergence_control"]["application_feature_repair_cycles"], 0)
+        self.assertEqual(checkpoint["convergence_control"]["repository_state_repair_cycles"], 1)
+        self.assertEqual(checkpoint["convergence_control"]["validation_contract_repair_cycles"], 2)
+        self.assertEqual(checkpoint["validation"]["final_green"]["historical_profile_fanout"], 0)
 
+        self.assertIn(successor["status"], {"selected_not_started", "in_progress", "completed_verified"})
+        self.assertEqual(successor["application_baseline_sha"], merge)
+
+        self.assertEqual(backlog["completed_through"], "ALP-03")
+        self.assertEqual(backlog["current_item"], "ALP-04")
         alp03 = next(item for item in backlog["tranches"] if item["id"] == "ALP-03")
-        self.assertEqual(alp03["status"], "in_progress")
-        self.assertTrue(alp03["implementation_authority"])
-        self.assertEqual(alp03["implementation_branch"], branch)
-        self.assertEqual(backlog["completed_through"], "ALP-02")
+        alp04 = next(item for item in backlog["tranches"] if item["id"] == "ALP-04")
+        self.assertEqual(alp03["status"], "completed_verified")
+        self.assertFalse(alp03["implementation_authority"])
+        self.assertEqual(alp04["status"], successor["status"])
+        self.assertEqual(alp04["implementation_authority"], successor["implementation_authority"])
 
-        for surface in (pointer["active_attempt"], index["current"]):
-            self.assertEqual(surface["work_item_id"], "ALP-03")
-            self.assertEqual(surface["status"], "in_progress")
-            self.assertTrue(surface["implementation_authority"])
-            self.assertEqual(surface["implementation_branch"], branch)
+        self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-04")
+        self.assertEqual(pointer["active_attempt"]["status"], successor["status"])
+        self.assertEqual(pointer["active_attempt"]["implementation_authority"], successor["implementation_authority"])
+        self.assertEqual(index["current"]["work_item_id"], "ALP-04")
+        self.assertEqual(index["current"]["status"], successor["status"])
+        self.assertEqual(registry["active_planning_work"]["work_item"], "ALP-04")
+        self.assertEqual(registry["active_planning_work"]["state"], successor["status"])
+        self.assertFalse(registry["alp_03_authority"]["implementation_authority"])
+        self.assertTrue(registry["alp_03_authority"]["retired"])
+        alp03_registry = next(item for item in registry["recently_completed_implementation_work"] if item["work_item_id"] == "ALP-03")
+        self.assertEqual(alp03_registry["application_feature_repair_cycles"], 0)
+        self.assertEqual(alp03_registry["repository_state_repair_cycles"], 1)
+        self.assertEqual(alp03_registry["validation_contract_repair_cycles"], 2)
 
-        self.assertTrue(pointer["bounded_authority"]["alp_implementation"])
-        self.assertEqual(pointer["bounded_authority"]["production_mutation_authorized"], gate["production_mutation_authorized"])
-        self.assertEqual(registry["active_planning_work"]["state"], "in_progress")
-        self.assertTrue(registry["alp_03_authority"]["implementation_authority"])
-        self.assertEqual(registry["alp_03_authority"]["production_mutation_authorized"], gate["production_mutation_authorized"])
-        self.assertEqual(runtime["active_work"]["state"], "in_progress")
-        self.assertTrue(runtime["active_work"]["implementation_authority"])
-        self.assertEqual(runtime["active_work"]["production_mutation_authorized"], gate["production_mutation_authorized"])
-        self.assertEqual(runtime["application_repository"]["canonical_main"], baseline)
+        self.assertEqual(runtime["application_repository"]["canonical_main"], merge)
+        self.assertEqual(runtime["active_work"]["work_item"], "ALP-04")
+        self.assertEqual(runtime["active_work"]["state"], successor["status"])
 
-        self.assertIn("ALP-03 — Platform Onboarding & Mastery Milestones", program)
-        self.assertIn("**IN_PROGRESS**", program)
-        self.assertIn("Diegetic practice remains optional", program)
-        self.assertIn("migration `0022`", program)
+        for phrase in (
+            "ALP-03 — Platform Onboarding & Mastery Milestones",
+            "ALP-04 — GM-Authored Campaign Achievements, Titles, Reputation & Reward Links",
+            "**COMPLETED_VERIFIED**",
+            "**SELECTED_NOT_STARTED**",
+            "Diegetic practice remains optional",
+            "migration `0022`",
+        ):
+            self.assertIn(phrase, program)
 
-    def test_alp03_scope_keeps_later_authorities_closed(self):
+        for value in (
+            "a71cc81b6b815b39c90159d13ae43d4b33d5f359",
+            "17f107d0fb2886f6805b57e32282d670046396e96a10f3576c19869162585303",
+            "a8243e69e5c3831b858e11a87e1dd270865261ab",
+            "a0f75ca0b9ff585dc00dab4ba684abf8b26c412becc53f1026fd8e659c081d1d",
+            merge,
+        ):
+            self.assertIn(value, closeout)
+
+    def test_alp03_completed_scope_keeps_later_authorities_closed(self):
         checkpoint = load_json("governance/ai/work-state/ALP-03-attempt-001.json")
         scope = checkpoint["implementation_scope"]
         boundary = checkpoint["authority_boundary"]
