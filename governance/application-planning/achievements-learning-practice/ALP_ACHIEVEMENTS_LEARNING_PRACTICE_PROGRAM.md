@@ -1,7 +1,7 @@
 # ALP — Achievements, Learning & Practice
 
 **Program ID:** ALP  
-**Status:** OWNER-APPROVED — ALP-01/02/03/04/05 COMPLETED_VERIFIED; ALP-06 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — ALP-01/02/03/04/05 COMPLETED_VERIFIED; ALP-06 IN_PROGRESS  
 **Activation:** after completed_verified ECI-01  
 **Successor:** VTI-01  
 **Owner and final authority:** John Brandon Turner  
@@ -19,7 +19,7 @@ ALP-04 — GM-Authored Campaign Achievements, Titles, Reputation & Reward Links 
 
 ALP-05 — Diegetic Practice Spaces, Training Scenes & Simulations — is `completed_verified` on application merge `402aa6d91795d6e75be64c106aa122b0b79cb872` through PR #411. Its implementation authority is retired.
 
-ALP-06 — Rehearsal, Retry, Safe Failure & Training/Project Integration — is `selected_not_started` from exact application main `402aa6d91795d6e75be64c106aa122b0b79cb872`. It has no implementation branch or authority. A future owner Continue must governed-start it.
+ALP-06 — Rehearsal, Retry, Safe Failure & Training/Project Integration — is `in_progress` from exact application main `402aa6d91795d6e75be64c106aa122b0b79cb872` on branch `integration/alp-06-rehearsal-retry-safe-failure-training-project-integration`. Acceptance-package authority is active; production mutation remains locked until genuine matching Linux/Windows RED and deterministic comparator evidence.
 
 ## Purpose and frozen invariants
 
@@ -53,6 +53,16 @@ Final GREEN on exact production head `359ee958759d4be86cc347e463c28a3ff565d150` 
 
 Application PR #411 squash-merged the exact validated tree to verified main `402aa6d91795d6e75be64c106aa122b0b79cb872`.
 
+## ALP-06 governed-start contract
+
+ALP-06 is authorized to define deterministic read-only contracts for rehearsal attempts, retries, safe failure and training/project integration over the frozen ALP-01 through ALP-05 contracts. A rehearsal may carry stable identity, explicit practice-space reference, participant, scope and provenance, retry lineage, `practice_training_marker` references, `project_learning_evidence` references, and read-only owner-system references.
+
+Safe failure means a rehearsal outcome may be projected as evidence without the rehearsal itself imposing canonical penalties, injuries, resource loss, project mutation, world/scene mutation, achievement completion, reward, XP, advancement or capability. Missing, hidden or unauthorized rehearsal evidence remains `unknown` and cannot be inferred. Retry lineage must remain explicit and deterministic rather than silently replacing or erasing prior attempts.
+
+Character Progression, Projects, World/Scene, GCL, ISE and MAL remain owner systems. ALP-06 may carry references to their objects but cannot mutate them by implication. Rehearsal and retry remain optional and cannot become universal permission or unrelated capability gates. No durable ALP persistence or migration `0022` is authorized. ALP-07 player/GM UX, accessibility, notification and recognition-history behavior remains reserved.
+
+Production mutation is not yet authorized. It unlocks only after the ALP-06 acceptance package produces genuine matching Linux and Windows RED caused by the absence of the bounded ALP-06 production contract while the deterministic comparator confirms matching evidence.
+
 ## Tranches
 
 1. **ALP-01 — Authority Crosswalk & Achievement/Learning/Practice Taxonomy** — **COMPLETED_VERIFIED**.
@@ -60,10 +70,10 @@ Application PR #411 squash-merged the exact validated tree to verified main `402
 3. **ALP-03 — Platform Onboarding & Mastery Milestones** — **COMPLETED_VERIFIED**.
 4. **ALP-04 — GM-Authored Campaign Achievements, Titles, Reputation & Reward Links** — **COMPLETED_VERIFIED**.
 5. **ALP-05 — Diegetic Practice Spaces, Training Scenes & Simulations** — **COMPLETED_VERIFIED**.
-6. **ALP-06 — Rehearsal, Retry, Safe Failure & Training/Project Integration** — **SELECTED_NOT_STARTED**.
+6. **ALP-06 — Rehearsal, Retry, Safe Failure & Training/Project Integration** — **IN_PROGRESS**.
 7. **ALP-07 — Player/GM UX, Accessibility, Notifications & Recognition History**.
 8. **ALP-08 — MAL/ISE/WCI/GCL Integration & Golden Learning/Recognition Proof**.
 
 ## Active invariant
 
-ALP-01 through ALP-05 are frozen completed_verified contracts. ALP-06 is selected_not_started only: no branch, acceptance package, production mutation, owner-system mutation, provider activation, tester distribution, release or deployment is authorized until a future owner Continue governed-starts it. ALP-07+, VTI-01+ remain unauthorized.
+ALP-01 through ALP-05 are frozen completed_verified contracts. ALP-06 is in_progress with branch-scoped implementation authority and acceptance-package authority only; production mutation is locked pending genuine matching RED. No owner-system mutation, provider activation, tester distribution, release or deployment is authorized. ALP-07+, VTI-01+ remain unauthorized.
