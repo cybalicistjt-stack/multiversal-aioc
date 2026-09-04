@@ -1,7 +1,7 @@
 # CAB — Character Advancement & Balance
 
 **Program ID:** CAB  
-**Status:** IN PROGRESS — CAB-01 COMPLETED_VERIFIED; CAB-02 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — CAB-02 COMPLETED_VERIFIED; CAB-03 SELECTED_NOT_STARTED  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-09-04  
 
@@ -35,8 +35,8 @@ CAB is a game-rules/content-governance program. It does not grant Multiversal-ap
 ## Sequential tranches
 
 1. **CAB-01 — Authority, Source Census & AP Retirement — completed_verified**
-2. **CAB-02 — Current XP Economy Reconstruction — selected_not_started**
-3. **CAB-03 — Character-Creation Baseline**
+2. **CAB-02 — Current XP Economy Reconstruction — completed_verified**
+3. **CAB-03 — Character-Creation Baseline — selected_not_started**
 4. **CAB-04 — Advancement Architecture**
 5. **CAB-05 — Five-Tier Model**
 6. **CAB-06 — XP Cost Calibration Framework**
@@ -64,13 +64,21 @@ CAB is intentionally economy-first. CAB-02 reconstructs the current XP economy b
 
 ## CAB-01 closeout
 
-CAB-01 established the source/authority hierarchy, created the advancement source census, and formally retired AP mechanics from current progression. Current Character advancement architecture remains usable without AP; legacy AP material remains provenance only. Numeric XP conflicts and current XP earning/spending reconstruction are deliberately deferred to CAB-02.
+CAB-01 established the source/authority hierarchy, created the advancement source census, and formally retired AP mechanics from current progression. Current Character advancement architecture remains usable without AP; legacy AP material remains provenance only.
+
+## CAB-02 closeout
+
+CAB-02 reconstructed XP into distinct governed/recovered families rather than treating every `XP` label as the same rule. It established that direct Ability purchase, some tree/tier unlocks, upgrades and several special progression families are source-attested; that current Character architecture supports authoritative XP/progression awards without settling amounts; and that recovered sources also contain conflicting uses such as XP-priced asset acquisition/upkeep and percentage XP-gain modifiers.
+
+CAB-02 preserved source hazard/reward XP values as reference signals rather than a universal award schedule; preserved structured magic's 0-XP direct spell-learning signal while flagging capacity/slot economics for later reconciliation; found no universal refund economics; and routed creation-budget conversion to CAB-03.
+
+CAB-02 questionnaire recommendations are recorded in `CAB-02_OWNER_QUESTIONNAIRE.md`. Unanswered items remain unresolved rather than silently defaulting.
 
 ## Current tranche
 
-**CAB-02 — Current XP Economy Reconstruction** is selected_not_started.
+**CAB-03 — Character-Creation Baseline** is selected_not_started.
 
-CAB-02 must identify every current/recovered XP earning, spending, grant, refund, conversion and prerequisite use; classify conflicts and unknowns; preserve AP retirement; and avoid deciding the Character-creation baseline owned by CAB-03.
+CAB-03 must establish one internally consistent creation baseline separating starting advancement XP, free/granted mechanical selections, XP-bought creation selections, equipment/wealth budget, any allowed creation-only conversion, species/form/background/environment/innate access, and historical example builds. It must not use AP and must not treat recovered asset-upkeep XP or XP multipliers as baseline creation rules.
 
 ## Boundaries
 

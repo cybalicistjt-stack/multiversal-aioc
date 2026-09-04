@@ -1,0 +1,186 @@
+{
+  "schema_version": "0.1.0",
+  "program_id": "CAB",
+  "work_item_id": "CAB-02",
+  "classification": "governed_reconstruction_not_final_balance",
+  "owner": "John Brandon Turner",
+  "inherited_decisions": {
+    "ability_points": "deprecated",
+    "ordinary_advancement_currency": "XP",
+    "universal_character_level_or_power_scalar": false
+  },
+  "economy_families": [
+    {
+      "id": "CAB02-XP-001",
+      "name": "authoritative advancement award and balance",
+      "direction": "earn_or_grant",
+      "authority": "current_architecture",
+      "source": "MV-IA-F004 Character Creation and Advancement",
+      "numeric_schedule": "unresolved",
+      "disposition": "preserve"
+    },
+    {
+      "id": "CAB02-XP-002",
+      "name": "direct Ability purchase",
+      "direction": "spend",
+      "authority": "source_backed_recovered_corpus",
+      "source": [
+        "Abilities_Core.csv",
+        "Species_Innate_Abilities.csv",
+        "Magic_Faction_Abilities.csv",
+        "Prestige_Env_Abilities.csv",
+        "Profession_Crafting_Abilities.csv"
+      ],
+      "observed_numeric_rows": 1712,
+      "disposition": "preserve_mechanism_recalibrate_later"
+    },
+    {
+      "id": "CAB02-XP-003",
+      "name": "tier or tree unlock",
+      "direction": "spend_for_access",
+      "authority": "source_backed_recovered_corpus",
+      "observed_numeric_rows": 1338,
+      "notes": "No numeric Tier_Unlock_XP rows were present in Species_Innate_Abilities.csv in the bounded portable corpus; other families publish multiple incompatible ladders.",
+      "disposition": "preserve_as_evidence_not_universal_rule"
+    },
+    {
+      "id": "CAB02-XP-004",
+      "name": "Ability upgrade",
+      "direction": "spend",
+      "authority": "source_backed_recovered_corpus",
+      "observed_numeric_rows": 402,
+      "disposition": "preserve_mechanism_recalibrate_later"
+    },
+    {
+      "id": "CAB02-XP-005",
+      "name": "spell direct learning",
+      "direction": "spend",
+      "authority": "structured_source_corpus",
+      "source": "Magic_Spells.csv",
+      "records": 385,
+      "observed_rule": "0 XP for the spell itself; XP purchases slots or ready-known capacity under archetype rules",
+      "disposition": "preserve_current_structured_signal_pending_magic_reconciliation"
+    },
+    {
+      "id": "CAB02-XP-006",
+      "name": "spellcasting capacity, slots, known/prepared limits and caster access",
+      "direction": "spend",
+      "authority": "recovered_legacy_or_proposal",
+      "source": "magic_rules_manual_recovery_catalog.md",
+      "disposition": "reconcile_later_do_not_promote_sample_prices"
+    },
+    {
+      "id": "CAB02-XP-007",
+      "name": "background, species, environment and setting-linked development options",
+      "direction": "spend",
+      "authority": "recovered_source_material",
+      "observed_pattern": "many direct XP options, frequently 300-600 XP with higher exceptions",
+      "disposition": "preserve_cost_evidence_separate_from_eligibility"
+    },
+    {
+      "id": "CAB02-XP-008",
+      "name": "hazard and trap reward XP",
+      "direction": "earn",
+      "authority": "mixed_source_and_expansion_corpus",
+      "source": "Hazards_Traps.csv",
+      "observed_non_unspecified_rows": 1901,
+      "distribution": {
+        "100": 114,
+        "250": 727,
+        "500": 954,
+        "1000": 90,
+        "0": 16
+      },
+      "disposition": "reference_signal_only_until_CAB-17"
+    },
+    {
+      "id": "CAB02-XP-009",
+      "name": "creative or skilled performance bonus XP",
+      "direction": "earn_bonus",
+      "authority": "recovered_optional_content",
+      "source": "civilian_vehicle_gameplay_11_25_24_manual_recovery_catalog.md",
+      "observed_rule": "Style Points: Bonus XP for creative or skilled performance",
+      "disposition": "reference_signal_only_until_CAB-17"
+    },
+    {
+      "id": "CAB02-XP-010",
+      "name": "percentage XP gain multiplier",
+      "direction": "modify_earn_rate",
+      "authority": "recovered_content_specific",
+      "source": "space_ships_list_valpha_manual_recovery_catalog.md",
+      "observed_rule": "Expanded Crew Quarters allows onboard training, boosting XP gain by 10% during downtime",
+      "disposition": "conflict_not_promoted"
+    },
+    {
+      "id": "CAB02-XP-011",
+      "name": "asset acquisition, refit and upkeep paid in XP",
+      "direction": "spend_noncharacter_asset",
+      "authority": "recovered_content_specific",
+      "source": "space_ships_list_valpha_manual_recovery_catalog.md",
+      "examples": [
+        "2000 XP acquisition per drone",
+        "10000 XP six-drone swarm pack",
+        "300 XP upkeep per swarm per downtime phase",
+        "3500 XP acquisition per capture drone",
+        "400 XP upkeep per drone per downtime phase",
+        "XP-priced refit/upgrade"
+      ],
+      "disposition": "economy_conflict_owner_question"
+    },
+    {
+      "id": "CAB02-XP-012",
+      "name": "creation XP to credits conversion",
+      "direction": "convert",
+      "authority": "legacy_language_confirmed_by_CAB-01_source_census",
+      "exchange_rate": "unresolved_in_CAB-02_bounded_source_set",
+      "disposition": "defer_to_CAB-03_owner_question"
+    },
+    {
+      "id": "CAB02-XP-013",
+      "name": "form replacement/conversion at partial XP cost",
+      "direction": "convert_or_replace",
+      "authority": "recovered_content_specific",
+      "source": "kola_ha_bioengineering_manual_recovery_catalog.md",
+      "observed_rule": "old Form may convert to a new Form at half XP cost under specified narrative/emotional evolution conditions",
+      "disposition": "specific_rule_only_do_not_generalize_refund"
+    },
+    {
+      "id": "CAB02-XP-014",
+      "name": "universal respec/refund",
+      "direction": "refund",
+      "authority": "not_established",
+      "observed_rule": null,
+      "disposition": "defer_to_CAB-19"
+    }
+  ],
+  "structured_corpus_counts": {
+    "total_rows_five_major_ability_files": 4816,
+    "ability_xp_numeric_rows": 1712,
+    "tier_unlock_xp_numeric_rows": 1338,
+    "upgrade_cost_xp_numeric_rows": 402,
+    "magic_spells_rows": 385,
+    "magic_spells_direct_learning_xp": "0 XP; capacity/slots owned by archetype progression",
+    "hazard_trap_non_unspecified_xp_reward_rows": 1901
+  },
+  "conflicts": [
+    "advancement currency versus general-purpose asset currency",
+    "direct purchase plus tier tax plus quantity prerequisite overlap",
+    "structured zero-cost spells versus recovered XP-to-learn-spell proposals",
+    "fixed encounter XP tags versus later accomplishment/pacing framework",
+    "percentage XP gain multipliers",
+    "lack of universal refund/respec economics"
+  ],
+  "explicit_nondecisions": [
+    "starting Character XP",
+    "creation free grants",
+    "creation XP-credit exchange",
+    "final ability/tier/upgrade prices",
+    "final tier access model",
+    "final spellcasting capacity costs",
+    "final reward rates",
+    "final refund percentage",
+    "final training reward semantics",
+    "final special-family acquisition eligibility"
+  ],
+  "strict_successor": "CAB-03"
+}
