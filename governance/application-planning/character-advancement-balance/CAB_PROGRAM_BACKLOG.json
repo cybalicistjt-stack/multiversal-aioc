@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "program_id": "CAB",
   "program_name": "Character Advancement & Balance",
   "owner": "John Brandon Turner",
@@ -7,10 +7,12 @@
   "governing_document": "governance/application-planning/character-advancement-balance/CAB_CHARACTER_ADVANCEMENT_BALANCE_PROGRAM.md",
   "execution_envelope": "Each tranche is bounded below the 25-minute tool cutoff; overflow becomes an explicit follow-on rather than expanding the active tranche.",
   "status": "in_progress",
-  "current_work_item_id": "CAB-01",
+  "completed_through": "CAB-01",
+  "current_work_item_id": "CAB-02",
+  "current_state": "selected_not_started",
   "tranches": [
-    {"id":"CAB-01","name":"Authority, Source Census & AP Retirement","status":"in_progress"},
-    {"id":"CAB-02","name":"Current XP Economy Reconstruction","status":"not_started"},
+    {"id":"CAB-01","name":"Authority, Source Census & AP Retirement","status":"completed_verified","artifacts":["CAB-01_AUTHORITY_AND_AP_RETIREMENT_CONTRACT.md","CAB-01_SOURCE_CENSUS.md","CAB-01_COMPLETION_REPORT.md"]},
+    {"id":"CAB-02","name":"Current XP Economy Reconstruction","status":"selected_not_started"},
     {"id":"CAB-03","name":"Character-Creation Baseline","status":"not_started"},
     {"id":"CAB-04","name":"Advancement Architecture","status":"not_started"},
     {"id":"CAB-05","name":"Five-Tier Model","status":"not_started"},
@@ -32,5 +34,7 @@
     {"id":"CAB-21","name":"Reference Character & Campaign Simulation","status":"not_started"},
     {"id":"CAB-22","name":"Final Rules & Content Repair Map","status":"not_started"},
     {"id":"CAB-23","name":"Completion Audit & Handoff","status":"not_started"}
-  ]
+  ],
+  "strict_next": "CAB-02",
+  "selection_note": "CAB-01 completed its authority/source/AP-retirement scope. CAB-02 is selected_not_started and must reconstruct the current XP economy without reviving AP or deciding the character-creation baseline owned by CAB-03."
 }
