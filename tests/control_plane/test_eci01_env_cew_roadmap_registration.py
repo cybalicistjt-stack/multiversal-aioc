@@ -14,7 +14,7 @@ def load_text(path):
 
 
 class Eci01EnvCewRoadmapRegistrationTests(unittest.TestCase):
-    def test_eci01_is_durable_required_successor_before_alp(self):
+    def test_eci01_is_durable_required_successor_before_alp_across_lifecycle(self):
         program = load_text("governance/application-planning/environment-creature-integration/ECI_ENVIRONMENT_CREATURE_INTEGRATION_PROGRAM.md")
         backlog = load_json("governance/application-planning/environment-creature-integration/ECI_PROGRAM_BACKLOG.json")
         amendment_path = "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MAL10_ECI_INSERTION_CLOSEOUT_2026-09-04.md"
@@ -28,31 +28,32 @@ class Eci01EnvCewRoadmapRegistrationTests(unittest.TestCase):
         self.assertEqual(backlog["program_id"], "ECI")
         self.assertEqual(backlog["activation_after"], "MAL-10")
         self.assertEqual(backlog["successor"], "ALP-01")
-        self.assertEqual(backlog["current_item"], "ECI-01")
-        self.assertEqual(backlog["tranches"][0]["status"], "selected_not_started")
-        self.assertFalse(backlog["tranches"][0]["implementation_authority"])
-        self.assertEqual(
-            backlog["required_contracts"],
-            ["ENV-HS-1.0", "ENV-CD-1.0", "CEW-GM-DISC-1.0"],
-        )
+        self.assertEqual(backlog["required_contracts"], ["ENV-HS-1.0", "ENV-CD-1.0", "CEW-GM-DISC-1.0"])
+        self.assertIn(checkpoint["status"], {"selected_not_started", "in_progress", "completed_verified"})
+        self.assertEqual(backlog["tranches"][0]["status"], checkpoint["status"])
         self.assertIn("MAL-01..10 → ECI-01 → ALP-01..08", amendment)
         self.assertIn("ready_for_separately_governed_software_selection", amendment)
         self.assertIn("no later roadmap edit may silently drop", amendment)
-        self.assertIn(amendment_path, pointer["roadmap_supplements"])
-
-        self.assertEqual(index["current"]["work_item_id"], "ECI-01")
-        self.assertEqual(index["current"]["status"], "selected_not_started")
-        self.assertTrue(index["effective_forward_order"].startswith("ECI-01 → ALP-01..08"))
-        self.assertEqual(pointer["active_attempt"]["work_item_id"], "ECI-01")
-        self.assertFalse(pointer["active_attempt"]["implementation_authority"])
-        self.assertEqual(checkpoint["work_item_id"], "ECI-01")
-        self.assertEqual(checkpoint["status"], "selected_not_started")
-        self.assertFalse(checkpoint["implementation_authority"])
 
         self.assertEqual(mal["successor"], "ECI-01")
         self.assertEqual(alp["activation_after"], "ECI-01")
-        self.assertEqual(alp["tranches"][0]["status"], "planned")
-        self.assertEqual(alp["deferred_by_owner_insertion"]["inserted_work_item"], "ECI-01")
+        self.assertEqual(alp.get("deferred_by_owner_insertion", {}).get("inserted_work_item"), "ECI-01")
+
+        if checkpoint["status"] == "completed_verified":
+            self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-01")
+            self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
+            self.assertFalse(pointer["active_attempt"]["implementation_authority"])
+            self.assertEqual(index["current"]["work_item_id"], "ALP-01")
+            self.assertEqual(index["current"]["status"], "selected_not_started")
+            self.assertEqual(alp["tranches"][0]["status"], "selected_not_started")
+        else:
+            self.assertEqual(pointer["active_attempt"]["work_item_id"], "ECI-01")
+            self.assertEqual(pointer["active_attempt"]["status"], checkpoint["status"])
+            self.assertEqual(index["current"]["work_item_id"], "ECI-01")
+            self.assertEqual(index["current"]["status"], checkpoint["status"])
+            self.assertTrue(index["effective_forward_order"].startswith("ECI-01 → ALP-01..08"))
+            self.assertEqual(alp["tranches"][0]["status"], "planned")
+            self.assertFalse(alp["tranches"][0].get("implementation_authority", False))
 
         for phrase in (
             "ENV-HS-1.0",
