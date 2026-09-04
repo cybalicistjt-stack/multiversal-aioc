@@ -1,7 +1,7 @@
 # ALP — Achievements, Learning & Practice
 
 **Program ID:** ALP  
-**Status:** OWNER-APPROVED — ALP-01/02/03/04 COMPLETED_VERIFIED; ALP-05 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — ALP-01/02/03/04 COMPLETED_VERIFIED; ALP-05 IN_PROGRESS  
 **Activation:** after completed_verified ECI-01  
 **Successor:** VTI-01  
 **Owner and final authority:** John Brandon Turner  
@@ -17,7 +17,7 @@ ALP-03 — Platform Onboarding & Mastery Milestones — is `completed_verified` 
 
 ALP-04 — GM-Authored Campaign Achievements, Titles, Reputation & Reward Links — is `completed_verified` on application merge `788a8025caf8046edfeddcbf238cce972a4c5378` through PR #410. Its implementation authority is retired.
 
-ALP-05 — Diegetic Practice Spaces, Training Scenes & Simulations — is `selected_not_started` from exact application main `788a8025caf8046edfeddcbf238cce972a4c5378`. It has no branch, acceptance authority or production authority. A future owner Continue must governed-start it.
+ALP-05 — Diegetic Practice Spaces, Training Scenes & Simulations — is `in_progress` from exact application main `788a8025caf8046edfeddcbf238cce972a4c5378` on branch `integration/alp-05-diegetic-practice-spaces-training-scenes-simulations`. Acceptance-authoring authority is active; production mutation remains locked until a genuine matching RED proves the ALP-05 production contract is absent.
 
 ## Purpose
 
@@ -73,9 +73,13 @@ Final GREEN on exact production head `763e9ef8fb925e9188cdc8975600b6c7047fae01` 
 
 Application PR #410 squash-merged the unchanged validated head to verified main `788a8025caf8046edfeddcbf238cce972a4c5378`.
 
-## ALP-05 selection boundary
+## ALP-05 governed-start contract
 
-ALP-05 is selected only. It may not create a branch, acceptance package or production mutation until a future owner Continue performs governed start from exact application main `788a8025caf8046edfeddcbf238cce972a4c5378`. Practice participation cannot itself grant XP, advancement, capability or reward. Diegetic practice remains optional and all owner systems retain mutation authority.
+ALP-05 is authorized to define deterministic read-only optional practice-space contracts for diegetic practice spaces, training scenes and simulations. A practice space must carry stable identity, explicit practice kind, scope, author and provenance; may carry explicit practice goals and `practice_training_marker` references; and may project read-only links to Character Progression, Projects, World/Scene, GCL, ISE and MAL owner objects.
+
+Practice participation remains optional. ALP-05 may project authorized practice observations and simulation/training context, but hidden or unauthorized evidence remains unresolved. It may project deterministic training/simulation outcomes as non-canonical practice results, but it may not grant XP, advancement, capability, achievement completion, mechanical reward, or any owner-system mutation merely because practice occurred.
+
+Acceptance must first demonstrate genuine absence of the ALP-05 production module on both self-hosted lanes before production mutation authority is unlocked. ALP-06 rehearsal/retry/safe-failure integration behavior remains reserved.
 
 ## Tranches
 
@@ -83,11 +87,11 @@ ALP-05 is selected only. It may not create a branch, acceptance package or produ
 2. **ALP-02 — Achievement Definitions, Criteria, Evidence, Scope & Provenance** — **COMPLETED_VERIFIED**.
 3. **ALP-03 — Platform Onboarding & Mastery Milestones** — **COMPLETED_VERIFIED**.
 4. **ALP-04 — GM-Authored Campaign Achievements, Titles, Reputation & Reward Links** — **COMPLETED_VERIFIED**.
-5. **ALP-05 — Diegetic Practice Spaces, Training Scenes & Simulations** — **SELECTED_NOT_STARTED**.
+5. **ALP-05 — Diegetic Practice Spaces, Training Scenes & Simulations** — **IN_PROGRESS**.
 6. **ALP-06 — Rehearsal, Retry, Safe Failure & Training/Project Integration**
 7. **ALP-07 — Player/GM UX, Accessibility, Notifications & Recognition History**
 8. **ALP-08 — MAL/ISE/WCI/GCL Integration & Golden Learning/Recognition Proof**
 
 ## Active invariant
 
-Achievements remain optional recognition/learning structures, not universal permission gates. Achievement completion cannot grant unrelated capabilities by implication. Mechanically meaningful rewards commit only through owning Reward/Progression/Reputation/Faction systems. Platform learning badges and campaign achievements remain distinguishable in scope and authorship. Diegetic practice remains optional. AI may explain progress or propose criteria but may not silently award achievements or infer hidden completion evidence. ALP-01 through ALP-04 are frozen completed_verified contracts. ALP-05 is selected_not_started with no branch or implementation authority. ALP-06+, VTI-01+, provider activation, tester distribution, release and deployment remain unauthorized.
+Achievements remain optional recognition/learning structures, not universal permission gates. Achievement completion cannot grant unrelated capabilities by implication. Mechanically meaningful rewards commit only through owning Reward/Progression/Reputation/Faction systems. Platform learning badges and campaign achievements remain distinguishable in scope and authorship. Diegetic practice remains optional. AI may explain progress or propose criteria but may not silently award achievements or infer hidden completion evidence. ALP-01 through ALP-04 are frozen completed_verified contracts. ALP-05 is in_progress with bounded acceptance authority and production locked until genuine matching RED. ALP-06+, VTI-01+, provider activation, tester distribution, release and deployment remain unauthorized.
