@@ -1,12 +1,15 @@
 # CAB-03 — Owner Questionnaire
 
 **Program:** CAB — Character Advancement & Balance  
-**Purpose:** resolve the four creation-baseline conflicts that remain after CAB-03 source reconciliation. Unanswered questions remain unresolved and do not silently default.
+**Status:** `resolved_by_owner_2026-09-04`  
+**Decision artifact:** `CAB-03_OWNER_DECISIONS_2026-09-04.md`  
+**Purpose:** preserve the four creation-baseline questions and their resolved owner dispositions.
 
 ## CAB-Q03-01 — How rigid is the 1,300-XP starting value?
 
 **Decision impact:** HIGH  
-**CAB recommendation:** **B**.
+**CAB recommendation:** **B**.  
+**Owner decision:** **B, with recalibration permission.**
 
 A. 1,300 XP is universal and cannot be changed by ordinary Campaign creation policy.
 
@@ -16,14 +19,15 @@ C. Replace 1,300 XP with a different universal starting amount.
 
 D. Leave the normal starting value unresolved until later benchmark simulation.
 
-**Reasoning:** the owner explicitly established 1,300 XP in the recovered creation conversation, and the Character Creation PDF repeats it. Current Character architecture also intentionally binds creation to a Campaign creation policy. Treating 1,300 as the default preserves that owner rule while allowing deliberately experienced starting Characters without inventing separate character levels.
+**Resolved interpretation:** 1,300 XP is the current normal-start default, but it remains open to explicit later adjustment after CAB better calibrates and tests the advancement system. CAB-06, CAB-14, CAB-16 and CAB-21 must test whether 1,300 remains appropriate.
 
 ---
 
 ## CAB-Q03-02 — What should replace the contradictory Attribute Modes?
 
 **Decision impact:** VERY HIGH  
-**CAB recommendation:** **A**.
+**CAB recommendation:** **A**.  
+**Owner decision:** **A + B combined.**
 
 A. **Recommended:** every Character starts at 10 in each attribute, applies Species modifiers, then receives one **free 12-point attribute allocation pool**. Physical/Mental/Balanced become optional examples only. Any increases beyond the free pool use XP under the attribute pricing rules later finalized in CAB-10/CAB-06.
 
@@ -33,14 +37,15 @@ C. Remove any free attribute allocation; all increases above 10 + Species modifi
 
 D. Use another creation method you specify.
 
-**Reasoning:** the current mode tables contradict their own point totals, and the 300/600-XP bundle prices are incompatible with the same source's 250-XP-per-+1 price. One 12-point free pool preserves the clearest normal-start value, avoids bundle arbitrage, and lets CAB-10 price extra attributes against abilities and skills later.
+**Resolved interpretation:** A is the operative normal/default baseline. The Regular/High/Hyper concept may also survive as optional Campaign starting-power packages, but their current numeric rules are invalid and must be fully rebalanced before use. They may not create hidden bulk-purchase arbitrage against ordinary attribute pricing.
 
 ---
 
 ## CAB-Q03-03 — Should backgrounds have a separate 1,800-XP spending cap?
 
 **Decision impact:** MEDIUM  
-**CAB recommendation:** **A**.
+**CAB recommendation:** **A**.  
+**Owner decision:** **A**.
 
 A. **Recommended:** no universal 1,800-XP category cap. The three core background components remain free; optional background upgrades spend available advancement XP and must satisfy source eligibility/prerequisites. Campaign policy may impose a category cap where desired.
 
@@ -50,14 +55,15 @@ C. Use a different universal background-spending cap.
 
 D. Defer until CAB-06 price calibration.
 
-**Reasoning:** the 1,800 limit appears in an earlier owner-authored creation draft but disappears from the later Character Creation PDF. At the normal 1,300-XP start it cannot bind unless the Character has bonus starting XP. Available XP plus prerequisites already constrains ordinary starting builds, while an optional Campaign cap can still protect specific profiles.
+**Resolved interpretation:** no universal 1,800-XP background cap. A Campaign may impose a category cap where desired.
 
 ---
 
 ## CAB-Q03-04 — Should Characters be allowed to buy permanent extra HP with starting XP?
 
 **Decision impact:** MEDIUM-HIGH  
-**CAB recommendation:** **A**.
+**CAB recommendation:** **A**.  
+**Owner decision:** **A**.
 
 A. **Recommended:** yes. Keep the creation-only option to invest advancement XP in permanent starting HP, because durability is a legitimate Character-bound development choice. Keep the baseline `max(10, Constitution)` plus Species modifiers, but send the current +5/+10/+15/+20 HP prices to CAB-06 for balance calibration before treating the exact numbers as final.
 
@@ -67,7 +73,7 @@ C. Keep the creation HP-buy concept and the exact current 300 / 750 / 1,250 / 2,
 
 D. Defer the entire question until CAB-06.
 
-**Reasoning:** the May 2025 health source explicitly adds creation-only HP investment and is later than the February creation document. The concept fits the XP-buy philosophy, but the price curve has not yet been compared against attributes, defenses, resistances, healing, or high-impact abilities.
+**Resolved interpretation:** creation-only permanent HP buying remains in the system. The current price ladder remains provisional and must be calibrated later.
 
 ## Already established and not being re-asked
 
@@ -82,10 +88,6 @@ D. Defer the entire question until CAB-06.
 - Final Skill/Knowledge/proficiency prices are not being decided here.
 - Final extra-tree/tier/Ability prices are not being decided here.
 
-## Response format
+## Resolution
 
-You can answer compactly, for example:
-
-`Q1 B, Q2 A, Q3 A, Q4 A`
-
-You can also qualify any answer in your own words. Unanswered items remain unresolved.
+All CAB-03 owner questions are resolved. CAB-04 may execute. The canonical decisions are in `CAB-03_OWNER_DECISIONS_2026-09-04.md`.
