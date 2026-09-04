@@ -1,17 +1,19 @@
 # ALP — Achievements, Learning & Practice
 
 **Program ID:** ALP  
-**Status:** OWNER-APPROVED — ALP-01 SELECTED_NOT_STARTED  
-**Activation:** after completed_verified MAL-10  
+**Status:** OWNER-APPROVED — PLANNED, WAITING ON ECI-01  
+**Activation:** after completed_verified ECI-01  
 **Successor:** VTI-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-08-27
 
 ## Current state
 
-MAL is `completed_verified` through MAL-10 on exact application main `5af518c1a88a5f07dbd4d1f328b18ef07f6e2ee2`. ALP-01 — Authority Crosswalk & Achievement/Learning/Practice Taxonomy — is the strict successor and is `selected_not_started` from that exact application baseline with no implementation branch and no implementation authority.
+MAL is `completed_verified` through MAL-10 on exact application main `5af518c1a88a5f07dbd4d1f328b18ef07f6e2ee2`.
 
-A future owner `Continue` must perform one bounded ALP-01 governed start before any achievement, learning or practice product mutation.
+MAL-10 originally selected ALP-01 as `selected_not_started`. On 2026-09-04 the owner inserted ECI-01 — ENV/CEW GM Discovery Integration — between completed MAL-10 and ALP-01 so the completed ENV/CEW content/API handoff cannot be silently skipped. That later owner decision supersedes ALP-01 as the current selector without erasing the historical MAL-10 closeout evidence.
+
+ALP-01 is therefore planned/waiting. It has no implementation authority and must not governed-start until ECI-01 is `completed_verified` and selects ALP-01 as successor.
 
 ## Purpose
 
@@ -49,4 +51,4 @@ Recovered basis: RDC-08A/RDC-08B, RD-13 and RD-16. The owner has explicitly dire
 
 ## Selection invariant
 
-ALP-01 selection grants no implementation authority. Achievements remain optional recognition/learning structures, not universal permission gates. Achievement completion cannot grant unrelated capabilities by implication. Mechanically meaningful rewards commit only through their owning Reward/Progression/Reputation/Faction systems. Platform learning badges and campaign achievements remain distinguishable in scope and authorship. Diegetic practice remains optional. AI may explain progress or propose criteria but may not silently award achievements or infer hidden completion evidence. ALP-02+, VTI-01+, provider activation, tester distribution, release and deployment remain unauthorized.
+ALP-01 currently has no selection or implementation authority because ECI-01 is the active owner-inserted predecessor. Achievements remain optional recognition/learning structures, not universal permission gates. Achievement completion cannot grant unrelated capabilities by implication. Mechanically meaningful rewards commit only through their owning Reward/Progression/Reputation/Faction systems. Platform learning badges and campaign achievements remain distinguishable in scope and authorship. Diegetic practice remains optional. AI may explain progress or propose criteria but may not silently award achievements or infer hidden completion evidence. ALP-01+, VTI-01+, provider activation, tester distribution, release and deployment remain unauthorized until the owning predecessor selects them.
