@@ -48,7 +48,7 @@ ALP-04 does **not** award achievements, mutate completion, infer hidden or unaut
 
 ## Convergence
 
-The application production contract required zero product repair cycles. During AIOC RED-unlock bookkeeping there were two changed-evidence repairs: one validation-contract normalization and one repository-state diagnostic-mode correction. No unchanged-evidence rerun, unrelated historical validation fanout, stale-pointer incident, or no-progress cycle was recorded.
+The application production contract required zero product repair cycles. Three changed-evidence control-plane repairs occurred: one repository-state diagnostic-mode correction and two validation-contract repairs. The third repair was the lifecycle-safe ALP-03 predecessor regression exposed by closeout run `33897641182`: canonical repository health and termination preflight already passed, while exactly one of 255 control-plane tests failed because ALP-03 still hard-coded `completed_through` to `ALP-03` after ALP-04 had become `completed_verified`. No unchanged-evidence rerun, unrelated historical validation fanout, stale-pointer incident, or no-progress cycle was recorded.
 
 The first owner Continue reached exact-head GREEN and application merge before the enforced tool-execution window ended during closeout synchronization. The second Continue resumed only the unfinished closeout, so it is recorded as a genuine execution-window blocker rather than a second-Continue control-plane incident.
 
