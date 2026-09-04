@@ -38,7 +38,7 @@ Hidden, missing or unauthorized evidence is never inferred. ALP-02 performs no a
 
 ## Convergence
 
-This tranche completed under one owner `Continue` and one execution cycle. Three changed-evidence governed-start repairs occurred: two repository-state preservation repairs and one validation-contract/lifecycle regression repair. Application feature repairs were zero. Unchanged-evidence reruns, historical predecessor fanout, no-progress cycles and stale-pointer incidents were zero.
+This tranche completed under one owner `Continue` and one execution cycle. Four changed-evidence repairs occurred: two repository-state preservation repairs and two validation-contract/lifecycle regression repairs. The terminal closeout run `33882269208` passed canonical repository health but exposed two stale regression assertions: ALP-01 still froze `completed_through`/canonical main before a completed successor, and ALP-02 expected exact Markdown formatting. Those assertions were repaired without changing ALP-02 product behavior or ALP-03 authority. Application feature repairs were zero. Unchanged-evidence reruns, historical predecessor fanout, no-progress cycles and stale-pointer incidents were zero.
 
 ## Successor boundary
 
