@@ -1,7 +1,7 @@
 # CAB — Character Advancement & Balance
 
 **Program ID:** CAB  
-**Status:** OWNER-APPROVED — CAB-01 IN PROGRESS  
+**Status:** IN PROGRESS — CAB-01 COMPLETED_VERIFIED; CAB-02 SELECTED_NOT_STARTED  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-09-04  
 
@@ -11,7 +11,7 @@ CAB reconciles Multiversal character advancement into one coherent XP-buy econom
 
 CAB is a game-rules/content-governance program. It does not grant Multiversal-app implementation authority and does not supersede the currently selected software work item.
 
-## Owner decisions established before CAB-01
+## Owner decisions established
 
 1. **Ability Points (AP) are deprecated.** AP no longer governs current character creation, advancement purchases, tier access, or balance calculations.
 2. **XP is the ordinary spendable character-advancement currency.**
@@ -34,8 +34,8 @@ CAB is a game-rules/content-governance program. It does not grant Multiversal-ap
 
 ## Sequential tranches
 
-1. **CAB-01 — Authority, Source Census & AP Retirement**
-2. **CAB-02 — Current XP Economy Reconstruction**
+1. **CAB-01 — Authority, Source Census & AP Retirement — completed_verified**
+2. **CAB-02 — Current XP Economy Reconstruction — selected_not_started**
 3. **CAB-03 — Character-Creation Baseline**
 4. **CAB-04 — Advancement Architecture**
 5. **CAB-05 — Five-Tier Model**
@@ -61,6 +61,16 @@ CAB is a game-rules/content-governance program. It does not grant Multiversal-ap
 ## Dependency order
 
 CAB is intentionally economy-first. CAB-02 reconstructs the current XP economy before CAB-03 establishes a creation baseline. CAB-04/05 establish advancement and tier semantics before CAB-06 calibrates cost. CAB-06..10 establish the measurement rules before CAB-11..13 audit the corpus. CAB-14..15 benchmark equal-XP builds only after those foundations. CAB-16 establishes intended advancement cadence before CAB-17 derives XP awards. CAB-18 stress-tests veteran play; CAB-19 governs correction/migration; CAB-20..23 integrate, simulate, repair-map and close the program.
+
+## CAB-01 closeout
+
+CAB-01 established the source/authority hierarchy, created the advancement source census, and formally retired AP mechanics from current progression. Current Character advancement architecture remains usable without AP; legacy AP material remains provenance only. Numeric XP conflicts and current XP earning/spending reconstruction are deliberately deferred to CAB-02.
+
+## Current tranche
+
+**CAB-02 — Current XP Economy Reconstruction** is selected_not_started.
+
+CAB-02 must identify every current/recovered XP earning, spending, grant, refund, conversion and prerequisite use; classify conflicts and unknowns; preserve AP retirement; and avoid deciding the Character-creation baseline owned by CAB-03.
 
 ## Boundaries
 
