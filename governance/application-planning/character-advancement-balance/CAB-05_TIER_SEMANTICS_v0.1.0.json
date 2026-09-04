@@ -1,8 +1,8 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.1.1",
   "program_id": "CAB",
   "tranche_id": "CAB-05",
-  "state": "completed_verified_analysis_pending_owner_policy_answers",
+  "state": "completed_verified_owner_policy_resolved",
   "owner": "John Brandon Turner",
   "tier_model": {
     "tier_count": 5,
@@ -16,15 +16,14 @@
       "eligibility_substitute",
       "prerequisite_substitute"
     ],
-    "candidate_descriptors": {
+    "shared_descriptors": {
       "1": "Foundation",
       "2": "Developed",
       "3": "Advanced",
       "4": "Expert",
       "5": "Apex"
     },
-    "source_local_display_labels_preserved": true,
-    "descriptor_policy_owner_question": "CAB-Q05-01"
+    "source_local_display_labels_preserved": true
   },
   "bounded_corpus_observations": {
     "ability_records_total": 4816,
@@ -40,12 +39,12 @@
       "5": {"records": 215, "median": 5000, "min": 200, "max": 40000}
     },
     "tier5_records_below_highest_tier1_direct_cost": 19,
-    "interpretation": "Tier correlates with depth and often cost, but the overlap is too large to treat tier as an exact price or power scalar."
+    "interpretation": "Tier correlates with developmental depth and often cost, but overlap is too large to treat tier as an exact price or power scalar."
   },
   "progression_scope": {
     "required_field": "tier_scope_id",
-    "allowed_scope_examples": ["ability_tree", "branch", "path", "other_explicit_progression_graph"],
-    "default": "tree_unless_branch_or_path_explicitly_declares_independent_depth",
+    "allowed_scope_examples": ["ability_tree", "branch", "path", "prestige_progression", "other_explicit_progression_graph"],
+    "default": "tree_unless_branch_path_or_special_progression_explicitly_declares_independent_depth",
     "cross_scope_unlock_prohibited_by_default": true
   },
   "tier_access_states": [
@@ -59,7 +58,7 @@
   ],
   "universal_prior_tier_quantity_gate": false,
   "tree_specific_mastery_counts_allowed": true,
-  "candidate_ordinary_purchasable_tree_access": {
+  "ordinary_purchasable_tree_access": {
     "tier1": "established_when_progression_is_legitimately_opened",
     "tier2_to_5": "one_time_xp_tier_access_purchase_after_non_cost_conditions_are_satisfied",
     "ability_nodes_still_have_individual_costs": true,
@@ -71,23 +70,40 @@
       "special_acquisition",
       "sequential_node",
       "milestone",
+      "innate",
       "other_governed_mode"
-    ],
-    "policy_owner_question": "CAB-Q05-02"
+    ]
   },
-  "short_sparse_tree_candidate": {
+  "short_sparse_tree_policy": {
     "early_cap_allowed": true,
     "contiguous_tiers_from_declared_start_to_cap_expected": true,
     "internal_gap_is_warning_unless_explicit": true,
     "synthetic_filler_prohibited": true,
-    "later_extension_allowed_through_governed_versioning": true,
-    "policy_owner_question": "CAB-Q05-03"
+    "later_extension_allowed_through_governed_versioning": true
   },
-  "tier5_candidate_semantics": {
+  "prestige_progression_policy": {
+    "declared_start_tier": 3,
+    "tiers_1_and_2_considered_missing": false,
+    "explicit_entry_requirements_required": true,
+    "entry_requirement_examples": [
+      "prior_abilities",
+      "skills",
+      "knowledges",
+      "proficiencies",
+      "attributes",
+      "milestones",
+      "achievements",
+      "faction_or_order_status",
+      "narrative_accomplishments",
+      "other_governed_prerequisites_or_eligibility"
+    ],
+    "contiguous_from_tier3_to_declared_cap_expected": true,
+    "later_detail_owners": ["CAB-09", "CAB-12"]
+  },
+  "tier5_semantics": {
     "meaning": "apex_or_capstone_depth_relative_to_owning_progression",
     "universal_world_shaping_power_floor": false,
-    "cross_tree_equal_power_assumption": false,
-    "policy_owner_question": "CAB-Q05-04"
+    "cross_tree_equal_power_assumption": false
   },
   "creation_inheritance": {
     "starting_ability_trees_free": 5,
@@ -96,6 +112,7 @@
     "extra_tree_and_higher_tier_numeric_prices": "CAB-06"
   },
   "entitlement_boundary": "free_product_first_two_tiers_is_product_access_not_game_balance_semantics",
-  "owner_questions": ["CAB-Q05-01", "CAB-Q05-02", "CAB-Q05-03", "CAB-Q05-04"],
+  "owner_decision_artifact": "CAB-05_OWNER_DECISIONS_2026-09-04.md",
+  "owner_questions_status": "resolved",
   "strict_successor": "CAB-06"
 }
