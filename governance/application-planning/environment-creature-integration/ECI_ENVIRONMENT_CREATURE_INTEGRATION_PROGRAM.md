@@ -1,11 +1,15 @@
 # ECI — Environment & Creature Integration
 
 **Program ID:** ECI  
-**Status:** OWNER-APPROVED — ECI-01 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — ECI-01 IN_PROGRESS  
 **Activation:** after completed_verified MAL-10  
 **Successor:** ALP-01  
 **Owner and final authority:** John Brandon Turner  
 **Selected by owner insertion:** 2026-09-04
+
+## Current state
+
+ECI-01 — ENV/CEW GM Discovery Integration — is `in_progress` from exact application main `5af518c1a88a5f07dbd4d1f328b18ef07f6e2ee2` on branch `integration/eci-01-env-cew-gm-discovery-integration` with bounded implementation authority. Acceptance-first matching self-hosted Linux/Windows RED is required before production mutation. ALP-01 remains planned/waiting until ECI-01 is `completed_verified`.
 
 ## Purpose
 
@@ -43,9 +47,15 @@ The application integration must:
 14. never infer canonical range from environment similarity, body plan, type, name similarity or habitat suitability;
 15. never create ownership, bond, taming, domestication, personhood, encounter state or canonical creature identity merely because a result is discoverable.
 
-## Selection state
+## Governed start
 
-ECI-01 is `selected_not_started`. This registration grants **no Multiversal-app implementation authority**. It has no implementation branch. A future owner `Continue` must perform the bounded ECI-01 governed start from the exact application baseline established by MAL-10 before any application mutation.
+ECI-01 has bounded implementation authority only for the read-only GM discovery seam described above. The exact inherited gate order is `identity_and_authority_gate` → `campaign_visibility_gate` → `canonical_distribution_gate` → `ecological_fit_gate` → `overlay_condition_gate` → `season_activity_gate` → `projection_facet_derivation` → `stable_grouping_and_trace`.
+
+Supported provider-neutral query modes are `normal_discovery`, `include_blocked`, and `include_unresolved`. Supported ecological-fit states remain `preferred`, `compatible`, `conditional`, `incompatible`, and `indeterminate`. No hidden numeric fit/discovery score, ranking formula or facet precedence is authorized.
+
+A normal discovery result may never expose hidden/suppressed material, promote unknown distribution into presence, or convert ecological suitability into canonical range. Explicit canonical presence with incompatible/indeterminate ecology remains an explainable `canonical_presence_conflict` warning. Diagnostic modes may expose blocked/unresolved candidates only to an authorized GM and never promote them into canon.
+
+Havalaea human-level native fauna retain animal ecological identity and autonomy. NPC-capable, mount, pet/companion and familiar facets are read-only eligibility/projection facts only; sapient/person-level partnership remains voluntary-consent gated.
 
 ## Roadmap position
 
@@ -57,9 +67,10 @@ ALP-01's earlier selected-not-started state is retained as historical evidence b
 
 ## Boundaries
 
-- ECI-01 selection is not implementation authority.
-- No schema/migration is reserved by this registration.
+- ECI-01 owns projection/integration mechanics only, not environment, creature, distribution, relationship, personhood or encounter truth.
+- No schema/migration is reserved; no durable persistence is authorized.
 - No provider activation, tester distribution, release or deployment is authorized.
 - No new canon is created by discovery output.
 - Unknown and hidden information remain conservative and unresolved.
 - No later roadmap edit may silently drop or bypass ECI-01 without an explicit owner-authorized superseding decision.
+- ALP-01+ implementation remains unauthorized until ECI-01 closeout.
