@@ -14,7 +14,7 @@ def load_text(path):
 
 
 class Alp03PlatformOnboardingMasteryRegistrationTests(unittest.TestCase):
-    def test_alp03_governed_start_is_consistent_and_red_gated(self):
+    def test_alp03_governed_start_and_red_unlock_are_consistent(self):
         baseline = "050356f7578856de5931917a60efe8af91def1bd"
         branch = "integration/alp-03-platform-onboarding-mastery-milestones"
         checkpoint = load_json("governance/ai/work-state/ALP-03-attempt-001.json")
@@ -29,10 +29,20 @@ class Alp03PlatformOnboardingMasteryRegistrationTests(unittest.TestCase):
         self.assertTrue(checkpoint["implementation_authority"])
         self.assertEqual(checkpoint["implementation_branch"], branch)
         self.assertEqual(checkpoint["application_baseline_sha"], baseline)
-        self.assertTrue(checkpoint["acceptance_gate"]["acceptance_package_authorized"])
-        self.assertFalse(checkpoint["acceptance_gate"]["production_mutation_authorized"])
-        self.assertTrue(checkpoint["acceptance_gate"]["matching_linux_windows_red_required"])
-        self.assertFalse(checkpoint["acceptance_gate"]["red_observed"])
+        gate = checkpoint["acceptance_gate"]
+        self.assertTrue(gate["acceptance_package_authorized"])
+        self.assertTrue(gate["matching_linux_windows_red_required"])
+        self.assertEqual(gate["production_mutation_authorized"], gate["red_observed"])
+        if gate["red_observed"]:
+            red = gate["acceptance_red"]
+            self.assertEqual(red["head_sha"], "a71cc81b6b815b39c90159d13ae43d4b33d5f359")
+            self.assertEqual(red["run_id"], 33885427744)
+            self.assertEqual(red["linux_job"], 101063942140)
+            self.assertEqual(red["windows_job"], 101063942161)
+            self.assertEqual(red["deterministic_compare_job"], 101064060265)
+            self.assertEqual(red["matching_failure_step"], "alp03-invariants")
+            self.assertEqual(red["deterministic_receipt_sha256"], "17f107d0fb2886f6805b57e32282d670046396e96a10f3576c19869162585303")
+            self.assertTrue(red["production_contract_absent"])
 
         alp03 = next(item for item in backlog["tranches"] if item["id"] == "ALP-03")
         self.assertEqual(alp03["status"], "in_progress")
@@ -47,13 +57,13 @@ class Alp03PlatformOnboardingMasteryRegistrationTests(unittest.TestCase):
             self.assertEqual(surface["implementation_branch"], branch)
 
         self.assertTrue(pointer["bounded_authority"]["alp_implementation"])
-        self.assertFalse(pointer["bounded_authority"]["production_mutation_authorized"])
+        self.assertEqual(pointer["bounded_authority"]["production_mutation_authorized"], gate["production_mutation_authorized"])
         self.assertEqual(registry["active_planning_work"]["state"], "in_progress")
         self.assertTrue(registry["alp_03_authority"]["implementation_authority"])
-        self.assertFalse(registry["alp_03_authority"]["production_mutation_authorized"])
+        self.assertEqual(registry["alp_03_authority"]["production_mutation_authorized"], gate["production_mutation_authorized"])
         self.assertEqual(runtime["active_work"]["state"], "in_progress")
         self.assertTrue(runtime["active_work"]["implementation_authority"])
-        self.assertFalse(runtime["active_work"]["production_mutation_authorized"])
+        self.assertEqual(runtime["active_work"]["production_mutation_authorized"], gate["production_mutation_authorized"])
         self.assertEqual(runtime["application_repository"]["canonical_main"], baseline)
 
         self.assertIn("ALP-03 — Platform Onboarding & Mastery Milestones", program)
