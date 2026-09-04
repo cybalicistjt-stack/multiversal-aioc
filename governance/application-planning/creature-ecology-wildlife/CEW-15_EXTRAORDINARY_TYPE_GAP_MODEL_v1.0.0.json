@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "CEW-MON-EXTRA-1.0",
+  "work_item": "CEW-15",
+  "title": "Monster, Extraordinary Creature & Creature-Type Gap Expansion",
+  "identity_authority": "CEW-ID-1.0",
+  "taxonomy_authority": "CEW-TAX-1.0",
+  "type_coverage_authority": "CEW-TYPE-COV-1.0",
+  "habitat_authority": "CEW-HAB-1.0",
+  "distribution_authority": "CEW-DIST-1.0",
+  "ecological_role_authority": "CEW-ECO-1.0",
+  "environment_habitat_authority": "ENV-HS-1.0",
+  "application_implementation_authority": false,
+  "strict_successor": "CEW-16",
+  "extraordinary_source_corpus": {
+    "source": "CEW-01_CREATURE_SOURCE_CENSUS_v1.0.0.json",
+    "document_count": 19,
+    "safe_statblock_record_count": 741,
+    "documents": [
+      {"source_document":"Aberrations.PDF","safe_statblock_record_count":25},
+      {"source_document":"Beast Creatures 1.PDF","safe_statblock_record_count":119},
+      {"source_document":"Beasts 2.PDF","safe_statblock_record_count":80},
+      {"source_document":"Chaos Creatures.PDF","safe_statblock_record_count":30},
+      {"source_document":"Constructs.PDF","safe_statblock_record_count":49},
+      {"source_document":"Demonic Creatures.PDF","safe_statblock_record_count":44},
+      {"source_document":"Digital Creatures(1).PDF","safe_statblock_record_count":22},
+      {"source_document":"Divine Creatures.PDF","safe_statblock_record_count":23},
+      {"source_document":"Dragons(1).PDF","safe_statblock_record_count":123},
+      {"source_document":"Elementals.PDF","safe_statblock_record_count":39},
+      {"source_document":"Ghosts 11-16-24.PDF","safe_statblock_record_count":1},
+      {"source_document":"Incorporeal Creatures.PDF","safe_statblock_record_count":29},
+      {"source_document":"Plant Creatures.PDF","safe_statblock_record_count":26},
+      {"source_document":"The Fell.PDF","safe_statblock_record_count":17},
+      {"source_document":"The Fey.PDF","safe_statblock_record_count":29},
+      {"source_document":"Toon Creatures.PDF","safe_statblock_record_count":43},
+      {"source_document":"Undead Creatures.PDF","safe_statblock_record_count":40},
+      {"source_document":"Vampirism&Lycanthropy.PDF","safe_statblock_record_count":0},
+      {"source_document":"Zombies 11-16-24.PDF","safe_statblock_record_count":2}
+    ]
+  },
+  "type_gap_resolutions": [
+    {"gap_id":"CEW08-GAP-001","subject":"Beast","resolution_state":"resolved_bounded_source_usage_contract","source_documents":["Beast Creatures 1.PDF","Beasts 2.PDF"],"safe_statblock_record_count":199,"source_support":"Beast is repeatedly used as a base Type label in the retained Beast collections.","bounded_semantics":["base type label","source collection usage"],"animal_equivalence_created":false,"ecology_personhood_relationship_inference_authorized":false},
+    {"gap_id":"CEW08-GAP-002","subject":"Illusion","resolution_state":"resolved_explicit_source_type_usage","source_document":"Incorporeal Creatures.PDF","explicit_type_usage_count":4,"observed_subtypes":["Mirage"],"source_support":"Illusion is explicitly used as a Type value in retained source records.","identity_personhood_distribution_inference_authorized":false},
+    {"gap_id":"CEW08-GAP-003","subject":"Dragon","resolution_state":"resolved_category_and_family_specific_stage_contract","source_document":"Dragons(1).PDF","category_count":5,"categories":["Reptilian Dragons","Arcane-Born Dragons","Chromatic Dragons","Bird-Dragons","Exo Dragons"],"common_stage_reference":["Hatchling","Wyrmling","Juvenile","Adult","Elder","Ancient","Greatwyrm"],"family_specific_stage_overrides_required":true,"source_note":"Retained Dragon source permits category/family-specific stage schemes, including simpler Young/Adult treatment for some Reptilian dragons.","universal_stage_ladder_created":false},
+    {"gap_id":"CEW08-GAP-004","subject":"Canonical stable-ID type bindings","resolution_state":"preserved_unknown_requires_explicit_binding_authority","canonical_creature_definition_count":27,"unknown_stable_id_type_binding_count":27,"canonical_type_bindings_created":0,"name_or_mechanics_inference_authorized":false}
+  ],
+  "extraordinary_environment_handoff": {
+    "source": "CEW-13_ENVIRONMENT_WILDLIFE_GAP_MODEL_v1.0.0.json",
+    "preset_count": 3,
+    "presets": [
+      {"preset_id":"ENVPRESET-06612C283234","preset_name":"Volcano"},
+      {"preset_id":"ENVPRESET-5B1F4F1EAFE1","preset_name":"Post-Apocalyptic Radioactive Zone"},
+      {"preset_id":"ENVPRESET-7708CBB27247","preset_name":"Ashland"}
+    ]
+  },
+  "policy": {
+    "species_or_monster_quota_authorized": false,
+    "numeric_ecological_or_gap_score_authorized": false,
+    "name_or_mechanics_identity_binding_authorized": false,
+    "environment_fit_creates_distribution": false,
+    "environment_similarity_creates_identity": false,
+    "canonical_creature_definition_creation_authorized": false,
+    "canonical_type_binding_authorized_without_explicit_evidence": false,
+    "relationship_state_creation_authorized": false,
+    "encounter_placement_creation_authorized": false,
+    "application_runtime_mutation_authorized": false
+  }
+}
