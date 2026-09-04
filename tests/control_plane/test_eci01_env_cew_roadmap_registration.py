@@ -40,11 +40,18 @@ class Eci01EnvCewRoadmapRegistrationTests(unittest.TestCase):
         self.assertEqual(alp.get("deferred_by_owner_insertion", {}).get("inserted_work_item"), "ECI-01")
 
         if checkpoint["status"] == "completed_verified":
-            self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-01")
-            self.assertIn(pointer["active_attempt"]["status"], {"selected_not_started", "in_progress", "completed_verified"})
-            self.assertEqual(pointer["active_attempt"]["status"], alp["tranches"][0]["status"])
-            self.assertEqual(index["current"]["work_item_id"], "ALP-01")
-            self.assertEqual(index["current"]["status"], pointer["active_attempt"]["status"])
+            # ECI's durable invariant is that ALP became its successor family. Do not
+            # pin this historical regression to whichever ALP tranche is currently
+            # selected; later ALP closeouts must be allowed to advance normally.
+            self.assertEqual(alp["tranches"][0]["id"], "ALP-01")
+            self.assertNotEqual(alp["tranches"][0]["status"], "planned")
+            if pointer.get("active_attempt", {}).get("source_program") == "ALP":
+                active_id = pointer["active_attempt"]["work_item_id"]
+                active_tranche = next((row for row in alp["tranches"] if row["id"] == active_id), None)
+                self.assertIsNotNone(active_tranche)
+                self.assertEqual(pointer["active_attempt"]["status"], active_tranche["status"])
+                self.assertEqual(index["current"]["work_item_id"], active_id)
+                self.assertEqual(index["current"]["status"], pointer["active_attempt"]["status"])
         else:
             self.assertEqual(pointer["active_attempt"]["work_item_id"], "ECI-01")
             self.assertEqual(pointer["active_attempt"]["status"], checkpoint["status"])
