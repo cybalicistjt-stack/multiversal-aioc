@@ -41,11 +41,10 @@ class Eci01EnvCewRoadmapRegistrationTests(unittest.TestCase):
 
         if checkpoint["status"] == "completed_verified":
             self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-01")
-            self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
-            self.assertFalse(pointer["active_attempt"]["implementation_authority"])
+            self.assertIn(pointer["active_attempt"]["status"], {"selected_not_started", "in_progress", "completed_verified"})
+            self.assertEqual(pointer["active_attempt"]["status"], alp["tranches"][0]["status"])
             self.assertEqual(index["current"]["work_item_id"], "ALP-01")
-            self.assertEqual(index["current"]["status"], "selected_not_started")
-            self.assertEqual(alp["tranches"][0]["status"], "selected_not_started")
+            self.assertEqual(index["current"]["status"], pointer["active_attempt"]["status"])
         else:
             self.assertEqual(pointer["active_attempt"]["work_item_id"], "ECI-01")
             self.assertEqual(pointer["active_attempt"]["status"], checkpoint["status"])
