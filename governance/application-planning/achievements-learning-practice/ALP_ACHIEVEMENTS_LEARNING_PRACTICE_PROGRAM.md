@@ -23,6 +23,8 @@ ALP consumes Character progression, Reputation/Relationship, World/Scene, Projec
 
 ALP-01 implemented a deterministic read-only crosswalk across six concept families: `platform_learning_milestone`, `campaign_achievement`, `practice_training_marker`, `project_learning_evidence`, `recognition_record`, and `mechanical_reward_reference`. Owner identity, provenance, platform/campaign distinction, optional practice semantics and hidden-evidence uncertainty remain frozen at application merge `c3ff8adb2311d1c59f3288a82593b358e3d47960`.
 
+Diegetic practice remains optional. ALP-01 created no durable persistence, no migration 0022, no universal permission gate, and no hidden completion inference.
+
 ## ALP-02 governed contract
 
 ALP-02 may implement deterministic read-only contracts for:
