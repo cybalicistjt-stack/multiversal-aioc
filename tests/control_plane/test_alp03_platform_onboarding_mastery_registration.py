@@ -77,11 +77,17 @@ class Alp03PlatformOnboardingMasteryRegistrationTests(unittest.TestCase):
             "ALP-03 — Platform Onboarding & Mastery Milestones",
             "ALP-04 — GM-Authored Campaign Achievements, Titles, Reputation & Reward Links",
             "**COMPLETED_VERIFIED**",
-            "**SELECTED_NOT_STARTED**",
             "Diegetic practice remains optional",
             "migration `0022`",
         ):
             self.assertIn(phrase, program)
+
+        successor_status_marker = {
+            "selected_not_started": "**SELECTED_NOT_STARTED**",
+            "in_progress": "**IN_PROGRESS**",
+            "completed_verified": "**COMPLETED_VERIFIED**",
+        }[successor["status"]]
+        self.assertIn(successor_status_marker, program)
 
         for value in (
             "a71cc81b6b815b39c90159d13ae43d4b33d5f359",
