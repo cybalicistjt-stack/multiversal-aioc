@@ -2,102 +2,83 @@
 
 **Program:** CAB — Character Advancement & Balance  
 **Tranche:** CAB-04  
-**State:** `completed_verified` analysis; owner policy answers pending  
+**State:** `completed_verified`  
 **Owner/final authority:** John Brandon Turner  
+**Owner decisions:** `CAB-04_OWNER_DECISIONS_2026-09-04.md`
 
 ## Completed
 
-CAB-04 defined the advancement architecture that sits underneath XP-buy progression without finalizing prices or five-tier semantics.
+CAB-04 defined and finalized the advancement architecture beneath XP-buy progression without prematurely deciding five-tier meanings or numeric prices.
 
 Durable outputs:
 
-- `CAB-04_ADVANCEMENT_ARCHITECTURE.md` — human-readable gate/transaction architecture;
-- `CAB-04_ADVANCEMENT_STATE_MODEL_v0.1.0.json` — machine-readable gate, state, grant and learning-project model;
-- `CAB-04_OWNER_QUESTIONNAIRE.md` — four owner policy gates.
+- `CAB-04_ADVANCEMENT_ARCHITECTURE.md` — governed gate and transaction architecture;
+- `CAB-04_ADVANCEMENT_STATE_MODEL_v0.1.0.json` — machine-readable gate, state, grant, and learning-project model;
+- `CAB-04_OWNER_QUESTIONNAIRE.md` — preserved resolved questionnaire;
+- `CAB-04_OWNER_DECISIONS_2026-09-04.md` — explicit owner authority.
 
-## Findings
+## Final findings
 
-### 1. The current Character transaction architecture is already sufficient
+### Advancement restrictions are multidimensional
 
-Current Character governance already requires advancement award/proposal/cost ledger, authoritative validation, optional decision, exactly-once commit, before/after evidence and append-only history. CAB-04 does not replace this path.
+The 4,816-record Ability corpus contains separate tier prerequisites, Ability prerequisites, attribute requirements, situational requirements, environment/context restrictions, prices, upgrades, and other special rules. They cannot be represented faithfully by XP alone or by one universal tier count.
 
-### 2. Advancement restrictions are multidimensional
+### XP governs affordability, not eligibility
 
-The bounded 4,816-record ability corpus contains dedicated fields for tier prerequisites, ability prerequisites, attribute requirements, situational-perk requirements, environment/context and other restrictions. These cannot be faithfully represented by XP alone or by one universal tier count.
+Enough XP does not override biology, compatibility, prerequisites, tier/depth access, required learning/acquisition, exclusions, source policy, or approval requirements.
 
-### 3. XP should answer affordability, not eligibility
+### Tier access is distinct from node price
 
-A Character can possess enough XP but still be biologically incompatible, lack a prerequisite, lack tier access, lack required training/exposure, violate an exclusion or lack Campaign/source permission. CAB-04 makes those failures independently explainable.
+Architecture represents tier/depth access independently. CAB-05 now owns the meaning and default access behavior of the five tiers.
 
-### 4. Tier access is a distinct state, not automatically a tax
+### Learning/training has a governed but conditional role
 
-Some progression families have tier-unlock XP and quantity gates; others do not. Architecture can represent tier access while CAB-05 decides how five-tier progression should normally unlock.
+Learning/development projects model study, practice, instruction, exposure, acclimation, attunement, research, and related processes where required.
 
-### 5. Learning/training needs a governed place without becoming universal bookkeeping
+The owner confirmed that these projects are **not universal**. They apply where the owning rule requires them. GM/Campaign policy may explicitly add, waive, shorten, extend, or modify a learning requirement, with attributable evidence and without silently changing XP prices or unrelated gates.
 
-Recovered design sources contain training/practice concepts, but the current Character architecture does not mandate training for every purchase. CAB-04 adds a `learning_project`/`development_project` model for options that require study, practice, instruction, exposure, attunement or equivalent development.
+### Intelligence/Wisdom faster learning has a fixed architectural home
 
-### 6. Intelligence/Wisdom faster learning now has an architectural home
+The owner confirmed that Intelligence/Wisdom accelerate applicable learning progress/readiness rather than automatically increasing XP awards or globally discounting purchases. CAB-10 owns formulas and CAB-16/17/18 own pacing validation.
 
-The cleanest attachment point is learning-project progress/readiness rather than global XP income. Exact formulas remain CAB-10 work and must be pacing-tested in CAB-16/17/18.
+### Grants have controlled bypass behavior
 
-### 7. Grants must not become an uncontrolled bypass
+The owner confirmed that a free grant waives cost; a source grant may establish eligibility where the source inherently does so; other prerequisite/tier/learning/exclusion bypasses require explicit rule authority. Generic free choices do not bypass unrelated restrictions.
 
-Species, forms, backgrounds, abilities, Campaign rules and other sources can grant capabilities. CAB recommends that a free grant waive cost, establish eligibility where its source inherently does so, and bypass other gates only when explicitly stated.
+### No universal prior-tier quantity gate
 
-### 8. Special acquisition is opportunity/eligibility, not price
+The owner confirmed there is no global prior-tier count. Individual trees/paths may explicitly require prior nodes or mastery counts where justified. The old 5 / 4 / 3 / 2 ladder remains deprecated.
 
-Creation-only innate openings, mentors, faction induction, exposure, transformation, artifacts, research and narrative milestones should change availability/eligibility/readiness. They do not become ordinary shopping-list options merely because an XP price exists.
+## Final architecture requirements
 
-## Architecture established without owner gate
-
-CAB-04 establishes the following as structural requirements:
-
-1. separate authority, availability, eligibility, prerequisite, tier/depth, learning/acquisition, affordability, conflict/exclusion, approval and commit gates;
-2. XP does not substitute for eligibility or prerequisites;
-3. advancement remains event-based, source-linked and exactly-once;
-4. grants retain source/reason and explicit bypass behavior;
-5. tier access can be represented separately from node cost;
-6. learning can be represented as a development project;
-7. Intelligence/Wisdom learning benefit attaches architecturally to the learning process, with the exact mechanic deferred;
-8. special acquisition remains distinct from price;
-9. respec/correction cannot silently destroy history or dependents.
-
-## Recommendations requiring owner answer
-
-1. **No universal prior-tier quantity gate.** Permit tree-specific explicit prerequisites/counts where justified.
-2. **Use learning projects only where the owning rule requires learning/development**, rather than for every advancement.
-3. **Use Intelligence/Wisdom to accelerate applicable learning progress**, not as a universal XP award multiplier or blanket purchase discount.
-4. **Free grants waive cost by default but do not silently bypass unrelated eligibility/prerequisite/exclusion gates.**
-
-## Owner questionnaire
-
-`CAB-04_OWNER_QUESTIONNAIRE.md` contains four questions with recommendations:
-
-- CAB-Q04-01 — universal prior-tier quantity gate: **A**;
-- CAB-Q04-02 — breadth of training/practice requirement: **A**;
-- CAB-Q04-03 — Intelligence/Wisdom faster-learning attachment: **A**;
-- CAB-Q04-04 — grant bypass semantics: **A**.
-
-Unanswered questions remain unresolved and do not silently default.
+1. Separate authority, availability, eligibility, prerequisite, tier/depth, learning/acquisition, affordability, conflict/exclusion, approval, and commit gates.
+2. XP never substitutes for eligibility or prerequisites.
+3. Advancement remains event-based, source-linked, authoritatively revalidated, exactly-once, and append-only.
+4. No universal prior-tier quantity gate.
+5. Conditional learning/development projects, not universal training bookkeeping.
+6. Explicit GM/Campaign authority to modify learning requirements without silently altering unrelated gates.
+7. Intelligence/Wisdom faster learning attaches to applicable learning progress/readiness.
+8. Grants retain source/reason and controlled bypass semantics.
+9. Tier access is separately representable; CAB-05 owns final semantics.
+10. Special acquisition remains opportunity/eligibility rather than price.
+11. Respec/correction must preserve history and dependent-state integrity.
 
 ## Forward routing
 
-- owner answers -> record before CAB-05 execution;
-- final five-tier semantics -> CAB-05;
-- XP price calibration -> CAB-06;
-- acquisition/eligibility details -> CAB-09;
-- Intelligence/Wisdom formula and attributes/skills -> CAB-10;
-- corpus/tree audit -> CAB-11/12;
-- progression pacing/training duration -> CAB-16;
-- XP awards -> CAB-17;
-- long-campaign learning divergence -> CAB-18;
-- respec/correction/migration -> CAB-19.
+- five-tier semantics → CAB-05;
+- XP price calibration → CAB-06;
+- acquisition/eligibility details → CAB-09;
+- Intelligence/Wisdom formulas and attributes/Skills/proficiencies → CAB-10;
+- corpus/tree audit → CAB-11/12;
+- pacing/training duration → CAB-16;
+- XP awards → CAB-17;
+- long-campaign learning divergence → CAB-18;
+- respec/correction/migration → CAB-19.
 
 ## Completion statement
 
-CAB-04's bounded architecture work is complete when these artifacts are merged, the CAB backlog marks CAB-04 `completed_verified`, and CAB-05 is selected but held pending the four owner policy answers. No application implementation authority is created.
+CAB-04 is `completed_verified`. All owner policy questions are resolved. No application implementation authority is created.
 
 ## Exact successor
 
-**CAB-05 — Five-Tier Model** — selected after CAB-04 closeout, with execution held until CAB-04 owner answers are recorded or explicitly deferred.
+**CAB-05 — Five-Tier Model** — `selected_not_started` and cleared to execute.
