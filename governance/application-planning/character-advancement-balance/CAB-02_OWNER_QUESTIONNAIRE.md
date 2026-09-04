@@ -1,7 +1,19 @@
 # CAB-02 — Owner Questionnaire
 
 **Program:** CAB — Character Advancement & Balance  
-**Purpose:** capture owner judgments exposed by CAB-02 before or during CAB-03. Unanswered questions remain unresolved and do not silently default.
+**Status:** `resolved_by_owner_2026-09-04`  
+**Decision artifact:** `CAB-02_OWNER_DECISIONS_2026-09-04.md`  
+
+## Resolved answers
+
+- **CAB-Q02-01:** C, with Character-creation clarification: ordinary assets use credits/resources; remove ordinary creation-time XP-as-money conversion; GM/Campaign determines starting money.
+- **CAB-Q02-02:** Generally A: no ordinary percentage XP multipliers, while later CAB work must provide a meaningful way for high Intelligence/Wisdom to represent faster learning without defaulting to an unrestricted global XP multiplier.
+- **CAB-Q02-03:** B: preserve hazard/trap XP as benchmark/reference values; CAB-17 owns actual award semantics.
+- **CAB-Q02-04:** A: advancement XP and starting money/equipment wealth are separate; no ordinary creation XP-to-credits conversion; GM/Campaign determines starting money.
+
+The original questionnaire is retained below as provenance.
+
+---
 
 ## CAB-Q02-01 — Should ordinary assets ever use Character XP as their purchase/upkeep currency?
 
@@ -70,11 +82,3 @@ D. Preserve a source-defined conversion only for specific Campaign/rules profile
 E. Unsure; CAB-03 should reconstruct the competing creation baselines first and return with a narrower recommendation.
 
 **Reasoning:** separating permanent advancement from equipment wealth makes equal-XP Character comparisons meaningful and avoids making mundane equipment an opportunity cost against permanent capabilities. Option D is a viable alternative if a specific setting/profile genuinely uses a point-buy creation pool across both categories.
-
-## Response format
-
-You can answer only the questions you want, for example:
-
-`Q1 C, Q2 A, Q3 B, Q4 E`
-
-or explain any answer in your own words. Unanswered items remain unresolved.

@@ -20,6 +20,11 @@ CAB is a game-rules/content-governance program. It does not grant Multiversal-ap
 5. Tier is not automatically identical to XP price.
 6. Character breadth is not inherently imbalance; CAB must evaluate effective simultaneous capability, stacking, action economy, resources, eligibility and challenge-bypass effects separately.
 7. CAB must not introduce a universal Character Level, CR, or one-dimensional power score.
+8. **Ordinary transferable assets do not use Character XP.** Equipment, vehicles, drones, refits and upkeep use their owning credits/resources/economy. XP may be used only for permanent Character-bound progression or an explicitly exceptional advancement sacrifice.
+9. **Starting money is governed by the GM/Campaign creation policy.** The prior creation-time XP-as-money exception may be removed; starting advancement XP and starting wealth/equipment are separate budgets.
+10. **Ordinary percentage XP-gain multipliers are not part of the default progression economy.** CAB must nevertheless support faster learning for high Intelligence and/or Wisdom through a later governed mechanic that does not silently become an unrestricted global XP multiplier.
+11. **Existing hazard/trap XP values are benchmark/reference evidence, not automatic universal payouts.** CAB-17 owns final award semantics and must support meaningful non-defeat resolution.
+12. **There is no ordinary XP-to-credits conversion at Character creation.** Advancement XP and starting wealth/equipment remain separate.
 
 ## Operating rules
 
@@ -72,13 +77,13 @@ CAB-02 reconstructed XP into distinct governed/recovered families rather than tr
 
 CAB-02 preserved source hazard/reward XP values as reference signals rather than a universal award schedule; preserved structured magic's 0-XP direct spell-learning signal while flagging capacity/slot economics for later reconciliation; found no universal refund economics; and routed creation-budget conversion to CAB-03.
 
-CAB-02 questionnaire recommendations are recorded in `CAB-02_OWNER_QUESTIONNAIRE.md`. Unanswered items remain unresolved rather than silently defaulting.
+The CAB-02 owner questionnaire is fully resolved in `CAB-02_OWNER_DECISIONS_2026-09-04.md`. Ordinary assets use their owning economies; starting money is GM/Campaign-defined; creation XP and wealth are separate with no ordinary conversion; hazard/trap XP values remain benchmarks; ordinary percentage XP multipliers are rejected; and faster learning for high Intelligence/Wisdom is a required later mechanic routed to CAB-04, CAB-10 and CAB-16/17.
 
 ## Current tranche
 
 **CAB-03 — Character-Creation Baseline** is selected_not_started.
 
-CAB-03 must establish one internally consistent creation baseline separating starting advancement XP, free/granted mechanical selections, XP-bought creation selections, equipment/wealth budget, any allowed creation-only conversion, species/form/background/environment/innate access, and historical example builds. It must not use AP and must not treat recovered asset-upkeep XP or XP multipliers as baseline creation rules.
+CAB-03 must establish one internally consistent creation baseline separating starting advancement XP, free/granted mechanical selections, XP-bought creation selections, species/form/background/environment/innate access, and historical example builds. Starting money/wealth is set by the GM/Campaign creation policy and is not derived from or convertible with advancement XP. CAB-03 must not use AP and must not treat recovered asset-upkeep XP or XP multipliers as baseline creation rules.
 
 ## Boundaries
 
@@ -90,5 +95,6 @@ CAB does not:
 - assume equal XP must produce equal damage output;
 - treat species/environment/innate abilities as ordinary shopping-list purchases merely because an XP cost exists;
 - equate acquisition eligibility with purchase price;
-- make wealth and permanent advancement freely interchangeable without an explicit later rule;
+- make wealth and permanent advancement freely interchangeable;
+- use ordinary percentage XP multipliers as the default way to model learning speed;
 - grant application runtime, schema, migration, release, tester, provider or deployment authority.
