@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.7.0",
+  "schema_version": "0.7.1",
   "program_id": "CAB",
   "program_name": "Character Advancement & Balance",
   "owner": "John Brandon Turner",
@@ -9,15 +9,15 @@
   "status": "in_progress",
   "completed_through": "CAB-06",
   "current_work_item_id": "CAB-07",
-  "current_state": "selected_not_started_pending_owner_answers",
+  "current_state": "selected_not_started",
   "tranches": [
     {"id":"CAB-01","name":"Authority, Source Census & AP Retirement","status":"completed_verified"},
     {"id":"CAB-02","name":"Current XP Economy Reconstruction","status":"completed_verified"},
     {"id":"CAB-03","name":"Character-Creation Baseline","status":"completed_verified"},
     {"id":"CAB-04","name":"Advancement Architecture","status":"completed_verified"},
     {"id":"CAB-05","name":"Five-Tier Model","status":"completed_verified"},
-    {"id":"CAB-06","name":"XP Cost Calibration Framework","status":"completed_verified","artifacts":["CAB-06_XP_COST_CALIBRATION_FRAMEWORK.md","CAB-06_SOURCE_COST_AUDIT.md","CAB-06_COST_CALIBRATION_MODEL_v0.1.0.json","CAB-06_OWNER_QUESTIONNAIRE.md","CAB-06_COMPLETION_REPORT.md"]},
-    {"id":"CAB-07","name":"Action Economy & Simultaneous Power","status":"selected_not_started_pending_owner_answers"},
+    {"id":"CAB-06","name":"XP Cost Calibration Framework","status":"completed_verified","artifacts":["CAB-06_XP_COST_CALIBRATION_FRAMEWORK.md","CAB-06_SOURCE_COST_AUDIT.md","CAB-06_COST_CALIBRATION_MODEL_v0.1.0.json","CAB-06_OWNER_QUESTIONNAIRE.md","CAB-06_OWNER_DECISIONS_2026-09-04.md","CAB-06_COMPLETION_REPORT.md"]},
+    {"id":"CAB-07","name":"Action Economy & Simultaneous Power","status":"selected_not_started"},
     {"id":"CAB-08","name":"Stacking, Synergy & Power Multiplication","status":"not_started"},
     {"id":"CAB-09","name":"Acquisition & Eligibility","status":"not_started"},
     {"id":"CAB-10","name":"Attributes, Skills & Proficiencies","status":"not_started"},
@@ -36,7 +36,7 @@
     {"id":"CAB-23","name":"Completion Audit & Handoff","status":"not_started"}
   ],
   "strict_next": "CAB-07",
-  "selection_note": "CAB-06 completed the bounded XP Cost Calibration Framework. CAB-07 Action Economy & Simultaneous Power is selected_not_started but execution is held until the five CAB-06 owner calibration questions are answered or explicitly deferred. No unanswered item may silently default.",
+  "selection_note": "CAB-06 is completed_verified and all five owner calibration questions are resolved. CAB-07 Action Economy & Simultaneous Power is selected_not_started and may execute immediately.",
   "cab03_supported_baseline": {
     "default_starting_advancement_xp": 1300,
     "default_starting_xp_status": "working_normal_start_default_recalibratable_after_cab_evidence",
@@ -71,21 +71,26 @@
   "cab06_calibration": {
     "source_prices_wholesale_authoritative": false,
     "pricing_components_separate": ["progression_open","tier_access","direct_ability_effect","upgrade_increment","reference_advancement_value","final_xp_debit"],
-    "candidate_calibration_unit": {"cu_xp":250,"spendable":false,"owner_question":"CAB-Q06-01"},
-    "candidate_direct_bands_xp": [250,500,1000,2000,4000,8000],
-    "candidate_access_anchors_xp": {"extra_progression":1000,"tier2":500,"tier3":1250,"tier4":2500,"tier5":5000},
-    "candidate_prestige_entry": "T3_access_only_after_requirements_no_T1_T2_backpay_no_automatic_extra_tree_charge",
-    "candidate_hp_cumulative_xp": {"plus5":500,"plus10":1250,"plus15":2250,"plus20":3750},
-    "candidate_reference_advancement_value": true,
+    "calibration_unit": {"cu_xp":250,"spendable":false,"owner_approved":true},
+    "direct_bands_xp": [250,500,1000,2000,4000,8000],
+    "direct_pricing_basis": "actual_effect_burden_tier_independent_manual_review_for_high_risk",
+    "access_anchors_xp": {"extra_progression":1000,"tier2":500,"tier3":1250,"tier4":2500,"tier5":5000},
+    "prestige_entry": "T3_access_only_after_requirements_no_T1_T2_backpay_no_automatic_extra_tree_charge",
+    "hp_cumulative_xp": {"plus5":500,"plus10":1250,"plus15":2250,"plus20":3750},
+    "reference_advancement_value": true,
     "attributes_skills_knowledges_proficiencies_owner": "CAB-10",
     "absolute_pacing_scale_owner": ["CAB-16","CAB-17"]
   },
   "owner_questionnaire": {
     "path": "governance/application-planning/character-advancement-balance/CAB-06_OWNER_QUESTIONNAIRE.md",
-    "status": "awaiting_owner_answers",
-    "required_before_execution": "CAB-07",
-    "questions": ["CAB-Q06-01","CAB-Q06-02","CAB-Q06-03","CAB-Q06-04","CAB-Q06-05"],
-    "recommendations": {"CAB-Q06-01":"A","CAB-Q06-02":"A","CAB-Q06-03":"A","CAB-Q06-04":"A","CAB-Q06-05":"A"},
-    "unanswered_policy": "remain_unresolved_no_silent_default"
+    "status": "resolved_by_owner_2026-09-04",
+    "decision_artifact": "governance/application-planning/character-advancement-balance/CAB-06_OWNER_DECISIONS_2026-09-04.md",
+    "decisions": {
+      "CAB-Q06-01":"A",
+      "CAB-Q06-02":"A",
+      "CAB-Q06-03":"A",
+      "CAB-Q06-04":"A",
+      "CAB-Q06-05":"A"
+    }
   }
 }
