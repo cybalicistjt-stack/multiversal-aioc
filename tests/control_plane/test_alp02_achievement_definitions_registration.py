@@ -73,8 +73,10 @@ class Alp02AchievementDefinitionsRegistrationTests(unittest.TestCase):
         self.assertFalse(runtime["active_work"]["implementation_authority"])
 
         for phrase in (
-            "ALP-02 — Achievement Definitions, Criteria, Evidence, Scope & Provenance — **COMPLETED_VERIFIED**",
-            "ALP-03 — Platform Onboarding & Mastery Milestones — **SELECTED_NOT_STARTED**",
+            "ALP-02 — Achievement Definitions, Criteria, Evidence, Scope & Provenance",
+            "ALP-03 — Platform Onboarding & Mastery Milestones",
+            "**COMPLETED_VERIFIED**",
+            "**SELECTED_NOT_STARTED**",
             "unknown",
             "does **not** award achievements",
             "migration `0022`",
