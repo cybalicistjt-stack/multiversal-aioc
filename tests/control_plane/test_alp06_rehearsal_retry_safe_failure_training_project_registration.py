@@ -1,0 +1,109 @@
+import json
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+
+
+def load_json(path):
+    return json.loads((ROOT / path).read_text(encoding="utf-8"))
+
+
+def load_text(path):
+    return (ROOT / path).read_text(encoding="utf-8")
+
+
+class Alp06RehearsalRetrySafeFailureTrainingProjectRegistrationTests(unittest.TestCase):
+    def test_alp06_governed_start_or_closeout_is_consistent(self):
+        baseline = "402aa6d91795d6e75be64c106aa122b0b79cb872"
+        branch = "integration/alp-06-rehearsal-retry-safe-failure-training-project-integration"
+        checkpoint = load_json("governance/ai/work-state/ALP-06-attempt-001.json")
+        backlog = load_json("governance/application-planning/achievements-learning-practice/ALP_PROGRAM_BACKLOG.json")
+        pointer = load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
+        registry = load_json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
+        index = load_json("governance/ai/runtime/ROADMAP_INDEX.json")
+        runtime = load_json("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")
+        program = load_text("governance/application-planning/achievements-learning-practice/ALP_ACHIEVEMENTS_LEARNING_PRACTICE_PROGRAM.md")
+
+        self.assertEqual(checkpoint["work_item_id"], "ALP-06")
+        self.assertEqual(checkpoint["application_baseline_sha"], baseline)
+        self.assertIn(checkpoint["status"], {"in_progress", "completed_verified"})
+        alp06 = next(item for item in backlog["tranches"] if item["id"] == "ALP-06")
+        self.assertEqual(alp06["status"], checkpoint["status"])
+
+        if checkpoint["status"] == "in_progress":
+            production_authorized = checkpoint["production_mutation_authorized"]
+            self.assertTrue(checkpoint["implementation_authority"])
+            self.assertEqual(checkpoint["implementation_branch"], branch)
+            self.assertTrue(checkpoint["branch_creation_authorized"])
+            self.assertTrue(checkpoint["acceptance_package_authorized"])
+            self.assertEqual(backlog["completed_through"], "ALP-05")
+            self.assertEqual(backlog["current_item"], "ALP-06")
+            self.assertEqual(backlog["active_contract"]["production_mutation_authorized"], production_authorized)
+            self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-06")
+            self.assertEqual(pointer["active_attempt"]["status"], "in_progress")
+            self.assertEqual(pointer["active_attempt"]["implementation_branch"], branch)
+            self.assertTrue(pointer["active_attempt"]["implementation_authority"])
+            self.assertEqual(pointer["bounded_authority"]["production_mutation_authorized"], production_authorized)
+            self.assertEqual(registry["active_planning_work"]["state"], "in_progress")
+            self.assertEqual(registry["alp_06_authority"]["production_mutation_authorized"], production_authorized)
+            self.assertEqual(index["current"]["status"], "in_progress")
+            self.assertEqual(runtime["active_work"]["state"], "in_progress")
+            if production_authorized:
+                self.assertIsNotNone(checkpoint["validation"]["acceptance_red"])
+                self.assertTrue(backlog["active_contract"]["matching_red_observed"])
+                self.assertTrue(registry["alp_06_authority"]["matching_red_observed"])
+            else:
+                self.assertIsNone(checkpoint["validation"]["acceptance_red"])
+                self.assertFalse(backlog["active_contract"]["matching_red_observed"])
+                self.assertFalse(registry["alp_06_authority"]["matching_red_observed"])
+        else:
+            self.assertFalse(checkpoint["implementation_authority"])
+            self.assertTrue(checkpoint["authority_retired"])
+            self.assertEqual(backlog["completed_through"], "ALP-06")
+            self.assertEqual(backlog["current_item"], "ALP-07")
+            self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-07")
+            self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
+            self.assertIsNone(pointer["active_attempt"]["implementation_branch"])
+            self.assertFalse(pointer["active_attempt"]["implementation_authority"])
+            self.assertEqual(registry["active_planning_work"]["work_item"], "ALP-07")
+            self.assertEqual(registry["active_planning_work"]["state"], "selected_not_started")
+            self.assertEqual(index["current"]["work_item_id"], "ALP-07")
+            self.assertEqual(runtime["active_work"]["work_item"], "ALP-07")
+
+        for phrase in (
+            "ALP-06 — Rehearsal, Retry, Safe Failure & Training/Project Integration",
+            "rehearsal attempts",
+            "retry lineage",
+            "Safe failure",
+            "practice_training_marker",
+            "project_learning_evidence",
+            "Character Progression",
+            "Projects",
+            "World/Scene",
+            "GCL",
+            "ISE",
+            "MAL",
+            "migration `0022`",
+        ):
+            self.assertIn(phrase, program)
+
+    def test_alp06_scope_preserves_safe_failure_and_owner_authority(self):
+        checkpoint = load_json("governance/ai/work-state/ALP-06-attempt-001.json")
+        scope = checkpoint["implementation_scope"]
+        boundary = checkpoint["authority_boundary"]
+        self.assertIn("retry lineage with stable attempt identity and deterministic attempt ordering", scope["authorized"])
+        self.assertIn("safe-failure projection in which rehearsal failure does not itself mutate canonical character, project, scene, achievement or reward state", scope["authorized"])
+        self.assertIn("explicit training marker and project learning evidence references tied to frozen ALP taxonomy families", scope["authorized"])
+        self.assertIn("automatic XP, advancement, capability, achievement completion or reward grants from rehearsal, retry or failure", scope["not_authorized"])
+        self.assertIn("canonical penalties, injuries, resource loss, project mutation or world/scene mutation caused solely by safe-failure rehearsal outcomes", scope["not_authorized"])
+        self.assertIn("hidden or unauthorized evidence inference", scope["not_authorized"])
+        self.assertIn("durable ALP persistence or migration 0022", scope["not_authorized"])
+        self.assertFalse(boundary["alp07_plus_authorized"])
+        self.assertFalse(boundary["provider_activation_authorized"])
+        self.assertFalse(boundary["tester_distribution_authorized"])
+        self.assertFalse(boundary["release_or_deployment_authorized"])
+
+
+if __name__ == "__main__":
+    unittest.main()
