@@ -1,30 +1,28 @@
 # MAL — Microgames & Ambient Loops
 
 **Program ID:** MAL  
-**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH MAL-09; MAL-10 IN_PROGRESS  
+**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH MAL-10  
 **Activation:** after completed_verified SCL-11  
 **Successor:** ALP-01  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-08-27
 
-## Current state
+## Completed state
 
-MAL-01 through MAL-09 are `completed_verified`. MAL-10 — Starter Library & Golden Microgame/Aniloop Proof — is `in_progress` from exact application main `c8cb1bbb18def3ac8f910fc75d6d52d8181ae291` on branch `integration/mal-10-starter-library-golden-proof` with bounded implementation authority.
+MAL-01 through MAL-10 are `completed_verified`. The MAL program is complete on exact application main `5af518c1a88a5f07dbd4d1f328b18ef07f6e2ee2`; all MAL implementation authority is retired.
 
-## MAL-09 completed evidence
+## MAL-10 completed evidence
 
-- Governed-start AIOC PR: `950`; health run `33854622260`, job `100964942485`; merge `2744bd4d94e068c428a0e756ba3d6e1d15975beb`.
-- Genuine RED head `15eed08a07206e5217b7606f714c9ca8dacb2c20`, run `33854883855`, receipt `eb0d5cc211ba4c3ace22a5222c96645c4ffe6689fa7e8e17b5bf48b40c9f9580`.
-- Final validated head `d72b454c6cc8df0fe4916f374a6ebe0158121aea`, run `33855096444`, receipt `57769229558cac1950d8b6008bd6daa4d168b40c3f5b3d363c9541d931b80eb0`.
-- Application PR `404` merged as `c8cb1bbb18def3ac8f910fc75d6d52d8181ae291`.
+- Governed-start AIOC PR: `952`; candidate `54c161387abf7e0a993d428731730bcc7110df42`; Repository Health run `33856099242`, job `100969662068`; merge `890ef6dd4b8ff13414776a00ed9fcfe4cf551474`.
+- Genuine matching acceptance RED: application head `e56d86899fc6e3e00719c478679785b400e31b51`, run `33856346751`; Linux and Windows failed at the intended missing-production `client-typecheck` boundary; deterministic comparison passed with receipt `d661ec2805c818511040a52a8413f5ab7279626299980c72a1248080dc611af4`.
+- Production GREEN: exact head `5f521c56e6556151b0f971f8e61dce024d42e4e1`, run `33856553717`; selector `100971110510`, Linux `100971153220`, Windows `100971153257` and deterministic comparison `100971322460` all passed with receipt `29a5e9d34f18e6c1ff7078eb732a45615dfd7ede1d62f9054739c1c9fe3a5b9b`.
+- Application PR `405` merged as `5af518c1a88a5f07dbd4d1f328b18ef07f6e2ee2`.
 - Repairs: validation-contract `0`; application-feature `0`; repository-state `0`; historical fanout `0`; unchanged-evidence reruns `0`; stale-pointer incidents `0`.
 
-## MAL-10 governed boundary
+MAL-10 freezes a small original starter/reference library and deterministic golden Microgame/Aniloop proof over MAL-01..09. Starter content remains original; no proprietary maps, encounter scripts, minigame logic, level designs or reward tables are copied. Unknown/hidden state remains unresolved; canonical owner and reward boundaries remain authoritative; unfinished GCL discovery/recommendation/composition-engine authority remains outside MAL.
 
-MAL-10 may implement only a small original starter library plus deterministic golden Microgame/Aniloop proof composed over frozen MAL-01..09.
+## Strict successor
 
-Starter fixtures may demonstrate traversal, interaction/objective, tiny NPC state-machine, Aniloop, explicit frozen GCL bridge references, owner-handoff/reward-boundary semantics and accessibility/fallback equivalence. They are MAL-local reference/proof fixtures only and do not mutate canonical owner truth.
+ALP-01 — Authority Crosswalk & Achievement/Learning/Practice Taxonomy — is selected from exact application main `5af518c1a88a5f07dbd4d1f328b18ef07f6e2ee2` with state `selected_not_started`, implementation branch `null`, and implementation authority `false`.
 
-No proprietary game map, encounter script, minigame logic, level design or reward table may be copied. Unknown, hidden or unauthorized state remains `unresolved`; unfinished GCL discovery/recommendation/composition-engine authority is not expanded. Golden proof must preserve the same semantic result across self-hosted Linux/Windows and permitted accessibility/device/presentation variants.
-
-No canonical owner mutation, reward grant, durable persistence, migration `0022`, ALP-01+, provider activation, tester distribution, release or deployment is authorized.
+A future owner `Continue` must governed-start ALP-01 before any achievement, learning, practice, taxonomy or reward-link application mutation.
