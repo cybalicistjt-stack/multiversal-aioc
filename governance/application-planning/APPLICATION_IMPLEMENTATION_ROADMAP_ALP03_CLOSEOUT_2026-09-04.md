@@ -32,7 +32,9 @@ ALP-03 does not award achievements, mutate completion, infer hidden evidence, co
 
 ## Convergence
 
-Owner Continue count: 2. Execution cycles: 2. Repair cycles: 3 — repository-state 1, validation-contract 2, application-feature 0. No-progress cycles, unchanged-evidence reruns, historical validation fanout and stale-pointer incidents: 0. The second Continue followed a genuine enforced tool-window blocker after exact-head GREEN, so no second-Continue control-plane incident is recorded.
+Owner Continue count: 2. Execution cycles: 2. Repair cycles: 6 — repository-state 2, validation-contract 4, application-feature 0. No-progress cycles, unchanged-evidence reruns, historical validation fanout and stale-pointer incidents: 0. The second Continue followed a genuine enforced tool-window blocker after exact-head GREEN, so no second-Continue control-plane incident is recorded.
+
+Closeout run `33889114835` passed canonical repository health and termination preflight 13/13, then its 253-test control-plane suite exposed exactly three changed-evidence closeout defects: two predecessor regressions still pinning global ALP state to ALP-01/02 successors, and a pointer preload containing two completed closeout supplements. Those account for two additional validation-contract repairs and one additional repository-state repair; they were repaired before the next exact-head validation attempt.
 
 ## Successor boundary
 
