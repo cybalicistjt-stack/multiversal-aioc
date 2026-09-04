@@ -1,7 +1,7 @@
 # CAB — Character Advancement & Balance
 
 **Program ID:** CAB  
-**Status:** IN PROGRESS — CAB-04 COMPLETED_VERIFIED; CAB-05 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — CAB-05 COMPLETED_VERIFIED; CAB-06 SELECTED_NOT_STARTED_PENDING_OWNER_ANSWERS  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-09-04
 
@@ -53,8 +53,8 @@ CAB is a game-rules/content-governance program. It does not grant Multiversal-ap
 2. **CAB-02 — Current XP Economy Reconstruction — completed_verified**
 3. **CAB-03 — Character-Creation Baseline — completed_verified**
 4. **CAB-04 — Advancement Architecture — completed_verified**
-5. **CAB-05 — Five-Tier Model — selected_not_started**
-6. **CAB-06 — XP Cost Calibration Framework**
+5. **CAB-05 — Five-Tier Model — completed_verified**
+6. **CAB-06 — XP Cost Calibration Framework — selected_not_started_pending_owner_answers**
 7. **CAB-07 — Action Economy & Simultaneous Power**
 8. **CAB-08 — Stacking, Synergy & Power Multiplication**
 9. **CAB-09 — Acquisition & Eligibility**
@@ -91,18 +91,7 @@ CAB-03 established the working normal-start baseline: 1,300 XP subject to later 
 
 ## CAB-04 closeout
 
-CAB-04 finalized the advancement architecture as separate gates:
-
-1. authority;
-2. source/rules availability;
-3. Character eligibility;
-4. explicit prerequisites;
-5. tier/depth access;
-6. learning/acquisition readiness;
-7. XP affordability;
-8. conflicts/exclusions;
-9. required approval;
-10. exactly-once commit and dependent-state integrity.
+CAB-04 finalized the advancement architecture as separate authority, availability, eligibility, prerequisite, tier/depth, learning/acquisition, XP affordability, conflict/exclusion, approval, and exactly-once commit gates.
 
 CAB-04 owner decisions establish:
 
@@ -116,11 +105,47 @@ CAB-04 owner decisions establish:
 
 The resolved authority is recorded in `CAB-04_OWNER_DECISIONS_2026-09-04.md`.
 
+## CAB-05 closeout
+
+CAB-05 analyzed the current five-tier structure against the portable Ability corpus and current game framework.
+
+Bounded findings:
+
+- 4,816 Ability records were in scope;
+- 3,917 carry a numeric Tier 1–5 value;
+- 179 tiered tree groups were observed;
+- 158 groups contain all five tiers and 21 are partial/sparse;
+- source-local tier names vary substantially and cannot supply one universal canonical wording;
+- direct Ability XP medians rise across tiers, but observed cost ranges overlap enough that tier cannot be an exact price or power scalar.
+
+CAB-05 establishes structurally that:
+
+- numeric Tier 1–5 is the stable cross-tree tier identity;
+- tier means relative developmental depth within an explicit progression scope;
+- source-local labels remain provenance/display data;
+- tier access remains distinct from node-specific prerequisites and costs;
+- progression scope may be a tree or explicitly independent branch/path;
+- unlocking one independent scope does not silently unlock another;
+- free-product first-two-tier access remains entitlement, not game-balance semantics;
+- missing Ability records are never synthetically invented to fill tiers;
+- actual play power remains multidimensional rather than collapsed into tier.
+
+CAB-05 recommends, but does not silently owner-approve:
+
+1. shared semantic descriptors **Foundation / Developed / Advanced / Expert / Apex** while numeric tiers remain authoritative;
+2. a normal one-time T2–T5 tier-access XP purchase for ordinary purchasable Ability progressions, while explicit special progression modes remain allowed;
+3. intentional early tree caps with contiguous tiers through the cap, unexplained internal gaps treated as provenance/content warnings, and no synthetic filler;
+4. Tier 5 as apex/capstone depth within the owning progression rather than a universal legendary/world-shaping power floor.
+
+These four policy gates are recorded in `CAB-05_OWNER_QUESTIONNAIRE.md` and remain unresolved until the owner answers or explicitly defers them.
+
 ## Current tranche
 
-**CAB-05 — Five-Tier Model** is `selected_not_started` and may execute.
+**CAB-06 — XP Cost Calibration Framework** is `selected_not_started_pending_owner_answers`.
 
-CAB-05 must determine what each of the five tiers means, what tier access represents, whether tier access normally carries a separate cost/gate, how explicit prerequisites interact with tier depth, how small and irregular trees work without a universal count ladder, and how tier labels remain useful without becoming a universal power score.
+CAB-06 must not execute until the CAB-05 owner questionnaire is answered or explicitly deferred because the accepted tier-access policy directly changes the cost architecture CAB-06 must calibrate.
+
+CAB-06 will establish the calibration method for Ability prices, tier-access prices if approved, tree-opening costs, attributes/HP/Skills/Knowledges/proficiencies where in scope, grants/waivers, and cross-domain normalization without turning tier into a universal price table.
 
 ## Boundaries
 
@@ -136,6 +161,8 @@ CAB does not:
 - use ordinary percentage XP multipliers as the default way to model learning speed;
 - treat 1,300 XP as immune to later evidence-based calibration;
 - use recovered Regular/High/Hyper numeric packages until explicitly rebuilt and accepted;
-- reintroduce a universal prior-tier count through CAB-05;
+- reintroduce a universal prior-tier count;
 - treat GM learning override as an automatic waiver of unrelated gates;
+- treat tier as a universal power score or price table;
+- silently resolve CAB-05 owner policy questions;
 - grant application runtime, schema, migration, release, tester, provider, or deployment authority.
