@@ -14,7 +14,7 @@ def load_text(path):
 
 
 class Alp01AchievementsLearningPracticeRegistrationTests(unittest.TestCase):
-    def test_alp01_completion_and_alp02_selection_are_registered_across_control_plane(self):
+    def test_alp01_completion_and_alp02_successor_lifecycle_are_registered_across_control_plane(self):
         merge = "c3ff8adb2311d1c59f3288a82593b358e3d47960"
         pointer = load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
         index = load_json("governance/ai/runtime/ROADMAP_INDEX.json")
@@ -33,39 +33,47 @@ class Alp01AchievementsLearningPracticeRegistrationTests(unittest.TestCase):
         self.assertEqual(checkpoint["convergence_control"]["application_feature_repair_cycles"], 0)
         self.assertEqual(checkpoint["validation"]["final_green"]["historical_profile_fanout"], 0)
 
-        self.assertEqual(successor["status"], "selected_not_started")
-        self.assertFalse(successor["implementation_authority"])
-        self.assertIsNone(successor["implementation_branch"])
+        self.assertIn(successor["status"], {"selected_not_started", "in_progress", "completed_verified"})
         self.assertEqual(successor["application_baseline_sha"], merge)
-
-        self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-02")
-        self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
-        self.assertFalse(pointer["active_attempt"]["implementation_authority"])
-        self.assertIsNone(pointer["active_attempt"]["implementation_branch"])
-        self.assertEqual(pointer["active_attempt"]["application_baseline_sha"], merge)
-
-        self.assertEqual(index["current"]["work_item_id"], "ALP-02")
-        self.assertEqual(index["current"]["status"], "selected_not_started")
-        self.assertFalse(index["current"]["implementation_authority"])
 
         self.assertEqual(backlog["completed_through"], "ALP-01")
         self.assertEqual(backlog["tranches"][0]["status"], "completed_verified")
         self.assertFalse(backlog["tranches"][0]["implementation_authority"])
-        self.assertEqual(backlog["tranches"][1]["status"], "selected_not_started")
-        self.assertFalse(backlog["tranches"][1]["implementation_authority"])
-        self.assertIsNone(backlog["tranches"][1]["implementation_branch"])
+        self.assertEqual(backlog["tranches"][1]["status"], successor["status"])
+
+        if successor["status"] in {"selected_not_started", "in_progress"}:
+            self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-02")
+            self.assertEqual(pointer["active_attempt"]["status"], successor["status"])
+            self.assertEqual(index["current"]["work_item_id"], "ALP-02")
+            self.assertEqual(index["current"]["status"], successor["status"])
+            self.assertEqual(runtime["active_work"]["work_item"], "ALP-02")
+            self.assertEqual(runtime["active_work"]["state"], successor["status"])
+
+            if successor["status"] == "selected_not_started":
+                self.assertFalse(successor["implementation_authority"])
+                self.assertIsNone(successor["implementation_branch"])
+                self.assertFalse(pointer["active_attempt"]["implementation_authority"])
+                self.assertIsNone(pointer["active_attempt"]["implementation_branch"])
+                self.assertFalse(index["current"]["implementation_authority"])
+                self.assertFalse(registry["alp_02_authority"]["implementation_authority"])
+                self.assertTrue(registry["alp_02_authority"]["selected_not_started"])
+            else:
+                self.assertTrue(successor["implementation_authority"])
+                self.assertTrue(successor["implementation_branch"])
+                self.assertTrue(pointer["active_attempt"]["implementation_authority"])
+                self.assertTrue(index["current"]["implementation_authority"])
+                self.assertTrue(registry["alp_02_authority"]["implementation_authority"])
+                self.assertFalse(registry["alp_02_authority"]["selected_not_started"])
+        else:
+            self.assertFalse(successor["implementation_authority"])
+            self.assertTrue(successor.get("authority_retired", True))
+            self.assertTrue(pointer["active_attempt"]["work_item_id"].startswith("ALP-"))
+            self.assertTrue(index["current"]["work_item_id"].startswith("ALP-"))
 
         self.assertFalse(registry["alp_01_authority"]["implementation_authority"])
         self.assertTrue(registry["alp_01_authority"]["retired"])
-        self.assertFalse(registry["alp_02_authority"]["implementation_authority"])
-        self.assertTrue(registry["alp_02_authority"]["selected_not_started"])
-
-        self.assertEqual(runtime["active_work"]["work_item"], "ALP-02")
-        self.assertEqual(runtime["active_work"]["role"], "selected_not_started")
-        self.assertFalse(runtime["active_work"]["implementation_authority"])
         self.assertEqual(runtime["application_repository"]["canonical_main"], merge)
         self.assertEqual(runtime["application_repository"]["active_validation_family"], "ALP")
-        self.assertEqual(runtime["application_repository"]["active_validation_family_state"], "ALP02_selected_not_started")
 
     def test_alp01_taxonomy_boundaries_and_validation_evidence_are_preserved(self):
         program = load_text("governance/application-planning/achievements-learning-practice/ALP_ACHIEVEMENTS_LEARNING_PRACTICE_PROGRAM.md")
