@@ -69,7 +69,7 @@ Observed changed-evidence repairs before application merge:
 
 ## Successor boundary
 
-ALP-06 — Rehearsal, Retry, Safe Failure & Training/Project Integration — is selected as `ALP-06-attempt-001` from exact application main `402aa6d91795d6e75be64c106aa122b0b79cb872`.
+ALP-06 — Rehearsal, Retry, Safe Failure & Training/Project Integration — is `selected_not_started` as `ALP-06-attempt-001` from exact application main `402aa6d91795d6e75be64c106aa122b0b79cb872`.
 
 Until a future owner `Continue` performs ALP-06 governed start:
 - implementation branch: `null`
