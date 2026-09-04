@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.4.0",
+  "schema_version": "0.4.1",
   "program_id": "CAB",
   "program_name": "Character Advancement & Balance",
   "owner": "John Brandon Turner",
@@ -9,12 +9,12 @@
   "status": "in_progress",
   "completed_through": "CAB-03",
   "current_work_item_id": "CAB-04",
-  "current_state": "selected_not_started_pending_owner_answers",
+  "current_state": "selected_not_started",
   "tranches": [
     {"id":"CAB-01","name":"Authority, Source Census & AP Retirement","status":"completed_verified","artifacts":["CAB-01_AUTHORITY_AND_AP_RETIREMENT_CONTRACT.md","CAB-01_SOURCE_CENSUS.md","CAB-01_COMPLETION_REPORT.md"]},
     {"id":"CAB-02","name":"Current XP Economy Reconstruction","status":"completed_verified","artifacts":["CAB-02_XP_ECONOMY_RECONSTRUCTION.md","CAB-02_XP_ECONOMY_LEDGER_v0.1.0.json","CAB-02_OWNER_QUESTIONNAIRE.md","CAB-02_OWNER_DECISIONS_2026-09-04.md","CAB-02_COMPLETION_REPORT.md"]},
-    {"id":"CAB-03","name":"Character-Creation Baseline","status":"completed_verified","artifacts":["CAB-03_CHARACTER_CREATION_BASELINE.md","CAB-03_CREATION_BASELINE_LEDGER_v0.1.0.json","CAB-03_OWNER_QUESTIONNAIRE.md","CAB-03_COMPLETION_REPORT.md"]},
-    {"id":"CAB-04","name":"Advancement Architecture","status":"selected_not_started_pending_owner_answers"},
+    {"id":"CAB-03","name":"Character-Creation Baseline","status":"completed_verified","artifacts":["CAB-03_CHARACTER_CREATION_BASELINE.md","CAB-03_CREATION_BASELINE_LEDGER_v0.1.0.json","CAB-03_OWNER_QUESTIONNAIRE.md","CAB-03_OWNER_DECISIONS_2026-09-04.md","CAB-03_COMPLETION_REPORT.md"]},
+    {"id":"CAB-04","name":"Advancement Architecture","status":"selected_not_started"},
     {"id":"CAB-05","name":"Five-Tier Model","status":"not_started"},
     {"id":"CAB-06","name":"XP Cost Calibration Framework","status":"not_started"},
     {"id":"CAB-07","name":"Action Economy & Simultaneous Power","status":"not_started"},
@@ -36,21 +36,33 @@
     {"id":"CAB-23","name":"Completion Audit & Handoff","status":"not_started"}
   ],
   "strict_next": "CAB-04",
-  "selection_note": "CAB-03 completed the bounded creation-baseline source reconciliation. CAB-04 is selected_not_started but execution is held until the four CAB-03 owner questions are answered or explicitly deferred. No unanswered item may silently default.",
+  "selection_note": "CAB-03 is completed_verified and all four owner gates are resolved. CAB-04 Advancement Architecture is selected_not_started and may execute. It must inherit the 1300-XP working normal-start default as recalibratable, the 12-point normal attribute allocation, optional future Regular/High/Hyper package concept pending full rebalance, no universal background cap, and retained creation-only permanent HP investment with provisional pricing.",
   "cab03_supported_baseline": {
     "default_starting_advancement_xp": 1300,
+    "default_starting_xp_status": "working_normal_start_default_recalibratable_after_cab_evidence",
+    "campaign_starting_xp_override_allowed": true,
     "starting_wealth": "gm_campaign_defined_separate_budget",
     "xp_to_money_conversion": false,
+    "base_attributes": 10,
+    "species_modifiers_apply_before_free_pool": true,
+    "normal_free_attribute_pool": 12,
+    "regular_high_hyper_status": "optional_future_campaign_packages_pending_full_rebalance_not_current_numeric_rules",
+    "background_universal_1800_xp_cap": false,
+    "creation_permanent_hp_buy_allowed": true,
+    "creation_hp_buy_prices": "provisional_pending_CAB-06",
     "starting_ability_trees_free": 5,
     "starting_tier1_abilities_free": 5,
     "unspent_xp_carries_forward": true
   },
   "owner_questionnaire": {
     "path": "governance/application-planning/character-advancement-balance/CAB-03_OWNER_QUESTIONNAIRE.md",
-    "status": "awaiting_owner_answers",
-    "required_before_execution": "CAB-04",
-    "questions": ["CAB-Q03-01","CAB-Q03-02","CAB-Q03-03","CAB-Q03-04"],
-    "recommendations": {"CAB-Q03-01":"B","CAB-Q03-02":"A","CAB-Q03-03":"A","CAB-Q03-04":"A"},
-    "unanswered_policy": "remain_unresolved_no_silent_default"
+    "status": "resolved_by_owner_2026-09-04",
+    "decision_artifact": "governance/application-planning/character-advancement-balance/CAB-03_OWNER_DECISIONS_2026-09-04.md",
+    "decisions": {
+      "CAB-Q03-01": "B_with_explicit_future_recalibration_permission",
+      "CAB-Q03-02": "A_plus_B_normal_12_point_baseline_and_optional_future_rebalanced_packages",
+      "CAB-Q03-03": "A",
+      "CAB-Q03-04": "A"
+    }
   }
 }

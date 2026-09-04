@@ -2,140 +2,116 @@
 
 **Program:** CAB — Character Advancement & Balance  
 **Tranche:** CAB-03  
-**State:** `completed_verified` candidate pending merge  
+**State:** `completed_verified`  
 **Owner/final authority:** John Brandon Turner  
+**Owner decisions:** `CAB-03_OWNER_DECISIONS_2026-09-04.md`
 
 ## Completed
 
-CAB-03 reconciled the supported Character-creation baseline from current Character architecture, CAB-01/02 decisions, recovered owner-authored creation rules, creation PDFs, and specialized attribute/background/health/knowledge/skill/proficiency sources.
+CAB-03 reconciled the supported Character-creation baseline from current Character architecture, CAB-01/02 decisions, recovered owner-authored creation rules, specialized attribute/background/health/knowledge/skill/proficiency sources, and the resolved CAB-03 owner questionnaire.
 
 Durable outputs:
 
-- `CAB-03_CHARACTER_CREATION_BASELINE.md` — human-readable source reconciliation and recommended default baseline;
-- `CAB-03_CREATION_BASELINE_LEDGER_v0.1.0.json` — machine-readable creation ledger and conflict register;
-- `CAB-03_OWNER_QUESTIONNAIRE.md` — four informed owner gates.
+- `CAB-03_CHARACTER_CREATION_BASELINE.md` — final human-readable creation baseline;
+- `CAB-03_CREATION_BASELINE_LEDGER_v0.1.0.json` — machine-readable creation ledger and resolved conflict register;
+- `CAB-03_OWNER_QUESTIONNAIRE.md` — preserved questionnaire with resolved answers;
+- `CAB-03_OWNER_DECISIONS_2026-09-04.md` — explicit owner authority.
 
-## Findings
+## Final findings and decisions
 
-### 1. The 1,300-XP starting value is strongly supported
+### 1. Starting XP
 
-The owner explicitly corrected an earlier assistant error with `Starting xp is 1300`, and the recovered Character Creation PDF repeats 1,300 XP throughout its introduction, FAQ, worksheet and budget summary.
+The current normal-start advancement grant is **1,300 XP**. A GM/Campaign creation policy may explicitly choose another starting grant for a different campaign power level. The 1,300 number is not immutable: CAB may later recommend adjustment after cost calibration, equal-XP benchmarks, pacing analysis and integrated simulation.
 
-CAB-03 therefore rejects the older assistant-generated 10,000-XP claim.
+### 2. Starting wealth
 
-### 2. The default Character already receives a substantial free foundation
+Starting money/equipment is separate from advancement XP and is set by GM/Campaign creation policy. There is no ordinary XP-to-money conversion.
 
-The recovered owner-authored creation rules provide:
+### 3. Free creation foundation
+
+The normal creation foundation retains:
 
 - free base Species;
 - free Homeworld Type core benefits;
 - free Cultural Influence core benefits;
 - free Early Life Profession core benefits;
-- five free starting Ability Trees;
-- free Tier 1 access in those trees;
-- five free Tier 1 Abilities;
-- source-defined free Tier 1 Knowledges/grants;
-- unspent starting XP may remain available after activation.
+- five free eligible Ability Trees;
+- free Tier-1 access in those trees;
+- five free eligible Tier-1 Abilities;
+- source-defined free Knowledges, spells, proficiencies and other grants;
+- carry-forward of unspent starting XP.
 
-This means 1,300 XP is customization budget on top of a playable foundation rather than the price of constructing the entire Character from zero.
+### 4. Attributes
 
-### 3. Starting wealth is now cleanly separated
+The recovered Regular/High/Hyper numbers are internally inconsistent and do not govern current creation.
 
-CAB-02 owner decisions supersede every creation rule that converts XP to Credits or makes ordinary equipment an XP purchase. Starting money/equipment is a separate GM/Campaign creation-policy decision.
+The operative normal-start rule is:
 
-### 4. The Attribute Modes are mechanically inconsistent
+- all six attributes begin at 10;
+- apply Species modifiers;
+- allocate one free **12-point pool**;
+- further permanent increases use the later calibrated XP economy.
 
-The Regular/High/Hyper source contradicts its own stated point pools, focus templates, example allocations and 250-XP-per-+1 price. The modes cannot be accepted as written.
+Physical/Mental/Balanced may remain example distributions.
 
-CAB recommends one free 12-point starting allocation after base 10 plus Species modifiers, with later XP increases calibrated in CAB-10/CAB-06.
+The **concept** of Regular/High/Hyper may survive as optional alternate Campaign starting-power packages, but they must be fully rebuilt and benchmarked before use. Their current point totals and prices are rejected.
 
-### 5. Background core structure is stable; its 1,800-XP category cap is not
+### 5. Backgrounds
 
-The three core background components are consistently free. Optional upgrades are source-attested XP purchases. An earlier owner draft gives a 1,800-XP maximum, while the later Character Creation PDF omits that limit.
+There is no universal 1,800-XP background customization cap. The three core background components remain free; optional upgrades spend available advancement XP and obey eligibility/prerequisites. Campaign policy may impose a category cap where desired.
 
-CAB recommends no universal category cap; available XP, eligibility and Campaign policy already bound the purchase.
+### 6. HP
 
-### 6. Starting HP has a later explicit source rule
+Base starting HP remains `max(10, Constitution)` plus explicit Species modifiers and governed grants.
 
-The May 2025 health source sets starting HP to `max(10, Constitution)` plus Species modifiers and permits creation-only XP investment in permanent HP. CAB recommends retaining the concept but sending the listed prices through later balance calibration.
+Creation-only purchase of additional permanent HP remains a valid XP-buy concept. The recovered +5/+10/+15/+20 HP and 300/750/1,250/2,000-XP ladder is provisional and must be calibrated in CAB-06.
 
-### 7. Skill/Knowledge/proficiency categories survive, but their creation prices do not reconcile
+### 7. Skills, Knowledges, proficiencies, Ability/tier prices and magic
 
-The simple prices in Character Creation conflict with specialized source documents. CAB-03 therefore recognizes them as valid XP-spend categories without canonizing the legacy numbers. CAB-10 owns reconciliation.
+These remain valid advancement domains where their owning rules allow them, but their conflicting legacy prices are not finalized by CAB-03.
 
-### 8. Ability/tier prices remain deferred
+- CAB-10 owns attributes/Skills/proficiencies reconciliation.
+- CAB-04/05/06 own tree/tier/Ability access and pricing architecture.
+- Direct spell purchase is not a universal rule; structured spell evidence continues to point toward capacity/slot progression under owning magic rules.
 
-Five free trees and five free Tier-1 Abilities are retained as creation grants, but extra-tree, tier-unlock and Ability purchase prices are not finalized here. CAB-04/05/06 own those decisions.
+## Creation ledger
 
-### 9. Direct spell XP purchase is not a universal creation rule
+CAB-03 requires creation to distinguish:
 
-CAB-02's structured spell evidence says the spell itself costs 0 direct XP while capacity/slot progression is purchased under owning archetype rules. Starting spells are therefore grants from source mechanics, not a general per-spell creation shopping list.
+- `granted_free`;
+- `selected_free`;
+- `xp_purchased`;
+- `campaign_granted`;
+- `wealth_purchased`;
+- `deferred`;
+- `unavailable`.
 
-## Recommended default baseline
+This prevents free grants, XP purchases and ordinary wealth purchases from collapsing into one ambiguous starting budget.
 
-Subject to the four explicit owner gates:
+## Recommendations carried forward
 
-1. 1,300 starting advancement XP.
-2. Base attributes 10 plus Species modifiers.
-3. One free 12-point starting attribute allocation.
-4. Free base Species.
-5. Free Homeworld Type, Cultural Influence and Early Life Profession core selections.
-6. Starting HP = `max(10, Constitution)` plus Species modifiers.
-7. Five free eligible Ability Trees.
-8. Tier 1 access free in those trees.
-9. Five free eligible Tier 1 Abilities.
-10. Source-defined free Knowledges, spells, proficiencies and other grants apply normally.
-11. Starting wealth/equipment is separately set by GM/Campaign policy.
-12. XP may be spent on eligible permanent Character advancement, not ordinary assets.
-13. Unspent creation XP carries into play.
-
-## Recommendations
-
-1. Treat **1,300 XP as the normal-start default**, with explicit Campaign-policy override for experienced/high-power/low-power starts rather than inventing Character levels.
-2. Replace the broken Attribute Modes with **one free 12-point pool**; make Physical/Mental/Balanced examples only.
-3. Remove the universal **1,800-XP background cap**; allow Campaign profiles to set one if desired.
-4. Keep **creation-only permanent HP investment** as a valid XP-buy concept, but recalibrate its exact prices later.
-5. Preserve the creation ledger distinction between free grants, free selections, XP purchases, Campaign grants and wealth purchases.
-6. Do not reintroduce XP-to-money conversion, AP, or direct per-spell shopping through old creation text.
-
-## Established decisions inherited
-
-- AP is deprecated.
-- XP is ordinary Character advancement currency.
-- ordinary assets do not use XP;
-- starting wealth is GM/Campaign-defined;
-- no ordinary XP-to-money conversion;
-- no ordinary percentage XP multipliers;
-- high Intelligence/Wisdom must later receive a governed faster-learning benefit without a blanket XP multiplier;
-- hazard/trap XP values remain reference evidence rather than automatic payouts.
-
-## Owner questionnaire
-
-`CAB-03_OWNER_QUESTIONNAIRE.md` asks four questions, with recommendations:
-
-1. starting-XP rigidity — **B**;
-2. Attribute Mode replacement — **A**;
-3. background 1,800-XP cap — **A**;
-4. creation-only permanent HP buy — **A**.
-
-Unanswered items remain unresolved and are not silently defaulted.
+1. Treat 1,300 XP as the current working normal-start default and test it rather than protecting it from evidence.
+2. Preserve the 12-point normal attribute pool as the baseline while later evaluating optional rebuilt Regular/High/Hyper campaign profiles.
+3. Do not restore the universal 1,800-XP background cap.
+4. Retain creation-only HP investment but calibrate the exact cost.
+5. Preserve the creation-ledger distinction between grants, XP purchases, Campaign grants and wealth purchases.
+6. Do not reintroduce AP, XP-to-money conversion, or ordinary percentage XP multipliers.
 
 ## Forward routing
 
-- starting baseline owner answers -> record before CAB-04 execution;
-- advancement gate architecture -> CAB-04;
+- advancement architecture and learning/training attachment -> CAB-04;
 - five-tier semantics -> CAB-05;
-- XP price calibration -> CAB-06;
+- XP price calibration and HP pricing -> CAB-06;
 - acquisition eligibility -> CAB-09;
-- attributes/skills/proficiencies and Intelligence/Wisdom learning role -> CAB-10;
-- progression pacing -> CAB-16;
-- XP awards -> CAB-17;
-- respec/migration -> CAB-19.
+- attributes/Skills/proficiencies and Intelligence/Wisdom learning role -> CAB-10;
+- equal-XP creation benchmarks -> CAB-14;
+- progression pacing and starting-XP validation -> CAB-16;
+- integrated starting-budget simulation -> CAB-21.
 
 ## Completion statement
 
-CAB-03's bounded source-reconciliation work is complete when these artifacts are merged, the CAB backlog marks CAB-03 `completed_verified`, CAB-04 is selected_not_started, and the four owner gates are recorded as awaiting answers. CAB-04 must not silently resolve those questions.
+CAB-03 is `completed_verified`. All four owner gates are resolved. No application implementation authority is created.
 
 ## Exact successor
 
-**CAB-04 — Advancement Architecture** — selected after CAB-03 closeout, with execution held until the CAB-03 owner answers are recorded.
+**CAB-04 — Advancement Architecture** — `selected_not_started` and cleared to execute.
