@@ -1,7 +1,7 @@
 # MAL — Microgames & Ambient Loops
 
 **Program ID:** MAL  
-**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH MAL-09; MAL-10 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — COMPLETED_VERIFIED THROUGH MAL-09; MAL-10 IN_PROGRESS  
 **Activation:** after completed_verified SCL-11  
 **Successor:** ALP-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,7 +9,7 @@
 
 ## Current state
 
-MAL-01 through MAL-09 are `completed_verified`. MAL-10 — Starter Library & Golden Microgame/Aniloop Proof — is `selected_not_started` from exact application main `c8cb1bbb18def3ac8f910fc75d6d52d8181ae291` with implementation branch `null` and implementation authority `false`.
+MAL-01 through MAL-09 are `completed_verified`. MAL-10 — Starter Library & Golden Microgame/Aniloop Proof — is `in_progress` from exact application main `c8cb1bbb18def3ac8f910fc75d6d52d8181ae291` on branch `integration/mal-10-starter-library-golden-proof` with bounded implementation authority.
 
 ## MAL-09 completed evidence
 
@@ -19,10 +19,12 @@ MAL-01 through MAL-09 are `completed_verified`. MAL-10 — Starter Library & Gol
 - Application PR `404` merged as `c8cb1bbb18def3ac8f910fc75d6d52d8181ae291`.
 - Repairs: validation-contract `0`; application-feature `0`; repository-state `0`; historical fanout `0`; unchanged-evidence reruns `0`; stale-pointer incidents `0`.
 
-## MAL-10 selected boundary
+## MAL-10 governed boundary
 
-Future MAL-10 work is bounded to a small original starter library plus a deterministic golden Microgame/Aniloop proof composed only from frozen MAL-01..09 contracts. Starter examples may demonstrate traversal, interaction/hazard/objective, tiny NPC state machines, Aniloops, GCL recipe bridging, typed owner/reward handoffs and accessibility/fallback behavior, but must not create parallel canonical owner truth or copy proprietary game maps, encounter scripts, minigames, level designs or reward tables.
+MAL-10 may implement only a small original starter library plus deterministic golden Microgame/Aniloop proof composed over frozen MAL-01..09.
 
-Golden proof must demonstrate semantic-equivalent deterministic results across Linux/Windows and across allowed accessibility/device/presentation variants. Unknown, hidden or unauthorized state remains `unresolved`.
+Starter fixtures may demonstrate traversal, interaction/objective, tiny NPC state-machine, Aniloop, explicit frozen GCL bridge references, owner-handoff/reward-boundary semantics and accessibility/fallback equivalence. They are MAL-local reference/proof fixtures only and do not mutate canonical owner truth.
+
+No proprietary game map, encounter script, minigame logic, level design or reward table may be copied. Unknown, hidden or unauthorized state remains `unresolved`; unfinished GCL discovery/recommendation/composition-engine authority is not expanded. Golden proof must preserve the same semantic result across self-hosted Linux/Windows and permitted accessibility/device/presentation variants.
 
 No canonical owner mutation, reward grant, durable persistence, migration `0022`, ALP-01+, provider activation, tester distribution, release or deployment is authorized.
