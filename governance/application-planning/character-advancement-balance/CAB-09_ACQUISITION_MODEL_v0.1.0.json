@@ -1,0 +1,143 @@
+{
+  "schema_version": "0.1.0",
+  "program_id": "CAB",
+  "tranche": "CAB-09",
+  "state": "completed_verified",
+  "core_rule": "eligibility_is_permission_acquisition_is_the_governed_event_or_process_that_creates_owned_granted_active_learned_bonded_installed_or_other_authorized_state",
+  "xp_role": "affordability_only_unless_explicit_grant_or_waiver",
+  "acquisition_modes": [
+    "ordinary_purchase",
+    "creation_selection",
+    "source_grant",
+    "source_qualified_selection",
+    "training_acquisition",
+    "exposure_acquisition",
+    "membership_acquisition",
+    "prestige_entry",
+    "archetype_magic_access",
+    "bonded_or_installed_acquisition",
+    "relationship_pathway_acquisition",
+    "milestone_or_narrative_acquisition",
+    "temporary_state_grant"
+  ],
+  "eligibility_dimensions": [
+    "species_lineage_subspecies_variant_or_biology",
+    "current_form_or_transformation",
+    "creation_selection_history",
+    "faction_order_archetype_profession_membership_or_standing",
+    "prestige_entry_requirements",
+    "environment_exposure_or_acclimation_history",
+    "milestone_achievement_narrative_or_campaign_flag",
+    "skill_knowledge_proficiency_or_mastery",
+    "attribute_threshold",
+    "prior_ability_or_node",
+    "item_tool_weapon_implant_relic_symbiote_dependency",
+    "spell_archetype_school_focus_and_caster_tier",
+    "relationship_pathway_and_consent",
+    "source_or_rules_profile_availability",
+    "campaign_permission",
+    "explicit_exclusion_or_incompatibility"
+  ],
+  "species_innate_policy": {
+    "automatic_biological_traits": "source_grant_when_explicit",
+    "species_qualified_options": "eligibility_not_automatic_grant_unless_source_says_so",
+    "dataset_or_label_is_not_biology": true,
+    "creation_only_later_purchase": "not_allowed_without_explicit_later_acquisition_bridge",
+    "cross_species_acquisition": "requires_explicit_bridge_or_authority",
+    "form_gated_capability": "requires_qualifying_form_state_and_cab08_form_rules"
+  },
+  "environment_policy": {
+    "current_environment_can_be_usage_context": true,
+    "presence_alone_grants_permanent_advancement": false,
+    "exposure_can_open_eligibility_or_learning_project": true,
+    "permanent_adaptation_requires_owning_rule": true,
+    "temporary_environment_grants_remain_temporary": true,
+    "campaign_background_can_explicitly_satisfy_exposure": true
+  },
+  "faction_profession_prestige_policy": {
+    "membership_or_standing_can_open_eligibility": true,
+    "membership_grants_entire_tree": false,
+    "learned_permanent_ability_survives_membership_loss_by_default": true,
+    "affiliation_dependent_grant_may_suspend_on_loss": true,
+    "future_faction_acquisition_may_close_on_loss": true,
+    "profession_purchase_bypasses_tools_training_prereqs": false,
+    "prestige_start_tier": 3,
+    "prestige_requires_explicit_entry_requirements": true,
+    "prestige_t1_t2_backpay": false,
+    "prestige_first_ability_separate": true
+  },
+  "magic_spell_policy": {
+    "structured_spell_count": 385,
+    "direct_learning_xp_per_spell": 0,
+    "xp_bearing_mechanism": "slots_or_ready_known_capacity_under_archetype_rules",
+    "requires_archetype_access": true,
+    "requires_minimum_caster_tier": true,
+    "universal_per_spell_xp_purchase": false
+  },
+  "external_dependency_policy": {
+    "distinguish_character_owned_permanent_from_external_grant": true,
+    "dependency_loss_can_suspend_grant": true,
+    "dependency_loss_deletes_history": false,
+    "ordinary_asset_value_is_character_xp": false
+  },
+  "relationship_pathway_policy": {
+    "eligibility_creates_live_relationship": false,
+    "relationship_system_owner": "CEW_CCP",
+    "ability_can_grant": ["pathway_eligibility","capacity","command_or_training_options","bond_opportunity","coordination_benefit"],
+    "ability_does_not_automatically_grant": ["creature_instance","ownership","obedience","training_state","placement","consent"],
+    "sapient_person_level_partner_requires_voluntary_consent": true
+  },
+  "unknown_policy": {
+    "source_silence_state": "acquisition_unresolved",
+    "xp_cost_proves_acquisition": false,
+    "dataset_membership_proves_acquisition": false,
+    "tier_eligibility_proves_acquisition": false,
+    "current_environment_proves_permanent_acquisition": false,
+    "creature_morphology_proves_relationship_eligibility": false
+  },
+  "projection_states": [
+    "hidden_or_unauthorized",
+    "source_unavailable",
+    "eligibility_unknown",
+    "ineligible",
+    "eligible_not_acquired",
+    "acquisition_opportunity_required",
+    "learning_or_acclimation_required",
+    "learning_or_acclimation_in_progress",
+    "dependency_required",
+    "tier_or_prerequisite_blocked",
+    "ready_unaffordable",
+    "ready_to_propose",
+    "awaiting_approval",
+    "granted_active",
+    "owned_permanent",
+    "owned_but_state_inactive",
+    "external_grant_suspended",
+    "temporary_active",
+    "historical_unavailable",
+    "acquisition_unresolved"
+  ],
+  "receipt_required_fields": [
+    "option_stable_id_and_version",
+    "acquisition_mode",
+    "source_and_rules_profile",
+    "eligibility_evidence",
+    "prerequisite_and_tier_state",
+    "learning_exposure_induction_bond_or_install_evidence",
+    "external_dependency_ids",
+    "grant_waiver_or_substitution_authority",
+    "base_reference_and_final_xp_values",
+    "permanence_or_state_dependency",
+    "approval_or_override_evidence",
+    "before_after_character_state",
+    "event_id_and_timestamp",
+    "provenance_and_correction_history"
+  ],
+  "owner_decisions": {
+    "authority": "standing_owner_recommendation_delegation",
+    "source": "CAB-08_OWNER_DECISIONS_2026-09-05.md",
+    "decision_artifact": "CAB-09_OWNER_DECISIONS_2026-09-05.md",
+    "recommendations_adopted": ["CAB-Q09-01","CAB-Q09-02","CAB-Q09-03","CAB-Q09-04","CAB-Q09-05","CAB-Q09-06","CAB-Q09-07"]
+  },
+  "strict_successor": "CAB-10"
+}
