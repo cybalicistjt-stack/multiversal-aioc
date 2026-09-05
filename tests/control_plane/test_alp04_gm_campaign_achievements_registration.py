@@ -75,8 +75,17 @@ class Alp04GmCampaignAchievementsRegistrationTests(unittest.TestCase):
             self.assertEqual(runtime["active_work"]["work_item"], "ALP-08")
         elif backlog["completed_through"] == "ALP-08":
             self.assertIsNone(backlog["current_item"])
+            vti01 = load_json("governance/ai/work-state/VTI-01-attempt-001.json")
             self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-01")
-            self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
+            self.assertIn(vti01["status"], {"selected_not_started", "in_progress"})
+            self.assertEqual(pointer["active_attempt"]["status"], vti01["status"])
+            if vti01["status"] == "selected_not_started":
+                self.assertIsNone(pointer["active_attempt"]["implementation_branch"])
+                self.assertFalse(pointer["active_attempt"]["implementation_authority"])
+            else:
+                self.assertEqual(pointer["active_attempt"]["implementation_branch"], "integration/vti-01-vtt-ecosystem-licensing-capability-matrix")
+                self.assertTrue(pointer["active_attempt"]["implementation_authority"])
+                self.assertFalse(pointer["bounded_authority"]["production_mutation_authorized"])
             self.assertEqual(index["current"]["work_item_id"], "VTI-01")
             self.assertEqual(registry["active_planning_work"]["work_item"], "VTI-01")
             self.assertEqual(runtime["active_work"]["work_item"], "VTI-01")
