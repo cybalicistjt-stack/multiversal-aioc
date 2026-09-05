@@ -1,7 +1,7 @@
 # ALP — Achievements, Learning & Practice
 
 **Program ID:** ALP  
-**Status:** OWNER-APPROVED — ALP-01/02/03/04/05/06/07 COMPLETED_VERIFIED; ALP-08 IN_PROGRESS  
+**Status:** OWNER-APPROVED — ALP-01..08 COMPLETED_VERIFIED  
 **Activation:** after completed_verified ECI-01  
 **Successor:** VTI-01  
 **Owner and final authority:** John Brandon Turner  
@@ -9,9 +9,11 @@
 
 ## Current state
 
-ALP-01 through ALP-07 are `completed_verified` and their implementation authority is retired. Their canonical application merges are: ALP-01 `c3ff8adb2311d1c59f3288a82593b358e3d47960`, ALP-02 `050356f7578856de5931917a60efe8af91def1bd`, ALP-03 `025f653f65be5ea8ccae1d04f9591e146c3d8797`, ALP-04 `788a8025caf8046edfeddcbf238cce972a4c5378`, ALP-05 `402aa6d91795d6e75be64c106aa122b0b79cb872`, ALP-06 `b59e47dfe5754ad22cfdbe2082585d265335da51`, and ALP-07 `773b9bcfbdc549e53e51dcedaae83b450a74c8fc`.
+ALP-01 through ALP-08 are `completed_verified` and all ALP implementation authority is retired. Their canonical application merges are: ALP-01 `c3ff8adb2311d1c59f3288a82593b358e3d47960`, ALP-02 `050356f7578856de5931917a60efe8af91def1bd`, ALP-03 `025f653f65be5ea8ccae1d04f9591e146c3d8797`, ALP-04 `788a8025caf8046edfeddcbf238cce972a4c5378`, ALP-05 `402aa6d91795d6e75be64c106aa122b0b79cb872`, ALP-06 `b59e47dfe5754ad22cfdbe2082585d265335da51`, ALP-07 `773b9bcfbdc549e53e51dcedaae83b450a74c8fc`, and ALP-08 `e61109affe9d662e6da6eb214c1acc870079c1a7`.
 
-ALP-08 — MAL/ISE/WCI/GCL Integration & Golden Learning/Recognition Proof — is `in_progress` from exact application main `773b9bcfbdc549e53e51dcedaae83b450a74c8fc` on branch `integration/alp-08-mal-ise-wci-gcl-integration-golden-learning-recognition-proof`. Acceptance-package creation is authorized. Production mutation remains blocked until a genuine matching RED is observed and sealed.
+ALP-08 completed with genuine matching acceptance RED on `d3f794df7c451f40932333c4f91e1caf6a5828a5`, exact-head Linux/Windows/comparator GREEN on `2385d94408cef404fe1e11edabcbad3deadb99e5`, deterministic receipt `cd0a3a708e10b21567e5a73aa9712eecf41d9f123ec3e67657bcda765817a3a5`, zero application-feature repair cycles and zero historical predecessor profile fanout. The application merged as PR `414` / `e61109affe9d662e6da6eb214c1acc870079c1a7`.
+
+VTI-01 — VTT Ecosystem, Licensing & Capability Matrix — is the strict successor and is `selected_not_started` from exact application main `e61109affe9d662e6da6eb214c1acc870079c1a7`, with branch `null` and implementation authority `false` until a future owner `Continue` governed-starts it.
 
 ## Purpose and frozen invariants
 
@@ -27,7 +29,7 @@ ALP-02 froze deterministic read-only definition, criterion, evidence, scope, pro
 
 No completed ALP tranche grants XP, advancement, capability, achievements, titles, reputation or rewards by implication; no completed ALP tranche creates a universal permission gate, durable ALP persistence, or migration `0022`.
 
-## ALP-08 governed contract
+## ALP-08 frozen contract
 
 ALP-08 defines deterministic read-only integration over explicit MAL, ISE, WCI and GCL references and a canonical golden learning/recognition proof over the frozen ALP-01 through ALP-07 contracts.
 
@@ -39,7 +41,7 @@ A golden proof has explicit scenario identity and subject identity and requires 
 
 ALP-08 ordering and deterministic receipts are independent of supplied integration-reference order. The proof is evidence and recognition projection only: no achievement awarding, completion mutation, recognition creation by implication, reward commit, XP/advancement/capability/title/reputation grant, notification delivery, acknowledgement/subscription mutation, owner-system mutation, durable ALP persistence or migration `0022` is authorized.
 
-GCL-13+ implementation and VTI-01+ implementation remain outside ALP-08 authority. Provider activation, tester distribution, release and deployment remain unauthorized.
+GCL-13+ implementation was never granted by ALP-08. VTI-01 is only selected_not_started; VTI-02+, provider activation, tester distribution, release and deployment remain unauthorized.
 
 ## Tranches
 
@@ -50,8 +52,8 @@ GCL-13+ implementation and VTI-01+ implementation remain outside ALP-08 authorit
 5. **ALP-05 — Diegetic Practice Spaces, Training Scenes & Simulations** — **COMPLETED_VERIFIED**.
 6. **ALP-06 — Rehearsal, Retry, Safe Failure & Training/Project Integration** — **COMPLETED_VERIFIED**.
 7. **ALP-07 — Player/GM UX, Accessibility, Notifications & Recognition History** — **COMPLETED_VERIFIED**.
-8. **ALP-08 — MAL/ISE/WCI/GCL Integration & Golden Learning/Recognition Proof** — **IN_PROGRESS**.
+8. **ALP-08 — MAL/ISE/WCI/GCL Integration & Golden Learning/Recognition Proof** — **COMPLETED_VERIFIED**.
 
 ## Active invariant
 
-ALP-01 through ALP-07 are frozen completed_verified contracts with implementation authority retired. ALP-08 is in_progress from exact application main `773b9bcfbdc549e53e51dcedaae83b450a74c8fc` on `integration/alp-08-mal-ise-wci-gcl-integration-golden-learning-recognition-proof`. Acceptance-package creation is authorized and production mutation remains blocked until genuine matching RED. MAL/ISE/WCI/GCL mutation, hidden evidence inference, notification delivery, reward/advancement grants, durable persistence, migration `0022`, GCL-13+, VTI-01+, provider activation, tester distribution, release and deployment are unauthorized.
+ALP-01 through ALP-08 are frozen `completed_verified` contracts with implementation authority retired. MAL/ISE/WCI/GCL mutation, hidden evidence inference, notification delivery, reward/advancement grants, durable persistence and migration `0022` remain unauthorized by ALP. VTI-01 is the selected successor only, with no branch or implementation authority; VTI-02+, SGC-01+, provider activation, tester distribution, release and deployment remain unauthorized.
