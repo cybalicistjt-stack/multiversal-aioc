@@ -1,7 +1,7 @@
 # ALP — Achievements, Learning & Practice
 
 **Program ID:** ALP  
-**Status:** OWNER-APPROVED — ALP-01/02/03/04/05/06 COMPLETED_VERIFIED; ALP-07 IN_PROGRESS  
+**Status:** OWNER-APPROVED — ALP-01/02/03/04/05/06/07 COMPLETED_VERIFIED; ALP-08 SELECTED_NOT_STARTED  
 **Activation:** after completed_verified ECI-01  
 **Successor:** VTI-01  
 **Owner and final authority:** John Brandon Turner  
@@ -21,7 +21,9 @@ ALP-05 — Diegetic Practice Spaces, Training Scenes & Simulations — is `compl
 
 ALP-06 — Rehearsal, Retry, Safe Failure & Training/Project Integration — is `completed_verified` on application merge `b59e47dfe5754ad22cfdbe2082585d265335da51` through PR #412. Its implementation authority is retired.
 
-ALP-07 — Player/GM UX, Accessibility, Notifications & Recognition History — is `in_progress` from exact application main `b59e47dfe5754ad22cfdbe2082585d265335da51` on branch `integration/alp-07-player-gm-ux-accessibility-notifications-recognition-history`. Acceptance-package authority is active; production mutation remains locked until genuine matching Linux/Windows RED and deterministic comparator evidence.
+ALP-07 — Player/GM UX, Accessibility, Notifications & Recognition History — is `completed_verified` on application merge `773b9bcfbdc549e53e51dcedaae83b450a74c8fc` through PR #413. Its implementation authority is retired.
+
+ALP-08 — MAL/ISE/WCI/GCL Integration & Golden Learning/Recognition Proof — is `selected_not_started` from exact application main `773b9bcfbdc549e53e51dcedaae83b450a74c8fc`. It has no implementation branch, acceptance-package authority, production authority, provider activation, tester distribution, release or deployment authority.
 
 ## Purpose and frozen invariants
 
@@ -63,19 +65,27 @@ Final GREEN on exact production head `0b895ee21ea7585527b3acdb309bd11b05b5bea3` 
 
 Application PR #412 squash-merged the exact validated tree to verified main `b59e47dfe5754ad22cfdbe2082585d265335da51`.
 
-## ALP-07 governed-start contract
+## ALP-07 completed contract
 
-ALP-07 is authorized to define deterministic read-only Player/GM UX projection contracts over the frozen ALP-01 through ALP-06 state. The bounded surface includes explicit viewer role/identity, role-appropriate projection of authorized ALP learning and recognition references, accessibility presentation metadata, caller-supplied display preferences, deterministic notification candidates, and deterministic recognition-history entries with stable identity and explicit provenance.
+ALP-07 implements deterministic read-only Player/GM UX projection over frozen ALP-01 through ALP-06 state. Each projection carries explicit viewer role and viewer identity; player and GM views differ only through explicit authorization and GM role creates no hidden-state inference authority.
 
-Accessibility behavior is presentation-only. Caller-supplied display preferences may influence ordering, labels, density, emphasis or equivalent presentation metadata, but ALP-07 does not persist those preferences or mutate canonical ALP or owner-system state.
+Accessibility behavior is presentation-only. Caller-supplied display preferences may influence density, emphasis, labels, ordering or equivalent display metadata, but ALP-07 does not persist those preferences or mutate canonical ALP or owner-system state.
 
-Notifications are candidates or presentation references only. ALP-07 does not send messages, perform external delivery, mutate acknowledgement state, subscribe or unsubscribe users, or create delivery history by implication.
+Notifications are deterministic notification candidates only. ALP-07 does not send messages, perform external delivery, mutate acknowledgement state, subscribe or unsubscribe users, or create delivery history by implication.
 
-Recognition history is projected only from explicit authorized records and supplied metadata. Missing, hidden or unauthorized evidence, events, records and cardinality remain unknown or omitted rather than inferred. Player and GM views may differ only by explicit authorization and viewer context; GM visibility does not create hidden-state inference authority.
+Recognition history is projected only from explicit authorized records and preserves stable identity, source family, subject identity, provenance and supplied timestamp/order metadata. Missing, hidden or unauthorized evidence, events, records and cardinality remain unknown or omitted rather than inferred.
 
 ALP-07 does not award achievements, grant XP, advancement, capability, titles, reputation or rewards, commit mechanical rewards, or mutate Character Progression, Reputation/Relationship/Faction, World/Scene, Projects, GCL, ISE or MAL. It creates no universal permission gate, no durable ALP persistence, and no migration `0022`.
 
-ALP-08 MAL/ISE/WCI/GCL integration and golden learning/recognition proof behavior remains reserved. Production mutation is locked until a genuine matching acceptance RED is observed on Linux and Windows and the deterministic comparator confirms matching evidence.
+### ALP-07 verification evidence
+
+Acceptance RED on exact head `94dd477084f397735dcf9744e07f1e9b7276a3ce` used run `33943679416`: selector `101245758343` PASS, Linux `101245778946` FAIL at `alp07-invariants`, Windows `101245778947` FAIL at `alp07-invariants`, comparator `101245846282` PASS, deterministic receipt `dfd9b42aedeecf1faa896d9d6050dedc57c5265dd75118ba2827c596787f6d3b`. The ALP-07 production module was intentionally absent and historical predecessor profile fanout was zero.
+
+Final GREEN on exact production head `1c9de1fba3152078a1607fc43fcbbe333d8b6ade` used run `33943944092`: selector `101246503087`, Linux `101246519558`, Windows `101246519562`, comparator `101246591645`, deterministic receipt `33815b1c0da7ec674cc7175d510feda6035468a0c8f430a04b387ede9f79a19e`. Linux artifact `9962718243` SHA-256 `6bd40b177d156ad0584379c3effa4b10c50e994ed1ba51379a38c3f0519eb248`; Windows artifact `9962719646` SHA-256 `da982399311277d427309184f6bbcc22bfeb72fb0f8eef689cb5af7e04812f9c`; comparator artifact `9962722391` SHA-256 `3b3aa37ece7f7b5de35d168c3278b9af24dea7ca17d24d909dc1a888dc7491b5`. Production feature repair cycles were zero and historical predecessor profile fanout was zero.
+
+Application PR #413 squash-merged the exact validated tree to verified main `773b9bcfbdc549e53e51dcedaae83b450a74c8fc`.
+
+ALP-08 MAL/ISE/WCI/GCL integration and golden learning/recognition proof behavior remains reserved until a future governed start.
 
 ## Tranches
 
@@ -85,9 +95,9 @@ ALP-08 MAL/ISE/WCI/GCL integration and golden learning/recognition proof behavio
 4. **ALP-04 — GM-Authored Campaign Achievements, Titles, Reputation & Reward Links** — **COMPLETED_VERIFIED**.
 5. **ALP-05 — Diegetic Practice Spaces, Training Scenes & Simulations** — **COMPLETED_VERIFIED**.
 6. **ALP-06 — Rehearsal, Retry, Safe Failure & Training/Project Integration** — **COMPLETED_VERIFIED**.
-7. **ALP-07 — Player/GM UX, Accessibility, Notifications & Recognition History** — **IN_PROGRESS**.
-8. **ALP-08 — MAL/ISE/WCI/GCL Integration & Golden Learning/Recognition Proof**.
+7. **ALP-07 — Player/GM UX, Accessibility, Notifications & Recognition History** — **COMPLETED_VERIFIED**.
+8. **ALP-08 — MAL/ISE/WCI/GCL Integration & Golden Learning/Recognition Proof** — **SELECTED_NOT_STARTED**.
 
 ## Active invariant
 
-ALP-01 through ALP-06 are frozen completed_verified contracts. ALP-07 is in_progress with branch-scoped implementation and acceptance-package authority only; production mutation is locked pending genuine matching RED. No owner-system mutation, notification delivery, durable preference/history persistence, provider activation, tester distribution, release or deployment is authorized. ALP-08+, VTI-01+ remain unauthorized.
+ALP-01 through ALP-07 are frozen completed_verified contracts with implementation authority retired. ALP-08 is selected_not_started from exact application main `773b9bcfbdc549e53e51dcedaae83b450a74c8fc`, with no branch, acceptance package or production mutation authorized. No owner-system mutation, notification delivery, durable preference/history persistence, provider activation, tester distribution, release or deployment is authorized. VTI-01+ remains unauthorized.

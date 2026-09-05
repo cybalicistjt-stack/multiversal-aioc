@@ -78,7 +78,7 @@ class Alp07PlayerGmUxAccessibilityNotificationsRecognitionHistoryRegistrationTes
         for phrase in (
             "ALP-07 — Player/GM UX, Accessibility, Notifications & Recognition History",
             "viewer role",
-            "accessibility presentation metadata",
+            "Accessibility behavior is presentation-only",
             "notification candidates",
             "Recognition history",
             "hidden or unauthorized",
@@ -111,11 +111,19 @@ class Alp07PlayerGmUxAccessibilityNotificationsRecognitionHistoryRegistrationTes
         self.assertFalse(boundary["tester_distribution_authorized"])
         self.assertFalse(boundary["release_or_deployment_authorized"])
 
-    def test_alp07_registry_keeps_all_mutating_authorities_closed_before_red(self):
+    def test_alp07_registry_keeps_all_mutating_authorities_closed_across_lifecycle(self):
+        checkpoint = load_json("governance/ai/work-state/ALP-07-attempt-001.json")
         registry = load_json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
         authority = registry["alp_07_authority"]
-        self.assertTrue(authority["implementation_authority"])
-        self.assertTrue(authority["acceptance_package_authorized"])
+        if checkpoint["status"] == "in_progress":
+            self.assertTrue(authority["implementation_authority"])
+            self.assertTrue(authority["acceptance_package_authorized"])
+        else:
+            self.assertEqual(checkpoint["status"], "completed_verified")
+            self.assertFalse(authority["implementation_authority"])
+            self.assertTrue(authority["retired"])
+            self.assertFalse(authority["acceptance_package_authorized"])
+            self.assertFalse(authority["production_mutation_authorized"])
         self.assertFalse(authority["owner_mutation_authorized"])
         self.assertFalse(authority["achievement_award_authorized"])
         self.assertFalse(authority["reward_commit_authorized"])

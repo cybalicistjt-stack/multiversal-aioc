@@ -19,6 +19,7 @@ class Alp03PlatformOnboardingMasteryRegistrationTests(unittest.TestCase):
         alp04_merge = "788a8025caf8046edfeddcbf238cce972a4c5378"
         alp05_merge = "402aa6d91795d6e75be64c106aa122b0b79cb872"
         alp06_merge = "b59e47dfe5754ad22cfdbe2082585d265335da51"
+        alp07_merge = "773b9bcfbdc549e53e51dcedaae83b450a74c8fc"
         checkpoint = load_json("governance/ai/work-state/ALP-03-attempt-001.json")
         alp04 = load_json("governance/ai/work-state/ALP-04-attempt-001.json")
         backlog = load_json("governance/application-planning/achievements-learning-practice/ALP_PROGRAM_BACKLOG.json")
@@ -80,10 +81,19 @@ class Alp03PlatformOnboardingMasteryRegistrationTests(unittest.TestCase):
                     self.assertEqual(alp06["application_merge_sha"], alp06_merge)
                     alp07 = load_json("governance/ai/work-state/ALP-07-attempt-001.json")
                     self.assertEqual(alp07["application_baseline_sha"], alp06_merge)
-                    expected_item = "ALP-07"
-                    expected_status = alp07["status"]
-                    expected_completed = "ALP-06"
-                    expected_main = alp06_merge
+                    if alp07["status"] != "completed_verified":
+                        expected_item = "ALP-07"
+                        expected_status = alp07["status"]
+                        expected_completed = "ALP-06"
+                        expected_main = alp06_merge
+                    else:
+                        self.assertEqual(alp07["application_merge_sha"], alp07_merge)
+                        alp08 = load_json("governance/ai/work-state/ALP-08-attempt-001.json")
+                        self.assertEqual(alp08["application_baseline_sha"], alp07_merge)
+                        expected_item = "ALP-08"
+                        expected_status = alp08["status"]
+                        expected_completed = "ALP-07"
+                        expected_main = alp07_merge
 
         self.assertEqual(backlog["completed_through"], expected_completed)
         self.assertEqual(backlog["current_item"], expected_item)
