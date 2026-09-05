@@ -77,11 +77,13 @@ class Alp01AchievementsLearningPracticeRegistrationTests(unittest.TestCase):
                 self.assertEqual(index["current"]["work_item_id"], active_item)
                 self.assertEqual(runtime["active_work"]["work_item"], active_item)
                 self.assertEqual(registry["active_planning_work"]["work_item"], active_item)
+                active_checkpoint = load_json(f"governance/ai/work-state/{active_item}-attempt-001.json")
+                self.assertEqual(runtime["application_repository"]["canonical_main"], active_checkpoint["application_baseline_sha"])
             else:
                 self.assertTrue(pointer["active_attempt"]["work_item_id"].startswith("ALP-"))
                 self.assertTrue(index["current"]["work_item_id"].startswith("ALP-"))
                 self.assertTrue(runtime["active_work"]["work_item"].startswith("ALP-"))
-            self.assertEqual(runtime["application_repository"]["canonical_main"], backlog["application_baseline_sha"])
+                self.assertEqual(runtime["application_repository"]["canonical_main"], backlog["application_baseline_sha"])
 
         self.assertFalse(registry["alp_01_authority"]["implementation_authority"])
         self.assertTrue(registry["alp_01_authority"]["retired"])
