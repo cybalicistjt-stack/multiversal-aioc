@@ -1,7 +1,7 @@
 # VTI — Virtual Tabletop Interoperability
 
 **Program ID:** VTI  
-**Status:** OWNER-APPROVED — VTI-01 THROUGH VTI-02 COMPLETED_VERIFIED; VTI-03 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — VTI-01 THROUGH VTI-02 COMPLETED_VERIFIED; VTI-03 IN_PROGRESS / ACCEPTANCE-ONLY  
 **Activation:** after completed_verified ALP-08  
 **Successor:** SGC-01  
 **Owner and final authority:** John Brandon Turner
@@ -14,7 +14,7 @@ VTI-02 — Multiversal External Game Projection Contract — is `completed_verif
 
 VTI-02 implementation authority is retired. Its completed contract remains provider-neutral and deterministic: projection kinds are Character, Creature, Item, Action, Condition, Encounter, Scene, Vehicle and RuleReference; canonical Multiversal source references are preserved; field availability is explicit as `present`, `redacted` or `unsupported`; redacted/unsupported values are not manufactured; visibility, ownership, consent and GM-authority metadata remain preserved constraints. No vendor selection/ranking, provider-specific schema, external-object mapping/versioning/synchronization, rules-action bridge, credentials, external-account mutation, adapter implementation, canonical-state mutation, hidden-information bypass, persistence, migration, provider activation, tester distribution, release or deployment was performed.
 
-VTI-03 — Stable Identity, Versioning & Synchronization — is the strict successor and is `selected_not_started` as `VTI-03-attempt-001` from exact application main `01aa25d60ad71e5ed318b9680f859c6927a90541`. Selection grants no implementation branch, implementation authority, acceptance-package authority or production-mutation authority. A future owner `Continue` must governed-start VTI-03 before any implementation work begins.
+VTI-03 — Stable Identity, Versioning & Synchronization — is the strict successor and is `in_progress` as `VTI-03-attempt-001` from exact application main `01aa25d60ad71e5ed318b9680f859c6927a90541` on `integration/vti-03-stable-identity-versioning-synchronization`. Branch, implementation and acceptance-package authority are open only for the bounded provider-neutral contract. Production mutation remains locked until genuine matching Linux/Windows RED is sealed.
 
 ## Purpose
 
@@ -35,8 +35,8 @@ VTI follows the native mine-note-derived semantic families so adapters project m
 2. **VTI-02 — Multiversal External Game Projection Contract** — **COMPLETED_VERIFIED**.  
    Provider-neutral Character, Creature, Item, Action, Condition, Encounter, Scene, Vehicle and RuleReference projections with canonical source references, explicit present/redacted/unsupported availability, preserved visibility/ownership/consent/GM-authority metadata, deterministic normalization and deterministic receipts. External-object mapping/versioning/synchronization remains deferred to VTI-03 and rules-action bridging remains deferred to VTI-04.
 
-3. **VTI-03 — Stable Identity, Versioning & Synchronization** — **SELECTED_NOT_STARTED**.  
-   External-object mappings, fingerprints, version negotiation, stale/conflict handling, reconnect, deduplication, tombstones and MIB-03-based retry/recovery. Selection alone grants no implementation authority.
+3. **VTI-03 — Stable Identity, Versioning & Synchronization** — **IN_PROGRESS — ACCEPTANCE-ONLY UNTIL MATCHING RED**.  
+   External-object mappings, fingerprints, version negotiation, stale/conflict handling, reconnect, deduplication, tombstones and MIB-03-based retry/recovery. The governed start authorizes the registered branch and acceptance package; live external synchronization or other production mutation remains locked until genuine matching RED is sealed.
 
 4. **VTI-04 — Rules Action & Roll Bridge**  
    VTT request → Multiversal validation/resolution → owner receipts/result → VTT presentation for rolls, attacks, checks, powers, resources, conditions, initiative, reactions and GM adjudication.
@@ -96,24 +96,27 @@ Sealed completion evidence:
 - final GREEN head `e24f1e045d6dd5c6f332ebc4392acf2ba9f6e281`, run `33989626004`, repository-health job `101369414996`, Linux job `101369443543`, Windows job `101369443490`, comparator job `101369746269`, receipt `a66e9f4557713aa2807c960cb3c018a222c4316cadeb4afbfd8e5be4199ff7bd`;
 - application PR #416 merge `01aa25d60ad71e5ed318b9680f859c6927a90541`.
 
-## VTI-03 selection boundary
+## VTI-03 governed-start boundary
 
-VTI-03 is selected only from exact application main `01aa25d60ad71e5ed318b9680f859c6927a90541`.
+VTI-03 is governed-started only from exact application main `01aa25d60ad71e5ed318b9680f859c6927a90541`.
 
-Selection alone does not authorize implementation. A future governed start may bound:
-- stable external-object mappings and identities;
-- fingerprints and version negotiation;
-- stale/conflict handling;
+The bounded acceptance contract may define:
+- provider-neutral stable external-object mappings and identities between canonical Multiversal source references and derivative external-object identities;
+- deterministic fingerprints and version negotiation;
+- stale and conflict detection;
 - reconnect and retry/recovery behavior using MIB-03 semantics;
-- deduplication and tombstones.
+- deduplication and tombstones;
+- deterministic normalization, invariant validation and receipts needed to prove those semantics;
+- preservation of visibility, ownership, consent, hidden-information filtering and GM authority in synchronization metadata.
 
-Until that governed start:
-- implementation branch, acceptance-package authority and production-mutation authority are `false`;
-- external synchronization mutation, durable VTI persistence and any new migration are unauthorized;
+Until genuine matching Linux/Windows RED is sealed:
+- `production_mutation_authorized` remains `false`;
+- live external synchronization mutation is unauthorized;
+- durable VTI persistence and any new migration are unauthorized;
 - rules action/roll bridging remains VTI-04 scope;
 - provider-specific schemas, credentials, external accounts, adapters and platform selection remain unauthorized;
 - Platform selection remains evidence-driven and is deferred to VTI-09;
-- visibility, ownership, consent, hidden-information filtering and GM authority remain mandatory preserved constraints;
+- hidden information may not be manufactured or bypassed;
 - VTI-04+ and SGC-01+ remain unauthorized.
 
 ## Invariants
@@ -125,5 +128,5 @@ Until that governed start:
 - No vendor is selected by roadmap text; Platform selection remains evidence-driven at VTI-09.
 - Native SSA/KFR/ODL/MAL/ALP state is projected only where a platform supports it; VTI does not recreate those systems externally.
 - VTI-01 and VTI-02 are frozen completed_verified with implementation authority retired.
-- VTI-03 is selected_not_started with no implementation branch or authority.
+- VTI-03 is in_progress on its registered branch with acceptance-package authority; production mutation remains locked pending genuine matching RED.
 - VTI-04+ and SGC-01+ remain unauthorized until their own governed selections and starts.
