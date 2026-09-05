@@ -1,7 +1,7 @@
 # VTI — Virtual Tabletop Interoperability
 
 **Program ID:** VTI  
-**Status:** OWNER-APPROVED — VTI-01 COMPLETED_VERIFIED; VTI-02 IN_PROGRESS  
+**Status:** OWNER-APPROVED — VTI-01 COMPLETED_VERIFIED; VTI-02 IN_PROGRESS / MATCHING RED SEALED  
 **Activation:** after completed_verified ALP-08  
 **Successor:** SGC-01  
 **Owner and final authority:** John Brandon Turner
@@ -12,9 +12,11 @@ VTI-01 — VTT Ecosystem, Licensing & Capability Matrix — is `completed_verifi
 
 VTI-01 implementation authority is retired. Its completed contract remains deterministic, read-only and evidence-backed: capability state is explicit as supported, unsupported, conditional or unknown; public-source provenance is preserved; no vendor was selected or ranked; no credential, external-account, adapter, synchronization, persistence, canonical-state, provider, tester, release or deployment mutation was performed.
 
-VTI-02 — Multiversal External Game Projection Contract — is the strict successor and is `in_progress` from exact application main `027fad06d0bac3a20d56f0cc2a674581662cd1b9` as `VTI-02-attempt-001` on registered branch `integration/vti-02-multiversal-external-game-projection-contract`. Acceptance-package authority is open; production mutation remains locked until genuine matching Linux/Windows RED with deterministic comparison evidence.
+VTI-02 — Multiversal External Game Projection Contract — is the strict successor and is `in_progress` from exact application main `027fad06d0bac3a20d56f0cc2a674581662cd1b9` as `VTI-02-attempt-001` on registered branch `integration/vti-02-multiversal-external-game-projection-contract`.
 
-VTI-02 is bounded to provider-neutral projections for Character, Creature, Item, Action, Condition, Encounter, Scene, Vehicle and RuleReference. It may preserve canonical source references, explicit projection availability (`present`, `redacted`, `unsupported`), visibility scope, ownership reference, consent requirement and GM-authority requirement, plus deterministic field/object ordering and receipts. It may not define provider-specific schemas or implement external-object mapping/versioning/synchronization (VTI-03), rules action/roll bridging (VTI-04), later platform-native presentation, permission-engine, SDK or adapter behavior.
+Genuine matching acceptance RED is sealed from exact application head `db4a4c436cb6eeb011afd9614568fb68f070c785`, workflow run `33989074845`. Repository health/selector job `101367910300` passed; self-hosted Linux job `101367925024` and self-hosted Windows job `101367925030` both failed at `vti02-invariants` because the production contract was intentionally absent; deterministic cross-platform comparison job `101367974270` passed with receipt `7005e6b204a3b24a1e8a6e8e8ac2f80a295540afaf9fc9b3bbfb733a5f39ccc7`. Historical predecessor fanout was zero.
+
+VTI-02 production mutation is therefore unlocked only for the bounded provider-neutral contract. It may preserve canonical source references, explicit projection availability (`present`, `redacted`, `unsupported`), visibility scope, ownership reference, consent requirement and GM-authority requirement, plus deterministic field/object ordering and receipts. It may not define provider-specific schemas or implement external-object mapping/versioning/synchronization (VTI-03), rules action/roll bridging (VTI-04), later platform-native presentation, permission-engine, SDK or adapter behavior.
 
 ## Purpose
 
@@ -32,8 +34,8 @@ VTI follows the native mine-note-derived semantic families so adapters project m
 1. **VTI-01 — VTT Ecosystem, Licensing & Capability Matrix** — **COMPLETED_VERIFIED**.  
    Evidence-backed deterministic classification of target-platform system/rules packages, modules/plugins, sheets, compendiums, maps/scenes, automation, APIs/live communication, import/export and distribution constraints. Capability remains explicit as supported, unsupported, conditional or unknown, with source provenance and no vendor selection.
 
-2. **VTI-02 — Multiversal External Game Projection Contract** — **IN_PROGRESS**.  
-   Provider-neutral Character, Creature, Item, Action, Condition, Encounter, Scene, Vehicle and RuleReference projections. Acceptance-package authority is open; production mutation remains locked until matching RED. External-object mapping/versioning/synchronization and rules-action bridging remain deferred to VTI-03 and VTI-04 respectively.
+2. **VTI-02 — Multiversal External Game Projection Contract** — **IN_PROGRESS / MATCHING RED SEALED**.  
+   Provider-neutral Character, Creature, Item, Action, Condition, Encounter, Scene, Vehicle and RuleReference projections. Production mutation is open only after sealed matching RED. External-object mapping/versioning/synchronization and rules-action bridging remain deferred to VTI-03 and VTI-04 respectively.
 
 3. **VTI-03 — Stable Identity, Versioning & Synchronization**  
    External-object mappings, fingerprints, stale/conflict handling, reconnect, deduplication, tombstones and MIB-03-based retry/recovery.
@@ -80,12 +82,12 @@ Sealed completion evidence:
 - final GREEN head `7c377f1add2e00bbadb4007a043fee69709bd923`, run `33986901523`, repository-health job `101362058899`, Linux job `101362075923`, Windows job `101362075959`, comparator job `101362151897`, receipt `be8c090d2482898fbcdc8ffc93b93a31b7cb2eae3c8c0e238a221a990f8ce761`;
 - application PR #415 merge `027fad06d0bac3a20d56f0cc2a674581662cd1b9`.
 
-## VTI-02 governed-start boundary
+## VTI-02 production boundary after matching RED
 
-VTI-02 may define a provider-neutral projection contract for Character, Creature, Item, Action, Condition, Encounter, Scene, Vehicle and RuleReference objects. At governed start:
-- application branch `integration/vti-02-multiversal-external-game-projection-contract` is authorized from exact baseline `027fad06d0bac3a20d56f0cc2a674581662cd1b9`;
+VTI-02 may implement only the provider-neutral projection contract for Character, Creature, Item, Action, Condition, Encounter, Scene, Vehicle and RuleReference objects. After sealed matching RED:
+- application branch remains `integration/vti-02-multiversal-external-game-projection-contract` from exact baseline `027fad06d0bac3a20d56f0cc2a674581662cd1b9`;
 - acceptance-package authority is `true`;
-- production-mutation authority is `false` until genuine matching Linux/Windows RED is sealed;
+- production-mutation authority is `true` only for the bounded VTI-02 production contract;
 - canonical source references may identify projected Multiversal objects, but external-object mappings, versioning, fingerprints, stale/conflict handling, reconnect, deduplication and tombstones remain VTI-03 scope;
 - rules action/roll bridging remains VTI-04 scope;
 - provider-specific schemas, credentials, external accounts, adapters, synchronization, canonical-state mutation, persistence and provider/tester/release activation remain unauthorized;
@@ -102,5 +104,5 @@ VTI-02 may define a provider-neutral projection contract for Character, Creature
 - No vendor is selected by roadmap text; platform selection is evidence-driven at VTI-09.
 - Native SSA/KFR/ODL/MAL/ALP state is projected only where a platform supports it; VTI does not recreate those systems externally.
 - VTI-01 is frozen completed_verified with implementation authority retired.
-- VTI-02 is in_progress with acceptance-package authority and production mutation locked pending matching RED.
+- VTI-02 is in_progress with matching RED sealed and bounded production mutation authorized.
 - VTI-03+ and SGC-01+ remain unauthorized until their own governed selections and starts.
