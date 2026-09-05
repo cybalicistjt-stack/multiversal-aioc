@@ -1,29 +1,29 @@
-name: VTI05 State Export
+name: VTI05 State Transition
 on:
   pull_request:
     branches: [main]
 permissions:
-  contents: read
+  contents: write
 jobs:
-  export:
+  transition:
     if: github.head_ref == 'governance/vti-05-governed-start'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          persist-credentials: false
-      - uses: actions/upload-artifact@v4
-        with:
-          name: vti05-governed-start-state-${{ github.event.pull_request.head.sha }}
-          path: |
-            governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json
-            governance/ai/runtime/CURRENT_WORK_POINTER.json
-            governance/ai/runtime/ROADMAP_INDEX.json
-            governance/ai/work-state/VTI-05-attempt-001.json
-            governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json
-            governance/application-planning/virtual-tabletop-interoperability/VTI_VIRTUAL_TABLETOP_INTEROPERABILITY_PROGRAM.md
-            governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json
-            governance/ai/interaction-system/live/EXECUTION_CONVERGENCE_SCORECARD.json
-            tests/control_plane/test_vti04_rules_action_roll_bridge_registration.py
-            tests/control_plane/test_vti05_character_sheet_item_compendium_projection_registration.py
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - name: Apply bounded VTI-05 governed-start transition
+        run: python scripts/vti05_governed_start_transition_tmp.py
+      - name: Commit transition if needed
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "No transition changes required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add governance tests/control_plane/test_vti04_rules_action_roll_bridge_registration.py
+          git commit -m "VTI-05: governed start acceptance-only authority"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
