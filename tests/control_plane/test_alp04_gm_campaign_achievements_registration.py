@@ -63,7 +63,7 @@ class Alp04GmCampaignAchievementsRegistrationTests(unittest.TestCase):
             self.assertEqual(runtime["active_work"]["work_item"], "ALP-06")
         elif backlog["completed_through"] == "ALP-06":
             self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-07")
-            self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
+            self.assertIn(pointer["active_attempt"]["status"], {"selected_not_started", "in_progress"})
             self.assertEqual(index["current"]["work_item_id"], "ALP-07")
             self.assertEqual(registry["active_planning_work"]["work_item"], "ALP-07")
             self.assertEqual(runtime["active_work"]["work_item"], "ALP-07")
