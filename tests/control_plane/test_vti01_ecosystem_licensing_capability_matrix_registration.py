@@ -32,25 +32,41 @@ class Vti01EcosystemLicensingCapabilityMatrixRegistrationTests(unittest.TestCase
         self.assertEqual(checkpoint["implementation_branch"], branch)
         self.assertTrue(checkpoint["branch_creation_authorized"])
         self.assertTrue(checkpoint["acceptance_package_authorized"])
-        self.assertFalse(checkpoint["production_mutation_authorized"])
-        self.assertIsNone(checkpoint["validation"]["acceptance_red"])
+
+        production_authorized = checkpoint["production_mutation_authorized"]
+        self.assertEqual(backlog["active_contract"]["production_mutation_authorized"], production_authorized)
+        self.assertEqual(pointer["bounded_authority"]["production_mutation_authorized"], production_authorized)
+        self.assertEqual(registry["vti_01_authority"]["production_mutation_authorized"], production_authorized)
+        if production_authorized:
+            red = checkpoint["validation"]["acceptance_red"]
+            self.assertIsNotNone(red)
+            self.assertTrue(red["matching_red_observed"])
+            self.assertTrue(backlog["active_contract"]["matching_red_observed"])
+            self.assertTrue(registry["vti_01_authority"]["matching_red_observed"])
+            self.assertEqual(backlog["active_contract"]["matching_red_head"], red["head_sha"])
+            self.assertEqual(backlog["active_contract"]["matching_red_run"], red["run_id"])
+            self.assertEqual(backlog["active_contract"]["matching_red_receipt_sha256"], red["deterministic_receipt_sha256"])
+            self.assertEqual(registry["vti_01_authority"]["matching_red_head"], red["head_sha"])
+            self.assertEqual(registry["vti_01_authority"]["matching_red_run"], red["run_id"])
+            self.assertEqual(registry["vti_01_authority"]["matching_red_receipt_sha256"], red["deterministic_receipt_sha256"])
+        else:
+            self.assertIsNone(checkpoint["validation"]["acceptance_red"])
+            self.assertFalse(backlog["active_contract"]["matching_red_observed"])
+            self.assertFalse(registry["vti_01_authority"]["matching_red_observed"])
 
         vti01 = next(item for item in backlog["tranches"] if item["id"] == "VTI-01")
         self.assertEqual(vti01["status"], "in_progress")
         self.assertEqual(vti01["implementation_branch"], branch)
         self.assertEqual(backlog["current_item"], "VTI-01")
-        self.assertEqual(backlog["active_contract"]["matching_red_observed"], False)
 
         self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-01")
         self.assertEqual(pointer["active_attempt"]["status"], "in_progress")
         self.assertEqual(pointer["active_attempt"]["implementation_branch"], branch)
         self.assertTrue(pointer["active_attempt"]["implementation_authority"])
-        self.assertFalse(pointer["bounded_authority"]["production_mutation_authorized"])
 
         self.assertEqual(registry["active_planning_work"]["work_item"], "VTI-01")
         self.assertEqual(registry["active_planning_work"]["state"], "in_progress")
         self.assertTrue(registry["vti_01_authority"]["implementation_authority"])
-        self.assertFalse(registry["vti_01_authority"]["production_mutation_authorized"])
 
         self.assertEqual(index["current"]["work_item_id"], "VTI-01")
         self.assertEqual(index["current"]["status"], "in_progress")
