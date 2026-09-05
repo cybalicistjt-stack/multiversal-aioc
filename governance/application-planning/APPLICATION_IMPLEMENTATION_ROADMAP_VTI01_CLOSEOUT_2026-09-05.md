@@ -49,9 +49,9 @@ VTI-01 implementation authority is retired at that merge.
 
 - owner Continue count: `1`
 - execution cycles: `1`
-- repair cycles: `6`
+- repair cycles: `7`
 - application-feature repair cycles: `0`
-- validation-contract repair cycles: `4`
+- validation-contract repair cycles: `5`
 - repository-state repair cycles: `2`
 - no-progress cycles: `0`
 - unrelated historical validation jobs: `0`
@@ -62,7 +62,7 @@ VTI-01 implementation authority is retired at that merge.
 - control-plane incident: `false`
 - genuine blocker: `null`
 
-The six changed-evidence repairs comprise four validation-contract repairs and two repository-state repairs, with zero application-feature repair cycles. The terminal closeout added one repository-state correction restoring the immutable MV-CONT-008 application-merge identity in the current pointer and one batched validation-contract correction: frozen ALP registrations now follow the active VTI successor after VTI-01 completion, while the exact evidence-driven VTI platform-selection invariant marker is preserved. No unchanged-evidence rerun was used.
+The seven changed-evidence repairs comprise five validation-contract repairs and two repository-state repairs, with zero application-feature repair cycles. Terminal closeout repairs included one repository-state correction restoring the immutable MV-CONT-008 application-merge identity in the current pointer; one batched validation-contract correction so frozen ALP registrations follow the active VTI successor while preserving the exact evidence-driven VTI platform-selection invariant marker; and one final validation-contract correction removing two trailing ALP-01/ALP-02 canonical-main assertions that remained pinned to the frozen ALP baseline instead of the active VTI successor checkpoint. No unchanged-evidence rerun was used.
 
 ## Strict successor
 
