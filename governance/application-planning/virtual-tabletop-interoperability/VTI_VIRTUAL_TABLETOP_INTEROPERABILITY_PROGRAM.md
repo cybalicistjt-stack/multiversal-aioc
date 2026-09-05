@@ -1,7 +1,7 @@
 # VTI — Virtual Tabletop Interoperability
 
 **Program ID:** VTI  
-**Status:** OWNER-APPROVED — VTI-01 THROUGH VTI-04 COMPLETED_VERIFIED; VTI-05 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — VTI-01 THROUGH VTI-04 COMPLETED_VERIFIED; VTI-05 IN_PROGRESS / ACCEPTANCE-ONLY  
 **Activation:** after completed_verified ALP-08  
 **Successor:** SGC-01  
 **Owner and final authority:** John Brandon Turner
@@ -18,7 +18,7 @@ VTI-04 — Rules Action & Roll Bridge — is `completed_verified` and retired. G
 
 VTI-04 completed the provider-neutral VTT request → Multiversal validation/resolution → authoritative result/receipt → VTT presentation bridge for roll, attack, check, power, resource, condition, initiative, reaction and GM-adjudication actions. Multiversal remains the rules and authoritative RNG authority. Duplicate/idempotent requests reuse completed VTI-03/MIB-03 receipt replay, status-before-retry and fail-closed semantics. Visibility, ownership, consent, hidden-information filtering and GM authority remain preserved.
 
-VTI-05 — Character Sheet, Item & Compendium Projection — is the strict successor and is `selected_not_started` as `VTI-05-attempt-001` from exact application main `295424982135337de80cccfac072764ab35183cc`. No VTI-05 branch, acceptance package, production mutation or provider integration is authorized before a future governed start validates and merges.
+VTI-05 — Character Sheet, Item & Compendium Projection — is `in_progress` as `VTI-05-attempt-001` from exact application main `295424982135337de80cccfac072764ab35183cc` on `integration/vti-05-character-sheet-item-compendium-projection`. Branch creation, bounded implementation authority and acceptance-package authority are open. Production mutation remains locked until genuine matching Linux/Windows RED is sealed.
 
 ## Purpose
 
@@ -45,8 +45,8 @@ VTI follows the native mine-note-derived semantic families so adapters project m
 4. **VTI-04 — Rules Action & Roll Bridge** — **COMPLETED_VERIFIED**.  
    Provider-neutral VTT request → Multiversal validation/resolution → authoritative receipt/result → VTT presentation semantics for rolls, attacks, checks, powers, resources, conditions, initiative, reactions and GM adjudication. External VTTs remain request/presentation clients and do not become rules or RNG authorities. Duplicate requests replay authoritative receipts or status-check before retry rather than resolving twice.
 
-5. **VTI-05 — Character Sheet, Item & Compendium Projection** — **SELECTED_NOT_STARTED**.  
-   Present Characters, NPCs, creatures, equipment, powers, conditions, rules references, roll tables and vehicles in platform-native forms where supported. Selection only: no implementation branch or projection mutation is authorized before its governed start.
+5. **VTI-05 — Character Sheet, Item & Compendium Projection** — **IN_PROGRESS — ACCEPTANCE-ONLY UNTIL MATCHING RED**.  
+   Present Characters, NPCs, creatures, equipment, powers, conditions, rules references, roll tables and vehicles in platform-native forms where supported. The acceptance contract is provider-neutral and preserves canonical source references, explicit `present`, `redacted` and `unsupported` fidelity, visibility, ownership, consent, hidden-information filtering and GM authority. Production projection remains locked until matching RED.
 
 6. **VTI-06 — Scene, Map, Token & MAI Bridge**  
    Translate Multiversal Scene + MAI/ISE/SSA projections to maps, tokens, walls, doors, lighting, grid/elevation/notes and GM-only material supported by the target VTT.
@@ -89,25 +89,25 @@ Sealed completion evidence:
 - application PR #418 merge `295424982135337de80cccfac072764ab35183cc`;
 - historical profile fanout `0` and application-feature repair cycles `0`.
 
-## VTI-05 selection boundary
+## VTI-05 governed-start boundary
 
-VTI-05 is selected only from exact application main `295424982135337de80cccfac072764ab35183cc`.
+VTI-05 is governed-started from exact application main `295424982135337de80cccfac072764ab35183cc` on `integration/vti-05-character-sheet-item-compendium-projection`.
 
-A future governed start may bound:
-- Character, NPC and creature projection into supported platform-native sheets/actors;
-- equipment, powers, conditions and RuleReference projection with canonical source references;
-- roll-table and vehicle projection where the target platform supports those forms;
-- explicit `present`, `redacted` and `unsupported` fidelity rather than manufacturing unsupported data;
-- visibility, ownership, consent, hidden-information filtering and GM-authority preservation;
-- deterministic normalization, invariant validation and receipts needed to prove the projection contract.
+The bounded acceptance contract may define:
+- provider-neutral character-sheet projection for Characters, NPCs and creatures with canonical source references and explicit `present`, `redacted` or `unsupported` fidelity;
+- provider-neutral item projection for equipment, powers and conditions without provider-specific schemas;
+- provider-neutral compendium projection for RuleReference, roll-table and vehicle records where platform capability supports them;
+- deterministic normalization plus visibility, ownership, consent, hidden-information filtering and GM-authority preservation across projection envelopes;
+- deterministic invariant validation and receipts needed to prove the bounded projection contract.
 
-Until that governed start validates and merges:
-- `implementation_authority`, `branch_creation_authorized`, `acceptance_package_authorized` and `production_mutation_authorized` remain `false`;
-- no VTI-05 application branch may be created;
+Until genuine matching Linux/Windows RED is sealed:
+- `production_mutation_authorized` remains `false`;
+- character-sheet, item and compendium production-contract implementation remains unauthorized;
 - provider-specific schemas, credentials, external accounts, adapters and platform selection remain unauthorized;
 - live external synchronization/canonical mutation, durable VTI persistence and any new migration remain unauthorized;
 - Platform selection remains evidence-driven and deferred to VTI-09;
 - hidden information may not be manufactured or bypassed;
+- VTI-06 scene/map/token/MAI bridge behavior and all later VTI behavior remain unauthorized;
 - VTI-06+ and SGC-01+ remain unauthorized.
 
 ## Invariants
@@ -121,5 +121,5 @@ Until that governed start validates and merges:
 - VTI-01 through VTI-04 are frozen completed_verified with implementation authority retired.
 - VTI-04 external VTT request/presentation clients may not independently resolve Multiversal rules, supply authoritative RNG outcomes, or autonomously exercise GM adjudication.
 - Duplicate external requests may not resolve twice when an authoritative receipt can be replayed or status checked.
-- VTI-05 is selected_not_started and has no implementation branch or mutation authority.
+- VTI-05 is in_progress on its registered branch with acceptance-package authority; production mutation remains locked pending genuine matching RED.
 - VTI-06+ and SGC-01+ remain unauthorized until their own governed selections and starts.

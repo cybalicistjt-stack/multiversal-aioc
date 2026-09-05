@@ -11,8 +11,9 @@ def load_text(path):
     return (ROOT / path).read_text(encoding="utf-8")
 
 class Vti04RulesActionRollBridgeRegistrationTests(unittest.TestCase):
-    def test_vti04_completed_lifecycle_and_vti05_selection_are_consistent(self):
+    def test_vti04_completed_lifecycle_and_vti05_successor_are_consistent(self):
         merge = "295424982135337de80cccfac072764ab35183cc"
+        branch = "integration/vti-05-character-sheet-item-compendium-projection"
         checkpoint = load_json("governance/ai/work-state/VTI-04-attempt-001.json")
         successor = load_json("governance/ai/work-state/VTI-05-attempt-001.json")
         backlog = load_json("governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json")
@@ -45,20 +46,27 @@ class Vti04RulesActionRollBridgeRegistrationTests(unittest.TestCase):
 
         self.assertEqual(backlog["completed_through"], "VTI-04")
         self.assertEqual(backlog["current_item"], "VTI-05")
-        self.assertEqual(successor["status"], "selected_not_started")
+        self.assertIn(successor["status"], {"selected_not_started", "in_progress"})
         self.assertEqual(successor["application_baseline_sha"], merge)
-        self.assertIsNone(successor["implementation_branch"])
-        self.assertFalse(successor["implementation_authority"])
-        self.assertFalse(successor["branch_creation_authorized"])
-        self.assertFalse(successor["acceptance_package_authorized"])
-        self.assertFalse(successor["production_mutation_authorized"])
+        if successor["status"] == "selected_not_started":
+            self.assertIsNone(successor["implementation_branch"])
+            self.assertFalse(successor["implementation_authority"])
+            self.assertFalse(successor["branch_creation_authorized"])
+            self.assertFalse(successor["acceptance_package_authorized"])
+            self.assertFalse(successor["production_mutation_authorized"])
+        else:
+            self.assertEqual(successor["implementation_branch"], branch)
+            self.assertTrue(successor["implementation_authority"])
+            self.assertTrue(successor["branch_creation_authorized"])
+            self.assertTrue(successor["acceptance_package_authorized"])
+            self.assertFalse(successor["production_mutation_authorized"])
 
         self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-05")
-        self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
+        self.assertEqual(pointer["active_attempt"]["status"], successor["status"])
         self.assertEqual(index["current"]["work_item_id"], "VTI-05")
-        self.assertEqual(index["current"]["status"], "selected_not_started")
+        self.assertEqual(index["current"]["status"], successor["status"])
         self.assertEqual(runtime["active_work"]["work_item"], "VTI-05")
-        self.assertEqual(runtime["active_work"]["state"], "selected_not_started")
+        self.assertEqual(runtime["active_work"]["state"], successor["status"])
         self.assertEqual(runtime["application_repository"]["canonical_main"], merge)
 
         vti04_authority = registry["vti_04_authority"]
@@ -69,18 +77,30 @@ class Vti04RulesActionRollBridgeRegistrationTests(unittest.TestCase):
         self.assertEqual(vti04_authority["application_merge_sha"], merge)
 
         vti05_authority = registry["vti_05_authority"]
-        self.assertTrue(vti05_authority["selected_not_started"])
-        self.assertFalse(vti05_authority["implementation_authority"])
-        self.assertIsNone(vti05_authority["implementation_branch"])
+        if successor["status"] == "selected_not_started":
+            self.assertTrue(vti05_authority["selected_not_started"])
+            self.assertFalse(vti05_authority["implementation_authority"])
+            self.assertIsNone(vti05_authority["implementation_branch"])
+        else:
+            self.assertFalse(vti05_authority["selected_not_started"])
+            self.assertTrue(vti05_authority["implementation_authority"])
+            self.assertEqual(vti05_authority["implementation_branch"], branch)
+            self.assertTrue(vti05_authority["branch_creation_authorized"])
+            self.assertTrue(vti05_authority["acceptance_package_authorized"])
+            self.assertFalse(vti05_authority["production_mutation_authorized"])
 
         for phrase in (
             "VTI-04 — Rules Action & Roll Bridge",
             "COMPLETED_VERIFIED",
             "VTI-05 — Character Sheet, Item & Compendium Projection",
-            "SELECTED_NOT_STARTED",
             "Platform selection remains evidence-driven",
         ):
             self.assertIn(phrase, program)
+        if successor["status"] == "selected_not_started":
+            self.assertIn("SELECTED_NOT_STARTED", program)
+        else:
+            self.assertIn("IN_PROGRESS", program)
+            self.assertIn("ACCEPTANCE-ONLY", program)
 
     def test_vti04_completed_scope_keeps_deferred_authorities_closed(self):
         authority = load_json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")["vti_04_authority"]
