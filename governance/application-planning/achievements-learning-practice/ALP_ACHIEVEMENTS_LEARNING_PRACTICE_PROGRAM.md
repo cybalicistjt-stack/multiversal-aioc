@@ -1,7 +1,7 @@
 # ALP — Achievements, Learning & Practice
 
 **Program ID:** ALP  
-**Status:** OWNER-APPROVED — ALP-01/02/03/04/05/06 COMPLETED_VERIFIED; ALP-07 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — ALP-01/02/03/04/05/06 COMPLETED_VERIFIED; ALP-07 IN_PROGRESS  
 **Activation:** after completed_verified ECI-01  
 **Successor:** VTI-01  
 **Owner and final authority:** John Brandon Turner  
@@ -21,7 +21,7 @@ ALP-05 — Diegetic Practice Spaces, Training Scenes & Simulations — is `compl
 
 ALP-06 — Rehearsal, Retry, Safe Failure & Training/Project Integration — is `completed_verified` on application merge `b59e47dfe5754ad22cfdbe2082585d265335da51` through PR #412. Its implementation authority is retired.
 
-ALP-07 — Player/GM UX, Accessibility, Notifications & Recognition History — is `selected_not_started` from exact application main `b59e47dfe5754ad22cfdbe2082585d265335da51`. It has no branch, acceptance-package authority, production authority, or owner-system mutation authority until a future owner Continue performs governed start.
+ALP-07 — Player/GM UX, Accessibility, Notifications & Recognition History — is `in_progress` from exact application main `b59e47dfe5754ad22cfdbe2082585d265335da51` on branch `integration/alp-07-player-gm-ux-accessibility-notifications-recognition-history`. Acceptance-package authority is active; production mutation remains locked until genuine matching Linux/Windows RED and deterministic comparator evidence.
 
 ## Purpose and frozen invariants
 
@@ -53,7 +53,7 @@ Safe failure is non-mutating rehearsal semantics. An unsatisfied rehearsal attem
 
 ALP-06 does not grant XP, does not grant advancement, does not grant capability, does not award achievements, does not commit rewards, and performs no owner-system mutation. Character Progression, Projects, World/Scene, GCL, ISE, and MAL retain canonical mutation authority.
 
-There is no durable ALP-06 persistence change. Migration `0022` remains unreserved. ALP-07 player/GM UX, accessibility, notifications and recognition-history behavior remains reserved.
+There is no durable ALP-06 persistence change. Migration `0022` remains unreserved.
 
 ### ALP-06 verification evidence
 
@@ -63,6 +63,20 @@ Final GREEN on exact production head `0b895ee21ea7585527b3acdb309bd11b05b5bea3` 
 
 Application PR #412 squash-merged the exact validated tree to verified main `b59e47dfe5754ad22cfdbe2082585d265335da51`.
 
+## ALP-07 governed-start contract
+
+ALP-07 is authorized to define deterministic read-only Player/GM UX projection contracts over the frozen ALP-01 through ALP-06 state. The bounded surface includes explicit viewer role/identity, role-appropriate projection of authorized ALP learning and recognition references, accessibility presentation metadata, caller-supplied display preferences, deterministic notification candidates, and deterministic recognition-history entries with stable identity and explicit provenance.
+
+Accessibility behavior is presentation-only. Caller-supplied display preferences may influence ordering, labels, density, emphasis or equivalent presentation metadata, but ALP-07 does not persist those preferences or mutate canonical ALP or owner-system state.
+
+Notifications are candidates or presentation references only. ALP-07 does not send messages, perform external delivery, mutate acknowledgement state, subscribe or unsubscribe users, or create delivery history by implication.
+
+Recognition history is projected only from explicit authorized records and supplied metadata. Missing, hidden or unauthorized evidence, events, records and cardinality remain unknown or omitted rather than inferred. Player and GM views may differ only by explicit authorization and viewer context; GM visibility does not create hidden-state inference authority.
+
+ALP-07 does not award achievements, grant XP, advancement, capability, titles, reputation or rewards, commit mechanical rewards, or mutate Character Progression, Reputation/Relationship/Faction, World/Scene, Projects, GCL, ISE or MAL. It creates no universal permission gate, no durable ALP persistence, and no migration `0022`.
+
+ALP-08 MAL/ISE/WCI/GCL integration and golden learning/recognition proof behavior remains reserved. Production mutation is locked until a genuine matching acceptance RED is observed on Linux and Windows and the deterministic comparator confirms matching evidence.
+
 ## Tranches
 
 1. **ALP-01 — Authority Crosswalk & Achievement/Learning/Practice Taxonomy** — **COMPLETED_VERIFIED**.
@@ -71,9 +85,9 @@ Application PR #412 squash-merged the exact validated tree to verified main `b59
 4. **ALP-04 — GM-Authored Campaign Achievements, Titles, Reputation & Reward Links** — **COMPLETED_VERIFIED**.
 5. **ALP-05 — Diegetic Practice Spaces, Training Scenes & Simulations** — **COMPLETED_VERIFIED**.
 6. **ALP-06 — Rehearsal, Retry, Safe Failure & Training/Project Integration** — **COMPLETED_VERIFIED**.
-7. **ALP-07 — Player/GM UX, Accessibility, Notifications & Recognition History** — **SELECTED_NOT_STARTED**.
+7. **ALP-07 — Player/GM UX, Accessibility, Notifications & Recognition History** — **IN_PROGRESS**.
 8. **ALP-08 — MAL/ISE/WCI/GCL Integration & Golden Learning/Recognition Proof**.
 
 ## Active invariant
 
-ALP-01 through ALP-06 are frozen completed_verified contracts. ALP-07 is selected_not_started with no branch or implementation authority. No owner-system mutation, provider activation, tester distribution, release or deployment is authorized. ALP-08+, VTI-01+ remain unauthorized.
+ALP-01 through ALP-06 are frozen completed_verified contracts. ALP-07 is in_progress with branch-scoped implementation and acceptance-package authority only; production mutation is locked pending genuine matching RED. No owner-system mutation, notification delivery, durable preference/history persistence, provider activation, tester distribution, release or deployment is authorized. ALP-08+, VTI-01+ remain unauthorized.
