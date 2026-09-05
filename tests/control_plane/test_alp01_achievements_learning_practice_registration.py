@@ -71,14 +71,21 @@ class Alp01AchievementsLearningPracticeRegistrationTests(unittest.TestCase):
             self.assertGreaterEqual(completed_number, 2)
             self.assertFalse(successor["implementation_authority"])
             self.assertTrue(successor.get("authority_retired", True))
-            self.assertTrue(pointer["active_attempt"]["work_item_id"].startswith("ALP-"))
-            self.assertTrue(index["current"]["work_item_id"].startswith("ALP-"))
-            self.assertTrue(runtime["active_work"]["work_item"].startswith("ALP-"))
+            if backlog["completed_through"] == "ALP-08":
+                self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-01")
+                self.assertEqual(index["current"]["work_item_id"], "VTI-01")
+                self.assertEqual(runtime["active_work"]["work_item"], "VTI-01")
+                self.assertEqual(registry["active_planning_work"]["work_item"], "VTI-01")
+            else:
+                self.assertTrue(pointer["active_attempt"]["work_item_id"].startswith("ALP-"))
+                self.assertTrue(index["current"]["work_item_id"].startswith("ALP-"))
+                self.assertTrue(runtime["active_work"]["work_item"].startswith("ALP-"))
             self.assertEqual(runtime["application_repository"]["canonical_main"], backlog["application_baseline_sha"])
 
         self.assertFalse(registry["alp_01_authority"]["implementation_authority"])
         self.assertTrue(registry["alp_01_authority"]["retired"])
-        self.assertEqual(runtime["application_repository"]["active_validation_family"], "ALP")
+        expected_family = "VTI" if backlog["completed_through"] == "ALP-08" else "ALP"
+        self.assertEqual(runtime["application_repository"]["active_validation_family"], expected_family)
 
     def test_alp01_taxonomy_boundaries_and_validation_evidence_are_preserved(self):
         program = load_text("governance/application-planning/achievements-learning-practice/ALP_ACHIEVEMENTS_LEARNING_PRACTICE_PROGRAM.md")

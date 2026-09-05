@@ -1,10 +1,16 @@
 # VTI — Virtual Tabletop Interoperability
 
 **Program ID:** VTI  
-**Status:** OWNER-APPROVED — PLANNED INTERSTITIAL  
-**Activation:** after ALP-08  
+**Status:** OWNER-APPROVED — VTI-01 SELECTED_NOT_STARTED  
+**Activation:** after completed_verified ALP-08  
 **Successor:** SGC-01  
 **Owner and final authority:** John Brandon Turner
+
+## Current state
+
+ALP-08 completed_verified and the ALP program is frozen complete. VTI-01 — VTT Ecosystem, Licensing & Capability Matrix — is the strict successor and is `selected_not_started` from exact application main `e61109affe9d662e6da6eb214c1acc870079c1a7` as `VTI-01-attempt-001`.
+
+VTI-01 has no implementation branch, no implementation authority, no acceptance-package authority and no production-mutation authority. A future owner `Continue` must governed-start VTI-01 before any VTI implementation work begins.
 
 ## Purpose
 
@@ -19,7 +25,7 @@ VTI follows the native mine-note-derived semantic families so adapters project m
 
 ## Tranches
 
-1. **VTI-01 — VTT Ecosystem, Licensing & Capability Matrix**  
+1. **VTI-01 — VTT Ecosystem, Licensing & Capability Matrix** — **SELECTED_NOT_STARTED**.  
    Survey target platforms and classify system/rules packages, modules/plugins, sheets, compendiums, maps/scenes, automation, APIs, live communication, import/export and distribution constraints.
 
 2. **VTI-02 — Multiversal External Game Projection Contract**  
@@ -63,3 +69,5 @@ VTI follows the native mine-note-derived semantic families so adapters project m
 - No VTT adapter may bypass visibility, ownership, consent or GM authority.
 - No vendor is selected by roadmap text; platform selection is evidence-driven at VTI-09.
 - Native SSA/KFR/ODL/MAL/ALP state is projected only where a platform supports it; VTI does not recreate those systems externally.
+- VTI-01 selection grants no vendor choice, external account mutation, credential use, provider activation, tester distribution, release or deployment authority.
+- VTI-02+ and SGC-01+ remain unauthorized until their own governed selections and starts.

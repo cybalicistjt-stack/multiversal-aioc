@@ -69,10 +69,16 @@ class Alp02AchievementDefinitionsRegistrationTests(unittest.TestCase):
             self.assertGreaterEqual(completed_number, 3)
             self.assertFalse(successor["implementation_authority"])
             self.assertTrue(successor.get("authority_retired", True))
-            self.assertTrue(pointer["active_attempt"]["work_item_id"].startswith("ALP-"))
-            self.assertTrue(index["current"]["work_item_id"].startswith("ALP-"))
-            self.assertTrue(registry["active_planning_work"]["work_item"].startswith("ALP-"))
-            self.assertTrue(runtime["active_work"]["work_item"].startswith("ALP-"))
+            if backlog["completed_through"] == "ALP-08":
+                self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-01")
+                self.assertEqual(index["current"]["work_item_id"], "VTI-01")
+                self.assertEqual(registry["active_planning_work"]["work_item"], "VTI-01")
+                self.assertEqual(runtime["active_work"]["work_item"], "VTI-01")
+            else:
+                self.assertTrue(pointer["active_attempt"]["work_item_id"].startswith("ALP-"))
+                self.assertTrue(index["current"]["work_item_id"].startswith("ALP-"))
+                self.assertTrue(registry["active_planning_work"]["work_item"].startswith("ALP-"))
+                self.assertTrue(runtime["active_work"]["work_item"].startswith("ALP-"))
             self.assertEqual(runtime["application_repository"]["canonical_main"], backlog["application_baseline_sha"])
 
         self.assertFalse(registry["alp_02_authority"]["implementation_authority"])
