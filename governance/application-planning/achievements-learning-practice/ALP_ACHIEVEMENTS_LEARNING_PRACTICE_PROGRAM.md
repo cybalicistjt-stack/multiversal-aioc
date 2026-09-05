@@ -43,7 +43,7 @@ ALP-05 froze deterministic read-only optional practice-space contracts for diege
 
 ## ALP-06 completed contract
 
-ALP-06 implements deterministic read-only contracts for **optional rehearsal** attempts, explicit retry lineage, safe failure, and training/project integration over the frozen ALP-01 through ALP-05 contracts.
+ALP-06 implements deterministic read-only contracts for optional rehearsal attempts, explicit retry lineage, safe failure, and training/project integration over the frozen ALP-01 through ALP-05 contracts.
 
 A rehearsal carries stable identity, a practice-space reference, participant, scope, provenance, optional participation, `practice_training_marker` references, `project_learning_evidence` references, and read-only owner references to Character Progression, Projects, World/Scene, GCL, ISE, and MAL. Rehearsal remains optional and is not a universal permission or capability gate.
 
