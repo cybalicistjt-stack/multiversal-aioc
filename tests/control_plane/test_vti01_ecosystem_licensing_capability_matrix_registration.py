@@ -14,9 +14,10 @@ def load_text(path):
 
 
 class Vti01EcosystemLicensingCapabilityMatrixRegistrationTests(unittest.TestCase):
-    def test_vti01_governed_start_is_consistent(self):
+    def test_vti01_lifecycle_and_successor_are_consistent(self):
         baseline = "e61109affe9d662e6da6eb214c1acc870079c1a7"
         branch = "integration/vti-01-vtt-ecosystem-licensing-capability-matrix"
+        merge = "027fad06d0bac3a20d56f0cc2a674581662cd1b9"
         checkpoint = load_json("governance/ai/work-state/VTI-01-attempt-001.json")
         backlog = load_json("governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json")
         pointer = load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
@@ -27,60 +28,66 @@ class Vti01EcosystemLicensingCapabilityMatrixRegistrationTests(unittest.TestCase
 
         self.assertEqual(checkpoint["work_item_id"], "VTI-01")
         self.assertEqual(checkpoint["application_baseline_sha"], baseline)
-        self.assertEqual(checkpoint["status"], "in_progress")
-        self.assertTrue(checkpoint["implementation_authority"])
+        self.assertIn(checkpoint["status"], {"in_progress", "completed_verified"})
         self.assertEqual(checkpoint["implementation_branch"], branch)
-        self.assertTrue(checkpoint["branch_creation_authorized"])
-        self.assertTrue(checkpoint["acceptance_package_authorized"])
-
-        production_authorized = checkpoint["production_mutation_authorized"]
-        self.assertEqual(backlog["active_contract"]["production_mutation_authorized"], production_authorized)
-        self.assertEqual(pointer["bounded_authority"]["production_mutation_authorized"], production_authorized)
-        self.assertEqual(registry["vti_01_authority"]["production_mutation_authorized"], production_authorized)
-        if production_authorized:
-            red = checkpoint["validation"]["acceptance_red"]
-            self.assertIsNotNone(red)
-            self.assertTrue(red["matching_red_observed"])
-            self.assertTrue(backlog["active_contract"]["matching_red_observed"])
-            self.assertTrue(registry["vti_01_authority"]["matching_red_observed"])
-            self.assertEqual(backlog["active_contract"]["matching_red_head"], red["head_sha"])
-            self.assertEqual(backlog["active_contract"]["matching_red_run"], red["run_id"])
-            self.assertEqual(backlog["active_contract"]["matching_red_receipt_sha256"], red["deterministic_receipt_sha256"])
-            self.assertEqual(registry["vti_01_authority"]["matching_red_head"], red["head_sha"])
-            self.assertEqual(registry["vti_01_authority"]["matching_red_run"], red["run_id"])
-            self.assertEqual(registry["vti_01_authority"]["matching_red_receipt_sha256"], red["deterministic_receipt_sha256"])
-        else:
-            self.assertIsNone(checkpoint["validation"]["acceptance_red"])
-            self.assertFalse(backlog["active_contract"]["matching_red_observed"])
-            self.assertFalse(registry["vti_01_authority"]["matching_red_observed"])
 
         vti01 = next(item for item in backlog["tranches"] if item["id"] == "VTI-01")
-        self.assertEqual(vti01["status"], "in_progress")
-        self.assertEqual(vti01["implementation_branch"], branch)
-        self.assertEqual(backlog["current_item"], "VTI-01")
+        self.assertEqual(vti01["status"], checkpoint["status"])
 
-        self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-01")
-        self.assertEqual(pointer["active_attempt"]["status"], "in_progress")
-        self.assertEqual(pointer["active_attempt"]["implementation_branch"], branch)
-        self.assertTrue(pointer["active_attempt"]["implementation_authority"])
-
-        self.assertEqual(registry["active_planning_work"]["work_item"], "VTI-01")
-        self.assertEqual(registry["active_planning_work"]["state"], "in_progress")
-        self.assertTrue(registry["vti_01_authority"]["implementation_authority"])
-
-        self.assertEqual(index["current"]["work_item_id"], "VTI-01")
-        self.assertEqual(index["current"]["status"], "in_progress")
-        self.assertEqual(runtime["active_work"]["work_item"], "VTI-01")
-        self.assertEqual(runtime["active_work"]["state"], "in_progress")
-        self.assertEqual(runtime["application_repository"]["active_validation_family_state"], "VTI01_in_progress_acceptance_only")
+        if checkpoint["status"] == "in_progress":
+            self.assertTrue(checkpoint["implementation_authority"])
+            self.assertTrue(checkpoint["branch_creation_authorized"])
+            self.assertTrue(checkpoint["acceptance_package_authorized"])
+            production_authorized = checkpoint["production_mutation_authorized"]
+            self.assertEqual(backlog["active_contract"]["production_mutation_authorized"], production_authorized)
+            self.assertEqual(pointer["bounded_authority"]["production_mutation_authorized"], production_authorized)
+            self.assertEqual(registry["vti_01_authority"]["production_mutation_authorized"], production_authorized)
+            if production_authorized:
+                red = checkpoint["validation"]["acceptance_red"]
+                self.assertIsNotNone(red)
+                self.assertTrue(red["matching_red_observed"])
+                self.assertTrue(backlog["active_contract"]["matching_red_observed"])
+                self.assertTrue(registry["vti_01_authority"]["matching_red_observed"])
+            else:
+                self.assertIsNone(checkpoint["validation"]["acceptance_red"])
+            self.assertEqual(backlog["current_item"], "VTI-01")
+            self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-01")
+            self.assertEqual(pointer["active_attempt"]["status"], "in_progress")
+            self.assertEqual(registry["active_planning_work"]["work_item"], "VTI-01")
+            self.assertEqual(index["current"]["work_item_id"], "VTI-01")
+            self.assertEqual(runtime["active_work"]["work_item"], "VTI-01")
+        else:
+            self.assertFalse(checkpoint["implementation_authority"])
+            self.assertTrue(checkpoint["authority_retired"])
+            self.assertTrue(checkpoint["completed"])
+            self.assertEqual(checkpoint["application_pr"], 415)
+            self.assertEqual(checkpoint["application_merge_sha"], merge)
+            self.assertEqual(checkpoint["validation"]["final_green"]["head_sha"], "7c377f1add2e00bbadb4007a043fee69709bd923")
+            self.assertEqual(checkpoint["validation"]["final_green"]["deterministic_receipt_sha256"], "be8c090d2482898fbcdc8ffc93b93a31b7cb2eae3c8c0e238a221a990f8ce761")
+            self.assertEqual(backlog["completed_through"], "VTI-01")
+            vti02 = load_json("governance/ai/work-state/VTI-02-attempt-001.json")
+            self.assertEqual(vti02["status"], "selected_not_started")
+            self.assertEqual(vti02["application_baseline_sha"], merge)
+            self.assertIsNone(vti02["implementation_branch"])
+            self.assertFalse(vti02["implementation_authority"])
+            self.assertFalse(vti02["acceptance_package_authorized"])
+            self.assertFalse(vti02["production_mutation_authorized"])
+            self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-02")
+            self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
+            self.assertEqual(registry["active_planning_work"]["work_item"], "VTI-02")
+            self.assertTrue(registry["vti_01_authority"]["retired"])
+            self.assertFalse(registry["vti_01_authority"]["implementation_authority"])
+            self.assertTrue(registry["vti_02_authority"]["selected_not_started"])
+            self.assertFalse(registry["vti_02_authority"]["implementation_authority"])
+            self.assertEqual(index["current"]["work_item_id"], "VTI-02")
+            self.assertEqual(runtime["active_work"]["work_item"], "VTI-02")
+            self.assertEqual(runtime["application_repository"]["canonical_main"], merge)
 
         for phrase in (
             "VTI-01 — VTT Ecosystem, Licensing & Capability Matrix",
-            "evidence-backed",
             "supported, unsupported, conditional or unknown",
-            "Platform selection remains evidence-driven and is deferred to VTI-09",
-            "No vendor selection",
-            "VTI-02+ and SGC-01+ remain unauthorized",
+            "VTI-02 — Multiversal External Game Projection Contract",
+            "Platform selection remains evidence-driven",
         ):
             self.assertIn(phrase, program)
 
