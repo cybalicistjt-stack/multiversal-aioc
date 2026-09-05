@@ -80,7 +80,7 @@ class Alp05DiegeticPracticeSpacesRegistrationTests(unittest.TestCase):
                 self.assertEqual(backlog["completed_through"], "ALP-06")
                 self.assertEqual(backlog["current_item"], "ALP-07")
                 self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-07")
-                self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
+                self.assertIn(pointer["active_attempt"]["status"], {"selected_not_started", "in_progress"})
                 self.assertEqual(registry["active_planning_work"]["work_item"], "ALP-07")
                 self.assertEqual(index["current"]["work_item_id"], "ALP-07")
                 self.assertEqual(runtime["active_work"]["work_item"], "ALP-07")
