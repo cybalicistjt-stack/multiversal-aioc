@@ -105,10 +105,13 @@ class Alp03PlatformOnboardingMasteryRegistrationTests(unittest.TestCase):
                             self.assertEqual(alp08["application_merge_sha"], alp08_merge)
                             vti01 = load_json("governance/ai/work-state/VTI-01-attempt-001.json")
                             self.assertEqual(vti01["application_baseline_sha"], alp08_merge)
-                            expected_item = "VTI-01"
-                            expected_status = vti01["status"]
+                            vti_backlog = load_json("governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json")
+                            expected_item = vti_backlog["current_item"]
+                            self.assertTrue(expected_item.startswith("VTI-"))
+                            current_vti = load_json(f"governance/ai/work-state/{expected_item}-attempt-001.json")
+                            expected_status = current_vti["status"]
                             expected_completed = "ALP-08"
-                            expected_main = alp08_merge
+                            expected_main = current_vti["application_baseline_sha"]
                             expected_backlog_current = None
 
         self.assertEqual(backlog["completed_through"], expected_completed)
