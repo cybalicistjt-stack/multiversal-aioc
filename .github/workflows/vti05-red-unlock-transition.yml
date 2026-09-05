@@ -1,0 +1,29 @@
+name: VTI05 RED Unlock Transition
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  transition:
+    if: github.head_ref == 'governance/vti-05-red-unlock'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - name: Apply matching-RED authority transition
+        run: python scripts/vti05_red_unlock_transition_tmp.py
+      - name: Commit transition if needed
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "No transition changes required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add governance tests/control_plane/test_vti04_rules_action_roll_bridge_registration.py tests/control_plane/test_vti05_character_sheet_item_compendium_projection_registration.py
+          git commit -m "VTI-05: seal matching RED and unlock bounded production contract"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
