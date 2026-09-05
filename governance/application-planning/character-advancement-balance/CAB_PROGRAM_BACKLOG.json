@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.9.0",
+  "schema_version": "0.9.1",
   "program_id": "CAB",
   "program_name": "Character Advancement & Balance",
   "owner": "John Brandon Turner",
@@ -9,7 +9,7 @@
   "status": "in_progress",
   "completed_through": "CAB-08",
   "current_work_item_id": "CAB-09",
-  "current_state": "selected_not_started_pending_owner_answers",
+  "current_state": "selected_not_started",
   "tranches": [
     {"id":"CAB-01","name":"Authority, Source Census & AP Retirement","status":"completed_verified"},
     {"id":"CAB-02","name":"Current XP Economy Reconstruction","status":"completed_verified"},
@@ -18,8 +18,8 @@
     {"id":"CAB-05","name":"Five-Tier Model","status":"completed_verified"},
     {"id":"CAB-06","name":"XP Cost Calibration Framework","status":"completed_verified"},
     {"id":"CAB-07","name":"Action Economy & Simultaneous Power","status":"completed_verified"},
-    {"id":"CAB-08","name":"Stacking, Synergy & Power Multiplication","status":"completed_verified","artifacts":["CAB-08_STACKING_SYNERGY_AND_POWER_MULTIPLICATION.md","CAB-08_STACKING_SYNERGY_AUDIT.md","CAB-08_INTERACTION_MODEL_v0.1.0.json","CAB-08_OWNER_QUESTIONNAIRE.md","CAB-08_COMPLETION_REPORT.md"]},
-    {"id":"CAB-09","name":"Acquisition & Eligibility","status":"selected_not_started_pending_owner_answers"},
+    {"id":"CAB-08","name":"Stacking, Synergy & Power Multiplication","status":"completed_verified","artifacts":["CAB-08_STACKING_SYNERGY_AND_POWER_MULTIPLICATION.md","CAB-08_STACKING_SYNERGY_AUDIT.md","CAB-08_INTERACTION_MODEL_v0.1.0.json","CAB-08_OWNER_QUESTIONNAIRE.md","CAB-08_OWNER_DECISIONS_2026-09-05.md","CAB-08_COMPLETION_REPORT.md"]},
+    {"id":"CAB-09","name":"Acquisition & Eligibility","status":"selected_not_started"},
     {"id":"CAB-10","name":"Attributes, Skills & Proficiencies","status":"not_started"},
     {"id":"CAB-11","name":"Ability Corpus Statistical Audit","status":"not_started"},
     {"id":"CAB-12","name":"Ability-Tree Structural Audit","status":"not_started"},
@@ -36,7 +36,14 @@
     {"id":"CAB-23","name":"Completion Audit & Handoff","status":"not_started"}
   ],
   "strict_next": "CAB-09",
-  "selection_note": "CAB-08 completed the bounded Stacking, Synergy & Power Multiplication analysis. CAB-09 Acquisition & Eligibility is selected_not_started but execution is held until the six CAB-08 owner policy questions are answered or explicitly deferred. No unanswered item may silently default.",
+  "selection_note": "CAB-08 owner decisions are resolved. CAB-09 Acquisition & Eligibility is selected_not_started and may execute immediately under the standing CAB recommendation delegation recorded in CAB-08_OWNER_DECISIONS_2026-09-05.md.",
+  "standing_owner_recommendation_delegation": {
+    "effective_from": "CAB-09",
+    "effective_through": "CAB-23",
+    "source": "CAB-08_OWNER_DECISIONS_2026-09-05.md",
+    "rule": "An explicitly stated CAB recommended option may be recorded as owner-approved without a questionnaire stop when it is evidence-grounded, within existing CAB scope, does not conflict with prior explicit owner authority, does not create unrelated implementation/release authority, and is not an inherently owner-specific creative choice.",
+    "must_stop_when": ["no_clear_recommendation","conflict_with_prior_owner_decision","material_scope_or_direction_change","owner_specific_creative_choice","material_source_uncertainty_prevents_recommendation","new_software_release_paid_service_or_unrelated_authority"]
+  },
   "cab03_supported_baseline": {
     "default_starting_advancement_xp": 1300,
     "default_starting_xp_status": "working_normal_start_default_recalibratable_after_cab_evidence",
@@ -92,20 +99,27 @@
     "missing_interaction_state": "balance_unresolved_stacking",
     "stacking_modes": ["coexist","additive","highest_only","lowest_only","highest_benefit_plus_highest_penalty","replace","refresh_duration","exclusive","binary_noncompounding","capped_additive","multiplicative_explicit","trigger_chain","prohibited_recursive"],
     "synergy_classes": ["redundant","additive","enabling","compressive","multiplicative","persistent_bundle","trigger_chain","resource_loop","grant_or_substitution_chain","mixed"],
-    "candidate_same_effect": "noncompounding_strongest_with_duration_refresh_unless_explicit_stack",
-    "candidate_numeric_group_default": "highest_benefit_plus_highest_penalty",
-    "candidate_advantage_disadvantage": "binary_noncompounding_both_cancel",
-    "candidate_resistance_immunity": "same_type_resistance_noncompounding_immunity_supersedes",
-    "candidate_full_form": "one_full_replacement_form_at_a_time_unless_explicit_nesting",
-    "candidate_multiplier": "strongest_same_group_multiplier_no_sequential_product_unless_explicit",
-    "resource_trigger_cycle_policy": "unbounded_closed_cycles_manual_review_and_not_presumed_legal"
+    "same_effect": "noncompounding_strongest_with_duration_refresh_unless_explicit_stack",
+    "numeric_group_default": "highest_benefit_plus_highest_penalty",
+    "advantage_disadvantage": "binary_noncompounding_both_cancel",
+    "resistance_immunity": "same_type_resistance_noncompounding_immunity_supersedes",
+    "full_form": "one_full_replacement_form_at_a_time_unless_explicit_nesting",
+    "multiplier": "strongest_same_group_multiplier_no_sequential_product_unless_explicit",
+    "resource_trigger_cycle_policy": "unbounded_closed_cycles_manual_review_and_not_presumed_legal",
+    "owner_approved": true,
+    "decision_artifact": "CAB-08_OWNER_DECISIONS_2026-09-05.md"
   },
   "owner_questionnaire": {
     "path": "governance/application-planning/character-advancement-balance/CAB-08_OWNER_QUESTIONNAIRE.md",
-    "status": "awaiting_owner_answers",
-    "required_before_execution": "CAB-09",
-    "questions": ["CAB-Q08-01","CAB-Q08-02","CAB-Q08-03","CAB-Q08-04","CAB-Q08-05","CAB-Q08-06"],
-    "recommendations": {"CAB-Q08-01":"A","CAB-Q08-02":"A","CAB-Q08-03":"A","CAB-Q08-04":"A","CAB-Q08-05":"A","CAB-Q08-06":"A"},
-    "unanswered_policy": "remain_unresolved_no_silent_default"
+    "status": "resolved_by_owner_2026-09-05",
+    "decision_artifact": "governance/application-planning/character-advancement-balance/CAB-08_OWNER_DECISIONS_2026-09-05.md",
+    "decisions": {
+      "CAB-Q08-01":"A",
+      "CAB-Q08-02":"A",
+      "CAB-Q08-03":"A",
+      "CAB-Q08-04":"A",
+      "CAB-Q08-05":"A",
+      "CAB-Q08-06":"A"
+    }
   }
 }
