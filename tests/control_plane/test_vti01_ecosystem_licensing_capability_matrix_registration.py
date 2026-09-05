@@ -42,7 +42,7 @@ class Vti01EcosystemLicensingCapabilityMatrixRegistrationTests(unittest.TestCase
         self.assertTrue(registry["vti_01_authority"]["retired"])
         self.assertFalse(registry["vti_01_authority"]["implementation_authority"])
 
-        # The frozen VTI-01 regression follows the registered active successor rather than pinning the program to VTI-02 forever.
+        # Frozen predecessor regressions follow the registered active successor lifecycle instead of pinning later work to one phase.
         current = backlog["current_item"]
         self.assertEqual(current, pointer["active_attempt"]["work_item_id"])
         self.assertEqual(current, registry["active_planning_work"]["work_item"])
@@ -60,11 +60,20 @@ class Vti01EcosystemLicensingCapabilityMatrixRegistrationTests(unittest.TestCase
             vti03 = load_json("governance/ai/work-state/VTI-03-attempt-001.json")
             self.assertEqual(vti02["status"], "completed_verified")
             self.assertTrue(vti02["authority_retired"])
-            self.assertEqual(vti03["status"], "selected_not_started")
-            self.assertFalse(vti03["implementation_authority"])
-            self.assertIsNone(vti03["implementation_branch"])
+            self.assertIn(vti03["status"], {"selected_not_started", "in_progress"})
+            self.assertEqual(vti03["status"], pointer["active_attempt"]["status"])
+            self.assertEqual(vti03["status"], index["current"]["status"])
+            self.assertEqual(vti03["status"], runtime["active_work"]["state"])
             self.assertTrue(registry["vti_02_authority"]["retired"])
-            self.assertTrue(registry["vti_03_authority"]["selected_not_started"])
+            if vti03["status"] == "selected_not_started":
+                self.assertFalse(vti03["implementation_authority"])
+                self.assertIsNone(vti03["implementation_branch"])
+                self.assertTrue(registry["vti_03_authority"]["selected_not_started"])
+            else:
+                self.assertTrue(vti03["implementation_authority"])
+                self.assertEqual(vti03["implementation_branch"], "integration/vti-03-stable-identity-versioning-synchronization")
+                self.assertFalse(registry["vti_03_authority"]["selected_not_started"])
+                self.assertTrue(registry["vti_03_authority"]["implementation_authority"])
 
         for phrase in (
             "VTI-01 — VTT Ecosystem, Licensing & Capability Matrix",
