@@ -41,7 +41,7 @@ A golden proof has explicit scenario identity and subject identity and requires 
 
 ALP-08 ordering and deterministic receipts are independent of supplied integration-reference order. The proof is evidence and recognition projection only: no achievement awarding, completion mutation, recognition creation by implication, reward commit, XP/advancement/capability/title/reputation grant, notification delivery, acknowledgement/subscription mutation, owner-system mutation, durable ALP persistence or migration `0022` is authorized.
 
-GCL-13+ implementation was never granted by ALP-08. VTI-01 is only selected_not_started; VTI-02+, provider activation, tester distribution, release and deployment remain unauthorized.
+GCL-13+ implementation was never granted by ALP-08. `VTI-01+` implementation was never granted by ALP-08; VTI-01 is now selected_not_started only. VTI-02+, provider activation, tester distribution, release and deployment remain unauthorized.
 
 ## Tranches
 
