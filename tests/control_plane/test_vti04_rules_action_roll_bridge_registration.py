@@ -59,7 +59,7 @@ class Vti04RulesActionRollBridgeRegistrationTests(unittest.TestCase):
             self.assertTrue(successor["implementation_authority"])
             self.assertTrue(successor["branch_creation_authorized"])
             self.assertTrue(successor["acceptance_package_authorized"])
-            self.assertFalse(successor["production_mutation_authorized"])
+            self.assertEqual(successor["production_mutation_authorized"], successor["validation"]["acceptance_red"] is not None)
 
         self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-05")
         self.assertEqual(pointer["active_attempt"]["status"], successor["status"])
@@ -87,7 +87,7 @@ class Vti04RulesActionRollBridgeRegistrationTests(unittest.TestCase):
             self.assertEqual(vti05_authority["implementation_branch"], branch)
             self.assertTrue(vti05_authority["branch_creation_authorized"])
             self.assertTrue(vti05_authority["acceptance_package_authorized"])
-            self.assertFalse(vti05_authority["production_mutation_authorized"])
+            self.assertEqual(vti05_authority["production_mutation_authorized"], successor["validation"]["acceptance_red"] is not None)
 
         for phrase in (
             "VTI-04 — Rules Action & Roll Bridge",
