@@ -106,9 +106,15 @@ class Vti04RulesActionRollBridgeRegistrationTests(unittest.TestCase):
             self.assertIn(item, scope["not_authorized"])
 
         authority = load_json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")["vti_04_authority"]
+        production_authorized = checkpoint["production_mutation_authorized"]
+        self.assertEqual(authority["rules_action_bridge_authorized"], production_authorized)
+        self.assertEqual(authority["roll_bridge_authorized"], production_authorized)
+        if production_authorized:
+            self.assertTrue(authority["matching_red_observed"])
+            self.assertIsNotNone(checkpoint["validation"]["acceptance_red"])
+            self.assertTrue(checkpoint["validation"]["acceptance_red"]["matching_red_observed"])
+
         for key in (
-            "rules_action_bridge_authorized",
-            "roll_bridge_authorized",
             "external_rules_authority_authorized",
             "external_rng_authority_authorized",
             "autonomous_gm_adjudication_authorized",
