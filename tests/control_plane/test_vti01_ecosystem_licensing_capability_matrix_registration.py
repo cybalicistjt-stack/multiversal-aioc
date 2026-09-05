@@ -68,7 +68,7 @@ class Vti01EcosystemLicensingCapabilityMatrixRegistrationTests(unittest.TestCase
 
         for phrase in (
             "VTI-01 — VTT Ecosystem, Licensing & Capability Matrix",
-            "supported, unsupported, conditional and unknown",
+            "supported, unsupported, conditional or unknown",
             "VTI-02 — Multiversal External Game Projection Contract",
             "VTI-03 — Stable Identity, Versioning & Synchronization",
             "Platform selection remains evidence-driven",
