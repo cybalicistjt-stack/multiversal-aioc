@@ -17,7 +17,9 @@ ALP-08 — MAL/ISE/WCI/GCL Integration & Golden Learning/Recognition Proof — i
 
 ALP consolidates achievement, onboarding/mastery and diegetic-practice concepts into one governed learning/recognition family. Achievements and practice remain optional structures, not universal permission or capability gates. AI may explain progress or propose criteria but may not silently award achievements or infer hidden completion evidence.
 
-Diegetic practice remains optional. Practice participation remains optional. Mechanically meaningful rewards commit only through owning Reward/Progression/Reputation/Faction systems. Character Progression, Projects, World/Scene, GCL, ISE and MAL retain their own canonical mutation authority.
+Diegetic practice remains optional. Practice participation remains optional. Mechanically meaningful rewards commit only through owning Reward/Progression/Reputation/Faction systems. Character Progression, Projects, World/Scene, GCL, ISE and MAL retain their own canonical mutation authority. Reputation/Relationship/Faction remains an owner-system boundary where applicable.
+
+Historical ALP wording remains explicit because these are frozen behavioral invariants, not formatting conveniences: ALP uses no durable persistence; ALP-02 does **not** award achievements; ALP-05 defines optional practice-space contracts, training scenes and simulations; ALP-06 preserves rehearsal attempts, retry lineage and Safe failure semantics; ALP-07 requires explicit viewer role, states that Accessibility behavior is presentation-only, emits notification candidates without delivery, and preserves Recognition history only from explicit authorized records.
 
 ALP-01 froze the taxonomy families `platform_learning_milestone`, `campaign_achievement`, `practice_training_marker`, `project_learning_evidence`, `recognition_record`, and `mechanical_reward_reference`.
 
