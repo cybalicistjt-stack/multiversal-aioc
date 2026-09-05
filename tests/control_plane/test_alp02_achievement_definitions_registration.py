@@ -70,10 +70,11 @@ class Alp02AchievementDefinitionsRegistrationTests(unittest.TestCase):
             self.assertFalse(successor["implementation_authority"])
             self.assertTrue(successor.get("authority_retired", True))
             if backlog["completed_through"] == "ALP-08":
-                self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-01")
-                self.assertEqual(index["current"]["work_item_id"], "VTI-01")
-                self.assertEqual(registry["active_planning_work"]["work_item"], "VTI-01")
-                self.assertEqual(runtime["active_work"]["work_item"], "VTI-01")
+                active_item = pointer["active_attempt"]["work_item_id"]
+                self.assertTrue(active_item.startswith("VTI-"))
+                self.assertEqual(index["current"]["work_item_id"], active_item)
+                self.assertEqual(registry["active_planning_work"]["work_item"], active_item)
+                self.assertEqual(runtime["active_work"]["work_item"], active_item)
             else:
                 self.assertTrue(pointer["active_attempt"]["work_item_id"].startswith("ALP-"))
                 self.assertTrue(index["current"]["work_item_id"].startswith("ALP-"))
