@@ -83,7 +83,7 @@ Sealed completion evidence:
 VTI-02 is selected only. A future governed start may define a provider-neutral projection contract for Character, Creature, Item, Action, Condition, Encounter, Scene, Vehicle and Rule-reference objects. Until that start:
 - no VTI-02 branch or acceptance package may be created;
 - no adapter, credential, external account, synchronization or canonical-state mutation is authorized;
-- provider selection/ranking remains deferred to VTI-09;
+- Platform selection remains evidence-driven and is deferred to VTI-09;
 - visibility, ownership, consent, hidden-information filtering and GM authority remain mandatory boundaries;
 - VTI-03+ and SGC-01+ remain unauthorized.
 
