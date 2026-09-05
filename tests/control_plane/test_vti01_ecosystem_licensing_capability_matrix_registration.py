@@ -88,11 +88,18 @@ class Vti01EcosystemLicensingCapabilityMatrixRegistrationTests(unittest.TestCase
                 self.assertEqual(vti02["implementation_branch"], vti02_branch)
                 self.assertTrue(vti02["implementation_authority"])
                 self.assertTrue(vti02["acceptance_package_authorized"])
-                self.assertFalse(vti02["production_mutation_authorized"])
+                production_authorized = vti02["production_mutation_authorized"]
                 self.assertFalse(registry["vti_02_authority"]["selected_not_started"])
                 self.assertTrue(registry["vti_02_authority"]["implementation_authority"])
                 self.assertEqual(registry["vti_02_authority"]["implementation_branch"], vti02_branch)
-                self.assertFalse(registry["vti_02_authority"]["production_mutation_authorized"])
+                self.assertEqual(registry["vti_02_authority"]["production_mutation_authorized"], production_authorized)
+                if production_authorized:
+                    self.assertIsNotNone(vti02["validation"]["acceptance_red"])
+                    self.assertTrue(vti02["validation"]["acceptance_red"]["matching_red_observed"])
+                    self.assertTrue(registry["vti_02_authority"]["matching_red_observed"])
+                else:
+                    self.assertIsNone(vti02["validation"]["acceptance_red"])
+                    self.assertFalse(registry["vti_02_authority"]["matching_red_observed"])
 
         for phrase in (
             "VTI-01 — VTT Ecosystem, Licensing & Capability Matrix",
