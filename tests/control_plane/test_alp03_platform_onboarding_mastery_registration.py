@@ -20,6 +20,7 @@ class Alp03PlatformOnboardingMasteryRegistrationTests(unittest.TestCase):
         alp05_merge = "402aa6d91795d6e75be64c106aa122b0b79cb872"
         alp06_merge = "b59e47dfe5754ad22cfdbe2082585d265335da51"
         alp07_merge = "773b9bcfbdc549e53e51dcedaae83b450a74c8fc"
+        alp08_merge = "e61109affe9d662e6da6eb214c1acc870079c1a7"
         checkpoint = load_json("governance/ai/work-state/ALP-03-attempt-001.json")
         alp04 = load_json("governance/ai/work-state/ALP-04-attempt-001.json")
         backlog = load_json("governance/application-planning/achievements-learning-practice/ALP_PROGRAM_BACKLOG.json")
@@ -59,6 +60,7 @@ class Alp03PlatformOnboardingMasteryRegistrationTests(unittest.TestCase):
             expected_status = alp04["status"]
             expected_completed = "ALP-03"
             expected_main = merge
+            expected_backlog_current = expected_item
         else:
             self.assertEqual(alp04["application_merge_sha"], alp04_merge)
             alp05 = load_json("governance/ai/work-state/ALP-05-attempt-001.json")
@@ -68,6 +70,7 @@ class Alp03PlatformOnboardingMasteryRegistrationTests(unittest.TestCase):
                 expected_status = alp05["status"]
                 expected_completed = "ALP-04"
                 expected_main = alp04_merge
+                expected_backlog_current = expected_item
             else:
                 self.assertEqual(alp05["application_merge_sha"], alp05_merge)
                 alp06 = load_json("governance/ai/work-state/ALP-06-attempt-001.json")
@@ -77,6 +80,7 @@ class Alp03PlatformOnboardingMasteryRegistrationTests(unittest.TestCase):
                     expected_status = alp06["status"]
                     expected_completed = "ALP-05"
                     expected_main = alp05_merge
+                    expected_backlog_current = expected_item
                 else:
                     self.assertEqual(alp06["application_merge_sha"], alp06_merge)
                     alp07 = load_json("governance/ai/work-state/ALP-07-attempt-001.json")
@@ -86,17 +90,29 @@ class Alp03PlatformOnboardingMasteryRegistrationTests(unittest.TestCase):
                         expected_status = alp07["status"]
                         expected_completed = "ALP-06"
                         expected_main = alp06_merge
+                        expected_backlog_current = expected_item
                     else:
                         self.assertEqual(alp07["application_merge_sha"], alp07_merge)
                         alp08 = load_json("governance/ai/work-state/ALP-08-attempt-001.json")
                         self.assertEqual(alp08["application_baseline_sha"], alp07_merge)
-                        expected_item = "ALP-08"
-                        expected_status = alp08["status"]
-                        expected_completed = "ALP-07"
-                        expected_main = alp07_merge
+                        if alp08["status"] != "completed_verified":
+                            expected_item = "ALP-08"
+                            expected_status = alp08["status"]
+                            expected_completed = "ALP-07"
+                            expected_main = alp07_merge
+                            expected_backlog_current = expected_item
+                        else:
+                            self.assertEqual(alp08["application_merge_sha"], alp08_merge)
+                            vti01 = load_json("governance/ai/work-state/VTI-01-attempt-001.json")
+                            self.assertEqual(vti01["application_baseline_sha"], alp08_merge)
+                            expected_item = "VTI-01"
+                            expected_status = vti01["status"]
+                            expected_completed = "ALP-08"
+                            expected_main = alp08_merge
+                            expected_backlog_current = None
 
         self.assertEqual(backlog["completed_through"], expected_completed)
-        self.assertEqual(backlog["current_item"], expected_item)
+        self.assertEqual(backlog["current_item"], expected_backlog_current)
         self.assertEqual(pointer["active_attempt"]["work_item_id"], expected_item)
         self.assertEqual(pointer["active_attempt"]["status"], expected_status)
         self.assertEqual(index["current"]["work_item_id"], expected_item)
