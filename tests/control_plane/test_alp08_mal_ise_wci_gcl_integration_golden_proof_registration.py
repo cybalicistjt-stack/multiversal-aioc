@@ -74,7 +74,14 @@ class Alp08MalIseWciGclIntegrationGoldenProofRegistrationTests(unittest.TestCase
             else:
                 self.assertEqual(pointer["active_attempt"]["implementation_branch"], "integration/vti-01-vtt-ecosystem-licensing-capability-matrix")
                 self.assertTrue(pointer["active_attempt"]["implementation_authority"])
-                self.assertFalse(pointer["bounded_authority"]["production_mutation_authorized"])
+                production_authorized = vti01["production_mutation_authorized"]
+                self.assertEqual(pointer["bounded_authority"]["production_mutation_authorized"], production_authorized)
+                self.assertEqual(registry["vti_01_authority"]["production_mutation_authorized"], production_authorized)
+                if production_authorized:
+                    self.assertIsNotNone(vti01["validation"]["acceptance_red"])
+                    self.assertTrue(registry["vti_01_authority"]["matching_red_observed"])
+                else:
+                    self.assertIsNone(vti01["validation"]["acceptance_red"])
 
         for phrase in (
             "ALP-08 — MAL/ISE/WCI/GCL Integration & Golden Learning/Recognition Proof",
