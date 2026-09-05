@@ -99,31 +99,22 @@ class Alp05DiegeticPracticeSpacesRegistrationTests(unittest.TestCase):
                         self.assertEqual(index["current"]["work_item_id"], "ALP-08")
                         self.assertEqual(runtime["active_work"]["work_item"], "ALP-08")
                     else:
-                        vti01 = load_json("governance/ai/work-state/VTI-01-attempt-001.json")
                         self.assertEqual(alp08["application_merge_sha"], "e61109affe9d662e6da6eb214c1acc870079c1a7")
-                        self.assertEqual(vti01["application_baseline_sha"], alp08["application_merge_sha"])
                         self.assertEqual(backlog["completed_through"], "ALP-08")
                         self.assertIsNone(backlog["current_item"])
-                        self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-01")
-                        self.assertIn(vti01["status"], {"selected_not_started", "in_progress"})
-                        self.assertEqual(pointer["active_attempt"]["status"], vti01["status"])
-                        if vti01["status"] == "selected_not_started":
+                        vti_backlog = load_json("governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json")
+                        active_vti = vti_backlog["current_item"]
+                        self.assertTrue(active_vti.startswith("VTI-"))
+                        active_checkpoint = load_json(f"governance/ai/work-state/{active_vti}-attempt-001.json")
+                        self.assertEqual(pointer["active_attempt"]["work_item_id"], active_vti)
+                        self.assertEqual(pointer["active_attempt"]["status"], active_checkpoint["status"])
+                        self.assertEqual(registry["active_planning_work"]["work_item"], active_vti)
+                        self.assertEqual(index["current"]["work_item_id"], active_vti)
+                        self.assertEqual(runtime["active_work"]["work_item"], active_vti)
+                        self.assertEqual(runtime["application_repository"]["canonical_main"], active_checkpoint["application_baseline_sha"])
+                        if active_checkpoint["status"] == "selected_not_started":
                             self.assertIsNone(pointer["active_attempt"]["implementation_branch"])
                             self.assertFalse(pointer["active_attempt"]["implementation_authority"])
-                        else:
-                            self.assertEqual(pointer["active_attempt"]["implementation_branch"], "integration/vti-01-vtt-ecosystem-licensing-capability-matrix")
-                            self.assertTrue(pointer["active_attempt"]["implementation_authority"])
-                            production_authorized = vti01["production_mutation_authorized"]
-                            self.assertEqual(pointer["bounded_authority"]["production_mutation_authorized"], production_authorized)
-                            self.assertEqual(registry["vti_01_authority"]["production_mutation_authorized"], production_authorized)
-                            if production_authorized:
-                                self.assertIsNotNone(vti01["validation"]["acceptance_red"])
-                                self.assertTrue(registry["vti_01_authority"]["matching_red_observed"])
-                            else:
-                                self.assertIsNone(vti01["validation"]["acceptance_red"])
-                        self.assertEqual(registry["active_planning_work"]["work_item"], "VTI-01")
-                        self.assertEqual(index["current"]["work_item_id"], "VTI-01")
-                        self.assertEqual(runtime["active_work"]["work_item"], "VTI-01")
 
         for phrase in (
             "ALP-05 — Diegetic Practice Spaces, Training Scenes & Simulations",

@@ -83,8 +83,13 @@ class Alp07PlayerGmUxAccessibilityNotificationsRecognitionHistoryRegistrationTes
                 self.assertEqual(backlog["completed_through"], "ALP-08")
                 self.assertFalse(alp08["implementation_authority"])
                 self.assertTrue(alp08["authority_retired"])
-                self.assertNotEqual(pointer["active_attempt"]["work_item_id"], "ALP-08")
-                self.assertEqual(runtime["application_repository"]["canonical_main"], alp08["application_merge_sha"])
+                active_item = pointer["active_attempt"]["work_item_id"]
+                self.assertTrue(active_item.startswith("VTI-"))
+                self.assertEqual(index["current"]["work_item_id"], active_item)
+                self.assertEqual(registry["active_planning_work"]["work_item"], active_item)
+                self.assertEqual(runtime["active_work"]["work_item"], active_item)
+                active_checkpoint = load_json(f"governance/ai/work-state/{active_item}-attempt-001.json")
+                self.assertEqual(runtime["application_repository"]["canonical_main"], active_checkpoint["application_baseline_sha"])
 
         for phrase in (
             "ALP-07 — Player/GM UX, Accessibility, Notifications & Recognition History",
