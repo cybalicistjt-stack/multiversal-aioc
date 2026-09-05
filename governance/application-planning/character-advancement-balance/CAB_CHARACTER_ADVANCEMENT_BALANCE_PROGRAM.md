@@ -1,7 +1,7 @@
 # CAB — Character Advancement & Balance
 
 **Program ID:** CAB  
-**Status:** IN PROGRESS — CAB-08 COMPLETED_VERIFIED; CAB-09 SELECTED_NOT_STARTED  
+**Status:** IN PROGRESS — CAB-09 COMPLETED_VERIFIED; CAB-10 SELECTED_NOT_STARTED  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-09-04
 
@@ -11,7 +11,7 @@ CAB reconciles Multiversal Character advancement into one coherent XP-buy econom
 
 CAB is a game-rules/content-governance program. It does not grant Multiversal-app implementation authority and does not supersede the current software-development work item.
 
-## Owner decisions established through CAB-08
+## Owner decisions established through CAB-09
 
 1. **Ability Points (AP) are deprecated.** XP is the ordinary spendable Character-advancement currency.
 2. Five numeric tiers remain the shared developmental-depth structure; tier is not automatically XP price, Character Level, CR, damage, rarity, or universal power.
@@ -46,6 +46,13 @@ CAB is a game-rules/content-governance program. It does not grant Multiversal-ap
 31. Same-type Resistance does not compound or become Immunity; applicable Immunity supersedes Resistance; different types coexist; flat reduction and other defense mechanics use separate interaction groups.
 32. One full replacement transformation/form is active at a time by default; explicit nesting and compatible narrow augmentations remain possible.
 33. Same-group multipliers do not sequentially multiply by default; strongest applicable multiplier controls unless deliberate compound multiplication explicitly defines order/limits and passes manual review.
+34. **Eligibility does not equal acquisition or ownership.** XP affordability establishes neither.
+35. Species/innate acquisition distinguishes automatic source grants, Species/lineage-qualified selections, creation-only openings, explicit later acquisition bridges, and mixed/non-biological dataset membership. Cross-Species acquisition requires explicit authority.
+36. Current environmental presence does not automatically create permanent advancement; exposure/acclimation follows the owning acquisition rule, while current environment may remain a usage context.
+37. Learned permanent faction/order/profession capability normally remains learned after membership loss; affiliation-dependent grants and future acquisition can suspend/close when their source dependency ends. Explicit owning rules may state otherwise.
+38. Structured spells retain archetype/school/focus access, minimum caster tier, and **0 direct per-spell learning XP**; XP purchases slots/ready-known capacity under owning rules rather than universal per-spell purchases.
+39. Permanent Character advancement is distinct from capabilities granted by current external dependencies or creature relationships. Loss of a dependency may suspend its grant without deleting history; relationship eligibility does not create ownership/bond/training/obedience/placement/consent.
+40. Source silence produces `acquisition_unresolved`; XP cost, dataset membership, tier, current environment, name similarity, morphology, or example ownership does not independently authorize acquisition.
 
 ## Standing CAB recommendation delegation
 
@@ -74,8 +81,8 @@ CAB must still stop for owner authority when there is no responsible recommendat
 6. **CAB-06 — XP Cost Calibration Framework — completed_verified**
 7. **CAB-07 — Action Economy & Simultaneous Power — completed_verified**
 8. **CAB-08 — Stacking, Synergy & Power Multiplication — completed_verified**
-9. **CAB-09 — Acquisition & Eligibility — selected_not_started**
-10. **CAB-10 — Attributes, Skills & Proficiencies**
+9. **CAB-09 — Acquisition & Eligibility — completed_verified**
+10. **CAB-10 — Attributes, Skills & Proficiencies — selected_not_started**
 11. **CAB-11 — Ability Corpus Statistical Audit**
 12. **CAB-12 — Ability-Tree Structural Audit**
 13. **CAB-13 — High-Risk Ability Audit**
@@ -96,26 +103,42 @@ CAB-04/05 established advancement/tier semantics before CAB-06 calibration. CAB-
 
 ## CAB-08 closeout
 
-CAB-08 analyzed stacking, synergy, and power multiplication across the bounded 4,816-record Ability corpus. Source provenance/tree/family is not a stacking type; explicit authoritative stack/non-stack wording remains controlling; missing interaction semantics may remain `balance_unresolved_stacking`; and coexistence, overlap, stacking resolution, and synergy are separate questions.
+CAB-08 established mechanical interaction groups, noncompounding same-effect defaults, binary Advantage/Disadvantage, noncompounding same-type Resistance, full-form exclusivity, same-group multiplier strongest-only behavior, and manual review for unbounded trigger/resource/grant cycles. Authority is recorded in `CAB-08_OWNER_DECISIONS_2026-09-05.md`.
 
-Owner-approved CAB-08 policy:
+## CAB-09 closeout
 
-- same named effects are noncompounding by default, with strongest magnitude and duration refresh unless explicit stacking applies;
-- numerical modifiers use mechanical interaction groups, with strongest benefit plus strongest penalty as the ordinary noncumulative-group default;
-- Advantage/Disadvantage are binary and noncompounding;
-- same-type Resistance does not compound or become Immunity;
-- full replacement forms are exclusive by default unless nesting is explicitly authorized;
-- same-group multipliers use strongest-only by default rather than silent sequential multiplication;
-- closed trigger/resource/grant cycles without an external bound remain manual-review conditions.
+CAB-09 establishes a governed acquisition taxonomy rather than treating every Ability as an XP-shop entry.
 
-Authority is recorded in `CAB-08_OWNER_DECISIONS_2026-09-05.md`.
+Source findings include:
+
+- the 2,203-row Species/Innate surface is mixed: 260 Species Perks, 539 Innate Abilities, and 1,404 Elementalist rows; dataset membership does not prove biology or grant status;
+- the 1,018-row Prestige/Environment surface includes 296 Environment-Based Ability rows and 192 Prestige-tree rows among other special content;
+- the Profession/Crafting surface contains 221 rows with authored tools, ingredients, Skills/checks and other prerequisites;
+- the Magic/Faction surface contains 118 rows with specialized training, faction and ritual semantics;
+- all 385 structured spells preserve archetype access/minimum caster tier and state 0 XP for the spell itself, with XP spent on slots/ready-known capacity;
+- CEW-11 makes relationship-pathway eligibility distinct from ownership, bonding, taming, training, obedience, placement and consent.
+
+Owner-approved CAB-09 policy under the standing delegation:
+
+- eligibility and acquisition are distinct;
+- acquisition modes include ordinary purchase, creation selection, source grant, source-qualified selection, training, exposure/acclimation, membership/induction, Prestige entry, archetype magic access, bond/install, relationship pathway, milestone/narrative, and temporary-state grant;
+- Species/innate content requires source-backed grant/selection/biology classification and explicit bridges for creation-only or cross-Species later acquisition;
+- environment presence alone does not grant permanent advancement;
+- learned faction/profession abilities and affiliation-dependent grants have separate lifecycle semantics;
+- Prestige remains a Tier-3 special entry transaction;
+- structured spells remain 0 direct per-spell learning XP under archetype capacity rules;
+- external dependencies can suspend grants without deleting history;
+- creature relationship eligibility does not instantiate a relationship;
+- source silence is `acquisition_unresolved`.
+
+Authority is recorded in `CAB-09_OWNER_DECISIONS_2026-09-05.md`.
 
 ## Current tranche
 
-**CAB-09 — Acquisition & Eligibility** is `selected_not_started` and may execute immediately.
+**CAB-10 — Attributes, Skills & Proficiencies** is `selected_not_started`.
 
-CAB-09 must govern how Characters become eligible for and actually acquire ordinary, Species/innate, environmental/adaptation, Prestige, faction/order, profession/crafting, magic/spell, transformation, companion/mount/familiar/pet, implant/artifact, milestone, narrative, and other special progression without collapsing acquisition into XP affordability.
+CAB-10 must reconcile Attribute advancement and creation semantics, Skill/Knowledge/proficiency/mastery pricing and prerequisites, the exact Intelligence/Wisdom learning-speed hook, possible double-counting between Attributes and Skills, and interactions with CAB-06 pricing, CAB-08 modifier groups, and CAB-09 acquisition rules.
 
 ## Boundaries
 
-CAB does not revive AP; turn CU or Reference Advancement Value into spendable currencies; collapse balance into a scalar; equate tier with raw power; cap total known Abilities merely to control simultaneous power; invent readied-Ability slots; treat source provenance as a universal stacking rule; assume missing interaction text means stack/non-stack; silently compound same-quantity multipliers; or use the standing recommendation delegation to override an explicit earlier owner decision without surfacing the conflict.
+CAB does not revive AP; turn CU or Reference Advancement Value into spendable currencies; collapse balance into a scalar; equate tier with raw power; cap total known Abilities merely to control simultaneous power; invent readied-Ability slots; treat source provenance as a universal stacking rule; infer acquisition from XP cost/dataset membership/location alone; convert structured spells into universal per-spell XP purchases; instantiate creature relationships from Character advancement alone; or use the standing recommendation delegation to override an explicit earlier owner decision without surfacing the conflict.
