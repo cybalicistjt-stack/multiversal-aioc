@@ -25,33 +25,14 @@ class Vti01EcosystemLicensingCapabilityMatrixRegistrationTests(unittest.TestCase
         self.assertEqual(checkpoint["application_merge_sha"], "027fad06d0bac3a20d56f0cc2a674581662cd1b9")
         self.assertTrue(registry["vti_01_authority"]["retired"])
         current = backlog["current_item"]
-        self.assertIn(current, {"VTI-02", "VTI-03", "VTI-04"})
+        order = backlog["strict_order"]
+        self.assertGreater(order.index(current), order.index("VTI-01"))
         self.assertEqual(current, pointer["active_attempt"]["work_item_id"])
         self.assertEqual(current, registry["active_planning_work"]["work_item"])
         self.assertEqual(current, index["current"]["work_item_id"])
         self.assertEqual(current, runtime["active_work"]["work_item"])
         self.assertEqual(runtime["application_repository"]["canonical_main"], pointer["active_attempt"]["application_baseline_sha"])
-        if current == "VTI-04":
-            vti02 = load_json("governance/ai/work-state/VTI-02-attempt-001.json")
-            vti03 = load_json("governance/ai/work-state/VTI-03-attempt-001.json")
-            vti04 = load_json("governance/ai/work-state/VTI-04-attempt-001.json")
-            self.assertEqual(vti02["status"], "completed_verified")
-            self.assertEqual(vti03["status"], "completed_verified")
-            self.assertTrue(vti03["authority_retired"])
-            self.assertIn(vti04["status"], {"selected_not_started", "in_progress"})
-            self.assertEqual(vti04["status"], pointer["active_attempt"]["status"])
-            self.assertEqual(vti04["status"], index["current"]["status"])
-            self.assertEqual(vti04["status"], runtime["active_work"]["state"])
-            if vti04["status"] == "selected_not_started":
-                self.assertFalse(vti04["implementation_authority"])
-                self.assertIsNone(vti04["implementation_branch"])
-                self.assertTrue(registry["vti_04_authority"]["selected_not_started"])
-            else:
-                self.assertTrue(vti04["implementation_authority"])
-                self.assertEqual(vti04["implementation_branch"], "integration/vti-04-rules-action-roll-bridge")
-                self.assertFalse(registry["vti_04_authority"]["selected_not_started"])
-                self.assertTrue(registry["vti_04_authority"]["implementation_authority"])
-        for phrase in ("VTI-01 — VTT Ecosystem, Licensing & Capability Matrix","VTI-02 — Multiversal External Game Projection Contract","VTI-03 — Stable Identity, Versioning & Synchronization","VTI-04 — Rules Action & Roll Bridge","Platform selection remains evidence-driven"):
+        for phrase in ("VTI-01 — VTT Ecosystem, Licensing & Capability Matrix","VTI-02 — Multiversal External Game Projection Contract","VTI-03 — Stable Identity, Versioning & Synchronization","VTI-04 — Rules Action & Roll Bridge","VTI-05 — Character Sheet, Item & Compendium Projection","Platform selection remains evidence-driven"):
             self.assertIn(phrase, program)
 
     def test_vti01_scope_keeps_external_mutation_and_vendor_selection_closed(self):
