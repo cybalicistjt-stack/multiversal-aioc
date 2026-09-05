@@ -90,13 +90,25 @@ class Alp05DiegeticPracticeSpacesRegistrationTests(unittest.TestCase):
                 else:
                     alp08 = load_json("governance/ai/work-state/ALP-08-attempt-001.json")
                     self.assertEqual(alp08["application_baseline_sha"], alp07["application_merge_sha"])
-                    self.assertEqual(backlog["completed_through"], "ALP-07")
-                    self.assertEqual(backlog["current_item"], "ALP-08")
-                    self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-08")
-                    self.assertEqual(pointer["active_attempt"]["status"], alp08["status"])
-                    self.assertEqual(registry["active_planning_work"]["work_item"], "ALP-08")
-                    self.assertEqual(index["current"]["work_item_id"], "ALP-08")
-                    self.assertEqual(runtime["active_work"]["work_item"], "ALP-08")
+                    if alp08["status"] != "completed_verified":
+                        self.assertEqual(backlog["completed_through"], "ALP-07")
+                        self.assertEqual(backlog["current_item"], "ALP-08")
+                        self.assertEqual(pointer["active_attempt"]["work_item_id"], "ALP-08")
+                        self.assertEqual(pointer["active_attempt"]["status"], alp08["status"])
+                        self.assertEqual(registry["active_planning_work"]["work_item"], "ALP-08")
+                        self.assertEqual(index["current"]["work_item_id"], "ALP-08")
+                        self.assertEqual(runtime["active_work"]["work_item"], "ALP-08")
+                    else:
+                        vti01 = load_json("governance/ai/work-state/VTI-01-attempt-001.json")
+                        self.assertEqual(alp08["application_merge_sha"], "e61109affe9d662e6da6eb214c1acc870079c1a7")
+                        self.assertEqual(vti01["application_baseline_sha"], alp08["application_merge_sha"])
+                        self.assertEqual(backlog["completed_through"], "ALP-08")
+                        self.assertIsNone(backlog["current_item"])
+                        self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-01")
+                        self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
+                        self.assertEqual(registry["active_planning_work"]["work_item"], "VTI-01")
+                        self.assertEqual(index["current"]["work_item_id"], "VTI-01")
+                        self.assertEqual(runtime["active_work"]["work_item"], "VTI-01")
 
         for phrase in (
             "ALP-05 — Diegetic Practice Spaces, Training Scenes & Simulations",
