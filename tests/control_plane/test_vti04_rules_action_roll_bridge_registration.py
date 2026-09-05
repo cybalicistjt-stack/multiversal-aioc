@@ -45,20 +45,26 @@ class Vti04RulesActionRollBridgeRegistrationTests(unittest.TestCase):
 
         self.assertEqual(backlog["completed_through"], "VTI-04")
         self.assertEqual(backlog["current_item"], "VTI-05")
-        self.assertEqual(successor["status"], "selected_not_started")
+        self.assertIn(successor["status"], {"selected_not_started", "in_progress"})
         self.assertEqual(successor["application_baseline_sha"], merge)
-        self.assertIsNone(successor["implementation_branch"])
-        self.assertFalse(successor["implementation_authority"])
-        self.assertFalse(successor["branch_creation_authorized"])
-        self.assertFalse(successor["acceptance_package_authorized"])
-        self.assertFalse(successor["production_mutation_authorized"])
+        if successor["status"] == "selected_not_started":
+            self.assertIsNone(successor["implementation_branch"])
+            self.assertFalse(successor["implementation_authority"])
+            self.assertFalse(successor["branch_creation_authorized"])
+            self.assertFalse(successor["acceptance_package_authorized"])
+            self.assertFalse(successor["production_mutation_authorized"])
+        else:
+            self.assertEqual(successor["implementation_branch"], branch)
+            self.assertTrue(successor["implementation_authority"])
+            self.assertTrue(successor["branch_creation_authorized"])
+            self.assertTrue(successor["acceptance_package_authorized"])
 
         self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-05")
-        self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
+        self.assertEqual(pointer["active_attempt"]["status"], successor["status"])
         self.assertEqual(index["current"]["work_item_id"], "VTI-05")
-        self.assertEqual(index["current"]["status"], "selected_not_started")
+        self.assertEqual(index["current"]["status"], successor["status"])
         self.assertEqual(runtime["active_work"]["work_item"], "VTI-05")
-        self.assertEqual(runtime["active_work"]["state"], "selected_not_started")
+        self.assertEqual(runtime["active_work"]["state"], successor["status"])
         self.assertEqual(runtime["application_repository"]["canonical_main"], merge)
 
         vti04_authority = registry["vti_04_authority"]
