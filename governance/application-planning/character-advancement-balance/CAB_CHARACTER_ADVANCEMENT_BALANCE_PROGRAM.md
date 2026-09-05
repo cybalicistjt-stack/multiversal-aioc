@@ -1,7 +1,7 @@
 # CAB — Character Advancement & Balance
 
 **Program ID:** CAB  
-**Status:** IN PROGRESS — CAB-08 COMPLETED_VERIFIED; CAB-09 SELECTED_NOT_STARTED_PENDING_OWNER_ANSWERS  
+**Status:** IN PROGRESS — CAB-08 COMPLETED_VERIFIED; CAB-09 SELECTED_NOT_STARTED  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-09-04
 
@@ -11,7 +11,7 @@ CAB reconciles Multiversal Character advancement into one coherent XP-buy econom
 
 CAB is a game-rules/content-governance program. It does not grant Multiversal-app implementation authority and does not supersede the current software-development work item.
 
-## Owner decisions established through CAB-07
+## Owner decisions established through CAB-08
 
 1. **Ability Points (AP) are deprecated.** XP is the ordinary spendable Character-advancement currency.
 2. Five numeric tiers remain the shared developmental-depth structure; tier is not automatically XP price, Character Level, CR, damage, rarity, or universal power.
@@ -40,13 +40,26 @@ CAB is a game-rules/content-governance program. It does not grant Multiversal-ap
 25. Mechanically consequential Free/No-Action effects require an explicit meaningful limiter; their label does not authorize unlimited repetition.
 26. Companions/minions are evaluated by the meaningful independent combat action economy they add, not merely by existing.
 27. Action compression and bounded additional attacks are legitimate design tools; full unrestricted extra Actions, additional Reactions, and ally Action grants remain uncommon, explicit, limited, and appropriately priced.
+28. Reapplying the same named mechanical effect is noncompounding by default; strongest applicable magnitude controls and valid reapplication may refresh duration unless explicit stacking is authored.
+29. Numerical modifiers use mechanical interaction groups. Compatible groups may combine; an ordinary noncumulative group resolves to strongest benefit plus strongest penalty unless explicitly cumulative.
+30. Advantage and Disadvantage are binary noncompounding states and cancel to a normal roll when both apply absent an explicit priority/alternate rule.
+31. Same-type Resistance does not compound or become Immunity; applicable Immunity supersedes Resistance; different types coexist; flat reduction and other defense mechanics use separate interaction groups.
+32. One full replacement transformation/form is active at a time by default; explicit nesting and compatible narrow augmentations remain possible.
+33. Same-group multipliers do not sequentially multiply by default; strongest applicable multiplier controls unless deliberate compound multiplication explicitly defines order/limits and passes manual review.
+
+## Standing CAB recommendation delegation
+
+On 2026-09-05 the owner stated that he trusts the rest of the recommendations in this CAB series. For CAB-09 through CAB-23, a clearly stated CAB recommended option may therefore be recorded as owner-approved without pausing solely for a questionnaire response when it is evidence-grounded, within existing CAB scope, consistent with prior explicit owner decisions, and does not create unrelated implementation/release/paid-service authority or require an inherently owner-specific creative decision.
+
+CAB must still stop for owner authority when there is no responsible recommendation, a material conflict with prior owner decisions, a material CAB scope/direction change, an owner-specific creative/worldbuilding choice, or source uncertainty prevents a responsible recommendation. The standing delegation is recorded in `CAB-08_OWNER_DECISIONS_2026-09-05.md`.
 
 ## Operating rules
 
 - Repository/source evidence controls; legacy, inferred, synthetic, recommendation, conflict, and owner-approved decisions remain distinct.
 - Each tranche is bounded below the 25-minute tool cutoff; overflow becomes an explicit follow-on.
 - A `Continue` order executes the whole active tranche through closeout, then selects the next tranche.
-- Every closeout records completed work, findings, recommendations, decisions, unresolved items, questionnaire where useful, and exact successor.
+- Under the standing CAB recommendation delegation, a tranche may resolve its own clearly recommended policy gates and proceed to closeout without an otherwise unnecessary questionnaire stop.
+- Every closeout records completed work, findings, recommendations, decisions, unresolved items, questionnaire/decision artifact where useful, and exact successor.
 - CAB may create repair/repricing maps but does not silently rewrite the Ability corpus during analysis.
 - Existing Character advancement transaction/history architecture remains authoritative: stable IDs, authoritative validation, cost ledger, append-only history, before/after evidence, correction/respec receipts, permission boundaries, and source/provenance remain preserved.
 - PPIA-11 multidimensional balance remains governing input: no universal CR/power scalar, explicit interaction rules, named uncertainty, and no guaranteed-balance claim.
@@ -61,7 +74,7 @@ CAB is a game-rules/content-governance program. It does not grant Multiversal-ap
 6. **CAB-06 — XP Cost Calibration Framework — completed_verified**
 7. **CAB-07 — Action Economy & Simultaneous Power — completed_verified**
 8. **CAB-08 — Stacking, Synergy & Power Multiplication — completed_verified**
-9. **CAB-09 — Acquisition & Eligibility — selected_not_started_pending_owner_answers**
+9. **CAB-09 — Acquisition & Eligibility — selected_not_started**
 10. **CAB-10 — Attributes, Skills & Proficiencies**
 11. **CAB-11 — Ability Corpus Statistical Audit**
 12. **CAB-12 — Ability-Tree Structural Audit**
@@ -81,71 +94,28 @@ CAB is a game-rules/content-governance program. It does not grant Multiversal-ap
 
 CAB-04/05 established advancement/tier semantics before CAB-06 calibration. CAB-06..10 establish price, simultaneous-power, stacking, acquisition, and Attribute/Skill rules before CAB-11..13 audit the corpus. CAB-14..15 benchmark equal-XP Characters. CAB-16 establishes advancement cadence before CAB-17 derives awards. CAB-18 stress-tests veteran play; CAB-19 governs migration; CAB-20..23 integrate, simulate, repair-map, and close.
 
-## CAB-01 through CAB-06 summary
-
-CAB-01 retired AP and established authority. CAB-02 reconstructed the fragmented XP economy and separated advancement XP from assets/wealth. CAB-03 established the working creation baseline. CAB-04 separated eligibility/prerequisite/learning/affordability/commit gates. CAB-05 finalized five-tier developmental-depth semantics, ordinary higher-tier access costs in principle, short-tree handling, and the Tier-3 Prestige start exception. CAB-06 established and owner-approved effect-burden XP calibration, the 250-XP CU, access anchors, HP test prices, and Reference Advancement Value.
-
-## CAB-07 closeout
-
-CAB-07 defined effective simultaneous power through delivery channels rather than total known Abilities.
-
-Owner-approved CAB-07 policy:
-
-- 1 Action + 1 Bonus Action + movement on turn and 1 Reaction per round before explicit exceptions;
-- action/reaction multiplier anti-recursion by default;
-- meaningful limiters for consequential Free/No-Action effects;
-- companion/minion burden based on meaningful independent combat actions;
-- full unrestricted extra Actions, additional Reactions, and ally Action grants remain uncommon, explicit, limited, and effect-burden priced.
-
-Authority is recorded in `CAB-07_OWNER_DECISIONS_2026-09-05.md`.
-
 ## CAB-08 closeout
 
-CAB-08 analyzed stacking, synergy, and power multiplication across the bounded 4,816-record Ability corpus.
+CAB-08 analyzed stacking, synergy, and power multiplication across the bounded 4,816-record Ability corpus. Source provenance/tree/family is not a stacking type; explicit authoritative stack/non-stack wording remains controlling; missing interaction semantics may remain `balance_unresolved_stacking`; and coexistence, overlap, stacking resolution, and synergy are separate questions.
 
-Screening evidence:
+Owner-approved CAB-08 policy:
 
-- only 6 records explicitly use stack/stacks/stacking language and 2 explicitly state non-stack behavior;
-- 683 records contain bonus signals and 121 penalty signals;
-- 614 contain Advantage and 128 Disadvantage signals;
-- 202 contain Resistance and 119 Immunity signals;
-- 168 contain selected `for each` / `per ...` scaling signals;
-- 69 contain multiply/double/triple signals;
-- 238 contain summon/minion/companion/familiar/drone signals;
-- 192 contain transformation/form signals;
-- 1,534 meaningfully populate `Roll_Bonus_or_Penalty`, 615 `Scaling_or_Additional_Bonus`, 549 `Condition`, 402 `Upgrade_Effect`, and 347 `Special_Rules`.
+- same named effects are noncompounding by default, with strongest magnitude and duration refresh unless explicit stacking applies;
+- numerical modifiers use mechanical interaction groups, with strongest benefit plus strongest penalty as the ordinary noncumulative-group default;
+- Advantage/Disadvantage are binary and noncompounding;
+- same-type Resistance does not compound or become Immunity;
+- full replacement forms are exclusive by default unless nesting is explicitly authorized;
+- same-group multipliers use strongest-only by default rather than silent sequential multiplication;
+- closed trigger/resource/grant cycles without an external bound remain manual-review conditions.
 
-These are screening/triage signals, not final balance classifications.
-
-CAB-08 establishes structurally that:
-
-- source provenance/tree/family is not a stacking type;
-- explicit authoritative stack/non-stack wording is preserved;
-- missing interaction semantics may remain `balance_unresolved_stacking`;
-- coexistence, mechanical overlap, stacking resolution, and synergy are different questions;
-- records need stable interaction groups and stacking modes;
-- supported interaction modes include coexistence, additive, strongest-only, positive/negative group resolution, replace, duration refresh, exclusive, binary noncompounding, capped additive, explicit multiplication, trigger chains, and prohibited recursion;
-- synergy classes include redundant, additive, enabling, compressive, multiplicative, persistent-bundle, trigger-chain, resource-loop, grant/substitution-chain, and mixed;
-- closed trigger/resource/grant cycles without an external bound are manual-review conditions under the CAB-07 anti-recursion principle;
-- a non-scalar Synergy Review Profile feeds CAB-06 pricing/RAV and later CAB-13/14/15 testing.
-
-CAB-08 recommends, but does not silently owner-approve:
-
-1. same named effects are noncompounding by default; strongest magnitude applies and valid reapplication may refresh duration unless explicit stacking is authored;
-2. numerical modifiers use mechanical interaction groups; compatible groups combine, while an ordinary same-group default uses strongest benefit plus strongest penalty unless explicitly cumulative;
-3. Advantage/Disadvantage are binary noncompounding states and cancel to normal when both apply absent an explicit priority rule;
-4. same-type Resistance does not compound or become Immunity; Immunity supersedes Resistance; different types coexist and other defense mechanics use separate groups;
-5. full replacement transformations/forms are exclusive by default, while explicit nesting and compatible augmentations remain possible;
-6. same-quantity multipliers do not sequentially compound by default; strongest same-group multiplier applies unless deliberate compound multiplication is explicitly authored and manually reviewed.
-
-These six policy gates are recorded in `CAB-08_OWNER_QUESTIONNAIRE.md` and remain unresolved until the owner answers or explicitly defers them.
+Authority is recorded in `CAB-08_OWNER_DECISIONS_2026-09-05.md`.
 
 ## Current tranche
 
-**CAB-09 — Acquisition & Eligibility** is `selected_not_started_pending_owner_answers`.
+**CAB-09 — Acquisition & Eligibility** is `selected_not_started` and may execute immediately.
 
-CAB-09 execution is held until CAB-08 owner answers are recorded or explicitly deferred because eligibility/acquisition must know how source-granted, form-gated, faction-gated, innate, and other special access interacts with stacking and combination rules.
+CAB-09 must govern how Characters become eligible for and actually acquire ordinary, Species/innate, environmental/adaptation, Prestige, faction/order, profession/crafting, magic/spell, transformation, companion/mount/familiar/pet, implant/artifact, milestone, narrative, and other special progression without collapsing acquisition into XP affordability.
 
 ## Boundaries
 
-CAB does not revive AP; turn CU or Reference Advancement Value into spendable currencies; collapse balance into a scalar; equate tier with raw power; cap total known Abilities merely to control simultaneous power; invent readied-Ability slots; treat source provenance as a universal stacking rule; assume missing interaction text means stack/non-stack; silently compound same-quantity multipliers; or silently adopt CAB-08 recommendations without owner authority.
+CAB does not revive AP; turn CU or Reference Advancement Value into spendable currencies; collapse balance into a scalar; equate tier with raw power; cap total known Abilities merely to control simultaneous power; invent readied-Ability slots; treat source provenance as a universal stacking rule; assume missing interaction text means stack/non-stack; silently compound same-quantity multipliers; or use the standing recommendation delegation to override an explicit earlier owner decision without surfacing the conflict.
