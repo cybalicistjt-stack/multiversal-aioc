@@ -11,7 +11,7 @@ def load_text(path):
     return (ROOT / path).read_text(encoding="utf-8")
 
 class Vti03StableIdentityVersioningSynchronizationRegistrationTests(unittest.TestCase):
-    def test_vti03_completed_lifecycle_and_vti04_selection_are_consistent(self):
+    def test_vti03_completed_lifecycle_and_vti04_successor_are_consistent(self):
         merge = "56ab87c2be214d4d7edb15e0e8d02429a07ee2d4"
         checkpoint = load_json("governance/ai/work-state/VTI-03-attempt-001.json")
         successor = load_json("governance/ai/work-state/VTI-04-attempt-001.json")
@@ -40,23 +40,36 @@ class Vti03StableIdentityVersioningSynchronizationRegistrationTests(unittest.Tes
         self.assertEqual(green["historical_profile_fanout"], 0)
         self.assertEqual(backlog["completed_through"], "VTI-03")
         self.assertEqual(backlog["current_item"], "VTI-04")
-        self.assertEqual(successor["status"], "selected_not_started")
+        self.assertIn(successor["status"], {"selected_not_started", "in_progress"})
         self.assertEqual(successor["application_baseline_sha"], merge)
-        self.assertIsNone(successor["implementation_branch"])
-        self.assertFalse(successor["implementation_authority"])
-        self.assertFalse(successor["branch_creation_authorized"])
-        self.assertFalse(successor["acceptance_package_authorized"])
-        self.assertFalse(successor["production_mutation_authorized"])
         self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-04")
-        self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
+        self.assertEqual(pointer["active_attempt"]["status"], successor["status"])
         self.assertEqual(index["current"]["work_item_id"], "VTI-04")
+        self.assertEqual(index["current"]["status"], successor["status"])
         self.assertEqual(runtime["active_work"]["work_item"], "VTI-04")
+        self.assertEqual(runtime["active_work"]["state"], successor["status"])
         self.assertEqual(runtime["application_repository"]["canonical_main"], merge)
         self.assertTrue(registry["vti_03_authority"]["retired"])
         self.assertFalse(registry["vti_03_authority"]["implementation_authority"])
-        self.assertTrue(registry["vti_04_authority"]["selected_not_started"])
-        self.assertFalse(registry["vti_04_authority"]["implementation_authority"])
-        for phrase in ("VTI-03 — Stable Identity, Versioning & Synchronization","COMPLETED_VERIFIED","VTI-04 — Rules Action & Roll Bridge","SELECTED_NOT_STARTED","MIB-03","Platform selection remains evidence-driven"):
+        if successor["status"] == "selected_not_started":
+            self.assertIsNone(successor["implementation_branch"])
+            self.assertFalse(successor["implementation_authority"])
+            self.assertFalse(successor["branch_creation_authorized"])
+            self.assertFalse(successor["acceptance_package_authorized"])
+            self.assertFalse(successor["production_mutation_authorized"])
+            self.assertTrue(registry["vti_04_authority"]["selected_not_started"])
+            self.assertFalse(registry["vti_04_authority"]["implementation_authority"])
+        else:
+            self.assertEqual(successor["implementation_branch"], "integration/vti-04-rules-action-roll-bridge")
+            self.assertTrue(successor["implementation_authority"])
+            self.assertTrue(successor["branch_creation_authorized"])
+            self.assertTrue(successor["acceptance_package_authorized"])
+            self.assertFalse(successor["production_mutation_authorized"])
+            self.assertFalse(registry["vti_04_authority"]["selected_not_started"])
+            self.assertTrue(registry["vti_04_authority"]["implementation_authority"])
+            self.assertTrue(registry["vti_04_authority"]["acceptance_package_authorized"])
+            self.assertFalse(registry["vti_04_authority"]["production_mutation_authorized"])
+        for phrase in ("VTI-03 — Stable Identity, Versioning & Synchronization","COMPLETED_VERIFIED","VTI-04 — Rules Action & Roll Bridge","MIB-03","Platform selection remains evidence-driven"):
             self.assertIn(phrase, program)
 
     def test_vti03_completed_scope_keeps_deferred_authorities_closed(self):

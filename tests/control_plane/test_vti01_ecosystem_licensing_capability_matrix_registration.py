@@ -38,10 +38,19 @@ class Vti01EcosystemLicensingCapabilityMatrixRegistrationTests(unittest.TestCase
             self.assertEqual(vti02["status"], "completed_verified")
             self.assertEqual(vti03["status"], "completed_verified")
             self.assertTrue(vti03["authority_retired"])
-            self.assertEqual(vti04["status"], "selected_not_started")
-            self.assertFalse(vti04["implementation_authority"])
-            self.assertIsNone(vti04["implementation_branch"])
-            self.assertTrue(registry["vti_04_authority"]["selected_not_started"])
+            self.assertIn(vti04["status"], {"selected_not_started", "in_progress"})
+            self.assertEqual(vti04["status"], pointer["active_attempt"]["status"])
+            self.assertEqual(vti04["status"], index["current"]["status"])
+            self.assertEqual(vti04["status"], runtime["active_work"]["state"])
+            if vti04["status"] == "selected_not_started":
+                self.assertFalse(vti04["implementation_authority"])
+                self.assertIsNone(vti04["implementation_branch"])
+                self.assertTrue(registry["vti_04_authority"]["selected_not_started"])
+            else:
+                self.assertTrue(vti04["implementation_authority"])
+                self.assertEqual(vti04["implementation_branch"], "integration/vti-04-rules-action-roll-bridge")
+                self.assertFalse(registry["vti_04_authority"]["selected_not_started"])
+                self.assertTrue(registry["vti_04_authority"]["implementation_authority"])
         for phrase in ("VTI-01 — VTT Ecosystem, Licensing & Capability Matrix","VTI-02 — Multiversal External Game Projection Contract","VTI-03 — Stable Identity, Versioning & Synchronization","VTI-04 — Rules Action & Roll Bridge","Platform selection remains evidence-driven"):
             self.assertIn(phrase, program)
 

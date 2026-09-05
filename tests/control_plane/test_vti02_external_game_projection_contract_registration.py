@@ -35,10 +35,17 @@ class Vti02ExternalGameProjectionContractRegistrationTests(unittest.TestCase):
             self.assertEqual(vti03["status"], "completed_verified")
             self.assertTrue(vti03["authority_retired"])
             self.assertEqual(vti03["application_merge_sha"], "56ab87c2be214d4d7edb15e0e8d02429a07ee2d4")
-            self.assertEqual(vti04["status"], "selected_not_started")
+            self.assertIn(vti04["status"], {"selected_not_started", "in_progress"})
             self.assertEqual(vti04["application_baseline_sha"], vti03["application_merge_sha"])
-            self.assertFalse(vti04["implementation_authority"])
-            self.assertTrue(registry["vti_04_authority"]["selected_not_started"])
+            self.assertEqual(vti04["status"], pointer["active_attempt"]["status"])
+            if vti04["status"] == "selected_not_started":
+                self.assertFalse(vti04["implementation_authority"])
+                self.assertTrue(registry["vti_04_authority"]["selected_not_started"])
+            else:
+                self.assertTrue(vti04["implementation_authority"])
+                self.assertEqual(vti04["implementation_branch"], "integration/vti-04-rules-action-roll-bridge")
+                self.assertFalse(registry["vti_04_authority"]["selected_not_started"])
+                self.assertTrue(registry["vti_04_authority"]["implementation_authority"])
         for phrase in ("VTI-02 — Multiversal External Game Projection Contract","COMPLETED_VERIFIED","VTI-03 — Stable Identity, Versioning & Synchronization","VTI-04 — Rules Action & Roll Bridge","Platform selection remains evidence-driven"):
             self.assertIn(phrase, program)
 
