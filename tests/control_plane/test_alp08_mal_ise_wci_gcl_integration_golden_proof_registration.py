@@ -64,8 +64,17 @@ class Alp08MalIseWciGclIntegrationGoldenProofRegistrationTests(unittest.TestCase
             self.assertTrue(checkpoint["authority_retired"])
             self.assertTrue(checkpoint["completed"])
             self.assertEqual(backlog["completed_through"], "ALP-08")
-            self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
-            self.assertFalse(pointer["active_attempt"]["implementation_authority"])
+            vti01 = load_json("governance/ai/work-state/VTI-01-attempt-001.json")
+            self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-01")
+            self.assertIn(vti01["status"], {"selected_not_started", "in_progress"})
+            self.assertEqual(pointer["active_attempt"]["status"], vti01["status"])
+            if vti01["status"] == "selected_not_started":
+                self.assertIsNone(pointer["active_attempt"]["implementation_branch"])
+                self.assertFalse(pointer["active_attempt"]["implementation_authority"])
+            else:
+                self.assertEqual(pointer["active_attempt"]["implementation_branch"], "integration/vti-01-vtt-ecosystem-licensing-capability-matrix")
+                self.assertTrue(pointer["active_attempt"]["implementation_authority"])
+                self.assertFalse(pointer["bounded_authority"]["production_mutation_authorized"])
 
         for phrase in (
             "ALP-08 — MAL/ISE/WCI/GCL Integration & Golden Learning/Recognition Proof",
