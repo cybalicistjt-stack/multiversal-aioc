@@ -24,17 +24,17 @@ The completed contract is provider-neutral and deterministic. It preserves Multi
 
 ## Execution-convergence correction
 
-VTI-03 exposed the procedure defect the owner identified: large shared control-plane JSON was being regenerated too broadly during tranche transitions. That caused unrelated sealed history to be dropped from the authority registry and produced avoidable predecessor-regression failures. A first-pass RED unlock was also mislabeled with retry metadata.
+VTI-03 exposed the procedure defect the owner identified: large shared control-plane JSON was being regenerated too broadly during tranche transitions. That caused unrelated sealed history to be dropped first from the authority registry and later from the pointer maintenance-history list, producing avoidable predecessor/proof failures. A first-pass RED unlock was also mislabeled with retry metadata.
 
 The bounded correction applied in this tranche is:
 
-1. shared authority history is preserved wholesale from canonical state;
+1. shared authority and pointer history are preserved wholesale from canonical state;
 2. tranche transitions modify only current-tranche/successor fields and prepend new completion evidence;
 3. first-pass forward progress keeps `retry_basis` null;
 4. unrelated historical surfaces remain blocked unless a current validator specifically identifies them;
 5. one `Continue` remains active through implementation, validation, merge, closeout and strict-successor selection unless a genuine blocker exists.
 
-Observed VTI-03 repairs: four changed-evidence repairs total — three validation-contract/source-governance repairs, one repository-state/history-preservation repair, zero application-feature repairs, zero unchanged-evidence reruns and zero historical profile fanout. The repeated owner continuation requirement is recorded as a control-plane incident rather than normalized as expected workflow.
+Observed VTI-03 repairs: five changed-evidence repairs total — three validation-contract/source-governance repairs, two repository-state/shared-history-preservation repairs, zero application-feature repairs, zero unchanged-evidence reruns and zero historical profile fanout. The repeated owner continuation requirement is recorded as a control-plane incident rather than normalized as expected workflow.
 
 ## Strict successor
 
