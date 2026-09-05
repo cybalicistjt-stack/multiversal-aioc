@@ -18,6 +18,7 @@ class Vti01EcosystemLicensingCapabilityMatrixRegistrationTests(unittest.TestCase
         baseline = "e61109affe9d662e6da6eb214c1acc870079c1a7"
         branch = "integration/vti-01-vtt-ecosystem-licensing-capability-matrix"
         merge = "027fad06d0bac3a20d56f0cc2a674581662cd1b9"
+        vti02_branch = "integration/vti-02-multiversal-external-game-projection-contract"
         checkpoint = load_json("governance/ai/work-state/VTI-01-attempt-001.json")
         backlog = load_json("governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json")
         pointer = load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
@@ -66,22 +67,32 @@ class Vti01EcosystemLicensingCapabilityMatrixRegistrationTests(unittest.TestCase
             self.assertEqual(checkpoint["validation"]["final_green"]["deterministic_receipt_sha256"], "be8c090d2482898fbcdc8ffc93b93a31b7cb2eae3c8c0e238a221a990f8ce761")
             self.assertEqual(backlog["completed_through"], "VTI-01")
             vti02 = load_json("governance/ai/work-state/VTI-02-attempt-001.json")
-            self.assertEqual(vti02["status"], "selected_not_started")
+            self.assertIn(vti02["status"], {"selected_not_started", "in_progress"})
             self.assertEqual(vti02["application_baseline_sha"], merge)
-            self.assertIsNone(vti02["implementation_branch"])
-            self.assertFalse(vti02["implementation_authority"])
-            self.assertFalse(vti02["acceptance_package_authorized"])
-            self.assertFalse(vti02["production_mutation_authorized"])
             self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-02")
-            self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
+            self.assertEqual(pointer["active_attempt"]["status"], vti02["status"])
             self.assertEqual(registry["active_planning_work"]["work_item"], "VTI-02")
             self.assertTrue(registry["vti_01_authority"]["retired"])
             self.assertFalse(registry["vti_01_authority"]["implementation_authority"])
-            self.assertTrue(registry["vti_02_authority"]["selected_not_started"])
-            self.assertFalse(registry["vti_02_authority"]["implementation_authority"])
             self.assertEqual(index["current"]["work_item_id"], "VTI-02")
             self.assertEqual(runtime["active_work"]["work_item"], "VTI-02")
             self.assertEqual(runtime["application_repository"]["canonical_main"], merge)
+            if vti02["status"] == "selected_not_started":
+                self.assertIsNone(vti02["implementation_branch"])
+                self.assertFalse(vti02["implementation_authority"])
+                self.assertFalse(vti02["acceptance_package_authorized"])
+                self.assertFalse(vti02["production_mutation_authorized"])
+                self.assertTrue(registry["vti_02_authority"]["selected_not_started"])
+                self.assertFalse(registry["vti_02_authority"]["implementation_authority"])
+            else:
+                self.assertEqual(vti02["implementation_branch"], vti02_branch)
+                self.assertTrue(vti02["implementation_authority"])
+                self.assertTrue(vti02["acceptance_package_authorized"])
+                self.assertFalse(vti02["production_mutation_authorized"])
+                self.assertFalse(registry["vti_02_authority"]["selected_not_started"])
+                self.assertTrue(registry["vti_02_authority"]["implementation_authority"])
+                self.assertEqual(registry["vti_02_authority"]["implementation_branch"], vti02_branch)
+                self.assertFalse(registry["vti_02_authority"]["production_mutation_authorized"])
 
         for phrase in (
             "VTI-01 — VTT Ecosystem, Licensing & Capability Matrix",
