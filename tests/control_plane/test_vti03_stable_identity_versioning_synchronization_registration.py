@@ -64,11 +64,18 @@ class Vti03StableIdentityVersioningSynchronizationRegistrationTests(unittest.Tes
             self.assertTrue(successor["implementation_authority"])
             self.assertTrue(successor["branch_creation_authorized"])
             self.assertTrue(successor["acceptance_package_authorized"])
-            self.assertFalse(successor["production_mutation_authorized"])
+            production_authorized = successor["production_mutation_authorized"]
+            self.assertEqual(pointer["bounded_authority"]["production_mutation_authorized"], production_authorized)
             self.assertFalse(registry["vti_04_authority"]["selected_not_started"])
             self.assertTrue(registry["vti_04_authority"]["implementation_authority"])
             self.assertTrue(registry["vti_04_authority"]["acceptance_package_authorized"])
-            self.assertFalse(registry["vti_04_authority"]["production_mutation_authorized"])
+            self.assertEqual(registry["vti_04_authority"]["production_mutation_authorized"], production_authorized)
+            if production_authorized:
+                self.assertIsNotNone(successor["validation"]["acceptance_red"])
+                self.assertTrue(successor["validation"]["acceptance_red"]["matching_red_observed"])
+                self.assertTrue(registry["vti_04_authority"]["matching_red_observed"])
+            else:
+                self.assertIsNone(successor["validation"]["acceptance_red"])
         for phrase in ("VTI-03 — Stable Identity, Versioning & Synchronization","COMPLETED_VERIFIED","VTI-04 — Rules Action & Roll Bridge","MIB-03","Platform selection remains evidence-driven"):
             self.assertIn(phrase, program)
 
