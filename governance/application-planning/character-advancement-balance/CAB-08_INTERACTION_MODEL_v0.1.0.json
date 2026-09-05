@@ -1,0 +1,151 @@
+{
+  "schema_version": "0.1.0",
+  "program_id": "CAB",
+  "tranche_id": "CAB-08",
+  "state": "completed_verified_analysis_pending_owner_policy_answers",
+  "owner": "John Brandon Turner",
+  "principles": {
+    "breadth_not_inherently_imbalance": true,
+    "source_provenance_is_not_stacking_type": true,
+    "explicit_source_interaction_rule_preserved": true,
+    "missing_interaction_not_silently_invented": true,
+    "no_universal_power_scalar": true
+  },
+  "bounded_corpus_observations": {
+    "ability_records_total": 4816,
+    "explicit_stack_signal_records": 6,
+    "explicit_nonstack_signal_records": 2,
+    "bonus_signal_records": 683,
+    "penalty_signal_records": 121,
+    "advantage_signal_records": 614,
+    "disadvantage_signal_records": 128,
+    "resistance_signal_records": 202,
+    "immunity_signal_records": 119,
+    "selected_for_each_or_per_scaling_signal_records": 168,
+    "multiply_double_triple_signal_records": 69,
+    "summon_companion_signal_records": 238,
+    "transformation_form_signal_records": 192,
+    "records_with_two_or_more_selected_risk_signals": 799,
+    "records_with_three_or_more_selected_risk_signals": 226,
+    "records_with_four_or_more_selected_risk_signals": 75,
+    "screening_counts_are_not_final_classifications": true
+  },
+  "interaction_fields": [
+    "effect_instance_id",
+    "ability_stable_id",
+    "interaction_group_id",
+    "stacking_mode",
+    "target_quantity_or_state",
+    "magnitude",
+    "sign",
+    "duration",
+    "source_entity",
+    "reapplication_behavior",
+    "exclusivity_group",
+    "multiplier_group",
+    "trigger_edges",
+    "resource_inputs",
+    "resource_outputs",
+    "explicit_exception",
+    "source_provenance",
+    "uncertainty"
+  ],
+  "stacking_modes": [
+    "coexist",
+    "additive",
+    "highest_only",
+    "lowest_only",
+    "highest_benefit_plus_highest_penalty",
+    "replace",
+    "refresh_duration",
+    "exclusive",
+    "binary_noncompounding",
+    "capped_additive",
+    "multiplicative_explicit",
+    "trigger_chain",
+    "prohibited_recursive",
+    "balance_unresolved_stacking"
+  ],
+  "synergy_classes": [
+    "redundant",
+    "additive",
+    "enabling",
+    "compressive",
+    "multiplicative",
+    "persistent_bundle",
+    "trigger_chain",
+    "resource_loop",
+    "grant_or_substitution_chain",
+    "mixed"
+  ],
+  "candidate_owner_defaults": {
+    "same_effect_reapplication": {
+      "mode": "noncompounding_strongest_with_duration_refresh_unless_explicit_stack",
+      "owner_question": "CAB-Q08-01"
+    },
+    "distinct_numeric_modifiers": {
+      "mode": "interaction_groups_different_compatible_groups_combine_same_non_cumulative_group_resolves_by_group",
+      "ordinary_group_default": "highest_benefit_plus_highest_penalty",
+      "owner_question": "CAB-Q08-02"
+    },
+    "advantage_disadvantage": {
+      "mode": "binary_noncompounding_each_direction_any_both_cancel_to_normal_unless_explicit_priority",
+      "owner_question": "CAB-Q08-03"
+    },
+    "resistance_immunity": {
+      "same_type_resistance_compounds": false,
+      "multiple_resistance_becomes_immunity": false,
+      "immunity_supersedes_resistance": true,
+      "different_types_coexist": true,
+      "owner_question": "CAB-Q08-04"
+    },
+    "full_transformations": {
+      "full_replacement_forms_default_exclusive": true,
+      "nested_forms_require_explicit_rule": true,
+      "augmentations_require_compatibility": true,
+      "owner_question": "CAB-Q08-05"
+    },
+    "same_quantity_multipliers": {
+      "default": "strongest_multiplier_in_same_group_not_sequential_product",
+      "compound_multiplication_requires_explicit_order_and_manual_review": true,
+      "owner_question": "CAB-Q08-06"
+    }
+  },
+  "resource_trigger_cycle_policy": {
+    "cab07_anti_recursion_inherited": true,
+    "closed_unbounded_cycle_manual_review": true,
+    "resource_self_refund_net_nonnegative_per_iteration_high_risk": true,
+    "unbounded_grant_replication_prohibited_by_default": true,
+    "finite_authored_loop_requires_bound_and_reset_cadence": true
+  },
+  "synergy_review_profile": [
+    "participant_ids",
+    "interaction_groups",
+    "coexistence_exclusivity",
+    "stacking_resolution",
+    "action_economy_interaction",
+    "duration_overlap",
+    "resource_interaction",
+    "trigger_graph_cycles",
+    "defense_interaction",
+    "transformation_compatibility",
+    "summon_companion_interaction",
+    "scaling_cap_interaction",
+    "synergy_class",
+    "explicit_source_rule",
+    "uncertainty",
+    "manual_review_reason",
+    "pricing_or_rav_consequence"
+  ],
+  "later_owners": {
+    "eligibility_acquisition": "CAB-09",
+    "attribute_skill_modifier_groups": "CAB-10",
+    "corpus_classification": "CAB-11",
+    "tree_structure": "CAB-12",
+    "high_risk_combinations": "CAB-13",
+    "equal_xp_and_multidimensional_tests": ["CAB-14", "CAB-15"],
+    "veteran_accumulation": "CAB-18"
+  },
+  "owner_questions": ["CAB-Q08-01","CAB-Q08-02","CAB-Q08-03","CAB-Q08-04","CAB-Q08-05","CAB-Q08-06"],
+  "strict_successor": "CAB-09"
+}
