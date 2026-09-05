@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.9.1",
+  "schema_version": "0.10.0",
   "program_id": "CAB",
   "program_name": "Character Advancement & Balance",
   "owner": "John Brandon Turner",
@@ -7,8 +7,8 @@
   "governing_document": "governance/application-planning/character-advancement-balance/CAB_CHARACTER_ADVANCEMENT_BALANCE_PROGRAM.md",
   "execution_envelope": "Each tranche is bounded below the 25-minute tool cutoff; overflow becomes an explicit follow-on rather than expanding the active tranche.",
   "status": "in_progress",
-  "completed_through": "CAB-08",
-  "current_work_item_id": "CAB-09",
+  "completed_through": "CAB-09",
+  "current_work_item_id": "CAB-10",
   "current_state": "selected_not_started",
   "tranches": [
     {"id":"CAB-01","name":"Authority, Source Census & AP Retirement","status":"completed_verified"},
@@ -18,9 +18,9 @@
     {"id":"CAB-05","name":"Five-Tier Model","status":"completed_verified"},
     {"id":"CAB-06","name":"XP Cost Calibration Framework","status":"completed_verified"},
     {"id":"CAB-07","name":"Action Economy & Simultaneous Power","status":"completed_verified"},
-    {"id":"CAB-08","name":"Stacking, Synergy & Power Multiplication","status":"completed_verified","artifacts":["CAB-08_STACKING_SYNERGY_AND_POWER_MULTIPLICATION.md","CAB-08_STACKING_SYNERGY_AUDIT.md","CAB-08_INTERACTION_MODEL_v0.1.0.json","CAB-08_OWNER_QUESTIONNAIRE.md","CAB-08_OWNER_DECISIONS_2026-09-05.md","CAB-08_COMPLETION_REPORT.md"]},
-    {"id":"CAB-09","name":"Acquisition & Eligibility","status":"selected_not_started"},
-    {"id":"CAB-10","name":"Attributes, Skills & Proficiencies","status":"not_started"},
+    {"id":"CAB-08","name":"Stacking, Synergy & Power Multiplication","status":"completed_verified"},
+    {"id":"CAB-09","name":"Acquisition & Eligibility","status":"completed_verified","artifacts":["CAB-09_ACQUISITION_AND_ELIGIBILITY.md","CAB-09_SOURCE_ACQUISITION_AUDIT.md","CAB-09_ACQUISITION_MODEL_v0.1.0.json","CAB-09_OWNER_DECISIONS_2026-09-05.md","CAB-09_COMPLETION_REPORT.md"]},
+    {"id":"CAB-10","name":"Attributes, Skills & Proficiencies","status":"selected_not_started"},
     {"id":"CAB-11","name":"Ability Corpus Statistical Audit","status":"not_started"},
     {"id":"CAB-12","name":"Ability-Tree Structural Audit","status":"not_started"},
     {"id":"CAB-13","name":"High-Risk Ability Audit","status":"not_started"},
@@ -35,8 +35,8 @@
     {"id":"CAB-22","name":"Final Rules & Content Repair Map","status":"not_started"},
     {"id":"CAB-23","name":"Completion Audit & Handoff","status":"not_started"}
   ],
-  "strict_next": "CAB-09",
-  "selection_note": "CAB-08 owner decisions are resolved. CAB-09 Acquisition & Eligibility is selected_not_started and may execute immediately under the standing CAB recommendation delegation recorded in CAB-08_OWNER_DECISIONS_2026-09-05.md.",
+  "strict_next": "CAB-10",
+  "selection_note": "CAB-09 completed and its seven recommendations were adopted under the standing owner recommendation delegation. CAB-10 Attributes, Skills & Proficiencies is selected_not_started and may execute on the next tranche order without a repetitive recommendation questionnaire stop unless a delegation guardrail is triggered.",
   "standing_owner_recommendation_delegation": {
     "effective_from": "CAB-09",
     "effective_through": "CAB-23",
@@ -90,15 +90,12 @@
     "consequential_free_action_limiter_required": true,
     "companion_policy": "price_meaningful_independent_action_economy_not_existence",
     "extra_action_authoring_posture": "unrestricted_extra_actions_reactions_and_ally_grants_uncommon_explicit_limited_and_priced",
-    "owner_approved": true,
-    "decision_artifact": "CAB-07_OWNER_DECISIONS_2026-09-05.md"
+    "owner_approved": true
   },
   "cab08_interaction_model": {
     "source_provenance_is_not_stacking_type": true,
     "explicit_source_interaction_preserved": true,
     "missing_interaction_state": "balance_unresolved_stacking",
-    "stacking_modes": ["coexist","additive","highest_only","lowest_only","highest_benefit_plus_highest_penalty","replace","refresh_duration","exclusive","binary_noncompounding","capped_additive","multiplicative_explicit","trigger_chain","prohibited_recursive"],
-    "synergy_classes": ["redundant","additive","enabling","compressive","multiplicative","persistent_bundle","trigger_chain","resource_loop","grant_or_substitution_chain","mixed"],
     "same_effect": "noncompounding_strongest_with_duration_refresh_unless_explicit_stack",
     "numeric_group_default": "highest_benefit_plus_highest_penalty",
     "advantage_disadvantage": "binary_noncompounding_both_cancel",
@@ -106,20 +103,27 @@
     "full_form": "one_full_replacement_form_at_a_time_unless_explicit_nesting",
     "multiplier": "strongest_same_group_multiplier_no_sequential_product_unless_explicit",
     "resource_trigger_cycle_policy": "unbounded_closed_cycles_manual_review_and_not_presumed_legal",
-    "owner_approved": true,
-    "decision_artifact": "CAB-08_OWNER_DECISIONS_2026-09-05.md"
+    "owner_approved": true
   },
-  "owner_questionnaire": {
-    "path": "governance/application-planning/character-advancement-balance/CAB-08_OWNER_QUESTIONNAIRE.md",
-    "status": "resolved_by_owner_2026-09-05",
-    "decision_artifact": "governance/application-planning/character-advancement-balance/CAB-08_OWNER_DECISIONS_2026-09-05.md",
-    "decisions": {
-      "CAB-Q08-01":"A",
-      "CAB-Q08-02":"A",
-      "CAB-Q08-03":"A",
-      "CAB-Q08-04":"A",
-      "CAB-Q08-05":"A",
-      "CAB-Q08-06":"A"
-    }
+  "cab09_acquisition_model": {
+    "eligibility_is_acquisition": false,
+    "xp_affordability_is_eligibility": false,
+    "acquisition_modes": ["ordinary_purchase","creation_selection","source_grant","source_qualified_selection","training_acquisition","exposure_acquisition","membership_acquisition","prestige_entry","archetype_magic_access","bonded_or_installed_acquisition","relationship_pathway_acquisition","milestone_or_narrative_acquisition","temporary_state_grant"],
+    "species_dataset_membership_is_automatic_biology": false,
+    "creation_only_requires_explicit_later_bridge": true,
+    "environment_presence_grants_permanent_advancement": false,
+    "learned_faction_ability_persists_after_membership_loss_by_default": true,
+    "affiliation_dependent_grants_may_suspend": true,
+    "structured_spells_direct_learning_xp": 0,
+    "structured_spells_use_archetype_capacity": true,
+    "relationship_eligibility_creates_live_relationship": false,
+    "source_silence_state": "acquisition_unresolved",
+    "owner_approved_under_standing_delegation": true,
+    "decision_artifact": "CAB-09_OWNER_DECISIONS_2026-09-05.md"
+  },
+  "current_decision_authority": {
+    "status": "CAB-09_resolved_under_standing_owner_delegation",
+    "decision_artifact": "governance/application-planning/character-advancement-balance/CAB-09_OWNER_DECISIONS_2026-09-05.md",
+    "recommendations_adopted": ["CAB-Q09-01","CAB-Q09-02","CAB-Q09-03","CAB-Q09-04","CAB-Q09-05","CAB-Q09-06","CAB-Q09-07"]
   }
 }
