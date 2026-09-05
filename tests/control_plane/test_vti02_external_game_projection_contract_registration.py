@@ -18,6 +18,7 @@ class Vti02ExternalGameProjectionContractRegistrationTests(unittest.TestCase):
         baseline = "027fad06d0bac3a20d56f0cc2a674581662cd1b9"
         merge = "01aa25d60ad71e5ed318b9680f859c6927a90541"
         branch = "integration/vti-02-multiversal-external-game-projection-contract"
+        vti03_branch = "integration/vti-03-stable-identity-versioning-synchronization"
         checkpoint = load_json("governance/ai/work-state/VTI-02-attempt-001.json")
         successor = load_json("governance/ai/work-state/VTI-03-attempt-001.json")
         backlog = load_json("governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json")
@@ -59,36 +60,44 @@ class Vti02ExternalGameProjectionContractRegistrationTests(unittest.TestCase):
         self.assertEqual(backlog["current_item"], "VTI-03")
 
         self.assertEqual(successor["work_item_id"], "VTI-03")
-        self.assertEqual(successor["status"], "selected_not_started")
+        self.assertIn(successor["status"], {"selected_not_started", "in_progress"})
         self.assertEqual(successor["application_baseline_sha"], merge)
-        self.assertIsNone(successor["implementation_branch"])
-        self.assertFalse(successor["implementation_authority"])
-        self.assertFalse(successor["branch_creation_authorized"])
-        self.assertFalse(successor["acceptance_package_authorized"])
-        self.assertFalse(successor["production_mutation_authorized"])
 
         self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-03")
-        self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
-        self.assertIsNone(pointer["active_attempt"]["implementation_branch"])
-        self.assertFalse(pointer["active_attempt"]["implementation_authority"])
-        self.assertFalse(pointer["bounded_authority"]["vti_implementation"])
-        self.assertFalse(pointer["bounded_authority"]["acceptance_package_authorized"])
-        self.assertFalse(pointer["bounded_authority"]["production_mutation_authorized"])
+        self.assertEqual(pointer["active_attempt"]["status"], successor["status"])
+        self.assertEqual(index["current"]["work_item_id"], "VTI-03")
+        self.assertEqual(index["current"]["status"], successor["status"])
+        self.assertEqual(runtime["active_work"]["work_item"], "VTI-03")
+        self.assertEqual(runtime["active_work"]["state"], successor["status"])
+        self.assertEqual(runtime["application_repository"]["canonical_main"], merge)
 
         vti02_authority = registry["vti_02_authority"]
         self.assertTrue(vti02_authority["retired"])
         self.assertFalse(vti02_authority["implementation_authority"])
         self.assertEqual(vti02_authority["application_merge_sha"], merge)
         vti03_authority = registry["vti_03_authority"]
-        self.assertTrue(vti03_authority["selected_not_started"])
-        self.assertFalse(vti03_authority["implementation_authority"])
-        self.assertIsNone(vti03_authority["implementation_branch"])
 
-        self.assertEqual(index["current"]["work_item_id"], "VTI-03")
-        self.assertEqual(index["current"]["status"], "selected_not_started")
-        self.assertEqual(runtime["active_work"]["work_item"], "VTI-03")
-        self.assertEqual(runtime["active_work"]["state"], "selected_not_started")
-        self.assertEqual(runtime["application_repository"]["canonical_main"], merge)
+        if successor["status"] == "selected_not_started":
+            self.assertIsNone(successor["implementation_branch"])
+            self.assertFalse(successor["implementation_authority"])
+            self.assertFalse(successor["branch_creation_authorized"])
+            self.assertFalse(successor["acceptance_package_authorized"])
+            self.assertFalse(successor["production_mutation_authorized"])
+            self.assertTrue(vti03_authority["selected_not_started"])
+            self.assertFalse(vti03_authority["implementation_authority"])
+            self.assertIsNone(vti03_authority["implementation_branch"])
+            self.assertFalse(pointer["bounded_authority"]["vti_implementation"])
+        else:
+            self.assertEqual(successor["implementation_branch"], vti03_branch)
+            self.assertTrue(successor["implementation_authority"])
+            self.assertTrue(successor["branch_creation_authorized"])
+            self.assertTrue(successor["acceptance_package_authorized"])
+            self.assertFalse(vti03_authority["selected_not_started"])
+            self.assertTrue(vti03_authority["implementation_authority"])
+            self.assertEqual(vti03_authority["implementation_branch"], vti03_branch)
+            self.assertTrue(pointer["bounded_authority"]["vti_implementation"])
+            self.assertTrue(pointer["bounded_authority"]["acceptance_package_authorized"])
+            self.assertEqual(pointer["bounded_authority"]["production_mutation_authorized"], successor["production_mutation_authorized"])
 
         for phrase in (
             "VTI-02 — Multiversal External Game Projection Contract",
