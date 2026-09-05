@@ -80,7 +80,7 @@ class Alp07PlayerGmUxAccessibilityNotificationsRecognitionHistoryRegistrationTes
             "viewer role",
             "accessibility presentation metadata",
             "notification candidates",
-            "recognition history",
+            "Recognition history",
             "hidden or unauthorized",
             "migration `0022`",
             "ALP-08",
