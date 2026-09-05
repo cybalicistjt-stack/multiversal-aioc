@@ -17,11 +17,12 @@ ALP-08 — MAL/ISE/WCI/GCL Integration & Golden Learning/Recognition Proof — c
 - GREEN artifacts: Linux `9973438660` / `44c4b8843b6739c0193d22ccb6392a402acde15faa3e4fa2b29c1613b6c1f02c`; Windows `9973439976` / `6e68d3dafe3d3d27b8d99d3c762050478b6800fde60d9d685b78374efd8b57ec`; comparison `9973454713` / `dec373a09a984b77e0756ae9d4dddcf484cba33ef02df7f72b8f184f97f47c18`.
 - The first GREEN comparator attempt, job `101343261784`, encountered a GitHub `actions/download-artifact` `ECONNRESET` while retrieving the Linux receipt. Linux and Windows validation had already passed. A targeted retry on the same exact head succeeded without any source change; this is a transient environment retry, not a product repair and not an unchanged-evidence rerun.
 - Application PR `414` squash-merged as `e61109affe9d662e6da6eb214c1acc870079c1a7`.
+- Terminal AIOC closeout candidate `3d75ddc4e1ebe7e1ee149ab498e64a82feca1bbf`, run `33981315142`, passed canonical repository health and termination preflight `13/13`, then exposed six lifecycle-only control-plane failures: five predecessor regressions capped the active selector inside ALP after ALP-08 completion, and the ALP-08 regression required the frozen `VTI-01+` implementation-boundary literal. Those changed-evidence defects are repaired by making the predecessor regressions program-lifecycle-aware and restoring the exact frozen boundary wording without changing product or authority scope.
 - Historical predecessor profile fanout: `0`.
 - Application-feature repair cycles: `0`.
-- Validation-contract repair cycles: `2`.
+- Validation-contract repair cycles: `3`.
 - Repository-state repair cycles: `1`.
-- Total changed-evidence repair cycles: `3`.
+- Total changed-evidence repair cycles: `4`.
 - Unchanged-evidence reruns: `0`.
 - Post-merge stale-pointer incidents: `0`.
 - No-progress cycles: `0`.
@@ -40,7 +41,7 @@ ALP-08 required two owner `Continue` commands and two execution cycles. The firs
 - completed within two cycles: `true`
 - control-plane incident: `true`
 - genuine blocker: `null`
-- repairs: repository-state `1`, validation-contract `2`, application-feature `0`
+- repairs: repository-state `1`, validation-contract `3`, application-feature `0`
 - unrelated historical validation jobs: `0`
 - reruns without changed evidence: `0`
 - post-merge stale-pointer incidents: `0`
