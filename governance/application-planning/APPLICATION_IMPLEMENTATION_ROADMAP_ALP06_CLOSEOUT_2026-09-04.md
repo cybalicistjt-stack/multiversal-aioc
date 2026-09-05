@@ -60,14 +60,16 @@ PR #412 squash-merged the unchanged validated production head into application `
 
 The tranche required two owner Continue cycles because the first execution window ended after the verified application merge while AIOC closeout synchronization was in progress. That was a genuine execution-window blocker, not a no-progress or second-Continue control-plane incident.
 
-Observed changed-evidence validation repairs across the tranche:
+Observed changed-evidence repairs across the tranche:
 - repository-state repairs: 0
-- validation-contract repairs: 0
+- validation-contract repairs: 3
 - application-feature repairs: 0
 - no-progress cycles: 0
 - unrelated historical validation jobs: 0
 - reruns without changed evidence: 0
 - stale-pointer incidents: 0
+
+Closeout run `33940248771` passed canonical repository health and termination preflight 13/13, then exposed exactly three validation-contract defects: the ALP-03 and ALP-04 predecessor regressions capped successor progress before completed ALP-06, and formatting broke the frozen literal `rehearsal attempts` marker. Those three defects were repaired from that changed evidence only.
 
 During resumed closeout, newer parallel CAB main was inherited before ALP closeout state was replayed, so parallel analysis work was preserved rather than overwritten.
 
