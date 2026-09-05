@@ -65,12 +65,14 @@ Application PR #413 squash-merged the exact validated production tree as verifie
 
 ALP-07 used two owner Continue cycles. The first execution window ended during diagnosis of a genuine governed-start validation failure; this is recorded as a genuine tool-execution-boundary blocker rather than a control-plane incident.
 
+Terminal closeout run `33944348255`, job `101247624985`, passed canonical repository health and termination preflight `13/13`, then exposed six stale control-plane assertions: three predecessor lifecycle caps before ALP-07 completion, one ALP-07 literal wording assertion, one ALP-07 pre-closeout authority assertion, and one pointer-preload assertion caused by retaining both ALP-06 and ALP-07 closeout supplements. Those findings provided changed evidence for one additional validation-contract repair cycle.
+
 Changed-evidence repairs before terminal closeout:
 
-- validation-contract repair cycles: `1`
+- validation-contract repair cycles: `2`
 - repository-state repair cycles: `1`
 - application feature repair cycles: `0`
-- total repair cycles: `2`
+- total repair cycles: `3`
 - no-progress cycles: `0`
 - unchanged-evidence reruns: `0`
 - unrelated historical validation jobs: `0`
