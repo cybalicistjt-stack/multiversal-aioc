@@ -11,7 +11,7 @@ def load_json(path):
 
 class Vti06SceneMapTokenMaiBridgeRegistrationTests(unittest.TestCase):
     def test_vti06_governed_start_is_consistent_across_current_control_plane(self):
-        baseline = "4bd061a87852f4bb4b17f5d500ae6ab85081c72b"
+        baseline = "e9ddbf9c763faca74689cb3776ad21501c341ba5"
         branch = "integration/vti-06-scene-map-token-mai-bridge"
         checkpoint = load_json("governance/ai/work-state/VTI-06-attempt-001.json")
         backlog = load_json("governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json")
@@ -29,8 +29,17 @@ class Vti06SceneMapTokenMaiBridgeRegistrationTests(unittest.TestCase):
         self.assertFalse(checkpoint["production_mutation_authorized"])
         self.assertIsNone(checkpoint["validation"]["acceptance_red"])
 
+        reconciliation = checkpoint["baseline_reconciliation"]
+        self.assertEqual(reconciliation["previous_authorized_sha"], "4bd061a87852f4bb4b17f5d500ae6ab85081c72b")
+        self.assertEqual(reconciliation["current_main_sha"], baseline)
+        self.assertEqual(reconciliation["previous_tree_sha"], "8e9942b47cb5231816d4584397d460eaec522846")
+        self.assertEqual(reconciliation["current_tree_sha"], reconciliation["previous_tree_sha"])
+        self.assertEqual(reconciliation["intermediate_placeholder_commit"], "973490e8358fe0a48dad43933ac3675acd188303")
+        self.assertFalse(reconciliation["net_semantic_change"])
+
         vti06 = next(item for item in backlog["tranches"] if item["id"] == "VTI-06")
         self.assertEqual(vti06["status"], "in_progress")
+        self.assertEqual(vti06["application_baseline_sha"], baseline)
         self.assertEqual(vti06["implementation_branch"], branch)
         self.assertTrue(vti06["implementation_authority"])
         self.assertEqual(backlog["active_contract"]["work_item"], "VTI-06")
@@ -39,6 +48,7 @@ class Vti06SceneMapTokenMaiBridgeRegistrationTests(unittest.TestCase):
 
         self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-06")
         self.assertEqual(pointer["active_attempt"]["status"], "in_progress")
+        self.assertEqual(pointer["active_attempt"]["application_baseline_sha"], baseline)
         self.assertEqual(pointer["active_attempt"]["implementation_branch"], branch)
         self.assertTrue(pointer["bounded_authority"]["acceptance_package_authorized"])
         self.assertFalse(pointer["bounded_authority"]["production_mutation_authorized"])
@@ -46,6 +56,7 @@ class Vti06SceneMapTokenMaiBridgeRegistrationTests(unittest.TestCase):
         authority = registry["vti_06_authority"]
         self.assertFalse(authority["selected_not_started"])
         self.assertTrue(authority["implementation_authority"])
+        self.assertEqual(authority["application_baseline_sha"], baseline)
         self.assertEqual(authority["implementation_branch"], branch)
         self.assertTrue(authority["branch_creation_authorized"])
         self.assertTrue(authority["acceptance_package_authorized"])
@@ -54,6 +65,7 @@ class Vti06SceneMapTokenMaiBridgeRegistrationTests(unittest.TestCase):
 
         self.assertEqual(index["current"]["work_item_id"], "VTI-06")
         self.assertEqual(index["current"]["status"], "in_progress")
+        self.assertEqual(index["current"]["application_baseline_sha"], baseline)
         self.assertEqual(index["current"]["implementation_branch"], branch)
         self.assertFalse(index["current"]["production_mutation_authorized"])
         self.assertEqual(runtime["active_work"]["work_item"], "VTI-06")
