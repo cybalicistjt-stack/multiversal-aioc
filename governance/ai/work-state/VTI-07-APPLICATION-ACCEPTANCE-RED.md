@@ -13,3 +13,5 @@
 - Comparison artifact: `9998375374`
 
 Raw lane evidence on both platforms states that `packages/contracts/src/virtual-tabletop-interoperability/permissions-hidden-information-gm-authority-contract.ts` is intentionally absent. The selector resolved exactly one current-family profile (`VTI-07`), and the deterministic payload agrees cross-platform. This is genuine matching TDD RED and authorizes only the bounded production contract.
+
+The RED-unlock authority projection was generated from canonical AIOC main `846459e74360dca83ddbbe8dc225896ab55ee5d0`; this evidence-only commit establishes a normal user-authored exact-head validation candidate after the self-removing projection commit.
