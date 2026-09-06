@@ -70,36 +70,38 @@ class Vti06SceneMapTokenMaiBridgeRegistrationTests(unittest.TestCase):
         for key in ("branch_creation_authorized", "acceptance_package_authorized", "production_mutation_authorized", "scene_map_token_mai_bridge_authorized"):
             self.assertFalse(authority[key])
 
-        self.assertEqual(successor["status"], "selected_not_started")
+        # VTI-06 permanently proves which strict successor was selected and the
+        # exact baseline handed to it; it must not freeze VTI-07 at its initial
+        # selected_not_started lifecycle state after a later governed start.
         self.assertEqual(successor["application_baseline_sha"], merge)
-        self.assertIsNone(successor["implementation_branch"])
-        self.assertFalse(successor["implementation_authority"])
-        self.assertFalse(successor["branch_creation_authorized"])
-        self.assertFalse(successor["acceptance_package_authorized"])
-        self.assertFalse(successor["production_mutation_authorized"])
+        self.assertIn(successor["status"], {"selected_not_started", "in_progress", "ready_for_review", "completed_verified"})
+        if successor["status"] == "selected_not_started":
+            self.assertIsNone(successor["implementation_branch"])
+            self.assertFalse(successor["implementation_authority"])
+            self.assertFalse(successor["branch_creation_authorized"])
+            self.assertFalse(successor["acceptance_package_authorized"])
+            self.assertFalse(successor["production_mutation_authorized"])
+        elif successor["status"] in {"in_progress", "ready_for_review"}:
+            self.assertEqual(successor["implementation_branch"], "integration/vti-07-permissions-hidden-information-gm-authority")
+            self.assertTrue(successor["implementation_authority"])
+        else:
+            self.assertFalse(successor["implementation_authority"])
 
         successor_authority = registry["vti_07_authority"]
-        self.assertTrue(successor_authority["selected_not_started"])
-        self.assertFalse(successor_authority["retired"])
-        self.assertFalse(successor_authority["implementation_authority"])
-        self.assertEqual(successor_authority["application_baseline_sha"], merge)
-        self.assertIsNone(successor_authority["implementation_branch"])
-        self.assertFalse(successor_authority["branch_creation_authorized"])
-        self.assertFalse(successor_authority["acceptance_package_authorized"])
-        self.assertFalse(successor_authority["production_mutation_authorized"])
-        self.assertFalse(successor_authority["permissions_hidden_information_gm_authority_authorized"])
+        self.assertFalse(successor_authority.get("provider_specific_schema_authorized", False))
+        self.assertFalse(successor_authority.get("credential_or_external_account_mutation_authorized", False))
+        self.assertFalse(successor_authority.get("adapter_implementation_authorized", False))
+        self.assertFalse(successor_authority.get("vti08_plus_authorized", False))
+        self.assertFalse(successor_authority.get("sgc01_plus_authorized", False))
 
         self.assertEqual(backlog["completed_through"], "VTI-06")
         self.assertEqual(backlog["current_item"], "VTI-07")
         self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-07")
-        self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
         self.assertEqual(index["current"]["work_item_id"], "VTI-07")
-        self.assertEqual(index["current"]["status"], "selected_not_started")
         self.assertEqual(runtime["active_work"]["work_item"], "VTI-07")
-        self.assertEqual(runtime["active_work"]["state"], "selected_not_started")
         self.assertEqual(runtime["application_repository"]["canonical_main"], merge)
 
-        for phrase in ("VTI-06 — Scene, Map, Token & MAI Bridge", "COMPLETED_VERIFIED", "VTI-07 — Permissions, Hidden Information & GM Authority", "SELECTED_NOT_STARTED", "Platform selection remains evidence-driven"):
+        for phrase in ("VTI-06 — Scene, Map, Token & MAI Bridge", "COMPLETED_VERIFIED", "VTI-07 — Permissions, Hidden Information & GM Authority", "Platform selection remains evidence-driven"):
             self.assertIn(phrase, program)
 
     def test_vti06_completed_scope_preserves_native_authority_boundaries(self):
