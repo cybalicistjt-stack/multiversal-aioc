@@ -18,9 +18,11 @@ VTI-04 — Rules Action & Roll Bridge — is `completed_verified` and retired. G
 
 VTI-05 — Character Sheet, Item & Compendium Projection — is `completed_verified` and retired. Genuine matching acceptance RED was sealed from exact application head `5ff92aaebc311933a3fa814b22badcb8ee694f76` in run `33997794873` with deterministic receipt `d234d207d409056383670a853e29d6d2748ea5bc59db3892f3c7d9a0133bff7b`. Final exact-head repository health, self-hosted Linux, self-hosted Windows and deterministic comparison all passed at `a26f4aa49f76c668d8a28030d52e3b1719cd25ef` in run `33999669961` with receipt `b093ef2a838a5d76157342f91c54d8fa79b6ab4458aa21f3bac2f762bdcf688b`. Application PR #420 was squash-merged as `6b7e101c08d52362af824b68f43cd983794893c6`.
 
-The owner-directed IC-01 through IC-13 technical UI convergence sequence subsequently advanced application `main` to `4bd061a87852f4bb4b17f5d500ae6ab85081c72b`. That sequence did not replace VTI roadmap ownership. The separate owner-only Orange/Ember versus Chromatic palette gate remains open without reopening IC technical implementation.
+The owner-directed IC-01 through IC-13 technical UI convergence sequence advanced application `main` to `4bd061a87852f4bb4b17f5d500ae6ab85081c72b`. That sequence did not replace VTI roadmap ownership. The separate owner-only Orange/Ember versus Chromatic palette gate remains open without reopening IC technical implementation.
 
-VTI-06 — Scene, Map, Token & MAI Bridge — is `in_progress` as `VTI-06-attempt-001` from exact current application main `4bd061a87852f4bb4b17f5d500ae6ab85081c72b` on `integration/vti-06-scene-map-token-mai-bridge`. Branch creation, bounded implementation authority and acceptance-package authority are open. Production scene/map/token/MAI bridge mutation remains locked until genuine matching self-hosted Linux/Windows RED is sealed.
+After the VTI-06 governed start validated, application `main` advanced through `973490e8358fe0a48dad43933ac3675acd188303`, which added only a temporary `placeholder` file, and `e9ddbf9c763faca74689cb3776ad21501c341ba5`, which removed only that file. The current `e9ddbf9c...` tree is `8e9942b47cb5231816d4584397d460eaec522846`, exactly the same tree as `4bd061a...`. This exact-head reconciliation therefore changes no application semantics, VTI scope, or authority; the IC-13 historical closeout anchor remains `4bd061a...`.
+
+VTI-06 — Scene, Map, Token & MAI Bridge — is `in_progress` as `VTI-06-attempt-001` from exact current application main `e9ddbf9c763faca74689cb3776ad21501c341ba5` on `integration/vti-06-scene-map-token-mai-bridge`. Branch creation, bounded implementation authority and acceptance-package authority are open. Production scene/map/token/MAI bridge mutation remains locked until genuine matching self-hosted Linux/Windows RED is sealed.
 
 ## Purpose
 
@@ -109,7 +111,7 @@ Sealed completion evidence:
 
 ## VTI-06 governed-start boundary
 
-VTI-06 is governed-started from exact current application main `4bd061a87852f4bb4b17f5d500ae6ab85081c72b` as `VTI-06-attempt-001` on `integration/vti-06-scene-map-token-mai-bridge`.
+VTI-06 is governed-started and exact-head reconciled to current application main `e9ddbf9c763faca74689cb3776ad21501c341ba5` as `VTI-06-attempt-001` on `integration/vti-06-scene-map-token-mai-bridge`. The current main tree is identical to the original governed-start tree; no semantic authority changed during reconciliation.
 
 The bounded acceptance contract may define:
 - provider-neutral projection of canonical Scene, map-version and placement semantics into external scene/map/token presentation envelopes;
@@ -141,6 +143,7 @@ Until genuine matching self-hosted Linux/Windows RED is sealed:
 - VTI-04 external VTT request/presentation clients may not independently resolve Multiversal rules, supply authoritative RNG outcomes, or autonomously exercise GM adjudication.
 - Duplicate external requests may not resolve twice when an authoritative receipt can be replayed or status checked.
 - IC-01 through IC-13 technical UI convergence may alter presentation composition but not the behavioral/data/permission/provenance authority projected through VTI.
+- The post-governed-start placeholder add/remove pair is net-zero and may not be interpreted as new VTI scope or product semantics.
 - VTI-06 is in_progress on its registered branch with acceptance-package authority; production scene/map/token/MAI bridge mutation remains locked pending genuine matching RED.
 - VTI-06 must reuse existing native spatial, Scene, map, placement, visibility and MAI/ISE/SSA semantic authorities rather than duplicate them.
 - VTI-07+ and SGC-01+ remain unauthorized until their own governed selections and starts.
