@@ -1,7 +1,7 @@
 # VTI — Virtual Tabletop Interoperability
 
 **Program ID:** VTI  
-**Status:** OWNER-APPROVED — VTI-01 THROUGH VTI-06 COMPLETED_VERIFIED; VTI-07 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — VTI-01 THROUGH VTI-06 COMPLETED_VERIFIED; VTI-07 IN_PROGRESS — ACCEPTANCE ONLY  
 **Activation:** after completed_verified ALP-08  
 **Successor:** SGC-01  
 **Owner and final authority:** John Brandon Turner
@@ -22,7 +22,7 @@ The owner-directed IC-01 through IC-13 technical UI convergence sequence advance
 
 After the VTI-06 governed start validated, application `main` advanced through `973490e8358fe0a48dad43933ac3675acd188303`, which added only a temporary `placeholder` file, and `e9ddbf9c763faca74689cb3776ad21501c341ba5`, which removed only that file. The current `e9ddbf9c...` tree is `8e9942b47cb5231816d4584397d460eaec522846`, exactly the same tree as `4bd061a...`. This exact-head reconciliation therefore changes no application semantics, VTI scope, or authority; the IC-13 historical closeout anchor remains `4bd061a...`.
 
-VTI-06 — Scene, Map, Token & MAI Bridge — is `completed_verified` and retired. Genuine matching acceptance RED was sealed from exact application head `bf00d1d17befb35560c3ee5c18899d25df209d83` in run `34058733989` with deterministic receipt `456ec49cfaf07080c948cfa8b0024330179433b88f7aabedbc220e486e49103d`. Final exact-head repository health, self-hosted Linux, self-hosted Windows and deterministic comparison all passed at `80cd22e0e28304c0a59aa5954d35d504b55c4ea0` in run `34059463389` with receipt `636c05c378b4c081ae51b3f8b5feb4f5e446471073f0ce0e6a6153c70c5754a1`. Application PR #435 was merged as `1e325045b2fc65d067a5e587f8cde78dcba9f766`. VTI-07 — Permissions, Hidden Information & GM Authority — is the strict successor and is `selected_not_started` from that exact application main with no branch, acceptance-package, implementation or production authority.
+VTI-06 — Scene, Map, Token & MAI Bridge — is `completed_verified` and retired. Genuine matching acceptance RED was sealed from exact application head `bf00d1d17befb35560c3ee5c18899d25df209d83` in run `34058733989` with deterministic receipt `456ec49cfaf07080c948cfa8b0024330179433b88f7aabedbc220e486e49103d`. Final exact-head repository health, self-hosted Linux, self-hosted Windows and deterministic comparison all passed at `80cd22e0e28304c0a59aa5954d35d504b55c4ea0` in run `34059463389` with receipt `636c05c378b4c081ae51b3f8b5feb4f5e446471073f0ce0e6a6153c70c5754a1`. Application PR #435 was merged as `1e325045b2fc65d067a5e587f8cde78dcba9f766`. VTI-07 — Permissions, Hidden Information & GM Authority — is `in_progress` acceptance-only on `integration/vti-07-permissions-hidden-information-gm-authority` from that exact application main. Branch creation, implementation scaffolding and acceptance-package authority are open; production permission behavior remains locked until genuine matching RED is sealed.
 
 ## Purpose
 
@@ -55,8 +55,8 @@ VTI follows the native mine-note-derived semantic families so adapters project m
 6. **VTI-06 — Scene, Map, Token & MAI Bridge** — **COMPLETED_VERIFIED**.  
    Projects existing canonical Multiversal Scene, map-version, placement and MAI/ISE/SSA semantics to provider-neutral scene/map/token envelopes with deterministic normalization, explicit `present`/`redacted`/`unsupported` fidelity, native wall/door/grid semantics only, fail-closed hidden presentation, and preserved visibility, ownership, consent and GM authority. No provider-specific adapter, live external mutation, durable persistence or VTI-07 permission-engine behavior was introduced.
 
-7. **VTI-07 — Permissions, Hidden Information & GM Authority** — **SELECTED_NOT_STARTED**.  
-   Preserve ownership, consent, GM adjudication and hidden-information filtering across external clients; prevent hidden counts/content leakage. Selection alone grants no branch, acceptance-package, implementation or production authority.
+7. **VTI-07 — Permissions, Hidden Information & GM Authority** — **IN_PROGRESS — ACCEPTANCE ONLY**.  
+   Preserve ownership, consent, GM adjudication and hidden-information filtering across external clients; prevent hidden counts/content leakage. Acceptance-package authority is open; production behavior remains locked until genuine matching RED is sealed.
 
 8. **VTI-08 — Adapter SDK, Capability Manifest & Deterministic Reference VTT**  
    Define the adapter SDK and a fake/reference VTT so the entire integration contract can be tested without a commercial platform.
@@ -128,11 +128,11 @@ Sealed completion evidence:
 - application PR #435 merge `1e325045b2fc65d067a5e587f8cde78dcba9f766`;
 - historical profile fanout `0`, application-feature repair cycles `0`, and one final validation-contract wording repair on changed evidence only.
 
-## VTI-07 selection boundary
+## VTI-07 governed-start boundary
 
-VTI-07 — Permissions, Hidden Information & GM Authority — is `selected_not_started` as `VTI-07-attempt-001` from exact application main `1e325045b2fc65d067a5e587f8cde78dcba9f766`. Selection records strict order only. No VTI-07 application branch, acceptance package, permission behavior, production mutation or permission-engine implementation is authorized until a separate governed start validates and merges.
+VTI-07 — Permissions, Hidden Information & GM Authority — is `in_progress` acceptance-only as `VTI-07-attempt-001` on `integration/vti-07-permissions-hidden-information-gm-authority` from exact application main `1e325045b2fc65d067a5e587f8cde78dcba9f766`. Branch creation, bounded implementation scaffolding and acceptance-package authority are open. Production permission/hidden-information/GM-authority behavior remains locked until genuine matching self-hosted Linux/Windows RED is sealed.
 
-A future governed start may bound provider-neutral preservation of canonical Multiversal ownership, consent, visibility, hidden-information and GM-authority decisions across derivative external-VTT clients. External VTTs may not become authoritative for permissions, adjudication or hidden state. Hidden counts/content, redacted identities and GM-only material remain fail-closed with no inference channel. Provider-specific schemas, credentials/accounts, adapter implementation, live external/canonical mutation, durable persistence/new migration, provider activation, tester distribution, release/deployment, VTI-08+ and SGC-01+ remain unauthorized.
+VTI-07 must consume canonical Multiversal ownership, consent, visibility, authorization, hidden-information and GM-authority decisions; external VTTs may not become authoritative for permissions, adjudication or hidden state. Hidden counts/content, redacted identities and GM-only material remain fail-closed with no inference channel, and unsafe target fidelity downgrades to `redacted` or `unsupported`. Provider-specific schemas, credentials/accounts, adapter implementation, live external/canonical mutation, durable persistence/new migration, provider activation, tester distribution, release/deployment, VTI-08+ and SGC-01+ remain unauthorized.
 
 ## Invariants
 
