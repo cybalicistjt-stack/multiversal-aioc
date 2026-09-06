@@ -13,7 +13,7 @@ def load_text(path):
 class Vti05CharacterSheetItemCompendiumProjectionRegistrationTests(unittest.TestCase):
     def test_vti05_completed_lifecycle_and_vti06_successor_are_consistent(self):
         merge = "6b7e101c08d52362af824b68f43cd983794893c6"
-        current_app_main = "4bd061a87852f4bb4b17f5d500ae6ab85081c72b"
+        current_app_main = "e9ddbf9c763faca74689cb3776ad21501c341ba5"
         checkpoint = load_json("governance/ai/work-state/VTI-05-attempt-001.json")
         vti06 = load_json("governance/ai/work-state/VTI-06-attempt-001.json")
         backlog = load_json("governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json")
