@@ -1,7 +1,7 @@
 # VTI — Virtual Tabletop Interoperability
 
 **Program ID:** VTI  
-**Status:** OWNER-APPROVED — VTI-01 THROUGH VTI-07 COMPLETED_VERIFIED; VTI-08 SELECTED_NOT_STARTED  
+**Status:** OWNER-APPROVED — VTI-01 THROUGH VTI-07 COMPLETED_VERIFIED; VTI-08 IN_PROGRESS — ACCEPTANCE-ONLY UNTIL MATCHING RED  
 **Activation:** after completed_verified ALP-08  
 **Successor:** SGC-01  
 **Owner and final authority:** John Brandon Turner
@@ -22,7 +22,7 @@ The owner-directed IC-01 through IC-13 technical UI convergence sequence advance
 
 After the VTI-06 governed start validated, application `main` advanced through `973490e8358fe0a48dad43933ac3675acd188303`, which added only a temporary `placeholder` file, and `e9ddbf9c763faca74689cb3776ad21501c341ba5`, which removed only that file. The current `e9ddbf9c...` tree is `8e9942b47cb5231816d4584397d460eaec522846`, exactly the same tree as `4bd061a...`. This exact-head reconciliation therefore changes no application semantics, VTI scope, or authority; the IC-13 historical closeout anchor remains `4bd061a...`.
 
-VTI-06 — Scene, Map, Token & MAI Bridge — is `completed_verified` and retired. VTI-07 — Permissions, Hidden Information & GM Authority — is `completed_verified` and retired after application PR #436 merged as `692da4f4792426b9c62f6be14db60fc63eb09d6b` from exact validated head `63e3194792375bb3abf8955f2448fbea282e859f` / run `34064468595` with deterministic receipt `8e2b1cab0247a40829f155a360f4a0576d3b3ca625713cd5d5ac7847fabb9ac4`. VTI-08 — Adapter SDK, Capability Manifest & Deterministic Reference VTT — is the strict successor and is `selected_not_started` from that exact application main with no branch, acceptance-package, implementation or production authority.
+VTI-06 — Scene, Map, Token & MAI Bridge — is `completed_verified` and retired. VTI-07 — Permissions, Hidden Information & GM Authority — is `completed_verified` and retired after application PR #436 merged as `692da4f4792426b9c62f6be14db60fc63eb09d6b` from exact validated head `63e3194792375bb3abf8955f2448fbea282e859f` / run `34064468595` with deterministic receipt `8e2b1cab0247a40829f155a360f4a0576d3b3ca625713cd5d5ac7847fabb9ac4`. VTI-08 — Adapter SDK, Capability Manifest & Deterministic Reference VTT — is `in_progress` acceptance-only on `integration/vti-08-adapter-sdk-capability-manifest-reference-vtt` from that exact application main. Branch/scaffolding and acceptance-package authority are open; production adapter-SDK, capability-manifest and reference-VTT behavior remains locked until genuine matching self-hosted Linux/Windows RED is sealed.
 
 ## Purpose
 
@@ -56,10 +56,10 @@ VTI follows the native mine-note-derived semantic families so adapters project m
    Projects existing canonical Multiversal Scene, map-version, placement and MAI/ISE/SSA semantics to provider-neutral scene/map/token envelopes with deterministic normalization, explicit `present`/`redacted`/`unsupported` fidelity, native wall/door/grid semantics only, fail-closed hidden presentation, and preserved visibility, ownership, consent and GM authority. No provider-specific adapter, live external mutation, durable persistence or VTI-07 permission-engine behavior was introduced.
 
 7. **VTI-07 — Permissions, Hidden Information & GM Authority** — **COMPLETED_VERIFIED**.  
-   Preserve ownership, consent, GM adjudication and hidden-information filtering across external clients; prevent hidden counts/content leakage. Matching acceptance RED is sealed; bounded provider-neutral production permission-preservation behavior is authorized while provider/persistence/successor authority remains closed.
+   Preserve ownership, consent, GM adjudication and hidden-information filtering across external clients; prevent hidden counts/content leakage. Matching acceptance RED and exact-head final GREEN are sealed, application PR #436 is merged, and VTI-07 authority is retired.
 
-8. **VTI-08 — Adapter SDK, Capability Manifest & Deterministic Reference VTT**  
-   Define the adapter SDK and a fake/reference VTT so the entire integration contract can be tested without a commercial platform.
+8. **VTI-08 — Adapter SDK, Capability Manifest & Deterministic Reference VTT** — **IN_PROGRESS — ACCEPTANCE-ONLY UNTIL MATCHING RED**.  
+   Define the provider-neutral adapter SDK, explicit capability manifest and deterministic fake/reference VTT so the completed integration contracts can be tested end-to-end without a commercial platform. Production behavior remains locked pending genuine matching acceptance RED.
 
 9. **VTI-09 — First Full Platform Integration**  
    Select the best supported platform at implementation time based on current APIs/licensing; deliver the first deep playable integration without precommitting the roadmap to a vendor.
@@ -130,9 +130,9 @@ Sealed completion evidence:
 
 ## VTI-07 governed-start boundary (historical)
 
-At governed start, VTI-07 — Permissions, Hidden Information & GM Authority — was `in_progress` acceptance-only as `VTI-07-attempt-001` on `integration/vti-07-permissions-hidden-information-gm-authority` from exact application main `1e325045b2fc65d067a5e587f8cde78dcba9f766`. Branch creation, bounded implementation scaffolding and acceptance-package authority are open. Production permission/hidden-information/GM-authority behavior remains locked until genuine matching self-hosted Linux/Windows RED is sealed.
+At governed start, VTI-07 — Permissions, Hidden Information & GM Authority — was `in_progress` acceptance-only as `VTI-07-attempt-001` on `integration/vti-07-permissions-hidden-information-gm-authority` from exact application main `1e325045b2fc65d067a5e587f8cde78dcba9f766`. Branch creation, bounded implementation scaffolding and acceptance-package authority were opened. Production permission/hidden-information/GM-authority behavior remained locked until genuine matching self-hosted Linux/Windows RED was sealed.
 
-VTI-07 must consume canonical Multiversal ownership, consent, visibility, authorization, hidden-information and GM-authority decisions; external VTTs may not become authoritative for permissions, adjudication or hidden state. Hidden counts/content, redacted identities and GM-only material remain fail-closed with no inference channel, and unsafe target fidelity downgrades to `redacted` or `unsupported`. Provider-specific schemas, credentials/accounts, adapter implementation, live external/canonical mutation, durable persistence/new migration, provider activation, tester distribution, release/deployment, VTI-08+ and SGC-01+ remain unauthorized.
+VTI-07 consumed canonical Multiversal ownership, consent, visibility, authorization, hidden-information and GM-authority decisions; external VTTs did not become authoritative for permissions, adjudication or hidden state. Hidden counts/content, redacted identities and GM-only material remained fail-closed with no inference channel, and unsafe target fidelity downgraded to `redacted` or `unsupported`. Provider-specific schemas, credentials/accounts, adapter implementation, live external/canonical mutation, durable persistence/new migration, provider activation, tester distribution and release/deployment remained outside VTI-07.
 
 ## Invariants
 
@@ -142,15 +142,15 @@ VTI-07 must consume canonical Multiversal ownership, consent, visibility, author
 - No VTT adapter may bypass visibility, ownership, consent or GM authority.
 - No vendor is selected by roadmap text; Platform selection remains evidence-driven at VTI-09.
 - Native SSA/KFR/ODL/MAL/ALP state is projected only where a platform supports it; VTI does not recreate those systems externally.
-- VTI-01 through VTI-06 are frozen completed_verified with implementation authority retired.
+- VTI-01 through VTI-07 are frozen completed_verified with implementation authority retired.
 - VTI-04 external VTT request/presentation clients may not independently resolve Multiversal rules, supply authoritative RNG outcomes, or autonomously exercise GM adjudication.
 - Duplicate external requests may not resolve twice when an authoritative receipt can be replayed or status checked.
 - IC-01 through IC-13 technical UI convergence may alter presentation composition but not the behavioral/data/permission/provenance authority projected through VTI.
 - The post-governed-start placeholder add/remove pair is net-zero and may not be interpreted as new VTI scope or product semantics.
 - VTI-06 completed by reusing existing native spatial, Scene, map, placement, visibility and MAI/ISE/SSA semantic authorities rather than duplicating them.
-- VTI-07 is selected_not_started from exact application main `1e325045b2fc65d067a5e587f8cde78dcba9f766`; selection grants no branch, acceptance-package, implementation or production authority.
-- VTI-08+ and SGC-01+ remain unauthorized until their own governed selections and starts.
-
+- VTI-07 is completed_verified and retired at application merge `692da4f4792426b9c62f6be14db60fc63eb09d6b`.
+- VTI-08 is `in_progress` acceptance-only from exact application main `692da4f4792426b9c62f6be14db60fc63eb09d6b`; branch creation and acceptance scaffolding are authorized, while production behavior remains locked until genuine matching RED.
+- VTI-09+ and SGC-01+ remain unauthorized until their own governed selections and starts.
 
 ## VTI-07 completed contract
 
@@ -162,6 +162,8 @@ Sealed completion evidence:
 - application PR #436 merge `692da4f4792426b9c62f6be14db60fc63eb09d6b`;
 - historical profile fanout `0`, application-feature repair cycles `0`, and lifecycle validation-contract repair cycles `2`.
 
-## VTI-08 selection boundary
+## VTI-08 governed-start boundary
 
-VTI-08 — Adapter SDK, Capability Manifest & Deterministic Reference VTT — is `selected_not_started` as `VTI-08-attempt-001` from exact application main `692da4f4792426b9c62f6be14db60fc63eb09d6b`. Selection records strict order only. No VTI-08 branch, acceptance package, adapter SDK, capability manifest, deterministic reference VTT or production mutation is authorized until a separate governed start validates and merges. Platform selection remains evidence-driven and deferred to VTI-09; no commercial vendor is selected or ranked.
+VTI-08 — Adapter SDK, Capability Manifest & Deterministic Reference VTT — is `in_progress` acceptance-only as `VTI-08-attempt-001` on `integration/vti-08-adapter-sdk-capability-manifest-reference-vtt` from exact application main `692da4f4792426b9c62f6be14db60fc63eb09d6b`. Branch creation, bounded scaffolding and acceptance-package authority are open only after this governed-start AIOC state validates and merges. Production adapter-SDK, capability-manifest and deterministic reference-VTT behavior remains locked until genuine matching self-hosted Linux/Windows RED is sealed.
+
+VTI-08 consumes the completed VTI projection, identity/versioning, action/receipt and permission-preservation contracts rather than recreating them. Its fake/reference VTT is a deterministic local derivative client only, with explicit `supported`, `unsupported`, `conditional` and `unknown` capability semantics and safe downgrade. Platform selection remains evidence-driven and deferred to VTI-09; no commercial vendor is selected or ranked. Provider credentials/accounts, provider-specific schemas, commercial-provider network access, live external/canonical mutation, durable VTI persistence/new migration, provider activation, tester distribution, release/deployment, VTI-09+ and SGC-01+ remain unauthorized.
