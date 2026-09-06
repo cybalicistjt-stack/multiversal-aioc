@@ -1,0 +1,155 @@
+{
+  "schema_version":"1.0.0",
+  "program_id":"CAB",
+  "tranche":"CAB-22",
+  "status":"completed_verified",
+  "scope":"content_repair_and_repricing_handoff_not_automatic_mutation",
+  "identity_policy":{
+    "current_safe_key":"source_dataset + Record_ID",
+    "global_record_id_safe":false,
+    "duplicated_record_id_values":1256,
+    "rows_affected":2512,
+    "target":"governed_globally_unique_stable_id_with_alias_migration"
+  },
+  "priorities":[
+    {
+      "priority":"P0",
+      "name":"source_integrity_and_identity",
+      "must_precede":"repricing_or_semantic_normalization_where_affected",
+      "items":[
+        {
+          "id":"CAB22-P0-001",
+          "class":"source_field_boundary_integrity",
+          "target":"Abilities_Core.csv / ABLREC-00483 / Rain of Arrows",
+          "issue":"Mechanics field contains Rain of Arrows mechanics followed by unrelated Blood Weapons material.",
+          "required_action":"recover exact source boundaries; preserve both source segments with provenance; do not guess or delete content",
+          "evidence":"CAB-13"
+        },
+        {
+          "id":"CAB22-P0-002",
+          "class":"identity_namespace_review",
+          "target":"all five Ability source datasets",
+          "issue":"Record_ID namespace is reused across files; 1,256 duplicated values affect 2,512 rows.",
+          "required_action":"use source-qualified keys immediately; assign governed global stable IDs with deterministic alias/migration evidence before cross-file canonicalization",
+          "evidence":"CAB-11"
+        }
+      ]
+    },
+    {
+      "priority":"P1",
+      "name":"mechanical_determinism_and_high_risk",
+      "items":[
+        {
+          "id":"CAB22-P1-001",
+          "class":"runtime_timing_unresolved",
+          "target":"consequential active/passive Ability rows with missing action/frequency/resource semantics",
+          "corpus_signals":{"action_economy_meaningful":418,"usage_frequency_meaningful":548,"resource_cost_meaningful":339,"total_records":4816},
+          "required_action":"recover or govern Action Economy, trigger/frequency, resource and duration only where the mechanic requires those fields; preserve intentional non-applicability"
+        },
+        {
+          "id":"CAB22-P1-002",
+          "class":"high_risk_mechanics_unresolved",
+          "target":"CAB-13 manual-review queue",
+          "screening":{"action_multiplier":28,"additional_attack":28,"free_no_action":17,"immunity":117,"resistance":202,"summon_companion":249,"multiplier":110,"per_each_scaling":83,"passive":81,"regeneration":47,"auto_success":43,"ignore_bypass":46,"transformation_form":198,"resource_generation":84,"permanent":38},
+          "required_action":"manual multidimensional review; apply CAB-07 anti-recursion and CAB-08 interaction defaults; determine missing delivery limits before final price"
+        },
+        {
+          "id":"CAB22-P1-003",
+          "class":"interaction_semantics_unresolved",
+          "target":"records whose stacking/synergy group materially affects outcome",
+          "required_action":"assign mechanical interaction group or explicit authored exception; do not infer from source family/tree"
+        },
+        {
+          "id":"CAB22-P1-004",
+          "class":"dependency_graph_unresolved",
+          "target":"prose-only or unresolved Ability prerequisites",
+          "required_action":"normalize toward stable Ability/node IDs and typed predicates; detect self-dependency, cycles and missing references without inventing prerequisites"
+        },
+        {
+          "id":"CAB22-P1-005",
+          "class":"acquisition_semantics_unresolved",
+          "target":"records whose grant/purchase/creation/training/exposure/membership/etc. mode is not source-governed",
+          "required_action":"classify acquisition mode from source or explicit governed decision; source silence remains acquisition_unresolved"
+        }
+      ]
+    },
+    {
+      "priority":"P2",
+      "name":"economic_and_structural_normalization",
+      "items":[
+        {
+          "id":"CAB22-P2-001",
+          "class":"direct_price_recalibration",
+          "target":"records proven to be direct XP purchases",
+          "issue":"Legacy numeric direct prices span 20 to 50,000 XP and reflect incompatible historical economies.",
+          "required_action":"retain source price as provenance; assign CAB calibrated direct price using effect burden and high-risk review; do not price headers/listings/grants as purchases"
+        },
+        {
+          "id":"CAB22-P2-002",
+          "class":"tier_access_recalibration",
+          "target":"ordinary progressions with legacy tier-unlock schedules",
+          "required_action":"map to CAB ordinary access anchors unless explicit special progression authority applies; preserve legacy price provenance"
+        },
+        {
+          "id":"CAB22-P2-003",
+          "class":"structural_gap_review_required",
+          "target":"TREE-SKL-029 / Temporal & Reality Bending Science",
+          "issue":"Observed T1 and T3 members with no T2 in bounded source.",
+          "required_action":"recover source intent; never invent Tier-2 filler"
+        },
+        {
+          "id":"CAB22-P2-004",
+          "class":"advanced_start_provenance_review",
+          "target":"Heavy Weapons Combat Ability Tree",
+          "issue":"Observed start at T2 without existing explicit special-start authority.",
+          "required_action":"verify whether T1 is source-missing, intentionally absent or represented elsewhere; do not invent T1"
+        },
+        {
+          "id":"CAB22-P2-005",
+          "class":"duplicate_tuple_identity_review",
+          "target":"42 rows sharing Ability_Name + Ability_Tree + Tier tuples",
+          "required_action":"determine legitimate repetition/listing/upgrade/reconciliation versus duplicate identity; no automatic dedupe"
+        },
+        {
+          "id":"CAB22-P2-006",
+          "class":"species_innate_ownership_classification",
+          "target":"mixed Species/Innate source surface",
+          "required_action":"separate automatic biology grants, Species-qualified selections, creation-only options, learned/cultural/mystical/technical content and non-Species Elementalist rows using PPIA-05/CAB-09 authority"
+        }
+      ]
+    },
+    {
+      "priority":"P3",
+      "name":"validation_polish_and_presentation",
+      "items":[
+        {
+          "id":"CAB22-P3-001",
+          "class":"reference_benchmark_validation",
+          "required_action":"rerun CAB-14/15/21 benchmarks after material repricing batches and preserve RAV/dependency separation"
+        },
+        {
+          "id":"CAB22-P3-002",
+          "class":"survivability_followup",
+          "target":"direct permanent HP",
+          "required_action":"do not extend direct-HP purchasing beyond +20 until combat/survivability evidence justifies additional blocks or revised prices"
+        },
+        {
+          "id":"CAB22-P3-003",
+          "class":"rules_presentation",
+          "required_action":"project final CAB rules into player/GM/reference surfaces without collapsing distinctions among tier, price, acquisition, prerequisite, RAV, timing and balance dimensions"
+        }
+      ]
+    }
+  ],
+  "record_outcomes":["no_change_source_intentional","source_boundary_corrected","identity_normalized","acquisition_classified","timing_normalized","prerequisite_normalized","interaction_group_classified","price_recalibrated","tier_access_recalibrated","deprecated_or_replaced_with_history","source_gap_unresolved"],
+  "repair_invariants":[
+    "never_create_retroactive_xp_debt_for_valid_historical_character",
+    "preserve_source_price_and_source_text_as_provenance",
+    "do_not_invent_missing_abilities_or_prerequisites",
+    "do_not_treat_not_specified_as_automatic_error",
+    "repair_source_integrity_before_balance_where_content_boundary_is_corrupt",
+    "high_risk_mechanics_require_semantic_completeness_before_balance_certification",
+    "rerun_multidimensional_benchmarks_after_material_repair_batches"
+  ],
+  "completion_definition":"A repair item closes only with source/governed evidence, stable identity, before/after provenance, required semantic fields, explicit CAB price/access treatment where applicable, and migration handling where live Characters could be affected."
+}
