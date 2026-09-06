@@ -1,0 +1,172 @@
+name: VTI-07 RED Unlock Projection
+
+on:
+  push:
+    branches:
+      - governance/vti-07-seal-red-unlock-production
+
+permissions:
+  contents: write
+
+jobs:
+  project:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: governance/vti-07-seal-red-unlock-production
+          fetch-depth: 0
+      - name: Project matching RED and production authority
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path('.')
+          now = '2026-09-06T17:32:00-05:00'
+          app_head = '5cb646cd4ea49e4ef82cc13d695c6450336c73ff'
+          run_id = 34064038245
+          repo_job = 101569552203
+          linux_job = 101569566705
+          windows_job = 101569566565
+          compare_job = 101569630517
+          receipt = '3c405551b32804277945d4047a99786a2cf5a2dd6d513e0852aae48e8ea94f71'
+          branch = 'integration/vti-07-permissions-hidden-information-gm-authority'
+          supplement = 'governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_VTI07_RED_UNLOCK_2026-09-06.md'
+          red = {
+              'head_sha': app_head,
+              'run_id': run_id,
+              'repository_health_job': repo_job,
+              'linux_job': linux_job,
+              'windows_job': windows_job,
+              'deterministic_compare_job': compare_job,
+              'deterministic_receipt_sha256': receipt,
+              'matching_red_observed': True,
+              'failure_stage': 'vti07-invariants',
+              'failure_reason': 'production contract intentionally absent',
+              'linux_artifact_id': 9998368259,
+              'windows_artifact_id': 9998372689,
+              'comparison_artifact_id': 9998375374,
+              'raw_evidence_confirmed': True,
+          }
+
+          def readj(path): return json.loads((root/path).read_text(encoding='utf-8'))
+          def writej(path, data): (root/path).write_text(json.dumps(data, separators=(',', ':')) + '\n', encoding='utf-8')
+
+          cp_path = Path('governance/ai/work-state/VTI-07-attempt-001.json')
+          cp = readj(cp_path)
+          cp['schema_version'] = '0.4.0'
+          cp['production_mutation_authorized'] = True
+          cp['validation']['acceptance_red'] = red
+          cc = cp['convergence_control']
+          cc['repair_cycles'] = 1
+          cc['validation_contract_repair_cycles'] = 1
+          cc['last_failure_signature'] = 'VTI-06 predecessor lifecycle regression froze VTI-07 at selected_not_started after governed start; repaired to preserve successor identity/baseline while allowing normal successor lifecycle advance.'
+          cc['last_failure_class'] = 'validation_contract'
+          cc['diagnostic_hypotheses'] = []
+          cc['retry_basis'] = {'changed_since_previous': ['VTI-06 successor regression was made lifecycle-aware before governed-start validation.', 'Genuine matching VTI-07 application RED is now sealed from exact head 5cb646cd4ea49e4ef82cc13d695c6450336c73ff with Linux/Windows identical deterministic receipt.']}
+          cp['next_action'] = f'Implement only packages/contracts/src/virtual-tabletop-interoperability/permissions-hidden-information-gm-authority-contract.ts on application PR #436 / branch {branch}. Then require exact-head repository health, Linux GREEN, Windows GREEN and deterministic comparison before merge.'
+          writej(cp_path, cp)
+
+          backlog_path = Path('governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json')
+          backlog = readj(backlog_path)
+          backlog['schema_version'] = '0.22.0'
+          ac = backlog['active_contract']
+          ac['production_mutation_authorized'] = True
+          ac['matching_red_observed'] = True
+          ac['matching_red_head'] = app_head
+          ac['matching_red_run'] = run_id
+          ac['matching_red_receipt_sha256'] = receipt
+          ac['rule'] = 'VTI-07 matching RED is sealed. Only the bounded provider-neutral permission/hidden-information/GM-authority preservation contract is production-authorized; all provider, persistence and successor authority remains closed.'
+          writej(backlog_path, backlog)
+
+          pointer_path = Path('governance/ai/runtime/CURRENT_WORK_POINTER.json')
+          pointer = readj(pointer_path)
+          pointer['schema_version'] = '15.87.0'
+          pointer['updated_at'] = now
+          pointer['roadmap_supplements'] = [supplement]
+          pointer['selection_reason'] = 'VTI-07 matching acceptance RED is sealed on exact application head 5cb646cd4ea49e4ef82cc13d695c6450336c73ff / run 34064038245. Only the bounded provider-neutral permission/hidden-information/GM-authority preservation contract is unlocked.'
+          ba = pointer['bounded_authority']
+          ba['production_mutation_authorized'] = True
+          ba['matching_red_observed'] = True
+          ba['matching_red_head'] = app_head
+          ba['matching_red_run'] = run_id
+          ba['matching_red_receipt_sha256'] = receipt
+          ba['vti_scope'] = 'VTI-07 matching RED sealed: bounded provider-neutral permission/hidden-information/GM-authority preservation contract is authorized. Canonical Multiversal authorization, visibility, ownership, consent and GM authority must be consumed. Provider/persistence/successor authority remains closed.'
+          pointer['selection_invariants'] = [
+              'ALP-01 through ALP-08 and VTI-01 through VTI-06 remain completed_verified and frozen with implementation authority retired.',
+              f'VTI-07 is in_progress on {branch} from exact application main 1e325045b2fc65d067a5e587f8cde78dcba9f766.',
+              f'Genuine matching VTI-07 acceptance RED is sealed from head {app_head} / run {run_id} with deterministic receipt {receipt}.',
+              'Only the bounded provider-neutral permission/hidden-information/GM-authority preservation production contract is unlocked; Multiversal remains canonical permission authority.',
+              'VTI-07 must consume canonical AuthorizationDecision, ownership, consent, visibility and GM-authority decisions without creating a parallel permission engine.',
+              'Hidden counts/content, hidden identifiers, redacted identities and GM-only material must remain fail-closed with no inference channel; unsafe target fidelity downgrades to redacted or unsupported.',
+              'Platform selection remains evidence-driven and deferred to VTI-09; no vendor is selected or ranked.',
+              'No provider-specific schema, credential use, external account mutation, adapter implementation, live external/canonical mutation, durable VTI persistence, new migration, provider activation, tester distribution, release or deployment is authorized.',
+              'VTI-08+ and SGC-01+ remain unauthorized.'
+          ]
+          pointer['exact_next_action'] = f'Implement only packages/contracts/src/virtual-tabletop-interoperability/permissions-hidden-information-gm-authority-contract.ts on application PR #436 / branch {branch}; then prove exact-head repository health, Linux GREEN, Windows GREEN and deterministic comparison before merge.'
+          writej(pointer_path, pointer)
+
+          index_path = Path('governance/ai/runtime/ROADMAP_INDEX.json')
+          index = readj(index_path)
+          index['schema_version'] = '15.55.0'
+          index['updated_at'] = now
+          index['rule'] = 'VTI-07 matching RED is sealed; bounded production permission-preservation contract is authorized while provider/persistence/VTI-08+ authority remains closed.'
+          index['current']['production_mutation_authorized'] = True
+          index['current']['matching_red_observed'] = True
+          index['current']['matching_red_head'] = app_head
+          index['current']['matching_red_run'] = run_id
+          index['current']['matching_red_receipt_sha256'] = receipt
+          writej(index_path, index)
+
+          runtime_path = Path('governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json')
+          runtime = readj(runtime_path)
+          runtime['schema_version'] = '12.68.0'
+          runtime['updated_at'] = now
+          runtime['active_work']['role'] = 'active_production_after_matching_red'
+          runtime['active_work']['production_mutation_authorized'] = True
+          runtime['active_work']['matching_red_observed'] = True
+          runtime['active_work']['matching_red_head'] = app_head
+          runtime['active_work']['matching_red_run'] = run_id
+          runtime['active_work']['matching_red_receipt_sha256'] = receipt
+          runtime['active_work']['execution_rule'] = f'Implement only the bounded VTI-07 provider-neutral permission-preservation contract on {branch}; then exact-head current-family Linux/Windows/deterministic GREEN is required before merge.'
+          runtime['application_repository']['active_validation_family_state'] = 'VTI01_VTI02_VTI03_VTI04_VTI05_VTI06_completed_VTI07_matching_red_sealed_production_authorized'
+          writej(runtime_path, runtime)
+
+          registry_path = Path('governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json')
+          registry = readj(registry_path)
+          registry['schema_version'] = '15.72.0'
+          registry['updated_at'] = now
+          for row in registry['current']:
+              if row.get('kind') == 'roadmap_supplement': row['path'] = supplement
+          registry['active_planning_work']['implementation_scope'] = 'VTI-07 matching RED sealed; bounded provider-neutral permission/hidden-information/GM-authority production contract authorized. Provider/persistence/successor authority remains closed.'
+          auth = registry['vti_07_authority']
+          auth['production_mutation_authorized'] = True
+          auth['permissions_hidden_gm_authority_authorized'] = True
+          auth['permissions_hidden_information_gm_authority_authorized'] = True
+          auth['matching_red_observed'] = True
+          auth['matching_red_head'] = app_head
+          auth['matching_red_run'] = run_id
+          auth['matching_red_receipt_sha256'] = receipt
+          writej(registry_path, registry)
+
+          program_path = Path('governance/application-planning/virtual-tabletop-interoperability/VTI_VIRTUAL_TABLETOP_INTEROPERABILITY_PROGRAM.md')
+          text = program_path.read_text(encoding='utf-8')
+          text = text.replace('**Status:** OWNER-APPROVED — VTI-01 THROUGH VTI-06 COMPLETED_VERIFIED; VTI-07 IN_PROGRESS — ACCEPTANCE ONLY', '**Status:** OWNER-APPROVED — VTI-01 THROUGH VTI-06 COMPLETED_VERIFIED; VTI-07 IN_PROGRESS — MATCHING RED SEALED / PRODUCTION AUTHORIZED')
+          text = text.replace('Acceptance-package authority is open; production behavior remains locked until genuine matching RED is sealed.', 'Matching acceptance RED is sealed; bounded provider-neutral production permission-preservation behavior is authorized while provider/persistence/successor authority remains closed.')
+          program_path.write_text(text, encoding='utf-8')
+
+          evidence_path = root/'governance/ai/work-state/VTI-07-APPLICATION-ACCEPTANCE-RED.md'
+          evidence_path.write_text(f'''# VTI-07 Application Acceptance RED\n\n- Exact acceptance head: `{app_head}`\n- Application PR: `#436`\n- Run: `{run_id}`\n- Repository-health job: `{repo_job}` — PASS\n- Linux job: `{linux_job}` — expected RED at `vti07-invariants`\n- Windows job: `{windows_job}` — matching expected RED at `vti07-invariants`\n- Deterministic comparator: `{compare_job}` — PASS\n- Deterministic receipt: `{receipt}`\n- Linux artifact: `9998368259`\n- Windows artifact: `9998372689`\n- Comparison artifact: `9998375374`\n\nRaw lane evidence on both platforms states that `packages/contracts/src/virtual-tabletop-interoperability/permissions-hidden-information-gm-authority-contract.ts` is intentionally absent. The selector resolved exactly one current-family profile (`VTI-07`), and the deterministic payload agrees cross-platform. This is genuine matching TDD RED and authorizes only the bounded production contract.\n''', encoding='utf-8')
+
+          roadmap = root/supplement
+          roadmap.write_text(f'''# Application Implementation Roadmap — VTI-07 Matching RED Unlock\n\n**Work item:** VTI-07 — Permissions, Hidden Information & GM Authority  \n**Application branch:** `{branch}`  \n**Matching RED:** `{app_head}` / run `{run_id}` / receipt `{receipt}`\n\n## Authority unlocked\n\nImplement only `packages/contracts/src/virtual-tabletop-interoperability/permissions-hidden-information-gm-authority-contract.ts` to satisfy the already-sealed VTI-07 acceptance package. The contract must consume canonical Multiversal `AuthorizationDecision`, ownership, consent, visibility and GM-authority decisions; omit hidden information entirely where even redaction would leak hidden existence/count; support identity redaction only for canonically visible records; require safe private channels for GM-only presentation; and make receipts depend only on safely disclosed material.\n\n## Authority still closed\n\nNo parallel permission engine, provider schema/vendor commitment, credentials/accounts, adapters, live external/canonical mutation, persistence/migration, provider activation, tester distribution, release/deployment, VTI-08+ or SGC-01+ work is authorized.\n\n## Required completion gate\n\nThe first production candidate after this unlock must pass exact-head current-family repository health, self-hosted Linux, self-hosted Windows and deterministic cross-platform comparison with zero historical predecessor fanout before application merge.\n''', encoding='utf-8')
+          PY
+          rm .github/workflows/vti07-red-unlock-project.yml
+          git config user.name multiversal-governance-bot
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          git commit -m "VTI-07 RED unlock: seal matching application RED"
+          git push origin HEAD:governance/vti-07-seal-red-unlock-production
