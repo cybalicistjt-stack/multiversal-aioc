@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0.0",
+  "program_id": "CAB",
+  "tranche": "CAB-20",
+  "status": "completed_verified",
+  "owner": "John Brandon Turner",
+  "core_principle": "XP regulates acquisition speed; prerequisites regulate coherent development; tiers regulate depth; action economy, resources, stacking and dependencies regulate simultaneous impact.",
+  "currencies": {
+    "spendable_character_advancement": "XP",
+    "ability_points_deprecated": true,
+    "calibration_unit": {"xp": 250, "spendable": false},
+    "reference_advancement_value_spendable": false,
+    "wealth_separate": true
+  },
+  "creation": {
+    "default_starting_xp": 1300,
+    "base_attributes": 10,
+    "free_attribute_pool": 12,
+    "starting_ability_trees_free": 5,
+    "starting_tier1_access_free_in_starting_trees": true,
+    "starting_tier1_abilities_free": 5,
+    "unspent_xp_carries_forward": true,
+    "starting_wealth": "gm_campaign_defined_separate_budget"
+  },
+  "advancement_gates": ["authority","availability","eligibility","prerequisites","tier_depth_access","learning_acquisition_readiness","affordability_xp","conflicts_exclusions","approval","commit"],
+  "tiers": {
+    "count": 5,
+    "descriptors": {"1":"Foundation","2":"Developed","3":"Advanced","4":"Expert","5":"Apex"},
+    "meaning": "relative_developmental_depth_within_owning_progression",
+    "prestige_declared_start_tier": 3,
+    "universal_prior_tier_count_gate": false
+  },
+  "pricing": {
+    "direct_ability_reference_bands_xp": [250,500,1000,2000,4000,8000],
+    "direct_price_basis": "actual_effect_burden_not_tier",
+    "ordinary_access_xp": {"extra_progression":1000,"tier2":500,"tier3":1250,"tier4":2500,"tier5":5000},
+    "hp_cumulative_xp": {"plus5":500,"plus10":1250,"plus15":2250,"plus20":3750}
+  },
+  "attributes_skills": {
+    "attribute_marginal_xp_by_resulting_score": {"11-12":250,"13-14":500,"15-16":1000,"17-18":2000,"19-20":4000,"21+":"8000+_review"},
+    "skill_rank_max": 20,
+    "skill_marginal_xp_formula": "250 * new_rank",
+    "knowledge_marginal_xp": [250,500,1000,2000,4000],
+    "proficiency_states": ["Unproficient","Proficient","Expertise","Mastery"],
+    "narrow_proficiency_marginal_xp": [250,500,1000]
+  },
+  "learning": {
+    "default": "conditional_when_owning_rule_requires",
+    "gm_campaign_override": "explicit_attributable",
+    "time_multiplier": "max(0.50, 1.00 - 0.05 * max(0, relevant_attribute - 10))",
+    "global_xp_multiplier": false,
+    "blanket_price_discount": false
+  },
+  "action_economy": {
+    "default": {"action":1,"bonus_action":1,"reaction_per_round":1,"movement":true},
+    "anti_recursion": true,
+    "consequential_free_effect_requires_limiter": true,
+    "companion_balance_basis": "meaningful_independent_action_economy"
+  },
+  "interaction_defaults": {
+    "same_effect": "noncompounding_strongest_with_duration_refresh_unless_explicit",
+    "numeric_group": "highest_benefit_plus_highest_penalty",
+    "advantage_disadvantage": "binary_noncompounding_cancel_when_both",
+    "same_type_resistance": "noncompounding",
+    "immunity_supersedes_resistance": true,
+    "full_replacement_form": "one_at_a_time_unless_explicit_nesting",
+    "same_group_multiplier": "strongest_only_unless_explicit_compound",
+    "unbounded_trigger_resource_cycle": "manual_review"
+  },
+  "acquisition": {
+    "eligibility_equals_acquisition": false,
+    "xp_affordability_establishes_eligibility": false,
+    "source_silence": "acquisition_unresolved",
+    "structured_spell_direct_learning_xp": 0,
+    "relationship_eligibility_creates_relationship": false
+  },
+  "balance": {
+    "universal_scalar_score": false,
+    "dimensions": ["direct_offense","burst_throughput","sustained_throughput","action_economy","defense","recovery","control","mobility_reach","information_perception","social_influence","utility_problem_solving","resource_efficiency","companion_contribution","transformation_breadth","challenge_bypass_immunity","reliability_persistence_dependency"],
+    "equal_xp_means_equal_damage": false
+  },
+  "corpus": {
+    "records": 4816,
+    "numeric_tier_records": 3917,
+    "direct_numeric_xp_records": 1712,
+    "action_economy_meaningful": 418,
+    "duplicated_record_id_values": 1256,
+    "rows_affected_by_record_id_collisions": 2512,
+    "identity_rule_until_global_id": "source_dataset + Record_ID",
+    "tiered_progression_groups": 179,
+    "full_five_tier_groups": 158,
+    "unexplained_internal_gap_groups": 1
+  },
+  "pacing": {"slow":250,"standard":500,"fast":750,"accelerated":1000},
+  "award_bands_xp": [0,250,500,750,1000],
+  "respec_migration": {
+    "voluntary_respec": "campaign_governed",
+    "refund_basis": "100_percent_actual_xp_paid",
+    "free_grant_refund_xp": 0,
+    "correction_nonpunitive": true,
+    "retroactive_debt": false,
+    "legacy_overpayment_credit": true,
+    "legacy_underpayment_grandfather": true,
+    "dependency_cascade_required": true
+  },
+  "prohibited_shortcuts": ["universal_character_level","cr_substitute","universal_power_score","ability_count_breadth_tax","readied_ability_slots","global_diminishing_returns","source_provenance_as_stacking_type"]
+}
