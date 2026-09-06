@@ -1,7 +1,7 @@
 # VTI — Virtual Tabletop Interoperability
 
 **Program ID:** VTI  
-**Status:** OWNER-APPROVED — VTI-01 THROUGH VTI-06 COMPLETED_VERIFIED; VTI-07 IN_PROGRESS — ACCEPTANCE ONLY  
+**Status:** OWNER-APPROVED — VTI-01 THROUGH VTI-06 COMPLETED_VERIFIED; VTI-07 IN_PROGRESS — MATCHING RED SEALED / PRODUCTION AUTHORIZED  
 **Activation:** after completed_verified ALP-08  
 **Successor:** SGC-01  
 **Owner and final authority:** John Brandon Turner
@@ -56,7 +56,7 @@ VTI follows the native mine-note-derived semantic families so adapters project m
    Projects existing canonical Multiversal Scene, map-version, placement and MAI/ISE/SSA semantics to provider-neutral scene/map/token envelopes with deterministic normalization, explicit `present`/`redacted`/`unsupported` fidelity, native wall/door/grid semantics only, fail-closed hidden presentation, and preserved visibility, ownership, consent and GM authority. No provider-specific adapter, live external mutation, durable persistence or VTI-07 permission-engine behavior was introduced.
 
 7. **VTI-07 — Permissions, Hidden Information & GM Authority** — **IN_PROGRESS — ACCEPTANCE ONLY**.  
-   Preserve ownership, consent, GM adjudication and hidden-information filtering across external clients; prevent hidden counts/content leakage. Acceptance-package authority is open; production behavior remains locked until genuine matching RED is sealed.
+   Preserve ownership, consent, GM adjudication and hidden-information filtering across external clients; prevent hidden counts/content leakage. Matching acceptance RED is sealed; bounded provider-neutral production permission-preservation behavior is authorized while provider/persistence/successor authority remains closed.
 
 8. **VTI-08 — Adapter SDK, Capability Manifest & Deterministic Reference VTT**  
    Define the adapter SDK and a fake/reference VTT so the entire integration contract can be tested without a commercial platform.
