@@ -1,0 +1,28 @@
+name: VTI-06 Closeout Lifecycle Run
+on:
+  push:
+    branches:
+      - governance/vti-06-terminal-closeout-vti-07-selection
+permissions:
+  contents: write
+jobs:
+  project:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: governance/vti-06-terminal-closeout-vti-07-selection
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Apply lifecycle projection
+        run: python3 scripts/vti06_closeout_lifecycle_projection.py
+      - name: Commit lifecycle projection
+        run: |
+          git config user.name 'multiversal-governance-bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add governance/application-planning/virtual-tabletop-interoperability/VTI_VIRTUAL_TABLETOP_INTEROPERABILITY_PROGRAM.md tests/control_plane/test_vti06_scene_map_token_mai_bridge_registration.py
+          git rm scripts/vti06_closeout_lifecycle_projection.py .github/workflows/vti06-closeout-lifecycle-run.yml
+          git commit -m 'VTI-06 closeout: align program and successor regression'
+          git push origin HEAD:governance/vti-06-terminal-closeout-vti-07-selection
