@@ -10,7 +10,7 @@ def load_json(path):
 
 
 class Vti07RedUnlockTests(unittest.TestCase):
-    def test_matching_application_red_is_sealed_and_production_authority_is_open(self):
+    def test_matching_application_red_remains_sealed_across_terminal_retirement(self):
         head = "5cb646cd4ea49e4ef82cc13d695c6450336c73ff"
         run = 34064038245
         receipt = "3c405551b32804277945d4047a99786a2cf5a2dd6d513e0852aae48e8ea94f71"
@@ -33,22 +33,38 @@ class Vti07RedUnlockTests(unittest.TestCase):
         self.assertEqual(red["failure_stage"], "vti07-invariants")
         self.assertEqual(red["failure_reason"], "production contract intentionally absent")
 
-        self.assertTrue(checkpoint["production_mutation_authorized"])
-        self.assertTrue(checkpoint["implementation_authority"])
-        self.assertEqual(checkpoint["status"], "in_progress")
-        self.assertTrue(backlog["active_contract"]["production_mutation_authorized"])
-        self.assertTrue(backlog["active_contract"]["matching_red_observed"])
-        self.assertTrue(pointer["bounded_authority"]["production_mutation_authorized"])
-        self.assertTrue(pointer["bounded_authority"]["matching_red_observed"])
-        self.assertTrue(index["current"]["production_mutation_authorized"])
-        self.assertTrue(index["current"]["matching_red_observed"])
-        self.assertTrue(runtime["active_work"]["production_mutation_authorized"])
-        self.assertTrue(runtime["active_work"]["matching_red_observed"])
-
         authority = registry["vti_07_authority"]
-        self.assertTrue(authority["production_mutation_authorized"])
-        self.assertTrue(authority["permissions_hidden_gm_authority_authorized"])
-        self.assertTrue(authority["matching_red_observed"])
+        if checkpoint["status"] == "completed_verified":
+            self.assertFalse(checkpoint["production_mutation_authorized"])
+            self.assertFalse(checkpoint["implementation_authority"])
+            self.assertTrue(checkpoint["authority_retired"])
+            self.assertTrue(authority["retired"])
+            self.assertFalse(authority["production_mutation_authorized"])
+            self.assertFalse(authority["permissions_hidden_gm_authority_authorized"])
+            self.assertTrue(authority["matching_red_observed"])
+            self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-08")
+            self.assertFalse(pointer["bounded_authority"]["production_mutation_authorized"])
+            self.assertEqual(index["current"]["work_item_id"], "VTI-08")
+            self.assertFalse(index["current"]["production_mutation_authorized"])
+            self.assertEqual(runtime["active_work"]["work_item"], "VTI-08")
+            self.assertFalse(runtime["active_work"]["production_mutation_authorized"])
+            self.assertEqual(backlog["active_contract"]["work_item"], "VTI-08")
+            self.assertFalse(backlog["active_contract"]["production_mutation_authorized"])
+        else:
+            self.assertTrue(checkpoint["production_mutation_authorized"])
+            self.assertTrue(checkpoint["implementation_authority"])
+            self.assertTrue(backlog["active_contract"]["production_mutation_authorized"])
+            self.assertTrue(backlog["active_contract"]["matching_red_observed"])
+            self.assertTrue(pointer["bounded_authority"]["production_mutation_authorized"])
+            self.assertTrue(pointer["bounded_authority"]["matching_red_observed"])
+            self.assertTrue(index["current"]["production_mutation_authorized"])
+            self.assertTrue(index["current"]["matching_red_observed"])
+            self.assertTrue(runtime["active_work"]["production_mutation_authorized"])
+            self.assertTrue(runtime["active_work"]["matching_red_observed"])
+            self.assertTrue(authority["production_mutation_authorized"])
+            self.assertTrue(authority["permissions_hidden_gm_authority_authorized"])
+            self.assertTrue(authority["matching_red_observed"])
+
         for key in (
             "provider_specific_schema_authorized",
             "credential_or_external_account_mutation_authorized",

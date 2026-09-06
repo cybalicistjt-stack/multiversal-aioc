@@ -72,7 +72,7 @@ class Vti06SceneMapTokenMaiBridgeRegistrationTests(unittest.TestCase):
 
         # VTI-06 permanently proves which strict successor was selected and the
         # exact baseline handed to it; it must not freeze VTI-07 at its initial
-        # selected_not_started lifecycle state after a later governed start.
+        # selected_not_started lifecycle state after later governed start/closeout.
         self.assertEqual(successor["application_baseline_sha"], merge)
         self.assertIn(successor["status"], {"selected_not_started", "in_progress", "ready_for_review", "completed_verified"})
         if successor["status"] == "selected_not_started":
@@ -86,6 +86,8 @@ class Vti06SceneMapTokenMaiBridgeRegistrationTests(unittest.TestCase):
             self.assertTrue(successor["implementation_authority"])
         else:
             self.assertFalse(successor["implementation_authority"])
+            self.assertTrue(successor["authority_retired"])
+            self.assertTrue(successor["completed"])
 
         successor_authority = registry["vti_07_authority"]
         self.assertFalse(successor_authority.get("provider_specific_schema_authorized", False))
@@ -94,12 +96,20 @@ class Vti06SceneMapTokenMaiBridgeRegistrationTests(unittest.TestCase):
         self.assertFalse(successor_authority.get("vti08_plus_authorized", False))
         self.assertFalse(successor_authority.get("sgc01_plus_authorized", False))
 
-        self.assertEqual(backlog["completed_through"], "VTI-06")
-        self.assertEqual(backlog["current_item"], "VTI-07")
-        self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-07")
-        self.assertEqual(index["current"]["work_item_id"], "VTI-07")
-        self.assertEqual(runtime["active_work"]["work_item"], "VTI-07")
-        self.assertEqual(runtime["application_repository"]["canonical_main"], merge)
+        if successor["status"] == "completed_verified":
+            self.assertEqual(backlog["completed_through"], "VTI-07")
+            self.assertEqual(backlog["current_item"], "VTI-08")
+            self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-08")
+            self.assertEqual(index["current"]["work_item_id"], "VTI-08")
+            self.assertEqual(runtime["active_work"]["work_item"], "VTI-08")
+            self.assertEqual(runtime["application_repository"]["canonical_main"], successor["application_merge_sha"])
+        else:
+            self.assertEqual(backlog["completed_through"], "VTI-06")
+            self.assertEqual(backlog["current_item"], "VTI-07")
+            self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-07")
+            self.assertEqual(index["current"]["work_item_id"], "VTI-07")
+            self.assertEqual(runtime["active_work"]["work_item"], "VTI-07")
+            self.assertEqual(runtime["application_repository"]["canonical_main"], merge)
 
         for phrase in ("VTI-06 — Scene, Map, Token & MAI Bridge", "COMPLETED_VERIFIED", "VTI-07 — Permissions, Hidden Information & GM Authority", "Platform selection remains evidence-driven"):
             self.assertIn(phrase, program)
