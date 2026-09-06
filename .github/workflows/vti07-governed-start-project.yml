@@ -1,0 +1,291 @@
+name: VTI-07 Governed Start Projection
+
+on:
+  push:
+    branches:
+      - governance/vti-07-governed-start
+
+permissions:
+  contents: write
+
+jobs:
+  project:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: governance/vti-07-governed-start
+          fetch-depth: 0
+      - name: Project governed-start state
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path('.')
+          now = '2026-09-06T17:20:00-05:00'
+          baseline = '1e325045b2fc65d067a5e587f8cde78dcba9f766'
+          branch = 'integration/vti-07-permissions-hidden-information-gm-authority'
+          supplement = 'governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_VTI07_GOVERNED_START_2026-09-06.md'
+          service_objective = {
+              'ordinary_tranche_single_continue_target_percent': 80,
+              'ordinary_tranche_two_continue_target_percent': 95,
+              'max_execution_cycles_without_genuine_blocker': 2,
+              'unrelated_historical_validation_jobs_target': 0,
+              'reruns_without_changed_evidence_target': 0,
+              'post_merge_stale_pointer_target': 0,
+          }
+          authorized = [
+              'provider-neutral preservation of canonical Multiversal ownership, consent, visibility and GM-authority decisions across derivative external VTT clients',
+              'fail-closed projection of hidden counts, hidden content, redacted identities and GM-only material with no inference channel',
+              'deterministic authorization-presentation envelopes that consume canonical Multiversal authorization decisions without creating a parallel permission engine',
+              'capability-aware downgrade to redacted or unsupported presentation when a target cannot safely preserve canonical hidden-information semantics',
+              'acceptance fixtures, deterministic invariant validation and receipts needed to prove the bounded permission-preservation contract before production mutation is unlocked',
+          ]
+          not_authorized = [
+              'a new or parallel permission, ownership, consent, visibility, adjudication or hidden-state authority engine',
+              'provider-specific schemas, vendor selection/ranking or VTI-09 platform commitment',
+              'credentials, external account mutation, adapter implementation, live external synchronization mutation or canonical game-state mutation',
+              'durable VTI persistence or a new migration before separately authorized persistence work',
+              'VTI-08 adapter-SDK behavior or any VTI-08+ implementation',
+              'provider activation, tester distribution, package distribution, release, deployment or SGC-01+ implementation',
+          ]
+
+          def readj(path):
+              return json.loads((root/path).read_text(encoding='utf-8'))
+          def writej(path, data):
+              (root/path).write_text(json.dumps(data, separators=(',', ':')) + '\n', encoding='utf-8')
+
+          cp_path = Path('governance/ai/work-state/VTI-07-attempt-001.json')
+          cp = readj(cp_path)
+          cp['schema_version'] = '0.3.0'
+          cp['status'] = 'in_progress'
+          cp['started_at'] = now
+          cp['implementation_branch'] = branch
+          cp['implementation_authority'] = True
+          cp['branch_creation_authorized'] = True
+          cp['acceptance_package_authorized'] = True
+          cp['production_mutation_authorized'] = False
+          cp['application_baseline_sha'] = baseline
+          cp['objective'] = 'Implement a bounded provider-neutral permission, hidden-information and GM-authority preservation contract that consumes canonical Multiversal authorization decisions while external VTTs remain derivative presentation clients.'
+          cp['implementation_scope'] = {'authorized': authorized, 'not_authorized': not_authorized}
+          cp['validation'] = {'acceptance_red': None, 'final_green': None}
+          cp['convergence_control'] = {
+              'owner_continue_count': 1,
+              'execution_cycles': 1,
+              'repair_cycles': 0,
+              'application_feature_repair_cycles': 0,
+              'validation_contract_repair_cycles': 0,
+              'repository_state_repair_cycles': 0,
+              'no_progress_cycles': 0,
+              'diagnostic_mode': False,
+              'last_failure_signature': None,
+              'last_failure_class': None,
+              'diagnostic_hypotheses': [],
+              'retry_basis': None,
+              'service_objective': service_objective,
+              'unrelated_historical_validation_jobs_observed': 0,
+              'reruns_without_changed_evidence': 0,
+              'post_merge_stale_pointer_incidents': 0,
+              'same_cycle_completed': False,
+              'completed_within_two_cycles': False,
+          }
+          cp['authority_boundary'] = {
+              'vti08_plus_authorized': False,
+              'sgc01_plus_authorized': False,
+              'provider_activation_authorized': False,
+              'tester_distribution_authorized': False,
+              'release_or_deployment_authorized': False,
+          }
+          cp['governed_start_boundaries'] = [
+              'VTI-06 remains completed_verified and frozen with implementation authority retired.',
+              'VTI-07 branch creation, bounded implementation scaffolding and acceptance-package authority are open only for the registered application branch after this AIOC governed start validates and merges.',
+              'VTI-07 production permission/hidden-information/GM-authority behavior remains locked until genuine matching self-hosted Linux/Windows acceptance RED is sealed.',
+              'Canonical Multiversal ownership, consent, visibility, authorization, hidden-information and GM-authority decisions must be consumed rather than duplicated or overridden.',
+              'Hidden counts, hidden content, redacted identities and GM-only material remain fail-closed with no inference channel; unsupported target fidelity must downgrade to redacted or unsupported.',
+              'Provider-specific schemas, vendor selection/ranking, credentials/accounts, adapters, live external/canonical mutation, persistence/migration, provider activation, tester distribution, release/deployment, VTI-08+ and SGC-01+ remain unauthorized.',
+          ]
+          cp['completed'] = False
+          cp['next_action'] = f'Validate and merge the VTI-07 governed-start AIOC head. Then create application branch {branch} from exact main {baseline}, add acceptance package only, and obtain genuine matching Linux/Windows RED before unlocking production mutation.'
+          writej(cp_path, cp)
+
+          backlog_path = Path('governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json')
+          backlog = readj(backlog_path)
+          backlog['schema_version'] = '0.21.0'
+          backlog['application_baseline_sha'] = baseline
+          for row in backlog['tranches']:
+              if row.get('id') == 'VTI-07':
+                  row['status'] = 'in_progress'
+                  row['implementation_authority'] = True
+                  row['implementation_branch'] = branch
+                  row['application_baseline_sha'] = baseline
+          backlog['active_contract'] = {
+              'work_item': 'VTI-07',
+              'status': 'in_progress',
+              'implementation_branch': branch,
+              'implementation_authority': True,
+              'acceptance_package_authorized': True,
+              'production_mutation_authorized': False,
+              'matching_red_observed': False,
+              'rule': 'VTI-07 is acceptance-only from exact application main 1e325045b2fc65d067a5e587f8cde78dcba9f766. Production permission/hidden-information/GM-authority behavior remains locked until genuine matching Linux/Windows RED is sealed.'
+          }
+          backlog['boundaries'] = [
+              'Multiversal remains rules/campaign/spatial/permission authority; external VTTs remain derivative clients.',
+              'VTI-01 through VTI-06 are completed_verified and frozen with implementation authority retired.',
+              'VTI-07 is in_progress acceptance-only on integration/vti-07-permissions-hidden-information-gm-authority from exact application main 1e325045b2fc65d067a5e587f8cde78dcba9f766.',
+              'VTI-07 acceptance-package authority is open; production permission behavior remains locked until genuine matching RED is sealed.',
+              'Canonical ownership, consent, visibility, hidden-information filtering and GM authority must be preserved without creating a parallel permission engine.',
+              'Hidden counts/content, redacted identities and GM-only material remain fail-closed with no inference channel.',
+              'No vendor selection/ranking, provider-specific schema, credential use, external account mutation, adapter implementation, live external/canonical mutation, persistence/migration, provider activation, tester distribution, release or deployment is authorized.',
+              'VTI-08+ and SGC-01+ remain unauthorized.'
+          ]
+          writej(backlog_path, backlog)
+
+          pointer_path = Path('governance/ai/runtime/CURRENT_WORK_POINTER.json')
+          pointer = readj(pointer_path)
+          pointer['schema_version'] = '15.86.0'
+          pointer['updated_at'] = now
+          pointer['roadmap_supplements'] = [supplement]
+          pointer['selection_reason'] = f'VTI-07 governed start from exact application main {baseline}; acceptance-package authority is open while production permission behavior remains locked pending genuine matching RED.'
+          pointer['active_attempt']['status'] = 'in_progress'
+          pointer['active_attempt']['implementation_branch'] = branch
+          pointer['active_attempt']['implementation_authority'] = True
+          pointer['active_attempt']['application_baseline_sha'] = baseline
+          ba = pointer['bounded_authority']
+          ba['vti_implementation'] = True
+          ba['vti_work_item'] = 'VTI-07'
+          ba['vti_branch'] = branch
+          ba['acceptance_package_authorized'] = True
+          ba['production_mutation_authorized'] = False
+          ba['matching_red_observed'] = False
+          ba['vti_scope'] = 'VTI-07 acceptance-only: preserve canonical ownership, consent, visibility, hidden-information and GM authority across derivative VTT clients. Production behavior remains locked pending genuine matching RED.'
+          pointer['selection_invariants'] = [
+              'ALP-01 through ALP-08 and VTI-01 through VTI-06 remain completed_verified and frozen with implementation authority retired.',
+              f'VTI-07 is in_progress acceptance-only on {branch} from exact application main {baseline}.',
+              'Only VTI-07 acceptance-package work is unlocked; production permission/hidden-information/GM-authority behavior remains locked until genuine matching RED is sealed.',
+              'Multiversal remains canonical rules/campaign/spatial/permission authority; external VTTs are derivative presentation clients only.',
+              'VTI-07 must consume canonical ownership, consent, visibility, authorization and GM-authority decisions without creating a parallel permission engine.',
+              'Hidden counts/content, redacted identities and GM-only material remain fail-closed with no inference channel; unsafe target fidelity downgrades to redacted or unsupported.',
+              'Platform selection remains evidence-driven and deferred to VTI-09; no vendor is selected or ranked.',
+              'No provider-specific schema, credential use, external account mutation, adapter implementation, live external/canonical mutation, durable VTI persistence, new migration, provider activation, tester distribution, release or deployment is authorized.',
+              'VTI-08+ and SGC-01+ remain unauthorized.'
+          ]
+          pointer['exact_next_action'] = f'Validate and merge this VTI-07 governed-start AIOC state. Then create {branch} from exact application main {baseline}, add acceptance package only, and obtain genuine matching Linux/Windows RED before production mutation.'
+          writej(pointer_path, pointer)
+
+          index_path = Path('governance/ai/runtime/ROADMAP_INDEX.json')
+          index = readj(index_path)
+          index['schema_version'] = '15.54.0'
+          index['updated_at'] = now
+          index['rule'] = f'VTI-07 is in_progress acceptance-only on {branch} from exact application main {baseline}; production permission behavior remains locked pending genuine matching RED.'
+          index['current'].update({
+              'status': 'in_progress',
+              'implementation_branch': branch,
+              'implementation_authority': True,
+              'acceptance_package_authorized': True,
+              'production_mutation_authorized': False,
+              'matching_red_observed': False,
+              'application_baseline_sha': baseline,
+          })
+          index['boundaries'] = list(backlog['boundaries'])
+          index['selected_vti'].update({
+              'current_state': 'in_progress',
+              'implementation_authority': True,
+              'implementation_branch': branch,
+              'application_baseline_sha': baseline,
+          })
+          writej(index_path, index)
+
+          runtime_path = Path('governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json')
+          runtime = readj(runtime_path)
+          runtime['schema_version'] = '12.67.0'
+          runtime['updated_at'] = now
+          runtime['canonical_selector']['rule'] = f'This is the only current-work selector. VTI-07 is in_progress acceptance-only on {branch} from exact application main {baseline}; production permission behavior remains locked pending genuine matching RED.'
+          runtime['work_state']['selected_checkpoint_role'] = 'in_progress_acceptance_only'
+          runtime['application_repository']['canonical_main'] = baseline
+          runtime['application_repository']['active_validation_family_state'] = 'VTI01_VTI02_VTI03_VTI04_VTI05_VTI06_completed_VTI07_in_progress_acceptance_only'
+          runtime['active_work'] = {
+              'work_item': 'VTI-07',
+              'attempt_id': 'VTI-07-attempt-001',
+              'repository': 'cybalicistjt-stack/Multiversal-app',
+              'state': 'in_progress',
+              'role': 'active_acceptance_only',
+              'implementation_branch': branch,
+              'implementation_authority': True,
+              'acceptance_package_authorized': True,
+              'production_mutation_authorized': False,
+              'matching_red_observed': False,
+              'execution_rule': f'After this governed start validates and merges, create {branch} from exact application main {baseline}, add VTI-07 acceptance package only, and obtain genuine matching Linux/Windows RED before production mutation.'
+          }
+          runtime['boundaries'] = list(backlog['boundaries'])
+          runtime['selected_vti'].update({
+              'current_state': 'in_progress',
+              'implementation_authority': True,
+              'implementation_branch': branch,
+              'application_baseline_sha': baseline,
+          })
+          writej(runtime_path, runtime)
+
+          registry_path = Path('governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json')
+          registry = readj(registry_path)
+          registry['schema_version'] = '15.71.0'
+          registry['updated_at'] = now
+          for row in registry['current']:
+              if row.get('kind') == 'roadmap_supplement':
+                  row['path'] = supplement
+          registry['active_planning_work'] = {
+              'work_item': 'VTI-07',
+              'attempt_id': 'VTI-07-attempt-001',
+              'repository': 'cybalicistjt-stack/Multiversal-app',
+              'state': 'in_progress',
+              'implementation_branch': branch,
+              'implementation_authority': True,
+              'application_baseline_sha': baseline,
+              'implementation_scope': 'Acceptance-only VTI-07 permission/hidden-information/GM-authority preservation contract consuming canonical Multiversal authorization decisions. Production behavior remains locked until genuine matching RED.'
+          }
+          registry['vti_07_authority'] = {
+              'selected_not_started': False,
+              'implementation_authority': True,
+              'implementation_branch': branch,
+              'branch_creation_authorized': True,
+              'acceptance_package_authorized': True,
+              'production_mutation_authorized': False,
+              'permissions_hidden_gm_authority_authorized': False,
+              'matching_red_observed': False,
+              'provider_specific_schema_authorized': False,
+              'credential_or_external_account_mutation_authorized': False,
+              'adapter_implementation_authorized': False,
+              'live_external_or_canonical_mutation_authorized': False,
+              'durable_persistence_or_migration_authorized': False,
+              'provider_activation_authorized': False,
+              'tester_distribution_authorized': False,
+              'release_or_deployment_authorized': False,
+              'vti08_plus_authorized': False,
+              'sgc01_plus_authorized': False,
+          }
+          writej(registry_path, registry)
+
+          program_path = Path('governance/application-planning/virtual-tabletop-interoperability/VTI_VIRTUAL_TABLETOP_INTEROPERABILITY_PROGRAM.md')
+          text = program_path.read_text(encoding='utf-8')
+          text = text.replace('**Status:** OWNER-APPROVED — VTI-01 THROUGH VTI-06 COMPLETED_VERIFIED; VTI-07 SELECTED_NOT_STARTED', '**Status:** OWNER-APPROVED — VTI-01 THROUGH VTI-06 COMPLETED_VERIFIED; VTI-07 IN_PROGRESS — ACCEPTANCE ONLY')
+          text = text.replace('VTI-07 — Permissions, Hidden Information & GM Authority — is the strict successor and is `selected_not_started` from that exact application main with no branch, acceptance-package, implementation or production authority.', f'VTI-07 — Permissions, Hidden Information & GM Authority — is `in_progress` acceptance-only on `{branch}` from that exact application main. Branch creation, implementation scaffolding and acceptance-package authority are open; production permission behavior remains locked until genuine matching RED is sealed.')
+          text = text.replace('7. **VTI-07 — Permissions, Hidden Information & GM Authority** — **SELECTED_NOT_STARTED**.  \n   Preserve ownership, consent, GM adjudication and hidden-information filtering across external clients; prevent hidden counts/content leakage. Selection alone grants no branch, acceptance-package, implementation or production authority.', '7. **VTI-07 — Permissions, Hidden Information & GM Authority** — **IN_PROGRESS — ACCEPTANCE ONLY**.  \n   Preserve ownership, consent, GM adjudication and hidden-information filtering across external clients; prevent hidden counts/content leakage. Acceptance-package authority is open; production behavior remains locked until genuine matching RED is sealed.')
+          old_boundary = '## VTI-07 selection boundary\n\nVTI-07 — Permissions, Hidden Information & GM Authority — is `selected_not_started` as `VTI-07-attempt-001` from exact application main `1e325045b2fc65d067a5e587f8cde78dcba9f766`. Selection records strict order only. No VTI-07 application branch, acceptance package, permission behavior, production mutation or permission-engine implementation is authorized until a separate governed start validates and merges.\n\nA future governed start may bound provider-neutral preservation of canonical Multiversal ownership, consent, visibility, hidden-information and GM-authority decisions across derivative external-VTT clients. External VTTs may not become authoritative for permissions, adjudication or hidden state. Hidden counts/content, redacted identities and GM-only material remain fail-closed with no inference channel. Provider-specific schemas, credentials/accounts, adapter implementation, live external/canonical mutation, durable persistence/new migration, provider activation, tester distribution, release/deployment, VTI-08+ and SGC-01+ remain unauthorized.'
+          new_boundary = f'## VTI-07 governed-start boundary\n\nVTI-07 — Permissions, Hidden Information & GM Authority — is `in_progress` acceptance-only as `VTI-07-attempt-001` on `{branch}` from exact application main `{baseline}`. Branch creation, bounded implementation scaffolding and acceptance-package authority are open. Production permission/hidden-information/GM-authority behavior remains locked until genuine matching self-hosted Linux/Windows RED is sealed.\n\nVTI-07 must consume canonical Multiversal ownership, consent, visibility, authorization, hidden-information and GM-authority decisions; external VTTs may not become authoritative for permissions, adjudication or hidden state. Hidden counts/content, redacted identities and GM-only material remain fail-closed with no inference channel, and unsafe target fidelity downgrades to `redacted` or `unsupported`. Provider-specific schemas, credentials/accounts, adapter implementation, live external/canonical mutation, durable persistence/new migration, provider activation, tester distribution, release/deployment, VTI-08+ and SGC-01+ remain unauthorized.'
+          text = text.replace(old_boundary, new_boundary)
+          program_path.write_text(text, encoding='utf-8')
+
+          red_path = root/'governance/ai/work-state/VTI-07-GOVERNED-START-RED.md'
+          red_path.write_text('''# VTI-07 Governed-Start Control-Plane RED\n\n- Exact test-only head: `b608b83ddee459a925088888de9f3722a65fdb6f`\n- AIOC run: `34063667213`\n- Job: `101568575055`\n- Repository-health validator: PASS\n- Control-plane regression: expected RED\n- Observed failures: VTI-07 checkpoint remained `selected_not_started` instead of `in_progress`, and `implementation_scope` was absent.\n- Interpretation: the new VTI-07 registration regression correctly detects the missing governed-start projection. No production permission behavior was present or authorized.\n''', encoding='utf-8')
+
+          roadmap_path = root/supplement
+          roadmap_path.write_text(f'''# Application Implementation Roadmap — VTI-07 Governed Start\n\n**Work item:** VTI-07 — Permissions, Hidden Information & GM Authority  \n**State of this commit:** acceptance-only governed-start contract; production mutation remains locked pending genuine matching application RED.  \n**Application baseline:** `{baseline}`  \n**Implementation branch after this AIOC governed start validates and merges:** `{branch}`\n\n## Bounded objective\n\nVTI-07 preserves canonical Multiversal ownership, consent, visibility, authorization, hidden-information and GM-authority decisions across provider-neutral derivative external-VTT presentation. It does not create a second permission engine and does not make an external VTT authoritative for permissions, adjudication or hidden state.\n\n## Acceptance-only authority opened by this governed start\n\n- create the registered VTI-07 application branch from the exact application baseline only after this AIOC governed start merges;\n- add the bounded VTI-07 acceptance profile, fixtures, invariant verifier and tests;\n- define provider-neutral authorization-presentation envelopes that consume canonical Multiversal decisions;\n- prove hidden counts/content, redacted identities and GM-only material fail closed with no inference channel;\n- prove unsafe target fidelity downgrades to explicit `redacted` or `unsupported`;\n- prove expected absence of the VTI-07 production contract by genuine matching Linux and Windows RED before production mutation authority opens.\n\n## Production authority remains locked until matching RED\n\nThe following remain unauthorized before matching RED is sealed:\n- production permission/hidden-information/GM-authority preservation implementation;\n- a new or parallel permission, ownership, consent, visibility, adjudication or hidden-state authority engine;\n- provider-specific schemas, vendor selection/ranking, credentials, external accounts or adapter implementation;\n- live external synchronization mutation or canonical game-state mutation;\n- durable VTI persistence or a new migration;\n- provider activation, tester distribution, release or deployment;\n- VTI-08+ and SGC-01+ implementation.\n\n## Canonical-authority reuse requirement\n\nVTI-07 must consume existing canonical Multiversal authorization, visibility, ownership, consent and GM-authority decisions. Hidden information must remain fail-closed, and an external VTT's weaker capability may only reduce fidelity; it may never broaden disclosure or authority.\n\n## Exact next action after this governed start merges\n\nCreate `{branch}` from exact application main `{baseline}`, add acceptance-only VTI-07 validation, and obtain genuine matching self-hosted Linux/Windows RED before any production permission-preservation code is authorized.\n''', encoding='utf-8')
+          PY
+          rm .github/workflows/vti07-governed-start-project.yml
+          git config user.name multiversal-governance-bot
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          git commit -m "VTI-07 start: project acceptance-only governed authority"
+          git push origin HEAD:governance/vti-07-governed-start
