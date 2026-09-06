@@ -15,6 +15,7 @@ class Vti07PermissionsHiddenGmRegistrationTests(unittest.TestCase):
         branch = "integration/vti-07-permissions-hidden-information-gm-authority"
         merge = "692da4f4792426b9c62f6be14db60fc63eb09d6b"
         checkpoint = load_json("governance/ai/work-state/VTI-07-attempt-001.json")
+        successor = load_json("governance/ai/work-state/VTI-08-attempt-001.json")
         backlog = load_json("governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json")
         pointer = load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
         registry = load_json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
@@ -23,38 +24,43 @@ class Vti07PermissionsHiddenGmRegistrationTests(unittest.TestCase):
 
         self.assertEqual(checkpoint["application_baseline_sha"], baseline)
         self.assertEqual(checkpoint["implementation_branch"], branch)
-        self.assertIn(checkpoint["status"], {"in_progress", "ready_for_review", "completed_verified"})
-        vti07 = next(item for item in backlog["tranches"] if item["id"] == "VTI-07")
-        authority = registry["vti_07_authority"]
+        self.assertEqual(checkpoint["status"], "completed_verified")
+        self.assertTrue(checkpoint["completed"])
+        self.assertTrue(checkpoint["authority_retired"])
+        self.assertEqual(checkpoint["application_merge_sha"], merge)
+        self.assertFalse(checkpoint["implementation_authority"])
+        self.assertFalse(checkpoint["branch_creation_authorized"])
+        self.assertFalse(checkpoint["acceptance_package_authorized"])
+        self.assertFalse(checkpoint["production_mutation_authorized"])
 
-        if checkpoint["status"] == "completed_verified":
-            self.assertTrue(checkpoint["completed"])
-            self.assertTrue(checkpoint["authority_retired"])
-            self.assertEqual(checkpoint["application_merge_sha"], merge)
-            self.assertFalse(checkpoint["implementation_authority"])
-            self.assertFalse(checkpoint["branch_creation_authorized"])
-            self.assertFalse(checkpoint["acceptance_package_authorized"])
-            self.assertFalse(checkpoint["production_mutation_authorized"])
-            self.assertEqual(vti07["status"], "completed_verified")
-            self.assertEqual(vti07["application_merge_sha"], merge)
-            self.assertFalse(vti07["implementation_authority"])
-            self.assertTrue(authority["retired"])
-            for key in ("implementation_authority", "branch_creation_authorized", "acceptance_package_authorized", "production_mutation_authorized", "permissions_hidden_gm_authority_authorized"):
-                self.assertFalse(authority[key])
+        vti07 = next(item for item in backlog["tranches"] if item["id"] == "VTI-07")
+        self.assertEqual(vti07["status"], "completed_verified")
+        self.assertEqual(vti07["application_merge_sha"], merge)
+        self.assertFalse(vti07["implementation_authority"])
+
+        authority = registry["vti_07_authority"]
+        self.assertTrue(authority["retired"])
+        for key in ("implementation_authority", "branch_creation_authorized", "acceptance_package_authorized", "production_mutation_authorized", "permissions_hidden_gm_authority_authorized"):
+            self.assertFalse(authority[key])
+
+        self.assertIn(successor["status"], {"selected_not_started", "in_progress", "ready_for_review", "completed_verified"})
+        self.assertEqual(successor["application_baseline_sha"], merge)
+        if successor["status"] == "selected_not_started":
+            self.assertIsNone(successor["implementation_branch"])
+            self.assertFalse(successor["implementation_authority"])
+        elif successor["status"] in {"in_progress", "ready_for_review"}:
+            self.assertEqual(successor["implementation_branch"], "integration/vti-08-adapter-sdk-capability-manifest-reference-vtt")
+            self.assertTrue(successor["implementation_authority"])
+        else:
+            self.assertFalse(successor["implementation_authority"])
+
+        if successor["status"] != "completed_verified":
             self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-08")
-            self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
             self.assertEqual(index["current"]["work_item_id"], "VTI-08")
             self.assertEqual(runtime["active_work"]["work_item"], "VTI-08")
-            self.assertEqual(runtime["application_repository"]["canonical_main"], merge)
         else:
-            self.assertTrue(checkpoint["implementation_authority"])
-            self.assertTrue(checkpoint["branch_creation_authorized"])
-            self.assertTrue(checkpoint["acceptance_package_authorized"])
-            self.assertEqual(vti07["status"], "in_progress")
-            self.assertTrue(vti07["implementation_authority"])
-            self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-07")
-            self.assertEqual(index["current"]["work_item_id"], "VTI-07")
-            self.assertEqual(runtime["active_work"]["work_item"], "VTI-07")
+            self.assertIn(pointer["active_attempt"]["work_item_id"], {"VTI-08", "VTI-09"})
+        self.assertEqual(runtime["application_repository"]["canonical_main"], merge)
 
         for key in (
             "provider_specific_schema_authorized",
