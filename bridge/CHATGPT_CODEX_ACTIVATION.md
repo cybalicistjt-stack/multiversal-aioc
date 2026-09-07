@@ -43,6 +43,30 @@ If a Codex installation does not automatically read repository `.codex/config.to
 url = "https://aioc-mcp-bridge-production.up.railway.app/mcp"
 ```
 
+## Project development MCPs
+
+The project-scoped `.codex/config.toml` also configures two local development servers:
+
+- `context7` — current, version-specific documentation for the React, Vite, TypeScript, Tauri, Rust, Express, and MCP SDK stack.
+- `playwright` — local browser inspection and UI verification for the AIOC operational surfaces and deployment checks.
+
+Both use `npx` and start on the developer's machine; they are not deployed to Railway or GitHub Pages.
+
+Requirements:
+
+- Node.js 20 or newer.
+- The repository must be trusted by Codex before project-scoped MCP configuration is loaded.
+- Context7 works without a key, but `CONTEXT7_API_KEY` may be set in the local environment for higher rate limits. Never commit the key.
+- Playwright downloads or uses a local browser on first use. Keep its tools in prompt/approval mode when testing authenticated or state-changing pages.
+
+Useful checks after opening the repository:
+
+```bash
+codex mcp list
+```
+
+Then restart or reload Codex if the new project MCP entries do not appear immediately.
+
 ## Verification standard
 
 A deployment-affecting task is complete only when the bridge reports:
