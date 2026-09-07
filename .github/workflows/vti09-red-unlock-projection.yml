@@ -18,66 +18,14 @@ jobs:
           python3 - <<'PY'
           import json
           from pathlib import Path
-          red={
-            'head_sha':'1e29fc706a17c39be622b1a1bb450bd5667f3d77',
-            'run_id':34144077082,
-            'repository_health_job':101812172039,
-            'linux_job':101812200863,
-            'windows_job':101812200823,
-            'deterministic_compare_job':101812291853,
-            'deterministic_receipt_sha256':'8c321ae5c93d220ff5fe4ff4171afc140cad82d2e9e6365225a3f89503392dd8',
-            'matching_red_observed':True,
-            'failure_stage':'vti09-invariants',
-            'failure_reason':'production contract intentionally absent',
-            'linux_artifact_id':10026982756,
-            'windows_artifact_id':10026987775,
-            'comparison_artifact_id':10026993548,
-            'linux_artifact_digest_sha256':'0b356c460e1be00f69195ad023d54c7e61d982189f03cfe5171bdbc5c5dde0fb',
-            'windows_artifact_digest_sha256':'9704d1dfbe4d3cc246d348f1980fff46e623e2c556c87546648cd65d739392ed',
-            'comparison_artifact_digest_sha256':'3bfe1514b7d53c4e7f99dbafcca9777d769f52fd616c81c537b1e144e45abd3e',
-            'raw_evidence_confirmed':True,
-            'historical_profile_fanout':0,
-          }
-          p=Path('governance/ai/work-state/VTI-09-attempt-001.json')
-          d=json.loads(p.read_text())
-          d['application_pr']=438
-          d['production_mutation_authorized']=True
-          d.setdefault('validation',{})['acceptance_red']=red
-          d['next_action']='Implement only the bounded Foundry VTT production contract on app PR 438, then obtain exact-head VTI-09 GREEN on repository health, self-hosted Linux, self-hosted Windows and deterministic comparison before merge.'
-          gb=d.setdefault('governed_start_boundaries',[])
-          msg='Genuine matching self-hosted Linux/Windows VTI-09 acceptance RED is sealed from exact head 1e29fc706a17c39be622b1a1bb450bd5667f3d77, so bounded production mutation is authorized only for the registered Foundry VTT VTI-09 contract.'
-          gb=[x for x in gb if 'Production Foundry adapter behavior remains locked' not in x and 'acceptance RED' not in x]
-          gb.append(msg)
-          d['governed_start_boundaries']=gb
-          cc=d.setdefault('convergence_control',{})
-          cc['retry_basis']={'changed_since_previous':['Genuine matching VTI-09 application RED is sealed from exact head 1e29fc706a17c39be622b1a1bb450bd5667f3d77 with identical Linux/Windows deterministic receipt and successful comparator.','Production mutation is opened only for the registered bounded Foundry VTT contract; all activation/network/persistence/publication/release/successor authority stays closed.']}
-          p.write_text(json.dumps(d,separators=(',',':'))+'\n')
-
-          p=Path('governance/ai/runtime/CURRENT_WORK_POINTER.json')
-          q=json.loads(p.read_text())
-          q['selection_reason']='VTI-09 governed start is merged and genuine matching Foundry acceptance RED is sealed; bounded production mutation is open only for the registered VTI-09 contract.'
-          ba=q.setdefault('bounded_authority',{})
-          ba['production_mutation_authorized']=True
-          ba['matching_red_observed']=True
-          ba['vti_scope']='VTI-09 sealed-RED authority for the selected Foundry VTT first integration; bounded provider-specific production contract only, with activation/network/persistence/publication/release/successor authority closed.'
-          q['selection_invariants']=[x for x in q.get('selection_invariants',[]) if 'production Foundry adapter mutation remains locked' not in x.lower()]
-          q['selection_invariants'].append('Genuine matching VTI-09 Linux/Windows RED is sealed from exact head 1e29fc706a17c39be622b1a1bb450bd5667f3d77; bounded Foundry production mutation is open only for the registered contract.')
-          q['exact_next_action']='Implement only packages/contracts/src/virtual-tabletop-interoperability/foundry-vtt-first-full-platform-integration-contract.ts on app PR 438, then run exact-head VTI-09 current-family GREEN before merge.'
-          p.write_text(json.dumps(q,separators=(',',':'))+'\n')
-
-          p=Path('governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json')
-          r=json.loads(p.read_text())
-          def walk(x):
-            if isinstance(x,dict):
-              if x.get('work_item_id')=='VTI-09' or x.get('attempt_id')=='VTI-09-attempt-001':
-                x['application_pr']=438
-                x['production_mutation_authorized']=True
-                if 'matching_red_observed' in x: x['matching_red_observed']=True
-              for v in x.values(): walk(v)
-            elif isinstance(x,list):
-              for v in x: walk(v)
-          walk(r)
-          p.write_text(json.dumps(r,separators=(',',':'))+'\n')
+          red={'head_sha':'1e29fc706a17c39be622b1a1bb450bd5667f3d77','run_id':34144077082,'repository_health_job':101812172039,'linux_job':101812200863,'windows_job':101812200823,'deterministic_compare_job':101812291853,'deterministic_receipt_sha256':'8c321ae5c93d220ff5fe4ff4171afc140cad82d2e9e6365225a3f89503392dd8','matching_red_observed':True,'failure_stage':'vti09-invariants','failure_reason':'production contract intentionally absent','linux_artifact_id':10026982756,'windows_artifact_id':10026987775,'comparison_artifact_id':10026993548,'linux_artifact_digest_sha256':'0b356c460e1be00f69195ad023d54c7e61d982189f03cfe5171bdbc5c5dde0fb','windows_artifact_digest_sha256':'9704d1dfbe4d3cc246d348f1980fff46e623e2c556c87546648cd65d739392ed','comparison_artifact_digest_sha256':'3bfe1514b7d53c4e7f99dbafcca9777d769f52fd616c81c537b1e144e45abd3e','raw_evidence_confirmed':True,'historical_profile_fanout':0}
+          def read(path): return json.loads(Path(path).read_text())
+          def write(path,data): Path(path).write_text(json.dumps(data,separators=(',',':'))+'\n')
+          p='governance/ai/work-state/VTI-09-attempt-001.json'; d=read(p); d['application_pr']=438; d['production_mutation_authorized']=True; d.setdefault('validation',{})['acceptance_red']=red; d['next_action']='Implement only the bounded Foundry VTT production contract on app PR 438, then obtain exact-head VTI-09 GREEN on repository health, self-hosted Linux, self-hosted Windows and deterministic comparison before merge.'; d['governed_start_boundaries']=[x for x in d.get('governed_start_boundaries',[]) if 'Production Foundry adapter behavior remains locked' not in x and 'acceptance RED is sealed' not in x]+['Genuine matching self-hosted Linux/Windows VTI-09 acceptance RED is sealed from exact head 1e29fc706a17c39be622b1a1bb450bd5667f3d77, so bounded production mutation is authorized only for the registered Foundry VTT VTI-09 contract.']; d.setdefault('convergence_control',{})['retry_basis']={'changed_since_previous':['Genuine matching VTI-09 application RED is sealed from exact head 1e29fc706a17c39be622b1a1bb450bd5667f3d77 with identical Linux/Windows deterministic receipt and successful comparator.','Production mutation is opened only for the registered bounded Foundry VTT contract; all activation/network/persistence/publication/release/successor authority stays closed.']}; write(p,d)
+          p='governance/ai/runtime/CURRENT_WORK_POINTER.json'; q=read(p); q['selection_reason']='VTI-09 governed start is merged and genuine matching Foundry acceptance RED is sealed; bounded production mutation is open only for the registered VTI-09 contract.'; q.setdefault('bounded_authority',{})['production_mutation_authorized']=True; q['bounded_authority']['matching_red_observed']=True; q['bounded_authority']['vti_scope']='VTI-09 sealed-RED authority for the selected Foundry VTT first integration; bounded provider-specific production contract only, with activation/network/persistence/publication/release/successor authority closed.'; q['selection_invariants']=[x for x in q.get('selection_invariants',[]) if 'production Foundry adapter mutation remains locked' not in x]+['Genuine matching VTI-09 Linux/Windows RED is sealed from exact head 1e29fc706a17c39be622b1a1bb450bd5667f3d77; bounded Foundry production mutation is open only for the registered contract.']; q['exact_next_action']='Implement only packages/contracts/src/virtual-tabletop-interoperability/foundry-vtt-first-full-platform-integration-contract.ts on app PR 438, then run exact-head VTI-09 current-family GREEN before merge.'; write(p,q)
+          for p,key in [('governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json','active_contract'),('governance/ai/runtime/ROADMAP_INDEX.json','current'),('governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json','active_work')]:
+            x=read(p); x[key]['production_mutation_authorized']=True; x[key]['matching_red_observed']=True; write(p,x)
+          p='governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json'; r=read(p); auth=r['vti_09_authority']; auth['application_pr']=438; auth['production_mutation_authorized']=True; auth['matching_red_observed']=True; write(p,r)
           PY
       - name: Remove temporary workflow before validation
         run: rm .github/workflows/vti09-red-unlock-projection.yml
