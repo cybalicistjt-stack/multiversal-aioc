@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[3]
+ROOT = Path(__file__).resolve().parents[4]
 NOW = "2026-09-07T18:39:00-05:00"
 BRANCH = "integration/vti-10-additional-vtt-adapters-compatibility-matrix"
 BASE = "9bed9b190b1d78bbbce9e208c2daa792c9109466"
@@ -53,7 +53,7 @@ cc["repair_cycles"] = max(int(cc.get("repair_cycles", 0)), 1)
 cc["repository_state_repair_cycles"] = max(int(cc.get("repository_state_repair_cycles", 0)), 1)
 cc["last_failure_signature"] = "An accidental governed-start supplement write reached AIOC main because the branch argument was omitted; the exact file was immediately reverted, restoring the prior canonical tree before branch work continued."
 cc["last_failure_class"] = "repository_state"
-cc["retry_basis"] = {"changed_since_previous": ["AIOC main tree was restored exactly before the governed-start branch was created.", "The test-first governed-start RED then failed only because VTI-10 remained selected_not_started, as intended."]}
+cc["retry_basis"] = {"changed_since_previous": ["AIOC main tree was restored exactly before the governed-start branch was created.", "The test-first governed-start RED then failed only because VTI-10 remained selected_not_started, as intended.", "The projection helper root was corrected after the first helper execution exposed a one-directory path error; no lifecycle files were mutated by that failed helper run."]}
 save(cp_path, cp)
 
 pointer_path = "governance/ai/runtime/CURRENT_WORK_POINTER.json"
@@ -144,7 +144,6 @@ a10.update({
     "provider_activation_authorized": False, "tester_distribution_authorized": False,
     "release_or_deployment_authorized": False, "vti11_plus_authorized": False, "sgc01_plus_authorized": False
 })
-# replace current roadmap supplement registration if present
 for row in auth.get("current", []):
     if row.get("kind") == "roadmap_supplement":
         row["path"] = SUPP
