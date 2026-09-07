@@ -1,0 +1,32 @@
+name: VTI-09 Terminal Closeout Projection
+on:
+  push:
+    branches:
+      - governance/vti-09-terminal-closeout-vti-10-selection
+permissions:
+  contents: write
+jobs:
+  project:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: governance/vti-09-terminal-closeout-vti-10-selection
+          fetch-depth: 0
+      - name: Project VTI-09 closeout and VTI-10 selection
+        run: python3 scripts/tmp_vti09_terminal_closeout.py
+      - name: Remove temporary helpers before validation
+        run: |
+          rm scripts/tmp_vti09_terminal_closeout.py
+          rm .github/workflows/vti09-terminal-closeout-projection.yml
+      - name: Run control-plane regressions
+        run: python3 -m unittest discover -s tests/control_plane -p 'test_*.py'
+      - name: Run repository health
+        run: python3 scripts/validate_repository_health.py --root .
+      - name: Commit validated terminal closeout
+        run: |
+          git config user.name "cybalicistjt-stack"
+          git config user.email "cybalicist.jt@gmail.com"
+          git add -A
+          git commit -m "VTI-09: terminal closeout and VTI-10 selection"
+          git push origin HEAD:governance/vti-09-terminal-closeout-vti-10-selection
