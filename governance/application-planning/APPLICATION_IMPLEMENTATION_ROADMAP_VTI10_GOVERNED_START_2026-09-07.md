@@ -10,4 +10,6 @@ The acceptance target covers the remaining VTI-01 surveyed platforms at their ev
 
 No provider credentials/accounts, live network access, live external/canonical mutation, durable persistence/new migration, provider activation, tester distribution, publication, release/deployment, VTI-11+ or SGC-01+ authority is opened.
 
-Projection evidence: helper run `34170916589` passed the VTI-10 lifecycle regression and repository-health validation before committing the helper-free projected tree. The subsequent bot-authored PR audit was `action_required`, so this evidence-only update supplies a user-authored exact candidate without changing authority semantics.
+Projection evidence: helper run `34170916589` passed the VTI-10 lifecycle regression and repository-health validation before committing the helper-free projected tree. The subsequent bot-authored PR audit was `action_required`, so a user-authored evidence-only candidate was created without changing authority semantics.
+
+Validation-repair evidence: run `34171168575` passed the full control-plane suite and repository-health validation after aligning `ROADMAP_INDEX`, making the VTI-09 successor regression lifecycle-aware, and entering diagnostic mode for the second validation-contract repair. This update seals that exact repaired semantic tree as a user-authored candidate.
