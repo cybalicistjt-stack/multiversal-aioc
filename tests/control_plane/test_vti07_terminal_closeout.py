@@ -2,10 +2,8 @@ import json
 import unittest
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-
-def load_json(path):
-    return json.loads((ROOT / path).read_text(encoding="utf-8"))
+ROOT=Path(__file__).resolve().parents[2]
+def load_json(path): return json.loads((ROOT/path).read_text(encoding="utf-8"))
 
 class Vti07TerminalCloseoutTests(unittest.TestCase):
     def test_vti07_terminal_evidence_and_vti08_successor_lifecycle(self):
@@ -49,13 +47,15 @@ class Vti07TerminalCloseoutTests(unittest.TestCase):
             self.assertEqual(pointer["active_attempt"]["work_item_id"],"VTI-08")
             self.assertEqual(index["current"]["work_item_id"],"VTI-08")
             self.assertEqual(runtime["active_work"]["work_item"],"VTI-08")
+            expected_main = "692da4f4792426b9c62f6be14db60fc63eb09d6b"
         else:
-            self.assertEqual(backlog["completed_through"],"VTI-08")
-            self.assertEqual(backlog["current_item"],"VTI-09")
-            self.assertEqual(pointer["active_attempt"]["work_item_id"],"VTI-09")
-            self.assertEqual(index["current"]["work_item_id"],"VTI-09")
-            self.assertEqual(runtime["active_work"]["work_item"],"VTI-09")
-        expected_main = "69bc17bf5999e5cd704d7ec4d8aaa7b168db740c" if nxt["status"] == "completed_verified" else "692da4f4792426b9c62f6be14db60fc63eb09d6b"
+            current = pointer["active_attempt"]["work_item_id"]
+            self.assertTrue(current.startswith("VTI-"))
+            self.assertGreaterEqual(int(current.split("-")[1]),9)
+            self.assertEqual(backlog["current_item"],current)
+            self.assertEqual(index["current"]["work_item_id"],current)
+            self.assertEqual(runtime["active_work"]["work_item"],current)
+            expected_main = pointer["active_attempt"]["application_baseline_sha"]
         self.assertEqual(runtime["application_repository"]["canonical_main"], expected_main)
 
         old=registry["vti_07_authority"]; self.assertTrue(old["retired"]); self.assertTrue(old["matching_red_observed"])
@@ -79,4 +79,4 @@ class Vti07TerminalCloseoutTests(unittest.TestCase):
             if nxt["validation"]["acceptance_red"] is None:
                 self.assertFalse(new[key])
 
-if __name__ == "__main__": unittest.main()
+if __name__=="__main__": unittest.main()

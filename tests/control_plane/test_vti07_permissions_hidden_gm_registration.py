@@ -58,9 +58,14 @@ class Vti07PermissionsHiddenGmRegistrationTests(unittest.TestCase):
             self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-08")
             self.assertEqual(index["current"]["work_item_id"], "VTI-08")
             self.assertEqual(runtime["active_work"]["work_item"], "VTI-08")
+            expected_main = merge
         else:
-            self.assertIn(pointer["active_attempt"]["work_item_id"], {"VTI-08", "VTI-09"})
-        expected_main = "69bc17bf5999e5cd704d7ec4d8aaa7b168db740c" if successor["status"] == "completed_verified" else merge
+            current = pointer["active_attempt"]["work_item_id"]
+            self.assertTrue(current.startswith("VTI-"))
+            self.assertGreaterEqual(int(current.split("-")[1]), 9)
+            self.assertEqual(index["current"]["work_item_id"], current)
+            self.assertEqual(runtime["active_work"]["work_item"], current)
+            expected_main = pointer["active_attempt"]["application_baseline_sha"]
         self.assertEqual(runtime["application_repository"]["canonical_main"], expected_main)
 
         for key in (

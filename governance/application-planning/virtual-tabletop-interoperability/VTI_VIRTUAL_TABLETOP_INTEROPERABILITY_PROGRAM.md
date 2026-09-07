@@ -1,7 +1,7 @@
 # VTI — Virtual Tabletop Interoperability
 
 **Program ID:** VTI  
-**Status:** OWNER-APPROVED — VTI-01 THROUGH VTI-08 COMPLETED_VERIFIED; VTI-09 IN_PROGRESS — FOUNDRY VTT SELECTED  
+**Status:** OWNER-APPROVED — VTI-01 THROUGH VTI-09 COMPLETED_VERIFIED; VTI-10 SELECTED_NOT_STARTED  
 **Activation:** after completed_verified ALP-08  
 **Successor:** SGC-01  
 **Owner and final authority:** John Brandon Turner
@@ -22,7 +22,7 @@ The owner-directed IC-01 through IC-13 technical UI convergence sequence advance
 
 After the VTI-06 governed start validated, application `main` advanced through `973490e8358fe0a48dad43933ac3675acd188303`, which added only a temporary `placeholder` file, and `e9ddbf9c763faca74689cb3776ad21501c341ba5`, which removed only that file. The current `e9ddbf9c...` tree is `8e9942b47cb5231816d4584397d460eaec522846`, exactly the same tree as `4bd061a...`. This exact-head reconciliation therefore changes no application semantics, VTI scope, or authority; the IC-13 historical closeout anchor remains `4bd061a...`.
 
-VTI-06 — Scene, Map, Token & MAI Bridge — is `completed_verified` and retired. VTI-07 — Permissions, Hidden Information & GM Authority — is `completed_verified` and retired after application PR #436 merged as `692da4f4792426b9c62f6be14db60fc63eb09d6b` from exact validated head `63e3194792375bb3abf8955f2448fbea282e859f` / run `34064468595` with deterministic receipt `8e2b1cab0247a40829f155a360f4a0576d3b3ca625713cd5d5ac7847fabb9ac4`. VTI-08 — Adapter SDK, Capability Manifest & Deterministic Reference VTT — is `completed_verified` and retired after application PR #437 merged as `69bc17bf5999e5cd704d7ec4d8aaa7b168db740c` from exact validated head `2cb7e2797e7a5c8b251ea4ac7e3980e124ff9d7e` / run `34138095971` with deterministic receipt `c85ce8390efeac8ecc3442e0b1b435f1ea86dc3433220ff0fbb8ada1ca0bbddb`. VTI-09 — First Full Platform Integration — is `in_progress` from that exact application main on `integration/vti-09-foundry-vtt-first-full-platform-integration`; Foundry VTT is selected from current first-party evidence, acceptance authority is open after governed-start merge, and production mutation remains locked pending genuine matching RED.
+VTI-06 — Scene, Map, Token & MAI Bridge — is `completed_verified` and retired. VTI-07 — Permissions, Hidden Information & GM Authority — is `completed_verified` and retired after application PR #436 merged as `692da4f4792426b9c62f6be14db60fc63eb09d6b` from exact validated head `63e3194792375bb3abf8955f2448fbea282e859f` / run `34064468595` with deterministic receipt `8e2b1cab0247a40829f155a360f4a0576d3b3ca625713cd5d5ac7847fabb9ac4`. VTI-08 — Adapter SDK, Capability Manifest & Deterministic Reference VTT — is `completed_verified` and retired after application PR #437 merged as `69bc17bf5999e5cd704d7ec4d8aaa7b168db740c` from exact validated head `2cb7e2797e7a5c8b251ea4ac7e3980e124ff9d7e` / run `34138095971` with deterministic receipt `c85ce8390efeac8ecc3442e0b1b435f1ea86dc3433220ff0fbb8ada1ca0bbddb`. VTI-09 — First Full Platform Integration — is `completed_verified` and retired after application PR #438 merged as `9bed9b190b1d78bbbce9e208c2daa792c9109466` from exact validated head `60646de3d4f05888a9ea32a6bd1b8937b6c4a591` / run `34145261616` with deterministic receipt `58b65117b86f4844472f997e9e13d497e7cf47def10f8e602627d5b4c39d6f40`. VTI-10 — Additional VTT Adapters & Compatibility Matrix — is `selected_not_started` from that exact application main with no branch or implementation authority.
 
 ## Purpose
 
@@ -61,10 +61,10 @@ VTI follows the native mine-note-derived semantic families so adapters project m
 8. **VTI-08 — Adapter SDK, Capability Manifest & Deterministic Reference VTT** — **COMPLETED_VERIFIED**.  
    Define the provider-neutral adapter SDK, explicit capability manifest and deterministic fake/reference VTT so the completed integration contracts can be tested end-to-end without a commercial platform. Production behavior remains locked pending genuine matching acceptance RED.
 
-9. **VTI-09 — First Full Platform Integration** — **IN_PROGRESS — FOUNDRY VTT SELECTED**  
+9. **VTI-09 — First Full Platform Integration** — **COMPLETED_VERIFIED**  
    Select the best supported platform at implementation time based on current APIs/licensing; deliver the first deep playable integration without precommitting the roadmap to a vendor.
 
-10. **VTI-10 — Additional VTT Adapters & Compatibility Matrix**  
+10. **VTI-10 — Additional VTT Adapters & Compatibility Matrix** — **SELECTED_NOT_STARTED**  
     Add feasible platforms at the maximum safe level each supports and publish a precise capability matrix rather than vague “VTT compatible” claims.
 
 11. **VTI-11 — Adventure / Campaign Package Export**  
@@ -183,3 +183,8 @@ VTI-08 consumes the completed VTI projection, identity/versioning, action/receip
 At governed start, Foundry Virtual Tabletop is selected as the first full platform integration from current first-party evidence. Foundry exposes native Game System packages, Add-on Modules, compendium/content packaging, module socket namespaces, package manifests/updates and package distribution under explicit package-development license terms. The selection evidence is recorded in `governance/application-planning/virtual-tabletop-interoperability/VTI-09_PLATFORM_SELECTION_EVIDENCE_2026-09-07.md`.
 
 VTI-09 is acceptance-only until genuine matching self-hosted Linux/Windows RED is sealed. Provider-specific production code, credentials/accounts, provider network access, live external/canonical mutation, persistence/migration, provider activation, tester distribution, package publication, release/deployment, VTI-10+ and SGC-01+ remain unauthorized.
+
+
+## VTI-09 completed contract
+
+VTI-09 selected Foundry VTT from current evidence and implemented a bounded offline derivative integration over completed VTI authority. Genuine matching RED was sealed at `1e29fc706a17c39be622b1a1bb450bd5667f3d77` / run `34144077082`. Final repository health, self-hosted Linux, self-hosted Windows and deterministic comparison passed at `60646de3d4f05888a9ea32a6bd1b8937b6c4a591` / run `34145261616`, receipt `58b65117b86f4844472f997e9e13d497e7cf47def10f8e602627d5b4c39d6f40`, with historical profile fanout `0`. Application PR #438 merged as `9bed9b190b1d78bbbce9e208c2daa792c9109466`. Provider credentials, network access, live mutation, persistence, activation, package publication and release remained closed. VTI-10 is the selected strict successor and remains unstarted.

@@ -70,9 +70,6 @@ class Vti06SceneMapTokenMaiBridgeRegistrationTests(unittest.TestCase):
         for key in ("branch_creation_authorized", "acceptance_package_authorized", "production_mutation_authorized", "scene_map_token_mai_bridge_authorized"):
             self.assertFalse(authority[key])
 
-        # VTI-06 permanently proves which strict successor was selected and the
-        # exact baseline handed to it; it must not freeze VTI-07 at its initial
-        # selected_not_started lifecycle state after later governed start/closeout.
         self.assertEqual(successor["application_baseline_sha"], merge)
         self.assertIn(successor["status"], {"selected_not_started", "in_progress", "ready_for_review", "completed_verified"})
         if successor["status"] == "selected_not_started":
@@ -99,12 +96,21 @@ class Vti06SceneMapTokenMaiBridgeRegistrationTests(unittest.TestCase):
         if successor["status"] == "completed_verified":
             vti08 = load_json("governance/ai/work-state/VTI-08-attempt-001.json")
             if vti08["status"] == "completed_verified":
-                self.assertEqual(backlog["completed_through"], "VTI-08")
-                self.assertEqual(backlog["current_item"], "VTI-09")
-                self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-09")
-                self.assertEqual(index["current"]["work_item_id"], "VTI-09")
-                self.assertEqual(runtime["active_work"]["work_item"], "VTI-09")
-                self.assertEqual(runtime["application_repository"]["canonical_main"], vti08["application_merge_sha"])
+                vti09 = load_json("governance/ai/work-state/VTI-09-attempt-001.json")
+                if vti09["status"] == "completed_verified":
+                    self.assertEqual(backlog["completed_through"], "VTI-09")
+                    self.assertEqual(backlog["current_item"], "VTI-10")
+                    self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-10")
+                    self.assertEqual(index["current"]["work_item_id"], "VTI-10")
+                    self.assertEqual(runtime["active_work"]["work_item"], "VTI-10")
+                    self.assertEqual(runtime["application_repository"]["canonical_main"], vti09["application_merge_sha"])
+                else:
+                    self.assertEqual(backlog["completed_through"], "VTI-08")
+                    self.assertEqual(backlog["current_item"], "VTI-09")
+                    self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-09")
+                    self.assertEqual(index["current"]["work_item_id"], "VTI-09")
+                    self.assertEqual(runtime["active_work"]["work_item"], "VTI-09")
+                    self.assertEqual(runtime["application_repository"]["canonical_main"], vti08["application_merge_sha"])
             else:
                 self.assertEqual(backlog["completed_through"], "VTI-07")
                 self.assertEqual(backlog["current_item"], "VTI-08")

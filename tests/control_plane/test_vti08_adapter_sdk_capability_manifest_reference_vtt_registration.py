@@ -40,7 +40,12 @@ class Vti08AdapterSdkCapabilityManifestReferenceVttRegistrationTests(unittest.Te
             self.assertEqual(vti08["status"], "completed_verified")
             self.assertTrue(authority["retired"])
             self.assertFalse(authority["implementation_authority"])
-            self.assertIn(pointer["active_attempt"]["work_item_id"], {"VTI-08", "VTI-09"})
+            current = pointer["active_attempt"]["work_item_id"]
+            self.assertTrue(current.startswith("VTI-"))
+            self.assertGreaterEqual(int(current.split("-")[1]), 9)
+            self.assertEqual(index["current"]["work_item_id"], current)
+            self.assertEqual(runtime["active_work"]["work_item"], current)
+            expected_main = pointer["active_attempt"]["application_baseline_sha"]
         else:
             self.assertTrue(checkpoint["implementation_authority"])
             self.assertTrue(checkpoint["branch_creation_authorized"])
@@ -50,6 +55,7 @@ class Vti08AdapterSdkCapabilityManifestReferenceVttRegistrationTests(unittest.Te
             self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-08")
             self.assertEqual(index["current"]["work_item_id"], "VTI-08")
             self.assertEqual(runtime["active_work"]["work_item"], "VTI-08")
+            expected_main = baseline
             if checkpoint["validation"]["acceptance_red"] is None:
                 self.assertFalse(checkpoint["production_mutation_authorized"])
                 self.assertFalse(vti08["production_mutation_authorized"])
@@ -57,7 +63,6 @@ class Vti08AdapterSdkCapabilityManifestReferenceVttRegistrationTests(unittest.Te
                 self.assertFalse(authority["adapter_sdk_capability_manifest_reference_vtt_authorized"])
                 self.assertFalse(authority["matching_red_observed"])
 
-        expected_main = "69bc17bf5999e5cd704d7ec4d8aaa7b168db740c" if checkpoint["status"] == "completed_verified" else baseline
         self.assertEqual(runtime["application_repository"]["canonical_main"], expected_main)
         for key in (
             "provider_selection_authorized",
