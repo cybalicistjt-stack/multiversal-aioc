@@ -4,10 +4,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 
-
 def load_json(path):
     return json.loads((ROOT / path).read_text(encoding="utf-8"))
-
 
 class Vti07RedUnlockTests(unittest.TestCase):
     def test_matching_application_red_remains_sealed_across_terminal_retirement(self):
@@ -21,6 +19,7 @@ class Vti07RedUnlockTests(unittest.TestCase):
         index = load_json("governance/ai/runtime/ROADMAP_INDEX.json")
         runtime = load_json("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")
         successor = load_json("governance/ai/work-state/VTI-08-attempt-001.json")
+        vti09 = load_json("governance/ai/work-state/VTI-09-attempt-001.json")
 
         red = checkpoint["validation"]["acceptance_red"]
         self.assertEqual(red["head_sha"], head)
@@ -35,52 +34,30 @@ class Vti07RedUnlockTests(unittest.TestCase):
         self.assertEqual(red["failure_reason"], "production contract intentionally absent")
 
         authority = registry["vti_07_authority"]
-        if checkpoint["status"] == "completed_verified":
-            self.assertFalse(checkpoint["production_mutation_authorized"])
-            self.assertFalse(checkpoint["implementation_authority"])
-            self.assertTrue(checkpoint["authority_retired"])
-            self.assertTrue(authority["retired"])
-            self.assertFalse(authority["production_mutation_authorized"])
-            self.assertFalse(authority["permissions_hidden_gm_authority_authorized"])
-            self.assertTrue(authority["matching_red_observed"])
-            if successor["status"] == "completed_verified":
-                self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-09")
-                self.assertEqual(index["current"]["work_item_id"], "VTI-09")
-                self.assertEqual(runtime["active_work"]["work_item"], "VTI-09")
-                self.assertEqual(backlog["active_contract"]["work_item"], "VTI-09")
-                self.assertFalse(pointer["bounded_authority"]["production_mutation_authorized"])
-                self.assertFalse(index["current"]["production_mutation_authorized"])
-                self.assertFalse(runtime["active_work"]["production_mutation_authorized"])
-                self.assertFalse(backlog["active_contract"]["production_mutation_authorized"])
-            else:
-                self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-08")
-                self.assertEqual(index["current"]["work_item_id"], "VTI-08")
-                self.assertEqual(runtime["active_work"]["work_item"], "VTI-08")
-                self.assertEqual(backlog["active_contract"]["work_item"], "VTI-08")
-                if successor["status"] in {"in_progress", "ready_for_review"} and successor["validation"]["acceptance_red"] is not None:
-                    self.assertTrue(pointer["bounded_authority"]["production_mutation_authorized"])
-                    self.assertTrue(index["current"]["production_mutation_authorized"])
-                    self.assertTrue(runtime["active_work"]["production_mutation_authorized"])
-                    self.assertTrue(backlog["active_contract"]["production_mutation_authorized"])
-                else:
-                    self.assertFalse(pointer["bounded_authority"]["production_mutation_authorized"])
-                    self.assertFalse(index["current"]["production_mutation_authorized"])
-                    self.assertFalse(runtime["active_work"]["production_mutation_authorized"])
-                    self.assertFalse(backlog["active_contract"]["production_mutation_authorized"])
+        self.assertFalse(checkpoint["production_mutation_authorized"])
+        self.assertFalse(checkpoint["implementation_authority"])
+        self.assertTrue(checkpoint["authority_retired"])
+        self.assertTrue(authority["retired"])
+        self.assertFalse(authority["production_mutation_authorized"])
+        self.assertFalse(authority["permissions_hidden_gm_authority_authorized"])
+        self.assertTrue(authority["matching_red_observed"])
+
+        if successor["status"] == "completed_verified":
+            self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-09")
+            self.assertEqual(index["current"]["work_item_id"], "VTI-09")
+            self.assertEqual(runtime["active_work"]["work_item"], "VTI-09")
+            self.assertEqual(backlog["active_contract"]["work_item"], "VTI-09")
+            red09 = vti09["validation"]["acceptance_red"]
+            red09_open = red09 is not None and red09.get("matching_red_observed") is True
+            self.assertEqual(pointer["bounded_authority"]["production_mutation_authorized"], red09_open)
+            self.assertEqual(index["current"]["production_mutation_authorized"], red09_open)
+            self.assertEqual(runtime["active_work"]["production_mutation_authorized"], red09_open)
+            self.assertEqual(backlog["active_contract"]["production_mutation_authorized"], red09_open)
         else:
-            self.assertTrue(checkpoint["production_mutation_authorized"])
-            self.assertTrue(checkpoint["implementation_authority"])
-            self.assertTrue(backlog["active_contract"]["production_mutation_authorized"])
-            self.assertTrue(backlog["active_contract"]["matching_red_observed"])
-            self.assertTrue(pointer["bounded_authority"]["production_mutation_authorized"])
-            self.assertTrue(pointer["bounded_authority"]["matching_red_observed"])
-            self.assertTrue(index["current"]["production_mutation_authorized"])
-            self.assertTrue(index["current"]["matching_red_observed"])
-            self.assertTrue(runtime["active_work"]["production_mutation_authorized"])
-            self.assertTrue(runtime["active_work"]["matching_red_observed"])
-            self.assertTrue(authority["production_mutation_authorized"])
-            self.assertTrue(authority["permissions_hidden_gm_authority_authorized"])
-            self.assertTrue(authority["matching_red_observed"])
+            self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-08")
+            self.assertEqual(index["current"]["work_item_id"], "VTI-08")
+            self.assertEqual(runtime["active_work"]["work_item"], "VTI-08")
+            self.assertEqual(backlog["active_contract"]["work_item"], "VTI-08")
 
         for key in (
             "provider_specific_schema_authorized",
@@ -95,7 +72,6 @@ class Vti07RedUnlockTests(unittest.TestCase):
             "sgc01_plus_authorized",
         ):
             self.assertFalse(authority[key])
-
 
 if __name__ == "__main__":
     unittest.main()
