@@ -15,26 +15,26 @@ jobs:
         with:
           ref: governance/vti-08-terminal-closeout-vti-09-selection
           fetch-depth: 0
-      - name: Reproject closeout and repair named lifecycle failures
+      - name: Reproject closeout, repair lifecycle, and stage terminal workflow namespace
         shell: bash
         run: |
           set -euo pipefail
           python3 tools/vti08_terminal_closeout_repair_temp.py
+          rm .github/workflows/vti08-terminal-closeout-projection.yml
+          rm .github/workflows/vti08-terminal-closeout-repair.yml
       - name: Run complete current control-plane and repository-health gate
         shell: bash
         run: |
           set -euo pipefail
           python3 -m unittest discover -s tests/control_plane -p 'test_*.py'
           python3 scripts/validate_repository_health.py --root .
-      - name: Commit tested closeout and remove temporary helpers
+      - name: Commit tested closeout and remove temporary repair script
         shell: bash
         run: |
           set -euo pipefail
+          rm tools/vti08_terminal_closeout_repair_temp.py
           git config user.name cybalicistjt-stack
           git config user.email cybalicist.jt@gmail.com
-          git rm .github/workflows/vti08-terminal-closeout-projection.yml
-          git rm .github/workflows/vti08-terminal-closeout-repair.yml
-          git rm tools/vti08_terminal_closeout_repair_temp.py
-          git add governance tests/control_plane
+          git add -A
           git commit -m 'VTI-08: terminal closeout and VTI-09 selection'
           git push origin HEAD:governance/vti-08-terminal-closeout-vti-09-selection
