@@ -1,0 +1,55 @@
+name: VTI-08 RED Unlock Repair
+
+on:
+  push:
+    branches:
+      - governance/vti-08-seal-red-unlock-production
+    paths:
+      - .github/workflows/vti08-red-unlock-repair.yml
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: governance/vti-08-seal-red-unlock-production
+          fetch-depth: 0
+      - name: Repair named transition contracts
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          pointer_path = Path("governance/ai/runtime/CURRENT_WORK_POINTER.json")
+          pointer = json.loads(pointer_path.read_text(encoding="utf-8"))
+          pointer["roadmap_supplements"] = ["governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_VTI08_GOVERNED_START_2026-09-06.md"]
+          pointer_path.write_text(json.dumps(pointer, separators=(",", ":")) + "\n", encoding="utf-8")
+
+          test_path = Path("tests/control_plane/test_vti07_red_unlock.py")
+          text = test_path.read_text(encoding="utf-8")
+          text = text.replace(
+              '        runtime = load_json("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")\n',
+              '        runtime = load_json("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")\n        successor = load_json("governance/ai/work-state/VTI-08-attempt-001.json")\n'
+          )
+          old = '''            self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-08")\n            self.assertFalse(pointer["bounded_authority"]["production_mutation_authorized"])\n            self.assertEqual(index["current"]["work_item_id"], "VTI-08")\n            self.assertFalse(index["current"]["production_mutation_authorized"])\n            self.assertEqual(runtime["active_work"]["work_item"], "VTI-08")\n            self.assertFalse(runtime["active_work"]["production_mutation_authorized"])\n            self.assertEqual(backlog["active_contract"]["work_item"], "VTI-08")\n            self.assertFalse(backlog["active_contract"]["production_mutation_authorized"])\n'''
+          new = '''            self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-08")\n            self.assertEqual(index["current"]["work_item_id"], "VTI-08")\n            self.assertEqual(runtime["active_work"]["work_item"], "VTI-08")\n            self.assertEqual(backlog["active_contract"]["work_item"], "VTI-08")\n            if successor["status"] in {"in_progress", "ready_for_review"} and successor["validation"]["acceptance_red"] is not None:\n                self.assertTrue(pointer["bounded_authority"]["production_mutation_authorized"])\n                self.assertTrue(index["current"]["production_mutation_authorized"])\n                self.assertTrue(runtime["active_work"]["production_mutation_authorized"])\n                self.assertTrue(backlog["active_contract"]["production_mutation_authorized"])\n            else:\n                self.assertFalse(pointer["bounded_authority"]["production_mutation_authorized"])\n                self.assertFalse(index["current"]["production_mutation_authorized"])\n                self.assertFalse(runtime["active_work"]["production_mutation_authorized"])\n                self.assertFalse(backlog["active_contract"]["production_mutation_authorized"])\n'''
+          if old not in text:
+              raise SystemExit("expected VTI-07 predecessor assertion block not found")
+          test_path.write_text(text.replace(old, new), encoding="utf-8")
+          PY
+      - name: Run named failures plus focused VTI-08 regressions
+        run: python -m unittest tests.control_plane.test_control_plane_health.FlatHealthRegressionTests.test_runtime_pointer_preload_is_bounded_to_active_or_latest_closeout tests.control_plane.test_vti07_red_unlock tests.control_plane.test_vti08_adapter_sdk_capability_manifest_reference_vtt_registration tests.control_plane.test_vti08_red_unlock tests.control_plane.test_vti08_continue_termination_boundary
+      - name: Commit repairs and remove helper
+        shell: bash
+        run: |
+          rm .github/workflows/vti08-red-unlock-repair.yml
+          git config user.name "cybalicistjt-stack"
+          git config user.email "cybalicist.jt@gmail.com"
+          git add governance/ai/runtime/CURRENT_WORK_POINTER.json tests/control_plane/test_vti07_red_unlock.py .github/workflows/vti08-red-unlock-repair.yml
+          git commit -m "VTI-08: repair predecessor transition and bounded preload"
+          git push origin HEAD:governance/vti-08-seal-red-unlock-production
