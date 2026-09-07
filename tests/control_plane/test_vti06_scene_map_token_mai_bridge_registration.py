@@ -97,12 +97,21 @@ class Vti06SceneMapTokenMaiBridgeRegistrationTests(unittest.TestCase):
         self.assertFalse(successor_authority.get("sgc01_plus_authorized", False))
 
         if successor["status"] == "completed_verified":
-            self.assertEqual(backlog["completed_through"], "VTI-07")
-            self.assertEqual(backlog["current_item"], "VTI-08")
-            self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-08")
-            self.assertEqual(index["current"]["work_item_id"], "VTI-08")
-            self.assertEqual(runtime["active_work"]["work_item"], "VTI-08")
-            self.assertEqual(runtime["application_repository"]["canonical_main"], successor["application_merge_sha"])
+            vti08 = load_json("governance/ai/work-state/VTI-08-attempt-001.json")
+            if vti08["status"] == "completed_verified":
+                self.assertEqual(backlog["completed_through"], "VTI-08")
+                self.assertEqual(backlog["current_item"], "VTI-09")
+                self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-09")
+                self.assertEqual(index["current"]["work_item_id"], "VTI-09")
+                self.assertEqual(runtime["active_work"]["work_item"], "VTI-09")
+                self.assertEqual(runtime["application_repository"]["canonical_main"], vti08["application_merge_sha"])
+            else:
+                self.assertEqual(backlog["completed_through"], "VTI-07")
+                self.assertEqual(backlog["current_item"], "VTI-08")
+                self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-08")
+                self.assertEqual(index["current"]["work_item_id"], "VTI-08")
+                self.assertEqual(runtime["active_work"]["work_item"], "VTI-08")
+                self.assertEqual(runtime["application_repository"]["canonical_main"], successor["application_merge_sha"])
         else:
             self.assertEqual(backlog["completed_through"], "VTI-06")
             self.assertEqual(backlog["current_item"], "VTI-07")

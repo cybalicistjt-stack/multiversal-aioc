@@ -43,15 +43,20 @@ class Vti07TerminalCloseoutTests(unittest.TestCase):
             self.assertFalse(nxt["acceptance_package_authorized"])
             self.assertFalse(nxt["production_mutation_authorized"])
 
-        self.assertEqual(backlog["completed_through"],"VTI-07")
         if nxt["status"] != "completed_verified":
+            self.assertEqual(backlog["completed_through"],"VTI-07")
             self.assertEqual(backlog["current_item"],"VTI-08")
             self.assertEqual(pointer["active_attempt"]["work_item_id"],"VTI-08")
             self.assertEqual(index["current"]["work_item_id"],"VTI-08")
             self.assertEqual(runtime["active_work"]["work_item"],"VTI-08")
         else:
-            self.assertIn(pointer["active_attempt"]["work_item_id"],{"VTI-08","VTI-09"})
-        self.assertEqual(runtime["application_repository"]["canonical_main"],"692da4f4792426b9c62f6be14db60fc63eb09d6b")
+            self.assertEqual(backlog["completed_through"],"VTI-08")
+            self.assertEqual(backlog["current_item"],"VTI-09")
+            self.assertEqual(pointer["active_attempt"]["work_item_id"],"VTI-09")
+            self.assertEqual(index["current"]["work_item_id"],"VTI-09")
+            self.assertEqual(runtime["active_work"]["work_item"],"VTI-09")
+        expected_main = "69bc17bf5999e5cd704d7ec4d8aaa7b168db740c" if nxt["status"] == "completed_verified" else "692da4f4792426b9c62f6be14db60fc63eb09d6b"
+        self.assertEqual(runtime["application_repository"]["canonical_main"], expected_main)
 
         old=registry["vti_07_authority"]; self.assertTrue(old["retired"]); self.assertTrue(old["matching_red_observed"])
         for key in ("implementation_authority","branch_creation_authorized","acceptance_package_authorized","production_mutation_authorized","permissions_hidden_gm_authority_authorized"):

@@ -57,7 +57,8 @@ class Vti08AdapterSdkCapabilityManifestReferenceVttRegistrationTests(unittest.Te
                 self.assertFalse(authority["adapter_sdk_capability_manifest_reference_vtt_authorized"])
                 self.assertFalse(authority["matching_red_observed"])
 
-        self.assertEqual(runtime["application_repository"]["canonical_main"], baseline)
+        expected_main = "69bc17bf5999e5cd704d7ec4d8aaa7b168db740c" if checkpoint["status"] == "completed_verified" else baseline
+        self.assertEqual(runtime["application_repository"]["canonical_main"], expected_main)
         for key in (
             "provider_selection_authorized",
             "provider_specific_schema_authorized",
