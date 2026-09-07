@@ -3,9 +3,31 @@
 
 [mcp_servers.multiversal_aioc]
 url = "https://aioc-mcp-bridge-production.up.railway.app/mcp"
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+default_tools_approval_mode = "writes"
 
 [mcp_servers.multiversal_aioc.metadata]
 service = "Multiversal AIOC"
 mode = "read-only"
 health_url = "https://aioc-mcp-bridge-production.up.railway.app/health"
 verification_url = "https://aioc-mcp-bridge-production.up.railway.app/live-verification"
+
+# Local development documentation lookup.
+# Optional: set CONTEXT7_API_KEY locally for higher rate limits.
+[mcp_servers.context7]
+command = "npx"
+args = ["-y", "@upstash/context7-mcp"]
+env_vars = ["CONTEXT7_API_KEY"]
+startup_timeout_sec = 20
+tool_timeout_sec = 60
+default_tools_approval_mode = "prompt"
+
+# Local browser inspection and UI verification.
+# Requires Node.js 20+ and downloads/uses a local browser.
+[mcp_servers.playwright]
+command = "npx"
+args = ["-y", "@playwright/mcp@latest"]
+startup_timeout_sec = 30
+tool_timeout_sec = 120
+default_tools_approval_mode = "prompt"
