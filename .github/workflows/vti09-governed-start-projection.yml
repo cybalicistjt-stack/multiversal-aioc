@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 0
       - name: Project governed-start state
         run: python3 scripts/_vti09_governed_start_projection.py
-      - name: Repair required convergence objective from exact repository-health failure
+      - name: Repair convergence objective and diagnostic escalation from exact failures
         run: |
           python3 - <<'PY'
           import json
@@ -33,9 +33,19 @@ jobs:
           }
           cc['repository_state_repair_cycles']=2
           cc['repair_cycles']=2
-          cc['last_failure_signature']='MVHEALTH-CONVERGENCE-FIELDS+MVHEALTH-CONVERGENCE-OBJECTIVE'
+          cc['diagnostic_mode']=True
+          cc['last_failure_signature']='Governed-start projection passed 289/289 control-plane tests; repository health first rejected missing service_objective, then required diagnostic escalation after two accurately recorded repository-state repair cycles.'
           cc['last_failure_class']='repository_state'
-          cc['retry_basis']={'changed_since_previous':['added exact service_objective required by repository health','recorded two VTI-09 repository-state repair cycles from accidental no-op main writes and immediate removals']}
+          cc['diagnostic_hypotheses']=[
+            'The initial projection copied tranche convergence counters but omitted the now-required service_objective object.',
+            'The two accidental empty-file writes to AIOC main were immediately reverted and changed no canonical tree semantics, but they correctly count as VTI-09 repository-state repair cycles.',
+            'Once repair_cycles reached two, the convergence policy required diagnostic_mode plus classified hypotheses even though the product and control-plane regressions were already green.'
+          ]
+          cc['retry_basis']={'changed_since_previous':[
+            'added the exact repository-health service_objective',
+            'kept the two repository-state repair cycles instead of lowering the count',
+            'entered diagnostic_mode and recorded the classified failure evidence and hypotheses required by the second-repair convergence guard'
+          ]}
           path.write_text(json.dumps(data,separators=(',',':'),ensure_ascii=False)+'\n',encoding='utf-8')
           PY
       - name: Remove temporary helpers before validation
