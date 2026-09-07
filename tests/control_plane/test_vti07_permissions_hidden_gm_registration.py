@@ -60,7 +60,8 @@ class Vti07PermissionsHiddenGmRegistrationTests(unittest.TestCase):
             self.assertEqual(runtime["active_work"]["work_item"], "VTI-08")
         else:
             self.assertIn(pointer["active_attempt"]["work_item_id"], {"VTI-08", "VTI-09"})
-        self.assertEqual(runtime["application_repository"]["canonical_main"], merge)
+        expected_main = "69bc17bf5999e5cd704d7ec4d8aaa7b168db740c" if successor["status"] == "completed_verified" else merge
+        self.assertEqual(runtime["application_repository"]["canonical_main"], expected_main)
 
         for key in (
             "provider_specific_schema_authorized",

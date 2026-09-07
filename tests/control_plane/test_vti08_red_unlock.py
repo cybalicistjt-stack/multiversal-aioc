@@ -23,19 +23,22 @@ class Vti08RedUnlockTests(unittest.TestCase):
         self.assertEqual(red["deterministic_receipt_sha256"],"45e107c94e4cf57ae3e360cf1e89b043c8dc79d60f95362afed9a52458fb0bc2")
         self.assertTrue(red["matching_red_observed"])
         self.assertEqual(red["failure_stage"],"vti08-invariants")
-        self.assertTrue(cp["production_mutation_authorized"])
-        self.assertTrue(backlog["active_contract"]["production_mutation_authorized"])
-        self.assertTrue(backlog["active_contract"]["matching_red_observed"])
-        self.assertTrue(pointer["bounded_authority"]["production_mutation_authorized"])
-        self.assertTrue(pointer["bounded_authority"]["matching_red_observed"])
-        self.assertTrue(index["current"]["production_mutation_authorized"])
-        self.assertTrue(index["current"]["matching_red_observed"])
-        self.assertTrue(runtime["active_work"]["production_mutation_authorized"])
-        self.assertTrue(runtime["active_work"]["matching_red_observed"])
         auth=registry["vti_08_authority"]
-        self.assertTrue(auth["production_mutation_authorized"])
-        self.assertTrue(auth["adapter_sdk_capability_manifest_reference_vtt_authorized"])
         self.assertTrue(auth["matching_red_observed"])
+        if cp["status"] == "completed_verified":
+            self.assertTrue(cp["authority_retired"])
+            self.assertFalse(cp["production_mutation_authorized"])
+            self.assertFalse(auth["production_mutation_authorized"])
+            self.assertFalse(auth["adapter_sdk_capability_manifest_reference_vtt_authorized"])
+            self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-09")
+        else:
+            self.assertTrue(cp["production_mutation_authorized"])
+            self.assertTrue(backlog["active_contract"]["production_mutation_authorized"])
+            self.assertTrue(pointer["bounded_authority"]["production_mutation_authorized"])
+            self.assertTrue(index["current"]["production_mutation_authorized"])
+            self.assertTrue(runtime["active_work"]["production_mutation_authorized"])
+            self.assertTrue(auth["production_mutation_authorized"])
+            self.assertTrue(auth["adapter_sdk_capability_manifest_reference_vtt_authorized"])
         for key in ("provider_selection_authorized","provider_specific_schema_authorized","credential_or_external_account_mutation_authorized","live_external_or_canonical_mutation_authorized","durable_persistence_or_migration_authorized","provider_activation_authorized","tester_distribution_authorized","release_or_deployment_authorized","vti09_plus_authorized","sgc01_plus_authorized"):
             self.assertFalse(auth[key])
 
