@@ -20,6 +20,7 @@ class Vti07RedUnlockTests(unittest.TestCase):
         registry = load_json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
         index = load_json("governance/ai/runtime/ROADMAP_INDEX.json")
         runtime = load_json("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")
+        successor = load_json("governance/ai/work-state/VTI-08-attempt-001.json")
 
         red = checkpoint["validation"]["acceptance_red"]
         self.assertEqual(red["head_sha"], head)
@@ -43,13 +44,19 @@ class Vti07RedUnlockTests(unittest.TestCase):
             self.assertFalse(authority["permissions_hidden_gm_authority_authorized"])
             self.assertTrue(authority["matching_red_observed"])
             self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-08")
-            self.assertFalse(pointer["bounded_authority"]["production_mutation_authorized"])
             self.assertEqual(index["current"]["work_item_id"], "VTI-08")
-            self.assertFalse(index["current"]["production_mutation_authorized"])
             self.assertEqual(runtime["active_work"]["work_item"], "VTI-08")
-            self.assertFalse(runtime["active_work"]["production_mutation_authorized"])
             self.assertEqual(backlog["active_contract"]["work_item"], "VTI-08")
-            self.assertFalse(backlog["active_contract"]["production_mutation_authorized"])
+            if successor["status"] in {"in_progress", "ready_for_review"} and successor["validation"]["acceptance_red"] is not None:
+                self.assertTrue(pointer["bounded_authority"]["production_mutation_authorized"])
+                self.assertTrue(index["current"]["production_mutation_authorized"])
+                self.assertTrue(runtime["active_work"]["production_mutation_authorized"])
+                self.assertTrue(backlog["active_contract"]["production_mutation_authorized"])
+            else:
+                self.assertFalse(pointer["bounded_authority"]["production_mutation_authorized"])
+                self.assertFalse(index["current"]["production_mutation_authorized"])
+                self.assertFalse(runtime["active_work"]["production_mutation_authorized"])
+                self.assertFalse(backlog["active_contract"]["production_mutation_authorized"])
         else:
             self.assertTrue(checkpoint["production_mutation_authorized"])
             self.assertTrue(checkpoint["implementation_authority"])
