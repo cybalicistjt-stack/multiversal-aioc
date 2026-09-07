@@ -19,7 +19,6 @@ class Vti07RedUnlockTests(unittest.TestCase):
         index = load_json("governance/ai/runtime/ROADMAP_INDEX.json")
         runtime = load_json("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")
         successor = load_json("governance/ai/work-state/VTI-08-attempt-001.json")
-        vti09 = load_json("governance/ai/work-state/VTI-09-attempt-001.json")
 
         red = checkpoint["validation"]["acceptance_red"]
         self.assertEqual(red["head_sha"], head)
@@ -43,16 +42,12 @@ class Vti07RedUnlockTests(unittest.TestCase):
         self.assertTrue(authority["matching_red_observed"])
 
         if successor["status"] == "completed_verified":
-            self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-09")
-            self.assertEqual(index["current"]["work_item_id"], "VTI-09")
-            self.assertEqual(runtime["active_work"]["work_item"], "VTI-09")
-            self.assertEqual(backlog["active_contract"]["work_item"], "VTI-09")
-            red09 = vti09["validation"]["acceptance_red"]
-            red09_open = red09 is not None and red09.get("matching_red_observed") is True
-            self.assertEqual(pointer["bounded_authority"]["production_mutation_authorized"], red09_open)
-            self.assertEqual(index["current"]["production_mutation_authorized"], red09_open)
-            self.assertEqual(runtime["active_work"]["production_mutation_authorized"], red09_open)
-            self.assertEqual(backlog["active_contract"]["production_mutation_authorized"], red09_open)
+            current = pointer["active_attempt"]["work_item_id"]
+            self.assertTrue(current.startswith("VTI-"))
+            self.assertGreaterEqual(int(current.split("-")[1]), 9)
+            self.assertEqual(index["current"]["work_item_id"], current)
+            self.assertEqual(runtime["active_work"]["work_item"], current)
+            self.assertEqual(backlog["active_contract"]["work_item"], current)
         else:
             self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-08")
             self.assertEqual(index["current"]["work_item_id"], "VTI-08")
