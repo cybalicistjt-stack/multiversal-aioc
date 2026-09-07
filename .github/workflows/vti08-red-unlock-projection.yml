@@ -1,0 +1,171 @@
+name: VTI-08 RED Unlock Projection
+
+on:
+  push:
+    branches:
+      - governance/vti-08-seal-red-unlock-production
+    paths:
+      - .github/workflows/vti08-red-unlock-projection.yml
+
+permissions:
+  contents: write
+
+jobs:
+  project:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: governance/vti-08-seal-red-unlock-production
+          fetch-depth: 0
+      - name: Project sealed RED into bounded authority
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          TS = "2026-09-07T10:13:00-05:00"
+          RED_HEAD = "420dced5ba3daf982d80a5b6cf141d2bdb4376bd"
+          RED_RUN = 34066821411
+          REPO_JOB = 101576932682
+          LINUX_JOB = 101576947365
+          WINDOWS_JOB = 101576947375
+          COMPARE_JOB = 101576996334
+          RECEIPT = "45e107c94e4cf57ae3e360cf1e89b043c8dc79d60f95362afed9a52458fb0bc2"
+          BRANCH = "integration/vti-08-adapter-sdk-capability-manifest-reference-vtt"
+          BASELINE = "692da4f4792426b9c62f6be14db60fc63eb09d6b"
+          SUPPLEMENT = "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_VTI08_RED_UNLOCK_2026-09-07.md"
+
+          def load(path):
+              return json.loads(Path(path).read_text(encoding="utf-8"))
+          def save(path, data):
+              Path(path).write_text(json.dumps(data, separators=(",", ":")) + "\n", encoding="utf-8")
+
+          cp_path = "governance/ai/work-state/VTI-08-attempt-001.json"
+          cp = load(cp_path)
+          red = cp["validation"]["acceptance_red"]
+          assert red["head_sha"] == RED_HEAD and red["run_id"] == RED_RUN and red["matching_red_observed"] is True
+          assert cp["production_mutation_authorized"] is True
+
+          p_path = "governance/ai/runtime/CURRENT_WORK_POINTER.json"
+          p = load(p_path)
+          p["schema_version"] = "15.90.0"
+          p["updated_at"] = TS
+          p["roadmap_supplements"] = [SUPPLEMENT]
+          p["selection_reason"] = "VTI-08 matching acceptance RED is sealed from application PR #437 exact head 420dced5ba3daf982d80a5b6cf141d2bdb4376bd; bounded production adapter-SDK/capability-manifest/reference-VTT mutation is authorized while provider selection, provider-specific/live/persistence/release and successor scope remain closed."
+          b = p["bounded_authority"]
+          b["production_mutation_authorized"] = True
+          b["matching_red_observed"] = True
+          b["vti_scope"] = "VTI-08 production-unlocked only for the provider-neutral adapter SDK/capability-manifest/deterministic reference-VTT contract after genuine matching Linux/Windows RED. Provider selection/schemas/credentials/network/live mutation/persistence/migration/activation/tester/release/VTI-09+ remain closed."
+          p["selection_invariants"] = [
+              s.replace("VTI-08 is in_progress acceptance-only", "VTI-08 is in_progress with matching RED sealed")
+               .replace("Only VTI-08 acceptance-package work is unlocked; production adapter-SDK/capability-manifest/reference-VTT behavior remains locked until genuine matching RED is sealed.", "Only bounded VTI-08 production adapter-SDK/capability-manifest/reference-VTT behavior is unlocked after genuine matching RED; all provider-selection/live/persistence/release/successor boundaries remain closed.")
+              for s in p["selection_invariants"]
+          ]
+          p["exact_next_action"] = "Implement only packages/contracts/src/virtual-tabletop-interoperability/adapter-sdk-capability-manifest-reference-vtt-contract.ts on application PR #437, then require exact-head repository health, Linux GREEN, Windows GREEN and deterministic comparison before merge."
+          save(p_path, p)
+
+          b_path = "governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json"
+          backlog = load(b_path)
+          backlog["schema_version"] = "0.25.0"
+          tr = next(x for x in backlog["tranches"] if x["id"] == "VTI-08")
+          tr["production_mutation_authorized"] = True
+          tr["matching_red_observed"] = True
+          ac = backlog["active_contract"]
+          ac["production_mutation_authorized"] = True
+          ac["matching_red_observed"] = True
+          ac["rule"] = "VTI-08 matching Linux/Windows RED is sealed from application PR #437 exact head 420dced5ba3daf982d80a5b6cf141d2bdb4376bd. Only the bounded provider-neutral adapter-SDK/capability-manifest/reference-VTT production contract is unlocked; platform selection remains deferred to VTI-09."
+          backlog["boundaries"] = [
+              s.replace("VTI-08 is in_progress acceptance-only", "VTI-08 is in_progress with matching RED sealed")
+               .replace("VTI-08 production behavior remains locked until genuine matching Linux/Windows RED is sealed;", "VTI-08 bounded production behavior is unlocked after genuine matching Linux/Windows RED; all provider/live/persistence/release/successor authority remains closed;")
+              for s in backlog["boundaries"]
+          ]
+          save(b_path, backlog)
+
+          i_path = "governance/ai/runtime/ROADMAP_INDEX.json"
+          idx = load(i_path)
+          idx["schema_version"] = "15.58.0"
+          idx["updated_at"] = TS
+          idx["rule"] = "VTI-07 is completed_verified; VTI-08 is in_progress with matching RED sealed from application PR #437 and bounded production adapter-SDK/capability-manifest/reference-VTT authority open."
+          cur = idx["current"]
+          cur["production_mutation_authorized"] = True
+          cur["matching_red_observed"] = True
+          idx["boundaries"] = [
+              s.replace("VTI-08 is in_progress acceptance-only", "VTI-08 is in_progress with matching RED sealed")
+               .replace("VTI-08 production behavior remains locked until genuine matching RED;", "VTI-08 bounded production behavior is unlocked after genuine matching RED; all provider/live/persistence/release/successor authority remains closed;")
+              for s in idx["boundaries"]
+          ]
+          save(i_path, idx)
+
+          r_path = "governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json"
+          runtime = load(r_path)
+          runtime["schema_version"] = "12.71.0"
+          runtime["updated_at"] = TS
+          runtime["canonical_selector"]["rule"] = "CURRENT_WORK_POINTER is the only current-work selector. VTI-08 matching RED is sealed and only bounded provider-neutral production contract work is authorized."
+          runtime["application_repository"]["active_validation_family_state"] = "VTI01_VTI02_VTI03_VTI04_VTI05_VTI06_VTI07_completed_VTI08_in_progress_production_unlocked"
+          aw = runtime["active_work"]
+          aw["role"] = "active_production_unlocked"
+          aw["production_mutation_authorized"] = True
+          aw["matching_red_observed"] = True
+          aw["execution_rule"] = "Implement only the registered VTI-08 provider-neutral production contract on PR #437; require exact-head Linux/Windows GREEN and deterministic comparison before merge."
+          runtime["boundaries"] = [
+              s.replace("VTI-08 is in_progress acceptance-only", "VTI-08 is in_progress with matching RED sealed")
+               .replace("VTI-08 production adapter-SDK/capability-manifest/reference-VTT behavior remains locked until genuine matching RED;", "VTI-08 bounded production adapter-SDK/capability-manifest/reference-VTT behavior is unlocked after genuine matching RED; all provider/live/persistence/release/successor authority remains closed;")
+              for s in runtime["boundaries"]
+          ]
+          save(r_path, runtime)
+
+          a_path = "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json"
+          reg = load(a_path)
+          reg["schema_version"] = "15.75.0"
+          reg["updated_at"] = TS
+          for entry in reg["current"]:
+              if entry.get("kind") == "roadmap_supplement":
+                  entry["path"] = SUPPLEMENT
+          reg["active_planning_work"]["implementation_scope"] = "VTI-08 matching RED is sealed; production authority is bounded to the provider-neutral adapter SDK/capability manifest/deterministic reference-VTT contract only. Platform/provider selection remains deferred to VTI-09."
+          auth = reg["vti_08_authority"]
+          assert auth["implementation_authority"] is True and auth["retired"] is False
+          auth["production_mutation_authorized"] = True
+          auth["adapter_sdk_capability_manifest_reference_vtt_authorized"] = True
+          auth["matching_red_observed"] = True
+          auth["acceptance_red_head"] = RED_HEAD
+          auth["acceptance_red_run"] = RED_RUN
+          auth["acceptance_red_receipt_sha256"] = RECEIPT
+          auth["repository_health_job"] = REPO_JOB
+          auth["linux_job"] = LINUX_JOB
+          auth["windows_job"] = WINDOWS_JOB
+          auth["deterministic_compare_job"] = COMPARE_JOB
+          for key in ("provider_selection_authorized","provider_specific_schema_authorized","credential_or_external_account_mutation_authorized","live_external_or_canonical_mutation_authorized","durable_persistence_or_migration_authorized","provider_activation_authorized","tester_distribution_authorized","release_or_deployment_authorized","vti09_plus_authorized","sgc01_plus_authorized"):
+              assert auth[key] is False, key
+          if "planned_programs" in reg and "VTI" in reg["planned_programs"]:
+              reg["planned_programs"]["VTI"]["current_state"] = "in_progress"
+          save(a_path, reg)
+
+          program_path = "governance/application-planning/virtual-tabletop-interoperability/VTI_VIRTUAL_TABLETOP_INTEROPERABILITY_PROGRAM.md"
+          text = Path(program_path).read_text(encoding="utf-8")
+          text = text.replace("VTI-08 is in_progress acceptance-only", "VTI-08 is in_progress with matching RED sealed")
+          text = text.replace("production adapter-SDK/capability-manifest/reference-VTT behavior remains locked until genuine matching RED", "bounded production adapter-SDK/capability-manifest/reference-VTT behavior is authorized after genuine matching RED")
+          text = text.replace("Production adapter-SDK/capability-manifest/reference-VTT behavior remains locked until genuine matching RED", "Bounded production adapter-SDK/capability-manifest/reference-VTT behavior is authorized after genuine matching RED")
+          Path(program_path).write_text(text, encoding="utf-8")
+
+          proof = f"""# VTI-08 Application Acceptance RED\n\n- Application PR: #437\n- Exact acceptance head: `{RED_HEAD}`\n- Validation run: `{RED_RUN}`\n- Repository health job: `{REPO_JOB}` — PASS\n- Linux job: `{LINUX_JOB}` — matching RED at `vti08-invariants`\n- Windows job: `{WINDOWS_JOB}` — matching RED at `vti08-invariants`\n- Deterministic comparator: `{COMPARE_JOB}` — PASS\n- Deterministic receipt: `{RECEIPT}`\n- Linux artifact: `9999198302`\n- Windows artifact: `9999200675`\n- Comparison artifact: `9999203683`\n- Historical profile fanout: `0`\n\nBoth self-hosted lanes failed for the same governed reason: the production VTI-08 contract was intentionally absent. This seals matching RED and authorizes only `packages/contracts/src/virtual-tabletop-interoperability/adapter-sdk-capability-manifest-reference-vtt-contract.ts`. Provider selection/schemas/credentials/accounts/network/live mutation/persistence/new migration/activation/tester distribution/release/deployment/VTI-09+/SGC-01+ remain unauthorized.\n"""
+          Path("governance/ai/work-state/VTI-08-APPLICATION-ACCEPTANCE-RED.md").write_text(proof, encoding="utf-8")
+
+          supplement = f"""# Application Implementation Roadmap — VTI-08 RED Unlock — 2026-09-07\n\nVTI-08 matching acceptance RED is sealed from application PR #437 at exact head `{RED_HEAD}`, run `{RED_RUN}`. Repository health passed; Linux and Windows both failed at `vti08-invariants` because the production contract was intentionally absent; deterministic comparison passed with receipt `{RECEIPT}`.\n\nBounded production authority is now open only for `packages/contracts/src/virtual-tabletop-interoperability/adapter-sdk-capability-manifest-reference-vtt-contract.ts`. Multiversal remains canonical authority. Platform selection remains evidence-driven and deferred to VTI-09. No provider-specific schema, credentials/accounts, commercial network dependency, live mutation, durable persistence/new migration, activation, tester distribution, release/deployment, VTI-09+, or SGC-01+ work is authorized.\n"""
+          Path(SUPPLEMENT).write_text(supplement, encoding="utf-8")
+
+          test = f'''import json\nimport unittest\nfrom pathlib import Path\n\nROOT=Path(__file__).resolve().parents[2]\ndef load_json(path): return json.loads((ROOT/path).read_text(encoding="utf-8"))\n\nclass Vti08RedUnlockTests(unittest.TestCase):\n    def test_matching_red_is_sealed_and_only_bounded_production_is_unlocked(self):\n        cp=load_json("governance/ai/work-state/VTI-08-attempt-001.json")\n        backlog=load_json("governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json")\n        pointer=load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")\n        registry=load_json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")\n        index=load_json("governance/ai/runtime/ROADMAP_INDEX.json")\n        runtime=load_json("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")\n        red=cp["validation"]["acceptance_red"]\n        self.assertEqual(red["head_sha"],"{RED_HEAD}")\n        self.assertEqual(red["run_id"],{RED_RUN})\n        self.assertEqual(red["repository_health_job"],{REPO_JOB})\n        self.assertEqual(red["linux_job"],{LINUX_JOB})\n        self.assertEqual(red["windows_job"],{WINDOWS_JOB})\n        self.assertEqual(red["deterministic_compare_job"],{COMPARE_JOB})\n        self.assertEqual(red["deterministic_receipt_sha256"],"{RECEIPT}")\n        self.assertTrue(red["matching_red_observed"])\n        self.assertEqual(red["failure_stage"],"vti08-invariants")\n        self.assertTrue(cp["production_mutation_authorized"])\n        self.assertTrue(backlog["active_contract"]["production_mutation_authorized"])\n        self.assertTrue(backlog["active_contract"]["matching_red_observed"])\n        self.assertTrue(pointer["bounded_authority"]["production_mutation_authorized"])\n        self.assertTrue(pointer["bounded_authority"]["matching_red_observed"])\n        self.assertTrue(index["current"]["production_mutation_authorized"])\n        self.assertTrue(index["current"]["matching_red_observed"])\n        self.assertTrue(runtime["active_work"]["production_mutation_authorized"])\n        self.assertTrue(runtime["active_work"]["matching_red_observed"])\n        auth=registry["vti_08_authority"]\n        self.assertTrue(auth["production_mutation_authorized"])\n        self.assertTrue(auth["adapter_sdk_capability_manifest_reference_vtt_authorized"])\n        self.assertTrue(auth["matching_red_observed"])\n        for key in ("provider_selection_authorized","provider_specific_schema_authorized","credential_or_external_account_mutation_authorized","live_external_or_canonical_mutation_authorized","durable_persistence_or_migration_authorized","provider_activation_authorized","tester_distribution_authorized","release_or_deployment_authorized","vti09_plus_authorized","sgc01_plus_authorized"):\n            self.assertFalse(auth[key])\n\nif __name__=="__main__": unittest.main()\n'''
+          Path("tests/control_plane/test_vti08_red_unlock.py").write_text(test, encoding="utf-8")
+          PY
+      - name: Run focused VTI-08 control-plane regressions
+        run: python -m unittest tests.control_plane.test_vti08_adapter_sdk_capability_manifest_reference_vtt_registration tests.control_plane.test_vti08_red_unlock tests.control_plane.test_vti07_terminal_closeout
+      - name: Commit projection and remove helper
+        shell: bash
+        run: |
+          rm .github/workflows/vti08-red-unlock-projection.yml
+          git config user.name "cybalicistjt-stack"
+          git config user.email "cybalicist.jt@gmail.com"
+          git add governance tests .github/workflows/vti08-red-unlock-projection.yml
+          git commit -m "VTI-08: seal matching RED and unlock bounded production"
+          git push origin HEAD:governance/vti-08-seal-red-unlock-production
