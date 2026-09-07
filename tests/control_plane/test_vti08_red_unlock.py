@@ -30,7 +30,12 @@ class Vti08RedUnlockTests(unittest.TestCase):
             self.assertFalse(cp["production_mutation_authorized"])
             self.assertFalse(auth["production_mutation_authorized"])
             self.assertFalse(auth["adapter_sdk_capability_manifest_reference_vtt_authorized"])
-            self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-09")
+            current=pointer["active_attempt"]["work_item_id"]
+            self.assertTrue(current.startswith("VTI-"))
+            self.assertGreaterEqual(int(current.split("-")[1]),9)
+            self.assertEqual(index["current"]["work_item_id"],current)
+            self.assertEqual(runtime["active_work"]["work_item"],current)
+            self.assertEqual(backlog["active_contract"]["work_item"],current)
         else:
             self.assertTrue(cp["production_mutation_authorized"])
             self.assertTrue(backlog["active_contract"]["production_mutation_authorized"])
