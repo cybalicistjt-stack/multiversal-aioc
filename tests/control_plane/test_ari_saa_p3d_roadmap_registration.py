@@ -108,14 +108,33 @@ class AriSaaP3dRoadmapRegistrationTests(unittest.TestCase):
 
     def test_current_vti_selector_is_not_replaced_by_planning(self):
         index = load_json("governance/ai/runtime/ROADMAP_INDEX.json")
+        checkpoint = load_json("governance/ai/work-state/VTI-10-attempt-001.json")
+        pointer = load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
+        backlog = load_json("governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json")
+        runtime = load_json("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")
+        authority = load_json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
+
         self.assertEqual(index["current"]["work_item_id"], "VTI-10")
         self.assertEqual(index["current"]["status"], "in_progress")
         self.assertTrue(index["current"]["implementation_authority"])
-        self.assertFalse(index["current"]["production_mutation_authorized"])
+
+        red = checkpoint["validation"]["acceptance_red"]
+        matching_red = bool(red and red.get("matching_red_observed"))
+        expected_production = matching_red and checkpoint["production_mutation_authorized"]
+        self.assertEqual(index["current"]["matching_red_observed"], matching_red)
+        self.assertEqual(index["current"]["production_mutation_authorized"], expected_production)
+        self.assertEqual(pointer["bounded_authority"]["production_mutation_authorized"], expected_production)
+        self.assertEqual(backlog["active_contract"]["production_mutation_authorized"], expected_production)
+        self.assertEqual(runtime["active_work"]["production_mutation_authorized"], expected_production)
+        self.assertEqual(authority["vti_10_authority"]["production_mutation_authorized"], expected_production)
+
         self.assertEqual(index["planned_programs"][0]["program_id"], "ARI")
         self.assertEqual(index["planned_programs"][1]["program_id"], "SAA")
         self.assertFalse(index["planned_programs"][0]["implementation_authority"])
         self.assertFalse(index["planned_programs"][1]["implementation_authority"])
+        for project in index["deferred_future_projects"]:
+            self.assertFalse(project["implementation_authority"])
+            self.assertFalse(project["automatic_activation"])
 
 
 if __name__ == "__main__":
