@@ -177,13 +177,13 @@ class FamilyExecutionPreflightTests(unittest.TestCase):
         index=_load_json("governance/ai/runtime/ROADMAP_INDEX.json")
         self.assertEqual(vti["status"],"completed_verified"); self.assertTrue(vti["authority_retired"]); self.assertEqual(vti["application_pr"],441); self.assertEqual(vti["application_merge_sha"],"7e93bc4bb1c3b8ecc9bc4424dd7422ea328e2765")
         green=vti["validation"]["final_green"]; self.assertEqual(green["head_sha"],"712f7096118ae065d3d17492e2cc5effa1d83034"); self.assertEqual(green["run_id"],34221889244); self.assertEqual(green["deterministic_receipt_sha256"],"77536c1214f37374ca8ea1b2f1f627b30e209f52bb141133d690cdfc9b0544a4")
-        for selected in (pointer["active_attempt"],authority["active_planning_work"],runtime["active_work"],index["current"]): self.assertEqual(selected.get("work_item_id",selected.get("work_item")),"SGC-01B")
+        for selected in (pointer["active_attempt"],authority["active_planning_work"],runtime["active_work"],index["current"]): self.assertEqual(selected.get("work_item_id",selected.get("work_item")),"SGC-01C")
         self.assertEqual(pointer["active_attempt"]["status"],"selected_not_started"); self.assertFalse(pointer["active_attempt"]["implementation_authority"]); self.assertIsNone(pointer["active_attempt"]["implementation_branch"])
 
     def test_sgc_execution_units_are_pre_sized_for_one_continue(self) -> None:
         pf=_load_json("governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json"); backlog=_load_json("governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json")
         self.assertEqual(pf["status"],"sealed"); self.assertEqual(pf["family_id"],"SGC"); self.assertEqual(pf["execution_target"]["ordinary_tranche_single_continue_completion_percent"],100); self.assertEqual(pf["execution_target"]["max_execution_cycles_without_genuine_blocker"],1); self.assertEqual(pf["execution_target"]["target_active_minutes_per_unit"],24); self.assertGreaterEqual(pf["execution_target"]["minimum_closeout_reserve_minutes"],8)
-        units=pf["execution_units"]; self.assertEqual(len(units),22); self.assertTrue(all(0 < row["estimated_active_minutes"] <= 24 for row in units)); self.assertEqual(backlog["strict_order"],[row["id"] for row in units]); self.assertEqual(backlog["current_item"],"SGC-01B")
+        units=pf["execution_units"]; self.assertEqual(len(units),22); self.assertTrue(all(0 < row["estimated_active_minutes"] <= 24 for row in units)); self.assertEqual(backlog["strict_order"],[row["id"] for row in units]); self.assertEqual(backlog["current_item"],"SGC-01C")
 
     def test_prefamily_context_is_blocked_by_default(self) -> None:
         pf=_load_json("governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json"); blocked=" ".join(pf["context_seal"]["blocked_by_default"]).lower()
