@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "SGC-05A",
+  "status": "CURRENT",
+  "scope": "Mobility/freerunning, traps, nonlethal combat, weapon proficiency and martial-style edge-system coverage only. SGC-05B hazards/rest/medicine/constructs/expeditions/source-hold work remains out of scope.",
+  "scope_basis": "governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_GAMEPLAY_COVERAGE_CLOSURE_PROGRAM.md#sgc-05-specialized--edge-case-gameplay-closure",
+  "disposition_contract": "governance/application-planning/source-gameplay-coverage-closure/SGC_DISPOSITION_EVIDENCE_CONTRACT.json",
+  "retained_source_inventory": "governance/application-planning/source-gameplay-coverage-closure/SGC_RETAINED_SOURCE_CORPUS_INVENTORY.json",
+  "records": [
+    {
+      "concept_id": "SGC-EDGE-MAL-MOVEMENT-TRAVERSAL-PRIMITIVES",
+      "source_refs": ["SGC-SRC-MAL-OUTPUTS"],
+      "concept_kind": "mobility_runtime_primitives",
+      "disposition": "implemented",
+      "owner": "MAL-03",
+      "evidence": {
+        "owner_paths": [
+          "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MAL03_CLOSEOUT_2026-09-03.md",
+          "governance/application-planning/source-gameplay-coverage-closure/SGC_RUNTIME_COVERAGE_MATRIX.json"
+        ],
+        "specific_scope": "MAL-03 is completed_verified for movement/navigation/traversal primitives. SGC-02B already records those primitives as implemented; SGC-05A reuses that engine instead of creating a freerunning subsystem."
+      }
+    },
+    {
+      "concept_id": "SGC-EDGE-FREERUNNING-SEMANTIC-MOVEMENT-BINDING",
+      "source_refs": ["SGC-SRC-MAL-OUTPUTS", "SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind": "freerunning_mobility_binding",
+      "disposition": "planned_owned_elsewhere",
+      "owner": "F013 semantic positioning + STAGE-A-A7 combat movement + CAB/ALP Character readiness",
+      "evidence": {
+        "owner_paths": [
+          "governance/application-planning/internal-alpha/feature-packets/MV-IA-F013_BOUNDED_MAPS_ZONES_AND_TACTICAL_POSITIONING.md",
+          "governance/application-planning/stage-a-a7/STAGE_A_A7_CURRENT_REPOSITORY_REVALIDATION_v0.3.0.md",
+          "governance/application-planning/character-advancement-balance/CAB-22_FINAL_ADVANCEMENT_RULES.md"
+        ],
+        "specific_scope": "F013 owns authoritative semantic position, movement proposals, paths, costs, hazards and reaction seams; A7 explicitly retains executable combat movement/targeting/reaction authority as bounded planned work; CAB governs Character eligibility/readiness where a mobility Ability or proficiency requires it. No separate freerunning runtime is authorized and no source move list is invented here."
+      }
+    },
+    {
+      "concept_id": "SGC-EDGE-DEPLOYABLE-TRAP-CONTENT-CONTRACT",
+      "source_refs": ["SGC-SRC-MAL-OUTPUTS"],
+      "concept_kind": "trap_content_definition",
+      "disposition": "content_only",
+      "owner": "Governed Item template extension / item.trap",
+      "evidence": {
+        "owner_path": "governance/object-system/item-templates/ITEM_TEMPLATE_EXTENSION_REGISTRY.json",
+        "specific_scope": "The governed item.trap contract defines deployable trap identity, deployment, trigger, payload, detection, disarm, reset, charges and runtime-behavior vocabulary while explicitly routing persistent environmental hazards to the hazard system. The registry remains governed content/schema evidence and is not claimed here as application-runtime certification."
+      }
+    },
+    {
+      "concept_id": "SGC-EDGE-TRAP-EXECUTION-COMPOSITION",
+      "source_refs": ["SGC-SRC-MAL-OUTPUTS"],
+      "concept_kind": "trap_runtime_composition",
+      "disposition": "planned_owned_elsewhere",
+      "owner": "MAL interaction/hazard primitives + F013 semantic hazard placement + STAGE-A-A7 Action/Effect resolution",
+      "evidence": {
+        "owner_paths": [
+          "governance/application-planning/source-gameplay-coverage-closure/SGC_RUNTIME_COVERAGE_MATRIX.json",
+          "governance/application-planning/internal-alpha/feature-packets/MV-IA-F013_BOUNDED_MAPS_ZONES_AND_TACTICAL_POSITIONING.md",
+          "governance/application-planning/stage-a-a7/STAGE_A_A7_CURRENT_REPOSITORY_REVALIDATION_v0.3.0.md"
+        ],
+        "specific_scope": "MAL supplies completed interaction/conflict/hazard primitives, F013 binds hazards to semantic zones/anchors/edges/paths and delegates consequences to owning processors, and A7 retains executable Effect/Action combat coordination. Deployable trap definitions therefore compose existing owners rather than becoming a standalone trap engine. Persistent environmental hazards remain for SGC-05B coverage."
+      }
+    },
+    {
+      "concept_id": "SGC-EDGE-NONLETHAL-COMBAT-RESOLUTION",
+      "source_refs": ["SGC-SRC-MAL-OUTPUTS", "SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind": "nonlethal_combat_resolution",
+      "disposition": "planned_owned_elsewhere",
+      "owner": "STAGE-A-A7 combat outcome/effect authority + CAB outcome-neutral advancement rules",
+      "evidence": {
+        "owner_paths": [
+          "governance/application-planning/stage-a-a7/STAGE_A_A7_CURRENT_REPOSITORY_REVALIDATION_v0.3.0.md",
+          "governance/application-planning/character-advancement-balance/CAB-22_FINAL_ADVANCEMENT_RULES.md"
+        ],
+        "specific_scope": "A7 owns bounded combat state/effect/outcome coordination and preserves distinct defeated/incapacitated/dying/dead/surrendered/fled/removed/unavailable states rather than equating defeat with death. CAB explicitly treats negotiation, stealth, avoidance, disabling, rescue and other valid solutions equivalently for accomplishment awards. No separate nonlethal combat engine or universal source rule is invented."
+      }
+    },
+    {
+      "concept_id": "SGC-EDGE-WEAPON-PROFICIENCY-ADVANCEMENT",
+      "source_refs": ["SGC-SRC-KFR-OUTPUTS", "SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind": "weapon_proficiency_progression",
+      "disposition": "implemented",
+      "owner": "CAB-10 / CAB-22",
+      "evidence": {
+        "owner_paths": [
+          "governance/application-planning/character-advancement-balance/CAB-10_COMPLETION_REPORT.md",
+          "governance/application-planning/character-advancement-balance/CAB-22_FINAL_ADVANCEMENT_RULES.md",
+          "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_KFR05_CLOSEOUT_2026-09-01.md"
+        ],
+        "specific_scope": "CAB-10 reconciles retained Weapon Proficiency sources and four base proficiency states; CAB-22 governs Unproficient→Proficient→Expertise→Mastery advancement semantics. KFR-05 explicitly preserves familiarity/qualification as separate from proficiency mutation, preventing a duplicate qualification/proficiency ledger."
+      }
+    },
+    {
+      "concept_id": "SGC-EDGE-MARTIAL-STYLE-ACQUISITION-BALANCE",
+      "source_refs": ["SGC-SRC-ALP-OUTPUTS", "SGC-SRC-KFR-OUTPUTS"],
+      "concept_kind": "martial_style_character_advancement",
+      "disposition": "implemented",
+      "owner": "CAB Character Advancement & Balance",
+      "evidence": {
+        "owner_paths": [
+          "governance/application-planning/character-advancement-balance/CAB-22_FINAL_ADVANCEMENT_RULES.md",
+          "governance/application-planning/character-advancement-balance/CAB-09_ACQUISITION_AND_ELIGIBILITY.md"
+        ],
+        "specific_scope": "Martial styles remain Character Ability/progression content governed through CAB acquisition, prerequisite, tier, action-economy, stacking and balance rules. Training/practice is required only when the owning rule or GM/Campaign policy requires it. No standalone martial-style economy or progression engine is created."
+      }
+    },
+    {
+      "concept_id": "SGC-EDGE-MARTIAL-STYLE-LEGACY-CONTENT-REPAIR",
+      "source_refs": ["SGC-SRC-ALP-OUTPUTS", "SGC-SRC-KFR-OUTPUTS"],
+      "concept_kind": "martial_style_content_gap_route",
+      "disposition": "planned_owned_elsewhere",
+      "owner": "CAB-22 content repair map",
+      "evidence": {
+        "owner_path": "governance/application-planning/character-advancement-balance/CAB-22_FINAL_ADVANCEMENT_RULES.md",
+        "specific_scope": "CAB final rules explicitly state that legacy Ability rows remain content-unready when consequential identity, acquisition, timing, resource, prerequisite, interaction, dependency or price semantics are unresolved and route those repairs through CAB-22_CONTENT_REPAIR_MAP_v1.0.0.json. SGC-05A reuses that existing repair route and creates no second martial-content queue."
+      }
+    }
+  ],
+  "counts": {
+    "records": 8,
+    "implemented": 3,
+    "content_only": 1,
+    "planned_owned_elsewhere": 4,
+    "unresolved_owner_decision": 0,
+    "invented_owner_assignments": 0
+  },
+  "boundaries": [
+    "Freerunning/mobility reuses MAL/F013/A7/CAB seams; no standalone freerunning engine is created.",
+    "Deployable traps retain Item content/schema identity while persistent environmental hazards remain separate and reserved for SGC-05B.",
+    "Nonlethal combat is an outcome/effect path through the combat owner, not a second combat system.",
+    "Weapon proficiency remains CAB-owned; KFR familiarity/qualification cannot silently mutate proficiency.",
+    "Martial styles remain CAB Ability/progression content and use the existing CAB repair map for unresolved legacy rows.",
+    "No historical audit-corpus file is used as current authority or source evidence in this closure."
+  ],
+  "result": "PASS_NO_NEW_OWNER_DECISIONS",
+  "strict_successor": "SGC-05B"
+}
