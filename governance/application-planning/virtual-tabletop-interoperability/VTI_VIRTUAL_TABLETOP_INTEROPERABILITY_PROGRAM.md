@@ -1,7 +1,7 @@
 # VTI — Virtual Tabletop Interoperability
 
 **Program ID:** VTI  
-**Status:** OWNER-APPROVED — VTI-01 THROUGH VTI-10 COMPLETED_VERIFIED; VTI-11 IN_PROGRESS
+**Status:** OWNER-APPROVED — VTI-01 THROUGH VTI-11 COMPLETED_VERIFIED; VTI-12 SELECTED_NOT_STARTED
 **Activation:** after completed_verified ALP-08  
 **Successor:** SGC-01  
 **Owner and final authority:** John Brandon Turner
@@ -22,7 +22,7 @@ The owner-directed IC-01 through IC-13 technical UI convergence sequence advance
 
 After the VTI-06 governed start validated, application `main` advanced through `973490e8358fe0a48dad43933ac3675acd188303`, which added only a temporary `placeholder` file, and `e9ddbf9c763faca74689cb3776ad21501c341ba5`, which removed only that file. The current `e9ddbf9c...` tree is `8e9942b47cb5231816d4584397d460eaec522846`, exactly the same tree as `4bd061a...`. This exact-head reconciliation therefore changes no application semantics, VTI scope, or authority; the IC-13 historical closeout anchor remains `4bd061a...`.
 
-VTI-06 — Scene, Map, Token & MAI Bridge — is `completed_verified` and retired. VTI-07 — Permissions, Hidden Information & GM Authority — is `completed_verified` and retired after application PR #436 merged as `692da4f4792426b9c62f6be14db60fc63eb09d6b` from exact validated head `63e3194792375bb3abf8955f2448fbea282e859f` / run `34064468595` with deterministic receipt `8e2b1cab0247a40829f155a360f4a0576d3b3ca625713cd5d5ac7847fabb9ac4`. VTI-08 — Adapter SDK, Capability Manifest & Deterministic Reference VTT — is `completed_verified` and retired after application PR #437 merged as `69bc17bf5999e5cd704d7ec4d8aaa7b168db740c` from exact validated head `2cb7e2797e7a5c8b251ea4ac7e3980e124ff9d7e` / run `34138095971` with deterministic receipt `c85ce8390efeac8ecc3442e0b1b435f1ea86dc3433220ff0fbb8ada1ca0bbddb`. VTI-09 — First Full Platform Integration — is `completed_verified` and retired after application PR #438 merged as `9bed9b190b1d78bbbce9e208c2daa792c9109466` from exact validated head `60646de3d4f05888a9ea32a6bd1b8937b6c4a591` / run `34145261616` with deterministic receipt `58b65117b86f4844472f997e9e13d497e7cf47def10f8e602627d5b4c39d6f40`. VTI-10 — Additional VTT Adapters & Compatibility Matrix — is `completed_verified` and retired after application PR #439 merged as `145eee04181b9ed66cae887ea6830da111918c25`. VTI-11 — Adventure / Campaign Package Export — is `in_progress` under acceptance-only governed-start authority from that exact application main on `integration/vti-11-adventure-campaign-package-export`; production mutation remains locked pending genuine matching RED.
+VTI-06 — Scene, Map, Token & MAI Bridge — is `completed_verified` and retired. VTI-07 — Permissions, Hidden Information & GM Authority — is `completed_verified` and retired after application PR #436 merged as `692da4f4792426b9c62f6be14db60fc63eb09d6b` from exact validated head `63e3194792375bb3abf8955f2448fbea282e859f` / run `34064468595` with deterministic receipt `8e2b1cab0247a40829f155a360f4a0576d3b3ca625713cd5d5ac7847fabb9ac4`. VTI-08 — Adapter SDK, Capability Manifest & Deterministic Reference VTT — is `completed_verified` and retired after application PR #437 merged as `69bc17bf5999e5cd704d7ec4d8aaa7b168db740c` from exact validated head `2cb7e2797e7a5c8b251ea4ac7e3980e124ff9d7e` / run `34138095971` with deterministic receipt `c85ce8390efeac8ecc3442e0b1b435f1ea86dc3433220ff0fbb8ada1ca0bbddb`. VTI-09 — First Full Platform Integration — is `completed_verified` and retired after application PR #438 merged as `9bed9b190b1d78bbbce9e208c2daa792c9109466` from exact validated head `60646de3d4f05888a9ea32a6bd1b8937b6c4a591` / run `34145261616` with deterministic receipt `58b65117b86f4844472f997e9e13d497e7cf47def10f8e602627d5b4c39d6f40`. VTI-10 — Additional VTT Adapters & Compatibility Matrix — is `completed_verified` and retired after application PR #439 merged as `145eee04181b9ed66cae887ea6830da111918c25`. VTI-11 — Adventure / Campaign Package Export — is `completed_verified` and retired after application PR #440 merged as `1c092252aedbc274058222451fad2401e1a3aa39` from exact validated head `ebc5f0265799788ce2f3c5b2b9da5da1b2da3d90` / run `34213605901` with deterministic receipt `07fc593e61d3c4f8e327fcda4549bbfafa3fa78cae8830bd24c9fa64889ec40b`. VTI-12 — Integrated Cross-VTT Golden Proof — is `selected_not_started` from that exact application main with no implementation authority.
 
 ## Purpose
 
@@ -67,10 +67,10 @@ VTI follows the native mine-note-derived semantic families so adapters project m
 10. **VTI-10 — Additional VTT Adapters & Compatibility Matrix** — **COMPLETED_VERIFIED**  
     Add feasible platforms at the maximum safe level each supports and publish a precise capability matrix rather than vague “VTT compatible” claims.
 
-11. **VTI-11 — Adventure / Campaign Package Export** — **IN_PROGRESS**  
+11. **VTI-11 — Adventure / Campaign Package Export** — **COMPLETED_VERIFIED**  
     Export maps, encounters, creatures, NPCs, tokens, journals/handouts, treasure, tables, environments and other permitted content into platform package formats.
 
-12. **VTI-12 — Integrated Cross-VTT Golden Proof**  
+12. **VTI-12 — Integrated Cross-VTT Golden Proof** — **SELECTED_NOT_STARTED**  
     Prove one governed adventure resolves the same authoritative events natively and through an external VTT projection, including reconnect, stale/duplicate requests, GM adjudication and hidden information.
 
 ## VTI-04 completed contract
