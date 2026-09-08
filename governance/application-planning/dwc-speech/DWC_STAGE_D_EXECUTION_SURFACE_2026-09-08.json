@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.1.0",
+  "project_id": "DWC-SPEECH",
+  "evidence_type": "execution_surface_probe",
+  "recorded_at": "2026-09-08",
+  "scope": "current ChatGPT sandbox only; this is not a permanent project blocker",
+  "runtime": {
+    "python": "3.13.5",
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+    "torch": "2.10.0+cpu",
+    "cuda_available": false,
+    "cuda_device_count": 0
+  },
+  "stage_d_probe": {
+    "script": "governance/application-planning/dwc-speech/dwc_stage_d_continue.py",
+    "source_stage_c_sha256": "d800ae031942c29289ced1cc80c1448fff234c53f42a56f2d69265e7e3ebabb2",
+    "requested_device": "cuda",
+    "exit_code": 1,
+    "message": "CUDA requested but no CUDA device is available",
+    "classification": "environment_unavailable for Stage-D GPU training on this sandbox"
+  },
+  "prepared_gpu_handoff": {
+    "drive_file": "DWC_Piper_Custom58_StageD_Continuation_v0.1.ipynb",
+    "drive_file_id": "1zuU3BBs8SySNVroYsjY3Nf3SbE2bZUiY",
+    "bytes": 28123,
+    "sha256": "1c871076abba8c0538553073cc645c2fc49e03fdb48736830b01a075f2854241",
+    "notebook_cells": 12,
+    "starts_from": "verified Stage-C weights",
+    "default_stage_d_batches": 927,
+    "default_optimizer_steps": 1854,
+    "machine_acceptance_rows_pre_and_post": 125,
+    "human_perceptual_gate_required": true
+  },
+  "non_regression": "Do not treat this sandbox's missing CUDA as evidence against DWC, Piper, warm-start viability, or completed Stages A/B/C. Resume Stage D on a GPU-capable surface from the verified Stage-C weights."
+}
