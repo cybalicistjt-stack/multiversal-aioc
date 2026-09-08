@@ -1,26 +1,26 @@
 {
-  "schema_version": "13.2.0",
+  "schema_version": "13.3.0",
   "program_id": "CRS",
   "status": "CURRENT_GUARDRAIL",
   "canonical_selector": {
     "repository": "cybalicistjt-stack/multiversal-aioc",
     "path": "governance/ai/runtime/CURRENT_WORK_POINTER.json",
-    "rule": "CURRENT_WORK_POINTER selects SGC-01C selected_not_started after completed_verified SGC-01B."
+    "rule": "CURRENT_WORK_POINTER selects SGC-02A selected_not_started after completed_verified SGC-01C."
   },
   "work_state": {
     "directory": "governance/ai/work-state",
-    "selected_checkpoint": "governance/ai/work-state/SGC-01C-attempt-001.json",
+    "selected_checkpoint": "governance/ai/work-state/SGC-02A-attempt-001.json",
     "selected_checkpoint_role": "selected_not_started"
   },
   "active_work": {
-    "work_item": "SGC-01C",
-    "attempt_id": "SGC-01C-attempt-001",
+    "work_item": "SGC-02A",
+    "attempt_id": "SGC-02A-attempt-001",
     "repository": "cybalicistjt-stack/multiversal-aioc",
     "state": "selected_not_started",
     "role": "current_planning_selection",
     "implementation_branch": null,
     "implementation_authority": false,
-    "execution_rule": "The next execution Continue governed-starts only SGC-01C; no branch or implementation authority exists before that start."
+    "execution_rule": "The next execution Continue governed-starts only SGC-02A; no branch or implementation authority exists before that start."
   },
   "family_preflight": {
     "family_id": "SGC",
@@ -60,12 +60,14 @@
     "application_merge": "7e93bc4bb1c3b8ecc9bc4424dd7422ea328e2765"
   },
   "recently_completed_sgc_work": {
-    "work_item_id": "SGC-01B",
+    "work_item_id": "SGC-01C",
     "status": "completed_verified",
     "deliverable": "governance/application-planning/source-gameplay-coverage-closure/SGC_RETAINED_SOURCE_CORPUS_INVENTORY.json",
+    "inventory_status": "FROZEN_VERIFIED",
     "retained_source_records": 8,
-    "completed_tranche_output_members": 45,
-    "strict_successor": "SGC-01C"
+    "mandatory_backlog_inputs_represented": 8,
+    "unclassified_source_references": 0,
+    "strict_successor": "SGC-02A"
   },
   "completed_programs": [
     {"program_id":"DPL","state":"completed_verified","completed_through":"DPL-14"},{"program_id":"MAI","state":"completed_verified","completed_through":"MAI-10"},{"program_id":"AAI","state":"completed_verified","completed_through":"AAI-10"},{"program_id":"ISE","state":"completed_verified","completed_through":"ISE-08"},{"program_id":"SSA","state":"completed_verified","completed_through":"SSA-10"},{"program_id":"WCI","state":"completed_verified","completed_through":"WCI-05"},{"program_id":"KFR","state":"completed_verified","completed_through":"KFR-08"},{"program_id":"ODL","state":"completed_verified","completed_through":"ODL-09"},{"program_id":"SCL","state":"completed_verified","completed_through":"SCL-11"},{"program_id":"MAL","state":"completed_verified","completed_through":"MAL-10"},{"program_id":"ECI","state":"completed_verified","completed_through":"ECI-01"},{"program_id":"ALP","state":"completed_verified","completed_through":"ALP-08"},{"program_id":"VTI","state":"completed_verified","completed_through":"VTI-12"}
@@ -73,18 +75,18 @@
   "selected_sgc": {
     "program_id": "SGC",
     "status": "in_progress",
-    "completed_through": "SGC-01B",
-    "current": "SGC-01C",
+    "completed_through": "SGC-01C",
+    "current": "SGC-02A",
     "current_state": "selected_not_started",
     "implementation_authority": false,
-    "strict_next": "SGC-02A",
+    "strict_next": "SGC-02B",
     "last": "SGC-08C",
     "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json"
   },
   "effective_forward_order": "SGC-01..08 → ARI-01..22 → MIB-16 → MIB-17 → MIB-18 → SMB-01..09 → SAA-01..20 → SMB-10 → SMB-11 → SMB-12..16 → BRP-01..11 → SMB-17 → SMB-18",
   "boundaries": [
-    "SGC-01A disposition/evidence contract and SGC-01B retained-source inventory are completed_verified and current inputs.",
-    "SGC-01C is selected_not_started with no implementation branch or authority.",
+    "SGC-01A disposition/evidence contract and frozen SGC-01C retained-source inventory are completed_verified and current inputs.",
+    "SGC-02A is selected_not_started with no implementation branch or authority.",
     "Historical lifecycle-specific tests remain preserved but are not current execution scope.",
     "ARI/SAA/P3D remain outside current implementation authority."
   ]
