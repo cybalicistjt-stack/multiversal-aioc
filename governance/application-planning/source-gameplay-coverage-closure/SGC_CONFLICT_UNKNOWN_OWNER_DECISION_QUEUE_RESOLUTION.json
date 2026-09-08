@@ -1,0 +1,145 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "SGC-07A",
+  "status": "CURRENT",
+  "scope": "Resolve the ten explicit unresolved_owner_decision/source-conflict records carried by completed SGC-03C, SGC-04A, SGC-04B, SGC-04C and SGC-05B coverage. SGC-07B superseded/unsupported/deferred final disposition closure remains separate.",
+  "disposition_contract": "governance/application-planning/source-gameplay-coverage-closure/SGC_DISPOSITION_EVIDENCE_CONTRACT.json",
+  "queue_size": 10,
+  "records": [
+    {
+      "queue_id": "SGC-07A-Q01",
+      "origin_concept_id": "SGC-CHAR-MOTIVATION-CANONICAL-SEMANTIC-IDENTITY",
+      "origin_artifact": "governance/application-planning/source-gameplay-coverage-closure/SGC_FACTION_PROFICIENCY_FAMILIARITY_MOTIVATION_GAP_COVERAGE.json",
+      "decision": "Canonical Character motivation is required as Character-domain semantic identity rather than CSW creative truth. Route the field/relationship through the existing Character aggregate/identity-profile owner; CSW remains proposal-only input.",
+      "resolved_disposition": "planned_owned_elsewhere",
+      "owner": "MV-IA-F004 Character Creation and Advancement",
+      "evidence_paths": [
+        "governance/application-planning/internal-alpha/feature-packets/MV-IA-F004_CHARACTER_CREATION_AND_ADVANCEMENT.md",
+        "governance/application-planning/creator-storycraft-workspace/CSW-04_GUIDED_CREATION_WORKFLOWS.md",
+        "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MINES_RECOVERY_AMENDMENT_2026-08-27.md"
+      ],
+      "invariant": "Player-authored motivation may become authoritative only through the Character-domain save/validation path; CSW fragments never silently become Character facts."
+    },
+    {
+      "queue_id": "SGC-07A-Q02",
+      "origin_concept_id": "SGC-CONTENT-ITEM-TASER-SOURCE-CONFLICT",
+      "origin_artifact": "governance/application-planning/source-gameplay-coverage-closure/SGC_ITEMS_MATERIALS_FACILITIES_RECIPE_COVERAGE.json",
+      "decision": "Retain the two published Taser source contexts as explicit distinct/conflicting source variants. Do not merge identities without later authoritative source evidence.",
+      "resolved_disposition": "content_only",
+      "owner": "Governed Item content registry / D17-facing Item Definitions",
+      "evidence_paths": ["governance/application-planning/parallel-preimplementation/PPIA-03_SOURCE_AND_DESIGN_INVENTORY.md"],
+      "invariant": "No numerical balance or identity fact is inferred to force one canonical Taser definition."
+    },
+    {
+      "queue_id": "SGC-07A-Q03",
+      "origin_concept_id": "SGC-CONTENT-ENERGY-WEAPON-CAPACITY-SOURCE-GAPS",
+      "origin_artifact": "governance/application-planning/source-gameplay-coverage-closure/SGC_ITEMS_MATERIALS_FACILITIES_RECIPE_COVERAGE.json",
+      "decision": "Keep all seven unspecified energy-weapon capacities explicitly unknown. Unknown is not zero, unlimited, empty, full or not-applicable; later authoritative source evidence may replace unknown through the owning content path.",
+      "resolved_disposition": "content_only",
+      "owner": "Governed Item content registry / D17-facing Item Definitions",
+      "evidence_paths": ["governance/application-planning/parallel-preimplementation/PPIA-03_SOURCE_AND_DESIGN_INVENTORY.md"],
+      "invariant": "No capacity is authored merely to complete reload/charge UI."
+    },
+    {
+      "queue_id": "SGC-07A-Q04",
+      "origin_concept_id": "SGC-CONTENT-AMMO-REFERENCE-ONLY-WEAPON-DEFINITIONS",
+      "origin_artifact": "governance/application-planning/source-gameplay-coverage-closure/SGC_ITEMS_MATERIALS_FACILITIES_RECIPE_COVERAGE.json",
+      "decision": "Energy Sniper Rifle, Plasma Carbine and Cryo Blaster remain source-reference-only names and are not promoted to governed Item Definitions without authoritative definition evidence.",
+      "resolved_disposition": "planned_owned_elsewhere",
+      "owner": "SGC-07B deferred disposition closure; future governed Item source-recovery only if authoritative evidence exists",
+      "evidence_paths": ["governance/application-planning/parallel-preimplementation/PPIA-03_SOURCE_AND_DESIGN_INVENTORY.md"],
+      "forward_route": "SGC-07B",
+      "invariant": "No damage, range, weight, cost or other definition fields are inferred from names."
+    },
+    {
+      "queue_id": "SGC-07A-Q05",
+      "origin_concept_id": "SGC-CREATURE-HAVALAEA-NPC-SYSTEM-PROJECTION",
+      "origin_artifact": "governance/application-planning/source-gameplay-coverage-closure/SGC_CREATURES_ECOLOGY_GOVERNED_ROLE_COVERAGE.json",
+      "decision": "Route CEW-classified human-level/sapient Havalaean animals through the existing Creature/NPC Scene and Encounter implementation path. CEW supplies personhood/ecology classification; PPIA-02 supplies the Creature/NPC experience contract; MV-IA-F005 owns Scene/Session placement and MV-IA-F012 owns Encounter participant composition/execution.",
+      "resolved_disposition": "planned_owned_elsewhere",
+      "owner": "MV-IA-F005 + MV-IA-F012 consuming PPIA-02 and CEW-10",
+      "evidence_paths": [
+        "governance/application-planning/creature-ecology-wildlife/CEW-10_HAVALAEA_NATIVE_FAUNA_TIME_OF_TROUBLES_v1.0.0.json",
+        "governance/application-planning/parallel-preimplementation/PPIA-02_SOURCE_AND_DESIGN_INVENTORY.md",
+        "governance/application-planning/internal-alpha/feature-packets/MV-IA-F005_CAMPAIGN_SCENE_AND_SESSION_BUILDER.md",
+        "governance/application-planning/internal-alpha/feature-packets/MV-IA-F012_ENCOUNTER_BUILDER_AND_BALANCE_LAB.md"
+      ],
+      "invariant": "NPC projection preserves animal ecological identity, sapient autonomy and consent; it never implies humanoid identity, ownership, tamability or obedience."
+    },
+    {
+      "queue_id": "SGC-07A-Q06",
+      "origin_concept_id": "SGC-CREATURE-HARVEST-EXECUTABLE-PROFILE-GAPS",
+      "origin_artifact": "governance/application-planning/source-gameplay-coverage-closure/SGC_CREATURES_ECOLOGY_GOVERNED_ROLE_COVERAGE.json",
+      "decision": "Keep all 27 canonical creature harvest profiles explicitly non-executable while authored harvest mode/yield evidence is absent. Any later executable profile must enter through governed ICF/source-content recovery with authoritative evidence.",
+      "resolved_disposition": "planned_owned_elsewhere",
+      "owner": "SGC-07B deferred disposition closure; ICF source/content owner for any later evidence-backed authoring",
+      "evidence_paths": ["governance/application-planning/ingredient-cultivation-foodcraft/ICF-15_CONTENT_PACKS_VALIDATION_SEARCH_WORKBENCH.md"],
+      "forward_route": "SGC-07B",
+      "invariant": "No anatomy, yield, edibility, safety, legality or effect facts are invented."
+    },
+    {
+      "queue_id": "SGC-07A-Q07",
+      "origin_concept_id": "SGC-CREATURE-DEFERRED-SOURCE-CANDIDATE-DISPOSITION",
+      "origin_artifact": "governance/application-planning/source-gameplay-coverage-closure/SGC_CREATURES_ECOLOGY_GOVERNED_ROLE_COVERAGE.json",
+      "decision": "Retain all 93 PPIA-02 creature candidates as deferred source-review records. No candidate is promoted, excluded or assigned invented gameplay facts in SGC-07A; SGC-07B performs the explicit deferred/provenance/unsupported disposition closure.",
+      "resolved_disposition": "planned_owned_elsewhere",
+      "owner": "SGC-07B deferred disposition closure",
+      "evidence_paths": ["governance/application-planning/parallel-preimplementation/PPIA-02_SOURCE_AND_DESIGN_INVENTORY.md"],
+      "forward_route": "SGC-07B",
+      "invariant": "Name-only binding and automatic canonical promotion remain prohibited."
+    },
+    {
+      "queue_id": "SGC-07A-Q08",
+      "origin_concept_id": "SGC-CONTENT-VEHICLE-R1-DEFERRED-CANDIDATE-DISPOSITION",
+      "origin_artifact": "governance/application-planning/source-gameplay-coverage-closure/SGC_VEHICLES_MODULES_MEDIA_RESOURCE_CONTENT_GAP_COVERAGE.json",
+      "decision": "Retain all 10 recovered R1 vehicle/system structural candidates as deferred source-review records. No Definition promotion or invented mechanics occur in SGC-07A; SGC-07B performs the explicit deferred/provenance/unsupported disposition closure.",
+      "resolved_disposition": "planned_owned_elsewhere",
+      "owner": "SGC-07B deferred disposition closure",
+      "evidence_paths": ["governance/ai/work-state/PPIA-04-attempt-001.json"],
+      "forward_route": "SGC-07B",
+      "invariant": "Recovered headings do not authorize runtime behavior or canonical Definition creation."
+    },
+    {
+      "queue_id": "SGC-07A-Q09",
+      "origin_concept_id": "SGC-CONTENT-VEHICLE-SOURCE-UNSPECIFIED-RESOURCE-CAPACITY-GAPS",
+      "origin_artifact": "governance/application-planning/source-gameplay-coverage-closure/SGC_VEHICLES_MODULES_MEDIA_RESOURCE_CONTENT_GAP_COVERAGE.json",
+      "decision": "Keep source-unspecified vehicle Resource quantity, capacity, compatibility, system-presence and operating-envelope fields explicitly unknown until authoritative source/content evidence resolves them.",
+      "resolved_disposition": "content_only",
+      "owner": "PPIA-04 content/provenance with MIB-14 runtime validation",
+      "evidence_paths": ["governance/ai/work-state/PPIA-04-attempt-001.json", "governance/ai/work-state/MIB-14-attempt-001.json"],
+      "invariant": "Unknown is not converted to zero, unlimited, absent, compatible or available."
+    },
+    {
+      "queue_id": "SGC-07A-Q10",
+      "origin_concept_id": "SGC-EDGE-REST-EXHAUSTION-GENERIC-RUNTIME",
+      "origin_artifact": "governance/application-planning/source-gameplay-coverage-closure/SGC_HAZARDS_REST_MEDICINE_CONSTRUCTS_EXPEDITIONS_SOURCE_HOLDS_COVERAGE.json",
+      "decision": "The generic rest/exhaustion model belongs in the existing Character/Condition execution seam rather than DPL. MV-IA-F004 owns Character Resources/Conditions and authoritative Character state; Stage-A A7 owns Action/Effect execution; DPL-05 remains source/profile-scoped medicine and recovery definition evidence.",
+      "resolved_disposition": "planned_owned_elsewhere",
+      "owner": "MV-IA-F004 + Stage-A A7 consuming DPL-05 recovery definitions",
+      "evidence_paths": [
+        "governance/application-planning/internal-alpha/feature-packets/MV-IA-F004_CHARACTER_CREATION_AND_ADVANCEMENT.md",
+        "governance/application-planning/stage-a-a7/STAGE_A_A7_CURRENT_REPOSITORY_REVALIDATION_v0.3.0.md",
+        "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_DPL05_CLOSEOUT_2026-08-25.md"
+      ],
+      "invariant": "SGC-07A assigns the owner seam only; it invents no rest cadence, exhaustion track, recovery amount or universal health ledger."
+    }
+  ],
+  "counts": {
+    "queue_records": 10,
+    "owner_decisions_resolved": 10,
+    "content_only": 3,
+    "planned_owned_elsewhere": 7,
+    "forward_to_sgc_07b": 4,
+    "remaining_unresolved_owner_decisions": 0,
+    "invented_owner_assignments": 0,
+    "invented_source_values": 0
+  },
+  "sgc_07b_handoff": [
+    "SGC-CONTENT-AMMO-REFERENCE-ONLY-WEAPON-DEFINITIONS",
+    "SGC-CREATURE-HARVEST-EXECUTABLE-PROFILE-GAPS",
+    "SGC-CREATURE-DEFERRED-SOURCE-CANDIDATE-DISPOSITION",
+    "SGC-CONTENT-VEHICLE-R1-DEFERRED-CANDIDATE-DISPOSITION"
+  ],
+  "result": "PASS_ZERO_REMAINING_OWNER_DECISIONS",
+  "strict_successor": "SGC-07B"
+}
