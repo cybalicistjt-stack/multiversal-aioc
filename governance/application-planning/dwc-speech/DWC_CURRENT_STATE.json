@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.5.0",
+  "schema_version": "0.6.0",
   "project_id": "DWC-SPEECH",
   "project_name": "DWC Speech Synthesis",
   "owner": "John Brandon Turner",
@@ -9,11 +9,12 @@
   "stable_entrypoint": "governance/application-planning/dwc-speech/README.md",
   "human_anchor": "governance/application-planning/dwc-speech/DWC_PROJECT_ANCHOR.md",
   "latest_failure_repair_evidence": "governance/application-planning/dwc-speech/DWC_BOOTSTRAP_CORPUS_V0_1_FAILURE_AND_V0_2_1_REPAIR.json",
-  "retrain_handoff_evidence": "governance/application-planning/dwc-speech/DWC_REPAIRED_CORPUS_RETRAIN_HANDOFF_v0.1.0.json",
+  "retrain_handoff_evidence": "governance/application-planning/dwc-speech/DWC_REPAIRED_CORPUS_RETRAIN_HANDOFF_v0.1.1.json",
+  "current_surface_evidence": "governance/application-planning/dwc-speech/DWC_REPAIRED_CPU_PREFLIGHT_AND_CHECKPOINT_REHYDRATION_2026-09-08.json",
   "execution_frontier": {
     "name": "Guarded repaired-corpus exact-ID retrain",
     "state": "prepared_external_execution_blocked_on_current_surface",
-    "summary": "Historical Stage A-C training executed but its candidate lineage is invalidated: bootstrap corpus v0.1 contained 290 digital-zero training rows, filename collisions, and Stage-C raw inference far below the governed -55 dBFS RMS floor. The old Stage-C 125/125 report is superseded for acceptance. Repaired corpus v0.2.1 is validated at 799 unique governed rows with no low-level targets. The authorized next operation is a fresh exact-58 Piper model using the already-proven LJSpeech vocoder warm-start, followed by guarded R1/R2 retraining and the real 125-row waveform gate.",
+    "summary": "Historical Stage A-C training executed but its candidate lineage is invalidated: bootstrap corpus v0.1 contained 290 digital-zero training rows, filename collisions, and Stage-C raw inference far below the governed -55 dBFS RMS floor. The old Stage-C 125/125 report is superseded for acceptance. Repaired corpus v0.2.1 is validated at 799 unique governed rows with no low-level targets. Current-surface preflight and exact warm-start checkpoint rehydration are verified. The authorized next operation is the corrected v0.1.1 GPU notebook, which starts from a fresh exact-58 Piper model using the already-proven LJSpeech vocoder warm-start, followed by guarded R1/R2 retraining and the real 125-row waveform gate.",
     "do_not_regress_to": [
       "language redesign",
       "PSS/CNS rediscovery",
@@ -25,6 +26,7 @@
     "prohibited_forward_paths": [
       "continue training from stageC_weights.pt",
       "run DWC_Piper_Custom58_StageD_Continuation_v0.1.ipynb as the normal forward path",
+      "run DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.ipynb",
       "treat historical Stage-C 125/125 as governed waveform acceptance"
     ]
   },
@@ -35,8 +37,9 @@
     {"id":"piper_custom_id_warmstart","state":"verified_complete","fact":"Piper v1.8.0 exact-ID input and vocoder-only warm-start are proven; the 58x192 DWC embedding is preserved while 278 matching acoustic/vocoder tensors are copied."},
     {"id":"historical_stage_a_b_c_execution","state":"verified_complete_with_invalidated_candidate_lineage","fact":"Stages A, B, and C genuinely executed and remain historical evidence, but their model lineage is not promotable because the source bootstrap corpus was defective and raw inference collapsed toward silence."},
     {"id":"repaired_corpus_v0_2_1","state":"verified_complete","fact":"Repaired temporary bootstrap corpus v0.2.1 has 799 governed unique row IDs, 799 unique WAVs, 0 rows below -55 dBFS, and preserves exact DWC phoneme-ID labels."},
-    {"id":"repaired_retrain_preflight","state":"verified_complete","fact":"Local retrain preflight passed with 799 corpus rows, 799 unique audio files, 128 unique R1 rows, and 125 acceptance rows."},
-    {"id":"repaired_gpu_handoff","state":"verified_complete","fact":"The repaired-corpus retrain bundle and GPU notebook are externally stored in Drive; notebook bytes were read back and hash-verified."}
+    {"id":"repaired_retrain_preflight","state":"verified_complete","fact":"Current-runtime retrain preflight passed with 799 corpus rows, 799 unique audio files, 128 unique R1 rows, 125 acceptance rows, and target RMS tightly centered around -24 dBFS."},
+    {"id":"warmstart_checkpoint_rehydrated","state":"verified_complete","fact":"All eight split warm-start parts were rehydrated, the reconstructed ZIP passed integrity and SHA-256 verification, and lj-med_1000.ckpt matched the established checkpoint SHA-256. The exact checkpoint byte count is 845889993."},
+    {"id":"repaired_gpu_handoff_v0_1_1","state":"verified_complete","fact":"The corrected repaired-corpus GPU retrain notebook v0.1.1 is externally stored in Drive and read-back verified. It supersedes v0.1, whose stale checkpoint-size assertion would false-abort before training."}
   ],
   "invalidated_historical_candidate_lineage": {
     "bootstrap_v0_1": {
@@ -89,11 +92,16 @@
       "sha256": "96c978573c3a4d0a21acdd5b6f49fc86f8bfc70be045b4c0f4ae0ae5d2ec9007"
     },
     "notebook": {
-      "file": "DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.ipynb",
-      "drive_file_id": "18nu5QdXgKBOw1LyB30QdlM6E3HmNzoWx",
-      "bytes": 10508,
-      "sha256": "e816c8b0b9647723cfa6447f1aaf3b8809b015aa56ada3f5b81a6737d915d99c",
+      "file": "DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.1.ipynb",
+      "drive_file_id": "1zDNNfb3MHqPdiv9h_FMSixA_j7FSD64D",
+      "bytes": 10799,
+      "sha256": "eb1229689b4f1a069bfddcf61b0286249b62176ffeef42f56e59813462763ba4",
       "drive_readback_verified": true,
+      "supersedes": {
+        "file": "DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.ipynb",
+        "drive_file_id": "18nu5QdXgKBOw1LyB30QdlM6E3HmNzoWx",
+        "reason": "hard-coded stale checkpoint byte count 845996331 would false-abort despite correct checkpoint hash"
+      },
       "persistent_output_directory": "/content/drive/MyDrive/Transfer file/dwc_repair_retrain_v0.1"
     },
     "sequence": [
@@ -115,15 +123,19 @@
     "split_parts_in_drive": 8,
     "reassembled_zip_bytes": 775838605,
     "reassembled_zip_sha256": "7c06a05f89674f39fd185ede1e62911c9f91241397c0d2c708825c65455fe92b",
-    "checkpoint_bytes": 845996331,
-    "checkpoint_sha256": "dcf2449bdbdaad09256a08dfac211c59f6b36ce8d3f244fd844a9eb1d7384c7c"
+    "checkpoint_bytes": 845889993,
+    "checkpoint_sha256": "dcf2449bdbdaad09256a08dfac211c59f6b36ce8d3f244fd844a9eb1d7384c7c",
+    "metadata_correction": "previous byte count 845996331 was stale; cryptographic hash remained correct"
   },
   "execution_surfaces": {
     "chatgpt_sandbox": {
       "torch": "2.10.0+cpu",
       "cuda_available": false,
       "cuda_device_count": 0,
-      "classification": "environment_unavailable for sustained GPU retraining"
+      "repaired_preflight": "PASS",
+      "warmstart_checkpoint_rehydration": "PASS",
+      "piper_source_materialization": "blocked after container outbound DNS failure and unavailable tool-layer binary source materialization",
+      "classification": "environment_unavailable for local CPU model baseline and sustained GPU retraining; corpus/checkpoint readiness is verified"
     },
     "hugging_face_jobs": {
       "authenticated": true,
@@ -131,10 +143,10 @@
       "zero_a10g_probe": "402 Payment Required",
       "classification": "environment_unavailable without billing"
     },
-    "prepared_external_surface": "GPU-capable Colab or equivalent using the read-back-verified Drive notebook"
+    "prepared_external_surface": "GPU-capable Colab or equivalent using DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.1.ipynb"
   },
   "next_execution_sequence": [
-    {"step":1,"state":"next_external_execution","action":"Run DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.ipynb on a GPU-capable runtime. It verifies/preflights v0.2.1, reconstructs/verifies the warm-start checkpoint, then performs guarded R1 and conditionally R2."},
+    {"step":1,"state":"next_external_execution","action":"Run DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.1.ipynb on a GPU-capable runtime. It verifies/preflights v0.2.1, reconstructs/verifies the warm-start checkpoint using the corrected exact byte count 845889993 and established SHA-256, then performs guarded R1 and conditionally R2."},
     {"step":2,"state":"during_r1","action":"If raw-output median amplitude crosses the collapse guard, stop automatically and diagnose the preserved abort checkpoint/probes; do not enter R2 or alter DWC phonology."},
     {"step":3,"state":"after_r1","action":"Enter R2 only if the real governed 125-row waveform gate is 125/125."},
     {"step":4,"state":"after_r2","action":"Require the real governed 125-row waveform gate again. A machine pass is necessary but not final acceptance."},
@@ -163,10 +175,11 @@
   ],
   "source_provenance": [
     "DWC_BOOTSTRAP_CORPUS_V0_1_FAILURE_AND_V0_2_1_REPAIR.json",
-    "DWC_REPAIRED_CORPUS_RETRAIN_HANDOFF_v0.1.0.json",
+    "DWC_REPAIRED_CORPUS_RETRAIN_HANDOFF_v0.1.1.json",
+    "DWC_REPAIRED_CPU_PREFLIGHT_AND_CHECKPOINT_REHYDRATION_2026-09-08.json",
     "DWC_Synthetic_Bootstrap_Corpus_v0.2.1.zip",
     "DWC_Piper_RepairedCorpus_Retrain_v0.1.0.zip",
-    "DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.ipynb",
+    "DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.1.ipynb",
     "DWC_Piper_Training_Recovery_Light_v0.1.0.zip",
     "DWC_Piper_Custom58_Training_Proof_v0.1.0.zip",
     "TTS_ENGINE_03_ACCEPTANCE_CONTRACT.md"
