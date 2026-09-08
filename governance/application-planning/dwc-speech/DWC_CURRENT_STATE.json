@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.4.0",
+  "schema_version": "0.5.0",
   "project_id": "DWC-SPEECH",
   "project_name": "DWC Speech Synthesis",
   "owner": "John Brandon Turner",
@@ -8,152 +8,168 @@
   "authority_scope": "DWC project continuity only; does not select Multiversal software roadmap work",
   "stable_entrypoint": "governance/application-planning/dwc-speech/README.md",
   "human_anchor": "governance/application-planning/dwc-speech/DWC_PROJECT_ANCHOR.md",
-  "latest_training_evidence": "governance/application-planning/dwc-speech/DWC_TRAINING_EVIDENCE_STAGE_C_v0.1.0.json",
-  "stage_d_harness": "governance/application-planning/dwc-speech/dwc_stage_d_continue.py",
-  "perceptual_gate": "governance/application-planning/dwc-speech/DWC_STAGE_C_PERCEPTUAL_GATE.md",
-  "current_execution_surface_evidence": "governance/application-planning/dwc-speech/DWC_STAGE_D_EXECUTION_SURFACE_2026-09-08.json",
+  "latest_failure_repair_evidence": "governance/application-planning/dwc-speech/DWC_BOOTSTRAP_CORPUS_V0_1_FAILURE_AND_V0_2_1_REPAIR.json",
+  "retrain_handoff_evidence": "governance/application-planning/dwc-speech/DWC_REPAIRED_CORPUS_RETRAIN_HANDOFF_v0.1.0.json",
   "execution_frontier": {
-    "name": "Perceptual CNS evaluation, Stage-D GPU continuation, and candidate export",
-    "state": "blocked_with_evidence_on_current_surface",
-    "summary": "DWC exact-ID acoustic adaptation is verified through Stage C. Stage A completed 100 batches/200 optimizer steps; Stage B completed 200 batches/400 optimizer steps on all 799 synthetic rows and reached 123/125 machine waveform acceptance; Stage C completed 100 targeted batches/200 optimizer steps and reached 125/125 machine waveform acceptance. The exact Stage-C weights were reassembled in the current conversation and matched their recorded SHA-256. A deterministic Stage-D continuation harness and self-contained Colab notebook are now externally preserved. The current ChatGPT sandbox is CPU-only with no CUDA, so Stage-D GPU execution is unavailable here. Human CNS auditory scoring is also a required perceptual gate and cannot be substituted by waveform sanity checks.",
+    "name": "Guarded repaired-corpus exact-ID retrain",
+    "state": "prepared_external_execution_blocked_on_current_surface",
+    "summary": "Historical Stage A-C training executed but its candidate lineage is invalidated: bootstrap corpus v0.1 contained 290 digital-zero training rows, filename collisions, and Stage-C raw inference far below the governed -55 dBFS RMS floor. The old Stage-C 125/125 report is superseded for acceptance. Repaired corpus v0.2.1 is validated at 799 unique governed rows with no low-level targets. The authorized next operation is a fresh exact-58 Piper model using the already-proven LJSpeech vocoder warm-start, followed by guarded R1/R2 retraining and the real 125-row waveform gate.",
     "do_not_regress_to": [
       "language redesign",
       "PSS/CNS rediscovery",
       "exact-ID frontend discovery",
-      "799-row corpus discovery",
       "ONNX proxy proof",
       "Piper exact-ID support discovery",
-      "warm-start proof",
-      "initial optimizer proof",
-      "Stage A",
-      "Stage B",
-      "Stage C"
+      "warm-start feasibility discovery"
+    ],
+    "prohibited_forward_paths": [
+      "continue training from stageC_weights.pt",
+      "run DWC_Piper_Custom58_StageD_Continuation_v0.1.ipynb as the normal forward path",
+      "treat historical Stage-C 125/125 as governed waveform acceptance"
     ]
   },
   "verified_achievements": [
     {"id":"dwc_language_pre_audio_handoff","state":"verified_complete","fact":"DWC language/etymology/PSS/CNS progressed through the pre-audio TTS handoff."},
     {"id":"exact_id_frontend","state":"verified_complete","fact":"An engine-independent DWC frontend emits exact custom phoneme IDs without English G2P."},
-    {"id":"bootstrap_corpus_799","state":"verified_complete","fact":"The synthetic exact-ID DWC corpus contains 799 aligned utterances and passed prior exact-ID preflight."},
     {"id":"onnx_neural_proxy","state":"verified_complete","fact":"The neural proxy rendered 199/199 regression utterances with 0 unsupported CNS IPA symbols in that set and bypassed English G2P."},
-    {"id":"piper_custom_id_warmstart","state":"verified_complete","fact":"Piper v1.8.0 direct exact-ID input and the DWC warm-start path are proven; the 58×192 DWC embedding is preserved while matching acoustic/vocoder tensors are warm-started."},
-    {"id":"stage_a_training","state":"verified_complete","fact":"Stage A completed 100 training batches / 200 optimizer steps on a balanced 128-row subset."},
-    {"id":"stage_b_training","state":"verified_complete","fact":"Stage B completed 200 training batches / 400 optimizer steps on all 799 rows; machine waveform acceptance was 123/125."},
-    {"id":"stage_c_training","state":"verified_complete","fact":"Stage C completed 100 targeted batches / 200 optimizer steps on 75 special-phone contrast + 53 lexical-coverage rows; machine waveform acceptance was 125/125."},
-    {"id":"stage_c_weights_recovered","state":"verified_complete","fact":"Stage-C weights were reassembled and hash-verified in the current conversation at 281,775,417 bytes and SHA-256 d800ae031942c29289ced1cc80c1448fff234c53f42a56f2d69265e7e3ebabb2."},
-    {"id":"stage_d_handoff_prepared","state":"verified_complete","fact":"A deterministic Stage-D continuation harness and self-contained GPU notebook were prepared from the verified Stage-C state; they do not re-enter warm-start or Stages A/B/C."}
+    {"id":"piper_custom_id_warmstart","state":"verified_complete","fact":"Piper v1.8.0 exact-ID input and vocoder-only warm-start are proven; the 58x192 DWC embedding is preserved while 278 matching acoustic/vocoder tensors are copied."},
+    {"id":"historical_stage_a_b_c_execution","state":"verified_complete_with_invalidated_candidate_lineage","fact":"Stages A, B, and C genuinely executed and remain historical evidence, but their model lineage is not promotable because the source bootstrap corpus was defective and raw inference collapsed toward silence."},
+    {"id":"repaired_corpus_v0_2_1","state":"verified_complete","fact":"Repaired temporary bootstrap corpus v0.2.1 has 799 governed unique row IDs, 799 unique WAVs, 0 rows below -55 dBFS, and preserves exact DWC phoneme-ID labels."},
+    {"id":"repaired_retrain_preflight","state":"verified_complete","fact":"Local retrain preflight passed with 799 corpus rows, 799 unique audio files, 128 unique R1 rows, and 125 acceptance rows."},
+    {"id":"repaired_gpu_handoff","state":"verified_complete","fact":"The repaired-corpus retrain bundle and GPU notebook are externally stored in Drive; notebook bytes were read back and hash-verified."}
   ],
-  "verified_stage_c_state": {
-    "file": "stageC_weights.pt",
-    "bytes": 281775417,
-    "sha256": "d800ae031942c29289ced1cc80c1448fff234c53f42a56f2d69265e7e3ebabb2",
-    "model_state_dict_tensor_keys": 784,
-    "num_symbols": 58,
-    "sample_rate": 22050,
-    "segment_size": 2048,
-    "stageC_global_step": 200
-  },
-  "prepared_stage_d": {
-    "harness": {
-      "repository_path": "governance/application-planning/dwc-speech/dwc_stage_d_continue.py",
-      "semantics": "starts from verified Stage-C model state; generator/discriminator optimizers reinitialized because the recovered Stage-C artifact does not include optimizer state",
-      "curriculum": "one deterministic shuffled pass over all 799 corpus rows plus one interleaved extra pass over the 128 Stage-C repair rows",
-      "batches": 927,
-      "optimizer_steps": 1854,
-      "pre_and_post_machine_acceptance_rows": 125,
-      "human_gate_is_separate": true
+  "invalidated_historical_candidate_lineage": {
+    "bootstrap_v0_1": {
+      "rows": 799,
+      "unique_audio_filenames": 769,
+      "duplicate_filename_groups": 10,
+      "extra_colliding_rows": 30,
+      "digital_zero_rows": 290,
+      "rows_below_minus55_dbfs": 290
     },
-    "colab_notebook": {
+    "stage_c_selection": {"rows":128,"unique_audio_files":98,"digital_zero_rows":61},
+    "amplitude_audit_dbfs": {
+      "governed_floor": -55.0,
+      "warmstart_smoke": -32.515302882906305,
+      "mini_train_8step": -62.23069226576568,
+      "stage_a_sample": -82.88873506762084,
+      "stage_c_median": -93.97940008672037,
+      "stage_c_min": -95.39102157243451,
+      "stage_c_max": -79.4123244462958,
+      "stage_c_rows_passing_governed_floor": 0
+    },
+    "stage_c_weights": {
+      "bytes": 281775417,
+      "sha256": "d800ae031942c29289ced1cc80c1448fff234c53f42a56f2d69265e7e3ebabb2",
+      "authority": "diagnostic/provenance only; not authorized as forward-training source"
+    },
+    "historical_stage_d_notebook": {
       "file": "DWC_Piper_Custom58_StageD_Continuation_v0.1.ipynb",
-      "drive_folder": "Transfer file",
       "drive_file_id": "1zuU3BBs8SySNVroYsjY3Nf3SbE2bZUiY",
-      "bytes": 28123,
-      "sha256": "1c871076abba8c0538553073cc645c2fc49e03fdb48736830b01a075f2854241",
-      "readback_verified": true,
-      "persistent_output_directory": "/content/drive/MyDrive/Transfer file/dwc_stageD_run_v0.1"
+      "state": "superseded_not_authorized"
     }
   },
-  "current_execution_surface": {
-    "python": "3.13.5",
-    "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
-    "torch": "2.10.0+cpu",
-    "cuda_available": false,
-    "cuda_device_count": 0,
-    "stage_d_probe_exit_code": 1,
-    "stage_d_probe_message": "CUDA requested but no CUDA device is available",
-    "classification": "environment_unavailable for Stage-D GPU training on this sandbox only"
+  "repaired_corpus": {
+    "file": "DWC_Synthetic_Bootstrap_Corpus_v0.2.1.zip",
+    "drive_file_id": "1HPRmXb-DJOOiR9HW608S2GKP1XAqULzx",
+    "bytes": 26439488,
+    "sha256": "99aca0d65596f906b08a99e0f0c9708211fb150013e039c91f0c489fc0d6a4e3",
+    "rows": 799,
+    "unique_corpus_row_ids": 799,
+    "unique_audio_filenames": 799,
+    "rows_below_minus55_dbfs": 0,
+    "target_rms_dbfs": -24.0,
+    "linguistic_authority": "noncanonical temporary acoustic bootstrap; exact DWC IDs remain canonical labels; human CNS recordings supersede proxy audio"
   },
-  "genuine_remaining_gates": [
-    {
-      "gate": "human_cns_perceptual_review",
-      "state": "owner_or_human_action_required",
-      "basis": "Machine waveform acceptance cannot certify DWC/CNS pronunciation, intelligibility, stress/rhythm, accent/style, or meaning preservation.",
-      "contract": "governance/application-planning/dwc-speech/DWC_STAGE_C_PERCEPTUAL_GATE.md"
+  "prepared_retrain": {
+    "bundle": {
+      "file": "DWC_Piper_RepairedCorpus_Retrain_v0.1.0.zip",
+      "drive_file_id": "1PnBQjwb5LH1b1xcidUod3xuYGuQbt07z",
+      "bytes": 43523,
+      "sha256": "96c978573c3a4d0a21acdd5b6f49fc86f8bfc70be045b4c0f4ae0ae5d2ec9007"
     },
-    {
-      "gate": "stage_d_gpu_execution",
-      "state": "environment_unavailable_on_current_sandbox",
-      "basis": "Current sandbox has CPU-only PyTorch and zero CUDA devices.",
-      "exact_next_artifact": "Google Drive Transfer file / DWC_Piper_Custom58_StageD_Continuation_v0.1.ipynb"
+    "notebook": {
+      "file": "DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.ipynb",
+      "drive_file_id": "18nu5QdXgKBOw1LyB30QdlM6E3HmNzoWx",
+      "bytes": 10508,
+      "sha256": "e816c8b0b9647723cfa6447f1aaf3b8809b015aa56ada3f5b81a6737d915d99c",
+      "drive_readback_verified": true,
+      "persistent_output_directory": "/content/drive/MyDrive/Transfer file/dwc_repair_retrain_v0.1"
+    },
+    "sequence": [
+      "fresh exact-58 model plus proven vocoder-only warm-start",
+      "8-row raw inference amplitude baseline",
+      "R1: 128 unique phone-balanced rows with probes every 8 batches",
+      "R1 strict 125-row waveform gate; R2 prohibited unless 125/125",
+      "R2: one shuffled full pass over 799 repaired rows with probes",
+      "R2 strict 125-row waveform gate",
+      "human CNS perceptual gate"
+    ],
+    "guard": {
+      "governed_final_rms_floor_dbfs": -55.0,
+      "probe_max_drop_from_baseline_db": 18.0,
+      "abort_persists_diagnostic_checkpoint": true
     }
-  ],
+  },
+  "warmstart_checkpoint": {
+    "split_parts_in_drive": 8,
+    "reassembled_zip_bytes": 775838605,
+    "reassembled_zip_sha256": "7c06a05f89674f39fd185ede1e62911c9f91241397c0d2c708825c65455fe92b",
+    "checkpoint_bytes": 845996331,
+    "checkpoint_sha256": "dcf2449bdbdaad09256a08dfac211c59f6b36ce8d3f244fd844a9eb1d7384c7c"
+  },
+  "execution_surfaces": {
+    "chatgpt_sandbox": {
+      "torch": "2.10.0+cpu",
+      "cuda_available": false,
+      "cuda_device_count": 0,
+      "classification": "environment_unavailable for sustained GPU retraining"
+    },
+    "hugging_face_jobs": {
+      "authenticated": true,
+      "cpu_basic_probe": "402 Payment Required",
+      "zero_a10g_probe": "402 Payment Required",
+      "classification": "environment_unavailable without billing"
+    },
+    "prepared_external_surface": "GPU-capable Colab or equivalent using the read-back-verified Drive notebook"
+  },
   "next_execution_sequence": [
-    {
-      "step": 1,
-      "state": "next_external_execution",
-      "action": "Open DWC_Piper_Custom58_StageD_Continuation_v0.1.ipynb from Google Drive Transfer file in a GPU-capable Colab/runtime and run cells in order. The notebook reconstructs and verifies Stage-C weights before training and persists Stage-D outputs to Drive."
-    },
-    {
-      "step": 2,
-      "state": "parallel_human_gate",
-      "action": "Complete the governed CNS human auditory scorecard on the deterministic Stage-C 125-row acceptance renders; preserve reviewer, completed scorecard, scorer output, render settings, and hashes."
-    },
-    {
-      "step": 3,
-      "state": "after_stage_d_gpu_run",
-      "action": "Inspect Stage-D metrics/checkpoints and post-Stage-D 125-row machine acceptance. Do not promote a candidate solely because the machine gate says 125/125."
-    },
-    {
-      "step": 4,
-      "state": "after_machine_and_human_review",
-      "action": "Compare Stage C and Stage D perceptually, select the better candidate, rerun/complete the human acceptance contract, then export ONNX/config/phoneme-map/provenance with explicit temporary-synthetic-voice status."
-    },
-    {
-      "step": 5,
-      "state": "future_authentic_voice",
-      "action": "Replace the temporary synthetic acoustic target with authentic human CNS recordings while preserving the exact-ID language architecture."
-    }
+    {"step":1,"state":"next_external_execution","action":"Run DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.ipynb on a GPU-capable runtime. It verifies/preflights v0.2.1, reconstructs/verifies the warm-start checkpoint, then performs guarded R1 and conditionally R2."},
+    {"step":2,"state":"during_r1","action":"If raw-output median amplitude crosses the collapse guard, stop automatically and diagnose the preserved abort checkpoint/probes; do not enter R2 or alter DWC phonology."},
+    {"step":3,"state":"after_r1","action":"Enter R2 only if the real governed 125-row waveform gate is 125/125."},
+    {"step":4,"state":"after_r2","action":"Require the real governed 125-row waveform gate again. A machine pass is necessary but not final acceptance."},
+    {"step":5,"state":"after_valid_machine_pass","action":"Complete human CNS perceptual acceptance for pronunciation, intelligibility, special phones, stress/rhythm, target accent/style, and meaning preservation."},
+    {"step":6,"state":"after_human_pass","action":"Select/export a temporary synthetic candidate with hashes/provenance, then plan authentic human-CNS-recording training without changing the exact-ID language architecture."}
   ],
   "execution_rules": {
     "continue_semantics": "Remain in execution mode until the largest safe bounded unit is verified complete or a genuine blocker is fully evidenced.",
     "progress_update_is_stop_boundary": false,
     "narrative_summary_can_override_tool_evidence": false,
     "conversation_reset_resets_project": false,
-    "started_equals_complete": false,
-    "artifact_exists_equals_complete": false,
     "revalidation_reopens_completed_milestone": false,
-    "newer_external_evidence_supersedes_stale_conversation_recovery": true,
-    "machine_waveform_gate_equals_human_perceptual_acceptance": false,
-    "timeout_recovery": "Resume at the failing boundary or move to the defined execution-surface fallback; never restart closed stages merely because the surface changed."
+    "newer_external_evidence_supersedes_stale_state": true,
+    "weak_validator_can_be_superseded_by_governed_acceptance_contract": true,
+    "invalidated_evidence_is_deleted": false,
+    "machine_waveform_gate_equals_human_perceptual_acceptance": false
   },
   "unproven_or_open": [
-    "Human perceptual confirmation of Stage-C CNS pronunciation and target speech quality",
-    "Stage-D GPU adaptation from the verified Stage-C weights",
-    "Durable Stage-D checkpoint and post-Stage-D machine/human acceptance evidence",
+    "Whether repaired-corpus R1 preserves healthy raw inference amplitude",
+    "Whether repaired-corpus R1/R2 achieves governed 125/125 waveform acceptance",
+    "Human CNS perceptual acceptance on a valid candidate lineage",
     "Selected exported temporary DWC model",
     "Authentic human-CNS-recording production voice",
     "Production packaging/licensing/deployment/application integration decision",
     "Final production-engine choice"
   ],
   "source_provenance": [
+    "DWC_BOOTSTRAP_CORPUS_V0_1_FAILURE_AND_V0_2_1_REPAIR.json",
+    "DWC_REPAIRED_CORPUS_RETRAIN_HANDOFF_v0.1.0.json",
+    "DWC_Synthetic_Bootstrap_Corpus_v0.2.1.zip",
+    "DWC_Piper_RepairedCorpus_Retrain_v0.1.0.zip",
+    "DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.ipynb",
     "DWC_Piper_Training_Recovery_Light_v0.1.0.zip",
-    "stageC_weights_part001.zip through stageC_weights_part004.zip",
-    "DWC_TTS_GPU_START_HERE.md",
-    "DWC_Piper_Custom58_GPU_Training_v0.2.ipynb",
-    "DWC_TTS_ENGINE_03_Acoustic_Spike_Harness_v0.1.0.zip",
-    "DWC_Synthetic_Bootstrap_Corpus_v0.1.0.zip",
-    "Multiversal app - Synth V Uses (1).mht",
-    "DWC_CONVERSATION_EXECUTION_RECOVERY (1).md",
-    "current 2026-09-08 Stage-C reassembly and Stage-D preparation evidence"
+    "DWC_Piper_Custom58_Training_Proof_v0.1.0.zip",
+    "TTS_ENGINE_03_ACCEPTANCE_CONTRACT.md"
   ],
   "mutable_facts_require_live_recheck_before_claim": true
 }
