@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "audit_id": "SGC-RUNTIME-OWNER-ORPHAN-AUDIT-001",
+  "work_item_id": "SGC-02C",
+  "status": "CURRENT",
+  "scope": "Audit only the four unresolved routed mine-note rows preserved by SGC-02B for duplicate authority, multi-owner ambiguity and orphan ownership. This audit does not begin SGC-03 character-system coverage.",
+  "input_matrix": "governance/application-planning/source-gameplay-coverage-closure/SGC_RUNTIME_COVERAGE_MATRIX.json",
+  "audited_rows": [
+    {
+      "concept_id": "SGC-RULE-MINE-STORY-TELLING-IDENTITY",
+      "audit_result": "resolved_existing_owner_boundary",
+      "duplicate_authority": false,
+      "orphan": false,
+      "resolved_owner_id": "WCI",
+      "resolved_disposition": "implemented",
+      "evidence": [
+        "governance/application-planning/worldbuilding-campaign-intelligence/WCI_PROGRAM_BACKLOG.json",
+        "governance/application-planning/creator-storycraft-workspace/CSW-08_REUSE_REMIX_AND_TRANSFORMATION.md"
+      ],
+      "finding": "Completed WCI-05 explicitly preserves distinct source and adaptation identity. CSW-08 separately defines derivative operations as new independent identities with exact source provenance. WCI is therefore the implemented runtime coverage owner for the retained distinction, with CSW as the derivative-identity design/supporting boundary; no parallel story database is needed."
+    },
+    {
+      "concept_id": "SGC-RULE-MINE-CROSS-DOMAIN-SEMANTIC-DOCTRINE",
+      "audit_result": "resolved_shared_invariant",
+      "duplicate_authority": false,
+      "orphan": false,
+      "resolved_owner_id": null,
+      "resolved_disposition": "provenance_only",
+      "evidence": [
+        "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MINES_RECOVERY_AMENDMENT_2026-08-27.md"
+      ],
+      "finding": "The owner-approved amendment explicitly defines this as a shared invariant, not a feature program: semantic meaning, provenance and governing-owner authority must survive cross-system projection. A singular owner would be an invented duplicate authority."
+    },
+    {
+      "concept_id": "SGC-RULE-MINE-LOCATION-AWARE-INVENTORY",
+      "audit_result": "confirmed_multi_owner_partition",
+      "duplicate_authority": false,
+      "orphan": false,
+      "resolved_owner_id": null,
+      "resolved_disposition": "unresolved_owner_decision",
+      "evidence": [
+        "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MINES_RECOVERY_AMENDMENT_2026-08-27.md",
+        "governance/application-planning/parallel-preimplementation/PPIA-03_SOURCE_AND_DESIGN_INVENTORY.md",
+        "governance/application-planning/loot-scavenge-salvage/LSS_LOOT_SCAVENGE_SALVAGE_PROGRAM.md"
+      ],
+      "finding": "The retained rule is intentionally partitioned across Inventory/Asset/Vehicle/Base/LSS owners. Canonical item design separates ownership, custody, control, access, possession/location and containment; LSS explicitly refuses a second inventory/vehicle/base ledger and preserves D17 Asset/inventory truth. The combined source row is not an orphan, but one owner_id would be false compression.",
+      "forward_route": ["SGC-04A", "SGC-04C"]
+    },
+    {
+      "concept_id": "SGC-MECH-MINE-SEMANTIC-MACHINERY",
+      "audit_result": "confirmed_multi_owner_partition",
+      "duplicate_authority": false,
+      "orphan": false,
+      "resolved_owner_id": null,
+      "resolved_disposition": "unresolved_owner_decision",
+      "evidence": [
+        "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MINES_RECOVERY_AMENDMENT_2026-08-27.md",
+        "governance/application-planning/loot-scavenge-salvage/LSS_LOOT_SCAVENGE_SALVAGE_PROGRAM.md"
+      ],
+      "finding": "The source intentionally reuses Vehicles/Bases/Crafting/DPL/LSS rather than creating a machinery owner. LSS confirms D17 Asset/inventory truth, MIB-12 crafting/repair transformation authority, MIB-14 vehicle/platform/base/component compatibility authority and LSS object-decomposition jurisdiction. The concept is not orphaned; owner-specific coverage must remain split rather than collapsed.",
+      "forward_route": ["SGC-04A", "SGC-04C"]
+    }
+  ],
+  "counts": {
+    "audited_rows": 4,
+    "orphan_rows": 0,
+    "duplicate_authority_rows": 0,
+    "resolved_existing_owner_boundary": 1,
+    "resolved_shared_invariant": 1,
+    "confirmed_multi_owner_partitions": 2,
+    "rows_requiring_later_owner_specific_decomposition": 2,
+    "invented_owner_assignments": 0
+  },
+  "invariants": [
+    "A multi-owner boundary is not collapsed to one owner merely to close an audit row.",
+    "Shared invariants do not become synthetic feature programs.",
+    "No duplicate story, inventory, machinery, repair, vehicle/base or provenance ledger is created by SGC.",
+    "The two confirmed multi-owner partitions remain explicit inputs for SGC-04A/SGC-04C owner-specific coverage.",
+    "SGC-03A remains unstarted until separately selected and governed-started."
+  ],
+  "strict_successor": "SGC-03A"
+}
