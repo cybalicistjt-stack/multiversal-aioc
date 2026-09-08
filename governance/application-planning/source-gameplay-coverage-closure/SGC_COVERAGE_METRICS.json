@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "SGC-08B",
+  "metrics_id": "SGC-COVERAGE-METRICS-001",
+  "status": "CURRENT",
+  "basis_graph": "governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_SYSTEM_PRODUCT_DISPOSITION_TRACE_GRAPH.json",
+  "exception_register": "governance/application-planning/source-gameplay-coverage-closure/SGC_EXCEPTION_REGISTER.json",
+  "coverage_metrics": {
+    "retained_source_nodes_expected": 8,
+    "retained_source_nodes_traceable": 8,
+    "retained_source_trace_coverage_percent": 100.0,
+    "unique_concept_nodes": 126,
+    "terminally_classified_concept_nodes": 126,
+    "terminal_disposition_coverage_percent": 100.0,
+    "implemented": 79,
+    "implemented_percent": 62.698413,
+    "content_only": 17,
+    "content_only_percent": 13.492063,
+    "planned_owned_elsewhere": 26,
+    "planned_owned_elsewhere_percent": 20.634921,
+    "provenance_only": 4,
+    "provenance_only_percent": 3.174603,
+    "governed_nonimplemented_exceptions": 47,
+    "governed_nonimplemented_exception_percent": 37.301587,
+    "explicitly_superseded": 0,
+    "intentionally_unsupported": 0,
+    "unresolved_owner_decision": 0,
+    "unclassified_concepts": 0
+  },
+  "consistency_equations": [
+    "79 + 17 + 26 + 4 = 126",
+    "17 + 26 + 4 = 47",
+    "8 / 8 retained source nodes are represented",
+    "126 / 126 concept nodes have terminal dispositions"
+  ],
+  "regression_contract": [
+    "The terminal disposition categories must sum exactly to unique_concept_nodes.",
+    "The exception register must reconcile exactly to content_only + planned_owned_elsewhere + provenance_only.",
+    "unresolved_owner_decision and unclassified_concepts must remain zero at SGC family closure.",
+    "All eight frozen retained source IDs must remain represented in the trace graph.",
+    "The graph must remain an index/edge projection; concept-level authority stays in the originating SGC leaf artifacts.",
+    "ARI, SAA and P3D routes remain gated and must not be activated by coverage accounting."
+  ],
+  "historical_validation_execution_count": 0,
+  "invented_owner_assignments": 0,
+  "invented_source_values": 0,
+  "result": "PASS_100_PERCENT_SOURCE_TRACE_100_PERCENT_TERMINAL_DISPOSITION_ZERO_UNRESOLVED",
+  "strict_successor": "SGC-08C"
+}

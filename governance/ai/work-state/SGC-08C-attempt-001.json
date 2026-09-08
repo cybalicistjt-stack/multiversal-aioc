@@ -1,0 +1,28 @@
+{
+  "schema_version":"0.1.0",
+  "work_item_id":"SGC-08C",
+  "attempt_id":"SGC-08C-attempt-001",
+  "title":"Final Closure Proof & ARI-01 Successor Selection",
+  "track":"source-gameplay-coverage-closure",
+  "source_program":"SGC",
+  "parent_tranche":"SGC-08",
+  "repository":"cybalicistjt-stack/multiversal-aioc",
+  "status":"selected_not_started",
+  "owner_selected":true,
+  "implementation_authority":false,
+  "implementation_branch":null,
+  "completed":false,
+  "estimated_active_minutes":16,
+  "execution_target_minutes":24,
+  "minimum_closeout_reserve_minutes":8,
+  "family_preflight":"governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
+  "objective":"Produce the final SGC closure proof from already-closed SGC evidence and select ARI-01 as the strict family successor without beginning ARI implementation.",
+  "predecessor":{"work_item_id":"SGC-08B","status":"completed_verified","coverage_metrics":"governance/application-planning/source-gameplay-coverage-closure/SGC_COVERAGE_METRICS.json","exception_register":"governance/application-planning/source-gameplay-coverage-closure/SGC_EXCEPTION_REGISTER.json","unique_concept_nodes":126,"governed_nonimplemented_exceptions":47,"unresolved_owner_decision":0,"unclassified_concepts":0},
+  "selection_boundaries":[
+    "SGC-08B is completed_verified by the atomic transaction selecting this checkpoint.",
+    "SGC-08C is selected_not_started with no implementation branch or authority.",
+    "Only final SGC closure proof, family retirement and strict ARI-01 successor selection are in the next unit's scope.",
+    "ARI-01 implementation remains unauthorized until separately governed-started after SGC-08C completion."
+  ],
+  "next_action":"On the next execution Continue, governed-start only SGC-08C and carry final SGC closure plus ARI-01 selection through its terminal gate in one continuation."
+}

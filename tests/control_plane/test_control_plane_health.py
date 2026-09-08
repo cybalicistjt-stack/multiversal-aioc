@@ -218,6 +218,34 @@ class FamilyExecutionPreflightTests(unittest.TestCase):
         self.assertIn("-p 'test_control_plane_health.py'",workflow)
         self.assertNotIn("-p 'test_*.py'",workflow)
 
+    def test_sgc08_terminal_metrics_are_complete_and_reconciled(self) -> None:
+        graph=_load_json("governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_SYSTEM_PRODUCT_DISPOSITION_TRACE_GRAPH.json")
+        metrics=_load_json("governance/application-planning/source-gameplay-coverage-closure/SGC_COVERAGE_METRICS.json")
+        counts=graph["terminal_counts"]; measured=metrics["coverage_metrics"]
+        self.assertEqual(len(graph["source_nodes"]),8)
+        self.assertEqual(measured["retained_source_nodes_traceable"],8)
+        self.assertEqual(counts["unique_concept_nodes"],126)
+        self.assertEqual(measured["unique_concept_nodes"],126)
+        terminal_sum=sum(counts[key] for key in ("implemented","content_only","planned_owned_elsewhere","provenance_only","explicitly_superseded","intentionally_unsupported","unresolved_owner_decision","unclassified_concepts"))
+        self.assertEqual(terminal_sum,126)
+        self.assertEqual(counts["unresolved_owner_decision"],0)
+        self.assertEqual(counts["unclassified_concepts"],0)
+        self.assertEqual(measured["terminal_disposition_coverage_percent"],100.0)
+
+    def test_sgc08_exception_register_matches_nonimplemented_terminal_concepts(self) -> None:
+        graph=_load_json("governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_SYSTEM_PRODUCT_DISPOSITION_TRACE_GRAPH.json")
+        register=_load_json("governance/application-planning/source-gameplay-coverage-closure/SGC_EXCEPTION_REGISTER.json")
+        counts=graph["terminal_counts"]
+        expected=counts["content_only"] + counts["planned_owned_elsewhere"] + counts["provenance_only"]
+        self.assertEqual(expected,47)
+        self.assertEqual(register["registered_exception_count"],47)
+        by_class={row["disposition"]:row["count"] for row in register["exception_classes"]}
+        self.assertEqual(by_class,{"content_only":17,"planned_owned_elsewhere":26,"provenance_only":4})
+        self.assertEqual(register["reconciliation"]["implemented_plus_registered_exceptions"],126)
+        zero=register["zero_count_terminal_classes"]
+        self.assertEqual(zero["unresolved_owner_decision"],0)
+        self.assertEqual(zero["unclassified_concepts"],0)
+
 
 if __name__ == "__main__":
     unittest.main()

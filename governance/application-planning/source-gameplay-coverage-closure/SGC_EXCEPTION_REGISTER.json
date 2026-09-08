@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "SGC-08B",
+  "register_id": "SGC-EXCEPTION-REGISTER-001",
+  "status": "CURRENT",
+  "basis_graph": "governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_SYSTEM_PRODUCT_DISPOSITION_TRACE_GRAPH.json",
+  "purpose": "Register terminal non-implemented SGC concepts without duplicating their concept-level authority or reopening resolved source/owner decisions.",
+  "registered_exception_count": 47,
+  "exception_classes": [
+    {
+      "disposition": "content_only",
+      "count": 17,
+      "meaning": "Governed content, source-preserved facts or explicit content gaps that do not assert executable runtime implementation.",
+      "closure_rule": "Remain discoverable through the originating SGC leaf artifact and exact owner/content route; absent facts stay unknown and are not fabricated."
+    },
+    {
+      "disposition": "planned_owned_elsewhere",
+      "count": 26,
+      "meaning": "Terminally routed future work with an exact existing/planned owner or owner composition and no authority activated by SGC.",
+      "closure_rule": "The owner/destination remains exact and gated; SGC does not create a shadow implementation queue or activate the destination."
+    },
+    {
+      "disposition": "provenance_only",
+      "count": 4,
+      "meaning": "Retained provenance/shared-invariant/source-review evidence that creates no implementation or content-definition obligation.",
+      "closure_rule": "Preserve discoverability and provenance only; do not promote, bind or infer gameplay/content facts from the retained evidence."
+    }
+  ],
+  "zero_count_terminal_classes": {
+    "explicitly_superseded": 0,
+    "intentionally_unsupported": 0,
+    "unresolved_owner_decision": 0,
+    "unclassified_concepts": 0
+  },
+  "reconciliation": {
+    "content_only_plus_planned_plus_provenance": 47,
+    "implemented_plus_registered_exceptions": 126,
+    "expected_unique_concept_nodes": 126,
+    "result": "PASS"
+  },
+  "authority_rule": "This register is a class/count and handling index only. Concept IDs, source_refs, owners, evidence and terminal overrides remain authoritative in SGC_SOURCE_SYSTEM_PRODUCT_DISPOSITION_TRACE_GRAPH.json and the originating SGC evidence artifacts.",
+  "forward_route_guards": {
+    "ARI": "ARI-01..22 after SGC-08; not activated here",
+    "SAA": "SAA-01..20 after SMB-09; not activated here",
+    "P3D": "owner-approved deferred future project; no automatic activation"
+  },
+  "historical_validation_execution_count": 0,
+  "invented_exception_examples": 0,
+  "result": "PASS_47_GOVERNED_EXCEPTIONS_ZERO_VAGUE_BUCKETS",
+  "strict_successor": "SGC-08C"
+}

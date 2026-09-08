@@ -1,5 +1,5 @@
 {
-  "schema_version":"0.1.0",
+  "schema_version":"1.0.0",
   "work_item_id":"SGC-08B",
   "attempt_id":"SGC-08B-attempt-001",
   "title":"Coverage Metrics, Regression Validators & Exception Register",
@@ -7,17 +7,32 @@
   "source_program":"SGC",
   "parent_tranche":"SGC-08",
   "repository":"cybalicistjt-stack/multiversal-aioc",
-  "status":"selected_not_started",
+  "status":"completed_verified",
   "owner_selected":true,
   "implementation_authority":false,
-  "implementation_branch":null,
-  "completed":false,
+  "implementation_branch":"governance/sgc-08b-metrics-regression-exceptions",
+  "completed":true,
   "estimated_active_minutes":20,
   "execution_target_minutes":24,
   "minimum_closeout_reserve_minutes":8,
   "family_preflight":"governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
-  "objective":"Compute final SGC coverage metrics, add the bounded current regression/consistency validators and publish the exception register from the completed trace graph without beginning SGC-08C final closure proof or ARI-01 selection.",
-  "predecessor":{"work_item_id":"SGC-08A","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_SYSTEM_PRODUCT_DISPOSITION_TRACE_GRAPH.json","frozen_source_nodes":8,"unique_concept_nodes":126,"unresolved_owner_decision":0,"unclassified_concepts":0},
-  "selection_boundaries":["SGC-08A is completed_verified by the atomic transaction selecting this checkpoint.","SGC-08B is selected_not_started with no implementation branch or implementation authority.","Only coverage metrics, bounded current regression/consistency validation and exception-register publication are in the next unit's scope.","SGC-08C final closure proof and ARI-01 successor selection remain unauthorized until SGC-08B completes and selects SGC-08C."],
-  "next_action":"On the next execution Continue, governed-start only SGC-08B and carry it through its terminal gate in one continuation."
+  "objective":"Compute final SGC coverage metrics, add bounded current regression/consistency validation and publish the exception register from the completed trace graph without beginning SGC-08C final closure proof or ARI-01 selection.",
+  "deliverables":[
+    "governance/application-planning/source-gameplay-coverage-closure/SGC_COVERAGE_METRICS.json",
+    "governance/application-planning/source-gameplay-coverage-closure/SGC_EXCEPTION_REGISTER.json"
+  ],
+  "regression_suite":"tests/control_plane/test_control_plane_health.py",
+  "regression_assertions_added":2,
+  "metrics":{"retained_source_nodes":8,"unique_concept_nodes":126,"implemented":79,"content_only":17,"planned_owned_elsewhere":26,"provenance_only":4,"governed_nonimplemented_exceptions":47,"unresolved_owner_decision":0,"unclassified_concepts":0},
+  "completion_boundaries":[
+    "All eight retained source nodes and all 126 concept nodes reconcile to the completed SGC-08A trace graph.",
+    "The 47 non-implemented concepts are terminally registered as 17 content-only, 26 planned-owned-elsewhere and 4 provenance-only exceptions.",
+    "Only the existing registered current regression suite was changed; no validator script, workflow or historical suite was activated.",
+    "unresolved_owner_decision and unclassified_concepts remain zero.",
+    "ARI/SAA/P3D routes remain gated and unactivated.",
+    "SGC-08C final closure proof and ARI-01 successor selection are not started."
+  ],
+  "historical_validation_execution_count":0,
+  "strict_successor":"SGC-08C",
+  "next_action":"SGC-08C is selected_not_started by the same atomic closeout transaction; no SGC-08C implementation authority exists before its own governed start."
 }
