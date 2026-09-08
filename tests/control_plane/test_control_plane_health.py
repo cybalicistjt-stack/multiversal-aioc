@@ -15,9 +15,10 @@ FlatHealthRegressionTests = _legacy.FlatHealthRegressionTests
 
 
 class FamilyExecutionPreflightTests(_legacy.FamilyExecutionPreflightTests):
-    def test_vti12_closeout_and_current_sgc_selection_are_atomic(self) -> None:
+    def test_completed_sgc_and_current_family_selection_are_atomic(self) -> None:
         sgc = _legacy._load_json("governance/ai/work-state/SGC-08C-attempt-001.json")
         sgc_backlog = _legacy._load_json("governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json")
+        ari_backlog = _legacy._load_json("governance/application-planning/asset-resource-ingestion-reuse/ARI_PROGRAM_BACKLOG.json")
         pointer = _legacy._load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
         authority = _legacy._load_json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
         runtime = _legacy._load_json("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")
@@ -26,7 +27,10 @@ class FamilyExecutionPreflightTests(_legacy.FamilyExecutionPreflightTests):
         self.assertEqual(sgc_backlog["status"], "completed_verified")
         self.assertEqual(sgc_backlog["completed_through"], "SGC-08C")
         selected_item = pointer["active_attempt"]["work_item_id"]
-        self.assertEqual(selected_item, "ARI-01")
+        self.assertEqual(selected_item, ari_backlog["current_item"])
+        self.assertEqual(pointer["active_attempt"]["attempt_id"], ari_backlog["current_attempt"])
+        self.assertEqual(pointer["active_program"]["program_id"], ari_backlog["program_id"])
+        self.assertEqual(pointer["active_program"]["completed_through"], ari_backlog["completed_through"])
         for selected in (authority["active_planning_work"], runtime["active_work"], index["current"]):
             self.assertEqual(selected.get("work_item_id", selected.get("work_item")), selected_item)
         self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
