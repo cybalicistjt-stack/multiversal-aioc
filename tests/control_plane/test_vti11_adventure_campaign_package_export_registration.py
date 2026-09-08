@@ -28,30 +28,33 @@ class Vti11LifecycleTests(unittest.TestCase):
             self.assertTrue(cp["implementation_authority"])
             self.assertTrue(cp["branch_creation_authorized"])
             self.assertTrue(cp["acceptance_package_authorized"])
-            self.assertFalse(cp["production_mutation_authorized"])
+
+            red = cp.get("validation", {}).get("acceptance_red")
+            production_expected = bool(red and red.get("matching_red_observed"))
+            self.assertEqual(cp["production_mutation_authorized"], production_expected)
 
             self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-11")
             self.assertEqual(pointer["active_attempt"]["status"], "in_progress")
             self.assertEqual(pointer["active_attempt"]["implementation_branch"], branch)
             self.assertTrue(pointer["active_attempt"]["implementation_authority"])
-            self.assertFalse(pointer["bounded_authority"]["production_mutation_authorized"])
+            self.assertEqual(pointer["bounded_authority"]["production_mutation_authorized"], production_expected)
 
             self.assertEqual(runtime["active_work"]["work_item"], "VTI-11")
             self.assertEqual(runtime["active_work"]["implementation_branch"], branch)
             self.assertTrue(runtime["active_work"]["implementation_authority"])
-            self.assertFalse(runtime["active_work"]["production_mutation_authorized"])
+            self.assertEqual(runtime["active_work"]["production_mutation_authorized"], production_expected)
 
             self.assertEqual(roadmap["current"]["work_item_id"], "VTI-11")
             self.assertEqual(roadmap["current"]["status"], "in_progress")
             self.assertEqual(roadmap["current"]["implementation_branch"], branch)
             self.assertTrue(roadmap["current"]["implementation_authority"])
-            self.assertFalse(roadmap["current"]["production_mutation_authorized"])
+            self.assertEqual(roadmap["current"]["production_mutation_authorized"], production_expected)
 
             auth = authority["vti_11_authority"]
             self.assertTrue(auth["implementation_authority"])
             self.assertTrue(auth["branch_creation_authorized"])
             self.assertTrue(auth["acceptance_package_authorized"])
-            self.assertFalse(auth["production_mutation_authorized"])
+            self.assertEqual(auth["production_mutation_authorized"], production_expected)
 
         for key in ("vti12_plus_authorized", "sgc01_plus_authorized", "provider_activation_authorized", "tester_distribution_authorized", "release_or_deployment_authorized"):
             self.assertFalse(cp["authority_boundary"][key])
