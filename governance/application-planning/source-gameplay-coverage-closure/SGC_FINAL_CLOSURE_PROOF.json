@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "SGC-08C",
+  "proof_id": "SGC-FINAL-CLOSURE-PROOF-001",
+  "status": "SEALED_COMPLETED_VERIFIED",
+  "family_id": "SGC",
+  "family_name": "Source & Gameplay Coverage Closure",
+  "execution_units_completed_verified": 22,
+  "semantic_parent_tranches_completed": 8,
+  "basis": {
+    "retained_source_inventory": "governance/application-planning/source-gameplay-coverage-closure/SGC_RETAINED_SOURCE_CORPUS_INVENTORY.json",
+    "trace_graph": "governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_SYSTEM_PRODUCT_DISPOSITION_TRACE_GRAPH.json",
+    "coverage_metrics": "governance/application-planning/source-gameplay-coverage-closure/SGC_COVERAGE_METRICS.json",
+    "exception_register": "governance/application-planning/source-gameplay-coverage-closure/SGC_EXCEPTION_REGISTER.json",
+    "current_regression_suite": "tests/control_plane/test_control_plane_health.py",
+    "sealed_sgc_preflight_blob_sha": "55ba11d99b83b9f579f0c7d93ee4ac6c7ce03e86"
+  },
+  "closure_metrics": {
+    "retained_source_nodes_expected": 8,
+    "retained_source_nodes_traceable": 8,
+    "unique_concept_nodes": 126,
+    "terminally_classified_concept_nodes": 126,
+    "implemented": 79,
+    "content_only": 17,
+    "planned_owned_elsewhere": 26,
+    "provenance_only": 4,
+    "governed_nonimplemented_exceptions": 47,
+    "explicitly_superseded": 0,
+    "intentionally_unsupported": 0,
+    "unresolved_owner_decision": 0,
+    "unclassified_concepts": 0,
+    "historical_validation_execution_count": 0,
+    "invented_owner_assignments": 0,
+    "invented_source_values": 0
+  },
+  "closure_invariants": [
+    "All eight frozen retained-source IDs are traceable through authoritative SGC evidence.",
+    "All 126 unique concept nodes have terminal dispositions; no unresolved-owner or unclassified concept remains.",
+    "The 47 non-implemented concepts are governed exceptions, not a vague future bucket.",
+    "Concept-level authority remains in originating SGC artifacts; the trace graph and exception register do not create duplicate mechanics/content ledgers.",
+    "No missing owner, value, definition or source fact was invented to force closure.",
+    "ARI remains the exact mass asset/resource ingestion and reuse destination after SGC; SAA remains after SMB-09; P3D remains owner-approved deferred future work.",
+    "Historical lifecycle tests, historical audit corpus and unrelated connected systems were not reactivated for SGC closure."
+  ],
+  "family_retirement": {
+    "sgc_status": "completed_verified",
+    "completed_through": "SGC-08C",
+    "implementation_authority": false,
+    "detailed_sgc_artifacts_retire_from_live_preload": true,
+    "history_preserved_in_git": true
+  },
+  "successor": {
+    "program_id": "ARI",
+    "work_item_id": "ARI-01",
+    "title": "Universal Resource Handle & Capability Contract",
+    "selection_state": "selected_not_started",
+    "implementation_authority": false,
+    "implementation_branch": null,
+    "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json"
+  },
+  "result": "PASS_SGC_FAMILY_COMPLETED_VERIFIED_ARI01_SELECTED_NOT_STARTED"
+}
