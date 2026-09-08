@@ -1,9 +1,9 @@
 {
-  "schema_version": "16.3.0",
+  "schema_version": "16.4.0",
   "current": {
-    "work_item_id": "SGC-02A",
-    "attempt_id": "SGC-02A-attempt-001",
-    "checkpoint": "governance/ai/work-state/SGC-02A-attempt-001.json",
+    "work_item_id": "SGC-02B",
+    "attempt_id": "SGC-02B-attempt-001",
+    "checkpoint": "governance/ai/work-state/SGC-02B-attempt-001.json",
     "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
     "repository": "cybalicistjt-stack/multiversal-aioc",
     "source_program": "SGC",
@@ -12,6 +12,15 @@
     "implementation_branch": null
   },
   "recently_completed": {
+    "SGC-02A": {
+      "work_item_id": "SGC-02A",
+      "status": "completed_verified",
+      "deliverable": "governance/application-planning/source-gameplay-coverage-closure/SGC_RUNTIME_OWNER_COVERAGE_SCHEMA.json",
+      "registered_owner_namespaces": 13,
+      "coverage_rows_created": 0,
+      "concept_dispositions_assigned": 0,
+      "strict_successor": "SGC-02B"
+    },
     "SGC-01C": {
       "work_item_id": "SGC-01C",
       "status": "completed_verified",
@@ -45,11 +54,11 @@
   "selected_sgc": {
     "program_id": "SGC",
     "status": "in_progress",
-    "completed_through": "SGC-01C",
-    "current": "SGC-02A",
+    "completed_through": "SGC-02A",
+    "current": "SGC-02B",
     "current_state": "selected_not_started",
     "implementation_authority": false,
-    "strict_next": "SGC-02B",
+    "strict_next": "SGC-02C",
     "last": "SGC-08C",
     "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json"
   },
@@ -64,5 +73,5 @@
   "parallel_gcl": {"program_id":"GCL","status":"in_progress","completed_through":"GCL-12","ready_items":["GCL-13","GCL-14","GCL-16"],"next_recommended":"GCL-13","implementation_authority":false},
   "mib_sequence": {"status":"paused_for_interstitial_sequence","completed_through":"MIB-15","current":"MIB-16","effective_successor":"ARI-01 after SGC family closure","last":"MIB-18"},
   "effective_forward_order": "SGC-01..08 → ARI-01..22 → MIB-16 → MIB-17 → MIB-18 → SMB-01..09 → SAA-01..20 → SMB-10 → SMB-11 → SMB-12..16 → BRP-01..11 → SMB-17 → SMB-18",
-  "rule": "SGC-01A through SGC-01C are completed_verified; SGC-02A is selected_not_started without implementation authority. ARI/SAA remain planning only and P3D remains deferred."
+  "rule": "SGC-01A through SGC-02A are completed_verified; SGC-02B is selected_not_started without implementation authority. ARI/SAA remain planning only and P3D remains deferred."
 }
