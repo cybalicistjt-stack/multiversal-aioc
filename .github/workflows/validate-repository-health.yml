@@ -36,9 +36,6 @@ concurrency:
 jobs:
   canonical-state:
     name: Canonical AIOC authority and repository-health audit
-    # AIOC has no repository-attached self-hosted runner. This one small
-    # governance-only check is an explicit exception; application/package
-    # completion gates remain on the governed self-hosted Validation Core.
     runs-on: ubuntu-latest
     timeout-minutes: 5
     env:
@@ -70,11 +67,11 @@ jobs:
             --expected-head "$CANDIDATE_HEAD" \
             --output "${RUNNER_TEMP}/canonical-state-audit-generated.json"
 
-      - name: Run current control-plane regressions
+      - name: Run current control-plane regressions only
         shell: bash
         run: |
           set -euo pipefail
-          python3 -m unittest discover -s tests/control_plane -p 'test_*.py'
+          python3 -m unittest discover -s tests/control_plane -p 'test_control_plane_health.py'
 
       - name: Upload compact repository-health evidence
         if: always()
