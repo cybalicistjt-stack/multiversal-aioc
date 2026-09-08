@@ -121,23 +121,32 @@ The retrain aborts early and preserves diagnostic checkpoint/probe evidence if r
 - 43,523 bytes;
 - SHA-256 `96c978573c3a4d0a21acdd5b6f49fc86f8bfc70be045b4c0f4ae0ae5d2ec9007`;
 - Drive file ID `1PnBQjwb5LH1b1xcidUod3xuYGuQbt07z`;
-- local governed preflight passed: 799 corpus rows, 799 unique audio files, 128 unique R1 rows, 125 acceptance rows.
+- governed preflight passed again in the current runtime: 799 corpus rows, 799 unique audio files, 128 unique R1 rows, 125 acceptance rows, with repaired targets centered around -24 dBFS RMS.
 
-`DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.ipynb`
-- 10,508 bytes;
-- SHA-256 `e816c8b0b9647723cfa6447f1aaf3b8809b015aa56ada3f5b81a6737d915d99c`;
-- Drive file ID `18nu5QdXgKBOw1LyB30QdlM6E3HmNzoWx`;
-- Drive read-back verified.
+`DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.1.ipynb`
+- 10,799 bytes;
+- SHA-256 `eb1229689b4f1a069bfddcf61b0286249b62176ffeef42f56e59813462763ba4`;
+- Drive file ID `1zDNNfb3MHqPdiv9h_FMSixA_j7FSD64D`;
+- Drive read-back verified;
+- **this is the authorized GPU notebook.**
 
-The notebook verifies input hashes, runs the cheap repaired-corpus preflight before expensive setup, reconstructs/verifies the established warm-start checkpoint, installs Piper v1.8.0, runs guarded R1/R2 training, persists diagnostics/checkpoints to Drive, and exposes the human scorecard only after a valid machine pass.
+It supersedes `DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.ipynb`. The v0.1 notebook contained a stale hard-coded checkpoint byte count (`845996331`) that would falsely abort before training even though its checkpoint SHA-256 was correct. Current rehydration established the exact checkpoint as **845,889,993 bytes**, SHA-256 `dcf2449bdbdaad09256a08dfac211c59f6b36ce8d3f244fd844a9eb1d7384c7c`.
 
-See `DWC_REPAIRED_CORPUS_RETRAIN_HANDOFF_v0.1.0.json`.
+The v0.1.1 notebook verifies input hashes, runs the cheap repaired-corpus preflight before expensive setup, reconstructs/verifies the established warm-start checkpoint using the corrected byte count and established hash, installs Piper v1.8.0, runs guarded R1/R2 training, persists diagnostics/checkpoints to Drive, and exposes the human scorecard only after a valid machine pass.
+
+See:
+- `DWC_REPAIRED_CORPUS_RETRAIN_HANDOFF_v0.1.1.json`
+- `DWC_REPAIRED_CPU_PREFLIGHT_AND_CHECKPOINT_REHYDRATION_2026-09-08.json`
 
 ## 8. Execution surfaces
 
-The current ChatGPT sandbox has CPU-only PyTorch, no CUDA, and zero CUDA devices. Connected Hugging Face Jobs was also tested: both `cpu-basic` and `zero-a10g` requests returned `402 Payment Required`. Therefore sustained repaired retraining is not executable on those surfaces at present.
+The current ChatGPT sandbox has CPU-only PyTorch, no CUDA, and zero CUDA devices. Current-runtime work nevertheless completed the repaired-corpus preflight and exact eight-part warm-start rehydration, including ZIP and checkpoint SHA verification.
 
-The read-back-verified GPU notebook is the exact external execution path unless another authorized GPU surface becomes available.
+A local CPU model baseline could not proceed because exact Piper v1.8.0 source bytes could not be materialized into the sandbox after the container's outbound DNS path failed; this is classified as an execution-surface/source-materialization limitation, not a DWC, corpus, or checkpoint failure.
+
+Connected Hugging Face Jobs was also tested: both `cpu-basic` and `zero-a10g` requests returned `402 Payment Required` before compute. Therefore sustained repaired retraining is not executable on those surfaces at present.
+
+The read-back-verified **v0.1.1 GPU notebook** is the exact external execution path unless another authorized GPU surface becomes available.
 
 ## 9. Human CNS perceptual gate
 
@@ -172,6 +181,8 @@ A future DWC conversation should start with these facts:
 - the old Stage-C `125/125` report is **not** a valid governed waveform pass;
 - Stage-D continuation from Stage C is superseded/not authorized;
 - repaired corpus v0.2.1 is validated and externally stored;
-- the exact next acoustic operation is the guarded repaired-corpus R1/R2 GPU retrain using `DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.ipynb`;
+- exact warm-start checkpoint rehydration has been reverified at 845,889,993 bytes and SHA-256 `dcf2449bdbdaad09256a08dfac211c59f6b36ce8d3f244fd844a9eb1d7384c7c`;
+- `DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.ipynb` is superseded because its stale byte-count assertion would false-abort;
+- the exact next acoustic operation is the guarded repaired-corpus R1/R2 GPU retrain using **`DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.1.ipynb`**;
 - human CNS listening occurs only after a valid machine waveform pass;
 - always read `DWC_CURRENT_STATE.json` before executing.
