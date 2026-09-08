@@ -1,5 +1,5 @@
 {
-  "schema_version":"0.1.0",
+  "schema_version":"0.2.0",
   "work_item_id":"SGC-03B",
   "attempt_id":"SGC-03B-attempt-001",
   "title":"Species, Profession, Prestige & Progression Coverage",
@@ -7,22 +7,25 @@
   "source_program":"SGC",
   "parent_tranche":"SGC-03",
   "repository":"cybalicistjt-stack/multiversal-aioc",
-  "status":"selected_not_started",
+  "status":"completed_verified",
   "owner_selected":true,
   "implementation_authority":false,
-  "implementation_branch":null,
-  "completed":false,
+  "implementation_branch":"governance/sgc-03b-species-profession-progression",
+  "completed":true,
+  "authority_retired":true,
   "estimated_active_minutes":24,
   "execution_target_minutes":24,
   "minimum_closeout_reserve_minutes":8,
   "family_preflight":"governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
   "objective":"Map retained species, profession, prestige and progression concepts to exact owners/dispositions, preserving explicit source gaps and the CAB species/innate ownership boundary without inventing missing rules.",
-  "predecessor":{"work_item_id":"SGC-03A","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_ABILITIES_POWERS_MAGIC_TRADITION_COVERAGE.json","coverage_records":7},
-  "selection_boundaries":[
-    "SGC-03A is completed_verified by the atomic AIOC merge selecting this checkpoint.",
-    "SGC-03B is selected_not_started with no implementation branch or implementation authority.",
-    "Only species, profession, prestige and progression coverage is in the next unit's scope.",
-    "SGC-03C faction/proficiency/familiarity/motivation remains unauthorized."
+  "deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_SPECIES_PROFESSION_PRESTIGE_PROGRESSION_COVERAGE.json",
+  "completion":{"coverage_records":6,"implemented":4,"planned_owned_elsewhere":2,"unresolved_owner_decision":0,"invented_owner_assignments":0,"result":"PASS"},
+  "boundaries":[
+    "Species/innate acquisition remains evidence-driven and mixed-source classification stays in CAB-22 rather than being guessed.",
+    "Profession/crafting progression keeps owning prerequisites and learning requirements; XP does not bypass them.",
+    "Prestige entry may begin at Tier 3 only under explicit requirements and governed access semantics; no T1/T2 filler or back-pay is invented.",
+    "Missing progression identity, prerequisite, acquisition and tier facts remain CAB-22 repair items.",
+    "SGC-03C remains unauthorized until its own governed start."
   ],
-  "next_action":"On the next execution Continue, governed-start only SGC-03B and carry it through its terminal gate in one continuation."
+  "strict_successor":"SGC-03C"
 }

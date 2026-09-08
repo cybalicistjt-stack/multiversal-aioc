@@ -1,0 +1,69 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"SGC-03B",
+  "status":"CURRENT",
+  "scope":"Species, profession, prestige and progression coverage only. Faction, proficiency, familiarity and motivation remain SGC-03C.",
+  "disposition_contract":"governance/application-planning/source-gameplay-coverage-closure/SGC_DISPOSITION_EVIDENCE_CONTRACT.json",
+  "retained_source_inventory":"governance/application-planning/source-gameplay-coverage-closure/SGC_RETAINED_SOURCE_CORPUS_INVENTORY.json",
+  "source_basis_note":"The frozen SGC inputs preserve Character-learning/progression references but do not supply missing per-record Species, profession, Prestige or progression facts. Current canonical CAB evidence is used only to prove exact acquisition/progression ownership; absent source eligibility, prerequisites, identity, tier or acquisition facts remain explicit source gaps.",
+  "records":[
+    {
+      "concept_id":"SGC-CHAR-SPECIES-ELIGIBILITY-ACQUISITION",
+      "source_refs":["SGC-SRC-KFR-OUTPUTS","SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind":"species_acquisition",
+      "disposition":"implemented",
+      "owner":"CAB-09",
+      "evidence":{"owner_path":"governance/application-planning/character-advancement-balance/CAB-09_ACQUISITION_AND_ELIGIBILITY.md","specific_scope":"CAB-09 explicitly governs Species/innate eligibility and acquisition, distinguishes automatic biological grants from Species-qualified selections and mixed dataset membership, and requires explicit bridges for cross-Species acquisition."}
+    },
+    {
+      "concept_id":"SGC-CHAR-SPECIES-INNATE-MIXED-SURFACE-CLASSIFICATION",
+      "source_refs":["SGC-SRC-KFR-OUTPUTS","SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind":"species_content_classification",
+      "disposition":"planned_owned_elsewhere",
+      "owner":"CAB-22/P2-006",
+      "evidence":{"owner_path":"governance/application-planning/character-advancement-balance/CAB-22_CONTENT_REPAIR_MAP_v1.0.0.json","specific_scope":"CAB22-P2-006 requires the mixed Species/Innate source surface to separate automatic biology grants, Species-qualified selections, learned/cultural/mystical/technical content and non-Species Elementalist rows without guessing biology from labels or dataset membership."}
+    },
+    {
+      "concept_id":"SGC-CHAR-PROFESSION-CRAFTING-ACQUISITION",
+      "source_refs":["SGC-SRC-KFR-OUTPUTS","SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind":"profession_progression",
+      "disposition":"implemented",
+      "owner":"CAB-09",
+      "evidence":{"owner_path":"governance/application-planning/character-advancement-balance/CAB-09_ACQUISITION_AND_ELIGIBILITY.md","specific_scope":"CAB-09 explicitly governs profession/crafting progression acquisition and preserves Skills, tools, facilities, ingredients, practice, research and prior-technique requirements rather than allowing XP to bypass them."}
+    },
+    {
+      "concept_id":"SGC-CHAR-PRESTIGE-ENTRY",
+      "source_refs":["SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind":"prestige_progression",
+      "disposition":"implemented",
+      "owner":"CAB-09",
+      "evidence":{"owner_path":"governance/application-planning/character-advancement-balance/CAB-09_ACQUISITION_AND_ELIGIBILITY.md","specific_scope":"Prestige entry is a governed advanced acquisition event: explicit prerequisites/eligibility, legitimate Tier-3 entry, CAB access transaction or governed substitute, separate first Prestige Ability acquisition, and no invented T1/T2 back-pay."}
+    },
+    {
+      "concept_id":"SGC-CHAR-PROGRESSION-TIER-ACCESS-MODEL",
+      "source_refs":["SGC-SRC-KFR-OUTPUTS","SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind":"character_progression_rules",
+      "disposition":"implemented",
+      "owner":"CAB",
+      "evidence":{"owner_path":"governance/application-planning/character-advancement-balance/CAB_CHARACTER_ADVANCEMENT_BALANCE_PROGRAM.md","specific_scope":"CAB is completed_verified and governs the five-tier developmental-depth model, progression access, prerequisites, acquisition eligibility, XP affordability separation, Prestige Tier-3 entry and progression-specific requirements."}
+    },
+    {
+      "concept_id":"SGC-CHAR-PROGRESSION-SOURCE-GAPS",
+      "source_refs":["SGC-SRC-KFR-OUTPUTS","SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind":"progression_content_repair",
+      "disposition":"planned_owned_elsewhere",
+      "owner":"CAB-22 content repair handoff",
+      "evidence":{"owner_path":"governance/application-planning/character-advancement-balance/CAB-22_CONTENT_REPAIR_MAP_v1.0.0.json","specific_scope":"CAB-22 preserves unresolved prerequisite graphs, acquisition semantics, tier-access anomalies, advanced-start provenance, duplicate identity tuples and source-boundary defects for evidence-based repair; no missing node, prerequisite or tier is invented."}
+    }
+  ],
+  "counts":{"records":6,"implemented":4,"planned_owned_elsewhere":2,"unresolved_owner_decision":0,"invented_owner_assignments":0},
+  "source_gap_preservation":[
+    "Species dataset membership, labels or biological-sounding names do not prove automatic biology or grant status.",
+    "Profession/crafting XP never substitutes for Skills, tools, facilities, ingredients, practice, research or other owning requirements.",
+    "Prestige may begin at Tier 3 only under explicit entry requirements and governed access semantics; no T1/T2 filler or back-pay is invented.",
+    "Missing progression prerequisites, acquisition modes, tier intent or source identities remain CAB-22 repair items.",
+    "No new Species, profession, Prestige or progression ledger is created."
+  ],
+  "result":"PASS",
+  "strict_successor":"SGC-03C"
+}
