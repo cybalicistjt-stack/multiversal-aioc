@@ -1,0 +1,23 @@
+{
+  "schema_version":"0.1.0",
+  "work_item_id":"SGC-08A",
+  "attempt_id":"SGC-08A-attempt-001",
+  "title":"Source-to-System-to-Product/Disposition Trace Graph",
+  "track":"source-gameplay-coverage-closure",
+  "source_program":"SGC",
+  "parent_tranche":"SGC-08",
+  "repository":"cybalicistjt-stack/multiversal-aioc",
+  "status":"selected_not_started",
+  "owner_selected":true,
+  "implementation_authority":false,
+  "implementation_branch":null,
+  "completed":false,
+  "estimated_active_minutes":24,
+  "execution_target_minutes":24,
+  "minimum_closeout_reserve_minutes":8,
+  "family_preflight":"governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
+  "objective":"Build the final source-to-system-to-product/disposition trace graph from already-closed SGC evidence without beginning SGC-08B metrics/regression/exception work.",
+  "predecessor":{"work_item_id":"SGC-07B","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_SUPERSEDED_UNSUPPORTED_DEFERRED_DISPOSITION_CLOSURE.json","records":6,"unclassified_inputs":0},
+  "selection_boundaries":["SGC-07B is completed_verified by the atomic transaction selecting this checkpoint.","SGC-08A is selected_not_started with no implementation branch or authority.","Only trace-graph construction from already-closed SGC evidence is in the next unit's scope.","SGC-08B metrics/regression/exception work remains unauthorized until SGC-08A completes and selects it."],
+  "next_action":"On the next execution Continue, governed-start only SGC-08A and carry it through its terminal gate in one continuation."
+}
