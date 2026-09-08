@@ -24,3 +24,20 @@ Only application branch creation, bounded implementation scaffolding and accepta
 ## Closed authority
 
 Production package-export behavior remains locked until a genuine matching VTI-11 self-hosted Linux/Windows RED is sealed. Provider credentials/accounts, provider network access, live external or canonical mutation, durable VTI persistence/new migration, provider activation, tester distribution, package publication/upload/distribution, release/deployment, VTI-12+ and SGC-01+ remain unauthorized. ARI/SAA remain planning only and P3D remains deferred.
+## Matching application RED and bounded production unlock
+
+- application PR: `#440`
+- exact acceptance head: `8c2f75144404d4fef558a4383b081621282a9a55`
+- current-family run: `34206133589`
+- selector/repository-health job: `101995926174` — PASS
+- Linux job: `101995973396` — matching RED at `vti11-invariants`
+- Windows job: `101995973371` — matching RED at `vti11-invariants`
+- deterministic comparator: `101996191118` — PASS
+- deterministic receipt: `ac550c382fa35df15d600a938f65228078c706a33592200320b19cd1952709b3`
+- Linux artifact: `10047821469` / `6ad82bc5928e6e5709bf736ebffb258d32a2669febdb91f014206678376e4e94`
+- Windows artifact: `10047839414` / `d0939ef8c5360cc4ab0efba0122f3862545fda48598da89f16c7114eb417c7f2`
+- comparison artifact: `10047848771` / `8ac9e2de5382a3c5e302198e151ba579e3e0900a31858de12b9670e007923a98`
+- historical profile fanout: `0`
+- failure reason: production contract intentionally absent
+
+This seals the acceptance RED and opens production mutation only for `packages/contracts/src/virtual-tabletop-interoperability/adventure-campaign-package-export-contract.ts`. All provider credentials/accounts/network, live mutation, persistence/migration, activation, tester distribution, package publication/upload/distribution, release/deployment, VTI-12+ and SGC-01+ authority remains closed.
