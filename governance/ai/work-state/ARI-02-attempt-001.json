@@ -1,0 +1,23 @@
+{
+  "schema_version":"0.1.0",
+  "work_item_id":"ARI-02",
+  "attempt_id":"ARI-02-attempt-001",
+  "title":"Content-Addressed Byte Identity & Deduplication",
+  "track":"asset-resource-ingestion-reuse",
+  "source_program":"ARI",
+  "repository":"cybalicistjt-stack/multiversal-aioc",
+  "status":"selected_not_started",
+  "owner_selected":true,
+  "implementation_authority":false,
+  "implementation_branch":null,
+  "completed":false,
+  "estimated_active_minutes":20,
+  "execution_target_minutes":24,
+  "minimum_closeout_reserve_minutes":8,
+  "family_preflight":"governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
+  "objective":"Define content-addressed original-byte identity and deterministic duplicate detection while preserving ARI-01 resource handles and without beginning ARI-03 derivative/lineage work.",
+  "predecessor":{"work_item_id":"ARI-01","status":"completed_verified","application_pr":442,"validated_head":"2a553053c55a5dd11b88dd991d45426918e319e3","validation_run":34267731208,"application_merge":"757d629fc01909292796cbcf92bb527eb2855c03"},
+  "selection_boundaries":["ARI-01 is completed_verified and its provider-neutral resource-handle contract is the required upstream surface.","ARI-02 is selected_not_started with no implementation branch or authority.","Only digest/original-byte identity, byte-present versus reference-only state and deterministic duplicate detection may be governed-started next.","ARI-03 derivative lineage, archive intake, provider networking/credentials, hosted upload, UI, tester distribution and release/deployment remain unauthorized."],
+  "strict_successor":"ARI-03",
+  "next_action":"On the next execution Continue, governed-start ARI-02 only and carry it through its terminal gate in one continuation."
+}
