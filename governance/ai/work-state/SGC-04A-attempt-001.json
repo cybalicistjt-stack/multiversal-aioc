@@ -1,5 +1,5 @@
 {
-  "schema_version":"0.1.0",
+  "schema_version":"0.2.0",
   "work_item_id":"SGC-04A",
   "attempt_id":"SGC-04A-attempt-001",
   "title":"Items, Materials, Facilities & Recipe Coverage",
@@ -7,22 +7,25 @@
   "source_program":"SGC",
   "parent_tranche":"SGC-04",
   "repository":"cybalicistjt-stack/multiversal-aioc",
-  "status":"selected_not_started",
+  "status":"completed_verified",
   "owner_selected":true,
   "implementation_authority":false,
-  "implementation_branch":null,
-  "completed":false,
+  "implementation_branch":"governance/sgc-04a-items-materials-facilities-recipes",
+  "completed":true,
+  "authority_retired":true,
   "estimated_active_minutes":22,
   "execution_target_minutes":24,
   "minimum_closeout_reserve_minutes":8,
   "family_preflight":"governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
   "objective":"Map retained items, materials, facilities and recipe concepts to exact content/runtime owners and SGC dispositions without duplicating entity truth or collapsing location-aware inventory ownership.",
-  "predecessor":{"work_item_id":"SGC-03C","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_FACTION_PROFICIENCY_FAMILIARITY_MOTIVATION_GAP_COVERAGE.json","coverage_records":7,"unresolved_owner_decision":1},
-  "selection_boundaries":[
-    "SGC-03C is completed_verified by the atomic AIOC merge selecting this checkpoint.",
-    "SGC-04A is selected_not_started with no implementation branch or implementation authority.",
-    "Only items, materials, facilities and recipe coverage is in the next unit's scope.",
-    "SGC-04B creature/ecology and SGC-04C vehicle/media/resource coverage remain unauthorized."
+  "deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_ITEMS_MATERIALS_FACILITIES_RECIPE_COVERAGE.json",
+  "completion":{"coverage_records":10,"implemented":6,"content_only":1,"planned_owned_elsewhere":0,"unresolved_owner_decision":3,"invented_owner_assignments":0,"result":"PASS_WITH_THREE_VISIBLE_OWNER_DECISIONS"},
+  "completion_boundaries":[
+    "Location-aware inventory was decomposed across D17, MIB-14, MIB-12 and LSS without false compression or a duplicate inventory ledger.",
+    "D17 remains live Asset/inventory/material truth; MIB-12 remains crafting/repair transformation authority; MIB-14 remains facility/storage/workstation compatibility authority.",
+    "ICF is completed_verified through ICF-15 and provides ingredient/preparation/recipe content foundations without taking live inventory authority.",
+    "The Taser source conflict, seven unspecified energy-weapon capacity fields and three ammo-reference-only weapon names remain explicit SGC-07A decisions/source gaps rather than fabricated closure.",
+    "Creature/ecology remains unauthorized until SGC-04B governed start; vehicle/module/media-resource coverage remains unauthorized until SGC-04C."
   ],
-  "next_action":"On the next execution Continue, governed-start only SGC-04A and carry it through its terminal gate in one continuation."
+  "strict_successor":"SGC-04B"
 }
