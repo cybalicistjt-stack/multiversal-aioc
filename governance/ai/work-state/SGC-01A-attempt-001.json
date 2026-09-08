@@ -4,47 +4,71 @@
   "estimated_active_minutes": 12,
   "execution_target_minutes": 24,
   "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "governance/sgc-01a-disposition-taxonomy-evidence-contract",
   "minimum_closeout_reserve_minutes": 8,
-  "next_action": "On the next execution Continue, governed-start only SGC-01A, seal its tranche context, and carry that unit through its terminal gate in one continuation.",
+  "next_action": "Define and seal the SGC disposition taxonomy and evidence contract only; do not begin retained-corpus classification.",
   "objective": "Define the stable retained-source disposition taxonomy and evidence contract used by all later SGC execution units without beginning corpus classification.",
   "owner_selected": true,
   "parent_tranche": "SGC-01",
   "predecessor": {
-    "acceptance_red_head": "c4685d0f11c0f4e8eb65b182f935551ac8c01a68",
-    "acceptance_red_receipt_sha256": "0ae11513dfbff7a71c2932c2eb93219d1b3a3583e68b357dccf8dd58f70c8a5f",
-    "acceptance_red_run": 34219627122,
-    "application_feature_repair_cycles": 0,
     "application_pr": 441,
-    "deterministic_compare_job": 102047264185,
-    "deterministic_receipt_sha256": "77536c1214f37374ca8ea1b2f1f627b30e209f52bb141133d690cdfc9b0544a4",
-    "historical_profile_fanout": 0,
-    "linux_job": 102046862169,
     "merge_sha": "7e93bc4bb1c3b8ecc9bc4424dd7422ea328e2765",
-    "repository_health_job": 102046822714,
-    "repository_state_repair_cycles": 1,
     "status": "completed_verified",
     "validated_head": "712f7096118ae065d3d17492e2cc5effa1d83034",
-    "validation_contract_repair_cycles": 3,
     "validation_run": 34221889244,
-    "windows_job": 102046862112,
+    "deterministic_receipt_sha256": "77536c1214f37374ca8ea1b2f1f627b30e209f52bb141133d690cdfc9b0544a4",
     "work_item_id": "VTI-12"
   },
   "repository": "cybalicistjt-stack/multiversal-aioc",
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "selected_at": "2026-09-08T07:13:00-05:00",
-  "selection_boundaries": [
-    "VTI-12 is completed_verified at application merge 7e93bc4bb1c3b8ecc9bc4424dd7422ea328e2765.",
-    "The SGC family preflight is sealed before SGC implementation authority opens.",
-    "SGC-01A is selected_not_started with no implementation branch or implementation authority.",
-    "Only the named taxonomy/evidence-contract scope may be governed-started on the next execution Continue.",
-    "Unrelated historical tests, connected systems and later SGC units remain blocked by default."
-  ],
-  "source_program": "SGC",
-  "started_at": null,
-  "status": "selected_not_started",
+  "started_at": "2026-09-08T08:13:09-05:00",
+  "status": "in_progress",
   "title": "Disposition Taxonomy & Evidence Contract",
   "track": "source-gameplay-coverage-closure",
-  "work_item_id": "SGC-01A"
+  "work_item_id": "SGC-01A",
+  "convergence_control": {
+    "owner_continue_count": 1,
+    "execution_cycles": 1,
+    "repair_cycles": 0,
+    "no_progress_cycles": 0,
+    "diagnostic_mode": false,
+    "last_failure_signature": null,
+    "last_failure_class": null,
+    "diagnostic_hypotheses": [],
+    "retry_basis": {"changed_since_previous": ["Owner Continue governed-started SGC-01A from sealed family preflight and exact AIOC main 1040a5b808a407e419671b721b76aefb13fd15e8."]},
+    "service_objective": {
+      "ordinary_tranche_single_continue_target_percent": 100,
+      "ordinary_tranche_two_continue_target_percent": 95,
+      "max_execution_cycles_without_genuine_blocker": 1,
+      "unrelated_historical_validation_jobs_target": 0,
+      "reruns_without_changed_evidence_target": 0,
+      "post_merge_stale_pointer_target": 0
+    }
+  },
+  "tranche_context_envelope": {
+    "pinned_aioc_authority_ref": "1040a5b808a407e419671b721b76aefb13fd15e8",
+    "required": [
+      "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+      "governance/ai/work-state/SGC-01A-attempt-001.json",
+      "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
+      "governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_GAMEPLAY_COVERAGE_CLOSURE_PROGRAM.md",
+      "governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json",
+      "VTI-12 completed_verified evidence"
+    ],
+    "blocked_by_default": [
+      "retained source corpus classification before SGC-01B",
+      "historical tranche tests and lifecycle-specific validators",
+      "unrelated completed-program files",
+      "Drive/Airtable/Sheets/Docs unless SGC-01A explicitly names them",
+      "provider readiness, release/deployment and later SGC/ARI/SAA/P3D implementation"
+    ],
+    "refresh_only_on": [
+      "selected checkpoint or family backlog changes",
+      "named source input proves insufficient",
+      "merge/rebase/conflicting writer changes canonical state",
+      "required validation produces a materially new failure signature"
+    ]
+  }
 }
