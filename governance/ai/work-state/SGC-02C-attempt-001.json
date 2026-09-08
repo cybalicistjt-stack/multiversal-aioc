@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "SGC-02C",
+  "attempt_id": "SGC-02C-attempt-001",
+  "title": "Routed Mine-Note, Duplicate-Authority & Orphan Audit",
+  "track": "source-gameplay-coverage-closure",
+  "source_program": "SGC",
+  "parent_tranche": "SGC-02",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "estimated_active_minutes": 20,
+  "execution_target_minutes": 24,
+  "minimum_closeout_reserve_minutes": 8,
+  "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
+  "objective": "Audit routed mine-note concepts and the SGC-02B runtime matrix for duplicate authority, multi-owner ambiguity and orphan ownership; resolve only with exact canonical evidence and preserve genuine owner decisions as explicit queue items.",
+  "predecessor": {
+    "work_item_id": "SGC-02B",
+    "status": "completed_verified",
+    "deliverable": "governance/application-planning/source-gameplay-coverage-closure/SGC_RUNTIME_COVERAGE_MATRIX.json",
+    "coverage_rows": 36,
+    "implemented_rows": 32,
+    "unresolved_owner_rows": 4
+  },
+  "selection_boundaries": [
+    "SGC-02B is completed_verified by the atomic AIOC merge that selects this checkpoint.",
+    "SGC-02C is selected_not_started with no implementation branch or implementation authority.",
+    "Only routed mine-note duplicate-authority/orphan audit is in the next unit's scope.",
+    "SGC-03 character-system coverage remains unauthorized until its own governed start."
+  ],
+  "next_action": "On the next execution Continue, governed-start only SGC-02C and carry it through its terminal gate in one continuation."
+}

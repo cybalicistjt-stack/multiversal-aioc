@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "work_item_id": "SGC-02B",
   "attempt_id": "SGC-02B-attempt-001",
   "title": "Core Mechanics, Rules & Loop Coverage Mapping",
@@ -7,26 +7,41 @@
   "source_program": "SGC",
   "parent_tranche": "SGC-02",
   "repository": "cybalicistjt-stack/multiversal-aioc",
-  "status": "selected_not_started",
+  "status": "completed_verified",
   "owner_selected": true,
   "implementation_authority": false,
-  "implementation_branch": null,
-  "completed": false,
+  "implementation_branch": "governance/sgc-02b-core-runtime-coverage",
+  "authority_retired": true,
+  "completed": true,
   "estimated_active_minutes": 24,
   "execution_target_minutes": 24,
   "minimum_closeout_reserve_minutes": 8,
   "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
   "objective": "Map retained core mechanics, rules, loops and runtime functions through the SGC-02A coverage schema to exact owners, evidence or explicit SGC dispositions without creating duplicate authority.",
-  "predecessor": {
-    "work_item_id": "SGC-02A",
-    "status": "completed_verified",
-    "deliverable": "governance/application-planning/source-gameplay-coverage-closure/SGC_RUNTIME_OWNER_COVERAGE_SCHEMA.json"
+  "deliverable": "governance/application-planning/source-gameplay-coverage-closure/SGC_RUNTIME_COVERAGE_MATRIX.json",
+  "completion_evidence": {
+    "coverage_rows": 36,
+    "implemented_rows": 32,
+    "unresolved_owner_decision_rows": 4,
+    "mechanic_or_runtime_function_rows": 19,
+    "rule_rows": 10,
+    "loop_rows": 7,
+    "invented_owner_assignments": 0,
+    "duplicate_authority_ledgers_created": 0,
+    "sgc_02c_audit_queue": [
+      "SGC-RULE-MINE-STORY-TELLING-IDENTITY",
+      "SGC-RULE-MINE-CROSS-DOMAIN-SEMANTIC-DOCTRINE",
+      "SGC-RULE-MINE-LOCATION-AWARE-INVENTORY",
+      "SGC-MECH-MINE-SEMANTIC-MACHINERY"
+    ]
   },
-  "selection_boundaries": [
-    "SGC-02A is completed_verified by the atomic AIOC merge that selects this checkpoint.",
-    "SGC-02B is selected_not_started with no implementation branch or implementation authority.",
-    "Only core mechanics, rules, loops and runtime-function coverage mapping is in the next unit's scope.",
-    "The routed mine-note duplicate-authority/orphan audit remains SGC-02C work and is not started by this selection."
+  "scope_boundaries": [
+    "Only core mechanics, rules, loops and runtime functions were mapped.",
+    "Pure taxonomy, UX/accessibility, Character-specific, content-only, Toon/UZ hold and ARI/SAA/P3D creator-routing concepts remain for later SGC units.",
+    "Completed-program rows cite specific completed tranches rather than broad program names alone.",
+    "Ambiguous multi-owner/shared-invariant concepts remain unresolved rather than receiving invented owners.",
+    "SGC-02C audit work is not started by this completion."
   ],
-  "next_action": "On the next execution Continue, governed-start only SGC-02B and carry it through its terminal gate in one continuation."
+  "strict_successor": "SGC-02C",
+  "next_action": "SGC-02B is terminal completed_verified; SGC-02C is selected_not_started with no implementation authority."
 }
