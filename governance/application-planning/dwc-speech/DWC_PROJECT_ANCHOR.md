@@ -9,31 +9,31 @@
 
 ## 1. Why this document exists
 
-The DWC project accumulated substantial language-design, pronunciation, corpus, neural-proxy, Piper warm-start, and training work inside long conversations. The technical work advanced, but conversation execution repeatedly regressed to older narrative checkpoints after interruptions, tool timeouts, progress messages, and sandbox changes.
+The DWC project accumulated substantial language-design, pronunciation, corpus, neural-proxy, warm-start, and real acoustic-training work inside long conversations. The technical work advanced farther than some narrative summaries recorded, while conversation execution repeatedly regressed after interruptions, tool timeouts, progress messages, and sandbox changes.
 
-This file exists to keep the DWC project centered outside any one conversation. Future DWC work should recover from this anchor plus `DWC_CURRENT_STATE.json`, then inspect live evidence for mutable runtime facts.
-
-The key operating distinction is:
+This file exists so DWC can be recovered from durable evidence rather than reconstructed from chat history.
 
 > **Project state is defined by verified artifacts, code, files, tool results, and explicit owner corrections. Assistant prose is commentary about that state, not the state itself.**
 
+Use `DWC_CURRENT_STATE.json` for the mutable execution frontier and `DWC_TRAINING_EVIDENCE_STAGE_C_v0.1.0.json` for the latest closed machine-training milestone.
+
 ## 2. Project goal
 
-Build a robust speech-generation path for DWC in which DWC's own language and phonological system controls pronunciation from end to end.
+Build a robust speech-generation path for DWC in which DWC's own language and phonological system controls pronunciation end to end.
 
-The target is not merely to make an English TTS engine approximate DWC. The target is a deterministic, engine-independent DWC pronunciation frontend that can drive neural speech synthesis directly and ultimately support a DWC-native/custom acoustic model.
+The target is not to make an English TTS engine approximate DWC. The target is a deterministic, engine-independent DWC pronunciation frontend that directly drives neural speech synthesis and can support a DWC-native/custom acoustic model.
 
 Primary goals:
 
 - DWC pronunciation is controlled by DWC rules rather than English G2P.
 - The frontend preserves exact custom DWC phoneme identities/IDs.
 - Equivalent DWC linguistic input produces deterministic phoneme output.
-- The pronunciation layer remains portable across TTS engines where practical.
-- Training and inference preserve provenance from DWC linguistic representation through phoneme IDs to acoustic output.
-- Engine or environment limitations are not mistaken for language-design failures.
-- The path can later support Multiversal without prematurely coupling DWC rules to one vendor or runtime.
+- The pronunciation layer remains engine-independent where practical.
+- Training/inference preserve provenance from DWC linguistic representation through phoneme IDs to waveform output.
+- Model/environment limitations are not mistaken for language-design failures.
+- The architecture can later serve Multiversal without hard-coupling DWC language rules to one speech vendor/runtime.
 
-## 3. Current conceptual architecture
+## 3. Settled architecture
 
 `DWC language / semantic form`  
 → `DWC etymology and lexical rules`  
@@ -44,195 +44,252 @@ Primary goals:
 → `acoustic model / TTS engine`  
 → `vocoder / waveform output`
 
-The critical invariant is that English G2P must not silently reinterpret DWC between the DWC frontend and the neural model.
+Critical invariant: **English G2P must not silently reinterpret DWC between the DWC frontend and the neural model.**
 
-## 4. Established project achievements
+## 4. Settled achievements
 
-The following are settled project achievements unless later evidence contradicts them.
+These are closed project facts unless contrary evidence appears.
 
-### 4.1 Language-side work reached the pre-audio TTS handoff
+### 4.1 Language/PSS/CNS reached the pre-audio handoff
 
-DWC language, etymology, PSS, and CNS work progressed to the point where speech synthesis could consume the language output. This is not an open language-design restart point.
+The DWC language, etymology, PSS, and CNS work progressed far enough for speech synthesis to consume governed pronunciation output. This is not an open language-redesign restart point.
 
-### 4.2 Engine-independent exact-ID DWC frontend exists
+### 4.2 Engine-independent exact-ID frontend exists
 
-A frontend exists that produces exact custom phoneme IDs for DWC rather than depending on an engine-specific English pronunciation path. Future speech work must preserve this capability unless the owner explicitly changes the architecture.
+A frontend exists that emits exact DWC phoneme IDs without delegating pronunciation to an English engine. This is an architectural non-regression boundary.
 
-### 4.3 Synthetic exact-ID bootstrap corpus exists
+### 4.3 Synthetic exact-ID corpus exists
 
-A synthetic DWC bootstrap corpus of **799 exact-ID aligned utterances** exists and passed the prior Piper exact-ID dataset preflight.
+The synthetic bootstrap corpus contains **799 exact-ID aligned utterances** and passed the prior Piper exact-ID dataset preflight.
 
-### 4.4 Neural proxy path was proven
+### 4.4 Neural proxy proof succeeded
 
-Using the owner-supplied LJSpeech medium ONNX model/config and ONNX Runtime, prior work produced a working neural DWC proxy path:
+The owner-supplied LJSpeech medium ONNX model/config was used to prove the DWC frontend could drive a neural speech path:
 
-- **199/199** DWC regression utterances rendered;
+- **199/199** regression utterances rendered;
 - **0 unsupported CNS IPA symbols** in that set;
 - approximately **4.6 minutes** of neural DWC audio generated;
-- English G2P bypassed, with DWC/CNS pronunciation information sent directly to the neural path.
+- English G2P bypassed.
 
-This proved that the DWC frontend can drive neural speech. It did not itself constitute the final DWC-native acoustic model.
+Proxy success is not the same milestone as native/custom acoustic adaptation.
 
-### 4.5 Piper exact-custom-ID and warm-start support was established
+### 4.5 Piper exact-ID and warm-start viability succeeded
 
-Piper v1.8.0 source work established:
+Piper v1.8.0 work established:
 
-- `dataset_type=phoneme_ids` can consume owner-supplied IDs directly;
-- `vocoder_warmstart_ckpt` is supported;
-- unused English G2P/VAD paths can be bypassed/stubbed as needed for the custom-ID path.
+- direct owner-supplied `phoneme_ids` dataset input;
+- a 58×192 DWC phoneme embedding;
+- vocoder-only warm-start from the LJSpeech checkpoint;
+- 278 matching acoustic/vocoder tensors copied while preserving the DWC embedding;
+- exact DWC-ID inference;
+- full VITS generator/discriminator loss;
+- gradient flow into the DWC embedding;
+- real optimizer updates.
 
-### 4.6 Direct custom-ID warm-start viability was already proven
+Warm-start feasibility is closed. Repeating it is revalidation only.
 
-The prior DWC work progressed farther than the conversation-local recovery note captured. The owner explicitly corrected the stale frontier on 2026-09-08: the intended pretrained Piper/LJSpeech checkpoint **can warm-start the DWC direct exact-custom-ID path, and this had already been figured out in the preceding work**.
+### 4.6 Real acoustic adaptation progressed through Stage C
 
-This is now a non-regression boundary.
+Later Drive recovery evidence superseded the older conversation-local recovery note.
 
-A future repeat of the tiny warm-start smoke is permitted and useful, but it is a **reproducibility/revalidation gate**, not the first proof of feasibility and not a reason to move the project frontier backward.
+**Stage A — balanced subset adaptation**
 
-### 4.7 Remaining compute limits are execution-surface issues unless evidence shows otherwise
+- 128 selected corpus rows;
+- 100 training batches / 200 optimizer steps;
+- training time ~114.68 s on the prior GPU surface;
+- generator loss 287.7846 → 11.8234;
+- mel loss 0.71298 → 0.10692.
 
-CPU-heavy VITS construction/precompute and sustained training can exceed a conversation-container execution window. Such a limit must be classified at the training/execution layer. It does not reopen DWC phonology, CNS/PSS, exact-ID corpus design, neural-proxy viability, or custom-ID warm-start viability.
+**Stage B — full-corpus adaptation**
 
-## 5. Current technical frontier
+- all 799 synthetic rows;
+- 200 training batches / 400 optimizer steps;
+- training time ~228.52 s;
+- machine waveform acceptance: **123/125 PASS**, 2 REVIEW.
 
-The current forward frontier is **controlled DWC-native acoustic training and evaluation**.
+The two Stage-B machine-review cases were:
 
-The next meaningful result is no longer "can the warm-start work?" It is:
+- `CONTRAST-a_-01` — `ai`, IPA `[aɪ]`;
+- `CONTRAST-_-05` — `sher`, IPA `[ɕɛr]`.
 
-> Can the proven exact-ID warm-start path be reproduced under governed conditions, then carried beyond smoke-test construction into a bounded real training run that produces durable training evidence and a DWC evaluation sample?
+**Stage C — short-form / special-phone repair**
 
-The key pretrained checkpoint remains `lj-med_1000.ckpt`, originally supplied inside `lj-med_1000.zip`. Because of connector size limits, the owner split the large ZIP; previous verified Drive state showed eight parts `.001` through `.008` in the `Transfer file` folder.
+- 128 targeted rows: 75 special-phone contrast rows + 53 lexical phone-coverage rows;
+- 100 training batches / 200 optimizer steps;
+- training time ~114.28 s;
+- generator loss 15.4027 → 6.5376;
+- mel loss 0.05651 → 0.03367;
+- machine waveform acceptance: **125/125 PASS**.
 
-Missing copies in a new sandbox are a rehydration issue only. They do not reset logical progress.
+### 4.7 Stage-C model state is durably recovered and verified
 
-## 6. Next governed execution chain
+The four Stage-C Drive parts were re-downloaded and reassembled in the 2026-09-08 recovery conversation.
 
-Unless newer DWC evidence supersedes this state:
+Verified Stage-C state:
 
-1. Inspect the current execution surface and acquire only missing exact dependencies.
-2. Reassemble/integrity-check `lj-med_1000.ckpt` as needed.
-3. Repeat the tiny direct DWC exact-ID warm-start smoke as a **reproducibility gate**.
-4. Preserve hashes, configuration, exact code path, dependencies, and outcome so the result is not lost inside a conversation again.
-5. Advance immediately into a bounded acoustic-training run beyond the smoke test, long enough to show real optimizer/training progress and generate a new checkpoint or equivalent durable training artifact.
-6. If the present CPU/container cannot sustain that run, classify **sustained acoustic training** specifically as `environment_unavailable`, preserve all completed milestones, and use/produce an exact GPU-ready harness.
-7. Render a controlled DWC sample from the newly trained checkpoint.
-8. Evaluate exact phoneme coverage, pronunciation fidelity, intelligibility, failure cases, and voice quality against DWC frontend expectations.
-9. Update `DWC_CURRENT_STATE.json` with hashes, configuration, training evidence, evaluation findings, and the next bounded target before treating the work unit as closed.
+- file: `stageC_weights.pt`;
+- size: **281,775,417 bytes**;
+- SHA-256: **`d800ae031942c29289ced1cc80c1448fff234c53f42a56f2d69265e7e3ebabb2`**;
+- 784 model-state tensor keys;
+- `num_symbols = 58`;
+- `sample_rate = 22050`;
+- `segment_size = 2048`;
+- `stageC_global_step = 200`.
 
-## 7. Execution rules for DWC conversations
+The current reassembly hash exactly matched the earlier recovery hash. See `DWC_TRAINING_EVIDENCE_STAGE_C_v0.1.0.json`.
 
-### 7.1 Continue means execution, not recap
+## 5. Current forward frontier
 
-When the owner says `Continue` during DWC execution, remain in execution mode until the largest safe bounded unit is completed/verified or a genuine blocker is fully evidenced. A progress update is not a handoff and is not permission to stop.
+The project is now at:
 
-### 7.2 Recover from evidence, not the last paragraph
+> **Human/perceptual CNS evaluation + Stage-D continuation from the verified Stage-C weights + candidate export.**
 
-After interruption, inspect the latest actual tool/file/evidence state before selecting the next action. Do not restart from an older narrative checkpoint.
+It is no longer at checkpoint discovery, warm-start proof, initial optimizer proof, Stage A, Stage B, or Stage C.
 
-### 7.3 Work states are explicit
+Two independent gates now matter:
 
-Use at minimum:
+1. **GPU execution:** longer Stage-D adaptation must run on a GPU-capable surface. The current ChatGPT sandbox has CPU-only PyTorch and zero CUDA devices.
+2. **Human auditory evaluation:** 125/125 machine waveform sanity does not establish correct CNS pronunciation, intelligibility, stress/rhythm, accent/style, or meaning preservation.
 
-- `not_started`
-- `in_progress`
-- `verified_complete`
-- `blocked_with_evidence`
-- `environment_unavailable`
+## 6. Prepared Stage-D continuation
 
-Started work is unfinished. Artifact existence alone is not completion.
+The governed Stage-D continuation harness is:
 
-### 7.4 Revalidation does not reopen a completed milestone
+`governance/application-planning/dwc-speech/dwc_stage_d_continue.py`
 
-If a settled result is repeated to make it reproducible or to obtain fresher machine evidence, the project frontier stays advanced unless the rerun produces contradictory evidence. In particular, a repeat warm-start smoke must not be reframed as though DWC warm-start viability had never been established.
+It starts from the exact Stage-C SHA above and deliberately does not re-enter LJSpeech warm-start or Stages A/B/C.
 
-### 7.5 Do not rediscover closed facts without cause
+Default deterministic Stage-D curriculum:
 
-Do not repeatedly re-prove:
+- one shuffled complete pass over all **799** corpus rows;
+- one extra shuffled pass over the **128** Stage-C repair rows;
+- repair rows interleaved proportionally through the full-corpus pass rather than appended as a target-only tail;
+- total **927 training batches / 1,854 optimizer steps**;
+- seed `20260908`;
+- checkpoints every 300 batches by default;
+- 125-item deterministic machine acceptance rendered before and after Stage D.
 
-- the DWC exact-ID frontend exists;
-- the 799-row corpus exists and passed prior exact-ID preflight;
-- the ONNX neural proxy worked;
-- English G2P can be bypassed in the proven path;
-- Piper accepts owner-supplied phoneme IDs;
-- Piper supports the warm-start mechanism;
-- the direct DWC custom-ID warm-start path is viable;
+Because the recovered Stage-C artifact stores model state rather than optimizer state, Stage D explicitly reinitializes generator/discriminator optimizers and records that fact in its evidence.
 
-unless newer evidence conflicts with one of those facts.
+A self-contained Colab notebook is preserved in Google Drive `Transfer file`:
 
-### 7.6 New sandbox does not mean new project
+`DWC_Piper_Custom58_StageD_Continuation_v0.1.ipynb`
 
-Distinguish durable **logical project progress** from temporary **runtime material**. Rehydrate physical dependencies without resetting the technical frontier.
+Drive file ID: `1zuU3BBs8SySNVroYsjY3Nf3SbE2bZUiY`  
+Size: **28,123 bytes**  
+SHA-256: **`1c871076abba8c0538553073cc645c2fc49e03fdb48736830b01a075f2854241`**
 
-### 7.7 Classify blockers precisely
+The notebook:
 
-Distinguish file-transfer limits, dependency issues, CPU-duration limits, GPU unavailability, missing exact bytes, checkpoint corruption, model incompatibility, dataset failure, and genuine architecture failure.
+1. mounts Drive;
+2. hard-gates on GPU availability;
+3. reconstructs/verifies the Stage-C weights from the four Drive parts;
+4. extracts the corpus/recovery/acceptance packages;
+5. installs Piper v1.8.0;
+6. materializes the Stage-D harness;
+7. runs Stage D from Stage C;
+8. writes persistent checkpoints/metrics/125-row pre/post renders to Drive;
+9. preserves the human scorecard;
+10. can export a selected custom model to ONNX;
+11. writes output hashes.
 
-### 7.8 Preserve exact artifacts and provenance
+## 7. Human CNS perceptual gate
 
-Do not reconstruct checksum-bound models, corpora, checkpoint parts, or training outputs from prose. Preserve or reacquire exact bytes and record hashes/configuration whenever a reproducibility gate is run.
+Machine waveform sanity is not pronunciation certification.
 
-## 8. Known artifact/source lineage
+`DWC_STAGE_C_PERCEPTUAL_GATE.md` governs the human auditory review. Existing acceptance assets include:
 
-Important artifacts/evidence include:
+- `DWC_TTS_HUMAN_ACCEPTANCE_SCORECARD_TEMPLATE.tsv`;
+- `score_human_acceptance.py`;
+- `TTS_ENGINE_03_ACCEPTANCE_CONTRACT.md`;
+- the 125-row acoustic acceptance suite.
 
-- `DWC-Semantic-Lexicon-Redesign-v2-2026-09-07.zip`;
-- DWC engine-independent exact-phoneme-ID frontend;
-- 799-utterance exact-ID synthetic bootstrap corpus;
-- 199-utterance DWC regression / neural-proxy package;
-- owner-supplied LJSpeech medium ONNX model and config;
-- Piper v1.8.0 source;
-- `lj-med_1000.zip` / `lj-med_1000.ckpt`;
-- split checkpoint parts `.001` through `.008` in Google Drive `Transfer file` as of the prior verified state;
-- split/checksum manifest if present;
-- `Multiversal app - Synth V Uses (1).mht` for transcript provenance;
-- `DWC_CONVERSATION_EXECUTION_RECOVERY (1).md` as a historical recovery aid;
-- `DWC_CURRENT_STATE.json` as the mutable durable frontier going forward.
+Required thresholds include:
 
-Historical MHT/recovery material is provenance, not a reason to override newer durable state or explicit owner correction.
+- intelligibility mean >= 4.0/5;
+- pronunciation accuracy >= 4.2/5;
+- special-phone accuracy >= 4.2/5;
+- stress/rhythm >= 4.0/5 with full unstressed vowels preserved;
+- Roman/Russian-accent target >= 4.0/5;
+- style fidelity >= 3.8/5 where applicable;
+- meaning preservation = 100%.
+
+Special-phone coverage explicitly includes RH /ʁ/, TR /tʁ/, ZR /zɹ/, CH /tʃ/, ZH /ʒ/, SH /ɕ/, KH /x/, Nasal-M /mj/, Ň /ɲ/, and governed vowels/diphthongs.
+
+## 8. Execution rules
+
+### 8.1 `Continue` means execution
+
+A DWC `Continue` remains active until the largest safe bounded unit is completed/verified or a genuine blocker is fully evidenced. A progress report is not a stop boundary.
+
+### 8.2 Recover from latest evidence
+
+Inspect the newest actual files/tool evidence before selecting work. Newer externally preserved evidence supersedes a stale narrative recovery summary.
+
+### 8.3 Do not rediscover closed milestones
+
+Do not rerun language design, exact-ID frontend discovery, proxy proof, warm-start proof, Stage A, Stage B, or Stage C merely because a new conversation or sandbox lacks their temporary local files.
+
+### 8.4 Revalidation is not regression
+
+A repeated test may verify reproducibility, but it does not move the logical project frontier backward unless the new evidence contradicts the prior milestone.
+
+### 8.5 Distinguish project state from runtime material
+
+Missing temporary files are a rehydration issue. They do not erase verified project progress.
+
+### 8.6 Classify blockers precisely
+
+Distinguish missing bytes, transfer limits, dependency failure, CPU limits, GPU unavailability, checkpoint incompatibility, dataset failure, perceptual failure, and actual architecture failure.
+
+### 8.7 Preserve exact artifacts/provenance
+
+Do not reconstruct checksum-bound model/corpus/training artifacts from prose. Preserve exact bytes and hashes.
 
 ## 9. What remains open
 
-Do not overstate completion. The following remain open:
+The following are genuinely open:
 
-- sustained DWC acoustic training to a useful convergence point;
-- a durable newly trained DWC checkpoint produced from the exact-ID training path;
-- a final DWC-native trained voice model;
-- formal intelligibility/pronunciation/voice-quality evaluation beyond the proxy proof;
-- production packaging, licensing review, deployment, and Multiversal-app integration;
-- a final decision on Piper versus another engine, provided any alternative preserves the DWC exact-ID architecture.
-
-Warm-start feasibility is **not** in this open list anymore.
+- human perceptual confirmation of Stage-C CNS pronunciation/quality;
+- the longer Stage-D GPU adaptation from the verified Stage-C state;
+- post-Stage-D machine + human acceptance evidence;
+- selection/export of the temporary synthetic DWC candidate model;
+- replacement of the temporary synthetic acoustic target with authentic human CNS recordings;
+- production packaging/licensing/deployment/Multiversal-app integration;
+- final production-engine selection if a later engine better preserves the exact-ID architecture.
 
 ## 10. Architectural non-regression boundaries
 
 1. DWC language rules remain upstream of speech synthesis.
 2. DWC pronunciation is not delegated to English G2P.
-3. Exact custom phoneme identity survives into the acoustic-training/inference boundary.
+3. Exact custom phoneme identity survives into acoustic training/inference.
 4. The frontend remains engine-independent where practical.
-5. Proxy success, warm-start success, bounded training success, and final-model success are separate milestones.
-6. Environment limitations do not reopen settled language or warm-start design without contrary evidence.
+5. Proxy, warm-start, Stage A/B/C, Stage D, perceptual acceptance, and production-model success are distinct milestones.
+6. Environment limits do not reopen settled language or training milestones without contrary evidence.
 7. A conversation reset does not reset the project.
-8. Revalidation of a completed milestone does not move the logical frontier backward.
+8. Revalidation does not reopen completed milestones.
+9. Human auditory judgment remains required where the acceptance contract requires perception rather than waveform sanity.
 
 ## 11. Relation to Multiversal
 
-DWC speech synthesis is a Multiversal capability/research program, but this document does not itself authorize a software-roadmap implementation tranche.
+DWC speech synthesis is a Multiversal capability/research program, but this anchor does not itself authorize a software-roadmap implementation tranche.
 
-Potential later uses include spoken DWC dialogue, setting-language audio, pronunciation/reference tools, NPC speech, authoring previews, and content-production pipelines. Application integration should consume the governed DWC language/pronunciation artifacts rather than reimplementing them in client/UI code.
+Potential downstream uses include spoken DWC dialogue, setting-language audio, pronunciation/reference tools, NPC speech, authoring previews, and content-production pipelines. Application integration should consume the governed DWC language/pronunciation artifacts rather than reimplementing them in client/UI code.
 
-## 12. Recovery instruction for a future conversation
+## 12. Recovery instruction
 
-Recover DWC with these facts already established:
+A future DWC conversation should begin with these facts already established:
 
-- language/PSS/CNS reached the pre-audio handoff;
-- an engine-independent exact custom-phoneme-ID frontend exists;
-- the 799-row exact-ID bootstrap corpus exists and passed prior preflight;
-- the ONNX neural proxy succeeded on 199/199 regression utterances with no unsupported CNS IPA symbols in that set;
-- Piper source-level custom-ID and warm-start support is established;
-- **direct DWC exact-custom-ID warm-start viability is already established**;
-- a repeat warm-start is revalidation/reproducibility, not rediscovery;
-- the active frontier is bounded DWC acoustic training, durable checkpoint/sample production, and pronunciation/intelligibility evaluation;
-- CPU/GPU execution limitations must be classified at the training layer rather than used to reopen earlier milestones;
-- read `DWC_CURRENT_STATE.json` before executing because it contains the latest mutable frontier.
+- language/PSS/CNS reached pre-audio handoff;
+- exact custom-ID frontend exists;
+- 799-row exact-ID corpus exists;
+- ONNX neural proxy succeeded;
+- exact-ID Piper warm-start succeeded;
+- real acoustic training completed through Stage A, Stage B, and Stage C;
+- Stage-C machine acceptance is 125/125;
+- Stage-C weights are hash-verified at `d800ae031942c29289ced1cc80c1448fff234c53f42a56f2d69265e7e3ebabb2`;
+- Stage-D continuation and human perceptual gates are already prepared;
+- the active frontier is Stage-D GPU continuation + human CNS evaluation + candidate export;
+- always read `DWC_CURRENT_STATE.json` before executing because it contains the latest mutable state.
 
 Do not resume from the beginning unless newer evidence proves one of these settled facts wrong.
