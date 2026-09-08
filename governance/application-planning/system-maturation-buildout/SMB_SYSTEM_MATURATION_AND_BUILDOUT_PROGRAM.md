@@ -2,11 +2,12 @@
 
 **Program ID:** SMB  
 **Program name:** System Maturation & Buildout  
-**Version:** 0.2.0  
+**Version:** 0.3.0  
 **Status:** OWNER-APPROVED — PLANNED POST-MIB SUCCESSOR  
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-08-19  
-**Beta-gate integration:** 2026-08-21
+**Beta-gate integration:** 2026-08-21  
+**SAA insertion:** 2026-09-07
 
 ## 1. Purpose
 
@@ -14,13 +15,15 @@ SMB is the post-MIB product-completion program. MIB builds reusable implementati
 
 SMB is deliberately not another abstraction program. Its job is to turn the strong engine room produced by MIB into a complete, networked, content-rich Multiversal product.
 
+The owner-approved SAA sequential-art program is an interstitial dependency **after SMB-09 and before SMB-10**. SAA builds the actual comic/sequential-art authoring engine; SMB-10 then integrates it into finished Player/GM/Creator product UX, and SMB-11 remains the owner of controlled creator interchange/sharing.
+
 ## 2. Activation boundary
 
 SMB is owner-approved and roadmap-planned, but it is not selected while MIB remains active. MIB-18 must publish its integration/portability/gated-work handoff before SMB activation unless the owner separately authorizes a bounded exception.
 
 SMB does not by itself activate tester distribution, public release, paid providers, production infrastructure, public community features or commerce. Each tranche must still satisfy the authority and validation rules that apply when it is selected.
 
-**Owner-approved beta gate:** SMB-01 through SMB-16 execute before BRP — Beta Readiness & Product Operations. BRP-01 through BRP-11 then prove the product safe/supportable enough for normal external-beta activation. SMB-17 follows completed BRP-11; SMB-18 follows SMB-17. This interposition preserves SMB tranche numbering.
+**Owner-approved beta gate:** SMB-01 through SMB-16 execute before BRP — Beta Readiness & Product Operations, with SAA-01..20 inserted between SMB-09 and SMB-10. BRP-01 through BRP-11 then prove the product safe/supportable enough for normal external-beta activation. SMB-17 follows completed BRP-11; SMB-18 follows SMB-17. This interposition preserves SMB tranche numbering.
 
 ## 3. Tranche plan
 
@@ -80,7 +83,7 @@ SMB does not by itself activate tester distribution, public release, paid provid
 
 **Purpose:** use MIB content tooling to create substantial first-party governed libraries rather than relying mainly on synthetic fixtures.
 
-**Scope:** items, weapons, armor, materials, recipes, vehicles, modules, facilities, organizations, cultures, environments, NPC/creature templates, encounters, conditions, powers/effects, realities and starter Worlds/Adventures.
+**Scope:** items, weapons, armor, materials, recipes, vehicles, modules, facilities, organizations, cultures, environments, NPC/creature templates, encounters, conditions, powers/effects, realities and starter Worlds/Adventures. First-party media/generated resources should register through ARI rather than forming an SMB-only asset library.
 
 **Completion gate:** first-party packs compile deterministically, pass compatibility/provenance rules and support representative complete play without fixture-only content.
 
@@ -88,29 +91,35 @@ SMB does not by itself activate tester distribution, public release, paid provid
 
 **Purpose:** produce one polished campaign designed to exercise Multiversal end to end as an actual game experience rather than a QA corpus.
 
-**Completion gate:** the campaign uses the major applicable systems coherently and can be completed/replayed through documented Player/GM paths with no developer intervention.
+**Completion gate:** the campaign uses the major applicable systems coherently and can be completed/replayed through documented Player/GM paths with no developer intervention. Normal successor is SAA-01, not SMB-10 directly.
+
+### Interstitial SAA — Sequential Art Authoring
+
+After SMB-09, execute owner-approved **SAA-01..20** from `governance/application-planning/sequential-art-authoring/SAA_SEQUENTIAL_ART_AUTHORING_PROGRAM.md` and `SAA_PROGRAM_BACKLOG.json`.
+
+SAA consumes the ARI universal resource library plus Character/CAPP/PAPT/MAI/Scene/AAI projections to provide user-authored comics/sequential art. SAA does not own public sharing or marketplace authority. SAA-20 completion restores the SMB sequence at SMB-10.
 
 ### SMB-10 — Full Player / GM / Creator Product UX
 
-**Purpose:** turn MIB Workbench primitives into finished production screens and workflows.
+**Purpose:** turn MIB Workbench primitives and completed domain authoring engines, including SAA, into finished production screens and workflows.
 
-**Scope:** Characters, Campaign control, encounters, Worlds, clues, relationships, inventories, crafting, trade, vehicles, bases, Adventures, creator tools, Personal workspace, notifications, recovery and mobile/desktop layouts.
+**Scope:** Characters, Campaign control, encounters, Worlds, clues, relationships, inventories, crafting, trade, vehicles, bases, Adventures, creator tools, **SAA comic/sequential-art authoring**, Personal workspace, notifications, recovery and mobile/desktop layouts.
 
-**Completion gate:** declared primary journeys meet responsive/accessibility/state/recovery acceptance and no major feature depends on developer-facing interfaces.
+**Completion gate:** declared primary journeys meet responsive/accessibility/state/recovery acceptance, SAA is integrated as a first-class Creator workflow rather than a developer surface, and no major feature depends on developer-facing interfaces.
 
 ### SMB-11 — Content Creation & Sharing Pipeline
 
 **Purpose:** complete private/controlled creator interchange before any public marketplace.
 
-**Scope:** export/import, dependency packaging, versioning, forks/remixes, provenance, compatibility, private sharing and safe campaign instantiation.
+**Scope:** export/import, dependency packaging, versioning, forks/remixes, provenance, compatibility, private sharing and safe campaign instantiation. Consume SAA-18 comic-project packaging/dependency contracts and ARI resource/reference packaging rules instead of inventing parallel asset or comic sharing semantics.
 
-**Completion gate:** content can move between authorized users/workspaces without identity collisions, provenance loss or silent canonical mutation.
+**Completion gate:** content, including eligible SAA projects, can move between authorized users/workspaces without identity collisions, provenance loss, unauthorized embedded third-party resources or silent canonical mutation.
 
 ### SMB-12 — Real Optional AI Integrations
 
 **Purpose:** connect approved live AI providers through the MIB-15 abstraction only after no-AI and fake-provider behavior is proven.
 
-**Scope:** writing help, worldbuilding, GM assistance, context/search help and permitted AutoGM presentation.
+**Scope:** writing help, worldbuilding, GM assistance, context/search help and permitted AutoGM presentation; SAA may consume this only through its proposal-only assistance boundary.
 
 **Completion gate:** live providers remain replaceable/advisory, all blocking workflows still pass with AI disabled, and cost/privacy/provenance controls are enforced.
 
@@ -126,7 +135,7 @@ SMB does not by itself activate tester distribution, public release, paid provid
 
 **Purpose:** connect MIB-17 policy foundations to real account/platform infrastructure and perform product-wide security/privacy hardening.
 
-**Scope:** authorization audit, invitations/communication controls, data handling, child/family protections, external-content controls and abuse-resistance seams.
+**Scope:** authorization audit, invitations/communication controls, data handling, child/family protections, external-content controls and abuse-resistance seams, including ARI/SAA imported/external-resource attack and rights surfaces.
 
 **Completion gate:** defined threat/authority/privacy/family-safety matrices pass with no cross-context private-data exposure.
 
@@ -134,7 +143,7 @@ SMB does not by itself activate tester distribution, public release, paid provid
 
 **Purpose:** make long-lived, large and degraded scenarios reliable.
 
-**Scope:** large Campaigns/Worlds, deep histories, many assets/relationships, large graphs/packs, reconnect storms, storage/search growth, memory/startup/migration performance and regression reduction.
+**Scope:** large Campaigns/Worlds, deep histories, **large ARI resource libraries**, many assets/relationships, large graphs/packs, large SAA projects, reconnect storms, storage/search growth, memory/startup/migration performance and regression reduction.
 
 **Completion gate:** published scale budgets and failure/recovery scenarios pass across supported environments.
 
@@ -142,7 +151,7 @@ SMB does not by itself activate tester distribution, public release, paid provid
 
 **Purpose:** complete supported-device and inclusive-use quality beyond baseline component compliance.
 
-**Scope:** screen readers, keyboard/touch parity, reduced motion, high contrast, font scaling, localization infrastructure, screen classes and Apple/Mac completion when its environment exists.
+**Scope:** screen readers, keyboard/touch parity, reduced motion, high contrast, font scaling, localization infrastructure, screen classes and Apple/Mac completion when its environment exists; SAA reading-order/text projection and non-drag authoring remain part of the supported Creator matrix.
 
 **Completion gate:** supported primary journeys pass the declared accessibility/localization/device matrix. Normal next program is BRP-01, not SMB-17 directly.
 
@@ -158,18 +167,20 @@ SMB does not by itself activate tester distribution, public release, paid provid
 
 **Purpose:** prepare Multiversal for an actual supported release after product, validation and owner gates permit it, hardening BRP's beta-grade operational systems to commercial/release grade rather than duplicating them.
 
-**Scope:** packaging, subscriptions/entitlements if approved, billing integration, production operations, hardened backups/observability/support tooling, release channels, crash/error reporting, rollback, privacy/legal readiness, stores/distribution and launch operations.
+**Scope:** packaging, subscriptions/entitlements if approved, billing integration, production operations, hardened backups/observability/support tooling, release channels, crash/error reporting, rollback, privacy/legal readiness, stores/distribution and launch operations. Any future P3D manufacturing/print-service commerce remains separately owner/provider gated even here.
 
 **Completion gate:** a release candidate can be deployed, observed, supported, rolled back and recovered through documented production procedures with owner-approved commercial/legal dependencies satisfied.
 
 ## 4. Strict default order
 
-`SMB-01 → SMB-02 → SMB-03 → SMB-04 → SMB-05 → SMB-06 → SMB-07 → SMB-08 → SMB-09 → SMB-10 → SMB-11 → SMB-12 → SMB-13 → SMB-14 → SMB-15 → SMB-16 → BRP-01 → BRP-02 → BRP-03 → BRP-04 → BRP-05 → BRP-06 → BRP-07 → BRP-08 → BRP-09 → BRP-10 → BRP-11 → SMB-17 → SMB-18`
+`SMB-01 → SMB-02 → SMB-03 → SMB-04 → SMB-05 → SMB-06 → SMB-07 → SMB-08 → SMB-09 → SAA-01..20 → SMB-10 → SMB-11 → SMB-12 → SMB-13 → SMB-14 → SMB-15 → SMB-16 → BRP-01 → BRP-02 → BRP-03 → BRP-04 → BRP-05 → BRP-06 → BRP-07 → BRP-08 → BRP-09 → BRP-10 → BRP-11 → SMB-17 → SMB-18`
 
-The owner may later re-order tranches when MIB-18 exposes real dependency/environment conditions, but any change must be canonicalized before execution.
+The owner may later re-order tranches when MIB-18 exposes real dependency/environment conditions, but any change must be canonicalized before execution. SAA may not be silently removed from the SMB-09→SMB-10 boundary without a later explicit owner decision.
 
 ## 5. Whole-program product proof
 
 A central SMB/BRP milestone is that four ordinary users on separate devices/locations can create/sign into accounts, join a Campaign, build/use Characters, play a complete live session, continue asynchronously, exercise major game systems, recover from disconnects, update safely, return later and resume from the same authoritative history without developer intervention.
+
+The mature Creator proof also includes being able to discover eligible ARI resources, author/recover a SAA comic project and move eligible creator content through SMB-11 without provenance or rights loss.
 
 SMB is completed only when its declared release-oriented acceptance package proves a genuinely usable product rather than merely complete architecture. BRP-11 provides the earlier bounded `BETA_READY` proof required before normal SMB-17 external beta.
