@@ -1,0 +1,181 @@
+name: VTI-11 RED Unlock Projection
+on:
+  push:
+    branches:
+      - governance/vti-11-seal-red-unlock-production
+permissions:
+  contents: write
+jobs:
+  project:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: governance/vti-11-seal-red-unlock-production
+          fetch-depth: 0
+      - name: Seal matching RED and open bounded production
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, pathlib
+          ROOT = pathlib.Path('.')
+          APP_BASE = '145eee04181b9ed66cae887ea6830da111918c25'
+          APP_BRANCH = 'integration/vti-11-adventure-campaign-package-export'
+          APP_PR = 440
+          RED_HEAD = '8c2f75144404d4fef558a4383b081621282a9a55'
+          RED_RUN = 34206133589
+          RED_SELECTOR = 101995926174
+          RED_LINUX = 101995973396
+          RED_WINDOWS = 101995973371
+          RED_COMPARE = 101996191118
+          RED_RECEIPT = 'ac550c382fa35df15d600a938f65228078c706a33592200320b19cd1952709b3'
+          LINUX_ARTIFACT = 10047821469
+          WINDOWS_ARTIFACT = 10047839414
+          COMPARE_ARTIFACT = 10047848771
+          LINUX_DIGEST = '6ad82bc5928e6e5709bf736ebffb258d32a2669febdb91f014206678376e4e94'
+          WINDOWS_DIGEST = 'd0939ef8c5360cc4ab0efba0122f3862545fda48598da89f16c7114eb417c7f2'
+          COMPARE_DIGEST = '8ac9e2de5382a3c5e302198e151ba579e3e0900a31858de12b9670e007923a98'
+          CONTRACT = 'packages/contracts/src/virtual-tabletop-interoperability/adventure-campaign-package-export-contract.ts'
+          SUP = pathlib.Path('governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_VTI11_GOVERNED_START_2026-09-08.md')
+
+          def load(path):
+              return json.loads((ROOT/path).read_text(encoding='utf-8'))
+          def save(path, obj):
+              (ROOT/path).write_text(json.dumps(obj, separators=(',', ':')) + '\n', encoding='utf-8')
+
+          red = {
+              'head_sha': RED_HEAD,
+              'run_id': RED_RUN,
+              'repository_health_job': RED_SELECTOR,
+              'linux_job': RED_LINUX,
+              'windows_job': RED_WINDOWS,
+              'deterministic_compare_job': RED_COMPARE,
+              'deterministic_receipt_sha256': RED_RECEIPT,
+              'matching_red_observed': True,
+              'failure_stage': 'vti11-invariants',
+              'failure_reason': 'production contract intentionally absent',
+              'linux_artifact_id': LINUX_ARTIFACT,
+              'windows_artifact_id': WINDOWS_ARTIFACT,
+              'comparison_artifact_id': COMPARE_ARTIFACT,
+              'linux_artifact_digest_sha256': LINUX_DIGEST,
+              'windows_artifact_digest_sha256': WINDOWS_DIGEST,
+              'comparison_artifact_digest_sha256': COMPARE_DIGEST,
+              'raw_evidence_confirmed': True,
+              'historical_profile_fanout': 0,
+          }
+
+          cp_path = pathlib.Path('governance/ai/work-state/VTI-11-attempt-001.json')
+          cp = load(cp_path)
+          assert cp['status'] == 'in_progress'
+          assert cp['implementation_branch'] == APP_BRANCH
+          assert cp['application_baseline_sha'] == APP_BASE
+          assert cp['production_mutation_authorized'] is False
+          cp['schema_version'] = '0.3.0'
+          cp['application_pr'] = APP_PR
+          cp['production_mutation_authorized'] = True
+          cp['validation']['acceptance_red'] = red
+          cp['selection_boundaries'] = [
+              f'VTI-10 is completed_verified and retired after exact application merge {APP_BASE}.',
+              f'VTI-11 remains in_progress on {APP_BRANCH} from exact application baseline {APP_BASE}; application PR #{APP_PR} is the only active product branch.',
+              f'Genuine matching self-hosted Linux/Windows VTI-11 RED is sealed from exact head {RED_HEAD} / run {RED_RUN} / deterministic receipt {RED_RECEIPT}; bounded production mutation is open only for {CONTRACT}.',
+              'Provider credentials/accounts, provider network access, live external/canonical mutation, durable VTI persistence/new migration, provider activation, tester distribution, package publication/upload/distribution and release/deployment remain unauthorized.',
+              'ARI/SAA remain owner-approved planning only, P3D remains deferred, and VTI-12+/SGC-01+ remain unauthorized.'
+          ]
+          cc = cp['convergence_control']
+          cc['execution_cycles'] = max(2, int(cc.get('execution_cycles', 0)))
+          changed = cc.setdefault('retry_basis', {}).setdefault('changed_since_previous', [])
+          changed.append(f'Exact application acceptance head {RED_HEAD} produced matching Linux/Windows vti11-invariants RED in run {RED_RUN}, with deterministic receipt {RED_RECEIPT}, comparator PASS and zero historical profile fanout.')
+          changed.append(f'Production authority is now opened only for {CONTRACT}; every provider/live/persistence/publication/distribution/release/successor boundary remains closed.')
+          cc['unrelated_historical_validation_jobs_observed'] = 0
+          cp['next_action'] = f'Implement only {CONTRACT}, then run the exact current-family VTI-11 Linux/Windows/comparator gate.'
+          authorized = cp['implementation_scope']['authorized']
+          production_line = f'bounded production implementation of {CONTRACT} after sealed matching RED'
+          if production_line not in authorized:
+              authorized.append(production_line)
+          cp['implementation_scope']['not_authorized'] = [
+              'provider credentials/accounts or live provider network access',
+              'live external synchronization mutation or canonical game-state mutation',
+              'durable VTI persistence or new migration',
+              'provider activation, tester distribution, package publication/upload/distribution, release or deployment',
+              'VTI-12+ or SGC-01+ implementation'
+          ]
+          save(cp_path, cp)
+
+          p_path = pathlib.Path('governance/ai/runtime/CURRENT_WORK_POINTER.json')
+          p = load(p_path)
+          p['active_attempt']['application_pr'] = APP_PR
+          p['bounded_authority']['production_mutation_authorized'] = True
+          p['bounded_authority']['matching_red_observed'] = True
+          p['bounded_authority']['vti_scope'] = f'VTI-11 matching RED sealed; production mutation is open only for {CONTRACT}. Provider/live/persistence/publication/distribution/release/successor boundaries remain closed.'
+          p['selection_invariants'] = cp['selection_boundaries']
+          p['exact_next_action'] = cp['next_action']
+          save(p_path, p)
+
+          r_path = pathlib.Path('governance/ai/runtime/ROADMAP_INDEX.json')
+          r = load(r_path)
+          r['current']['application_pr'] = APP_PR
+          r['current']['matching_red_observed'] = True
+          r['current']['production_mutation_authorized'] = True
+          r['boundaries'] = cp['selection_boundaries']
+          save(r_path, r)
+
+          a_path = pathlib.Path('governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json')
+          a = load(a_path)
+          a['active_planning_work']['application_pr'] = APP_PR
+          a['active_planning_work']['implementation_scope'] = f'VTI-11 package-export production contract only after sealed matching RED; provider/live/persistence/publication/distribution/release/successor authority remains closed.'
+          auth = a['vti_11_authority']
+          auth['application_pr'] = APP_PR
+          auth['matching_red_observed'] = True
+          auth['production_mutation_authorized'] = True
+          for key in ('provider_activation_authorized','tester_distribution_authorized','release_or_deployment_authorized','vti12_plus_authorized','sgc01_plus_authorized'):
+              auth[key] = False
+          save(a_path, a)
+
+          b_path = pathlib.Path('governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json')
+          b = load(b_path)
+          for t in b['tranches']:
+              if t['id'] == 'VTI-11':
+                  t['application_pr'] = APP_PR
+                  t['matching_red_observed'] = True
+                  t['production_mutation_authorized'] = True
+          ac = b['active_contract']
+          ac['application_pr'] = APP_PR
+          ac['matching_red_observed'] = True
+          ac['production_mutation_authorized'] = True
+          ac['rule'] = f'Matching VTI-11 application RED is sealed. Production mutation is open only for {CONTRACT}; provider/live/persistence/publication/distribution/release/successor authority remains closed.'
+          b['boundaries'] = cp['selection_boundaries']
+          save(b_path, b)
+
+          rt_path = pathlib.Path('governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json')
+          rt = load(rt_path)
+          aw = rt['active_work']
+          aw['application_pr'] = APP_PR
+          aw['matching_red_observed'] = True
+          aw['production_mutation_authorized'] = True
+          aw['execution_rule'] = f'Matching RED sealed. Only {CONTRACT} may be added before the exact current-family final gate.'
+          rt['boundaries'] = cp['selection_boundaries']
+          save(rt_path, rt)
+
+          test_path = ROOT / 'tests/control_plane/test_vti11_red_unlock.py'
+          test_path.write_text('''import json\nimport unittest\nfrom pathlib import Path\n\nROOT = Path(__file__).resolve().parents[2]\n\ndef load_json(path):\n    return json.loads((ROOT / path).read_text(encoding="utf-8"))\n\nclass Vti11RedUnlockTests(unittest.TestCase):\n    def test_matching_red_opens_only_bounded_vti11_production(self):\n        cp = load_json("governance/ai/work-state/VTI-11-attempt-001.json")\n        pointer = load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")\n        authority = load_json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")\n        backlog = load_json("governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json")\n        runtime = load_json("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")\n        roadmap = load_json("governance/ai/runtime/ROADMAP_INDEX.json")\n        red = cp["validation"]["acceptance_red"]\n        self.assertEqual(cp["status"], "in_progress")\n        self.assertEqual(cp["application_pr"], 440)\n        self.assertEqual(red["head_sha"], "8c2f75144404d4fef558a4383b081621282a9a55")\n        self.assertEqual(red["run_id"], 34206133589)\n        self.assertEqual(red["repository_health_job"], 101995926174)\n        self.assertEqual(red["linux_job"], 101995973396)\n        self.assertEqual(red["windows_job"], 101995973371)\n        self.assertEqual(red["deterministic_compare_job"], 101996191118)\n        self.assertEqual(red["deterministic_receipt_sha256"], "ac550c382fa35df15d600a938f65228078c706a33592200320b19cd1952709b3")\n        self.assertEqual(red["failure_stage"], "vti11-invariants")\n        self.assertEqual(red["failure_reason"], "production contract intentionally absent")\n        self.assertTrue(red["matching_red_observed"])\n        self.assertTrue(red["raw_evidence_confirmed"])\n        self.assertEqual(red["historical_profile_fanout"], 0)\n        self.assertTrue(cp["production_mutation_authorized"])\n        self.assertTrue(pointer["bounded_authority"]["production_mutation_authorized"])\n        self.assertTrue(pointer["bounded_authority"]["matching_red_observed"])\n        self.assertTrue(roadmap["current"]["production_mutation_authorized"])\n        self.assertTrue(roadmap["current"]["matching_red_observed"])\n        self.assertTrue(authority["vti_11_authority"]["production_mutation_authorized"])\n        self.assertTrue(authority["vti_11_authority"]["matching_red_observed"])\n        self.assertTrue(backlog["active_contract"]["production_mutation_authorized"])\n        self.assertTrue(backlog["active_contract"]["matching_red_observed"])\n        self.assertTrue(runtime["active_work"]["production_mutation_authorized"])\n        self.assertTrue(runtime["active_work"]["matching_red_observed"])\n        for key in ("vti12_plus_authorized", "sgc01_plus_authorized", "provider_activation_authorized", "tester_distribution_authorized", "release_or_deployment_authorized"):\n            self.assertFalse(cp["authority_boundary"][key])\n        for planned in roadmap["planned_programs"]:\n            self.assertFalse(planned["implementation_authority"])\n        for deferred in roadmap["deferred_future_projects"]:\n            self.assertFalse(deferred["implementation_authority"])\n            self.assertFalse(deferred["automatic_activation"])\n\nif __name__ == "__main__":\n    unittest.main()\n''', encoding='utf-8')
+
+          existing = SUP.read_text(encoding='utf-8')
+          marker = '\n## Matching application RED and bounded production unlock\n'
+          section = f'''\n## Matching application RED and bounded production unlock\n\n- application PR: `#{APP_PR}`\n- exact acceptance head: `{RED_HEAD}`\n- current-family run: `{RED_RUN}`\n- selector/repository-health job: `{RED_SELECTOR}` — PASS\n- Linux job: `{RED_LINUX}` — matching RED at `vti11-invariants`\n- Windows job: `{RED_WINDOWS}` — matching RED at `vti11-invariants`\n- deterministic comparator: `{RED_COMPARE}` — PASS\n- deterministic receipt: `{RED_RECEIPT}`\n- Linux artifact: `{LINUX_ARTIFACT}` / `{LINUX_DIGEST}`\n- Windows artifact: `{WINDOWS_ARTIFACT}` / `{WINDOWS_DIGEST}`\n- comparison artifact: `{COMPARE_ARTIFACT}` / `{COMPARE_DIGEST}`\n- historical profile fanout: `0`\n- failure reason: production contract intentionally absent\n\nThis seals the acceptance RED and opens production mutation only for `{CONTRACT}`. All provider credentials/accounts/network, live mutation, persistence/migration, activation, tester distribution, package publication/upload/distribution, release/deployment, VTI-12+ and SGC-01+ authority remains closed.\n'''
+          if marker in existing:
+              existing = existing.split(marker)[0].rstrip() + '\n'
+          SUP.write_text(existing.rstrip() + section, encoding='utf-8')
+          PY
+          rm .github/workflows/vti11-red-unlock-projection.yml
+          python3 -m unittest tests.control_plane.test_vti11_red_unlock
+          python3 -m unittest discover -s tests/control_plane -p 'test_*.py'
+      - name: Commit sealed RED state and remove helper
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'cybalicistjt-stack'
+          git config user.email 'cybalicist.jt@gmail.com'
+          git add -A
+          git commit -m 'VTI-11: seal matching RED and unlock bounded production'
+          git push origin HEAD:governance/vti-11-seal-red-unlock-production
