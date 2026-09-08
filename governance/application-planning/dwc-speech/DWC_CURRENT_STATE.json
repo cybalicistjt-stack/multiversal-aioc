@@ -1,0 +1,163 @@
+{
+  "schema_version": "0.1.0",
+  "project_id": "DWC-SPEECH",
+  "project_name": "DWC Speech Synthesis",
+  "owner": "John Brandon Turner",
+  "status": "in_progress",
+  "updated_at": "2026-09-08",
+  "authority_scope": "DWC project continuity only; does not select Multiversal software roadmap work",
+  "stable_entrypoint": "governance/application-planning/dwc-speech/README.md",
+  "human_anchor": "governance/application-planning/dwc-speech/DWC_PROJECT_ANCHOR.md",
+  "execution_frontier": {
+    "name": "Direct Piper exact-custom-ID warm-start validation",
+    "state": "in_progress",
+    "summary": "The neural proxy has been proven. The unfinished frontier is rehydrating/verifying the pretrained checkpoint as needed, inspecting compatibility, and running a tiny direct custom-ID Piper warm-start smoke test.",
+    "do_not_regress_to": [
+      "language redesign",
+      "PSS/CNS rediscovery",
+      "whether the exact-ID frontend exists",
+      "whether the 799-row corpus exists",
+      "whether the ONNX proxy can render DWC",
+      "whether Piper source supports dataset_type=phoneme_ids",
+      "whether Piper source supports vocoder_warmstart_ckpt"
+    ]
+  },
+  "verified_achievements": [
+    {
+      "id": "dwc_language_pre_audio_handoff",
+      "state": "verified_complete",
+      "fact": "DWC language/etymology/PSS/CNS work progressed through the pre-audio TTS handoff.",
+      "evidence": "DWC_CONVERSATION_EXECUTION_RECOVERY (1).md"
+    },
+    {
+      "id": "exact_id_frontend",
+      "state": "verified_complete",
+      "fact": "An engine-independent DWC frontend exists that produces exact custom phoneme IDs.",
+      "evidence": "DWC_CONVERSATION_EXECUTION_RECOVERY (1).md"
+    },
+    {
+      "id": "bootstrap_corpus_799",
+      "state": "verified_complete",
+      "fact": "A synthetic exact-ID aligned DWC bootstrap corpus of 799 utterances exists and passed the prior exact-ID Piper preflight.",
+      "evidence": "Prior MHT transcript plus DWC recovery record"
+    },
+    {
+      "id": "onnx_neural_proxy",
+      "state": "verified_complete",
+      "fact": "The neural proxy rendered 199/199 DWC regression utterances, reported 0 unsupported CNS IPA symbols in that set, produced about 4.6 minutes of audio, and bypassed English G2P.",
+      "evidence": "Multiversal app - Synth V Uses (1).mht"
+    },
+    {
+      "id": "piper_custom_ids_source_support",
+      "state": "verified_complete",
+      "fact": "Piper v1.8.0 source inspection established direct owner-supplied phoneme-ID dataset support via dataset_type=phoneme_ids.",
+      "evidence": "DWC_CONVERSATION_EXECUTION_RECOVERY (1).md"
+    },
+    {
+      "id": "piper_vocoder_warmstart_support",
+      "state": "verified_complete",
+      "fact": "Piper source inspection established vocoder_warmstart_ckpt support.",
+      "evidence": "DWC_CONVERSATION_EXECUTION_RECOVERY (1).md"
+    }
+  ],
+  "known_external_artifacts": [
+    {
+      "name": "lj-med_1000.zip",
+      "location": "Google Drive / Transfer file",
+      "state": "split_for_transfer",
+      "notes": "Original archive exceeded connector per-file limit. Previous verified Drive state exposed eight parts .001-.008. Revalidate only if required by the current runtime."
+    },
+    {
+      "name": "lj-med_1000.ckpt",
+      "location": "inside reconstructed lj-med_1000.zip",
+      "state": "not_yet_verified_in_current_dwc_frontier",
+      "notes": "Needs integrity and Piper compatibility inspection before warm-start claim."
+    },
+    {
+      "name": "DWC-Semantic-Lexicon-Redesign-v2-2026-09-07.zip",
+      "location": "referenced in prior conversation",
+      "state": "supporting_language_artifact"
+    },
+    {
+      "name": "Piper v1.8.0 source",
+      "state": "previously_uploaded_and_extracted"
+    },
+    {
+      "name": "LJSpeech medium ONNX model and config",
+      "state": "previously_uploaded_and_used_for_proxy_proof"
+    }
+  ],
+  "prior_runtime_checkpoint_parts": {
+    "external_drive_verified": [".001", ".002", ".003", ".004", ".005", ".006", ".007", ".008"],
+    "prior_local_runtime_recorded": [".001", ".002", ".003", ".004"],
+    "current_conversation_runtime": "not_yet_rehydrated_or_revalidated",
+    "interpretation_rule": "Missing ephemeral files in a new sandbox do not reset logical project progress. Fetch only what the current runtime actually lacks."
+  },
+  "next_execution_sequence": [
+    {
+      "step": 1,
+      "state": "not_started_in_current_conversation",
+      "action": "Inspect current runtime/external evidence and rehydrate only missing checkpoint parts; do not rediscover closed facts."
+    },
+    {
+      "step": 2,
+      "state": "not_started_in_current_conversation",
+      "action": "Reassemble all eight split parts in numeric order."
+    },
+    {
+      "step": 3,
+      "state": "not_started_in_current_conversation",
+      "action": "Verify split/checksum manifest if present, ZIP central directory, and extracted checkpoint size/hash."
+    },
+    {
+      "step": 4,
+      "state": "not_started_in_current_conversation",
+      "action": "Extract lj-med_1000.ckpt."
+    },
+    {
+      "step": 5,
+      "state": "not_started_in_current_conversation",
+      "action": "Inspect checkpoint keys/shapes and confirm Piper-version compatibility."
+    },
+    {
+      "step": 6,
+      "state": "not_started_in_current_conversation",
+      "action": "Run a tiny direct DWC exact-custom-ID Piper warm-start smoke using the exact-ID corpus, bypassing unused English G2P/VAD paths as needed."
+    },
+    {
+      "step": 7,
+      "state": "conditional",
+      "action": "If CPU VITS construction still exceeds the execution surface, classify sustained acoustic training as environment_unavailable and move to a GPU-ready exact harness without reopening language design or proxy discovery."
+    }
+  ],
+  "execution_rules": {
+    "continue_semantics": "Remain in execution mode until the largest safe bounded unit is verified complete or a genuine blocker is fully evidenced.",
+    "progress_update_is_stop_boundary": false,
+    "narrative_summary_can_override_tool_evidence": false,
+    "conversation_reset_resets_project": false,
+    "started_equals_complete": false,
+    "artifact_exists_equals_complete": false,
+    "timeout_recovery": "Resume at the failing boundary or take the defined environment fallback; do not restart from earlier closed work.",
+    "state_labels": [
+      "not_started",
+      "in_progress",
+      "verified_complete",
+      "blocked_with_evidence",
+      "environment_unavailable"
+    ]
+  },
+  "unproven_or_open": [
+    "Compatibility of the reassembled lj-med_1000.ckpt with the intended Piper custom-ID warm-start path",
+    "Successful direct custom-ID VitsModel warm-start construction on DWC data",
+    "Sustained DWC acoustic training to convergence",
+    "Final DWC-native trained voice model",
+    "Formal intelligibility/pronunciation/voice-quality evaluation beyond the proxy proof",
+    "Production licensing/deployment/application integration decision",
+    "Whether Piper remains the final production engine"
+  ],
+  "source_provenance": [
+    "Multiversal app - Synth V Uses (1).mht",
+    "DWC_CONVERSATION_EXECUTION_RECOVERY (1).md"
+  ],
+  "mutable_facts_require_live_recheck_before_claim": true
+}
