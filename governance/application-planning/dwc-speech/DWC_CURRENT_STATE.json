@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.3.0",
+  "schema_version": "0.4.0",
   "project_id": "DWC-SPEECH",
   "project_name": "DWC Speech Synthesis",
   "owner": "John Brandon Turner",
@@ -9,92 +9,151 @@
   "stable_entrypoint": "governance/application-planning/dwc-speech/README.md",
   "human_anchor": "governance/application-planning/dwc-speech/DWC_PROJECT_ANCHOR.md",
   "latest_training_evidence": "governance/application-planning/dwc-speech/DWC_TRAINING_EVIDENCE_STAGE_C_v0.1.0.json",
+  "stage_d_harness": "governance/application-planning/dwc-speech/dwc_stage_d_continue.py",
+  "perceptual_gate": "governance/application-planning/dwc-speech/DWC_STAGE_C_PERCEPTUAL_GATE.md",
+  "current_execution_surface_evidence": "governance/application-planning/dwc-speech/DWC_STAGE_D_EXECUTION_SURFACE_2026-09-08.json",
   "execution_frontier": {
-    "name": "Perceptual CNS evaluation, Stage-D adaptation, and export",
-    "state": "in_progress",
-    "summary": "The direct exact-ID path has advanced through three real adaptation stages. Stage A completed 100 batches/200 optimizer steps on a balanced 128-row subset; Stage B completed 200 batches/400 optimizer steps on the full 799-row corpus; Stage C completed 100 targeted batches/200 optimizer steps for short-form and special-phone repair. Machine waveform acceptance advanced from 123/125 after Stage B to 125/125 after Stage C. Stage-C weights have been recovered and hash-verified in the current conversation. The remaining frontier is human/perceptual CNS evaluation, longer Stage-D adaptation from Stage-C weights, then export and final acoustic acceptance.",
+    "name": "Perceptual CNS evaluation, Stage-D GPU continuation, and candidate export",
+    "state": "blocked_with_evidence_on_current_surface",
+    "summary": "DWC exact-ID acoustic adaptation is verified through Stage C. Stage A completed 100 batches/200 optimizer steps; Stage B completed 200 batches/400 optimizer steps on all 799 synthetic rows and reached 123/125 machine waveform acceptance; Stage C completed 100 targeted batches/200 optimizer steps and reached 125/125 machine waveform acceptance. The exact Stage-C weights were reassembled in the current conversation and matched their recorded SHA-256. A deterministic Stage-D continuation harness and self-contained Colab notebook are now externally preserved. The current ChatGPT sandbox is CPU-only with no CUDA, so Stage-D GPU execution is unavailable here. Human CNS auditory scoring is also a required perceptual gate and cannot be substituted by waveform sanity checks.",
     "do_not_regress_to": [
       "language redesign",
       "PSS/CNS rediscovery",
-      "whether the exact-ID frontend exists",
-      "whether the 799-row corpus exists",
-      "whether the ONNX neural proxy can render DWC",
-      "whether Piper supports exact owner-supplied phoneme IDs",
-      "whether Piper supports warm-start",
-      "whether direct exact-ID warm-start is viable",
-      "whether real optimizer updates can train the DWC embedding/path",
-      "Stage A rediscovery",
-      "Stage B rediscovery",
-      "Stage C rediscovery"
+      "exact-ID frontend discovery",
+      "799-row corpus discovery",
+      "ONNX proxy proof",
+      "Piper exact-ID support discovery",
+      "warm-start proof",
+      "initial optimizer proof",
+      "Stage A",
+      "Stage B",
+      "Stage C"
     ]
   },
   "verified_achievements": [
-    {"id":"dwc_language_pre_audio_handoff","state":"verified_complete","fact":"DWC language/etymology/PSS/CNS work progressed through the pre-audio TTS handoff."},
-    {"id":"exact_id_frontend","state":"verified_complete","fact":"An engine-independent DWC frontend exists that produces exact custom phoneme IDs."},
-    {"id":"bootstrap_corpus_799","state":"verified_complete","fact":"A synthetic exact-ID aligned DWC bootstrap corpus of 799 utterances exists and passed exact-ID preflight."},
-    {"id":"onnx_neural_proxy","state":"verified_complete","fact":"The neural proxy rendered 199/199 DWC regression utterances with 0 unsupported CNS IPA symbols in that set and bypassed English G2P."},
-    {"id":"piper_custom_id_and_warmstart","state":"verified_complete","fact":"Piper v1.8.0 supports direct owner-supplied phoneme IDs and the warm-start mechanism used by the DWC path."},
-    {"id":"direct_custom_id_warmstart_viability","state":"verified_complete","fact":"The pretrained Piper/LJSpeech checkpoint successfully warm-starts the DWC direct exact-custom-ID path without replacing the 58-symbol DWC embedding."},
-    {"id":"real_training_stage_a","state":"verified_complete","fact":"Stage A completed 100 training batches / 200 optimizer steps on a balanced 128-row subset."},
-    {"id":"real_training_stage_b","state":"verified_complete","fact":"Stage B completed 200 training batches / 400 optimizer steps on the full 799-row synthetic DWC corpus; machine waveform acceptance was 123/125."},
-    {"id":"real_training_stage_c","state":"verified_complete","fact":"Stage C completed 100 targeted batches / 200 optimizer steps for short-form/special-phone repair; machine waveform acceptance was 125/125."},
-    {"id":"stage_c_weights_recovered","state":"verified_complete","fact":"Stage-C weights were reassembled in the 2026-09-08 recovery conversation: 281,775,417 bytes; SHA-256 d800ae031942c29289ced1cc80c1448fff234c53f42a56f2d69265e7e3ebabb2, matching the recorded recovery hash."}
+    {"id":"dwc_language_pre_audio_handoff","state":"verified_complete","fact":"DWC language/etymology/PSS/CNS progressed through the pre-audio TTS handoff."},
+    {"id":"exact_id_frontend","state":"verified_complete","fact":"An engine-independent DWC frontend emits exact custom phoneme IDs without English G2P."},
+    {"id":"bootstrap_corpus_799","state":"verified_complete","fact":"The synthetic exact-ID DWC corpus contains 799 aligned utterances and passed prior exact-ID preflight."},
+    {"id":"onnx_neural_proxy","state":"verified_complete","fact":"The neural proxy rendered 199/199 regression utterances with 0 unsupported CNS IPA symbols in that set and bypassed English G2P."},
+    {"id":"piper_custom_id_warmstart","state":"verified_complete","fact":"Piper v1.8.0 direct exact-ID input and the DWC warm-start path are proven; the 58×192 DWC embedding is preserved while matching acoustic/vocoder tensors are warm-started."},
+    {"id":"stage_a_training","state":"verified_complete","fact":"Stage A completed 100 training batches / 200 optimizer steps on a balanced 128-row subset."},
+    {"id":"stage_b_training","state":"verified_complete","fact":"Stage B completed 200 training batches / 400 optimizer steps on all 799 rows; machine waveform acceptance was 123/125."},
+    {"id":"stage_c_training","state":"verified_complete","fact":"Stage C completed 100 targeted batches / 200 optimizer steps on 75 special-phone contrast + 53 lexical-coverage rows; machine waveform acceptance was 125/125."},
+    {"id":"stage_c_weights_recovered","state":"verified_complete","fact":"Stage-C weights were reassembled and hash-verified in the current conversation at 281,775,417 bytes and SHA-256 d800ae031942c29289ced1cc80c1448fff234c53f42a56f2d69265e7e3ebabb2."},
+    {"id":"stage_d_handoff_prepared","state":"verified_complete","fact":"A deterministic Stage-D continuation harness and self-contained GPU notebook were prepared from the verified Stage-C state; they do not re-enter warm-start or Stages A/B/C."}
   ],
-  "current_artifacts": [
-    {"name":"DWC_Piper_Training_Recovery_Light_v0.1.0.zip","location":"Google Drive / Transfer file","state":"verified","sha256_current_recheck":"337f5e7a592a8fcc36b84fa43a0aa0abd1ef5a29e7db353882278b17a2b21007"},
-    {"name":"stageC_weights.pt","location":"reconstructable from four Drive part ZIPs","state":"verified","bytes":281775417,"sha256":"d800ae031942c29289ced1cc80c1448fff234c53f42a56f2d69265e7e3ebabb2"},
-    {"name":"StageB_Acceptance_Demo.mp3","state":"available in recovery package"},
-    {"name":"StageC_Acceptance_Demo.mp3","state":"available in recovery package"},
-    {"name":"DWC_Piper_Custom58_GPU_Training_v0.2.ipynb","location":"Google Drive / Transfer file","state":"available; historical Stage-A/B GPU harness"},
-    {"name":"DWC_TTS_ENGINE_03_Acoustic_Spike_Harness_v0.1.0.zip","location":"Google Drive / Transfer file","state":"available"},
-    {"name":"DWC_Synthetic_Bootstrap_Corpus_v0.1.0.zip","location":"Google Drive / Transfer file","state":"available"},
-    {"name":"DWC_TTS_PHONEME_ID_MAP.json","location":"Google Drive / Transfer file","state":"available"}
-  ],
+  "verified_stage_c_state": {
+    "file": "stageC_weights.pt",
+    "bytes": 281775417,
+    "sha256": "d800ae031942c29289ced1cc80c1448fff234c53f42a56f2d69265e7e3ebabb2",
+    "model_state_dict_tensor_keys": 784,
+    "num_symbols": 58,
+    "sample_rate": 22050,
+    "segment_size": 2048,
+    "stageC_global_step": 200
+  },
+  "prepared_stage_d": {
+    "harness": {
+      "repository_path": "governance/application-planning/dwc-speech/dwc_stage_d_continue.py",
+      "semantics": "starts from verified Stage-C model state; generator/discriminator optimizers reinitialized because the recovered Stage-C artifact does not include optimizer state",
+      "curriculum": "one deterministic shuffled pass over all 799 corpus rows plus one interleaved extra pass over the 128 Stage-C repair rows",
+      "batches": 927,
+      "optimizer_steps": 1854,
+      "pre_and_post_machine_acceptance_rows": 125,
+      "human_gate_is_separate": true
+    },
+    "colab_notebook": {
+      "file": "DWC_Piper_Custom58_StageD_Continuation_v0.1.ipynb",
+      "drive_folder": "Transfer file",
+      "drive_file_id": "1zuU3BBs8SySNVroYsjY3Nf3SbE2bZUiY",
+      "bytes": 28123,
+      "sha256": "1c871076abba8c0538553073cc645c2fc49e03fdb48736830b01a075f2854241",
+      "readback_verified": true,
+      "persistent_output_directory": "/content/drive/MyDrive/Transfer file/dwc_stageD_run_v0.1"
+    }
+  },
   "current_execution_surface": {
-    "torch":"2.10.0+cpu",
-    "cuda_available":false,
-    "cuda_device_count":0,
-    "interpretation":"Current sandbox can recover/inspect/package evidence but cannot serve as the sustained GPU Stage-D training surface. GPU absence is an execution-surface limitation only."
+    "python": "3.13.5",
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+    "torch": "2.10.0+cpu",
+    "cuda_available": false,
+    "cuda_device_count": 0,
+    "stage_d_probe_exit_code": 1,
+    "stage_d_probe_message": "CUDA requested but no CUDA device is available",
+    "classification": "environment_unavailable for Stage-D GPU training on this sandbox only"
   },
-  "next_execution_sequence": [
-    {"step":1,"state":"in_progress","action":"Complete machine-side recovery and inspection of Stage-C evidence, identify the exact Stage-B review rows repaired by Stage C, and preserve verified hashes/configuration."},
-    {"step":2,"state":"in_progress","action":"Prepare a structured human CNS perceptual evaluation gate using the Stage-B and Stage-C acceptance demos/manifests, emphasizing pronunciation fidelity, full-vowel preservation, stress/rhythm, difficult CNS phones, intelligibility, target accent/style, and meaning preservation."},
-    {"step":3,"state":"blocked_on_gpu_surface","action":"Run longer Stage-D adaptation beginning from verified Stage-C weights, using the exact 58-ID DWC path and a curriculum that preserves the short-form/special-phone gains while extending full-corpus adaptation. Do not restart from LJSpeech warm-start or Stage A/B/C."},
-    {"step":4,"state":"after_stage_d","action":"Produce a durable Stage-D checkpoint, hashes/config/training metrics, controlled evaluation renders, and rerun machine acoustic acceptance."},
-    {"step":5,"state":"after_perceptual_and_machine_acceptance","action":"Select/export the candidate model and package its ONNX/config/phoneme map/provenance with explicit temporary-synthetic-voice status."},
-    {"step":6,"state":"future_authentic_voice","action":"Replace the temporary synthetic acoustic target with human CNS recordings for the authentic production voice while preserving the settled exact-ID language architecture."}
+  "genuine_remaining_gates": [
+    {
+      "gate": "human_cns_perceptual_review",
+      "state": "owner_or_human_action_required",
+      "basis": "Machine waveform acceptance cannot certify DWC/CNS pronunciation, intelligibility, stress/rhythm, accent/style, or meaning preservation.",
+      "contract": "governance/application-planning/dwc-speech/DWC_STAGE_C_PERCEPTUAL_GATE.md"
+    },
+    {
+      "gate": "stage_d_gpu_execution",
+      "state": "environment_unavailable_on_current_sandbox",
+      "basis": "Current sandbox has CPU-only PyTorch and zero CUDA devices.",
+      "exact_next_artifact": "Google Drive Transfer file / DWC_Piper_Custom58_StageD_Continuation_v0.1.ipynb"
+    }
   ],
-  "owner_or_environment_gates": {
-    "perceptual_cns_evaluation":"Requires human auditory judgment; machine waveform acceptance is not a substitute.",
-    "stage_d_gpu":"Requires a GPU-capable execution surface; the current sandbox reports no CUDA devices."
-  },
+  "next_execution_sequence": [
+    {
+      "step": 1,
+      "state": "next_external_execution",
+      "action": "Open DWC_Piper_Custom58_StageD_Continuation_v0.1.ipynb from Google Drive Transfer file in a GPU-capable Colab/runtime and run cells in order. The notebook reconstructs and verifies Stage-C weights before training and persists Stage-D outputs to Drive."
+    },
+    {
+      "step": 2,
+      "state": "parallel_human_gate",
+      "action": "Complete the governed CNS human auditory scorecard on the deterministic Stage-C 125-row acceptance renders; preserve reviewer, completed scorecard, scorer output, render settings, and hashes."
+    },
+    {
+      "step": 3,
+      "state": "after_stage_d_gpu_run",
+      "action": "Inspect Stage-D metrics/checkpoints and post-Stage-D 125-row machine acceptance. Do not promote a candidate solely because the machine gate says 125/125."
+    },
+    {
+      "step": 4,
+      "state": "after_machine_and_human_review",
+      "action": "Compare Stage C and Stage D perceptually, select the better candidate, rerun/complete the human acceptance contract, then export ONNX/config/phoneme-map/provenance with explicit temporary-synthetic-voice status."
+    },
+    {
+      "step": 5,
+      "state": "future_authentic_voice",
+      "action": "Replace the temporary synthetic acoustic target with authentic human CNS recordings while preserving the exact-ID language architecture."
+    }
+  ],
   "execution_rules": {
-    "continue_semantics":"Remain in execution mode until the largest safe bounded unit is verified complete or a genuine blocker is fully evidenced.",
-    "progress_update_is_stop_boundary":false,
-    "narrative_summary_can_override_tool_evidence":false,
-    "conversation_reset_resets_project":false,
-    "started_equals_complete":false,
-    "artifact_exists_equals_complete":false,
-    "revalidation_reopens_completed_milestone":false,
-    "newer_external_evidence_supersedes_stale_conversation_recovery":true,
-    "timeout_recovery":"Resume at the failing boundary or take the defined execution-surface fallback; do not restart closed stages."
+    "continue_semantics": "Remain in execution mode until the largest safe bounded unit is verified complete or a genuine blocker is fully evidenced.",
+    "progress_update_is_stop_boundary": false,
+    "narrative_summary_can_override_tool_evidence": false,
+    "conversation_reset_resets_project": false,
+    "started_equals_complete": false,
+    "artifact_exists_equals_complete": false,
+    "revalidation_reopens_completed_milestone": false,
+    "newer_external_evidence_supersedes_stale_conversation_recovery": true,
+    "machine_waveform_gate_equals_human_perceptual_acceptance": false,
+    "timeout_recovery": "Resume at the failing boundary or move to the defined execution-surface fallback; never restart closed stages merely because the surface changed."
   },
   "unproven_or_open": [
     "Human perceptual confirmation of Stage-C CNS pronunciation and target speech quality",
-    "Longer Stage-D adaptation from the verified Stage-C weights",
-    "Durable Stage-D checkpoint and post-Stage-D acceptance evidence",
+    "Stage-D GPU adaptation from the verified Stage-C weights",
+    "Durable Stage-D checkpoint and post-Stage-D machine/human acceptance evidence",
     "Selected exported temporary DWC model",
     "Authentic human-CNS-recording production voice",
     "Production packaging/licensing/deployment/application integration decision",
-    "Whether Piper remains the final production engine"
+    "Final production-engine choice"
   ],
   "source_provenance": [
     "DWC_Piper_Training_Recovery_Light_v0.1.0.zip",
+    "stageC_weights_part001.zip through stageC_weights_part004.zip",
     "DWC_TTS_GPU_START_HERE.md",
     "DWC_Piper_Custom58_GPU_Training_v0.2.ipynb",
+    "DWC_TTS_ENGINE_03_Acoustic_Spike_Harness_v0.1.0.zip",
+    "DWC_Synthetic_Bootstrap_Corpus_v0.1.0.zip",
     "Multiversal app - Synth V Uses (1).mht",
     "DWC_CONVERSATION_EXECUTION_RECOVERY (1).md",
-    "current 2026-09-08 recovery/reassembly verification"
+    "current 2026-09-08 Stage-C reassembly and Stage-D preparation evidence"
   ],
   "mutable_facts_require_live_recheck_before_claim": true
 }
