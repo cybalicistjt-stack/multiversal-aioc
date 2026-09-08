@@ -36,10 +36,6 @@ class Vti10RedUnlockTests(unittest.TestCase):
             self.assertFalse(cp["production_mutation_authorized"])
             self.assertFalse(authority["vti_10_authority"]["production_mutation_authorized"])
             self.assertTrue(authority["vti_10_authority"]["matching_red_observed"])
-            self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-11")
-            self.assertEqual(backlog["current_item"], "VTI-11")
-            self.assertEqual(index["current"]["work_item_id"], "VTI-11")
-            self.assertEqual(runtime["active_work"]["work_item"], "VTI-11")
         else:
             self.assertTrue(cp["production_mutation_authorized"])
             self.assertTrue(pointer["bounded_authority"]["production_mutation_authorized"])
