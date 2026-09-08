@@ -1,0 +1,99 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"SGC-06B",
+  "status":"CURRENT",
+  "scope":"Avatar/appearance construction, accessibility-equivalent state and device-equivalent behavior only. SGC-06C spatial authoring, practice/microgame, annotation and ARI/SAA/P3D routing remains out of scope.",
+  "scope_basis":"governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_GAMEPLAY_COVERAGE_CLOSURE_PROGRAM.md#sgc-06--ux-creator-avatar-accessibility--workflow-coverage",
+  "disposition_contract":"governance/application-planning/source-gameplay-coverage-closure/SGC_DISPOSITION_EVIDENCE_CONTRACT.json",
+  "retained_source_inventory":"governance/application-planning/source-gameplay-coverage-closure/SGC_RETAINED_SOURCE_CORPUS_INVENTORY.json",
+  "records":[
+    {
+      "concept_id":"SGC-UX-APPEARANCE-ARCHITECTURE-PRODUCTION-PREPARATION",
+      "source_refs":["SGC-SRC-ARI-SAA-P3D-AMENDMENT"],
+      "concept_kind":"character_appearance_architecture_and_production_preparation",
+      "disposition":"content_only",
+      "evidence":{
+        "owner":"PPIA-06 + CAPP-01..12",
+        "owner_paths":["governance/application-planning/character-appearance-production/CAPP-12_INTEGRATED_PRODUCTION_HANDOFF.md","governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ARI_SAA_P3D_AMENDMENT_2026-09-07.md"],
+        "specific_scope":"PPIA-06 remains appearance architecture authority and CAPP-01..12 provide stable choices/constraints, presets, renderer-production metadata, semantic render plans, equipment visual-fit, Appearance Studio state/screen contracts, portrait/token/export derivatives, migration, nonvisual appearance grammar and deterministic QA. The CAPP handoff explicitly activates no application runtime, so this evidence is retained as governed appearance/production content and architecture rather than a false live-product implementation claim."
+      }
+    },
+    {
+      "concept_id":"SGC-UX-APPEARANCE-NONVISUAL-ACCESSIBILITY-GRAMMAR",
+      "source_refs":["SGC-SRC-ARI-SAA-P3D-AMENDMENT","SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind":"appearance_accessibility_description_contract",
+      "disposition":"content_only",
+      "evidence":{
+        "owner":"CAPP-10 / PPIA-06 appearance architecture",
+        "owner_path":"governance/application-planning/character-appearance-production/CAPP-12_INTEGRATED_PRODUCTION_HANDOFF.md",
+        "specific_scope":"CAPP-10 supplies structured nonvisual appearance grammar and the integrated CAPP handoff requires hidden information to be filtered before accessibility description/export. This is implementation-grade appearance accessibility content/contract evidence, but the CAPP handoff explicitly does not activate application runtime."
+      }
+    },
+    {
+      "concept_id":"SGC-UX-FINISHED-CHARACTER-APPEARANCE-AVATAR-CONSTRUCTION",
+      "source_refs":["SGC-SRC-ARI-SAA-P3D-AMENDMENT"],
+      "concept_kind":"finished_character_appearance_avatar_product_experience",
+      "disposition":"planned_owned_elsewhere",
+      "evidence":{
+        "owner":"SMB-10 — Full Player / GM / Creator Product UX",
+        "owner_paths":["governance/application-planning/system-maturation-buildout/SMB_SYSTEM_MATURATION_AND_BUILDOUT_PROGRAM.md","governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ARI_SAA_P3D_AMENDMENT_2026-09-07.md"],
+        "specific_scope":"The canonical roadmap assigns finished Character appearance/avatar construction to SMB-10, which turns completed domain authoring engines into finished production screens/workflows. CAPP/PPIA remain renderer/appearance architecture authorities, while SMB-10 owns the finished product integration. SGC-06B does not start SMB-10 or infer a completed avatar product surface from CAPP preparation."
+      }
+    },
+    {
+      "concept_id":"SGC-UX-ALP-ACCESSIBILITY-PRESENTATION-BASELINE",
+      "source_refs":["SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind":"player_gm_accessibility_projection",
+      "disposition":"implemented",
+      "evidence":{
+        "owner":"ALP-07",
+        "owner_path":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ALP07_CLOSEOUT_2026-09-04.md",
+        "specific_scope":"ALP-07 is completed_verified and freezes deterministic read-only Player/GM UX projection with accessibility metadata and caller-supplied display preferences as presentation-only state. Authorization boundaries remain explicit and hidden/missing information remains unknown rather than inferred."
+      }
+    },
+    {
+      "concept_id":"SGC-UX-MAL-DEVICE-NEUTRAL-SEMANTIC-EQUIVALENCE",
+      "source_refs":["SGC-SRC-MAL-OUTPUTS"],
+      "concept_kind":"device_equivalent_input_and_accessibility_behavior",
+      "disposition":"implemented",
+      "evidence":{
+        "owner":"MAL-09 over MAL-02 device-neutral semantics",
+        "owner_path":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MAL09_CLOSEOUT_2026-09-04.md",
+        "specific_scope":"MAL-09 is completed_verified for semantic-equivalent accessibility controls, device-neutral semantic input normalization, presentation-only performance degradation and deterministic visibility-conservative fallbacks. Device/input presentation variants therefore cannot silently change semantic results or owner-domain truth."
+      }
+    },
+    {
+      "concept_id":"SGC-UX-CROSS-SYSTEM-RESPONSIVE-ACCESSIBILITY-BASELINE",
+      "source_refs":["SGC-SRC-ALP-OUTPUTS","SGC-SRC-MAL-OUTPUTS"],
+      "concept_kind":"application_wide_accessibility_and_responsive_baseline",
+      "disposition":"implemented",
+      "evidence":{
+        "owner":"IC-13 convergence shell",
+        "implementation_path":"apps/client-ui/src/convergence/ic13Convergence.ts",
+        "specific_scope":"The current application convergence manifest marks representative Home, Character, Campaign/Scene, Player Live Session, Combat, Investigation/Social, Inventory/Crafting, World/Content and Admin surfaces application-integrated; it freezes compact/medium/large/expanded responsive classes and accessibility locks including WCAG-AA, visible focus, keyboard operation, screen-reader structure, 200% text scaling, reduced motion, high contrast, non-color status, touch-target floor and nonvisual map/graph alternatives. This is the current baseline, not a claim that final device/localization completion is done."
+      }
+    },
+    {
+      "concept_id":"SGC-UX-FINAL-ACCESSIBILITY-LOCALIZATION-DEVICE-COMPLETION",
+      "source_refs":["SGC-SRC-ALP-OUTPUTS","SGC-SRC-MAL-OUTPUTS"],
+      "concept_kind":"final_supported_device_and_inclusive_use_completion",
+      "disposition":"planned_owned_elsewhere",
+      "evidence":{
+        "owner":"SMB-16 — Accessibility, Localization & Device Completion",
+        "owner_path":"governance/application-planning/system-maturation-buildout/SMB_SYSTEM_MATURATION_AND_BUILDOUT_PROGRAM.md",
+        "specific_scope":"SMB-16 explicitly owns supported-device and inclusive-use completion beyond baseline component compliance: screen readers, keyboard/touch parity, reduced motion, high contrast, font scaling, localization infrastructure, screen classes and Apple/Mac completion when its environment exists. SGC-06B preserves that future obligation and does not promote current baseline accessibility into final completion."
+      }
+    }
+  ],
+  "counts":{"records":7,"implemented":3,"content_only":2,"planned_owned_elsewhere":2,"unresolved_owner_decision":0,"invented_owner_assignments":0},
+  "boundaries":[
+    "CAPP/PPIA appearance architecture and production-preparation evidence is not promoted to live application runtime.",
+    "Finished Character appearance/avatar construction remains SMB-10-owned; SGC-06B does not start SMB-10.",
+    "Current ALP/MAL/IC accessibility and device-equivalence baselines remain implemented evidence, while final accessibility/localization/device completion remains SMB-16-owned.",
+    "Device or presentation variants cannot silently mutate semantic owner-domain truth.",
+    "SGC-06C spatial authoring, practice/microgame, annotation and ARI/SAA/P3D routing remains unauthorized and unstarted.",
+    "Historical audit corpus and unrelated connected systems are not used as current authority."
+  ],
+  "result":"PASS_NO_NEW_OWNER_DECISIONS",
+  "strict_successor":"SGC-06C"
+}
