@@ -3,13 +3,13 @@
     "active_item": "SGC-01A — Disposition Taxonomy & Evidence Contract",
     "attempt_id": "SGC-01A-attempt-001",
     "checkpoint_path": "governance/ai/work-state/SGC-01A-attempt-001.json",
-    "implementation_authority": false,
-    "implementation_branch": null,
+    "implementation_authority": true,
+    "implementation_branch": "governance/sgc-01a-disposition-taxonomy-evidence-contract",
     "owner_selected": true,
     "priority": 1,
     "repository": "cybalicistjt-stack/multiversal-aioc",
     "source_program": "SGC",
-    "status": "selected_not_started",
+    "status": "in_progress",
     "track": "source-gameplay-coverage-closure",
     "work_item_id": "SGC-01A"
   },
@@ -21,29 +21,29 @@
     "name": "Source & Gameplay Coverage Closure",
     "program_id": "SGC",
     "program_path": "governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_GAMEPLAY_COVERAGE_CLOSURE_PROGRAM.md",
-    "status": "selected_not_started",
+    "status": "in_progress",
     "strict_next": "SGC-01B"
   },
   "authority_registry": "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
   "bounded_authority": {
     "family_preflight_sealed": true,
-    "implementation_branch": null,
+    "implementation_branch": "governance/sgc-01a-disposition-taxonomy-evidence-contract",
     "paid_provider_activation": false,
     "release_or_deployment": false,
     "repository_health_maintenance": false,
-    "rule": "SGC-01A is selected_not_started. Implementation authority opens only on an explicit execution Continue governed start, after which the one-Continue terminal rule applies.",
+    "rule": "Only SGC-01A taxonomy/evidence-contract mutation is authorized. Corpus classification and SGC-01B+ remain unauthorized.",
     "selected_sgc_unit": "SGC-01A",
-    "sgc_implementation": false,
+    "sgc_implementation": true,
     "tester_distribution": false
   },
   "canonical_application_roadmap": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
-  "exact_next_action": "On the next execution Continue, governed-start SGC-01A only and carry it through its terminal gate in one continuation.",
+  "exact_next_action": "Define the stable seven-state retained-source disposition taxonomy and evidence/stable-reference contract for SGC-01A, validate it, merge, close SGC-01A completed_verified, and select SGC-01B.",
   "family_execution_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
   "primary_attempt_id": "SGC-01A-attempt-001",
   "recently_completed_implementation_work": [
-    {"acceptance_red_head":"c4685d0f11c0f4e8eb65b182f935551ac8c01a68","acceptance_red_receipt_sha256":"0ae11513dfbff7a71c2932c2eb93219d1b3a3583e68b357dccf8dd58f70c8a5f","acceptance_red_run":34219627122,"application_feature_repair_cycles":0,"application_pr":441,"deterministic_compare_job":102047264185,"deterministic_receipt_sha256":"77536c1214f37374ca8ea1b2f1f627b30e209f52bb141133d690cdfc9b0544a4","historical_profile_fanout":0,"linux_job":102046862169,"merge_sha":"7e93bc4bb1c3b8ecc9bc4424dd7422ea328e2765","repository_health_job":102046822714,"repository_state_repair_cycles":1,"status":"completed_verified","validated_head":"712f7096118ae065d3d17492e2cc5effa1d83034","validation_contract_repair_cycles":3,"validation_run":34221889244,"windows_job":102046862112,"work_item_id":"VTI-12"},
-    {"acceptance_red_head":"8c2f75144404d4fef558a4383b081621282a9a55","acceptance_red_receipt_sha256":"ac550c382fa35df15d600a938f65228078c706a33592200320b19cd1952709b3","acceptance_red_run":34206133589,"application_feature_repair_cycles":0,"application_pr":440,"deterministic_compare_job":102020518385,"deterministic_receipt_sha256":"07fc593e61d3c4f8e327fcda4549bbfafa3fa78cae8830bd24c9fa64889ec40b","historical_profile_fanout":0,"linux_job":102020117401,"merge_sha":"1c092252aedbc274058222451fad2401e1a3aa39","repository_health_job":102020072033,"repository_state_repair_cycles":0,"status":"completed_verified","validated_head":"ebc5f0265799788ce2f3c5b2b9da5da1b2da3d90","validation_contract_repair_cycles":2,"validation_run":34213605901,"windows_job":102020117411,"work_item_id":"VTI-11"}
+    {"application_pr":441,"deterministic_receipt_sha256":"77536c1214f37374ca8ea1b2f1f627b30e209f52bb141133d690cdfc9b0544a4","merge_sha":"7e93bc4bb1c3b8ecc9bc4424dd7422ea328e2765","status":"completed_verified","validated_head":"712f7096118ae065d3d17492e2cc5effa1d83034","validation_run":34221889244,"work_item_id":"VTI-12"},
+    {"application_pr":440,"merge_sha":"1c092252aedbc274058222451fad2401e1a3aa39","status":"completed_verified","validated_head":"ebc5f0265799788ce2f3c5b2b9da5da1b2da3d90","validation_run":34213605901,"work_item_id":"VTI-11"}
   ],
   "recently_completed_repository_health_maintenance": [
     {"aioc_main_health_run":33188650058,"aioc_merge":"bf12f46126782a523623507262661f273cab5669","aioc_pr":781,"aioc_repository_health_run":33188605756,"aioc_validated_head":"d2e0d975039af7fa6f547f65c02844001c62ea78","application_merge":"d007dc980c63a7beab4ab9a4ddbc67525f8d7003","application_pr":337,"checkpoint_path":"governance/ai/work-state/MV-CONT-008-attempt-001.json","status":"completed_verified","superseded_prs_closed":[],"work_item_id":"MV-CONT-008"},
@@ -51,14 +51,14 @@
   ],
   "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
   "roadmap_supplements": [],
-  "schema_version": "16.0.0",
+  "schema_version": "16.1.0",
   "selection_invariants": [
     "VTI-12 remains completed_verified and retired at exact application merge 7e93bc4bb1c3b8ecc9bc4424dd7422ea328e2765.",
-    "The SGC family preflight is sealed before SGC implementation authority.",
-    "SGC-01A is selected_not_started with no branch and no implementation authority.",
-    "Historical lifecycle tests and unrelated sources are blocked by default from the active execution context.",
-    "ARI/SAA remain planned only and P3D remains deferred."
+    "The SGC family preflight remains sealed.",
+    "SGC-01A alone is in_progress on governance/sgc-01a-disposition-taxonomy-evidence-contract.",
+    "SGC-01A may define taxonomy/evidence rules but may not classify retained corpus records.",
+    "SGC-01B+ and ARI/SAA/P3D implementation remain unauthorized."
   ],
-  "selection_reason": "VTI-12 is completed_verified; the SGC family preflight is sealed and SGC-01A is the first bounded execution unit selected without implementation authority.",
-  "updated_at": "2026-09-08T07:13:00-05:00"
+  "selection_reason": "Owner Continue governed-started the first pre-sized SGC execution unit from exact AIOC main 1040a5b808a407e419671b721b76aefb13fd15e8.",
+  "updated_at": "2026-09-08T08:13:09-05:00"
 }
