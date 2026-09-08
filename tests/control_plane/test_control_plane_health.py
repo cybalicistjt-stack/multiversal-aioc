@@ -169,21 +169,42 @@ class FlatHealthRegressionTests(unittest.TestCase):
 
 
 class FamilyExecutionPreflightTests(unittest.TestCase):
-    def test_vti12_closeout_and_sgc_selection_are_atomic(self) -> None:
+    def test_vti12_closeout_and_current_sgc_selection_are_atomic(self) -> None:
         vti=_load_json("governance/ai/work-state/VTI-12-attempt-001.json")
         pointer=_load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
         authority=_load_json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
         runtime=_load_json("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")
         index=_load_json("governance/ai/runtime/ROADMAP_INDEX.json")
+        backlog=_load_json("governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json")
         self.assertEqual(vti["status"],"completed_verified"); self.assertTrue(vti["authority_retired"]); self.assertEqual(vti["application_pr"],441); self.assertEqual(vti["application_merge_sha"],"7e93bc4bb1c3b8ecc9bc4424dd7422ea328e2765")
         green=vti["validation"]["final_green"]; self.assertEqual(green["head_sha"],"712f7096118ae065d3d17492e2cc5effa1d83034"); self.assertEqual(green["run_id"],34221889244); self.assertEqual(green["deterministic_receipt_sha256"],"77536c1214f37374ca8ea1b2f1f627b30e209f52bb141133d690cdfc9b0544a4")
-        for selected in (pointer["active_attempt"],authority["active_planning_work"],runtime["active_work"],index["current"]): self.assertEqual(selected.get("work_item_id",selected.get("work_item")),"SGC-01C")
+        selected_item=backlog["current_item"]
+        for selected in (pointer["active_attempt"],authority["active_planning_work"],runtime["active_work"],index["current"]):
+            self.assertEqual(selected.get("work_item_id",selected.get("work_item")),selected_item)
         self.assertEqual(pointer["active_attempt"]["status"],"selected_not_started"); self.assertFalse(pointer["active_attempt"]["implementation_authority"]); self.assertIsNone(pointer["active_attempt"]["implementation_branch"])
 
     def test_sgc_execution_units_are_pre_sized_for_one_continue(self) -> None:
-        pf=_load_json("governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json"); backlog=_load_json("governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json")
+        pf=_load_json("governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json"); backlog=_load_json("governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json"); pointer=_load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
         self.assertEqual(pf["status"],"sealed"); self.assertEqual(pf["family_id"],"SGC"); self.assertEqual(pf["execution_target"]["ordinary_tranche_single_continue_completion_percent"],100); self.assertEqual(pf["execution_target"]["max_execution_cycles_without_genuine_blocker"],1); self.assertEqual(pf["execution_target"]["target_active_minutes_per_unit"],24); self.assertGreaterEqual(pf["execution_target"]["minimum_closeout_reserve_minutes"],8)
-        units=pf["execution_units"]; self.assertEqual(len(units),22); self.assertTrue(all(0 < row["estimated_active_minutes"] <= 24 for row in units)); self.assertEqual(backlog["strict_order"],[row["id"] for row in units]); self.assertEqual(backlog["current_item"],"SGC-01C")
+        units=pf["execution_units"]; self.assertEqual(len(units),22); self.assertTrue(all(0 < row["estimated_active_minutes"] <= 24 for row in units)); self.assertEqual(backlog["strict_order"],[row["id"] for row in units]); self.assertIn(backlog["current_item"],backlog["strict_order"]); self.assertEqual(pointer["active_attempt"]["work_item_id"],backlog["current_item"])
+
+    def test_sgc01c_frozen_inventory_is_source_reference_complete(self) -> None:
+        inventory=_load_json("governance/application-planning/source-gameplay-coverage-closure/SGC_RETAINED_SOURCE_CORPUS_INVENTORY.json")
+        checkpoint=_load_json("governance/ai/work-state/SGC-01C-attempt-001.json")
+        verification=inventory["freeze_verification"]
+        self.assertEqual(checkpoint["status"],"completed_verified")
+        self.assertEqual(inventory["status"],"FROZEN_VERIFIED")
+        self.assertEqual(len(inventory["source_records"]),8)
+        self.assertEqual(verification["mandatory_backlog_inputs_expected"],8)
+        self.assertEqual(verification["mandatory_backlog_inputs_represented"],8)
+        self.assertTrue(verification["all_required_fields_present"])
+        self.assertTrue(verification["all_source_ids_unique"])
+        self.assertEqual(verification["missing_mandatory_inputs"],[])
+        self.assertEqual(verification["unresolved_source_locators"],[])
+        self.assertEqual(verification["unclassified_source_references"],[])
+        self.assertEqual(verification["gameplay_concept_dispositions_assigned"],0)
+        self.assertTrue(all(row["classification_state"] == "source_kind_classified_reference_verified" for row in inventory["source_records"]))
+        self.assertTrue(all("disposition" not in row for row in inventory["source_records"]))
 
     def test_prefamily_context_is_blocked_by_default(self) -> None:
         pf=_load_json("governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json"); blocked=" ".join(pf["context_seal"]["blocked_by_default"]).lower()
