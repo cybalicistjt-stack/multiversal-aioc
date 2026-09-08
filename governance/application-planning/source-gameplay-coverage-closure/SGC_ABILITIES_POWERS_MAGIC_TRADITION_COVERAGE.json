@@ -1,0 +1,76 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"SGC-03A",
+  "status":"CURRENT",
+  "scope":"Abilities, powers, magic and tradition coverage only. Species/profession/prestige/progression expansion remains SGC-03B; faction/proficiency/familiarity/motivation remains SGC-03C.",
+  "disposition_contract":"governance/application-planning/source-gameplay-coverage-closure/SGC_DISPOSITION_EVIDENCE_CONTRACT.json",
+  "retained_source_inventory":"governance/application-planning/source-gameplay-coverage-closure/SGC_RETAINED_SOURCE_CORPUS_INVENTORY.json",
+  "source_basis_note":"The frozen SGC inputs preserve KFR/ALP owner-boundary and learning/practice references but do not supply missing per-record Ability/spell facts. Current canonical CAB/MSS evidence is therefore used only to prove exact ownership/implementation; absent source effect text, values, prerequisites or acquisition facts remain gaps and are not fabricated.",
+  "records":[
+    {
+      "concept_id":"SGC-CHAR-ABILITY-ADVANCEMENT-RULES",
+      "source_refs":["SGC-SRC-KFR-OUTPUTS","SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind":"ability_system",
+      "disposition":"implemented",
+      "owner":"CAB",
+      "evidence":{"owner_path":"governance/application-planning/character-advancement-balance/CAB_CHARACTER_ADVANCEMENT_BALANCE_PROGRAM.md","specific_scope":"CAB is completed_verified and governs Ability costs, tiers, prerequisites, acquisition eligibility, simultaneous-power controls, stacking/synergy and Character advancement; it audited the bounded 4,816-record Ability corpus."}
+    },
+    {
+      "concept_id":"SGC-CHAR-ABILITY-LEGACY-SOURCE-GAPS",
+      "source_refs":["SGC-SRC-KFR-OUTPUTS","SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind":"ability_content_repair",
+      "disposition":"planned_owned_elsewhere",
+      "owner":"CAB-22 content repair handoff",
+      "evidence":{"owner_path":"governance/application-planning/character-advancement-balance/CAB-22_CONTENT_REPAIR_MAP_v1.0.0.json","specific_scope":"P0-P3 preserve source-boundary, stable-identity, timing, high-risk, prerequisite, interaction, acquisition, pricing and structural-gap repair without automatic mutation or invented fields."}
+    },
+    {
+      "concept_id":"SGC-CHAR-INNATE-ELEMENTALIST-OWNERSHIP-CLASSIFICATION",
+      "source_refs":["SGC-SRC-KFR-OUTPUTS","SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind":"ability_ownership_boundary",
+      "disposition":"planned_owned_elsewhere",
+      "owner":"CAB-22/P2-006",
+      "evidence":{"owner_path":"governance/application-planning/character-advancement-balance/CAB-22_CONTENT_REPAIR_MAP_v1.0.0.json","specific_scope":"CAB22-P2-006 requires the mixed Species/Innate surface to separate automatic biology grants, Species-qualified selections, learned/cultural/mystical/technical content and non-Species Elementalist rows. SGC-03A closes the Innate/Elementalist owner route; Species disposition remains for SGC-03B."}
+    },
+    {
+      "concept_id":"SGC-CHAR-MAGIC-RESOURCE-CAPACITY-COST",
+      "source_refs":["SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind":"magic_rule_system",
+      "disposition":"implemented",
+      "owner":"MSS-02",
+      "evidence":{"owner_path":"governance/application-planning/magic-supernatural-systems/MSS_MAGIC_SUPERNATURAL_SYSTEMS_PROGRAM.md","specific_scope":"MSS-02 is completed_verified for magic resource, capacity, cost, strain and overreach contracts."}
+    },
+    {
+      "concept_id":"SGC-CHAR-SPELL-POWER-SUPERNATURAL-RESOLUTION",
+      "source_refs":["SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind":"power_runtime",
+      "disposition":"implemented",
+      "owner":"MSS-03",
+      "evidence":{"owner_path":"governance/application-planning/magic-supernatural-systems/MSS_MAGIC_SUPERNATURAL_SYSTEMS_PROGRAM.md","specific_scope":"MSS-03 is completed_verified as the unified spell, power and supernatural resolution runtime."}
+    },
+    {
+      "concept_id":"SGC-CHAR-TRADITIONS-SCHOOLS-SOURCES-CASTING-PROFILES",
+      "source_refs":["SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind":"tradition_system",
+      "disposition":"implemented",
+      "owner":"MSS-06",
+      "evidence":{"owner_path":"governance/application-planning/magic-supernatural-systems/MSS_MAGIC_SUPERNATURAL_SYSTEMS_PROGRAM.md","specific_scope":"MSS-06 is completed_verified for traditions, schools, sources and casting profiles."}
+    },
+    {
+      "concept_id":"SGC-CHAR-SUPERNATURAL-SUPPORTING-SYSTEMS",
+      "source_refs":["SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind":"supernatural_runtime_family",
+      "disposition":"implemented",
+      "owner":"MSS-04..12",
+      "evidence":{"owner_path":"governance/application-planning/magic-supernatural-systems/MSS_MAGIC_SUPERNATURAL_SYSTEMS_PROGRAM.md","specific_scope":"Completed MSS coverage includes Rune Construction, spell design/research, rituals/circles/components/cooperative casting, countermagic/resistance/wards/suppression/backlash, spirits/patronage/worship/pacts/divine favor, portals/gates/transit, temporal/causal play and supernatural content/workbench proof."}
+    }
+  ],
+  "counts":{"records":7,"implemented":5,"planned_owned_elsewhere":2,"unresolved_owner_decision":0,"invented_owner_assignments":0},
+  "source_gap_preservation":[
+    "Missing Ability effect text, timing, prerequisites, acquisition modes, identity boundaries or prices remain governed CAB-22 repair items; SGC-03A does not invent them.",
+    "The mixed Species/Innate surface is not collapsed; only Innate/Elementalist ownership routing is closed here and Species remains SGC-03B scope.",
+    "No broad ALP/KFR ownership claim is made for Character or magic mechanics; those programs remain reference/learning/familiarity surfaces and canonical CAB/MSS owners retain authority.",
+    "No new magic, Ability, spell, power or tradition ledger is created."
+  ],
+  "result":"PASS",
+  "strict_successor":"SGC-03B"
+}
