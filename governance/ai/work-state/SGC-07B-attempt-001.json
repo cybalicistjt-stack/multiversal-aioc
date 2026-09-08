@@ -1,0 +1,23 @@
+{
+  "schema_version":"0.1.0",
+  "work_item_id":"SGC-07B",
+  "attempt_id":"SGC-07B-attempt-001",
+  "title":"Superseded, Unsupported & Deferred Disposition Closure",
+  "track":"source-gameplay-coverage-closure",
+  "source_program":"SGC",
+  "parent_tranche":"SGC-07",
+  "repository":"cybalicistjt-stack/multiversal-aioc",
+  "status":"selected_not_started",
+  "owner_selected":true,
+  "implementation_authority":false,
+  "implementation_branch":null,
+  "completed":false,
+  "estimated_active_minutes":18,
+  "execution_target_minutes":24,
+  "minimum_closeout_reserve_minutes":8,
+  "family_preflight":"governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
+  "objective":"Close the explicit superseded, intentionally unsupported, provenance-only and deferred dispositions—including the four SGC-07A handoff sets—without beginning SGC-08A trace-graph construction.",
+  "predecessor":{"work_item_id":"SGC-07A","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_CONFLICT_UNKNOWN_OWNER_DECISION_QUEUE_RESOLUTION.json","queue_records":10,"remaining_unresolved_owner_decisions":0,"forward_to_sgc_07b":4},
+  "selection_boundaries":["SGC-07A is completed_verified by the atomic AIOC transaction selecting this checkpoint.","SGC-07B is selected_not_started with no implementation branch or implementation authority.","Only superseded/unsupported/provenance/deferred disposition closure is in the next unit's scope.","The four SGC-07A handoff sets remain deferred and unpromoted until this unit executes.","SGC-08A trace-graph construction remains unauthorized until SGC-07B completes and selects it."],
+  "next_action":"On the next execution Continue, governed-start only SGC-07B and carry it through its terminal gate in one continuation."
+}
