@@ -1,0 +1,89 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"SGC-04C",
+  "status":"CURRENT",
+  "scope":"Vehicles, modules, media/resource routing and remaining SGC-04 content gaps only. SGC-05 edge-system work remains unauthorized.",
+  "disposition_contract":"governance/application-planning/source-gameplay-coverage-closure/SGC_DISPOSITION_EVIDENCE_CONTRACT.json",
+  "retained_source_inventory":"governance/application-planning/source-gameplay-coverage-closure/SGC_RETAINED_SOURCE_CORPUS_INVENTORY.json",
+  "records":[
+    {
+      "concept_id":"SGC-CONTENT-VEHICLE-EXPERIENCE-PROVENANCE-SURFACE",
+      "source_refs":["SGC-SRC-MINE-ROUTED-CANDIDATES","SGC-SRC-MINES-AMENDMENT"],
+      "concept_kind":"vehicle_content_and_experience_design",
+      "disposition":"content_only",
+      "owner":"PPIA-04 Vehicle, Mecha & Starship Experience",
+      "evidence":{"owner_path":"governance/ai/work-state/PPIA-04-attempt-001.json","specific_scope":"PPIA-04 is completed_verified and preserves the retained Vehicle/Mecha/Starship source and experience packet, including Definition/variant/component/owned-Asset/deployment/live-state separation, provenance and source-review candidates. It explicitly does not mutate application runtime or auto-promote source candidates."}
+    },
+    {
+      "concept_id":"SGC-CONTENT-VEHICLE-PLATFORM-BASE-RUNTIME-FOUNDATION",
+      "source_refs":["SGC-SRC-MINE-ROUTED-CANDIDATES","SGC-SRC-MINES-AMENDMENT"],
+      "concept_kind":"vehicle_platform_base_runtime",
+      "disposition":"implemented",
+      "owner":"MIB-14",
+      "evidence":{"owner_path":"governance/ai/work-state/MIB-14-attempt-001.json","specific_scope":"MIB-14 is completed_verified and implements reusable vehicle/platform/base operational definition profiles, deterministic starter definitions and governed state-transition foundations without duplicating D17 Asset/inventory truth."}
+    },
+    {
+      "concept_id":"SGC-CONTENT-VEHICLE-MODULE-FACILITY-COMPATIBILITY-LOADOUT",
+      "source_refs":["SGC-SRC-MINE-ROUTED-CANDIDATES","SGC-SRC-MINES-AMENDMENT"],
+      "concept_kind":"vehicle_module_facility_runtime",
+      "disposition":"implemented",
+      "owner":"MIB-14",
+      "evidence":{"owner_path":"governance/ai/work-state/MIB-14-attempt-001.json","specific_scope":"MIB-14 implements module/facility compatibility by asset kind, operational class, required tags and incompatibilities, together with deterministic slot, cargo-mass, power-capacity and loadout validation."}
+    },
+    {
+      "concept_id":"SGC-CONTENT-VEHICLE-CARGO-STORAGE-INVENTORY-HANDOFF",
+      "source_refs":["SGC-SRC-MINE-ROUTED-CANDIDATES","SGC-SRC-MINES-AMENDMENT"],
+      "concept_kind":"vehicle_inventory_composition",
+      "disposition":"implemented",
+      "owner":"MIB-14 + D17 Asset/Inventory",
+      "evidence":{"owner_path":"governance/ai/work-state/MIB-14-attempt-001.json","specific_scope":"MIB-14 supplies cargo projections, base/platform storage and workstation seams while explicitly preserving D17 as sole live Asset/inventory/state authority; vehicle location/storage therefore remains a governed multi-owner composition rather than a second inventory ledger."}
+    },
+    {
+      "concept_id":"SGC-CONTENT-VEHICLE-RESOURCE-MAINTENANCE-REPAIR-HOOKS",
+      "source_refs":["SGC-SRC-MINE-ROUTED-CANDIDATES","SGC-SRC-MINES-AMENDMENT"],
+      "concept_kind":"vehicle_resource_and_service_runtime",
+      "disposition":"implemented",
+      "owner":"MIB-14 with MIB-12/APW/D17 handoffs",
+      "evidence":{"owner_path":"governance/ai/work-state/MIB-14-attempt-001.json","specific_scope":"MIB-14 implements bounded power/fuel/resource hooks and version-gated damage/repair/maintenance intents, while repair/maintenance/upgrade work routes through existing MIB-12/APW/D17 owners instead of creating vehicle-local duplicate transformation or project truth."}
+    },
+    {
+      "concept_id":"SGC-CONTENT-REUSABLE-MEDIA-RESOURCE-INGESTION-AND-LIBRARY",
+      "source_refs":["SGC-SRC-ARI-SAA-P3D-AMENDMENT"],
+      "concept_kind":"reusable_media_resource_library",
+      "disposition":"planned_owned_elsewhere",
+      "owner":"ARI-01..22",
+      "evidence":{"owner_path":"governance/application-planning/asset-resource-ingestion-reuse/ARI_ASSET_RESOURCE_INGESTION_REUSE_PROGRAM.md","specific_scope":"ARI is owner-approved and planned after SGC-08 to provide reusable resource identity, content-addressed byte/reference state, lineage, archive intake, classification, rights/capabilities, derivatives, large-library query and recovery. ARI existence never replaces vehicle/entity gameplay truth."}
+    },
+    {
+      "concept_id":"SGC-CONTENT-VEHICLE-MEDIA-RESOURCE-REFERENCE-BRIDGE",
+      "source_refs":["SGC-SRC-ARI-SAA-P3D-AMENDMENT","SGC-SRC-MINE-ROUTED-CANDIDATES"],
+      "concept_kind":"vehicle_resource_reference_bridge",
+      "disposition":"planned_owned_elsewhere",
+      "owner":"ARI-19 with existing vehicle/entity owners",
+      "evidence":{"owner_path":"governance/application-planning/asset-resource-ingestion-reuse/ARI_ASSET_RESOURCE_INGESTION_REUSE_PROGRAM.md","specific_scope":"ARI-19 provides the future permission/capability-aware universal resource selection/query contract. Vehicle/Mecha/Starship and MIB owners continue to own gameplay entity semantics, configuration and runtime state; ARI supplies reusable resource references rather than a shadow vehicle catalog."}
+    },
+    {
+      "concept_id":"SGC-CONTENT-VEHICLE-R1-DEFERRED-CANDIDATE-DISPOSITION",
+      "source_refs":["SGC-SRC-MINES-AMENDMENT"],
+      "concept_kind":"vehicle_source_candidate_gap",
+      "disposition":"unresolved_owner_decision",
+      "owner":null,
+      "evidence":{"unresolved_question":"What final governed disposition should apply to the 10 recovered R1 vehicle/system structural candidates currently preserved as source-review-only evidence?","source_gap_or_conflict":"PPIA-04 preserves all 10 with zero automatic Definition promotion and forbids inventing mechanics/runtime behavior from recovered headings. No bounded SGC-04C evidence authorizes create/bind/exclude/supersede/waive decisions for them."},
+      "forward_route":"SGC-07A owner-decision queue"
+    },
+    {
+      "concept_id":"SGC-CONTENT-VEHICLE-SOURCE-UNSPECIFIED-RESOURCE-CAPACITY-GAPS",
+      "source_refs":["SGC-SRC-MINES-AMENDMENT"],
+      "concept_kind":"vehicle_unspecified_value_gap",
+      "disposition":"unresolved_owner_decision",
+      "owner":null,
+      "evidence":{"unresolved_question":"Where retained vehicle/system source evidence leaves Resource quantity, capacity, compatibility, system presence or operating envelope unspecified, should each field remain explicit unknown or receive a later owner-authorized source/content decision?","source_gap_or_conflict":"PPIA-04 explicitly governs unknown as distinct from zero, unlimited, empty, full, absent, compatible or available. MIB-14 provides runtime hooks and validation but does not supply missing source-authored values."},
+      "forward_route":"SGC-07A owner-decision queue"
+    }
+  ],
+  "counts":{"records":9,"implemented":4,"content_only":1,"planned_owned_elsewhere":2,"unresolved_owner_decision":2,"invented_owner_assignments":0},
+  "partition_closure":{"input_multi_owner_concept":"semantic vehicles/machines/repairs/factories plus vehicle-specific location/compatibility semantics","result":"DECOMPOSED_WITHOUT_FALSE_COMPRESSION","owner_partitions":["PPIA-04 content/experience/provenance","MIB-14 vehicle/platform/base and module/facility runtime foundations","D17 live Asset/inventory/state truth","MIB-12/APW service/transformation/project handoffs","ARI future reusable media/resource identity and query"]},
+  "boundaries":["Vehicle gameplay/entity authority and reusable media/resource authority remain distinct.","ARI is planning-only and receives no implementation authority from SGC-04C.","Recovered R1 candidates are not automatically promoted.","Source-unspecified vehicle Resource/capacity/compatibility/system facts remain explicit unknowns unless later authority resolves them.","SGC-03/04A/04B unresolved decisions are not reopened here.","SGC-05A remains unauthorized until its own governed start."],
+  "result":"PASS_WITH_TWO_VISIBLE_OWNER_DECISIONS",
+  "strict_successor":"SGC-05A"
+}

@@ -1,5 +1,5 @@
 {
-  "schema_version":"0.1.0",
+  "schema_version":"0.2.0",
   "work_item_id":"SGC-04C",
   "attempt_id":"SGC-04C-attempt-001",
   "title":"Vehicles, Modules, Media/Resource Routing & Content Gaps",
@@ -7,23 +7,19 @@
   "source_program":"SGC",
   "parent_tranche":"SGC-04",
   "repository":"cybalicistjt-stack/multiversal-aioc",
-  "status":"selected_not_started",
+  "status":"completed_verified",
   "owner_selected":true,
   "implementation_authority":false,
-  "implementation_branch":null,
-  "completed":false,
+  "implementation_branch":"governance/sgc-04c-vehicles-media-resources",
+  "completed":true,
   "estimated_active_minutes":20,
   "execution_target_minutes":24,
   "minimum_closeout_reserve_minutes":8,
   "family_preflight":"governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
   "objective":"Map retained vehicle/module content, media/resource routing and remaining SGC-04 content gaps to exact owners while preserving the distinction between gameplay entities and reusable media/resources and without beginning ARI implementation.",
-  "predecessor":{"work_item_id":"SGC-04B","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_CREATURES_ECOLOGY_GOVERNED_ROLE_COVERAGE.json","coverage_records":12,"unresolved_owner_decision":3},
-  "selection_boundaries":[
-    "SGC-04B is completed_verified by the atomic AIOC transaction selecting this checkpoint.",
-    "SGC-04C is selected_not_started with no implementation branch or implementation authority.",
-    "Only vehicle/module/media-resource routing and remaining SGC-04 content-gap coverage is in the next unit's scope.",
-    "ARI remains planning-only until after SGC-08; SGC-05 remains unauthorized until its own governed start.",
-    "All SGC-03/04A/04B unresolved decisions remain routed to SGC-07A and are not reopened here."
-  ],
-  "next_action":"On the next execution Continue, governed-start only SGC-04C and carry it through its terminal gate in one continuation."
+  "deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_VEHICLES_MODULES_MEDIA_RESOURCE_CONTENT_GAP_COVERAGE.json",
+  "completion_summary":{"coverage_records":9,"implemented":4,"content_only":1,"planned_owned_elsewhere":2,"unresolved_owner_decision":2,"invented_owner_assignments":0},
+  "completion_invariants":["PPIA-04 remains completed design/provenance authority without application-runtime overclaim.","MIB-14 remains completed vehicle/platform/base and module/facility runtime foundation while D17/MIB-12/APW handoffs retain their domains.","Reusable media/resource identity, ingestion, lineage, rights and query route to planned ARI after SGC-08; ARI is not started here.","The 10 recovered R1 vehicle/system candidates remain source-review-only pending SGC-07A disposition.","Source-unspecified Resource/capacity/compatibility/system facts remain explicit unknowns pending owner-authorized resolution or explicit retention as unknown.","SGC-05A substantive work has not begun."],
+  "strict_successor":"SGC-05A",
+  "next_action":"SGC-04C is completed_verified by the atomic AIOC closeout candidate. Select SGC-05A as selected_not_started with no implementation authority; do not begin SGC-05A until the next owner Continue."
 }
