@@ -1,0 +1,100 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"SGC-06C",
+  "status":"CURRENT",
+  "scope":"Spatial authoring, practice/rehearsal, microgame/ambient-loop, user annotation and ARI/SAA/P3D routing coverage only. SGC-07A conflict/unknown/owner-decision resolution remains unstarted.",
+  "scope_basis":"governance/ai/work-state/SGC-06C-attempt-001.json",
+  "disposition_contract":"governance/application-planning/source-gameplay-coverage-closure/SGC_DISPOSITION_EVIDENCE_CONTRACT.json",
+  "retained_source_inventory":"governance/application-planning/source-gameplay-coverage-closure/SGC_RETAINED_SOURCE_CORPUS_INVENTORY.json",
+  "records":[
+    {
+      "concept_id":"SGC-UX-SPATIAL-AUTHORING",
+      "source_refs":["SGC-SRC-SSA-OUTPUTS"],
+      "concept_kind":"semantic_spatial_authoring",
+      "disposition":"implemented",
+      "evidence":{
+        "owner":"SSA-07 / SSA-09 / SSA-10",
+        "owner_path":"governance/application-planning/semantic-spatial-authoring/SSA_PROGRAM_BACKLOG.json",
+        "specific_scope":"SSA-07 provides GM construction assistance and low-friction spatial authoring, SSA-09 provides accessibility/multiview authoring/performance/recovery, and SSA-10 provides the completed cross-scale spatial golden proof. SSA authority is retired after completed_verified delivery; Scene, MAI, ISE, World/Reality and other owner domains remain canonical."
+      }
+    },
+    {
+      "concept_id":"SGC-UX-DIEGETIC-PRACTICE-REHEARSAL",
+      "source_refs":["SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind":"practice_training_rehearsal",
+      "disposition":"implemented",
+      "evidence":{
+        "owner":"ALP-05 / ALP-06",
+        "owner_path":"governance/application-planning/achievements-learning-practice/ALP_PROGRAM_BACKLOG.json",
+        "specific_scope":"ALP-05 implements diegetic practice spaces, training scenes and simulations; ALP-06 implements rehearsal, retry, safe failure and training/project integration. Practice remains optional and does not become a universal permission gate."
+      }
+    },
+    {
+      "concept_id":"SGC-UX-MICROGAME-AMBIENT-LOOP",
+      "source_refs":["SGC-SRC-MAL-OUTPUTS"],
+      "concept_kind":"microgame_ambient_loop",
+      "disposition":"implemented",
+      "evidence":{
+        "owner":"MAL-01..MAL-10",
+        "owner_path":"governance/application-planning/microgames-ambient-loops/MAL_PROGRAM_BACKLOG.json",
+        "specific_scope":"MAL-01 through MAL-10 are completed_verified and freeze the governed microgame/ambient-loop family including accessibility/device-neutral behavior, nonblocking fallback and deterministic golden proof. SGC creates no duplicate microgame engine or reward authority."
+      }
+    },
+    {
+      "concept_id":"SGC-UX-SCOPED-USER-ANNOTATION",
+      "source_refs":["SGC-SRC-MINE-ROUTED-CANDIDATES"],
+      "concept_kind":"user_notes_tags_annotations",
+      "disposition":"implemented",
+      "evidence":{
+        "owner":"WCI-01 current annotation owner",
+        "owner_path":"governance/ai/work-state/WCI-01-attempt-001.json",
+        "specific_scope":"The owner-approved mine-note route requires reuse of WCI/current annotation owners. WCI-01 already delivers scoped notes, lore, source material, tags, backlinks, semantic relationships and templates with provenance and visibility filtering, so no new generic annotation program or relation owner is required by this retained requirement."
+      }
+    },
+    {
+      "concept_id":"SGC-ROUTE-ARI-UNIVERSAL-RESOURCE-INGESTION-REUSE",
+      "source_refs":["SGC-SRC-ARI-SAA-P3D-AMENDMENT"],
+      "concept_kind":"future_resource_ingestion_reuse_route",
+      "disposition":"planned_owned_elsewhere",
+      "evidence":{
+        "owner":"ARI-01..ARI-22",
+        "owner_path":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ARI_SAA_P3D_AMENDMENT_2026-09-07.md",
+        "specific_scope":"ARI is owner-approved after SGC-08 and before MIB-16. It owns reusable resource identity/bytes-or-reference state, derivative lineage, bulk ingestion, catalog/search/lazy retrieval, rights-use capability projection, relink/recovery and cross-system resource selection without replacing MAI, AAI, CAPP/PAPT, Scene/World/Character/Inventory/Asset or publishing/canon owners. ARI is not started here."
+      }
+    },
+    {
+      "concept_id":"SGC-ROUTE-SAA-SEQUENTIAL-ART-AUTHORING",
+      "source_refs":["SGC-SRC-ARI-SAA-P3D-AMENDMENT"],
+      "concept_kind":"future_sequential_art_authoring_route",
+      "disposition":"planned_owned_elsewhere",
+      "evidence":{
+        "owner":"SAA-01..SAA-20",
+        "owner_path":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ARI_SAA_P3D_AMENDMENT_2026-09-07.md",
+        "specific_scope":"SAA is owner-approved after SMB-09 and before SMB-10, consuming ARI-governed resources and existing Character/CAPP/PAPT/MAI/Scene/AAI projections without creating a private duplicate asset store or public-sharing authority. SAA is not started here."
+      }
+    },
+    {
+      "concept_id":"SGC-ROUTE-P3D-PHYSICAL-3D-MINIATURE",
+      "source_refs":["SGC-SRC-ARI-SAA-P3D-AMENDMENT"],
+      "concept_kind":"deferred_physical_3d_renderer_route",
+      "disposition":"planned_owned_elsewhere",
+      "evidence":{
+        "owner":"P3D deferred future project",
+        "owner_path":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ARI_SAA_P3D_AMENDMENT_2026-09-07.md",
+        "specific_scope":"P3D is owner-approved but explicitly deferred, outside the automatic critical path and without implementation authority. It preserves renderer-neutral Character/creature/asset semantics toward future physical-pixel-v1 and physical-detailed-v1 outputs. Readiness prerequisites do not auto-activate it."
+      }
+    }
+  ],
+  "counts":{"records":7,"implemented":4,"content_only":0,"planned_owned_elsewhere":3,"unresolved_owner_decision":0,"invented_owner_assignments":0},
+  "boundaries":[
+    "SSA remains the completed semantic-spatial-authoring owner; SGC creates no duplicate spatial state or geometry ledger.",
+    "ALP remains the completed practice/rehearsal owner and MAL remains the completed microgame/ambient-loop owner; neither is reopened.",
+    "WCI-01 already satisfies the routed scoped notes/tags/annotation requirement; no generic annotation subsystem is invented.",
+    "ARI, SAA and P3D remain planned_owned_elsewhere exactly as required by the SGC disposition contract; deferral is not implementation.",
+    "ARI cannot begin before SGC-08 completed_verified and a separate governed start selects ARI-01; SAA and P3D retain their own activation gates.",
+    "SGC-07A conflict/unknown/owner-decision resolution is not begun here.",
+    "Historical lifecycle tests, historical audit corpus and unrelated connected systems are not used as current authority."
+  ],
+  "result":"PASS_NO_NEW_OWNER_DECISIONS",
+  "strict_successor":"SGC-07A"
+}
