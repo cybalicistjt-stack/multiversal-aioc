@@ -1,20 +1,20 @@
 {
-  "schema_version":"17.7.0",
+  "schema_version":"17.8.0",
   "canonical_bootstrap":"governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "authority_registry":"governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
   "canonical_application_roadmap":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
   "roadmap_index":"governance/ai/runtime/ROADMAP_INDEX.json",
   "roadmap_supplements":[],
   "family_execution_preflight":"governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
-  "primary_attempt_id":"SGC-07A-attempt-001",
-  "selection_reason":"SGC-06C closes spatial authoring, practice/rehearsal, microgame/ambient-loop, annotation and ARI/SAA/P3D routing with four implemented records, three planned-owned-elsewhere routes and zero new owner decisions; SGC-07A is the strict selected successor with no implementation authority.",
-  "active_attempt":{"work_item_id":"SGC-07A","attempt_id":"SGC-07A-attempt-001","track":"source-gameplay-coverage-closure","source_program":"SGC","priority":1,"owner_selected":true,"repository":"cybalicistjt-stack/multiversal-aioc","checkpoint_path":"governance/ai/work-state/SGC-07A-attempt-001.json","status":"selected_not_started","implementation_branch":null,"implementation_authority":false,"active_item":"SGC-07A — Conflict, Unknown & Owner-Decision Queue"},
-  "active_program":{"program_id":"SGC","name":"Source & Gameplay Coverage Closure","status":"in_progress","completed_through":"SGC-06C","current":"SGC-07A","strict_next":"SGC-07B","last":"SGC-08C","program_path":"governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_GAMEPLAY_COVERAGE_CLOSURE_PROGRAM.md","backlog_path":"governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json"},
-  "bounded_authority":{"family_preflight_sealed":true,"selected_sgc_unit":"SGC-07A","sgc_implementation":false,"implementation_branch":null,"paid_provider_activation":false,"tester_distribution":false,"release_or_deployment":false,"rule":"SGC-07A is selected_not_started. The next execution Continue may governed-start only that unit."},
+  "primary_attempt_id":"SGC-07B-attempt-001",
+  "selection_reason":"SGC-07A resolves all ten explicit owner-decision/source-conflict records with zero remaining owner-decision questions, three content-only unknown/variant outcomes, seven planned-owned-elsewhere routes and four explicit SGC-07B deferred handoffs; SGC-07B is the strict selected successor with no implementation authority.",
+  "active_attempt":{"work_item_id":"SGC-07B","attempt_id":"SGC-07B-attempt-001","track":"source-gameplay-coverage-closure","source_program":"SGC","priority":1,"owner_selected":true,"repository":"cybalicistjt-stack/multiversal-aioc","checkpoint_path":"governance/ai/work-state/SGC-07B-attempt-001.json","status":"selected_not_started","implementation_branch":null,"implementation_authority":false,"active_item":"SGC-07B — Superseded, Unsupported & Deferred Disposition Closure"},
+  "active_program":{"program_id":"SGC","name":"Source & Gameplay Coverage Closure","status":"in_progress","completed_through":"SGC-07A","current":"SGC-07B","strict_next":"SGC-08A","last":"SGC-08C","program_path":"governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_GAMEPLAY_COVERAGE_CLOSURE_PROGRAM.md","backlog_path":"governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json"},
+  "bounded_authority":{"family_preflight_sealed":true,"selected_sgc_unit":"SGC-07B","sgc_implementation":false,"implementation_branch":null,"paid_provider_activation":false,"tester_distribution":false,"release_or_deployment":false,"rule":"SGC-07B is selected_not_started. The next execution Continue may governed-start only that unit."},
   "recently_completed_sgc_work":[
+    {"work_item_id":"SGC-07A","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_CONFLICT_UNKNOWN_OWNER_DECISION_QUEUE_RESOLUTION.json","queue_records":10,"owner_decisions_resolved":10,"remaining_unresolved_owner_decisions":0,"forward_to_sgc_07b":4,"strict_successor":"SGC-07B"},
     {"work_item_id":"SGC-06C","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_SPATIAL_PRACTICE_MICROGAME_ANNOTATION_RESOURCE_ROUTING_COVERAGE.json","coverage_records":7,"implemented":4,"content_only":0,"planned_owned_elsewhere":3,"unresolved_owner_decision":0,"strict_successor":"SGC-07A"},
-    {"work_item_id":"SGC-06B","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_AVATAR_APPEARANCE_ACCESSIBILITY_DEVICE_EQUIVALENCE_COVERAGE.json","coverage_records":7,"implemented":3,"content_only":2,"planned_owned_elsewhere":2,"unresolved_owner_decision":0,"strict_successor":"SGC-06C"},
-    {"work_item_id":"SGC-06A","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_GM_PLAYER_CREATOR_WORKFLOW_SCREEN_COVERAGE.json","coverage_records":7,"implemented":5,"content_only":0,"planned_owned_elsewhere":2,"unresolved_owner_decision":0,"strict_successor":"SGC-06B"}
+    {"work_item_id":"SGC-06B","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_AVATAR_APPEARANCE_ACCESSIBILITY_DEVICE_EQUIVALENCE_COVERAGE.json","coverage_records":7,"implemented":3,"content_only":2,"planned_owned_elsewhere":2,"unresolved_owner_decision":0,"strict_successor":"SGC-06C"}
   ],
   "recently_completed_implementation_work":[
     {"work_item_id":"VTI-12","status":"completed_verified","validated_head":"712f7096118ae065d3d17492e2cc5effa1d83034","validation_run":34221889244,"deterministic_receipt_sha256":"77536c1214f37374ca8ea1b2f1f627b30e209f52bb141133d690cdfc9b0544a4","merge_sha":"7e93bc4bb1c3b8ecc9bc4424dd7422ea328e2765"},
@@ -25,13 +25,14 @@
     {"work_item_id":"MV-CONT-007","status":"completed_verified","checkpoint_path":"governance/ai/work-state/MV-CONT-007-attempt-001.json","application_pr":336,"application_merge":"e34d43d669c48d484dbdb9e82b72a00c5d91f00c","aioc_pr":778,"aioc_validated_head":"cceeceb5e3a2952c94581bd5efef55c99e87a10c","aioc_repository_health_run":33166810683,"aioc_merge":"c94baa78f0f135681ecaab3e6dc36d5c11b1afa2","aioc_main_health_run":33166847490,"superseded_prs_closed":[763,770]}
   ],
   "selection_invariants":[
-    "SGC-06C is completed_verified by the atomic AIOC merge carrying spatial/practice/microgame/annotation/resource-route coverage and successor selection.",
-    "SGC-07A is selected_not_started with no implementation branch or implementation authority.",
-    "SSA remains the completed spatial-authoring owner; ALP remains the completed practice/rehearsal owner; MAL remains the completed microgame/ambient-loop owner; WCI-01 already satisfies scoped annotation requirements.",
-    "ARI and SAA remain owner-approved planned programs and P3D remains an owner-approved deferred future project; none is activated by SGC-06C.",
-    "All previously visible SGC unresolved_owner_decision/source-conflict debt remains intact for SGC-07A and is not resolved by successor selection.",
-    "SGC-07B superseded/unsupported/deferred disposition closure remains unauthorized until SGC-07A completes and selects it.",
+    "SGC-07A is completed_verified by the atomic AIOC merge carrying owner-decision queue resolution and successor selection.",
+    "All ten explicit owner-decision/source-conflict records have an owner decision; zero owner-decision questions remain open.",
+    "Character motivation routes to MV-IA-F004; Havalaea sapient Creature/NPC projection routes through MV-IA-F005/F012 consuming PPIA-02 and CEW-10; generic rest/exhaustion routes through MV-IA-F004 plus Stage-A A7 consuming DPL-05.",
+    "Taser source contexts remain explicit variants; unspecified weapon and vehicle values remain explicit unknowns rather than invented values.",
+    "Four source-recovery/deferred sets remain unpromoted and are explicitly handed to SGC-07B for deferred/provenance/unsupported closure.",
+    "SGC-07B is selected_not_started with no implementation branch or implementation authority.",
+    "SGC-08A trace-graph construction remains unauthorized until SGC-07B completes and selects it.",
     "Historical lifecycle tests, historical audit corpus and unrelated connected systems remain blocked by default."
   ],
-  "exact_next_action":"On the next execution Continue, governed-start SGC-07A only and carry it through its terminal gate in one continuation."
+  "exact_next_action":"On the next execution Continue, governed-start SGC-07B only and carry it through its terminal gate in one continuation."
 }
