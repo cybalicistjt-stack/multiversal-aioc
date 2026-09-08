@@ -1,0 +1,335 @@
+name: VTI-10 Terminal Projection
+
+on:
+  push:
+    branches:
+      - governance/vti-10-terminal-closeout-vti-11-selection
+    paths:
+      - .github/workflows/vti10-terminal-projection.yml
+
+permissions:
+  contents: write
+
+jobs:
+  project:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: governance/vti-10-terminal-closeout-vti-11-selection
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Project terminal closeout and successor selection
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import copy, json
+          from pathlib import Path
+
+          ROOT = Path.cwd()
+          NOW = "2026-09-07T22:31:00-05:00"
+          APP_MERGE = "145eee04181b9ed66cae887ea6830da111918c25"
+          FINAL_HEAD = "41df73d952bf106b65d260c980c07d8ad877bdab"
+          FINAL_RUN = 34183387667
+          FINAL_RECEIPT = "08f29cea5babcc93b3f388cb71d99465286b3f720b78d85f340df560c43792ac"
+          TERMINAL_SUPPLEMENT = "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_VTI10_CLOSEOUT_2026-09-07.md"
+
+          def read(path):
+              return json.loads((ROOT / path).read_text(encoding="utf-8"))
+
+          def write(path, value):
+              (ROOT / path).write_text(json.dumps(value, separators=(",", ":")) + "\n", encoding="utf-8")
+
+          final_green = {
+              "head_sha": FINAL_HEAD,
+              "run_id": FINAL_RUN,
+              "repository_health_job": 101926833023,
+              "linux_job": 101926858489,
+              "windows_job": 101926858451,
+              "deterministic_compare_job": 101927123764,
+              "deterministic_receipt_sha256": FINAL_RECEIPT,
+              "historical_profile_fanout": 0,
+              "linux_artifact_id": 10039680217,
+              "windows_artifact_id": 10039697746,
+              "comparison_artifact_id": 10039702410,
+              "linux_artifact_digest_sha256": "93e04f9e8fa1ec2d9ca69403c252b2a3fc9079df1ad4982af2df81b9c673f8d8",
+              "windows_artifact_digest_sha256": "212998c7941551670ae760fbd48c56ca483ea0395cdce43168695a4decd8d5cc",
+              "comparison_artifact_digest_sha256": "597e538f418a174926054f8c846a74cc65c03d688cb425dce0bdd417a5c60219",
+          }
+
+          cp_path = "governance/ai/work-state/VTI-10-attempt-001.json"
+          cp = read(cp_path)
+          cp["schema_version"] = "0.5.0"
+          cp["status"] = "completed_verified"
+          cp["implementation_authority"] = False
+          cp["branch_creation_authorized"] = False
+          cp["acceptance_package_authorized"] = False
+          cp["production_mutation_authorized"] = False
+          cp["validation"]["final_green"] = final_green
+          cc = cp["convergence_control"]
+          cc.update({
+              "owner_continue_count": 2,
+              "execution_cycles": 2,
+              "repair_cycles": 7,
+              "application_feature_repair_cycles": 1,
+              "validation_contract_repair_cycles": 4,
+              "repository_state_repair_cycles": 2,
+              "no_progress_cycles": 0,
+              "diagnostic_mode": True,
+              "same_cycle_completed": False,
+              "completed_within_two_cycles": True,
+              "unrelated_historical_validation_jobs_observed": 0,
+              "reruns_without_changed_evidence": 0,
+              "post_merge_stale_pointer_incidents": 0,
+              "last_failure_signature": "The second production candidate exposed an acceptance document/verifier marker mismatch: the verifier required the literal plain-text phrase 'unknown is not support' while the document used inline-code formatting. The document was changed; production behavior remained unchanged and the next exact head passed Linux, Windows and deterministic comparison.",
+              "last_failure_class": "validation_contract",
+          })
+          cc.setdefault("diagnostic_hypotheses", []).extend([
+              "The first VTI-10 production candidate implemented the four capability states semantically but omitted the explicit unsupported vocabulary marker required by source-governance verification.",
+              "The next candidate exposed a separate acceptance-document marker normalization mismatch; changing only the acceptance document produced the exact final GREEN without further production behavior change.",
+          ])
+          cc.setdefault("retry_basis", {}).setdefault("changed_since_previous", []).extend([
+              "Production source added the explicit four-state VTI-10 capability vocabulary after the first final-gate invariant failure identified only the missing unsupported marker.",
+              "Acceptance documentation added the verifier's literal unknown-is-not-support sentence after the next changed head identified only that document marker mismatch.",
+              f"Exact final application head {FINAL_HEAD} passed repository health, Linux, Windows and deterministic comparison in run {FINAL_RUN}, receipt {FINAL_RECEIPT}, with historical profile fanout 0.",
+              f"Application PR #439 merged the validated tree as {APP_MERGE}.",
+          ])
+          cp["completed"] = True
+          cp["completed_at"] = NOW
+          cp["application_merge_sha"] = APP_MERGE
+          cp["authority_retired"] = True
+          cp["next_action"] = f"VTI-10 is completed_verified and retired. VTI-11 is selected_not_started from exact application main {APP_MERGE}; the next owner Continue may governed-start VTI-11, but no application branch may be created before that AIOC governed start validates and merges."
+          cp["completion_evidence"] = {
+              "application_pr": 439,
+              "application_merge_sha": APP_MERGE,
+              "acceptance_red": cp["validation"]["acceptance_red"],
+              "final_green": final_green,
+              "historical_profile_fanout": 0,
+              "provider_activation_performed": False,
+          }
+          write(cp_path, cp)
+
+          predecessor = {
+              "work_item_id": "VTI-10",
+              "status": "completed_verified",
+              "application_pr": 439,
+              "acceptance_red_head": cp["validation"]["acceptance_red"]["head_sha"],
+              "acceptance_red_run": cp["validation"]["acceptance_red"]["run_id"],
+              "acceptance_red_receipt_sha256": cp["validation"]["acceptance_red"]["deterministic_receipt_sha256"],
+              "validated_head": FINAL_HEAD,
+              "validation_run": FINAL_RUN,
+              "repository_health_job": 101926833023,
+              "linux_job": 101926858489,
+              "windows_job": 101926858451,
+              "deterministic_compare_job": 101927123764,
+              "deterministic_receipt_sha256": FINAL_RECEIPT,
+              "historical_profile_fanout": 0,
+              "application_feature_repair_cycles": 1,
+              "validation_contract_repair_cycles": 4,
+              "repository_state_repair_cycles": 2,
+              "merge_sha": APP_MERGE,
+          }
+          service_objective = copy.deepcopy(cc["service_objective"])
+          v11 = {
+              "schema_version": "0.1.0",
+              "work_item_id": "VTI-11",
+              "attempt_id": "VTI-11-attempt-001",
+              "track": "virtual-tabletop-interoperability",
+              "source_program": "VTI",
+              "repository": "cybalicistjt-stack/Multiversal-app",
+              "title": "Adventure / Campaign Package Export",
+              "status": "selected_not_started",
+              "owner_selected": True,
+              "selected_at": NOW,
+              "started_at": None,
+              "implementation_branch": None,
+              "implementation_authority": False,
+              "branch_creation_authorized": False,
+              "acceptance_package_authorized": False,
+              "production_mutation_authorized": False,
+              "application_baseline_sha": APP_MERGE,
+              "application_pr": None,
+              "predecessor": predecessor,
+              "objective": "Export maps, encounters, creatures, NPCs, tokens, journals/handouts, treasure, tables, environments and other permitted content into platform package formats.",
+              "selection_boundaries": [
+                  "VTI-10 is completed_verified and all VTI-10 implementation/production authority is retired.",
+                  f"VTI-11 is selected_not_started from exact application main {APP_MERGE}.",
+                  "No VTI-11 implementation branch, acceptance package or production mutation is authorized until a separate governed-start transaction validates and merges.",
+                  "Provider credentials/accounts, live provider network access, live external/canonical mutation, durable VTI persistence/new migration, provider activation, tester distribution, package publication and release/deployment remain unauthorized.",
+                  "ARI/SAA remain owner-approved planning only, P3D remains deferred outside the automatic critical path, and VTI-12+/SGC-01+ remain unauthorized.",
+              ],
+              "validation": {"acceptance_red": None, "final_green": None},
+              "convergence_control": {
+                  "owner_continue_count": 0,
+                  "execution_cycles": 0,
+                  "repair_cycles": 0,
+                  "application_feature_repair_cycles": 0,
+                  "validation_contract_repair_cycles": 0,
+                  "repository_state_repair_cycles": 0,
+                  "no_progress_cycles": 0,
+                  "diagnostic_mode": False,
+                  "last_failure_signature": None,
+                  "last_failure_class": None,
+                  "diagnostic_hypotheses": [],
+                  "retry_basis": {"changed_since_previous": []},
+                  "unrelated_historical_validation_jobs_observed": 0,
+                  "reruns_without_changed_evidence": 0,
+                  "post_merge_stale_pointer_incidents": 0,
+                  "same_cycle_completed": False,
+                  "completed_within_two_cycles": False,
+                  "service_objective": service_objective,
+              },
+              "authority_boundary": {
+                  "vti12_plus_authorized": False,
+                  "sgc01_plus_authorized": False,
+                  "provider_activation_authorized": False,
+                  "tester_distribution_authorized": False,
+                  "release_or_deployment_authorized": False,
+              },
+              "completed": False,
+              "next_action": f"On the next owner Continue, governed-start VTI-11 from exact application main {APP_MERGE}; do not create an application branch before the AIOC governed-start validates and merges.",
+          }
+          write("governance/ai/work-state/VTI-11-attempt-001.json", v11)
+
+          recent = {
+              "work_item_id": "VTI-10", "status": "completed_verified", "application_pr": 439,
+              "acceptance_red_head": predecessor["acceptance_red_head"], "acceptance_red_run": predecessor["acceptance_red_run"],
+              "acceptance_red_receipt_sha256": predecessor["acceptance_red_receipt_sha256"], "validated_head": FINAL_HEAD,
+              "validation_run": FINAL_RUN, "repository_health_job": 101926833023, "linux_job": 101926858489,
+              "windows_job": 101926858451, "deterministic_compare_job": 101927123764,
+              "deterministic_receipt_sha256": FINAL_RECEIPT, "historical_profile_fanout": 0,
+              "application_feature_repair_cycles": 1, "validation_contract_repair_cycles": 4,
+              "repository_state_repair_cycles": 2, "merge_sha": APP_MERGE,
+          }
+
+          backlog_path = "governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json"
+          backlog = read(backlog_path)
+          backlog["updated_at"] = NOW
+          backlog["status"] = "in_progress"
+          backlog["completed_through"] = "VTI-10"
+          backlog["current_item"] = "VTI-11"
+          backlog["current_attempt"] = "VTI-11-attempt-001"
+          backlog["application_baseline_sha"] = APP_MERGE
+          backlog["next_item"] = "VTI-12"
+          backlog["active_contract"] = {
+              "work_item_id": "VTI-11", "attempt_id": "VTI-11-attempt-001", "status": "selected_not_started",
+              "checkpoint_path": "governance/ai/work-state/VTI-11-attempt-001.json", "implementation_branch": None,
+              "implementation_authority": False, "branch_creation_authorized": False,
+              "acceptance_package_authorized": False, "production_mutation_authorized": False,
+              "matching_red_observed": False, "application_baseline_sha": APP_MERGE,
+          }
+          for item in backlog["items"]:
+              if item["id"] == "VTI-10":
+                  item.update({"status":"completed_verified","implementation_authority":False,"branch_creation_authorized":False,"acceptance_package_authorized":False,"production_mutation_authorized":False,"matching_red_observed":True,"application_pr":439,"application_merge_sha":APP_MERGE})
+              elif item["id"] == "VTI-11":
+                  item.update({"status":"selected_not_started","attempt_id":"VTI-11-attempt-001","checkpoint_path":"governance/ai/work-state/VTI-11-attempt-001.json","implementation_branch":None,"implementation_authority":False,"branch_creation_authorized":False,"acceptance_package_authorized":False,"production_mutation_authorized":False,"matching_red_observed":False})
+          backlog["recently_completed"] = recent
+          backlog["boundaries"] = [
+              "VTI-01 through VTI-10 are completed_verified and frozen with implementation authority retired.",
+              f"VTI-11 is selected_not_started from exact application main {APP_MERGE} with no implementation branch or authority.",
+              "No VTI-11 implementation branch, acceptance package or production mutation is authorized until a separate governed-start transaction validates and merges.",
+              "Provider credentials/accounts, live provider network access, live external/canonical mutation, durable VTI persistence/new migration, provider activation, tester distribution, package publication and release/deployment remain unauthorized.",
+              "ARI/SAA/P3D planning creates no current implementation authority; VTI-12+ and SGC-01+ remain unauthorized.",
+          ]
+          write(backlog_path, backlog)
+
+          pointer_path = "governance/ai/runtime/CURRENT_WORK_POINTER.json"
+          pointer = read(pointer_path)
+          pointer["updated_at"] = NOW
+          pointer["roadmap_supplements"] = [TERMINAL_SUPPLEMENT]
+          pointer["primary_attempt_id"] = "VTI-11-attempt-001"
+          pointer["selection_reason"] = "VTI-10 completed_verified after exact current-family GREEN and application merge; VTI-11 is the strict selected successor with no implementation authority."
+          pointer["active_attempt"] = {
+              "work_item_id":"VTI-11","attempt_id":"VTI-11-attempt-001","track":"virtual-tabletop-interoperability","source_program":"VTI","priority":1,"owner_selected":True,
+              "repository":"cybalicistjt-stack/Multiversal-app","checkpoint_path":"governance/ai/work-state/VTI-11-attempt-001.json","status":"selected_not_started",
+              "implementation_branch":None,"implementation_authority":False,"application_baseline_sha":APP_MERGE,"active_item":"VTI-11 — Adventure / Campaign Package Export","application_pr":None,
+          }
+          pointer["active_program"].update({"completed_through":"VTI-10","current":"VTI-11","strict_next":"VTI-12"})
+          existing_recent = [r for r in pointer.get("recently_completed_implementation_work", []) if r.get("work_item_id") != "VTI-10"]
+          pointer["recently_completed_implementation_work"] = [recent] + existing_recent
+          pointer["bounded_authority"].update({
+              "vti_implementation":False,"vti_work_item":"VTI-11","vti_branch":None,"acceptance_package_authorized":False,
+              "production_mutation_authorized":False,"matching_red_observed":False,"tester_distribution":False,"release_or_deployment":False,"paid_provider_activation":False,
+              "vti_scope":"VTI-11 selected_not_started only. Governed start is required before branch creation or acceptance work; provider activation/network/persistence/publication/release remain closed.",
+          })
+          pointer["selection_invariants"] = backlog["boundaries"]
+          pointer["exact_next_action"] = v11["next_action"]
+          write(pointer_path, pointer)
+
+          auth_path = "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json"
+          auth = read(auth_path)
+          auth["updated_at"] = NOW
+          for row in auth["current"]:
+              if row.get("kind") == "checkpoint": row["path"] = "governance/ai/work-state/VTI-11-attempt-001.json"
+              if row.get("kind") == "roadmap_supplement": row["path"] = TERMINAL_SUPPLEMENT
+          auth["active_planning_work"] = {
+              "work_item":"VTI-11","attempt_id":"VTI-11-attempt-001","repository":"cybalicistjt-stack/Multiversal-app","state":"selected_not_started",
+              "implementation_branch":None,"implementation_authority":False,"application_baseline_sha":APP_MERGE,
+              "implementation_scope":"Selection only; governed start required before branch creation or acceptance work.",
+          }
+          auth["recently_completed_implementation_work"] = [recent] + [r for r in auth.get("recently_completed_implementation_work",[]) if r.get("work_item_id") != "VTI-10"]
+          v10a = auth["vti_10_authority"]
+          for key in ("implementation_authority","branch_creation_authorized","acceptance_package_authorized","production_mutation_authorized"):
+              v10a[key] = False
+          v10a["retired"] = True
+          v10a["selected_not_started"] = False
+          v10a["matching_red_observed"] = True
+          v11a = copy.deepcopy(v10a)
+          for key, value in (("work_item","VTI-11"),("work_item_id","VTI-11"),("attempt_id","VTI-11-attempt-001"),("checkpoint_path","governance/ai/work-state/VTI-11-attempt-001.json"),("application_baseline_sha",APP_MERGE)):
+              if key in v11a or key in ("work_item","attempt_id"): v11a[key] = value
+          v11a.update({"selected_not_started":True,"retired":False,"implementation_branch":None,"implementation_authority":False,"branch_creation_authorized":False,"acceptance_package_authorized":False,"production_mutation_authorized":False,"matching_red_observed":False})
+          auth["vti_11_authority"] = v11a
+          write(auth_path, auth)
+
+          runtime_path = "governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json"
+          runtime = read(runtime_path)
+          runtime["updated_at"] = NOW
+          runtime["canonical_selector"]["rule"] = "CURRENT_WORK_POINTER selects VTI-11 selected_not_started with no implementation authority; VTI-10 remains completed_verified and retired."
+          runtime["work_state"].update({"selected_checkpoint":"governance/ai/work-state/VTI-11-attempt-001.json","selected_checkpoint_role":"selected_not_started"})
+          runtime["application_repository"].update({"canonical_main":APP_MERGE,"sealed_predecessor_baseline":APP_MERGE,"active_validation_family_state":"VTI01_VTI02_VTI03_VTI04_VTI05_VTI06_VTI07_VTI08_VTI09_VTI10_completed_VTI11_selected"})
+          runtime["active_work"] = {"work_item":"VTI-11","attempt_id":"VTI-11-attempt-001","repository":"cybalicistjt-stack/Multiversal-app","state":"selected_not_started","role":"selected_successor","implementation_branch":None,"implementation_authority":False,"acceptance_package_authorized":False,"production_mutation_authorized":False,"matching_red_observed":False,"execution_rule":"Selection only. AIOC governed start must validate and merge before application branch creation or acceptance work."}
+          runtime["recently_completed_product_work"] = dict(recent, application_merge=APP_MERGE)
+          runtime["boundaries"] = backlog["boundaries"]
+          runtime["selected_vti"].update({"status":"selected_not_started","completed_through":"VTI-10","current":"VTI-11","current_state":"selected_not_started","implementation_authority":False,"implementation_branch":None,"application_baseline_sha":APP_MERGE,"strict_next":"VTI-12"})
+          write(runtime_path, runtime)
+
+          index_path = "governance/ai/runtime/ROADMAP_INDEX.json"
+          index = read(index_path)
+          index["updated_at"] = NOW
+          index["rule"] = "VTI-10 is completed_verified and retired; VTI-11 is selected_not_started with no implementation authority. Owner-approved ARI/SAA/P3D planning remains unchanged."
+          index["current"] = {"work_item_id":"VTI-11","attempt_id":"VTI-11-attempt-001","source_program":"VTI","status":"selected_not_started","repository":"cybalicistjt-stack/Multiversal-app","checkpoint":"governance/ai/work-state/VTI-11-attempt-001.json","implementation_branch":None,"implementation_authority":False,"acceptance_package_authorized":False,"production_mutation_authorized":False,"matching_red_observed":False,"application_baseline_sha":APP_MERGE,"application_pr":None}
+          index.setdefault("recently_completed", {})["VTI-10"] = recent
+          index["boundaries"] = backlog["boundaries"]
+          index["selected_vti"].update({"status":"selected_not_started","completed_through":"VTI-10","current":"VTI-11","current_state":"selected_not_started","implementation_authority":False,"implementation_branch":None,"application_baseline_sha":APP_MERGE,"strict_next":"VTI-12"})
+          index["effective_forward_order"] = index["effective_forward_order"].replace("VTI-10..12", "VTI-11..12")
+          if isinstance(index.get("mib_sequence",{}).get("effective_successor"), str):
+              index["mib_sequence"]["effective_successor"] = index["mib_sequence"]["effective_successor"].replace("VTI-10..12", "VTI-11..12")
+          write(index_path, index)
+
+          program_path = ROOT / "governance/application-planning/virtual-tabletop-interoperability/VTI_VIRTUAL_TABLETOP_INTEROPERABILITY_PROGRAM.md"
+          text = program_path.read_text(encoding="utf-8")
+          text = text.replace("**VTI-10 — Additional VTT Adapters & Compatibility Matrix** — **IN_PROGRESS**", "**VTI-10 — Additional VTT Adapters & Compatibility Matrix** — **COMPLETED_VERIFIED**")
+          text = text.replace("**VTI-11 — Adventure / Campaign Package Export**  ", "**VTI-11 — Adventure / Campaign Package Export** — **SELECTED_NOT_STARTED**  ")
+          program_path.write_text(text, encoding="utf-8")
+
+          supplement = f"""# VTI-10 — Terminal Closeout / VTI-11 Selection\n\nVTI-10 is `completed_verified` and all VTI-10 implementation authority is retired. Application PR #439 merged the exact validated tree as `{APP_MERGE}`.\n\nSealed acceptance RED: head `{cp['validation']['acceptance_red']['head_sha']}`, run `{cp['validation']['acceptance_red']['run_id']}`, receipt `{cp['validation']['acceptance_red']['deterministic_receipt_sha256']}`.\n\nSealed final GREEN: head `{FINAL_HEAD}`, run `{FINAL_RUN}`, selector `101926833023`, Linux `101926858489`, Windows `101926858451`, comparator `101927123764`, receipt `{FINAL_RECEIPT}`, historical fanout `0`.\n\nVTI-11 — Adventure / Campaign Package Export — is the strict successor and is `selected_not_started` from exact application main `{APP_MERGE}`. It may export maps, encounters, creatures, NPCs, tokens, journals/handouts, treasure, tables, environments and other permitted content into platform package formats only after a separate AIOC governed start validates and merges. No VTI-11 branch or implementation authority exists now.\n\nARI and SAA remain owner-approved planned programs, P3D remains owner-approved deferred future outside the automatic critical path, and none receives implementation authority through this transition. Provider credentials/accounts, live provider access/mutation, durable VTI persistence/new migration, provider activation, tester distribution, package publication, release/deployment, VTI-12+ and SGC-01+ remain closed.\n"""
+          (ROOT / TERMINAL_SUPPLEMENT).write_text(supplement, encoding="utf-8")
+          PY
+      - name: Remove temporary projection workflow
+        run: rm .github/workflows/vti10-terminal-projection.yml
+      - name: Run VTI-10/VTI-11 lifecycle regression
+        run: python3 -m unittest tests.control_plane.test_vti10_terminal_closeout_vti11_selection
+      - name: Run full control plane
+        run: python3 -m unittest discover -s tests/control_plane -p 'test_*.py'
+      - name: Run repository health
+        run: python3 scripts/validate_repository_health.py --root . --expected-head "$(git rev-parse HEAD)" --output /tmp/vti10-terminal-health.json
+      - name: Commit validated terminal projection
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "cybalicistjt-stack"
+          git config user.email "cybalicist.jt@gmail.com"
+          git add -A
+          git commit -m "VTI-10: terminal closeout and select VTI-11"
+          git push origin HEAD:governance/vti-10-terminal-closeout-vti-11-selection
