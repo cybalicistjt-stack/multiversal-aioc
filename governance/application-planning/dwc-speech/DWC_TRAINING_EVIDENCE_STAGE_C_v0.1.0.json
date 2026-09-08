@@ -1,0 +1,89 @@
+{
+  "schema_version": "0.1.0",
+  "project_id": "DWC-SPEECH",
+  "evidence_id": "DWC-TRAINING-STAGE-C-2026-09-08",
+  "status": "verified_complete",
+  "recorded_at": "2026-09-08",
+  "source": {
+    "drive_folder": "Transfer file",
+    "recovery_package": "DWC_Piper_Training_Recovery_Light_v0.1.0.zip",
+    "recovery_package_sha256_current_recheck": "337f5e7a592a8fcc36b84fa43a0aa0abd1ef5a29e7db353882278b17a2b21007",
+    "internal_sha256_manifest_verified_current_recheck": true
+  },
+  "architecture": {
+    "num_symbols": 58,
+    "embedding_shape": [58, 192],
+    "sample_rate": 22050,
+    "input_mode": "exact custom DWC phoneme IDs",
+    "english_g2p_required": false
+  },
+  "training": {
+    "stageA": {
+      "status": "PASS_STAGE_A_ADAPTATION",
+      "rows": 128,
+      "optimizer_batches_completed": 100,
+      "optimizer_steps": 200,
+      "train_seconds": 114.68331503868103,
+      "first_loss_g": 287.78460693359375,
+      "last_loss_g": 11.823429107666016,
+      "first_train_mel": 0.712976336479187,
+      "last_train_mel": 0.10692010074853897
+    },
+    "stageB": {
+      "status": "PASS_STAGE_B_FULL_CORPUS_ADAPTATION",
+      "rows": 799,
+      "optimizer_batches_completed": 200,
+      "optimizer_steps": 400,
+      "train_seconds": 228.5180516242981,
+      "first_train_mel": 0.07524363696575165,
+      "last_train_mel": 0.05777416378259659,
+      "machine_acceptance": {
+        "rows": 125,
+        "pass": 123,
+        "review": 2,
+        "review_utterances": ["CONTRAST-a_-01", "CONTRAST-_-05"]
+      }
+    },
+    "stageC": {
+      "status": "PASS_STAGE_C_SHORT_FORM_ADAPTATION",
+      "rows": 128,
+      "optimizer_batches_completed": 100,
+      "optimizer_steps": 200,
+      "train_seconds": 114.2796049118042,
+      "first_train_mel": 0.056508369743824005,
+      "last_train_mel": 0.033672165125608444,
+      "machine_acceptance": {
+        "rows": 125,
+        "pass": 125,
+        "review": 0
+      }
+    }
+  },
+  "stageC_weights": {
+    "file": "stageC_weights.pt",
+    "bytes": 281775417,
+    "sha256_expected_from_recovery": "d800ae031942c29289ced1cc80c1448fff234c53f42a56f2d69265e7e3ebabb2",
+    "sha256_current_reassembly": "d800ae031942c29289ced1cc80c1448fff234c53f42a56f2d69265e7e3ebabb2",
+    "hash_match": true,
+    "top_level_keys": ["model_state_dict", "num_symbols", "sample_rate", "segment_size", "stageC_global_step", "source_stageB"],
+    "model_state_dict_tensor_keys": 784,
+    "num_symbols": 58,
+    "sample_rate": 22050,
+    "segment_size": 2048,
+    "stageC_global_step": 200
+  },
+  "stageC_drive_parts_current_recheck": [
+    {"file": "stageC_weights_part001.zip", "sha256": "9acb52d9e7158e295a8e813f674a539c16e7fefe4e3f3b4e4a6ccbd4b0631598"},
+    {"file": "stageC_weights_part002.zip", "sha256": "9a2134dccdb6569496df2ad5a855c8bfbf69c0746c7e859790c007a923ac0ac3"},
+    {"file": "stageC_weights_part003.zip", "sha256": "49cf671dd107d1756340e5f91ab3bc772cdaf3679e1b89bff37c0897f28c0d13"},
+    {"file": "stageC_weights_part004.zip", "sha256": "60cf57d74384e5ddc31a4b763af109407aa0a592ebcb5945d5bd533b917da1eb"}
+  ],
+  "current_execution_surface": {
+    "torch": "2.10.0+cpu",
+    "cuda_available": false,
+    "cuda_device_count": 0,
+    "classification": "GPU unavailable on current sandbox; this does not invalidate completed Stage A/B/C training evidence"
+  },
+  "next_boundary": "perceptual CNS evaluation, Stage-D adaptation from verified Stage-C weights, and export",
+  "non_regression": "Do not rerun warm-start, Stage A, Stage B, or Stage C merely to rediscover feasibility. Revalidation is allowed only when materially required by a new execution surface or contradictory evidence."
+}
