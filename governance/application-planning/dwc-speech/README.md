@@ -23,13 +23,14 @@ Conversation exports and recovery notes are supporting provenance. They do not o
 
 ## Update discipline
 
-- Keep `README.md` stable unless the recovery architecture itself changes.
+- Keep `README.md` stable unless the recovery architecture itself changes or its one-line current reference becomes materially stale.
 - Update `DWC_PROJECT_ANCHOR.md` only when a material project goal, architectural rule, settled achievement, or recovery invariant changes.
 - Update `DWC_CURRENT_STATE.json` whenever the verified execution frontier materially advances, a blocker changes, or a previously recorded mutable fact becomes stale.
 - Never mark work complete because a conversation ended, an artifact was generated, or an operation was started.
 - Never regress to an earlier narrative checkpoint when later tool/file evidence exists.
 - Missing files in a new sandbox are a runtime rehydration problem, not evidence that completed DWC work has been undone.
+- Repeating a settled proof for reproducibility does not reopen that proof or move the logical project frontier backward unless contradictory evidence is produced.
 
 ## Current reference
 
-As of 2026-09-08, the project has crossed the neural-proxy proof stage and is at the Piper exact-custom-ID warm-start validation frontier. Read the anchor and current-state files for the precise evidence and next sequence.
+As of 2026-09-08, DWC has passed the neural-proxy stage **and the direct Piper exact-custom-ID warm-start viability stage**. A repeat warm-start smoke is a reproducibility gate. The active frontier is controlled DWC-native acoustic training, durable checkpoint/sample production, and pronunciation/intelligibility evaluation. Read the anchor and current-state files for the precise evidence and next sequence.
