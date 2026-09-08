@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "SGC-01C",
+  "attempt_id": "SGC-01C-attempt-001",
+  "title": "Inventory Freeze & Unclassified-Source Check",
+  "track": "source-gameplay-coverage-closure",
+  "source_program": "SGC",
+  "parent_tranche": "SGC-01",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "estimated_active_minutes": 14,
+  "execution_target_minutes": 24,
+  "minimum_closeout_reserve_minutes": 8,
+  "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
+  "objective": "Freeze the SGC retained-source inventory, verify that every backlog-named retained input is represented by a stable source reference, and surface any missing or unclassified retained-source reference before later coverage mapping begins.",
+  "predecessor": {
+    "work_item_id": "SGC-01B",
+    "status": "completed_verified",
+    "deliverable": "governance/application-planning/source-gameplay-coverage-closure/SGC_RETAINED_SOURCE_CORPUS_INVENTORY.json"
+  },
+  "selection_boundaries": [
+    "SGC-01B is completed_verified by the same atomic AIOC merge that selects this checkpoint.",
+    "SGC-01C is selected_not_started with no implementation branch or implementation authority.",
+    "Only inventory freeze and missing/unclassified retained-source reference checks are in the next unit's scope.",
+    "Later mechanics/content coverage matrices remain unauthorized until their own SGC execution units."
+  ],
+  "next_action": "On the next execution Continue, governed-start only SGC-01C and carry it through its terminal gate in one continuation."
+}
