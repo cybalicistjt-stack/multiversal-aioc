@@ -1,130 +1,109 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "inventory_id": "SGC-RETAINED-SOURCE-CORPUS-001",
   "work_item_id": "SGC-01B",
-  "status": "CURRENT",
-  "scope": "Inventory only the retained source corpus explicitly named by the SGC backlog and assign stable source references under SGC-DISPOSITION-EVIDENCE-001. This unit does not assign concept dispositions or build later gameplay-coverage matrices.",
+  "frozen_by_work_item_id": "SGC-01C",
+  "status": "FROZEN_VERIFIED",
+  "scope": "Frozen retained source corpus explicitly named by the SGC backlog. Stable source-reference completeness is verified under SGC-DISPOSITION-EVIDENCE-001. This inventory still does not assign gameplay-concept dispositions or build later coverage matrices.",
   "inventory_observed_at_aioc_commit": "998841d917c69e738c7e8f30e7e97f43a3c53695",
+  "freeze_baseline_aioc_commit": "cdbff5a0286753ebf7e77f1d187de795ac56e296",
   "disposition_evidence_contract": "governance/application-planning/source-gameplay-coverage-closure/SGC_DISPOSITION_EVIDENCE_CONTRACT.json",
+  "source_reference_classification_semantics": "classification_state describes only whether the retained source reference itself is structurally classified and verified. It is not a gameplay-concept disposition and creates no implementation authority.",
   "source_records": [
     {
       "source_id": "SGC-SRC-MINES-AMENDMENT",
       "source_kind": "owner_approved_planning_amendment",
       "locator": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MINES_RECOVERY_AMENDMENT_2026-08-27.md",
-      "immutable_revision": {
-        "aioc_commit": "998841d917c69e738c7e8f30e7e97f43a3c53695",
-        "git_blob_sha": "fb6376fd8ce9f247ed4c00f8023a95921f27f65a"
-      },
+      "immutable_revision": {"aioc_commit":"998841d917c69e738c7e8f30e7e97f43a3c53695","git_blob_sha":"fb6376fd8ce9f247ed4c00f8023a95921f27f65a"},
       "retained_scope": "Recovered mine-note families, recovered basis references, routing decisions, dependency order and non-interference rules.",
-      "classification_state": "inventory_only_unclassified"
+      "classification_state": "source_kind_classified_reference_verified"
     },
     {
       "source_id": "SGC-SRC-ARI-SAA-P3D-AMENDMENT",
       "source_kind": "owner_approved_planning_amendment",
       "locator": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ARI_SAA_P3D_AMENDMENT_2026-09-07.md",
-      "immutable_revision": {
-        "aioc_commit": "998841d917c69e738c7e8f30e7e97f43a3c53695",
-        "git_blob_sha": "f75608361c97ea48468a8f6968128f04b0f3c82e"
-      },
+      "immutable_revision": {"aioc_commit":"998841d917c69e738c7e8f30e7e97f43a3c53695","git_blob_sha":"f75608361c97ea48468a8f6968128f04b0f3c82e"},
       "retained_scope": "Owner-approved ARI and SAA insertions, deferred P3D contract, SGC routing obligations and renderer/resource boundaries.",
-      "classification_state": "inventory_only_unclassified"
+      "classification_state": "source_kind_classified_reference_verified"
     },
     {
       "source_id": "SGC-SRC-SSA-OUTPUTS",
       "source_kind": "completed_program_output_bundle",
       "locator": "governance/application-planning/semantic-spatial-authoring/SSA_PROGRAM_BACKLOG.json",
-      "immutable_revision": {
-        "aioc_commit": "998841d917c69e738c7e8f30e7e97f43a3c53695",
-        "git_blob_sha": "933dd2943bdd76ac5b88f224dd755f89a6877f1d"
-      },
+      "immutable_revision": {"aioc_commit":"998841d917c69e738c7e8f30e7e97f43a3c53695","git_blob_sha":"933dd2943bdd76ac5b88f224dd755f89a6877f1d"},
       "member_range": "SSA-01..SSA-10",
       "member_count": 10,
       "bundle_state": "completed_verified",
       "completed_through": "SSA-10",
       "retained_scope": "Completed Semantic Spatial Authoring outputs represented by the canonical completed program backlog and its member checkpoint/application evidence.",
-      "classification_state": "inventory_only_unclassified"
+      "classification_state": "source_kind_classified_reference_verified"
     },
     {
       "source_id": "SGC-SRC-KFR-OUTPUTS",
       "source_kind": "completed_program_output_bundle",
       "locator": "governance/application-planning/knowledge-familiarity-relations/KFR_PROGRAM_BACKLOG.json",
-      "immutable_revision": {
-        "aioc_commit": "998841d917c69e738c7e8f30e7e97f43a3c53695",
-        "git_blob_sha": "0cff3c27be4e77f9e014fbde1e7926019865063b"
-      },
+      "immutable_revision": {"aioc_commit":"998841d917c69e738c7e8f30e7e97f43a3c53695","git_blob_sha":"0cff3c27be4e77f9e014fbde1e7926019865063b"},
       "member_range": "KFR-01..KFR-08",
       "member_count": 8,
       "bundle_state": "completed_verified",
       "completed_through": "KFR-08",
       "retained_scope": "Completed Knowledge & Familiarity Relations outputs represented by the canonical completed program backlog and its member checkpoint/application evidence.",
-      "classification_state": "inventory_only_unclassified"
+      "classification_state": "source_kind_classified_reference_verified"
     },
     {
       "source_id": "SGC-SRC-ODL-OUTPUTS",
       "source_kind": "completed_program_output_bundle",
       "locator": "governance/application-planning/organizational-dynamics-leadership/ODL_PROGRAM_BACKLOG.json",
-      "immutable_revision": {
-        "aioc_commit": "998841d917c69e738c7e8f30e7e97f43a3c53695",
-        "git_blob_sha": "54152f648dc36a37023dfe4899149b74878cc09f"
-      },
+      "immutable_revision": {"aioc_commit":"998841d917c69e738c7e8f30e7e97f43a3c53695","git_blob_sha":"54152f648dc36a37023dfe4899149b74878cc09f"},
       "member_range": "ODL-01..ODL-09",
       "member_count": 9,
       "bundle_state": "completed_verified",
       "completed_through": "ODL-09",
       "retained_scope": "Completed Organizational Dynamics & Leadership outputs represented by the canonical completed program backlog and its member checkpoint/application evidence.",
-      "classification_state": "inventory_only_unclassified"
+      "classification_state": "source_kind_classified_reference_verified"
     },
     {
       "source_id": "SGC-SRC-MAL-OUTPUTS",
       "source_kind": "completed_program_output_bundle",
       "locator": "governance/application-planning/microgames-ambient-loops/MAL_PROGRAM_BACKLOG.json",
-      "immutable_revision": {
-        "aioc_commit": "998841d917c69e738c7e8f30e7e97f43a3c53695",
-        "git_blob_sha": "7ac83e44c4641919de49238615b112ee3c59a3e2"
-      },
+      "immutable_revision": {"aioc_commit":"998841d917c69e738c7e8f30e7e97f43a3c53695","git_blob_sha":"7ac83e44c4641919de49238615b112ee3c59a3e2"},
       "member_range": "MAL-01..MAL-10",
       "member_count": 10,
       "bundle_state": "completed_verified",
       "completed_through": "MAL-10",
       "retained_scope": "Completed Microgames & Ambient Loops outputs represented by the canonical completed program backlog and its final completion evidence.",
-      "classification_state": "inventory_only_unclassified"
+      "classification_state": "source_kind_classified_reference_verified"
     },
     {
       "source_id": "SGC-SRC-ALP-OUTPUTS",
       "source_kind": "completed_program_output_bundle",
       "locator": "governance/application-planning/achievements-learning-practice/ALP_PROGRAM_BACKLOG.json",
-      "immutable_revision": {
-        "aioc_commit": "998841d917c69e738c7e8f30e7e97f43a3c53695",
-        "git_blob_sha": "a568d633f035d10b069d3305e53ef18f1078f4e5"
-      },
+      "immutable_revision": {"aioc_commit":"998841d917c69e738c7e8f30e7e97f43a3c53695","git_blob_sha":"a568d633f035d10b069d3305e53ef18f1078f4e5"},
       "member_range": "ALP-01..ALP-08",
       "member_count": 8,
       "bundle_state": "completed_verified",
       "completed_through": "ALP-08",
       "retained_scope": "Completed Achievements, Learning & Practice outputs represented by the canonical completed program backlog and its member checkpoint/application evidence.",
-      "classification_state": "inventory_only_unclassified"
+      "classification_state": "source_kind_classified_reference_verified"
     },
     {
       "source_id": "SGC-SRC-MINE-ROUTED-CANDIDATES",
       "source_kind": "routed_retained_candidate_subset",
       "locator": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MINES_RECOVERY_AMENDMENT_2026-08-27.md#recovered-concepts-routed-to-existing-owners-instead-of-new-programs",
-      "immutable_revision": {
-        "aioc_commit": "998841d917c69e738c7e8f30e7e97f43a3c53695",
-        "git_blob_sha": "fb6376fd8ce9f247ed4c00f8023a95921f27f65a"
-      },
+      "immutable_revision": {"aioc_commit":"998841d917c69e738c7e8f30e7e97f43a3c53695","git_blob_sha":"fb6376fd8ce9f247ed4c00f8023a95921f27f65a"},
       "retained_scope": "The routed candidate set covering SCL, CSW/WCI, annotation ownership, Character motivation, shared semantic doctrine, Toon/UZ hold, location-aware inventory, semantic vehicles/machines and the mining-station proof/content candidate.",
-      "classification_state": "inventory_only_unclassified"
+      "classification_state": "source_kind_classified_reference_verified"
     }
   ],
   "mandatory_input_coverage": [
-    {"backlog_input": "APPLICATION_IMPLEMENTATION_ROADMAP_MINES_RECOVERY_AMENDMENT_2026-08-27.md", "source_ids": ["SGC-SRC-MINES-AMENDMENT"]},
-    {"backlog_input": "APPLICATION_IMPLEMENTATION_ROADMAP_ARI_SAA_P3D_AMENDMENT_2026-09-07.md", "source_ids": ["SGC-SRC-ARI-SAA-P3D-AMENDMENT"]},
-    {"backlog_input": "SSA-01..10 outputs", "source_ids": ["SGC-SRC-SSA-OUTPUTS"]},
-    {"backlog_input": "KFR-01..08 outputs", "source_ids": ["SGC-SRC-KFR-OUTPUTS"]},
-    {"backlog_input": "ODL-01..09 outputs", "source_ids": ["SGC-SRC-ODL-OUTPUTS"]},
-    {"backlog_input": "MAL-01..10 outputs", "source_ids": ["SGC-SRC-MAL-OUTPUTS"]},
-    {"backlog_input": "ALP-01..08 outputs", "source_ids": ["SGC-SRC-ALP-OUTPUTS"]},
-    {"backlog_input": "mine-note candidates routed into SCL/WCI/CSW/Character/existing owners", "source_ids": ["SGC-SRC-MINE-ROUTED-CANDIDATES"]}
+    {"backlog_input":"APPLICATION_IMPLEMENTATION_ROADMAP_MINES_RECOVERY_AMENDMENT_2026-08-27.md","source_ids":["SGC-SRC-MINES-AMENDMENT"]},
+    {"backlog_input":"APPLICATION_IMPLEMENTATION_ROADMAP_ARI_SAA_P3D_AMENDMENT_2026-09-07.md","source_ids":["SGC-SRC-ARI-SAA-P3D-AMENDMENT"]},
+    {"backlog_input":"SSA-01..10 outputs","source_ids":["SGC-SRC-SSA-OUTPUTS"]},
+    {"backlog_input":"KFR-01..08 outputs","source_ids":["SGC-SRC-KFR-OUTPUTS"]},
+    {"backlog_input":"ODL-01..09 outputs","source_ids":["SGC-SRC-ODL-OUTPUTS"]},
+    {"backlog_input":"MAL-01..10 outputs","source_ids":["SGC-SRC-MAL-OUTPUTS"]},
+    {"backlog_input":"ALP-01..08 outputs","source_ids":["SGC-SRC-ALP-OUTPUTS"]},
+    {"backlog_input":"mine-note candidates routed into SCL/WCI/CSW/Character/existing owners","source_ids":["SGC-SRC-MINE-ROUTED-CANDIDATES"]}
   ],
   "inventory_counts": {
     "source_records": 8,
@@ -135,14 +114,31 @@
     "unresolved_source_locators": 0,
     "external_connected_sources_opened": 0
   },
+  "freeze_verification": {
+    "required_source_reference_fields": ["source_id","source_kind","locator"],
+    "mandatory_backlog_inputs_expected": 8,
+    "mandatory_backlog_inputs_represented": 8,
+    "stable_source_records": 8,
+    "all_required_fields_present": true,
+    "all_source_ids_unique": true,
+    "all_locators_present": true,
+    "all_available_immutable_revisions_recorded": true,
+    "missing_mandatory_inputs": [],
+    "missing_source_reference_fields": [],
+    "unresolved_source_locators": [],
+    "duplicate_source_ids": [],
+    "unclassified_source_references": [],
+    "gameplay_concept_dispositions_assigned": 0,
+    "result": "PASS"
+  },
   "invariants": [
-    "Every source record satisfies the SGC-01A required source_id, source_kind and locator fields.",
+    "Every retained source reference has a stable source_id, source_kind and exact locator.",
+    "Every backlog-named mandatory retained input is represented by at least one stable source_id.",
+    "Source-reference classification is complete; gameplay-concept disposition remains intentionally unstarted here.",
     "Immutable Git evidence is recorded where available; no checksum or fingerprint is invented.",
-    "Program-output bundles are inventory references to completed canonical outputs, not new authority ledgers.",
-    "No concept disposition is assigned by SGC-01B; inventory_only_unclassified is an inventory state, not an allowed disposition.",
-    "No retained source outside the backlog-named SGC-01B input set is added by this unit.",
+    "Program-output bundles remain references to completed canonical outputs, not new authority ledgers.",
     "Historical source evidence cannot override newer canonical repository authority.",
-    "SGC-01C is responsible for freezing this inventory and checking for missing/unclassified retained-source references before later coverage mapping begins."
+    "Later coverage mapping must use this frozen inventory and may not silently add or drop retained sources without a new governed inventory amendment."
   ],
-  "strict_successor": "SGC-01C"
+  "strict_successor": "SGC-02A"
 }
