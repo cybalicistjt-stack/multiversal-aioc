@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "SGC-07B",
+  "status": "CURRENT",
+  "scope": "Close only the explicit superseded, intentionally unsupported, provenance-only and deferred disposition surface selected for SGC-07B, including the four SGC-07A handoffs. SGC-08A trace-graph construction remains unauthorized.",
+  "disposition_contract": "governance/application-planning/source-gameplay-coverage-closure/SGC_DISPOSITION_EVIDENCE_CONTRACT.json",
+  "predecessor": "governance/application-planning/source-gameplay-coverage-closure/SGC_CONFLICT_UNKNOWN_OWNER_DECISION_QUEUE_RESOLUTION.json",
+  "records": [
+    {
+      "concept_id": "SGC-CONTENT-AMMO-REFERENCE-ONLY-WEAPON-DEFINITIONS",
+      "source_refs": ["SGC-SRC-MINES-AMENDMENT"],
+      "disposition": "provenance_only",
+      "evidence": {
+        "provenance_reason": "Energy Sniper Rifle, Plasma Carbine and Cryo Blaster are retained only because ammo/source references preserve those names; no authoritative governed Item Definition evidence supplies mechanics or content fields.",
+        "no_claim": "The names create no implementation or content-definition obligation. A future authoritative source may create a new governed Item-content decision through the existing owner path, but SGC does not keep an open vague future bucket.",
+        "evidence_path": "governance/application-planning/parallel-preimplementation/PPIA-03_SOURCE_AND_DESIGN_INVENTORY.md"
+      }
+    },
+    {
+      "concept_id": "SGC-CREATURE-HARVEST-EXECUTABLE-PROFILE-GAPS",
+      "source_refs": ["SGC-SRC-MINES-AMENDMENT"],
+      "disposition": "content_only",
+      "evidence": {
+        "content_owner": "ICF governed creature-harvest content",
+        "no_runtime_claim": "All 27 canonical creature harvest profiles remain governed non-executable gap content while authored mode/yield evidence is absent. They are not runtime harvest mechanics and no anatomy, yield, edibility, safety, legality or effect facts are inferred.",
+        "evidence_path": "governance/application-planning/ingredient-cultivation-foodcraft/ICF-15_CONTENT_PACKS_VALIDATION_SEARCH_WORKBENCH.md"
+      }
+    },
+    {
+      "concept_id": "SGC-CREATURE-DEFERRED-SOURCE-CANDIDATE-DISPOSITION",
+      "source_refs": ["SGC-SRC-MINES-AMENDMENT"],
+      "disposition": "provenance_only",
+      "evidence": {
+        "provenance_reason": "The 93 PPIA-02 creature candidates remain source-review evidence only; completed CEW did not authorize name-only binding or automatic canonical promotion.",
+        "no_claim": "The 93 records create no implementation/content obligation and receive no invented stat, ecology, role, relationship or gameplay facts.",
+        "evidence_path": "governance/application-planning/parallel-preimplementation/PPIA-02_SOURCE_AND_DESIGN_INVENTORY.md"
+      }
+    },
+    {
+      "concept_id": "SGC-CONTENT-VEHICLE-R1-DEFERRED-CANDIDATE-DISPOSITION",
+      "source_refs": ["SGC-SRC-MINES-AMENDMENT"],
+      "disposition": "provenance_only",
+      "evidence": {
+        "provenance_reason": "The 10 recovered R1 vehicle/system structural candidates remain retained source-review headings only; PPIA-04 explicitly does not promote them to governed Definitions or runtime behavior.",
+        "no_claim": "The 10 records create no implementation/content obligation and authorize no invented capacity, compatibility, mechanics or operational semantics.",
+        "evidence_path": "governance/ai/work-state/PPIA-04-attempt-001.json"
+      }
+    },
+    {
+      "concept_id": "SGC-EDGE-TOON-UZ-CONCEPTUALITY-HOLD",
+      "source_refs": ["SGC-SRC-MINE-ROUTED-CANDIDATES", "SGC-SRC-MINES-AMENDMENT"],
+      "disposition": "planned_owned_elsewhere",
+      "evidence": {
+        "owner": "Toon/UZ setting-specific owner when that setting is reopened",
+        "authority": "The owner-approved Mines Recovery route preserves Toon-local conceptuality as a setting-specific hold and explicitly avoids creating a generic ontology program from unresolved setting material.",
+        "activation_boundary": "The setting is not activated by SGC-07B and this disposition grants no implementation authority.",
+        "evidence_path": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MINES_RECOVERY_AMENDMENT_2026-08-27.md"
+      }
+    },
+    {
+      "concept_id": "SGC-ROUTE-P3D-PHYSICAL-3D-MINIATURE",
+      "source_refs": ["SGC-SRC-ARI-SAA-P3D-AMENDMENT"],
+      "disposition": "planned_owned_elsewhere",
+      "evidence": {
+        "owner": "P3D deferred future project",
+        "authority": "P3D is owner-approved but explicitly deferred, outside the automatic critical path and without implementation authority; renderer-neutral future physicalization semantics remain preserved.",
+        "activation_boundary": "Readiness prerequisites do not auto-activate P3D and SGC-07B performs no P3D work.",
+        "evidence_path": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ARI_SAA_P3D_AMENDMENT_2026-09-07.md"
+      }
+    }
+  ],
+  "counts": {
+    "records": 6,
+    "provenance_only": 3,
+    "content_only": 1,
+    "planned_owned_elsewhere": 2,
+    "explicitly_superseded": 0,
+    "intentionally_unsupported": 0,
+    "unresolved_owner_decision": 0,
+    "invented_owner_assignments": 0,
+    "invented_source_values": 0
+  },
+  "closure_rules": [
+    "The four SGC-07A handoff sets are terminally dispositioned here; none remains in a vague future bucket.",
+    "Provenance-only records remain discoverable history but create no implementation/content obligation.",
+    "The 27 harvest-profile records remain content-only explicit gaps and are not executable mechanics.",
+    "Toon/UZ and P3D keep their exact owner-approved gated/deferred destinations without activation.",
+    "No named SGC-07B input is classified as explicitly_superseded or intentionally_unsupported because current authority supplies no such decision; zero counts are recorded rather than invented examples.",
+    "SGC-08A trace-graph construction is not started by this closure."
+  ],
+  "result": "PASS_ZERO_UNCLASSIFIED_07B_INPUTS",
+  "strict_successor": "SGC-08A"
+}
