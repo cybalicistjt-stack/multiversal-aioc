@@ -1,5 +1,5 @@
 {
-  "schema_version":"0.1.0",
+  "schema_version":"0.2.0",
   "work_item_id":"SGC-03C",
   "attempt_id":"SGC-03C-attempt-001",
   "title":"Faction, Proficiency, Familiarity, Motivation & Source-Gap Closure",
@@ -7,22 +7,25 @@
   "source_program":"SGC",
   "parent_tranche":"SGC-03",
   "repository":"cybalicistjt-stack/multiversal-aioc",
-  "status":"selected_not_started",
+  "status":"completed_verified",
   "owner_selected":true,
   "implementation_authority":false,
-  "implementation_branch":null,
-  "completed":false,
+  "implementation_branch":"governance/sgc-03c-faction-proficiency-familiarity-motivation",
+  "completed":true,
+  "authority_retired":true,
   "estimated_active_minutes":18,
   "execution_target_minutes":24,
   "minimum_closeout_reserve_minutes":8,
   "family_preflight":"governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
   "objective":"Close retained faction, proficiency, familiarity, motivation and remaining SGC-03 source-gap records against exact current owners without inventing missing source facts or duplicating Character/KFR authority.",
-  "predecessor":{"work_item_id":"SGC-03B","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_SPECIES_PROFESSION_PRESTIGE_PROGRESSION_COVERAGE.json","coverage_records":6},
-  "selection_boundaries":[
-    "SGC-03B is completed_verified by the atomic AIOC merge selecting this checkpoint.",
-    "SGC-03C is selected_not_started with no implementation branch or implementation authority.",
-    "Only faction, proficiency, familiarity, motivation and remaining SGC-03 source-gap closure is in the next unit's scope.",
-    "SGC-04A items/materials/facilities/recipes remains unauthorized."
+  "deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_FACTION_PROFICIENCY_FAMILIARITY_MOTIVATION_GAP_COVERAGE.json",
+  "completion":{"coverage_records":7,"implemented":5,"planned_owned_elsewhere":1,"unresolved_owner_decision":1,"invented_owner_assignments":0,"result":"PASS_WITH_ONE_VISIBLE_OWNER_DECISION"},
+  "boundaries":[
+    "Faction Character advancement remains CAB-09 owned while canonical faction/member/relationship truth remains on its owner seams.",
+    "Proficiency remains CAB-10 owned and familiarity remains KFR owned; familiarity does not imply proficiency.",
+    "CSW character-motivation fragments remain pre-authoritative and require Character-domain incorporation for Character truth.",
+    "The absent exact canonical Character motivation field/relationship remains one explicit owner decision routed to SGC-07A rather than being invented.",
+    "SGC-04A remains unauthorized until its own governed start."
   ],
-  "next_action":"On the next execution Continue, governed-start only SGC-03C and carry it through its terminal gate in one continuation."
+  "strict_successor":"SGC-04A"
 }
