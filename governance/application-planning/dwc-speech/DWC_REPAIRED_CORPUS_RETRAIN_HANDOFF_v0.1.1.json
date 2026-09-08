@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.1.1",
+  "date": "2026-09-08",
+  "project_id": "DWC-SPEECH",
+  "status": "prepared_external_execution",
+  "corpus": {
+    "file": "DWC_Synthetic_Bootstrap_Corpus_v0.2.1.zip",
+    "bytes": 26439488,
+    "sha256": "99aca0d65596f906b08a99e0f0c9708211fb150013e039c91f0c489fc0d6a4e3",
+    "drive_file_id": "1HPRmXb-DJOOiR9HW608S2GKP1XAqULzx",
+    "rows": 799,
+    "unique_row_ids": 799,
+    "low_level_rows": 0
+  },
+  "retrain_bundle": {
+    "file": "DWC_Piper_RepairedCorpus_Retrain_v0.1.0.zip",
+    "bytes": 43523,
+    "sha256": "96c978573c3a4d0a21acdd5b6f49fc86f8bfc70be045b4c0f4ae0ae5d2ec9007",
+    "drive_file_id": "1PnBQjwb5LH1b1xcidUod3xuYGuQbt07z",
+    "local_preflight": "PASS_REPAIRED_CORPUS_V0_2_1_PREFLIGHT"
+  },
+  "gpu_notebook": {
+    "file": "DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.1.ipynb",
+    "bytes": 10799,
+    "sha256": "eb1229689b4f1a069bfddcf61b0286249b62176ffeef42f56e59813462763ba4",
+    "drive_file_id": "1zDNNfb3MHqPdiv9h_FMSixA_j7FSD64D",
+    "drive_readback_verified": true,
+    "supersedes": "DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.ipynb"
+  },
+  "warmstart": {
+    "checkpoint": "lj-med_1000.ckpt",
+    "checkpoint_bytes": 845889993,
+    "checkpoint_sha256": "dcf2449bdbdaad09256a08dfac211c59f6b36ce8d3f244fd844a9eb1d7384c7c",
+    "reassembled_zip_bytes": 775838605,
+    "reassembled_zip_sha256": "7c06a05f89674f39fd185ede1e62911c9f91241397c0d2c708825c65455fe92b",
+    "logical_status": "already proven; reused as baseline, not rediscovered"
+  },
+  "training_sequence": [
+    "fresh exact-58 model + vocoder-only warm-start",
+    "8-row raw inference amplitude baseline",
+    "R1: 128 unique governed phone-balanced rows with probes every 8 batches",
+    "R1 strict 125-row waveform gate; R2 prohibited unless 125/125",
+    "R2: one deterministic shuffled pass over all 799 repaired rows with probes",
+    "R2 strict 125-row waveform gate",
+    "human CNS perceptual gate only after machine waveform success"
+  ],
+  "collapse_guard": {
+    "governed_final_rms_floor_dbfs": -55.0,
+    "probe_max_drop_from_warmstart_db": 18.0,
+    "behavior": "abort immediately and persist diagnostic checkpoint/probes if median raw-output RMS crosses collapse floor"
+  },
+  "execution_surfaces": {
+    "chatgpt_sandbox": "CPU-only PyTorch; exact Piper v1.8.0 source could not be materialized after shell DNS block, so local model baseline is environment_unavailable",
+    "hugging_face_jobs": "unavailable: 402 Payment Required on both cpu-basic and zero-a10g probes",
+    "prepared_target": "GPU-capable Colab or equivalent runtime using the Drive notebook"
+  },
+  "superseded_artifacts": [
+    {
+      "file": "DWC_Piper_Custom58_StageD_Continuation_v0.1.ipynb",
+      "reason": "starts from Stage-C weights trained on invalid v0.1 bootstrap corpus; not authorized"
+    },
+    {
+      "file": "DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.ipynb",
+      "reason": "stale checkpoint byte-count assertion 845996331 would false-abort; replaced by v0.1.1"
+    }
+  ]
+}
