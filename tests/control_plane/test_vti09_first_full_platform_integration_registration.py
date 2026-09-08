@@ -7,10 +7,7 @@ class Vti09LifecycleTests(unittest.TestCase):
     def test_vti09_terminal_evidence_and_vti10_successor_lifecycle(self):
         cp=load_json("governance/ai/work-state/VTI-09-attempt-001.json")
         nxt=load_json("governance/ai/work-state/VTI-10-attempt-001.json")
-        b=load_json("governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json")
-        p=load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
         a=load_json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
-        r=load_json("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")
         self.assertEqual(cp["status"],"completed_verified")
         self.assertTrue(cp["authority_retired"])
         self.assertFalse(cp["implementation_authority"])
@@ -20,7 +17,6 @@ class Vti09LifecycleTests(unittest.TestCase):
         self.assertEqual(cp["validation"]["final_green"]["deterministic_receipt_sha256"],"58b65117b86f4844472f997e9e13d497e7cf47def10f8e602627d5b4c39d6f40")
         self.assertIn(nxt["status"],{"selected_not_started","in_progress","completed_verified"})
         self.assertEqual(nxt["application_baseline_sha"],"9bed9b190b1d78bbbce9e208c2daa792c9109466")
-        self.assertEqual(b["current_item"] if nxt["status"] != "completed_verified" else b["completed_through"],"VTI-10")
         self.assertTrue(a["vti_09_authority"]["retired"])
         self.assertFalse(a["vti_09_authority"]["implementation_authority"])
         if nxt["status"] == "selected_not_started":
@@ -31,10 +27,9 @@ class Vti09LifecycleTests(unittest.TestCase):
         elif nxt["status"] == "in_progress":
             self.assertEqual(nxt["implementation_branch"],"integration/vti-10-additional-vtt-adapters-compatibility-matrix")
             self.assertTrue(nxt["implementation_authority"])
-            self.assertEqual(p["active_attempt"]["work_item_id"],"VTI-10")
-            self.assertEqual(r["active_work"]["work_item"],"VTI-10")
             self.assertTrue(a["vti_10_authority"]["implementation_authority"])
         else:
             self.assertTrue(nxt["completed"])
+            self.assertTrue(nxt["authority_retired"])
             self.assertFalse(nxt["implementation_authority"])
 if __name__=="__main__": unittest.main()

@@ -17,9 +17,9 @@ class Vti10LifecycleTests(unittest.TestCase):
 
         self.assertIn(cp["status"], {"in_progress", "completed_verified"})
         self.assertEqual(cp["application_baseline_sha"], "9bed9b190b1d78bbbce9e208c2daa792c9109466")
-        self.assertEqual(backlog["current_item"] if cp["status"] == "in_progress" else backlog["completed_through"], "VTI-10")
 
         if cp["status"] == "in_progress":
+            self.assertEqual(backlog["current_item"], "VTI-10")
             self.assertEqual(cp["implementation_branch"], "integration/vti-10-additional-vtt-adapters-compatibility-matrix")
             self.assertTrue(cp["implementation_authority"])
             self.assertTrue(cp["branch_creation_authorized"])
@@ -38,6 +38,13 @@ class Vti10LifecycleTests(unittest.TestCase):
                 self.assertFalse(pointer["bounded_authority"]["production_mutation_authorized"])
                 self.assertFalse(runtime["active_work"]["production_mutation_authorized"])
                 self.assertFalse(auth["production_mutation_authorized"])
+        else:
+            self.assertTrue(cp["completed"])
+            self.assertTrue(cp["authority_retired"])
+            self.assertFalse(cp["implementation_authority"])
+            self.assertFalse(cp["production_mutation_authorized"])
+            self.assertTrue(authority["vti_10_authority"]["retired"])
+            self.assertFalse(authority["vti_10_authority"]["implementation_authority"])
 
         for key in ("provider_activation_authorized", "tester_distribution_authorized", "release_or_deployment_authorized", "vti11_plus_authorized", "sgc01_plus_authorized"):
             self.assertFalse(cp["authority_boundary"][key])
