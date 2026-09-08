@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.2.0",
+  "schema_version": "0.3.0",
   "project_id": "DWC-SPEECH",
   "project_name": "DWC Speech Synthesis",
   "owner": "John Brandon Turner",
@@ -8,160 +8,93 @@
   "authority_scope": "DWC project continuity only; does not select Multiversal software roadmap work",
   "stable_entrypoint": "governance/application-planning/dwc-speech/README.md",
   "human_anchor": "governance/application-planning/dwc-speech/DWC_PROJECT_ANCHOR.md",
+  "latest_training_evidence": "governance/application-planning/dwc-speech/DWC_TRAINING_EVIDENCE_STAGE_C_v0.1.0.json",
   "execution_frontier": {
-    "name": "Controlled DWC-native acoustic training and evaluation",
+    "name": "Perceptual CNS evaluation, Stage-D adaptation, and export",
     "state": "in_progress",
-    "summary": "Direct Piper exact-custom-ID warm-start viability was already established in prior work and reaffirmed by the owner on 2026-09-08. A repeat warm-start smoke is authorized as reproducibility/revalidation, not rediscovery. The forward frontier is bounded acoustic training beyond the smoke test, checkpoint/sample production, and pronunciation/intelligibility evaluation while preserving exact DWC phoneme control.",
+    "summary": "The direct exact-ID path has advanced through three real adaptation stages. Stage A completed 100 batches/200 optimizer steps on a balanced 128-row subset; Stage B completed 200 batches/400 optimizer steps on the full 799-row corpus; Stage C completed 100 targeted batches/200 optimizer steps for short-form and special-phone repair. Machine waveform acceptance advanced from 123/125 after Stage B to 125/125 after Stage C. Stage-C weights have been recovered and hash-verified in the current conversation. The remaining frontier is human/perceptual CNS evaluation, longer Stage-D adaptation from Stage-C weights, then export and final acoustic acceptance.",
     "do_not_regress_to": [
       "language redesign",
       "PSS/CNS rediscovery",
       "whether the exact-ID frontend exists",
       "whether the 799-row corpus exists",
-      "whether the ONNX proxy can render DWC",
-      "whether Piper source supports dataset_type=phoneme_ids",
-      "whether Piper source supports vocoder_warmstart_ckpt",
-      "whether the direct custom-ID warm-start path is viable"
+      "whether the ONNX neural proxy can render DWC",
+      "whether Piper supports exact owner-supplied phoneme IDs",
+      "whether Piper supports warm-start",
+      "whether direct exact-ID warm-start is viable",
+      "whether real optimizer updates can train the DWC embedding/path",
+      "Stage A rediscovery",
+      "Stage B rediscovery",
+      "Stage C rediscovery"
     ]
   },
   "verified_achievements": [
-    {
-      "id": "dwc_language_pre_audio_handoff",
-      "state": "verified_complete",
-      "fact": "DWC language/etymology/PSS/CNS work progressed through the pre-audio TTS handoff.",
-      "evidence": "DWC_CONVERSATION_EXECUTION_RECOVERY (1).md"
-    },
-    {
-      "id": "exact_id_frontend",
-      "state": "verified_complete",
-      "fact": "An engine-independent DWC frontend exists that produces exact custom phoneme IDs.",
-      "evidence": "DWC_CONVERSATION_EXECUTION_RECOVERY (1).md"
-    },
-    {
-      "id": "bootstrap_corpus_799",
-      "state": "verified_complete",
-      "fact": "A synthetic exact-ID aligned DWC bootstrap corpus of 799 utterances exists and passed the prior exact-ID Piper preflight.",
-      "evidence": "Prior MHT transcript plus DWC recovery record"
-    },
-    {
-      "id": "onnx_neural_proxy",
-      "state": "verified_complete",
-      "fact": "The neural proxy rendered 199/199 DWC regression utterances, reported 0 unsupported CNS IPA symbols in that set, produced about 4.6 minutes of audio, and bypassed English G2P.",
-      "evidence": "Multiversal app - Synth V Uses (1).mht"
-    },
-    {
-      "id": "piper_custom_ids_source_support",
-      "state": "verified_complete",
-      "fact": "Piper v1.8.0 source inspection established direct owner-supplied phoneme-ID dataset support via dataset_type=phoneme_ids.",
-      "evidence": "DWC_CONVERSATION_EXECUTION_RECOVERY (1).md"
-    },
-    {
-      "id": "piper_vocoder_warmstart_support",
-      "state": "verified_complete",
-      "fact": "Piper source inspection established vocoder_warmstart_ckpt support.",
-      "evidence": "DWC_CONVERSATION_EXECUTION_RECOVERY (1).md"
-    },
-    {
-      "id": "direct_custom_id_warmstart_viability",
-      "state": "verified_complete",
-      "fact": "The prior work established that the intended pretrained Piper/LJSpeech checkpoint can warm-start the direct DWC exact-custom-ID path. A future rerun is a reproducibility gate, not the first proof of viability.",
-      "evidence": "Owner correction on 2026-09-08 confirming the prior result; preceding execution work had advanced beyond the stale recovery summary. Revalidation may be performed to create fresher machine evidence."
-    }
+    {"id":"dwc_language_pre_audio_handoff","state":"verified_complete","fact":"DWC language/etymology/PSS/CNS work progressed through the pre-audio TTS handoff."},
+    {"id":"exact_id_frontend","state":"verified_complete","fact":"An engine-independent DWC frontend exists that produces exact custom phoneme IDs."},
+    {"id":"bootstrap_corpus_799","state":"verified_complete","fact":"A synthetic exact-ID aligned DWC bootstrap corpus of 799 utterances exists and passed exact-ID preflight."},
+    {"id":"onnx_neural_proxy","state":"verified_complete","fact":"The neural proxy rendered 199/199 DWC regression utterances with 0 unsupported CNS IPA symbols in that set and bypassed English G2P."},
+    {"id":"piper_custom_id_and_warmstart","state":"verified_complete","fact":"Piper v1.8.0 supports direct owner-supplied phoneme IDs and the warm-start mechanism used by the DWC path."},
+    {"id":"direct_custom_id_warmstart_viability","state":"verified_complete","fact":"The pretrained Piper/LJSpeech checkpoint successfully warm-starts the DWC direct exact-custom-ID path without replacing the 58-symbol DWC embedding."},
+    {"id":"real_training_stage_a","state":"verified_complete","fact":"Stage A completed 100 training batches / 200 optimizer steps on a balanced 128-row subset."},
+    {"id":"real_training_stage_b","state":"verified_complete","fact":"Stage B completed 200 training batches / 400 optimizer steps on the full 799-row synthetic DWC corpus; machine waveform acceptance was 123/125."},
+    {"id":"real_training_stage_c","state":"verified_complete","fact":"Stage C completed 100 targeted batches / 200 optimizer steps for short-form/special-phone repair; machine waveform acceptance was 125/125."},
+    {"id":"stage_c_weights_recovered","state":"verified_complete","fact":"Stage-C weights were reassembled in the 2026-09-08 recovery conversation: 281,775,417 bytes; SHA-256 d800ae031942c29289ced1cc80c1448fff234c53f42a56f2d69265e7e3ebabb2, matching the recorded recovery hash."}
   ],
-  "known_external_artifacts": [
-    {
-      "name": "lj-med_1000.zip",
-      "location": "Google Drive / Transfer file",
-      "state": "split_for_transfer",
-      "notes": "Original archive exceeded connector per-file limit. Previous verified Drive state exposed eight parts .001-.008. Rehydrate only when exact checkpoint bytes are needed."
-    },
-    {
-      "name": "lj-med_1000.ckpt",
-      "location": "inside reconstructed lj-med_1000.zip",
-      "state": "previously_used_for_successful_warmstart_path",
-      "notes": "Exact bytes should be rehydrated and integrity-checked before a new training/revalidation run; lack of local bytes does not reopen warm-start viability as a design question."
-    },
-    {
-      "name": "DWC-Semantic-Lexicon-Redesign-v2-2026-09-07.zip",
-      "location": "referenced in prior conversation",
-      "state": "supporting_language_artifact"
-    },
-    {
-      "name": "Piper v1.8.0 source",
-      "state": "previously_uploaded_and_extracted"
-    },
-    {
-      "name": "LJSpeech medium ONNX model and config",
-      "state": "previously_uploaded_and_used_for_proxy_proof"
-    }
+  "current_artifacts": [
+    {"name":"DWC_Piper_Training_Recovery_Light_v0.1.0.zip","location":"Google Drive / Transfer file","state":"verified","sha256_current_recheck":"337f5e7a592a8fcc36b84fa43a0aa0abd1ef5a29e7db353882278b17a2b21007"},
+    {"name":"stageC_weights.pt","location":"reconstructable from four Drive part ZIPs","state":"verified","bytes":281775417,"sha256":"d800ae031942c29289ced1cc80c1448fff234c53f42a56f2d69265e7e3ebabb2"},
+    {"name":"StageB_Acceptance_Demo.mp3","state":"available in recovery package"},
+    {"name":"StageC_Acceptance_Demo.mp3","state":"available in recovery package"},
+    {"name":"DWC_Piper_Custom58_GPU_Training_v0.2.ipynb","location":"Google Drive / Transfer file","state":"available; historical Stage-A/B GPU harness"},
+    {"name":"DWC_TTS_ENGINE_03_Acoustic_Spike_Harness_v0.1.0.zip","location":"Google Drive / Transfer file","state":"available"},
+    {"name":"DWC_Synthetic_Bootstrap_Corpus_v0.1.0.zip","location":"Google Drive / Transfer file","state":"available"},
+    {"name":"DWC_TTS_PHONEME_ID_MAP.json","location":"Google Drive / Transfer file","state":"available"}
   ],
-  "prior_runtime_checkpoint_parts": {
-    "external_drive_verified": [".001", ".002", ".003", ".004", ".005", ".006", ".007", ".008"],
-    "prior_local_runtime_recorded": [".001", ".002", ".003", ".004"],
-    "current_conversation_runtime": "not_yet_rehydrated_or_revalidated",
-    "interpretation_rule": "Missing ephemeral files in a new sandbox do not reset logical project progress. Fetch only what the current runtime actually lacks."
+  "current_execution_surface": {
+    "torch":"2.10.0+cpu",
+    "cuda_available":false,
+    "cuda_device_count":0,
+    "interpretation":"Current sandbox can recover/inspect/package evidence but cannot serve as the sustained GPU Stage-D training surface. GPU absence is an execution-surface limitation only."
   },
   "next_execution_sequence": [
-    {
-      "step": 1,
-      "state": "not_started_in_current_conversation",
-      "action": "Inspect the current execution surface and rehydrate only the exact checkpoint/source/corpus artifacts needed for the next run."
-    },
-    {
-      "step": 2,
-      "state": "authorized_revalidation",
-      "action": "Reassemble and integrity-check lj-med_1000.ckpt as needed, then repeat a tiny direct DWC exact-custom-ID warm-start smoke solely as a reproducibility gate. Record hashes, config, code path, and outcome so this proof is machine-preserved."
-    },
-    {
-      "step": 3,
-      "state": "not_started_in_current_conversation",
-      "action": "Advance immediately beyond the smoke into a bounded acoustic-training run long enough to demonstrate real optimizer/training progress and produce a new checkpoint or equivalent durable training artifact."
-    },
-    {
-      "step": 4,
-      "state": "conditional",
-      "action": "If the current CPU/container surface cannot sustain that bounded training run, classify only sustained acoustic training as environment_unavailable and produce/use an exact GPU-ready harness; do not reopen the warm-start, language, corpus, or proxy milestones."
-    },
-    {
-      "step": 5,
-      "state": "after_training_artifact",
-      "action": "Render a controlled DWC evaluation sample from the newly trained checkpoint and evaluate exact phoneme coverage, pronunciation fidelity, intelligibility, failure cases, and voice quality against the DWC frontend expectations."
-    },
-    {
-      "step": 6,
-      "state": "after_evaluation",
-      "action": "Update this durable state with checkpoint hashes, training configuration, evaluation evidence, remaining defects, and the next bounded training/evaluation target."
-    }
+    {"step":1,"state":"in_progress","action":"Complete machine-side recovery and inspection of Stage-C evidence, identify the exact Stage-B review rows repaired by Stage C, and preserve verified hashes/configuration."},
+    {"step":2,"state":"in_progress","action":"Prepare a structured human CNS perceptual evaluation gate using the Stage-B and Stage-C acceptance demos/manifests, emphasizing pronunciation fidelity, full-vowel preservation, stress/rhythm, difficult CNS phones, intelligibility, target accent/style, and meaning preservation."},
+    {"step":3,"state":"blocked_on_gpu_surface","action":"Run longer Stage-D adaptation beginning from verified Stage-C weights, using the exact 58-ID DWC path and a curriculum that preserves the short-form/special-phone gains while extending full-corpus adaptation. Do not restart from LJSpeech warm-start or Stage A/B/C."},
+    {"step":4,"state":"after_stage_d","action":"Produce a durable Stage-D checkpoint, hashes/config/training metrics, controlled evaluation renders, and rerun machine acoustic acceptance."},
+    {"step":5,"state":"after_perceptual_and_machine_acceptance","action":"Select/export the candidate model and package its ONNX/config/phoneme map/provenance with explicit temporary-synthetic-voice status."},
+    {"step":6,"state":"future_authentic_voice","action":"Replace the temporary synthetic acoustic target with human CNS recordings for the authentic production voice while preserving the settled exact-ID language architecture."}
   ],
+  "owner_or_environment_gates": {
+    "perceptual_cns_evaluation":"Requires human auditory judgment; machine waveform acceptance is not a substitute.",
+    "stage_d_gpu":"Requires a GPU-capable execution surface; the current sandbox reports no CUDA devices."
+  },
   "execution_rules": {
-    "continue_semantics": "Remain in execution mode until the largest safe bounded unit is verified complete or a genuine blocker is fully evidenced.",
-    "progress_update_is_stop_boundary": false,
-    "narrative_summary_can_override_tool_evidence": false,
-    "conversation_reset_resets_project": false,
-    "started_equals_complete": false,
-    "artifact_exists_equals_complete": false,
-    "revalidation_reopens_completed_milestone": false,
-    "revalidation_rule": "A repeated successful warm-start is a reproducibility/continuity gate. It must not reset the project frontier or be reported as the first proof unless contrary evidence invalidates the prior achievement.",
-    "timeout_recovery": "Resume at the failing boundary or take the defined environment fallback; do not restart from earlier closed work.",
-    "state_labels": [
-      "not_started",
-      "in_progress",
-      "verified_complete",
-      "blocked_with_evidence",
-      "environment_unavailable"
-    ]
+    "continue_semantics":"Remain in execution mode until the largest safe bounded unit is verified complete or a genuine blocker is fully evidenced.",
+    "progress_update_is_stop_boundary":false,
+    "narrative_summary_can_override_tool_evidence":false,
+    "conversation_reset_resets_project":false,
+    "started_equals_complete":false,
+    "artifact_exists_equals_complete":false,
+    "revalidation_reopens_completed_milestone":false,
+    "newer_external_evidence_supersedes_stale_conversation_recovery":true,
+    "timeout_recovery":"Resume at the failing boundary or take the defined execution-surface fallback; do not restart closed stages."
   },
   "unproven_or_open": [
-    "Sustained DWC acoustic training to a useful convergence point",
-    "A durable newly trained DWC checkpoint produced from the exact-ID training path",
-    "Final DWC-native trained voice model",
-    "Formal intelligibility/pronunciation/voice-quality evaluation beyond the neural-proxy proof",
-    "Production licensing/deployment/application integration decision",
+    "Human perceptual confirmation of Stage-C CNS pronunciation and target speech quality",
+    "Longer Stage-D adaptation from the verified Stage-C weights",
+    "Durable Stage-D checkpoint and post-Stage-D acceptance evidence",
+    "Selected exported temporary DWC model",
+    "Authentic human-CNS-recording production voice",
+    "Production packaging/licensing/deployment/application integration decision",
     "Whether Piper remains the final production engine"
   ],
   "source_provenance": [
+    "DWC_Piper_Training_Recovery_Light_v0.1.0.zip",
+    "DWC_TTS_GPU_START_HERE.md",
+    "DWC_Piper_Custom58_GPU_Training_v0.2.ipynb",
     "Multiversal app - Synth V Uses (1).mht",
     "DWC_CONVERSATION_EXECUTION_RECOVERY (1).md",
-    "Owner correction and frontier clarification, 2026-09-08"
+    "current 2026-09-08 recovery/reassembly verification"
   ],
   "mutable_facts_require_live_recheck_before_claim": true
 }
