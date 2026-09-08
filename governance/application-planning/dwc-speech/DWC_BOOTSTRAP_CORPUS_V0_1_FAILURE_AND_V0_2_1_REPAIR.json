@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.1.0",
+  "date": "2026-09-08",
+  "project_id": "DWC-SPEECH",
+  "classification": "training_data_failure_with_repaired_replacement",
+  "historical_corpus_v0_1": {
+    "rows": 799,
+    "unique_audio_filenames": 769,
+    "duplicate_filename_groups": 10,
+    "extra_rows_on_colliding_filenames": 30,
+    "digital_zero_training_rows": 290,
+    "rows_below_minus55_dbfs": 290,
+    "stage_c_selection_rows": 128,
+    "stage_c_selection_unique_audio_files": 98,
+    "stage_c_selection_digital_zero_rows": 61,
+    "failure_mechanism_evidence": "Old eSpeak raw-Unicode-IPA proxy produced digital-zero targets for many CNS sequences; sanitized filenames also collapsed distinct special-phone rows onto identical filenames."
+  },
+  "historical_model_amplitude_audit": {
+    "governed_rms_floor_dbfs": -55.0,
+    "warmstart_smoke_rms_dbfs": -32.515302882906305,
+    "mini_train_8step_rms_dbfs": -62.23069226576568,
+    "stage_a_sample_rms_dbfs": -82.88873506762084,
+    "stage_c_acceptance_rows": 125,
+    "stage_c_rms_dbfs_min": -95.39102157243451,
+    "stage_c_rms_dbfs_median": -93.97940008672037,
+    "stage_c_rms_dbfs_max": -79.4123244462958,
+    "stage_c_rows_passing_governed_minus55_floor": 0,
+    "historical_stage_c_report_claimed_pass": 125,
+    "interpretation": "The historical 125/125 report did not apply the governed waveform RMS floor and is superseded for candidate acceptance. Raw inference amplitude collapsed as training proceeded."
+  },
+  "repaired_corpus_v0_2_1": {
+    "status": "validated_temporary_bootstrap_corpus",
+    "rows": 799,
+    "unique_corpus_row_ids": 799,
+    "unique_audio_filenames": 799,
+    "rows_below_minus55_dbfs": 0,
+    "target_rms_dbfs": -24.0,
+    "audio_renderer": "eSpeak 1.48.15 native phoneme-input proxy with explicit DWC-ID-to-eSpeak bootstrap mapping",
+    "linguistic_authority": "noncanonical acoustic bootstrap only; exact DWC IDs remain canonical labels; human CNS recordings supersede proxy audio for production",
+    "zip_bytes": 26439488,
+    "zip_sha256": "99aca0d65596f906b08a99e0f0c9708211fb150013e039c91f0c489fc0d6a4e3",
+    "drive_file_id": "1HPRmXb-DJOOiR9HW608S2GKP1XAqULzx",
+    "supersedes": "DWC_Synthetic_Bootstrap_Corpus_v0.2.0 for governed row identity; audio bytes are unchanged from v0.2.0"
+  },
+  "training_consequence": {
+    "stage_a_b_c_execution_history_preserved": true,
+    "stage_a_b_c_candidate_lineage_valid": false,
+    "stage_c_weights_authorized_for_further_adaptation": false,
+    "stage_d_continuation_from_stage_c_authorized": false,
+    "next_training_source": "fresh exact-58 model using the already-proven lj-med_1000.ckpt vocoder warm-start plus repaired corpus v0.2.1",
+    "required_guard": "raw inference amplitude probes and the governed 125-row waveform gate must enforce RMS >= -55 dBFS before human perceptual review"
+  }
+}
