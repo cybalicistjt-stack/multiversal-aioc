@@ -1,15 +1,16 @@
 {
-  "schema_version": "16.1.0",
+  "schema_version": "16.2.0",
   "policy": "governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md",
-  "rule": "Only registered CURRENT or CURRENT_COMPATIBLE surfaces may govern. SGC-01A is completed and retired; SGC-01B is selected_not_started without implementation authority.",
+  "rule": "Only registered CURRENT or CURRENT_COMPATIBLE surfaces may govern. SGC-01B is completed and retired; SGC-01C is selected_not_started without implementation authority.",
   "current": [
     {"kind":"bootstrap","lifecycle":"CURRENT","path":"governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md"},
     {"kind":"work_pointer","lifecycle":"CURRENT","path":"governance/ai/runtime/CURRENT_WORK_POINTER.json"},
     {"kind":"family_execution_preflight","lifecycle":"CURRENT","path":"governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json"},
-    {"kind":"checkpoint","lifecycle":"CURRENT","path":"governance/ai/work-state/SGC-01B-attempt-001.json"},
+    {"kind":"checkpoint","lifecycle":"CURRENT","path":"governance/ai/work-state/SGC-01C-attempt-001.json"},
     {"kind":"program","lifecycle":"CURRENT","path":"governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_GAMEPLAY_COVERAGE_CLOSURE_PROGRAM.md"},
     {"kind":"backlog","lifecycle":"CURRENT","path":"governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json"},
     {"kind":"sgc_disposition_evidence_contract","lifecycle":"CURRENT","path":"governance/application-planning/source-gameplay-coverage-closure/SGC_DISPOSITION_EVIDENCE_CONTRACT.json"},
+    {"kind":"sgc_retained_source_inventory","lifecycle":"CURRENT","path":"governance/application-planning/source-gameplay-coverage-closure/SGC_RETAINED_SOURCE_CORPUS_INVENTORY.json"},
     {"kind":"roadmap","lifecycle":"CURRENT","path":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md"},
     {"kind":"runtime_state_registry","lifecycle":"CURRENT","path":"governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json"},
     {"kind":"workflow_lifecycle_registry","lifecycle":"CURRENT","path":"governance/repository-health/WORKFLOW_LIFECYCLE_REGISTRY.json"},
@@ -25,13 +26,13 @@
     {"kind":"execution_convergence_scorecard","lifecycle":"CURRENT_COMPATIBLE","path":"governance/ai/interaction-system/live/EXECUTION_CONVERGENCE_SCORECARD.json"}
   ],
   "active_planning_work": {
-    "work_item": "SGC-01B",
-    "attempt_id": "SGC-01B-attempt-001",
+    "work_item": "SGC-01C",
+    "attempt_id": "SGC-01C-attempt-001",
     "repository": "cybalicistjt-stack/multiversal-aioc",
     "state": "selected_not_started",
     "implementation_branch": null,
     "implementation_authority": false,
-    "implementation_scope": "Retained source corpus inventory and stable source references only; no later SGC coverage mapping is authorized before governed start."
+    "implementation_scope": "Inventory freeze and missing/unclassified retained-source reference check only; later coverage mapping is unauthorized before its own governed start."
   },
   "family_preflight": {
     "family_id": "SGC",
@@ -43,6 +44,7 @@
     {"program_id":"DPL","status":"completed_verified","completed_through":"DPL-14"},{"program_id":"MAI","status":"completed_verified","completed_through":"MAI-10"},{"program_id":"AAI","status":"completed_verified","completed_through":"AAI-10"},{"program_id":"ISE","status":"completed_verified","completed_through":"ISE-08"},{"program_id":"SSA","status":"completed_verified","completed_through":"SSA-10"},{"program_id":"WCI","status":"completed_verified","completed_through":"WCI-05"},{"program_id":"KFR","status":"completed_verified","completed_through":"KFR-08"},{"program_id":"ODL","status":"completed_verified","completed_through":"ODL-09"},{"program_id":"SCL","status":"completed_verified","completed_through":"SCL-11"},{"program_id":"MAL","status":"completed_verified","completed_through":"MAL-10"},{"program_id":"ECI","status":"completed_verified","completed_through":"ECI-01"},{"program_id":"ALP","status":"completed_verified","completed_through":"ALP-08"},{"program_id":"VTI","status":"completed_verified","completed_through":"VTI-12"}
   ],
   "recently_completed_sgc_work": [
+    {"work_item":"SGC-01B","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_RETAINED_SOURCE_CORPUS_INVENTORY.json","retained_source_records":8,"completed_tranche_output_members":45,"strict_successor":"SGC-01C"},
     {"work_item":"SGC-01A","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_DISPOSITION_EVIDENCE_CONTRACT.json","strict_successor":"SGC-01B"}
   ],
   "recently_completed_implementation_work": [
@@ -54,7 +56,7 @@
     {"work_item":"MV-CONT-007","status":"completed_verified","checkpoint_path":"governance/ai/work-state/MV-CONT-007-attempt-001.json","application_pr":336,"application_merge":"e34d43d669c48d484dbdb9e82b72a00c5d91f00c","aioc_pr":778,"aioc_validated_head":"cceeceb5e3a2952c94581bd5efef55c99e87a10c","aioc_repository_health_run":33166810683,"aioc_merge":"c94baa78f0f135681ecaab3e6dc36d5c11b1afa2","aioc_main_health_run":33166847490,"superseded_prs_closed":[763,770]}
   ],
   "planned_programs": [
-    {"program":"SGC","state":"in_progress","current":"SGC-01B","implementation_authority":false},
+    {"program":"SGC","state":"in_progress","current":"SGC-01C","implementation_authority":false},
     {"program":"GCL","state":"in_progress","completed_through":"GCL-12","ready_items":["GCL-13","GCL-14","GCL-16"],"next_recommended":"GCL-13","implementation_authority":false}
   ]
 }
