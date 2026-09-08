@@ -1,106 +1,83 @@
 {
+  "schema_version": "2.0.0",
+  "family_id": "ARI",
+  "family_name": "Asset Resource Ingestion & Reuse",
+  "status": "sealed",
+  "sealed_at": "2026-09-08T13:47:00-05:00",
   "activation_after": {
-    "application_merge": "7e93bc4bb1c3b8ecc9bc4424dd7422ea328e2765",
-    "work_item": "VTI-12"
+    "family": "SGC",
+    "work_item": "SGC-08C",
+    "closure_proof": "governance/application-planning/source-gameplay-coverage-closure/SGC_FINAL_CLOSURE_PROOF.json"
   },
+  "first_selected_unit": "ARI-01",
+  "implementation_authority": false,
+  "semantic_parent_tranches": ["ARI-01","ARI-02","ARI-03","ARI-04","ARI-05","ARI-06","ARI-07","ARI-08","ARI-09","ARI-10","ARI-11","ARI-12","ARI-13","ARI-14","ARI-15","ARI-16","ARI-17","ARI-18","ARI-19","ARI-20","ARI-21","ARI-22"],
+  "execution_target": {
+    "ordinary_tranche_single_continue_completion_percent": 100,
+    "max_execution_cycles_without_genuine_blocker": 1,
+    "target_active_minutes_per_unit": 24,
+    "minimum_closeout_reserve_minutes": 8,
+    "rule": "If a unit cannot credibly fit the active-work target plus closeout reserve, split it before governed start. Do not rely on a second bare Continue."
+  },
+  "sizing_basis": {
+    "program_rule": "Every ARI implementation tranche must fit a 24-minute-or-less governed execution target and must be split before governed start when that bound is not credible.",
+    "observed_execution_pattern": "Recent governed work shows final CI is short relative to investigation, repair, state projection and closeout; reserve closeout structurally rather than expanding a unit.",
+    "pre_split_decision": "ARI-22 is pre-split before implementation because its semantic acceptance combines golden fixture ingestion, cross-system/rights/scale proof, and recovery/deterministic-receipt closure."
+  },
+  "execution_units": [
+    {"id":"ARI-01","parent_tranche":"ARI-01","name":"Universal Resource Handle & Capability Contract","estimated_active_minutes":18,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-02","parent_tranche":"ARI-02","name":"Content-Addressed Byte Identity & Deduplication","estimated_active_minutes":20,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-03","parent_tranche":"ARI-03","name":"Derivative & Lineage Graph","estimated_active_minutes":20,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-04","parent_tranche":"ARI-04","name":"Safe ZIP Staging & Extraction","estimated_active_minutes":24,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-05","parent_tranche":"ARI-05","name":"RAR/7z Archive Adapter Contract","estimated_active_minutes":20,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-06","parent_tranche":"ARI-06","name":"Recursive Discovery & Media Classification","estimated_active_minutes":20,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-07","parent_tranche":"ARI-07","name":"Sidecar / Manifest Parser Adapter Framework","estimated_active_minutes":20,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-08","parent_tranche":"ARI-08","name":"Syrinscape Soundset XML Adapter","estimated_active_minutes":18,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-09","parent_tranche":"ARI-09","name":"Map, Tileset & Variant-Family Recognition","estimated_active_minutes":20,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-10","parent_tranche":"ARI-10","name":"Batch Import Transaction & Recovery","estimated_active_minutes":24,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-11","parent_tranche":"ARI-11","name":"Rights, License & Use-Capability Matrix","estimated_active_minutes":20,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-12","parent_tranche":"ARI-12","name":"Visual Derivative Worker","estimated_active_minutes":24,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-13","parent_tranche":"ARI-13","name":"Audio Metadata & Playback Derivative Worker","estimated_active_minutes":22,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-14","parent_tranche":"ARI-14","name":"Semantic Tags, Collections & Family Grouping","estimated_active_minutes":20,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-15","parent_tranche":"ARI-15","name":"Large-Library Query, Pagination & Lazy Retrieval","estimated_active_minutes":24,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-16","parent_tranche":"ARI-16","name":"MAI Bridge","estimated_active_minutes":20,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-17","parent_tranche":"ARI-17","name":"AAI Bridge","estimated_active_minutes":20,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-18","parent_tranche":"ARI-18","name":"PAPT, CAPP & Native Asset Registration Bridge","estimated_active_minutes":20,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-19","parent_tranche":"ARI-19","name":"Universal Asset Picker / Resource Query API","estimated_active_minutes":22,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-20","parent_tranche":"ARI-20","name":"Resource Pack Intake UX","estimated_active_minutes":24,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-21","parent_tranche":"ARI-21","name":"Missing Source, Relink & Derivative-Rebuild Recovery","estimated_active_minutes":22,"pre_split_required":false,"implementation_authority":false},
+    {"id":"ARI-22A","parent_tranche":"ARI-22","name":"Golden Fixture Intake & Unified Catalog Proof","estimated_active_minutes":20,"pre_split_required":true,"implementation_authority":false},
+    {"id":"ARI-22B","parent_tranche":"ARI-22","name":"Cross-System Reuse, Rights & Scale Proof","estimated_active_minutes":24,"pre_split_required":true,"implementation_authority":false},
+    {"id":"ARI-22C","parent_tranche":"ARI-22","name":"Recovery, Deterministic Receipt & Final ARI Closure Proof","estimated_active_minutes":20,"pre_split_required":true,"implementation_authority":false}
+  ],
   "context_seal": {
+    "required": [
+      "CURRENT_WORK_POINTER and selected ARI checkpoint",
+      "ARI program/backlog and this preflight",
+      "SGC final closure proof",
+      "only exact upstream owner contracts or fixtures named by the active ARI execution unit"
+    ],
     "blocked_by_default": [
       "historical tranche tests and lifecycle-specific validators",
       "unrelated completed-program files",
-      "Drive/Airtable/Sheets/Docs unless the active SGC unit names them as a retained source",
-      "provider readiness, release/deployment and dormant future work"
+      "Drive/Airtable/Sheets/Docs unless the active ARI unit explicitly names them",
+      "provider credentials, scraping/extraction, release/deployment and dormant future work unless the active ARI unit explicitly authorizes the required capability"
     ],
     "refresh_only_on": [
-      "selected checkpoint or family backlog changes",
-      "named source input proves insufficient",
+      "selected checkpoint or ARI backlog changes",
+      "named upstream input proves insufficient",
       "merge/rebase/conflicting writer changes canonical state",
       "required validation produces a materially new failure signature"
-    ],
-    "required": [
-      "CURRENT_WORK_POINTER and selected checkpoint",
-      "SGC program/backlog and this preflight",
-      "latest VTI-12 completion evidence",
-      "only source/owner artifacts named by the active SGC execution unit"
     ]
   },
-  "empirical_inputs": [
-    {
-      "application_pr": 439,
-      "finding": "Application final validation was only a small part of the full execution envelope; surrounding repair/governance/closeout dominated.",
-      "merged_at": "2026-09-08T03:27:07Z",
-      "pr_created_at": "2026-09-07T23:52:28Z",
-      "pr_lifecycle_minutes": 214.65,
-      "work_item": "VTI-10"
-    },
-    {
-      "application_pr": 440,
-      "final_validation_minutes": 1.75,
-      "final_validation_run": 34213605901,
-      "merged_at": "2026-09-08T10:08:23Z",
-      "pr_created_at": "2026-09-08T08:44:18Z",
-      "pr_lifecycle_minutes": 84.08,
-      "work_item": "VTI-11"
-    },
-    {
-      "acceptance_red_minutes": 1.02,
-      "acceptance_red_run": 34219627122,
-      "application_pr": 441,
-      "final_validation_minutes": 2.22,
-      "final_validation_run": 34221889244,
-      "merged_at": "2026-09-08T11:43:05Z",
-      "post_merge_stale_pointer_incident": true,
-      "pr_created_at": "2026-09-08T11:14:15Z",
-      "pr_lifecycle_minutes": 28.83,
-      "work_item": "VTI-12"
-    }
-  ],
-  "execution_target": {
-    "max_execution_cycles_without_genuine_blocker": 1,
-    "minimum_closeout_reserve_minutes": 8,
-    "ordinary_tranche_single_continue_completion_percent": 100,
-    "rule": "If a unit cannot credibly fit the active-work target plus closeout reserve, split it before governed start. Do not rely on a second bare Continue.",
-    "target_active_minutes_per_unit": 24
-  },
-  "execution_units": [
-    {"estimated_active_minutes":12,"id":"SGC-01A","implementation_authority":false,"name":"Disposition Taxonomy & Evidence Contract","parent_tranche":"SGC-01","pre_split_required":false},
-    {"estimated_active_minutes":20,"id":"SGC-01B","implementation_authority":false,"name":"Retained Source Corpus Inventory & Stable References","parent_tranche":"SGC-01","pre_split_required":false},
-    {"estimated_active_minutes":14,"id":"SGC-01C","implementation_authority":false,"name":"Inventory Freeze & Unclassified-Source Check","parent_tranche":"SGC-01","pre_split_required":false},
-    {"estimated_active_minutes":16,"id":"SGC-02A","implementation_authority":false,"name":"Runtime Owner Registry & Coverage-Matrix Schema","parent_tranche":"SGC-02","pre_split_required":false},
-    {"estimated_active_minutes":24,"id":"SGC-02B","implementation_authority":false,"name":"Core Mechanics, Rules & Loop Coverage Mapping","parent_tranche":"SGC-02","pre_split_required":false},
-    {"estimated_active_minutes":20,"id":"SGC-02C","implementation_authority":false,"name":"Routed Mine-Note, Duplicate-Authority & Orphan Audit","parent_tranche":"SGC-02","pre_split_required":false},
-    {"estimated_active_minutes":24,"id":"SGC-03A","implementation_authority":false,"name":"Abilities, Powers, Magic & Tradition Coverage","parent_tranche":"SGC-03","pre_split_required":false},
-    {"estimated_active_minutes":24,"id":"SGC-03B","implementation_authority":false,"name":"Species, Profession, Prestige & Progression Coverage","parent_tranche":"SGC-03","pre_split_required":false},
-    {"estimated_active_minutes":18,"id":"SGC-03C","implementation_authority":false,"name":"Faction, Proficiency, Familiarity, Motivation & Source-Gap Closure","parent_tranche":"SGC-03","pre_split_required":false},
-    {"estimated_active_minutes":22,"id":"SGC-04A","implementation_authority":false,"name":"Items, Materials, Facilities & Recipe Coverage","parent_tranche":"SGC-04","pre_split_required":false},
-    {"estimated_active_minutes":24,"id":"SGC-04B","implementation_authority":false,"name":"Creatures, Ecology & Governed Creature-Role Coverage","parent_tranche":"SGC-04","pre_split_required":false},
-    {"estimated_active_minutes":20,"id":"SGC-04C","implementation_authority":false,"name":"Vehicles, Modules, Media/Resource Routing & Content Gaps","parent_tranche":"SGC-04","pre_split_required":false},
-    {"estimated_active_minutes":20,"id":"SGC-05A","implementation_authority":false,"name":"Mobility, Traps, Nonlethal, Weapon & Martial Edge Systems","parent_tranche":"SGC-05","pre_split_required":false},
-    {"estimated_active_minutes":20,"id":"SGC-05B","implementation_authority":false,"name":"Hazards, Rest, Medicine, Constructs, Expeditions & Source Holds","parent_tranche":"SGC-05","pre_split_required":false},
-    {"estimated_active_minutes":20,"id":"SGC-06A","implementation_authority":false,"name":"GM, Player & Creator Workflow/Screen Coverage","parent_tranche":"SGC-06","pre_split_required":false},
-    {"estimated_active_minutes":18,"id":"SGC-06B","implementation_authority":false,"name":"Avatar, Appearance, Accessibility & Device-Equivalent State","parent_tranche":"SGC-06","pre_split_required":false},
-    {"estimated_active_minutes":22,"id":"SGC-06C","implementation_authority":false,"name":"Spatial Authoring, Practice/Microgame, Annotation & ARI/SAA/P3D Routing","parent_tranche":"SGC-06","pre_split_required":false},
-    {"estimated_active_minutes":18,"id":"SGC-07A","implementation_authority":false,"name":"Conflict, Unknown & Owner-Decision Queue","parent_tranche":"SGC-07","pre_split_required":false},
-    {"estimated_active_minutes":18,"id":"SGC-07B","implementation_authority":false,"name":"Superseded, Unsupported & Deferred Disposition Closure","parent_tranche":"SGC-07","pre_split_required":false},
-    {"estimated_active_minutes":24,"id":"SGC-08A","implementation_authority":false,"name":"Source-to-System-to-Product/Disposition Trace Graph","parent_tranche":"SGC-08","pre_split_required":false},
-    {"estimated_active_minutes":20,"id":"SGC-08B","implementation_authority":false,"name":"Coverage Metrics, Regression Validators & Exception Register","parent_tranche":"SGC-08","pre_split_required":false},
-    {"estimated_active_minutes":16,"id":"SGC-08C","implementation_authority":false,"name":"Final Closure Proof & ARI-01 Successor Selection","parent_tranche":"SGC-08","pre_split_required":false}
-  ],
-  "family_id": "SGC",
-  "family_name": "Source & Gameplay Coverage Closure",
-  "first_selected_unit": "SGC-01A",
-  "implementation_authority": false,
   "policy_basis": [
     "governance/ai/MULTIVERSAL_EXECUTION_CONVERGENCE_POLICY.md",
     "governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md",
     "governance/ai/interaction-system/OWNER_AI_INTERACTION_CONTRACT.md"
   ],
-  "schema_version": "1.0.0",
-  "sealed_at": "2026-09-08T07:13:00-05:00",
-  "semantic_parent_tranches": ["SGC-01","SGC-02","SGC-03","SGC-04","SGC-05","SGC-06","SGC-07","SGC-08"],
-  "status": "sealed",
-  "strict_successor_after_family": "ARI-01",
   "tool_window_interpretation": {
     "fixed_runtime_ceiling_observed": false,
-    "rule": "Do not invent a numeric platform ceiling. Reserve closeout structurally: keep units at or below the 24-minute active-work target, preserve at least 8 minutes of closeout capacity, and withhold irreversible merge if closeout reserve is not credible."
-  }
+    "rule": "Do not invent a numeric platform ceiling. Keep units at or below the 24-minute active-work target, preserve at least 8 minutes of closeout capacity, and withhold irreversible merge if closeout reserve is not credible."
+  },
+  "strict_successor_after_family": "MIB-16"
 }
