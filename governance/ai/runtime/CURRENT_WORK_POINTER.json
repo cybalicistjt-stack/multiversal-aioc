@@ -1,20 +1,20 @@
 {
-  "schema_version":"17.0.0",
+  "schema_version":"17.1.0",
   "canonical_bootstrap":"governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "authority_registry":"governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
   "canonical_application_roadmap":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
   "roadmap_index":"governance/ai/runtime/ROADMAP_INDEX.json",
   "roadmap_supplements":[],
   "family_execution_preflight":"governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
-  "primary_attempt_id":"SGC-04B-attempt-001",
-  "selection_reason":"SGC-04A closes item/material/facility/recipe coverage against exact current owners, decomposes location-aware inventory without false compression, and preserves three genuine item/source decisions for SGC-07A; SGC-04B is the strict selected successor with no implementation authority.",
-  "active_attempt":{"work_item_id":"SGC-04B","attempt_id":"SGC-04B-attempt-001","track":"source-gameplay-coverage-closure","source_program":"SGC","priority":1,"owner_selected":true,"repository":"cybalicistjt-stack/multiversal-aioc","checkpoint_path":"governance/ai/work-state/SGC-04B-attempt-001.json","status":"selected_not_started","implementation_branch":null,"implementation_authority":false,"active_item":"SGC-04B — Creatures, Ecology & Governed Creature-Role Coverage"},
-  "active_program":{"program_id":"SGC","name":"Source & Gameplay Coverage Closure","status":"in_progress","completed_through":"SGC-04A","current":"SGC-04B","strict_next":"SGC-04C","last":"SGC-08C","program_path":"governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_GAMEPLAY_COVERAGE_CLOSURE_PROGRAM.md","backlog_path":"governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json"},
-  "bounded_authority":{"family_preflight_sealed":true,"selected_sgc_unit":"SGC-04B","sgc_implementation":false,"implementation_branch":null,"paid_provider_activation":false,"tester_distribution":false,"release_or_deployment":false,"rule":"SGC-04B is selected_not_started. The next execution Continue may governed-start only that unit."},
+  "primary_attempt_id":"SGC-04C-attempt-001",
+  "selection_reason":"SGC-04B closes creature/ecology/role coverage without conflating CEW content with application runtime, preserves CCP as implemented partnership authority, and exposes three genuine creature/source decisions for SGC-07A; SGC-04C is the strict selected successor with no implementation authority.",
+  "active_attempt":{"work_item_id":"SGC-04C","attempt_id":"SGC-04C-attempt-001","track":"source-gameplay-coverage-closure","source_program":"SGC","priority":1,"owner_selected":true,"repository":"cybalicistjt-stack/multiversal-aioc","checkpoint_path":"governance/ai/work-state/SGC-04C-attempt-001.json","status":"selected_not_started","implementation_branch":null,"implementation_authority":false,"active_item":"SGC-04C — Vehicles, Modules, Media/Resource Routing & Content Gaps"},
+  "active_program":{"program_id":"SGC","name":"Source & Gameplay Coverage Closure","status":"in_progress","completed_through":"SGC-04B","current":"SGC-04C","strict_next":"SGC-05A","last":"SGC-08C","program_path":"governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_GAMEPLAY_COVERAGE_CLOSURE_PROGRAM.md","backlog_path":"governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json"},
+  "bounded_authority":{"family_preflight_sealed":true,"selected_sgc_unit":"SGC-04C","sgc_implementation":false,"implementation_branch":null,"paid_provider_activation":false,"tester_distribution":false,"release_or_deployment":false,"rule":"SGC-04C is selected_not_started. The next execution Continue may governed-start only that unit."},
   "recently_completed_sgc_work":[
+    {"work_item_id":"SGC-04B","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_CREATURES_ECOLOGY_GOVERNED_ROLE_COVERAGE.json","coverage_records":12,"implemented":2,"content_only":7,"planned_owned_elsewhere":0,"unresolved_owner_decision":3,"strict_successor":"SGC-04C"},
     {"work_item_id":"SGC-04A","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_ITEMS_MATERIALS_FACILITIES_RECIPE_COVERAGE.json","coverage_records":10,"implemented":6,"content_only":1,"planned_owned_elsewhere":0,"unresolved_owner_decision":3,"strict_successor":"SGC-04B"},
-    {"work_item_id":"SGC-03C","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_FACTION_PROFICIENCY_FAMILIARITY_MOTIVATION_GAP_COVERAGE.json","coverage_records":7,"implemented":5,"planned_owned_elsewhere":1,"unresolved_owner_decision":1,"strict_successor":"SGC-04A"},
-    {"work_item_id":"SGC-03B","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_SPECIES_PROFESSION_PRESTIGE_PROGRESSION_COVERAGE.json","coverage_records":6,"implemented":4,"planned_owned_elsewhere":2,"unresolved_owner_decision":0,"strict_successor":"SGC-03C"}
+    {"work_item_id":"SGC-03C","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_FACTION_PROFICIENCY_FAMILIARITY_MOTIVATION_GAP_COVERAGE.json","coverage_records":7,"implemented":5,"planned_owned_elsewhere":1,"unresolved_owner_decision":1,"strict_successor":"SGC-04A"}
   ],
   "recently_completed_implementation_work":[
     {"work_item_id":"VTI-12","status":"completed_verified","validated_head":"712f7096118ae065d3d17492e2cc5effa1d83034","validation_run":34221889244,"deterministic_receipt_sha256":"77536c1214f37374ca8ea1b2f1f627b30e209f52bb141133d690cdfc9b0544a4","merge_sha":"7e93bc4bb1c3b8ecc9bc4424dd7422ea328e2765"},
@@ -25,11 +25,12 @@
     {"work_item_id":"MV-CONT-007","status":"completed_verified","checkpoint_path":"governance/ai/work-state/MV-CONT-007-attempt-001.json","application_pr":336,"application_merge":"e34d43d669c48d484dbdb9e82b72a00c5d91f00c","aioc_pr":778,"aioc_validated_head":"cceeceb5e3a2952c94581bd5efef55c99e87a10c","aioc_repository_health_run":33166810683,"aioc_merge":"c94baa78f0f135681ecaab3e6dc36d5c11b1afa2","aioc_main_health_run":33166847490,"superseded_prs_closed":[763,770]}
   ],
   "selection_invariants":[
-    "SGC-04A is completed_verified by the atomic AIOC merge carrying its item/material/facility/recipe coverage and successor selection.",
-    "SGC-04B is selected_not_started with no implementation branch or implementation authority.",
-    "D17 remains Asset/inventory/material authority; MIB-12 remains crafting/repair transformation authority; MIB-14 remains facility/storage/workstation compatibility authority; ICF remains ingredient/preparation/recipe content authority.",
-    "The Taser conflict, seven unspecified energy-weapon capacity fields and three ammo-reference-only weapon names remain visible SGC-07A decisions/source gaps rather than fabricated closure.",
+    "SGC-04B is completed_verified by the atomic AIOC merge carrying creature/ecology/role coverage and successor selection.",
+    "SGC-04C is selected_not_started with no implementation branch or implementation authority.",
+    "CEW remains completed content/semantic authority through CEW-16 with no application runtime authority; CCP remains completed_verified runtime authority through CCP-11.",
+    "Human-level native Havalaean animals retain animal ecological identity and autonomy; mount/pet/familiar remain relationship pathways rather than creature types.",
+    "The exact NPC integration owner, executable harvest-profile resolution and 93 deferred creature-candidate dispositions remain visible SGC-07A decisions, alongside earlier SGC-03/04A decisions.",
     "Historical lifecycle tests and unrelated connected systems remain blocked by default."
   ],
-  "exact_next_action":"On the next execution Continue, governed-start SGC-04B only and carry it through its terminal gate in one continuation."
+  "exact_next_action":"On the next execution Continue, governed-start SGC-04C only and carry it through its terminal gate in one continuation."
 }
