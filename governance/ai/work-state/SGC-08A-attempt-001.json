@@ -1,5 +1,5 @@
 {
-  "schema_version":"0.1.0",
+  "schema_version":"1.0.0",
   "work_item_id":"SGC-08A",
   "attempt_id":"SGC-08A-attempt-001",
   "title":"Source-to-System-to-Product/Disposition Trace Graph",
@@ -7,17 +7,19 @@
   "source_program":"SGC",
   "parent_tranche":"SGC-08",
   "repository":"cybalicistjt-stack/multiversal-aioc",
-  "status":"selected_not_started",
+  "status":"completed_verified",
   "owner_selected":true,
   "implementation_authority":false,
-  "implementation_branch":null,
-  "completed":false,
+  "implementation_branch":"governance/sgc-08a-trace-graph",
+  "completed":true,
   "estimated_active_minutes":24,
   "execution_target_minutes":24,
   "minimum_closeout_reserve_minutes":8,
   "family_preflight":"governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
   "objective":"Build the final source-to-system-to-product/disposition trace graph from already-closed SGC evidence without beginning SGC-08B metrics/regression/exception work.",
-  "predecessor":{"work_item_id":"SGC-07B","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_SUPERSEDED_UNSUPPORTED_DEFERRED_DISPOSITION_CLOSURE.json","records":6,"unclassified_inputs":0},
-  "selection_boundaries":["SGC-07B is completed_verified by the atomic transaction selecting this checkpoint.","SGC-08A is selected_not_started with no implementation branch or authority.","Only trace-graph construction from already-closed SGC evidence is in the next unit's scope.","SGC-08B metrics/regression/exception work remains unauthorized until SGC-08A completes and selects it."],
-  "next_action":"On the next execution Continue, governed-start only SGC-08A and carry it through its terminal gate in one continuation."
+  "deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_SYSTEM_PRODUCT_DISPOSITION_TRACE_GRAPH.json",
+  "closure_counts":{"frozen_source_nodes":8,"base_concept_segments":12,"resolution_overlay_segments":3,"unique_concept_nodes":126,"implemented":79,"content_only":17,"planned_owned_elsewhere":26,"provenance_only":4,"explicitly_superseded":0,"intentionally_unsupported":0,"unresolved_owner_decision":0,"unclassified_concepts":0,"duplicate_concept_ledgers_created":0},
+  "completion_boundaries":["All eight frozen source IDs are represented in the graph.","All 126 unique concept nodes remain authoritative in their origin SGC artifacts and are traceable through graph segments; no duplicate concept ledger is created.","All prior unresolved-owner rows have terminal overlays and the graph has zero unresolved or unclassified concepts.","ARI/SAA/P3D routes remain gated and unactivated.","SGC-08B metrics/regression/exception work is not started."],
+  "strict_successor":"SGC-08B",
+  "next_action":"SGC-08B is selected_not_started by the same atomic closeout transaction; no SGC-08B implementation authority exists before its own governed start."
 }
