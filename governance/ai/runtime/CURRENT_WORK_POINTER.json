@@ -1,49 +1,58 @@
 {
-  "schema_version": "16.3.0",
+  "schema_version": "16.4.0",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "authority_registry": "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
   "canonical_application_roadmap": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
   "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
   "roadmap_supplements": [],
   "family_execution_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
-  "primary_attempt_id": "SGC-02A-attempt-001",
-  "selection_reason": "SGC-01C freezes and verifies the retained-source inventory with zero missing or unclassified source references; SGC-02A is the strict selected successor with no implementation authority.",
+  "primary_attempt_id": "SGC-02B-attempt-001",
+  "selection_reason": "SGC-02A defines the runtime-owner registry and coverage-matrix schema without assigning coverage; SGC-02B is the strict selected successor with no implementation authority.",
   "active_attempt": {
-    "work_item_id": "SGC-02A",
-    "attempt_id": "SGC-02A-attempt-001",
+    "work_item_id": "SGC-02B",
+    "attempt_id": "SGC-02B-attempt-001",
     "track": "source-gameplay-coverage-closure",
     "source_program": "SGC",
     "priority": 1,
     "owner_selected": true,
     "repository": "cybalicistjt-stack/multiversal-aioc",
-    "checkpoint_path": "governance/ai/work-state/SGC-02A-attempt-001.json",
+    "checkpoint_path": "governance/ai/work-state/SGC-02B-attempt-001.json",
     "status": "selected_not_started",
     "implementation_branch": null,
     "implementation_authority": false,
-    "active_item": "SGC-02A — Runtime Owner Registry & Coverage-Matrix Schema"
+    "active_item": "SGC-02B — Core Mechanics, Rules & Loop Coverage Mapping"
   },
   "active_program": {
     "program_id": "SGC",
     "name": "Source & Gameplay Coverage Closure",
     "status": "in_progress",
-    "completed_through": "SGC-01C",
-    "current": "SGC-02A",
-    "strict_next": "SGC-02B",
+    "completed_through": "SGC-02A",
+    "current": "SGC-02B",
+    "strict_next": "SGC-02C",
     "last": "SGC-08C",
     "program_path": "governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_GAMEPLAY_COVERAGE_CLOSURE_PROGRAM.md",
     "backlog_path": "governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json"
   },
   "bounded_authority": {
     "family_preflight_sealed": true,
-    "selected_sgc_unit": "SGC-02A",
+    "selected_sgc_unit": "SGC-02B",
     "sgc_implementation": false,
     "implementation_branch": null,
     "paid_provider_activation": false,
     "tester_distribution": false,
     "release_or_deployment": false,
-    "rule": "SGC-02A is selected_not_started. The next execution Continue may governed-start only that unit."
+    "rule": "SGC-02B is selected_not_started. The next execution Continue may governed-start only that unit."
   },
   "recently_completed_sgc_work": [
+    {
+      "work_item_id": "SGC-02A",
+      "status": "completed_verified",
+      "deliverable": "governance/application-planning/source-gameplay-coverage-closure/SGC_RUNTIME_OWNER_COVERAGE_SCHEMA.json",
+      "registered_owner_namespaces": 13,
+      "coverage_rows_created": 0,
+      "concept_dispositions_assigned": 0,
+      "strict_successor": "SGC-02B"
+    },
     {
       "work_item_id": "SGC-01C",
       "status": "completed_verified",
@@ -78,12 +87,12 @@
     {"work_item_id":"MV-CONT-007","status":"completed_verified","checkpoint_path":"governance/ai/work-state/MV-CONT-007-attempt-001.json","application_pr":336,"application_merge":"e34d43d669c48d484dbdb9e82b72a00c5d91f00c","aioc_pr":778,"aioc_validated_head":"cceeceb5e3a2952c94581bd5efef55c99e87a10c","aioc_repository_health_run":33166810683,"aioc_merge":"c94baa78f0f135681ecaab3e6dc36d5c11b1afa2","aioc_main_health_run":33166847490,"superseded_prs_closed":[763,770]}
   ],
   "selection_invariants": [
-    "SGC-01C is completed_verified by the atomic AIOC merge that carries the frozen inventory and successor selection.",
-    "SGC-02A is selected_not_started with no implementation branch or implementation authority.",
-    "The retained-source inventory is FROZEN_VERIFIED with all eight mandatory backlog inputs represented and zero unclassified source references.",
-    "No gameplay-concept dispositions or SGC-02 coverage mappings were created by SGC-01C.",
+    "SGC-02A is completed_verified by the atomic AIOC merge that carries its schema and successor selection.",
+    "SGC-02B is selected_not_started with no implementation branch or implementation authority.",
+    "The runtime-owner registry contains referential owner namespaces only and creates no duplicate authority ledger.",
+    "No mechanics/rules/loop coverage rows or concept dispositions were created by SGC-02A.",
     "Historical lifecycle tests and unrelated connected systems remain blocked by default from the active execution context.",
     "ARI/SAA remain planned only and P3D remains deferred."
   ],
-  "exact_next_action": "On the next execution Continue, governed-start SGC-02A only and carry it through its terminal gate in one continuation."
+  "exact_next_action": "On the next execution Continue, governed-start SGC-02B only and carry it through its terminal gate in one continuation."
 }
