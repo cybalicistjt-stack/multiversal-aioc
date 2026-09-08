@@ -13,6 +13,10 @@ VTI-11 — Adventure / Campaign Package Export — is `in_progress` from exact a
 - artifact ZIP SHA-256: `0891fe6a900d933f1045514d09c4b839e0bd966cd36c8edf1018703a615da628`
 - historical validator executions: 0
 
+## Projection verification
+
+The bounded state projection completed in workflow run `34205212933`, job `101992996240`. The focused VTI-11 lifecycle regression and the full 298-test current control-plane suite passed before the helper self-removed and committed the projected state. The two predecessor/planning assertions exposed by the first changed projection were made lifecycle-aware; no historical validator fanout or production authority was introduced.
+
 ## Open authority
 
 Only application branch creation, bounded implementation scaffolding and acceptance-package work are authorized. Acceptance may cover deterministic export-package manifests for maps/scenes, encounters, creatures/NPCs, tokens, journals/handouts, treasure/items, roll tables, environments and other explicitly permitted content. Completed VTI identity, permission, hidden-information, capability and compatibility semantics remain authoritative.
