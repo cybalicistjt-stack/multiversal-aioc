@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "SGC-04A",
+  "status": "CURRENT",
+  "scope": "Items, materials, facilities and recipe/content-entity coverage only. Creature/ecology coverage remains SGC-04B and vehicle/module/media-resource coverage remains SGC-04C.",
+  "scope_basis": "governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_GAMEPLAY_COVERAGE_CLOSURE_PROGRAM.md#sgc-04-items-creatures-vehicles-facilities-materials-content-entity-coverage",
+  "disposition_contract": "governance/application-planning/source-gameplay-coverage-closure/SGC_DISPOSITION_EVIDENCE_CONTRACT.json",
+  "retained_source_inventory": "governance/application-planning/source-gameplay-coverage-closure/SGC_RETAINED_SOURCE_CORPUS_INVENTORY.json",
+  "records": [
+    {
+      "concept_id": "SGC-CONTENT-ITEM-ASSET-INVENTORY-LOCATION-STATE",
+      "source_refs": ["SGC-SRC-MINE-ROUTED-CANDIDATES", "SGC-SRC-MINES-AMENDMENT"],
+      "concept_kind": "item_asset_inventory_runtime",
+      "disposition": "implemented",
+      "owner": "D17 Asset/Inventory",
+      "evidence": {
+        "owner_paths": [
+          "governance/application-planning/parallel-preimplementation/PPIA-03_SOURCE_AND_DESIGN_INVENTORY.md",
+          "governance/ai/work-state/MIB-14-attempt-001.json"
+        ],
+        "specific_scope": "The routed location-aware-inventory requirement decomposes to the existing Inventory/Asset owner. PPIA-03 preserves separate Asset Definition, Asset Instance, ownership, custody, control, access, possession/location, containment, equipment, quantity, mutable state and history concepts; completed MIB-14 explicitly preserves D17 as sole live Asset/inventory/state authority and adds storage/workstation seams without a second inventory ledger."
+      }
+    },
+    {
+      "concept_id": "SGC-CONTENT-ITEM-GOVERNED-CATALOG-SURFACE",
+      "source_refs": ["SGC-SRC-MINE-ROUTED-CANDIDATES", "SGC-SRC-MINES-AMENDMENT"],
+      "concept_kind": "item_content_catalog",
+      "disposition": "content_only",
+      "owner": "Governed Item content registry / D17-facing Item Definitions",
+      "evidence": {
+        "owner_path": "governance/application-planning/parallel-preimplementation/PPIA-03_SOURCE_AND_DESIGN_INVENTORY.md",
+        "specific_scope": "The current governed structured Item surface is represented by nine direct Item-domain datasets totaling 5,389 rows, plus mixed-domain material/facility adjuncts that may not be counted wholesale as personal Items. These are governed content definitions feeding the Item/Asset experience; this row makes no claim that every catalog row is a live Asset Instance or runtime mechanic."
+      }
+    },
+    {
+      "concept_id": "SGC-CONTENT-MATERIAL-ASSET-TRUTH",
+      "source_refs": ["SGC-SRC-MINE-ROUTED-CANDIDATES", "SGC-SRC-MINES-AMENDMENT"],
+      "concept_kind": "material_asset_runtime",
+      "disposition": "implemented",
+      "owner": "D17 Asset/Material",
+      "evidence": {
+        "owner_path": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_DPL06_CLOSEOUT_2026-08-25.md",
+        "specific_scope": "Completed DPL-06 preserves D17 as tools/equipment and extracted material/Asset truth, with raw extraction ending at a D17 material-output handoff and no parallel material ledger."
+      }
+    },
+    {
+      "concept_id": "SGC-CONTENT-CRAFT-REPAIR-TRANSFORMATION",
+      "source_refs": ["SGC-SRC-MINE-ROUTED-CANDIDATES", "SGC-SRC-MINES-AMENDMENT"],
+      "concept_kind": "crafting_repair_transformation",
+      "disposition": "implemented",
+      "owner": "MIB-12",
+      "evidence": {
+        "owner_path": "governance/ai/work-state/MIB-12-attempt-001.json",
+        "specific_scope": "MIB-12 is completed_verified and implements deterministic crafting requirements, reservation, owner-version binding, D17 consumption/output commit, recovery and repair/upgrade/modify seams while preserving D17 Asset/inventory authority."
+      }
+    },
+    {
+      "concept_id": "SGC-CONTENT-FACILITY-WORKSTATION-COMPATIBILITY",
+      "source_refs": ["SGC-SRC-MINE-ROUTED-CANDIDATES", "SGC-SRC-MINES-AMENDMENT"],
+      "concept_kind": "facility_platform_runtime",
+      "disposition": "implemented",
+      "owner": "MIB-14",
+      "evidence": {
+        "owner_path": "governance/ai/work-state/MIB-14-attempt-001.json",
+        "specific_scope": "MIB-14 is completed_verified and provides module/facility compatibility, cargo/capacity/loadout validation and base storage/facility/workstation integration while retaining D17 live inventory/state truth and avoiding duplicate facility/inventory ledgers."
+      }
+    },
+    {
+      "concept_id": "SGC-CONTENT-INGREDIENT-PREPARATION-RECIPE-PACKS",
+      "source_refs": ["SGC-SRC-MINES-AMENDMENT"],
+      "concept_kind": "ingredient_recipe_content",
+      "disposition": "implemented",
+      "owner": "ICF-01..15",
+      "evidence": {
+        "owner_path": "governance/ai/work-state/ICF-15-attempt-001.json",
+        "specific_scope": "ICF is completed_verified through ICF-15. The final compiled projection covers ingredient, preparation, recipe and creature-harvest foundations with 971 primary ingredient definitions, 400 derived preparations and 319 recipe/template records; live Asset state remains D17-owned. SGC-04A claims only ingredient/preparation/recipe coverage here; creature-harvest gaps remain for SGC-04B."
+      }
+    },
+    {
+      "concept_id": "SGC-CONTENT-LOOT-SCAVENGE-SALVAGE-OBJECT-DECOMPOSITION",
+      "source_refs": ["SGC-SRC-MINE-ROUTED-CANDIDATES", "SGC-SRC-MINES-AMENDMENT"],
+      "concept_kind": "loot_salvage_content_runtime",
+      "disposition": "implemented",
+      "owner": "LSS-01..10",
+      "evidence": {
+        "owner_path": "governance/ai/work-state/LSS-10-attempt-001.json",
+        "specific_scope": "LSS is completed_verified through LSS-10 and supplies governed loot/scavenge/salvage content, search/workbench and golden proof while preserving D17 Asset/inventory, MIB-12 crafting/repair, MIB-14 compatibility/storage/workshops and ICF-07 biological-harvest boundaries."
+      }
+    },
+    {
+      "concept_id": "SGC-CONTENT-ITEM-TASER-SOURCE-CONFLICT",
+      "source_refs": ["SGC-SRC-MINES-AMENDMENT"],
+      "concept_kind": "item_definition_conflict",
+      "disposition": "unresolved_owner_decision",
+      "owner": null,
+      "evidence": {
+        "unresolved_question": "Should the two retained published Taser source contexts remain explicit variants/conflicting definitions, or is there authoritative source/owner evidence that resolves them to one governed identity?",
+        "source_gap_or_conflict": "PPIA-03 records two published source contexts and prohibits automatic identity merge; no later bounded SGC-04A evidence was found that resolves the identity conflict. Numerical balance remains outside this source-identity decision."
+      },
+      "forward_route": "SGC-07A owner-decision queue"
+    },
+    {
+      "concept_id": "SGC-CONTENT-ENERGY-WEAPON-CAPACITY-SOURCE-GAPS",
+      "source_refs": ["SGC-SRC-MINES-AMENDMENT"],
+      "concept_kind": "item_unspecified_value_gap",
+      "disposition": "unresolved_owner_decision",
+      "owner": null,
+      "evidence": {
+        "unresolved_question": "For the seven retained energy-weapon capacity fields with unspecified source values, should canonical content remain explicit-unknown or should a governed authored/source-recovery decision supply capacities?",
+        "source_gap_or_conflict": "PPIA-03 explicitly prohibits inventing capacities merely to complete reload/charge UI; unknown maximum/current must remain distinct from zero, unlimited and not-applicable. No authoritative values were found in the bounded SGC-04A owner review."
+      },
+      "forward_route": "SGC-07A owner-decision queue"
+    },
+    {
+      "concept_id": "SGC-CONTENT-AMMO-REFERENCE-ONLY-WEAPON-DEFINITIONS",
+      "source_refs": ["SGC-SRC-MINES-AMENDMENT"],
+      "concept_kind": "item_missing_definition_gap",
+      "disposition": "unresolved_owner_decision",
+      "owner": null,
+      "evidence": {
+        "unresolved_question": "Should Energy Sniper Rifle, Plasma Carbine and Cryo Blaster remain reference-only names, or should an owner-authorized content/source-recovery action create governed Item Definitions?",
+        "source_gap_or_conflict": "PPIA-03 records these three names as ammo-reference-only and prohibits creating damage/range/weight/cost from the name alone. No governed definitions were found in the bounded SGC-04A review."
+      },
+      "forward_route": "SGC-07A owner-decision queue"
+    }
+  ],
+  "counts": {
+    "records": 10,
+    "implemented": 6,
+    "content_only": 1,
+    "planned_owned_elsewhere": 0,
+    "unresolved_owner_decision": 3,
+    "invented_owner_assignments": 0
+  },
+  "partition_closure": {
+    "input_multi_owner_concept": "SGC-RULE-MINE-LOCATION-AWARE-INVENTORY",
+    "result": "DECOMPOSED_WITHOUT_FALSE_COMPRESSION",
+    "owner_partitions": ["D17 Asset/Inventory", "MIB-14 facility/storage/workstation compatibility", "MIB-12 crafting/repair transformation", "LSS loot/scavenge/salvage"],
+    "sgc_04c_remaining_partition": "Vehicle/module-specific location/compatibility semantics remain reserved for SGC-04C."
+  },
+  "boundaries": [
+    "No content row becomes a live Asset Instance merely because it exists in a governed catalog.",
+    "Location-aware inventory remains a multi-owner composition and is not collapsed to one synthetic owner.",
+    "Materials remain D17 Asset/material truth; DPL extraction and MIB-12 transformations hand off rather than duplicate material state.",
+    "ICF recipe/ingredient definitions do not create a second inventory ledger or autonomous Project/Cozy authority.",
+    "Creature harvesting/ecology remains SGC-04B; vehicle/module/media-resource routing remains SGC-04C.",
+    "The Taser conflict, unspecified energy-weapon capacities and reference-only weapon names remain visible SGC-07A decisions rather than fabricated content."
+  ],
+  "result": "PASS_WITH_THREE_VISIBLE_OWNER_DECISIONS",
+  "strict_successor": "SGC-04B"
+}
