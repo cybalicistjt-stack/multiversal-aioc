@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "ARI-01",
+  "attempt_id": "ARI-01-attempt-001",
+  "title": "Universal Resource Handle & Capability Contract",
+  "track": "asset-resource-ingestion-reuse",
+  "source_program": "ARI",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "estimated_active_minutes": 18,
+  "execution_target_minutes": 24,
+  "minimum_closeout_reserve_minutes": 8,
+  "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
+  "objective": "Define the provider-neutral universal resource handle and capability contract without creating a second canonical asset ledger or beginning ARI-02 byte-identity work.",
+  "predecessor": {
+    "work_item_id": "SGC-08C",
+    "status": "completed_verified",
+    "closure_proof": "governance/application-planning/source-gameplay-coverage-closure/SGC_FINAL_CLOSURE_PROOF.json"
+  },
+  "selection_boundaries": [
+    "SGC is completed_verified through SGC-08C and retired from active family execution.",
+    "The ARI family execution preflight is sealed before implementation and ARI-22 is already pre-split into ARI-22A/B/C.",
+    "ARI-01 is selected_not_started with no implementation branch or implementation authority.",
+    "Only the Universal Resource Handle & Capability Contract may be governed-started on the next execution Continue.",
+    "Provider credentials, external scraping/extraction, hosted uploads, tester distribution and release/deployment remain unauthorized."
+  ],
+  "strict_successor": "ARI-02",
+  "next_action": "On the next execution Continue, governed-start ARI-01 only and carry it through its terminal gate in one continuation."
+}
