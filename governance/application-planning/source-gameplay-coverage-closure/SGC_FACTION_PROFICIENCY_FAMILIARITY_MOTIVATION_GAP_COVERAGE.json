@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "SGC-03C",
+  "status": "CURRENT",
+  "scope": "Faction, proficiency, familiarity, motivation and remaining SGC-03 source-gap closure only. SGC-04 content-entity coverage remains outside this unit.",
+  "disposition_contract": "governance/application-planning/source-gameplay-coverage-closure/SGC_DISPOSITION_EVIDENCE_CONTRACT.json",
+  "retained_source_inventory": "governance/application-planning/source-gameplay-coverage-closure/SGC_RETAINED_SOURCE_CORPUS_INVENTORY.json",
+  "source_basis_note": "Exact current owner evidence is used only to prove ownership or preserve a visible gap. CSW creative motivation material is not promoted into Character truth, KFR familiarity does not imply proficiency, and missing Character motivation identity semantics are not fabricated.",
+  "records": [
+    {
+      "concept_id": "SGC-CHAR-FACTION-MEMBERSHIP-ADVANCEMENT",
+      "source_refs": ["SGC-SRC-KFR-OUTPUTS", "SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind": "faction_character_progression",
+      "disposition": "implemented",
+      "owner": "CAB-09",
+      "evidence": {
+        "owner_path": "governance/application-planning/character-advancement-balance/CAB-09_ACQUISITION_AND_ELIGIBILITY.md",
+        "specific_scope": "CAB-09 explicitly governs faction/order membership, induction, rank and standing as acquisition/eligibility inputs; membership may open progression but does not automatically grant the entire progression, and learned permanent Abilities normally persist unless an owning dependency rule says otherwise."
+      }
+    },
+    {
+      "concept_id": "SGC-CHAR-FACTION-CANONICAL-OWNER-SEAM",
+      "source_refs": ["SGC-SRC-ODL-OUTPUTS"],
+      "concept_kind": "faction_authority_boundary",
+      "disposition": "implemented",
+      "owner": "MIB-09 + Character-Actors/Social-Relations",
+      "evidence": {
+        "owner_path": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_ODL07_CLOSEOUT_2026-09-02.md",
+        "specific_scope": "Completed ODL-07 provides explicit owner-backed faction integration while preserving MIB-09 and Character-Actors/Social-Relations as canonical faction/member/relationship owner seams; ODL does not create duplicate faction truth."
+      }
+    },
+    {
+      "concept_id": "SGC-CHAR-PROFICIENCY-PROGRESSION",
+      "source_refs": ["SGC-SRC-KFR-OUTPUTS", "SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind": "proficiency_progression",
+      "disposition": "implemented",
+      "owner": "CAB-10",
+      "evidence": {
+        "owner_path": "governance/application-planning/character-advancement-balance/CAB-10_OWNER_DECISIONS_2026-09-05.md",
+        "specific_scope": "CAB-10 owner-approved the base Unproficient -> Proficient -> Expertise -> Mastery progression with narrow 250/500/1,000 marginal anchors and separate advanced Abilities."
+      }
+    },
+    {
+      "concept_id": "SGC-CHAR-FAMILIARITY-RELATIONS",
+      "source_refs": ["SGC-SRC-KFR-OUTPUTS"],
+      "concept_kind": "familiarity_relation_system",
+      "disposition": "implemented",
+      "owner": "KFR-01..08",
+      "evidence": {
+        "owner_path": "governance/application-planning/knowledge-familiarity-relations/KFR_KNOWLEDGE_FAMILIARITY_RELATIONS_PROGRAM.md",
+        "specific_scope": "KFR-01 through KFR-08 are completed_verified and provide familiarity vocabulary, hierarchical relations, explicit Character familiarity records, unknown/confidence handling, integration and golden proof while preserving canonical Character/Progression/Profession owners."
+      }
+    },
+    {
+      "concept_id": "SGC-CHAR-MOTIVATION-CREATIVE-FRAGMENT",
+      "source_refs": ["SGC-SRC-MINE-ROUTED-CANDIDATES"],
+      "concept_kind": "character_motivation_creative_material",
+      "disposition": "implemented",
+      "owner": "CSW-04",
+      "evidence": {
+        "owner_path": "governance/application-planning/creator-storycraft-workspace/CSW-04_GUIDED_CREATION_WORKFLOWS.md",
+        "specific_scope": "CSW-04 explicitly produces character-motivation creative references in guided backstory/NPC workflows, but states that actual Character facts require Character-domain incorporation and that CSW workflow/creative state is not Character truth."
+      }
+    },
+    {
+      "concept_id": "SGC-CHAR-MOTIVATION-CANONICAL-SEMANTIC-IDENTITY",
+      "source_refs": ["SGC-SRC-MINE-ROUTED-CANDIDATES"],
+      "concept_kind": "character_motivation_semantic_identity",
+      "disposition": "unresolved_owner_decision",
+      "owner": null,
+      "evidence": {
+        "unresolved_question": "Which exact governed Character-domain field or relationship stores canonical Character motivation as semantic identity, and which current owner/tranche is responsible for adding it if absent?",
+        "source_gap_or_conflict": "The mine-note amendment requires Character motivation to be audited against Character/CSW and specifically calls for a governed motivation field/relationship if absent. Current CSW evidence provides only pre-authoritative motivation fragments and explicitly requires Character-domain incorporation; no exact governed Character motivation field/relationship was found in the bounded current-owner review."
+      },
+      "forward_route": "SGC-07A owner-decision queue"
+    },
+    {
+      "concept_id": "SGC-CHAR-REMAINING-LEGACY-SOURCE-GAPS",
+      "source_refs": ["SGC-SRC-KFR-OUTPUTS", "SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind": "sgc03_source_gap_carryforward",
+      "disposition": "planned_owned_elsewhere",
+      "owner": "CAB-22 content repair handoff",
+      "evidence": {
+        "owner_path": "governance/application-planning/character-advancement-balance/CAB-22_CONTENT_REPAIR_MAP_v1.0.0.json",
+        "specific_scope": "Remaining legacy Ability/Species/progression gaps already surfaced by SGC-03A/03B stay routed to CAB-22 source-integrity, acquisition, prerequisite, timing, interaction, identity and structural repair; absent source facts remain unresolved rather than fabricated."
+      }
+    }
+  ],
+  "counts": {
+    "records": 7,
+    "implemented": 5,
+    "planned_owned_elsewhere": 1,
+    "unresolved_owner_decision": 1,
+    "invented_owner_assignments": 0
+  },
+  "source_gap_preservation": [
+    "KFR familiarity never implies proficiency/certification or Character advancement authority.",
+    "Faction membership/standing may gate Character acquisition without replacing canonical faction/member/relationship truth.",
+    "CSW character-motivation material remains pre-authoritative until explicit Character-domain incorporation.",
+    "The missing exact canonical Character motivation field/relationship remains visible debt for SGC-07A rather than being guessed.",
+    "Prior SGC-03 legacy Ability/Species/progression source gaps remain CAB-22 repair work and are not duplicated here."
+  ],
+  "result": "PASS_WITH_ONE_VISIBLE_OWNER_DECISION",
+  "strict_successor": "SGC-04A"
+}
