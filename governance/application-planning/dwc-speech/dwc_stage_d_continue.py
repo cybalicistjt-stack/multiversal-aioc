@@ -334,7 +334,8 @@ def main() -> None:
 
     post_report = render_acceptance("post_stage_d_acceptance")
     result = {
-        "status": "PASS_STAGE_D_ADAPTATION",
+        "status": ("PASS_STAGE_D_MACHINE_WAVEFORM_GATE" if post_report["pass"] == 125 else "STAGE_D_MACHINE_REVIEW_REQUIRED"),
+        "human_perceptual_gate": "NOT_RUN_BY_THIS_SCRIPT",
         "batches_completed": len(schedule),
         "optimizer_steps": len(schedule) * 2,
         "schedule_full_corpus_rows": sum(r["stage_d_role"] == "full_corpus" for r in schedule),
