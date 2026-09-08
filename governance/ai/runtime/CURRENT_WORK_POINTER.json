@@ -1,64 +1,69 @@
 {
-  "active_attempt": {
-    "active_item": "SGC-01A — Disposition Taxonomy & Evidence Contract",
-    "attempt_id": "SGC-01A-attempt-001",
-    "checkpoint_path": "governance/ai/work-state/SGC-01A-attempt-001.json",
-    "implementation_authority": false,
-    "implementation_branch": null,
-    "owner_selected": true,
-    "priority": 1,
-    "repository": "cybalicistjt-stack/multiversal-aioc",
-    "source_program": "SGC",
-    "status": "selected_not_started",
-    "track": "source-gameplay-coverage-closure",
-    "work_item_id": "SGC-01A"
-  },
-  "active_program": {
-    "backlog_path": "governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json",
-    "completed_through": null,
-    "current": "SGC-01A",
-    "last": "SGC-08C",
-    "name": "Source & Gameplay Coverage Closure",
-    "program_id": "SGC",
-    "program_path": "governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_GAMEPLAY_COVERAGE_CLOSURE_PROGRAM.md",
-    "status": "selected_not_started",
-    "strict_next": "SGC-01B"
-  },
-  "authority_registry": "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
-  "bounded_authority": {
-    "family_preflight_sealed": true,
-    "implementation_branch": null,
-    "paid_provider_activation": false,
-    "release_or_deployment": false,
-    "repository_health_maintenance": false,
-    "rule": "SGC-01A is selected_not_started. Implementation authority opens only on an explicit execution Continue governed start, after which the one-Continue terminal rule applies.",
-    "selected_sgc_unit": "SGC-01A",
-    "sgc_implementation": false,
-    "tester_distribution": false
-  },
-  "canonical_application_roadmap": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
+  "schema_version": "16.1.0",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
-  "exact_next_action": "On the next execution Continue, governed-start SGC-01A only and carry it through its terminal gate in one continuation.",
-  "family_execution_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
-  "primary_attempt_id": "SGC-01A-attempt-001",
-  "recently_completed_implementation_work": [
-    {"acceptance_red_head":"c4685d0f11c0f4e8eb65b182f935551ac8c01a68","acceptance_red_receipt_sha256":"0ae11513dfbff7a71c2932c2eb93219d1b3a3583e68b357dccf8dd58f70c8a5f","acceptance_red_run":34219627122,"application_feature_repair_cycles":0,"application_pr":441,"deterministic_compare_job":102047264185,"deterministic_receipt_sha256":"77536c1214f37374ca8ea1b2f1f627b30e209f52bb141133d690cdfc9b0544a4","historical_profile_fanout":0,"linux_job":102046862169,"merge_sha":"7e93bc4bb1c3b8ecc9bc4424dd7422ea328e2765","repository_health_job":102046822714,"repository_state_repair_cycles":1,"status":"completed_verified","validated_head":"712f7096118ae065d3d17492e2cc5effa1d83034","validation_contract_repair_cycles":3,"validation_run":34221889244,"windows_job":102046862112,"work_item_id":"VTI-12"},
-    {"acceptance_red_head":"8c2f75144404d4fef558a4383b081621282a9a55","acceptance_red_receipt_sha256":"ac550c382fa35df15d600a938f65228078c706a33592200320b19cd1952709b3","acceptance_red_run":34206133589,"application_feature_repair_cycles":0,"application_pr":440,"deterministic_compare_job":102020518385,"deterministic_receipt_sha256":"07fc593e61d3c4f8e327fcda4549bbfafa3fa78cae8830bd24c9fa64889ec40b","historical_profile_fanout":0,"linux_job":102020117401,"merge_sha":"1c092252aedbc274058222451fad2401e1a3aa39","repository_health_job":102020072033,"repository_state_repair_cycles":0,"status":"completed_verified","validated_head":"ebc5f0265799788ce2f3c5b2b9da5da1b2da3d90","validation_contract_repair_cycles":2,"validation_run":34213605901,"windows_job":102020117411,"work_item_id":"VTI-11"}
-  ],
-  "recently_completed_repository_health_maintenance": [
-    {"aioc_main_health_run":33188650058,"aioc_merge":"bf12f46126782a523623507262661f273cab5669","aioc_pr":781,"aioc_repository_health_run":33188605756,"aioc_validated_head":"d2e0d975039af7fa6f547f65c02844001c62ea78","application_merge":"d007dc980c63a7beab4ab9a4ddbc67525f8d7003","application_pr":337,"checkpoint_path":"governance/ai/work-state/MV-CONT-008-attempt-001.json","status":"completed_verified","superseded_prs_closed":[],"work_item_id":"MV-CONT-008"},
-    {"aioc_main_health_run":33166847490,"aioc_merge":"c94baa78f0f135681ecaab3e6dc36d5c11b1afa2","aioc_pr":778,"aioc_repository_health_run":33166810683,"aioc_validated_head":"cceeceb5e3a2952c94581bd5efef55c99e87a10c","application_merge":"e34d43d669c48d484dbdb9e82b72a00c5d91f00c","application_pr":336,"checkpoint_path":"governance/ai/work-state/MV-CONT-007-attempt-001.json","status":"completed_verified","superseded_prs_closed":[763,770],"work_item_id":"MV-CONT-007"}
-  ],
+  "authority_registry": "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
+  "canonical_application_roadmap": "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
   "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
   "roadmap_supplements": [],
-  "schema_version": "16.0.0",
+  "family_execution_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
+  "primary_attempt_id": "SGC-01B-attempt-001",
+  "selection_reason": "SGC-01A defines and closes the retained-source disposition/evidence contract; SGC-01B is the strict selected successor with no implementation authority.",
+  "active_attempt": {
+    "work_item_id": "SGC-01B",
+    "attempt_id": "SGC-01B-attempt-001",
+    "track": "source-gameplay-coverage-closure",
+    "source_program": "SGC",
+    "priority": 1,
+    "owner_selected": true,
+    "repository": "cybalicistjt-stack/multiversal-aioc",
+    "checkpoint_path": "governance/ai/work-state/SGC-01B-attempt-001.json",
+    "status": "selected_not_started",
+    "implementation_branch": null,
+    "implementation_authority": false,
+    "active_item": "SGC-01B — Retained Source Corpus Inventory & Stable References"
+  },
+  "active_program": {
+    "program_id": "SGC",
+    "name": "Source & Gameplay Coverage Closure",
+    "status": "in_progress",
+    "completed_through": "SGC-01A",
+    "current": "SGC-01B",
+    "strict_next": "SGC-01C",
+    "last": "SGC-08C",
+    "program_path": "governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_GAMEPLAY_COVERAGE_CLOSURE_PROGRAM.md",
+    "backlog_path": "governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json"
+  },
+  "bounded_authority": {
+    "family_preflight_sealed": true,
+    "selected_sgc_unit": "SGC-01B",
+    "sgc_implementation": false,
+    "implementation_branch": null,
+    "paid_provider_activation": false,
+    "tester_distribution": false,
+    "release_or_deployment": false,
+    "rule": "SGC-01B is selected_not_started. The next execution Continue may governed-start only that unit."
+  },
+  "recently_completed_sgc_work": [
+    {
+      "work_item_id": "SGC-01A",
+      "status": "completed_verified",
+      "deliverable": "governance/application-planning/source-gameplay-coverage-closure/SGC_DISPOSITION_EVIDENCE_CONTRACT.json",
+      "strict_successor": "SGC-01B"
+    }
+  ],
+  "recently_completed_implementation_work": [
+    {"work_item_id":"VTI-12","status":"completed_verified","application_pr":441,"acceptance_red_head":"c4685d0f11c0f4e8eb65b182f935551ac8c01a68","acceptance_red_run":34219627122,"acceptance_red_receipt_sha256":"0ae11513dfbff7a71c2932c2eb93219d1b3a3583e68b357dccf8dd58f70c8a5f","validated_head":"712f7096118ae065d3d17492e2cc5effa1d83034","validation_run":34221889244,"repository_health_job":102046822714,"linux_job":102046862169,"windows_job":102046862112,"deterministic_compare_job":102047264185,"deterministic_receipt_sha256":"77536c1214f37374ca8ea1b2f1f627b30e209f52bb141133d690cdfc9b0544a4","historical_profile_fanout":0,"application_feature_repair_cycles":0,"validation_contract_repair_cycles":3,"repository_state_repair_cycles":1,"merge_sha":"7e93bc4bb1c3b8ecc9bc4424dd7422ea328e2765"},
+    {"work_item_id":"VTI-11","status":"completed_verified","application_pr":440,"acceptance_red_head":"8c2f75144404d4fef558a4383b081621282a9a55","acceptance_red_run":34206133589,"acceptance_red_receipt_sha256":"ac550c382fa35df15d600a938f65228078c706a33592200320b19cd1952709b3","validated_head":"ebc5f0265799788ce2f3c5b2b9da5da1b2da3d90","validation_run":34213605901,"repository_health_job":102020072033,"linux_job":102020117401,"windows_job":102020117411,"deterministic_compare_job":102020518385,"deterministic_receipt_sha256":"07fc593e61d3c4f8e327fcda4549bbfafa3fa78cae8830bd24c9fa64889ec40b","historical_profile_fanout":0,"application_feature_repair_cycles":0,"validation_contract_repair_cycles":2,"repository_state_repair_cycles":0,"merge_sha":"1c092252aedbc274058222451fad2401e1a3aa39"}
+  ],
+  "recently_completed_repository_health_maintenance": [
+    {"work_item_id":"MV-CONT-008","status":"completed_verified","checkpoint_path":"governance/ai/work-state/MV-CONT-008-attempt-001.json","application_pr":337,"application_merge":"d007dc980c63a7beab4ab9a4ddbc67525f8d7003","aioc_pr":781,"aioc_validated_head":"d2e0d975039af7fa6f547f65c02844001c62ea78","aioc_repository_health_run":33188605756,"aioc_merge":"bf12f46126782a523623507262661f273cab5669","aioc_main_health_run":33188650058,"superseded_prs_closed":[]},
+    {"work_item_id":"MV-CONT-007","status":"completed_verified","checkpoint_path":"governance/ai/work-state/MV-CONT-007-attempt-001.json","application_pr":336,"application_merge":"e34d43d669c48d484dbdb9e82b72a00c5d91f00c","aioc_pr":778,"aioc_validated_head":"cceeceb5e3a2952c94581bd5efef55c99e87a10c","aioc_repository_health_run":33166810683,"aioc_merge":"c94baa78f0f135681ecaab3e6dc36d5c11b1afa2","aioc_main_health_run":33166847490,"superseded_prs_closed":[763,770]}
+  ],
   "selection_invariants": [
-    "VTI-12 remains completed_verified and retired at exact application merge 7e93bc4bb1c3b8ecc9bc4424dd7422ea328e2765.",
-    "The SGC family preflight is sealed before SGC implementation authority.",
-    "SGC-01A is selected_not_started with no branch and no implementation authority.",
-    "Historical lifecycle tests and unrelated sources are blocked by default from the active execution context.",
+    "SGC-01A is completed_verified by the atomic AIOC merge that carries its contract and successor selection.",
+    "SGC-01B is selected_not_started with no implementation branch or implementation authority.",
+    "Historical lifecycle tests and unrelated sources remain blocked by default from the active execution context.",
     "ARI/SAA remain planned only and P3D remains deferred."
   ],
-  "selection_reason": "VTI-12 is completed_verified; the SGC family preflight is sealed and SGC-01A is the first bounded execution unit selected without implementation authority.",
-  "updated_at": "2026-09-08T07:13:00-05:00"
+  "exact_next_action": "On the next execution Continue, governed-start SGC-01B only and carry it through its terminal gate in one continuation."
 }

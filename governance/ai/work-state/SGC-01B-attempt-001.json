@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "SGC-01B",
+  "attempt_id": "SGC-01B-attempt-001",
+  "title": "Retained Source Corpus Inventory & Stable References",
+  "track": "source-gameplay-coverage-closure",
+  "source_program": "SGC",
+  "parent_tranche": "SGC-01",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "estimated_active_minutes": 20,
+  "execution_target_minutes": 24,
+  "minimum_closeout_reserve_minutes": 8,
+  "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
+  "objective": "Inventory the retained source corpus in scope and assign stable source references under the SGC-01A disposition/evidence contract without yet performing the later gameplay-coverage matrices.",
+  "predecessor": {
+    "work_item_id": "SGC-01A",
+    "status": "completed_verified",
+    "deliverable": "governance/application-planning/source-gameplay-coverage-closure/SGC_DISPOSITION_EVIDENCE_CONTRACT.json"
+  },
+  "selection_boundaries": [
+    "SGC-01A is completed_verified by the same atomic AIOC merge that selects this checkpoint.",
+    "SGC-01B is selected_not_started with no implementation branch or implementation authority.",
+    "Only retained source corpus inventory and stable source references are in the next unit's scope.",
+    "Historical tranche material and unrelated connected systems remain blocked by default unless SGC-01B explicitly names a retained source."
+  ],
+  "next_action": "On the next execution Continue, governed-start only SGC-01B and carry it through its terminal gate in one continuation."
+}

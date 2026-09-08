@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "SGC-DISPOSITION-EVIDENCE-001",
+  "work_item_id": "SGC-01A",
+  "status": "CURRENT",
+  "scope": "Define the retained-source disposition taxonomy, stable source-reference contract, and minimum evidence requirements used by later SGC units. This contract does not classify the retained corpus.",
+  "allowed_dispositions": [
+    {
+      "id": "implemented",
+      "meaning": "The retained concept is implemented by a current governed owner.",
+      "required_evidence": ["owning system/program/tranche", "implementation evidence locating the governed implementation"]
+    },
+    {
+      "id": "planned_owned_elsewhere",
+      "meaning": "The retained concept is not implemented here and is explicitly owned by another approved current or planned program/tranche.",
+      "required_evidence": ["owning program/tranche", "canonical planning or authority evidence"]
+    },
+    {
+      "id": "content_only",
+      "meaning": "The retained concept is intentionally retained as content/data rather than runtime mechanics or product behavior.",
+      "required_evidence": ["content owner or governed content destination", "evidence that no runtime implementation claim is being made"]
+    },
+    {
+      "id": "explicitly_superseded",
+      "meaning": "A newer canonical decision or implementation supersedes the retained concept.",
+      "required_evidence": ["superseding authority", "brief supersession rationale"]
+    },
+    {
+      "id": "intentionally_unsupported",
+      "meaning": "The retained concept is deliberately not supported.",
+      "required_evidence": ["owner-approved or canonical unsupported decision", "brief reason for non-support"]
+    },
+    {
+      "id": "unresolved_owner_decision",
+      "meaning": "The retained concept cannot be dispositioned without a genuine owner decision because authoritative evidence is missing, conflicting, or insufficient.",
+      "required_evidence": ["the unresolved question", "the source gap or conflict requiring owner resolution"]
+    },
+    {
+      "id": "provenance_only",
+      "meaning": "The retained material is preserved only as provenance/history and creates no implementation or content obligation.",
+      "required_evidence": ["provenance reason", "explicit statement that no implementation/content claim is created"]
+    }
+  ],
+  "stable_source_reference_contract": {
+    "required_fields": ["source_id", "source_kind", "locator"],
+    "source_id_rule": "Use a stable project-local identifier that remains unchanged if a display name or filename changes.",
+    "locator_rule": "Record the canonical repository path, archive/member path, governed data location, or other exact retained-source locator used for review.",
+    "immutability_rule": "When an immutable revision, Git blob/commit, checksum, or equivalent source fingerprint is available, record it; do not invent one when the retained source does not provide it.",
+    "provenance_rule": "A source reference identifies evidence; it does not itself create implementation authority."
+  },
+  "disposition_record_contract": {
+    "required_fields": ["concept_id", "source_refs", "disposition", "evidence"],
+    "concept_id_rule": "Each retained concept receives one stable project-local concept identifier within SGC.",
+    "source_refs_rule": "source_refs must contain at least one stable source_id from the retained-source inventory.",
+    "disposition_rule": "disposition must be exactly one allowed disposition id from this contract.",
+    "evidence_rule": "Evidence must satisfy the selected disposition's required_evidence and point to canonical or retained-source support; broad program names alone are insufficient.",
+    "unknown_rule": "Missing definitions, effect text, amounts, ownership, or other source facts remain explicit gaps and may not be fabricated to force closure."
+  },
+  "invariants": [
+    "No invention is permitted to fill source gaps.",
+    "No duplicate mechanics, content, or authority ledger is created by this contract.",
+    "Historical source evidence cannot override newer canonical repository authority.",
+    "A broad program name is not sufficient evidence that a retained concept is covered.",
+    "unresolved_owner_decision is visible debt and may not be silently converted to planned_owned_elsewhere, provenance_only, or a vague future bucket.",
+    "ARI, SAA, and deferred P3D routing must use planned_owned_elsewhere when those approved destinations are the actual owner; deferral is not implementation.",
+    "SGC-01A defines the contract only; retained-corpus inventory and classification begin in SGC-01B and later units."
+  ],
+  "strict_successor": "SGC-01B"
+}
