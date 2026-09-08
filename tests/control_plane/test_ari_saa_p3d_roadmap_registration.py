@@ -86,18 +86,24 @@ class AriSaaP3dRoadmapRegistrationTests(unittest.TestCase):
     def test_current_vti_selector_is_not_replaced_by_planning(self):
         index = load_json("governance/ai/runtime/ROADMAP_INDEX.json")
         checkpoint = load_json("governance/ai/work-state/VTI-10-attempt-001.json")
+        vti11 = load_json("governance/ai/work-state/VTI-11-attempt-001.json")
         pointer = load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
         backlog = load_json("governance/application-planning/virtual-tabletop-interoperability/VTI_PROGRAM_BACKLOG.json")
         runtime = load_json("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")
         authority = load_json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
         self.assertIn(checkpoint["status"], {"in_progress", "completed_verified"})
         if checkpoint["status"] == "completed_verified":
-            self.assertEqual(index["current"]["work_item_id"], "VTI-11")
-            self.assertEqual(index["current"]["status"], "selected_not_started")
-            self.assertFalse(index["current"]["implementation_authority"])
-            self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-11")
-            self.assertEqual(backlog["current_item"], "VTI-11")
-            self.assertEqual(runtime["active_work"]["work_item"], "VTI-11")
+            if vti11["status"] in {"selected_not_started", "in_progress"}:
+                self.assertEqual(index["current"]["work_item_id"], "VTI-11")
+                self.assertEqual(index["current"]["status"], vti11["status"])
+                self.assertEqual(index["current"]["implementation_authority"], vti11["implementation_authority"])
+                self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-11")
+                self.assertEqual(pointer["active_attempt"]["status"], vti11["status"])
+                self.assertEqual(backlog["current_item"], "VTI-11")
+                self.assertEqual(runtime["active_work"]["work_item"], "VTI-11")
+            else:
+                self.assertEqual(vti11["status"], "completed_verified")
+                self.assertEqual(index["current"]["work_item_id"], "VTI-12")
             self.assertTrue(authority["vti_10_authority"]["retired"])
             self.assertFalse(authority["vti_10_authority"]["production_mutation_authorized"])
         else:

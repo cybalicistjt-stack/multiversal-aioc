@@ -10,7 +10,7 @@ def load_json(path):
 
 
 class Vti10TerminalCloseoutTests(unittest.TestCase):
-    def test_vti10_terminal_evidence_and_vti11_selected_without_authority(self):
+    def test_vti10_terminal_evidence_and_vti11_successor_lifecycle(self):
         vti10 = load_json("governance/ai/work-state/VTI-10-attempt-001.json")
         vti11 = load_json("governance/ai/work-state/VTI-11-attempt-001.json")
         pointer = load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
@@ -32,33 +32,52 @@ class Vti10TerminalCloseoutTests(unittest.TestCase):
 
         self.assertEqual(vti11["work_item_id"], "VTI-11")
         self.assertEqual(vti11["title"], "Adventure / Campaign Package Export")
-        self.assertEqual(vti11["status"], "selected_not_started")
+        self.assertIn(vti11["status"], {"selected_not_started", "in_progress", "completed_verified"})
         self.assertEqual(vti11["application_baseline_sha"], "145eee04181b9ed66cae887ea6830da111918c25")
-        self.assertIsNone(vti11["implementation_branch"])
-        for key in ("implementation_authority", "branch_creation_authorized", "acceptance_package_authorized", "production_mutation_authorized"):
-            self.assertFalse(vti11[key])
 
-        self.assertEqual(pointer["primary_attempt_id"], "VTI-11-attempt-001")
-        self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-11")
-        self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
-        self.assertFalse(pointer["bounded_authority"]["vti_implementation"])
-        self.assertEqual(pointer["bounded_authority"]["vti_work_item"], "VTI-11")
-        self.assertFalse(pointer["bounded_authority"]["acceptance_package_authorized"])
-        self.assertFalse(pointer["bounded_authority"]["production_mutation_authorized"])
-
-        self.assertEqual(backlog["completed_through"], "VTI-10")
-        self.assertEqual(backlog["current_item"], "VTI-11")
-        self.assertEqual(backlog["current_attempt"], "VTI-11-attempt-001")
-        self.assertEqual(backlog["application_baseline_sha"], "145eee04181b9ed66cae887ea6830da111918c25")
-        self.assertEqual(runtime["active_work"]["work_item"], "VTI-11")
-        self.assertEqual(index["current"]["work_item_id"], "VTI-11")
-        self.assertEqual(index["current"]["status"], "selected_not_started")
-
-        self.assertTrue(authority["vti_10_authority"]["retired"])
+        self.assertEqual(backlog["completed_through"], "VTI-10" if vti11["status"] != "completed_verified" else "VTI-11")
+        self.assertEqual(authority["vti_10_authority"]["retired"], True)
         self.assertFalse(authority["vti_10_authority"]["implementation_authority"])
-        self.assertTrue(authority["vti_11_authority"]["selected_not_started"])
-        self.assertFalse(authority["vti_11_authority"]["implementation_authority"])
-        self.assertFalse(authority["vti_11_authority"]["production_mutation_authorized"])
+        self.assertFalse(authority["vti_10_authority"]["production_mutation_authorized"])
+
+        if vti11["status"] == "selected_not_started":
+            self.assertIsNone(vti11["implementation_branch"])
+            for key in ("implementation_authority", "branch_creation_authorized", "acceptance_package_authorized", "production_mutation_authorized"):
+                self.assertFalse(vti11[key])
+            self.assertEqual(pointer["primary_attempt_id"], "VTI-11-attempt-001")
+            self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-11")
+            self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
+            self.assertFalse(pointer["bounded_authority"]["vti_implementation"])
+            self.assertEqual(backlog["current_item"], "VTI-11")
+            self.assertEqual(runtime["active_work"]["work_item"], "VTI-11")
+            self.assertEqual(index["current"]["work_item_id"], "VTI-11")
+            self.assertEqual(index["current"]["status"], "selected_not_started")
+            self.assertTrue(authority["vti_11_authority"]["selected_not_started"])
+            self.assertFalse(authority["vti_11_authority"]["implementation_authority"])
+        elif vti11["status"] == "in_progress":
+            branch = "integration/vti-11-adventure-campaign-package-export"
+            self.assertEqual(vti11["implementation_branch"], branch)
+            self.assertTrue(vti11["implementation_authority"])
+            self.assertTrue(vti11["branch_creation_authorized"])
+            self.assertTrue(vti11["acceptance_package_authorized"])
+            self.assertEqual(pointer["active_attempt"]["work_item_id"], "VTI-11")
+            self.assertEqual(pointer["active_attempt"]["status"], "in_progress")
+            self.assertTrue(pointer["bounded_authority"]["vti_implementation"])
+            self.assertEqual(backlog["current_item"], "VTI-11")
+            self.assertEqual(runtime["active_work"]["work_item"], "VTI-11")
+            self.assertEqual(index["current"]["work_item_id"], "VTI-11")
+            self.assertEqual(index["current"]["status"], "in_progress")
+            self.assertFalse(authority["vti_11_authority"]["selected_not_started"])
+            self.assertTrue(authority["vti_11_authority"]["implementation_authority"])
+            expected_production = bool(vti11.get("production_mutation_authorized"))
+            self.assertEqual(pointer["bounded_authority"]["production_mutation_authorized"], expected_production)
+            self.assertEqual(authority["vti_11_authority"]["production_mutation_authorized"], expected_production)
+        else:
+            self.assertTrue(vti11["completed"])
+            self.assertTrue(vti11["authority_retired"])
+            self.assertFalse(authority["vti_11_authority"]["implementation_authority"])
+            self.assertFalse(authority["vti_11_authority"]["production_mutation_authorized"])
+            self.assertEqual(index["current"]["work_item_id"], "VTI-12")
 
         planned = {row["program_id"]: row for row in index["planned_programs"]}
         self.assertFalse(planned["ARI"]["implementation_authority"])
