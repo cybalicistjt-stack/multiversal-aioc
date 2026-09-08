@@ -84,7 +84,7 @@ class AriSaaP3dRoadmapRegistrationTests(unittest.TestCase):
             "physical-pixel-v1",
             "physical-detailed-v1",
             "composable atomic parts plus parametric morphing",
-            "does not automatically activate P3D",
+            "must not silently place P3D on the critical path",
         ):
             self.assertIn(phrase, p3d)
 
