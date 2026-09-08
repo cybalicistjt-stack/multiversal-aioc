@@ -1,142 +1,137 @@
 # DWC Speech Synthesis Project — Durable Project Anchor
 
-**Project:** DWC language-to-speech / native speech synthesis
-**Owner and final authority:** John Brandon Turner
-**Status:** ACTIVE RESEARCH / IMPLEMENTATION
-**Created:** 2026-09-08
+**Project:** DWC language-to-speech / native speech synthesis  
+**Owner and final authority:** John Brandon Turner  
+**Status:** ACTIVE RESEARCH / IMPLEMENTATION  
+**Created:** 2026-09-08  
+**Updated:** 2026-09-08  
 **Role:** durable human-readable project reference; DWC continuity authority, not Multiversal software-roadmap work selection
 
 ## 1. Why this document exists
 
-The DWC project accumulated substantial language-design, pronunciation, corpus, neural-proxy, and Piper-training work inside long conversations. The work advanced, but conversation execution repeatedly regressed to older narrative checkpoints after interruptions, tool timeouts, progress messages, and sandbox changes.
+The DWC project accumulated substantial language-design, pronunciation, corpus, neural-proxy, Piper warm-start, and training work inside long conversations. The technical work advanced, but conversation execution repeatedly regressed to older narrative checkpoints after interruptions, tool timeouts, progress messages, and sandbox changes.
 
 This file exists to keep the DWC project centered outside any one conversation. Future DWC work should recover from this anchor plus `DWC_CURRENT_STATE.json`, then inspect live evidence for mutable runtime facts.
 
 The key operating distinction is:
 
-> **Project state is defined by verified artifacts, code, files, and tool results. Assistant prose is commentary about that state, not the state itself.**
+> **Project state is defined by verified artifacts, code, files, tool results, and explicit owner corrections. Assistant prose is commentary about that state, not the state itself.**
 
 ## 2. Project goal
 
 Build a robust speech-generation path for DWC in which DWC's own language and phonological system controls pronunciation from end to end.
 
-The target is not merely to make an English TTS engine approximate DWC. The target is a deterministic, engine-independent DWC pronunciation frontend that can drive neural speech synthesis directly and can ultimately support a DWC-native/custom acoustic model.
+The target is not merely to make an English TTS engine approximate DWC. The target is a deterministic, engine-independent DWC pronunciation frontend that can drive neural speech synthesis directly and ultimately support a DWC-native/custom acoustic model.
 
 Primary goals:
 
-- DWC pronunciation must be controlled by DWC rules rather than English G2P.
-- The frontend must preserve exact custom DWC phoneme identities/IDs.
-- Equivalent DWC linguistic input should produce deterministic phoneme output.
-- The pronunciation layer should be portable across TTS engines where practical.
-- Training and inference must preserve provenance from DWC text/language representation through phoneme IDs to acoustic output.
-- Engine or environment limitations must not be mistaken for language-design failures.
-- The path must be suitable for eventual Multiversal use without prematurely coupling language rules to one TTS vendor or runtime.
+- DWC pronunciation is controlled by DWC rules rather than English G2P.
+- The frontend preserves exact custom DWC phoneme identities/IDs.
+- Equivalent DWC linguistic input produces deterministic phoneme output.
+- The pronunciation layer remains portable across TTS engines where practical.
+- Training and inference preserve provenance from DWC linguistic representation through phoneme IDs to acoustic output.
+- Engine or environment limitations are not mistaken for language-design failures.
+- The path can later support Multiversal without prematurely coupling DWC rules to one vendor or runtime.
 
 ## 3. Current conceptual architecture
 
-The working architecture is:
-
-`DWC language / semantic form`
-→ `DWC etymology and lexical rules`
-→ `PSS pronunciation representation`
-→ `CNS canonical sound representation`
-→ `engine-independent exact custom phoneme IDs`
-→ `aligned DWC training / regression corpus`
-→ `acoustic model / TTS engine`
+`DWC language / semantic form`  
+→ `DWC etymology and lexical rules`  
+→ `PSS pronunciation representation`  
+→ `CNS canonical sound representation`  
+→ `engine-independent exact custom phoneme IDs`  
+→ `aligned DWC training / regression corpus`  
+→ `acoustic model / TTS engine`  
 → `vocoder / waveform output`
 
-The critical invariant is that English G2P is not allowed to silently reinterpret DWC between the DWC frontend and the neural model.
+The critical invariant is that English G2P must not silently reinterpret DWC between the DWC frontend and the neural model.
 
 ## 4. Established project achievements
 
-The following items are treated as established unless later artifact evidence contradicts them.
+The following are settled project achievements unless later evidence contradicts them.
 
 ### 4.1 Language-side work reached the pre-audio TTS handoff
 
-The DWC language, etymology, PSS, and CNS work progressed to the point where speech synthesis could consume the language output. This is not considered an open language-design restart point.
+DWC language, etymology, PSS, and CNS work progressed to the point where speech synthesis could consume the language output. This is not an open language-design restart point.
 
-### 4.2 Engine-independent DWC frontend exists
+### 4.2 Engine-independent exact-ID DWC frontend exists
 
-A frontend exists that produces exact custom phoneme IDs for DWC rather than depending on an engine-specific English pronunciation path.
-
-This is a major architectural achievement and a non-regression boundary: future TTS experimentation must preserve this ability unless the owner explicitly changes the design.
+A frontend exists that produces exact custom phoneme IDs for DWC rather than depending on an engine-specific English pronunciation path. Future speech work must preserve this capability unless the owner explicitly changes the architecture.
 
 ### 4.3 Synthetic exact-ID bootstrap corpus exists
 
-A synthetic DWC bootstrap corpus of **799 exact-ID aligned utterances** exists. Previous Piper preflight work found that this corpus passes the exact-ID dataset checks.
+A synthetic DWC bootstrap corpus of **799 exact-ID aligned utterances** exists and passed the prior Piper exact-ID dataset preflight.
 
 ### 4.4 Neural proxy path was proven
 
-Using the owner-supplied LJSpeech medium ONNX model/config and ONNX Runtime, the prior conversation produced a working neural DWC proxy path.
-
-Verified results recorded in the prior conversation:
+Using the owner-supplied LJSpeech medium ONNX model/config and ONNX Runtime, prior work produced a working neural DWC proxy path:
 
 - **199/199** DWC regression utterances rendered;
-- **0 unsupported CNS IPA symbols** in that regression set;
+- **0 unsupported CNS IPA symbols** in that set;
 - approximately **4.6 minutes** of neural DWC audio generated;
-- English G2P was bypassed and CNS pronunciation information was sent directly to the neural path.
+- English G2P bypassed, with DWC/CNS pronunciation information sent directly to the neural path.
 
-This proves that the DWC frontend can drive a neural speech system. It does **not** prove that the final native DWC acoustic model is trained.
+This proved that the DWC frontend can drive neural speech. It did not itself constitute the final DWC-native acoustic model.
 
-### 4.5 Piper custom-ID feasibility was established at source level
+### 4.5 Piper exact-custom-ID and warm-start support was established
 
-Piper v1.8.0 source was inspected and prior work established that:
+Piper v1.8.0 source work established:
 
-- `dataset_type=phoneme_ids` supports owner-supplied phoneme IDs directly;
-- Piper's model path supports `vocoder_warmstart_ckpt`;
-- work progressed into direct `VitsDataModule` / `VitsModel` custom-ID smoke attempts;
-- unused English G2P/VAD dependencies were being bypassed or stubbed as needed.
+- `dataset_type=phoneme_ids` can consume owner-supplied IDs directly;
+- `vocoder_warmstart_ckpt` is supported;
+- unused English G2P/VAD paths can be bypassed/stubbed as needed for the custom-ID path.
 
-### 4.6 Training limitation was narrowed to execution surface
+### 4.6 Direct custom-ID warm-start viability was already proven
 
-CPU-heavy VITS construction/precompute exceeded the available conversation-container execution window.
+The prior DWC work progressed farther than the conversation-local recovery note captured. The owner explicitly corrected the stale frontier on 2026-09-08: the intended pretrained Piper/LJSpeech checkpoint **can warm-start the DWC direct exact-custom-ID path, and this had already been figured out in the preceding work**.
 
-This is currently classified as an execution-surface limitation, not evidence that DWC phonology, CNS/PSS, exact-ID corpus design, or Piper's custom-ID input path is invalid.
+This is now a non-regression boundary.
+
+A future repeat of the tiny warm-start smoke is permitted and useful, but it is a **reproducibility/revalidation gate**, not the first proof of feasibility and not a reason to move the project frontier backward.
+
+### 4.7 Remaining compute limits are execution-surface issues unless evidence shows otherwise
+
+CPU-heavy VITS construction/precompute and sustained training can exceed a conversation-container execution window. Such a limit must be classified at the training/execution layer. It does not reopen DWC phonology, CNS/PSS, exact-ID corpus design, neural-proxy viability, or custom-ID warm-start viability.
 
 ## 5. Current technical frontier
 
-The next meaningful proof is a **direct Piper custom-ID warm-start smoke test** using the DWC exact-ID corpus and the pretrained LJSpeech checkpoint.
+The current forward frontier is **controlled DWC-native acoustic training and evaluation**.
 
-The checkpoint involved is `lj-med_1000.ckpt`, originally supplied inside `lj-med_1000.zip`.
+The next meaningful result is no longer "can the warm-start work?" It is:
 
-Because the Drive connector had a per-file size limit, the owner split the large ZIP into eight parts under the connector limit. Previous verified Drive state showed parts `.001` through `.008` present in the `Transfer file` folder.
+> Can the proven exact-ID warm-start path be reproduced under governed conditions, then carried beyond smoke-test construction into a bounded real training run that produces durable training evidence and a DWC evaluation sample?
 
-The final prior runtime had progressed beyond simple discovery. Its recovery record states that local runtime material included `.001-.004` while Drive exposed all eight parts. A new conversation/sandbox must not interpret missing local temporary files as project regression; it should rehydrate only what the new runtime actually lacks.
+The key pretrained checkpoint remains `lj-med_1000.ckpt`, originally supplied inside `lj-med_1000.zip`. Because of connector size limits, the owner split the large ZIP; previous verified Drive state showed eight parts `.001` through `.008` in the `Transfer file` folder.
 
-## 6. Exact next validation chain
+Missing copies in a new sandbox are a rehydration issue only. They do not reset logical progress.
 
-Unless newer DWC evidence supersedes it, the unfinished sequence is:
+## 6. Next governed execution chain
 
-1. Rehydrate only the checkpoint parts missing from the current runtime.
-2. Reassemble all eight parts in numeric order.
-3. Verify integrity:
-   - validate the ZIP central directory;
-   - use the split/checksum manifest if present;
-   - verify extracted checkpoint size/hash when available.
-4. Extract `lj-med_1000.ckpt`.
-5. Inspect checkpoint keys, tensor shapes, and Piper-version compatibility.
-6. Run a tiny direct custom-ID DWC warm-start smoke test using the exact-ID dataset path.
-7. Bypass unused English G2P/VAD paths rather than reintroducing English pronunciation semantics.
-8. If CPU model construction remains too heavy, classify the sustained acoustic-training surface specifically as `environment_unavailable`, preserve all earlier successful evidence, and produce/use a GPU-ready exact harness rather than backtracking.
-9. Once warm-start viability is proven, move to controlled DWC-native acoustic training/evaluation rather than treating the ONNX proxy as the final architecture.
+Unless newer DWC evidence supersedes this state:
+
+1. Inspect the current execution surface and acquire only missing exact dependencies.
+2. Reassemble/integrity-check `lj-med_1000.ckpt` as needed.
+3. Repeat the tiny direct DWC exact-ID warm-start smoke as a **reproducibility gate**.
+4. Preserve hashes, configuration, exact code path, dependencies, and outcome so the result is not lost inside a conversation again.
+5. Advance immediately into a bounded acoustic-training run beyond the smoke test, long enough to show real optimizer/training progress and generate a new checkpoint or equivalent durable training artifact.
+6. If the present CPU/container cannot sustain that run, classify **sustained acoustic training** specifically as `environment_unavailable`, preserve all completed milestones, and use/produce an exact GPU-ready harness.
+7. Render a controlled DWC sample from the newly trained checkpoint.
+8. Evaluate exact phoneme coverage, pronunciation fidelity, intelligibility, failure cases, and voice quality against DWC frontend expectations.
+9. Update `DWC_CURRENT_STATE.json` with hashes, configuration, training evidence, evaluation findings, and the next bounded target before treating the work unit as closed.
 
 ## 7. Execution rules for DWC conversations
 
-These rules are part of the project continuity contract.
-
 ### 7.1 Continue means execution, not recap
 
-When the owner says `Continue` during DWC execution, remain in execution mode until the largest safe bounded unit is completed/verified or a genuine blocker is fully evidenced.
-
-A progress update is not a handoff and is not permission to stop.
+When the owner says `Continue` during DWC execution, remain in execution mode until the largest safe bounded unit is completed/verified or a genuine blocker is fully evidenced. A progress update is not a handoff and is not permission to stop.
 
 ### 7.2 Recover from evidence, not the last paragraph
 
-After interruption, inspect the latest actual tool/file/scratchpad evidence before selecting the next action. Do not restart from an older narrative checkpoint merely because it is easier to remember.
+After interruption, inspect the latest actual tool/file/evidence state before selecting the next action. Do not restart from an older narrative checkpoint.
 
 ### 7.3 Work states are explicit
 
-Use, at minimum:
+Use at minimum:
 
 - `not_started`
 - `in_progress`
@@ -144,99 +139,100 @@ Use, at minimum:
 - `blocked_with_evidence`
 - `environment_unavailable`
 
-Started work is unfinished. Generated artifacts are not automatically completion evidence.
+Started work is unfinished. Artifact existence alone is not completion.
 
-### 7.4 Do not rediscover closed facts without cause
+### 7.4 Revalidation does not reopen a completed milestone
+
+If a settled result is repeated to make it reproducible or to obtain fresher machine evidence, the project frontier stays advanced unless the rerun produces contradictory evidence. In particular, a repeat warm-start smoke must not be reframed as though DWC warm-start viability had never been established.
+
+### 7.5 Do not rediscover closed facts without cause
 
 Do not repeatedly re-prove:
 
-- that the DWC exact-ID frontend exists;
-- that the 799-row corpus exists/passed the prior exact-ID preflight;
-- that the ONNX neural proxy worked;
-- that English G2P can be bypassed in the proven proxy path;
-- that Piper supports `dataset_type=phoneme_ids` and `vocoder_warmstart_ckpt`;
+- the DWC exact-ID frontend exists;
+- the 799-row corpus exists and passed prior exact-ID preflight;
+- the ONNX neural proxy worked;
+- English G2P can be bypassed in the proven path;
+- Piper accepts owner-supplied phoneme IDs;
+- Piper supports the warm-start mechanism;
+- the direct DWC custom-ID warm-start path is viable;
 
 unless newer evidence conflicts with one of those facts.
 
-### 7.5 New sandbox does not mean new project
+### 7.6 New sandbox does not mean new project
 
-Distinguish:
+Distinguish durable **logical project progress** from temporary **runtime material**. Rehydrate physical dependencies without resetting the technical frontier.
 
-- **logical project progress** — durable and preserved;
-- **ephemeral runtime material** — temporary files/packages that may need to be reacquired.
+### 7.7 Classify blockers precisely
 
-Rehydrate missing physical dependencies without resetting the technical frontier.
+Distinguish file-transfer limits, dependency issues, CPU-duration limits, GPU unavailability, missing exact bytes, checkpoint corruption, model incompatibility, dataset failure, and genuine architecture failure.
 
-### 7.6 Classify blockers precisely
+### 7.8 Preserve exact artifacts and provenance
 
-Do not collapse all failures into "the environment cannot do this." Distinguish file-transfer limits, dependency-install issues, CPU-duration limits, missing exact bytes, model incompatibility, dataset failure, and genuine architecture failure.
-
-### 7.7 Preserve exact artifacts and provenance
-
-Do not reconstruct checksum-bound model files, corpora, or checkpoint parts from prose. Exact external bytes must be reacquired from their real source when needed.
+Do not reconstruct checksum-bound models, corpora, checkpoint parts, or training outputs from prose. Preserve or reacquire exact bytes and record hashes/configuration whenever a reproducibility gate is run.
 
 ## 8. Known artifact/source lineage
 
-The following artifacts or evidence were involved in the work and should be preserved or rediscovered by exact name/source when needed:
+Important artifacts/evidence include:
 
-- `DWC-Semantic-Lexicon-Redesign-v2-2026-09-07.zip` — referenced in the preceding conversation as a language/semantic artifact.
-- DWC engine-independent exact-phoneme-ID frontend.
-- 799-utterance exact-ID synthetic bootstrap corpus.
-- 199-utterance DWC regression corpus / neural proxy package.
-- owner-supplied LJSpeech medium ONNX model and config.
-- ONNX Runtime wheel used in the prior execution surface.
-- Piper v1.8.0 source.
-- `lj-med_1000.zip` / extracted `lj-med_1000.ckpt`.
-- split checkpoint parts `.001` through `.008` in Google Drive `Transfer file` as of the last verified prior state.
-- split/checksum manifest if present.
-- `Multiversal app - Synth V Uses (1).mht` — conversation export containing direct transcript evidence.
-- `DWC_CONVERSATION_EXECUTION_RECOVERY (1).md` — conversation-local recovery state created at the end of the prior conversation.
+- `DWC-Semantic-Lexicon-Redesign-v2-2026-09-07.zip`;
+- DWC engine-independent exact-phoneme-ID frontend;
+- 799-utterance exact-ID synthetic bootstrap corpus;
+- 199-utterance DWC regression / neural-proxy package;
+- owner-supplied LJSpeech medium ONNX model and config;
+- Piper v1.8.0 source;
+- `lj-med_1000.zip` / `lj-med_1000.ckpt`;
+- split checkpoint parts `.001` through `.008` in Google Drive `Transfer file` as of the prior verified state;
+- split/checksum manifest if present;
+- `Multiversal app - Synth V Uses (1).mht` for transcript provenance;
+- `DWC_CONVERSATION_EXECUTION_RECOVERY (1).md` as a historical recovery aid;
+- `DWC_CURRENT_STATE.json` as the mutable durable frontier going forward.
 
-The MHT and recovery file are historical/provenance inputs. This repository anchor is the durable DWC recovery reference going forward; mutable execution facts belong in `DWC_CURRENT_STATE.json` and should be updated when verified state advances.
+Historical MHT/recovery material is provenance, not a reason to override newer durable state or explicit owner correction.
 
-## 9. What has NOT yet been proven
+## 9. What remains open
 
-Do not overstate current completion. At the time this anchor was created, the following were **not yet established as complete**:
+Do not overstate completion. The following remain open:
 
-- successful inspection/compatibility confirmation of the reassembled `lj-med_1000.ckpt` in the current Piper path;
-- successful direct custom-ID Piper warm-start model construction on DWC data;
-- sustained DWC acoustic training to convergence;
+- sustained DWC acoustic training to a useful convergence point;
+- a durable newly trained DWC checkpoint produced from the exact-ID training path;
 - a final DWC-native trained voice model;
-- formal voice-quality / intelligibility / pronunciation evaluation beyond the neural-proxy proof;
-- production packaging, licensing review, deployment, or Multiversal-app integration of the final TTS stack;
-- a final decision that Piper must remain the production engine if another engine later proves better while preserving DWC exact-ID control.
+- formal intelligibility/pronunciation/voice-quality evaluation beyond the proxy proof;
+- production packaging, licensing review, deployment, and Multiversal-app integration;
+- a final decision on Piper versus another engine, provided any alternative preserves the DWC exact-ID architecture.
+
+Warm-start feasibility is **not** in this open list anymore.
 
 ## 10. Architectural non-regression boundaries
 
-Future work should not silently undo these decisions:
-
 1. DWC language rules remain upstream of speech synthesis.
-2. DWC pronunciation must not be delegated to English G2P.
-3. Exact custom phoneme identity must survive into the acoustic-training/inference boundary.
-4. The frontend should remain engine-independent where practical.
-5. Proxy success and native-model success are separate milestones.
-6. Training environment limitations do not reopen settled language design without evidence.
+2. DWC pronunciation is not delegated to English G2P.
+3. Exact custom phoneme identity survives into the acoustic-training/inference boundary.
+4. The frontend remains engine-independent where practical.
+5. Proxy success, warm-start success, bounded training success, and final-model success are separate milestones.
+6. Environment limitations do not reopen settled language or warm-start design without contrary evidence.
 7. A conversation reset does not reset the project.
+8. Revalidation of a completed milestone does not move the logical frontier backward.
 
-## 11. Relation to the Multiversal application
+## 11. Relation to Multiversal
 
-DWC speech synthesis is a Multiversal capability/research program, but this document does not authorize a software-roadmap implementation tranche by itself.
+DWC speech synthesis is a Multiversal capability/research program, but this document does not itself authorize a software-roadmap implementation tranche.
 
-Application integration should occur only when the owning Multiversal software roadmap selects it. When that happens, implementation should consume the DWC language/pronunciation artifacts as governed inputs rather than reproducing or simplifying them inside UI/client code.
-
-Potential future Multiversal uses include spoken DWC dialogue, generated setting-language audio, pronunciation/reference tools, NPC speech, authoring previews, and content-production pipelines. Those are downstream applications, not proof requirements for the current acoustic-model research frontier.
+Potential later uses include spoken DWC dialogue, setting-language audio, pronunciation/reference tools, NPC speech, authoring previews, and content-production pipelines. Application integration should consume the governed DWC language/pronunciation artifacts rather than reimplementing them in client/UI code.
 
 ## 12. Recovery instruction for a future conversation
 
-A future DWC conversation should begin with this statement of state:
+Recover DWC with these facts already established:
 
-- the language/PSS/CNS work has reached the pre-audio handoff;
-- an exact custom-phoneme-ID frontend exists;
+- language/PSS/CNS reached the pre-audio handoff;
+- an engine-independent exact custom-phoneme-ID frontend exists;
 - the 799-row exact-ID bootstrap corpus exists and passed prior preflight;
-- the ONNX neural proxy proof succeeded on 199/199 regression utterances with no unsupported CNS IPA symbols in that set;
-- Piper source-level custom-ID and warm-start support has been established;
-- the unfinished frontier is checkpoint rehydration/integrity as needed, checkpoint compatibility inspection, and the direct custom-ID Piper warm-start smoke;
-- CPU-heavy VITS work may require a GPU execution surface, but that does not invalidate prior DWC achievements;
-- read `DWC_CURRENT_STATE.json` for the latest mutable state before doing anything.
+- the ONNX neural proxy succeeded on 199/199 regression utterances with no unsupported CNS IPA symbols in that set;
+- Piper source-level custom-ID and warm-start support is established;
+- **direct DWC exact-custom-ID warm-start viability is already established**;
+- a repeat warm-start is revalidation/reproducibility, not rediscovery;
+- the active frontier is bounded DWC acoustic training, durable checkpoint/sample production, and pronunciation/intelligibility evaluation;
+- CPU/GPU execution limitations must be classified at the training layer rather than used to reopen earlier milestones;
+- read `DWC_CURRENT_STATE.json` before executing because it contains the latest mutable frontier.
 
-Do not resume from the beginning unless newer evidence proves that one of these settled facts is wrong.
+Do not resume from the beginning unless newer evidence proves one of these settled facts wrong.
