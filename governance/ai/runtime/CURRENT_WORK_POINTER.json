@@ -1,20 +1,20 @@
 {
-  "schema_version":"17.5.0",
+  "schema_version":"17.6.0",
   "canonical_bootstrap":"governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
   "authority_registry":"governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
   "canonical_application_roadmap":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
   "roadmap_index":"governance/ai/runtime/ROADMAP_INDEX.json",
   "roadmap_supplements":[],
   "family_execution_preflight":"governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
-  "primary_attempt_id":"SGC-06B-attempt-001",
-  "selection_reason":"SGC-06A closes GM, Player and Creator workflow/screen coverage against current application-integrated surfaces plus explicit CSW/PPIA planned seams with zero new owner decisions; SGC-06B is the strict selected successor with no implementation authority.",
-  "active_attempt":{"work_item_id":"SGC-06B","attempt_id":"SGC-06B-attempt-001","track":"source-gameplay-coverage-closure","source_program":"SGC","priority":1,"owner_selected":true,"repository":"cybalicistjt-stack/multiversal-aioc","checkpoint_path":"governance/ai/work-state/SGC-06B-attempt-001.json","status":"selected_not_started","implementation_branch":null,"implementation_authority":false,"active_item":"SGC-06B — Avatar, Appearance, Accessibility & Device-Equivalent State"},
-  "active_program":{"program_id":"SGC","name":"Source & Gameplay Coverage Closure","status":"in_progress","completed_through":"SGC-06A","current":"SGC-06B","strict_next":"SGC-06C","last":"SGC-08C","program_path":"governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_GAMEPLAY_COVERAGE_CLOSURE_PROGRAM.md","backlog_path":"governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json"},
-  "bounded_authority":{"family_preflight_sealed":true,"selected_sgc_unit":"SGC-06B","sgc_implementation":false,"implementation_branch":null,"paid_provider_activation":false,"tester_distribution":false,"release_or_deployment":false,"rule":"SGC-06B is selected_not_started. The next execution Continue may governed-start only that unit."},
+  "primary_attempt_id":"SGC-06C-attempt-001",
+  "selection_reason":"SGC-06B closes avatar/appearance/accessibility/device-equivalent-state coverage against CAPP/PPIA, ALP/MAL/IC current baselines and SMB-10/SMB-16 planned completion owners with zero new owner decisions; SGC-06C is the strict selected successor with no implementation authority.",
+  "active_attempt":{"work_item_id":"SGC-06C","attempt_id":"SGC-06C-attempt-001","track":"source-gameplay-coverage-closure","source_program":"SGC","priority":1,"owner_selected":true,"repository":"cybalicistjt-stack/multiversal-aioc","checkpoint_path":"governance/ai/work-state/SGC-06C-attempt-001.json","status":"selected_not_started","implementation_branch":null,"implementation_authority":false,"active_item":"SGC-06C — Spatial Authoring, Practice/Microgame, Annotation & ARI/SAA/P3D Routing"},
+  "active_program":{"program_id":"SGC","name":"Source & Gameplay Coverage Closure","status":"in_progress","completed_through":"SGC-06B","current":"SGC-06C","strict_next":"SGC-07A","last":"SGC-08C","program_path":"governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_GAMEPLAY_COVERAGE_CLOSURE_PROGRAM.md","backlog_path":"governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json"},
+  "bounded_authority":{"family_preflight_sealed":true,"selected_sgc_unit":"SGC-06C","sgc_implementation":false,"implementation_branch":null,"paid_provider_activation":false,"tester_distribution":false,"release_or_deployment":false,"rule":"SGC-06C is selected_not_started. The next execution Continue may governed-start only that unit."},
   "recently_completed_sgc_work":[
+    {"work_item_id":"SGC-06B","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_AVATAR_APPEARANCE_ACCESSIBILITY_DEVICE_EQUIVALENCE_COVERAGE.json","coverage_records":7,"implemented":3,"content_only":2,"planned_owned_elsewhere":2,"unresolved_owner_decision":0,"strict_successor":"SGC-06C"},
     {"work_item_id":"SGC-06A","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_GM_PLAYER_CREATOR_WORKFLOW_SCREEN_COVERAGE.json","coverage_records":7,"implemented":5,"content_only":0,"planned_owned_elsewhere":2,"unresolved_owner_decision":0,"strict_successor":"SGC-06B"},
-    {"work_item_id":"SGC-05B","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_HAZARDS_REST_MEDICINE_CONSTRUCTS_EXPEDITIONS_SOURCE_HOLDS_COVERAGE.json","coverage_records":10,"implemented":3,"content_only":1,"planned_owned_elsewhere":5,"unresolved_owner_decision":1,"strict_successor":"SGC-06A"},
-    {"work_item_id":"SGC-05A","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_MOBILITY_TRAPS_NONLETHAL_WEAPON_MARTIAL_EDGE_COVERAGE.json","coverage_records":8,"implemented":3,"content_only":1,"planned_owned_elsewhere":4,"unresolved_owner_decision":0,"strict_successor":"SGC-05B"}
+    {"work_item_id":"SGC-05B","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_HAZARDS_REST_MEDICINE_CONSTRUCTS_EXPEDITIONS_SOURCE_HOLDS_COVERAGE.json","coverage_records":10,"implemented":3,"content_only":1,"planned_owned_elsewhere":5,"unresolved_owner_decision":1,"strict_successor":"SGC-06A"}
   ],
   "recently_completed_implementation_work":[
     {"work_item_id":"VTI-12","status":"completed_verified","validated_head":"712f7096118ae065d3d17492e2cc5effa1d83034","validation_run":34221889244,"deterministic_receipt_sha256":"77536c1214f37374ca8ea1b2f1f627b30e209f52bb141133d690cdfc9b0544a4","merge_sha":"7e93bc4bb1c3b8ecc9bc4424dd7422ea328e2765"},
@@ -25,13 +25,13 @@
     {"work_item_id":"MV-CONT-007","status":"completed_verified","checkpoint_path":"governance/ai/work-state/MV-CONT-007-attempt-001.json","application_pr":336,"application_merge":"e34d43d669c48d484dbdb9e82b72a00c5d91f00c","aioc_pr":778,"aioc_validated_head":"cceeceb5e3a2952c94581bd5efef55c99e87a10c","aioc_repository_health_run":33166810683,"aioc_merge":"c94baa78f0f135681ecaab3e6dc36d5c11b1afa2","aioc_main_health_run":33166847490,"superseded_prs_closed":[763,770]}
   ],
   "selection_invariants":[
-    "SGC-06A is completed_verified by the atomic AIOC merge carrying workflow/screen coverage and successor selection.",
-    "SGC-06B is selected_not_started with no implementation branch or implementation authority.",
-    "Role-aware Home/workspace entry, GM Campaign/Scene prep, Player Live Session, Creator World/Content authoring and the shared converged shell have current application-integrated evidence.",
-    "CSW guided/freeform Storycraft and GM Academy contextual guidance remain explicit planned/pre-authoritative routes rather than false implementation claims.",
+    "SGC-06B is completed_verified by the atomic AIOC merge carrying avatar/appearance/accessibility/device-equivalence coverage and successor selection.",
+    "SGC-06C is selected_not_started with no implementation branch or implementation authority.",
+    "PPIA-06/CAPP remain appearance architecture/production authorities and are not promoted to live application runtime.",
+    "Finished Character appearance/avatar construction remains SMB-10-owned; current ALP/MAL/IC accessibility/device-equivalence baselines remain implemented while final accessibility/localization/device completion remains SMB-16-owned.",
     "The generic live rest/exhaustion owner decision and earlier SGC unresolved decisions remain visible SGC-07A debt.",
-    "SGC-06C spatial-authoring/practice/microgame/annotation/ARI-SAA-P3D routing remains unauthorized.",
+    "SGC-07A conflict/unknown/owner-decision resolution remains unauthorized until SGC-06C completes and selects it.",
     "Historical lifecycle tests, historical audit corpus and unrelated connected systems remain blocked by default."
   ],
-  "exact_next_action":"On the next execution Continue, governed-start SGC-06B only and carry it through its terminal gate in one continuation."
+  "exact_next_action":"On the next execution Continue, governed-start SGC-06C only and carry it through its terminal gate in one continuation."
 }
