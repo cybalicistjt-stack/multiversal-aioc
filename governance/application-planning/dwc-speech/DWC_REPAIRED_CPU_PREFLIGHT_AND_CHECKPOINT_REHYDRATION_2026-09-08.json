@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1.0",
+  "date": "2026-09-08",
+  "project_id": "DWC-SPEECH",
+  "status": "current_surface_exhausted_before_model_baseline",
+  "repaired_corpus_preflight": {
+    "status": "PASS_REPAIRED_CORPUS_V0_2_1_PREFLIGHT",
+    "rows": 799,
+    "unique_audio_files": 799,
+    "r1_selection_rows": 128,
+    "acceptance_rows": 125,
+    "corpus_rms_dbfs_min": -24.00031808844968,
+    "corpus_rms_dbfs_max": -24.000204236502945,
+    "corpus_identity": "corpus_row_id"
+  },
+  "warmstart_rehydration": {
+    "parts": 8,
+    "reassembled_zip_bytes": 775838605,
+    "reassembled_zip_sha256": "7c06a05f89674f39fd185ede1e62911c9f91241397c0d2c708825c65455fe92b",
+    "zip_test": "PASS",
+    "checkpoint_file": "lj-med_1000.ckpt",
+    "checkpoint_bytes": 845889993,
+    "checkpoint_sha256": "dcf2449bdbdaad09256a08dfac211c59f6b36ce8d3f244fd844a9eb1d7384c7c",
+    "metadata_correction": "prior handoff/notebook byte count 845996331 was stale; exact hash matched established checkpoint and actual extracted size is 845889993"
+  },
+  "piper_source_materialization": {
+    "required_version": "v1.8.0",
+    "required_commit": "639388b6317fc4731e91d53da42aea68fd4166ff",
+    "local_shell_clone": "blocked: container outbound DNS unavailable",
+    "tool_layer_binary_source_download": "not materialized into sandbox",
+    "classification": "environment_unavailable for local CPU baseline because exact Piper source bytes cannot be materialized; not a model or DWC failure"
+  },
+  "gpu_notebook_repair": {
+    "superseded_file": "DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.ipynb",
+    "superseded_sha256": "e816c8b0b9647723cfa6447f1aaf3b8809b015aa56ada3f5b81a6737d915d99c",
+    "reason": "hard-coded stale checkpoint byte count would abort before training despite correct checkpoint hash",
+    "replacement_file": "DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.1.ipynb",
+    "replacement_drive_file_id": "1zDNNfb3MHqPdiv9h_FMSixA_j7FSD64D",
+    "replacement_bytes": 10799,
+    "replacement_sha256": "eb1229689b4f1a069bfddcf61b0286249b62176ffeef42f56e59813462763ba4",
+    "drive_readback_verified": true,
+    "correct_checkpoint_bytes": 845889993
+  },
+  "next_action": "Run v0.1.1 on a GPU-capable Colab or equivalent runtime; do not use v0.1 and do not resume Stage-C lineage."
+}
