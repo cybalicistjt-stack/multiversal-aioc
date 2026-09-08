@@ -1,0 +1,152 @@
+{
+  "schema_version": "1.0.0",
+  "schema_id": "SGC-RUNTIME-OWNER-COVERAGE-001",
+  "work_item_id": "SGC-02A",
+  "status": "CURRENT",
+  "scope": "Define the runtime-owner registry and the coverage-matrix row schema used by later SGC-02 units. This file does not assign retained concepts to owners, does not claim implementation coverage, and does not begin SGC-02B mapping.",
+  "inputs": {
+    "disposition_evidence_contract": "governance/application-planning/source-gameplay-coverage-closure/SGC_DISPOSITION_EVIDENCE_CONTRACT.json",
+    "retained_source_inventory": "governance/application-planning/source-gameplay-coverage-closure/SGC_RETAINED_SOURCE_CORPUS_INVENTORY.json",
+    "retained_source_inventory_status": "FROZEN_VERIFIED"
+  },
+  "runtime_owner_registry": [
+    {
+      "owner_id": "SSA",
+      "owner_kind": "completed_program_namespace",
+      "source_refs": ["SGC-SRC-SSA-OUTPUTS"],
+      "claim_limit": "The completed program namespace may be cited as a candidate owner only; a matrix row still requires exact canonical evidence for the specific concept or runtime behavior."
+    },
+    {
+      "owner_id": "KFR",
+      "owner_kind": "completed_program_namespace",
+      "source_refs": ["SGC-SRC-KFR-OUTPUTS"],
+      "claim_limit": "The completed program namespace may be cited as a candidate owner only; a matrix row still requires exact canonical evidence for the specific concept or runtime behavior."
+    },
+    {
+      "owner_id": "ODL",
+      "owner_kind": "completed_program_namespace",
+      "source_refs": ["SGC-SRC-ODL-OUTPUTS"],
+      "claim_limit": "The completed program namespace may be cited as a candidate owner only; a matrix row still requires exact canonical evidence for the specific concept or runtime behavior."
+    },
+    {
+      "owner_id": "MAL",
+      "owner_kind": "completed_program_namespace",
+      "source_refs": ["SGC-SRC-MAL-OUTPUTS"],
+      "claim_limit": "The completed program namespace may be cited as a candidate owner only; a matrix row still requires exact canonical evidence for the specific concept or runtime behavior."
+    },
+    {
+      "owner_id": "ALP",
+      "owner_kind": "completed_program_namespace",
+      "source_refs": ["SGC-SRC-ALP-OUTPUTS"],
+      "claim_limit": "The completed program namespace may be cited as a candidate owner only; a matrix row still requires exact canonical evidence for the specific concept or runtime behavior."
+    },
+    {
+      "owner_id": "SCL",
+      "owner_kind": "routed_existing_owner_namespace",
+      "source_refs": ["SGC-SRC-MINE-ROUTED-CANDIDATES"],
+      "claim_limit": "The retained source routes scale-transition concepts toward SCL; later mapping must cite exact canonical SCL authority before assigning coverage."
+    },
+    {
+      "owner_id": "WCI",
+      "owner_kind": "routed_existing_owner_namespace",
+      "source_refs": ["SGC-SRC-MINE-ROUTED-CANDIDATES"],
+      "claim_limit": "The retained source routes story/annotation-related concepts toward WCI/current owners; later mapping must cite exact canonical owner evidence before assigning coverage."
+    },
+    {
+      "owner_id": "CSW",
+      "owner_kind": "routed_existing_owner_namespace",
+      "source_refs": ["SGC-SRC-MINE-ROUTED-CANDIDATES"],
+      "claim_limit": "The retained source routes story/telling and Character-motivation concepts toward CSW/WCI or Character/CSW; later mapping must cite exact canonical owner evidence before assigning coverage."
+    },
+    {
+      "owner_id": "CHARACTER",
+      "owner_kind": "routed_existing_owner_namespace",
+      "source_refs": ["SGC-SRC-MINE-ROUTED-CANDIDATES"],
+      "claim_limit": "The retained source routes Character-motivation concepts toward Character/CSW; later mapping must cite exact canonical owner evidence before assigning coverage."
+    },
+    {
+      "owner_id": "SETTING_SPECIFIC_SGC05",
+      "owner_kind": "bounded_sgc_review_namespace",
+      "source_refs": ["SGC-SRC-MINE-ROUTED-CANDIDATES"],
+      "claim_limit": "The Toon/UZ conceptuality hold remains a setting-specific/SGC-05 review route; this registry entry is not an implementation claim."
+    },
+    {
+      "owner_id": "ARI",
+      "owner_kind": "owner_approved_planned_program",
+      "source_refs": ["SGC-SRC-ARI-SAA-P3D-AMENDMENT"],
+      "claim_limit": "Mass asset ingestion and cross-system reuse may route to ARI as planned_owned_elsewhere; no implementation claim is permitted before ARI implementation evidence exists."
+    },
+    {
+      "owner_id": "SAA",
+      "owner_kind": "owner_approved_planned_program",
+      "source_refs": ["SGC-SRC-ARI-SAA-P3D-AMENDMENT"],
+      "claim_limit": "Sequential-art/comic authoring may route to SAA as planned_owned_elsewhere; no implementation claim is permitted before SAA implementation evidence exists."
+    },
+    {
+      "owner_id": "P3D",
+      "owner_kind": "owner_approved_deferred_future_project",
+      "source_refs": ["SGC-SRC-ARI-SAA-P3D-AMENDMENT"],
+      "claim_limit": "Renderer-neutral physical 3D/miniature requirements may route to deferred P3D as planned_owned_elsewhere when P3D is the actual approved destination; deferral is never implementation."
+    }
+  ],
+  "owner_registry_rules": {
+    "registry_role": "The registry supplies stable owner identifiers that coverage rows may reference; it does not itself prove coverage or implementation.",
+    "extension_rule": "A later SGC unit may add an owner_id only when the retained source and exact canonical authority evidence identify that owner. Unknown or vague 'current owner' references must remain unresolved until evidence identifies the owner.",
+    "no_duplicate_authority_rule": "SGC records references to governing owners and must not recreate or override their mechanics, content, or authority ledgers.",
+    "broad_name_rule": "A program or owner namespace by itself is insufficient evidence that a retained concept is covered."
+  },
+  "coverage_matrix_schema": {
+    "future_matrix_path": "governance/application-planning/source-gameplay-coverage-closure/SGC_RUNTIME_COVERAGE_MATRIX.json",
+    "row_required_fields": [
+      "concept_id",
+      "source_refs",
+      "concept_kind",
+      "disposition",
+      "owner_id",
+      "evidence"
+    ],
+    "concept_kind_allowed": ["mechanic", "rule", "loop", "runtime_function"],
+    "field_rules": {
+      "concept_id": "Use one stable project-local concept identifier. One retained concept may not silently appear as multiple independent authority rows.",
+      "source_refs": "Must contain at least one source_id from the frozen retained-source inventory.",
+      "concept_kind": "Must be exactly one allowed concept kind in this schema.",
+      "disposition": "Must be exactly one allowed disposition from SGC-DISPOSITION-EVIDENCE-001.",
+      "owner_id": "Use a registered owner_id when the disposition asserts an owner or destination. It may be null only when the selected disposition legitimately has no resolved owner, such as unresolved_owner_decision, intentionally_unsupported, explicitly_superseded, or provenance_only.",
+      "evidence": "Must satisfy the selected disposition's evidence contract and include exact canonical or retained-source support. Broad program names alone are insufficient."
+    },
+    "disposition_owner_requirements": {
+      "implemented": "owner_id is required and evidence must locate the governed implementation for the specific concept.",
+      "planned_owned_elsewhere": "owner_id is required and evidence must identify the canonical approved planning/authority record for that destination.",
+      "content_only": "owner_id is required when a governed content owner/destination exists; evidence must state that no runtime implementation claim is made.",
+      "explicitly_superseded": "owner_id may be null; evidence must identify the superseding authority and rationale.",
+      "intentionally_unsupported": "owner_id may be null; evidence must identify the owner-approved/canonical unsupported decision and reason.",
+      "unresolved_owner_decision": "owner_id may be null; evidence must preserve the unresolved question and source conflict/gap without inventing an owner.",
+      "provenance_only": "owner_id may be null; evidence must state the provenance reason and that no implementation/content obligation is created."
+    },
+    "validation_rules": [
+      "Every source_ref resolves to the frozen retained-source inventory.",
+      "Every non-null owner_id resolves to runtime_owner_registry or a later evidence-backed registry extension.",
+      "Every disposition is allowed by SGC-DISPOSITION-EVIDENCE-001.",
+      "No row may claim implemented from a completed program name alone.",
+      "No missing definition, effect, amount, ownership, or other source fact may be fabricated to force a row closed.",
+      "ARI/SAA/P3D routes may not be silently dropped or misreported as implemented.",
+      "Duplicate authority and orphan-owner conditions are surfaced for SGC-02C rather than normalized away."
+    ]
+  },
+  "counts": {
+    "registered_owner_namespaces": 13,
+    "completed_program_namespaces": 5,
+    "routed_existing_or_review_namespaces": 5,
+    "planned_or_deferred_destination_namespaces": 3,
+    "coverage_rows_created": 0,
+    "concept_dispositions_assigned": 0
+  },
+  "invariants": [
+    "SGC-02A defines registry/schema only; SGC-02B performs core mechanics/rules/loop mapping.",
+    "The frozen retained-source inventory remains the only source-id universe for initial SGC coverage rows.",
+    "The owner registry is referential metadata, not a duplicate authority ledger.",
+    "Unknown owners remain explicit unresolved evidence gaps rather than invented registry entries.",
+    "Historical evidence cannot override newer canonical repository authority."
+  ],
+  "strict_successor": "SGC-02B"
+}
