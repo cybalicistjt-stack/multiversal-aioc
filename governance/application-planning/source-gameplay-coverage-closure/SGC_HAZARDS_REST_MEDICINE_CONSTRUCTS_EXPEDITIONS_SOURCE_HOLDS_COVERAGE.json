@@ -1,0 +1,96 @@
+{
+  "schema_version":"1.0.0",
+  "work_item_id":"SGC-05B",
+  "status":"CURRENT",
+  "scope":"Persistent hazards, rest/exhaustion, specialist medicine, construct creation, expeditions and targeted source holds only. SGC-06 UX/creator/avatar/accessibility/workflow coverage remains out of scope.",
+  "scope_basis":"governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_GAMEPLAY_COVERAGE_CLOSURE_PROGRAM.md#sgc-05-specialized--edge-case-gameplay-closure",
+  "disposition_contract":"governance/application-planning/source-gameplay-coverage-closure/SGC_DISPOSITION_EVIDENCE_CONTRACT.json",
+  "retained_source_inventory":"governance/application-planning/source-gameplay-coverage-closure/SGC_RETAINED_SOURCE_CORPUS_INVENTORY.json",
+  "records":[
+    {
+      "concept_id":"SGC-EDGE-PERSISTENT-HAZARD-PRIMITIVES",
+      "source_refs":["SGC-SRC-MAL-OUTPUTS"],
+      "concept_kind":"persistent_hazard_runtime_primitives",
+      "disposition":"implemented",
+      "owner":"MAL-04",
+      "evidence":{"owner_paths":["governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MAL04_CLOSEOUT_2026-09-03.md","governance/application-planning/source-gameplay-coverage-closure/SGC_RUNTIME_COVERAGE_MATRIX.json"],"specific_scope":"MAL-04 is completed_verified for interaction, simple-conflict, hazard, pickup and objective primitives. These primitives are reused; SGC-05B creates no standalone hazard engine."}
+    },
+    {
+      "concept_id":"SGC-EDGE-PERSISTENT-HAZARD-SEMANTIC-EXECUTION",
+      "source_refs":["SGC-SRC-MAL-OUTPUTS"],
+      "concept_kind":"persistent_environmental_hazard_binding",
+      "disposition":"planned_owned_elsewhere",
+      "owner":"F013 semantic hazard placement + STAGE-A-A7 Action/Effect resolution + owning World/Condition processors",
+      "evidence":{"owner_paths":["governance/application-planning/internal-alpha/feature-packets/MV-IA-F013_BOUNDED_MAPS_ZONES_AND_TACTICAL_POSITIONING.md","governance/application-planning/stage-a-a7/STAGE_A_A7_CURRENT_REPOSITORY_REVALIDATION_v0.3.0.md"],"specific_scope":"F013 binds hazards to zones, anchors, edges, paths or scheduled pulses and delegates consequences to owning processors; A7 retains executable Action/Effect coordination. Persistent hazards therefore compose existing owners rather than becoming a second hazard runtime."}
+    },
+    {
+      "concept_id":"SGC-EDGE-REST-EXHAUSTION-GENERIC-RUNTIME",
+      "source_refs":["SGC-SRC-MAL-OUTPUTS","SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind":"rest_exhaustion_runtime",
+      "disposition":"unresolved_owner_decision",
+      "owner":null,
+      "evidence":{"owner_paths":["governance/application-planning/content-integration/AKWI-01_PLAYABLE_SPECIES_CORE_v1.0.0.md","governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_DPL05_CLOSEOUT_2026-08-25.md"],"unresolved_question":"Which current runtime owner should provide the generic live rest/exhaustion model shared by Character, Condition, environment and recovery systems?","source_gap":"Current canonical evidence explicitly states that the generic live exhaustion/injury runtime does not yet exist. DPL-05 provides source/profile-scoped recovery definitions but deliberately does not create a universal live health ledger. SGC-05B therefore cannot invent a generic rest cadence, exhaustion track, recovery amount or owner assignment."}
+    },
+    {
+      "concept_id":"SGC-EDGE-SPECIALIST-MEDICINE",
+      "source_refs":["SGC-SRC-ALP-OUTPUTS","SGC-SRC-MAL-OUTPUTS"],
+      "concept_kind":"specialist_medicine_rules_and_content",
+      "disposition":"implemented",
+      "owner":"DPL-05 Medicine, Disease, Injury, Poison & Long-Term Recovery",
+      "evidence":{"owner_path":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_DPL05_CLOSEOUT_2026-08-25.md","specific_scope":"DPL-05 is completed_verified and delivers source-backed/profile-scoped treatments, diseases, poison progressions, injury definitions and recovery plans while preserving Character/Condition/ICF/APW/D17/World owner truth. Missing source values remain unresolved rather than fabricated."}
+    },
+    {
+      "concept_id":"SGC-EDGE-LONG-TERM-RECOVERY",
+      "source_refs":["SGC-SRC-MAL-OUTPUTS","SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind":"long_term_recovery_profiles",
+      "disposition":"implemented",
+      "owner":"DPL-05",
+      "evidence":{"owner_path":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_DPL05_CLOSEOUT_2026-08-25.md","specific_scope":"DPL-05 delivers three source-backed recovery plans and keeps long-term recovery profile-scoped. This does not imply a universal rest/exhaustion runtime and does not overwrite Character/Condition state ownership."}
+    },
+    {
+      "concept_id":"SGC-EDGE-CONSTRUCT-CREATION-COMPOSITION",
+      "source_refs":["SGC-SRC-MAL-OUTPUTS","SGC-SRC-ALP-OUTPUTS"],
+      "concept_kind":"construct_creation_process",
+      "disposition":"planned_owned_elsewhere",
+      "owner":"MIB-12 deterministic transformation/crafting + CEW construct identity/content owners",
+      "evidence":{"owner_paths":["governance/ai/work-state/MIB-12-attempt-001.json","governance/application-planning/creature-ecology-wildlife/CEW-02_TAXONOMY_AUDIT.md"],"specific_scope":"MIB-12 is completed_verified for deterministic crafting/transformation, reservation, consumption, output, repair, upgrade and recovery behavior while preserving Asset/item/world owners. CEW recognizes Construct as a governed creature/content family. Construct creation must compose those owners; SGC-05B does not invent a second crafting engine, construct stat model, recipe, cost, time or sentience rule."}
+    },
+    {
+      "concept_id":"SGC-EDGE-EXPEDITION-STRUCTURE-CONTENT",
+      "source_refs":["SGC-SRC-MAL-OUTPUTS"],
+      "concept_kind":"expedition_adventure_structure",
+      "disposition":"content_only",
+      "owner":"GCL-10 Adventure Structure Library",
+      "evidence":{"owner_path":"governance/application-planning/gm-construction-library/GCL-10_COMPLETION_REPORT.md","specific_scope":"GCL-10 is completed_verified and includes expedition among twenty deterministic adventure families. Its structures are explicitly pre-authoritative construction material and do not create live Campaign/Scene/Encounter state or force outcomes."}
+    },
+    {
+      "concept_id":"SGC-EDGE-EXPEDITION-LIVE-EXECUTION",
+      "source_refs":["SGC-SRC-MAL-OUTPUTS"],
+      "concept_kind":"expedition_runtime_composition",
+      "disposition":"planned_owned_elsewhere",
+      "owner":"GCL construction + Campaign/Scene/Session + Encounter/Action owners",
+      "evidence":{"owner_path":"governance/application-planning/gm-construction-library/GCL-10_COMPLETION_REPORT.md","specific_scope":"GCL-10 explicitly retains D28 Adventure identity/incorporation, A5 Campaign/Scene/Session state and F012 real Encounter state outside GCL. Expedition gameplay therefore composes those existing owners and MAL travel/downtime primitives rather than becoming a standalone expedition engine."}
+    },
+    {
+      "concept_id":"SGC-EDGE-MINING-STATION-SCENARIO-CANDIDATE",
+      "source_refs":["SGC-SRC-MINE-ROUTED-CANDIDATES","SGC-SRC-MINES-AMENDMENT"],
+      "concept_kind":"scenario_content_proof_candidate",
+      "disposition":"planned_owned_elsewhere",
+      "owner":"GCL/DPL/ISE proof-content route",
+      "evidence":{"owner_path":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MINES_RECOVERY_AMENDMENT_2026-08-27.md","specific_scope":"The owner-approved Mines Recovery amendment routes the mining-station scenario to GCL/DPL/ISE as a proof/content candidate, not a standalone family. SGC-05B preserves that exact route without activating or inventing scenario mechanics."}
+    },
+    {
+      "concept_id":"SGC-EDGE-TOON-UZ-CONCEPTUALITY-HOLD",
+      "source_refs":["SGC-SRC-MINE-ROUTED-CANDIDATES","SGC-SRC-MINES-AMENDMENT"],
+      "concept_kind":"setting_specific_source_hold",
+      "disposition":"planned_owned_elsewhere",
+      "owner":"Toon/UZ setting-specific owner when that setting is reopened",
+      "evidence":{"owner_paths":["governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MINES_RECOVERY_AMENDMENT_2026-08-27.md","governance/application-planning/source-gameplay-coverage-closure/SGC_RUNTIME_OWNER_COVERAGE_SCHEMA.json"],"specific_scope":"Owner-approved routing keeps Toon/UZ conceptuality as a setting-specific hold and says Toon-local rule behavior survives; no generic ontology program is created from unresolved setting material. The setting is not activated by SGC-05B, so the hold is preserved without implementation claim."}
+    }
+  ],
+  "counts":{"records":10,"implemented":3,"content_only":1,"planned_owned_elsewhere":5,"unresolved_owner_decision":1,"invented_owner_assignments":0},
+  "sgc07a_new_decisions":["Which current runtime owner should provide the generic live rest/exhaustion model shared by Character, Condition, environment and recovery systems?"],
+  "boundaries":["Persistent hazards reuse MAL/F013/A7 and owning processors; no standalone hazard engine is created.","DPL-05 remains specialist medicine and long-term recovery authority; no universal real-world medical rules or live health ledger is invented.","Generic rest/exhaustion remains visible debt because current canonical evidence says the generic live runtime does not yet exist.","Construct creation composes MIB-12 transformation/crafting with CEW construct identity/content rather than creating duplicate systems.","Expedition structures remain GCL pre-authoritative content and live execution remains with existing Campaign/Scene/Encounter owners.","The mining-station scenario retains its GCL/DPL/ISE proof-content route.","Toon/UZ conceptuality remains an explicit setting-specific source hold; SGC-05B does not activate the setting or create generic ontology rules.","Historical audit-corpus files and unrelated connected systems are not used as current authority."],
+  "result":"PASS_ONE_VISIBLE_RUNTIME_OWNER_DECISION",
+  "strict_successor":"SGC-06A"
+}
