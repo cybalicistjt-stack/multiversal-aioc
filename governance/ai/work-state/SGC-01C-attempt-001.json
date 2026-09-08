@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "1.0.0",
   "work_item_id": "SGC-01C",
   "attempt_id": "SGC-01C-attempt-001",
   "title": "Inventory Freeze & Unclassified-Source Check",
@@ -7,11 +7,12 @@
   "source_program": "SGC",
   "parent_tranche": "SGC-01",
   "repository": "cybalicistjt-stack/multiversal-aioc",
-  "status": "selected_not_started",
+  "status": "completed_verified",
+  "completed": true,
   "owner_selected": true,
   "implementation_authority": false,
-  "implementation_branch": null,
-  "completed": false,
+  "implementation_branch": "governance/sgc-01c-inventory-freeze",
+  "authority_retired": true,
   "estimated_active_minutes": 14,
   "execution_target_minutes": 24,
   "minimum_closeout_reserve_minutes": 8,
@@ -22,11 +23,29 @@
     "status": "completed_verified",
     "deliverable": "governance/application-planning/source-gameplay-coverage-closure/SGC_RETAINED_SOURCE_CORPUS_INVENTORY.json"
   },
-  "selection_boundaries": [
-    "SGC-01B is completed_verified by the same atomic AIOC merge that selects this checkpoint.",
-    "SGC-01C is selected_not_started with no implementation branch or implementation authority.",
-    "Only inventory freeze and missing/unclassified retained-source reference checks are in the next unit's scope.",
-    "Later mechanics/content coverage matrices remain unauthorized until their own SGC execution units."
+  "completion_contract": {
+    "frozen_inventory": "governance/application-planning/source-gameplay-coverage-closure/SGC_RETAINED_SOURCE_CORPUS_INVENTORY.json",
+    "inventory_status": "FROZEN_VERIFIED",
+    "mandatory_backlog_inputs_expected": 8,
+    "mandatory_backlog_inputs_represented": 8,
+    "stable_source_records": 8,
+    "completed_tranche_output_members": 45,
+    "missing_mandatory_inputs": 0,
+    "unresolved_source_locators": 0,
+    "duplicate_source_ids": 0,
+    "unclassified_source_references": 0,
+    "gameplay_concept_dispositions_assigned": 0,
+    "strict_successor": "SGC-02A",
+    "required_gate": "Validate Repository Health exact candidate head",
+    "canonical_on_merge": true
+  },
+  "boundaries": [
+    "SGC-01C freezes and verifies the retained-source reference set; it does not disposition gameplay concepts.",
+    "No missing source fact is invented.",
+    "No retained source is added or dropped outside the backlog-named input set.",
+    "No duplicate mechanics, content, or authority ledger is created.",
+    "Later coverage mapping remains unauthorized until SGC-02A and its strict successors govern-start individually.",
+    "ARI/SAA remain planned only and P3D remains deferred with no implementation authority."
   ],
-  "next_action": "On the next execution Continue, governed-start only SGC-01C and carry it through its terminal gate in one continuation."
+  "next_action": "SGC-02A is selected_not_started after this atomic AIOC merge."
 }
