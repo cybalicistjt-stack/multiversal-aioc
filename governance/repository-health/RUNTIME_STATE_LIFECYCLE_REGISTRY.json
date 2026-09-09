@@ -1,5 +1,5 @@
 {
-  "schema_version": "16.0.0",
+  "schema_version": "16.1.0",
   "program_id": "CRS",
   "status": "CURRENT_GUARDRAIL",
   "canonical_selector": {"repository":"cybalicistjt-stack/multiversal-aioc","path":"governance/ai/runtime/CURRENT_WORK_POINTER.json","rule":"CURRENT_WORK_POINTER selects ARI-04 in_progress on its bounded application implementation branch after completed_verified ARI-03."},
@@ -14,13 +14,14 @@
     {"program_id":"DPL","state":"completed_verified","completed_through":"DPL-14"},{"program_id":"MAI","state":"completed_verified","completed_through":"MAI-10"},{"program_id":"AAI","state":"completed_verified","completed_through":"AAI-10"},{"program_id":"ISE","state":"completed_verified","completed_through":"ISE-08"},{"program_id":"SSA","state":"completed_verified","completed_through":"SSA-10"},{"program_id":"WCI","state":"completed_verified","completed_through":"WCI-05"},{"program_id":"KFR","state":"completed_verified","completed_through":"KFR-08"},{"program_id":"ODL","state":"completed_verified","completed_through":"ODL-09"},{"program_id":"SCL","state":"completed_verified","completed_through":"SCL-11"},{"program_id":"MAL","state":"completed_verified","completed_through":"MAL-10"},{"program_id":"ECI","state":"completed_verified","completed_through":"ECI-01"},{"program_id":"ALP","state":"completed_verified","completed_through":"ALP-08"},{"program_id":"VTI","state":"completed_verified","completed_through":"VTI-12"},{"program_id":"SGC","state":"completed_verified","completed_through":"SGC-08C","closure_proof":"governance/application-planning/source-gameplay-coverage-closure/SGC_FINAL_CLOSURE_PROOF.json"}
   ],
   "selected_ari": {"program_id":"ARI","status":"in_progress","completed_through":"ARI-03","current":"ARI-04","current_state":"in_progress","implementation_authority":true,"implementation_branch":"implementation/ari-04-safe-zip-staging-extraction","strict_next":"ARI-05","last":"ARI-22C","semantic_last":"ARI-22","execution_units":24,"family_preflight":"governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json"},
-  "effective_forward_order": "ARI-04..21 → ARI-22A/B/C → MIB-16 → MIB-17 → MIB-18 → SMB-01..07 → CNI-01..13 → SMB-08 → SMB-09 → SAA-01..20 → SMB-10 → SMB-11 → SMB-12..16 → BRP-01..11 → SMB-17 → SMB-18",
+  "effective_forward_order": "ARI-04..21 → ARI-22A/B/C → MIB-16 → MIB-17 → MIB-18 → SMB-01..07 → CNI-01..13 → PCA-01..16 → SMB-08 → SMB-09 → SAA-01..20 → SMB-10 → SMB-11 → SMB-12..16 → BRP-01..11 → SMB-17 → SMB-18",
   "boundaries": [
     "SGC is completed_verified through SGC-08C and retired from active family execution.",
     "ARI-01 through ARI-03 are completed_verified; ARI-03 merged as application main 91c3cf18e88f710335761bfd10ee83d6ee626d57 with exact-head cross-platform deterministic Validation Core evidence.",
     "The application Validation Core active family remains ARI; completed historical profiles remain inert by default.",
     "The ARI preflight remains sealed with 24 execution units and ARI-22 pre-split into ARI-22A/B/C before implementation.",
     "ARI-04 is in_progress on the bounded application implementation branch with implementation authority.",
+    "CNI and PCA are future owner-approved interstitial planning only; their registration does not grant current implementation authority.",
     "Historical lifecycle-specific tests, detailed completed-program artifacts and unrelated connected systems remain blocked by default."
   ]
 }
