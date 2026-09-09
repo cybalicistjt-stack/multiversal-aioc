@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "work_order_id": "MLR-01",
+  "status": "owner_authorized_machine_local",
+  "product_implementation_authority": false,
+  "repository_mutation_authority": false,
+  "resource_root": "/home/antiquaria/multiversal/resources/",
+  "architecture": "x86_64-amd64",
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU ~8GB VRAM",
+  "source_policy": "official_upstream_first",
+  "tiers": {
+    "A": {"intent":"install_and_verify","resources":["7-Zip","WinMerge","Microsoft PowerToys","DocFetcher","ExifTool","OpenRefine","DBeaver Community","ripgrep","fd","jq","fzf","hyperfine","uv","Ruff","DuckDB","FFmpeg","ImageMagick","Tesseract","ast-grep","act","Trivy","Gitleaks","Kopia"]},
+    "B": {"intent":"install_and_verify_with_hardware_gates","resources":["Ollama","Codex CLI local-provider support","llama.cpp","Goose","Docling","MarkItDown","Qdrant","FastEmbed","ONNX Runtime","whisper.cpp","Buzz","ComfyUI conditional","Piper existing-resource evaluation"]},
+    "C": {"intent":"install_and_verify","resources":["Audacity","Inkscape","Krita","Blender","OBS Studio","QGIS LTR","Gephi","Graphviz","FreeCAD"]},
+    "D": {"intent":"registry_only_no_product_dependency_change","resources":["MapLibre GL JS","PMTiles","Turf.js","React Flow/XYFlow","Cytoscape.js","Yjs","PixiJS","Three.js","React Aria","TanStack Query","TanStack Virtual","Zod","quicktype","json-schema-faker","Storybook","Playwright","OpenTelemetry","OSS Review Toolkit"]},
+    "E": {"intent":"catalog_first_bounded_acquisition_only","resources":["Kenney","Poly Haven","Natural Earth","Google Fonts","Azgaar Fantasy Map Generator","MapTool","OpenMW","GemRB","WeiDU","Candlekeep Revisited"]}
+  },
+  "existing_inventory": [
+    {"resource":"7-Zip","observed":"26.02 installed; 26.03 downloaded","required_action":"verify upstream 26.03 before upgrade"},
+    {"resource":"DBeaver Community","observed":"downloaded candidate with valid publisher signature","required_action":"verify current upstream version/hash before install"},
+    {"resource":"DocFetcher","observed":"downloaded candidate with valid publisher signature","required_action":"verify current upstream version/hash before install"},
+    {"resource":"ExifTool","observed":"downloaded readable archive with license material","required_action":"verify upstream version/hash before install"},
+    {"resource":"fd","observed":"ARM64 archive downloaded","required_action":"quarantine; obtain x86-64 build"},
+    {"resource":"hyperfine","observed":"i686 archive downloaded","required_action":"quarantine; obtain x86-64 build"},
+    {"resource":"OpenRefine","observed":"downloaded bundled-Java archive","required_action":"compare to current stable upstream before install"},
+    {"resource":"Microsoft PowerToys","observed":"downloaded candidate with valid Microsoft signature","required_action":"verify current stable/version/hash"},
+    {"resource":"ripgrep","observed":"ARM64 archive downloaded","required_action":"quarantine; obtain x86-64 build"},
+    {"resource":"WinMerge","observed":"downloaded candidate with valid publisher signature","required_action":"verify current upstream version/hash before install"},
+    {"resource":"Piper","observed":"existing 1.8.0 source/environment and Python wheelhouse under dwc-tts","required_action":"reuse/evaluate before redundant install"},
+    {"resource":"opaque ~1.95GB ZIP","observed":"identified as ChatGPT data export","required_action":"leave untouched; not tooling"}
+  ],
+  "receipt_fields": ["resource","version","architecture","canonical_source","license","sha256","signature_status","install_path","configuration","smoke_test","status","notes"],
+  "allowed_terminal_statuses": ["installed_verified","already_installed_verified","conditional_deferred","blocked"]
+}
