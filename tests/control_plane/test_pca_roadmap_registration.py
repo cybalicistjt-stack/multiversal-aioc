@@ -44,7 +44,12 @@ def test_pca_registered_as_future_interstitial_without_activation():
 
 def test_pca_dependency_placement_is_stable():
     index = j("governance/ai/runtime/ROADMAP_INDEX.json")
-    assert "SMB-01..07 → CNI-01..13 → PCA-01..16 → SMB-08 → SMB-09" in index["effective_forward_order"]
+    lifecycle = j("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")
+    expected = "SMB-01..07 → CNI-01..13 → PCA-01..16 → SMB-08 → SMB-09"
+    assert expected in index["effective_forward_order"]
+    assert expected in lifecycle["effective_forward_order"]
+    assert lifecycle["active_work"]["work_item"] == "ARI-04"
+    assert lifecycle["active_work"]["implementation_authority"] is True
     assert index["cni_execution_order"][-1] == "CNI-13"
     assert index["pca_execution_order"][0] == "PCA-01"
     assert index["pca_execution_order"][-1] == "PCA-16"
