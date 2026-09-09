@@ -7,7 +7,7 @@
   "roadmap_supplements": [],
   "family_execution_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
   "primary_attempt_id": "ARI-02-attempt-001",
-  "selection_reason": "ARI-01 completed_verified on application PR #442 with exact-head cross-platform validation and deterministic receipt; ARI-02 is governed-started as the strict successor under the sealed ARI family preflight.",
+  "selection_reason": "ARI-01 completed_verified on application PR #442 with exact-head cross-platform validation and deterministic receipt; ARI-02 is governed-started as the strict successor under the sealed ARI family preflight. ARI-02 matching RED is now observed and its minimal GREEN candidate is awaiting exact-head self-hosted validation.",
   "active_attempt": {
     "work_item_id": "ARI-02",
     "attempt_id": "ARI-02-attempt-001",
@@ -69,5 +69,5 @@
     "ARI-02 is in_progress on implementation/ari-02-content-addressed-byte-identity with bounded implementation authority.",
     "Historical lifecycle tests, detailed completed-program artifacts and unrelated connected systems remain blocked from ordinary ARI preload by default."
   ],
-  "exact_next_action": "Continue ARI-02 through RED-first focused regression, minimal GREEN implementation, exact-head validation, application merge, canonical completed_verified closeout and ARI-03 selection in this execution continuation."
+  "exact_next_action": "ARI-02 matching RED has been observed and GREEN head 5003e88db560045bd865932426bcd4b842a9a7ad is fixed. Restore the owner-controlled self-hosted validation listeners and allow existing run 34350510779 to execute without an unchanged rerun. If the exact GREEN head passes Linux, Windows and deterministic comparison, merge application PR #443, canonical-close ARI-02 completed_verified, and atomically select ARI-03 selected_not_started with no implementation authority."
 }
