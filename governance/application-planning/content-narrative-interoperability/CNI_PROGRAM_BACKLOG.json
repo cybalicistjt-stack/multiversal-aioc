@@ -1,10 +1,10 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "program_id": "CNI",
   "program_name": "Content & Narrative Interoperability",
   "status": "owner_approved_planned",
   "activation_after": "SMB-07",
-  "successor": "SMB-08",
+  "successor": "PCA-01",
   "owner": "John Brandon Turner",
   "implementation_authority": false,
   "tranche_execution_target_minutes": 24,
@@ -33,14 +33,16 @@
     "Action/Event canonical mutation contracts available",
     "Character/Relationship/Reputation/Quest/Scene/Campaign/World projections available"
   ],
-  "integration_targets": ["ARI","CSW","Story","Adventure","Action/Event","Character","Relationship","Reputation","Quest","Scene","Campaign","World","SMB-08","SMB-09","SMB-11","SMB-16"],
+  "integration_targets": ["ARI","CSW","Story","Adventure","Action/Event","Character","Relationship","Reputation","Quest","Scene","Campaign","World","PCA","SMB-08","SMB-09","SMB-11","SMB-16"],
   "boundaries": [
     "CNI does not become canonical Story or owner-domain state authority",
     "dialogue and triggers bind to governed Actions/Events instead of directly mutating owner state",
     "CNI packs reference ARI resource identity/rights rather than duplicating the resource library",
+    "PCA-10 may provide visual authoring over CNI contracts but cannot replace the CNI runtime or narrative owners",
     "SMB-11 remains cross-user sharing/interchange authority",
     "CNI-10 establishes localizable content structure but SMB-16 owns final product-wide localization completion",
     "Candlekeep Revisited is a pattern-study source only; no direct copyrighted content or unlicensed code reuse is authorized",
     "no implementation authority until separately governed start"
-  ]
+  ],
+  "planning_amendment":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_PCM_PCA_AMENDMENT_2026-09-09.md"
 }
