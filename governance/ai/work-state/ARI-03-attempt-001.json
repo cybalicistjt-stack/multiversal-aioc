@@ -1,21 +1,26 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "work_item_id": "ARI-03",
   "attempt_id": "ARI-03-attempt-001",
   "title": "Derivative & Lineage Graph",
   "track": "asset-resource-ingestion-reuse",
   "source_program": "ARI",
-  "repository": "cybalicistjt-stack/multiversal-aioc",
-  "status": "selected_not_started",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "governance_repository": "cybalicistjt-stack/multiversal-aioc",
+  "status": "in_progress",
   "owner_selected": true,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "implementation/ari-03-derivative-lineage-graph",
   "completed": false,
+  "started_at": "2026-09-09T08:49:08-05:00",
   "estimated_active_minutes": 20,
   "execution_target_minutes": 24,
   "minimum_closeout_reserve_minutes": 8,
   "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
   "objective": "Define original-to-derivative lineage, version lineage, stale derivative detection, and replacement/supersession semantics without mutating source truth or beginning archive ingestion.",
+  "application_baseline_sha": "575de82cda922c1dcba72934fa010ade2b3fe3ba",
+  "active_substep": "governed-start validation before ARI-03 RED application work",
+  "next_action": "Validate the governed-start control-plane transition, then create the bounded application branch and write the ARI-03 focused RED regression/profile before any production implementation.",
   "predecessor": {
     "work_item_id": "ARI-02",
     "status": "completed_verified",
@@ -25,13 +30,60 @@
     "deterministic_receipt_sha256": "bb47ccad32ef8083fe41c4368799a51c027d00873aa3c0971cae4726e21b5ec8",
     "application_merge_sha": "575de82cda922c1dcba72934fa010ade2b3fe3ba"
   },
-  "selection_boundaries": [
-    "ARI-02 is completed_verified and its content-addressed original-byte identity remains the byte identity consumed by ARI-03.",
-    "ARI-03 may define derivative and lineage relationships only after its own governed start.",
-    "ARI-04 archive staging and all later ARI implementation remain unauthorized.",
-    "Provider credentials, external scraping/extraction, tester distribution and release/deployment remain unauthorized.",
-    "No implementation branch or implementation authority exists while this checkpoint is selected_not_started."
+  "convergence_control": {
+    "owner_continue_count": 1,
+    "execution_cycles": 1,
+    "repair_cycles": 0,
+    "no_progress_cycles": 0,
+    "diagnostic_mode": false,
+    "last_failure_signature": null,
+    "last_failure_class": null,
+    "diagnostic_hypotheses": [],
+    "retry_basis": {
+      "changed_since_previous": [
+        "ARI-02 reached completed_verified and its authority was retired",
+        "ARI-03 became the canonical selected_not_started strict successor",
+        "this governed start creates the first bounded ARI-03 implementation authority"
+      ]
+    },
+    "service_objective": {
+      "ordinary_tranche_single_continue_target_percent": 80,
+      "ordinary_tranche_two_continue_target_percent": 95,
+      "max_execution_cycles_without_genuine_blocker": 2,
+      "unrelated_historical_validation_jobs_target": 0,
+      "reruns_without_changed_evidence_target": 0,
+      "post_merge_stale_pointer_target": 0
+    }
+  },
+  "tranche_context_envelope": {
+    "pinned_aioc_authority_ref": "031b57cb1f2e10c17631722c52faa0ac66922cdf",
+    "required": [
+      "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+      "governance/ai/work-state/ARI-03-attempt-001.json",
+      "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
+      "governance/application-planning/asset-resource-ingestion-reuse/ARI_ASSET_RESOURCE_INGESTION_REUSE_PROGRAM.md",
+      "governance/application-planning/asset-resource-ingestion-reuse/ARI_PROGRAM_BACKLOG.json",
+      "ARI-02 completed byte-identity contract and exact application main"
+    ],
+    "blocked_by_default": [
+      "ARI-04+ implementation",
+      "historical tranche validators and completed-program files",
+      "Drive/Airtable/Sheets/Docs unless a named ARI-03 dependency proves insufficient",
+      "provider credentials, scraping/extraction, release/deployment and tester distribution"
+    ],
+    "refresh_only_on": [
+      "selected checkpoint or authority changes",
+      "implementation branch/base changes",
+      "merge/rebase/conflicting writer",
+      "materially new required validation result",
+      "named upstream input proves insufficient"
+    ]
+  },
+  "boundaries": [
+    "ARI-02 remains the content-addressed original-byte identity owner consumed by ARI-03.",
+    "ARI-03 may define original-to-derivative edges, version lineage, stale derivative detection, and replacement/supersession semantics only.",
+    "ARI-04 archive staging, archive adapters, media classification, rights expansion and provider adapters remain unauthorized.",
+    "ARI-03 must not mutate source truth, create a second canonical asset ledger, store provider credentials, perform external scraping/extraction, distribute to testers, or release/deploy."
   ],
-  "strict_successor": "ARI-04",
-  "next_action": "On the next execution Continue, governed-start ARI-03 only and carry it through its terminal gate in one continuation."
+  "strict_successor": "ARI-04"
 }
