@@ -1,7 +1,7 @@
 {
   "schema_version": "19.0.0",
   "policy": "governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md",
-  "rule": "Only registered CURRENT or CURRENT_COMPATIBLE surfaces may govern. ARI-01 is completed_verified; ARI-02 is selected_not_started under the sealed ARI family preflight without implementation authority.",
+  "rule": "Only registered CURRENT or CURRENT_COMPATIBLE surfaces may govern. ARI-01 is completed_verified; ARI-02 is in_progress on its bounded implementation branch under the sealed ARI family preflight.",
   "current": [
     {"kind":"bootstrap","lifecycle":"CURRENT","path":"governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md"},
     {"kind":"work_pointer","lifecycle":"CURRENT","path":"governance/ai/runtime/CURRENT_WORK_POINTER.json"},
@@ -26,11 +26,11 @@
   "active_planning_work": {
     "work_item": "ARI-02",
     "attempt_id": "ARI-02-attempt-001",
-    "repository": "cybalicistjt-stack/multiversal-aioc",
-    "state": "selected_not_started",
-    "implementation_branch": null,
-    "implementation_authority": false,
-    "implementation_scope": "Content-Addressed Byte Identity & Deduplication only after its own governed start; ARI-03+ and all provider/external/release actions remain unauthorized."
+    "repository": "cybalicistjt-stack/Multiversal-app",
+    "state": "in_progress",
+    "implementation_branch": "implementation/ari-02-content-addressed-byte-identity",
+    "implementation_authority": true,
+    "implementation_scope": "Content-Addressed Byte Identity & Deduplication only; ARI-03+ and all provider/external/release actions remain unauthorized."
   },
   "family_preflight": {"family_id":"ARI","path":"governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json","status":"sealed","execution_units":24,"implementation_authority":false},
   "completed_programs": [
