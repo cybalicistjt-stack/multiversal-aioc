@@ -26,8 +26,8 @@
   "application_validation_run": 34350510779,
   "deterministic_receipt_sha256": "bb47ccad32ef8083fe41c4368799a51c027d00873aa3c0971cae4726e21b5ec8",
   "application_merge_sha": "575de82cda922c1dcba72934fa010ade2b3fe3ba",
-  "active_substep": "completed_verified",
-  "next_action": "ARI-03 is selected_not_started with no implementation branch or authority; the next execution Continue may governed-start only ARI-03.",
+  "active_substep": "terminal AIOC closeout validation",
+  "next_action": "Validate the repaired successor-relative control-plane regression on the exact closeout head, merge the AIOC closeout if green, then leave ARI-03 selected_not_started with no implementation authority.",
   "predecessor": {
     "work_item_id": "ARI-01",
     "status": "completed_verified",
@@ -64,25 +64,32 @@
       "deterministic_receipt_sha256": "bb47ccad32ef8083fe41c4368799a51c027d00873aa3c0971cae4726e21b5ec8",
       "comparison_artifact_digest": "sha256:808ace8373a0540a96488f715b38929684d3f0834635737ddd12a786989c5e68",
       "historical_profile_fanout": 0
+    },
+    "aioc_closeout_candidate": {
+      "first_run_id": 34358488239,
+      "repository_health_status": "PASS",
+      "termination_preflight_status": "PASS",
+      "control_plane_regression_status": "failed_stale_lifecycle_expectation",
+      "failure": "test_control_plane_health.py still hardcoded ARI backlog completed_through to ARI-01 after ARI-02 terminal closeout"
     }
   },
   "convergence_control": {
     "owner_continue_count": 3,
     "execution_cycles": 3,
-    "repair_cycles": 3,
+    "repair_cycles": 4,
     "no_progress_cycles": 1,
     "diagnostic_mode": true,
-    "last_failure_signature": "The self-hosted listeners were temporarily unavailable after matching RED; the existing GREEN run later drained successfully without an unchanged rerun.",
-    "last_failure_class": "runner_environment",
+    "last_failure_signature": "AIOC closeout run 34358488239 passed canonical repository health and termination preflight but current control-plane regression test_vti12_closeout_and_current_sgc_selection_are_atomic still hardcoded ari_backlog.completed_through == ARI-01 after ARI-02 completed_verified.",
+    "last_failure_class": "validation_contract",
     "diagnostic_hypotheses": [
-      "The owner-controlled self-hosted validation listeners were temporarily unavailable, preventing the GREEN run from starting.",
-      "Once the listeners returned, the unchanged GREEN candidate should validate without a product repair."
+      "The closeout state is structurally valid because scripts/validate_repository_health.py passed with ARI-03 selected_not_started and no errors.",
+      "The only failing assertion freezes a prior ARI lifecycle position; asserting that completed_through equals the strict-order predecessor of the currently selected ARI item preserves atomic-selection coverage without requiring per-tranche hardcode edits."
     ],
     "retry_basis": {
       "changed_since_previous": [
-        "both owner-controlled self-hosted listeners returned",
-        "existing GREEN run 34350510779 executed on the unchanged exact head",
-        "selector/health, Linux, Windows and deterministic comparison all completed successfully"
+        "new exact-head AIOC run 34358488239 proved repository health and termination preflight pass on the ARI-03 selection state",
+        "the only failing control-plane assertion was identified exactly as the hardcoded ARI-01 predecessor value",
+        "the repair replaces the serial-number hardcode with the strict-order predecessor relation while retaining pointer/checkpoint/authority/runtime/index coherence assertions"
       ]
     },
     "service_objective": {
