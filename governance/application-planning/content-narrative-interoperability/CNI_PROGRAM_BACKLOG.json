@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.1.0",
+  "program_id": "CNI",
+  "program_name": "Content & Narrative Interoperability",
+  "status": "owner_approved_planned",
+  "activation_after": "SMB-07",
+  "successor": "SMB-08",
+  "owner": "John Brandon Turner",
+  "implementation_authority": false,
+  "tranche_execution_target_minutes": 24,
+  "split_before_start_if_target_not_credible": true,
+  "strict_order": ["CNI-01","CNI-02","CNI-03","CNI-04","CNI-05","CNI-06","CNI-07","CNI-08","CNI-09","CNI-10","CNI-11","CNI-12","CNI-13"],
+  "tranches": [
+    {"id":"CNI-01","name":"Content Pack Manifest, Component Identity & Typed Payload Contract","status":"planned","estimated_active_minutes":20},
+    {"id":"CNI-02","name":"Dependency, Optional-Component & Compatibility Constraint Contract","status":"planned","estimated_active_minutes":20},
+    {"id":"CNI-03","name":"Scoped Narrative State Hierarchy","status":"planned","estimated_active_minutes":22},
+    {"id":"CNI-04","name":"Conditional Predicate & Context Query Engine","status":"planned","estimated_active_minutes":24},
+    {"id":"CNI-05","name":"Executable Dialogue Graph & Governed Action Binding","status":"planned","estimated_active_minutes":24},
+    {"id":"CNI-06","name":"Character-Aware Narrative Branching","status":"planned","estimated_active_minutes":20},
+    {"id":"CNI-07","name":"NPC Continuity, Relationship & Callback Binding","status":"planned","estimated_active_minutes":22},
+    {"id":"CNI-08","name":"Quest/Scene Progression, One-Shot, Delay & Re-entry Triggers","status":"planned","estimated_active_minutes":24},
+    {"id":"CNI-09","name":"Cross-Pack Extension, Patch Hook & Conflict Detection","status":"planned","estimated_active_minutes":24},
+    {"id":"CNI-10","name":"Localization Resource Separation & Stable Text Keys","status":"planned","estimated_active_minutes":20},
+    {"id":"CNI-11","name":"Dry-Run Apply, Validation, Transactional Activation & Rollback Receipt","status":"planned","estimated_active_minutes":24},
+    {"id":"CNI-12","name":"Creator Pack / Narrative Inspector & Dependency Graph","status":"planned","estimated_active_minutes":22},
+    {"id":"CNI-13","name":"Golden Multi-Pack Narrative Compatibility Proof","status":"planned","estimated_active_minutes":24}
+  ],
+  "required_upstream": [
+    "MIB-18 completed_verified",
+    "SMB-01..07 completed_verified",
+    "ARI family completed_verified",
+    "CSW/Story/Adventure narrative identity contracts available",
+    "Action/Event canonical mutation contracts available",
+    "Character/Relationship/Reputation/Quest/Scene/Campaign/World projections available"
+  ],
+  "integration_targets": ["ARI","CSW","Story","Adventure","Action/Event","Character","Relationship","Reputation","Quest","Scene","Campaign","World","SMB-08","SMB-09","SMB-11","SMB-16"],
+  "boundaries": [
+    "CNI does not become canonical Story or owner-domain state authority",
+    "dialogue and triggers bind to governed Actions/Events instead of directly mutating owner state",
+    "CNI packs reference ARI resource identity/rights rather than duplicating the resource library",
+    "SMB-11 remains cross-user sharing/interchange authority",
+    "CNI-10 establishes localizable content structure but SMB-16 owns final product-wide localization completion",
+    "Candlekeep Revisited is a pattern-study source only; no direct copyrighted content or unlicensed code reuse is authorized",
+    "no implementation authority until separately governed start"
+  ]
+}
