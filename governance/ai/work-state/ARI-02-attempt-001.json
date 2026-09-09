@@ -1,21 +1,26 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "work_item_id": "ARI-02",
   "attempt_id": "ARI-02-attempt-001",
   "title": "Content-Addressed Byte Identity & Deduplication",
   "track": "asset-resource-ingestion-reuse",
   "source_program": "ARI",
-  "repository": "cybalicistjt-stack/multiversal-aioc",
-  "status": "selected_not_started",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "governance_repository": "cybalicistjt-stack/multiversal-aioc",
+  "status": "started",
   "owner_selected": true,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "implementation/ari-02-content-addressed-byte-identity",
   "completed": false,
+  "started_at": "2026-09-09T03:19:00-05:00",
   "estimated_active_minutes": 20,
   "execution_target_minutes": 24,
   "minimum_closeout_reserve_minutes": 8,
   "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
   "objective": "Add content-addressed byte identity and deduplication behind the ARI-01 universal resource handle without creating derivative lineage, archive ingestion, provider extraction or a second canonical asset ledger.",
+  "application_baseline_sha": "757d629fc01909292796cbcf92bb527eb2855c03",
+  "active_substep": "RED-first bounded ARI-02 contract and regression on the implementation branch",
+  "next_action": "Add the ARI-02 focused Validation Core profile and failing regression first, observe matching RED, then implement the minimum content-addressed byte-identity/dedup contract and carry exact-head validation through merge and canonical closeout.",
   "predecessor": {
     "work_item_id": "ARI-01",
     "status": "completed_verified",
@@ -24,13 +29,48 @@
     "application_validation_run": 34267731208,
     "application_merge_sha": "757d629fc01909292796cbcf92bb527eb2855c03"
   },
-  "selection_boundaries": [
-    "ARI-01 is completed_verified and its resource handle remains the identity/reference contract consumed by ARI-02.",
-    "ARI-02 may define content-addressed byte identity and deduplication only after its own governed start.",
+  "convergence_control": {
+    "owner_continue_count": 1,
+    "execution_cycles": 1,
+    "repair_cycles": 0,
+    "no_progress_cycles": 0,
+    "diagnostic_mode": false,
+    "last_failure_signature": null,
+    "last_failure_class": null,
+    "diagnostic_hypotheses": [],
+    "retry_basis": "initial governed ARI-02 execution",
+    "ordinary_tranche_single_continue_completion_percent": 100,
+    "max_execution_cycles_without_genuine_blocker": 1
+  },
+  "tranche_context_envelope": {
+    "pinned_aioc_authority_ref": "bffb1be170e2017194562cf473828f664906ea48",
+    "required": [
+      "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+      "governance/ai/work-state/ARI-02-attempt-001.json",
+      "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
+      "governance/application-planning/asset-resource-ingestion-reuse/ARI_ASSET_RESOURCE_INGESTION_REUSE_PROGRAM.md",
+      "governance/application-planning/asset-resource-ingestion-reuse/ARI_PROGRAM_BACKLOG.json",
+      "ARI-01 completed contract and exact application main"
+    ],
+    "blocked_by_default": [
+      "ARI-03+ implementation",
+      "historical tranche validators and completed-program files",
+      "Drive/Airtable/Sheets/Docs unless a named ARI-02 dependency proves insufficient",
+      "provider credentials, scraping/extraction, release/deployment and tester distribution"
+    ],
+    "refresh_only_on": [
+      "selected checkpoint or authority changes",
+      "implementation branch/base changes",
+      "merge/rebase/conflicting writer",
+      "materially new required validation result",
+      "named upstream input proves insufficient"
+    ]
+  },
+  "boundaries": [
+    "ARI-01 remains the universal resource handle/reference owner consumed by ARI-02.",
+    "ARI-02 may define SHA-256 content identity, original-byte identity, duplicate detection, byte-present versus reference-only state, and storage-neutral content addressing only.",
     "ARI-03 derivative/lineage graph, archive ingestion, media classification, rights expansion and provider adapters remain unauthorized.",
-    "Provider credentials, external scraping/extraction, tester distribution and release/deployment remain unauthorized.",
-    "No implementation branch or implementation authority exists while this checkpoint is selected_not_started."
+    "Provider credentials, external scraping/extraction, tester distribution and release/deployment remain unauthorized."
   ],
-  "strict_successor": "ARI-03",
-  "next_action": "On the next execution Continue, governed-start ARI-02 only and carry it through its terminal gate in one continuation."
+  "strict_successor": "ARI-03"
 }
