@@ -7,7 +7,7 @@
   "roadmap_supplements": [],
   "family_execution_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
   "primary_attempt_id": "ARI-03-attempt-001",
-  "selection_reason": "ARI-02 completed_verified on application PR #443 with exact-head self-hosted Linux/Windows validation and deterministic cross-platform receipt; ARI-03 is the strict successor under the sealed ARI family preflight.",
+  "selection_reason": "ARI-02 completed_verified on application PR #443 with exact-head self-hosted Linux/Windows validation and deterministic cross-platform receipt; ARI-03 is governed-started as the strict successor under the sealed ARI family preflight.",
   "active_attempt": {
     "work_item_id": "ARI-03",
     "attempt_id": "ARI-03-attempt-001",
@@ -15,11 +15,11 @@
     "source_program": "ARI",
     "priority": 1,
     "owner_selected": true,
-    "repository": "cybalicistjt-stack/multiversal-aioc",
+    "repository": "cybalicistjt-stack/Multiversal-app",
     "checkpoint_path": "governance/ai/work-state/ARI-03-attempt-001.json",
-    "status": "selected_not_started",
-    "implementation_branch": null,
-    "implementation_authority": false,
+    "status": "in_progress",
+    "implementation_branch": "implementation/ari-03-derivative-lineage-graph",
+    "implementation_authority": true,
     "active_item": "ARI-03 — Derivative & Lineage Graph"
   },
   "active_program": {
@@ -37,13 +37,13 @@
   "bounded_authority": {
     "family_preflight_sealed": true,
     "selected_ari_unit": "ARI-03",
-    "ari_implementation": false,
-    "implementation_branch": null,
+    "ari_implementation": true,
+    "implementation_branch": "implementation/ari-03-derivative-lineage-graph",
     "paid_provider_activation": false,
     "provider_credentials_or_scraping": false,
     "tester_distribution": false,
     "release_or_deployment": false,
-    "rule": "ARI-03 is selected_not_started. The next execution Continue may governed-start only ARI-03; ARI-04+ remains unauthorized."
+    "rule": "Only ARI-03 derivative and lineage graph semantics are authorized on the named implementation branch; ARI-04+ remains unauthorized."
   },
   "recently_completed_ari_work": [
     {"work_item_id":"ARI-02","status":"completed_verified","application_pr":443,"validated_head":"5003e88db560045bd865932426bcd4b842a9a7ad","validation_run":34350510779,"deterministic_receipt_sha256":"bb47ccad32ef8083fe41c4368799a51c027d00873aa3c0971cae4726e21b5ec8","merge_sha":"575de82cda922c1dcba72934fa010ade2b3fe3ba"},
@@ -67,8 +67,8 @@
     "SGC is completed_verified through SGC-08C and retired from active family execution.",
     "ARI-01 and ARI-02 are completed_verified; ARI-02 merged as application main 575de82cda922c1dcba72934fa010ade2b3fe3ba.",
     "The live family preflight remains ARI with 24 execution units and ARI-22 pre-split into ARI-22A/B/C.",
-    "ARI-03 is selected_not_started with no implementation branch or implementation authority.",
+    "ARI-03 is in_progress on implementation/ari-03-derivative-lineage-graph with bounded implementation authority.",
     "Historical lifecycle tests, detailed completed-program artifacts and unrelated connected systems remain blocked from ordinary ARI preload by default."
   ],
-  "exact_next_action": "On the next execution Continue, governed-start ARI-03 only and carry it through its terminal gate in one continuation."
+  "exact_next_action": "Continue ARI-03 through RED-first focused regression, minimal GREEN implementation, exact-head validation, application merge, canonical completed_verified closeout and ARI-04 selection in this execution continuation."
 }
