@@ -27,10 +27,12 @@ class FamilyExecutionPreflightTests(_legacy.FamilyExecutionPreflightTests):
         self.assertEqual(sgc["status"], "completed_verified")
         self.assertEqual(sgc_backlog["status"], "completed_verified")
         self.assertEqual(sgc_backlog["completed_through"], "SGC-08C")
-        self.assertEqual(ari_backlog["completed_through"], "ARI-01")
         selected_item = pointer["active_attempt"]["work_item_id"]
         self.assertEqual(selected_item, ari_backlog["current_item"])
         self.assertEqual(pointer["active_attempt"]["attempt_id"], ari_backlog["current_attempt"])
+        selected_index = ari_backlog["strict_order"].index(selected_item)
+        self.assertGreater(selected_index, 0)
+        self.assertEqual(ari_backlog["completed_through"], ari_backlog["strict_order"][selected_index - 1])
         self.assertEqual(checkpoint["work_item_id"], selected_item)
         self.assertEqual(checkpoint["attempt_id"], pointer["active_attempt"]["attempt_id"])
         self.assertEqual(pointer["active_attempt"]["status"], checkpoint["status"])

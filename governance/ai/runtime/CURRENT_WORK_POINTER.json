@@ -6,29 +6,29 @@
   "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
   "roadmap_supplements": [],
   "family_execution_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
-  "primary_attempt_id": "ARI-02-attempt-001",
-  "selection_reason": "ARI-01 completed_verified on application PR #442 with exact-head cross-platform validation and deterministic receipt; ARI-02 is governed-started as the strict successor under the sealed ARI family preflight. ARI-02 matching RED is now observed and its minimal GREEN candidate is awaiting exact-head self-hosted validation.",
+  "primary_attempt_id": "ARI-03-attempt-001",
+  "selection_reason": "ARI-02 completed_verified on application PR #443 with exact-head self-hosted Linux/Windows validation and deterministic cross-platform receipt; ARI-03 is the strict successor under the sealed ARI family preflight.",
   "active_attempt": {
-    "work_item_id": "ARI-02",
-    "attempt_id": "ARI-02-attempt-001",
+    "work_item_id": "ARI-03",
+    "attempt_id": "ARI-03-attempt-001",
     "track": "asset-resource-ingestion-reuse",
     "source_program": "ARI",
     "priority": 1,
     "owner_selected": true,
-    "repository": "cybalicistjt-stack/Multiversal-app",
-    "checkpoint_path": "governance/ai/work-state/ARI-02-attempt-001.json",
-    "status": "in_progress",
-    "implementation_branch": "implementation/ari-02-content-addressed-byte-identity",
-    "implementation_authority": true,
-    "active_item": "ARI-02 — Content-Addressed Byte Identity & Deduplication"
+    "repository": "cybalicistjt-stack/multiversal-aioc",
+    "checkpoint_path": "governance/ai/work-state/ARI-03-attempt-001.json",
+    "status": "selected_not_started",
+    "implementation_branch": null,
+    "implementation_authority": false,
+    "active_item": "ARI-03 — Derivative & Lineage Graph"
   },
   "active_program": {
     "program_id": "ARI",
     "name": "Asset Resource Ingestion & Reuse",
     "status": "in_progress",
-    "completed_through": "ARI-01",
-    "current": "ARI-02",
-    "strict_next": "ARI-03",
+    "completed_through": "ARI-02",
+    "current": "ARI-03",
+    "strict_next": "ARI-04",
     "last": "ARI-22C",
     "semantic_last": "ARI-22",
     "program_path": "governance/application-planning/asset-resource-ingestion-reuse/ARI_ASSET_RESOURCE_INGESTION_REUSE_PROGRAM.md",
@@ -36,16 +36,17 @@
   },
   "bounded_authority": {
     "family_preflight_sealed": true,
-    "selected_ari_unit": "ARI-02",
-    "ari_implementation": true,
-    "implementation_branch": "implementation/ari-02-content-addressed-byte-identity",
+    "selected_ari_unit": "ARI-03",
+    "ari_implementation": false,
+    "implementation_branch": null,
     "paid_provider_activation": false,
     "provider_credentials_or_scraping": false,
     "tester_distribution": false,
     "release_or_deployment": false,
-    "rule": "Only ARI-02 content-addressed original-byte identity and deduplication are authorized on the named implementation branch; ARI-03+ remains unauthorized."
+    "rule": "ARI-03 is selected_not_started. The next execution Continue may governed-start only ARI-03; ARI-04+ remains unauthorized."
   },
   "recently_completed_ari_work": [
+    {"work_item_id":"ARI-02","status":"completed_verified","application_pr":443,"validated_head":"5003e88db560045bd865932426bcd4b842a9a7ad","validation_run":34350510779,"deterministic_receipt_sha256":"bb47ccad32ef8083fe41c4368799a51c027d00873aa3c0971cae4726e21b5ec8","merge_sha":"575de82cda922c1dcba72934fa010ade2b3fe3ba"},
     {"work_item_id":"ARI-01","status":"completed_verified","application_pr":442,"validated_head":"2a553053c55a5dd11b88dd991d45426918e319e3","validation_run":34267731208,"deterministic_receipt_sha256":"fd433687ad7d03a4af3ced27e9662b1db31592c691f53063c8df554619471ccc","merge_sha":"757d629fc01909292796cbcf92bb527eb2855c03"}
   ],
   "recently_completed_sgc_work": [
@@ -54,9 +55,9 @@
     {"work_item_id":"SGC-08A","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_SYSTEM_PRODUCT_DISPOSITION_TRACE_GRAPH.json","frozen_source_nodes":8,"unique_concept_nodes":126,"implemented":79,"content_only":17,"planned_owned_elsewhere":26,"provenance_only":4,"unresolved_owner_decision":0,"unclassified_concepts":0}
   ],
   "recently_completed_implementation_work": [
+    {"work_item_id":"ARI-02","status":"completed_verified","application_pr":443,"validated_head":"5003e88db560045bd865932426bcd4b842a9a7ad","validation_run":34350510779,"deterministic_receipt_sha256":"bb47ccad32ef8083fe41c4368799a51c027d00873aa3c0971cae4726e21b5ec8","merge_sha":"575de82cda922c1dcba72934fa010ade2b3fe3ba"},
     {"work_item_id":"ARI-01","status":"completed_verified","application_pr":442,"validated_head":"2a553053c55a5dd11b88dd991d45426918e319e3","validation_run":34267731208,"deterministic_receipt_sha256":"fd433687ad7d03a4af3ced27e9662b1db31592c691f53063c8df554619471ccc","merge_sha":"757d629fc01909292796cbcf92bb527eb2855c03"},
-    {"work_item_id":"VTI-12","status":"completed_verified","validated_head":"712f7096118ae065d3d17492e2cc5effa1d83034","validation_run":34221889244,"deterministic_receipt_sha256":"77536c1214f37374ca8ea1b2f1f627b30e209f52bb141133d690cdfc9b0544a4","merge_sha":"7e93bc4bb1c3b8ecc9bc4424dd7422ea328e2765"},
-    {"work_item_id":"VTI-11","status":"completed_verified","validated_head":"ebc5f0265799788ce2f3c5b2b9da5da1b2da3d90","validation_run":34213605901,"deterministic_receipt_sha256":"07fc593e61d3c4f8e327fcda4549bbfafa3fa78cae8830bd24c9fa64889ec40b","merge_sha":"1c092252aedbc274058222451fad2401e1a3aa39"}
+    {"work_item_id":"VTI-12","status":"completed_verified","validated_head":"712f7096118ae065d3d17492e2cc5effa1d83034","validation_run":34221889244,"deterministic_receipt_sha256":"77536c1214f37374ca8ea1b2f1f627b30e209f52bb141133d690cdfc9b0544a4","merge_sha":"7e93bc4bb1c3b8ecc9bc4424dd7422ea328e2765"}
   ],
   "recently_completed_repository_health_maintenance": [
     {"work_item_id":"MV-CONT-008","status":"completed_verified","checkpoint_path":"governance/ai/work-state/MV-CONT-008-attempt-001.json","application_pr":337,"application_merge":"d007dc980c63a7beab4ab9a4ddbc67525f8d7003","aioc_pr":781,"aioc_validated_head":"d2e0d975039af7fa6f547f65c02844001c62ea78","aioc_repository_health_run":33188605756,"aioc_merge":"bf12f46126782a523623507262661f273cab5669","aioc_main_health_run":33188650058,"superseded_prs_closed":[]},
@@ -64,10 +65,10 @@
   ],
   "selection_invariants": [
     "SGC is completed_verified through SGC-08C and retired from active family execution.",
-    "ARI-01 is completed_verified on application merge 757d629fc01909292796cbcf92bb527eb2855c03.",
+    "ARI-01 and ARI-02 are completed_verified; ARI-02 merged as application main 575de82cda922c1dcba72934fa010ade2b3fe3ba.",
     "The live family preflight remains ARI with 24 execution units and ARI-22 pre-split into ARI-22A/B/C.",
-    "ARI-02 is in_progress on implementation/ari-02-content-addressed-byte-identity with bounded implementation authority.",
+    "ARI-03 is selected_not_started with no implementation branch or implementation authority.",
     "Historical lifecycle tests, detailed completed-program artifacts and unrelated connected systems remain blocked from ordinary ARI preload by default."
   ],
-  "exact_next_action": "ARI-02 matching RED has been observed and GREEN head 5003e88db560045bd865932426bcd4b842a9a7ad is fixed. Restore the owner-controlled self-hosted validation listeners and allow existing run 34350510779 to execute without an unchanged rerun. If the exact GREEN head passes Linux, Windows and deterministic comparison, merge application PR #443, canonical-close ARI-02 completed_verified, and atomically select ARI-03 selected_not_started with no implementation authority."
+  "exact_next_action": "On the next execution Continue, governed-start ARI-03 only and carry it through its terminal gate in one continuation."
 }
