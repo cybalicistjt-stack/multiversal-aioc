@@ -7,7 +7,7 @@
   "roadmap_supplements": [],
   "family_execution_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
   "primary_attempt_id": "ARI-02-attempt-001",
-  "selection_reason": "ARI-01 completed_verified on application PR #442 with exact-head cross-platform validation and deterministic receipt; ARI-02 is the strict successor under the sealed ARI family preflight.",
+  "selection_reason": "ARI-01 completed_verified on application PR #442 with exact-head cross-platform validation and deterministic receipt; ARI-02 is governed-started as the strict successor under the sealed ARI family preflight.",
   "active_attempt": {
     "work_item_id": "ARI-02",
     "attempt_id": "ARI-02-attempt-001",
@@ -15,11 +15,11 @@
     "source_program": "ARI",
     "priority": 1,
     "owner_selected": true,
-    "repository": "cybalicistjt-stack/multiversal-aioc",
+    "repository": "cybalicistjt-stack/Multiversal-app",
     "checkpoint_path": "governance/ai/work-state/ARI-02-attempt-001.json",
-    "status": "selected_not_started",
-    "implementation_branch": null,
-    "implementation_authority": false,
+    "status": "in_progress",
+    "implementation_branch": "implementation/ari-02-content-addressed-byte-identity",
+    "implementation_authority": true,
     "active_item": "ARI-02 — Content-Addressed Byte Identity & Deduplication"
   },
   "active_program": {
@@ -37,13 +37,13 @@
   "bounded_authority": {
     "family_preflight_sealed": true,
     "selected_ari_unit": "ARI-02",
-    "ari_implementation": false,
-    "implementation_branch": null,
+    "ari_implementation": true,
+    "implementation_branch": "implementation/ari-02-content-addressed-byte-identity",
     "paid_provider_activation": false,
     "provider_credentials_or_scraping": false,
     "tester_distribution": false,
     "release_or_deployment": false,
-    "rule": "ARI-02 is selected_not_started. The next execution Continue may governed-start only ARI-02."
+    "rule": "Only ARI-02 content-addressed original-byte identity and deduplication are authorized on the named implementation branch; ARI-03+ remains unauthorized."
   },
   "recently_completed_ari_work": [
     {"work_item_id":"ARI-01","status":"completed_verified","application_pr":442,"validated_head":"2a553053c55a5dd11b88dd991d45426918e319e3","validation_run":34267731208,"deterministic_receipt_sha256":"fd433687ad7d03a4af3ced27e9662b1db31592c691f53063c8df554619471ccc","merge_sha":"757d629fc01909292796cbcf92bb527eb2855c03"}
@@ -66,8 +66,8 @@
     "SGC is completed_verified through SGC-08C and retired from active family execution.",
     "ARI-01 is completed_verified on application merge 757d629fc01909292796cbcf92bb527eb2855c03.",
     "The live family preflight remains ARI with 24 execution units and ARI-22 pre-split into ARI-22A/B/C.",
-    "ARI-02 is selected_not_started with no implementation branch or implementation authority.",
+    "ARI-02 is in_progress on implementation/ari-02-content-addressed-byte-identity with bounded implementation authority.",
     "Historical lifecycle tests, detailed completed-program artifacts and unrelated connected systems remain blocked from ordinary ARI preload by default."
   ],
-  "exact_next_action": "On the next execution Continue, governed-start ARI-02 only and carry it through its terminal gate in one continuation."
+  "exact_next_action": "Continue ARI-02 through RED-first focused regression, minimal GREEN implementation, exact-head validation, application merge, canonical completed_verified closeout and ARI-03 selection in this execution continuation."
 }
