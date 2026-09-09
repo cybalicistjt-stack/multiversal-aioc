@@ -15,7 +15,7 @@ FlatHealthRegressionTests = _legacy.FlatHealthRegressionTests
 
 
 class FamilyExecutionPreflightTests(_legacy.FamilyExecutionPreflightTests):
-    def test_vti12_closeout_and_current_sgc_selection_are_atomic(self) -> None:
+    def test_completed_sgc_and_current_ari_selection_are_atomic(self) -> None:
         sgc = _legacy._load_json("governance/ai/work-state/SGC-08C-attempt-001.json")
         sgc_backlog = _legacy._load_json("governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json")
         ari_backlog = _legacy._load_json("governance/application-planning/asset-resource-ingestion-reuse/ARI_PROGRAM_BACKLOG.json")
@@ -23,6 +23,7 @@ class FamilyExecutionPreflightTests(_legacy.FamilyExecutionPreflightTests):
         authority = _legacy._load_json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
         runtime = _legacy._load_json("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")
         index = _legacy._load_json("governance/ai/runtime/ROADMAP_INDEX.json")
+        checkpoint = _legacy._load_json(pointer["active_attempt"]["checkpoint_path"])
         self.assertEqual(sgc["status"], "completed_verified")
         self.assertEqual(sgc_backlog["status"], "completed_verified")
         self.assertEqual(sgc_backlog["completed_through"], "SGC-08C")
@@ -30,11 +31,16 @@ class FamilyExecutionPreflightTests(_legacy.FamilyExecutionPreflightTests):
         selected_item = pointer["active_attempt"]["work_item_id"]
         self.assertEqual(selected_item, ari_backlog["current_item"])
         self.assertEqual(pointer["active_attempt"]["attempt_id"], ari_backlog["current_attempt"])
+        self.assertEqual(checkpoint["work_item_id"], selected_item)
+        self.assertEqual(checkpoint["attempt_id"], pointer["active_attempt"]["attempt_id"])
+        self.assertEqual(pointer["active_attempt"]["status"], checkpoint["status"])
+        self.assertEqual(pointer["active_attempt"]["implementation_authority"], checkpoint["implementation_authority"])
+        self.assertEqual(pointer["active_attempt"]["implementation_branch"], checkpoint["implementation_branch"])
         for selected in (authority["active_planning_work"], runtime["active_work"], index["current"]):
             self.assertEqual(selected.get("work_item_id", selected.get("work_item")), selected_item)
-        self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
-        self.assertFalse(pointer["active_attempt"]["implementation_authority"])
-        self.assertIsNone(pointer["active_attempt"]["implementation_branch"])
+            self.assertEqual(selected.get("state", selected.get("status")), checkpoint["status"])
+            self.assertEqual(selected["implementation_authority"], checkpoint["implementation_authority"])
+            self.assertEqual(selected["implementation_branch"], checkpoint["implementation_branch"])
 
     def test_sgc_execution_units_are_pre_sized_for_one_continue(self) -> None:
         pf = _legacy._load_json("governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json")
