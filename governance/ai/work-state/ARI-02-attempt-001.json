@@ -7,20 +7,27 @@
   "source_program": "ARI",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "governance_repository": "cybalicistjt-stack/multiversal-aioc",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
+  "implementation_authority": false,
+  "authority_retired": true,
   "implementation_branch": "implementation/ari-02-content-addressed-byte-identity",
-  "completed": false,
+  "completed": true,
   "started_at": "2026-09-09T03:19:00-05:00",
+  "completed_at": "2026-09-09T08:35:32-05:00",
   "estimated_active_minutes": 20,
   "execution_target_minutes": 24,
   "minimum_closeout_reserve_minutes": 8,
   "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
   "objective": "Add content-addressed byte identity and deduplication behind the ARI-01 universal resource handle without creating derivative lineage, archive ingestion, provider extraction or a second canonical asset ledger.",
   "application_baseline_sha": "757d629fc01909292796cbcf92bb527eb2855c03",
-  "active_substep": "GREEN exact-head validation pending after observed matching RED",
-  "next_action": "Do not mutate or rerun the GREEN candidate while runner state is unchanged. Restore the owner-controlled self-hosted validation listeners and allow existing run 34350510779 on exact head 5003e88db560045bd865932426bcd4b842a9a7ad to execute. If Linux, Windows and deterministic comparison pass, merge application PR #443, then canonical-close ARI-02 completed_verified and select ARI-03 selected_not_started.",
+  "application_pr": 443,
+  "application_validated_head": "5003e88db560045bd865932426bcd4b842a9a7ad",
+  "application_validation_run": 34350510779,
+  "deterministic_receipt_sha256": "bb47ccad32ef8083fe41c4368799a51c027d00873aa3c0971cae4726e21b5ec8",
+  "application_merge_sha": "575de82cda922c1dcba72934fa010ade2b3fe3ba",
+  "active_substep": "completed_verified",
+  "next_action": "ARI-03 is selected_not_started with no implementation branch or authority; the next execution Continue may governed-start only ARI-03.",
   "predecessor": {
     "work_item_id": "ARI-01",
     "status": "completed_verified",
@@ -29,53 +36,53 @@
     "application_validation_run": 34267731208,
     "application_merge_sha": "757d629fc01909292796cbcf92bb527eb2855c03"
   },
-  "application_execution": {
-    "application_pr": 443,
+  "implementation_evidence": [
+    "packages/contracts/src/asset-resource-ingestion-reuse/content-addressed-byte-identity-deduplication.ts",
+    "apps/client-ui/src/ari/ari-02.content-addressed-byte-identity-deduplication.test.ts",
+    "governance/application-planning/validation-core/profiles/ARI-02.json"
+  ],
+  "completion_summary": "Implemented storage-neutral SHA-256 identity derived from original bytes, explicit byte-present/reference-only resource bindings, duplicate-byte grouping without collapsing distinct resource identities, and fail-closed validation of malformed digest/content-address/storage-locator state. ARI-02 creates no second canonical asset ledger and does not begin derivative lineage, archive ingestion, media classification, rights expansion, provider networking, migration, UI or release work.",
+  "validation": {
     "matching_red": {
       "head_sha": "abedc79736e23a76bea959226af4b8797c0b93af",
       "run_id": 34329775422,
       "selector_repository_health_job": 102395383135,
-      "selector_repository_health_state": "completed_success",
       "linux_job": 102399557188,
-      "linux_state": "completed_failure",
       "matching_red_observed": true,
-      "reason": "The ARI-02 test/profile existed while the production contract was intentionally absent; the selector/repository-health gate passed and the Linux ARI-02 lane then failed on that RED head."
+      "reason": "The focused ARI-02 regression and profile existed while the production contract was intentionally absent; selector/repository health passed and the Linux ARI-02 lane failed on that RED head."
     },
-    "green_candidate": {
+    "final_green": {
       "head_sha": "5003e88db560045bd865932426bcd4b842a9a7ad",
       "run_id": 34350510779,
-      "run_state_at_handoff": "pending_no_jobs_created",
-      "implementation_file": "packages/contracts/src/asset-resource-ingestion-reuse/content-addressed-byte-identity-deduplication.ts",
-      "changed_files_in_pr": 3
-    },
-    "runner_environment_handoff": {
-      "class": "runner_environment",
-      "repository_in_progress_runs_at_check": 0,
-      "obsolete_red_comparison_job": 102462348195,
-      "obsolete_red_comparison_state": "queued",
-      "obsolete_red_windows_job": 102399557134,
-      "obsolete_red_windows_state": "completed_cancelled",
-      "green_run_jobs_created_at_check": 0,
-      "recovery_rule": "Restore the owner-controlled self-hosted listeners and allow the existing GREEN run to drain; do not create an unchanged replacement run while scheduling evidence is unchanged."
+      "repository_health_job": 102483787299,
+      "linux_job": 102483839892,
+      "windows_job": 102483839977,
+      "deterministic_compare_job": 102484298427,
+      "linux_artifact_id": 10106143737,
+      "windows_artifact_id": 10106168318,
+      "comparison_artifact_id": 10106178873,
+      "deterministic_receipt_sha256": "bb47ccad32ef8083fe41c4368799a51c027d00873aa3c0971cae4726e21b5ec8",
+      "comparison_artifact_digest": "sha256:808ace8373a0540a96488f715b38929684d3f0834635737ddd12a786989c5e68",
+      "historical_profile_fanout": 0
     }
   },
   "convergence_control": {
-    "owner_continue_count": 2,
-    "execution_cycles": 2,
+    "owner_continue_count": 3,
+    "execution_cycles": 3,
     "repair_cycles": 3,
     "no_progress_cycles": 1,
     "diagnostic_mode": true,
-    "last_failure_signature": "GREEN exact-head run 34350510779 remains pending with zero jobs created while obsolete RED comparison job 102462348195 remains queued and repository in-progress workflow count is zero.",
+    "last_failure_signature": "The self-hosted listeners were temporarily unavailable after matching RED; the existing GREEN run later drained successfully without an unchanged rerun.",
     "last_failure_class": "runner_environment",
     "diagnostic_hypotheses": [
-      "The owner-controlled self-hosted validation listeners are unavailable, preventing the stale RED comparison lane from draining and the GREEN run from creating its selector job.",
-      "No current evidence indicates a GREEN product-code failure because exact-head GREEN validation has not started."
+      "The owner-controlled self-hosted validation listeners were temporarily unavailable, preventing the GREEN run from starting.",
+      "Once the listeners returned, the unchanged GREEN candidate should validate without a product repair."
     ],
     "retry_basis": {
       "changed_since_previous": [
-        "the previously blocked RED candidate executed far enough to provide an observed matching RED on the Linux ARI-02 lane",
-        "minimal GREEN implementation was added at exact head 5003e88db560045bd865932426bcd4b842a9a7ad",
-        "new canonical GREEN run 34350510779 exists but has not created jobs, while the obsolete RED comparison remains queued and zero repository workflows are in progress"
+        "both owner-controlled self-hosted listeners returned",
+        "existing GREEN run 34350510779 executed on the unchanged exact head",
+        "selector/health, Linux, Windows and deterministic comparison all completed successfully"
       ]
     },
     "service_objective": {
@@ -85,37 +92,31 @@
       "unrelated_historical_validation_jobs_target": 0,
       "reruns_without_changed_evidence_target": 0,
       "post_merge_stale_pointer_target": 0
-    }
+    },
+    "reruns_without_changed_evidence": 0,
+    "unrelated_historical_validation_jobs_observed": 0
   },
   "tranche_context_envelope": {
-    "pinned_aioc_authority_ref": "7e7fdad14d110fe966b0430874d1d73a6d992359",
+    "pinned_aioc_authority_ref": "383f0d0db7039f0d6fb36b3d1b12d469c0fdb8d1",
     "required": [
       "governance/ai/runtime/CURRENT_WORK_POINTER.json",
       "governance/ai/work-state/ARI-02-attempt-001.json",
       "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
       "governance/application-planning/asset-resource-ingestion-reuse/ARI_ASSET_RESOURCE_INGESTION_REUSE_PROGRAM.md",
       "governance/application-planning/asset-resource-ingestion-reuse/ARI_PROGRAM_BACKLOG.json",
-      "ARI-01 completed contract and exact application main",
-      "application PR #443 matching RED and GREEN exact-head validation evidence"
+      "application PR #443 exact-head validation and merge evidence"
     ],
     "blocked_by_default": [
-      "ARI-03+ implementation",
+      "ARI-03+ implementation until separately governed-started",
       "historical tranche validators and completed-program files",
-      "Drive/Airtable/Sheets/Docs unless a named ARI-02 dependency proves insufficient",
+      "Drive/Airtable/Sheets/Docs unless a named dependency proves insufficient",
       "provider credentials, scraping/extraction, release/deployment and tester distribution"
-    ],
-    "refresh_only_on": [
-      "selected checkpoint or authority changes",
-      "implementation branch/base changes",
-      "merge/rebase/conflicting writer",
-      "materially new required validation result",
-      "named upstream input proves insufficient"
     ]
   },
   "boundaries": [
     "ARI-01 remains the universal resource handle/reference owner consumed by ARI-02.",
-    "ARI-02 may define SHA-256 content identity, original-byte identity, duplicate detection, byte-present versus reference-only state, and storage-neutral content addressing only.",
-    "ARI-03 derivative/lineage graph, archive ingestion, media classification, rights expansion and provider adapters remain unauthorized.",
+    "ARI-02 defines SHA-256 content identity, original-byte identity, duplicate detection, byte-present versus reference-only state, and storage-neutral content addressing only.",
+    "ARI-03 derivative/lineage graph, archive ingestion, media classification, rights expansion and provider adapters were not begun.",
     "Provider credentials, external scraping/extraction, tester distribution and release/deployment remain unauthorized."
   ],
   "strict_successor": "ARI-03"
