@@ -7,7 +7,7 @@
   "source_program": "ARI",
   "repository": "cybalicistjt-stack/Multiversal-app",
   "governance_repository": "cybalicistjt-stack/multiversal-aioc",
-  "status": "started",
+  "status": "in_progress",
   "owner_selected": true,
   "implementation_authority": true,
   "implementation_branch": "implementation/ari-02-content-addressed-byte-identity",
@@ -32,15 +32,30 @@
   "convergence_control": {
     "owner_continue_count": 1,
     "execution_cycles": 1,
-    "repair_cycles": 0,
+    "repair_cycles": 1,
     "no_progress_cycles": 0,
     "diagnostic_mode": false,
-    "last_failure_signature": null,
-    "last_failure_class": null,
-    "diagnostic_hypotheses": [],
-    "retry_basis": "initial governed ARI-02 execution",
-    "ordinary_tranche_single_continue_completion_percent": 100,
-    "max_execution_cycles_without_genuine_blocker": 1
+    "last_failure_signature": "MVHEALTH-ACTIVE-FEATURE-STATE + selector drift on initial governed-start projection",
+    "last_failure_class": "repository_state",
+    "diagnostic_hypotheses": [
+      "The initial start projection used status started instead of the validator's governed in_progress state and did not project the same selector state into all current authority registries."
+    ],
+    "retry_basis": {
+      "changed_since_previous": [
+        "checkpoint status changed to in_progress",
+        "required service_objective added",
+        "authority and runtime selector projections aligned",
+        "full canonical pointer completion history restored"
+      ]
+    },
+    "service_objective": {
+      "ordinary_tranche_single_continue_target_percent": 80,
+      "ordinary_tranche_two_continue_target_percent": 95,
+      "max_execution_cycles_without_genuine_blocker": 2,
+      "unrelated_historical_validation_jobs_target": 0,
+      "reruns_without_changed_evidence_target": 0,
+      "post_merge_stale_pointer_target": 0
+    }
   },
   "tranche_context_envelope": {
     "pinned_aioc_authority_ref": "bffb1be170e2017194562cf473828f664906ea48",
