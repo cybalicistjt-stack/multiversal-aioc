@@ -19,8 +19,8 @@
   "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
   "objective": "Add content-addressed byte identity and deduplication behind the ARI-01 universal resource handle without creating derivative lineage, archive ingestion, provider extraction or a second canonical asset ledger.",
   "application_baseline_sha": "757d629fc01909292796cbcf92bb527eb2855c03",
-  "active_substep": "RED-first bounded ARI-02 contract and regression on the implementation branch",
-  "next_action": "Add the ARI-02 focused Validation Core profile and failing regression first, observe matching RED, then implement the minimum content-addressed byte-identity/dedup contract and carry exact-head validation through merge and canonical closeout.",
+  "active_substep": "diagnostic repair of stale lifecycle-hard-coded current control-plane regression before ARI-02 RED application work",
+  "next_action": "Replace the stale selected_not_started literal with pointer/checkpoint/authority/runtime/index coherence assertions, align the live roadmap/backlog start projections, validate AIOC exact head, then proceed to ARI-02 application RED-first work.",
   "predecessor": {
     "work_item_id": "ARI-01",
     "status": "completed_verified",
@@ -32,20 +32,19 @@
   "convergence_control": {
     "owner_continue_count": 1,
     "execution_cycles": 1,
-    "repair_cycles": 1,
+    "repair_cycles": 2,
     "no_progress_cycles": 0,
-    "diagnostic_mode": false,
-    "last_failure_signature": "MVHEALTH-ACTIVE-FEATURE-STATE + selector drift on initial governed-start projection",
-    "last_failure_class": "repository_state",
+    "diagnostic_mode": true,
+    "last_failure_signature": "FamilyExecutionPreflightTests.test_vti12_closeout_and_current_sgc_selection_are_atomic hard-codes pointer active status selected_not_started after repository-health validator accepts current ARI-02 in_progress start",
+    "last_failure_class": "validation_contract",
     "diagnostic_hypotheses": [
-      "The initial start projection used status started instead of the validator's governed in_progress state and did not project the same selector state into all current authority registries."
+      "The current control-plane regression retained a historical exact lifecycle-state expectation instead of checking atomic agreement among the pointer, selected checkpoint, authority registry, runtime registry and roadmap index. Replacing the frozen literal with state-coherence assertions should pass the current ARI-02 in_progress start while still failing selector drift."
     ],
     "retry_basis": {
       "changed_since_previous": [
-        "checkpoint status changed to in_progress",
-        "required service_objective added",
-        "authority and runtime selector projections aligned",
-        "full canonical pointer completion history restored"
+        "fresh CI evidence proved repository-health validator passes the ARI-02 in_progress selector",
+        "fresh CI logs isolated one stale historical lifecycle literal in the current control-plane regression",
+        "diagnostic mode entered with validation_contract classification before regression mutation"
       ]
     },
     "service_objective": {
