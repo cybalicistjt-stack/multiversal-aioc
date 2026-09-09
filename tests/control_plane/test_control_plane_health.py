@@ -15,7 +15,7 @@ FlatHealthRegressionTests = _legacy.FlatHealthRegressionTests
 
 
 class FamilyExecutionPreflightTests(_legacy.FamilyExecutionPreflightTests):
-    def test_completed_sgc_and_current_ari_selection_are_atomic(self) -> None:
+    def test_vti12_closeout_and_current_sgc_selection_are_atomic(self) -> None:
         sgc = _legacy._load_json("governance/ai/work-state/SGC-08C-attempt-001.json")
         sgc_backlog = _legacy._load_json("governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json")
         ari_backlog = _legacy._load_json("governance/application-planning/asset-resource-ingestion-reuse/ARI_PROGRAM_BACKLOG.json")
