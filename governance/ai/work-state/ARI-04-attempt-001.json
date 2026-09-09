@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "ARI-04",
+  "attempt_id": "ARI-04-attempt-001",
+  "title": "Safe ZIP Staging & Extraction",
+  "track": "asset-resource-ingestion-reuse",
+  "source_program": "ARI",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "estimated_active_minutes": 24,
+  "execution_target_minutes": 24,
+  "minimum_closeout_reserve_minutes": 8,
+  "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
+  "objective": "Implement bounded ZIP intake with path-traversal, archive-bomb/size, nested-depth, malformed-entry and cancellation protections; extraction is staging, not automatic canon/import acceptance.",
+  "predecessor": {
+    "work_item_id": "ARI-03",
+    "status": "completed_verified",
+    "application_pr": 444,
+    "application_validated_head": "3a8d3bee39900f7952b1c7513130542cc7fb450b",
+    "application_validation_run": 34360366513,
+    "deterministic_receipt_sha256": "8a331617407e5d2b9fe2daaaada39f14f39276b78a05c1a668d9dd7d763d6096",
+    "application_merge_sha": "91c3cf18e88f710335761bfd10ee83d6ee626d57"
+  },
+  "selection_boundaries": [
+    "ARI-03 is completed_verified and its derivative/lineage graph remains the lineage contract consumed by later asset processing.",
+    "ARI-04 may implement bounded ZIP staging and extraction protections only after its own governed start.",
+    "Extraction is staging and must not itself create canonical resource acceptance, rights grants or provider entitlement.",
+    "ARI-05 RAR/7z adapters and all later ARI implementation remain unauthorized.",
+    "Provider credentials, external scraping/extraction, tester distribution and release/deployment remain unauthorized.",
+    "No implementation branch or implementation authority exists while this checkpoint is selected_not_started."
+  ],
+  "strict_successor": "ARI-05",
+  "next_action": "On the next execution Continue, governed-start ARI-04 only and carry it through its terminal gate in one continuation."
+}
