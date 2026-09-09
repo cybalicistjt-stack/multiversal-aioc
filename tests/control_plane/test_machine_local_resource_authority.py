@@ -13,8 +13,10 @@ def test_mlr_is_parallel_and_does_not_replace_product_authority():
     pointer = load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
     manifest = load_json("governance/ai/runtime/LOCAL_WORKSTATION_RESOURCE_MANIFEST.json")
 
-    assert pointer["active_attempt"]["work_item_id"] == "ARI-04"
-    assert registry["active_planning_work"]["work_item"] == "ARI-04"
+    # MLR must coexist with whichever product tranche is canonical now; it must not
+    # hard-code or replace that selection merely because product work advances.
+    assert registry["active_planning_work"]["work_item"] == pointer["active_attempt"]["work_item_id"]
+    assert registry["active_planning_work"]["implementation_authority"] == pointer["active_attempt"]["implementation_authority"]
 
     parallel = registry["parallel_machine_local_work"]
     assert parallel["work_item"] == "MLR-01"
