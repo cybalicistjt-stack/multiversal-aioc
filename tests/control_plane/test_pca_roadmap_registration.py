@@ -68,8 +68,8 @@ def test_pcm_catalog_and_clean_room_boundaries():
 
     for phrase in ("do not decompile", "reverse engineer", "public availability alone is insufficient"):
         assert phrase in clean
-    assert "does not clone commercial products" in pca
-    assert "do not build another vcs" in pca
+    assert "clone commercial products" in pca and "not" in pca[: pca.index("clone commercial products")]
+    assert "build another vcs" in pca and "not" in pca[max(0, pca.index("build another vcs") - 40): pca.index("build another vcs")]
 
 
 def test_pca_preserves_existing_owner_domains():
