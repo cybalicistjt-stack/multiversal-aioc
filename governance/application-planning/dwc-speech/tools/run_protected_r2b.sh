@@ -34,6 +34,7 @@ for f in "$TOOL" "$ABORT" "$PROMOTED" "$ACC"; do
 done
 
 source "$VENV/bin/activate"
+python -m py_compile "$TOOL"
 python - <<'PY'
 import torch
 assert torch.cuda.is_available(), "CUDA unavailable"
