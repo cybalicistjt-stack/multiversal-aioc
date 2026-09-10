@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.1.0",
+  "project_id": "DWC-SPEECH",
+  "evidence_type": "protected_r2_abort_result",
+  "recorded_at": "2026-09-10",
+  "source_package": {
+    "file": "DWC_R2_PROTECTED_RESULT_20260910_130120.zip",
+    "bytes": 9053,
+    "sha256": "75484dc383f91cfd377cb64e9278d6f19b4314076c8a9d884dd108927082dfeb"
+  },
+  "status": "ABORT_PROTECTED_R2_GUARD",
+  "training_performed": true,
+  "r2_complete": false,
+  "phase_batch": 64,
+  "reason": "intermediate_primary_125_gate",
+  "intermediate_gate": {
+    "rows": 125,
+    "pass": 124,
+    "fail": 1,
+    "rms_dbfs_median": -36.9973004452645,
+    "rms_dbfs_min": -45.807466487899156,
+    "rms_dbfs_max": -32.51849069674878,
+    "below_minus55": 0,
+    "interpretation": "The single failure is not low-level; it must be a duration and/or clipping failure under the governed machine_status contract."
+  },
+  "abort_checkpoint": {
+    "file": "ABORT_R2_PROTECTED_batch0064.pt",
+    "bytes": 281759213,
+    "sha256": "ee6f767c2d34a713fd5c7c3834712641129f3bdadf4543e467f61f1c5d943446"
+  },
+  "flow_integrity": {
+    "initial_sha256": "cfe517d3184001c5213e248cc5434b17eff8a9fdb7273eed6f05a6971e1a81e8",
+    "abort_sha256": "cfe517d3184001c5213e248cc5434b17eff8a9fdb7273eed6f05a6971e1a81e8",
+    "unchanged": true
+  },
+  "pre_r2_five_seed_gate": [125,125,125,125,125],
+  "fixed_probe_summary": {
+    "guard_fired_before_batch64": false,
+    "batch64_median_rms_dbfs": -35.758719595324045,
+    "visible_probe_violations": 0
+  },
+  "conclusion": "This is a governed model-level stop, not an owner execution error. Do not rerun R2 blindly. Run an inference-only diagnostic against the exact batch-64 abort checkpoint to identify the one failed acceptance row and whether the failure is duration, clipping, or both."
+}
