@@ -6,10 +6,10 @@
   "track":"asset-resource-ingestion-reuse",
   "source_program":"ARI",
   "repository":"cybalicistjt-stack/multiversal-aioc",
-  "status":"selected_not_started",
+  "status":"in_progress",
   "owner_selected":true,
-  "implementation_authority":false,
-  "implementation_branch":null,
+  "implementation_authority":true,
+  "implementation_branch":"implementation/ari-07-sidecar-manifest-parser-adapter-framework",
   "completed":false,
   "estimated_active_minutes":20,
   "execution_target_minutes":24,
@@ -17,7 +17,10 @@
   "family_preflight":"governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
   "objective":"Provide deterministic parser adapters for XML, JSON, and text sidecars and pack manifests while preserving raw unsupported metadata.",
   "predecessor":{"work_item_id":"ARI-06","status":"completed_verified","application_pr":449,"application_validated_head":"8817121b74467928ace3af6b4110fc0dec419224","application_validation_run":34491327102,"deterministic_receipt_sha256":"c438428a00d1adec9e411949da46cec1e76d4d2eb5e1758f7994ccc90dd7957e","application_merge_sha":"36a550118db2a8efc528937ae3bb762a2d93b633"},
+  "convergence_control":{"owner_continue_count":1,"execution_cycles":1,"repair_cycles":0,"no_progress_cycles":0,"diagnostic_mode":false,"last_failure_signature":null,"last_failure_class":null,"diagnostic_hypotheses":[],"retry_basis":{"changed_since_previous":["ARI-06 reached completed_verified and its authority was retired","ARI-07 became the canonical strict successor","the owner authorized the remaining sealed ARI sequence in strict order"]},"service_objective":{"ordinary_tranche_single_continue_target_percent":80,"ordinary_tranche_two_continue_target_percent":95,"max_execution_cycles_without_genuine_blocker":2,"unrelated_historical_validation_jobs_target":0,"reruns_without_changed_evidence_target":0,"post_merge_stale_pointer_target":0}},
   "owner_sequence_authorization":{"source":"Explicit owner instruction in this Codex execution on 2026-09-10","authorized_execution_units":["ARI-07","ARI-08","ARI-09","ARI-10","ARI-11","ARI-12","ARI-13","ARI-14","ARI-15","ARI-16","ARI-17","ARI-18","ARI-19","ARI-20","ARI-21","ARI-22A","ARI-22B","ARI-22C"],"rule":"Execute strictly in order; each unit retains its own bounded scope, validation, integration, closeout, and strict-successor selection."},
   "strict_successor":"ARI-08",
-  "next_action":"Governed-start ARI-07 only, then create the focused RED regression and profile before production implementation."
+  "selection_boundaries":["ARI-06 is completed_verified and preserves actual byte-signature type classification, unknowns, and raw source metadata.","ARI-07 may add deterministic parser adapters for supplied XML, JSON, and text sidecars/manifests while preserving unsupported raw metadata.","ARI-08 Syrinscape soundset XML behavior and all later ARI implementation remain unauthorized.","Provider credentials, external scraping, tester distribution and release/deployment remain unauthorized."],
+  "active_substep":"governed-start transition recorded; write focused ARI-07 RED regression before production implementation",
+  "next_action":"Create the ARI-07 focused RED regression/profile, then implement the bounded parser-adapter framework and run its declared validation gate."
 }
