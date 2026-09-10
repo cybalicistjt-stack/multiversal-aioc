@@ -1,76 +1,68 @@
 {
-  "schema_version": "0.6.0",
+  "schema_version": "0.7.0",
   "project_id": "DWC-SPEECH",
   "project_name": "DWC Speech Synthesis",
   "owner": "John Brandon Turner",
   "status": "in_progress",
-  "updated_at": "2026-09-08",
-  "authority_scope": "DWC project continuity only; does not select Multiversal software roadmap work",
+  "updated_at": "2026-09-10",
+  "authority_scope": "DWC project continuity only; does not select Multiversal software-roadmap work",
   "stable_entrypoint": "governance/application-planning/dwc-speech/README.md",
   "human_anchor": "governance/application-planning/dwc-speech/DWC_PROJECT_ANCHOR.md",
   "latest_failure_repair_evidence": "governance/application-planning/dwc-speech/DWC_BOOTSTRAP_CORPUS_V0_1_FAILURE_AND_V0_2_1_REPAIR.json",
-  "retrain_handoff_evidence": "governance/application-planning/dwc-speech/DWC_REPAIRED_CORPUS_RETRAIN_HANDOFF_v0.1.1.json",
-  "current_surface_evidence": "governance/application-planning/dwc-speech/DWC_REPAIRED_CPU_PREFLIGHT_AND_CHECKPOINT_REHYDRATION_2026-09-08.json",
+  "retrain_handoff_evidence": "governance/application-planning/dwc-speech/DWC_REPAIRED_CORPUS_RETRAIN_HANDOFF_v0.1.2.json",
+  "preferred_execution_surface_evidence": "governance/application-planning/dwc-speech/DWC_LOCAL_WORKSTATION_SURFACE_2026-09-10.json",
   "execution_frontier": {
-    "name": "Guarded repaired-corpus exact-ID retrain",
-    "state": "prepared_external_execution_blocked_on_current_surface",
-    "summary": "Historical Stage A-C training executed but its candidate lineage is invalidated: bootstrap corpus v0.1 contained 290 digital-zero training rows, filename collisions, and Stage-C raw inference far below the governed -55 dBFS RMS floor. The old Stage-C 125/125 report is superseded for acceptance. Repaired corpus v0.2.1 is validated at 799 unique governed rows with no low-level targets. Current-surface preflight and exact warm-start checkpoint rehydration are verified. The authorized next operation is the corrected v0.1.1 GPU notebook, which starts from a fresh exact-58 Piper model using the already-proven LJSpeech vocoder warm-start, followed by guarded R1/R2 retraining and the real 125-row waveform gate.",
+    "name": "Guarded repaired-corpus exact-ID R1 retrain on persistent local GPU workstation",
+    "state": "ready_not_started",
+    "summary": "The defective v0.1 bootstrap lineage and historical Stage-C forward path remain invalidated. Repaired corpus v0.2.1, exact warm-start checkpoint, Piper v1.8.0, CUDA/PyTorch and all local workstation prerequisites are verified. The preferred next operation is now the guarded local R1 launcher on the RTX 4060 workstation, not Colab. R2 is conditional on a genuine 125/125 R1 machine waveform gate, and human CNS perceptual acceptance remains separate.",
+    "training_started": false,
     "do_not_regress_to": [
       "language redesign",
       "PSS/CNS rediscovery",
       "exact-ID frontend discovery",
       "ONNX proxy proof",
       "Piper exact-ID support discovery",
-      "warm-start feasibility discovery"
-    ],
-    "prohibited_forward_paths": [
-      "continue training from stageC_weights.pt",
-      "run DWC_Piper_Custom58_StageD_Continuation_v0.1.ipynb as the normal forward path",
-      "run DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.ipynb",
-      "treat historical Stage-C 125/125 as governed waveform acceptance"
+      "warm-start feasibility discovery",
+      "historical Stage-C continuation"
     ]
   },
+  "settled_architecture": {
+    "frontend": "DWC/PSS/CNS to engine-independent exact custom phoneme IDs; no English G2P at the acoustic boundary",
+    "num_symbols": 58,
+    "sample_rate": 22050,
+    "engine_training_target": "Piper v1.8.0 exact-ID path",
+    "temporary_bootstrap_voice_is_canonical_cns": false,
+    "human_cns_recordings_eventually_supersede_bootstrap_proxy": true
+  },
   "verified_achievements": [
-    {"id":"dwc_language_pre_audio_handoff","state":"verified_complete","fact":"DWC language/etymology/PSS/CNS progressed through the pre-audio TTS handoff."},
-    {"id":"exact_id_frontend","state":"verified_complete","fact":"An engine-independent DWC frontend emits exact custom phoneme IDs without English G2P."},
-    {"id":"onnx_neural_proxy","state":"verified_complete","fact":"The neural proxy rendered 199/199 regression utterances with 0 unsupported CNS IPA symbols in that set and bypassed English G2P."},
-    {"id":"piper_custom_id_warmstart","state":"verified_complete","fact":"Piper v1.8.0 exact-ID input and vocoder-only warm-start are proven; the 58x192 DWC embedding is preserved while 278 matching acoustic/vocoder tensors are copied."},
-    {"id":"historical_stage_a_b_c_execution","state":"verified_complete_with_invalidated_candidate_lineage","fact":"Stages A, B, and C genuinely executed and remain historical evidence, but their model lineage is not promotable because the source bootstrap corpus was defective and raw inference collapsed toward silence."},
-    {"id":"repaired_corpus_v0_2_1","state":"verified_complete","fact":"Repaired temporary bootstrap corpus v0.2.1 has 799 governed unique row IDs, 799 unique WAVs, 0 rows below -55 dBFS, and preserves exact DWC phoneme-ID labels."},
-    {"id":"repaired_retrain_preflight","state":"verified_complete","fact":"Current-runtime retrain preflight passed with 799 corpus rows, 799 unique audio files, 128 unique R1 rows, 125 acceptance rows, and target RMS tightly centered around -24 dBFS."},
-    {"id":"warmstart_checkpoint_rehydrated","state":"verified_complete","fact":"All eight split warm-start parts were rehydrated, the reconstructed ZIP passed integrity and SHA-256 verification, and lj-med_1000.ckpt matched the established checkpoint SHA-256. The exact checkpoint byte count is 845889993."},
-    {"id":"repaired_gpu_handoff_v0_1_1","state":"verified_complete","fact":"The corrected repaired-corpus GPU retrain notebook v0.1.1 is externally stored in Drive and read-back verified. It supersedes v0.1, whose stale checkpoint-size assertion would false-abort before training."}
+    "DWC pre-audio language/PSS/CNS handoff complete",
+    "exact custom-ID frontend complete",
+    "199/199 neural proxy regression rendered with English G2P bypassed",
+    "Piper v1.8.0 exact-ID input and vocoder-only warm-start proven",
+    "historical A/B/C execution preserved as evidence but candidate lineage invalidated",
+    "repaired synthetic bootstrap corpus v0.2.1 verified: 799 unique governed rows/WAVs, zero rows below -55 dBFS, approximately -24 dBFS targets",
+    "warm-start checkpoint exact hash verified: dcf2449bdbdaad09256a08dfac211c59f6b36ce8d3f244fd844a9eb1d7384c7c",
+    "persistent local WSL2/Ubuntu workstation verified with RTX 4060 Laptop GPU, Piper v1.8.0, compiled monotonic alignment and CUDA-enabled PyTorch"
   ],
-  "invalidated_historical_candidate_lineage": {
+  "invalidated_historical_lineage": {
     "bootstrap_v0_1": {
       "rows": 799,
       "unique_audio_filenames": 769,
-      "duplicate_filename_groups": 10,
-      "extra_colliding_rows": 30,
       "digital_zero_rows": 290,
       "rows_below_minus55_dbfs": 290
     },
-    "stage_c_selection": {"rows":128,"unique_audio_files":98,"digital_zero_rows":61},
-    "amplitude_audit_dbfs": {
-      "governed_floor": -55.0,
-      "warmstart_smoke": -32.515302882906305,
-      "mini_train_8step": -62.23069226576568,
-      "stage_a_sample": -82.88873506762084,
-      "stage_c_median": -93.97940008672037,
-      "stage_c_min": -95.39102157243451,
-      "stage_c_max": -79.4123244462958,
-      "stage_c_rows_passing_governed_floor": 0
+    "stage_c_selection": {
+      "rows": 128,
+      "unique_audio_files": 98,
+      "digital_zero_rows": 61
     },
-    "stage_c_weights": {
-      "bytes": 281775417,
-      "sha256": "d800ae031942c29289ced1cc80c1448fff234c53f42a56f2d69265e7e3ebabb2",
-      "authority": "diagnostic/provenance only; not authorized as forward-training source"
+    "stage_c_raw_inference": {
+      "governed_floor_dbfs": -55.0,
+      "median_dbfs": -93.97940008672037,
+      "passing_rows": 0
     },
-    "historical_stage_d_notebook": {
-      "file": "DWC_Piper_Custom58_StageD_Continuation_v0.1.ipynb",
-      "drive_file_id": "1zuU3BBs8SySNVroYsjY3Nf3SbE2bZUiY",
-      "state": "superseded_not_authorized"
-    }
+    "stage_c_weights_sha256": "d800ae031942c29289ced1cc80c1448fff234c53f42a56f2d69265e7e3ebabb2",
+    "stage_c_weights_authority": "diagnostic/provenance only; not authorized as forward-training source"
   },
   "repaired_corpus": {
     "file": "DWC_Synthetic_Bootstrap_Corpus_v0.2.1.zip",
@@ -78,111 +70,75 @@
     "bytes": 26439488,
     "sha256": "99aca0d65596f906b08a99e0f0c9708211fb150013e039c91f0c489fc0d6a4e3",
     "rows": 799,
-    "unique_corpus_row_ids": 799,
+    "unique_row_ids": 799,
     "unique_audio_filenames": 799,
     "rows_below_minus55_dbfs": 0,
-    "target_rms_dbfs": -24.0,
-    "linguistic_authority": "noncanonical temporary acoustic bootstrap; exact DWC IDs remain canonical labels; human CNS recordings supersede proxy audio"
-  },
-  "prepared_retrain": {
-    "bundle": {
-      "file": "DWC_Piper_RepairedCorpus_Retrain_v0.1.0.zip",
-      "drive_file_id": "1PnBQjwb5LH1b1xcidUod3xuYGuQbt07z",
-      "bytes": 43523,
-      "sha256": "96c978573c3a4d0a21acdd5b6f49fc86f8bfc70be045b4c0f4ae0ae5d2ec9007"
-    },
-    "notebook": {
-      "file": "DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.1.ipynb",
-      "drive_file_id": "1zDNNfb3MHqPdiv9h_FMSixA_j7FSD64D",
-      "bytes": 10799,
-      "sha256": "eb1229689b4f1a069bfddcf61b0286249b62176ffeef42f56e59813462763ba4",
-      "drive_readback_verified": true,
-      "supersedes": {
-        "file": "DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.ipynb",
-        "drive_file_id": "18nu5QdXgKBOw1LyB30QdlM6E3HmNzoWx",
-        "reason": "hard-coded stale checkpoint byte count 845996331 would false-abort despite correct checkpoint hash"
-      },
-      "persistent_output_directory": "/content/drive/MyDrive/Transfer file/dwc_repair_retrain_v0.1"
-    },
-    "sequence": [
-      "fresh exact-58 model plus proven vocoder-only warm-start",
-      "8-row raw inference amplitude baseline",
-      "R1: 128 unique phone-balanced rows with probes every 8 batches",
-      "R1 strict 125-row waveform gate; R2 prohibited unless 125/125",
-      "R2: one shuffled full pass over 799 repaired rows with probes",
-      "R2 strict 125-row waveform gate",
-      "human CNS perceptual gate"
-    ],
-    "guard": {
-      "governed_final_rms_floor_dbfs": -55.0,
-      "probe_max_drop_from_baseline_db": 18.0,
-      "abort_persists_diagnostic_checkpoint": true
-    }
+    "target_rms_dbfs_approx": -24.0,
+    "authority": "temporary noncanonical acoustic bootstrap; exact DWC IDs remain the governed linguistic labels"
   },
   "warmstart_checkpoint": {
-    "split_parts_in_drive": 8,
+    "checkpoint": "lj-med_1000.ckpt",
+    "bytes": 845889993,
+    "sha256": "dcf2449bdbdaad09256a08dfac211c59f6b36ce8d3f244fd844a9eb1d7384c7c",
     "reassembled_zip_bytes": 775838605,
-    "reassembled_zip_sha256": "7c06a05f89674f39fd185ede1e62911c9f91241397c0d2c708825c65455fe92b",
-    "checkpoint_bytes": 845889993,
-    "checkpoint_sha256": "dcf2449bdbdaad09256a08dfac211c59f6b36ce8d3f244fd844a9eb1d7384c7c",
-    "metadata_correction": "previous byte count 845996331 was stale; cryptographic hash remained correct"
+    "reassembled_zip_sha256": "7c06a05f89674f39fd185ede1e62911c9f91241397c0d2c708825c65455fe92b"
   },
-  "execution_surfaces": {
-    "chatgpt_sandbox": {
-      "torch": "2.10.0+cpu",
-      "cuda_available": false,
-      "cuda_device_count": 0,
-      "repaired_preflight": "PASS",
-      "warmstart_checkpoint_rehydration": "PASS",
-      "piper_source_materialization": "blocked after container outbound DNS failure and unavailable tool-layer binary source materialization",
-      "classification": "environment_unavailable for local CPU model baseline and sustained GPU retraining; corpus/checkpoint readiness is verified"
-    },
-    "hugging_face_jobs": {
-      "authenticated": true,
-      "cpu_basic_probe": "402 Payment Required",
-      "zero_a10g_probe": "402 Payment Required",
-      "classification": "environment_unavailable without billing"
-    },
-    "prepared_external_surface": "GPU-capable Colab or equivalent using DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.1.ipynb"
+  "preferred_execution_surface": {
+    "type": "persistent_local_wsl2_gpu_workstation",
+    "dwc_root": "/home/antiquaria/multiversal/dwc-tts",
+    "wsl": "2.7.11.0",
+    "ubuntu": "26.04 LTS",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "vram_mib": 8188,
+    "driver": "610.78",
+    "driver_reported_cuda": "13.3",
+    "python": "3.14.4",
+    "pytorch": "2.14.0+cu130",
+    "pytorch_cuda_verified": true,
+    "piper_version": "v1.8.0",
+    "piper_commit": "639388b6317fc4731e91d53da42aea68fd4166ff",
+    "monotonic_alignment_test": "pass",
+    "missing_required_files": 0
   },
-  "next_execution_sequence": [
-    {"step":1,"state":"next_external_execution","action":"Run DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.1.ipynb on a GPU-capable runtime. It verifies/preflights v0.2.1, reconstructs/verifies the warm-start checkpoint using the corrected exact byte count 845889993 and established SHA-256, then performs guarded R1 and conditionally R2."},
-    {"step":2,"state":"during_r1","action":"If raw-output median amplitude crosses the collapse guard, stop automatically and diagnose the preserved abort checkpoint/probes; do not enter R2 or alter DWC phonology."},
-    {"step":3,"state":"after_r1","action":"Enter R2 only if the real governed 125-row waveform gate is 125/125."},
-    {"step":4,"state":"after_r2","action":"Require the real governed 125-row waveform gate again. A machine pass is necessary but not final acceptance."},
-    {"step":5,"state":"after_valid_machine_pass","action":"Complete human CNS perceptual acceptance for pronunciation, intelligibility, special phones, stress/rhythm, target accent/style, and meaning preservation."},
-    {"step":6,"state":"after_human_pass","action":"Select/export a temporary synthetic candidate with hashes/provenance, then plan authentic human-CNS-recording training without changing the exact-ID language architecture."}
+  "exact_next_execution": {
+    "step_1": "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/sync_governance.sh",
+    "step_2": "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/run_repaired_retrain.sh",
+    "r1": "Run 8-row warm-start raw-amplitude baseline, then 128-row repaired R1 with periodic collapse probes.",
+    "r1_gate": "R1 must pass the real deterministic 125-row waveform gate 125/125 before R2 is permitted.",
+    "r2": "If and only if R1 machine gate is 125/125, perform one deterministic shuffled pass over all 799 repaired rows with probes and apply the real 125-row gate again.",
+    "human_gate": "After a valid machine candidate exists, complete governed human CNS perceptual evaluation. Machine waveform PASS is never human PASS."
+  },
+  "collapse_guard": {
+    "governed_final_rms_floor_dbfs": -55.0,
+    "max_probe_drop_from_baseline_db": 18.0,
+    "abort_persists_diagnostic_checkpoint": true
+  },
+  "prohibited_forward_paths": [
+    "continue training from stageC_weights.pt",
+    "run DWC_Piper_Custom58_StageD_Continuation_v0.1.ipynb as the normal forward path",
+    "run DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.ipynb",
+    "weaken checksum/corpus/waveform/collapse gates to force progress",
+    "treat machine waveform acceptance as human perceptual acceptance"
+  ],
+  "fallback_execution_surface": {
+    "state": "available_if_local_workstation_unavailable",
+    "artifact": "DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.1.ipynb",
+    "drive_file_id": "1zDNNfb3MHqPdiv9h_FMSixA_j7FSD64D",
+    "sha256": "eb1229689b4f1a069bfddcf61b0286249b62176ffeef42f56e59813462763ba4"
+  },
+  "open_results": [
+    "Whether repaired-corpus R1 preserves healthy raw inference amplitude",
+    "Whether R1 reaches genuine 125/125 machine waveform acceptance",
+    "Whether R2 is authorized and, if run, passes its machine gate",
+    "Human CNS perceptual acceptance",
+    "Selected/exported temporary synthetic candidate",
+    "Authentic human-CNS-recording production voice"
   ],
   "execution_rules": {
     "continue_semantics": "Remain in execution mode until the largest safe bounded unit is verified complete or a genuine blocker is fully evidenced.",
-    "progress_update_is_stop_boundary": false,
-    "narrative_summary_can_override_tool_evidence": false,
-    "conversation_reset_resets_project": false,
-    "revalidation_reopens_completed_milestone": false,
     "newer_external_evidence_supersedes_stale_state": true,
-    "weak_validator_can_be_superseded_by_governed_acceptance_contract": true,
-    "invalidated_evidence_is_deleted": false,
-    "machine_waveform_gate_equals_human_perceptual_acceptance": false
+    "machine_waveform_gate_equals_human_perceptual_acceptance": false,
+    "missing_ephemeral_runtime_files_reopens_completed_work": false
   },
-  "unproven_or_open": [
-    "Whether repaired-corpus R1 preserves healthy raw inference amplitude",
-    "Whether repaired-corpus R1/R2 achieves governed 125/125 waveform acceptance",
-    "Human CNS perceptual acceptance on a valid candidate lineage",
-    "Selected exported temporary DWC model",
-    "Authentic human-CNS-recording production voice",
-    "Production packaging/licensing/deployment/application integration decision",
-    "Final production-engine choice"
-  ],
-  "source_provenance": [
-    "DWC_BOOTSTRAP_CORPUS_V0_1_FAILURE_AND_V0_2_1_REPAIR.json",
-    "DWC_REPAIRED_CORPUS_RETRAIN_HANDOFF_v0.1.1.json",
-    "DWC_REPAIRED_CPU_PREFLIGHT_AND_CHECKPOINT_REHYDRATION_2026-09-08.json",
-    "DWC_Synthetic_Bootstrap_Corpus_v0.2.1.zip",
-    "DWC_Piper_RepairedCorpus_Retrain_v0.1.0.zip",
-    "DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.1.ipynb",
-    "DWC_Piper_Training_Recovery_Light_v0.1.0.zip",
-    "DWC_Piper_Custom58_Training_Proof_v0.1.0.zip",
-    "TTS_ENGINE_03_ACCEPTANCE_CONTRACT.md"
-  ],
   "mutable_facts_require_live_recheck_before_claim": true
 }
