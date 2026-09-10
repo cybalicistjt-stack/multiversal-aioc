@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.14.0",
+  "schema_version": "0.15.0",
   "project_id": "DWC-SPEECH",
   "project_name": "DWC Speech Synthesis",
   "owner": "John Brandon Turner",
@@ -9,17 +9,18 @@
   "stable_entrypoint": "governance/application-planning/dwc-speech/README.md",
   "human_anchor": "governance/application-planning/dwc-speech/DWC_PROJECT_ANCHOR.md",
   "preferred_execution_surface_evidence": "governance/application-planning/dwc-speech/DWC_LOCAL_WORKSTATION_SURFACE_2026-09-10.json",
-  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_R2_ABORT64_INFERENCE_DIAGNOSTIC_RESULT_2026-09-10.json",
+  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_R2_ABORT64_MODULE_ROLLBACK_RESULT_2026-09-10.json",
   "execution_frontier": {
-    "name": "Inference-only module rollback diagnosis of protected R2 batch-64 checkpoint",
-    "state": "r2_abort64_inference_diagnostic_complete_module_rollback_ready",
-    "summary": "Protected R2 trained 64/799 rows from the promoted R1 flow-restored hybrid with model_g.flow frozen and hash-stable. The batch-64 primary gate reproduced at 124/125: DWCACC-0021 ('ei') failed only the 0.08 s duration floor at 0.05805 s, with healthy RMS. Across five seeds the checkpoint has 121/125 rows passing all five; four rows are seed-sensitive (two duration failures, two low-level failures), versus 125/125 rows passing all five at the promoted source hybrid. Before any further training, selectively restore R2-updated inference-side modules from the promoted source to identify which module drift caused the robustness regression.",
+    "name": "Protected R2B remainder continuation with DP and flow frozen",
+    "state": "r2b_dp_flow_protected_authorized_ready_not_started",
+    "summary": "The batch-64 module rollback diagnostic isolates model_g.dp drift as the minimum sufficient cause of the protected R2 robustness regression. Restoring only model_g.dp from the promoted R1 hybrid into the exact batch-64 abort state restores 125/125 on all five deterministic seed schedules while retaining the batch-64 non-DP adaptation and its improved median output level. A new R2B continuation is authorized from that exact DP-restored batch-64 state with both model_g.dp and model_g.flow frozen/hash-protected. Because optimizer/RNG state was not saved, R2B is explicitly an optimizer-reset state continuation, not a mathematically exact batch-65 optimizer resume.",
     "r1_flow_restored_hybrid_promoted": true,
-    "r2_started": true,
-    "r2_completed": false,
-    "r2_training_batches_completed": 64,
-    "r2_machine_gate_passed": false,
-    "additional_training_authorized": false,
+    "r2_initial_attempt_started": true,
+    "r2_initial_attempt_batches_completed": 64,
+    "r2_initial_attempt_machine_gate_passed": false,
+    "r2b_authorized": true,
+    "r2b_started": false,
+    "additional_training_authorized": true,
     "human_perceptual_gate_authorized": false
   },
   "promoted_r1_hybrid": {
@@ -34,46 +35,63 @@
     "bytes": 281759213,
     "sha256": "ee6f767c2d34a713fd5c7c3834712641129f3bdadf4543e467f61f1c5d943446",
     "flow_unchanged": true,
-    "primary_gate": {"pass": 124, "fail": 1, "median_rms_dbfs": -37.002168676242505, "minimum_rms_dbfs": -45.82344297241096, "below_minus55": 0},
-    "primary_failed_row": {"acceptance_row_id": "DWCACC-0021", "dwc_text": "ei", "duration_s": 0.0580498866213151, "rms_dbfs": -45.82344297241096, "reason": "duration"}
+    "five_seed_pass_counts": [124,125,124,124,124],
+    "pass_5_of_5_rows": 121
   },
-  "abort64_five_seed_diagnosis": {
-    "pass_counts": [124, 125, 124, 124, 124],
-    "pass_5_of_5_rows": 121,
-    "seed_sensitive_rows": 4,
-    "fail_5_of_5_rows": 0,
-    "sensitive_rows": [
-      {"acceptance_row_id": "DWCACC-0021", "dwc_text": "ei", "failure": "duration"},
-      {"acceptance_row_id": "DWCACC-0035", "dwc_text": "zair", "failure": "low_level", "minimum_rms_dbfs": -58.00434957581867},
-      {"acceptance_row_id": "DWCACC-0039", "dwc_text": "dapoe", "failure": "low_level", "minimum_rms_dbfs": -71.36402024103548},
-      {"acceptance_row_id": "DWCACC-0071", "dwc_text": "sae", "failure": "duration"}
-    ],
-    "noise_ablation_primary_seed": {
-      "default_pass": 124,
-      "no_duration_noise_pass": 125,
-      "reduced_noise_pass": 125,
-      "zero_noise_pass": 125
+  "module_rollback_diagnosis": {
+    "source_package_sha256": "609b70544788472a1f219d373c2795f686d6c06c32df57bf8c15c33b626c8ab2",
+    "module_drift_relative_l2": {
+      "model_g.dp": 0.01356851690923438,
+      "model_g.enc_p": 0.026699200538226848,
+      "model_g.dec": 0.014509131150818465,
+      "model_g.flow": 0.0,
+      "model_g.enc_q": 0.01767802796819045
     },
-    "interpretation": "The primary duration miss can be removed by inference settings, but this does not justify changing the governed gate because the same checkpoint has low-level failures on other seeds. R2 has improved median output amplitude while reducing stochastic robustness relative to the promoted source."
+    "variants": {
+      "abort64_as_is": [124,125,124,124,124],
+      "restore_dp": [125,125,125,125,125],
+      "restore_enc_p": [124,125,124,124,125],
+      "restore_dec": [124,125,124,124,124],
+      "restore_dp_enc_p": [125,125,125,125,125],
+      "restore_dp_dec": [125,125,125,125,125],
+      "restore_enc_p_dec": [124,125,125,124,125],
+      "restore_dp_enc_p_dec": [125,125,125,125,125]
+    },
+    "minimum_successful_rollback": "model_g.dp only",
+    "restore_dp_worst_rms_dbfs": -48.0354234964618,
+    "restore_dp_primary_median_rms_dbfs": -36.7230630495849,
+    "conclusion": "Every tested variant that restores DP is 625/625; every tested variant retaining the batch-64 DP has failures. DP-only restoration is therefore the minimum-change repair and preserves useful non-DP R2 adaptation."
+  },
+  "r2b_contract": {
+    "source_construction": "Exact ABORT_R2_PROTECTED_batch0064.pt state with only model_g.dp.* restored from exact promoted R1 hybrid",
+    "pre_training_gate": "125/125 on each of five deterministic seed schedules; training forbidden if any decision fails",
+    "protected_modules": ["model_g.flow", "model_g.dp"],
+    "protected_policy": "requires_grad false, excluded from generator optimizer, gradient checks, and state-prefix hash checks throughout",
+    "optimizer_policy": "fresh AdamW optimizer state; optimizer_state_restored=false is mandatory provenance",
+    "schedule_policy": "reconstruct the original deterministic 799-row shuffled schedule, retain rows 1-64 already represented in the source model state, and train only rows 65-799 (735 rows)",
+    "fixed_probe_every_global_batches": 8,
+    "primary_125_gate_every_global_batches": 64,
+    "five_seed_125_gate_every_global_batches": 128,
+    "checkpoint_every_global_batches": 128,
+    "final_gate": "125/125 on each of five deterministic seed schedules with unique persisted primary WAV evidence",
+    "human_gate": "NOT_RUN by R2B harness"
   },
   "next_safe_execution": {
-    "kind": "inference_only_module_rollback_diagnostic",
+    "kind": "protected_gpu_r2b_state_continuation",
     "sync_command": "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/sync_governance.sh",
-    "launcher": "governance/application-planning/dwc-speech/tools/run_r2_abort64_module_rollback_diagnostic.sh",
-    "tool": "governance/application-planning/dwc-speech/tools/DWC_R2_Abort64_Module_Rollback_Diagnostic_v0.1.0.py",
-    "checkpoint": "ABORT_R2_PROTECTED_batch0064.pt",
-    "promoted_source": "R1_flow_restored_candidate.pt",
-    "modules_tested": ["model_g.dp", "model_g.enc_p", "model_g.dec"],
-    "variants": "all eight rollback combinations across the same five deterministic 125-row seed schedules",
-    "purpose": "Identify the minimum module protection/rollback needed to preserve the promoted source checkpoint's 625/625 robustness while retaining useful R2 adaptation.",
-    "training_permitted": false
+    "launcher": "governance/application-planning/dwc-speech/tools/run_protected_r2b.sh",
+    "tool": "governance/application-planning/dwc-speech/tools/DWC_Protected_R2B_v0.1.0.py",
+    "expected_success_status": "PASS_R2B_PROTECTED_MACHINE_GATE",
+    "on_abort": "Do not retry blindly. Upload DWC_R2B_PROTECTED_RESULT_*.zip and diagnose the exact guarded boundary.",
+    "on_success": "Upload DWC_R2B_PROTECTED_RESULT_*.zip. Verify final hashes/gates, then prepare the separate human CNS perceptual acceptance package."
   },
   "prohibited_forward_paths": [
-    "rerun, resume, or extend R2 before module rollback diagnosis is reviewed",
-    "unfreeze or update model_g.flow",
-    "weaken machine waveform or duration gates merely to pass batch 64",
-    "select a lucky inference seed or noise setting as promotion evidence",
-    "enter human perceptual acceptance before protected R2 machine success",
+    "resume the original batch-64 abort checkpoint without restoring/protecting model_g.dp",
+    "unfreeze or update model_g.flow or model_g.dp during R2B",
+    "claim optimizer-exact continuation from batch 65",
+    "weaken the -55 dBFS waveform floor, 0.08 s duration floor, or strengthened multi-seed gates to force a pass",
+    "select a lucky inference seed/noise setting as promotion evidence",
+    "enter human perceptual acceptance before protected R2B machine success",
     "resume historical Stage-C lineage",
     "treat machine waveform acceptance as human CNS perceptual acceptance"
   ],
@@ -95,11 +113,10 @@
     "piper_commit": "639388b6317fc4731e91d53da42aea68fd4166ff"
   },
   "source_provenance": [
+    "DWC_R2_ABORT64_MODULE_ROLLBACK_RESULT_2026-09-10.json",
     "DWC_R2_ABORT64_INFERENCE_DIAGNOSTIC_RESULT_2026-09-10.json",
     "DWC_R2_PROTECTED_ABORT64_RESULT_2026-09-10.json",
-    "DWC_R1_FLOW_RESTORE_PROMOTION_RESULT_2026-09-10.json",
-    "DWC_R1_ACOUSTIC_RESET_RESULT_2026-09-10.json",
-    "DWC_R1_INFERENCE_DIAGNOSTIC_RESULT_2026-09-10.json"
+    "DWC_R1_FLOW_RESTORE_PROMOTION_RESULT_2026-09-10.json"
   ],
   "mutable_facts_require_live_recheck_before_claim": true
 }
