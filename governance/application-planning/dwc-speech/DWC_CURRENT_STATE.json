@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.10.0",
+  "schema_version": "0.11.0",
   "project_id": "DWC-SPEECH",
   "project_name": "DWC Speech Synthesis",
   "owner": "John Brandon Turner",
@@ -9,80 +9,95 @@
   "stable_entrypoint": "governance/application-planning/dwc-speech/README.md",
   "human_anchor": "governance/application-planning/dwc-speech/DWC_PROJECT_ANCHOR.md",
   "preferred_execution_surface_evidence": "governance/application-planning/dwc-speech/DWC_LOCAL_WORKSTATION_SURFACE_2026-09-10.json",
-  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_R1_INFERENCE_DIAGNOSTIC_RESULT_2026-09-10.json",
+  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_R1_ACOUSTIC_RESET_RESULT_2026-09-10.json",
   "execution_frontier": {
-    "name": "Inference-only R1 acoustic-reset hybrid diagnosis",
-    "state": "r1_complete_inference_diagnostic_complete_acoustic_reset_ready",
-    "summary": "R1 completed 128 batches but failed the governed gate 104/125. The repaired unique-identity acceptance rerun reproduced that result exactly. Five seed schedules produced only 100-107 passes; 75/125 rows are seed-sensitive and none fail all five. Removing duration noise improves a single seed to 112/125, but removing latent noise yields 0/125 and reduced latent noise yields 61/125. Default failure is 28% outside the 128-row R1 selection versus 9.3% inside it. Before any further training, compare R1 as-is against hybrids that restore the pristine warm-start decoder and/or flow while retaining the learned DWC text side.",
+    "name": "Persisted R1 flow-restored hybrid machine promotion check",
+    "state": "r1_flow_drift_isolated_promotion_check_ready",
+    "summary": "R1 completed 128 batches but failed its original strict waveform gate 104/125. A corrected unique-identity rerun reproduced that result exactly. Multi-seed and noise diagnostics showed broad stochastic low-level instability. The acoustic-reset diagnostic now isolates the instability to R1 drift in model_g.flow: restoring only the pristine warm-start flow produces 125/125 on all three tested seed schedules, while decoder-only restoration does not. Before any R2 training, persist an R1-flow-restored hybrid checkpoint and require 125/125 across five deterministic seed schedules with 125 uniquely persisted primary-gate WAVs.",
     "r1_training_complete": true,
-    "r1_machine_gate_passed": false,
+    "original_r1_machine_gate_passed": false,
+    "flow_drift_isolated": true,
     "r2_authorized": false,
     "human_perceptual_gate_authorized": false,
     "additional_training_authorized": false
   },
-  "r1_result": {
-    "batches": 128,
-    "checkpoint": "R1_phone_balanced_weights_batch0128.pt",
-    "checkpoint_bytes": 281764423,
-    "checkpoint_sha256": "92c10d9dd583d609e70413ffb5eded405ead62606b8a97111056619ab2e9745b",
-    "acceptance_rows": 125,
-    "pass": 104,
-    "fail": 21,
-    "rms_dbfs_median": -43.32351160138194,
-    "rms_dbfs_min": -73.7840424346194,
-    "governed_floor_dbfs": -55.0
+  "r1_checkpoint": {
+    "file": "R1_phone_balanced_weights_batch0128.pt",
+    "bytes": 281764423,
+    "sha256": "92c10d9dd583d609e70413ffb5eded405ead62606b8a97111056619ab2e9745b"
+  },
+  "warmstart_checkpoint": {
+    "file": "lj-med_1000.ckpt",
+    "bytes": 845889993,
+    "sha256": "dcf2449bdbdaad09256a08dfac211c59f6b36ce8d3f244fd844a9eb1d7384c7c"
   },
   "acceptance_identity": {
     "legacy_rows": 125,
-    "legacy_unique_source_utterance_ids": 95,
-    "legacy_unique_filenames": 95,
-    "repaired_file": "TTS_ENGINE_03_ACCEPTANCE_UTTERANCES_v0.2.0.tsv",
-    "repaired_rows": 125,
-    "repaired_unique_row_ids": 125,
-    "repaired_unique_output_filenames": 125,
-    "repaired_sha256": "d5ef320d00703579b180008b0bc932c18698b4cb5d7f3b7eba80eb90bb307fd7",
-    "reproduction_status_mismatch_count": 0,
-    "reproduction_max_abs_rms_delta_db": 0.0
+    "legacy_unique_ids_and_filenames": 95,
+    "corrected_file": "TTS_ENGINE_03_ACCEPTANCE_UTTERANCES_v0.2.0.tsv",
+    "corrected_rows": 125,
+    "corrected_unique_row_ids": 125,
+    "corrected_unique_output_filenames": 125,
+    "corrected_sha256": "d5ef320d00703579b180008b0bc932c18698b4cb5d7f3b7eba80eb90bb307fd7",
+    "original_gate_reproduction": {"pass": 104, "fail": 21, "status_mismatches": 0, "max_abs_rms_delta_db": 0.0}
   },
-  "seed_robustness": {
-    "seed_schedule_pass_counts": [104, 107, 100, 103, 103],
-    "always_pass_5_of_5": 50,
-    "seed_sensitive_1_to_4_passes": 75,
-    "always_fail_0_of_5": 0,
-    "passes_of_5_distribution": {"2": 6, "3": 21, "4": 48, "5": 50},
-    "rule": "A lucky seed is not promotable acceptance evidence."
+  "r1_seed_robustness": {
+    "five_seed_pass_counts": [104, 107, 100, 103, 103],
+    "pass_5_of_5_rows": 50,
+    "seed_sensitive_rows": 75,
+    "fail_5_of_5_rows": 0,
+    "interpretation": "Original R1 is broadly seed-sensitive rather than containing a fixed set of permanently dead utterances."
   },
   "noise_ablation": {
-    "default": {"noise_scale": 0.667, "noise_scale_w": 0.8, "pass": 104, "median_dbfs": -43.318051128121056},
-    "no_duration_noise": {"noise_scale": 0.667, "noise_scale_w": 0.0, "pass": 112, "median_dbfs": -41.62449865420939},
-    "no_latent_noise": {"noise_scale": 0.0, "noise_scale_w": 0.8, "pass": 0, "median_dbfs": -70.82535961573534},
-    "reduced_noise": {"noise_scale": 0.35, "noise_scale_w": 0.4, "pass": 61, "median_dbfs": -55.656018066249906},
-    "zero_noise": {"noise_scale": 0.0, "noise_scale_w": 0.0, "pass": 0, "median_dbfs": -68.27027321461182},
-    "interpretation": "Inference tuning alone is insufficient; output amplitude is strongly latent-noise dependent."
+    "default_pass": 104,
+    "no_duration_noise_pass": 112,
+    "no_latent_noise_pass": 0,
+    "reduced_noise_pass": 61,
+    "zero_noise_pass": 0,
+    "interpretation": "Inference tuning alone is not a valid repair; amplitude is strongly latent-noise dependent."
   },
-  "coverage_diagnosis": {
-    "acceptance_rows_in_r1_selection": 75,
-    "acceptance_rows_outside_r1_selection": 50,
-    "fails_in_selection": 7,
-    "fails_outside_selection": 14,
-    "fail_rate_in_selection": 0.09333333333333334,
-    "fail_rate_outside_selection": 0.28,
-    "interpretation": "The 128-row phone-balanced warm-up generalizes incompletely to natural/other acceptance rows."
+  "acoustic_reset_diagnosis": {
+    "parameter_drift_relative_l2": {
+      "decoder": 0.02328783887906109,
+      "posterior_encoder": 0.02497347120329914,
+      "flow": 0.020087829745938403
+    },
+    "three_seed_pass_counts": {
+      "r1_as_is": [104, 107, 100],
+      "decoder_reset_only": [107, 108, 101],
+      "flow_reset_only": [125, 125, 125],
+      "decoder_and_flow_reset": [125, 125, 125],
+      "full_warm_acoustic_reset": [125, 125, 125]
+    },
+    "flow_reset_only_min_rms_dbfs_by_seed": [-52.170334440177015, -51.552293533513335, -52.537684352691315],
+    "primary_conclusion": "R1 drift in model_g.flow is the identified cause of the stochastic low-level failures. Decoder restoration alone does not fix the problem. Flow-only restoration is the minimum-change successful intervention and preserves R1 decoder plus DWC text-side learning.",
+    "piper_transfer_boundary": "The official vocoder warm-start transfers model_g.dec, model_g.enc_q and model_g.flow. R1 had optimized all model_g parameters, including the previously good flow."
   },
-  "probe_diagnosis": {
-    "warmstart_8row_median_rms_dbfs": -35.323816986292584,
-    "batch128_8row_median_rms_dbfs": -39.75656311896138,
-    "median_guard_fired": false,
-    "heterogeneous_row_level_collapse": true,
-    "worst_fixed_probe": {"source_utterance_id": "NAT-PSS6-029", "warmstart_rms_dbfs": -38.223818278662364, "batch128_rms_dbfs": -70.60562838647292, "delta_db": -32.38181010781055},
-    "future_guard_requirement": "Add row-level/quantile robustness protection; median-only amplitude guard is insufficient."
+  "next_safe_execution": {
+    "kind": "inference_only_persisted_flow_restore_promotion_check",
+    "sync_command": "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/sync_governance.sh",
+    "launcher": "governance/application-planning/dwc-speech/tools/run_r1_flow_restore_promotion_check.sh",
+    "tool": "governance/application-planning/dwc-speech/tools/DWC_R1_Flow_Restore_Promotion_Check_v0.1.0.py",
+    "operations": [
+      "copy only model_g.flow.* from the exact verified warm-start into the completed R1 checkpoint",
+      "persist the hybrid checkpoint with provenance and SHA-256",
+      "run the corrected unique 125-row machine gate across five deterministic seed schedules",
+      "persist 125 uniquely identified WAVs for the primary seed schedule",
+      "require every row to pass all five schedules before marking machine-promotion-ready"
+    ],
+    "training_permitted": false,
+    "r2_permitted": false,
+    "decision_after": "If the persisted hybrid is PROMOTION_READY, authorize a separately governed R2 that starts from that hybrid and freezes model_g.flow.*. Add row-level/quantile amplitude protection so median-only collapse detection cannot miss heterogeneous failures."
   },
-  "piper_transfer_boundary": {
-    "vocoder_warmstart_prefixes": ["model_g.dec.", "model_g.enc_q.", "model_g.flow."],
-    "source": "Piper v1.8.0 _warmstart_vocoder_from_ckpt",
-    "r1_behavior": "Custom R1 optimizer updated all model_g parameters, including the warm-start acoustic modules.",
-    "diagnostic_hypothesis": "Restore warm-start decoder and/or flow while retaining R1 DWC text-side weights to isolate acoustic-backbone drift from incomplete text/prior adaptation."
-  },
+  "prohibited_forward_paths": [
+    "enter R2 before the persisted flow-restored hybrid passes its strengthened machine check",
+    "train or update model_g.flow before explicit post-promotion authorization",
+    "resume historical Stage-C lineage",
+    "weaken the -55 dBFS waveform floor",
+    "use a lucky stochastic seed as acceptance",
+    "accept colliding render identities",
+    "treat machine waveform acceptance as human CNS perceptual acceptance"
+  ],
   "settled_architecture": {
     "frontend": "DWC/PSS/CNS to engine-independent exact custom phoneme IDs; no English G2P at acoustic boundary",
     "num_symbols": 58,
@@ -100,30 +115,12 @@
     "piper_version": "v1.8.0",
     "piper_commit": "639388b6317fc4731e91d53da42aea68fd4166ff"
   },
-  "next_safe_execution": {
-    "kind": "inference_only_acoustic_reset_hybrid",
-    "sync_command": "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/sync_governance.sh",
-    "launcher": "governance/application-planning/dwc-speech/tools/run_r1_acoustic_reset_diagnostic.sh",
-    "diagnostic_tool": "governance/application-planning/dwc-speech/tools/DWC_R1_Acoustic_Reset_Diagnostic_v0.1.0.py",
-    "variants": ["R1 as-is", "restore decoder only", "restore flow only", "restore decoder+flow", "restore full warm acoustic set dec+enc_q+flow"],
-    "training_permitted": false,
-    "decision_after": "If an acoustic-reset hybrid materially improves multi-seed robustness, design a protected retrain that preserves the successful warm-start acoustic modules. Otherwise diagnose/extend DWC text/prior generalization before any R2."
-  },
-  "prohibited_forward_paths": [
-    "enter R2 before a genuine governed R1 pass",
-    "resume or extend training before the acoustic-reset hybrid diagnosis is reviewed",
-    "continue from historical stageC_weights.pt",
-    "weaken the -55 dBFS waveform floor",
-    "select a lucky seed as acceptance",
-    "accept colliding persisted render identities",
-    "treat machine waveform acceptance as human CNS perceptual acceptance"
-  ],
   "source_provenance": [
+    "DWC_R1_ACOUSTIC_RESET_RESULT_2026-09-10.json",
     "DWC_R1_INFERENCE_DIAGNOSTIC_RESULT_2026-09-10.json",
     "DWC_R1_FULL_DIAGNOSTIC_ANALYSIS_2026-09-10.json",
     "DWC_R1_OBSERVED_RESULT_2026-09-10.json",
-    "DWC_LOCAL_WORKSTATION_SURFACE_2026-09-10.json",
-    "DWC_BOOTSTRAP_CORPUS_V0_1_FAILURE_AND_V0_2_1_REPAIR.json"
+    "DWC_LOCAL_WORKSTATION_SURFACE_2026-09-10.json"
   ],
   "mutable_facts_require_live_recheck_before_claim": true
 }
