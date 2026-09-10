@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.11.0",
+  "schema_version": "0.12.0",
   "project_id": "DWC-SPEECH",
   "project_name": "DWC Speech Synthesis",
   "owner": "John Brandon Turner",
@@ -9,92 +9,74 @@
   "stable_entrypoint": "governance/application-planning/dwc-speech/README.md",
   "human_anchor": "governance/application-planning/dwc-speech/DWC_PROJECT_ANCHOR.md",
   "preferred_execution_surface_evidence": "governance/application-planning/dwc-speech/DWC_LOCAL_WORKSTATION_SURFACE_2026-09-10.json",
-  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_R1_ACOUSTIC_RESET_RESULT_2026-09-10.json",
+  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_R1_FLOW_RESTORE_PROMOTION_RESULT_2026-09-10.json",
   "execution_frontier": {
-    "name": "Persisted R1 flow-restored hybrid machine promotion check",
-    "state": "r1_flow_drift_isolated_promotion_check_ready",
-    "summary": "R1 completed 128 batches but failed its original strict waveform gate 104/125. A corrected unique-identity rerun reproduced that result exactly. Multi-seed and noise diagnostics showed broad stochastic low-level instability. The acoustic-reset diagnostic now isolates the instability to R1 drift in model_g.flow: restoring only the pristine warm-start flow produces 125/125 on all three tested seed schedules, while decoder-only restoration does not. Before any R2 training, persist an R1-flow-restored hybrid checkpoint and require 125/125 across five deterministic seed schedules with 125 uniquely persisted primary-gate WAVs.",
+    "name": "Protected full-corpus R2 from promoted R1 flow-restored hybrid",
+    "state": "protected_r2_authorized_ready_not_started",
+    "summary": "The completed R1 model failed its original machine gate because model_g.flow drifted. Restoring only the 112 flow tensors from the exact warm-start produced a persisted hybrid that passed the corrected 125-row gate on all five deterministic seed schedules (625/625 decisions) with 125 unique persisted primary renders. Protected R2 is now authorized from this exact hybrid with model_g.flow frozen and hash-verified unchanged. Human CNS perceptual acceptance remains blocked until R2 machine success.",
     "r1_training_complete": true,
     "original_r1_machine_gate_passed": false,
-    "flow_drift_isolated": true,
-    "r2_authorized": false,
-    "human_perceptual_gate_authorized": false,
-    "additional_training_authorized": false
+    "r1_flow_restored_hybrid_promoted": true,
+    "r2_authorized": true,
+    "r2_started": false,
+    "human_perceptual_gate_authorized": false
   },
-  "r1_checkpoint": {
-    "file": "R1_phone_balanced_weights_batch0128.pt",
-    "bytes": 281764423,
-    "sha256": "92c10d9dd583d609e70413ffb5eded405ead62606b8a97111056619ab2e9745b"
+  "promoted_r1_hybrid": {
+    "file": "R1_flow_restored_candidate.pt",
+    "bytes": 281757889,
+    "sha256": "5a060141f20be076a9130c59a7da6d06294f912a3d0aa00b5a0c1b27ffda96e4",
+    "source_r1_sha256": "92c10d9dd583d609e70413ffb5eded405ead62606b8a97111056619ab2e9745b",
+    "warmstart_sha256": "dcf2449bdbdaad09256a08dfac211c59f6b36ce8d3f244fd844a9eb1d7384c7c",
+    "restored_prefix": "model_g.flow.",
+    "restored_tensors": 112,
+    "machine_promotion_status": "PROMOTION_READY"
   },
-  "warmstart_checkpoint": {
-    "file": "lj-med_1000.ckpt",
-    "bytes": 845889993,
-    "sha256": "dcf2449bdbdaad09256a08dfac211c59f6b36ce8d3f244fd844a9eb1d7384c7c"
+  "strengthened_r1_machine_gate": {
+    "acceptance_rows": 125,
+    "unique_row_ids": 125,
+    "unique_output_filenames": 125,
+    "persisted_primary_wavs": 125,
+    "seed_schedule_pass_counts": [125, 125, 125, 125, 125],
+    "pass_5_of_5_rows": 125,
+    "total_decisions": 625,
+    "total_pass": 625,
+    "rms_floor_dbfs": -55.0,
+    "minimum_rms_dbfs_across_seed_summaries": -52.537684352691315
   },
-  "acceptance_identity": {
-    "legacy_rows": 125,
-    "legacy_unique_ids_and_filenames": 95,
-    "corrected_file": "TTS_ENGINE_03_ACCEPTANCE_UTTERANCES_v0.2.0.tsv",
-    "corrected_rows": 125,
-    "corrected_unique_row_ids": 125,
-    "corrected_unique_output_filenames": 125,
-    "corrected_sha256": "d5ef320d00703579b180008b0bc932c18698b4cb5d7f3b7eba80eb90bb307fd7",
-    "original_gate_reproduction": {"pass": 104, "fail": 21, "status_mismatches": 0, "max_abs_rms_delta_db": 0.0}
+  "root_cause": {
+    "identified_module": "model_g.flow",
+    "evidence": "R1 as-is scored 104/107/100 across three seed schedules; decoder-only reset scored 107/108/101; flow-only reset scored 125/125/125. The persisted flow-restored hybrid subsequently scored 125/125 across all five promotion schedules.",
+    "repair_rule": "Preserve R1 DWC/text-side and decoder learning; restore and protect the known-good warm-start flow."
   },
-  "r1_seed_robustness": {
-    "five_seed_pass_counts": [104, 107, 100, 103, 103],
-    "pass_5_of_5_rows": 50,
-    "seed_sensitive_rows": 75,
-    "fail_5_of_5_rows": 0,
-    "interpretation": "Original R1 is broadly seed-sensitive rather than containing a fixed set of permanently dead utterances."
-  },
-  "noise_ablation": {
-    "default_pass": 104,
-    "no_duration_noise_pass": 112,
-    "no_latent_noise_pass": 0,
-    "reduced_noise_pass": 61,
-    "zero_noise_pass": 0,
-    "interpretation": "Inference tuning alone is not a valid repair; amplitude is strongly latent-noise dependent."
-  },
-  "acoustic_reset_diagnosis": {
-    "parameter_drift_relative_l2": {
-      "decoder": 0.02328783887906109,
-      "posterior_encoder": 0.02497347120329914,
-      "flow": 0.020087829745938403
-    },
-    "three_seed_pass_counts": {
-      "r1_as_is": [104, 107, 100],
-      "decoder_reset_only": [107, 108, 101],
-      "flow_reset_only": [125, 125, 125],
-      "decoder_and_flow_reset": [125, 125, 125],
-      "full_warm_acoustic_reset": [125, 125, 125]
-    },
-    "flow_reset_only_min_rms_dbfs_by_seed": [-52.170334440177015, -51.552293533513335, -52.537684352691315],
-    "primary_conclusion": "R1 drift in model_g.flow is the identified cause of the stochastic low-level failures. Decoder restoration alone does not fix the problem. Flow-only restoration is the minimum-change successful intervention and preserves R1 decoder plus DWC text-side learning.",
-    "piper_transfer_boundary": "The official vocoder warm-start transfers model_g.dec, model_g.enc_q and model_g.flow. R1 had optimized all model_g parameters, including the previously good flow."
+  "protected_r2_contract": {
+    "source_checkpoint_sha256": "5a060141f20be076a9130c59a7da6d06294f912a3d0aa00b5a0c1b27ffda96e4",
+    "corpus": "DWC_Synthetic_Bootstrap_Corpus_v0.2.1",
+    "rows": 799,
+    "schedule": "one deterministic shuffled pass",
+    "flow_policy": "model_g.flow parameters frozen, excluded from generator optimizer, and state-prefix hash checked unchanged at completion",
+    "learning_rates": "retain Piper v1.8.0 defaults for remaining trainable generator/discriminator parameters",
+    "probe_every_batches": 8,
+    "probe_guard": "fixed-seed row-level floor >= -55 dBFS and no individual probe may fall more than 18 dB from its promoted-hybrid baseline; median guard retained too",
+    "full_primary_gate_every_batches": 64,
+    "intermediate_gate_rule": "corrected unique 125-row primary seed gate must remain 125/125 or R2 aborts and preserves a diagnostic checkpoint",
+    "final_gate": "125/125 on each of five deterministic seed schedules, with 125 uniquely persisted primary-gate WAVs",
+    "human_gate": "NOT_RUN by R2 harness"
   },
   "next_safe_execution": {
-    "kind": "inference_only_persisted_flow_restore_promotion_check",
+    "kind": "protected_gpu_training",
     "sync_command": "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/sync_governance.sh",
-    "launcher": "governance/application-planning/dwc-speech/tools/run_r1_flow_restore_promotion_check.sh",
-    "tool": "governance/application-planning/dwc-speech/tools/DWC_R1_Flow_Restore_Promotion_Check_v0.1.0.py",
-    "operations": [
-      "copy only model_g.flow.* from the exact verified warm-start into the completed R1 checkpoint",
-      "persist the hybrid checkpoint with provenance and SHA-256",
-      "run the corrected unique 125-row machine gate across five deterministic seed schedules",
-      "persist 125 uniquely identified WAVs for the primary seed schedule",
-      "require every row to pass all five schedules before marking machine-promotion-ready"
-    ],
-    "training_permitted": false,
-    "r2_permitted": false,
-    "decision_after": "If the persisted hybrid is PROMOTION_READY, authorize a separately governed R2 that starts from that hybrid and freezes model_g.flow.*. Add row-level/quantile amplitude protection so median-only collapse detection cannot miss heterogeneous failures."
+    "launcher": "governance/application-planning/dwc-speech/tools/run_protected_r2.sh",
+    "tool": "governance/application-planning/dwc-speech/tools/DWC_Protected_R2_v0.1.0.py",
+    "expected_success_status": "PASS_PROTECTED_R2_MACHINE_GATE",
+    "on_abort": "Do not retry blindly. Upload the generated DWC_R2_PROTECTED_RESULT_*.zip and diagnose the exact guard boundary.",
+    "on_success": "Upload the generated DWC_R2_PROTECTED_RESULT_*.zip. Review hashes/gates, then prepare the separate human CNS perceptual acceptance package."
   },
   "prohibited_forward_paths": [
-    "enter R2 before the persisted flow-restored hybrid passes its strengthened machine check",
-    "train or update model_g.flow before explicit post-promotion authorization",
+    "unfreeze or update model_g.flow during protected R2",
+    "enter human perceptual acceptance before protected R2 machine success",
     "resume historical Stage-C lineage",
     "weaken the -55 dBFS waveform floor",
-    "use a lucky stochastic seed as acceptance",
+    "use a lucky seed as machine acceptance",
     "accept colliding render identities",
     "treat machine waveform acceptance as human CNS perceptual acceptance"
   ],
@@ -116,11 +98,11 @@
     "piper_commit": "639388b6317fc4731e91d53da42aea68fd4166ff"
   },
   "source_provenance": [
+    "DWC_R1_FLOW_RESTORE_PROMOTION_RESULT_2026-09-10.json",
     "DWC_R1_ACOUSTIC_RESET_RESULT_2026-09-10.json",
     "DWC_R1_INFERENCE_DIAGNOSTIC_RESULT_2026-09-10.json",
     "DWC_R1_FULL_DIAGNOSTIC_ANALYSIS_2026-09-10.json",
-    "DWC_R1_OBSERVED_RESULT_2026-09-10.json",
-    "DWC_LOCAL_WORKSTATION_SURFACE_2026-09-10.json"
+    "DWC_R1_OBSERVED_RESULT_2026-09-10.json"
   ],
   "mutable_facts_require_live_recheck_before_claim": true
 }
