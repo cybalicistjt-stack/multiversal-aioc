@@ -1,0 +1,23 @@
+{
+  "schema_version": "0.1.0",
+  "work_item_id": "ARI-05",
+  "attempt_id": "ARI-05-attempt-001",
+  "title": "RAR/7z Archive Adapter Contract",
+  "track": "asset-resource-ingestion-reuse",
+  "source_program": "ARI",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "estimated_active_minutes": 20,
+  "execution_target_minutes": 24,
+  "minimum_closeout_reserve_minutes": 8,
+  "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
+  "objective": "Add governed RAR/7z extraction adapters with explicit runtime-capability detection and unsupported diagnostics rather than silently pretending extraction succeeded.",
+  "predecessor": {"work_item_id":"ARI-04","status":"completed_verified","application_pr":445,"application_validated_head":"aa853e3b4c6e4dab008de2405d1f96d1ffe9ad10","application_validation_run":34364074348,"deterministic_receipt_sha256":"3bb6da24052c8526a61db6f95d5f346510f3681d9396caecd127f3c57a729411","application_merge_sha":"19b85b153afd84c533f2fc10627fd756864047db"},
+  "selection_boundaries": ["ARI-04 is completed_verified and its bounded ZIP staging/extraction protections remain the ZIP intake contract.","ARI-05 may add governed RAR/7z adapter capability detection and explicit unsupported diagnostics only after its own governed start.","ARI-06 recursive discovery/media classification and all later ARI implementation remain unauthorized.","Provider credentials, external scraping/extraction, tester distribution and release/deployment remain unauthorized.","No implementation branch or implementation authority exists while this checkpoint is selected_not_started."],
+  "strict_successor": "ARI-06",
+  "next_action": "On the next execution Continue, governed-start ARI-05 only and carry it through its terminal gate in one continuation."
+}
