@@ -1,12 +1,13 @@
 # MLR-01 — Local Workstation Resource Acquisition & Bootstrap
 
 **Work order ID:** MLR-01  
-**Status:** OWNER-AUTHORIZED PARALLEL MACHINE-LOCAL WORK ORDER  
-**Lifecycle intent:** CURRENT_COMPATIBLE  
+**Status:** COMPLETED_VERIFIED
+**Lifecycle:** COMPLETED_VERIFIED (machine-local authority retired)
 **Owner and final authority:** John Brandon Turner  
 **Approved:** 2026-09-09  
+**Completed:** 2026-09-10
 **Product implementation authority:** none  
-**Repository mutation authority:** none, except read-only governance/repository inspection needed to avoid conflicts
+**Repository mutation authority:** retired; the owner-authorized canonical closeout is recorded in `governance/ai/work-state/MLR-01_CLOSEOUT_2026-09-10.json`
 
 ## Purpose
 
@@ -117,3 +118,17 @@ Prefer deterministic local tooling for search, conversion, linting, formatting, 
 ## Completion evidence
 
 MLR-01 machine setup is complete when every Tier A/B/C entry is `installed_verified`, `already_installed_verified`, `conditional_deferred` with an explicit hardware/license reason, or `blocked` with exact recovery instructions; wrong-architecture downloads are quarantined; smoke tests pass for installed tools; and no product repository or active work authority was mutated by setup.
+
+## Canonical closeout
+
+MLR-01 satisfied its completion criteria on 2026-09-10 and is frozen `completed_verified`. The canonical machine manifest records 45 Tier A/B/C resources: 40 `installed_verified` and 5 `already_installed_verified`, with zero `conditional_deferred` and zero `blocked`. The final-validation receipt records `pass: true`; the setup changed no tracked product repository files and did not alter `CURRENT_WORK_POINTER.json` or the active ARI-04 authority.
+
+Durable closeout evidence:
+
+- `governance/ai/work-state/MLR-01_CLOSEOUT_2026-09-10.json`
+- `governance/ai/work-state/MLR-01_SETUP_REPORT_2026-09-10.md`
+- `governance/ai/work-state/MLR-01_MACHINE_RESOURCE_MANIFEST_2026-09-10.json`
+- `governance/ai/work-state/MLR-01_POST_SETUP_REEVALUATION_2026-09-10.md`
+- `governance/ai/work-state/MLR-01_FINAL_VALIDATION_RECEIPT_2026-09-10.json`
+
+Future sessions must treat MLR-01 as finished unless the owner explicitly authorizes a new maintenance or acquisition work order. Tool use for later product work remains subject to the active product pointer and each tool's recorded license/integration boundary.

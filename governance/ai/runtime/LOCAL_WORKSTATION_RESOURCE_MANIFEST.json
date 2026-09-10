@@ -1,7 +1,8 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "work_order_id": "MLR-01",
-  "status": "owner_authorized_machine_local",
+  "status": "completed_verified",
+  "completed_at": "2026-09-10",
   "product_implementation_authority": false,
   "repository_mutation_authority": false,
   "resource_root": "/home/antiquaria/multiversal/resources/",
@@ -30,5 +31,20 @@
     {"resource":"opaque ~1.95GB ZIP","observed":"identified as ChatGPT data export","required_action":"leave untouched; not tooling"}
   ],
   "receipt_fields": ["resource","version","architecture","canonical_source","license","sha256","signature_status","install_path","configuration","smoke_test","status","notes"],
-  "allowed_terminal_statuses": ["installed_verified","already_installed_verified","conditional_deferred","blocked"]
+  "allowed_terminal_statuses": ["installed_verified","already_installed_verified","conditional_deferred","blocked"],
+  "completion_summary": {
+    "resource_count": 45,
+    "installed_verified": 40,
+    "already_installed_verified": 5,
+    "conditional_deferred": 0,
+    "blocked": 0,
+    "final_validation_pass": true,
+    "product_repositories_modified": false
+  },
+  "canonical_closeout": "governance/ai/work-state/MLR-01_CLOSEOUT_2026-09-10.json",
+  "canonical_machine_manifest": "governance/ai/work-state/MLR-01_MACHINE_RESOURCE_MANIFEST_2026-09-10.json",
+  "canonical_setup_report": "governance/ai/work-state/MLR-01_SETUP_REPORT_2026-09-10.md",
+  "canonical_post_setup_reevaluation": "governance/ai/work-state/MLR-01_POST_SETUP_REEVALUATION_2026-09-10.md",
+  "canonical_final_validation_receipt": "governance/ai/work-state/MLR-01_FINAL_VALIDATION_RECEIPT_2026-09-10.json",
+  "future_session_rule": "MLR-01 is completed_verified and must not be treated as unfinished. Any later workstation maintenance or acquisition requires a new owner-authorized work order."
 }

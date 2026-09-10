@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "MLR-01",
+  "title": "Local Workstation Resource Acquisition & Bootstrap",
+  "status": "completed_verified",
+  "completed_at": "2026-09-10",
+  "owner": "John Brandon Turner",
+  "authority_baseline_sha": "51bcc4e25cb65b95ab293176990a6958e0e7d16e",
+  "work_order": "governance/ai/runtime/LOCAL_WORKSTATION_RESOURCE_ACQUISITION_WORK_ORDER.md",
+  "resource_manifest_projection": "governance/ai/runtime/LOCAL_WORKSTATION_RESOURCE_MANIFEST.json",
+  "completion_evidence": {
+    "setup_report": {
+      "path": "governance/ai/work-state/MLR-01_SETUP_REPORT_2026-09-10.md",
+      "sha256": "546bd70fd830831f1e0697711798c80930522a0ddec467436bdc5d01c88422db"
+    },
+    "machine_manifest": {
+      "path": "governance/ai/work-state/MLR-01_MACHINE_RESOURCE_MANIFEST_2026-09-10.json",
+      "sha256": "84d9a289465c76409e9dcab5f60e32d373050bf928f1fe6eedc99ee2b48268be",
+      "machine_source_sha256_before_line_ending_normalization": "2a089d3ba61db9569bb6b204593f470afa571c4f61750c5bd201b45dc54fbcd3"
+    },
+    "post_setup_reevaluation": {
+      "path": "governance/ai/work-state/MLR-01_POST_SETUP_REEVALUATION_2026-09-10.md",
+      "sha256": "efd7671cd0272f8bfb663afd434497f13e462192d9af5d92c160fd3537b9c9f9"
+    },
+    "final_validation_receipt": {
+      "path": "governance/ai/work-state/MLR-01_FINAL_VALIDATION_RECEIPT_2026-09-10.json",
+      "sha256": "f0ee873cca765ede4b8112d6ef8b2a056719cb506f2b0accbcc2dd465cb74dd7",
+      "machine_source_sha256_before_line_ending_normalization": "86e83ce006e589d09036adf5f587857296d925b08c30d661e388ce2f4838934f",
+      "pass": true
+    }
+  },
+  "completion_summary": {
+    "tier_a_b_c_resource_count": 45,
+    "installed_verified": 40,
+    "already_installed_verified": 5,
+    "conditional_deferred": 0,
+    "blocked": 0,
+    "retained_artifact_count": 58,
+    "tier_d_registry_count": 18,
+    "tier_e_catalog_count": 10,
+    "wrong_architecture_downloads_quarantined": true,
+    "local_services_loopback_bound": true,
+    "product_repositories_modified_by_setup": false
+  },
+  "authority_retirement": {
+    "machine_local_execution_authority": false,
+    "product_implementation_authority": false,
+    "repository_mutation_authority": false,
+    "may_execute_in_parallel": false,
+    "current_work_pointer_modified": false,
+    "active_product_work_at_closeout": "ARI-04",
+    "rule": "MLR-01 is complete and must not be selected, resumed or treated as unfinished. Any later workstation acquisition, maintenance, model download or integration decision requires the then-current product authority or a new owner-authorized machine-local work order."
+  },
+  "preserved_boundaries": [
+    "Tier D remains registry/evaluation only and was not added to the Multiversal application as dependencies.",
+    "Tier E remains catalog-first and was not bulk-downloaded.",
+    "Candlekeep Revisited remains pattern/reference study only absent separate rights evidence; no protected setting content was copied.",
+    "WeiDU remains separately licensed reference material and Multiversal-native CNI direction is unchanged.",
+    "No paid provider was activated, private content uploaded, firmware or security control changed, or product feature implemented.",
+    "The identified ChatGPT export and unrelated worktrees, branches, untracked files and project data were preserved."
+  ],
+  "post_setup_rule": "The post-setup reevaluation is advisory and read-only. It does not alter CURRENT_WORK_POINTER, select a successor, authorize dependencies, or replace tranche-specific governance.",
+  "next_safe_action": "Use the installed tools under the active ARI-04 authority only where they fit its acceptance criteria; reevaluate remaining work from current canonical governance rather than reopening MLR-01."
+}
