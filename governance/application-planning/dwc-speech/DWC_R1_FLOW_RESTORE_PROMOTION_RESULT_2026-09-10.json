@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1.0",
+  "project_id": "DWC-SPEECH",
+  "evidence_type": "r1_flow_restore_promotion_result",
+  "recorded_at": "2026-09-10",
+  "source_package": {
+    "file": "DWC_R1_FLOW_RESTORE_PROMOTION_20260910_125219.zip",
+    "bytes": 37596,
+    "sha256": "69f1f7b91a448c9997bf4110bd1493cb4f85d664dd7c45287232239e0a9ad18f"
+  },
+  "status": "PROMOTION_READY",
+  "training_performed": false,
+  "r2_run": false,
+  "hybrid": {
+    "file": "R1_flow_restored_candidate.pt",
+    "bytes": 281757889,
+    "sha256": "5a060141f20be076a9130c59a7da6d06294f912a3d0aa00b5a0c1b27ffda96e4",
+    "source_r1_sha256": "92c10d9dd583d609e70413ffb5eded405ead62606b8a97111056619ab2e9745b",
+    "warmstart_sha256": "dcf2449bdbdaad09256a08dfac211c59f6b36ce8d3f244fd844a9eb1d7384c7c",
+    "restored_prefix": "model_g.flow.",
+    "restored_tensors": 112
+  },
+  "acceptance": {
+    "rows": 125,
+    "unique_acceptance_row_ids": 125,
+    "unique_output_filenames": 125,
+    "persisted_primary_wavs": 125,
+    "rms_floor_dbfs": -55.0
+  },
+  "five_seed_gate": [
+    {"seed_base": 20263908, "pass": 125, "fail": 0, "rms_dbfs_median": -46.34758425730717, "rms_dbfs_min": -52.202401489197065},
+    {"seed_base": 20264908, "pass": 125, "fail": 0, "rms_dbfs_median": -45.8247272967788, "rms_dbfs_min": -51.552293533513335},
+    {"seed_base": 20265908, "pass": 125, "fail": 0, "rms_dbfs_median": -46.47145592894436, "rms_dbfs_min": -52.537684352691315},
+    {"seed_base": 20266908, "pass": 125, "fail": 0, "rms_dbfs_median": -46.11913447960961, "rms_dbfs_min": -51.77803787932276},
+    {"seed_base": 20267908, "pass": 125, "fail": 0, "rms_dbfs_median": -46.65673239043439, "rms_dbfs_min": -51.502528453548955}
+  ],
+  "robustness": {
+    "pass_5_of_5": 125,
+    "fail_any_seed": 0,
+    "total_waveform_decisions": 625,
+    "total_pass": 625
+  },
+  "conclusion": "The persisted R1 flow-restored hybrid satisfies the strengthened machine promotion condition. R2 may proceed only as a protected stage beginning from this exact hybrid while model_g.flow remains frozen and hash-verified unchanged. Human CNS perceptual acceptance remains separate."
+}
