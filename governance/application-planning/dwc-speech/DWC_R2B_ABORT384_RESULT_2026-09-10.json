@@ -1,0 +1,113 @@
+{
+  "schema_version": "0.1.0",
+  "project_id": "DWC-SPEECH",
+  "evidence_type": "r2b_protected_abort384_result",
+  "recorded_at": "2026-09-10",
+  "source_package": {
+    "file": "DWC_R2B_PROTECTED_RESULT_20260910_142853.zip",
+    "bytes": 155840,
+    "sha256": "d140446350044daaa389e7a245a7579b1e5a071704ec20849eaf1fb0eb46a44b",
+    "package_checksum_entries_verified": 24,
+    "package_checksum_mismatches": 0
+  },
+  "status": "ABORT_R2B_PROTECTED_GUARD",
+  "training_performed": true,
+  "r2_complete": false,
+  "human_perceptual_gate": "NOT_RUN",
+  "reason": "intermediate_primary_125_gate",
+  "phase_batch": 384,
+  "source_candidate": {
+    "file": "R2B_source_abort64_dp_restored.pt",
+    "bytes": 281760537,
+    "sha256": "e0d78cf89a4fd50a79e064837993d8bc11556e03ad2399d64b8cc53ee93c146b",
+    "construction": "exact protected-R2 batch-64 abort state with model_g.dp restored from promoted R1 hybrid"
+  },
+  "abort_checkpoint": {
+    "file": "ABORT_R2B_PROTECTED_batch0384.pt",
+    "bytes": 281760195,
+    "sha256": "c24d461484ebb714fb7484cc1616c2790c12df81c0d2d726f13f852ff01434fc"
+  },
+  "protected_modules": {
+    "model_g.flow": {
+      "initial_hash": "cfe517d3184001c5213e248cc5434b17eff8a9fdb7273eed6f05a6971e1a81e8",
+      "abort_hash": "cfe517d3184001c5213e248cc5434b17eff8a9fdb7273eed6f05a6971e1a81e8",
+      "unchanged": true
+    },
+    "model_g.dp": {
+      "initial_hash": "054d6572e43a45ed71e32e087eca4a257acb07c5304ba09d3cdece929187fb1e",
+      "abort_hash": "054d6572e43a45ed71e32e087eca4a257acb07c5304ba09d3cdece929187fb1e",
+      "unchanged": true
+    }
+  },
+  "pre_training_five_seed_gate": {
+    "pass_counts": [125, 125, 125, 125, 125],
+    "total_pass": 625,
+    "total_decisions": 625,
+    "worst_rms_dbfs": -48.0354234964618
+  },
+  "intermediate_gates": {
+    "batch_128": {
+      "primary_pass": 125,
+      "five_seed_pass_counts": [125, 125, 125, 125, 125],
+      "five_seed_total_pass": 625,
+      "worst_rms_dbfs": -49.3732181783534
+    },
+    "batch_192": {
+      "primary_pass": 125
+    },
+    "batch_256": {
+      "primary_pass": 125,
+      "five_seed_pass_counts": [125, 125, 125, 125, 125],
+      "five_seed_total_pass": 625,
+      "worst_rms_dbfs": -53.57086372786789
+    },
+    "batch_320": {
+      "primary_pass": 125,
+      "primary_median_rms_dbfs": -35.535077771820134,
+      "primary_min_rms_dbfs": -43.889171096671184
+    },
+    "batch_384": {
+      "primary_pass": 123,
+      "primary_fail": 2,
+      "primary_median_rms_dbfs": -38.614437404615664,
+      "primary_min_rms_dbfs": -57.11437156113459,
+      "below_minus55": 1,
+      "failed_rows": [
+        {
+          "acceptance_row_id": "DWCACC-0021",
+          "source_utterance_id": "CONTRAST-i_-01",
+          "dwc_text": "ei",
+          "duration_s": 0.12770975056689343,
+          "rms_dbfs": -57.11437156113459,
+          "reason": "low_level"
+        },
+        {
+          "acceptance_row_id": "DWCACC-0024",
+          "source_utterance_id": "CONTRAST-i_-04",
+          "dwc_text": "nei",
+          "duration_s": 0.06965986394557823,
+          "rms_dbfs": -35.92131374656999,
+          "reason": "duration"
+        }
+      ]
+    }
+  },
+  "training_coverage": {
+    "r2_total_schedule_rows": 799,
+    "prior_rows_retained_from_r2_abort64": 64,
+    "r2b_rows_trained_before_guard": 320,
+    "global_schedule_rows_represented_at_abort": 384,
+    "remaining_schedule_rows_if_abort384_were_repaired": 415,
+    "optimizer_state_restored": false
+  },
+  "interpretation": {
+    "owner_execution_error": false,
+    "flow_regression": false,
+    "duration_predictor_regression": false,
+    "last_fully_strengthened_robust_gate_observed": 256,
+    "last_primary_only_pass_observed": 320,
+    "conclusion": "R2B remained fully robust through the five-seed batch-256 gate, then regressed by batch 384 despite model_g.flow and model_g.dp remaining bit-stable. The new failures therefore arise from other trainable inference-side state, most plausibly model_g.enc_p and/or model_g.dec. Do not continue training until those modules are isolated against the batch-256 robust checkpoint."
+  },
+  "training_authorized_by_this_result": false,
+  "human_gate_authorized_by_this_result": false
+}
