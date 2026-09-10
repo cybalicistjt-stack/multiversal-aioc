@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0.0",
+  "work_item": "LXG-01",
+  "status": "local_machine_active_pending_openai_tunnel_and_chatgpt_app",
+  "date": "2026-09-10",
+  "product_work_pointer_changed": false,
+  "product_selector": "ARI-05 selected_not_started",
+  "application": {
+    "gateway_implementation_pr": 446,
+    "gateway_implementation_merge": "862c0620e88e278f2b204028ef2ac1226083669b",
+    "bootstrap_handoff_pr": 447,
+    "bootstrap_handoff_merge": "5f21132092298902f413db3f5dc0add1c29e96ef",
+    "bootstrap_validated_head": "03f7d74cf440b865600559d1b80c9eca51bd7a12",
+    "bootstrap_validation_run": 34476386207
+  },
+  "machine_activation": {
+    "host": "DaddysLoad",
+    "runner": "multiversal-linux-02",
+    "activation_run": 34478668364,
+    "activation_head": "ab69fbe6729c48bf7c3bea732643eba80b2ce6c0",
+    "activation_result": "success",
+    "persistent_reproof_run": 34479348453,
+    "persistent_reproof_head": "67e18814f0f14688c911f89897b21d83e2ed6eb2",
+    "persistent_reproof_result": "success",
+    "helper_staging_run": 34480000262,
+    "helper_staging_head": "b35070a549185fcf808240d50ab578ccfbfa7b44",
+    "helper_staging_result": "success",
+    "service_manager": "systemd_user",
+    "service_name": "multiversal-lxg.service",
+    "service_enabled": true,
+    "service_active": true,
+    "persistence_independent_proof": "fresh self-hosted job found multiversal-lxg.service already active and 127.0.0.1:8765 reachable before activation reuse",
+    "mcp_endpoint": "http://127.0.0.1:8765/mcp",
+    "loopback_only": true,
+    "gateway_source_commit": "5f21132092298902f413db3f5dc0add1c29e96ef",
+    "gateway_runtime_root": "/home/antiquaria/multiversal/bootstrap/lxg/runtime/5f21132092298902f413db3f5dc0add1c29e96ef",
+    "app_snapshot_root": "/home/antiquaria/multiversal/bootstrap/lxg/sources/app/5f21132092298902f413db3f5dc0add1c29e96ef",
+    "aioc_snapshot_root": "/home/antiquaria/multiversal/bootstrap/lxg/sources/aioc/8e66e39d44bb052227dc248a66fdab205959ab07",
+    "config_path": "/home/antiquaria/.config/multiversal/lxg.json",
+    "uv_version": "0.12.11",
+    "tunnel_client_version": "0.0.14",
+    "tunnel_client_root": "/home/antiquaria/multiversal/bootstrap/lxg/tunnel-client/v0.0.14-linux-amd64",
+    "credential_safe_finish_helper": "/home/antiquaria/multiversal/bootstrap/lxg/finish_tunnel.sh",
+    "interactive_connection_helper": "/home/antiquaria/multiversal/bootstrap/lxg/connect_chatgpt.sh"
+  },
+  "security": {
+    "phase1_tool_count": 6,
+    "phase1_tools": [
+      "search",
+      "fetch",
+      "gateway_status",
+      "inspect_file",
+      "inspect_media",
+      "local_model_query"
+    ],
+    "arbitrary_shell_exposed": false,
+    "unrestricted_filesystem_exposed": false,
+    "public_listener_exposed": false,
+    "runtime_api_key_persisted": false,
+    "tunnel_id_persisted": false
+  },
+  "remaining_external_completion_gate": {
+    "local_gateway_blocked": false,
+    "requires_openai_account_action": true,
+    "steps": [
+      "create or securely supply a runtime API key whose principal has Tunnels Read + Use",
+      "create or select an OpenAI Secure MCP Tunnel and obtain its tunnel_... identifier",
+      "run /home/antiquaria/multiversal/bootstrap/lxg/connect_chatgpt.sh locally so the key is entered hidden and retained only in process memory",
+      "verify tunnel-client runtime reports process_running=true, healthy=true, ready=true",
+      "create or refresh the private ChatGPT custom MCP app for the tunnel and scan tools",
+      "from an ordinary ChatGPT conversation execute gateway_status and search followed by fetch",
+      "record the redacted final connection receipt and retire LXG-01 only after those live proofs exist"
+    ]
+  },
+  "completion_claim": "LXG-01 local implementation and persistent machine activation are complete. Full LXG-01 completion remains pending the OpenAI Secure MCP Tunnel/custom-app handshake and ordinary-Chat smoke proof required by the authoritative work order."
+}
