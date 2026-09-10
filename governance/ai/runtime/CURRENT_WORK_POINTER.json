@@ -6,29 +6,29 @@
   "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
   "roadmap_supplements": [],
   "family_execution_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
-  "primary_attempt_id": "ARI-08-attempt-001",
-  "selection_reason": "ARI-07 completed_verified on application PR #450 with exact-head self-hosted Linux/Windows validation and deterministic cross-platform receipt; the owner has directed execution of the remaining sealed ARI family in strict order, advancing to ARI-08.",
+  "primary_attempt_id": "ARI-09-attempt-001",
+  "selection_reason": "ARI-08 completed_verified on application PR #452 with exact-head self-hosted Linux/Windows validation and deterministic cross-platform receipt; the owner-authorized sealed ARI sequence advances strictly to ARI-09.",
   "active_attempt": {
-    "work_item_id": "ARI-08",
-    "attempt_id": "ARI-08-attempt-001",
+    "work_item_id": "ARI-09",
+    "attempt_id": "ARI-09-attempt-001",
     "track": "asset-resource-ingestion-reuse",
     "source_program": "ARI",
     "priority": 1,
     "owner_selected": true,
     "repository": "cybalicistjt-stack/multiversal-aioc",
-    "checkpoint_path": "governance/ai/work-state/ARI-08-attempt-001.json",
-    "status": "in_progress",
-    "implementation_branch": "implementation/ari-08-syrinscape-soundset-xml-adapter",
-    "implementation_authority": true,
-    "active_item": "ARI-08 — Syrinscape Soundset XML Adapter"
+    "checkpoint_path": "governance/ai/work-state/ARI-09-attempt-001.json",
+    "status": "selected_not_started",
+    "implementation_branch": null,
+    "implementation_authority": false,
+    "active_item": "ARI-09 — Map, Tileset & Variant-Family Recognition"
   },
   "active_program": {
     "program_id": "ARI",
     "name": "Asset Resource Ingestion & Reuse",
     "status": "in_progress",
-    "completed_through": "ARI-07",
-    "current": "ARI-08",
-    "strict_next": "ARI-09",
+    "completed_through": "ARI-08",
+    "current": "ARI-09",
+    "strict_next": "ARI-10",
     "last": "ARI-22C",
     "semantic_last": "ARI-22",
     "program_path": "governance/application-planning/asset-resource-ingestion-reuse/ARI_ASSET_RESOURCE_INGESTION_REUSE_PROGRAM.md",
@@ -36,16 +36,17 @@
   },
   "bounded_authority": {
     "family_preflight_sealed": true,
-    "selected_ari_unit": "ARI-08",
-    "ari_implementation": true,
-    "implementation_branch": "implementation/ari-08-syrinscape-soundset-xml-adapter",
+    "selected_ari_unit": "ARI-09",
+    "ari_implementation": false,
+    "implementation_branch": null,
     "paid_provider_activation": false,
     "provider_credentials_or_scraping": false,
     "tester_distribution": false,
     "release_or_deployment": false,
-    "rule": "ARI-08 is in_progress on its bounded implementation branch. The owner has authorized the remaining sealed ARI units to execute strictly in order; ARI-09+ remain inactive until ARI-08 is completed_verified and each strict successor is canonically selected."
+    "rule": "ARI-09 is selected_not_started without implementation authority. The remaining sealed ARI units are owner-authorized strictly in order, but each successor remains inactive until its predecessor is completed_verified and canonically advances the pointer."
   },
   "recently_completed_ari_work": [
+    {"work_item_id":"ARI-08","status":"completed_verified","application_pr":452,"validated_head":"011eca6ee600a46c0954b997f06f90fb3c1ad8a2","validation_run":34504081771,"deterministic_receipt_sha256":"91e0998e5fd4eb1aa33712ac65b1c80886a00b0f94c6dd40fda06dbf454fa0fe","merge_sha":"2b02d00070f474a30427e4d1d709a039066f813b"},
     {"work_item_id":"ARI-07","status":"completed_verified","application_pr":450,"validated_head":"f4fc6d0a8a227633c7770c3d3c0f44500516393c","validation_run":34492431543,"deterministic_receipt_sha256":"e23919234f9121b2d1586723471b4eb86d28b5d7b52a6cad331c6c96ac084de6","merge_sha":"2cd705d33cd9423cfbf807fdfe865e25d654e844"},
     {"work_item_id":"ARI-06","status":"completed_verified","application_pr":449,"validated_head":"8817121b74467928ace3af6b4110fc0dec419224","validation_run":34491327102,"deterministic_receipt_sha256":"c438428a00d1adec9e411949da46cec1e76d4d2eb5e1758f7994ccc90dd7957e","merge_sha":"36a550118db2a8efc528937ae3bb762a2d93b633"},
     {"work_item_id":"ARI-05","status":"completed_verified","application_pr":448,"validated_head":"27e0d557f61d927cdb5994a77157bacdd36fbdbf","validation_run":34488642268,"deterministic_receipt_sha256":"73e1b873e2c05112164c9f447326ae21c00093e533f6511dd39aeb7280a1946e","merge_sha":"08b4693f4ece80d61876b9becfc82726ea87e53f"},
@@ -60,6 +61,7 @@
     {"work_item_id":"SGC-08A","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_SYSTEM_PRODUCT_DISPOSITION_TRACE_GRAPH.json","frozen_source_nodes":8,"unique_concept_nodes":126,"implemented":79,"content_only":17,"planned_owned_elsewhere":26,"provenance_only":4,"unresolved_owner_decision":0,"unclassified_concepts":0}
   ],
   "recently_completed_implementation_work": [
+    {"work_item_id":"ARI-08","status":"completed_verified","application_pr":452,"validated_head":"011eca6ee600a46c0954b997f06f90fb3c1ad8a2","validation_run":34504081771,"deterministic_receipt_sha256":"91e0998e5fd4eb1aa33712ac65b1c80886a00b0f94c6dd40fda06dbf454fa0fe","merge_sha":"2b02d00070f474a30427e4d1d709a039066f813b"},
     {"work_item_id":"ARI-07","status":"completed_verified","application_pr":450,"validated_head":"f4fc6d0a8a227633c7770c3d3c0f44500516393c","validation_run":34492431543,"deterministic_receipt_sha256":"e23919234f9121b2d1586723471b4eb86d28b5d7b52a6cad331c6c96ac084de6","merge_sha":"2cd705d33cd9423cfbf807fdfe865e25d654e844"},
     {"work_item_id":"ARI-06","status":"completed_verified","application_pr":449,"validated_head":"8817121b74467928ace3af6b4110fc0dec419224","validation_run":34491327102,"deterministic_receipt_sha256":"c438428a00d1adec9e411949da46cec1e76d4d2eb5e1758f7994ccc90dd7957e","merge_sha":"36a550118db2a8efc528937ae3bb762a2d93b633"},
     {"work_item_id":"ARI-05","status":"completed_verified","application_pr":448,"validated_head":"27e0d557f61d927cdb5994a77157bacdd36fbdbf","validation_run":34488642268,"deterministic_receipt_sha256":"73e1b873e2c05112164c9f447326ae21c00093e533f6511dd39aeb7280a1946e","merge_sha":"08b4693f4ece80d61876b9becfc82726ea87e53f"},
@@ -74,10 +76,10 @@
   ],
   "selection_invariants": [
     "SGC is completed_verified through SGC-08C and retired from active family execution.",
-    "ARI-01 through ARI-07 are completed_verified; ARI-07 merged as application commit 2cd705d33cd9423cfbf807fdfe865e25d654e844.",
+    "ARI-01 through ARI-08 are completed_verified; ARI-08 merged as application commit 2b02d00070f474a30427e4d1d709a039066f813b.",
     "The live family preflight remains ARI with 24 execution units and ARI-22 pre-split into ARI-22A/B/C.",
-    "ARI-08 is in_progress with bounded implementation authority on implementation/ari-08-syrinscape-soundset-xml-adapter.",
+    "ARI-09 is selected_not_started with no implementation branch or authority.",
     "Historical lifecycle tests, detailed completed-program artifacts and unrelated connected systems remain blocked from ordinary ARI preload by default."
   ],
-  "exact_next_action": "Write the focused ARI-08 regression/profile, implement its bounded Syrinscape soundset XML adapter, validate the exact head, merge, close as completed_verified, and select ARI-09."
+  "exact_next_action": "On the next execution Continue, governed-start ARI-09 only and carry it through its terminal map/tileset variant-family recognition gate before advancing to ARI-10."
 }
