@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.9.0",
+  "schema_version": "0.10.0",
   "project_id": "DWC-SPEECH",
   "project_name": "DWC Speech Synthesis",
   "owner": "John Brandon Turner",
@@ -9,12 +9,11 @@
   "stable_entrypoint": "governance/application-planning/dwc-speech/README.md",
   "human_anchor": "governance/application-planning/dwc-speech/DWC_PROJECT_ANCHOR.md",
   "preferred_execution_surface_evidence": "governance/application-planning/dwc-speech/DWC_LOCAL_WORKSTATION_SURFACE_2026-09-10.json",
-  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_R1_FULL_DIAGNOSTIC_ANALYSIS_2026-09-10.json",
+  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_R1_INFERENCE_DIAGNOSTIC_RESULT_2026-09-10.json",
   "execution_frontier": {
-    "name": "Inference-only diagnosis of completed repaired-corpus R1 checkpoint",
-    "state": "r1_complete_machine_gate_failed_inference_diagnostic_ready",
-    "summary": "R1 completed all 128 governed phone-balanced batches on the local RTX 4060 workstation. The strict 125-row machine gate stopped at 104 PASS / 21 FAIL, all observed failures low-level, so R2 was correctly blocked. Full artifact analysis shows heterogeneous row-level amplitude collapse that the median-only probe guard did not catch, plus an inherited acceptance identity/output-filename collision (125 rows but only 95 unique IDs/files) and a warmstart-vs-R1 seed confound. Before any more training, run the prepared inference-only diagnostic on the completed R1 checkpoint with unique acceptance identities, five seed sweeps, and noise ablation.",
-    "training_started": true,
+    "name": "Inference-only R1 acoustic-reset hybrid diagnosis",
+    "state": "r1_complete_inference_diagnostic_complete_acoustic_reset_ready",
+    "summary": "R1 completed 128 batches but failed the governed gate 104/125. The repaired unique-identity acceptance rerun reproduced that result exactly. Five seed schedules produced only 100-107 passes; 75/125 rows are seed-sensitive and none fail all five. Removing duration noise improves a single seed to 112/125, but removing latent noise yields 0/125 and reduced latent noise yields 61/125. Default failure is 28% outside the 128-row R1 selection versus 9.3% inside it. Before any further training, compare R1 as-is against hybrids that restore the pristine warm-start decoder and/or flow while retaining the learned DWC text side.",
     "r1_training_complete": true,
     "r1_machine_gate_passed": false,
     "r2_authorized": false,
@@ -24,59 +23,68 @@
   "r1_result": {
     "batches": 128,
     "checkpoint": "R1_phone_balanced_weights_batch0128.pt",
-    "checkpoint_observed_bytes": 281764423,
+    "checkpoint_bytes": 281764423,
+    "checkpoint_sha256": "92c10d9dd583d609e70413ffb5eded405ead62606b8a97111056619ab2e9745b",
     "acceptance_rows": 125,
     "pass": 104,
     "fail": 21,
-    "failure_reason_observed": "low_level",
     "rms_dbfs_median": -43.32351160138194,
     "rms_dbfs_min": -73.7840424346194,
-    "governed_floor_dbfs": -55.0,
-    "below_minus57": 15,
-    "below_minus60": 11,
-    "below_minus65": 9,
-    "below_minus70": 7,
-    "r2_entered": false
+    "governed_floor_dbfs": -55.0
   },
-  "warmstart_acceptance": {
-    "rows": 125,
-    "pass": 116,
-    "fail": 9,
-    "failure_reason": "duration",
-    "rms_dbfs_median": -33.95713697353933,
-    "rms_dbfs_min": -53.33221780758176
+  "acceptance_identity": {
+    "legacy_rows": 125,
+    "legacy_unique_source_utterance_ids": 95,
+    "legacy_unique_filenames": 95,
+    "repaired_file": "TTS_ENGINE_03_ACCEPTANCE_UTTERANCES_v0.2.0.tsv",
+    "repaired_rows": 125,
+    "repaired_unique_row_ids": 125,
+    "repaired_unique_output_filenames": 125,
+    "repaired_sha256": "d5ef320d00703579b180008b0bc932c18698b4cb5d7f3b7eba80eb90bb307fd7",
+    "reproduction_status_mismatch_count": 0,
+    "reproduction_max_abs_rms_delta_db": 0.0
+  },
+  "seed_robustness": {
+    "seed_schedule_pass_counts": [104, 107, 100, 103, 103],
+    "always_pass_5_of_5": 50,
+    "seed_sensitive_1_to_4_passes": 75,
+    "always_fail_0_of_5": 0,
+    "passes_of_5_distribution": {"2": 6, "3": 21, "4": 48, "5": 50},
+    "rule": "A lucky seed is not promotable acceptance evidence."
+  },
+  "noise_ablation": {
+    "default": {"noise_scale": 0.667, "noise_scale_w": 0.8, "pass": 104, "median_dbfs": -43.318051128121056},
+    "no_duration_noise": {"noise_scale": 0.667, "noise_scale_w": 0.0, "pass": 112, "median_dbfs": -41.62449865420939},
+    "no_latent_noise": {"noise_scale": 0.0, "noise_scale_w": 0.8, "pass": 0, "median_dbfs": -70.82535961573534},
+    "reduced_noise": {"noise_scale": 0.35, "noise_scale_w": 0.4, "pass": 61, "median_dbfs": -55.656018066249906},
+    "zero_noise": {"noise_scale": 0.0, "noise_scale_w": 0.0, "pass": 0, "median_dbfs": -68.27027321461182},
+    "interpretation": "Inference tuning alone is insufficient; output amplitude is strongly latent-noise dependent."
+  },
+  "coverage_diagnosis": {
+    "acceptance_rows_in_r1_selection": 75,
+    "acceptance_rows_outside_r1_selection": 50,
+    "fails_in_selection": 7,
+    "fails_outside_selection": 14,
+    "fail_rate_in_selection": 0.09333333333333334,
+    "fail_rate_outside_selection": 0.28,
+    "interpretation": "The 128-row phone-balanced warm-up generalizes incompletely to natural/other acceptance rows."
   },
   "probe_diagnosis": {
     "warmstart_8row_median_rms_dbfs": -35.323816986292584,
     "batch128_8row_median_rms_dbfs": -39.75656311896138,
-    "median_collapse_guard_fired": false,
+    "median_guard_fired": false,
     "heterogeneous_row_level_collapse": true,
-    "worst_fixed_probe": {
-      "row": "NAT-PSS6-029",
-      "warmstart_rms_dbfs": -38.223818278662364,
-      "batch128_rms_dbfs": -70.60562838647292,
-      "delta_db": -32.38181010781055
-    },
-    "interpretation": "Global/median amplitude remained acceptable, but at least one fixed-seed utterance deteriorated severely. Future collapse protection needs row-level/quantile protection in addition to the median guard."
+    "worst_fixed_probe": {"source_utterance_id": "NAT-PSS6-029", "warmstart_rms_dbfs": -38.223818278662364, "batch128_rms_dbfs": -70.60562838647292, "delta_db": -32.38181010781055},
+    "future_guard_requirement": "Add row-level/quantile robustness protection; median-only amplitude guard is insufficient."
   },
-  "acceptance_validator_defect": {
-    "state": "confirmed",
-    "rows": 125,
-    "unique_source_utterance_ids": 95,
-    "unique_legacy_audio_filenames": 95,
-    "collision_groups": 10,
-    "extra_rows_on_colliding_names": 30,
-    "numeric_gate_effect": "The 104/125 statistics were calculated immediately per inference and remain diagnostic; collisions affect persisted render identity/completeness, not the already-failing stop decision.",
-    "promotion_rule": "No future 125/125 machine result is promotable until the acceptance renderer uses 125 unique governed row IDs and 125 unique output filenames."
-  },
-  "seed_confounded_comparison": {
-    "state": "confirmed",
-    "warmstart_seed_base": "seed+2000",
-    "r1_seed_base": "seed+3000",
-    "effect": "Direct per-row warmstart-to-R1 amplitude deltas conflate training change with stochastic inference seed change. Fixed-seed probe trajectories remain valid training-change evidence."
+  "piper_transfer_boundary": {
+    "vocoder_warmstart_prefixes": ["model_g.dec.", "model_g.enc_q.", "model_g.flow."],
+    "source": "Piper v1.8.0 _warmstart_vocoder_from_ckpt",
+    "r1_behavior": "Custom R1 optimizer updated all model_g parameters, including the warm-start acoustic modules.",
+    "diagnostic_hypothesis": "Restore warm-start decoder and/or flow while retaining R1 DWC text-side weights to isolate acoustic-backbone drift from incomplete text/prior adaptation."
   },
   "settled_architecture": {
-    "frontend": "DWC/PSS/CNS to engine-independent exact custom phoneme IDs; no English G2P at the acoustic boundary",
+    "frontend": "DWC/PSS/CNS to engine-independent exact custom phoneme IDs; no English G2P at acoustic boundary",
     "num_symbols": 58,
     "sample_rate": 22050,
     "engine_training_target": "Piper v1.8.0 exact-ID path",
@@ -93,35 +101,28 @@
     "piper_commit": "639388b6317fc4731e91d53da42aea68fd4166ff"
   },
   "next_safe_execution": {
-    "kind": "inference_only",
+    "kind": "inference_only_acoustic_reset_hybrid",
     "sync_command": "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/sync_governance.sh",
-    "launcher": "governance/application-planning/dwc-speech/tools/run_r1_inference_diagnostic.sh",
-    "identity_repair_tool": "governance/application-planning/dwc-speech/tools/DWC_REPAIR_ACCEPTANCE_IDENTITIES_v0.1.0.py",
-    "diagnostic_tool": "governance/application-planning/dwc-speech/tools/DWC_R1_Inference_Diagnostic_v0.1.0.py",
-    "operations": [
-      "create 125 unique governed acceptance row IDs and output filenames without changing text/IPA/exact IDs",
-      "load completed R1 checkpoint without optimizer creation or weight updates",
-      "reproduce original default-seed gate with unique persisted WAV identity",
-      "run five deterministic seed sweeps at original inference settings",
-      "ablate duration noise, latent noise, reduced noise, and zero-noise inference",
-      "return machine-readable summary for diagnosis"
-    ],
-    "training_permitted": false
+    "launcher": "governance/application-planning/dwc-speech/tools/run_r1_acoustic_reset_diagnostic.sh",
+    "diagnostic_tool": "governance/application-planning/dwc-speech/tools/DWC_R1_Acoustic_Reset_Diagnostic_v0.1.0.py",
+    "variants": ["R1 as-is", "restore decoder only", "restore flow only", "restore decoder+flow", "restore full warm acoustic set dec+enc_q+flow"],
+    "training_permitted": false,
+    "decision_after": "If an acoustic-reset hybrid materially improves multi-seed robustness, design a protected retrain that preserves the successful warm-start acoustic modules. Otherwise diagnose/extend DWC text/prior generalization before any R2."
   },
   "prohibited_forward_paths": [
     "enter R2 before a genuine governed R1 pass",
-    "resume or extend training before the inference-only diagnosis is reviewed",
+    "resume or extend training before the acoustic-reset hybrid diagnosis is reviewed",
     "continue from historical stageC_weights.pt",
-    "weaken the -55 dBFS waveform gate",
-    "treat a lucky stochastic seed as evidence of robust acceptance",
-    "accept a 125/125 result whose persisted render identities collide",
+    "weaken the -55 dBFS waveform floor",
+    "select a lucky seed as acceptance",
+    "accept colliding persisted render identities",
     "treat machine waveform acceptance as human CNS perceptual acceptance"
   ],
   "source_provenance": [
+    "DWC_R1_INFERENCE_DIAGNOSTIC_RESULT_2026-09-10.json",
     "DWC_R1_FULL_DIAGNOSTIC_ANALYSIS_2026-09-10.json",
     "DWC_R1_OBSERVED_RESULT_2026-09-10.json",
     "DWC_LOCAL_WORKSTATION_SURFACE_2026-09-10.json",
-    "DWC_REPAIRED_CORPUS_RETRAIN_HANDOFF_v0.1.2.json",
     "DWC_BOOTSTRAP_CORPUS_V0_1_FAILURE_AND_V0_2_1_REPAIR.json"
   ],
   "mutable_facts_require_live_recheck_before_claim": true
