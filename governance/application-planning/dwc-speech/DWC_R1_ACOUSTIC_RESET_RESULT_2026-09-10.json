@@ -1,0 +1,73 @@
+{
+  "schema_version": "0.1.0",
+  "project_id": "DWC-SPEECH",
+  "evidence_type": "r1_acoustic_reset_inference_diagnostic",
+  "recorded_at": "2026-09-10",
+  "status": "FLOW_DRIFT_ISOLATED",
+  "training_performed": false,
+  "source_package": "DWC_R1_ACOUSTIC_RESET_DIAGNOSTIC_20260910_122045.zip",
+  "r1_checkpoint": {
+    "file": "R1_phone_balanced_weights_batch0128.pt",
+    "bytes": 281764423,
+    "sha256": "92c10d9dd583d609e70413ffb5eded405ead62606b8a97111056619ab2e9745b"
+  },
+  "warmstart_checkpoint": {
+    "file": "lj-med_1000.ckpt",
+    "bytes": 845889993,
+    "sha256": "dcf2449bdbdaad09256a08dfac211c59f6b36ce8d3f244fd844a9eb1d7384c7c"
+  },
+  "acceptance_identity": {
+    "rows": 125,
+    "unique_acceptance_row_ids": 125,
+    "unique_output_filenames": 125,
+    "sha256": "d5ef320d00703579b180008b0bc932c18698b4cb5d7f3b7eba80eb90bb307fd7"
+  },
+  "parameter_drift_from_warmstart": {
+    "decoder": {"matching_tensors": 66, "relative_l2": 0.02328783887906109, "max_abs_delta": 0.016118884086608887},
+    "posterior_encoder": {"matching_tensors": 100, "relative_l2": 0.02497347120329914, "max_abs_delta": 0.01586832106113434},
+    "flow": {"matching_tensors": 112, "relative_l2": 0.020087829745938403, "max_abs_delta": 0.0202760249376297}
+  },
+  "variants_three_seed_gate": {
+    "r1_as_is": {
+      "passes": [104, 107, 100],
+      "pass_3_of_3_rows": 73,
+      "pass_0_of_3_rows": 1
+    },
+    "decoder_reset_only": {
+      "passes": [107, 108, 101],
+      "pass_3_of_3_rows": 79,
+      "pass_0_of_3_rows": 1,
+      "interpretation": "Decoder restoration alone does not resolve instability."
+    },
+    "flow_reset_only": {
+      "passes": [125, 125, 125],
+      "pass_3_of_3_rows": 125,
+      "pass_0_of_3_rows": 0,
+      "rms_dbfs_min_by_seed": [-52.170334440177015, -51.552293533513335, -52.537684352691315],
+      "interpretation": "Restoring only the pristine warm-start flow eliminates every waveform-level failure in all three tested seed schedules while preserving R1 decoder and DWC text-side learning."
+    },
+    "decoder_and_flow_reset": {
+      "passes": [125, 125, 125],
+      "interpretation": "No acceptance advantage over flow-only reset; discards additional learned R1 decoder changes unnecessarily."
+    },
+    "full_warm_acoustic_reset": {
+      "passes": [125, 125, 125],
+      "interpretation": "Inference output equals decoder+flow reset because posterior encoder enc_q is training-side only."
+    }
+  },
+  "diagnosis": {
+    "primary": "R1 flow drift is the identified cause of the stochastic low-level machine-gate failures.",
+    "not_supported": [
+      "global decoder failure",
+      "permanently broken acceptance utterances",
+      "simple inference-seed workaround as a valid solution",
+      "need to restart language/PSS/CNS/exact-ID work"
+    ],
+    "minimum_change_forward_hypothesis": "Preserve the completed R1 model except restore model_g.flow.* from the exact verified warm-start. Validate that persisted hybrid checkpoint on the corrected unique acceptance set across at least five deterministic seed schedules before authorizing any R2 training. If promoted, freeze model_g.flow.* during R2 so the known-good flow cannot drift again."
+  },
+  "authorization": {
+    "r2_authorized": false,
+    "additional_training_authorized": false,
+    "next_operation": "inference-only persisted R1-flow-restored hybrid checkpoint validation"
+  }
+}
