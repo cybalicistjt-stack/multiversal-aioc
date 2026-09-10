@@ -26,6 +26,10 @@ Application repository (`cybalicistjt-stack/Multiversal-app`) on a dedicated LXG
 - `tools/local_execution_gateway/**`
 - `tests/tools/local_execution_gateway/**`
 - `docs/development/LXG-01-*.md`
+- `governance/application-planning/validation-core/profiles/LXG-01.json` — the single LXG explicit-integration Validation Core profile only
+- `governance/application-planning/validation-core/ACTIVE_FAMILY_CONTRACT.json` — only to add/remove `LXG-01` in `explicit_integration_profiles`; ARI family identity, remaining work, sealed proof and ordinary rules remain unchanged
+
+The two Validation Core paths above are validation plumbing, not product authority. `LXG-01` must be treated as an explicitly reviewed integration profile; it must never become the ARI active family or enter `remaining_work_items`.
 
 Machine-local setup after code is merged or checked out:
 
@@ -33,7 +37,7 @@ Machine-local setup after code is merged or checked out:
 - `/home/antiquaria/multiversal/bootstrap/lxg/**`
 - user-local service/autostart configuration required to launch the gateway and approved Secure MCP Tunnel
 
-No LXG mutation belongs on the active ARI implementation branch.
+No LXG mutation belongs on an ARI implementation branch.
 
 ## Phase-1 tool contract — safe read/compute surface
 
@@ -73,6 +77,10 @@ Use the official stable MCP SDK rather than writing the protocol from scratch. P
 
 The server must run on a dedicated loopback port and expose `/mcp` using Streamable HTTP. It must provide a deterministic policy/config file and a self-test that can validate tool registration without requiring ChatGPT.
 
+## Validation strategy
+
+Because the application repository's single-current-family workflow treats `tools/**` and `tests/**` as substantive, LXG-01 owns exactly one **explicit integration** profile, `LXG-01`. The active ARI family contract may list that profile in `explicit_integration_profiles` only. The LXG profile validates the isolated gateway on Linux and Windows without running historical predecessor profiles and without changing ARI's active family, sealed baseline, remaining work or acceptance.
+
 ## ChatGPT setup target
 
 After local validation:
@@ -98,6 +106,7 @@ The gateway must degrade cleanly:
 LXG-01 setup is complete only when:
 
 - gateway source, tests and documentation are merged without altering the active product work pointer;
+- its explicit-integration Validation Core profile passes exact-head Linux and Windows validation without historical profile fanout;
 - the local gateway installs in an isolated environment and passes self-tests;
 - localhost `/mcp` is reachable only on loopback;
 - ChatGPT connection succeeds through a supported secure bridge when the user's plan/workspace permits it;
