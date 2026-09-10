@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.13.0",
+  "schema_version": "0.14.0",
   "project_id": "DWC-SPEECH",
   "project_name": "DWC Speech Synthesis",
   "owner": "John Brandon Turner",
@@ -9,11 +9,11 @@
   "stable_entrypoint": "governance/application-planning/dwc-speech/README.md",
   "human_anchor": "governance/application-planning/dwc-speech/DWC_PROJECT_ANCHOR.md",
   "preferred_execution_surface_evidence": "governance/application-planning/dwc-speech/DWC_LOCAL_WORKSTATION_SURFACE_2026-09-10.json",
-  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_R2_PROTECTED_ABORT64_RESULT_2026-09-10.json",
+  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_R2_ABORT64_INFERENCE_DIAGNOSTIC_RESULT_2026-09-10.json",
   "execution_frontier": {
-    "name": "Inference-only diagnosis of protected R2 batch-64 guard stop",
-    "state": "protected_r2_aborted_batch64_diagnosis_ready",
-    "summary": "Protected R2 began from the promoted R1 flow-restored hybrid and trained 64 of 799 rows. The frozen model_g.flow state hash remained unchanged. All fixed-probe guards remained healthy. At batch 64 the corrected 125-row primary gate scored 124 PASS / 1 FAIL and the harness correctly stopped. No row was below the -55 dBFS RMS floor; the one failure is therefore duration and/or clipping, not recurrence of the prior low-level collapse. Diagnose the exact abort checkpoint before any retry or additional training.",
+    "name": "Inference-only module rollback diagnosis of protected R2 batch-64 checkpoint",
+    "state": "r2_abort64_inference_diagnostic_complete_module_rollback_ready",
+    "summary": "Protected R2 trained 64/799 rows from the promoted R1 flow-restored hybrid with model_g.flow frozen and hash-stable. The batch-64 primary gate reproduced at 124/125: DWCACC-0021 ('ei') failed only the 0.08 s duration floor at 0.05805 s, with healthy RMS. Across five seeds the checkpoint has 121/125 rows passing all five; four rows are seed-sensitive (two duration failures, two low-level failures), versus 125/125 rows passing all five at the promoted source hybrid. Before any further training, selectively restore R2-updated inference-side modules from the promoted source to identify which module drift caused the robustness regression.",
     "r1_flow_restored_hybrid_promoted": true,
     "r2_started": true,
     "r2_completed": false,
@@ -30,37 +30,49 @@
   },
   "protected_r2_abort": {
     "phase_batch": 64,
-    "reason": "intermediate_primary_125_gate",
     "checkpoint": "ABORT_R2_PROTECTED_batch0064.pt",
-    "checkpoint_bytes": 281759213,
-    "checkpoint_sha256": "ee6f767c2d34a713fd5c7c3834712641129f3bdadf4543e467f61f1c5d943446",
-    "intermediate_gate": {
-      "rows": 125,
-      "pass": 124,
-      "fail": 1,
-      "rms_dbfs_median": -36.9973004452645,
-      "rms_dbfs_min": -45.807466487899156,
-      "rms_dbfs_max": -32.51849069674878,
-      "below_minus55": 0
-    },
-    "flow_hash_initial": "cfe517d3184001c5213e248cc5434b17eff8a9fdb7273eed6f05a6971e1a81e8",
-    "flow_hash_at_abort": "cfe517d3184001c5213e248cc5434b17eff8a9fdb7273eed6f05a6971e1a81e8",
+    "bytes": 281759213,
+    "sha256": "ee6f767c2d34a713fd5c7c3834712641129f3bdadf4543e467f61f1c5d943446",
     "flow_unchanged": true,
-    "fixed_probe_guard_fired": false,
-    "interpretation": "The guard stop is model-level evidence, not an owner execution error. The low-level collapse mode is not present at this boundary."
+    "primary_gate": {"pass": 124, "fail": 1, "median_rms_dbfs": -37.002168676242505, "minimum_rms_dbfs": -45.82344297241096, "below_minus55": 0},
+    "primary_failed_row": {"acceptance_row_id": "DWCACC-0021", "dwc_text": "ei", "duration_s": 0.0580498866213151, "rms_dbfs": -45.82344297241096, "reason": "duration"}
+  },
+  "abort64_five_seed_diagnosis": {
+    "pass_counts": [124, 125, 124, 124, 124],
+    "pass_5_of_5_rows": 121,
+    "seed_sensitive_rows": 4,
+    "fail_5_of_5_rows": 0,
+    "sensitive_rows": [
+      {"acceptance_row_id": "DWCACC-0021", "dwc_text": "ei", "failure": "duration"},
+      {"acceptance_row_id": "DWCACC-0035", "dwc_text": "zair", "failure": "low_level", "minimum_rms_dbfs": -58.00434957581867},
+      {"acceptance_row_id": "DWCACC-0039", "dwc_text": "dapoe", "failure": "low_level", "minimum_rms_dbfs": -71.36402024103548},
+      {"acceptance_row_id": "DWCACC-0071", "dwc_text": "sae", "failure": "duration"}
+    ],
+    "noise_ablation_primary_seed": {
+      "default_pass": 124,
+      "no_duration_noise_pass": 125,
+      "reduced_noise_pass": 125,
+      "zero_noise_pass": 125
+    },
+    "interpretation": "The primary duration miss can be removed by inference settings, but this does not justify changing the governed gate because the same checkpoint has low-level failures on other seeds. R2 has improved median output amplitude while reducing stochastic robustness relative to the promoted source."
   },
   "next_safe_execution": {
-    "kind": "inference_only_abort_checkpoint_diagnostic",
+    "kind": "inference_only_module_rollback_diagnostic",
     "sync_command": "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/sync_governance.sh",
-    "launcher": "governance/application-planning/dwc-speech/tools/run_r2_abort64_inference_diagnostic.sh",
+    "launcher": "governance/application-planning/dwc-speech/tools/run_r2_abort64_module_rollback_diagnostic.sh",
+    "tool": "governance/application-planning/dwc-speech/tools/DWC_R2_Abort64_Module_Rollback_Diagnostic_v0.1.0.py",
     "checkpoint": "ABORT_R2_PROTECTED_batch0064.pt",
-    "purpose": "Reproduce the primary gate on the exact abort checkpoint, identify the single failed row and its duration/clipping cause, and measure five-seed robustness before deciding whether/how to continue R2.",
+    "promoted_source": "R1_flow_restored_candidate.pt",
+    "modules_tested": ["model_g.dp", "model_g.enc_p", "model_g.dec"],
+    "variants": "all eight rollback combinations across the same five deterministic 125-row seed schedules",
+    "purpose": "Identify the minimum module protection/rollback needed to preserve the promoted source checkpoint's 625/625 robustness while retaining useful R2 adaptation.",
     "training_permitted": false
   },
   "prohibited_forward_paths": [
-    "rerun or resume protected R2 blindly before abort-checkpoint diagnosis",
+    "rerun, resume, or extend R2 before module rollback diagnosis is reviewed",
     "unfreeze or update model_g.flow",
-    "weaken the -55 dBFS waveform floor or other machine gates",
+    "weaken machine waveform or duration gates merely to pass batch 64",
+    "select a lucky inference seed or noise setting as promotion evidence",
     "enter human perceptual acceptance before protected R2 machine success",
     "resume historical Stage-C lineage",
     "treat machine waveform acceptance as human CNS perceptual acceptance"
@@ -83,11 +95,11 @@
     "piper_commit": "639388b6317fc4731e91d53da42aea68fd4166ff"
   },
   "source_provenance": [
+    "DWC_R2_ABORT64_INFERENCE_DIAGNOSTIC_RESULT_2026-09-10.json",
     "DWC_R2_PROTECTED_ABORT64_RESULT_2026-09-10.json",
     "DWC_R1_FLOW_RESTORE_PROMOTION_RESULT_2026-09-10.json",
     "DWC_R1_ACOUSTIC_RESET_RESULT_2026-09-10.json",
-    "DWC_R1_INFERENCE_DIAGNOSTIC_RESULT_2026-09-10.json",
-    "DWC_R1_FULL_DIAGNOSTIC_ANALYSIS_2026-09-10.json"
+    "DWC_R1_INFERENCE_DIAGNOSTIC_RESULT_2026-09-10.json"
   ],
   "mutable_facts_require_live_recheck_before_claim": true
 }
