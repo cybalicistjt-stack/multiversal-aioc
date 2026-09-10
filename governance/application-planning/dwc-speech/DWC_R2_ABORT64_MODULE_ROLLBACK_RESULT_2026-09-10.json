@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1.0",
+  "project_id": "DWC-SPEECH",
+  "evidence_type": "r2_abort64_module_rollback_result",
+  "recorded_at": "2026-09-10",
+  "source_package": {
+    "file": "DWC_R2_ABORT64_MODULE_ROLLBACK_DIAGNOSTIC_20260910_135133.zip",
+    "bytes": 144945,
+    "sha256": "609b70544788472a1f219d373c2795f686d6c06c32df57bf8c15c33b626c8ab2"
+  },
+  "abort_checkpoint": {
+    "file": "ABORT_R2_PROTECTED_batch0064.pt",
+    "bytes": 281759213,
+    "sha256": "ee6f767c2d34a713fd5c7c3834712641129f3bdadf4543e467f61f1c5d943446"
+  },
+  "promoted_checkpoint": {
+    "file": "R1_flow_restored_candidate.pt",
+    "bytes": 281757889,
+    "sha256": "5a060141f20be076a9130c59a7da6d06294f912a3d0aa00b5a0c1b27ffda96e4"
+  },
+  "module_drift_relative_to_promoted": {
+    "dp": {"tensors": 284, "changed_tensors": 284, "relative_l2": 0.01356851690923438},
+    "enc_p": {"tensors": 111, "changed_tensors": 111, "relative_l2": 0.026699200538226848},
+    "dec": {"tensors": 66, "changed_tensors": 66, "relative_l2": 0.014509131150818465},
+    "flow": {"tensors": 112, "changed_tensors": 0, "relative_l2": 0.0},
+    "enc_q": {"tensors": 100, "changed_tensors": 100, "relative_l2": 0.01767802796819045}
+  },
+  "five_seed_variant_results": [
+    {"variant": "abort64_as_is", "restored_modules": [], "pass_counts": [124,125,124,124,124], "pass_5_of_5_rows": 121, "rows_failing_any_seed": 4, "worst_rms_dbfs": -71.36402024103548, "median_dbfs_seed1": -36.9973004452645},
+    {"variant": "restore_dp", "restored_modules": ["model_g.dp"], "pass_counts": [125,125,125,125,125], "pass_5_of_5_rows": 125, "rows_failing_any_seed": 0, "worst_rms_dbfs": -48.0354234964618, "median_dbfs_seed1": -36.7230630495849},
+    {"variant": "restore_enc_p", "restored_modules": ["model_g.enc_p"], "pass_counts": [124,125,124,124,125], "pass_5_of_5_rows": 122, "rows_failing_any_seed": 3, "worst_rms_dbfs": -55.808797216981965, "median_dbfs_seed1": -46.49504413005794},
+    {"variant": "restore_dec", "restored_modules": ["model_g.dec"], "pass_counts": [124,125,124,124,124], "pass_5_of_5_rows": 121, "rows_failing_any_seed": 4, "worst_rms_dbfs": -67.71465671693723, "median_dbfs_seed1": -37.598527355274975},
+    {"variant": "restore_dp_enc_p", "restored_modules": ["model_g.dp","model_g.enc_p"], "pass_counts": [125,125,125,125,125], "pass_5_of_5_rows": 125, "rows_failing_any_seed": 0, "worst_rms_dbfs": -53.610576055173226, "median_dbfs_seed1": -45.52745231490799},
+    {"variant": "restore_dp_dec", "restored_modules": ["model_g.dp","model_g.dec"], "pass_counts": [125,125,125,125,125], "pass_5_of_5_rows": 125, "rows_failing_any_seed": 0, "worst_rms_dbfs": -47.26047232443764, "median_dbfs_seed1": -37.300285063060784},
+    {"variant": "restore_enc_p_dec", "restored_modules": ["model_g.enc_p","model_g.dec"], "pass_counts": [124,125,125,124,125], "pass_5_of_5_rows": 123, "rows_failing_any_seed": 2, "worst_rms_dbfs": -54.696666325010256, "median_dbfs_seed1": -47.13959725201696},
+    {"variant": "restore_dp_enc_p_dec", "restored_modules": ["model_g.dp","model_g.enc_p","model_g.dec"], "pass_counts": [125,125,125,125,125], "pass_5_of_5_rows": 125, "rows_failing_any_seed": 0, "worst_rms_dbfs": -52.537684352691315, "median_dbfs_seed1": -46.33196814619771}
+  ],
+  "primary_conclusion": "model_g.dp drift is the minimum sufficient cause of the batch-64 robustness regression. Every tested variant restoring DP passes all 625 waveform decisions, while every tested variant retaining the batch-64 DP has failures. Restoring DP alone also preserves the batch-64 amplitude improvement, so enc_p/dec/enc_q adaptation should not be discarded merely to repair the gate.",
+  "forward_rule": "Construct the next source from the exact batch-64 abort state with only model_g.dp restored from the promoted R1 hybrid. Require 625/625 before training. Freeze and hash-protect both model_g.dp and model_g.flow. Retain the already-learned non-DP batch-64 state. Because optimizer/RNG state was not saved, record the next stage as an optimizer-reset state continuation rather than an exact batch-65 optimizer continuation.",
+  "human_gate_authorized_by_this_result": false
+}
