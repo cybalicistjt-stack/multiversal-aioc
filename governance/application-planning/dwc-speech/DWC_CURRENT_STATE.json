@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.18.0",
+  "schema_version": "0.18.1",
   "project_id": "DWC-SPEECH",
   "project_name": "DWC Speech Synthesis",
   "owner": "John Brandon Turner",
@@ -28,7 +28,7 @@
     "protected_modules": ["model_g.flow", "model_g.dp", "model_g.enc_p"],
     "trainable_inference_side_module": "model_g.dec",
     "training_side_module_remaining": "model_g.enc_q",
-    "optimizer_policy": "fresh optimizers at R2C start; thereafter rolling strengthened-boundary checkpoint saves optimizer and RNG state for exact resume when no rollback is required",
+    "optimizer_policy": "fresh optimizers at R2C start; thereafter rolling strengthened-boundary checkpoints save model, optimizer, and RNG state for state-complete resume. CUDA nondeterminism means bit-for-bit replay is not claimed.",
     "rng_policy": "all inference/probe gates preserve and restore training torch RNG state"
   },
   "r2c_guards": {
