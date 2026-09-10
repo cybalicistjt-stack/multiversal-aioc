@@ -1,0 +1,34 @@
+{
+  "schema_version": "0.1.0",
+  "date": "2026-09-10",
+  "project_id": "DWC-SPEECH",
+  "evidence_type": "owner-provided local workstation terminal screenshots",
+  "execution_surface": "persistent_local_wsl2_gpu_workstation",
+  "phase": "R1_phone_balanced",
+  "phase_batches_completed": 128,
+  "r1_checkpoint_observed": "R1_phone_balanced_weights_batch0128.pt",
+  "r1_checkpoint_observed_bytes": 281764423,
+  "machine_gate": {
+    "status": "STOP_MACHINE_WAVEFORM_GATE",
+    "rows": 125,
+    "pass": 104,
+    "fail": 21,
+    "rms_dbfs_median": -43.32351160138194,
+    "rms_dbfs_min": -73.7840424346194,
+    "governed_floor_dbfs": -55.0,
+    "r2_entered": false
+  },
+  "observed_failure_character": "Visible failed acceptance rows are marked low_level in the owner-provided terminal screenshots. Full machine-readable manifest/probe trajectory has not yet been imported into governance, so do not infer that every failed row has only this cause until the diagnostic bundle is inspected.",
+  "historical_comparison": {
+    "invalid_stage_c_pass_rows": 0,
+    "invalid_stage_c_median_rms_dbfs": -93.97940008672037,
+    "interpretation": "R1 is a major amplitude recovery versus the invalid historical Stage-C lineage, but the governed requirement remains 125/125 and R2 is correctly prohibited."
+  },
+  "authority": {
+    "r1_training_complete": true,
+    "r1_machine_gate_passed": false,
+    "r2_authorized": false,
+    "human_perceptual_gate_authorized": false,
+    "next_action": "Import and analyze local R1 diagnostic artifacts: warm-start acceptance, R1 acceptance manifest/report, retrain_metrics.jsonl, probe renders/trajectory, stop record and checksums. Do not restart R1 or weaken gates before this diagnosis."
+  }
+}
