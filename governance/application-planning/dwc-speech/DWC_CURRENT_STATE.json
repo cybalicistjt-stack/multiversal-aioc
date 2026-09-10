@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.12.0",
+  "schema_version": "0.13.0",
   "project_id": "DWC-SPEECH",
   "project_name": "DWC Speech Synthesis",
   "owner": "John Brandon Turner",
@@ -9,75 +9,60 @@
   "stable_entrypoint": "governance/application-planning/dwc-speech/README.md",
   "human_anchor": "governance/application-planning/dwc-speech/DWC_PROJECT_ANCHOR.md",
   "preferred_execution_surface_evidence": "governance/application-planning/dwc-speech/DWC_LOCAL_WORKSTATION_SURFACE_2026-09-10.json",
-  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_R1_FLOW_RESTORE_PROMOTION_RESULT_2026-09-10.json",
+  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_R2_PROTECTED_ABORT64_RESULT_2026-09-10.json",
   "execution_frontier": {
-    "name": "Protected full-corpus R2 from promoted R1 flow-restored hybrid",
-    "state": "protected_r2_authorized_ready_not_started",
-    "summary": "The completed R1 model failed its original machine gate because model_g.flow drifted. Restoring only the 112 flow tensors from the exact warm-start produced a persisted hybrid that passed the corrected 125-row gate on all five deterministic seed schedules (625/625 decisions) with 125 unique persisted primary renders. Protected R2 is now authorized from this exact hybrid with model_g.flow frozen and hash-verified unchanged. Human CNS perceptual acceptance remains blocked until R2 machine success.",
-    "r1_training_complete": true,
-    "original_r1_machine_gate_passed": false,
+    "name": "Inference-only diagnosis of protected R2 batch-64 guard stop",
+    "state": "protected_r2_aborted_batch64_diagnosis_ready",
+    "summary": "Protected R2 began from the promoted R1 flow-restored hybrid and trained 64 of 799 rows. The frozen model_g.flow state hash remained unchanged. All fixed-probe guards remained healthy. At batch 64 the corrected 125-row primary gate scored 124 PASS / 1 FAIL and the harness correctly stopped. No row was below the -55 dBFS RMS floor; the one failure is therefore duration and/or clipping, not recurrence of the prior low-level collapse. Diagnose the exact abort checkpoint before any retry or additional training.",
     "r1_flow_restored_hybrid_promoted": true,
-    "r2_authorized": true,
-    "r2_started": false,
+    "r2_started": true,
+    "r2_completed": false,
+    "r2_training_batches_completed": 64,
+    "r2_machine_gate_passed": false,
+    "additional_training_authorized": false,
     "human_perceptual_gate_authorized": false
   },
   "promoted_r1_hybrid": {
     "file": "R1_flow_restored_candidate.pt",
     "bytes": 281757889,
     "sha256": "5a060141f20be076a9130c59a7da6d06294f912a3d0aa00b5a0c1b27ffda96e4",
-    "source_r1_sha256": "92c10d9dd583d609e70413ffb5eded405ead62606b8a97111056619ab2e9745b",
-    "warmstart_sha256": "dcf2449bdbdaad09256a08dfac211c59f6b36ce8d3f244fd844a9eb1d7384c7c",
-    "restored_prefix": "model_g.flow.",
-    "restored_tensors": 112,
-    "machine_promotion_status": "PROMOTION_READY"
+    "strengthened_gate": "125/125 on each of five deterministic schedules; 625/625 total"
   },
-  "strengthened_r1_machine_gate": {
-    "acceptance_rows": 125,
-    "unique_row_ids": 125,
-    "unique_output_filenames": 125,
-    "persisted_primary_wavs": 125,
-    "seed_schedule_pass_counts": [125, 125, 125, 125, 125],
-    "pass_5_of_5_rows": 125,
-    "total_decisions": 625,
-    "total_pass": 625,
-    "rms_floor_dbfs": -55.0,
-    "minimum_rms_dbfs_across_seed_summaries": -52.537684352691315
-  },
-  "root_cause": {
-    "identified_module": "model_g.flow",
-    "evidence": "R1 as-is scored 104/107/100 across three seed schedules; decoder-only reset scored 107/108/101; flow-only reset scored 125/125/125. The persisted flow-restored hybrid subsequently scored 125/125 across all five promotion schedules.",
-    "repair_rule": "Preserve R1 DWC/text-side and decoder learning; restore and protect the known-good warm-start flow."
-  },
-  "protected_r2_contract": {
-    "source_checkpoint_sha256": "5a060141f20be076a9130c59a7da6d06294f912a3d0aa00b5a0c1b27ffda96e4",
-    "corpus": "DWC_Synthetic_Bootstrap_Corpus_v0.2.1",
-    "rows": 799,
-    "schedule": "one deterministic shuffled pass",
-    "flow_policy": "model_g.flow parameters frozen, excluded from generator optimizer, and state-prefix hash checked unchanged at completion",
-    "learning_rates": "retain Piper v1.8.0 defaults for remaining trainable generator/discriminator parameters",
-    "probe_every_batches": 8,
-    "probe_guard": "fixed-seed row-level floor >= -55 dBFS and no individual probe may fall more than 18 dB from its promoted-hybrid baseline; median guard retained too",
-    "full_primary_gate_every_batches": 64,
-    "intermediate_gate_rule": "corrected unique 125-row primary seed gate must remain 125/125 or R2 aborts and preserves a diagnostic checkpoint",
-    "final_gate": "125/125 on each of five deterministic seed schedules, with 125 uniquely persisted primary-gate WAVs",
-    "human_gate": "NOT_RUN by R2 harness"
+  "protected_r2_abort": {
+    "phase_batch": 64,
+    "reason": "intermediate_primary_125_gate",
+    "checkpoint": "ABORT_R2_PROTECTED_batch0064.pt",
+    "checkpoint_bytes": 281759213,
+    "checkpoint_sha256": "ee6f767c2d34a713fd5c7c3834712641129f3bdadf4543e467f61f1c5d943446",
+    "intermediate_gate": {
+      "rows": 125,
+      "pass": 124,
+      "fail": 1,
+      "rms_dbfs_median": -36.9973004452645,
+      "rms_dbfs_min": -45.807466487899156,
+      "rms_dbfs_max": -32.51849069674878,
+      "below_minus55": 0
+    },
+    "flow_hash_initial": "cfe517d3184001c5213e248cc5434b17eff8a9fdb7273eed6f05a6971e1a81e8",
+    "flow_hash_at_abort": "cfe517d3184001c5213e248cc5434b17eff8a9fdb7273eed6f05a6971e1a81e8",
+    "flow_unchanged": true,
+    "fixed_probe_guard_fired": false,
+    "interpretation": "The guard stop is model-level evidence, not an owner execution error. The low-level collapse mode is not present at this boundary."
   },
   "next_safe_execution": {
-    "kind": "protected_gpu_training",
+    "kind": "inference_only_abort_checkpoint_diagnostic",
     "sync_command": "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/sync_governance.sh",
-    "launcher": "governance/application-planning/dwc-speech/tools/run_protected_r2.sh",
-    "tool": "governance/application-planning/dwc-speech/tools/DWC_Protected_R2_v0.1.0.py",
-    "expected_success_status": "PASS_PROTECTED_R2_MACHINE_GATE",
-    "on_abort": "Do not retry blindly. Upload the generated DWC_R2_PROTECTED_RESULT_*.zip and diagnose the exact guard boundary.",
-    "on_success": "Upload the generated DWC_R2_PROTECTED_RESULT_*.zip. Review hashes/gates, then prepare the separate human CNS perceptual acceptance package."
+    "launcher": "governance/application-planning/dwc-speech/tools/run_r2_abort64_inference_diagnostic.sh",
+    "checkpoint": "ABORT_R2_PROTECTED_batch0064.pt",
+    "purpose": "Reproduce the primary gate on the exact abort checkpoint, identify the single failed row and its duration/clipping cause, and measure five-seed robustness before deciding whether/how to continue R2.",
+    "training_permitted": false
   },
   "prohibited_forward_paths": [
-    "unfreeze or update model_g.flow during protected R2",
+    "rerun or resume protected R2 blindly before abort-checkpoint diagnosis",
+    "unfreeze or update model_g.flow",
+    "weaken the -55 dBFS waveform floor or other machine gates",
     "enter human perceptual acceptance before protected R2 machine success",
     "resume historical Stage-C lineage",
-    "weaken the -55 dBFS waveform floor",
-    "use a lucky seed as machine acceptance",
-    "accept colliding render identities",
     "treat machine waveform acceptance as human CNS perceptual acceptance"
   ],
   "settled_architecture": {
@@ -98,11 +83,11 @@
     "piper_commit": "639388b6317fc4731e91d53da42aea68fd4166ff"
   },
   "source_provenance": [
+    "DWC_R2_PROTECTED_ABORT64_RESULT_2026-09-10.json",
     "DWC_R1_FLOW_RESTORE_PROMOTION_RESULT_2026-09-10.json",
     "DWC_R1_ACOUSTIC_RESET_RESULT_2026-09-10.json",
     "DWC_R1_INFERENCE_DIAGNOSTIC_RESULT_2026-09-10.json",
-    "DWC_R1_FULL_DIAGNOSTIC_ANALYSIS_2026-09-10.json",
-    "DWC_R1_OBSERVED_RESULT_2026-09-10.json"
+    "DWC_R1_FULL_DIAGNOSTIC_ANALYSIS_2026-09-10.json"
   ],
   "mutable_facts_require_live_recheck_before_claim": true
 }
