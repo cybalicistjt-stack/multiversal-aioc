@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1.0",
+  "project_id": "DWC-SPEECH",
+  "evidence_type": "local_execution_surface",
+  "recorded_at": "2026-09-10",
+  "status": "verified_ready_for_guarded_repaired_corpus_r1",
+  "source": "owner-reported completed Codex workstation setup with local verification",
+  "host": {
+    "os_layer": "Windows host with WSL2 Ubuntu",
+    "wsl_version": "2.7.11.0",
+    "kernel": "6.18.33.2",
+    "distribution": "Ubuntu 26.04 LTS"
+  },
+  "gpu": {
+    "model": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "vram_mib": 8188,
+    "driver": "610.78",
+    "driver_reported_cuda": "13.3",
+    "windows_nvidia_smi": true,
+    "wsl_nvidia_smi": true
+  },
+  "python_runtime": {
+    "python": "3.14.4",
+    "pytorch": "2.14.0+cu130",
+    "cuda_available_to_pytorch": true,
+    "real_gpu_allocation_test": "pass",
+    "real_gpu_computation_test": "pass"
+  },
+  "piper": {
+    "repository": "OHF-Voice/piper1-gpl",
+    "version": "v1.8.0",
+    "commit": "639388b6317fc4731e91d53da42aea68fd4166ff",
+    "monotonic_alignment_compiled": true,
+    "monotonic_alignment_functional_test": "pass",
+    "local_compatibility_patch": "one-line correction to v1.8.0 alignment import path; recorded by workstation setup"
+  },
+  "persistent_paths": {
+    "dwc_root": "/home/antiquaria/multiversal/dwc-tts",
+    "bootstrap_root": "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0",
+    "governance_sync": "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/sync_governance.sh",
+    "retrain_launcher": "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/run_repaired_retrain.sh"
+  },
+  "verified_inputs": {
+    "repaired_corpus_rows": 799,
+    "repaired_corpus_unique_wavs": 799,
+    "r1_rows": 128,
+    "acceptance_rows": 125,
+    "target_rms_dbfs_approx": -24.0,
+    "checkpoint_parts_present": true,
+    "checkpoint_size_and_sha256_verified": true,
+    "retrain_harness_verified": true,
+    "corrected_notebook_v0_1_1_verified": true,
+    "missing_files": 0
+  },
+  "guards_preserved": [
+    "exact checkpoint/corpus SHA-256 verification",
+    "exact-ID DWC phoneme architecture",
+    "waveform RMS floor",
+    "collapse detection relative to baseline",
+    "R1 125/125 machine waveform gate before R2",
+    "human perceptual gate remains separate",
+    "historical Stage-C forward lineage prohibited"
+  ],
+  "training_started": false,
+  "exact_next_operation": [
+    "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/sync_governance.sh",
+    "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/run_repaired_retrain.sh"
+  ],
+  "execution_rule": "Immediately re-sync governance before launch. Run guarded R1 from the proven warm-start against repaired corpus v0.2.1. Enter R2 only if the real 125-row R1 machine waveform gate is 125/125. Machine pass never substitutes for human CNS perceptual acceptance."
+}
