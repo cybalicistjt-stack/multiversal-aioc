@@ -14,7 +14,7 @@ Protection:
 - fixed probes every 8 global batches
 - primary 125-row gate every 32 global batches
 - five-seed strengthened gate every 64 global batches
-- keep one rolling exact-resume checkpoint with optimizer/RNG state at strengthened boundaries
+- keep one rolling state-complete resume checkpoint with optimizer/RNG state at strengthened boundaries
 
 This script never performs or claims human CNS perceptual acceptance.
 """
