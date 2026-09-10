@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.16.0",
+  "schema_version": "0.17.0",
   "project_id": "DWC-SPEECH",
   "project_name": "DWC Speech Synthesis",
   "owner": "John Brandon Turner",
@@ -9,17 +9,15 @@
   "stable_entrypoint": "governance/application-planning/dwc-speech/README.md",
   "human_anchor": "governance/application-planning/dwc-speech/DWC_PROJECT_ANCHOR.md",
   "preferred_execution_surface_evidence": "governance/application-planning/dwc-speech/DWC_LOCAL_WORKSTATION_SURFACE_2026-09-10.json",
-  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_R2B_ABORT384_RESULT_2026-09-10.json",
+  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_R2B_ABORT384_REPLICATE2_RESULT_2026-09-10.json",
   "execution_frontier": {
-    "name": "Inference-only module rollback diagnosis of protected R2B batch-384 checkpoint",
-    "state": "r2b_aborted_batch384_module_rollback_ready",
-    "summary": "Protected R2B began from the exact batch-64 state repaired by restoring model_g.dp from the promoted R1 source. The repaired R2B source reproduced 625/625 before training. model_g.flow and model_g.dp remained frozen and hash-stable. R2B remained fully robust at batch 128 and batch 256 (625/625 each), and the primary seed gate remained 125/125 at batches 192 and 320. At global batch 384 the primary gate regressed to 123/125, with DWCACC-0021 ('ei') failing low-level at -57.114 dBFS and DWCACC-0024 ('nei') failing the 0.08 s duration floor at 0.06966 s. Because DP and flow remained bit-stable, further training is blocked while model_g.enc_p and model_g.dec drift from batch 256 to 384 are isolated.",
+    "name": "Cross-replicate inference-only isolation of R2B batch-384 regression",
+    "state": "r2b_two_batch384_replicates_crossrollback_ready",
+    "summary": "Two independent protected-R2B runs both remained fully robust through global batch 256 with model_g.flow and model_g.dp frozen/hash-stable, then first showed a strengthened-machine regression at global batch 384. Replicate 1 failed the primary gate 123/125; replicate 2 still passed the primary gate 125/125 but failed the five-seed gate 125/125/124/125/124. The exact failing rows differ across runs, so the batch-257..384 loss of robustness is stochastic/nondeterministic rather than a single-checkpoint accident. Before defining R2C, run the rollback matrix against both independent batch-384 checkpoints and each run's own proven batch-256 reference.",
     "r1_flow_restored_hybrid_promoted": true,
     "r2_initial_attempt_batches_completed": 64,
-    "r2b_started": true,
-    "r2b_completed": false,
-    "r2b_global_schedule_rows_represented": 384,
-    "r2b_last_fully_robust_global_batch": 256,
+    "r2b_replicates_completed_to_global_batch": 384,
+    "r2b_last_cross-replicate_fully_robust_global_batch": 256,
     "r2b_machine_gate_passed": false,
     "additional_training_authorized": false,
     "human_perceptual_gate_authorized": false
@@ -33,59 +31,69 @@
     "checkpoint": "ABORT_R2_PROTECTED_batch0064.pt",
     "sha256": "ee6f767c2d34a713fd5c7c3834712641129f3bdadf4543e467f61f1c5d943446",
     "diagnosis": "model_g.dp drift was the minimum sufficient cause of the batch-64 robustness regression",
-    "repair": "restore model_g.dp from the promoted R1 hybrid and freeze/hash-protect both model_g.dp and model_g.flow"
+    "repair": "restore model_g.dp from promoted R1 hybrid and freeze/hash-protect both model_g.dp and model_g.flow"
   },
   "r2b_source_candidate": {
     "file": "R2B_source_abort64_dp_restored.pt",
     "sha256": "e0d78cf89a4fd50a79e064837993d8bc11556e03ad2399d64b8cc53ee93c146b",
-    "pre_training_gate_pass_counts": [125, 125, 125, 125, 125],
+    "pre_training_gate_pass_counts": [125,125,125,125,125],
     "optimizer_state_restored": false
   },
-  "r2b_abort384": {
-    "checkpoint": "ABORT_R2B_PROTECTED_batch0384.pt",
-    "bytes": 281760195,
-    "sha256": "c24d461484ebb714fb7484cc1616c2790c12df81c0d2d726f13f852ff01434fc",
-    "reason": "intermediate_primary_125_gate",
-    "flow_hash_unchanged": true,
-    "dp_hash_unchanged": true,
-    "primary_gate": {
-      "pass": 123,
-      "fail": 2,
-      "median_rms_dbfs": -38.614437404615664,
-      "minimum_rms_dbfs": -57.11437156113459,
-      "below_minus55": 1,
-      "failed_rows": [
-        {"acceptance_row_id": "DWCACC-0021", "dwc_text": "ei", "reason": "low_level", "duration_s": 0.12770975056689343, "rms_dbfs": -57.11437156113459},
-        {"acceptance_row_id": "DWCACC-0024", "dwc_text": "nei", "reason": "duration", "duration_s": 0.06965986394557823, "rms_dbfs": -35.92131374656999}
+  "r2b_batch384_replicates": [
+    {
+      "replicate": 1,
+      "abort_checkpoint_sha256": "c24d461484ebb714fb7484cc1616c2790c12df81c0d2d726f13f852ff01434fc",
+      "batch_128_five_seed": [125,125,125,125,125],
+      "batch_256_five_seed": [125,125,125,125,125],
+      "batch_320_primary": 125,
+      "batch_384_primary": 123,
+      "failures": [
+        {"acceptance_row_id":"DWCACC-0021","dwc_text":"ei","reason":"low_level","rms_dbfs":-57.11437156113459},
+        {"acceptance_row_id":"DWCACC-0024","dwc_text":"nei","reason":"duration","duration_s":0.06965986394557823}
       ]
     },
-    "observed_gate_history": {
-      "batch_128_five_seed": [125, 125, 125, 125, 125],
-      "batch_192_primary": 125,
-      "batch_256_five_seed": [125, 125, 125, 125, 125],
+    {
+      "replicate": 2,
+      "source_package_sha256": "6b85d6bd59dc1d7c459174fe7faaaec31345fbed33a9200004bc7abd54d4e63c",
+      "abort_checkpoint_sha256": "5a53ce2dde13df389fada834cc027283ef14dc2be44a102fc9fedd249716fd1b",
+      "batch_128_five_seed": [125,125,125,125,125],
+      "batch_256_five_seed": [125,125,125,125,125],
       "batch_320_primary": 125,
-      "batch_384_primary": 123
-    },
-    "last_fully_strengthened_robust_checkpoint": "R2B_PROTECTED_weights_batch0256.pt"
+      "batch_384_primary": 125,
+      "batch_384_five_seed": [125,125,124,125,124],
+      "failures": [
+        {"acceptance_row_id":"DWCACC-0035","dwc_text":"zair","seed_index":3,"reason":"low_level","rms_dbfs":-62.78562258028347},
+        {"acceptance_row_id":"DWCACC-0039","dwc_text":"dapoe","seed_index":5,"reason":"low_level","rms_dbfs":-64.97095142616669}
+      ],
+      "protected_flow_and_dp_unchanged": true
+    }
+  ],
+  "cross_replicate_interpretation": {
+    "last_proven_common_robust_boundary": 256,
+    "regression_window": "global batches 257-384",
+    "already_ruled_out_modules": ["model_g.flow", "model_g.dp"],
+    "candidate_inference_side_modules": ["model_g.enc_p", "model_g.dec"],
+    "note": "Replicate disagreement at batch 384 demonstrates nondeterministic training/inference sensitivity; choose the next protection rule only if it restores 625/625 across both independent run states."
   },
   "next_safe_execution": {
-    "kind": "inference_only_r2b_abort384_module_rollback_diagnostic",
+    "kind": "inference_only_crossreplicate_r2b_abort384_rollback_diagnostic",
     "sync_command": "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/sync_governance.sh",
-    "launcher": "governance/application-planning/dwc-speech/tools/run_r2b_abort384_module_rollback_diagnostic.sh",
-    "tool": "governance/application-planning/dwc-speech/tools/DWC_R2B_Abort384_Module_Rollback_Diagnostic_v0.1.0.py",
-    "reference_checkpoint": "R2B_PROTECTED_weights_batch0256.pt",
-    "abort_checkpoint": "ABORT_R2B_PROTECTED_batch0384.pt",
-    "modules_tested": ["model_g.enc_p", "model_g.dec"],
-    "variants": "batch256 reference, abort384 as-is, enc_p rollback, decoder rollback, and enc_p+decoder rollback across the same five deterministic 125-row seed schedules",
-    "purpose": "Identify the minimum rollback/protection required to recover 625/625 while retaining as much useful batch-257..384 adaptation as possible.",
+    "launcher": "governance/application-planning/dwc-speech/tools/run_r2b_abort384_crossreplicate_rollback_diagnostic.sh",
+    "base_tool": "governance/application-planning/dwc-speech/tools/DWC_R2B_Abort384_Module_Rollback_Diagnostic_v0.1.0.py",
+    "replicate_abort_hashes": [
+      "c24d461484ebb714fb7484cc1616c2790c12df81c0d2d726f13f852ff01434fc",
+      "5a53ce2dde13df389fada834cc027283ef14dc2be44a102fc9fedd249716fd1b"
+    ],
+    "variants_per_replicate": ["batch256_as_is","abort384_as_is","restore_enc_p_from_256","restore_dec_from_256","restore_enc_p_dec_from_256"],
+    "acceptance_rule": "A rollback/protection candidate is eligible for R2C design only if it restores 125/125 on all five seeds in both independent replicates.",
     "training_permitted": false
   },
   "prohibited_forward_paths": [
-    "continue R2B beyond batch 384 before the module rollback diagnostic is reviewed",
+    "continue or rerun R2B training before cross-replicate rollback diagnosis is reviewed",
     "unfreeze or update model_g.flow or model_g.dp",
-    "discard the last proven 625/625 batch-256 checkpoint without evidence",
+    "discard the last proven batch-256 checkpoints without evidence",
     "weaken the -55 dBFS waveform floor, 0.08 s duration floor, or multi-seed gate",
-    "select a lucky inference seed/noise setting as promotion evidence",
+    "select a lucky run, seed, or noise setting as promotion evidence",
     "enter human perceptual acceptance before protected R2 machine success",
     "resume historical Stage-C lineage",
     "treat machine waveform acceptance as human CNS perceptual acceptance"
@@ -108,6 +116,7 @@
     "piper_commit": "639388b6317fc4731e91d53da42aea68fd4166ff"
   },
   "source_provenance": [
+    "DWC_R2B_ABORT384_REPLICATE2_RESULT_2026-09-10.json",
     "DWC_R2B_ABORT384_RESULT_2026-09-10.json",
     "DWC_R2_ABORT64_MODULE_ROLLBACK_RESULT_2026-09-10.json",
     "DWC_R2_ABORT64_INFERENCE_DIAGNOSTIC_RESULT_2026-09-10.json",
