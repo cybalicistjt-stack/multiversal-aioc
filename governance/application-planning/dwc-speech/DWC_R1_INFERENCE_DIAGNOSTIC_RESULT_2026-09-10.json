@@ -1,0 +1,78 @@
+{
+  "schema_version": "0.1.0",
+  "project_id": "DWC-SPEECH",
+  "evidence_type": "completed_r1_inference_diagnostic",
+  "date": "2026-09-10",
+  "source_package": "DWC_R1_INFERENCE_DIAGNOSTIC_20260910_115849.zip",
+  "training_performed": false,
+  "r1_checkpoint": {
+    "file": "R1_phone_balanced_weights_batch0128.pt",
+    "bytes": 281764423,
+    "sha256": "92c10d9dd583d609e70413ffb5eded405ead62606b8a97111056619ab2e9745b",
+    "num_symbols": 58,
+    "sample_rate": 22050
+  },
+  "acceptance_identity_repair": {
+    "file": "TTS_ENGINE_03_ACCEPTANCE_UTTERANCES_v0.2.0.tsv",
+    "rows": 125,
+    "unique_acceptance_row_ids": 125,
+    "unique_output_filenames": 125,
+    "sha256": "d5ef320d00703579b180008b0bc932c18698b4cb5d7f3b7eba80eb90bb307fd7"
+  },
+  "default_reproduction": {
+    "pass": 104,
+    "fail": 21,
+    "rms_dbfs_median": -43.32351160138194,
+    "rms_dbfs_min": -73.7840424346194,
+    "rms_dbfs_max": -32.842203434257875,
+    "prior_manifest_status_mismatches": 0,
+    "prior_manifest_max_abs_rms_delta_db": 0.0
+  },
+  "seed_sweep": {
+    "seed_schedule_pass_counts": [104, 107, 100, 103, 103],
+    "always_pass_5_of_5": 50,
+    "seed_sensitive_1_to_4_passes": 75,
+    "always_fail_0_of_5": 0,
+    "passes_of_5_distribution": {"2": 6, "3": 21, "4": 48, "5": 50},
+    "interpretation": "No acceptance row is permanently below the waveform floor across the five tested seed schedules, but 75/125 rows are seed-sensitive. Selecting a lucky seed is not evidence of robust acceptance."
+  },
+  "noise_ablation": {
+    "default": {"noise_scale": 0.667, "noise_scale_w": 0.8, "pass": 104, "fail": 21, "median_dbfs": -43.318051128121056},
+    "no_duration_noise": {"noise_scale": 0.667, "noise_scale_w": 0.0, "pass": 112, "fail": 13, "median_dbfs": -41.62449865420939},
+    "no_latent_noise": {"noise_scale": 0.0, "noise_scale_w": 0.8, "pass": 0, "fail": 125, "median_dbfs": -70.82535961573534},
+    "reduced_noise": {"noise_scale": 0.35, "noise_scale_w": 0.4, "pass": 61, "fail": 64, "median_dbfs": -55.656018066249906},
+    "zero_noise": {"noise_scale": 0.0, "noise_scale_w": 0.0, "pass": 0, "fail": 125, "median_dbfs": -68.27027321461182},
+    "interpretation": "Duration noise contributes to some failures but is not the sole cause. Lowering/removing latent noise catastrophically suppresses amplitude, so inference tuning alone cannot establish a robust promotable candidate."
+  },
+  "coverage_relation": {
+    "acceptance_rows_in_r1_selection": 75,
+    "acceptance_rows_outside_r1_selection": 50,
+    "default_fail_in_r1_selection": 7,
+    "default_fail_outside_r1_selection": 14,
+    "fail_rate_in_r1_selection": 0.09333333333333334,
+    "fail_rate_outside_r1_selection": 0.28,
+    "interpretation": "Default low-level failure is about three times more common on acceptance rows outside the 128-row R1 training selection, consistent with incomplete generalization from the phone-balanced warm-up."
+  },
+  "training_trace_context": {
+    "r1_batches": 128,
+    "r1_elapsed_s": 46.729,
+    "first_16_mean_kl": 62.896659,
+    "last_16_mean_kl": 5.212616,
+    "first_16_mean_mel": 0.820854,
+    "last_16_mean_mel": 0.50579,
+    "fixed_probe_example": {"source_utterance_id": "NAT-PSS6-029", "warmstart_rms_dbfs": -38.22382, "batch128_rms_dbfs": -70.605629},
+    "interpretation": "Training did not globally diverge, but fixed-seed row-level amplitude degradation occurred despite a healthy median probe."
+  },
+  "piper_transfer_boundary": {
+    "vocoder_warmstart_prefixes": ["model_g.dec.", "model_g.enc_q.", "model_g.flow."],
+    "r1_loop_behavior": "The custom R1 loop then optimized all model_g parameters with the normal generator optimizer.",
+    "hypothesis": "R1 may have mixed successful DWC text/duration adaptation with avoidable drift in warm-start acoustic modules. This must be tested inference-only before corrective training."
+  },
+  "governed_disposition": {
+    "r2_authorized": false,
+    "human_perceptual_gate_authorized": false,
+    "additional_training_authorized": false,
+    "next_safe_test": "Inference-only acoustic reset hybrid: retain learned R1 text-side weights, restore pristine warm-start decoder and/or flow modules, compare multi-seed waveform robustness.",
+    "do_not": ["choose a lucky inference seed as acceptance", "weaken the -55 dBFS floor", "enter R2", "resume training before hybrid diagnosis"]
+  }
+}
