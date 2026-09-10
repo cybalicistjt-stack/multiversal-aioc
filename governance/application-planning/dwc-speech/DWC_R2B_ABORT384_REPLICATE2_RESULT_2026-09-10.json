@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1.0",
+  "project_id": "DWC-SPEECH",
+  "evidence_type": "r2b_abort384_replicate2_result",
+  "recorded_at": "2026-09-10",
+  "source_package": {
+    "file": "DWC_R2B_PROTECTED_RESULT_20260910_145837.zip",
+    "bytes": 185163,
+    "sha256": "6b85d6bd59dc1d7c459174fe7faaaec31345fbed33a9200004bc7abd54d4e63c"
+  },
+  "status": "ABORT_R2B_PROTECTED_GUARD",
+  "reason": "intermediate_five_seed_125_gate",
+  "global_batch": 384,
+  "checkpoint": {
+    "file": "ABORT_R2B_PROTECTED_batch0384.pt",
+    "bytes": 281760643,
+    "sha256": "5a53ce2dde13df389fada834cc027283ef14dc2be44a102fc9fedd249716fd1b"
+  },
+  "source_candidate": {
+    "file": "R2B_source_abort64_dp_restored.pt",
+    "sha256": "e0d78cf89a4fd50a79e064837993d8bc11556e03ad2399d64b8cc53ee93c146b"
+  },
+  "protected_modules": {
+    "model_g.flow_hash_initial": "cfe517d3184001c5213e248cc5434b17eff8a9fdb7273eed6f05a6971e1a81e8",
+    "model_g.flow_hash_at_abort": "cfe517d3184001c5213e248cc5434b17eff8a9fdb7273eed6f05a6971e1a81e8",
+    "model_g.dp_hash_initial": "054d6572e43a45ed71e32e087eca4a257acb07c5304ba09d3cdece929187fb1e",
+    "model_g.dp_hash_at_abort": "054d6572e43a45ed71e32e087eca4a257acb07c5304ba09d3cdece929187fb1e",
+    "unchanged": true
+  },
+  "gate_history": {
+    "batch_128_five_seed": [125,125,125,125,125],
+    "batch_192_primary": 125,
+    "batch_256_five_seed": [125,125,125,125,125],
+    "batch_320_primary": 125,
+    "batch_384_primary": 125,
+    "batch_384_five_seed": [125,125,124,125,124]
+  },
+  "batch_384_failures": [
+    {
+      "acceptance_row_id": "DWCACC-0035",
+      "dwc_text": "zair",
+      "seed_index": 3,
+      "reason": "low_level",
+      "rms_dbfs": -62.78562258028347,
+      "duration_s": 0.2322
+    },
+    {
+      "acceptance_row_id": "DWCACC-0039",
+      "dwc_text": "dapoe",
+      "seed_index": 5,
+      "reason": "low_level",
+      "rms_dbfs": -64.97095142616669,
+      "duration_s": 0.2438095238095238
+    }
+  ],
+  "interpretation": "A second independent protected-R2B run again reaches the same global batch-384 robustness boundary while model_g.flow and model_g.dp remain bit-stable. Unlike replicate 1, the primary seed remains 125/125 and the strengthened five-seed gate catches two low-level stochastic failures. This replication shows that the batch-257..384 robustness regression is not a single-checkpoint accident and should be isolated across both runs before defining R2C.",
+  "training_authorized_by_this_result": false,
+  "human_gate_authorized_by_this_result": false
+}
