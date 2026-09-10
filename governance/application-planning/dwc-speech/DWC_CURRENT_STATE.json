@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.7.0",
+  "schema_version": "0.8.0",
   "project_id": "DWC-SPEECH",
   "project_name": "DWC Speech Synthesis",
   "owner": "John Brandon Turner",
@@ -8,23 +8,33 @@
   "authority_scope": "DWC project continuity only; does not select Multiversal software-roadmap work",
   "stable_entrypoint": "governance/application-planning/dwc-speech/README.md",
   "human_anchor": "governance/application-planning/dwc-speech/DWC_PROJECT_ANCHOR.md",
-  "latest_failure_repair_evidence": "governance/application-planning/dwc-speech/DWC_BOOTSTRAP_CORPUS_V0_1_FAILURE_AND_V0_2_1_REPAIR.json",
-  "retrain_handoff_evidence": "governance/application-planning/dwc-speech/DWC_REPAIRED_CORPUS_RETRAIN_HANDOFF_v0.1.2.json",
   "preferred_execution_surface_evidence": "governance/application-planning/dwc-speech/DWC_LOCAL_WORKSTATION_SURFACE_2026-09-10.json",
+  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_LOCAL_R1_OBSERVED_RESULT_2026-09-10.json",
+  "retrain_handoff_evidence": "governance/application-planning/dwc-speech/DWC_REPAIRED_CORPUS_RETRAIN_HANDOFF_v0.1.2.json",
   "execution_frontier": {
-    "name": "Guarded repaired-corpus exact-ID R1 retrain on persistent local GPU workstation",
-    "state": "ready_not_started",
-    "summary": "The defective v0.1 bootstrap lineage and historical Stage-C forward path remain invalidated. Repaired corpus v0.2.1, exact warm-start checkpoint, Piper v1.8.0, CUDA/PyTorch and all local workstation prerequisites are verified. The preferred next operation is now the guarded local R1 launcher on the RTX 4060 workstation, not Colab. R2 is conditional on a genuine 125/125 R1 machine waveform gate, and human CNS perceptual acceptance remains separate.",
-    "training_started": false,
-    "do_not_regress_to": [
-      "language redesign",
-      "PSS/CNS rediscovery",
-      "exact-ID frontend discovery",
-      "ONNX proxy proof",
-      "Piper exact-ID support discovery",
-      "warm-start feasibility discovery",
-      "historical Stage-C continuation"
-    ]
+    "name": "Diagnose completed repaired-corpus R1 machine-gate failure",
+    "state": "r1_complete_machine_gate_failed_diagnosis_pending",
+    "summary": "The persistent RTX 4060 workstation completed all 128 governed R1 phone-balanced batches and wrote the R1 checkpoint. The strict 125-row machine waveform gate then produced 104 PASS and 21 FAIL, so R2 was correctly not entered. Median R1 acceptance amplitude is healthy relative to the invalid historical Stage-C lineage, but the governed requirement remains 125/125. Import the local diagnostic artifacts and analyze warm-start versus R1 acceptance plus the periodic probe trajectory before authorizing any additional training.",
+    "training_started": true,
+    "r1_training_complete": true,
+    "r1_machine_gate_passed": false,
+    "r2_authorized": false,
+    "human_perceptual_gate_authorized": false
+  },
+  "r1_observed_result": {
+    "phase": "R1_phone_balanced",
+    "batches": 128,
+    "checkpoint": "R1_phone_balanced_weights_batch0128.pt",
+    "checkpoint_observed_bytes": 281764423,
+    "gate_status": "STOP_MACHINE_WAVEFORM_GATE",
+    "acceptance_rows": 125,
+    "pass": 104,
+    "fail": 21,
+    "rms_dbfs_median": -43.32351160138194,
+    "rms_dbfs_min": -73.7840424346194,
+    "governed_floor_dbfs": -55.0,
+    "r2_entered": false,
+    "failure_observation": "Visible failed rows in owner-provided screenshots are marked low_level; full manifest/probe import is still required before classifying all failures."
   },
   "settled_architecture": {
     "frontend": "DWC/PSS/CNS to engine-independent exact custom phoneme IDs; no English G2P at the acoustic boundary",
@@ -33,36 +43,6 @@
     "engine_training_target": "Piper v1.8.0 exact-ID path",
     "temporary_bootstrap_voice_is_canonical_cns": false,
     "human_cns_recordings_eventually_supersede_bootstrap_proxy": true
-  },
-  "verified_achievements": [
-    "DWC pre-audio language/PSS/CNS handoff complete",
-    "exact custom-ID frontend complete",
-    "199/199 neural proxy regression rendered with English G2P bypassed",
-    "Piper v1.8.0 exact-ID input and vocoder-only warm-start proven",
-    "historical A/B/C execution preserved as evidence but candidate lineage invalidated",
-    "repaired synthetic bootstrap corpus v0.2.1 verified: 799 unique governed rows/WAVs, zero rows below -55 dBFS, approximately -24 dBFS targets",
-    "warm-start checkpoint exact hash verified: dcf2449bdbdaad09256a08dfac211c59f6b36ce8d3f244fd844a9eb1d7384c7c",
-    "persistent local WSL2/Ubuntu workstation verified with RTX 4060 Laptop GPU, Piper v1.8.0, compiled monotonic alignment and CUDA-enabled PyTorch"
-  ],
-  "invalidated_historical_lineage": {
-    "bootstrap_v0_1": {
-      "rows": 799,
-      "unique_audio_filenames": 769,
-      "digital_zero_rows": 290,
-      "rows_below_minus55_dbfs": 290
-    },
-    "stage_c_selection": {
-      "rows": 128,
-      "unique_audio_files": 98,
-      "digital_zero_rows": 61
-    },
-    "stage_c_raw_inference": {
-      "governed_floor_dbfs": -55.0,
-      "median_dbfs": -93.97940008672037,
-      "passing_rows": 0
-    },
-    "stage_c_weights_sha256": "d800ae031942c29289ced1cc80c1448fff234c53f42a56f2d69265e7e3ebabb2",
-    "stage_c_weights_authority": "diagnostic/provenance only; not authorized as forward-training source"
   },
   "repaired_corpus": {
     "file": "DWC_Synthetic_Bootstrap_Corpus_v0.2.1.zip",
@@ -83,30 +63,36 @@
     "reassembled_zip_bytes": 775838605,
     "reassembled_zip_sha256": "7c06a05f89674f39fd185ede1e62911c9f91241397c0d2c708825c65455fe92b"
   },
+  "historical_non_regression": {
+    "invalid_stage_c_acceptance_pass_rows": 0,
+    "invalid_stage_c_acceptance_median_rms_dbfs": -93.97940008672037,
+    "stage_c_weights_sha256": "d800ae031942c29289ced1cc80c1448fff234c53f42a56f2d69265e7e3ebabb2",
+    "stage_c_weights_authority": "diagnostic/provenance only; not authorized as forward-training source",
+    "do_not_reopen": [
+      "language redesign",
+      "PSS/CNS rediscovery",
+      "exact-ID frontend discovery",
+      "ONNX proxy proof",
+      "Piper exact-ID support discovery",
+      "warm-start feasibility discovery",
+      "historical Stage-C continuation"
+    ]
+  },
   "preferred_execution_surface": {
     "type": "persistent_local_wsl2_gpu_workstation",
     "dwc_root": "/home/antiquaria/multiversal/dwc-tts",
-    "wsl": "2.7.11.0",
-    "ubuntu": "26.04 LTS",
     "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
     "vram_mib": 8188,
-    "driver": "610.78",
-    "driver_reported_cuda": "13.3",
-    "python": "3.14.4",
-    "pytorch": "2.14.0+cu130",
     "pytorch_cuda_verified": true,
     "piper_version": "v1.8.0",
     "piper_commit": "639388b6317fc4731e91d53da42aea68fd4166ff",
-    "monotonic_alignment_test": "pass",
     "missing_required_files": 0
   },
   "exact_next_execution": {
-    "step_1": "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/sync_governance.sh",
-    "step_2": "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/run_repaired_retrain.sh",
-    "r1": "Run 8-row warm-start raw-amplitude baseline, then 128-row repaired R1 with periodic collapse probes.",
-    "r1_gate": "R1 must pass the real deterministic 125-row waveform gate 125/125 before R2 is permitted.",
-    "r2": "If and only if R1 machine gate is 125/125, perform one deterministic shuffled pass over all 799 repaired rows with probes and apply the real 125-row gate again.",
-    "human_gate": "After a valid machine candidate exists, complete governed human CNS perceptual evaluation. Machine waveform PASS is never human PASS."
+    "step_1": "Package/import the latest local run's warmstart_acceptance_report.json, warmstart_acceptance_manifest.tsv, R1_acceptance_report.json, R1_acceptance_manifest.tsv, retrain_metrics.jsonl, STOP_AFTER_R1.json, DWC_LOCAL_RETRAIN_SHA256SUMS.txt, periodic probe artifacts, and failed R1 WAVs with their warm-start counterparts.",
+    "step_2": "Compare warm-start versus R1 pass/fail rows and amplitude distribution; reconstruct the 8-row probe trajectory across R1 to determine whether failure is global drift, phone/sequence-specific weakness, or stochastic inference sensitivity.",
+    "step_3": "Do not restart R1, enter R2, weaken the -55 dBFS floor, or authorize human perceptual review until diagnosis identifies the smallest safe corrective experiment.",
+    "step_4": "If additional training is justified, preserve the completed R1 checkpoint and create a new governed continuation harness rather than mutating historical evidence."
   },
   "collapse_guard": {
     "governed_final_rms_floor_dbfs": -55.0,
@@ -114,22 +100,20 @@
     "abort_persists_diagnostic_checkpoint": true
   },
   "prohibited_forward_paths": [
-    "continue training from stageC_weights.pt",
-    "run DWC_Piper_Custom58_StageD_Continuation_v0.1.ipynb as the normal forward path",
-    "run DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.ipynb",
+    "continue training from historical stageC_weights.pt",
+    "enter R2 after a 104/125 R1 gate",
     "weaken checksum/corpus/waveform/collapse gates to force progress",
-    "treat machine waveform acceptance as human perceptual acceptance"
+    "treat machine waveform acceptance as human perceptual acceptance",
+    "discard the completed R1 result before importing its diagnostic evidence"
   ],
-  "fallback_execution_surface": {
-    "state": "available_if_local_workstation_unavailable",
-    "artifact": "DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.1.ipynb",
-    "drive_file_id": "1zDNNfb3MHqPdiv9h_FMSixA_j7FSD64D",
-    "sha256": "eb1229689b4f1a069bfddcf61b0286249b62176ffeef42f56e59813462763ba4"
-  },
   "open_results": [
-    "Whether repaired-corpus R1 preserves healthy raw inference amplitude",
-    "Whether R1 reaches genuine 125/125 machine waveform acceptance",
-    "Whether R2 is authorized and, if run, passes its machine gate",
+    "Warm-start 125-row acceptance distribution for the local run",
+    "Full classification of the 21 R1 failed rows",
+    "R1 periodic probe amplitude trajectory",
+    "Whether R1 failures are global, phone-specific, sequence-specific, or inference-seed-sensitive",
+    "Smallest safe corrective experiment",
+    "Genuine 125/125 R1 machine waveform acceptance",
+    "R2 machine acceptance if later authorized",
     "Human CNS perceptual acceptance",
     "Selected/exported temporary synthetic candidate",
     "Authentic human-CNS-recording production voice"
