@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1.0",
+  "project_id": "DWC-SPEECH",
+  "evidence_type": "r2b_abort384_crossreplicate_rollback_result",
+  "recorded_at": "2026-09-10",
+  "source_package": {
+    "file": "DWC_R2B_ABORT384_CROSSREPLICATE_ROLLBACK_20260910_153203.zip",
+    "bytes": 189378,
+    "sha256": "e5dd582e7b3612daa2570b45214f1d3621d54ce573298523487a583caab908ba"
+  },
+  "replicate1": {
+    "checkpoint256_sha256": "079616088ba898effb06535fe5ae5ff2bf5e300e23087b6deaf94edd833e229c",
+    "abort384_sha256": "c24d461484ebb714fb7484cc1616c2790c12df81c0d2d726f13f852ff01434fc",
+    "abort_as_is_pass_counts": [123,125,124,125,124],
+    "enc_p_rollback_pass_counts": [125,125,125,125,125],
+    "decoder_rollback_pass_counts": [123,125,124,124,124],
+    "enc_p_decoder_rollback_pass_counts": [125,125,125,125,125],
+    "enc_p_rollback_worst_rms_dbfs": -53.42595340304584,
+    "enc_p_rollback_primary_median_rms_dbfs": -34.55534422313117
+  },
+  "replicate2": {
+    "checkpoint256_sha256": "88afedca8530f95eaa276568c15aa8612570e51f7aad2a04c6c51b49464e8ff6",
+    "abort384_sha256": "5a53ce2dde13df389fada834cc027283ef14dc2be44a102fc9fedd249716fd1b",
+    "abort_as_is_pass_counts": [125,125,124,125,124],
+    "enc_p_rollback_pass_counts": [125,125,125,125,125],
+    "decoder_rollback_pass_counts": [125,125,124,125,124],
+    "enc_p_decoder_rollback_pass_counts": [125,125,125,125,125],
+    "enc_p_rollback_worst_rms_dbfs": -53.36612676356757,
+    "enc_p_rollback_primary_median_rms_dbfs": -34.591112044341
+  },
+  "module_drift_window_257_384": {
+    "replicate1": {"enc_p_relative_l2":0.03124619629541179,"dec_relative_l2":0.018550574299560973,"enc_q_relative_l2":0.016577618895949636,"dp_relative_l2":0.0,"flow_relative_l2":0.0},
+    "replicate2": {"enc_p_relative_l2":0.03136186207953095,"dec_relative_l2":0.01790151466219813,"enc_q_relative_l2":0.016463613612519242,"dp_relative_l2":0.0,"flow_relative_l2":0.0}
+  },
+  "conclusion": {
+    "minimum_successful_rollback_across_both": "model_g.enc_p only",
+    "decoder_rollback_alone_sufficient": false,
+    "enc_p_rollback_restores_625_of_625_both": true,
+    "protected_modules_for_next_stage": ["model_g.flow","model_g.dp","model_g.enc_p"],
+    "chosen_r2c_source": "replicate2 batch384 with model_g.enc_p restored from replicate2 batch256",
+    "chosen_source_reason": "Both repaired replicates are 625/625; replicate2 has the slightly stronger worst-case RMS margin after enc_p-only rollback while retaining decoder/posterior adaptation through batch384."
+  },
+  "training_authorized_by_this_result": true,
+  "human_gate_authorized_by_this_result": false
+}
