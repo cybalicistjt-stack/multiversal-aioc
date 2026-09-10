@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.1.2",
+  "date": "2026-09-10",
+  "project_id": "DWC-SPEECH",
+  "status": "ready_for_local_gpu_execution",
+  "supersedes_handoff": "DWC_REPAIRED_CORPUS_RETRAIN_HANDOFF_v0.1.1.json",
+  "reason_for_revision": "A persistent WSL2 workstation with an RTX 4060 Laptop GPU is now verified for CUDA/PyTorch/Piper execution, removing the earlier need to treat Colab as the normal target surface.",
+  "authoritative_surface_evidence": "DWC_LOCAL_WORKSTATION_SURFACE_2026-09-10.json",
+  "corpus": {
+    "file": "DWC_Synthetic_Bootstrap_Corpus_v0.2.1.zip",
+    "bytes": 26439488,
+    "sha256": "99aca0d65596f906b08a99e0f0c9708211fb150013e039c91f0c489fc0d6a4e3",
+    "rows": 799,
+    "unique_row_ids": 799,
+    "low_level_rows": 0,
+    "target_rms_dbfs_approx": -24.0
+  },
+  "warmstart": {
+    "checkpoint": "lj-med_1000.ckpt",
+    "checkpoint_bytes": 845889993,
+    "checkpoint_sha256": "dcf2449bdbdaad09256a08dfac211c59f6b36ce8d3f244fd844a9eb1d7384c7c",
+    "logical_status": "verified local and already-proven warm-start source; do not rediscover"
+  },
+  "preferred_execution_surface": {
+    "type": "persistent_local_wsl2_gpu_workstation",
+    "dwc_root": "/home/antiquaria/multiversal/dwc-tts",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "vram_mib": 8188,
+    "pytorch": "2.14.0+cu130",
+    "piper": "OHF-Voice/piper1-gpl v1.8.0 @ 639388b6317fc4731e91d53da42aea68fd4166ff",
+    "cuda_verified": true
+  },
+  "exact_launch_sequence": [
+    "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/sync_governance.sh",
+    "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/run_repaired_retrain.sh"
+  ],
+  "training_sequence": [
+    "fresh exact-58 model + proven vocoder-only warm-start",
+    "8-row raw inference amplitude baseline",
+    "R1: 128 unique governed phone-balanced repaired rows with probes every 8 batches",
+    "R1 strict 125-row waveform gate; R2 prohibited unless 125/125",
+    "R2: one deterministic shuffled full pass over all 799 repaired rows with probes",
+    "R2 strict 125-row waveform gate",
+    "human CNS perceptual gate only after a valid machine waveform pass"
+  ],
+  "collapse_guard": {
+    "governed_final_rms_floor_dbfs": -55.0,
+    "probe_max_drop_from_baseline_db": 18.0,
+    "behavior": "abort immediately and preserve diagnostic checkpoint/probes if raw-output median crosses the guard"
+  },
+  "required_result_evidence": [
+    "warm-start baseline row metrics and median RMS dBFS",
+    "all R1 amplitude probes",
+    "R1 training metrics and completion/abort state",
+    "R1 125-row waveform acceptance result and review rows if any",
+    "whether R2 was authorized",
+    "all R2 probes/metrics if entered",
+    "R2 125-row waveform acceptance result if entered",
+    "GPU peak VRAM and elapsed runtime",
+    "checkpoint/result/render SHA-256 hashes",
+    "explicit human_perceptual_gate state"
+  ],
+  "prohibited_paths": [
+    "continue from stageC_weights.pt",
+    "run historical DWC_Piper_Custom58_StageD_Continuation_v0.1.ipynb as normal forward path",
+    "use DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.ipynb",
+    "weaken corpus/hash/amplitude/collapse/125-row gates to keep training running",
+    "represent machine waveform success as human CNS perceptual success"
+  ],
+  "fallback_surface": "Corrected DWC_Piper_RepairedCorpus_GPU_Retrain_v0.1.1.ipynb on a GPU-capable Colab/runtime remains a fallback only if the verified local workstation becomes unavailable.",
+  "training_started_when_handoff_written": false
+}
