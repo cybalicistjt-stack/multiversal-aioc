@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1.0",
+  "date": "2026-09-10",
+  "project_id": "DWC-SPEECH",
+  "source_diagnostic_zip": {
+    "file": "DWC_R1_DIAGNOSTIC_20260910_114152.zip",
+    "bytes": 4514552,
+    "sha256": "11682759dbeba51d1a34dba0f5fe2347c1eb2c8dd6d05643dbfefcf8097bcae6",
+    "contained_files": 343
+  },
+  "r1_machine_gate": {
+    "status": "STOP_MACHINE_WAVEFORM_GATE",
+    "batches": 128,
+    "checkpoint_file": "R1_phone_balanced_weights_batch0128.pt",
+    "checkpoint_observed_bytes": 281764423,
+    "acceptance_rows": 125,
+    "pass": 104,
+    "fail": 21,
+    "rms_dbfs_median": -43.32351160138194,
+    "rms_dbfs_min": -73.7840424346194,
+    "failure_reasons": {"low_level": 21},
+    "threshold_counts": {"below_-55": 21, "below_-57": 15, "below_-60": 11, "below_-65": 9, "below_-70": 7},
+    "r2_entered": false
+  },
+  "warmstart_acceptance": {
+    "rows": 125,
+    "pass": 116,
+    "fail": 9,
+    "rms_dbfs_median": -33.95713697353933,
+    "rms_dbfs_min": -53.33221780758176,
+    "failure_reasons": {"duration": 9}
+  },
+  "probe_trajectory": [
+    {"batch":0,"median_rms_dbfs":-35.323816986292584,"min_rms_dbfs":-49.33408125312148,"max_rms_dbfs":-24.791595983538265},
+    {"batch":1,"median_rms_dbfs":-33.355344824816584,"min_rms_dbfs":-56.44516552512509,"max_rms_dbfs":-23.478959643705476},
+    {"batch":8,"median_rms_dbfs":-38.28461688502705,"min_rms_dbfs":-48.657406913022825,"max_rms_dbfs":-32.793248310420694},
+    {"batch":16,"median_rms_dbfs":-36.705640233976844,"min_rms_dbfs":-47.47089889467627,"max_rms_dbfs":-30.57244039854673},
+    {"batch":24,"median_rms_dbfs":-37.6936469159634,"min_rms_dbfs":-42.46897257965378,"max_rms_dbfs":-34.13411858303665},
+    {"batch":32,"median_rms_dbfs":-40.171694758755955,"min_rms_dbfs":-45.342677145294886,"max_rms_dbfs":-36.874340298696225},
+    {"batch":40,"median_rms_dbfs":-36.12912428437258,"min_rms_dbfs":-40.61013675188835,"max_rms_dbfs":-35.14301638841233},
+    {"batch":48,"median_rms_dbfs":-40.57154849201516,"min_rms_dbfs":-47.93532281218157,"max_rms_dbfs":-38.23876900532469},
+    {"batch":56,"median_rms_dbfs":-41.73125925671358,"min_rms_dbfs":-52.628967405368314,"max_rms_dbfs":-40.04897430884179},
+    {"batch":64,"median_rms_dbfs":-38.53306170719575,"min_rms_dbfs":-46.724572212146555,"max_rms_dbfs":-36.83630586154321},
+    {"batch":72,"median_rms_dbfs":-39.86760946822373,"min_rms_dbfs":-48.46085655775817,"max_rms_dbfs":-37.14057079536415},
+    {"batch":80,"median_rms_dbfs":-37.52875491104557,"min_rms_dbfs":-45.43825099991035,"max_rms_dbfs":-34.67841482429208},
+    {"batch":88,"median_rms_dbfs":-36.2038137402501,"min_rms_dbfs":-49.063495138528296,"max_rms_dbfs":-34.15042468304413},
+    {"batch":96,"median_rms_dbfs":-39.535944885455415,"min_rms_dbfs":-65.50045837943208,"max_rms_dbfs":-35.949078019434765},
+    {"batch":104,"median_rms_dbfs":-38.27477615847856,"min_rms_dbfs":-58.919664305935356,"max_rms_dbfs":-33.11033124681667},
+    {"batch":112,"median_rms_dbfs":-36.946077868803314,"min_rms_dbfs":-60.190279873772326,"max_rms_dbfs":-33.252918141775965},
+    {"batch":120,"median_rms_dbfs":-40.487979031416685,"min_rms_dbfs":-66.4823556014357,"max_rms_dbfs":-31.615737237224515},
+    {"batch":128,"median_rms_dbfs":-39.75656311896138,"min_rms_dbfs":-70.60562838647292,"max_rms_dbfs":-33.22893993904812}
+  ],
+  "diagnostic_findings": {
+    "median_collapse_guard_fired": false,
+    "heterogeneous_row_level_collapse_observed": true,
+    "fixed_probe_example": "NAT-PSS6-029 fell from -38.2238 dBFS at warm-start to -70.6056 dBFS at batch 128 while the 8-row median remained above the collapse floor.",
+    "warmstart_vs_r1_row_delta_is_seed_confounded": true,
+    "seed_confounded_reason": "warmstart acceptance uses seed_base=a.seed+2000 while R1 acceptance uses a.seed+3000, so rowwise warm-start-to-R1 amplitude changes combine model change with different stochastic inference seeds.",
+    "acceptance_identity_collision_found": true,
+    "acceptance_rows": 125,
+    "unique_utterance_ids": 95,
+    "unique_audio_filenames": 95,
+    "collision_groups": 10,
+    "extra_rows_on_colliding_names": 30,
+    "acceptance_collision_effect": "Per-row gate statistics were computed immediately from each inference and remain numerically informative, but persisted WAV evidence contains only 95 unique filenames and cannot satisfy complete 125-row provenance/human-review evidence.",
+    "next_gate_rule": "Do not accept any future 125/125 machine gate until acceptance rows have unique governed row IDs and unique output filenames."
+  },
+  "failure_distribution": {
+    "natural_approved_failures": 14,
+    "special_phone_contrast_failures": 7,
+    "six_failures_within_2db_of_floor": true,
+    "seven_failures_below_minus70_dbfs": true
+  },
+  "next_safe_action": {
+    "kind": "inference_only_diagnostic_before_more_training",
+    "description": "Load the completed R1 checkpoint without optimizer updates; repair acceptance row identity/output filenames; reproduce the default-seed gate; then run a bounded multi-seed/noise-parameter sweep on failed rows plus controls to separate model weakness from stochastic inference sensitivity.",
+    "training_authorized": false,
+    "r2_authorized": false,
+    "human_gate_authorized": false
+  }
+}
