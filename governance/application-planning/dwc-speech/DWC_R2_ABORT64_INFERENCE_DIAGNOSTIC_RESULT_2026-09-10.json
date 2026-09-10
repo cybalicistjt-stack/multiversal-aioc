@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1.0",
+  "project_id": "DWC-SPEECH",
+  "evidence_type": "r2_abort64_inference_diagnostic_result",
+  "recorded_at": "2026-09-10",
+  "source_package": {
+    "file": "DWC_R2_ABORT64_INFERENCE_DIAGNOSTIC_20260910_132453.zip",
+    "bytes": 131771,
+    "sha256": "7e160ef698d050a0c633b11d4c255d129d7803dceb5950d345d14401ae3a4d9b"
+  },
+  "checkpoint": {
+    "file": "ABORT_R2_PROTECTED_batch0064.pt",
+    "bytes": 281759213,
+    "sha256": "ee6f767c2d34a713fd5c7c3834712641129f3bdadf4543e467f61f1c5d943446",
+    "num_symbols": 58,
+    "sample_rate": 22050
+  },
+  "primary_gate_reproduction": {
+    "rows": 125,
+    "pass": 124,
+    "fail": 1,
+    "rms_dbfs_median": -37.002168676242505,
+    "rms_dbfs_min": -45.82344297241096,
+    "below_minus55": 0,
+    "failed_row": {
+      "acceptance_row_id": "DWCACC-0021",
+      "source_utterance_id": "CONTRAST-i_-01",
+      "tier": "special_phone_contrast",
+      "dwc_text": "ei",
+      "duration_s": 0.0580498866213151,
+      "peak_dbfs": -29.07241255330038,
+      "rms_dbfs": -45.82344297241096,
+      "reason": "duration"
+    }
+  },
+  "five_seed_gate": [
+    {"seed_base": 20263908, "pass": 124, "fail": 1, "below_minus55": 0},
+    {"seed_base": 20264908, "pass": 125, "fail": 0, "below_minus55": 0},
+    {"seed_base": 20265908, "pass": 124, "fail": 1, "below_minus55": 1},
+    {"seed_base": 20266908, "pass": 124, "fail": 1, "below_minus55": 0},
+    {"seed_base": 20267908, "pass": 124, "fail": 1, "below_minus55": 1}
+  ],
+  "seed_robustness": {
+    "pass_5_of_5": 121,
+    "seed_sensitive": 4,
+    "fail_5_of_5": 0,
+    "sensitive_rows": [
+      {"acceptance_row_id": "DWCACC-0021", "dwc_text": "ei", "passes_of_5": 4, "failure_mode": "duration"},
+      {"acceptance_row_id": "DWCACC-0035", "dwc_text": "zair", "passes_of_5": 4, "failure_mode": "low_level", "minimum_rms_dbfs": -58.00434957581867},
+      {"acceptance_row_id": "DWCACC-0039", "dwc_text": "dapoe", "passes_of_5": 4, "failure_mode": "low_level", "minimum_rms_dbfs": -71.36402024103548},
+      {"acceptance_row_id": "DWCACC-0071", "dwc_text": "sae", "passes_of_5": 4, "failure_mode": "duration"}
+    ]
+  },
+  "noise_ablation_primary_seed": {
+    "default": {"pass": 124, "fail": 1},
+    "no_duration_noise": {"pass": 125, "fail": 0, "rms_dbfs_min": -50.41666229924465},
+    "no_latent_noise": {"pass": 124, "fail": 1, "failure": "duration", "rms_dbfs_min": -54.32313392256384},
+    "reduced_noise": {"pass": 125, "fail": 0, "rms_dbfs_min": -48.758813985149246},
+    "zero_noise": {"pass": 125, "fail": 0, "rms_dbfs_min": -46.754312890852034}
+  },
+  "interpretation": {
+    "low_level_flow_collapse_recurred": false,
+    "flow_protection_still_valid": true,
+    "primary_gate_failure_type": "duration",
+    "broader_result": "After only 64 full-corpus R2 rows, output median level improved substantially but robustness regressed from the promoted source checkpoint's 125/125 across all five seed schedules to 121/125 rows passing all five. The regressions are mixed duration and low-level stochastic failures, so simply weakening the primary seed gate or selecting a different inference noise setting is not sufficient evidence for promotion.",
+    "next_diagnostic": "Compare the batch-64 checkpoint against the promoted R1 hybrid by selectively restoring R2-updated inference-side modules (duration predictor, text/prior encoder, decoder) while keeping the already-protected flow unchanged. Use the same five-seed 125-row gate to identify which module drift caused the four-row robustness regression before any more training."
+  },
+  "training_authorized_by_this_result": false,
+  "human_gate_authorized_by_this_result": false
+}
