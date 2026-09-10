@@ -6,29 +6,29 @@
   "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
   "roadmap_supplements": [],
   "family_execution_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
-  "primary_attempt_id": "ARI-05-attempt-001",
-  "selection_reason": "ARI-04 completed_verified on application PR #445 with exact-head self-hosted Linux/Windows validation and deterministic cross-platform receipt; the owner has directed execution of the remaining sealed ARI family in strict order, beginning with ARI-05.",
+  "primary_attempt_id": "ARI-06-attempt-001",
+  "selection_reason": "ARI-05 completed_verified on application PR #448 with exact-head self-hosted Linux/Windows validation and deterministic cross-platform receipt; the owner has directed execution of the remaining sealed ARI family in strict order, advancing to ARI-06.",
   "active_attempt": {
-    "work_item_id": "ARI-05",
-    "attempt_id": "ARI-05-attempt-001",
+    "work_item_id": "ARI-06",
+    "attempt_id": "ARI-06-attempt-001",
     "track": "asset-resource-ingestion-reuse",
     "source_program": "ARI",
     "priority": 1,
     "owner_selected": true,
     "repository": "cybalicistjt-stack/multiversal-aioc",
-    "checkpoint_path": "governance/ai/work-state/ARI-05-attempt-001.json",
-    "status": "in_progress",
-    "implementation_branch": "implementation/ari-05-rar-7z-adapter-contract",
-    "implementation_authority": true,
-    "active_item": "ARI-05 — RAR/7z Archive Adapter Contract"
+    "checkpoint_path": "governance/ai/work-state/ARI-06-attempt-001.json",
+    "status": "selected_not_started",
+    "implementation_branch": null,
+    "implementation_authority": false,
+    "active_item": "ARI-06 — Recursive Discovery & Media Classification"
   },
   "active_program": {
     "program_id": "ARI",
     "name": "Asset Resource Ingestion & Reuse",
     "status": "in_progress",
-    "completed_through": "ARI-04",
-    "current": "ARI-05",
-    "strict_next": "ARI-06",
+    "completed_through": "ARI-05",
+    "current": "ARI-06",
+    "strict_next": "ARI-07",
     "last": "ARI-22C",
     "semantic_last": "ARI-22",
     "program_path": "governance/application-planning/asset-resource-ingestion-reuse/ARI_ASSET_RESOURCE_INGESTION_REUSE_PROGRAM.md",
@@ -36,16 +36,17 @@
   },
   "bounded_authority": {
     "family_preflight_sealed": true,
-    "selected_ari_unit": "ARI-05",
-    "ari_implementation": true,
-    "implementation_branch": "implementation/ari-05-rar-7z-adapter-contract",
+    "selected_ari_unit": "ARI-06",
+    "ari_implementation": false,
+    "implementation_branch": null,
     "paid_provider_activation": false,
     "provider_credentials_or_scraping": false,
     "tester_distribution": false,
     "release_or_deployment": false,
-    "rule": "ARI-05 is in_progress on its bounded implementation branch. The owner has authorized the remaining sealed ARI units to execute strictly in order; ARI-06+ remain inactive until ARI-05 is completed_verified and each strict successor is canonically selected."
+    "rule": "ARI-06 is selected_not_started without an implementation branch or authority. The owner has authorized the remaining sealed ARI units to execute strictly in order; ARI-06 may receive its own governed start, and each later successor remains inactive until its predecessor is completed_verified and canonically advances the pointer."
   },
   "recently_completed_ari_work": [
+    {"work_item_id":"ARI-05","status":"completed_verified","application_pr":448,"validated_head":"27e0d557f61d927cdb5994a77157bacdd36fbdbf","validation_run":34488642268,"deterministic_receipt_sha256":"73e1b873e2c05112164c9f447326ae21c00093e533f6511dd39aeb7280a1946e","merge_sha":"08b4693f4ece80d61876b9becfc82726ea87e53f"},
     {"work_item_id":"ARI-04","status":"completed_verified","application_pr":445,"validated_head":"aa853e3b4c6e4dab008de2405d1f96d1ffe9ad10","validation_run":34364074348,"deterministic_receipt_sha256":"3bb6da24052c8526a61db6f95d5f346510f3681d9396caecd127f3c57a729411","merge_sha":"19b85b153afd84c533f2fc10627fd756864047db"},
     {"work_item_id":"ARI-03","status":"completed_verified","application_pr":444,"validated_head":"3a8d3bee39900f7952b1c7513130542cc7fb450b","validation_run":34360366513,"deterministic_receipt_sha256":"8a331617407e5d2b9fe2daaaada39f14f39276b78a05c1a668d9dd7d763d6096","merge_sha":"91c3cf18e88f710335761bfd10ee83d6ee626d57"},
     {"work_item_id":"ARI-02","status":"completed_verified","application_pr":443,"validated_head":"5003e88db560045bd865932426bcd4b842a9a7ad","validation_run":34350510779,"deterministic_receipt_sha256":"bb47ccad32ef8083fe41c4368799a51c027d00873aa3c0971cae4726e21b5ec8","merge_sha":"575de82cda922c1dcba72934fa010ade2b3fe3ba"},
@@ -57,6 +58,7 @@
     {"work_item_id":"SGC-08A","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_SYSTEM_PRODUCT_DISPOSITION_TRACE_GRAPH.json","frozen_source_nodes":8,"unique_concept_nodes":126,"implemented":79,"content_only":17,"planned_owned_elsewhere":26,"provenance_only":4,"unresolved_owner_decision":0,"unclassified_concepts":0}
   ],
   "recently_completed_implementation_work": [
+    {"work_item_id":"ARI-05","status":"completed_verified","application_pr":448,"validated_head":"27e0d557f61d927cdb5994a77157bacdd36fbdbf","validation_run":34488642268,"deterministic_receipt_sha256":"73e1b873e2c05112164c9f447326ae21c00093e533f6511dd39aeb7280a1946e","merge_sha":"08b4693f4ece80d61876b9becfc82726ea87e53f"},
     {"work_item_id":"ARI-04","status":"completed_verified","application_pr":445,"validated_head":"aa853e3b4c6e4dab008de2405d1f96d1ffe9ad10","validation_run":34364074348,"deterministic_receipt_sha256":"3bb6da24052c8526a61db6f95d5f346510f3681d9396caecd127f3c57a729411","merge_sha":"19b85b153afd84c533f2fc10627fd756864047db"},
     {"work_item_id":"ARI-03","status":"completed_verified","application_pr":444,"validated_head":"3a8d3bee39900f7952b1c7513130542cc7fb450b","validation_run":34360366513,"deterministic_receipt_sha256":"8a331617407e5d2b9fe2daaaada39f14f39276b78a05c1a668d9dd7d763d6096","merge_sha":"91c3cf18e88f710335761bfd10ee83d6ee626d57"},
     {"work_item_id":"ARI-02","status":"completed_verified","application_pr":443,"validated_head":"5003e88db560045bd865932426bcd4b842a9a7ad","validation_run":34350510779,"deterministic_receipt_sha256":"bb47ccad32ef8083fe41c4368799a51c027d00873aa3c0971cae4726e21b5ec8","merge_sha":"575de82cda922c1dcba72934fa010ade2b3fe3ba"},
@@ -68,10 +70,10 @@
   ],
   "selection_invariants": [
     "SGC is completed_verified through SGC-08C and retired from active family execution.",
-    "ARI-01 through ARI-04 are completed_verified; ARI-04 merged as application main 19b85b153afd84c533f2fc10627fd756864047db.",
+    "ARI-01 through ARI-05 are completed_verified; ARI-05 merged as application main 08b4693f4ece80d61876b9becfc82726ea87e53f.",
     "The live family preflight remains ARI with 24 execution units and ARI-22 pre-split into ARI-22A/B/C.",
-    "ARI-05 is in_progress with bounded implementation authority on implementation/ari-05-rar-7z-adapter-contract.",
+    "ARI-06 is selected_not_started with no implementation branch or authority.",
     "Historical lifecycle tests, detailed completed-program artifacts and unrelated connected systems remain blocked from ordinary ARI preload by default."
   ],
-  "exact_next_action": "Write the focused ARI-05 RED regression/profile, implement its bounded adapter contract, validate the exact head, merge, close as completed_verified, and select ARI-06."
+  "exact_next_action": "Governed-start ARI-06, then write its focused RED regression and Validation Core profile before production implementation."
 }
