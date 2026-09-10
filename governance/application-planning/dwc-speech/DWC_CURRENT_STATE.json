@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.8.0",
+  "schema_version": "0.9.0",
   "project_id": "DWC-SPEECH",
   "project_name": "DWC Speech Synthesis",
   "owner": "John Brandon Turner",
@@ -9,74 +9,79 @@
   "stable_entrypoint": "governance/application-planning/dwc-speech/README.md",
   "human_anchor": "governance/application-planning/dwc-speech/DWC_PROJECT_ANCHOR.md",
   "preferred_execution_surface_evidence": "governance/application-planning/dwc-speech/DWC_LOCAL_WORKSTATION_SURFACE_2026-09-10.json",
-  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_LOCAL_R1_OBSERVED_RESULT_2026-09-10.json",
-  "retrain_handoff_evidence": "governance/application-planning/dwc-speech/DWC_REPAIRED_CORPUS_RETRAIN_HANDOFF_v0.1.2.json",
+  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_R1_FULL_DIAGNOSTIC_ANALYSIS_2026-09-10.json",
   "execution_frontier": {
-    "name": "Diagnose completed repaired-corpus R1 machine-gate failure",
-    "state": "r1_complete_machine_gate_failed_diagnosis_pending",
-    "summary": "The persistent RTX 4060 workstation completed all 128 governed R1 phone-balanced batches and wrote the R1 checkpoint. The strict 125-row machine waveform gate then produced 104 PASS and 21 FAIL, so R2 was correctly not entered. Median R1 acceptance amplitude is healthy relative to the invalid historical Stage-C lineage, but the governed requirement remains 125/125. Import the local diagnostic artifacts and analyze warm-start versus R1 acceptance plus the periodic probe trajectory before authorizing any additional training.",
+    "name": "Inference-only diagnosis of completed repaired-corpus R1 checkpoint",
+    "state": "r1_complete_machine_gate_failed_inference_diagnostic_ready",
+    "summary": "R1 completed all 128 governed phone-balanced batches on the local RTX 4060 workstation. The strict 125-row machine gate stopped at 104 PASS / 21 FAIL, all observed failures low-level, so R2 was correctly blocked. Full artifact analysis shows heterogeneous row-level amplitude collapse that the median-only probe guard did not catch, plus an inherited acceptance identity/output-filename collision (125 rows but only 95 unique IDs/files) and a warmstart-vs-R1 seed confound. Before any more training, run the prepared inference-only diagnostic on the completed R1 checkpoint with unique acceptance identities, five seed sweeps, and noise ablation.",
     "training_started": true,
     "r1_training_complete": true,
     "r1_machine_gate_passed": false,
     "r2_authorized": false,
-    "human_perceptual_gate_authorized": false
+    "human_perceptual_gate_authorized": false,
+    "additional_training_authorized": false
   },
-  "r1_observed_result": {
-    "phase": "R1_phone_balanced",
+  "r1_result": {
     "batches": 128,
     "checkpoint": "R1_phone_balanced_weights_batch0128.pt",
     "checkpoint_observed_bytes": 281764423,
-    "gate_status": "STOP_MACHINE_WAVEFORM_GATE",
     "acceptance_rows": 125,
     "pass": 104,
     "fail": 21,
+    "failure_reason_observed": "low_level",
     "rms_dbfs_median": -43.32351160138194,
     "rms_dbfs_min": -73.7840424346194,
     "governed_floor_dbfs": -55.0,
-    "r2_entered": false,
-    "failure_observation": "Visible failed rows in owner-provided screenshots are marked low_level; full manifest/probe import is still required before classifying all failures."
+    "below_minus57": 15,
+    "below_minus60": 11,
+    "below_minus65": 9,
+    "below_minus70": 7,
+    "r2_entered": false
+  },
+  "warmstart_acceptance": {
+    "rows": 125,
+    "pass": 116,
+    "fail": 9,
+    "failure_reason": "duration",
+    "rms_dbfs_median": -33.95713697353933,
+    "rms_dbfs_min": -53.33221780758176
+  },
+  "probe_diagnosis": {
+    "warmstart_8row_median_rms_dbfs": -35.323816986292584,
+    "batch128_8row_median_rms_dbfs": -39.75656311896138,
+    "median_collapse_guard_fired": false,
+    "heterogeneous_row_level_collapse": true,
+    "worst_fixed_probe": {
+      "row": "NAT-PSS6-029",
+      "warmstart_rms_dbfs": -38.223818278662364,
+      "batch128_rms_dbfs": -70.60562838647292,
+      "delta_db": -32.38181010781055
+    },
+    "interpretation": "Global/median amplitude remained acceptable, but at least one fixed-seed utterance deteriorated severely. Future collapse protection needs row-level/quantile protection in addition to the median guard."
+  },
+  "acceptance_validator_defect": {
+    "state": "confirmed",
+    "rows": 125,
+    "unique_source_utterance_ids": 95,
+    "unique_legacy_audio_filenames": 95,
+    "collision_groups": 10,
+    "extra_rows_on_colliding_names": 30,
+    "numeric_gate_effect": "The 104/125 statistics were calculated immediately per inference and remain diagnostic; collisions affect persisted render identity/completeness, not the already-failing stop decision.",
+    "promotion_rule": "No future 125/125 machine result is promotable until the acceptance renderer uses 125 unique governed row IDs and 125 unique output filenames."
+  },
+  "seed_confounded_comparison": {
+    "state": "confirmed",
+    "warmstart_seed_base": "seed+2000",
+    "r1_seed_base": "seed+3000",
+    "effect": "Direct per-row warmstart-to-R1 amplitude deltas conflate training change with stochastic inference seed change. Fixed-seed probe trajectories remain valid training-change evidence."
   },
   "settled_architecture": {
     "frontend": "DWC/PSS/CNS to engine-independent exact custom phoneme IDs; no English G2P at the acoustic boundary",
     "num_symbols": 58,
     "sample_rate": 22050,
     "engine_training_target": "Piper v1.8.0 exact-ID path",
-    "temporary_bootstrap_voice_is_canonical_cns": false,
-    "human_cns_recordings_eventually_supersede_bootstrap_proxy": true
-  },
-  "repaired_corpus": {
-    "file": "DWC_Synthetic_Bootstrap_Corpus_v0.2.1.zip",
-    "drive_file_id": "1HPRmXb-DJOOiR9HW608S2GKP1XAqULzx",
-    "bytes": 26439488,
-    "sha256": "99aca0d65596f906b08a99e0f0c9708211fb150013e039c91f0c489fc0d6a4e3",
-    "rows": 799,
-    "unique_row_ids": 799,
-    "unique_audio_filenames": 799,
-    "rows_below_minus55_dbfs": 0,
-    "target_rms_dbfs_approx": -24.0,
-    "authority": "temporary noncanonical acoustic bootstrap; exact DWC IDs remain the governed linguistic labels"
-  },
-  "warmstart_checkpoint": {
-    "checkpoint": "lj-med_1000.ckpt",
-    "bytes": 845889993,
-    "sha256": "dcf2449bdbdaad09256a08dfac211c59f6b36ce8d3f244fd844a9eb1d7384c7c",
-    "reassembled_zip_bytes": 775838605,
-    "reassembled_zip_sha256": "7c06a05f89674f39fd185ede1e62911c9f91241397c0d2c708825c65455fe92b"
-  },
-  "historical_non_regression": {
-    "invalid_stage_c_acceptance_pass_rows": 0,
-    "invalid_stage_c_acceptance_median_rms_dbfs": -93.97940008672037,
-    "stage_c_weights_sha256": "d800ae031942c29289ced1cc80c1448fff234c53f42a56f2d69265e7e3ebabb2",
-    "stage_c_weights_authority": "diagnostic/provenance only; not authorized as forward-training source",
-    "do_not_reopen": [
-      "language redesign",
-      "PSS/CNS rediscovery",
-      "exact-ID frontend discovery",
-      "ONNX proxy proof",
-      "Piper exact-ID support discovery",
-      "warm-start feasibility discovery",
-      "historical Stage-C continuation"
-    ]
+    "historical_stage_c_forward_training_authorized": false,
+    "temporary_bootstrap_voice_is_canonical_cns": false
   },
   "preferred_execution_surface": {
     "type": "persistent_local_wsl2_gpu_workstation",
@@ -85,44 +90,39 @@
     "vram_mib": 8188,
     "pytorch_cuda_verified": true,
     "piper_version": "v1.8.0",
-    "piper_commit": "639388b6317fc4731e91d53da42aea68fd4166ff",
-    "missing_required_files": 0
+    "piper_commit": "639388b6317fc4731e91d53da42aea68fd4166ff"
   },
-  "exact_next_execution": {
-    "step_1": "Package/import the latest local run's warmstart_acceptance_report.json, warmstart_acceptance_manifest.tsv, R1_acceptance_report.json, R1_acceptance_manifest.tsv, retrain_metrics.jsonl, STOP_AFTER_R1.json, DWC_LOCAL_RETRAIN_SHA256SUMS.txt, periodic probe artifacts, and failed R1 WAVs with their warm-start counterparts.",
-    "step_2": "Compare warm-start versus R1 pass/fail rows and amplitude distribution; reconstruct the 8-row probe trajectory across R1 to determine whether failure is global drift, phone/sequence-specific weakness, or stochastic inference sensitivity.",
-    "step_3": "Do not restart R1, enter R2, weaken the -55 dBFS floor, or authorize human perceptual review until diagnosis identifies the smallest safe corrective experiment.",
-    "step_4": "If additional training is justified, preserve the completed R1 checkpoint and create a new governed continuation harness rather than mutating historical evidence."
-  },
-  "collapse_guard": {
-    "governed_final_rms_floor_dbfs": -55.0,
-    "max_probe_drop_from_baseline_db": 18.0,
-    "abort_persists_diagnostic_checkpoint": true
+  "next_safe_execution": {
+    "kind": "inference_only",
+    "sync_command": "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/sync_governance.sh",
+    "launcher": "governance/application-planning/dwc-speech/tools/run_r1_inference_diagnostic.sh",
+    "identity_repair_tool": "governance/application-planning/dwc-speech/tools/DWC_REPAIR_ACCEPTANCE_IDENTITIES_v0.1.0.py",
+    "diagnostic_tool": "governance/application-planning/dwc-speech/tools/DWC_R1_Inference_Diagnostic_v0.1.0.py",
+    "operations": [
+      "create 125 unique governed acceptance row IDs and output filenames without changing text/IPA/exact IDs",
+      "load completed R1 checkpoint without optimizer creation or weight updates",
+      "reproduce original default-seed gate with unique persisted WAV identity",
+      "run five deterministic seed sweeps at original inference settings",
+      "ablate duration noise, latent noise, reduced noise, and zero-noise inference",
+      "return machine-readable summary for diagnosis"
+    ],
+    "training_permitted": false
   },
   "prohibited_forward_paths": [
-    "continue training from historical stageC_weights.pt",
-    "enter R2 after a 104/125 R1 gate",
-    "weaken checksum/corpus/waveform/collapse gates to force progress",
-    "treat machine waveform acceptance as human perceptual acceptance",
-    "discard the completed R1 result before importing its diagnostic evidence"
+    "enter R2 before a genuine governed R1 pass",
+    "resume or extend training before the inference-only diagnosis is reviewed",
+    "continue from historical stageC_weights.pt",
+    "weaken the -55 dBFS waveform gate",
+    "treat a lucky stochastic seed as evidence of robust acceptance",
+    "accept a 125/125 result whose persisted render identities collide",
+    "treat machine waveform acceptance as human CNS perceptual acceptance"
   ],
-  "open_results": [
-    "Warm-start 125-row acceptance distribution for the local run",
-    "Full classification of the 21 R1 failed rows",
-    "R1 periodic probe amplitude trajectory",
-    "Whether R1 failures are global, phone-specific, sequence-specific, or inference-seed-sensitive",
-    "Smallest safe corrective experiment",
-    "Genuine 125/125 R1 machine waveform acceptance",
-    "R2 machine acceptance if later authorized",
-    "Human CNS perceptual acceptance",
-    "Selected/exported temporary synthetic candidate",
-    "Authentic human-CNS-recording production voice"
+  "source_provenance": [
+    "DWC_R1_FULL_DIAGNOSTIC_ANALYSIS_2026-09-10.json",
+    "DWC_R1_OBSERVED_RESULT_2026-09-10.json",
+    "DWC_LOCAL_WORKSTATION_SURFACE_2026-09-10.json",
+    "DWC_REPAIRED_CORPUS_RETRAIN_HANDOFF_v0.1.2.json",
+    "DWC_BOOTSTRAP_CORPUS_V0_1_FAILURE_AND_V0_2_1_REPAIR.json"
   ],
-  "execution_rules": {
-    "continue_semantics": "Remain in execution mode until the largest safe bounded unit is verified complete or a genuine blocker is fully evidenced.",
-    "newer_external_evidence_supersedes_stale_state": true,
-    "machine_waveform_gate_equals_human_perceptual_acceptance": false,
-    "missing_ephemeral_runtime_files_reopens_completed_work": false
-  },
   "mutable_facts_require_live_recheck_before_claim": true
 }
