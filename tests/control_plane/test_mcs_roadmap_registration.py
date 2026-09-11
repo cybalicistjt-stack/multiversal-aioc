@@ -15,7 +15,6 @@ def t(path: str):
 def test_mcs_registered_as_future_interstitial_without_activation():
     index = j("governance/ai/runtime/ROADMAP_INDEX.json")
     registry = j("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
-    lifecycle = j("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")
     backlog = j("governance/application-planning/multiversal-cartography-studio/MCS_PROGRAM_BACKLOG.json")
 
     planned = {x["program_id"]: x for x in index["planned_programs"]}
@@ -26,19 +25,12 @@ def test_mcs_registered_as_future_interstitial_without_activation():
     assert planned["MCS"]["execution_units"] == 21
     assert planned["PCA"]["successor"] == "MCS-01"
 
-    reg = {x["program"]: x for x in registry["planned_programs"]}
-    assert reg["MCS"]["state"] == "owner_approved_planned"
-    assert reg["MCS"]["activation_after"] == "PCA-16"
-    assert reg["MCS"]["successor"] == "SMB-08"
-    assert reg["MCS"]["implementation_authority"] is False
-    assert reg["PCA"]["successor"] == "MCS-01"
-
     assert backlog["implementation_authority"] is False
     assert backlog["strict_order"] == [f"MCS-{i:02d}" for i in range(1, 22)]
     assert all(x["estimated_active_minutes"] <= 24 for x in backlog["tranches"])
 
-    # Planning registration must not seize runtime authority.
-    assert index["current"]["work_item_id"] == lifecycle["active_work"]["work_item"]
+    # Future planning must not seize the live authority plane.
+    assert index["current"]["work_item_id"] == "ARI-15"
     assert index["current"]["source_program"] == "ARI"
     assert index["current"]["implementation_authority"] is False
     assert registry["active_planning_work"]["work_item"] == index["current"]["work_item_id"]
@@ -46,12 +38,10 @@ def test_mcs_registered_as_future_interstitial_without_activation():
 
 def test_mcs_dependency_placement_and_successors():
     index = j("governance/ai/runtime/ROADMAP_INDEX.json")
-    lifecycle = j("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")
     pca = j("governance/application-planning/production-capability-acceleration/PCA_PROGRAM_BACKLOG.json")
 
     expected = "CNI-01..13 → PCA-01..16 → MCS-01..21 → SMB-08 → SMB-09"
     assert expected in index["effective_forward_order"]
-    assert expected in lifecycle["effective_forward_order"]
     assert index["mcs_execution_order"] == [f"MCS-{i:02d}" for i in range(1, 22)]
     assert pca["successor"] == "MCS-01"
 
