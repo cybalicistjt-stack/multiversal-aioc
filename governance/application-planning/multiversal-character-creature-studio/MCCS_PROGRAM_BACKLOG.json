@@ -1,10 +1,10 @@
 {
-  "schema_version": "0.2.0",
+  "schema_version": "0.2.1",
   "program_id": "MCCS",
   "program_name": "Multiversal Character & Creature Studio",
   "status": "owner_approved_planned",
   "activation_after": "MCS-21",
-  "successor": "MAS-01",
+  "successor": "MNCS-01",
   "owner": "John Brandon Turner",
   "approved": "2026-09-11",
   "implementation_authority": false,
@@ -35,7 +35,7 @@
     {"id":"MCCS-21","name":"Golden Character & Creature Capability / Semantic-Integration Proof","status":"planned","estimated_active_minutes":24}
   ],
   "required_upstream": ["ARI family completed_verified","MIB-18 completed_verified","SMB-01..07 completed_verified","CNI-01..13 completed_verified","PCA-01..16 completed_verified","MCS-01..21 completed_verified","completed CAPP/PPIA appearance contracts available","PAPT/PCA/ARI integration contracts available"],
-  "integration_targets": ["Character","NPC","Creature","Species/Form","PPIA","CAPP","PAPT","Inventory/Asset","Mount/Familiar/Pet/Companion owners","ARI","PCA","Animation","Scene/Tabletop","Combat","Dialogue","D29 authoring/provenance","P3D future handoff","MCS","MAS","SMB-08","SMB-09","SAA"],
+  "integration_targets": ["Character","NPC","Creature","Species/Form","PPIA","CAPP","PAPT","Inventory/Asset","Mount/Familiar/Pet/Companion owners","ARI","PCA","Animation","Scene/Tabletop","Combat","Dialogue","D29 authoring/provenance","P3D future handoff","MCS","MNCS","MAS","SMB-08","SMB-09","SAA"],
   "boundaries": [
     "MCCS is creator-facing appearance/presentation tooling and does not become canonical Character, NPC, Creature, Species, Form, Inventory, Asset or relationship authority",
     "MCCS consumes CAPP/PPIA renderer-neutral appearance authority rather than minting a second appearance truth model",
@@ -46,10 +46,10 @@
     "MCCS is topology-first rather than humanoid-first and must expose unsupported/unresolved anatomy instead of forcing humanoid mapping",
     "generic DCC/sculpt/rig/image capabilities should use lawful mature libraries/tools where practical rather than being rebuilt as general-purpose applications",
     "P3D remains deferred and separate; MCCS-20 preserves a handoff seam without activating physical/3D miniature implementation",
-    "MAS is the strict planned successor after MCCS-21 and consumes MCCS presentation outputs without making MCCS an Adventure owner",
+    "MNCS is the strict planned successor after MCCS-21 and may consume MCCS presentation outputs without making MCCS an NPC/Creature identity, persona, mechanics, ecology, behavior or relationship owner",
     "proprietary benchmark products are clean-room planning provenance only; protected code/assets/character bases/styles/UI expression are not copied",
     "no paid/cloud character provider is required for blocking workflows",
     "no implementation authority until separately governed start"
   ],
-  "planning_provenance": ["governance/application-planning/multiversal-character-creature-studio/MCCS_BENCHMARK_CAPABILITY_MATRIX.md","governance/application-planning/proprietary-capability-mining/PCM_CLEAN_ROOM_AND_RIGHTS_RULES.md","governance/application-planning/pixel-asset-production-toolkit/PAPT_PIXEL_ASSET_PRODUCTION_TOOLKIT_PROGRAM.md","governance/application-planning/future-projects/P3D_PHYSICAL_3D_MINIATURE_PIPELINE.md","governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MAS_AMENDMENT_2026-09-11.md"]
+  "planning_provenance": ["governance/application-planning/multiversal-character-creature-studio/MCCS_BENCHMARK_CAPABILITY_MATRIX.md","governance/application-planning/proprietary-capability-mining/PCM_CLEAN_ROOM_AND_RIGHTS_RULES.md","governance/application-planning/pixel-asset-production-toolkit/PAPT_PIXEL_ASSET_PRODUCTION_TOOLKIT_PROGRAM.md","governance/application-planning/future-projects/P3D_PHYSICAL_3D_MINIATURE_PIPELINE.md","governance/application-planning/multiversal-character-creature-studio/MCCS_MNCS_SUCCESSOR_AMENDMENT_2026-09-11.md"]
 }
