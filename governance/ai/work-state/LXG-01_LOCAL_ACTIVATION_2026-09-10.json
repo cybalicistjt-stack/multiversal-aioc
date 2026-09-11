@@ -1,20 +1,27 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "work_item": "LXG-01",
-  "status": "local_machine_active_pending_openai_tunnel_and_chatgpt_app",
-  "date": "2026-09-10",
+  "status": "chatgpt_connection_blocked_by_product_tier",
+  "initial_activation_date": "2026-09-10",
+  "last_verified_date": "2026-09-11",
   "product_work_pointer_changed": false,
-  "product_selector": "ARI-05 selected_not_started",
+  "initial_product_selector": "ARI-05 selected_not_started",
+  "product_selector": "ARI-11 in_progress",
+  "product_selector_source": "origin/main:governance/ai/runtime/CURRENT_WORK_POINTER.json@d0fbc9e19d2e923465684a2610a117d8f574ef0f",
   "application": {
     "gateway_implementation_pr": 446,
     "gateway_implementation_merge": "862c0620e88e278f2b204028ef2ac1226083669b",
     "bootstrap_handoff_pr": 447,
     "bootstrap_handoff_merge": "5f21132092298902f413db3f5dc0add1c29e96ef",
     "bootstrap_validated_head": "03f7d74cf440b865600559d1b80c9eca51bd7a12",
-    "bootstrap_validation_run": 34476386207
+    "bootstrap_validation_run": 34476386207,
+    "tunnel_auth_repair_pr": 451,
+    "tunnel_auth_repair_merge": "502895bc71036dc1636a5b4fa00db77d825a6390",
+    "tunnel_auth_repair_head": "f1913a952da345eaac6404bc8384396ea28855f4",
+    "current_main_at_reverification": "168662aa41d11ce3f1c0dd4d523b14ba33787863"
   },
   "machine_activation": {
-    "host": "DaddysLoad",
+    "host": "DADDYSLOAD",
     "runner": "multiversal-linux-02",
     "activation_run": 34478668364,
     "activation_head": "ab69fbe6729c48bf7c3bea732643eba80b2ce6c0",
@@ -43,6 +50,72 @@
     "credential_safe_finish_helper": "/home/antiquaria/multiversal/bootstrap/lxg/finish_tunnel.sh",
     "interactive_connection_helper": "/home/antiquaria/multiversal/bootstrap/lxg/connect_chatgpt.sh"
   },
+  "secure_tunnel": {
+    "alias": "multiversal-lxg",
+    "managed_runtime_restarted_for_credential_refresh": true,
+    "control_plane_authentication_verified": true,
+    "synchronous_remote_error_absent": true,
+    "new_control_plane_401_absent": true,
+    "new_control_plane_403_absent": true,
+    "process_running": true,
+    "healthy": true,
+    "ready": true,
+    "runtime_state": "ready",
+    "verification_receipt": "/home/antiquaria/multiversal/resources/gateway/receipts/lxg-secure-tunnel-20260911T104201Z.json",
+    "verification_receipt_sha256": "4f46d209a6f16bbc1dd0a93fe29d2e58dfad849f5d25787aff3db93a559a42a2",
+    "tunnel_id_present_in_runtime": true,
+    "tunnel_id_persisted_in_evidence": false
+  },
+  "fallback_client": {
+    "client": "Goose 1.50.0",
+    "provider": "loopback Ollama",
+    "model": "mlr01-qwen3-4b:4k",
+    "paid_provider_used": false,
+    "default_profile_loaded": false,
+    "extension_url": "http://127.0.0.1:8765/mcp",
+    "launcher": "C:\\Users\\Antiquaria\\MultiversalResources\\start-goose-lxg.ps1",
+    "launcher_sha256": "6fdd8527ab0c9561c1c5c7f83526004740c4221f2c9841376f7c1946f97758d8",
+    "start_menu_shortcut": "Multiversal Local Tools/Goose + LXG.lnk",
+    "goose_smoke": {
+      "gateway_status": {
+        "executed": true,
+        "policy_mode": "phase1_read_compute",
+        "phase1_tool_count": 6
+      },
+      "search": {
+        "executed": true,
+        "query": "Local Execution Gateway",
+        "result_count": 22,
+        "first_source_id": "mvlocal-38ad934ec6fbbcb359aeb8b45de3e5b8",
+        "first_source_title": "aioc/governance/ai/runtime/LOCAL_EXECUTION_GATEWAY_WORK_ORDER.md:1"
+      },
+      "fetch": {
+        "executed": true,
+        "source_id_matches_search": true,
+        "text_characters": 8968,
+        "nonempty": true
+      }
+    },
+    "local_receipt": "/home/antiquaria/multiversal/resources/gateway/receipts/lxg-goose-client-20260911T111429Z.json",
+    "local_receipt_sha256": "0bf64c0e603617fc155dded2173ae4cf801e708c5444eab56f821643e97c043a"
+  },
+  "chatgpt_capability": {
+    "observed_account_tier": "Plus",
+    "custom_mcp_app_configuration_available": false,
+    "developer_mode_available": false,
+    "ordinary_chat_smoke_executed": false,
+    "official_capability_source": "https://help.openai.com/en/articles/12584461",
+    "custom_mcp_surface": "web_only_when_account_or_workspace_is_eligible",
+    "classification": "product_availability_condition_not_local_gateway_failure"
+  },
+  "local_model_query": {
+    "tool_registered": true,
+    "ollama_reachable_from_wsl_lxg": false,
+    "windows_ollama_reachable_from_goose": true,
+    "duplicate_ollama_stack_installed": false,
+    "completion_blocking": false,
+    "status": "disabled_from_lxg_with_accurate_service_health"
+  },
   "security": {
     "phase1_tool_count": 6,
     "phase1_tools": [
@@ -57,20 +130,22 @@
     "unrestricted_filesystem_exposed": false,
     "public_listener_exposed": false,
     "runtime_api_key_persisted": false,
-    "tunnel_id_persisted": false
+    "credential_material_recorded": false,
+    "one_time_rsa_delivery_keypair_removed": true,
+    "compromised_prior_lxg_keys_revoked": false,
+    "compromised_prior_lxg_key_revocation_note": "Available connector tooling cannot enumerate or revoke keys, and the exposed keys cannot be uniquely identified without risking an unrelated-key revocation. No key value was inspected or recorded."
   },
   "remaining_external_completion_gate": {
     "local_gateway_blocked": false,
-    "requires_openai_account_action": true,
-    "steps": [
-      "create or securely supply a runtime API key whose principal has Tunnels Read + Use",
-      "create or select an OpenAI Secure MCP Tunnel and obtain its tunnel_... identifier",
-      "run /home/antiquaria/multiversal/bootstrap/lxg/connect_chatgpt.sh locally so the key is entered hidden and retained only in process memory",
-      "verify tunnel-client runtime reports process_running=true, healthy=true, ready=true",
-      "create or refresh the private ChatGPT custom MCP app for the tunnel and scan tools",
+    "secure_tunnel_blocked": false,
+    "blocked_by_product_tier": true,
+    "available_now": false,
+    "steps_when_chatgpt_becomes_eligible": [
+      "in ChatGPT web developer-mode app settings, create a private custom MCP app for the authenticated Secure MCP Tunnel",
+      "scan and enable the six read-only Phase-1 tools",
       "from an ordinary ChatGPT conversation execute gateway_status and search followed by fetch",
-      "record the redacted final connection receipt and retire LXG-01 only after those live proofs exist"
+      "record the redacted ordinary-Chat receipt and retire LXG-01 only after those live proofs exist"
     ]
   },
-  "completion_claim": "LXG-01 local implementation and persistent machine activation are complete. Full LXG-01 completion remains pending the OpenAI Secure MCP Tunnel/custom-app handshake and ordinary-Chat smoke proof required by the authoritative work order."
+  "completion_claim": "LXG-01 source, persistent local gateway, repaired credential refresh, real Secure MCP Tunnel control-plane authentication and Goose fallback use are verified. The authoritative ordinary-ChatGPT custom-app proof is unavailable on the current ChatGPT Plus surface, so LXG-01 is recorded as chatgpt_connection_blocked_by_product_tier and is not completed_verified."
 }
