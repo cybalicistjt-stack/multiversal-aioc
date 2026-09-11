@@ -1,10 +1,10 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "program_id": "MCS",
   "program_name": "Multiversal Cartography Studio",
   "status": "owner_approved_planned",
   "activation_after": "PCA-16",
-  "successor": "SMB-08",
+  "successor": "MCCS-01",
   "owner": "John Brandon Turner",
   "approved": "2026-09-11",
   "implementation_authority": false,
@@ -35,7 +35,7 @@
     {"id":"MCS-21","name":"Golden Cartography Capability & Semantic-Integration Proof","status":"planned","estimated_active_minutes":24}
   ],
   "required_upstream": ["ARI family completed_verified","MIB-18 completed_verified","SMB-01..07 completed_verified","CNI-01..13 completed_verified","PCA-01..16 completed_verified","MAI/ISE/SSA/VTI and World/Scene/Exploration/Combat owner contracts available"],
-  "integration_targets": ["ARI","MAI","ISE","SSA","VTI","World","Scene/Tabletop","Exploration","Combat","Visibility/Permissions","Settlement","Kingdom","Faction","Economy","D29 authoring/provenance","PCA","SMB-08","SMB-09","SAA"],
+  "integration_targets": ["ARI","MAI","ISE","SSA","VTI","World","Scene/Tabletop","Exploration","Combat","Visibility/Permissions","Settlement","Kingdom","Faction","Economy","D29 authoring/provenance","PCA","MCCS","SMB-08","SMB-09","SAA"],
   "boundaries": [
     "MCS is map-specific authoring/presentation tooling and does not become canonical World, Scene, Combat, Exploration, Visibility, Settlement, Economy or social-state authority",
     "map elements explicitly distinguish presentation-only, owner-projected and binding-proposal states",
@@ -43,10 +43,11 @@
     "MCS consumes MAI/ISE/SSA/VTI foundations instead of replacing them",
     "all imported/generated media resources and derivatives preserve ARI identity/provenance/rights rules",
     "PCA supplies reusable production/generator primitives; MCS owns map-specific user-facing composition and editing",
+    "MCCS is the strict planned successor after MCS-21 and owns the separate Character/creature creator surface before SMB-08",
     "generic DCC/CAD/GIS/vector/raster capabilities should use lawful mature libraries/tools where practical rather than being rebuilt as general-purpose applications",
     "proprietary benchmark products are clean-room planning provenance only; protected code/assets/styles/UI expression are not copied",
     "no paid mapping provider is required for blocking workflows",
     "no implementation authority until separately governed start"
   ],
-  "planning_provenance": ["governance/application-planning/multiversal-cartography-studio/MCS_BENCHMARK_CAPABILITY_MATRIX.md","governance/application-planning/proprietary-capability-mining/PCM_CLEAN_ROOM_AND_RIGHTS_RULES.md","governance/application-planning/map-asset-interoperability/","governance/application-planning/interactive-scene-experience/","governance/application-planning/semantic-spatial-authoring/"]
+  "planning_provenance": ["governance/application-planning/multiversal-cartography-studio/MCS_BENCHMARK_CAPABILITY_MATRIX.md","governance/application-planning/proprietary-capability-mining/PCM_CLEAN_ROOM_AND_RIGHTS_RULES.md","governance/application-planning/map-asset-interoperability/","governance/application-planning/interactive-scene-experience/","governance/application-planning/semantic-spatial-authoring/","governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MCCS_AMENDMENT_2026-09-11.md","governance/application-planning/multiversal-cartography-studio/MCS_MCCS_SUCCESSOR_AMENDMENT_2026-09-11.md"]
 }
