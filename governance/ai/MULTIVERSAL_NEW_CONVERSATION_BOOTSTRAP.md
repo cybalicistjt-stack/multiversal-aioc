@@ -2,12 +2,12 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 6.4.0
+**Version:** 6.5.0
 **Status:** ACTIVE CANDIDATE — CRS COMPLETION PENDING  
 **Owner and final authority:** John Brandon Turner  
 **Governance repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Application repository:** `cybalicistjt-stack/Multiversal-app`  
-**Last updated:** 2026-08-28
+**Last updated:** 2026-09-11
 
 ## Purpose
 
@@ -97,6 +97,26 @@ For implementation attempts:
 - related fixes are batched before rerunning the final gate;
 - two no-progress cycles require an explicit control-plane, environment, or owner blocker, or a diagnostic change to retry basis;
 - a third patch-and-rerun cycle without materially new diagnostic evidence is forbidden.
+
+## Tranche execution fast path
+
+Immediately after bounded recovery, read the current family preflight's `target_active_minutes_per_unit` and `minimum_closeout_reserve_minutes`. Protect the closeout reserve from the beginning of execution. The closeout-switch point is `target_active_minutes_per_unit - minimum_closeout_reserve_minutes`; with the current 24/8 pattern, optional implementation/reconnaissance work must be off the critical path by minute 16. Crossing that point never grants permission to stop; it switches execution to terminal closeout only.
+
+The following rules are mandatory in every new conversation and every resumed `Continue`:
+
+- **Do not rediscover an already-loaded tool schema**, connector capability, repository identity, workflow shape, branch convention, or merge method unless a concrete error or authority change invalidates it.
+- Load only the selected tranche and explicitly named dependencies. The existence of unrelated parallel work does not authorize loading or reviewing it. Preserve parallel work by path comparison when a live head actually changes.
+- If `main` moved, compare changed paths first. When there is no overlap, transplant/rebase the bounded prepared change without rereading unrelated DWC/LXG/GCL/CNI/PCA/SAA content.
+- Prefer an **atomic tree/commit** for a multi-file governance start/closeout when the available repository surface supports it. Do not burn the reserve on serial one-file bookkeeping commits.
+- On successful validation, prefer exact-head run status, job-step summary, and the compact evidence artifact or deterministic receipt. Do not fetch full successful logs unless compact evidence is missing or contradictory.
+- Do not use fixed sleep/poll loops as routine orchestration. Query at meaningful state transitions only.
+- An initial `mergeable: false` from GitHub is not, by itself, a repository conflict when base/head are unchanged. Perform one bounded recomputation check before race diagnosis unless another signal already proves conflict.
+- Re-read canonical `main` only at a named invalidation event or the declared merge/closeout boundary. Repeated unchanged-head checks are not progress.
+- At the closeout-switch point, stop broad scans, successful-log dumps, speculative parallel-work review, schema/tool rediscovery, cosmetic cleanup, repeated polling, and explanatory narration. Spend the reserve only on final evidence binding, application merge, AIOC closeout, exact-head AIOC health, AIOC merge, successor selection, and one post-merge verification.
+
+Required external validation latency is measured separately from assistant/control overhead. Avoidable tool rediscovery, redundant reads, repeated polling, unnecessary full-log retrieval, serial closeout writes where atomic mutation is available, or speculative investigation that causes/materially contributes to a target overrun is a **control-plane efficiency incident**, not normal tranche complexity. Repair the governing process rather than increasing the tranche size to hide the regression.
+
+These fast-path rules are part of the mandatory bootstrap precisely so they survive conversation boundaries; a new conversation must not fall back to broader reconnaissance merely because prior conversational context is absent.
 
 ## Owner operating rule
 

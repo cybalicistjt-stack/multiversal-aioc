@@ -60,5 +60,53 @@ class FamilyExecutionPreflightTests(_legacy.FamilyExecutionPreflightTests):
         self.assertIn(pointer["active_attempt"]["work_item_id"], [row["id"] for row in units])
 
 
+class TrancheExecutionFastPathGovernanceTests(_legacy.unittest.TestCase):
+    @staticmethod
+    def _read(path: str) -> str:
+        return (_legacy.ROOT / path).read_text(encoding="utf-8")
+
+    def test_bootstrap_makes_fast_path_survive_conversation_boundaries(self) -> None:
+        bootstrap = self._read("governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md")
+        required = [
+            "## Tranche execution fast path",
+            "closeout-switch point",
+            "Do not rediscover an already-loaded tool schema",
+            "atomic tree/commit",
+            "compact evidence artifact",
+            "initial `mergeable: false`",
+            "unrelated parallel work",
+            "control-plane efficiency incident",
+        ]
+        for phrase in required:
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, bootstrap)
+
+    def test_efficiency_policy_blocks_operational_noise_regressions(self) -> None:
+        policy = self._read("governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md")
+        required = [
+            "## 11. Tranche execution fast path",
+            "Operational overhead counts against the tranche target.",
+            "target_active_minutes_per_unit - minimum_closeout_reserve_minutes",
+            "atomic multi-file closeout",
+            "Full successful workflow logs are prohibited by default.",
+            "one bounded recomputation check",
+            "fixed sleep/poll loops",
+            "control-plane efficiency incident",
+            "one-Continue completion objective",
+        ]
+        for phrase in required:
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, policy)
+
+    def test_fast_path_retains_declared_closeout_reserve_math(self) -> None:
+        pf = _legacy._load_json("governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json")
+        target = pf["execution_target"]["target_active_minutes_per_unit"]
+        reserve = pf["execution_target"]["minimum_closeout_reserve_minutes"]
+        self.assertGreater(target, reserve)
+        self.assertEqual(target, 24)
+        self.assertGreaterEqual(reserve, 8)
+        self.assertLessEqual(target - reserve, 16)
+
+
 if __name__ == "__main__":
     _legacy.unittest.main()
