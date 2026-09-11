@@ -20,7 +20,7 @@ def test_mas_registered_as_future_interstitial_without_activation():
     planned = {x["program_id"]: x for x in index["planned_programs"]}
     assert planned["MAS"]["status"] == "owner_approved_planned"
     assert planned["MAS"]["activation_after"] == "MCCS-21"
-    assert planned["MAS"]["successor"] == "SMB-08"
+    assert planned["MAS"]["successor"] == "MSAS-01"
     assert planned["MAS"]["implementation_authority"] is False
     assert planned["MAS"]["execution_units"] == 21
     assert planned["MCCS"]["successor"] == "MAS-01"
@@ -39,23 +39,26 @@ def test_mas_registered_as_future_interstitial_without_activation():
 def test_mas_dependency_placement_and_successors():
     index = j("governance/ai/runtime/ROADMAP_INDEX.json")
     mccs = j("governance/application-planning/multiversal-character-creature-studio/MCCS_PROGRAM_BACKLOG.json")
+    mas = j("governance/application-planning/multiversal-adventure-studio/MAS_PROGRAM_BACKLOG.json")
 
-    expected = "MCS-01..21 → MCCS-01..21 → MAS-01..21 → SMB-08 → SMB-09"
+    expected = "MCS-01..21 → MCCS-01..21 → MAS-01..21 → MSAS-01..21 → SMB-08 → SMB-09"
     assert expected in index["effective_forward_order"]
     assert index["mas_execution_order"] == [f"MAS-{i:02d}" for i in range(1, 22)]
     assert mccs["successor"] == "MAS-01"
+    assert mas["successor"] == "MSAS-01"
 
     amendment = t("governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MAS_AMENDMENT_2026-09-11.md")
     successor = t("governance/application-planning/multiversal-character-creature-studio/MCCS_MAS_SUCCESSOR_AMENDMENT_2026-09-11.md")
-    smb = t("governance/application-planning/system-maturation-buildout/SMB_MAS_INTERSTITIAL_INTEGRATION_AMENDMENT_2026-09-11.md")
-    for doc in (amendment, successor, smb):
-        assert "MCCS-01..21 → MAS-01..21 → SMB-08" in doc
+    msas_successor = t("governance/application-planning/multiversal-adventure-studio/MAS_MSAS_SUCCESSOR_AMENDMENT_2026-09-11.md")
+    assert "MCCS-01..21 → MAS-01..21 → SMB-08" in amendment
+    assert "MCCS-01..21 → MAS-01..21 → SMB-08" in successor
+    assert "MAS-01..21 → MSAS-01..21 → SMB-08" in msas_successor
 
 
 def test_mas_preserves_story_runtime_and_clean_room_boundaries():
     backlog = j("governance/application-planning/multiversal-adventure-studio/MAS_PROGRAM_BACKLOG.json")
     boundaries = "\n".join(backlog["boundaries"]).lower()
-    for owner in ("csw", "cni", "story", "adventure", "scene", "session", "ari", "mcs", "mccs"):
+    for owner in ("csw", "cni", "story", "adventure", "scene", "session", "ari", "mcs", "mccs", "msas"):
         assert owner in boundaries
 
     benchmark = t("governance/application-planning/multiversal-adventure-studio/MAS_BENCHMARK_CAPABILITY_MATRIX.md").lower()
