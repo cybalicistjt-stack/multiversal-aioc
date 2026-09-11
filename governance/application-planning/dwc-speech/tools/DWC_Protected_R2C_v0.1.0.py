@@ -128,6 +128,8 @@ def torch_rng_restore(snap)->None:
     if cuda is not None: torch.cuda.set_rng_state_all(cuda)
 
 def main()->None:
+    from dwc_training_gate import reject_legacy_training
+    reject_legacy_training()
     ap=argparse.ArgumentParser(); ap.add_argument("--piper-src",required=True); ap.add_argument("--checkpoint256",required=True); ap.add_argument("--abort384",required=True); ap.add_argument("--corpus-root",required=True); ap.add_argument("--acceptance-tsv",required=True); ap.add_argument("--output-dir",required=True); ap.add_argument("--device",default="cuda"); ap.add_argument("--seed",type=int,default=DEFAULT_SEED); ap.add_argument("--probe-every",type=int,default=8); ap.add_argument("--primary-gate-every",type=int,default=32); ap.add_argument("--robust-gate-every",type=int,default=64); ap.add_argument("--max-probe-drop-db",type=float,default=18.0); args=ap.parse_args()
     out=Path(args.output_dir); out.mkdir(parents=True,exist_ok=True); p256=Path(args.checkpoint256); p384=Path(args.abort384)
     if sha256_file(p256)!=EXPECTED_CK256_SHA256: raise SystemExit("replicate-2 batch-256 checkpoint SHA-256 mismatch")

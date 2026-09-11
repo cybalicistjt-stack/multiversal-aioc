@@ -164,6 +164,8 @@ def write_tsv(path: Path, rows: list[dict]) -> None:
         w.writeheader(); w.writerows(rows)
 
 def main() -> None:
+    from dwc_training_gate import reject_legacy_training
+    reject_legacy_training()
     ap = argparse.ArgumentParser()
     ap.add_argument("--piper-src", required=True)
     ap.add_argument("--abort-checkpoint", required=True)
