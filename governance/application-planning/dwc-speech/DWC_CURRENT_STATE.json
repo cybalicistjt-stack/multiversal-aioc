@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.19.0",
+  "schema_version": "0.20.0",
   "project_id": "DWC-SPEECH",
   "project_name": "DWC Speech Synthesis",
   "owner": "John Brandon Turner",
@@ -9,20 +9,23 @@
   "stable_entrypoint": "governance/application-planning/dwc-speech/README.md",
   "human_anchor": "governance/application-planning/dwc-speech/DWC_PROJECT_ANCHOR.md",
   "preferred_execution_surface_evidence": "governance/application-planning/dwc-speech/DWC_LOCAL_WORKSTATION_SURFACE_2026-09-10.json",
-  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_R2C_MACHINE_GATE_RESULT_2026-09-10.json",
+  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_HUMAN_CATASTROPHIC_FAILURE_2026-09-10.json",
+  "recovery_report": "DWC_RECOVERY_ROOT_CAUSE_REPORT_2026-09-10.md",
+  "training_contract": "DWC_RECOVERY_VALIDATION_CONTRACT.md",
   "execution_frontier": {
-    "name": "Human CNS perceptual evaluation of passing protected R2C candidate",
-    "state": "r2c_machine_gate_passed_human_review_ready",
-    "summary": "Protected R2C completed all remaining global schedule rows 385-799. The final candidate passed 125/125 on each of five deterministic seed schedules (625/625 total), with flow, DP, and enc_p frozen and hash-identical from start to finish. Machine training is closed by default. The next governed stage is human CNS perceptual evaluation using the exact 125 primary WAVs persisted by the passing final gate; no rerender should substitute for those files.",
+    "name": "Catastrophic human-failure recovery audit",
+    "state": "human_catastrophic_fail_training_blocked",
+    "summary": "Owner reports gross acoustic and linguistic collapse in final R2C review audio. Historical 625/625 waveform PASS remains evidence only of waveform checks. Candidate rejected. Diagnose targets, conditioning and lineage; repair gates before any further full-corpus training.",
     "r2_complete": true,
     "r2_total_schedule_rows_covered": 799,
     "r2c_rows_trained": 415,
     "r2c_machine_gate_passed": true,
     "additional_training_authorized": false,
     "human_perceptual_gate_authorized": true,
-    "human_perceptual_gate_completed": false
+    "human_perceptual_gate_completed": true
   },
   "promoted_machine_candidate": {
+    "current_disposition": "REJECTED_HUMAN_CATASTROPHIC_FAIL_DIAGNOSTIC_ONLY",
     "file": "R2C_PROTECTED_weights_batch0799.pt",
     "bytes": 281761455,
     "sha256": "c26ecb279ed5759a4c251ad54c80ebaa38e055194f6698681922b33e64269a3e",
@@ -52,16 +55,17 @@
       "style_fidelity_mean_where_applicable": 3.8,
       "meaning_preservation": "100%"
     },
-    "status": "authorized_not_run"
+    "status": "CATASTROPHIC_FAIL",
+    "evidence": "DWC_HUMAN_CATASTROPHIC_FAILURE_2026-09-10.json"
   },
   "next_safe_execution": {
-    "kind": "prepare_human_cns_review_package",
+    "kind": "recovery_audit_no_full_corpus_training",
     "sync_command": "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/sync_governance.sh",
-    "launcher": "governance/application-planning/dwc-speech/tools/run_prepare_r2c_human_evaluation.sh",
-    "tool": "governance/application-planning/dwc-speech/tools/DWC_Prepare_R2C_Human_Evaluation_v0.1.0.py",
-    "output": "Windows Downloads/DWC_R2C_HUMAN_REVIEW_<timestamp>/ plus matching ZIP",
+    "launcher": null,
+    "tool": "governance/application-planning/dwc-speech/tools/dwc_training_gate.py",
+    "output": "Windows Downloads/DWC_TARGET_SMOKE_12_20260910/ plus matching ZIP; reference targets only",
     "review_interface": "review.html",
-    "on_completion": "Export and upload DWC_R2C_HUMAN_ACCEPTANCE_SCORECARD_COMPLETED.tsv; optionally include DWC_R2C_HUMAN_ACCEPTANCE_RESULT.json."
+    "on_completion": "Owner target-smoke judgment required. No recovered candidate exists. No additional full-corpus training authorized."
   },
   "prohibited_forward_paths": [
     "perform additional acoustic training merely because machine training is available",

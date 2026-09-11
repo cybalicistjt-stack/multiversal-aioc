@@ -1,0 +1,140 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "command": [
+        "/home/antiquaria/multiversal/dwc-tts/envs/piper-v1.8.0/bin/python",
+        "-m",
+        "unittest",
+        "test_dwc_recovery_gates",
+        "-v"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "",
+      "stderr": "test_calibration_rejects_collapse_and_incomplete_overfit (test_dwc_recovery_gates.Gates.test_calibration_rejects_collapse_and_incomplete_overfit) ... ok\ntest_exact_receipt_and_budget (test_dwc_recovery_gates.Gates.test_exact_receipt_and_budget) ... ok\ntest_failed_and_missing_human_blocks_training (test_dwc_recovery_gates.Gates.test_failed_and_missing_human_blocks_training) ... ok\ntest_machine_only_tranche_blocks (test_dwc_recovery_gates.Gates.test_machine_only_tranche_blocks) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.002s\n\nOK\n"
+    },
+    {
+      "command": [
+        "/home/antiquaria/multiversal/dwc-tts/envs/piper-v1.8.0/bin/python",
+        "/home/antiquaria/multiversal/dwc-tts/governance/multiversal-aioc/governance/application-planning/dwc-speech/tools/DWC_Protected_R2_v0.1.0.py"
+      ],
+      "exit_code": 1,
+      "passed": true,
+      "stdout": "",
+      "stderr": "DWC TRAINING BLOCKED: catastrophic human failure. Legacy waveform-only training is retired. Use a bounded recovery experiment with target audit, exact-artifact human smoke and tiny-overfit authorization.\n"
+    },
+    {
+      "command": [
+        "/home/antiquaria/multiversal/dwc-tts/envs/piper-v1.8.0/bin/python",
+        "/home/antiquaria/multiversal/dwc-tts/governance/multiversal-aioc/governance/application-planning/dwc-speech/tools/DWC_Protected_R2B_v0.1.0.py"
+      ],
+      "exit_code": 1,
+      "passed": true,
+      "stdout": "",
+      "stderr": "DWC TRAINING BLOCKED: catastrophic human failure. Legacy waveform-only training is retired. Use a bounded recovery experiment with target audit, exact-artifact human smoke and tiny-overfit authorization.\n"
+    },
+    {
+      "command": [
+        "/home/antiquaria/multiversal/dwc-tts/envs/piper-v1.8.0/bin/python",
+        "/home/antiquaria/multiversal/dwc-tts/governance/multiversal-aioc/governance/application-planning/dwc-speech/tools/DWC_Protected_R2C_v0.1.0.py"
+      ],
+      "exit_code": 1,
+      "passed": true,
+      "stdout": "",
+      "stderr": "DWC TRAINING BLOCKED: catastrophic human failure. Legacy waveform-only training is retired. Use a bounded recovery experiment with target audit, exact-artifact human smoke and tiny-overfit authorization.\n"
+    },
+    {
+      "command": [
+        "bash",
+        "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/run_repaired_retrain.sh"
+      ],
+      "exit_code": 2,
+      "passed": true,
+      "stdout": "",
+      "stderr": "DWC TRAINING BLOCKED: catastrophic human failure; target smoke and tiny-overfit recovery gates are required.\n"
+    },
+    {
+      "command": [
+        "/home/antiquaria/multiversal/dwc-tts/envs/piper-v1.8.0/bin/python",
+        "/home/antiquaria/multiversal/dwc-tts/harness/DWC_Piper_RepairedCorpus_Retrain_v0.1.0/dwc_retrain_repaired.py"
+      ],
+      "exit_code": 1,
+      "passed": true,
+      "stdout": "",
+      "stderr": "DWC TRAINING BLOCKED: catastrophic human failure; legacy retrain path retired pending recovery gates.\n"
+    },
+    {
+      "command": [
+        "/home/antiquaria/multiversal/dwc-tts/envs/piper-v1.8.0/bin/python",
+        "/home/antiquaria/multiversal/dwc-tts/governance/multiversal-aioc/governance/application-planning/dwc-speech/tools/dwc_audio_gate.py",
+        "--reference",
+        "/home/antiquaria/multiversal/dwc-tts/runs/perceptual_recovery_20260910/reference_manifest.json",
+        "--rejected",
+        "/home/antiquaria/multiversal/dwc-tts/runs/perceptual_recovery_20260910/rejected_manifest.json",
+        "--pairs",
+        "/home/antiquaria/multiversal/dwc-tts/runs/perceptual_recovery_20260910/contrast_pairs.json",
+        "--candidate",
+        "/home/antiquaria/multiversal/dwc-tts/runs/perceptual_recovery_20260910/rejected_manifest.json",
+        "--output",
+        "/home/antiquaria/multiversal/dwc-tts/runs/perceptual_recovery_20260910/REJECTED_CONTROL_GATE.json"
+      ],
+      "exit_code": 2,
+      "passed": true,
+      "stdout": "{\n  \"status\": \"OUTPUT_MACHINE_FAIL\",\n  \"thresholds\": {\n    \"own_target_top1_fraction\": 1.0,\n    \"own_target_margin\": 0.0,\n    \"contrast_ratio_min\": 0.5013518241870146\n  },\n  \"failed_metrics\": [\n    \"own_target_top1_fraction\",\n    \"own_target_margin\",\n    \"contrast_ratio_min\"\n  ],\n  \"calibration_scope\": \"This exact panel and controls only; positive control is reference self-retrieval, not evidence of naturalness.\",\n  \"reference_issues\": [],\n  \"candidate_issues\": [],\n  \"positive\": {\n    \"own_target_top1_fraction\": 1.0,\n    \"own_target_margin\": 6.314168139773878,\n    \"contrast_ratio_min\": 1.0,\n    \"median_pair_distance\": 23.758354827598943\n  },\n  \"negative\": {\n    \"own_target_top1_fraction\": 0.08333333333333333,\n    \"own_target_margin\": -7.591733774445025,\n    \"contrast_ratio_min\": 0.0027036483740292636,\n    \"median_pair_distance\": 15.564012058703119\n  },\n  \"candidate\": {\n    \"own_target_top1_fraction\": 0.08333333333333333,\n    \"own_target_margin\": -7.591733774445025,\n    \"contrast_ratio_min\": 0.0027036483740292636,\n    \"median_pair_distance\": 15.564012058703119\n  },\n  \"human_perceptual_gate\": \"NOT_RUN\",\n  \"training_authorized\": false,\n  \"inputs\": {\n    \"reference\": \"b96bd7839f265c163e7309bda6eeaf79a76c43deafe87945b11ecfb37a0cb1d8\",\n    \"candidate\": \"961fae276331d2244d3d4dfff5af1bdd79633558bac9f1125a2bc299f0829b84\",\n    \"rejected\": \"961fae276331d2244d3d4dfff5af1bdd79633558bac9f1125a2bc299f0829b84\",\n    \"pairs\": \"ac5159dd8d48ddb335ecaaa355e661578be99bcdbd19bba874a37ed32ff7836c\"\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/antiquaria/multiversal/dwc-tts/envs/piper-v1.8.0/bin/python",
+        "/home/antiquaria/multiversal/dwc-tts/governance/multiversal-aioc/governance/application-planning/dwc-speech/tools/dwc_audio_gate.py",
+        "--reference",
+        "/home/antiquaria/multiversal/dwc-tts/runs/perceptual_recovery_20260910/reference_manifest.json",
+        "--rejected",
+        "/home/antiquaria/multiversal/dwc-tts/runs/perceptual_recovery_20260910/rejected_manifest.json",
+        "--pairs",
+        "/home/antiquaria/multiversal/dwc-tts/runs/perceptual_recovery_20260910/contrast_pairs.json",
+        "--candidate",
+        "/home/antiquaria/multiversal/dwc-tts/runs/perceptual_recovery_20260910/reference_manifest.json",
+        "--output",
+        "/home/antiquaria/multiversal/dwc-tts/runs/perceptual_recovery_20260910/POSITIVE_SELF_CONTROL_GATE.json"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "{\n  \"status\": \"OUTPUT_MACHINE_PASS\",\n  \"thresholds\": {\n    \"own_target_top1_fraction\": 1.0,\n    \"own_target_margin\": 0.0,\n    \"contrast_ratio_min\": 0.5013518241870146\n  },\n  \"failed_metrics\": [],\n  \"calibration_scope\": \"This exact panel and controls only; positive control is reference self-retrieval, not evidence of naturalness.\",\n  \"reference_issues\": [],\n  \"candidate_issues\": [],\n  \"positive\": {\n    \"own_target_top1_fraction\": 1.0,\n    \"own_target_margin\": 6.314168139773878,\n    \"contrast_ratio_min\": 1.0,\n    \"median_pair_distance\": 23.758354827598943\n  },\n  \"negative\": {\n    \"own_target_top1_fraction\": 0.08333333333333333,\n    \"own_target_margin\": -7.591733774445025,\n    \"contrast_ratio_min\": 0.0027036483740292636,\n    \"median_pair_distance\": 15.564012058703119\n  },\n  \"candidate\": {\n    \"own_target_top1_fraction\": 1.0,\n    \"own_target_margin\": 6.314168139773878,\n    \"contrast_ratio_min\": 1.0,\n    \"median_pair_distance\": 23.758354827598943\n  },\n  \"human_perceptual_gate\": \"NOT_RUN\",\n  \"training_authorized\": false,\n  \"inputs\": {\n    \"reference\": \"b96bd7839f265c163e7309bda6eeaf79a76c43deafe87945b11ecfb37a0cb1d8\",\n    \"candidate\": \"b96bd7839f265c163e7309bda6eeaf79a76c43deafe87945b11ecfb37a0cb1d8\",\n    \"rejected\": \"961fae276331d2244d3d4dfff5af1bdd79633558bac9f1125a2bc299f0829b84\",\n    \"pairs\": \"ac5159dd8d48ddb335ecaaa355e661578be99bcdbd19bba874a37ed32ff7836c\"\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/antiquaria/multiversal/dwc-tts/envs/piper-v1.8.0/bin/python",
+        "/home/antiquaria/multiversal/dwc-tts/governance/multiversal-aioc/governance/application-planning/dwc-speech/tools/dwc_target_gate.py",
+        "--manifest",
+        "/home/antiquaria/multiversal/dwc-tts/runs/perceptual_recovery_20260910/reference_manifest.json",
+        "--pairs",
+        "/home/antiquaria/multiversal/dwc-tts/runs/perceptual_recovery_20260910/contrast_pairs.json",
+        "--corpus-artifact",
+        "/home/antiquaria/multiversal/dwc-tts/runs/perceptual_recovery_20260910/reference_manifest.json",
+        "--output",
+        "/home/antiquaria/multiversal/dwc-tts/runs/perceptual_recovery_20260910/TINY_TARGET_GATE.json"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "{\n  \"status\": \"TARGET_MACHINE_PASS\",\n  \"corpus_sha256\": \"b96bd7839f265c163e7309bda6eeaf79a76c43deafe87945b11ecfb37a0cb1d8\",\n  \"rows\": 12,\n  \"issues\": [],\n  \"quantization_control_max_mfcc_distance\": 0.027282641499940415,\n  \"contrasts\": [\n    {\n      \"a\": \"DWCBOOT-0725\",\n      \"b\": \"DWCBOOT-0733\",\n      \"distance\": 15.631328246299407,\n      \"pass\": true\n    },\n    {\n      \"a\": \"DWCBOOT-0730\",\n      \"b\": \"DWCBOOT-0794\",\n      \"distance\": 6.314168139773878,\n      \"pass\": true\n    },\n    {\n      \"a\": \"DWCBOOT-0745\",\n      \"b\": \"DWCBOOT-0755\",\n      \"distance\": 25.510925669258825,\n      \"pass\": true\n    },\n    {\n      \"a\": \"DWCBOOT-0746\",\n      \"b\": \"DWCBOOT-0747\",\n      \"distance\": 11.521806389570838,\n      \"pass\": true\n    }\n  ],\n  \"suspect_pairs\": [],\n  \"human_perceptual_gate\": \"NOT_RUN\",\n  \"training_authorized\": false,\n  \"meaning\": \"Machine-distinguishable references; human speech quality remains untested.\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/antiquaria/multiversal/dwc-tts/envs/piper-v1.8.0/bin/python",
+        "-m",
+        "compileall",
+        "-q",
+        "/home/antiquaria/multiversal/dwc-tts/governance/multiversal-aioc/governance/application-planning/dwc-speech/tools"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "training_performed": false
+}

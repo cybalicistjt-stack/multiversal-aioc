@@ -130,6 +130,8 @@ def summarize(rows: list[dict]) -> dict:
     return {"rows": len(rows), "pass": sum(r["status"] == "PASS" for r in rows), "fail": sum(r["status"] != "PASS" for r in rows), "rms_dbfs_median": float(np.median(vals)), "rms_dbfs_min": float(min(vals)), "rms_dbfs_max": float(max(vals)), "below_minus55": int(sum(v < RMS_FLOOR_DBFS for v in vals))}
 
 def main() -> None:
+    from dwc_training_gate import reject_legacy_training
+    reject_legacy_training()
     ap = argparse.ArgumentParser()
     ap.add_argument("--piper-src", required=True); ap.add_argument("--checkpoint", required=True)
     ap.add_argument("--corpus-root", required=True); ap.add_argument("--acceptance-tsv", required=True)
