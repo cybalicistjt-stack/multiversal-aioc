@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.1.0",
+  "project_id": "DWC-SPEECH",
+  "evidence_type": "protected_r2c_machine_gate_result",
+  "recorded_at": "2026-09-10",
+  "source_package": {
+    "file": "DWC_R2C_PROTECTED_RESULT_20260910_195723.zip",
+    "sha256": "95fa0565149b2df5c8f703d7633e2af10ce87a4ef2cd6dce3423ee03a72ce489"
+  },
+  "status": "PASS_R2C_PROTECTED_MACHINE_GATE",
+  "training": {
+    "r2_total_schedule_rows_covered": 799,
+    "r2c_rows_trained": 415,
+    "prior_rows_retained_from_repaired_batch384": 384,
+    "optimizer_state_restored": false,
+    "optimizer_state_saved": true
+  },
+  "source_candidate": {
+    "file": "R2C_source_rep2_abort384_encp_restored.pt",
+    "bytes": 281766857,
+    "sha256": "ffcc4aad91eeb2d332a0bda3109a4d1e8250f166b8ba12c59a48b451f9fe2f08"
+  },
+  "final_checkpoint": {
+    "file": "R2C_PROTECTED_weights_batch0799.pt",
+    "bytes": 281761455,
+    "sha256": "c26ecb279ed5759a4c251ad54c80ebaa38e055194f6698681922b33e64269a3e"
+  },
+  "rolling_resume_checkpoint": {
+    "file": "R2C_RESUME_LATEST.pt",
+    "bytes": 727206572,
+    "sha256": "d431e7e87e93b9f2d791607fee9d2acffa28a46bd69d75362aef4a057318de47",
+    "phase_batch": 799
+  },
+  "protected_modules": ["model_g.flow", "model_g.dp", "model_g.enc_p"],
+  "protected_hashes_unchanged": true,
+  "final_five_seed_gate": [
+    {"seed_base": 20263908, "pass": 125, "fail": 0, "median_rms_dbfs": -34.130418675005124, "minimum_rms_dbfs": -42.56172635787702},
+    {"seed_base": 20264908, "pass": 125, "fail": 0, "median_rms_dbfs": -33.86452419877384, "minimum_rms_dbfs": -42.66770045046013},
+    {"seed_base": 20265908, "pass": 125, "fail": 0, "median_rms_dbfs": -34.150884232600006, "minimum_rms_dbfs": -47.19792203197354},
+    {"seed_base": 20266908, "pass": 125, "fail": 0, "median_rms_dbfs": -33.67320394501365, "minimum_rms_dbfs": -43.70917435464057},
+    {"seed_base": 20267908, "pass": 125, "fail": 0, "median_rms_dbfs": -34.45645473992936, "minimum_rms_dbfs": -52.04856365462446}
+  ],
+  "final_total_machine_decisions": 625,
+  "final_total_machine_passes": 625,
+  "waveform_floor_dbfs": -55.0,
+  "duration_floor_s": 0.08,
+  "final_primary_wavs_persisted": true,
+  "human_perceptual_gate": "NOT_RUN",
+  "interpretation_boundary": "The repaired exact-ID Piper candidate has passed the governed machine waveform gate. This is not human CNS pronunciation acceptance. Additional training is not authorized by default; proceed to separate human perceptual evaluation using the exact persisted final-gate WAVs."
+}
