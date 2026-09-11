@@ -20,7 +20,7 @@ def test_mccs_registered_as_future_interstitial_without_activation():
     planned = {x["program_id"]: x for x in index["planned_programs"]}
     assert planned["MCCS"]["status"] == "owner_approved_planned"
     assert planned["MCCS"]["activation_after"] == "MCS-21"
-    assert planned["MCCS"]["successor"] == "MAS-01"
+    assert planned["MCCS"]["successor"] == "MNCS-01"
     assert planned["MCCS"]["implementation_authority"] is False
     assert planned["MCCS"]["execution_units"] == 21
     assert planned["MCS"]["successor"] == "MCCS-01"
@@ -42,7 +42,7 @@ def test_mccs_dependency_placement_and_successors():
     mcs = j("governance/application-planning/multiversal-cartography-studio/MCS_PROGRAM_BACKLOG.json")
     pca = j("governance/application-planning/production-capability-acceleration/PCA_PROGRAM_BACKLOG.json")
 
-    expected = "CNI-01..13 → PCA-01..16 → MCS-01..21 → MCCS-01..21 → MAS-01..21 → SMB-08 → SMB-09"
+    expected = "CNI-01..13 → PCA-01..16 → MCS-01..21 → MCCS-01..21 → MNCS-01..24 → MAS-01..21"
     assert expected in index["effective_forward_order"]
     assert index["mccs_execution_order"] == [f"MCCS-{i:02d}" for i in range(1, 22)]
     assert pca["successor"] == "MCS-01"
@@ -50,17 +50,16 @@ def test_mccs_dependency_placement_and_successors():
 
     amendment = t("governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MCCS_AMENDMENT_2026-09-11.md")
     mcs_amendment = t("governance/application-planning/multiversal-cartography-studio/MCS_MCCS_SUCCESSOR_AMENDMENT_2026-09-11.md")
-    for doc in (amendment, mcs_amendment):
-        assert "MCS-01..21 → MCCS-01..21" in doc
-
-    mas_amendment = t("governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MAS_AMENDMENT_2026-09-11.md")
-    assert "MCCS-01..21 → MAS-01..21 → SMB-08" in mas_amendment
+    mncs_successor = t("governance/application-planning/multiversal-character-creature-studio/MCCS_MNCS_SUCCESSOR_AMENDMENT_2026-09-11.md")
+    assert "MCS-01..21 → MCCS-01..21" in amendment
+    assert "MCS-01..21 → MCCS-01..21" in mcs_amendment
+    assert "MCCS-01..21 → MNCS-01..24 → MAS-01..21" in mncs_successor
 
 
 def test_mccs_preserves_appearance_owner_and_clean_room_boundaries():
     backlog = j("governance/application-planning/multiversal-character-creature-studio/MCCS_PROGRAM_BACKLOG.json")
     boundaries = "\n".join(backlog["boundaries"]).lower()
-    for owner in ("character", "species", "form", "capp", "papt", "pca", "ari", "p3d"):
+    for owner in ("character", "species", "form", "capp", "papt", "pca", "ari", "p3d", "mncs"):
         assert owner in boundaries
 
     benchmark = t("governance/application-planning/multiversal-character-creature-studio/MCCS_BENCHMARK_CAPABILITY_MATRIX.md").lower()
