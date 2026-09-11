@@ -1,10 +1,10 @@
 {
-  "schema_version":"0.1.0",
+  "schema_version":"0.2.0",
   "program_id":"PCA",
   "program_name":"Production Capability Acceleration",
   "status":"owner_approved_planned",
   "activation_after":"CNI-13",
-  "successor":"SMB-08",
+  "successor":"MCS-01",
   "owner":"John Brandon Turner",
   "implementation_authority":false,
   "tranche_execution_target_minutes":24,
@@ -28,14 +28,8 @@
     {"id":"PCA-15","name":"Asset Production Governance, Locking, Dependency & Review Layer","status":"planned","estimated_active_minutes":24},
     {"id":"PCA-16","name":"Golden Local-First Production Acceleration Proof","status":"planned","estimated_active_minutes":24}
   ],
-  "required_upstream":[
-    "MIB-18 completed_verified",
-    "SMB-01..07 completed_verified",
-    "CNI-01..13 completed_verified",
-    "ARI family completed_verified",
-    "SSA/MAI/AAI/CAPP/APM owner contracts available"
-  ],
-  "integration_targets":["ARI","SSA","World","Environment","Scene","MAI","ISE","CAPP","Character","Species/Form","PAPT","AAI","DWC-SPEECH","CNI","CSW","Story","Adventure","Quest","Relationship","Action/Event","APM","MIB-15","SMB-08","SMB-09","SMB-11","SMB-12","SMB-13","SMB-16","BRP"],
+  "required_upstream":["MIB-18 completed_verified","SMB-01..07 completed_verified","CNI-01..13 completed_verified","ARI family completed_verified","SSA/MAI/AAI/CAPP/APM owner contracts available"],
+  "integration_targets":["ARI","SSA","World","Environment","Scene","MAI","ISE","CAPP","Character","Species/Form","PAPT","AAI","DWC-SPEECH","CNI","CSW","Story","Adventure","Quest","Relationship","Action/Event","APM","MIB-15","MCS","SMB-08","SMB-09","SMB-11","SMB-12","SMB-13","SMB-16","BRP"],
   "boundaries":[
     "PCA is production tooling and does not become canonical gameplay/narrative/World/Character state authority",
     "all imported/generated media resources register through ARI identity/provenance/rights rules",
@@ -47,12 +41,9 @@
     "SMB-16 retains final localization/accessibility/device completion",
     "SMB-13/BRP retain external tester/product-readiness authority; PCA-14 is internal only",
     "PCA-15 does not implement a replacement VCS",
+    "MCS is the strict planned successor after PCA-16 and consumes PCA production/generator primitives without making PCA a cartography owner",
     "commercial/open-source direct dependencies require separate current rights/license review",
     "no implementation authority until separately governed start"
   ],
-  "planning_provenance":[
-    "governance/application-planning/proprietary-capability-mining/PCM_PROPRIETARY_CAPABILITY_MINING_REPORT.md",
-    "governance/application-planning/proprietary-capability-mining/PCM_PRODUCT_CAPABILITY_CATALOG.json",
-    "governance/application-planning/proprietary-capability-mining/PCM_CLEAN_ROOM_AND_RIGHTS_RULES.md"
-  ]
+  "planning_provenance":["governance/application-planning/proprietary-capability-mining/PCM_PROPRIETARY_CAPABILITY_MINING_REPORT.md","governance/application-planning/proprietary-capability-mining/PCM_PRODUCT_CAPABILITY_CATALOG.json","governance/application-planning/proprietary-capability-mining/PCM_CLEAN_ROOM_AND_RIGHTS_RULES.md","governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MCS_AMENDMENT_2026-09-11.md"]
 }
