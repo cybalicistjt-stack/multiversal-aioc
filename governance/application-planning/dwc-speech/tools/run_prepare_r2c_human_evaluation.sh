@@ -19,11 +19,11 @@ for d in $(ls -dt "$BASE"/runs/r1_flow_restore_promotion_* 2>/dev/null || true);
   [[ -f "$a" ]] && { ACC="$a"; break; }
 done
 [[ -n "$ACC" ]] || { echo "Corrected 125-row acceptance table not found" >&2; exit 2; }
-python -m py_compile "$TOOL"
+python3 -m py_compile "$TOOL"
 WIN_HOME=$(cmd.exe /C "echo %USERPROFILE%" 2>/dev/null | tr -d '\r')
 WIN_DL="$(wslpath "$WIN_HOME")/Downloads"
 OUT="$WIN_DL/DWC_R2C_HUMAN_REVIEW_$(date +%Y%m%d_%H%M%S)"
-python "$TOOL" --run-dir "$RUN" --acceptance-tsv "$ACC" --output-dir "$OUT"
+python3 "$TOOL" --run-dir "$RUN" --acceptance-tsv "$ACC" --output-dir "$OUT"
 echo "MACHINE_RUN=$RUN"
 echo "REVIEW_DIR=$OUT"
 echo "OPEN_THIS=$OUT/review.html"
