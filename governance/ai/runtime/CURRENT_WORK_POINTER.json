@@ -6,29 +6,29 @@
   "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
   "roadmap_supplements": [],
   "family_execution_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
-  "primary_attempt_id": "ARI-15-attempt-001",
-  "selection_reason": "ARI-14 completed_verified on application PR #458 with exact-head self-hosted Linux/Windows validation and deterministic cross-platform receipt; the owner-authorized sealed ARI sequence advances strictly to ARI-15.",
+  "primary_attempt_id": "ARI-16-attempt-001",
+  "selection_reason": "ARI-15 completed_verified on application PR #459 with exact-head self-hosted Linux/Windows validation and deterministic cross-platform receipt; the owner-authorized sealed ARI sequence advances strictly to ARI-16.",
   "active_attempt": {
-    "work_item_id": "ARI-15",
-    "attempt_id": "ARI-15-attempt-001",
+    "work_item_id": "ARI-16",
+    "attempt_id": "ARI-16-attempt-001",
     "track": "asset-resource-ingestion-reuse",
     "source_program": "ARI",
     "priority": 1,
     "owner_selected": true,
     "repository": "cybalicistjt-stack/multiversal-aioc",
-    "checkpoint_path": "governance/ai/work-state/ARI-15-attempt-001.json",
+    "checkpoint_path": "governance/ai/work-state/ARI-16-attempt-001.json",
     "status": "selected_not_started",
     "implementation_branch": null,
     "implementation_authority": false,
-    "active_item": "ARI-15 — Large-Library Query, Pagination & Lazy Retrieval"
+    "active_item": "ARI-16 — MAI Bridge"
   },
   "active_program": {
     "program_id": "ARI",
     "name": "Asset Resource Ingestion & Reuse",
     "status": "in_progress",
-    "completed_through": "ARI-14",
-    "current": "ARI-15",
-    "strict_next": "ARI-16",
+    "completed_through": "ARI-15",
+    "current": "ARI-16",
+    "strict_next": "ARI-17",
     "last": "ARI-22C",
     "semantic_last": "ARI-22",
     "program_path": "governance/application-planning/asset-resource-ingestion-reuse/ARI_ASSET_RESOURCE_INGESTION_REUSE_PROGRAM.md",
@@ -36,16 +36,17 @@
   },
   "bounded_authority": {
     "family_preflight_sealed": true,
-    "selected_ari_unit": "ARI-15",
+    "selected_ari_unit": "ARI-16",
     "ari_implementation": false,
     "implementation_branch": null,
     "paid_provider_activation": false,
     "provider_credentials_or_scraping": false,
     "tester_distribution": false,
     "release_or_deployment": false,
-    "rule": "ARI-15 is selected_not_started with no implementation authority. The owner has authorized the remaining sealed ARI units to execute strictly in order; ARI-16+ remain inactive until ARI-15 is completed_verified and each strict successor is canonically selected."
+    "rule": "ARI-16 is selected_not_started with no implementation authority. The owner has authorized the remaining sealed ARI units to execute strictly in order; ARI-17+ remain inactive until ARI-16 is completed_verified and each strict successor is canonically selected."
   },
   "recently_completed_ari_work": [
+    {"work_item_id":"ARI-15","status":"completed_verified","application_pr":459,"validated_head":"ebebb3d9db5782a79dd22a6aef4e67b3d4c77467","validation_run":34626244592,"deterministic_receipt_sha256":"9f4eb2dfeffa365d915d3581ce238ccf27c2dbb43facbd0bdae6eea510117933","merge_sha":"e950cfc63a889698db09765c0dbb70fbceb3fdc7"},
     {"work_item_id":"ARI-14","status":"completed_verified","application_pr":458,"validated_head":"a338ac6fadb04000c305b8dc0b1fbbf9cbb940f3","validation_run":34607711763,"deterministic_receipt_sha256":"bbe614ba6cfa0c48a76b75bf6c361e83e42e8fcdf97cbe935c9867c63b1ba480","merge_sha":"a3621bf60fcdd041de60a52b360824037fbe736d"},
     {"work_item_id":"ARI-13","status":"completed_verified","application_pr":457,"validated_head":"0d6b1b7f22cea1430b691fbfc567f6db7a34f33b","validation_run":34604028014,"deterministic_receipt_sha256":"ec10a3100c4d09a5eddf9b04f634ff5cc8d27ae6887571fba253a982a9108d47","merge_sha":"441220b8c518a618434758fe4b6f9927ec11e928"},
     {"work_item_id":"ARI-12","status":"completed_verified","application_pr":456,"validated_head":"9a1895185c90e98e4b082d625a787ffc59db14a0","validation_run":34600580344,"deterministic_receipt_sha256":"498ce4cfbc2d4f5df370aaf2c5971f0df352418bbc4ba76c52713f361f70a8ae","merge_sha":"c39ed87453f398ee869943db1359a0741fb6c38b"},
@@ -67,6 +68,7 @@
     {"work_item_id":"SGC-08A","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_SYSTEM_PRODUCT_DISPOSITION_TRACE_GRAPH.json","frozen_source_nodes":8,"unique_concept_nodes":126,"implemented":79,"content_only":17,"planned_owned_elsewhere":26,"provenance_only":4,"unresolved_owner_decision":0,"unclassified_concepts":0}
   ],
   "recently_completed_implementation_work": [
+    {"work_item_id":"ARI-15","status":"completed_verified","application_pr":459,"validated_head":"ebebb3d9db5782a79dd22a6aef4e67b3d4c77467","validation_run":34626244592,"deterministic_receipt_sha256":"9f4eb2dfeffa365d915d3581ce238ccf27c2dbb43facbd0bdae6eea510117933","merge_sha":"e950cfc63a889698db09765c0dbb70fbceb3fdc7"},
     {"work_item_id":"ARI-14","status":"completed_verified","application_pr":458,"validated_head":"a338ac6fadb04000c305b8dc0b1fbbf9cbb940f3","validation_run":34607711763,"deterministic_receipt_sha256":"bbe614ba6cfa0c48a76b75bf6c361e83e42e8fcdf97cbe935c9867c63b1ba480","merge_sha":"a3621bf60fcdd041de60a52b360824037fbe736d"},
     {"work_item_id":"ARI-13","status":"completed_verified","application_pr":457,"validated_head":"0d6b1b7f22cea1430b691fbfc567f6db7a34f33b","validation_run":34604028014,"deterministic_receipt_sha256":"ec10a3100c4d09a5eddf9b04f634ff5cc8d27ae6887571fba253a982a9108d47","merge_sha":"441220b8c518a618434758fe4b6f9927ec11e928"},
     {"work_item_id":"ARI-12","status":"completed_verified","application_pr":456,"validated_head":"9a1895185c90e98e4b082d625a787ffc59db14a0","validation_run":34600580344,"deterministic_receipt_sha256":"498ce4cfbc2d4f5df370aaf2c5971f0df352418bbc4ba76c52713f361f70a8ae","merge_sha":"c39ed87453f398ee869943db1359a0741fb6c38b"},
@@ -88,10 +90,10 @@
   ],
   "selection_invariants": [
     "SGC is completed_verified through SGC-08C and retired from active family execution.",
-    "ARI-01 through ARI-14 are completed_verified; ARI-14 merged as application commit a3621bf60fcdd041de60a52b360824037fbe736d with exact-head cross-platform deterministic Validation Core evidence.",
+    "ARI-01 through ARI-15 are completed_verified; ARI-15 merged as application commit e950cfc63a889698db09765c0dbb70fbceb3fdc7 with exact-head cross-platform deterministic Validation Core evidence.",
     "The live family preflight remains ARI with 24 execution units and ARI-22 pre-split into ARI-22A/B/C.",
-    "ARI-15 is selected_not_started with no implementation branch or authority.",
+    "ARI-16 is selected_not_started with no implementation branch or authority.",
     "Historical lifecycle tests, detailed completed-program artifacts and unrelated connected systems remain blocked from ordinary ARI preload by default."
   ],
-  "exact_next_action": "On the next execution Continue, governed-start ARI-15 only and carry indexed search/filter/sort/pagination plus bounded lazy retrieval through exact-head validation, merge, closeout and ARI-16 selection; do not start ARI-16 in the same execution."
+  "exact_next_action": "On the next execution Continue, governed-start ARI-16 only and carry the bounded MAI Bridge through exact-head validation, merge, closeout and ARI-17 selection; do not start ARI-17 in the same execution."
 }
