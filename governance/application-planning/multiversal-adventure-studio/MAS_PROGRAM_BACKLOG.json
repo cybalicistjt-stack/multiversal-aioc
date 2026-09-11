@@ -1,10 +1,10 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "program_id": "MAS",
   "program_name": "Multiversal Adventure Studio",
   "status": "owner_approved_planned",
   "activation_after": "MCCS-21",
-  "successor": "SMB-08",
+  "successor": "MSAS-01",
   "owner": "John Brandon Turner",
   "approved": "2026-09-11",
   "implementation_authority": false,
@@ -35,7 +35,7 @@
     {"id":"MAS-21","name":"Golden Adventure Capability & Playability Proof","status":"planned","estimated_active_minutes":24}
   ],
   "required_upstream": ["ARI family completed_verified","MIB-18 completed_verified","SMB-01..07 completed_verified","CNI-01..13 completed_verified","PCA-01..16 completed_verified","MCS-01..21 completed_verified","MCCS-01..21 completed_verified","CSW design contracts available","Adventure/Scene/Session owner contracts available"],
-  "integration_targets": ["CSW","CNI","Story","Adventure","Quest","Scene","Session","World","Character","NPC","Creature","Relationship","Investigation","Encounter","Inventory/Asset","Action/Event","ARI","D29 authoring/provenance","PCA","MCS","MCCS","VTI","SMB-08","SMB-09","SAA"],
+  "integration_targets": ["CSW","CNI","Story","Adventure","Quest","Scene","Session","World","Character","NPC","Creature","Relationship","Investigation","Encounter","Inventory/Asset","Action/Event","ARI","D29 authoring/provenance","PCA","MCS","MCCS","VTI","MSAS","SMB-08","SMB-09","SAA"],
   "boundaries": [
     "MAS is Adventure assembly/preparation tooling and does not become canonical Story, Adventure, Scene, Session, Quest, World, Character, Relationship, Investigation or Action/Event authority",
     "CSW remains the pre-authoritative creative/storycraft workspace; MAS consumes explicit handoffs rather than duplicating CSW",
@@ -45,9 +45,10 @@
     "all imported/generated media resources preserve ARI identity/provenance/rights rules and authoring changes preserve D29 provenance",
     "visibility filtering applies before search, counts, graph topology, diagnostics, optional-AI context and export",
     "optional AI may suggest or draft but cannot silently incorporate, publish or mutate live state",
+    "MSAS is the strict planned successor after MAS-21 and consumes Adventure/Scene/session context without becoming Adventure or live-event authority",
     "proprietary benchmark products are clean-room planning provenance only; protected source/content/assets/UI expression are not copied",
     "no paid/cloud Adventure provider is required for blocking workflows",
     "no implementation authority until separately governed start"
   ],
-  "planning_provenance": ["governance/application-planning/multiversal-adventure-studio/MAS_BENCHMARK_CAPABILITY_MATRIX.md","governance/application-planning/creator-storycraft-workspace/CSW_CREATOR_STORYCRAFT_WORKSPACE_PROGRAM.md","governance/application-planning/content-narrative-interoperability/CNI_CONTENT_NARRATIVE_INTEROPERABILITY_PROGRAM.md","governance/application-planning/proprietary-capability-mining/PCM_CLEAN_ROOM_AND_RIGHTS_RULES.md"]
+  "planning_provenance": ["governance/application-planning/multiversal-adventure-studio/MAS_BENCHMARK_CAPABILITY_MATRIX.md","governance/application-planning/creator-storycraft-workspace/CSW_CREATOR_STORYCRAFT_WORKSPACE_PROGRAM.md","governance/application-planning/content-narrative-interoperability/CNI_CONTENT_NARRATIVE_INTEROPERABILITY_PROGRAM.md","governance/application-planning/proprietary-capability-mining/PCM_CLEAN_ROOM_AND_RIGHTS_RULES.md","governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MSAS_AMENDMENT_2026-09-11.md"]
 }
