@@ -6,29 +6,29 @@
   "roadmap_index": "governance/ai/runtime/ROADMAP_INDEX.json",
   "roadmap_supplements": [],
   "family_execution_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
-  "primary_attempt_id": "ARI-13-attempt-001",
-  "selection_reason": "ARI-12 completed_verified on application PR #456 with exact-head self-hosted Linux/Windows validation and deterministic cross-platform receipt; the owner-authorized sealed ARI sequence advances strictly to ARI-13.",
+  "primary_attempt_id": "ARI-14-attempt-001",
+  "selection_reason": "ARI-13 completed_verified on application PR #457 with exact-head self-hosted Linux/Windows validation and deterministic cross-platform receipt; the owner-authorized sealed ARI sequence advances strictly to ARI-14.",
   "active_attempt": {
-    "work_item_id": "ARI-13",
-    "attempt_id": "ARI-13-attempt-001",
+    "work_item_id": "ARI-14",
+    "attempt_id": "ARI-14-attempt-001",
     "track": "asset-resource-ingestion-reuse",
     "source_program": "ARI",
     "priority": 1,
     "owner_selected": true,
     "repository": "cybalicistjt-stack/multiversal-aioc",
-    "checkpoint_path": "governance/ai/work-state/ARI-13-attempt-001.json",
-    "status": "in_progress",
-    "implementation_branch": "implementation/ari-13-audio-metadata-playback-derivative-worker",
-    "implementation_authority": true,
-    "active_item": "ARI-13 — Audio Metadata & Playback Derivative Worker"
+    "checkpoint_path": "governance/ai/work-state/ARI-14-attempt-001.json",
+    "status": "selected_not_started",
+    "implementation_branch": null,
+    "implementation_authority": false,
+    "active_item": "ARI-14 — Semantic Tags, Collections & Family Grouping"
   },
   "active_program": {
     "program_id": "ARI",
     "name": "Asset Resource Ingestion & Reuse",
     "status": "in_progress",
-    "completed_through": "ARI-12",
-    "current": "ARI-13",
-    "strict_next": "ARI-14",
+    "completed_through": "ARI-13",
+    "current": "ARI-14",
+    "strict_next": "ARI-15",
     "last": "ARI-22C",
     "semantic_last": "ARI-22",
     "program_path": "governance/application-planning/asset-resource-ingestion-reuse/ARI_ASSET_RESOURCE_INGESTION_REUSE_PROGRAM.md",
@@ -36,16 +36,17 @@
   },
   "bounded_authority": {
     "family_preflight_sealed": true,
-    "selected_ari_unit": "ARI-13",
-    "ari_implementation": true,
-    "implementation_branch": "implementation/ari-13-audio-metadata-playback-derivative-worker",
+    "selected_ari_unit": "ARI-14",
+    "ari_implementation": false,
+    "implementation_branch": null,
     "paid_provider_activation": false,
     "provider_credentials_or_scraping": false,
     "tester_distribution": false,
     "release_or_deployment": false,
-    "rule": "ARI-13 is in_progress on its bounded implementation branch. The owner has authorized the remaining sealed ARI units to execute strictly in order; ARI-14+ remain inactive until ARI-13 is completed_verified and each strict successor is canonically selected."
+    "rule": "ARI-14 is selected_not_started with no implementation authority. The owner has authorized the remaining sealed ARI units to execute strictly in order; ARI-15+ remain inactive until ARI-14 is completed_verified and each strict successor is canonically selected."
   },
   "recently_completed_ari_work": [
+    {"work_item_id":"ARI-13","status":"completed_verified","application_pr":457,"validated_head":"0d6b1b7f22cea1430b691fbfc567f6db7a34f33b","validation_run":34604028014,"deterministic_receipt_sha256":"ec10a3100c4d09a5eddf9b04f634ff5cc8d27ae6887571fba253a982a9108d47","merge_sha":"441220b8c518a618434758fe4b6f9927ec11e928"},
     {"work_item_id":"ARI-12","status":"completed_verified","application_pr":456,"validated_head":"9a1895185c90e98e4b082d625a787ffc59db14a0","validation_run":34600580344,"deterministic_receipt_sha256":"498ce4cfbc2d4f5df370aaf2c5971f0df352418bbc4ba76c52713f361f70a8ae","merge_sha":"c39ed87453f398ee869943db1359a0741fb6c38b"},
     {"work_item_id":"ARI-11","status":"completed_verified","application_pr":455,"validated_head":"3173aacbfed4e114096b774d064628f30d5ca855","validation_run":34597619637,"deterministic_receipt_sha256":"2c559b3ae4a30e03bdbd9539eebbc5363da396cd42d04b39de36c42adcec5594","merge_sha":"22dcaadbe53d2cacb39d3c926949361e8afe3edd"},
     {"work_item_id":"ARI-10","status":"completed_verified","application_pr":454,"validated_head":"626be71176346d46ae01f82919d5df641749cfef","validation_run":34579811700,"deterministic_receipt_sha256":"be332023cebb4824440094d455cd41fc7a23d2537c5e352231aaafc33bbe2a5f","merge_sha":"168662aa41d11ce3f1c0dd4d523b14ba33787863"},
@@ -65,6 +66,7 @@
     {"work_item_id":"SGC-08A","status":"completed_verified","deliverable":"governance/application-planning/source-gameplay-coverage-closure/SGC_SOURCE_SYSTEM_PRODUCT_DISPOSITION_TRACE_GRAPH.json","frozen_source_nodes":8,"unique_concept_nodes":126,"implemented":79,"content_only":17,"planned_owned_elsewhere":26,"provenance_only":4,"unresolved_owner_decision":0,"unclassified_concepts":0}
   ],
   "recently_completed_implementation_work": [
+    {"work_item_id":"ARI-13","status":"completed_verified","application_pr":457,"validated_head":"0d6b1b7f22cea1430b691fbfc567f6db7a34f33b","validation_run":34604028014,"deterministic_receipt_sha256":"ec10a3100c4d09a5eddf9b04f634ff5cc8d27ae6887571fba253a982a9108d47","merge_sha":"441220b8c518a618434758fe4b6f9927ec11e928"},
     {"work_item_id":"ARI-12","status":"completed_verified","application_pr":456,"validated_head":"9a1895185c90e98e4b082d625a787ffc59db14a0","validation_run":34600580344,"deterministic_receipt_sha256":"498ce4cfbc2d4f5df370aaf2c5971f0df352418bbc4ba76c52713f361f70a8ae","merge_sha":"c39ed87453f398ee869943db1359a0741fb6c38b"},
     {"work_item_id":"ARI-11","status":"completed_verified","application_pr":455,"validated_head":"3173aacbfed4e114096b774d064628f30d5ca855","validation_run":34597619637,"deterministic_receipt_sha256":"2c559b3ae4a30e03bdbd9539eebbc5363da396cd42d04b39de36c42adcec5594","merge_sha":"22dcaadbe53d2cacb39d3c926949361e8afe3edd"},
     {"work_item_id":"ARI-10","status":"completed_verified","application_pr":454,"validated_head":"626be71176346d46ae01f82919d5df641749cfef","validation_run":34579811700,"deterministic_receipt_sha256":"be332023cebb4824440094d455cd41fc7a23d2537c5e352231aaafc33bbe2a5f","merge_sha":"168662aa41d11ce3f1c0dd4d523b14ba33787863"},
@@ -84,10 +86,10 @@
   ],
   "selection_invariants": [
     "SGC is completed_verified through SGC-08C and retired from active family execution.",
-    "ARI-01 through ARI-12 are completed_verified; ARI-12 merged as application commit c39ed87453f398ee869943db1359a0741fb6c38b.",
+    "ARI-01 through ARI-13 are completed_verified; ARI-13 merged as application commit 441220b8c518a618434758fe4b6f9927ec11e928.",
     "The live family preflight remains ARI with 24 execution units and ARI-22 pre-split into ARI-22A/B/C.",
-    "ARI-13 is in_progress with bounded implementation authority on implementation/ari-13-audio-metadata-playback-derivative-worker.",
+    "ARI-14 is selected_not_started with no implementation branch or authority.",
     "Historical lifecycle tests, detailed completed-program artifacts and unrelated connected systems remain blocked from ordinary ARI preload by default."
   ],
-  "exact_next_action": "Write the focused ARI-13 regression/profile, implement bounded audio metadata/playback derivative behavior with ARI-03 lineage and ARI-11 capability enforcement, validate the exact head, merge, close as completed_verified, and select ARI-14."
+  "exact_next_action": "On the next Continue, governed-start ARI-14 only, implement bounded semantic tags/collections/family grouping, validate exact head, merge, close completed_verified, and select ARI-15."
 }
