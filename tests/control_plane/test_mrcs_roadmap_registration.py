@@ -63,7 +63,7 @@ def test_mrcs_preserves_content_forge_cab_and_owner_boundaries():
     program = t("governance/application-planning/multiversal-rules-content-studio/MRCS_MULTIVERSAL_RULES_CONTENT_STUDIO_PROGRAM.md").lower()
     forge = t("docs/FORGE_SYSTEM_DESIGN_v8.md").lower()
     assert "clean-room" in benchmark
-    assert "does not copy" in benchmark
+    assert "not permission to copy" in benchmark
     assert "the author thinks in creative terms" in forge
     assert "not a new canonical rules engine" in program
     assert "definition is not instance" in program
