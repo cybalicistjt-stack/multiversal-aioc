@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.18.1",
+  "schema_version": "0.19.0",
   "project_id": "DWC-SPEECH",
   "project_name": "DWC Speech Synthesis",
   "owner": "John Brandon Turner",
@@ -9,54 +9,67 @@
   "stable_entrypoint": "governance/application-planning/dwc-speech/README.md",
   "human_anchor": "governance/application-planning/dwc-speech/DWC_PROJECT_ANCHOR.md",
   "preferred_execution_surface_evidence": "governance/application-planning/dwc-speech/DWC_LOCAL_WORKSTATION_SURFACE_2026-09-10.json",
-  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_R2B_ABORT384_CROSSREPLICATE_ROLLBACK_RESULT_2026-09-10.json",
+  "latest_run_evidence": "governance/application-planning/dwc-speech/DWC_R2C_MACHINE_GATE_RESULT_2026-09-10.json",
   "execution_frontier": {
-    "name": "Protected R2C continuation with flow, DP, and enc_p frozen",
-    "state": "r2c_authorized_ready_not_started",
-    "summary": "Cross-replicate rollback proves model_g.enc_p drift is the minimum sufficient cause of the batch257-384 robustness regression. In both independent R2B runs, restoring only enc_p from each run's 625/625 batch256 checkpoint restores 125/125 on all five seeds; decoder rollback alone does not. R2C is authorized from replicate2 batch384 with only enc_p restored from replicate2 batch256, preserving decoder/posterior adaptation through batch384.",
-    "r2_last_common_robust_batch": 256,
-    "r2c_source_global_batch": 384,
-    "r2c_rows_remaining": 415,
-    "additional_training_authorized": true,
-    "human_perceptual_gate_authorized": false
+    "name": "Human CNS perceptual evaluation of passing protected R2C candidate",
+    "state": "r2c_machine_gate_passed_human_review_ready",
+    "summary": "Protected R2C completed all remaining global schedule rows 385-799. The final candidate passed 125/125 on each of five deterministic seed schedules (625/625 total), with flow, DP, and enc_p frozen and hash-identical from start to finish. Machine training is closed by default. The next governed stage is human CNS perceptual evaluation using the exact 125 primary WAVs persisted by the passing final gate; no rerender should substitute for those files.",
+    "r2_complete": true,
+    "r2_total_schedule_rows_covered": 799,
+    "r2c_rows_trained": 415,
+    "r2c_machine_gate_passed": true,
+    "additional_training_authorized": false,
+    "human_perceptual_gate_authorized": true,
+    "human_perceptual_gate_completed": false
   },
-  "r2c_source": {
-    "abort384_sha256": "5a53ce2dde13df389fada834cc027283ef14dc2be44a102fc9fedd249716fd1b",
-    "checkpoint256_sha256": "88afedca8530f95eaa276568c15aa8612570e51f7aad2a04c6c51b49464e8ff6",
-    "repair": "restore only model_g.enc_p.* from replicate2 batch256 into replicate2 batch384",
-    "pretraining_required_gate": "125/125 on each of five deterministic seed schedules",
+  "promoted_machine_candidate": {
+    "file": "R2C_PROTECTED_weights_batch0799.pt",
+    "bytes": 281761455,
+    "sha256": "c26ecb279ed5759a4c251ad54c80ebaa38e055194f6698681922b33e64269a3e",
+    "machine_status": "PASS_R2C_PROTECTED_MACHINE_GATE",
+    "final_strengthened_gate": "125/125 on each of five deterministic seed schedules; 625/625 total",
+    "final_seed_minimum_rms_dbfs": [-42.56172635787702, -42.66770045046013, -47.19792203197354, -43.70917435464057, -52.04856365462446],
     "protected_modules": ["model_g.flow", "model_g.dp", "model_g.enc_p"],
-    "trainable_inference_side_module": "model_g.dec",
-    "training_side_module_remaining": "model_g.enc_q",
-    "optimizer_policy": "fresh optimizers at R2C start; thereafter rolling strengthened-boundary checkpoints save model, optimizer, and RNG state for state-complete resume. CUDA nondeterminism means bit-for-bit replay is not claimed.",
-    "rng_policy": "all inference/probe gates preserve and restore training torch RNG state"
+    "protected_hashes_unchanged": true
   },
-  "r2c_guards": {
-    "fixed_probe_every_global_batches": 8,
-    "primary_125_gate_every_global_batches": 32,
-    "five_seed_125_gate_every_global_batches": 64,
-    "rolling_resume_checkpoint_every_successful_five_seed_gate": 64,
-    "final_gate": "125/125 on each of five deterministic seed schedules with unique persisted primary WAV evidence",
-    "waveform_floor_dbfs": -55.0,
-    "duration_floor_s": 0.08
+  "resume_checkpoint": {
+    "file": "R2C_RESUME_LATEST.pt",
+    "bytes": 727206572,
+    "sha256": "d431e7e87e93b9f2d791607fee9d2acffa28a46bd69d75362aef4a057318de47",
+    "phase_batch": 799,
+    "note": "Retained for provenance/recovery. Additional training is not authorized by default after machine PASS."
+  },
+  "human_perceptual_gate": {
+    "contract": "governance/application-planning/dwc-speech/DWC_R2C_HUMAN_PERCEPTUAL_GATE.md",
+    "audio_source": "exact persisted seed-1 WAVs under the passing R2C run's wav/R2C_final directory",
+    "rows": 125,
+    "thresholds": {
+      "intelligibility_mean": 4.0,
+      "pronunciation_accuracy_mean": 4.2,
+      "special_phone_accuracy_mean": 4.2,
+      "stress_rhythm_mean": 4.0,
+      "accent_target_mean": 4.0,
+      "style_fidelity_mean_where_applicable": 3.8,
+      "meaning_preservation": "100%"
+    },
+    "status": "authorized_not_run"
   },
   "next_safe_execution": {
-    "kind": "protected_gpu_r2c_state_continuation",
+    "kind": "prepare_human_cns_review_package",
     "sync_command": "/home/antiquaria/multiversal/bootstrap/DWC_Local_Workstation_Bootstrap_v0.1.0/scripts/sync_governance.sh",
-    "launcher": "governance/application-planning/dwc-speech/tools/run_protected_r2c.sh",
-    "tool": "governance/application-planning/dwc-speech/tools/DWC_Protected_R2C_v0.1.0.py",
-    "expected_success_status": "PASS_R2C_PROTECTED_MACHINE_GATE",
-    "on_abort": "Upload DWC_R2C_PROTECTED_RESULT_*.zip; do not retry blindly.",
-    "on_success": "Upload DWC_R2C_PROTECTED_RESULT_*.zip; verify final hashes and five-seed gate, then prepare separate human CNS perceptual acceptance."
+    "launcher": "governance/application-planning/dwc-speech/tools/run_prepare_r2c_human_evaluation.sh",
+    "tool": "governance/application-planning/dwc-speech/tools/DWC_Prepare_R2C_Human_Evaluation_v0.1.0.py",
+    "output": "Windows Downloads/DWC_R2C_HUMAN_REVIEW_<timestamp>/ plus matching ZIP",
+    "review_interface": "review.html",
+    "on_completion": "Export and upload DWC_R2C_HUMAN_ACCEPTANCE_SCORECARD_COMPLETED.tsv; optionally include DWC_R2C_HUMAN_ACCEPTANCE_RESULT.json."
   },
   "prohibited_forward_paths": [
-    "continue training with model_g.enc_p unfrozen",
-    "unfreeze model_g.flow or model_g.dp",
-    "weaken machine waveform/duration/multi-seed gates",
-    "select a lucky replicate, seed, or noise setting as promotion evidence",
-    "enter human perceptual acceptance before protected R2 machine success",
-    "resume historical Stage-C lineage",
-    "treat machine waveform acceptance as human CNS perceptual acceptance"
+    "perform additional acoustic training merely because machine training is available",
+    "rerender a substitute acceptance set for the human promotion decision when exact final-gate WAVs exist",
+    "weaken the human acceptance thresholds merely to force a pass",
+    "treat machine waveform acceptance as human CNS perceptual acceptance",
+    "alter canonical DWC/PSS/CNS rules or exact IDs in response to a perceptual model failure without independent linguistic evidence",
+    "resume historical Stage-C lineage"
   ],
   "settled_architecture": {
     "frontend": "DWC/PSS/CNS to engine-independent exact custom phoneme IDs; no English G2P at acoustic boundary",
@@ -76,6 +89,7 @@
     "piper_commit": "639388b6317fc4731e91d53da42aea68fd4166ff"
   },
   "source_provenance": [
+    "DWC_R2C_MACHINE_GATE_RESULT_2026-09-10.json",
     "DWC_R2B_ABORT384_CROSSREPLICATE_ROLLBACK_RESULT_2026-09-10.json",
     "DWC_R2B_ABORT384_REPLICATE2_RESULT_2026-09-10.json",
     "DWC_R2B_ABORT384_RESULT_2026-09-10.json",
