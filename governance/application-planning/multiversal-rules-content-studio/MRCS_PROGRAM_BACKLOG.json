@@ -1,10 +1,10 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.1.1",
   "program_id": "MRCS",
   "program_name": "Multiversal Rules & Content Studio",
   "status": "owner_approved_planned",
   "activation_after": "MSAS-21",
-  "successor": "SMB-08",
+  "successor": "MBES-01",
   "owner": "John Brandon Turner",
   "approved": "2026-09-11",
   "implementation_authority": false,
@@ -35,7 +35,7 @@
     {"id":"MRCS-21","name":"Golden Cross-Domain Rules/Content Construction & Runtime Proof","status":"planned","estimated_active_minutes":24}
   ],
   "required_upstream": ["ARI family completed_verified","MIB-18 completed_verified","SMB-01..07 completed_verified","CNI-01..13 completed_verified","PCA-01..16 completed_verified","MCS-01..21 completed_verified","MCCS-01..21 completed_verified","MAS-01..21 completed_verified","MSAS-01..21 completed_verified","Content Forge design contract available","CAB-01..23 completed_verified","owner-domain rule/content contracts available"],
-  "integration_targets": ["Content Forge","content-db","CAB","ARI","CNI","PCA","MCS","MCCS","MAS","MSAS","Character","Species/Form","Profession","Ability","Action/Event","Effect","Condition","Resource","Magic","Item/Inventory","Creature/NPC","Vehicle/Mount","Environment/World","Encounter","Economy","SMB-08","SMB-09","SAA"],
+  "integration_targets": ["Content Forge","content-db","CAB","ARI","CNI","PCA","MCS","MCCS","MAS","MSAS","Character","Species/Form","Profession","Ability","Action/Event","Effect","Condition","Resource","Magic","Item/Inventory","Creature/NPC","Vehicle/Mount","Environment/World","Encounter","Economy","MBES","SMB-08","SMB-09","SAA"],
   "boundaries": [
     "MRCS productizes and expands the existing Multiversal Content Forge rather than creating a parallel authoring database or rules engine",
     "owner-domain contracts remain authoritative for the meaning of governed rules and content definitions",
@@ -44,6 +44,7 @@
     "ARI retains resource identity, source/derivative lineage, rights/use capability and imported/generated asset provenance",
     "Action/Event and other runtime owners retain canonical mutation authority; definitions, previews and simulations never prove live events occurred",
     "MCS, MCCS, MAS and MSAS retain specialized creator-domain ownership while MRCS may bind to their outputs",
+    "MBES consumes accepted MRCS construction/material/facility/blueprint definitions for playable built-environment and settlement gameplay rather than moving runtime construction authority into MRCS",
     "definition, variant, template, form, placement, live instance and projection/stat-block layers remain distinct",
     "mechanical prose should reference governed Actions, Effects, Conditions, Resources, Abilities and other shared records where available",
     "core, setting, campaign, adventure and playtest rule scopes require explicit precedence, compatibility, enable/disable and rollback semantics",
