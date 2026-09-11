@@ -20,12 +20,13 @@ def test_msas_registered_as_future_interstitial_without_activation():
     planned = {x["program_id"]: x for x in index["planned_programs"]}
     assert planned["MSAS"]["status"] == "owner_approved_planned"
     assert planned["MSAS"]["activation_after"] == "MAS-21"
-    assert planned["MSAS"]["successor"] == "SMB-08"
+    assert planned["MSAS"]["successor"] == "MRCS-01"
     assert planned["MSAS"]["implementation_authority"] is False
     assert planned["MSAS"]["execution_units"] == 21
     assert planned["MAS"]["successor"] == "MSAS-01"
 
     assert backlog["implementation_authority"] is False
+    assert backlog["successor"] == "MRCS-01"
     assert backlog["strict_order"] == [f"MSAS-{i:02d}" for i in range(1, 22)]
     assert all(x["estimated_active_minutes"] <= 24 for x in backlog["tranches"])
 
@@ -42,23 +43,22 @@ def test_msas_dependency_placement_and_successors():
     mas = j("governance/application-planning/multiversal-adventure-studio/MAS_PROGRAM_BACKLOG.json")
     pca = j("governance/application-planning/production-capability-acceleration/PCA_PROGRAM_BACKLOG.json")
 
-    expected = "CNI-01..13 → PCA-01..16 → MCS-01..21 → MCCS-01..21 → MAS-01..21 → MSAS-01..21 → SMB-08 → SMB-09"
+    expected = "CNI-01..13 → PCA-01..16 → MCS-01..21 → MCCS-01..21 → MAS-01..21 → MSAS-01..21 → MRCS-01..21 → SMB-08 → SMB-09"
     assert expected in index["effective_forward_order"]
     assert index["msas_execution_order"] == [f"MSAS-{i:02d}" for i in range(1, 22)]
     assert mas["successor"] == "MSAS-01"
     assert pca["successor"] == "MCS-01"
 
-    amendment = t("governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MSAS_AMENDMENT_2026-09-11.md")
-    successor = t("governance/application-planning/multiversal-adventure-studio/MAS_MSAS_SUCCESSOR_AMENDMENT_2026-09-11.md")
-    smb = t("governance/application-planning/system-maturation-buildout/SMB_MSAS_INTERSTITIAL_INTEGRATION_AMENDMENT_2026-09-11.md")
-    for doc in (amendment, successor, smb):
-        assert "MAS-01..21 → MSAS-01..21 → SMB-08" in doc
+    successor = t("governance/application-planning/multiversal-sound-audio-studio/MSAS_MRCS_SUCCESSOR_AMENDMENT_2026-09-11.md")
+    roadmap = t("governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MRCS_AMENDMENT_2026-09-11.md")
+    assert "MSAS-01..21 → MRCS-01..21 → SMB-08" in successor
+    assert "MSAS-01..21 → MRCS-01..21 → SMB-08" in roadmap
 
 
 def test_msas_preserves_audio_owners_clean_room_and_live_truth_boundaries():
     backlog = j("governance/application-planning/multiversal-sound-audio-studio/MSAS_PROGRAM_BACKLOG.json")
     boundaries = "\n".join(backlog["boundaries"]).lower()
-    for owner in ("aai", "dwc", "ari", "pca", "world", "environment", "scene", "adventure", "combat", "dialogue", "action/event"):
+    for owner in ("aai", "dwc", "ari", "pca", "world", "environment", "scene", "adventure", "combat", "dialogue", "action/event", "mrcs"):
         assert owner in boundaries
 
     benchmark = t("governance/application-planning/multiversal-sound-audio-studio/MSAS_BENCHMARK_CAPABILITY_MATRIX.md").lower()
