@@ -1,11 +1,11 @@
 # Multiversal Checkpoint and Validation Efficiency Policy
 
 **Document ID:** MV-AI-EFFICIENCY-001  
-**Version:** 1.2.0  
+**Version:** 1.3.0  
 **Status:** ACTIVE — OWNER APPROVED  
 **Owner and final authority:** John Brandon Turner  
 **Effective:** 2026-08-06  
-**Updated:** 2026-09-11
+**Updated:** 2026-09-12
 
 ## 1. Purpose
 
@@ -137,6 +137,16 @@ The family preflight's active-time target and closeout reserve are operating con
 `target_active_minutes_per_unit - minimum_closeout_reserve_minutes`
 
 For the current 24-minute / 8-minute pattern, that means the closeout-critical path is protected beginning at minute 16. Crossing the closeout-switch point is not permission to stop execution; it means optional investigation ends and only completion-critical work remains.
+
+### 11.0 Execution-envelope boundary rule
+
+The execution envelope, not a logical operation, is the ordinary cycle boundary. **Logical-operation completion is not cycle completion.** One owner `Continue` owns one stable cycle identity across every dynamically packed operation in that envelope.
+
+During the fill phase, when a logical operation finishes before the closeout switch and safe same-lane work exists, immediately use dynamic fill to select the next safe operation. Do not perform a shared closeout, increment the cycle, or return control merely because a sub-operation, research facet, commit, artifact, test batch, or milestone completed.
+
+For the canonical 24-minute envelope, minute 16 switches the same cycle from fill to shared closeout; it does not create a new cycle. Normal completion requires the shared closeout to finish and the 24-minute target to be accounted. Earlier closure is permitted only after an actual dynamic-fill attempt proves that no safe same-lane work remains, or through the separately evidenced genuine-blocker path.
+
+Cycle identity and elapsed envelope state are monotonic recovery state. Conversation changes, context compaction, tool-batch boundaries, progress reports, and logical-operation completion do not reset them. If execution is interrupted, resume the same cycle rather than turning the next logical step into a fresh cycle.
 
 ### 11.1 Preload once; do not rediscover
 
