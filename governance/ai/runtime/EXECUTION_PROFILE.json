@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "status": "CURRENT",
   "profile_id": "MV-EXECUTION-PROFILE-001",
   "authority": "Canonical machine-readable execution service objective and bounded-tranche timing policy.",
@@ -18,6 +18,20 @@
   "continue_semantics": {
     "ordinary_bare_continue": "Execute the selected bounded unit through validation, merge, completed_verified closeout and strict successor selection unless a genuine blocker prevents completion.",
     "second_continue_without_genuine_blocker": "execution_incident"
+  },
+  "execution_hardening": {
+    "transaction_preflight": "scripts/execution_transaction_preflight.py",
+    "termination_preflight": "scripts/execution_termination_preflight.py",
+    "before_product_branch_creation": [
+      "validate checkpoint/pointer/authority/runtime/compiled start projection agreement",
+      "supply fresh authorized branch plus observed branch/open-PR snapshot",
+      "resume the exact authorized branch/open PR when present; never create an alternate duplicate attempt"
+    ],
+    "validation_evidence_rule": "Only evidence whose validated head equals the current candidate head counts toward merge or closeout; superseded heads are non-counting without needing another broad discovery pass.",
+    "closeout_precompute_rule": "During current-head validation, precompute all closeout/successor projections that do not depend on final evidence. Leave validated head, run, deterministic receipt and merge SHA empty until observed.",
+    "terminal_outcome_fields": ["owner_continue_turns", "single_continue_achieved", "execution_incident"],
+    "terminal_outcome_rule": "For governed execution units completed after MV-CONT-010, owner_continue_turns=1 requires single_continue_achieved=true and execution_incident=null. More than one owner Continue requires single_continue_achieved=false and a structured execution_incident.",
+    "final_response_rule": "Execution mode may emit a terminal final response only after a fresh termination preflight returns ALLOW_FINAL_RESPONSE. Open PR, active current-head validation, or merged-with-closeout-pending is independently nonterminal even if a pending-step list was accidentally incomplete."
   },
   "context": {
     "repository_first": true,
