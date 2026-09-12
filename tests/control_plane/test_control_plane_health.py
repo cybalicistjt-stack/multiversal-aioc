@@ -10,6 +10,9 @@ if _spec is None or _spec.loader is None:
 _legacy = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_legacy)
 
+from validate_execution_convergence import ConvergenceError, validate_convergence_control
+from validate_repository_health import REQUIRED_SERVICE_OBJECTIVE
+
 TerminationPreflightTests = _legacy.TerminationPreflightTests
 FlatHealthRegressionTests = _legacy.FlatHealthRegressionTests
 
@@ -61,6 +64,39 @@ class FamilyExecutionPreflightTests(_legacy.FamilyExecutionPreflightTests):
 
 
 class TrancheExecutionFastPathGovernanceTests(_legacy.unittest.TestCase):
+    def test_convergence_validators_enforce_one_continue_policy(self) -> None:
+        self.assertEqual(
+            REQUIRED_SERVICE_OBJECTIVE,
+            {
+                "ordinary_tranche_single_continue_target_percent": 100,
+                "max_execution_cycles_without_genuine_blocker": 1,
+                "unrelated_historical_validation_jobs_target": 0,
+                "reruns_without_changed_evidence_target": 0,
+                "post_merge_stale_pointer_target": 0,
+            },
+        )
+        control = {
+            "owner_continue_count": 1,
+            "execution_cycles": 1,
+            "repair_cycles": 0,
+            "no_progress_cycles": 0,
+            "diagnostic_mode": False,
+            "last_failure_signature": None,
+            "last_failure_class": None,
+            "diagnostic_hypotheses": [],
+            "retry_basis": None,
+            "service_objective": REQUIRED_SERVICE_OBJECTIVE,
+        }
+        validate_convergence_control(control, status="in_progress", context="test")
+        control["service_objective"] = {
+            **REQUIRED_SERVICE_OBJECTIVE,
+            "ordinary_tranche_single_continue_target_percent": 80,
+            "ordinary_tranche_two_continue_target_percent": 95,
+            "max_execution_cycles_without_genuine_blocker": 2,
+        }
+        with self.assertRaises(ConvergenceError):
+            validate_convergence_control(control, status="in_progress", context="test")
+
     @staticmethod
     def _read(path: str) -> str:
         return (_legacy.ROOT / path).read_text(encoding="utf-8")

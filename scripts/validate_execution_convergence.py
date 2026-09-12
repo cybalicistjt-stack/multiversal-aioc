@@ -22,7 +22,7 @@ def load_json(root:Path,rel:str)->dict[str,Any]:
     try:value=json.loads(path.read_text(encoding="utf-8"))
     except (OSError,json.JSONDecodeError) as exc:raise ConvergenceError(f"invalid JSON {rel}: {exc}") from exc
     require(isinstance(value,dict),f"expected object JSON: {rel}"); return value
-def validate_convergence_control(control:dict[str,Any],*,status:str,context:str)->None:
+def validate_convergence_control(control:dict[str,Any],*,status:str,context:str,require_current_service_objective:bool=True)->None:
     required={"owner_continue_count","execution_cycles","repair_cycles","no_progress_cycles","diagnostic_mode","last_failure_signature","last_failure_class","diagnostic_hypotheses","retry_basis","service_objective"}
     require(required<=set(control),f"{context}: convergence_control missing {sorted(required-set(control))}")
     for key in ("owner_continue_count","execution_cycles","repair_cycles","no_progress_cycles"):require(isinstance(control[key],int) and control[key]>=0,f"{context}: {key} must be a non-negative integer")
@@ -30,9 +30,9 @@ def validate_convergence_control(control:dict[str,Any],*,status:str,context:str)
     require(isinstance(control["diagnostic_hypotheses"],list),f"{context}: diagnostic_hypotheses must be an array")
     failure_class=control["last_failure_class"]; require(failure_class is None or failure_class in FAILURE_CLASSES,f"{context}: invalid last_failure_class {failure_class!r}")
     objective=control["service_objective"]; require(isinstance(objective,dict),f"{context}: service_objective must be an object")
-    require(objective.get("ordinary_tranche_single_continue_target_percent")==80,f"{context}: single-continue target must remain 80")
-    require(objective.get("ordinary_tranche_two_continue_target_percent")==95,f"{context}: two-continue target must remain 95")
-    require(objective.get("max_execution_cycles_without_genuine_blocker")==2,f"{context}: max cycles without genuine blocker must remain 2")
+    if require_current_service_objective:
+        require(objective.get("ordinary_tranche_single_continue_target_percent")==100,f"{context}: single-continue target must remain 100")
+        require(objective.get("max_execution_cycles_without_genuine_blocker")==1,f"{context}: max cycles without genuine blocker must remain 1")
     require(objective.get("unrelated_historical_validation_jobs_target")==0,f"{context}: unrelated validation target must remain zero")
     require(objective.get("reruns_without_changed_evidence_target")==0,f"{context}: retry-without-change target must remain zero")
     require(objective.get("post_merge_stale_pointer_target")==0,f"{context}: stale-pointer target must remain zero")
@@ -51,9 +51,9 @@ def check(root:Path)->dict[str,Any]:
     taxonomy=load_json(root,TAXONOMY_PATH); scorecard=load_json(root,SCORECARD_PATH); remediation=load_json(root,REMEDIATION_CHECKPOINT); pointer=load_json(root,"governance/ai/runtime/CURRENT_WORK_POINTER.json"); authority=load_json(root,"governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json"); workflow_registry=load_json(root,"governance/repository-health/WORKFLOW_LIFECYCLE_REGISTRY.json")
     require(taxonomy.get("work_item_id")=="MV-CONT-006","convergence taxonomy work item mismatch")
     required_ids={"MV-CONV-RETRY-001","MV-CONV-DIAG-001","MV-CONV-CI-001","MV-CONV-STATE-001","MV-CONV-INTERRUPT-001","MV-CONV-NOPROGRESS-001"}; require({item.get("id") for item in taxonomy.get("failure_classes",[])}==required_ids,"convergence failure taxonomy coverage drift")
-    targets=scorecard.get("targets",{}); require(targets.get("ordinary_tranche_single_continue_completion_percent_min")==80,"live scorecard single-continue target drift"); require(targets.get("ordinary_tranche_completion_within_two_continues_percent_min")==95,"live scorecard two-continue target drift"); require(targets.get("unrelated_historical_validation_jobs")==0,"live scorecard unrelated-validation target drift"); require(targets.get("reruns_without_changed_evidence")==0,"live scorecard retry target drift"); require(targets.get("post_merge_stale_pointer_incidents")==0,"live scorecard stale-pointer target drift")
+    targets=scorecard.get("targets",{}); operating_requirement=scorecard.get("operating_requirement",{}); require(operating_requirement.get("ordinary_tranche_single_continue_completion_percent")==100,"live scorecard operating single-continue requirement drift"); require(operating_requirement.get("max_execution_cycles_without_genuine_blocker")==1,"live scorecard operating execution-cycle requirement drift"); require(operating_requirement.get("two_continue_measurement_role")=="diagnostic_only","live scorecard must keep two-continue measurement diagnostic-only"); require(targets.get("unrelated_historical_validation_jobs")==0,"live scorecard unrelated-validation target drift"); require(targets.get("reruns_without_changed_evidence")==0,"live scorecard retry target drift"); require(targets.get("post_merge_stale_pointer_incidents")==0,"live scorecard stale-pointer target drift")
     privacy=scorecard.get("privacy",{}); require(privacy.get("aggregation_only") is True,"live scorecard must remain aggregate-only"); require(privacy.get("raw_private_transcript_text_published") is False,"raw private transcript publication forbidden")
-    require(remediation.get("work_item_id")=="MV-CONT-006","remediation checkpoint work item mismatch"); require(remediation.get("attempt_id")=="MV-CONT-006-attempt-001","remediation checkpoint attempt mismatch"); validate_convergence_control(remediation.get("convergence_control",{}),status=str(remediation.get("status")),context="MV-CONT-006")
+    require(remediation.get("work_item_id")=="MV-CONT-006","remediation checkpoint work item mismatch"); require(remediation.get("attempt_id")=="MV-CONT-006-attempt-001","remediation checkpoint attempt mismatch"); validate_convergence_control(remediation.get("convergence_control",{}),status=str(remediation.get("status")),context="MV-CONT-006",require_current_service_objective=False)
     active=pointer.get("active_attempt",{}); checkpoint_rel=active.get("checkpoint_path")
     if checkpoint_rel:
         checkpoint=load_json(root,checkpoint_rel); require(checkpoint.get("attempt_id")==active.get("attempt_id"),"current pointer/checkpoint attempt mismatch"); require(checkpoint.get("status")==active.get("status"),"current pointer/checkpoint status mismatch")
@@ -63,7 +63,7 @@ def check(root:Path)->dict[str,Any]:
     require(LEGACY_WORKFLOW not in paths,"legacy all-profile workflow remains registered live"); require(paths=={SHARED_CORE,CURRENT_SELECTOR,APP_HEALTH},f"application workflow registry drift: {sorted(paths)}")
     selector=next(item for item in live if item.get("path")==CURRENT_SELECTOR); require(selector.get("lifecycle")=="CURRENT","bounded current-tranche selector must be CURRENT"); require(selector.get("validation_scope")=="single_governed_profile","bounded selector validation_scope mismatch"); require(selector.get("automatic_repository_event_trigger") is True,"bounded selector must validate matching PR changes")
     observed_main=scorecard.get("remediation_evidence",{}).get("application_main_after_merge"); require(app_registry.get("current_main")==observed_main,"workflow registry current_main must equal observed post-cleanup application main")
-    return {"schema_version":"1.0.0","validator":"scripts/validate_execution_convergence.py","status":"PASS","current_attempt":active.get("attempt_id"),"current_attempt_status":active.get("status"),"registered_application_workflows":sorted(paths),"legacy_fanout_registered":False,"single_continue_target_percent":80,"two_continue_target_percent":95,"live_same_cycle_baseline_percent":scorecard.get("baseline",{}).get("same_cycle_completion_percent")}
+    return {"schema_version":"1.0.0","validator":"scripts/validate_execution_convergence.py","status":"PASS","current_attempt":active.get("attempt_id"),"current_attempt_status":active.get("status"),"registered_application_workflows":sorted(paths),"legacy_fanout_registered":False,"single_continue_target_percent":100,"max_execution_cycles_without_genuine_blocker":1,"two_continue_measurement_role":"diagnostic_only","live_same_cycle_baseline_percent":scorecard.get("baseline",{}).get("same_cycle_completion_percent")}
 def main()->int:
     p=argparse.ArgumentParser();p.add_argument("--root",default=".");p.add_argument("--output");a=p.parse_args()
     try:result=check(Path(a.root))
