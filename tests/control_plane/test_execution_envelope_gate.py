@@ -137,6 +137,42 @@ class ExecutionEnvelopeGateTests(unittest.TestCase):
         result = evaluate(state)
         self.assertEqual((result["decision"], result["reason_code"]), ("ALLOW_FINAL_RESPONSE", "MVTERM-COMPLETED-VERIFIED"))
 
+    def test_early_exhaustion_without_dynamic_fill_attempt_is_rejected(self) -> None:
+        state = {
+            **self._completed_state(),
+            "execution_envelope": {
+                "cycle_id": "HAI-CYCLE-004",
+                "phase": "closed",
+                "elapsed_active_minutes": 7.0,
+                "closeout_switch_active_minute": 16,
+                "target_cycle_minutes": 24,
+                "safe_same_lane_work_available": False,
+                "dynamic_fill_attempted": False,
+                "closeout_complete": True,
+                "fill_exit_reason": "safe_work_exhausted",
+            },
+        }
+        result = evaluate(state)
+        self.assertEqual((result["decision"], result["reason_code"]), ("CONTINUE_EXECUTION", "MVTERM-ENVELOPE-EARLY-EXIT-UNPROVEN"))
+
+    def test_executor_cannot_shrink_the_canonical_envelope_target(self) -> None:
+        state = {
+            **self._completed_state(),
+            "execution_envelope": {
+                "cycle_id": "HAI-CYCLE-004",
+                "phase": "closed",
+                "elapsed_active_minutes": 6.0,
+                "closeout_switch_active_minute": 4,
+                "target_cycle_minutes": 6,
+                "safe_same_lane_work_available": False,
+                "dynamic_fill_attempted": True,
+                "closeout_complete": True,
+                "fill_exit_reason": "closeout_switch_reached",
+            },
+        }
+        result = evaluate(state)
+        self.assertEqual((result["decision"], result["reason_code"]), ("CONTINUE_EXECUTION", "MVTERM-ENVELOPE-POLICY-MISMATCH"))
+
     def test_missing_envelope_blocks_execution_mode_final_response(self) -> None:
         result = evaluate(self._completed_state())
         self.assertEqual((result["decision"], result["reason_code"]), ("CONTINUE_EXECUTION", "MVTERM-ENVELOPE-MISSING"))
