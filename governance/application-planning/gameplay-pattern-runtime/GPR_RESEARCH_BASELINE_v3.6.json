@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1.0",
+  "baseline_id": "GPR-RESEARCH-BASELINE-v3.6",
+  "status": "owner_supplied_planning_and_conformance_provenance",
+  "captured": "2026-09-11",
+  "source_package": {
+    "name": "retro_asset_database_v3.6.zip",
+    "sha256": "e27eaeb46d26cd6693c6bf359a80196c5c73210ae6554df02816292f9fd567a3",
+    "note": "The research archive is not copied into AIOC. This manifest preserves the exact package identity and the roadmap-relevant verified results."
+  },
+  "corpus": {
+    "games": 175,
+    "gameplay_mined_games": 175,
+    "reusable_patterns": 168,
+    "gameplay_primitives": 461,
+    "mechanics_api_modules": 29,
+    "mechanics_api_operations_catalog": 169,
+    "primitive_bound_operations_exercised": 85,
+    "asset_roles": 129,
+    "original_asset_families": 9
+  },
+  "runtime_conformance": {
+    "patterns_success": 168,
+    "pattern_snapshot_roundtrips": 168,
+    "pattern_deterministic_replays": 168,
+    "generic_fallback_hits": 0,
+    "snapshot_schema_current": "1.1",
+    "legacy_snapshot_migration": "1.0->1.1",
+    "variant_cases_total": 672,
+    "variant_case_classes": ["failure","partial","cozy","gm"],
+    "variant_cases_passed": 672,
+    "variant_replay_matches_adapted_state": 672,
+    "reference_vertical_slices": 5,
+    "target_non_crosscutting_modules_covered": "19/19",
+    "delivery_modes_per_slice": "7/7"
+  },
+  "delivery_modes": ["direct_play","cozy_play","gm_led","world_map_ttrpg_bridge","embedded_minigame","user_authored_loop_mini","roster_injected"],
+  "reference_reports": ["CORPUS_GAMEPLAY_MINING_COMPLETE_v3.0.json","MECHANICS_API_SPEC_v3.1.json","ORIGINAL_MULTIVERSAL_ASSET_SPEC_v3.1.json","V3.1_PRODUCTION_SPEC_VERIFICATION.json","RUNTIME_VERTICAL_SLICE_CONFORMANCE_v3.2.json","V3.3_FULL_168_PATTERN_CONFORMANCE.json","V3.4_OPERATION_HARDENING.json","V3.5_SNAPSHOT_MIGRATION.json","V3.6_VARIANT_CONFORMANCE.json","V3.6_FINAL_VERIFICATION.json","RUNTIME_FOUR_GATE_COMPLETION_v3.6.md"],
+  "rights_boundary": {
+    "production_allowed": ["original Multiversal assets","user-created original or otherwise rights-cleared assets","permitted generated-original assets"],
+    "reference_only": ["ROM-derived commercial assets","commercial screenshots/maps/sprite sheets/music","third-party protected guide/review expression"],
+    "rule": "Reference evidence may inform mechanics/taxonomy/provenance but protected source expression may not become a shipping dependency."
+  },
+  "roadmap_use": "This baseline justifies GPR planning after MRCS and before MERA. It does not select current work or grant implementation authority."
+}
