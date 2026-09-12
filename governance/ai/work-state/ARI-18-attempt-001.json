@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.2.0",
+  "work_item_id": "ARI-18",
+  "attempt_id": "ARI-18-attempt-001",
+  "title": "PAPT, CAPP & Native Asset Registration Bridge",
+  "track": "asset-resource-ingestion-reuse",
+  "source_program": "ARI",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "estimated_active_minutes": 20,
+  "execution_target_minutes": 24,
+  "minimum_closeout_reserve_minutes": 8,
+  "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
+  "objective": "Prepare the bounded PAPT, CAPP & Native Asset Registration Bridge only after a governed start; no implementation authority is granted by this selected-not-started checkpoint.",
+  "predecessor": {
+    "work_item_id": "ARI-17",
+    "status": "completed_verified",
+    "application_pr": 461,
+    "application_validated_head": "59e3bc18c62d50b7fd68597f8db74e4098c47a3b",
+    "application_validation_run": 34691036258,
+    "deterministic_receipt_sha256": "792914e87bc6133345586ec970df4a0caf54248431485cc1d3a6d697b6f61c16",
+    "application_merge_sha": "98391dd00bfa4df1e71493279358b80a00b30fda"
+  },
+  "owner_sequence_authorization": {
+    "source": "Explicit owner instruction in this execution on 2026-09-11",
+    "authorized_execution_units": ["ARI-17", "ARI-18", "ARI-19", "ARI-20", "ARI-21", "ARI-22A", "ARI-22B", "ARI-22C"],
+    "rule": "Execute strictly in order; each unit retains its own bounded scope, validation, integration, closeout, and strict-successor selection."
+  },
+  "strict_successor": "ARI-19",
+  "selection_boundaries": [
+    "ARI-17 is completed_verified; its bounded AAI bridge is closed.",
+    "ARI-18 is selected only and has no implementation branch or implementation authority.",
+    "PAPT, CAPP and native asset registration semantics remain with their owning domains; ARI remains the reusable resource identity/reference/catalog layer.",
+    "Provider activation, credentials, scraping, tester distribution, release and deployment remain unauthorized.",
+    "ARI-19 and all later ARI implementation remain inactive until ARI-18 is completed_verified."
+  ],
+  "active_substep": "selected_not_started",
+  "next_action": "Record a governed ARI-18 start projection before creating a branch, then perform only the bounded ARI-18 work with focused regression, exact-head validation, merge and closeout."
+}
