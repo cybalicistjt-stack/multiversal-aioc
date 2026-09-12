@@ -1,5 +1,5 @@
 {
-  "schema_version":"1.3.0",
+  "schema_version":"1.4.0",
   "control_id":"C-EXECUTION-TERMINATION-GATE",
   "lifecycle":"CURRENT",
   "owner_approved_at":"2026-08-28T23:51:18Z",
@@ -18,9 +18,9 @@
     "the owner explicitly selected get_ready, status_only, or analysis_only"
   ],
   "nonterminal_conditions":[
-    "implementation exists but required validation has not passed",
-    "required CI or another asynchronous operation is queued or running",
-    "a pull request is open, ready, or awaiting merge",
+    "implementation exists but current exact-head validation has not passed",
+    "current exact-head validation or another required asynchronous operation is queued or running",
+    "the governed pull request is open, ready, or awaiting merge",
     "merge succeeded but canonical closeout or successor selection is pending",
     "application merge succeeded and AIOC closeout is only partially assembled",
     "one meaningful substep or tool-call batch ended",
@@ -28,6 +28,12 @@
     "anticipated response length, token pressure, context pressure, tool-call count, or self-imposed execution budget while authorized tools remain callable",
     "the executor has enough capability to emit a final response but has not run and obeyed a fresh termination preflight"
   ],
+  "explicit_machine_state":{
+    "pull_request_state":["none","open","merged","closed_unmerged"],
+    "current_head_validation_state":["none","queued","in_progress","failed","passed","superseded"],
+    "merge_closeout_pending":"boolean",
+    "rule":"Execution-mode final-response preflight must include these fields when they are known. Open PR, active current-head validation, or merged-with-closeout-pending independently blocks final response even if pending_authorized_steps was accidentally omitted."
+  },
   "blocker_integrity":{
     "rule":"A genuine blocker is an externally evidenced inability to make any remaining authorized progress, not an executor preference to stop.",
     "forbidden_self_classifications":["response budget","tool budget","token pressure","context pressure","partial closeout","too many tool calls","conversation length","tool execution cut off without a concrete platform rejection"],
@@ -36,14 +42,20 @@
   },
   "runtime_enforcement":{
     "preflight":"scripts/execution_termination_preflight.py",
-    "instruction_surfaces":["AGENTS.md","governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md"],
+    "transaction_preflight":"scripts/execution_transaction_preflight.py",
+    "instruction_surfaces":["AGENTS.md","governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md","governance/ai/runtime/EXECUTION_PROFILE.json"],
     "regression_cases":"governance/ai/interaction-system/evaluation/EXECUTION_TERMINATION_CASES.json",
     "repository_health_gate":"scripts/validate_repository_health.py",
     "mandatory_invocation_rule":"Every execution-mode final response requires a fresh preflight result. Skipping preflight is itself a control-plane incident and never creates a legitimate tranche boundary.",
+    "branch_pr_collision_rule":"After governed start and before application mutation, supply the fresh authorized branch/open-PR snapshot to execution_transaction_preflight.py. Resume the exact authorized branch or PR when present; an alternate branch or duplicate PR is a control-plane incident and must not be created.",
+    "start_projection_rule":"Before application branch creation or mutation, checkpoint, pointer, authority, runtime and compiled-roadmap start projections must agree on work item, attempt, state and implementation authority; branch-bearing projections must agree on the authorized branch.",
+    "exact_head_rule":"Only validation evidence whose validated head equals the current candidate head counts toward closeout. Evidence for a superseded head is automatically non-counting.",
+    "closeout_precompute_rule":"While exact-head validation is active, the executor may precompute checkpoint/successor/pointer/authority/runtime/compiled/backlog closeout shapes, but must leave validation/receipt/merge evidence unfilled until observed. Fabricated placeholder evidence is forbidden.",
+    "one_continue_outcome_rule":"Every newly completed governed execution unit records owner_continue_turns, single_continue_achieved and execution_incident. A second bare Continue without a genuine blocker must be visible as an execution incident and cannot be reported as a one-Continue success.",
     "interrupted_closeout_rule":"If a prior response returned after application merge with canonical closeout/successor work pending and no externally verified all-progress blocker, the next execution turn must reconcile that stale state before unrelated work and record the incident in convergence evidence.",
     "merge_reserve_rule":"Before an application merge, stage the cross-repository closeout and retain enough observable execution reserve to verify the merge, reconcile canonical state and select the strict successor. If a platform usage warning makes that reserve unavailable, leave the validated pull request open.",
     "environment_interruption_handoff":"A verified platform usage ceiling may permit a truthful blocked handoff while pending authorized steps remain, but those steps must be preserved explicitly and resume before unrelated work.",
-    "evidence_freshness_lease":{"recovery_passes_per_execution_cycle_without_invalidation":1,"refresh_scope":"affected facts only","invalidating_events":["authority_or_selected_checkpoint_changed","relevant_head_branch_or_base_changed","merge_rebase_force_push_or_conflicting_writer","materially_new_required_check_result","tool_reports_stale_missing_contradictory_or_inaccessible_evidence","declared_final_validation_or_closeout_boundary"],"non_invalidating_events":["tool_batch_ended","elapsed_time","context_compaction","commentary_or_status_request","additional_historical_file_exists"]},
+    "evidence_freshness_lease":{"recovery_passes_per_execution_cycle_without_invalidation":1,"refresh_scope":"affected facts only","invalidating_events":["authority_or_selected_checkpoint_changed","relevant_head_branch_or_base_changed","merge_rebase_force_push_or_conflicting_writer","materially_new_required_check_result","tool_reports_stale_missing_contradictory_or_inaccessible_evidence","declared_final_validation_or_closeout_boundary"],"non_invalidating_events":["tool_batch_ended","elapsed_time","context_compaction","commentary_or_status request","additional_historical_file_exists"]},
     "ephemeral_state_rule":"Turn-state inputs are temporary execution evidence and are not committed as activity logs. Durable checkpoint updates remain milestone-only; an unexpected environment interruption after a merge requires a material handoff checkpoint."
   }
 }
