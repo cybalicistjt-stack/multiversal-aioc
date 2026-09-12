@@ -18,11 +18,11 @@ def test_mbes_registered_as_future_interstitial_without_activation():
     backlog = j("governance/application-planning/multiversal-built-environment-settlement/MBES_PROGRAM_BACKLOG.json")
     planned = {x["program_id"]: x for x in index["planned_programs"]}
     assert planned["MBES"]["status"] == "owner_approved_planned"
-    assert planned["MBES"]["activation_after"] == "MRCS-21"
+    assert planned["MBES"]["activation_after"] == "MERA-24"
     assert planned["MBES"]["successor"] == "SMB-08"
     assert planned["MBES"]["implementation_authority"] is False
     assert planned["MBES"]["execution_units"] == 24
-    assert planned["MRCS"]["successor"] == "MBES-01"
+    assert planned["MERA"]["successor"] == "MBES-01"
     assert backlog["implementation_authority"] is False
     assert backlog["strict_order"] == [f"MBES-{i:02d}" for i in range(1, 25)]
     assert all(x["estimated_active_minutes"] <= 24 for x in backlog["tranches"])
@@ -36,16 +36,15 @@ def test_mbes_registered_as_future_interstitial_without_activation():
 
 def test_mbes_dependency_placement_and_successors():
     index = j("governance/ai/runtime/ROADMAP_INDEX.json")
-    mrcs = j("governance/application-planning/multiversal-rules-content-studio/MRCS_PROGRAM_BACKLOG.json")
-    expected = "MAS-01..21 → MSAS-01..21 → MRCS-01..21 → MBES-01..24 → SMB-08 → SMB-09"
+    mera = j("governance/application-planning/multiversal-engineering-refit-assembly/MERA_PROGRAM_BACKLOG.json")
+    expected = "MSAS-01..21 → MRCS-01..21 → MERA-01..24 → MBES-01..24 → SMB-08 → SMB-09"
     assert expected in index["effective_forward_order"]
     assert index["mbes_execution_order"] == [f"MBES-{i:02d}" for i in range(1, 25)]
-    assert mrcs["successor"] == "MBES-01"
-    amendment = t("governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MBES_AMENDMENT_2026-09-11.md")
-    successor = t("governance/application-planning/multiversal-rules-content-studio/MRCS_MBES_SUCCESSOR_AMENDMENT_2026-09-11.md")
-    smb = t("governance/application-planning/system-maturation-buildout/SMB_MBES_INTERSTITIAL_INTEGRATION_AMENDMENT_2026-09-11.md")
-    for doc in (amendment, successor, smb):
-        assert "MRCS-01..21 → MBES-01..24 → SMB-08" in doc
+    assert mera["successor"] == "MBES-01"
+    amendment = t("governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MERA_AMENDMENT_2026-09-11.md")
+    predecessor = t("governance/application-planning/multiversal-built-environment-settlement/MBES_MERA_PREDECESSOR_AMENDMENT_2026-09-11.md")
+    for doc in (amendment, predecessor):
+        assert "MRCS-01..21 → MERA-01..24 → MBES-01..24" in doc
 
 
 def test_mbes_preserves_boundaries_and_world_reactivity():
@@ -53,7 +52,7 @@ def test_mbes_preserves_boundaries_and_world_reactivity():
     boundaries = "\n".join(backlog["boundaries"]).lower()
     program = t("governance/application-planning/multiversal-built-environment-settlement/MBES_MULTIVERSAL_BUILT_ENVIRONMENT_SETTLEMENT_PROGRAM.md").lower()
     benchmark = t("governance/application-planning/multiversal-built-environment-settlement/MBES_BENCHMARK_CAPABILITY_MATRIX.md").lower()
-    for owner in ("mib-14", "mcs", "mrcs", "apw/d26", "mib-12", "mib-13", "icf", "odl", "scl", "world", "environment", "action/event"):
+    for owner in ("mib-14", "mcs", "mrcs", "mera", "apw/d26", "mib-12", "mib-13", "icf", "odl", "scl", "world", "environment", "action/event"):
         assert owner in boundaries
     for level in ("settlement/district", "site/parcel", "structure", "level/zone", "space/room", "component/fixture", "connection/network"):
         assert level in boundaries
