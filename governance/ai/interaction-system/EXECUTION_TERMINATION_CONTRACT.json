@@ -1,19 +1,20 @@
 {
-  "schema_version":"1.4.0",
+  "schema_version":"1.5.0",
   "control_id":"C-EXECUTION-TERMINATION-GATE",
   "lifecycle":"CURRENT",
   "owner_approved_at":"2026-08-28T23:51:18Z",
-  "purpose":"Prevent an execution turn from returning control at an intermediate milestone while reversible authorized work remains.",
+  "last_amended":"2026-09-12",
+  "purpose":"Prevent an execution turn from returning control at an intermediate milestone or logical-operation boundary while authorized work or the active execution envelope remains nonterminal.",
   "command_modes":{
-    "execution":{"aliases":["Continue","fix this","implement this"],"persists_until":"bounded unit completed_verified, genuine blocker, or newer owner command"},
+    "execution":{"aliases":["Continue","fix this","implement this"],"persists_until":"bounded unit completed_verified plus terminal execution envelope, genuine blocker, or newer owner command"},
     "status_and_continue":{"aliases":["status report and continue"],"persists_until":"same boundary as execution after the concise status"},
-    "keep_going":{"aliases":["keep going","continue until you need me","finish the tranche"],"persists_until":"owner-named boundary, genuine blocker, or newer owner command"},
+    "keep_going":{"aliases":["keep going","continue until you need me","finish the tranche"],"persists_until":"owner-named boundary plus terminal execution envelope, genuine blocker, or newer owner command"},
     "get_ready":{"aliases":["get ready"],"persists_until":"preparation is complete; substantive implementation remains reserved"},
     "status_only":{"aliases":["status","report only"],"persists_until":"requested report is delivered"},
     "analysis_only":{"aliases":["triage","diagnose","review"],"persists_until":"requested analysis is delivered"}
   },
   "permitted_final_response_reasons":[
-    "bounded unit is completed_verified and required successor selection is complete",
+    "bounded unit is completed_verified, required successor selection is complete, and execution envelope is terminal",
     "a classified genuine blocker with current evidence survived reasonable recovery and blocks all authorized progress",
     "the owner explicitly selected get_ready, status_only, or analysis_only"
   ],
@@ -24,6 +25,8 @@
     "merge succeeded but canonical closeout or successor selection is pending",
     "application merge succeeded and AIOC closeout is only partially assembled",
     "one meaningful substep or tool-call batch ended",
+    "a logical operation completed while execution envelope phase is fill or closeout",
+    "a closed execution envelope has not reached the canonical target and safe same-lane work was not explicitly exhausted after dynamic fill",
     "a status summary could be written while execution authority remains",
     "anticipated response length, token pressure, context pressure, tool-call count, or self-imposed execution budget while authorized tools remain callable",
     "the executor has enough capability to emit a final response but has not run and obeyed a fresh termination preflight"
@@ -32,13 +35,32 @@
     "pull_request_state":["none","open","merged","closed_unmerged"],
     "current_head_validation_state":["none","queued","in_progress","failed","passed","superseded"],
     "merge_closeout_pending":"boolean",
-    "rule":"Execution-mode final-response preflight must include these fields when they are known. Open PR, active current-head validation, or merged-with-closeout-pending independently blocks final response even if pending_authorized_steps was accidentally omitted."
+    "execution_envelope":{
+      "cycle_id":"non-empty stable string",
+      "phase":["fill","closeout","closed"],
+      "elapsed_active_minutes":"non-negative number",
+      "closeout_switch_active_minute":16,
+      "target_cycle_minutes":24,
+      "safe_same_lane_work_available":"boolean",
+      "dynamic_fill_attempted":"boolean",
+      "closeout_complete":"boolean",
+      "fill_exit_reason":[null,"closeout_switch_reached","safe_work_exhausted"]
+    },
+    "rule":"Open PR, active current-head validation, merged-with-closeout-pending, nonterminal envelope phase, unproven early exit, or pre-target normal closeout independently blocks final response even if pending_authorized_steps is empty."
+  },
+  "execution_envelope_integrity":{
+    "cycle_rule":"One owner Continue owns one execution envelope. Logical operations are phases or work units inside that envelope and do not create new cycles.",
+    "fill_rule":"While phase=fill and safe same-lane work exists, operation completion selects the next safe operation.",
+    "closeout_rule":"At active minute 16, optional expansion stops and shared closeout begins inside the same cycle.",
+    "normal_terminal_rule":"Normal closure requires phase=closed, closeout_complete=true and at least 24 active minutes using the canonical 24/16 timing values.",
+    "early_terminal_rule":"Before 24 minutes, closure requires fill_exit_reason=safe_work_exhausted, safe_same_lane_work_available=false and dynamic_fill_attempted=true.",
+    "resume_rule":"Conversation change, context compaction, operation completion or recovery does not reset cycle identity or elapsed envelope state."
   },
   "blocker_integrity":{
     "rule":"A genuine blocker is an externally evidenced inability to make any remaining authorized progress, not an executor preference to stop.",
     "forbidden_self_classifications":["response budget","tool budget","token pressure","context pressure","partial closeout","too many tool calls","conversation length","tool execution cut off without a concrete platform rejection"],
     "platform_usage_ceiling_rule":"Only a concrete platform/tool rejection or explicit usage-ceiling signal that actually prevents all remaining authorized progress may be environment_unavailable.",
-    "callable_tool_rule":"If any pending authorized closeout/merge/verification/successor step remains callable through an available governed tool or fallback, execution must continue."
+    "callable_tool_rule":"If any pending authorized closeout, merge, verification, successor or dynamic-fill step remains callable through an available governed tool or fallback, execution must continue."
   },
   "runtime_enforcement":{
     "preflight":"scripts/execution_termination_preflight.py",
@@ -47,6 +69,7 @@
     "regression_cases":"governance/ai/interaction-system/evaluation/EXECUTION_TERMINATION_CASES.json",
     "repository_health_gate":"scripts/validate_repository_health.py",
     "mandatory_invocation_rule":"Every execution-mode final response requires a fresh preflight result. Skipping preflight is itself a control-plane incident and never creates a legitimate tranche boundary.",
+    "execution_envelope_rule":"Completed logical work does not close the cycle. The termination preflight evaluates execution_envelope before allowing completed_verified to return.",
     "branch_pr_collision_rule":"After governed start and before application mutation, supply the fresh authorized branch/open-PR snapshot to execution_transaction_preflight.py. Resume the exact authorized branch or PR when present; an alternate branch or duplicate PR is a control-plane incident and must not be created.",
     "start_projection_rule":"Before application branch creation or mutation, checkpoint, pointer, authority, runtime and compiled-roadmap start projections must agree on work item, attempt, state and implementation authority; branch-bearing projections must agree on the authorized branch.",
     "exact_head_rule":"Only validation evidence whose validated head equals the current candidate head counts toward closeout. Evidence for a superseded head is automatically non-counting.",
@@ -54,8 +77,8 @@
     "one_continue_outcome_rule":"Every newly completed governed execution unit records owner_continue_turns, single_continue_achieved and execution_incident. A second bare Continue without a genuine blocker must be visible as an execution incident and cannot be reported as a one-Continue success.",
     "interrupted_closeout_rule":"If a prior response returned after application merge with canonical closeout/successor work pending and no externally verified all-progress blocker, the next execution turn must reconcile that stale state before unrelated work and record the incident in convergence evidence.",
     "merge_reserve_rule":"Before an application merge, stage the cross-repository closeout and retain enough observable execution reserve to verify the merge, reconcile canonical state and select the strict successor. If a platform usage warning makes that reserve unavailable, leave the validated pull request open.",
-    "environment_interruption_handoff":"A verified platform usage ceiling may permit a truthful blocked handoff while pending authorized steps remain, but those steps must be preserved explicitly and resume before unrelated work.",
-    "evidence_freshness_lease":{"recovery_passes_per_execution_cycle_without_invalidation":1,"refresh_scope":"affected facts only","invalidating_events":["authority_or_selected_checkpoint_changed","relevant_head_branch_or_base_changed","merge_rebase_force_push_or_conflicting_writer","materially_new_required_check_result","tool_reports_stale_missing_contradictory_or_inaccessible_evidence","declared_final_validation_or_closeout_boundary"],"non_invalidating_events":["tool_batch_ended","elapsed_time","context_compaction","commentary_or_status request","additional_historical_file_exists"]},
-    "ephemeral_state_rule":"Turn-state inputs are temporary execution evidence and are not committed as activity logs. Durable checkpoint updates remain milestone-only; an unexpected environment interruption after a merge requires a material handoff checkpoint."
+    "environment_interruption_handoff":"A verified platform usage ceiling may permit a truthful blocked handoff while pending authorized steps remain, but those steps and current envelope recovery point must be preserved explicitly and resumed before unrelated work.",
+    "evidence_freshness_lease":{"recovery_passes_per_execution_cycle_without_invalidation":1,"refresh_scope":"affected facts only","invalidating_events":["authority_or_selected_checkpoint_changed","relevant_head_branch_or_base_changed","merge_rebase_force_push_or_conflicting_writer","materially_new_required_check_result","tool_reports_stale_missing_contradictory_or_inaccessible_evidence","declared_final_validation_or_closeout_boundary"],"non_invalidating_events":["tool_batch_ended","elapsed_time","context_compaction","commentary_or_status request","logical_operation_completed","additional_historical_file_exists"]},
+    "ephemeral_state_rule":"Turn-state inputs are temporary execution evidence and are not committed as activity logs. Durable checkpoint updates remain milestone-only; an unexpected environment interruption after a merge or before envelope closure requires a material handoff checkpoint."
   }
 }
