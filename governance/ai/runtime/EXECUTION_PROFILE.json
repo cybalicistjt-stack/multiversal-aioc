@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "status": "CURRENT",
+  "profile_id": "MV-EXECUTION-PROFILE-001",
+  "authority": "Canonical machine-readable execution service objective and bounded-tranche timing policy.",
+  "service_objective": {
+    "ordinary_tranche_single_continue_target_percent": 100,
+    "max_execution_cycles_without_genuine_blocker": 1,
+    "unrelated_historical_validation_jobs_target": 0,
+    "reruns_without_changed_evidence_target": 0,
+    "post_merge_stale_pointer_target": 0
+  },
+  "timing": {
+    "target_active_minutes_per_unit": 24,
+    "minimum_closeout_reserve_minutes": 8,
+    "closeout_switch_active_minute": 16
+  },
+  "continue_semantics": {
+    "ordinary_bare_continue": "Execute the selected bounded unit through validation, merge, completed_verified closeout and strict successor selection unless a genuine blocker prevents completion.",
+    "second_continue_without_genuine_blocker": "execution_incident"
+  },
+  "context": {
+    "repository_first": true,
+    "unrelated_history_blocked_by_default": true,
+    "refresh_only_on_changed_evidence": true
+  },
+  "projection_rule": "Any copied validator/checkpoint/preflight values are generated or checkable projections of this profile and must not become independent authority."
+}
