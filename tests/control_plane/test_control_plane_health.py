@@ -11,7 +11,7 @@ _legacy = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_legacy)
 
 from validate_execution_convergence import ConvergenceError, validate_convergence_control
-from validate_repository_health import REQUIRED_SERVICE_OBJECTIVE, _maintenance_proof_has_required_shape, _validate_product_lane_runtime_projection
+from validate_repository_health import REQUIRED_SERVICE_OBJECTIVE, _maintenance_proof_has_required_shape
 
 TerminationPreflightTests = _legacy.TerminationPreflightTests
 FlatHealthRegressionTests = _legacy.FlatHealthRegressionTests
@@ -123,9 +123,14 @@ class TrancheExecutionFastPathGovernanceTests(_legacy.unittest.TestCase):
 
     def test_lane_maintenance_projection_matches_live_pointer(self) -> None:
         pointer = _legacy._load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
-        audit = _legacy.Audit(_legacy.ROOT)
-        _validate_product_lane_runtime_projection(audit, pointer)
-        self.assertEqual(audit.errors, [])
+        lanes = _legacy._load_json("governance/ai/runtime/PRODUCT_EXECUTION_LANES.json")
+        maintenance = lanes["maintenance_mode"]
+        self.assertNotIn("exclusive_control_plane_maintenance", pointer)
+        self.assertFalse(maintenance["active"])
+        self.assertIsNone(maintenance["work_item"])
+        self.assertFalse(maintenance["feature_starts_blocked"])
+        self.assertEqual(lanes["active_product_attempts"], [])
+        self.assertFalse(lanes["legacy_primary_selection"]["implementation_authority"])
 
     @staticmethod
     def _read(path: str) -> str:
