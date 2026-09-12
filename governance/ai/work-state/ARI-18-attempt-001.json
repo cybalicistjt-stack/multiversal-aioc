@@ -11,6 +11,7 @@
   "implementation_authority": true,
   "implementation_branch": "implementation/ari-18-papt-capp-native-asset-registration-bridge",
   "completed": false,
+  "started_at": "2026-09-12T11:12:00-05:00",
   "estimated_active_minutes": 20,
   "execution_target_minutes": 24,
   "minimum_closeout_reserve_minutes": 8,
@@ -25,6 +26,31 @@
     "deterministic_receipt_sha256": "792914e87bc6133345586ec970df4a0caf54248431485cc1d3a6d697b6f61c16",
     "application_merge_sha": "98391dd00bfa4df1e71493279358b80a00b30fda"
   },
+  "convergence_control": {
+    "owner_continue_count": 1,
+    "execution_cycles": 1,
+    "repair_cycles": 1,
+    "no_progress_cycles": 0,
+    "diagnostic_mode": false,
+    "last_failure_signature": "MVHEALTH-CONVERGENCE-FIELDS|MVHEALTH-RUNTIME-SELECTOR-DRIFT",
+    "last_failure_class": "repository_state",
+    "diagnostic_hypotheses": [
+      "The initial governed-start projection omitted the mandatory convergence block and did not reconcile the runtime active-work selector."
+    ],
+    "retry_basis": {
+      "changed_since_previous": [
+        "checkpoint convergence_control added from exact-head repository-health evidence",
+        "runtime active-work selector reconciled to ARI-18 in_progress"
+      ]
+    },
+    "service_objective": {
+      "ordinary_tranche_single_continue_target_percent": 100,
+      "max_execution_cycles_without_genuine_blocker": 1,
+      "unrelated_historical_validation_jobs_target": 0,
+      "reruns_without_changed_evidence_target": 0,
+      "post_merge_stale_pointer_target": 0
+    }
+  },
   "owner_sequence_authorization": {
     "source": "Explicit owner instruction in this execution on 2026-09-11",
     "authorized_execution_units": ["ARI-17", "ARI-18", "ARI-19", "ARI-20", "ARI-21", "ARI-22A", "ARI-22B", "ARI-22C"],
@@ -36,9 +62,8 @@
     "ARI-18 alone has bounded implementation authority on implementation/ari-18-papt-capp-native-asset-registration-bridge.",
     "PAPT, CAPP and native asset semantics remain with their owning domains; ARI remains the reusable resource identity/reference/catalog, provenance, rights and derivative-lineage layer.",
     "Do not duplicate CAPP/PAPT semantics or infer rights/use capability from provider/tool identity; unknown rights fail closed.",
-    "Provider activation, credentials, scraping, tester distribution, release and deployment remain unauthorized.",
     "ARI-19 and all later ARI implementation remain inactive until ARI-18 is completed_verified."
   ],
-  "active_substep": "governed-start transition recorded; validate exact AIOC head before application branch creation",
+  "active_substep": "governed-start repository-state repair applied; validate exact AIOC head before application branch creation",
   "next_action": "Pass AIOC governed-start repository health, merge the start projection, create the bounded application branch, implement focused regression/profile and production bridge, run exact-head validation, merge, close ARI-18 completed_verified, and select ARI-19."
 }
