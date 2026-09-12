@@ -17,12 +17,20 @@ if _hardening_spec is None or _hardening_spec.loader is None:
 _hardening = importlib.util.module_from_spec(_hardening_spec)
 _hardening_spec.loader.exec_module(_hardening)
 
+_ENVELOPE = Path(__file__).with_name("test_execution_envelope_gate.py")
+_envelope_spec = importlib.util.spec_from_file_location("test_execution_envelope_gate", _ENVELOPE)
+if _envelope_spec is None or _envelope_spec.loader is None:
+    raise RuntimeError(f"unable to load execution-envelope regression: {_ENVELOPE}")
+_envelope = importlib.util.module_from_spec(_envelope_spec)
+_envelope_spec.loader.exec_module(_envelope)
+
 from validate_execution_convergence import ConvergenceError, validate_convergence_control
 from validate_repository_health import REQUIRED_SERVICE_OBJECTIVE, _maintenance_proof_has_required_shape
 
 TerminationPreflightTests = _legacy.TerminationPreflightTests
 FlatHealthRegressionTests = _legacy.FlatHealthRegressionTests
 ExecutionHardeningTests = _hardening.ExecutionHardeningTests
+ExecutionEnvelopeGateTests = _envelope.ExecutionEnvelopeGateTests
 
 
 class FamilyExecutionPreflightTests(_legacy.FamilyExecutionPreflightTests):
