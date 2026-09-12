@@ -1,9 +1,10 @@
 {
-  "schema_version": "2.0.0",
+  "schema_version": "2.1.0",
   "family_id": "ARI",
   "family_name": "Asset Resource Ingestion & Reuse",
   "status": "sealed",
   "sealed_at": "2026-09-08T13:47:00-05:00",
+  "execution_profile": "governance/ai/runtime/EXECUTION_PROFILE.json",
   "activation_after": {
     "family": "SGC",
     "work_item": "SGC-08C",
@@ -11,17 +12,19 @@
   },
   "first_selected_unit": "ARI-01",
   "implementation_authority": false,
-  "semantic_parent_tranches": ["ARI-01","ARI-02","ARI-03","ARI-04","ARI-05","ARI-06","ARI-07","ARI-08","ARI-09","ARI-10","ARI-11","ARI-12","ARI-13","ARI-14","ARI-15","ARI-16","ARI-17","ARI-18","ARI-19","ARI-20","ARI-21","ARI-22"],
+  "semantic_parent_tranches": [
+    "ARI-01","ARI-02","ARI-03","ARI-04","ARI-05","ARI-06","ARI-07","ARI-08","ARI-09","ARI-10","ARI-11","ARI-12","ARI-13","ARI-14","ARI-15","ARI-16","ARI-17","ARI-18","ARI-19","ARI-20","ARI-21","ARI-22"
+  ],
   "execution_target": {
     "ordinary_tranche_single_continue_completion_percent": 100,
     "max_execution_cycles_without_genuine_blocker": 1,
     "target_active_minutes_per_unit": 24,
     "minimum_closeout_reserve_minutes": 8,
-    "rule": "If a unit cannot credibly fit the active-work target plus closeout reserve, split it before governed start. Do not rely on a second bare Continue."
+    "rule": "Derived from EXECUTION_PROFILE.json. If a unit cannot credibly fit the active-work target plus closeout reserve, split it before governed start. Do not rely on a second bare Continue."
   },
   "sizing_basis": {
-    "program_rule": "Every ARI implementation tranche must fit a 24-minute-or-less governed execution target and must be split before governed start when that bound is not credible.",
-    "observed_execution_pattern": "Recent governed work shows final CI is short relative to investigation, repair, state projection and closeout; reserve closeout structurally rather than expanding a unit.",
+    "program_rule": "Every ARI implementation tranche must fit the canonical bounded execution target and must be split before governed start when that bound is not credible.",
+    "observed_execution_pattern": "Reserve closeout structurally rather than expanding a unit.",
     "pre_split_decision": "ARI-22 is pre-split before implementation because its semantic acceptance combines golden fixture ingestion, cross-system/rights/scale proof, and recovery/deterministic-receipt closure."
   },
   "execution_units": [
@@ -51,33 +54,11 @@
     {"id":"ARI-22C","parent_tranche":"ARI-22","name":"Recovery, Deterministic Receipt & Final ARI Closure Proof","estimated_active_minutes":20,"pre_split_required":true,"implementation_authority":false}
   ],
   "context_seal": {
-    "required": [
-      "CURRENT_WORK_POINTER and selected ARI checkpoint",
-      "ARI program/backlog and this preflight",
-      "SGC final closure proof",
-      "only exact upstream owner contracts or fixtures named by the active ARI execution unit"
-    ],
-    "blocked_by_default": [
-      "historical tranche tests and lifecycle-specific validators",
-      "unrelated completed-program files",
-      "Drive/Airtable/Sheets/Docs unless the active ARI unit explicitly names them",
-      "provider credentials, scraping/extraction, release/deployment and dormant future work unless the active ARI unit explicitly authorizes the required capability"
-    ],
-    "refresh_only_on": [
-      "selected checkpoint or ARI backlog changes",
-      "named upstream input proves insufficient",
-      "merge/rebase/conflicting writer changes canonical state",
-      "required validation produces a materially new failure signature"
-    ]
+    "required": ["CURRENT_WORK_POINTER and selected ARI checkpoint","ARI program/backlog and this preflight","SGC final closure proof","only exact upstream owner contracts or fixtures named by the active ARI execution unit"],
+    "blocked_by_default": ["historical tranche tests and lifecycle-specific validators","unrelated completed-program files","Drive/Airtable/Sheets/Docs unless the active ARI unit explicitly names them","provider credentials, scraping/extraction, release/deployment and dormant future work unless the active ARI unit explicitly authorizes the required capability"],
+    "refresh_only_on": ["selected checkpoint or ARI backlog changes","named upstream input proves insufficient","merge/rebase/conflicting writer changes canonical state","required validation produces a materially new failure signature"]
   },
-  "policy_basis": [
-    "governance/ai/MULTIVERSAL_EXECUTION_CONVERGENCE_POLICY.md",
-    "governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md",
-    "governance/ai/interaction-system/OWNER_AI_INTERACTION_CONTRACT.md"
-  ],
-  "tool_window_interpretation": {
-    "fixed_runtime_ceiling_observed": false,
-    "rule": "Do not invent a numeric platform ceiling. Keep units at or below the 24-minute active-work target, preserve at least 8 minutes of closeout capacity, and withhold irreversible merge if closeout reserve is not credible."
-  },
+  "policy_basis": ["governance/ai/runtime/EXECUTION_PROFILE.json","governance/ai/MULTIVERSAL_EXECUTION_CONVERGENCE_POLICY.md","governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md","governance/ai/interaction-system/OWNER_AI_INTERACTION_CONTRACT.md"],
+  "tool_window_interpretation": {"fixed_runtime_ceiling_observed":false,"rule":"Do not invent a numeric platform ceiling. Use the canonical execution profile and withhold irreversible merge if closeout reserve is not credible."},
   "strict_successor_after_family": "MIB-16"
 }

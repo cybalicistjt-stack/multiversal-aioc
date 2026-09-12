@@ -1,0 +1,97 @@
+{
+  "current_selection": {
+    "attempt_id": "ARI-18-attempt-001",
+    "implementation_authority": false,
+    "status": "selected_not_started",
+    "work_item_id": "ARI-18"
+  },
+  "foundation_overlap": {
+    "CNI": [
+      "CNI-01",
+      "CNI-02",
+      "CNI-03..13"
+    ],
+    "PCA_16_is_golden_convergence": true,
+    "PCA_start_after": "CNI-02"
+  },
+  "hard_dependency_layers": [
+    [
+      "ARI",
+      "CNI",
+      "GPR",
+      "MAS",
+      "MCCS",
+      "MCS",
+      "MERA",
+      "MNCS",
+      "MRCS",
+      "MSAS",
+      "PCA",
+      "PRE_ALPHA_SAFETY",
+      "SAA",
+      "SMB08",
+      "SMB10B",
+      "SMB12",
+      "SMB13"
+    ],
+    [
+      "MBES",
+      "MIB16_18",
+      "SMB09",
+      "SMB11",
+      "SMB14"
+    ],
+    [
+      "SMB01_07",
+      "SMB10A",
+      "SMB15"
+    ],
+    [
+      "SMB16"
+    ],
+    [
+      "BRP"
+    ],
+    [
+      "SMB17"
+    ],
+    [
+      "SMB18"
+    ]
+  ],
+  "initial_parallel_lane_count": 4,
+  "initial_parallel_product_lanes": [
+    "MCS",
+    "MCCS",
+    "MRCS",
+    "MSAS"
+  ],
+  "rotation_start_milestones": {
+    "GPR-01": [
+      "MRCS-05"
+    ],
+    "MAS-01": [
+      "CNI-11"
+    ],
+    "MBES-01": [
+      "MERA-04",
+      "MRCS-14"
+    ],
+    "MERA-01": [
+      "GPR-05",
+      "MRCS-13"
+    ],
+    "MNCS-01": [
+      "MCCS-02"
+    ]
+  },
+  "schema_version": "1.0.0",
+  "smb_normalization": {
+    "brp_between": "SMB16 -> BRP -> SMB17",
+    "core_ux": "SMB10A",
+    "creator_saa_integration": "SMB10B",
+    "optional_ai_nonblocking_for_alpha": true,
+    "pre_alpha_safety": "PRE_ALPHA_SAFETY"
+  },
+  "source_graph": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json"
+}
