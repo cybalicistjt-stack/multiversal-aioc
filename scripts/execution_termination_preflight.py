@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 from typing import Any
@@ -40,6 +41,17 @@ ENVELOPE_PHASES = {"fill", "closeout", "closed"}
 ENVELOPE_FILL_EXIT_REASONS = {None, "closeout_switch_reached", "safe_work_exhausted"}
 ENVELOPE_TARGET_CYCLE_MINUTES = 24.0
 ENVELOPE_CLOSEOUT_SWITCH_ACTIVE_MINUTE = 16.0
+OPERATION_STATUSES = {"planned", "in_progress", "completed", "skipped"}
+TERMINAL_OPERATION_STATUSES = {"completed", "skipped"}
+SIDE_EFFECT_STATUSES = {"planned", "applied", "verified", "compensated"}
+TERMINAL_SIDE_EFFECT_STATUSES = {"verified", "compensated"}
+EVIDENCE_KINDS = {
+    "ci_run",
+    "deterministic_test",
+    "source_crosscheck",
+    "human_owner",
+    "external_system",
+}
 
 
 class PreflightError(RuntimeError):
@@ -70,14 +82,23 @@ def _load_json(path: Path) -> dict[str, Any]:
     return value
 
 
-def _decision(decision: str, reason_code: str, reason: str) -> dict[str, Any]:
-    return {
-        "schema_version": "1.1.0",
+def _decision(
+    decision: str,
+    reason_code: str,
+    reason: str,
+    *,
+    unmet_invariants: list[str] | None = None,
+) -> dict[str, Any]:
+    result: dict[str, Any] = {
+        "schema_version": "1.2.0",
         "status": "PASS",
         "decision": decision,
         "reason_code": reason_code,
         "reason": reason,
     }
+    if unmet_invariants is not None:
+        result["unmet_invariants"] = sorted(set(unmet_invariants))
+    return result
 
 
 def _contains_self_imposed_pressure(evidence: Any) -> bool:
@@ -91,14 +112,19 @@ def _is_number(value: Any) -> bool:
     return isinstance(value, (int, float)) and not isinstance(value, bool)
 
 
-def _evaluate_execution_envelope(state: dict[str, Any]) -> dict[str, Any] | None:
-    """Block final response until the owner-Continue execution envelope is terminal.
+def _canonical_reconciliation_digest(bundle: dict[str, Any]) -> str:
+    material = {key: value for key, value in bundle.items() if key != "reconciliation_digest"}
+    payload = json.dumps(
+        material,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=True,
+    ).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
 
-    Logical-operation completion is intentionally insufficient. The envelope remains active
-    across dynamically filled same-lane operations and only closes after the canonical timing
-    target plus shared closeout, or after explicit evidence that safe same-lane work was
-    exhausted despite a dynamic-fill attempt.
-    """
+
+def _evaluate_execution_envelope(state: dict[str, Any]) -> dict[str, Any] | None:
+    """Block final response until the owner-Continue execution envelope is terminal."""
     envelope = state.get("execution_envelope")
     if not isinstance(envelope, dict):
         return _decision(
@@ -203,6 +229,175 @@ def _evaluate_execution_envelope(state: dict[str, Any]) -> dict[str, Any] | None
     return None
 
 
+def _evaluate_execution_reconciliation(state: dict[str, Any]) -> dict[str, Any] | None:
+    """Reconcile all terminal invariants in one pass instead of failing one-at-a-time."""
+    bundle = state.get("execution_reconciliation")
+    if not isinstance(bundle, dict):
+        return _decision(
+            "CONTINUE_EXECUTION",
+            "MVTERM-RECONCILIATION-MISSING",
+            "terminal execution requires a reconciliation bundle covering operation identity, side effects, liveness, evidence, recovery continuity, trace continuity and evidence digest",
+            unmet_invariants=["reconciliation_bundle"],
+        )
+
+    envelope = state.get("execution_envelope", {})
+    cycle_id = envelope.get("cycle_id")
+    structural: list[str] = []
+    unmet: list[str] = []
+
+    desired_state = bundle.get("desired_state")
+    trace_id = bundle.get("trace_id")
+    resume_generation = bundle.get("resume_generation")
+    resumed_from_cycle_id = bundle.get("resumed_from_cycle_id")
+    operation_ledger = bundle.get("operation_ledger")
+    next_operation_id = bundle.get("next_operation_id")
+    side_effect_ledger = bundle.get("side_effect_ledger")
+    progress = bundle.get("progress")
+    evidence = bundle.get("verification_evidence")
+    digest = bundle.get("reconciliation_digest")
+
+    if desired_state != "terminal_verified":
+        unmet.append("desired_state")
+    if not isinstance(trace_id, str) or not trace_id.strip():
+        structural.append("trace_identity")
+    if not isinstance(resume_generation, int) or isinstance(resume_generation, bool) or resume_generation < 0:
+        structural.append("resume_identity")
+    else:
+        if resume_generation == 0 and resumed_from_cycle_id is not None:
+            unmet.append("resume_identity")
+        if resume_generation > 0 and resumed_from_cycle_id != cycle_id:
+            unmet.append("resume_identity")
+
+    if not isinstance(operation_ledger, list) or not operation_ledger:
+        structural.append("operation_ledger")
+    else:
+        operation_ids: set[str] = set()
+        operation_keys: set[str] = set()
+        for row in operation_ledger:
+            if not isinstance(row, dict):
+                structural.append("operation_ledger")
+                continue
+            operation_id = row.get("operation_id")
+            idempotency_key = row.get("idempotency_key")
+            status = row.get("status")
+            attempts = row.get("attempts")
+            row_trace = row.get("trace_id")
+            if not isinstance(operation_id, str) or not operation_id.strip():
+                structural.append("operation_identity")
+            elif operation_id in operation_ids:
+                structural.append("operation_identity")
+            else:
+                operation_ids.add(operation_id)
+            if not isinstance(idempotency_key, str) or not idempotency_key.strip():
+                structural.append("operation_identity")
+            elif idempotency_key in operation_keys:
+                structural.append("operation_identity")
+            else:
+                operation_keys.add(idempotency_key)
+            if status not in OPERATION_STATUSES:
+                structural.append("operation_status")
+            elif status not in TERMINAL_OPERATION_STATUSES:
+                unmet.append("operations_terminal")
+            if not isinstance(attempts, int) or isinstance(attempts, bool) or attempts < 1:
+                structural.append("operation_attempts")
+            if isinstance(trace_id, str) and row_trace != trace_id:
+                unmet.append("trace_continuity")
+
+    if next_operation_id is not None:
+        unmet.append("next_operation")
+
+    if not isinstance(side_effect_ledger, list):
+        structural.append("side_effect_ledger")
+    else:
+        effect_ids: set[str] = set()
+        effect_keys: set[str] = set()
+        for row in side_effect_ledger:
+            if not isinstance(row, dict):
+                structural.append("side_effect_ledger")
+                continue
+            effect_id = row.get("effect_id")
+            idempotency_key = row.get("idempotency_key")
+            status = row.get("status")
+            row_trace = row.get("trace_id")
+            if not isinstance(effect_id, str) or not effect_id.strip() or effect_id in effect_ids:
+                structural.append("side_effect_identity")
+            else:
+                effect_ids.add(effect_id)
+            if not isinstance(idempotency_key, str) or not idempotency_key.strip() or idempotency_key in effect_keys:
+                structural.append("side_effect_identity")
+            else:
+                effect_keys.add(idempotency_key)
+            if status not in SIDE_EFFECT_STATUSES:
+                structural.append("side_effect_status")
+            elif status not in TERMINAL_SIDE_EFFECT_STATUSES:
+                unmet.append("side_effects")
+            if isinstance(trace_id, str) and row_trace != trace_id:
+                unmet.append("trace_continuity")
+
+    if not isinstance(progress, dict):
+        structural.append("progress")
+    else:
+        passes = progress.get("reconciliation_passes")
+        no_progress = progress.get("consecutive_no_progress_passes")
+        diagnostic = progress.get("diagnostic_mode")
+        if not isinstance(passes, int) or isinstance(passes, bool) or passes < 1:
+            structural.append("progress")
+        if not isinstance(no_progress, int) or isinstance(no_progress, bool) or no_progress < 0:
+            structural.append("progress")
+        elif no_progress != 0:
+            unmet.append("liveness")
+        if not isinstance(diagnostic, bool):
+            structural.append("progress")
+
+    if not isinstance(evidence, list) or not evidence:
+        unmet.append("independent_evidence")
+    else:
+        independent_pass = False
+        for row in evidence:
+            if not isinstance(row, dict):
+                structural.append("verification_evidence")
+                continue
+            evidence_id = row.get("evidence_id")
+            kind = row.get("kind")
+            result = row.get("result")
+            independent = row.get("independent")
+            bound_cycle_id = row.get("bound_cycle_id")
+            row_trace = row.get("trace_id")
+            if not isinstance(evidence_id, str) or not evidence_id.strip():
+                structural.append("verification_evidence")
+            if kind not in EVIDENCE_KINDS or result not in {"pass", "fail"} or not isinstance(independent, bool):
+                structural.append("verification_evidence")
+            if bound_cycle_id != cycle_id:
+                unmet.append("evidence_cycle_binding")
+            if isinstance(trace_id, str) and row_trace != trace_id:
+                unmet.append("trace_continuity")
+            if result == "pass" and independent is True and bound_cycle_id == cycle_id and row_trace == trace_id:
+                independent_pass = True
+        if not independent_pass:
+            unmet.append("independent_evidence")
+
+    if not isinstance(digest, str) or len(digest) != 64 or any(ch not in "0123456789abcdef" for ch in digest):
+        structural.append("digest")
+    elif digest != _canonical_reconciliation_digest(bundle):
+        unmet.append("digest")
+
+    if structural:
+        return _decision(
+            "CONTINUE_EXECUTION",
+            "MVTERM-RECONCILIATION-INVALID",
+            "execution reconciliation has structurally invalid or duplicate durable identities",
+            unmet_invariants=structural + unmet,
+        )
+    if unmet:
+        return _decision(
+            "CONTINUE_EXECUTION",
+            "MVTERM-RECONCILIATION-PENDING",
+            "execution reconciliation found terminal invariants that remain unsatisfied; repair the whole returned set before another terminal attempt",
+            unmet_invariants=unmet,
+        )
+    return None
+
+
 def evaluate(state: dict[str, Any]) -> dict[str, Any]:
     """Evaluate one ephemeral turn state against the termination contract."""
     mode = state.get("command_mode")
@@ -304,10 +499,13 @@ def evaluate(state: dict[str, Any]) -> dict[str, Any]:
         envelope_decision = _evaluate_execution_envelope(state)
         if envelope_decision is not None:
             return envelope_decision
+        reconciliation_decision = _evaluate_execution_reconciliation(state)
+        if reconciliation_decision is not None:
+            return reconciliation_decision
         return _decision(
             "ALLOW_FINAL_RESPONSE",
             "MVTERM-COMPLETED-VERIFIED",
-            "the bounded unit is completed_verified and its owner-Continue execution envelope is terminal",
+            "the bounded unit is completed_verified and both its execution envelope and reconciliation state are terminal",
         )
 
     blocker = state.get("genuine_blocker")
@@ -357,7 +555,7 @@ def evaluate(state: dict[str, Any]) -> dict[str, Any]:
 def self_test(root: Path) -> dict[str, Any]:
     contract = _load_json(root / CONTRACT_PATH)
     _require(
-        contract.get("schema_version") == "1.5.0",
+        contract.get("schema_version") == "1.6.0",
         "MVTERM-CONTRACT-SCHEMA",
         "termination contract schema mismatch",
     )
@@ -369,6 +567,7 @@ def self_test(root: Path) -> dict[str, Any]:
     profile = _load_json(root / PROFILE_PATH)
     timing = profile.get("timing", {})
     envelope_policy = profile.get("execution_envelope", {})
+    reconciliation_policy = profile.get("execution_reconciliation", {})
     _require(
         timing.get("target_active_minutes_per_unit") == ENVELOPE_TARGET_CYCLE_MINUTES,
         "MVTERM-ENVELOPE-PROFILE-TARGET",
@@ -384,12 +583,18 @@ def self_test(root: Path) -> dict[str, Any]:
         "MVTERM-ENVELOPE-PROFILE-GATE",
         "execution profile must require the terminal envelope gate",
     )
+    _require(
+        reconciliation_policy.get("terminal_gate_required") is True
+        and reconciliation_policy.get("reconcile_all_invariants_in_one_pass") is True,
+        "MVTERM-RECONCILIATION-PROFILE-GATE",
+        "execution profile must require one-pass terminal reconciliation",
+    )
     cases = _load_json(root / CASES_PATH)
     rows = cases.get("cases")
     _require(
-        isinstance(rows, list) and len(rows) >= 16,
+        isinstance(rows, list) and len(rows) >= 31,
         "MVTERM-CASES-MISSING",
-        "termination preflight requires at least sixteen regression cases",
+        "termination preflight requires at least thirty-one regression cases",
     )
     seen: set[str] = set()
     for row in rows:
@@ -417,7 +622,7 @@ def self_test(root: Path) -> dict[str, Any]:
             f"{case_id}: expected {row.get('expected_reason_code')}, observed {observed['reason_code']}",
         )
     return {
-        "schema_version": "1.1.0",
+        "schema_version": "1.2.0",
         "status": "PASS",
         "control_id": "C-EXECUTION-TERMINATION-GATE",
         "cases_passed": len(rows),
@@ -445,7 +650,7 @@ def main() -> int:
     except (OSError, PreflightError) as exc:
         code = exc.code if isinstance(exc, PreflightError) else "MVTERM-IO"
         result = {
-            "schema_version": "1.1.0",
+            "schema_version": "1.2.0",
             "status": "FAIL",
             "decision": "CONTINUE_EXECUTION",
             "reason_code": code,
