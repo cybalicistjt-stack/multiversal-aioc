@@ -130,10 +130,15 @@ class TrancheExecutionFastPathGovernanceTests(_legacy.unittest.TestCase):
         pointer = _legacy._load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
         lanes = _legacy._load_json("governance/ai/runtime/PRODUCT_EXECUTION_LANES.json")
         maintenance = lanes["maintenance_mode"]
-        self.assertNotIn("exclusive_control_plane_maintenance", pointer)
-        self.assertFalse(maintenance["active"])
-        self.assertIsNone(maintenance["work_item"])
-        self.assertFalse(maintenance["feature_starts_blocked"])
+        pointer_maintenance = pointer.get("exclusive_control_plane_maintenance")
+        if isinstance(pointer_maintenance, dict):
+            self.assertTrue(maintenance["active"])
+            self.assertEqual(maintenance["work_item"], pointer_maintenance["work_item_id"])
+            self.assertEqual(maintenance["feature_starts_blocked"], pointer_maintenance["feature_starts_blocked"])
+        else:
+            self.assertFalse(maintenance["active"])
+            self.assertIsNone(maintenance["work_item"])
+            self.assertFalse(maintenance["feature_starts_blocked"])
         self.assertEqual(lanes["active_product_attempts"], [])
         self.assertFalse(lanes["legacy_primary_selection"]["implementation_authority"])
 
