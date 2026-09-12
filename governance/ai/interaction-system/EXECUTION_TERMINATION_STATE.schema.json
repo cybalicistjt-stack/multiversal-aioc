@@ -16,6 +16,22 @@
     "pull_request_state":{"type":["string","null"],"enum":[null,"none","open","merged","closed_unmerged"]},
     "current_head_validation_state":{"type":["string","null"],"enum":[null,"none","queued","in_progress","failed","passed","superseded"]},
     "merge_closeout_pending":{"type":"boolean"},
+    "execution_envelope":{
+      "type":"object",
+      "additionalProperties":false,
+      "required":["cycle_id","phase","elapsed_active_minutes","closeout_switch_active_minute","target_cycle_minutes","safe_same_lane_work_available","dynamic_fill_attempted","closeout_complete","fill_exit_reason"],
+      "properties":{
+        "cycle_id":{"type":"string","minLength":1},
+        "phase":{"enum":["fill","closeout","closed"]},
+        "elapsed_active_minutes":{"type":"number","minimum":0},
+        "closeout_switch_active_minute":{"const":16},
+        "target_cycle_minutes":{"const":24},
+        "safe_same_lane_work_available":{"type":"boolean"},
+        "dynamic_fill_attempted":{"type":"boolean"},
+        "closeout_complete":{"type":"boolean"},
+        "fill_exit_reason":{"type":["string","null"],"enum":[null,"closeout_switch_reached","safe_work_exhausted"]}
+      }
+    },
     "genuine_blocker":{
       "oneOf":[
         {"type":"null"},
@@ -32,5 +48,17 @@
         }
       ]
     }
-  }
+  },
+  "allOf":[
+    {
+      "if":{
+        "properties":{
+          "command_mode":{"enum":["execution","status_and_continue","keep_going"]},
+          "work_item_status":{"const":"completed_verified"}
+        },
+        "required":["command_mode","work_item_status"]
+      },
+      "then":{"required":["execution_envelope"]}
+    }
+  ]
 }

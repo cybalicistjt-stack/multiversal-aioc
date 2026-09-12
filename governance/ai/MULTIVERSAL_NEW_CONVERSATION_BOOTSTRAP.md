@@ -2,7 +2,7 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 6.6.0
+**Version:** 6.7.0
 **Status:** ACTIVE CANDIDATE — CRS COMPLETION PENDING  
 **Owner and final authority:** John Brandon Turner  
 **Governance repository:** `cybalicistjt-stack/multiversal-aioc`  
@@ -48,6 +48,7 @@ Perform this sequence before explaining, planning, or claiming current project s
 12. If exact bytes, archives, screenshots, physical devices, generated packages, external credentials, or special hardware are required, inspect the actual available source/execution surface before declaring a blocker.
 13. When a checkout is available, run the current repository continuity/health validation. With connector-only access, verify the equivalent pointer → checkpoint → branch/PR → evidence invariants directly.
 14. Resume the exact unfinished operation. Do not recreate completed work, reset convergence counters, revive historical authority, or create an alternate branch/PR when the authorized branch/PR already exists.
+15. If the prior execution turn was interrupted before its execution envelope became terminal, recover and resume the same `cycle_id`, phase, elapsed envelope state, dynamic-fill status, and exact next same-lane operation. Conversation change does not create a new execution cycle.
 
 ## Current-state prohibition
 
@@ -110,6 +111,10 @@ For implementation attempts:
 
 Immediately after bounded recovery, read the current execution profile plus the family preflight's `target_active_minutes_per_unit` and `minimum_closeout_reserve_minutes`. Protect the closeout reserve from the beginning of execution. The closeout-switch point is `target_active_minutes_per_unit - minimum_closeout_reserve_minutes`; with the current 24/8 pattern, optional implementation/reconnaissance work must be off the critical path by minute 16. Crossing that point never grants permission to stop; it switches execution to terminal closeout only.
 
+The **execution envelope** is the cycle boundary. A logical operation is not a cycle boundary. One owner `Continue` creates or resumes one stable cycle and dynamically packs safe same-lane operations into it. While the envelope remains in fill and safe same-lane work exists, completing one operation must immediately trigger dynamic fill with the next safe operation; do not close, report, or increment the cycle merely because a research facet, implementation substep, artifact, commit, or validation milestone completed.
+
+For the current 24-minute pattern, minute 16 changes the same execution envelope from fill to shared closeout. The remaining reserve is part of the same cycle. Normal terminal response requires the envelope to close after the 24-minute target is accounted. Earlier closure requires an actual dynamic-fill attempt that proves safe same-lane work is exhausted, or a separately evidenced genuine blocker. If a turn or conversation is interrupted, resume the same `cycle_id`; do not reset cycle identity, elapsed state, or turn a remaining logical operation into a new cycle.
+
 The following rules are mandatory in every new conversation and every resumed `Continue`:
 
 - **Before any product branch or PR mutation, run the execution transaction preflight.** Use the checkpoint's exact authorized branch and a fresh branch/open-PR snapshot. Resume the exact branch/PR when present; do not create an alternate attempt.
@@ -153,9 +158,9 @@ Before a final response from an execution turn, create an ephemeral state object
 
 `python scripts/execution_termination_preflight.py --state <temporary-state.json>`
 
-The state must reflect current evidence for work status, required successor selection, the owner-requested boundary, active asynchronous operations, pending authorized steps, any genuine blocker, and—when known—the governed pull-request state, current exact-head validation state, and whether merge closeout remains pending. Open PR, queued/running exact-head validation, or merged-with-closeout-pending independently forces `CONTINUE_EXECUTION`, even if a pending-step list was accidentally incomplete. Continue using tools when the result is `CONTINUE_EXECUTION`. Finalize only when it returns `ALLOW_FINAL_RESPONSE` for `completed_verified`, a sufficiently evidenced all-progress blocker, or an explicit non-execution mode.
+The state must reflect current evidence for work status, required successor selection, the owner-requested boundary, active asynchronous operations, pending authorized steps, any genuine blocker, and—when known—the governed pull-request state, current exact-head validation state, and whether merge closeout remains pending. For execution-mode `completed_verified`, the state must also contain the current execution envelope: stable `cycle_id`, phase, elapsed active minutes, canonical 16/24 switch/target, safe same-lane work availability, dynamic-fill attempt state, shared-closeout completion, and fill-exit reason. Open PR, queued/running exact-head validation, merged-with-closeout-pending, fill/closeout envelope state, unproved early exhaustion, or a normal closed envelope below the 24-minute target independently forces `CONTINUE_EXECUTION`, even if a pending-step list was accidentally incomplete. Continue using tools when the result is `CONTINUE_EXECUTION`. Finalize only when it returns `ALLOW_FINAL_RESPONSE` for `completed_verified`, a sufficiently evidenced all-progress blocker, or an explicit non-execution mode.
 
-The temporary state is not committed. The checkpoint remains milestone-only. Missing, failed, or stale preflight evidence never grants permission to stop.
+The temporary state is not committed. The checkpoint remains milestone-only. Missing, failed, stale, or envelope-incomplete preflight evidence never grants permission to stop.
 
 ## Completion-claim integrity
 

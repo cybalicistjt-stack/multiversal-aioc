@@ -14,6 +14,7 @@ CONTRACT_PATH = Path(
 CASES_PATH = Path(
     "governance/ai/interaction-system/evaluation/EXECUTION_TERMINATION_CASES.json"
 )
+PROFILE_PATH = Path("governance/ai/runtime/EXECUTION_PROFILE.json")
 EXECUTION_MODES = {"execution", "status_and_continue", "keep_going"}
 NON_EXECUTION_MODES = {"get_ready", "status_only", "analysis_only"}
 BLOCKER_CLASSES = {
@@ -35,6 +36,10 @@ SELF_IMPOSED_PRESSURE_MARKERS = {
 }
 PULL_REQUEST_STATES = {None, "none", "open", "merged", "closed_unmerged"}
 VALIDATION_STATES = {None, "none", "queued", "in_progress", "failed", "passed", "superseded"}
+ENVELOPE_PHASES = {"fill", "closeout", "closed"}
+ENVELOPE_FILL_EXIT_REASONS = {None, "closeout_switch_reached", "safe_work_exhausted"}
+ENVELOPE_TARGET_CYCLE_MINUTES = 24.0
+ENVELOPE_CLOSEOUT_SWITCH_ACTIVE_MINUTE = 16.0
 
 
 class PreflightError(RuntimeError):
@@ -67,7 +72,7 @@ def _load_json(path: Path) -> dict[str, Any]:
 
 def _decision(decision: str, reason_code: str, reason: str) -> dict[str, Any]:
     return {
-        "schema_version": "1.0.0",
+        "schema_version": "1.1.0",
         "status": "PASS",
         "decision": decision,
         "reason_code": reason_code,
@@ -80,6 +85,122 @@ def _contains_self_imposed_pressure(evidence: Any) -> bool:
         return False
     text = " ".join(item for item in evidence if isinstance(item, str)).lower()
     return any(marker in text for marker in SELF_IMPOSED_PRESSURE_MARKERS)
+
+
+def _is_number(value: Any) -> bool:
+    return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+
+def _evaluate_execution_envelope(state: dict[str, Any]) -> dict[str, Any] | None:
+    """Block final response until the owner-Continue execution envelope is terminal.
+
+    Logical-operation completion is intentionally insufficient. The envelope remains active
+    across dynamically filled same-lane operations and only closes after the canonical timing
+    target plus shared closeout, or after explicit evidence that safe same-lane work was
+    exhausted despite a dynamic-fill attempt.
+    """
+    envelope = state.get("execution_envelope")
+    if not isinstance(envelope, dict):
+        return _decision(
+            "CONTINUE_EXECUTION",
+            "MVTERM-ENVELOPE-MISSING",
+            "execution-mode terminal response requires an explicit execution envelope; logical-operation completion alone is not a cycle boundary",
+        )
+
+    cycle_id = envelope.get("cycle_id")
+    phase = envelope.get("phase")
+    elapsed = envelope.get("elapsed_active_minutes")
+    switch = envelope.get("closeout_switch_active_minute")
+    target = envelope.get("target_cycle_minutes")
+    safe_work = envelope.get("safe_same_lane_work_available")
+    dynamic_fill = envelope.get("dynamic_fill_attempted")
+    closeout_complete = envelope.get("closeout_complete")
+    fill_exit_reason = envelope.get("fill_exit_reason")
+
+    if not isinstance(cycle_id, str) or not cycle_id.strip():
+        return _decision(
+            "CONTINUE_EXECUTION",
+            "MVTERM-ENVELOPE-INVALID",
+            "execution envelope requires a stable non-empty cycle_id",
+        )
+    if phase not in ENVELOPE_PHASES:
+        return _decision(
+            "CONTINUE_EXECUTION",
+            "MVTERM-ENVELOPE-INVALID",
+            f"unsupported execution-envelope phase: {phase!r}",
+        )
+    if not _is_number(elapsed) or float(elapsed) < 0:
+        return _decision(
+            "CONTINUE_EXECUTION",
+            "MVTERM-ENVELOPE-INVALID",
+            "elapsed_active_minutes must be a non-negative number",
+        )
+    if not _is_number(switch) or not _is_number(target):
+        return _decision(
+            "CONTINUE_EXECUTION",
+            "MVTERM-ENVELOPE-INVALID",
+            "execution envelope must carry numeric closeout-switch and target values",
+        )
+    if (
+        float(switch) != ENVELOPE_CLOSEOUT_SWITCH_ACTIVE_MINUTE
+        or float(target) != ENVELOPE_TARGET_CYCLE_MINUTES
+    ):
+        return _decision(
+            "CONTINUE_EXECUTION",
+            "MVTERM-ENVELOPE-POLICY-MISMATCH",
+            f"execution envelope must use canonical {ENVELOPE_TARGET_CYCLE_MINUTES:g}/{ENVELOPE_CLOSEOUT_SWITCH_ACTIVE_MINUTE:g} target/switch values; the executor may not shrink its own cycle boundary",
+        )
+    if not isinstance(safe_work, bool) or not isinstance(dynamic_fill, bool) or not isinstance(closeout_complete, bool):
+        return _decision(
+            "CONTINUE_EXECUTION",
+            "MVTERM-ENVELOPE-INVALID",
+            "execution envelope requires boolean safe-work, dynamic-fill and closeout-complete fields",
+        )
+    if fill_exit_reason not in ENVELOPE_FILL_EXIT_REASONS:
+        return _decision(
+            "CONTINUE_EXECUTION",
+            "MVTERM-ENVELOPE-INVALID",
+            f"unsupported fill_exit_reason: {fill_exit_reason!r}",
+        )
+
+    if phase == "fill":
+        return _decision(
+            "CONTINUE_EXECUTION",
+            "MVTERM-ENVELOPE-FILL",
+            f"cycle {cycle_id} remains in dynamic-fill execution at {float(elapsed):.2f} active minute(s); completed logical operations do not terminate the owner Continue",
+        )
+
+    if phase == "closeout" or not closeout_complete:
+        return _decision(
+            "CONTINUE_EXECUTION",
+            "MVTERM-ENVELOPE-CLOSEOUT",
+            f"cycle {cycle_id} has entered shared closeout but closeout is not yet terminal",
+        )
+
+    if fill_exit_reason == "safe_work_exhausted":
+        if safe_work or not dynamic_fill:
+            return _decision(
+                "CONTINUE_EXECUTION",
+                "MVTERM-ENVELOPE-EARLY-EXIT-UNPROVEN",
+                "early envelope closure requires an actual dynamic-fill attempt and explicit evidence that no safe same-lane work remains",
+            )
+        return None
+
+    if fill_exit_reason != "closeout_switch_reached":
+        return _decision(
+            "CONTINUE_EXECUTION",
+            "MVTERM-ENVELOPE-INVALID",
+            "closed execution envelope must record closeout_switch_reached or safe_work_exhausted",
+        )
+
+    if float(elapsed) < ENVELOPE_TARGET_CYCLE_MINUTES:
+        return _decision(
+            "CONTINUE_EXECUTION",
+            "MVTERM-ENVELOPE-TARGET-PENDING",
+            f"cycle {cycle_id} is closed in shape but only {float(elapsed):.2f}/{ENVELOPE_TARGET_CYCLE_MINUTES:g} active minutes are accounted; continue shared closeout/verification work or prove safe-work exhaustion",
+        )
+
+    return None
 
 
 def evaluate(state: dict[str, Any]) -> dict[str, Any]:
@@ -180,10 +301,13 @@ def evaluate(state: dict[str, Any]) -> dict[str, Any]:
                 "MVTERM-AUTHORIZED-WORK-PENDING",
                 "authorized closeout work remains after completion evidence",
             )
+        envelope_decision = _evaluate_execution_envelope(state)
+        if envelope_decision is not None:
+            return envelope_decision
         return _decision(
             "ALLOW_FINAL_RESPONSE",
             "MVTERM-COMPLETED-VERIFIED",
-            "the bounded unit is completed_verified at its requested boundary",
+            "the bounded unit is completed_verified and its owner-Continue execution envelope is terminal",
         )
 
     blocker = state.get("genuine_blocker")
@@ -233,7 +357,7 @@ def evaluate(state: dict[str, Any]) -> dict[str, Any]:
 def self_test(root: Path) -> dict[str, Any]:
     contract = _load_json(root / CONTRACT_PATH)
     _require(
-        contract.get("schema_version") == "1.4.0",
+        contract.get("schema_version") == "1.5.0",
         "MVTERM-CONTRACT-SCHEMA",
         "termination contract schema mismatch",
     )
@@ -241,6 +365,24 @@ def self_test(root: Path) -> dict[str, Any]:
         contract.get("control_id") == "C-EXECUTION-TERMINATION-GATE",
         "MVTERM-CONTRACT-ID",
         "termination contract control identity mismatch",
+    )
+    profile = _load_json(root / PROFILE_PATH)
+    timing = profile.get("timing", {})
+    envelope_policy = profile.get("execution_envelope", {})
+    _require(
+        timing.get("target_active_minutes_per_unit") == ENVELOPE_TARGET_CYCLE_MINUTES,
+        "MVTERM-ENVELOPE-PROFILE-TARGET",
+        "execution profile target does not match termination-envelope enforcement",
+    )
+    _require(
+        timing.get("closeout_switch_active_minute") == ENVELOPE_CLOSEOUT_SWITCH_ACTIVE_MINUTE,
+        "MVTERM-ENVELOPE-PROFILE-SWITCH",
+        "execution profile closeout switch does not match termination-envelope enforcement",
+    )
+    _require(
+        envelope_policy.get("terminal_gate_required") is True,
+        "MVTERM-ENVELOPE-PROFILE-GATE",
+        "execution profile must require the terminal envelope gate",
     )
     cases = _load_json(root / CASES_PATH)
     rows = cases.get("cases")
@@ -275,7 +417,7 @@ def self_test(root: Path) -> dict[str, Any]:
             f"{case_id}: expected {row.get('expected_reason_code')}, observed {observed['reason_code']}",
         )
     return {
-        "schema_version": "1.0.0",
+        "schema_version": "1.1.0",
         "status": "PASS",
         "control_id": "C-EXECUTION-TERMINATION-GATE",
         "cases_passed": len(rows),
@@ -303,7 +445,7 @@ def main() -> int:
     except (OSError, PreflightError) as exc:
         code = exc.code if isinstance(exc, PreflightError) else "MVTERM-IO"
         result = {
-            "schema_version": "1.0.0",
+            "schema_version": "1.1.0",
             "status": "FAIL",
             "decision": "CONTINUE_EXECUTION",
             "reason_code": code,
