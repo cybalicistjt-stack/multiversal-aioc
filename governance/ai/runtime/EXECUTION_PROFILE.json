@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "status": "CURRENT",
   "profile_id": "MV-EXECUTION-PROFILE-001",
   "authority": "Canonical machine-readable execution service objective and bounded-tranche timing policy.",
@@ -23,6 +23,15 @@
     "repository_first": true,
     "unrelated_history_blocked_by_default": true,
     "refresh_only_on_changed_evidence": true
+  },
+  "external_tool_access": {
+    "required_dependency_status": "verified_current_for_intended_workflow",
+    "trial_expired_or_inaccessible_tools_may_be_required": false,
+    "known_not_allowed_as_required_development_dependencies": [
+      "YepCode",
+      "Basic Memory"
+    ],
+    "fallback_rule": "If a required external development tool is unavailable, expired, trial-limited, or no longer supports the intended AI/development workflow, replace it with a currently verified local/open-source or owner-approved durable alternative before governed start. Do not silently assume access."
   },
   "projection_rule": "Any copied validator/checkpoint/preflight values are generated or checkable projections of this profile and must not become independent authority."
 }
