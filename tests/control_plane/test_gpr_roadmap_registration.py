@@ -15,6 +15,8 @@ def t(path: str):
 def test_gpr_registered_as_future_interstitial_without_current_authority():
     index = j("governance/ai/runtime/ROADMAP_INDEX.json")
     registry = j("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
+    pointer = j("governance/ai/runtime/CURRENT_WORK_POINTER.json")
+    active = pointer["active_attempt"]
     backlog = j("governance/application-planning/gameplay-pattern-runtime/GPR_PROGRAM_BACKLOG.json")
     planned = {x["program_id"]: x for x in index["planned_programs"]}
 
@@ -30,11 +32,13 @@ def test_gpr_registered_as_future_interstitial_without_current_authority():
     assert backlog["strict_order"] == [f"GPR-{i:02d}" for i in range(1, 17)]
     assert all(x["estimated_active_minutes"] <= 24 for x in backlog["tranches"])
 
-    assert index["current"]["work_item_id"] == "ARI-16"
-    assert index["current"]["status"] == "selected_not_started"
-    assert index["current"]["implementation_authority"] is False
-    assert registry["active_planning_work"]["work_item"] == "ARI-16"
-    assert registry["active_planning_work"]["implementation_authority"] is False
+    assert index["current"]["work_item_id"] == active["work_item_id"]
+    assert index["current"]["status"] == active["status"]
+    assert index["current"]["implementation_authority"] == active["implementation_authority"]
+    assert index["current"]["implementation_branch"] == active["implementation_branch"]
+    assert registry["active_planning_work"]["work_item"] == active["work_item_id"]
+    assert registry["active_planning_work"]["state"] == active["status"]
+    assert registry["active_planning_work"]["implementation_authority"] == active["implementation_authority"]
 
 
 def test_gpr_baseline_preserves_verified_scope_and_rights_boundary():
