@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import sys
 import unittest
 from pathlib import Path
@@ -176,6 +177,42 @@ class ExecutionEnvelopeGateTests(unittest.TestCase):
     def test_missing_envelope_blocks_execution_mode_final_response(self) -> None:
         result = evaluate(self._completed_state())
         self.assertEqual((result["decision"], result["reason_code"]), ("CONTINUE_EXECUTION", "MVTERM-ENVELOPE-MISSING"))
+
+    def test_execution_profile_persists_cycle_identity_and_dynamic_fill(self) -> None:
+        profile = json.loads((ROOT / "governance/ai/runtime/EXECUTION_PROFILE.json").read_text(encoding="utf-8"))
+        envelope = profile["execution_envelope"]
+        self.assertTrue(envelope["terminal_gate_required"])
+        self.assertIn("remains stable across logical operations", envelope["cycle_identity_rule"])
+        self.assertIn("immediately selects the next safe same-lane operation", envelope["dynamic_fill_rule"])
+        self.assertIn("Conversation change", envelope["interruption_rule"])
+
+    def test_bootstrap_requires_envelope_recovery_and_forbids_operation_boundary_stop(self) -> None:
+        bootstrap = (ROOT / "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md").read_text(encoding="utf-8")
+        required = [
+            "execution envelope",
+            "logical operation is not a cycle boundary",
+            "resume the same `cycle_id`",
+            "dynamic fill",
+            "safe same-lane work",
+            "24-minute",
+        ]
+        for phrase in required:
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, bootstrap)
+
+    def test_efficiency_policy_defines_capacity_based_cycle_boundary(self) -> None:
+        policy = (ROOT / "governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md").read_text(encoding="utf-8")
+        required = [
+            "execution envelope",
+            "logical-operation completion",
+            "dynamic fill",
+            "safe same-lane work",
+            "cycle identity",
+            "24-minute",
+        ]
+        for phrase in required:
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, policy)
 
 
 if __name__ == "__main__":
