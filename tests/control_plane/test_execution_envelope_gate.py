@@ -83,13 +83,31 @@ class ExecutionEnvelopeGateTests(unittest.TestCase):
         result = evaluate(state)
         self.assertEqual((result["decision"], result["reason_code"]), ("CONTINUE_EXECUTION", "MVTERM-ENVELOPE-CLOSEOUT"))
 
-    def test_final_response_allowed_only_after_envelope_closeout(self) -> None:
+    def test_closed_envelope_still_cannot_return_before_target_when_work_was_not_exhausted(self) -> None:
         state = {
             **self._completed_state(),
             "execution_envelope": {
                 "cycle_id": "HAI-CYCLE-004",
                 "phase": "closed",
                 "elapsed_active_minutes": 23.4,
+                "closeout_switch_active_minute": 16,
+                "target_cycle_minutes": 24,
+                "safe_same_lane_work_available": False,
+                "dynamic_fill_attempted": True,
+                "closeout_complete": True,
+                "fill_exit_reason": "closeout_switch_reached",
+            },
+        }
+        result = evaluate(state)
+        self.assertEqual((result["decision"], result["reason_code"]), ("CONTINUE_EXECUTION", "MVTERM-ENVELOPE-TARGET-PENDING"))
+
+    def test_final_response_allowed_after_target_and_shared_closeout(self) -> None:
+        state = {
+            **self._completed_state(),
+            "execution_envelope": {
+                "cycle_id": "HAI-CYCLE-004",
+                "phase": "closed",
+                "elapsed_active_minutes": 24.0,
                 "closeout_switch_active_minute": 16,
                 "target_cycle_minutes": 24,
                 "safe_same_lane_work_available": False,
