@@ -6,16 +6,16 @@
   "track": "asset-resource-ingestion-reuse",
   "source_program": "ARI",
   "repository": "cybalicistjt-stack/multiversal-aioc",
-  "status": "selected_not_started",
+  "status": "in_progress",
   "owner_selected": true,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "implementation/ari-18-papt-capp-native-asset-registration-bridge",
   "completed": false,
   "estimated_active_minutes": 20,
   "execution_target_minutes": 24,
   "minimum_closeout_reserve_minutes": 8,
   "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
-  "objective": "Prepare the bounded PAPT, CAPP & Native Asset Registration Bridge only after a governed start; no implementation authority is granted by this selected-not-started checkpoint.",
+  "objective": "Implement only the bounded PAPT, CAPP & Native Asset Registration Bridge: register native/first-party resources and CAPP/PAPT outputs into ARI with source entity, tool/renderer, version, rights/use capabilities and derivative lineage while preserving each owner domain.",
   "predecessor": {
     "work_item_id": "ARI-17",
     "status": "completed_verified",
@@ -33,11 +33,12 @@
   "strict_successor": "ARI-19",
   "selection_boundaries": [
     "ARI-17 is completed_verified; its bounded AAI bridge is closed.",
-    "ARI-18 is selected only and has no implementation branch or implementation authority.",
-    "PAPT, CAPP and native asset registration semantics remain with their owning domains; ARI remains the reusable resource identity/reference/catalog layer.",
+    "ARI-18 alone has bounded implementation authority on implementation/ari-18-papt-capp-native-asset-registration-bridge.",
+    "PAPT, CAPP and native asset semantics remain with their owning domains; ARI remains the reusable resource identity/reference/catalog, provenance, rights and derivative-lineage layer.",
+    "Do not duplicate CAPP/PAPT semantics or infer rights/use capability from provider/tool identity; unknown rights fail closed.",
     "Provider activation, credentials, scraping, tester distribution, release and deployment remain unauthorized.",
     "ARI-19 and all later ARI implementation remain inactive until ARI-18 is completed_verified."
   ],
-  "active_substep": "selected_not_started",
-  "next_action": "Record a governed ARI-18 start projection before creating a branch, then perform only the bounded ARI-18 work with focused regression, exact-head validation, merge and closeout."
+  "active_substep": "governed-start transition recorded; validate exact AIOC head before application branch creation",
+  "next_action": "Pass AIOC governed-start repository health, merge the start projection, create the bounded application branch, implement focused regression/profile and production bridge, run exact-head validation, merge, close ARI-18 completed_verified, and select ARI-19."
 }
