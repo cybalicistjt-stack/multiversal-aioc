@@ -11,7 +11,7 @@ _legacy = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_legacy)
 
 from validate_execution_convergence import ConvergenceError, validate_convergence_control
-from validate_repository_health import REQUIRED_SERVICE_OBJECTIVE
+from validate_repository_health import REQUIRED_SERVICE_OBJECTIVE, _maintenance_proof_has_required_shape
 
 TerminationPreflightTests = _legacy.TerminationPreflightTests
 FlatHealthRegressionTests = _legacy.FlatHealthRegressionTests
@@ -96,6 +96,30 @@ class TrancheExecutionFastPathGovernanceTests(_legacy.unittest.TestCase):
         }
         with self.assertRaises(ConvergenceError):
             validate_convergence_control(control, status="in_progress", context="test")
+
+    def test_maintenance_proof_scope_allows_aioc_only_without_fake_application_evidence(self) -> None:
+        aioc_only = {
+            "work_item": "MV-CONT-009",
+            "status": "completed_verified",
+            "maintenance_scope": "aioc_only",
+            "aioc_pr": 1136,
+            "aioc_validated_head": "f1d4738df210b7defa2ef9342b93874bfe835f40",
+            "aioc_repository_health_run": 34702688466,
+            "aioc_merge": "32f96ba6e9728fb785f2d4eaa0655a705996e8e8",
+            "aioc_main_health_run": 34702781559,
+            "superseded_prs_closed": [],
+        }
+        self.assertTrue(_maintenance_proof_has_required_shape(aioc_only, seen_work_items=set()))
+        historical = {
+            **aioc_only,
+            "work_item": "MV-CONT-008",
+            "maintenance_scope": "cross_repository",
+            "application_pr": 337,
+            "application_merge": "d007dc980c63a7beab4ab9a4ddbc67525f8d7003",
+        }
+        self.assertTrue(_maintenance_proof_has_required_shape(historical, seen_work_items=set()))
+        fabricated = {**aioc_only, "application_pr": 999, "application_merge": "d007dc980c63a7beab4ab9a4ddbc67525f8d7003"}
+        self.assertFalse(_maintenance_proof_has_required_shape(fabricated, seen_work_items=set()))
 
     @staticmethod
     def _read(path: str) -> str:

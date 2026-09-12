@@ -52,6 +52,7 @@ FAILURE_CLASSES = {
     "repository_state",
     "owner_only",
 }
+MAINTENANCE_SCOPES = {"cross_repository", "aioc_only"}
 
 
 class Audit:
@@ -128,6 +129,109 @@ def _is_sha(value: Any) -> bool:
         isinstance(value, str)
         and len(value) == 40
         and all(character in "0123456789abcdef" for character in value)
+    )
+
+
+def _maintenance_scope(record: dict[str, Any]) -> str | None:
+    scope = record.get("maintenance_scope", "cross_repository")
+    return scope if scope in MAINTENANCE_SCOPES else None
+
+
+def _maintenance_proof_has_required_shape(
+    proof: dict[str, Any], *, seen_work_items: set[str]
+) -> bool:
+    work_item = proof.get("work_item")
+    superseded = proof.get("superseded_prs_closed")
+    scope = _maintenance_scope(proof)
+    common_valid = (
+        isinstance(work_item, str)
+        and bool(work_item)
+        and work_item not in seen_work_items
+        and scope is not None
+        and proof.get("status") == "completed_verified"
+        and isinstance(proof.get("aioc_pr"), int)
+        and proof.get("aioc_pr") > 0
+        and _is_sha(proof.get("aioc_validated_head"))
+        and isinstance(proof.get("aioc_repository_health_run"), int)
+        and proof.get("aioc_repository_health_run") > 0
+        and _is_sha(proof.get("aioc_merge"))
+        and isinstance(proof.get("aioc_main_health_run"), int)
+        and proof.get("aioc_main_health_run") > 0
+        and isinstance(superseded, list)
+        and all(isinstance(number, int) and number > 0 for number in superseded)
+    )
+    if not common_valid:
+        return False
+    if scope == "cross_repository":
+        return (
+            isinstance(proof.get("application_pr"), int)
+            and proof.get("application_pr") > 0
+            and _is_sha(proof.get("application_merge"))
+        )
+    return "application_pr" not in proof and "application_merge" not in proof
+
+
+def _maintenance_pointer_matches_proof(
+    pointer_record: dict[str, Any], proof: dict[str, Any]
+) -> bool:
+    scope = _maintenance_scope(proof)
+    if scope is None or _maintenance_scope(pointer_record) != scope:
+        return False
+    common_matches = (
+        pointer_record.get("status") == proof.get("status")
+        and pointer_record.get("aioc_pr") == proof.get("aioc_pr")
+        and pointer_record.get("aioc_validated_head") == proof.get("aioc_validated_head")
+        and pointer_record.get("aioc_repository_health_run")
+        == proof.get("aioc_repository_health_run")
+        and pointer_record.get("aioc_merge") == proof.get("aioc_merge")
+        and pointer_record.get("aioc_main_health_run") == proof.get("aioc_main_health_run")
+        and pointer_record.get("superseded_prs_closed")
+        == proof.get("superseded_prs_closed")
+    )
+    if not common_matches:
+        return False
+    if scope == "cross_repository":
+        return (
+            pointer_record.get("application_pr") == proof.get("application_pr")
+            and pointer_record.get("application_merge") == proof.get("application_merge")
+        )
+    return "application_pr" not in pointer_record and "application_merge" not in pointer_record
+
+
+def _maintenance_checkpoint_matches_pointer(
+    completed: dict[str, Any], checkpoint: dict[str, Any]
+) -> bool:
+    completion = checkpoint.get("completion_evidence", {})
+    if not isinstance(completion, dict):
+        return False
+    scope = _maintenance_scope(completed)
+    completion_scope = completion.get("maintenance_scope", "cross_repository")
+    if scope is None or completion_scope != scope:
+        return False
+    common_matches = (
+        checkpoint.get("work_item_id") == completed.get("work_item_id")
+        and checkpoint.get("status") == completed.get("status") == "completed_verified"
+        and completion.get("aioc", {}).get("merge_sha") == completed.get("aioc_merge")
+        and completion.get("aioc", {}).get("repository_health_run")
+        == completed.get("aioc_repository_health_run")
+        and completion.get("zombie_retirement", {}).get("closed_prs")
+        == completed.get("superseded_prs_closed")
+    )
+    if not common_matches:
+        return False
+    if scope == "cross_repository":
+        return (
+            completion.get("application", {}).get("merge_sha")
+            == completed.get("application_merge")
+        )
+    application = completion.get("application")
+    return (
+        "application_pr" not in completed
+        and "application_merge" not in completed
+        and isinstance(application, dict)
+        and application.get("status") == "not_applicable"
+        and "merge_sha" not in application
+        and "pr" not in application
     )
 
 
@@ -422,18 +526,8 @@ def _validate_authority_and_pointer(
                 continue
             checkpoint_path = Path(str(completed.get("checkpoint_path", "")))
             checkpoint = audit.read_json(checkpoint_path)
-            completion = checkpoint.get("completion_evidence", {})
             audit.require(
-                checkpoint.get("work_item_id") == completed.get("work_item_id")
-                and checkpoint.get("status") == completed.get("status") == "completed_verified"
-                and completion.get("application", {}).get("merge_sha")
-                == completed.get("application_merge")
-                and completion.get("aioc", {}).get("merge_sha")
-                == completed.get("aioc_merge")
-                and completion.get("aioc", {}).get("repository_health_run")
-                == completed.get("aioc_repository_health_run")
-                and completion.get("zombie_retirement", {}).get("closed_prs")
-                == completed.get("superseded_prs_closed"),
+                _maintenance_checkpoint_matches_pointer(completed, checkpoint),
                 "MVHEALTH-MAINTENANCE-CLOSEOUT-DRIFT",
                 f"{completed.get('work_item_id')} pointer/checkpoint completion evidence drift",
                 checkpoint_path,
@@ -451,6 +545,7 @@ def _validate_authority_and_pointer(
             )
             audit.require(
                 isinstance(authority_completed, dict)
+                and _maintenance_scope(authority_completed) == _maintenance_scope(completed)
                 and authority_completed.get("aioc_merge") == completed.get("aioc_merge")
                 and authority_completed.get("superseded_prs_closed")
                 == completed.get("superseded_prs_closed"),
@@ -466,6 +561,7 @@ def _validate_authority_and_pointer(
             audit.require(
                 runtime_completed.get("work_item") == latest.get("work_item_id")
                 and runtime_completed.get("state") == "completed_verified"
+                and _maintenance_scope(runtime_completed) == _maintenance_scope(latest)
                 and runtime_completed.get("aioc_merge") == latest.get("aioc_merge")
                 and runtime_completed.get("superseded_prs_closed")
                 == latest.get("superseded_prs_closed"),
@@ -793,24 +889,8 @@ def _validate_sealed_proofs(
             continue
         work_item = proof.get("work_item")
         superseded = proof.get("superseded_prs_closed")
-        valid = (
-            isinstance(work_item, str)
-            and bool(work_item)
-            and work_item not in seen_work_items
-            and proof.get("status") == "completed_verified"
-            and isinstance(proof.get("application_pr"), int)
-            and proof.get("application_pr") > 0
-            and _is_sha(proof.get("application_merge"))
-            and isinstance(proof.get("aioc_pr"), int)
-            and proof.get("aioc_pr") > 0
-            and _is_sha(proof.get("aioc_validated_head"))
-            and isinstance(proof.get("aioc_repository_health_run"), int)
-            and proof.get("aioc_repository_health_run") > 0
-            and _is_sha(proof.get("aioc_merge"))
-            and isinstance(proof.get("aioc_main_health_run"), int)
-            and proof.get("aioc_main_health_run") > 0
-            and isinstance(superseded, list)
-            and all(isinstance(number, int) and number > 0 for number in superseded)
+        valid = _maintenance_proof_has_required_shape(
+            proof, seen_work_items=seen_work_items
         )
         audit.require(
             valid,
@@ -824,19 +904,7 @@ def _validate_sealed_proofs(
         pointer_record = pointer_records.get(work_item)
         audit.require(
             isinstance(pointer_record, dict)
-            and pointer_record.get("status") == proof.get("status")
-            and pointer_record.get("application_pr") == proof.get("application_pr")
-            and pointer_record.get("application_merge")
-            == proof.get("application_merge")
-            and pointer_record.get("aioc_pr") == proof.get("aioc_pr")
-            and pointer_record.get("aioc_validated_head")
-            == proof.get("aioc_validated_head")
-            and pointer_record.get("aioc_repository_health_run")
-            == proof.get("aioc_repository_health_run")
-            and pointer_record.get("aioc_merge") == proof.get("aioc_merge")
-            and pointer_record.get("aioc_main_health_run")
-            == proof.get("aioc_main_health_run")
-            and pointer_record.get("superseded_prs_closed") == superseded,
+            and _maintenance_pointer_matches_proof(pointer_record, proof),
             "MVHEALTH-CONTROL-PLANE-POINTER-PROOF",
             f"sealed maintenance proof disagrees with the pointer: {work_item}",
             SEALED_PROOFS_PATH,
