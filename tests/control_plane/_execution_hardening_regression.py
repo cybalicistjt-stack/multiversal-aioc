@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import sys
 import unittest
 from pathlib import Path
@@ -167,6 +168,26 @@ class ExecutionHardeningTests(unittest.TestCase):
         self.assertEqual((ci_active["decision"], ci_active["reason_code"]), ("CONTINUE_EXECUTION", "MVTERM-VALIDATION-ACTIVE"))
         closeout = evaluate({**base, "pull_request_state": "merged", "merge_closeout_pending": True})
         self.assertEqual((closeout["decision"], closeout["reason_code"]), ("CONTINUE_EXECUTION", "MVTERM-CLOSEOUT-PENDING"))
+
+    def test_bootstrap_persists_transaction_gate_across_conversations(self) -> None:
+        bootstrap = (ROOT / "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md").read_text(encoding="utf-8")
+        for marker in (
+            "execution_transaction_preflight.py",
+            "STOP_DUPLICATE_ATTEMPT",
+            "exact authorized branch",
+            "owner_continue_turns",
+            "current exact-head validation state",
+        ):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, bootstrap)
+
+    def test_execution_profile_carries_machine_hardening_contract(self) -> None:
+        profile = json.loads((ROOT / "governance/ai/runtime/EXECUTION_PROFILE.json").read_text(encoding="utf-8"))
+        hardening = profile["execution_hardening"]
+        self.assertEqual(hardening["transaction_preflight"], "scripts/execution_transaction_preflight.py")
+        self.assertEqual(hardening["termination_preflight"], "scripts/execution_termination_preflight.py")
+        self.assertEqual(hardening["terminal_outcome_fields"], ["owner_continue_turns", "single_continue_achieved", "execution_incident"])
+        self.assertIn("superseded heads are non-counting", hardening["validation_evidence_rule"])
 
 
 if __name__ == "__main__":
