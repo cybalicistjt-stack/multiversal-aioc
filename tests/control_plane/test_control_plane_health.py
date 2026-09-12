@@ -24,6 +24,13 @@ if _envelope_spec is None or _envelope_spec.loader is None:
 _envelope = importlib.util.module_from_spec(_envelope_spec)
 _envelope_spec.loader.exec_module(_envelope)
 
+_RECON = Path(__file__).with_name("test_execution_reconciliation_gate.py")
+_recon_spec = importlib.util.spec_from_file_location("test_execution_reconciliation_gate", _RECON)
+if _recon_spec is None or _recon_spec.loader is None:
+    raise RuntimeError(f"unable to load execution-reconciliation regression: {_RECON}")
+_recon = importlib.util.module_from_spec(_recon_spec)
+_recon_spec.loader.exec_module(_recon)
+
 from validate_execution_convergence import ConvergenceError, validate_convergence_control
 from validate_repository_health import REQUIRED_SERVICE_OBJECTIVE, _maintenance_proof_has_required_shape
 
@@ -47,6 +54,10 @@ class TerminationPreflightTests(_legacy.TerminationPreflightTests):
                     "closeout_complete": True,
                     "fill_exit_reason": "closeout_switch_reached",
                 },
+                "execution_reconciliation": _recon._valid_reconciliation(
+                    cycle_id="TEST-LEGACY-TERMINAL",
+                    trace_id="TRACE-LEGACY-TERMINAL",
+                ),
             }
         )
         result = _legacy.evaluate(state)
@@ -57,6 +68,7 @@ class TerminationPreflightTests(_legacy.TerminationPreflightTests):
 FlatHealthRegressionTests = _legacy.FlatHealthRegressionTests
 ExecutionHardeningTests = _hardening.ExecutionHardeningTests
 ExecutionEnvelopeGateTests = _envelope.ExecutionEnvelopeGateTests
+ExecutionReconciliationGateTests = _recon.ExecutionReconciliationGateTests
 
 
 class FamilyExecutionPreflightTests(_legacy.FamilyExecutionPreflightTests):
