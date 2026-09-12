@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.2.0",
+  "work_item_id": "ARI-19",
+  "attempt_id": "ARI-19-attempt-001",
+  "title": "Universal Asset Picker / Resource Query API",
+  "track": "asset-resource-ingestion-reuse",
+  "source_program": "ARI",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "estimated_active_minutes": 22,
+  "execution_target_minutes": 24,
+  "minimum_closeout_reserve_minutes": 8,
+  "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
+  "objective": "Prepare the bounded Universal Asset Picker / Resource Query API only after a governed start: expose one reusable query/picker surface over existing ARI catalog truth, reusing ARI-15 pagination/lazy retrieval and applying availability and rights/capability filtering without minting owner-domain semantics.",
+  "predecessor": {
+    "work_item_id": "ARI-18",
+    "status": "completed_verified",
+    "application_pr": 462,
+    "application_validated_head": "e67c6629b08f189dbe24ff6ca646dbc46ece6bb0",
+    "application_validation_run": 34705323703,
+    "deterministic_receipt_sha256": "043928dbae535ec19c23910f88920a10e7bb014994df895c65aa80ee73425119",
+    "application_merge_sha": "9cbdcaf6a718b4a67f9c616c0b9b8cd627b9cc21"
+  },
+  "owner_sequence_authorization": {
+    "source": "Explicit owner instruction in this execution on 2026-09-11",
+    "authorized_execution_units": ["ARI-17", "ARI-18", "ARI-19", "ARI-20", "ARI-21", "ARI-22A", "ARI-22B", "ARI-22C"],
+    "rule": "Execute strictly in order; each unit retains its own bounded scope, validation, integration, closeout, and strict-successor selection."
+  },
+  "strict_successor": "ARI-20",
+  "reserved_branch": "implementation/ari-19-universal-asset-picker-resource-query-api",
+  "selection_boundaries": [
+    "ARI-18 is completed_verified; its native/CAPP/PAPT registration bridge is closed.",
+    "ARI-19 is selected only and has no implementation branch or implementation authority.",
+    "ARI-19 must reuse ARI-15 query/pagination/lazy-retrieval primitives rather than create a second query engine.",
+    "Availability and rights/use-capability filtering must occur before eligible choices are exposed; denied, revoked, missing and unknown states remain explicit and fail closed where required.",
+    "MAI, AAI, CAPP, PAPT and other owner-domain semantics remain owner-owned; ARI-19 returns stable references/projections only.",
+    "ARI-20 and all later ARI implementation remain inactive until ARI-19 is completed_verified."
+  ],
+  "active_substep": "selected_not_started",
+  "next_action": "Record a governed ARI-19 start projection before creating the reserved branch, then execute only the bounded query/picker tranche through focused regression, exact-head validation, merge and closeout."
+}
