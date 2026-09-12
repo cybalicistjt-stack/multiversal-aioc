@@ -25,7 +25,7 @@ class FamilyExecutionPreflightTests(_legacy.FamilyExecutionPreflightTests):
         pointer = _legacy._load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
         authority = _legacy._load_json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
         runtime = _legacy._load_json("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")
-        index = _legacy._load_json("governance/ai/runtime/ROADMAP_INDEX.json")
+        compiled = _legacy._load_json("governance/ai/runtime/ROADMAP_COMPILED_PROJECTION.json")
         checkpoint = _legacy._load_json(pointer["active_attempt"]["checkpoint_path"])
         self.assertEqual(sgc["status"], "completed_verified")
         self.assertEqual(sgc_backlog["status"], "completed_verified")
@@ -41,11 +41,16 @@ class FamilyExecutionPreflightTests(_legacy.FamilyExecutionPreflightTests):
         self.assertEqual(pointer["active_attempt"]["status"], checkpoint["status"])
         self.assertEqual(pointer["active_attempt"]["implementation_authority"], checkpoint["implementation_authority"])
         self.assertEqual(pointer["active_attempt"]["implementation_branch"], checkpoint["implementation_branch"])
-        for selected in (authority["active_planning_work"], runtime["active_work"], index["current"]):
+        for selected in (authority["active_planning_work"], runtime["active_work"]):
             self.assertEqual(selected.get("work_item_id", selected.get("work_item")), selected_item)
             self.assertEqual(selected.get("state", selected.get("status")), checkpoint["status"])
             self.assertEqual(selected["implementation_authority"], checkpoint["implementation_authority"])
             self.assertEqual(selected["implementation_branch"], checkpoint["implementation_branch"])
+        compiled_selection = compiled["current_selection"]
+        self.assertEqual(compiled_selection["work_item_id"], selected_item)
+        self.assertEqual(compiled_selection["attempt_id"], checkpoint["attempt_id"])
+        self.assertEqual(compiled_selection["status"], checkpoint["status"])
+        self.assertEqual(compiled_selection["implementation_authority"], checkpoint["implementation_authority"])
 
     def test_sgc_execution_units_are_pre_sized_for_one_continue(self) -> None:
         pf = _legacy._load_json("governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json")
