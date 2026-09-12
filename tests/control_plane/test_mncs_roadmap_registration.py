@@ -15,6 +15,8 @@ def t(path: str):
 def test_mncs_registered_without_changing_live_authority():
     index = j("governance/ai/runtime/ROADMAP_INDEX.json")
     registry = j("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
+    pointer = j("governance/ai/runtime/CURRENT_WORK_POINTER.json")
+    active = pointer["active_attempt"]
     backlog = j("governance/application-planning/multiversal-npc-creature-studio/MNCS_PROGRAM_BACKLOG.json")
     planned = {x["program_id"]: x for x in index["planned_programs"]}
 
@@ -30,12 +32,13 @@ def test_mncs_registered_without_changing_live_authority():
     assert all(x["estimated_active_minutes"] <= 24 for x in backlog["tranches"])
     assert backlog["implementation_authority"] is False
 
-    assert index["current"]["work_item_id"] == "ARI-16"
-    assert index["current"]["status"] == "selected_not_started"
-    assert index["current"]["implementation_authority"] is False
-    assert index["current"]["implementation_branch"] is None
-    assert registry["active_planning_work"]["work_item"] == "ARI-16"
-    assert registry["active_planning_work"]["implementation_authority"] is False
+    assert index["current"]["work_item_id"] == active["work_item_id"]
+    assert index["current"]["status"] == active["status"]
+    assert index["current"]["implementation_authority"] == active["implementation_authority"]
+    assert index["current"]["implementation_branch"] == active["implementation_branch"]
+    assert registry["active_planning_work"]["work_item"] == active["work_item_id"]
+    assert registry["active_planning_work"]["state"] == active["status"]
+    assert registry["active_planning_work"]["implementation_authority"] == active["implementation_authority"]
 
 
 def test_mncs_placement_and_progressive_resolution_contract():
