@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.3.0",
+  "schema_version": "1.4.0",
   "status": "CURRENT",
   "profile_id": "MV-EXECUTION-PROFILE-001",
   "authority": "Canonical machine-readable execution service objective and bounded-tranche timing policy.",
@@ -27,8 +27,31 @@
     "interruption_rule": "If execution is interrupted, persist/resume the same cycle_id and monotonic envelope state. Conversation change, context compaction, or recovery does not reset elapsed work, phase, or cycle identity.",
     "anti_spoof_rule": "The executor may not reduce target_active_minutes_per_unit or closeout_switch_active_minute inside ephemeral termination state. The termination preflight rejects timing values that do not match this profile."
   },
+  "execution_reconciliation": {
+    "terminal_gate_required": true,
+    "reconcile_all_invariants_in_one_pass": true,
+    "scope": "Every execution-mode completed_verified terminal attempt after the execution envelope itself is terminal.",
+    "desired_state_rule": "The terminal reconciler compares observed execution state to desired_state=terminal_verified. A completed sub-operation or artifact is not desired-state convergence.",
+    "operation_identity_rule": "Every logical operation has one durable operation_id and one idempotency_key. Retries increment attempts on the same operation record; duplicate operation or idempotency identities are invalid rather than new progress.",
+    "side_effect_rule": "Externally visible effects have durable effect_id/idempotency_key records and must be verified or compensated before terminal response. Applied-but-unverified effects remain nonterminal.",
+    "liveness_rule": "Terminal reconciliation requires at least one reconciliation pass and zero consecutive no-progress passes. No-progress is surfaced as an unmet invariant instead of being hidden by narration or repeated reruns.",
+    "independent_evidence_rule": "At least one passing verification record must be independent of the executor's completion assertion and bound to the active cycle and trace.",
+    "resume_identity_rule": "Interrupted execution increments resume_generation but resumed_from_cycle_id must equal the active cycle_id. Recovery may not silently create a new execution identity.",
+    "trace_rule": "Operations, side effects and verification evidence share one trace_id so causal history can be reconstructed across tools, retries, interruption and closeout.",
+    "digest_rule": "The terminal reconciliation bundle carries a SHA-256 digest over canonical JSON excluding the digest field. Evidence/state mutation after reconciliation invalidates terminal proof.",
+    "one_pass_rule": "The reconciler returns the complete set of unmet terminal invariants in one pass so repairs are batched before another terminal attempt; one-failure-per-Continue discovery is forbidden.",
+    "research_basis": [
+      "Anthropic long-running agent harnesses externalize progress state instead of relying on model memory",
+      "Temporal durable execution replays from persisted history and requires idempotent side-effect handling",
+      "Kubernetes controllers repeatedly reconcile observed state toward declared desired state",
+      "AWS idempotent retry guidance and transactional outbox patterns separate retry identity from effect identity",
+      "SRE readiness and postmortem practice requires evidence-backed operational acceptance",
+      "state-machine and fault-injection testing exercise transition sequences and interruption recovery",
+      "OpenTelemetry trace-context patterns preserve causal identity across process and tool boundaries"
+    ]
+  },
   "continue_semantics": {
-    "ordinary_bare_continue": "Execute the selected bounded unit through validation, merge, completed_verified closeout and strict successor selection unless a genuine blocker prevents completion.",
+    "ordinary_bare_continue": "Execute the selected bounded unit through validation, merge, completed_verified closeout, terminal reconciliation and strict successor selection unless a genuine blocker prevents completion.",
     "second_continue_without_genuine_blocker": "execution_incident"
   },
   "execution_hardening": {
@@ -43,7 +66,7 @@
     "closeout_precompute_rule": "During current-head validation, precompute all closeout/successor projections that do not depend on final evidence. Leave validated head, run, deterministic receipt and merge SHA empty until observed.",
     "terminal_outcome_fields": ["owner_continue_turns", "single_continue_achieved", "execution_incident", "genuine_blocker"],
     "terminal_outcome_rule": "For governed execution units completed after MV-CONT-010, owner_continue_turns=1 requires single_continue_achieved=true with execution_incident=null and genuine_blocker=null. More than one owner Continue requires single_continue_achieved=false and exactly one terminal reason: a structured execution_incident when execution stopped without a genuine blocker, or a structured genuine_blocker when an external/environment constraint forced the additional owner turn. The two reasons are mutually exclusive.",
-    "final_response_rule": "Execution mode may emit a terminal final response only after a fresh termination preflight returns ALLOW_FINAL_RESPONSE. Open PR, active current-head validation, merged-with-closeout-pending, or a nonterminal execution envelope is independently nonterminal even if a pending-step list was accidentally incomplete."
+    "final_response_rule": "Execution mode may emit a terminal final response only after a fresh termination preflight returns ALLOW_FINAL_RESPONSE. Open PR, active current-head validation, merged-with-closeout-pending, a nonterminal execution envelope, or unreconciled execution identity/effects/evidence are independently nonterminal even if a pending-step list was accidentally incomplete."
   },
   "context": {
     "repository_first": true,
