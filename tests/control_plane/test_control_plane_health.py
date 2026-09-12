@@ -121,6 +121,17 @@ class TrancheExecutionFastPathGovernanceTests(_legacy.unittest.TestCase):
         fabricated = {**aioc_only, "application_pr": 999, "application_merge": "d007dc980c63a7beab4ab9a4ddbc67525f8d7003"}
         self.assertFalse(_maintenance_proof_has_required_shape(fabricated, seen_work_items=set()))
 
+    def test_lane_maintenance_projection_matches_live_pointer(self) -> None:
+        pointer = _legacy._load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
+        lanes = _legacy._load_json("governance/ai/runtime/PRODUCT_EXECUTION_LANES.json")
+        maintenance = lanes["maintenance_mode"]
+        self.assertNotIn("exclusive_control_plane_maintenance", pointer)
+        self.assertFalse(maintenance["active"])
+        self.assertIsNone(maintenance["work_item"])
+        self.assertFalse(maintenance["feature_starts_blocked"])
+        self.assertEqual(lanes["active_product_attempts"], [])
+        self.assertFalse(lanes["legacy_primary_selection"]["implementation_authority"])
+
     @staticmethod
     def _read(path: str) -> str:
         return (_legacy.ROOT / path).read_text(encoding="utf-8")
