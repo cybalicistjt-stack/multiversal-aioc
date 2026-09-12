@@ -54,6 +54,10 @@ class TerminationPreflightTests(_legacy.TerminationPreflightTests):
                     "closeout_complete": True,
                     "fill_exit_reason": "closeout_switch_reached",
                 },
+                "execution_reconciliation": _recon._valid_reconciliation(
+                    cycle_id="TEST-LEGACY-TERMINAL",
+                    trace_id="TRACE-LEGACY-TERMINAL",
+                ),
             }
         )
         result = _legacy.evaluate(state)
