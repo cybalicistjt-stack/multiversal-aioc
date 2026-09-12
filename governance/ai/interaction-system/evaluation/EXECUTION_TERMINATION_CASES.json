@@ -1,99 +1,24 @@
 {
-  "schema_version":"1.1.0",
+  "schema_version":"1.2.0",
   "control_id":"C-EXECUTION-TERMINATION-GATE",
-  "source":"Owner-approved termination cases plus SCL-09 intermediate-return incident hardening.",
+  "source":"Owner-approved termination cases plus SCL-09 intermediate-return and MV-CONT-010 explicit execution-state hardening.",
   "privacy":{"raw_conversation_text_published":false,"aggregate_behavior_only":true},
   "cases":[
-    {
-      "case_id":"MV-EVAL-016",
-      "name":"Continue does not stop at a required asynchronous gate",
-      "state":{"command_mode":"execution","work_item_status":"in_progress","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":1,"pending_authorized_steps":["inspect exact-head CI","merge","close out"],"genuine_blocker":null},
-      "expected_decision":"CONTINUE_EXECUTION",
-      "expected_reason_code":"MVTERM-ASYNC-ACTIVE"
-    },
-    {
-      "case_id":"MV-EVAL-017",
-      "name":"Status and continue retains execution authority",
-      "state":{"command_mode":"status_and_continue","work_item_status":"in_progress","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":["finish bounded implementation"],"genuine_blocker":null},
-      "expected_decision":"CONTINUE_EXECUTION",
-      "expected_reason_code":"MVTERM-AUTHORIZED-WORK-PENDING"
-    },
-    {
-      "case_id":"MV-EVAL-018",
-      "name":"Open integration path is not a stopping boundary",
-      "state":{"command_mode":"execution","work_item_status":"ready_for_review","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":["merge pull request","record completed_verified evidence"],"genuine_blocker":null},
-      "expected_decision":"CONTINUE_EXECUTION",
-      "expected_reason_code":"MVTERM-AUTHORIZED-WORK-PENDING"
-    },
-    {
-      "case_id":"MV-EVAL-019",
-      "name":"Completed work still selects its strict successor",
-      "state":{"command_mode":"execution","work_item_status":"completed_verified","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":true,"active_async_operations":0,"pending_authorized_steps":[],"genuine_blocker":null},
-      "expected_decision":"CONTINUE_EXECUTION",
-      "expected_reason_code":"MVTERM-SUCCESSOR-PENDING"
-    },
-    {
-      "case_id":"MV-EVAL-020",
-      "name":"Keep-going mode survives an intermediate completed tranche",
-      "state":{"command_mode":"keep_going","work_item_status":"completed_verified","successor_selection_required":false,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":[],"genuine_blocker":null},
-      "expected_decision":"CONTINUE_EXECUTION",
-      "expected_reason_code":"MVTERM-BOUNDARY-PENDING"
-    },
-    {
-      "case_id":"MV-EVAL-021",
-      "name":"Completed verified boundary permits final response",
-      "state":{"command_mode":"execution","work_item_status":"completed_verified","successor_selection_required":true,"successor_selected":true,"requested_boundary_completed":true,"active_async_operations":0,"pending_authorized_steps":[],"genuine_blocker":null},
-      "expected_decision":"ALLOW_FINAL_RESPONSE",
-      "expected_reason_code":"MVTERM-COMPLETED-VERIFIED"
-    },
-    {
-      "case_id":"MV-EVAL-022",
-      "name":"Verified all-progress blocker permits truthful handoff",
-      "state":{"command_mode":"execution","work_item_status":"blocked_environment","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":[],"genuine_blocker":{"class":"environment_unavailable","evidence":["required physical execution surface is unavailable"],"recovery_attempted":true,"blocks_all_authorized_progress":true}},
-      "expected_decision":"ALLOW_FINAL_RESPONSE",
-      "expected_reason_code":"MVTERM-GENUINE-BLOCKER"
-    },
-    {
-      "case_id":"MV-EVAL-023",
-      "name":"Unproven blocker does not terminate execution",
-      "state":{"command_mode":"execution","work_item_status":"blocked_environment","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":["inspect runner state"],"genuine_blocker":{"class":"environment_unavailable","evidence":[],"recovery_attempted":false,"blocks_all_authorized_progress":false}},
-      "expected_decision":"CONTINUE_EXECUTION",
-      "expected_reason_code":"MVTERM-BLOCKER-EVIDENCE-INSUFFICIENT"
-    },
-    {
-      "case_id":"MV-EVAL-024",
-      "name":"Get-ready preparation ends without starting implementation",
-      "state":{"command_mode":"get_ready","work_item_status":"selected_not_started","successor_selection_required":false,"successor_selected":false,"requested_boundary_completed":true,"active_async_operations":0,"pending_authorized_steps":[],"genuine_blocker":null},
-      "expected_decision":"ALLOW_FINAL_RESPONSE",
-      "expected_reason_code":"MVTERM-EXPLICIT-NONEXECUTION"
-    },
-    {
-      "case_id":"MV-EVAL-025",
-      "name":"Explicit analysis-only triage may return findings",
-      "state":{"command_mode":"analysis_only","work_item_status":"in_progress","successor_selection_required":false,"successor_selected":false,"requested_boundary_completed":true,"active_async_operations":0,"pending_authorized_steps":[],"genuine_blocker":null},
-      "expected_decision":"ALLOW_FINAL_RESPONSE",
-      "expected_reason_code":"MVTERM-EXPLICIT-NONEXECUTION"
-    },
-    {
-      "case_id":"MV-EVAL-026",
-      "name":"Verified platform usage ceiling preserves pending closeout in a truthful handoff",
-      "state":{"command_mode":"execution","work_item_status":"blocked_environment","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":["record completed_verified evidence","select the strict successor"],"genuine_blocker":{"class":"environment_unavailable","evidence":["execution platform reported that its usage ceiling was reached"],"recovery_attempted":true,"blocks_all_authorized_progress":true}},
-      "expected_decision":"ALLOW_FINAL_RESPONSE",
-      "expected_reason_code":"MVTERM-GENUINE-BLOCKER"
-    },
-    {
-      "case_id":"MV-EVAL-027",
-      "name":"Application merge with partially assembled closeout is still nonterminal",
-      "state":{"command_mode":"execution","work_item_status":"in_progress","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":["finish AIOC closeout assembly","validate closeout","merge closeout","select strict successor"],"genuine_blocker":null},
-      "expected_decision":"CONTINUE_EXECUTION",
-      "expected_reason_code":"MVTERM-AUTHORIZED-WORK-PENDING"
-    },
-    {
-      "case_id":"MV-EVAL-028",
-      "name":"Self-imposed response or tool budget pressure cannot masquerade as environment blocker",
-      "state":{"command_mode":"execution","work_item_status":"blocked_environment","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":["finish closeout","select strict successor"],"genuine_blocker":{"class":"environment_unavailable","evidence":["assistant response budget and tool execution cut off while repository tools remain callable"],"recovery_attempted":true,"blocks_all_authorized_progress":true}},
-      "expected_decision":"CONTINUE_EXECUTION",
-      "expected_reason_code":"MVTERM-SELF-IMPOSED-PRESSURE"
-    }
+    {"case_id":"MV-EVAL-016","name":"Continue does not stop at a required asynchronous gate","state":{"command_mode":"execution","work_item_status":"in_progress","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":1,"pending_authorized_steps":["inspect exact-head CI","merge","close out"],"genuine_blocker":null},"expected_decision":"CONTINUE_EXECUTION","expected_reason_code":"MVTERM-ASYNC-ACTIVE"},
+    {"case_id":"MV-EVAL-017","name":"Status and continue retains execution authority","state":{"command_mode":"status_and_continue","work_item_status":"in_progress","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":["finish bounded implementation"],"genuine_blocker":null},"expected_decision":"CONTINUE_EXECUTION","expected_reason_code":"MVTERM-AUTHORIZED-WORK-PENDING"},
+    {"case_id":"MV-EVAL-018","name":"Open integration path is not a stopping boundary","state":{"command_mode":"execution","work_item_status":"ready_for_review","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":["merge pull request","record completed_verified evidence"],"genuine_blocker":null},"expected_decision":"CONTINUE_EXECUTION","expected_reason_code":"MVTERM-AUTHORIZED-WORK-PENDING"},
+    {"case_id":"MV-EVAL-019","name":"Completed work still selects its strict successor","state":{"command_mode":"execution","work_item_status":"completed_verified","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":true,"active_async_operations":0,"pending_authorized_steps":[],"genuine_blocker":null},"expected_decision":"CONTINUE_EXECUTION","expected_reason_code":"MVTERM-SUCCESSOR-PENDING"},
+    {"case_id":"MV-EVAL-020","name":"Keep-going mode survives an intermediate completed tranche","state":{"command_mode":"keep_going","work_item_status":"completed_verified","successor_selection_required":false,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":[],"genuine_blocker":null},"expected_decision":"CONTINUE_EXECUTION","expected_reason_code":"MVTERM-BOUNDARY-PENDING"},
+    {"case_id":"MV-EVAL-021","name":"Completed verified boundary permits final response","state":{"command_mode":"execution","work_item_status":"completed_verified","successor_selection_required":true,"successor_selected":true,"requested_boundary_completed":true,"active_async_operations":0,"pending_authorized_steps":[],"genuine_blocker":null},"expected_decision":"ALLOW_FINAL_RESPONSE","expected_reason_code":"MVTERM-COMPLETED-VERIFIED"},
+    {"case_id":"MV-EVAL-022","name":"Verified all-progress blocker permits truthful handoff","state":{"command_mode":"execution","work_item_status":"blocked_environment","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":[],"genuine_blocker":{"class":"environment_unavailable","evidence":["required physical execution surface is unavailable"],"recovery_attempted":true,"blocks_all_authorized_progress":true}},"expected_decision":"ALLOW_FINAL_RESPONSE","expected_reason_code":"MVTERM-GENUINE-BLOCKER"},
+    {"case_id":"MV-EVAL-023","name":"Unproven blocker does not terminate execution","state":{"command_mode":"execution","work_item_status":"blocked_environment","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":["inspect runner state"],"genuine_blocker":{"class":"environment_unavailable","evidence":[],"recovery_attempted":false,"blocks_all_authorized_progress":false}},"expected_decision":"CONTINUE_EXECUTION","expected_reason_code":"MVTERM-BLOCKER-EVIDENCE-INSUFFICIENT"},
+    {"case_id":"MV-EVAL-024","name":"Get-ready preparation ends without starting implementation","state":{"command_mode":"get_ready","work_item_status":"selected_not_started","successor_selection_required":false,"successor_selected":false,"requested_boundary_completed":true,"active_async_operations":0,"pending_authorized_steps":[],"genuine_blocker":null},"expected_decision":"ALLOW_FINAL_RESPONSE","expected_reason_code":"MVTERM-EXPLICIT-NONEXECUTION"},
+    {"case_id":"MV-EVAL-025","name":"Explicit analysis-only triage may return findings","state":{"command_mode":"analysis_only","work_item_status":"in_progress","successor_selection_required":false,"successor_selected":false,"requested_boundary_completed":true,"active_async_operations":0,"pending_authorized_steps":[],"genuine_blocker":null},"expected_decision":"ALLOW_FINAL_RESPONSE","expected_reason_code":"MVTERM-EXPLICIT-NONEXECUTION"},
+    {"case_id":"MV-EVAL-026","name":"Verified platform usage ceiling preserves pending closeout in a truthful handoff","state":{"command_mode":"execution","work_item_status":"blocked_environment","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":["record completed_verified evidence","select the strict successor"],"genuine_blocker":{"class":"environment_unavailable","evidence":["execution platform reported that its usage ceiling was reached"],"recovery_attempted":true,"blocks_all_authorized_progress":true}},"expected_decision":"ALLOW_FINAL_RESPONSE","expected_reason_code":"MVTERM-GENUINE-BLOCKER"},
+    {"case_id":"MV-EVAL-027","name":"Application merge with partially assembled closeout is still nonterminal","state":{"command_mode":"execution","work_item_status":"in_progress","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":["finish AIOC closeout assembly","validate closeout","merge closeout","select strict successor"],"genuine_blocker":null},"expected_decision":"CONTINUE_EXECUTION","expected_reason_code":"MVTERM-AUTHORIZED-WORK-PENDING"},
+    {"case_id":"MV-EVAL-028","name":"Self-imposed response or tool budget pressure cannot masquerade as environment blocker","state":{"command_mode":"execution","work_item_status":"blocked_environment","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":["finish closeout","select strict successor"],"genuine_blocker":{"class":"environment_unavailable","evidence":["assistant response budget and tool execution cut off while repository tools remain callable"],"recovery_attempted":true,"blocks_all_authorized_progress":true}},"expected_decision":"CONTINUE_EXECUTION","expected_reason_code":"MVTERM-SELF-IMPOSED-PRESSURE"},
+    {"case_id":"MV-EVAL-029","name":"Open governed PR blocks final response even when pending list was omitted","state":{"command_mode":"execution","work_item_status":"ready_for_review","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":[],"pull_request_state":"open","current_head_validation_state":"passed","merge_closeout_pending":false,"genuine_blocker":null},"expected_decision":"CONTINUE_EXECUTION","expected_reason_code":"MVTERM-PR-OPEN"},
+    {"case_id":"MV-EVAL-030","name":"Current exact-head validation blocks final response independently of async count","state":{"command_mode":"execution","work_item_status":"in_progress","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":[],"pull_request_state":"none","current_head_validation_state":"queued","merge_closeout_pending":false,"genuine_blocker":null},"expected_decision":"CONTINUE_EXECUTION","expected_reason_code":"MVTERM-VALIDATION-ACTIVE"},
+    {"case_id":"MV-EVAL-031","name":"Merged application with closeout pending cannot terminate","state":{"command_mode":"execution","work_item_status":"in_progress","successor_selection_required":true,"successor_selected":false,"requested_boundary_completed":false,"active_async_operations":0,"pending_authorized_steps":[],"pull_request_state":"merged","current_head_validation_state":"passed","merge_closeout_pending":true,"genuine_blocker":null},"expected_decision":"CONTINUE_EXECUTION","expected_reason_code":"MVTERM-CLOSEOUT-PENDING"}
   ]
 }
