@@ -11,7 +11,7 @@ _legacy = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_legacy)
 
 from validate_execution_convergence import ConvergenceError, validate_convergence_control
-from validate_repository_health import REQUIRED_SERVICE_OBJECTIVE, _maintenance_proof_has_required_shape
+from validate_repository_health import REQUIRED_SERVICE_OBJECTIVE, _maintenance_proof_has_required_shape, _validate_product_lane_runtime_projection
 
 TerminationPreflightTests = _legacy.TerminationPreflightTests
 FlatHealthRegressionTests = _legacy.FlatHealthRegressionTests
@@ -120,6 +120,12 @@ class TrancheExecutionFastPathGovernanceTests(_legacy.unittest.TestCase):
         self.assertTrue(_maintenance_proof_has_required_shape(historical, seen_work_items=set()))
         fabricated = {**aioc_only, "application_pr": 999, "application_merge": "d007dc980c63a7beab4ab9a4ddbc67525f8d7003"}
         self.assertFalse(_maintenance_proof_has_required_shape(fabricated, seen_work_items=set()))
+
+    def test_lane_maintenance_projection_matches_live_pointer(self) -> None:
+        pointer = _legacy._load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
+        audit = _legacy.Audit(_legacy.ROOT)
+        _validate_product_lane_runtime_projection(audit, pointer)
+        self.assertEqual(audit.errors, [])
 
     @staticmethod
     def _read(path: str) -> str:
