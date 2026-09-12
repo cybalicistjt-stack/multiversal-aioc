@@ -10,11 +10,19 @@ if _spec is None or _spec.loader is None:
 _legacy = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_legacy)
 
+_HARDENING = Path(__file__).with_name("_execution_hardening_regression.py")
+_hardening_spec = importlib.util.spec_from_file_location("_execution_hardening_regression", _HARDENING)
+if _hardening_spec is None or _hardening_spec.loader is None:
+    raise RuntimeError(f"unable to load execution hardening regression: {_HARDENING}")
+_hardening = importlib.util.module_from_spec(_hardening_spec)
+_hardening_spec.loader.exec_module(_hardening)
+
 from validate_execution_convergence import ConvergenceError, validate_convergence_control
 from validate_repository_health import REQUIRED_SERVICE_OBJECTIVE, _maintenance_proof_has_required_shape
 
 TerminationPreflightTests = _legacy.TerminationPreflightTests
 FlatHealthRegressionTests = _legacy.FlatHealthRegressionTests
+ExecutionHardeningTests = _hardening.ExecutionHardeningTests
 
 
 class FamilyExecutionPreflightTests(_legacy.FamilyExecutionPreflightTests):

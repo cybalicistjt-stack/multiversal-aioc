@@ -33,6 +33,8 @@ SELF_IMPOSED_PRESSURE_MARKERS = {
     "conversation length",
     "tool execution cut off",
 }
+PULL_REQUEST_STATES = {None, "none", "open", "merged", "closed_unmerged"}
+VALIDATION_STATES = {None, "none", "queued", "in_progress", "failed", "passed", "superseded"}
 
 
 class PreflightError(RuntimeError):
@@ -120,6 +122,13 @@ def evaluate(state: dict[str, Any]) -> dict[str, Any]:
             f"{key} must be boolean",
         )
 
+    pull_request_state = state.get("pull_request_state")
+    validation_state = state.get("current_head_validation_state")
+    closeout_pending = state.get("merge_closeout_pending", False)
+    _require(pull_request_state in PULL_REQUEST_STATES, "MVTERM-PR-STATE-INVALID", f"unsupported pull_request_state: {pull_request_state!r}")
+    _require(validation_state in VALIDATION_STATES, "MVTERM-VALIDATION-STATE-INVALID", f"unsupported current_head_validation_state: {validation_state!r}")
+    _require(isinstance(closeout_pending, bool), "MVTERM-CLOSEOUT-STATE-INVALID", "merge_closeout_pending must be boolean")
+
     if mode in NON_EXECUTION_MODES:
         return _decision(
             "ALLOW_FINAL_RESPONSE",
@@ -127,6 +136,24 @@ def evaluate(state: dict[str, Any]) -> dict[str, Any]:
             f"owner selected explicit non-execution mode {mode}",
         )
 
+    if pull_request_state == "open":
+        return _decision(
+            "CONTINUE_EXECUTION",
+            "MVTERM-PR-OPEN",
+            "the current governed pull request remains open and execution authority has not reached a terminal boundary",
+        )
+    if validation_state in {"queued", "in_progress"}:
+        return _decision(
+            "CONTINUE_EXECUTION",
+            "MVTERM-VALIDATION-ACTIVE",
+            f"current exact-head validation remains {validation_state}",
+        )
+    if pull_request_state == "merged" and closeout_pending:
+        return _decision(
+            "CONTINUE_EXECUTION",
+            "MVTERM-CLOSEOUT-PENDING",
+            "merge succeeded but canonical closeout or strict-successor selection remains pending",
+        )
     if active_async:
         return _decision(
             "CONTINUE_EXECUTION",
@@ -206,7 +233,7 @@ def evaluate(state: dict[str, Any]) -> dict[str, Any]:
 def self_test(root: Path) -> dict[str, Any]:
     contract = _load_json(root / CONTRACT_PATH)
     _require(
-        contract.get("schema_version") == "1.3.0",
+        contract.get("schema_version") == "1.4.0",
         "MVTERM-CONTRACT-SCHEMA",
         "termination contract schema mismatch",
     )
@@ -218,9 +245,9 @@ def self_test(root: Path) -> dict[str, Any]:
     cases = _load_json(root / CASES_PATH)
     rows = cases.get("cases")
     _require(
-        isinstance(rows, list) and len(rows) >= 10,
+        isinstance(rows, list) and len(rows) >= 16,
         "MVTERM-CASES-MISSING",
-        "termination preflight requires at least ten regression cases",
+        "termination preflight requires at least sixteen regression cases",
     )
     seen: set[str] = set()
     for row in rows:
