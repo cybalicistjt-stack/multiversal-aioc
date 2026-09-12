@@ -2,12 +2,12 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 6.5.0
+**Version:** 6.6.0
 **Status:** ACTIVE CANDIDATE — CRS COMPLETION PENDING  
 **Owner and final authority:** John Brandon Turner  
 **Governance repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Application repository:** `cybalicistjt-stack/Multiversal-app`  
-**Last updated:** 2026-09-11
+**Last updated:** 2026-09-12
 
 ## Purpose
 
@@ -21,6 +21,7 @@ Read and obey `governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md` and
 
 Read the policies named by `CURRENT_WORK_POINTER.json` plus all CURRENT operating policies in the authority registry. The stable set includes:
 
+- `governance/ai/runtime/EXECUTION_PROFILE.json`
 - `governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md`
 - `governance/ai/MULTIVERSAL_COMPLETION_CLAIM_INTEGRITY_POLICY.md`
 - `governance/ai/MULTIVERSAL_SELF_HOSTED_FINAL_VALIDATION_POLICY.md`
@@ -37,16 +38,16 @@ Perform this sequence before explaining, planning, or claiming current project s
 2. Read this bootstrap from AIOC `main`.
 3. Read `governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json`.
 4. Read `governance/ai/runtime/CURRENT_WORK_POINTER.json`.
-5. Read the current operating policies.
-6. Read the checkpoint named by `primary_attempt_id` and inspect its branch/PR/commit evidence.
-7. If the active attempt has implementation authority, recover its `convergence_control` counters, failure classification, diagnostic hypotheses, and retry basis. A new conversation does not reset them.
-8. Compare pointer/checkpoint with live GitHub state. A closed PR, missing branch, superseded attempt, contradictory head, or post-merge stale pointer is a repository-health defect; repair it before unrelated feature work.
+5. Read the current execution profile and operating policies.
+6. Read the checkpoint named by `primary_attempt_id` and inspect its authorized branch/PR/commit evidence.
+7. If the active attempt has implementation authority, recover its `convergence_control` counters, failure classification, diagnostic hypotheses, retry basis, and exact authorized implementation branch. A new conversation does not reset them.
+8. Compare pointer/checkpoint with live GitHub state. A closed PR, missing branch, alternate branch for the same active work item, duplicate open PR, superseded attempt, contradictory head, or post-merge stale pointer is a repository-health defect; repair it before unrelated feature work.
 9. Read `governance/ai/runtime/ROADMAP_INDEX.json` and only the roadmap/program/supplement paths named by current state. Do not load unrelated historical roadmap sections by default.
 10. Inspect blocking CI/failure evidence only when bound to the active attempt or its required gate. Historical failures are not automatically current blockers.
 11. When repeated owner continuations, repair loops, retry behavior, or validation-scope performance matter, inspect the live execution-convergence scorecard. Do not substitute the historical deterministic interaction pilot for live throughput evidence.
 12. If exact bytes, archives, screenshots, physical devices, generated packages, external credentials, or special hardware are required, inspect the actual available source/execution surface before declaring a blocker.
 13. When a checkout is available, run the current repository continuity/health validation. With connector-only access, verify the equivalent pointer → checkpoint → branch/PR → evidence invariants directly.
-14. Resume the exact unfinished operation. Do not recreate completed work, reset convergence counters, or revive historical authority.
+14. Resume the exact unfinished operation. Do not recreate completed work, reset convergence counters, revive historical authority, or create an alternate branch/PR when the authorized branch/PR already exists.
 
 ## Current-state prohibition
 
@@ -64,6 +65,10 @@ Only `completed_verified` is complete. Started, in-progress, quarantined, blocke
 
 A work item may have only one authoritative active integration path. Superseded PRs must be closed with preservation/supersession evidence; closed PRs cannot be selected current; dormant/special-environment PRs must be explicitly registered non-authoritative; open PR existence or age does not grant authority.
 
+After a governed product start and before creating or mutating an application implementation branch, run the deterministic execution transaction preflight against a fresh snapshot of the exact authorized branch, observed same-work-item branches, and open pull requests. Resume the exact authorized branch or PR when it already exists. `STOP_DUPLICATE_ATTEMPT` is a stop-the-line control-plane incident; do not create an alternate branch or duplicate PR to work around it.
+
+Before product-branch creation or mutation, the started checkpoint, current pointer, active authority registry, runtime lifecycle projection, and compiled roadmap selection must agree on work item, attempt, state and implementation authority; every branch-bearing projection must agree on the exact authorized branch. The executable check is `scripts/execution_transaction_preflight.py`.
+
 ## Workflow and validator lifecycle
 
 Before relying on an old workflow or validator:
@@ -76,6 +81,8 @@ Before relying on an old workflow or validator:
 6. ordinary substantive application/package PRs must select exactly one governed current-tranche Validation Core profile by default rather than automatically invoking completed historical profiles.
 
 Application/package final validation uses exact-head self-hosted Windows/Linux lanes and deterministic cross-platform evidence when applicable. GitHub-hosted compute is not a generic project-wide final requirement.
+
+Validation evidence is bound to its exact candidate head. Once the candidate head changes, evidence from an earlier head is superseded and cannot satisfy merge or closeout. Do not spend another discovery pass proving that stale evidence is stale; compare the evidence head to the current head and continue with only the current-head gate.
 
 ## Source-material and execution-surface rule
 
@@ -96,14 +103,16 @@ For implementation attempts:
 - a second materially related repair requires `diagnostic_mode`, a failure class, a failure signature, and falsifiable root-cause hypotheses before another final rerun;
 - related fixes are batched before rerunning the final gate;
 - two no-progress cycles require an explicit control-plane, environment, or owner blocker, or a diagnostic change to retry basis;
-- a third patch-and-rerun cycle without materially new diagnostic evidence is forbidden.
+- a third patch-and-rerun cycle without materially new diagnostic evidence is forbidden;
+- every newly completed governed execution unit records `owner_continue_turns`, `single_continue_achieved`, and `execution_incident`; a second owner `Continue` without a genuine blocker must be recorded as an execution incident and may not be reported as one-Continue success.
 
 ## Tranche execution fast path
 
-Immediately after bounded recovery, read the current family preflight's `target_active_minutes_per_unit` and `minimum_closeout_reserve_minutes`. Protect the closeout reserve from the beginning of execution. The closeout-switch point is `target_active_minutes_per_unit - minimum_closeout_reserve_minutes`; with the current 24/8 pattern, optional implementation/reconnaissance work must be off the critical path by minute 16. Crossing that point never grants permission to stop; it switches execution to terminal closeout only.
+Immediately after bounded recovery, read the current execution profile plus the family preflight's `target_active_minutes_per_unit` and `minimum_closeout_reserve_minutes`. Protect the closeout reserve from the beginning of execution. The closeout-switch point is `target_active_minutes_per_unit - minimum_closeout_reserve_minutes`; with the current 24/8 pattern, optional implementation/reconnaissance work must be off the critical path by minute 16. Crossing that point never grants permission to stop; it switches execution to terminal closeout only.
 
 The following rules are mandatory in every new conversation and every resumed `Continue`:
 
+- **Before any product branch or PR mutation, run the execution transaction preflight.** Use the checkpoint's exact authorized branch and a fresh branch/open-PR snapshot. Resume the exact branch/PR when present; do not create an alternate attempt.
 - **Do not rediscover an already-loaded tool schema**, connector capability, repository identity, workflow shape, branch convention, or merge method unless a concrete error or authority change invalidates it.
 - Load only the selected tranche and explicitly named dependencies. The existence of unrelated parallel work does not authorize loading or reviewing it. Preserve parallel work by path comparison when a live head actually changes.
 - If `main` moved, compare changed paths first. When there is no overlap, transplant/rebase the bounded prepared change without rereading unrelated DWC/LXG/GCL/CNI/PCA/SAA content.
@@ -112,9 +121,10 @@ The following rules are mandatory in every new conversation and every resumed `C
 - Do not use fixed sleep/poll loops as routine orchestration. Query at meaningful state transitions only.
 - An initial `mergeable: false` from GitHub is not, by itself, a repository conflict when base/head are unchanged. Perform one bounded recomputation check before race diagnosis unless another signal already proves conflict.
 - Re-read canonical `main` only at a named invalidation event or the declared merge/closeout boundary. Repeated unchanged-head checks are not progress.
+- While current-head final validation is running, precompute the closeout and successor projections that do not depend on final evidence. Never fabricate validated-head, validation-run, receipt, or merge evidence; leave those fields unbound until observed.
 - At the closeout-switch point, stop broad scans, successful-log dumps, speculative parallel-work review, schema/tool rediscovery, cosmetic cleanup, repeated polling, and explanatory narration. Spend the reserve only on final evidence binding, application merge, AIOC closeout, exact-head AIOC health, AIOC merge, successor selection, and one post-merge verification.
 
-Required external validation latency is measured separately from assistant/control overhead. Avoidable tool rediscovery, redundant reads, repeated polling, unnecessary full-log retrieval, serial closeout writes where atomic mutation is available, or speculative investigation that causes/materially contributes to a target overrun is a **control-plane efficiency incident**, not normal tranche complexity. Repair the governing process rather than increasing the tranche size to hide the regression.
+Required external validation latency is measured separately from assistant/control overhead. Avoidable tool rediscovery, redundant reads, repeated polling, unnecessary full-log retrieval, duplicate branch/PR creation, serial closeout writes where atomic mutation is available, or speculative investigation that causes/materially contributes to a target overrun is a **control-plane efficiency incident**, not normal tranche complexity. Repair the governing process rather than increasing the tranche size to hide the regression.
 
 These fast-path rules are part of the mandatory bootstrap precisely so they survive conversation boundaries; a new conversation must not fall back to broader reconnaissance merely because prior conversational context is absent.
 
@@ -124,7 +134,7 @@ When John says `Continue`, execute the next verified unfinished implementation t
 
 Unless a genuine owner-only, unavailable-environment, unavailable-source, safety, or irrecoverable external blocker prevents completion, `Continue` means carry the tranche through governed start if needed, implementation, focused repair, exact-head validation, required merge, `completed_verified` closeout, and canonical strict-successor selection. Do not stop merely because validation is queued/in progress, a PR is ready, closeout is pending, or the successor could be selected later. Work through normal validation latency and finish the bounded tranche before reporting.
 
-A repeated `Continue` on the same ordinary tranche is an execution-cost signal. Do not consume another owner turn merely to rediscover the same state or repeat unchanged validation. Classify failure, diagnose by the second related repair, and block explicitly rather than entering an unbounded retry loop.
+A repeated `Continue` on the same ordinary tranche is an execution-cost signal and, absent a genuine blocker, an execution incident. Do not consume another owner turn merely to rediscover the same state or repeat unchanged validation. Classify failure, diagnose by the second related repair, and block explicitly rather than entering an unbounded retry loop.
 
 If a genuine blocker survives reasonable recovery, preserve the exact recovery point and report it truthfully.
 
@@ -143,7 +153,7 @@ Before a final response from an execution turn, create an ephemeral state object
 
 `python scripts/execution_termination_preflight.py --state <temporary-state.json>`
 
-The state must reflect current evidence for work status, required successor selection, the owner-requested boundary, active asynchronous operations, pending authorized steps, and any genuine blocker. Continue using tools when the result is `CONTINUE_EXECUTION`. Finalize only when it returns `ALLOW_FINAL_RESPONSE` for `completed_verified`, a sufficiently evidenced all-progress blocker, or an explicit non-execution mode.
+The state must reflect current evidence for work status, required successor selection, the owner-requested boundary, active asynchronous operations, pending authorized steps, any genuine blocker, and—when known—the governed pull-request state, current exact-head validation state, and whether merge closeout remains pending. Open PR, queued/running exact-head validation, or merged-with-closeout-pending independently forces `CONTINUE_EXECUTION`, even if a pending-step list was accidentally incomplete. Continue using tools when the result is `CONTINUE_EXECUTION`. Finalize only when it returns `ALLOW_FINAL_RESPONSE` for `completed_verified`, a sufficiently evidenced all-progress blocker, or an explicit non-execution mode.
 
 The temporary state is not committed. The checkpoint remains milestone-only. Missing, failed, or stale preflight evidence never grants permission to stop.
 
@@ -153,7 +163,7 @@ Evidence must exist and be inspected before claiming success. Artifact existence
 
 ## Stop-the-line repository-health rule
 
-If stale governance, a retired validator, unregistered workflow, superseded PR, contradictory runtime state, repeated no-progress cycle, or validation-scope fan-out can materially alter work selection or validation outcome, repair or explicitly quarantine the common defect before unrelated feature completion. Do not repeatedly patch the same infrastructure defect inside individual feature tranches.
+If stale governance, a retired validator, unregistered workflow, superseded PR, duplicate/alternate active integration path, contradictory runtime state, repeated no-progress cycle, or validation-scope fan-out can materially alter work selection or validation outcome, repair or explicitly quarantine the common defect before unrelated feature completion. Do not repeatedly patch the same infrastructure defect inside individual feature tranches.
 
 ## Reporting
 
