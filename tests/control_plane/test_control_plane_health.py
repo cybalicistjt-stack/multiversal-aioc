@@ -27,7 +27,33 @@ _envelope_spec.loader.exec_module(_envelope)
 from validate_execution_convergence import ConvergenceError, validate_convergence_control
 from validate_repository_health import REQUIRED_SERVICE_OBJECTIVE, _maintenance_proof_has_required_shape
 
-TerminationPreflightTests = _legacy.TerminationPreflightTests
+
+class TerminationPreflightTests(_legacy.TerminationPreflightTests):
+    def test_completed_verified_with_successor_is_terminal(self) -> None:
+        state = _legacy._base_state()
+        state.update(
+            {
+                "work_item_status": "completed_verified",
+                "successor_selected": True,
+                "requested_boundary_completed": True,
+                "execution_envelope": {
+                    "cycle_id": "TEST-LEGACY-TERMINAL",
+                    "phase": "closed",
+                    "elapsed_active_minutes": 24,
+                    "closeout_switch_active_minute": 16,
+                    "target_cycle_minutes": 24,
+                    "safe_same_lane_work_available": False,
+                    "dynamic_fill_attempted": True,
+                    "closeout_complete": True,
+                    "fill_exit_reason": "closeout_switch_reached",
+                },
+            }
+        )
+        result = _legacy.evaluate(state)
+        self.assertEqual("ALLOW_FINAL_RESPONSE", result["decision"])
+        self.assertEqual("MVTERM-COMPLETED-VERIFIED", result["reason_code"])
+
+
 FlatHealthRegressionTests = _legacy.FlatHealthRegressionTests
 ExecutionHardeningTests = _hardening.ExecutionHardeningTests
 ExecutionEnvelopeGateTests = _envelope.ExecutionEnvelopeGateTests
