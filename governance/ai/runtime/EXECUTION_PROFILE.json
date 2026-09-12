@@ -29,8 +29,8 @@
     ],
     "validation_evidence_rule": "Only evidence whose validated head equals the current candidate head counts toward merge or closeout; superseded heads are non-counting without needing another broad discovery pass.",
     "closeout_precompute_rule": "During current-head validation, precompute all closeout/successor projections that do not depend on final evidence. Leave validated head, run, deterministic receipt and merge SHA empty until observed.",
-    "terminal_outcome_fields": ["owner_continue_turns", "single_continue_achieved", "execution_incident"],
-    "terminal_outcome_rule": "For governed execution units completed after MV-CONT-010, owner_continue_turns=1 requires single_continue_achieved=true and execution_incident=null. More than one owner Continue requires single_continue_achieved=false and a structured execution_incident.",
+    "terminal_outcome_fields": ["owner_continue_turns", "single_continue_achieved", "execution_incident", "genuine_blocker"],
+    "terminal_outcome_rule": "For governed execution units completed after MV-CONT-010, owner_continue_turns=1 requires single_continue_achieved=true with execution_incident=null and genuine_blocker=null. More than one owner Continue requires single_continue_achieved=false and exactly one terminal reason: a structured execution_incident when execution stopped without a genuine blocker, or a structured genuine_blocker when an external/environment constraint forced the additional owner turn. The two reasons are mutually exclusive.",
     "final_response_rule": "Execution mode may emit a terminal final response only after a fresh termination preflight returns ALLOW_FINAL_RESPONSE. Open PR, active current-head validation, or merged-with-closeout-pending is independently nonterminal even if a pending-step list was accidentally incomplete."
   },
   "context": {

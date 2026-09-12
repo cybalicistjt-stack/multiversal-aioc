@@ -160,21 +160,39 @@ def prepare_closeout(snapshot: Mapping[str, Any]) -> dict[str, Any]:
     return {"decision": "READY_TO_CLOSE", "successor": snapshot.get("strict_successor"), "evidence_placeholders": []}
 
 
+def _structured_terminal_reason(value: Any, *, require_reason: bool = False) -> bool:
+    if not isinstance(value, Mapping) or not value.get("type"):
+        return False
+    return not require_reason or bool(value.get("reason"))
+
+
 def validate_execution_outcome(outcome: Mapping[str, Any]) -> dict[str, Any]:
     turns = outcome.get("owner_continue_turns")
     achieved = outcome.get("single_continue_achieved")
     incident = outcome.get("execution_incident")
+    blocker = outcome.get("genuine_blocker")
     if not isinstance(turns, int) or isinstance(turns, bool) or turns < 1:
         raise TransactionPreflightError("owner_continue_turns must be a positive integer")
     if not isinstance(achieved, bool):
         raise TransactionPreflightError("single_continue_achieved must be boolean")
     if turns == 1:
-        if not achieved or incident is not None:
-            raise TransactionPreflightError("single-Continue outcome must be achieved=true with no incident")
+        if not achieved or incident is not None or blocker is not None:
+            raise TransactionPreflightError("single-Continue outcome must be achieved=true with no incident or blocker")
+        outcome_class = "single_continue"
     else:
-        if achieved or not isinstance(incident, Mapping) or not incident.get("type"):
-            raise TransactionPreflightError("second-or-later Continue must be recorded as an execution incident")
-    return {"status": "PASS", "owner_continue_turns": turns, "single_continue_achieved": achieved}
+        if achieved:
+            raise TransactionPreflightError("second-or-later Continue cannot be reported as single-Continue success")
+        has_incident = _structured_terminal_reason(incident)
+        has_blocker = _structured_terminal_reason(blocker, require_reason=True)
+        if has_incident == has_blocker:
+            raise TransactionPreflightError("second-or-later Continue requires exactly one structured execution_incident or genuine_blocker")
+        outcome_class = "execution_incident" if has_incident else "genuine_blocker_exception"
+    return {
+        "status": "PASS",
+        "owner_continue_turns": turns,
+        "single_continue_achieved": achieved,
+        "outcome_class": outcome_class,
+    }
 
 
 def _load(path: str) -> dict[str, Any]:

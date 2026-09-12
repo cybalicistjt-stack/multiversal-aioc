@@ -145,11 +145,52 @@ class ExecutionHardeningTests(unittest.TestCase):
         })
         self.assertEqual(ready["decision"], "READY_TO_CLOSE")
 
-    def test_one_continue_outcome_is_machine_visible_and_second_continue_is_incident(self) -> None:
-        validate_execution_outcome({"owner_continue_turns": 1, "single_continue_achieved": True, "execution_incident": None})
-        validate_execution_outcome({"owner_continue_turns": 2, "single_continue_achieved": False, "execution_incident": {"type": "second_continue_required", "reason": "assistant returned before terminal boundary"}})
+    def test_one_continue_outcome_and_second_continue_terminal_reasons_are_machine_visible(self) -> None:
+        one_turn = validate_execution_outcome({
+            "owner_continue_turns": 1,
+            "single_continue_achieved": True,
+            "execution_incident": None,
+            "genuine_blocker": None,
+        })
+        self.assertEqual(one_turn["outcome_class"], "single_continue")
+
+        incident = validate_execution_outcome({
+            "owner_continue_turns": 2,
+            "single_continue_achieved": False,
+            "execution_incident": {"type": "second_continue_required", "reason": "assistant returned before terminal boundary"},
+            "genuine_blocker": None,
+        })
+        self.assertEqual(incident["outcome_class"], "execution_incident")
+
+        blocker = validate_execution_outcome({
+            "owner_continue_turns": 2,
+            "single_continue_achieved": False,
+            "execution_incident": None,
+            "genuine_blocker": {"type": "platform_tool_interaction_ceiling", "reason": "platform forced the prior turn to terminate before closeout"},
+        })
+        self.assertEqual(blocker["outcome_class"], "genuine_blocker_exception")
+
         with self.assertRaises(TransactionPreflightError):
-            validate_execution_outcome({"owner_continue_turns": 2, "single_continue_achieved": True, "execution_incident": None})
+            validate_execution_outcome({
+                "owner_continue_turns": 2,
+                "single_continue_achieved": False,
+                "execution_incident": None,
+                "genuine_blocker": None,
+            })
+        with self.assertRaises(TransactionPreflightError):
+            validate_execution_outcome({
+                "owner_continue_turns": 2,
+                "single_continue_achieved": False,
+                "execution_incident": {"type": "second_continue_required"},
+                "genuine_blocker": {"type": "platform_tool_interaction_ceiling", "reason": "forced termination"},
+            })
+        with self.assertRaises(TransactionPreflightError):
+            validate_execution_outcome({
+                "owner_continue_turns": 2,
+                "single_continue_achieved": True,
+                "execution_incident": None,
+                "genuine_blocker": {"type": "platform_tool_interaction_ceiling", "reason": "forced termination"},
+            })
 
     def test_termination_preflight_cannot_forget_open_pr_or_current_ci_or_closeout(self) -> None:
         base = {
@@ -186,7 +227,8 @@ class ExecutionHardeningTests(unittest.TestCase):
         hardening = profile["execution_hardening"]
         self.assertEqual(hardening["transaction_preflight"], "scripts/execution_transaction_preflight.py")
         self.assertEqual(hardening["termination_preflight"], "scripts/execution_termination_preflight.py")
-        self.assertEqual(hardening["terminal_outcome_fields"], ["owner_continue_turns", "single_continue_achieved", "execution_incident"])
+        self.assertEqual(hardening["terminal_outcome_fields"], ["owner_continue_turns", "single_continue_achieved", "execution_incident", "genuine_blocker"])
+        self.assertIn("genuine blocker", hardening["terminal_outcome_rule"])
         self.assertIn("superseded heads are non-counting", hardening["validation_evidence_rule"])
 
 
