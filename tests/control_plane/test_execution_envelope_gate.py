@@ -1,0 +1,128 @@
+from __future__ import annotations
+
+import sys
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+SCRIPTS = ROOT / "scripts"
+if str(SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS))
+
+from execution_termination_preflight import evaluate  # noqa: E402
+
+
+class ExecutionEnvelopeGateTests(unittest.TestCase):
+    def _completed_state(self) -> dict:
+        return {
+            "command_mode": "execution",
+            "work_item_status": "completed_verified",
+            "successor_selection_required": False,
+            "successor_selected": False,
+            "requested_boundary_completed": True,
+            "active_async_operations": 0,
+            "pending_authorized_steps": [],
+            "pull_request_state": "none",
+            "current_head_validation_state": "passed",
+            "merge_closeout_pending": False,
+            "genuine_blocker": None,
+        }
+
+    def test_completed_logical_operation_cannot_end_cycle_while_fill_budget_and_safe_work_remain(self) -> None:
+        state = {
+            **self._completed_state(),
+            "execution_envelope": {
+                "cycle_id": "HAI-CYCLE-004",
+                "phase": "fill",
+                "elapsed_active_minutes": 5.42,
+                "closeout_switch_active_minute": 16,
+                "target_cycle_minutes": 24,
+                "safe_same_lane_work_available": True,
+                "dynamic_fill_attempted": False,
+                "closeout_complete": False,
+                "fill_exit_reason": None,
+            },
+        }
+        result = evaluate(state)
+        self.assertEqual(result["decision"], "CONTINUE_EXECUTION")
+        self.assertEqual(result["reason_code"], "MVTERM-ENVELOPE-FILL")
+
+    def test_operation_completion_must_dynamic_fill_instead_of_incrementing_cycle(self) -> None:
+        state = {
+            **self._completed_state(),
+            "execution_envelope": {
+                "cycle_id": "HAI-CYCLE-004",
+                "phase": "fill",
+                "elapsed_active_minutes": 9.22,
+                "closeout_switch_active_minute": 16,
+                "target_cycle_minutes": 24,
+                "safe_same_lane_work_available": True,
+                "dynamic_fill_attempted": True,
+                "closeout_complete": False,
+                "fill_exit_reason": None,
+            },
+        }
+        result = evaluate(state)
+        self.assertEqual((result["decision"], result["reason_code"]), ("CONTINUE_EXECUTION", "MVTERM-ENVELOPE-FILL"))
+
+    def test_closeout_may_start_at_switch_but_final_response_waits_for_shared_closeout(self) -> None:
+        state = {
+            **self._completed_state(),
+            "execution_envelope": {
+                "cycle_id": "HAI-CYCLE-004",
+                "phase": "closeout",
+                "elapsed_active_minutes": 16.1,
+                "closeout_switch_active_minute": 16,
+                "target_cycle_minutes": 24,
+                "safe_same_lane_work_available": True,
+                "dynamic_fill_attempted": True,
+                "closeout_complete": False,
+                "fill_exit_reason": "closeout_switch_reached",
+            },
+        }
+        result = evaluate(state)
+        self.assertEqual((result["decision"], result["reason_code"]), ("CONTINUE_EXECUTION", "MVTERM-ENVELOPE-CLOSEOUT"))
+
+    def test_final_response_allowed_only_after_envelope_closeout(self) -> None:
+        state = {
+            **self._completed_state(),
+            "execution_envelope": {
+                "cycle_id": "HAI-CYCLE-004",
+                "phase": "closed",
+                "elapsed_active_minutes": 23.4,
+                "closeout_switch_active_minute": 16,
+                "target_cycle_minutes": 24,
+                "safe_same_lane_work_available": False,
+                "dynamic_fill_attempted": True,
+                "closeout_complete": True,
+                "fill_exit_reason": "closeout_switch_reached",
+            },
+        }
+        result = evaluate(state)
+        self.assertEqual((result["decision"], result["reason_code"]), ("ALLOW_FINAL_RESPONSE", "MVTERM-COMPLETED-VERIFIED"))
+
+    def test_early_exhaustion_requires_explicit_no_safe_work_evidence(self) -> None:
+        state = {
+            **self._completed_state(),
+            "execution_envelope": {
+                "cycle_id": "HAI-CYCLE-004",
+                "phase": "closed",
+                "elapsed_active_minutes": 11.0,
+                "closeout_switch_active_minute": 16,
+                "target_cycle_minutes": 24,
+                "safe_same_lane_work_available": False,
+                "dynamic_fill_attempted": True,
+                "closeout_complete": True,
+                "fill_exit_reason": "safe_work_exhausted",
+            },
+        }
+        result = evaluate(state)
+        self.assertEqual((result["decision"], result["reason_code"]), ("ALLOW_FINAL_RESPONSE", "MVTERM-COMPLETED-VERIFIED"))
+
+    def test_missing_envelope_blocks_execution_mode_final_response(self) -> None:
+        result = evaluate(self._completed_state())
+        self.assertEqual((result["decision"], result["reason_code"]), ("CONTINUE_EXECUTION", "MVTERM-ENVELOPE-MISSING"))
+
+
+if __name__ == "__main__":
+    unittest.main()
