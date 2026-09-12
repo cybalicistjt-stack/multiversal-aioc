@@ -21,7 +21,10 @@ def load_json(root,rel):
  try:v=json.loads(p.read_text(encoding="utf-8"))
  except (OSError,json.JSONDecodeError) as e:raise ConvergenceError(f"invalid JSON {rel}: {e}") from e
  require(isinstance(v,dict),f"expected object JSON: {rel}");return v
-def validate_convergence_control(control,*,status,context,service_objective,require_current_service_objective=True):
+def current_service_objective():
+ profile=load_json(Path(__file__).resolve().parents[1],PROFILE_PATH);service=profile.get("service_objective");require(isinstance(service,dict),"execution profile service_objective missing");return service
+def validate_convergence_control(control,*,status,context,service_objective=None,require_current_service_objective=True):
+ if service_objective is None:service_objective=current_service_objective()
  required={"owner_continue_count","execution_cycles","repair_cycles","no_progress_cycles","diagnostic_mode","last_failure_signature","last_failure_class","diagnostic_hypotheses","retry_basis","service_objective"};require(required<=set(control),f"{context}: convergence_control missing {sorted(required-set(control))}")
  for k in ("owner_continue_count","execution_cycles","repair_cycles","no_progress_cycles"):require(isinstance(control[k],int) and control[k]>=0,f"{context}: {k} must be a non-negative integer")
  require(isinstance(control["diagnostic_mode"],bool),f"{context}: diagnostic_mode must be boolean");require(isinstance(control["diagnostic_hypotheses"],list),f"{context}: diagnostic_hypotheses must be an array")
