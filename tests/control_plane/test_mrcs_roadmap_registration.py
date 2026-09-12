@@ -20,13 +20,13 @@ def test_mrcs_registered_as_future_interstitial_without_activation():
     planned = {x["program_id"]: x for x in index["planned_programs"]}
     assert planned["MRCS"]["status"] == "owner_approved_planned"
     assert planned["MRCS"]["activation_after"] == "MSAS-21"
-    assert planned["MRCS"]["successor"] == "MERA-01"
+    assert planned["MRCS"]["successor"] == "GPR-01"
     assert planned["MRCS"]["implementation_authority"] is False
     assert planned["MRCS"]["execution_units"] == 21
     assert planned["MSAS"]["successor"] == "MRCS-01"
 
     assert backlog["implementation_authority"] is False
-    assert backlog["successor"] == "MERA-01"
+    assert backlog["successor"] == "GPR-01"
     assert backlog["strict_order"] == [f"MRCS-{i:02d}" for i in range(1, 22)]
     assert all(x["estimated_active_minutes"] <= 24 for x in backlog["tranches"])
 
@@ -42,23 +42,25 @@ def test_mrcs_dependency_placement_and_successors():
     index = j("governance/ai/runtime/ROADMAP_INDEX.json")
     msas = j("governance/application-planning/multiversal-sound-audio-studio/MSAS_PROGRAM_BACKLOG.json")
     mrcs = j("governance/application-planning/multiversal-rules-content-studio/MRCS_PROGRAM_BACKLOG.json")
+    gpr = j("governance/application-planning/gameplay-pattern-runtime/GPR_PROGRAM_BACKLOG.json")
 
-    expected = "MNCS-01..24 → MAS-01..21 → MSAS-01..21 → MRCS-01..21 → MERA-01..24 → MBES-01..24 → SMB-08 → SMB-09"
+    expected = "MNCS-01..24 → MAS-01..21 → MSAS-01..21 → MRCS-01..21 → GPR-01..16 → MERA-01..24 → MBES-01..24 → SMB-08 → SMB-09"
     assert expected in index["effective_forward_order"]
     assert index["mrcs_execution_order"] == [f"MRCS-{i:02d}" for i in range(1, 22)]
     assert msas["successor"] == "MRCS-01"
-    assert mrcs["successor"] == "MERA-01"
+    assert mrcs["successor"] == "GPR-01"
+    assert gpr["activation_after"] == "MRCS-21"
 
-    amendment = t("governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MERA_AMENDMENT_2026-09-11.md")
-    successor = t("governance/application-planning/multiversal-rules-content-studio/MRCS_MERA_SUCCESSOR_AMENDMENT_2026-09-11.md")
-    assert "MRCS-01..21 → MERA-01..24 → MBES-01..24" in amendment
-    assert "MRCS-01..21 → MERA-01..24 → MBES-01..24" in successor
+    amendment = t("governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_GPR_AMENDMENT_2026-09-11.md")
+    successor = t("governance/application-planning/multiversal-rules-content-studio/MRCS_GPR_SUCCESSOR_AMENDMENT_2026-09-11.md")
+    assert "MRCS-01..21 → GPR-01..16 → MERA-01..24 → MBES-01..24" in amendment
+    assert "MRCS-01..21 → GPR-01..16 → MERA-01..24 → MBES-01..24" in successor
 
 
 def test_mrcs_preserves_content_forge_cab_and_owner_boundaries():
     backlog = j("governance/application-planning/multiversal-rules-content-studio/MRCS_PROGRAM_BACKLOG.json")
     boundaries = "\n".join(backlog["boundaries"]).lower()
-    for owner in ("content forge", "cab", "cni", "ari", "action/event", "mcs", "mccs", "mas", "msas", "mera", "mbes"):
+    for owner in ("content forge", "cab", "cni", "ari", "action/event", "mcs", "mccs", "mas", "msas", "gpr", "mera", "mbes"):
         assert owner in boundaries
 
     benchmark = t("governance/application-planning/multiversal-rules-content-studio/MRCS_BENCHMARK_CAPABILITY_MATRIX.md").lower()
