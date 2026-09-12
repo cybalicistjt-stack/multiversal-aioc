@@ -38,9 +38,8 @@ EXPECTED_APP_WORKFLOWS = {
     "validate-current-family.yml",
 }
 REQUIRED_SERVICE_OBJECTIVE = {
-    "ordinary_tranche_single_continue_target_percent": 80,
-    "ordinary_tranche_two_continue_target_percent": 95,
-    "max_execution_cycles_without_genuine_blocker": 2,
+    "ordinary_tranche_single_continue_target_percent": 100,
+    "max_execution_cycles_without_genuine_blocker": 1,
     "unrelated_historical_validation_jobs_target": 0,
     "reruns_without_changed_evidence_target": 0,
     "post_merge_stale_pointer_target": 0,
@@ -945,18 +944,28 @@ def _validate_behavior_and_scorecard(audit: Audit) -> dict[str, Any]:
     scorecard = audit.read_json(SCORECARD_PATH)
     _validate_behavior_scorecard_observations(audit, scorecard)
     targets = scorecard.get("targets", {})
-    expected_targets = {
-        "ordinary_tranche_single_continue_completion_percent_min": 80,
-        "ordinary_tranche_completion_within_two_continues_percent_min": 95,
-        "unrelated_historical_validation_jobs": 0,
-        "reruns_without_changed_evidence": 0,
-        "post_merge_stale_pointer_incidents": 0,
-        "third_patch_rerun_without_new_diagnostic_evidence": 0,
+    expected_zero_targets = {
+        "unrelated_historical_validation_jobs",
+        "reruns_without_changed_evidence",
+        "post_merge_stale_pointer_incidents",
+        "third_patch_rerun_without_new_diagnostic_evidence",
     }
     audit.require(
-        targets == expected_targets,
+        all(targets.get(key) == 0 for key in expected_zero_targets),
         "MVHEALTH-SCORECARD-TARGETS",
-        "live execution-convergence targets drift",
+        "live execution-convergence zero-tolerance targets drift",
+        SCORECARD_PATH,
+    )
+    operating_requirement = scorecard.get("operating_requirement", {})
+    audit.require(
+        operating_requirement.get("ordinary_tranche_single_continue_completion_percent")
+        == 100
+        and operating_requirement.get("max_execution_cycles_without_genuine_blocker")
+        == 1
+        and operating_requirement.get("two_continue_measurement_role")
+        == "diagnostic_only",
+        "MVHEALTH-SCORECARD-OPERATING-REQUIREMENT",
+        "live execution-convergence operating requirement drift",
         SCORECARD_PATH,
     )
     privacy = scorecard.get("privacy", {})
@@ -973,8 +982,15 @@ def _validate_behavior_and_scorecard(audit: Audit) -> dict[str, Any]:
         "live_same_cycle_baseline_percent": scorecard.get("baseline", {}).get(
             "same_cycle_completion_percent"
         ),
-        "single_continue_target_percent": 80,
-        "two_continue_target_percent": 95,
+        "single_continue_target_percent": operating_requirement.get(
+            "ordinary_tranche_single_continue_completion_percent"
+        ),
+        "max_execution_cycles_without_genuine_blocker": operating_requirement.get(
+            "max_execution_cycles_without_genuine_blocker"
+        ),
+        "two_continue_measurement_role": operating_requirement.get(
+            "two_continue_measurement_role"
+        ),
     }
 
 
