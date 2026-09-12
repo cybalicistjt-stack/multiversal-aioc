@@ -1,9 +1,9 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.1.1",
   "program_id": "MERA",
   "program_name": "Multiversal Engineering, Refit & Assembly",
   "status": "owner_approved_planned",
-  "activation_after": "MRCS-21",
+  "activation_after": "GPR-16",
   "successor": "MBES-01",
   "owner": "John Brandon Turner",
   "approved": "2026-09-11",
@@ -37,8 +37,8 @@
     {"id":"MERA-23","name":"Blueprints, Presets, Loadout Roles, Import/Export, Sharing, Provenance & Optional AI Advice","status":"planned","estimated_active_minutes":24},
     {"id":"MERA-24","name":"Golden Cross-Domain Salvage → Engineering → Refit → Operational Proof","status":"planned","estimated_active_minutes":24}
   ],
-  "required_upstream": ["ARI family completed_verified","MIB-18 completed_verified","SMB-01..07 completed_verified","CNI-01..13 completed_verified","PCA-01..16 completed_verified","MCS-01..21 completed_verified","MCCS-01..21 completed_verified","MNCS-01..24 completed_verified","MAS-01..21 completed_verified","MSAS-01..21 completed_verified","MRCS-01..21 completed_verified","LSS-01..10 completed_verified","MIB-12 crafting/repair engine available","MIB-13 economy engine available","MIB-14 vehicle/platform/base foundations available","PPIA-03 Item/Asset experience contract available","PPIA-04 vehicle/mecha/starship experience contract available","APW/D26 Project/time contracts available","DPL/Profession owner contracts available"],
-  "integration_targets": ["LSS","PPIA-03","D17","MIB-12","MIB-13","MIB-14","PPIA-04","F014","APW/D26","DPL","Profession","MRCS","ARI","Item/Inventory/Asset","Vehicle","Mecha","Spacecraft/Starship","Base/Platform","Action/Event","Effect","Condition","Resource","Hazard","World/Environment","MBES","SMB-08","SMB-09"],
+  "required_upstream": ["ARI family completed_verified","MIB-18 completed_verified","SMB-01..07 completed_verified","CNI-01..13 completed_verified","PCA-01..16 completed_verified","MCS-01..21 completed_verified","MCCS-01..21 completed_verified","MNCS-01..24 completed_verified","MAS-01..21 completed_verified","MSAS-01..21 completed_verified","MRCS-01..21 completed_verified","GPR-01..16 completed_verified","LSS-01..10 completed_verified","MIB-12 crafting/repair engine available","MIB-13 economy engine available","MIB-14 vehicle/platform/base foundations available","PPIA-03 Item/Asset experience contract available","PPIA-04 vehicle/mecha/starship experience contract available","APW/D26 Project/time contracts available","DPL/Profession owner contracts available"],
+  "integration_targets": ["LSS","PPIA-03","D17","MIB-12","MIB-13","MIB-14","PPIA-04","F014","APW/D26","DPL","Profession","MRCS","GPR","ARI","Item/Inventory/Asset","Vehicle","Mecha","Spacecraft/Starship","Base/Platform","Action/Event","Effect","Condition","Resource","Hazard","World/Environment","MBES","SMB-08","SMB-09"],
   "boundaries": [
     "MERA is the player/GM engineering, refit, rebuild and assembly orchestration layer; it does not become a second Item/Asset, crafting, salvage, vehicle, Profession, Project, economy or rules ledger",
     "LSS retains recoverable-object, decomposition, partial stripping, salvage, scavenging, donor-component, cannibalization-lineage and salvage-provenance authority",
@@ -49,6 +49,7 @@
     "APW/D26 retains durable Project/task, participants, prerequisites, campaign-time and cancellation authority",
     "DPL/Profession owners retain Character work capability, engineering/mechanic skill, learning and profession/life-simulation truth",
     "MRCS retains reusable component, interface, engineering-profile, compatibility-rule, work-recipe and blueprint-definition authoring authority",
+    "GPR retains the reusable gameplay-pattern execution/composition substrate; MERA may express engineering interactions through GPR operations/patterns but remains the engineering owner and may not redefine GPR core semantics ad hoc",
     "ARI retains imported/generated media/resource identity, rights and provenance rather than mechanical component truth",
     "MBES consumes accepted MERA engineering capabilities for machinery, utilities, infrastructure, workshops, garages and shipyards without creating a second engineering engine",
     "engineering-resolution levels remain distinct and may stop at the highest source-supported detail: Asset → system → assembly → subassembly → component → interface/connection → governed network",
@@ -65,5 +66,5 @@
     "proprietary benchmark products are clean-room planning provenance only; protected code, data, formulas, authored content, UI expression, assets, save formats and private protocols are not copied",
     "no implementation authority until separately governed start"
   ],
-  "planning_provenance": ["governance/application-planning/multiversal-engineering-refit-assembly/MERA_BENCHMARK_CAPABILITY_MATRIX.md","governance/application-planning/loot-scavenge-salvage/LSS_LOOT_SCAVENGE_SALVAGE_PROGRAM.md","governance/application-planning/parallel-preimplementation/PPIA-03_ITEMS_EQUIPMENT_INVENTORY_EXPERIENCE_SPEC_v1.0.0.md","governance/application-planning/parallel-preimplementation/PPIA-04_VEHICLE_MECHA_STARSHIP_EXPERIENCE_SPEC_v1.0.0.md","governance/application-planning/internal-alpha/feature-packets/MV-IA-F014_VEHICLE_MECHA_STARSHIP_OPERATIONS_DESIGN.md","governance/application-planning/multiversal-implementation-backbone/MIB_MULTIVERSAL_IMPLEMENTATION_BACKBONE_PROGRAM.md","governance/application-planning/proprietary-capability-mining/PCM_CLEAN_ROOM_AND_RIGHTS_RULES.md"]
+  "planning_provenance": ["governance/application-planning/multiversal-engineering-refit-assembly/MERA_BENCHMARK_CAPABILITY_MATRIX.md","governance/application-planning/loot-scavenge-salvage/LSS_LOOT_SCAVENGE_SALVAGE_PROGRAM.md","governance/application-planning/parallel-preimplementation/PPIA-03_ITEMS_EQUIPMENT_INVENTORY_EXPERIENCE_SPEC_v1.0.0.md","governance/application-planning/parallel-preimplementation/PPIA-04_VEHICLE_MECHA_STARSHIP_EXPERIENCE_SPEC_v1.0.0.md","governance/application-planning/internal-alpha/feature-packets/MV-IA-F014_VEHICLE_MECHA_STARSHIP_OPERATIONS_DESIGN.md","governance/application-planning/multiversal-implementation-backbone/MIB_MULTIVERSAL_IMPLEMENTATION_BACKBONE_PROGRAM.md","governance/application-planning/gameplay-pattern-runtime/GPR_RESEARCH_BASELINE_v3.6.json","governance/application-planning/proprietary-capability-mining/PCM_CLEAN_ROOM_AND_RIGHTS_RULES.md"]
 }
