@@ -158,6 +158,14 @@ class ExecutionRoutingGateTests(unittest.TestCase):
         )
         self.assertIn("src/ari/ari-20.resource-pack-intake-ux.test.ts", profile["steps"][2]["commands"]["linux"])
         self.assertIn("src/ari/ari-20.resource-pack-intake-ux.test.ts", profile["steps"][2]["commands"]["windows"][-1])
+        required_failure_fields = {"layer", "reason_code", "feature_blame", "responsibility", "blame_rationale", "remediation"}
+        self.assertEqual([step["failure"]["reason_code"] for step in profile["steps"]], [
+            "TOOLCHAIN.DEPENDENCY_INSTALL_FAILURE",
+            "BUILD.COMPILE_FAILURE",
+            "TEST_UNIT.ASSERTION_FAILURE",
+        ])
+        for step in profile["steps"]:
+            self.assertEqual(set(step["failure"]), required_failure_fields)
 
     def test_bootstrap_and_profile_persist_execution_routing_controls(self) -> None:
         bootstrap = (ROOT / "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md").read_text(encoding="utf-8")
