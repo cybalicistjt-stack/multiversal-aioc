@@ -1,5 +1,5 @@
 {
-  "schema_version": "20.10.0",
+  "schema_version": "20.11.0",
   "projection_scope": "compact_current_selector",
   "history_rule": "Detailed predecessor execution history remains immutable in Git ancestry and per-work-item checkpoints; this selector carries only current state plus maintenance proof rows required by current validation.",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
@@ -12,29 +12,29 @@
   "roadmap_dependency_graph": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json",
   "product_execution_lanes": "governance/ai/runtime/PRODUCT_EXECUTION_LANES.json",
   "tranche_readiness_index": "governance/ai/runtime/TRANCHE_READINESS_INDEX.json",
-  "primary_attempt_id": "ARI-21-attempt-001",
-  "selection_reason": "Owner authorized ARI-21 execution on 2026-09-13. ARI-20 is completed_verified and ARI-21 is now in_progress on its reserved branch under the sealed ARI family preflight.",
+  "primary_attempt_id": "ARI-22A-attempt-001",
+  "selection_reason": "ARI-21 is completed_verified from application PR 466 with exact-head cross-platform Validation Core evidence. ARI-22A is the strict selected_not_started successor with no implementation branch or authority.",
   "active_attempt": {
-    "work_item_id": "ARI-21",
-    "attempt_id": "ARI-21-attempt-001",
+    "work_item_id": "ARI-22A",
+    "attempt_id": "ARI-22A-attempt-001",
     "track": "asset-resource-ingestion-reuse",
     "source_program": "ARI",
     "priority": 1,
     "owner_selected": true,
     "repository": "cybalicistjt-stack/multiversal-aioc",
-    "checkpoint_path": "governance/ai/work-state/ARI-21-attempt-001.json",
-    "status": "in_progress",
-    "implementation_branch": "implementation/ari-21-missing-source-relink-derivative-rebuild-recovery",
-    "implementation_authority": true,
-    "active_item": "ARI-21 \u2014 Missing Source, Relink & Derivative-Rebuild Recovery"
+    "checkpoint_path": "governance/ai/work-state/ARI-22A-attempt-001.json",
+    "status": "selected_not_started",
+    "implementation_branch": null,
+    "implementation_authority": false,
+    "active_item": "ARI-22A \u2014 Golden Fixture Intake & Unified Catalog Proof"
   },
   "active_program": {
     "program_id": "ARI",
     "name": "Asset Resource Ingestion & Reuse",
     "status": "in_progress",
-    "completed_through": "ARI-20",
-    "current": "ARI-21",
-    "strict_next": "ARI-22A",
+    "completed_through": "ARI-21",
+    "current": "ARI-22A",
+    "strict_next": "ARI-22B",
     "last": "ARI-22C",
     "semantic_last": "ARI-22",
     "program_path": "governance/application-planning/asset-resource-ingestion-reuse/ARI_ASSET_RESOURCE_INGESTION_REUSE_PROGRAM.md",
@@ -43,35 +43,35 @@
   "bounded_authority": {
     "repository_health_maintenance": false,
     "family_preflight_sealed": true,
-    "selected_ari_unit": "ARI-21",
-    "ari_implementation": true,
-    "implementation_branch": "implementation/ari-21-missing-source-relink-derivative-rebuild-recovery",
+    "selected_ari_unit": "ARI-22A",
+    "ari_implementation": false,
+    "implementation_branch": null,
     "paid_provider_activation": false,
     "provider_credentials_or_scraping": false,
     "tester_distribution": false,
     "release_or_deployment": false,
-    "rule": "ARI-21 alone has bounded product implementation authority on the reserved branch; ARI-22A+ remain inactive."
+    "rule": "ARI-22A is selected_not_started only. No product implementation branch or authority exists until its governed start passes the execution transaction preflight; ARI-22B/C remain inactive."
   },
   "recently_completed_ari_work": [
     {
-      "work_item_id": "ARI-20",
+      "work_item_id": "ARI-21",
       "status": "completed_verified",
-      "application_pr": 465,
-      "validated_head": "9d2bfc5c104d7694f9323a799c2b179c21a00ae3",
-      "validation_run": 34754694363,
-      "deterministic_receipt_sha256": "148a97c214d057431ff3f535c2e160dda5b406f4b08a95df1e3b62f5205dd4b2",
-      "merge_sha": "4b5b1e75f2993545537bcab9f101f38e1a0822b3"
+      "application_pr": 466,
+      "validated_head": "6b21331632a24bbbdab1c6d69a4ea59926b807e5",
+      "validation_run": 34756512864,
+      "deterministic_receipt_sha256": "b2865f89de1cfc59bc0c3f6b4cec96ce7cd7cad330d72f88edae4de8fd1b58fd",
+      "merge_sha": "28986f50d3c7c6e7ab009da1da7f79800f427ae7"
     }
   ],
   "recently_completed_implementation_work": [
     {
-      "work_item_id": "ARI-20",
+      "work_item_id": "ARI-21",
       "status": "completed_verified",
-      "application_pr": 465,
-      "validated_head": "9d2bfc5c104d7694f9323a799c2b179c21a00ae3",
-      "validation_run": 34754694363,
-      "deterministic_receipt_sha256": "148a97c214d057431ff3f535c2e160dda5b406f4b08a95df1e3b62f5205dd4b2",
-      "merge_sha": "4b5b1e75f2993545537bcab9f101f38e1a0822b3"
+      "application_pr": 466,
+      "validated_head": "6b21331632a24bbbdab1c6d69a4ea59926b807e5",
+      "validation_run": 34756512864,
+      "deterministic_receipt_sha256": "b2865f89de1cfc59bc0c3f6b4cec96ce7cd7cad330d72f88edae4de8fd1b58fd",
+      "merge_sha": "28986f50d3c7c6e7ab009da1da7f79800f427ae7"
     }
   ],
   "recently_completed_sgc_work": [
@@ -139,12 +139,11 @@
   ],
   "selection_invariants": [
     "SGC is completed_verified through SGC-08C and retired from active family execution.",
-    "ARI-01 through ARI-20 are completed_verified; ARI-20 is merged with exact-head Linux/Windows deterministic Validation Core evidence.",
+    "ARI-01 through ARI-21 are completed_verified; ARI-21 is merged with exact-head Linux/Windows deterministic Validation Core evidence.",
     "The live family preflight remains ARI with 24 execution units and ARI-22 pre-split into ARI-22A/B/C.",
-    "ARI-21 is in_progress with bounded implementation authority only on the reserved branch; ARI-22A+ remain inactive.",
-    "Before an ARI-21 product branch or PR mutation, the exact authorized branch/open-PR snapshot and atomic start projections must pass scripts/execution_transaction_preflight.py.",
-    "Execution-mode final response remains nonterminal while a governed PR is open, current exact-head validation is active, merge closeout is pending, or execution reconciliation is nonterminal.",
-    "Required external development tools must be verified current for the intended workflow; trial-expired or inaccessible services cannot be required dependencies."
+    "ARI-22A is selected_not_started with no implementation branch or implementation authority.",
+    "Before an ARI-22A product branch or PR mutation, the exact authorized branch/open-PR snapshot and atomic start projections must pass scripts/execution_transaction_preflight.py.",
+    "Execution-mode final response remains nonterminal while a governed PR is open, current exact-head validation is active, merge closeout is pending, or execution reconciliation is nonterminal."
   ],
-  "exact_next_action": "Validate and merge the governed ARI-21 start projection, pass execution transaction preflight against fresh branch/open-PR state, then create only implementation/ari-21-missing-source-relink-derivative-rebuild-recovery."
+  "exact_next_action": "Record a governed ARI-22A start projection, run the execution transaction preflight against exact start projections and fresh branch/open-PR state, then create or resume only implementation/ari-22a-golden-fixture-intake-unified-catalog-proof."
 }

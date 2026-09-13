@@ -1,8 +1,8 @@
 {
-  "schema_version": "20.15.0",
+  "schema_version": "20.16.0",
   "projection_scope": "compact_current_authority",
   "policy": "governance/ai/MULTIVERSAL_AUTHORITY_AND_RETIREMENT_POLICY.md",
-  "rule": "Only registered CURRENT or CURRENT_COMPATIBLE surfaces may govern. ARI-20 is completed_verified. ARI-21 is in_progress with bounded implementation authority only on implementation/ari-21-missing-source-relink-derivative-rebuild-recovery; ARI-22A+ remain inactive.",
+  "rule": "Only registered CURRENT or CURRENT_COMPATIBLE surfaces may govern. ARI-21 is completed_verified. ARI-22A is selected_not_started with no product implementation branch or authority; ARI-22B/C remain inactive.",
   "current": [
     {
       "kind": "bootstrap",
@@ -27,7 +27,7 @@
     {
       "kind": "checkpoint",
       "lifecycle": "CURRENT",
-      "path": "governance/ai/work-state/ARI-21-attempt-001.json"
+      "path": "governance/ai/work-state/ARI-22A-attempt-001.json"
     },
     {
       "kind": "program",
@@ -146,13 +146,13 @@
     }
   ],
   "active_planning_work": {
-    "work_item": "ARI-21",
-    "attempt_id": "ARI-21-attempt-001",
+    "work_item": "ARI-22A",
+    "attempt_id": "ARI-22A-attempt-001",
     "repository": "cybalicistjt-stack/multiversal-aioc",
-    "state": "in_progress",
-    "implementation_branch": "implementation/ari-21-missing-source-relink-derivative-rebuild-recovery",
-    "implementation_authority": true,
-    "implementation_scope": "ARI-21 alone may implement bounded missing-source/relink/derivative-rebuild recovery; ARI-22A+ remain inactive."
+    "state": "selected_not_started",
+    "implementation_branch": null,
+    "implementation_authority": false,
+    "implementation_scope": "ARI-22A remains selected only; its governed start must pass the execution transaction preflight before application branch/PR mutation."
   },
   "parallel_machine_local_work": {
     "work_item": "MLR-01",
@@ -195,7 +195,7 @@
     "path": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
     "status": "sealed",
     "execution_units": 24,
-    "implementation_authority": true
+    "implementation_authority": false
   },
   "roadmap_execution_authority": {
     "execution_profile": "governance/ai/runtime/EXECUTION_PROFILE.json",
@@ -205,17 +205,17 @@
     "readiness_source": "governance/ai/runtime/TRANCHE_READINESS_SOURCE.json",
     "readiness_index": "governance/ai/runtime/TRANCHE_READINESS_INDEX.json",
     "parallel_policy": "governance/ai/MULTIVERSAL_PARALLEL_PRODUCT_EXECUTION_POLICY.md",
-    "implementation_authority": true
+    "implementation_authority": false
   },
   "recently_completed_ari_work": [
     {
+      "work_item": "ARI-21",
       "status": "completed_verified",
-      "application_pr": 465,
-      "validated_head": "9d2bfc5c104d7694f9323a799c2b179c21a00ae3",
-      "validation_run": 34754694363,
-      "deterministic_receipt_sha256": "148a97c214d057431ff3f535c2e160dda5b406f4b08a95df1e3b62f5205dd4b2",
-      "merge_sha": "4b5b1e75f2993545537bcab9f101f38e1a0822b3",
-      "work_item": "ARI-20"
+      "application_pr": 466,
+      "validated_head": "6b21331632a24bbbdab1c6d69a4ea59926b807e5",
+      "validation_run": 34756512864,
+      "deterministic_receipt_sha256": "b2865f89de1cfc59bc0c3f6b4cec96ce7cd7cad330d72f88edae4de8fd1b58fd",
+      "merge_sha": "28986f50d3c7c6e7ab009da1da7f79800f427ae7"
     }
   ],
   "recently_completed_repository_health_remediation": [

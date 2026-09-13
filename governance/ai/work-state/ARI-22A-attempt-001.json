@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.2.0",
+  "work_item_id": "ARI-22A",
+  "attempt_id": "ARI-22A-attempt-001",
+  "title": "Golden Fixture Intake & Unified Catalog Proof",
+  "track": "asset-resource-ingestion-reuse",
+  "source_program": "ARI",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "estimated_active_minutes": 20,
+  "execution_target_minutes": 24,
+  "minimum_closeout_reserve_minutes": 8,
+  "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
+  "objective": "Prepare the bounded Golden Fixture Intake & Unified Catalog Proof only after a governed start: prove representative golden resource-pack intake into the unified ARI catalog without beginning ARI-22B cross-system scale proof or ARI-22C final closure.",
+  "predecessor": {
+    "work_item_id": "ARI-21",
+    "status": "completed_verified",
+    "application_pr": 466,
+    "application_validated_head": "6b21331632a24bbbdab1c6d69a4ea59926b807e5",
+    "application_validation_run": 34756512864,
+    "deterministic_receipt_sha256": "b2865f89de1cfc59bc0c3f6b4cec96ce7cd7cad330d72f88edae4de8fd1b58fd",
+    "application_merge_sha": "28986f50d3c7c6e7ab009da1da7f79800f427ae7"
+  },
+  "owner_sequence_authorization": {
+    "source": "Explicit owner instruction in this execution on 2026-09-13",
+    "authorized_execution_units": [
+      "ARI-22A",
+      "ARI-22B",
+      "ARI-22C"
+    ],
+    "rule": "Execute strictly in order; each unit retains its own bounded scope, validation, integration, closeout, and strict-successor selection."
+  },
+  "strict_successor": "ARI-22B",
+  "reserved_branch": "implementation/ari-22a-golden-fixture-intake-unified-catalog-proof",
+  "selection_boundaries": [
+    "ARI-21 is completed_verified and missing-source/relink/rebuild recovery is closed.",
+    "ARI-22A is selected only and has no implementation branch or implementation authority.",
+    "ARI-22A is limited to golden fixture intake and unified catalog proof; ARI-22B cross-system rights/scale proof remains inactive.",
+    "ARI-22C recovery/deterministic-receipt/final ARI closure remains inactive until its strict predecessor completes."
+  ],
+  "active_substep": "selected_not_started",
+  "next_action": "Record a governed ARI-22A start projection before creating the reserved branch, then execute only the bounded golden-fixture intake and unified-catalog proof through focused regression, exact-head validation, merge and closeout."
+}
