@@ -28,7 +28,8 @@ ARI-21 Validation Core run 34756512864 showed:
 - The focused Vitest regression was ~1.39 seconds.
 - Nearly all remaining profile time was the full `tsc -b --pretty false` typecheck.
 - Reusable profile jobs used full-history checkout and clean checkout deleted `apps/client-ui/tsconfig.tsbuildinfo`, preventing safe incremental reuse.
-- AIOC repository health also used full-history checkout even though the new terminal comparison only requires the candidate and parent.
+
+A separate MV-CONT-014 GREEN attempt tested shallow AIOC checkout. Repository-health run 34758161492 rejected it because canonical health proves sealed historical tree identity and ancestry for the sealed baseline and retained maintenance merges. That optimization was therefore **rejected** rather than weakening the validator. AIOC canonical health keeps full ancestry until that proof is redesigned with equivalent independent evidence.
 
 These are observed repository/run facts, not external research claims.
 
@@ -70,7 +71,7 @@ Uber has reported major monorepo CI gains from changed-target analysis, caching,
 - https://www.uber.com/blog/bypassing-large-diffs-in-submitqueue/
 - https://www.uber.com/blog/slashing-ci-costs-at-uber/
 
-**Adopted:** preserve per-OS TypeScript incremental metadata while keeping the full typecheck; minimize checkout history to the consumer's actual need.
+**Adopted:** preserve per-OS TypeScript incremental metadata while keeping the full typecheck; minimize checkout history only where the consumer does not rely on historical ancestry.
 
 ### Parallelism and critical-path ordering
 
@@ -86,7 +87,7 @@ Buildkite guidance emphasizes parallel jobs, failure-prone/fast checks early, an
 2. **Embedded terminal proof** — canonical-main repository health performs terminal reconciliation after its authority/regression checks when that main push introduced a new completed implementation item. No separate terminal-proof workflow is needed.
 3. **Stable terminal identity before start** — ARI-22A preallocates cycle, trace, operation and side-effect identities while remaining `selected_not_started` with no branch/authority. Start and closeout update the same identities rather than inventing terminal history afterward.
 4. **Incremental typecheck reuse** — self-hosted Linux/Windows Validation Core lanes cache compatible `apps/client-ui/tsconfig.tsbuildinfo` state per OS and restore compatible prior state without skipping the full typecheck.
-5. **Minimum checkout history** — exact-head profile jobs use shallow history; comparator uses a sparse checkout; AIOC main health keeps only candidate+parent history needed for automatic terminal comparison.
+5. **Minimum checkout history where safe** — application exact-head profile jobs use shallow history and the comparator uses sparse checkout. AIOC canonical health retains full history because sealed-baseline and maintenance ancestry are acceptance evidence.
 6. **Infrastructure-only validation isolation** — changes only to Validation Core infrastructure validate repository/workflow health without manufacturing a product-family run.
 
 ## 5. Explicit non-adoptions
@@ -95,6 +96,7 @@ Buildkite guidance emphasizes parallel jobs, failure-prone/fast checks early, an
 - No skipping Linux or Windows full typecheck.
 - No removal of deterministic cross-platform receipt comparison.
 - No blind retry or flaky-test masking.
+- No shallow AIOC canonical-health checkout while sealed ancestry is part of acceptance.
 - No pre-start implementation authority for ARI-22A.
 - No ARI-22B/22C activation.
 

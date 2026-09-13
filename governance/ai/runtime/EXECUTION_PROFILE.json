@@ -84,7 +84,7 @@
       },
       "incremental_validation": {
         "application_policy": "Reuse compatible per-OS TypeScript incremental metadata while retaining the full declared Linux/Windows typecheck and deterministic comparison acceptance surface.",
-        "checkout_policy": "Fetch only the Git history the consumer actually requires; exact-head profile jobs use shallow checkout, diff selectors retain sufficient base history, and AIOC main terminal comparison retains the candidate plus parent.",
+        "checkout_policy": "Fetch only the Git history the consumer actually requires. Application exact-head profile jobs use shallow checkout and the comparator uses sparse checkout; AIOC canonical health deliberately retains full ancestry because sealed-baseline and historical maintenance ancestry are part of its acceptance proof.",
         "test_impact_selection": "deferred_until_trustworthy_dependency_graph_exists",
         "fallback_rule": "Do not skip full required acceptance work based on impact analysis until a validated dependency graph and deterministic full-suite fallback are in place."
       }

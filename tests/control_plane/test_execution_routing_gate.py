@@ -206,8 +206,6 @@ class ExecutionRoutingGateTests(unittest.TestCase):
 
     def test_terminal_proof_is_embedded_in_canonical_main_health(self) -> None:
         workflow = (ROOT / ".github/workflows/validate-repository-health.yml").read_text(encoding="utf-8")
-        self.assertIn("fetch-depth: 2", workflow)
-        self.assertNotIn("fetch-depth: 0", workflow)
         self.assertIn("execution_terminal_auto_proof.py", workflow)
         self.assertIn("terminal-reconciliation-result.json", workflow)
         proof = _load_module("execution_terminal_auto_proof.py", "execution_terminal_auto_proof")
