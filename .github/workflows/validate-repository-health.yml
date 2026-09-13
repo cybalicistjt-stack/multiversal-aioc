@@ -10,6 +10,8 @@ on:
       - 'AGENTS.md'
       - 'scripts/validate_repository_health.py'
       - 'scripts/execution_termination_preflight.py'
+      - 'scripts/execution_atomic_projection.py'
+      - 'scripts/execution_terminal_auto_proof.py'
       - 'tests/control_plane/**'
       - '.github/workflows/validate-repository-health.yml'
   push:
@@ -22,6 +24,8 @@ on:
       - 'AGENTS.md'
       - 'scripts/validate_repository_health.py'
       - 'scripts/execution_termination_preflight.py'
+      - 'scripts/execution_atomic_projection.py'
+      - 'scripts/execution_terminal_auto_proof.py'
       - 'tests/control_plane/**'
       - '.github/workflows/validate-repository-health.yml'
   workflow_dispatch:
@@ -73,11 +77,25 @@ jobs:
           set -euo pipefail
           python3 -m unittest discover -s tests/control_plane -p 'test_control_plane_health.py'
 
+      - name: Reconcile terminal proof on canonical main
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          set -euo pipefail
+          parent_head="$(git rev-parse HEAD^)"
+          python3 scripts/execution_terminal_auto_proof.py \
+            --root . \
+            --head "$CANDIDATE_HEAD" \
+            --parent-head "$parent_head" \
+            --output "${RUNNER_TEMP}/terminal-reconciliation-result.json"
+
       - name: Upload compact repository-health evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: repository-health-${{ env.CANDIDATE_HEAD }}
-          path: '${{ runner.temp }}/canonical-state-audit-generated.json'
+          path: |
+            ${{ runner.temp }}/canonical-state-audit-generated.json
+            ${{ runner.temp }}/terminal-reconciliation-result.json
           if-no-files-found: warn
           retention-days: 14

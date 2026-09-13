@@ -184,6 +184,76 @@ class ExecutionRoutingGateTests(unittest.TestCase):
         self.assertEqual(routing["validation_profile_generator"], "scripts/generate_focused_validation_profile.py")
         self.assertEqual(routing["red_dispatch_decision"], "DISPATCH_RED_NOW")
 
+    def test_atomic_projection_uses_direct_git_objects_without_one_shot_workflows(self) -> None:
+        profile = json.loads((ROOT / "governance/ai/runtime/EXECUTION_PROFILE.json").read_text(encoding="utf-8"))
+        critical = profile["execution_hardening"].get("critical_path_optimization", {})
+        atomic = critical.get("atomic_projection", {})
+        self.assertTrue(atomic.get("git_object_mutation_preferred"))
+        self.assertEqual(atomic.get("commit_shape"), "one_tree_one_commit_one_ref_update")
+        self.assertTrue(atomic.get("temporary_workflow_generation_prohibited_when_git_objects_available"))
+        self.assertEqual(atomic.get("planner"), "scripts/execution_atomic_projection.py")
+        planner = _load_module("execution_atomic_projection.py", "execution_atomic_projection")
+        plan = planner.build_projection_plan({
+            "operation_id": "ari22a-start",
+            "idempotency_key": "ari22a:start:001",
+            "base_sha": "a" * 40,
+            "branch": "governance/ari-22a-start",
+            "paths": ["a.json", "b.json", "c.json"],
+        })
+        self.assertEqual(plan["decision"], "ATOMIC_GIT_OBJECT_PROJECTION")
+        self.assertEqual(plan["mutation_sequence"], ["create_blob", "create_tree", "create_commit", "update_ref"])
+        self.assertEqual(plan["paths"], ["a.json", "b.json", "c.json"])
+
+    def test_terminal_proof_is_embedded_in_canonical_main_health(self) -> None:
+        workflow = (ROOT / ".github/workflows/validate-repository-health.yml").read_text(encoding="utf-8")
+        self.assertIn("execution_terminal_auto_proof.py", workflow)
+        self.assertIn("terminal-reconciliation-result.json", workflow)
+        proof = _load_module("execution_terminal_auto_proof.py", "execution_terminal_auto_proof")
+        checkpoint = {
+            "work_item_id": "ARI-22A",
+            "status": "completed_verified",
+            "strict_successor": "ARI-22B",
+            "completion_evidence": {"application_validation_run": 12345},
+            "terminal_reconciliation_seed": {
+                "cycle_id": "ari22a-cycle-001",
+                "trace_id": "ari22a-trace-001",
+                "resume_generation": 0,
+                "resumed_from_cycle_id": None,
+                "elapsed_active_minutes": 12.0,
+                "dynamic_fill_attempted": True,
+                "safe_same_lane_work_available": False,
+                "fill_exit_reason": "safe_work_exhausted",
+                "operation_ledger": [{
+                    "operation_id": "ari22a-op-01",
+                    "idempotency_key": "ari22a:op:01",
+                    "status": "completed",
+                    "attempts": 1,
+                    "trace_id": "ari22a-trace-001",
+                }],
+                "side_effect_ledger": [{
+                    "effect_id": "ari22a-effect-01",
+                    "idempotency_key": "ari22a:effect:01",
+                    "status": "verified",
+                    "trace_id": "ari22a-trace-001",
+                }],
+            },
+        }
+        state = proof.build_terminal_state(checkpoint)
+        self.assertEqual(state["work_item_status"], "completed_verified")
+        self.assertEqual(state["execution_reconciliation"]["desired_state"], "terminal_verified")
+        self.assertEqual(state["execution_reconciliation"]["verification_evidence"][0]["evidence_id"], "application-validation-12345")
+
+    def test_ari22a_preallocates_stable_terminal_identity_without_starting_authority(self) -> None:
+        checkpoint = json.loads((ROOT / "governance/ai/work-state/ARI-22A-attempt-001.json").read_text(encoding="utf-8"))
+        self.assertEqual(checkpoint["status"], "selected_not_started")
+        self.assertFalse(checkpoint["implementation_authority"])
+        self.assertIsNone(checkpoint["implementation_branch"])
+        seed = checkpoint.get("terminal_reconciliation_seed", {})
+        self.assertEqual(seed.get("cycle_id"), "ari22a-cycle-001")
+        self.assertEqual(seed.get("trace_id"), "ari22a-trace-001")
+        self.assertTrue(seed.get("operation_ledger"))
+        self.assertTrue(seed.get("side_effect_ledger"))
+
 
 if __name__ == "__main__":
     unittest.main()

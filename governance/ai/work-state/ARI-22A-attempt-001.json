@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.2.0",
+  "schema_version": "0.3.0",
   "work_item_id": "ARI-22A",
   "attempt_id": "ARI-22A-attempt-001",
   "title": "Golden Fixture Intake & Unified Catalog Proof",
@@ -43,5 +43,118 @@
     "ARI-22C recovery/deterministic-receipt/final ARI closure remains inactive until its strict predecessor completes."
   ],
   "active_substep": "selected_not_started",
-  "next_action": "Record a governed ARI-22A start projection before creating the reserved branch, then execute only the bounded golden-fixture intake and unified-catalog proof through focused regression, exact-head validation, merge and closeout."
+  "next_action": "Record a governed ARI-22A start projection before creating the reserved branch, then execute only the bounded golden-fixture intake and unified-catalog proof through focused regression, exact-head validation, merge and closeout.",
+  "terminal_reconciliation_seed": {
+    "cycle_id": "ari22a-cycle-001",
+    "trace_id": "ari22a-trace-001",
+    "resume_generation": 0,
+    "resumed_from_cycle_id": null,
+    "elapsed_active_minutes": null,
+    "dynamic_fill_attempted": false,
+    "safe_same_lane_work_available": true,
+    "fill_exit_reason": null,
+    "operation_ledger": [
+      {
+        "operation_id": "ari22a-op-01-governed-start",
+        "idempotency_key": "ari22a:governed-start",
+        "status": "planned",
+        "attempts": 1,
+        "trace_id": "ari22a-trace-001"
+      },
+      {
+        "operation_id": "ari22a-op-02-context-bind",
+        "idempotency_key": "ari22a:context-bind",
+        "status": "planned",
+        "attempts": 1,
+        "trace_id": "ari22a-trace-001"
+      },
+      {
+        "operation_id": "ari22a-op-03-focused-red",
+        "idempotency_key": "ari22a:focused-red",
+        "status": "planned",
+        "attempts": 1,
+        "trace_id": "ari22a-trace-001"
+      },
+      {
+        "operation_id": "ari22a-op-04-bounded-implementation",
+        "idempotency_key": "ari22a:bounded-implementation",
+        "status": "planned",
+        "attempts": 1,
+        "trace_id": "ari22a-trace-001"
+      },
+      {
+        "operation_id": "ari22a-op-05-exact-head-green",
+        "idempotency_key": "ari22a:exact-head-green",
+        "status": "planned",
+        "attempts": 1,
+        "trace_id": "ari22a-trace-001"
+      },
+      {
+        "operation_id": "ari22a-op-06-application-merge",
+        "idempotency_key": "ari22a:application-merge",
+        "status": "planned",
+        "attempts": 1,
+        "trace_id": "ari22a-trace-001"
+      },
+      {
+        "operation_id": "ari22a-op-07-governance-closeout",
+        "idempotency_key": "ari22a:governance-closeout",
+        "status": "planned",
+        "attempts": 1,
+        "trace_id": "ari22a-trace-001"
+      },
+      {
+        "operation_id": "ari22a-op-08-successor-selection",
+        "idempotency_key": "ari22a:successor-selection",
+        "status": "planned",
+        "attempts": 1,
+        "trace_id": "ari22a-trace-001"
+      },
+      {
+        "operation_id": "ari22a-op-09-canonical-main-health",
+        "idempotency_key": "ari22a:canonical-main-health",
+        "status": "planned",
+        "attempts": 1,
+        "trace_id": "ari22a-trace-001"
+      }
+    ],
+    "side_effect_ledger": [
+      {
+        "effect_id": "ari22a-effect-01-start-projection",
+        "idempotency_key": "ari22a:effect:start-projection",
+        "status": "planned",
+        "trace_id": "ari22a-trace-001"
+      },
+      {
+        "effect_id": "ari22a-effect-02-application-branch",
+        "idempotency_key": "ari22a:effect:application-branch",
+        "status": "planned",
+        "trace_id": "ari22a-trace-001"
+      },
+      {
+        "effect_id": "ari22a-effect-03-context-record",
+        "idempotency_key": "ari22a:effect:context-record",
+        "status": "planned",
+        "trace_id": "ari22a-trace-001"
+      },
+      {
+        "effect_id": "ari22a-effect-04-application-merge",
+        "idempotency_key": "ari22a:effect:application-merge",
+        "status": "planned",
+        "trace_id": "ari22a-trace-001"
+      },
+      {
+        "effect_id": "ari22a-effect-05-closeout-projection",
+        "idempotency_key": "ari22a:effect:closeout-projection",
+        "status": "planned",
+        "trace_id": "ari22a-trace-001"
+      },
+      {
+        "effect_id": "ari22a-effect-06-ari22b-selection",
+        "idempotency_key": "ari22a:effect:ari22b-selection",
+        "status": "planned",
+        "trace_id": "ari22a-trace-001"
+      }
+    ]
+  }
 }
