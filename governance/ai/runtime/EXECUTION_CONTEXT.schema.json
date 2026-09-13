@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiversal.local/governance/EXECUTION_CONTEXT.schema.json",
+  "title": "Multiversal Hermetic Tranche Execution Context",
+  "type": "object",
+  "required": ["work_item_id", "phase", "allowed_paths", "diagnostic_mode", "failure_signature"],
+  "properties": {
+    "work_item_id": {"type": "string", "minLength": 1},
+    "phase": {"type": "string", "minLength": 1},
+    "allowed_paths": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "diagnostic_mode": {"type": "boolean"},
+    "failure_signature": {"type": ["string", "null"]}
+  },
+  "additionalProperties": true
+}

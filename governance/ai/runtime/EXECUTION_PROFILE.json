@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.4.0",
+  "schema_version": "1.5.0",
   "status": "CURRENT",
   "profile_id": "MV-EXECUTION-PROFILE-001",
   "authority": "Canonical machine-readable execution service objective and bounded-tranche timing policy.",
@@ -57,6 +57,17 @@
   "execution_hardening": {
     "transaction_preflight": "scripts/execution_transaction_preflight.py",
     "termination_preflight": "scripts/execution_termination_preflight.py",
+    "execution_routing": {
+      "state_reconciler": "scripts/execution_state_reconciler.py",
+      "context_guard": "scripts/execution_context_guard.py",
+      "validation_profile_generator": "scripts/generate_focused_validation_profile.py",
+      "red_dispatch_decision": "DISPATCH_RED_NOW",
+      "canonical_state_rule": "Lifecycle phase and next action are derived from the canonical execution record plus observed repository facts; manually authored narrative next-action text is not independent authority.",
+      "projection_rule": "Pointer, authority, runtime and compiled selector rows are materialized views of one canonical execution record and must not independently invent work-item, attempt, status, authority or branch state.",
+      "context_rule": "Normal execution is restricted to the declared hermetic tranche context. Repository-wide search or undeclared reads require diagnostic_mode=true and a concrete failure_signature.",
+      "red_transition_rule": "When a focused test exists and required context is resolved, DISPATCH_RED_NOW is the next legal progression. Additional ordinary research/search before RED is non-progress.",
+      "validation_generation_rule": "Ordinary focused Validation Core profiles are generated deterministically from a small work-item data record and reuse the canonical Linux/Windows validation workflow."
+    },
     "before_product_branch_creation": [
       "validate checkpoint/pointer/authority/runtime/compiled start projection agreement",
       "supply fresh authorized branch plus observed branch/open-PR snapshot",
@@ -76,10 +87,7 @@
   "external_tool_access": {
     "required_dependency_status": "verified_current_for_intended_workflow",
     "trial_expired_or_inaccessible_tools_may_be_required": false,
-    "known_not_allowed_as_required_development_dependencies": [
-      "YepCode",
-      "Basic Memory"
-    ],
+    "known_not_allowed_as_required_development_dependencies": ["YepCode", "Basic Memory"],
     "fallback_rule": "If a required external development tool is unavailable, expired, trial-limited, or no longer supports the intended AI/development workflow, replace it with a currently verified local/open-source or owner-approved durable alternative before governed start. Do not silently assume access."
   },
   "projection_rule": "Any copied validator/checkpoint/preflight values are generated or checkable projections of this profile and must not become independent authority."
