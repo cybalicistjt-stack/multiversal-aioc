@@ -2,12 +2,12 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 6.7.0
+**Version:** 6.8.0
 **Status:** ACTIVE CANDIDATE — CRS COMPLETION PENDING  
 **Owner and final authority:** John Brandon Turner  
 **Governance repository:** `cybalicistjt-stack/multiversal-aioc`  
 **Application repository:** `cybalicistjt-stack/Multiversal-app`  
-**Last updated:** 2026-09-12
+**Last updated:** 2026-09-13
 
 ## Purpose
 
@@ -114,6 +114,14 @@ Immediately after bounded recovery, read the current execution profile plus the 
 The **execution envelope** is the cycle boundary. A logical operation is not a cycle boundary. One owner `Continue` creates or resumes one stable cycle and dynamically packs safe same-lane operations into it. While the envelope remains in fill and safe same-lane work exists, completing one operation must immediately trigger dynamic fill with the next safe operation; do not close, report, or increment the cycle merely because a research facet, implementation substep, artifact, commit, or validation milestone completed.
 
 For the current 24-minute pattern, minute 16 changes the same execution envelope from fill to shared closeout. The remaining reserve is part of the same cycle. Normal terminal response requires the envelope to close after the 24-minute target is accounted. Earlier closure requires an actual dynamic-fill attempt that proves safe same-lane work is exhausted, or a separately evidenced genuine blocker. If a turn or conversation is interrupted, resume the same `cycle_id`; do not reset cycle identity, elapsed state, or turn a remaining logical operation into a new cycle.
+
+### Deterministic execution routing
+
+After bounded recovery, derive lifecycle phase and next action with `scripts/execution_state_reconciler.py` from the canonical execution record plus observed repository facts. Stored narrative next-action text is a display projection, not independent authority.
+
+Build and obey a **hermetic tranche context** through `scripts/execution_context_guard.py`. Normal execution may read only declared tranche inputs and their authorized dependency closure. Repository-wide search or undeclared reads require diagnostic mode plus a concrete failure signature; exploration without such evidence is non-progress.
+
+Run `scripts/execution_transaction_preflight.py route` before expanding implementation context. When it returns `DISPATCH_RED_NOW`, dispatch the focused RED validation immediately. Do not perform additional ordinary research, repository search, or source expansion between a resolved focused test and RED. Focused Validation Core profiles should be generated from bounded work-item data through `scripts/generate_focused_validation_profile.py` rather than manually reconstructed.
 
 The following rules are mandatory in every new conversation and every resumed `Continue`:
 
