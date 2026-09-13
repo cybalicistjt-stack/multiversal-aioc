@@ -1,17 +1,19 @@
 {
-  "schema_version": "0.4.0",
+  "schema_version": "0.5.0",
   "work_item_id": "ARI-20",
   "attempt_id": "ARI-20-attempt-001",
   "title": "Resource Pack Intake UX",
   "track": "asset-resource-ingestion-reuse",
   "source_program": "ARI",
   "repository": "cybalicistjt-stack/multiversal-aioc",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "implementation/ari-20-resource-pack-intake-ux",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "started_at": "2026-09-13T05:38:02-05:00",
+  "application_merged_at": "2026-09-13T06:34:40-05:00",
+  "completed_at": "2026-09-13T06:47:33-05:00",
   "estimated_active_minutes": 24,
   "execution_target_minutes": 24,
   "minimum_closeout_reserve_minutes": 8,
@@ -27,16 +29,38 @@
     "deterministic_receipt_sha256": "54d7babe26e092be97be8f6be0a8857adecffb6180dd3c6eec2579a1bbc53e7f",
     "application_merge_sha": "53abe40062082c895c54168fbdabb30e9d101ec1"
   },
+  "completion_evidence": {
+    "application_pr": 465,
+    "red_validation_run": 34754581219,
+    "red_head": "6dd73adf4ca3bec471989c66324ea093d3cfd1d6",
+    "application_validated_head": "9d2bfc5c104d7694f9323a799c2b179c21a00ae3",
+    "application_validation_run": 34754694363,
+    "deterministic_receipt_sha256": "148a97c214d057431ff3f535c2e160dda5b406f4b08a95df1e3b62f5205dd4b2",
+    "application_merge_sha": "4b5b1e75f2993545537bcab9f101f38e1a0822b3",
+    "validation_lanes": ["self-hosted-linux", "self-hosted-windows", "deterministic-cross-platform-comparison"]
+  },
   "convergence_control": {
-    "owner_continue_count": 1,
-    "execution_cycles": 1,
-    "repair_cycles": 0,
+    "owner_continue_count": 2,
+    "execution_cycles": 2,
+    "repair_cycles": 1,
     "no_progress_cycles": 0,
     "diagnostic_mode": false,
-    "last_failure_signature": null,
-    "last_failure_class": null,
+    "last_failure_signature": "Validation Core generated-profile contract initially lacked required failure mappings before the product RED boundary.",
+    "last_failure_class": "validation_contract",
     "diagnostic_hypotheses": [],
-    "retry_basis": null,
+    "retry_basis": {
+      "changed_since_previous": [
+        "Focused Validation Core profile generator now emits registered failure mappings for every generated step.",
+        "ARI-20 production module was implemented only after the corrected product RED exposed the missing module boundary."
+      ]
+    },
+    "single_continue_achieved": false,
+    "execution_incident": {
+      "class": "control_plane_efficiency",
+      "summary": "The first ARI-20 execution turn consumed its envelope before reaching canonical RED because recovery/routing and generated-validation controls were insufficient. MV-CONT-013 hardened those controls; the second owner turn completed RED-to-GREEN integration and closeout.",
+      "genuine_external_blocker": false
+    },
+    "genuine_blocker": null,
     "service_objective": {
       "ordinary_tranche_single_continue_target_percent": 100,
       "max_execution_cycles_without_genuine_blocker": 1,
@@ -51,24 +75,13 @@
     "rule": "Execute strictly in order; each unit retains its own bounded scope, validation, integration, closeout, and strict-successor selection."
   },
   "strict_successor": "ARI-21",
-  "reserved_branch": "implementation/ari-20-resource-pack-intake-ux",
   "selection_boundaries": [
-    "ARI-19 is completed_verified; the reusable picker/query contract is closed.",
-    "ARI-20 alone has bounded implementation authority on implementation/ari-20-resource-pack-intake-ux.",
-    "ARI-20 consumes existing archive/discovery/classification/provenance/rights/catalog contracts rather than creating parallel resource truth.",
-    "Drop/select must have accessible non-drag alternatives; unsupported, duplicate and rights states remain explicit before bulk acceptance.",
-    "No ARI-21 relink/rebuild recovery or ARI-22 closure work is authorized by this start.",
-    "ARI-21 and all later ARI implementation remain inactive until ARI-20 is completed_verified."
+    "ARI-20 exposes intake planning and preview only; canonical extraction, identity, provenance, rights and acceptance truth remain owner-owned by their existing ARI contracts.",
+    "Accessible drag and non-drag source selection methods are explicit.",
+    "Duplicate, unsupported-media, provenance and rights blockers remain explicit before bulk acceptance.",
+    "ARI-20 does not mutate source truth, rights, provenance, provider entitlement or canonical acceptance state.",
+    "ARI-21 is selected_not_started with no implementation branch or implementation authority."
   ],
-  "observed_recovery_state": {
-    "governed_start_pr": 1148,
-    "governed_start_state": "merged",
-    "implementation_branch_exists": true,
-    "implementation_head": "8fb80ba95c2218cfb733f57572ac9a2e3359011f",
-    "focused_test_exists": true,
-    "application_pr_state": "absent",
-    "validation_state": "not_dispatched"
-  },
-  "active_substep": "implementation_red",
-  "next_action": "Use the declared hermetic execution context and generated ARI-20 focused validation profile, then dispatch canonical RED immediately. Ordinary repository search is not authorized unless RED produces a concrete diagnostic failure signature."
+  "active_substep": "completed_verified",
+  "next_action": "ARI-21 is the strict selected_not_started successor. Record its governed start and pass the execution transaction preflight before creating its reserved implementation branch."
 }
