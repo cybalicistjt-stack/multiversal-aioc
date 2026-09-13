@@ -1,16 +1,16 @@
 {
-  "schema_version": "0.4.0",
+  "schema_version": "0.5.0",
   "work_item_id": "ARI-21",
   "attempt_id": "ARI-21-attempt-001",
   "title": "Missing Source, Relink & Derivative-Rebuild Recovery",
   "track": "asset-resource-ingestion-reuse",
   "source_program": "ARI",
   "repository": "cybalicistjt-stack/multiversal-aioc",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
-  "implementation_branch": "implementation/ari-21-missing-source-relink-derivative-rebuild-recovery",
-  "completed": false,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": true,
   "estimated_active_minutes": 22,
   "execution_target_minutes": 24,
   "minimum_closeout_reserve_minutes": 8,
@@ -38,14 +38,14 @@
   "strict_successor": "ARI-22A",
   "reserved_branch": "implementation/ari-21-missing-source-relink-derivative-rebuild-recovery",
   "selection_boundaries": [
-    "ARI-20 is completed_verified and its intake UX contract is closed.",
-    "ARI-21 is selected only and has no implementation branch or implementation authority.",
-    "Relink/rebuild behavior must preserve identity, provenance and rights truth and must not silently substitute missing sources.",
-    "No ARI-22 golden-proof implementation is authorized by ARI-21 selection.",
-    "ARI-22A and later ARI implementation remain inactive until ARI-21 is completed_verified."
+    "Missing local sources and unavailable provider references remain explicit; ARI-21 performs no silent substitution.",
+    "Relink planning preserves stable resource identity and requires expected byte identity to match before acceptance.",
+    "Derivative rebuild planning requires an available source and allowed transform capability; ARI-21 does not generate derivatives itself.",
+    "Identity, provenance, rights and source truth remain owner-owned and unmutated by ARI-21 planning.",
+    "ARI-22A is selected_not_started with no implementation branch or implementation authority."
   ],
-  "active_substep": "governed_start",
-  "next_action": "Validate and merge this atomic AIOC start projection, run transaction preflight against fresh application branch/open-PR state, then create only the reserved ARI-21 implementation branch.",
+  "active_substep": "completed_verified",
+  "next_action": "ARI-22A is the strict selected_not_started successor. Record its governed start and pass the execution transaction preflight before creating its reserved implementation branch.",
   "started_at": "2026-09-13T07:06:02-05:00",
   "convergence_control": {
     "owner_continue_count": 1,
@@ -57,6 +57,9 @@
     "last_failure_class": null,
     "diagnostic_hypotheses": [],
     "retry_basis": null,
+    "single_continue_achieved": true,
+    "execution_incident": null,
+    "genuine_blocker": null,
     "service_objective": {
       "ordinary_tranche_single_continue_target_percent": 100,
       "max_execution_cycles_without_genuine_blocker": 1,
@@ -64,5 +67,21 @@
       "reruns_without_changed_evidence_target": 0,
       "post_merge_stale_pointer_target": 0
     }
+  },
+  "application_merged_at": "2026-09-13T07:17:10-05:00",
+  "completed_at": "2026-09-13T07:17:33-05:00",
+  "completion_evidence": {
+    "application_pr": 466,
+    "red_validation_run": 34756451905,
+    "red_head": "c9ddfad2741f5a4cc9ef29d551085f2966557472",
+    "application_validated_head": "6b21331632a24bbbdab1c6d69a4ea59926b807e5",
+    "application_validation_run": 34756512864,
+    "deterministic_receipt_sha256": "b2865f89de1cfc59bc0c3f6b4cec96ce7cd7cad330d72f88edae4de8fd1b58fd",
+    "application_merge_sha": "28986f50d3c7c6e7ab009da1da7f79800f427ae7",
+    "validation_lanes": [
+      "self-hosted-linux",
+      "self-hosted-windows",
+      "deterministic-cross-platform-comparison"
+    ]
   }
 }
