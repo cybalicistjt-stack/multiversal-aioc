@@ -243,11 +243,20 @@ class ExecutionRoutingGateTests(unittest.TestCase):
         self.assertEqual(state["execution_reconciliation"]["desired_state"], "terminal_verified")
         self.assertEqual(state["execution_reconciliation"]["verification_evidence"][0]["evidence_id"], "application-validation-12345")
 
-    def test_ari22a_preallocates_stable_terminal_identity_without_starting_authority(self) -> None:
+    def test_ari22a_terminal_identity_is_stable_across_lifecycle_transitions(self) -> None:
         checkpoint = json.loads((ROOT / "governance/ai/work-state/ARI-22A-attempt-001.json").read_text(encoding="utf-8"))
-        self.assertEqual(checkpoint["status"], "selected_not_started")
-        self.assertFalse(checkpoint["implementation_authority"])
-        self.assertIsNone(checkpoint["implementation_branch"])
+        self.assertIn(checkpoint["status"], {"selected_not_started", "in_progress", "completed_verified"})
+        if checkpoint["status"] == "selected_not_started":
+            self.assertFalse(checkpoint["implementation_authority"])
+            self.assertIsNone(checkpoint["implementation_branch"])
+        elif checkpoint["status"] == "in_progress":
+            self.assertTrue(checkpoint["implementation_authority"])
+            self.assertEqual(
+                checkpoint["implementation_branch"],
+                "implementation/ari-22a-golden-fixture-intake-unified-catalog-proof",
+            )
+        else:
+            self.assertFalse(checkpoint["implementation_authority"])
         seed = checkpoint.get("terminal_reconciliation_seed", {})
         self.assertEqual(seed.get("cycle_id"), "ari22a-cycle-001")
         self.assertEqual(seed.get("trace_id"), "ari22a-trace-001")

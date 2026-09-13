@@ -1,5 +1,5 @@
 {
-  "schema_version": "20.11.0",
+  "schema_version": "20.12.0",
   "projection_scope": "compact_current_selector",
   "history_rule": "Detailed predecessor execution history remains immutable in Git ancestry and per-work-item checkpoints; this selector carries only current state plus maintenance proof rows required by current validation.",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
@@ -13,7 +13,7 @@
   "product_execution_lanes": "governance/ai/runtime/PRODUCT_EXECUTION_LANES.json",
   "tranche_readiness_index": "governance/ai/runtime/TRANCHE_READINESS_INDEX.json",
   "primary_attempt_id": "ARI-22A-attempt-001",
-  "selection_reason": "ARI-21 is completed_verified from application PR 466 with exact-head cross-platform Validation Core evidence. ARI-22A is the strict selected_not_started successor with no implementation branch or authority.",
+  "selection_reason": "Owner authorized ARI-22A execution on 2026-09-13. ARI-21 is completed_verified and ARI-22A is now in_progress on its reserved branch under the sealed ARI family preflight.",
   "active_attempt": {
     "work_item_id": "ARI-22A",
     "attempt_id": "ARI-22A-attempt-001",
@@ -23,10 +23,10 @@
     "owner_selected": true,
     "repository": "cybalicistjt-stack/multiversal-aioc",
     "checkpoint_path": "governance/ai/work-state/ARI-22A-attempt-001.json",
-    "status": "selected_not_started",
-    "implementation_branch": null,
-    "implementation_authority": false,
-    "active_item": "ARI-22A \u2014 Golden Fixture Intake & Unified Catalog Proof"
+    "status": "in_progress",
+    "implementation_branch": "implementation/ari-22a-golden-fixture-intake-unified-catalog-proof",
+    "implementation_authority": true,
+    "active_item": "ARI-22A — Golden Fixture Intake & Unified Catalog Proof"
   },
   "active_program": {
     "program_id": "ARI",
@@ -44,13 +44,13 @@
     "repository_health_maintenance": false,
     "family_preflight_sealed": true,
     "selected_ari_unit": "ARI-22A",
-    "ari_implementation": false,
-    "implementation_branch": null,
+    "ari_implementation": true,
+    "implementation_branch": "implementation/ari-22a-golden-fixture-intake-unified-catalog-proof",
     "paid_provider_activation": false,
     "provider_credentials_or_scraping": false,
     "tester_distribution": false,
     "release_or_deployment": false,
-    "rule": "ARI-22A is selected_not_started only. No product implementation branch or authority exists until its governed start passes the execution transaction preflight; ARI-22B/C remain inactive."
+    "rule": "ARI-22A alone has bounded product implementation authority for golden fixture intake and unified catalog proof on the reserved branch; ARI-22B/C remain inactive."
   },
   "recently_completed_ari_work": [
     {
@@ -131,19 +131,16 @@
       "aioc_repository_health_run": 33166810683,
       "aioc_merge": "c94baa78f0f135681ecaab3e6dc36d5c11b1afa2",
       "aioc_main_health_run": 33166847490,
-      "superseded_prs_closed": [
-        763,
-        770
-      ]
+      "superseded_prs_closed": [763, 770]
     }
   ],
   "selection_invariants": [
     "SGC is completed_verified through SGC-08C and retired from active family execution.",
     "ARI-01 through ARI-21 are completed_verified; ARI-21 is merged with exact-head Linux/Windows deterministic Validation Core evidence.",
     "The live family preflight remains ARI with 24 execution units and ARI-22 pre-split into ARI-22A/B/C.",
-    "ARI-22A is selected_not_started with no implementation branch or implementation authority.",
-    "Before an ARI-22A product branch or PR mutation, the exact authorized branch/open-PR snapshot and atomic start projections must pass scripts/execution_transaction_preflight.py.",
+    "ARI-22A is in_progress with bounded implementation authority only on implementation/ari-22a-golden-fixture-intake-unified-catalog-proof; ARI-22B/C remain inactive.",
+    "Before ARI-22A product mutation, the exact authorized branch/open-PR snapshot and atomic start projections must pass scripts/execution_transaction_preflight.py.",
     "Execution-mode final response remains nonterminal while a governed PR is open, current exact-head validation is active, merge closeout is pending, or execution reconciliation is nonterminal."
   ],
-  "exact_next_action": "Record a governed ARI-22A start projection, run the execution transaction preflight against exact start projections and fresh branch/open-PR state, then create or resume only implementation/ari-22a-golden-fixture-intake-unified-catalog-proof."
+  "exact_next_action": "Validate and merge the governed ARI-22A start projection, pass execution transaction preflight against fresh application branch/open-PR state, then create or resume only implementation/ari-22a-golden-fixture-intake-unified-catalog-proof."
 }
