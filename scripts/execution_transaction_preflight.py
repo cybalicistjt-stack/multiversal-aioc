@@ -63,6 +63,35 @@ def decide_start(snapshot: Mapping[str, Any]) -> dict[str, Any]:
     return {"decision": "CREATE_AUTHORIZED_BRANCH", "authorized_branch": authorized_branch}
 
 
+def decide_execution_route(snapshot: Mapping[str, Any]) -> dict[str, Any]:
+    focused_test_exists = snapshot.get("focused_test_exists") is True
+    context_resolved = snapshot.get("required_context_resolved") is True
+    red_dispatched = snapshot.get("red_validation_dispatched") is True
+    red_observed = snapshot.get("red_result_observed") is True
+    diagnostic_mode = snapshot.get("diagnostic_mode") is True
+    failure_signature = str(snapshot.get("failure_signature") or "").strip()
+
+    if diagnostic_mode:
+        if not failure_signature:
+            return {
+                "decision": "CONTINUE_CONTEXT_RESOLUTION",
+                "repository_search_authorized": False,
+                "reason": "diagnostic mode requires a concrete failure signature",
+            }
+        return {
+            "decision": "DIAGNOSTIC_EXPANSION_ALLOWED",
+            "repository_search_authorized": True,
+            "failure_signature": failure_signature,
+        }
+    if focused_test_exists and context_resolved and not red_dispatched:
+        return {"decision": "DISPATCH_RED_NOW", "repository_search_authorized": False}
+    if red_dispatched and not red_observed:
+        return {"decision": "WAIT_FOR_RED_RESULT", "repository_search_authorized": False}
+    if red_observed:
+        return {"decision": "IMPLEMENT_FROM_RED", "repository_search_authorized": False}
+    return {"decision": "CONTINUE_CONTEXT_RESOLUTION", "repository_search_authorized": False}
+
+
 def _selection(source: Mapping[str, Any], key: str | None = None) -> Mapping[str, Any]:
     if key is None:
         return source
@@ -201,7 +230,7 @@ def _load(path: str) -> dict[str, Any]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Deterministic bounded-execution transaction preflight")
-    parser.add_argument("mode", choices=["start", "outcome", "validation", "closeout"])
+    parser.add_argument("mode", choices=["start", "outcome", "validation", "closeout", "route"])
     parser.add_argument("snapshot", help="JSON snapshot path")
     args = parser.parse_args()
     data = _load(args.snapshot)
@@ -211,6 +240,8 @@ def main() -> int:
         result = validate_execution_outcome(data)
     elif args.mode == "validation":
         result = assess_validation_head(str(data.get("current_head") or ""), data.get("validation_head"), data.get("validation_status"))
+    elif args.mode == "route":
+        result = decide_execution_route(data)
     else:
         result = prepare_closeout(data)
     print(json.dumps(result, indent=2, sort_keys=True))
