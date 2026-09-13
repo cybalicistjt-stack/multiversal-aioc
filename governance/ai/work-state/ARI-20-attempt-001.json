@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.2.0",
+  "work_item_id": "ARI-20",
+  "attempt_id": "ARI-20-attempt-001",
+  "title": "Resource Pack Intake UX",
+  "track": "asset-resource-ingestion-reuse",
+  "source_program": "ARI",
+  "repository": "cybalicistjt-stack/multiversal-aioc",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "estimated_active_minutes": 24,
+  "execution_target_minutes": 24,
+  "minimum_closeout_reserve_minutes": 8,
+  "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
+  "objective": "Prepare the bounded Resource Pack Intake UX only after a governed start: provide archive/folder drop/select, discovery summary, family preview, duplicate/unsupported warnings, provenance/rights review and bulk acceptance with accessible non-drag alternatives over existing ARI intake truth.",
+  "predecessor": {
+    "work_item_id": "ARI-19",
+    "status": "completed_verified",
+    "application_pr": 464,
+    "application_validated_head": "db5dd26e7f689795416a1e74773bb1b3f1b2c3dc",
+    "application_validation_run": 34751120160,
+    "deterministic_receipt_sha256": "54d7babe26e092be97be8f6be0a8857adecffb6180dd3c6eec2579a1bbc53e7f",
+    "application_merge_sha": "53abe40062082c895c54168fbdabb30e9d101ec1"
+  },
+  "owner_sequence_authorization": {
+    "source": "Explicit owner instruction in this execution on 2026-09-13",
+    "authorized_execution_units": ["ARI-20", "ARI-21", "ARI-22A", "ARI-22B", "ARI-22C"],
+    "rule": "Execute strictly in order; each unit retains its own bounded scope, validation, integration, closeout, and strict-successor selection."
+  },
+  "strict_successor": "ARI-21",
+  "reserved_branch": "implementation/ari-20-resource-pack-intake-ux",
+  "selection_boundaries": [
+    "ARI-19 is completed_verified; the reusable picker/query contract is closed.",
+    "ARI-20 is selected only and has no implementation branch or implementation authority.",
+    "ARI-20 consumes existing archive/discovery/classification/provenance/rights/catalog contracts rather than creating parallel resource truth.",
+    "Drop/select must have accessible non-drag alternatives; unsupported/duplicate/rights states remain explicit before bulk acceptance.",
+    "No ARI-21 relink/rebuild recovery or ARI-22 closure work is authorized by selection.",
+    "ARI-21 and all later ARI implementation remain inactive until ARI-20 is completed_verified."
+  ],
+  "active_substep": "selected_not_started",
+  "next_action": "Record a governed ARI-20 start projection before creating the reserved branch, then execute only the bounded resource-pack intake UX tranche through focused regression, exact-head validation, merge and closeout."
+}
