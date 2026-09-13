@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "status": "CURRENT",
   "profile_id": "MV-EXECUTION-PROFILE-001",
   "authority": "Canonical machine-readable execution service objective and bounded-tranche timing policy.",
@@ -67,6 +67,27 @@
       "context_rule": "Normal execution is restricted to the declared hermetic tranche context. Repository-wide search or undeclared reads require diagnostic_mode=true and a concrete failure_signature.",
       "red_transition_rule": "When a focused test exists and required context is resolved, DISPATCH_RED_NOW is the next legal progression. Additional ordinary research/search before RED is non-progress.",
       "validation_generation_rule": "Ordinary focused Validation Core profiles are generated deterministically from a small work-item data record and reuse the canonical Linux/Windows validation workflow."
+    },
+    "critical_path_optimization": {
+      "atomic_projection": {
+        "planner": "scripts/execution_atomic_projection.py",
+        "git_object_mutation_preferred": true,
+        "commit_shape": "one_tree_one_commit_one_ref_update",
+        "mutation_sequence": ["create_blob", "create_tree", "create_commit", "update_ref"],
+        "temporary_workflow_generation_prohibited_when_git_objects_available": true,
+        "rule": "Start and closeout projections that mutate several control-plane paths are constructed from one validated base and published as one Git tree, one commit and one ref update. Do not create per-tranche temporary workflow files merely to obtain atomic multi-file mutation when Git-object primitives are available."
+      },
+      "terminal_proof": {
+        "automatic_main_health_proof": "scripts/execution_terminal_auto_proof.py",
+        "workflow": ".github/workflows/validate-repository-health.yml",
+        "rule": "A newly completed bounded implementation unit is terminally reconciled inside the already-required canonical-main repository-health run. Do not launch a separate one-shot terminal-proof workflow when canonical-main health can perform the same proof after its authority and regression gates pass."
+      },
+      "incremental_validation": {
+        "application_policy": "Reuse compatible per-OS TypeScript incremental metadata while retaining the full declared Linux/Windows typecheck and deterministic comparison acceptance surface.",
+        "checkout_policy": "Fetch only the Git history the consumer actually requires; exact-head profile jobs use shallow checkout, diff selectors retain sufficient base history, and AIOC main terminal comparison retains the candidate plus parent.",
+        "test_impact_selection": "deferred_until_trustworthy_dependency_graph_exists",
+        "fallback_rule": "Do not skip full required acceptance work based on impact analysis until a validated dependency graph and deterministic full-suite fallback are in place."
+      }
     },
     "before_product_branch_creation": [
       "validate checkpoint/pointer/authority/runtime/compiled start projection agreement",
