@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.3.0",
+  "schema_version": "0.4.0",
   "work_item_id": "ARI-20",
   "attempt_id": "ARI-20-attempt-001",
   "title": "Resource Pack Intake UX",
@@ -16,6 +16,7 @@
   "execution_target_minutes": 24,
   "minimum_closeout_reserve_minutes": 8,
   "family_preflight": "governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json",
+  "execution_context": "governance/ai/runtime/execution-contexts/ARI-20-attempt-001.json",
   "objective": "Implement the bounded Resource Pack Intake UX: provide archive/folder drop/select, discovery summary, family preview, duplicate/unsupported warnings, provenance/rights review and bulk acceptance with accessible non-drag alternatives over existing ARI intake truth.",
   "predecessor": {
     "work_item_id": "ARI-19",
@@ -59,6 +60,15 @@
     "No ARI-21 relink/rebuild recovery or ARI-22 closure work is authorized by this start.",
     "ARI-21 and all later ARI implementation remain inactive until ARI-20 is completed_verified."
   ],
-  "active_substep": "governed_start",
-  "next_action": "Validate and merge this AIOC start projection, run the transaction preflight against fresh branch/open-PR state, then create only the reserved application branch and execute ARI-20 through focused regression, exact-head validation, squash merge and closeout."
+  "observed_recovery_state": {
+    "governed_start_pr": 1148,
+    "governed_start_state": "merged",
+    "implementation_branch_exists": true,
+    "implementation_head": "8fb80ba95c2218cfb733f57572ac9a2e3359011f",
+    "focused_test_exists": true,
+    "application_pr_state": "absent",
+    "validation_state": "not_dispatched"
+  },
+  "active_substep": "implementation_red",
+  "next_action": "Use the declared hermetic execution context and generated ARI-20 focused validation profile, then dispatch canonical RED immediately. Ordinary repository search is not authorized unless RED produces a concrete diagnostic failure signature."
 }
