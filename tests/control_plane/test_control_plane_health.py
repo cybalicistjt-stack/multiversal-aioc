@@ -38,6 +38,13 @@ if _routing_spec is None or _routing_spec.loader is None:
 _routing = importlib.util.module_from_spec(_routing_spec)
 _routing_spec.loader.exec_module(_routing)
 
+_CAPSULE = Path(__file__).with_name("test_execution_capsule.py")
+_capsule_spec = importlib.util.spec_from_file_location("test_execution_capsule", _CAPSULE)
+if _capsule_spec is None or _capsule_spec.loader is None:
+    raise RuntimeError(f"unable to load execution-capsule regression: {_CAPSULE}")
+_capsule = importlib.util.module_from_spec(_capsule_spec)
+_capsule_spec.loader.exec_module(_capsule)
+
 _ARI22A_REVIEW = Path(__file__).with_name("test_ari22a_execution_review_gate.py")
 _ari22a_review_spec = importlib.util.spec_from_file_location("test_ari22a_execution_review_gate", _ARI22A_REVIEW)
 if _ari22a_review_spec is None or _ari22a_review_spec.loader is None:
@@ -84,6 +91,7 @@ ExecutionHardeningTests = _hardening.ExecutionHardeningTests
 ExecutionEnvelopeGateTests = _envelope.ExecutionEnvelopeGateTests
 ExecutionReconciliationGateTests = _recon.ExecutionReconciliationGateTests
 ExecutionRoutingGateTests = _routing.ExecutionRoutingGateTests
+ExecutionCapsuleTests = _capsule.ExecutionCapsuleTests
 Ari22AExecutionReviewGateTests = _ari22a_review.Ari22AExecutionReviewGateTests
 
 
