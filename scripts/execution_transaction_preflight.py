@@ -64,6 +64,7 @@ def decide_start(snapshot: Mapping[str, Any]) -> dict[str, Any]:
 
 
 def decide_execution_route(snapshot: Mapping[str, Any]) -> dict[str, Any]:
+    capsule_ready = snapshot.get("capsule_ready") is True
     focused_test_exists = snapshot.get("focused_test_exists") is True
     context_resolved = snapshot.get("required_context_resolved") is True
     red_dispatched = snapshot.get("red_validation_dispatched") is True
@@ -82,6 +83,12 @@ def decide_execution_route(snapshot: Mapping[str, Any]) -> dict[str, Any]:
             "decision": "DIAGNOSTIC_EXPANSION_ALLOWED",
             "repository_search_authorized": True,
             "failure_signature": failure_signature,
+        }
+    if not capsule_ready:
+        return {
+            "decision": "COMPILE_EXECUTION_CAPSULE",
+            "repository_search_authorized": False,
+            "reason": "ordinary execution requires a compiled capsule before RED dispatch",
         }
     if focused_test_exists and context_resolved and not red_dispatched:
         return {"decision": "DISPATCH_RED_NOW", "repository_search_authorized": False}
@@ -130,12 +137,7 @@ def select_merge_method(capabilities: Mapping[str, Any], requested_method: str |
 
 
 def assess_precloseout_readiness(snapshot: Mapping[str, Any]) -> dict[str, Any]:
-    """Decide closeout from terminal invariants; elapsed time is SLO telemetry only.
-
-    Execution System v2 snapshots carry terminal_invariants_satisfied explicitly. A
-    temporary compatibility path accepts legacy envelope snapshots until their callers
-    are migrated, but it also derives readiness from state rather than elapsed time.
-    """
+    """Decide closeout from terminal invariants; elapsed time is SLO telemetry only."""
     elapsed = snapshot.get("elapsed_active_minutes")
     target = snapshot.get("target_cycle_minutes")
     if not isinstance(elapsed, (int, float)) or isinstance(elapsed, bool) or elapsed < 0:
@@ -170,9 +172,6 @@ def assess_precloseout_readiness(snapshot: Mapping[str, Any]) -> dict[str, Any]:
             **telemetry,
         }
 
-    # Legacy compatibility for callers that have not yet migrated to explicit
-    # terminal-invariant state. Time is telemetry only here as well: readiness
-    # requires explicit state evidence that safe fill work has ended.
     safe_work = snapshot.get("safe_same_lane_work_available")
     dynamic_fill = snapshot.get("dynamic_fill_attempted")
     fill_exit_reason = snapshot.get("fill_exit_reason")
@@ -229,6 +228,8 @@ def validate_start_projection(
     authority: Mapping[str, Any],
     runtime: Mapping[str, Any],
     compiled: Mapping[str, Any],
+    *,
+    capsule: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     rows = [
         ("checkpoint", checkpoint),
@@ -261,7 +262,30 @@ def validate_start_projection(
             errors.append(f"{label}:implementation-branch")
     if errors:
         raise TransactionPreflightError("start projection mismatch: " + ",".join(errors))
-    return {"status": "PASS", "authorized_branch": expected["implementation_branch"], "work_item_id": expected["work_item_id"]}
+
+    if not isinstance(capsule, Mapping):
+        raise TransactionPreflightError("governed start requires a compiled execution capsule")
+    capsule_application = capsule.get("application")
+    if not isinstance(capsule_application, Mapping):
+        raise TransactionPreflightError("execution capsule is missing application binding")
+    capsule_digest = str(capsule.get("capsule_digest") or "")
+    if len(capsule_digest) != 64:
+        raise TransactionPreflightError("execution capsule digest must be 64 hex characters")
+    capsule_errors: list[str] = []
+    if capsule.get("work_item_id") != expected["work_item_id"]:
+        capsule_errors.append("work-item")
+    if capsule.get("attempt_id") != expected["attempt_id"]:
+        capsule_errors.append("attempt")
+    if capsule_application.get("implementation_branch") != expected["implementation_branch"]:
+        capsule_errors.append("implementation-branch")
+    if capsule_errors:
+        raise TransactionPreflightError("execution capsule mismatch: " + ",".join(capsule_errors))
+    return {
+        "status": "PASS",
+        "authorized_branch": expected["implementation_branch"],
+        "work_item_id": expected["work_item_id"],
+        "capsule_digest": capsule_digest,
+    }
 
 
 def assess_validation_head(current_head: str, validation_head: str | None, validation_status: str | None) -> dict[str, Any]:
@@ -353,17 +377,16 @@ def validate_execution_outcome(outcome: Mapping[str, Any]) -> dict[str, Any]:
         raise TransactionPreflightError("owner_continue_turns must be a positive integer")
     if not isinstance(achieved, bool):
         raise TransactionPreflightError("single_continue_achieved must be boolean")
-    if turns == 1:
-        if not achieved or incident is not None or blocker is not None:
-            raise TransactionPreflightError("single-Continue outcome must be achieved=true with no incident or blocker")
+
+    has_incident = _structured_terminal_reason(incident, require_reason=True)
+    has_blocker = _structured_terminal_reason(blocker, require_reason=True)
+    if achieved:
+        if turns != 1 or incident is not None or blocker is not None:
+            raise TransactionPreflightError("single-Continue success requires exactly one Continue with no incident or blocker")
         outcome_class = "single_continue"
     else:
-        if achieved:
-            raise TransactionPreflightError("second-or-later Continue cannot be reported as single-Continue success")
-        has_incident = _structured_terminal_reason(incident)
-        has_blocker = _structured_terminal_reason(blocker, require_reason=True)
         if has_incident == has_blocker:
-            raise TransactionPreflightError("second-or-later Continue requires exactly one structured execution_incident or genuine_blocker")
+            raise TransactionPreflightError("unsuccessful single-Continue outcome requires exactly one structured execution_incident or genuine_blocker")
         outcome_class = "execution_incident" if has_incident else "genuine_blocker_exception"
     return {
         "status": "PASS",
