@@ -88,7 +88,7 @@ Ari22AExecutionReviewGateTests = _ari22a_review.Ari22AExecutionReviewGateTests
 
 
 class FamilyExecutionPreflightTests(_legacy.FamilyExecutionPreflightTests):
-    def test_ari_closeout_and_mib16_selection_are_atomic(self) -> None:
+    def test_vti12_closeout_and_current_sgc_selection_are_atomic(self) -> None:
         ari = _legacy._load_json("governance/ai/work-state/ARI-22C-attempt-001.json")
         ari_backlog = _legacy._load_json("governance/application-planning/asset-resource-ingestion-reuse/ARI_PROGRAM_BACKLOG.json")
         mib_backlog = _legacy._load_json("governance/application-planning/multiversal-implementation-backbone/MIB_PROGRAM_BACKLOG.json")
@@ -130,7 +130,7 @@ class FamilyExecutionPreflightTests(_legacy.FamilyExecutionPreflightTests):
         self.assertEqual(compiled_selection["status"], checkpoint["status"])
         self.assertEqual(compiled_selection["implementation_authority"], checkpoint["implementation_authority"])
 
-    def test_completed_family_preflight_remains_sealed_until_successor_governed_start(self) -> None:
+    def test_sgc_execution_units_are_pre_sized_for_one_continue(self) -> None:
         pf = _legacy._load_json("governance/ai/runtime/FAMILY_EXECUTION_PREFLIGHT.json")
         pointer = _legacy._load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
         self.assertEqual(pf["status"], "sealed")
