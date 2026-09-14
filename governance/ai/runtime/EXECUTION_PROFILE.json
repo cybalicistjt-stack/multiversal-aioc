@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.6.0",
+  "schema_version": "1.7.0",
   "status": "CURRENT",
   "profile_id": "MV-EXECUTION-PROFILE-001",
   "authority": "Canonical machine-readable execution service objective and bounded-tranche timing policy.",
@@ -63,19 +63,44 @@
       "validation_profile_generator": "scripts/generate_focused_validation_profile.py",
       "red_dispatch_decision": "DISPATCH_RED_NOW",
       "canonical_state_rule": "Lifecycle phase and next action are derived from the canonical execution record plus observed repository facts; manually authored narrative next-action text is not independent authority.",
+      "response_gate_rule": "Every reconciled nonclosed execution state emits response_gate=CONTINUE_EXECUTION. A closed lifecycle state emits TERMINATION_PREFLIGHT_REQUIRED and is not itself permission to stop; only the termination preflight may authorize a terminal response.",
       "projection_rule": "Pointer, authority, runtime and compiled selector rows are materialized views of one canonical execution record and must not independently invent work-item, attempt, status, authority or branch state.",
       "context_rule": "Normal execution is restricted to the declared hermetic tranche context. Repository-wide search or undeclared reads require diagnostic_mode=true and a concrete failure_signature.",
       "red_transition_rule": "When a focused test exists and required context is resolved, DISPATCH_RED_NOW is the next legal progression. Additional ordinary research/search before RED is non-progress.",
       "validation_generation_rule": "Ordinary focused Validation Core profiles are generated deterministically from a small work-item data record and reuse the canonical Linux/Windows validation workflow."
     },
+    "human_ai_team_contract": {
+      "agent_execution_role": "execute_authorized_unit_to_terminal_boundary",
+      "owner_role": "set_priority_and_resolve_explicit_owner_decisions",
+      "progress_update_is_terminal": false,
+      "discover_repository_capabilities_before_side_effects": true,
+      "interrupt_only_for": ["genuine_blocker", "owner_decision_required", "out_of_scope_high_risk_action"],
+      "retry_threshold_exceeded_requires_escalation": true,
+      "shared_task_model_rule": "The canonical checkpoint, state reconciler, response gate, execution envelope and terminal preflight are the shared human-AI task model. Progress narration never substitutes for those state transitions.",
+      "handoff_rule": "If context or conversation changes, preserve the same cycle/trace identity and next machine action. Do not transfer responsibility back to the owner merely because a model session or logical subtask ended."
+    },
     "critical_path_optimization": {
+      "repository_capability_preflight": {
+        "planner": "scripts/execution_transaction_preflight.py",
+        "mode": "merge-method",
+        "fresh_repository_metadata_required": true,
+        "rule": "Before any pull-request merge side effect, derive the merge method from a fresh repository capability snapshot. An unsupported requested method returns STOP_UNSUPPORTED_MERGE_METHOD before mutation and is not counted as an execution attempt."
+      },
+      "precloseout_readiness": {
+        "planner": "scripts/execution_transaction_preflight.py",
+        "mode": "precloseout",
+        "required_before_closeout_publication": true,
+        "rule": "Before publishing completed_verified closeout state, reconcile the live owner-Continue envelope. If the target is still pending and safe-work exhaustion is not proven, return CONTINUE_SAME_CYCLE rather than publishing a closeout that canonical-main terminal proof must reject later."
+      },
       "atomic_projection": {
         "planner": "scripts/execution_atomic_projection.py",
         "git_object_mutation_preferred": true,
+        "mutation_transport": "git_data_api",
+        "multi_file_contents_api_prohibited": true,
         "commit_shape": "one_tree_one_commit_one_ref_update",
         "mutation_sequence": ["create_blob", "create_tree", "create_commit", "update_ref"],
         "temporary_workflow_generation_prohibited_when_git_objects_available": true,
-        "rule": "Start and closeout projections that mutate several control-plane paths are constructed from one validated base and published as one Git tree, one commit and one ref update. Do not create per-tranche temporary workflow files merely to obtain atomic multi-file mutation when Git-object primitives are available."
+        "rule": "Start and closeout projections that mutate several control-plane paths are constructed from one validated base and published as one Git tree, one commit and one ref update. Multi-file contents-API mutation is prohibited because sequential blob-SHA updates create stale-write and transient-inconsistency risk. Do not create per-tranche temporary workflow files merely to obtain atomic multi-file mutation when Git-object primitives are available."
       },
       "terminal_proof": {
         "automatic_main_health_proof": "scripts/execution_terminal_auto_proof.py",
@@ -95,7 +120,7 @@
       "resume the exact authorized branch/open PR when present; never create an alternate duplicate attempt"
     ],
     "validation_evidence_rule": "Only evidence whose validated head equals the current candidate head counts toward merge or closeout; superseded heads are non-counting without needing another broad discovery pass.",
-    "closeout_precompute_rule": "During current-head validation, precompute all closeout/successor projections that do not depend on final evidence. Leave validated head, run, deterministic receipt and merge SHA empty until observed.",
+    "closeout_precompute_rule": "During current-head validation, precompute all closeout/successor projections that do not depend on final evidence. Leave validated head, run, deterministic receipt and merge SHA empty until observed. Before publishing closeout, execute the precloseout readiness gate against the live execution envelope.",
     "terminal_outcome_fields": ["owner_continue_turns", "single_continue_achieved", "execution_incident", "genuine_blocker"],
     "terminal_outcome_rule": "For governed execution units completed after MV-CONT-010, owner_continue_turns=1 requires single_continue_achieved=true with execution_incident=null and genuine_blocker=null. More than one owner Continue requires single_continue_achieved=false and exactly one terminal reason: a structured execution_incident when execution stopped without a genuine blocker, or a structured genuine_blocker when an external/environment constraint forced the additional owner turn. The two reasons are mutually exclusive.",
     "final_response_rule": "Execution mode may emit a terminal final response only after a fresh termination preflight returns ALLOW_FINAL_RESPONSE. Open PR, active current-head validation, merged-with-closeout-pending, a nonterminal execution envelope, or unreconciled execution identity/effects/evidence are independently nonterminal even if a pending-step list was accidentally incomplete."

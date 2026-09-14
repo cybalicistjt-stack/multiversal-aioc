@@ -92,6 +92,85 @@ def decide_execution_route(snapshot: Mapping[str, Any]) -> dict[str, Any]:
     return {"decision": "CONTINUE_CONTEXT_RESOLUTION", "repository_search_authorized": False}
 
 
+def select_merge_method(capabilities: Mapping[str, Any], requested_method: str | None = None) -> dict[str, Any]:
+    """Choose a repository-supported PR merge method before issuing a merge side effect.
+
+    Repository metadata is intentionally passed in rather than fetched here so this
+    deterministic control can be tested and so the caller must supply a fresh capability
+    snapshot from the repository being mutated.
+    """
+    capability_keys = (
+        ("squash", "allow_squash_merge"),
+        ("merge", "allow_merge_commit"),
+        ("rebase", "allow_rebase_merge"),
+    )
+    supported = [method for method, key in capability_keys if capabilities.get(key) is True]
+    if not supported:
+        raise TransactionPreflightError("repository exposes no supported merge method")
+    if requested_method is not None:
+        normalized = str(requested_method).strip().lower()
+        if normalized not in {"merge", "squash", "rebase"}:
+            raise TransactionPreflightError("requested_method must be merge, squash, or rebase")
+        if normalized not in supported:
+            return {
+                "schema_version": "1.0.0",
+                "decision": "STOP_UNSUPPORTED_MERGE_METHOD",
+                "requested_method": normalized,
+                "supported_methods": supported,
+            }
+        selected = normalized
+    else:
+        selected = supported[0]
+    return {
+        "schema_version": "1.0.0",
+        "decision": "USE_MERGE_METHOD",
+        "merge_method": selected,
+        "supported_methods": supported,
+    }
+
+
+def assess_precloseout_readiness(snapshot: Mapping[str, Any]) -> dict[str, Any]:
+    """Reject closeout publication while the owner-Continue envelope is nonterminal."""
+    elapsed = snapshot.get("elapsed_active_minutes")
+    target = snapshot.get("target_cycle_minutes")
+    safe_work = snapshot.get("safe_same_lane_work_available")
+    dynamic_fill = snapshot.get("dynamic_fill_attempted")
+    fill_exit_reason = snapshot.get("fill_exit_reason")
+
+    if not isinstance(elapsed, (int, float)) or isinstance(elapsed, bool) or elapsed < 0:
+        raise TransactionPreflightError("elapsed_active_minutes must be a non-negative number")
+    if not isinstance(target, (int, float)) or isinstance(target, bool) or target <= 0:
+        raise TransactionPreflightError("target_cycle_minutes must be a positive number")
+    if not isinstance(safe_work, bool):
+        raise TransactionPreflightError("safe_same_lane_work_available must be boolean")
+    if not isinstance(dynamic_fill, bool):
+        raise TransactionPreflightError("dynamic_fill_attempted must be boolean")
+    if fill_exit_reason not in {None, "safe_work_exhausted", "closeout_switch_reached"}:
+        raise TransactionPreflightError("fill_exit_reason is invalid")
+
+    remaining = max(float(target) - float(elapsed), 0.0)
+    if float(elapsed) >= float(target):
+        return {
+            "schema_version": "1.0.0",
+            "decision": "READY_FOR_CLOSEOUT",
+            "reason_code": "MVEXEC-ENVELOPE-READY",
+            "remaining_active_minutes": 0.0,
+        }
+    if safe_work is False and dynamic_fill is True and fill_exit_reason == "safe_work_exhausted":
+        return {
+            "schema_version": "1.0.0",
+            "decision": "READY_FOR_CLOSEOUT",
+            "reason_code": "MVEXEC-ENVELOPE-SAFE-WORK-EXHAUSTED",
+            "remaining_active_minutes": remaining,
+        }
+    return {
+        "schema_version": "1.0.0",
+        "decision": "CONTINUE_SAME_CYCLE",
+        "reason_code": "MVEXEC-ENVELOPE-TARGET-PENDING",
+        "remaining_active_minutes": remaining,
+    }
+
+
 def _selection(source: Mapping[str, Any], key: str | None = None) -> Mapping[str, Any]:
     if key is None:
         return source
@@ -164,6 +243,25 @@ def assess_validation_head(current_head: str, validation_head: str | None, valid
 
 
 def prepare_closeout(snapshot: Mapping[str, Any]) -> dict[str, Any]:
+    envelope_keys = {
+        "elapsed_active_minutes",
+        "target_cycle_minutes",
+        "safe_same_lane_work_available",
+        "dynamic_fill_attempted",
+        "fill_exit_reason",
+    }
+    if envelope_keys.intersection(snapshot.keys()):
+        if not envelope_keys.issubset(snapshot.keys()):
+            missing = sorted(envelope_keys.difference(snapshot.keys()))
+            raise TransactionPreflightError("closeout envelope snapshot incomplete: " + ",".join(missing))
+        readiness = assess_precloseout_readiness(snapshot)
+        if readiness["decision"] != "READY_FOR_CLOSEOUT":
+            return {
+                **readiness,
+                "successor": snapshot.get("strict_successor"),
+                "evidence_placeholders": [],
+            }
+
     required = ("validated_head", "validation_run", "deterministic_receipt_sha256", "merge_sha")
     placeholders = [key for key in required if not snapshot.get(key)]
     current_head = str(snapshot.get("current_head") or "")
@@ -230,7 +328,7 @@ def _load(path: str) -> dict[str, Any]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Deterministic bounded-execution transaction preflight")
-    parser.add_argument("mode", choices=["start", "outcome", "validation", "closeout", "route"])
+    parser.add_argument("mode", choices=["start", "outcome", "validation", "closeout", "route", "merge-method", "precloseout"])
     parser.add_argument("snapshot", help="JSON snapshot path")
     args = parser.parse_args()
     data = _load(args.snapshot)
@@ -242,6 +340,10 @@ def main() -> int:
         result = assess_validation_head(str(data.get("current_head") or ""), data.get("validation_head"), data.get("validation_status"))
     elif args.mode == "route":
         result = decide_execution_route(data)
+    elif args.mode == "merge-method":
+        result = select_merge_method(data, data.get("requested_method"))
+    elif args.mode == "precloseout":
+        result = assess_precloseout_readiness(data)
     else:
         result = prepare_closeout(data)
     print(json.dumps(result, indent=2, sort_keys=True))
