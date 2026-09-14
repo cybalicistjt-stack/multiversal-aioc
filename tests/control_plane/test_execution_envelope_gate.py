@@ -45,6 +45,20 @@ def _valid_reconciliation(cycle_id: str) -> dict:
     return bundle
 
 
+def _envelope(*, phase: str = "closed", elapsed: float = 11.0, closeout_complete: bool = True, target: float = 24.0, switch: float = 16.0) -> dict:
+    return {
+        "cycle_id": "HAI-CYCLE-004",
+        "phase": phase,
+        "elapsed_active_minutes": elapsed,
+        "closeout_switch_active_minute": switch,
+        "target_cycle_minutes": target,
+        "safe_same_lane_work_available": False,
+        "dynamic_fill_attempted": True,
+        "closeout_complete": closeout_complete,
+        "fill_exit_reason": "terminal_invariants_satisfied" if phase == "closed" else ("closeout_switch_reached" if phase == "closeout" else None),
+    }
+
+
 class ExecutionEnvelopeGateTests(unittest.TestCase):
     def _completed_state(self) -> dict:
         return {
@@ -61,72 +75,64 @@ class ExecutionEnvelopeGateTests(unittest.TestCase):
             "genuine_blocker": None,
         }
 
-    def test_completed_logical_operation_cannot_end_cycle_while_fill_budget_and_safe_work_remain(self) -> None:
-        state = {**self._completed_state(), "execution_envelope": {"cycle_id":"HAI-CYCLE-004","phase":"fill","elapsed_active_minutes":5.42,"closeout_switch_active_minute":16,"target_cycle_minutes":24,"safe_same_lane_work_available":True,"dynamic_fill_attempted":False,"closeout_complete":False,"fill_exit_reason":None}}
-        result = evaluate(state)
-        self.assertEqual(result["decision"], "CONTINUE_EXECUTION")
-        self.assertEqual(result["reason_code"], "MVTERM-ENVELOPE-FILL")
-
-    def test_operation_completion_must_dynamic_fill_instead_of_incrementing_cycle(self) -> None:
-        state = {**self._completed_state(), "execution_envelope": {"cycle_id":"HAI-CYCLE-004","phase":"fill","elapsed_active_minutes":9.22,"closeout_switch_active_minute":16,"target_cycle_minutes":24,"safe_same_lane_work_available":True,"dynamic_fill_attempted":True,"closeout_complete":False,"fill_exit_reason":None}}
+    def test_nonterminal_fill_state_cannot_return(self) -> None:
+        state = {**self._completed_state(), "execution_envelope": _envelope(phase="fill", elapsed=5.42, closeout_complete=False)}
         result = evaluate(state)
         self.assertEqual((result["decision"], result["reason_code"]), ("CONTINUE_EXECUTION", "MVTERM-ENVELOPE-FILL"))
 
-    def test_closeout_may_start_at_switch_but_final_response_waits_for_shared_closeout(self) -> None:
-        state = {**self._completed_state(), "execution_envelope": {"cycle_id":"HAI-CYCLE-004","phase":"closeout","elapsed_active_minutes":16.1,"closeout_switch_active_minute":16,"target_cycle_minutes":24,"safe_same_lane_work_available":True,"dynamic_fill_attempted":True,"closeout_complete":False,"fill_exit_reason":"closeout_switch_reached"}}
+    def test_incomplete_closeout_cannot_return(self) -> None:
+        state = {**self._completed_state(), "execution_envelope": _envelope(phase="closeout", elapsed=16.1, closeout_complete=False)}
         result = evaluate(state)
         self.assertEqual((result["decision"], result["reason_code"]), ("CONTINUE_EXECUTION", "MVTERM-ENVELOPE-CLOSEOUT"))
 
-    def test_closed_envelope_still_cannot_return_before_target_when_work_was_not_exhausted(self) -> None:
-        state = {**self._completed_state(), "execution_envelope": {"cycle_id":"HAI-CYCLE-004","phase":"closed","elapsed_active_minutes":23.4,"closeout_switch_active_minute":16,"target_cycle_minutes":24,"safe_same_lane_work_available":False,"dynamic_fill_attempted":True,"closeout_complete":True,"fill_exit_reason":"closeout_switch_reached"}}
-        result = evaluate(state)
-        self.assertEqual((result["decision"], result["reason_code"]), ("CONTINUE_EXECUTION", "MVTERM-ENVELOPE-TARGET-PENDING"))
-
-    def test_final_response_allowed_after_target_and_shared_closeout(self) -> None:
-        state = {**self._completed_state(), "execution_envelope": {"cycle_id":"HAI-CYCLE-004","phase":"closed","elapsed_active_minutes":24.0,"closeout_switch_active_minute":16,"target_cycle_minutes":24,"safe_same_lane_work_available":False,"dynamic_fill_attempted":True,"closeout_complete":True,"fill_exit_reason":"closeout_switch_reached"}, "execution_reconciliation": _valid_reconciliation("HAI-CYCLE-004")}
+    def test_terminal_state_before_latency_slo_returns_immediately(self) -> None:
+        state = {**self._completed_state(), "execution_envelope": _envelope(elapsed=11.0), "execution_reconciliation": _valid_reconciliation("HAI-CYCLE-004")}
         result = evaluate(state)
         self.assertEqual((result["decision"], result["reason_code"]), ("ALLOW_FINAL_RESPONSE", "MVTERM-COMPLETED-VERIFIED"))
+        self.assertEqual(result["telemetry"]["latency_slo_status"], "within_slo")
 
-    def test_early_exhaustion_requires_explicit_no_safe_work_evidence(self) -> None:
-        state = {**self._completed_state(), "execution_envelope": {"cycle_id":"HAI-CYCLE-004","phase":"closed","elapsed_active_minutes":11.0,"closeout_switch_active_minute":16,"target_cycle_minutes":24,"safe_same_lane_work_available":False,"dynamic_fill_attempted":True,"closeout_complete":True,"fill_exit_reason":"safe_work_exhausted"}, "execution_reconciliation": _valid_reconciliation("HAI-CYCLE-004")}
+    def test_terminal_state_after_latency_slo_returns_and_records_miss(self) -> None:
+        state = {**self._completed_state(), "execution_envelope": _envelope(elapsed=31.0), "execution_reconciliation": _valid_reconciliation("HAI-CYCLE-004")}
         result = evaluate(state)
         self.assertEqual((result["decision"], result["reason_code"]), ("ALLOW_FINAL_RESPONSE", "MVTERM-COMPLETED-VERIFIED"))
+        self.assertEqual(result["telemetry"]["latency_slo_status"], "missed")
+        self.assertEqual(result["telemetry"]["latency_slo_overrun_minutes"], 7.0)
 
-    def test_early_exhaustion_without_dynamic_fill_attempt_is_rejected(self) -> None:
-        state = {**self._completed_state(), "execution_envelope": {"cycle_id":"HAI-CYCLE-004","phase":"closed","elapsed_active_minutes":7.0,"closeout_switch_active_minute":16,"target_cycle_minutes":24,"safe_same_lane_work_available":False,"dynamic_fill_attempted":False,"closeout_complete":True,"fill_exit_reason":"safe_work_exhausted"}}
+    def test_custom_timing_values_are_telemetry_not_terminal_authority(self) -> None:
+        state = {**self._completed_state(), "execution_envelope": _envelope(elapsed=6.0, target=6.0, switch=4.0), "execution_reconciliation": _valid_reconciliation("HAI-CYCLE-004")}
         result = evaluate(state)
-        self.assertEqual((result["decision"], result["reason_code"]), ("CONTINUE_EXECUTION", "MVTERM-ENVELOPE-EARLY-EXIT-UNPROVEN"))
+        self.assertEqual(result["decision"], "ALLOW_FINAL_RESPONSE")
 
-    def test_executor_cannot_shrink_the_canonical_envelope_target(self) -> None:
-        state = {**self._completed_state(), "execution_envelope": {"cycle_id":"HAI-CYCLE-004","phase":"closed","elapsed_active_minutes":6.0,"closeout_switch_active_minute":4,"target_cycle_minutes":6,"safe_same_lane_work_available":False,"dynamic_fill_attempted":True,"closeout_complete":True,"fill_exit_reason":"closeout_switch_reached"}}
+    def test_terminal_state_still_requires_reconciliation(self) -> None:
+        state = {**self._completed_state(), "execution_envelope": _envelope(elapsed=11.0)}
         result = evaluate(state)
-        self.assertEqual((result["decision"], result["reason_code"]), ("CONTINUE_EXECUTION", "MVTERM-ENVELOPE-POLICY-MISMATCH"))
+        self.assertEqual((result["decision"], result["reason_code"]), ("CONTINUE_EXECUTION", "MVTERM-RECONCILIATION-MISSING"))
 
     def test_missing_envelope_blocks_execution_mode_final_response(self) -> None:
         result = evaluate(self._completed_state())
         self.assertEqual((result["decision"], result["reason_code"]), ("CONTINUE_EXECUTION", "MVTERM-ENVELOPE-MISSING"))
 
-    def test_execution_profile_persists_cycle_identity_and_dynamic_fill(self) -> None:
+    def test_execution_profile_defines_latency_slo_without_minimum_runtime(self) -> None:
         profile = json.loads((ROOT / "governance/ai/runtime/EXECUTION_PROFILE.json").read_text(encoding="utf-8"))
+        timing = profile["timing"]
         envelope = profile["execution_envelope"]
-        self.assertTrue(envelope["terminal_gate_required"])
-        self.assertIn("remains stable across logical operations", envelope["cycle_identity_rule"])
-        self.assertIn("immediately selects the next safe same-lane operation", envelope["dynamic_fill_rule"])
+        self.assertEqual(timing["latency_slo_minutes"], 24)
+        self.assertFalse(timing["minimum_runtime_gate"])
+        self.assertIn("latency SLO", envelope["latency_rule"])
+        self.assertIn("Elapsed time never", envelope["terminal_rule"])
         self.assertIn("Conversation change", envelope["interruption_rule"])
 
-    def test_bootstrap_requires_envelope_recovery_and_forbids_operation_boundary_stop(self) -> None:
+    def test_bootstrap_treats_time_as_slo_not_permission_to_stop(self) -> None:
         bootstrap = (ROOT / "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md").read_text(encoding="utf-8")
-        required = ["execution envelope","logical operation is not a cycle boundary","resume the same `cycle_id`","dynamic fill","safe same-lane work","24-minute"]
-        for phrase in required:
-            with self.subTest(phrase=phrase):
-                self.assertIn(phrase, bootstrap)
+        self.assertIn("latency SLO", bootstrap)
+        self.assertIn("minimum runtime", bootstrap)
+        self.assertIn("terminal invariants", bootstrap)
 
-    def test_efficiency_policy_defines_capacity_based_cycle_boundary(self) -> None:
+    def test_efficiency_policy_treats_elapsed_time_as_telemetry(self) -> None:
         policy = (ROOT / "governance/ai/MULTIVERSAL_CHECKPOINT_AND_VALIDATION_EFFICIENCY_POLICY.md").read_text(encoding="utf-8")
-        required = ["execution envelope","logical-operation completion","dynamic fill","safe same-lane work","cycle identity","24-minute"]
-        for phrase in required:
-            with self.subTest(phrase=phrase):
-                self.assertIn(phrase, policy)
+        self.assertIn("latency SLO", policy)
+        self.assertIn("minimum runtime", policy)
+        self.assertIn("terminal invariants", policy)
 
 
 if __name__ == "__main__":
