@@ -10,6 +10,7 @@ SCRIPTS = ROOT / "scripts"
 if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
+import execution_event_ledger as event_ledger
 import execution_transaction_preflight as preflight
 
 
@@ -137,6 +138,31 @@ class ExecutionCapsuleTests(unittest.TestCase):
         self.assertEqual(result["owner_continue_turns"], 1)
         self.assertFalse(result["single_continue_achieved"])
 
+    def test_event_ledger_incident_prevents_false_single_continue_success(self) -> None:
+        events: list[dict] = []
+        previous = None
+        for sequence, event_type, timestamp, source, payload in (
+            (1, "owner_continue", "2026-09-14T12:09:05-05:00", "owner", {}),
+            (2, "run_started", "2026-09-14T12:09:06-05:00", "supervisor", {}),
+            (3, "execution_incident", "2026-09-14T12:32:00-05:00", "supervisor", {"type": "premature_execution_boundary"}),
+            (4, "run_completed", "2026-09-14T12:40:00-05:00", "supervisor", {}),
+        ):
+            event = event_ledger.build_event(
+                run_id="ARI-22C-attempt-001",
+                sequence=sequence,
+                event_type=event_type,
+                timestamp=timestamp,
+                source=source,
+                payload=payload,
+                previous_digest=previous,
+            )
+            events.append(event)
+            previous = event["event_digest"]
+        metrics = event_ledger.derive_metrics(events, latency_slo_minutes=24.0)
+        self.assertEqual(metrics["owner_continue_count"], 1)
+        self.assertEqual(metrics["execution_incident_count"], 1)
+        self.assertFalse(metrics["single_continue_achieved"])
+
     def test_transition_bundle_is_derived_from_one_canonical_closeout_record(self) -> None:
         reconciler = _load_reconciler()
         materialize = getattr(reconciler, "materialize_transition_bundle", None)
@@ -152,7 +178,7 @@ class ExecutionCapsuleTests(unittest.TestCase):
             "implementation_branch": None,
             "strict_successor": "MIB-16",
             "successor_attempt_id": "MIB-16-attempt-001",
-            "successor_title": "Release Readiness, Diagnostics & Portability",
+            "successor_title": "Diagnostics, Provenance, Dependency and Search Engineering Surfaces",
             "application_pr": 470,
             "validated_head": "6" * 40,
             "validation_run": 34874955597,
