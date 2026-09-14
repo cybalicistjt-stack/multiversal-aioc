@@ -2,7 +2,7 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 7.0.1  
+**Version:** 7.1.0  
 **Status:** ACTIVE  
 **Owner and final authority:** John Brandon Turner
 
@@ -14,7 +14,7 @@ This file is a compact execution map, not a historical manual and not a current-
 
 1. Verify access to the canonical AIOC and application repositories.
 2. Read `governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json` and `governance/ai/runtime/CURRENT_WORK_POINTER.json`.
-3. Read `governance/ai/runtime/EXECUTION_PROFILE.json`, the selected checkpoint, family preflight, and only the roadmap/program paths named by current state.
+3. Read `governance/ai/runtime/EXECUTION_PROFILE.json`, the selected checkpoint, the selected attempt's compiled execution capsule, family preflight, and only the roadmap/program paths named by current state.
 4. Compare the selected attempt to live branch/PR/head/validation evidence. Repair stale or contradictory repository state before unrelated feature work.
 5. Resume the exact unfinished operation. Do not recreate completed work, reset counters, or create an alternate branch/PR when the authorized one exists.
 6. If an interrupted ledger-backed run exists, preserve the same run/cycle/trace identity and resume its next machine action. Conversation boundaries do not transfer routine scheduling responsibility to the owner.
@@ -25,7 +25,15 @@ Only CURRENT authority governs. Load only the selected tranche and declared depe
 
 Before product branch/PR mutation run `scripts/execution_transaction_preflight.py` against a fresh authorized-branch/open-PR snapshot. The transaction gate protects the **exact authorized branch**, carries the **current exact-head validation state**, and retains `owner_continue_turns` only as a legacy compatibility projection; ledger-backed runs derive owner interaction from events. `STOP_DUPLICATE_ATTEMPT` is a control-plane incident. Do not rediscover an already-loaded tool schema, repository capability, branch convention, workflow shape, or merge method unless an invalidating event changes it.
 
-Normal routing stays inside the declared **hermetic tranche context**. `scripts/execution_state_reconciler.py` derives lifecycle/next action and `scripts/execution_context_guard.py` rejects undeclared expansion. When required context is resolved and the focused test exists, `DISPATCH_RED_NOW` is the next legal progression rather than more ordinary discovery.
+### Compiled execution capsule
+
+Before governed start, `scripts/execution_state_reconciler.py` must compile one execution capsule for the selected attempt. The capsule binds the exact application base/head, authorized branch, declared input paths and fixture/interface dependencies, mutation allowlist, focused validation profile/test, fresh merge capability/method, closeout projection set, terminal evidence fields, and strict successor metadata. `scripts/execution_transaction_preflight.py` rejects an in-progress start projection that is not bound to the same capsule/attempt/branch.
+
+Normal execution consumes the capsule instead of rediscovering procedure. `capsule_ready=true` is required before `DISPATCH_RED_NOW`. After governed start, repository-wide search/discovery is denied unless diagnostic mode carries a concrete materially-new failure signature. If the capsule proves insufficient, record that signature, enter diagnostic expansion, repair/recompile the capsule if needed, and then return to bounded execution; do not silently resume broad research.
+
+Start and closeout projection rows are materialized from one canonical transition record. Do not hand-author pointer/authority/runtime/compiled/backlog variants independently when their values are derivable from the transition bundle.
+
+Normal routing stays inside the declared **hermetic tranche context**. `scripts/execution_state_reconciler.py` derives lifecycle/next action and `scripts/execution_context_guard.py` rejects undeclared expansion. When required context is resolved, the capsule is ready, and the focused test exists, `DISPATCH_RED_NOW` is the next legal progression rather than more ordinary discovery.
 
 ## Execution System v2 truth model
 
@@ -90,4 +98,4 @@ Self-imposed response/tool/token/context pressure is not a genuine blocker while
 
 ## Owner operating rule
 
-John sets priority and resolves explicit owner-only decisions. The execution system owns routine scheduling, continuation, verification and recovery. A second owner `Continue` on the same ordinary tranche without a genuine blocker is an execution incident and must be visible in event-derived metrics; it can never be certified as one-Continue success.
+John sets priority and resolves explicit owner-only decisions. The execution system owns routine scheduling, continuation, verification and recovery. A later owner intervention after a premature assistant return is an execution incident even when there was only one explicit `Continue`; it must not be rewritten as single-Continue success. A second owner `Continue` on the same ordinary tranche without a genuine blocker is likewise an execution incident and can never be certified as one-Continue success.
