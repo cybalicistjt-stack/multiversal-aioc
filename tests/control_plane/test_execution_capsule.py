@@ -23,6 +23,21 @@ def _load_reconciler():
     return module
 
 
+def _started_projection():
+    checkpoint = {
+        "work_item_id": "ARI-22C",
+        "attempt_id": "ARI-22C-attempt-001",
+        "status": "in_progress",
+        "implementation_authority": True,
+        "implementation_branch": "implementation/ari-22c-recovery-deterministic-receipt-final-ari-closure-proof",
+    }
+    pointer = {"active_attempt": dict(checkpoint)}
+    authority = {"active_planning_work": {**checkpoint, "work_item": checkpoint["work_item_id"], "state": checkpoint["status"]}}
+    runtime = {"active_work": {**checkpoint, "work_item": checkpoint["work_item_id"], "state": checkpoint["status"]}}
+    compiled = {"current_selection": dict(checkpoint)}
+    return checkpoint, pointer, authority, runtime, compiled
+
+
 class ExecutionCapsuleTests(unittest.TestCase):
     def test_execution_route_requires_compiled_capsule_before_red_dispatch(self) -> None:
         route = preflight.decide_execution_route({
@@ -90,6 +105,37 @@ class ExecutionCapsuleTests(unittest.TestCase):
         self.assertEqual(capsule["strict_successor"]["work_item_id"], "MIB-16")
         self.assertEqual(capsule["post_start_discovery_policy"], "DENY_UNLESS_DIAGNOSTIC_FAILURE_SIGNATURE")
         self.assertEqual(len(capsule["capsule_digest"]), 64)
+
+    def test_governed_start_requires_capsule_bound_to_exact_attempt_and_branch(self) -> None:
+        checkpoint, pointer, authority, runtime, compiled = _started_projection()
+        with self.assertRaises(preflight.TransactionPreflightError):
+            preflight.validate_start_projection(checkpoint, pointer, authority, runtime, compiled)
+
+        capsule = {
+            "work_item_id": "ARI-22C",
+            "attempt_id": "ARI-22C-attempt-001",
+            "capsule_digest": "a" * 64,
+            "application": {
+                "implementation_branch": checkpoint["implementation_branch"],
+            },
+        }
+        result = preflight.validate_start_projection(checkpoint, pointer, authority, runtime, compiled, capsule=capsule)
+        self.assertEqual(result["status"], "PASS")
+        self.assertEqual(result["capsule_digest"], "a" * 64)
+
+    def test_one_continue_can_truthfully_record_premature_boundary_incident(self) -> None:
+        result = preflight.validate_execution_outcome({
+            "owner_continue_turns": 1,
+            "single_continue_achieved": False,
+            "execution_incident": {
+                "type": "premature_execution_boundary",
+                "reason": "assistant returned before governance closeout and successor selection",
+            },
+            "genuine_blocker": None,
+        })
+        self.assertEqual(result["outcome_class"], "execution_incident")
+        self.assertEqual(result["owner_continue_turns"], 1)
+        self.assertFalse(result["single_continue_achieved"])
 
     def test_transition_bundle_is_derived_from_one_canonical_closeout_record(self) -> None:
         reconciler = _load_reconciler()
