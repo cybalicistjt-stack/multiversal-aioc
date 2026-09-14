@@ -3,7 +3,8 @@
 
 A newly completed implementation item is proved in the same main-health run that
 validates its closeout projection. If the main push did not introduce a new completed
-implementation item, the control emits a deterministic SKIP record.
+implementation item or repair its terminal checkpoint, the control emits a deterministic
+SKIP record.
 """
 from __future__ import annotations
 
@@ -120,9 +121,9 @@ def _load_pointer(root: Path) -> dict[str, Any]:
     return json.loads((root / POINTER).read_text(encoding="utf-8"))
 
 
-def _load_parent_pointer(root: Path, parent_head: str) -> dict[str, Any] | None:
+def _load_parent_json(root: Path, parent_head: str, path: str) -> dict[str, Any] | None:
     completed = subprocess.run(
-        ["git", "show", f"{parent_head}:{POINTER.as_posix()}"],
+        ["git", "show", f"{parent_head}:{path}"],
         cwd=root,
         text=True,
         capture_output=True,
@@ -133,11 +134,22 @@ def _load_parent_pointer(root: Path, parent_head: str) -> dict[str, Any] | None:
     return json.loads(completed.stdout)
 
 
+def _load_parent_pointer(root: Path, parent_head: str) -> dict[str, Any] | None:
+    return _load_parent_json(root, parent_head, POINTER.as_posix())
+
+
 def _latest_completed(pointer: dict[str, Any]) -> dict[str, Any] | None:
     rows = pointer.get("recently_completed_implementation_work")
     if not isinstance(rows, list) or not rows or not isinstance(rows[0], dict):
         return None
     return rows[0]
+
+
+def _checkpoint_revision_requires_reproof(
+    current_checkpoint: dict[str, Any],
+    parent_checkpoint: dict[str, Any] | None,
+) -> bool:
+    return parent_checkpoint is None or current_checkpoint != parent_checkpoint
 
 
 def prove_new_completion(root: Path, parent_head: str) -> dict[str, Any]:
@@ -147,13 +159,17 @@ def prove_new_completion(root: Path, parent_head: str) -> dict[str, Any]:
     parent_row = _latest_completed(parent or {})
     if current_row is None:
         return {"schema_version": "1.0.0", "status": "SKIP", "reason": "no_completed_implementation_record"}
-    if parent_row and parent_row.get("work_item_id") == current_row.get("work_item_id"):
-        return {"schema_version": "1.0.0", "status": "SKIP", "reason": "no_new_completed_implementation"}
 
     work_item = current_row.get("work_item_id")
     _require(isinstance(work_item, str) and bool(work_item.strip()), "completed work_item_id is required")
     checkpoint_path = current_row.get("checkpoint_path") or f"governance/ai/work-state/{work_item}-attempt-001.json"
     checkpoint = json.loads((root / checkpoint_path).read_text(encoding="utf-8"))
+
+    if parent_row and parent_row.get("work_item_id") == work_item:
+        parent_checkpoint = _load_parent_json(root, parent_head, checkpoint_path)
+        if not _checkpoint_revision_requires_reproof(checkpoint, parent_checkpoint):
+            return {"schema_version": "1.0.0", "status": "SKIP", "reason": "no_new_or_repaired_completed_implementation"}
+
     successor = checkpoint.get("strict_successor")
     active = current.get("active_attempt", {})
     _require(active.get("work_item_id") == successor, "strict successor is not the current selected work item")

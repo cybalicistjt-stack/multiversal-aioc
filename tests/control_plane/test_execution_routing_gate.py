@@ -243,6 +243,21 @@ class ExecutionRoutingGateTests(unittest.TestCase):
         self.assertEqual(state["execution_reconciliation"]["desired_state"], "terminal_verified")
         self.assertEqual(state["execution_reconciliation"]["verification_evidence"][0]["evidence_id"], "application-validation-12345")
 
+    def test_terminal_auto_proof_rechecks_repaired_same_item_checkpoint(self) -> None:
+        proof = _load_module("execution_terminal_auto_proof.py", "execution_terminal_auto_proof_repair")
+        parent = {
+            "status": "completed_verified",
+            "terminal_reconciliation_seed": {"elapsed_active_minutes": 22.0},
+        }
+        unchanged = json.loads(json.dumps(parent))
+        repaired = {
+            "status": "completed_verified",
+            "terminal_reconciliation_seed": {"elapsed_active_minutes": 24.0},
+        }
+        self.assertFalse(proof._checkpoint_revision_requires_reproof(unchanged, parent))
+        self.assertTrue(proof._checkpoint_revision_requires_reproof(repaired, parent))
+        self.assertTrue(proof._checkpoint_revision_requires_reproof(repaired, None))
+
     def test_ari22a_terminal_identity_is_stable_across_lifecycle_transitions(self) -> None:
         checkpoint = json.loads((ROOT / "governance/ai/work-state/ARI-22A-attempt-001.json").read_text(encoding="utf-8"))
         self.assertIn(checkpoint["status"], {"selected_not_started", "in_progress", "completed_verified"})
