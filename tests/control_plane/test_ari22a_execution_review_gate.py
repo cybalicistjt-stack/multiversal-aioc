@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import importlib.util
 import json
 import sys
 import unittest
@@ -12,9 +11,11 @@ if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
 import execution_atomic_projection as atomic
+import execution_environment_admission as environment
+import execution_integrity_gate as integrity
+import execution_merge_authorization as merge_authorization
 import execution_state_reconciler as reconciler
 import execution_transaction_preflight as preflight
-import validate_execution_convergence as convergence
 
 
 class Ari22AExecutionReviewGateTests(unittest.TestCase):
@@ -120,23 +121,25 @@ class Ari22AExecutionReviewGateTests(unittest.TestCase):
         self.assertTrue(contract["retry_threshold_exceeded_requires_escalation"])
 
     def test_ari22b_owner_observation_cannot_be_rewritten_as_single_continue(self) -> None:
-        checkpoint = json.loads(
-            (ROOT / "governance/ai/work-state/ARI-22B-attempt-001.json").read_text(encoding="utf-8")
+        checkpoint = integrity.load_effective_checkpoint(
+            ROOT,
+            "governance/ai/work-state/ARI-22B-attempt-001.json",
         )
         observation = checkpoint["owner_interaction_observation"]
         self.assertEqual(observation["continue_turns"], 2)
         self.assertEqual(observation["stall_nudges"], 1)
         self.assertEqual(checkpoint["convergence_control"]["owner_continue_count"], 2)
         self.assertFalse(checkpoint["convergence_control"]["single_continue_achieved"])
-        convergence.validate_completed_attempt_integrity(
+        integrity.validate_completed_attempt_integrity(
             checkpoint,
             context="ARI-22B-attempt-001",
             service_objective=checkpoint["convergence_control"]["service_objective"],
         )
 
     def test_ari22b_preserves_historical_nonconformance_instead_of_fabricating_diagnostics(self) -> None:
-        checkpoint = json.loads(
-            (ROOT / "governance/ai/work-state/ARI-22B-attempt-001.json").read_text(encoding="utf-8")
+        checkpoint = integrity.load_effective_checkpoint(
+            ROOT,
+            "governance/ai/work-state/ARI-22B-attempt-001.json",
         )
         conformance = checkpoint["execution_conformance"]
         self.assertEqual(conformance["status"], "historical_nonconforming")
@@ -147,17 +150,19 @@ class Ari22AExecutionReviewGateTests(unittest.TestCase):
         self.assertIn("owner_visible_timing_target_missed", conformance["policy_violations"])
 
     def test_owner_visible_timing_uses_real_timestamps_not_synthetic_active_minutes(self) -> None:
-        checkpoint = json.loads(
-            (ROOT / "governance/ai/work-state/ARI-22B-attempt-001.json").read_text(encoding="utf-8")
+        checkpoint = integrity.load_effective_checkpoint(
+            ROOT,
+            "governance/ai/work-state/ARI-22B-attempt-001.json",
         )
-        timing = convergence.measure_owner_visible_timing(checkpoint)
+        timing = integrity.measure_owner_visible_timing(checkpoint)
         self.assertAlmostEqual(timing["wall_elapsed_minutes"], 58.1167, places=3)
         self.assertEqual(timing["target_minutes"], 24.0)
         self.assertFalse(timing["target_met"])
         self.assertEqual(timing["measurement_basis"], "checkpoint_started_at_to_completed_at")
+        self.assertFalse(timing["synthetic_active_minutes_substitute"])
 
     def test_merge_authorization_receipt_binds_repository_head_and_permitted_method(self) -> None:
-        receipt = preflight.authorize_merge_effect(
+        receipt = merge_authorization.authorize_merge_effect(
             {
                 "repository": "cybalicistjt-stack/Multiversal-app",
                 "head_sha": "2" * 40,
@@ -171,9 +176,26 @@ class Ari22AExecutionReviewGateTests(unittest.TestCase):
         self.assertEqual(receipt["expected_head_sha"], "2" * 40)
         self.assertEqual(receipt["merge_method"], "squash")
         self.assertEqual(len(receipt["authorization_digest"]), 64)
-
-        with self.assertRaises(preflight.PreflightError):
-            preflight.authorize_merge_effect(
+        verified = merge_authorization.validate_merge_invocation(
+            receipt,
+            {
+                "repository": "cybalicistjt-stack/Multiversal-app",
+                "expected_head_sha": "2" * 40,
+                "merge_method": "squash",
+            },
+        )
+        self.assertEqual(verified["status"], "PASS")
+        with self.assertRaises(merge_authorization.MergeAuthorizationError):
+            merge_authorization.validate_merge_invocation(
+                receipt,
+                {
+                    "repository": "cybalicistjt-stack/Multiversal-app",
+                    "expected_head_sha": "2" * 40,
+                    "merge_method": "merge",
+                },
+            )
+        with self.assertRaises(preflight.TransactionPreflightError):
+            merge_authorization.authorize_merge_effect(
                 {
                     "repository": "cybalicistjt-stack/Multiversal-app",
                     "head_sha": "stale-or-unknown",
@@ -183,15 +205,42 @@ class Ari22AExecutionReviewGateTests(unittest.TestCase):
                 }
             )
 
-    def test_execution_profile_admits_environment_before_product_mutation_and_quarantines_repairs(self) -> None:
-        profile = json.loads((ROOT / "governance/ai/runtime/EXECUTION_PROFILE.json").read_text(encoding="utf-8"))
-        hardening = profile["execution_hardening"]
-        admission = hardening["environment_admission"]
-        self.assertTrue(admission["required_before_product_mutation"])
-        self.assertTrue(admission["runner_and_validation_harness_readiness_required"])
-        self.assertEqual(admission["repair_lane"], "separate_or_explicitly_classified_validation_harness_repair")
-        self.assertTrue(hardening["owner_visible_timing"]["wall_clock_is_primary"])
-        self.assertFalse(hardening["owner_visible_timing"]["synthetic_active_minutes_may_substitute_for_wall_clock"])
+    def test_environment_admission_blocks_harness_defects_before_product_mutation(self) -> None:
+        base = {
+            "repository": "cybalicistjt-stack/Multiversal-app",
+            "head_sha": "3" * 40,
+            "clean_worktree": True,
+            "tracked_executable_line_endings_normalized": True,
+            "validation_harness_ready": True,
+            "validation_cache_policy_ready": True,
+            "required_runner_lanes_available": True,
+        }
+        admitted = environment.assess_environment(base)
+        self.assertEqual(admitted["decision"], "ADMIT_PRODUCT_MUTATION")
+        self.assertEqual(environment.validate_admission_receipt(admitted)["status"], "PASS")
+        blocked = environment.assess_environment({**base, "validation_cache_policy_ready": False})
+        self.assertEqual(blocked["decision"], "STOP_ENVIRONMENT_NOT_READY")
+        self.assertEqual(blocked["failed_checks"], ["validation_cache_policy_ready"])
+        self.assertEqual(blocked["repair_lane"], "separate_or_explicitly_classified_validation_harness_repair")
+
+    def test_integrity_gate_audits_recent_completed_even_after_successor_selection(self) -> None:
+        result = integrity.check(ROOT)
+        self.assertEqual(result["status"], "PASS")
+        self.assertEqual(result["active_attempt"]["attempt_id"], "ARI-22C-attempt-001")
+        self.assertEqual(result["active_attempt"]["status"], "selected_not_started")
+        recent = {row["attempt_id"]: row for row in result["recent_completed"]}
+        self.assertIn("ARI-22B-attempt-001", recent)
+        self.assertEqual(recent["ARI-22B-attempt-001"]["execution_conformance"], "historical_nonconforming")
+        self.assertEqual(recent["ARI-22B-attempt-001"]["owner_continue_turns"], 2)
+
+    def test_execution_integrity_policy_is_current_and_small_scope(self) -> None:
+        policy = (ROOT / "governance/ai/MULTIVERSAL_EXECUTION_INTEGRITY_POLICY.md").read_text(encoding="utf-8")
+        self.assertIn("**Status:** CURRENT", policy)
+        self.assertIn("small executable seams", policy)
+        self.assertIn("harness complexity budget", policy.lower())
+        self.assertIn("scripts/execution_integrity_gate.py", policy)
+        self.assertIn("scripts/execution_environment_admission.py", policy)
+        self.assertIn("scripts/execution_merge_authorization.py", policy)
 
 
 if __name__ == "__main__":
