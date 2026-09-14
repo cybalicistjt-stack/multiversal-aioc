@@ -134,7 +134,7 @@ def assess_precloseout_readiness(snapshot: Mapping[str, Any]) -> dict[str, Any]:
 
     Execution System v2 snapshots carry terminal_invariants_satisfied explicitly. A
     temporary compatibility path accepts legacy envelope snapshots until their callers
-    are migrated, but it does not change v2 semantics.
+    are migrated, but it also derives readiness from state rather than elapsed time.
     """
     elapsed = snapshot.get("elapsed_active_minutes")
     target = snapshot.get("target_cycle_minutes")
@@ -171,7 +171,8 @@ def assess_precloseout_readiness(snapshot: Mapping[str, Any]) -> dict[str, Any]:
         }
 
     # Legacy compatibility for callers that have not yet migrated to explicit
-    # terminal-invariant state. This path will be retired once all projections use v2.
+    # terminal-invariant state. Time is telemetry only here as well: readiness
+    # requires explicit state evidence that safe fill work has ended.
     safe_work = snapshot.get("safe_same_lane_work_available")
     dynamic_fill = snapshot.get("dynamic_fill_attempted")
     fill_exit_reason = snapshot.get("fill_exit_reason")
@@ -183,26 +184,23 @@ def assess_precloseout_readiness(snapshot: Mapping[str, Any]) -> dict[str, Any]:
         raise TransactionPreflightError("fill_exit_reason is invalid")
 
     remaining = max(target_f - elapsed_f, 0.0)
-    if elapsed_f >= target_f:
+    if safe_work is False and dynamic_fill is True and fill_exit_reason in {"safe_work_exhausted", "closeout_switch_reached"}:
+        reason = (
+            "MVEXEC-ENVELOPE-SAFE-WORK-EXHAUSTED"
+            if fill_exit_reason == "safe_work_exhausted"
+            else "MVEXEC-LEGACY-STATE-READY"
+        )
         return {
-            "schema_version": "1.0.0",
+            "schema_version": "1.1.0",
             "decision": "READY_FOR_CLOSEOUT",
-            "reason_code": "MVEXEC-ENVELOPE-READY",
-            "remaining_active_minutes": 0.0,
-            **telemetry,
-        }
-    if safe_work is False and dynamic_fill is True and fill_exit_reason == "safe_work_exhausted":
-        return {
-            "schema_version": "1.0.0",
-            "decision": "READY_FOR_CLOSEOUT",
-            "reason_code": "MVEXEC-ENVELOPE-SAFE-WORK-EXHAUSTED",
+            "reason_code": reason,
             "remaining_active_minutes": remaining,
             **telemetry,
         }
     return {
-        "schema_version": "1.0.0",
+        "schema_version": "1.1.0",
         "decision": "CONTINUE_SAME_CYCLE",
-        "reason_code": "MVEXEC-ENVELOPE-TARGET-PENDING",
+        "reason_code": "MVEXEC-LEGACY-TERMINAL-INVARIANTS-PENDING",
         "remaining_active_minutes": remaining,
         **telemetry,
     }
