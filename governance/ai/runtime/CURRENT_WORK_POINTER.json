@@ -1,5 +1,5 @@
 {
-  "schema_version": "20.14.0",
+  "schema_version": "20.15.0",
   "projection_scope": "compact_current_selector",
   "history_rule": "Detailed predecessor execution history remains immutable in Git ancestry and per-work-item checkpoints; this selector carries only current state plus maintenance proof rows required by current validation.",
   "canonical_bootstrap": "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
@@ -12,29 +12,29 @@
   "roadmap_dependency_graph": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json",
   "product_execution_lanes": "governance/ai/runtime/PRODUCT_EXECUTION_LANES.json",
   "tranche_readiness_index": "governance/ai/runtime/TRANCHE_READINESS_INDEX.json",
-  "primary_attempt_id": "ARI-22B-attempt-001",
-  "selection_reason": "Owner authorized ARI-22B execution on 2026-09-14. ARI-22A is completed_verified and ARI-22B is now in_progress on its reserved branch under the sealed ARI family preflight.",
+  "primary_attempt_id": "ARI-22C-attempt-001",
+  "selection_reason": "ARI-22B is completed_verified from application PR 469 with exact-head Linux/Windows deterministic Validation Core evidence. ARI-22C is the strict selected_not_started successor with no implementation branch or authority.",
   "active_attempt": {
-    "work_item_id": "ARI-22B",
-    "attempt_id": "ARI-22B-attempt-001",
+    "work_item_id": "ARI-22C",
+    "attempt_id": "ARI-22C-attempt-001",
     "track": "asset-resource-ingestion-reuse",
     "source_program": "ARI",
     "priority": 1,
     "owner_selected": true,
     "repository": "cybalicistjt-stack/multiversal-aioc",
-    "checkpoint_path": "governance/ai/work-state/ARI-22B-attempt-001.json",
-    "status": "in_progress",
-    "implementation_branch": "implementation/ari-22b-cross-system-reuse-rights-scale-proof",
-    "implementation_authority": true,
-    "active_item": "ARI-22B — Cross-System Reuse, Rights & Scale Proof"
+    "checkpoint_path": "governance/ai/work-state/ARI-22C-attempt-001.json",
+    "status": "selected_not_started",
+    "implementation_branch": null,
+    "implementation_authority": false,
+    "active_item": "ARI-22C — Recovery, Deterministic Receipt & Final ARI Closure Proof"
   },
   "active_program": {
     "program_id": "ARI",
     "name": "Asset Resource Ingestion & Reuse",
     "status": "in_progress",
-    "completed_through": "ARI-22A",
-    "current": "ARI-22B",
-    "strict_next": "ARI-22C",
+    "completed_through": "ARI-22B",
+    "current": "ARI-22C",
+    "strict_next": "MIB-16",
     "last": "ARI-22C",
     "semantic_last": "ARI-22",
     "program_path": "governance/application-planning/asset-resource-ingestion-reuse/ARI_ASSET_RESOURCE_INGESTION_REUSE_PROGRAM.md",
@@ -43,37 +43,37 @@
   "bounded_authority": {
     "repository_health_maintenance": false,
     "family_preflight_sealed": true,
-    "selected_ari_unit": "ARI-22B",
-    "ari_implementation": true,
-    "implementation_branch": "implementation/ari-22b-cross-system-reuse-rights-scale-proof",
+    "selected_ari_unit": "ARI-22C",
+    "ari_implementation": false,
+    "implementation_branch": null,
     "paid_provider_activation": false,
     "provider_credentials_or_scraping": false,
     "tester_distribution": false,
     "release_or_deployment": false,
-    "rule": "ARI-22B alone has bounded product implementation authority for cross-system reuse, rights/use-capability gating, and representative scale proof on the reserved branch; ARI-22C remains inactive."
+    "rule": "ARI-22C is selected_not_started only. No product implementation branch or authority exists until its governed start passes the execution transaction preflight; MIB-16 remains inactive until ARI-22C is completed_verified."
   },
   "recently_completed_ari_work": [
     {
-      "work_item_id": "ARI-22A",
-      "checkpoint_path": "governance/ai/work-state/ARI-22A-attempt-001.json",
+      "work_item_id": "ARI-22B",
+      "checkpoint_path": "governance/ai/work-state/ARI-22B-attempt-001.json",
       "status": "completed_verified",
-      "application_pr": 468,
-      "validated_head": "20fb7c6b29cbf54215d7968736fdf25b4849c7e3",
-      "validation_run": 34759534305,
-      "deterministic_receipt_sha256": "a6f8b70fd47f52d4cc1bebd0a24ddd4a8d8b04c3d2e95982489d311ddde36706",
-      "merge_sha": "95f8ee8cdae919dfd8181bc1140a0463d96fac49"
+      "application_pr": 469,
+      "validated_head": "2c767e32d29bf3028f44d3a1f4fb712a55f44177",
+      "validation_run": 34858778760,
+      "deterministic_receipt_sha256": "db5e98a0dcdce88560c50af5c6fe06bf62c3e2c4507c5f2ef3c6f05a5adebd6b",
+      "merge_sha": "827669179b579af5e73ff3ea144aef2adbcdb222"
     }
   ],
   "recently_completed_implementation_work": [
     {
-      "work_item_id": "ARI-22A",
-      "checkpoint_path": "governance/ai/work-state/ARI-22A-attempt-001.json",
+      "work_item_id": "ARI-22B",
+      "checkpoint_path": "governance/ai/work-state/ARI-22B-attempt-001.json",
       "status": "completed_verified",
-      "application_pr": 468,
-      "validated_head": "20fb7c6b29cbf54215d7968736fdf25b4849c7e3",
-      "validation_run": 34759534305,
-      "deterministic_receipt_sha256": "a6f8b70fd47f52d4cc1bebd0a24ddd4a8d8b04c3d2e95982489d311ddde36706",
-      "merge_sha": "95f8ee8cdae919dfd8181bc1140a0463d96fac49"
+      "application_pr": 469,
+      "validated_head": "2c767e32d29bf3028f44d3a1f4fb712a55f44177",
+      "validation_run": 34858778760,
+      "deterministic_receipt_sha256": "db5e98a0dcdce88560c50af5c6fe06bf62c3e2c4507c5f2ef3c6f05a5adebd6b",
+      "merge_sha": "827669179b579af5e73ff3ea144aef2adbcdb222"
     }
   ],
   "recently_completed_sgc_work": [
@@ -138,11 +138,11 @@
   ],
   "selection_invariants": [
     "SGC is completed_verified through SGC-08C and retired from active family execution.",
-    "ARI-01 through ARI-22A are completed_verified; ARI-22A is merged with exact-head Linux/Windows deterministic Validation Core evidence.",
+    "ARI-01 through ARI-22B are completed_verified; ARI-22B is merged with exact-head Linux/Windows deterministic Validation Core evidence.",
     "The live family preflight remains ARI with 24 execution units and ARI-22 pre-split into ARI-22A/B/C.",
-    "ARI-22B is in_progress with bounded implementation authority only on implementation/ari-22b-cross-system-reuse-rights-scale-proof; ARI-22C remains inactive.",
-    "Before ARI-22B product mutation, the exact authorized branch/open-PR snapshot and atomic start projections must pass scripts/execution_transaction_preflight.py.",
+    "ARI-22C is selected_not_started with no implementation branch or implementation authority; MIB-16 remains inactive.",
+    "Before an ARI-22C product branch or PR mutation, the exact authorized branch/open-PR snapshot and atomic start projections must pass scripts/execution_transaction_preflight.py.",
     "Execution-mode final response remains nonterminal while a governed PR is open, current exact-head validation is active, merge closeout is pending, or execution reconciliation is nonterminal."
   ],
-  "exact_next_action": "Validate and merge the governed ARI-22B start projection, pass execution transaction preflight against fresh application branch/open-PR state, then create or resume only implementation/ari-22b-cross-system-reuse-rights-scale-proof."
+  "exact_next_action": "Record a governed ARI-22C start projection, run the execution transaction preflight against exact start projections and fresh branch/open-PR state, then create or resume only implementation/ari-22c-recovery-deterministic-receipt-final-ari-closure-proof."
 }
