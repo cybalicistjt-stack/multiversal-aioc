@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.8.0",
+  "schema_version": "1.8.1",
   "status": "CURRENT",
   "profile_id": "MV-EXECUTION-PROFILE-001",
   "authority": "Canonical machine-readable execution service objective and bounded-tranche policy.",
@@ -128,7 +128,7 @@
     "validation_evidence_rule": "Only evidence whose validated head equals the current candidate head counts toward merge or closeout; superseded heads are non-counting without needing another broad discovery pass.",
     "closeout_precompute_rule": "During current-head validation, precompute all closeout/successor projections that do not depend on final evidence. Leave validated head, validation run, deterministic receipt and merge SHA empty until observed. Before publishing closeout, reconcile actual terminal invariants and record latency telemetry separately.",
     "terminal_outcome_fields": ["owner_continue_turns", "single_continue_achieved", "execution_incident", "genuine_blocker"],
-    "terminal_outcome_rule": "For legacy governed execution units completed before event-ledger enforcement, the terminal outcome fields remain compatibility projections. For ledger-backed runs, owner_continue_turns and single_continue_achieved are derived from event truth and may not be authored by the executor.",
+    "terminal_outcome_rule": "For legacy governed execution units completed before event-ledger enforcement, the terminal outcome fields remain compatibility projections and a genuine blocker remains the only ordinary exception to one-Continue completion. For ledger-backed runs, owner_continue_turns and single_continue_achieved are derived from event truth and may not be authored by the executor.",
     "final_response_rule": "Execution mode may emit a terminal final response only after a fresh termination preflight returns ALLOW_FINAL_RESPONSE. Open PR, active current-head validation, merged-with-closeout-pending, a nonterminal lifecycle state, or unreconciled execution identity/effects/evidence are independently nonterminal. Elapsed time alone is never a terminal condition."
   },
   "context": {

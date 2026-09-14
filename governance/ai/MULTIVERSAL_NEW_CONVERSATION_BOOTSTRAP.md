@@ -2,7 +2,7 @@
 ## Mandatory Repository-First Session Recovery Protocol
 
 **Document ID:** MV-AI-BOOTSTRAP-001  
-**Version:** 7.0.0  
+**Version:** 7.0.1  
 **Status:** ACTIVE  
 **Owner and final authority:** John Brandon Turner
 
@@ -23,7 +23,9 @@ This file is a compact execution map, not a historical manual and not a current-
 
 Only CURRENT authority governs. Load only the selected tranche and declared dependency closure. Unrelated parallel work is not authorization to load, inspect, or mutate it. Repository-wide expansion requires a concrete failure signature and diagnostic reason.
 
-Before product branch/PR mutation run `scripts/execution_transaction_preflight.py` against a fresh authorized-branch/open-PR snapshot. `STOP_DUPLICATE_ATTEMPT` is a control-plane incident. Do not rediscover an already-loaded tool schema, repository capability, branch convention, workflow shape, or merge method unless an invalidating event changes it.
+Before product branch/PR mutation run `scripts/execution_transaction_preflight.py` against a fresh authorized-branch/open-PR snapshot. The transaction gate protects the **exact authorized branch**, carries the **current exact-head validation state**, and retains `owner_continue_turns` only as a legacy compatibility projection; ledger-backed runs derive owner interaction from events. `STOP_DUPLICATE_ATTEMPT` is a control-plane incident. Do not rediscover an already-loaded tool schema, repository capability, branch convention, workflow shape, or merge method unless an invalidating event changes it.
+
+Normal routing stays inside the declared **hermetic tranche context**. `scripts/execution_state_reconciler.py` derives lifecycle/next action and `scripts/execution_context_guard.py` rejects undeclared expansion. When required context is resolved and the focused test exists, `DISPATCH_RED_NOW` is the next legal progression rather than more ordinary discovery.
 
 ## Execution System v2 truth model
 
