@@ -278,12 +278,18 @@ def validate_completed_attempt_integrity(
     }
 
 
-def _validate_active_attempt(root: Path, pointer: Mapping[str, Any]) -> dict[str, Any]:
+def _validate_active_attempt(
+    root: Path,
+    pointer: Mapping[str, Any],
+    *,
+    service_objective: Mapping[str, Any],
+    latency_slo_minutes: float,
+) -> dict[str, Any]:
     active = pointer.get("active_attempt")
     _require(isinstance(active, Mapping), "current pointer active_attempt missing")
     checkpoint_path = active.get("checkpoint_path")
     _require(isinstance(checkpoint_path, str) and checkpoint_path, "active checkpoint path missing")
-    checkpoint = _load_json(root / checkpoint_path)
+    checkpoint = load_effective_checkpoint(root, checkpoint_path)
     _require(checkpoint.get("attempt_id") == active.get("attempt_id"), "active pointer/checkpoint attempt mismatch")
     status = checkpoint.get("status")
     if status == "selected_not_started":
@@ -306,6 +312,19 @@ def _validate_active_attempt(root: Path, pointer: Mapping[str, Any]) -> dict[str
                 "merge_method": receipt.get("merge_method"),
             },
         )
+        completed_integrity = validate_completed_attempt_integrity(
+            checkpoint,
+            context=str(checkpoint.get("attempt_id") or checkpoint_path),
+            service_objective=service_objective,
+            root=root,
+            latency_slo_minutes=latency_slo_minutes,
+        )
+        return {
+            "attempt_id": checkpoint.get("attempt_id"),
+            "status": status,
+            "integrity": "enforced",
+            "completed_integrity": completed_integrity,
+        }
     return {"attempt_id": checkpoint.get("attempt_id"), "status": status, "integrity": "enforced"}
 
 
@@ -341,7 +360,12 @@ def check(root: Path) -> dict[str, Any]:
             )
         )
 
-    active = _validate_active_attempt(root, pointer)
+    active = _validate_active_attempt(
+        root,
+        pointer,
+        service_objective=service,
+        latency_slo_minutes=float(latency_slo),
+    )
     return {
         "schema_version": "1.1.0",
         "status": "PASS",
