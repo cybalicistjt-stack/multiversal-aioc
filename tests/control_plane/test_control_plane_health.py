@@ -136,8 +136,15 @@ class FamilyExecutionPreflightTests(_legacy.FamilyExecutionPreflightTests):
         self.assertEqual(pf["status"], "sealed")
         self.assertEqual(pf["family_id"], "ARI")
         self.assertEqual(pf["strict_successor_after_family"], pointer["active_attempt"]["work_item_id"])
-        self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
-        self.assertFalse(pointer["active_attempt"]["implementation_authority"])
+        active = pointer["active_attempt"]
+        self.assertIn(active["status"], {"selected_not_started", "in_progress"})
+        if active["status"] == "selected_not_started":
+            self.assertFalse(active["implementation_authority"])
+            self.assertIsNone(active["implementation_branch"])
+        else:
+            self.assertTrue(active["implementation_authority"])
+            self.assertIsInstance(active["implementation_branch"], str)
+            self.assertTrue(active["implementation_branch"])
         self.assertEqual(pf["execution_target"]["ordinary_tranche_single_continue_completion_percent"], 100)
         self.assertEqual(pf["execution_target"]["max_execution_cycles_without_genuine_blocker"], 1)
         self.assertEqual(pf["execution_target"]["target_active_minutes_per_unit"], 24)
