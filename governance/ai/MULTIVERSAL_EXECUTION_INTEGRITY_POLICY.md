@@ -28,6 +28,6 @@ Product completion and execution-quality conformance are independent dimensions.
 
 Historical checkpoint corrections are additive audit records. They must preserve the original bad record so the failure remains inspectable. `governance/ai/execution-audits/ARI-22B_EXECUTION_CORRECTION_2026-09-14.json` is the first such correction and is applied by the integrity gate when auditing ARI-22B.
 
-## Complexity budget
+## Harness complexity budget
 
 New harness controls require a reproduced project failure, an executable acceptance condition, and a regression that demonstrates the failure before the repair. Prefer strengthening an existing state boundary over adding narrative instructions. A control that does not change a machine decision, evidence requirement, or measurable outcome should not be added to the critical path.
