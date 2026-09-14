@@ -238,6 +238,89 @@ class ExecutionSystemV2Tests(unittest.TestCase):
             with self.assertRaises((integrity.ExecutionIntegrityError, ledger.EventLedgerError)):
                 integrity.resolve_execution_truth(root, checkpoint, latency_slo_minutes=24.0)
 
+    def test_legacy_precloseout_compatibility_does_not_restore_minimum_runtime_gate(self) -> None:
+        decision = preflight.assess_precloseout_readiness({
+            "elapsed_active_minutes": 16.1,
+            "target_cycle_minutes": 24.0,
+            "safe_same_lane_work_available": False,
+            "dynamic_fill_attempted": True,
+            "fill_exit_reason": "closeout_switch_reached",
+        })
+        self.assertEqual(decision["decision"], "READY_FOR_CLOSEOUT")
+        self.assertNotEqual(decision["reason_code"], "MVEXEC-ENVELOPE-TARGET-PENDING")
+        self.assertEqual(decision["latency_slo_status"], "within_slo")
+
+    def test_active_completed_attempt_receives_ledger_integrity_audit(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            checkpoint, _ = _ledger_backed_checkpoint(root)
+            service_objective = {
+                "ordinary_tranche_single_continue_target_percent": 100,
+                "max_execution_cycles_without_genuine_blocker": 1,
+                "unrelated_historical_validation_jobs_target": 0,
+                "reruns_without_changed_evidence_target": 0,
+                "post_merge_stale_pointer_target": 0,
+            }
+            checkpoint["owner_interaction_observation"]["continue_turns"] = 2
+            checkpoint["convergence_control"].update({
+                "owner_continue_count": 2,
+                "single_continue_achieved": False,
+                "execution_cycles": 1,
+                "repair_cycles": 0,
+                "no_progress_cycles": 0,
+                "diagnostic_mode": False,
+                "last_failure_signature": None,
+                "last_failure_class": None,
+                "diagnostic_hypotheses": [],
+                "retry_basis": None,
+                "service_objective": service_objective,
+            })
+            checkpoint["execution_conformance"] = {
+                "status": "conforming",
+                "policy_violations": [],
+            }
+            checkpoint["environment_admission"] = integrity.environment.assess_environment({
+                "repository": "cybalicistjt-stack/Multiversal-app",
+                "head_sha": "a" * 40,
+                "clean_worktree": True,
+                "tracked_executable_line_endings_normalized": True,
+                "validation_harness_ready": True,
+                "validation_cache_policy_ready": True,
+                "required_runner_lanes_available": True,
+            })
+            checkpoint["merge_authorization"] = integrity.merge_authorization.authorize_merge_effect({
+                "repository": "cybalicistjt-stack/Multiversal-app",
+                "head_sha": "b" * 40,
+                "allow_squash_merge": True,
+                "allow_merge_commit": False,
+                "allow_rebase_merge": False,
+                "requested_method": "squash",
+            })
+            checkpoint["completion_evidence"] = {"application_validated_head": "b" * 40}
+
+            checkpoint_rel = Path("governance/ai/work-state") / f"{checkpoint['attempt_id']}.json"
+            checkpoint_path = root / checkpoint_rel
+            checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
+            checkpoint_path.write_text(json.dumps(checkpoint), encoding="utf-8")
+
+            runtime_dir = root / "governance/ai/runtime"
+            runtime_dir.mkdir(parents=True, exist_ok=True)
+            (runtime_dir / "CURRENT_WORK_POINTER.json").write_text(json.dumps({
+                "active_attempt": {
+                    "attempt_id": checkpoint["attempt_id"],
+                    "status": "completed_verified",
+                    "checkpoint_path": checkpoint_rel.as_posix(),
+                },
+                "recently_completed_implementation_work": [],
+            }), encoding="utf-8")
+            (runtime_dir / "EXECUTION_PROFILE.json").write_text(json.dumps({
+                "service_objective": service_objective,
+                "timing": {"latency_slo_minutes": 24},
+            }), encoding="utf-8")
+
+            with self.assertRaises(integrity.ExecutionIntegrityError):
+                integrity.check(root)
+
 
 if __name__ == "__main__":
     unittest.main()
