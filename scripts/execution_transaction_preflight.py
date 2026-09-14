@@ -130,17 +130,51 @@ def select_merge_method(capabilities: Mapping[str, Any], requested_method: str |
 
 
 def assess_precloseout_readiness(snapshot: Mapping[str, Any]) -> dict[str, Any]:
-    """Reject closeout publication while the owner-Continue envelope is nonterminal."""
+    """Decide closeout from terminal invariants; elapsed time is SLO telemetry only.
+
+    Execution System v2 snapshots carry terminal_invariants_satisfied explicitly. A
+    temporary compatibility path accepts legacy envelope snapshots until their callers
+    are migrated, but it does not change v2 semantics.
+    """
     elapsed = snapshot.get("elapsed_active_minutes")
     target = snapshot.get("target_cycle_minutes")
-    safe_work = snapshot.get("safe_same_lane_work_available")
-    dynamic_fill = snapshot.get("dynamic_fill_attempted")
-    fill_exit_reason = snapshot.get("fill_exit_reason")
-
     if not isinstance(elapsed, (int, float)) or isinstance(elapsed, bool) or elapsed < 0:
         raise TransactionPreflightError("elapsed_active_minutes must be a non-negative number")
     if not isinstance(target, (int, float)) or isinstance(target, bool) or target <= 0:
         raise TransactionPreflightError("target_cycle_minutes must be a positive number")
+
+    elapsed_f = float(elapsed)
+    target_f = float(target)
+    overrun = max(elapsed_f - target_f, 0.0)
+    telemetry = {
+        "latency_slo_minutes": target_f,
+        "latency_slo_status": "within_slo" if elapsed_f <= target_f else "missed",
+        "latency_slo_overrun_minutes": overrun,
+    }
+
+    if "terminal_invariants_satisfied" in snapshot:
+        terminal = snapshot.get("terminal_invariants_satisfied")
+        if not isinstance(terminal, bool):
+            raise TransactionPreflightError("terminal_invariants_satisfied must be boolean")
+        if terminal:
+            return {
+                "schema_version": "1.1.0",
+                "decision": "READY_FOR_CLOSEOUT",
+                "reason_code": "MVEXEC-TERMINAL-INVARIANTS-SATISFIED",
+                **telemetry,
+            }
+        return {
+            "schema_version": "1.1.0",
+            "decision": "CONTINUE_SAME_CYCLE",
+            "reason_code": "MVEXEC-TERMINAL-INVARIANTS-PENDING",
+            **telemetry,
+        }
+
+    # Legacy compatibility for callers that have not yet migrated to explicit
+    # terminal-invariant state. This path will be retired once all projections use v2.
+    safe_work = snapshot.get("safe_same_lane_work_available")
+    dynamic_fill = snapshot.get("dynamic_fill_attempted")
+    fill_exit_reason = snapshot.get("fill_exit_reason")
     if not isinstance(safe_work, bool):
         raise TransactionPreflightError("safe_same_lane_work_available must be boolean")
     if not isinstance(dynamic_fill, bool):
@@ -148,13 +182,14 @@ def assess_precloseout_readiness(snapshot: Mapping[str, Any]) -> dict[str, Any]:
     if fill_exit_reason not in {None, "safe_work_exhausted", "closeout_switch_reached"}:
         raise TransactionPreflightError("fill_exit_reason is invalid")
 
-    remaining = max(float(target) - float(elapsed), 0.0)
-    if float(elapsed) >= float(target):
+    remaining = max(target_f - elapsed_f, 0.0)
+    if elapsed_f >= target_f:
         return {
             "schema_version": "1.0.0",
             "decision": "READY_FOR_CLOSEOUT",
             "reason_code": "MVEXEC-ENVELOPE-READY",
             "remaining_active_minutes": 0.0,
+            **telemetry,
         }
     if safe_work is False and dynamic_fill is True and fill_exit_reason == "safe_work_exhausted":
         return {
@@ -162,12 +197,14 @@ def assess_precloseout_readiness(snapshot: Mapping[str, Any]) -> dict[str, Any]:
             "decision": "READY_FOR_CLOSEOUT",
             "reason_code": "MVEXEC-ENVELOPE-SAFE-WORK-EXHAUSTED",
             "remaining_active_minutes": remaining,
+            **telemetry,
         }
     return {
         "schema_version": "1.0.0",
         "decision": "CONTINUE_SAME_CYCLE",
         "reason_code": "MVEXEC-ENVELOPE-TARGET-PENDING",
         "remaining_active_minutes": remaining,
+        **telemetry,
     }
 
 
@@ -243,16 +280,32 @@ def assess_validation_head(current_head: str, validation_head: str | None, valid
 
 
 def prepare_closeout(snapshot: Mapping[str, Any]) -> dict[str, Any]:
-    envelope_keys = {
+    v2_envelope_keys = {
+        "terminal_invariants_satisfied",
+        "elapsed_active_minutes",
+        "target_cycle_minutes",
+    }
+    legacy_envelope_keys = {
         "elapsed_active_minutes",
         "target_cycle_minutes",
         "safe_same_lane_work_available",
         "dynamic_fill_attempted",
         "fill_exit_reason",
     }
-    if envelope_keys.intersection(snapshot.keys()):
-        if not envelope_keys.issubset(snapshot.keys()):
-            missing = sorted(envelope_keys.difference(snapshot.keys()))
+    if "terminal_invariants_satisfied" in snapshot:
+        if not v2_envelope_keys.issubset(snapshot.keys()):
+            missing = sorted(v2_envelope_keys.difference(snapshot.keys()))
+            raise TransactionPreflightError("closeout terminal snapshot incomplete: " + ",".join(missing))
+        readiness = assess_precloseout_readiness(snapshot)
+        if readiness["decision"] != "READY_FOR_CLOSEOUT":
+            return {
+                **readiness,
+                "successor": snapshot.get("strict_successor"),
+                "evidence_placeholders": [],
+            }
+    elif legacy_envelope_keys.intersection(snapshot.keys()):
+        if not legacy_envelope_keys.issubset(snapshot.keys()):
+            missing = sorted(legacy_envelope_keys.difference(snapshot.keys()))
             raise TransactionPreflightError("closeout envelope snapshot incomplete: " + ",".join(missing))
         readiness = assess_precloseout_readiness(snapshot)
         if readiness["decision"] != "READY_FOR_CLOSEOUT":
