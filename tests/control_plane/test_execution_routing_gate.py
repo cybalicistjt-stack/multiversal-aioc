@@ -101,6 +101,7 @@ class ExecutionRoutingGateTests(unittest.TestCase):
 
     def test_focused_test_plus_resolved_context_requires_red_dispatch(self) -> None:
         route = preflight.decide_execution_route({
+            "capsule_ready": True,
             "focused_test_exists": True,
             "required_context_resolved": True,
             "red_validation_dispatched": False,
@@ -113,6 +114,7 @@ class ExecutionRoutingGateTests(unittest.TestCase):
 
     def test_red_wait_and_implementation_routes_do_not_reopen_search(self) -> None:
         waiting = preflight.decide_execution_route({
+            "capsule_ready": True,
             "focused_test_exists": True,
             "required_context_resolved": True,
             "red_validation_dispatched": True,
@@ -122,6 +124,7 @@ class ExecutionRoutingGateTests(unittest.TestCase):
         self.assertEqual(waiting["decision"], "WAIT_FOR_RED_RESULT")
         self.assertFalse(waiting["repository_search_authorized"])
         implement = preflight.decide_execution_route({
+            "capsule_ready": True,
             "focused_test_exists": True,
             "required_context_resolved": True,
             "red_validation_dispatched": True,

@@ -170,6 +170,7 @@ def derive_metrics(events: Sequence[Mapping[str, Any]], *, latency_slo_minutes: 
 
     owner_continue_count = len(_events_of_type(events, "owner_continue"))
     owner_stall_nudge_count = len(_events_of_type(events, "owner_stall_nudge"))
+    execution_incident_count = len(_events_of_type(events, "execution_incident"))
     wall_minutes = (completed_at - started_at).total_seconds() / 60.0
     slo = float(latency_slo_minutes)
     overrun = max(wall_minutes - slo, 0.0)
@@ -181,7 +182,12 @@ def derive_metrics(events: Sequence[Mapping[str, Any]], *, latency_slo_minutes: 
         "ledger_head_digest": chain["head_digest"],
         "owner_continue_count": owner_continue_count,
         "owner_stall_nudge_count": owner_stall_nudge_count,
-        "single_continue_achieved": owner_continue_count == 1 and owner_stall_nudge_count == 0,
+        "execution_incident_count": execution_incident_count,
+        "single_continue_achieved": (
+            owner_continue_count == 1
+            and owner_stall_nudge_count == 0
+            and execution_incident_count == 0
+        ),
         "owner_visible_wall_minutes": wall_minutes,
         "latency_slo_minutes": slo,
         "latency_slo_status": "within_slo" if wall_minutes <= slo else "missed",

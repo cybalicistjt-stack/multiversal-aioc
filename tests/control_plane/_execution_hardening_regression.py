@@ -58,10 +58,20 @@ def _started_projection() -> tuple[dict, dict, dict, dict, dict]:
             "work_item_id": "ARI-19",
             "attempt_id": "ARI-19-attempt-001",
             "status": "in_progress",
+            "implementation_branch": checkpoint["implementation_branch"],
             "implementation_authority": True,
         }
     }
     return checkpoint, pointer, authority, runtime, compiled
+
+
+def _capsule(checkpoint: dict) -> dict:
+    return {
+        "work_item_id": checkpoint["work_item_id"],
+        "attempt_id": checkpoint["attempt_id"],
+        "capsule_digest": "a" * 64,
+        "application": {"implementation_branch": checkpoint["implementation_branch"]},
+    }
 
 
 class ExecutionHardeningTests(unittest.TestCase):
@@ -109,10 +119,11 @@ class ExecutionHardeningTests(unittest.TestCase):
 
     def test_started_projection_must_be_atomic_before_branch_mutation(self) -> None:
         checkpoint, pointer, authority, runtime, compiled = _started_projection()
-        validate_start_projection(checkpoint, pointer, authority, runtime, compiled)
+        capsule = _capsule(checkpoint)
+        validate_start_projection(checkpoint, pointer, authority, runtime, compiled, capsule=capsule)
         compiled["current_selection"]["status"] = "selected_not_started"
         with self.assertRaises(TransactionPreflightError):
-            validate_start_projection(checkpoint, pointer, authority, runtime, compiled)
+            validate_start_projection(checkpoint, pointer, authority, runtime, compiled, capsule=capsule)
 
     def test_only_validation_for_current_exact_head_can_count(self) -> None:
         current = "a" * 40
@@ -181,7 +192,7 @@ class ExecutionHardeningTests(unittest.TestCase):
             validate_execution_outcome({
                 "owner_continue_turns": 2,
                 "single_continue_achieved": False,
-                "execution_incident": {"type": "second_continue_required"},
+                "execution_incident": {"type": "second_continue_required", "reason": "assistant returned before terminal boundary"},
                 "genuine_blocker": {"type": "platform_tool_interaction_ceiling", "reason": "forced termination"},
             })
         with self.assertRaises(TransactionPreflightError):

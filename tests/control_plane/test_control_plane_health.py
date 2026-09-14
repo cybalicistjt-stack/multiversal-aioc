@@ -10,40 +10,21 @@ if _spec is None or _spec.loader is None:
 _legacy = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_legacy)
 
-_HARDENING = Path(__file__).with_name("_execution_hardening_regression.py")
-_hardening_spec = importlib.util.spec_from_file_location("_execution_hardening_regression", _HARDENING)
-if _hardening_spec is None or _hardening_spec.loader is None:
-    raise RuntimeError(f"unable to load execution hardening regression: {_HARDENING}")
-_hardening = importlib.util.module_from_spec(_hardening_spec)
-_hardening_spec.loader.exec_module(_hardening)
+def _load(name: str, filename: str):
+    path = Path(__file__).with_name(filename)
+    spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"unable to load regression module: {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
-_ENVELOPE = Path(__file__).with_name("test_execution_envelope_gate.py")
-_envelope_spec = importlib.util.spec_from_file_location("test_execution_envelope_gate", _ENVELOPE)
-if _envelope_spec is None or _envelope_spec.loader is None:
-    raise RuntimeError(f"unable to load execution-envelope regression: {_ENVELOPE}")
-_envelope = importlib.util.module_from_spec(_envelope_spec)
-_envelope_spec.loader.exec_module(_envelope)
-
-_RECON = Path(__file__).with_name("test_execution_reconciliation_gate.py")
-_recon_spec = importlib.util.spec_from_file_location("test_execution_reconciliation_gate", _RECON)
-if _recon_spec is None or _recon_spec.loader is None:
-    raise RuntimeError(f"unable to load execution-reconciliation regression: {_RECON}")
-_recon = importlib.util.module_from_spec(_recon_spec)
-_recon_spec.loader.exec_module(_recon)
-
-_ROUTING = Path(__file__).with_name("test_execution_routing_gate.py")
-_routing_spec = importlib.util.spec_from_file_location("test_execution_routing_gate", _ROUTING)
-if _routing_spec is None or _routing_spec.loader is None:
-    raise RuntimeError(f"unable to load execution-routing regression: {_ROUTING}")
-_routing = importlib.util.module_from_spec(_routing_spec)
-_routing_spec.loader.exec_module(_routing)
-
-_ARI22A_REVIEW = Path(__file__).with_name("test_ari22a_execution_review_gate.py")
-_ari22a_review_spec = importlib.util.spec_from_file_location("test_ari22a_execution_review_gate", _ARI22A_REVIEW)
-if _ari22a_review_spec is None or _ari22a_review_spec.loader is None:
-    raise RuntimeError(f"unable to load ARI-22A execution-review regression: {_ARI22A_REVIEW}")
-_ari22a_review = importlib.util.module_from_spec(_ari22a_review_spec)
-_ari22a_review_spec.loader.exec_module(_ari22a_review)
+_hardening = _load("_execution_hardening_regression", "_execution_hardening_regression.py")
+_envelope = _load("test_execution_envelope_gate", "test_execution_envelope_gate.py")
+_recon = _load("test_execution_reconciliation_gate", "test_execution_reconciliation_gate.py")
+_routing = _load("test_execution_routing_gate", "test_execution_routing_gate.py")
+_capsule = _load("test_execution_capsule", "test_execution_capsule.py")
+_ari22a_review = _load("test_ari22a_execution_review_gate", "test_ari22a_execution_review_gate.py")
 
 from validate_execution_convergence import ConvergenceError, validate_convergence_control
 from validate_repository_health import REQUIRED_SERVICE_OBJECTIVE, _maintenance_proof_has_required_shape
@@ -52,28 +33,26 @@ from validate_repository_health import REQUIRED_SERVICE_OBJECTIVE, _maintenance_
 class TerminationPreflightTests(_legacy.TerminationPreflightTests):
     def test_completed_verified_with_successor_is_terminal(self) -> None:
         state = _legacy._base_state()
-        state.update(
-            {
-                "work_item_status": "completed_verified",
-                "successor_selected": True,
-                "requested_boundary_completed": True,
-                "execution_envelope": {
-                    "cycle_id": "TEST-LEGACY-TERMINAL",
-                    "phase": "closed",
-                    "elapsed_active_minutes": 24,
-                    "closeout_switch_active_minute": 16,
-                    "target_cycle_minutes": 24,
-                    "safe_same_lane_work_available": False,
-                    "dynamic_fill_attempted": True,
-                    "closeout_complete": True,
-                    "fill_exit_reason": "closeout_switch_reached",
-                },
-                "execution_reconciliation": _recon._valid_reconciliation(
-                    cycle_id="TEST-LEGACY-TERMINAL",
-                    trace_id="TRACE-LEGACY-TERMINAL",
-                ),
-            }
-        )
+        state.update({
+            "work_item_status": "completed_verified",
+            "successor_selected": True,
+            "requested_boundary_completed": True,
+            "execution_envelope": {
+                "cycle_id": "TEST-LEGACY-TERMINAL",
+                "phase": "closed",
+                "elapsed_active_minutes": 24,
+                "closeout_switch_active_minute": 16,
+                "target_cycle_minutes": 24,
+                "safe_same_lane_work_available": False,
+                "dynamic_fill_attempted": True,
+                "closeout_complete": True,
+                "fill_exit_reason": "closeout_switch_reached",
+            },
+            "execution_reconciliation": _recon._valid_reconciliation(
+                cycle_id="TEST-LEGACY-TERMINAL",
+                trace_id="TRACE-LEGACY-TERMINAL",
+            ),
+        })
         result = _legacy.evaluate(state)
         self.assertEqual("ALLOW_FINAL_RESPONSE", result["decision"])
         self.assertEqual("MVTERM-COMPLETED-VERIFIED", result["reason_code"])
@@ -84,28 +63,32 @@ ExecutionHardeningTests = _hardening.ExecutionHardeningTests
 ExecutionEnvelopeGateTests = _envelope.ExecutionEnvelopeGateTests
 ExecutionReconciliationGateTests = _recon.ExecutionReconciliationGateTests
 ExecutionRoutingGateTests = _routing.ExecutionRoutingGateTests
+ExecutionCapsuleTests = _capsule.ExecutionCapsuleTests
 Ari22AExecutionReviewGateTests = _ari22a_review.Ari22AExecutionReviewGateTests
 
 
 class FamilyExecutionPreflightTests(_legacy.FamilyExecutionPreflightTests):
     def test_vti12_closeout_and_current_sgc_selection_are_atomic(self) -> None:
-        sgc = _legacy._load_json("governance/ai/work-state/SGC-08C-attempt-001.json")
-        sgc_backlog = _legacy._load_json("governance/application-planning/source-gameplay-coverage-closure/SGC_PROGRAM_BACKLOG.json")
-        ari_backlog = _legacy._load_json("governance/application-planning/asset-resource-ingestion-reuse/ARI_PROGRAM_BACKLOG.json")
+        ari = _legacy._load_json("governance/application-planning/asset-resource-ingestion-reuse/ARI_PROGRAM_BACKLOG.json")
+        proof = _legacy._load_json("governance/application-planning/asset-resource-ingestion-reuse/ARI_FINAL_CLOSURE_PROOF.json")
+        mib = _legacy._load_json("governance/application-planning/multiversal-implementation-backbone/MIB_PROGRAM_BACKLOG.json")
         pointer = _legacy._load_json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
         authority = _legacy._load_json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
         runtime = _legacy._load_json("governance/repository-health/RUNTIME_STATE_LIFECYCLE_REGISTRY.json")
         compiled = _legacy._load_json("governance/ai/runtime/ROADMAP_COMPILED_PROJECTION.json")
         checkpoint = _legacy._load_json(pointer["active_attempt"]["checkpoint_path"])
-        self.assertEqual(sgc["status"], "completed_verified")
-        self.assertEqual(sgc_backlog["status"], "completed_verified")
-        self.assertEqual(sgc_backlog["completed_through"], "SGC-08C")
+
+        self.assertEqual(ari["status"], "completed_verified")
+        self.assertEqual(ari["completed_through"], "ARI-22C")
+        self.assertEqual(proof["status"], "completed_verified")
+        self.assertEqual(proof["strict_successor"]["work_item_id"], "MIB-16")
+
         selected_item = pointer["active_attempt"]["work_item_id"]
-        self.assertEqual(selected_item, ari_backlog["current_item"])
-        self.assertEqual(pointer["active_attempt"]["attempt_id"], ari_backlog["current_attempt"])
-        selected_index = ari_backlog["strict_order"].index(selected_item)
+        self.assertEqual(selected_item, mib["current_item"])
+        self.assertEqual(pointer["active_attempt"]["attempt_id"], mib["current_attempt"])
+        selected_index = mib["strict_order"].index(selected_item)
         self.assertGreater(selected_index, 0)
-        self.assertEqual(ari_backlog["completed_through"], ari_backlog["strict_order"][selected_index - 1])
+        self.assertEqual(mib["completed_through"], mib["strict_order"][selected_index - 1])
         self.assertEqual(checkpoint["work_item_id"], selected_item)
         self.assertEqual(checkpoint["attempt_id"], pointer["active_attempt"]["attempt_id"])
         self.assertEqual(pointer["active_attempt"]["status"], checkpoint["status"])
@@ -140,16 +123,13 @@ class FamilyExecutionPreflightTests(_legacy.FamilyExecutionPreflightTests):
 
 class TrancheExecutionFastPathGovernanceTests(_legacy.unittest.TestCase):
     def test_convergence_validators_enforce_one_continue_policy(self) -> None:
-        self.assertEqual(
-            REQUIRED_SERVICE_OBJECTIVE,
-            {
-                "ordinary_tranche_single_continue_target_percent": 100,
-                "max_execution_cycles_without_genuine_blocker": 1,
-                "unrelated_historical_validation_jobs_target": 0,
-                "reruns_without_changed_evidence_target": 0,
-                "post_merge_stale_pointer_target": 0,
-            },
-        )
+        self.assertEqual(REQUIRED_SERVICE_OBJECTIVE, {
+            "ordinary_tranche_single_continue_target_percent": 100,
+            "max_execution_cycles_without_genuine_blocker": 1,
+            "unrelated_historical_validation_jobs_target": 0,
+            "reruns_without_changed_evidence_target": 0,
+            "post_merge_stale_pointer_target": 0,
+        })
         control = {
             "owner_continue_count": 1,
             "execution_cycles": 1,
