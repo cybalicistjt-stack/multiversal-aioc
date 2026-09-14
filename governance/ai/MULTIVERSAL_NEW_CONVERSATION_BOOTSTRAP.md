@@ -74,6 +74,8 @@ Application merge → AIOC closeout is a resumable distributed transition. Obser
 
 Before any final response from execution mode, construct the current termination state and run `scripts/execution_termination_preflight.py`. Open PR, active required validation, pending merge closeout, pending authorized work, nonclosed lifecycle state, unresolved side effects, missing independent evidence, or failed reconciliation blocks the response.
 
+If any blocking condition remains, the preflight returns `CONTINUE_EXECUTION` and execution continues. Only a fresh `ALLOW_FINAL_RESPONSE` result authorizes an execution-mode final response.
+
 Elapsed time is telemetry only. No minimum runtime is required. A correct terminal state closes immediately; a latency SLO miss is recorded rather than used to force more work.
 
 Only these are legitimate execution-mode terminal outcomes:
