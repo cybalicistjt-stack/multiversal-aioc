@@ -192,7 +192,7 @@ class ExecutionHardeningTests(unittest.TestCase):
             validate_execution_outcome({
                 "owner_continue_turns": 2,
                 "single_continue_achieved": False,
-                "execution_incident": {"type": "second_continue_required"},
+                "execution_incident": {"type": "second_continue_required", "reason": "assistant returned before terminal boundary"},
                 "genuine_blocker": {"type": "platform_tool_interaction_ceiling", "reason": "forced termination"},
             })
         with self.assertRaises(TransactionPreflightError):
