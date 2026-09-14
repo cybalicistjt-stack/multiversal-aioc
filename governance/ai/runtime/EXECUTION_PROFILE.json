@@ -1,8 +1,8 @@
 {
-  "schema_version": "1.7.0",
+  "schema_version": "1.8.1",
   "status": "CURRENT",
   "profile_id": "MV-EXECUTION-PROFILE-001",
-  "authority": "Canonical machine-readable execution service objective and bounded-tranche timing policy.",
+  "authority": "Canonical machine-readable execution service objective and bounded-tranche policy.",
   "service_objective": {
     "ordinary_tranche_single_continue_target_percent": 100,
     "max_execution_cycles_without_genuine_blocker": 1,
@@ -11,26 +11,30 @@
     "post_merge_stale_pointer_target": 0
   },
   "timing": {
+    "latency_slo_minutes": 24,
+    "minimum_runtime_gate": false,
+    "closeout_risk_signal_minutes": 16,
     "target_active_minutes_per_unit": 24,
     "minimum_closeout_reserve_minutes": 8,
-    "closeout_switch_active_minute": 16
+    "closeout_switch_active_minute": 16,
+    "compatibility_note": "The legacy 24/16 fields remain temporarily for historical projections and tranche sizing. They are telemetry/risk signals only and may not block a correct terminal state."
   },
   "execution_envelope": {
     "terminal_gate_required": true,
     "scope": "Every execution-mode owner Continue, including product implementation, governance maintenance, research, evaluation, recovery, and other same-lane executable work.",
     "phases": ["fill", "closeout", "closed"],
-    "cycle_identity_rule": "The cycle_id is created once for the owner Continue execution envelope and remains stable across logical operations. Completing a logical operation, research subfacet, tool batch, commit, validation milestone, or artifact does not create a new cycle.",
-    "dynamic_fill_rule": "While phase=fill and safe same-lane work exists, completion of one logical operation immediately selects the next safe same-lane operation. The executor may not emit a final response or increment the cycle merely because a logical operation completed.",
-    "closeout_transition_rule": "At closeout_switch_active_minute, stop optional expansion and transition the same cycle into shared closeout. The closeout reserve is part of the same owner Continue and cycle, not a new cycle.",
-    "terminal_rule": "Normal terminal response requires phase=closed, closeout_complete=true, canonical timing values, and elapsed_active_minutes >= target_active_minutes_per_unit. Early closure is allowed only when fill_exit_reason=safe_work_exhausted, safe_same_lane_work_available=false, and dynamic_fill_attempted=true, or through the separately validated genuine-blocker path.",
-    "early_exit_rule": "Safe-work exhaustion must be evidenced after a dynamic-fill attempt. Executor preference, logical-operation completion, a convenient report boundary, or a smaller self-selected target is not exhaustion.",
-    "interruption_rule": "If execution is interrupted, persist/resume the same cycle_id and monotonic envelope state. Conversation change, context compaction, or recovery does not reset elapsed work, phase, or cycle identity.",
-    "anti_spoof_rule": "The executor may not reduce target_active_minutes_per_unit or closeout_switch_active_minute inside ephemeral termination state. The termination preflight rejects timing values that do not match this profile."
+    "cycle_identity_rule": "The cycle_id is created once for the durable execution run and remains stable across logical operations. Completing a logical operation, research subfacet, tool batch, commit, validation milestone, or artifact does not create a new cycle.",
+    "dynamic_fill_rule": "While the durable run is nonterminal and safe same-lane work exists, completion of one logical operation immediately selects the next authorized operation. The executor may not emit a final response merely because a logical operation completed.",
+    "closeout_transition_rule": "The 16-minute value is an initial closeout-risk signal, not a mandatory phase boundary. When risk is signaled, optional expansion should leave the critical path, but actual lifecycle state controls progression.",
+    "terminal_rule": "Normal terminal response requires actual terminal invariants: terminal lifecycle state, closeout complete where applicable, no pending authorized work, no active required validation/PR/side-effect work, and a passing execution-reconciliation bundle. Elapsed time never grants or withholds terminal authority.",
+    "latency_rule": "The initial 24-minute value is an owner-visible latency SLO. Terminal state before 24 minutes closes immediately; terminal state after 24 minutes closes and records an SLO miss; nonterminal state after 24 minutes continues or reports a genuine blocker.",
+    "interruption_rule": "If execution is interrupted, persist/resume the same cycle_id and durable state. Conversation change, context compaction, or recovery does not reset execution identity or transfer routine scheduling responsibility to the owner.",
+    "anti_spoof_rule": "The executor may not rewrite event-derived latency or interaction facts. Timing thresholds are telemetry and may not be used as substitute evidence for terminal invariants."
   },
   "execution_reconciliation": {
     "terminal_gate_required": true,
     "reconcile_all_invariants_in_one_pass": true,
-    "scope": "Every execution-mode completed_verified terminal attempt after the execution envelope itself is terminal.",
+    "scope": "Every execution-mode completed_verified terminal attempt after lifecycle state is terminal.",
     "desired_state_rule": "The terminal reconciler compares observed execution state to desired_state=terminal_verified. A completed sub-operation or artifact is not desired-state convergence.",
     "operation_identity_rule": "Every logical operation has one durable operation_id and one idempotency_key. Retries increment attempts on the same operation record; duplicate operation or idempotency identities are invalid rather than new progress.",
     "side_effect_rule": "Externally visible effects have durable effect_id/idempotency_key records and must be verified or compensated before terminal response. Applied-but-unverified effects remain nonterminal.",
@@ -51,10 +55,12 @@
     ]
   },
   "continue_semantics": {
-    "ordinary_bare_continue": "Execute the selected bounded unit through validation, merge, completed_verified closeout, terminal reconciliation and strict successor selection unless a genuine blocker prevents completion.",
+    "ordinary_bare_continue": "Start or resume the selected durable execution run and carry it through validation, merge, completed_verified closeout, terminal reconciliation and strict successor selection unless a genuine blocker prevents completion.",
     "second_continue_without_genuine_blocker": "execution_incident"
   },
   "execution_hardening": {
+    "event_ledger": "scripts/execution_event_ledger.py",
+    "event_ledger_rule": "Owner interaction, wall latency and other execution facts are derived from an append-only hash-chained event stream. Checkpoint projections may not independently author or override those facts.",
     "transaction_preflight": "scripts/execution_transaction_preflight.py",
     "termination_preflight": "scripts/execution_termination_preflight.py",
     "execution_routing": {
@@ -63,7 +69,7 @@
       "validation_profile_generator": "scripts/generate_focused_validation_profile.py",
       "red_dispatch_decision": "DISPATCH_RED_NOW",
       "canonical_state_rule": "Lifecycle phase and next action are derived from the canonical execution record plus observed repository facts; manually authored narrative next-action text is not independent authority.",
-      "response_gate_rule": "Every reconciled nonclosed execution state emits response_gate=CONTINUE_EXECUTION. A closed lifecycle state emits TERMINATION_PREFLIGHT_REQUIRED and is not itself permission to stop; only the termination preflight may authorize a terminal response.",
+      "response_gate_rule": "Every reconciled nonclosed execution state emits response_gate=CONTINUE_EXECUTION. A closed lifecycle state emits TERMINATION_PREFLIGHT_REQUIRED and is not itself permission to stop; only actual terminal invariants and the termination preflight may authorize a terminal response.",
       "projection_rule": "Pointer, authority, runtime and compiled selector rows are materialized views of one canonical execution record and must not independently invent work-item, attempt, status, authority or branch state.",
       "context_rule": "Normal execution is restricted to the declared hermetic tranche context. Repository-wide search or undeclared reads require diagnostic_mode=true and a concrete failure_signature.",
       "red_transition_rule": "When a focused test exists and required context is resolved, DISPATCH_RED_NOW is the next legal progression. Additional ordinary research/search before RED is non-progress.",
@@ -76,8 +82,8 @@
       "discover_repository_capabilities_before_side_effects": true,
       "interrupt_only_for": ["genuine_blocker", "owner_decision_required", "out_of_scope_high_risk_action"],
       "retry_threshold_exceeded_requires_escalation": true,
-      "shared_task_model_rule": "The canonical checkpoint, state reconciler, response gate, execution envelope and terminal preflight are the shared human-AI task model. Progress narration never substitutes for those state transitions.",
-      "handoff_rule": "If context or conversation changes, preserve the same cycle/trace identity and next machine action. Do not transfer responsibility back to the owner merely because a model session or logical subtask ended."
+      "shared_task_model_rule": "The canonical checkpoint, event ledger, state reconciler, response gate and terminal preflight are the shared human-AI task model. Progress narration never substitutes for those state transitions.",
+      "handoff_rule": "If context or conversation changes, preserve the same run/cycle/trace identity and next machine action. Do not transfer responsibility back to the owner merely because a model session or logical subtask ended."
     },
     "critical_path_optimization": {
       "repository_capability_preflight": {
@@ -90,7 +96,7 @@
         "planner": "scripts/execution_transaction_preflight.py",
         "mode": "precloseout",
         "required_before_closeout_publication": true,
-        "rule": "Before publishing completed_verified closeout state, reconcile the live owner-Continue envelope. If the target is still pending and safe-work exhaustion is not proven, return CONTINUE_SAME_CYCLE rather than publishing a closeout that canonical-main terminal proof must reject later."
+        "rule": "Before publishing completed_verified closeout state, reconcile actual terminal invariants. Elapsed time is returned only as latency-SLO telemetry and cannot block correct terminal state or authorize incomplete state."
       },
       "atomic_projection": {
         "planner": "scripts/execution_atomic_projection.py",
@@ -120,10 +126,10 @@
       "resume the exact authorized branch/open PR when present; never create an alternate duplicate attempt"
     ],
     "validation_evidence_rule": "Only evidence whose validated head equals the current candidate head counts toward merge or closeout; superseded heads are non-counting without needing another broad discovery pass.",
-    "closeout_precompute_rule": "During current-head validation, precompute all closeout/successor projections that do not depend on final evidence. Leave validated head, run, deterministic receipt and merge SHA empty until observed. Before publishing closeout, execute the precloseout readiness gate against the live execution envelope.",
+    "closeout_precompute_rule": "During current-head validation, precompute all closeout/successor projections that do not depend on final evidence. Leave validated head, validation run, deterministic receipt and merge SHA empty until observed. Before publishing closeout, reconcile actual terminal invariants and record latency telemetry separately.",
     "terminal_outcome_fields": ["owner_continue_turns", "single_continue_achieved", "execution_incident", "genuine_blocker"],
-    "terminal_outcome_rule": "For governed execution units completed after MV-CONT-010, owner_continue_turns=1 requires single_continue_achieved=true with execution_incident=null and genuine_blocker=null. More than one owner Continue requires single_continue_achieved=false and exactly one terminal reason: a structured execution_incident when execution stopped without a genuine blocker, or a structured genuine_blocker when an external/environment constraint forced the additional owner turn. The two reasons are mutually exclusive.",
-    "final_response_rule": "Execution mode may emit a terminal final response only after a fresh termination preflight returns ALLOW_FINAL_RESPONSE. Open PR, active current-head validation, merged-with-closeout-pending, a nonterminal execution envelope, or unreconciled execution identity/effects/evidence are independently nonterminal even if a pending-step list was accidentally incomplete."
+    "terminal_outcome_rule": "For legacy governed execution units completed before event-ledger enforcement, the terminal outcome fields remain compatibility projections and a genuine blocker remains the only ordinary exception to one-Continue completion. For ledger-backed runs, owner_continue_turns and single_continue_achieved are derived from event truth and may not be authored by the executor.",
+    "final_response_rule": "Execution mode may emit a terminal final response only after a fresh termination preflight returns ALLOW_FINAL_RESPONSE. Open PR, active current-head validation, merged-with-closeout-pending, a nonterminal lifecycle state, or unreconciled execution identity/effects/evidence are independently nonterminal. Elapsed time alone is never a terminal condition."
   },
   "context": {
     "repository_first": true,

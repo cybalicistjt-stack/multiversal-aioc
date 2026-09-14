@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import importlib.util
 import json
 import sys
 import unittest
@@ -31,28 +30,26 @@ class Ari22AExecutionReviewGateTests(unittest.TestCase):
         self.assertEqual(rejected["decision"], "STOP_UNSUPPORTED_MERGE_METHOD")
         self.assertEqual(rejected["supported_methods"], ["squash"])
 
-    def test_precloseout_blocks_below_target_without_safe_work_exhaustion(self) -> None:
+    def test_precloseout_allows_terminal_state_below_latency_slo(self) -> None:
         decision = preflight.assess_precloseout_readiness({
+            "terminal_invariants_satisfied": True,
             "elapsed_active_minutes": 22.0,
             "target_cycle_minutes": 24.0,
-            "safe_same_lane_work_available": False,
-            "dynamic_fill_attempted": True,
-            "fill_exit_reason": "closeout_switch_reached",
-        })
-        self.assertEqual(decision["decision"], "CONTINUE_SAME_CYCLE")
-        self.assertEqual(decision["reason_code"], "MVEXEC-ENVELOPE-TARGET-PENDING")
-        self.assertEqual(decision["remaining_active_minutes"], 2.0)
-
-    def test_precloseout_allows_target_reached(self) -> None:
-        decision = preflight.assess_precloseout_readiness({
-            "elapsed_active_minutes": 24.0,
-            "target_cycle_minutes": 24.0,
-            "safe_same_lane_work_available": False,
-            "dynamic_fill_attempted": True,
-            "fill_exit_reason": "closeout_switch_reached",
         })
         self.assertEqual(decision["decision"], "READY_FOR_CLOSEOUT")
-        self.assertEqual(decision["reason_code"], "MVEXEC-ENVELOPE-READY")
+        self.assertEqual(decision["reason_code"], "MVEXEC-TERMINAL-INVARIANTS-SATISFIED")
+        self.assertEqual(decision["latency_slo_status"], "within_slo")
+
+    def test_precloseout_does_not_let_elapsed_time_authorize_nonterminal_state(self) -> None:
+        decision = preflight.assess_precloseout_readiness({
+            "terminal_invariants_satisfied": False,
+            "elapsed_active_minutes": 31.0,
+            "target_cycle_minutes": 24.0,
+        })
+        self.assertEqual(decision["decision"], "CONTINUE_SAME_CYCLE")
+        self.assertEqual(decision["reason_code"], "MVEXEC-TERMINAL-INVARIANTS-PENDING")
+        self.assertEqual(decision["latency_slo_status"], "missed")
+        self.assertEqual(decision["latency_slo_overrun_minutes"], 7.0)
 
     def test_multifile_projection_rejects_contents_api_transport(self) -> None:
         with self.assertRaises(atomic.AtomicProjectionError):
