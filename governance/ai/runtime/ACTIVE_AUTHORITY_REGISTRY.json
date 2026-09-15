@@ -1,31 +1,12 @@
 {
-  "schema_version": "3.0.0-compat",
-  "projection_only": true,
-  "canonical_source": "operations/CURRENT.json",
-  "canonical_door": "operations/BOOTSTRAP.md",
-  "canonical_contract": "operations/OPERATING_CONTRACT.md",
-  "canonical_lane_registry": "operations/LANES.json",
-  "rule": "Compatibility projection only. Operational authority is defined exclusively by Operations V3.",
-  "current": [
+  "schema_version":"3.0.0-compat","projection_only":true,"canonical_source":"operations/CURRENT.json","canonical_door":"operations/BOOTSTRAP.md","canonical_contract":"operations/OPERATING_CONTRACT.md","canonical_lane_registry":"operations/LANES.json","rule":"Compatibility projection only. Operational authority is defined exclusively by Operations V3.",
+  "current":[
     {"kind":"canonical_door","lifecycle":"CURRENT","path":"operations/BOOTSTRAP.md"},
     {"kind":"operating_contract","lifecycle":"CURRENT","path":"operations/OPERATING_CONTRACT.md"},
     {"kind":"current_state","lifecycle":"CURRENT","path":"operations/CURRENT.json"},
     {"kind":"lane_registry","lifecycle":"CURRENT","path":"operations/LANES.json"},
     {"kind":"control_surface_registry","lifecycle":"CURRENT","path":"operations/CONTROL_SURFACE_REGISTRY.json"}
   ],
-  "active_operations_work": {
-    "work_item":"OPS3-01",
-    "state":"completed_verified",
-    "implementation_authority":false,
-    "path":"operations/work-items/OPS3-01.json"
-  },
-  "preserved_product_selection": {
-    "work_item":"CNI-02",
-    "attempt_id":"CNI-02-attempt-001",
-    "state":"selected_not_started",
-    "implementation_branch":null,
-    "implementation_authority":false,
-    "feature_starts_blocked":false,
-    "rule":"Compatibility projection of the canonical product-development lane; this file does not independently grant authority."
-  }
+  "active_operations_work":{"work_item":"OPS3-01","state":"completed_verified","implementation_authority":false,"path":"operations/work-items/OPS3-01.json"},
+  "preserved_product_selection":{"work_item":"CNI-02","attempt_id":"CNI-02-attempt-001","state":"in_progress","implementation_branch":"work/cni-02-dependency-optional-component-compatibility-constraints","implementation_authority":true,"feature_starts_blocked":false,"rule":"Compatibility projection of the canonical product-development lane; this file does not independently grant authority."}
 }

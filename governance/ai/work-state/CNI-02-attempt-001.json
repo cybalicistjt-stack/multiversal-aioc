@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "control_plane": "OPS3",
   "work_item_id": "CNI-02",
   "attempt_id": "CNI-02-attempt-001",
@@ -7,10 +7,10 @@
   "track": "content-narrative-interoperability",
   "source_program": "CNI",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
+  "status": "in_progress",
   "owner_selected": true,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "work/cni-02-dependency-optional-component-compatibility-constraints",
   "completed": false,
   "objective": "Define explicit dependency, optional-component and compatibility constraints so missing or incompatible content-pack requirements fail before runtime breakage.",
   "predecessor": {
@@ -25,37 +25,27 @@
   "strict_successor": "CNI-03",
   "scope": {
     "purpose": "Extend the CNI-01 pack/component declaration foundation with explicit compatibility constraints without taking over pack registry, installation, owner-domain or later activation/rollback authority.",
-    "included": [
-      "required dependencies",
-      "optional dependencies",
-      "minimum compatible versions",
-      "maximum compatible versions",
-      "mutually exclusive components",
-      "capability requirements",
-      "install-order constraints",
-      "explicit missing/incompatible dependency diagnostics"
-    ],
+    "included": ["required dependencies","optional dependencies","minimum compatible versions","maximum compatible versions","mutually exclusive components","capability requirements","install-order constraints","explicit missing/incompatible dependency diagnostics"],
     "completion_gate": "Representative pack/component constraints resolve deterministically and fail closed for missing, incompatible, mutually exclusive or unsatisfied requirements before runtime activation, while preserving existing pack/resource/owner authorities."
   },
   "selection_boundaries": [
     "CNI-01 is completed_verified before CNI-02 implementation.",
-    "This checkpoint selects CNI-02 only; it does not grant implementation authority.",
-    "No CNI-02 implementation branch exists until a later owner Continue governed-starts CNI-02.",
     "CNI-02 consumes CNI-01 stable pack/component identities and typed payload declarations rather than creating replacement manifest authority.",
     "Pack registry remains pack release identity, availability, Campaign install and dependency-reference authority.",
     "ARI remains resource identity/rights authority and Action/Event plus owner domains retain canonical mutation authority.",
     "CNI-11 remains dry-run apply, transactional activation and rollback-receipt authority; CNI-02 defines constraints only.",
-    "ROADMAP_DEPENDENCY_GRAPH.json makes PCA milestone-eligible after CNI-02, but this selection grants no PCA implementation authority.",
-    "CNI-03+, PCA and SMB-08 remain unauthorized."
+    "ROADMAP_DEPENDENCY_GRAPH.json makes PCA milestone-eligible after CNI-02, but this attempt grants no PCA implementation authority.",
+    "CNI-03+, PCA and SMB-08 remain unauthorized.",
+    "Only work/cni-02-dependency-optional-component-compatibility-constraints has implementation authority for this attempt."
   ],
-  "active_substep": null,
-  "next_action": "Wait for the next owner Continue to governed-start CNI-02; do not implement while selected_not_started.",
-  "owner_interaction_observation": {
-    "continue_turns": 0,
-    "stall_nudges": 0
-  },
-  "execution_conformance": {
-    "status": "selected_not_started",
-    "policy_violations": []
-  }
+  "implementation_plan": [
+    {"task":1,"name":"RED dependency/compatibility acceptance seam","status":"planned"},
+    {"task":2,"name":"Deterministic CNI-02 constraint evaluation contract","status":"planned"},
+    {"task":3,"name":"Source-governance proof over CNI-01, pack-registry, ARI and CNI-11 boundaries","status":"planned"},
+    {"task":4,"name":"Exact-head verification, merge and OPS3 closeout","status":"planned"}
+  ],
+  "active_substep": "governed-start-complete",
+  "next_action": "Create the authorized application branch and establish causal RED before production implementation.",
+  "owner_interaction_observation": {"continue_turns":1,"stall_nudges":0},
+  "execution_conformance": {"status":"in_progress","policy_violations":[]}
 }
