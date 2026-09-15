@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.1.0",
+  "control_plane": "OPS3",
+  "work_item_id": "SMB-08",
+  "attempt_id": "SMB-08-attempt-001",
+  "title": "Core Content Production",
+  "track": "system-maturation-buildout",
+  "source_program": "SMB",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "objective": "Use MIB content tooling to create substantial first-party governed libraries rather than relying mainly on synthetic fixtures.",
+  "predecessor": {
+    "work_item_id": "SMB-07",
+    "status": "completed_verified",
+    "application_pr": 489,
+    "application_validated_head": "a2154318f27eb6eaa3aa8466e463c6ae3b6370c5",
+    "application_validation_run": 34993364356,
+    "application_merge_sha": "eb068ea61fd5557e9a90626dbc8e2e09100ab0bf",
+    "validated_tree_sha": "1c3dfe32c0f9ddb3eb369e13f4eee5791e6dc296"
+  },
+  "strict_successor": "SMB-09",
+  "scope": {
+    "purpose": "Use MIB content tooling to create substantial first-party governed libraries rather than relying mainly on synthetic fixtures.",
+    "included": [
+      "items",
+      "weapons",
+      "armor",
+      "materials",
+      "recipes",
+      "vehicles",
+      "modules",
+      "facilities",
+      "organizations",
+      "cultures",
+      "environments",
+      "NPC/creature templates",
+      "encounters",
+      "conditions",
+      "powers/effects",
+      "realities",
+      "starter Worlds/Adventures",
+      "first-party media/generated resources registered through ARI"
+    ],
+    "completion_gate": "First-party packs compile deterministically, pass compatibility/provenance rules and support representative complete play without fixture-only content."
+  },
+  "selection_boundaries": [
+    "SMB-07 is completed_verified before SMB-08 implementation.",
+    "This checkpoint selects SMB-08 only; it does not grant implementation authority.",
+    "No SMB-08 implementation branch exists until a later owner Continue governed-starts SMB-08.",
+    "SMB-08 must use existing MIB content tooling and owner-domain contracts rather than create replacement content authorities.",
+    "First-party media/generated resources must register through ARI rather than form an SMB-only asset library.",
+    "SMB-09 and later work remain unauthorized."
+  ],
+  "active_substep": null,
+  "next_action": "Wait for a later owner Continue to governed-start SMB-08; do not implement while selected_not_started.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
