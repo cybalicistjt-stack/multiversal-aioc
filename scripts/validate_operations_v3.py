@@ -136,9 +136,13 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
     if not isinstance(surfaces, list):
         errors.append("control surface registry must contain surfaces array")
         surfaces = []
-    paths = [row.get("path") for row in surfaces if isinstance(row, dict)]
-    if len(paths) != len(set(paths)):
-        errors.append("control surface registry contains duplicate path identifiers")
+    surface_keys = [
+        (row.get("system"), row.get("path"))
+        for row in surfaces
+        if isinstance(row, dict)
+    ]
+    if len(surface_keys) != len(set(surface_keys)):
+        errors.append("control surface registry contains duplicate (system, path) identifiers")
     canonical_selectors = [
         row for row in surfaces
         if isinstance(row, dict) and row.get("can_select_work") is True
@@ -187,6 +191,12 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
         errors.append("ACTIVE_AUTHORITY_REGISTRY must be an explicit compatibility projection from operations/CURRENT.json")
     if legacy_authority.get("canonical_door") != DOOR.as_posix():
         errors.append("legacy authority projection must identify the OPS3 canonical door")
+
+    checkpoint = _read_json(root, Path("governance/ai/work-state/MIB-17-attempt-001.json"), errors)
+    if checkpoint.get("work_item_id") != "MIB-17" or checkpoint.get("status") != "selected_not_started":
+        errors.append("canonical historical MIB-17 checkpoint must remain selected_not_started during OPS3")
+    if checkpoint.get("implementation_authority") is not False or checkpoint.get("implementation_branch") is not None:
+        errors.append("MIB-17 checkpoint gained implementation authority during OPS3 freeze")
 
     observed_head = _git_head(root, errors) if expected_head else None
     if expected_head and observed_head != expected_head:
