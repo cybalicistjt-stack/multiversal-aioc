@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-from __future__ import annotations
-import subprocess, sys
-from pathlib import Path
-R=Path(__file__).resolve().parents[1]
-FINAL=R/'scripts/validate-capp02-final-state-structured.py'
-if __name__=='__main__': raise SystemExit(subprocess.call([sys.executable,str(FINAL)],cwd=R))
+"""Retired Operations V2-era program validator."""
+import sys
+MESSAGE="Historical validator retired from live execution. Bootstrap through operations/BOOTSTRAP.md."
+if __name__ == "__main__":
+ print(MESSAGE,file=sys.stderr); raise SystemExit(2)
