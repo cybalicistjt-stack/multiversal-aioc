@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "audit_id": "OPS3-DEEP-LEGACY-AUDIT-2026-09-15",
   "purpose": "Extensive post-closeout scan for residual routes into the retired pre-OPS3 governance/control system, followed by an owner-interface and external-practice cross-check.",
   "operational_authority": false,
@@ -45,12 +45,18 @@
     "first_cleanup_green_run": 34961480942,
     "semantic_family_red_run": 34961888354,
     "family_cleanup_green_run": 34962067784,
+    "prompt_adapter_initial_red_run": 34963934301,
+    "final_pr_head": "4a5bf9c7e36588c08dfb1b573b3f5440204a18d4",
+    "final_pr_green_run": 34964087285,
+    "merge_sha": "91c4cca74d8534cd2e92c914476cf0a60fca1cde",
+    "main_push_green_run": 34964169317,
     "red_findings": [
       "closed PPiA/CAPP/Stage-A/IA validators still read retired pointer/status/index surfaces",
       "legacy interaction-system index/pilot/scorecard still looked live",
       "DWC lane recovery still referenced the global V2 termination/pointer system",
       "application dependency roadmap still carried V2 semantic runtime-authority language",
-      "sibling validators from closed program families remained executable even when they did not contain an exact retired pointer"
+      "sibling validators from closed program families remained executable even when they did not contain an exact retired pointer",
+      "the new prompt adapter initially failed its own exact non-authority wording invariant and was corrected without weakening the guard"
     ],
     "disposition": "closed-program validator families fail closed and route to OPS3; interaction system is historical inert; DWC recovery is lane-scoped under OPS3; application roadmap is background-only; CI watches scripts/tools and audited lane/reference surfaces; owner prompt patterns remain inside an explicitly non-authoritative adapter guarded by semantic CI"
   },
@@ -103,6 +109,14 @@
     "design": "one bootstrap pattern plus composable objective/modifier snippets; no prompt snippet may select current work, redefine Continue, grant authority or override canonical state/contract",
     "regression_guard": "scripts/validate_ops3_semantic_surfaces.py"
   },
+  "canonical_state_after_audit": {
+    "ops3_status": "completed_verified",
+    "operations_work_item": null,
+    "product_start_freeze": false,
+    "preserved_product_work_item": "MIB-17",
+    "preserved_product_state": "selected_not_started",
+    "implementation_authority": false
+  },
   "historical_evidence_rule": "Old system names may remain in immutable receipts, evidence, work-state history and Git history. Such evidence is not live routing or authority.",
-  "result": "PASS_AFTER_REMEDIATION_PENDING_FINAL_MERGE_PROOF"
+  "result": "PASS_AFTER_REMEDIATION_AND_MAIN_MERGE_PROOF"
 }
