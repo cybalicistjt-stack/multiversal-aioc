@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.2.0",
+  "schema_version": "0.3.0",
   "control_plane": "OPS3",
   "work_item_id": "CNI-02",
   "attempt_id": "CNI-02-attempt-001",
@@ -7,11 +7,11 @@
   "track": "content-narrative-interoperability",
   "source_program": "CNI",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
+  "implementation_authority": false,
   "implementation_branch": "work/cni-02-dependency-optional-component-compatibility-constraints",
-  "completed": false,
+  "completed": true,
   "objective": "Define explicit dependency, optional-component and compatibility constraints so missing or incompatible content-pack requirements fail before runtime breakage.",
   "predecessor": {
     "work_item_id": "CNI-01",
@@ -28,24 +28,50 @@
     "included": ["required dependencies","optional dependencies","minimum compatible versions","maximum compatible versions","mutually exclusive components","capability requirements","install-order constraints","explicit missing/incompatible dependency diagnostics"],
     "completion_gate": "Representative pack/component constraints resolve deterministically and fail closed for missing, incompatible, mutually exclusive or unsatisfied requirements before runtime activation, while preserving existing pack/resource/owner authorities."
   },
+  "completion_evidence": {
+    "application_pr": 491,
+    "red_head": "9823b76fac27f826e00d32a8a82ab2fc93051cea",
+    "red_validation_run": 35000628415,
+    "behavior_green_head": "d2fa366a3caa41cf9d8c29b725c6a76a8beadb3b",
+    "behavior_green_validation_run": 35000798152,
+    "validated_head": "3ac6dce5402a4c5bf5a9fbac49d6ccb368661a76",
+    "validation_run": 35000985343,
+    "application_merge_sha": "135cb47e19e2e5f77ae3940f0dc8bdc3247dfddb",
+    "validated_tree_sha": "82393d44fe1fe175f5133c7219c16774ae5c3ccc",
+    "merge_tree_sha": "82393d44fe1fe175f5133c7219c16774ae5c3ccc",
+    "tree_identity_verified": true,
+    "linux_shared_validation": "pass",
+    "windows_shared_validation": "pass",
+    "deterministic_cross_platform_comparison": "pass",
+    "client_typecheck": "pass",
+    "source_governance_invariants": "pass",
+    "application_ops3_health": "pass",
+    "manifest_authority": "CNI-01/MIB-05",
+    "dependency_reference_authority": "pack-registry",
+    "resource_authority": "ARI",
+    "canonical_mutation_authority": "Action/Event/owner-domains",
+    "activation_rollback_authority": "CNI-11",
+    "parallel_pack_registry_created": false,
+    "activation_performed": false,
+    "rollback_performed": false,
+    "owner_mutation_performed": false
+  },
   "selection_boundaries": [
-    "CNI-01 is completed_verified before CNI-02 implementation.",
-    "CNI-02 consumes CNI-01 stable pack/component identities and typed payload declarations rather than creating replacement manifest authority.",
-    "Pack registry remains pack release identity, availability, Campaign install and dependency-reference authority.",
+    "CNI-01/MIB-05 remain pack manifest identity/compiler authority.",
+    "pack-registry remains release identity, availability, Campaign installation and dependency-reference authority.",
     "ARI remains resource identity/rights authority and Action/Event plus owner domains retain canonical mutation authority.",
-    "CNI-11 remains dry-run apply, transactional activation and rollback-receipt authority; CNI-02 defines constraints only.",
-    "ROADMAP_DEPENDENCY_GRAPH.json makes PCA milestone-eligible after CNI-02, but this attempt grants no PCA implementation authority.",
-    "CNI-03+, PCA and SMB-08 remain unauthorized.",
-    "Only work/cni-02-dependency-optional-component-compatibility-constraints has implementation authority for this attempt."
+    "CNI-11 remains dry-run apply, transactional activation and rollback-receipt authority.",
+    "CNI-02 completed without CNI-03+, PCA or SMB-08 implementation.",
+    "ROADMAP_DEPENDENCY_GRAPH.json makes PCA milestone-eligible after CNI-02, but eligibility grants no implementation authority."
   ],
   "implementation_plan": [
-    {"task":1,"name":"RED dependency/compatibility acceptance seam","status":"planned"},
-    {"task":2,"name":"Deterministic CNI-02 constraint evaluation contract","status":"planned"},
-    {"task":3,"name":"Source-governance proof over CNI-01, pack-registry, ARI and CNI-11 boundaries","status":"planned"},
-    {"task":4,"name":"Exact-head verification, merge and OPS3 closeout","status":"planned"}
+    {"task":1,"name":"RED dependency/compatibility acceptance seam","status":"completed_verified"},
+    {"task":2,"name":"Deterministic CNI-02 constraint evaluation contract","status":"completed_verified"},
+    {"task":3,"name":"Source-governance proof over CNI-01, pack-registry, ARI and CNI-11 boundaries","status":"completed_verified"},
+    {"task":4,"name":"Exact-head verification, merge and OPS3 closeout","status":"completed_verified"}
   ],
-  "active_substep": "governed-start-complete",
-  "next_action": "Create the authorized application branch and establish causal RED before production implementation.",
+  "active_substep": null,
+  "next_action": "CNI-02 is completed_verified. Canonical product state advances to CNI-03 selected_not_started; do not start CNI-03 without a later owner Continue.",
   "owner_interaction_observation": {"continue_turns":1,"stall_nudges":0},
-  "execution_conformance": {"status":"in_progress","policy_violations":[]}
+  "execution_conformance": {"status":"completed_verified","policy_violations":[]}
 }
