@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 2,
+  "state_revision": 3,
   "default_lane": "product-development",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -26,12 +26,13 @@
       "implementation_authority": false
     },
     "product-development": {
-      "state": "selected_not_started",
+      "state": "in_progress",
       "selected_work_item": "MIB-17",
       "attempt_id": "MIB-17-attempt-001",
       "legacy_checkpoint_path": "governance/ai/work-state/MIB-17-attempt-001.json",
-      "implementation_authority": false,
-      "activation_rule": "Selection is not implementation authority. Product implementation begins only when the canonical product-development lane grants authority for MIB-17."
+      "implementation_branch": "work/mib-17-family-safety",
+      "implementation_authority": true,
+      "activation_rule": "Owner explicitly authorized completion of MIB-17 in the 2026-09-15 GPT conversation under the canonical product-development lane."
     },
     "dwc-speech": {
       "state": "preserved_external_lane",
@@ -57,5 +58,5 @@
     "legacy_surfaces": "Legacy selectors are compatibility projections or history only and may not override this file.",
     "executor_independence": "Executor availability never grants or revokes project authority."
   },
-  "next_project_action": "Resume the product-development lane from preserved MIB-17 selected_not_started state. Do not infer implementation authority from selection alone."
+  "next_project_action": "Complete MIB-17 on work/mib-17-family-safety through focused validation, exact-head acceptance, merge, and state reconciliation."
 }
