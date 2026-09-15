@@ -1,8 +1,11 @@
 {
   "documentId": "MV-PROJECT-MEMORY-001",
-  "version": "2.0.0",
-  "status": "ACTIVE_INDEX",
-  "lastUpdated": "2026-08-13",
+  "version": "3.0.0",
+  "status": "OPS3_BACKGROUND_ONLY",
+  "operational_authority": false,
+  "canonical_door": "operations/BOOTSTRAP.md",
+  "canonical_current_state": "operations/CURRENT.json",
+  "purpose": "Durable background and provenance index only. It does not select current work, define Continue, grant implementation authority, or determine the next action.",
   "owner": {
     "name": "John Brandon Turner",
     "github": "cybalicistjt-stack",
@@ -10,78 +13,15 @@
   },
   "repositories": {
     "governance": "cybalicistjt-stack/multiversal-aioc",
-    "application": "cybalicistjt-stack/Multiversal-app"
+    "application": "cybalicistjt-stack/Multiversal-app",
+    "engine": "cybalicistjt-stack/multiversal-engine"
   },
-  "authorityRegistry": "governance/access/AIOC_CONTRIBUTOR_REGISTRY.json",
-  "currentRecoveryAuthority": [
-    "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
-    "governance/ai/runtime/CURRENT_WORK_POINTER.json",
-    "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
-    "governance/ai/runtime/ROADMAP_INDEX.json",
-    "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
-    "Multiversal-app/.ai/current-work-order.md"
-  ],
-  "historicalSnapshots": [
-    "governance/current-state/AIOC_CURRENT_STATE.md",
-    "governance/current-state/SESSION_HANDOFF.md",
-    "governance/current-state/AIOC_OPERATIONAL_HANDOFF.md",
-    "governance/current-state/AIOC_DEPLOYMENT_BASELINE.md"
-  ],
-  "historicalSnapshotRule": "Historical current-state and handoff documents preserve milestone provenance only. They do not select current work. Bootstrap, runtime pointer/checkpoint evidence, current roadmap, and application current-work-order control recovery.",
-  "currentApplication": {
-    "workItem": "STAGE-A-A2 — Universal Object Experience",
-    "state": "authorized_current_next_not_activated",
-    "implementationRepository": "cybalicistjt-stack/Multiversal-app",
-    "activationBoundary": "repository-capable private checkout and mandatory governed runner verification"
-  },
-  "retainedParallelTracks": [
-    {
-      "id": "DS-008-working-series-attempt-002",
-      "state": "blocked_non_owner",
-      "boundary": "exact-byte transfer and validation capability"
-    },
-    {
-      "id": "WP-011",
-      "state": "mac_dependent_bounded_track",
-      "boundary": "supported Mac/Xcode execution"
-    },
-    {
-      "id": "PPIA",
-      "state": "completed_verified"
-    },
-    {
-      "id": "CAPP",
-      "state": "completed_verified"
-    }
-  ],
-  "verifiedFoundations": [
-    "Operational AIOC certification",
-    "Development Brain Releases A-G, Steps 1-21",
-    "Phase 8 canonical content/object work",
-    "8D-007 Golden Test Corpus and Balance Harness",
-    "8D-008 AI Development Team Operating Package",
-    "Phase 9 bounded implementation through P9-06-023",
-    "Internal Alpha design through IA-D09",
-    "PPIA-01 through PPIA-16 completed_verified",
-    "CAPP-01 through CAPP-12 completed_verified",
-    "Developer Toolbelt DT-001 through DT-010"
-  ],
-  "contentState": {
-    "csvFirstProgram": "completed historical foundation",
-    "registeredDatasetCount": 20,
-    "promotedRecordCountAtReconciliationMilestone": 19199,
-    "provenanceRequired": true,
-    "historicalRecoveryLedgerIsCanonicalGameContent": false
-  },
-  "operatingRules": [
-    "Repository evidence is authoritative; conversation memory is supporting context only.",
-    "Bootstrap/runtime pointer/checkpoint evidence outranks stale current-state prose.",
-    "Continue means execute the next verified unfinished operation, not explain it.",
-    "Never claim files, commits, tests, pull requests, merges, deployments, or repairs without verification.",
-    "Historical branches and handoffs are provenance or salvage inputs unless current authority explicitly selects them.",
-    "Keep explanations to the minimum required for correctness and prioritize verified repository work."
-  ],
-  "contributorAuthority": {
-    "zakvalentine": "proposal-only"
-  }
+  "truth_rule": "Use the canonical OPS3 door and operations/CURRENT.json for live state. Use live repository, PR, CI, filesystem, and tool evidence for implementation facts.",
+  "history_rule": "Older current-state, roadmap, handoff, recovery, execution, and conversation records remain provenance only and never regain authority by being rediscovered.",
+  "verified_foundation_summary": [
+    "AIOC governance and development history is preserved in Git history and repository evidence.",
+    "Phase 8 and Phase 9 planning/content history remains available as background evidence.",
+    "Internal Alpha design, content, provenance, balance, and developer-tooling work remains preserved.",
+    "Product work selected before OPS3 remains preserved through canonical OPS3 state rather than this background index."
+  ]
 }
