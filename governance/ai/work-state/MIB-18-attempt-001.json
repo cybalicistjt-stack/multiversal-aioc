@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "control_plane": "OPS3",
   "work_item_id": "MIB-18",
   "attempt_id": "MIB-18-attempt-001",
@@ -7,10 +7,10 @@
   "track": "multiversal-implementation-backbone",
   "source_program": "MIB",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
+  "status": "in_progress",
   "owner_selected": true,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "work/mib-18-backbone-handoff",
   "completed": false,
   "objective": "Integrate the entire MIB program and leave unavailable future work cheaper, safer and more mechanical without performing gated deployment, distribution, provider activation or blocked reconstruction.",
   "predecessor": {
@@ -39,20 +39,20 @@
   },
   "selection_boundaries": [
     "MIB-17 is completed_verified and its implementation authority is retired.",
-    "MIB-18 is selected_not_started only until a subsequent owner Continue governed-starts this attempt.",
+    "MIB-18 is the only authorized product-development work item for this attempt.",
     "MIB-18 must integrate ARI into its compatibility/integration matrix and portability/readiness handoff while preserving interfaces for later SAA work.",
     "CCTI-12-T04, WP-011, DS-008 blocked reconstruction, tester distribution/public deployment, paid-provider activation and unavailable platform/provider work remain gated by their own missing conditions.",
     "MIB-18 must not create competing local registry/index/runtime/adapter/component foundations instead of consuming completed shared MIB primitives.",
-    "SMB-01 is the next planned family work item after MIB-18/program closure and remains unauthorized until MIB-18 is completed_verified and the family transition is reconciled."
+    "SMB-01 remains unauthorized until MIB-18 is completed_verified and MIB family closure is reconciled."
   ],
-  "active_substep": "selected_not_started",
-  "next_action": "On the next owner Continue, governed-start MIB-18 under the product-development lane, establish its bounded implementation branch and acceptance seam, then execute through exact-head validation and MIB family closure before selecting SMB-01.",
+  "active_substep": "implementation",
+  "next_action": "Build the bounded cross-MIB integration fixture, compatibility/readiness manifests, portability evidence package, regression corpus and family handoff on the authorized application branch, then validate and close the MIB family.",
   "owner_interaction_observation": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "selected_not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
