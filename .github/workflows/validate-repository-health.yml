@@ -7,9 +7,13 @@ on:
       - 'AGENTS.md'
       - 'governance/ai/**'
       - 'governance/current-state/**'
-      - 'bridge/CHATGPT_CODEX_ACTIVATION.md'
-      - 'scripts/validate_operations_v3.py'
-      - 'tests/control_plane/test_operations_v3_single_door.py'
+      - 'governance/project-memory/**'
+      - 'governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md'
+      - 'governance/application-planning/dwc-speech/**'
+      - 'bridge/**'
+      - 'scripts/**'
+      - 'tools/**'
+      - 'tests/control_plane/**'
       - '.github/workflows/validate-repository-health.yml'
   push:
     branches: [main]
@@ -18,9 +22,13 @@ on:
       - 'AGENTS.md'
       - 'governance/ai/**'
       - 'governance/current-state/**'
-      - 'bridge/CHATGPT_CODEX_ACTIVATION.md'
-      - 'scripts/validate_operations_v3.py'
-      - 'tests/control_plane/test_operations_v3_single_door.py'
+      - 'governance/project-memory/**'
+      - 'governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md'
+      - 'governance/application-planning/dwc-speech/**'
+      - 'bridge/**'
+      - 'scripts/**'
+      - 'tools/**'
+      - 'tests/control_plane/**'
       - '.github/workflows/validate-repository-health.yml'
   workflow_dispatch:
 
@@ -63,6 +71,12 @@ jobs:
             --root . \
             --expected-head "$CANDIDATE_HEAD" \
             --output "${RUNNER_TEMP}/operations-v3-audit.json"
+
+      - name: Validate semantic retirement surfaces
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/validate_ops3_semantic_surfaces.py
 
       - name: Run Operations V3 regressions
         shell: bash
