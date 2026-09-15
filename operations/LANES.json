@@ -1,0 +1,82 @@
+{
+  "schema_version": "3.0.0",
+  "canonical_door": "operations/BOOTSTRAP.md",
+  "operating_contract": "operations/OPERATING_CONTRACT.md",
+  "selection_rule": "User intent selects a lane; lane state never changes the global operating contract.",
+  "lanes": [
+    {
+      "id": "product-development",
+      "purpose": "Software implementation roadmap, product code, schemas, UI, rules-engine and application features.",
+      "intent_examples": ["continue software development", "implement the next roadmap item", "fix this product bug"],
+      "current_state_source": "operations/CURRENT.json#/lanes/product-development",
+      "source_bundle": [
+        "current referenced work item/checkpoint",
+        "governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP.md",
+        "only source/program paths named by the selected work item",
+        "live application repository evidence"
+      ],
+      "cross_lane_reads": "Only for an explicit dependency or failure signature."
+    },
+    {
+      "id": "operations",
+      "purpose": "Governance architecture, repositories, CI, agent behavior, execution infrastructure, validation infrastructure and operational tooling.",
+      "intent_examples": ["fix governance", "redesign operations", "repair CI", "change agent behavior", "repository maintenance"],
+      "current_state_source": "operations/CURRENT.json#/lanes/operations",
+      "source_bundle": [
+        "operations/",
+        "only affected repository control surfaces",
+        "live repository/CI/tool evidence"
+      ],
+      "cross_lane_reads": "Product state may be read only to preserve or reconcile it; operations work may not silently start product implementation."
+    },
+    {
+      "id": "content-design",
+      "purpose": "Game-system evaluation, world/game content design, mechanics design and content creation that does not itself authorize software implementation.",
+      "intent_examples": ["evaluate this game system", "design creatures", "create RPG content", "work on lore"],
+      "current_state_source": "operations/CURRENT.json#/lanes/content-design",
+      "source_bundle": [
+        "user-selected game/content sources",
+        "Project/Feature/UI/Screen Bibles when relevant",
+        "canonical source material needed for the requested domain"
+      ],
+      "cross_lane_reads": "Do not load software-roadmap control state unless the user asks to integrate the result into implementation."
+    },
+    {
+      "id": "dwc-speech",
+      "purpose": "The DWC speech-synthesis project and its corpus/training/inference workflow.",
+      "intent_examples": ["continue DWC", "speech retrain", "DWC diagnostic"],
+      "current_state_source": "operations/CURRENT.json#/lanes/dwc-speech",
+      "source_bundle": [
+        "governance/application-planning/dwc-speech/README.md",
+        "the current DWC checkpoint/evidence named there",
+        "live DWC artifacts supplied by the user"
+      ],
+      "cross_lane_reads": "Keep DWC isolated from the application product lane unless an explicit integration task requires both."
+    },
+    {
+      "id": "research-evaluation",
+      "purpose": "External research, tools/resources evaluation, vendor/open-source comparisons and technical investigation that does not itself mutate product state.",
+      "intent_examples": ["research this", "compare tools", "evaluate software", "find resources"],
+      "current_state_source": "operations/CURRENT.json#/lanes/research-evaluation",
+      "source_bundle": [
+        "user-supplied research question",
+        "relevant current web/external sources",
+        "project constraints only when they affect the evaluation"
+      ],
+      "cross_lane_reads": "Research findings become product or operations work only through an explicit follow-on task."
+    },
+    {
+      "id": "source-provenance",
+      "purpose": "Source ingestion, provenance, corpus coverage, licensing traceability and recovery of project source material.",
+      "intent_examples": ["audit source coverage", "trace provenance", "review these source files", "recover missing material"],
+      "current_state_source": "operations/CURRENT.json#/lanes/source-provenance",
+      "source_bundle": [
+        "SOURCE_MAP/manifest equivalents",
+        "source coverage/provenance packages",
+        "canonical repository source registries",
+        "the user-supplied files under review"
+      ],
+      "cross_lane_reads": "Source evidence may inform other lanes but does not select their work."
+    }
+  ]
+}
