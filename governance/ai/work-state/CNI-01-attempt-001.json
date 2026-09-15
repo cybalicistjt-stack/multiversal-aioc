@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1.0",
+  "control_plane": "OPS3",
+  "work_item_id": "CNI-01",
+  "attempt_id": "CNI-01-attempt-001",
+  "title": "Content Pack Manifest, Component Identity & Typed Payload Contract",
+  "track": "content-narrative-interoperability",
+  "source_program": "CNI",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "objective": "Establish the governed CNI content-pack manifest, stable component identity and typed payload contract needed for later dependency, narrative and cross-pack interoperability work.",
+  "predecessor": {
+    "work_item_id": "SMB-07",
+    "status": "completed_verified",
+    "application_pr": 489,
+    "application_validated_head": "a2154318f27eb6eaa3aa8466e463c6ae3b6370c5",
+    "application_validation_run": 34993364356,
+    "application_merge_sha": "eb068ea61fd5557e9a90626dbc8e2e09100ab0bf",
+    "validated_tree_sha": "1c3dfe32c0f9ddb3eb369e13f4eee5791e6dc296"
+  },
+  "roadmap_prerequisites": [
+    "SMB-07 completed_verified",
+    "MIB-18 completed_verified",
+    "ARI-22C completed_verified"
+  ],
+  "strict_successor": "CNI-02",
+  "scope": {
+    "purpose": "Create the first CNI pack/dependency foundation without taking authority from narrative, Action/Event or ARI owner domains.",
+    "completion_gate": "A deterministic content-pack manifest with stable component identity and typed payload validation compiles and round-trips through governed tooling without direct owner-domain mutation or duplicate resource identity."
+  },
+  "selection_boundaries": [
+    "ROADMAP_DEPENDENCY_GRAPH.json is the cross-program sequence authority and makes CNI eligible after SMB-07, MIB-18 and ARI-22C.",
+    "CNI does not become canonical Story or owner-domain state authority.",
+    "CNI packs reference ARI resource identity/rights rather than duplicating the resource library.",
+    "Narrative/runtime changes must bind to governed Actions/Events rather than directly mutate owner-domain state.",
+    "CNI-01 is selected_not_started only; no implementation branch or implementation authority exists yet.",
+    "CNI-02 and later CNI work, PCA and later programs remain unauthorized until their roadmap/tranche gates are satisfied.",
+    "SMB-08 remains planned and is not selected until required studio/runtime golden barriers are satisfied."
+  ],
+  "active_substep": null,
+  "next_action": "Wait for the next owner Continue to governed-start CNI-01; do not implement while selected_not_started.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
