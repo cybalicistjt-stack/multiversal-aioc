@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.2.0",
+  "schema_version": "0.2.1",
   "control_plane": "OPS3",
   "work_item_id": "SMB-07",
   "attempt_id": "SMB-07-attempt-001",
@@ -22,7 +22,8 @@
     "application_merge_sha": "9ce2eecddf7af3e9d924d99b5c8d406c8ad4195a",
     "validated_tree_sha": "4d3515c5273671676477d8843210736d70be7bcc"
   },
-  "strict_successor": "SMB-08",
+  "strict_successor": "CNI-01",
+  "successor_authority": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json",
   "scope": {
     "purpose": "Make Multiversal's domains meaningfully affect one another through explicit governed integrations.",
     "included_examples": [
@@ -45,7 +46,8 @@
     "Every accepted effect requires a declared integration edge plus already-committed source and target owner receipts/results with an explicit causal link.",
     "No source-owner or target-owner mutation, cross-domain causal formula, inferred permission/action authority or hidden authority shortcut was introduced.",
     "No parallel relationship, faction, settlement, economy, resource, repair/crafting, investigation, base, Adventure, World, Action/Event, Project or authoritative cross-system ledger was created.",
-    "No autonomous scheduler, wall-clock progress, provider activation, public/tester distribution, migration or SMB-08 implementation occurred."
+    "No autonomous scheduler, wall-clock progress, provider activation, public/tester distribution, migration, CNI implementation or SMB-08 implementation occurred during SMB-07.",
+    "Cross-program successor selection is owned by ROADMAP_DEPENDENCY_GRAPH.json; the SMB-only sequence cannot skip CNI/PCA/specialist programs and advance directly to SMB-08."
   ],
   "implementation_plan": [
     {"task":1,"name":"RED integration-matrix acceptance seam","status":"completed_verified"},
@@ -65,6 +67,14 @@
         "smb06_predecessor_invariants_passed": true
       },
       "change": "Removed Markdown emphasis markers so the governance sentence literally contains 'both sides already exist as committed owner-domain evidence'. No runtime, profile, evidence, scope or authority behavior changed.",
+      "authority_expansion": false,
+      "scope_expansion": false,
+      "status": "resolved_verified"
+    },
+    {
+      "adjustment_id": "SMB-07-ADJ-002",
+      "reason": "OPS3 closeout followed the SMB-only strict_successor projection and selected SMB-08, skipping the cross-program CNI/PCA/specialist sequence owned by ROADMAP_DEPENDENCY_GRAPH.json.",
+      "change": "Corrected SMB-07 successor to CNI-01 and made the cross-program dependency graph explicit successor authority. SMB-07 implementation evidence and completion remain unchanged.",
       "authority_expansion": false,
       "scope_expansion": false,
       "status": "resolved_verified"
@@ -116,7 +126,7 @@
     }
   },
   "active_substep": "closeout-complete",
-  "next_action": "SMB-07 is completed_verified. SMB-08 may be selected but must not be implemented until a later owner Continue governed-starts it.",
+  "next_action": "SMB-07 is completed_verified. CNI-01 is the cross-program successor and may be selected_not_started; SMB-08 remains later and must not be selected or implemented until its roadmap barriers are satisfied.",
   "owner_interaction_observation": {
     "continue_turns": 1,
     "stall_nudges": 0
