@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.1.1",
   "control_plane": "OPS3",
   "work_item_id": "SMB-08",
   "attempt_id": "SMB-08-attempt-001",
@@ -7,8 +7,8 @@
   "track": "system-maturation-buildout",
   "source_program": "SMB",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
-  "owner_selected": true,
+  "status": "planned",
+  "owner_selected": false,
   "implementation_authority": false,
   "implementation_branch": null,
   "completed": false,
@@ -48,21 +48,27 @@
     "completion_gate": "First-party packs compile deterministically, pass compatibility/provenance rules and support representative complete play without fixture-only content."
   },
   "selection_boundaries": [
-    "SMB-07 is completed_verified before SMB-08 implementation.",
-    "This checkpoint selects SMB-08 only; it does not grant implementation authority.",
-    "No SMB-08 implementation branch exists until a later owner Continue governed-starts SMB-08.",
+    "SMB-07 is completed_verified, but that alone does not make SMB-08 the next cross-program work item.",
+    "ROADMAP_DEPENDENCY_GRAPH.json owns cross-program activation and places CNI/PCA/specialist studio-runtime work before SMB-08 readiness.",
+    "This checkpoint is retained as provenance for the erroneous revision-20 selection; it is planned and not selected.",
+    "No SMB-08 implementation branch or implementation authority exists.",
     "SMB-08 must use existing MIB content tooling and owner-domain contracts rather than create replacement content authorities.",
     "First-party media/generated resources must register through ARI rather than form an SMB-only asset library.",
     "SMB-09 and later work remain unauthorized."
   ],
+  "selection_correction": {
+    "reason": "Revision 20 followed the SMB-only successor projection instead of the cross-program dependency graph.",
+    "correct_successor_after_smb07": "CNI-01",
+    "correction_status": "resolved_verified_pending_merge"
+  },
   "active_substep": null,
-  "next_action": "Wait for a later owner Continue to governed-start SMB-08; do not implement while selected_not_started.",
+  "next_action": "Remain planned and unselected until the cross-program roadmap gates make SMB-08 eligible after the CNI/PCA/specialist/MERA/MBES block.",
   "owner_interaction_observation": {
     "continue_turns": 0,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "selected_not_started",
+    "status": "planned",
     "policy_violations": []
   }
 }
