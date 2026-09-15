@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.1.0",
+  "control_plane": "OPS3",
+  "work_item_id": "SMB-02",
+  "attempt_id": "SMB-02-attempt-001",
+  "title": "Remote Live Multiplayer & Presence",
+  "track": "system-maturation-buildout",
+  "source_program": "SMB",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "objective": "Deliver reliable remote Campaign play around the existing Campaign/Session/Action/Event authority model.",
+  "predecessor": {
+    "work_item_id": "SMB-01",
+    "status": "completed_verified",
+    "application_pr": 483,
+    "application_validated_head": "4afc2e6bcc46a6384ff3bbb405e23bc1ff9fd2fd",
+    "application_validation_run": 34973761134,
+    "application_merge_sha": "cad77ba3fcf33a1c8f22c6af7ec4e62344135c14",
+    "validated_tree_sha": "aa2876c70e1de6db48d053b07e29c6778eced718"
+  },
+  "strict_successor": "SMB-03",
+  "scope": {
+    "purpose": "Deliver reliable remote Campaign play around the existing Campaign/Session/Action/Event authority model.",
+    "included": [
+      "invitations",
+      "presence",
+      "remote sessions",
+      "latency handling",
+      "reconnect",
+      "device continuity",
+      "live/async/hybrid transitions",
+      "network-failure recovery"
+    ],
+    "completion_gate": "Geographically separated ordinary users can join, play, disconnect/recover and continue without developer intervention or duplicate authoritative effects."
+  },
+  "selection_boundaries": [
+    "SMB-01 is completed_verified before SMB-02 selection.",
+    "SMB-02 is selected_not_started only; selection grants no implementation authority and creates no implementation branch.",
+    "A subsequent owner Continue must governed-start SMB-02 before implementation begins.",
+    "Campaign/Session/Action/Event authority remains canonical; remote transport and presence may not create parallel authoritative effects.",
+    "The SMB-01 production platform selection may be consumed behind its adapter boundaries, but paid/live provider activation, production deployment and public/tester distribution remain separately gated.",
+    "SMB-03 and later work remain unauthorized until SMB-02 is completed_verified and canonical state advances."
+  ],
+  "active_substep": "selected_not_started",
+  "next_action": "On the next owner Continue, governed-start SMB-02 under the product-development lane, establish its bounded acceptance seam against current application main, and execute through its completion gate without reopening SMB-01.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
