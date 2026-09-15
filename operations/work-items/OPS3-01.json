@@ -3,26 +3,25 @@
   "work_item_id": "OPS3-01",
   "title": "Operations V3 Single-Door Control-Plane Reset",
   "lane": "operations",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_authorized": true,
-  "implementation_authority": true,
-  "aioc_branch": "maintenance/ops-v3-single-door",
-  "application_branch": "maintenance/ops-v3-single-door",
+  "implementation_authority": false,
   "purpose": "Replace overlapping governance and behavior surfaces with one GPT-first bootstrap, one operating contract, one current-state selector and one lane registry without losing product work or historical evidence.",
   "preserved_product_state": {
     "selected_work_item": "MIB-17",
     "attempt_id": "MIB-17-attempt-001",
     "status": "selected_not_started",
-    "implementation_authority": false
+    "implementation_authority": false,
+    "implementation_branch": null
   },
   "scope": [
-    "inventory every surface that can select work, grant authority, steer agent behavior, block/finalize execution, or present live current state",
+    "inventory surfaces that can select work, grant authority, steer agent behavior, block/finalize execution, or present live current state",
     "install operations/ as the canonical control plane",
-    "rewrite AIOC, application, GPT Project Source and executor entrypoints so they only redirect into the canonical door",
-    "classify remaining legacy surfaces as projection, validator, executor adapter, evidence, source reference or historical",
-    "prevent legacy application current-state prose from steering agents",
+    "rewrite AIOC, application, GPT Project Source and executor entrypoints so they only redirect into the canonical door or are explicitly non-authoritative",
+    "classify remaining legacy surfaces as projection, validator, executor adapter, evidence, source reference, background or historical",
+    "prevent legacy current-state prose and executable V2 tooling from steering agents",
     "separate executor availability from work authorization",
-    "preserve all completed product/code/content/source work and immutable evidence",
+    "preserve completed product/code/content/source work and historical evidence",
     "validate contradictions and unauthorized live selectors fail closed"
   ],
   "non_goals": [
@@ -37,26 +36,57 @@
     "AIOC has one canonical behavior contract at operations/OPERATING_CONTRACT.md",
     "AIOC has one mutable current-state selector at operations/CURRENT.json",
     "AIOC has one lane registry at operations/LANES.json",
-    "AIOC and application AGENTS.md contain redirects and no current/next-work claims",
-    "known legacy selectors and behavior policies are registered non-authoritative",
+    "AIOC and application entry surfaces contain redirects/non-authority adapters and no independent current/next-work claims",
+    "known legacy selectors, behavior policies, runbooks and executable V2 validators are registered non-authoritative or fail closed",
     "application legacy current-state files no longer advertise STAGE-A-A2 or another live next task",
-    "GPT Project Source entry files are rewritten to the same door and replacement instructions are prepared for the Project settings surface",
+    "ChatGPT Project Source entry/reference files are OPS3-safe and route to the same door",
+    "ChatGPT Project custom-instruction cutover is owner-confirmed",
     "repository validation proves the single-door invariants",
-    "MIB-17 remains preserved selected_not_started with no implementation authority until the freeze is explicitly cleared"
+    "MIB-17 remains preserved selected_not_started with no implementation authority after the OPS3 freeze is cleared"
   ],
   "external_platform_actions": [
     {
       "surface": "ChatGPT Project instructions",
-      "status": "required_for_full_cutover",
-      "reason": "The current tool surface does not expose a mutation API for Project custom instructions.",
-      "artifact": "operations/adapters/GPT_PROJECT_INSTRUCTIONS.md"
+      "status": "owner_confirmed_complete",
+      "artifact": "operations/adapters/GPT_PROJECT_INSTRUCTIONS.md",
+      "verification_boundary": "Project custom-instruction mutation is not exposed through the repository or Project Files API; completion is recorded from the owner's explicit cutover confirmation."
     },
     {
       "surface": "ChatGPT Project Source attachments",
-      "status": "required_for_full_cutover",
-      "reason": "Project-backed source files can be read but not replaced in place through the available Project Files tool.",
-      "artifact": "operations/adapters/PROJECT_SOURCE_CUTOVER.md"
+      "status": "owner_confirmed_and_live_surface_audited",
+      "artifact": "operations/adapters/PROJECT_SOURCE_CUTOVER.md",
+      "verification_boundary": "The owner performed the Project UI replacement; the resulting Project Source set and rewritten contents were read and audited through the Project Files surface."
     }
   ],
-  "completion_rule": "Do not clear the product freeze until repository cutover is merged/verified and the GPT Project entry surfaces have been replaced or explicitly recorded as the only remaining owner/platform action."
+  "completion_evidence": {
+    "aioc_initial_cutover": {
+      "pr": 1170,
+      "merge_commit": "c76b317165f34a63707db4e38e164318a539f3b4",
+      "green_runs": [34946009973, 34946398029]
+    },
+    "application_cutover": {
+      "pr": 478,
+      "merge_commit": "fd4c82f094936858594cbf55d6117ee014f57590",
+      "red_run": 34945693813,
+      "diagnostic_run": 34946604618,
+      "green_run": 34958124904
+    },
+    "application_final_surface_audit": {
+      "pr": 479,
+      "merge_commit": "7ffa0c27f12a21f659cbb100e41b1ce7edabd7b9",
+      "red_run": 34958485970,
+      "green_run": 34958764578
+    },
+    "aioc_final_surface_audit": {
+      "pr": 1171,
+      "merge_commit": "99fbc723f626eeaf5e5ab5d541e81771ef3ff1ac",
+      "red_run": 34959025450,
+      "green_run": 34959366248
+    },
+    "chatgpt_project_surface": {
+      "source_cutover": "owner_confirmed_and_live_surface_audited",
+      "custom_instructions": "owner_confirmed_complete"
+    }
+  },
+  "completion_rule": "Satisfied: repository cutover is merged and verified, remaining V2 live-looking surfaces are retired, ChatGPT Project entry surfaces are owner-confirmed/audited, and the preserved MIB-17 selection remains unstarted and unauthorized."
 }
