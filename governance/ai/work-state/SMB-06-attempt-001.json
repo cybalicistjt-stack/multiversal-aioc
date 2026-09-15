@@ -51,7 +51,7 @@
     "APW-03/D26 remains long-running Project/Activity and campaign-time authority, MIB-12 remains repair/upgrade/crafting definition authority, and MIB-13 remains current price/scarcity/settlement authority.",
     "Fuel consumption, travel rates, damage values, repair costs, maintenance intervals, upgrade yields and system-resource deltas remain absent unless explicit owner definitions/results provide them.",
     "Live/async continuity must be deterministic and checkpoint/replay based; no autonomous scheduler, unattended progress, wall-clock advancement or hidden authority shortcut is authorized.",
-    "Implementation must establish a causal failing acceptance seam before production code and pass exact-head Linux/Windows deterministic validation plus MIB-14, SMB-04 and KFR-05 predecessor invariants.",
+    "Implementation must establish a causal failing acceptance seam before production code and pass exact-head Linux/Windows deterministic validation plus MIB-14 and SMB-04 predecessor invariants; KFR-05 nonauthority is protected by SMB-06 source-governance markers because verify_kfr_05.py is intentionally scoped to the KFR active-family contract and cannot be reused as a historical predecessor validator.",
     "No provider activation, public/tester distribution, durable migration or unrelated refactor is authorized.",
     "SMB-07 and later work remain unauthorized until SMB-06 is completed_verified and canonical state advances."
   ],
@@ -63,7 +63,7 @@
         "apps/client-ui/src/smb/Smb06FullVehicleSystem.test.ts",
         "governance/application-planning/validation-core/profiles/SMB-06.json"
       ],
-      "deliverable": "A focused profile that preserves MIB-14/SMB-04/KFR-05 invariants and fails specifically because the bounded SMB-06 full-vehicle workflow module does not yet exist."
+      "deliverable": "A focused profile that preserves MIB-14 and SMB-04 predecessor invariants, exercises explicit KFR-05 qualification references without granting authority, and fails specifically because the bounded SMB-06 full-vehicle workflow module does not yet exist."
     },
     {
       "task": 2,
@@ -81,7 +81,7 @@
         "fixtures/golden/smb06-full-vehicle-system/compliance.json",
         "governance/application-planning/system-maturation-buildout/SMB-06_FULL_VEHICLE_SYSTEM.md"
       ],
-      "deliverable": "Machine-checkable proof that SMB-06 reuses MIB-14, D17, A8 vehicle/station/resource/damage contracts, KFR-05, SMB-04/D28, MIB-11/WCI, APW-03/D26, MIB-12, MIB-13 and existing combat owners without parallel ledgers, inferred formulas or autonomous progress."
+      "deliverable": "Machine-checkable proof that SMB-06 reuses MIB-14, D17, A8 vehicle/station/resource/damage contracts, KFR-05, SMB-04/D28, MIB-11/WCI, APW-03/D26, MIB-12, MIB-13 and existing combat owners without parallel ledgers, inferred formulas or autonomous progress; this proof explicitly protects KFR-05 qualification nonauthority without invoking its retired active-family validator."
     },
     {
       "task": 4,
@@ -90,8 +90,24 @@
       "deliverable": "Linux and Windows focused acceptance, source-governance invariants, client typecheck and deterministic cross-platform receipts pass on one exact head before merge; then OPS3 records SMB-06 completed_verified and selects SMB-07 without starting it."
     }
   ],
+  "plan_adjustments": [
+    {
+      "adjustment_id": "SMB-06-ADJ-001",
+      "reason": "The first RED run proved verify_kfr_05.py is an active-family self-verifier: it requires ACTIVE_FAMILY_CONTRACT.active_family=KFR and therefore fails by design under active SMB-06 even when KFR-05 production invariants are intact.",
+      "evidence": {
+        "application_head": "399b87fe27b6057073d8607244fd74be9744acd6",
+        "validation_run": 34989837492,
+        "failure_step": "kfr05-predecessor-invariants",
+        "mib14_predecessor_passed": true,
+        "smb04_predecessor_passed": true
+      },
+      "change": "Remove verify_kfr_05.py from the SMB-06 active profile and enforce KFR-05 qualification/station-authority nonownership in SMB-06 acceptance plus tools/verify_smb_06.py.",
+      "authority_expansion": false,
+      "scope_expansion": false
+    }
+  ],
   "active_substep": "acceptance-design",
-  "next_action": "Create the SMB-06 RED acceptance test/profile on work/smb-06-full-vehicle-system, prove the expected focused failure after predecessor invariants pass, then implement only the minimum deterministic vehicle workflow/replay contract needed to satisfy the source-defined completion gate.",
+  "next_action": "Rerun SMB-06 RED with MIB-14 and SMB-04 predecessor invariants plus focused acceptance; require the causal failure to move to smb06-focused-full-vehicle-system, then implement only the minimum deterministic vehicle workflow/replay contract needed to satisfy the source-defined completion gate.",
   "owner_interaction_observation": {
     "continue_turns": 1,
     "stall_nudges": 0
