@@ -6,7 +6,7 @@
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 20,
+  "state_revision": 21,
   "default_lane": "product-development",
   "active_operations_work_item": null,
   "active_operations_work_item_path": null,
@@ -27,12 +27,12 @@
     },
     "product-development": {
       "state": "selected_not_started",
-      "selected_work_item": "SMB-08",
-      "attempt_id": "SMB-08-attempt-001",
-      "checkpoint_path": "governance/ai/work-state/SMB-08-attempt-001.json",
+      "selected_work_item": "CNI-01",
+      "attempt_id": "CNI-01-attempt-001",
+      "checkpoint_path": "governance/ai/work-state/CNI-01-attempt-001.json",
       "implementation_branch": null,
       "implementation_authority": false,
-      "activation_rule": "SMB-08 is selected only after SMB-07 completed_verified on application PR 489. A subsequent owner Continue must governed-start SMB-08 before implementation authority or a branch exists."
+      "activation_rule": "ROADMAP_DEPENDENCY_GRAPH.json is the cross-program planning authority. CNI-01 is selected after completed_verified SMB-07, MIB-18 and ARI-22C. A subsequent owner Continue must governed-start CNI-01 before implementation authority or a branch exists."
     },
     "dwc-speech": {
       "state": "preserved_external_lane",
@@ -56,7 +56,8 @@
     "current_selector": "This file alone selects live operational state.",
     "implementation_facts": "Use live repository, PR, CI, filesystem, and tool evidence.",
     "legacy_surfaces": "Legacy selectors are compatibility projections or history only and may not override this file.",
+    "cross_program_successor_rule": "Before successor selection, consult governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json. Individual program strict_successor or backlog fields cannot skip an eligible interstitial program or override cross-program gates.",
     "executor_independence": "Executor availability never grants or revokes project authority."
   },
-  "next_project_action": "On the next owner Continue, governed-start SMB-08 — Core Content Production — from SMB-08-attempt-001 without reopening completed SMB-07."
+  "next_project_action": "On the next owner Continue, governed-start CNI-01 — Content Pack Manifest, Component Identity & Typed Payload Contract — from CNI-01-attempt-001 without reopening completed SMB-07 or starting SMB-08."
 }
