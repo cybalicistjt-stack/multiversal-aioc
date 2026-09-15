@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "control_plane": "OPS3",
   "work_item_id": "SMB-07",
   "attempt_id": "SMB-07-attempt-001",
@@ -7,12 +7,12 @@
   "track": "system-maturation-buildout",
   "source_program": "SMB",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
+  "status": "in_progress",
   "owner_selected": true,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "work/smb-07-deep-cross-system-simulation",
   "completed": false,
-  "objective": "Make Multiversal's domains meaningfully affect one another through explicit governed integrations.",
+  "objective": "Make Multiversal's domains meaningfully affect one another through explicit governed integrations while preserving every source and target owner domain.",
   "predecessor": {
     "work_item_id": "SMB-06",
     "status": "completed_verified",
@@ -38,19 +38,64 @@
   },
   "selection_boundaries": [
     "SMB-06 is completed_verified before SMB-07 implementation.",
-    "This checkpoint selects SMB-07 only; it does not grant implementation authority.",
-    "No SMB-07 implementation branch exists until a later owner Continue governed-starts SMB-07.",
-    "SMB-07 must integrate existing owner domains explicitly and may not hide or replace source-domain authority behind a cross-system shortcut.",
-    "SMB-08 and later work remain unauthorized."
+    "SMB-07 is the only authorized product-development work item for this attempt.",
+    "SMB-07 is a deterministic non-authoritative integration-matrix/correlation/replay layer; it does not become an owner of any source or target domain.",
+    "MIB-09 remains relationship/reputation authority; SMB-03, ODL, SCL and MIB-11/WCI retain organization, faction, settlement, strategic-consequence and World/location authority.",
+    "MIB-13 remains economy/current-price/scarcity/transaction/settlement authority; SMB-07 may correlate explicit settlement/base owner results to explicit economy owner results but may not calculate or mutate prices itself.",
+    "SMB-04/D28 remains travel/discovery/Adventure run authority, D05 remains role-safe discovery authority, and MIB-11/WCI remains World/navigation authority.",
+    "A9/D24 remains Investigation/Clue/Evidence runtime authority; discovery references may participate only through already-authorized/committed owner results and may not reveal hidden information or create clue truth.",
+    "Action/Effect/A7/A8 owners retain damage/combat-result authority; MIB-12 remains repair/crafting definition authority and APW-03/D26 remains Project/Activity/campaign-time authority.",
+    "SMB-05/CEL-03 remains derived base/production projection authority over its owner seams; D17 remains live Asset/inventory/resource identity/state authority.",
+    "Every accepted cross-domain effect must name a declared matrix edge, a committed source-owner receipt/result and a committed target-owner receipt/result; SMB-07 may correlate them but may not execute the target mutation.",
+    "No relationship-to-faction, settlement-to-price, travel-to-resource, damage-to-repair, discovery-to-investigation, base-to-economy or Adventure-to-World formula is authorized; causal values remain explicit owner-produced results.",
+    "No parallel relationship, faction, settlement, economy, resource, repair/crafting, investigation, base, Adventure, World, Action/Event, Project or cross-system authoritative ledger is authorized.",
+    "No autonomous scheduler, wall-clock progress, hidden action-authority shortcut, provider activation, public/tester distribution, migration or unrelated refactor is authorized.",
+    "Implementation must establish causal RED before production code and pass exact-head Linux/Windows deterministic validation, immediate-predecessor SMB-06 source-governance invariants, SMB-07 source-governance invariants and client typecheck.",
+    "SMB-08 and later work remain unauthorized until SMB-07 is completed_verified and canonical state advances."
   ],
-  "active_substep": null,
-  "next_action": "Wait for a later owner Continue to governed-start SMB-07; do not implement while selected_not_started.",
+  "implementation_plan": [
+    {
+      "task": 1,
+      "name": "RED integration-matrix acceptance seam",
+      "files": [
+        "apps/client-ui/src/smb/Smb07DeepCrossSystemSimulation.test.ts",
+        "governance/application-planning/validation-core/profiles/SMB-07.json"
+      ],
+      "deliverable": "A focused Validation Core profile that preserves SMB-06 invariants and fails specifically because the bounded SMB-07 integration-matrix/receipt-replay module does not yet exist."
+    },
+    {
+      "task": 2,
+      "name": "Deterministic cross-domain integration matrix and receipt replay",
+      "files": [
+        "packages/contracts/src/cross-system/smb-07-deep-cross-system-simulation.ts"
+      ],
+      "deliverable": "A non-authoritative declared matrix covering all seven approved example edges and deterministic application/replay of source+target committed owner receipts, rejecting undeclared edges, owner mismatch, uncommitted evidence, stale revisions, duplicates, causal-link mismatch and hidden-authority shortcuts."
+    },
+    {
+      "task": 3,
+      "name": "Source-governance proof",
+      "files": [
+        "tools/verify_smb_07.py",
+        "fixtures/golden/smb07-deep-cross-system-simulation/compliance.json",
+        "governance/application-planning/system-maturation-buildout/SMB-07_DEEP_CROSS_SYSTEM_SIMULATION.md"
+      ],
+      "deliverable": "Machine-checkable proof that SMB-07 correlates owner receipts across MIB-09, SMB-03/ODL/SCL/MIB-11/WCI, MIB-13, SMB-04/D28/D05, A9/D24, Action/Effect/A7/A8, MIB-12, APW-03/D26, SMB-05/CEL-03 and D17 without parallel ledgers, inferred formulas or direct owner mutation."
+    },
+    {
+      "task": 4,
+      "name": "Exact-head verification and closeout",
+      "files": [],
+      "deliverable": "Linux and Windows focused acceptance, source-governance invariants, client typecheck and deterministic cross-platform receipts pass on one exact head before merge; then OPS3 records SMB-07 completed_verified and selects SMB-08 without starting it."
+    }
+  ],
+  "active_substep": "acceptance-design",
+  "next_action": "Create the SMB-07 RED acceptance/profile on work/smb-07-deep-cross-system-simulation, prove expected Linux/Windows failure at the focused missing-module seam after SMB-06 invariants pass, then implement only the minimum deterministic declared integration-matrix/owner-receipt correlation and replay contract needed to satisfy the completion gate.",
   "owner_interaction_observation": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "selected_not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
