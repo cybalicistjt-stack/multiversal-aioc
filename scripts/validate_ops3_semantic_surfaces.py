@@ -60,6 +60,26 @@ for pattern in retired_patterns:
         if "retired" not in text.lower() or DOOR not in text or "SystemExit(2)" not in text:
             errors.append(f"legacy program executable is not fail-closed OPS3 historical stub: {path.relative_to(ROOT)}")
 
+prompt_adapter_path = ROOT / "operations/adapters/GPT_PROJECT_INSTRUCTIONS.md"
+prompt_adapter = prompt_adapter_path.read_text(encoding="utf-8")
+for required in (
+    "EXECUTOR ADAPTER / NON-AUTHORITATIVE",
+    DOOR,
+    "Owner Prompt Kit — NON-AUTHORITATIVE convenience",
+    "cannot redefine `Continue`",
+    "cannot select current work",
+    "Sections B-E are an owner convenience library",
+):
+    if required not in prompt_adapter:
+        errors.append(f"GPT owner prompt adapter missing non-authority invariant: {required}")
+for forbidden in (
+    "governance/ai/runtime/CURRENT_WORK_POINTER.json",
+    "governance/ai/runtime/CURRENT_IMPLEMENTATION_STATUS.json",
+    "governance/ai/interaction-system/EXECUTION_TERMINATION_CONTRACT.json",
+):
+    if forbidden in prompt_adapter:
+        errors.append(f"GPT owner prompt adapter contains retired live route: {forbidden}")
+
 if errors:
     for error in errors:
         print(error, file=sys.stderr)
