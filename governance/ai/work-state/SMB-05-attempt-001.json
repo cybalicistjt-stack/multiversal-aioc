@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "control_plane": "OPS3",
   "work_item_id": "SMB-05",
   "attempt_id": "SMB-05-attempt-001",
@@ -7,10 +7,10 @@
   "track": "system-maturation-buildout",
   "source_program": "SMB",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
+  "status": "in_progress",
   "owner_selected": true,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "work/smb-05-full-base-housing",
   "completed": false,
   "objective": "Build the complete base and housing vertical over existing MIB-14 foundations without duplicating inventory, economy or world truth.",
   "predecessor": {
@@ -41,19 +41,60 @@
   },
   "selection_boundaries": [
     "SMB-04 is completed_verified before SMB-05 implementation.",
-    "This checkpoint selects SMB-05 only; it does not grant implementation authority.",
-    "No implementation branch exists until a later owner Continue governed-starts SMB-05.",
-    "Existing MIB-14 and owner-domain inventory, economy, world/location, ownership and event foundations must be reused rather than duplicated when SMB-05 is governed-started.",
-    "SMB-06 and later work remain unauthorized."
+    "SMB-05 is the only authorized product-development work item for this attempt.",
+    "MIB-14 remains base/platform/facility configuration, compatibility, capacity, storage/workstation and maintenance/upgrade planning authority; SMB-05 composes those seams rather than replacing them.",
+    "D17 remains live Asset identity, ownership, inventory, storage placement, condition and state authority; SMB-05 may only consume snapshots and committed owner-result references.",
+    "MIB-12 remains crafting/recipe authority, MIB-13 remains economy/price/settlement authority, APW-03/D26 remain long-running Project/Activity and campaign-time authority, and MIB-11/D18 remain world/location authority.",
+    "CEL-03 and other completed production/hospitality/resource surfaces remain projection/composition authorities; SMB-05 may reference their results but may not create a second production, resource or economy ledger.",
+    "Player/GM operation must depend on existing authorization/control-grant evidence and may not infer control from ownership, possession, crew assignment or UI selection.",
+    "Defense outcomes remain with existing combat/strategic owner domains; SMB-05 may expose capability and result references only.",
+    "No autonomous upkeep/production scheduler, wall-clock progress, universal construction cost/yield formula, provider activation, public/tester distribution or migration is authorized.",
+    "Implementation must establish a failing acceptance seam before production code and pass exact-head Linux/Windows deterministic validation plus MIB-14/CEL-03 predecessor invariants.",
+    "SMB-06 and later work remain unauthorized until SMB-05 is completed_verified and canonical state advances."
   ],
-  "active_substep": null,
-  "next_action": "Wait for a later owner Continue to governed-start SMB-05; do not implement while selected_not_started.",
+  "implementation_plan": [
+    {
+      "task": 1,
+      "name": "RED acceptance seam",
+      "files": [
+        "apps/client-ui/src/smb/Smb05FullBaseHousing.test.ts",
+        "governance/application-planning/validation-core/profiles/SMB-05.json"
+      ],
+      "deliverable": "A focused acceptance profile that fails because the bounded SMB-05 base lifecycle module does not yet exist."
+    },
+    {
+      "task": 2,
+      "name": "Derived base lifecycle contract",
+      "files": [
+        "packages/contracts/src/vehicle-platform-base/smb-05-full-base-housing.ts"
+      ],
+      "deliverable": "Deterministic base plan/projection/replay covering creation, operation, modification, interruption/damage, recovery, storage/facility/workforce/production/defense/utility references and maintenance/upgrade project references while live mutation stays owner-domain committed."
+    },
+    {
+      "task": 3,
+      "name": "Source-governance proof",
+      "files": [
+        "tools/verify_smb_05.py",
+        "fixtures/golden/smb05-base-housing/compliance.json",
+        "governance/application-planning/system-maturation-buildout/SMB-05_FULL_BASE_HOUSING.md"
+      ],
+      "deliverable": "Machine-checkable proof that SMB-05 reuses MIB-14/D17/MIB-12/MIB-13/APW-03/D26/MIB-11/D18/CEL-03 and existing control/combat authorities without parallel ledgers, autonomous progress or invented formulas."
+    },
+    {
+      "task": 4,
+      "name": "Exact-head verification and closeout",
+      "files": [],
+      "deliverable": "Linux and Windows focused acceptance, source-governance invariants, client typecheck and deterministic cross-platform receipts pass on one exact head before merge; then OPS3 records SMB-05 completed_verified and selects SMB-06 without starting it."
+    }
+  ],
+  "active_substep": "acceptance-design",
+  "next_action": "Create the SMB-05 RED acceptance test/profile on work/smb-05-full-base-housing, prove expected failure, then implement only the minimum deterministic base lifecycle projection/replay over MIB-14 and canonical owner references needed to satisfy the completion gate.",
   "owner_interaction_observation": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "selected_not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
