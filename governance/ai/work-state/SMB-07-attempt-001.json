@@ -7,11 +7,11 @@
   "track": "system-maturation-buildout",
   "source_program": "SMB",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
+  "implementation_authority": false,
   "implementation_branch": "work/smb-07-deep-cross-system-simulation",
-  "completed": false,
+  "completed": true,
   "objective": "Make Multiversal's domains meaningfully affect one another through explicit governed integrations while preserving every source and target owner domain.",
   "predecessor": {
     "work_item_id": "SMB-06",
@@ -37,65 +37,92 @@
     "completion_gate": "A declared integration matrix proves deterministic cross-domain effects with traceable owner-domain receipts and no hidden authority shortcuts."
   },
   "selection_boundaries": [
-    "SMB-06 is completed_verified before SMB-07 implementation.",
-    "SMB-07 is the only authorized product-development work item for this attempt.",
-    "SMB-07 is a deterministic non-authoritative integration-matrix/correlation/replay layer; it does not become an owner of any source or target domain.",
-    "MIB-09 remains relationship/reputation authority; SMB-03, ODL, SCL and MIB-11/WCI retain organization, faction, settlement, strategic-consequence and World/location authority.",
-    "MIB-13 remains economy/current-price/scarcity/transaction/settlement authority; SMB-07 may correlate explicit settlement/base owner results to explicit economy owner results but may not calculate or mutate prices itself.",
-    "SMB-04/D28 remains travel/discovery/Adventure run authority, D05 remains role-safe discovery authority, and MIB-11/WCI remains World/navigation authority.",
-    "A9/D24 remains Investigation/Clue/Evidence runtime authority; discovery references may participate only through already-authorized/committed owner results and may not reveal hidden information or create clue truth.",
-    "Action/Effect/A7/A8 owners retain damage/combat-result authority; MIB-12 remains repair/crafting definition authority and APW-03/D26 remains Project/Activity/campaign-time authority.",
-    "SMB-05/CEL-03 remains derived base/production projection authority over its owner seams; D17 remains live Asset/inventory/resource identity/state authority.",
-    "Every accepted cross-domain effect must name a declared matrix edge, a committed source-owner receipt/result and a committed target-owner receipt/result; SMB-07 may correlate them but may not execute the target mutation.",
-    "No relationship-to-faction, settlement-to-price, travel-to-resource, damage-to-repair, discovery-to-investigation, base-to-economy or Adventure-to-World formula is authorized; causal values remain explicit owner-produced results.",
-    "No parallel relationship, faction, settlement, economy, resource, repair/crafting, investigation, base, Adventure, World, Action/Event, Project or cross-system authoritative ledger is authorized.",
-    "No autonomous scheduler, wall-clock progress, hidden action-authority shortcut, provider activation, public/tester distribution, migration or unrelated refactor is authorized.",
-    "Implementation must establish causal RED before production code and pass exact-head Linux/Windows deterministic validation, immediate-predecessor SMB-06 source-governance invariants, SMB-07 source-governance invariants and client typecheck.",
-    "SMB-08 and later work remain unauthorized until SMB-07 is completed_verified and canonical state advances."
+    "MIB-09 remains relationship/reputation authority; SMB-03/ODL/SCL and MIB-11/WCI retain faction, settlement, strategic-consequence and World/location authority.",
+    "MIB-13 remains economy/current-price/scarcity/transaction/settlement authority; SMB-07 does not calculate or mutate prices.",
+    "SMB-04/D28 remains travel/discovery/Adventure authority, D05 remains role-safe discovery authority, and A9/D24 remains Investigation/Clue/Evidence runtime authority.",
+    "Action/Effect/A7/A8 retain damage/combat-result authority; MIB-12 remains repair/crafting-definition authority and APW-03/D26 remains Project/Activity/time authority.",
+    "SMB-05/CEL-03 remains base/production projection authority over its owner seams; D17/A8 remains Asset/resource identity/state authority.",
+    "Every accepted effect requires a declared integration edge plus already-committed source and target owner receipts/results with an explicit causal link.",
+    "No source-owner or target-owner mutation, cross-domain causal formula, inferred permission/action authority or hidden authority shortcut was introduced.",
+    "No parallel relationship, faction, settlement, economy, resource, repair/crafting, investigation, base, Adventure, World, Action/Event, Project or authoritative cross-system ledger was created.",
+    "No autonomous scheduler, wall-clock progress, provider activation, public/tester distribution, migration or SMB-08 implementation occurred."
   ],
   "implementation_plan": [
+    {"task":1,"name":"RED integration-matrix acceptance seam","status":"completed_verified"},
+    {"task":2,"name":"Deterministic cross-domain integration matrix and receipt replay","status":"completed_verified"},
+    {"task":3,"name":"Source-governance proof","status":"completed_verified"},
+    {"task":4,"name":"Exact-head verification and closeout","status":"completed_verified"}
+  ],
+  "plan_adjustments": [
     {
-      "task": 1,
-      "name": "RED integration-matrix acceptance seam",
-      "files": [
-        "apps/client-ui/src/smb/Smb07DeepCrossSystemSimulation.test.ts",
-        "governance/application-planning/validation-core/profiles/SMB-07.json"
-      ],
-      "deliverable": "A focused Validation Core profile that preserves SMB-06 invariants and fails specifically because the bounded SMB-07 integration-matrix/receipt-replay module does not yet exist."
-    },
-    {
-      "task": 2,
-      "name": "Deterministic cross-domain integration matrix and receipt replay",
-      "files": [
-        "packages/contracts/src/cross-system/smb-07-deep-cross-system-simulation.ts"
-      ],
-      "deliverable": "A non-authoritative declared matrix covering all seven approved example edges and deterministic application/replay of source+target committed owner receipts, rejecting undeclared edges, owner mismatch, uncommitted evidence, stale revisions, duplicates, causal-link mismatch and hidden-authority shortcuts."
-    },
-    {
-      "task": 3,
-      "name": "Source-governance proof",
-      "files": [
-        "tools/verify_smb_07.py",
-        "fixtures/golden/smb07-deep-cross-system-simulation/compliance.json",
-        "governance/application-planning/system-maturation-buildout/SMB-07_DEEP_CROSS_SYSTEM_SIMULATION.md"
-      ],
-      "deliverable": "Machine-checkable proof that SMB-07 correlates owner receipts across MIB-09, SMB-03/ODL/SCL/MIB-11/WCI, MIB-13, SMB-04/D28/D05, A9/D24, Action/Effect/A7/A8, MIB-12, APW-03/D26, SMB-05/CEL-03 and D17 without parallel ledgers, inferred formulas or direct owner mutation."
-    },
-    {
-      "task": 4,
-      "name": "Exact-head verification and closeout",
-      "files": [],
-      "deliverable": "Linux and Windows focused acceptance, source-governance invariants, client typecheck and deterministic cross-platform receipts pass on one exact head before merge; then OPS3 records SMB-07 completed_verified and selects SMB-08 without starting it."
+      "adjustment_id": "SMB-07-ADJ-001",
+      "reason": "The first terminal proof run found that Markdown emphasis around the word 'both' split a literal machine-checkable governance phrase even though the intended boundary was present semantically.",
+      "evidence": {
+        "application_head": "4eb36d18f7c915dce3b4a872cd1a22bca392d0d3",
+        "validation_run": 34993103115,
+        "failure_step": "smb07-invariants",
+        "focused_acceptance_passed": true,
+        "smb06_predecessor_invariants_passed": true
+      },
+      "change": "Removed Markdown emphasis markers so the governance sentence literally contains 'both sides already exist as committed owner-domain evidence'. No runtime, profile, evidence, scope or authority behavior changed.",
+      "authority_expansion": false,
+      "scope_expansion": false,
+      "status": "resolved_verified"
     }
   ],
-  "active_substep": "acceptance-design",
-  "next_action": "Create the SMB-07 RED acceptance/profile on work/smb-07-deep-cross-system-simulation, prove expected Linux/Windows failure at the focused missing-module seam after SMB-06 invariants pass, then implement only the minimum deterministic declared integration-matrix/owner-receipt correlation and replay contract needed to satisfy the completion gate.",
+  "verification_evidence": {
+    "application_pr": 489,
+    "causal_red": {
+      "head": "43aff52c9c79fe74ec45dd2ddaddfe2fa1ae9720",
+      "run": 34992644122,
+      "failure_step": "smb07-focused-deep-cross-system-simulation",
+      "smb06_predecessor_invariants_passed": true,
+      "linux_failed_causally": true,
+      "windows_failed_causally": true,
+      "cross_platform_failure_receipt_sha256": "1a5560f15a9f8f81d03764e4ca7f68f36f34822b0cf24b04611b6532f5bd55d4"
+    },
+    "minimal_green": {
+      "head": "819e73fe47e63b8240dacc3e8755dbb0c9db48ae",
+      "run": 34992811644,
+      "focused_acceptance_linux_passed": true,
+      "focused_acceptance_windows_passed": true,
+      "client_typecheck_linux_passed": true,
+      "client_typecheck_windows_passed": true,
+      "deterministic_cross_platform_comparison_passed": true
+    },
+    "proof_diagnostic": {
+      "head": "4eb36d18f7c915dce3b4a872cd1a22bca392d0d3",
+      "run": 34993103115,
+      "failure_step": "smb07-invariants",
+      "disposition": "proof_text_marker_mismatch_not_runtime_defect"
+    },
+    "terminal_green": {
+      "head": "a2154318f27eb6eaa3aa8466e463c6ae3b6370c5",
+      "run": 34993364356,
+      "repository_health_passed": true,
+      "smb06_predecessor_invariants_passed": true,
+      "focused_cross_system_acceptance_passed": true,
+      "source_governance_invariants_passed": true,
+      "client_typecheck_linux_passed": true,
+      "client_typecheck_windows_passed": true,
+      "deterministic_cross_platform_comparison_passed": true,
+      "validated_tree_sha": "1c3dfe32c0f9ddb3eb369e13f4eee5791e6dc296"
+    },
+    "application_merge": {
+      "method": "squash",
+      "sha": "eb068ea61fd5557e9a90626dbc8e2e09100ab0bf",
+      "tree_sha": "1c3dfe32c0f9ddb3eb369e13f4eee5791e6dc296",
+      "tree_matches_validated_head": true
+    }
+  },
+  "active_substep": "closeout-complete",
+  "next_action": "SMB-07 is completed_verified. SMB-08 may be selected but must not be implemented until a later owner Continue governed-starts it.",
   "owner_interaction_observation": {
     "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "in_progress",
+    "status": "completed_verified",
     "policy_violations": []
   }
 }
