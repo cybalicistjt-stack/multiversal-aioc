@@ -1,0 +1,56 @@
+{
+  "schema_version": "0.1.0",
+  "control_plane": "OPS3",
+  "work_item_id": "SMB-07",
+  "attempt_id": "SMB-07-attempt-001",
+  "title": "Deep Cross-System Simulation",
+  "track": "system-maturation-buildout",
+  "source_program": "SMB",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "objective": "Make Multiversal's domains meaningfully affect one another through explicit governed integrations.",
+  "predecessor": {
+    "work_item_id": "SMB-06",
+    "status": "completed_verified",
+    "application_pr": 488,
+    "application_validated_head": "b31c084a674616026e6a7b7e51fa5d68fac3f917",
+    "application_validation_run": 34990795934,
+    "application_merge_sha": "9ce2eecddf7af3e9d924d99b5c8d406c8ad4195a",
+    "validated_tree_sha": "4d3515c5273671676477d8843210736d70be7bcc"
+  },
+  "strict_successor": "SMB-08",
+  "scope": {
+    "purpose": "Make Multiversal's domains meaningfully affect one another through explicit governed integrations.",
+    "included_examples": [
+      "relationships→factions",
+      "settlements→prices",
+      "travel→resources",
+      "damage→repair/crafting",
+      "discoveries→investigation",
+      "bases→economies",
+      "Adventures→World state"
+    ],
+    "completion_gate": "A declared integration matrix proves deterministic cross-domain effects with traceable owner-domain receipts and no hidden authority shortcuts."
+  },
+  "selection_boundaries": [
+    "SMB-06 is completed_verified before SMB-07 implementation.",
+    "This checkpoint selects SMB-07 only; it does not grant implementation authority.",
+    "No SMB-07 implementation branch exists until a later owner Continue governed-starts SMB-07.",
+    "SMB-07 must integrate existing owner domains explicitly and may not hide or replace source-domain authority behind a cross-system shortcut.",
+    "SMB-08 and later work remain unauthorized."
+  ],
+  "active_substep": null,
+  "next_action": "Wait for a later owner Continue to governed-start SMB-07; do not implement while selected_not_started.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
