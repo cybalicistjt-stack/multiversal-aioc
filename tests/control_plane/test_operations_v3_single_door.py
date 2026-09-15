@@ -4,6 +4,8 @@ import json
 import unittest
 from pathlib import Path
 
+from scripts.validate_operations_v3 import _validate_product_lane_projection
+
 ROOT = Path(__file__).resolve().parents[2]
 
 
@@ -46,6 +48,47 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         work_item = self._json("operations/work-items/OPS3-01.json")
         self.assertEqual(work_item["status"], "completed_verified")
         self.assertFalse(work_item["implementation_authority"])
+
+    def test_product_lane_transition_validation_is_dynamic(self) -> None:
+        current = {
+            "lanes": {
+                "product-development": {
+                    "state": "in_progress",
+                    "selected_work_item": "MIB-17",
+                    "attempt_id": "MIB-17-attempt-001",
+                    "implementation_branch": "work/mib-17-family-safety",
+                    "implementation_authority": True,
+                }
+            }
+        }
+        pointer = {
+            "active_attempt": {
+                "work_item_id": "MIB-17",
+                "attempt_id": "MIB-17-attempt-001",
+                "status": "in_progress",
+                "implementation_branch": "work/mib-17-family-safety",
+                "implementation_authority": True,
+            }
+        }
+        authority = {
+            "preserved_product_selection": {
+                "work_item": "MIB-17",
+                "attempt_id": "MIB-17-attempt-001",
+                "state": "in_progress",
+                "implementation_branch": "work/mib-17-family-safety",
+                "implementation_authority": True,
+            }
+        }
+        checkpoint = {
+            "work_item_id": "MIB-17",
+            "attempt_id": "MIB-17-attempt-001",
+            "status": "in_progress",
+            "implementation_branch": "work/mib-17-family-safety",
+            "implementation_authority": True,
+        }
+        errors: list[str] = []
+        _validate_product_lane_projection(current, pointer, authority, checkpoint, errors)
+        self.assertEqual(errors, [])
 
     def test_repository_entrypoint_has_no_independent_current_state(self) -> None:
         agents = self._text("AGENTS.md")
