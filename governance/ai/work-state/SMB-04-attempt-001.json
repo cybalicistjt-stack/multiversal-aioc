@@ -1,0 +1,56 @@
+{
+  "schema_version": "0.1.0",
+  "control_plane": "OPS3",
+  "work_item_id": "SMB-04",
+  "attempt_id": "SMB-04-attempt-001",
+  "title": "Exploration, Travel & Survival",
+  "track": "system-maturation-buildout",
+  "source_program": "SMB",
+  "repository": "cybalicistjt-stack/Multiversal-app",
+  "status": "selected_not_started",
+  "owner_selected": true,
+  "implementation_authority": false,
+  "implementation_branch": null,
+  "completed": false,
+  "objective": "Complete travel, discovery, environment, navigation, survival, fog-of-war and encounter-generation workflows.",
+  "predecessor": {
+    "work_item_id": "SMB-03",
+    "status": "completed_verified",
+    "application_pr": 485,
+    "application_validated_head": "42c4dec0b7a581411bc0cd0fe652e325cb7ff90e",
+    "application_validation_run": 34981780441,
+    "application_merge_sha": "b29699f03208c5aac26d21fcea82d3d5d95adba7",
+    "validated_tree_sha": "230ef28580f06b5228b2c1c9694653299fa3d8e7"
+  },
+  "strict_successor": "SMB-05",
+  "scope": {
+    "purpose": "Complete travel, discovery, environment, navigation, survival, fog-of-war and encounter-generation workflows.",
+    "included": [
+      "travel",
+      "discovery",
+      "environment",
+      "navigation",
+      "survival",
+      "fog-of-war",
+      "encounter generation"
+    ],
+    "completion_gate": "A multi-leg journey can be planned, resolved, interrupted, recovered and continued with deterministic resource/state consequences and role-safe discovery."
+  },
+  "selection_boundaries": [
+    "SMB-03 is completed_verified before SMB-04 implementation.",
+    "This checkpoint selects SMB-04 only; it does not grant implementation authority.",
+    "No implementation branch exists until a later owner Continue governed-starts SMB-04.",
+    "Travel, discovery, environment, navigation, survival, fog-of-war and encounter-generation work must preserve existing owner-domain identities, resources, world/location state and visibility authority rather than create parallel truth.",
+    "SMB-05 and later work remain unauthorized."
+  ],
+  "active_substep": null,
+  "next_action": "Wait for a later owner Continue to governed-start SMB-04; do not implement while selected_not_started.",
+  "owner_interaction_observation": {
+    "continue_turns": 0,
+    "stall_nudges": 0
+  },
+  "execution_conformance": {
+    "status": "selected_not_started",
+    "policy_violations": []
+  }
+}
