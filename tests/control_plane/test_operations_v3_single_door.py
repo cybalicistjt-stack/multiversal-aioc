@@ -1,10 +1,18 @@
 from __future__ import annotations
 
+import importlib.util
 import json
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+_VALIDATOR_PATH = ROOT / "scripts/validate_operations_v3.py"
+_SPEC = importlib.util.spec_from_file_location("ops3_validator", _VALIDATOR_PATH)
+if _SPEC is None or _SPEC.loader is None:
+    raise RuntimeError("unable to load Operations V3 validator")
+_VALIDATOR = importlib.util.module_from_spec(_SPEC)
+_SPEC.loader.exec_module(_VALIDATOR)
+_validate_product_lane_projection = getattr(_VALIDATOR, "_validate_product_lane_projection")
 
 
 class OperationsV3SingleDoorTests(unittest.TestCase):
@@ -39,13 +47,57 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         self.assertFalse(current["product_start_freeze"]["implementation_authority"])
         self.assertEqual(current["lanes"]["operations"]["state"], "completed_verified")
         self.assertFalse(current["lanes"]["operations"]["implementation_authority"])
-        self.assertEqual(current["lanes"]["product-development"]["state"], "selected_not_started")
-        self.assertEqual(current["lanes"]["product-development"]["selected_work_item"], "MIB-17")
-        self.assertFalse(current["lanes"]["product-development"]["implementation_authority"])
+        product = current["lanes"]["product-development"]
+        self.assertEqual(product["state"], "in_progress")
+        self.assertEqual(product["selected_work_item"], "MIB-17")
+        self.assertEqual(product["attempt_id"], "MIB-17-attempt-001")
+        self.assertEqual(product["implementation_branch"], "work/mib-17-family-safety")
+        self.assertTrue(product["implementation_authority"])
 
         work_item = self._json("operations/work-items/OPS3-01.json")
         self.assertEqual(work_item["status"], "completed_verified")
         self.assertFalse(work_item["implementation_authority"])
+
+    def test_product_lane_transition_validation_is_dynamic(self) -> None:
+        current = {
+            "lanes": {
+                "product-development": {
+                    "state": "in_progress",
+                    "selected_work_item": "MIB-17",
+                    "attempt_id": "MIB-17-attempt-001",
+                    "implementation_branch": "work/mib-17-family-safety",
+                    "implementation_authority": True,
+                }
+            }
+        }
+        pointer = {
+            "active_attempt": {
+                "work_item_id": "MIB-17",
+                "attempt_id": "MIB-17-attempt-001",
+                "status": "in_progress",
+                "implementation_branch": "work/mib-17-family-safety",
+                "implementation_authority": True,
+            }
+        }
+        authority = {
+            "preserved_product_selection": {
+                "work_item": "MIB-17",
+                "attempt_id": "MIB-17-attempt-001",
+                "state": "in_progress",
+                "implementation_branch": "work/mib-17-family-safety",
+                "implementation_authority": True,
+            }
+        }
+        checkpoint = {
+            "work_item_id": "MIB-17",
+            "attempt_id": "MIB-17-attempt-001",
+            "status": "in_progress",
+            "implementation_branch": "work/mib-17-family-safety",
+            "implementation_authority": True,
+        }
+        errors: list[str] = []
+        _validate_product_lane_projection(current, pointer, authority, checkpoint, errors)
+        self.assertEqual(errors, [])
 
     def test_repository_entrypoint_has_no_independent_current_state(self) -> None:
         agents = self._text("AGENTS.md")
@@ -87,12 +139,16 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         for required in {"product-development", "operations", "content-design", "dwc-speech", "research-evaluation", "source-provenance"}:
             self.assertIn(required, lane_ids)
 
-    def test_legacy_projections_preserve_selection_without_authority(self) -> None:
+    def test_legacy_projections_follow_canonical_product_state_without_selecting_work(self) -> None:
+        current = self._json("operations/CURRENT.json")
+        product = current["lanes"]["product-development"]
         pointer = self._json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
         self.assertTrue(pointer["projection_only"])
-        self.assertEqual(pointer["active_attempt"]["work_item_id"], "MIB-17")
-        self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
-        self.assertFalse(pointer["active_attempt"]["implementation_authority"])
+        self.assertEqual(pointer["active_attempt"]["work_item_id"], product["selected_work_item"])
+        self.assertEqual(pointer["active_attempt"]["attempt_id"], product["attempt_id"])
+        self.assertEqual(pointer["active_attempt"]["status"], product["state"])
+        self.assertEqual(pointer["active_attempt"]["implementation_branch"], product["implementation_branch"])
+        self.assertEqual(pointer["active_attempt"]["implementation_authority"], product["implementation_authority"])
         self.assertEqual(pointer["exclusive_control_plane_maintenance"]["status"], "completed_verified")
         self.assertFalse(pointer["exclusive_control_plane_maintenance"]["feature_starts_blocked"])
 
@@ -100,9 +156,13 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         self.assertTrue(authority["projection_only"])
         self.assertEqual(authority["active_operations_work"]["state"], "completed_verified")
         self.assertFalse(authority["active_operations_work"]["implementation_authority"])
-        self.assertEqual(authority["preserved_product_selection"]["state"], "selected_not_started")
-        self.assertFalse(authority["preserved_product_selection"]["implementation_authority"])
-        self.assertFalse(authority["preserved_product_selection"]["feature_starts_blocked"])
+        projection = authority["preserved_product_selection"]
+        self.assertEqual(projection["work_item"], product["selected_work_item"])
+        self.assertEqual(projection["attempt_id"], product["attempt_id"])
+        self.assertEqual(projection["state"], product["state"])
+        self.assertEqual(projection["implementation_branch"], product["implementation_branch"])
+        self.assertEqual(projection["implementation_authority"], product["implementation_authority"])
+        self.assertFalse(projection["feature_starts_blocked"])
 
 
 if __name__ == "__main__":

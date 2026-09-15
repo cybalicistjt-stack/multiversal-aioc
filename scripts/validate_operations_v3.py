@@ -144,8 +144,6 @@ def _deep_legacy_scan(root: Path, errors: list[str]) -> None:
         hits = [marker for marker in DEEP_LEGACY_ROUTE_MARKERS if marker.lower() in text.lower()]
         if not hits:
             continue
-
-        # Canonical compatibility projections and fail-closed retired stubs are safe by construction.
         if relative in {LEGACY_POINTER.as_posix(), LEGACY_AUTHORITY.as_posix()}:
             continue
         if "Operations V2" in text and "retired" in text.lower() and DOOR.as_posix() in text:
@@ -153,6 +151,80 @@ def _deep_legacy_scan(root: Path, errors: list[str]) -> None:
         if HISTORICAL_BANNER in text or BACKGROUND_BANNER in text:
             continue
         errors.append(f"deep legacy route contamination: {relative}: {hits}")
+
+
+def _validate_product_lane_projection(
+    current: dict[str, Any],
+    legacy_pointer: dict[str, Any],
+    legacy_authority: dict[str, Any],
+    checkpoint: dict[str, Any],
+    errors: list[str],
+) -> None:
+    lanes = current.get("lanes", {})
+    product = lanes.get("product-development", {}) if isinstance(lanes, dict) else {}
+    if not isinstance(product, dict):
+        errors.append("CURRENT product-development lane must be an object")
+        return
+
+    work_item = product.get("selected_work_item")
+    attempt_id = product.get("attempt_id")
+    state = product.get("state")
+    branch = product.get("implementation_branch")
+    authority = product.get("implementation_authority")
+
+    if not isinstance(work_item, str) or not work_item:
+        errors.append("CURRENT product-development selected_work_item is required")
+    if not isinstance(attempt_id, str) or not attempt_id:
+        errors.append("CURRENT product-development attempt_id is required")
+    if state not in {"selected_not_started", "in_progress", "completed_verified"}:
+        errors.append(f"unsupported product-development state: {state}")
+    if state == "selected_not_started" and (authority is not False or branch is not None):
+        errors.append("selected_not_started product work must have no implementation authority or branch")
+    if state == "in_progress" and (authority is not True or not isinstance(branch, str) or not branch):
+        errors.append("in_progress product work requires implementation authority and a branch")
+    if state == "completed_verified" and authority is not False:
+        errors.append("completed_verified product work must retire implementation authority")
+
+    active = legacy_pointer.get("active_attempt", {})
+    if not isinstance(active, dict):
+        errors.append("legacy pointer active_attempt must be an object")
+        active = {}
+    pointer_expected = {
+        "work_item_id": work_item,
+        "attempt_id": attempt_id,
+        "status": state,
+        "implementation_branch": branch,
+        "implementation_authority": authority,
+    }
+    for key, expected in pointer_expected.items():
+        if active.get(key) != expected:
+            errors.append(f"legacy pointer projection drift for {key}: expected {expected!r}, observed {active.get(key)!r}")
+
+    preserved = legacy_authority.get("preserved_product_selection", {})
+    if not isinstance(preserved, dict):
+        errors.append("legacy authority preserved_product_selection must be an object")
+        preserved = {}
+    authority_expected = {
+        "work_item": work_item,
+        "attempt_id": attempt_id,
+        "state": state,
+        "implementation_branch": branch,
+        "implementation_authority": authority,
+    }
+    for key, expected in authority_expected.items():
+        if preserved.get(key) != expected:
+            errors.append(f"legacy authority projection drift for {key}: expected {expected!r}, observed {preserved.get(key)!r}")
+
+    checkpoint_expected = {
+        "work_item_id": work_item,
+        "attempt_id": attempt_id,
+        "status": state,
+        "implementation_branch": branch,
+        "implementation_authority": authority,
+    }
+    for key, expected in checkpoint_expected.items():
+        if checkpoint.get(key) != expected:
+            errors.append(f"product checkpoint drift for {key}: expected {expected!r}, observed {checkpoint.get(key)!r}")
 
 
 def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
@@ -193,7 +265,7 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
     if freeze.get("preserved_selected_work_item") != "MIB-17":
         errors.append("MIB-17 selection was not preserved through Operations V3")
     if freeze.get("implementation_authority") is not False:
-        errors.append("MIB-17 must remain without implementation authority after OPS3 closeout")
+        errors.append("OPS3 closeout freeze record must preserve MIB-17 without implementation authority")
 
     if work_item.get("work_item_id") != "OPS3-01" or work_item.get("status") != "completed_verified":
         errors.append("OPS3-01 work item must remain completed_verified")
@@ -279,9 +351,6 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
 
     if legacy_pointer.get("canonical_source") != CURRENT.as_posix() or legacy_pointer.get("projection_only") is not True:
         errors.append("CURRENT_WORK_POINTER must be an explicit compatibility projection from operations/CURRENT.json")
-    active = legacy_pointer.get("active_attempt", {})
-    if active.get("work_item_id") != "MIB-17" or active.get("implementation_authority") is not False:
-        errors.append("legacy pointer projection must preserve MIB-17 as unauthorized selected work")
     maintenance = legacy_pointer.get("exclusive_control_plane_maintenance", {})
     if maintenance.get("status") != "completed_verified" or maintenance.get("feature_starts_blocked") is not False:
         errors.append("legacy pointer projection must show OPS3 completed and product freeze cleared")
@@ -294,11 +363,15 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
     if active_operations.get("state") != "completed_verified" or active_operations.get("implementation_authority") is not False:
         errors.append("legacy authority projection must retire OPS3 operations authority after closeout")
 
-    checkpoint = _read_json(root, Path("governance/ai/work-state/MIB-17-attempt-001.json"), errors)
-    if checkpoint.get("work_item_id") != "MIB-17" or checkpoint.get("status") != "selected_not_started":
-        errors.append("canonical MIB-17 checkpoint must remain selected_not_started after OPS3")
-    if checkpoint.get("implementation_authority") is not False or checkpoint.get("implementation_branch") is not None:
-        errors.append("MIB-17 checkpoint gained implementation authority during OPS3 closeout")
+    product_lanes = current.get("lanes", {})
+    product = product_lanes.get("product-development", {}) if isinstance(product_lanes, dict) else {}
+    checkpoint_path_value = product.get("checkpoint_path") or product.get("legacy_checkpoint_path") if isinstance(product, dict) else None
+    if not isinstance(checkpoint_path_value, str) or not checkpoint_path_value:
+        errors.append("CURRENT product-development checkpoint path is required")
+        checkpoint = {}
+    else:
+        checkpoint = _read_json(root, Path(checkpoint_path_value), errors)
+    _validate_product_lane_projection(current, legacy_pointer, legacy_authority, checkpoint, errors)
 
     observed_head = _git_head(root, errors) if expected_head else None
     if expected_head and observed_head != expected_head:
