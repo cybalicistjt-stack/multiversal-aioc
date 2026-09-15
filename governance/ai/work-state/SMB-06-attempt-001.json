@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "control_plane": "OPS3",
   "work_item_id": "SMB-06",
   "attempt_id": "SMB-06-attempt-001",
@@ -7,12 +7,12 @@
   "track": "system-maturation-buildout",
   "source_program": "SMB",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
+  "status": "in_progress",
   "owner_selected": true,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "work/smb-06-full-vehicle-system",
   "completed": false,
-  "objective": "Complete vehicle gameplay over MIB-14 definitions/rules.",
+  "objective": "Complete vehicle gameplay over MIB-14 definitions/rules while preserving existing vehicle, Asset, travel, Character, combat, economy and Project owners.",
   "predecessor": {
     "work_item_id": "SMB-05",
     "status": "completed_verified",
@@ -41,19 +41,63 @@
   },
   "selection_boundaries": [
     "SMB-05 is completed_verified before SMB-06 implementation.",
-    "This checkpoint selects SMB-06 only; it does not grant implementation authority.",
-    "No implementation branch exists until a later owner Continue governed-starts SMB-06.",
-    "SMB-06 must complete vehicle gameplay over MIB-14 definitions/rules rather than replace those foundations.",
-    "SMB-07 and later work remain unauthorized."
+    "SMB-06 is the only authorized product-development work item for this attempt.",
+    "MIB-14 remains vehicle/platform/base configuration, compatibility, slot/cargo/power capacity, crew bounds, D17 mutation-intent and maintenance/repair/upgrade Project-request planning authority; SMB-06 composes those seams rather than replacing them.",
+    "D17 remains sole live Asset/vehicle identity, ownership, location, inventory/cargo placement, condition and state authority; SMB-06 may consume snapshots and committed owner-result references but may not directly mutate live truth.",
+    "Existing A8 shared-asset contracts retain vehicle operational-class/state vocabulary, station grants/command policy, vehicle resource projections and damage/capture transition semantics; SMB-06 may reference and orchestrate them without creating parallel ledgers.",
+    "KFR-05 remains operator-qualification projection authority and does not itself grant station permission or executable action authority; SMB-06 must require explicit station-grant/control evidence rather than infer control from qualification, ownership, possession or UI selection.",
+    "SMB-04/D28 remains journey/travel resolution authority and MIB-11/WCI remains world/navigation authority; SMB-06 may reference travel/navigation/resource consequence results and MIB-14 movement compatibility but may not create a second journey or World ledger.",
+    "Existing Action/Effect/combat owners, including A7/A8 seams, retain damage and combat-result authority; SMB-06 may expose explicit capability/result references only.",
+    "APW-03/D26 remains long-running Project/Activity and campaign-time authority, MIB-12 remains repair/upgrade/crafting definition authority, and MIB-13 remains current price/scarcity/settlement authority.",
+    "Fuel consumption, travel rates, damage values, repair costs, maintenance intervals, upgrade yields and system-resource deltas remain absent unless explicit owner definitions/results provide them.",
+    "Live/async continuity must be deterministic and checkpoint/replay based; no autonomous scheduler, unattended progress, wall-clock advancement or hidden authority shortcut is authorized.",
+    "Implementation must establish a causal failing acceptance seam before production code and pass exact-head Linux/Windows deterministic validation plus MIB-14, SMB-04 and KFR-05 predecessor invariants.",
+    "No provider activation, public/tester distribution, durable migration or unrelated refactor is authorized.",
+    "SMB-07 and later work remain unauthorized until SMB-06 is completed_verified and canonical state advances."
   ],
-  "active_substep": null,
-  "next_action": "Wait for a later owner Continue to governed-start SMB-06; do not implement while selected_not_started.",
+  "implementation_plan": [
+    {
+      "task": 1,
+      "name": "RED acceptance seam",
+      "files": [
+        "apps/client-ui/src/smb/Smb06FullVehicleSystem.test.ts",
+        "governance/application-planning/validation-core/profiles/SMB-06.json"
+      ],
+      "deliverable": "A focused profile that preserves MIB-14/SMB-04/KFR-05 invariants and fails specifically because the bounded SMB-06 full-vehicle workflow module does not yet exist."
+    },
+    {
+      "task": 2,
+      "name": "Derived vehicle workflow and replay contract",
+      "files": [
+        "packages/contracts/src/vehicle-platform-base/smb-06-full-vehicle-system.ts"
+      ],
+      "deliverable": "A deterministic non-authoritative vehicle workflow projection/replay covering explicit ownership, crew/station authorization and qualification references, D17 cargo references, A8 power/fuel resource references, SMB-04/D28 travel-result references, damage/combat result references, MIB-14 facilities/capabilities, maintenance/repair/upgrade Project references, and checkpointed live/async recovery without direct owner mutation."
+    },
+    {
+      "task": 3,
+      "name": "Source-governance proof",
+      "files": [
+        "tools/verify_smb_06.py",
+        "fixtures/golden/smb06-full-vehicle-system/compliance.json",
+        "governance/application-planning/system-maturation-buildout/SMB-06_FULL_VEHICLE_SYSTEM.md"
+      ],
+      "deliverable": "Machine-checkable proof that SMB-06 reuses MIB-14, D17, A8 vehicle/station/resource/damage contracts, KFR-05, SMB-04/D28, MIB-11/WCI, APW-03/D26, MIB-12, MIB-13 and existing combat owners without parallel ledgers, inferred formulas or autonomous progress."
+    },
+    {
+      "task": 4,
+      "name": "Exact-head verification and closeout",
+      "files": [],
+      "deliverable": "Linux and Windows focused acceptance, source-governance invariants, client typecheck and deterministic cross-platform receipts pass on one exact head before merge; then OPS3 records SMB-06 completed_verified and selects SMB-07 without starting it."
+    }
+  ],
+  "active_substep": "acceptance-design",
+  "next_action": "Create the SMB-06 RED acceptance test/profile on work/smb-06-full-vehicle-system, prove the expected focused failure after predecessor invariants pass, then implement only the minimum deterministic vehicle workflow/replay contract needed to satisfy the source-defined completion gate.",
   "owner_interaction_observation": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "selected_not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
