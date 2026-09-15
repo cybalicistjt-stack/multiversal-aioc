@@ -1,58 +1,14 @@
 #!/usr/bin/env python3
+"""Retired Operations V2 compatibility tool."""
 from __future__ import annotations
 
-from typing import Any, Mapping
+import sys
 
+MESSAGE = (
+    "This Operations V2 tool is retired from live execution. "
+    "Bootstrap through operations/BOOTSTRAP.md and use the current lane/work item instead."
+)
 
-def materialize_selector_rows(record: Mapping[str, Any]) -> dict[str, dict[str, Any]]:
-    row = {
-        "work_item_id": record.get("work_item_id"),
-        "attempt_id": record.get("attempt_id"),
-        "status": record.get("status"),
-        "implementation_authority": record.get("implementation_authority"),
-        "implementation_branch": record.get("implementation_branch"),
-    }
-    return {label: dict(row) for label in ("checkpoint", "pointer", "authority", "runtime", "compiled")}
-
-
-def _execution_state(phase: str, next_action: str) -> dict[str, Any]:
-    return {
-        "phase": phase,
-        "next_action": next_action,
-        "response_gate": "TERMINATION_PREFLIGHT_REQUIRED" if phase == "closed" else "CONTINUE_EXECUTION",
-    }
-
-
-def reconcile_execution_state(record: Mapping[str, Any], observed: Mapping[str, Any]) -> dict[str, Any]:
-    status = str(record.get("status") or "")
-    start_pr_state = str(observed.get("start_pr_state") or "absent")
-    branch_exists = bool(observed.get("implementation_branch_exists"))
-    focused_test_exists = bool(observed.get("focused_test_exists"))
-    application_pr_state = str(observed.get("application_pr_state") or "absent")
-    validation_state = str(observed.get("validation_state") or "not_dispatched")
-    merge_sha = observed.get("application_merge_sha")
-    closeout_state = str(observed.get("closeout_state") or "not_started")
-
-    if status == "completed_verified":
-        return _execution_state("closed", "strict_successor_selected")
-    if start_pr_state != "merged":
-        return _execution_state("governed_start", "validate_and_merge_governed_start")
-    if not branch_exists:
-        return _execution_state("implementation_branch", "create_or_resume_authorized_branch")
-    if merge_sha:
-        if closeout_state == "completed_verified":
-            return _execution_state("closed", "strict_successor_selected")
-        return _execution_state("closeout", "complete_governance_closeout")
-    if application_pr_state == "merged":
-        return _execution_state("closeout", "complete_governance_closeout")
-    if focused_test_exists and validation_state in {"not_dispatched", "absent"}:
-        return _execution_state("implementation_red", "dispatch_focused_red_validation")
-    if validation_state in {"queued", "in_progress", "dispatched"}:
-        return _execution_state("implementation_red", "wait_for_focused_red_result")
-    if validation_state in {"red_observed", "expected_failure"}:
-        return _execution_state("implementation_green", "implement_from_observed_red")
-    if validation_state in {"green", "success"}:
-        return _execution_state("integration", "merge_exact_validated_head")
-    if not focused_test_exists:
-        return _execution_state("implementation_test", "create_focused_behavior_test")
-    return _execution_state("implementation", "reconcile_observed_execution_state")
+if __name__ == "__main__":
+    print(MESSAGE, file=sys.stderr)
+    raise SystemExit(2)

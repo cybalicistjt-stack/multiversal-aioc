@@ -1,26 +1,14 @@
 #!/usr/bin/env python3
+"""Retired Operations V2 compatibility tool."""
 from __future__ import annotations
 
-from typing import Any, Mapping
+import sys
 
+MESSAGE = (
+    "This Operations V2 tool is retired from live execution. "
+    "Bootstrap through operations/BOOTSTRAP.md and use the current lane/work item instead."
+)
 
-def authorize_context_access(
-    manifest: Mapping[str, Any], *, path: str | None, operation: str
-) -> dict[str, Any]:
-    allowed_paths = {str(value) for value in manifest.get("allowed_paths", [])}
-    diagnostic_mode = manifest.get("diagnostic_mode") is True
-    failure_signature = str(manifest.get("failure_signature") or "").strip()
-
-    if operation == "read" and path in allowed_paths:
-        return {"decision": "ALLOW_DECLARED_INPUT", "path": path}
-    if diagnostic_mode and failure_signature and operation in {"read", "repository_search"}:
-        return {
-            "decision": "ALLOW_DIAGNOSTIC_EXPANSION",
-            "path": path,
-            "failure_signature": failure_signature,
-        }
-    return {
-        "decision": "DENY_UNDECLARED_INPUT",
-        "path": path,
-        "operation": operation,
-    }
+if __name__ == "__main__":
+    print(MESSAGE, file=sys.stderr)
+    raise SystemExit(2)

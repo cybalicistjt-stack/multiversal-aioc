@@ -1,26 +1,14 @@
-# Multiversal Conversation Continuity Foundation v0.1.0
+# Historical Operations V2 Compatibility Record
 
-This package begins the owner-approved interaction-system program.
+**Status:** HISTORICAL_INERT  
+**Operational authority:** NONE
 
-## Included
+This path is retained for provenance, old links, and Git history only. Its former instructions are retired and must not be combined with current agent behavior.
 
-- `MULTIVERSAL_OWNER_AI_CONTINUITY_SYSTEM_SPEC_v0.1.0.md`
-- `MULTIVERSAL_STATIC_RESTART_PROMPT.txt`
-- `AI_WORK_CHECKPOINT_v0.1.0.schema.json`
-- `CURRENT_WORK_POINTER.example.json`
-- `AI_WORK_CHECKPOINT.example.json`
-- `CONTINUITY_ACCEPTANCE_TESTS_v0.1.0.md`
-- `conversation_corpus_v0.1.0.jsonl`
-- `MANIFEST.json`
-- `SHA256SUMS.txt`
+The single live Multiversal operations door is:
 
-## Corpus baseline
+`operations/BOOTSTRAP.md`
 
-- Conversations: 9
-- Messages: 114
-- User messages: 58
-- Assistant messages: 56
+Current state is selected only by `operations/CURRENT.json`, and every lane uses the one contract at `operations/OPERATING_CONTRACT.md`.
 
-## Important boundary
-
-The design is approved, but the enforcement mechanisms are not yet integrated into the canonical repositories or CI. The package is a foundation for the remaining audit and implementation steps.
+If historical details from this document are needed for an audit, read the file's Git history. Do not use an older revision as live instructions.
