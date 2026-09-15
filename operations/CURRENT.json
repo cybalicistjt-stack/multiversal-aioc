@@ -1,0 +1,61 @@
+{
+  "schema_version": "3.0.0",
+  "system": "OPS3",
+  "status": "cutover_in_progress",
+  "canonical_door": "operations/BOOTSTRAP.md",
+  "operating_contract": "operations/OPERATING_CONTRACT.md",
+  "lane_registry": "operations/LANES.json",
+  "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
+  "state_revision": 1,
+  "default_lane": "product-development",
+  "active_operations_work_item": "OPS3-01",
+  "active_operations_work_item_path": "operations/work-items/OPS3-01.json",
+  "product_start_freeze": {
+    "active": true,
+    "reason": "Operations V3 single-door cutover and control-surface retirement",
+    "preserved_selected_work_item": "MIB-17",
+    "preserved_attempt_id": "MIB-17-attempt-001",
+    "implementation_authority": false,
+    "clear_when": "OPS3-01 reaches completed_verified and canonical entry surfaces have been reconciled"
+  },
+  "lanes": {
+    "operations": {
+      "state": "active",
+      "work_item_id": "OPS3-01",
+      "work_item_path": "operations/work-items/OPS3-01.json",
+      "implementation_authority": true
+    },
+    "product-development": {
+      "state": "paused_for_operations_cutover",
+      "selected_work_item": "MIB-17",
+      "attempt_id": "MIB-17-attempt-001",
+      "legacy_checkpoint_path": "governance/ai/work-state/MIB-17-attempt-001.json",
+      "implementation_authority": false,
+      "resume_rule": "Resume only after product_start_freeze.active becomes false"
+    },
+    "dwc-speech": {
+      "state": "preserved_external_lane",
+      "recovery_path": "governance/application-planning/dwc-speech/README.md",
+      "implementation_authority": "resolve_from_lane_sources_when_selected"
+    },
+    "content-design": {
+      "state": "on_demand",
+      "implementation_authority": "session_scoped_by_owner_request"
+    },
+    "research-evaluation": {
+      "state": "on_demand",
+      "implementation_authority": "session_scoped_by_owner_request"
+    },
+    "source-provenance": {
+      "state": "on_demand",
+      "implementation_authority": "session_scoped_by_owner_request"
+    }
+  },
+  "truth_rules": {
+    "current_selector": "This file alone selects live operational state.",
+    "implementation_facts": "Use live repository, PR, CI, filesystem, and tool evidence.",
+    "legacy_surfaces": "Legacy selectors are compatibility projections or history only and may not override this file.",
+    "executor_independence": "Executor availability never grants or revokes project authority."
+  },
+  "next_operations_action": "Complete OPS3-01 control-surface audit and cutover; do not start MIB-17."
+}

@@ -1,95 +1,18 @@
-# Activate the Multiversal AIOC Bridge in ChatGPT and Codex
+# ChatGPT / Codex AIOC Executor Adapter
 
-## Production endpoints
+**Disposition:** EXECUTOR_ADAPTER — not an authority or work selector.
 
-- MCP server: `https://aioc-mcp-bridge-production.up.railway.app/mcp`
-- Health: `https://aioc-mcp-bridge-production.up.railway.app/health`
-- Live verification: `https://aioc-mcp-bridge-production.up.railway.app/live-verification`
+Before using AIOC MCP, Codex configuration, live-deployment inspection, or any other executor capability, enter the project through:
 
-The production bridge is currently read-only. It can inspect canonical content, shared working state, and the live AIOC deployment. It cannot modify GitHub or shared state until write credentials and approval controls are deliberately enabled.
+`operations/BOOTSTRAP.md`
 
-## ChatGPT private app connection
+The selected lane/work item determines whether these capabilities are relevant. This adapter never chooses current work and never overrides `operations/CURRENT.json` or `operations/OPERATING_CONTRACT.md`.
 
-This is a one-time account or workspace action:
+## AIOC capability notes
 
-1. Open ChatGPT settings for Apps, Connectors, or Developer Mode.
-2. Choose the option to create or connect a private/custom MCP app.
-3. Name it `Multiversal AIOC`.
-4. Enter the MCP URL:
-   `https://aioc-mcp-bridge-production.up.railway.app/mcp`
-5. Authentication: none for the current read-only bridge.
-6. Set permissions to allow reads and require approval before writes. Writes are also disabled server-side.
-7. Save or connect the app.
-8. Start a new conversation and ask:
-   `Use Multiversal AIOC to verify the live deployment.`
-9. Confirm the app exposes tools including `aioc_status`, `inspect_aioc_live_deployment`, and `verify_aioc_live_deployment`.
+- Repository content and connected AIOC tools can provide implementation or deployment evidence when the selected lane needs them.
+- A successful CI/deployment status is evidence, not authority.
+- Shared working state and browser-local state are separate from canonical repository content.
+- Mutating external state requires the authority already granted by the selected work item and the connected tool's own permissions.
 
-Private-app registration is performed in the ChatGPT account/workspace UI and cannot be completed by repository code alone.
-
-## Codex activation
-
-The repository includes `.codex/config.toml` with the production MCP server. When Codex opens this repository:
-
-1. Allow the repository MCP configuration when prompted.
-2. Read `AGENTS.md` and `bridge/skills/multiversal-aioc/SKILL.md`.
-3. Confirm the `multiversal_aioc` MCP server is connected.
-4. Run `aioc_status`.
-5. Run `verify_aioc_live_deployment` before and after deployment-affecting work.
-
-If a Codex installation does not automatically read repository `.codex/config.toml`, add the same server to the user Codex configuration:
-
-```toml
-[mcp_servers.multiversal_aioc]
-url = "https://aioc-mcp-bridge-production.up.railway.app/mcp"
-```
-
-## Project development MCPs
-
-The project-scoped `.codex/config.toml` also configures two local development servers:
-
-- `context7` — current, version-specific documentation for the React, Vite, TypeScript, Tauri, Rust, Express, and MCP SDK stack.
-- `playwright` — local browser inspection and UI verification for the AIOC operational surfaces and deployment checks.
-
-Both use `npx` and start on the developer's machine; they are not deployed to Railway or GitHub Pages.
-
-Requirements:
-
-- Node.js 20 or newer.
-- The repository must be trusted by Codex before project-scoped MCP configuration is loaded.
-- Context7 works without a key, but `CONTEXT7_API_KEY` may be set in the local environment for higher rate limits. Never commit the key.
-- Playwright downloads or uses a local browser on first use. Keep its tools in prompt/approval mode when testing authenticated or state-changing pages.
-
-Useful checks after opening the repository:
-
-```bash
-codex mcp list
-```
-
-Then restart or reload Codex if the new project MCP entries do not appear immediately.
-
-## Verification standard
-
-A deployment-affecting task is complete only when the bridge reports:
-
-- the live deployment is reachable;
-- required AIOC routes and assets pass;
-- the live database has 487 records unless the certified contract intentionally changes;
-- the deployed commit matches the expected repository commit;
-- the result is `PASS` rather than `FAIL` or `DEGRADED`.
-
-CI success alone is not sufficient.
-
-## Future write activation
-
-Do not enable writes merely by changing `AIOC_ALLOW_WRITES`.
-
-Before write activation, add:
-
-1. A least-privilege GitHub credential stored only in Railway secrets.
-2. Authentication for the MCP endpoint.
-3. Per-tool approval requirements.
-4. Revision-conflict handling tests.
-5. Audit logging and rollback verification.
-6. Separate proposal, shared-draft, and canonical-promotion permissions.
-
-Canonical content promotion must remain owner-approved and independently certified.
+If the AIOC MCP or another executor is unavailable, preserve the same work item and use another lawful executor/evidence path when possible. Do not create a replacement governance path.

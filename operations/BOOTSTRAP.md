@@ -1,0 +1,56 @@
+# Multiversal Operations Bootstrap
+
+**System:** Operations V3 (OPS3)  
+**Status:** CANONICAL SINGLE DOOR  
+**Owner and final authority:** John Brandon Turner
+
+This is the only operational bootstrap for Multiversal. Every ChatGPT conversation, Codex session, human operator, CI helper, or future agent begins here. No other file may independently select current work, grant authority, redefine `Continue`, or declare the next action.
+
+## 1. Load the one global contract
+
+Read `operations/OPERATING_CONTRACT.md`.
+
+Do not merge instructions from older bootstraps, handoffs, `.ai` files, application-repository status prose, conversation exports, recovery archives, or executor-specific runbooks. Those surfaces are compatibility, evidence, implementation context, or history only.
+
+## 2. Load current operational state
+
+Read `operations/CURRENT.json`.
+
+`CURRENT.json` is the only mutable selector of live operational state. It identifies freezes, the active operations work item, and each lane's current state. If another source disagrees with it, `CURRENT.json` wins unless John explicitly changes the direction in the current conversation.
+
+## 3. Select the lane from user intent
+
+Read `operations/LANES.json` and choose exactly one lane that matches the user's request.
+
+- Explicit requests name or imply their lane and override the default lane.
+- A bare `Continue` resumes the lane already established by the conversation. If this is a new conversation, use `CURRENT.json` and the user's opening request to resolve the lane.
+- Lane selection changes scope and source bundle only. It never changes the global operating contract.
+- Do not load other lanes merely because they exist.
+
+## 4. Load only the lane's active work record
+
+For a persistent lane, read the work-item path named by `CURRENT.json`. For an on-demand lane, use only the sources named by `LANES.json` plus the user's request.
+
+Then reconcile the work record with live repository/PR/CI/tool evidence needed for the requested action. Repository evidence determines implementation facts; the work record determines authorization and scope.
+
+## 5. Execute with executor independence
+
+ChatGPT, Codex, local workers, GitHub Actions, and humans are executors or validators, never authority sources. An executor failure does not change project truth and does not force a new work item. Use another capable executor when the contract allows it.
+
+Codex is optional. The local Windows worker is optional. No product work may become authorized merely because an executor is available, and no authorized work becomes unauthorized merely because one executor is unavailable.
+
+## 6. Current stop-the-line rule
+
+While `operations/CURRENT.json` has `product_start_freeze.active=true`, do not start new product implementation. Preserve the selected product item exactly as recorded and work only in the authorized operations lane until the freeze is cleared by a verified OPS3 cutover.
+
+## 7. Evidence and completion
+
+Use the smallest validation that proves the changed behavior, then the lane's required acceptance gate. Never claim a file, branch, commit, PR, test, merge, deployment, or completion without tool evidence.
+
+`completed_verified` means the requested bounded work is implemented, required validation passed, durable side effects are verified, and the current record has been reconciled. A process exit code, generated patch, open PR, running check, or narrative assertion is not completion by itself.
+
+## 8. Context discipline
+
+Prefer the shortest path from current state to the requested result. Do not restart repository archaeology after the lane and work item are known. Expand context only for a concrete contradiction, failure signature, or source dependency.
+
+Historical records remain valuable for provenance and recovery, but they never become live instructions by being rediscovered.

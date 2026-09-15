@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "work_item_id": "OPS3-01",
+  "title": "Operations V3 Single-Door Control-Plane Reset",
+  "lane": "operations",
+  "status": "in_progress",
+  "owner_authorized": true,
+  "implementation_authority": true,
+  "aioc_branch": "maintenance/ops-v3-single-door",
+  "application_branch": "maintenance/ops-v3-single-door",
+  "purpose": "Replace overlapping governance and behavior surfaces with one GPT-first bootstrap, one operating contract, one current-state selector and one lane registry without losing product work or historical evidence.",
+  "preserved_product_state": {
+    "selected_work_item": "MIB-17",
+    "attempt_id": "MIB-17-attempt-001",
+    "status": "selected_not_started",
+    "implementation_authority": false
+  },
+  "scope": [
+    "inventory every surface that can select work, grant authority, steer agent behavior, block/finalize execution, or present live current state",
+    "install operations/ as the canonical control plane",
+    "rewrite AIOC, application, GPT Project Source and executor entrypoints so they only redirect into the canonical door",
+    "classify remaining legacy surfaces as projection, validator, executor adapter, evidence, source reference or historical",
+    "prevent legacy application current-state prose from steering agents",
+    "separate executor availability from work authorization",
+    "preserve all completed product/code/content/source work and immutable evidence",
+    "validate contradictions and unauthorized live selectors fail closed"
+  ],
+  "non_goals": [
+    "start MIB-17",
+    "rewrite game/product behavior",
+    "delete historical governance or provenance",
+    "repair the Windows Codex worker as a prerequisite for this migration",
+    "require Codex for governance cutover"
+  ],
+  "acceptance_criteria": [
+    "AIOC has one canonical bootstrap at operations/BOOTSTRAP.md",
+    "AIOC has one canonical behavior contract at operations/OPERATING_CONTRACT.md",
+    "AIOC has one mutable current-state selector at operations/CURRENT.json",
+    "AIOC has one lane registry at operations/LANES.json",
+    "AIOC and application AGENTS.md contain redirects and no current/next-work claims",
+    "known legacy selectors and behavior policies are registered non-authoritative",
+    "application legacy current-state files no longer advertise STAGE-A-A2 or another live next task",
+    "GPT Project Source entry files are rewritten to the same door and replacement instructions are prepared for the Project settings surface",
+    "repository validation proves the single-door invariants",
+    "MIB-17 remains preserved selected_not_started with no implementation authority until the freeze is explicitly cleared"
+  ],
+  "external_platform_actions": [
+    {
+      "surface": "ChatGPT Project instructions",
+      "status": "required_for_full_cutover",
+      "reason": "The current tool surface does not expose a mutation API for Project custom instructions.",
+      "artifact": "operations/adapters/GPT_PROJECT_INSTRUCTIONS.md"
+    },
+    {
+      "surface": "ChatGPT Project Source attachments",
+      "status": "required_for_full_cutover",
+      "reason": "Project-backed source files can be read but not replaced in place through the available Project Files tool.",
+      "artifact": "operations/adapters/PROJECT_SOURCE_CUTOVER.md"
+    }
+  ],
+  "completion_rule": "Do not clear the product freeze until repository cutover is merged/verified and the GPT Project entry surfaces have been replaced or explicitly recorded as the only remaining owner/platform action."
+}
