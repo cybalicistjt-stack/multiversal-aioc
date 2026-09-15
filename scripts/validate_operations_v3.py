@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the Operations V3 single-door control plane."""
+"""Validate the Operations V3 single-door control plane and terminal cutover state."""
 from __future__ import annotations
 
 import argparse
@@ -21,6 +21,7 @@ LEGACY_BOOTSTRAP = Path("governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md
 STATIC_RESTART = Path("governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt")
 PROJECT_MEMORY = Path("governance/project-memory/PROJECT_MEMORY.json")
 LEGACY_CONTROL_MATRIX = Path("governance/ai/interaction-system/enforcement/CONTROL_COVERAGE_MATRIX.json")
+MIB17_CHECKPOINT = Path("governance/ai/work-state/MIB-17-attempt-001.json")
 LEGACY_EXECUTABLES = (
     Path("scripts/validate-8e009-completion-governance.py"),
     Path("scripts/_validate_repository_health_v1_6.py"),
@@ -64,9 +65,8 @@ def _read_json(root: Path, relative: Path, errors: list[str]) -> dict[str, Any]:
 
 
 def _read_text(root: Path, relative: Path, errors: list[str]) -> str:
-    path = root / relative
     try:
-        return path.read_text(encoding="utf-8")
+        return (root / relative).read_text(encoding="utf-8")
     except OSError as exc:
         errors.append(f"unable to read {relative.as_posix()}: {exc}")
         return ""
@@ -99,6 +99,7 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
     legacy_authority = _read_json(root, LEGACY_AUTHORITY, errors)
     project_memory = _read_json(root, PROJECT_MEMORY, errors)
     control_matrix = _read_json(root, LEGACY_CONTROL_MATRIX, errors)
+    checkpoint = _read_json(root, MIB17_CHECKPOINT, errors)
 
     for relative in (DOOR, CONTRACT, AIOC_AGENTS, LEGACY_BOOTSTRAP, STATIC_RESTART):
         if not (root / relative).is_file():
@@ -106,30 +107,62 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
 
     if current.get("schema_version") != "3.0.0":
         errors.append("operations/CURRENT.json schema_version must be 3.0.0")
-    expected_refs = {
+    for key, expected in {
         "canonical_door": DOOR.as_posix(),
         "operating_contract": CONTRACT.as_posix(),
         "lane_registry": LANES.as_posix(),
         "control_surface_registry": REGISTRY.as_posix(),
-    }
-    for key, expected in expected_refs.items():
+    }.items():
         if current.get(key) != expected:
             errors.append(f"CURRENT {key} must equal {expected}")
 
-    if current.get("active_operations_work_item") != "OPS3-01":
-        errors.append("OPS3-01 must be the active operations work item during cutover")
+    state = current.get("status")
+    if state not in {"cutover_in_progress", "completed_verified"}:
+        errors.append(f"unsupported OPS3 state: {state!r}")
+
     freeze = current.get("product_start_freeze", {})
-    if not isinstance(freeze, dict) or freeze.get("active") is not True:
-        errors.append("product_start_freeze must remain active during OPS3 cutover")
+    if not isinstance(freeze, dict):
+        errors.append("product_start_freeze must be an object")
+        freeze = {}
     if freeze.get("preserved_selected_work_item") != "MIB-17":
-        errors.append("MIB-17 selection was not preserved through the operations freeze")
+        errors.append("MIB-17 selection was not preserved through OPS3")
+    if freeze.get("preserved_attempt_id") != "MIB-17-attempt-001":
+        errors.append("MIB-17 attempt identity was not preserved through OPS3")
     if freeze.get("implementation_authority") is not False:
         errors.append("MIB-17 must remain without implementation authority")
 
-    if work_item.get("work_item_id") != "OPS3-01" or work_item.get("status") != "in_progress":
-        errors.append("OPS3-01 work item must exist and remain in_progress until cutover closes")
-    if work_item.get("lane") != "operations" or work_item.get("implementation_authority") is not True:
-        errors.append("OPS3-01 must be an authorized operations-lane work item")
+    operations_lane = current.get("lanes", {}).get("operations", {})
+    product_lane = current.get("lanes", {}).get("product-development", {})
+
+    if state == "cutover_in_progress":
+        if current.get("active_operations_work_item") != "OPS3-01":
+            errors.append("OPS3-01 must be active while cutover is in progress")
+        if freeze.get("active") is not True:
+            errors.append("product_start_freeze must be active while cutover is in progress")
+        if work_item.get("status") != "in_progress" or work_item.get("implementation_authority") is not True:
+            errors.append("OPS3-01 must be authorized and in_progress during cutover")
+        if operations_lane.get("state") != "active" or operations_lane.get("implementation_authority") is not True:
+            errors.append("operations lane must be active and authorized during cutover")
+        if product_lane.get("state") != "paused_for_operations_cutover" or product_lane.get("implementation_authority") is not False:
+            errors.append("product-development must remain paused and unauthorized during cutover")
+    elif state == "completed_verified":
+        if current.get("active_operations_work_item") is not None:
+            errors.append("completed OPS3 state must not retain an active operations work item")
+        if freeze.get("active") is not False:
+            errors.append("product_start_freeze must be cleared after OPS3 completed_verified")
+        if work_item.get("status") != "completed_verified" or work_item.get("implementation_authority") is not False:
+            errors.append("OPS3-01 must be completed_verified and non-authoritative after closeout")
+        if operations_lane.get("state") != "completed_verified" or operations_lane.get("implementation_authority") is not False:
+            errors.append("operations lane must be completed_verified and non-authoritative after closeout")
+        if product_lane.get("state") != "selected_not_started":
+            errors.append("product-development must return to selected_not_started after OPS3")
+        if product_lane.get("selected_work_item") != "MIB-17" or product_lane.get("attempt_id") != "MIB-17-attempt-001":
+            errors.append("product-development did not restore the preserved MIB-17 selection")
+        if product_lane.get("implementation_authority") is not False:
+            errors.append("clearing the OPS3 freeze must not itself grant MIB-17 implementation authority")
+
+    if work_item.get("work_item_id") != "OPS3-01" or work_item.get("lane") != "operations":
+        errors.append("OPS3-01 work item identity/lane mismatch")
 
     if lanes.get("operating_contract") != CONTRACT.as_posix():
         errors.append("all lanes must use the one canonical operating contract")
@@ -140,14 +173,7 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
         errors.append("LANES lanes must be an array")
         lane_rows = []
     lane_ids = {row.get("id") for row in lane_rows if isinstance(row, dict)}
-    required_lanes = {
-        "product-development",
-        "operations",
-        "content-design",
-        "dwc-speech",
-        "research-evaluation",
-        "source-provenance",
-    }
+    required_lanes = {"product-development", "operations", "content-design", "dwc-speech", "research-evaluation", "source-provenance"}
     if not required_lanes <= lane_ids:
         errors.append(f"missing required lanes: {sorted(required_lanes - lane_ids)}")
 
@@ -155,21 +181,11 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
     if not isinstance(surfaces, list):
         errors.append("control surface registry must contain surfaces array")
         surfaces = []
-    surface_keys = [
-        (row.get("system"), row.get("path"))
-        for row in surfaces
-        if isinstance(row, dict)
-    ]
+    surface_keys = [(row.get("system"), row.get("path")) for row in surfaces if isinstance(row, dict)]
     if len(surface_keys) != len(set(surface_keys)):
         errors.append("control surface registry contains duplicate (system, path) identifiers")
-    canonical_selectors = [
-        row for row in surfaces
-        if isinstance(row, dict) and row.get("can_select_work") is True
-    ]
-    allowed_selector_pairs = {
-        ("AIOC", "operations/BOOTSTRAP.md"),
-        ("AIOC", "operations/CURRENT.json"),
-    }
+    canonical_selectors = [row for row in surfaces if isinstance(row, dict) and row.get("can_select_work") is True]
+    allowed_selector_pairs = {("AIOC", "operations/BOOTSTRAP.md"), ("AIOC", "operations/CURRENT.json")}
     actual_selector_pairs = {(row.get("system"), row.get("path")) for row in canonical_selectors}
     if actual_selector_pairs != allowed_selector_pairs:
         errors.append(f"unexpected work-selecting surfaces: {sorted(actual_selector_pairs)}")
@@ -177,10 +193,7 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
     required_registry_rows = {
         ("AIOC", PROJECT_MEMORY.as_posix(), "BACKGROUND_ONLY"),
         ("AIOC", LEGACY_CONTROL_MATRIX.as_posix(), "HISTORICAL_INERT"),
-    }
-    required_registry_rows |= {
-        ("AIOC", path.as_posix(), "HISTORICAL_INERT") for path in LEGACY_EXECUTABLES
-    }
+    } | {("AIOC", path.as_posix(), "HISTORICAL_INERT") for path in LEGACY_EXECUTABLES}
     actual_registry_rows = {
         (row.get("system"), row.get("path"), row.get("disposition"))
         for row in surfaces if isinstance(row, dict)
@@ -192,9 +205,8 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
     agents = _read_text(root, AIOC_AGENTS, errors)
     if DOOR.as_posix() not in agents:
         errors.append("AIOC AGENTS.md must redirect to operations/BOOTSTRAP.md")
-    agents_lower = agents.lower()
     for marker in FORBIDDEN_ENTRYPOINT_MARKERS:
-        if marker.lower() in agents_lower:
+        if marker.lower() in agents.lower():
             errors.append(f"AIOC AGENTS.md regained independent operational marker: {marker}")
 
     legacy_bootstrap = _read_text(root, LEGACY_BOOTSTRAP, errors)
@@ -204,62 +216,67 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
         if marker in legacy_bootstrap:
             errors.append(f"legacy bootstrap still contains executable legacy instruction: {marker}")
 
-    restart = _read_text(root, STATIC_RESTART, errors).strip()
     expected_restart = (
         "Open cybalicistjt-stack/multiversal-aioc/operations/BOOTSTRAP.md from current main and follow it. "
         "Use no other bootstrap or behavior source."
     )
-    if restart != expected_restart:
+    if _read_text(root, STATIC_RESTART, errors).strip() != expected_restart:
         errors.append("static restart prompt must be the exact OPS3 single-door prompt")
 
-    if project_memory.get("status") != "OPS3_BACKGROUND_ONLY":
-        errors.append("PROJECT_MEMORY.json must be background-only under OPS3")
-    if project_memory.get("operational_authority") is not False:
-        errors.append("PROJECT_MEMORY.json must explicitly deny operational authority")
-    if project_memory.get("canonical_door") != DOOR.as_posix():
-        errors.append("PROJECT_MEMORY.json must point only to the OPS3 door")
-    if project_memory.get("canonical_current_state") != CURRENT.as_posix():
-        errors.append("PROJECT_MEMORY.json must point to operations/CURRENT.json for live state")
+    if project_memory.get("status") != "OPS3_BACKGROUND_ONLY" or project_memory.get("operational_authority") is not False:
+        errors.append("PROJECT_MEMORY.json must remain background-only and non-authoritative")
+    if project_memory.get("canonical_door") != DOOR.as_posix() or project_memory.get("canonical_current_state") != CURRENT.as_posix():
+        errors.append("PROJECT_MEMORY.json must point only to canonical OPS3 live surfaces")
     project_memory_text = json.dumps(project_memory, sort_keys=True)
     for marker in PROJECT_MEMORY_FORBIDDEN:
         if marker in project_memory_text:
             errors.append(f"PROJECT_MEMORY.json still advertises retired live marker: {marker}")
 
-    if control_matrix.get("ops3_disposition") != "HISTORICAL_INERT":
-        errors.append("legacy control coverage matrix must be explicitly HISTORICAL_INERT")
+    if control_matrix.get("ops3_disposition") != "HISTORICAL_INERT" or control_matrix.get("can_select_work") is not False:
+        errors.append("legacy control coverage matrix must remain HISTORICAL_INERT")
     if control_matrix.get("canonical_door") != DOOR.as_posix():
         errors.append("legacy control coverage matrix must point to the OPS3 door")
-    if control_matrix.get("can_select_work") is not False:
-        errors.append("legacy control coverage matrix must not select work")
 
     for relative in LEGACY_EXECUTABLES:
         text = _read_text(root, relative, errors)
-        if "Operations V2" not in text or "retired" not in text.lower():
-            errors.append(f"legacy executable is not explicitly retired: {relative.as_posix()}")
-        if DOOR.as_posix() not in text:
-            errors.append(f"legacy executable does not redirect to OPS3: {relative.as_posix()}")
-        if "SystemExit(2)" not in text:
-            errors.append(f"legacy executable does not fail closed: {relative.as_posix()}")
+        if "Operations V2" not in text or "retired" not in text.lower() or DOOR.as_posix() not in text or "SystemExit(2)" not in text:
+            errors.append(f"legacy executable is not retired/fail-closed: {relative.as_posix()}")
 
     if legacy_pointer.get("canonical_source") != CURRENT.as_posix() or legacy_pointer.get("projection_only") is not True:
         errors.append("CURRENT_WORK_POINTER must be an explicit compatibility projection from operations/CURRENT.json")
     active = legacy_pointer.get("active_attempt", {})
-    if active.get("work_item_id") != "MIB-17" or active.get("implementation_authority") is not False:
-        errors.append("legacy pointer projection must preserve MIB-17 as unauthorized selected work")
+    if active.get("work_item_id") != "MIB-17" or active.get("attempt_id") != "MIB-17-attempt-001":
+        errors.append("legacy pointer projection lost the MIB-17 selection")
+    if active.get("status") != "selected_not_started" or active.get("implementation_authority") is not False or active.get("implementation_branch") is not None:
+        errors.append("legacy pointer projection must keep MIB-17 selected_not_started without authority/branch")
     maintenance = legacy_pointer.get("exclusive_control_plane_maintenance", {})
-    if maintenance.get("work_item_id") != "OPS3-01" or maintenance.get("feature_starts_blocked") is not True:
-        errors.append("legacy pointer projection must expose the OPS3 product-start freeze")
+    if maintenance.get("work_item_id") != "OPS3-01":
+        errors.append("legacy pointer must retain OPS3-01 maintenance provenance")
+    if state == "cutover_in_progress":
+        if maintenance.get("status") != "in_progress" or maintenance.get("feature_starts_blocked") is not True:
+            errors.append("legacy pointer must expose active OPS3 freeze during cutover")
+    elif state == "completed_verified":
+        if maintenance.get("status") != "completed_verified" or maintenance.get("feature_starts_blocked") is not False:
+            errors.append("legacy pointer must project completed OPS3 maintenance without blocking feature starts")
 
     if legacy_authority.get("canonical_source") != CURRENT.as_posix() or legacy_authority.get("projection_only") is not True:
         errors.append("ACTIVE_AUTHORITY_REGISTRY must be an explicit compatibility projection from operations/CURRENT.json")
     if legacy_authority.get("canonical_door") != DOOR.as_posix():
         errors.append("legacy authority projection must identify the OPS3 canonical door")
+    authority_ops = legacy_authority.get("active_operations_work", {})
+    preserved_product = legacy_authority.get("preserved_product_selection", {})
+    if state == "completed_verified":
+        if authority_ops.get("state") != "completed_verified" or authority_ops.get("implementation_authority") is not False:
+            errors.append("legacy authority projection must show OPS3 completed and non-authoritative")
+        if preserved_product.get("state") != "selected_not_started" or preserved_product.get("implementation_authority") is not False:
+            errors.append("legacy authority projection must preserve unauthorized MIB-17 selection")
+        if preserved_product.get("feature_starts_blocked") is not False:
+            errors.append("legacy authority projection must show OPS3 freeze cleared")
 
-    checkpoint = _read_json(root, Path("governance/ai/work-state/MIB-17-attempt-001.json"), errors)
     if checkpoint.get("work_item_id") != "MIB-17" or checkpoint.get("status") != "selected_not_started":
-        errors.append("canonical historical MIB-17 checkpoint must remain selected_not_started during OPS3")
+        errors.append("canonical MIB-17 checkpoint must remain selected_not_started")
     if checkpoint.get("implementation_authority") is not False or checkpoint.get("implementation_branch") is not None:
-        errors.append("MIB-17 checkpoint gained implementation authority during OPS3 freeze")
+        errors.append("MIB-17 checkpoint gained implementation authority or branch during OPS3")
 
     observed_head = _git_head(root, errors) if expected_head else None
     if expected_head and observed_head != expected_head:
@@ -269,11 +286,13 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
         "schema_version": "3.0.0",
         "validator": "scripts/validate_operations_v3.py",
         "status": "FAIL" if errors else "PASS",
+        "ops3_state": state,
         "canonical_door": DOOR.as_posix(),
         "canonical_current_state": CURRENT.as_posix(),
         "active_operations_work_item": current.get("active_operations_work_item"),
-        "product_start_freeze": bool(freeze.get("active")) if isinstance(freeze, dict) else None,
-        "preserved_product_work_item": freeze.get("preserved_selected_work_item") if isinstance(freeze, dict) else None,
+        "product_start_freeze": freeze.get("active"),
+        "preserved_product_work_item": freeze.get("preserved_selected_work_item"),
+        "product_implementation_authority": product_lane.get("implementation_authority"),
         "observed_head": observed_head,
         "errors": errors,
     }
