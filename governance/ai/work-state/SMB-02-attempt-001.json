@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.2.0",
+  "schema_version": "0.3.0",
   "control_plane": "OPS3",
   "work_item_id": "SMB-02",
   "attempt_id": "SMB-02-attempt-001",
@@ -7,11 +7,11 @@
   "track": "system-maturation-buildout",
   "source_program": "SMB",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
+  "implementation_authority": false,
   "implementation_branch": "work/smb-02-remote-live-multiplayer-presence",
-  "completed": false,
+  "completed": true,
   "objective": "Deliver reliable remote Campaign play around the existing Campaign/Session/Action/Event authority model.",
   "predecessor": {
     "work_item_id": "SMB-01",
@@ -37,22 +37,53 @@
     ],
     "completion_gate": "Geographically separated ordinary users can join, play, disconnect/recover and continue without developer intervention or duplicate authoritative effects."
   },
-  "selection_boundaries": [
-    "SMB-01 is completed_verified before SMB-02 implementation.",
-    "SMB-02 is the only authorized product-development work item for this attempt.",
-    "Campaign/Session/Action/Event authority remains canonical; remote transport and presence may not create parallel authoritative effects.",
-    "The SMB-01 production platform selection may be consumed behind its adapter boundaries, but paid/live provider activation, production deployment and public/tester distribution remain separately gated.",
-    "Implementation must establish a failing acceptance seam before production code and must pass exact-head Linux/Windows deterministic validation plus relevant MIB/SMB regressions.",
-    "SMB-03 and later work remain unauthorized until SMB-02 is completed_verified and canonical state advances."
+  "completion_evidence": {
+    "application_pr": 484,
+    "red_head": "87085e9070ba677c826fc06ce56631a062f4a317",
+    "red_validation_run": 34975628987,
+    "validated_head": "f355593ac838d7550adfcb11c64d4d7dfc35dedf",
+    "validation_run": 34976017855,
+    "application_merge_sha": "71e95dc7cd9449c92e4a9f143b3b97d5d3ae2fb2",
+    "validated_tree_sha": "ba1f5f38c33a4c519bca1c70595fa1fb08797231",
+    "merge_tree_sha": "ba1f5f38c33a4c519bca1c70595fa1fb08797231",
+    "tree_identity_verified": true,
+    "linux": "pass",
+    "windows": "pass",
+    "deterministic_cross_platform_comparison": "pass",
+    "client_typecheck": "pass",
+    "authority_model": "campaign-session-action-event",
+    "duplicate_authoritative_effects_allowed": false,
+    "parallel_authority_ledger_created": false
+  },
+  "prior_geographic_evidence": {
+    "source_work_item": "GATX-T08",
+    "status": "completed_verified",
+    "checkpoint": "governance/ai/work-state/GATX-T08-attempt-001.json",
+    "artifact": "artifacts/gatx-t08/GATX_T07_T08_LIVE_CROSS_LOCATION_EVIDENCE_20260817.json",
+    "reused_for": ["remote join", "authoritative play", "hidden-information boundary", "reconnect", "bounded latency"],
+    "new_geographic_evidence_fabricated": false
+  },
+  "validation_notes": [
+    "The first implementation candidate passed the SMB-02 focused test and current source-governance invariants, then exposed a retired Phase-9 verifier that depended on a deleted historical workflow.",
+    "The obsolete Phase-9 verifier was not revived. The terminal profile instead used current SMB/MIB regressions plus direct source-foundation checks while preserving the completed P9/GATX evidence as history.",
+    "The exact validated application tree is identical to the squash-merged application tree."
   ],
-  "active_substep": "acceptance-design",
-  "next_action": "Establish the SMB-02 RED acceptance profile against current application main, then implement the minimum authority-safe remote multiplayer/presence realization that satisfies join/play/disconnect/recover/continue without duplicate authoritative effects.",
+  "selection_boundaries": [
+    "SMB-01 was completed_verified before SMB-02 implementation.",
+    "Campaign/Session/Action/Event authority remains canonical; remote transport and presence do not create parallel authoritative effects.",
+    "Presence, device identity and transport role claims remain non-authoritative.",
+    "Reconnect uses current authorization plus governed checkpoint and ordered Event history rather than caller-supplied state.",
+    "Paid/live provider activation, production deployment and public/tester distribution remain separately gated.",
+    "SMB-03 and later implementation remain unauthorized until separately governed-started."
+  ],
+  "active_substep": null,
+  "next_action": "SMB-02 is completed_verified. Canonical product state advances to SMB-03 selected_not_started; do not start SMB-03 without a later owner Continue.",
   "owner_interaction_observation": {
     "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "in_progress",
+    "status": "completed_verified",
     "policy_violations": []
   }
 }
