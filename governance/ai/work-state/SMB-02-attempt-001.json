@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "control_plane": "OPS3",
   "work_item_id": "SMB-02",
   "attempt_id": "SMB-02-attempt-001",
@@ -7,10 +7,10 @@
   "track": "system-maturation-buildout",
   "source_program": "SMB",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "selected_not_started",
+  "status": "in_progress",
   "owner_selected": true,
-  "implementation_authority": false,
-  "implementation_branch": null,
+  "implementation_authority": true,
+  "implementation_branch": "work/smb-02-remote-live-multiplayer-presence",
   "completed": false,
   "objective": "Deliver reliable remote Campaign play around the existing Campaign/Session/Action/Event authority model.",
   "predecessor": {
@@ -38,21 +38,21 @@
     "completion_gate": "Geographically separated ordinary users can join, play, disconnect/recover and continue without developer intervention or duplicate authoritative effects."
   },
   "selection_boundaries": [
-    "SMB-01 is completed_verified before SMB-02 selection.",
-    "SMB-02 is selected_not_started only; selection grants no implementation authority and creates no implementation branch.",
-    "A subsequent owner Continue must governed-start SMB-02 before implementation begins.",
+    "SMB-01 is completed_verified before SMB-02 implementation.",
+    "SMB-02 is the only authorized product-development work item for this attempt.",
     "Campaign/Session/Action/Event authority remains canonical; remote transport and presence may not create parallel authoritative effects.",
     "The SMB-01 production platform selection may be consumed behind its adapter boundaries, but paid/live provider activation, production deployment and public/tester distribution remain separately gated.",
+    "Implementation must establish a failing acceptance seam before production code and must pass exact-head Linux/Windows deterministic validation plus relevant MIB/SMB regressions.",
     "SMB-03 and later work remain unauthorized until SMB-02 is completed_verified and canonical state advances."
   ],
-  "active_substep": "selected_not_started",
-  "next_action": "On the next owner Continue, governed-start SMB-02 under the product-development lane, establish its bounded acceptance seam against current application main, and execute through its completion gate without reopening SMB-01.",
+  "active_substep": "acceptance-design",
+  "next_action": "Establish the SMB-02 RED acceptance profile against current application main, then implement the minimum authority-safe remote multiplayer/presence realization that satisfies join/play/disconnect/recover/continue without duplicate authoritative effects.",
   "owner_interaction_observation": {
-    "continue_turns": 0,
+    "continue_turns": 1,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "selected_not_started",
+    "status": "in_progress",
     "policy_violations": []
   }
 }
