@@ -1,12 +1,18 @@
 from __future__ import annotations
 
+import importlib.util
 import json
 import unittest
 from pathlib import Path
 
-from scripts.validate_operations_v3 import _validate_product_lane_projection
-
 ROOT = Path(__file__).resolve().parents[2]
+_VALIDATOR_PATH = ROOT / "scripts/validate_operations_v3.py"
+_SPEC = importlib.util.spec_from_file_location("ops3_validator", _VALIDATOR_PATH)
+if _SPEC is None or _SPEC.loader is None:
+    raise RuntimeError("unable to load Operations V3 validator")
+_VALIDATOR = importlib.util.module_from_spec(_SPEC)
+_SPEC.loader.exec_module(_VALIDATOR)
+_validate_product_lane_projection = getattr(_VALIDATOR, "_validate_product_lane_projection")
 
 
 class OperationsV3SingleDoorTests(unittest.TestCase):
