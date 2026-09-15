@@ -9,14 +9,14 @@
   "implementation_authority": false,
   "ops3_disposition": "PLANNING_ONLY",
   "ops3_rule": "This backlog projects the approved CNI family. Current selection and implementation authority come only from operations/CURRENT.json; cross-program activation is governed by ROADMAP_DEPENDENCY_GRAPH.json.",
-  "current_item": "CNI-01",
-  "current_attempt": "CNI-01-attempt-001",
+  "current_item": "CNI-02",
+  "current_attempt": "CNI-02-attempt-001",
   "tranche_execution_target_minutes": 24,
   "split_before_start_if_target_not_credible": true,
   "strict_order": ["CNI-01","CNI-02","CNI-03","CNI-04","CNI-05","CNI-06","CNI-07","CNI-08","CNI-09","CNI-10","CNI-11","CNI-12","CNI-13"],
   "tranches": [
-    {"id":"CNI-01","name":"Content Pack Manifest, Component Identity & Typed Payload Contract","status":"in_progress","estimated_active_minutes":20},
-    {"id":"CNI-02","name":"Dependency, Optional-Component & Compatibility Constraint Contract","status":"planned","estimated_active_minutes":20},
+    {"id":"CNI-01","name":"Content Pack Manifest, Component Identity & Typed Payload Contract","status":"completed_verified","estimated_active_minutes":20},
+    {"id":"CNI-02","name":"Dependency, Optional-Component & Compatibility Constraint Contract","status":"selected_not_started","estimated_active_minutes":20},
     {"id":"CNI-03","name":"Scoped Narrative State Hierarchy","status":"planned","estimated_active_minutes":22},
     {"id":"CNI-04","name":"Conditional Predicate & Context Query Engine","status":"planned","estimated_active_minutes":24},
     {"id":"CNI-05","name":"Executable Dialogue Graph & Governed Action Binding","status":"planned","estimated_active_minutes":24},
@@ -46,7 +46,8 @@
     "SMB-11 remains cross-user sharing/interchange authority",
     "CNI-10 establishes localizable content structure but SMB-16 owns final product-wide localization completion",
     "Candlekeep Revisited is a pattern-study source only; no direct copyrighted content or unlicensed code reuse is authorized",
-    "CNI-01 is in_progress only on its canonical OPS3 implementation branch; CNI-02+ remain unauthorized"
+    "CNI-01 is completed_verified; CNI-02 is selected_not_started with no implementation branch or authority; CNI-03+ remain unauthorized",
+    "ROADMAP_DEPENDENCY_GRAPH.json may make PCA milestone-eligible after CNI-02, but eligibility does not itself select or authorize PCA"
   ],
   "planning_amendment":"governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_PCM_PCA_AMENDMENT_2026-09-09.md",
   "cross_program_sequence_authority":"governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json"
