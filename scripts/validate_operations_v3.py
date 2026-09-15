@@ -19,6 +19,15 @@ LEGACY_AUTHORITY = Path("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
 AIOC_AGENTS = Path("AGENTS.md")
 LEGACY_BOOTSTRAP = Path("governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md")
 STATIC_RESTART = Path("governance/ai/MULTIVERSAL_STATIC_RESTART_PROMPT.txt")
+PROJECT_MEMORY = Path("governance/project-memory/PROJECT_MEMORY.json")
+LEGACY_CONTROL_MATRIX = Path("governance/ai/interaction-system/enforcement/CONTROL_COVERAGE_MATRIX.json")
+LEGACY_EXECUTABLES = (
+    Path("scripts/validate-8e009-completion-governance.py"),
+    Path("scripts/_validate_repository_health_v1_6.py"),
+    Path("tools/validate_stage_a_a10_projection.py"),
+    Path("tools/validate_completion_claim_integrity.py"),
+    Path("tools/validate_stage_a_a8_supplemental_authority.py"),
+)
 
 FORBIDDEN_ENTRYPOINT_MARKERS = (
     "CURRENT_WORK_POINTER",
@@ -27,6 +36,14 @@ FORBIDDEN_ENTRYPOINT_MARKERS = (
     "STAGE-A-A2",
     "MIB-17",
     "exact next",
+)
+PROJECT_MEMORY_FORBIDDEN = (
+    "MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
+    "CURRENT_WORK_POINTER.json",
+    "CURRENT_IMPLEMENTATION_STATUS.json",
+    "ROADMAP_INDEX.json",
+    "STAGE-A-A2",
+    ".ai/current-work-order.md",
 )
 
 
@@ -80,6 +97,8 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
     work_item = _read_json(root, OPS_WORK_ITEM, errors)
     legacy_pointer = _read_json(root, LEGACY_POINTER, errors)
     legacy_authority = _read_json(root, LEGACY_AUTHORITY, errors)
+    project_memory = _read_json(root, PROJECT_MEMORY, errors)
+    control_matrix = _read_json(root, LEGACY_CONTROL_MATRIX, errors)
 
     for relative in (DOOR, CONTRACT, AIOC_AGENTS, LEGACY_BOOTSTRAP, STATIC_RESTART):
         if not (root / relative).is_file():
@@ -155,6 +174,21 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
     if actual_selector_pairs != allowed_selector_pairs:
         errors.append(f"unexpected work-selecting surfaces: {sorted(actual_selector_pairs)}")
 
+    required_registry_rows = {
+        ("AIOC", PROJECT_MEMORY.as_posix(), "BACKGROUND_ONLY"),
+        ("AIOC", LEGACY_CONTROL_MATRIX.as_posix(), "HISTORICAL_INERT"),
+    }
+    required_registry_rows |= {
+        ("AIOC", path.as_posix(), "HISTORICAL_INERT") for path in LEGACY_EXECUTABLES
+    }
+    actual_registry_rows = {
+        (row.get("system"), row.get("path"), row.get("disposition"))
+        for row in surfaces if isinstance(row, dict)
+    }
+    for row in sorted(required_registry_rows):
+        if row not in actual_registry_rows:
+            errors.append(f"control surface registry missing required disposition row: {row}")
+
     agents = _read_text(root, AIOC_AGENTS, errors)
     if DOOR.as_posix() not in agents:
         errors.append("AIOC AGENTS.md must redirect to operations/BOOTSTRAP.md")
@@ -177,6 +211,35 @@ def validate(root: Path, expected_head: str | None = None) -> dict[str, Any]:
     )
     if restart != expected_restart:
         errors.append("static restart prompt must be the exact OPS3 single-door prompt")
+
+    if project_memory.get("status") != "OPS3_BACKGROUND_ONLY":
+        errors.append("PROJECT_MEMORY.json must be background-only under OPS3")
+    if project_memory.get("operational_authority") is not False:
+        errors.append("PROJECT_MEMORY.json must explicitly deny operational authority")
+    if project_memory.get("canonical_door") != DOOR.as_posix():
+        errors.append("PROJECT_MEMORY.json must point only to the OPS3 door")
+    if project_memory.get("canonical_current_state") != CURRENT.as_posix():
+        errors.append("PROJECT_MEMORY.json must point to operations/CURRENT.json for live state")
+    project_memory_text = json.dumps(project_memory, sort_keys=True)
+    for marker in PROJECT_MEMORY_FORBIDDEN:
+        if marker in project_memory_text:
+            errors.append(f"PROJECT_MEMORY.json still advertises retired live marker: {marker}")
+
+    if control_matrix.get("ops3_disposition") != "HISTORICAL_INERT":
+        errors.append("legacy control coverage matrix must be explicitly HISTORICAL_INERT")
+    if control_matrix.get("canonical_door") != DOOR.as_posix():
+        errors.append("legacy control coverage matrix must point to the OPS3 door")
+    if control_matrix.get("can_select_work") is not False:
+        errors.append("legacy control coverage matrix must not select work")
+
+    for relative in LEGACY_EXECUTABLES:
+        text = _read_text(root, relative, errors)
+        if "Operations V2" not in text or "retired" not in text.lower():
+            errors.append(f"legacy executable is not explicitly retired: {relative.as_posix()}")
+        if DOOR.as_posix() not in text:
+            errors.append(f"legacy executable does not redirect to OPS3: {relative.as_posix()}")
+        if "SystemExit(2)" not in text:
+            errors.append(f"legacy executable does not fail closed: {relative.as_posix()}")
 
     if legacy_pointer.get("canonical_source") != CURRENT.as_posix() or legacy_pointer.get("projection_only") is not True:
         errors.append("CURRENT_WORK_POINTER must be an explicit compatibility projection from operations/CURRENT.json")
