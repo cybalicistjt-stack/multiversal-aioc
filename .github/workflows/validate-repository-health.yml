@@ -3,12 +3,14 @@ name: Validate Repository Health
 on:
   pull_request:
     paths:
+      - 'operations/**'
       - 'governance/ai/**'
       - 'governance/repository-health/**'
       - 'governance/application-planning/**'
       - 'governance/source-material/recovered-legacy/**'
       - 'AGENTS.md'
       - 'scripts/validate_repository_health.py'
+      - 'scripts/validate_operations_v3.py'
       - 'scripts/execution_termination_preflight.py'
       - 'scripts/execution_atomic_projection.py'
       - 'scripts/execution_terminal_auto_proof.py'
@@ -17,12 +19,14 @@ on:
   push:
     branches: [main]
     paths:
+      - 'operations/**'
       - 'governance/ai/**'
       - 'governance/repository-health/**'
       - 'governance/application-planning/**'
       - 'governance/source-material/recovered-legacy/**'
       - 'AGENTS.md'
       - 'scripts/validate_repository_health.py'
+      - 'scripts/validate_operations_v3.py'
       - 'scripts/execution_termination_preflight.py'
       - 'scripts/execution_atomic_projection.py'
       - 'scripts/execution_terminal_auto_proof.py'
@@ -77,6 +81,7 @@ jobs:
           set -euo pipefail
           python3 -m unittest discover -s tests/control_plane -p 'test_control_plane_health.py'
           python3 tests/control_plane/test_execution_system_v2.py
+          python3 tests/control_plane/test_operations_v3_single_door.py
 
       - name: Reconcile terminal proof on canonical main
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
