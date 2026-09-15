@@ -1,37 +1,37 @@
 {
   "schema_version": "3.0.0",
   "system": "OPS3",
-  "status": "cutover_in_progress",
+  "status": "completed_verified",
   "canonical_door": "operations/BOOTSTRAP.md",
   "operating_contract": "operations/OPERATING_CONTRACT.md",
   "lane_registry": "operations/LANES.json",
   "control_surface_registry": "operations/CONTROL_SURFACE_REGISTRY.json",
-  "state_revision": 1,
+  "state_revision": 2,
   "default_lane": "product-development",
-  "active_operations_work_item": "OPS3-01",
-  "active_operations_work_item_path": "operations/work-items/OPS3-01.json",
+  "active_operations_work_item": null,
+  "active_operations_work_item_path": null,
   "product_start_freeze": {
-    "active": true,
-    "reason": "Operations V3 single-door cutover and control-surface retirement",
+    "active": false,
+    "reason": "OPS3-01 completed_verified after repository, ChatGPT Project Source, and owner-confirmed Project entry-surface cutover",
     "preserved_selected_work_item": "MIB-17",
     "preserved_attempt_id": "MIB-17-attempt-001",
     "implementation_authority": false,
-    "clear_when": "OPS3-01 reaches completed_verified and canonical entry surfaces have been reconciled"
+    "cleared_by": "OPS3-01 completed_verified"
   },
   "lanes": {
     "operations": {
-      "state": "active",
+      "state": "completed_verified",
       "work_item_id": "OPS3-01",
       "work_item_path": "operations/work-items/OPS3-01.json",
-      "implementation_authority": true
+      "implementation_authority": false
     },
     "product-development": {
-      "state": "paused_for_operations_cutover",
+      "state": "selected_not_started",
       "selected_work_item": "MIB-17",
       "attempt_id": "MIB-17-attempt-001",
       "legacy_checkpoint_path": "governance/ai/work-state/MIB-17-attempt-001.json",
       "implementation_authority": false,
-      "resume_rule": "Resume only after product_start_freeze.active becomes false"
+      "activation_rule": "Selection is not implementation authority. Product implementation begins only when the canonical product-development lane grants authority for MIB-17."
     },
     "dwc-speech": {
       "state": "preserved_external_lane",
@@ -57,5 +57,5 @@
     "legacy_surfaces": "Legacy selectors are compatibility projections or history only and may not override this file.",
     "executor_independence": "Executor availability never grants or revokes project authority."
   },
-  "next_operations_action": "Complete OPS3-01 control-surface audit and cutover; do not start MIB-17."
+  "next_project_action": "Resume the product-development lane from preserved MIB-17 selected_not_started state. Do not infer implementation authority from selection alone."
 }
