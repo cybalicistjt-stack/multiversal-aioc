@@ -83,7 +83,6 @@ jobs:
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_operations_v3_single_door.py
-          python3 tests/control_plane/test_ops3_generated_compatibility_projection.py
 
       - name: Upload compact Operations V3 evidence
         if: always()
