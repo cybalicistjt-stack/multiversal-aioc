@@ -2,17 +2,21 @@
   "schema_version": "0.2.1",
   "program_id": "MAS",
   "program_name": "Multiversal Adventure Studio",
-  "status": "owner_approved_planned",
+  "status": "active_under_ops3",
   "activation_after": "MNCS-24",
   "successor": "MSAS-01",
   "owner": "John Brandon Turner",
   "approved": "2026-09-11",
   "implementation_authority": false,
+  "ops3_disposition": "PLANNING_ONLY",
+  "ops3_rule": "Selection and implementation authority come only from operations/CURRENT.json; cross-program activation is governed by ROADMAP_DEPENDENCY_GRAPH.json. Legacy activation_after/required_upstream fields remain planning provenance where they conflict with the graph.",
+  "current_item": "MAS-01",
+  "current_attempt": "MAS-01-attempt-001",
   "tranche_execution_target_minutes": 24,
   "split_before_start_if_target_not_credible": true,
   "strict_order": ["MAS-01","MAS-02","MAS-03","MAS-04","MAS-05","MAS-06","MAS-07","MAS-08","MAS-09","MAS-10","MAS-11","MAS-12","MAS-13","MAS-14","MAS-15","MAS-16","MAS-17","MAS-18","MAS-19","MAS-20","MAS-21"],
   "tranches": [
-    {"id":"MAS-01","name":"Adventure Studio Document, Workspace & Authority Contract","status":"planned","estimated_active_minutes":22},
+    {"id":"MAS-01","name":"Adventure Studio Document, Workspace & Authority Contract","status":"in_progress","estimated_active_minutes":22},
     {"id":"MAS-02","name":"Premise, Arc, Phase, Chapter & Open-World Structure","status":"planned","estimated_active_minutes":24},
     {"id":"MAS-03","name":"Adventure, Scene, Encounter & Set-Piece Assembly","status":"planned","estimated_active_minutes":24},
     {"id":"MAS-04","name":"Nonlinear Route, Choice, Consequence & Dependency Graph","status":"planned","estimated_active_minutes":24},
@@ -49,7 +53,9 @@
     "MSAS is the strict planned successor after MAS-21 and consumes Adventure/Scene/session context without becoming Adventure or live-event authority",
     "proprietary benchmark products are clean-room planning provenance only; protected source/content/assets/UI expression are not copied",
     "no paid/cloud Adventure provider is required for blocking workflows",
-    "no implementation authority until separately governed start"
+    "MAS-01 is in_progress only on its OPS3-authorized application branch; MAS-02+ remain unauthorized",
+    "ROADMAP_DEPENDENCY_GRAPH.json, not legacy activation_after/required_upstream prose, controls cross-program activation"
   ],
-  "planning_provenance": ["governance/application-planning/multiversal-adventure-studio/MAS_BENCHMARK_CAPABILITY_MATRIX.md","governance/application-planning/creator-storycraft-workspace/CSW_CREATOR_STORYCRAFT_WORKSPACE_PROGRAM.md","governance/application-planning/content-narrative-interoperability/CNI_CONTENT_NARRATIVE_INTEROPERABILITY_PROGRAM.md","governance/application-planning/proprietary-capability-mining/PCM_CLEAN_ROOM_AND_RIGHTS_RULES.md","governance/application-planning/multiversal-adventure-studio/MAS_MNCS_PREDECESSOR_AMENDMENT_2026-09-11.md","governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MSAS_AMENDMENT_2026-09-11.md"]
+  "planning_provenance": ["governance/application-planning/multiversal-adventure-studio/MAS_BENCHMARK_CAPABILITY_MATRIX.md","governance/application-planning/creator-storycraft-workspace/CSW_CREATOR_STORYCRAFT_WORKSPACE_PROGRAM.md","governance/application-planning/content-narrative-interoperability/CNI_CONTENT_NARRATIVE_INTEROPERABILITY_PROGRAM.md","governance/application-planning/proprietary-capability-mining/PCM_CLEAN_ROOM_AND_RIGHTS_RULES.md","governance/application-planning/multiversal-adventure-studio/MAS_MNCS_PREDECESSOR_AMENDMENT_2026-09-11.md","governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_MSAS_AMENDMENT_2026-09-11.md"],
+  "cross_program_sequence_authority": "governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json"
 }
