@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.2.0",
+  "schema_version": "0.3.0",
   "control_plane": "OPS3",
   "work_item_id": "SMB-03",
   "attempt_id": "SMB-03-attempt-001",
@@ -7,11 +7,11 @@
   "track": "system-maturation-buildout",
   "source_program": "SMB",
   "repository": "cybalicistjt-stack/Multiversal-app",
-  "status": "in_progress",
+  "status": "completed_verified",
   "owner_selected": true,
-  "implementation_authority": true,
+  "implementation_authority": false,
   "implementation_branch": "work/smb-03-organizations-factions-settlements-kingdoms",
-  "completed": false,
+  "completed": true,
   "objective": "Complete the larger social and political simulation layer using existing MIB relationships, reputation, registries and events.",
   "predecessor": {
     "work_item_id": "SMB-02",
@@ -37,22 +37,50 @@
     ],
     "completion_gate": "Representative organization and settlement state evolves deterministically through owner-domain Actions/Events without parallel ledgers."
   },
-  "selection_boundaries": [
-    "SMB-02 is completed_verified before SMB-03 implementation.",
-    "SMB-03 is the only authorized product-development work item for this attempt.",
-    "Existing MIB-09 relationship/reputation, MIB-11 World/location, ODL organization/leadership, SCL consequence and owner-domain Action/Event foundations must be reused rather than duplicated.",
-    "Organizations, factions, settlements, governance, territory, services, law and kingdom-scale state remain projections/compositions over canonical owner-domain identities and events; SMB-03 may not create parallel truth ledgers.",
-    "Implementation must establish a failing acceptance seam before production code and pass exact-head Linux/Windows deterministic validation plus current predecessor/foundation regressions.",
-    "SMB-04 and later work remain unauthorized until SMB-03 is completed_verified and canonical state advances."
+  "completion_evidence": {
+    "application_pr": 485,
+    "red_head": "fb79a8c923dde26eb5e9b865384d4eb749c4a511",
+    "red_validation_run": 34980285094,
+    "validated_head": "42c4dec0b7a581411bc0cd0fe652e325cb7ff90e",
+    "validation_run": 34981780441,
+    "application_merge_sha": "b29699f03208c5aac26d21fcea82d3d5d95adba7",
+    "validated_tree_sha": "230ef28580f06b5228b2c1c9694653299fa3d8e7",
+    "merge_tree_sha": "230ef28580f06b5228b2c1c9694653299fa3d8e7",
+    "tree_identity_verified": true,
+    "linux": "pass",
+    "windows": "pass",
+    "deterministic_cross_platform_comparison": "pass",
+    "client_typecheck": "pass",
+    "application_ops3_health": "pass",
+    "relationship_reputation_authority": "MIB-09",
+    "settlement_world_authority": "MIB-11/WCI",
+    "organization_leadership_authority": "ODL",
+    "strategic_consequence_authority": "SCL",
+    "action_event_authority": "canonical-owner-domain",
+    "parallel_political_ledger_created": false,
+    "owner_mutation_performed": false
+  },
+  "validation_notes": [
+    "The governed RED candidate proved the SMB-03 acceptance seam by failing because the production political projection module and evidence did not yet exist.",
+    "Two intermediate GREEN candidates preserved focused behavior and invariants while typecheck exposed owner-authority literal-array and tuple-union narrowing defects; both were repaired causally before terminal validation.",
+    "Terminal run 34981780441 passed repository health, exact-head selection, Linux SMB-03 validation, Windows SMB-03 validation and deterministic cross-platform comparison on head 42c4dec0b7a581411bc0cd0fe652e325cb7ff90e.",
+    "The exact validated application tree is identical to the squash-merged application tree on main."
   ],
-  "active_substep": "acceptance-design",
-  "next_action": "Establish the SMB-03 RED acceptance profile against current application main, then implement the minimum deterministic organization/faction/settlement/kingdom composition that evolves only through canonical owner-domain Actions/Events.",
+  "selection_boundaries": [
+    "SMB-02 was completed_verified before SMB-03 implementation.",
+    "SMB-03 reused MIB-09 relationship/reputation, MIB-11/WCI settlement/world, ODL organization/leadership, SCL strategic-consequence and canonical Action/Event authorities rather than creating parallel truth.",
+    "Organization, faction, settlement, governance, territory, service, law and kingdom-scale state are deterministic derived projections over explicit owner-domain references and committed Events.",
+    "No parallel political, relationship, settlement, territory, kingdom, world or Event ledger was created.",
+    "SMB-04 and later implementation remain unauthorized until separately governed-started."
+  ],
+  "active_substep": null,
+  "next_action": "SMB-03 is completed_verified. Canonical product state advances to SMB-04 selected_not_started; do not start SMB-04 without a later owner Continue.",
   "owner_interaction_observation": {
-    "continue_turns": 1,
+    "continue_turns": 2,
     "stall_nudges": 0
   },
   "execution_conformance": {
-    "status": "in_progress",
+    "status": "completed_verified",
     "policy_violations": []
   }
 }
