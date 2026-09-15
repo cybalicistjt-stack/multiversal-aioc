@@ -32,9 +32,20 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         self.assertEqual(current["canonical_door"], "operations/BOOTSTRAP.md")
         self.assertEqual(current["operating_contract"], "operations/OPERATING_CONTRACT.md")
         self.assertEqual(current["lane_registry"], "operations/LANES.json")
-        self.assertEqual(current["active_operations_work_item"], "OPS3-01")
-        self.assertTrue(current["product_start_freeze"]["active"])
+        self.assertEqual(current["status"], "completed_verified")
+        self.assertIsNone(current["active_operations_work_item"])
+        self.assertFalse(current["product_start_freeze"]["active"])
         self.assertEqual(current["product_start_freeze"]["preserved_selected_work_item"], "MIB-17")
+        self.assertFalse(current["product_start_freeze"]["implementation_authority"])
+        self.assertEqual(current["lanes"]["operations"]["state"], "completed_verified")
+        self.assertFalse(current["lanes"]["operations"]["implementation_authority"])
+        self.assertEqual(current["lanes"]["product-development"]["state"], "selected_not_started")
+        self.assertEqual(current["lanes"]["product-development"]["selected_work_item"], "MIB-17")
+        self.assertFalse(current["lanes"]["product-development"]["implementation_authority"])
+
+        work_item = self._json("operations/work-items/OPS3-01.json")
+        self.assertEqual(work_item["status"], "completed_verified")
+        self.assertFalse(work_item["implementation_authority"])
 
     def test_repository_entrypoint_has_no_independent_current_state(self) -> None:
         agents = self._text("AGENTS.md")
@@ -54,19 +65,19 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
     def test_control_surface_registry_retires_known_duplicate_selectors(self) -> None:
         registry = self._json("operations/CONTROL_SURFACE_REGISTRY.json")
         self.assertEqual(registry["canonical_door"], "operations/BOOTSTRAP.md")
-        by_path = {row["path"]: row for row in registry["surfaces"]}
+        by_key = {(row["system"], row["path"]): row for row in registry["surfaces"]}
         expected_non_authoritative = [
-            "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md",
-            "governance/ai/runtime/CURRENT_WORK_POINTER.json",
-            "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json",
-            "governance/ai/runtime/EXECUTION_PROFILE.json",
-            "governance/ai/interaction-system/OWNER_AI_INTERACTION_CONTRACT.md",
-            "governance/ai/interaction-system/EXECUTION_TERMINATION_CONTRACT.json",
+            ("AIOC", "governance/ai/MULTIVERSAL_NEW_CONVERSATION_BOOTSTRAP.md"),
+            ("AIOC", "governance/ai/runtime/CURRENT_WORK_POINTER.json"),
+            ("AIOC", "governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json"),
+            ("AIOC", "governance/ai/runtime/EXECUTION_PROFILE.json"),
+            ("AIOC", "governance/ai/interaction-system/OWNER_AI_INTERACTION_CONTRACT.md"),
+            ("AIOC", "governance/ai/interaction-system/EXECUTION_TERMINATION_CONTRACT.json"),
         ]
-        for path in expected_non_authoritative:
-            with self.subTest(path=path):
-                self.assertIn(path, by_path)
-                self.assertNotEqual(by_path[path]["disposition"], "CANONICAL")
+        for key in expected_non_authoritative:
+            with self.subTest(key=key):
+                self.assertIn(key, by_key)
+                self.assertFalse(by_key[key]["can_select_work"])
 
     def test_lane_registry_uses_one_contract_for_every_lane(self) -> None:
         lanes = self._json("operations/LANES.json")
@@ -75,6 +86,23 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         lane_ids = {row["id"] for row in lanes["lanes"]}
         for required in {"product-development", "operations", "content-design", "dwc-speech", "research-evaluation", "source-provenance"}:
             self.assertIn(required, lane_ids)
+
+    def test_legacy_projections_preserve_selection_without_authority(self) -> None:
+        pointer = self._json("governance/ai/runtime/CURRENT_WORK_POINTER.json")
+        self.assertTrue(pointer["projection_only"])
+        self.assertEqual(pointer["active_attempt"]["work_item_id"], "MIB-17")
+        self.assertEqual(pointer["active_attempt"]["status"], "selected_not_started")
+        self.assertFalse(pointer["active_attempt"]["implementation_authority"])
+        self.assertEqual(pointer["exclusive_control_plane_maintenance"]["status"], "completed_verified")
+        self.assertFalse(pointer["exclusive_control_plane_maintenance"]["feature_starts_blocked"])
+
+        authority = self._json("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
+        self.assertTrue(authority["projection_only"])
+        self.assertEqual(authority["active_operations_work"]["state"], "completed_verified")
+        self.assertFalse(authority["active_operations_work"]["implementation_authority"])
+        self.assertEqual(authority["preserved_product_selection"]["state"], "selected_not_started")
+        self.assertFalse(authority["preserved_product_selection"]["implementation_authority"])
+        self.assertFalse(authority["preserved_product_selection"]["feature_starts_blocked"])
 
 
 if __name__ == "__main__":
