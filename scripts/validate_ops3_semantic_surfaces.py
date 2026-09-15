@@ -67,7 +67,7 @@ for required in (
     DOOR,
     "Owner Prompt Kit — NON-AUTHORITATIVE convenience",
     "cannot redefine `Continue`",
-    "cannot select current work",
+    "Neither section selects current work",
     "Sections B-E are an owner convenience library",
 ):
     if required not in prompt_adapter:
