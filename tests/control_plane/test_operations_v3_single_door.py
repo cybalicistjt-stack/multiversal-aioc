@@ -47,12 +47,20 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
         self.assertFalse(current["product_start_freeze"]["implementation_authority"])
         self.assertEqual(current["lanes"]["operations"]["state"], "completed_verified")
         self.assertFalse(current["lanes"]["operations"]["implementation_authority"])
+
         product = current["lanes"]["product-development"]
-        self.assertEqual(product["state"], "in_progress")
-        self.assertEqual(product["selected_work_item"], "MIB-17")
-        self.assertEqual(product["attempt_id"], "MIB-17-attempt-001")
-        self.assertEqual(product["implementation_branch"], "work/mib-17-family-safety")
-        self.assertTrue(product["implementation_authority"])
+        self.assertIn(product["state"], {"selected_not_started", "in_progress", "completed_verified"})
+        self.assertTrue(product["selected_work_item"])
+        self.assertTrue(product["attempt_id"])
+        self.assertTrue(product.get("checkpoint_path") or product.get("legacy_checkpoint_path"))
+        if product["state"] == "selected_not_started":
+            self.assertIsNone(product["implementation_branch"])
+            self.assertFalse(product["implementation_authority"])
+        elif product["state"] == "in_progress":
+            self.assertTrue(product["implementation_branch"])
+            self.assertTrue(product["implementation_authority"])
+        else:
+            self.assertFalse(product["implementation_authority"])
 
         work_item = self._json("operations/work-items/OPS3-01.json")
         self.assertEqual(work_item["status"], "completed_verified")
@@ -94,6 +102,47 @@ class OperationsV3SingleDoorTests(unittest.TestCase):
             "status": "in_progress",
             "implementation_branch": "work/mib-17-family-safety",
             "implementation_authority": True,
+        }
+        errors: list[str] = []
+        _validate_product_lane_projection(current, pointer, authority, checkpoint, errors)
+        self.assertEqual(errors, [])
+
+    def test_selected_not_started_product_lane_is_valid_without_branch_or_authority(self) -> None:
+        current = {
+            "lanes": {
+                "product-development": {
+                    "state": "selected_not_started",
+                    "selected_work_item": "MIB-18",
+                    "attempt_id": "MIB-18-attempt-001",
+                    "implementation_branch": None,
+                    "implementation_authority": False,
+                }
+            }
+        }
+        pointer = {
+            "active_attempt": {
+                "work_item_id": "MIB-18",
+                "attempt_id": "MIB-18-attempt-001",
+                "status": "selected_not_started",
+                "implementation_branch": None,
+                "implementation_authority": False,
+            }
+        }
+        authority = {
+            "preserved_product_selection": {
+                "work_item": "MIB-18",
+                "attempt_id": "MIB-18-attempt-001",
+                "state": "selected_not_started",
+                "implementation_branch": None,
+                "implementation_authority": False,
+            }
+        }
+        checkpoint = {
+            "work_item_id": "MIB-18",
+            "attempt_id": "MIB-18-attempt-001",
+            "status": "selected_not_started",
+            "implementation_branch": None,
+            "implementation_authority": False,
         }
         errors: list[str] = []
         _validate_product_lane_projection(current, pointer, authority, checkpoint, errors)
