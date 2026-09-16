@@ -1,150 +1,160 @@
 # MSLR — Multiversal Spatial Law Runtime
 
 **Program ID:** MSLR  
-**Status:** OWNER-APPROVED — PLANNED  
+**Status:** OWNER-APPROVED — PLANNED; PDCP-REDUCED  
 **Activation:** after MBES-24 under `ROADMAP_DEPENDENCY_GRAPH.json`  
 **Successor:** MSWI-01  
 **Owner and final authority:** John Brandon Turner  
-**Approved:** 2026-09-15
+**Approved:** 2026-09-15  
+**PDCP reduction:** 2026-09-16 — baseline 18 tranches → 9 surviving implementation/proof tranches
 
 ## Purpose
 
 MSLR turns Multiversal's existing non-standard spatial representation into reusable gameplay. It consumes completed SSA topology semantics, ENV multiversal/environment context, MCS cartographic projections, GPR execution primitives and MBES built-space definitions. It does not replace any of them.
 
-The family exists because Multiversal must support more than visually unusual maps. Campaigns may contain non-Euclidean adjacency, looping and shifting labyrinths, fuzzy Reality borders, dimensional bleed without traversable portals, nested or bigger-inside spaces, recursive scale, local gravity/orientation changes, curved or distorted distance metrics, observer-dependent connections, memory/knowledge-dependent routes, temporal or dream spatial laws, and spaces whose true topology cannot be represented faithfully by a single Euclidean map.
+The family supports non-Euclidean adjacency, looping and shifting labyrinths, fuzzy Reality borders, dimensional bleed without automatic traversal, nested/bigger-inside space, recursive scale, local gravity/orientation changes, curved or distorted distance metrics, observer/knowledge-dependent connections, temporal or dream spatial laws, and spaces whose true topology cannot be faithfully represented by a single Euclidean map.
 
-The design principle is: **impossible space should have discoverable laws rather than arbitrary behavior.** Players need ways to observe, hypothesize, test, map, exploit, resist, stabilize and sometimes alter those laws. Abstract checks remain supported, but they are not the only interaction model.
+The design principle is: **impossible space should have discoverable laws rather than arbitrary behavior.** Players need ways to observe, hypothesize, test, map, exploit, resist, stabilize and alter those laws where owner rules permit it.
+
+## PDCP design-closure authority
+
+The implementation-ready semantic contract is:
+
+`governance/application-planning/preimplementation-design-closure/PDCP_MSLR_FAMILY_DESIGN_CLOSURE.md`
+
+The before/after coverage receipt is:
+
+`governance/application-planning/preimplementation-design-closure/PDCP_MSLR_REDUCTION_RECEIPT.json`
+
+The receipt preserves every baseline capability and maps all removed/merged baseline tranches to surviving implementation work. Historical tranche IDs remain provenance; only the surviving strict order in `MSLR_PROGRAM_BACKLOG.json` is future executable work.
 
 ## Placement
 
-Effective planned sequence for this portion of the roadmap:
+Effective planned sequence remains:
 
 `GPR → MERA → MBES → MSLR → MSWI → SMB-08`
 
-The placement is deliberately after MBES rather than between GPR and MERA. MSLR benefits from the completed gameplay runtime, map/spatial semantics, environment overlays and the full built-environment vocabulary. MSWI then consumes MSLR's typed spatial events and observations when propagating consequences into world systems.
+MSLR remains after MBES because it consumes accepted built spaces and before MSWI because MSWI consumes typed MSLR observations/events/deltas for broader systemic consequences.
+
+## Shared-owner folding
+
+MSLR does not rebuild generic infrastructure already owned elsewhere:
+
+- **PCA-02/PCA-03:** procedural graph/recipe/generator substrate;
+- **PCA-12:** reusable simulation/formal-analysis workbench;
+- **PDCP Packet 07 / owner operations:** preview, dry-run, explanation, diagnostics, GM intervention and compensation semantics;
+- **MCS:** cartographic/map/interior projection and editing;
+- **GPR / Action/Event:** generic gameplay execution, Event trace, replay and delivery modes;
+- **MRCS/GPR + PDCP Packet 04:** generic semantic affordance/Effect composition;
+- **MSAS/presentation owners:** audio/presentation production for semantic anomaly cues;
+- **MSWI:** cross-domain systemic consequence propagation.
+
+MSLR implements only the spatial-law-specific schemas, runtime state, operations, adapters, creator views and proofs needed on top of those owners.
 
 ## Tranche execution contract
 
-Each tranche targets a 24-minute total execution envelope with at least 8 minutes reserved for focused validation, durable-evidence verification, reconciliation and successor marking. Active implementation scope is therefore capped at 16 minutes by design unless a tranche is split before governed start. Once governed-started, one owner `Continue` carries the whole bounded tranche through closeout unless an OPS3 owner-only boundary or genuine external blocker is reached.
+Each tranche targets a 24-minute total execution envelope with at least 8 minutes reserved for validation, durable-evidence verification, reconciliation and successor marking. Active implementation scope is capped at 16 minutes unless split before governed start. One owner `Continue` carries a governed-started tranche through closeout unless an OPS3 owner-only boundary or genuine external blocker is reached.
 
-## Tranches
+## Surviving tranches
 
-### MSLR-01 — Spatial-Law Authority, Capability Crosswalk & Runtime Contract
+### MSLR-01 — Spatial-Law Profile & Runtime Core
 
-Define the owner-domain crosswalk across SSA, ENV, MCS, GPR, MBES, World/Reality, Scene, Exploration, Transition/Portal, Visibility/Knowledge and Action/Event. Establish the runtime boundary between reusable spatial-law definitions and live Campaign spatial state.
+Absorbs historical MSLR-01 and MSLR-02.
 
-Acceptance: no duplicate spatial ledger; authoritative owner for every input/output is explicit; spatial-law definition and live state are separate; unsupported concepts remain unresolved rather than invented.
+Implement reusable spatial-law profiles/dimension rules, scope and invariant validation, composition/precedence rules, the live runtime-instance boundary, owner-reference/version bindings, the default Euclidean profile, and migration/version seams.
 
-### MSLR-02 — Spatial-Law Profiles, Scope, Invariants, Discoverability & Composition
+Acceptance: no duplicate spatial ledger; profile definition and live state remain distinct; contradictory rules without explicit resolution fail deterministically; unsupported dimensions remain unresolved.
 
-Define a reusable profile describing which spatial dimensions are non-standard: topology, metric, orientation, containment/scale, layer overlap, observer predicates, temporal recurrence, stability and discoverability. Profiles declare invariants, triggers, clues, counterplay and resolution modes.
+### MSLR-03 — Dynamic Topology State & Governed Spatial Operations
 
-Acceptance: normal Euclidean space is a valid default; profiles may compose without collapsing dimensions; profile scope is explicit; contradictory laws fail deterministically or require an authored resolution rule.
+Absorbs historical MSLR-03 and MSLR-06.
 
-### MSLR-03 — Dynamic Topology State, Edge Mutation, Event Trace, Replay & Recovery
+Implement active-edge/redirection/permutation/fold/phase law state plus governed connect/disconnect/redirect/permute/wrap/fold/nest/phase/collapse/stabilize/sever operations through Action/Event/GPR. Add preview, stale revalidation, replay and owner-defined inverse/compensation/recovery.
 
-Add live state for active edges, redirected exits, permutations, folds, collapsed links, phase relationships and law-state variables. Changes occur through typed events with source, time, reversibility and version data.
+Acceptance: live topology changes without rewriting reusable World/Location definitions; unauthorized or stale mutations fail before commit; replay reconstructs declared-deterministic state; committed history is never deleted by undo.
 
-Acceptance: topology can change without rewriting reusable Location/World definitions; replay/recovery reconstructs the same declared-deterministic state; stale or unauthorized mutation is rejected.
+### MSLR-04 — Knowledge, Observer & Spatial Discovery Runtime
 
-### MSLR-04 — True, Observable, Known & Suspected Topology Projections
+Absorbs historical MSLR-04, MSLR-05 and MSLR-11.
 
-Separate authoritative topology from currently observable topology, participant-known topology and player-authored/suspected topology. Permission filtering occurs before counts, search, route diagnostics, AI context and export.
+Implement true/observable/known/suspected projections, observer/knowledge/memory/perception predicates, observation/experiment/hypothesis operations, role-safe route explanations and permission filtering before route/search/diagnostic model construction.
 
-Acceptance: a player can possess an incomplete or wrong map without corrupting true topology; hidden edge cardinality does not leak; multiple participants may legitimately hold different knowledge projections.
+Acceptance: participants can hold incomplete or wrong maps without corrupting truth; hidden topology cardinality does not leak; direct play and summarized checks can both produce governed observations; observer predicates consume owner-authorized state rather than client inference.
 
-### MSLR-05 — Spatial Observation, Hypothesis, Experiment & Law-Discovery Gameplay
+### MSLR-07 — Reality-Seam, Temporal/Dream & Contextual Spatial Laws
 
-Create gameplay operations for leaving marks, walking controlled routes, timing loops, comparing maps, testing thresholds, observing repetition, measuring distance, checking echoes, watching transitions and forming spatial hypotheses. Skill checks may expose clues or confidence but do not have to replace direct play.
+Absorbs historical MSLR-07 and MSLR-12.
 
-Acceptance: a representative impossible space can be solved by accumulated observations and experiments; failed checks need not create dead ends; discoveries create governed knowledge/evidence state rather than rewriting the law.
+Implement fuzzy boundary/layer/bleed bindings, explicit traversability separation, temporal recurrence/reset behavior, dream/causal/symbolic route predicates and context provenance over Reality/ENV owner projections.
 
-### MSLR-06 — Governed Topology Operations, Triggers, Preview, Undo & Counterplay
+Acceptance: bleed can be perceptible/mechanical without traversability; a portal may exist without broad bleed; recurrence preserves/resets only declared state; no universal dream/time formula is invented.
 
-Define shared operations such as connect, disconnect, redirect, permute, wrap, fold, unfold, nest, unnest, phase, collapse, stabilize and sever where owner contracts permit them. Support preview/counterfactual evaluation before commit.
+### MSLR-08 — Metric, Scale, Containment & Orientation Transform Runtime
 
-Acceptance: spells, devices, environmental events, puzzles and GM operations may reuse the same typed spatial operations; undo/reversal obeys event/version constraints; presentation input alone cannot commit a topology change.
+Absorbs historical MSLR-08, MSLR-09 and MSLR-10.
 
-### MSLR-07 — Fuzzy Boundaries, Reality Seams, Bleed Gradients & Traversability Separation
+Implement metric transforms, recursive/nested/bigger-inside containment and scale relationships, orientation/gravity frames, entry/exit transforms and movement/range/projectile/scene adapters.
 
-Represent boundary regions as scoped mixtures or gradients rather than mandatory lines. Track which Reality/Environment properties overlap, their provenance and local stability. Preserve the existing ENV distinction between Reality Instability, Dimensional Bleed and Portal Activity.
+Acceptance: topology, metric, containment/scale and orientation remain distinct dimensions; nested spaces preserve stable identity and do not duplicate contents; orientation change does not silently change topology/location identity; abstract and tactical views consume compatible semantics.
 
-Acceptance: a bleed can be perceptible and mechanically consequential without being traversable; a portal can exist without broad bleed; access/traversal remains Transition/Portal/Access-owned.
+### MSLR-13 — Navigation Aids, Anchors, Sensory Cues & Counterplay
 
-### MSLR-08 — Metric Geometry Profiles: Euclidean, Hyperbolic, Spherical & Distorted Distance
+Absorbs historical MSLR-13 and MSLR-15.
 
-Add optional metric profiles distinct from topology. Govern distance, range, area, path length, line-of-sight and related calculations under Euclidean, hyperbolic, spherical, anisotropic or source-defined local-distortion rules.
+Implement bindings for markers, ropes, beacons, clocks, drones, wards, stabilizers, route tokens and equivalent aids; semantic anomaly-cue bindings across sensory channels; accessible equivalent cues; and provenance for authored law responses/counterplay.
 
-Acceptance: non-Euclidean topology does not automatically change distance; metric changes are explicit and testable; tactical and abstract resolution use compatible semantic results without requiring identical visual rendering.
+Acceptance: navigation aids materially interact only through authored laws; progression-relevant cues have accessible equivalents; subtle evidence does not leak hidden answers; Item/presentation owners retain their truth.
 
-### MSLR-09 — Recursive Scale, Nested Worlds, Bigger-Inside & Containment Transforms
+### MSLR-14 — Procedural Impossible-Space Authoring, Solvability & Diagnostics
 
-Extend containment with explicit scale relationships and transforms. Support pocket spaces, worlds within objects, interiors larger than exteriors, recursive structures and transitions between local scales while preserving stable entity/location identity.
+Absorbs historical MSLR-14 and MSLR-17.
 
-Acceptance: `contains`, `nested in`, `same scale` and `bigger inside` remain distinguishable; carried/nested spaces do not duplicate their contents; exit/entry transforms are explicit and recoverable.
+Implement MSLR-specific procedural recipes/constraints over PCA-02/PCA-03, MSLR analysis-model adapters over PCA-12, reachability/solvability/contradiction/cycle diagnostics, Packet-07 creator preview/explanation/step-through bindings, MCS specialist map/graph/frame views and governed promotion.
 
-### MSLR-10 — Orientation, Gravity Frames, Surface-Local Up & Transition Semantics
+Acceptance: deterministic recipes reproduce semantic candidates where declared; required start/objective/escape constraints are checked before promotion; solver timeout/unknown is inconclusive; creators can build/test without raw-state editing; generic solver/debug/map engines are not duplicated.
 
-Represent local orientation frames and changing gravity directions independently of map coordinates. Support surface-local up, rotating frames, zero-g transitions and authored reorientation at edges or zones.
+### MSLR-16 — Multi-Resolution Cross-System Spatial Runtime Integration
 
-Acceptance: movement, falls, projectiles and scene projections can consume a declared orientation frame; orientation change never silently changes location identity or topology.
+Retains historical MSLR-16.
 
-### MSLR-11 — Observer, Knowledge, Memory & Perception-Dependent Connectivity
+Implement the same accepted law through abstract travel/theater-of-the-mind, topology/tactical execution and rendered projections. Integrate movement, combat/range and at least one non-combat owner system through explicit adapters and typed outcomes.
 
-Allow explicit predicates where route availability or resolution depends on an observer state, possessed knowledge, remembered fact, sensory relationship or other owner-authorized participant context.
-
-Acceptance: the predicate and authority source are explicit; client observation alone cannot self-authorize a route; memory/perception effects use owning participant/knowledge systems; accessibility-equivalent evidence is possible.
-
-### MSLR-12 — Temporal, Dream, Causal, Looping & Recurrence Spatial Laws
-
-Support loops, recurrence, reset points, time-dependent exits, oneiric/symbolic relationships and source-defined causal spatial rules. Keep Temporal Instability and Dream Influence as environment contexts rather than universal formulas.
-
-Acceptance: a looping corridor or dream route can have a learnable condition for change/escape; recurrence preserves or resets only declared state; no universal time ratio or dream rule is invented.
-
-### MSLR-13 — Anchors, Markers, Mapping, Stabilization, Navigation Aids & Counterplay
-
-Define interactions for chalk/markers, ropes, beacons, memory anchors, clocks, drones, wards, stabilizers, route tokens and equivalent setting-specific aids. Spatial laws may preserve, move, duplicate, erase, corrupt or reject anchors only when authored.
-
-Acceptance: navigation equipment and abilities can materially interact with spatial laws; counterplay creates decisions beyond repeated skill checks; anchors preserve provenance and ownership.
-
-### MSLR-14 — Constraint-Driven Procedural Impossible-Space Generation & Solvability Proof
-
-Generate semantic topology/laws from constraints before presentation. Support loop requirements, unstable edges, nested regions, gravity frames, false endpoints, layer overlap and authored invariants. Require reachability/solvability checks for required objectives before promotion.
-
-Acceptance: seeded output is deterministic where declared; generated spaces cannot silently enter canonical state; required start/objective/escape constraints are machine-checkable; inaccessible or unsolved generations are rejected or surfaced for GM repair.
-
-### MSLR-15 — Liminal Sensory Anomaly Grammar, Detection & Accessible Equivalent Cues
-
-Define reusable cue families across sight, sound, touch, temperature, smell, text/signage, timing, repetition, social behavior and map contradiction. Separate cue evidence from hidden truth and support equivalent semantic cues for accessibility.
-
-Acceptance: anomaly play does not require a single sensory channel; subtle cues can be authored without leaking the answer; player detection can feed MSLR-05 evidence/hypothesis state.
-
-### MSLR-16 — Multi-Resolution & Cross-System Spatial Gameplay Runtime
-
-Execute the same spatial law through abstract travel/theater-of-the-mind, topology/tactical views and rendered scenes. Integrate movement, combat, range, pursuit, stealth, vehicles/mounts, encounters, exploration, settlement access and other owner systems through GPR-compatible typed outcomes.
-
-Acceptance: changing presentation mode does not change authoritative meaning; a representative law affects at least exploration, combat/movement and one non-combat system through explicit owner operations; no cross-system consequence is invented outside its owner.
-
-### MSLR-17 — GM/Creator Spatial-Law Studio, Diagnostics, Simulation & Specialized Map Views
-
-Provide authoring and diagnostic projections for law profiles, topology graphs, layer graphs, route histories, gravity frames, confidence/knowledge maps, contradiction overlays and solvability tests. MCS remains the cartographic/presentation owner.
-
-Acceptance: creators can build and test an impossible space without editing raw state; diagnostics identify unreachable objectives, contradictory invariants, hidden-information leaks and unstable mutation cycles; all consequential authoring remains proposal/acceptance governed.
+Acceptance: presentation mode does not change authoritative meaning; owner systems reject stale/unsupported law context rather than inventing consequences; MSLR does not directly mutate downstream owner domains.
 
 ### MSLR-18 — Golden Impossible-Space Proof & MSWI Handoff
 
-Prove the family with a clean-room scenario battery covering: non-adjacent topology, shifting/looping liminal maze, fuzzy Reality seam with nontraversable bleed, explicit metric distortion, recursive bigger-inside containment, gravity-frame transition, observer/knowledge-dependent route, topology manipulation, accessible anomaly discovery and deterministic procedural solvability.
+Retains historical MSLR-18 and the existing DAG golden gate.
 
-Acceptance: exact-head validation passes; event/recovery proof is deterministic where declared; owner boundaries hold; MSLR observations/events/deltas are consumable by MSWI; no benchmark-specific protected expression appears in production artifacts.
+Prove a clean-room battery covering non-adjacent/dynamic topology, shifting loops, fuzzy nontraversable bleed, metric distortion, bigger-inside containment, gravity transition, observer/knowledge-dependent routes, governed topology manipulation, accessible anomaly discovery, deterministic procedural solvability and cross-system integration.
+
+Acceptance: exact-head validation passes; replay/recovery is deterministic where declared; permissions and owner boundaries hold; provider-off blocking workflows work; MSLR typed observations/events/deltas are consumable by MSWI; no protected benchmark expression enters production artifacts.
+
+## Removed/merged historical tranche mapping
+
+- MSLR-02 → MSLR-01
+- MSLR-05 → MSLR-04
+- MSLR-06 → MSLR-03
+- MSLR-09 → MSLR-08
+- MSLR-10 → MSLR-08
+- MSLR-11 → MSLR-04
+- MSLR-12 → MSLR-07
+- MSLR-15 → MSLR-13
+- MSLR-17 → MSLR-14
+
+Historical IDs remain visible in the PDCP receipt for provenance but are no longer standalone future product work.
 
 ## Golden design invariants
 
-- Impossible does not mean arbitrary: authored/generated anomalous spaces expose consistent discoverable laws unless the source explicitly establishes nondeterminism.
+- Impossible does not mean arbitrary: authored/generated anomalous spaces expose consistent discoverable laws unless a source explicitly establishes nondeterminism.
 - A map is a projection of spatial truth, not spatial truth itself.
-- Topology and metric geometry are different dimensions.
-- Fuzzy boundary and portal are different concepts.
+- Topology, metric, containment/scale and orientation are different dimensions.
+- Fuzzy boundary, dimensional bleed and portal traversal are different concepts.
 - A participant may know less than the system without hidden truth leaking through diagnostics.
-- A skill check may summarize spatial gameplay, but detailed interactive resolution must also be possible where the profile supports it.
-- Spatial change must be attributable, recoverable and permission-checked.
-- Accessibility preserves the puzzle by providing equivalent evidence, not by revealing protected answers.
-- MSLR never creates a second World/Reality/Scene/Map/Environment ledger.
+- A skill check may summarize spatial gameplay, but detailed interactive resolution remains possible where the profile supports it.
+- Spatial change is attributable, permission-checked, versioned and recoverable according to its owner-defined classification.
+- Accessibility preserves the puzzle through equivalent semantic evidence rather than protected-answer disclosure.
+- MSLR never creates a second World/Reality/Scene/Map/Environment/Action/Event/Transition/Portal/Knowledge ledger.
+
+## Non-authorization
+
+This reduction does not start MSLR, create an implementation branch, alter `operations/CURRENT.json`, start MSWI/SMB-08, authorize paid/cloud dependencies or change canonical Campaign state.

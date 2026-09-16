@@ -1,19 +1,22 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "project_id": "PDCP",
   "project_name": "Preimplementation Design Closure Project",
-  "status": "owner_approved_active_design",
+  "status": "owner_approved_active_reduction",
   "owner": "John Brandon Turner",
   "approved": "2026-09-16",
   "implementation_authority": false,
   "ops3_current_mutation": false,
   "project_path": "governance/application-planning/preimplementation-design-closure/PDCP_PREIMPLEMENTATION_DESIGN_CLOSURE_PROJECT.md",
+  "design_closure_contract": "governance/application-planning/preimplementation-design-closure/PDCP_DESIGN_CLOSURE_CONTRACT.md",
+  "cross_family_overlap_register": "governance/application-planning/preimplementation-design-closure/PDCP_CROSS_FAMILY_OVERLAP_REGISTER.md",
   "baseline_snapshot": {
     "aioc_main_sha": "1558bcd12e69c0e49290191199fe6ef111f1e80c",
     "date": "2026-09-16",
     "baseline_total_tranches": 208,
-    "effective_reduced_total": null,
-    "note": "Baseline remains historical provenance. Effective reduced total is populated only after family reduction receipts are approved and reconciled."
+    "effective_reduced_total": 199,
+    "approved_family_reductions": 1,
+    "note": "Baseline remains historical provenance. Effective total reflects only family reduction receipts already reconciled into planning sources; remaining families retain baseline counts until their own complete receipts merge."
   },
   "excluded_programs": ["MAS"],
   "families": [
@@ -112,9 +115,13 @@
       "backlog_path": "governance/application-planning/multiversal-spatial-law-runtime/MSLR_PROGRAM_BACKLOG.json",
       "baseline_blob_sha": "8da5d46e67aaee9a397edc85b33b3ae9d08a7cc7",
       "track": "post_mas_runtime_creator",
-      "reduction_status": "not_started",
-      "reduced_tranche_count": null,
-      "reduction_receipt": null
+      "reduction_status": "resolved",
+      "reduced_tranche_count": 9,
+      "reduction_receipt": "governance/application-planning/preimplementation-design-closure/PDCP_MSLR_REDUCTION_RECEIPT.json",
+      "family_design_closure": "governance/application-planning/preimplementation-design-closure/PDCP_MSLR_FAMILY_DESIGN_CLOSURE.md",
+      "surviving_tranche_ids": ["MSLR-01","MSLR-03","MSLR-04","MSLR-07","MSLR-08","MSLR-13","MSLR-14","MSLR-16","MSLR-18"],
+      "overlap_audit_complete": true,
+      "capability_loss_detected": false
     },
     {
       "program_id": "MSWI",
@@ -123,7 +130,7 @@
       "backlog_path": "governance/application-planning/multiversal-systemic-worldplay-integration/MSWI_PROGRAM_BACKLOG.json",
       "baseline_blob_sha": "3327ead8361e884181b159a9c94cfe694cbdeac5",
       "track": "post_mas_runtime_creator",
-      "reduction_status": "not_started",
+      "reduction_status": "next_selected_for_pdcp_review",
       "reduced_tranche_count": null,
       "reduction_receipt": null
     }
@@ -153,9 +160,13 @@
   "reduction_rules": [
     "No currently selected, governed-started or in-progress product work is eligible for reduction.",
     "MAS is excluded in full.",
+    "Every family reduction must perform and record an intra-family overlap audit before count mutation.",
+    "Every family reduction must perform and record a cross-family/shared-owner overlap audit using PDCP_CROSS_FAMILY_OVERLAP_REGISTER.md.",
+    "Generic infrastructure should have one practical owner; specialist families retain only domain-specific adapters, semantics, UX and proof.",
     "No disposition may delete accepted capability, golden-proof, migration, recovery, accessibility, permission/privacy, provenance or deterministic-validation obligations.",
     "Every non-retained baseline tranche must map its residual implementation/proof work to a named surviving tranche or existing governed owner.",
     "A baseline tranche referenced by ROADMAP_DEPENDENCY_GRAPH.json may be removed or renumbered only with an atomic graph update to an equivalent surviving gate.",
+    "Prefer stable sparse tranche IDs over gratuitous renumbering when start/golden milestone IDs can remain valid.",
     "PDCP design work never grants implementation authority and does not mutate operations/CURRENT.json.",
     "Family backlog reduction occurs only after a complete before/after coverage receipt is durable and reviewable."
   ]
