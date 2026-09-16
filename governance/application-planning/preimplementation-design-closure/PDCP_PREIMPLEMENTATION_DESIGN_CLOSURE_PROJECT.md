@@ -47,12 +47,13 @@ Allowed dispositions: `RETAIN_IMPLEMENTATION`, `MERGE_IMPLEMENTATION`, `ABSORB_E
 - **MRCS:** 21 → 13; removed 8; stable `MRCS-05/MRCS-13/MRCS-14/MRCS-21`.
 - **MSAS:** 21 → 11; removed 10; stable `MSAS-01/MSAS-21`; generic generation remains PCA-owned and generic lifecycle/provenance remains ARI/PCA-owned.
 - **MNCS:** 24 → 13; removed 11; stable `MNCS-01/MNCS-24`; generic generation uses PCA, life simulation remains DPL/Economy/Project-owned, multi-resolution semantics remain Packet-06/domain-owned, and generic lifecycle/review/provenance remains ARI/PCA/Packet-07-owned.
+- **MCCS:** 21 → 11; removed 10; stable `MCCS-01/MCCS-21`; entity/population truth remains PPIA/MNCS-owned, generic production remains PAPT/PCA-owned, and generic provenance/review/interchange remains ARI/PCA-owned.
 
-**Current effective future count:** 124.  
-**Standalone future tranches removed:** 84.  
-**Resolved family receipts:** 8 / 10.
+**Current effective future count:** 114.  
+**Standalone future tranches removed:** 94.  
+**Resolved family receipts:** 9 / 10.
 
-The next selected PDCP family review is **MCCS**, followed by MCS under `PDCP_CROSS_FAMILY_OVERLAP_REGISTER.md`.
+The next selected PDCP family review is **MCS**, the final family review under `PDCP_CROSS_FAMILY_OVERLAP_REGISTER.md`.
 
 ## Current durable control surfaces
 
@@ -68,4 +69,4 @@ PDCP uses the on-demand content-design lane when explicitly requested. Product-d
 
 ## Completion
 
-PDCP completes when all ten in-scope families have reconciled receipts and the effective future roadmap reflects those receipts without capability loss or unauthorized product start. The final count is evidence-driven, not preselected.
+PDCP completes when all ten in-scope families have reconciled receipts and the effective future roadmap reflects those receipts without capability loss or unauthorized product start. After MCCS, only MCS remains. The final count is evidence-driven, not preselected.
