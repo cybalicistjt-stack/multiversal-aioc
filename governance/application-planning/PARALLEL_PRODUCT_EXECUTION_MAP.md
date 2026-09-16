@@ -12,6 +12,6 @@ Initial active cap: four. First simultaneous set: MCS, MCCS, MRCS, MSAS after ty
 | L6_ADVENTURE | MAS | CNI-11 + Adventure/Scene/Session | MAS-21 |
 | L7_GAMEPLAY_RUNTIME | GPR | MRCS-05 + MAL/core owners | GPR-16 |
 | L8_ENGINEERING | MERA | GPR-05 + MRCS-13 + MIB12/13/14/LSS | MERA-24 |
-| L9_BUILT_ENVIRONMENT | MBES | MERA-04 + MRCS-14 | MBES-24 |
+| L9_BUILT_ENVIRONMENT | MBES | reduced MERA-03 + MRCS-14 | MBES-24 |
 
 Shared/global integration surfaces remain single-lease. `waiting_for_integration` releases a lane mutation slot while preserving its eventual golden barrier.
