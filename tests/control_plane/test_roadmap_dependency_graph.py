@@ -16,12 +16,16 @@ class RoadmapGraphTests(unittest.TestCase):
   e=self.g["program_edges"];initial={"MCS","MCCS","MRCS","MSAS"}
   for n in initial:self.assertFalse(initial&set(e[n]["hard_requires"]));self.assertFalse(initial&set(e[n]["start_requires"]))
   self.assertEqual(self.g["parallel_safe_sets"],[["MCS","MCCS","MRCS","MSAS"]])
- def test_real_mera_mbes_causality_is_preserved(self):self.assertIn("MERA",self.g["program_edges"]["MBES"]["hard_requires"]);self.assertIn("MERA-04",self.g["program_edges"]["MBES"]["start_requires"])
+ def test_real_mera_mbes_causality_is_preserved(self):
+  self.assertIn("MERA",self.g["program_edges"]["MBES"]["hard_requires"])
+  self.assertIn("MERA-03",self.g["program_edges"]["MBES"]["start_requires"])
+  self.assertNotIn("MERA-04",self.g["program_edges"]["MBES"]["start_requires"])
  def test_foundation_overlap_and_rotation(self):
   g=self.g["milestone_gates"]
   self.assertEqual(g["PCA"]["PCA-01"],["CNI-02"])
   self.assertEqual(g["rotation"]["GPR-01"],["MRCS-05"])
   self.assertEqual(g["rotation"]["MNCS-01"],["MCCS-01"])
+  self.assertEqual(g["rotation"]["MBES-01"],["MERA-03","MRCS-14"])
   self.assertIn("MCCS-01",self.g["program_edges"]["MNCS"]["start_requires"])
   self.assertNotIn("MCCS-02",self.g["program_edges"]["MNCS"]["start_requires"])
 if __name__=="__main__":unittest.main()
