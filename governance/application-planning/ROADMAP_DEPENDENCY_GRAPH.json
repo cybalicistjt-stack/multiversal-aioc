@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.1",
+  "schema_version": "1.0.2",
   "status": "CURRENT_PLANNING_AUTHORITY",
   "graph_id": "MV-ROADMAP-DAG-001",
   "authority_rule": "This graph owns cross-program activation/dependency semantics. Historical roadmap amendments and legacy activation_after/successor fields remain provenance/compatibility projections and cannot override this graph.",
@@ -53,7 +53,7 @@
     "MCCS": {"hard_requires":[],"start_requires":["FOUR_LANE_RELEASE_BARRIER","PCA-05","PCA-06","PCA-09","PCA-15","CAPP/PPIA/PAPT/ARI contracts"],"late_bind_requires":["MCS map/scene bindings"],"golden_proof_requires":["PCA-16","MCS-21 relevant presentation proof"]},
     "MRCS": {"hard_requires":[],"start_requires":["FOUR_LANE_RELEASE_BARRIER","Content Forge","CAB completed_verified","CNI core pack contracts","owner-domain rule/content contracts","ARI"],"late_bind_requires":["MCS specialized map bindings","MCCS presentation bindings","MAS adventure bindings","MSAS audio bindings"],"golden_proof_requires":["specialist bindings required by MRCS-21"]},
     "MSAS": {"hard_requires":[],"start_requires":["FOUR_LANE_RELEASE_BARRIER","AAI completed_verified","DWC speech contracts","PCA-07","PCA-08","PCA-15","ARI"],"late_bind_requires":["MAS adventure/session context","MCS spatial/map bindings","MCCS character/dialogue projections"],"golden_proof_requires":["PCA-16","relevant Adventure/map/character proof"]},
-    "MNCS": {"hard_requires":[],"start_requires":["MCCS-02","MIB-09","DPL completed_verified","NPC/Creature owner contracts"],"late_bind_requires":["MCS location/environment projections","advanced MCCS derivatives","MRCS specialized definitions"],"golden_proof_requires":["MCCS-21","selected MCS semantic proof"]},
+    "MNCS": {"hard_requires":[],"start_requires":["MCCS-01","MIB-09","DPL completed_verified","NPC/Creature owner contracts"],"late_bind_requires":["MCS location/environment projections","advanced MCCS derivatives","MRCS specialized definitions"],"golden_proof_requires":["MCCS-21","selected MCS semantic proof"]},
     "MAS": {"hard_requires":[],"start_requires":["CNI-11","CSW/Adventure/Scene/Session contracts","ARI"],"late_bind_requires":["MNCS cast","MCS maps","MCCS presentation","MSAS audio"],"golden_proof_requires":["relevant specialist proofs"]},
     "GPR": {"hard_requires":[],"start_requires":["MRCS-05","MAL completed_verified","core Action/Event/Character/World/Combat/Inventory owner contracts"],"late_bind_requires":["later MRCS domains","MCS/MCCS/MNCS/MAS/MSAS outputs"],"golden_proof_requires":["MRCS-21","relevant specialist golden proofs"]},
     "MERA": {"hard_requires":[],"start_requires":["GPR-05","MRCS-13","MIB-12","MIB-13","MIB-14","LSS","Project/Profession contracts"],"late_bind_requires":["specialist presentation outputs"],"golden_proof_requires":["GPR-16","MRCS engineering proof","LSS recovery proof"]},
@@ -82,7 +82,7 @@
       "PCA-01":["CNI-02"],"PCA-02":["PCA-01"],"PCA-03":["PCA-02"],"PCA-04":["PCA-02"],"PCA-05":["PCA-02"],"PCA-06":["PCA-05"],"PCA-07":["PCA-02"],"PCA-08":["PCA-07"],"PCA-09":["PCA-02"],"PCA-10":["PCA-02","CNI-05","CNI-08"],"PCA-11":["PCA-02","CNI-06","CNI-07"],"PCA-12":["PCA-02"],"PCA-13":["PCA-02","CNI-10"],"PCA-14":["PCA-11","PCA-12"],"PCA-15":["PCA-01"],"PCA-16":["PCA relevant capabilities","CNI-13"]
     },
     "rotation": {
-      "MNCS-01":["MCCS-02"],
+      "MNCS-01":["MCCS-01"],
       "MAS-01":["CNI-11"],
       "GPR-01":["MRCS-05"],
       "MERA-01":["GPR-05","MRCS-13"],
