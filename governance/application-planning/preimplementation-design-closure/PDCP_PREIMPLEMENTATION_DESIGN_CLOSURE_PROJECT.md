@@ -18,7 +18,7 @@ PDCP is a design/planning project, not a product family. It does not appear as a
 
 ## Current phase
 
-The eight benchmark-derived capability packets are now `design_closed`. PDCP is in the **family-by-family reduction and roadmap-reconciliation phase**.
+The eight benchmark-derived capability packets are `design_closed`. PDCP is in the **family-by-family reduction and roadmap-reconciliation phase**.
 
 Durable control surfaces:
 
@@ -163,16 +163,33 @@ At that point the family backlog may be amended to its reduced strict order. The
 
 ## Reduction progress
 
-The first family reduction is MSLR:
+Two family reductions are now resolved in planning sources:
+
+### MSLR
 
 - historical baseline: 18;
 - effective surviving implementation/proof tranches: 9;
+- removed standalone future tranches: 9;
 - stable start gate: `MSLR-01`;
 - stable golden/MSWI handoff gate: `MSLR-18`;
-- family DCP: `PDCP_MSLR_FAMILY_DESIGN_CLOSURE.md`;
+- DCP: `PDCP_MSLR_FAMILY_DESIGN_CLOSURE.md`;
 - receipt: `PDCP_MSLR_REDUCTION_RECEIPT.json`.
 
-The next selected PDCP family review is **MSWI**, followed by the overlap-aware order recorded in `PDCP_CROSS_FAMILY_OVERLAP_REGISTER.md`.
+### MSWI
+
+- historical baseline: 18;
+- effective surviving implementation/proof tranches: 7;
+- removed standalone future tranches: 11;
+- stable start gate: `MSWI-01`;
+- stable golden/SMB-08 handoff gate: `MSWI-18`;
+- DCP: `PDCP_MSWI_FAMILY_DESIGN_CLOSURE.md`;
+- receipt: `PDCP_MSWI_REDUCTION_RECEIPT.json`.
+
+**Historical PDCP baseline:** 208.  
+**Current effective future count after two family receipts:** 188.  
+**Standalone future tranches removed so far:** 20.
+
+The next selected PDCP family review is **MBES**, followed by the overlap-aware reverse-consumer order recorded in `PDCP_CROSS_FAMILY_OVERLAP_REGISTER.md`.
 
 ## Project completion
 
