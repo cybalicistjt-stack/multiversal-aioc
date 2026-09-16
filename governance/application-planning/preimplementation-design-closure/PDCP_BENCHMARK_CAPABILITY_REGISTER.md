@@ -15,7 +15,7 @@ Public benchmark products are capability/workflow references only. Protected cod
 | 1 — Social Interaction Grammar, Cultural Norms & Indirect Influence | `design_closed` | `PDCP_PACKET_01_SOCIAL_INTERACTION_DESIGN_CLOSURE.md` + machine-readable closure record |
 | 2 — Systemic Investigation & Evidence | `design_closed` | `PDCP_PACKET_02_SYSTEMIC_EVIDENCE_DESIGN_CLOSURE.md` + machine-readable closure record |
 | 3 — Autonomous Actors, Threats & Offscreen Action | `design_closed` | `PDCP_PACKET_03_AUTONOMOUS_ACTORS_DESIGN_CLOSURE.md` + machine-readable closure record |
-| 4 — Semantic Affordances & Composable Effects | `open` | — |
+| 4 — Semantic Affordances & Composable Effects | `design_closed` | `PDCP_PACKET_04_SEMANTIC_AFFORDANCES_DESIGN_CLOSURE.md` + machine-readable closure record |
 | 5 — Persistent History, Legacy, Succession & Delayed Consequence | `open` | — |
 | 6 — Multi-Resolution Simulation & Autonomous World Evolution | `open` | — |
 | 7 — Creator/GM Execution UX & Debuggability | `open` | — |
@@ -97,18 +97,26 @@ Public benchmark products are capability/workflow references only. Protected cod
 
 ## Packet 4 — Semantic Affordances & Composable Effects
 
+**Status:** `design_closed` — 2026-09-16  
+**Closure:** `governance/application-planning/preimplementation-design-closure/PDCP_PACKET_04_SEMANTIC_AFFORDANCES_DESIGN_CLOSURE.md`  
+**Machine-readable record:** `governance/application-planning/preimplementation-design-closure/PDCP_PACKET_04_SEMANTIC_AFFORDANCES_CLOSURE.json`
+
 **Benchmark prompts:** Noita, Caves of Qud, Cataclysm:DDA, Vintage Story.
 
-**Questions to close:**
+**Questions closed:**
 
-- reusable semantic affordances such as cut, burn, freeze, melt, corrode, weld, dismantle, repair, breach, seal, move, power and connect;
-- material/environment response profiles rather than per-object bespoke rules;
-- effect composition, ordering, conflicts, thresholds and unsupported interactions;
-- abstract/tabletop versus detailed/runtime resolution profiles;
-- source-supported properties versus invented pseudo-physics;
-- operation parity across compatible Character/Creature/Item/Structure/Environment targets.
+- reusable semantic affordances including cut, burn, freeze, melt, corrode, dismantle, repair, breach, seal, move, power and connect;
+- target interaction-capability bindings and target facets;
+- source/setting/reality-governed material/environment response profiles rather than per-object bespoke rules or universal pseudo-physics;
+- explicit Effect composition modes, ordering/precedence boundaries, conflicts and bounded propagation;
+- abstract/tabletop, standard and detailed runtime resolution profiles sharing one semantic operation identity;
+- source-supported versus unresolved properties and no common-sense fallback;
+- operation parity across compatible Character/Creature/Item/Structure/Environment/Vehicle targets;
+- preview-versus-owner-commit separation, concurrency revalidation, provenance and accessibility.
 
-**Likely owners/families:** MRCS, GPR, MERA, MBES, MSWI; MSLR when spatial law changes the affordance context.
+**Disposition:** no new family and no standalone implementation tranche. Existing Action/Event, Effect/Condition/Resource, MIB-12 and target-domain owners retain canonical truth; MRCS authors definitions, GPR executes shared semantics, MERA/MBES consume specialist interactions, MSLR contributes spatial context and MSWI propagates committed consequences. The DCP closes eight reusable contracts with 40 golden vectors.
+
+**Owners/families:** Action/Event, Effect/Condition/Resource, MIB-12, target-domain owners, MRCS, GPR, MERA, MBES, MSLR and MSWI. MCS/MCCS/MNCS/MSAS consume shared semantics where relevant without standalone Packet-04 obligations. MAS remains outside PDCP.
 
 ## Packet 5 — Persistent History, Legacy, Succession & Delayed Consequence
 
