@@ -12,78 +12,96 @@ def t(path: str):
     return (ROOT / path).read_text(encoding="utf-8")
 
 
-def test_mrcs_registered_as_future_interstitial_without_activation():
-    index = j("governance/ai/runtime/ROADMAP_INDEX.json")
-    registry = j("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
+def test_mrcs_reduced_family_contract_and_no_authority():
     backlog = j("governance/application-planning/multiversal-rules-content-studio/MRCS_PROGRAM_BACKLOG.json")
+    receipt = j("governance/application-planning/preimplementation-design-closure/PDCP_MRCS_REDUCTION_RECEIPT.json")
+    ledger = j("governance/application-planning/preimplementation-design-closure/PDCP_REDUCTION_LEDGER.json")
 
-    planned = {x["program_id"]: x for x in index["planned_programs"]}
-    assert planned["MRCS"]["status"] == "owner_approved_planned"
-    assert planned["MRCS"]["activation_after"] == "MSAS-21"
-    assert planned["MRCS"]["successor"] == "GPR-01"
-    assert planned["MRCS"]["implementation_authority"] is False
-    assert planned["MRCS"]["execution_units"] == 21
-    assert planned["MSAS"]["successor"] == "MRCS-01"
-
+    expected = ["MRCS-01","MRCS-03","MRCS-04","MRCS-05","MRCS-08","MRCS-11","MRCS-12","MRCS-13","MRCS-14","MRCS-16","MRCS-17","MRCS-19","MRCS-21"]
     assert backlog["implementation_authority"] is False
-    assert backlog["successor"] == "GPR-01"
-    assert backlog["strict_order"] == [f"MRCS-{i:02d}" for i in range(1, 22)]
-    assert all(x["estimated_active_minutes"] <= 24 for x in backlog["tranches"])
+    assert backlog["strict_order"] == expected
+    assert len(backlog["tranches"]) == 13
+    assert all(x["estimated_active_minutes"] <= 16 for x in backlog["tranches"])
+    assert backlog["pdcp_reduction"]["baseline_tranche_count"] == 21
+    assert backlog["pdcp_reduction"]["reduced_tranche_count"] == 13
+    assert backlog["pdcp_reduction"]["capability_loss_detected"] is False
 
-    assert index["current"]["source_program"] == "ARI"
-    assert index["current"]["status"] == "selected_not_started"
-    assert index["current"]["implementation_authority"] is False
-    assert index["current"]["implementation_branch"] is None
-    assert registry["active_planning_work"]["work_item"] == index["current"]["work_item_id"]
-    assert registry["active_planning_work"]["implementation_authority"] is False
+    assert receipt["status"] == "resolved"
+    assert receipt["implementation_authority"] is False
+    assert receipt["baseline_tranche_count"] == 21
+    assert receipt["reduced_tranche_count"] == 13
+    assert receipt["removed_standalone_future_tranches"] == 8
+    assert len(receipt["dispositions"]) == 21
+    assert {x["baseline_id"] for x in receipt["dispositions"]} == {f"MRCS-{i:02d}" for i in range(1, 22)}
+    assert receipt["surviving_tranche_ids"] == expected
+    assert receipt["golden_vector_count"] == 48
+    assert receipt["roadmap_dependency_graph_mutation_required"] is False
+    assert receipt["ops3_current_mutation"] is False
 
-
-def test_mrcs_dependency_placement_and_successors():
-    index = j("governance/ai/runtime/ROADMAP_INDEX.json")
-    msas = j("governance/application-planning/multiversal-sound-audio-studio/MSAS_PROGRAM_BACKLOG.json")
-    mrcs = j("governance/application-planning/multiversal-rules-content-studio/MRCS_PROGRAM_BACKLOG.json")
-    gpr = j("governance/application-planning/gameplay-pattern-runtime/GPR_PROGRAM_BACKLOG.json")
-
-    expected = "MNCS-01..24 → MAS-01..21 → MSAS-01..21 → MRCS-01..21 → GPR-01..16 → MERA-01..24 → MBES-01..24 → SMB-08 → SMB-09"
-    assert expected in index["effective_forward_order"]
-    assert index["mrcs_execution_order"] == [f"MRCS-{i:02d}" for i in range(1, 22)]
-    assert msas["successor"] == "MRCS-01"
-    assert mrcs["successor"] == "GPR-01"
-    assert gpr["activation_after"] == "MRCS-21"
-
-    amendment = t("governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_GPR_AMENDMENT_2026-09-11.md")
-    successor = t("governance/application-planning/multiversal-rules-content-studio/MRCS_GPR_SUCCESSOR_AMENDMENT_2026-09-11.md")
-    assert "MRCS-01..21 → GPR-01..16 → MERA-01..24 → MBES-01..24" in amendment
-    assert "MRCS-01..21 → GPR-01..16 → MERA-01..24 → MBES-01..24" in successor
+    row = {x["program_id"]: x for x in ledger["families"]}["MRCS"]
+    assert row["reduction_status"] == "resolved"
+    assert row["reduced_tranche_count"] == 13
+    assert row["surviving_tranche_ids"] == expected
+    assert ledger["baseline_snapshot"]["effective_reduced_total"] == 145
+    assert ledger["baseline_snapshot"]["removed_standalone_future_tranches"] == 63
+    assert {x["program_id"] for x in ledger["families"] if x["reduction_status"] == "next_selected_for_pdcp_review"} == {"MSAS"}
 
 
-def test_mrcs_preserves_content_forge_cab_and_owner_boundaries():
+def test_mrcs_preserves_stable_dag_milestones_and_owner_boundaries():
+    graph = j("governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json")
     backlog = j("governance/application-planning/multiversal-rules-content-studio/MRCS_PROGRAM_BACKLOG.json")
     boundaries = "\n".join(backlog["boundaries"]).lower()
-    for owner in ("content forge", "cab", "cni", "ari", "action/event", "mcs", "mccs", "mas", "msas", "gpr", "mera", "mbes"):
+    graph_text = json.dumps(graph)
+
+    for milestone in ("MRCS-05", "MRCS-13", "MRCS-14", "MRCS-21"):
+        assert milestone in graph_text
+        assert milestone in set(backlog["strict_order"])
+
+    for owner in ("content forge", "cab", "cni", "reduced gpr", "action/event", "pca-12", "packet 07", "ari/pca", "mcs", "mccs", "mncs", "msas", "mera", "mbes"):
         assert owner in boundaries
 
-    benchmark = t("governance/application-planning/multiversal-rules-content-studio/MRCS_BENCHMARK_CAPABILITY_MATRIX.md").lower()
-    program = t("governance/application-planning/multiversal-rules-content-studio/MRCS_MULTIVERSAL_RULES_CONTENT_STUDIO_PROGRAM.md").lower()
-    forge = t("docs/FORGE_SYSTEM_DESIGN_v8.md").lower()
-    assert "clean-room" in benchmark
-    assert "not permission to copy" in benchmark
-    assert "the author thinks in creative terms" in forge
-    assert "not a new canonical rules engine" in program
-    assert "definition is not instance" in program
-    assert "cab" in program
-    assert "no mrcs runtime preflight or implementation authority exists now" in program
+    assert "no mrcs implementation authority" in boundaries
+    assert "unrestricted scripting" in boundaries
+    assert "paid/cloud providers" in boundaries
 
 
-def test_mrcs_requires_pack_dependency_balance_and_legacy_evidence():
+def test_mrcs_reduction_keeps_distinct_high_risk_authoring_seams():
     backlog = j("governance/application-planning/multiversal-rules-content-studio/MRCS_PROGRAM_BACKLOG.json")
     names = "\n".join(x["name"] for x in backlog["tranches"]).lower()
-    boundaries = "\n".join(backlog["boundaries"]).lower()
     program = t("governance/application-planning/multiversal-rules-content-studio/MRCS_MULTIVERSAL_RULES_CONTENT_STUDIO_PROGRAM.md").lower()
 
-    for term in ("dependency", "balance", "bulk import", "pack lists", "system extension", "ability", "species", "item", "spell", "creature"):
+    for term in (
+        "schema-aware forms",
+        "guided forge interviews",
+        "expression workbench",
+        "mechanical & advancement",
+        "magic, power & casting-system",
+        "creature, monster, npc role",
+        "item, equipment, vehicle",
+        "environment, hazard, encounter",
+        "system extension, house rule",
+        "dependency, impact, safe refactoring, balance",
+        "import, repair, migration, pack",
+        "golden cross-domain",
+    ):
         assert term in names
-    assert "legacy import" in program
-    assert "provenance" in boundaries
-    assert "unrestricted scripting" in boundaries
-    assert "paid/cloud provider" in boundaries
+
+    assert "definition authoring" in program
+    assert "not a canonical rules engine" in program
+    assert "13 surviving tranches" in program
+    assert "full 48-vector pdcp battery" in program
+
+
+def test_mrcs_dcp_preserves_all_golden_vectors_and_cross_owner_absorptions():
+    dcp = t("governance/application-planning/preimplementation-design-closure/PDCP_MRCS_FAMILY_DESIGN_CLOSURE.md")
+    receipt = j("governance/application-planning/preimplementation-design-closure/PDCP_MRCS_REDUCTION_RECEIPT.json")
+
+    assert dcp.count("`0") >= 8
+    for n in range(1, 49):
+        token = f"{n:03d}"
+        assert token in dcp
+    owners = "\n".join(x["owner"] for x in receipt["cross_family_absorptions"]).lower()
+    assert "pca-12" in owners
+    assert "packet 07" in owners
+    assert "ari + pca" in owners
+    assert "reduced gpr" in owners
