@@ -2,263 +2,112 @@
 
 **Program ID:** MCS  
 **Program name:** Multiversal Cartography Studio  
-**Version:** 0.1.0  
+**Version:** 0.2.0 — PDCP reduced  
 **Status:** OWNER-APPROVED — PLANNED INTERSTITIAL; NOT STARTED  
-**Activation:** after PCA-16  
-**Successor:** SMB-08  
+**Activation:** ROADMAP_DEPENDENCY_GRAPH typed MCS start gates; parallel-safe with MCCS/MRCS/MSAS  
 **Owner and final authority:** John Brandon Turner  
-**Approved:** 2026-09-11  
 **Implementation authority:** none
 
 ## Purpose
 
-MCS makes Multiversal capable of creating finished world, regional, settlement, city, dungeon, interior, tactical, scene, isometric and atlas maps inside the product at a quality and flexibility comparable to dedicated cartography tools, while going beyond them by preserving optional semantic links to the actual playable World, Scene, Exploration, Combat, Settlement, Route, Discovery and other owner-domain records.
+MCS is Multiversal's map-specific creator for finished world, regional, settlement, city, dungeon, interior, tactical, scene, isometric, deck-plan and atlas cartography. It preserves optional semantic links to playable World, Scene, Exploration, Combat, Settlement, Route, Discovery and other owner-domain records without making artwork authoritative game truth.
 
-MCS is not a replacement canonical World model and it does not make artwork authoritative gameplay truth. It is the map-specific authoring, procedural generation, precision editing, styling, structured interchange and semantic-binding layer over the already completed or planned Multiversal foundations.
+The governing flow is:
 
-## Product target
+`owner truth / MAI spatial records → cartography document + presentation draft/proposals → map-specific render/interchange profiles → explicit owner binding/acceptance where allowed`
 
-A creator should be able to make the kinds of maps currently produced with specialist world generators, fantasy cartography applications, dungeon/battlemap editors and vector/raster design tools without leaving Multiversal for ordinary map-production work.
+Pixels, vectors, labels, generator results, imported metadata and map projections remain presentation/proposal state unless an owning domain explicitly accepts them.
 
-A map element can remain presentation-only or, when the owning domain permits it, bind explicitly to canonical game/world semantics. The distinction must always be visible and reversible.
+## PDCP reduction
 
-Examples:
+Historical baseline: **21 tranches**. Effective implementation/proof plan: **12 tranches**.
 
-- a painted road may remain artwork or bind to a canonical route;
-- a settlement symbol may remain a decorative marker or reference a canonical settlement;
-- a forest region may remain a texture/mask or bind to environment/biome records;
-- a dungeon entrance may link to another map/scene/location without inventing topology;
-- a door may carry presentation geometry while Scene/Combat/Visibility retain runtime authority;
-- fog may be manually authored for presentation or projected from campaign/party discovery state where the owning system supplies that state.
+The authoritative receipt is `governance/application-planning/preimplementation-design-closure/PDCP_MCS_REDUCTION_RECEIPT.json`; detailed closure is `PDCP_MCS_FAMILY_DESIGN_CLOSURE.md`.
 
-## Placement
+The surviving order is:
 
-MCS is a future interstitial program:
+`MCS-01 → MCS-03 → MCS-05 → MCS-07 → MCS-08 → MCS-10 → MCS-13 → MCS-14 → MCS-15 → MCS-18 → MCS-19 → MCS-21`
 
-`SMB-07 → CNI-01..13 → PCA-01..16 → MCS-01..21 → SMB-08 → SMB-09 → SAA-01..20 → SMB-10`
+This sparse order is intentional. Historical IDs remain provenance; removed standalone tranches have complete residual mappings in the PDCP receipt.
 
-Rationale:
-
-1. PCA supplies reusable procedural, texture/material, style-generation and production-recipe primitives that MCS can consume rather than rebuilding.
-2. MCS then supplies the human-facing cartography studio before SMB-08 begins substantial first-party library/content production.
-3. SMB-08/09 and later SAA can therefore consume finished map-authoring, generator, atlas and export workflows.
-4. MCS does not change the current ARI family, current work pointer or implementation authority.
-
-## Benchmark provenance and clean-room boundary
-
-Planning benchmark set:
-
-- Inkarnate
-- Azgaar's Fantasy Map Generator
-- Wonderdraft
-- Dungeondraft
-- DungeonFog
-- Affinity
-- Inkscape
-- Campaign Cartographer 3+ / Fractal Terrains-class workflows
-
-The detailed benchmark is recorded in `MCS_BENCHMARK_CAPABILITY_MATRIX.md`.
-
-MCS follows the existing PCM clean-room rules. It studies public product documentation, lawful ordinary-use behavior, documented interchange formats and observable workflows to identify capability requirements. It does not copy proprietary source, protected assets, distinctive UI expression, private protocols, sample projects or vendor-specific implementation details.
-
-Vendor names are planning provenance only and do not become Multiversal product identity.
-
-## Local-first / non-reimplementation boundary
-
-MCS owns the Multiversal-specific cartography experience, semantic binding, deterministic document/recipe model, validation, provenance, accessibility and game-aware authoring.
-
-It does **not** attempt to recreate a full general-purpose Affinity/Inkscape/CAD/GIS/DCC suite. Generic vector/raster geometry, image processing, font shaping, color management, codecs, GIS transforms and similar commodity capabilities should use lawful mature libraries or local tools behind replaceable boundaries when practical.
-
-The in-app precision studio implements the bounded map-production subset required to finish maps without external software. External round-trip remains supported for advanced specialist workflows.
-
-## Upstream ownership and reuse
+## Owner boundaries
 
 MCS consumes rather than duplicates:
 
-- **ARI:** resource identity, content-addressed bytes, derivative lineage, rights/use capability, tagging, query and asset picking.
-- **MAI:** MapAsset/Tile/TerrainSet/ObjectAsset/Module/Battlemap/Layer/Placeable records, projection, grid/coordinate/scale, autotile/connectivity, descriptive geometry, import adapters, resolver and composer foundations.
-- **ISE / Scene / Tabletop:** live scene canvas, placements, runtime scene state, interaction and camera/viewport semantics.
-- **SSA:** semantic spatial authoring and construction semantics.
-- **World / MIB-11 / later World owners:** location identity, hierarchy, topology, routes, transfer/navigation and canonical world state.
-- **Exploration:** travel, discovery, environment, navigation, fog-of-war and encounter truth.
-- **Combat:** movement, cover, range, collision, effects, hazards and tactical adjudication.
-- **Visibility/Permissions:** hidden state, audience projection, GM-only material, occlusion/LOS authorization.
-- **Settlement/Kingdom/Faction/Economy:** settlements, districts, political territory, routes, trade and related canonical state.
-- **D29 authoring/provenance:** governed publication and provenance.
-- **PCA:** production recipes, procedural graph execution, spatial/environment generators, texture/material pipeline and style-locked generation.
-- **VTI:** provider-neutral structured scene/map/token projection and external VTT interoperability.
+- **ARI:** resource identity, rights/provenance, derivative lineage and asset governance.
+- **MAI:** map-asset/package schemas, projections, coordinates/scales, grids, connectivity, descriptive geometry, resolver/composer and import-adapter foundations.
+- **ISE / Scene / Tabletop:** live canvas, placements, runtime scene state, camera and interaction.
+- **SSA / World / MSLR:** semantic spatial construction, topology and runtime spatial-law truth.
+- **World / Environment / Exploration / Settlement / Kingdom / Faction / Economy:** canonical world, social, territorial, population, route and economy state.
+- **Combat / Visibility / Permissions:** runtime collision, range, cover, hazards, lighting/LOS/fog authorization and hidden state.
+- **PCA-02 / PCA-03:** reusable procedural DAG/recipe/seed/cache and terrain/ecology/flora/settlement/spatial generator primitives.
+- **PCA-09:** generic style-locked generation orchestration.
+- **PCA-12 / PDCP Packet 08:** generic simulation, graph, feasibility and formal-analysis substrate.
+- **PCA-15 / ARI / PDCP Packet 07:** generic production governance, locking, version/review/collaboration, preview/recovery/debug and publication controls.
+- **reduced MBES:** built-environment/facility truth.
+- **reduced MSWI:** systemic consequence propagation.
+- **VTI:** provider-neutral structured map/scene/token external interoperability.
 
-MCS may create presentation documents, reversible authoring drafts, generated proposals, map-specific derived assets, structured export packages and binding proposals. It cannot silently promote those outputs into canonical owner state.
+MCS owns the cartography document/editor experience, map-specific generator packs, map-specific presentation/layout, semantic-binding UX, permission-safe cartographic projections, map interchange/loss reporting and final golden proof.
 
-## Core architectural doctrine
+## Reduced program tranches
 
-### One map document, multiple authoring modes
+### MCS-01 — Cartography Workspace, Document, Large-Map Canvas, Viewport & Authority Contract
 
-World Generator, Cartography Studio, Dungeon/Tactical Studio and Precision Studio operate over one versioned Multiversal cartography document. They are not separate formats.
+Implement one versioned cartography workspace over MAI/ARI records with stable object/layer IDs, presentation/binding dispositions, pan/zoom/rotation, multi-resolution raster/vector rendering, culling, viewport tiling, cache invalidation, extension retention, recovery and deterministic export composition. Do not mint a second map-asset or World ledger.
 
-The document supports:
+### MCS-03 — Precision Selection, Transform, Snapping, Vector Geometry, Paths & Edit History
 
-- stable object/layer IDs;
-- vector and raster layers;
-- symbols/placeables;
-- map-specific procedural recipes and seeds;
-- transforms, masks, brushes, fills and effects;
-- text/label objects;
-- grids/projections/calibration;
-- style/theme references;
-- semantic-binding references;
-- owner-domain projection references;
-- history/version/provenance;
-- structured unsupported-extension retention.
+Implement the map-bounded object/vector editing kernel: selection/group/lock, transform/alignment/distribution, rulers/guides, square/hex/isometric/object snapping, keyboard manipulation, path/node/handle editing, shapes, strokes/fills, clipping/boolean/offset helpers and reversible creator history. Canonical owner history remains separate.
 
-### Presentation is not game truth
+### MCS-05 — Raster, Mask, Texture, Blend, Symbol, Stamp, Scatter & Reusable Component Studio
 
-Every map element has an explicit authority disposition such as:
+Implement the map-specific paint/place substrate: raster/texture brushes, erase/masks/fills/gradients/blends, tileable textures, ARI/MAI symbol/stamp/component palettes, brush-along-path placement, seeded scatter/density/randomization and custom authorized map art. Generic image/vector kernels remain replaceable libraries/PCA capabilities.
 
-- `presentation-only`;
-- `bound-readonly`;
-- `binding-proposal`;
-- `owner-projected`;
-- `runtime-derived`;
-- `unresolved`.
+### MCS-07 — Typography, Labels, Legends, Styles, Themes, Templates, Atlas & Publishing Layout
 
-Pixels, vectors, imported vendor fields or procedural output never silently create World topology, route existence, collision, visibility, diplomacy, population, economy or other canonical facts.
+Implement cartographic labels/path text, legends/keys/scale/coordinate aids, frames/title blocks/navigation, semantic style tokens, map themes/templates, color grading/effects, print/page layouts, export profiles and atlas navigation. PCA/ARI own generic style-generation/resource governance.
 
-### Deterministic where practical, artistic where appropriate
+### MCS-08 — Geographic Terrain, Elevation, Water, Route, Border & Network Authoring
 
-Procedural operations expose stable seeds/parameters and reproducible receipts. Freehand artistic edits remain ordinary user edits with version/provenance history rather than pretending to be algorithmically reproducible.
+Implement manual and precision geographic feature authoring for land/coastlines, terrain regions, contours/elevation, cliffs/ridges, water bodies, rivers, roads/trails, bridges/fords/passages, borders and other map networks. Visual connectivity remains noncanonical; owner bindings/proposals are explicit.
 
-## Program tranches
+### MCS-10 — Map-Specific Procedural World Proposal Workbench over PCA
 
-### MCS-01 — Cartography Document, Workspace & Authority Contract
-
-Define the unified versioned cartography document, stable object/layer identity, presentation-vs-semantic authority states, map-type metadata, version/provenance model, undo/history contract, extension namespaces and explicit owner references. Reuse MAI records rather than minting a second asset ledger.
-
-### MCS-02 — Large-Map Canvas, Renderer, Viewport & Tile Cache
-
-Implement the map-specific canvas/render surface for pan/zoom/rotation, large documents, multi-resolution raster/vector presentation, culling, viewport tiling, cache invalidation and deterministic export composition. Establish performance tiers without requiring whole-map rasterization or whole-library memory residency.
-
-### MCS-03 — Selection, Transform, Snapping, Guides & Editing History
-
-Implement single/multi/range selection, move/scale/rotate/flip, alignment/distribution, rulers/guides, square/hex/isometric snapping, object snapping, keyboard movement, copy/duplicate/group/lock and reversible edit history.
-
-### MCS-04 — Precision Vector Geometry & Path Studio
-
-Implement map-bounded vector authoring: pen/path creation, node/handle editing, Bézier and polyline tools, shapes, stroke/fill, boolean operations, offsets/expansion where justified, clipping paths, map-specific contour editing and SVG-compatible structural representation. Do not become a general-purpose DCC/CAD clone.
-
-### MCS-05 — Raster Brush, Mask, Texture & Blend Studio
-
-Implement pressure-capable raster/texture brushes, erase, masks, textured fills, gradients, pattern fills, blend/opacity controls, non-destructive adjustments required for cartography, tileable texture handling and bounded image-to-vector/selection helpers where lawful libraries provide them.
-
-### MCS-06 — Symbols, Stamps, Scatter, Brushes & Reusable Components
-
-Build the ARI/MAI-backed palette for symbols, props, vegetation, mountains, buildings and modular pieces; searchable tags/families; custom art; brush-along-path placement; density/randomization controls; smart scatter; reusable grouped components; and deterministic seeded distribution where requested.
-
-### MCS-07 — Typography, Labels, Legends, Frames & Atlas Navigation
-
-Implement map labels, path-following text, presets/styles, collision/placement assistance, legends, keys, scale bars, coordinate labels, frames, title blocks, compass/navigation ornaments as replaceable assets, hyperlinks/cross-map links and campaign-atlas navigation.
-
-### MCS-08 — Landmass, Coastline, Terrain & Elevation Authoring
-
-Implement land/water painting, coastline sculpting and smoothing, terrain regions, contour/elevation fields, cliff/ridge representation, terrain texture blending, erosion-style authoring operations where provided by PCA/local workers, and style-preserving regeneration limited to selected regions.
-
-### MCS-09 — Rivers, Lakes, Roads, Paths, Borders & Network Authoring
-
-Implement artistic and precision water/path/network tools with confluence/coast connection behavior, variable width/style, bridges/fords/passages, roads/trails, political/administrative borders and optional binding proposals to canonical route/territory owners. Visual connectivity alone remains noncanonical.
-
-### MCS-10 — Seeded Procedural World Generator Core
-
-Build deterministic world-generation recipes over PCA primitives: configurable world extent/projection, height/elevation synthesis, land/ocean distribution, editable generation masks, region locks, partial regeneration, stable seeds and reproducible receipts. Generated geography remains proposal/presentation until accepted by World owners.
-
-### MCS-11 — Hydrology, Climate, Biome & Resource Generator
-
-Generate/edit river basins, lakes, drainage, temperature/precipitation fields, climate/biome regions and resource-placement proposals from explicit input models. Every generated field remains inspectable, overrideable and separately promotable; no hidden universal simulation assumptions.
-
-### MCS-12 — Population, Settlement, Culture, State, Route & Trade Proposal Generator
-
-Use owner-domain inputs to propose population distribution, settlement candidates, cultural/language/religion regions where applicable, political/state/province candidates, routes and trade networks. Each category has independent enable/disable, regeneration and acceptance controls; MCS cannot create canonical social/economic truth by drawing it.
+Consume PCA-02/PCA-03 recipe/seed/cache/spatial-generator infrastructure rather than rebuilding it. Provide map-specific masks/locks/extent/projection, preview/dry-run receipts, partial regeneration, manual-edit continuity and independently switchable/promotable proposal packs for geography/elevation, hydrology/climate/biome/resources, population/settlement/culture/state and routes/trade. Every result is proposal/presentation state until its owner accepts it.
 
 ### MCS-13 — Settlement, City, District & Street Cartography
 
-Implement settlement-scale map authoring and generation: districts, blocks, lots, streets/alleys, walls, gates, waterways, building footprints, landmarks, service/resource markers, density patterns and reusable urban styles. Existing Settlement/Kingdom data may seed/bind the map without being duplicated.
+Implement urban map authoring for districts, blocks, lots, streets/alleys, walls/gates, waterways, building footprints, landmarks/service markers, density patterns and reusable urban map styles. Settlement/MBES data may seed or bind maps without being duplicated or mutated by drawing.
 
-### MCS-14 — Dungeon, Cave, Interior & Multi-Level Builder
+### MCS-14 — Dungeon, Cave, Interior, Isometric, Deck-Plan, Section & Multi-Level Builder
 
-Implement room/wall/floor tools, connected passages, doors/windows/openings, cave/tunnel generation, stairs/ladders/elevators, roofs/overheads, object placement, reusable room templates, level/floor management, blueprint/reference tracing, secret/GM layers and deterministic dungeon/cave recipes.
+Implement the shared room/level/vertical-projection kernel: walls/floors/rooms/passages, caves/tunnels, doors/windows/openings, stairs/ladders/elevators, roofs/overheads, object placement, room templates, floor/level management, blueprint/reference tracing, GM layers, isometric/staggered views, sections/cutaways/deck plans and elevation-aware presentation. Runtime topology/3D truth remains owner-controlled.
 
 ### MCS-15 — Tactical Scene, Lighting, Fog, Elevation & Hazard Authoring
 
-Provide square/hex/gridless tactical maps, measurement/calibration, templates, spawn/waypoint zones, cover/elevation annotations, hazards, light-source authoring, wall/door occlusion geometry and fog painting/preview. Runtime LOS, collision, cover and visibility remain owned by their current systems; MCS authors inputs/proposals and previews rather than adjudicating them.
-
-### MCS-16 — Isometric, Deck-Plan, Section & Multi-Level Projection
-
-Support isometric/staggered presentation, vertical level relationships, building/deck sections, stacked floors, cutaway/roof presentation, elevation-aware symbols and map-specific lightweight extrusion/projection where useful. Full general 3D terrain/DCC authoring remains outside MCS.
-
-### MCS-17 — Styles, Themes, Templates, Color Grading & Publishing Layout
-
-Implement reusable map styles/themes, semantic style tokens, terrain/symbol/text presets, template documents, color grading, shadow/glow/blur/effect stacks, print/page layouts, export profiles and user-created style packs. No proprietary vendor style/art may be copied.
+Provide tactical-map authoring for square/hex/gridless calibration, measurement/templates, spawn/waypoint zones, cover/elevation annotations, hazard/light inputs, wall/door occlusion geometry and fog painting/preview. Runtime LOS, collision, cover, movement and hazard adjudication stay with Scene/Combat/Visibility owners.
 
 ### MCS-18 — Semantic Binding, World Sync & Discovery/Fog Projection
 
-Implement explicit binding workflows between map elements and existing owner records: locations, regions, settlements, routes, environments, factions/territories, scenes, portals, discoveries and other supported entities. Provide stale-binding detection, owner-version references, projection refresh, map-only override handling and governed binding proposals. Support party/campaign discovery projections without revealing hidden truth.
+Implement explicit bindings/proposals between map elements and governed owner records such as locations, regions, settlements, routes, environments, territories, scenes, portals and discoveries. Provide owner-version references, stale-binding detection, refresh/rebase, map-only overrides, typed owner routing and party/campaign discovery projections that filter hidden truth before rendering.
 
-### MCS-19 — Structured Import/Export, Round-Trip & Campaign Atlas
+### MCS-19 — Map Interchange, Round-Trip, Campaign Atlas, Review, Versions & Publishing
 
-Support high-resolution PNG/JPEG, SVG/PDF where representable, structured Multiversal map packages, documented VTT/UVTT-class interchange through VTI/MAI, GeoJSON-class exchange where appropriate, custom asset packages, print-at-scale output, external-editor round-trip and linked campaign/world atlas packaging. Unsupported source semantics are reported/preserved rather than silently flattened.
-
-### MCS-20 — Collaboration, Review, Versions & Publishing Workflow
-
-Implement safe multi-user authoring semantics appropriate to Multiversal: edit/review states, comments/annotations, conflict detection, version comparison, branch/copy workflows, locks where needed, proposal/approval, publish/archive, permission-aware GM/player projections and recovery. Reuse existing identity/permission/provenance infrastructure.
+Implement map-specific structured packages, flattened/vector outputs where representable, VTI/MAI external interchange, GeoJSON-class mapping where justified, print-at-scale output, external-editor round-trip, linked campaign/world atlas packaging, unsupported-semantics retention/loss reporting, map-specific review/conflict projections and publish/archive adapters over ARI/PCA/Packet-07 infrastructure.
 
 ### MCS-21 — Golden Cartography Capability & Semantic-Integration Proof
 
-Create an original Multiversal golden suite proving at least:
-
-1. world map;
-2. regional map;
-3. settlement/city map;
-4. dungeon/interior multi-level map;
-5. tactical battlemap;
-6. scene/isometric or deck-plan map;
-7. linked campaign atlas.
-
-The proof must demonstrate generator→manual-edit continuity, precision vector/raster editing, custom assets, styles/templates, large-map performance, high-resolution and structured export, offline/local-first blocking workflows, accessibility alternatives, deterministic procedural receipts, rights/provenance, import-loss reporting and at least one explicit presentation-only vs canonical-bound comparison.
-
-## Cross-cutting requirements
-
-Every MCS tranche must preserve:
-
-- undo/redo and recovery appropriate to its mutations;
-- keyboard/touch alternatives and non-pointer-only workflows;
-- screen-reader/list/structured alternatives for essential map state;
-- high-contrast/non-color-only semantic indicators;
-- responsive review on smaller screens, with desktop/tablet as primary authoring targets;
-- offline/local-first operation for blocking core authoring where practical;
-- exact rights/provenance through ARI;
-- deterministic procedural receipts where generation is claimed deterministic;
-- unsupported/unresolved states instead of silent flattening or guessing;
-- performance budgets appropriate to large maps and large asset libraries;
-- world/campaign-specific styles without allowing them to break core usability.
-
-## Explicit non-goals
-
-MCS does not:
-
-- replace World, Scene, Combat, Exploration, Visibility, Settlement, Economy or other canonical owners;
-- create canonical facts from pixels, vectors, labels or generator output;
-- recreate a general Photoshop/Affinity/Inkscape/CAD/GIS/Blender-class application;
-- copy proprietary vendor assets, styles, UI layouts or implementation;
-- require a paid mapping service for blocking workflows;
-- make external VTTs authoritative;
-- implement unrestricted map scripting or unreviewed executable extensions;
-- authorize provider credentials, paid spend, public release or tester distribution.
+Prove world, regional, settlement/city, dungeon/interior multi-level, tactical, isometric/deck-plan and linked campaign-atlas workflows. Evidence must cover generator→manual-edit continuity, vector/raster editing, custom assets, styles/templates, large-map performance, structured/flattened export, offline/local-first blocking workflows, accessibility alternatives, deterministic procedural receipts, rights/provenance, import-loss reporting, permission filtering and explicit presentation-only versus owner-bound comparisons.
 
 ## Family execution rule
 
-When MCS is eventually selected, it receives its own sealed family preflight. Every execution unit must target 24 active minutes or less under a healthy governed environment with protected closeout reserve. Any unit that cannot credibly fit is split before governed start.
+When MCS is eventually selected, each surviving tranche targets at most 24 active minutes with at least 8 minutes protected for focused validation, evidence verification, reconciliation and successor marking. If a surviving tranche cannot credibly preserve that reserve, split it before governed start rather than during execution.
 
-No MCS implementation authority exists now.
+One owner `Continue` carries a governed-started tranche through implementation, validation, verified closeout and next-tranche selection unless an OPS3 owner-only boundary or genuine external blocker is reached. Load only that tranche's dependency closure; block unrelated archaeology and other-family work.
 
 ## Completion standard
 
-MCS is complete only when all 21 tranches are `completed_verified`, the golden suite proves the required map classes and semantic-boundary behavior, blocking map creation works without paid/cloud mapping providers, structured and flattened exports preserve declared fidelity/provenance, large-map interaction meets its declared performance tiers, accessibility alternatives exist for essential operations, and SMB-08 can consume the studio without inventing a parallel map-generation or cartography system.
+MCS is complete only when the 12 surviving tranches are `completed_verified`, `MCS-21` proves the complete cartography capability battery, blocking workflows work without paid/cloud mapping providers, map generation remains proposal-safe, structured/flattened interchange preserves declared fidelity/provenance, large-map interaction meets declared budgets, accessibility alternatives cover essential operations, and downstream consumers can use MCS without inventing parallel map-generation/cartography systems.
+
+No MCS implementation authority exists now. `operations/CURRENT.json` remains the sole live product selector.
