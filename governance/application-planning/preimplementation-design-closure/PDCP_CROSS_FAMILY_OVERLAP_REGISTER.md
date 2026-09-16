@@ -1,7 +1,7 @@
 # PDCP Cross-Family Overlap & Folding Register
 
 **Project:** PDCP — Preimplementation Design Closure Project  
-**Status:** FAMILY REDUCTION COMPLETE — FINAL PROJECT RECONCILIATION PENDING PUBLICATION  
+**Status:** COMPLETED_RECONCILED  
 **Implementation authority:** none
 
 ## Rule
@@ -78,14 +78,16 @@ MCS-specific result: MAI keeps map schemas/projection foundations; PCA keeps gen
 
 ## Whole-project overlap conclusion
 
-All ten in-scope family receipts are complete on the MCS candidate. No surviving tranche is retained solely because the historical roadmap gave it an independent ID. Generic infrastructure is assigned to one practical owner, while specialist families retain bounded domain adapters/UX/proof. No additional cross-family fold is identified that can be made now without either creating an oversized survivor, weakening an owner boundary, or moving implementation into a family that does not own the capability.
+All ten in-scope family receipts are complete and reconciled. No surviving tranche is retained solely because the historical roadmap gave it an independent ID. Generic infrastructure is assigned to one practical owner, while specialist families retain bounded domain adapters/UX/proof. No additional cross-family fold was identified that could be made without creating an oversized survivor, weakening an owner boundary, or moving implementation into a family that does not own the capability.
 
 The final effective family count is **105** from a historical **208**, removing **103** standalone future tranches. MAS remains excluded and unchanged.
 
-## Remaining action
+Final live-control reconciliation additionally found that retired `MERA-04` still gated MBES even though its capability had been merged into surviving `MERA-03`. The live DAG and parallel execution map now use `MERA-03`. This was an equivalent-gate repair, not a new capability or a roadmap-count change.
 
-After MCS publication to `main`, perform final whole-project reconciliation and publish PDCP closeout. No additional family review remains.
+## Closeout
+
+PDCP has no remaining family review or design-packet review. Final aggregate totals and live retired-ID validation are owned by `tests/control_plane/test_pdcp_final_closeout.py` and the closeout records dated 2026-09-16.
 
 ## Guardrails
 
-Accessibility, permissions/privacy, provenance, replay/recovery, migration and deterministic proof survive every fold. PDCP does not mutate `operations/CURRENT.json` merely for planning work.
+Accessibility, permissions/privacy, provenance, replay/recovery, migration and deterministic proof survive every fold. PDCP did not mutate `operations/CURRENT.json` merely for planning work and completion grants no product implementation authority.
