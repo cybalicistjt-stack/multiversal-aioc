@@ -13,7 +13,7 @@ Public benchmark products are capability/workflow references only. Protected cod
 | Packet | Status | Durable closure |
 |---|---|---|
 | 1 — Social Interaction Grammar, Cultural Norms & Indirect Influence | `design_closed` | `PDCP_PACKET_01_SOCIAL_INTERACTION_DESIGN_CLOSURE.md` + machine-readable closure record |
-| 2 — Systemic Investigation & Evidence | `open` | — |
+| 2 — Systemic Investigation & Evidence | `design_closed` | `PDCP_PACKET_02_SYSTEMIC_EVIDENCE_DESIGN_CLOSURE.md` + machine-readable closure record |
 | 3 — Autonomous Actors, Threats & Offscreen Action | `open` | — |
 | 4 — Semantic Affordances & Composable Effects | `open` | — |
 | 5 — Persistent History, Legacy, Succession & Delayed Consequence | `open` | — |
@@ -46,19 +46,27 @@ Public benchmark products are capability/workflow references only. Protected cod
 
 ## Packet 2 — Systemic Investigation & Evidence
 
+**Status:** `design_closed` — 2026-09-16  
+**Closure:** `governance/application-planning/preimplementation-design-closure/PDCP_PACKET_02_SYSTEMIC_EVIDENCE_DESIGN_CLOSURE.md`  
+**Machine-readable record:** `governance/application-planning/preimplementation-design-closure/PDCP_PACKET_02_SYSTEMIC_EVIDENCE_CLOSURE.json`
+
 **Benchmark prompts:** Shadows of Doubt, Ultima Ratio Regum and systemic detective/simulation patterns.
 
-**Questions to close:**
+**Questions closed:**
 
 - Events naturally leaving configurable evidence traces;
 - witnesses, schedules, records, transactions, communications, physical traces and object/location provenance;
 - evidence decay, destruction, contamination, falsification and contradictory evidence;
 - participant-known evidence versus underlying truth;
 - hypothesis/case-board projections that cannot mutate canonical truth;
-- procedural mystery solvability and evidence sufficiency diagnostics;
-- privacy/permission-safe investigation surfaces.
+- live mystery-route availability and evidence sufficiency diagnostics without automatic solving;
+- privacy/permission-safe investigation surfaces;
+- aggregate/offscreen trace bundles and deterministic refinement boundaries;
+- trace-profile versioning, replay and explicit historical reconstruction/backfill.
 
-**Likely owners/families:** Action/Event, Knowledge/Visibility, MIB/MNCS, MRCS, GPR, MSWI; MAS/CNI consume authored investigation structures but MAS is outside PDCP.
+**Disposition:** no new family and no standalone implementation tranche. Completed PPIA-09/MV-IA-F011 remains Investigation/clue/evidence-binding/hypothesis authority; Action/Event remains occurrence authority and source domains retain trace carriers/records. The DCP closes Event-to-trace emission, trace lifecycle, witness-memory handoff, discovery binding and live route-availability semantics with 28 golden vectors. Residual implementation is mapped to MNCS/MRCS/GPR/MSWI.
+
+**Owners/families:** PPIA-09, Action/Event, Visibility/Knowledge, source-domain object/record/state owners, MNCS, MRCS, GPR, MSWI. MAS/CNI remain consumers only where applicable and MAS remains outside PDCP.
 
 ## Packet 3 — Autonomous Actors, Threats & Offscreen Action
 
