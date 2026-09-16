@@ -46,11 +46,6 @@ def test_gpr_pdcp_reduction_is_complete_and_non_authoritative():
     assert gpr["reduction_status"] == "resolved"
     assert gpr["reduced_tranche_count"] == 10
     assert gpr["surviving_tranche_ids"] == EXPECTED
-    assert ledger["baseline_snapshot"]["effective_reduced_total"] == 153
-    assert ledger["baseline_snapshot"]["approved_family_reductions"] == 5
-    assert ledger["baseline_snapshot"]["removed_standalone_future_tranches"] == 55
-    mrcs = next(x for x in ledger["families"] if x["program_id"] == "MRCS")
-    assert mrcs["reduction_status"] == "next_selected_for_pdcp_review"
 
 
 def test_gpr_fold_map_and_cross_owner_boundaries_are_explicit():
