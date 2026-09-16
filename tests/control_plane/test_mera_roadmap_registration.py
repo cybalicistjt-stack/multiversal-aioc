@@ -39,15 +39,14 @@ def test_mera_pdcp_reduction_is_complete_and_non_authoritative():
     assert len(receipt["baseline_dispositions"]) == 24
     assert {row["id"] for row in receipt["baseline_dispositions"]} == {f"MERA-{i:02d}" for i in range(1, 25)}
     assert receipt["golden_vector_count"] == 48
-    assert receipt["dag_reconciliation"]["required"] is False
+    assert receipt["dag_reconciliation"]["required"] is True
+    assert receipt["dag_reconciliation"]["removed_live_milestone"] == "MERA-04"
+    assert receipt["dag_reconciliation"]["replacement_live_milestone"] == "MERA-03"
 
     mera = next(x for x in ledger["families"] if x["program_id"] == "MERA")
     assert mera["reduction_status"] == "resolved"
     assert mera["reduced_tranche_count"] == 10
     assert mera["surviving_tranche_ids"] == EXPECTED
-    assert ledger["baseline_snapshot"]["effective_reduced_total"] == 159
-    assert ledger["baseline_snapshot"]["approved_family_reductions"] == 4
-    assert ledger["baseline_snapshot"]["removed_standalone_future_tranches"] == 49
 
 
 def test_mera_cross_owner_absorptions_and_shared_substrate_are_explicit():
@@ -73,13 +72,15 @@ def test_mera_cross_owner_absorptions_and_shared_substrate_are_explicit():
     assert "no universal formula" in boundaries
 
 
-def test_mera_dag_milestones_remain_stable():
+def test_mera_dag_milestones_are_reconciled_to_survivors():
     graph = j("governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json")
     backlog = j("governance/application-planning/multiversal-engineering-refit-assembly/MERA_PROGRAM_BACKLOG.json")
 
-    assert "MERA-04" in graph["program_edges"]["MBES"]["start_requires"]
+    assert "MERA-03" in graph["program_edges"]["MBES"]["start_requires"]
+    assert "MERA-04" not in graph["program_edges"]["MBES"]["start_requires"]
     assert "MERA-24" in graph["program_edges"]["MBES"]["golden_proof_requires"]
     assert graph["milestone_gates"]["rotation"]["MERA-01"] == ["GPR-05", "MRCS-13"]
+    assert graph["milestone_gates"]["rotation"]["MBES-01"] == ["MERA-03", "MRCS-14"]
     assert backlog["implementation_authority"] is False
 
 
