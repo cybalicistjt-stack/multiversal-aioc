@@ -5,7 +5,8 @@ import crypto from 'node:crypto';
 const BASELINE_FILE = 'phase-1-8-canonical-objects.json';
 const BASELINE_EXPECTED_RECORDS = 487;
 const SUPPLEMENTAL_FORMAT = 'multiversal-canonical-content-source';
-const SUPPLEMENTAL_STATUS = 'owner-approved-canonical-incorporation';
+const INCORPORATION_STATUS = 'owner-approved-canonical-incorporation';
+const REPLACEMENT_STATUS = 'owner-approved-canonical-replacement';
 
 const sha256 = value => `sha256:${crypto.createHash('sha256').update(value).digest('hex')}`;
 
@@ -17,9 +18,24 @@ function unwrapObjects(payload) {
   return payload && typeof payload === 'object' ? [payload] : [];
 }
 
+function objectOf(raw) { return raw?.gameObject || raw?.object || raw; }
 function stableIdOf(raw) {
-  const object = raw?.gameObject || raw?.object || raw;
+  const object = objectOf(raw);
   return object?.id || object?.stableId || raw?.stableId || raw?.refId || '';
+}
+function contentVersionOf(raw) {
+  const object = objectOf(raw);
+  const value = object?.contentVersion ?? raw?.contentVersion ?? null;
+  return typeof value === 'string' && value.trim() ? value.trim() : null;
+}
+function semver(value, label) {
+  const match = String(value || '').match(/^(\d+)\.(\d+)\.(\d+)$/);
+  if (!match) throw new Error(`${label} must be an exact semantic version (x.y.z); found ${JSON.stringify(value)}.`);
+  return match.slice(1).map(Number);
+}
+function compareSemver(a, b) {
+  for (let i = 0; i < 3; i++) if (a[i] !== b[i]) return a[i] - b[i];
+  return 0;
 }
 
 export async function loadCanonicalContentSource(root = process.cwd()) {
@@ -43,15 +59,18 @@ export async function loadCanonicalContentSource(root = process.cwd()) {
     bundlePart: null,
     recordCount: baselineRecords.length
   }];
-  const entries = baselineRecords.map(raw => ({
+  const baselineEntries = baselineRecords.map(raw => ({
     raw,
     sourceClass: 'baseline',
     sourcePath: `content-source/${BASELINE_FILE}`,
     sourceDigest: sources[0].sourceDigest,
     sourceBundleId: sources[0].bundleId,
-    sourceBundlePart: null
+    sourceBundlePart: null,
+    replaces: null
   }));
 
+  const appendedEntries = [];
+  const replacementEntries = [];
   const names = (await fs.readdir(sourceDir))
     .filter(name => name.endsWith('.json') && name !== BASELINE_FILE)
     .sort();
@@ -61,13 +80,14 @@ export async function loadCanonicalContentSource(root = process.cwd()) {
     const text = await fs.readFile(filePath, 'utf8');
     const payload = JSON.parse(text);
     if (payload.format !== SUPPLEMENTAL_FORMAT) continue;
-    if (payload.status !== SUPPLEMENTAL_STATUS) {
+    if (![INCORPORATION_STATUS, REPLACEMENT_STATUS].includes(payload.status)) {
       throw new Error(`Supplemental canonical bundle ${name} has unsupported status: ${payload.status}`);
     }
     const records = unwrapObjects(payload);
     if (!records.length) throw new Error(`Supplemental canonical bundle ${name} has no records.`);
+    const sourceClass = payload.status === REPLACEMENT_STATUS ? 'replacement' : 'supplemental';
     const source = {
-      sourceClass: 'supplemental',
+      sourceClass,
       sourcePath: `content-source/${name}`,
       sourceDigest: sha256(text),
       bundleId: payload.bundleId || name.replace(/\.json$/i, ''),
@@ -76,25 +96,88 @@ export async function loadCanonicalContentSource(root = process.cwd()) {
     };
     sources.push(source);
     for (const raw of records) {
-      entries.push({
+      const entry = {
         raw,
-        sourceClass: source.sourceClass,
+        sourceClass,
         sourcePath: source.sourcePath,
         sourceDigest: source.sourceDigest,
         sourceBundleId: source.bundleId,
-        sourceBundlePart: source.bundlePart
-      });
+        sourceBundlePart: source.bundlePart,
+        replaces: null
+      };
+      if (sourceClass === 'replacement') replacementEntries.push(entry);
+      else appendedEntries.push(entry);
     }
   }
 
-  const stableIds = new Set();
-  for (const [index, entry] of entries.entries()) {
+  const effectiveByStableId = new Map();
+  for (const entry of baselineEntries) {
     const stableId = stableIdOf(entry.raw);
-    if (!stableId) throw new Error(`Canonical record ${index} has no stable ID.`);
-    if (stableIds.has(stableId)) throw new Error(`Duplicate canonical stable ID across source set: ${stableId}`);
-    stableIds.add(stableId);
+    if (!stableId) throw new Error('Baseline canonical record has no stable ID.');
+    if (effectiveByStableId.has(stableId)) throw new Error(`Duplicate canonical stable ID in baseline: ${stableId}`);
+    effectiveByStableId.set(stableId, entry);
+  }
+  for (const entry of appendedEntries) {
+    const stableId = stableIdOf(entry.raw);
+    if (!stableId) throw new Error('Supplemental canonical record has no stable ID.');
+    if (effectiveByStableId.has(stableId)) {
+      throw new Error(`Duplicate canonical stable ID ${stableId}; existing identities require an owner-approved canonical replacement bundle.`);
+    }
+    effectiveByStableId.set(stableId, entry);
   }
 
+  const unresolved = [...replacementEntries];
+  while (unresolved.length) {
+    const applicable = [];
+    for (const entry of unresolved) {
+      const stableId = stableIdOf(entry.raw);
+      const replacementOf = objectOf(entry.raw)?.replacementOf || entry.raw?.replacementOf;
+      if (!stableId || !replacementOf || replacementOf.stableId !== stableId) {
+        throw new Error(`Replacement record ${stableId || '<missing>'} must declare replacementOf.stableId equal to its own stable ID.`);
+      }
+      const current = effectiveByStableId.get(stableId);
+      if (!current) continue;
+      const currentVersion = contentVersionOf(current.raw);
+      const expectedVersion = replacementOf.expectedContentVersion ?? null;
+      if (expectedVersion === currentVersion) applicable.push({ entry, current, stableId, currentVersion });
+    }
+    if (!applicable.length) {
+      const details = unresolved.map(entry => {
+        const id = stableIdOf(entry.raw);
+        const expected = objectOf(entry.raw)?.replacementOf?.expectedContentVersion ?? entry.raw?.replacementOf?.expectedContentVersion ?? null;
+        const current = effectiveByStableId.get(id);
+        return `${id} expected ${JSON.stringify(expected)} current ${JSON.stringify(current ? contentVersionOf(current.raw) : '<missing>')}`;
+      });
+      throw new Error(`Canonical replacement predecessor/version mismatch: ${details.join('; ')}`);
+    }
+    const byTarget = new Map();
+    for (const candidate of applicable) {
+      const list = byTarget.get(candidate.stableId) || [];
+      list.push(candidate);
+      byTarget.set(candidate.stableId, list);
+    }
+    for (const [stableId, candidates] of byTarget.entries()) {
+      if (candidates.length > 1) throw new Error(`Forked canonical replacement chain for ${stableId}.`);
+      const { entry, current, currentVersion } = candidates[0];
+      const nextVersion = contentVersionOf(entry.raw);
+      semver(nextVersion, `Replacement ${stableId} contentVersion`);
+      if (currentVersion !== null) {
+        if (compareSemver(semver(nextVersion, `Replacement ${stableId} contentVersion`), semver(currentVersion, `Existing ${stableId} contentVersion`)) <= 0) {
+          throw new Error(`Replacement ${stableId} contentVersion ${nextVersion} must be greater than ${currentVersion}.`);
+        }
+      }
+      entry.replaces = {
+        stableId,
+        contentVersion: currentVersion,
+        sourcePath: current.sourcePath,
+        sourceDigest: current.sourceDigest
+      };
+      effectiveByStableId.set(stableId, entry);
+      unresolved.splice(unresolved.indexOf(entry), 1);
+    }
+  }
+
+  const entries = [...effectiveByStableId.values()];
   const sourceSetProjection = sources.map(source => [
     source.sourceClass,
     source.sourcePath,
@@ -104,11 +187,12 @@ export async function loadCanonicalContentSource(root = process.cwd()) {
     source.recordCount
   ]);
   const sourceSetDigest = sha256(JSON.stringify(sourceSetProjection));
-  const supplementalRecordCount = entries.length - baselineRecords.length;
 
   return {
-    baselineRecordCount: baselineRecords.length,
-    supplementalRecordCount,
+    baselineRecordCount: baselineEntries.length,
+    appendedRecordCount: appendedEntries.length,
+    replacementRecordCount: replacementEntries.length,
+    supplementalRecordCount: appendedEntries.length + replacementEntries.length,
     recordCount: entries.length,
     sourceSetDigest,
     sources,
@@ -116,4 +200,10 @@ export async function loadCanonicalContentSource(root = process.cwd()) {
   };
 }
 
-export { BASELINE_EXPECTED_RECORDS, BASELINE_FILE, SUPPLEMENTAL_FORMAT, SUPPLEMENTAL_STATUS };
+export {
+  BASELINE_EXPECTED_RECORDS,
+  BASELINE_FILE,
+  SUPPLEMENTAL_FORMAT,
+  INCORPORATION_STATUS,
+  REPLACEMENT_STATUS
+};
