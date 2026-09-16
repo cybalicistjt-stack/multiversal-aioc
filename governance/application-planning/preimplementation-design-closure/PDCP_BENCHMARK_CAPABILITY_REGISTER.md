@@ -17,7 +17,7 @@ Public benchmark products are capability/workflow references only. Protected cod
 | 3 — Autonomous Actors, Threats & Offscreen Action | `design_closed` | `PDCP_PACKET_03_AUTONOMOUS_ACTORS_DESIGN_CLOSURE.md` + machine-readable closure record |
 | 4 — Semantic Affordances & Composable Effects | `design_closed` | `PDCP_PACKET_04_SEMANTIC_AFFORDANCES_DESIGN_CLOSURE.md` + machine-readable closure record |
 | 5 — Persistent History, Legacy, Succession & Delayed Consequence | `design_closed` | `PDCP_PACKET_05_PERSISTENT_HISTORY_DESIGN_CLOSURE.md` + machine-readable closure record |
-| 6 — Multi-Resolution Simulation & Autonomous World Evolution | `open` | — |
+| 6 — Multi-Resolution Simulation & Autonomous World Evolution | `design_closed` | `PDCP_PACKET_06_MULTIRES_SIMULATION_DESIGN_CLOSURE.md` + machine-readable closure record |
 | 7 — Creator/GM Execution UX & Debuggability | `open` | — |
 | 8 — Simulation & Formal Validation Laboratory | `open` | — |
 
@@ -143,19 +143,28 @@ Public benchmark products are capability/workflow references only. Protected cod
 
 ## Packet 6 — Multi-Resolution Simulation & Autonomous World Evolution
 
+**Status:** `design_closed` — 2026-09-16  
+**Closure:** `governance/application-planning/preimplementation-design-closure/PDCP_PACKET_06_MULTIRES_SIMULATION_DESIGN_CLOSURE.md`  
+**Machine-readable record:** `governance/application-planning/preimplementation-design-closure/PDCP_PACKET_06_MULTIRES_SIMULATION_CLOSURE.json`
+
 **Benchmark prompts:** Songs of Syx, Soulash 2, X4, Rain World and agent-based simulation practice.
 
-**Questions to close:**
+**Questions closed:**
 
-- individual ↔ household/group/population/organization/settlement aggregate transitions;
-- criteria for refinement and collapse without identity duplication;
-- offscreen simulation depth and update cadence;
-- bounded ecology/economy/population bands versus per-individual simulation;
-- deterministic or seed-governed burn-in and replay;
-- when a generated/refined individual becomes persistent/canonical;
-- performance budgets and simulation fidelity profiles.
+- owner-backed aggregate/cohort/individual/adaptive mixed-resolution simulation without a second population/world ledger;
+- explicit no-double-counting accounting between aggregate remainders, cohorts and persistent individualized members;
+- refinement from aggregate state without retroactively inventing exact personal history;
+- owner-minted individualization/promotion with stable provenance and idempotent aggregate accounting;
+- collapse/dormancy that reduces active detail without deleting persistent identities or Event history;
+- exact/range/band/distribution/unknown quantity semantics that prohibit false precision;
+- canonical-time/Event-bounded offscreen catch-up with deterministic/seeded aggregate transitions and threshold segmentation;
+- cross-resolution interaction rules for detailed actors against aggregate markets, populations, settlements and ecology;
+- performance/fidelity budgets that may reduce/defer detail but never bypass owner commits or fabricate completed consequences;
+- attributable cross-domain world-evolution receipts and bounded reaction-loop diagnostics.
 
-**Likely owners/families:** MNCS, GPR, MBES, MSWI; DPL/ODL/SCL/World/Economy/Environment owners are consumed, not replaced.
+**Disposition:** no new family and no standalone implementation tranche. MNCS already owns progressive identity/group/population resolution, MBES owns variable built-environment/settlement resolution, Packet 03 owns autonomous/offscreen action and Packet 05 owns immutable history/burn-in semantics. The DCP closes twenty reusable multi-resolution contracts and 40 golden vectors; residual implementation is mapped to MNCS/MRCS/GPR/MBES/MSWI.
+
+**Owners/families:** MNCS, MRCS, GPR, MBES and MSWI consume the new contracts; DPL, ODL, SCL, Action/Event, APW/D26, Character/NPC/Creature, World/Environment/Reality/Branch/Settlement and Economy/Resource/Inventory/Asset owners remain canonical and are not reopened. MAS remains outside PDCP and is not reopened.
 
 ## Packet 7 — Creator/GM Execution UX & Debuggability
 
