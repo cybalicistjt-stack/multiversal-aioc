@@ -207,7 +207,7 @@ When a family reduction is approved:
 
 1. confirm no affected tranche is selected/in progress in `operations/CURRENT.json`;
 2. update the family backlog strict order and tranche list;
-3. update any affected program prose/amendments;
+3. update any affected current program prose and create a new reduction amendment when historical amendments must remain immutable provenance;
 4. atomically update `ROADMAP_DEPENDENCY_GRAPH.json` if a referenced milestone/tranche ID changes;
 5. regenerate/check any compiled roadmap projection required by the repository;
 6. update/add control-plane tests proving placement, nonauthorization and preserved proof gates;
@@ -223,7 +223,58 @@ Benchmark-derived packets do not automatically add tranches. Each packet first m
 
 If a benchmark-derived capability is already fully covered, record the evidence and add no work. If it is partially covered, strengthen the proper owner's contract or surviving family implementation scope. Only a genuinely ownerless capability can be proposed for a new family, and that requires a separate explicit owner decision.
 
-## 8. No false completion
+## 8. Mandatory overlap and folding audit
+
+Every family reduction receipt must prove that tranche overlap was checked before its reduced count is accepted.
+
+### 8.1 Intra-family overlap
+
+Compare every baseline tranche against every other tranche in that family for shared:
+
+- persisted state/schema;
+- owner-operation or runtime seam;
+- creator/GM workflow;
+- generator/simulation/diagnostic infrastructure;
+- integration adapter;
+- migration/import/export/version/provenance path;
+- validation/golden proof.
+
+Where two or more baseline tranches would now edit the same bounded implementation seam after design closure, prefer one surviving tranche unless the combined implementation would violate the family execution envelope or preserve a materially independent subsystem.
+
+### 8.2 Cross-family overlap
+
+Before retaining generic infrastructure, check `PDCP_CROSS_FAMILY_OVERLAP_REGISTER.md` and the actual upstream/downstream owner contracts. Generic infrastructure must have one owner wherever practical. Specialist families consume shared infrastructure through definitions/adapters rather than rebuilding it.
+
+Typical shared concerns include:
+
+- proposal/preview/commit/debug/compensation;
+- procedural DAG/recipe execution;
+- simulation/formal validation;
+- import/export/version/provenance/review;
+- generic gameplay execution/replay;
+- semantic affordance/Effect composition;
+- map/cartographic projection;
+- audio/presentation production;
+- multi-resolution simulation;
+- systemic consequence propagation.
+
+### 8.3 Fold-versus-retain decision
+
+A tranche may remain separate only when at least one of these is true:
+
+- it owns a materially independent persisted/runtime subsystem;
+- combining it would exceed the bounded execution envelope after design closure;
+- it is an independent migration/integration risk requiring its own proof;
+- a stable DAG milestone must remain independently verifiable;
+- separate execution is required to preserve owner isolation or rollback/recovery safety.
+
+A family receipt must record its overlap clusters and any cross-family absorptions. Candidate folds in the overlap register do not mutate counts until that family's own receipt is complete.
+
+### 8.4 Stable IDs
+
+Prefer retaining existing start/golden milestone IDs and allowing sparse tranche numbering over renumbering merely for visual continuity. Renumbering is justified only when it materially improves execution safety and all DAG/test references are updated atomically.
+
+## 9. No false completion
 
 `design_closed` means the product question is resolved to implementation-ready specificity. It does **not** mean code exists, tests pass, migration ran, UI ships, or the future roadmap item is completed.
 
