@@ -6,7 +6,6 @@ import { loadCanonicalContentSource } from './lib/canonical-content-source.mjs';
 const ROOT = process.cwd();
 const OUT_DIR = path.join(ROOT, 'content-db');
 const DB_VERSION = '3.0.0';
-const SCHEMA_PATH = path.join(OUT_DIR, 'content-record.schema.json');
 
 const sha256 = value => `sha256:${crypto.createHash('sha256').update(value).digest('hex')}`;
 const slug = value => String(value || 'unclassified')
@@ -172,12 +171,19 @@ const sourceRegistry = {
   sources: sourceSet.sources
 };
 
-let preservedSchema = null;
-try { preservedSchema = await fs.readFile(SCHEMA_PATH, 'utf8'); } catch (error) { if (error.code !== 'ENOENT') throw error; }
-await fs.rm(OUT_DIR, { recursive: true, force: true });
+await fs.mkdir(OUT_DIR, { recursive: true });
+for (const generatedPath of [
+  'index.json',
+  'manifest.json',
+  'source-registry.json',
+  'certification.json',
+  'indexes',
+  'objects'
+]) {
+  await fs.rm(path.join(OUT_DIR, generatedPath), { recursive: true, force: true });
+}
 await fs.mkdir(path.join(OUT_DIR, 'indexes'), { recursive: true });
 await fs.mkdir(path.join(OUT_DIR, 'objects'), { recursive: true });
-if (preservedSchema !== null) await fs.writeFile(SCHEMA_PATH, preservedSchema);
 await fs.writeFile(path.join(OUT_DIR, 'index.json'), JSON.stringify(index, null, 2) + '\n');
 await fs.writeFile(path.join(OUT_DIR, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
 await fs.writeFile(path.join(OUT_DIR, 'source-registry.json'), JSON.stringify(sourceRegistry, null, 2) + '\n');
