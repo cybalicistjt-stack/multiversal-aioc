@@ -23,15 +23,15 @@ This register records overlap candidates. Except where a family reduction receip
 | Shared concern | Generic owner / substrate | Families/tranches that must consume rather than duplicate |
 |---|---|---|
 | proposal → preview/dry-run → commit → explanation → compensation | canonical owner operations + PDCP Packet 07 | all ten PDCP families; local studios implement domain operations/lenses only |
-| simulation, parameter sweeps, graph/SAT/SMT/optimization/Monte-Carlo/ABM analysis | PCA-12 + PDCP Packet 08 | MRCS-18, GPR conformance, MERA-22, MBES capacity/network diagnostics, MSLR-14, MSWI-17 |
-| procedural DAG/recipe scheduling, cache, seed/provenance | PCA-02/PCA-03 | MCS-10..12, MNCS-02, MSLR-14, MSWI-14 and later generators |
+| simulation, parameter sweeps, graph/SAT/SMT/optimization/Monte-Carlo/ABM analysis | PCA-12 + PDCP Packet 08 | MRCS-18, GPR conformance, MERA-22, MBES capacity/network diagnostics, MSLR-14, reduced MSWI-18 |
+| procedural DAG/recipe scheduling, cache, seed/provenance | PCA-02/PCA-03 | MCS-10..12, MNCS-02, MSLR-14, reduced MSWI-14 and later generators |
 | resource identity, derivative provenance and rights | ARI + PCA-01/PCA-15 | every import/export/generation/publishing workflow |
-| generic gameplay execution, replay and delivery modes | GPR + Action/Event | MERA, MBES, MSLR, MSWI specialist runtimes |
+| generic gameplay execution, replay and delivery modes | GPR + Action/Event | MERA, MBES, MSLR, MSWI specialist adapters |
 | reusable semantic affordance/Effect composition | MRCS/GPR + PDCP Packet 04 | MERA, MBES, MSLR, MSWI target/domain adapters |
 | map/cartographic projection and editing | MCS | MBES, MSLR, MSWI and other domains provide semantic projections/bindings only |
 | audio production/playback/cue presentation | AAI/MSAS/PCA audio tooling | MSLR/MSWI/domain systems provide semantic cue bindings, not audio engines |
 | multi-resolution aggregate↔individual semantics | Packet 06 + canonical domain owners | MNCS, MBES, MSWI and GPR integration layers |
-| systemic consequence propagation | MSWI | upstream families emit typed events/deltas rather than directly mutating unrelated owner domains |
+| systemic consequence propagation | MSWI | upstream families emit typed Events/deltas rather than directly mutating unrelated owner domains |
 
 ## Global repeated-tranche patterns
 
@@ -40,6 +40,8 @@ This register records overlap candidates. Except where a family reduction receip
 Repeated baseline examples: `MCS-01`, `MCCS-01`, `MNCS-01`, `MSAS-01`, `MRCS-01`, `MERA-01`, `MBES-01`, `MSLR-01`, `MSWI-01`.
 
 PDCP has already closed most authority/ownership/product-semantics work. Future family passes must ask whether the remaining workspace/schema shell can be merged into the first substantive implementation tranche. A standalone `-01` survives only if material platform/schema/UI work remains.
+
+Resolved examples: historical MSLR-01+02 collapsed into reduced MSLR-01; historical MSWI-01+02 collapsed into reduced MSWI-01.
 
 ### B. Import/export/version/review/provenance workflows
 
@@ -62,7 +64,7 @@ Strong overlap candidates:
 - `MERA-03`, `MERA-22`, `MERA-23`;
 - `MBES-01`, `MBES-07` and domain diagnostics;
 - historical `MSLR-14` + `MSLR-17` — resolved by the MSLR family reduction;
-- `MSWI-14` + `MSWI-17` shared tooling seams.
+- historical `MSWI-17` + `MSWI-18` — resolved into reduced `MSWI-18`, which consumes PCA-12/Packet-08 rather than rebuilding generic analysis.
 
 Packet 07 owns common execution-inspection semantics and PCA-12 owns reusable analysis. Local tranches must not rebuild generic debuggers, solver UIs or arbitrary GM mutation frameworks.
 
@@ -72,20 +74,22 @@ Strong overlap candidates:
 
 - `MCS-10`, `MCS-11`, `MCS-12` — likely one shared map/world-generation substrate plus domain generator packs rather than three independent engines;
 - `MNCS-02` — domain recipe layer over PCA-02 rather than another scheduler/cache engine;
-- historical `MSLR-14` — now explicitly an adapter over PCA-02/PCA-03/PCA-12;
-- `MSWI-14` — seeded scenario/site composition over shared recipe infrastructure.
+- historical `MSLR-14` — resolved as an adapter over PCA-02/PCA-03/PCA-12;
+- reduced `MSWI-14` — systemic candidate/variant/promotion adapter over PCA-02/PCA-03 rather than a generic generator.
 
 ### E. Golden/conformance gates
 
-Golden proof remains necessary, but a separate pre-golden conformance tranche should be merged into the final proof when it contains no distinct implementation work. Candidate examples:
+Golden proof remains necessary, but a separate pre-golden conformance tranche should be merged into the final proof when it contains no distinct implementation work.
 
-- `GPR-15` + `GPR-16`;
-- `MSWI-17` + `MSWI-18` only if diagnostics are fully implemented earlier and the remaining `MSWI-17` work is proof-only;
-- family-specific final integration + golden proof combinations where the implementation can remain within the bounded tranche envelope.
+Candidates/resolutions:
+
+- `GPR-15` + `GPR-16` remains a candidate;
+- historical `MSWI-17` + `MSWI-18` is resolved as reduced `MSWI-18` because PCA-12/Packet-08 own the generic diagnostic engine and only the MSWI interpretation/proof layer remains;
+- family-specific final integration + golden proof combinations remain eligible when bounded.
 
 Do not merge a final proof if doing so would remove independent runtime/integration implementation work or make the tranche exceed the execution envelope.
 
-## Intra-family candidate clusters for later passes
+## Intra-family candidate clusters for remaining passes
 
 ### MCS
 
@@ -122,6 +126,8 @@ Do not merge a final proof if doing so would remove independent runtime/integrat
 - `GPR-12` + `GPR-13`: replay/determinism/Event trace and persistence/snapshot/recovery/version compatibility share the same state/history boundary; strong consolidation candidate.
 - `GPR-15` + `GPR-16`: conformance/regression and golden cross-system proof may combine if no distinct runtime implementation remains in `GPR-15` after PDCP closure.
 - `GPR-14` consumes Packet-07 creator/GM execution infrastructure and should not implement a generic studio framework.
+- Reduced MSWI removes a duplicate pursuit runtime: GPR must remain the one reusable pursuit/race/chase/convoy/interception execution owner, consuming Movement/Vehicle/Mount/World/Scene and MSLR adapters.
+- Reduced MSWI also confirms GPR, not MSWI, owns reusable profession/daily-loop, social/doctrine interaction and performance/timing pattern execution when those patterns are needed.
 
 ### MERA
 
@@ -130,12 +136,15 @@ Do not merge a final proof if doing so would remove independent runtime/integrat
 - Review `MERA-10` + `MERA-11` for a common governed network/dependency kernel while preserving failure-propagation versus interface-runtime distinctions.
 - `MERA-12..16` are not presumed mergeable: their target-domain integration may remain substantial despite shared engineering core.
 
-### MBES
+### MBES — next selected review
 
 - `MBES-08` + `MBES-09` + `MBES-10`: utility, automation/control and logistics networks share graph/interface/capacity/runtime infrastructure; strong consolidation candidate after MERA/GPR owner absorption.
 - `MBES-12` + `MBES-13`: earthworks and hydrology/civil-water manipulation share terrain/civil transformation infrastructure; consolidation candidate.
 - `MBES-14` + `MBES-15` + `MBES-16`: environmental externalities, reactive-world hooks and habitability/resilience share Environment/World condition-response infrastructure; evaluate as one or two bounded tranches.
 - `MBES-20` + `MBES-21` + `MBES-23`: settlement growth, transport/regional infrastructure and multi-settlement development share district/regional simulation and may reduce materially after Packet 06/PCA-12 absorption.
+- Any MBES cross-domain propagation that exists only to make unrelated owner domains respond must emit typed Events/deltas for reduced MSWI rather than implementing its own systemic fan-out engine.
+
+## Resolved families
 
 ### MSLR
 
@@ -155,26 +164,39 @@ Result: **18 → 9**.
 
 ### MSWI
 
-- `MSWI-04` + `MSWI-05`: ecology succession/carrying capacity/population bands and food-web/migration/invasion/extinction are one ecology consequence runtime; strong consolidation candidate.
-- `MSWI-14` + `MSWI-15`: procedural site/scenario remix and environment-state map/scene variants share generated/proposed/persistent variant machinery; consolidation candidate with MCS presentation remaining external.
-- `MSWI-17` should consume PCA-12/Packet-08 and may merge into `MSWI-18` if only final diagnostic proof remains after other tranches implement integration instrumentation.
-- `MSWI-02` + `MSWI-03` should be checked carefully: transformation state and propagation/reversibility are closely coupled, but may still merit two tranches if persisted schema/migration and routing implementation each remain substantial.
+Resolved by `PDCP_MSWI_REDUCTION_RECEIPT.json`:
+
+- `01+02 → 01`;
+- `03` retained as cross-system routing/recovery;
+- `04+05 → 04`;
+- `06` retained;
+- `07+08 → 07`;
+- `09` absorbed to Religion/Culture/Organization + Packet 01 + MRCS/GPR, with MSWI consequence adapters in `03/18`;
+- `10` absorbed to DPL + Project/Time + GPR, with MSWI consequence adapters in `03/18`;
+- `11` absorbed to GPR + Movement/Vehicle/Mount/World/Scene/MSLR, with MSWI consequence adapters in `03/18`;
+- `12` absorbed to DPL + MSAS/AAI + GPR + Accessibility, with MSWI proof in `18`;
+- `13` absorbed to APW/D26 Project/Time + GPR + contributing owner domains, with systemic routing/variant proof in `03/14/18`;
+- `14+15+16 → 14`;
+- `17+18 → 18` over PCA-12/Packet-08 infrastructure.
+
+Result: **18 → 7**.
+
+This is a cross-family reduction as much as an intra-family one: five historical MSWI standalone runtimes were eliminated because the generic/canonical authority already exists elsewhere.
 
 ## Reduction-order rule
 
-Because cross-family folds can change downstream obligations, subsequent family passes should prefer the following order:
+With MSLR and MSWI resolved, the remaining preferred reverse-consumer order is:
 
-1. **MSWI** next, because it directly consumes MSLR and has obvious Packet-06/08 overlap;
-2. **MBES**;
-3. **MERA**;
-4. **GPR**;
-5. **MRCS**;
-6. **MSAS**;
-7. **MNCS**;
-8. **MCCS**;
-9. **MCS**.
+1. **MBES** next;
+2. **MERA**;
+3. **GPR**;
+4. **MRCS**;
+5. **MSAS**;
+6. **MNCS**;
+7. **MCCS**;
+8. **MCS**.
 
-This reverse-consumer walk is deliberate: reduce the downstream integration families first, then use their final owner boundaries to avoid retaining unnecessary upstream handoff work. If a later upstream pass reveals a safer shared-owner consolidation, the already-closed downstream receipt may be amended only with an explicit capability-preserving reconciliation receipt.
+This reverse-consumer walk is deliberate: reduce the downstream integration families first, then use their final owner boundaries to avoid retaining unnecessary upstream handoff work. If a later upstream pass reveals a safer shared-owner consolidation, an already-closed downstream receipt may be amended only with an explicit capability-preserving reconciliation receipt.
 
 ## Guardrails
 

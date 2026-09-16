@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.2.0",
+  "schema_version": "0.3.0",
   "project_id": "PDCP",
   "project_name": "Preimplementation Design Closure Project",
   "status": "owner_approved_active_reduction",
@@ -14,9 +14,10 @@
     "aioc_main_sha": "1558bcd12e69c0e49290191199fe6ef111f1e80c",
     "date": "2026-09-16",
     "baseline_total_tranches": 208,
-    "effective_reduced_total": 199,
-    "approved_family_reductions": 1,
-    "note": "Baseline remains historical provenance. Effective total reflects only family reduction receipts already reconciled into planning sources; remaining families retain baseline counts until their own complete receipts merge."
+    "effective_reduced_total": 188,
+    "approved_family_reductions": 2,
+    "removed_standalone_future_tranches": 20,
+    "note": "Baseline remains immutable historical provenance. Effective total reflects only family reduction receipts already reconciled into planning sources; remaining families retain baseline counts until their own complete receipts merge."
   },
   "excluded_programs": ["MAS"],
   "families": [
@@ -104,7 +105,7 @@
       "backlog_path": "governance/application-planning/multiversal-built-environment-settlement/MBES_PROGRAM_BACKLOG.json",
       "baseline_blob_sha": "819bd147a32e616864c97f2e6a814fb10c8ff212",
       "track": "post_mas_runtime_creator",
-      "reduction_status": "not_started",
+      "reduction_status": "next_selected_for_pdcp_review",
       "reduced_tranche_count": null,
       "reduction_receipt": null
     },
@@ -130,9 +131,13 @@
       "backlog_path": "governance/application-planning/multiversal-systemic-worldplay-integration/MSWI_PROGRAM_BACKLOG.json",
       "baseline_blob_sha": "3327ead8361e884181b159a9c94cfe694cbdeac5",
       "track": "post_mas_runtime_creator",
-      "reduction_status": "next_selected_for_pdcp_review",
-      "reduced_tranche_count": null,
-      "reduction_receipt": null
+      "reduction_status": "resolved",
+      "reduced_tranche_count": 7,
+      "reduction_receipt": "governance/application-planning/preimplementation-design-closure/PDCP_MSWI_REDUCTION_RECEIPT.json",
+      "family_design_closure": "governance/application-planning/preimplementation-design-closure/PDCP_MSWI_FAMILY_DESIGN_CLOSURE.md",
+      "surviving_tranche_ids": ["MSWI-01","MSWI-03","MSWI-04","MSWI-06","MSWI-07","MSWI-14","MSWI-18"],
+      "overlap_audit_complete": true,
+      "capability_loss_detected": false
     }
   ],
   "design_tracks": {
