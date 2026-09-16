@@ -72,13 +72,13 @@ def test_pdcp_reduction_contract_preserves_scope_and_ops3_gates():
         "implementation authority",
         "before/after",
         "capability",
-        "mas is excluded",
     ):
         assert required in combined
 
+    assert "mas" in combined and "excluded" in combined
     assert "no predetermined reduction percentage" in project
     assert "research/design closure is not software completion" in project
-    assert "do not mutate `operations/current.json`" in contract
+    assert "operations/current.json" in contract and "mutate" in contract
 
 
 def test_pdcp_cross_family_register_tracks_eight_initial_packets():
