@@ -17,11 +17,11 @@ async function load(options={}){
   const id=activeId();
   if(id===CANONICAL)return original.load(options);
   const collection=await getCollection(id);
-  if(!collection)throw new Error('The selected staging collection is not installed in this browser. Import the recovery ledger again or switch to the certified 487-object collection.');
+  if(!collection)throw new Error('The selected staging collection is not installed in this browser. Import the recovery ledger again or switch to the certified canonical collection.');
   options.onProgress?.(`Loaded ${collection.records.length.toLocaleString()} recovered staging records.`);
   return {manifest:collection.manifest||{},index:{format:'multiversal-content-database',recordCount:collection.records.length,records:collection.records,summary:collection.summary||{},sourceFiles:collection.sourceFiles||[]},records:collection.records,count:collection.records.length,summary:collection.summary||{},databaseVersion:collection.databaseVersion||'recovery-staging-v1',generatedAt:collection.generatedAt,fallback:false,collectionId:id,collectionName:collection.name,staging:true};
 }
-async function listCollections(){const canonical={id:CANONICAL,name:'Certified canonical collection',recordCount:487,kind:'canonical'};const staged=await getCollection(STAGING);return staged?[canonical,{id:STAGING,name:staged.name||'Recovered staging collection',recordCount:staged.records.length,kind:'staging',generatedAt:staged.generatedAt}]:[canonical];}
+async function listCollections(){const canonicalDb=await original.load();const canonical={id:CANONICAL,name:'Certified canonical collection',recordCount:canonicalDb.count,kind:'canonical'};const staged=await getCollection(STAGING);return staged?[canonical,{id:STAGING,name:staged.name||'Recovered staging collection',recordCount:staged.records.length,kind:'staging',generatedAt:staged.generatedAt}]:[canonical];}
 async function importRecoveryLedger(file,onProgress){
   if(!file)throw new Error('Choose recovery_ledger.csv first.');
   if(!/\.csv$/i.test(file.name))throw new Error('The staging importer currently accepts recovery_ledger.csv.');
@@ -39,7 +39,7 @@ async function installControls(){
   const select=wrap.querySelector('#contentCollection');const collections=await listCollections();select.innerHTML=collections.map(c=>`<option value="${c.id}" ${c.id===activeId()?'selected':''}>${c.name} (${Number(c.recordCount).toLocaleString()})</option>`).join('');select.onchange=()=>selectCollection(select.value);
   const input=wrap.querySelector('#recoveryLedgerFile'),button=wrap.querySelector('#importRecoveryLedger'),remove=wrap.querySelector('#removeRecoveryStaging');remove.hidden=!collections.some(c=>c.id===STAGING);
   button.onclick=()=>input.click();input.onchange=async()=>{try{button.disabled=true;const status=document.querySelector('#libraryStatus');status.textContent='Preparing recovery-ledger staging import…';const collection=await importRecoveryLedger(input.files?.[0],message=>status.textContent=message);status.textContent=`Imported ${collection.records.length.toLocaleString()} staging records. Reloading…`;location.reload();}catch(error){document.querySelector('#libraryStatus').textContent=`Staging import failed: ${error.message}`;button.disabled=false;}};
-  remove.onclick=async()=>{if(!confirm('Remove the browser-local recovered staging collection? The certified 487-object collection will remain untouched.'))return;await window.MultiversalContentDB.removeStaging();location.reload();};
+  remove.onclick=async()=>{if(!confirm('Remove the browser-local recovered staging collection? The certified canonical collection will remain untouched.'))return;await window.MultiversalContentDB.removeStaging();location.reload();};
 }
 window.addEventListener('DOMContentLoaded',installControls,{once:true});
 })();

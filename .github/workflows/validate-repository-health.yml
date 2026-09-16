@@ -13,7 +13,10 @@ on:
       - 'bridge/**'
       - 'scripts/**'
       - 'tools/**'
-      - 'tests/control_plane/**'
+      - 'tests/**'
+      - 'content-source/**'
+      - 'content-database.js'
+      - 'content-library-collections.js'
       - '.github/workflows/validate-repository-health.yml'
   push:
     branches: [main]
@@ -28,7 +31,10 @@ on:
       - 'bridge/**'
       - 'scripts/**'
       - 'tools/**'
-      - 'tests/control_plane/**'
+      - 'tests/**'
+      - 'content-source/**'
+      - 'content-database.js'
+      - 'content-library-collections.js'
       - '.github/workflows/validate-repository-health.yml'
   workflow_dispatch:
 
@@ -61,6 +67,7 @@ jobs:
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$CANDIDATE_HEAD"
           python3 --version
+          node --version
           git --version
 
       - name: Validate the canonical single door
@@ -83,6 +90,33 @@ jobs:
         run: |
           set -euo pipefail
           python3 tests/control_plane/test_operations_v3_single_door.py
+
+      - name: Run canonical content pipeline reconciliation regression
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/control_plane/test_canonical_content_pipeline_reconciliation.py
+
+      - name: Run Content Library collection regression
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tests/validate-content-library-staging.mjs
+
+      - name: Upload certified canonical content evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: canonical-content-pipeline-${{ env.CANDIDATE_HEAD }}
+          path: |
+            content-db/index.json
+            content-db/manifest.json
+            content-db/source-registry.json
+            content-db/certification.json
+            content-db/indexes/
+            evidence/content-pipeline/latest-certificate.json
+          if-no-files-found: warn
+          retention-days: 14
 
       - name: Upload compact Operations V3 evidence
         if: always()
