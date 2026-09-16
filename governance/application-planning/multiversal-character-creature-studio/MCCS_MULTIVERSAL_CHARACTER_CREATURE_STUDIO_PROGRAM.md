@@ -2,10 +2,10 @@
 
 **Program ID:** MCCS  
 **Program name:** Multiversal Character & Creature Studio  
-**Version:** 0.2.0 — PDCP reduced  
+**Version:** 0.2.1 — PDCP reduced  
 **Status:** OWNER-APPROVED — PLANNED INTERSTITIAL; NOT STARTED  
-**Activation:** after MCS effective golden gate  
-**Successor:** MNCS-01  
+**Activation:** per `ROADMAP_DEPENDENCY_GRAPH.json` typed MCCS start gates; parallel-safe with MCS/MRCS/MSAS  
+**Successor/rotation:** MNCS may rotate after reduced `MCCS-01` plus its other DAG prerequisites; `MCCS-21` remains MNCS golden-proof input  
 **Owner and final authority:** John Brandon Turner  
 **Implementation authority:** none
 
@@ -29,7 +29,7 @@ The surviving order is:
 
 `MCCS-01 → MCCS-03 → MCCS-05 → MCCS-06 → MCCS-09 → MCCS-11 → MCCS-13 → MCCS-16 → MCCS-18 → MCCS-19 → MCCS-21`
 
-Sparse historical IDs are intentional. `MCCS-01` and `MCCS-21` remain stable start/golden milestones.
+Sparse historical IDs are intentional. `MCCS-01` and `MCCS-21` remain stable family milestones, and historical `MCCS-02` is fully absorbed into reduced `MCCS-01`.
 
 ## Owner boundaries
 
@@ -52,7 +52,7 @@ MCCS remains topology-first, not humanoid-first. Unsupported anatomy or renderer
 
 ### MCCS-01 — Creator Workspace, Renderer-Neutral Projection, Draft/Rebase & Authority Contract
 
-Implement one versioned appearance workspace over owner records and CAPP/PPIA renderer-neutral projection. Include stable draft IDs, authority dispositions, stale-owner detection, refresh/rebase, conflict reporting, history/recovery, output-profile references and ARI asset references. This tranche absorbs historical MCCS-01 and MCCS-02.
+Implement one versioned appearance workspace over owner records and CAPP/PPIA renderer-neutral projection. Include stable draft IDs, authority dispositions, stale-owner detection, refresh/rebase, conflict reporting, history/recovery, output-profile references and ARI asset references. This tranche absorbs historical MCCS-01 and MCCS-02 and therefore satisfies the former MNCS rotation capability without weakening the gate.
 
 ### MCCS-03 — Topology, Morphology, Silhouette, Appendage & Modular Anatomy Authoring
 
@@ -112,6 +112,10 @@ Every surviving MCCS tranche must preserve:
 ## Clean-room boundary
 
 Benchmark products remain capability/workflow provenance only. MCCS does not copy proprietary source, protected assets, distinctive UI expression, private protocols, sample projects, vendor-specific implementation details or branded character styles.
+
+## DAG reconciliation
+
+Historical `MCCS-02` was referenced by the live roadmap DAG as the MNCS start/rotation capability. Reduced `MCCS-01` absorbs that full renderer-neutral projection/draft-overlay contract, so PDCP atomically retargets the equivalent gate from `MCCS-02` to `MCCS-01`. This does **not** serialize MCCS behind MCS and does not allow MNCS to start without its unchanged MIB-09, DPL and NPC/Creature-owner prerequisites. `MCCS-21` remains the MNCS golden-proof dependency.
 
 ## Execution rule
 
