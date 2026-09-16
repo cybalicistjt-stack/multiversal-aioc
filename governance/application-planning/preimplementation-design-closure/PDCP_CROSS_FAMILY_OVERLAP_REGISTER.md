@@ -22,45 +22,45 @@ Every family reduction performs both an intra-family overlap audit and a cross-f
 | audio semantic/runtime/interoperability | AAI | MSAS supplies integrated production/direction UX only |
 | adaptive-audio authoring primitives | PCA-07 + AAI | MSAS composes creator workflows and domain binding |
 | voice/speech/SFX production primitives | PCA-08 | MSAS owns audio-domain workflow/binding only |
-| generic generation orchestration | PCA-09 | audio families supply briefs/review/acceptance adapters |
-| generic localization production | PCA-13 | MSAS/MNCS/etc. bind domain localization context |
+| generic generation orchestration | PCA-02/PCA-03/PCA-09 as applicable | specialist families supply domain recipes/briefs/review/acceptance adapters |
+| generic localization production | PCA-13 | specialist families bind domain localization context |
 | map/cartographic projection/editing | MCS | other families bind map projections only |
-| multi-resolution aggregate↔individual | Packet 06 + domain owners | lifecycle adapters only |
+| character/creature appearance presentation | MCCS + CAPP/PPIA/PAPT/PCA | NPC/runtime families request or bind presentation only |
+| NPC/creature entity identity/placement/live instance | PPIA-02 + Character/NPC/Creature | MNCS supplies construction/progressive-resolution UX only |
+| profession/household/economy/schedule/project/life truth | DPL/Profession + Economy/Organization + Project/Time | MNCS binds projections only |
+| relationship/reputation mutation | MIB-09 | MNCS composes/visualizes scoped reputation and party-association behavior |
+| multi-resolution aggregate↔individual | Packet 06 + domain owners | specialist creator lifecycle adapters only |
 | systemic consequence propagation | reduced MSWI | upstream systems emit typed Events/deltas |
 | engineering orchestration | reduced MERA + Asset/MIB owners | consumers bind engineering adapters only |
 | built environment/facilities | reduced MBES + underlying owners | consumers reference facility context |
-| work capability/project/time | DPL/Profession + APW/D26 | prerequisite bindings only |
 
 ## Repeated folding rules
 
 - opening workspace/authority and registry/schema tranches merge when they form one implementation shell;
 - generic creator/debug, simulation, generation, localization and lifecycle infrastructure are not rebuilt per family;
 - proof-only pre-golden tranches fold into final golden proof when no independent runtime remains;
-- sparse historical IDs are preferred over renumbering when DAG milestones can survive.
+- sparse historical IDs are preferred over renumbering when DAG milestones can survive;
+- family-specific UI may survive even when its canonical data/runtime owner is elsewhere, but only as a bounded adapter/projection seam.
 
-## Next selected review — MNCS
+## Next selected review — MCCS
 
 Strong candidates to test:
 
-- `MNCS-15+16+17`: population/group/herd/ecosystem generation over shared aggregate/recipe machinery;
-- `MNCS-20+21`: continuity/change-over-time plus resolution promotion/demotion over one lifecycle state machine;
-- `MNCS-23`: slim to NPC/creature-specific batch/preset/import adapters, with generic lifecycle/provenance/version/review/import-export remaining ARI/PCA;
-- `MNCS-02`: consume PCA-02/PCA-03 procedural recipe/generation substrate rather than create a parallel generic generator;
-- Packet 03 owns generic autonomous-process orchestration; MNCS should keep NPC/creature policy bindings rather than another generic AI planner;
-- Packet 06 owns generic aggregate↔individual resolution semantics; MNCS retains domain identity/state adapters;
-- reduced MRCS owns reusable rule/content definition authoring; MNCS retains NPC/creature authoring and runtime-facing identity/behavior UX.
+- `MCCS-13+14+15`: portrait/bust/card, token/paper-doll/isometric and sprite/stance/animation-sheet outputs may share one derivative-rendering/export kernel while preserving format-specific adapters;
+- `MCCS-16`: inspect whether style packs/templates/renderer profiles are configuration inside the shared output/renderer substrate rather than a standalone runtime;
+- `MCCS-17`: NPC/crowd/herd/creature visual-variant generation must not duplicate MNCS identity/population generation or PCA generation orchestration;
+- `MCCS-18`: inspect whether multi-form/transformation/lifecycle appearance management is one appearance-state adapter over Character/Species/Form owners rather than a separate state engine;
+- `MCCS-19`: generic interchange/version/review/provenance stays ARI/PCA; retain only character/creature presentation mapping and round-trip validation;
+- preserve `MCCS-02` because it is an MNCS rotation milestone unless an equivalent DAG update is demonstrably safer;
+- preserve `MCCS-21` golden gate unless an equivalent gate update is required.
 
 ## Later family candidates
-
-### MCCS
-- `13+14+15`: output/derivative renderer substrate;
-- inspect `16` for absorption when style/profile behavior is configuration;
-- `19`: consume generic interchange/review/provenance infrastructure.
 
 ### MCS
 - `10+11+12`: shared world/map-generation substrate over PCA recipes;
 - `19+20`: interchange/version/review/publishing;
-- inspect `13+14+16` for shared built/interior/multi-level projection infrastructure without erasing materially different city/dungeon UX.
+- inspect `13+14+16` for shared built/interior/multi-level projection infrastructure without erasing materially different city/dungeon UX;
+- strip generic generation, analysis, provenance and creator-debug infrastructure to PCA/Packet-07/08/ARI owners.
 
 ## Resolved families
 
@@ -85,15 +85,17 @@ Strong candidates to test:
 ### MSAS — 21 → 11
 `01+02→01`; `03`; `04+16→04`; `05+06→05`; `07+08→07`; `09+10+11→09`; `12+13→12`; `14`; `15`; historical `17` absorbed to PCA-09/PCA-08 plus domain adapters; `18+19+20→18`; `21`.
 
-MSAS-specific result: AAI keeps semantic/runtime authority; PCA-07/08/09/13 keep generic audio authoring/generation/localization primitives; Packet 07 keeps generic live-control semantics; ARI/PCA keep generic rights/provenance/version/review; MSAS keeps the integrated audio-domain production UX.
+### MNCS — 24 → 13
+`01+02+03→01`; `04`; `05`; `06+07→06`; `08`; historical `09` absorbed to DPL/Profession + Economy/Organization + Project/Time with MNCS bindings; `10+11→10`; `12+13→12`; `14`; `15+16+17→15`; `18+19→18`; `20+21→20`; `22`; historical `23` absorbed to ARI/PCA/Packet-07 generic infrastructure plus MNCS adapters; `24`.
+
+MNCS-specific result: PPIA-02/Character/NPC/Creature keep entity truth; MIB-09 keeps reputation mutation; DPL/Economy/Project keep life truth; Packet 06 keeps multi-resolution semantics; Packet 03 keeps generic autonomous orchestration; reduced MRCS/GPR keep reusable definitions/runtime execution; MNCS keeps progressive construction, group/population creator UX, privacy-safe roleplay prep and governed handoff.
 
 ## Reduction order
 
-Resolved: MSLR, MSWI, MBES, MERA, GPR, MRCS, MSAS. Remaining preferred order:
+Resolved: MSLR, MSWI, MBES, MERA, GPR, MRCS, MSAS, MNCS. Remaining preferred order:
 
-1. **MNCS** next;
-2. **MCCS**;
-3. **MCS**.
+1. **MCCS** next;
+2. **MCS** final family review.
 
 Already-resolved receipts may be amended only through explicit capability-preserving reconciliation if a later upstream reduction exposes a safer owner fold.
 
