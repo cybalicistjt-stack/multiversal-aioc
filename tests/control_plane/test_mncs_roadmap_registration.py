@@ -12,53 +12,113 @@ def t(path: str):
     return (ROOT / path).read_text(encoding="utf-8")
 
 
-def test_mncs_registered_without_changing_live_authority():
-    index = j("governance/ai/runtime/ROADMAP_INDEX.json")
-    registry = j("governance/ai/runtime/ACTIVE_AUTHORITY_REGISTRY.json")
-    pointer = j("governance/ai/runtime/CURRENT_WORK_POINTER.json")
-    active = pointer["active_attempt"]
+EXPECTED = [
+    "MNCS-01",
+    "MNCS-04",
+    "MNCS-05",
+    "MNCS-06",
+    "MNCS-08",
+    "MNCS-10",
+    "MNCS-12",
+    "MNCS-14",
+    "MNCS-15",
+    "MNCS-18",
+    "MNCS-20",
+    "MNCS-22",
+    "MNCS-24",
+]
+
+
+def test_mncs_pdcp_reduced_contract_is_complete_and_non_authoritative():
     backlog = j("governance/application-planning/multiversal-npc-creature-studio/MNCS_PROGRAM_BACKLOG.json")
-    planned = {x["program_id"]: x for x in index["planned_programs"]}
+    receipt = j("governance/application-planning/preimplementation-design-closure/PDCP_MNCS_REDUCTION_RECEIPT.json")
+    ledger = j("governance/application-planning/preimplementation-design-closure/PDCP_REDUCTION_LEDGER.json")
 
-    assert planned["MNCS"]["status"] == "owner_approved_planned"
-    assert planned["MNCS"]["activation_after"] == "MCCS-21"
-    assert planned["MNCS"]["successor"] == "MAS-01"
-    assert planned["MNCS"]["implementation_authority"] is False
-    assert planned["MNCS"]["execution_units"] == 24
-    assert planned["MCCS"]["successor"] == "MNCS-01"
-    assert planned["MAS"]["activation_after"] == "MNCS-24"
-
-    assert backlog["strict_order"] == [f"MNCS-{i:02d}" for i in range(1, 25)]
-    assert all(x["estimated_active_minutes"] <= 24 for x in backlog["tranches"])
     assert backlog["implementation_authority"] is False
+    assert backlog["strict_order"] == EXPECTED
+    assert [x["id"] for x in backlog["tranches"]] == EXPECTED
+    assert all(x["estimated_active_minutes"] <= 24 for x in backlog["tranches"])
 
-    assert index["current"]["work_item_id"] == active["work_item_id"]
-    assert index["current"]["status"] == active["status"]
-    assert index["current"]["implementation_authority"] == active["implementation_authority"]
-    assert index["current"]["implementation_branch"] == active["implementation_branch"]
-    assert registry["active_planning_work"]["work_item"] == active["work_item_id"]
-    assert registry["active_planning_work"]["state"] == active["status"]
-    assert registry["active_planning_work"]["implementation_authority"] == active["implementation_authority"]
+    assert backlog["pdcp_reduction"]["baseline_tranche_count"] == 24
+    assert backlog["pdcp_reduction"]["reduced_tranche_count"] == 13
+    assert backlog["pdcp_reduction"]["capability_loss_detected"] is False
+
+    assert receipt["status"] == "resolved"
+    assert receipt["baseline_tranche_count"] == 24
+    assert receipt["reduced_tranche_count"] == 13
+    assert receipt["removed_standalone_tranches"] == 11
+    assert receipt["surviving_tranche_ids"] == EXPECTED
+    assert len(receipt["dispositions"]) == 24
+    assert {x["baseline_id"] for x in receipt["dispositions"]} == {f"MNCS-{i:02d}" for i in range(1, 25)}
+    assert receipt["golden_vector_count"] == 48
+    assert receipt["capability_loss_detected"] is False
+    assert receipt["implementation_authority"] is False
+    assert receipt["ops3_current_mutation"] is False
+
+    family = next(x for x in ledger["families"] if x["program_id"] == "MNCS")
+    assert family["reduction_status"] == "resolved"
+    assert family["reduced_tranche_count"] == 13
+    assert family["surviving_tranche_ids"] == EXPECTED
+    assert ledger["baseline_snapshot"]["effective_reduced_total"] == 124
+    assert ledger["baseline_snapshot"]["removed_standalone_future_tranches"] == 84
+    assert ledger["baseline_snapshot"]["approved_family_reductions"] == 8
+    mccs = next(x for x in ledger["families"] if x["program_id"] == "MCCS")
+    assert mccs["reduction_status"] == "next_selected_for_pdcp_review"
 
 
-def test_mncs_placement_and_progressive_resolution_contract():
-    index = j("governance/ai/runtime/ROADMAP_INDEX.json")
+def test_mncs_stable_dag_milestones_and_progressive_resolution_contract():
+    dag = j("governance/application-planning/ROADMAP_DEPENDENCY_GRAPH.json")
     program = t("governance/application-planning/multiversal-npc-creature-studio/MNCS_MULTIVERSAL_NPC_CREATURE_STUDIO_PROGRAM.md").lower()
     backlog = j("governance/application-planning/multiversal-npc-creature-studio/MNCS_PROGRAM_BACKLOG.json")
 
-    expected = "MCS-01..21 → MCCS-01..21 → MNCS-01..24 → MAS-01..21 → MSAS-01..21"
-    assert expected in index["effective_forward_order"]
-    assert index["mncs_execution_order"] == [f"MNCS-{i:02d}" for i in range(1, 25)]
+    assert dag["milestone_gates"]["rotation"]["MNCS-01"] == ["MCCS-02"]
+    assert "MNCS-24" in dag["program_edges"]["MSWI"]["start_requires"]
 
     names = "\n".join(x["name"] for x in backlog["tranches"]).lower()
-    for term in ("instant improv", "knowledge", "reputation", "profession", "ecology", "behavior", "population", "conversation", "promotion", "runtime handoff"):
+    for term in (
+        "instant improv",
+        "knowledge",
+        "reputation",
+        "ecology",
+        "behavior",
+        "population",
+        "conversation",
+        "resolution management",
+        "runtime handoff",
+    ):
         assert term in names
 
-    assert "one identity, progressive generation resolution" in program
+    assert "one identity, progressive resolution" in program
     assert "passing extra" in program
     assert "population → group/herd/pack/swarm" in program
     assert "selective regeneration" in program
-    assert "no mncs implementation authority exists now" in program
+    assert "does not modify `operations/current.json`" in program
+
+
+def test_mncs_cross_family_absorptions_are_explicit():
+    receipt = j("governance/application-planning/preimplementation-design-closure/PDCP_MNCS_REDUCTION_RECEIPT.json")
+    dispositions = {x["baseline_id"]: x for x in receipt["dispositions"]}
+    absorption_text = "\n".join(
+        f"{x['concern']} {x['owner']} {x['mncs_residual']}" for x in receipt["cross_family_absorptions"]
+    ).lower()
+
+    assert dispositions["MNCS-09"]["disposition"] == "ABSORB_EXISTING_OWNER"
+    assert "dpl" in dispositions["MNCS-09"]["residual_target"].lower()
+    assert dispositions["MNCS-23"]["disposition"] == "ABSORB_EXISTING_OWNER"
+    assert "ari/pca" in dispositions["MNCS-23"]["residual_target"].lower()
+
+    for term in (
+        "pca-02/pca-03",
+        "ppia-02",
+        "mccs",
+        "mib-09",
+        "dpl",
+        "packet 06",
+        "packet 07",
+        "ari/pca",
+        "reduced gpr",
+    ):
+        assert term in absorption_text
 
 
 def test_mncs_party_association_reputation_is_scoped_and_attributable():
@@ -73,12 +133,11 @@ def test_mncs_party_association_reputation_is_scoped_and_attributable():
         assert "association" in text
         assert "reputation" in text
 
-    assert "not one universal shared-party score" in program
+    assert "universal shared-party score" in program
     assert "direct reputation" in program
-    assert "source event" in program
+    assert "event/actor/party/campaign attribution" in program
     assert "no account-global or cross-campaign spillover" in amendment
-    assert "does not automatically erase past reputation consequences" in program
-    assert "second campaign" in program
+    assert "cannot leak across campaigns" in program
 
 
 def test_mncs_preserves_owner_clean_room_and_no_digital_human_scope():
@@ -87,11 +146,11 @@ def test_mncs_preserves_owner_clean_room_and_no_digital_human_scope():
     backlog = j("governance/application-planning/multiversal-npc-creature-studio/MNCS_PROGRAM_BACKLOG.json")
     boundaries = "\n".join(backlog["boundaries"]).lower()
 
-    for owner in ("ppia-02", "mib-09", "dpl", "world", "inventory", "mccs", "mas", "ari"):
+    for owner in ("ppia-02", "mib-09", "dpl", "world/environment", "mccs", "mas", "ari/pca"):
         assert owner in program
 
-    assert "fictional ttrpg" in program
-    assert "digital-human reconstruction" in program
+    assert "fictional npc" in program
+    assert "real-person reproduction" in program
     assert "does not implement real-person reproduction" in boundaries
     assert "clean-room" in benchmark
     assert "npc suite" in benchmark
