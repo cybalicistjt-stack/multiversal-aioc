@@ -14,7 +14,7 @@ Public benchmark products are capability/workflow references only. Protected cod
 |---|---|---|
 | 1 — Social Interaction Grammar, Cultural Norms & Indirect Influence | `design_closed` | `PDCP_PACKET_01_SOCIAL_INTERACTION_DESIGN_CLOSURE.md` + machine-readable closure record |
 | 2 — Systemic Investigation & Evidence | `design_closed` | `PDCP_PACKET_02_SYSTEMIC_EVIDENCE_DESIGN_CLOSURE.md` + machine-readable closure record |
-| 3 — Autonomous Actors, Threats & Offscreen Action | `open` | — |
+| 3 — Autonomous Actors, Threats & Offscreen Action | `design_closed` | `PDCP_PACKET_03_AUTONOMOUS_ACTORS_DESIGN_CLOSURE.md` + machine-readable closure record |
 | 4 — Semantic Affordances & Composable Effects | `open` | — |
 | 5 — Persistent History, Legacy, Succession & Delayed Consequence | `open` | — |
 | 6 — Multi-Resolution Simulation & Autonomous World Evolution | `open` | — |
@@ -70,19 +70,30 @@ Public benchmark products are capability/workflow references only. Protected cod
 
 ## Packet 3 — Autonomous Actors, Threats & Offscreen Action
 
+**Status:** `design_closed` — 2026-09-16  
+**Closure:** `governance/application-planning/preimplementation-design-closure/PDCP_PACKET_03_AUTONOMOUS_ACTORS_DESIGN_CLOSURE.md`  
+**Machine-readable record:** `governance/application-planning/preimplementation-design-closure/PDCP_PACKET_03_AUTONOMOUS_ACTORS_CLOSURE.json`
+
 **Benchmark prompts:** Archmage Rises, Majesty, X4, Kenshi, Six Ages.
 
-**Questions to close:**
+**Questions closed:**
 
-- bounded goals, agendas, resources, knowledge and legal action sets;
-- autonomous threat/faction/NPC decision cadence without omniscient AI;
-- offscreen action and resolution depth;
-- plan stages and observable telegraph/evidence;
-- interruption, counterplay, partial disruption and recovery;
-- direct authority versus indirect influence;
-- world changes routed through canonical owner operations and Events.
+- bounded goals/agendas/resources/knowledge/legal action sets without a duplicate actor ledger;
+- actor-relative, non-omniscient decision context;
+- explicit governed decision cadence rather than hidden wall-clock mutation;
+- legal/permission/resource/authority/knowledge filtering before ranking;
+- deterministic, seeded, owner-resolver, GM-choice and advisory selection method classes;
+- selection versus canonical owner commit separation with pre-commit revalidation;
+- optional plan stages, telegraphs, interruption, partial disruption and recovery;
+- offscreen batching/catch-up without fabricating unsupported individual detail;
+- direct authority versus Packet-01 indirect influence;
+- Packet-02 evidence/trace fan-out from autonomous actions;
+- explicit Player-controlled delegation boundary;
+- replay, provenance, concurrency and role-safe explanations.
 
-**Likely owners/families:** MNCS, ODL/SCL, MRCS, GPR, MSWI.
+**Disposition:** no new family and no standalone implementation tranche. Completed ODL/SCL remain organization/strategic authority, MAS-08 remains prepared threat/clock authoring only, and canonical owner domains retain all mutation truth. The DCP closes ten reusable autonomy/orchestration contracts with 32 golden vectors. Residual implementation is mapped to MNCS/MRCS/GPR/MSWI.
+
+**Owners/families:** ODL, SCL, Character/NPC/Creature, APW/D26 Project/time, Action/Event/Combat, Visibility/Knowledge, MNCS, MRCS, GPR, MSWI, plus PDCP Packets 01–02. MAS remains outside PDCP and is not reopened.
 
 ## Packet 4 — Semantic Affordances & Composable Effects
 
