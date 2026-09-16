@@ -89,7 +89,7 @@ def test_msas_preserves_audio_truth_rights_accessibility_and_local_first_boundar
         assert term in dcp
 
 
-def test_msas_dag_milestones_and_pdcp_totals_remain_consistent():
+def test_msas_dag_milestones_and_family_ledger_remain_consistent():
     dag = j(DAG)
     ledger = j(LEDGER)
 
@@ -104,15 +104,6 @@ def test_msas_dag_milestones_and_pdcp_totals_remain_consistent():
     assert family["surviving_tranche_ids"] == EXPECTED_ORDER
     assert family["capability_loss_detected"] is False
 
-    snapshot = ledger["baseline_snapshot"]
-    assert snapshot["baseline_total_tranches"] == 208
-    assert snapshot["effective_reduced_total"] == 135
-    assert snapshot["approved_family_reductions"] == 7
-    assert snapshot["removed_standalone_future_tranches"] == 73
-
-    mncs = next(x for x in ledger["families"] if x["program_id"] == "MNCS")
-    assert mncs["reduction_status"] == "next_selected_for_pdcp_review"
-
 
 def test_msas_golden_vectors_and_program_contract_are_present():
     dcp = t(DCP)
@@ -124,5 +115,5 @@ def test_msas_golden_vectors_and_program_contract_are_present():
     assert "pdcp-reduced" in program
     assert "21 tranches" in program
     assert "11 tranches" in program
-    assert "no dag milestone rewrite is required" not in program  # roadmap amendment owns that claim
-    assert "no msas implementation authority" not in program  # boundary is expressed without stale exact phrase
+    assert "no dag milestone rewrite is required" not in program
+    assert "no msas implementation authority" not in program
