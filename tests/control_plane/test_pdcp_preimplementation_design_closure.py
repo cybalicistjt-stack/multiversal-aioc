@@ -18,13 +18,14 @@ def test_pdcp_is_design_only_and_cannot_select_product_work():
     ledger = j("governance/application-planning/preimplementation-design-closure/PDCP_REDUCTION_LEDGER.json")
 
     assert ledger["project_id"] == "PDCP"
+    assert ledger["status"] == "completed_reconciled"
     assert ledger["implementation_authority"] is False
     assert ledger["ops3_current_mutation"] is False
     assert "PDCP" not in graph["nodes"]
     assert current["lanes"]["product-development"]["selected_work_item"] != "PDCP"
 
 
-def test_pdcp_excludes_mas_and_snapshots_all_newer_future_families():
+def test_pdcp_excludes_mas_and_preserves_immutable_baseline_provenance():
     ledger = j("governance/application-planning/preimplementation-design-closure/PDCP_REDUCTION_LEDGER.json")
     families = {row["program_id"]: row["baseline_tranche_count"] for row in ledger["families"]}
 
@@ -43,27 +44,36 @@ def test_pdcp_excludes_mas_and_snapshots_all_newer_future_families():
         "MSWI": 18,
     }
     assert sum(families.values()) == 208
-    assert ledger["baseline_snapshot"]["baseline_total_tranches"] == 208
-    assert ledger["baseline_snapshot"]["effective_reduced_total"] is None
+    snapshot = ledger["baseline_snapshot"]
+    assert snapshot["baseline_total_tranches"] == 208
+    assert snapshot["effective_reduced_total"] == 105
+    assert snapshot["removed_standalone_future_tranches"] == 103
+    assert snapshot["approved_family_reductions"] == 10
 
 
-def test_pdcp_baseline_sources_exist_and_are_still_future_planned_at_snapshot():
+def test_pdcp_effective_backlogs_match_resolved_family_rows():
     ledger = j("governance/application-planning/preimplementation-design-closure/PDCP_REDUCTION_LEDGER.json")
 
     for row in ledger["families"]:
         backlog = j(row["backlog_path"])
+        assert row["reduction_status"] == "resolved"
+        assert row["overlap_audit_complete"] is True
+        assert row["capability_loss_detected"] is False
         assert backlog["program_id"] == row["program_id"]
         assert backlog["status"] == "owner_approved_planned"
         assert backlog["implementation_authority"] is False
-        assert len(backlog["strict_order"]) == row["baseline_tranche_count"]
-        assert len(backlog["tranches"]) == row["baseline_tranche_count"]
+        assert backlog["strict_order"] == row["surviving_tranche_ids"]
+        assert [x["id"] for x in backlog["tranches"]] == row["surviving_tranche_ids"]
+        assert len(backlog["strict_order"]) == row["reduced_tranche_count"]
+        assert row["baseline_tranche_count"] >= row["reduced_tranche_count"]
 
 
 def test_pdcp_reduction_contract_preserves_scope_and_ops3_gates():
     project = t("governance/application-planning/preimplementation-design-closure/PDCP_PREIMPLEMENTATION_DESIGN_CLOSURE_PROJECT.md").lower()
     contract = t("governance/application-planning/preimplementation-design-closure/PDCP_DESIGN_CLOSURE_CONTRACT.md").lower()
     amendment = t("governance/application-planning/APPLICATION_IMPLEMENTATION_ROADMAP_PDCP_AMENDMENT_2026-09-16.md").lower()
-    combined = project + "\n" + contract + "\n" + amendment
+    closeout = t("governance/application-planning/preimplementation-design-closure/PDCP_FINAL_CLOSEOUT_2026-09-16.md").lower()
+    combined = project + "\n" + contract + "\n" + amendment + "\n" + closeout
 
     for required in (
         "operations/current.json",
