@@ -16,7 +16,7 @@ Public benchmark products are capability/workflow references only. Protected cod
 | 2 — Systemic Investigation & Evidence | `design_closed` | `PDCP_PACKET_02_SYSTEMIC_EVIDENCE_DESIGN_CLOSURE.md` + machine-readable closure record |
 | 3 — Autonomous Actors, Threats & Offscreen Action | `design_closed` | `PDCP_PACKET_03_AUTONOMOUS_ACTORS_DESIGN_CLOSURE.md` + machine-readable closure record |
 | 4 — Semantic Affordances & Composable Effects | `design_closed` | `PDCP_PACKET_04_SEMANTIC_AFFORDANCES_DESIGN_CLOSURE.md` + machine-readable closure record |
-| 5 — Persistent History, Legacy, Succession & Delayed Consequence | `open` | — |
+| 5 — Persistent History, Legacy, Succession & Delayed Consequence | `design_closed` | `PDCP_PACKET_05_PERSISTENT_HISTORY_DESIGN_CLOSURE.md` + machine-readable closure record |
 | 6 — Multi-Resolution Simulation & Autonomous World Evolution | `open` | — |
 | 7 — Creator/GM Execution UX & Debuggability | `open` | — |
 | 8 — Simulation & Formal Validation Laboratory | `open` | — |
@@ -120,19 +120,26 @@ Public benchmark products are capability/workflow references only. Protected cod
 
 ## Packet 5 — Persistent History, Legacy, Succession & Delayed Consequence
 
+**Status:** `design_closed` — 2026-09-16  
+**Closure:** `governance/application-planning/preimplementation-design-closure/PDCP_PACKET_05_PERSISTENT_HISTORY_DESIGN_CLOSURE.md`  
+**Machine-readable record:** `governance/application-planning/preimplementation-design-closure/PDCP_PACKET_05_PERSISTENT_HISTORY_CLOSURE.json`
+
 **Benchmark prompts:** Wildermyth, Unexplored 2, Six Ages, Soulash 2.
 
-**Questions to close:**
+**Questions closed:**
 
-- Event-derived story scars/legacy receipts;
-- character replacement/succession while preserving world history;
-- institutional/cultural memory and long-delay consequence queues;
-- what persists between sessions, adventures, campaigns and generations;
-- decay/forgetting/legend transformation rules only where explicitly governed;
-- pre-campaign history burn-in producing proposed historical Events/state;
-- history projections versus current canonical state.
+- Event-derived story scars/legacy projections without a duplicate mechanics/history ledger;
+- character/NPC/organization succession as explicit per-owner handoffs rather than state cloning;
+- institutional/cultural memory as permission-filtered projections from real Events, records, claims and knowledge;
+- delayed consequences triggered by canonical Campaign time, milestones, Events or owner state rather than hidden wall-clock time;
+- persistence boundaries across Sessions, Adventures, Campaigns and generations;
+- explicit forgetting, censorship, legend transformation and rediscovery rules without rewriting historical truth;
+- current/as-of/snapshot/hypothetical history projections with missing-history honesty;
+- proposal-only deterministic/seeded history burn-in with dependency-closed owner-authorized promotion and provenance.
 
-**Likely owners/families:** MNCS, MRCS, GPR, MSWI; World/Character/Organization/Religion/Culture/Event owners remain canonical.
+**Disposition:** no new family and no standalone implementation tranche. Action/Event, PPIA-08, WCI, APW/D26, ODL-04 and canonical Character/relationship/Asset/Organization/Culture owners retain truth. The DCP closes sixteen reusable contracts and 40 golden vectors; residual implementation is mapped to MNCS/MRCS/GPR/MSWI.
+
+**Owners/families:** Action/Event, PPIA-08, WCI-02/05, APW/D26, ODL-04, Character/NPC/Creature, MIB-09, Item/Asset/Inventory/Economy, Organization/Faction/Religion/Culture, MNCS, MRCS, GPR and MSWI. MAS remains outside PDCP and is not reopened.
 
 ## Packet 6 — Multi-Resolution Simulation & Autonomous World Evolution
 
