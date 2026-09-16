@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "program_id": "MSLR",
   "program_name": "Multiversal Spatial Law Runtime",
   "status": "owner_approved_planned",
@@ -11,6 +11,15 @@
   "tranche_execution_target_minutes": 24,
   "minimum_closeout_reserve_minutes": 8,
   "split_before_start_if_target_not_credible": true,
+  "pdcp_reduction": {
+    "baseline_tranche_count": 18,
+    "reduced_tranche_count": 9,
+    "receipt": "governance/application-planning/preimplementation-design-closure/PDCP_MSLR_REDUCTION_RECEIPT.json",
+    "family_design_closure": "governance/application-planning/preimplementation-design-closure/PDCP_MSLR_FAMILY_DESIGN_CLOSURE.md",
+    "stable_start_gate": "MSLR-01",
+    "stable_golden_gate": "MSLR-18",
+    "capability_loss_detected": false
+  },
   "execution_design": {
     "one_continue_scope": "Once a future MSLR tranche is governed-started, one owner Continue carries that tranche through implementation, required validation, verified closeout, and next-tranche selection unless an OPS3 owner-only boundary or genuine external blocker is reached.",
     "preload_rule": "Load only the selected tranche and its declared dependency closure; block unrelated roadmap, history, benchmark and source archaeology.",
@@ -19,43 +28,35 @@
     "retry_rule": "Do not rerun an unchanged deterministic failure; classify the failure and require changed evidence before retry."
   },
   "strict_order": [
-    "MSLR-01", "MSLR-02", "MSLR-03", "MSLR-04", "MSLR-05", "MSLR-06", "MSLR-07", "MSLR-08", "MSLR-09",
-    "MSLR-10", "MSLR-11", "MSLR-12", "MSLR-13", "MSLR-14", "MSLR-15", "MSLR-16", "MSLR-17", "MSLR-18"
+    "MSLR-01", "MSLR-03", "MSLR-04", "MSLR-07", "MSLR-08", "MSLR-13", "MSLR-14", "MSLR-16", "MSLR-18"
   ],
   "tranches": [
-    {"id":"MSLR-01","name":"Spatial-Law Authority, Capability Crosswalk & Runtime Contract","status":"planned","estimated_active_minutes":14},
-    {"id":"MSLR-02","name":"Spatial-Law Profiles, Scope, Invariants, Discoverability & Composition","status":"planned","estimated_active_minutes":16},
-    {"id":"MSLR-03","name":"Dynamic Topology State, Edge Mutation, Event Trace, Replay & Recovery","status":"planned","estimated_active_minutes":16},
-    {"id":"MSLR-04","name":"True, Observable, Known & Suspected Topology Projections","status":"planned","estimated_active_minutes":16},
-    {"id":"MSLR-05","name":"Spatial Observation, Hypothesis, Experiment & Law-Discovery Gameplay","status":"planned","estimated_active_minutes":16},
-    {"id":"MSLR-06","name":"Governed Topology Operations, Triggers, Preview, Undo & Counterplay","status":"planned","estimated_active_minutes":16},
-    {"id":"MSLR-07","name":"Fuzzy Boundaries, Reality Seams, Bleed Gradients & Traversability Separation","status":"planned","estimated_active_minutes":16},
-    {"id":"MSLR-08","name":"Metric Geometry Profiles: Euclidean, Hyperbolic, Spherical & Distorted Distance","status":"planned","estimated_active_minutes":16},
-    {"id":"MSLR-09","name":"Recursive Scale, Nested Worlds, Bigger-Inside & Containment Transforms","status":"planned","estimated_active_minutes":16},
-    {"id":"MSLR-10","name":"Orientation, Gravity Frames, Surface-Local Up & Transition Semantics","status":"planned","estimated_active_minutes":16},
-    {"id":"MSLR-11","name":"Observer, Knowledge, Memory & Perception-Dependent Connectivity","status":"planned","estimated_active_minutes":16},
-    {"id":"MSLR-12","name":"Temporal, Dream, Causal, Looping & Recurrence Spatial Laws","status":"planned","estimated_active_minutes":16},
-    {"id":"MSLR-13","name":"Anchors, Markers, Mapping, Stabilization, Navigation Aids & Counterplay","status":"planned","estimated_active_minutes":16},
-    {"id":"MSLR-14","name":"Constraint-Driven Procedural Impossible-Space Generation & Solvability Proof","status":"planned","estimated_active_minutes":16},
-    {"id":"MSLR-15","name":"Liminal Sensory Anomaly Grammar, Detection & Accessible Equivalent Cues","status":"planned","estimated_active_minutes":16},
-    {"id":"MSLR-16","name":"Multi-Resolution & Cross-System Spatial Gameplay Runtime","status":"planned","estimated_active_minutes":16},
-    {"id":"MSLR-17","name":"GM/Creator Spatial-Law Studio, Diagnostics, Simulation & Specialized Map Views","status":"planned","estimated_active_minutes":16},
-    {"id":"MSLR-18","name":"Golden Impossible-Space Proof & MSWI Handoff","status":"planned","estimated_active_minutes":16}
+    {"id":"MSLR-01","name":"Spatial-Law Profile & Runtime Core","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSLR-01","MSLR-02"]},
+    {"id":"MSLR-03","name":"Dynamic Topology State & Governed Spatial Operations","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSLR-03","MSLR-06"]},
+    {"id":"MSLR-04","name":"Knowledge, Observer & Spatial Discovery Runtime","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSLR-04","MSLR-05","MSLR-11"]},
+    {"id":"MSLR-07","name":"Reality-Seam, Temporal/Dream & Contextual Spatial Laws","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSLR-07","MSLR-12"]},
+    {"id":"MSLR-08","name":"Metric, Scale, Containment & Orientation Transform Runtime","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSLR-08","MSLR-09","MSLR-10"]},
+    {"id":"MSLR-13","name":"Navigation Aids, Anchors, Sensory Cues & Counterplay","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSLR-13","MSLR-15"]},
+    {"id":"MSLR-14","name":"Procedural Impossible-Space Authoring, Solvability & Diagnostics","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSLR-14","MSLR-17"]},
+    {"id":"MSLR-16","name":"Multi-Resolution Cross-System Spatial Runtime Integration","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSLR-16"]},
+    {"id":"MSLR-18","name":"Golden Impossible-Space Proof & MSWI Handoff","status":"planned","estimated_active_minutes":16,"absorbs_baseline":["MSLR-18"]}
   ],
   "required_upstream": [
     "ARI family completed_verified",
     "SSA-01..10 completed_verified",
     "ENV-01..16 completed_verified",
-    "MCS-01..21 completed_verified",
-    "GPR-01..16 completed_verified",
-    "MERA-01..24 completed_verified",
-    "MBES-01..24 completed_verified",
+    "MCS family completed_verified at its effective PDCP-reduced golden gate",
+    "GPR family completed_verified at its effective PDCP-reduced golden gate",
+    "MERA family completed_verified at its effective PDCP-reduced golden gate",
+    "MBES family completed_verified at its effective PDCP-reduced golden gate",
     "World/Reality/Branch/Setting Node owner contracts available",
     "Scene/Exploration/Action/Event/Transition/Portal/Permission owner contracts available",
-    "Visibility/Knowledge/Discovery owner contracts available"
+    "Visibility/Knowledge/Discovery owner contracts available",
+    "PCA-02/PCA-03 procedural recipe/generator substrate available for MSLR-14",
+    "PCA-12 analysis workbench available for MSLR-14"
   ],
   "integration_targets": [
-    "SSA", "ENV", "MCS", "GPR", "MBES", "MSWI", "World", "Reality/Branch", "Setting Node", "Scene", "Exploration",
+    "SSA", "ENV", "MCS", "GPR", "MBES", "MSWI", "PCA", "World", "Reality/Branch", "Setting Node", "Scene", "Exploration",
     "Action/Event", "Transition/Portal", "Visibility/Permissions", "Knowledge/Discovery", "Combat", "Movement", "Pursuit",
     "Character/NPC/Creature", "Vehicle/Mount", "Settlement", "Project/Time", "Audio/Presentation", "Accessibility", "ARI", "SMB-08", "SMB-09", "SAA"
   ],
@@ -67,6 +68,8 @@
     "GPR retains generic gameplay-pattern execution, loop composition, replay and delivery-mode authority; MSLR specializes spatial-law semantics and composes GPR operations rather than becoming a competing general runtime",
     "MBES retains built-environment, construction, infrastructure and settlement authority; MSLR can apply impossible-space laws to accepted sites, structures and spaces without becoming a second construction system",
     "MSWI retains cross-domain systemic consequence propagation; MSLR exposes typed spatial observations, events and deltas for MSWI rather than directly inventing ecology, economy, faction or settlement consequences",
+    "PCA-02/PCA-03 retain generic procedural recipe/generator substrate and PCA-12 retains generic simulation/formal-analysis workbench; MSLR-14 implements only spatial-law recipes, model adapters, diagnostics and domain interpretation",
+    "PDCP Packet 07 shared preview/explanation/diagnostic/intervention/reversal semantics are reused; MSLR does not create a second generic GM/debug framework",
     "geometry, topology, metric geometry, orientation, containment/scale, perception/knowledge, environment conditions and live campaign state remain distinct dimensions even when one spatial-law profile composes several",
     "non-euclidean topology does not imply non-euclidean metric geometry; metric profiles explicitly own distance/range/area/line-of-sight transforms where enabled",
     "Dimensional Bleed, fuzzy boundaries and portal traversal remain distinct; bleed intensity never grants traversability without Transition/Portal/Access authority",
@@ -79,7 +82,7 @@
     "optional AI may suggest law profiles, hypotheses, diagnostics, maps or tests but cannot reveal protected topology, accept generated space, change spatial truth or commit traversal outcomes",
     "clean-room benchmark research informs generalized capabilities only; protected code, assets, maps, level layouts, UI expression, formulas, music, save formats and private protocols are not copied",
     "no paid/cloud provider is required for blocking MSLR workflows",
-    "no MSLR implementation authority exists until a future OPS3 CURRENT.json governed start selects a specific MSLR work item"
+    "no MSLR implementation authority exists until a future OPS3 CURRENT.json governed start selects a specific surviving MSLR work item"
   ],
   "planning_provenance": [
     "governance/application-planning/semantic-spatial-authoring/SSA_SEMANTIC_SPATIAL_AUTHORING_PROGRAM.md",
@@ -88,6 +91,8 @@
     "governance/application-planning/gameplay-pattern-runtime/GPR_PROGRAM_BACKLOG.json",
     "governance/application-planning/multiversal-built-environment-settlement/MBES_PROGRAM_BACKLOG.json",
     "governance/application-planning/multiversal-systemic-worldplay-integration/MSWI_PROGRAM_BACKLOG.json",
+    "governance/application-planning/preimplementation-design-closure/PDCP_MSLR_FAMILY_DESIGN_CLOSURE.md",
+    "governance/application-planning/preimplementation-design-closure/PDCP_MSLR_REDUCTION_RECEIPT.json",
     "governance/application-planning/multiversal-spatial-law-runtime/MSLR_BENCHMARK_CAPABILITY_MATRIX.md"
   ]
 }
